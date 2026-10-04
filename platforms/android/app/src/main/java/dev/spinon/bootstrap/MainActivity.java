@@ -28,38 +28,12 @@ import java.util.concurrent.TimeUnit;
 public final class MainActivity extends Activity {
     private static final String TAG = "SpinonBootstrap";
     private static final int RUNTIME_QUEUE_CAPACITY = 64;
-    private static final String LIFECYCLE_GC_SETUP = "(() => {"
-            + "const parent = document.createElement('div');"
-            + "parent.setAttribute('data-spinon-lifecycle', 'parent');"
-            + "let child = document.createTextNode('attached-child');"
-            + "globalThis.__spinonLifecycleAttachedWeak = new WeakRef(child);"
-            + "document.appendChild(parent); parent.appendChild(child);"
-            + "child = null;"
-            + "const detachedParent = document.createElement('section');"
-            + "detachedParent.setAttribute('data-spinon-lifecycle', 'detached-parent');"
-            + "const detachedChild = document.createTextNode('held');"
-            + "detachedParent.appendChild(detachedChild);"
-            + "globalThis.__spinonLifecycleHeld = detachedChild;"
-            + "let orphan = document.createTextNode('orphan');"
-            + "globalThis.__spinonLifecycleWeak = new WeakRef(orphan); orphan = null;"
-            + "spinon.__internal.requestLifecycleCollectionForTesting();"
-            + "})();";
-    private static final String LIFECYCLE_GC_VERIFY = "(() => {"
-            + "let parent = document.firstChild;"
-            + "while (parent !== null && parent.getAttribute('data-spinon-lifecycle') !== 'parent') {"
-            + "parent = parent.nextSibling; }"
-            + "const oldWrapperExpired = globalThis.__spinonLifecycleAttachedWeak.deref() === undefined;"
-            + "const recreatedChild = parent === null ? null : parent.firstChild;"
-            + "if (parent === null || !oldWrapperExpired || recreatedChild === null"
-            + " || recreatedChild.textContent !== 'attached-child'"
-            + " || parent.firstChild !== recreatedChild"
-            + " || globalThis.__spinonLifecycleHeld.textContent !== 'held'"
-            + " || globalThis.__spinonLifecycleHeld.parentNode.getAttribute('data-spinon-lifecycle')"
-            + " !== 'detached-parent'"
-            + " || globalThis.__spinonLifecycleWeak.deref() !== undefined) {"
-            + "throw new Error('weak wrapper GC did not preserve live roots and reclaim orphan'); }"
-            + "spinon.__internal.requestLifecycleCollectionForTesting();"
-            + "})();";
+    private static final String LIFECYCLE_FIXTURE_ASSET = "s03-lifecycle-probe.js";
+    private static final String LIFECYCLE_FIXTURE_GLOBAL = "__spinonS03LifecycleProbeV1";
+    private static final int LIFECYCLE_STRESS_ROUNDS = 6;
+    private static final int LIFECYCLE_STRESS_CYCLES_PER_ROUND = 32;
+    private static final int LIFECYCLE_STRESS_NODES_PER_ROUND =
+            LIFECYCLE_STRESS_CYCLES_PER_ROUND * 2;
 
     static {
         System.loadLibrary("spinon_bootstrap");
@@ -359,55 +333,196 @@ public final class MainActivity extends Activity {
         long handle = runtimeSession;
         if (handle == 0 || activityClosing) return;
         lifecycleButton.setEnabled(false);
-        runtimeStatus.setText("V8 GC 후 Rust HostDocument 회수 검증 중…");
+        runtimeStatus.setText("V8 callback root와 반복 DOM 수명 회수 검증 중…");
         submitRuntimeCall(() -> {
+            String fixtureSource;
+            try {
+                fixtureSource = readAsset(LIFECYCLE_FIXTURE_ASSET);
+            } catch (IOException error) {
+                lifecycleGcPassed = false;
+                return ("status=-1 dom_gc=FAIL fixture_asset=missing")
+                        .getBytes(StandardCharsets.UTF_8);
+            }
+
+            String loaded = decode(nativeSessionEval(handle,
+                    fixtureSource.getBytes(StandardCharsets.UTF_8)));
+            if (!loaded.startsWith("status=0 ")) {
+                lifecycleGcPassed = false;
+                return ("status=-1 dom_gc=FAIL fixture_load=FAIL report={" + loaded + "}")
+                        .getBytes(StandardCharsets.UTF_8);
+            }
+
+            String reset = callLifecycleFixture(handle, "reset");
+            String baselineFirst = decode(nativeSessionEval(handle, new byte[0]));
             String baseline = decode(nativeSessionEval(handle, new byte[0]));
-            String setup = decode(nativeSessionEval(handle,
-                    LIFECYCLE_GC_SETUP.getBytes(StandardCharsets.UTF_8)));
-            String verify = decode(nativeSessionEval(handle,
-                    LIFECYCLE_GC_VERIFY.getBytes(StandardCharsets.UTF_8)));
-            long beforeNodes = reportLongField(baseline, "document_nodes");
-            long afterNodes = reportLongField(setup, "document_nodes");
-            boolean countsMatch = beforeNodes >= 0 && afterNodes == beforeNodes + 4;
-            boolean collectorSucceeded = "none".equals(
-                    reportField(baseline, "document_collection_error"))
-                    && "none".equals(reportField(setup, "document_collection_error"))
-                    && "none".equals(reportField(verify, "document_collection_error"))
-                    && "0".equals(reportField(verify, "document_collection_poisoned"));
-            long scanCount = reportLongField(verify, "document_collection_scans");
-            long scannedHandles = reportLongField(verify, "document_collection_scanned_handles");
-            long liveHandles = reportLongField(verify, "document_collection_live_handles");
-            long emptyHandles = reportLongField(verify, "document_collection_empty_handles");
-            boolean scanStatsValid = scanCount >= 3 && scannedHandles >= 0
-                    && liveHandles >= 0 && emptyHandles >= 0
-                    && scannedHandles == liveHandles + emptyHandles;
-            boolean passed = setup.startsWith("status=0 ")
-                    && verify.startsWith("status=0 ") && countsMatch
-                    && collectorSucceeded && scanStatsValid;
+            long baselineNodes = reportLongField(baseline, "document_nodes");
+            long baselineStringUnits = reportLongField(baseline, "document_string_units");
+            long baselineWrapperHandles = reportLongField(
+                    baseline, "document_collection_scanned_handles");
+            boolean baselineReady = reset.startsWith("status=0 ")
+                    && reportHasHealthyCollection(reset)
+                    && reportHasHealthyCollection(baselineFirst)
+                    && reportHasHealthyCollection(baseline)
+                    && baselineNodes >= 0 && baselineStringUnits >= 0
+                    && reportLongField(baseline, "document_collection_empty_handles") == 0
+                    && reportLongField(baseline, "document_collection_live_handles")
+                            == baselineWrapperHandles;
+            if (!baselineReady) {
+                lifecycleGcPassed = false;
+                return ("status=-1 dom_gc=FAIL baseline=FAIL nodes=" + baselineNodes
+                        + " string_units=" + baselineStringUnits
+                        + " wrapper_handles=" + baselineWrapperHandles
+                        + " reset={" + reset + "} baseline={" + baseline + "}")
+                        .getBytes(StandardCharsets.UTF_8);
+            }
+
+            String rootSetup = callLifecycleFixture(handle, "setupRootCases");
+            String rootVerify = callLifecycleFixture(handle, "verifyRootCases");
+            long rootSetupNodes = reportLongField(rootSetup, "document_nodes");
+            boolean rootCasesPassed = rootSetup.startsWith("status=0 ")
+                    && rootVerify.startsWith("status=0 ")
+                    && rootSetupNodes == baselineNodes + 4
+                    && reportHasHealthyCollection(rootSetup)
+                    && reportHasHealthyCollection(rootVerify)
+                    && reportScanCountsConsistent(rootVerify);
+            String rootCleanup = callLifecycleFixture(handle, "cleanupRootCases");
+            String rootCleanupStable = decode(nativeSessionEval(handle, new byte[0]));
+            boolean initialBaselineReturned = rootCleanup.startsWith("status=0 ")
+                    && reportHasHealthyCollection(rootCleanup)
+                    && reportMatchesResourceBaseline(rootCleanupStable, baselineNodes,
+                            baselineStringUnits, baselineWrapperHandles);
+
+            String callbackSetup = callLifecycleFixture(handle, "setupCallbackClosureRoot");
+            long callbackNodes = reportLongField(callbackSetup, "document_nodes");
+            long callbackStringUnits = reportLongField(callbackSetup, "document_string_units");
+            long expectedCallbackStringUnits = baselineStringUnits
+                    + "http://www.w3.org/1999/xhtml".length()
+                    + "aside".length() + "callback-root".length();
+            boolean callbackClosureRootPassed = callbackSetup.startsWith("status=0 ")
+                    && callbackNodes == baselineNodes + 2
+                    && callbackStringUnits == expectedCallbackStringUnits
+                    && reportHasHealthyCollection(callbackSetup);
+            String callbackDispatch = decode(nativeSessionDispatch(handle, 1));
+            String callbackRootVerify = callLifecycleFixture(handle, "verifyCallbackClosureRoot");
+            callbackClosureRootPassed = callbackClosureRootPassed
+                    && callbackDispatch.startsWith("status=0 ")
+                    && callbackRootVerify.startsWith("status=0 ")
+                    && reportHasHealthyCollection(callbackDispatch)
+                    && reportHasHealthyCollection(callbackRootVerify);
+
+            String callbackRelease = callLifecycleFixture(handle, "replaceCallbackClosureRoot");
+            String callbackReleaseVerify = callLifecycleFixture(
+                    handle, "verifyCallbackClosureReleased");
+            String callbackReleaseStable = decode(nativeSessionEval(handle, new byte[0]));
+            boolean callbackClosureReleased = callbackRelease.startsWith("status=0 ")
+                    && callbackReleaseVerify.startsWith("status=0 ")
+                    && reportMatchesResourceBaseline(callbackReleaseStable, baselineNodes,
+                            baselineStringUnits, baselineWrapperHandles);
+
+            int baselineReturnRounds = 0;
+            long maximumEmptyWrappers = 0;
+            for (int round = 0; round < LIFECYCLE_STRESS_ROUNDS; round++) {
+                String stress = callLifecycleFixture(handle, "stressRound");
+                String stable = decode(nativeSessionEval(handle, new byte[0]));
+                long emptyWrappers = reportLongField(
+                        stress, "document_collection_empty_handles");
+                maximumEmptyWrappers = Math.max(maximumEmptyWrappers, emptyWrappers);
+                boolean roundReturned = stress.startsWith("status=0 ")
+                        && reportHasHealthyCollection(stress)
+                        && reportScanCountsConsistent(stress)
+                        && reportLongField(stress, "document_nodes") == baselineNodes
+                        && reportLongField(stress, "document_string_units") == baselineStringUnits
+                        && emptyWrappers >= LIFECYCLE_STRESS_NODES_PER_ROUND
+                        && reportMatchesResourceBaseline(stable, baselineNodes,
+                                baselineStringUnits, baselineWrapperHandles);
+                if (!roundReturned) break;
+                baselineReturnRounds += 1;
+            }
+
+            String finalReport = (baselineReturnRounds > 0)
+                    ? decode(nativeSessionEval(handle, new byte[0])) : callbackReleaseStable;
+            long finalNodes = reportLongField(finalReport, "document_nodes");
+            long finalStringUnits = reportLongField(finalReport, "document_string_units");
+            boolean finalBaselineReturned = reportMatchesResourceBaseline(finalReport,
+                    baselineNodes, baselineStringUnits, baselineWrapperHandles);
+            boolean repeatedBaseline = baselineReturnRounds == LIFECYCLE_STRESS_ROUNDS
+                    && finalBaselineReturned;
+            boolean scanStatsPassed = reportScanCountsConsistent(reset)
+                    && reportScanCountsConsistent(baselineFirst)
+                    && reportScanCountsConsistent(baseline)
+                    && reportScanCountsConsistent(rootSetup)
+                    && reportScanCountsConsistent(rootVerify)
+                    && reportScanCountsConsistent(rootCleanup)
+                    && reportScanCountsConsistent(rootCleanupStable)
+                    && reportScanCountsConsistent(callbackSetup)
+                    && reportScanCountsConsistent(callbackDispatch)
+                    && reportScanCountsConsistent(callbackRootVerify)
+                    && reportScanCountsConsistent(callbackRelease)
+                    && reportScanCountsConsistent(callbackReleaseVerify)
+                    && reportScanCountsConsistent(callbackReleaseStable)
+                    && baselineReturnRounds == LIFECYCLE_STRESS_ROUNDS
+                    && reportScanCountsConsistent(finalReport);
+            boolean passed = rootCasesPassed && initialBaselineReturned
+                    && callbackClosureRootPassed && callbackClosureReleased
+                    && repeatedBaseline && scanStatsPassed;
             lifecycleGcPassed = passed;
             return ("status=" + (passed ? "0" : "-1")
                     + " dom_gc=" + (passed ? "PASS" : "FAIL")
-                    + " baseline_nodes=" + beforeNodes
-                    + " after_gc_nodes=" + afterNodes
-                    + " attached_tree_and_live_wrapper="
-                    + (verify.startsWith("status=0 ") ? "PASS" : "FAIL")
-                    + " attached_wrapper_recreated="
-                    + (verify.startsWith("status=0 ") ? "PASS" : "FAIL")
-                    + " orphan_weakref_cleared="
-                    + (verify.contains("status=0 ") ? "PASS" : "FAIL")
-                    + " collector_succeeded=" + (collectorSucceeded ? "PASS" : "FAIL")
-                    + " collector_scan_stats=" + (scanStatsValid ? "PASS" : "FAIL")
-                    + " scan_count=" + scanCount
-                    + " scanned_handles=" + scannedHandles
-                    + " live_handles=" + liveHandles
-                    + " empty_handles=" + emptyHandles
-                    + " setup={" + setup + "} verify={" + verify + "}")
+                    + " attached_tree_and_live_wrapper=" + (rootCasesPassed ? "PASS" : "FAIL")
+                    + " attached_wrapper_recreated=" + (rootCasesPassed ? "PASS" : "FAIL")
+                    + " orphan_weakref_cleared=" + (rootCasesPassed ? "PASS" : "FAIL")
+                    + " callback_closure_root=" + (callbackClosureRootPassed ? "PASS" : "FAIL")
+                    + " callback_closure_release=" + (callbackClosureReleased ? "PASS" : "FAIL")
+                    + " initial_baseline_return=" + (initialBaselineReturned ? "PASS" : "FAIL")
+                    + " repeated_baseline=" + (repeatedBaseline ? "PASS" : "FAIL")
+                    + " baseline_return_rounds=" + baselineReturnRounds + "/"
+                    + LIFECYCLE_STRESS_ROUNDS
+                    + " cycles_per_round=" + LIFECYCLE_STRESS_CYCLES_PER_ROUND
+                    + " reclaimed_nodes_per_round=" + LIFECYCLE_STRESS_NODES_PER_ROUND
+                    + " baseline_nodes=" + baselineNodes + " final_nodes=" + finalNodes
+                    + " baseline_string_units=" + baselineStringUnits
+                    + " final_string_units=" + finalStringUnits
+                    + " baseline_wrapper_handles=" + baselineWrapperHandles
+                    + " max_empty_wrappers=" + maximumEmptyWrappers
+                    + " collector_scan_stats=" + (scanStatsPassed ? "PASS" : "FAIL")
+                    + " collector_succeeded=" + (passed ? "PASS" : "FAIL")
+                    + " initial_root_cleanup={" + rootCleanup + "}")
                     .getBytes(StandardCharsets.UTF_8);
         }, "DOM-GC 검증", () -> {
             lifecycleButton.setEnabled(!activityClosing);
-            runtimeStatus.setText(lifecycleGcPassed ? "V8 약한 wrapper 회수 검증 통과"
-                    : "V8 약한 wrapper 회수 검증 실패 · 로그 확인");
+            runtimeStatus.setText(lifecycleGcPassed ? "V8 반복 수명 회수 검증 통과"
+                    : "V8 반복 수명 회수 검증 실패 · 로그 확인");
         });
+    }
+
+    private String callLifecycleFixture(long handle, String method) {
+        String source = "globalThis." + LIFECYCLE_FIXTURE_GLOBAL + "." + method + "();";
+        return decode(nativeSessionEval(handle, source.getBytes(StandardCharsets.UTF_8)));
+    }
+
+    private boolean reportHasHealthyCollection(String report) {
+        return report.startsWith("status=0 ")
+                && "none".equals(reportField(report, "document_collection_error"))
+                && "0".equals(reportField(report, "document_collection_poisoned"))
+                && "0".equals(reportField(report, "document_collection_deferred"))
+                && reportScanCountsConsistent(report);
+    }
+
+    private boolean reportScanCountsConsistent(String report) {
+        long scanned = reportLongField(report, "document_collection_scanned_handles");
+        long live = reportLongField(report, "document_collection_live_handles");
+        long empty = reportLongField(report, "document_collection_empty_handles");
+        return scanned >= 0 && live >= 0 && empty >= 0 && scanned == live + empty;
+    }
+
+    private boolean reportMatchesResourceBaseline(
+            String report, long nodes, long stringUnits, long wrapperHandles) {
+        return reportHasHealthyCollection(report)
+                && reportLongField(report, "document_nodes") == nodes
+                && reportLongField(report, "document_string_units") == stringUnits
+                && reportLongField(report, "document_collection_scanned_handles") == wrapperHandles
+                && reportLongField(report, "document_collection_live_handles") == wrapperHandles
+                && reportLongField(report, "document_collection_empty_handles") == 0;
     }
 
     private long reportLongField(String report, String name) {

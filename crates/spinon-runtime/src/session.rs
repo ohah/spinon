@@ -463,13 +463,14 @@ fn operation_report(report: OperationReport<'_>) -> String {
         collection_error
     };
     format!(
-        "seq={sequence} op={operation} status={status} caller_tid={caller_thread_id} owner_tid={owner_thread_id} callback_tid={callback_thread_id} queue_wait_us={queue_wait_us} v8_call_us={v8_call_us} cancel_requested={cancel_requested} callback_count={} created_nodes={} last_node_id={} document_revision={} render_tree_revision={} document_nodes={} document_collection_scans={} document_collection_deferred={} document_collection_scanned_handles={} document_collection_live_handles={} document_collection_empty_handles={} document_collection_last_scan_start_ns={} document_collection_last_scan_us={} document_collection_poisoned={} document_collection_error={collection_error} error={error}",
+        "seq={sequence} op={operation} status={status} caller_tid={caller_thread_id} owner_tid={owner_thread_id} callback_tid={callback_thread_id} queue_wait_us={queue_wait_us} v8_call_us={v8_call_us} cancel_requested={cancel_requested} callback_count={} created_nodes={} last_node_id={} document_revision={} render_tree_revision={} document_nodes={} document_string_units={} document_collection_scans={} document_collection_deferred={} document_collection_scanned_handles={} document_collection_live_handles={} document_collection_empty_handles={} document_collection_last_scan_start_ns={} document_collection_last_scan_us={} document_collection_poisoned={} document_collection_error={collection_error} error={error}",
         callbacks.callback_count,
         callbacks.created_nodes,
         callbacks.last_node_id,
         callbacks.document.document_revision(),
         callbacks.document.render_tree_revision(),
         callbacks.document.node_count(),
+        callbacks.document.string_units(),
         collection_stats.scan_count,
         collection_stats.deferred_count,
         collection_stats.scanned_handle_count,
@@ -1077,6 +1078,7 @@ mod tests {
         assert!(report.contains("document_revision=0"));
         assert!(report.contains("render_tree_revision=0"));
         assert!(report.contains("document_nodes=0"));
+        assert!(report.contains("document_string_units=0"));
         assert!(report.contains("document_collection_error=none"));
         assert!(report.contains("callback_count=2"));
     }

@@ -91,6 +91,15 @@ else
   fi
 fi
 
+bootstrap_assets="$repo_root/build/spinon/bootstrap"
+lifecycle_probe="$repo_root/tests/fixtures/dom/s03/runtime-lifecycle-probe-v1.js"
+mkdir -p "$bootstrap_assets"
+if [[ "${SPINON_ENABLE_S03_DOM_GC_FIXTURE:-0}" == "1" ]]; then
+  cp "$lifecycle_probe" "$bootstrap_assets/s03-lifecycle-probe.js"
+else
+  rm -f "$bootstrap_assets/s03-lifecycle-probe.js"
+fi
+
 output_dir="$repo_root/build/spinon/$platform_name"
 mkdir -p "$output_dir"
 sdk_path="$(xcrun --sdk "$sdk" --show-sdk-path)"

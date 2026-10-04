@@ -2,6 +2,7 @@
 set -euo pipefail
 
 repo_root="$(cd "$(dirname "$0")/.." && pwd)"
+v8_dir="${SPINON_V8_DIR:-$repo_root/build/v8-source/v8}"
 case "${SPINON_ENABLE_S04_IOS_FIXTURE:-0}" in
   0|1) ;;
   *)
@@ -24,6 +25,7 @@ if command -v mise >/dev/null 2>&1; then
     -sdk iphonesimulator \
     -destination 'generic/platform=iOS Simulator' \
     -derivedDataPath "$repo_root/build/spinon/DerivedData" \
+    "SPINON_V8_ROOT=$v8_dir" \
     "SPINON_ENABLE_S04_IOS_FIXTURE=${SPINON_ENABLE_S04_IOS_FIXTURE:-0}" \
     "SPINON_ENABLE_S03_DOM_GC_FIXTURE=${SPINON_ENABLE_S03_DOM_GC_FIXTURE:-0}" \
     CODE_SIGNING_ALLOWED=NO build
@@ -34,6 +36,7 @@ else
     -sdk iphonesimulator \
     -destination 'generic/platform=iOS Simulator' \
     -derivedDataPath "$repo_root/build/spinon/DerivedData" \
+    "SPINON_V8_ROOT=$v8_dir" \
     "SPINON_ENABLE_S04_IOS_FIXTURE=${SPINON_ENABLE_S04_IOS_FIXTURE:-0}" \
     "SPINON_ENABLE_S03_DOM_GC_FIXTURE=${SPINON_ENABLE_S03_DOM_GC_FIXTURE:-0}" \
     CODE_SIGNING_ALLOWED=NO build

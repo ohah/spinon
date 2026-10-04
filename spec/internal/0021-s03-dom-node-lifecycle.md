@@ -1,6 +1,6 @@
 # 0021 · S03.3 DOM 노드와 JS wrapper 수명 계약
 
-**인터페이스 버전:** 0.1.0-draft · **상태:** Rust 회수 경로와 V8 weak wrapper scan 연결 구현 · **Android·iOS 고정 simulator fixture:** 통과 · **제품 완료:** 미완료
+**인터페이스 버전:** 0.1.0-draft · **상태:** Rust 회수 경로와 V8 weak wrapper scan 연결 구현 · **Android·iOS 기본·반복 simulator fixture:** 통과 · **제품 완료:** 미완료
 
 **상태 대장:** S03.3, J10 일부 · **기준 시제품:** [0020 S03.2 제한 DOM façade](0020-s03-dom-facade.md)
 **계획:** [S03.3 노드 수명 관리](../../plan/dom-node-lifecycle.md) · **결정성 fixture:** [node-lifecycle-v1.rs](../../tests/fixtures/dom/s03/node-lifecycle-v1.rs), [node-lifecycle-limits-v1.rs](../../tests/fixtures/dom/s03/node-lifecycle-limits-v1.rs)
@@ -8,7 +8,7 @@
 
 ## 목적과 범위
 
-이 문서는 Rust HostDocument와 V8 JavaScript heap 사이의 노드 생존, wrapper 정체성, 약한 handle 검사, 자원 한도와 세션 종료 계약을 고정한다. S03.2의 동작을 소급 변경하지 않는다. Rust 회수 callback과 V8 weak wrapper scan은 연결했으며 Android·iOS 실제 V8 실행은 검증 중이다. 이 내부 경로는 공개 DOM 지원이나 listener·external root lease 완료를 뜻하지 않는다.
+이 문서는 Rust HostDocument와 V8 JavaScript heap 사이의 노드 생존, wrapper 정체성, 약한 handle 검사, 자원 한도와 세션 종료 계약을 고정한다. S03.2의 동작을 소급 변경하지 않는다. Rust 회수 callback과 V8 weak wrapper scan을 연결했고 Android·iOS 실제 V8 기본·반복 fixture에서 고정 입력을 검증했다. 최대 scan 비용·종료 경합은 미검증이며, 이 내부 경로는 공개 DOM 지원이나 listener·external root lease 완료를 뜻하지 않는다.
 
 S03.3 구현은 Rust가 노드 저장소와 mark-and-sweep을 소유하고, V8 C++ adapter가 자동 reset되는 약한 wrapper handle을 안전 지점에서 검사하는 경계를 따른다. V8 unified heap, 별도 Rust GC, 앱에 노출되는 JSI 유사 API는 이 범위에서 사용하지 않는다.
 
@@ -119,18 +119,19 @@ HostDocument의 BTreeMap 보유 자체는 root가 아니다. 노드 관계, wrap
 
 `spinon-core::HostDocument::plan_collection`은 HostRoot와 전달된 root handle에서 양방향으로 도달 가능한 연결 성분을 표시하고 회수 handle을 NodeId 순으로 담는다. 그래프·root·generation을 먼저 검증하며 계획 단계에는 문서 변경이 없다. `commit_collection`은 문서 generation과 두 revision이 계획 시점과 같고 회수 handle이 아직 저장소에 있을 때만 제거한다. 성공한 제거는 두 revision을 올리지 않는다.
 
-`HostDocumentBridge::collect_unreachable_with_ids`는 handle map의 양방향 대응과 노드별 UTF-16 계수를 먼저 점검한다. 회수할 handle·외부 ID와 문자열 양을 계획에서 계산한 뒤 core 회수와 façade ID/handle/string map 정리를 같은 배타 호출에서 수행한다. FFI callback은 입력 ID와 출력 용량을 검증하고, 출력 buffer가 작거나 root가 잘못되면 문서를 바꾸지 않는다. V8 adapter는 `std::map<int32_t, Global<Object>>`에서 live façade ID를 수집하고, outer eval/dispatch의 Local·Context scope가 끝난 뒤 Rust callback을 호출한다. Rust가 회수한 ID에 해당하는 약한 Global만 지운다. 검증용 `LowMemoryNotification()` 요청 hook은 `SPINON_ENABLE_S03_DOM_GC_FIXTURE=1` 빌드에서만 JS 내부 객체에 등록한다. Android 16/API 36 ARM64 에뮬레이터와 iPhone 17 Pro/iOS 26.2 시뮬레이터의 실제 V8 실행 근거는 [evidence/s03-v8-weak-wrapper-2026-10-04.md](evidence/s03-v8-weak-wrapper-2026-10-04.md)에 둔다. 해당 고정 fixture에서 attached HostRoot와 detached wrapper root 보존, orphan sweep, 실제 wrapper reset 뒤 재생성 identity를 확인했다. 외부 root lease와 DOM listener edge는 구현하지 않았다.
+`HostDocumentBridge::collect_unreachable_with_ids`는 handle map의 양방향 대응과 노드별 UTF-16 계수를 먼저 점검한다. 회수할 handle·외부 ID와 문자열 양을 계획에서 계산한 뒤 core 회수와 façade ID/handle/string map 정리를 같은 배타 호출에서 수행한다. FFI callback은 입력 ID와 출력 용량을 검증하고, 출력 buffer가 작거나 root가 잘못되면 문서를 바꾸지 않는다. V8 adapter는 `std::map<int32_t, Global<Object>>`에서 live façade ID를 수집하고, outer eval/dispatch의 Local·Context scope가 끝난 뒤 Rust callback을 호출한다. Rust가 회수한 ID에 해당하는 약한 Global만 지운다. 검증용 `LowMemoryNotification()` 요청 hook은 `SPINON_ENABLE_S03_DOM_GC_FIXTURE=1` 빌드에서만 JS 내부 객체에 등록한다. Android 16/API 36 ARM64 에뮬레이터와 iPhone 17 Pro/iOS 26.2 시뮬레이터의 실제 V8 실행 근거는 [evidence/s03-v8-weak-wrapper-2026-10-04.md](evidence/s03-v8-weak-wrapper-2026-10-04.md)에 둔다. 해당 고정 fixture에서 attached HostRoot와 detached wrapper root 보존, orphan sweep, 실제 wrapper reset 뒤 재생성 identity를 확인했다. 추가 시뮬레이터 fixture에서는 현재 `spinon.onEvent()` strong persistent callback의 closure root 보존·호출, callback 교체 뒤 회수, 6회 반복 자원 기준선 복귀를 확인했다([반복 실행 근거](evidence/s03-repeat-lifecycle-2026-10-05.md)). 이는 진단용 단일 callback root에 한정된다. 외부 root lease와 DOM listener edge는 구현하지 않았다.
 
 공통 fixture는 [node-lifecycle-v1.rs](../../tests/fixtures/dom/s03/node-lifecycle-v1.rs)다. Rust integration test는 고정 노드·부모·root·문자열 입력에서 연결 성분 결과를 확인하고 weak handle scan, 새 wrapper 객체와 기존 façade ID의 분리, ID 공간 소진, foreign session/document generation·missing node root, malformed parent/child/root/registry 입력의 fail-closed 동작과 failure transaction의 기대 상태를 검사한다. reference model에서 성공 sweep은 document/render revision을 바꾸지 않으며 성공 노드 생성만 document revision을 올린다. fixture 기준은 이 문서의 불변 조건과 S03.2 HostDocument 관계 조회다. 브라우저가 제공하는 native GC 의미를 복제한다고 주장하지 않는다.
 
-별도 Rust integration fixture는 test-only reference model이다. 새 `HostDocument` 제품 코드 검사는 같은 고정 tree fixture의 root 생존 집합·회수 ID·문자열 계수·revision을 실제 Rust core와 bridge에 대조한다. 이 검사만으로 V8 GC 또는 자동 weak-handle reset을 증명하지 않는다. pinned V8 원본은 callback 없는 `SetWeak()`가 도달 불가 객체를 GC가 판정한 뒤 handle을 자동 reset한다고 명시한다. `SPINON_ENABLE_S03_DOM_GC_FIXTURE=1` Android·iOS 검증 앱은 강제 full GC 다음 safe point scan, HostRoot·live detached wrapper 보존, orphan WeakRef 제거, wrapper 재생성 뒤 identity를 확인했다. 세부 실행 로그·캡처와 빌드별 한계는 [V8 weak wrapper 실행 근거](evidence/s03-v8-weak-wrapper-2026-10-04.md)에 기록한다. scan 성능, closure root, 반복 회수·종료 경합, 실기기는 이 fixture의 검증 범위에 포함하지 않는다.
+별도 Rust integration fixture는 test-only reference model이다. 새 `HostDocument` 제품 코드 검사는 같은 고정 tree fixture의 root 생존 집합·회수 ID·문자열 계수·revision을 실제 Rust core와 bridge에 대조한다. 이 검사만으로 V8 GC 또는 자동 weak-handle reset을 증명하지 않는다. pinned V8 원본은 callback 없는 `SetWeak()`가 도달 불가 객체를 GC가 판정한 뒤 handle을 자동 reset한다고 명시한다. `SPINON_ENABLE_S03_DOM_GC_FIXTURE=1` Android·iOS 검증 앱은 강제 full GC 다음 safe point scan, HostRoot·live detached wrapper 보존, orphan WeakRef 제거, wrapper 재생성 뒤 identity를 확인했다([기존 실행 근거](evidence/s03-v8-weak-wrapper-2026-10-04.md)). 이어진 실제 V8 fixture는 현재 native callback closure root, callback 교체 후 회수, 6회 반복 create/detach/drop 뒤 node·UTF-16 문자열·live weak wrapper 기준선 복귀를 확인했다([반복 실행 근거](evidence/s03-repeat-lifecycle-2026-10-05.md)). 프로세스 RSS·V8 retaining path·최대 scan 비용·shutdown race·실기기는 이 결과로 검증하지 않았다.
 
 ## 남은 구현·검증 범위
 
 - C++ V8 adapter의 callback 없는 약한 `Global<Object>` registry와 Rust 회수 callback을 outer eval/dispatch owner safe point에 연결했다. 검증 전용 강제 GC entry는 fixture 빌드에만 포함한다.
-- Android·iOS 시뮬레이터의 고정 실제 V8 실행을 확인했다. evidence는 이 한 시나리오의 결과만 뒷받침한다.
-- 최대 registry 크기에서의 scan 비용, 반복 create/detach/drop, callback closure root, 세션 shutdown 경합은 별도 검증이 필요하다.
-- 반복 create/remove/collect 뒤 resident node/string 수와 callback handle 계수가 기대 기준으로 돌아오는지 확인한다. V8 heap snapshot의 retaining path와 Rust 수거 계수는 별도로 판정한다.
+- Android·iOS 시뮬레이터의 고정 실제 V8 실행에서 기본 root·wrapper fixture와 별도 closure·반복 fixture를 확인했다. 각 실행 evidence가 뒷받침하는 입력·환경 범위만 검증 결과로 취급한다.
+- 최대 registry 크기에서의 scan 비용과 세션 shutdown 경합은 별도 검증이 필요하다.
+- 작은 고정 반복 입력에서 node·UTF-16 string unit·live weak wrapper 수가 기준선으로 복귀하는 것은 확인했다. 합의한 quota 경계의 압력 동작, 장기 반복, 실제 byte·RSS와 회수 재시도 비용은 미검증이다.
+- 현재 native callback strong root의 단일 closure 수명을 확인했다. DOM listener·external root lease·임의 closure graph의 root 관계와 V8 heap snapshot retaining path는 별도로 검증한다.
 - 이 문서와 상태 대장을 반영하기 전에는 S03.3, J10 또는 공개 DOM 지원을 완료로 표시하지 않는다.
 
 ## 참고 경계
