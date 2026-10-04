@@ -6,6 +6,8 @@
 
 [고정 tree fixture](../../../../tests/fixtures/dom/s03/node-lifecycle-v1.rs)와 [quota fixture](../../../../tests/fixtures/dom/s03/node-lifecycle-limits-v1.rs)를 같은 모델 테스트에서 사용한다. 모델은 HostRoot·wrapper·external root가 살아 있는 연결 성분, parent/child 양방향 관계, facade ID와 JS 객체 identity 분리, 외부 lease, 한도, 생성·회수 전 commit 실패를 고정 입력으로 검사한다. 약한 handle이 비었는지는 테스트에서 V8 동작을 호출하지 않고 명시적으로 주입한다.
 
+약한 handle 계약의 출처는 저장소의 V8 고정 revision [`7b50b62cb18f28617959e8452e2cd18195b38bcf`](https://chromium.googlesource.com/v8/v8.git/+/7b50b62cb18f28617959e8452e2cd18195b38bcf/include/v8-persistent-handle.h)이다. 이 revision은 callback 없는 phantom `SetWeak()`가 unreachable 객체의 handle을 자동 reset하고, callback형 weak 처리의 실행 시점·실행 자체는 보장하지 않는다고 명시한다.
+
 검토 중 확인한 stale empty wrapper 항목, parent/child 역참조 불일치, 세션·DocumentGeneration이 다른 root, 회수 뒤 façade ID 재사용 가능성을 fail-closed 및 고정 ID mapping 규칙으로 보완했다. 잘못된 root나 그래프, 저장소 상한 초과, 준비·commit 실패가 노드·wrapper registry·root·revision 상태 일부만 바꾸지 않는지 비교한다.
 
 ## 로컬 검증 결과
