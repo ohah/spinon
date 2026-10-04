@@ -13,31 +13,48 @@ R"SPINONJS(
   const htmlNamespace = "http://www.w3.org/1999/xhtml";
   const wrappers = new Map();
   const nodeIds = new WeakMap();
+  const exceptionValues = new WeakMap();
   const constructionKey = {};
 
-  class SpinonDOMException extends Error {
+  class DOMException extends Error {
     constructor(message = "", name = "Error") {
       const exceptionMessage = toDOMString(message);
       super(exceptionMessage);
-      Object.defineProperties(this, {
-        name: {
-          value: toDOMString(name),
-          enumerable: true,
-          writable: false,
-          configurable: false,
-        },
-        message: {
-          value: exceptionMessage,
-          enumerable: true,
-          writable: false,
-          configurable: false,
-        },
+      delete this.message;
+      exceptionValues.set(this, {
+        name: toDOMString(name),
+        message: exceptionMessage,
       });
     }
   }
 
+  Object.defineProperties(DOMException.prototype, {
+    name: {
+      get() {
+        const values = exceptionValues.get(this);
+        if (values === undefined) throw new TypeError("DOMException receiver가 아닙니다");
+        return values.name;
+      },
+      enumerable: true,
+      configurable: true,
+    },
+    message: {
+      get() {
+        const values = exceptionValues.get(this);
+        if (values === undefined) throw new TypeError("DOMException receiver가 아닙니다");
+        return values.message;
+      },
+      enumerable: true,
+      configurable: true,
+    },
+  });
+  Object.defineProperty(DOMException.prototype, Symbol.toStringTag, {
+    value: "DOMException",
+    configurable: true,
+  });
+
   function fail(name, message) {
-    throw new SpinonDOMException(message, name);
+    throw new DOMException(message, name);
   }
 
   function toDOMString(value) {
@@ -117,7 +134,7 @@ R"SPINONJS(
     try {
       spinon.__internal.commitDocumentBatch(operations);
     } catch (error) {
-      if (error instanceof SpinonDOMException) throw error;
+      if (error instanceof DOMException) throw error;
       const message = error && error.message ? error.message : String(error);
       if (error && error.name === "QuotaExceededError") {
         fail("QuotaExceededError", message);
@@ -378,7 +395,8 @@ R"SPINONJS(
   const document = new Document(constructionKey);
   Object.defineProperty(globalThis, "DOMException", {
     configurable: true,
-    value: SpinonDOMException,
+    value: DOMException,
+    writable: true,
   });
   Object.defineProperty(globalThis, "document", {
     configurable: false,
@@ -386,9 +404,21 @@ R"SPINONJS(
     value: document,
     writable: false,
   });
-  Object.defineProperty(globalThis, "Node", { configurable: true, value: Node });
-  Object.defineProperty(globalThis, "Element", { configurable: true, value: Element });
-  Object.defineProperty(globalThis, "Text", { configurable: true, value: Text });
+  Object.defineProperty(globalThis, "Node", {
+    configurable: true,
+    value: Node,
+    writable: true,
+  });
+  Object.defineProperty(globalThis, "Element", {
+    configurable: true,
+    value: Element,
+    writable: true,
+  });
+  Object.defineProperty(globalThis, "Text", {
+    configurable: true,
+    value: Text,
+    writable: true,
+  });
   wrappers.set(0, document);
   nodeIds.set(document, 0);
 })();

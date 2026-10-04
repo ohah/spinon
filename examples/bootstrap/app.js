@@ -202,7 +202,31 @@ const movedElement = document.createElement("DiV");
 const movedText = document.createTextNode("한글🌐");
 const target = document.createElement("section");
 const defaultDOMException = new DOMException();
+const messageOnlyDOMException = new DOMException("메시지만");
 const namedDOMException = new DOMException("실패", "NotFoundError");
+const domExceptionNameDescriptor = Object.getOwnPropertyDescriptor(
+  DOMException.prototype,
+  "name",
+);
+const domExceptionMessageDescriptor = Object.getOwnPropertyDescriptor(
+  DOMException.prototype,
+  "message",
+);
+const domExceptionTagDescriptor = Object.getOwnPropertyDescriptor(
+  DOMException.prototype,
+  Symbol.toStringTag,
+);
+const constructorGlobalDescriptors = ["DOMException", "Node", "Element", "Text"].map(
+  (name) => Object.getOwnPropertyDescriptor(globalThis, name),
+);
+let rejectedDOMExceptionSymbolArguments = 0;
+for (const args of [[Symbol("message")], ["", Symbol("name")]]) {
+  try {
+    new DOMException(...args);
+  } catch (error) {
+    if (error instanceof TypeError) rejectedDOMExceptionSymbolArguments += 1;
+  }
+}
 const undefinedBeforeParent = document.createElement("aside");
 const undefinedBeforeChild = document.createElement("span");
 undefinedBeforeParent.insertBefore(undefinedBeforeChild, undefined);
@@ -216,6 +240,8 @@ for (const call of [
   () => document.contains({}),
   () => Element.prototype.getAttribute.call(movedText, "id"),
   () => Object.getOwnPropertyDescriptor(Text.prototype, "data").get.call(movedElement),
+  () => domExceptionNameDescriptor.get.call({}),
+  () => domExceptionMessageDescriptor.get.call({}),
 ]) {
   try {
     call();
@@ -247,11 +273,44 @@ if (
   document.nodeValue !== null ||
   defaultDOMException.name !== "Error" ||
   defaultDOMException.message !== "" ||
+  messageOnlyDOMException.name !== "Error" ||
+  messageOnlyDOMException.message !== "메시지만" ||
   namedDOMException.name !== "NotFoundError" ||
   namedDOMException.message !== "실패" ||
-  Object.getOwnPropertyDescriptor(defaultDOMException, "name").writable !== false ||
-  Object.getOwnPropertyDescriptor(defaultDOMException, "message").writable !== false ||
-  illegalReceiverErrors !== 6 ||
+  !(defaultDOMException instanceof Error) ||
+  defaultDOMException.toString() !== "Error" ||
+  defaultDOMException.code !== undefined ||
+  namedDOMException.code !== undefined ||
+  DOMException.NOT_FOUND_ERR !== undefined ||
+  DOMException.name !== "DOMException" ||
+  DOMException.prototype.constructor !== DOMException ||
+  Object.prototype.toString.call(defaultDOMException) !== "[object DOMException]" ||
+  domExceptionTagDescriptor?.value !== "DOMException" ||
+  domExceptionTagDescriptor?.writable !== false ||
+  domExceptionTagDescriptor?.enumerable !== false ||
+  domExceptionTagDescriptor?.configurable !== true ||
+  constructorGlobalDescriptors.some(
+    (descriptor) =>
+      descriptor?.writable !== true ||
+      descriptor.enumerable !== false ||
+      descriptor.configurable !== true,
+  ) ||
+  Object.getOwnPropertyDescriptor(defaultDOMException, "name") !== undefined ||
+  Object.getOwnPropertyDescriptor(defaultDOMException, "message") !== undefined ||
+  domExceptionNameDescriptor?.enumerable !== true ||
+  domExceptionNameDescriptor?.configurable !== true ||
+  domExceptionNameDescriptor?.set !== undefined ||
+  typeof domExceptionNameDescriptor?.get !== "function" ||
+  domExceptionMessageDescriptor?.enumerable !== true ||
+  domExceptionMessageDescriptor?.configurable !== true ||
+  domExceptionMessageDescriptor?.set !== undefined ||
+  typeof domExceptionMessageDescriptor?.get !== "function" ||
+  Reflect.set(defaultDOMException, "name", "Changed") ||
+  Reflect.set(defaultDOMException, "message", "Changed") ||
+  defaultDOMException.name !== "Error" ||
+  defaultDOMException.message !== "" ||
+  rejectedDOMExceptionSymbolArguments !== 2 ||
+  illegalReceiverErrors !== 8 ||
   document.isSameNode(undefined) ||
   document.contains(undefined) ||
   undefinedBeforeParent.firstChild !== undefinedBeforeChild ||
@@ -266,8 +325,11 @@ if (
     documentNodeValue: document.nodeValue,
     defaultDOMException: [defaultDOMException.name, defaultDOMException.message],
     namedDOMException: [namedDOMException.name, namedDOMException.message],
-    nameWritable: Object.getOwnPropertyDescriptor(defaultDOMException, "name").writable,
-    messageWritable: Object.getOwnPropertyDescriptor(defaultDOMException, "message").writable,
+    nameOwnProperty: Object.getOwnPropertyDescriptor(defaultDOMException, "name"),
+    messageOwnProperty: Object.getOwnPropertyDescriptor(defaultDOMException, "message"),
+    namePrototypeDescriptor: domExceptionNameDescriptor,
+    messagePrototypeDescriptor: domExceptionMessageDescriptor,
+    tagPrototypeDescriptor: domExceptionTagDescriptor,
     illegalReceiverErrors,
     isSameNodeUndefined: document.isSameNode(undefined),
     containsUndefined: document.contains(undefined),
@@ -367,10 +429,12 @@ if (beforeNoOp !== afterNoOp || movedElement.firstChild !== precedingText) {
 
 const stableParent = movedElement.parentNode;
 let notFoundErrorName = "";
+let notFoundErrorIsDOMException = false;
 try {
   root.removeChild(movedElement);
 } catch (error) {
   notFoundErrorName = error.name;
+  notFoundErrorIsDOMException = error instanceof DOMException && error instanceof Error;
 }
 let hierarchyErrorName = "";
 try {
@@ -386,6 +450,7 @@ try {
 }
 if (
   notFoundErrorName !== "NotFoundError" ||
+  !notFoundErrorIsDOMException ||
   hierarchyErrorName !== "HierarchyRequestError" ||
   invalidNameErrorName !== "InvalidCharacterError" ||
   movedElement.parentNode !== stableParent

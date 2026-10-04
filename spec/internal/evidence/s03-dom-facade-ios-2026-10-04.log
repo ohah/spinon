@@ -1,3 +1,3 @@
 Timestamp               Ty Process[PID:TID]
-2026-10-04 12:26:31.195 Df SpinonBootstrap[86008:22b2ff8] [dev.spinon.bootstrap:runtime] SPINON_BOOTSTRAP_EXECUTION is_main_thread=false
-2026-10-04 12:26:31.241 Df SpinonBootstrap[86008:22b2ff8] [dev.spinon.bootstrap:runtime] SPINON_BOOTSTRAP_RESULT=nodes=2 last_node=8 tag=text text=이벤트:7 · 문서 revision 24 document_revision=24 render_tree_revision=15 document_nodes=10
+2026-10-04 14:08:02.987 Df SpinonBootstrap[76321:2378feb] [dev.spinon.bootstrap:runtime] SPINON_BOOTSTRAP_EXECUTION is_main_thread=false
+2026-10-04 14:08:03.020 Df SpinonBootstrap[76321:2378feb] [dev.spinon.bootstrap:runtime] SPINON_BOOTSTRAP_RESULT=nodes=2 last_node=8 tag=text text=이벤트:7 · 문서 revision 24 document_revision=24 render_tree_revision=15 document_nodes=10
