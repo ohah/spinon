@@ -143,7 +143,8 @@ fn rejected_last_operation_rolls_back_nodes_handles_and_revisions() {
     assert_eq!(bridge.handle(1), None);
     assert_eq!(bridge.handle(2), None);
 
-    let receipt = commit(&mut bridge, vec![element(1, "section")]);
+    assert_eq!(bridge.next_external_id().unwrap(), 3);
+    let receipt = commit(&mut bridge, vec![element(3, "section")]);
     assert_eq!(receipt.document_revision, 1);
     assert_eq!(bridge.snapshot().node_count(), 1);
 }

@@ -1,6 +1,6 @@
 # S03.3 DOM 노드와 JS wrapper 수명 관리 계획
 
-**상태:** 구현 전 계약 확정 · 제품 회수 미구현
+**상태:** Rust HostDocument 회수 경로 부분 구현 · V8 자동 회수 미연결
 
 **상위 작업:** S03, J10, R03
 
@@ -21,7 +21,7 @@ S03.3은 노드 트리의 소유권, JS wrapper identity, 분리 서브트리의
 - JS wrapper는 강한 `Map`에 보관되어 같은 handle은 같은 JS 객체로 돌아온다.
 - 분리 노드와 wrapper 모두 V8 세션 종료 전에는 회수하지 않는다.
 - 제거된 노드도 세션당 16,384개 노드 한도에 포함된다. 연결 중인 노드 수만 세는 정책은 아니다.
-- 현재 runtime은 GC를 하지 않으며 노드 ID를 세션 안에서 재사용하지 않는다. 회수 뒤 stale handle과 ID 동작은 [0021](../spec/internal/0021-s03-dom-node-lifecycle.md)에 정의했고 실제 구현은 미완료다.
+- 현재 runtime은 GC를 하지 않으며 JS façade의 강한 `wrappers` Map도 그대로다. Rust core와 `HostDocumentBridge`에는 내부 회수 메서드가 있지만, 현재 제품 실행 경로에서 호출하지 않아 자동 회수는 일어나지 않는다. 회수 뒤 stale handle과 ID 동작은 [0021](../spec/internal/0021-s03-dom-node-lifecycle.md)에 정의했다.
 - `SpinonV8Runtime`에는 진단용 단일 `v8::Global<v8::Function> event_handler`가 있다. `spinon.onEvent(handler)`는 함수만 받아 이전 handler를 교체하고, `spinon_v8_runtime_free()`는 persistent handle을 reset한다. 등록 해제 API는 없고 DOM 이벤트 listener 구현도 아니다.
 - DOM wrapper와 Rust 노드는 numeric handle로 연결된다. JS façade의 `wrappers`는 `Map<id, wrapper>`이고 `nodeIds`는 wrapper에서 ID를 찾는 `WeakMap`이다. FFI query/commit callback은 ID를 `HostDocumentBridge`의 Rust `HostNodeHandle`로 변환해 `HostDocument`를 조회·변경한다. Rust에는 노드별 `v8::Object`/`Global`이 없고, V8 GC에 Rust `HostNode`를 trace하는 embedder hook도 없다. 이는 호출 경계의 연결이지 cross-heap GC 연결은 아니다.
 - 따라서 현재 JS `wrappers` Map은 JS wrapper를 세션 동안 강하게 유지하고, Rust `HostDocumentBridge`의 node/handle maps도 제거 노드를 세션 동안 보유한다. 둘 중 한쪽 GC만 켜도 다른 쪽 자원이 회수되는 구조가 아니다.
@@ -32,15 +32,15 @@ S03.3은 노드 트리의 소유권, JS wrapper identity, 분리 서브트리의
 - **Rust `HostNodeHandle`:** 문서 generation과 코어 node ID를 가진 Rust 측 handle이다. JS façade ID와 같은 값이나 같은 타입이라고 가정하지 않는다.
 - **wrapper weak handle:** C++ runtime이 `HostNodeHandle`별로 보유하는 약한 `v8::Global<Object>`다. wrapper가 살아 있는 동안 canonical identity를 재사용하고, V8이 handle을 자동 reset한 뒤에는 같은 registry slot에 새 wrapper를 둘 수 있다.
 
-S03.3에서는 JS façade ID를 다른 노드에 재사용하지 않는다. 노드가 sweep되면 ID↔handle mapping을 제거해도 high-water mark는 유지한다. 현재 `next_external_id()`는 살아 있는 매핑 중 가장 큰 키에서 다음 값을 계산하므로, 구현 때 회수와 독립된 단조 증가 high-water mark로 바꿔야 한다. 양수 `i32` 공간이 소진되면 `QuotaExceededError`로 새 노드 생성을 닫는다. 예약 뒤 변경 실패로 JS에 노출되지 않은 번호도 재사용하지 않는다. wrapper registry는 V8 callback token 없이 전체 `HostNodeHandle`로 keying한다.
+S03.3에서는 JS façade ID를 다른 노드에 재사용하지 않는다. `HostDocumentBridge`는 살아 있는 매핑과 독립된 단조 증가 high-water mark를 보유한다. `QUERY_NEXT_ID`는 ID를 예약하고, 생성 변경 묶음이 실패해도 발급된 ID는 건너뛴다. 대기 예약은 256개로 제한하고, 양수 `i32` 공간이 소진되면 `QuotaExceededError`로 새 노드 생성을 닫는다. 수거는 매핑을 제거해도 high-water mark를 되돌리지 않는다. wrapper registry는 V8 callback token 없이 전체 `HostNodeHandle`로 keying한다.
 
 위 동작은 현재 `0.1.0` 계약이다. 다음 모델을 구현한 것처럼 읽어서는 안 된다.
 
-## 선택한 회수 방향 · 제품 구현 미완료
+## 선택한 회수 방향 · Rust 경로 부분 구현
 
 Rust HostDocument가 노드 저장소와 mark-and-sweep을 소유하고, V8 C++ adapter가 callback 없는 약한 handle의 자동 reset을 owner 안전 지점에서 검사한다. V8 unified heap이나 별도 Rust tracing-GC 의존성은 두지 않는다. 호출 경계·root·quota·bounded full scan·실패 원자성과 shutdown 순서는 [내부 계약 0021](../spec/internal/0021-s03-dom-node-lifecycle.md)에 확정했다.
 
-이 결정은 S03.2의 현재 동작을 바꾸지 않는다. 현재 façade는 강한 wrapper Map과 세션 수명 노드 보존을 계속 사용한다. 새 계약과 결정성 fixture는 실제 wrapper collection이나 Rust node 회수를 구현한 것이 아니다.
+이 결정은 S03.2의 현재 실행 동작을 바꾸지 않는다. 현재 façade는 강한 wrapper Map과 세션 수명 노드 보존을 계속 사용한다. Rust `HostDocument`의 도달성 계획·commit과 bridge의 node/handle/string map 회수 메서드는 구현했고 실제 고정 fixture와 runtime unit test에서 호출한다. 다만 C++ weak `Global` scan과 safe-point caller가 없어 앱 실행 중 자동 회수는 아직 없다.
 
 ## Chromium 참고 모델
 
@@ -79,7 +79,7 @@ Lynx는 main thread와 background thread에 별도 JavaScript runtime을 둔다.
 | 세션 수명 유지 | 현재처럼 노드와 wrapper를 세션 종료까지 보존 | S03.2의 기준 동작으로 유지한다. S03.3의 목표 회수 모델은 아니다. |
 | 명시적 dispose | 앱 코드가 분리 노드의 해제를 직접 요청 | 일반 DOM 수명 관리의 대체 방식으로 채택하지 않는다. 필요하면 별도 자원 API에서만 검토한다. |
 | V8 unified heap/cppgc | JS wrapper와 native 노드 그래프를 한 수거 경계에서 추적 | Rust `HostDocument`의 소유권을 유지하는 현재 방향에서는 채택하지 않는다. |
-| Rust 소유 mark-and-sweep + V8 약한 wrapper handle scan | V8의 자동 reset 약한 handle을 owner safe point에서 검사하고 Rust가 HostRoot와 명시된 참조 root에서 분리 노드 도달성을 추적·회수 | **선택한 설계 방향.** 내부 계약 0021에서 상세 규칙을 고정했으며 구현은 미완료다. |
+| Rust 소유 mark-and-sweep + V8 약한 wrapper handle scan | V8의 자동 reset 약한 handle을 owner safe point에서 검사하고 Rust가 HostRoot와 명시된 참조 root에서 분리 노드 도달성을 추적·회수 | **선택한 설계 방향.** Rust core/bridge 회수 경로는 구현·fixture 검증했고, V8 weak scan과 runtime 연결은 미구현이다. |
 
 ## 확정한 생존 규칙 · 제품 구현 미완료
 
@@ -88,9 +88,9 @@ Lynx는 main thread와 background thread에 별도 JavaScript runtime을 둔다.
 - JS façade ID와 Rust NodeId는 세션 안에서 각각 단조 증가하며 재사용하지 않는다. quota는 resident node와 UTF-16 문자열 양을 세고, 실패는 호출의 부분 상태를 공개하지 않는다.
 - V8 callback 없는 weak `Global<Object>` registry를 매 outer task safe point에서 선형 검사한다. registry와 root snapshot은 node quota 16,384개로 제한하며 실제 scan 비용은 제품 검증 항목이다.
 - strong V8 callback handle은 owner isolate에서 교체·완료·취소·종료 때 Reset한다. Rust handle을 보유하는 비동기 host 작업은 세션당 최대 16,384개 external root lease 중 하나를 등록하며, 한도 초과는 작업 등록 단계에서 거부한다. DOM listener는 미구현이며 cross-heap listener cycle은 J12에서 다룬다.
-- 현재 결정성 fixture는 독립 Rust reference model이다. 실제 Rust collector, V8 weak `Global` 자동 reset·scan, Android·iOS 검증은 구현 후속 범위다. S03.2 계약과 세션 수명 동작은 그대로 유지한다.
+- 기존 결정성 fixture는 독립 Rust reference model이다. 추가한 runtime 테스트는 같은 tree fixture를 실제 Rust core와 bridge 회수 메서드에 적용한다. V8 weak `Global` 자동 reset·scan과 Android·iOS 실제 V8 검증은 후속 범위다. S03.2의 앱 실행 동작과 세션 수명 동작은 그대로 유지한다.
 
-### Rust `HostDocument` 회수 흐름 · 목표 동작, 미구현
+### Rust `HostDocument` 회수 흐름 · 내부 경로 구현, runtime 미연결
 
 1. Rust가 노드를 만들고 불투명 handle을 반환한다. JS wrapper는 이 handle로 조회·변경 요청을 보낸다.
 2. 연결된 노드는 HostRoot의 트리 관계가 살린다. 앱 변수나 pending callback closure가 wrapper를 참조하면 V8의 일반 도달성 그래프가 wrapper를 살린다.
@@ -99,7 +99,7 @@ Lynx는 main thread와 background thread에 별도 JavaScript runtime을 둔다.
 5. 가장 바깥 JS 작업과 microtask checkpoint가 끝난 안전 지점마다 C++가 최대 16,384개 wrapper weak handle을 검사하고 non-empty handle을 root snapshot에 넣는다. Rust는 HostRoot, 이 snapshot, 명시적 external root에서 트리를 추적한다. wrapper가 비었어도 노드가 다른 root로 살아 있으면 JS façade ID↔handle 매핑을 유지한다. 모든 root에서 도달 불가해 노드를 회수할 때 해당 mapping·문자열도 같은 sweep commit에서 제거하고 quota를 갱신한다. HostRoot 트리와 스타일·레이아웃 입력은 바뀌지 않으므로 sweep은 `DocumentRevision`과 `RenderTreeRevision`을 올리지 않는다. V8 GC 실행 전까지는 메모리와 quota 회수가 늦어질 수 있다.
 6. DOM listener는 런타임 전역 pending callback과 다르다. 의미상 listener와 target은 EventTarget이 소유하는 참조 관계다. strong `v8::Global<Function>`이 callback closure를 통해 wrapper를 살리면 target 수거를 막는 순환이 생길 수 있으므로, 그 cross-heap edge의 추적·해제 및 순환 회수 계약은 J12에서 결정한다.
 
-이 흐름은 현재의 `HostDocument` BTreeMap과 `wrappers` 강한 Map에는 구현되어 있지 않다. 약한 wrapper handle registry, 안전 지점 전체 검사, Rust sweep, scan 성능이 구현되고 검증되기 전에는 회수됐다고 간주하지 않는다.
+도달성 검증·Rust sweep·bridge 매핑 및 UTF-16 사용량 정리는 내부 메서드와 실제 코드 테스트에 구현되어 있다. 현재의 `wrappers` 강한 Map 때문에 V8 wrapper는 세션 동안 유지되고, weak handle registry·안전 지점 전체 검사·제품 호출자·scan 성능은 미구현이다. 이 연결이 검증되기 전에는 앱 runtime에서 자동 회수된다고 간주하지 않는다.
 
 ## 확정한 구현 결정
 
@@ -108,7 +108,7 @@ Lynx는 main thread와 background thread에 별도 JavaScript runtime을 둔다.
 3. **GC와 변경 경계:** 최외곽 JavaScript 작업과 microtask checkpoint가 끝난 isolate owner 안전 지점에서 전체 weak registry scan과 sweep을 처리한다. callback 중 Rust 접근·재진입 sweep은 없다.
 4. **ID와 handle:** JS façade i32 ID와 HostNodeHandle의 DocumentGeneration/NodeId는 별도 identity다. façade ID는 노드에 매핑되므로 살아 있는 노드의 wrapper가 GC된 뒤 재생성해도 유지하고, 노드 회수 뒤 다른 노드에 재사용하지 않는다. stale 접근은 실패 폐쇄한다. wrapper registry는 HostNodeHandle로 keying하며 JS 객체 identity와 façade ID를 구분한다.
 5. **quota:** resident node 16,384개와 resident string 16,777,216 UTF-16 code units다. 초과 호출은 QuotaExceededError로 원자 실패하며 강제 full GC나 같은 호출 재시도는 하지 않는다.
-6. **결정성 검증:** Rust test-only reference fixture가 root graph, weak handle 자동 reset 관찰, wrapper 재생성, malformed graph·registry의 fail-closed 결과, revision 경계와 실패 atomicity 기대값을 고정한다. fixture는 제품 collector를 시험하지 않는다.
+6. **결정성 검증:** 독립 Rust reference fixture가 root graph·weak handle reset 모델·wrapper 재생성 기대값을 고정한다. 별도 runtime test는 같은 고정 tree의 생존 집합·회수 ID·문자열 계수·revision을 실제 core/bridge 코드에서 대조한다. 실제 V8 weak handle reset·safe-point scan·wrapper 재생성은 아직 시험하지 않는다.
 7. **callback 수명:** strong callback Global은 owner isolate에서 교체·완료·취소·종료 시 Reset한다. Rust handle을 직접 보유하는 host 작업은 세션당 16,384개 이하 external root lease를 둔다. 한도 초과는 backpressure로 거부하고 token은 재사용하지 않는다. DOM listener는 미구현으로 남기고 J12가 cycle 계약을 정한다.
 8. **bounded scan:** isolate별 wrapper registry와 root snapshot을 node quota 16,384개로 제한한다. 전체 선형 검사는 각 outer task safe point에서 수행하며 실제 비용은 구현 후 측정한다.
 9. **회수 실패 원자성:** mark·worklist·sweep 삭제 목록을 적용 전 구성한다. parent/child 관계 불일치, allocation·root·generation·owner 오류와 unwind panic은 registry·root·문서·quota를 보존하고 회수를 미룬다. panic=abort는 복구 대상이 아니다.
@@ -138,12 +138,12 @@ Lynx는 main thread와 background thread에 별도 JavaScript runtime을 둔다.
 - 반복 create/remove/collect에서 노드·문자열·wrapper 자원 사용량이 합의한 한도 안에 머문다. 수거 전에 한도에 도달하는 경우 오류와 회수 재시도 규칙이 결정적이다.
 - 세션 종료 중 자동 reset된 weak handle, pending host callback, 다른 세션 handle, Rust panic·할당 실패가 다른 노드나 세션을 손상하지 않는다.
 
-구현 완료에는 실제 Rust collector의 실패 경로 fixture, Rust·Bun 검증, Android·iOS 시뮬레이터의 실제 V8 실행 근거가 필요하다. 현재 Rust fixture는 기준 model이며 제품 collector와 V8 실행을 검증하지 않는다. 이 근거가 준비되기 전에는 S03.3과 J10을 완료로 표시하지 않는다.
+S03.3 완료에는 Rust core/bridge 실패 경로 fixture, Rust·Bun 검증, C++ weak handle의 owner safe-point 연결, Android·iOS 시뮬레이터의 실제 V8 실행 근거가 필요하다. 현재는 첫 Rust 경로까지만 구현했다. 나머지 근거가 준비되기 전에는 S03.3과 J10을 완료로 표시하지 않는다.
 
 ## 구현 단계 체크리스트
 
 - [x] 내부 계약 0021과 결정성 Rust reference fixture를 추가하고 고정 입력·예상 생존 집합·실패 결과를 검증한다.
-- [ ] Rust HostDocument collector를 구현하고 node/handle/string accounting, generation 검사, sweep 원자성과 quota 오류를 제품 경로에 연결한다.
+- [x] Rust HostDocument 도달성 plan/commit과 bridge node/handle/string 회수 메서드를 구현하고 고정 fixture 및 실패·quota runtime test에서 확인한다. V8 caller는 연결하지 않았다.
 - [ ] V8 C++ adapter에 callback 없는 weak wrapper registry, isolate 안전 지점의 bounded full scan과 root snapshot을 연결하고 scan 비용을 측정한다.
 - [ ] Android·iOS 시뮬레이터 실제 V8에서 wrapper identity·closure root·자동 reset·재생성·shutdown 경합을 검증한다.
 - [ ] 반복 create/detach/drop/collect에서 Rust resident 자원과 V8/C++ callback root 계측이 기준 상태로 돌아오는지 확인한다.

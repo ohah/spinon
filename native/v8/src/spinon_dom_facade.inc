@@ -69,7 +69,16 @@ R"SPINONJS(
   }
 
   function read(kind, nodeId, index = 0, name = "") {
-    return spinon.__internal.readDocument(kind, nodeId, index, name);
+    try {
+      return spinon.__internal.readDocument(kind, nodeId, index, name);
+    } catch (error) {
+      if (error instanceof DOMException) throw error;
+      const message = error && error.message ? error.message : String(error);
+      if (message.startsWith("QuotaExceededError:")) {
+        fail("QuotaExceededError", message);
+      }
+      throw error;
+    }
   }
 
   function nodeId(node) {

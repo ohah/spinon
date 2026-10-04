@@ -7,10 +7,10 @@ mod tree;
 
 pub use batch::{Change, ChangeBatch, CommitReceipt, Operation};
 pub use document::{
-    AttributeName, DocumentChangeBatch, DocumentError, DocumentErrorKind, DocumentGeneration,
-    DocumentOperation, DocumentReceipt, DocumentRevision, DomString, ElementState, HostDocument,
-    HostDocumentSnapshot, HostElement, HostNode, HostNodeHandle, HostNodeKind, HostParent, OwnerId,
-    RenderTreeRevision,
+    AttributeName, CollectionPlan, DocumentChangeBatch, DocumentError, DocumentErrorKind,
+    DocumentGeneration, DocumentOperation, DocumentReceipt, DocumentRevision, DomString,
+    ElementState, HostDocument, HostDocumentSnapshot, HostElement, HostNode, HostNodeHandle,
+    HostNodeKind, HostParent, OwnerId, RenderTreeRevision,
 };
 pub use error::{CommitError, CommitErrorKind};
 pub use id::{EnvironmentRevision, NodeId, Revision, StyleRevision};
