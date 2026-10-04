@@ -8,7 +8,7 @@
 | [0002 · Rust 트리 코어](0002-rust-tree-core.md) | 노드 ID, 트리 구조, 원자적 변경 묶음과 revision | 실험 전용 |
 | [0003 · 공통 문서·호스트 계약](0003-shared-host-contract.md) | DOM 호환 계층과 프레임워크 어댑터의 문서 모델, 소유권, 동기 변경과 이벤트 경계 | 코어·제한 façade 일부 내부 구현 · 나머지 제안 초안 |
 | [0004 · R06 스레드·소유권 위험 분석](0004-thread-ownership-risks.md) | Isolate·문서·콜백·revision·비동기 완료·종료 경계의 위험과 검증 후보 | 검토 초안 · R06 미완료 |
-| [0005 · V8 런타임 세션 실험](0005-v8-runtime-session.md) | 세션별 Isolate 소유 스레드, 용량 제한 우선순위 큐, 취소·종료 경계 | 실험 전용 · R06 미완료 · 시뮬레이터 실제 V8 단일 배치 우선순위 검증 통과 |
+| [0005 · V8 런타임 세션 실험](0005-v8-runtime-session.md) | 세션별 Isolate 소유 스레드, 용량 제한 우선순위 큐, 취소·종료 경계 | 실험 전용 · R06 미완료 · 우선순위와 제한된 종료 경합의 실제 V8 시뮬레이터 검증 통과 |
 | [0006 · JavaScript 작업 스케줄러](0006-js-task-scheduler.md) | Chromium 참고 우선순위 선택과 앱 작업 출처·프레임·취소 경계 | 시뮬레이터 실제 V8 단일 배치와 등급별 FIFO 통과 · 지속 유입 기아 미검증 |
 | [0007 · 내장 UA stylesheet 자원](0007-ua-stylesheet-resource.md) | 지원 HTML 기본 CSS 자원과 읽기 전용 FFI 인터페이스 | 내부 초안 · fixture cascade 연결됨 · 제품 runtime은 미연결 |
 | [0008 · C02 Vite·Rspack CSS 비교 모델](0008-css-bundler-c02.md) | CSS 산출·자원·청크·오류 위치·resolver 비교 조건 | 내부 실험 계약 · C02 미완료 |
@@ -21,7 +21,7 @@
 | [0018 · S03.1 V8 HostDocument 변경 묶음](0018-s03-v8-hostdocument-bridge.md) | V8 내부 JS 배열을 UTF-16 C ABI로 복사하고 세션별 HostDocument에 원자 변경을 적용해 BigInt 영수증을 반환 | 내부 구현 계약 `0.1.0` · Android/iOS 시뮬레이터 실제 V8 검증 완료 · 공개 DOM API 아님 |
 | [0019 · S04 첫 CSS·레이아웃·GPU 연결 슬라이스](0019-s04-css-layout-gpu-slice.md) | 고정 Flex·CSS 배경색 fixture에서 플랫폼 중립 snapshot을 거쳐 Android/iOS wgpu 표면까지 잇는 내부 계약 | 계약 `0.1.0-draft` · S04.1~S04.6 시뮬레이터 검증 · S04.7 후속 작업 소유 경계 연결 완료, 기능 구현 미완료 |
 | [0020 · S03.2 제한 DOM façade](0020-s03-dom-facade.md) | 전역 `document`의 생성·트리 변경·관계/텍스트/속성 조회를 Rust `HostDocument`에 동기 연결 | 내부 구현 계약 `0.1.0` · Bun/Rust 및 Android/iOS 시뮬레이터 실제 V8 검증 완료 · 공개 DOM 지원 아님 |
-| [0021 · S03.3 DOM 노드·wrapper 수명](0021-s03-dom-node-lifecycle.md) | Rust 소유 노드 회수, V8 weak `Global` 자동 reset과 safe point 전체 scan, quota·shutdown·실패 원자성 | 내부 계약 `0.1.0-draft` · Android·iOS에서 callback closure와 소규모 반복 자원 기준선 검증 · 최대 scan·shutdown·listener/external root 검증 진행 중 |
+| [0021 · S03.3 DOM 노드·wrapper 수명](0021-s03-dom-node-lifecycle.md) | Rust 소유 노드 회수, V8 weak `Global` 자동 reset과 safe point 전체 scan, quota·shutdown·실패 원자성 | 내부 계약 `0.1.0-draft` · Android·iOS callback closure, 반복 자원 기준선, 제한된 종료 경합 검증 · 최대 scan·quota·listener/external root 검증 진행 중 |
 | [0013 · R15 청크 OTA 호환 모델](0013-r15-ota-chunk-compatibility.md) | 바이너리 호환 ID, 단일 target ESM specifier 매핑이 있는 기능·청크·자원 그래프, typed edge diff·영향 scope·최초/불확실 기준 fallback, 객체 차등 전달·전체 그래프 사전 확보·target별 stale/CAS publish 경계, 로컬 영속 저장·객체 재검증·용량 보호, 서명·압축 제한·상향 sequence rollback 및 offline authorization 미결정 | 내부 설계 제안 `0.1.0-draft` · 배포/로더/API 미구현 |
 | [0014 · C02 번들러 모듈 그래프 adapter](0014-c02-bundler-module-graph.md) | 입력 resolver graph와 최종 emitted ESM graph를 분리해 기능·청크·specifier 대응 및 추출 실패를 기록 | 내부 실험 계약 `0.1.0-draft` · 구현·제품 API 미완료 |
 | [0015 · C02 JavaScript·CSS 자원 그래프 결합](0015-c02-resource-graph-join.md) | 같은 production build에서 0011 CSS 자원과 0014 JavaScript feature·chunk 그래프를 결합 | 내부 구현 계약 `0.1.0-draft` · 고정 fixture 구현 완료 · 제품 API 아님 |
@@ -69,6 +69,8 @@
 - [S03.3 · Rust HostDocument 회수 경로](./evidence/s03-hostdocument-collector-2026-10-04.md) — 실제 Rust core/bridge collector를 고정 tree fixture에 적용한 결과, ID·문자열 계수와 revision 검증. V8 weak handle 자동 scan 및 모바일 runtime 연결은 포함하지 않음.
 - [S03.3 · V8 weak wrapper Android·iOS 실행](./evidence/s03-v8-weak-wrapper-2026-10-04.md) — Android 16/API 36 ARM64 에뮬레이터와 iPhone 17 Pro/iOS 26.2 시뮬레이터에서 실제 GC·safe-point scan·Rust sweep·wrapper 재생성을 확인한 고정 fixture 및 한계.
 - [S03.3 · 반복 lifecycle Android·iOS 실행](./evidence/s03-repeat-lifecycle-2026-10-05.md) — native strong callback closure root 보존·해제와 6×32 element/text 반복 뒤 node·UTF-16 문자열·weak wrapper 기준선 복귀를 확인한 시뮬레이터 근거 및 한계.
+- [S03.3 · 세션 종료 경합 Android·iOS 실행](./evidence/s03-shutdown-2026-10-05.md) — 활성 평가 취소, 이미 접수한 명령 거부, 닫힌 세션의 후속 호출 거부와 작업자 회수를 확인한 제한 probe.
+- `evidence/s03-shutdown-android-2026-10-05.log` · `evidence/s03-shutdown-android-2026-10-05.png` · `evidence/s03-shutdown-ios-2026-10-05.log` · `evidence/s03-shutdown-ios-2026-10-05.png` — 실제 V8 결과 로그와 화면.
 - `evidence/s03-v8-weak-wrapper-android-2026-10-04.log` · `evidence/s03-v8-weak-wrapper-ios-2026-10-04.log` · `evidence/s03-v8-weak-wrapper-android-2026-10-04.png` · `evidence/s03-v8-weak-wrapper-ios-2026-10-04.png` — 원본 결과와 검증 화면.
 - `evidence/s03-v8-hostdocument-bridge-android-2026-10-03.log` · `evidence/s03-v8-hostdocument-bridge-ios-2026-10-03.log` — 해당 시뮬레이터 실행의 원본 부팅 결과 로그.
 - `evidence/s02-basic-flex-chrome-2026-09-30.png` — 같은 fixture의 Headless Chrome 캡처.

@@ -18,6 +18,9 @@ use std::sync::{Arc, Condvar, Mutex, MutexGuard};
 use std::thread::{self, JoinHandle};
 use std::time::{Duration, Instant};
 
+mod shutdown;
+pub use shutdown::run_shutdown_probe;
+
 const QUEUE_CAPACITY: usize = 64;
 const OK: i32 = 0;
 const ERR_ARGUMENT: i32 = -1;
@@ -90,6 +93,19 @@ impl TaskScheduler {
         state.stopped = true;
         self.available.notify_all();
     }
+
+    fn reject_pending(&self, status: i32, report: &str) {
+        let mut state = lock(&self.state);
+        while let Some(command) = state.queue.pop_next() {
+            let reply = match command {
+                Command::Eval { reply, .. } | Command::Dispatch { reply, .. } => reply,
+            };
+            let _ = reply.send(OperationResponse {
+                status,
+                report: report.to_owned(),
+            });
+        }
+    }
 }
 
 struct RuntimeControl {
@@ -115,6 +131,7 @@ pub struct RuntimeSession {
     worker: Mutex<Option<JoinHandle<()>>>,
     control: Arc<Mutex<RuntimeControl>>,
     submission: Mutex<()>,
+    shutdown_gate: Mutex<()>,
     next_sequence: AtomicU64,
 }
 
@@ -819,6 +836,7 @@ impl RuntimeSession {
                 worker: Mutex::new(Some(worker)),
                 control,
                 submission: Mutex::new(()),
+                shutdown_gate: Mutex::new(()),
                 next_sequence: AtomicU64::new(0),
             },
             report,
@@ -872,15 +890,7 @@ impl RuntimeSession {
 
 impl Drop for RuntimeSession {
     fn drop(&mut self) {
-        {
-            let _submission = lock(&self.submission);
-            lock(&self.control).closing = true;
-        }
-        let _ = cancel_control(&self.control);
-        self.scheduler.stop();
-        if let Some(worker) = lock(&self.worker).take() {
-            let _ = worker.join();
-        }
+        let _ = self.shutdown();
     }
 }
 

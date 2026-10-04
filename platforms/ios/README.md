@@ -44,6 +44,8 @@ xcrun simctl launch --terminate-running-process booted dev.spinon.bootstrap --sp
 
 Android·iOS 시뮬레이터를 함께 빌드·실행하고 원본 log와 캡처를 저장하려면 저장소 루트에서 `mise exec -- bun run verify:s03-dom-lifecycle:simulators`를 실행합니다. 기본 출력 위치는 `build/spinon/dom-lifecycle-validation/` 아래의 고유 실행 폴더입니다.
 
+세션 종료 경합 probe는 `mise exec -- bun run verify:s03-shutdown:simulators`로 실행합니다. 고정 V8 revision과 Android·iOS Simulator의 `v8_jitless=false` 설정을 빌드 전에 확인하고 Android 16 에뮬레이터와 iOS Simulator에서 활성 eval 취소, 큐 대기 명령 거부, 종료 후 호출 거부, 반복 종료·worker join을 기록합니다. 기본 V8 경로는 `build/v8-source/v8`이며 별도 checkout은 `SPINON_V8_DIR`로 지정합니다. 원본 로그와 캡처는 고유 결과 폴더에 저장합니다. probe timeout은 통과로 처리하지 않으며, OS thread 강제 종료나 raw C ABI 포인터 동시 `free`를 검증하지 않습니다.
+
 Android 에뮬레이터와 iOS 시뮬레이터를 빌드·실행하고 실제 V8 우선순위 결과를 자동 판정하는 반복 명령은 `mise exec -- bun run verify:r06-priority:simulators`입니다. 이 스크립트는 부팅된 iOS 시뮬레이터만 대상으로 합니다.
 
 2026-09-30 기준 iPhone 17 Pro / iOS 26.2 시뮬레이터에서 앱 빌드·부팅, R06 수동·자동 시나리오, 실제 V8의 혼합 우선순위 여섯 작업 단일 배치를 확인했습니다. 순서는 `user-blocking` 두 개, `user-visible` 두 개, `background` 두 개였고 등급별 FIFO와 Isolate owner thread 콜백을 통과했습니다. 런타임 분리 후에도 빌드와 자동 시나리오를 다시 통과했습니다. 시뮬레이터 V8은 `v8_jitless=false` 구성입니다. 이 결과는 장기 기아·공정성, iOS 실기기, JIT 없는 기기 빌드, GPU·제품 렌더러·접근성 동작을 검증하지 않습니다. 분리 전 근거는 [R06 런타임 기록](../../spec/internal/evidence/r06-v8-runtime-thread-2026-09-30.md), 분리 후 근거는 [최신 재검증 기록](../../spec/internal/evidence/r06-task-scheduler-2026-09-30.md), [우선순위 시뮬레이터 검증](../../spec/internal/evidence/r06-priority-simulators-2026-09-30.md)과 [iOS 로그·캡처](../../spec/internal/README.md#검증-기록)에 있습니다. 구현 완료 표시는 [공식 상태 대장](../../spec/STATUS.md)을 따릅니다.

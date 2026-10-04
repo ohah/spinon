@@ -105,6 +105,29 @@ pub unsafe extern "C" fn spinon_runtime_priority_probe(
     status
 }
 
+/// 실제 V8 세션의 종료·대기 작업·종료 후 접수 경계를 확인하는 내부 진단 함수입니다.
+///
+/// # Safety
+///
+/// `output`은 `output_capacity` 바이트만큼 쓸 수 있는 메모리를 가리켜야 합니다.
+#[unsafe(no_mangle)]
+pub unsafe extern "C" fn spinon_runtime_shutdown_probe(
+    output: *mut c_char,
+    output_capacity: usize,
+) -> i32 {
+    if output.is_null() || output_capacity == 0 {
+        return -1;
+    }
+    let (status, report) = match spinon_runtime::run_shutdown_probe() {
+        Ok(report) => (0, report),
+        Err(error) => (-7, error),
+    };
+    if !write_report(output, output_capacity, &report) {
+        return -3;
+    }
+    status
+}
+
 /// 명시적으로 실행된 개발용 Taffy 실험의 결과를 호출자 버퍼에 씁니다.
 ///
 /// # Safety
@@ -180,6 +203,7 @@ pub unsafe extern "C" fn spinon_taffy_r10_run(
 #[cfg(test)]
 mod tests {
     use std::ffi::CStr;
+    use std::ptr;
 
     #[repr(C)]
     struct TestV8Runtime {
@@ -358,5 +382,22 @@ mod tests {
         assert_eq!(result, -4);
         let report = unsafe { CStr::from_ptr(output.as_ptr()) }.to_string_lossy();
         assert!(report.contains("SPINON_ENABLE_R10_EXPERIMENT=1"));
+    }
+
+    #[test]
+    fn shutdown_probe_rejects_each_invalid_output_shape_before_starting_a_runtime() {
+        assert_eq!(
+            unsafe { super::spinon_runtime_shutdown_probe(ptr::null_mut(), 1) },
+            -1
+        );
+        let mut output = [0_i8; 1];
+        assert_eq!(
+            unsafe { super::spinon_runtime_shutdown_probe(output.as_mut_ptr(), 0) },
+            -1
+        );
+        assert_eq!(
+            unsafe { super::spinon_runtime_shutdown_probe(ptr::null_mut(), 0) },
+            -1
+        );
     }
 }

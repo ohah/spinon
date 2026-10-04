@@ -58,3 +58,5 @@ adb logcat -s SpinonBootstrap:I | rg 'DOM-GC 검증'
 통과 결과는 HostRoot 트리와 살아 있는 detached 자손 wrapper를 보존하고, 연결된 Text wrapper의 WeakRef가 실제 GC 뒤 비워진 다음 조회로 wrapper가 재생성되는지 확인합니다. orphan WeakRef와 `document_nodes` 감소, collector 오류·poison 상태, scanned/live/empty handle 계수도 검사합니다. 기본 빌드는 hook과 버튼을 제외하며 결과 폴더가 이미 있으면 verifier는 기존 로그를 덮어쓰지 않습니다. 반복 메모리 사용량, closure root, shutdown 경합, 실제 기기는 이 단일 시뮬레이터 probe의 범위가 아닙니다.
 
 Android·iOS 시뮬레이터를 함께 빌드·실행하고 원본 log와 캡처를 저장하려면 `mise exec -- bun run verify:s03-dom-lifecycle:simulators`를 실행합니다. 기본 출력 위치는 `build/spinon/dom-lifecycle-validation/` 아래의 고유 실행 폴더입니다.
+
+세션 종료 경합 probe는 `mise exec -- bun run verify:s03-shutdown:simulators`로 실행합니다. 고정 V8 revision과 Android·iOS Simulator의 `v8_jitless=false` 설정을 빌드 전에 확인하고 Android 16 에뮬레이터와 iOS Simulator에서 활성 eval 취소, 큐 대기 명령 거부, 종료 후 호출 거부, 반복 종료·worker join을 기록합니다. 기본 V8 경로는 `build/v8-source/v8`이며 별도 checkout은 `SPINON_V8_DIR`로 지정합니다. 원본 로그와 캡처는 고유 결과 폴더에 저장합니다. probe timeout은 통과로 처리하지 않으며, OS thread 강제 종료나 raw C ABI 포인터 동시 `free`를 검증하지 않습니다.

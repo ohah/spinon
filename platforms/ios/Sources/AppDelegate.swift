@@ -18,16 +18,18 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         let arguments = ProcessInfo.processInfo.arguments
         let runPriorityProbe = arguments.contains("--spinon-priority-probe")
+        let runShutdownProbe = arguments.contains("--spinon-shutdown-probe")
         let runLifecycleProbe = arguments.contains("--spinon-dom-gc-auto")
         if runLifecycleProbe && !spinonS03DomGcFixtureEnabled {
             logger.error("SPINON_DOM_GC_FIXTURE_DISABLED · 검증 전용 빌드로 다시 빌드하세요")
         }
-        if arguments.contains("--spinon-runtime-threads") || runPriorityProbe || runLifecycleProbe {
+        if arguments.contains("--spinon-runtime-threads") || runPriorityProbe || runShutdownProbe || runLifecycleProbe {
             let window = UIWindow(frame: UIScreen.main.bounds)
             window.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
             window.rootViewController = RuntimeThreadExperimentViewController(
                 automaticallyRun: arguments.contains("--spinon-r06-auto"),
                 runPriorityProbe: runPriorityProbe,
+                runShutdownProbe: runShutdownProbe,
                 automaticallyRunLifecycleProbe: runLifecycleProbe && spinonS03DomGcFixtureEnabled
             )
             window.makeKeyAndVisible()

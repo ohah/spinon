@@ -4,6 +4,7 @@ import OSLog
 final class RuntimeThreadExperimentViewController: UIViewController {
     private let automaticallyRun: Bool
     private let runPriorityProbe: Bool
+    private let runShutdownProbe: Bool
     private let automaticallyRunLifecycleProbe: Bool
     private let logger = Logger(subsystem: "dev.spinon.bootstrap", category: "r06")
     private let runtimeCalls = DispatchQueue(
@@ -39,10 +40,12 @@ final class RuntimeThreadExperimentViewController: UIViewController {
     init(
         automaticallyRun: Bool,
         runPriorityProbe: Bool = false,
+        runShutdownProbe: Bool = false,
         automaticallyRunLifecycleProbe: Bool = false
     ) {
         self.automaticallyRun = automaticallyRun
         self.runPriorityProbe = runPriorityProbe
+        self.runShutdownProbe = runShutdownProbe
         self.automaticallyRunLifecycleProbe = automaticallyRunLifecycleProbe
         if let sourceURL = Bundle.main.url(forResource: "app", withExtension: "js"),
            let source = try? String(contentsOf: sourceURL, encoding: .utf8) {
@@ -66,6 +69,21 @@ final class RuntimeThreadExperimentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
+        if runShutdownProbe {
+            setButtons(enabled: false)
+            setStatus("실제 V8 세션 종료 검증 중…")
+            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                let report = SpinonRunner.runRuntimeShutdownProbe() ?? "세션 종료 검증 응답 없음"
+                DispatchQueue.main.async {
+                    guard let self else { return }
+                    self.appendReport(report)
+                    self.setStatus(report.contains("status=0 shutdown_probe=PASS")
+                        ? "V8 세션 종료 검증 통과"
+                        : "V8 세션 종료 검증 실패")
+                }
+            }
+            return
+        }
         if runPriorityProbe {
             setButtons(enabled: false)
             setStatus("실제 V8 우선순위 선택 검증 중…")
@@ -109,6 +127,8 @@ final class RuntimeThreadExperimentViewController: UIViewController {
         let title = UILabel()
         if automaticallyRunLifecycleProbe {
             title.text = "SPINON · iOS DOM wrapper 수명 검증"
+        } else if runShutdownProbe {
+            title.text = "SPINON · iOS V8 세션 종료 검증"
         } else {
             title.text = runPriorityProbe
                 ? "SPINON · iOS R06 우선순위 검증"
@@ -121,6 +141,8 @@ final class RuntimeThreadExperimentViewController: UIViewController {
         let description = UILabel()
         if automaticallyRunLifecycleProbe {
             description.text = "개발 전용 · V8 weak Global 회수 후 Rust HostDocument root와 node count를 확인합니다"
+        } else if runShutdownProbe {
+            description.text = "개발 전용 · 활성 평가 취소, 대기 명령 거부, 종료 후 호출 거부를 확인합니다"
         } else {
             description.text = runPriorityProbe
                 ? "개발 전용 · 실제 V8에서 세 우선순위 선택과 동일 등급 FIFO를 확인합니다"
