@@ -46,4 +46,4 @@ Bun fixture는 같은 façade 스크립트와 모의 HostDocument를 사용한�
 
 이 구현으로 J10 전체, R03 전체 또는 S03 전체를 완료 처리하지 않는다. 미완료: 공개 오류·DOMException 세부 일치와 레거시 `code`, 전체 Web IDL 변환과 Unicode 이름, mutable `textContent`, NodeList/live collection, wrapper GC·node dispose, 다중 Owner 동시 변경, framework renderer 통합, CSS invalidation·layout·GPU 적용, 웹 대체 구현, 실기기 성능과 최대 quota의 기기 메모리.
 
-구현 범위와 근거가 준비되기 전에는 [공식 상태 대장](../STATUS.md)의 J10·S03 전체 완료 체크를 바꾸지 않는다.
+구현 범위와 근거가 준비되기 전에는 [공식 상태 대장](../STATUS.md)의 J10·S03 전체 완료 체크를 바꾸지 않는다. 현재 노드·wrapper 수명 동작을 확장하는 미완료 후속 작업은 [S03.3 노드 수명 관리 계획](../../plan/dom-node-lifecycle.md)에서 따로 추적한다. 이 계획은 현재 `0.1.0` 시제품 계약을 소급 변경하지 않는다.
