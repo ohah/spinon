@@ -294,8 +294,7 @@ test("예제 번들이 HostDocument 커밋·rollback·getter 재진입·이벤�
   };
 
   const context = { spinon: host, TypeError };
-  runInNewContext(facadeSource, context);
-  runInNewContext(source, context);
+  runInNewContext(`${facadeSource}\n${source}`, context);
   expect(batches.slice(0, 5)).toEqual([
     [
       {

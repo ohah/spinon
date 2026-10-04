@@ -20,7 +20,8 @@
 | `nodeValue` | Document·Element·Text에서 읽고 비-Text에 설정 | Document·Element는 `null`, Text는 `data`; 비-Text 설정은 문서 상태를 바꾸지 않음 |
 | 필수 인자 | `createElement()`, `createTextNode()`, `setAttribute(name)` 등 | DOM 메서드의 필수 인자 누락은 `TypeError`, 변경 전 문서 revision 유지 |
 | nullable Node 인자 | `parent.insertBefore(child, undefined)` | Web IDL nullable Node 변환이 `undefined`를 `null`로 처리하므로 끝 삽입 |
-| `DOMException` 생성자 | `new DOMException()`, `new DOMException("메시지")`, `new DOMException("메시지", "NotFoundError")` | 기본값 `message === ""`, `name === "Error"`; 이름·메시지는 읽기 전용. 제한 구현은 `code`와 상수를 제공하지 않음 |
+| `DOMException` 생성자 | `new DOMException()`, `new DOMException("메시지")`, `new DOMException("메시지", "NotFoundError")` | 기본값 `message === ""`, `name === "Error"`; constructor 이름과 `Symbol.toStringTag`는 `DOMException`. `name`·`message`는 own 속성이 아닌 enumerable prototype getter이며 setter가 없어 읽기 전용. 제한 구현은 `code`와 상수를 제공하지 않음 |
+| 전역 생성자 속성 | `DOMException`, `Node`, `Element`, `Text`의 global property descriptor | `writable === true`, `enumerable === false`, `configurable === true` |
 | 잘못된 receiver·인자 | 비-Node receiver, `contains({})` | Web IDL interface receiver·인자 검증에 따라 `TypeError`, 트리 변경 없음 |
 | 공개 속성 재정의 | Text wrapper의 own `nodeType`, `Node.prototype.parentNode` getter 재정의 | façade의 루트 종류·순환·포함 검증은 내부 Rust 노드 종류·부모를 사용해 재정의가 무결성을 바꾸지 않음 |
 | 앱 루트 Text 차이 | Spinon `document.appendChild(text)` | 앱 HostRoot 제약: `HierarchyRequestError`, 분리 상태와 revision 보존. 브라우저 Document 비교 사례와 구분하는 의도적 확장 |
@@ -53,4 +54,4 @@
 
 Google Chrome `154.0.8037.95` macOS headless에서 위 경계 사례의 DOM 표준 동작을 확인했다. Text `firstChild`는 `null`, `hasChildNodes()`는 `false`, `nodeValue`는 텍스트 데이터였다. Document·Element `nodeValue`는 `null`이고 값 설정은 무시됐다. `createElement()`, `createTextNode()`, `insertBefore(node)`, `setAttribute(name)`의 누락 인자는 모두 `TypeError`였다. 이 확인은 DOM API 비교이며 Spinon 모바일 실행이나 CSS·GPU 렌더링의 근거가 아니다.
 
-신규 nullable 인자와 생성자 기본값의 기대 결과는 [Web IDL nullable 변환](https://webidl.spec.whatwg.org/#es-nullable) 및 [DOMException 인터페이스 정의](https://webidl.spec.whatwg.org/#idl-DOMException)에 맞춰 fixture로 확인한다. 앱 HostRoot의 최상위 Text 거부는 표준 브라우저 Document와 같다고 주장하지 않는다. Chrome headless를 재실행한 이번 검증에서는 프로세스가 제한 시간 안에 종료되지 않아 이 신규 행의 별도 Chromium 실행 결과로 기록하지 않는다.
+2026-10-04 Google Chrome `154.0.8037.95`의 격리된 agent-browser 세션(`HeadlessChrome/154.0.0.0`)에서 추가 사례를 실행했다. 기본·메시지 단독·명명 `DOMException`, constructor 이름·prototype constructor·`Symbol.toStringTag`, 인스턴스 own 속성 부재, enumerable prototype getter와 setter 부재, `Reflect.set()` 거부 및 값 보존, 네 전역 생성자 descriptor, Symbol 인자의 `TypeError`, `insertBefore(node, undefined)`의 끝 삽입, 네 필수 인자 누락의 `TypeError`, 잘못된 DOMException getter receiver의 `TypeError`가 모두 기준과 일치했다. Chrome은 NotFoundError에서 `code`와 `NOT_FOUND_ERR`를 `8`로 반환하며, 제한 façade는 계약대로 이를 제공하지 않는다. 이전 직접 `--dump-dom` 실행은 종료되지 않았지만, 이 세션에서 같은 Chrome 설치로 비교를 완료했다. 앱 HostRoot의 최상위 Text 거부는 표준 브라우저 Document와 같다고 주장하지 않는다.
