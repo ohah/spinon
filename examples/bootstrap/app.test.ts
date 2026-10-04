@@ -1,8 +1,12 @@
 import { expect, test } from "bun:test";
 import { readFileSync } from "node:fs";
+import { runInNewContext } from "node:vm";
 
 test("예제 번들이 HostDocument 커밋·rollback·getter 재진입·이벤트를 확인한다", () => {
   const source = readFileSync("app.js", "utf8");
+  const facadeSource = readFileSync("../../native/v8/src/spinon_dom_facade.inc", "utf8")
+    .replace(/^R"SPINONJS\(/, "")
+    .replace(/\)SPINONJS"\s*$/, "");
   const batches: Array<unknown[]> = [];
   const texts: string[] = [];
   const createdNodes: Array<[number, string]> = [];
@@ -11,8 +15,12 @@ test("예제 번들이 HostDocument 커밋·rollback·getter 재진입·이벤�
   let documentRevision = 0n;
   let renderTreeRevision = 0n;
   let nodes = new Map<number, "element" | "text">();
+  let elementNames = new Map<number, string>();
   let textValues = new Map<number, string>();
   let connected = new Set<number>();
+  let parents = new Map<number, number>();
+  let children = new Map<number, number[]>([[0, []]]);
+  let attributes = new Map<number, Map<string, string>>();
   const isWellFormedUtf16 = (value: string) => {
     for (let index = 0; index < value.length; index += 1) {
       const unit = value.charCodeAt(index);
@@ -110,8 +118,16 @@ test("예제 번들이 HostDocument 커밋·rollback·getter 재진입·이벤�
           batches.push(normalized);
 
           const nextNodes = new Map(nodes);
+          const nextElementNames = new Map(elementNames);
           const nextTextValues = new Map(textValues);
           const nextConnected = new Set(connected);
+          const nextParents = new Map(parents);
+          const nextChildren = new Map(
+            [...children].map(([id, childIds]) => [id, [...childIds]]),
+          );
+          const nextAttributes = new Map(
+            [...attributes].map(([id, values]) => [id, new Map(values)]),
+          );
           let changed = false;
           for (const operation of normalized) {
             const type = operation.type;
@@ -122,23 +138,55 @@ test("예제 번들이 HostDocument 커밋·rollback·getter 재진입·이벤�
                 throw new TypeError("중복 노드");
               }
               nextNodes.set(id, type === "createElement" ? "element" : "text");
+              nextChildren.set(id, []);
+              if (type === "createElement") nextElementNames.set(id, operation.name as string);
               if (type === "createText") nextTextValues.set(id, operation.data as string);
+              if (type === "createElement") nextAttributes.set(id, new Map());
               changed = true;
             } else if (type === "append") {
-              if (!nextNodes.has(node as number)) throw new TypeError("없는 노드");
+              const parent = operation.parent as number;
+              const childId = node as number;
+              if (!nextNodes.has(childId) || (parent !== 0 && !nextNodes.has(parent))) {
+                throw new TypeError("없는 노드");
+              }
+              if (nextParents.has(childId)) {
+                const oldParent = nextParents.get(childId)!;
+                nextChildren.set(oldParent, nextChildren.get(oldParent)!.filter((id) => id !== childId));
+              }
+              nextParents.set(childId, parent);
+              nextChildren.get(parent)!.push(childId);
               nextConnected.add(node as number);
-              if (operation.parent !== 0) nextConnected.add(operation.parent as number);
+              if (parent !== 0) nextConnected.add(parent);
               changed = true;
             } else if (type === "insertBefore") {
-              if (!nextNodes.has(node as number)) throw new TypeError("없는 노드");
-              if (operation.parent !== 0 && !nextNodes.has(operation.parent as number)) {
+              const parent = operation.parent as number;
+              const childId = node as number;
+              const before = operation.before as number;
+              if (!nextNodes.has(childId)) throw new TypeError("없는 노드");
+              if (parent !== 0 && !nextNodes.has(parent)) {
                 throw new TypeError("없는 부모");
               }
+              const siblings = nextChildren.get(parent)!;
+              if (!siblings.includes(before)) throw new TypeError("없는 기준 노드");
+              if (childId === before) continue;
+              if (nextParents.has(childId)) {
+                const oldParent = nextParents.get(childId)!;
+                nextChildren.set(oldParent, nextChildren.get(oldParent)!.filter((id) => id !== childId));
+              }
+              const insertionPoint = nextChildren.get(parent)!.indexOf(before);
+              nextChildren.get(parent)!.splice(insertionPoint, 0, childId);
+              nextParents.set(childId, parent);
               nextConnected.add(node as number);
-              if (operation.parent !== 0) nextConnected.add(operation.parent as number);
+              if (parent !== 0) nextConnected.add(parent);
               changed = true;
             } else if (type === "remove") {
-              if (!nextNodes.has(node as number)) throw new TypeError("없는 노드");
+              const parent = operation.parent as number;
+              const childId = node as number;
+              if (!nextNodes.has(childId) || nextParents.get(childId) !== parent) {
+                throw new TypeError("없는 자식 노드");
+              }
+              nextChildren.set(parent, nextChildren.get(parent)!.filter((id) => id !== childId));
+              nextParents.delete(childId);
               nextConnected.delete(node as number);
               changed = true;
             } else if (type === "setText") {
@@ -150,10 +198,15 @@ test("예제 번들이 HostDocument 커밋·rollback·getter 재진입·이벤�
               }
             } else if (type === "setAttribute") {
               if (nextNodes.get(node as number) !== "element") throw new TypeError("요소가 아님");
-              changed = true;
+              const name = operation.name as string;
+              const value = operation.value as string;
+              if (nextAttributes.get(node as number)!.get(name) !== value) {
+                nextAttributes.get(node as number)!.set(name, value);
+                changed = true;
+              }
             } else if (type === "removeAttribute") {
               if (nextNodes.get(node as number) !== "element") throw new TypeError("요소가 아님");
-              changed = true;
+              changed = nextAttributes.get(node as number)!.delete(operation.name as string) || changed;
             } else {
               throw new TypeError("지원하지 않는 작업");
             }
@@ -161,8 +214,12 @@ test("예제 번들이 HostDocument 커밋·rollback·getter 재진입·이벤�
 
           if (changed) {
             nodes = nextNodes;
+            elementNames = nextElementNames;
             textValues = nextTextValues;
             connected = nextConnected;
+            parents = nextParents;
+            children = nextChildren;
+            attributes = nextAttributes;
             documentRevision += 1n;
             if (normalized.some((operation) => operation.type === "append") ||
                 normalized.some((operation) => operation.type === "setText" && connected.has(operation.node as number))) {
@@ -179,14 +236,67 @@ test("예제 번들이 HostDocument 커밋·rollback·getter 재진입·이벤�
           active = false;
         }
       },
+      readDocument(kind: number, nodeId: number, index = 0, name = "") {
+        if (kind === 8) {
+          return { exists: true, value: Math.max(0, ...nodes.keys()) + 1, text: "" };
+        }
+        if (kind === 1) {
+          const type = nodes.get(nodeId);
+          if (type === undefined) throw new TypeError("없는 노드");
+          const localName = type === "element" ? elementNames.get(nodeId)! : "#text";
+          return {
+            exists: true,
+            value: type === "element" ? 1 : 3,
+            text: type === "element" ? localName.toUpperCase() : localName,
+          };
+        }
+        if (kind === 2) {
+          return parents.has(nodeId)
+            ? { exists: true, value: parents.get(nodeId)!, text: "" }
+            : { exists: false, value: 0, text: "" };
+        }
+        if (kind === 3) {
+          return { exists: true, value: children.get(nodeId)?.length ?? 0, text: "" };
+        }
+        if (kind === 4) {
+          const childId = children.get(nodeId)?.[index];
+          return childId === undefined
+            ? { exists: false, value: 0, text: "" }
+            : { exists: true, value: childId, text: "" };
+        }
+        if (kind === 5) {
+          const parent = parents.get(nodeId);
+          const siblings = parent === undefined ? [] : children.get(parent) ?? [];
+          const nextId = siblings[siblings.indexOf(nodeId) + 1];
+          return nextId === undefined
+            ? { exists: false, value: 0, text: "" }
+            : { exists: true, value: nextId, text: "" };
+        }
+        if (kind === 6) {
+          const collect = (id: number): string =>
+            nodes.get(id) === "text"
+              ? textValues.get(id) ?? ""
+              : (children.get(id) ?? []).map(collect).join("");
+          return { exists: true, value: 0, text: collect(nodeId) };
+        }
+        if (kind === 7) {
+          const value = attributes.get(nodeId)?.get(name);
+          return value === undefined
+            ? { exists: false, value: 0, text: "" }
+            : { exists: true, value: 0, text: value };
+        }
+        throw new TypeError("알 수 없는 조회 종류");
+      },
     },
     onEvent(handler: (nodeId: number) => void) {
       eventHandler = handler;
     },
   };
 
-  new Function("spinon", source)(host);
-  expect(batches).toEqual([
+  const context = { spinon: host, TypeError };
+  runInNewContext(facadeSource, context);
+  runInNewContext(source, context);
+  expect(batches.slice(0, 5)).toEqual([
     [
       {
         type: "createElement",
@@ -213,6 +323,7 @@ test("예제 번들이 HostDocument 커밋·rollback·getter 재진입·이벤�
     [],
     [{ type: "setText", node: 2, data: "ready" }],
   ]);
+  expect(batches.slice(5, -1).every((batch) => batch.length <= 1)).toBe(true);
   expect(createdNodes).toEqual([[1, "view"]]);
   expect(texts).toEqual(["문서 revision 1 · 노드 2"]);
   expect(eventHandler).toBeDefined();
@@ -225,5 +336,5 @@ test("예제 번들이 HostDocument 커밋·rollback·getter 재진입·이벤�
     [1, "view"],
     [8, "text"],
   ]);
-  expect(texts.at(-1)).toBe("이벤트:7 · 문서 revision 3");
+  expect(texts.at(-1)).toBe(`이벤트:7 · 문서 revision ${documentRevision}`);
 });

@@ -49,7 +49,18 @@ if (
   initialDocumentReceipt.nodeCount !== 2n ||
   !initialDocumentReceipt.changed
 ) {
-  throw new Error("초기 HostDocument 영수증이 예상과 다릅니다");
+  throw new Error(
+    `초기 HostDocument 영수증이 예상과 다릅니다: ${JSON.stringify({
+      invalidCallShapeRejected,
+      malformedNameRejected,
+      unknownOperationRejected,
+      nonIntegerFieldRejected,
+      documentRevision: initialDocumentReceipt.documentRevision.toString(),
+      renderTreeRevision: initialDocumentReceipt.renderTreeRevision.toString(),
+      nodeCount: initialDocumentReceipt.nodeCount.toString(),
+      changed: initialDocumentReceipt.changed,
+    })}`,
+  );
 }
 
 let invalidBatchRejected = false;
@@ -173,6 +184,245 @@ if (
   getterReceipt.nodeCount !== operationCoverageReceipt.nodeCount
 ) {
   throw new Error("배열 getter 처리 중 변경 묶음 길이가 달라졌습니다");
+}
+
+if (
+  document.nodeType !== 9 ||
+  document.firstChild.nodeType !== 1 ||
+  document.firstChild.nodeName !== "DIV" ||
+  document.firstChild.localName !== "div" ||
+  document.firstChild !== document.firstChild ||
+  document.firstChild.className !== "counter"
+) {
+  throw new Error("DOM façade의 기존 HostDocument 조회가 예상과 다릅니다");
+}
+
+const root = document.firstChild;
+const movedElement = document.createElement("DiV");
+const movedText = document.createTextNode("한글🌐");
+const target = document.createElement("section");
+const defaultDOMException = new DOMException();
+const namedDOMException = new DOMException("실패", "NotFoundError");
+const undefinedBeforeParent = document.createElement("aside");
+const undefinedBeforeChild = document.createElement("span");
+undefinedBeforeParent.insertBefore(undefinedBeforeChild, undefined);
+const rootText = document.createTextNode("루트 텍스트");
+Object.defineProperty(rootText, "nodeType", { configurable: true, value: 1 });
+let illegalReceiverErrors = 0;
+for (const call of [
+  () => Node.prototype.isSameNode.call({}, document),
+  () => Object.getOwnPropertyDescriptor(Node.prototype, "ownerDocument").get.call({}),
+  () => Object.getPrototypeOf(document).createElement.call({}, "article"),
+  () => document.contains({}),
+  () => Element.prototype.getAttribute.call(movedText, "id"),
+  () => Object.getOwnPropertyDescriptor(Text.prototype, "data").get.call(movedElement),
+]) {
+  try {
+    call();
+  } catch (error) {
+    if (error.name === "TypeError") illegalReceiverErrors += 1;
+  }
+}
+const beforeMissingArguments = spinon.__internal.commitDocumentBatch([]).documentRevision;
+let missingRequiredArguments = 0;
+for (const call of [
+  () => document.createElement(),
+  () => document.createTextNode(),
+  () => movedElement.setAttribute("data-missing-value"),
+  () => movedElement.insertBefore(movedText),
+]) {
+  try {
+    call();
+  } catch (error) {
+    if (error.name === "TypeError") missingRequiredArguments += 1;
+  }
+}
+if (
+  missingRequiredArguments !== 4 ||
+  spinon.__internal.commitDocumentBatch([]).documentRevision !== beforeMissingArguments ||
+  movedText.firstChild !== null ||
+  movedText.hasChildNodes() ||
+  movedText.nodeValue !== "한글🌐" ||
+  movedElement.nodeValue !== null ||
+  document.nodeValue !== null ||
+  defaultDOMException.name !== "Error" ||
+  defaultDOMException.message !== "" ||
+  namedDOMException.name !== "NotFoundError" ||
+  namedDOMException.message !== "실패" ||
+  Object.getOwnPropertyDescriptor(defaultDOMException, "name").writable !== false ||
+  Object.getOwnPropertyDescriptor(defaultDOMException, "message").writable !== false ||
+  illegalReceiverErrors !== 6 ||
+  document.isSameNode(undefined) ||
+  document.contains(undefined) ||
+  undefinedBeforeParent.firstChild !== undefinedBeforeChild ||
+  undefinedBeforeChild.parentNode !== undefinedBeforeParent
+) {
+  throw new Error(`DOM façade 결과가 예상과 다릅니다: ${JSON.stringify({
+    missingRequiredArguments,
+    textFirstChild: movedText.firstChild,
+    textHasChildren: movedText.hasChildNodes(),
+    textNodeValue: movedText.nodeValue,
+    elementNodeValue: movedElement.nodeValue,
+    documentNodeValue: document.nodeValue,
+    defaultDOMException: [defaultDOMException.name, defaultDOMException.message],
+    namedDOMException: [namedDOMException.name, namedDOMException.message],
+    nameWritable: Object.getOwnPropertyDescriptor(defaultDOMException, "name").writable,
+    messageWritable: Object.getOwnPropertyDescriptor(defaultDOMException, "message").writable,
+    illegalReceiverErrors,
+    isSameNodeUndefined: document.isSameNode(undefined),
+    containsUndefined: document.contains(undefined),
+    undefinedBeforeParent: undefinedBeforeChild.parentNode === undefinedBeforeParent,
+  })}`);
+}
+const beforeRejectedRootText = spinon.__internal.commitDocumentBatch([]).documentRevision;
+let rootTextErrorName = "";
+try {
+  document.appendChild(rootText);
+} catch (error) {
+  rootTextErrorName = error.name;
+}
+if (
+  rootTextErrorName !== "HierarchyRequestError" ||
+  rootText.parentNode !== null ||
+  rootText.nodeValue !== "루트 텍스트" ||
+  spinon.__internal.commitDocumentBatch([]).documentRevision !== beforeRejectedRootText
+) {
+  throw new Error("앱 문서 루트의 Text 거부가 원자적으로 처리되지 않았습니다");
+}
+movedElement.nodeValue = "무시";
+document.nodeValue = "무시";
+if (movedElement.nodeValue !== null || document.nodeValue !== null) {
+  throw new Error("Text가 아닌 노드의 nodeValue 설정이 문서 값을 바꿨습니다");
+}
+let symbolStringRejected = false;
+try {
+  document.createTextNode(Symbol("unsupported"));
+} catch (error) {
+  symbolStringRejected = error.name === "TypeError";
+}
+if (!symbolStringRejected) {
+  throw new Error("DOMString의 Symbol 변환이 동기 거부되지 않았습니다");
+}
+root.appendChild(movedElement);
+movedElement.appendChild(movedText);
+document.appendChild(target);
+target.appendChild(movedElement);
+if (
+  target.firstChild !== movedElement ||
+  movedElement.parentNode !== target ||
+  movedElement.parentElement !== target ||
+  movedText.parentNode !== movedElement ||
+  movedElement.textContent !== "한글🌐" ||
+  movedText.nodeName !== "#text" ||
+  movedText.nodeType !== 3 ||
+  !(movedElement instanceof Node) ||
+  !(movedElement instanceof Element) ||
+  !(movedText instanceof Text) ||
+  movedElement.ownerDocument !== document ||
+  !target.contains(movedText) ||
+  root.contains(movedElement) ||
+  !movedText.isSameNode(movedElement.firstChild)
+) {
+  throw new Error("DOM façade의 동기 이동·관계·텍스트 조회가 예상과 다릅니다");
+}
+
+const precedingText = document.createTextNode("앞");
+movedElement.insertBefore(precedingText, movedText);
+if (
+  movedElement.firstChild !== precedingText ||
+  precedingText.nextSibling !== movedText ||
+  movedElement.textContent !== "앞한글🌐"
+) {
+  throw new Error("DOM façade의 자식 순서가 예상과 다릅니다");
+}
+
+movedText.nodeValue = "변경";
+movedElement.setAttribute("CLASS", "first second");
+movedElement.setAttribute("data-number", 17);
+if (
+  movedText.nodeValue !== "변경" ||
+  movedText.data !== "변경" ||
+  movedElement.getAttribute("class") !== "first second" ||
+  movedElement.className !== "first second" ||
+  movedElement.getAttribute("data-number") !== "17"
+) {
+  throw new Error("DOM façade의 Text·속성 반영이 예상과 다릅니다");
+}
+movedElement.id = "dom-proof";
+if (movedElement.getAttribute("id") !== "dom-proof") {
+  throw new Error("DOM façade의 id 속성 반영이 예상과 다릅니다");
+}
+movedElement.removeAttribute("id");
+movedElement.removeAttribute("data-number");
+if (movedElement.hasAttribute("id") || movedElement.getAttribute("id") !== null) {
+  throw new Error("DOM façade의 속성 제거가 예상과 다릅니다");
+}
+
+const beforeNoOp = spinon.__internal.commitDocumentBatch([]).documentRevision;
+movedElement.insertBefore(precedingText, precedingText);
+const afterNoOp = spinon.__internal.commitDocumentBatch([]).documentRevision;
+if (beforeNoOp !== afterNoOp || movedElement.firstChild !== precedingText) {
+  throw new Error("DOM façade의 자기 자신 앞 삽입이 no-op이 아닙니다");
+}
+
+const stableParent = movedElement.parentNode;
+let notFoundErrorName = "";
+try {
+  root.removeChild(movedElement);
+} catch (error) {
+  notFoundErrorName = error.name;
+}
+let hierarchyErrorName = "";
+try {
+  movedElement.appendChild(target);
+} catch (error) {
+  hierarchyErrorName = error.name;
+}
+let invalidNameErrorName = "";
+try {
+  document.createElement("bad name");
+} catch (error) {
+  invalidNameErrorName = error.name;
+}
+if (
+  notFoundErrorName !== "NotFoundError" ||
+  hierarchyErrorName !== "HierarchyRequestError" ||
+  invalidNameErrorName !== "InvalidCharacterError" ||
+  movedElement.parentNode !== stableParent
+) {
+  throw new Error("DOM façade 오류 또는 실패 뒤 기존 트리 보존이 예상과 다릅니다");
+}
+
+target.removeChild(movedElement);
+if (movedElement.parentNode !== null || movedElement.firstChild !== precedingText) {
+  throw new Error("DOM façade의 분리 노드 조회가 예상과 다릅니다");
+}
+target.appendChild(movedElement);
+if (target.firstChild !== movedElement || movedElement.parentNode !== target) {
+  throw new Error("DOM façade의 분리 노드 재삽입이 예상과 다릅니다");
+}
+
+const parentNodeDescriptor = Object.getOwnPropertyDescriptor(Node.prototype, "parentNode");
+let containsWithPatchedParent = false;
+let cycleWithPatchedParent = "";
+Object.defineProperty(Node.prototype, "parentNode", {
+  configurable: true,
+  get() {
+    return this;
+  },
+});
+try {
+  containsWithPatchedParent = target.contains(movedText);
+  try {
+    movedElement.appendChild(target);
+  } catch (error) {
+    cycleWithPatchedParent = error.name;
+  }
+} finally {
+  Object.defineProperty(Node.prototype, "parentNode", parentNodeDescriptor);
+}
+if (!containsWithPatchedParent || cycleWithPatchedParent !== "HierarchyRequestError") {
+  throw new Error("Node getter 재정의가 트리 포함·순환 검증을 바꿨습니다");
 }
 
 spinon.setText(

@@ -10,6 +10,7 @@ const CALLBACK_OK: i32 = 0;
 const CALLBACK_INVALID: i32 = -1;
 const CALLBACK_REJECTED: i32 = -2;
 const CALLBACK_PANIC: i32 = -3;
+const CALLBACK_QUOTA_EXCEEDED: i32 = -4;
 
 pub(crate) const OP_CREATE_ELEMENT: i32 = 1;
 pub(crate) const OP_CREATE_TEXT: i32 = 2;
@@ -264,7 +265,11 @@ pub(crate) unsafe extern "C" fn commit_callback(
         }
         Ok(Err(error)) => {
             write_error(error_output, error_capacity, &error);
-            CALLBACK_REJECTED
+            if error.contains("QuotaExceededError:") {
+                CALLBACK_QUOTA_EXCEEDED
+            } else {
+                CALLBACK_REJECTED
+            }
         }
         Err(_) => {
             write_error(

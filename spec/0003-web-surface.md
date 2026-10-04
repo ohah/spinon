@@ -16,7 +16,7 @@
 
 지원 HTML 요소에 적용할 구조적 UA 규칙은 [`spinon-style` 내장 stylesheet 초안](https://github.com/ohah/spinon/blob/main/crates/spinon-style/resources/ua/supported-elements-v0.css)으로 관리한다. 이 자원은 Rust 바이너리에 포함되지만 Stylo cascade나 화면에는 아직 연결되지 않았다. 폼 컨트롤의 외형·링크 상태별 표현도 미구현이다. 세부 범위는 [CSS 호환 명세](0008-css-compatibility.md)와 [구현 상태 대장](STATUS.md)의 C01·C04를 따른다.
 
-첫 수직 구현 외의 요소를 조용히 일반 `<div>`처럼 바꾸지 않는다. 지원되지 않는 요소와 화면에 영향을 주는 속성은 빌드 또는 개발 실행에서 진단한다. 제한된 `document`·노드 API 후보는 [DOM 호환 명세](0007-dom-compatibility.md)에 별도로 제안한다. 이 제안은 전체 브라우저 DOM이나 모든 태그 조회 기능이 있다는 뜻이 아니다.
+첫 수직 구현 외의 요소를 조용히 일반 `<div>`처럼 바꾸지 않는다. 지원되지 않는 요소와 화면에 영향을 주는 속성은 빌드 또는 개발 실행에서 진단한다. 제한된 `document`·노드 API의 공개 후보는 [DOM 호환 명세](0007-dom-compatibility.md)에 둔다. S03.2 내부 시제품이 작은 모바일 façade를 V8·Rust 문서 트리에 연결했지만, 이는 공개 지원이나 전체 브라우저 DOM·모든 태그 조회 기능이 있다는 뜻이 아니다.
 
 ## CSS 처리 단계
 
@@ -32,7 +32,7 @@ Tailwind는 별도 모바일 렌더러가 아니다. Tailwind가 **생성한 CSS
 
 V8의 ECMAScript 언어 기능과 스피논이 제공해야 하는 호스트 기능을 구분한다. `Promise`, `Map`, `ArrayBuffer`, `globalThis` 같은 언어 기능의 존재가 `fetch`, 타이머, `URL`, `console`, DOM을 자동으로 제공하지 않는다.
 
-첫 수직 구현은 JS 이벤트 콜백, 마이크로태스크 체크포인트, 타이머, 예외·콘솔 출력을 목표로 한다. `fetch`, 저장소, 바이너리·네트워크 객체는 각각 입력·결과·오류·취소·백그라운드 동작을 정의한 뒤 지원 여부를 표시한다. 모바일 `document`는 전체 브라우저 문서가 아니라 [별도 명세](0007-dom-compatibility.md)의 제한된 호환 façade 후보로 다룬다. 전체 `window`, 서비스 워커, Canvas/WebGL/WebGPU는 모바일 기본 API로 약속하지 않는다. GPU 내부 구현이 앱 공개 WebGPU를 뜻하지 않는다.
+첫 수직 구현은 JS 이벤트 콜백, 마이크로태스크 체크포인트, 타이머, 예외·콘솔 출력을 목표로 한다. `fetch`, 저장소, 바이너리·네트워크 객체는 각각 입력·결과·오류·취소·백그라운드 동작을 정의한 뒤 지원 여부를 표시한다. 모바일 `document`는 전체 브라우저 문서가 아니라 [별도 명세](0007-dom-compatibility.md)의 제한된 호환 façade로 다루며 현재 구현은 내부 시제품에 한정한다. 전체 `window`, 서비스 워커, Canvas/WebGL/WebGPU는 모바일 기본 API로 약속하지 않는다. GPU 내부 구현이 앱 공개 WebGPU를 뜻하지 않는다.
 
 ### 엔진 연결과 사용자 확장 경계 제안
 

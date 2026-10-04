@@ -39,11 +39,12 @@ DOM 호환 계층만으로 `react-dom`이나 브라우저 DOM을 직접 호출�
 | API 영역 | 첫 단계 후보 | 계약에 필요한 조건 |
 | --- | --- | --- |
 | 노드 생성 | `document.createElement()`, `document.createTextNode()` | 지원 태그·노드 종류, HTML 이름의 대소문자 처리, 잘못된 이름의 예외와 문서 소속 규칙 |
-| 자식 변경 | `appendChild()`, `insertBefore()`, `removeChild()` | 기존 부모에서 이동, `insertBefore(node, null)`의 끝 삽입, 삽입한/제거한 노드 반환, 순환·잘못된 참조의 동기 `DOMException`, 실패 시 기존 트리 보존 |
+| 자식 변경 | `appendChild()`, `insertBefore()`, `removeChild()` | 기존 부모에서 이동, `insertBefore(node, null)`과 nullable 인자 `undefined`의 끝 삽입, 삽입한/제거한 노드 반환, 순환·잘못된 참조의 동기 `DOMException`, 실패 시 기존 트리 보존 |
 | 트리 읽기·쓰기 | `nodeType`, `nodeName`, `parentNode`, `firstChild`, `nextSibling`, `textContent`, `Text.data`/`nodeValue` | `textContent`의 getter·setter와 자식 교체 의미, `Text.data`의 getter·setter, 노드 종류별 `nodeValue`, 요소와 텍스트가 섞인 순서, 노드 이름·종류 상수, 분리된 노드의 수명, 변경 직후 읽기 |
 | 기본 속성 | `getAttribute()`, `setAttribute()`, `removeAttribute()`, `id`, `className` | JavaScript 문자열 인수의 변환, 속성 이름의 대소문자, `id`·`className`과 `id`·`class` 속성의 반영 관계, 지원 CSS 선택자에 미치는 효과 |
+| 예외 객체 | 제한된 `DOMException` 생성·발생 | 생성자 기본값, 읽기 전용 `name`·`message`, `code`·상수와 표준 오류 메시지의 지원 범위를 명시 |
 
-Rust `HostDocument::reserve_node_handle()`는 ID만 예약하는 내부 단계이며 JavaScript `document.createElement()`와 일대일 대응하지 않습니다. 공개 DOM API를 구현할 때는 분리된 `Element` 래퍼와 논리 노드가 함수 반환 뒤의 동기 조회에서 보이도록 해야 합니다. 내부 ID 예약과 노드 생성 커밋을 어떻게 연결할지는 JS façade 구현 계약에 둡니다. 프레임워크 변경 묶음은 중간 상태를 앱이 관찰할 수 없을 때만 합칠 수 있습니다. 이름 정규화와 예외 변환은 아직 결정되지 않았습니다.
+Rust `HostDocument::reserve_node_handle()`는 ID만 예약하는 내부 단계이며 JavaScript `document.createElement()`와 일대일 대응하지 않습니다. S03.2 내부 시제품은 분리된 `Element` wrapper와 논리 노드를 만들고 함수 반환 뒤의 동기 조회에서 보이게 하며, 내부 callback에서 ID 예약·커밋을 연결합니다. 이는 공개 DOM API 적합성이나 모든 인수·오류 계약의 결정이 아닙니다. 프레임워크 변경 묶음은 중간 상태를 앱이 관찰할 수 없을 때만 합칠 수 있습니다. 공개 이름 정규화·예외 호환 표는 아직 결정되지 않았습니다.
 
 다음 항목은 첫 단계에 자동 포함하지 않는다. 각 항목은 별도 동작 계약과 적합성 시나리오가 필요하다.
 
@@ -97,3 +98,5 @@ S01의 `Tree`는 DOM에 연결할 수 없지만, R03의 별도 [`HostDocument`](
 이 시나리오의 예상 결과와 웹·Android·iOS 원본 실행 근거가 생긴 뒤에만 버전별 지원 표에 적합성 판정을 추가한다.
 
 동작 기준은 [WHATWG DOM Standard](https://dom.spec.whatwg.org/)에서 선택한 API와 노드 트리 동작으로 삼는다. 이 참조는 표준 전체 구현을 목표로 한다는 뜻이 아니다.
+
+S03.2에서는 `document` 앱 루트, `Document`·`Element`·`Text` 제한 wrapper, 동기 관계·텍스트·속성 조회와 Rust `HostDocument` 변경을 내부 시제품으로 연결한다. 현재 제공 표면·오류·한도·미구현 항목은 [0020 내부 인터페이스](internal/0020-s03-dom-facade.md), 고정 Chromium 비교 시나리오는 [S03.2 비교 기록](internal/evidence/s03-dom-facade-precomparison-2026-10-04.md)에 있다. 이 연결은 J10/S03 또는 전체 DOM 호환 완료가 아니다. `textContent` setter, NodeList, selector, 문서 파싱, 스타일 invalidation과 GPU 표시를 지원하지 않는다.

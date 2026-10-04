@@ -1,4 +1,4 @@
-use crate::host::{HostDocumentBridge, commit_callback};
+use crate::host::{HostDocumentBridge, commit_callback, query_callback};
 #[cfg(test)]
 use crate::v8::{NodeCallback, TextCallback};
 use crate::v8::{
@@ -227,6 +227,7 @@ fn actor_loop(
             on_node,
             on_text,
             commit_callback,
+            query_callback,
             callback_data,
             document_data,
         )
@@ -869,6 +870,7 @@ mod tests {
         node_callback: super::NodeCallback,
         text_callback: super::TextCallback,
         _document_commit_callback: DocumentCommitCallback,
+        _document_query_callback: crate::host::DocumentQueryCallback,
         user_data: *mut c_void,
         _document_user_data: *mut c_void,
     ) -> *mut super::SpinonV8Runtime {

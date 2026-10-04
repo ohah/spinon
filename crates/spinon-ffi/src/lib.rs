@@ -198,11 +198,26 @@ mod tests {
     struct TestDocumentReceipt {
         _private: [u8; 0],
     }
+    #[repr(C)]
+    struct TestDocumentQuery {
+        _private: [u8; 0],
+    }
+    #[repr(C)]
+    struct TestDocumentQueryResult {
+        _private: [u8; 0],
+    }
     type DocumentCommitCallback = unsafe extern "C" fn(
         *mut std::ffi::c_void,
         *const TestDocumentOperation,
         usize,
         *mut TestDocumentReceipt,
+        *mut std::ffi::c_char,
+        usize,
+    ) -> i32;
+    type DocumentQueryCallback = unsafe extern "C" fn(
+        *mut std::ffi::c_void,
+        *const TestDocumentQuery,
+        *mut TestDocumentQueryResult,
         *mut std::ffi::c_char,
         usize,
     ) -> i32;
@@ -212,6 +227,7 @@ mod tests {
         _node_callback: NodeCallback,
         _text_callback: TextCallback,
         _document_commit_callback: DocumentCommitCallback,
+        _document_query_callback: DocumentQueryCallback,
         _user_data: *mut std::ffi::c_void,
         _document_user_data: *mut std::ffi::c_void,
     ) -> *mut TestV8Runtime {

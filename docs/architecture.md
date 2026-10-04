@@ -46,11 +46,11 @@ Fetch 요청 → NetworkHost → 네트워크 전송 계층 → Android / iOS �
 
 Rust 코어는 React의 Fiber나 Vue의 반응성 시스템을 복제하지 않는다. 공통 코어에는 `create`, `update`, `move`, `remove`, `commit` 같은 호스트 작업과 그 결과만 둔다. React를 첫 어댑터로 구현한 뒤 Vue·Svelte가 같은 계약을 사용할 수 있는지 검증한다.
 
-앱이 작성하는 태그는 `<div>`, `<button>` 같은 HTML 이름을 사용한다. 모바일 주 화면은 Rust 문서·UI 트리와 GPU 장면을 사용한다. 여기에 선택된 웹 DOM 함수와 같은 호출 형태를 제공하는 제한된 JS façade를 제안한다. 전체 브라우저 DOM을 끼우거나 일반 태그마다 네이티브 뷰를 만들지는 않는다. 태그 의미와 DOM API의 정확한 경계는 [작성 문법 초안](authoring-contract.md), [DOM 호환 명세](../spec/0007-dom-compatibility.md)에 둔다.
+앱이 작성하는 태그는 `<div>`, `<button>` 같은 HTML 이름을 사용한다. 모바일 주 화면은 Rust 문서·UI 트리와 GPU 장면을 사용한다. S03.2에서 제한된 JS DOM façade를 내부 시제품으로 연결했지만 공개 DOM 지원이나 전체 브라우저 호환은 아니다. 전체 브라우저 DOM을 끼우거나 일반 태그마다 네이티브 뷰를 만들지는 않는다. 태그 의미와 API 경계는 [작성 문법 초안](authoring-contract.md), [DOM 호환 명세](../spec/0007-dom-compatibility.md), [S03.2 내부 계약](../spec/internal/0020-s03-dom-facade.md)에 둔다.
 
-V8은 JavaScript 언어 엔진이며 브라우저의 `fetch`, 타이머, DOM 등은 자동으로 제공하지 않는다. DOM façade는 V8 호스트 바인딩과 Rust 문서 트리를 연결해 별도로 구현해야 한다. `fetch`는 Rust UI 트리 API와 분리된 네트워크 호스트 경로가 필요하다. WHATWG Fetch 형태의 JS 표면을 지원해도 네이티브 전송 계층, 앱 출처·쿠키·권한·취소·본문 스트림 동작을 따로 정의해야 한다. 둘 다 Blink나 WebView를 넣어야 하는 이유는 아니다. 재사용할 JS 라이브러리의 요구 API를 먼저 조사하고, 스피논이 제공하는 호스트 API와 웹 전용 API의 경계를 공개한다. 첫 DOM 제안은 표준 함수 몇 개의 이름만 흉내 내는 것으로 끝나지 않는다. 동기 읽기·쓰기, 요소/텍스트 순서, 객체 수명, 예외, 프레임워크 어댑터와의 트리 소유권을 정의해야 한다.
+V8은 JavaScript 언어 엔진이며 브라우저의 `fetch`, 타이머, DOM 등은 자동으로 제공하지 않는다. S03.2에서 제한 DOM façade의 내부 시제품을 Rust 문서 트리에 연결했다. 공개 API 수준으로 확장하려면 브라우저 호환성, 객체 수명, 오류, 프레임워크 어댑터와의 트리 소유권을 계속 정의해야 한다. `fetch`는 Rust UI 트리 API와 분리된 네트워크 호스트 경로가 필요하다. WHATWG Fetch 형태의 JS 표면을 지원해도 네이티브 전송 계층, 앱 출처·쿠키·권한·취소·본문 스트림 동작을 따로 정의해야 한다. 둘 다 Blink나 WebView를 넣어야 하는 이유는 아니다. 재사용할 JS 라이브러리의 요구 API를 조사하고 스피논 호스트 API와 웹 전용 API의 경계를 공개한다.
 
-S03.1의 내부 `spinon.__internal.commitDocumentBatch`는 위 공개 DOM façade와 다른 진단 경로다. V8 C++ 어댑터가 작업 객체를 UTF-16 C ABI로 복사하고 `spinon-runtime`이 `HostDocumentBridge`를 소유해 `spinon-core::HostDocument`에 한 번에 적용한다. 포인터와 문자열 버퍼는 동기 callback 동안만 빌려주며 Rust는 반환 전에 필요한 데이터를 복사한다. Android·iOS 실제 V8 시뮬레이터 실행은 확인했지만, 이 경로는 React·Vue·Svelte 어댑터, 화면 레이아웃·GPU 반영, 앱 작성자 API를 제공하지 않는다. 버전 있는 내부 계약과 실패 범위는 [0018](../spec/internal/0018-s03-v8-hostdocument-bridge.md), 실행 결과는 [S03.1 증거](../spec/internal/evidence/s03-v8-hostdocument-bridge-2026-10-03.md)를 따른다.
+S03.1의 내부 `spinon.__internal.commitDocumentBatch`는 진단용 HostDocument 변경 경로다. V8 C++ 어댑터가 작업 객체를 UTF-16 C ABI로 복사하고 `spinon-runtime`이 `HostDocumentBridge`를 소유해 `spinon-core::HostDocument`에 한 번에 적용한다. S03.2는 그 문서에 전역 `document`, 제한된 Element/Text 생성·관계 조회·변경 API를 연결하고, wrapper 객체를 세션 안에서 유지한다. 두 내부 경로 모두 React·Vue·Svelte 어댑터, 화면 레이아웃·GPU 반영, 앱 작성자 대상의 안정된 DOM API를 제공하지 않는다. 버전 있는 내부 계약은 [0018](../spec/internal/0018-s03-v8-hostdocument-bridge.md)과 [0020](../spec/internal/0020-s03-dom-facade.md), 실행 결과는 각 [S03.1 증거](../spec/internal/evidence/s03-v8-hostdocument-bridge-2026-10-03.md)와 [S03.2 시뮬레이터 실행 근거](../spec/internal/evidence/s03-dom-facade-runtime-2026-10-04.md)에 둔다.
 
 JSI는 React Native가 채택한 JavaScript↔C++ 인터페이스다. 스피논은 V8을 선택했으므로 엔진 API에 붙는 내부 어댑터가 필요하지만 RN의 JSI를 그대로 넣을 이유는 없다. 앱 작성자가 자체 Kotlin·Swift·Rust·C++ 기능을 JS에서 부르도록 하려면, V8별 API를 노출하는 대신 빌드 시 생성·등록되는 버전 있는 플랫폼 모듈 계약을 별도로 제공한다. 웹 빌드의 대체 구현 또는 명시적 미지원 동작도 모듈 계약에 포함한다. 일반 값 전달과 비동기 호출을 기본으로 하고, 고용량 zero-copy 데이터는 별도 수명·소유권 계약을 갖는 후속 경로로 둔다. 이 확장 경계의 공개 범위는 [JS API 구현 체크리스트의 J15](../spec/STATUS.md#javascript-api-구현-체크리스트)에서 X08 하위 작업으로 정한다.
 
@@ -66,7 +66,7 @@ Tailwind CSS는 별도 모바일 런타임이 아니라 빌드 도구로 취급�
 
 [기존 스타일·레이아웃 실험](../spikes/style-layout/README.md)은 Lightning CSS AST → 제한된 스타일 데이터 → Taffy의 대안 경로를 조사한 자료다. 이 AST 변환은 제품 경로로 선택하지 않았다. 제품 CSS 파싱·계산은 Stylo이며 Lightning CSS는 동등성 확인이 필요한 빌드 변환 후보로 남긴다.
 
-제한된 DOM 호환을 추가하면 순서가 하나 더 생긴다. [R01·R03](../spec/STATUS.md)에서 앱 문서 루트, 혼합 요소·텍스트 트리, 동기 논리 변경·조회, 렌더러 소유권을 먼저 정한 뒤 V8 바인딩과 프레임워크 어댑터를 구현한다. DOM façade는 `packages/runtime/dom`에 분리하는 계획이다. 현재 S01 트리를 그대로 공개하거나 React 어댑터와 별도 UI 트리를 만들지 않는다.
+S03.2가 앱 루트, 혼합 요소·텍스트 트리, 동기 논리 변경·조회의 내부 기준을 제공한다. 이 시제품은 `native/v8`와 `spinon-runtime`에 있으며, 계획한 `packages/runtime/dom` 사용자 패키지로 추출되거나 프레임워크 렌더러와 연결된 것은 아니다. [R01·R03](../spec/STATUS.md)에서 공개 API의 호환 범위와 소유권을 확정한 뒤 React·Vue·Svelte 어댑터가 공통 Rust 트리를 사용하도록 연결한다. 현재 S01 트리를 DOM으로 노출하거나 프레임워크 어댑터와 별도 UI 트리를 만들지 않는다.
 
 ## 다음 구현 단계
 

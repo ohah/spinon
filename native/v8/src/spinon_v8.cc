@@ -5,6 +5,7 @@
 
 #include <memory>
 #include <mutex>
+#include <new>
 #include <string>
 #include <vector>
 
@@ -23,6 +24,7 @@ struct SpinonV8Runtime {
   SpinonNodeCallback node_callback = nullptr;
   SpinonTextCallback text_callback = nullptr;
   SpinonDocumentCommitCallback document_commit_callback = nullptr;
+  SpinonDocumentQueryCallback document_query_callback = nullptr;
   void *user_data = nullptr;
   void *document_user_data = nullptr;
   std::string error;
@@ -80,6 +82,9 @@ constexpr int kMaximumNameUnits = 1024;
 constexpr int kMaximumValueUnits = 1'048'576;
 constexpr int kMaximumOperationTypeUnits = 32;
 constexpr char16_t kHtmlNamespace[] = u"http://www.w3.org/1999/xhtml";
+constexpr char kDomFacadeSource[] =
+#include "spinon_dom_facade.inc"
+    ;
 
 class ScopedBoolean {
  public:
@@ -256,7 +261,7 @@ bool ParseDocumentOperation(v8::Isolate *isolate,
 }
 
 void ThrowDocumentError(v8::Isolate *isolate, const std::string &message,
-                        bool type_error) {
+                        bool type_error, const char *name = nullptr) {
   v8::Local<v8::String> text;
   if (!v8::String::NewFromUtf8(isolate, message.data(),
                                v8::NewStringType::kNormal,
@@ -268,6 +273,12 @@ void ThrowDocumentError(v8::Isolate *isolate, const std::string &message,
   v8::Local<v8::Value> exception = type_error
                                       ? v8::Exception::TypeError(text)
                                       : v8::Exception::Error(text);
+  if (!type_error && name != nullptr) {
+    auto context = isolate->GetCurrentContext();
+    auto key = v8::String::NewFromUtf8Literal(isolate, "name");
+    auto value = v8::String::NewFromUtf8(isolate, name).ToLocalChecked();
+    exception.As<v8::Object>()->Set(context, key, value).Check();
+  }
   isolate->ThrowException(exception);
 }
 
@@ -347,11 +358,14 @@ void CommitDocumentBatch(const v8::FunctionCallbackInfo<v8::Value> &args) {
   const int32_t status = runtime->document_commit_callback(
       runtime->document_user_data, operations.data(), operations.size(), &receipt,
       error, sizeof(error));
-  if (status != 0) {
+  if (status != SPINON_DOCUMENT_CALLBACK_OK) {
+    const char *name = status == SPINON_DOCUMENT_CALLBACK_QUOTA_EXCEEDED
+                           ? "QuotaExceededError"
+                           : nullptr;
     ThrowDocumentError(isolate,
                        error[0] == '\0' ? "문서 변경 묶음이 거부되었습니다"
                                         : std::string(error),
-                       false);
+                       false, name);
     try_catch.ReThrow();
     return;
   }
@@ -372,6 +386,99 @@ void CommitDocumentBatch(const v8::FunctionCallbackInfo<v8::Value> &args) {
               v8::BigInt::NewFromUnsigned(isolate, receipt.node_count))
       .Check();
   args.GetReturnValue().Set(result);
+}
+
+void ReadDocument(const v8::FunctionCallbackInfo<v8::Value> &args) {
+  auto *runtime = static_cast<SpinonV8Runtime *>(args.GetIsolate()->GetData(0));
+  v8::Isolate *isolate = args.GetIsolate();
+  v8::Local<v8::Context> context = isolate->GetCurrentContext();
+  if (args.Length() < 2 || args.Length() > 4 || !args[0]->IsInt32() ||
+      !args[1]->IsInt32() || (args.Length() > 2 && !args[2]->IsInt32()) ||
+      (args.Length() > 3 && !args[3]->IsString())) {
+    ThrowDocumentError(isolate,
+                       "readDocument(kind, nodeId, index?, name?) 인자가 잘못되었습니다",
+                       true);
+    return;
+  }
+  if (runtime->document_query_callback == nullptr) {
+    ThrowDocumentError(isolate, "문서 조회 callback이 등록되지 않았습니다", false);
+    return;
+  }
+
+  std::vector<uint16_t> name;
+  if (args.Length() > 3) {
+    v8::Local<v8::String> input = args[3].As<v8::String>();
+    if (input->Length() > 1024) {
+      ThrowDocumentError(isolate, "조회 이름이 허용 길이를 초과했습니다", true);
+      return;
+    }
+    v8::String::Value value(isolate, input);
+    if (*value != nullptr) name.assign(*value, *value + value.length());
+  }
+
+  SpinonDocumentQuery query{};
+  query.kind = args[0].As<v8::Int32>()->Value();
+  query.node_id = args[1].As<v8::Int32>()->Value();
+  query.index = args.Length() > 2 ? args[2].As<v8::Int32>()->Value() : 0;
+  query.name_utf16 = name.empty() ? nullptr : name.data();
+  query.name_length = name.size();
+  SpinonDocumentQueryResult result{};
+  char error[1024] = {};
+  int32_t status = runtime->document_query_callback(
+      runtime->document_user_data, &query, &result, error, sizeof(error));
+  if (status != SPINON_DOCUMENT_CALLBACK_OK &&
+      status != SPINON_DOCUMENT_CALLBACK_BUFFER_TOO_SMALL) {
+    ThrowDocumentError(isolate,
+                       error[0] == '\0' ? "문서 조회가 거부되었습니다"
+                                        : std::string(error),
+                       false);
+    return;
+  }
+  if (result.output_length > 16'777'216) {
+    ThrowDocumentError(isolate, "문서 조회 결과가 허용 길이를 초과했습니다", false);
+    return;
+  }
+  std::vector<uint16_t> output;
+  try {
+    output.resize(result.output_length);
+  } catch (const std::bad_alloc &) {
+    ThrowDocumentError(isolate, "문서 조회 문자열 버퍼를 확보하지 못했습니다", false);
+    return;
+  }
+  if (!output.empty()) {
+    query.output_utf16 = output.data();
+    query.output_capacity = output.size();
+    status = runtime->document_query_callback(
+        runtime->document_user_data, &query, &result, error, sizeof(error));
+    if (status != SPINON_DOCUMENT_CALLBACK_OK) {
+      ThrowDocumentError(isolate,
+                         error[0] == '\0' ? "문서 조회 결과를 읽지 못했습니다"
+                                          : std::string(error),
+                         false);
+      return;
+    }
+  }
+
+  auto text = output.empty()
+                  ? v8::String::Empty(isolate)
+                  : v8::String::NewFromTwoByte(
+                        isolate, output.data(), v8::NewStringType::kNormal,
+                        static_cast<int>(output.size()));
+  if (text.IsEmpty()) {
+    ThrowDocumentError(isolate, "문서 조회 문자열을 만들지 못했습니다", false);
+    return;
+  }
+  auto value = v8::Object::New(isolate);
+  value->Set(context, v8::String::NewFromUtf8Literal(isolate, "exists"),
+             v8::Boolean::New(isolate, result.exists != 0))
+      .Check();
+  value->Set(context, v8::String::NewFromUtf8Literal(isolate, "value"),
+             v8::Int32::New(isolate, result.value))
+      .Check();
+  value->Set(context, v8::String::NewFromUtf8Literal(isolate, "text"),
+             text.ToLocalChecked())
+      .Check();
+  args.GetReturnValue().Set(value);
 }
 
 void OnEvent(const v8::FunctionCallbackInfo<v8::Value> &args) {
@@ -398,13 +505,15 @@ bool Enter(SpinonV8Runtime *runtime, v8::Local<v8::Context> *context) {
 
 extern "C" SpinonV8Runtime *spinon_v8_runtime_new(
     SpinonNodeCallback node_callback, SpinonTextCallback text_callback,
-    SpinonDocumentCommitCallback document_commit_callback, void *user_data,
+    SpinonDocumentCommitCallback document_commit_callback,
+    SpinonDocumentQueryCallback document_query_callback, void *user_data,
     void *document_user_data) {
   std::call_once(platform_once, InitializeV8);
   auto *runtime = new SpinonV8Runtime;
   runtime->node_callback = node_callback;
   runtime->text_callback = text_callback;
   runtime->document_commit_callback = document_commit_callback;
+  runtime->document_query_callback = document_query_callback;
   runtime->user_data = user_data;
   runtime->document_user_data = document_user_data;
 
@@ -433,10 +542,25 @@ extern "C" SpinonV8Runtime *spinon_v8_runtime_new(
     internal->Set(runtime->isolate, "commitDocumentBatch",
                   v8::FunctionTemplate::New(runtime->isolate,
                                             CommitDocumentBatch));
+    internal->Set(runtime->isolate, "readDocument",
+                  v8::FunctionTemplate::New(runtime->isolate, ReadDocument));
     spinon->Set(runtime->isolate, "__internal", internal);
     global->Set(runtime->isolate, "spinon", spinon);
     runtime->context.Reset(
         runtime->isolate, v8::Context::New(runtime->isolate, nullptr, global));
+    v8::Local<v8::Context> context = runtime->context.Get(runtime->isolate);
+    v8::Context::Scope context_scope(context);
+    auto source = v8::String::NewFromUtf8(runtime->isolate, kDomFacadeSource);
+    v8::Local<v8::Script> script;
+    if (source.IsEmpty() ||
+        !v8::Script::Compile(context, source.ToLocalChecked()).ToLocal(&script) ||
+        script->Run(context).IsEmpty()) {
+      runtime->context.Reset();
+      runtime->isolate->Dispose();
+      delete runtime->allocator;
+      delete runtime;
+      return nullptr;
+    }
   }
   return runtime;
 }
