@@ -15,6 +15,7 @@ final class RuntimeThreadExperimentViewController: UIViewController {
     private let runtimeCallSlots = DispatchSemaphore(value: 64)
     private let runtimeControl = DispatchQueue(label: "dev.spinon.r06.runtime-control", qos: .userInitiated)
     private let bootstrapSource: String
+    private let lifecycleProbeSource: String
 
     private var session: UInt64 = 0
     private var heartbeatTimer: Timer?
@@ -48,6 +49,12 @@ final class RuntimeThreadExperimentViewController: UIViewController {
             bootstrapSource = source
         } else {
             bootstrapSource = "spinon.onEvent((nodeId) => spinon.setText(`이벤트:${nodeId}`));"
+        }
+        if let sourceURL = Bundle.main.url(forResource: "s03-lifecycle-probe", withExtension: "js"),
+           let source = try? String(contentsOf: sourceURL, encoding: .utf8) {
+            lifecycleProbeSource = source
+        } else {
+            lifecycleProbeSource = ""
         }
         super.init(nibName: nil, bundle: nil)
     }
@@ -213,88 +220,190 @@ final class RuntimeThreadExperimentViewController: UIViewController {
     @objc private func runLifecycleCollectionProbe() {
         guard session != 0, !scenarioRunning, !isClosing else { return }
         lifecycleButton.isEnabled = false
-        setStatus("V8 GC 후 Rust HostDocument 회수 검증 중…")
+        setStatus("V8 callback root와 반복 DOM 수명 회수 검증 중…")
         let handle = session
         let accepted = enqueueRuntimeCall(label: "DOM weak wrapper 회수") { [weak self] in
             guard let self else { return }
+            guard !self.lifecycleProbeSource.isEmpty else {
+                DispatchQueue.main.async {
+                    self.appendReport("실패 · DOM 수명 fixture asset 없음")
+                    self.lifecycleButton.isEnabled = true
+                    self.setStatus("검증 전용 fixture resource가 없습니다")
+                }
+                return
+            }
+
+            let loaded = SpinonRunner.evalRuntimeSession(
+                handle, source: self.lifecycleProbeSource) ?? "응답 없음"
+            guard loaded.hasPrefix("status=0 ") else {
+                DispatchQueue.main.async {
+                    self.appendReport("실패 · DOM 수명 fixture 로드 · \(loaded)")
+                    self.lifecycleButton.isEnabled = true
+                    self.setStatus("DOM 수명 fixture 로드 실패")
+                }
+                return
+            }
+
+            let reset = self.callLifecycleFixture(handle, "reset")
+            let baselineFirst = SpinonRunner.evalRuntimeSession(handle, source: "") ?? "응답 없음"
             let baseline = SpinonRunner.evalRuntimeSession(handle, source: "") ?? "응답 없음"
-            let setup = SpinonRunner.evalRuntimeSession(
-                handle,
-                source: """
-                    (() => {
-                      const parent = document.createElement('div');
-                      parent.setAttribute('data-spinon-lifecycle', 'parent');
-                      let child = document.createTextNode('attached-child');
-                      globalThis.__spinonLifecycleAttachedWeak = new WeakRef(child);
-                      document.appendChild(parent);
-                      parent.appendChild(child);
-                      child = null;
-                      const detachedParent = document.createElement('section');
-                      detachedParent.setAttribute('data-spinon-lifecycle', 'detached-parent');
-                      const detachedChild = document.createTextNode('held');
-                      detachedParent.appendChild(detachedChild);
-                      globalThis.__spinonLifecycleHeld = detachedChild;
-                      let orphan = document.createTextNode('orphan');
-                      globalThis.__spinonLifecycleWeak = new WeakRef(orphan);
-                      orphan = null;
-                      spinon.__internal.requestLifecycleCollectionForTesting();
-                    })();
-                    """
-            ) ?? "응답 없음"
-            let verify = SpinonRunner.evalRuntimeSession(
-                handle,
-                source: """
-                    (() => {
-                      let parent = document.firstChild;
-                      while (parent !== null && parent.getAttribute('data-spinon-lifecycle') !== 'parent') {
-                        parent = parent.nextSibling;
-                      }
-                      const oldWrapperExpired =
-                        globalThis.__spinonLifecycleAttachedWeak.deref() === undefined;
-                      const recreatedChild = parent === null ? null : parent.firstChild;
-                      if (parent === null || !oldWrapperExpired || recreatedChild === null ||
-                          recreatedChild.textContent !== 'attached-child' ||
-                          parent.firstChild !== recreatedChild ||
-                          globalThis.__spinonLifecycleHeld.textContent !== 'held' ||
-                          globalThis.__spinonLifecycleHeld.parentNode.getAttribute('data-spinon-lifecycle') !== 'detached-parent' ||
-                          globalThis.__spinonLifecycleWeak.deref() !== undefined) {
-                        throw new Error('weak wrapper GC did not preserve live roots and reclaim orphan');
-                      }
-                      spinon.__internal.requestLifecycleCollectionForTesting();
-                    })();
-                    """
-            ) ?? "응답 없음"
-            let beforeNodes = Int(self.field("document_nodes", in: baseline) ?? "-1") ?? -1
-            let afterNodes = Int(self.field("document_nodes", in: setup) ?? "-1") ?? -1
-            let countsMatch = beforeNodes >= 0 && afterNodes == beforeNodes + 4
-            let collectorSucceeded = [baseline, setup, verify].allSatisfy {
-                self.field("document_collection_error", in: $0) == "none"
-            } && self.field("document_collection_poisoned", in: verify) == "0"
-            let scanCount = Int(self.field("document_collection_scans", in: verify) ?? "-1") ?? -1
-            let scannedHandles = Int(self.field("document_collection_scanned_handles", in: verify) ?? "-1") ?? -1
-            let liveHandles = Int(self.field("document_collection_live_handles", in: verify) ?? "-1") ?? -1
-            let emptyHandles = Int(self.field("document_collection_empty_handles", in: verify) ?? "-1") ?? -1
-            let scanStatsValid = scanCount >= 3 && scannedHandles >= 0
-                && liveHandles >= 0 && emptyHandles >= 0
-                && scannedHandles == liveHandles + emptyHandles
-            let passed = setup.hasPrefix("status=0 ") && verify.hasPrefix("status=0 ")
-                && countsMatch && collectorSucceeded && scanStatsValid
+            let baselineNodes = self.integerField("document_nodes", in: baseline)
+            let baselineStringUnits = self.integerField("document_string_units", in: baseline)
+            let baselineWrapperHandles = self.integerField(
+                "document_collection_scanned_handles", in: baseline)
+            let baselineReady = reset.hasPrefix("status=0 ")
+                && self.collectionIsHealthy(reset)
+                && self.collectionIsHealthy(baselineFirst)
+                && self.collectionIsHealthy(baseline)
+                && baselineNodes >= 0 && baselineStringUnits >= 0
+                && self.integerField("document_collection_empty_handles", in: baseline) == 0
+                && self.integerField("document_collection_live_handles", in: baseline)
+                    == baselineWrapperHandles
+            guard baselineReady else {
+                DispatchQueue.main.async {
+                    self.appendReport("실패 · 기준선 안정화 · nodes=\(baselineNodes) strings=\(baselineStringUnits) wrappers=\(baselineWrapperHandles)")
+                    self.appendReport("기준선 실행 · \(baseline)")
+                    self.lifecycleButton.isEnabled = true
+                    self.setStatus("DOM 자원 기준선을 만들지 못했습니다")
+                }
+                return
+            }
+
+            let rootSetup = self.callLifecycleFixture(handle, "setupRootCases")
+            let rootVerify = self.callLifecycleFixture(handle, "verifyRootCases")
+            let rootSetupNodes = self.integerField("document_nodes", in: rootSetup)
+            let rootCasesPassed = rootSetup.hasPrefix("status=0 ")
+                && rootVerify.hasPrefix("status=0 ")
+                && rootSetupNodes == baselineNodes + 4
+                && self.collectionIsHealthy(rootSetup)
+                && self.collectionIsHealthy(rootVerify)
+                && self.scanCountsAreConsistent(rootVerify)
+            let rootCleanup = self.callLifecycleFixture(handle, "cleanupRootCases")
+            let rootCleanupStable = SpinonRunner.evalRuntimeSession(handle, source: "") ?? "응답 없음"
+            let initialBaselineReturned = rootCleanup.hasPrefix("status=0 ")
+                && self.collectionIsHealthy(rootCleanup)
+                && self.matchesResourceBaseline(rootCleanupStable, nodes: baselineNodes,
+                    stringUnits: baselineStringUnits, wrapperHandles: baselineWrapperHandles)
+
+            let callbackSetup = self.callLifecycleFixture(handle, "setupCallbackClosureRoot")
+            let callbackNodes = self.integerField("document_nodes", in: callbackSetup)
+            let callbackStringUnits = self.integerField("document_string_units", in: callbackSetup)
+            let expectedCallbackStringUnits = baselineStringUnits
+                + "http://www.w3.org/1999/xhtml".utf16.count
+                + "aside".utf16.count + "callback-root".utf16.count
+            var callbackClosureRootPassed = callbackSetup.hasPrefix("status=0 ")
+                && callbackNodes == baselineNodes + 2
+                && callbackStringUnits == expectedCallbackStringUnits
+                && self.collectionIsHealthy(callbackSetup)
+            let callbackDispatch = SpinonRunner.dispatchRuntimeSession(handle, nodeID: 1) ?? "응답 없음"
+            let callbackRootVerify = self.callLifecycleFixture(handle, "verifyCallbackClosureRoot")
+            callbackClosureRootPassed = callbackClosureRootPassed
+                && callbackDispatch.hasPrefix("status=0 ")
+                && callbackRootVerify.hasPrefix("status=0 ")
+                && self.collectionIsHealthy(callbackDispatch)
+                && self.collectionIsHealthy(callbackRootVerify)
+
+            let callbackRelease = self.callLifecycleFixture(handle, "replaceCallbackClosureRoot")
+            let callbackReleaseVerify = self.callLifecycleFixture(
+                handle, "verifyCallbackClosureReleased")
+            let callbackReleaseStable = SpinonRunner.evalRuntimeSession(handle, source: "") ?? "응답 없음"
+            let callbackClosureReleased = callbackRelease.hasPrefix("status=0 ")
+                && callbackReleaseVerify.hasPrefix("status=0 ")
+                && self.collectionIsHealthy(callbackRelease)
+                && self.collectionIsHealthy(callbackReleaseVerify)
+                && self.matchesResourceBaseline(callbackReleaseStable, nodes: baselineNodes,
+                    stringUnits: baselineStringUnits, wrapperHandles: baselineWrapperHandles)
+
+            var baselineReturnRounds = 0
+            var maximumEmptyWrappers = 0
+            for _ in 0..<6 {
+                let stress = self.callLifecycleFixture(handle, "stressRound")
+                let stable = SpinonRunner.evalRuntimeSession(handle, source: "") ?? "응답 없음"
+                let emptyWrappers = self.integerField(
+                    "document_collection_empty_handles", in: stress)
+                maximumEmptyWrappers = max(maximumEmptyWrappers, emptyWrappers)
+                let roundReturned = stress.hasPrefix("status=0 ")
+                    && self.collectionIsHealthy(stress)
+                    && self.scanCountsAreConsistent(stress)
+                    && self.integerField("document_nodes", in: stress) == baselineNodes
+                    && self.integerField("document_string_units", in: stress) == baselineStringUnits
+                    && emptyWrappers >= 64
+                    && self.matchesResourceBaseline(stable, nodes: baselineNodes,
+                        stringUnits: baselineStringUnits, wrapperHandles: baselineWrapperHandles)
+                guard roundReturned else { break }
+                baselineReturnRounds += 1
+            }
+
+            let finalReport = baselineReturnRounds > 0
+                ? (SpinonRunner.evalRuntimeSession(handle, source: "") ?? "응답 없음")
+                : callbackReleaseStable
+            let finalNodes = self.integerField("document_nodes", in: finalReport)
+            let finalStringUnits = self.integerField("document_string_units", in: finalReport)
+            let finalBaselineReturned = self.matchesResourceBaseline(finalReport,
+                nodes: baselineNodes, stringUnits: baselineStringUnits,
+                wrapperHandles: baselineWrapperHandles)
+            let repeatedBaseline = baselineReturnRounds == 6 && finalBaselineReturned
+            let scanStatsPassed = [reset, baselineFirst, baseline, rootSetup, rootVerify,
+                rootCleanup, rootCleanupStable, callbackSetup, callbackDispatch,
+                callbackRootVerify, callbackRelease, callbackReleaseVerify,
+                callbackReleaseStable, finalReport].allSatisfy(self.scanCountsAreConsistent)
+                && baselineReturnRounds == 6
+            let passed = rootCasesPassed && initialBaselineReturned
+                && callbackClosureRootPassed && callbackClosureReleased && repeatedBaseline
+                && scanStatsPassed
             DispatchQueue.main.async {
                 guard !self.isClosing else { return }
-                self.appendReport("DOM GC 기준 · document_nodes=" + String(beforeNodes))
-                self.appendReport("DOM GC 후 · document_nodes=" + String(afterNodes) + " · 예상=" + String(beforeNodes + 4))
-                self.appendReport("wrapper 수명 검증 · " + verify)
-                self.appendReport("회수기 callback 오류 없음 · \(collectorSucceeded ? "통과" : "실패")")
-                self.appendReport("회수 scan 계수 · \(scanStatsValid ? "통과" : "실패") · 전체 \(scanCount), 생존 \(liveHandles), 빈 항목 \(emptyHandles)")
-                self.appendReport("\(passed ? "통과" : "실패") · live wrapper와 HostDocument 루트를 보존하고 orphan를 회수")
+                self.appendReport("DOM 자원 기준선 · nodes=\(baselineNodes) strings=\(baselineStringUnits) wrappers=\(baselineWrapperHandles)")
+                self.appendReport("live root 보존·orphan 회수 · \(rootCasesPassed ? "통과" : "실패") · setup nodes=\(rootSetupNodes)")
+                self.appendReport("callback closure root·호출 · \(callbackClosureRootPassed ? "통과" : "실패") · nodes=\(callbackNodes) strings=\(callbackStringUnits)")
+                self.appendReport("callback 교체 후 해제·기준선 복귀 · \(callbackClosureReleased ? "통과" : "실패")")
+                self.appendReport("반복 수명 회수 · \(repeatedBaseline ? "통과" : "실패") · \(baselineReturnRounds)/6회 · 회차당 32쌍 · 최대 빈 wrapper \(maximumEmptyWrappers)")
+                self.appendReport("DOM 자원 최종 기준선 · nodes=\(finalNodes) strings=\(finalStringUnits) wrappers=\(self.integerField("document_collection_scanned_handles", in: finalReport))")
+                self.appendReport("회수 scan 계수 일관성 · \(scanStatsPassed ? "통과" : "실패") · scanned=live+empty")
+                self.appendReport("\(passed ? "통과" : "실패") · Rust 노드·UTF-16 문자열·weak wrapper 기준선 대조")
                 self.lifecycleButton.isEnabled = true
-                self.setStatus(passed ? "V8 약한 wrapper 회수 검증 통과" : "V8 약한 wrapper 회수 검증 실패")
+                self.setStatus(passed ? "V8 반복 수명 회수 검증 통과" : "V8 반복 수명 회수 검증 실패")
             }
         }
         if !accepted {
             lifecycleButton.isEnabled = true
             setStatus("DOM GC 검증 호출이 대기열에서 거부되었습니다")
         }
+    }
+
+    private func callLifecycleFixture(_ handle: UInt64, _ method: String) -> String {
+        let source = "globalThis.__spinonS03LifecycleProbeV1.\(method)();"
+        return SpinonRunner.evalRuntimeSession(handle, source: source) ?? "응답 없음"
+    }
+
+    private func integerField(_ key: String, in report: String) -> Int {
+        Int(field(key, in: report) ?? "") ?? -1
+    }
+
+    private func collectionIsHealthy(_ report: String) -> Bool {
+        report.hasPrefix("status=0 ")
+            && field("document_collection_error", in: report) == "none"
+            && field("document_collection_poisoned", in: report) == "0"
+            && field("document_collection_deferred", in: report) == "0"
+            && scanCountsAreConsistent(report)
+    }
+
+    private func scanCountsAreConsistent(_ report: String) -> Bool {
+        let scanned = integerField("document_collection_scanned_handles", in: report)
+        let live = integerField("document_collection_live_handles", in: report)
+        let empty = integerField("document_collection_empty_handles", in: report)
+        return scanned >= 0 && live >= 0 && empty >= 0 && scanned == live + empty
+    }
+
+    private func matchesResourceBaseline(
+        _ report: String, nodes: Int, stringUnits: Int, wrapperHandles: Int
+    ) -> Bool {
+        collectionIsHealthy(report)
+            && integerField("document_nodes", in: report) == nodes
+            && integerField("document_string_units", in: report) == stringUnits
+            && integerField("document_collection_scanned_handles", in: report) == wrapperHandles
+            && integerField("document_collection_live_handles", in: report) == wrapperHandles
+            && integerField("document_collection_empty_handles", in: report) == 0
     }
 
     @objc private func sendEvent() {

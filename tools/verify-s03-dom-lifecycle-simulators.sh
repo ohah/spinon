@@ -98,10 +98,20 @@ rg -Fq "$android_pass_marker" "$result_dir/android.log" \
   || fail "Android 90초 안에 통과 결과를 기록하지 못했습니다"
 rg -Fq 'attached_wrapper_recreated=PASS' "$result_dir/android.log" \
   || fail "Android wrapper 재생성 결과가 없습니다"
-rg -Fq 'collector_succeeded=PASS' "$result_dir/android.log" \
-  || fail "Android collector 오류 검사가 통과하지 않았습니다"
+rg -Fq 'callback_closure_root=PASS' "$result_dir/android.log" \
+  || fail "Android callback closure root 보존 결과가 없습니다"
+rg -Fq 'callback_closure_release=PASS' "$result_dir/android.log" \
+  || fail "Android callback 교체 뒤 wrapper 회수 결과가 없습니다"
+rg -Fq 'initial_baseline_return=PASS' "$result_dir/android.log" \
+  || fail "Android 초기 root fixture 뒤 자원 기준선 복귀 결과가 없습니다"
+rg -Fq 'repeated_baseline=PASS' "$result_dir/android.log" \
+  || fail "Android 반복 회수 자원 기준선 결과가 없습니다"
+rg -Fq 'baseline_return_rounds=6/6' "$result_dir/android.log" \
+  || fail "Android 반복 회수 전체 회차 결과가 없습니다"
 rg -Fq 'collector_scan_stats=PASS' "$result_dir/android.log" \
   || fail "Android collector scan 계수 검사가 통과하지 않았습니다"
+rg -Fq 'collector_succeeded=PASS' "$result_dir/android.log" \
+  || fail "Android collector 오류 검사가 통과하지 않았습니다"
 sleep 1
 adb -s "$android_serial" exec-out screencap -p > "$result_dir/android.png"
 
@@ -123,13 +133,13 @@ xcrun simctl terminate "$ios_udid" "$ios_bundle_id" >/dev/null 2>&1 || true
 xcrun simctl launch --terminate-running-process "$ios_udid" "$ios_bundle_id" \
   --spinon-dom-gc-auto > "$result_dir/ios-launch.txt"
 
-ios_pass_marker='통과 · live wrapper와 HostDocument 루트를 보존하고 orphan를 회수'
+ios_pass_marker='통과 · Rust 노드·UTF-16 문자열·weak wrapper 기준선 대조'
 ios_failed=false
 for _ in $(seq 1 90); do
   if rg -Fq "$ios_pass_marker" "$result_dir/ios-stream.log"; then
     break
   fi
-  if rg -Fq '실패 · live wrapper와 HostDocument 루트를 보존하고 orphan를 회수' \
+  if rg -Fq '실패 · Rust 노드·UTF-16 문자열·weak wrapper 기준선 대조' \
     "$result_dir/ios-stream.log"; then
     ios_failed=true
     break
@@ -142,11 +152,15 @@ ios_stream_pid=""
 [[ "$ios_failed" == false ]] || fail "iOS DOM wrapper 수명 probe가 실패했습니다"
 rg -Fq "$ios_pass_marker" "$result_dir/ios-stream.log" \
   || fail "iOS 90초 안에 통과 결과를 기록하지 못했습니다"
-rg -Fq '회수기 callback 오류 없음 · 통과' "$result_dir/ios-stream.log" \
-  || fail "iOS collector 오류 검사가 통과하지 않았습니다"
-rg -Fq '회수 scan 계수 · 통과' "$result_dir/ios-stream.log" \
+rg -Fq 'callback closure root·호출 · 통과' "$result_dir/ios-stream.log" \
+  || fail "iOS callback closure root 보존 결과가 없습니다"
+rg -Fq 'callback 교체 후 해제·기준선 복귀 · 통과' "$result_dir/ios-stream.log" \
+  || fail "iOS callback 교체 뒤 wrapper 회수 결과가 없습니다"
+rg -Fq '반복 수명 회수 · 통과 · 6/6회' "$result_dir/ios-stream.log" \
+  || fail "iOS 반복 회수 자원 기준선 결과가 없습니다"
+rg -Fq '회수 scan 계수 일관성 · 통과 · scanned=live+empty' "$result_dir/ios-stream.log" \
   || fail "iOS collector scan 계수 검사가 통과하지 않았습니다"
-rg 'DOM GC 기준|DOM GC 후|wrapper 수명 검증|통과 · live wrapper' \
+rg 'DOM 자원 기준|DOM 자원 최종 기준선|callback closure|반복 수명 회수|회수 scan 계수|통과 · Rust 노드' \
   "$result_dir/ios-stream.log" > "$result_dir/ios.log" || true
 xcrun simctl io "$ios_udid" screenshot "$result_dir/ios.png" >/dev/null
 

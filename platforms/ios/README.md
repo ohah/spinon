@@ -2,7 +2,7 @@
 
 `SpinonBootstrap.xcodeproj`는 Bun으로 만든 JavaScript를 V8에서 평가하고 Rust 콜백 및 역방향 JS 이벤트를 실행하는 개발용 부트스트랩입니다. 기본 시작 smoke는 백그라운드 Dispatch queue에서 실행합니다. 빈 UIKit 호스트 창과 로그는 제품 렌더러가 아니며 UIKit 위젯 기반 UI를 뜻하지 않습니다.
 
-필요한 도구는 Xcode, iOS Simulator SDK, 루트 `mise.toml`에 고정한 Rust·Bun입니다. Xcode의 빌드 스크립트가 Rust 정적 라이브러리와 V8 어댑터를 준비하고 번들을 앱 리소스에 복사합니다. V8 커밋과 시뮬레이터·기기별 GN 산출물은 [V8 빌드 안내](../../native/v8/VERSION.md)를 따릅니다.
+필요한 도구는 Xcode, iOS Simulator SDK, 루트 `mise.toml`에 고정한 Rust·Bun입니다. Xcode의 빌드 스크립트가 Rust 정적 라이브러리와 V8 어댑터를 준비하고 번들을 앱 리소스에 복사합니다. V8 checkout 경로를 바꾸려면 `SPINON_V8_DIR`을 지정하며, 시뮬레이터 빌드가 컴파일·링크 양쪽에 같은 경로를 전달합니다. V8 커밋과 시뮬레이터·기기별 GN 산출물은 [V8 빌드 안내](../../native/v8/VERSION.md)를 따릅니다.
 
 루트에서 `mise exec -- bun run build:ios-sim`으로 시뮬레이터 앱을 빌드합니다. 기본 실행 로그의 `SPINON_BOOTSTRAP_EXECUTION is_main_thread=false`와 `SPINON_BOOTSTRAP_RESULT=nodes=2 last_node=8 tag=text text=이벤트:7`로 백그라운드 JS 부팅을 확인할 수 있습니다.
 
@@ -40,7 +40,7 @@ xcrun simctl install booted build/spinon/DerivedData/Build/Products/Debug-iphone
 xcrun simctl launch --terminate-running-process booted dev.spinon.bootstrap --spinon-dom-gc-auto
 ```
 
-화면·`SpinonBootstrap` 로그에서 HostRoot와 살아 있는 detached 자손을 보존하고, 연결된 Text wrapper의 WeakRef가 실제 GC 뒤 비워진 다음 조회로 wrapper가 재생성되는지 확인합니다. orphan WeakRef clear와 `document_nodes` 변화뿐 아니라 collector 오류·poison 상태, scanned/live/empty handle 계수도 통과 조건입니다. 기본 빌드는 hook과 버튼을 제외합니다. 반복 메모리 사용량, closure root, shutdown 경합, 실기기는 별도 검증 대상입니다.
+화면·`SpinonBootstrap` 로그에서 HostRoot와 살아 있는 detached 자손을 보존하고, 연결된 Text wrapper의 WeakRef가 실제 GC 뒤 비워진 다음 조회로 wrapper가 재생성되는지 확인합니다. orphan WeakRef clear와 `document_nodes` 변화뿐 아니라 collector 오류·poison 상태, scanned/live/empty handle 계수도 통과 조건입니다. 기본 빌드는 hook과 버튼을 제외합니다. 반복 검증은 현재 `spinon.onEvent()` strong callback closure root 보존·교체 후 회수와 element·text 32쌍의 생성·분리·회수를 6회 실행하고 node·UTF-16 string unit·live wrapper 기준선 복귀를 확인합니다([Android·iOS 실행 근거](../../spec/internal/evidence/s03-repeat-lifecycle-2026-10-05.md)). 최대 registry scan 비용, shutdown 경합, DOM listener/external root, RSS와 실기기는 별도 검증 대상입니다.
 
 Android·iOS 시뮬레이터를 함께 빌드·실행하고 원본 log와 캡처를 저장하려면 저장소 루트에서 `mise exec -- bun run verify:s03-dom-lifecycle:simulators`를 실행합니다. 기본 출력 위치는 `build/spinon/dom-lifecycle-validation/` 아래의 고유 실행 폴더입니다.
 

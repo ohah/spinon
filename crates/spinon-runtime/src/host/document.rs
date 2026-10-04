@@ -222,7 +222,6 @@ impl HostDocumentBridge {
         self.handles.get(&external_id).copied()
     }
 
-    #[cfg(test)]
     pub(crate) fn string_units(&self) -> usize {
         self.string_units
     }
