@@ -474,6 +474,8 @@ fn core_parent(
 #[cfg(test)]
 mod callback_tests;
 #[cfg(test)]
+mod lifecycle_contract_tests;
+#[cfg(test)]
 mod limit_tests;
 #[cfg(test)]
 mod tests;
