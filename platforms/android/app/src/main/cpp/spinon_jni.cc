@@ -314,6 +314,19 @@ Java_dev_spinon_bootstrap_MainActivity_nativeSessionPriorityProbe(JNIEnv *env, j
 }
 
 extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_MainActivity_nativeSessionShutdownProbe(JNIEnv *env,
+                                                                   jclass) {
+  std::array<char, 4096> output{};
+  const int32_t status =
+      spinon_runtime_shutdown_probe(output.data(), output.size());
+  const std::string report =
+      "status=" + std::to_string(status) + " " + output.data();
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR, kTag,
+                      "SPINON_SHUTDOWN_PROBE %s", report.c_str());
+  return ToByteArray(env, report);
+}
+
+extern "C" JNIEXPORT jbyteArray JNICALL
 Java_dev_spinon_bootstrap_MainActivity_nativeSessionDispatch(JNIEnv *env, jclass,
                                                               jlong handle,
                                                               jint node_id) {

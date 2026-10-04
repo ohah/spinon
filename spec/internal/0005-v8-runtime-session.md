@@ -26,7 +26,11 @@
 - 고정된 V8 헤더는 `TerminateExecution()`을 V8 lock을 얻지 않은 다른 스레드에서도 부를 수 있다고 명시한다. 이 실험은 이 함수만 소유자 밖에서 호출한다. 다른 V8 핸들·Context 조작은 외부에서 하지 않는다.
 - 취소 제어 경로는 플랫폼 UI 메인 스레드가 아니라 JS 소유 스레드와 분리된 플랫폼 제어 실행기다. 여기서 허용하는 외부 V8 호출은 고정한 V8 API가 명시적으로 허용하는 실행 중단 요청뿐이다. `CancelTerminateExecution()`, 다른 V8 핸들 조작과 Isolate 해제는 소유자 스레드에서 처리한다.
 - 작업자가 JS 호출에서 돌아온 뒤 소유자 스레드가 `CancelTerminateExecution()`을 호출해 다음 명령을 허용한다. 가짜 엔진 단위 테스트 외에도 Android 에뮬레이터와 iOS 시뮬레이터에서 실제 V8 무한 평가를 취소한 뒤 같은 Isolate로 대기 이벤트를 실행하고 성공을 확인했다. 실기기 및 JITless 구성은 미검증이다.
-- `free`는 새 접수를 막고 활성 JS를 취소한 뒤, 이미 대기 중인 명령에 종료 오류를 돌려주고 작업자를 join한다. join 제한 시간은 없다. 호출자는 다른 eval/dispatch/cancel 호출이 끝난 뒤에만 `free`해야 한다.
+- `RuntimeSession::shutdown()`은 제출 잠금으로 `Closing` 전환과 새 접수 사이의 순서를 고정하고, 활성 JS를 취소한 뒤 큐를 닫는다. 이미 큐에 있던 명령은 owner 작업자가 종료 오류 `-6`으로 응답한 뒤 V8 세션을 해제한다. 종료 요청은 같은 `shutdown_gate`에서 직렬화되며 작업자를 join한다. `Drop`도 이 경로를 호출한다. join 제한 시간은 없다.
+- unwind을 사용하는 Rust 빌드에서 작업자 thread가 panic하면 join 오류를 반환하고 아직 대기 중인 호출은 `-7`로 끝낸다. 세션의 runtime pointer를 비워 이후 cancel이 stale pointer에 접근하지 않게 한다. owner가 사라진 V8 객체는 다른 thread에서 해제하지 않으므로, panic 시점에 따라 V8 자원이 프로세스 종료까지 남을 수 있다. mobile release의 panic=abort나 C ABI 경계를 넘는 panic 복구를 보장하지 않는다.
+- `spinon_runtime_session_free`는 raw C ABI 포인터를 해제하므로 다른 eval/dispatch/cancel 호출과 동시에 호출하면 안 된다. 플랫폼 어댑터는 세션 포인터가 유효한 동안 진행 중 호출을 취소·대기한 뒤 `free`해야 한다. 내부 Rust shutdown 검증은 세션 소유 객체를 살려 둔 채 닫기와 제출이 경합하는 경우를 검사하며, raw 포인터 해제와 FFI 호출의 동시 실행을 허용하지 않는다.
+- 실제 V8 개발 진단 `spinon_runtime_shutdown_probe()`는 활성 무한 평가 1개와 대기 eval 3개를 만든 뒤 별도 Rust thread에서 shutdown을 시작한다. 활성 작업의 `-8`, 대기·종료 후 eval/dispatch의 `-6`, 반복 종료, runtime 포인터 해제와 작업자 join을 검사한다. Android·iOS 시뮬레이터 실행 근거는 [S03.3 종료 경합 기록](evidence/s03-shutdown-2026-10-05.md)에 있다. 이 진단은 pending Promise/native host 작업이나 강제 프로세스 종료를 포함하지 않고, R06 또는 S03.3 제품 완료를 뜻하지 않는다.
+- 두 모바일 시뮬레이터를 함께 빌드·실행하는 명령은 `mise exec -- bun run verify:s03-shutdown:simulators`다. 검증기는 저장소 내 고정 V8 checkout을 기본으로 사용하며, 별도 경로라면 `SPINON_V8_DIR`에 지정한다. `SPINON_S03_SHUTDOWN_OUTPUT_DIR`로 새 증거 폴더를 지정할 수 있다. pinned revision과 Android·iOS Simulator의 `v8_jitless=false`를 빌드 전에 확인한다. 종료 응답 deadline을 넘기면 취소를 다시 요청하고 진단은 실패한다. OS thread를 강제 종료할 수 없으므로 V8 호출이 반환하지 않는 경우 background 종료 thread가 남을 수 있으며, 제품 shutdown 자체의 join에도 제한 시간은 없다.
 - 비동기 네이티브 함수, Promise, 타이머, 앱 백그라운드 전환, 강제 종료 중 결과 전달은 아직 없다.
 
 실험의 제어 실행기와 64개 대기 용량을 제품 스케줄러 계약으로 일반화하지 않는다. 기본 우선순위 선택은 [0006 JavaScript 작업 스케줄러](0006-js-task-scheduler.md)의 Chromium 참고 규칙을 따른다.
@@ -41,6 +45,7 @@
 | JavaScript 평가 | `eval(&self, source: &str, priority: TaskPriority) -> OperationResponse` | 작업을 제한된 우선순위 큐에 넣고 완료를 기다린다. Rust 문자열에 NUL이 있으면 인자 오류 `-1`을 돌려준다. |
 | 이벤트 전달 | `dispatch(&self, node_id: i32, priority: TaskPriority) -> OperationResponse` | 지정한 노드 ID 이벤트를 같은 Isolate 소유 스레드에서 처리한다. |
 | 우선순위 진단 | `run_priority_probe() -> Result<String, String>` | 새 세션에서 실제 V8 단일 배치의 세 등급 선택·등급별 FIFO와 callback owner thread를 검사한다. 앱 API가 아닌 개발용 시뮬레이터 진단이다. |
+| 종료 진단 | `run_shutdown_probe() -> Result<String, String>` | 실제 V8의 활성 평가 취소, 큐 명령 거부, 종료 후 접수 거부, 반복 종료와 worker join을 검사한다. 앱 API가 아닌 개발용 시뮬레이터 진단이다. |
 | 취소 | `cancel(&self) -> i32` | 실행 중 평가 취소 요청은 `0`, 실행 중 작업 없음은 `1`, 실패는 음수다. 대기 작업은 취소하지 않는다. |
 | 응답 | `OperationResponse { status, report }` | Rust 상태 코드와 진단 보고 문자열이다. C 버퍼 복사는 FFI 어댑터가 맡는다. |
 | 종료 | `Drop for RuntimeSession` | 새 작업을 막고 활성 JS 취소를 요청한 뒤 큐를 닫고 작업자 스레드를 join한다. 제한 시간은 없다. |
@@ -59,6 +64,7 @@
 | `spinon_runtime_session_dispatch` | eval과 같은 상태 코드 | 기본 `user-blocking`; 등록 이벤트 핸들러에 노드 ID 전달 |
 | `spinon_runtime_session_dispatch_with_priority` | eval과 같은 상태 코드 | 내부 실험용으로 세 등급 중 지정 |
 | `spinon_runtime_priority_probe` | 성공 `0`, 인자 오류 `-1`, 출력 부족 `-3`, 검증 실패 `-7` | 새 실제 V8 세션에서 여섯 작업 단일 배치를 검사하는 개발용 진단; 제품 API 아님 |
+| `spinon_runtime_shutdown_probe` | 성공 `0`, 인자 오류 `-1`, 출력 부족 `-3`, 검증 실패 `-7` | 실제 V8 세션 종료와 명령 접수·거부 상태를 검사하는 개발용 진단; 제품 API 아님 |
 | `spinon_runtime_session_cancel` | 취소 요청 `0`, 실행 중 아님 `1`, 오류 음수 | 별도 제어 스레드에서 호출 가능 |
 | `spinon_runtime_session_free` | 반환값 없음 | 다른 세션 호출자와 동시 호출 금지, 취소·join으로 기다릴 수 있음 |
 

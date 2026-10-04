@@ -8,7 +8,7 @@
 
 ## 목적과 범위
 
-이 문서는 Rust HostDocument와 V8 JavaScript heap 사이의 노드 생존, wrapper 정체성, 약한 handle 검사, 자원 한도와 세션 종료 계약을 고정한다. S03.2의 동작을 소급 변경하지 않는다. Rust 회수 callback과 V8 weak wrapper scan을 연결했고 Android·iOS 실제 V8 기본·반복 fixture에서 고정 입력을 검증했다. 최대 scan 비용·종료 경합은 미검증이며, 이 내부 경로는 공개 DOM 지원이나 listener·external root lease 완료를 뜻하지 않는다.
+이 문서는 Rust HostDocument와 V8 JavaScript heap 사이의 노드 생존, wrapper 정체성, 약한 handle 검사, 자원 한도와 세션 종료 계약을 고정한다. S03.2의 동작을 소급 변경하지 않는다. Rust 회수 callback과 V8 weak wrapper scan을 연결했고 Android·iOS 실제 V8 기본·반복 fixture에서 고정 입력을 검증했다. 별도 진단으로 활성 평가·대기 명령·닫힌 세션 제출의 제한된 종료 경합도 확인했다. 최대 scan 비용, listener·external root lease와 raw C ABI 포인터를 동시 해제하는 경로는 여전히 미검증 또는 금지 경계이며, 이 내부 경로는 공개 DOM 지원 완료를 뜻하지 않는다.
 
 S03.3 구현은 Rust가 노드 저장소와 mark-and-sweep을 소유하고, V8 C++ adapter가 자동 reset되는 약한 wrapper handle을 안전 지점에서 검사하는 경계를 따른다. V8 unified heap, 별도 Rust GC, 앱에 노출되는 JSI 유사 API는 이 범위에서 사용하지 않는다.
 
@@ -129,7 +129,8 @@ HostDocument의 BTreeMap 보유 자체는 root가 아니다. 노드 관계, wrap
 
 - C++ V8 adapter의 callback 없는 약한 `Global<Object>` registry와 Rust 회수 callback을 outer eval/dispatch owner safe point에 연결했다. 검증 전용 강제 GC entry는 fixture 빌드에만 포함한다.
 - Android·iOS 시뮬레이터의 고정 실제 V8 실행에서 기본 root·wrapper fixture와 별도 closure·반복 fixture를 확인했다. 각 실행 evidence가 뒷받침하는 입력·환경 범위만 검증 결과로 취급한다.
-- 최대 registry 크기에서의 scan 비용과 세션 shutdown 경합은 별도 검증이 필요하다.
+- 실제 V8 Android·iOS 시뮬레이터에서 무한 평가 중 대기 eval 세 건을 접수하고 별도 제어 thread에서 종료했다. 활성 평가는 `-8`, 대기 명령과 종료 후 eval/dispatch는 `-6`으로 닫혔고, runtime pointer 해제·worker join·반복 종료를 확인했다([S03.3 종료 경합 기록](evidence/s03-shutdown-2026-10-05.md)). unwind 테스트에서는 작업자 panic 뒤 대기 호출을 `-7`로 거부하고 stale runtime pointer를 지우는 동작도 확인한다. 이 경우 panic 난 owner의 V8 자원을 다른 thread에서 해제하지 않아 누수가 남을 수 있다. raw C ABI 포인터 `free`와 진행 중 FFI call의 동시 실행은 기존 계약으로 금지하며 실제 시뮬레이터 probe에서 실행하지 않는다. probe timeout은 실패를 보고하고 취소를 다시 요청하지만 OS thread를 강제 종료하지 않는다. 비동기 native host 작업·Promise·강제 프로세스 종료도 범위 밖이다.
+- 최대 registry 크기에서의 scan 비용은 별도 검증이 필요하다.
 - 작은 고정 반복 입력에서 node·UTF-16 string unit·live weak wrapper 수가 기준선으로 복귀하는 것은 확인했다. 합의한 quota 경계의 압력 동작, 장기 반복, 실제 byte·RSS와 회수 재시도 비용은 미검증이다.
 - 현재 native callback strong root의 단일 closure 수명을 확인했다. DOM listener·external root lease·임의 closure graph의 root 관계와 V8 heap snapshot retaining path는 별도로 검증한다.
 - 이 문서와 상태 대장을 반영하기 전에는 S03.3, J10 또는 공개 DOM 지원을 완료로 표시하지 않는다.

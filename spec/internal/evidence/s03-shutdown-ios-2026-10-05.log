@@ -1,0 +1,2 @@
+Filtering the log data using "process == "SpinonBootstrap" AND composedMessage CONTAINS[c] "SPINON_SHUTDOWN_PROBE""
+2026-10-05 03:11:09.895 Df SpinonBootstrap[18559:29cbe87] SPINON_SHUTDOWN_PROBE status=0 shutdown_probe=PASS active_status=-8 queued_statuses=[-6, -6, -6] post_eval_status=-6 post_dispatch_status=-6 close_ms=1 repeat_close=PASS runtime_released=true worker_joined=true owner_tid=43826874 shutdown_tid=43826895

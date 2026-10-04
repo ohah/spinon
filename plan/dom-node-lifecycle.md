@@ -1,6 +1,6 @@
 # S03.3 DOM 노드와 JS wrapper 수명 관리 계획
 
-**상태:** Rust/V8 회수 경로 구현 · Android·iOS 시뮬레이터에서 callback closure와 6회 반복 자원 기준선 통과 · 종료·최대 scan 성능 검증 진행 중
+**상태:** Rust/V8 회수 경로 구현 · Android·iOS 시뮬레이터에서 callback closure, 6회 반복 자원 기준선, 제한된 세션 종료 경합 통과 · 최대 scan 성능과 listener/external root 수명 검증 진행 중
 
 **상위 작업:** S03, J10, R03
 
@@ -38,7 +38,7 @@ S03.3에서는 JS façade ID를 다른 노드에 재사용하지 않는다. `Hos
 
 Rust HostDocument가 노드 저장소와 mark-and-sweep을 소유하고, V8 C++ adapter가 callback 없는 약한 handle의 자동 reset을 owner 안전 지점에서 검사한다. V8 unified heap이나 별도 Rust tracing-GC 의존성은 두지 않는다. 호출 경계·root·quota·bounded full scan·실패 원자성과 shutdown 순서는 [내부 계약 0021](../spec/internal/0021-s03-dom-node-lifecycle.md)에 확정했다.
 
-이 결정은 S03.2 계약을 소급 변경하지 않는다. Rust `HostDocument`의 도달성 계획·commit, bridge의 node/handle/string map 회수 callback, C++ weak `Global` scan과 owner safe-point caller를 구현했다. 앱 JS에서 wrapper registry 조작 함수를 감추고, C++에도 registry 상한을 둔다. scan 통계와 마지막 오류를 런타임 진단에 보존하며, Rust/C++ 회수 결과 불변식이 깨지면 세션을 poisoned 처리하고 후속 JS 실행을 막는다. 강제 GC 요청 entry는 `SPINON_ENABLE_S03_DOM_GC_FIXTURE=1` 검증 빌드에서만 노출한다. Android·iOS 고정 V8 시뮬레이터에서 현재 진단용 `spinon.onEvent()` strong callback의 closure root 보존·교체 후 회수와 6회 반복 자원 기준선 복귀를 확인했다([근거](../spec/internal/evidence/s03-repeat-lifecycle-2026-10-05.md)). 최대 registry scan 비용과 shutdown race는 남아 있다.
+이 결정은 S03.2 계약을 소급 변경하지 않는다. Rust `HostDocument`의 도달성 계획·commit, bridge의 node/handle/string map 회수 callback, C++ weak `Global` scan과 owner safe-point caller를 구현했다. 앱 JS에서 wrapper registry 조작 함수를 감추고, C++에도 registry 상한을 둔다. scan 통계와 마지막 오류를 런타임 진단에 보존하며, Rust/C++ 회수 결과 불변식이 깨지면 세션을 poisoned 처리하고 후속 JS 실행을 막는다. 강제 GC 요청 entry는 `SPINON_ENABLE_S03_DOM_GC_FIXTURE=1` 검증 빌드에서만 노출한다. Android·iOS 고정 V8 시뮬레이터에서 현재 진단용 `spinon.onEvent()` strong callback의 closure root 보존·교체 후 회수와 6회 반복 자원 기준선 복귀를 확인했다([근거](../spec/internal/evidence/s03-repeat-lifecycle-2026-10-05.md)). 이어 활성 무한 평가·대기 명령·종료 후 호출을 포함한 실제 V8 종료 probe도 두 시뮬레이터에서 통과했다([종료 경합 근거](../spec/internal/evidence/s03-shutdown-2026-10-05.md)). unwind panic의 큐 응답·stale pointer 차단은 단위 테스트했지만 owner가 panic한 V8 자원 복구는 미보장이다. 최대 registry scan 비용과 listener/external root 수명은 남아 있다.
 
 ## Chromium 참고 모델
 

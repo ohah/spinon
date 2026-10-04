@@ -45,6 +45,7 @@ public final class MainActivity extends Activity {
     private static native byte[] nativeSessionEval(long session, byte[] sourceUtf8);
     private static native byte[] nativeSessionDispatch(long session, int nodeId);
     private static native byte[] nativeSessionPriorityProbe();
+    private static native byte[] nativeSessionShutdownProbe();
     private static native int nativeSessionCancel(long session);
     private static native void nativeSessionFree(long session);
 
@@ -80,6 +81,10 @@ public final class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         if (getIntent().getBooleanExtra("spinon_priority_probe", false)) {
             showPriorityProbe();
+            return;
+        }
+        if (getIntent().getBooleanExtra("spinon_shutdown_probe", false)) {
+            showShutdownProbe();
             return;
         }
         boolean runR13 = getIntent().getBooleanExtra("spinon_r13", false);
@@ -197,6 +202,64 @@ public final class MainActivity extends Activity {
                         .replace(" order=[", "\n실행 순서\n  ")
                         .replace(",", "\n  ")
                         .replace(" owner_tid=", "\n소유 스레드="));
+            });
+        });
+    }
+
+    private void showShutdownProbe() {
+        float density = getResources().getDisplayMetrics().density;
+        int inset = Math.round(24 * density);
+        LinearLayout root = new LinearLayout(this);
+        root.setOrientation(LinearLayout.VERTICAL);
+        root.setPadding(inset, inset, inset, inset);
+        root.setBackgroundColor(Color.rgb(14, 19, 31));
+
+        TextView title = new TextView(this);
+        title.setText("SPINON · Android V8 세션 종료 검증");
+        title.setTextColor(Color.rgb(230, 237, 248));
+        title.setTextSize(20);
+        title.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+        root.addView(title);
+
+        TextView description = new TextView(this);
+        description.setText("개발 전용 · 활성 평가 취소, 대기 명령 거부, 종료 후 호출 거부를 확인합니다");
+        description.setTextColor(Color.rgb(170, 184, 207));
+        description.setTextSize(13);
+        description.setPadding(0, Math.round(8 * density), 0, Math.round(12 * density));
+        root.addView(description);
+
+        TextView status = new TextView(this);
+        status.setText("실제 V8 세션 종료 검증 중…");
+        status.setTextColor(Color.rgb(97, 185, 255));
+        status.setTextSize(15);
+        root.addView(status);
+
+        TextView report = new TextView(this);
+        report.setTextColor(Color.rgb(230, 237, 248));
+        report.setTypeface(Typeface.MONOSPACE);
+        report.setTextSize(12);
+        report.setPadding(0, Math.round(12 * density), 0, Math.round(16 * density));
+        ScrollView scroll = new ScrollView(this);
+        scroll.addView(report);
+        root.addView(scroll, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, 0, 1));
+        setContentView(root);
+
+        bootstrapExecutor.execute(() -> {
+            String result = decode(nativeSessionShutdownProbe());
+            Log.i(TAG, "SPINON_SHUTDOWN_PROBE " + result);
+            runOnUiThread(() -> {
+                boolean passed = result.contains("status=0 shutdown_probe=PASS");
+                status.setText(passed ? "V8 세션 종료 검증 통과" : "V8 세션 종료 검증 실패");
+                report.setText(result
+                        .replace(" shutdown_probe=", "\nshutdown_probe=")
+                        .replace(" active_status=", "\n활성 평가 status=")
+                        .replace(" queued_statuses=", "\n대기 명령 status=")
+                        .replace(" post_eval_status=", "\n종료 뒤 eval status=")
+                        .replace(" post_dispatch_status=", "\n종료 뒤 dispatch status=")
+                        .replace(" close_ms=", "\n종료 소요 ms=")
+                        .replace(" owner_tid=", "\nV8 소유 스레드=")
+                        .replace(" shutdown_tid=", "\n종료 요청 스레드="));
             });
         });
     }
