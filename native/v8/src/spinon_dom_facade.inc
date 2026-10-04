@@ -11,10 +11,24 @@ R"SPINONJS(
     nextId: 8,
   };
   const htmlNamespace = "http://www.w3.org/1999/xhtml";
-  const wrappers = new Map();
   const nodeIds = new WeakMap();
   const exceptionValues = new WeakMap();
   const constructionKey = {};
+  const internal = spinon.__internal;
+  const getNodeWrapper = internal.getNodeWrapper;
+  const registerNodeWrapper = internal.registerNodeWrapper;
+  const unregisterNodeWrapper = internal.unregisterNodeWrapper;
+
+  if (
+    typeof getNodeWrapper !== "function" ||
+    typeof registerNodeWrapper !== "function" ||
+    typeof unregisterNodeWrapper !== "function" ||
+    !Reflect.deleteProperty(internal, "getNodeWrapper") ||
+    !Reflect.deleteProperty(internal, "registerNodeWrapper") ||
+    !Reflect.deleteProperty(internal, "unregisterNodeWrapper")
+  ) {
+    throw new Error("DOM wrapper registry를 앱 JavaScript에서 감출 수 없습니다");
+  }
 
   class DOMException extends Error {
     constructor(message = "", name = "Error") {
@@ -360,13 +374,15 @@ R"SPINONJS(
 
   function wrap(id) {
     if (id === 0) return document;
-    const cached = wrappers.get(id);
+    const cached = getNodeWrapper(id);
     if (cached !== undefined) return cached;
     const info = read(query.nodeInfo, id);
     const node = info.value === 1
       ? new Element(constructionKey, id)
       : new Text(constructionKey, id);
-    wrappers.set(id, node);
+    if (!registerNodeWrapper(id, node)) {
+      fail("InvalidStateError", "같은 문서 노드에 다른 wrapper가 등록되어 있습니다");
+    }
     return node;
   }
 
@@ -383,21 +399,40 @@ R"SPINONJS(
         fail("InvalidCharacterError", "요소 이름이 지원 범위에 맞지 않습니다");
       }
       const id = read(query.nextId, 0).value;
-      commit([{
-        type: "createElement",
-        id,
-        namespace: htmlNamespace,
-        name: asciiLower(rawName),
-      }], "InvalidCharacterError");
-      return wrap(id);
+      const node = new Element(constructionKey, id);
+      if (!registerNodeWrapper(id, node)) {
+        fail("InvalidStateError", "새 요소 wrapper를 등록하지 못했습니다");
+      }
+      try {
+        commit([{
+          type: "createElement",
+          id,
+          namespace: htmlNamespace,
+          name: asciiLower(rawName),
+        }], "InvalidCharacterError");
+      } catch (error) {
+        unregisterNodeWrapper(id, node);
+        throw error;
+      }
+      return node;
     }
 
     createTextNode(data) {
       if (this !== document) throw new TypeError("document 객체가 필요합니다");
       requireArguments(arguments.length, 1, "createTextNode");
+      const text = toDOMString(data);
       const id = read(query.nextId, 0).value;
-      commit([{ type: "createText", id, data: toDOMString(data) }]);
-      return wrap(id);
+      const node = new Text(constructionKey, id);
+      if (!registerNodeWrapper(id, node)) {
+        fail("InvalidStateError", "새 Text wrapper를 등록하지 못했습니다");
+      }
+      try {
+        commit([{ type: "createText", id, data: text }]);
+      } catch (error) {
+        unregisterNodeWrapper(id, node);
+        throw error;
+      }
+      return node;
     }
   }
 
@@ -428,7 +463,6 @@ R"SPINONJS(
     value: Text,
     writable: true,
   });
-  wrappers.set(0, document);
   nodeIds.set(document, 0);
 })();
 )SPINONJS"

@@ -10,5 +10,14 @@ if [[ ! -x "$sdk_dir/platform-tools/adb" ]]; then
 fi
 export ANDROID_HOME="$sdk_dir"
 export ANDROID_SDK_ROOT="$sdk_dir"
+case "${SPINON_ENABLE_S03_DOM_GC_FIXTURE:-0}" in
+  0|1) ;;
+  *)
+    echo "SPINON_ENABLE_S03_DOM_GC_FIXTURE은 0 또는 1이어야 합니다." >&2
+    exit 2
+    ;;
+esac
 exec "$repo_root/platforms/android/gradlew" \
-  -p "$repo_root/platforms/android" :app:assembleDebug "$@"
+  -p "$repo_root/platforms/android" \
+  -PspinonS03DomGcFixture="${SPINON_ENABLE_S03_DOM_GC_FIXTURE:-0}" \
+  :app:assembleDebug "$@"

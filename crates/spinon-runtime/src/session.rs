@@ -1,11 +1,12 @@
-use crate::host::{HostDocumentBridge, commit_callback, query_callback};
+use crate::host::{HostDocumentBridge, collect_callback, commit_callback, query_callback};
 #[cfg(test)]
 use crate::v8::{NodeCallback, TextCallback};
 use crate::v8::{
-    SpinonV8Runtime, spinon_v8_current_thread_id, spinon_v8_runtime_cancel_termination,
-    spinon_v8_runtime_dispatch, spinon_v8_runtime_eval, spinon_v8_runtime_free,
-    spinon_v8_runtime_last_error, spinon_v8_runtime_new, spinon_v8_runtime_terminate,
-    spinon_v8_runtime_was_terminated,
+    SpinonDocumentCollectionStats, SpinonV8Runtime, spinon_v8_current_thread_id,
+    spinon_v8_runtime_cancel_termination, spinon_v8_runtime_dispatch,
+    spinon_v8_runtime_document_collection_stats, spinon_v8_runtime_eval, spinon_v8_runtime_free,
+    spinon_v8_runtime_last_collection_error, spinon_v8_runtime_last_error, spinon_v8_runtime_new,
+    spinon_v8_runtime_terminate, spinon_v8_runtime_was_terminated,
 };
 use spinon_core::PriorityQueue;
 pub use spinon_core::TaskPriority;
@@ -208,6 +209,22 @@ fn v8_error(runtime: *mut SpinonV8Runtime) -> String {
         .replace(['\n', '\r'], " ")
 }
 
+fn v8_collection_error(runtime: *mut SpinonV8Runtime) -> String {
+    let error = unsafe { spinon_v8_runtime_last_collection_error(runtime) };
+    if error.is_null() {
+        return "diagnostic_unavailable".to_owned();
+    }
+    unsafe { CStr::from_ptr(error) }
+        .to_string_lossy()
+        .replace(['\n', '\r', ' '], "_")
+}
+
+fn v8_collection_stats(runtime: *mut SpinonV8Runtime) -> SpinonDocumentCollectionStats {
+    let mut stats = SpinonDocumentCollectionStats::default();
+    unsafe { spinon_v8_runtime_document_collection_stats(runtime, &mut stats) };
+    stats
+}
+
 fn actor_loop(
     scheduler: Arc<TaskScheduler>,
     control: Arc<Mutex<RuntimeControl>>,
@@ -228,6 +245,7 @@ fn actor_loop(
             on_text,
             commit_callback,
             query_callback,
+            collect_callback,
             callback_data,
             document_data,
         )
@@ -271,6 +289,8 @@ fn actor_loop(
                 let started_at = Instant::now();
                 let v8_result = unsafe { spinon_v8_runtime_eval(runtime, source.as_ptr()) };
                 let v8_call_us = started_at.elapsed().as_micros();
+                let collection_error = v8_collection_error(runtime);
+                let collection_stats = v8_collection_stats(runtime);
                 let v8_was_terminated = unsafe { spinon_v8_runtime_was_terminated(runtime) != 0 };
                 let error = if v8_result == 0 {
                     String::new()
@@ -296,6 +316,8 @@ fn actor_loop(
                     v8_call_us,
                     cancel_requested,
                     callbacks: &callbacks,
+                    collection_error: &collection_error,
+                    collection_stats,
                     error: &error,
                 });
                 let _ = reply.send(OperationResponse { status, report });
@@ -319,6 +341,8 @@ fn actor_loop(
                 let started_at = Instant::now();
                 let v8_result = unsafe { spinon_v8_runtime_dispatch(runtime, node_id) };
                 let v8_call_us = started_at.elapsed().as_micros();
+                let collection_error = v8_collection_error(runtime);
+                let collection_stats = v8_collection_stats(runtime);
                 let v8_was_terminated = unsafe { spinon_v8_runtime_was_terminated(runtime) != 0 };
                 let error = if v8_result == 0 {
                     String::new()
@@ -344,6 +368,8 @@ fn actor_loop(
                     v8_call_us,
                     cancel_requested,
                     callbacks: &callbacks,
+                    collection_error: &collection_error,
+                    collection_stats,
                     error: &error,
                 });
                 let _ = reply.send(OperationResponse { status, report });
@@ -409,6 +435,8 @@ struct OperationReport<'a> {
     v8_call_us: u128,
     cancel_requested: bool,
     callbacks: &'a CallbackState,
+    collection_error: &'a str,
+    collection_stats: SpinonDocumentCollectionStats,
     error: &'a str,
 }
 
@@ -424,17 +452,32 @@ fn operation_report(report: OperationReport<'_>) -> String {
         v8_call_us,
         cancel_requested,
         callbacks,
+        collection_error,
+        collection_stats,
         error,
     } = report;
     let error = if error.is_empty() { "none" } else { error };
+    let collection_error = if collection_error.is_empty() {
+        "none"
+    } else {
+        collection_error
+    };
     format!(
-        "seq={sequence} op={operation} status={status} caller_tid={caller_thread_id} owner_tid={owner_thread_id} callback_tid={callback_thread_id} queue_wait_us={queue_wait_us} v8_call_us={v8_call_us} cancel_requested={cancel_requested} callback_count={} created_nodes={} last_node_id={} document_revision={} render_tree_revision={} document_nodes={} error={error}",
+        "seq={sequence} op={operation} status={status} caller_tid={caller_thread_id} owner_tid={owner_thread_id} callback_tid={callback_thread_id} queue_wait_us={queue_wait_us} v8_call_us={v8_call_us} cancel_requested={cancel_requested} callback_count={} created_nodes={} last_node_id={} document_revision={} render_tree_revision={} document_nodes={} document_collection_scans={} document_collection_deferred={} document_collection_scanned_handles={} document_collection_live_handles={} document_collection_empty_handles={} document_collection_last_scan_start_ns={} document_collection_last_scan_us={} document_collection_poisoned={} document_collection_error={collection_error} error={error}",
         callbacks.callback_count,
         callbacks.created_nodes,
         callbacks.last_node_id,
         callbacks.document.document_revision(),
         callbacks.document.render_tree_revision(),
         callbacks.document.node_count(),
+        collection_stats.scan_count,
+        collection_stats.deferred_count,
+        collection_stats.scanned_handle_count,
+        collection_stats.live_handle_count,
+        collection_stats.empty_handle_count,
+        collection_stats.last_scan_start_ns,
+        collection_stats.last_scan_duration_us,
+        collection_stats.runtime_poisoned,
     )
 }
 
@@ -844,7 +887,8 @@ impl Drop for RuntimeSession {
 mod tests {
     use super::{
         CallbackState, Command, ERR_CANCELLED, ERR_QUEUE_FULL, EnqueueError, OK, OperationReport,
-        QUEUE_CAPACITY, RuntimeSession, TaskPriority, TaskScheduler, operation_report,
+        QUEUE_CAPACITY, RuntimeSession, SpinonDocumentCollectionStats, TaskPriority, TaskScheduler,
+        operation_report,
     };
     use crate::host::{DocumentCommitCallback, HostDocumentBridge};
     use std::ffi::{CStr, c_char, c_void};
@@ -871,6 +915,7 @@ mod tests {
         text_callback: super::TextCallback,
         _document_commit_callback: DocumentCommitCallback,
         _document_query_callback: crate::host::DocumentQueryCallback,
+        _document_collect_callback: crate::host::DocumentCollectCallback,
         user_data: *mut c_void,
         _document_user_data: *mut c_void,
     ) -> *mut super::SpinonV8Runtime {
@@ -946,6 +991,23 @@ mod tests {
     }
 
     #[unsafe(no_mangle)]
+    pub extern "C" fn spinon_v8_runtime_last_collection_error(
+        _runtime: *mut super::SpinonV8Runtime,
+    ) -> *const c_char {
+        c"".as_ptr()
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn spinon_v8_runtime_document_collection_stats(
+        _runtime: *mut super::SpinonV8Runtime,
+        stats: *mut super::SpinonDocumentCollectionStats,
+    ) {
+        if !stats.is_null() {
+            unsafe { *stats = super::SpinonDocumentCollectionStats::default() };
+        }
+    }
+
+    #[unsafe(no_mangle)]
     pub extern "C" fn spinon_v8_runtime_terminate(runtime: *mut super::SpinonV8Runtime) {
         let runtime = unsafe { &*runtime.cast::<FakeV8Runtime>() };
         runtime.terminated.store(true, Ordering::Release);
@@ -999,6 +1061,8 @@ mod tests {
             v8_call_us: 29,
             cancel_requested: false,
             callbacks: &callbacks,
+            collection_error: "",
+            collection_stats: SpinonDocumentCollectionStats::default(),
             error: "",
         });
         assert!(report.contains("caller_tid=10"));
@@ -1007,9 +1071,13 @@ mod tests {
         assert!(report.contains("queue_wait_us=11"));
         assert!(report.contains("v8_call_us=29"));
         assert!(report.contains("cancel_requested=false"));
+        assert!(report.contains("document_collection_scans=0"));
+        assert!(report.contains("document_collection_deferred=0"));
+        assert!(report.contains("document_collection_error=none"));
         assert!(report.contains("document_revision=0"));
         assert!(report.contains("render_tree_revision=0"));
         assert!(report.contains("document_nodes=0"));
+        assert!(report.contains("document_collection_error=none"));
         assert!(report.contains("callback_count=2"));
     }
 

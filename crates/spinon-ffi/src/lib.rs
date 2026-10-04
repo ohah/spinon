@@ -206,6 +206,18 @@ mod tests {
     struct TestDocumentQueryResult {
         _private: [u8; 0],
     }
+    #[repr(C)]
+    #[derive(Default)]
+    struct TestDocumentCollectionStats {
+        scan_count: u64,
+        deferred_count: u64,
+        scanned_handle_count: u64,
+        live_handle_count: u64,
+        empty_handle_count: u64,
+        last_scan_start_ns: u64,
+        last_scan_duration_us: u64,
+        runtime_poisoned: u32,
+    }
     type DocumentCommitCallback = unsafe extern "C" fn(
         *mut std::ffi::c_void,
         *const TestDocumentOperation,
@@ -221,6 +233,16 @@ mod tests {
         *mut std::ffi::c_char,
         usize,
     ) -> i32;
+    type DocumentCollectCallback = unsafe extern "C" fn(
+        *mut std::ffi::c_void,
+        *const i32,
+        usize,
+        *mut i32,
+        usize,
+        *mut usize,
+        *mut std::ffi::c_char,
+        usize,
+    ) -> i32;
 
     #[unsafe(no_mangle)]
     extern "C" fn spinon_v8_runtime_new(
@@ -228,6 +250,7 @@ mod tests {
         _text_callback: TextCallback,
         _document_commit_callback: DocumentCommitCallback,
         _document_query_callback: DocumentQueryCallback,
+        _document_collect_callback: DocumentCollectCallback,
         _user_data: *mut std::ffi::c_void,
         _document_user_data: *mut std::ffi::c_void,
     ) -> *mut TestV8Runtime {
@@ -252,6 +275,23 @@ mod tests {
         _runtime: *mut TestV8Runtime,
     ) -> *const std::ffi::c_char {
         c"테스트용 V8 오류".as_ptr()
+    }
+
+    #[unsafe(no_mangle)]
+    extern "C" fn spinon_v8_runtime_last_collection_error(
+        _runtime: *mut TestV8Runtime,
+    ) -> *const std::ffi::c_char {
+        c"".as_ptr()
+    }
+
+    #[unsafe(no_mangle)]
+    extern "C" fn spinon_v8_runtime_document_collection_stats(
+        _runtime: *mut TestV8Runtime,
+        stats: *mut TestDocumentCollectionStats,
+    ) {
+        if !stats.is_null() {
+            unsafe { *stats = TestDocumentCollectionStats::default() };
+        }
     }
 
     #[unsafe(no_mangle)]

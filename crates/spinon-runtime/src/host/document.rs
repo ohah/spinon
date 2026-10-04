@@ -23,6 +23,7 @@ pub(crate) use callback::{
     OP_APPEND, OP_CREATE_ELEMENT, OP_CREATE_TEXT, OP_SET_ATTRIBUTE, OP_SET_TEXT,
     SpinonDocumentOperation,
 };
+pub(crate) use collection::{DocumentCollectCallback, collect_callback};
 pub(crate) use query::{DocumentQueryCallback, query_callback};
 
 #[derive(Clone, Debug, Eq, PartialEq)]

@@ -356,13 +356,16 @@ document.nodeValue = "무시";
 if (movedElement.nodeValue !== null || document.nodeValue !== null) {
   throw new Error("Text가 아닌 노드의 nodeValue 설정이 문서 값을 바꿨습니다");
 }
-let symbolStringRejected = false;
-try {
-  document.createTextNode(Symbol("unsupported"));
-} catch (error) {
-  symbolStringRejected = error.name === "TypeError";
+let symbolStringFailures = 0;
+for (let index = 0; index < 300; index += 1) {
+  try {
+    document.createTextNode(Symbol("unsupported"));
+  } catch (error) {
+    if (error.name === "TypeError") symbolStringFailures += 1;
+  }
 }
-if (!symbolStringRejected) {
+const textAfterSymbolFailures = document.createTextNode("after symbol failures");
+if (symbolStringFailures !== 300 || textAfterSymbolFailures.data !== "after symbol failures") {
   throw new Error("DOMString의 Symbol 변환이 동기 거부되지 않았습니다");
 }
 root.appendChild(movedElement);

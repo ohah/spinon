@@ -1,6 +1,12 @@
 import UIKit
 import OSLog
 
+#if SPINON_ENABLE_S03_DOM_GC_FIXTURE_1
+let spinonS03DomGcFixtureEnabled = true
+#else
+let spinonS03DomGcFixtureEnabled = false
+#endif
+
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
@@ -12,12 +18,17 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         let arguments = ProcessInfo.processInfo.arguments
         let runPriorityProbe = arguments.contains("--spinon-priority-probe")
-        if arguments.contains("--spinon-runtime-threads") || runPriorityProbe {
+        let runLifecycleProbe = arguments.contains("--spinon-dom-gc-auto")
+        if runLifecycleProbe && !spinonS03DomGcFixtureEnabled {
+            logger.error("SPINON_DOM_GC_FIXTURE_DISABLED · 검증 전용 빌드로 다시 빌드하세요")
+        }
+        if arguments.contains("--spinon-runtime-threads") || runPriorityProbe || runLifecycleProbe {
             let window = UIWindow(frame: UIScreen.main.bounds)
             window.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
             window.rootViewController = RuntimeThreadExperimentViewController(
                 automaticallyRun: arguments.contains("--spinon-r06-auto"),
-                runPriorityProbe: runPriorityProbe
+                runPriorityProbe: runPriorityProbe,
+                automaticallyRunLifecycleProbe: runLifecycleProbe && spinonS03DomGcFixtureEnabled
             )
             window.makeKeyAndVisible()
             self.window = window

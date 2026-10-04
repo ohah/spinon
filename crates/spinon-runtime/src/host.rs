@@ -1,6 +1,6 @@
 mod document;
 
 pub(crate) use document::{
-    DocumentCommitCallback, DocumentQueryCallback, HostDocumentBridge, commit_callback,
-    query_callback,
+    DocumentCollectCallback, DocumentCommitCallback, DocumentQueryCallback, HostDocumentBridge,
+    collect_callback, commit_callback, query_callback,
 };

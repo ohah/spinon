@@ -9,6 +9,13 @@ case "${SPINON_ENABLE_S04_IOS_FIXTURE:-0}" in
     exit 2
     ;;
 esac
+case "${SPINON_ENABLE_S03_DOM_GC_FIXTURE:-0}" in
+  0|1) ;;
+  *)
+    echo "SPINON_ENABLE_S03_DOM_GC_FIXTURE은 0 또는 1이어야 합니다." >&2
+    exit 2
+    ;;
+esac
 
 if command -v mise >/dev/null 2>&1; then
   mise exec -- xcodebuild \
@@ -18,6 +25,7 @@ if command -v mise >/dev/null 2>&1; then
     -destination 'generic/platform=iOS Simulator' \
     -derivedDataPath "$repo_root/build/spinon/DerivedData" \
     "SPINON_ENABLE_S04_IOS_FIXTURE=${SPINON_ENABLE_S04_IOS_FIXTURE:-0}" \
+    "SPINON_ENABLE_S03_DOM_GC_FIXTURE=${SPINON_ENABLE_S03_DOM_GC_FIXTURE:-0}" \
     CODE_SIGNING_ALLOWED=NO build
 else
   xcodebuild \
@@ -27,5 +35,6 @@ else
     -destination 'generic/platform=iOS Simulator' \
     -derivedDataPath "$repo_root/build/spinon/DerivedData" \
     "SPINON_ENABLE_S04_IOS_FIXTURE=${SPINON_ENABLE_S04_IOS_FIXTURE:-0}" \
+    "SPINON_ENABLE_S03_DOM_GC_FIXTURE=${SPINON_ENABLE_S03_DOM_GC_FIXTURE:-0}" \
     CODE_SIGNING_ALLOWED=NO build
 fi

@@ -25,6 +25,14 @@ case "${SPINON_ENABLE_S04_ANDROID_FIXTURE:-0}" in
     exit 2
     ;;
 esac
+case "${SPINON_ENABLE_S03_DOM_GC_FIXTURE:-0}" in
+  0|1) ;;
+  *)
+    echo "SPINON_ENABLE_S03_DOM_GC_FIXTURE은 0 또는 1이어야 합니다." >&2
+    exit 2
+    ;;
+esac
+s03_dom_gc_cpp_flag="-DSPINON_ENABLE_S03_DOM_GC_FIXTURE=${SPINON_ENABLE_S03_DOM_GC_FIXTURE:-0}"
 s04_android_cpp_flags=()
 if [[ "${SPINON_ENABLE_S04_ANDROID_FIXTURE:-0}" == "1" ]]; then
   s04_android_cpp_flags=(-DSPINON_ENABLE_S04_ANDROID_FIXTURE=1)
@@ -90,7 +98,8 @@ common=("$target" "$sysroot" -std=c++20 -O2 -fPIC
   -I"$repo_root/crates/spinon-ffi/include"
   -I"$repo_root/spikes/wgpu-backend/include")
 
-"$v8_cxx" "${common[@]}" -c "$repo_root/native/v8/src/spinon_v8.cc" \
+"$v8_cxx" "${common[@]}" "$s03_dom_gc_cpp_flag" \
+  -c "$repo_root/native/v8/src/spinon_v8.cc" \
   -o "$output_dir/obj/spinon_v8.o"
 if [[ "${SPINON_ENABLE_S04_ANDROID_FIXTURE:-0}" == "1" ]]; then
   "$v8_cxx" "${common[@]}" -I"$repo_root/platforms/android/app/src/main/cpp" \

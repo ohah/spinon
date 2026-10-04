@@ -28,6 +28,38 @@ import java.util.concurrent.TimeUnit;
 public final class MainActivity extends Activity {
     private static final String TAG = "SpinonBootstrap";
     private static final int RUNTIME_QUEUE_CAPACITY = 64;
+    private static final String LIFECYCLE_GC_SETUP = "(() => {"
+            + "const parent = document.createElement('div');"
+            + "parent.setAttribute('data-spinon-lifecycle', 'parent');"
+            + "let child = document.createTextNode('attached-child');"
+            + "globalThis.__spinonLifecycleAttachedWeak = new WeakRef(child);"
+            + "document.appendChild(parent); parent.appendChild(child);"
+            + "child = null;"
+            + "const detachedParent = document.createElement('section');"
+            + "detachedParent.setAttribute('data-spinon-lifecycle', 'detached-parent');"
+            + "const detachedChild = document.createTextNode('held');"
+            + "detachedParent.appendChild(detachedChild);"
+            + "globalThis.__spinonLifecycleHeld = detachedChild;"
+            + "let orphan = document.createTextNode('orphan');"
+            + "globalThis.__spinonLifecycleWeak = new WeakRef(orphan); orphan = null;"
+            + "spinon.__internal.requestLifecycleCollectionForTesting();"
+            + "})();";
+    private static final String LIFECYCLE_GC_VERIFY = "(() => {"
+            + "let parent = document.firstChild;"
+            + "while (parent !== null && parent.getAttribute('data-spinon-lifecycle') !== 'parent') {"
+            + "parent = parent.nextSibling; }"
+            + "const oldWrapperExpired = globalThis.__spinonLifecycleAttachedWeak.deref() === undefined;"
+            + "const recreatedChild = parent === null ? null : parent.firstChild;"
+            + "if (parent === null || !oldWrapperExpired || recreatedChild === null"
+            + " || recreatedChild.textContent !== 'attached-child'"
+            + " || parent.firstChild !== recreatedChild"
+            + " || globalThis.__spinonLifecycleHeld.textContent !== 'held'"
+            + " || globalThis.__spinonLifecycleHeld.parentNode.getAttribute('data-spinon-lifecycle')"
+            + " !== 'detached-parent'"
+            + " || globalThis.__spinonLifecycleWeak.deref() !== undefined) {"
+            + "throw new Error('weak wrapper GC did not preserve live roots and reclaim orphan'); }"
+            + "spinon.__internal.requestLifecycleCollectionForTesting();"
+            + "})();";
 
     static {
         System.loadLibrary("spinon_bootstrap");
@@ -63,6 +95,10 @@ public final class MainActivity extends Activity {
     private Button dispatchButton;
     private Button loopButton;
     private Button delayedButton;
+    private Button lifecycleButton;
+    private boolean lifecycleGcFixtureRequested;
+    private boolean runLifecycleGcAutomatically;
+    private volatile boolean lifecycleGcPassed;
     private int tapCount;
 
     @Override
@@ -90,7 +126,14 @@ public final class MainActivity extends Activity {
         try {
             String source = readAsset("app.js");
             DisplayMetrics metrics = getResources().getDisplayMetrics();
-            if (getIntent().getBooleanExtra("spinon_runtime_threads", false)) {
+            lifecycleGcFixtureRequested = getIntent().getBooleanExtra("spinon_dom_gc", false);
+            runLifecycleGcAutomatically = lifecycleGcFixtureRequested
+                    && BuildConfig.SPINON_S03_DOM_GC_FIXTURE;
+            if (lifecycleGcFixtureRequested && !BuildConfig.SPINON_S03_DOM_GC_FIXTURE) {
+                Log.e(TAG, "SPINON_DOM_GC_FIXTURE_DISABLED · 검증 전용 빌드로 다시 빌드하세요");
+            }
+            if (getIntent().getBooleanExtra("spinon_runtime_threads", false)
+                    || lifecycleGcFixtureRequested) {
                 showRuntimeThreadExperiment(source);
                 return;
             }
@@ -201,14 +244,18 @@ public final class MainActivity extends Activity {
         root.setBackgroundColor(Color.rgb(14, 19, 31));
 
         TextView title = new TextView(this);
-        title.setText("SPINON · V8 실행 스레드 실험");
+        title.setText(runLifecycleGcAutomatically
+                ? "SPINON · DOM wrapper 수명 검증"
+                : "SPINON · V8 실행 스레드 실험");
         title.setTextColor(Color.rgb(230, 237, 248));
         title.setTextSize(20);
         title.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
         root.addView(title);
 
         TextView description = new TextView(this);
-        description.setText("개발용 실험 · 호출 스레드와 V8 소유 스레드, 큐 대기·실행 시간 확인");
+        description.setText(runLifecycleGcAutomatically
+                ? "검증용 빌드 · 약한 wrapper GC와 Rust HostDocument 회수 확인"
+                : "개발용 실험 · 호출 스레드와 V8 소유 스레드, 큐 대기·실행 시간 확인");
         description.setTextColor(Color.rgb(170, 184, 207));
         description.setTextSize(13);
         description.setPadding(0, Math.round(8 * density), 0, Math.round(12 * density));
@@ -224,14 +271,19 @@ public final class MainActivity extends Activity {
         loopButton = runtimeButton("긴 JavaScript 실행 시작");
         Button cancelButton = runtimeButton("실행 취소");
         delayedButton = runtimeButton("지연 호스트 응답 모의 (0.5초)");
+        lifecycleButton = runtimeButton("V8 약한 wrapper 회수 검증");
+        lifecycleButton.setVisibility(BuildConfig.SPINON_S03_DOM_GC_FIXTURE
+                ? android.view.View.VISIBLE : android.view.View.GONE);
         dispatchButton.setEnabled(false);
         loopButton.setEnabled(false);
         cancelButton.setEnabled(false);
         delayedButton.setEnabled(false);
+        lifecycleButton.setEnabled(false);
         root.addView(dispatchButton);
         root.addView(loopButton);
         root.addView(cancelButton);
         root.addView(delayedButton);
+        root.addView(lifecycleButton);
 
         ScrollView scroll = new ScrollView(this);
         runtimeLog = new TextView(this);
@@ -278,6 +330,7 @@ public final class MainActivity extends Activity {
                         "delayed-host-response", () -> delayedButton.setEnabled(!activityClosing));
             }, 500, TimeUnit.MILLISECONDS);
         });
+        lifecycleButton.setOnClickListener(view -> runLifecycleCollectionProbe());
 
         submitRuntimeCall(() -> {
             long handle = nativeSessionCreate();
@@ -294,7 +347,89 @@ public final class MainActivity extends Activity {
             loopButton.setEnabled(true);
             cancelButton.setEnabled(true);
             delayedButton.setEnabled(true);
+            lifecycleButton.setEnabled(true);
+            if (runLifecycleGcAutomatically) runLifecycleCollectionProbe();
+            else if (lifecycleGcFixtureRequested) {
+                runtimeStatus.setText("DOM GC 검증 fixture 비활성 · 검증 전용 빌드로 다시 빌드하세요");
+            }
         });
+    }
+
+    private void runLifecycleCollectionProbe() {
+        long handle = runtimeSession;
+        if (handle == 0 || activityClosing) return;
+        lifecycleButton.setEnabled(false);
+        runtimeStatus.setText("V8 GC 후 Rust HostDocument 회수 검증 중…");
+        submitRuntimeCall(() -> {
+            String baseline = decode(nativeSessionEval(handle, new byte[0]));
+            String setup = decode(nativeSessionEval(handle,
+                    LIFECYCLE_GC_SETUP.getBytes(StandardCharsets.UTF_8)));
+            String verify = decode(nativeSessionEval(handle,
+                    LIFECYCLE_GC_VERIFY.getBytes(StandardCharsets.UTF_8)));
+            long beforeNodes = reportLongField(baseline, "document_nodes");
+            long afterNodes = reportLongField(setup, "document_nodes");
+            boolean countsMatch = beforeNodes >= 0 && afterNodes == beforeNodes + 4;
+            boolean collectorSucceeded = "none".equals(
+                    reportField(baseline, "document_collection_error"))
+                    && "none".equals(reportField(setup, "document_collection_error"))
+                    && "none".equals(reportField(verify, "document_collection_error"))
+                    && "0".equals(reportField(verify, "document_collection_poisoned"));
+            long scanCount = reportLongField(verify, "document_collection_scans");
+            long scannedHandles = reportLongField(verify, "document_collection_scanned_handles");
+            long liveHandles = reportLongField(verify, "document_collection_live_handles");
+            long emptyHandles = reportLongField(verify, "document_collection_empty_handles");
+            boolean scanStatsValid = scanCount >= 3 && scannedHandles >= 0
+                    && liveHandles >= 0 && emptyHandles >= 0
+                    && scannedHandles == liveHandles + emptyHandles;
+            boolean passed = setup.startsWith("status=0 ")
+                    && verify.startsWith("status=0 ") && countsMatch
+                    && collectorSucceeded && scanStatsValid;
+            lifecycleGcPassed = passed;
+            return ("status=" + (passed ? "0" : "-1")
+                    + " dom_gc=" + (passed ? "PASS" : "FAIL")
+                    + " baseline_nodes=" + beforeNodes
+                    + " after_gc_nodes=" + afterNodes
+                    + " attached_tree_and_live_wrapper="
+                    + (verify.startsWith("status=0 ") ? "PASS" : "FAIL")
+                    + " attached_wrapper_recreated="
+                    + (verify.startsWith("status=0 ") ? "PASS" : "FAIL")
+                    + " orphan_weakref_cleared="
+                    + (verify.contains("status=0 ") ? "PASS" : "FAIL")
+                    + " collector_succeeded=" + (collectorSucceeded ? "PASS" : "FAIL")
+                    + " collector_scan_stats=" + (scanStatsValid ? "PASS" : "FAIL")
+                    + " scan_count=" + scanCount
+                    + " scanned_handles=" + scannedHandles
+                    + " live_handles=" + liveHandles
+                    + " empty_handles=" + emptyHandles
+                    + " setup={" + setup + "} verify={" + verify + "}")
+                    .getBytes(StandardCharsets.UTF_8);
+        }, "DOM-GC 검증", () -> {
+            lifecycleButton.setEnabled(!activityClosing);
+            runtimeStatus.setText(lifecycleGcPassed ? "V8 약한 wrapper 회수 검증 통과"
+                    : "V8 약한 wrapper 회수 검증 실패 · 로그 확인");
+        });
+    }
+
+    private long reportLongField(String report, String name) {
+        for (String field : report.split(" ")) {
+            if (field.startsWith(name + "=")) {
+                try {
+                    return Long.parseLong(field.substring(name.length() + 1));
+                } catch (NumberFormatException ignored) {
+                    return -1;
+                }
+            }
+        }
+        return -1;
+    }
+
+    private String reportField(String report, String name) {
+        for (String field : report.split(" ")) {
+            if (field.startsWith(name + "=")) {
+                return field.substring(name.length() + 1);
+            }
+        }
+        return "";
     }
 
     private Button runtimeButton(String label) {

@@ -55,20 +55,38 @@ typedef struct SpinonDocumentQueryResult {
   int32_t value;
   size_t output_length;
 } SpinonDocumentQueryResult;
+typedef struct SpinonDocumentCollectionStats {
+  uint64_t scan_count;
+  uint64_t deferred_count;
+  uint64_t scanned_handle_count;
+  uint64_t live_handle_count;
+  uint64_t empty_handle_count;
+  uint64_t last_scan_start_ns;
+  uint64_t last_scan_duration_us;
+  uint32_t runtime_poisoned;
+} SpinonDocumentCollectionStats;
 typedef int32_t (*SpinonDocumentQueryCallback)(
     void *document_user_data, const SpinonDocumentQuery *query,
     SpinonDocumentQueryResult *result, char *error_output,
     size_t error_capacity);
+typedef int32_t (*SpinonDocumentCollectCallback)(
+    void *document_user_data, const int32_t *root_node_ids, size_t root_count,
+    int32_t *reclaimed_node_ids, size_t reclaimed_capacity,
+    size_t *reclaimed_count, char *error_output, size_t error_capacity);
 
 SpinonV8Runtime *spinon_v8_runtime_new(SpinonNodeCallback node_callback,
                                       SpinonTextCallback text_callback,
                                       SpinonDocumentCommitCallback document_commit_callback,
                                       SpinonDocumentQueryCallback document_query_callback,
+                                      SpinonDocumentCollectCallback document_collect_callback,
                                       void *user_data,
                                       void *document_user_data);
 int32_t spinon_v8_runtime_eval(SpinonV8Runtime *runtime, const char *source);
 int32_t spinon_v8_runtime_dispatch(SpinonV8Runtime *runtime, int32_t node_id);
 const char *spinon_v8_runtime_last_error(SpinonV8Runtime *runtime);
+const char *spinon_v8_runtime_last_collection_error(SpinonV8Runtime *runtime);
+void spinon_v8_runtime_document_collection_stats(
+    SpinonV8Runtime *runtime, SpinonDocumentCollectionStats *stats);
 int32_t spinon_v8_runtime_was_terminated(SpinonV8Runtime *runtime);
 /* TerminateExecution은 V8가 다른 스레드 호출을 허용하는 유일한 취소 경로입니다. */
 void spinon_v8_runtime_terminate(SpinonV8Runtime *runtime);

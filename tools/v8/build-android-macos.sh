@@ -47,6 +47,7 @@ path.write_text(source.replace(line, '  # Spinon macOS cross-build smoke.', 1))
 PY
 
 if [[ ! -e "$v8_prebuilt" ]]; then
+  mkdir -p "$(dirname "$v8_prebuilt")"
   ln -s "$ndk_prebuilt" "$v8_prebuilt"
   created_ndk_link=true
 fi
