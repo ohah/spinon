@@ -10,6 +10,7 @@ if [[ "$(git -C "$v8_dir" rev-parse HEAD 2>/dev/null || true)" != "$revision" ]]
   echo "V8 checkout을 tools/v8/checkout.sh로 먼저 준비하세요." >&2
   exit 1
 fi
+mkdir -p "$v8_dir/$out"
 cat > "$v8_dir/$out/args.gn" <<'EOF'
 target_os = "ios"
 target_cpu = "arm64"

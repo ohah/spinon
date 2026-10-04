@@ -3,10 +3,13 @@
 #include <libplatform/libplatform.h>
 #include <v8.h>
 
+#include <chrono>
+#include <map>
 #include <memory>
 #include <mutex>
 #include <new>
 #include <string>
+#include <utility>
 #include <vector>
 
 #if defined(__ANDROID__) || defined(__linux__)
@@ -25,11 +28,21 @@ struct SpinonV8Runtime {
   SpinonTextCallback text_callback = nullptr;
   SpinonDocumentCommitCallback document_commit_callback = nullptr;
   SpinonDocumentQueryCallback document_query_callback = nullptr;
+  SpinonDocumentCollectCallback document_collect_callback = nullptr;
   void *user_data = nullptr;
   void *document_user_data = nullptr;
+  std::map<int32_t, v8::Global<v8::Object>> node_wrappers;
+  std::vector<int32_t> wrapper_root_ids;
+  std::vector<int32_t> reclaimed_node_ids;
+  SpinonDocumentCollectionStats document_collection_stats{};
+#if defined(SPINON_ENABLE_S03_DOM_GC_FIXTURE) && SPINON_ENABLE_S03_DOM_GC_FIXTURE
+  bool request_collection_for_testing = false;
+#endif
   std::string error;
+  std::string collection_error;
   bool was_terminated = false;
   bool document_commit_active = false;
+  bool document_collection_poisoned = false;
 };
 
 namespace {
@@ -77,6 +90,7 @@ struct OwnedDocumentOperation {
 };
 
 constexpr size_t kMaximumDocumentOperations = 256;
+constexpr size_t kMaximumDocumentNodes = 16'384;
 constexpr size_t kMaximumBatchStringUnits = 1'048'576;
 constexpr int kMaximumNameUnits = 1024;
 constexpr int kMaximumValueUnits = 1'048'576;
@@ -481,6 +495,102 @@ void ReadDocument(const v8::FunctionCallbackInfo<v8::Value> &args) {
   args.GetReturnValue().Set(value);
 }
 
+void GetNodeWrapper(const v8::FunctionCallbackInfo<v8::Value> &args) {
+  v8::Isolate *isolate = args.GetIsolate();
+  auto *runtime = static_cast<SpinonV8Runtime *>(isolate->GetData(0));
+  if (args.Length() != 1 || !args[0]->IsInt32() ||
+      args[0].As<v8::Int32>()->Value() <= 0) {
+    ThrowDocumentError(isolate, "getNodeWrapper(id) 인자가 잘못되었습니다", true);
+    return;
+  }
+  const int32_t id = args[0].As<v8::Int32>()->Value();
+  auto found = runtime->node_wrappers.find(id);
+  if (found == runtime->node_wrappers.end() || found->second.IsEmpty()) {
+    args.GetReturnValue().Set(v8::Undefined(isolate));
+    return;
+  }
+  args.GetReturnValue().Set(found->second.Get(isolate));
+}
+
+void RegisterNodeWrapper(const v8::FunctionCallbackInfo<v8::Value> &args) {
+  v8::Isolate *isolate = args.GetIsolate();
+  auto *runtime = static_cast<SpinonV8Runtime *>(isolate->GetData(0));
+  if (args.Length() != 2 || !args[0]->IsInt32() ||
+      args[0].As<v8::Int32>()->Value() <= 0 || !args[1]->IsObject() ||
+      args[1]->IsNull()) {
+    ThrowDocumentError(isolate,
+                       "registerNodeWrapper(id, wrapper) 인자가 잘못되었습니다",
+                       true);
+    return;
+  }
+  const int32_t id = args[0].As<v8::Int32>()->Value();
+  auto wrapper = args[1].As<v8::Object>();
+  auto found = runtime->node_wrappers.find(id);
+  if (found != runtime->node_wrappers.end()) {
+    if (!found->second.IsEmpty()) {
+      args.GetReturnValue().Set(found->second == wrapper);
+      return;
+    }
+    found->second.Reset(isolate, wrapper);
+    found->second.SetWeak();
+    args.GetReturnValue().Set(true);
+    return;
+  }
+  if (runtime->node_wrappers.size() >= kMaximumDocumentNodes) {
+    ThrowDocumentError(isolate,
+                       "Node wrapper registry가 허용 개수를 초과했습니다",
+                       false, "QuotaExceededError");
+    return;
+  }
+  try {
+    v8::Global<v8::Object> weak_wrapper(isolate, wrapper);
+    weak_wrapper.SetWeak();
+    runtime->node_wrappers.emplace(id, std::move(weak_wrapper));
+  } catch (const std::bad_alloc &) {
+    ThrowDocumentError(isolate, "Node wrapper registry 메모리를 확보하지 못했습니다",
+                       false);
+    return;
+  }
+  args.GetReturnValue().Set(true);
+}
+
+void UnregisterNodeWrapper(const v8::FunctionCallbackInfo<v8::Value> &args) {
+  v8::Isolate *isolate = args.GetIsolate();
+  auto *runtime = static_cast<SpinonV8Runtime *>(isolate->GetData(0));
+  if (args.Length() != 2 || !args[0]->IsInt32() ||
+      args[0].As<v8::Int32>()->Value() <= 0 || !args[1]->IsObject() ||
+      args[1]->IsNull()) {
+    ThrowDocumentError(isolate,
+                       "unregisterNodeWrapper(id, wrapper) 인자가 잘못되었습니다",
+                       true);
+    return;
+  }
+  const int32_t id = args[0].As<v8::Int32>()->Value();
+  auto found = runtime->node_wrappers.find(id);
+  if (found != runtime->node_wrappers.end() && !found->second.IsEmpty() &&
+      found->second == args[1].As<v8::Object>()) {
+    found->second.Reset();
+    runtime->node_wrappers.erase(found);
+    args.GetReturnValue().Set(true);
+    return;
+  }
+  args.GetReturnValue().Set(false);
+}
+
+#if defined(SPINON_ENABLE_S03_DOM_GC_FIXTURE) && SPINON_ENABLE_S03_DOM_GC_FIXTURE
+void RequestLifecycleCollectionForTesting(
+    const v8::FunctionCallbackInfo<v8::Value> &args) {
+  auto *runtime = static_cast<SpinonV8Runtime *>(args.GetIsolate()->GetData(0));
+  if (args.Length() != 0) {
+    ThrowDocumentError(args.GetIsolate(),
+                       "requestLifecycleCollectionForTesting()은 인자를 받지 않습니다",
+                       true);
+    return;
+  }
+  runtime->request_collection_for_testing = true;
+}
+#endif
+
 void OnEvent(const v8::FunctionCallbackInfo<v8::Value> &args) {
   auto *runtime = static_cast<SpinonV8Runtime *>(args.GetIsolate()->GetData(0));
   if (args.Length() != 1 || !args[0]->IsFunction()) {
@@ -501,19 +611,130 @@ bool Enter(SpinonV8Runtime *runtime, v8::Local<v8::Context> *context) {
   *context = runtime->context.Get(runtime->isolate);
   return !context->IsEmpty();
 }
+
+int32_t CollectDocumentAtSafePoint(SpinonV8Runtime *runtime) {
+#if defined(SPINON_ENABLE_S03_DOM_GC_FIXTURE) && SPINON_ENABLE_S03_DOM_GC_FIXTURE
+  if (runtime->request_collection_for_testing) {
+    runtime->request_collection_for_testing = false;
+    runtime->isolate->LowMemoryNotification();
+  }
+#endif
+  using Clock = std::chrono::steady_clock;
+  const auto scan_started = Clock::now();
+  auto &stats = runtime->document_collection_stats;
+  if (stats.scan_count != UINT64_MAX) ++stats.scan_count;
+  const auto scan_started_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(
+                                   scan_started.time_since_epoch())
+                                   .count();
+  stats.last_scan_start_ns = scan_started_ns < 0
+                                 ? 0
+                                 : static_cast<uint64_t>(scan_started_ns);
+  auto finish_scan = [&]() {
+    const auto duration = std::chrono::duration_cast<std::chrono::microseconds>(
+                              Clock::now() - scan_started)
+                              .count();
+    stats.last_scan_duration_us = duration < 0 ? 0 : static_cast<uint64_t>(duration);
+  };
+  auto defer = [&](const std::string &message) {
+    runtime->collection_error = message;
+    if (stats.deferred_count != UINT64_MAX) ++stats.deferred_count;
+    finish_scan();
+    return -1;
+  };
+  auto poison = [&](const std::string &message) {
+    runtime->document_collection_poisoned = true;
+    stats.runtime_poisoned = 1;
+    return defer(message);
+  };
+  if (runtime->document_collect_callback == nullptr) {
+    return defer("문서 회수 callback이 등록되지 않았습니다");
+  }
+
+  runtime->wrapper_root_ids.clear();
+  stats.scanned_handle_count = runtime->node_wrappers.size();
+  stats.live_handle_count = 0;
+  stats.empty_handle_count = 0;
+  for (const auto &entry : runtime->node_wrappers) {
+    if (entry.second.IsEmpty()) {
+      ++stats.empty_handle_count;
+    } else {
+      ++stats.live_handle_count;
+    }
+  }
+  if (runtime->node_wrappers.size() > kMaximumDocumentNodes) {
+    return defer("Node wrapper registry가 허용 개수를 초과했습니다");
+  }
+  for (const auto &entry : runtime->node_wrappers) {
+    if (entry.second.IsEmpty()) continue;
+    if (runtime->wrapper_root_ids.size() == kMaximumDocumentNodes) {
+      return defer("Node wrapper root가 허용 개수를 초과했습니다");
+    }
+    runtime->wrapper_root_ids.push_back(entry.first);
+  }
+
+  size_t reclaimed_count = 0;
+  char callback_error[1024] = {};
+  const int32_t status = runtime->document_collect_callback(
+      runtime->document_user_data,
+      runtime->wrapper_root_ids.empty() ? nullptr
+                                        : runtime->wrapper_root_ids.data(),
+      runtime->wrapper_root_ids.size(), runtime->reclaimed_node_ids.data(),
+      runtime->reclaimed_node_ids.size(), &reclaimed_count, callback_error,
+      sizeof(callback_error));
+  if (status != SPINON_DOCUMENT_CALLBACK_OK) {
+    return defer(callback_error[0] == '\0'
+                     ? "HostDocument weak wrapper 회수가 실패했습니다"
+                     : callback_error);
+  }
+  if (reclaimed_count > runtime->reclaimed_node_ids.size()) {
+    return poison("HostDocument 회수 callback이 출력 buffer 범위를 넘었습니다");
+  }
+
+  int32_t previous_id = 0;
+  for (size_t index = 0; index < reclaimed_count; ++index) {
+    const int32_t id = runtime->reclaimed_node_ids[index];
+    if (id <= previous_id) {
+      return poison("HostDocument 회수 결과 ID가 오름차순 고유값이 아닙니다");
+    }
+    previous_id = id;
+    auto found = runtime->node_wrappers.find(id);
+    if (found != runtime->node_wrappers.end() && !found->second.IsEmpty()) {
+      return poison("HostDocument가 live JavaScript wrapper를 회수했습니다");
+    }
+  }
+  for (size_t index = 0; index < reclaimed_count; ++index) {
+    auto found = runtime->node_wrappers.find(runtime->reclaimed_node_ids[index]);
+    if (found == runtime->node_wrappers.end()) continue;
+    found->second.Reset();
+    runtime->node_wrappers.erase(found);
+  }
+  finish_scan();
+  return 0;
+}
 }  // namespace
 
 extern "C" SpinonV8Runtime *spinon_v8_runtime_new(
     SpinonNodeCallback node_callback, SpinonTextCallback text_callback,
     SpinonDocumentCommitCallback document_commit_callback,
-    SpinonDocumentQueryCallback document_query_callback, void *user_data,
+    SpinonDocumentQueryCallback document_query_callback,
+    SpinonDocumentCollectCallback document_collect_callback, void *user_data,
     void *document_user_data) {
   std::call_once(platform_once, InitializeV8);
-  auto *runtime = new SpinonV8Runtime;
+  auto *runtime = new (std::nothrow) SpinonV8Runtime;
+  if (runtime == nullptr) return nullptr;
+  try {
+    runtime->wrapper_root_ids.reserve(kMaximumDocumentNodes);
+    // Rust callback의 출력 포인터 범위를 실제 vector 원소로 확보합니다.
+    runtime->reclaimed_node_ids.resize(kMaximumDocumentNodes);
+  } catch (const std::bad_alloc &) {
+    delete runtime;
+    return nullptr;
+  }
   runtime->node_callback = node_callback;
   runtime->text_callback = text_callback;
   runtime->document_commit_callback = document_commit_callback;
   runtime->document_query_callback = document_query_callback;
+  runtime->document_collect_callback = document_collect_callback;
   runtime->user_data = user_data;
   runtime->document_user_data = document_user_data;
 
@@ -527,6 +748,7 @@ extern "C" SpinonV8Runtime *spinon_v8_runtime_new(
     return nullptr;
   }
   runtime->isolate->SetData(0, runtime);
+  bool facade_initialized = false;
   {
     v8::Isolate::Scope isolate_scope(runtime->isolate);
     v8::HandleScope handle_scope(runtime->isolate);
@@ -544,6 +766,20 @@ extern "C" SpinonV8Runtime *spinon_v8_runtime_new(
                                             CommitDocumentBatch));
     internal->Set(runtime->isolate, "readDocument",
                   v8::FunctionTemplate::New(runtime->isolate, ReadDocument));
+    internal->Set(runtime->isolate, "getNodeWrapper",
+                  v8::FunctionTemplate::New(runtime->isolate, GetNodeWrapper));
+    internal->Set(runtime->isolate, "registerNodeWrapper",
+                  v8::FunctionTemplate::New(runtime->isolate,
+                                            RegisterNodeWrapper));
+    internal->Set(runtime->isolate, "unregisterNodeWrapper",
+                  v8::FunctionTemplate::New(runtime->isolate,
+                                            UnregisterNodeWrapper));
+#if defined(SPINON_ENABLE_S03_DOM_GC_FIXTURE) && SPINON_ENABLE_S03_DOM_GC_FIXTURE
+    internal->Set(runtime->isolate, "requestLifecycleCollectionForTesting",
+                  v8::FunctionTemplate::New(
+                      runtime->isolate,
+                      RequestLifecycleCollectionForTesting));
+#endif
     spinon->Set(runtime->isolate, "__internal", internal);
     global->Set(runtime->isolate, "spinon", spinon);
     runtime->context.Reset(
@@ -555,73 +791,115 @@ extern "C" SpinonV8Runtime *spinon_v8_runtime_new(
     if (source.IsEmpty() ||
         !v8::Script::Compile(context, source.ToLocalChecked()).ToLocal(&script) ||
         script->Run(context).IsEmpty()) {
-      runtime->context.Reset();
-      runtime->isolate->Dispose();
-      delete runtime->allocator;
-      delete runtime;
-      return nullptr;
+      facade_initialized = false;
+    } else {
+      facade_initialized = true;
     }
+  }
+  if (!facade_initialized) {
+    {
+      v8::Isolate::Scope isolate_scope(runtime->isolate);
+      runtime->context.Reset();
+    }
+    runtime->isolate->Dispose();
+    delete runtime->allocator;
+    delete runtime;
+    return nullptr;
   }
   return runtime;
 }
 
 extern "C" int32_t spinon_v8_runtime_eval(SpinonV8Runtime *runtime,
-                                            const char *source) {
+                                             const char *source) {
   if (!runtime || !source) return -1;
   runtime->error.clear();
+  if (runtime->document_collection_poisoned) {
+    runtime->error = "HostDocument 회수 경계가 손상되어 세션 재생성이 필요합니다";
+    return -1;
+  }
   runtime->was_terminated = false;
   v8::Isolate::Scope isolate_scope(runtime->isolate);
-  v8::HandleScope handle_scope(runtime->isolate);
-  v8::Local<v8::Context> context;
-  if (!Enter(runtime, &context)) return -1;
-  v8::Context::Scope context_scope(context);
-  v8::TryCatch try_catch(runtime->isolate);
-  auto text = v8::String::NewFromUtf8(runtime->isolate, source);
-  if (text.IsEmpty()) {
-    runtime->error = "JavaScript source is not valid UTF-8";
-    return -1;
-  }
-  v8::Local<v8::Script> script;
-  if (!v8::Script::Compile(context, text.ToLocalChecked()).ToLocal(&script) ||
-      script->Run(context).IsEmpty()) {
-    runtime->was_terminated = try_catch.HasTerminated();
-    runtime->error = ExceptionText(runtime->isolate, try_catch);
-    return -1;
-  }
-  runtime->isolate->PerformMicrotaskCheckpoint();
-  return 0;
+  const int32_t result = [&]() {
+    v8::HandleScope handle_scope(runtime->isolate);
+    v8::Local<v8::Context> context;
+    if (!Enter(runtime, &context)) {
+      runtime->error = "V8 Context가 준비되지 않았습니다";
+      return -1;
+    }
+    v8::Context::Scope context_scope(context);
+    v8::TryCatch try_catch(runtime->isolate);
+    auto text = v8::String::NewFromUtf8(runtime->isolate, source);
+    if (text.IsEmpty()) {
+      runtime->error = "JavaScript source is not valid UTF-8";
+      return -1;
+    }
+    v8::Local<v8::Script> script;
+    if (!v8::Script::Compile(context, text.ToLocalChecked()).ToLocal(&script) ||
+        script->Run(context).IsEmpty()) {
+      runtime->was_terminated = try_catch.HasTerminated();
+      runtime->error = ExceptionText(runtime->isolate, try_catch);
+      return -1;
+    }
+    runtime->isolate->PerformMicrotaskCheckpoint();
+    return 0;
+  }();
+  CollectDocumentAtSafePoint(runtime);
+  return result;
 }
 
 extern "C" int32_t spinon_v8_runtime_dispatch(SpinonV8Runtime *runtime,
                                                  int32_t node_id) {
   if (!runtime) return -1;
   runtime->error.clear();
+  if (runtime->document_collection_poisoned) {
+    runtime->error = "HostDocument 회수 경계가 손상되어 세션 재생성이 필요합니다";
+    return -1;
+  }
   runtime->was_terminated = false;
   v8::Isolate::Scope isolate_scope(runtime->isolate);
-  v8::HandleScope handle_scope(runtime->isolate);
-  v8::Local<v8::Context> context;
-  if (!Enter(runtime, &context)) return -1;
-  v8::Context::Scope context_scope(context);
-  if (runtime->event_handler.IsEmpty()) {
-    runtime->error = "JavaScript registered no event handler";
-    return -1;
-  }
-  v8::TryCatch try_catch(runtime->isolate);
-  auto handler = runtime->event_handler.Get(runtime->isolate);
-  v8::Local<v8::Value> arguments[] = {
-      v8::Int32::New(runtime->isolate, node_id)};
-  if (handler->Call(context, context->Global(), 1, arguments).IsEmpty()) {
-    runtime->was_terminated = try_catch.HasTerminated();
-    runtime->error = ExceptionText(runtime->isolate, try_catch);
-    return -1;
-  }
-  runtime->isolate->PerformMicrotaskCheckpoint();
-  return 0;
+  const int32_t result = [&]() {
+    v8::HandleScope handle_scope(runtime->isolate);
+    v8::Local<v8::Context> context;
+    if (!Enter(runtime, &context)) {
+      runtime->error = "V8 Context가 준비되지 않았습니다";
+      return -1;
+    }
+    v8::Context::Scope context_scope(context);
+    if (runtime->event_handler.IsEmpty()) {
+      runtime->error = "JavaScript registered no event handler";
+      return -1;
+    }
+    v8::TryCatch try_catch(runtime->isolate);
+    auto handler = runtime->event_handler.Get(runtime->isolate);
+    v8::Local<v8::Value> arguments[] = {
+        v8::Int32::New(runtime->isolate, node_id)};
+    if (handler->Call(context, context->Global(), 1, arguments).IsEmpty()) {
+      runtime->was_terminated = try_catch.HasTerminated();
+      runtime->error = ExceptionText(runtime->isolate, try_catch);
+      return -1;
+    }
+    runtime->isolate->PerformMicrotaskCheckpoint();
+    return 0;
+  }();
+  CollectDocumentAtSafePoint(runtime);
+  return result;
 }
 
 extern "C" const char *spinon_v8_runtime_last_error(
     SpinonV8Runtime *runtime) {
   return runtime ? runtime->error.c_str() : "null runtime";
+}
+
+extern "C" const char *spinon_v8_runtime_last_collection_error(
+    SpinonV8Runtime *runtime) {
+  return runtime ? runtime->collection_error.c_str() : "null runtime";
+}
+
+extern "C" void spinon_v8_runtime_document_collection_stats(
+    SpinonV8Runtime *runtime, SpinonDocumentCollectionStats *stats) {
+  if (stats == nullptr) return;
+  *stats = runtime ? runtime->document_collection_stats
+                   : SpinonDocumentCollectionStats{};
 }
 
 extern "C" int32_t spinon_v8_runtime_was_terminated(
@@ -652,8 +930,12 @@ extern "C" uint64_t spinon_v8_current_thread_id() {
 
 extern "C" void spinon_v8_runtime_free(SpinonV8Runtime *runtime) {
   if (!runtime) return;
-  runtime->event_handler.Reset();
-  runtime->context.Reset();
+  {
+    v8::Isolate::Scope isolate_scope(runtime->isolate);
+    runtime->node_wrappers.clear();
+    runtime->event_handler.Reset();
+    runtime->context.Reset();
+  }
   runtime->isolate->Dispose();
   delete runtime->allocator;
   delete runtime;

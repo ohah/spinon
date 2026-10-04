@@ -1,4 +1,4 @@
-use crate::host::{HostDocumentBridge, commit_callback, query_callback};
+use crate::host::{HostDocumentBridge, collect_callback, commit_callback, query_callback};
 use crate::v8::{
     SpinonV8Runtime, spinon_v8_runtime_dispatch, spinon_v8_runtime_eval, spinon_v8_runtime_free,
     spinon_v8_runtime_last_error, spinon_v8_runtime_new,
@@ -88,6 +88,7 @@ pub fn run_bootstrap_smoke(source: &str) -> Result<String, BootstrapSmokeError> 
             on_text,
             commit_callback,
             query_callback,
+            collect_callback,
             state_ptr,
             document_ptr,
         )

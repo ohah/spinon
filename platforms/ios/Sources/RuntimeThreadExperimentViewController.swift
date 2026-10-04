@@ -4,6 +4,7 @@ import OSLog
 final class RuntimeThreadExperimentViewController: UIViewController {
     private let automaticallyRun: Bool
     private let runPriorityProbe: Bool
+    private let automaticallyRunLifecycleProbe: Bool
     private let logger = Logger(subsystem: "dev.spinon.bootstrap", category: "r06")
     private let runtimeCalls = DispatchQueue(
         label: "dev.spinon.r06.runtime-calls",
@@ -32,10 +33,16 @@ final class RuntimeThreadExperimentViewController: UIViewController {
     private let longEvalButton = UIButton(type: .system)
     private let cancelButton = UIButton(type: .system)
     private let recreateButton = UIButton(type: .system)
+    private let lifecycleButton = UIButton(type: .system)
 
-    init(automaticallyRun: Bool, runPriorityProbe: Bool = false) {
+    init(
+        automaticallyRun: Bool,
+        runPriorityProbe: Bool = false,
+        automaticallyRunLifecycleProbe: Bool = false
+    ) {
         self.automaticallyRun = automaticallyRun
         self.runPriorityProbe = runPriorityProbe
+        self.automaticallyRunLifecycleProbe = automaticallyRunLifecycleProbe
         if let sourceURL = Bundle.main.url(forResource: "app", withExtension: "js"),
            let source = try? String(contentsOf: sourceURL, encoding: .utf8) {
             bootstrapSource = source
@@ -93,17 +100,25 @@ final class RuntimeThreadExperimentViewController: UIViewController {
         view.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
 
         let title = UILabel()
-        title.text = runPriorityProbe
-            ? "SPINON · iOS R06 우선순위 검증"
-            : "SPINON · iOS R06 실행 스레드 실험"
+        if automaticallyRunLifecycleProbe {
+            title.text = "SPINON · iOS DOM wrapper 수명 검증"
+        } else {
+            title.text = runPriorityProbe
+                ? "SPINON · iOS R06 우선순위 검증"
+                : "SPINON · iOS R06 실행 스레드 실험"
+        }
         title.font = .systemFont(ofSize: 20, weight: .bold)
         title.textColor = UIColor(red: 0.90, green: 0.93, blue: 0.98, alpha: 1)
         title.numberOfLines = 0
 
         let description = UILabel()
-        description.text = runPriorityProbe
-            ? "개발 전용 · 실제 V8에서 세 우선순위 선택과 동일 등급 FIFO를 확인합니다"
-            : "개발 전용 · JS 실행은 백그라운드 V8 소유 스레드 · UI heartbeat와 큐 대기·취소를 기록합니다"
+        if automaticallyRunLifecycleProbe {
+            description.text = "개발 전용 · V8 weak Global 회수 후 Rust HostDocument root와 node count를 확인합니다"
+        } else {
+            description.text = runPriorityProbe
+                ? "개발 전용 · 실제 V8에서 세 우선순위 선택과 동일 등급 FIFO를 확인합니다"
+                : "개발 전용 · JS 실행은 백그라운드 V8 소유 스레드 · UI heartbeat와 큐 대기·취소를 기록합니다"
+        }
         description.font = .systemFont(ofSize: 13)
         description.textColor = UIColor(red: 0.66, green: 0.72, blue: 0.81, alpha: 1)
         description.numberOfLines = 0
@@ -117,6 +132,7 @@ final class RuntimeThreadExperimentViewController: UIViewController {
         configureButton(longEvalButton, title: "긴 JavaScript 실행 시작", action: #selector(startLongEvaluation))
         configureButton(cancelButton, title: "실행 취소", action: #selector(cancelExecution))
         configureButton(recreateButton, title: "세션 종료 후 재생성", action: #selector(recreateSession))
+        configureButton(lifecycleButton, title: "V8 약한 wrapper 회수 검증", action: #selector(runLifecycleCollectionProbe))
 
         reportView.backgroundColor = UIColor(red: 0.035, green: 0.047, blue: 0.075, alpha: 1)
         reportView.textColor = UIColor(red: 0.86, green: 0.89, blue: 0.94, alpha: 1)
@@ -124,10 +140,15 @@ final class RuntimeThreadExperimentViewController: UIViewController {
         reportView.isEditable = false
         reportView.accessibilityIdentifier = "r06-report"
 
-        let stack = UIStackView(arrangedSubviews: [
+        var arrangedSubviews: [UIView] = [
             title, description, statusLabel, eventButton, longEvalButton, cancelButton,
-            recreateButton, reportView
-        ])
+            recreateButton
+        ]
+        if spinonS03DomGcFixtureEnabled {
+            arrangedSubviews.append(lifecycleButton)
+        }
+        arrangedSubviews.append(reportView)
+        let stack = UIStackView(arrangedSubviews: arrangedSubviews)
         stack.axis = .vertical
         stack.spacing = 8
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -178,11 +199,101 @@ final class RuntimeThreadExperimentViewController: UIViewController {
                 self.appendReport("초기 JavaScript · \(report)")
                 self.setStatus("준비됨 · 백그라운드 V8 세션")
                 self.setButtons(enabled: true)
+                if self.automaticallyRunLifecycleProbe {
+                    self.lifecycleButton.sendActions(for: .touchUpInside)
+                }
                 if self.automaticallyRun {
                     self.appendReport("자동 검증 시작 · UI 타깃 액션을 보낸 뒤 JS 취소")
                     self.startLongEvaluation()
                 }
             }
+        }
+    }
+
+    @objc private func runLifecycleCollectionProbe() {
+        guard session != 0, !scenarioRunning, !isClosing else { return }
+        lifecycleButton.isEnabled = false
+        setStatus("V8 GC 후 Rust HostDocument 회수 검증 중…")
+        let handle = session
+        let accepted = enqueueRuntimeCall(label: "DOM weak wrapper 회수") { [weak self] in
+            guard let self else { return }
+            let baseline = SpinonRunner.evalRuntimeSession(handle, source: "") ?? "응답 없음"
+            let setup = SpinonRunner.evalRuntimeSession(
+                handle,
+                source: """
+                    (() => {
+                      const parent = document.createElement('div');
+                      parent.setAttribute('data-spinon-lifecycle', 'parent');
+                      let child = document.createTextNode('attached-child');
+                      globalThis.__spinonLifecycleAttachedWeak = new WeakRef(child);
+                      document.appendChild(parent);
+                      parent.appendChild(child);
+                      child = null;
+                      const detachedParent = document.createElement('section');
+                      detachedParent.setAttribute('data-spinon-lifecycle', 'detached-parent');
+                      const detachedChild = document.createTextNode('held');
+                      detachedParent.appendChild(detachedChild);
+                      globalThis.__spinonLifecycleHeld = detachedChild;
+                      let orphan = document.createTextNode('orphan');
+                      globalThis.__spinonLifecycleWeak = new WeakRef(orphan);
+                      orphan = null;
+                      spinon.__internal.requestLifecycleCollectionForTesting();
+                    })();
+                    """
+            ) ?? "응답 없음"
+            let verify = SpinonRunner.evalRuntimeSession(
+                handle,
+                source: """
+                    (() => {
+                      let parent = document.firstChild;
+                      while (parent !== null && parent.getAttribute('data-spinon-lifecycle') !== 'parent') {
+                        parent = parent.nextSibling;
+                      }
+                      const oldWrapperExpired =
+                        globalThis.__spinonLifecycleAttachedWeak.deref() === undefined;
+                      const recreatedChild = parent === null ? null : parent.firstChild;
+                      if (parent === null || !oldWrapperExpired || recreatedChild === null ||
+                          recreatedChild.textContent !== 'attached-child' ||
+                          parent.firstChild !== recreatedChild ||
+                          globalThis.__spinonLifecycleHeld.textContent !== 'held' ||
+                          globalThis.__spinonLifecycleHeld.parentNode.getAttribute('data-spinon-lifecycle') !== 'detached-parent' ||
+                          globalThis.__spinonLifecycleWeak.deref() !== undefined) {
+                        throw new Error('weak wrapper GC did not preserve live roots and reclaim orphan');
+                      }
+                      spinon.__internal.requestLifecycleCollectionForTesting();
+                    })();
+                    """
+            ) ?? "응답 없음"
+            let beforeNodes = Int(self.field("document_nodes", in: baseline) ?? "-1") ?? -1
+            let afterNodes = Int(self.field("document_nodes", in: setup) ?? "-1") ?? -1
+            let countsMatch = beforeNodes >= 0 && afterNodes == beforeNodes + 4
+            let collectorSucceeded = [baseline, setup, verify].allSatisfy {
+                self.field("document_collection_error", in: $0) == "none"
+            } && self.field("document_collection_poisoned", in: verify) == "0"
+            let scanCount = Int(self.field("document_collection_scans", in: verify) ?? "-1") ?? -1
+            let scannedHandles = Int(self.field("document_collection_scanned_handles", in: verify) ?? "-1") ?? -1
+            let liveHandles = Int(self.field("document_collection_live_handles", in: verify) ?? "-1") ?? -1
+            let emptyHandles = Int(self.field("document_collection_empty_handles", in: verify) ?? "-1") ?? -1
+            let scanStatsValid = scanCount >= 3 && scannedHandles >= 0
+                && liveHandles >= 0 && emptyHandles >= 0
+                && scannedHandles == liveHandles + emptyHandles
+            let passed = setup.hasPrefix("status=0 ") && verify.hasPrefix("status=0 ")
+                && countsMatch && collectorSucceeded && scanStatsValid
+            DispatchQueue.main.async {
+                guard !self.isClosing else { return }
+                self.appendReport("DOM GC 기준 · document_nodes=" + String(beforeNodes))
+                self.appendReport("DOM GC 후 · document_nodes=" + String(afterNodes) + " · 예상=" + String(beforeNodes + 4))
+                self.appendReport("wrapper 수명 검증 · " + verify)
+                self.appendReport("회수기 callback 오류 없음 · \(collectorSucceeded ? "통과" : "실패")")
+                self.appendReport("회수 scan 계수 · \(scanStatsValid ? "통과" : "실패") · 전체 \(scanCount), 생존 \(liveHandles), 빈 항목 \(emptyHandles)")
+                self.appendReport("\(passed ? "통과" : "실패") · live wrapper와 HostDocument 루트를 보존하고 orphan를 회수")
+                self.lifecycleButton.isEnabled = true
+                self.setStatus(passed ? "V8 약한 wrapper 회수 검증 통과" : "V8 약한 wrapper 회수 검증 실패")
+            }
+        }
+        if !accepted {
+            lifecycleButton.isEnabled = true
+            setStatus("DOM GC 검증 호출이 대기열에서 거부되었습니다")
         }
     }
 
@@ -382,6 +493,7 @@ final class RuntimeThreadExperimentViewController: UIViewController {
         longEvalButton.isEnabled = enabled && !scenarioRunning
         cancelButton.isEnabled = enabled && scenarioRunning
         recreateButton.isEnabled = enabled && !scenarioRunning
+        lifecycleButton.isEnabled = enabled && !scenarioRunning
     }
 
     @discardableResult

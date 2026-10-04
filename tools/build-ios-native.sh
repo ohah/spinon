@@ -22,6 +22,15 @@ case "${SPINON_ENABLE_S04_IOS_FIXTURE:-0}" in
     ;;
 esac
 
+case "${SPINON_ENABLE_S03_DOM_GC_FIXTURE:-0}" in
+  0|1) ;;
+  *)
+    echo "SPINON_ENABLE_S03_DOM_GC_FIXTURE은 0 또는 1이어야 합니다." >&2
+    exit 2
+    ;;
+esac
+s03_dom_gc_cpp_flag="-DSPINON_ENABLE_S03_DOM_GC_FIXTURE=${SPINON_ENABLE_S03_DOM_GC_FIXTURE:-0}"
+
 case "$platform_name" in
   iphonesimulator)
     v8_out="out/boson-ios-sim"
@@ -86,7 +95,7 @@ output_dir="$repo_root/build/spinon/$platform_name"
 mkdir -p "$output_dir"
 sdk_path="$(xcrun --sdk "$sdk" --show-sdk-path)"
 xcrun --sdk "$sdk" clang++ -std=c++20 -O2 -fPIC -target "$target" \
-  -isysroot "$sdk_path" -I"$v8_dir/include" \
+  -isysroot "$sdk_path" -I"$v8_dir/include" "$s03_dom_gc_cpp_flag" \
   -I"$repo_root/native/v8/include" \
   -c "$repo_root/native/v8/src/spinon_v8.cc" \
   -o "$output_dir/spinon_v8.o"

@@ -10,6 +10,7 @@ test("예제 번들이 HostDocument 커밋·rollback·getter 재진입·이벤�
   const batches: Array<unknown[]> = [];
   const texts: string[] = [];
   const createdNodes: Array<[number, string]> = [];
+  const pendingNodeIds = new Set<number>();
   let eventHandler: ((nodeId: number) => void) | undefined;
   let active = false;
   let documentRevision = 0n;
@@ -21,6 +22,8 @@ test("예제 번들이 HostDocument 커밋·rollback·getter 재진입·이벤�
   let parents = new Map<number, number>();
   let children = new Map<number, number[]>([[0, []]]);
   let attributes = new Map<number, Map<string, string>>();
+  // JS fixture는 V8 약한 handle GC가 아니라 live wrapper identity 연결만 흉내 낸다.
+  const nodeWrappers = new Map<number, object>();
   const isWellFormedUtf16 = (value: string) => {
     for (let index = 0; index < value.length; index += 1) {
       const unit = value.charCodeAt(index);
@@ -43,6 +46,20 @@ test("예제 번들이 HostDocument 커밋·rollback·getter 재진입·이벤�
       texts.push(text);
     },
     __internal: {
+      getNodeWrapper(id: number) {
+        return nodeWrappers.get(id);
+      },
+      registerNodeWrapper(id: number, wrapper: object) {
+        const current = nodeWrappers.get(id);
+        if (current !== undefined) return current === wrapper;
+        nodeWrappers.set(id, wrapper);
+        return true;
+      },
+      unregisterNodeWrapper(id: number, wrapper: object) {
+        if (nodeWrappers.get(id) !== wrapper) return false;
+        nodeWrappers.delete(id);
+        return true;
+      },
       commitDocumentBatch(operations: Array<Record<string, unknown>>) {
         if (!Array.isArray(operations)) throw new TypeError("배열 필요");
         if (active) throw new TypeError("중첩 호출");
@@ -80,6 +97,10 @@ test("예제 번들이 HostDocument 커밋·rollback·getter 재진입·이벤�
             const operation = operations[index];
             if (operation === undefined) throw new TypeError("빈 작업 슬롯");
             const type = operation.type;
+            // Rust도 파싱된 생성 ID를 commit 성공 여부와 무관하게 소비한다.
+            if (type === "createElement" || type === "createText") {
+              pendingNodeIds.delete(operation.id as number);
+            }
             if (typeof type !== "string" || type.length > 32) {
               throw new TypeError("작업 종류 문자열 형식 또는 길이 오류");
             }
@@ -238,7 +259,12 @@ test("예제 번들이 HostDocument 커밋·rollback·getter 재진입·이벤�
       },
       readDocument(kind: number, nodeId: number, index = 0, name = "") {
         if (kind === 8) {
-          return { exists: true, value: Math.max(0, ...nodes.keys()) + 1, text: "" };
+          if (pendingNodeIds.size >= 256) {
+            throw new Error("QuotaExceededError: 대기 중인 노드 ID 한도");
+          }
+          const nextId = Math.max(0, ...nodes.keys(), ...pendingNodeIds) + 1;
+          pendingNodeIds.add(nextId);
+          return { exists: true, value: nextId, text: "" };
         }
         if (kind === 1) {
           const type = nodes.get(nodeId);
@@ -295,6 +321,9 @@ test("예제 번들이 HostDocument 커밋·rollback·getter 재진입·이벤�
 
   const context = { spinon: host, TypeError };
   runInNewContext(`${facadeSource}\n${source}`, context);
+  expect(Object.hasOwn(host.__internal, "getNodeWrapper")).toBe(false);
+  expect(Object.hasOwn(host.__internal, "registerNodeWrapper")).toBe(false);
+  expect(Object.hasOwn(host.__internal, "unregisterNodeWrapper")).toBe(false);
   expect(batches.slice(0, 5)).toEqual([
     [
       {
@@ -344,6 +373,15 @@ test("DOM façade가 노드 ID 한도 오류를 QuotaExceededError로 전달한�
     .replace(/\)SPINONJS"\s*$/, "");
   const host = {
     __internal: {
+      getNodeWrapper() {
+        return undefined;
+      },
+      registerNodeWrapper() {
+        return true;
+      },
+      unregisterNodeWrapper() {
+        return true;
+      },
       readDocument() {
         throw new Error("QuotaExceededError: 노드 연결 키 공간을 모두 사용했습니다");
       },

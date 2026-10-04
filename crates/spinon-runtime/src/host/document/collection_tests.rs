@@ -1,5 +1,9 @@
-use super::{DocumentBatchOperation as Operation, HostDocumentBridge, MAX_PENDING_EXTERNAL_IDS};
+use super::{
+    DocumentBatchOperation as Operation, HostDocumentBridge, MAX_PENDING_EXTERNAL_IDS,
+    collect_callback,
+};
 use spinon_core::HostNodeHandle;
+use std::ffi::c_void;
 
 #[path = "../../../../../tests/fixtures/dom/s03/node-lifecycle-v1.rs"]
 mod fixture;
@@ -335,4 +339,205 @@ fn exhausted_facade_id_space_stays_closed_after_collection() {
             .unwrap_err()
             .contains("재사용")
     );
+}
+
+fn call_collection_callback(
+    bridge: &mut HostDocumentBridge,
+    roots: &[i32],
+    output: &mut [i32],
+) -> (i32, usize, String) {
+    let mut count = usize::MAX;
+    let mut error = [0i8; 256];
+    let status = unsafe {
+        collect_callback(
+            (bridge as *mut HostDocumentBridge).cast::<c_void>(),
+            if roots.is_empty() {
+                std::ptr::null()
+            } else {
+                roots.as_ptr()
+            },
+            roots.len(),
+            output.as_mut_ptr(),
+            output.len(),
+            &mut count,
+            error.as_mut_ptr(),
+            error.len(),
+        )
+    };
+    let error = unsafe { std::ffi::CStr::from_ptr(error.as_ptr()) }
+        .to_string_lossy()
+        .into_owned();
+    (status, count, error)
+}
+
+#[test]
+fn ffi_collection_callback_fails_closed_then_returns_reclaimed_facade_ids() {
+    let mut bridge = HostDocumentBridge::new().unwrap();
+    bridge
+        .commit(&[
+            Operation::CreateElement {
+                id: 1,
+                namespace: HTML.to_owned(),
+                name: "root".to_owned(),
+            },
+            Operation::CreateText {
+                id: 2,
+                data: "kept".encode_utf16().collect(),
+            },
+            Operation::CreateElement {
+                id: 3,
+                namespace: HTML.to_owned(),
+                name: "orphan".to_owned(),
+            },
+            Operation::CreateText {
+                id: 4,
+                data: "orphan child".encode_utf16().collect(),
+            },
+            Operation::Append { parent: 0, node: 1 },
+            Operation::Append { parent: 1, node: 2 },
+            Operation::Append { parent: 3, node: 4 },
+        ])
+        .unwrap();
+    let revision = bridge.document_revision();
+    let snapshot = bridge.snapshot();
+
+    let mut undersized = [0; 3];
+    let (status, required, _) = call_collection_callback(&mut bridge, &[1], &mut undersized);
+    assert_eq!(status, 1);
+    assert_eq!(required, 4);
+    assert_eq!(bridge.node_count(), 4);
+    assert_eq!(bridge.snapshot(), snapshot);
+
+    let mut output = [-1; 4];
+    let (status, _, message) = call_collection_callback(&mut bridge, &[99], &mut output);
+    assert_eq!(status, -2);
+    assert!(message.contains("root ID"));
+    assert_eq!(bridge.snapshot(), snapshot);
+
+    let (status, _, message) = call_collection_callback(&mut bridge, &[1, 1], &mut output);
+    assert_eq!(status, -2);
+    assert!(message.contains("중복"));
+    assert_eq!(bridge.snapshot(), snapshot);
+
+    let (status, count, message) = call_collection_callback(&mut bridge, &[1], &mut output);
+    assert_eq!(status, 0, "{message}");
+    assert_eq!(count, 2);
+    assert_eq!(&output[..count], &[3, 4]);
+    assert_eq!(bridge.node_count(), 2);
+    assert!(bridge.handle(1).is_some());
+    assert!(bridge.handle(2).is_some());
+    assert_eq!(bridge.handle(3), None);
+    assert_eq!(bridge.handle(4), None);
+    assert_eq!(bridge.document_revision(), revision);
+}
+
+#[test]
+fn ffi_collection_callback_rejects_invalid_pointers_without_mutating_document() {
+    let mut bridge = HostDocumentBridge::new().unwrap();
+    bridge
+        .commit(&[Operation::CreateElement {
+            id: 1,
+            namespace: HTML.to_owned(),
+            name: "root".to_owned(),
+        }])
+        .unwrap();
+    let snapshot = bridge.snapshot();
+    let mut output = [0; 1];
+    let mut count = usize::MAX;
+    let mut error = [0i8; 128];
+
+    let status = unsafe {
+        collect_callback(
+            (std::ptr::null_mut::<HostDocumentBridge>()).cast::<c_void>(),
+            std::ptr::null(),
+            0,
+            output.as_mut_ptr(),
+            output.len(),
+            &mut count,
+            error.as_mut_ptr(),
+            error.len(),
+        )
+    };
+    assert_eq!(status, -1);
+    assert_eq!(count, 0);
+    assert_eq!(bridge.snapshot(), snapshot);
+
+    error.fill(0);
+    let status = unsafe {
+        collect_callback(
+            (&mut bridge as *mut HostDocumentBridge).cast::<c_void>(),
+            std::ptr::null(),
+            1,
+            output.as_mut_ptr(),
+            output.len(),
+            &mut count,
+            error.as_mut_ptr(),
+            error.len(),
+        )
+    };
+    assert_eq!(status, -1);
+    assert_eq!(bridge.snapshot(), snapshot);
+
+    error.fill(0);
+    let status = unsafe {
+        collect_callback(
+            (&mut bridge as *mut HostDocumentBridge).cast::<c_void>(),
+            [1].as_ptr(),
+            1,
+            std::ptr::null_mut(),
+            output.len(),
+            &mut count,
+            error.as_mut_ptr(),
+            error.len(),
+        )
+    };
+    assert_eq!(status, -1);
+    assert_eq!(bridge.snapshot(), snapshot);
+
+    error.fill(0);
+    let status = unsafe {
+        collect_callback(
+            (&mut bridge as *mut HostDocumentBridge).cast::<c_void>(),
+            [1].as_ptr(),
+            1,
+            output.as_mut_ptr(),
+            output.len(),
+            std::ptr::null_mut(),
+            error.as_mut_ptr(),
+            error.len(),
+        )
+    };
+    assert_eq!(status, -1);
+    assert_eq!(bridge.snapshot(), snapshot);
+}
+
+#[test]
+fn ffi_collection_callback_reports_capacity_before_rejecting_null_output() {
+    let mut bridge = HostDocumentBridge::new().unwrap();
+    bridge
+        .commit(&[Operation::CreateElement {
+            id: 1,
+            namespace: HTML.to_owned(),
+            name: "root".to_owned(),
+        }])
+        .unwrap();
+    let snapshot = bridge.snapshot();
+    let mut count = 0;
+    let mut error = [0i8; 128];
+
+    let status = unsafe {
+        collect_callback(
+            (&mut bridge as *mut HostDocumentBridge).cast::<c_void>(),
+            [1].as_ptr(),
+            1,
+            std::ptr::null_mut(),
+            0,
+            &mut count,
+            error.as_mut_ptr(),
+            error.len(),
+        )
+    };
+    assert_eq!(status, 1);
+    assert_eq!(count, 1);
+    assert_eq!(bridge.snapshot(), snapshot);
 }

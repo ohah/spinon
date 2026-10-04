@@ -52,5 +52,25 @@ if [[ -n "$(git -C "$v8_dir" status --porcelain)" ]]; then
   exit 1
 fi
 
+python3 - "$source_root/.gclient" <<'PY'
+from pathlib import Path
+import ast
+import re
+import sys
+
+path = Path(sys.argv[1])
+source = path.read_text()
+match = re.search(r"(?m)^target_os\s*=\s*(\[[^\]]*\])\s*$", source)
+target_os = ["android", "ios"]
+if match:
+    configured = ast.literal_eval(match.group(1))
+    if not isinstance(configured, list) or not all(isinstance(item, str) for item in configured):
+        raise SystemExit(".gclient target_os 설정을 읽을 수 없습니다.")
+    target_os = sorted(set(configured) | set(target_os))
+    source = source[:match.start()] + source[match.end():]
+source = source.rstrip() + f"\ntarget_os = {target_os!r}\n"
+path.write_text(source)
+PY
+
 (cd "$v8_dir" && gclient sync --revision="v8@$v8_revision")
 echo "V8 및 DEPS 동기화 완료: $v8_revision"

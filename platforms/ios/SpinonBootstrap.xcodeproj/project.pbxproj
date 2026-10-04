@@ -131,7 +131,7 @@
 				ARCHS = arm64;
 				CODE_SIGN_STYLE = Automatic;
 				GENERATE_INFOPLIST_FILE = NO;
-				GCC_PREPROCESSOR_DEFINITIONS = ("$(inherited)", "SPINON_ENABLE_S04_IOS_FIXTURE=$(SPINON_ENABLE_S04_IOS_FIXTURE)",);
+				GCC_PREPROCESSOR_DEFINITIONS = ("$(inherited)", "SPINON_ENABLE_S04_IOS_FIXTURE=$(SPINON_ENABLE_S04_IOS_FIXTURE)", "SPINON_ENABLE_S03_DOM_GC_FIXTURE=$(SPINON_ENABLE_S03_DOM_GC_FIXTURE)",);
 				HEADER_SEARCH_PATHS = ("$(SRCROOT)/../../crates/spinon-ffi/include", "$(SRCROOT)/../../spikes/wgpu-backend/include",);
 				INFOPLIST_FILE = Sources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks",);
@@ -139,6 +139,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dev.spinon.bootstrap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPINON_ENABLE_S04_IOS_FIXTURE = 0;
+				SPINON_ENABLE_S03_DOM_GC_FIXTURE = 0;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SPINON_ENABLE_S03_DOM_GC_FIXTURE_$(SPINON_ENABLE_S03_DOM_GC_FIXTURE)";
 				"SPINON_V8_OUT[sdk=iphonesimulator*]" = boson-ios-sim;
 				"SPINON_V8_OUT[sdk=iphoneos*]" = boson-ios-device;
 				SWIFT_OBJC_BRIDGING_HEADER = Sources/SpinonBootstrap-Bridging-Header.h;
@@ -153,7 +155,7 @@
 				ARCHS = arm64;
 				CODE_SIGN_STYLE = Automatic;
 				GENERATE_INFOPLIST_FILE = NO;
-				GCC_PREPROCESSOR_DEFINITIONS = ("$(inherited)", "SPINON_ENABLE_S04_IOS_FIXTURE=$(SPINON_ENABLE_S04_IOS_FIXTURE)",);
+				GCC_PREPROCESSOR_DEFINITIONS = ("$(inherited)", "SPINON_ENABLE_S04_IOS_FIXTURE=$(SPINON_ENABLE_S04_IOS_FIXTURE)", "SPINON_ENABLE_S03_DOM_GC_FIXTURE=$(SPINON_ENABLE_S03_DOM_GC_FIXTURE)",);
 				HEADER_SEARCH_PATHS = ("$(SRCROOT)/../../crates/spinon-ffi/include", "$(SRCROOT)/../../spikes/wgpu-backend/include",);
 				INFOPLIST_FILE = Sources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks",);
@@ -161,6 +163,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dev.spinon.bootstrap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPINON_ENABLE_S04_IOS_FIXTURE = 0;
+				SPINON_ENABLE_S03_DOM_GC_FIXTURE = 0;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SPINON_ENABLE_S03_DOM_GC_FIXTURE_$(SPINON_ENABLE_S03_DOM_GC_FIXTURE)";
 				"SPINON_V8_OUT[sdk=iphonesimulator*]" = boson-ios-sim;
 				"SPINON_V8_OUT[sdk=iphoneos*]" = boson-ios-device;
 				SWIFT_OBJC_BRIDGING_HEADER = Sources/SpinonBootstrap-Bridging-Header.h;
