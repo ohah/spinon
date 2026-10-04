@@ -76,7 +76,7 @@ HostRoot
     └── <em>Text("")</em>
 ```
 
-fixture의 대문자 `ID`, `CLASS`, `DATA-ROLE`은 HTML 문서 selector의 속성 이름 case-insensitive 동작을 확인하려는 원시 HostDocument 입력이다. DOM façade가 생성하는 공개 DOM은 같은 이름의 대소문자 별칭을 허용하지 않는다.
+fixture의 대문자 `ID`, `CLASS`, `DATA-ROLE`은 HTML 문서 selector의 속성 이름 case-insensitive 동작을 확인하려는 원시 HostDocument 입력이다. S03.2의 제한된 내부 DOM façade는 HTML 속성 이름을 ASCII 소문자로 저장한다. 이 동작은 공개 DOM API 범위나 일반 Unicode 속성명 지원을 뜻하지 않는다.
 
 | 검사 | 기대 결과 |
 | --- | --- |

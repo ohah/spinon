@@ -71,7 +71,7 @@ spinon/
 
 Rust 코어, 런타임, C ABI는 분리합니다. 의존 방향은 `spinon-ffi → spinon-runtime → spinon-core`입니다. `spinon-runtime`은 세션·실행 스레드·큐·V8 호출을 맡고, `spinon-ffi`는 포인터 수명·버퍼 복사·C ABI 변환만 맡습니다. V8 객체와 Rust 내부 포인터를 경계 밖에 보관하지 않습니다.
 
-S01의 기존 `Tree`는 DOM 노드 모델이 아닙니다. R03에서 별도의 내부 `HostDocument` 코어를 추가해 요소·텍스트 혼합 순서, 동기 변경 묶음, 소유권과 문서/표시 revision을 구현했습니다. C03에서는 불변 `HostDocumentSnapshot`을 Stylo DOM·selector 인터페이스에 연결했지만, 공개 DOM façade·V8 래퍼·계산 스타일·레이아웃 연결은 아직 없습니다. DOM façade는 [DOM 호환 명세](../../spec/0007-dom-compatibility.md)에 남은 루트 연결, 문자열 변환, 오류·수명 계약과 S03 경계가 정해진 뒤 진행합니다.
+S01의 기존 `Tree`는 DOM 노드 모델이 아닙니다. R03에서 별도의 내부 `HostDocument` 코어를 추가해 요소·텍스트 혼합 순서, 동기 변경 묶음, 소유권과 문서/표시 revision을 구현했습니다. C03에서는 불변 `HostDocumentSnapshot`을 Stylo DOM·selector 인터페이스에 연결했고, S03.2에서는 제한 DOM façade와 V8 래퍼를 내부 시제품으로 연결했습니다. 공개 DOM 지원·계산 스타일·레이아웃 연결은 아직 없습니다. 현재 façade의 범위는 [S03.2 계약](../../spec/internal/0020-s03-dom-facade.md), 이후 공개 호환성 작업은 [DOM 호환 명세](../../spec/0007-dom-compatibility.md)를 따릅니다.
 
 S03.1에서는 내부 진단용 `spinon.__internal.commitDocumentBatch`를 V8 C++ 어댑터에서 Rust `HostDocument`까지 연결했습니다. V8 입력 배열을 읽고 UTF-16을 복사한 뒤 Rust가 한 묶음으로 검증·커밋하며, 같은 호출에서 BigInt revision 영수증을 돌려줍니다. 작업 계약과 Android·iOS 시뮬레이터 근거는 [0018](../../spec/internal/0018-s03-v8-hostdocument-bridge.md), [실행 근거](../../spec/internal/evidence/s03-v8-hostdocument-bridge-2026-10-03.md)에 있습니다. 공개 DOM 래퍼, React/Vue/Svelte 어댑터, GPU 반영은 이 결과에 포함하지 않습니다. 공식 완료 여부는 [상태 대장 S03.1](../../spec/STATUS.md)에 둡니다.
 

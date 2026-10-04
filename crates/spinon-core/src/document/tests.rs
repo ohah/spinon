@@ -36,6 +36,43 @@ fn create_text(document: &mut HostDocument, owner: OwnerId, data: DomString) -> 
     handle
 }
 
+#[test]
+fn direct_document_queries_match_the_immutable_snapshot() {
+    let mut document = HostDocument::new().unwrap();
+    let owner = owner(1);
+    let root = create_element(&mut document, owner, "div");
+    let first = create_text(&mut document, owner, "앞".into());
+    let child = create_element(&mut document, owner, "span");
+    let last = create_text(&mut document, owner, "뒤".into());
+    insert(&mut document, owner, HostParent::Root, root, None);
+    insert(&mut document, owner, HostParent::Node(root), first, None);
+    insert(&mut document, owner, HostParent::Node(root), child, None);
+    insert(&mut document, owner, HostParent::Node(root), last, None);
+    commit(
+        &mut document,
+        owner,
+        DocumentOperation::SetAttribute {
+            node: root,
+            name: AttributeName::new(None, "id").unwrap(),
+            value: "direct".into(),
+        },
+    );
+
+    let snapshot = document.snapshot();
+    assert_eq!(document.root_children().collect::<Vec<_>>(), vec![root]);
+    assert_eq!(document.node(root), snapshot.node(root));
+    assert_eq!(document.parent(root), snapshot.parent(root));
+    assert_eq!(document.parent(child), snapshot.parent(child));
+    assert_eq!(
+        document.children(root).unwrap().collect::<Vec<_>>(),
+        snapshot.children(root).unwrap().collect::<Vec<_>>(),
+    );
+    assert_eq!(document.next_sibling(first), snapshot.next_sibling(first));
+    assert_eq!(document.next_sibling(child), snapshot.next_sibling(child));
+    assert_eq!(document.text_content(root), snapshot.text_content(root));
+    assert_eq!(document.text_content(last), snapshot.text_content(last));
+}
+
 fn insert(
     document: &mut HostDocument,
     owner: OwnerId,

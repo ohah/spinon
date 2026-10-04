@@ -1,4 +1,4 @@
-use crate::host::{HostDocumentBridge, commit_callback};
+use crate::host::{HostDocumentBridge, commit_callback, query_callback};
 use crate::v8::{
     SpinonV8Runtime, spinon_v8_runtime_dispatch, spinon_v8_runtime_eval, spinon_v8_runtime_free,
     spinon_v8_runtime_last_error, spinon_v8_runtime_new,
@@ -83,7 +83,14 @@ pub fn run_bootstrap_smoke(source: &str) -> Result<String, BootstrapSmokeError> 
     let state_ptr = std::ptr::addr_of_mut!(state).cast::<c_void>();
     let document_ptr = std::ptr::addr_of_mut!(state.document).cast::<c_void>();
     let runtime = unsafe {
-        spinon_v8_runtime_new(on_node, on_text, commit_callback, state_ptr, document_ptr)
+        spinon_v8_runtime_new(
+            on_node,
+            on_text,
+            commit_callback,
+            query_callback,
+            state_ptr,
+            document_ptr,
+        )
     };
     if runtime.is_null() {
         return Err(BootstrapSmokeError::RuntimeUnavailable);

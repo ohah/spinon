@@ -9,6 +9,14 @@ extern "C" {
 #endif
 
 typedef struct SpinonV8Runtime SpinonV8Runtime;
+enum {
+  SPINON_DOCUMENT_CALLBACK_OK = 0,
+  SPINON_DOCUMENT_CALLBACK_BUFFER_TOO_SMALL = 1,
+  SPINON_DOCUMENT_CALLBACK_INVALID = -1,
+  SPINON_DOCUMENT_CALLBACK_REJECTED = -2,
+  SPINON_DOCUMENT_CALLBACK_PANIC = -3,
+  SPINON_DOCUMENT_CALLBACK_QUOTA_EXCEEDED = -4
+};
 typedef void (*SpinonNodeCallback)(void *user_data, int32_t node_id, const char *tag);
 typedef void (*SpinonTextCallback)(void *user_data, const char *text);
 typedef struct SpinonDocumentOperation {
@@ -33,10 +41,29 @@ typedef int32_t (*SpinonDocumentCommitCallback)(
     void *document_user_data, const SpinonDocumentOperation *operations,
     size_t operation_count, SpinonDocumentReceipt *receipt,
     char *error_output, size_t error_capacity);
+typedef struct SpinonDocumentQuery {
+  int32_t kind;
+  int32_t node_id;
+  int32_t index;
+  const uint16_t *name_utf16;
+  size_t name_length;
+  uint16_t *output_utf16;
+  size_t output_capacity;
+} SpinonDocumentQuery;
+typedef struct SpinonDocumentQueryResult {
+  int32_t exists;
+  int32_t value;
+  size_t output_length;
+} SpinonDocumentQueryResult;
+typedef int32_t (*SpinonDocumentQueryCallback)(
+    void *document_user_data, const SpinonDocumentQuery *query,
+    SpinonDocumentQueryResult *result, char *error_output,
+    size_t error_capacity);
 
 SpinonV8Runtime *spinon_v8_runtime_new(SpinonNodeCallback node_callback,
                                       SpinonTextCallback text_callback,
                                       SpinonDocumentCommitCallback document_commit_callback,
+                                      SpinonDocumentQueryCallback document_query_callback,
                                       void *user_data,
                                       void *document_user_data);
 int32_t spinon_v8_runtime_eval(SpinonV8Runtime *runtime, const char *source);

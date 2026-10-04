@@ -1,4 +1,4 @@
-use crate::host::DocumentCommitCallback;
+use crate::host::{DocumentCommitCallback, DocumentQueryCallback};
 use std::ffi::{c_char, c_void};
 
 #[repr(C)]
@@ -14,6 +14,7 @@ unsafe extern "C" {
         node_callback: NodeCallback,
         text_callback: TextCallback,
         document_commit_callback: DocumentCommitCallback,
+        document_query_callback: DocumentQueryCallback,
         user_data: *mut c_void,
         document_user_data: *mut c_void,
     ) -> *mut SpinonV8Runtime;

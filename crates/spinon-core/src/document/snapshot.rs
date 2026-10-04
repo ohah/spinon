@@ -138,3 +138,80 @@ impl HostDocumentSnapshot {
         }
     }
 }
+
+impl HostDocument {
+    pub fn root_children(&self) -> impl Iterator<Item = HostNodeHandle> + '_ {
+        self.root_children.iter().copied().map(|id| self.handle(id))
+    }
+
+    pub fn node(&self, handle: HostNodeHandle) -> Option<&HostNode> {
+        (handle.generation == self.generation)
+            .then(|| self.nodes.get(&handle.id))
+            .flatten()
+    }
+
+    pub fn parent(&self, handle: HostNodeHandle) -> Option<HostParent> {
+        let node = self.node(handle)?;
+        node.parent.map(|parent| self.external_parent(parent))
+    }
+
+    pub fn children(
+        &self,
+        handle: HostNodeHandle,
+    ) -> Option<impl Iterator<Item = HostNodeHandle> + '_> {
+        self.node(handle)
+            .map(|node| node.children.iter().copied().map(|id| self.handle(id)))
+    }
+
+    pub fn next_sibling(&self, handle: HostNodeHandle) -> Option<HostNodeHandle> {
+        self.sibling(handle, true)
+    }
+
+    pub fn text_content(&self, handle: HostNodeHandle) -> Option<DomString> {
+        let node = self.node(handle)?;
+        if let HostNodeKind::Text(data) = &node.kind {
+            return Some(data.clone());
+        }
+        let mut result = DomString::default();
+        let mut stack = node.children.iter().rev().copied().collect::<Vec<_>>();
+        while let Some(id) = stack.pop() {
+            let child = self.nodes.get(&id)?;
+            match &child.kind {
+                HostNodeKind::Element(_) => stack.extend(child.children.iter().rev().copied()),
+                HostNodeKind::Text(data) => result.append(data),
+            }
+        }
+        Some(result)
+    }
+
+    fn sibling(&self, handle: HostNodeHandle, next: bool) -> Option<HostNodeHandle> {
+        let node = self.node(handle)?;
+        let siblings = match node.parent? {
+            ParentRef::Root => &self.root_children,
+            ParentRef::Node(parent) => &self.nodes.get(&parent)?.children,
+        };
+        let position = siblings.iter().position(|id| *id == handle.id)?;
+        let target = if next {
+            siblings.get(position.checked_add(1)?)
+        } else {
+            position
+                .checked_sub(1)
+                .and_then(|index| siblings.get(index))
+        }?;
+        Some(self.handle(*target))
+    }
+
+    fn handle(&self, id: NodeId) -> HostNodeHandle {
+        HostNodeHandle {
+            generation: self.generation,
+            id,
+        }
+    }
+
+    fn external_parent(&self, parent: ParentRef) -> HostParent {
+        match parent {
+            ParentRef::Root => HostParent::Root,
+            ParentRef::Node(id) => HostParent::Node(self.handle(id)),
+        }
+    }
+}

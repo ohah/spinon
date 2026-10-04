@@ -16,7 +16,7 @@ React / Vue / Svelte 어댑터 ─┐
 
 - 앱 런타임 세대마다 Rust `HostDocument` 하나를 두고, DOM 호환 계층과 프레임워크 어댑터는 그 모델을 함께 사용합니다. 각 프레임워크의 상태 관리와 차이 계산은 해당 어댑터가 계속 소유합니다.
 - 내부 `HostRoot`는 앱 표시 루트의 보이지 않는 경계입니다. HTML `Document`, `documentElement`, `body`와 같은 노드로 가장하지 않습니다. 여러 어댑터가 소유한 서로 겹치지 않는 하위 트리를 이 루트에 연결할 수 있습니다.
-- JavaScript `Document` 래퍼와 내부 `HostDocument`는 1:1로 연결합니다. 앱 코드가 표시 트리의 루트를 얻는 공개 함수나 속성은 아직 정하지 않았습니다. 프레임워크 어댑터가 앱 루트를 내부 `HostRoot`에 붙이는 방식은 직접 DOM 작성용 루트 API와 함께 [0007 제안](../0007-dom-compatibility.md)에서 선택해야 합니다.
+- S03.2 내부 시제품에서는 JavaScript `document` wrapper와 세션별 `HostDocument`를 1:1로 연결했습니다. 이는 앱 코드가 표시 트리 루트를 얻는 공개 함수·속성이나 안정된 DOM 지원을 정하지 않습니다. 프레임워크 어댑터가 앱 루트를 내부 `HostRoot`에 붙이는 방식은 직접 DOM 작성용 루트 API와 함께 [0007 제안](../0007-dom-compatibility.md)에서 선택해야 합니다.
 - 모델의 렌더 노드는 `Element`와 `Text`이며, 요소 자식은 두 종류가 섞인 순서 목록입니다. `Document` 래퍼와 `HostRoot` 자체는 GPU 렌더 노드가 아닙니다. 첫 단계의 HTML 요소 허용 목록과 의미는 R01·0003에서 정합니다.
 - 노드 핸들은 `(문서 세대, NodeId)`로 식별합니다. 한 문서 세대 안에서 성공적으로 공개한 ID는 삭제·분리 후 재사용하지 않습니다. JS 노드 래퍼 캐시는 같은 살아 있는 노드의 객체 정체성을 보존해야 합니다. 새 앱 런타임 세대의 핸들은 이전 세대 핸들과 같게 취급하지 않습니다.
 
@@ -62,7 +62,7 @@ React / Vue / Svelte 어댑터 ─┐
 - `DocumentGeneration`은 한 프로세스에서만 유일합니다. 핸들을 프로세스 밖에 보존하거나 재시작 후 재사용하는 계약은 없습니다.
 - `OwnerId::new()`는 호출자가 번호를 공급하는 내부 생성자입니다. 런타임이 OwnerId를 발급·회수하는 정책이 아직 없어, 현재 소유권 검사는 협력하는 내부 어댑터 간 일관성 검사이며 신뢰 경계나 권한 보안 경계가 아닙니다.
 - 소유자별 revision·재동기화가 없어 서로 다른 어댑터의 동시 변경은 전역 revision 충돌로 거부될 수 있습니다. 충돌 정책은 R06 검증 전까지 미확정입니다.
-- 생성, CSS 계산, 스타일시트, 렌더링 snapshot, layout·GPU, 부분 무효화, 노드 limit, 동기 플랫폼 호출은 미구현입니다.
+- 제한 DOM façade의 기본 Element·Text 생성과 session 내 wrapper, 동기 관계·텍스트·속성 조회는 S03.2 내부 시제품으로 구현했습니다. 이는 공개 API가 아니며 표준 DOM 생성 계약 전체를 충족하지 않습니다. CSS 계산, 스타일시트, 렌더링 snapshot 연결, layout·GPU, 부분 무효화, 제품 수준 자원 회수와 동기 플랫폼 호출은 미구현입니다. 노드·문자열 보존 한도는 [0020 계약](0020-s03-dom-facade.md)에 있습니다.
 
 ## 노드 생성·변경·제거
 
@@ -77,7 +77,7 @@ React / Vue / Svelte 어댑터 ─┐
 | 텍스트 변경 | Text 데이터 또는 제한된 textContent 알고리즘을 원자 적용합니다. 후속 조회는 성공 결과를 즉시 봅니다. | JS 문자열 변환·노드 종류·문서 세대를 확인한 뒤 실패하면 기존 내용을 보존합니다. |
 | 속성 변경 | 지원되는 요소의 문자열 속성 맵을 원자 갱신합니다. `id`·`class` 등 지원 CSS 선택자가 관찰하는 변경은 스타일 무효화 입력이 됩니다. | 속성 이름 검증과 CSS 연동은 공개 DOM·CSS 명세에 따릅니다. `style` 문자열이 CSSOM을 자동 제공하지 않습니다. |
 
-S01의 `spinon_core::Tree`는 연결된 트리와 단일 루트를 검증하는 실험 모델입니다. `Operation::Remove`는 하위 노드를 활성 맵에서 삭제합니다. 그러므로 이를 DOM의 `removeChild()` 구현으로 곧장 노출하면 분리 노드 재삽입과 JS 래퍼 객체 정체성 요구를 깨뜨립니다. R03의 별도 `HostDocument`는 혼합 노드·분리 수명·속성·소유권을 모델링하며, C03에서 불변 snapshot을 Stylo DOM·selector trait에 연결했습니다. V8 DOM façade와 JS 래퍼 객체 정체성은 여전히 미구현이므로 Stylo adapter를 공개 DOM API 지원으로 간주하지 않습니다.
+S01의 `spinon_core::Tree`는 연결된 트리와 단일 루트를 검증하는 실험 모델입니다. `Operation::Remove`는 하위 노드를 활성 맵에서 삭제합니다. 그러므로 이를 DOM의 `removeChild()` 구현으로 곧장 노출하면 분리 노드 재삽입과 JS 래퍼 객체 정체성 요구를 깨뜨립니다. R03의 별도 `HostDocument`는 혼합 노드·분리 수명·속성·소유권을 모델링하며, C03에서 불변 snapshot을 Stylo DOM·selector trait에 연결했습니다. S03.2는 제한된 V8 DOM façade와 세션 내 JS wrapper 정체성을 내부 시제품으로 연결합니다. wrapper GC·노드 폐기·다중 Owner 동시 변경과 공개 DOM 지원은 여전히 미구현이므로 Stylo adapter나 이 façade를 전체 DOM 구현으로 간주하지 않습니다.
 
 DOM `insertBefore(node, referenceChild)` 경로에서는 `referenceChild`가 null이거나 지정 부모의 직접 자식인지 먼저 검증합니다. `referenceChild`가 이동할 `node` 자신이면 기존 다음 형제를 기준 위치로 삼아 같은 위치 삽입이 순서를 바꾸지 않게 합니다. 같은 부모 안에서 이동할 때 최종 인덱스는 이동할 노드를 뺀 자식 목록을 기준으로 계산합니다. 검증과 위치 계산이 끝나기 전에 기존 연결을 끊지 않습니다. 어댑터가 내부 위치 삽입을 호출할 때는 이미 검증된 최종 위치를 전달합니다. 실질 상태가 바뀌지 않는 호출은 문서·표시 revision을 올리지 않습니다.
 
@@ -89,9 +89,9 @@ DOM `insertBefore(node, referenceChild)` 경로에서는 `referenceChild`가 nul
 - `RenderTreeRevision`은 `HostRoot`에 연결된 표시 투영을 식별합니다. 연결 트리·속성·텍스트 중 스타일·레이아웃·페인트·hit-test·접근성에 영향을 주는 커밋마다 한 번 증가합니다. 분리된 하위 트리만 바뀐 경우에는 증가하지 않습니다.
 - 각 렌더 스냅샷은 출처 `DocumentRevision`과 `RenderTreeRevision`을 함께 기록합니다. 스타일·레이아웃·페인트·hit-test·접근성 결과의 최신성 판정에는 `RenderTreeRevision`과 해당 계산 단계 revision을 사용합니다. 분리 노드만 변경되어 `DocumentRevision`이 앞서더라도 동일한 `RenderTreeRevision`의 계산과 표시 스냅샷은 계속 유효합니다. 연결 표시 트리가 바뀌면 새 `RenderTreeRevision`이 이전 계산 결과를 무효화합니다.
 - 변경 묶음의 기대 기준은 `DocumentRevision`입니다. 오래된 기준 revision, 잘못된 참조, 순환, 소유권 위반 또는 잘못된 최종 연결은 전체를 거부하고 두 revision과 이전 문서를 보존합니다. 호스트가 임의로 작업을 부분 적용하거나 같은 묶음을 자동 재실행하지 않습니다.
-- JS DOM 메서드의 인수는 Rust에 도달하기 전에 API의 Web IDL 타입 규칙으로 변환합니다. 제안된 `DOMString` 입력은 UTF-16 코드 단위 그대로 보존하며, `null`·`undefined`·`Symbol` 변환 동작을 시그니처별로 적용합니다. Rust의 UTF-8 `String`으로 바꾸면서 단독 서로게이트를 잃지 않도록 경계 표현을 둡니다. 속성·텍스트를 그릴 때 유효하지 않은 서로게이트를 치환하는 처리는 DOM 읽기 값과 분리합니다.
+- S03.2 façade가 사용하는 제한된 JS DOM 메서드는 Rust 호출 전에 필수 인수, 지원 범위의 DOMString 변환, nullable `insertBefore` 인자를 처리하고 V8 UTF-16 경계를 보존합니다. 모든 DOM/Web IDL 시그니처의 변환 규칙, nullish 변환, 이름 문법과 완전한 Unicode 처리는 미구현입니다. Rust의 UTF-8 `String`으로 바꾸면서 단독 서로게이트를 잃지 않도록 경계 표현을 둡니다. 속성·텍스트를 그릴 때 유효하지 않은 서로게이트를 치환하는 처리는 DOM 읽기 값과 분리합니다. 정확한 S03.2 범위는 [0020 내부 계약](0020-s03-dom-facade.md)에 있습니다.
 - 스피논이 같은 문서의 노드 래퍼로 만든 객체만 노드 인수로 받습니다. 임의 객체를 문자열로 바꾸어 Node로 취급하지 않습니다. 이 초안에서는 여러 `Document` 사이 채택·이동을 지원하지 않습니다.
-- Rust `DocumentError`는 내부 트리 변경 실패를 분류합니다. 아직 `HostError` 통합 타입이나 V8 변환 계층은 없습니다. 후속 V8 경계는 내부 오류를 JS `TypeError` 또는 표준 DOMException 계열로 변환하고, C ABI 밖으로 Rust panic을 전달하지 않아야 합니다. 개별 API의 정확한 예외 이름·메시지는 공개 적합성 표를 만들 때 고정합니다.
+- Rust `DocumentError`는 내부 트리 변경 실패를 분류합니다. S03.2는 제한된 DOM 메서드의 예상 입력 오류를 JS `TypeError` 또는 선택한 `DOMException` 이름으로 매핑하지만 통합 `HostError`, 전체 DOM 오류 의미·메시지, 공개 적합성 계약은 아직 없습니다. C ABI callback은 panic을 경계 안에서 복구합니다. 자세한 내부 매핑은 [0020](0020-s03-dom-facade.md)을 따릅니다.
 
 이 계약은 R06의 취소와 변경 묶음 공개 경합, 문서 소유자 스레드 선택, FFI 스레드 호출 제약, 비동기 `Isolate` 전달을 대신 결정하지 않습니다. 위험 항목과 후보 실행 규칙은 [R06 스레드·소유권 위험 분석](0004-thread-ownership-risks.md)에 기록하지만, 해당 문서는 검토 초안이며 S03·렌더러 계획의 선행 검증을 끝내지 않습니다.
 

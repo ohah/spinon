@@ -6,7 +6,7 @@
 | --- | --- | --- |
 | [0001 · V8 부팅 실험](0001-v8-bootstrap.md) | Bun 번들, Rust FFI, V8 C++ 어댑터와 Android/iOS 빌드 smoke | 실험 전용 |
 | [0002 · Rust 트리 코어](0002-rust-tree-core.md) | 노드 ID, 트리 구조, 원자적 변경 묶음과 revision | 실험 전용 |
-| [0003 · 공통 문서·호스트 계약](0003-shared-host-contract.md) | DOM 호환 계층과 프레임워크 어댑터의 문서 모델, 소유권, 동기 변경과 이벤트 경계 | 제안 초안 |
+| [0003 · 공통 문서·호스트 계약](0003-shared-host-contract.md) | DOM 호환 계층과 프레임워크 어댑터의 문서 모델, 소유권, 동기 변경과 이벤트 경계 | 코어·제한 façade 일부 내부 구현 · 나머지 제안 초안 |
 | [0004 · R06 스레드·소유권 위험 분석](0004-thread-ownership-risks.md) | Isolate·문서·콜백·revision·비동기 완료·종료 경계의 위험과 검증 후보 | 검토 초안 · R06 미완료 |
 | [0005 · V8 런타임 세션 실험](0005-v8-runtime-session.md) | 세션별 Isolate 소유 스레드, 용량 제한 우선순위 큐, 취소·종료 경계 | 실험 전용 · R06 미완료 · 시뮬레이터 실제 V8 단일 배치 우선순위 검증 통과 |
 | [0006 · JavaScript 작업 스케줄러](0006-js-task-scheduler.md) | Chromium 참고 우선순위 선택과 앱 작업 출처·프레임·취소 경계 | 시뮬레이터 실제 V8 단일 배치와 등급별 FIFO 통과 · 지속 유입 기아 미검증 |
@@ -20,6 +20,7 @@
 | [0017 · C04 computed style→Taffy 입력 adapter](0017-c04-style-layout-bridge.md) | revision이 일치하는 computed-style snapshot을 제한 Taffy 입력으로 변환하고 진단·미지원 값을 전체 실패 처리 | 내부 구현 계약 `0.1.0` · 고정 fixture 검증 완료 · 제품 runtime/API 미연결 |
 | [0018 · S03.1 V8 HostDocument 변경 묶음](0018-s03-v8-hostdocument-bridge.md) | V8 내부 JS 배열을 UTF-16 C ABI로 복사하고 세션별 HostDocument에 원자 변경을 적용해 BigInt 영수증을 반환 | 내부 구현 계약 `0.1.0` · Android/iOS 시뮬레이터 실제 V8 검증 완료 · 공개 DOM API 아님 |
 | [0019 · S04 첫 CSS·레이아웃·GPU 연결 슬라이스](0019-s04-css-layout-gpu-slice.md) | 고정 Flex·CSS 배경색 fixture에서 플랫폼 중립 snapshot을 거쳐 Android/iOS wgpu 표면까지 잇는 내부 계약 | 계약 `0.1.0-draft` · S04.1~S04.6 시뮬레이터 검증 · S04.7 후속 작업 소유 경계 연결 완료, 기능 구현 미완료 |
+| [0020 · S03.2 제한 DOM façade](0020-s03-dom-facade.md) | 전역 `document`의 생성·트리 변경·관계/텍스트/속성 조회를 Rust `HostDocument`에 동기 연결 | 내부 구현 계약 `0.1.0` · Bun/Rust 및 Android/iOS 시뮬레이터 실제 V8 검증 완료 · 공개 DOM 지원 아님 |
 | [0013 · R15 청크 OTA 호환 모델](0013-r15-ota-chunk-compatibility.md) | 바이너리 호환 ID, 단일 target ESM specifier 매핑이 있는 기능·청크·자원 그래프, typed edge diff·영향 scope·최초/불확실 기준 fallback, 객체 차등 전달·전체 그래프 사전 확보·target별 stale/CAS publish 경계, 로컬 영속 저장·객체 재검증·용량 보호, 서명·압축 제한·상향 sequence rollback 및 offline authorization 미결정 | 내부 설계 제안 `0.1.0-draft` · 배포/로더/API 미구현 |
 | [0014 · C02 번들러 모듈 그래프 adapter](0014-c02-bundler-module-graph.md) | 입력 resolver graph와 최종 emitted ESM graph를 분리해 기능·청크·specifier 대응 및 추출 실패를 기록 | 내부 실험 계약 `0.1.0-draft` · 구현·제품 API 미완료 |
 | [0015 · C02 JavaScript·CSS 자원 그래프 결합](0015-c02-resource-graph-join.md) | 같은 production build에서 0011 CSS 자원과 0014 JavaScript feature·chunk 그래프를 결합 | 내부 구현 계약 `0.1.0-draft` · 고정 fixture 구현 완료 · 제품 API 아님 |
@@ -60,5 +61,7 @@
 - [S02.2 · 레이아웃 revision 사전 고정 비교 기준](./evidence/s02-layout-revision-precomparison-2026-10-04.md) — source·style·environment 입력 변화와 stale snapshot admission에 대한 구현 전 기대 결과.
 - [S02.2 · 레이아웃 revision gate 실행 근거](./evidence/s02-layout-revision-gate-2026-10-04.md) — 고정 S04 revision fixture, layout echo와 snapshot admission 검증 및 제품 runtime 한계.
 - [S03.1 · V8 HostDocument 변경 묶음](./evidence/s03-v8-hostdocument-bridge-2026-10-03.md) — Rust 직접 기준 실행, 30개 적대 검증 관점, Android 16 에뮬레이터와 iOS 26.2 시뮬레이터 실제 V8 빌드·실행 결과.
+- [S03.2 · 제한 DOM façade 구현 전 비교 기준](./evidence/s03-dom-facade-precomparison-2026-10-04.md) — WHATWG·Chromium 비교 사례, 앱 문서 루트 차이, wrapper·저장 한도와 미구현 경계.
+- [S03.2 · 제한 DOM façade 실제 V8 실행](./evidence/s03-dom-facade-runtime-2026-10-04.md) — Android API 36 ARM64 및 iOS 26.2 시뮬레이터 빌드·실행 로그, fixture·언어 도구 검증과 미확인 경계.
 - `evidence/s03-v8-hostdocument-bridge-android-2026-10-03.log` · `evidence/s03-v8-hostdocument-bridge-ios-2026-10-03.log` — 해당 시뮬레이터 실행의 원본 부팅 결과 로그.
 - `evidence/s02-basic-flex-chrome-2026-09-30.png` — 같은 fixture의 Headless Chrome 캡처.
