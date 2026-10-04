@@ -1,0 +1,3 @@
+pub const EXPECTED_NODE_QUOTA: usize = 16_384;
+pub const EXPECTED_EXTERNAL_ROOT_LIMIT: usize = 16_384;
+pub const EXPECTED_STRING_QUOTA_UTF16: usize = 16_777_216;
