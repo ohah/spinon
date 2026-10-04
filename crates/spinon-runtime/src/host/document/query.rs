@@ -89,7 +89,7 @@ fn node_id(
 }
 
 fn read_query(
-    bridge: &HostDocumentBridge,
+    bridge: &mut HostDocumentBridge,
     query: &SpinonDocumentQuery,
 ) -> Result<(SpinonDocumentQueryResult, Vec<u16>), String> {
     let mut result = SpinonDocumentQueryResult::default();
@@ -231,6 +231,12 @@ fn read_query(
     Ok((result, output))
 }
 
+/// Rust 문서 상태를 읽고 facade 노드 ID를 예약하는 V8 callback입니다.
+///
+/// # Safety
+/// `user_data`는 owner 실행기에서 유일하게 접근 가능한 `HostDocumentBridge`여야 합니다.
+/// query/result와 선택적 UTF-16·오류 buffer는 호출 중 유효해야 하고, output capacity는
+/// output buffer의 실제 크기와 같아야 합니다.
 pub(crate) unsafe extern "C" fn query_callback(
     user_data: *mut c_void,
     query: *const SpinonDocumentQuery,
@@ -247,7 +253,7 @@ pub(crate) unsafe extern "C" fn query_callback(
         return CALLBACK_INVALID;
     }
     let query = unsafe { &*query };
-    let bridge = unsafe { &*user_data.cast::<HostDocumentBridge>() };
+    let bridge = unsafe { &mut *user_data.cast::<HostDocumentBridge>() };
     let result = catch_unwind(AssertUnwindSafe(|| read_query(bridge, query)));
     match result {
         Ok(Ok((result, value))) => {
@@ -280,180 +286,5 @@ pub(crate) unsafe extern "C" fn query_callback(
 }
 
 #[cfg(test)]
-mod tests {
-    use super::*;
-    use crate::host::document::DocumentBatchOperation;
-
-    fn query(
-        bridge: &HostDocumentBridge,
-        kind: i32,
-        node_id: i32,
-        index: i32,
-        name: &[u16],
-        output: &mut [u16],
-    ) -> (i32, SpinonDocumentQueryResult) {
-        let input = SpinonDocumentQuery {
-            kind,
-            node_id,
-            index,
-            name: if name.is_empty() {
-                std::ptr::null()
-            } else {
-                name.as_ptr()
-            },
-            name_length: name.len(),
-            output: if output.is_empty() {
-                std::ptr::null_mut()
-            } else {
-                output.as_mut_ptr()
-            },
-            output_capacity: output.len(),
-        };
-        let mut result = SpinonDocumentQueryResult::default();
-        let mut error = [0_i8; 256];
-        let status = unsafe {
-            query_callback(
-                std::ptr::from_ref(bridge).cast_mut().cast(),
-                &input,
-                &mut result,
-                error.as_mut_ptr(),
-                error.len(),
-            )
-        };
-        (status, result)
-    }
-
-    #[test]
-    fn committed_document_queries_return_utf16_and_stable_external_ids() {
-        let mut bridge = HostDocumentBridge::new().unwrap();
-        bridge
-            .commit(&[
-                DocumentBatchOperation::CreateElement {
-                    id: 41,
-                    namespace: HTML_NAMESPACE.to_owned(),
-                    name: "div".to_owned(),
-                },
-                DocumentBatchOperation::CreateText {
-                    id: 42,
-                    data: vec![b'a' as u16, 0xd800],
-                },
-                DocumentBatchOperation::Append {
-                    parent: 0,
-                    node: 41,
-                },
-                DocumentBatchOperation::Append {
-                    parent: 41,
-                    node: 42,
-                },
-                DocumentBatchOperation::SetAttribute {
-                    node: 41,
-                    name: "id".to_owned(),
-                    value: "proof".encode_utf16().collect(),
-                },
-            ])
-            .unwrap();
-
-        let (status, element) = query(&bridge, QUERY_NODE_INFO, 41, 0, &[], &mut []);
-        assert_eq!(status, CALLBACK_BUFFER_TOO_SMALL);
-        assert_eq!(element.exists, 1);
-        assert_eq!(element.value, 1);
-        assert_eq!(element.output_length, 3);
-        let mut short_name = [0xeeee_u16; 1];
-        let (status, short_result) = query(&bridge, QUERY_NODE_INFO, 41, 0, &[], &mut short_name);
-        assert_eq!(status, CALLBACK_BUFFER_TOO_SMALL);
-        assert_eq!(short_result.output_length, 3);
-        assert_eq!(short_name, [0xeeee]);
-        let mut name = [0_u16; 3];
-        let (status, _) = query(&bridge, QUERY_NODE_INFO, 41, 0, &[], &mut name);
-        assert_eq!(status, CALLBACK_OK);
-        assert_eq!(String::from_utf16(&name).unwrap(), "DIV");
-
-        let (status, child) = query(&bridge, QUERY_CHILD_AT, 41, 0, &[], &mut []);
-        assert_eq!(status, CALLBACK_OK);
-        assert_eq!(child.value, 42);
-        let (status, parent) = query(&bridge, QUERY_PARENT, 42, 0, &[], &mut []);
-        assert_eq!(status, CALLBACK_OK);
-        assert_eq!(parent.value, 41);
-        let (status, text_children) = query(&bridge, QUERY_CHILD_COUNT, 42, 0, &[], &mut []);
-        assert_eq!(status, CALLBACK_OK);
-        assert_eq!(text_children.value, 0);
-        let (status, text_first_child) = query(&bridge, QUERY_CHILD_AT, 42, 0, &[], &mut []);
-        assert_eq!(status, CALLBACK_OK);
-        assert_eq!(text_first_child.exists, 0);
-
-        let mut text = [0_u16; 2];
-        let (status, text_result) = query(&bridge, QUERY_TEXT_CONTENT, 41, 0, &[], &mut text);
-        assert_eq!(status, CALLBACK_OK);
-        assert_eq!(text_result.output_length, 2);
-        assert_eq!(text, [b'a' as u16, 0xd800]);
-
-        let mut attribute = [0_u16; 5];
-        let (status, attribute_result) = query(
-            &bridge,
-            QUERY_ATTRIBUTE,
-            41,
-            0,
-            &"id".encode_utf16().collect::<Vec<_>>(),
-            &mut attribute,
-        );
-        assert_eq!(status, CALLBACK_OK);
-        assert_eq!(attribute_result.exists, 1);
-        assert_eq!(String::from_utf16(&attribute).unwrap(), "proof");
-
-        let (status, next_id) = query(&bridge, QUERY_NEXT_ID, 0, 0, &[], &mut []);
-        assert_eq!(status, CALLBACK_OK);
-        assert_eq!(next_id.value, 43);
-    }
-
-    #[test]
-    fn invalid_query_does_not_read_or_write_unchecked_buffers() {
-        let bridge = HostDocumentBridge::new().unwrap();
-        let invalid = SpinonDocumentQuery {
-            kind: QUERY_ATTRIBUTE,
-            node_id: 1,
-            name: std::ptr::null(),
-            name_length: 1,
-            ..SpinonDocumentQuery::default()
-        };
-        let mut result = SpinonDocumentQueryResult::default();
-        let mut error = [0_i8; 128];
-        let status = unsafe {
-            query_callback(
-                std::ptr::from_ref(&bridge).cast_mut().cast(),
-                &invalid,
-                &mut result,
-                error.as_mut_ptr(),
-                error.len(),
-            )
-        };
-        assert_eq!(status, CALLBACK_REJECTED);
-
-        let status = unsafe {
-            query_callback(
-                std::ptr::null_mut(),
-                &invalid,
-                &mut result,
-                error.as_mut_ptr(),
-                error.len(),
-            )
-        };
-        assert_eq!(status, CALLBACK_INVALID);
-
-        let overlong_name = vec![b'a' as u16; MAX_QUERY_NAME_UNITS + 1];
-        let invalid = SpinonDocumentQuery {
-            name: overlong_name.as_ptr(),
-            name_length: overlong_name.len(),
-            ..invalid
-        };
-        let status = unsafe {
-            query_callback(
-                std::ptr::from_ref(&bridge).cast_mut().cast(),
-                &invalid,
-                &mut result,
-                error.as_mut_ptr(),
-                error.len(),
-            )
-        };
-        assert_eq!(status, CALLBACK_REJECTED);
-    }
-}
+#[path = "query_tests.rs"]
+mod tests;

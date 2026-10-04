@@ -362,6 +362,10 @@ pub enum DocumentErrorKind {
     UnreservedNodeId(NodeId),
     DuplicateNodeId(NodeId),
     UnknownNode(NodeId),
+    DuplicateCollectionRoot(NodeId),
+    InvalidCollectionGraph,
+    CollectionAllocationFailed,
+    StaleCollectionPlan,
     InvalidName,
     InvalidParent(NodeId),
     InvalidReference(NodeId),
@@ -432,6 +436,18 @@ impl fmt::Display for DocumentErrorKind {
             Self::UnreservedNodeId(id) => write!(formatter, "예약하지 않은 노드 ID입니다: {id}"),
             Self::DuplicateNodeId(id) => write!(formatter, "이미 생성된 노드 ID입니다: {id}"),
             Self::UnknownNode(id) => write!(formatter, "노드를 찾을 수 없습니다: {id}"),
+            Self::DuplicateCollectionRoot(id) => {
+                write!(formatter, "노드 {id}가 회수 root 목록에 중복되었습니다")
+            }
+            Self::InvalidCollectionGraph => {
+                formatter.write_str("노드 회수 중 문서 그래프의 연결 무결성이 잘못되었습니다")
+            }
+            Self::CollectionAllocationFailed => {
+                formatter.write_str("노드 회수용 임시 저장 공간을 확보하지 못했습니다")
+            }
+            Self::StaleCollectionPlan => {
+                formatter.write_str("문서가 바뀌어 이전 노드 회수 계획을 적용할 수 없습니다")
+            }
             Self::InvalidName => {
                 formatter.write_str("이름은 비어 있거나 공백·NUL을 포함할 수 없습니다")
             }

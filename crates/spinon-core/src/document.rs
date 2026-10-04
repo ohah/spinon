@@ -1,12 +1,17 @@
+mod collection;
 mod mutation;
 mod snapshot;
 mod types;
+
+#[cfg(test)]
+mod collection_tests;
 
 #[cfg(test)]
 mod reservation_tests;
 #[cfg(test)]
 mod tests;
 
+pub use collection::CollectionPlan;
 pub use snapshot::HostDocumentSnapshot;
 pub use types::{
     AttributeName, DocumentChangeBatch, DocumentError, DocumentErrorKind, DocumentGeneration,

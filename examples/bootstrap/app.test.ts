@@ -337,3 +337,34 @@ test("예제 번들이 HostDocument 커밋·rollback·getter 재진입·이벤�
   ]);
   expect(texts.at(-1)).toBe(`이벤트:7 · 문서 revision ${documentRevision}`);
 });
+
+test("DOM façade가 노드 ID 한도 오류를 QuotaExceededError로 전달한다", () => {
+  const facadeSource = readFileSync("../../native/v8/src/spinon_dom_facade.inc", "utf8")
+    .replace(/^R"SPINONJS\(/, "")
+    .replace(/\)SPINONJS"\s*$/, "");
+  const host = {
+    __internal: {
+      readDocument() {
+        throw new Error("QuotaExceededError: 노드 연결 키 공간을 모두 사용했습니다");
+      },
+      commitDocumentBatch() {
+        throw new Error("생성 단계까지 도달하면 안 됩니다");
+      },
+    },
+  };
+  const context: { spinon: typeof host; TypeError: TypeError; document?: Document; DOMException?: typeof DOMException } = {
+    spinon: host,
+    TypeError,
+  };
+  runInNewContext(facadeSource, context);
+
+  let caught: unknown;
+  try {
+    context.document?.createElement("div");
+  } catch (error) {
+    caught = error;
+  }
+
+  expect(caught).toBeInstanceOf(context.DOMException);
+  expect((caught as Error & { name: string }).name).toBe("QuotaExceededError");
+});

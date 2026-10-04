@@ -129,6 +129,20 @@ fn runtime_node_limit_counts_detached_nodes_and_rejects_atomically() {
     assert_eq!(bridge.node_count(), super::MAX_DOCUMENT_NODES as u64);
     assert_eq!(bridge.document_revision(), revision);
     assert_eq!(bridge.handle(next_id), None);
+
+    assert_eq!(
+        bridge.collect_unreachable(&[]).unwrap(),
+        super::MAX_DOCUMENT_NODES
+    );
+    assert_eq!(bridge.node_count(), 0);
+    commit(
+        &mut bridge,
+        vec![Operation::CreateText {
+            id: next_id + 1,
+            data: Vec::new(),
+        }],
+    );
+    assert!(bridge.handle(next_id + 1).is_some());
 }
 
 #[test]
