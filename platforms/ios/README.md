@@ -28,7 +28,11 @@ xcrun simctl launch --terminate-running-process booted dev.spinon.bootstrap --sp
 xcrun simctl launch --terminate-running-process booted dev.spinon.bootstrap --spinon-priority-probe
 ```
 
-첫 명령은 터치 이벤트, 긴 JavaScript 실행, 취소, 세션 재생성을 수동으로 확인합니다. 두 번째 명령은 메인 UI heartbeat, 취소된 eval, 대기 이벤트 처리, V8 소유 스레드 일치, 세션 종료·재생성을 자동으로 검증합니다. 세 번째 명령은 실제 V8에서 실행 중인 JavaScript를 취소한 뒤, 우선순위를 섞어 접수한 6개 작업의 `user-blocking` → `user-visible` → `background` 선택과 같은 등급 FIFO를 검사합니다. 동기 FFI 호출은 동시 백그라운드 queue에서 처리하지만 semaphore로 진행 중·대기 중 호출을 합해 최대 64개로 제한합니다. 취소는 별도 직렬 제어 queue에서 요청하고, 세션 종료·재생성은 `DispatchGroup`으로 접수된 호출의 반환을 기다립니다. Objective-C++ `SpinonRunner.mm`는 Rust C ABI에 대한 얇은 변환 계층입니다. iOS 대기열 포화나 종료 제한 시간은 아직 검증하지 않았습니다.
+첫 명령은 터치 이벤트, 긴 JavaScript 실행, 취소, 지연 호스트 응답을 수동으로 확인합니다. 두 번째 명령은 메인 UI heartbeat, 취소된 eval, 대기 이벤트 처리, V8 소유 스레드 일치, 세션 종료·재생성을 자동으로 검증합니다. 세 번째 명령은 실제 V8에서 실행 중인 JavaScript를 취소한 뒤, 우선순위를 섞어 접수한 6개 작업의 `user-blocking` → `user-visible` → `background` 선택과 같은 등급 FIFO를 검사합니다.
+
+동기 FFI 호출은 동시 백그라운드 queue에서 처리하지만 semaphore로 진행 중·대기 중 호출을 합해 최대 64개로 제한합니다. 취소는 별도 직렬 제어 queue에서 요청하고, 세션 종료·재생성은 `DispatchGroup`으로 접수된 호출의 반환을 기다립니다. Objective-C++ `SpinonRunner.mm`는 Rust C ABI에 대한 얇은 변환 계층입니다.
+
+Android와 같은 R06 진단 화면 구성·버튼 상태·취소 후 상태 문구를 사용하고, 취소·대기 이벤트 결과에 동일한 여섯 검증 항목을 표시합니다. 12초 뒤의 안전 취소도 Android와 같은 방식으로 설정했습니다. 로그 항목은 메인 큐에서 모아 UITextView에 반영하고, 화면 기록은 20,000자를 넘으면 오래된 줄을 덜어내 16,000자 안팎으로 유지하며 생략 문구를 표시합니다. 전체 진단 기록은 unified log에 남깁니다. 긴 JS·지연 응답·취소·대기 이벤트·안전 시간 초과를 양쪽 시뮬레이터에서 실행한 결과와 Android 프레임 표본은 [iOS·Android 화면 일치 기록](../../spec/internal/evidence/s03-r06-cross-platform-ui-parity-2026-10-05.md)을 참고하세요. iOS 대기열 포화나 종료 제한 시간은 아직 검증하지 않았습니다.
 
 ### S03.3 DOM wrapper 회수 검증
 
