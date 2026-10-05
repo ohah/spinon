@@ -29,7 +29,11 @@ adb shell am start -n dev.spinon.bootstrap/.MainActivity --ez spinon_runtime_thr
 adb logcat -s SpinonBootstrap:I
 ```
 
-화면에서 긴 JavaScript 실행 중 탭을 눌러 UI가 반응하는지 확인하고, 별도 취소 버튼을 누른 뒤 `owner_tid`가 유지되는지 로그를 확인합니다. 대기 상태에서는 긴 JS 시작만 활성화하고 취소는 비활성화합니다. 평가가 실행 중일 때 시작을 비활성화하고 취소를 활성화하며, 실행 중 접수한 JS dispatch가 끝난 뒤 다음 평가를 허용합니다. 취소 요청 `status=0`은 요청 접수이고, 평가 `status=-8`은 V8 실행 중단 확인입니다. 화면은 이 결과를 `취소 완료`로 표시합니다. Android 어댑터는 동기 FFI 호출을 4개 작업자와 최대 64개 대기 작업으로 제한하고, 취소는 별도 제어 실행기에서 보냅니다. 실제 V8 에뮬레이터 실행의 버튼 상태·취소·대기 이벤트는 [수동 실행 근거](../../spec/internal/evidence/s03-android-long-js-ui-2026-10-05.md)에 기록합니다. 가짜 V8 단위 테스트는 제어 경로만 검증하므로 실제 V8이 실행된 에뮬레이터의 원본 로그도 확인합니다. [대기열 압력 원본 로그](../../spec/internal/evidence/r06-android-queue-pressure-2026-09-30.log)는 Android 16 에뮬레이터에서 70회 탭 주입, 화면 카운터 69회, 플랫폼 작업 2회 거부, V8 dispatch 67회 성공을 기록합니다. 이 수치는 플랫폼 대기열 실험이며 Rust 런타임 큐 포화를 뜻하지 않습니다. 범위와 한계는 [V8 실행 스레드 실험 명세](../../spec/internal/0005-v8-runtime-session.md)와 [R06 검증 근거](../../spec/internal/evidence/r06-v8-runtime-thread-2026-09-30.md)에 기록합니다.
+화면에서 긴 JavaScript 실행 중 탭을 눌러 UI가 반응하는지 확인하고, 별도 취소 버튼을 누른 뒤 `owner_tid`가 유지되는지 로그를 확인합니다. 대기 상태에서는 긴 JS 시작만 활성화하고 취소는 비활성화합니다. 평가가 실행 중일 때 시작을 비활성화하고 취소를 활성화하며, 실행 중 접수한 JS dispatch가 끝난 뒤 다음 평가를 허용합니다.
+
+취소 요청 `status=0`은 요청 접수이고, 평가 `status=-8`은 V8 실행 중단 확인입니다. 화면은 이 결과를 `취소 완료`로 표시합니다. 취소 입력이 없으면 12초 뒤 안전 취소를 요청합니다. 로그 항목은 메인 스레드 작업 하나로 모아 TextView에 반영하고, 화면 기록은 20,000자를 넘으면 오래된 줄을 덜어내 16,000자 안팎으로 유지하며 생략 문구를 표시합니다. 전체 진단 기록은 Logcat에 남깁니다. iOS도 메인 큐에서 로그를 모아 반영하고 같은 표시 한도·생략 문구를 사용하며 취소와 대기 이벤트 실행 뒤 같은 여섯 검증 결과를 표시합니다. 다섯 번 반복한 Android 프레임 표본과 두 플랫폼의 긴 JS·지연 응답·취소·안전 시간 초과 실행은 [iOS·Android 화면 일치 기록](../../spec/internal/evidence/s03-r06-cross-platform-ui-parity-2026-10-05.md)에 있습니다.
+
+Android 어댑터는 동기 FFI 호출을 4개 작업자와 최대 64개 대기 작업으로 제한하고, 취소는 별도 제어 실행기에서 보냅니다. 실제 V8 에뮬레이터 실행의 버튼 상태·취소·대기 이벤트는 [Android 수동 실행 근거](../../spec/internal/evidence/s03-android-long-js-ui-2026-10-05.md)에 기록합니다. 가짜 V8 단위 테스트는 제어 경로만 검증하므로 실제 V8이 실행된 에뮬레이터의 원본 로그도 확인합니다. [대기열 압력 원본 로그](../../spec/internal/evidence/r06-android-queue-pressure-2026-09-30.log)는 Android 16 에뮬레이터에서 70회 탭 주입, 화면 카운터 69회, 플랫폼 작업 2회 거부, V8 dispatch 67회 성공을 기록합니다. 이 수치는 플랫폼 대기열 실험이며 Rust 런타임 큐 포화를 뜻하지 않습니다. 범위와 한계는 [V8 실행 스레드 실험 명세](../../spec/internal/0005-v8-runtime-session.md)와 [R06 검증 근거](../../spec/internal/evidence/r06-v8-runtime-thread-2026-09-30.md)에 기록합니다.
 
 ### 실제 V8 우선순위 선택 검증
 

@@ -51,6 +51,7 @@
 - `evidence/r06-priority-android-emulator-2026-09-30.log` · `evidence/spinon-r06-priority-android-2026-09-30.png` · `evidence/r06-priority-ios-simulator-2026-09-30.log` · `evidence/spinon-r06-priority-ios-simulator-2026-09-30.png` — 원본 로그와 화면 캡처.
 - `evidence/r06-ios-simulator-post-split-2026-09-30.log` · `evidence/spinon-r06-ios-post-split-2026-09-30.png` — 저장 공간 확보 뒤 현재 런타임 분리 코드로 수행한 iOS 26.2 시뮬레이터 검증 원본 로그와 화면.
 - `evidence/r06-android-queue-pressure-2026-09-30.log` — 무한 JavaScript 중 주입한 UI 탭, 접수된 이벤트, 플랫폼 대기열의 명시적 거부와 세션 종료 원본 로그(저장소 파일).
+- [R06 · iOS·Android 진단 화면 일치](./evidence/s03-r06-cross-platform-ui-parity-2026-10-05.md) — 같은 앱 화면·버튼 상태·취소와 대기 이벤트 순서 및 여섯 검증 결과, Android 로그 UI 묶음 갱신·다섯 프레임 표본을 양쪽 시뮬레이터에서 확인한 기록과 캡처.
 - [R13 · 플랫폼 생명주기·GPU 복구](./evidence/r13-platform-gpu-recovery-2026-09-29.md) — 회전·백그라운드·오류 주입·입력 복구의 로그와 화면 캡처.
 - [S02 · Taffy 레이아웃 연결](./evidence/s02-taffy-layout-2026-09-30.md) — Chromium 기준 fixture, Taffy·기존 행/열 엔진의 좌표 비교와 한계.
 - [S04.4 · Android GPU surface](./evidence/s04-android-gpu-surface-2026-10-03.md) — Android API 36 ARM64 emulator의 Vulkan llvmpipe surface 제출, 회전별 generation, sRGB 표본 readback과 화면 캡처. 실제 hardware GPU·실기기는 미검증.

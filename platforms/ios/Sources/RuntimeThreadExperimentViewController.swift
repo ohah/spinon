@@ -2,6 +2,9 @@ import UIKit
 import OSLog
 
 final class RuntimeThreadExperimentViewController: UIViewController {
+    private let maximumReportCharacters = 20_000
+    private let reportTrimTargetCharacters = 16_000
+    private let reportTruncationMarker = "… 이전 로그 생략 · 최근 기록만 표시 …\n\n"
     private let lifecycleLargeRegistryNodeCount = 16_385
     private let lifecycleLargeRegistryScanSamples = 10
     private let automaticallyRun: Bool
@@ -28,14 +31,21 @@ final class RuntimeThreadExperimentViewController: UIViewController {
     private var scenarioHeartbeatStart = 0
     private var scenarioEvalReport: String?
     private var scenarioDispatchReport: String?
+    private var scenarioHadDispatch = false
     private var scenarioCancelStatus: Int32?
+    private var cancelRequestPending = false
+    private var delayedHostResponsePending = false
     private var isClosing = false
+    private var reportBuffer = ""
+    private var pendingReportEntries = ""
+    private var reportFlushScheduled = false
 
     private let statusLabel = UILabel()
     private let reportView = UITextView()
     private let eventButton = UIButton(type: .system)
     private let longEvalButton = UIButton(type: .system)
     private let cancelButton = UIButton(type: .system)
+    private let delayedButton = UIButton(type: .system)
     private let recreateButton = UIButton(type: .system)
     private let lifecycleButton = UIButton(type: .system)
 
@@ -104,9 +114,6 @@ final class RuntimeThreadExperimentViewController: UIViewController {
         heartbeatTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { [weak self] _ in
             guard let self else { return }
             heartbeatCount += 1
-            if scenarioRunning && heartbeatCount % 10 == 0 {
-                setStatus("준비됨 · 메인 UI heartbeat \(heartbeatCount) · JavaScript 대기 중")
-            }
         }
         createInitialSession()
     }
@@ -133,8 +140,8 @@ final class RuntimeThreadExperimentViewController: UIViewController {
             title.text = "SPINON · iOS V8 세션 종료 검증"
         } else {
             title.text = runPriorityProbe
-                ? "SPINON · iOS R06 우선순위 검증"
-                : "SPINON · iOS R06 실행 스레드 실험"
+                ? "SPINON · V8 우선순위 검증"
+                : "SPINON · V8 실행 스레드 실험"
         }
         title.font = .systemFont(ofSize: 20, weight: .bold)
         title.textColor = UIColor(red: 0.90, green: 0.93, blue: 0.98, alpha: 1)
@@ -148,7 +155,7 @@ final class RuntimeThreadExperimentViewController: UIViewController {
         } else {
             description.text = runPriorityProbe
                 ? "개발 전용 · 실제 V8에서 세 우선순위 선택과 동일 등급 FIFO를 확인합니다"
-                : "개발 전용 · JS 실행은 백그라운드 V8 소유 스레드 · UI heartbeat와 큐 대기·취소를 기록합니다"
+                : "개발 전용 · 긴 JavaScript 실행 중에도 화면 입력과 JS 이벤트 대기·취소를 확인합니다"
         }
         description.font = .systemFont(ofSize: 13)
         description.textColor = UIColor(red: 0.66, green: 0.72, blue: 0.81, alpha: 1)
@@ -162,6 +169,7 @@ final class RuntimeThreadExperimentViewController: UIViewController {
         configureButton(eventButton, title: "터치 이벤트 보내기", action: #selector(sendEvent))
         configureButton(longEvalButton, title: "긴 JavaScript 실행 시작", action: #selector(startLongEvaluation))
         configureButton(cancelButton, title: "실행 취소", action: #selector(cancelExecution))
+        configureButton(delayedButton, title: "지연 호스트 응답 모의 (0.5초)", action: #selector(simulateDelayedHostResponse))
         configureButton(recreateButton, title: "세션 종료 후 재생성", action: #selector(recreateSession))
         configureButton(lifecycleButton, title: "V8 약한 wrapper 회수 검증", action: #selector(runLifecycleCollectionProbe))
 
@@ -173,7 +181,7 @@ final class RuntimeThreadExperimentViewController: UIViewController {
 
         var arrangedSubviews: [UIView] = [
             title, description, statusLabel, eventButton, longEvalButton, cancelButton,
-            recreateButton
+            delayedButton
         ]
         if spinonS03DomGcFixtureEnabled {
             arrangedSubviews.append(lifecycleButton)
@@ -202,9 +210,14 @@ final class RuntimeThreadExperimentViewController: UIViewController {
         configuration.baseBackgroundColor = UIColor(red: 0.10, green: 0.31, blue: 0.58, alpha: 1)
         configuration.baseForegroundColor = .white
         configuration.cornerStyle = .medium
+        configuration.contentInsets = NSDirectionalEdgeInsets(
+            top: 0, leading: 12, bottom: 0, trailing: 12
+        )
         button.configuration = configuration
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.contentHorizontalAlignment = .leading
         button.accessibilityIdentifier = title
+        button.heightAnchor.constraint(equalToConstant: 48).isActive = true
         button.addTarget(self, action: action, for: .touchUpInside)
     }
 
@@ -228,7 +241,7 @@ final class RuntimeThreadExperimentViewController: UIViewController {
                 }
                 self.session = handle
                 self.appendReport("초기 JavaScript · \(report)")
-                self.setStatus("준비됨 · 백그라운드 V8 세션")
+                self.setStatus("준비됨 · V8 세션 대기 중")
                 self.setButtons(enabled: true)
                 if self.automaticallyRunLifecycleProbe {
                     self.lifecycleButton.sendActions(for: .touchUpInside)
@@ -506,8 +519,11 @@ final class RuntimeThreadExperimentViewController: UIViewController {
         guard session != 0, !isClosing else { return }
         eventCount += 1
         let eventNumber = eventCount
-        setStatus("UIKit 이벤트 \(eventNumber) · 메인 화면 입력 처리됨")
-        appendReport("UIKit 타깃 액션 \(eventNumber) 제출")
+        setStatus("UI 탭 \(eventNumber)회 · JS 이벤트 제출")
+        appendReport("UI 타깃 액션 \(eventNumber) 제출")
+        if scenarioRunning {
+            scenarioHadDispatch = true
+        }
         let handle = session
         let accepted = enqueueRuntimeCall(label: "이벤트 \(eventNumber)") { [weak self] in
             let report = SpinonRunner.dispatchRuntimeSession(handle, nodeID: Int32(eventNumber)) ?? "응답 없음"
@@ -526,17 +542,50 @@ final class RuntimeThreadExperimentViewController: UIViewController {
         }
     }
 
+    @objc private func simulateDelayedHostResponse() {
+        guard session != 0, !isClosing, !delayedHostResponsePending else { return }
+        delayedHostResponsePending = true
+        delayedButton.isEnabled = false
+        appendReport("호스트가 0.5초 뒤 JavaScript 콜백을 큐에 넣도록 예약했습니다.")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            guard let self else { return }
+            guard !self.isClosing, self.session != 0 else {
+                self.delayedHostResponsePending = false
+                return
+            }
+            let handle = self.session
+            let accepted = self.enqueueRuntimeCall(label: "지연 호스트 응답") { [weak self] in
+                let report = SpinonRunner.evalRuntimeSession(
+                    handle,
+                    source: "spinon.setText('delayed-host-response')"
+                ) ?? "응답 없음"
+                DispatchQueue.main.async {
+                    guard let self else { return }
+                    self.appendReport("지연 호스트 응답 · \(report)")
+                    self.delayedHostResponsePending = false
+                    self.updateRuntimeButtons()
+                }
+            }
+            if !accepted {
+                self.delayedHostResponsePending = false
+                self.setStatus("실행 대기열이 가득 차 호스트 응답을 제출하지 못했습니다")
+                self.updateRuntimeButtons()
+            }
+        }
+    }
+
     @objc private func startLongEvaluation() {
         guard session != 0, !scenarioRunning, !isClosing else { return }
         scenarioRunning = true
         scenarioHeartbeatStart = heartbeatCount
         scenarioEvalReport = nil
         scenarioDispatchReport = nil
+        scenarioHadDispatch = false
         scenarioCancelStatus = nil
-        longEvalButton.isEnabled = false
-        cancelButton.isEnabled = true
+        cancelRequestPending = false
+        updateRuntimeButtons()
         recreateButton.isEnabled = false
-        setStatus("긴 JavaScript 실행 중 · 메인 화면 heartbeat가 계속 증가해야 합니다")
+        setStatus("긴 JavaScript 실행 중 · 화면 입력 가능 · JS 이벤트 대기 중")
         appendReport("무한 JavaScript 평가 제출 · UI 메인 스레드는 대기하지 않음")
 
         let handle = session
@@ -553,10 +602,11 @@ final class RuntimeThreadExperimentViewController: UIViewController {
             }
         }
         if !accepted {
-            scenarioEvalReport = "status=-5 플랫폼 실행 대기열 포화"
-            scenarioDispatchReport = "status=-5 플랫폼 실행 대기열 포화"
-            scenarioCancelStatus = -5
-            finishScenarioIfReady()
+            scenarioRunning = false
+            cancelRequestPending = false
+            updateRuntimeButtons()
+            recreateButton.isEnabled = true
+            setStatus("실행 대기열이 가득 차 긴 JavaScript를 시작하지 못했습니다")
         }
 
         if automaticallyRun {
@@ -567,11 +617,21 @@ final class RuntimeThreadExperimentViewController: UIViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) { [weak self] in
                 guard let self, self.scenarioRunning else { return }
                 let handle = self.session
+                self.cancelRequestPending = true
+                self.updateRuntimeButtons()
+                self.setStatus("JavaScript 취소 요청 중…")
                 self.runtimeControl.async {
                     let status = SpinonRunner.cancelRuntimeSession(handle)
                     DispatchQueue.main.async {
                         self.scenarioCancelStatus = status
+                        if status != 0 {
+                            self.cancelRequestPending = false
+                        }
+                        self.updateRuntimeButtons()
                         self.appendReport("취소 요청 · status=\(status)")
+                        self.setStatus(status == 0
+                            ? "취소 요청 접수 · JavaScript 종료 대기 중"
+                            : "실행 중인 JavaScript가 없습니다 · 시작 중이면 다시 취소하세요")
                         self.finishScenarioIfReady()
                     }
                 }
@@ -581,6 +641,9 @@ final class RuntimeThreadExperimentViewController: UIViewController {
             guard let self, self.scenarioRunning else { return }
             self.appendReport("시간 초과 · 안전을 위해 V8 취소를 요청합니다")
             let handle = self.session
+            self.cancelRequestPending = true
+            self.updateRuntimeButtons()
+            self.setStatus("JavaScript 취소 요청 중…")
             self.runtimeControl.async {
                 let status = SpinonRunner.cancelRuntimeSession(handle)
                 DispatchQueue.main.async {
@@ -588,8 +651,14 @@ final class RuntimeThreadExperimentViewController: UIViewController {
                     if self.scenarioCancelStatus == nil || status == 0 {
                         self.scenarioCancelStatus = status
                     }
+                    if status != 0 {
+                        self.cancelRequestPending = false
+                    }
+                    self.updateRuntimeButtons()
                     self.appendReport("시간 초과 안전 취소 · status=\(status)")
-                    self.setStatus("R06 검증 시간 초과 · V8 응답을 기다립니다")
+                    self.setStatus(status == 0
+                        ? "취소 요청 접수 · JavaScript 종료 대기 중"
+                        : "R06 검증 시간 초과 · V8 응답을 기다립니다")
                     self.finishScenarioIfReady()
                 }
             }
@@ -597,8 +666,11 @@ final class RuntimeThreadExperimentViewController: UIViewController {
     }
 
     @objc private func cancelExecution() {
-        guard session != 0, !isClosing else { return }
+        guard session != 0, scenarioRunning, !cancelRequestPending, !isClosing else { return }
         let handle = session
+        cancelRequestPending = true
+        updateRuntimeButtons()
+        setStatus("JavaScript 취소 요청 중…")
         runtimeControl.async { [weak self] in
             let status = SpinonRunner.cancelRuntimeSession(handle)
             DispatchQueue.main.async {
@@ -608,6 +680,16 @@ final class RuntimeThreadExperimentViewController: UIViewController {
                     if self.scenarioCancelStatus == nil || status == 0 {
                         self.scenarioCancelStatus = status
                     }
+                    if status == 0 {
+                        self.setStatus("취소 요청 접수 · JavaScript 종료 대기 중")
+                    } else if status == 1 {
+                        self.cancelRequestPending = false
+                        self.setStatus("실행 중인 JavaScript가 없습니다 · 시작 중이면 다시 취소하세요")
+                    } else {
+                        self.cancelRequestPending = false
+                        self.setStatus("취소 요청 실패 · status=\(status)")
+                    }
+                    self.updateRuntimeButtons()
                     self.finishScenarioIfReady()
                 }
             }
@@ -617,31 +699,41 @@ final class RuntimeThreadExperimentViewController: UIViewController {
     private func finishScenarioIfReady() {
         guard scenarioRunning,
               let evalReport = scenarioEvalReport,
-              let dispatchReport = scenarioDispatchReport,
-              let cancelStatus = scenarioCancelStatus else { return }
+              let cancelStatus = scenarioCancelStatus,
+              !scenarioHadDispatch || scenarioDispatchReport != nil else { return }
 
         let heartbeatDelta = heartbeatCount - scenarioHeartbeatStart
         let evalOwner = field("owner_tid", in: evalReport)
-        let dispatchOwner = field("owner_tid", in: dispatchReport)
-        let callbackOwner = field("callback_tid", in: dispatchReport)
-        let checks = [
+        var checks = [
             ("취소된 평가", evalReport.contains("status=-8")),
-            ("대기 이벤트 처리", dispatchReport.contains("status=0")),
-            ("실행 중 취소 요청", cancelStatus == 0),
-            ("메인 UI heartbeat", heartbeatDelta >= 5),
-            ("Isolate 소유 스레드", evalOwner != nil && evalOwner == dispatchOwner),
-            ("JS 콜백 소유 스레드", dispatchOwner != nil && dispatchOwner == callbackOwner)
+            ("실행 중 취소 요청", cancelStatus == 0)
         ]
+        var dispatchSucceeded = false
+        if let dispatchReport = scenarioDispatchReport {
+            let dispatchOwner = field("owner_tid", in: dispatchReport)
+            let callbackOwner = field("callback_tid", in: dispatchReport)
+            dispatchSucceeded = dispatchReport.contains("status=0")
+            checks.append(("메인 UI heartbeat", heartbeatDelta >= 5))
+            checks.append(("대기 이벤트 처리", dispatchSucceeded))
+            checks.append(("Isolate 소유 스레드", evalOwner != nil && evalOwner == dispatchOwner))
+            checks.append(("JS 콜백 소유 스레드", dispatchOwner != nil && dispatchOwner == callbackOwner))
+        } else {
+            appendReport("생략 · UI heartbeat·대기 이벤트 검증 · 이벤트 탭 없음")
+        }
         let passed = checks.allSatisfy(\.1)
         for (name, result) in checks {
             appendReport("\(result ? "통과" : "실패") · \(name)")
         }
         appendReport("heartbeat 증가량=\(heartbeatDelta) · owner_tid=\(evalOwner ?? "없음")")
         scenarioRunning = false
-        longEvalButton.isEnabled = true
-        cancelButton.isEnabled = false
+        cancelRequestPending = false
+        updateRuntimeButtons()
         recreateButton.isEnabled = true
-        setStatus(passed ? "R06 iOS 시뮬레이터 검증 통과" : "R06 iOS 시뮬레이터 검증 실패")
+        setStatus(passed
+            ? (dispatchSucceeded
+                ? "취소 완료 · 대기 중이던 JS 이벤트 처리 완료"
+                : "취소 완료 · JavaScript가 종료되었습니다")
+            : "취소 검증 실패 · 상세 결과는 아래 기록을 확인하세요")
 
         if automaticallyRun && passed {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { [weak self] in
@@ -694,11 +786,17 @@ final class RuntimeThreadExperimentViewController: UIViewController {
     }
 
     private func setButtons(enabled: Bool) {
-        eventButton.isEnabled = enabled
-        longEvalButton.isEnabled = enabled && !scenarioRunning
-        cancelButton.isEnabled = enabled && scenarioRunning
+        updateRuntimeButtons(ready: enabled)
         recreateButton.isEnabled = enabled && !scenarioRunning
         lifecycleButton.isEnabled = enabled && !scenarioRunning
+    }
+
+    private func updateRuntimeButtons(ready: Bool? = nil) {
+        let isReady = ready ?? (session != 0 && !isClosing)
+        eventButton.isEnabled = isReady
+        longEvalButton.isEnabled = isReady && !scenarioRunning
+        cancelButton.isEnabled = isReady && scenarioRunning && !cancelRequestPending
+        delayedButton.isEnabled = isReady && !delayedHostResponsePending
     }
 
     @discardableResult
@@ -752,7 +850,31 @@ final class RuntimeThreadExperimentViewController: UIViewController {
 
     private func appendReport(_ text: String) {
         logger.notice("SPINON_R06_IOS \(text, privacy: .public)")
-        reportView.text.append("\(text)\n\n")
+        pendingReportEntries.append("\(text)\n\n")
+        guard !reportFlushScheduled else { return }
+        reportFlushScheduled = true
+        DispatchQueue.main.async { [weak self] in
+            self?.flushReport()
+        }
+    }
+
+    private func flushReport() {
+        let entries = pendingReportEntries
+        pendingReportEntries = ""
+        reportFlushScheduled = false
+        guard !entries.isEmpty, !isClosing else { return }
+        reportBuffer.append(entries)
+        if reportBuffer.count > maximumReportCharacters {
+            let trimCount = reportBuffer.count - reportTrimTargetCharacters
+            let trimEnd = reportBuffer.index(reportBuffer.startIndex, offsetBy: trimCount)
+            reportBuffer.removeSubrange(..<trimEnd)
+            if let nextLine = reportBuffer.firstIndex(of: "\n") {
+                reportBuffer.removeSubrange(..<reportBuffer.index(after: nextLine))
+            }
+            reportView.text = reportTruncationMarker + reportBuffer
+        } else {
+            reportView.text.append(entries)
+        }
         let end = NSRange(location: max(reportView.text.utf16.count - 1, 0), length: 1)
         reportView.scrollRangeToVisible(end)
     }
