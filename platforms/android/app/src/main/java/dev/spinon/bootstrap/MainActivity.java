@@ -24,6 +24,7 @@ import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.function.BiConsumer;
 
 public final class MainActivity extends Activity {
     private static final String TAG = "SpinonBootstrap";
@@ -49,6 +50,7 @@ public final class MainActivity extends Activity {
     private static native byte[] nativeSessionPriorityProbe();
     private static native byte[] nativeSessionShutdownProbe();
     private static native int nativeSessionCancel(long session);
+    private static native int nativeSessionMemoryPressure(long session, int level);
     private static native void nativeSessionFree(long session);
 
     private final ThreadPoolExecutor runtimeCalls = new ThreadPoolExecutor(
@@ -71,11 +73,18 @@ public final class MainActivity extends Activity {
     private TextView runtimeStatus;
     private Button dispatchButton;
     private Button loopButton;
+    private Button cancelButton;
     private Button delayedButton;
     private Button lifecycleButton;
     private boolean lifecycleGcFixtureRequested;
     private boolean runLifecycleGcAutomatically;
     private volatile boolean lifecycleGcPassed;
+    private boolean longEvaluationRunning;
+    private boolean cancelRequestPending;
+    private boolean lastLongEvaluationCancelled;
+    private boolean longEvaluationHadDispatch;
+    private boolean pendingDispatchFailed;
+    private int pendingDispatchesFromLongEvaluation;
     private int tapCount;
 
     @Override
@@ -308,7 +317,7 @@ public final class MainActivity extends Activity {
 
         dispatchButton = runtimeButton("터치 이벤트 보내기");
         loopButton = runtimeButton("긴 JavaScript 실행 시작");
-        Button cancelButton = runtimeButton("실행 취소");
+        cancelButton = runtimeButton("실행 취소");
         delayedButton = runtimeButton("지연 호스트 응답 모의 (0.5초)");
         lifecycleButton = runtimeButton("V8 약한 wrapper 회수 검증");
         lifecycleButton.setVisibility(BuildConfig.SPINON_S03_DOM_GC_FIXTURE
@@ -338,25 +347,111 @@ public final class MainActivity extends Activity {
         dispatchButton.setOnClickListener(view -> {
             int nodeId = ++tapCount;
             runtimeStatus.setText("UI 탭 " + nodeId + "회 · UI는 계속 입력을 받습니다");
-            submitRuntimeCall(() -> nativeSessionDispatch(runtimeSession, nodeId), "dispatch");
+            boolean submittedDuringLongEvaluation = longEvaluationRunning;
+            if (submittedDuringLongEvaluation) {
+                longEvaluationHadDispatch = true;
+                pendingDispatchesFromLongEvaluation++;
+            }
+            boolean accepted = submitRuntimeCallWithCompletion(
+                    () -> nativeSessionDispatch(runtimeSession, nodeId),
+                    "dispatch", (result, error) -> {
+                        if (!submittedDuringLongEvaluation) return;
+                        boolean dispatchSucceeded = error == null
+                                && decode(result).startsWith("status=0 ");
+                        pendingDispatchesFromLongEvaluation--;
+                        if (!dispatchSucceeded) pendingDispatchFailed = true;
+                        updateLongEvaluationButtons();
+                        if (!longEvaluationRunning && pendingDispatchesFromLongEvaluation == 0
+                                && !activityClosing) {
+                            String eventResult = pendingDispatchFailed
+                                    ? "대기 중이던 JS 이벤트 처리 실패"
+                                    : "대기 중이던 JS 이벤트 처리 완료";
+                            runtimeStatus.setText(lastLongEvaluationCancelled
+                                    ? "취소 완료 · " + eventResult
+                                    : "준비됨 · " + eventResult);
+                        }
+                    });
+            if (!accepted && submittedDuringLongEvaluation) {
+                pendingDispatchesFromLongEvaluation--;
+                pendingDispatchFailed = true;
+                updateLongEvaluationButtons();
+            }
         });
         loopButton.setOnClickListener(view -> {
-            loopButton.setEnabled(false);
+            if (longEvaluationRunning || pendingDispatchesFromLongEvaluation != 0
+                    || runtimeSession == 0 || activityClosing) return;
+            lastLongEvaluationCancelled = false;
+            longEvaluationHadDispatch = false;
+            pendingDispatchFailed = false;
+            setLongEvaluationRunning(true);
             appendRuntimeLog("무한 JS 평가를 시작했습니다. 화면은 계속 탭할 수 있어야 합니다.");
-            submitRuntimeCall(() -> nativeSessionEval(runtimeSession,
+            runtimeStatus.setText("긴 JavaScript 실행 중 · UI 입력은 가능하고 JS 이벤트는 대기합니다");
+            boolean accepted = submitRuntimeCallWithCompletion(() -> nativeSessionEval(runtimeSession,
                     "while (true) { /* 취소 경로 검증 */ }".getBytes(StandardCharsets.UTF_8)),
-                    "long-eval", () -> loopButton.setEnabled(!activityClosing));
+                    "long-eval", (result, error) -> {
+                        String report = decode(result);
+                        lastLongEvaluationCancelled = error == null
+                                && report.startsWith("status=-8 ");
+                        setLongEvaluationRunning(false);
+                        if (!activityClosing) {
+                            if (error != null) {
+                                runtimeStatus.setText("긴 JavaScript 실행 오류 · " + error.getMessage());
+                            } else if (pendingDispatchesFromLongEvaluation != 0) {
+                                runtimeStatus.setText(lastLongEvaluationCancelled
+                                        ? "취소 완료 · 대기 중인 JS 이벤트 처리 중"
+                                        : "긴 JavaScript 종료 · 대기 중인 JS 이벤트 처리 중");
+                            } else if (longEvaluationHadDispatch) {
+                                String eventResult = pendingDispatchFailed
+                                        ? "대기 중이던 JS 이벤트 처리 실패"
+                                        : "대기 중이던 JS 이벤트 처리 완료";
+                                runtimeStatus.setText(lastLongEvaluationCancelled
+                                        ? "취소 완료 · " + eventResult
+                                        : "준비됨 · " + eventResult);
+                            } else if (lastLongEvaluationCancelled) {
+                                runtimeStatus.setText("취소 완료 · JavaScript가 종료되었습니다");
+                            } else if (report.startsWith("status=0 ")) {
+                                runtimeStatus.setText("준비됨 · 긴 JavaScript 실행 완료");
+                            } else {
+                                runtimeStatus.setText("긴 JavaScript 실행 실패 · " + report);
+                            }
+                        }
+                    });
+            if (!accepted) {
+                setLongEvaluationRunning(false);
+                runtimeStatus.setText("실행 대기열이 가득 차 긴 JavaScript를 시작하지 못했습니다");
+            }
         });
         cancelButton.setOnClickListener(view -> {
+            if (!longEvaluationRunning || cancelRequestPending || activityClosing) return;
             long handle = runtimeSession;
-            if (activityClosing || handle == 0) return;
+            if (handle == 0) return;
+            cancelRequestPending = true;
+            updateLongEvaluationButtons();
+            runtimeStatus.setText("JavaScript 취소 요청 중…");
             try {
                 runtimeControl.execute(() -> {
                     int result = nativeSessionCancel(handle);
                     appendRuntimeLog("취소 요청 status=" + result
                             + " (0=실행 중 취소 요청, 1=실행 중인 JS 없음)");
+                    runOnUiThread(() -> {
+                        if (activityClosing || !longEvaluationRunning || !cancelRequestPending) return;
+                        if (result == 0) {
+                            runtimeStatus.setText("취소 요청 접수 · JavaScript 종료 대기 중");
+                        } else if (result == 1) {
+                            cancelRequestPending = false;
+                            updateLongEvaluationButtons();
+                            runtimeStatus.setText("실행 중인 JavaScript가 없습니다 · 시작 중이면 다시 취소하세요");
+                        } else {
+                            cancelRequestPending = false;
+                            updateLongEvaluationButtons();
+                            runtimeStatus.setText("취소 요청 실패 · status=" + result);
+                        }
+                    });
                 });
             } catch (RejectedExecutionException error) {
+                cancelRequestPending = false;
+                updateLongEvaluationButtons();
+                runtimeStatus.setText("취소 요청을 제출하지 못했습니다");
                 appendRuntimeLog("취소 요청이 거부되었습니다: " + error.getMessage());
             }
         });
@@ -383,8 +478,7 @@ public final class MainActivity extends Activity {
             }
             runtimeStatus.setText("준비됨 · Android 실행기 스레드에서 V8을 소유합니다");
             dispatchButton.setEnabled(true);
-            loopButton.setEnabled(true);
-            cancelButton.setEnabled(true);
+            updateLongEvaluationButtons();
             delayedButton.setEnabled(true);
             lifecycleButton.setEnabled(true);
             if (runLifecycleGcAutomatically) runLifecycleCollectionProbe();
@@ -704,26 +798,60 @@ public final class MainActivity extends Activity {
         return button;
     }
 
-    private void submitRuntimeCall(java.util.concurrent.Callable<byte[]> call, String label) {
-        submitRuntimeCall(call, label, null);
+    private boolean submitRuntimeCall(java.util.concurrent.Callable<byte[]> call, String label) {
+        return submitRuntimeCall(call, label, null);
     }
 
-    private void submitRuntimeCall(java.util.concurrent.Callable<byte[]> call, String label,
-                                   Runnable onComplete) {
-        if (activityClosing) return;
+    private boolean submitRuntimeCall(java.util.concurrent.Callable<byte[]> call, String label,
+                                      Runnable onComplete) {
+        return submitRuntimeCallWithCompletion(call, label, (result, error) -> {
+            if (onComplete != null) onComplete.run();
+        });
+    }
+
+    private boolean submitRuntimeCallWithCompletion(
+            java.util.concurrent.Callable<byte[]> call, String label,
+            BiConsumer<byte[], Exception> onComplete) {
+        if (activityClosing) return false;
         try {
             runtimeCalls.execute(() -> {
+                byte[] result = null;
+                Exception failure = null;
                 try {
-                    byte[] result = call.call();
+                    result = call.call();
                     appendRuntimeLog(label + " " + decode(result));
                 } catch (Exception error) {
+                    failure = error;
                     appendRuntimeLog(label + " 오류: " + error.getMessage());
                 } finally {
-                    if (onComplete != null && !activityClosing) runOnUiThread(onComplete);
+                    if (onComplete != null && !activityClosing) {
+                        byte[] completedResult = result;
+                        Exception completedFailure = failure;
+                        runOnUiThread(() -> onComplete.accept(completedResult, completedFailure));
+                    }
                 }
             });
+            return true;
         } catch (RejectedExecutionException error) {
             appendRuntimeLog("호출 대기열이 가득 차거나 닫혀 작업을 거부했습니다 · " + label);
+            return false;
+        }
+    }
+
+    private void setLongEvaluationRunning(boolean running) {
+        longEvaluationRunning = running;
+        if (!running) cancelRequestPending = false;
+        updateLongEvaluationButtons();
+    }
+
+    private void updateLongEvaluationButtons() {
+        boolean sessionReady = runtimeSession != 0 && !activityClosing;
+        if (loopButton != null) {
+            loopButton.setEnabled(sessionReady && !longEvaluationRunning
+                    && pendingDispatchesFromLongEvaluation == 0);
+        }
+        if (cancelButton != null) {
+            cancelButton.setEnabled(sessionReady && longEvaluationRunning && !cancelRequestPending);
         }
     }
 

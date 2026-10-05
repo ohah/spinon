@@ -1,4 +1,4 @@
-use spinon_runtime::{RuntimeSession, TaskPriority};
+use spinon_runtime::{MemoryPressureLevel, RuntimeSession, TaskPriority};
 use std::ffi::{CStr, c_char};
 use std::ptr;
 
@@ -15,6 +15,15 @@ fn task_priority_from_abi(value: i32) -> Option<TaskPriority> {
         0 => Some(TaskPriority::UserBlocking),
         1 => Some(TaskPriority::UserVisible),
         2 => Some(TaskPriority::Background),
+        _ => None,
+    }
+}
+
+fn memory_pressure_level_from_abi(value: i32) -> Option<MemoryPressureLevel> {
+    match value {
+        0 => Some(MemoryPressureLevel::None),
+        1 => Some(MemoryPressureLevel::Moderate),
+        2 => Some(MemoryPressureLevel::Critical),
         _ => None,
     }
 }
@@ -183,6 +192,25 @@ pub unsafe extern "C" fn spinon_runtime_session_cancel(session: *mut SpinonRunti
     unsafe { &*session.cast::<RuntimeSession>() }.cancel()
 }
 
+/// 호스트가 선택한 메모리 압박 단계를 V8에 전달합니다. 자동 OS 신호 연결은 하지 않습니다.
+///
+/// # Safety
+/// `session`은 `NULL`이거나 아직 해제되지 않은 `spinon_runtime_session_new` 반환 포인터여야
+/// 합니다. 이 함수를 실행하는 동안 같은 포인터를 `spinon_runtime_session_free`에 넘기면 안 됩니다.
+#[unsafe(no_mangle)]
+pub unsafe extern "C" fn spinon_runtime_session_notify_memory_pressure(
+    session: *mut SpinonRuntimeSession,
+    level: i32,
+) -> i32 {
+    if session.is_null() {
+        return ERR_ARGUMENT;
+    }
+    let Some(level) = memory_pressure_level_from_abi(level) else {
+        return ERR_ARGUMENT;
+    };
+    unsafe { &*session.cast::<RuntimeSession>() }.notify_memory_pressure(level)
+}
+
 /// 모든 세션 호출이 끝난 뒤 세션을 종료합니다.
 #[unsafe(no_mangle)]
 pub unsafe extern "C" fn spinon_runtime_session_free(session: *mut SpinonRuntimeSession) {
@@ -193,8 +221,11 @@ pub unsafe extern "C" fn spinon_runtime_session_free(session: *mut SpinonRuntime
 
 #[cfg(test)]
 mod tests {
-    use super::{ERR_ARGUMENT, ERR_OUTPUT_TOO_SMALL, copy_report, task_priority_from_abi};
-    use spinon_runtime::TaskPriority;
+    use super::{
+        ERR_ARGUMENT, ERR_OUTPUT_TOO_SMALL, copy_report, memory_pressure_level_from_abi,
+        task_priority_from_abi,
+    };
+    use spinon_runtime::{MemoryPressureLevel, TaskPriority};
     use std::ptr;
 
     #[test]
@@ -203,6 +234,24 @@ mod tests {
         assert_eq!(task_priority_from_abi(1), Some(TaskPriority::UserVisible));
         assert_eq!(task_priority_from_abi(2), Some(TaskPriority::Background));
         assert_eq!(task_priority_from_abi(3), None);
+    }
+
+    #[test]
+    fn c_abi_memory_pressure_values_match_the_runtime_levels() {
+        assert_eq!(
+            memory_pressure_level_from_abi(0),
+            Some(MemoryPressureLevel::None)
+        );
+        assert_eq!(
+            memory_pressure_level_from_abi(1),
+            Some(MemoryPressureLevel::Moderate)
+        );
+        assert_eq!(
+            memory_pressure_level_from_abi(2),
+            Some(MemoryPressureLevel::Critical)
+        );
+        assert_eq!(memory_pressure_level_from_abi(3), None);
+        assert_eq!(memory_pressure_level_from_abi(-1), None);
     }
 
     #[test]

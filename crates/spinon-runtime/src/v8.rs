@@ -39,6 +39,10 @@ unsafe extern "C" {
         source: *const c_char,
     ) -> i32;
     pub(crate) fn spinon_v8_runtime_dispatch(runtime: *mut SpinonV8Runtime, node_id: i32) -> i32;
+    pub(crate) fn spinon_v8_runtime_notify_memory_pressure(
+        runtime: *mut SpinonV8Runtime,
+        level: i32,
+    ) -> i32;
     pub(crate) fn spinon_v8_runtime_last_error(runtime: *mut SpinonV8Runtime) -> *const c_char;
     pub(crate) fn spinon_v8_runtime_last_collection_error(
         runtime: *mut SpinonV8Runtime,

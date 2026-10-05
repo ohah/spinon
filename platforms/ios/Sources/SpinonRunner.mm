@@ -273,6 +273,17 @@
   return status;
 }
 
++ (int32_t)notifyRuntimeMemoryPressure:(uint64_t)handle level:(int32_t)level {
+  if (handle == 0) return -1;
+  const int32_t status = spinon_runtime_session_notify_memory_pressure(
+      reinterpret_cast<SpinonRuntimeSession *>(static_cast<uintptr_t>(handle)),
+      static_cast<SpinonMemoryPressureLevel>(level));
+  os_log(OS_LOG_DEFAULT,
+         "SPINON_RUNTIME_MEMORY_PRESSURE level=%{public}d status=%{public}d",
+         level, status);
+  return status;
+}
+
 + (void)freeRuntimeSession:(uint64_t)handle {
   if (handle == 0) return;
   os_log(OS_LOG_DEFAULT, "SPINON_RUNTIME_SESSION_FREE start");

@@ -39,16 +39,22 @@ int32_t spinon_taffy_r10_run(float width, float height, float scale,
    기본 eval은 user-visible, 기본 dispatch는 user-blocking입니다.
    우선순위 큐는 높은 등급을 먼저 고르고 같은 등급은 FIFO로 처리합니다.
    background는 명시적 우선순위 함수에서만 선택할 수 있습니다.
+   메모리 압박 통지는 호출자가 선택한 단계를 V8에 전달하며 OS 콜백·임계값·시점은 연결하지 않습니다.
    성공 0, 인자 오류 -1, 출력 버퍼 부족 -3, JS 오류 -4, 큐 포화 -5,
    종료 중 -6, 실행기 오류 -7, 취소된 JS -8을 반환합니다.
    cancel은 취소 요청 0, 실행 중인 JS 없음 1, 오류는 음수를 반환합니다.
-   free 전에 eval/dispatch/cancel 호출을 모두 끝내야 합니다. */
+   free 전에 eval/dispatch/cancel/memory-pressure 호출을 모두 끝내야 합니다. */
 typedef struct SpinonRuntimeSession SpinonRuntimeSession;
 typedef enum SpinonTaskPriority {
   SPINON_TASK_PRIORITY_USER_BLOCKING = 0,
   SPINON_TASK_PRIORITY_USER_VISIBLE = 1,
   SPINON_TASK_PRIORITY_BACKGROUND = 2,
 } SpinonTaskPriority;
+typedef enum SpinonMemoryPressureLevel {
+  SPINON_MEMORY_PRESSURE_NONE = 0,
+  SPINON_MEMORY_PRESSURE_MODERATE = 1,
+  SPINON_MEMORY_PRESSURE_CRITICAL = 2,
+} SpinonMemoryPressureLevel;
 SpinonRuntimeSession *spinon_runtime_session_new(char *output,
                                                  size_t output_capacity);
 int32_t spinon_runtime_session_eval(SpinonRuntimeSession *session,
@@ -64,6 +70,11 @@ int32_t spinon_runtime_session_dispatch_with_priority(
     SpinonRuntimeSession *session, int32_t node_id,
     SpinonTaskPriority priority, char *output, size_t output_capacity);
 int32_t spinon_runtime_session_cancel(SpinonRuntimeSession *session);
+/* 성공 0, 인자 또는 알 수 없는 단계 -1, 종료 중·종료된 세션 -6.
+   JavaScript 취소·이벤트 실행을 요청하지 않으며, GC 수행 시점을 보장하지 않습니다.
+   진행 중인 세션 호출과 free의 동시 실행은 금지합니다. */
+int32_t spinon_runtime_session_notify_memory_pressure(
+    SpinonRuntimeSession *session, SpinonMemoryPressureLevel level);
 void spinon_runtime_session_free(SpinonRuntimeSession *session);
 
 #ifdef __cplusplus
