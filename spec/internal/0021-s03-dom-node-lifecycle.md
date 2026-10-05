@@ -1,6 +1,6 @@
 # 0021 · S03.3 DOM 노드와 JS wrapper 수명 계약
 
-**인터페이스 버전:** 0.1.0-draft · **상태:** Rust 회수 경로와 V8 weak wrapper scan 연결 구현 · **Android·iOS 기본·반복 simulator fixture:** 통과 · **제품 완료:** 미완료
+**인터페이스 버전:** 0.1.0-draft · **상태:** Rust 회수 경로와 V8 weak wrapper scan 연결 구현 · **Android·iOS 16,385개 동적 registry fixture:** 통과 · **제품 완료:** 미완료
 
 **상태 대장:** S03.3, J10 일부 · **기준 시제품:** [0020 S03.2 제한 DOM façade](0020-s03-dom-facade.md)
 **계획:** [S03.3 노드 수명 관리](../../plan/dom-node-lifecycle.md) · **결정성 fixture:** [node-lifecycle-v1.rs](../../tests/fixtures/dom/s03/node-lifecycle-v1.rs), [node-lifecycle-limits-v1.rs](../../tests/fixtures/dom/s03/node-lifecycle-limits-v1.rs)
@@ -8,7 +8,7 @@
 
 ## 목적과 범위
 
-이 문서는 Rust HostDocument와 V8 JavaScript heap 사이의 노드 생존, wrapper 정체성, 약한 handle 검사, 자원 계측과 세션 종료 계약을 고정한다. S03.2의 고정 노드 수 quota는 동적 저장소와 ID 범위 검사로 대체한다. Rust 회수 callback과 V8 weak wrapper scan을 연결했고 Android·iOS 실제 V8 기본·반복 fixture에서 고정 입력을 검증했다. 별도 진단으로 활성 평가·대기 명령·닫힌 세션 제출의 제한된 종료 경합도 확인했다. 16,384개를 넘는 runtime 회수 경로, 최대 scan 비용, listener·external root lease와 raw C ABI 포인터를 동시 해제하는 경로는 여전히 미검증 또는 금지 경계이며, 이 내부 경로는 공개 DOM 지원 완료를 뜻하지 않는다.
+이 문서는 Rust HostDocument와 V8 JavaScript heap 사이의 노드 생존, wrapper 정체성, 약한 handle 검사, 자원 계측과 세션 종료 계약을 고정한다. S03.2의 고정 노드 수 quota는 동적 저장소와 ID 범위 검사로 대체한다. Rust 회수 callback과 V8 weak wrapper scan을 연결했고 Android·iOS 실제 V8 기본·반복 fixture에서 고정 입력을 검증했다. Rust HostDocument·FFI collector와 실제 V8 wrapper registry는 각각 16,385개 규모의 create/scan/sweep·동적 output buffer 확장을 검증했다. 단일 시뮬레이터 scan 관측은 성능 보장이나 전체 최대 비용 특성화가 아니며, 동적 buffer 할당 실패 주입, listener·external root lease, raw C ABI 포인터 동시 해제는 여전히 미검증 또는 금지 경계다. 이 내부 경로는 공개 DOM 지원 완료를 뜻하지 않는다.
 
 S03.3 구현은 Rust가 노드 저장소와 mark-and-sweep을 소유하고, V8 C++ adapter가 자동 reset되는 약한 wrapper handle을 안전 지점에서 검사하는 경계를 따른다. V8 unified heap, 별도 Rust GC, 앱에 노출되는 JSI 유사 API는 이 범위에서 사용하지 않는다.
 
@@ -53,13 +53,13 @@ HostDocument의 BTreeMap 보유 자체는 root가 아니다. 노드 관계, wrap
 
 - V8 weak wrapper registry는 isolate별 C++ runtime이 소유한다. JS의 강한 Map으로 wrapper를 보관하지 않는다. wrapper에서 ID를 찾는 WeakMap은 사용할 수 있으나, 그것을 node-to-wrapper canonical cache로 간주하지 않는다.
 - wrapper `Global<Object>`에는 callback 인자가 없는 `SetWeak()`를 사용한다. V8은 GC가 객체를 도달 불가로 판정하면 해당 phantom handle을 자동으로 reset한다. callback 인자형 `SetWeak()`은 최선 노력 방식이며 호출 시점이나 호출 자체가 보장되지 않는다. callback을 쓰면 첫 단계에서 해당 handle을 `Reset()`해야 하고, 그 뒤에는 V8 API를 호출할 수 없다. 따라서 callback을 Rust 노드 회수의 필수 신호로 사용하지 않는다. 아래는 저장소가 고정한 V8 revision `7b50b62cb18f28617959e8452e2cd18195b38bcf`의 원본이다. [`PersistentBase::SetWeak()` 계약](https://chromium.googlesource.com/v8/v8.git/+/7b50b62cb18f28617959e8452e2cd18195b38bcf/include/v8-persistent-handle.h) · [약한 handle 자동 reset 구현](https://chromium.googlesource.com/v8/v8.git/+/7b50b62cb18f28617959e8452e2cd18195b38bcf/src/handles/global-handles.cc) · [`IsEmpty()` 계약](https://chromium.googlesource.com/v8/v8.git/+/7b50b62cb18f28617959e8452e2cd18195b38bcf/include/v8-handle-base.h)
-- 가장 바깥 JS 작업과 microtask checkpoint가 끝난 owner 안전 지점마다 C++가 전체 weak registry를 선형 검사한다. `Global::IsEmpty()`인 wrapper ID만 root snapshot에서 제외하고 live wrapper의 façade ID를 Rust에 넘긴다. Rust는 각 ID를 현재 문서의 `HostNodeHandle`로 확인한 뒤 HostRoot와 함께 도달성을 계산한다. 이 root snapshot을 Rust 계획·commit이 끝날 때까지 고정하며 중간에 JS/V8을 재진입하거나 wrapper를 바꾸지 않는다. empty wrapper의 ID↔handle 매핑은 노드가 다른 root로 살아 있는 동안 보존하고, 노드가 실제 sweep될 때 함께 제거한다. Registry와 root snapshot에는 고정 노드 개수 상한을 두지 않고 필요량에 따라 확장한다. 외부 root ID 결과 buffer가 작으면 Rust가 필요 크기를 반환하고 C++가 buffer를 확장해 재호출한다. 매 safe point 검사는 현재 registry 전체에 선형 비례하며 최대 규모 비용은 검증 항목이다.
+- 가장 바깥 JS 작업과 microtask checkpoint가 끝난 owner 안전 지점마다 C++가 전체 weak registry를 선형 검사한다. `Global::IsEmpty()`인 wrapper ID만 root snapshot에서 제외하고 live wrapper의 façade ID를 Rust에 넘긴다. Rust는 각 ID를 현재 문서의 `HostNodeHandle`로 확인한 뒤 HostRoot와 함께 도달성을 계산한다. 이 root snapshot을 Rust 계획·commit이 끝날 때까지 고정하며 중간에 JS/V8을 재진입하거나 wrapper를 바꾸지 않는다. empty wrapper의 ID↔handle 매핑은 노드가 다른 root로 살아 있는 동안 보존하고, 노드가 실제 sweep될 때 함께 제거한다. Registry와 root snapshot에는 고정 노드 개수 상한을 두지 않고 필요량에 따라 확장한다. 외부 root ID 결과 buffer가 작으면 Rust가 필요 크기를 반환하고 C++가 buffer를 확장해 재호출한다. 실제 V8 simulator fixture에서 16,394개 live wrapper를 한 번씩 scan했으며 측정값은 [대량 registry 근거](evidence/s03-dynamic-wrapper-registry-2026-10-05.md)에 둔다. 이 단일 표본은 최대 비용이나 프레임 영향을 설명하지 않으므로 비용 특성화는 남는다.
 - 안전 지점 밖에서 Rust sweep을 실행하지 않는다. 중첩 실행 중 재진입한 회수 요청은 pending 표시만 남기며 재귀 실행하지 않는다. Rust가 전체 mark set·삭제 목록·revision 결과를 준비해 commit 성공을 반환한 뒤에만 C++가 빈 weak registry slot을 제거한다. 실패하면 Rust 상태와 C++ registry 항목을 보존하고 다음 안전 지점에 재시도한다.
 - V8 GC 시점 자체는 통제하지 않는다. 객체가 JS에서 도달 불가해도 GC가 아직 실행되지 않았으면 weak handle은 비어 있지 않을 수 있고, 그 노드는 보수적으로 유지된다. quota 오류 뒤에 GC나 자동 재시도를 강제하지 않는다.
 
 ### 동적 registry와 검사 실패
 
-- isolate마다 `facade ID → Global<Object>` registry와 동적으로 확장되는 root/reclaimed ID vector를 둔다. 새 weak handle은 메모리 할당에 성공하면 등록한다. root snapshot은 `std::vector`의 성장 정책을 따르고, 회수 결과 buffer는 Rust가 알린 필요 크기까지 여유 용량을 기하급수적으로 확장한다. 이 두 buffer의 payload byte 수와 registry entry 수를 runtime 진단에 기록한다. map allocator overhead와 Rust tree/string 전체 byte 수는 이 진단에 포함되지 않는다.
+- isolate마다 `facade ID → Global<Object>` registry와 동적으로 확장되는 root/reclaimed ID vector를 둔다. 새 weak handle은 메모리 할당에 성공하면 등록한다. root snapshot은 `std::vector`의 성장 정책을 따르고, 회수 결과 buffer는 Rust가 알린 필요 크기까지 여유 용량을 기하급수적으로 확장한다. 두 vector는 현재 구현에서 용량을 줄이지 않고 isolate 종료까지 peak allocation을 유지한다. payload byte 수와 registry entry 수를 runtime 진단에 기록한다. map allocator overhead와 Rust tree/string 전체 byte 수는 이 진단에 포함되지 않는다.
 - C++ root buffer 또는 Rust 회수 임시 buffer를 확보하지 못하면 sweep을 연기하고 문서·문자열·revision·registry 상태를 유지한다. 결과 buffer가 부족하다는 응답은 Rust가 collection commit 전에 반환하므로, buffer를 확장한 뒤 재호출해도 첫 호출에서 상태가 변경되지 않는다. Rust BTreeMap 노드 할당은 표준 allocator의 fallible API를 제공하지 않으므로 프로세스 전체 메모리 고갈이 복구 가능한 오류로 항상 전달된다고 보장하지 않는다.
 - 중복된 `HostNodeHandle`/다른 generation, 잘못된 출력 크기·정렬은 fail-closed하고 세션 진단에 기록한다. scanner 또는 collector의 일시 할당 실패는 다음 safe point에서 다시 시도할 수 있다. 식별 ID 공간 소진은 checked increment 오류로 닫고 ID를 재사용하지 않는다.
 - 지연이나 GC 미실행은 실제 회수를 늦출 수 있으나 살아 있는 wrapper의 조기 회수를 허용하지 않는다. 런타임 진단은 전체 scan 횟수, 마지막 scan의 단조시계 시작 시각(ns)·소요 시간(μs), scanned/live/empty handle 수, root·reclaimed buffer payload bytes, 누적 deferred 횟수와 마지막 오류를 세션 종료까지 보존한다. Rust 문서 진단의 `document_nodes`와 `document_string_units`도 함께 기록한다. 성공한 scan은 마지막 오류를 지우지 않는다.
@@ -123,17 +123,17 @@ HostDocument의 BTreeMap 보유 자체는 root가 아니다. 노드 관계, wrap
 
 공통 fixture는 [node-lifecycle-v1.rs](../../tests/fixtures/dom/s03/node-lifecycle-v1.rs)다. Rust integration test는 고정 노드·부모·root·문자열 입력에서 연결 성분 결과를 확인하고 weak handle scan, 새 wrapper 객체와 기존 façade ID의 분리, ID 공간 소진, foreign session/document generation·missing node root, malformed parent/child/root/registry 입력의 fail-closed 동작과 failure transaction의 기대 상태를 검사한다. reference model에서 성공 sweep은 document/render revision을 바꾸지 않으며 성공 노드 생성만 document revision을 올린다. fixture 기준은 이 문서의 불변 조건과 S03.2 HostDocument 관계 조회다. 브라우저가 제공하는 native GC 의미를 복제한다고 주장하지 않는다.
 
-별도 Rust integration fixture는 test-only reference model이다. 새 `HostDocument` 제품 코드 검사는 같은 고정 tree fixture의 root 생존 집합·회수 ID·문자열 계수·revision을 실제 Rust core와 bridge에 대조한다. 이 검사만으로 V8 GC 또는 자동 weak-handle reset을 증명하지 않는다. pinned V8 원본은 callback 없는 `SetWeak()`가 도달 불가 객체를 GC가 판정한 뒤 handle을 자동 reset한다고 명시한다. `SPINON_ENABLE_S03_DOM_GC_FIXTURE=1` Android·iOS 검증 앱은 강제 full GC 다음 safe point scan, HostRoot·live detached wrapper 보존, orphan WeakRef 제거, wrapper 재생성 뒤 identity를 확인했다([기존 실행 근거](evidence/s03-v8-weak-wrapper-2026-10-04.md)). 이어진 실제 V8 fixture는 현재 native callback closure root, callback 교체 후 회수, 6회 반복 create/detach/drop 뒤 node·UTF-16 문자열·live weak wrapper 기준선 복귀를 확인했다([반복 실행 근거](evidence/s03-repeat-lifecycle-2026-10-05.md)). 프로세스 RSS·V8 retaining path·최대 scan 비용·shutdown race·실기기는 이 결과로 검증하지 않았다.
+별도 Rust integration fixture는 test-only reference model이다. 새 `HostDocument` 제품 코드 검사는 같은 고정 tree fixture의 root 생존 집합·회수 ID·문자열 계수·revision을 실제 Rust core와 bridge에 대조한다. 이 검사만으로 V8 GC 또는 자동 weak-handle reset을 증명하지 않는다. pinned V8 원본은 callback 없는 `SetWeak()`가 도달 불가 객체를 GC가 판정한 뒤 handle을 자동 reset한다고 명시한다. `SPINON_ENABLE_S03_DOM_GC_FIXTURE=1` Android·iOS 검증 앱은 강제 full GC 다음 safe point scan, HostRoot·live detached wrapper 보존, orphan WeakRef 제거, wrapper 재생성 뒤 identity를 확인했다([기존 실행 근거](evidence/s03-v8-weak-wrapper-2026-10-04.md)). 이어진 실제 V8 fixture는 현재 native callback closure root, callback 교체 후 회수, 6회 반복 create/detach/drop 뒤 node·UTF-16 문자열·live weak wrapper 기준선 복귀를 확인했다([반복 실행 근거](evidence/s03-repeat-lifecycle-2026-10-05.md)). 최신 대량 fixture는 wrapper 16,385개를 보유한 상태의 V8 registry 크기 16,394개에서 scan하고, 분리 후 16,385개 빈 weak Global을 회수해 Rust 노드·문자열·live wrapper 기준선으로 복귀했다([Android·iOS 실행 로그와 화면](evidence/s03-dynamic-wrapper-registry-2026-10-05.md)). 관측 scan은 Android 15,273μs·iOS 7,067μs의 단일 simulator 표본이다. payload capacity는 root 131,072B·회수 결과 65,580B였고 vector capacity는 isolate 종료까지 유지된다. 이는 비용 곡선, V8 heap retaining path, RSS, 할당 실패 주입, shutdown race, 실기기를 검증한 결과가 아니다.
 
 ## 남은 구현·검증 범위
 
 - C++ V8 adapter의 callback 없는 약한 `Global<Object>` registry와 Rust 회수 callback을 outer eval/dispatch owner safe point에 연결했다. 검증 전용 강제 GC entry는 fixture 빌드에만 포함한다.
 - Android·iOS 시뮬레이터의 고정 실제 V8 실행에서 기본 root·wrapper fixture와 별도 closure·반복 fixture를 확인했다. 각 실행 evidence가 뒷받침하는 입력·환경 범위만 검증 결과로 취급한다.
 - 실제 V8 Android·iOS 시뮬레이터에서 무한 평가 중 대기 eval 세 건을 접수하고 별도 제어 thread에서 종료했다. 활성 평가는 `-8`, 대기 명령과 종료 후 eval/dispatch는 `-6`으로 닫혔고, runtime pointer 해제·worker join·반복 종료를 확인했다([S03.3 종료 경합 기록](evidence/s03-shutdown-2026-10-05.md)). unwind 테스트에서는 작업자 panic 뒤 대기 호출을 `-7`로 거부하고 stale runtime pointer를 지우는 동작도 확인한다. 이 경우 panic 난 owner의 V8 자원을 다른 thread에서 해제하지 않아 누수가 남을 수 있다. raw C ABI 포인터 `free`와 진행 중 FFI call의 동시 실행은 기존 계약으로 금지하며 실제 시뮬레이터 probe에서 실행하지 않는다. probe timeout은 실패를 보고하고 취소를 다시 요청하지만 OS thread를 강제 종료하지 않는다. 비동기 native host 작업·Promise·강제 프로세스 종료도 범위 밖이다.
-- 최대 registry 크기에서의 scan 비용은 별도 검증이 필요하다.
+- 16,394개 live wrapper에서 한 번씩 scan 시간과 vector payload capacity를 관측했다. 기기·입력별 비용 곡선과 프레임 영향, V8 heap 및 RSS 계정은 별도 검증이 필요하다.
 - 작은 고정 반복 입력에서 node·UTF-16 string unit·live weak wrapper 수가 기준선으로 복귀하는 것은 확인했다. 합의한 quota 경계의 압력 동작, 장기 반복, 실제 byte·RSS와 회수 재시도 비용은 미검증이다.
 - 현재 native callback strong root의 단일 closure 수명을 확인했다. DOM listener·external root lease·임의 closure graph의 root 관계와 V8 heap snapshot retaining path는 별도로 검증한다.
-- 이 문서와 상태 대장을 반영하기 전에는 S03.3, J10 또는 공개 DOM 지원을 완료로 표시하지 않는다.
+- 동적 C++ buffer 할당 실패 주입, listener/external root lease, 장기 반복·실기기 검증 전에는 S03.3, J10 또는 공개 DOM 지원을 완료로 표시하지 않는다.
 
 ## 참고 경계
 

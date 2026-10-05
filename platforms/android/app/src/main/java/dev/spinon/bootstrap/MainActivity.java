@@ -34,6 +34,7 @@ public final class MainActivity extends Activity {
     private static final int LIFECYCLE_STRESS_CYCLES_PER_ROUND = 32;
     private static final int LIFECYCLE_STRESS_NODES_PER_ROUND =
             LIFECYCLE_STRESS_CYCLES_PER_ROUND * 2;
+    private static final int LIFECYCLE_LARGE_REGISTRY_NODES = 16_385;
 
     static {
         System.loadLibrary("spinon_bootstrap");
@@ -482,6 +483,49 @@ public final class MainActivity extends Activity {
                     && reportMatchesResourceBaseline(callbackReleaseStable, baselineNodes,
                             baselineStringUnits, baselineWrapperHandles);
 
+            String largeSetup = callLifecycleFixture(handle, "setupLargeRegistry");
+            String largeVerify = callLifecycleFixture(handle, "verifyLargeRegistry");
+            long expectedLargeNodes = baselineNodes + LIFECYCLE_LARGE_REGISTRY_NODES;
+            long expectedLargeWrappers = baselineWrapperHandles
+                    + LIFECYCLE_LARGE_REGISTRY_NODES;
+            long largeSetupScanUs = reportLongField(
+                    largeSetup, "document_collection_last_scan_us");
+            long largeSetupRootBufferBytes = reportLongField(
+                    largeSetup, "document_collection_wrapper_root_buffer_bytes");
+            boolean largeRegistryRetained = largeSetup.startsWith("status=0 ")
+                    && largeVerify.startsWith("status=0 ")
+                    && reportHasHealthyCollection(largeSetup)
+                    && reportHasHealthyCollection(largeVerify)
+                    && reportLongField(largeSetup, "document_nodes") == expectedLargeNodes
+                    && reportLongField(largeSetup, "document_collection_scanned_handles")
+                            == expectedLargeWrappers
+                    && reportLongField(largeSetup, "document_collection_live_handles")
+                            == expectedLargeWrappers
+                    && reportLongField(largeSetup, "document_collection_empty_handles") == 0
+                    && largeSetupRootBufferBytes >= expectedLargeWrappers * Integer.BYTES
+                    && largeSetupScanUs >= 0;
+            String largeRelease = callLifecycleFixture(handle, "releaseLargeRegistry");
+            long largeEmptyWrappers = reportLongField(
+                    largeRelease, "document_collection_empty_handles");
+            long largeReclaimedNodeBufferBytes = reportLongField(
+                    largeRelease, "document_collection_reclaimed_node_buffer_bytes");
+            String largeReleaseVerify = callLifecycleFixture(
+                    handle, "verifyLargeRegistryReleased");
+            String largeReleaseStable = decode(nativeSessionEval(handle, new byte[0]));
+            boolean largeRegistryReleased = largeRelease.startsWith("status=0 ")
+                    && largeReleaseVerify.startsWith("status=0 ")
+                    && reportHasHealthyCollection(largeRelease)
+                    && reportHasHealthyCollection(largeReleaseVerify)
+                    && largeEmptyWrappers == LIFECYCLE_LARGE_REGISTRY_NODES
+                    && reportLongField(largeRelease, "document_collection_scanned_handles")
+                            == expectedLargeWrappers
+                    && reportLongField(largeRelease, "document_collection_live_handles")
+                            == baselineWrapperHandles
+                    && largeReclaimedNodeBufferBytes
+                            >= LIFECYCLE_LARGE_REGISTRY_NODES * Integer.BYTES
+                    && reportMatchesResourceBaseline(largeReleaseStable, baselineNodes,
+                            baselineStringUnits, baselineWrapperHandles);
+
             int baselineReturnRounds = 0;
             long maximumEmptyWrappers = 0;
             for (int round = 0; round < LIFECYCLE_STRESS_ROUNDS; round++) {
@@ -523,10 +567,16 @@ public final class MainActivity extends Activity {
                     && reportScanCountsConsistent(callbackRelease)
                     && reportScanCountsConsistent(callbackReleaseVerify)
                     && reportScanCountsConsistent(callbackReleaseStable)
+                    && reportScanCountsConsistent(largeSetup)
+                    && reportScanCountsConsistent(largeVerify)
+                    && reportScanCountsConsistent(largeRelease)
+                    && reportScanCountsConsistent(largeReleaseVerify)
+                    && reportScanCountsConsistent(largeReleaseStable)
                     && baselineReturnRounds == LIFECYCLE_STRESS_ROUNDS
                     && reportScanCountsConsistent(finalReport);
             boolean passed = rootCasesPassed && initialBaselineReturned
                     && callbackClosureRootPassed && callbackClosureReleased
+                    && largeRegistryRetained && largeRegistryReleased
                     && repeatedBaseline && scanStatsPassed;
             lifecycleGcPassed = passed;
             return ("status=" + (passed ? "0" : "-1")
@@ -536,6 +586,13 @@ public final class MainActivity extends Activity {
                     + " orphan_weakref_cleared=" + (rootCasesPassed ? "PASS" : "FAIL")
                     + " callback_closure_root=" + (callbackClosureRootPassed ? "PASS" : "FAIL")
                     + " callback_closure_release=" + (callbackClosureReleased ? "PASS" : "FAIL")
+                    + " large_registry_retained=" + (largeRegistryRetained ? "PASS" : "FAIL")
+                    + " large_registry_released=" + (largeRegistryReleased ? "PASS" : "FAIL")
+                    + " large_registry_nodes=" + LIFECYCLE_LARGE_REGISTRY_NODES
+                    + " large_registry_empty_wrappers=" + largeEmptyWrappers
+                    + " large_registry_scan_us=" + largeSetupScanUs
+                    + " large_registry_root_buffer_bytes=" + largeSetupRootBufferBytes
+                    + " large_registry_reclaimed_buffer_bytes=" + largeReclaimedNodeBufferBytes
                     + " initial_baseline_return=" + (initialBaselineReturned ? "PASS" : "FAIL")
                     + " repeated_baseline=" + (repeatedBaseline ? "PASS" : "FAIL")
                     + " baseline_return_rounds=" + baselineReturnRounds + "/"

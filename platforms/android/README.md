@@ -55,7 +55,7 @@ adb shell am start -n dev.spinon.bootstrap/.MainActivity --ez spinon_dom_gc true
 adb logcat -s SpinonBootstrap:I | rg 'DOM-GC 검증'
 ```
 
-통과 결과는 HostRoot 트리와 살아 있는 detached 자손 wrapper를 보존하고, 연결된 Text wrapper의 WeakRef가 실제 GC 뒤 비워진 다음 조회로 wrapper가 재생성되는지 확인합니다. orphan WeakRef와 `document_nodes` 감소, collector 오류·poison 상태, scanned/live/empty handle 계수도 검사합니다. 기본 빌드는 hook과 버튼을 제외하며 결과 폴더가 이미 있으면 verifier는 기존 로그를 덮어쓰지 않습니다. 반복 메모리 사용량, closure root, shutdown 경합, 실제 기기는 이 단일 시뮬레이터 probe의 범위가 아닙니다.
+통과 결과는 HostRoot 트리와 살아 있는 detached 자손 wrapper를 보존하고, 연결된 Text wrapper의 WeakRef가 실제 GC 뒤 비워진 다음 조회로 wrapper가 재생성되는지 확인합니다. orphan WeakRef와 `document_nodes` 감소, collector 오류·poison 상태, scanned/live/empty handle 계수도 검사합니다. 기본 빌드는 hook과 버튼을 제외하며 결과 폴더가 이미 있으면 verifier는 기존 로그를 덮어쓰지 않습니다. 공유 Android·iOS verifier는 추가로 16,385개 wrapper 생성·scan·sweep과 자원 기준선 복귀를 확인합니다([대량 registry 근거](../../spec/internal/evidence/s03-dynamic-wrapper-registry-2026-10-05.md)). 해당 Android 수치는 CFI를 끈 에뮬레이터 전용 V8 빌드이며 실기기나 배포 구성 결과가 아닙니다. 한 번의 scan 시간은 성능 벤치마크가 아닙니다. 할당 실패 주입, 장기 반복, closure root, shutdown 경합, 실제 기기는 별도 범위입니다.
 
 Android·iOS 시뮬레이터를 함께 빌드·실행하고 원본 log와 캡처를 저장하려면 `mise exec -- bun run verify:s03-dom-lifecycle:simulators`를 실행합니다. 기본 출력 위치는 `build/spinon/dom-lifecycle-validation/` 아래의 고유 실행 폴더입니다.
 

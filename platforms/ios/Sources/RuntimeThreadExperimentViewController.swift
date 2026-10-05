@@ -2,6 +2,7 @@ import UIKit
 import OSLog
 
 final class RuntimeThreadExperimentViewController: UIViewController {
+    private let lifecycleLargeRegistryNodeCount = 16_385
     private let automaticallyRun: Bool
     private let runPriorityProbe: Bool
     private let runShutdownProbe: Bool
@@ -336,6 +337,49 @@ final class RuntimeThreadExperimentViewController: UIViewController {
                 && self.matchesResourceBaseline(callbackReleaseStable, nodes: baselineNodes,
                     stringUnits: baselineStringUnits, wrapperHandles: baselineWrapperHandles)
 
+            let largeSetup = self.callLifecycleFixture(handle, "setupLargeRegistry")
+            let largeVerify = self.callLifecycleFixture(handle, "verifyLargeRegistry")
+            let expectedLargeNodes = baselineNodes + self.lifecycleLargeRegistryNodeCount
+            let expectedLargeWrappers = baselineWrapperHandles
+                + self.lifecycleLargeRegistryNodeCount
+            let largeSetupScanUs = self.integerField(
+                "document_collection_last_scan_us", in: largeSetup)
+            let largeSetupRootBufferBytes = self.integerField(
+                "document_collection_wrapper_root_buffer_bytes", in: largeSetup)
+            let largeRegistryRetained = largeSetup.hasPrefix("status=0 ")
+                && largeVerify.hasPrefix("status=0 ")
+                && self.collectionIsHealthy(largeSetup)
+                && self.collectionIsHealthy(largeVerify)
+                && self.integerField("document_nodes", in: largeSetup) == expectedLargeNodes
+                && self.integerField("document_collection_scanned_handles", in: largeSetup)
+                    == expectedLargeWrappers
+                && self.integerField("document_collection_live_handles", in: largeSetup)
+                    == expectedLargeWrappers
+                && self.integerField("document_collection_empty_handles", in: largeSetup) == 0
+                && largeSetupRootBufferBytes >= expectedLargeWrappers * MemoryLayout<Int32>.size
+                && largeSetupScanUs >= 0
+            let largeRelease = self.callLifecycleFixture(handle, "releaseLargeRegistry")
+            let largeEmptyWrappers = self.integerField(
+                "document_collection_empty_handles", in: largeRelease)
+            let largeReclaimedNodeBufferBytes = self.integerField(
+                "document_collection_reclaimed_node_buffer_bytes", in: largeRelease)
+            let largeReleaseVerify = self.callLifecycleFixture(
+                handle, "verifyLargeRegistryReleased")
+            let largeReleaseStable = SpinonRunner.evalRuntimeSession(handle, source: "") ?? "응답 없음"
+            let largeRegistryReleased = largeRelease.hasPrefix("status=0 ")
+                && largeReleaseVerify.hasPrefix("status=0 ")
+                && self.collectionIsHealthy(largeRelease)
+                && self.collectionIsHealthy(largeReleaseVerify)
+                && largeEmptyWrappers == self.lifecycleLargeRegistryNodeCount
+                && self.integerField("document_collection_scanned_handles", in: largeRelease)
+                    == expectedLargeWrappers
+                && self.integerField("document_collection_live_handles", in: largeRelease)
+                    == baselineWrapperHandles
+                && largeReclaimedNodeBufferBytes
+                    >= self.lifecycleLargeRegistryNodeCount * MemoryLayout<Int32>.size
+                && self.matchesResourceBaseline(largeReleaseStable, nodes: baselineNodes,
+                    stringUnits: baselineStringUnits, wrapperHandles: baselineWrapperHandles)
+
             var baselineReturnRounds = 0
             var maximumEmptyWrappers = 0
             for _ in 0..<6 {
@@ -368,10 +412,13 @@ final class RuntimeThreadExperimentViewController: UIViewController {
             let scanStatsPassed = [reset, baselineFirst, baseline, rootSetup, rootVerify,
                 rootCleanup, rootCleanupStable, callbackSetup, callbackDispatch,
                 callbackRootVerify, callbackRelease, callbackReleaseVerify,
-                callbackReleaseStable, finalReport].allSatisfy(self.scanCountsAreConsistent)
+                callbackReleaseStable, largeSetup, largeVerify, largeRelease,
+                largeReleaseVerify, largeReleaseStable, finalReport]
+                .allSatisfy(self.scanCountsAreConsistent)
                 && baselineReturnRounds == 6
             let passed = rootCasesPassed && initialBaselineReturned
-                && callbackClosureRootPassed && callbackClosureReleased && repeatedBaseline
+                && callbackClosureRootPassed && callbackClosureReleased
+                && largeRegistryRetained && largeRegistryReleased && repeatedBaseline
                 && scanStatsPassed
             DispatchQueue.main.async {
                 guard !self.isClosing else { return }
@@ -379,6 +426,8 @@ final class RuntimeThreadExperimentViewController: UIViewController {
                 self.appendReport("live root 보존·orphan 회수 · \(rootCasesPassed ? "통과" : "실패") · setup nodes=\(rootSetupNodes)")
                 self.appendReport("callback closure root·호출 · \(callbackClosureRootPassed ? "통과" : "실패") · nodes=\(callbackNodes) strings=\(callbackStringUnits)")
                 self.appendReport("callback 교체 후 해제·기준선 복귀 · \(callbackClosureReleased ? "통과" : "실패")")
+                self.appendReport("16,385개 wrapper 유지 · \(largeRegistryRetained ? "통과" : "실패") · nodes=\(self.integerField("document_nodes", in: largeSetup)) wrappers=\(self.integerField("document_collection_live_handles", in: largeSetup)) scan=\(largeSetupScanUs)µs root-buffer=\(largeSetupRootBufferBytes)B")
+                self.appendReport("16,385개 wrapper 해제 · \(largeRegistryReleased ? "통과" : "실패") · empty=\(largeEmptyWrappers) reclaimed-buffer=\(largeReclaimedNodeBufferBytes)B")
                 self.appendReport("반복 수명 회수 · \(repeatedBaseline ? "통과" : "실패") · \(baselineReturnRounds)/6회 · 회차당 32쌍 · 최대 빈 wrapper \(maximumEmptyWrappers)")
                 self.appendReport("DOM 자원 최종 기준선 · nodes=\(finalNodes) strings=\(finalStringUnits) wrappers=\(self.integerField("document_collection_scanned_handles", in: finalReport))")
                 self.appendReport("회수 scan 계수 일관성 · \(scanStatsPassed ? "통과" : "실패") · scanned=live+empty")
