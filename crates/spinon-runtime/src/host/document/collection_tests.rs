@@ -541,3 +541,95 @@ fn ffi_collection_callback_reports_capacity_before_rejecting_null_output() {
     assert_eq!(count, 1);
     assert_eq!(bridge.snapshot(), snapshot);
 }
+
+#[test]
+fn ffi_collection_callback_accepts_more_than_the_former_root_limit_and_retries_output() {
+    let mut bridge = HostDocumentBridge::new().unwrap();
+    let target_nodes = 16_385_usize;
+    let mut first_id = 1_i32;
+    while (first_id as usize) <= target_nodes {
+        let last_id =
+            (first_id as usize + super::MAX_BATCH_OPERATIONS - 1).min(target_nodes) as i32;
+        let operations = (first_id..=last_id)
+            .map(|id| Operation::CreateText {
+                id,
+                data: Vec::new(),
+            })
+            .collect::<Vec<_>>();
+        bridge.commit(&operations).unwrap();
+        first_id = last_id + 1;
+    }
+
+    let roots = (1..=target_nodes as i32).collect::<Vec<_>>();
+    let rooted_snapshot = bridge.snapshot();
+    let mut required_capacity = 0;
+    let mut error = [0_i8; 128];
+    let status = unsafe {
+        collect_callback(
+            (&mut bridge as *mut HostDocumentBridge).cast::<c_void>(),
+            roots.as_ptr(),
+            roots.len(),
+            std::ptr::null_mut(),
+            0,
+            &mut required_capacity,
+            error.as_mut_ptr().cast(),
+            error.len(),
+        )
+    };
+    assert_eq!(status, 1);
+    assert_eq!(required_capacity, target_nodes);
+    assert_eq!(bridge.snapshot(), rooted_snapshot);
+
+    let mut reclaimed_ids = vec![0_i32; required_capacity];
+    let status = unsafe {
+        collect_callback(
+            (&mut bridge as *mut HostDocumentBridge).cast::<c_void>(),
+            roots.as_ptr(),
+            roots.len(),
+            reclaimed_ids.as_mut_ptr(),
+            reclaimed_ids.len(),
+            &mut required_capacity,
+            error.as_mut_ptr().cast(),
+            error.len(),
+        )
+    };
+    assert_eq!(status, 0);
+    assert_eq!(required_capacity, 0);
+    assert_eq!(bridge.snapshot(), rooted_snapshot);
+
+    let unrooted_snapshot = bridge.snapshot();
+    required_capacity = 0;
+    let status = unsafe {
+        collect_callback(
+            (&mut bridge as *mut HostDocumentBridge).cast::<c_void>(),
+            std::ptr::null(),
+            0,
+            std::ptr::null_mut(),
+            0,
+            &mut required_capacity,
+            error.as_mut_ptr().cast(),
+            error.len(),
+        )
+    };
+    assert_eq!(status, 1);
+    assert_eq!(required_capacity, target_nodes);
+    assert_eq!(bridge.snapshot(), unrooted_snapshot);
+
+    reclaimed_ids.resize(required_capacity, 0);
+    let status = unsafe {
+        collect_callback(
+            (&mut bridge as *mut HostDocumentBridge).cast::<c_void>(),
+            std::ptr::null(),
+            0,
+            reclaimed_ids.as_mut_ptr(),
+            reclaimed_ids.len(),
+            &mut required_capacity,
+            error.as_mut_ptr().cast(),
+            error.len(),
+        )
+    };
+    assert_eq!(status, 0);
+    assert_eq!(required_capacity, target_nodes);
+    assert_eq!(reclaimed_ids, roots);
+    assert_eq!(bridge.node_count(), 0);
+}

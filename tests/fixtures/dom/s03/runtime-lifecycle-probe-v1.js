@@ -1,4 +1,9 @@
 globalThis.__spinonS03LifecycleProbeV1 = (() => {
+  const largeRegistryNodeCount = 16_385;
+  const largeRegistryTextCount = largeRegistryNodeCount - 1;
+  const largeRegistryFirstId = 1_000_000_000;
+  const largeRegistryMarker = "large-registry";
+
   const probe = {
     reset() {
       spinon.onEvent(() => {});
@@ -7,6 +12,10 @@ globalThis.__spinonS03LifecycleProbeV1 = (() => {
       delete globalThis.__spinonLifecycleWeak;
       delete globalThis.__spinonLifecycleCallbackWeak;
       delete globalThis.__spinonLifecycleCallbackValue;
+      delete globalThis.__spinonS03LargeRegistryNodes;
+      delete globalThis.__spinonS03LargeRegistryContainer;
+      delete globalThis.__spinonS03LargeRegistryFirst;
+      delete globalThis.__spinonS03LargeRegistryLast;
 
       let node = document.firstChild;
       while (node !== null) {
@@ -14,7 +23,8 @@ globalThis.__spinonS03LifecycleProbeV1 = (() => {
         if (
           node.nodeType === 1 &&
           (node.getAttribute("data-spinon-lifecycle") === "parent" ||
-            node.hasAttribute("data-spinon-lifecycle-stress"))
+            node.hasAttribute("data-spinon-lifecycle-stress") ||
+            node.getAttribute("data-spinon-lifecycle-large") === largeRegistryMarker)
         ) {
           document.removeChild(node);
         }
@@ -138,6 +148,100 @@ globalThis.__spinonS03LifecycleProbeV1 = (() => {
         document.removeChild(parent);
       }
       spinon.__internal.requestLifecycleCollectionForTesting();
+    },
+
+    setupLargeRegistry() {
+      const containerId = largeRegistryFirstId;
+      spinon.__internal.commitDocumentBatch([
+        {
+          type: "createElement",
+          id: containerId,
+          namespace: "http://www.w3.org/1999/xhtml",
+          name: "div",
+        },
+        {
+          type: "setAttribute",
+          node: containerId,
+          name: "data-spinon-lifecycle-large",
+          value: largeRegistryMarker,
+        },
+        { type: "append", parent: 0, node: containerId },
+      ]);
+
+      let container = document.firstChild;
+      while (
+        container !== null &&
+        (container.nodeType !== 1 ||
+          container.getAttribute("data-spinon-lifecycle-large") !== largeRegistryMarker)
+      ) {
+        container = container.nextSibling;
+      }
+      if (container === null) throw new Error("large registry container was not wrapped");
+      globalThis.__spinonS03LargeRegistryContainer = container;
+
+      let created = 0;
+      while (created < largeRegistryTextCount) {
+        const count = Math.min(128, largeRegistryTextCount - created);
+        const operations = [];
+        for (let index = 0; index < count; index += 1) {
+          const id = containerId + created + index + 1;
+          operations.push({ type: "createText", id, data: "" });
+          operations.push({ type: "append", parent: containerId, node: id });
+        }
+        spinon.__internal.commitDocumentBatch(operations);
+        created += count;
+      }
+
+      const nodes = [container];
+      let child = container.firstChild;
+      while (child !== null) {
+        nodes.push(child);
+        child = child.nextSibling;
+      }
+      if (nodes.length !== largeRegistryNodeCount) {
+        throw new Error(`large registry expected ${largeRegistryNodeCount} wrappers, got ${nodes.length}`);
+      }
+      globalThis.__spinonS03LargeRegistryNodes = nodes;
+      globalThis.__spinonS03LargeRegistryFirst = new WeakRef(nodes[0]);
+      globalThis.__spinonS03LargeRegistryLast = new WeakRef(nodes[nodes.length - 1]);
+      spinon.__internal.requestLifecycleCollectionForTesting();
+    },
+
+    verifyLargeRegistry() {
+      const nodes = globalThis.__spinonS03LargeRegistryNodes;
+      if (
+        !Array.isArray(nodes) ||
+        nodes.length !== largeRegistryNodeCount ||
+        nodes[0] !== globalThis.__spinonS03LargeRegistryContainer ||
+        nodes[1].nodeType !== 3 ||
+        nodes[largeRegistryNodeCount - 1].nodeType !== 3 ||
+        globalThis.__spinonS03LargeRegistryFirst.deref() !== nodes[0] ||
+        globalThis.__spinonS03LargeRegistryLast.deref() !== nodes[nodes.length - 1]
+      ) {
+        throw new Error("large weak wrapper registry did not retain all boundary nodes");
+      }
+    },
+
+    releaseLargeRegistry() {
+      const container = globalThis.__spinonS03LargeRegistryContainer;
+      if (container !== undefined && container.parentNode === document) {
+        document.removeChild(container);
+      }
+      globalThis.__spinonS03LargeRegistryNodes = null;
+      globalThis.__spinonS03LargeRegistryContainer = null;
+      spinon.__internal.requestLifecycleCollectionForTesting();
+    },
+
+    verifyLargeRegistryReleased() {
+      spinon.__internal.requestLifecycleCollectionForTesting();
+      const first = globalThis.__spinonS03LargeRegistryFirst;
+      const last = globalThis.__spinonS03LargeRegistryLast;
+      if (first === undefined || last === undefined ||
+          first.deref() !== undefined || last.deref() !== undefined) {
+        throw new Error("large weak wrapper registry retained released boundary nodes");
+      }
+      delete globalThis.__spinonS03LargeRegistryFirst;
+      delete globalThis.__spinonS03LargeRegistryLast;
     },
   };
 

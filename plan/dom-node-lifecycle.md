@@ -1,6 +1,6 @@
 # S03.3 DOM 노드와 JS wrapper 수명 관리 계획
 
-**상태:** Rust/V8 회수 경로 구현 · Android·iOS 시뮬레이터에서 callback closure, 6회 반복 자원 기준선, 제한된 세션 종료 경합 통과 · 최대 scan 성능과 listener/external root 수명 검증 진행 중
+**상태:** Rust/V8 동적 회수 경로 구현 · Android·iOS 시뮬레이터에서 16,385개 wrapper 생성·회수와 6회 반복 기준선 복귀 통과 · 한 번씩 관측한 scan 시간은 벤치마크가 아니며 비용 곡선·할당 실패·listener/external root 수명 검증 진행 중
 
 **상위 작업:** S03, J10, R03
 
@@ -42,7 +42,7 @@ S03.3에서는 JS façade ID를 다른 노드에 재사용하지 않는다. `Hos
 
 Rust HostDocument가 노드 저장소와 mark-and-sweep을 소유하고, V8 C++ adapter가 callback 없는 약한 handle의 자동 reset을 owner 안전 지점에서 검사한다. V8 unified heap이나 별도 Rust tracing-GC 의존성은 두지 않는다. node 개수 quota는 두지 않고 JS ID·Rust NodeId 소진을 검사한다. wrapper·root·회수 결과 buffer는 필요량에 따라 동적으로 늘린다. 호출 경계·root·문자열 예산·전체 scan의 비용·할당 실패와 shutdown 순서는 [내부 계약 0021](../spec/internal/0021-s03-dom-node-lifecycle.md)에 둔다.
 
-이번 결정은 첫 공식 릴리스 전 내부 `0.1.0` 시제품의 이전 16,384 resident-node quota를 갱신한다. 과거 고정 상한 근거는 당시 동작의 역사적 기록으로 남긴다. Rust `HostDocument` 도달성 계획·commit, bridge의 node/handle/string map 회수 callback, C++ weak `Global` scan과 owner safe-point caller는 구현돼 있다. 이 변경은 C++ registry entry 제한을 제거하고 scan/output buffer를 동적으로 키우며, node count와 문자열 수·scan buffer byte 진단을 연결한다. Rust/C++ 회수 결과 불변식이 깨지면 세션을 poisoned 처리하고 후속 JS 실행을 막는다. 강제 GC 요청 entry는 `SPINON_ENABLE_S03_DOM_GC_FIXTURE=1` 검증 빌드에서만 노출한다. Android·iOS 고정 V8 시뮬레이터에서 callback closure root와 6회 반복 기준선, 종료 경합은 확인했지만 16,384개 초과 경로·큰 scan 비용·동적 buffer 할당 실패는 이 변경의 검증 항목이다. Rust 표준 트리 컨테이너의 OS 메모리 고갈에서 프로세스 복구는 보장하지 않는다.
+이번 결정은 첫 공식 릴리스 전 내부 `0.1.0` 시제품의 이전 16,384 resident-node quota를 갱신한다. 과거 고정 상한 근거는 당시 동작의 역사적 기록으로 남긴다. Rust `HostDocument` 도달성 계획·commit, bridge의 node/handle/string map 회수 callback, C++ weak `Global` scan과 owner safe-point caller는 구현돼 있다. 이 변경은 C++ registry entry 제한을 제거하고 scan/output buffer를 동적으로 키우며, node count와 문자열 수·scan buffer byte 진단을 연결한다. Rust/C++ 회수 결과 불변식이 깨지면 세션을 poisoned 처리하고 후속 JS 실행을 막는다. 강제 GC 요청 entry는 `SPINON_ENABLE_S03_DOM_GC_FIXTURE=1` 검증 빌드에서만 노출한다. Android·iOS 실제 V8 시뮬레이터에서 16,385개 wrapper 생성·보존·회수와 Rust 자원 기준선 복귀를 확인했다([대량 registry 실행 근거](../spec/internal/evidence/s03-dynamic-wrapper-registry-2026-10-05.md)). 16,394개 live wrapper를 관찰한 단일 scan은 Android 15,273μs, iOS 7,067μs였으나 분포·프레임 비용이 없는 시뮬레이터 표본이므로 성능 보장에 쓰지 않는다. Android 검증은 emulator 호환을 위해 해당 V8 artifact의 CFI를 끈 조건이었다. 동적 buffer 할당 실패 주입, 더 큰 입력의 비용 곡선과 실기기 검증은 남는다. Rust 표준 트리 컨테이너의 OS 메모리 고갈에서 프로세스 복구는 보장하지 않는다.
 
 ## Chromium 참고 모델
 
@@ -101,7 +101,7 @@ Lynx는 main thread와 background thread에 별도 JavaScript runtime을 둔다.
 5. 가장 바깥 JS 작업과 microtask checkpoint가 끝난 안전 지점마다 C++가 전체 façade ID keyed wrapper weak handle을 검사하고 non-empty ID를 root snapshot에 넣는다. Rust callback은 ID를 HostNodeHandle로 검증·변환하고 HostRoot와 함께 도달성을 계산한다. wrapper가 비었어도 노드가 다른 root로 살아 있으면 JS façade ID↔handle 매핑을 유지한다. 모든 root에서 도달 불가해 노드를 회수할 때 해당 mapping과 문자열 계수를 같은 sweep commit에서 갱신한다. HostRoot 트리와 스타일·레이아웃 입력은 바뀌지 않으므로 sweep은 `DocumentRevision`과 `RenderTreeRevision`을 올리지 않는다. V8 GC 실행 전까지는 실제 메모리 회수가 늦어질 수 있다.
 6. DOM listener는 런타임 전역 pending callback과 다르다. 의미상 listener와 target은 EventTarget이 소유하는 참조 관계다. strong `v8::Global<Function>`이 callback closure를 통해 wrapper를 살리면 target 수거를 막는 순환이 생길 수 있으므로, 그 cross-heap edge의 추적·해제 및 순환 회수 계약은 J12에서 결정한다.
 
-도달성 검증·Rust sweep·bridge 매핑 및 UTF-16 사용량 정리는 Rust callback에 연결되어 있다. JS 강한 wrapper `Map`은 제거했다. Rust callback의 오류는 성공한 JavaScript 상태를 덮어쓰지 않고 세션 report의 `document_collection_error`에 별도 기록한다. Android·iOS 고정 fixture에서 진단용 callback closure와 작은 반복 수명 기준선, 제한된 shutdown 경합은 통과했다. external root lease와 DOM listener edge, 문자열 예산 경계·장기 반복, 16,384개를 넘는 registry의 scan 비용과 동적 결과 buffer 경로는 미구현 또는 미검증이다.
+도달성 검증·Rust sweep·bridge 매핑 및 UTF-16 사용량 정리는 Rust callback에 연결되어 있다. JS 강한 wrapper `Map`은 제거했다. Rust callback의 오류는 성공한 JavaScript 상태를 덮어쓰지 않고 세션 report의 `document_collection_error`에 별도 기록한다. Android·iOS 고정 fixture에서 진단용 callback closure, 작은 반복 수명 기준선, 16,385개 wrapper 동적 확장·회수와 제한된 shutdown 경합은 통과했다. external root lease와 DOM listener edge, 문자열 예산 경계·장기 반복, 반복 가능한 scan 비용 곡선과 동적 buffer 할당 실패 주입은 남아 있다.
 
 ## 확정한 구현 결정
 
@@ -110,7 +110,7 @@ Lynx는 main thread와 background thread에 별도 JavaScript runtime을 둔다.
 3. **GC와 변경 경계:** 최외곽 JavaScript 작업과 microtask checkpoint가 끝난 isolate owner 안전 지점에서 전체 weak registry scan과 sweep을 처리한다. callback 중 Rust 접근·재진입 sweep은 없다.
 4. **ID와 handle:** JS façade i32 ID와 HostNodeHandle의 DocumentGeneration/NodeId는 별도 identity다. façade ID는 노드에 매핑되므로 살아 있는 노드의 wrapper가 GC된 뒤 재생성해도 유지하고, 노드 회수 뒤 다른 노드에 재사용하지 않는다. stale 접근은 실패 폐쇄한다. C++ wrapper registry는 façade ID로 keying하고 Rust가 HostNodeHandle을 검증한다.
 5. **resource budget:** resident node 개수 quota는 없다. 양수 i32 façade ID와 Rust NodeId는 재사용하지 않으며 공간 소진 시 명시적으로 실패한다. resident string은 16,777,216 UTF-16 code units, pending ID reservation은 256개, external root lease는 16,384개까지다. 문자열·reservation·external-root 한도 초과는 QuotaExceededError/backpressure로 원자 실패하며 강제 full GC나 같은 호출 재시도는 하지 않는다. OS 메모리 고갈은 모든 Rust 컨테이너에서 복구 가능한 오류로 보장하지 않는다.
-6. **결정성 검증:** 독립 Rust reference fixture가 root graph·weak handle reset 모델·wrapper 재생성 기대값을 고정한다. 별도 runtime test는 같은 고정 tree의 생존 집합·회수 ID·문자열 계수·revision을 실제 core/bridge 코드에서 대조한다. simulator에서 확인한 항목은 각 실행 evidence에 한정한다. 진단용 callback closure와 6×32 반복 회수, 제한된 종료 경합은 확인했다. 문자열 예산 경계·장기 반복·16,384개 초과 동적 회수는 남은 항목으로 추적한다.
+6. **결정성 검증:** 독립 Rust reference fixture가 root graph·weak handle reset 모델·wrapper 재생성 기대값을 고정한다. 별도 runtime test는 같은 고정 tree의 생존 집합·회수 ID·문자열 계수·revision을 실제 core/bridge 코드에서 대조한다. simulator에서 확인한 항목은 각 실행 evidence에 한정한다. 진단용 callback closure와 6×32 반복 회수, 16,385개 wrapper의 동적 확장·회수, 제한된 종료 경합은 확인했다. 문자열 예산 경계·장기 반복·반복 가능한 scan 비용 곡선·동적 buffer 할당 실패 주입은 남은 항목으로 추적한다.
 7. **callback 수명:** strong callback Global은 owner isolate에서 교체·완료·취소·종료 시 Reset한다. Rust handle을 직접 보유하는 host 작업은 세션당 16,384개 이하 external root lease를 둔다. 한도 초과는 backpressure로 거부하고 token은 재사용하지 않는다. DOM listener는 미구현으로 남기고 J12가 cycle 계약을 정한다.
 8. **dynamic scan:** isolate별 wrapper registry와 root snapshot은 동적으로 확장한다. 전체 선형 검사는 각 outer task safe point에서 수행하며 entry 수·마지막 소요 시간·root/result vector의 payload capacity bytes를 진단한다. byte 값은 map entry·allocator overhead·Rust 문서 저장소나 전체 프로세스 메모리를 포함하지 않는다. 큰 문서에서의 frame 영향은 구현 검증으로 측정한다.
 9. **회수 실패 원자성:** mark·worklist·sweep 삭제 목록을 적용 전 구성한다. parent/child 관계 불일치, allocation·root·generation·owner 오류와 unwind panic은 registry·root·문서·quota를 보존하고 회수를 미룬다. panic=abort는 복구 대상이 아니다.
@@ -124,7 +124,7 @@ Lynx는 main thread와 background thread에 별도 JavaScript runtime을 둔다.
 
 ### 의도적 보존과 누수 판별
 
-- **현재 수명 probe:** Rust resident node 수와 `document_nodes` delta, JS WeakRef 상태, live wrapper에서 다시 읽은 parent/child 관계를 함께 기록한다. 이 값은 GC 확인용 시뮬레이터 fixture이며 전체 heap 또는 RSS 누수 계정이 아니다. 강한 Map 제거는 소스와 default/fixture compile guard로 확인한다. 작은 6×32 반복 자원 fixture와 제한된 종료 경합은 통과했지만 16,384개 초과 동적 확장·회수, 문자열 예산 경계, 장기 반복과 heap snapshot은 남아 있다.
+- **현재 수명 probe:** Rust resident node 수와 `document_nodes` delta, JS WeakRef 상태, live wrapper에서 다시 읽은 parent/child 관계를 함께 기록한다. 이 값은 GC 확인용 시뮬레이터 fixture이며 전체 heap 또는 RSS 누수 계정이 아니다. 강한 Map 제거는 소스와 default/fixture compile guard로 확인한다. Android·iOS에서 16,385개 wrapper 생성·회수, 작은 6×32 반복 자원 fixture와 제한된 종료 경합은 통과했지만 문자열 예산 경계, 장기 반복과 heap snapshot은 남아 있다. 대량 scan 시간은 한 번씩 기록했으며 비용 곡선을 측정한 벤치마크는 아니다.
 - **GC 수동 요청:** `LowMemoryNotification()`은 `SPINON_ENABLE_S03_DOM_GC_FIXTURE=1`인 Android·iOS 검증 빌드에서만 연결한다. 기본 빌드의 JS 내부 API에는 강제 GC 요청 entry를 등록하지 않으며 제품 수거 시점을 제어하지 않는다. [고정 V8 weak handle 계약](https://chromium.googlesource.com/v8/v8.git/+/7b50b62cb18f28617959e8452e2cd18195b38bcf/include/v8-persistent-handle.h)
 - **root 대조군:** 연결 노드는 wrapper 참조를 버려도 유지되어야 한다. 분리 노드는 JS 전역 변수나 native 강한 callback closure가 wrapper를 붙잡는 동안 유지되어야 하며, GC가 약한 handle을 reset한 뒤 safe point scan에서 회수 후보가 되어야 한다. 현재 진단용 `spinon.onEvent()` callback의 보존·호출·교체 후 회수는 Android/iOS fixture에서 확인했다. 일반 pending callback 완료·취소 양쪽과 DOM listener owner 그래프는 별도 검증하며 J12 계약에서 다룬다.
 - **반복 기준:** warm-up 뒤 create·detach·drop·collect를 여러 차례 반복한다. 의도한 root를 모두 해제한 test fixture에서는 V8 weak `Global` reset과 safe point scan 뒤 Rust live node·`HostNodeHandle`/JS façade ID 매핑·string 계수, 살아 있는 wrapper 등록 수, native callback `Global` active handle 수가 시작 기준선과 정확히 같아야 한다. V8이 GC를 수행하지 않은 iteration은 누수 판정에 넣지 않고 보존 지연으로 기록한다. root 대조군은 각 자원이 계속 유지되는지 별도로 확인한다. V8 heap snapshot의 전체 object 수는 pass/fail 수치로 쓰지 않고 retaining path에서 예상 밖 JS `Map`·closure를 찾는 데 쓴다. heap snapshot은 Rust allocation이나 OS view 메모리의 전체 계정이 아니므로 플랫폼 native memory profiler와 구분한다. `used_heap_size`와 프로세스 RSS는 보조 지표이며 RSS 하나만으로 누수를 판정하지 않는다. GC가 객체를 회수해도 allocator page가 즉시 OS에 반환되지 않을 수 있다. [V8 HeapProfiler API](https://v8.github.io/api/head/classv8_1_1HeapProfiler.html)
@@ -143,7 +143,7 @@ Lynx는 main thread와 background thread에 별도 JavaScript runtime을 둔다.
 - Android·iOS probe는 각 실행의 `document_collection_error`, poisoned 상태와 scanned/live/empty handle 계수를 검사한다. sticky callback 오류, poisoned runtime, 일관되지 않은 계수는 JS eval이 성공해도 전체 probe 실패다.
 - 세션 종료 중 자동 reset된 weak handle, pending host callback, 다른 세션 handle, Rust panic·할당 실패가 다른 노드나 세션을 손상하지 않는다.
 
-S03.3 완료에는 Rust core/bridge 실패 경로 fixture, Rust·Bun 검증, C++ weak handle owner safe-point 연결, Android·iOS의 실제 V8 실행, 반복 resource/closure/shutdown 검증과 scan 비용 측정이 필요하다. 현재는 16,384개 초과 동적 registry·buffer 경로와 할당 실패·큰 scan 비용 검증이 남아 상위 S03.3과 J10은 미완료다.
+S03.3 완료에는 Rust core/bridge 실패 경로 fixture, Rust·Bun 검증, C++ weak handle owner safe-point 연결, Android·iOS의 실제 V8 실행, 반복 resource/closure/shutdown 검증, 비용 특성화와 실패 주입이 필요하다. Rust HostDocument·FFI collector와 실제 V8 registry에서 각각 16,385개 입력을 확인했다. Android·iOS의 대량 실행은 16,394개 live wrapper scan, 결과 vector 재확장, 16,385개 sweep과 기준선 복귀를 통과했으며 한 번씩의 시간·payload 관측값을 [실행 근거](../spec/internal/evidence/s03-dynamic-wrapper-registry-2026-10-05.md)에 남겼다. allocation failure 주입, 더 큰 규모의 반복 가능한 scan 비용, 실기기, listener/external root는 남아 상위 S03.3과 J10은 미완료다.
 
 ## 구현 단계 체크리스트
 
@@ -153,7 +153,9 @@ S03.3 완료에는 Rust core/bridge 실패 경로 fixture, Rust·Bun 검증, C++
 - [x] Android·iOS 시뮬레이터 실제 V8에서 attached/detached live root, orphan auto-reset·sweep, 실제 wrapper reset 뒤 재생성, collector 오류·poison·scan 통계 gate를 확인하고 원본 log·screen을 evidence에 기록한다. [실행 근거](../spec/internal/evidence/s03-v8-weak-wrapper-2026-10-04.md)
 - [x] Android·iOS 실제 V8에서 현재 native strong callback closure가 분리된 child wrapper를 보존하고, callback 교체 뒤 회수되는지 확인한다. [실행 근거](../spec/internal/evidence/s03-repeat-lifecycle-2026-10-05.md)
 - [x] Android·iOS에서 element·text 32쌍을 만들고 분리·회수하는 시나리오를 6회 실행해 node·UTF-16 string unit·live weak wrapper baseline 복귀와 `scanned = live + empty`를 확인한다. [실행 근거](../spec/internal/evidence/s03-repeat-lifecycle-2026-10-05.md)
-- [ ] 16,384개 초과 노드·wrapper 생성과 sweep, C ABI output buffer 재시도, 동적 buffer 할당 실패, scan 비용·buffer payload 계측을 검증한다.
+- [x] Rust HostDocument와 C ABI collector가 16,385개 노드·root를 수용하고, 작은 출력 buffer에 대한 무변경 응답 뒤 재시도 성공·전체 회수를 확인한다.
+- [x] Android·iOS 실제 V8에서 16,384개 초과 wrapper 생성·scan·sweep과 C++ root/result vector 동적 확장, `WeakRef` 해제, 자원 기준선 복귀를 검증하고 단일 관측 시간·payload를 기록한다. [실행 근거](../spec/internal/evidence/s03-dynamic-wrapper-registry-2026-10-05.md)
+- [ ] C++ 동적 buffer 할당 실패 주입, 더 큰 규모의 반복 가능한 scan 비용 곡선, V8 heap/RSS, 장기 반복과 실기기를 검증한다.
 - [x] Android·iOS 시뮬레이터에서 활성 eval 취소, 대기·종료 뒤 호출 거부, 반복 close와 worker join을 검증한다. [실행 근거](../spec/internal/evidence/s03-shutdown-2026-10-05.md)
 - [ ] DOM EventTarget listener와 cross-heap closure cycle은 J12 명세와 구현에서 별도로 해결한다.
 
