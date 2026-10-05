@@ -6,7 +6,8 @@ use crate::v8::{
     spinon_v8_runtime_cancel_termination, spinon_v8_runtime_dispatch,
     spinon_v8_runtime_document_collection_stats, spinon_v8_runtime_eval, spinon_v8_runtime_free,
     spinon_v8_runtime_last_collection_error, spinon_v8_runtime_last_error, spinon_v8_runtime_new,
-    spinon_v8_runtime_terminate, spinon_v8_runtime_was_terminated,
+    spinon_v8_runtime_notify_memory_pressure, spinon_v8_runtime_terminate,
+    spinon_v8_runtime_was_terminated,
 };
 use spinon_core::PriorityQueue;
 pub use spinon_core::TaskPriority;
@@ -155,6 +156,18 @@ enum Command {
 pub struct OperationResponse {
     pub status: i32,
     pub report: String,
+}
+
+/// 호스트가 명시적으로 V8에 전달하는 메모리 압박 단계입니다.
+#[repr(i32)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum MemoryPressureLevel {
+    /// 압박이 없다는 상태를 전달합니다. 즉시 GC를 요청하지 않습니다.
+    None = 0,
+    /// V8의 점진적 회수 휴리스틱을 앞당기도록 알립니다.
+    Moderate = 1,
+    /// V8에 가능한 빠른 메모리 회수가 필요하다고 알립니다.
+    Critical = 2,
 }
 
 struct CallbackState {
@@ -884,6 +897,25 @@ impl RuntimeSession {
         )
     }
 
+    /// 호스트가 정한 압박 단계를 V8에 전달합니다. OS 신호나 판단 시점은 정하지 않습니다.
+    ///
+    /// 이 호출은 JavaScript 취소나 이벤트 dispatch를 요청하지 않습니다. V8이 안전 지점에서
+    /// 회수를 수행할 수 있지만 완료 시점·회수량은 보장하지 않습니다. 종료 중이면
+    /// `ERR_CLOSED`를 돌려주며, Isolate 해제 전에 통지가 끝나도록 런타임 상태 잠금을 유지합니다.
+    pub fn notify_memory_pressure(&self, level: MemoryPressureLevel) -> i32 {
+        let control = lock(&self.control);
+        if control.closing {
+            return ERR_CLOSED;
+        }
+        let Some(runtime) = control.runtime else {
+            return ERR_CLOSED;
+        };
+        let status = unsafe {
+            spinon_v8_runtime_notify_memory_pressure(runtime as *mut SpinonV8Runtime, level as i32)
+        };
+        if status == 0 { OK } else { ERR_ARGUMENT }
+    }
+
     /// 실행 중인 JavaScript를 취소합니다. 실행 중인 작업이 없으면 1을 돌려줍니다.
     pub fn cancel(&self) -> i32 {
         cancel_control(&self.control)
@@ -899,9 +931,9 @@ impl Drop for RuntimeSession {
 #[cfg(test)]
 mod tests {
     use super::{
-        CallbackState, Command, ERR_CANCELLED, ERR_QUEUE_FULL, EnqueueError, OK, OperationReport,
-        QUEUE_CAPACITY, RuntimeSession, SpinonDocumentCollectionStats, TaskPriority, TaskScheduler,
-        operation_report,
+        CallbackState, Command, ERR_CANCELLED, ERR_CLOSED, ERR_QUEUE_FULL, EnqueueError,
+        MemoryPressureLevel, OK, OperationReport, QUEUE_CAPACITY, RuntimeSession,
+        SpinonDocumentCollectionStats, TaskPriority, TaskScheduler, operation_report,
     };
     use crate::host::{DocumentCommitCallback, HostDocumentBridge};
     use std::ffi::{CStr, c_char, c_void};
@@ -986,6 +1018,14 @@ mod tests {
             c"text".as_ptr(),
         );
         0
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn spinon_v8_runtime_notify_memory_pressure(
+        _runtime: *mut super::SpinonV8Runtime,
+        level: i32,
+    ) -> i32 {
+        if (0..=2).contains(&level) { 0 } else { -1 }
     }
 
     #[unsafe(no_mangle)]
@@ -1243,6 +1283,27 @@ mod tests {
         let resumed = eval(&session, "again");
         assert_eq!(resumed.status, OK);
         assert!(resumed.report.contains("error=none"));
+    }
+
+    #[test]
+    fn memory_pressure_levels_reach_the_runtime_and_closed_sessions_reject_them() {
+        let session = new_session();
+        assert_eq!(MemoryPressureLevel::None as i32, 0);
+        assert_eq!(MemoryPressureLevel::Moderate as i32, 1);
+        assert_eq!(MemoryPressureLevel::Critical as i32, 2);
+        for level in [
+            MemoryPressureLevel::None,
+            MemoryPressureLevel::Moderate,
+            MemoryPressureLevel::Critical,
+        ] {
+            assert_eq!(session.notify_memory_pressure(level), OK);
+        }
+
+        session.shutdown().expect("유휴 세션은 종료되어야 합니다");
+        assert_eq!(
+            session.notify_memory_pressure(MemoryPressureLevel::None),
+            ERR_CLOSED
+        );
     }
 
     #[test]

@@ -350,6 +350,18 @@ Java_dev_spinon_bootstrap_MainActivity_nativeSessionCancel(JNIEnv *, jclass,
   return status;
 }
 
+extern "C" JNIEXPORT jint JNICALL
+Java_dev_spinon_bootstrap_MainActivity_nativeSessionMemoryPressure(
+    JNIEnv *, jclass, jlong handle, jint level) {
+  if (handle == 0) return -1;
+  const int32_t status = spinon_runtime_session_notify_memory_pressure(
+      SessionFromHandle(handle), static_cast<SpinonMemoryPressureLevel>(level));
+  __android_log_print(ANDROID_LOG_INFO, kTag,
+                      "SPINON_RUNTIME_MEMORY_PRESSURE level=%d status=%d",
+                      level, status);
+  return status;
+}
+
 extern "C" JNIEXPORT void JNICALL
 Java_dev_spinon_bootstrap_MainActivity_nativeSessionFree(JNIEnv *, jclass,
                                                           jlong handle) {

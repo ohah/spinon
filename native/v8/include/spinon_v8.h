@@ -17,6 +17,11 @@ enum {
   SPINON_DOCUMENT_CALLBACK_PANIC = -3,
   SPINON_DOCUMENT_CALLBACK_QUOTA_EXCEEDED = -4
 };
+enum {
+  SPINON_V8_MEMORY_PRESSURE_NONE = 0,
+  SPINON_V8_MEMORY_PRESSURE_MODERATE = 1,
+  SPINON_V8_MEMORY_PRESSURE_CRITICAL = 2
+};
 typedef void (*SpinonNodeCallback)(void *user_data, int32_t node_id, const char *tag);
 typedef void (*SpinonTextCallback)(void *user_data, const char *text);
 typedef struct SpinonDocumentOperation {
@@ -85,6 +90,9 @@ SpinonV8Runtime *spinon_v8_runtime_new(SpinonNodeCallback node_callback,
                                       void *document_user_data);
 int32_t spinon_v8_runtime_eval(SpinonV8Runtime *runtime, const char *source);
 int32_t spinon_v8_runtime_dispatch(SpinonV8Runtime *runtime, int32_t node_id);
+/* V8가 허용하는 다른 스레드 통지 경로입니다. 성공 0, 잘못된 런타임·단계 -1. */
+int32_t spinon_v8_runtime_notify_memory_pressure(SpinonV8Runtime *runtime,
+                                                int32_t level);
 const char *spinon_v8_runtime_last_error(SpinonV8Runtime *runtime);
 const char *spinon_v8_runtime_last_collection_error(SpinonV8Runtime *runtime);
 void spinon_v8_runtime_document_collection_stats(

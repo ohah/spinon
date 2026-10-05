@@ -912,6 +912,29 @@ extern "C" int32_t spinon_v8_runtime_dispatch(SpinonV8Runtime *runtime,
   return result;
 }
 
+extern "C" int32_t spinon_v8_runtime_notify_memory_pressure(
+    SpinonV8Runtime *runtime, int32_t level) {
+  if (!runtime || !runtime->isolate) return -1;
+
+  v8::MemoryPressureLevel v8_level;
+  switch (level) {
+    case SPINON_V8_MEMORY_PRESSURE_NONE:
+      v8_level = v8::MemoryPressureLevel::kNone;
+      break;
+    case SPINON_V8_MEMORY_PRESSURE_MODERATE:
+      v8_level = v8::MemoryPressureLevel::kModerate;
+      break;
+    case SPINON_V8_MEMORY_PRESSURE_CRITICAL:
+      v8_level = v8::MemoryPressureLevel::kCritical;
+      break;
+    default:
+      return -1;
+  }
+
+  runtime->isolate->MemoryPressureNotification(v8_level);
+  return 0;
+}
+
 extern "C" const char *spinon_v8_runtime_last_error(
     SpinonV8Runtime *runtime) {
   return runtime ? runtime->error.c_str() : "null runtime";

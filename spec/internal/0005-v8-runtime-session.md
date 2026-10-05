@@ -7,6 +7,7 @@
 ## 검증 대상
 
 - Android ARM64 앱 경로: V8 소스의 `out/boson-android-mac/args.gn`에서 `v8_jitless = false`를 확인했다. Android 16 에뮬레이터에서 백그라운드 입력, 실제 V8 취소 후 같은 Isolate 재사용, Activity 종료·세션 재생성, 플랫폼 작업 대기열 압력을 확인했다.
+- Android 취소 UI: 기본 APK에서 긴 평가 시작·취소 버튼의 활성 전이와 실행 중 UI 입력을 확인했다. 취소 요청 `status=0`, 실제 평가 종료 `status=-8`, 취소 중 접수한 dispatch `status=0`을 확인하고 화면에는 `취소 완료`를 표시한다. 상세 원본은 [Android 긴 JavaScript 입력·취소 근거](evidence/s03-android-long-js-ui-2026-10-05.md)에 둔다. 이는 진단 화면 상태 검증이며 장시간 작업을 계속 실행하면서 JS 이벤트를 선점 처리하는 기능은 아니다.
 - iOS ARM64 시뮬레이터: iPhone 17 Pro / iOS 26.2에서 백그라운드 부팅, 수동 UIKit 입력, 실제 V8 무한 평가 취소 후 대기 이벤트 처리, 세션 종료·재생성을 확인했다. 분리 후 빌드에서도 자동 시나리오를 다시 통과했다. 시뮬레이터 V8 GN 설정은 `v8_jitless = false`다. 실기기 실행과 JITless 기기 정책은 확인하지 않았다.
 - 우선순위 선택: Android 16 ARM64 에뮬레이터와 iPhone 17 Pro / iOS 26.2 시뮬레이터에서 실제 V8 차단 작업을 취소한 뒤 섞어서 접수한 여섯 작업의 strict-priority 선택 및 등급별 FIFO를 확인했다. 두 환경의 V8 GN 설정은 `v8_jitless = false`다. 검증 절차와 원본은 [실제 V8 우선순위 시뮬레이터 검증](evidence/r06-priority-simulators-2026-09-30.md)에 둔다.
 - 공개 DOM·HostDocument·GPU·React·Fetch·Promise·타이머 API는 범위 밖이다.
@@ -28,7 +29,7 @@
 - 작업자가 JS 호출에서 돌아온 뒤 소유자 스레드가 `CancelTerminateExecution()`을 호출해 다음 명령을 허용한다. 가짜 엔진 단위 테스트 외에도 Android 에뮬레이터와 iOS 시뮬레이터에서 실제 V8 무한 평가를 취소한 뒤 같은 Isolate로 대기 이벤트를 실행하고 성공을 확인했다. 실기기 및 JITless 구성은 미검증이다.
 - `RuntimeSession::shutdown()`은 제출 잠금으로 `Closing` 전환과 새 접수 사이의 순서를 고정하고, 활성 JS를 취소한 뒤 큐를 닫는다. 이미 큐에 있던 명령은 owner 작업자가 종료 오류 `-6`으로 응답한 뒤 V8 세션을 해제한다. 종료 요청은 같은 `shutdown_gate`에서 직렬화되며 작업자를 join한다. `Drop`도 이 경로를 호출한다. join 제한 시간은 없다.
 - unwind을 사용하는 Rust 빌드에서 작업자 thread가 panic하면 join 오류를 반환하고 아직 대기 중인 호출은 `-7`로 끝낸다. 세션의 runtime pointer를 비워 이후 cancel이 stale pointer에 접근하지 않게 한다. owner가 사라진 V8 객체는 다른 thread에서 해제하지 않으므로, panic 시점에 따라 V8 자원이 프로세스 종료까지 남을 수 있다. mobile release의 panic=abort나 C ABI 경계를 넘는 panic 복구를 보장하지 않는다.
-- `spinon_runtime_session_free`는 raw C ABI 포인터를 해제하므로 다른 eval/dispatch/cancel 호출과 동시에 호출하면 안 된다. 플랫폼 어댑터는 세션 포인터가 유효한 동안 진행 중 호출을 취소·대기한 뒤 `free`해야 한다. 내부 Rust shutdown 검증은 세션 소유 객체를 살려 둔 채 닫기와 제출이 경합하는 경우를 검사하며, raw 포인터 해제와 FFI 호출의 동시 실행을 허용하지 않는다.
+- `spinon_runtime_session_free`는 raw C ABI 포인터를 해제하므로 다른 eval/dispatch/cancel/memory-pressure 호출과 동시에 호출하면 안 된다. 플랫폼 어댑터는 세션 포인터가 유효한 동안 진행 중 호출을 취소·대기한 뒤 `free`해야 한다. 내부 Rust shutdown 검증은 세션 소유 객체를 살려 둔 채 닫기와 제출이 경합하는 경우를 검사하며, raw 포인터 해제와 FFI 호출의 동시 실행을 허용하지 않는다.
 - 실제 V8 개발 진단 `spinon_runtime_shutdown_probe()`는 활성 무한 평가 1개와 대기 eval 3개를 만든 뒤 별도 Rust thread에서 shutdown을 시작한다. 활성 작업의 `-8`, 대기·종료 후 eval/dispatch의 `-6`, 반복 종료, runtime 포인터 해제와 작업자 join을 검사한다. Android·iOS 시뮬레이터 실행 근거는 [S03.3 종료 경합 기록](evidence/s03-shutdown-2026-10-05.md)에 있다. 이 진단은 pending Promise/native host 작업이나 강제 프로세스 종료를 포함하지 않고, R06 또는 S03.3 제품 완료를 뜻하지 않는다.
 - 두 모바일 시뮬레이터를 함께 빌드·실행하는 명령은 `mise exec -- bun run verify:s03-shutdown:simulators`다. 검증기는 저장소 내 고정 V8 checkout을 기본으로 사용하며, 별도 경로라면 `SPINON_V8_DIR`에 지정한다. `SPINON_S03_SHUTDOWN_OUTPUT_DIR`로 새 증거 폴더를 지정할 수 있다. pinned revision과 Android·iOS Simulator의 `v8_jitless=false`를 빌드 전에 확인한다. 종료 응답 deadline을 넘기면 취소를 다시 요청하고 진단은 실패한다. OS thread를 강제 종료할 수 없으므로 V8 호출이 반환하지 않는 경우 background 종료 thread가 남을 수 있으며, 제품 shutdown 자체의 join에도 제한 시간은 없다.
 - 비동기 네이티브 함수, Promise, 타이머, 앱 백그라운드 전환, 강제 종료 중 결과 전달은 아직 없다.
@@ -44,6 +45,7 @@
 | 세션 생성 | `RuntimeSession::new() -> Result<(RuntimeSession, String), String>` | 전용 OS 스레드와 V8 Isolate 준비를 기다리고 시작 보고를 반환한다. 초기화 실패는 오류 문자열로 돌려준다. |
 | JavaScript 평가 | `eval(&self, source: &str, priority: TaskPriority) -> OperationResponse` | 작업을 제한된 우선순위 큐에 넣고 완료를 기다린다. Rust 문자열에 NUL이 있으면 인자 오류 `-1`을 돌려준다. |
 | 이벤트 전달 | `dispatch(&self, node_id: i32, priority: TaskPriority) -> OperationResponse` | 지정한 노드 ID 이벤트를 같은 Isolate 소유 스레드에서 처리한다. |
+| 메모리 압박 통지 | `notify_memory_pressure(&self, level: MemoryPressureLevel) -> i32` | 호스트가 선택한 단계를 V8 Isolate에 전달한다. 자동 OS 신호 연결이나 압박 판단 시점은 포함하지 않는다. |
 | 우선순위 진단 | `run_priority_probe() -> Result<String, String>` | 새 세션에서 실제 V8 단일 배치의 세 등급 선택·등급별 FIFO와 callback owner thread를 검사한다. 앱 API가 아닌 개발용 시뮬레이터 진단이다. |
 | 종료 진단 | `run_shutdown_probe() -> Result<String, String>` | 실제 V8의 활성 평가 취소, 큐 명령 거부, 종료 후 접수 거부, 반복 종료와 worker join을 검사한다. 앱 API가 아닌 개발용 시뮬레이터 진단이다. |
 | 취소 | `cancel(&self) -> i32` | 실행 중 평가 취소 요청은 `0`, 실행 중 작업 없음은 `1`, 실패는 음수다. 대기 작업은 취소하지 않는다. |
@@ -51,6 +53,16 @@
 | 종료 | `Drop for RuntimeSession` | 새 작업을 막고 활성 JS 취소를 요청한 뒤 큐를 닫고 작업자 스레드를 join한다. 제한 시간은 없다. |
 
 `TaskPriority`는 `spinon-core`에서 정의하며 Rust API에서는 열거형으로 전달한다. 정수 값 변환, 원시 포인터, NUL 종료 버퍼 계약은 `spinon-ffi`만 소유한다.
+
+`MemoryPressureLevel`은 V8의 `MemoryPressureLevel::{kNone, kModerate, kCritical}`에 대응한다. V8 고정 헤더의 동작 설명은 다음과 같다([`v8-isolate.h`](https://github.com/v8/v8/blob/7b50b62cb18f28617959e8452e2cd18195b38bcf/include/v8-isolate.h#L174-L182), [알림 API](https://github.com/v8/v8/blob/7b50b62cb18f28617959e8452e2cd18195b38bcf/include/v8-isolate.h#L865-L870)).
+
+| 단계 | V8에 전달하는 뜻 |
+| --- | --- |
+| `None` | 압박이 없다는 상태를 알린다. 즉시 회수를 요청하지 않는다. |
+| `Moderate` | 점진적 회수를 앞당길 수 있으며 GC pause가 커질 수 있다. |
+| `Critical` | 가능한 빨리 메모리를 회수하라는 강한 힌트이며 pause가 클 수 있다. |
+
+통지는 강제 GC가 아니며 수거 시점·수거량을 보장하지 않는다. 고정 V8 헤더는 긴 JavaScript 실행 중에도 다른 스레드에서 호출하도록 허용한다. 플랫폼 어댑터 호출은 동기이므로 UI 응답성과 함께 사용할 때는 플랫폼 control/background queue에서 전달한다.
 
 ## 내부 C ABI
 
@@ -63,12 +75,19 @@
 | `spinon_runtime_session_eval_with_priority` | eval과 같은 상태 코드 | 내부 실험용으로 세 등급 중 지정 |
 | `spinon_runtime_session_dispatch` | eval과 같은 상태 코드 | 기본 `user-blocking`; 등록 이벤트 핸들러에 노드 ID 전달 |
 | `spinon_runtime_session_dispatch_with_priority` | eval과 같은 상태 코드 | 내부 실험용으로 세 등급 중 지정 |
+| `spinon_runtime_session_notify_memory_pressure` | 성공 `0`, 인자·알 수 없는 단계 `-1`, 종료 중·종료 세션 `-6` | `SpinonMemoryPressureLevel`을 V8 알림으로 전달한다. 동기 알림이며 GC 완료를 기다리거나 보장하지 않는다. |
 | `spinon_runtime_priority_probe` | 성공 `0`, 인자 오류 `-1`, 출력 부족 `-3`, 검증 실패 `-7` | 새 실제 V8 세션에서 여섯 작업 단일 배치를 검사하는 개발용 진단; 제품 API 아님 |
 | `spinon_runtime_shutdown_probe` | 성공 `0`, 인자 오류 `-1`, 출력 부족 `-3`, 검증 실패 `-7` | 실제 V8 세션 종료와 명령 접수·거부 상태를 검사하는 개발용 진단; 제품 API 아님 |
 | `spinon_runtime_session_cancel` | 취소 요청 `0`, 실행 중 아님 `1`, 오류 음수 | 별도 제어 스레드에서 호출 가능 |
 | `spinon_runtime_session_free` | 반환값 없음 | 다른 세션 호출자와 동시 호출 금지, 취소·join으로 기다릴 수 있음 |
 
 모든 함수는 개발 실험 내부 ABI다. 이 오류 코드나 큐 크기를 앱 작성자에게 약속하지 않는다.
+
+### 호스트 메모리 압박 통지
+
+Android JNI의 `nativeSessionMemoryPressure`와 iOS `SpinonRunner.notifyRuntimeMemoryPressure`는 같은 C ABI를 호출할 수 있는 연결 지점이다. 현재 두 어댑터에는 OS 메모리 콜백, 임계값, 알림 시점 또는 자동 호출을 추가하지 않았다. 앱·플랫폼 정책이 정해지기 전까지 호출자는 단계를 명시적으로 넘겨야 한다. raw 세션 포인터는 기존처럼 `free`와 동시 사용하지 않는다. 내부 런타임은 통지 중 Isolate 해제를 막기 위해 control 잠금을 유지한다.
+
+이 알림은 `TerminateExecution()`이나 JS 이벤트 dispatch를 요청하지 않는다. V8은 전달된 힌트를 회수 휴리스틱에 반영하고, 실행 중이면 안전 지점에서 GC를 수행할 수 있다. 따라서 JS 이벤트 큐에 쌓인 버튼 작업을 처리하는 스케줄러 기능으로 간주하면 안 된다. V8 메모리 회수는 큰 일시 정지를 만들 수 있으며 알림만으로 즉시 해제나 정해진 회수량을 약속하지 않는다.
 
 ## Android 개발용 화면
 
@@ -79,7 +98,9 @@ adb shell am start -n dev.spinon.bootstrap/.MainActivity --ez spinon_runtime_thr
 adb logcat -s SpinonBootstrap:I
 ```
 
-화면에서 이벤트 전송, 무한 JS 평가, 취소, 0.5초 뒤 네이티브가 JS를 다시 넣는 모의를 실행한다. 이 모의는 비동기 JS API 계약이나 실제 네트워크 응답을 검증하지 않는다. 무한 루프 중 탭이 화면에 반응하는지 직접 확인하고, 취소 후 로그에서 같은 `owner_tid`와 `callback_tid`를 비교해야 한다.
+화면에서 이벤트 전송, 무한 JS 평가, 취소, 0.5초 뒤 네이티브가 JS를 다시 넣는 모의를 실행한다. 이 모의는 비동기 JS API 계약이나 실제 네트워크 응답을 검증하지 않는다. Android 에뮬레이터에서 2026-10-05 재현 시 긴 JS 중 화면 탭 수와 UI 상태는 갱신됐지만, 같은 세션의 JS dispatch는 현재 실행이 취소된 뒤 처리됐다. [실행 로그·화면·버튼 상태](evidence/s03-android-long-js-ui-2026-10-05.md)를 참고한다. 이는 UI 입력 처리가 멈춘 현상이 아니라 단일 Isolate에서 동기 JS 실행이 다음 JS 이벤트보다 앞선 결과다. Android 화면에서는 대기 상태에 긴 JS 시작만 활성화하고, 긴 평가 중에는 취소만 활성화한다. 실행 중 접수된 dispatch가 반환되기 전에는 긴 JS 시작을 다시 활성화하지 않는다. 취소 후 로그에서 같은 `owner_tid`와 `callback_tid`도 비교한다.
+
+회수 검증 버튼은 검증 전용 `SPINON_ENABLE_S03_DOM_GC_FIXTURE=1` 빌드에서만 노출한다. 기본 빌드에 버튼과 강제 GC hook이 없는 것은 의도된 격리다. Android 에뮬레이터에서 fixture-enabled 빌드를 실행해 `dom_gc=PASS`와 버튼 노출을 확인한 기록은 [별도 근거](evidence/s03-android-dom-gc-visible-2026-10-05.md)에 있다.
 
 ## iOS 시뮬레이터 개발용 화면
 
@@ -91,6 +112,8 @@ xcrun simctl launch --terminate-running-process booted dev.spinon.bootstrap --sp
 ```
 
 첫 실행 인자는 수동 검증 화면을 연다. 두 번째는 긴 JS, UIKit 타깃 액션, 취소, 메인 UI heartbeat와 대기 이벤트 처리를 자동 확인한다. 별도 수동 검증에서 시뮬레이터 터치 입력도 확인했다. 12초 watchdog은 취소를 요청할 뿐 V8 반환 전에 시나리오를 완료 처리하지 않는다. 분리 전 근거는 [런타임 세션 실험 기록](evidence/r06-v8-runtime-thread-2026-09-30.md), 분리 후 최신 로그·캡처와 검증 내용은 [우선순위 큐 재검증 기록](evidence/r06-task-scheduler-2026-09-30.md) 및 [iOS 원본 로그](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/r06-ios-simulator-post-split-2026-09-30.log)에 있다. 이 화면은 제품 API가 아니다.
+
+`--spinon-r06-auto`로 시작하면 자동으로 0.30초 뒤 이벤트를 보내고 0.75초 뒤 취소를 요청한다. 자동 모드의 취소 버튼 활성 구간은 짧다. `finishScenarioIfReady()`는 평가·이벤트 보고·취소 결과가 모두 돌아온 뒤 시작 버튼을 다시 켠다. 따라서 자동 검증 모드에서 이벤트 보고와 함께 시작 버튼이 다시 켜지는 것은 이벤트가 평가를 취소해서가 아니라 자동 취소와 대기 작업 완료가 끝났기 때문이다. 수동 UI 확인은 `--spinon-runtime-threads`만 사용한다.
 
 ## 미결정 사항
 
