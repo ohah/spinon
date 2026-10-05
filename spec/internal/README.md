@@ -70,6 +70,7 @@
 - [S03.3 · V8 weak wrapper Android·iOS 실행](./evidence/s03-v8-weak-wrapper-2026-10-04.md) — Android 16/API 36 ARM64 에뮬레이터와 iPhone 17 Pro/iOS 26.2 시뮬레이터에서 실제 GC·safe-point scan·Rust sweep·wrapper 재생성을 확인한 고정 fixture 및 한계.
 - [S03.3 · 반복 lifecycle Android·iOS 실행](./evidence/s03-repeat-lifecycle-2026-10-05.md) — native strong callback closure root 보존·해제와 6×32 element/text 반복 뒤 node·UTF-16 문자열·weak wrapper 기준선 복귀를 확인한 시뮬레이터 근거 및 한계.
 - [S03.3 · 세션 종료 경합 Android·iOS 실행](./evidence/s03-shutdown-2026-10-05.md) — 활성 평가 취소, 이미 접수한 명령 거부, 닫힌 세션의 후속 호출 거부와 작업자 회수를 확인한 제한 probe.
+- [S03.3 · 대량 wrapper scan 반복 관측](./evidence/s03-dynamic-registry-repeat-measurements-2026-10-05.md) — Android·iOS에서 프로세스 재시작 7회와 같은 Isolate 재scan 10회 wall-time 분포를 기록했다. 표본 변동이 커 비용 판정은 미완료다.
 - `evidence/s03-shutdown-android-2026-10-05.log` · `evidence/s03-shutdown-android-2026-10-05.png` · `evidence/s03-shutdown-ios-2026-10-05.log` · `evidence/s03-shutdown-ios-2026-10-05.png` — 실제 V8 결과 로그와 화면.
 - `evidence/s03-v8-weak-wrapper-android-2026-10-04.log` · `evidence/s03-v8-weak-wrapper-ios-2026-10-04.log` · `evidence/s03-v8-weak-wrapper-android-2026-10-04.png` · `evidence/s03-v8-weak-wrapper-ios-2026-10-04.png` — 원본 결과와 검증 화면.
 - `evidence/s03-v8-hostdocument-bridge-android-2026-10-03.log` · `evidence/s03-v8-hostdocument-bridge-ios-2026-10-03.log` — 해당 시뮬레이터 실행의 원본 부팅 결과 로그.

@@ -1,0 +1,9 @@
+2026-10-05 14:45:28.101 Df SpinonBootstrap[81602:2e5d19b] [dev.spinon.bootstrap:r06] SPINON_R06_IOS DOM 자원 기준선 · nodes=10 strings=226 wrappers=9
+2026-10-05 14:45:28.103 Df SpinonBootstrap[81602:2e5d19b] [dev.spinon.bootstrap:r06] SPINON_R06_IOS callback closure root·호출 · 통과 · nodes=12 strings=272
+2026-10-05 14:45:28.104 Df SpinonBootstrap[81602:2e5d19b] [dev.spinon.bootstrap:r06] SPINON_R06_IOS 16,385개 wrapper 유지 · 통과 · nodes=16395 wrappers=16394 scan=9528µs root-buffer=131072B
+2026-10-05 14:45:28.104 Df SpinonBootstrap[81602:2e5d19b] [dev.spinon.bootstrap:r06] SPINON_R06_IOS 16,385개 wrapper 재scan · 통과 · 표본 10회 · scan-us=25980,24919,17095,21027,8732,14035,13017,12774,22676,18318
+2026-10-05 14:45:28.105 Df SpinonBootstrap[81602:2e5d19b] [dev.spinon.bootstrap:r06] SPINON_R06_IOS 16,385개 wrapper 해제 · 통과 · empty=16385 reclaimed-buffer=65580B
+2026-10-05 14:45:28.106 Df SpinonBootstrap[81602:2e5d19b] [dev.spinon.bootstrap:r06] SPINON_R06_IOS 반복 수명 회수 · 통과 · 6/6회 · 회차당 32쌍 · 최대 빈 wrapper 64
+2026-10-05 14:45:28.107 Df SpinonBootstrap[81602:2e5d19b] [dev.spinon.bootstrap:r06] SPINON_R06_IOS DOM 자원 최종 기준선 · nodes=10 strings=226 wrappers=9
+2026-10-05 14:45:28.108 Df SpinonBootstrap[81602:2e5d19b] [dev.spinon.bootstrap:r06] SPINON_R06_IOS 회수 scan 계수 일관성 · 통과 · scanned=live+empty
+2026-10-05 14:45:28.109 Df SpinonBootstrap[81602:2e5d19b] [dev.spinon.bootstrap:r06] SPINON_R06_IOS 통과 · Rust 노드·UTF-16 문자열·weak wrapper 기준선 대조

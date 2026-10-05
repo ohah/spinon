@@ -38,6 +38,8 @@ bash tools/verify-s03-dom-lifecycle-simulators.sh
 
 scan 시간은 한 번씩 측정한 시뮬레이터 관측값이다. 반복 분포, 프레임 시간, 실기기 비용을 나타내지 않는다. buffer byte는 `std::vector` 원소 payload의 capacity만 계산하며 `std::map` node, allocator overhead, V8 heap, Rust 저장소, 전체 프로세스 RSS는 포함하지 않는다. vector capacity는 축소하지 않으므로 대량 회수 뒤에도 peak 용량이 isolate 종료까지 유지된다.
 
+후속 재측정에서 이 첫 scan 값이 대표적이지 않음을 확인했다. 재시작 7회와 같은 Isolate 재scan 10회의 분포·실행 조건은 [반복 scan 근거](s03-dynamic-registry-repeat-measurements-2026-10-05.md)를 참고한다.
+
 ## 실패 경로 검토 결과
 
 - 고정 resident-node/wrapper 개수만 제거했다. 한 batch 최대 256개 작업, 활성 external root 16,384개, UTF-16 문자열 budget, 양수 i32 ID 공간 검사는 별도 계약으로 유지된다.

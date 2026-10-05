@@ -1,6 +1,6 @@
 # S03.3 DOM 노드와 JS wrapper 수명 관리 계획
 
-**상태:** Rust/V8 동적 회수 경로 구현 · Android·iOS 시뮬레이터에서 16,385개 wrapper 생성·회수와 6회 반복 기준선 복귀 통과 · 한 번씩 관측한 scan 시간은 벤치마크가 아니며 비용 곡선·할당 실패·listener/external root 수명 검증 진행 중
+**상태:** Rust/V8 동적 회수 경로 구현 · Android·iOS 시뮬레이터에서 16,385개 wrapper 생성·회수와 6회 반복 기준선 복귀 통과 · 같은 Isolate 재scan도 측정했으나 wall-time 편차가 크고 비용이 높아 성능 설계 검증 진행 중 · 할당 실패·listener/external root 수명 미검증
 
 **상위 작업:** S03, J10, R03
 
@@ -42,7 +42,7 @@ S03.3에서는 JS façade ID를 다른 노드에 재사용하지 않는다. `Hos
 
 Rust HostDocument가 노드 저장소와 mark-and-sweep을 소유하고, V8 C++ adapter가 callback 없는 약한 handle의 자동 reset을 owner 안전 지점에서 검사한다. V8 unified heap이나 별도 Rust tracing-GC 의존성은 두지 않는다. node 개수 quota는 두지 않고 JS ID·Rust NodeId 소진을 검사한다. wrapper·root·회수 결과 buffer는 필요량에 따라 동적으로 늘린다. 호출 경계·root·문자열 예산·전체 scan의 비용·할당 실패와 shutdown 순서는 [내부 계약 0021](../spec/internal/0021-s03-dom-node-lifecycle.md)에 둔다.
 
-이번 결정은 첫 공식 릴리스 전 내부 `0.1.0` 시제품의 이전 16,384 resident-node quota를 갱신한다. 과거 고정 상한 근거는 당시 동작의 역사적 기록으로 남긴다. Rust `HostDocument` 도달성 계획·commit, bridge의 node/handle/string map 회수 callback, C++ weak `Global` scan과 owner safe-point caller는 구현돼 있다. 이 변경은 C++ registry entry 제한을 제거하고 scan/output buffer를 동적으로 키우며, node count와 문자열 수·scan buffer byte 진단을 연결한다. Rust/C++ 회수 결과 불변식이 깨지면 세션을 poisoned 처리하고 후속 JS 실행을 막는다. 강제 GC 요청 entry는 `SPINON_ENABLE_S03_DOM_GC_FIXTURE=1` 검증 빌드에서만 노출한다. Android·iOS 실제 V8 시뮬레이터에서 16,385개 wrapper 생성·보존·회수와 Rust 자원 기준선 복귀를 확인했다([대량 registry 실행 근거](../spec/internal/evidence/s03-dynamic-wrapper-registry-2026-10-05.md)). 16,394개 live wrapper를 관찰한 단일 scan은 Android 15,273μs, iOS 7,067μs였으나 분포·프레임 비용이 없는 시뮬레이터 표본이므로 성능 보장에 쓰지 않는다. Android 검증은 emulator 호환을 위해 해당 V8 artifact의 CFI를 끈 조건이었다. 동적 buffer 할당 실패 주입, 더 큰 입력의 비용 곡선과 실기기 검증은 남는다. Rust 표준 트리 컨테이너의 OS 메모리 고갈에서 프로세스 복구는 보장하지 않는다.
+이번 결정은 첫 공식 릴리스 전 내부 `0.1.0` 시제품의 이전 16,384 resident-node quota를 갱신한다. 과거 고정 상한 근거는 당시 동작의 역사적 기록으로 남긴다. Rust `HostDocument` 도달성 계획·commit, bridge의 node/handle/string map 회수 callback, C++ weak `Global` scan과 owner safe-point caller는 구현돼 있다. 이 변경은 C++ registry entry 제한을 제거하고 scan/output buffer를 동적으로 키우며, node count와 문자열 수·scan buffer byte 진단을 연결한다. Rust/C++ 회수 결과 불변식이 깨지면 세션을 poisoned 처리하고 후속 JS 실행을 막는다. 강제 GC 요청 entry는 `SPINON_ENABLE_S03_DOM_GC_FIXTURE=1` 검증 빌드에서만 노출한다. Android·iOS 실제 V8 시뮬레이터에서 16,385개 wrapper 생성·보존·회수와 Rust 자원 기준선 복귀를 확인했다([대량 registry 실행 근거](../spec/internal/evidence/s03-dynamic-wrapper-registry-2026-10-05.md)). 최초 단일 scan 수치 Android 15.273ms·iOS 7.067ms는 반복 표본을 대표하지 않았다. 7회 재시작과 같은 Isolate 10회 재scan에서 각각 큰 분산과 높은 wall-time을 관찰했다([반복 scan 근거](../spec/internal/evidence/s03-dynamic-registry-repeat-measurements-2026-10-05.md)). 이는 full scan을 계속 적용할 때의 비용 위험을 보여주지만 CPU time·스케줄러 지연·실기기는 분리 검증하지 않았다. Android 검증은 해당 에뮬레이터에서 `autib1716` SIGILL이 난 V8 artifact 대신 생성 설정에서 CFI를 끈 조건이었다. 실기기 호환을 증명하지 않는다. 동적 buffer 할당 실패 주입, 반복 가능한 release 비용 특성화와 실기기 검증은 남는다. Rust 표준 트리 컨테이너의 OS 메모리 고갈에서 프로세스 복구는 보장하지 않는다.
 
 ## Chromium 참고 모델
 
@@ -143,7 +143,7 @@ Lynx는 main thread와 background thread에 별도 JavaScript runtime을 둔다.
 - Android·iOS probe는 각 실행의 `document_collection_error`, poisoned 상태와 scanned/live/empty handle 계수를 검사한다. sticky callback 오류, poisoned runtime, 일관되지 않은 계수는 JS eval이 성공해도 전체 probe 실패다.
 - 세션 종료 중 자동 reset된 weak handle, pending host callback, 다른 세션 handle, Rust panic·할당 실패가 다른 노드나 세션을 손상하지 않는다.
 
-S03.3 완료에는 Rust core/bridge 실패 경로 fixture, Rust·Bun 검증, C++ weak handle owner safe-point 연결, Android·iOS의 실제 V8 실행, 반복 resource/closure/shutdown 검증, 비용 특성화와 실패 주입이 필요하다. Rust HostDocument·FFI collector와 실제 V8 registry에서 각각 16,385개 입력을 확인했다. Android·iOS의 대량 실행은 16,394개 live wrapper scan, 결과 vector 재확장, 16,385개 sweep과 기준선 복귀를 통과했으며 한 번씩의 시간·payload 관측값을 [실행 근거](../spec/internal/evidence/s03-dynamic-wrapper-registry-2026-10-05.md)에 남겼다. allocation failure 주입, 더 큰 규모의 반복 가능한 scan 비용, 실기기, listener/external root는 남아 상위 S03.3과 J10은 미완료다.
+S03.3 완료에는 Rust core/bridge 실패 경로 fixture, Rust·Bun 검증, C++ weak handle owner safe-point 연결, Android·iOS의 실제 V8 실행, 반복 resource/closure/shutdown 검증, 비용 특성화와 실패 주입이 필요하다. Rust HostDocument·FFI collector와 실제 V8 registry에서 각각 16,385개 입력을 확인했다. Android·iOS의 대량 실행은 16,394개 live wrapper scan, 결과 vector 재확장, 16,385개 sweep과 기준선 복귀를 통과했다. 재시작 7회와 같은 Isolate의 빈 평가 재scan 10회도 실행했으며, [반복 관측 근거](../spec/internal/evidence/s03-dynamic-registry-repeat-measurements-2026-10-05.md)에 높은 wall-time과 큰 편차를 기록했다. 이는 완성된 성능 벤치마크가 아니며 CPU time과 스케줄링 지연, release 빌드, 실기기를 분리 측정해야 한다. allocation failure 주입, 비용 특성화, 실기기, listener/external root는 남아 상위 S03.3과 J10은 미완료다.
 
 ## 구현 단계 체크리스트
 
@@ -154,8 +154,9 @@ S03.3 완료에는 Rust core/bridge 실패 경로 fixture, Rust·Bun 검증, C++
 - [x] Android·iOS 실제 V8에서 현재 native strong callback closure가 분리된 child wrapper를 보존하고, callback 교체 뒤 회수되는지 확인한다. [실행 근거](../spec/internal/evidence/s03-repeat-lifecycle-2026-10-05.md)
 - [x] Android·iOS에서 element·text 32쌍을 만들고 분리·회수하는 시나리오를 6회 실행해 node·UTF-16 string unit·live weak wrapper baseline 복귀와 `scanned = live + empty`를 확인한다. [실행 근거](../spec/internal/evidence/s03-repeat-lifecycle-2026-10-05.md)
 - [x] Rust HostDocument와 C ABI collector가 16,385개 노드·root를 수용하고, 작은 출력 buffer에 대한 무변경 응답 뒤 재시도 성공·전체 회수를 확인한다.
-- [x] Android·iOS 실제 V8에서 16,384개 초과 wrapper 생성·scan·sweep과 C++ root/result vector 동적 확장, `WeakRef` 해제, 자원 기준선 복귀를 검증하고 단일 관측 시간·payload를 기록한다. [실행 근거](../spec/internal/evidence/s03-dynamic-wrapper-registry-2026-10-05.md)
-- [ ] C++ 동적 buffer 할당 실패 주입, 더 큰 규모의 반복 가능한 scan 비용 곡선, V8 heap/RSS, 장기 반복과 실기기를 검증한다.
+- [x] Android·iOS 실제 V8에서 16,384개 초과 wrapper 생성·scan·sweep과 C++ root/result vector 동적 확장, `WeakRef` 해제, 자원 기준선 복귀를 검증하고 10회 동일 Isolate 재scan 및 7회 재시작 표본을 기록한다. [대량 실행](../spec/internal/evidence/s03-dynamic-wrapper-registry-2026-10-05.md) · [반복 scan 관측과 한계](../spec/internal/evidence/s03-dynamic-registry-repeat-measurements-2026-10-05.md)
+- [ ] 큰 wall-time 편차의 원인을 CPU time·스케줄러 지연·release 빌드와 분리하고, scan 비용을 줄이는 후보를 같은 생존집합 oracle로 비교한다.
+- [ ] C++ 동적 buffer 할당 실패 주입, V8 heap/RSS, 장기 반복과 실기기를 검증한다.
 - [x] Android·iOS 시뮬레이터에서 활성 eval 취소, 대기·종료 뒤 호출 거부, 반복 close와 worker join을 검증한다. [실행 근거](../spec/internal/evidence/s03-shutdown-2026-10-05.md)
 - [ ] DOM EventTarget listener와 cross-heap closure cycle은 J12 명세와 구현에서 별도로 해결한다.
 

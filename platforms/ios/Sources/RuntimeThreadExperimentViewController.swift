@@ -3,6 +3,7 @@ import OSLog
 
 final class RuntimeThreadExperimentViewController: UIViewController {
     private let lifecycleLargeRegistryNodeCount = 16_385
+    private let lifecycleLargeRegistryScanSamples = 10
     private let automaticallyRun: Bool
     private let runPriorityProbe: Bool
     private let runShutdownProbe: Bool
@@ -342,6 +343,26 @@ final class RuntimeThreadExperimentViewController: UIViewController {
             let expectedLargeNodes = baselineNodes + self.lifecycleLargeRegistryNodeCount
             let expectedLargeWrappers = baselineWrapperHandles
                 + self.lifecycleLargeRegistryNodeCount
+            var largeRegistryScanSamplesUs = [Int]()
+            var largeRegistryRepeatedScansPassed = true
+            for _ in 0..<self.lifecycleLargeRegistryScanSamples {
+                let scanReport = SpinonRunner.evalRuntimeSession(handle, source: "") ?? "응답 없음"
+                let scanUs = self.integerField("document_collection_last_scan_us", in: scanReport)
+                let samplePassed = scanReport.hasPrefix("status=0 ")
+                    && self.collectionIsHealthy(scanReport)
+                    && self.integerField("document_nodes", in: scanReport) == expectedLargeNodes
+                    && self.integerField("document_collection_scanned_handles", in: scanReport)
+                        == expectedLargeWrappers
+                    && self.integerField("document_collection_live_handles", in: scanReport)
+                        == expectedLargeWrappers
+                    && self.integerField("document_collection_empty_handles", in: scanReport) == 0
+                    && scanUs >= 0
+                guard samplePassed else {
+                    largeRegistryRepeatedScansPassed = false
+                    break
+                }
+                largeRegistryScanSamplesUs.append(scanUs)
+            }
             let largeSetupScanUs = self.integerField(
                 "document_collection_last_scan_us", in: largeSetup)
             let largeSetupRootBufferBytes = self.integerField(
@@ -358,6 +379,8 @@ final class RuntimeThreadExperimentViewController: UIViewController {
                 && self.integerField("document_collection_empty_handles", in: largeSetup) == 0
                 && largeSetupRootBufferBytes >= expectedLargeWrappers * MemoryLayout<Int32>.size
                 && largeSetupScanUs >= 0
+                && largeRegistryRepeatedScansPassed
+                && largeRegistryScanSamplesUs.count == self.lifecycleLargeRegistryScanSamples
             let largeRelease = self.callLifecycleFixture(handle, "releaseLargeRegistry")
             let largeEmptyWrappers = self.integerField(
                 "document_collection_empty_handles", in: largeRelease)
@@ -419,6 +442,7 @@ final class RuntimeThreadExperimentViewController: UIViewController {
             let passed = rootCasesPassed && initialBaselineReturned
                 && callbackClosureRootPassed && callbackClosureReleased
                 && largeRegistryRetained && largeRegistryReleased && repeatedBaseline
+                && largeRegistryRepeatedScansPassed
                 && scanStatsPassed
             DispatchQueue.main.async {
                 guard !self.isClosing else { return }
@@ -427,6 +451,7 @@ final class RuntimeThreadExperimentViewController: UIViewController {
                 self.appendReport("callback closure root·호출 · \(callbackClosureRootPassed ? "통과" : "실패") · nodes=\(callbackNodes) strings=\(callbackStringUnits)")
                 self.appendReport("callback 교체 후 해제·기준선 복귀 · \(callbackClosureReleased ? "통과" : "실패")")
                 self.appendReport("16,385개 wrapper 유지 · \(largeRegistryRetained ? "통과" : "실패") · nodes=\(self.integerField("document_nodes", in: largeSetup)) wrappers=\(self.integerField("document_collection_live_handles", in: largeSetup)) scan=\(largeSetupScanUs)µs root-buffer=\(largeSetupRootBufferBytes)B")
+                self.appendReport("16,385개 wrapper 재scan · \(largeRegistryRepeatedScansPassed ? "통과" : "실패") · 표본 \(largeRegistryScanSamplesUs.count)회 · scan-us=\(largeRegistryScanSamplesUs.map(String.init).joined(separator: ","))")
                 self.appendReport("16,385개 wrapper 해제 · \(largeRegistryReleased ? "통과" : "실패") · empty=\(largeEmptyWrappers) reclaimed-buffer=\(largeReclaimedNodeBufferBytes)B")
                 self.appendReport("반복 수명 회수 · \(repeatedBaseline ? "통과" : "실패") · \(baselineReturnRounds)/6회 · 회차당 32쌍 · 최대 빈 wrapper \(maximumEmptyWrappers)")
                 self.appendReport("DOM 자원 최종 기준선 · nodes=\(finalNodes) strings=\(finalStringUnits) wrappers=\(self.integerField("document_collection_scanned_handles", in: finalReport))")

@@ -35,6 +35,7 @@ public final class MainActivity extends Activity {
     private static final int LIFECYCLE_STRESS_NODES_PER_ROUND =
             LIFECYCLE_STRESS_CYCLES_PER_ROUND * 2;
     private static final int LIFECYCLE_LARGE_REGISTRY_NODES = 16_385;
+    private static final int LIFECYCLE_LARGE_REGISTRY_SCAN_SAMPLES = 10;
 
     static {
         System.loadLibrary("spinon_bootstrap");
@@ -488,6 +489,29 @@ public final class MainActivity extends Activity {
             long expectedLargeNodes = baselineNodes + LIFECYCLE_LARGE_REGISTRY_NODES;
             long expectedLargeWrappers = baselineWrapperHandles
                     + LIFECYCLE_LARGE_REGISTRY_NODES;
+            StringBuilder largeRegistryScanSamplesUs = new StringBuilder();
+            boolean largeRegistryRepeatedScansPassed = true;
+            for (int sample = 0; sample < LIFECYCLE_LARGE_REGISTRY_SCAN_SAMPLES; sample++) {
+                String scanReport = decode(nativeSessionEval(handle, new byte[0]));
+                long scanUs = reportLongField(scanReport, "document_collection_last_scan_us");
+                boolean samplePassed = scanReport.startsWith("status=0 ")
+                        && reportHasHealthyCollection(scanReport)
+                        && reportLongField(scanReport, "document_nodes") == expectedLargeNodes
+                        && reportLongField(scanReport, "document_collection_scanned_handles")
+                                == expectedLargeWrappers
+                        && reportLongField(scanReport, "document_collection_live_handles")
+                                == expectedLargeWrappers
+                        && reportLongField(scanReport, "document_collection_empty_handles") == 0
+                        && scanUs >= 0;
+                if (!samplePassed) {
+                    largeRegistryRepeatedScansPassed = false;
+                    break;
+                }
+                if (largeRegistryScanSamplesUs.length() > 0) {
+                    largeRegistryScanSamplesUs.append(',');
+                }
+                largeRegistryScanSamplesUs.append(scanUs);
+            }
             long largeSetupScanUs = reportLongField(
                     largeSetup, "document_collection_last_scan_us");
             long largeSetupRootBufferBytes = reportLongField(
@@ -503,7 +527,10 @@ public final class MainActivity extends Activity {
                             == expectedLargeWrappers
                     && reportLongField(largeSetup, "document_collection_empty_handles") == 0
                     && largeSetupRootBufferBytes >= expectedLargeWrappers * Integer.BYTES
-                    && largeSetupScanUs >= 0;
+                    && largeSetupScanUs >= 0
+                    && largeRegistryRepeatedScansPassed
+                    && largeRegistryScanSamplesUs.toString().split(",", -1).length
+                            == LIFECYCLE_LARGE_REGISTRY_SCAN_SAMPLES;
             String largeRelease = callLifecycleFixture(handle, "releaseLargeRegistry");
             long largeEmptyWrappers = reportLongField(
                     largeRelease, "document_collection_empty_handles");
@@ -576,7 +603,8 @@ public final class MainActivity extends Activity {
                     && reportScanCountsConsistent(finalReport);
             boolean passed = rootCasesPassed && initialBaselineReturned
                     && callbackClosureRootPassed && callbackClosureReleased
-                    && largeRegistryRetained && largeRegistryReleased
+                    && largeRegistryRetained && largeRegistryRepeatedScansPassed
+                    && largeRegistryReleased
                     && repeatedBaseline && scanStatsPassed;
             lifecycleGcPassed = passed;
             return ("status=" + (passed ? "0" : "-1")
@@ -591,6 +619,8 @@ public final class MainActivity extends Activity {
                     + " large_registry_nodes=" + LIFECYCLE_LARGE_REGISTRY_NODES
                     + " large_registry_empty_wrappers=" + largeEmptyWrappers
                     + " large_registry_scan_us=" + largeSetupScanUs
+                    + " large_registry_scan_samples=" + LIFECYCLE_LARGE_REGISTRY_SCAN_SAMPLES
+                    + " large_registry_scan_samples_us=" + largeRegistryScanSamplesUs
                     + " large_registry_root_buffer_bytes=" + largeSetupRootBufferBytes
                     + " large_registry_reclaimed_buffer_bytes=" + largeReclaimedNodeBufferBytes
                     + " initial_baseline_return=" + (initialBaselineReturned ? "PASS" : "FAIL")
