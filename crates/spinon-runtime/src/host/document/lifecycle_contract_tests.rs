@@ -2,8 +2,7 @@
 mod limits;
 
 #[test]
-fn s032_resident_limits_match_the_s033_contract_fixture() {
-    assert_eq!(super::MAX_DOCUMENT_NODES, limits::EXPECTED_NODE_QUOTA);
+fn s032_resource_budgets_match_the_s033_contract_fixture() {
     assert_eq!(
         limits::EXPECTED_EXTERNAL_ROOT_LIMIT,
         16_384,

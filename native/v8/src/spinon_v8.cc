@@ -4,6 +4,7 @@
 #include <v8.h>
 
 #include <chrono>
+#include <limits>
 #include <map>
 #include <memory>
 #include <mutex>
@@ -90,7 +91,6 @@ struct OwnedDocumentOperation {
 };
 
 constexpr size_t kMaximumDocumentOperations = 256;
-constexpr size_t kMaximumDocumentNodes = 16'384;
 constexpr size_t kMaximumBatchStringUnits = 1'048'576;
 constexpr int kMaximumNameUnits = 1024;
 constexpr int kMaximumValueUnits = 1'048'576;
@@ -99,6 +99,14 @@ constexpr char16_t kHtmlNamespace[] = u"http://www.w3.org/1999/xhtml";
 constexpr char kDomFacadeSource[] =
 #include "spinon_dom_facade.inc"
     ;
+
+template <typename T>
+uint64_t VectorPayloadBytes(const std::vector<T> &values) {
+  const size_t capacity = values.capacity();
+  const uint64_t max_bytes = std::numeric_limits<uint64_t>::max();
+  if (capacity > max_bytes / sizeof(T)) return max_bytes;
+  return static_cast<uint64_t>(capacity) * sizeof(T);
+}
 
 class ScopedBoolean {
  public:
@@ -536,12 +544,6 @@ void RegisterNodeWrapper(const v8::FunctionCallbackInfo<v8::Value> &args) {
     args.GetReturnValue().Set(true);
     return;
   }
-  if (runtime->node_wrappers.size() >= kMaximumDocumentNodes) {
-    ThrowDocumentError(isolate,
-                       "Node wrapper registry가 허용 개수를 초과했습니다",
-                       false, "QuotaExceededError");
-    return;
-  }
   try {
     v8::Global<v8::Object> weak_wrapper(isolate, wrapper);
     weak_wrapper.SetWeak();
@@ -634,6 +636,10 @@ int32_t CollectDocumentAtSafePoint(SpinonV8Runtime *runtime) {
                               Clock::now() - scan_started)
                               .count();
     stats.last_scan_duration_us = duration < 0 ? 0 : static_cast<uint64_t>(duration);
+    stats.wrapper_root_buffer_bytes =
+        VectorPayloadBytes(runtime->wrapper_root_ids);
+    stats.reclaimed_node_buffer_bytes =
+        VectorPayloadBytes(runtime->reclaimed_node_ids);
   };
   auto defer = [&](const std::string &message) {
     runtime->collection_error = message;
@@ -661,26 +667,55 @@ int32_t CollectDocumentAtSafePoint(SpinonV8Runtime *runtime) {
       ++stats.live_handle_count;
     }
   }
-  if (runtime->node_wrappers.size() > kMaximumDocumentNodes) {
-    return defer("Node wrapper registry가 허용 개수를 초과했습니다");
-  }
-  for (const auto &entry : runtime->node_wrappers) {
-    if (entry.second.IsEmpty()) continue;
-    if (runtime->wrapper_root_ids.size() == kMaximumDocumentNodes) {
-      return defer("Node wrapper root가 허용 개수를 초과했습니다");
+  try {
+    for (const auto &entry : runtime->node_wrappers) {
+      if (entry.second.IsEmpty()) continue;
+      if (runtime->wrapper_root_ids.size() ==
+          runtime->wrapper_root_ids.max_size()) {
+        return defer("Node wrapper root buffer 크기가 지원 범위를 넘었습니다");
+      }
+      runtime->wrapper_root_ids.push_back(entry.first);
     }
-    runtime->wrapper_root_ids.push_back(entry.first);
+  } catch (const std::bad_alloc &) {
+    return defer("Node wrapper root buffer 메모리를 확보하지 못했습니다");
   }
 
   size_t reclaimed_count = 0;
   char callback_error[1024] = {};
-  const int32_t status = runtime->document_collect_callback(
-      runtime->document_user_data,
-      runtime->wrapper_root_ids.empty() ? nullptr
-                                        : runtime->wrapper_root_ids.data(),
-      runtime->wrapper_root_ids.size(), runtime->reclaimed_node_ids.data(),
-      runtime->reclaimed_node_ids.size(), &reclaimed_count, callback_error,
-      sizeof(callback_error));
+  auto collect = [&]() {
+    return runtime->document_collect_callback(
+        runtime->document_user_data,
+        runtime->wrapper_root_ids.empty() ? nullptr
+                                          : runtime->wrapper_root_ids.data(),
+        runtime->wrapper_root_ids.size(), runtime->reclaimed_node_ids.data(),
+        runtime->reclaimed_node_ids.size(), &reclaimed_count, callback_error,
+        sizeof(callback_error));
+  };
+  int32_t status = collect();
+  if (status == SPINON_DOCUMENT_CALLBACK_BUFFER_TOO_SMALL) {
+    const size_t required_capacity = reclaimed_count;
+    if (required_capacity <= runtime->reclaimed_node_ids.size()) {
+      return poison("HostDocument 회수 callback의 필요 buffer 크기가 잘못되었습니다");
+    }
+    if (required_capacity > runtime->reclaimed_node_ids.max_size()) {
+      return defer("HostDocument 회수 결과 buffer 크기가 지원 범위를 넘었습니다");
+    }
+    size_t grown_size = required_capacity;
+    const size_t current_size = runtime->reclaimed_node_ids.size();
+    if (current_size > 0 &&
+        current_size <= runtime->reclaimed_node_ids.max_size() / 2) {
+      const size_t doubled_size = current_size * 2;
+      if (grown_size < doubled_size) grown_size = doubled_size;
+    }
+    try {
+      runtime->reclaimed_node_ids.resize(grown_size);
+    } catch (const std::bad_alloc &) {
+      return defer("HostDocument 회수 결과 buffer 메모리를 확보하지 못했습니다");
+    }
+    reclaimed_count = 0;
+    callback_error[0] = '\0';
+    status = collect();
+  }
   if (status != SPINON_DOCUMENT_CALLBACK_OK) {
     return defer(callback_error[0] == '\0'
                      ? "HostDocument weak wrapper 회수가 실패했습니다"
@@ -722,14 +757,6 @@ extern "C" SpinonV8Runtime *spinon_v8_runtime_new(
   std::call_once(platform_once, InitializeV8);
   auto *runtime = new (std::nothrow) SpinonV8Runtime;
   if (runtime == nullptr) return nullptr;
-  try {
-    runtime->wrapper_root_ids.reserve(kMaximumDocumentNodes);
-    // Rust callback의 출력 포인터 범위를 실제 vector 원소로 확보합니다.
-    runtime->reclaimed_node_ids.resize(kMaximumDocumentNodes);
-  } catch (const std::bad_alloc &) {
-    delete runtime;
-    return nullptr;
-  }
   runtime->node_callback = node_callback;
   runtime->text_callback = text_callback;
   runtime->document_commit_callback = document_commit_callback;

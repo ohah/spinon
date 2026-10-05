@@ -1,4 +1,4 @@
-use super::{HostDocumentBridge, MAX_DOCUMENT_NODES, NodeStringUsage};
+use super::{HostDocumentBridge, NodeStringUsage};
 use spinon_core::HostNodeHandle;
 use std::ffi::{c_char, c_void};
 use std::panic::{AssertUnwindSafe, catch_unwind};
@@ -34,9 +34,6 @@ impl HostDocumentBridge {
         &mut self,
         roots: &[HostNodeHandle],
     ) -> Result<Vec<i32>, String> {
-        if roots.len() > MAX_DOCUMENT_NODES {
-            return Err("노드 회수 root가 허용 개수를 초과했습니다".to_owned());
-        }
         self.validate_collection_indexes()?;
 
         let plan = self
@@ -160,7 +157,7 @@ unsafe fn collect_document(
             "문서 회수 인자가 비어 있습니다".to_owned(),
         ));
     }
-    if root_count > MAX_DOCUMENT_NODES || (root_count > 0 && roots.is_null()) {
+    if root_count > 0 && roots.is_null() {
         return Err((
             CALLBACK_INVALID,
             "문서 회수 root 인자가 잘못되었습니다".to_owned(),

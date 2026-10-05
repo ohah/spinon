@@ -5,7 +5,6 @@ use std::collections::{BTreeMap, BTreeSet};
 use std::panic::{AssertUnwindSafe, catch_unwind, resume_unwind};
 
 pub(crate) const MAX_BATCH_OPERATIONS: usize = 256;
-const MAX_DOCUMENT_NODES: usize = 16_384;
 const MAX_PENDING_EXTERNAL_IDS: usize = MAX_BATCH_OPERATIONS;
 const MAX_DOCUMENT_STRING_UNITS: usize = 16_777_216;
 const MAX_NAME_UNITS: usize = 1024;
@@ -131,22 +130,6 @@ impl HostDocumentBridge {
             ));
         }
         batch::validate_string_limits(operations)?;
-
-        let new_nodes = operations
-            .iter()
-            .filter(|operation| {
-                matches!(
-                    operation,
-                    DocumentBatchOperation::CreateElement { .. }
-                        | DocumentBatchOperation::CreateText { .. }
-                )
-            })
-            .count();
-        if self.handles.len().saturating_add(new_nodes) > MAX_DOCUMENT_NODES {
-            return Err(format!(
-                "QuotaExceededError: 런타임 문서는 최대 {MAX_DOCUMENT_NODES}개 노드를 보존합니다"
-            ));
-        }
 
         let mut stage = DocumentStage {
             handles: self.handles.clone(),
