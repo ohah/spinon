@@ -63,6 +63,8 @@ typedef struct SpinonDocumentCollectionStats {
   uint64_t empty_handle_count;
   uint64_t last_scan_start_ns;
   uint64_t last_scan_duration_us;
+  uint64_t wrapper_root_buffer_bytes;
+  uint64_t reclaimed_node_buffer_bytes;
   uint32_t runtime_poisoned;
 } SpinonDocumentCollectionStats;
 typedef int32_t (*SpinonDocumentQueryCallback)(

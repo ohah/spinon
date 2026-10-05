@@ -8,7 +8,7 @@
 
 ## 목적과 범위
 
-이 문서는 Rust HostDocument와 V8 JavaScript heap 사이의 노드 생존, wrapper 정체성, 약한 handle 검사, 자원 한도와 세션 종료 계약을 고정한다. S03.2의 동작을 소급 변경하지 않는다. Rust 회수 callback과 V8 weak wrapper scan을 연결했고 Android·iOS 실제 V8 기본·반복 fixture에서 고정 입력을 검증했다. 별도 진단으로 활성 평가·대기 명령·닫힌 세션 제출의 제한된 종료 경합도 확인했다. 최대 scan 비용, listener·external root lease와 raw C ABI 포인터를 동시 해제하는 경로는 여전히 미검증 또는 금지 경계이며, 이 내부 경로는 공개 DOM 지원 완료를 뜻하지 않는다.
+이 문서는 Rust HostDocument와 V8 JavaScript heap 사이의 노드 생존, wrapper 정체성, 약한 handle 검사, 자원 계측과 세션 종료 계약을 고정한다. S03.2의 고정 노드 수 quota는 동적 저장소와 ID 범위 검사로 대체한다. Rust 회수 callback과 V8 weak wrapper scan을 연결했고 Android·iOS 실제 V8 기본·반복 fixture에서 고정 입력을 검증했다. 별도 진단으로 활성 평가·대기 명령·닫힌 세션 제출의 제한된 종료 경합도 확인했다. 16,384개를 넘는 runtime 회수 경로, 최대 scan 비용, listener·external root lease와 raw C ABI 포인터를 동시 해제하는 경로는 여전히 미검증 또는 금지 경계이며, 이 내부 경로는 공개 DOM 지원 완료를 뜻하지 않는다.
 
 S03.3 구현은 Rust가 노드 저장소와 mark-and-sweep을 소유하고, V8 C++ adapter가 자동 reset되는 약한 wrapper handle을 안전 지점에서 검사하는 경계를 따른다. V8 unified heap, 별도 Rust GC, 앱에 노출되는 JSI 유사 API는 이 범위에서 사용하지 않는다.
 
@@ -53,16 +53,16 @@ HostDocument의 BTreeMap 보유 자체는 root가 아니다. 노드 관계, wrap
 
 - V8 weak wrapper registry는 isolate별 C++ runtime이 소유한다. JS의 강한 Map으로 wrapper를 보관하지 않는다. wrapper에서 ID를 찾는 WeakMap은 사용할 수 있으나, 그것을 node-to-wrapper canonical cache로 간주하지 않는다.
 - wrapper `Global<Object>`에는 callback 인자가 없는 `SetWeak()`를 사용한다. V8은 GC가 객체를 도달 불가로 판정하면 해당 phantom handle을 자동으로 reset한다. callback 인자형 `SetWeak()`은 최선 노력 방식이며 호출 시점이나 호출 자체가 보장되지 않는다. callback을 쓰면 첫 단계에서 해당 handle을 `Reset()`해야 하고, 그 뒤에는 V8 API를 호출할 수 없다. 따라서 callback을 Rust 노드 회수의 필수 신호로 사용하지 않는다. 아래는 저장소가 고정한 V8 revision `7b50b62cb18f28617959e8452e2cd18195b38bcf`의 원본이다. [`PersistentBase::SetWeak()` 계약](https://chromium.googlesource.com/v8/v8.git/+/7b50b62cb18f28617959e8452e2cd18195b38bcf/include/v8-persistent-handle.h) · [약한 handle 자동 reset 구현](https://chromium.googlesource.com/v8/v8.git/+/7b50b62cb18f28617959e8452e2cd18195b38bcf/src/handles/global-handles.cc) · [`IsEmpty()` 계약](https://chromium.googlesource.com/v8/v8.git/+/7b50b62cb18f28617959e8452e2cd18195b38bcf/include/v8-handle-base.h)
-- 가장 바깥 JS 작업과 microtask checkpoint가 끝난 owner 안전 지점마다 C++가 전체 weak registry를 선형 검사한다. `Global::IsEmpty()`인 wrapper ID만 root snapshot에서 제외하고 live wrapper의 façade ID를 Rust에 넘긴다. Rust는 각 ID를 현재 문서의 `HostNodeHandle`로 확인한 뒤 HostRoot와 함께 도달성을 계산한다. 이 root snapshot을 Rust 계획·commit이 끝날 때까지 고정하며 중간에 JS/V8을 재진입하거나 wrapper를 바꾸지 않는다. empty wrapper의 ID↔handle 매핑은 노드가 다른 root로 살아 있는 동안 보존하고, 노드가 실제 sweep될 때 함께 제거한다. registry 크기는 resident node 한도인 16,384개 이하로 제한한다. root·reclaimed ID 벡터는 상한까지 사전 확보하지만 `std::map` 항목은 노드 wrapper 등록 전에 개별 할당한다. 매 safe point 최대 16,384개를 확인하는 비용은 아직 제품 성능 실험에서 측정하지 않았다.
+- 가장 바깥 JS 작업과 microtask checkpoint가 끝난 owner 안전 지점마다 C++가 전체 weak registry를 선형 검사한다. `Global::IsEmpty()`인 wrapper ID만 root snapshot에서 제외하고 live wrapper의 façade ID를 Rust에 넘긴다. Rust는 각 ID를 현재 문서의 `HostNodeHandle`로 확인한 뒤 HostRoot와 함께 도달성을 계산한다. 이 root snapshot을 Rust 계획·commit이 끝날 때까지 고정하며 중간에 JS/V8을 재진입하거나 wrapper를 바꾸지 않는다. empty wrapper의 ID↔handle 매핑은 노드가 다른 root로 살아 있는 동안 보존하고, 노드가 실제 sweep될 때 함께 제거한다. Registry와 root snapshot에는 고정 노드 개수 상한을 두지 않고 필요량에 따라 확장한다. 외부 root ID 결과 buffer가 작으면 Rust가 필요 크기를 반환하고 C++가 buffer를 확장해 재호출한다. 매 safe point 검사는 현재 registry 전체에 선형 비례하며 최대 규모 비용은 검증 항목이다.
 - 안전 지점 밖에서 Rust sweep을 실행하지 않는다. 중첩 실행 중 재진입한 회수 요청은 pending 표시만 남기며 재귀 실행하지 않는다. Rust가 전체 mark set·삭제 목록·revision 결과를 준비해 commit 성공을 반환한 뒤에만 C++가 빈 weak registry slot을 제거한다. 실패하면 Rust 상태와 C++ registry 항목을 보존하고 다음 안전 지점에 재시도한다.
 - V8 GC 시점 자체는 통제하지 않는다. 객체가 JS에서 도달 불가해도 GC가 아직 실행되지 않았으면 weak handle은 비어 있지 않을 수 있고, 그 노드는 보수적으로 유지된다. quota 오류 뒤에 GC나 자동 재시도를 강제하지 않는다.
 
-### registry 상한과 검사 실패
+### 동적 registry와 검사 실패
 
-- isolate마다 `facade ID → Global<Object>` registry와 최대 16,384개 root/reclaimed ID vector를 둔다. 두 vector는 runtime 생성 때 상한까지 사전 확보하고 registry entry는 wrapper 등록 때 추가한다. resident node quota를 넘는 weak handle은 등록하지 않는다. 별도 알림 queue, overflow fallback cache, 사용자 callback은 없다.
-- registry scan/root snapshot 준비, owner·generation 검증, mark buffer 또는 삭제 목록 구성에서 실패하면 sweep을 연기한다. 노드·문자열·revision·registry 상태는 commit 전과 같아야 한다.
-- scan 대상이 상한을 넘거나 중복된 `HostNodeHandle`/다른 generation을 포함하면 fail-closed하고 세션 진단에 기록한다. scanner 또는 collector가 복구된 뒤 다시 시도할 수 있다.
-- 지연이나 GC 미실행은 quota 회수를 늦출 수 있으나 살아 있는 wrapper의 조기 회수를 허용하지 않는다. 런타임 진단은 전체 scan 횟수, 마지막 scan의 단조시계 시작 시각(ns)·소요 시간(μs), scanned/live/empty handle 수, 누적 deferred 횟수와 마지막 오류를 세션 종료까지 보존한다. 성공한 scan은 마지막 오류를 지우지 않는다.
+- isolate마다 `facade ID → Global<Object>` registry와 동적으로 확장되는 root/reclaimed ID vector를 둔다. 새 weak handle은 메모리 할당에 성공하면 등록한다. root snapshot은 `std::vector`의 성장 정책을 따르고, 회수 결과 buffer는 Rust가 알린 필요 크기까지 여유 용량을 기하급수적으로 확장한다. 이 두 buffer의 payload byte 수와 registry entry 수를 runtime 진단에 기록한다. map allocator overhead와 Rust tree/string 전체 byte 수는 이 진단에 포함되지 않는다.
+- C++ root buffer 또는 Rust 회수 임시 buffer를 확보하지 못하면 sweep을 연기하고 문서·문자열·revision·registry 상태를 유지한다. 결과 buffer가 부족하다는 응답은 Rust가 collection commit 전에 반환하므로, buffer를 확장한 뒤 재호출해도 첫 호출에서 상태가 변경되지 않는다. Rust BTreeMap 노드 할당은 표준 allocator의 fallible API를 제공하지 않으므로 프로세스 전체 메모리 고갈이 복구 가능한 오류로 항상 전달된다고 보장하지 않는다.
+- 중복된 `HostNodeHandle`/다른 generation, 잘못된 출력 크기·정렬은 fail-closed하고 세션 진단에 기록한다. scanner 또는 collector의 일시 할당 실패는 다음 safe point에서 다시 시도할 수 있다. 식별 ID 공간 소진은 checked increment 오류로 닫고 ID를 재사용하지 않는다.
+- 지연이나 GC 미실행은 실제 회수를 늦출 수 있으나 살아 있는 wrapper의 조기 회수를 허용하지 않는다. 런타임 진단은 전체 scan 횟수, 마지막 scan의 단조시계 시작 시각(ns)·소요 시간(μs), scanned/live/empty handle 수, root·reclaimed buffer payload bytes, 누적 deferred 횟수와 마지막 오류를 세션 종료까지 보존한다. Rust 문서 진단의 `document_nodes`와 `document_string_units`도 함께 기록한다. 성공한 scan은 마지막 오류를 지우지 않는다.
 
 ### 내부 Rust callback ABI
 
@@ -84,7 +84,7 @@ HostDocument의 BTreeMap 보유 자체는 root가 아니다. 노드 관계, wrap
 | `-2` | 중복·unknown/stale root, 불일치 인덱스, allocation·그래프·계약 검증 실패. 변경 전 상태를 유지한다. |
 | `-3` | unwind 가능한 panic을 callback 경계에서 잡음. `panic=abort` 빌드에서는 프로세스 복구를 보장하지 않는다. |
 
-성공 시 Rust는 회수 ID를 C++가 제공한 output buffer에 복사한 뒤 반환한다. C++는 반환 count·정렬·중복과 live Global 부재를 확인하고, 회수 ID의 weak Global만 owner isolate에서 제거한다. Rust callback 오류는 commit 전에 발생하므로 Rust 문서와 C++ registry를 보존하고, 성공한 JS eval/dispatch status를 덮어쓰지 않은 채 `document_collection_error`와 누적 deferred 횟수에 남긴다. 성공 scan 뒤에도 마지막 오류는 세션 종료까지 유지한다. Rust 성공 반환 뒤 C++가 결과 불변식을 위반한 것을 발견하면 cross-language 상태를 안전하게 복구할 수 없으므로 runtime을 poisoned 상태로 만들고 후속 eval/dispatch를 거부한다. 이 경우 세션을 닫고 새로 만들어야 한다. 이 ABI와 `getNodeWrapper`·`registerNodeWrapper`·`unregisterNodeWrapper`는 facade 초기화 때 closure 안에 캡처한 뒤 `spinon.__internal`에서 삭제하므로 앱 JavaScript에서 접근할 수 없다. C++ registry도 16,384개 상한을 강제한다. `requestLifecycleCollectionForTesting()`은 `SPINON_ENABLE_S03_DOM_GC_FIXTURE=1` 검증 빌드에서만 존재한다.
+성공 시 Rust는 회수 ID를 C++가 제공한 output buffer에 복사한 뒤 반환한다. C++는 반환 count·정렬·중복과 live Global 부재를 확인하고, 회수 ID의 weak Global만 owner isolate에서 제거한다. 결과 buffer가 부족하면 Rust callback은 문서·계수를 변경하지 않고 필요한 capacity를 반환한다. C++는 결과 vector를 동적으로 늘려 한 번 재호출하며, 재할당 실패나 재호출 실패는 회수를 미룬다. Rust callback 오류는 commit 전에 발생하므로 Rust 문서와 C++ registry를 보존하고, 성공한 JS eval/dispatch status를 덮어쓰지 않은 채 `document_collection_error`와 누적 deferred 횟수에 남긴다. 성공 scan 뒤에도 마지막 오류는 세션 종료까지 유지한다. Rust 성공 반환 뒤 C++가 결과 불변식을 위반한 것을 발견하면 cross-language 상태를 안전하게 복구할 수 없으므로 runtime을 poisoned 상태로 만들고 후속 eval/dispatch를 거부한다. 이 경우 세션을 닫고 새로 만들어야 한다. 이 ABI와 `getNodeWrapper`·`registerNodeWrapper`·`unregisterNodeWrapper`는 facade 초기화 때 closure 안에 캡처한 뒤 `spinon.__internal`에서 삭제하므로 앱 JavaScript에서 접근할 수 없다. C++ wrapper registry에는 임의의 항목 수 상한을 두지 않는다. `requestLifecycleCollectionForTesting()`은 `SPINON_ENABLE_S03_DOM_GC_FIXTURE=1` 검증 빌드에서만 존재한다.
 
 ### callback과 external root
 
@@ -93,13 +93,13 @@ HostDocument의 BTreeMap 보유 자체는 root가 아니다. 노드 관계, wrap
 - external root lease token은 세션 안에서 재사용하지 않는다. 16,384개 활성 한도에 도달하면 새 native 작업을 등록하지 않고 호출자에게 backpressure 오류를 돌려준다. 해제는 owner에서 정확히 한 번 적용하며 중복·stale·다른 세션의 해제 요청은 root를 더 제거하지 않는 멱등 no-op이다. token sequence 소진도 새 작업 등록을 거부한다.
 - S03.2에는 DOM addEventListener가 없다. DOM EventTarget listener의 node-owned edge, closure capture cycle과 회수 정책은 J12가 정한다. J12 계약과 구현 전까지 listener를 지원한다고 표시하거나 strong listener Global을 이 collector의 정상 root로 간주하지 않는다.
 
-### quota와 실패 결과
+### 자원 예산과 실패 결과
 
-- 초기 한도는 S03.2와 같이 resident node 16,384개, 보존 문자열 16,777,216 UTF-16 code units다. 문자열 계수는 namespace·local name, Text data, attribute name과 value를 포함한다. Rust가 회수한 node와 문자열은 동일 sweep commit에서 계수에서 뺀다.
-- 입력 변환과 예상 resident 합계를 commit 전에 검사한다. quota를 넘는 변경은 QuotaExceededError로 실패하며 HostDocument, handle map, string accounting, revision을 바꾸지 않는다. ID를 이미 예약했다면 해당 JS ID는 재사용하지 않고 gap으로 남긴다.
-- quota 실패 때 제품 경로에서 강제 full GC를 호출하거나 같은 메서드를 자동 재시도하지 않는다. 보통의 V8 GC가 자동 reset한 weak handle은 다음 안전 지점에서 검사한다. 그 뒤 앱이 다시 호출하면 회수된 resident quota 범위에서 성공할 수 있다. V8 테스트 전용 강제 GC는 자동화 테스트 전용이다.
+- resident node 개수에는 고정 quota를 두지 않는다. 양수 i32 façade ID와 NodeId는 재사용하지 않으며, 각 ID 공간이 소진되면 checked arithmetic이 신규 생성을 실패시킨다. 보존 문자열은 16,777,216 UTF-16 code units까지 허용한다. 문자열 계수는 namespace·local name, Text data, attribute name과 value를 포함한다. Rust가 회수한 node와 문자열은 동일 sweep commit에서 문자열 계수에서 뺀다.
+- 입력 변환과 예상 resident 문자열 합계를 commit 전에 검사한다. 문자열 예산·한 묶음 작업 수·pending ID reservation 한도를 넘는 변경은 QuotaExceededError로 실패하며 HostDocument, handle map, string accounting, revision을 바꾸지 않는다. ID를 이미 예약했다면 해당 JS ID는 재사용하지 않고 gap으로 남긴다. 저장소 allocation 실패의 복구 범위는 아래에 적은 C++/Rust buffer별 계약을 따른다.
+- 문자열 예산 실패 때 제품 경로에서 강제 full GC를 호출하거나 같은 메서드를 자동 재시도하지 않는다. resident node 수는 고정 quota로 막지 않는다. 보통의 V8 GC가 자동 reset한 weak handle은 다음 안전 지점에서 검사한다. 앱의 후속 호출은 실제 확보 가능한 메모리와 문자열 예산 범위에서 처리하며, 메모리 고갈을 성공으로 보장하지 않는다. V8 테스트 전용 강제 GC는 자동화 테스트 전용이다.
 - internal bridge는 `QUERY_NEXT_ID`가 반환한 번호를 포함해 create 작업에 처음 제출된 번호를 성공·실패와 무관하게 소비한다. 실패한 번호는 다시 예약하지 않는다. 대기 reservation은 batch당 최대 작업 수인 256개로 제한한다.
-- registry snapshot·mark buffer·worklist·sweep plan·external root slot 준비 중 recoverable allocation 실패는 해당 collection을 deferred 처리하거나 새 비동기 작업을 거부한다. node·quota·이미 등록한 root 상태는 그대로 두고 원인을 세션 진단에 남긴다.
+- C++ weak-wrapper registry root snapshot과 회수 결과 vector는 필요한 크기까지 동적으로 확장한다. root snapshot 또는 결과 vector 할당 실패는 해당 collection을 deferred 처리하고, 아직 commit되지 않은 문서·wrapper registry 상태는 유지한다. Rust 쪽 `try_reserve`로 감지한 mark buffer·worklist·sweep plan·external root slot 할당 실패도 collection을 미루거나 새 비동기 작업을 거부하며 원인을 세션 진단에 남긴다. Rust standard BTreeMap allocation 실패가 unwind로 복구된다고 가정하지 않는다.
 - sweep은 먼저 전체 mark set과 삭제 목록을 임시로 만들고 generation·owner·모든 root를 검증한 뒤 적용한다. 오류나 unwind 가능한 panic이면 삭제 목록 적용 전에 중단하여 node map, wrapper registry, external roots와 quota를 모두 보존한다. panic=abort 빌드는 프로세스 복구를 보장하지 않으며 이 계약의 panic 복구 범위 밖이다.
 - isolate owner 불일치, session/document generation 불일치, 손상된 external root lease는 fail-closed다. collection을 실행하지 않고 원인 계수만 증가시킨다. 비동기 회수 오류는 사용자 JS 예외로 바꾸지 않고 다음 런타임 진단에서 확인할 수 있게 세션 종료까지 보존한다.
 
@@ -109,7 +109,7 @@ HostDocument의 BTreeMap 보유 자체는 root가 아니다. 노드 관계, wrap
 
 1. 새 JS 진입·wrapper 등록·external root 등록을 거부하고 pending host 작업을 취소한다.
 2. callback별 strong Global을 isolate owner에서 Reset하고 external root lease를 해제한다.
-3. live weak wrapper Global을 owner isolate에서 Reset하고 wrapper registry와 preallocated snapshot buffer를 폐기한다. 자동 reset된 빈 Global은 다시 사용하지 않는다.
+3. live weak wrapper Global을 owner isolate에서 Reset하고 wrapper registry와 동적으로 커진 snapshot/result buffer를 폐기한다. 자동 reset된 빈 Global은 다시 사용하지 않는다.
 4. Rust HostDocument bridge·handle map을 파기한다.
 5. V8 Context와 Isolate를 dispose한다. Closed 이후 도착한 외부 완료 응답은 session generation을 검사해 no-op으로 닫는다.
 

@@ -16,6 +16,8 @@ pub(crate) struct SpinonDocumentCollectionStats {
     pub(crate) empty_handle_count: u64,
     pub(crate) last_scan_start_ns: u64,
     pub(crate) last_scan_duration_us: u64,
+    pub(crate) wrapper_root_buffer_bytes: u64,
+    pub(crate) reclaimed_node_buffer_bytes: u64,
     pub(crate) runtime_poisoned: u32,
 }
 

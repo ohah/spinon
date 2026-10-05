@@ -279,34 +279,8 @@ fn malformed_parent_graphs_and_registry_entries_defer_without_mutation() {
 }
 
 #[test]
-fn malformed_registry_sizes_defer_before_marking() {
+fn external_root_limit_defers_before_marking() {
     let case = &fixture::TREE_CASES[1];
-
-    let mut too_many_nodes = Model::from_case(case, 25);
-    for id in 100..=(limits::EXPECTED_NODE_QUOTA as u64 + 100) {
-        too_many_nodes.nodes.insert(
-            id,
-            fixture::Node {
-                id,
-                parent: None,
-                string_units: 0,
-            },
-        );
-    }
-    assert_collection_defers_unchanged(too_many_nodes);
-
-    let mut too_many_wrappers = Model::from_case(case, 26);
-    for id in 100..=(limits::EXPECTED_NODE_QUOTA as u64 + 100) {
-        too_many_wrappers.wrappers.insert(
-            id,
-            Registration {
-                wrapper_identity: id,
-                facade_id: id as i32,
-                weak_handle_empty: true,
-            },
-        );
-    }
-    assert_collection_defers_unchanged(too_many_wrappers);
 
     let mut too_many_external_roots = Model::from_case(case, 27);
     for sequence in 1..=(limits::EXPECTED_EXTERNAL_ROOT_LIMIT as u64 + 1) {
@@ -400,8 +374,7 @@ fn failed_sweep_preserves_nodes_weak_registry_roots_and_accounting() {
 }
 
 #[test]
-fn s032_resident_quotas_match_the_contract_fixture() {
-    assert_eq!(limits::EXPECTED_NODE_QUOTA, 16_384);
+fn s032_resource_budgets_match_the_contract_fixture() {
     assert_eq!(limits::EXPECTED_EXTERNAL_ROOT_LIMIT, 16_384);
     assert_eq!(limits::EXPECTED_STRING_QUOTA_UTF16, 16_777_216);
 }

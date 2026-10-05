@@ -216,8 +216,6 @@ impl Model {
         if !owner_matches
             || !at_safe_point
             || !scan_storage_available
-            || self.nodes.len() > limits::EXPECTED_NODE_QUOTA
-            || self.wrappers.len() > limits::EXPECTED_NODE_QUOTA
             || self.external_roots.len() > limits::EXPECTED_EXTERNAL_ROOT_LIMIT
         {
             return CollectionResult::Deferred;

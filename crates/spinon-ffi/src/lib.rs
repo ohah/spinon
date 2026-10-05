@@ -240,6 +240,8 @@ mod tests {
         empty_handle_count: u64,
         last_scan_start_ns: u64,
         last_scan_duration_us: u64,
+        wrapper_root_buffer_bytes: u64,
+        reclaimed_node_buffer_bytes: u64,
         runtime_poisoned: u32,
     }
     type DocumentCommitCallback = unsafe extern "C" fn(

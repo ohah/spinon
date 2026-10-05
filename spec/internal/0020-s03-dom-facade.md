@@ -15,8 +15,8 @@ S03.1의 `spinon.__internal.commitDocumentBatch`는 Rust `HostDocument` 변경 �
 - 문서 소유자 ID는 세션마다 하나다. 다른 framework Owner의 동시 쓰기, 여러 문서 간 노드 이동, `adoptNode()`는 지원하지 않는다.
 - 각 getter는 V8 소유 실행기에서 커밋된 Rust `HostDocument`를 직접 동기 조회한다. 전체 `HostDocumentSnapshot`을 getter·변경마다 복제하지 않고, 별도 JS 트리 복사본을 조회 원본으로 두지 않는다. 스타일·레이아웃 소비자가 요구하는 불변 snapshot 생성은 별도 경로다.
 - 생성 후 분리된 노드는 세션 종료까지 보존한다. JavaScript wrapper는 강한 `Map`에 유지된다. wrapper GC, 노드 폐기, 세션 중 자원 회수는 없다.
-- 세션당 노드 최대 16,384개, 이름·텍스트·속성을 합친 보존 문자열 최대 16,777,216 UTF-16 코드 단위다. 제거 노드도 이 수에 포함한다. 텍스트나 속성 값을 교체하면 이전 값의 코드 단위는 한도에서 빠진다.
-- 조회 문자열은 Rust callback 버퍼, C++ 임시 버퍼, V8 문자열로 복사될 수 있다. 최대 한도에서의 순간 메모리 사용량은 기기에서 측정하지 않았으며, 상한을 실제 앱 메모리 적합성으로 해석하지 않는다. C++ 출력 버퍼 할당 실패는 JS 오류로 바꾼다.
+- 노드 개수에는 고정 quota를 두지 않는다. 양수 i32 연결 ID 공간의 소진은 검사하며, 실제 수용량은 저장소 메모리와 실행 환경에 좌우된다. 이름·텍스트·속성을 합친 보존 문자열은 세션당 16,777,216 UTF-16 코드 단위까지 허용한다. 텍스트나 속성 값을 교체하면 이전 값의 코드 단위는 한도에서 빠진다.
+- 조회 문자열은 Rust callback 버퍼, C++ 임시 버퍼, V8 문자열로 복사될 수 있다. 런타임은 현재 resident node 수·문자열 단위 수·회수 scan buffer 용량을 진단에 기록하며, 이를 전체 앱 메모리 사용량으로 해석하지 않는다. Rust 표준 트리 컨테이너의 OS 메모리 고갈은 항상 복구 가능한 JavaScript 오류로 변환된다고 보장하지 않는다. C++ 임시 출력·scan buffer 할당 실패는 JS 또는 회수 지연으로 처리한다.
 
 ## 지원하는 표면
 
@@ -36,9 +36,9 @@ S03.1의 `spinon.__internal.commitDocumentBatch`는 Rust `HostDocument` 변경 �
 - append·insert·remove·Text 데이터·속성 변경은 호출마다 S03.1 변경 callback 하나를 동기 호출한다. 실패한 callback은 해당 메서드 변경을 공개하지 않는다. 메서드 뒤 같은 평가 안의 getter는 갱신된 Rust snapshot을 읽는다.
 - `insertBefore(node, node)`는 callback을 부르지 않는 no-op이다. 두 번째 인자 `undefined`는 nullable Web IDL 인자에 맞춰 `null`처럼 끝 삽입으로 처리한다. 부모가 아닌 기준 노드를 쓰면 `NotFoundError`; 자기 자신 또는 자손 아래로 삽입하면 `HierarchyRequestError`; 지원하지 않는 부모·문서 루트의 Text 자식은 `HierarchyRequestError`다.
 - 같은 HostDocument handle은 JS wrapper `Map`에서 한 객체로 반환한다. 제거는 부모 연결만 끊고 노드 ID·wrapper·자식 subtree를 보존한다. 다른 부모에 재삽입할 수 있다.
-- HostDocument commit 오류는 호출 종류에 대응하는 제한 DOMException으로 감싼다. Rust 예상 밖 오류는 `InvalidStateError`; 속성·요소 이름 오류는 `InvalidCharacterError`; 세션 노드·보존 문자열 상한은 `QuotaExceededError`; JS 인자 형식 오류는 `TypeError`다. 작업 인덱스가 붙은 quota 오류도 FFI에서 `QuotaExceededError`로 보존한다. 오류 메시지와 DOMException의 레거시 `code` 호환은 보장하지 않는다.
+- HostDocument commit 오류는 호출 종류에 대응하는 제한 DOMException으로 감싼다. Rust 예상 밖 오류는 `InvalidStateError`; 속성·요소 이름 오류는 `InvalidCharacterError`; 보존 문자열·한 묶음 작업 수·대기 ID 예약 한도는 `QuotaExceededError`; JS 인자 형식 오류는 `TypeError`다. 노드 연결 ID 소진은 명시적으로 실패한다. 작업 인덱스가 붙은 quota 오류도 FFI에서 `QuotaExceededError`로 보존한다. 오류 메시지와 DOMException의 레거시 `code` 호환은 보장하지 않는다.
 - commit callback은 성공 `0`, 잘못된 FFI 인자 `-1`, 문서 변경 거부 `-2`, panic 복구 `-3`, quota 초과 `-4`를 반환한다. query callback은 성공 `0`, 출력 버퍼 부족 `1`(필요 코드 단위를 먼저 읽고 정확한 버퍼로 재호출), 잘못된 FFI 인자 `-1`, 조회 거부 `-2`, panic 복구 `-3`을 반환한다.
-- `document` 앱 루트와 브라우저 `Document`의 구조 차이, 제한된 유효 이름 문법, 강한 wrapper cache와 회수 한도는 호환성 차이다.
+- `document` 앱 루트와 브라우저 `Document`의 구조 차이, 제한된 유효 이름 문법, wrapper 회수 시점과 문자열 예산은 호환성 차이다.
 
 ## 검증과 미완료 경계
 

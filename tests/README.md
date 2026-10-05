@@ -6,4 +6,4 @@ Rust 단위·통합 테스트는 각 크레이트에, JavaScript 테스트는 �
 
 C01 초기 fixture는 Chromium 기본 UA 계산값과 내장 CSS 프로필 주입 결과만 대조하며 Stylo·제품 렌더 경로를 검증하지 않습니다. 실제 제품 테스트가 없는 동안에는 빈 검색 결과를 통과로 보고하는 통합 테스트 명령을 만들지 않습니다. 실행 명령은 테스트가 추가되는 크레이트·패키지와 함께 연결합니다.
 
-S03.3 DOM 노드 수명 계약의 test-only Rust reference fixture는 `fixtures/dom/s03/node-lifecycle-v1.rs`와 `fixtures/dom/s03/node-lifecycle-limits-v1.rs`에 두며, `spinon-runtime` integration test가 이를 읽습니다. 유효 root graph 외에 malformed parent/child 관계, stale wrapper, foreign session/document generation·missing node 외부 root, registry 상한, 생성·회수 실패 원자성도 확인합니다. fixture는 계약 oracle의 결정성만 확인하고 제품 collector, 실제 V8 weak handle reset 또는 모바일 실행을 검증하지 않습니다.
+S03.3 DOM 노드 수명 계약의 test-only Rust reference fixture는 `fixtures/dom/s03/node-lifecycle-v1.rs`와 `fixtures/dom/s03/node-lifecycle-limits-v1.rs`에 두며, `spinon-runtime` integration test가 이를 읽습니다. 유효 root graph 외에 malformed parent·child 관계, stale wrapper, foreign session/document generation·missing node 외부 root, 외부 root lease 한도, ID 소진, 동적 node registry, 생성·회수 실패 원자성을 확인합니다. fixture는 계약 oracle의 결정성만 확인하고 제품 collector, 실제 V8 weak handle reset 또는 모바일 실행을 검증하지 않습니다.

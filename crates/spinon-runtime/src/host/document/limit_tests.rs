@@ -102,12 +102,12 @@ fn aggregate_utf16_limit_rejects_before_reserving_any_node() {
 }
 
 #[test]
-fn runtime_node_limit_counts_detached_nodes_and_rejects_atomically() {
+fn runtime_document_grows_past_the_former_node_limit_and_collects_all() {
     let mut bridge = HostDocumentBridge::new().unwrap();
+    let target_nodes = 16_385_usize;
     let mut next_id = 1_i32;
-    while (next_id as usize) <= super::MAX_DOCUMENT_NODES {
-        let end =
-            (next_id as usize + super::MAX_BATCH_OPERATIONS - 1).min(super::MAX_DOCUMENT_NODES);
+    while (next_id as usize) <= target_nodes {
+        let end = (next_id as usize + super::MAX_BATCH_OPERATIONS - 1).min(target_nodes);
         let operations = (next_id..=end as i32)
             .map(|id| Operation::CreateText {
                 id,
@@ -117,32 +117,19 @@ fn runtime_node_limit_counts_detached_nodes_and_rejects_atomically() {
         commit(&mut bridge, operations);
         next_id = end as i32 + 1;
     }
-    let revision = bridge.document_revision();
-    let error = bridge
-        .commit(&[Operation::CreateText {
-            id: next_id,
-            data: Vec::new(),
-        }])
-        .unwrap_err();
+    assert_eq!(bridge.node_count(), target_nodes as u64);
+    assert!(bridge.handle(next_id - 1).is_some());
 
-    assert!(error.contains("최대 16384개"));
-    assert_eq!(bridge.node_count(), super::MAX_DOCUMENT_NODES as u64);
-    assert_eq!(bridge.document_revision(), revision);
-    assert_eq!(bridge.handle(next_id), None);
-
-    assert_eq!(
-        bridge.collect_unreachable(&[]).unwrap(),
-        super::MAX_DOCUMENT_NODES
-    );
+    assert_eq!(bridge.collect_unreachable(&[]).unwrap(), target_nodes);
     assert_eq!(bridge.node_count(), 0);
     commit(
         &mut bridge,
         vec![Operation::CreateText {
-            id: next_id + 1,
+            id: next_id,
             data: Vec::new(),
         }],
     );
-    assert!(bridge.handle(next_id + 1).is_some());
+    assert!(bridge.handle(next_id).is_some());
 }
 
 #[test]

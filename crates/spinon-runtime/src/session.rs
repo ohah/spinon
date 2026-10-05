@@ -480,7 +480,7 @@ fn operation_report(report: OperationReport<'_>) -> String {
         collection_error
     };
     format!(
-        "seq={sequence} op={operation} status={status} caller_tid={caller_thread_id} owner_tid={owner_thread_id} callback_tid={callback_thread_id} queue_wait_us={queue_wait_us} v8_call_us={v8_call_us} cancel_requested={cancel_requested} callback_count={} created_nodes={} last_node_id={} document_revision={} render_tree_revision={} document_nodes={} document_string_units={} document_collection_scans={} document_collection_deferred={} document_collection_scanned_handles={} document_collection_live_handles={} document_collection_empty_handles={} document_collection_last_scan_start_ns={} document_collection_last_scan_us={} document_collection_poisoned={} document_collection_error={collection_error} error={error}",
+        "seq={sequence} op={operation} status={status} caller_tid={caller_thread_id} owner_tid={owner_thread_id} callback_tid={callback_thread_id} queue_wait_us={queue_wait_us} v8_call_us={v8_call_us} cancel_requested={cancel_requested} callback_count={} created_nodes={} last_node_id={} document_revision={} render_tree_revision={} document_nodes={} document_string_units={} document_collection_scans={} document_collection_deferred={} document_collection_scanned_handles={} document_collection_live_handles={} document_collection_empty_handles={} document_collection_last_scan_start_ns={} document_collection_last_scan_us={} document_collection_wrapper_root_buffer_bytes={} document_collection_reclaimed_node_buffer_bytes={} document_collection_poisoned={} document_collection_error={collection_error} error={error}",
         callbacks.callback_count,
         callbacks.created_nodes,
         callbacks.last_node_id,
@@ -495,6 +495,8 @@ fn operation_report(report: OperationReport<'_>) -> String {
         collection_stats.empty_handle_count,
         collection_stats.last_scan_start_ns,
         collection_stats.last_scan_duration_us,
+        collection_stats.wrapper_root_buffer_bytes,
+        collection_stats.reclaimed_node_buffer_bytes,
         collection_stats.runtime_poisoned,
     )
 }
