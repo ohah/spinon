@@ -110,6 +110,10 @@ rg -Fq 'large_registry_nodes=16385' "$result_dir/android.log" \
   || fail "Android V8 wrapper 대량 회수 대상 수가 다릅니다"
 rg -Fq 'large_registry_empty_wrappers=16385' "$result_dir/android.log" \
   || fail "Android 대량 회수 weak wrapper 수가 다릅니다"
+rg -Fq 'large_registry_scan_samples=10' "$result_dir/android.log" \
+  || fail "Android 대량 registry 재scan 10회 결과가 없습니다"
+rg -Fq 'large_registry_scan_samples_us=' "$result_dir/android.log" \
+  || fail "Android 대량 registry 재scan 표본이 없습니다"
 rg -Fq 'initial_baseline_return=PASS' "$result_dir/android.log" \
   || fail "Android 초기 root fixture 뒤 자원 기준선 복귀 결과가 없습니다"
 rg -Fq 'repeated_baseline=PASS' "$result_dir/android.log" \
@@ -166,6 +170,8 @@ rg -Fq 'callback 교체 후 해제·기준선 복귀 · 통과' "$result_dir/ios
   || fail "iOS callback 교체 뒤 wrapper 회수 결과가 없습니다"
 rg -Fq '16,385개 wrapper 유지 · 통과' "$result_dir/ios-stream.log" \
   || fail "iOS 16,385개 V8 wrapper 유지 결과가 없습니다"
+rg -Fq '16,385개 wrapper 재scan · 통과 · 표본 10회' "$result_dir/ios-stream.log" \
+  || fail "iOS 대량 registry 재scan 10회 결과가 없습니다"
 rg -Fq '16,385개 wrapper 해제 · 통과 · empty=16385' "$result_dir/ios-stream.log" \
   || fail "iOS 16,385개 V8 wrapper 회수 결과가 없습니다"
 rg -Fq '반복 수명 회수 · 통과 · 6/6회' "$result_dir/ios-stream.log" \
