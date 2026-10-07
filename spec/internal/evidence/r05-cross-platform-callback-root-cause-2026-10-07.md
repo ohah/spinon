@@ -41,7 +41,7 @@
 | CPU 3 표시 서비스 실행 | TID 581 `binder:493_3`가 569798290.838–341.495ms 동안 50.657ms 실행, 이어서 PID 543 `surfaceflinger`가 4.680ms 실행 |
 | main callback 본문 | 7µs |
 
-Android 기기에서 trace의 PID 493은 `android.hardware.graphics.composer3-service.ranchu`로 확인했다. PID/TID와 프로세스 이름은 같은 emulator에서 수집한 [ADB 프로세스 기록](../../../build/spinon/benchmark/r05-reply-fixed-ui-runtime-attribution/20261006T150821Z/runs/20261006T151615Z-spinon-event/composer-service-process.txt)에 보존했다. Binder trace에서는 PID 543 `surfaceflinger`가 trace 시각 569798290.835ms에 PID 493으로 transaction code 5를 보냈고, Composer HAL 응답은 569798341.480ms에 기록됐다. CPU 3에서는 그 transaction이 처리되는 동안 RenderThread의 wake event가 있었지만 실행되지 않았고, SurfaceFlinger가 4.680ms 실행한 뒤에야 RenderThread가 CPU를 받았다. `DrawFrameTask`/`RenderProxy::postAndWait`의 AOSP 구현도 render task를 게시한 caller가 조건 변수에서 완료를 기다리는 구조다. [AOSP HWUI `RenderProxy.cpp`](https://android.googlesource.com/platform/frameworks/base/+/refs/tags/android-16.0.0_r1/libs/hwui/renderthread/RenderProxy.cpp).
+Android 기기에서 trace의 PID 493은 `android.hardware.graphics.composer3-service.ranchu`로 확인했다. PID/TID와 프로세스 이름은 같은 emulator에서 수집했다. ADB 프로세스 원본은 로컬 `build/spinon/benchmark/r05-reply-fixed-ui-runtime-attribution/20261006T150821Z/runs/20261006T151615Z-spinon-event/composer-service-process.txt`에 있으며 저장소에 포함되지 않는다. Binder trace에서는 PID 543 `surfaceflinger`가 trace 시각 569798290.835ms에 PID 493으로 transaction code 5를 보냈고, Composer HAL 응답은 569798341.480ms에 기록됐다. CPU 3에서는 그 transaction이 처리되는 동안 RenderThread의 wake event가 있었지만 실행되지 않았고, SurfaceFlinger가 4.680ms 실행한 뒤에야 RenderThread가 CPU를 받았다. `DrawFrameTask`/`RenderProxy::postAndWait`의 AOSP 구현도 render task를 게시한 caller가 조건 변수에서 완료를 기다리는 구조다. [AOSP HWUI `RenderProxy.cpp`](https://android.googlesource.com/platform/frameworks/base/+/refs/tags/android-16.0.0_r1/libs/hwui/renderthread/RenderProxy.cpp).
 
 따라서 이 trace의 56ms render wait는 Spinon이나 V8이 아니라 에뮬레이터 Composer HAL·SurfaceFlinger 쪽 CPU 작업에 귀속한다. Android 16 Composer AIDL V4 소스 대조로 transaction code 5를 `IComposerClient.executeCommands`에 매핑했지만, trace 자체에 Binder interface descriptor가 없어 wire-level method를 직접 판독한 것은 아니다. 앞선 72ms VSync 간격의 원인은 여전히 미확정이다. 같은 20개 trace 중 `postAndWait >20ms`는 1개뿐이었다. 이 예외를 일반 Android 실기기 특성으로 일반화하지 않는다.
 
@@ -62,9 +62,9 @@ Android 기기에서 trace의 PID 493은 `android.hardware.graphics.composer3-se
 
 ## 결론과 남은 검증
 
-일상적인 Android 15–17ms 대기는 동기 main Handler와 View traversal sync barrier의 상호작용으로 실험에서 확인됐고, callback scheduling을 바꾼 대조군에서 제거됐다. 극단 129ms 사례는 Android Emulator 가상 Composer HAL이 CPU를 오래 사용해 RenderThread를 늦춘 56ms 구간과, 그 이전 72ms의 다음 `doFrame` 대기로 분리됐다. 앞의 72ms가 생긴 더 깊은 이유와 비동기 조건 첫 탭의 worker-side 27.877ms outlier는 미확정이다. iOS Simulator에서 같은 runtime callback 경계의 지연은 관찰되지 않았다.
+일상적인 Android 15–17ms 대기는 동기 main Handler와 View traversal sync barrier의 상호작용으로 실험에서 확인됐고, callback scheduling을 바꾼 대조군에서 제거됐다. 극단 129ms 사례는 Android Emulator 가상 Composer HAL이 CPU를 오래 사용해 RenderThread를 늦춘 56ms 구간과, 그 이전 72ms의 다음 `doFrame` 대기로 분리됐다. 후속 100회 입력에서는 별도의 113ms Composer VSync 공백과 Composer 서비스의 CPU 실행이 함께 관측됐다. 그러나 원래 72ms 구간에서는 Composer Binder thread와 앱 main thread가 대부분 잠들어 있었고 게스트 CPU도 유휴 상태였으므로, 두 공백을 같은 원인으로 간주할 수 없다. 원래 72ms의 직접 원인과 비동기 조건 첫 탭의 worker-side 27.877ms outlier는 미확정이다. iOS Simulator에서 같은 runtime callback 경계의 지연은 관찰되지 않았다.
 
-R05는 미완료다. 남은 검증은 실제 Android/iOS 기기에서 동등 계측을 반복하고, iOS display presentation 시각·GPU renderer·계측 오버헤드를 확인하는 것이다. 현재 결과는 runtime worker/V8 계산을 129ms outlier의 원인으로 지목하지 않으며, emulator 표시 경로의 관측을 Android 전 기기에 적용하지 않는다.
+R05는 미완료다. 남은 검증은 원래 Android 72ms 공백을 재현하는 유효한 host scheduler trace, 실제 Android/iOS 기기의 동등 계측, iOS display presentation 시각·GPU renderer·계측 오버헤드다. 이번 QEMU Time Profiler는 Android 재현과 겹쳐 CPU stack sample을 남겼지만 OS 스케줄 전환·대기 시간을 기록하지 않는다. macOS System Trace는 여러 기록 방식에서 실제 이벤트 범위가 요청보다 짧게 저장되는 문제가 확인됐다. 현재 결과는 runtime worker/V8 계산을 129ms outlier의 원인으로 지목하지 않으며, emulator 표시 경로의 관측을 Android 전 기기에 적용하지 않는다.
 
 ## 2026-10-07 추가 검증: 반복 실행과 UI-only 대조
 
@@ -81,7 +81,7 @@ UI-only 캡처에서 첫 두 지연 프레임은 각각 `Prediction Error, App D
 
 ## 2026-10-07 추가 검증: ATrace gfx와 EGL swap 경계
 
-`tools/benchmark/android-frame-attribution-detailed.textproto`에 `gfx` ATrace와 `android.surfaceflinger.frame` data source를 추가해 Android 16/API 36 ARM64 에뮬레이터, 60Hz, debug APK에서 각각 60탭을 수집했다. 수집 스크립트는 `SPINON_ANDROID_TRACE_CONFIG`로 별도 설정을 선택하도록 했다. 원본은 아래 경로에 있으며, 이 설정은 release·실기기 성능용이 아닌 원인 분석용이다.
+`tools/benchmark/android-frame-attribution-detailed.textproto`에 `gfx` ATrace와 `android.surfaceflinger.frame` data source를 추가해 Android 16/API 36 ARM64 에뮬레이터, 60Hz, debug APK에서 각각 60탭을 수집했다. 수집 스크립트는 `SPINON_ANDROID_TRACE_CONFIG`로 별도 설정을 선택하도록 했다. 설정 원본은 [저장소 파일](https://github.com/ohah/spinon/blob/main/tools/benchmark/android-frame-attribution-detailed.textproto)이고, 측정 trace는 아래 `build/spinon/benchmark/` 경로에 있다. 이 설정은 release·실기기 성능용이 아닌 원인 분석용이다.
 
 | 실행 | 관측값 | 판정 범위 |
 | --- | --- | --- |
@@ -97,16 +97,46 @@ UI-only 캡처에서 첫 두 지연 프레임은 각각 `Prediction Error, App D
 
 `build/spinon/benchmark/r05-ios-instruments/20261007-system-trace/`의 System Trace는 CLI가 20초 기록 완료를 보고했지만, trace TOC의 시간 범위는 2026-10-07 06:37:23.281–23.454 KST(0.173초)였다. 앱 probe 로그는 06:37:26.685에 시작해 06:37:33.619에 끝났다. 따라서 이 trace는 32개 probe와 겹치지 않아 iOS thread/frame 원인 분석 자료로 사용할 수 없다. `xctrace export --toc`도 `getpwuid_r did not find a match for uid 501` 오류로 실패했다. 앞서 확인한 `Animation Hitches` template의 Simulator 미지원과 Time Profiler의 V8 DWARF symbolization 경고·계측 시간 변화도 그대로 한계로 둔다.
 
+## 2026-10-07 추가 검증: 100회 입력과 macOS `xctrace`
+
+Android 16/API 36 ARM64 `sdk_gphone64_arm64` 에뮬레이터, 60Hz debug APK에서 100회 입력을 수집하는 동안 Mac의 QEMU PID 23588에 Time Profiler를 붙였다. Android trace와 host 기록은 별도 원본이며, 에뮬레이터 결과는 실기기 성능 주장이 아니다.
+
+| 측정 | 관측 | 판정 범위 |
+| --- | --- | --- |
+| Android runtime callback 100회 | 성공 100/100. `runtime-main-thread-handoff` p50 16.449ms, p95 17.460ms, 최대 30.480ms; 16.667ms 초과 31/100, 30ms 초과 1/100, 50ms·72ms 초과 0/100. `v8_call_us` 최대 920µs. | 원래 72ms handoff는 재현되지 않았고, 이 100회에서 V8 실행이 긴 대기 원인이라는 증거도 없다. 최대 30.480ms는 별도 단일 표본이다. |
+| Android Composer VSync 공백 | `onComposerHalVsync` 3,574회에서 30ms 초과 공백 9개, 최대 113.368ms. 최대 공백은 어떤 runtime handoff와도 겹치지 않았다. 해당 구간에서 PID 493 `android.hardware.graphics.composer3-service.ranchu`의 TID 581 `binder:493_3`가 CPU 0에서 112.813ms 실행됐고, 나머지 세 게스트 CPU는 각각 110ms 이상 유휴였다. | 이 별도 공백은 에뮬레이터 Composer 서비스의 Binder thread가 CPU를 점유하는 구간과 맞물린다. Composer 내부 함수와 host OS 스케줄 지연의 기여는 이 trace만으로 나뉘지 않으며, 원래 72ms 공백의 원인으로 소급하지 않는다. |
+| 원래 129.711ms trace의 72.057ms 구간 재검산 | 앱 main TID 18386은 `S` 상태로 72.164ms 대기했다. Composer TID 581도 공백 중 대부분 잠들어 있었고 끝부분에만 0.074ms 실행됐다. 네 게스트 CPU는 69.321–71.343ms씩 `swapper` 상태였다. Composer thread의 50.657ms 실행은 다음 `doFrame` 뒤에 시작됐다. | 이 원본 구간은 게스트 CPU 과부하나 Composer thread가 72ms 내내 CPU를 쓴 상황이 아니다. VSync 공급 지연인지 host QEMU scheduling인지 아직 확정하지 못했다. |
+
+### `xctrace` 기록 시간 유효성
+
+Xcode 선택 경로는 `/Applications/Xcode.app/Contents/Developer`, `xcrun xctrace`도 같은 Xcode 아래에 있다. `xcodebuild`는 Xcode 26.2, `xctrace`와 Instruments TOC는 26.0으로 표시되지만 build ID는 모두 `17C52`다. Android 실행 중 QEMU PID 23588은 기록 전후 계속 살아 있었다. 따라서 혼합 Xcode 설치나 사라진 attach 대상은 관측된 짧은 System Trace 범위를 설명하지 않는다.
+
+| 기록 방식 | 요청·실행 방식 | `.trace`에 기록된 실제 데이터 길이 |
+| --- | --- | ---: |
+| System Trace, attempt-01 | 45초 요청, 기본 window | 0.223525초 |
+| System Trace, host-probe | 10초 요청, 전체 프로세스, 10초 window | 0.462900초 |
+| System Trace, QEMU attach | 10초 요청, 기본 window | 0.254464초 |
+| System Trace, QEMU attach | 20초 요청, 10초 window | 0.970526초 |
+| System Trace, attempt-04 | 12초 요청, 12초 window | 0.568739초 |
+| System Trace, attempt-05 | 제한 시간 없이 20초 기록 후 SIGINT, 30초 window | 1.532561초 |
+| System Trace, attempt-06 | 12초 요청, QEMU attach, `--window` 미지정 | 0.213520초 |
+| Time Profiler 대조 | QEMU attach, 75초 요청 | 75.813310초 |
+
+attempt-04의 System Trace metadata는 `rawStartTime`–`rawEndTime` 12.690445초, `_rawDuration` 0.568739초를 기록했다. 내보낸 context-switch 행도 0.003916–0.568682초에만 있었다. 제한 시간 옵션을 쓰지 않고 수동 중단한 attempt-05도 raw 실행 간격 18.234015초에 비해 `_rawDuration`은 1.532561초였고, context-switch 표 범위도 0.004887–1.532146초였다. attempt-04는 xctrace가 종료 코드 0으로 완료됐지만 실제 trace는 0.569초뿐이었다. attempt-05의 xctrace도 저장 완료를 출력했으나, 실행 wrapper가 종료 코드 변수에 zsh 예약 변수 `status`를 사용해 마지막 상태 기록에 실패했고 셸은 1로 끝났다. 따라서 수동 중단 비교는 xctrace 로그·저장된 trace metadata·context-switch 표로만 판정했다. 추가 attempt-06은 `--window`를 지정하지 않았지만 TOC의 실제 기록 모드는 `Windowed (5 seconds)`였고, 12초 요청 중 저장된 데이터는 0.213520초였다. 설치된 `xctrace record` 도움말에는 녹화 모드 옵션이 없었다. 반면 75초 Time Profiler는 raw metadata와 표본 시각 모두 약 75.8초였다. 따라서 명시적 `--window` 값만으로는 현상을 설명할 수 없고, 짧은 데이터 범위는 export 이후가 아니라 `.trace`에 이미 저장돼 있다.
+
+설치된 `System Trace` 템플릿은 attempt-06의 TOC에서 기본 `Windowed (5 seconds)`로 표시됐다. Apple도 System Trace가 기본적으로 윈도 모드에서 최근 수 초만 보존한다고 설명한다([WWDC16 System Trace 심층 설명](https://developer.apple.com/videos/play/wwdc2016/411/)). 따라서 과거의 요청 길이와 실제 기록 길이 차이에는 이 템플릿의 윈도 모드 설정이 섞여 있다. 다만 12초 요청에 기본 5초 모드인데도 실제 데이터가 0.214초뿐인 현상은 윈도 크기만으로 설명되지 않는다. System Trace의 `RunIssues.storedata`에는 `Data stream: Time Mapping`이 남아 있다. 동일 메시지가 유효한 75초 Time Profiler에도 있어 이 문구 하나만으로 System Trace 실패의 내부 원인을 확정할 수는 없다. unified log에서 권한 거부나 명시적 수집 실패는 찾지 못했다. 현재 확인된 것은 **이 Mac의 Xcode 26.2/macOS 26.5.1에서 System Trace가 기본 윈도 모드였고, 요청한 범위보다 짧은 데이터가 `.trace`에 저장된 것**이다. 설치된 CLI 도움말에는 녹화 모드를 직접 바꾸는 옵션이 없으므로 GUI Instruments의 기록 설정 또는 다른 Xcode/macOS 조합에서 deferred 모드와 동일 QEMU 재현을 비교해야 한다. Xcode와 macOS 중 어느 쪽 내부 결함인지, 짧은 데이터가 time mapping 문제인지 다른 System Trace 수집 경로 문제인지는 입증되지 않았다.
+
 ## 아직 측정하지 못했거나 원인을 확정하지 못한 항목
 
 | 항목 | 지금까지 확인 | 측정 가능성과 남은 절차 |
 | --- | --- | --- |
-| 원래 129.711ms 사례 앞부분의 72.057ms 다음 `doFrame` 대기 원인 | 원본 trace에서 앱 main thread는 잠들어 있었고 VSync ID 공백이 있었다. 상세 `gfx` trace는 다른 실행에서 34.071ms·46.429ms 공백을 잡았지만 72.057ms 구간은 재현되지 않았다. 이전 Mac `sample`은 Android trace와 시간 동기화된 scheduler 기록이 아니다. | 측정 자체는 가능하다. 같은 outlier를 재현할 때 guest Perfetto와 host scheduler를 함께 시작하고 clock marker를 넣어 VSync 공급자·QEMU host scheduling을 분리한다. 지금까지는 해당 원인을 확정하지 못했다. |
+| 원래 129.711ms 사례 앞부분의 72.057ms 다음 `doFrame` 대기 원인 | 원본 trace에서 앱 main thread는 72.164ms, Composer Binder thread는 해당 구간 대부분 잠들어 있었고, 네 게스트 CPU는 각각 69.321–71.343ms 유휴였다. Composer thread의 50.657ms 실행은 다음 `doFrame` 이후다. 100회 재현에서 발견한 별도 113.368ms Composer 공백은 그 원본과 다른 시각·스레드 상태였다. | 원래 공백은 게스트 CPU 과부하나 Composer CPU 점유로 설명되지 않는다. 유효한 host scheduler trace와 동일 outlier 재현으로 VSync 공급 경로와 host QEMU 기여를 나눠야 한다. System Trace 수집 길이 문제는 아래 xctrace 판정처럼 아직 해결되지 않았다. |
 | 과거 asynchronous 첫 callback의 27.877ms worker-side 지연 | 60회 반복과 새 프로세스 첫 callback 20회에서 재현되지 않았다. `simpleperf`는 `cpu-cycles`, `cpu-clock`, `task-clock`, `sched:sched_switch` 측정 중 일부를 이 emulator에서 지원하지 않는다고 반환했고, Perfetto CPU stack trial은 표본 0개였다. | 측정 불가능하다고 볼 수 없다. 같은 첫 dispatch 반복 중 재현을 기다리며 ART method trace를 붙이거나 CPU profiling이 되는 기기에서 기록한다. 재현 전에는 Java/ART·JIT·GC 원인을 추정하지 않는다. |
 | RenderThread EGL swap 내부의 native 함수·driver/GPU 기여 | `gfx` trace에서 지연 frame의 `eglSwapBuffersWithDamageKHR` 경계와 sched CPU 점유를 관측했다. runtime dispatch 없는 UI-only에서도 EGL swap 31.556ms와 App Deadline Missed 32.307ms가 함께 있었다. 이 emulator의 CPU stack profiler는 표본을 내지 않았다. | EGL 경계는 측정됐다. 함수 내부 귀속은 native sampling이 가능한 Android debug 기기나 별도의 그래픽 driver/GPU trace가 필요하다. 현재 증거는 Spinon 제품 `wgpu` 성능을 말하지 않는다. |
 | Composer Binder transaction code 5의 method | Android 16 system image는 Composer AIDL V4이고, V4 메서드 순서상 code 5는 `IComposerClient.executeCommands`다. `IComposer` control interface는 두 메서드만 둔다. | source mapping은 됐다. Binder trace에 target object의 interface descriptor가 없으므로 raw transaction node/descriptor를 직접 확인한 것은 아니다. method 명칭 자체는 더 이상 미측정 항목으로 두지 않는다. |
 | 상세 Perfetto trace의 누락 범위 | 최소차이 대조로 `gfx` 범주가 37개 `Ftrace event unknown`을 유발함을 확인했다. 모두 AVD에 없는 vendor driver event다. 짧은 `gfx` 제외 대조에서는 scheduler slice가 기록됐으나 프레임 표식 동등성은 확인하지 않았다. | Emulator 결과는 관측된 generic frame/scheduler 구간에 한정한다. 실기기에서는 해당 장치에서 사용 가능한 GPU/display event를 별도로 확인하고, vendor driver 내부가 계측됐다고 과장하지 않는다. |
-| Android 지연에서 host QEMU scheduling이 차지한 정확한 시간 | 이전 host process sample은 시각별 thread scheduling trace가 아니다. Mac System Trace attach는 30초 요청에도 TOC상 06:45:27.848–06:45:28.061 KST만 기록했고 Android UI-only 실행은 06:46:07 KST에 시작해 겹치지 않았다. | 측정 가능한 host scheduler 문제다. 실행 전체와 겹치는 privacy-safe host scheduler capture, guest/host clock marker, 반복 입력이 필요하다. 기존 capture는 무효라 host 기여를 아직 말할 수 없다. |
+| Android 지연에서 host QEMU scheduling이 차지한 정확한 시간 | 새 75초 Time Profiler는 100회 Android 재현과 겹치는 QEMU CPU stack sample을 남겼고 113ms Composer 공백 주변에서도 QEMU 표본이 있다. 그러나 CPU sampling은 OS context switch·off-CPU 대기 시각을 기록하지 않는다. 새 System Trace도 요청 12초 중 실제 데이터는 0.569초만 남았다. | host CPU stack 활동은 관찰했지만 host scheduler의 정확한 기여 시간은 여전히 미측정이다. GUI Instruments 또는 다른 Xcode/macOS 환경에서 full-range System Trace를 확보한 뒤, guest/host clock marker와 같은 재현을 겹쳐야 한다. |
+| macOS System Trace의 짧은 실제 수집 범위 | 전체 프로세스·PID attach, 명시 window·기본 window, time-limit 자동 종료·수동 중단을 바꿔도 `.trace`의 실제 데이터 범위는 0.214–1.533초였다. attempt-06 TOC는 기본 `Windowed (5 seconds)` 모드였다. QEMU 대상 Time Profiler는 75.813초가 기록됐다. System Trace RunIssues에는 `Data stream: Time Mapping`이 있다. | 알려진 템플릿 기본 설정은 윈도 모드지만 5초보다 짧은 저장 원인은 설명하지 못한다. GUI Instruments에서 deferred 모드를 명시해 재시도하고, 필요하면 별도 Xcode/macOS 조합에서 같은 대조를 해야 한다. Xcode 내부와 macOS 중 어느 구성요소가 영향을 주는지는 미확정이다. |
 | iOS Simulator의 OS thread와 frame 원인 | 기존 System Trace는 32개 callback log와 시간상 겹치지 않았다. Animation Hitches template은 이 Simulator에서 지원되지 않았고 Time Profiler는 계측 시점을 바꿨다. | 측정 자체는 가능하지만 해당 capture는 다시 해야 한다. 실행 중 앱 process에 attach하고 trace window가 app marker를 덮는지 확인한다. 같은 빌드로 profiler on/off 대조 전에는 지연 수치를 비교하지 않는다. |
 | 실제 입력부터 화면 픽셀 발광까지의 지연 | Android 입력은 ADB 주입이고 iOS 입력은 selector 호출이다. `CADisplayLink`와 FrameTimeline은 패널 발광 시각이 아니다. | 현재 Simulator/Emulator만으로는 실제 입력·광학 지연을 측정할 수 없다. 실기기 물리 입력과 고속 카메라 또는 photodiode, 측정 오차 및 반복 분포가 필요하다. |
 | Spinon 제품 GPU renderer의 frame 비용 | 이번 지연 frame은 Android View와 Emulator GLES translation 경로다. `wgpu` 제품 renderer의 scene build·GPU 제출·present를 측정하지 않았다. | 측정 가능하지만 같은 JS 이벤트 시나리오를 제품 GPU surface에 연결해야 한다. 이어서 Android/iOS release 실기기에서 GPU frame trace와 실제 화면을 수집한다. |
@@ -115,6 +145,12 @@ UI-only 캡처에서 첫 두 지연 프레임은 각각 `Prediction Error, App D
 
 ### 추가 원본
 
+- Android 100회 입력 + QEMU Time Profiler 75초 동시 기록: `build/spinon/benchmark/r05-host-guest-sync-20261007/attempt-03/` (Android `frame-attribution.pftrace`, `input-events.txt`, `clock-markers.txt`, QEMU `.trace`, `xctrace.log`)
+- QEMU System Trace 시간 제한 12초·window 12초: `build/spinon/benchmark/r05-host-guest-sync-20261007/attempt-04/`
+- QEMU System Trace 20초 수동 중단·window 30초: `build/spinon/benchmark/r05-host-guest-sync-20261007/attempt-05/`
+- QEMU System Trace 시간 제한 12초·기본 window: `build/spinon/benchmark/r05-host-guest-sync-20261007/attempt-06/`
+- System Trace 짧은 범위 대조 45초·10초·20초 및 5초 Time Profiler 양성 대조: `build/spinon/benchmark/r05-host-guest-sync-20261007/attempt-01/`, `host-probe/`, `host-attach-probe/`, `xctrace-controls/`
+
 - Android 동기 handoff 60회: `build/spinon/benchmark/r05-android-host-scheduling-20261007/20261006T213137Z-spinon-event/`
 - Android asynchronous Handler 60회: `build/spinon/benchmark/r05-async-handler-simpleperf-20261007/20261006T212355Z-spinon-event/`
 - Android cold-process Dalvik/JIT/GC 20회: `build/spinon/benchmark/r05-android-dalvik-attribution-20261007/round-01/` ~ `round-05/`
@@ -122,8 +158,8 @@ UI-only 캡처에서 첫 두 지연 프레임은 각각 `Prediction Error, App D
 - Android `gfx`·SurfaceFlinger 상세 runtime event 60회: `build/spinon/benchmark/r05-detailed-gfx-vsync-20261007/20261006T225859Z-spinon-event/`
 - Android `gfx`·SurfaceFlinger 상세 UI-only 60회: `build/spinon/benchmark/r05-detailed-gfx-vsync-20261007/20261006T230512Z-spinon-ui-only/`
 - Android CPU stack profile 기능 확인: `build/spinon/benchmark/diagnostic-capabilities/` (에뮬레이터에서 Perfetto `linux.perf` sample 0개와 `simpleperf` unsupported 오류 기록)
-- Android 상세 trace 설정: [android-frame-attribution-detailed.textproto](../../../tools/benchmark/android-frame-attribution-detailed.textproto); 기본 capture script에서 `SPINON_ANDROID_TRACE_CONFIG`로 선택한다.
+- Android 상세 trace 설정: [저장소 파일](https://github.com/ohah/spinon/blob/main/tools/benchmark/android-frame-attribution-detailed.textproto); 기본 capture script에서 `SPINON_ANDROID_TRACE_CONFIG`로 선택한다.
 - Android emulator host sample: `build/spinon/benchmark/r05-android-host-scheduling-20261007/emulator-host.sample.txt` (host와 guest trace의 정밀 시간 동기 자료는 아님)
 - iOS probe 로그: `build/spinon/benchmark/r05-ios-instruments/20261007-system-trace/ios.log`. Instruments 원시 bundle은 OS trace가 무효이고 프로세스 metadata가 포함될 수 있어 공유 근거에 넣지 않는다.
 
-따라서 미측정 항목이 전부 측정 불가능한 것은 아니다. 상세 trace로 VSync 표식과 EGL swap 경계, runtime 없는 UI frame miss까지 더 측정했고 Composer method도 AIDL V4 순서로 매핑했다. 현재 도구가 stack sample을 만들지 못하거나 기존 trace가 시간상 겹치지 않은 항목은 다른 방법으로 다시 시도할 수 있다. 실제 input-to-photon은 현재 장비로 잴 수 없어 실기기와 광학 센서가 필요하다. 원래 129ms 사례의 72ms 원인·RenderThread 내부 함수·host 기여·iOS OS scheduling·제품 GPU renderer·계측 오버헤드는 아직 확정되지 않았으며 R05 완료 조건은 충족되지 않았다.
+따라서 미측정 항목이 전부 측정 불가능한 것은 아니다. 상세 trace로 VSync 표식과 EGL swap 경계, runtime 없는 UI frame miss까지 더 측정했고 Composer method도 AIDL V4 순서로 매핑했다. 100회 입력에서는 별도의 긴 Composer 실행과 VSync 공백을 잡았지만 기존 72ms 공백의 원인과 동일하다고 증명하지 못했다. QEMU Time Profiler는 CPU 실행 표본만 제공했고, System Trace는 유효한 시간 범위를 저장하지 못해 host scheduling 기여를 확정하지 못했다. 실제 input-to-photon은 현재 장비로 잴 수 없어 실기기와 광학 센서가 필요하다. 원래 129ms 사례의 72ms 원인·RenderThread 내부 함수·host scheduler의 정확한 기여·iOS OS scheduling·제품 GPU renderer·계측 오버헤드는 아직 확정되지 않았으며 R05 완료 조건은 충족되지 않았다.
