@@ -141,6 +141,9 @@ impl Renderer {
         .map_err(|error| format!("adapter request failed: {error}"))?;
 
         let info = adapter.get_info();
+        let supports_google_display_timing = adapter
+            .features()
+            .contains(wgpu::Features::VULKAN_GOOGLE_DISPLAY_TIMING);
         let (device, queue) = pollster::block_on(adapter.request_device(&wgpu::DeviceDescriptor {
             required_limits: adapter.limits(),
             ..Default::default()
@@ -281,10 +284,11 @@ impl Renderer {
             #[cfg(feature = "s04-fixture")]
             s04_scene,
             info: format!(
-                "backend={:?} device={:?} name={} format={:?} color_space={:?} supported_formats={:?}",
+                "backend={:?} device={:?} name={} google_display_timing_supported={} format={:?} color_space={:?} supported_formats={:?}",
                 info.backend,
                 info.device_type,
                 info.name,
+                supports_google_display_timing,
                 target_format,
                 target_color_space,
                 capabilities.formats
