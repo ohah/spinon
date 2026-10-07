@@ -7,8 +7,34 @@ import { join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const repositoryRoot = resolve(fileURLToPath(new URL('../..', import.meta.url)));
-const fixtureRelativePath = 'tests/fixtures/css/s04/flex-paint.v1.json';
-const stylesheetRelativePath = 'tests/fixtures/css/s04/flex-paint.v1.css';
+const fixtureVariants = {
+  'flex-paint': {
+    fixture: 'tests/fixtures/css/s04/flex-paint.v1.json',
+    stylesheet: 'tests/fixtures/css/s04/flex-paint.v1.css',
+    fixtureId: 'S04-flex-paint-v1',
+    referenceSchema: 'spinon-css-s04-flex-paint-reference/v1',
+    viewport: { widthCssPx: 301, heightCssPx: 40, deviceScaleFactor: 1 },
+    sampleRows: [0, 20, 39],
+    sampleColumns: [24, 47, 49, 51, 52, 54, 102, 149, 151, 153, 154, 156, 228, 300],
+  },
+  'asymmetric-y': {
+    fixture: 'tests/fixtures/css/s04/asymmetric-y.v1.json',
+    stylesheet: 'tests/fixtures/css/s04/asymmetric-y.v1.css',
+    fixtureId: 'S04-asymmetric-y-v1',
+    referenceSchema: 'spinon-css-s04-render-reference/v1',
+    viewport: { widthCssPx: 301, heightCssPx: 65, deviceScaleFactor: 1 },
+    sampleRows: [0, 11, 12, 14, 15, 32, 33, 35, 36, 59, 60, 64],
+    sampleColumns: [0, 150, 300],
+  },
+};
+const fixtureArgument = process.argv.slice(2).find((argument) => argument.startsWith('--fixture='));
+const variantName = fixtureArgument?.slice('--fixture='.length)
+  ?? process.env.SPINON_S04_FIXTURE_VARIANT
+  ?? 'flex-paint';
+const variant = fixtureVariants[variantName];
+if (!variant) throw new Error(`알 수 없는 S04 fixture 종류입니다: ${variantName}`);
+const fixtureRelativePath = variant.fixture;
+const stylesheetRelativePath = variant.stylesheet;
 const fixturePath = join(repositoryRoot, fixtureRelativePath);
 const stylesheetPath = join(repositoryRoot, stylesheetRelativePath);
 const referenceDirectory = join(repositoryRoot, 'tests/fixtures/css/references');
@@ -188,9 +214,8 @@ const stylesheetBytes = await readFile(stylesheetPath);
 const fixture = JSON.parse(fixtureBytes.toString('utf8'));
 const stylesheet = stylesheetBytes.toString('utf8');
 if (fixture.schema !== 'spinon-css-s04-flex-paint-fixture/v1'
-  || fixture.fixtureId !== 'S04-flex-paint-v1'
-  || fixture.viewport.widthCssPx !== 301 || fixture.viewport.heightCssPx !== 40
-  || fixture.viewport.deviceScaleFactor !== 1) {
+  || fixture.fixtureId !== variant.fixtureId
+  || JSON.stringify(fixture.viewport) !== JSON.stringify(variant.viewport)) {
   throw new Error('S04 fixture의 schema, ID 또는 viewport가 고정 기준과 다릅니다.');
 }
 const computedProperties = fixture.comparison?.computedProperties;
@@ -203,7 +228,10 @@ if (!Array.isArray(computedProperties) || computedProperties.length === 0
 if (JSON.stringify(fixture.tree.children) !== JSON.stringify(fixture.tree.preorder.slice(1))) {
   throw new Error('S04 fixture의 직속 자식 순서가 preorder와 다릅니다.');
 }
-if (JSON.stringify(fixture.sampleRows) !== JSON.stringify([0, 20, 39])
+if (JSON.stringify(fixture.sampleRows) !== JSON.stringify(variant.sampleRows)
+  || (fixture.sampleColumns !== undefined
+    && JSON.stringify(fixture.sampleColumns) !== JSON.stringify(variant.sampleColumns))
+  || (variantName === 'asymmetric-y' && !Array.isArray(fixture.sampleColumns))
   || fixture.comparison.frameUnit !== 'CSS px'
   || fixture.comparison.perCoordinateMaximumAbsoluteError !== 0.5
   || fixture.comparison.aggregateAveragesAllowed !== false
@@ -316,7 +344,7 @@ try {
 }
 
 const expectedViewport = {
-  widthCssPx: 301, heightCssPx: 40, deviceScaleFactor: 1,
+  ...variant.viewport,
   screenMedia: true, lightColorScheme: true, locale: 'en-US', timeZone: 'UTC',
 };
 for (const [key, value] of Object.entries(expectedViewport)) {
@@ -344,10 +372,11 @@ const version = browserVersionInfo.product.match(/\d+\.\d+\.\d+\.\d+/)?.[0];
 if (!version) throw new Error(`Chromium product version을 읽지 못했습니다: ${browserVersionInfo.product}`);
 const fixtureSha256 = sha256(fixtureBytes);
 const stylesheetSha256 = sha256(stylesheetBytes);
-const referenceId = `s04-flex-paint-v1-chromium-${version}-${fixtureSha256.slice(0, 12)}-${stylesheetSha256.slice(0, 12)}-${browserSha256.slice(0, 12)}`;
+const referencePrefix = fixture.fixtureId.toLowerCase();
+const referenceId = `${referencePrefix}-chromium-${version}-${fixtureSha256.slice(0, 12)}-${stylesheetSha256.slice(0, 12)}-${browserSha256.slice(0, 12)}`;
 const outputPath = join(outputDirectory, `${referenceId}.json`);
 const output = {
-  schema: 'spinon-css-s04-flex-paint-reference/v1',
+  schema: variant.referenceSchema,
   referenceId,
   fixture: { path: fixtureRelativePath, sha256: fixtureSha256, fixtureId: fixture.fixtureId },
   stylesheet: { path: stylesheetRelativePath, sha256: stylesheetSha256, id: fixture.stylesheet.id },

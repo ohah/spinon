@@ -2,10 +2,9 @@ use spinon_render::StaticRenderSnapshot;
 
 use super::geometry::FIXTURE_HEIGHT;
 
-const SAMPLE_X: [u32; 14] = [
-    24, 47, 49, 51, 52, 54, 102, 149, 151, 153, 154, 156, 228, 300,
-];
-const SAMPLE_Y: [u32; 3] = [0, 20, 39];
+const SAMPLE_X: [u32; 3] = [0, 150, 300];
+const SAMPLE_Y: [u32; 12] = [0, 11, 12, 14, 15, 32, 33, 35, 36, 59, 60, 64];
+pub(super) const SAMPLE_ROW_COUNT: usize = SAMPLE_Y.len();
 pub(super) const SAMPLE_COUNT: usize = SAMPLE_X.len() * SAMPLE_Y.len();
 pub(super) const READBACK_BYTES_PER_ROW: u32 = 1280;
 pub(super) const READBACK_SIZE: u64 = READBACK_BYTES_PER_ROW as u64 * FIXTURE_HEIGHT as u64;
@@ -28,7 +27,7 @@ pub(super) fn validate_samples(
             bytes.len()
         ));
     }
-    for y in SAMPLE_Y {
+    for y in sample_rows() {
         for x in sample_columns() {
             let offset = usize::try_from(y * READBACK_BYTES_PER_ROW + x * 4)
                 .map_err(|_| "S04 sample offset이 범위를 벗어났습니다")?;
@@ -56,6 +55,10 @@ pub(super) fn validate_samples(
 
 pub(super) fn sample_columns() -> impl Iterator<Item = u32> {
     SAMPLE_X.into_iter()
+}
+
+pub(super) fn sample_rows() -> impl Iterator<Item = u32> {
+    SAMPLE_Y.into_iter()
 }
 
 pub(super) fn expected_color(snapshot: &StaticRenderSnapshot, x: u32, y: u32) -> Option<[u8; 4]> {

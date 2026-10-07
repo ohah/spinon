@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+#flex-parent {
+  display: flex;
+  flex-direction: column;
+  width: 301px;
+  height: 65px;
+  row-gap: 3px;
+  background-color: #111827;
+}
+
+#flex-a {
+  flex: 0 0 12px;
+  height: 12px;
+  background-color: #e11d48;
+}
+
+#flex-b {
+  flex: 0 0 18px;
+  height: 18px;
+  background-color: #2563eb;
+}
+
+#flex-c {
+  flex: 0 0 24px;
+  height: 24px;
+  background-color: #16a34a;
+}
