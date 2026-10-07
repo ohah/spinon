@@ -1,0 +1,11 @@
+Perfetto linux.perf 실기기 탐색 trace 요약
+Trace Processor: Perfetto v58.2-add693d8b
+Trace duration: 8 seconds
+Configured sampling: SW_CPU_CLOCK 99Hz, target_cmdline=dev.spinon.bootstrap
+Total profiler samples: 7,830
+Idle swapper samples: 7,379
+Samples mapped to app PID 4089: 12 (main thread 3, JS worker thread 9)
+Samples with callsite_id across the trace: 13
+perf_samples_skipped_dataloss: 0
+
+판정: 이 시도는 앱별 귀속을 위한 결과로 채택하지 않았다. 프로파일 표본 대부분이 idle swapper였고 앱 표본이 12개뿐이었다. owner thread scheduler 구간은 simpleperf trace-offcpu 결과를 사용했다.

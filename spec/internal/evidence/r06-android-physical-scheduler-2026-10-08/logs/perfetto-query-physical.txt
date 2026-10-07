@@ -1,0 +1,107 @@
+[31mNot meant for machine consumption. Use --query-raw for scripts.[0m
+
+Service: Perfetto v51.2 (N/A)
+Tracing sessions: 0 (started: 0)
+
+
+PRODUCER PROCESSES CONNECTED:
+
+ID     PID      UID      FLAGS  NAME                                       SDK
+==     ===      ===      =====  ====                                       ===
+1      1131     9999            traced
+2      1084     1000            /system/bin/surfaceflinger                 Perfetto v51.2 (N/A)
+4      1079     1072            /system/bin/gpuservice                     Perfetto v51.2 (N/A)
+5      1475     1000            system_server                              Perfetto v51.2 (N/A)
+6      698      1000            /system/bin/servicemanager                 Perfetto v51.2 (N/A)
+7      1084     1000            /system/bin/surfaceflinger                 Perfetto v51.2 (N/A)
+8      2360     10056           com.android.systemui                       Perfetto v51.2 (N/A)
+10     3052     1002            com.android.bluetooth                      Perfetto v51.2 (N/A)
+12     2841     10161           com.sec.android.app.launcher               Perfetto v51.2 (N/A)
+13     6548     10212           com.samsung.android.honeyboard             Perfetto v51.2 (N/A)
+1852   5607     10137           com.samsung.android.smartsuggestions       Perfetto v51.2 (N/A)
+4133   2693     10295           com.google.android.ext.services            Perfetto v51.2 (N/A)
+4864   32260    10337           com.samsung.android.spay                   Perfetto v51.2 (N/A)
+8442   4472     10275    F      com.android.chrome                         Perfetto v51.2 (N/A)
+8533   1268     10266           cronet-com.google.android.gms-1268         Perfetto v0.0 (unknown)
+8581   7212     10267           com.google.android.googlequicksearchbox:googleapp Perfetto v51.2 (N/A)
+8582   7212     10267           org.chromium-com.google.android.googlequicksearchbox-7212 Perfetto v0.0 (unknown)
+8584   7212     10267           cronet-com.google.android.googlequicksearchbox-7212 Perfetto v0.0 (unknown)
+8589   14538    10265    F      cronet-com.android.vending-14538           Perfetto v0.0 (unknown)
+8617   25585    10279    F      cronet-com.google.android.gm-25585         Perfetto v0.0 (unknown)
+8618   25585    10279    F      org.chromium-com.google.android.gm-25585   Perfetto v0.0 (unknown)
+8619   28177    10265    F      cronet-com.android.vending-28177           Perfetto v0.0 (unknown)
+8633   608      10453           dev.spinon.bootstrap                       Perfetto v51.2 (N/A)
+
+
+DATA SOURCES REGISTERED:
+
+NAME                                     PRODUCER                     DETAILS
+===                                      ========                     ========
+android.app_wakelocks                    system_server (5)
+android.bluetooth_tracing                com.android.bluetooth (10)
+android.gpu.memory                       /system/bin/gpuservice (4)
+android.heapprofd                        traced (1)
+android.inputmethod                      system_server (5)
+android.inputmethod                      com.android.systemui (8)
+android.inputmethod                      com.sec.android.app.launcher (12)
+android.inputmethod                      com.samsung.android.honeyboard (13)
+android.inputmethod                      com.samsung.android.smartsuggestions (1852)
+android.inputmethod                      com.google.android.ext.services (4133)
+android.inputmethod                      com.samsung.android.spay (4864)
+android.inputmethod                      com.android.chrome (8442)
+android.inputmethod                      com.google.android.googlequicksearchbox:googleapp (8581)
+android.inputmethod                      dev.spinon.bootstrap (8633)
+android.java_hprof                       traced (1)
+android.java_hprof.oom                   traced (1)
+android.protolog                         system_server (5)
+android.protolog                         com.android.systemui (8)
+android.protolog                         com.sec.android.app.launcher (12)
+android.protolog                         com.samsung.android.honeyboard (13)
+android.protolog                         com.samsung.android.smartsuggestions (1852)
+android.protolog                         com.google.android.ext.services (4133)
+android.protolog                         com.samsung.android.spay (4864)
+android.protolog                         com.android.chrome (8442)
+android.protolog                         com.google.android.googlequicksearchbox:googleapp (8581)
+android.protolog                         dev.spinon.bootstrap (8633)
+android.sdk_sysprop_guard                traced (1)
+android.surfaceflinger.frame             /system/bin/surfaceflinger (2)
+android.surfaceflinger.frametimeline     /system/bin/surfaceflinger (2)
+android.surfaceflinger.layers            /system/bin/surfaceflinger (2)
+android.windowmanager                    system_server (5)
+com.android.wm.shell.transition          system_server (5)
+com.android.wm.shell.transition          com.android.systemui (8)
+linux.perf                               traced (1)
+org.chromium.background_scenario_metadata org.chromium-com.google.android.googlequicksearchbox-7212 (8582)
+org.chromium.background_scenario_metadata org.chromium-com.google.android.gm-25585 (8618)
+org.chromium.histogram_sample            org.chromium-com.google.android.googlequicksearchbox-7212 (8582)
+org.chromium.histogram_sample            org.chromium-com.google.android.gm-25585 (8618)
+org.chromium.memory_instrumentation      org.chromium-com.google.android.googlequicksearchbox-7212 (8582)
+org.chromium.memory_instrumentation      org.chromium-com.google.android.gm-25585 (8618)
+org.chromium.native_heap_profiler        org.chromium-com.google.android.googlequicksearchbox-7212 (8582)
+org.chromium.native_heap_profiler        org.chromium-com.google.android.gm-25585 (8618)
+org.chromium.sampler_profiler            org.chromium-com.google.android.googlequicksearchbox-7212 (8582)
+org.chromium.sampler_profiler            org.chromium-com.google.android.gm-25585 (8618)
+org.chromium.system_metrics              org.chromium-com.google.android.googlequicksearchbox-7212 (8582)
+org.chromium.system_metrics              org.chromium-com.google.android.gm-25585 (8618)
+org.chromium.trace_metadata2             org.chromium-com.google.android.googlequicksearchbox-7212 (8582)
+org.chromium.trace_metadata2             org.chromium-com.google.android.gm-25585 (8618)
+org.chromium.triggers                    org.chromium-com.google.android.googlequicksearchbox-7212 (8582)
+org.chromium.triggers                    org.chromium-com.google.android.gm-25585 (8618)
+perfetto.metatrace                       traced (1)
+track_event                              system_server (5)            always,gfx,input,view,webview,wm,am,sm,a... (use --long to expand)
+track_event                              /system/bin/servicemanager (6) servicemanager
+track_event                              /system/bin/surfaceflinger (7) always,gfx,input,view,webview,wm,am,sm,a... (use --long to expand)
+track_event                              com.android.systemui (8)     always,gfx,input,view,webview,wm,am,sm,a... (use --long to expand)
+track_event                              cronet-com.google.android.gms-1268 (8533) __metadata,accessibility,AccountFetcherS... (use --long to expand)
+track_event                              org.chromium-com.google.android.googlequicksearchbox-7212 (8582) __metadata,accessibility,AccountFetcherS... (use --long to expand)
+track_event                              cronet-com.google.android.googlequicksearchbox-7212 (8584) __metadata,accessibility,AccountFetcherS... (use --long to expand)
+track_event                              cronet-com.android.vending-14538 (8589) __metadata,accessibility,AccountFetcherS... (use --long to expand)
+track_event                              cronet-com.google.android.gm-25585 (8617) __metadata,accessibility,AccountFetcherS... (use --long to expand)
+track_event                              org.chromium-com.google.android.gm-25585 (8618) __metadata,accessibility,AccountFetcherS... (use --long to expand)
+track_event                              cronet-com.android.vending-28177 (8619) __metadata,accessibility,AccountFetcherS... (use --long to expand)
+
+
+TRACING SESSIONS:
+
+ID      UID     STATE      BUF (#) KB   DUR (s)   #DS  STARTED  NAME
+===     ===     =====      ==========   =======   ===  =======  ====

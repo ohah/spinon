@@ -121,6 +121,17 @@ fi
 adb -s "$adb_serial" get-state | grep -qx device || fail "대상 기기에 adb로 연결할 수 없습니다: $adb_serial"
 api_level="$(adb -s "$adb_serial" shell getprop ro.build.version.sdk | tr -d '\r')"
 (( api_level >= 31 )) || fail "Perfetto FrameTimeline은 Android 12/API 31 이상이 필요합니다 (현재 API $api_level)"
+is_emulator="$(adb -s "$adb_serial" shell getprop ro.kernel.qemu | tr -d '\r')"
+if [[ "$is_emulator" == "1" ]]; then
+    device_kind="에뮬레이터"
+else
+    device_kind="실기기"
+fi
+perfetto_sources="$(adb -s "$adb_serial" shell perfetto --query 2>&1)" \
+    || fail "기기 Perfetto 데이터 소스 조회에 실패했습니다"
+if ! printf '%s\n' "$perfetto_sources" | grep -Fq 'linux.ftrace'; then
+    fail "기기 Perfetto에 linux.ftrace 데이터 소스가 없습니다. 이 추적 설정으로 앱 ATrace·커널 스케줄러 원인을 수집할 수 없습니다. Android off-CPU scheduler 진단에는 tools/benchmark/capture-android-simpleperf-offcpu.sh를 사용하세요"
+fi
 
 case "$scenario" in
     spinon-event|spinon-ui-only|spinon-long-js)
@@ -272,6 +283,7 @@ sleep 5
     git -C "$repo_root" status --short --untracked-files=all > "${run_dir}/source-status.txt"
     printf 'source_tree_sha256=%s\n' "$(git -C "$repo_root" ls-files --cached --others --exclude-standard -z | xargs -0 shasum -a 256 | shasum -a 256 | awk '{print $1}')"
     printf 'adb_serial=%s\n' "$adb_serial"
+    printf 'device_kind=%s\n' "$device_kind"
     printf 'android_api=%s\n' "$api_level"
     printf 'android_release=%s\n' "$(adb -s "$adb_serial" shell getprop ro.build.version.release | tr -d '\r')"
     printf 'device_model=%s\n' "$(adb -s "$adb_serial" shell getprop ro.product.model | tr -d '\r')"
@@ -389,7 +401,11 @@ remote_apk="$(adb -s "$adb_serial" shell pm path "$app_id" \
 adb -s "$adb_serial" shell sha256sum "$remote_apk" > "${run_dir}/installed-apk.sha256"
 
 printf 'R05 Android 프레임 추적을 저장했습니다: %s\n' "$run_dir"
-printf '이 에뮬레이터 결과는 원인 분석용이며 실기기 성능 주장의 근거가 아닙니다.\n'
+if [[ "$is_emulator" == "1" ]]; then
+    printf '에뮬레이터 결과는 원인 분석용이며 실기기 성능 주장의 근거가 아닙니다.\n'
+else
+    printf '실기기 결과는 해당 모델·OS·화면 주사율·빌드 조건에 한정해 해석해야 합니다.\n'
+fi
 if [[ -n "$validation_error" ]]; then
     fail "$validation_error (원본은 ${run_dir}에 보존했습니다)"
 fi

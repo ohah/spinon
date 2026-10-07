@@ -1,0 +1,2 @@
+runs,paired_intervals,p50_us,p95_us,max_us,sum_us,percentile_method
+5,101,15.117,69.102,730.976,3099.763,nearest-rank p95; median p50

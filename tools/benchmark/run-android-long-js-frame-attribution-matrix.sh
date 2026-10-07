@@ -94,6 +94,17 @@ if [[ -z "$adb_serial" ]]; then
 fi
 adb -s "$adb_serial" get-state | grep -qx device \
     || fail "대상 기기에 adb로 연결할 수 없습니다: $adb_serial"
+perfetto_sources="$(adb -s "$adb_serial" shell perfetto --query 2>&1)" \
+    || fail "기기 Perfetto 데이터 소스 조회에 실패했습니다"
+if ! printf '%s\n' "$perfetto_sources" | grep -Fq 'linux.ftrace'; then
+    fail "기기 Perfetto에 linux.ftrace 데이터 소스가 없습니다. 이 frame-attribution 행렬을 실행할 수 없습니다. Android off-CPU scheduler 진단에는 tools/benchmark/capture-android-simpleperf-offcpu.sh를 사용하세요"
+fi
+is_emulator="$(adb -s "$adb_serial" shell getprop ro.kernel.qemu | tr -d '\r')"
+if [[ "$is_emulator" == "1" ]]; then
+    device_kind="에뮬레이터"
+else
+    device_kind="실기기"
+fi
 
 stamp="$(date -u +%Y%m%dT%H%M%SZ)"
 matrix_dir="${output_root}/${stamp}"
@@ -109,6 +120,7 @@ debug_apk="${repo_root}/platforms/android/app/build/outputs/apk/debug/app-debug.
     printf 'duration_seconds=%s\n' "$duration_seconds"
     printf 'events_per_condition=%s\n' "$input_count"
     printf 'adb_serial=%s\n' "$adb_serial"
+    printf 'device_kind=%s\n' "$device_kind"
     printf 'APK SHA-256: %s\n' "$(shasum -a 256 "$debug_apk" | awk '{print $1}')"
     printf '\nround scenario\n'
 } > "$schedule_file"
@@ -144,6 +156,11 @@ for ((round = 1; round <= repeats; round++)); do
     done
 done
 
-printf '동일 APK·emulator에서 조건별 %s회 추적을 저장했습니다: %s\n' \
+printf '동일 APK·%s에서 조건별 %s회 추적을 저장했습니다: %s\n' \
+    "$device_kind" \
     "$repeats" "$matrix_dir"
-printf '이 반복 측정은 긴 JS 중 UI·이벤트 대기·취소 경로를 비교하며, 실기기 성능 주장은 아닙니다.\n'
+if [[ "$is_emulator" == "1" ]]; then
+    printf '긴 JS 중 UI·이벤트 대기·취소 경로를 비교하는 에뮬레이터 원인 분석입니다.\n'
+else
+    printf '실기기 결과는 해당 기기·OS·빌드·입력 조건에 한정하며 다른 기기의 성능으로 일반화하지 않습니다.\n'
+fi
