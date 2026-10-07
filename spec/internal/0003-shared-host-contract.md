@@ -112,19 +112,13 @@ DOM `insertBefore(node, referenceChild)` 경로에서는 `referenceChild`가 nul
 
 ## 입력 이벤트와 콜백 소유권
 
-플랫폼 입력은 마지막으로 표시된 스냅샷에서 대상을 판정한 뒤 다음 내부 이벤트 전달 자료를 만듭니다.
+플랫폼 입력은 플랫폼이 표시를 확인한 snapshot에서 대상을 판정한 뒤 내부 이벤트 전달 자료를 만듭니다. frame stamp, 입력과 presentation 확인의 선형화 순서, callback 교체·제거와 target stale 처리는 [0023 S05 입력 이벤트 전달 계약](0023-s05-event-delivery.md)을 따릅니다.
 
-```text
-document_generation, owner_id, node_id,
-presented_document_revision, presented_render_tree_revision,
-frame_id, sequence, event_kind, coordinates
-```
-
-- 이벤트 전달은 대상 Isolate의 작업 큐에서 순서대로 실행합니다. Android/iOS OS 입력 스레드는 JS 콜백 완료를 동기 대기하지 않습니다.
-- 전달 직전에 문서 세대, 노드 연결 상태, OwnerId를 재검증합니다. 노드가 분리·폐기됐거나 세대·소유자가 달라졌으면 이벤트를 버리고 진단합니다. 입력은 `presented_render_tree_revision`을 가진 실제 표시 프레임에서 대상을 판정한 것으로 기록하며, 다른 아래 노드로 조용히 재대상화하지 않습니다. 현재 트리 변경과 이벤트가 경합할 때의 정확한 전달·폐기 정책은 S05에서 확정합니다.
-- JS 콜백은 V8 호스트의 등록부가 `(문서 세대, OwnerId, NodeId, 이벤트 종류)` 키로 소유합니다. Rust UI 트리는 V8 콜백 핸들을 보관하지 않습니다. 프레임워크 루트 분리와 DOM 이벤트 수신기 해제는 각자 소유한 등록만 제거합니다.
-- DOM 노드 분리는 곧 래퍼 객체 폐기를 뜻하지 않습니다. 살아 있는 분리 래퍼 객체는 다시 삽입될 수 있습니다. 콜백 참조 회수와 GC 연결은 노드 `dispose`·`Isolate` 종료 규칙이 확정될 때까지 공개 계약이 아닙니다.
-- 이 내부 전달 데이터는 이벤트 전달 경계만 정의합니다. 캡처·버블링, `stopPropagation()`, `preventDefault()`, 포인터 취소·키보드 순서·접근성 활성화의 웹 동등 동작은 [0002 제안](../0002-ui-tree-events.md)과 S05에서 별도 확정합니다.
+- 전달은 대상 Isolate의 UserBlocking 작업 queue에 제출합니다. Android/iOS UI 호스트는 JS callback 완료를 기다리지 않습니다. 같은 등급 안의 입력 FIFO와 queue 포화 거부는 [0023](0023-s05-event-delivery.md)의 제한 계약을 따릅니다.
+- frame stamp의 대상이 전달 시점에 분리·폐기됐거나 문서 세대·owner root가 달라졌으면 callback을 부르지 않고 진단합니다. 같은 root에 연결된 노드가 이동·숨김된 경우에도 이미 판정된 NodeId를 유지하며 다른 노드로 재대상화하지 않습니다. 이는 전체 DOM dispatch 적합성 판정이 아닙니다.
+- JS 콜백은 Isolate owner의 V8 등록부가 (runtime generation, 문서 세대, OwnerId, NodeId, 이벤트 종류) 키로 소유합니다. Rust UI 트리는 V8 callback handle을 보관하지 않습니다. HostCommit 경계에서 트리와 등록 변경을 함께 공개하며, 제거·교체·unmount는 해당 owner 등록만 갱신합니다.
+- DOM 노드 분리는 곧 래퍼 객체 폐기를 뜻하지 않습니다. 살아 있는 분리 래퍼 객체는 다시 삽입될 수 있습니다. DOM listener 참조 회수와 GC 연결은 별도 폐기·Isolate 종료 규칙을 따릅니다.
+- 이 내부 전달 자료는 첫 click 경계만 정의합니다. public event object, 캡처·버블링, stopPropagation(), preventDefault(), 포인터 취소·키보드 순서·접근성 활성화는 [0002 제안](../0002-ui-tree-events.md), J12, S07에서 별도 명세·검증합니다.
 
 ## 호스트 오류 초안
 

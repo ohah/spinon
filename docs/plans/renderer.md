@@ -4,7 +4,7 @@
 
 이 문서는 GPU 렌더러 작업의 선후 관계와 통과 조건을 정리합니다. 구현 상태는 [`spec/STATUS.md`](https://github.com/ohah/spinon/blob/main/spec/STATUS.md), 공개 동작 계약은 저장소의 버전 있는 `spec/` 문서가 기준입니다. 첫 공식 릴리스 범위는 이 문서에서 정하지 않습니다.
 
-첫 CSS→GPU 연결은 전체 S04 구현에 앞서 새 고정 `S04FlexPaintV1` fixture를 Android·iOS GPU까지 전달하는 내부 수직 슬라이스입니다. S04.1에서 불투명 CSS `background-color`, 1 CSS px=1 Android dp/iOS point, GPU 경계의 backing scale 단회 적용, `spinon-style-to-render`와 `spinon-render` 경계를 정했습니다. S04.2·S04.3 Chromium fixture와 CPU `StaticRenderSnapshot`, S04.4 Android·S04.5 iOS surface, S04.6 시뮬레이터 캡처 대조의 최대 좌표 차이 0.167 CSS px를 기록했습니다. S04.7 작업 연결은 [0019 작업 표](../../spec/internal/0019-s04-css-layout-gpu-slice.md#s04-후속-작업-소유-경계)에서 끝났고, S02.2는 스타일·환경 revision을 fixture layout·snapshot까지 보존해 stale snapshot admission을 거부합니다. 제품 소유자·원자 입력 수집·GPU queue 검사는 남아 있습니다. 이어지는 CSS·좌표·이벤트·프레임 대기열 구현은 상태 대장을 따릅니다. 정적 화면을 그리는 네이티브 프레임 구동기와 공개 JS `requestAnimationFrame`, JavaScript 작업 우선순위 대기열은 서로 다른 계약입니다. 이 fixture는 전체 CSS나 앱 runtime 지원이 아닙니다.
+첫 CSS→GPU 연결은 전체 S04 구현에 앞서 새 고정 `S04FlexPaintV1` fixture를 Android·iOS GPU까지 전달하는 내부 수직 슬라이스입니다. S04.1에서 불투명 CSS `background-color`, 1 CSS px=1 Android dp/iOS point, GPU 경계의 backing scale 단회 적용, `spinon-style-to-render`와 `spinon-render` 경계를 정했습니다. S04.2·S04.3 Chromium fixture와 CPU `StaticRenderSnapshot`, S04.4 Android·S04.5 iOS surface, S04.6 시뮬레이터 캡처 대조의 최대 좌표 차이 0.167 CSS px를 기록했습니다. S04.7 작업 연결은 [0019 작업 표](../../spec/internal/0019-s04-css-layout-gpu-slice.md#s04-후속-작업-소유-경계)에서 끝났고, S02.2는 스타일·환경 revision을 fixture layout·snapshot까지 보존해 stale snapshot admission을 거부합니다. S04.9도 정적 snapshot hit-test와 제출 sequence를 확인했을 뿐 플랫폼 presentation 확인 신호나 제품 JS 이벤트는 다루지 않았습니다. S05 내부 envelope는 [0023](../../spec/internal/0023-s05-event-delivery.md)에 기록했으며 제품 이벤트 경로 전에 S04.10에서 Android·iOS의 presentation 확인 신호와 입력 순서를 연결해야 합니다. 이 확인 신호는 광학 scanout 시각을 증명하지 않으며 플랫폼 API는 S04.10에서 검증합니다. 정적 화면의 네이티브 frame driver와 공개 JS `requestAnimationFrame`, JavaScript 작업 우선순위 대기열은 서로 다른 계약입니다. 이 fixture는 전체 CSS나 앱 runtime 지원이 아닙니다.
 
 ## 1. 책임 경계
 
@@ -102,7 +102,7 @@
 | R03·R06 | 공통 트리 작업, commit 복구, revision·스레드·수명 계약 |
 | R05·R08·R10·R13 | 계측, GPU·Taffy·좌표 위험, 표면·자원 복구 실험 |
 | S01·S02·S04 | 트리·레이아웃 선행 조건과 Android/iOS GPU 적용기 |
-| S05·S07·S09·S11 | React 연결, 텍스트·입력·접근성, 네 구현 비교, 수명 복구 |
+| S04.10·S05·S07·S09·S11 | 표시 frame과 입력 결합, React 연결, 텍스트·입력·접근성, 네 구현 비교, 수명 복구 |
 | U07·E01–E07 | 스크롤, 부분 갱신, GPU 자원, 이벤트·제스처·프레임 예약 |
 | R15·D02·D04 | OTA의 릴리스·자원 호환, 원자 활성화와 롤백 |
 

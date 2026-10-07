@@ -161,7 +161,7 @@ Xcode build phase가 Bun 번들 → Rust 정적 라이브러리 → V8 C++ 어�
 | 3. 제품 V8·FFI 경계 | 현재 S03.1은 내부 HostDocument 묶음 실험만 검증. 제품 단계는 smoke 경계를 앱 작성자 API로 승격하기 전에 격리·예외·콜백 수명·스레드 규칙과 공개 DOM/플랫폼 모듈 경계를 추가로 결정·검증 | `crates/spinon-runtime`, `crates/spinon-ffi`, `native/v8` | 공개 API 계약·오류 복구·실기기 검증과 전체 S03 적합성 통과. S03.1 통과만으로 다음 단계 완료 판정 안 함 |
 | 4. 모바일 호스트 골격 | 현재 부팅 앱을 GPU surface·입력·수명주기·복구 검증으로 확장 | `platforms/android`, `platforms/ios` | 같은 런타임이 두 앱에서 실행되고 앱 수명 복구 확인 |
 | 5. GPU 첫 수직 화면 | R08 실험 후 GPU 백엔드와 텍스트·버튼 hit-test·접근성 연결 | `crates/spinon-render`, 플랫폼 surface | Android·iOS에서 같은 카운터 시나리오가 표시·입력·복구됨 |
-| 6. JS workspace와 첫 개발 흐름 | Runtime 패키지, React 어댑터, Vite 우선 통합, 웹 호스트, 다시 로드·오류 위치 | `packages/runtime`, `packages/frameworks/react`, `packages/bundlers/vite`, `examples/counter` | 한 TSX 앱이 웹·Android·iOS에서 빌드되고 공통 fixture 통과 |
+| 6. JS workspace와 첫 개발 흐름 | S04.10 presentation·입력 연결 후 Runtime 패키지·React adapter·Vite 우선 통합·웹 host·다시 로드·오류 위치 | `packages/runtime`, `packages/frameworks/react`, `packages/bundlers/vite`, `examples/counter` | 한 TSX 앱이 웹·Android·iOS에서 빌드되고 공통 fixture 통과 |
 | 7. Rspack·Vue·Svelte·CLI | 코어 호스트 계약을 재사용해 어댑터와 도구 지원 추가. TypeScript CLI를 Node LTS용으로 배포 | `packages/bundlers/rspack`, `packages/frameworks/vue`, `packages/frameworks/svelte`, `packages/cli` | 각 조합의 지원표와 통합 테스트가 있음 |
 | 8. 성능·OTA | 같은 fixture·릴리스 빌드에서 비교, 매니페스트·서명·청크·롤백 구현과 호환성 검사 | `tests/`, `packages/cli`, OTA 모듈 | 앱스토어 정책 확인과 대상 플랫폼별 복구·부분 배포 증거 확보 |
 
