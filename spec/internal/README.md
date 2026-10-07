@@ -22,6 +22,7 @@
 | [0019 · S04 첫 CSS·레이아웃·GPU 연결 슬라이스](0019-s04-css-layout-gpu-slice.md) | 고정 Flex·CSS 배경색 fixture에서 플랫폼 중립 snapshot을 거쳐 Android/iOS wgpu 표면까지 잇는 내부 계약 | 계약 `0.1.0-draft` · S04.1~S04.6 시뮬레이터 검증 · S04.7 후속 작업 소유 경계 연결 완료, 기능 구현 미완료 |
 | [0020 · S03.2 제한 DOM façade](0020-s03-dom-facade.md) | 전역 `document`의 생성·트리 변경·관계/텍스트/속성 조회를 Rust `HostDocument`에 동기 연결 | 내부 구현 계약 `0.1.0` · Bun/Rust 및 Android/iOS 시뮬레이터 실제 V8 검증 완료 · 공개 DOM 지원 아님 |
 | [0021 · S03.3 DOM 노드·wrapper 수명](0021-s03-dom-node-lifecycle.md) | Rust 소유 노드 회수, V8 weak `Global` 자동 reset과 safe point 전체 scan, quota·shutdown·실패 원자성 | 내부 계약 `0.1.0-draft` · Android·iOS callback closure, 반복 자원 기준선, 제한된 종료 경합 검증 · 최대 scan·quota·listener/external root 검증 진행 중 |
+| [0022 · R05 Android 프레임 지연 귀속·계측](0022-r05-benchmark-attribution.md) | Android View 대조군, 동일 MainActivity UI-only/runtime 쌍, queue·V8·actor 응답 전 계측, FrameTimeline·caller/owner 스케줄링 수집과 해석 경계 | 내부 계측 계약 `0.1.0-draft` · Android emulator 및 iOS Simulator 진단 · 실기기 성능 근거 아님 · R05 미완료 |
 | [0013 · R15 청크 OTA 호환 모델](0013-r15-ota-chunk-compatibility.md) | 바이너리 호환 ID, 단일 target ESM specifier 매핑이 있는 기능·청크·자원 그래프, typed edge diff·영향 scope·최초/불확실 기준 fallback, 객체 차등 전달·전체 그래프 사전 확보·target별 stale/CAS publish 경계, 로컬 영속 저장·객체 재검증·용량 보호, 서명·압축 제한·상향 sequence rollback 및 offline authorization 미결정 | 내부 설계 제안 `0.1.0-draft` · 배포/로더/API 미구현 |
 | [0014 · C02 번들러 모듈 그래프 adapter](0014-c02-bundler-module-graph.md) | 입력 resolver graph와 최종 emitted ESM graph를 분리해 기능·청크·specifier 대응 및 추출 실패를 기록 | 내부 실험 계약 `0.1.0-draft` · 구현·제품 API 미완료 |
 | [0015 · C02 JavaScript·CSS 자원 그래프 결합](0015-c02-resource-graph-join.md) | 같은 production build에서 0011 CSS 자원과 0014 JavaScript feature·chunk 그래프를 결합 | 내부 구현 계약 `0.1.0-draft` · 고정 fixture 구현 완료 · 제품 API 아님 |
@@ -52,6 +53,8 @@
 - `evidence/r06-ios-simulator-post-split-2026-09-30.log` · `evidence/spinon-r06-ios-post-split-2026-09-30.png` — 저장 공간 확보 뒤 현재 런타임 분리 코드로 수행한 iOS 26.2 시뮬레이터 검증 원본 로그와 화면.
 - `evidence/r06-android-queue-pressure-2026-09-30.log` — 무한 JavaScript 중 주입한 UI 탭, 접수된 이벤트, 플랫폼 대기열의 명시적 거부와 세션 종료 원본 로그(저장소 파일).
 - [R06 · iOS·Android 진단 화면 일치](./evidence/s03-r06-cross-platform-ui-parity-2026-10-05.md) — 같은 앱 화면·버튼 상태·취소와 대기 이벤트 순서 및 여섯 검증 결과, Android 로그 UI 묶음 갱신·다섯 프레임 표본을 양쪽 시뮬레이터에서 확인한 기록과 캡처.
+- [R05 · Android 프레임 지연 귀속 실험](./evidence/r05-android-frame-attribution-2026-10-06.md) — 고유 surface/display token 집계와 caller TID로 연결한 worker·actor·V8 구간. 고정 순서 matrix의 비교 한계, 균형 순서 50/100 dispatch 재측정, queue·caller wait·V8 handler 장시간 사례와 에뮬레이터 한계를 기록.
+- [R05 · iOS·Android callback·프레임 원인 분석](./evidence/r05-cross-platform-callback-root-cause-2026-10-07.md) — Android sync barrier 개입, 동기·비동기 반복, runtime dispatch 없는 UI-only RenderThread frame miss, iOS System Trace 측정 실패와 미측정 항목·후속 계측을 기록.
 - [R13 · 플랫폼 생명주기·GPU 복구](./evidence/r13-platform-gpu-recovery-2026-09-29.md) — 회전·백그라운드·오류 주입·입력 복구의 로그와 화면 캡처.
 - [S02 · Taffy 레이아웃 연결](./evidence/s02-taffy-layout-2026-09-30.md) — Chromium 기준 fixture, Taffy·기존 행/열 엔진의 좌표 비교와 한계.
 - [S04.4 · Android GPU surface](./evidence/s04-android-gpu-surface-2026-10-03.md) — Android API 36 ARM64 emulator의 Vulkan llvmpipe surface 제출, 회전별 generation, sRGB 표본 readback과 화면 캡처. 실제 hardware GPU·실기기는 미검증.

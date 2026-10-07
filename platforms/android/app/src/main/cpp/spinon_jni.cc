@@ -1,6 +1,7 @@
 #include <android/log.h>
 #include <android/native_window.h>
 #include <android/native_window_jni.h>
+#include <android/trace.h>
 #include <jni.h>
 
 #include "spinon_ffi.h"
@@ -14,6 +15,12 @@
 
 namespace {
 constexpr char kTag[] = "SpinonBootstrap";
+
+class TraceSection final {
+ public:
+  explicit TraceSection(const char *name) { ATrace_beginSection(name); }
+  ~TraceSection() { ATrace_endSection(); }
+};
 
 struct WgpuRendererContext {
   ANativeWindow *window;
@@ -330,14 +337,26 @@ extern "C" JNIEXPORT jbyteArray JNICALL
 Java_dev_spinon_bootstrap_MainActivity_nativeSessionDispatch(JNIEnv *env, jclass,
                                                               jlong handle,
                                                               jint node_id) {
+  TraceSection dispatch_section("SpinonR05:native-session-dispatch");
   if (handle == 0) return nullptr;
   std::array<char, 2048> output{};
-  const int32_t status = spinon_runtime_session_dispatch(
-      SessionFromHandle(handle), node_id, output.data(), output.size());
-  const std::string report = "status=" + std::to_string(status) + " " + output.data();
-  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_WARN, kTag,
-                      "SPINON_RUNTIME_DISPATCH=%s", report.c_str());
-  return ToByteArray(env, report);
+  int32_t status;
+  {
+    TraceSection ffi_section("SpinonR05:native-session-ffi");
+    status = spinon_runtime_session_dispatch(
+        SessionFromHandle(handle), node_id, output.data(), output.size());
+  }
+  std::string report;
+  {
+    TraceSection report_section("SpinonR05:native-session-report");
+    report = "status=" + std::to_string(status) + " " + output.data();
+  }
+  jbyteArray result;
+  {
+    TraceSection byte_array_section("SpinonR05:native-session-byte-array");
+    result = ToByteArray(env, report);
+  }
+  return result;
 }
 
 extern "C" JNIEXPORT jint JNICALL

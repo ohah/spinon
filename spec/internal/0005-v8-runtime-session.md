@@ -19,7 +19,7 @@
 2. 해당 세션의 `eval`, 이벤트 `dispatch`, Isolate 해제는 이 스레드에서만 실행한다. Rust 콜백도 현재 동기 호출이므로 같은 스레드에서 실행된다.
 3. C ABI `eval`과 `dispatch`는 결과를 기다리는 동기 함수다. 플랫폼 UI 스레드에서 직접 호출하지 말고 별도 실행기에서 호출해야 한다.
 4. 런타임 명령 큐는 `spinon-runtime`에서 소유하고 `spinon-core::PriorityQueue`의 세 FIFO를 사용한다. 각 작업 경계에서 `user-blocking`, `user-visible`, `background` 순으로 처음 비지 않은 큐의 앞 작업을 고른다. 같은 등급에서는 접수 FIFO를 유지하고, 실행 중 JavaScript는 선점하지 않는다. 일반 기아 방지는 두지 않으므로 높은 등급의 작업이 이어지면 낮은 등급이 굶을 수 있다. 지연 작업 큐가 없어 Chromium selector의 지연/즉시 작업 보정은 포함하지 않는다. 총 대기 용량 64개는 실험 설정이며 포화 시 새 작업을 즉시 거부한다. Android/iOS 플랫폼 대기열과는 별도 용량이고, 단계 간 backpressure는 미정이다.
-5. 보고서에는 호출자·소유자·마지막 콜백 OS thread ID, 명령 큐 대기 시간, V8 eval/dispatch 호출 시간, 취소 요청 여부가 포함된다. `queue_wait_us`는 API 제출 시점부터 작업자 수신까지이고, `v8_call_us`는 C++ V8 호출 구간만 잰다. 취소 요청과 실제 V8 종료는 별도 값이다. `-8`은 요청이 있었고 V8 `TryCatch::HasTerminated()`도 참일 때만 반환한다.
+5. 보고서에는 호출자·소유자·마지막 콜백 OS thread ID와 제출 잠금, 제어 잠금, scheduler 잠금, 큐 체류, V8 호출, 응답 대기 시간을 별도로 기록한다. `queue_residence_us`는 scheduler 잠금과 용량 검사를 지난 뒤 큐 삽입 직전부터 worker 수신까지다. 구버전 `queue_wait_us`는 제출 시작부터 worker 수신까지 재서 scheduler 잠금 대기를 포함할 수 있으므로 새 값과 직접 비교하지 않는다. `v8_call_us`는 C++ V8 구간의 wall time이며 CPU 시간은 Perfetto scheduler trace로 별도 확인한다. 취소 요청과 실제 V8 종료는 별도 값이다. `-8`은 요청이 있었고 V8 `TryCatch::HasTerminated()`도 참일 때만 반환한다.
 
 ## 취소와 종료
 
