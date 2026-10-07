@@ -1,3 +1,4 @@
+use super::trace::finish_reply_handoff;
 use super::{
     Command, ERR_CANCELLED, OK, OperationResponse, RuntimeSession, TaskPriority, cancel_control,
     enqueue, lock,
@@ -11,6 +12,7 @@ struct PendingPriorityProbe {
     priority: TaskPriority,
     marker: i32,
     response: Receiver<OperationResponse>,
+    trace_cookie: u32,
 }
 
 struct PriorityProbeResult {
@@ -61,19 +63,23 @@ pub fn run_priority_probe() -> Result<String, String> {
             "globalThis.__spinonPriorityProbeOrder=(globalThis.__spinonPriorityProbeOrder||0)+1;spinon.createNode(globalThis.__spinonPriorityProbeOrder,'probe-{marker}');"
         ))
         .expect("우선순위 검증 JavaScript에는 NUL 문자가 없습니다");
-        let response = enqueue(&session, priority, |sequence, caller_thread_id, reply| {
-            Command::Eval {
+        let response = enqueue(
+            &session,
+            priority,
+            |sequence, caller_thread_id, trace_cookie, reply| Command::Eval {
                 sequence,
+                trace_cookie,
                 source,
                 caller_thread_id,
                 reply,
-            }
-        });
+            },
+        );
         match response {
-            Ok(response) => pending.push(PendingPriorityProbe {
+            Ok((response, trace_cookie)) => pending.push(PendingPriorityProbe {
                 priority,
                 marker,
                 response,
+                trace_cookie,
             }),
             Err(error) => {
                 abort_priority_probe(&session);
@@ -102,7 +108,10 @@ pub fn run_priority_probe() -> Result<String, String> {
     let mut results = Vec::with_capacity(pending.len());
     for pending in pending {
         let response = match pending.response.recv_timeout(RESPONSE_TIMEOUT) {
-            Ok(response) => response,
+            Ok(response) => {
+                finish_reply_handoff(pending.trace_cookie);
+                response
+            }
             Err(error) => {
                 abort_priority_probe(&session);
                 return Err(format!("우선순위 검증 작업 응답 시간 초과: {error}"));

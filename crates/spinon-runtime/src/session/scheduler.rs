@@ -1,4 +1,5 @@
-use super::trace::TraceSection;
+use super::report::append_early_error_context;
+use super::trace::{TraceSection, send_reply};
 use super::{Command, OperationResponse, QUEUE_CAPACITY, TaskPriority, lock};
 use spinon_core::PriorityQueue;
 use std::sync::{Condvar, Mutex};
@@ -100,13 +101,36 @@ impl TaskScheduler {
     pub(super) fn reject_pending(&self, status: i32, report: &str) {
         let mut state = lock(&self.state);
         while let Some(command) = state.queue.pop_next() {
-            let reply = match command.command {
-                Command::Eval { reply, .. } | Command::Dispatch { reply, .. } => reply,
+            let (sequence, trace_cookie, operation, caller_thread_id, reply) = match command.command
+            {
+                Command::Eval {
+                    sequence,
+                    trace_cookie,
+                    caller_thread_id,
+                    reply,
+                    ..
+                } => (sequence, trace_cookie, "eval", caller_thread_id, reply),
+                Command::Dispatch {
+                    sequence,
+                    trace_cookie,
+                    caller_thread_id,
+                    reply,
+                    ..
+                } => (sequence, trace_cookie, "dispatch", caller_thread_id, reply),
             };
-            let _ = reply.send(OperationResponse {
+            let mut response = OperationResponse {
                 status,
                 report: report.to_owned(),
-            });
+            };
+            append_early_error_context(
+                &mut response,
+                sequence,
+                trace_cookie,
+                operation,
+                caller_thread_id,
+                None,
+            );
+            send_reply(reply, response, trace_cookie);
         }
     }
 }

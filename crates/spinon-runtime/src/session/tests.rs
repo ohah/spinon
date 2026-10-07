@@ -171,6 +171,7 @@ fn report_exposes_caller_owner_callback_threads_and_timings() {
     };
     let report = operation_report(OperationReport {
         sequence: 3,
+        trace_cookie: 30,
         operation: "dispatch",
         status: 0,
         caller_thread_id: 10,
@@ -188,6 +189,7 @@ fn report_exposes_caller_owner_callback_threads_and_timings() {
         error: "",
     });
     assert!(report.contains("caller_tid=10"));
+    assert!(report.contains("trace_cookie=30"));
     assert!(report.contains("owner_tid=42"));
     assert!(report.contains("callback_tid=42"));
     assert!(report.contains("submission_lock_wait_us=1"));
@@ -221,6 +223,7 @@ fn bounded_scheduler_selects_priority_then_fifo_and_drains_on_stop() {
         let (reply, _response) = std::sync::mpsc::sync_channel(1);
         let command = Command::Dispatch {
             sequence: node_id as u64,
+            trace_cookie: node_id as u32,
             node_id,
             caller_thread_id: 0,
             reply,
@@ -245,6 +248,7 @@ fn bounded_scheduler_selects_priority_then_fifo_and_drains_on_stop() {
             TaskPriority::UserBlocking,
             Command::Dispatch {
                 sequence: 7,
+                trace_cookie: 7,
                 node_id: 7,
                 caller_thread_id: 0,
                 reply,

@@ -1,8 +1,28 @@
-use super::SpinonDocumentCollectionStats;
 use super::actor::CallbackState;
+use super::{OperationResponse, SpinonDocumentCollectionStats};
+
+pub(super) fn append_early_error_context(
+    response: &mut OperationResponse,
+    sequence: u64,
+    trace_cookie: u32,
+    operation: &str,
+    caller_thread_id: u64,
+    owner_thread_id: Option<u64>,
+) {
+    response.report.push_str(&format!(
+        " seq={sequence} trace_cookie={trace_cookie} op={operation} status={} caller_tid={caller_thread_id}",
+        response.status
+    ));
+    if let Some(owner_thread_id) = owner_thread_id {
+        response
+            .report
+            .push_str(&format!(" owner_tid={owner_thread_id}"));
+    }
+}
 
 pub(super) struct OperationReport<'a> {
     pub(super) sequence: u64,
+    pub(super) trace_cookie: u32,
     pub(super) operation: &'a str,
     pub(super) status: i32,
     pub(super) caller_thread_id: u64,
@@ -23,6 +43,7 @@ pub(super) struct OperationReport<'a> {
 pub(super) fn operation_report(report: OperationReport<'_>) -> String {
     let OperationReport {
         sequence,
+        trace_cookie,
         operation,
         status,
         caller_thread_id,
@@ -46,7 +67,7 @@ pub(super) fn operation_report(report: OperationReport<'_>) -> String {
         collection_error
     };
     format!(
-        "seq={sequence} op={operation} status={status} caller_tid={caller_thread_id} owner_tid={owner_thread_id} callback_tid={callback_thread_id} submission_lock_wait_us={submission_lock_wait_us} control_lock_wait_us={control_lock_wait_us} scheduler_lock_wait_us={scheduler_lock_wait_us} queue_residence_us={queue_residence_us} v8_call_us={v8_call_us} cancel_requested={cancel_requested} callback_count={} created_nodes={} last_node_id={} document_revision={} render_tree_revision={} document_nodes={} document_string_units={} document_collection_scans={} document_collection_deferred={} document_collection_scanned_handles={} document_collection_live_handles={} document_collection_empty_handles={} document_collection_last_scan_start_ns={} document_collection_last_scan_us={} document_collection_wrapper_root_buffer_bytes={} document_collection_reclaimed_node_buffer_bytes={} document_collection_poisoned={} document_collection_error={collection_error} error={error}",
+        "seq={sequence} trace_cookie={trace_cookie} op={operation} status={status} caller_tid={caller_thread_id} owner_tid={owner_thread_id} callback_tid={callback_thread_id} submission_lock_wait_us={submission_lock_wait_us} control_lock_wait_us={control_lock_wait_us} scheduler_lock_wait_us={scheduler_lock_wait_us} queue_residence_us={queue_residence_us} v8_call_us={v8_call_us} cancel_requested={cancel_requested} callback_count={} created_nodes={} last_node_id={} document_revision={} render_tree_revision={} document_nodes={} document_string_units={} document_collection_scans={} document_collection_deferred={} document_collection_scanned_handles={} document_collection_live_handles={} document_collection_empty_handles={} document_collection_last_scan_start_ns={} document_collection_last_scan_us={} document_collection_wrapper_root_buffer_bytes={} document_collection_reclaimed_node_buffer_bytes={} document_collection_poisoned={} document_collection_error={collection_error} error={error}",
         callbacks.callback_count,
         callbacks.created_nodes,
         callbacks.last_node_id,

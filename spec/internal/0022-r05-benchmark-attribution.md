@@ -43,11 +43,13 @@ Perfetto `actual_frame_timeline_slice`에는 surface frame과 display frame 행�
 
 - `SpinonR05:control-input`, `control-status-update`, `control-log-append`, `control-log-scroll`
 - `SpinonR05:spinon-event-submit`, `spinon-event-status-update`, `runtime-dispatch`
-- `SpinonR05:runtime-worker-call`, `native-session-dispatch`, `native-session-ffi`, `native-session-report`, `native-session-logcat`, `native-session-byte-array`, `reply-receive`, `reply-send`
+- `SpinonR05:runtime-worker-call`, `native-session-dispatch`, `native-session-ffi`, `native-session-report`, `native-session-logcat`, `native-session-byte-array`, `reply-receive`, `reply-send`, `reply-handoff`
 - `SpinonR05:runtime-result-processing`, `runtime-main-thread-post`, `runtime-main-thread-handoff`, `runtime-main-thread-completion`
 - `SpinonR05:v8-handler-call`, `node-callback`, `document-commit-bridge`, `document-commit-callback`, `text-callback`, `v8-microtasks`, `document-safe-point`
 - `SpinonR05:runtime-log-enqueue`, `runtime-log-flush`, `runtime-log-scroll`
 - `SpinonR05ControlInputCount`, `SpinonR05SpinonInputCount`, `SpinonR05RuntimeDispatchCount` counter는 각각 대조 화면 handler 도달, Spinon 입력 handler 도달, Android runtime worker `ExecutorService`의 dispatch 작업 접수 수를 기록한다. 마지막 counter는 Rust scheduler 접수나 V8 성공을 증명하지 않으므로 실제 처리 결과는 sequence와 런타임 응답의 status로 확인한다. ADB 탭 명령 수와 같다고 가정하지 않고 실행별 counter를 확인한다.
+
+`reply-handoff`는 Android `ATrace_beginAsyncSection`으로 actor의 응답 전송 직전에 시작하고 caller가 채널 응답을 받은 직후 끝내는 교차 스레드 wall 구간이다. 프로세스 전역 32비트 `trace_cookie`를 사용하며, 같은 값은 런타임 보고서와 trace의 async slice에 기록된다. cookie는 ATrace API 폭에 맞춘 `u32` 증가자로, 프로세스에서 2^32회 할당된 뒤 재사용될 수 있다. 이미 닫힌 cookie의 재사용은 추적에 영향을 주지 않으며, 이론상 wrap 시점에 같은 cookie를 가진 async span이 동시에 열려 있으면 ID 충돌이 가능하다. trace의 signed 값은 요약기에서 같은 32비트 값으로 정규화한다. 채널 전송이 실패하면 보낸 쪽에서 구간을 닫고, 응답을 받지 못한 호출에서는 닫힌 응답 구간을 만들지 않는다. 이 구간은 전송·깨우기·caller 재개까지의 wall 경과이며 CPU 실행시간이나 `SyncSender::send` 단독 실행시간이 아니다. `response_wait_us` 전체를 대신하지 않는다.
 
 런타임 보고서의 시간 단위는 마이크로초다. `v8_call_us`는 thread CPU 시간이 아니라 C++ V8 호출의 wall time이며, CPU 실행·대기 상태는 같은 Perfetto trace의 scheduler data로 별도 확인한다.
 
@@ -68,15 +70,15 @@ Perfetto `actual_frame_timeline_slice`에는 surface frame과 display frame 행�
 
 `native-session-ffi`는 호출 Java thread에서 FFI 제출부터 동기 응답까지의 wall 구간이며 실행 CPU 시간으로 해석하지 않는다. `response_wait_us`도 runtime 실행뿐 아니라 응답 뒤 caller가 다시 스케줄되기까지의 지연을 포함할 수 있다. 긴 호출은 caller와 V8 owner 각각의 `sched_wakeup`→`sched_switch`를 대조한다. 내부 V8 구간 표식은 Android ATrace의 wall duration이며 V8 GC 내부 단계나 CPU 실행시간을 대신하지 않는다. `queue_residence_us`는 큐 삽입부터 worker 수신까지로, OS wake/scheduling 대기도 포함한다.
 
-`actor_before_reply_us`도 wall 시간이며 worker thread CPU 사용량은 아니다. 이 값은 worker가 명령을 처리하는 동안 멈춰 스케줄되지 않은 시간도 포함할 수 있다. 따라서 긴 값은 V8·Rust 함수의 CPU 병목을 단독으로 증명하지 않으며 Perfetto thread state와 함께 분류한다. 호출별 trace/report 연결은 Android worker의 TID와 report의 `caller_tid`로 맞추며, 연결 실패가 있으면 해당 행렬을 품질 오류로 표시한다. 프레임 비교 fixture는 dispatch 결과를 UI에 추가하지 않고 report Logcat 기록을 trace 종료 후 수행한다.
+`actor_before_reply_us`도 wall 시간이며 worker thread CPU 사용량은 아니다. 이 값은 worker가 명령을 처리하는 동안 멈춰 스케줄되지 않은 시간도 포함할 수 있다. 따라서 긴 값은 V8·Rust 함수의 CPU 병목을 단독으로 증명하지 않으며 Perfetto thread state와 함께 분류한다. 호출별 보고서와 `runtime-worker-call`은 report의 `trace_cookie`와 `reply-handoff` slice의 cookie·시간 포함 관계로 연결하고, caller/owner TID는 연결된 보고서에서 가져와 thread state를 분류한다. report와 slice의 누락·중복·잘린 구간은 품질 오류로 센다. 프레임 비교 fixture는 dispatch 결과를 UI에 추가하지 않고 report Logcat 기록을 trace 종료 후 수행한다.
 
-`reply-send`는 응답 채널 전송 주변의 Android ATrace wall 구간이다. actor thread가 표식 안에서 선점되면 선점 대기까지 길이에 포함되므로 `SyncSender::send`의 실행시간으로 읽지 않는다. caller의 `response_wait_us`와 실제 caller/owner `sched_wakeup`·`sched_switch`·thread state를 같이 확인한다. `runOnUiThread` 게시부터 main callback 시작까지도 별도 Android UI 대기 구간으로 보고 runtime 처리시간에 더하거나 빼지 않는다.
+`reply-send`는 actor가 응답 채널을 보내는 같은 스레드의 Android ATrace wall 구간이다. actor thread가 표식 안에서 선점되면 선점 대기까지 길이에 포함되므로 `SyncSender::send`의 실행시간으로 읽지 않는다. `reply-handoff`는 별도 async slice로 actor send 직전부터 caller receive 직후까지를 연결한다. 두 구간이 다르면 actor의 send 반환 뒤 선점과 caller 재개 경계를 의심할 수 있지만, 어느 구간도 CPU 실행시간을 단독으로 증명하지 않는다. caller의 `response_wait_us`와 실제 caller/owner `sched_wakeup`·`sched_switch`·thread state를 같이 확인한다. `runOnUiThread` 게시부터 main callback 시작까지도 별도 Android UI 대기 구간으로 보고 runtime 처리시간에 더하거나 빼지 않는다.
 
 `tools/benchmark/capture-android-frame-attribution.sh`는 기기·OS·화면 크기·밀도·열 상태·앱 APK digest·커밋·캡처 시점 작업 트리 digest를 기록하고 원본 trace, `gfxinfo framestats`, UI hierarchy·화면, Logcat을 지정한 출력 디렉터리에 저장한다. `diagnostic_ui_mutations_suppressed=true`는 paired runtime 조건에서 상태 TextView와 로그 뷰 변경을 양쪽 모두 생략했다는 뜻이다. 작업 트리 digest는 캡처 시점의 코드 상태를 식별하며 APK 빌드 입력의 provenance를 증명하지 않는다. 빌드 바이너리 식별자는 별도 APK SHA-256이다. `tools/benchmark/run-android-frame-attribution-matrix.sh`는 네 Android View 조건을 실행 순서별 seed로 섞는다. `tools/benchmark/run-android-ui-runtime-attribution-matrix.sh`와 `tools/benchmark/run-android-long-js-frame-attribution-matrix.sh`는 paired condition의 첫 조건을 seed로 선택하고 회차마다 순서를 교대해 반복 횟수가 짝수면 각 순서가 동일한 횟수가 되도록 한다. seed와 실제 실행 순서를 저장한다. 원본과 함께 전달되지 않은 표·요약은 재현 근거가 아니다.
 
 원본 trace에서 marker·counter·FrameTimeline을 집계하는 SQL은 [`summarize-android-frame-attribution.sql`](../../tools/benchmark/summarize-android-frame-attribution.sql)이다. 개발자는 선택적으로 [공식 Perfetto Trace Processor](https://perfetto.dev/docs/getting-started/command-line-analysis)를 설치해 `trace_processor query -f tools/benchmark/summarize-android-frame-attribution.sql <frame-attribution.pftrace>`를 실행할 수 있다. Trace Processor는 Spinon 빌드/런타임 의존성이 아니다.
 
-UI/runtime paired matrix 요약기는 Trace Processor와 Bun을 사용한다. `SPINON_TRACE_PROCESSOR`에 실행 경로를 지정한 뒤 `bun tools/benchmark/summarize-android-ui-runtime-attribution.mjs <matrix 디렉터리>`를 실행한다. 이 요약기는 `schedule.txt`의 탭 수와 균형 순서를 검증하고, 실행별 counter·trace 품질·FrameTimeline·main thread 상태·dispatch 내부 구간·Rust actor 시간·caller/owner 스케줄 wake 지연·main callback handoff를 함께 집계한다. report의 caller TID를 worker trace TID와 연결하고 성능 합격 판정은 하지 않는다.
+UI/runtime paired matrix 요약기는 Trace Processor와 Bun을 사용한다. `SPINON_TRACE_PROCESSOR`에 실행 경로를 지정한 뒤 `bun tools/benchmark/summarize-android-ui-runtime-attribution.mjs <matrix 디렉터리>`를 실행한다. 이 요약기는 `schedule.txt`의 탭 수와 균형 순서를 검증하고, 실행별 counter·trace 품질·FrameTimeline·main thread 상태·dispatch 내부 구간·Rust actor 시간·caller/owner 스케줄 wake 지연·main callback handoff를 함께 집계한다. report의 caller TID와 async `reply-handoff` cookie·시간 범위로 worker 호출을 연결한다. 보고서와 span의 1:1 연결 실패, 필수 보고서 필드 누락, UI-only 대조의 응답 span, 입력·counter 불일치, 잘린 프레임 token, trace 품질 오류, 잘못된 실행 순서는 요약에 표시하고 종료 코드 1을 반환한다. 정상 종료는 계측 자료의 구조적 일관성만 뜻하며 성능 합격 판정은 하지 않는다.
 
 ## 5. 실행·해석 규칙
 
