@@ -31,6 +31,7 @@
 
 ## 검증 기록
 
+- [S04.10 · 플랫폼 presentation 신호 API·기기 조사](./evidence/s04-10-presentation-signal-audit-2026-10-07.md) — wgpu 30.0.1·Metal·Android/Vulkan API 경계, emulator와 Xclipse 940 실기기 capability 차이, 잠금 해제 후 실기기 화면 제출·surface 재생성·36개 오프스크린 표본 readback, 미실행 timing correlation 경계.
 - [C01 · Chromium HTML UA 스타일 초기 비교](./evidence/css-c01-chromium-ua-2026-10-01.md) — macOS Chromium oracle와 고정 author baseline을 덮는 19개 computed value 비교 및 한계.
 - [C01.2 · Chromium 단위·Flexbox·Grid 기준](./evidence/css-c01-layout-2026-10-02.md) — Chrome 154.0.8037.95의 `rem`·`em`·퍼센트·분수 Flexbox/Grid 기준값 41개와 CSS px 좌표 오차 계약. Spinon/Taffy 비교는 포함하지 않음.
 - [C02 · Vite·Rspack CSS 산출 비교](./evidence/css-c02-bundler-2026-10-01.md) — production fixture의 CSS Modules·자원·청크, 기본 진단 차이와 공통 snapshot 원본 위치 근거.
