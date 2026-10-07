@@ -6,6 +6,20 @@
 
 루트에서 `mise exec -- bun run build:ios-sim`으로 시뮬레이터 앱을 빌드합니다. 기본 실행 로그의 `SPINON_BOOTSTRAP_EXECUTION is_main_thread=false`와 `SPINON_BOOTSTRAP_RESULT=nodes=2 last_node=8 tag=text text=이벤트:7`로 백그라운드 JS 부팅을 확인할 수 있습니다.
 
+## R05 callback·display tick 진단
+
+iOS Simulator에서 runtime worker queue, Rust FFI/V8 호출, main queue callback, 다음 `CADisplayLink` tick을 32회 기록하려면 기본 앱을 빌드하고 다음처럼 실행합니다.
+
+```sh
+mise exec -- bun run build:ios-sim
+xcrun simctl install booted build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app
+xcrun simctl launch --terminate-running-process booted dev.spinon.bootstrap --spinon-r05-attribution
+xcrun simctl spawn booted log show --style compact --last 3m \
+  --predicate 'process == "SpinonBootstrap" AND eventMessage CONTAINS "SPINON_R05_IOS"'
+```
+
+이 probe는 버튼 selector를 호출하는 Simulator 진단 화면이다. `CADisplayLink` tick은 GPU present 완료·광학적 표시 시각을 나타내지 않는다. 2026-10-07 iPhone 17 Pro / iOS 26.2 Simulator 결과와 한계는 [교차 플랫폼 R05 근거](../../spec/internal/evidence/r05-cross-platform-callback-root-cause-2026-10-07.md)에 기록했다.
+
 ## S04 iOS GPU fixture
 
 고정 CSS·Taffy snapshot을 iOS `CAMetalLayer`/wgpu 표면에 제출하는 내부 fixture입니다. 기본 빌드에서는 Rust S04 코드가 빠집니다. 시뮬레이터에서 opt-in 빌드와 실행을 하려면 다음 명령을 사용합니다.

@@ -10,6 +10,7 @@ final class RuntimeThreadExperimentViewController: UIViewController {
     private let automaticallyRun: Bool
     private let runPriorityProbe: Bool
     private let runShutdownProbe: Bool
+    private let runR05AttributionProbe: Bool
     private let automaticallyRunLifecycleProbe: Bool
     private let logger = Logger(subsystem: "dev.spinon.bootstrap", category: "r06")
     private let runtimeCalls = DispatchQueue(
@@ -22,6 +23,20 @@ final class RuntimeThreadExperimentViewController: UIViewController {
     private let runtimeControl = DispatchQueue(label: "dev.spinon.r06.runtime-control", qos: .userInitiated)
     private let bootstrapSource: String
     private let lifecycleProbeSource: String
+    private let attributionLogger = Logger(
+        subsystem: "dev.spinon.bootstrap", category: "r05-ios-attribution"
+    )
+
+    private struct AttributionSample {
+        let sequence: Int
+        let actionNs: UInt64
+        let workerStartNs: UInt64
+        let ffiStartNs: UInt64
+        let ffiEndNs: UInt64
+        let mainPostNs: UInt64
+        let mainCallbackNs: UInt64
+        let report: String
+    }
 
     private var session: UInt64 = 0
     private var heartbeatTimer: Timer?
@@ -39,6 +54,10 @@ final class RuntimeThreadExperimentViewController: UIViewController {
     private var reportBuffer = ""
     private var pendingReportEntries = ""
     private var reportFlushScheduled = false
+    private var attributionDisplayLink: CADisplayLink?
+    private var attributionPendingSample: AttributionSample?
+    private var attributionCompletedSamples = 0
+    private let attributionTargetSamples = 32
 
     private let statusLabel = UILabel()
     private let reportView = UITextView()
@@ -53,11 +72,13 @@ final class RuntimeThreadExperimentViewController: UIViewController {
         automaticallyRun: Bool,
         runPriorityProbe: Bool = false,
         runShutdownProbe: Bool = false,
+        runR05AttributionProbe: Bool = false,
         automaticallyRunLifecycleProbe: Bool = false
     ) {
         self.automaticallyRun = automaticallyRun
         self.runPriorityProbe = runPriorityProbe
         self.runShutdownProbe = runShutdownProbe
+        self.runR05AttributionProbe = runR05AttributionProbe
         self.automaticallyRunLifecycleProbe = automaticallyRunLifecycleProbe
         if let sourceURL = Bundle.main.url(forResource: "app", withExtension: "js"),
            let source = try? String(contentsOf: sourceURL, encoding: .utf8) {
@@ -120,6 +141,7 @@ final class RuntimeThreadExperimentViewController: UIViewController {
 
     deinit {
         heartbeatTimer?.invalidate()
+        attributionDisplayLink?.invalidate()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -243,6 +265,10 @@ final class RuntimeThreadExperimentViewController: UIViewController {
                 self.appendReport("초기 JavaScript · \(report)")
                 self.setStatus("준비됨 · V8 세션 대기 중")
                 self.setButtons(enabled: true)
+                if self.runR05AttributionProbe {
+                    self.startR05AttributionProbe()
+                    return
+                }
                 if self.automaticallyRunLifecycleProbe {
                     self.lifecycleButton.sendActions(for: .touchUpInside)
                 }
@@ -519,6 +545,10 @@ final class RuntimeThreadExperimentViewController: UIViewController {
         guard session != 0, !isClosing else { return }
         eventCount += 1
         let eventNumber = eventCount
+        if runR05AttributionProbe {
+            submitR05AttributionEvent(eventNumber)
+            return
+        }
         setStatus("UI 탭 \(eventNumber)회 · JS 이벤트 제출")
         appendReport("UI 타깃 액션 \(eventNumber) 제출")
         if scenarioRunning {
@@ -540,6 +570,88 @@ final class RuntimeThreadExperimentViewController: UIViewController {
             scenarioDispatchReport = "status=-5 플랫폼 실행 대기열 포화"
             finishScenarioIfReady()
         }
+    }
+
+    private func startR05AttributionProbe() {
+        let displayLink = CADisplayLink(target: self, selector: #selector(captureR05DisplayLinkTick))
+        displayLink.add(to: .main, forMode: .common)
+        attributionDisplayLink = displayLink
+        attributionLogger.notice(
+            "SPINON_R05_IOS_START samples=\(self.attributionTargetSamples)"
+        )
+        scheduleR05AttributionEvent()
+    }
+
+    private func scheduleR05AttributionEvent() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.20) { [weak self] in
+            guard let self,
+                  self.runR05AttributionProbe,
+                  !self.isClosing,
+                  self.attributionCompletedSamples < self.attributionTargetSamples else { return }
+            self.eventButton.sendActions(for: .touchUpInside)
+        }
+    }
+
+    private func submitR05AttributionEvent(_ sequence: Int) {
+        let actionNs = DispatchTime.now().uptimeNanoseconds
+        let handle = session
+        let accepted = enqueueRuntimeCall(label: "R05 iOS 진단 이벤트 \(sequence)") { [weak self] in
+            guard let self else { return }
+            let workerStartNs = DispatchTime.now().uptimeNanoseconds
+            let ffiStartNs = DispatchTime.now().uptimeNanoseconds
+            let report = SpinonRunner.dispatchRuntimeSession(handle, nodeID: Int32(sequence)) ?? "응답 없음"
+            let ffiEndNs = DispatchTime.now().uptimeNanoseconds
+            let mainPostNs = DispatchTime.now().uptimeNanoseconds
+            DispatchQueue.main.async {
+                let mainCallbackNs = DispatchTime.now().uptimeNanoseconds
+                guard !self.isClosing else { return }
+                let sample = AttributionSample(
+                    sequence: sequence,
+                    actionNs: actionNs,
+                    workerStartNs: workerStartNs,
+                    ffiStartNs: ffiStartNs,
+                    ffiEndNs: ffiEndNs,
+                    mainPostNs: mainPostNs,
+                    mainCallbackNs: mainCallbackNs,
+                    report: report
+                )
+                guard self.attributionPendingSample == nil else {
+                    self.attributionLogger.error(
+                        "SPINON_R05_IOS_OVERLAP seq=\(sequence) previous_sample_not_closed"
+                    )
+                    return
+                }
+                self.attributionPendingSample = sample
+            }
+        }
+        if !accepted {
+            attributionLogger.error("SPINON_R05_IOS_REJECTED seq=\(sequence) reason=runtime_queue")
+        }
+    }
+
+    @objc private func captureR05DisplayLinkTick() {
+        guard let sample = attributionPendingSample else { return }
+        attributionPendingSample = nil
+        let displayLinkNs = DispatchTime.now().uptimeNanoseconds
+        let queueUs = Double(sample.workerStartNs - sample.actionNs) / 1_000
+        let ffiUs = Double(sample.ffiEndNs - sample.ffiStartNs) / 1_000
+        let mainQueueUs = Double(sample.mainCallbackNs - sample.mainPostNs) / 1_000
+        let callbackToTickUs = Double(displayLinkNs - sample.mainCallbackNs) / 1_000
+        let totalUs = Double(displayLinkNs - sample.actionNs) / 1_000
+        let v8Us = integerField("v8_call_us", in: sample.report)
+        let actorUs = integerField("actor_before_reply_us", in: sample.report)
+        attributionLogger.notice(
+            "SPINON_R05_IOS_SAMPLE seq=\(sample.sequence) queue_us=\(queueUs, format: .fixed(precision: 3)) ffi_us=\(ffiUs, format: .fixed(precision: 3)) v8_us=\(v8Us) actor_us=\(actorUs) main_queue_us=\(mainQueueUs, format: .fixed(precision: 3)) callback_to_display_tick_us=\(callbackToTickUs, format: .fixed(precision: 3)) total_to_display_tick_us=\(totalUs, format: .fixed(precision: 3)) status=\(self.field("status", in: sample.report) ?? "missing")"
+        )
+        attributionCompletedSamples += 1
+        if attributionCompletedSamples == attributionTargetSamples {
+            attributionLogger.notice("SPINON_R05_IOS_DONE samples=\(self.attributionCompletedSamples)")
+            attributionDisplayLink?.invalidate()
+            attributionDisplayLink = nil
+            setStatus("iOS 진단 완료 · 결과는 unified log에서 확인")
+            return
+        }
+        scheduleR05AttributionEvent()
     }
 
     @objc private func simulateDelayedHostResponse() {

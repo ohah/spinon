@@ -13,7 +13,11 @@
 #include <utility>
 #include <vector>
 
-#if defined(__ANDROID__) || defined(__linux__)
+#if defined(__ANDROID__)
+#include <android/trace.h>
+#include <sys/syscall.h>
+#include <unistd.h>
+#elif defined(__linux__)
 #include <sys/syscall.h>
 #include <unistd.h>
 #elif defined(__APPLE__)
@@ -50,6 +54,26 @@ namespace {
 std::once_flag platform_once;
 std::unique_ptr<v8::Platform> platform;
 
+class ScopedSpinonTrace final {
+ public:
+  explicit ScopedSpinonTrace(const char *name) {
+#if defined(__ANDROID__)
+    ATrace_beginSection(name);
+#else
+    (void)name;
+#endif
+  }
+
+  ~ScopedSpinonTrace() {
+#if defined(__ANDROID__)
+    ATrace_endSection();
+#endif
+  }
+
+  ScopedSpinonTrace(const ScopedSpinonTrace &) = delete;
+  ScopedSpinonTrace &operator=(const ScopedSpinonTrace &) = delete;
+};
+
 void InitializeV8() {
   platform = v8::platform::NewDefaultPlatform();
   v8::V8::InitializePlatform(platform.get());
@@ -57,6 +81,7 @@ void InitializeV8() {
 }
 
 void CreateNode(const v8::FunctionCallbackInfo<v8::Value> &args) {
+  ScopedSpinonTrace trace("SpinonR05:node-callback");
   auto *runtime = static_cast<SpinonV8Runtime *>(args.GetIsolate()->GetData(0));
   if (args.Length() != 2 || !args[0]->IsInt32() || !args[1]->IsString()) {
     args.GetIsolate()->ThrowException(v8::String::NewFromUtf8Literal(
@@ -71,6 +96,7 @@ void CreateNode(const v8::FunctionCallbackInfo<v8::Value> &args) {
 }
 
 void SetText(const v8::FunctionCallbackInfo<v8::Value> &args) {
+  ScopedSpinonTrace trace("SpinonR05:text-callback");
   auto *runtime = static_cast<SpinonV8Runtime *>(args.GetIsolate()->GetData(0));
   if (args.Length() != 1 || !args[0]->IsString()) {
     args.GetIsolate()->ThrowException(v8::String::NewFromUtf8Literal(
@@ -305,6 +331,7 @@ void ThrowDocumentError(v8::Isolate *isolate, const std::string &message,
 }
 
 void CommitDocumentBatch(const v8::FunctionCallbackInfo<v8::Value> &args) {
+  ScopedSpinonTrace trace("SpinonR05:document-commit-bridge");
   auto *runtime = static_cast<SpinonV8Runtime *>(args.GetIsolate()->GetData(0));
   v8::Isolate *isolate = args.GetIsolate();
   v8::Local<v8::Context> context = isolate->GetCurrentContext();
@@ -377,9 +404,13 @@ void CommitDocumentBatch(const v8::FunctionCallbackInfo<v8::Value> &args) {
   for (const auto &operation : owned) operations.push_back(operation.raw);
   SpinonDocumentReceipt receipt{};
   char error[1024] = {};
-  const int32_t status = runtime->document_commit_callback(
-      runtime->document_user_data, operations.data(), operations.size(), &receipt,
-      error, sizeof(error));
+  int32_t status;
+  {
+    ScopedSpinonTrace callback_trace("SpinonR05:document-commit-callback");
+    status = runtime->document_commit_callback(
+        runtime->document_user_data, operations.data(), operations.size(), &receipt,
+        error, sizeof(error));
+  }
   if (status != SPINON_DOCUMENT_CALLBACK_OK) {
     const char *name = status == SPINON_DOCUMENT_CALLBACK_QUOTA_EXCEEDED
                            ? "QuotaExceededError"
@@ -900,15 +931,24 @@ extern "C" int32_t spinon_v8_runtime_dispatch(SpinonV8Runtime *runtime,
     auto handler = runtime->event_handler.Get(runtime->isolate);
     v8::Local<v8::Value> arguments[] = {
         v8::Int32::New(runtime->isolate, node_id)};
-    if (handler->Call(context, context->Global(), 1, arguments).IsEmpty()) {
-      runtime->was_terminated = try_catch.HasTerminated();
-      runtime->error = ExceptionText(runtime->isolate, try_catch);
-      return -1;
+    {
+      ScopedSpinonTrace handler_trace("SpinonR05:v8-handler-call");
+      if (handler->Call(context, context->Global(), 1, arguments).IsEmpty()) {
+        runtime->was_terminated = try_catch.HasTerminated();
+        runtime->error = ExceptionText(runtime->isolate, try_catch);
+        return -1;
+      }
     }
-    runtime->isolate->PerformMicrotaskCheckpoint();
+    {
+      ScopedSpinonTrace microtask_trace("SpinonR05:v8-microtasks");
+      runtime->isolate->PerformMicrotaskCheckpoint();
+    }
     return 0;
   }();
-  CollectDocumentAtSafePoint(runtime);
+  {
+    ScopedSpinonTrace collection_trace("SpinonR05:document-safe-point");
+    CollectDocumentAtSafePoint(runtime);
+  }
   return result;
 }
 

@@ -105,10 +105,9 @@ pub fn run_shutdown_probe() -> Result<String, String> {
             } else {
                 TaskPriority::Background
             },
-            move |sequence, submitted_at, caller_thread_id, reply| Command::Eval {
+            move |sequence, caller_thread_id, reply| Command::Eval {
                 sequence,
                 source,
-                submitted_at,
                 caller_thread_id,
                 reply,
             },
@@ -297,10 +296,9 @@ mod tests {
             let response = enqueue(
                 &session,
                 TaskPriority::UserVisible,
-                move |sequence, submitted_at, caller_thread_id, reply| Command::Eval {
+                move |sequence, caller_thread_id, reply| Command::Eval {
                     sequence,
                     source,
-                    submitted_at,
                     caller_thread_id,
                     reply,
                 },
@@ -411,10 +409,11 @@ mod tests {
                     Command::Eval {
                         sequence: 1,
                         source: CString::new("pending").unwrap(),
-                        submitted_at: std::time::Instant::now(),
                         caller_thread_id: 0,
                         reply,
                     },
+                    0,
+                    0,
                 )
                 .is_ok()
         );
@@ -425,10 +424,11 @@ mod tests {
                     Command::Dispatch {
                         sequence: 2,
                         node_id: 9,
-                        submitted_at: std::time::Instant::now(),
                         caller_thread_id: 0,
                         reply: dispatch_reply,
                     },
+                    0,
+                    0,
                 )
                 .is_ok()
         );

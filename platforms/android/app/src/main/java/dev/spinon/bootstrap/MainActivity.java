@@ -1,6 +1,7 @@
 package dev.spinon.bootstrap;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -9,6 +10,7 @@ import android.graphics.drawable.StateListDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Trace;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
@@ -23,12 +25,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.BiConsumer;
 
 public final class MainActivity extends Activity {
@@ -101,17 +105,31 @@ public final class MainActivity extends Activity {
     private boolean longEvaluationEvalFinished;
     private boolean longEvaluationSummaryWritten;
     private boolean longEvaluationDispatchThreadsMatch;
+    private boolean longEvaluationTimeoutTriggered;
     private int longEvaluationCancelStatus = -1;
+    private int longEvaluationManualCancelCount;
+    private int longEvaluationAutomaticCancelCount;
     private int pendingDispatchesFromLongEvaluation;
     private int runtimeHeartbeatCount;
     private int longEvaluationHeartbeatStart;
+    private boolean spinonUiOnly;
+    private boolean frameAttributionMode;
+    private boolean asynchronousMainHandoff;
+    private final ConcurrentLinkedQueue<byte[]> frameAttributionReports = new ConcurrentLinkedQueue<>();
+    private final AtomicInteger runtimeMainThreadHandoffSequence = new AtomicInteger(1);
+    private int runtimeDispatchAcceptedCount;
     private long longEvaluationOwnerThread = -1;
     private long longEvaluationDispatchOwnerThread = -1;
     private long longEvaluationCallbackThread = -1;
     private int tapCount;
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
+    private final Handler asynchronousMainHandler =
+            Handler.createAsync(Looper.getMainLooper());
     private final Runnable longEvaluationTimeout = () -> {
         if (activityClosing || !longEvaluationRunning || cancelRequestPending) return;
+        longEvaluationTimeoutTriggered = true;
+        longEvaluationAutomaticCancelCount++;
+        Trace.setCounter("SpinonR05AutomaticCancelCount", longEvaluationAutomaticCancelCount);
         appendRuntimeLog("시간 초과 · 안전을 위해 V8 취소를 요청합니다");
         if (cancelButton != null) cancelButton.performClick();
     };
@@ -120,6 +138,7 @@ public final class MainActivity extends Activity {
         public void run() {
             if (activityClosing || !longEvaluationRunning) return;
             runtimeHeartbeatCount++;
+            Trace.setCounter("SpinonR05MainThreadHeartbeatCount", runtimeHeartbeatCount);
             mainHandler.postDelayed(this, 50);
         }
     };
@@ -127,6 +146,28 @@ public final class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String frameBenchmarkMode = getIntent().getStringExtra(FrameAttributionActivity.EXTRA_MODE);
+        if (frameBenchmarkMode != null) {
+            startActivity(new Intent(this, FrameAttributionActivity.class)
+                    .putExtra(FrameAttributionActivity.EXTRA_MODE, frameBenchmarkMode));
+            finish();
+            return;
+        }
+        spinonUiOnly = getIntent().getBooleanExtra("spinon_ui_only", false);
+        frameAttributionMode = getIntent().getBooleanExtra("spinon_frame_attribution", false);
+        asynchronousMainHandoff = getIntent().getBooleanExtra("spinon_async_main_handoff", false);
+        if (frameAttributionMode) {
+            Trace.setCounter("SpinonR05RuntimeDispatchCount", 0);
+            long reportDelayMillis = (long) getIntent()
+                    .getIntExtra("spinon_frame_duration_seconds", 20) * 1000L + 10_000L;
+            mainHandler.postDelayed(this::dumpFrameAttributionReports, reportDelayMillis);
+        }
+        if (spinonUiOnly) {
+            Log.i(TAG, "SPINON_R05_UI_ONLY · 같은 화면에서 런타임 dispatch 생략");
+        }
+        if (frameAttributionMode) {
+            Log.i(TAG, "SPINON_R05_FRAME_ATTRIBUTION · 이벤트 상세 로그 UI 생략");
+        }
         if (getIntent().getBooleanExtra("spinon_priority_probe", false)) {
             showPriorityProbe();
             return;
@@ -393,8 +434,30 @@ public final class MainActivity extends Activity {
 
         dispatchButton.setOnClickListener(view -> {
             int nodeId = ++tapCount;
-            runtimeStatus.setText("UI 탭 " + nodeId + "회 · JS 이벤트 제출");
-            appendRuntimeLog("UI 타깃 액션 " + nodeId + " 제출");
+            Trace.setCounter("SpinonR05SpinonInputCount", nodeId);
+            Trace.beginSection("SpinonR05:spinon-event-submit");
+            try {
+                if (!frameAttributionMode) {
+                    Trace.beginSection("SpinonR05:spinon-event-status-update");
+                    try {
+                        runtimeStatus.setText("UI 탭 " + nodeId + "회 · 이벤트 입력 처리");
+                    } finally {
+                        Trace.endSection();
+                    }
+                }
+                if (!frameAttributionMode) {
+                    appendRuntimeLog("UI 타깃 액션 " + nodeId + " 입력");
+                }
+                if (!spinonUiOnly) {
+                    Trace.beginAsyncSection("SpinonR05:runtime-dispatch", nodeId);
+                }
+            } finally {
+                Trace.endSection();
+            }
+            if (spinonUiOnly) {
+                Trace.setCounter("SpinonR05RuntimeDispatchCount", 0);
+                return;
+            }
             boolean submittedDuringLongEvaluation = longEvaluationRunning;
             if (submittedDuringLongEvaluation) {
                 longEvaluationHadDispatch = true;
@@ -403,6 +466,7 @@ public final class MainActivity extends Activity {
             boolean accepted = submitRuntimeCallWithCompletion(
                     () -> nativeSessionDispatch(runtimeSession, nodeId),
                     "이벤트 " + nodeId + " ·", (result, error) -> {
+                        Trace.endAsyncSection("SpinonR05:runtime-dispatch", nodeId);
                         if (!submittedDuringLongEvaluation) return;
                         String report = error == null ? decode(result) : "";
                         boolean dispatchSucceeded = error == null
@@ -425,11 +489,18 @@ public final class MainActivity extends Activity {
                         updateLongEvaluationButtons();
                         finishLongEvaluationIfReady();
                     });
-            if (!accepted && submittedDuringLongEvaluation) {
-                pendingDispatchesFromLongEvaluation--;
-                pendingDispatchFailed = true;
-                updateLongEvaluationButtons();
-                finishLongEvaluationIfReady();
+            if (accepted) {
+                Trace.setCounter(
+                        "SpinonR05RuntimeDispatchCount", ++runtimeDispatchAcceptedCount);
+            }
+            if (!accepted) {
+                Trace.endAsyncSection("SpinonR05:runtime-dispatch", nodeId);
+                if (submittedDuringLongEvaluation) {
+                    pendingDispatchesFromLongEvaluation--;
+                    pendingDispatchFailed = true;
+                    updateLongEvaluationButtons();
+                    finishLongEvaluationIfReady();
+                }
             }
         });
         loopButton.setOnClickListener(view -> {
@@ -441,7 +512,12 @@ public final class MainActivity extends Activity {
             longEvaluationEvalFinished = false;
             longEvaluationSummaryWritten = false;
             longEvaluationDispatchThreadsMatch = true;
+            longEvaluationTimeoutTriggered = false;
             longEvaluationCancelStatus = -1;
+            longEvaluationManualCancelCount = 0;
+            longEvaluationAutomaticCancelCount = 0;
+            Trace.setCounter("SpinonR05ManualCancelCount", 0);
+            Trace.setCounter("SpinonR05AutomaticCancelCount", 0);
             pendingDispatchesFromLongEvaluation = 0;
             longEvaluationOwnerThread = -1;
             longEvaluationDispatchOwnerThread = -1;
@@ -449,13 +525,48 @@ public final class MainActivity extends Activity {
             longEvaluationHeartbeatStart = runtimeHeartbeatCount;
             mainHandler.removeCallbacks(runtimeHeartbeat);
             mainHandler.postDelayed(runtimeHeartbeat, 50);
-            setLongEvaluationRunning(true);
-            mainHandler.postDelayed(longEvaluationTimeout, 12_000);
-            appendRuntimeLog("무한 JavaScript 평가 제출 · UI 메인 스레드는 대기하지 않음");
-            runtimeStatus.setText("긴 JavaScript 실행 중 · 화면 입력 가능 · JS 이벤트 대기 중");
-            boolean accepted = submitRuntimeCallWithCompletion(() -> nativeSessionEval(runtimeSession,
-                    "while (true) { /* 취소 경로 검증 */ }".getBytes(StandardCharsets.UTF_8)),
+            Trace.beginAsyncSection("SpinonR05:long-eval", 1);
+            Trace.beginSection("SpinonR05:long-eval-submit");
+            try {
+                Trace.beginSection("SpinonR05:long-eval-button-state");
+                try {
+                    setLongEvaluationRunning(true);
+                } finally {
+                    Trace.endSection();
+                }
+                Trace.beginSection("SpinonR05:long-eval-timeout-schedule");
+                try {
+                    mainHandler.postDelayed(longEvaluationTimeout, 12_000);
+                } finally {
+                    Trace.endSection();
+                }
+                Trace.beginSection("SpinonR05:long-eval-log-enqueue");
+                try {
+                    appendRuntimeLog("무한 JavaScript 평가 제출 · UI 메인 스레드는 대기하지 않음");
+                } finally {
+                    Trace.endSection();
+                }
+                Trace.beginSection("SpinonR05:long-eval-status-update");
+                try {
+                    runtimeStatus.setText("긴 JavaScript 실행 중 · 화면 입력 가능 · JS 이벤트 대기 중");
+                } finally {
+                    Trace.endSection();
+                }
+            } finally {
+                Trace.endSection();
+            }
+            boolean accepted = submitRuntimeCallWithCompletion(() -> {
+                Trace.beginSection("SpinonR05:long-eval-worker-call");
+                try {
+                    return nativeSessionEval(runtimeSession,
+                            "while (true) { /* 취소 경로 검증 */ }"
+                                    .getBytes(StandardCharsets.UTF_8));
+                } finally {
+                    Trace.endSection();
+                }
+            },
                     "긴 평가 반환 ·", (result, error) -> {
+                        Trace.endAsyncSection("SpinonR05:long-eval", 1);
                         String report = decode(result);
                         lastLongEvaluationCancelled = error == null
                                 && report.startsWith("status=-8 ");
@@ -487,6 +598,7 @@ public final class MainActivity extends Activity {
                         finishLongEvaluationIfReady();
                     });
             if (!accepted) {
+                Trace.endAsyncSection("SpinonR05:long-eval", 1);
                 setLongEvaluationRunning(false);
                 mainHandler.removeCallbacks(runtimeHeartbeat);
                 runtimeStatus.setText("실행 대기열이 가득 차 긴 JavaScript를 시작하지 못했습니다");
@@ -496,12 +608,31 @@ public final class MainActivity extends Activity {
             if (!longEvaluationRunning || cancelRequestPending || activityClosing) return;
             long handle = runtimeSession;
             if (handle == 0) return;
-            cancelRequestPending = true;
-            updateLongEvaluationButtons();
-            runtimeStatus.setText("JavaScript 취소 요청 중…");
+            if (longEvaluationTimeoutTriggered) {
+                Trace.setCounter("SpinonR05AutomaticCancelCount",
+                        longEvaluationAutomaticCancelCount);
+            } else {
+                longEvaluationManualCancelCount++;
+                Trace.setCounter("SpinonR05ManualCancelCount",
+                        longEvaluationManualCancelCount);
+            }
+            Trace.beginSection("SpinonR05:long-eval-cancel-submit");
+            try {
+                cancelRequestPending = true;
+                updateLongEvaluationButtons();
+                runtimeStatus.setText("JavaScript 취소 요청 중…");
+            } finally {
+                Trace.endSection();
+            }
             try {
                 runtimeControl.execute(() -> {
-                    int result = nativeSessionCancel(handle);
+                    Trace.beginSection("SpinonR05:long-eval-cancel-call");
+                    int result;
+                    try {
+                        result = nativeSessionCancel(handle);
+                    } finally {
+                        Trace.endSection();
+                    }
                     appendRuntimeLog("취소 요청 · status=" + result);
                     runOnUiThread(() -> {
                         if (activityClosing) return;
@@ -932,16 +1063,73 @@ public final class MainActivity extends Activity {
                 byte[] result = null;
                 Exception failure = null;
                 try {
-                    result = call.call();
-                    appendRuntimeLog(label + " " + decode(result));
+                    Trace.beginSection("SpinonR05:runtime-worker-call");
+                    try {
+                        result = call.call();
+                    } finally {
+                        Trace.endSection();
+                    }
+                    Trace.beginSection("SpinonR05:runtime-result-processing");
+                    try {
+                        if (label.startsWith("이벤트 ") && result != null) {
+                            if (frameAttributionMode) {
+                                frameAttributionReports.add(result);
+                            } else {
+                                Trace.beginSection("SpinonR05:dispatch-report-logcat");
+                                try {
+                                    Log.i(TAG, "SPINON_RUNTIME_DISPATCH=" + decode(result));
+                                } finally {
+                                    Trace.endSection();
+                                }
+                            }
+                        }
+                    } finally {
+                        Trace.endSection();
+                    }
+                    if (!frameAttributionMode) appendRuntimeLog(label + " " + decode(result));
                 } catch (Exception error) {
                     failure = error;
-                    appendRuntimeLog(label + " 오류: " + error.getMessage());
+                    if (!frameAttributionMode) appendRuntimeLog(label + " 오류: " + error.getMessage());
                 } finally {
                     if (onComplete != null && !activityClosing) {
                         byte[] completedResult = result;
                         Exception completedFailure = failure;
-                        runOnUiThread(() -> onComplete.accept(completedResult, completedFailure));
+                        boolean traceHandoff = frameAttributionMode;
+                        int handoffId = traceHandoff
+                                ? runtimeMainThreadHandoffSequence.getAndIncrement() : 0;
+                        if (traceHandoff) {
+                            Trace.beginAsyncSection("SpinonR05:runtime-main-thread-handoff", handoffId);
+                            Trace.beginSection("SpinonR05:runtime-main-thread-post");
+                        }
+                        boolean posted = false;
+                        try {
+                            Runnable mainCompletion = () -> {
+                                if (traceHandoff) {
+                                    Trace.endAsyncSection(
+                                            "SpinonR05:runtime-main-thread-handoff", handoffId);
+                                    Trace.beginSection("SpinonR05:runtime-main-thread-completion");
+                                }
+                                try {
+                                    onComplete.accept(completedResult, completedFailure);
+                                } finally {
+                                    if (traceHandoff) Trace.endSection();
+                                }
+                            };
+                            if (asynchronousMainHandoff) {
+                                posted = asynchronousMainHandler.post(mainCompletion);
+                            } else {
+                                runOnUiThread(mainCompletion);
+                                posted = true;
+                            }
+                        } finally {
+                            if (traceHandoff) {
+                                Trace.endSection();
+                                if (!posted) {
+                                    Trace.endAsyncSection(
+                                            "SpinonR05:runtime-main-thread-handoff", handoffId);
+                                }
+                            }
+                        }
                     }
                 }
             });
@@ -954,6 +1142,7 @@ public final class MainActivity extends Activity {
 
     private void setLongEvaluationRunning(boolean running) {
         longEvaluationRunning = running;
+        Trace.setCounter("SpinonR05LongEvalRunning", running ? 1 : 0);
         if (!running) {
             cancelRequestPending = false;
             mainHandler.removeCallbacks(runtimeHeartbeat);
@@ -1019,7 +1208,26 @@ public final class MainActivity extends Activity {
         return value == null ? "native result missing" : new String(value, StandardCharsets.UTF_8);
     }
 
+    private void dumpFrameAttributionReports() {
+        if (frameAttributionReports.isEmpty()) return;
+        new Thread(() -> {
+            byte[] report;
+            while ((report = frameAttributionReports.poll()) != null) {
+                Log.i(TAG, "SPINON_RUNTIME_DISPATCH=" + decode(report));
+            }
+        }, "spinon-r05-report-dump").start();
+    }
+
     private void appendRuntimeLog(String line) {
+        Trace.beginSection("SpinonR05:runtime-log-enqueue");
+        try {
+            enqueueRuntimeLog(line);
+        } finally {
+            Trace.endSection();
+        }
+    }
+
+    private void enqueueRuntimeLog(String line) {
         Log.i(TAG, "SPINON_RUNTIME_UI " + line);
         synchronized (runtimeLogPendingLock) {
             pendingRuntimeLogEntries.append(line).append("\n\n");
@@ -1034,6 +1242,15 @@ public final class MainActivity extends Activity {
     }
 
     private void flushRuntimeLog() {
+        Trace.beginSection("SpinonR05:runtime-log-flush");
+        try {
+            flushRuntimeLogContents();
+        } finally {
+            Trace.endSection();
+        }
+    }
+
+    private void flushRuntimeLogContents() {
         String entries;
         synchronized (runtimeLogPendingLock) {
             entries = pendingRuntimeLogEntries.toString();
@@ -1058,7 +1275,12 @@ public final class MainActivity extends Activity {
             boolean posted = scroll.post(() -> {
                 runtimeLogScrollPending = false;
                 if (!activityClosing && runtimeScroll == scroll) {
-                    scroll.fullScroll(View.FOCUS_DOWN);
+                    Trace.beginSection("SpinonR05:runtime-log-scroll");
+                    try {
+                        scroll.fullScroll(View.FOCUS_DOWN);
+                    } finally {
+                        Trace.endSection();
+                    }
                 }
             });
             if (!posted) runtimeLogScrollPending = false;
