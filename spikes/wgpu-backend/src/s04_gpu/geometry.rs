@@ -1,7 +1,7 @@
 use spinon_render::{OpaqueCssSrgb, StaticRenderSnapshot};
 
 pub(super) const FIXTURE_WIDTH: u32 = 301;
-pub(super) const FIXTURE_HEIGHT: u32 = 40;
+pub(super) const FIXTURE_HEIGHT: u32 = 65;
 
 pub(super) fn create_vertex_buffer(device: &wgpu::Device, vertices: &[f32]) -> wgpu::Buffer {
     device.create_buffer(&wgpu::BufferDescriptor {

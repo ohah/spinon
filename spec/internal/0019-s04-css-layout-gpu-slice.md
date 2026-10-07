@@ -1,10 +1,10 @@
 # 0019 · S04 첫 CSS·레이아웃·GPU 연결 슬라이스
 
-**계약 버전:** `0.1.0-draft` · **상태:** S04.1~S04.6 simulator fixture 검증, S04.7 후속 작업 소유 경계 연결 완료 · **공개 API:** 아님
+**계약 버전:** `0.1.0-draft` · **상태:** S04.1~S04.6 simulator fixture 검증, S04.7 후속 작업 소유 경계 연결, S04.8 비대칭 y fixture 비교 완료 · **공개 API:** 아님
 
 ## 목적과 완료 범위
 
-기존 C04.2 고정 Chromium Flex 픽스처를 기하 기준으로 유지하고, 새 고정 CSS 배경색 픽스처를 Android와 iOS GPU 화면까지 연결합니다. C04.2 v1 fixture와 reference는 변경하지 않습니다.
+기존 C04.2 고정 Chromium Flex 픽스처를 기하 기준으로 유지합니다. `S04-flex-paint-v1`의 CSS 배경색 경로에 이어 별도 `S04-asymmetric-y-v1`로 비대칭 세로 배치와 GPU 좌표 변환을 검증합니다. 기존 C04.2와 가로 S04 fixture/reference는 변경하지 않습니다.
 
 ```mermaid
 flowchart LR
@@ -22,7 +22,7 @@ flowchart LR
 
 Android·iOS 연결은 `spikes/wgpu-backend`의 플랫폼별 Cargo feature로 컴파일을 분리합니다. `SPINON_ENABLE_S04_ANDROID_FIXTURE=1` 또는 `SPINON_ENABLE_S04_IOS_FIXTURE=1`인 검증 빌드에서만 해당 feature와 JNI·Objective-C++ 경로를 켜며 기본 빌드에는 fixture 경로를 넣지 않습니다. 이는 `#[cfg(test)]` 전용 단위 테스트가 아니라 플랫폼 surface와 GPU readback을 실행하는 내부 통합 fixture입니다. 제품 renderer나 공개 호출 계약으로 취급하지 않습니다.
 
-기하 기준은 기존 [C04.2 fixture](../../tests/fixtures/css/c04/style-layout-bridge.v1.json)와 새 [S04 fixture](../../tests/fixtures/css/s04/flex-paint.v1.json), [CSS 원본](../../tests/fixtures/css/s04/flex-paint.v1.css), [고정 Chromium reference](../../tests/fixtures/css/references/s04-flex-paint-v1-chromium-154.0.8037.95-a4abee019ac5-827b7e12ddf3-affc6715a14a.json)입니다. 기준은 301×40 CSS px, 부모 1개와 자식 3개이며 각 좌표·크기의 Chromium 대비 최대 절대 오차는 0.5 CSS px입니다. 기존 C04.2 v1 fixture/reference는 변경하지 않았습니다.
+기존 가로 fixture의 기하 기준은 [C04.2 fixture](../../tests/fixtures/css/c04/style-layout-bridge.v1.json), [S04-flex-paint-v1 fixture](../../tests/fixtures/css/s04/flex-paint.v1.json)와 [CSS 원본](../../tests/fixtures/css/s04/flex-paint.v1.css), [고정 Chromium reference](../../tests/fixtures/css/references/s04-flex-paint-v1-chromium-154.0.8037.95-a4abee019ac5-827b7e12ddf3-affc6715a14a.json)입니다. 이 기준은 301×40 CSS px, 부모 1개와 자식 3개입니다. 별도 301×65 세로 fixture와 그 Chromium reference 및 좌표 오차 기준은 S04.8에 기록합니다. 기존 C04.2와 가로 S04 fixture/reference는 변경하지 않았습니다.
 
 ### 기존 C04.2 profile과 CSS 배경색 경로
 
@@ -52,7 +52,7 @@ Android·iOS 연결은 `spikes/wgpu-backend`의 플랫폼별 Cargo feature로 �
 | iOS 빌드 | `SPINON_ENABLE_S04_IOS_FIXTURE=1`은 Rust `s04-ios-fixture` alias와 Objective-C++ 전처리 정의를 함께 켭니다. 이 alias는 공통 Rust `s04-fixture`를 활성화합니다. 환경 변수는 `0` 또는 `1`만 허용합니다. |
 | 생성 | `spinon_wgpu_create_uikit_s04(view, width, height, backend, density, surface_generation, output, capacity)`는 비-null UIKit view를 빌려 Metal surface와 고정 snapshot scene을 만들고 성공 시 opaque renderer를 반환합니다. 생성 실패는 null과 출력 진단으로 보고합니다. `view`는 destroy 완료까지 유효해야 하고 `density`와 generation은 유한한 양수여야 합니다. iOS fixture는 backend `3`(Metal)을 요청합니다. |
 | 프레임 제출 | `spinon_wgpu_s04_draw(renderer, output, capacity)`는 renderer를 만든 UI-thread host sequence에서 직렬 호출합니다. `0`은 `Success` surface 획득, 제출 index 기록, present 요청까지 끝났다는 뜻입니다. `-1`은 S04 scene 부재, `-2`는 Timeout·Occluded·Validation, `-3`은 Lost, `-4`는 Outdated, `-5`는 device lost, `-6`은 Suboptimal 획득 결과입니다. 성공은 화면 표시 완료를 뜻하지 않습니다. |
-| 색상 표본 확인 | `spinon_wgpu_s04_poll_readback(renderer, output, capacity)`는 device poll을 한 번 수행하고 대기하지 않습니다. `1`은 고정 42개 RGBA 표본이 모두 맞음, `0`은 pending, 음수는 실패입니다. 호스트는 main/UI thread를 동기 대기시키지 않고 최대 5000 ms 동안 16 ms 간격으로 재호출합니다. |
+| 색상 표본 확인 | `spinon_wgpu_s04_poll_readback(renderer, output, capacity)`는 device poll을 한 번 수행하고 대기하지 않습니다. 기존 `S04-flex-paint-v1`은 고정 42개, `S04-asymmetric-y-v1`은 36개 RGBA 표본이 모두 맞으면 `1`, 대기 중이면 `0`, 음수면 실패입니다. 호스트는 main/UI thread를 동기 대기시키지 않고 최대 5000 ms 동안 16 ms 간격으로 재호출합니다. |
 | 표면 크기 변경·해제 | `spinon_wgpu_s04_resize(renderer, width, height, density, surface_generation)`는 양수 크기·density와 현재 generation보다 큰 값을 전달해 snapshot 장면과 surface를 재구성합니다. generation이 같거나 더 낮으면 장면을 바꾸지 않고 실패합니다. 반환값 `0`은 성공, `-1`은 null renderer, `-2`는 0 크기, `-3`은 S04 scene 부재, `-4`는 잘못된 density/generation 또는 장면 갱신 실패입니다. `spinon_wgpu_destroy(renderer)`는 opaque handle을 정확히 한 번 해제하며 view는 호출이 끝날 때까지 유효해야 합니다. |
 | 공통 ABI 안전 경계 | 출력 진단은 capacity가 양수일 때 UTF-8 바이트를 최대 `capacity - 1`개 복사하고 NUL 종료합니다. 호출자는 출력 버퍼의 실제 크기를 전달하고, 같은 renderer의 create 이후 호출·resize·destroy를 한 UI-thread sequence에서 직렬화해야 합니다. 동시에 호출하거나 destroy 뒤 핸들을 재사용하면 안 됩니다. |
 
@@ -111,8 +111,8 @@ enum PaintProfileId { OpaqueBackgroundColorV1 }
 
 1. **페인트:** 새 S04 fixture의 부모와 자식 세 요소에 서로 다른 고정 불투명 `background-color: #RRGGBB`를 지정하고, 새 `S04FlexPaintV1`로 computed color를 RenderSnapshot까지 전달합니다. `color`, `opacity`, gradient, border, blend, alpha는 제외합니다. computed serialization은 새 Chromium oracle과 정확히 비교하고, 오프스크린 출력은 아래의 고정 지점에서 RGBA bytes를 정확히 비교합니다. 기존 fixture에는 배경색이 없으므로 새 fixture와 Chromium reference를 추가합니다. 이 좁은 사례는 C08/C19 전체 완료를 뜻하지 않습니다.
 2. **진단색 대안 제외:** 진단색 경로는 채택하지 않습니다. 이 fixture는 CSS computed paint가 snapshot까지 도달하는 경로를 검증합니다.
-3. **좌표:** 이 fixture에서 1 CSS px은 Android dp 1단위 및 iOS point 1단위에 대응합니다. Taffy의 CSS px `f32` 좌표를 CPU에서 정수로 반올림하지 않습니다. 플랫폼이 surface에 제공하는 backing scale을 GPU 좌표 변환에서 한 번 적용합니다. 계산 viewport는 backing scale과 무관하게 301×40 CSS px입니다. 이 정책은 S04 fixture에 한정되며 S02의 일반 앱 좌표 계약을 완료 처리하지 않습니다.
-4. **뷰포트·안전 영역:** 이 fixture의 계산 viewport는 301×40 CSS px이고 root 원점은 surface content의 왼쪽 위입니다. safe area와 화면 전체 root 배치는 포함하지 않습니다. 테스트용 GPU 영역의 배치·크기는 fixture 바깥 호스트가 정합니다.
+3. **좌표:** 기존 `S04-flex-paint-v1`에서 1 CSS px은 Android dp 1단위 및 iOS point 1단위에 대응합니다. Taffy의 CSS px `f32` 좌표를 CPU에서 정수로 반올림하지 않습니다. 플랫폼이 surface에 제공하는 backing scale을 GPU 좌표 변환에서 한 번 적용합니다. 계산 viewport는 backing scale과 무관하게 301×40 CSS px입니다. S04.8의 301×65 viewport도 같은 변환 정책을 적용합니다. 이 정책은 고정 fixture에 한정되며 S02의 일반 앱 좌표 계약을 완료 처리하지 않습니다.
+4. **뷰포트·안전 영역:** 각 fixture의 계산 viewport는 고정 입력(기존 301×40, S04.8 301×65 CSS px)을 따르고 root 원점은 surface content의 왼쪽 위입니다. safe area와 화면 전체 root 배치는 포함하지 않습니다. 테스트용 GPU 영역의 배치·크기는 fixture 바깥 호스트가 정합니다.
 5. **장면 갱신:** 전체 장면을 한 번 생성·제출합니다. 부분 갱신, dirty region, 프레임 병합, 동적 변경 queue 정책은 이 실험에서 정하지 않습니다.
 6. **플랫폼 backend·surface color space:** 기존 R08의 `wgpu` 표면 연결을 재사용하고 실제 선택 backend·장치·surface format·color space를 근거에 남깁니다. surface는 `SurfaceColorSpace::Srgb`를 명시하고 해당 format 조합이 capabilities에 없으면 fixture 실패로 처리합니다. 자동 wide-gamut/HDR 선택은 하지 않습니다. Android 자동 fallback 정책이나 기기 지원표를 확정하지 않습니다.
 7. **스레드와 표면 수명:** 앱 전체의 렌더 스레드, JS 대기, frame queue 정책은 이번 계약에서 정하지 않습니다. fixture의 surface lifecycle·configure·generation 검사·acquire·`Queue::submit`·present 순서는 R13에서 검증한 하나의 UI-thread host sequence가 소유하며 같은 device queue에 다른 sequence가 submit하지 않습니다. 지연된 요청은 실행 시작 시 캡처한 surface generation과 현재 generation이 다르면 acquire 전에 버립니다. 이 generation은 표면 교체·재구성·대상 크기·backing scale 변경 때 증가하며 CSS viewport 크기와 물리 surface extent를 직접 비교하지 않습니다. 획득한 `SurfaceTexture`를 present하거나 폐기하기 전에는 configure·표면 해제를 하지 않습니다. surface 크기가 0이거나 요청한 format/color space가 capabilities에 없으면 configure를 호출하지 않고 fixture 실패로 처리합니다. 이 직렬화 선택은 실험 한정이며 앱 전역 렌더 스레드 선택이 아닙니다.
@@ -126,10 +126,10 @@ enum PaintProfileId { OpaqueBackgroundColorV1 }
 - `Surface::get_current_texture` 결과는 `Success`, `Suboptimal`, `Timeout`, `Occluded`, `Outdated`, `Lost`, `Validation`으로 분류합니다. 각 variant는 같은 성공 코드로 합치지 않습니다. `Suboptimal`도 texture는 획득하지만 surface 설정 갱신이 권고되므로 이번 fixture의 통과 조건인 `Success`에는 포함하지 않습니다. 이 경우 획득 texture를 present하거나 drop한 뒤 직렬 sequence에서 재구성하며, 다른 variant도 상세 로그를 남겨도 성공 출력으로 세지 않습니다. surface 재생성·복구 검증은 R13에 남깁니다.
 - `Queue::submit`은 `Result`가 아니라 `SubmissionIndex`를 반환합니다. 이를 제출 식별자로 기록하고 GPU validation·device loss는 error scope, uncaptured-error, device-lost 경로로 수집합니다. 캡처 시점까지 error scope 결과가 비어 있고 uncaptured validation·device-lost 오류가 없어야 플랫폼 run을 통과 처리합니다.
 - 표면 텍스처 표시 요청은 `Queue::present(surface_texture)`입니다. 이는 실제 화면 표시 시각이나 표시 성공 callback을 제공하지 않습니다. `Queue::on_submitted_work_done`도 GPU queue 작업 완료일 뿐 화면 표시 확인이 아닙니다.
-- 오프스크린 readback은 surface 표시 확인과 별도 경로입니다. `301 × 4 = 1204` bytes 행을 256 정렬 `bytes_per_row=1280`으로 복사하며 `COPY_DST | MAP_READ` staging buffer는 `1280 × 40 = 51200` bytes로 둡니다. 픽셀 채널 byte offset은 `y × 1280 + x × 4 + channel`입니다. map callback이 성공한 뒤에만 읽고 모든 view를 drop한 다음 unmap합니다. Android·iOS fixture host는 UI 스레드에서 `device.poll(PollType::Poll)`을 16 ms 간격으로 호출하고 최대 5000 ms 뒤 완료가 오지 않으면 실패로 끝냅니다. 이는 GPU 완료를 기다리며 UI 스레드를 동기 대기시키지 않습니다. 이번 검증은 전체 화면 bytes가 아니라 고정 x 위치 14개와 y 위치 3개, 총 42개 sample만 정확 대조합니다. map 실패·5초 제한 초과는 성공 출력이 아니라 readback 실패입니다.
+- 오프스크린 readback은 surface 표시 확인과 별도 경로입니다. 두 fixture 모두 `301 × 4 = 1204` bytes 행을 256 정렬 `bytes_per_row=1280`으로 복사하고, `COPY_DST | MAP_READ` staging buffer 크기는 viewport 높이에 따라 `1280×40` 또는 `1280×65` bytes입니다. 픽셀 채널 byte offset은 `y × 1280 + x × 4 + channel`입니다. map callback이 성공한 뒤에만 읽고 모든 view를 drop한 다음 unmap합니다. Android·iOS fixture host는 UI 스레드에서 `device.poll(PollType::Poll)`을 16 ms 간격으로 호출하고 최대 5000 ms 뒤 완료가 오지 않으면 실패로 끝냅니다. 이는 GPU 완료를 기다리며 UI 스레드를 동기 대기시키지 않습니다. 기존 가로 fixture는 x 14개·y 3개, 총 42개 표본을, 비대칭 y fixture는 x 3개·y 12개, 총 36개 표본을 정확 대조합니다. 어느 경로도 전체 화면 bytes를 비교하지 않습니다. map 실패·5초 제한 초과는 성공 출력이 아니라 readback 실패입니다.
 - Android와 iOS 실행은 서로 독립입니다. 한 플랫폼의 성공만으로 교차 플랫폼 슬라이스를 통과 처리하지 않으며, Android emulator와 iOS simulator의 대상별 surface capture를 각각 남깁니다. `commit-to-present`나 실제 표시 완료 지연은 이 fixture 작업의 통과 기준이 아닙니다.
 
-### CSS 색상 readback의 고정 지점
+### 기존 가로 fixture의 CSS 색상 readback 지점
 
 이 기준은 CSS 배경색 경로에만 적용합니다. 1× `301×40` `Rgba8UnormSrgb` offscreen target에서 `(x,y)`는 픽셀 index이며 읽는 위치는 픽셀 중심 `(x+0.5,y+0.5)` CSS px입니다. 각 지점의 `[R,G,B,A]` bytes를 해당 fixture 색의 `#RRGGBB` bytes와 `255` alpha에 정확히 대조합니다. offscreen 출력은 같은 `StaticRenderSnapshot`의 paint box 순서와 색상 변환식을 사용합니다. 301×40 CSS px 좌표에 맞춘 별도 vertex buffer와 readback target format에 맞춘 pipeline을 만들며, 화면 크기·density에 맞춘 surface vertex buffer를 readback에 재사용하지 않습니다.
 
@@ -145,12 +145,16 @@ enum PaintProfileId { OpaqueBackgroundColorV1 }
 
 `spinon-style-to-layout`은 레이아웃 속성만 검증해 Taffy로 보냅니다. `spinon-style`은 computed `background-color`를 Stylo에서 읽어 `OpaqueCssSrgb` 중립 타입으로 제공합니다. `spinon-style-to-render`는 해당 타입을 검증·투영하며 `spinon-render`는 Stylo 의존성 없이 paint snapshot과 장면을 소유합니다. `spinon-render`는 플랫폼 GPU 객체와 표면 수명을 소유하지 않습니다.
 
+### 비대칭 y fixture의 CSS 색상 readback
+
+새 `S04-asymmetric-y-v1`은 `301×65` target, stride 1280, staging buffer `1280×65` bytes를 사용합니다. x `[0,150,300]`과 y `[0,11,12,14,15,32,33,35,36,59,60,64]`의 36개 pixel center RGBA를 정확히 비교합니다. 표본 행은 세로 Flex 자식 내부, gap 경계 양쪽, 부모의 아래 여백을 포함합니다. 색상 표본은 y 좌표의 전체 기하 정확도 증거가 아니므로 Chromium frame 대조와 NDC 단위 검사를 함께 사용합니다. [사전 비교 기준과 수치](evidence/s04-asymmetric-y-precomparison-2026-10-07.md).
+
 ## 비교 모델과 통과 기준
 
 | 확인 층 | 비교 기준 | 통과 조건 |
 | --- | --- | --- |
-| computed style | 기존 C04.2 layout 기준과 새 S04 paint fixture의 고정 Chromium reference | computed property 문자열이 정확히 일치하고 진단이 없습니다. 기존 C04.2 reference 결과는 바꾸지 않습니다. |
-| layout | Chromium `154.0.8037.95`의 C04.2 프레임 | 모든 node의 x/y/width/height 각각 최대 오차 0.5 CSS px 이하입니다. node 평균으로 실패를 상쇄하지 않습니다. |
+| computed style | 기존 C04.2 layout 기준과 두 S04 paint fixture의 고정 Chromium reference | computed property 문자열이 정확히 일치하고 진단이 없습니다. 기존 C04.2·가로 S04 reference 결과는 바꾸지 않습니다. |
+| layout | 각 fixture에 고정한 Chromium reference (C04.2 / 기존 S04는 `154.0.8037.95`, 비대칭 y는 `154.0.8037.98`) | 모든 node의 x/y/width/height 각각 최대 오차 0.5 CSS px 이하입니다. node 평균으로 실패를 상쇄하지 않습니다. |
 | RenderSnapshot | 같은 입력을 사용한 Rust 직접 기준 자료 | ID, preorder, source revision, viewport, CSS px 좌표가 결정적으로 같습니다. 실패 입력에서 부분 snapshot이 나오지 않습니다. |
 | GPU 출력 | Android·iOS별 simulator 화면 캡처와 snapshot ID·frame ID·surface generation이 연결된 로그, 고정 offscreen readback | 각 플랫폼 run은 `Success` 획득, 제출 index, 오류 부재를 확인합니다. CPU RenderSnapshot frame은 Chromium fixture의 좌표별 오차 기준으로 별도 확인합니다. CSS 색상 경로의 개별 GPU readback 지점·RGBA 기대값·행 stride는 아래 기준을 따릅니다. 플랫폼 캡처는 실제 표면의 결과를 확인하는 별도 근거입니다. |
 
@@ -186,6 +190,7 @@ S04.1 정책 확정 뒤 이어갈 내부 fixture 작업입니다. 아래 단계�
 - [x] **S04.5 iOS GPU 연결** — 동일 snapshot을 R08 `wgpu` iOS Metal surface에 제출하고 backend·surface generation·획득 variant·submission index·wgpu 진단·present 요청과 상관관계를 로그·화면 캡처에 남겼습니다. iPhone 17 Pro / iOS 26.2 시뮬레이터에서 generation 1 `Success`, `Bgra8UnormSrgb`·sRGB, 비동기 42개 표본 정확 readback을 확인했습니다. opt-in `s04-ios-fixture` Cargo feature로만 snapshot 경로를 포함하며 기본 iOS 빌드에서는 비활성 안내를 반환합니다. 실기기·회전별 재생성·성능은 검증하지 않았습니다. [실행 근거](evidence/s04-ios-gpu-surface-2026-10-03.md).
 - [x] **S04.6 교차 플랫폼 대조** — Android API 36 emulator와 iPhone 17 Pro / iOS 26.2 simulator의 surface 캡처 색상 경계를 density로 CSS px에 환산해 Chromium geometry oracle과 `StaticRenderSnapshot`의 고정 frame 값에 대조했습니다. 두 결과의 최대 좌표 오차는 각각 0.167 CSS px이고 색상 픽셀은 fixture sRGB 값과 정확히 일치합니다. 로그의 fixture ID·revision·frame·surface generation, 42개 readback과 simulator 한계를 [실행 근거](evidence/s04-cross-platform-comparison-2026-10-03.md)에 기록했습니다. snapshot digest는 로그에 없어 캡처와 snapshot의 바이트 정체성을 증명하지 않습니다. 전체 화면 픽셀 동등, 실기기 GPU와 표시 완료 callback도 증명하지 않습니다.
 - [x] **S04.7 후속 작업 소유 경계 연결** — 각 후속 작업의 기준 명세와 기존 상태 ID를 아래 표에 연결했습니다. 이 체크는 계획 추적 정리만 완료했다는 뜻이며 CSS·DOM·이벤트·제품 frame 기능의 구현이나 S04 전체 완료를 뜻하지 않습니다.
+- [x] **S04.8 비대칭 y 좌표 비교** — `S04-asymmetric-y-v1`의 computed style과 모든 노드 geometry를 Chromium `154.0.8037.98`에 대조하고, 서로 다른 y·높이·간격·가로 좌표를 둔 독립 CPU→NDC oracle을 검사했습니다. Android API 36 ARM64 emulator Vulkan `llvmpipe` CPU adapter와 iPhone 17 Pro / iOS 26.2 simulator Metal surface에서 각각 같은 fixture의 36개 RGBA 표본이 정확히 일치하고 화면 캡처의 색 순서를 확인했습니다. [사전 비교 기준](evidence/s04-asymmetric-y-precomparison-2026-10-07.md) · [실행 근거·원본 로그·캡처](evidence/s04-asymmetric-y-platforms-2026-10-07.md). 실기기·하드웨어 GPU·성능·제품 runtime은 검증하지 않았습니다.
 
 ### S04 후속 작업 소유 경계
 

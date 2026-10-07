@@ -19,7 +19,7 @@ final class S04GpuDemoViewController: UIViewController {
         view.addSubview(canvas)
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = "SPINON · S04 GPU surface\niOS · wgpu / Metal"
+        titleLabel.text = "SPINON · S04 CSS→GPU fixture\niOS · wgpu / Metal"
         titleLabel.textColor = UIColor(red: 0.92, green: 0.95, blue: 0.99, alpha: 1)
         titleLabel.font = .systemFont(ofSize: 20, weight: .bold)
         titleLabel.numberOfLines = 0
@@ -28,7 +28,7 @@ final class S04GpuDemoViewController: UIViewController {
 
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
         statusLabel.text = SpinonRunner.isS04IosFixtureEnabled()
-            ? "S04 고정 CSS fixture · 표면 준비 중"
+            ? "S04 비대칭 y CSS fixture · 표면 준비 중"
             : "S04 fixture 비활성 · SPINON_ENABLE_S04_IOS_FIXTURE=1로 다시 빌드하세요"
         statusLabel.textColor = UIColor(red: 0.78, green: 0.83, blue: 0.90, alpha: 1)
         statusLabel.font = .monospacedSystemFont(ofSize: 11, weight: .regular)
@@ -185,6 +185,7 @@ private final class S04GpuCanvasView: UIView {
             fail("S04 GPU frame 제출 실패 · \(report)")
             return false
         }
+        logger.notice("SPINON_S04_FRAME=\(report, privacy: .public)")
         onStatusChange?("S04 frame 제출 · generation \(surfaceGeneration)")
         return true
     }
@@ -209,7 +210,7 @@ private final class S04GpuCanvasView: UIView {
             readbackTimer?.invalidate()
             readbackTimer = nil
             logger.notice("SPINON_S04_READBACK=passed \(report)")
-            onStatusChange?("S04 색상 readback 통과 · 42개 sRGB 표본")
+            onStatusChange?("S04 색상 readback 통과 · 36개 sRGB 표본")
             return
         }
         if !report.hasPrefix("status=0 ") {

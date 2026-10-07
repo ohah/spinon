@@ -7,7 +7,7 @@ use raw_window_handle::{
     UiKitDisplayHandle, UiKitWindowHandle,
 };
 
-#[cfg(feature = "s04-fixture")]
+#[cfg(any(feature = "s04-android-fixture", feature = "s04-ios-fixture"))]
 use super::S04Init;
 use super::{
     create_renderer, is_supported_failure_kind, write_message, Renderer, RendererCreateInfo,

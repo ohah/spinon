@@ -1,0 +1,142 @@
+{
+  "schema": "spinon-css-s04-render-reference/v1",
+  "referenceId": "s04-asymmetric-y-v1-chromium-154.0.8037.98-f7ffacb8763c-06ff4aab2ac9-ccffd5c5fe77",
+  "fixture": {
+    "path": "tests/fixtures/css/s04/asymmetric-y.v1.json",
+    "sha256": "f7ffacb8763c1d86367c86749659b45bc34960615f742842c06abad6b841dfad",
+    "fixtureId": "S04-asymmetric-y-v1"
+  },
+  "stylesheet": {
+    "path": "tests/fixtures/css/s04/asymmetric-y.v1.css",
+    "sha256": "06ff4aab2ac9c112d1b2dc1c81a71df183b4cdc2ead8e909cfeb020548cc3fc5",
+    "id": "s04-asymmetric-y"
+  },
+  "capture": {
+    "path": "tools/css-reference/capture-s04-flex-paint.mjs",
+    "nodeVersion": "v24.20.0",
+    "operatingSystem": {
+      "platform": "darwin",
+      "arch": "arm64",
+      "release": "25.5.0"
+    },
+    "networkMode": "offline",
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light"
+  },
+  "browser": {
+    "path": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "version": "Chrome/154.0.8037.98",
+    "revision": "@b859317bf11f6be47f9b7799ec690a0a42a1fb33",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "javascriptVersion": "15.4.80.20",
+    "sha256": "ccffd5c5fe77ba3212e07c2c69091f8048b73c396b4647ecaa150e1e01a04954"
+  },
+  "viewport": {
+    "widthCssPx": 301,
+    "heightCssPx": 65,
+    "deviceScaleFactor": 1,
+    "screenMedia": true,
+    "lightColorScheme": true,
+    "locale": "en-US",
+    "timeZone": "UTC"
+  },
+  "computedProperties": [
+    "display",
+    "box-sizing",
+    "flex-direction",
+    "flex-grow",
+    "flex-shrink",
+    "flex-basis",
+    "direction",
+    "row-gap",
+    "column-gap",
+    "background-color"
+  ],
+  "observations": [
+    {
+      "fixtureId": "flex-parent",
+      "computedValues": {
+        "display": "flex",
+        "box-sizing": "border-box",
+        "flex-direction": "column",
+        "flex-grow": "0",
+        "flex-shrink": "1",
+        "flex-basis": "auto",
+        "direction": "ltr",
+        "row-gap": "3px",
+        "column-gap": "normal",
+        "background-color": "rgb(17, 24, 39)"
+      },
+      "frameRelativeToRoot": {
+        "x": 0,
+        "y": 0,
+        "width": 301,
+        "height": 65
+      }
+    },
+    {
+      "fixtureId": "flex-a",
+      "computedValues": {
+        "display": "block",
+        "box-sizing": "border-box",
+        "flex-direction": "row",
+        "flex-grow": "0",
+        "flex-shrink": "0",
+        "flex-basis": "12px",
+        "direction": "ltr",
+        "row-gap": "normal",
+        "column-gap": "normal",
+        "background-color": "rgb(225, 29, 72)"
+      },
+      "frameRelativeToRoot": {
+        "x": 0,
+        "y": 0,
+        "width": 301,
+        "height": 12
+      }
+    },
+    {
+      "fixtureId": "flex-b",
+      "computedValues": {
+        "display": "block",
+        "box-sizing": "border-box",
+        "flex-direction": "row",
+        "flex-grow": "0",
+        "flex-shrink": "0",
+        "flex-basis": "18px",
+        "direction": "ltr",
+        "row-gap": "normal",
+        "column-gap": "normal",
+        "background-color": "rgb(37, 99, 235)"
+      },
+      "frameRelativeToRoot": {
+        "x": 0,
+        "y": 15,
+        "width": 301,
+        "height": 18
+      }
+    },
+    {
+      "fixtureId": "flex-c",
+      "computedValues": {
+        "display": "block",
+        "box-sizing": "border-box",
+        "flex-direction": "row",
+        "flex-grow": "0",
+        "flex-shrink": "0",
+        "flex-basis": "24px",
+        "direction": "ltr",
+        "row-gap": "normal",
+        "column-gap": "normal",
+        "background-color": "rgb(22, 163, 74)"
+      },
+      "frameRelativeToRoot": {
+        "x": 0,
+        "y": 36,
+        "width": 301,
+        "height": 24
+      }
+    }
+  ]
+}

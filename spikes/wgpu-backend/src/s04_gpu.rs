@@ -13,6 +13,7 @@ mod tests;
 use geometry::{build_vertices, create_vertex_buffer, FIXTURE_HEIGHT, FIXTURE_WIDTH};
 use readback::{
     validate_samples, ReadbackState, READBACK_BYTES_PER_ROW, READBACK_SIZE, SAMPLE_COUNT,
+    SAMPLE_ROW_COUNT,
 };
 
 const SHADER: &str = r#"
@@ -80,7 +81,7 @@ impl S04Scene {
         if !config.density.is_finite() || config.density <= 0.0 || config.surface_generation == 0 {
             return Err("S04 density·surface generation은 유한한 양수여야 합니다".to_owned());
         }
-        let snapshot = s04_snapshot::build_snapshot()?;
+        let snapshot = s04_snapshot::build_asymmetric_y_snapshot()?;
         if snapshot.viewport_css_px().width() != FIXTURE_WIDTH as f32
             || snapshot.viewport_css_px().height() != FIXTURE_HEIGHT as f32
         {
@@ -304,10 +305,14 @@ impl S04Scene {
         self.ensure_no_diagnostics()?;
         self.readback_state = ReadbackState::Complete;
         Ok(Some(format!(
-            "surface_generation={} frame_sequence={} fixture={} target=Rgba8UnormSrgb size=301x40 bytes_per_row=1280 sample_rows=3 samples={} rgba=exact diagnostics=none",
+            "surface_generation={} frame_sequence={} fixture={} target=Rgba8UnormSrgb size={}x{} bytes_per_row={} sample_rows={} samples={} rgba=exact diagnostics=none",
             self.readback_surface_generation.unwrap_or(self.surface_generation),
             self.readback_frame_sequence.unwrap_or(self.frame_sequence),
             self.snapshot.source().fixture_id,
+            FIXTURE_WIDTH,
+            FIXTURE_HEIGHT,
+            READBACK_BYTES_PER_ROW,
+            SAMPLE_ROW_COUNT,
             SAMPLE_COUNT,
         )))
     }

@@ -14,6 +14,17 @@ node tools/css-reference/capture.mjs
 
 inventory 단위 검증은 `mise exec -- bun run test:css-reference`로 실행합니다. 전체 기본 테스트 명령 `bun run test`에도 포함됩니다.
 
+## S04 배경색 GPU fixture 기준 수집
+
+[`S04 CSS fixture 목록`](../../tests/fixtures/css/s04/README.md)은 기존 가로 Flex fixture와 비대칭 y fixture의 고정 입력·sample 지점을 설명합니다. 두 fixture는 서로 다른 viewport와 Chromium reference를 사용합니다.
+
+```sh
+mise exec -- bun run css:reference:s04
+mise exec -- bun run css:reference:s04-y
+```
+
+새 reference는 fixture ID, Chromium 버전, fixture·CSS·browser SHA-256으로 식별하며 기존 파일을 덮어쓰지 않습니다. 가로 fixture의 기존 reference schema를 유지하고 비대칭 y reference는 별도 schema를 사용합니다. 실행 결과와 Android·iOS 시뮬레이터 증거는 [S04.8 근거](../../spec/internal/evidence/s04-asymmetric-y-platforms-2026-10-07.md)에 기록합니다.
+
 ## C04 기본 cascade 기준 수집
 
 `cascade-input.v1.json`이 문서 트리·관찰 속성·stylesheet 목록과 순서·viewport를 정합니다. capture 도구는 그 입력에서 HTML을 만들고 Chromium DevTools Protocol로 `800×600` CSS px, scale `1`, `screen`, light, `en-US`, `UTC`를 고정합니다. 렌더러 네트워크를 오프라인으로 설정해 외부 자원이 기준 결과에 섞이지 않게 합니다. 브라우저 실행 파일·revision, fixture·stylesheet·도구의 SHA-256, Node.js·OS 버전 및 16개 요소의 computed style을 reference JSON에 기록합니다. reference ID에는 캡처 도구와 브라우저 실행 파일의 해시 접두부를 포함합니다.

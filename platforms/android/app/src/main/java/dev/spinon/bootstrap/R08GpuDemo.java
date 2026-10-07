@@ -79,7 +79,7 @@ final class R08GpuDemo {
         root.addView(title, titleParams);
 
         TextView instruction = new TextView(activity);
-        instruction.setText(s04 ? "고정 301×40 CSS 픽스처의 GPU 출력을 확인합니다."
+        instruction.setText(s04 ? "301×65 비대칭 y CSS 픽스처의 GPU 출력을 확인합니다."
                 : "중앙의 GPU 도형을 탭하면 색이 바뀝니다.");
         instruction.setTextColor(Color.rgb(235, 241, 250));
         instruction.setTextSize(14);
@@ -632,7 +632,7 @@ final class R08WgpuSurface extends SurfaceView
             s04ReadbackPending = false;
             s04ReadbackFinished = true;
             Log.i(TAG, "SPINON_S04_READBACK=passed " + report);
-            updateS04ReadbackStatus("S04 색상 readback 통과 · 42개 sRGB 표본");
+            updateS04ReadbackStatus("S04 색상 readback 통과 · 36개 sRGB 표본");
         } else {
             s04ReadbackPending = false;
             s04ReadbackFinished = true;
