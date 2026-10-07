@@ -10,6 +10,7 @@
 + (void *)createS04WgpuWithUIKitView:(void *)view width:(uint32_t)width height:(uint32_t)height density:(float)density surfaceGeneration:(uint64_t)surfaceGeneration;
 + (NSString *)drawS04Wgpu:(void *)renderer;
 + (NSString *)pollS04Readback:(void *)renderer;
++ (NSString *)hitTestS04Wgpu:(void *)renderer surfaceGeneration:(uint64_t)surfaceGeneration surfaceX:(float)surfaceX surfaceY:(float)surfaceY;
 + (int32_t)resizeS04Wgpu:(void *)renderer width:(uint32_t)width height:(uint32_t)height density:(float)density surfaceGeneration:(uint64_t)surfaceGeneration;
 + (int32_t)drawR08Wgpu:(void *)renderer activationCount:(uint32_t)activationCount;
 + (int32_t)resizeR08Wgpu:(void *)renderer width:(uint32_t)width height:(uint32_t)height;

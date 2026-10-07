@@ -351,8 +351,18 @@ fn number_value(value: &Value, name: &str) -> Result<f32, String> {
 
 #[cfg(test)]
 mod tests {
-    use super::{build_asymmetric_y_snapshot, build_flex_paint_snapshot};
+    use super::{build_asymmetric_y_snapshot, build_flex_paint_snapshot, encode_hex, sha256};
+    use serde_json::Value;
     use spinon_render::ComputedStyleProfileId;
+
+    const HIT_TEST_FIXTURE: &str = include_str!(concat!(
+        env!("CARGO_MANIFEST_DIR"),
+        "/../../tests/fixtures/css/s04/hit-test.v1.json"
+    ));
+    const HIT_TEST_REFERENCE: &str = include_str!(concat!(
+        env!("CARGO_MANIFEST_DIR"),
+        "/../../tests/fixtures/css/references/s04-asymmetric-y-v1-hit-test-1f8987fea841-chromium-154.0.8037.98-f7ffacb8763c-06ff4aab2ac9-ccffd5c5fe77.json"
+    ));
 
     #[test]
     fn asymmetric_y_fixture_matches_chromium_styles_and_geometry() {
@@ -381,5 +391,48 @@ mod tests {
         assert_eq!(snapshot.viewport_css_px().height(), 40.0);
         assert_eq!(snapshot.boxes()[2].frame_css_px().x(), 53.5);
         assert_eq!(snapshot.boxes()[3].frame_css_px().x(), 155.5);
+    }
+
+    #[test]
+    fn asymmetric_y_hit_test_matches_chromium_element_from_point() {
+        let snapshot = build_asymmetric_y_snapshot().expect("고정 S04 snapshot 생성 성공");
+        let fixture: Value = serde_json::from_str(HIT_TEST_FIXTURE).expect("hit-test fixture JSON");
+        let reference: Value =
+            serde_json::from_str(HIT_TEST_REFERENCE).expect("hit-test reference JSON");
+        let points = fixture["points"].as_array().expect("hit-test 점 배열");
+        let chromium_points = reference["hitTestPoints"]
+            .as_array()
+            .expect("Chromium hit-test 결과 배열");
+        let render_fixture: Value =
+            serde_json::from_str(super::ASYMMETRIC_Y_FIXTURE_JSON).expect("비대칭 y fixture JSON");
+        let preorder = render_fixture["tree"]["preorder"]
+            .as_array()
+            .expect("fixture preorder");
+
+        assert_eq!(points.len(), chromium_points.len());
+        assert_eq!(
+            reference["hitTestFixture"]["sha256"].as_str(),
+            Some(encode_hex(&sha256(HIT_TEST_FIXTURE.as_bytes())).as_str())
+        );
+        for (point, chromium_point) in points.iter().zip(chromium_points) {
+            assert_eq!(point["id"], chromium_point["id"]);
+            assert_eq!(point["expectedFixtureId"], chromium_point["fixtureId"]);
+            let x = point["xCssPx"].as_f64().expect("hit-test x") as f32;
+            let y = point["yCssPx"].as_f64().expect("hit-test y") as f32;
+            let actual_fixture_id = snapshot.hit_test_css_point(x, y).and_then(|hit| {
+                snapshot
+                    .boxes()
+                    .iter()
+                    .position(|render_box| render_box.node_id() == hit.node_id())
+                    .and_then(|index| preorder.get(index))
+                    .and_then(Value::as_str)
+            });
+            assert_eq!(
+                actual_fixture_id,
+                point["expectedFixtureId"].as_str(),
+                "{}",
+                point["id"]
+            );
+        }
     }
 }

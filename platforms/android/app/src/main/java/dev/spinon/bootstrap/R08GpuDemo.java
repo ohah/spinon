@@ -20,6 +20,7 @@ import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.WindowInsets;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.inputmethod.EditorInfo;
@@ -79,7 +80,7 @@ final class R08GpuDemo {
         root.addView(title, titleParams);
 
         TextView instruction = new TextView(activity);
-        instruction.setText(s04 ? "301×65 비대칭 y CSS 픽스처의 GPU 출력을 확인합니다."
+        instruction.setText(s04 ? "색상 띠를 눌러 고정 CSS snapshot의 NodeId 적중 결과를 확인합니다."
                 : "중앙의 GPU 도형을 탭하면 색이 바뀝니다.");
         instruction.setTextColor(Color.rgb(235, 241, 250));
         instruction.setTextSize(14);
@@ -361,6 +362,7 @@ final class R08WgpuSurface extends SurfaceView
     private final int backend;
     private final boolean r13;
     private final boolean s04;
+    private final int s04TouchSlop;
     private final Handler s04PollHandler = new Handler(Looper.getMainLooper());
     private final Runnable s04PollTask = this::pollS04Readback;
     private TextView s04ReadbackStatusView;
@@ -373,6 +375,11 @@ final class R08WgpuSurface extends SurfaceView
     private int rendererHeight;
     private float rendererDensity;
     private long s04SurfaceGeneration;
+    private long s04TouchStartGeneration;
+    private float s04TouchStartX;
+    private float s04TouchStartY;
+    private int s04TouchPointerId = MotionEvent.INVALID_POINTER_ID;
+    private boolean s04TouchTracking;
     private boolean s04ReadbackPending;
     private boolean s04ReadbackFinished;
     private long s04ReadbackStartedAt;
@@ -390,6 +397,8 @@ final class R08WgpuSurface extends SurfaceView
     private static native int nativeDraw(long renderer, int activationCount);
     private static native byte[] nativeDrawS04(long renderer);
     private static native byte[] nativePollS04Readback(long renderer);
+    private static native byte[] nativeHitTestS04(long renderer, long surfaceGeneration,
+                                                   float surfaceX, float surfaceY);
     private static native int nativeResize(long renderer, int width, int height);
     private static native int nativeResizeS04(long renderer, int width, int height,
                                                 float density, long surfaceGeneration);
@@ -402,10 +411,11 @@ final class R08WgpuSurface extends SurfaceView
         this.backend = backend;
         this.r13 = r13;
         this.s04 = s04;
+        this.s04TouchSlop = ViewConfiguration.get(activity).getScaledTouchSlop();
         this.pendingFailureInjection = failureInjection;
         this.pendingRecoveryFailureInjection = recoveryFailureInjection;
         getHolder().addCallback(this);
-        setClickable(!s04);
+        setClickable(true);
         setContentDescription(s04 ? "S04 고정 CSS 픽스처 GPU 출력"
                 : (r13 ? "R13" : "R08") + " GPU 도형, 활성화 0회");
         setImportantForAccessibility(s04 ? View.IMPORTANT_FOR_ACCESSIBILITY_NO
@@ -453,6 +463,7 @@ final class R08WgpuSurface extends SurfaceView
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
         surfaceAvailable = false;
+        resetS04Touch();
         s04ReadbackPending = false;
         s04ReadbackFinished = false;
         if (s04) updateS04ReadbackStatus("S04 GPU surface 재생성 대기");
@@ -472,6 +483,7 @@ final class R08WgpuSurface extends SurfaceView
 
     void onHostPaused() {
         hostActive = false;
+        resetS04Touch();
         s04PollHandler.removeCallbacks(s04PollTask);
         if (r13) Log.i(TAG, "SPINON_R13_HOST=paused");
     }
@@ -495,6 +507,77 @@ final class R08WgpuSurface extends SurfaceView
 
     private void updateS04ReadbackStatus(String message) {
         if (s04ReadbackStatusView != null) s04ReadbackStatusView.setText(message);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (!s04) return super.onTouchEvent(event);
+        switch (event.getActionMasked()) {
+            case MotionEvent.ACTION_DOWN:
+                s04TouchTracking = rendererHandle != 0 && hostActive;
+                if (!s04TouchTracking) return false;
+                s04TouchPointerId = event.getPointerId(0);
+                s04TouchStartX = event.getX(0);
+                s04TouchStartY = event.getY(0);
+                s04TouchStartGeneration = s04SurfaceGeneration;
+                return true;
+            case MotionEvent.ACTION_MOVE:
+                if (s04TouchTracking) updateS04TouchMovement(event);
+                return true;
+            case MotionEvent.ACTION_POINTER_DOWN:
+                s04TouchTracking = false;
+                return true;
+            case MotionEvent.ACTION_UP:
+                if (s04TouchTracking) finishS04Touch(event);
+                resetS04Touch();
+                return true;
+            case MotionEvent.ACTION_CANCEL:
+                resetS04Touch();
+                return true;
+            default:
+                return s04TouchTracking;
+        }
+    }
+
+    private void updateS04TouchMovement(MotionEvent event) {
+        int index = event.findPointerIndex(s04TouchPointerId);
+        if (index < 0) {
+            s04TouchTracking = false;
+            return;
+        }
+        float deltaX = event.getX(index) - s04TouchStartX;
+        float deltaY = event.getY(index) - s04TouchStartY;
+        if (deltaX * deltaX + deltaY * deltaY > s04TouchSlop * s04TouchSlop) {
+            s04TouchTracking = false;
+        }
+    }
+
+    private void finishS04Touch(MotionEvent event) {
+        int index = event.findPointerIndex(s04TouchPointerId);
+        if (index < 0 || s04TouchStartGeneration != s04SurfaceGeneration
+                || rendererHandle == 0 || !hostActive) {
+            Log.i(TAG, "SPINON_S04_HIT_TEST=dropped reason=stale_surface_or_pointer");
+            return;
+        }
+        float deltaX = event.getX(index) - s04TouchStartX;
+        float deltaY = event.getY(index) - s04TouchStartY;
+        if (deltaX * deltaX + deltaY * deltaY > s04TouchSlop * s04TouchSlop) return;
+        byte[] reportBytes = nativeHitTestS04(
+                rendererHandle, s04TouchStartGeneration, event.getX(index), event.getY(index));
+        String report = reportBytes == null ? "native bridge returned no result"
+                : new String(reportBytes, java.nio.charset.StandardCharsets.UTF_8);
+        if (report.startsWith("status=0 ") || report.startsWith("status=1 ")) {
+            Log.i(TAG, "SPINON_S04_HIT_TEST=" + report);
+            updateS04ReadbackStatus(report);
+        } else {
+            Log.e(TAG, "SPINON_S04_HIT_TEST=" + report);
+            updateS04ReadbackStatus("S04 hit-test 실패 · " + report);
+        }
+    }
+
+    private void resetS04Touch() {
+        s04TouchTracking = false;
+        s04TouchPointerId = MotionEvent.INVALID_POINTER_ID;
     }
 
     private boolean ensureRenderer(String reason) {

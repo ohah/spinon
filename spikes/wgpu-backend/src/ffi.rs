@@ -12,6 +12,8 @@ use super::S04Init;
 use super::{
     create_renderer, is_supported_failure_kind, write_message, Renderer, RendererCreateInfo,
 };
+#[cfg(feature = "s04-fixture")]
+use crate::s04_gpu::HitTestResult;
 
 #[no_mangle]
 /// # Safety
@@ -234,6 +236,43 @@ pub unsafe extern "C" fn spinon_wgpu_s04_poll_readback(
         Err(error) => {
             unsafe { write_message(output, output_capacity, &error) };
             -1
+        }
+    }
+}
+
+#[cfg(feature = "s04-fixture")]
+#[no_mangle]
+/// # Safety
+/// `renderer`는 S04 생성 함수가 반환한 live 핸들이어야 하며 호출은 draw·resize·destroy와
+/// 직렬화해야 합니다. 출력 버퍼는 `output_capacity` bytes만큼 쓸 수 있어야 합니다.
+pub unsafe extern "C" fn spinon_wgpu_s04_hit_test(
+    renderer: *mut c_void,
+    expected_surface_generation: u64,
+    surface_x: f32,
+    surface_y: f32,
+    output: *mut c_char,
+    output_capacity: usize,
+) -> i32 {
+    let Some(renderer) = (unsafe { renderer.cast::<Renderer>().as_ref() }) else {
+        unsafe { write_message(output, output_capacity, "null renderer") };
+        return -1;
+    };
+    let Some(scene) = renderer.s04_scene.as_ref() else {
+        unsafe { write_message(output, output_capacity, "S04 scene unavailable") };
+        return -2;
+    };
+    match scene.hit_test_report(expected_surface_generation, surface_x, surface_y) {
+        Ok(HitTestResult::Hit(report)) => {
+            unsafe { write_message(output, output_capacity, &report) };
+            0
+        }
+        Ok(HitTestResult::Miss(report)) => {
+            unsafe { write_message(output, output_capacity, &report) };
+            1
+        }
+        Err(failure) => {
+            unsafe { write_message(output, output_capacity, &failure.message) };
+            failure.code
         }
     }
 }

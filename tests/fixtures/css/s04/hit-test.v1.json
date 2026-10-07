@@ -1,0 +1,25 @@
+{
+  "schema": "spinon-ui-s04-hit-test-fixture/v1",
+  "fixtureId": "S04-asymmetric-y-hit-test-v1",
+  "renderFixtureId": "S04-asymmetric-y-v1",
+  "points": [
+    { "id": "parent-gap-left", "xCssPx": 0, "yCssPx": 14, "expectedFixtureId": "flex-parent" },
+    { "id": "child-a-interior", "xCssPx": 150, "yCssPx": 6, "expectedFixtureId": "flex-a" },
+    { "id": "child-a-bottom-edge", "xCssPx": 150, "yCssPx": 12, "expectedFixtureId": "flex-parent" },
+    { "id": "gap-a-b", "xCssPx": 150, "yCssPx": 14, "expectedFixtureId": "flex-parent" },
+    { "id": "child-b-top-edge", "xCssPx": 150, "yCssPx": 15, "expectedFixtureId": "flex-b" },
+    { "id": "child-b-bottom-edge", "xCssPx": 150, "yCssPx": 33, "expectedFixtureId": "flex-parent" },
+    { "id": "gap-b-c", "xCssPx": 150, "yCssPx": 35, "expectedFixtureId": "flex-parent" },
+    { "id": "child-c-top-edge", "xCssPx": 150, "yCssPx": 36, "expectedFixtureId": "flex-c" },
+    { "id": "child-c-bottom-edge", "xCssPx": 150, "yCssPx": 60, "expectedFixtureId": "flex-parent" },
+    { "id": "viewport-right-edge", "xCssPx": 301, "yCssPx": 32, "expectedFixtureId": null },
+    { "id": "viewport-bottom-edge", "xCssPx": 150, "yCssPx": 65, "expectedFixtureId": null }
+  ],
+  "comparison": {
+    "coordinateUnit": "CSS px",
+    "rectangleEdges": "left-top inclusive, right-bottom exclusive",
+    "overlap": "highest recorded paint_order wins",
+    "chromiumOracle": "document.elementFromPoint",
+    "unsupported": ["CSS stacking contexts", "clipping", "transforms", "displayed-frame completion"]
+  }
+}

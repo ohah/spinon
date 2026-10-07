@@ -26,6 +26,16 @@ const fixtureVariants = {
     sampleRows: [0, 11, 12, 14, 15, 32, 33, 35, 36, 59, 60, 64],
     sampleColumns: [0, 150, 300],
   },
+  'asymmetric-y-hit-test': {
+    fixture: 'tests/fixtures/css/s04/asymmetric-y.v1.json',
+    stylesheet: 'tests/fixtures/css/s04/asymmetric-y.v1.css',
+    hitTestFixture: 'tests/fixtures/css/s04/hit-test.v1.json',
+    fixtureId: 'S04-asymmetric-y-v1',
+    referenceSchema: 'spinon-css-s04-hit-test-reference/v1',
+    viewport: { widthCssPx: 301, heightCssPx: 65, deviceScaleFactor: 1 },
+    sampleRows: [0, 11, 12, 14, 15, 32, 33, 35, 36, 59, 60, 64],
+    sampleColumns: [0, 150, 300],
+  },
 };
 const fixtureArgument = process.argv.slice(2).find((argument) => argument.startsWith('--fixture='));
 const variantName = fixtureArgument?.slice('--fixture='.length)
@@ -37,6 +47,9 @@ const fixtureRelativePath = variant.fixture;
 const stylesheetRelativePath = variant.stylesheet;
 const fixturePath = join(repositoryRoot, fixtureRelativePath);
 const stylesheetPath = join(repositoryRoot, stylesheetRelativePath);
+const hitTestFixturePath = variant.hitTestFixture
+  ? join(repositoryRoot, variant.hitTestFixture)
+  : undefined;
 const referenceDirectory = join(repositoryRoot, 'tests/fixtures/css/references');
 const outputDirectory = process.env.SPINON_REFERENCE_OUTPUT_DIR
   ? resolve(process.env.SPINON_REFERENCE_OUTPUT_DIR)
@@ -190,7 +203,7 @@ function connectDevTools(url) {
   };
 }
 
-function buildHtml(fixture, stylesheet) {
+function buildHtml(fixture, stylesheet, resetDocumentOrigin = false) {
   const ids = fixture.tree.preorder;
   if (!Array.isArray(ids) || ids.length !== 4 || ids[0] !== fixture.tree.root
     || new Set(ids).size !== ids.length || ids.some((id) => !/^[a-z][a-z0-9-]*$/.test(id))) {
@@ -198,8 +211,9 @@ function buildHtml(fixture, stylesheet) {
   }
   const children = fixture.tree.children.map((id) => `<div id="${id}"></div>`).join('\n');
   const css = stylesheet.replaceAll('</style', '<\\/style');
+  const originStyle = resetDocumentOrigin ? '<style>html,body{margin:0;padding:0}</style>' : '';
   return `<!doctype html>
-<html lang="en-US"><head><meta charset="utf-8"><style>${css}</style></head>
+<html lang="en-US"><head><meta charset="utf-8">${originStyle}<style>${css}</style></head>
 <body><div id="${fixture.tree.root}">${children}</div></body></html>`;
 }
 
@@ -211,8 +225,14 @@ function fixtureColorToComputed(color) {
 
 const fixtureBytes = await readFile(fixturePath);
 const stylesheetBytes = await readFile(stylesheetPath);
+const hitTestFixtureBytes = hitTestFixturePath
+  ? await readFile(hitTestFixturePath)
+  : undefined;
 const fixture = JSON.parse(fixtureBytes.toString('utf8'));
 const stylesheet = stylesheetBytes.toString('utf8');
+const hitTestFixture = hitTestFixtureBytes
+  ? JSON.parse(hitTestFixtureBytes.toString('utf8'))
+  : undefined;
 if (fixture.schema !== 'spinon-css-s04-flex-paint-fixture/v1'
   || fixture.fixtureId !== variant.fixtureId
   || JSON.stringify(fixture.viewport) !== JSON.stringify(variant.viewport)) {
@@ -245,6 +265,18 @@ if (JSON.stringify(fixture.tree.preorder)
 if (Object.values(fixture.authorBackgroundColors).some((color) => !/^#[0-9a-fA-F]{6}$/.test(color))) {
   throw new Error('S04 fixture의 author 색상은 불투명 #RRGGBB여야 합니다.');
 }
+if (hitTestFixture) {
+  if (hitTestFixture.schema !== 'spinon-ui-s04-hit-test-fixture/v1'
+    || hitTestFixture.renderFixtureId !== fixture.fixtureId
+    || !Array.isArray(hitTestFixture.points)
+    || hitTestFixture.points.length === 0
+    || new Set(hitTestFixture.points.map((point) => point.id)).size !== hitTestFixture.points.length
+    || hitTestFixture.points.some((point) => !point.id
+      || !Number.isFinite(point.xCssPx) || !Number.isFinite(point.yCssPx)
+      || !(point.expectedFixtureId === null || fixture.tree.preorder.includes(point.expectedFixtureId)))) {
+    throw new Error('S04 hit-test fixture의 schema, 좌표 또는 예상 node ID가 올바르지 않습니다.');
+  }
+}
 const chromiumPath = process.env.SPINON_CHROMIUM_BIN ?? await firstExistingPath(defaultChromiumPaths);
 if (!chromiumPath) throw new Error('Chromium 실행 파일이 없습니다. SPINON_CHROMIUM_BIN으로 지정하세요.');
 const browserSha256 = await sha256File(chromiumPath);
@@ -256,7 +288,8 @@ let browserVersionInfo;
 let captured;
 try {
   await mkdir(profilePath);
-  await writeFile(join(temporaryDirectory, 'fixture.html'), buildHtml(fixture, stylesheet));
+  await writeFile(join(temporaryDirectory, 'fixture.html'), buildHtml(
+    fixture, stylesheet, hitTestFixture !== undefined));
   browserProcess = spawn(chromiumPath, [
     '--headless=new', '--no-first-run', '--no-default-browser-check',
     '--disable-background-networking', '--remote-debugging-port=0',
@@ -305,6 +338,7 @@ try {
   const expression = `(() => {
     const ids = ${JSON.stringify(fixture.tree.preorder)};
     const properties = ${JSON.stringify(computedProperties)};
+    const hitTestPoints = ${JSON.stringify(hitTestFixture?.points ?? [])};
     const root = document.getElementById(ids[0]);
     const origin = root.getBoundingClientRect();
     const observations = ids.map((fixtureId) => {
@@ -320,11 +354,17 @@ try {
         },
       };
     });
+    const hitTestResults = hitTestPoints.map((point) => {
+      const element = document.elementFromPoint(origin.x + point.xCssPx, origin.y + point.yCssPx);
+      const target = element && root.contains(element) ? element : null;
+      return { id: point.id, fixtureId: target?.id ?? null, elementTag: element?.tagName ?? null };
+    });
     return {
       viewport: { widthCssPx: innerWidth, heightCssPx: innerHeight, deviceScaleFactor: devicePixelRatio,
         screenMedia: matchMedia('screen').matches, lightColorScheme: matchMedia('(prefers-color-scheme: light)').matches,
         locale: navigator.language, timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone },
       observations,
+      ...(hitTestPoints.length > 0 ? { hitTestResults } : {}),
     };
   })()`;
   const evaluation = await pageDevTools.send('Runtime.evaluate', { expression, returnByValue: true });
@@ -353,6 +393,18 @@ for (const [key, value] of Object.entries(expectedViewport)) {
 if (captured.observations.length !== fixture.tree.preorder.length) {
   throw new Error('Chromium 관찰 node 수가 fixture와 다릅니다.');
 }
+if (hitTestFixture) {
+  if (!Array.isArray(captured.hitTestResults)
+    || captured.hitTestResults.length !== hitTestFixture.points.length) {
+    throw new Error('Chromium hit-test 점 결과 수가 fixture와 다릅니다.');
+  }
+  for (const [index, point] of hitTestFixture.points.entries()) {
+    const result = captured.hitTestResults[index];
+    if (result.id !== point.id || result.fixtureId !== point.expectedFixtureId) {
+      throw new Error(`Chromium hit-test 불일치 ${point.id}: ${JSON.stringify(result)} != ${point.expectedFixtureId}`);
+    }
+  }
+}
 for (const [index, observation] of captured.observations.entries()) {
   const fixtureId = fixture.tree.preorder[index];
   if (observation.fixtureId !== fixtureId) throw new Error(`관찰 순서가 다릅니다: ${observation.fixtureId}`);
@@ -372,14 +424,23 @@ const version = browserVersionInfo.product.match(/\d+\.\d+\.\d+\.\d+/)?.[0];
 if (!version) throw new Error(`Chromium product version을 읽지 못했습니다: ${browserVersionInfo.product}`);
 const fixtureSha256 = sha256(fixtureBytes);
 const stylesheetSha256 = sha256(stylesheetBytes);
+const hitTestFixtureSha256 = hitTestFixtureBytes ? sha256(hitTestFixtureBytes) : undefined;
 const referencePrefix = fixture.fixtureId.toLowerCase();
-const referenceId = `${referencePrefix}-chromium-${version}-${fixtureSha256.slice(0, 12)}-${stylesheetSha256.slice(0, 12)}-${browserSha256.slice(0, 12)}`;
+const referenceId = `${referencePrefix}${hitTestFixtureSha256 ? `-hit-test-${hitTestFixtureSha256.slice(0, 12)}` : ''}-chromium-${version}-${fixtureSha256.slice(0, 12)}-${stylesheetSha256.slice(0, 12)}-${browserSha256.slice(0, 12)}`;
 const outputPath = join(outputDirectory, `${referenceId}.json`);
 const output = {
   schema: variant.referenceSchema,
   referenceId,
   fixture: { path: fixtureRelativePath, sha256: fixtureSha256, fixtureId: fixture.fixtureId },
   stylesheet: { path: stylesheetRelativePath, sha256: stylesheetSha256, id: fixture.stylesheet.id },
+  ...(hitTestFixture ? {
+    hitTestFixture: {
+      path: variant.hitTestFixture,
+      sha256: hitTestFixtureSha256,
+      fixtureId: hitTestFixture.fixtureId,
+    },
+    hitTestPoints: captured.hitTestResults,
+  } : {}),
   capture: {
     path: 'tools/css-reference/capture-s04-flex-paint.mjs',
     nodeVersion: process.version,

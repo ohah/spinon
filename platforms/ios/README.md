@@ -34,6 +34,8 @@ xcrun simctl launch --terminate-running-process booted dev.spinon.bootstrap --sp
 
 iPhone 17 Pro / iOS 26.2 시뮬레이터에서 Metal surface generation 1의 `acquire=Success`, `present=requested`, `Bgra8UnormSrgb` 표면, 비대칭 y fixture의 36개 sRGB RGBA 표본 readback과 화면 캡처를 확인했습니다. 표본은 `301×65 Rgba8UnormSrgb` offscreen target을 비동기로 읽으며 UI 스레드에서 GPU 완료를 기다리지 않습니다. 화면 캡처의 색상 띠는 wgpu 표면이고 제목·상태 문구는 개발용 UIKit label입니다. 시뮬레이터 결과는 실기기·하드웨어 성능·표면 회전 수명·제품 CSS/runtime 지원을 검증하지 않습니다. [실행 근거와 원본 로그·캡처](../../spec/internal/evidence/s04-asymmetric-y-platforms-2026-10-07.md).
 
+색상 띠를 탭하면 `UITouch`의 local point에 현재 drawable density를 곱해 같은 표면 mapping으로 역산하고 고정 snapshot의 `NodeId`를 화면과 unified log에 표시합니다. 이 hit-test는 submitted frame sequence와 surface generation을 기록하지만 actual display completion, DOM event, JavaScript callback을 확인하지 않습니다. iOS Simulator 터치 결과와 캡처는 [S04.9 실행 근거](../../spec/internal/evidence/s04-hit-test-platforms-2026-10-07.md)에 있습니다.
+
 R06 개발 화면은 아래 실행 인자를 받습니다.
 
 ```sh

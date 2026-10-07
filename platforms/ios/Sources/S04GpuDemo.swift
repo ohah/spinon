@@ -66,6 +66,10 @@ private final class S04GpuCanvasView: UIView {
     private var readbackTimer: Timer?
     private var readbackDeadline: TimeInterval = 0
     private var readbackComplete = false
+    private var activeTouch: UITouch?
+    private var touchStartLocation = CGPoint.zero
+    private var touchStartSurfaceGeneration: UInt64 = 0
+    private var touchMovedTooFar = false
     var onStatusChange: ((String) -> Void)?
 
     override class var layerClass: AnyClass { CAMetalLayer.self }
@@ -85,12 +89,13 @@ private final class S04GpuCanvasView: UIView {
         backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
         isAccessibilityElement = false
         accessibilityElementsHidden = true
-        isUserInteractionEnabled = false
+        isUserInteractionEnabled = true
     }
 
     override func didMoveToWindow() {
         super.didMoveToWindow()
         guard window != nil else {
+            resetS04Touch()
             readbackTimer?.invalidate()
             readbackTimer = nil
             destroyRenderer()
@@ -133,6 +138,80 @@ private final class S04GpuCanvasView: UIView {
         }
         guard configuredSize != pixelSize || configuredDensity != density else { return }
         resizeRenderer(width: width, height: height, density: density, size: pixelSize)
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if activeTouch != nil || touches.count != 1 || renderer == nil {
+            resetS04Touch()
+        } else if let touch = touches.first {
+            activeTouch = touch
+            touchStartLocation = touch.location(in: self)
+            touchStartSurfaceGeneration = surfaceGeneration
+            touchMovedTooFar = false
+        }
+        super.touchesBegan(touches, with: event)
+    }
+
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first(where: { $0 === activeTouch }) {
+            let location = touch.location(in: self)
+            let deltaX = location.x - touchStartLocation.x
+            let deltaY = location.y - touchStartLocation.y
+            if deltaX * deltaX + deltaY * deltaY > 100 {
+                touchMovedTooFar = true
+            }
+        }
+        super.touchesMoved(touches, with: event)
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first(where: { $0 === activeTouch }) {
+            let startGeneration = touchStartSurfaceGeneration
+            let location = touch.location(in: self)
+            let deltaX = location.x - touchStartLocation.x
+            let deltaY = location.y - touchStartLocation.y
+            let isTap = !touchMovedTooFar
+                && deltaX * deltaX + deltaY * deltaY <= 100
+            resetS04Touch()
+            if isTap {
+                reportS04HitTest(at: location, expectedSurfaceGeneration: startGeneration)
+            }
+        }
+        super.touchesEnded(touches, with: event)
+    }
+
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        resetS04Touch()
+        super.touchesCancelled(touches, with: event)
+    }
+
+    private func reportS04HitTest(at location: CGPoint, expectedSurfaceGeneration: UInt64) {
+        guard let renderer else {
+            logger.notice("SPINON_S04_HIT_TEST=dropped reason=renderer_unavailable")
+            return
+        }
+        guard expectedSurfaceGeneration == surfaceGeneration else {
+            logger.notice("SPINON_S04_HIT_TEST=dropped reason=stale_surface_generation")
+            onStatusChange?("S04 hit-test 폐기 · 표면이 터치 중 교체됨")
+            return
+        }
+        let report = SpinonRunner.hitTestS04Wgpu(
+            renderer,
+            surfaceGeneration: expectedSurfaceGeneration,
+            surfaceX: Float(location.x * CGFloat(configuredDensity)),
+            surfaceY: Float(location.y * CGFloat(configuredDensity))
+        ) ?? "status=-1 empty hit-test report"
+        logger.notice("SPINON_S04_HIT_TEST=\(report, privacy: .public)")
+        if report.hasPrefix("status=0 ") || report.hasPrefix("status=1 ") {
+            onStatusChange?(report)
+        } else {
+            fail("S04 hit-test 실패 · \(report)")
+        }
+    }
+
+    private func resetS04Touch() {
+        activeTouch = nil
+        touchMovedTooFar = false
     }
 
     private func createRenderer(width: UInt32, height: UInt32, density: Float) {
