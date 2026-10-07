@@ -207,6 +207,22 @@ Java_dev_spinon_bootstrap_R08WgpuSurface_nativePollS04Readback(JNIEnv *env,
   }
   return ToByteArray(env, report);
 }
+
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_R08WgpuSurface_nativeHitTestS04(
+    JNIEnv *env, jclass, jlong handle, jlong surface_generation,
+    jfloat surface_x, jfloat surface_y) {
+  auto *context = reinterpret_cast<WgpuRendererContext *>(handle);
+  if (context == nullptr) return ToByteArray(env, "status=-1 null renderer");
+  std::array<char, 1024> output{};
+  const int32_t result = spinon_wgpu_s04_hit_test(
+      context->renderer, static_cast<uint64_t>(surface_generation), surface_x,
+      surface_y, output.data(), output.size());
+  const std::string report = "status=" + std::to_string(result) + " " + output.data();
+  __android_log_print(result >= 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR, kTag,
+                      "SPINON_S04_HIT_TEST %s", report.c_str());
+  return ToByteArray(env, report);
+}
 #else
 extern "C" JNIEXPORT jbyteArray JNICALL
 Java_dev_spinon_bootstrap_R08WgpuSurface_nativeDrawS04(JNIEnv *env, jclass,
@@ -218,6 +234,13 @@ extern "C" JNIEXPORT jbyteArray JNICALL
 Java_dev_spinon_bootstrap_R08WgpuSurface_nativePollS04Readback(JNIEnv *env,
                                                                 jclass,
                                                                 jlong) {
+  return ToByteArray(env, "status=-90 S04 Android fixture is disabled");
+}
+
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_R08WgpuSurface_nativeHitTestS04(JNIEnv *env, jclass,
+                                                           jlong, jlong,
+                                                           jfloat, jfloat) {
   return ToByteArray(env, "status=-90 S04 Android fixture is disabled");
 }
 #endif

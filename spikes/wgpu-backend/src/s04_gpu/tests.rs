@@ -1,4 +1,6 @@
-use super::geometry::{build_vertices, srgb_to_linear, FIXTURE_HEIGHT, FIXTURE_WIDTH};
+use super::geometry::{
+    build_vertices_with_mapping, srgb_to_linear, SurfaceMapping, FIXTURE_HEIGHT, FIXTURE_WIDTH,
+};
 use super::readback::{
     sample_columns, sample_rows, validate_samples, READBACK_BYTES_PER_ROW, READBACK_SIZE,
 };
@@ -13,9 +15,13 @@ use spinon_render::{
 #[test]
 fn fixture_surface_maps_css_points_once_and_letterboxes_without_stretching() {
     let snapshot = s04_snapshot::build_asymmetric_y_snapshot().expect("S04 snapshot");
-    let surface_vertices = build_vertices(&snapshot, 1080, 2400, 3.0).expect("surface vertices");
+    let surface_mapping = SurfaceMapping::new(&snapshot, 1080, 2400, 3.0).expect("surface mapping");
+    let readback_mapping = SurfaceMapping::new(&snapshot, FIXTURE_WIDTH, FIXTURE_HEIGHT, 1.0)
+        .expect("readback mapping");
+    let surface_vertices =
+        build_vertices_with_mapping(&snapshot, surface_mapping).expect("surface vertices");
     let readback_vertices =
-        build_vertices(&snapshot, FIXTURE_WIDTH, FIXTURE_HEIGHT, 1.0).expect("readback vertices");
+        build_vertices_with_mapping(&snapshot, readback_mapping).expect("readback vertices");
     assert_eq!(surface_vertices.len(), 4 * 6 * 6);
     assert_eq!(readback_vertices.len(), 4 * 6 * 6);
     assert!(surface_vertices.iter().all(|value| value.is_finite()));
@@ -75,7 +81,8 @@ fn asymmetric_nonzero_y_frames_map_to_top_down_surface_coordinates() {
         boxes,
     )
     .expect("비대칭 y snapshot");
-    let vertices = build_vertices(&snapshot, 240, 180, 1.5).expect("표면 좌표 변환");
+    let mapping = SurfaceMapping::new(&snapshot, 240, 180, 1.5).expect("surface mapping");
+    let vertices = build_vertices_with_mapping(&snapshot, mapping).expect("표면 좌표 변환");
 
     assert_box_corners(&vertices, 0, (-0.5, 0.55, -0.25, 0.36666667));
     assert_box_corners(&vertices, 1, (-0.15, 0.25, 0.0625, -0.13333333));

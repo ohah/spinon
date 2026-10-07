@@ -134,6 +134,34 @@
 #endif
 }
 
++ (NSString *)hitTestS04Wgpu:(void *)renderer
+         surfaceGeneration:(uint64_t)surfaceGeneration
+                  surfaceX:(float)surfaceX
+                  surfaceY:(float)surfaceY {
+#if defined(SPINON_ENABLE_S04_IOS_FIXTURE) && SPINON_ENABLE_S04_IOS_FIXTURE
+  std::array<char, 2048> output{};
+  const int32_t status = spinon_wgpu_s04_hit_test(
+      renderer, surfaceGeneration, surfaceX, surfaceY, output.data(), output.size());
+  NSString *message = [NSString stringWithUTF8String:output.data()];
+  if (status >= 0) {
+    os_log(OS_LOG_DEFAULT, "SPINON_S04_HIT_TEST status=%{public}d %{public}@",
+           status, message ?: @"empty report");
+  } else {
+    os_log_error(OS_LOG_DEFAULT,
+                 "SPINON_S04_HIT_TEST status=%{public}d detail=%{public}@",
+                 status, message ?: @"empty report");
+  }
+  return [NSString stringWithFormat:@"status=%d %@", status,
+                                    message ?: @"empty report"];
+#else
+  (void)renderer;
+  (void)surfaceGeneration;
+  (void)surfaceX;
+  (void)surfaceY;
+  return @"status=-90 fixture-disabled";
+#endif
+}
+
 + (int32_t)resizeS04Wgpu:(void *)renderer
                    width:(uint32_t)width
                   height:(uint32_t)height

@@ -5,12 +5,18 @@ use spinon_render::StaticRenderSnapshot;
 use crate::s04_snapshot;
 
 mod geometry;
+mod hit_test;
 mod readback;
+
+pub(crate) use hit_test::HitTestResult;
 
 #[cfg(test)]
 mod tests;
 
-use geometry::{build_vertices, create_vertex_buffer, FIXTURE_HEIGHT, FIXTURE_WIDTH};
+use geometry::{
+    build_vertices_with_mapping, create_vertex_buffer, SurfaceMapping, FIXTURE_HEIGHT,
+    FIXTURE_WIDTH,
+};
 use readback::{
     validate_samples, ReadbackState, READBACK_BYTES_PER_ROW, READBACK_SIZE, SAMPLE_COUNT,
     SAMPLE_ROW_COUNT,
@@ -64,9 +70,10 @@ pub(crate) struct S04Scene {
     readback_buffer: wgpu::Buffer,
     readback_state: ReadbackState,
     diagnostics: Arc<Mutex<Vec<String>>>,
-    density: f32,
+    surface_mapping: SurfaceMapping,
     surface_generation: u64,
     frame_sequence: u64,
+    last_submitted_surface_generation: Option<u64>,
     readback_surface_generation: Option<u64>,
     readback_frame_sequence: Option<u64>,
 }
@@ -89,13 +96,15 @@ impl S04Scene {
         }
         let surface_pipeline = create_pipeline(device, config.surface_format);
         let readback_pipeline = create_pipeline(device, wgpu::TextureFormat::Rgba8UnormSrgb);
-        let vertices = build_vertices(
+        let surface_mapping = SurfaceMapping::new(
             &snapshot,
             config.surface_width,
             config.surface_height,
             config.density,
         )?;
-        let readback_vertices = build_vertices(&snapshot, FIXTURE_WIDTH, FIXTURE_HEIGHT, 1.0)?;
+        let readback_mapping = SurfaceMapping::new(&snapshot, FIXTURE_WIDTH, FIXTURE_HEIGHT, 1.0)?;
+        let vertices = build_vertices_with_mapping(&snapshot, surface_mapping)?;
+        let readback_vertices = build_vertices_with_mapping(&snapshot, readback_mapping)?;
         let vertex_buffer = create_vertex_buffer(device, &vertices);
         let readback_vertex_buffer = create_vertex_buffer(device, &readback_vertices);
         queue.write_buffer(&vertex_buffer, 0, bytemuck::cast_slice(&vertices));
@@ -136,9 +145,10 @@ impl S04Scene {
             readback_buffer,
             readback_state: ReadbackState::NotStarted,
             diagnostics,
-            density: config.density,
+            surface_mapping,
             surface_generation: config.surface_generation,
             frame_sequence: 0,
+            last_submitted_surface_generation: None,
             readback_surface_generation: None,
             readback_frame_sequence: None,
         })
@@ -156,12 +166,14 @@ impl S04Scene {
             return Err("S04 density는 유한한 양수여야 합니다".to_owned());
         }
         validate_surface_generation(self.surface_generation, surface_generation)?;
-        let vertices = build_vertices(&self.snapshot, width, height, density)?;
+        let surface_mapping = SurfaceMapping::new(&self.snapshot, width, height, density)?;
+        let vertices = build_vertices_with_mapping(&self.snapshot, surface_mapping)?;
         queue.write_buffer(&self.vertex_buffer, 0, bytemuck::cast_slice(&vertices));
         self.vertex_count = u32::try_from(vertices.len() / 6)
             .map_err(|_| "S04 vertex 개수가 범위를 벗어났습니다")?;
-        self.density = density;
+        self.surface_mapping = surface_mapping;
         self.surface_generation = surface_generation;
+        self.last_submitted_surface_generation = None;
         Ok(())
     }
 
@@ -171,6 +183,13 @@ impl S04Scene {
         device: &wgpu::Device,
         queue: &wgpu::Queue,
     ) -> Result<String, S04Failure> {
+        let next_frame_sequence = self.frame_sequence.checked_add(1).ok_or_else(|| {
+            failure(
+                -7,
+                "FrameSequenceExhausted",
+                "S04 frame sequence 값이 소진됐습니다",
+            )
+        })?;
         let frame = match surface.get_current_texture() {
             wgpu::CurrentSurfaceTexture::Success(frame) => frame,
             wgpu::CurrentSurfaceTexture::Suboptimal(frame) => {
@@ -248,7 +267,8 @@ impl S04Scene {
         );
         let submission = queue.submit([encoder.finish()]);
         queue.present(frame);
-        self.frame_sequence = self.frame_sequence.saturating_add(1);
+        self.frame_sequence = next_frame_sequence;
+        self.last_submitted_surface_generation = Some(self.surface_generation);
         if start_readback {
             let (sender, receiver) = mpsc::sync_channel(1);
             self.readback_buffer

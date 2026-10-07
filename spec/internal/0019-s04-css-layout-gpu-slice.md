@@ -1,6 +1,6 @@
 # 0019 · S04 첫 CSS·레이아웃·GPU 연결 슬라이스
 
-**계약 버전:** `0.1.0-draft` · **상태:** S04.1~S04.6 simulator fixture 검증, S04.7 후속 작업 소유 경계 연결, S04.8 비대칭 y fixture 비교 완료 · **공개 API:** 아님
+**계약 버전:** `0.1.0-draft` · **상태:** S04.1~S04.6 simulator fixture 검증, S04.7 후속 작업 소유 경계 연결, S04.8 비대칭 y 비교, S04.9 정적 snapshot hit-test 완료 · **공개 API:** 아님
 
 ## 목적과 완료 범위
 
@@ -16,9 +16,12 @@ flowchart LR
     P --> D
     D --> E[Android wgpu 표면]
     D --> F[iOS wgpu 표면]
+    E --> G[표면 좌표 hit-test]
+    F --> G
+    G --> H[fixture NodeId 상태·로그]
 ```
 
-이것은 **픽스처 전용 내부 실험**입니다. 사용자 UI 런타임, 일반 CSS 지원, 공개 DOM, 프레임워크 어댑터, 지속적인 프레임 처리, 실제 입력 이벤트 경로를 구현하거나 완료 처리하지 않습니다. 완료해도 S04 전체 완료나 C04/C08/C19 CSS 지원 완료를 뜻하지 않습니다.
+이것은 **픽스처 전용 내부 실험**입니다. S04.9에서 고정 snapshot 좌표 hit-test와 Android·iOS 터치 입력을 연결하지만, 사용자 UI 런타임, 일반 CSS 지원, 공개 DOM, 프레임워크 어댑터, 지속적인 프레임 처리, DOM 이벤트·JavaScript callback 경로를 구현하거나 완료 처리하지 않습니다. 완료해도 S04 전체 완료나 C04/C08/C19 CSS 지원 완료를 뜻하지 않습니다.
 
 Android·iOS 연결은 `spikes/wgpu-backend`의 플랫폼별 Cargo feature로 컴파일을 분리합니다. `SPINON_ENABLE_S04_ANDROID_FIXTURE=1` 또는 `SPINON_ENABLE_S04_IOS_FIXTURE=1`인 검증 빌드에서만 해당 feature와 JNI·Objective-C++ 경로를 켜며 기본 빌드에는 fixture 경로를 넣지 않습니다. 이는 `#[cfg(test)]` 전용 단위 테스트가 아니라 플랫폼 surface와 GPU readback을 실행하는 내부 통합 fixture입니다. 제품 renderer나 공개 호출 계약으로 취급하지 않습니다.
 
@@ -42,7 +45,7 @@ Android·iOS 연결은 `spikes/wgpu-backend`의 플랫폼별 Cargo feature로 �
 | cascade → paint | 새 `S04FlexPaintV1`의 typed computed color | `background-color`를 Stylo computed color에서 불투명 sRGB 중립 값으로 변환합니다. Taffy에는 전달하지 않습니다. 변환은 `spinon-style-to-render`가 소유하고 Stylo 내부 타입은 경계 밖으로 내보내지 않습니다. | 누락 색·불투명하지 않은 값·`#RRGGBB` 이외의 author 문법·계산 진단은 전체 요청을 실패시킵니다. |
 | layout·paint → RenderSnapshot | `StyleLayoutOutput`, HostDocument 하위 트리, 명시적 fixture ID→`NodeId` preorder mapping, fixture/reference 출처 | `spinon-style-to-render`는 부모와 자식 3개를 `NodeId`, root-relative CSS px frame, typed paint로 보존하고 `spinon-render`의 불변 `StaticRenderSnapshot`을 만듭니다. 세 revision, 전체 style/frame/node 집합, fixture mapping 순서가 같아야 합니다. | 누락·중복·범위 밖 노드, mapping 불일치, 비유한 frame, viewport 오류, 세 revision 불일치는 전체 실패입니다. |
 | RenderSnapshot → 플랫폼 호스트 | 불변 snapshot과 host submission envelope의 frame ID·대상 surface generation | 플랫폼별 Rust 호스트가 같은 노드·좌표·색 순서로 사각형 장면을 제출합니다. `get_current_texture` 상태, `Queue::submit`의 `SubmissionIndex`, `Queue::present` 요청과 화면 캡처를 별도 기록합니다. fixture의 surface 수명 변경·generation 확인·획득·제출·표시 요청은 R13 UI-thread host sequence에서 직렬화합니다. | 플랫폼 객체나 `wgpu` handle은 Rust 공용 snapshot에 넣지 않습니다. 대기 중 대상 surface generation이 바뀌면 획득 전에 해당 제출을 폐기합니다. surface generation은 대상 extent와 backing scale 변경도 반영하며, CSS viewport와 물리 surface 전체 크기를 직접 비교하지 않습니다. 획득한 `SurfaceTexture`가 남아 있는 동안에는 재구성하지 않습니다. 같은 device queue에는 이 sequence만 제출합니다. present 요청·GPU 작업 완료 callback은 화면 표시 완료를 증명하지 않습니다. 이 실험의 선택은 앱 전체 렌더 스레드 정책을 정하지 않습니다. |
-| 플랫폼 호스트 → JS 입력 | 이번 슬라이스에서는 연결하지 않음 | 터치 hit-test나 JS 이벤트 callback을 성공 기준에 넣지 않습니다. | R08 데모의 표면 탭은 DOM 노드 이벤트가 아닙니다. S03 이벤트 계약이 정해지기 전에는 노드 callback으로 보고하지 않습니다. |
+| 플랫폼 호스트 → fixture hit-test | Android `MotionEvent` local surface px, iOS `UITouch` local point × drawable density, 시작 시점 surface generation | 현재 제출 세대와 같은 generation에서만 hit-test하고 CSS point·fixture `NodeId`·paint order·frame sequence를 화면 상태와 로그에 표시합니다. Android·iOS tap slop, 취소, 다중 포인터 입력은 플랫폼 호스트가 제외합니다. | 이는 정적 fixture 결과이며 실제 표시 완료 frame의 식별이 아닙니다. CSS stacking context·clip·transform, DOM 이벤트 전파·취소·listener, JavaScript callback 또는 접근성 이벤트를 구현하지 않습니다. |
 
 ### 플랫폼별 opt-in 빌드와 내부 C ABI
 
@@ -53,10 +56,13 @@ Android·iOS 연결은 `spikes/wgpu-backend`의 플랫폼별 Cargo feature로 �
 | 생성 | `spinon_wgpu_create_uikit_s04(view, width, height, backend, density, surface_generation, output, capacity)`는 비-null UIKit view를 빌려 Metal surface와 고정 snapshot scene을 만들고 성공 시 opaque renderer를 반환합니다. 생성 실패는 null과 출력 진단으로 보고합니다. `view`는 destroy 완료까지 유효해야 하고 `density`와 generation은 유한한 양수여야 합니다. iOS fixture는 backend `3`(Metal)을 요청합니다. |
 | 프레임 제출 | `spinon_wgpu_s04_draw(renderer, output, capacity)`는 renderer를 만든 UI-thread host sequence에서 직렬 호출합니다. `0`은 `Success` surface 획득, 제출 index 기록, present 요청까지 끝났다는 뜻입니다. `-1`은 S04 scene 부재, `-2`는 Timeout·Occluded·Validation, `-3`은 Lost, `-4`는 Outdated, `-5`는 device lost, `-6`은 Suboptimal 획득 결과입니다. 성공은 화면 표시 완료를 뜻하지 않습니다. |
 | 색상 표본 확인 | `spinon_wgpu_s04_poll_readback(renderer, output, capacity)`는 device poll을 한 번 수행하고 대기하지 않습니다. 기존 `S04-flex-paint-v1`은 고정 42개, `S04-asymmetric-y-v1`은 36개 RGBA 표본이 모두 맞으면 `1`, 대기 중이면 `0`, 음수면 실패입니다. 호스트는 main/UI thread를 동기 대기시키지 않고 최대 5000 ms 동안 16 ms 간격으로 재호출합니다. |
+| 정적 snapshot hit-test | `spinon_wgpu_s04_hit_test(renderer, expected_surface_generation, surface_x, surface_y, output, capacity)`는 physical surface px 입력을 draw에 사용한 동일 scale·letterbox mapping으로 CSS px로 되돌린 뒤 불변 snapshot을 조회합니다. `0`은 `NodeId` hit, `1`은 box hit 없음, `-1`은 null renderer, `-2`는 S04 scene 또는 현재 generation의 제출 frame 없음, `-3`은 오래된 surface generation, `-4`는 비유한 좌표입니다. 출력에는 CSS point·NodeId·paint order·generation·제출 frame sequence·fixture ID를 포함합니다. |
 | 표면 크기 변경·해제 | `spinon_wgpu_s04_resize(renderer, width, height, density, surface_generation)`는 양수 크기·density와 현재 generation보다 큰 값을 전달해 snapshot 장면과 surface를 재구성합니다. generation이 같거나 더 낮으면 장면을 바꾸지 않고 실패합니다. 반환값 `0`은 성공, `-1`은 null renderer, `-2`는 0 크기, `-3`은 S04 scene 부재, `-4`는 잘못된 density/generation 또는 장면 갱신 실패입니다. `spinon_wgpu_destroy(renderer)`는 opaque handle을 정확히 한 번 해제하며 view는 호출이 끝날 때까지 유효해야 합니다. |
 | 공통 ABI 안전 경계 | 출력 진단은 capacity가 양수일 때 UTF-8 바이트를 최대 `capacity - 1`개 복사하고 NUL 종료합니다. 호출자는 출력 버퍼의 실제 크기를 전달하고, 같은 renderer의 create 이후 호출·resize·destroy를 한 UI-thread sequence에서 직렬화해야 합니다. 동시에 호출하거나 destroy 뒤 핸들을 재사용하면 안 됩니다. |
 
 이 표의 함수는 `spikes/wgpu-backend/include/spinon_wgpu_r08.h`에서 opt-in feature가 켜진 빌드에만 선언됩니다. iOS feature-off 상태에서는 Objective-C++ wrapper가 Rust S04 함수를 호출하지 않습니다. Android는 JNI 전용 화면과 `s04-android-fixture` alias를 사용합니다. 두 플랫폼의 표면 수명·화면 배치 코드는 서로 다르며 공통 snapshot·draw/readback 의미만 공유합니다.
+
+hit-test의 `surface_x`·`surface_y`는 Android에서 `MotionEvent.getX/Y()`가 돌려주는 SurfaceView local physical px이고 iOS에서는 UIKit local point에 configured drawable density를 곱한 값입니다. 결과 문자열은 화면·로그 진단용입니다. hit-test는 그 generation에서 성공적으로 submit된 frame sequence와 snapshot을 연결하지만 `Queue::present()`의 실제 표시 완료를 확인하지 않으며, 결과를 JS event callback에 전달하지 않습니다. fixture 상세와 실제 simulator 입력 결과는 [S04.9 사전 기준](evidence/s04-hit-test-precomparison-2026-10-07.md), [S04.9 실행 근거](evidence/s04-hit-test-platforms-2026-10-07.md)에 둡니다.
 
 ### 픽스처 RenderSnapshot 자료형
 
@@ -165,7 +171,7 @@ Chromium computed style·geometry는 CSS/layout oracle입니다. GPU screenshot�
 - `color`, `opacity`, border, transform, clip, z-index, stacking context의 화면 표현
 - C08 Block formatting, C19 paint subset, 전체 Flexbox·Grid·CSSOM·동적 stylesheet 무효화
 - 텍스트 shaping·폰트 측정·이미지 decode/upload·scroll
-- UI 입력 hit-test, DOM 이벤트 순서·취소·캡처·버블링, JS callback
+- CSS 일반 규칙을 따르는 displayed-frame hit-test, DOM 이벤트 순서·취소·캡처·버블링, JS callback
 - 접근성 의미 트리, VoiceOver/TalkBack, IME
 - 앱 런타임의 연속 frame scheduling·backpressure·thread ownership, 부분 렌더 갱신
 - HMR·OTA·CSS 자원 교체와 style/resource generation 활성화
@@ -191,6 +197,7 @@ S04.1 정책 확정 뒤 이어갈 내부 fixture 작업입니다. 아래 단계�
 - [x] **S04.6 교차 플랫폼 대조** — Android API 36 emulator와 iPhone 17 Pro / iOS 26.2 simulator의 surface 캡처 색상 경계를 density로 CSS px에 환산해 Chromium geometry oracle과 `StaticRenderSnapshot`의 고정 frame 값에 대조했습니다. 두 결과의 최대 좌표 오차는 각각 0.167 CSS px이고 색상 픽셀은 fixture sRGB 값과 정확히 일치합니다. 로그의 fixture ID·revision·frame·surface generation, 42개 readback과 simulator 한계를 [실행 근거](evidence/s04-cross-platform-comparison-2026-10-03.md)에 기록했습니다. snapshot digest는 로그에 없어 캡처와 snapshot의 바이트 정체성을 증명하지 않습니다. 전체 화면 픽셀 동등, 실기기 GPU와 표시 완료 callback도 증명하지 않습니다.
 - [x] **S04.7 후속 작업 소유 경계 연결** — 각 후속 작업의 기준 명세와 기존 상태 ID를 아래 표에 연결했습니다. 이 체크는 계획 추적 정리만 완료했다는 뜻이며 CSS·DOM·이벤트·제품 frame 기능의 구현이나 S04 전체 완료를 뜻하지 않습니다.
 - [x] **S04.8 비대칭 y 좌표 비교** — `S04-asymmetric-y-v1`의 computed style과 모든 노드 geometry를 Chromium `154.0.8037.98`에 대조하고, 서로 다른 y·높이·간격·가로 좌표를 둔 독립 CPU→NDC oracle을 검사했습니다. Android API 36 ARM64 emulator Vulkan `llvmpipe` CPU adapter와 iPhone 17 Pro / iOS 26.2 simulator Metal surface에서 각각 같은 fixture의 36개 RGBA 표본이 정확히 일치하고 화면 캡처의 색 순서를 확인했습니다. [사전 비교 기준](evidence/s04-asymmetric-y-precomparison-2026-10-07.md) · [실행 근거·원본 로그·캡처](evidence/s04-asymmetric-y-platforms-2026-10-07.md). 실기기·하드웨어 GPU·성능·제품 runtime은 검증하지 않았습니다.
+- [x] **S04.9 정적 snapshot hit-test fixture** — `StaticRenderSnapshot`에서 right/bottom 제외 경계와 기록 paint order를 적용하고, 렌더와 동일한 scale·letterbox mapping의 역변환을 사용합니다. Chromium `document.elementFromPoint()` 11점 대조, surface generation·성공 제출 frame·비유한 좌표 실패 기준, Android API 36 emulator 탭과 iPhone 17 Pro / iOS 26.2 Simulator 터치로 NodeId 결과 및 화면 상태를 확인했습니다. 세대·frame·CSS point·NodeId가 연결된 로그와 캡처는 [사전 비교 기준](evidence/s04-hit-test-precomparison-2026-10-07.md) · [플랫폼 실행 근거](evidence/s04-hit-test-platforms-2026-10-07.md)에 있습니다. 이는 fixture 입력 결과이며 displayed-frame ID, CSS stacking/clip/transform, DOM event 또는 JS callback 검증이 아닙니다.
 
 ### S04 후속 작업 소유 경계
 

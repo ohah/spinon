@@ -61,6 +61,8 @@
 - [S04.4 · Android GPU surface](./evidence/s04-android-gpu-surface-2026-10-03.md) — Android API 36 ARM64 emulator의 Vulkan llvmpipe surface 제출, 회전별 generation, sRGB 표본 readback과 화면 캡처. 실제 hardware GPU·실기기는 미검증.
 - [S04.5 · iOS GPU surface](./evidence/s04-ios-gpu-surface-2026-10-03.md) — iPhone 17 Pro / iOS 26.2 simulator의 Metal surface 제출, sRGB 표본 readback과 화면 캡처. iOS 실기기·회전별 generation·성능은 미검증.
 - [S04.6 · Android·iOS 교차 플랫폼 대조](./evidence/s04-cross-platform-comparison-2026-10-03.md) — simulator 캡처의 색상 경계를 CSS px로 환산해 Chromium geometry·StaticRenderSnapshot과 비교. 각 플랫폼 최대 좌표 오차 0.167 CSS px; 전체 화면 동등성과 실기기 GPU는 미검증.
+- [S04.9 · 정적 snapshot hit-test 사전 비교](./evidence/s04-hit-test-precomparison-2026-10-07.md) — Chromium `elementFromPoint()` 대상, half-open 경계, paint order, surface 좌표 역변환과 generation/frame 거부 조건.
+- [S04.9 · Android·iOS 터치 실행](./evidence/s04-hit-test-platforms-2026-10-07.md) — emulator·simulator 터치가 고정 snapshot NodeId로 변환되는 로그와 캡처, DOM event·displayed-frame 한계.
 - [S04 iOS feature-off 확인](./evidence/s04-ios-fixture-disabled-2026-10-03.log) — 기본 iOS 시뮬레이터 빌드에서 fixture 인자에 비활성 안내를 반환한 원본 로그.
 - [S04 Android feature-off 확인](./evidence/s04-android-fixture-disabled-2026-10-03.log) — 기본 APK에서 fixture 전용 JNI 경로가 비활성 안내를 반환한 원본 Logcat.
 - [S02.1 · HostDocument 레이아웃 입력](./evidence/s02-host-document-layout-input-2026-10-03.md) — 기존 Tree 입력과 HostDocument 요소 투영의 ID·순서·revision·Taffy 출력 비교와 실행 결과.

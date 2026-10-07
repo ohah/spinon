@@ -227,6 +227,24 @@ impl StaticRenderSnapshot {
     pub fn boxes(&self) -> &[StaticRenderBox] {
         &self.boxes
     }
+
+    /// CSS px 점을 포함하는 box 중 가장 큰 `paint_order`를 반환합니다.
+    ///
+    /// 불변 fixture snapshot에 기록된 순서만 따릅니다. CSS 쌓임 맥락·clip·transform이나
+    /// 실제 표시 frame의 이벤트 target 규칙은 구현하지 않습니다.
+    pub fn hit_test_css_point(&self, x: f32, y: f32) -> Option<&StaticRenderBox> {
+        if !x.is_finite() || !y.is_finite() {
+            return None;
+        }
+
+        self.boxes.iter().rev().find(|render_box| {
+            let frame = render_box.frame_css_px();
+            x >= frame.x()
+                && x < frame.x() + frame.width()
+                && y >= frame.y()
+                && y < frame.y() + frame.height()
+        })
+    }
 }
 
 /// 불완전하거나 모순된 snapshot을 만든 이유입니다.

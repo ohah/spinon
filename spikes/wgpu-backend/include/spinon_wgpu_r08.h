@@ -54,6 +54,12 @@ int32_t spinon_wgpu_s04_draw(void *renderer, char *output,
 // 반환값은 1=완료, 0=대기, 음수=실패이며 호출은 device poll에서 대기하지 않는다.
 int32_t spinon_wgpu_s04_poll_readback(void *renderer, char *output,
                                       size_t output_capacity);
+// 입력 좌표는 physical surface px입니다. 반환값: 0=NodeId 적중, 1=대상 없음,
+// -1=null renderer, -2=S04 scene/frame 없음, -3=오래된 generation, -4=잘못된 좌표.
+int32_t spinon_wgpu_s04_hit_test(void *renderer,
+                                 uint64_t expected_surface_generation,
+                                 float surface_x, float surface_y, char *output,
+                                 size_t output_capacity);
 // S04 내부 fixture 전용: 세대·밀도·크기가 바뀐 표면을 재구성한다.
 int32_t spinon_wgpu_s04_resize(void *renderer, uint32_t width, uint32_t height,
                                float density, uint64_t surface_generation);
