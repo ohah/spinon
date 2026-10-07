@@ -27,13 +27,13 @@
 
 ## 이벤트
 
-플랫폼 입력 → 실제 표시 프레임의 좌표·대상 판정 또는 접근성 동작 → 노드 ID·이벤트 종류 → JS 핸들러 순서로 전달한다. 이벤트는 대상 판정에 사용한 표시 트리 revision과 프레임 ID를 가져야 한다. R03 내부 초안은 전달 전에 대상이 분리·폐기된 경우 이벤트를 버리고 다른 노드로 대상을 바꾸지 않는 방식을 권고한다. 분리된 DOM JS 래퍼 객체가 살아 있는 동안 이벤트 수신기 등록은 유지할 수 있으며, 등록 해제는 명시적 해제나 소유자의 폐기 수명에 따른다. 이 제안은 공개 이벤트 호환 계약을 확정하지 않는다.
+플랫폼 입력 → 플랫폼 presentation 확인 신호로 선택한 frame의 좌표·대상 판정 또는 접근성 동작 → 노드 ID·이벤트 종류 → JS 핸들러 순서로 전달합니다. 이벤트는 대상 판정에 사용한 frame ID와 revision을 가져야 합니다. presentation 확인 신호가 광학 표시 완료를 증명하지는 않습니다. 내부 첫 클릭 전달의 frame 확인·입력 순서·stale target·handler 소유 정책은 [0023 S05 입력 이벤트 전달 계약](internal/0023-s05-event-delivery.md)에 제안했습니다. 그 계약은 구현되지 않았으며 공개 이벤트 호환을 보장하지 않습니다.
 
-기본 이벤트 핸들러는 UI·GPU 경로가 완료를 기다리지 않도록 JS 실행 경로에 비동기로 제출한다. 이 정책만으로 `preventDefault()` 등 웹의 동기 이벤트 취소 의미를 지원한다고 약속하지 않는다. 동기 기본 동작 제어는 별도 적합성 계약으로 남는다.
+기본 이벤트 handler는 UI·GPU 경로가 완료를 기다리지 않도록 JS 실행 경로에 비동기로 제출합니다. 이 정책만으로 preventDefault() 등 웹의 동기 이벤트 취소 의미를 지원한다고 약속하지 않습니다. 동기 기본 동작 제어는 별도 적합성 계약으로 남습니다.
 
-S05를 완료하기 전에는 오래된 revision의 이벤트를 받은 어댑터 동작, 콜백 핸들 회수 시점과 JS 래퍼 객체의 GC 연결을 확정하지 않는다. 이벤트 전파·기본 동작·동기 취소는 별도 범위로 남는다.
+S05.1은 내부 입력 envelope와 callback owner 정책을 문서화했습니다. S05 제품 adapter와 실행 근거는 아직 없습니다. 오래된 revision의 최종 runtime 거부 경계, callback Global 회수 구현·V8 GC 연결은 실행 검증 전까지 미완료입니다. 이벤트 전파·기본 동작·동기 취소는 별도 범위로 남습니다.
 
-첫 수직 구현의 목표는 `<button>` 활성화와 클릭이다. `onClick`은 React 어댑터의 작성 문법이며 Vue·Svelte는 자체 문법을 사용한다. 이벤트 전파, 캡처, `stopPropagation()`, `preventDefault()`, 포인터 취소, 키보드 활성화 순서는 아직 확정하지 않았다. 해당 동작을 웹과 같다고 주장하기 전에 표준 이벤트 시나리오와 플랫폼 접근성 활성화 시나리오를 명세해야 한다.
+첫 수직 구현의 목표는 button의 단일 손가락 tap에 대한 click입니다. 플랫폼 recognizer의 tap 판정은 웹과 같다고 간주하지 않습니다. onClick은 React adapter의 작성 문법이며 Vue·Svelte는 자체 문법을 사용합니다. onClick의 public event argument, DOM Event 전파·캡처, stopPropagation(), preventDefault(), pointer 취소, 키보드·접근성 활성화 순서는 아직 미정입니다. 분리된 target을 버리는 첫 내부 정책은 일부 Pointer Events mapped mouse event의 조상 target 권고와 차이가 있으며 웹 이벤트 동등성을 주장하지 않습니다. 기준과 제외 범위는 [0023](internal/0023-s05-event-delivery.md)에 둡니다.
 
 ## 표시 프레임과 revision
 
@@ -43,7 +43,7 @@ S05를 완료하기 전에는 오래된 revision의 이벤트를 받은 어댑�
 - 계산 결과와 표시 frame은 입력 출처를 식별해야 한다. HostDocument의 `DocumentGeneration`, `DocumentRevision`, `RenderTreeRevision`을 서로 합치지 않는다. 스타일 입력 소유자는 DOM 문서 바깥 stylesheet 목록·순서·내용과 UA/style profile 입력의 `StyleRevision`을 소유하고, 플랫폼 환경 snapshot 소유자는 viewport 등 레이아웃 입력의 `EnvironmentRevision`을 소유한다. `spinon-layout::LayoutInputRevision`과 결과는 이 두 revision과 문서 source를 함께 보존한다. `FrameId`와 `SurfaceGeneration`은 아직 runtime stamp에 연결하지 않았다.
 - 현재 `CssViewport`는 너비·높이·device scale factor를 보존하며 `EnvironmentRevision`이 그 값을 식별한다. 이후 safe area·시스템 글꼴 크기·color scheme 등이 실제 계산 입력에 연결되면 같은 환경 snapshot의 대상과 revision 갱신 규칙도 명세해야 한다. 환경 변경만으로 `DocumentRevision`을 인위적으로 증가시키지 않는다.
 - 기존 S04 fixture의 snapshot admission은 호출자가 함께 제공하는 현재 style revision·viewport와 계산 결과를 비교해 불일치 전체를 거부한다. 이를 제품 렌더 경로의 완료된 stale 폐기로 간주하지 않는다. 제품용 다중 소유자 현재 입력의 원자 snapshot, 계산 취소·재예약, GPU queue의 최종 재검증은 아직 구현되지 않았다. 자세한 소유권·갱신 규칙과 한계는 [레이아웃 엔진 계약](internal/0009-layout-engine.md), 고정 비교 기준은 [S02 revision gate 기준](internal/evidence/s02-layout-revision-precomparison-2026-10-04.md)을 따른다.
-- 플랫폼 입력은 최신 커밋 문서가 아니라 입력 좌표를 해석할 때 화면에 반영된 frame의 식별자와 표시 트리를 사용해야 한다. 이벤트와 frame이 연결되지 않거나 대상 노드가 그 뒤 분리됐다면 새 문서의 다른 노드로 대상을 바꾸지 않는다. 플랫폼별 입력 sampling·표시 시점 연결은 S05·S07 검증 전까지 미정이다.
+- 플랫폼 입력은 최신 커밋 문서가 아니라 플랫폼 presentation 확인 신호로 입력 시점에 선택한 frame의 식별자와 표시 트리를 사용해야 한다. 이벤트와 frame이 연결되지 않거나 대상 노드가 그 뒤 분리됐다면 새 문서의 다른 노드로 대상을 바꾸지 않는다. 플랫폼별 입력 sampling·presentation 확인 연결은 S04.10·S05·S07 검증 전까지 미정이다.
 - 네이티브 프레임 구동기는 문서 commit 뒤 GPU 화면을 예약하는 내부 경로다. JavaScript `requestAnimationFrame()`·`cancelAnimationFrame()`의 노출과 시간 의미는 [J04](STATUS.md#javascript-api-구현-체크리스트)에서 별도로 결정한다. JavaScript 작업 우선순위 대기열도 GPU 프레임 대기열과 별개이며 [내부 스케줄러 계약](internal/0006-js-task-scheduler.md)의 소유다.
 - GPU 제출 또는 `Queue::present()` 호출은 화면 표시 완료 증거가 아니다. 실제 표시 frame과 콜백의 연결 방법은 플랫폼 계약과 검증 근거가 준비될 때까지 완료로 주장하지 않는다.
 
