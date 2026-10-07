@@ -6,7 +6,7 @@ use crate::v8::{
 };
 pub use spinon_core::TaskPriority;
 use std::ffi::CString;
-use std::sync::atomic::{AtomicU64, Ordering};
+use std::sync::atomic::{AtomicU32, AtomicU64, Ordering};
 use std::sync::mpsc::{self, Receiver, SyncSender};
 use std::sync::{Arc, Mutex, MutexGuard};
 use std::thread::{self, JoinHandle};
@@ -27,9 +27,10 @@ pub use priority_probe::run_priority_probe;
 use report::{OperationReport, operation_report};
 use scheduler::{EnqueueError, TaskScheduler};
 pub use shutdown::run_shutdown_probe;
-use trace::TraceSection;
+use trace::{TraceSection, finish_reply_handoff};
 
 const QUEUE_CAPACITY: usize = 64;
+static NEXT_REPLY_TRACE_COOKIE: AtomicU32 = AtomicU32::new(1);
 const OK: i32 = 0;
 const ERR_ARGUMENT: i32 = -1;
 const ERR_JAVASCRIPT: i32 = -4;
@@ -68,12 +69,14 @@ pub struct RuntimeSession {
 enum Command {
     Eval {
         sequence: u64,
+        trace_cookie: u32,
         source: CString,
         caller_thread_id: u64,
         reply: SyncSender<OperationResponse>,
     },
     Dispatch {
         sequence: u64,
+        trace_cookie: u32,
         node_id: i32,
         caller_thread_id: u64,
         reply: SyncSender<OperationResponse>,
@@ -110,7 +113,7 @@ fn current_thread_id() -> u64 {
 fn submit(
     session: &RuntimeSession,
     priority: TaskPriority,
-    command: impl FnOnce(u64, u64, SyncSender<OperationResponse>) -> Command,
+    command: impl FnOnce(u64, u64, u32, SyncSender<OperationResponse>) -> Command,
 ) -> OperationResponse {
     let _submit_trace = TraceSection::new(c"SpinonR05:runtime-submit");
     let submit_started_at = Instant::now();
@@ -118,7 +121,7 @@ fn submit(
         let _enqueue_trace = TraceSection::new(c"SpinonR05:runtime-enqueue");
         enqueue(session, priority, command)
     };
-    let receiver = match enqueue_result {
+    let (receiver, trace_cookie) = match enqueue_result {
         Ok(response) => response,
         Err(response) => return response,
     };
@@ -128,7 +131,11 @@ fn submit(
         .as_micros();
     let mut response = {
         let _receive_trace = TraceSection::new(c"SpinonR05:reply-receive");
-        receiver.recv().unwrap_or_else(|_| OperationResponse {
+        let received = receiver.recv();
+        if received.is_ok() {
+            finish_reply_handoff(trace_cookie);
+        }
+        received.unwrap_or_else(|_| OperationResponse {
             status: ERR_WORKER,
             report: "V8 실행기가 응답하기 전에 종료되었습니다".to_owned(),
         })
@@ -149,8 +156,8 @@ fn submit(
 fn enqueue(
     session: &RuntimeSession,
     priority: TaskPriority,
-    command: impl FnOnce(u64, u64, SyncSender<OperationResponse>) -> Command,
-) -> Result<Receiver<OperationResponse>, OperationResponse> {
+    command: impl FnOnce(u64, u64, u32, SyncSender<OperationResponse>) -> Command,
+) -> Result<(Receiver<OperationResponse>, u32), OperationResponse> {
     let (reply, response) = {
         let _channel_trace = TraceSection::new(c"SpinonR05:reply-channel-create");
         mpsc::sync_channel(1)
@@ -171,10 +178,11 @@ fn enqueue(
         }
     }
     let sequence = session.next_sequence.fetch_add(1, Ordering::Relaxed) + 1;
+    let trace_cookie = NEXT_REPLY_TRACE_COOKIE.fetch_add(1, Ordering::Relaxed);
     let caller_thread_id = current_thread_id();
     match session.scheduler.try_enqueue(
         priority,
-        command(sequence, caller_thread_id, reply),
+        command(sequence, caller_thread_id, trace_cookie, reply),
         submission_lock_wait_us,
         control_lock_wait_us,
     ) {
@@ -193,7 +201,7 @@ fn enqueue(
         }
     }
     drop(_submission);
-    Ok(response)
+    Ok((response, trace_cookie))
 }
 
 fn cancel_control(control: &Mutex<RuntimeControl>) -> i32 {
@@ -260,26 +268,32 @@ impl RuntimeSession {
                 };
             }
         };
-        submit(self, priority, |sequence, caller_thread_id, reply| {
-            Command::Eval {
+        submit(
+            self,
+            priority,
+            |sequence, caller_thread_id, trace_cookie, reply| Command::Eval {
                 sequence,
+                trace_cookie,
                 source,
                 caller_thread_id,
                 reply,
-            }
-        })
+            },
+        )
     }
 
     /// 등록된 JavaScript 이벤트 함수를 지정한 우선순위로 호출합니다.
     pub fn dispatch(&self, node_id: i32, priority: TaskPriority) -> OperationResponse {
-        submit(self, priority, |sequence, caller_thread_id, reply| {
-            Command::Dispatch {
+        submit(
+            self,
+            priority,
+            |sequence, caller_thread_id, trace_cookie, reply| Command::Dispatch {
                 sequence,
+                trace_cookie,
                 node_id,
                 caller_thread_id,
                 reply,
-            }
-        })
+            },
+        )
     }
 
     /// 호스트가 정한 압박 단계를 V8에 전달합니다. OS 신호나 판단 시점은 정하지 않습니다.

@@ -60,6 +60,19 @@ function numeric(value) {
   return Number.isFinite(parsed) ? parsed : 0;
 }
 
+function reportTraceCookie(value) {
+  const parsed = Number(value);
+  return Number.isSafeInteger(parsed) && parsed >= 0 && parsed <= 0xffff_ffff
+    ? String(parsed)
+    : null;
+}
+
+function sliceTraceCookie(value) {
+  const parsed = Number(value);
+  if (!Number.isInteger(parsed) || parsed < -0x8000_0000 || parsed > 0x7fff_ffff) return null;
+  return String(parsed < 0 ? parsed + 2 ** 32 : parsed);
+}
+
 function percentile(values, percentileValue) {
   if (values.length === 0) return 0;
   const sorted = [...values].sort((left, right) => left - right);
@@ -86,6 +99,31 @@ function slowCount(values, threshold) {
 
 const processorVersion = run(processor, ["--version"]).split("\n")[0];
 const conditions = ["spinon-ui-only", "spinon-event"];
+const runtimeReportMetricFields = [
+  "submission_lock_wait_us",
+  "control_lock_wait_us",
+  "scheduler_lock_wait_us",
+  "queue_residence_us",
+  "v8_call_us",
+  "post_v8_us",
+  "report_build_us",
+  "response_report_append_us",
+  "report_finalize_us",
+  "actor_before_reply_us",
+  "enqueue_total_us",
+  "response_wait_us",
+  "submit_total_us",
+];
+const requiredDispatchReportFields = [
+  "seq",
+  "trace_cookie",
+  "op",
+  "status",
+  "caller_tid",
+  "owner_tid",
+  ...runtimeReportMetricFields,
+];
+const numericDispatchReportFields = requiredDispatchReportFields.filter((field) => field !== "op");
 const schedulePath = join(matrix, "schedule.txt");
 const scheduleText = readFileSync(schedulePath, "utf8");
 const scheduleMetadata = readKeyValues(schedulePath);
@@ -217,11 +255,53 @@ const records = runDirectories.map((directory) => {
       const report = line.slice(line.indexOf("SPINON_RUNTIME_DISPATCH=") + "SPINON_RUNTIME_DISPATCH=".length);
       return Object.fromEntries([...report.matchAll(/([a-z0-9_]+)=([^\s]+)/g)].map((match) => [match[1], match[2]]));
     }).sort((left, right) => numeric(left.seq) - numeric(right.seq));
+  const incompleteDispatchReports = dispatchReports.filter((report) =>
+    requiredDispatchReportFields.some((field) =>
+      !Object.hasOwn(report, field),
+    ) || numericDispatchReportFields.some((field) => !Number.isFinite(Number(report[field]))),
+  ).length;
+
+  const replyHandoffSlices = query(
+    trace,
+    `SELECT CAST(a.int_value AS INT) AS trace_cookie, s.ts,
+      s.dur AS duration_ns
+     FROM slice s
+     JOIN args a USING (arg_set_id)
+     WHERE s.name = 'SpinonR05:reply-handoff' AND a.key = 'cookie'
+     ORDER BY s.ts`,
+  );
+  const replyHandoffsByCookie = new Map();
+  for (const slice of replyHandoffSlices) {
+    const cookie = sliceTraceCookie(slice.trace_cookie);
+    if (cookie === null) continue;
+    const slices = replyHandoffsByCookie.get(String(cookie)) ?? [];
+    slices.push(slice);
+    replyHandoffsByCookie.set(String(cookie), slices);
+  }
+  const dispatchCookies = dispatchReports.map((report) => {
+    return reportTraceCookie(report.trace_cookie);
+  });
+  const dispatchCookieCounts = new Map();
+  for (const cookie of dispatchCookies) {
+    if (cookie !== null) dispatchCookieCounts.set(cookie, (dispatchCookieCounts.get(cookie) ?? 0) + 1);
+  }
+  const duplicateDispatchCookies = [...dispatchCookieCounts.values()]
+    .filter((count) => count !== 1).length;
+  const incompleteDispatchHandoffs = dispatchCookies.filter((cookie) => {
+    if (cookie === null) return true;
+    const slices = replyHandoffsByCookie.get(cookie) ?? [];
+    return slices.length !== 1 || numeric(slices[0]?.duration_ns) < 0;
+  }).length;
+  const replyHandoffCorrelationFailures = duplicateDispatchCookies + incompleteDispatchHandoffs;
+  const orphanReplyHandoffs = replyHandoffSlices.filter((slice) => {
+    const cookie = sliceTraceCookie(slice.trace_cookie);
+    return !dispatchCookieCounts.has(cookie);
+  }).length;
 
   const runtimeWorkerCalls = query(
     trace,
     `SELECT row_number() OVER (ORDER BY s.ts) AS call_index,
-      ROUND(s.dur / 1e3, 3) AS duration_us, s.ts,
+      s.dur AS duration_ns, ROUND(s.dur / 1e3, 3) AS duration_us, s.ts,
       t.tid AS caller_tid
      FROM slice s
      JOIN thread_track tt ON s.track_id = tt.id
@@ -229,31 +309,44 @@ const records = runDirectories.map((directory) => {
      WHERE s.name = 'SpinonR05:runtime-worker-call'
      ORDER BY s.ts`,
   );
-  const reportsByCaller = new Map();
-  for (const report of dispatchReports) {
-    const reports = reportsByCaller.get(String(report.caller_tid)) ?? [];
-    reports.push(report);
-    reportsByCaller.set(String(report.caller_tid), reports);
-  }
-  const callsByCaller = new Map();
-  for (const call of runtimeWorkerCalls) {
-    const calls = callsByCaller.get(String(call.caller_tid)) ?? [];
-    calls.push(call);
-    callsByCaller.set(String(call.caller_tid), calls);
-  }
   const callReports = runtimeWorkerCalls.map((call) => {
-    const caller = String(call.caller_tid);
-    const index = callsByCaller.get(caller).findIndex(
-      (candidate) => candidate.call_index === call.call_index,
-    );
-    return { ...call, report: reportsByCaller.get(caller)?.[index] ?? null };
+    const startNs = numeric(call.ts);
+    const endNs = startNs + numeric(call.duration_ns);
+    const matchingReports = dispatchReports.filter((report) => {
+      const cookie = reportTraceCookie(report.trace_cookie);
+      const handoffs = cookie === null ? [] : replyHandoffsByCookie.get(cookie) ?? [];
+      return numeric(report.caller_tid) === numeric(call.caller_tid)
+        && handoffs.length === 1
+        && numeric(handoffs[0].ts) >= startNs
+        && numeric(handoffs[0].ts) + numeric(handoffs[0].duration_ns) <= endNs;
+    });
+    const report = matchingReports.length === 1 ? matchingReports[0] : null;
+    const traceCookie = report === null ? null : reportTraceCookie(report.trace_cookie);
+    const handoffSlices = traceCookie === null ? [] : replyHandoffsByCookie.get(traceCookie) ?? [];
+    const replyHandoffUs = handoffSlices.length === 1 && numeric(handoffSlices[0].duration_ns) >= 0
+      ? numeric(handoffSlices[0].duration_ns) / 1_000
+      : null;
+    return { ...call, report, replyHandoffUs };
   });
-  const callCorrelationFailures = callReports.filter((call) => call.report === null).length
-    + [...reportsByCaller.entries()].reduce((total, [caller, reports]) =>
-      total + Math.max(0, reports.length - (callsByCaller.get(caller)?.length ?? 0)), 0);
+  const matchedReports = callReports.filter((call) => call.report !== null).length;
+  const matchedCookieCounts = new Map();
+  for (const call of callReports) {
+    const cookie = call.report === null ? null : reportTraceCookie(call.report.trace_cookie);
+    if (cookie !== null) matchedCookieCounts.set(cookie, (matchedCookieCounts.get(cookie) ?? 0) + 1);
+  }
+  const duplicateCallReportMatches = [...matchedCookieCounts.values()]
+    .reduce((total, count) => total + Math.max(0, count - 1), 0);
+  const callCorrelationFailures = callReports.length - matchedReports
+    + Math.max(0, dispatchReports.length - matchedReports)
+    + duplicateCallReportMatches;
   const reportValues = callReports
-    .filter((call) => call.report)
-    .map((call) => `(${Number(call.call_index)}, ${Number(call.report.caller_tid)}, ${Number(call.report.owner_tid)})`)
+    .filter((call) => call.report && Number.isSafeInteger(Number(call.report.caller_tid)))
+    .map((call) => {
+      const callerTid = Number(call.report.caller_tid);
+      const parsedOwnerTid = Number(call.report.owner_tid);
+      const ownerTid = Number.isSafeInteger(parsedOwnerTid) ? parsedOwnerTid : "NULL";
+      return `(${Number(call.call_index)}, ${callerTid}, ${ownerTid})`;
+    })
     .join(", ");
 
   const runtimeThreadStates = reportValues
@@ -295,6 +388,7 @@ const records = runDirectories.map((directory) => {
           'SpinonR05:runtime-enqueue',
           'SpinonR05:reply-channel-create',
           'SpinonR05:reply-receive',
+          'SpinonR05:reply-handoff',
           'SpinonR05:scheduler-enqueue',
           'SpinonR05:actor-condvar-wait',
           'SpinonR05:native-session-dispatch',
@@ -445,6 +539,10 @@ const records = runDirectories.map((directory) => {
     quality: Object.fromEntries(Object.entries(quality).map(([key, value]) => [key, numeric(value)])),
     counters: Object.fromEntries(Object.entries(counters).map(([key, value]) => [key, numeric(value)])),
     dispatchReports,
+    incompleteDispatchReports,
+    replyHandoffSlices,
+    replyHandoffCorrelationFailures,
+    orphanReplyHandoffs,
     callReports,
     callCorrelationFailures,
     runtimeThreadStates,
@@ -459,21 +557,7 @@ const actualScheduleMismatch = records.some((record, index) =>
   scheduledRuns[index]?.scenario !== record.scenario,
 );
 if (actualScheduleMismatch) scheduleProblems.push("schedule 순서와 캡처 폴더 순서 불일치");
-const fields = [
-  "submission_lock_wait_us",
-  "control_lock_wait_us",
-  "scheduler_lock_wait_us",
-  "queue_residence_us",
-  "v8_call_us",
-  "post_v8_us",
-  "report_build_us",
-  "response_report_append_us",
-  "report_finalize_us",
-  "actor_before_reply_us",
-  "enqueue_total_us",
-  "response_wait_us",
-  "submit_total_us",
-];
+const fields = runtimeReportMetricFields;
 const appDeadlines = records.reduce((total, record) => total + record.frames.app_deadline_missed, 0);
 const frameCount = records.reduce((total, record) => total + record.frames.app_frames, 0);
 const frameTokenMismatches = records.filter((record) => {
@@ -491,8 +575,11 @@ const inconsistentRuns = records.filter((record) => {
   return record.counters.dispatch_count !== expectedDispatches
     || record.counters.input_count !== expectedInputCount
     || record.dispatchReports.length !== expectedDispatches
+    || record.incompleteDispatchReports !== 0
     || record.runtimeWorkerCalls.length !== expectedDispatches
-    || record.callCorrelationFailures !== 0;
+    || record.callCorrelationFailures !== 0
+    || record.replyHandoffCorrelationFailures !== 0
+    || (record.scenario === "spinon-ui-only" && record.replyHandoffSlices.length !== 0);
 });
 
 console.log(`# Android UI/runtime 귀속 행렬`);
@@ -505,7 +592,9 @@ console.log(`- 캡처 시점 작업 트리 SHA-256 고유 개수: ${new Set(reco
 console.log(`- 조건 순서 수: UI-only→event ${scheduleOrderCounts["spinon-ui-only→spinon-event"]}, event→UI-only ${scheduleOrderCounts["spinon-event→spinon-ui-only"]}${scheduleProblems.length ? ` · 경고: ${scheduleProblems.join("; ")}` : " · 균형/실제 순서 일치"}`);
 console.log(`- 회차별 입력 수: ${expectedInputCount}`);
 console.log(`- FrameTimeline 앱 프레임: ${frameCount}개 고유 surface token; App Deadline Missed: ${appDeadlines}개 고유 app token`);
-console.log(`- 앱 actual/expected token 집합 불일치 회차: ${frameTokenMismatches.length}; trace 품질 실패: ${qualityFailures.length}; 입력·counter·report/thread 귀속 불일치: ${inconsistentRuns.length}`);
+console.log(`- 앱 actual/expected token 집합 불일치 회차: ${frameTokenMismatches.length}; trace 품질 실패: ${qualityFailures.length}; 입력·counter·완전한 보고서·report/thread·reply-cookie 귀속 불일치: ${inconsistentRuns.length}`);
+const eventRecords = records.filter((record) => record.scenario === "spinon-event");
+console.log(`- reply-handoff: ${eventRecords.reduce((sum, record) => sum + record.dispatchReports.length, 0)} dispatch 보고서, ${eventRecords.reduce((sum, record) => sum + record.replyHandoffSlices.length, 0)} 비동기 구간, cookie 불일치 ${eventRecords.reduce((sum, record) => sum + record.replyHandoffCorrelationFailures, 0)}, dispatch 미연결 구간 ${eventRecords.reduce((sum, record) => sum + record.orphanReplyHandoffs, 0)}`);
 console.log("");
 console.log("## 조건별 프레임·UI thread");
 console.log("");
@@ -530,7 +619,7 @@ for (const field of fields) {
 console.log("");
 console.log("## dispatch 내부 trace 구간");
 console.log("");
-console.log("Perfetto ATrace 구간의 실행 시간입니다. `v8_call_us`와 별개로 읽지 말고, 같은 dispatch의 중첩 구간 위치를 확인하는 데 사용합니다.");
+console.log("Perfetto ATrace의 wall 구간입니다. CPU 실행시간으로 해석하지 않으며, `v8_call_us`·스레드 상태와 함께 같은 dispatch의 처리·대기 위치를 확인합니다.");
 console.log("");
 console.log("| 구간 | 관측값 (us) | >16.67 ms |");
 console.log("| --- | --- | ---: |");
@@ -539,6 +628,7 @@ const phaseLabels = new Map([
   ["SpinonR05:runtime-enqueue", "Rust enqueue 준비·잠금·삽입"],
   ["SpinonR05:reply-channel-create", "응답 채널 생성"],
   ["SpinonR05:reply-receive", "호출자 응답 수신 대기"],
+  ["SpinonR05:reply-handoff", "actor 응답 전송→caller 수신 비동기 wall 구간"],
   ["SpinonR05:scheduler-enqueue", "스케줄러 잠금·큐 삽입·깨우기"],
   ["SpinonR05:actor-condvar-wait", "actor 조건변수 대기"],
   ["SpinonR05:native-session-dispatch", "JNI nativeSessionDispatch 전체"],
@@ -637,8 +727,8 @@ console.log("## 긴 runtime-worker-call thread 상태");
 console.log("");
 console.log("`SpinonR05:runtime-worker-call`이 16.67 ms를 넘은 호출만 표시합니다. caller와 V8 owner 각각의 첫 `sched_wakeup`→실행 전환을 구분합니다. CPU 열은 wake target CPU와 실제 실행 CPU를 함께 표시합니다. CPU slice는 wake target CPU에서 겹친 최장 관측 thread이며 지연 원인 증거로 단정하지 않습니다. `swapper`는 CPU idle 상태입니다.");
 console.log("");
-console.log("| 실행 / 호출 | Java worker ms | Rust submit ms | actor 응답 전 ms | 보고서 후처리 us | JNI→Rust FFI ms | Logcat ms | queue ms | V8 ms | caller Running ms | owner Running ms | caller wake→run / CPU slice | owner wake→run / CPU slice |");
-console.log("| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- | --- |");
+console.log("| 실행 / 호출 | Java worker ms | Rust submit ms | actor 응답 전 ms | actor→caller handoff us | 보고서 후처리 us | JNI→Rust FFI ms | Logcat ms | queue ms | V8 ms | caller Running ms | owner Running ms | caller wake→run / CPU slice | owner wake→run / CPU slice |");
+console.log("| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- | --- |");
 for (const record of records.filter((item) => item.scenario === "spinon-event")) {
   record.callReports.forEach((call, index) => {
     const report = call.report;
@@ -668,7 +758,8 @@ for (const record of records.filter((item) => item.scenario === "spinon-event"))
         : `${cpuRoute} slice 미관측`;
       return `${wakeToRunMs.toFixed(3)}ms · ${slice}`;
     };
-    console.log(`| ${record.directory.split("/").at(-1)} #${index + 1} | ${(workerCallUs / 1000).toFixed(3)} | ${(numeric(report.submit_total_us) / 1000).toFixed(3)} | ${(numeric(report.actor_before_reply_us) / 1000).toFixed(3)} | ${numeric(report.report_finalize_us)} | ${(phaseDurationUs("SpinonR05:native-session-ffi") / 1000).toFixed(3)} | ${(phaseDurationUs("SpinonR05:native-session-logcat") / 1000).toFixed(3)} | ${(numeric(report.queue_residence_us) / 1000).toFixed(3)} | ${(numeric(report.v8_call_us) / 1000).toFixed(3)} | ${stateDuration(report.caller_tid, "Running").toFixed(3)} | ${stateDuration(report.owner_tid, "Running").toFixed(3)} | ${schedulingLabel("caller")} | ${schedulingLabel("owner")} |`);
+    const handoffUs = call.replyHandoffUs === null ? "미측정" : call.replyHandoffUs.toFixed(3);
+    console.log(`| ${record.directory.split("/").at(-1)} #${index + 1} | ${(workerCallUs / 1000).toFixed(3)} | ${(numeric(report.submit_total_us) / 1000).toFixed(3)} | ${(numeric(report.actor_before_reply_us) / 1000).toFixed(3)} | ${handoffUs} | ${numeric(report.report_finalize_us)} | ${(phaseDurationUs("SpinonR05:native-session-ffi") / 1000).toFixed(3)} | ${(phaseDurationUs("SpinonR05:native-session-logcat") / 1000).toFixed(3)} | ${(numeric(report.queue_residence_us) / 1000).toFixed(3)} | ${(numeric(report.v8_call_us) / 1000).toFixed(3)} | ${stateDuration(report.caller_tid, "Running").toFixed(3)} | ${stateDuration(report.owner_tid, "Running").toFixed(3)} | ${schedulingLabel("caller")} | ${schedulingLabel("owner")} |`);
   });
 }
 console.log("");
@@ -690,4 +781,8 @@ for (const record of records) {
   const traceQuality = Object.values(record.quality).every((value) => value === 0) ? "정상" : "실패";
   const frameTokensMatch = frameTokenMismatches.includes(record) ? "불일치" : "일치";
   console.log(`| ${record.directory.split("/").at(-1).slice(0, 16)} | ${record.scenario} | ${record.metadata.app_pid} | ${record.frames.app_frames} | ${record.frames.app_deadline_missed} | ${(record.mainStates.D ?? 0).toFixed(3)} | ${record.counters.dispatch_count} | ${traceQuality} / ${frameTokensMatch} |`);
+}
+
+if (scheduleProblems.length || frameTokenMismatches.length || qualityFailures.length || inconsistentRuns.length) {
+  process.exitCode = 1;
 }

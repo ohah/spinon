@@ -1,3 +1,4 @@
+use super::trace::finish_reply_handoff;
 use super::{
     Command, ERR_CANCELLED, ERR_CLOSED, RuntimeSession, TaskPriority, cancel_control,
     current_thread_id, enqueue, lock,
@@ -105,15 +106,16 @@ pub fn run_shutdown_probe() -> Result<String, String> {
             } else {
                 TaskPriority::Background
             },
-            move |sequence, caller_thread_id, reply| Command::Eval {
+            move |sequence, caller_thread_id, trace_cookie, reply| Command::Eval {
                 sequence,
+                trace_cookie,
                 source,
                 caller_thread_id,
                 reply,
             },
         );
         match response {
-            Ok(response) => queued.push(response),
+            Ok((response, trace_cookie)) => queued.push((response, trace_cookie)),
             Err(error) => {
                 let _ = session.shutdown();
                 let _ = active.join();
@@ -173,10 +175,11 @@ pub fn run_shutdown_probe() -> Result<String, String> {
     }
 
     let mut queued_statuses = Vec::with_capacity(queued.len());
-    for response in queued {
+    for (response, trace_cookie) in queued {
         let response = response
             .recv_timeout(RESPONSE_TIMEOUT)
             .map_err(|error| format!("대기 명령 종료 응답 시간 초과: {error}"))?;
+        finish_reply_handoff(trace_cookie);
         if response.status != ERR_CLOSED
             || !response
                 .report
@@ -239,6 +242,7 @@ fn report_field<'a>(report: &'a str, key: &str) -> Option<&'a str> {
 
 #[cfg(test)]
 mod tests {
+    use super::finish_reply_handoff;
     use super::{ERR_CANCELLED, ERR_CLOSED, RuntimeSession, TaskPriority, enqueue, lock};
     use crate::session::{Command, RuntimeControl, TaskScheduler};
     use std::ffi::CString;
@@ -296,18 +300,19 @@ mod tests {
             let response = enqueue(
                 &session,
                 TaskPriority::UserVisible,
-                move |sequence, caller_thread_id, reply| Command::Eval {
+                move |sequence, caller_thread_id, trace_cookie, reply| Command::Eval {
                     sequence,
+                    trace_cookie,
                     source,
                     caller_thread_id,
                     reply,
                 },
             );
-            let response = match response {
+            let (response, trace_cookie) = match response {
                 Ok(response) => response,
                 Err(error) => panic!("종료 전에 세 명령을 큐에 넣어야 합니다: {}", error.report),
             };
-            pending.push(response);
+            pending.push((response, trace_cookie));
         }
         assert_eq!(lock(&session.scheduler.state).queue.len(), 3);
 
@@ -318,14 +323,10 @@ mod tests {
             .expect("종료 호출 thread가 정상 종료되어야 합니다")
             .expect("런타임 작업자를 join해야 합니다");
         assert_eq!(active.join().unwrap().status, ERR_CANCELLED);
-        for response in pending {
-            assert_eq!(
-                response
-                    .recv_timeout(Duration::from_secs(2))
-                    .unwrap()
-                    .status,
-                ERR_CLOSED
-            );
+        for (response, trace_cookie) in pending {
+            let response = response.recv_timeout(Duration::from_secs(2)).unwrap();
+            finish_reply_handoff(trace_cookie);
+            assert_eq!(response.status, ERR_CLOSED);
         }
 
         assert_eq!(
@@ -408,8 +409,9 @@ mod tests {
                     TaskPriority::Background,
                     Command::Eval {
                         sequence: 1,
+                        trace_cookie: 1001,
                         source: CString::new("pending").unwrap(),
-                        caller_thread_id: 0,
+                        caller_thread_id: 101,
                         reply,
                     },
                     0,
@@ -423,8 +425,9 @@ mod tests {
                     TaskPriority::UserBlocking,
                     Command::Dispatch {
                         sequence: 2,
+                        trace_cookie: 1002,
                         node_id: 9,
-                        caller_thread_id: 0,
+                        caller_thread_id: 202,
                         reply: dispatch_reply,
                     },
                     0,
@@ -448,11 +451,31 @@ mod tests {
         };
 
         assert!(session.shutdown().is_err());
-        for response in [response, dispatch_response] {
+        for (response, trace_cookie, operation, caller_thread_id) in [
+            (response, 1001, "eval", 101),
+            (dispatch_response, 1002, "dispatch", 202),
+        ] {
             let response = response
                 .recv_timeout(Duration::from_secs(2))
                 .expect("대기 호출자는 실행기 오류를 받아야 합니다");
+            finish_reply_handoff(trace_cookie);
             assert_eq!(response.status, crate::session::ERR_WORKER);
+            assert!(
+                response
+                    .report
+                    .contains(&format!("trace_cookie={trace_cookie}"))
+            );
+            assert!(response.report.contains(&format!("op={operation}")));
+            assert!(
+                response
+                    .report
+                    .contains(&format!("status={}", response.status))
+            );
+            assert!(
+                response
+                    .report
+                    .contains(&format!("caller_tid={caller_thread_id}"))
+            );
         }
         assert!(lock(&session.control).runtime.is_none());
         assert!(!lock(&session.control).active);

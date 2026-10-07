@@ -1,5 +1,5 @@
-use super::report::{OperationReport, operation_report};
-use super::trace::TraceSection;
+use super::report::{OperationReport, append_early_error_context, operation_report};
+use super::trace::send_reply;
 use super::{
     Command, ERR_CANCELLED, ERR_CLOSED, ERR_JAVASCRIPT, ERR_WORKER, OK, OperationResponse,
     RuntimeControl, SpinonDocumentCollectionStats, SpinonV8Runtime, TaskScheduler,
@@ -143,14 +143,23 @@ pub(super) fn actor_loop(
         match queued.command {
             Command::Eval {
                 sequence,
+                trace_cookie,
                 source,
                 caller_thread_id,
                 reply,
             } => {
                 let generation = match begin_execution(&control, runtime) {
                     Ok(generation) => generation,
-                    Err(response) => {
-                        let _ = reply.send(response);
+                    Err(mut response) => {
+                        append_early_error_context(
+                            &mut response,
+                            sequence,
+                            trace_cookie,
+                            "eval",
+                            caller_thread_id,
+                            Some(owner_thread_id),
+                        );
+                        send_reply(reply, response, trace_cookie);
                         continue;
                     }
                 };
@@ -176,6 +185,7 @@ pub(super) fn actor_loop(
                 };
                 let report = operation_report(OperationReport {
                     sequence,
+                    trace_cookie,
                     operation: "eval",
                     status,
                     caller_thread_id,
@@ -192,12 +202,11 @@ pub(super) fn actor_loop(
                     collection_stats,
                     error: &error,
                 });
-                let reply_trace = TraceSection::new(c"SpinonR05:reply-send");
-                let _ = reply.send(OperationResponse { status, report });
-                drop(reply_trace);
+                send_reply(reply, OperationResponse { status, report }, trace_cookie);
             }
             Command::Dispatch {
                 sequence,
+                trace_cookie,
                 node_id,
                 caller_thread_id,
                 reply,
@@ -205,8 +214,16 @@ pub(super) fn actor_loop(
                 let actor_started_at = Instant::now();
                 let generation = match begin_execution(&control, runtime) {
                     Ok(generation) => generation,
-                    Err(response) => {
-                        let _ = reply.send(response);
+                    Err(mut response) => {
+                        append_early_error_context(
+                            &mut response,
+                            sequence,
+                            trace_cookie,
+                            "dispatch",
+                            caller_thread_id,
+                            Some(owner_thread_id),
+                        );
+                        send_reply(reply, response, trace_cookie);
                         continue;
                     }
                 };
@@ -235,6 +252,7 @@ pub(super) fn actor_loop(
                 let report_started_at = Instant::now();
                 let report = operation_report(OperationReport {
                     sequence,
+                    trace_cookie,
                     operation: "dispatch",
                     status,
                     caller_thread_id,
@@ -260,9 +278,7 @@ pub(super) fn actor_loop(
                 report.push_str(&format!(
                     " report_finalize_us={report_finalize_us} actor_before_reply_us={actor_before_reply_us}"
                 ));
-                let reply_trace = TraceSection::new(c"SpinonR05:reply-send");
-                let _ = reply.send(OperationResponse { status, report });
-                drop(reply_trace);
+                send_reply(reply, OperationResponse { status, report }, trace_cookie);
             }
         }
     }
