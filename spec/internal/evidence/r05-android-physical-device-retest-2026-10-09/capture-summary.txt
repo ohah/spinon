@@ -1,0 +1,31 @@
+## 합성 음성 대조 · PID 24835
+
+| 표식 | 개수 | 식별 결과 |
+|---|---:|---|
+| 앱 ACTION_UP | 1 | `input_seq=1`, generation 1 |
+| WGPU submit | 1 | sequence/revision/generation `1/1/1` |
+| 실제 TransactionStats callback | 1 | request/sequence/revision/generation `1/1/1/1`, `target_vsync_id=-1` |
+| 복제 fence wait | 1 | `outcome=signaled`, `fence_signal_usable=true`, 대기열 0/0/0 |
+| raw touchscreen contact | 0 | synthetic 경로와 분리됨 |
+
+## 합성 반복 블록 · PID 25050
+
+| 표식 | 개수 | 식별 결과 |
+|---|---:|---|
+| 앱 ACTION_UP | 10 | `input_seq=1–10`, generation 1 |
+| WGPU submit | 10 | 각 sequence가 같은 번호 revision에 연결 |
+| 실제 TransactionStats callback | 10 | 각 request ID·sequence·revision 일치, generation 1, `target_vsync_id=-1` |
+| 복제 fence wait | 10 | 전부 `outcome=signaled`, `fence_signal_usable=true`, 대기열 0/0/0 |
+| raw touchscreen contact | 0 | ADB 합성 입력만 집계 |
+
+앱 로그에서 키를 독립 추출했으며 sequence 단조성만으로 callback을 연결하지 않았다. 각 표식의 request ID, sequence, revision, generation을 대조했다. 두 프로세스 모두 `FATAL EXCEPTION`, ANR, linker/verifier 오류 표식은 0건이다.
+
+## 직접 입력 관찰 · PID 25441
+
+새 프로세스에서 약 30초 관찰했다. 앱 ACTION_UP 0건, raw `sec_touchscreen` event 0건이다. 입력이 전달됐다는 근거가 없으므로 직접 터치 기능의 pass/fail 표본으로 취급하지 않는다.
+
+## 표시와 한계
+
+- Screenshot 중앙 pixel은 시작 파랑 `(71,123,237)`, ADB tap 1회 뒤 주황 `(232,109,81)`, ADB tap 10회 뒤 파랑 `(71,123,237)`이다. 마지막 화면의 UI 활성화 count는 10이다.
+- API 36에서 `target_vsync_id=-1`; event-to-present 지연·VSync·scanout은 계산하지 않았다.
+- 이 표본은 실제 기기에서 실행했지만 입력 자체는 모두 ADB synthetic이다. 손가락 positive sample, Release 동작 및 성능 결론은 없다.

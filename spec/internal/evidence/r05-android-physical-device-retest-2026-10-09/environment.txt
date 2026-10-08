@@ -1,0 +1,23 @@
+실행일: 2026-10-09 (KST)
+기준 commit: e0c15bde15c84870f29eb7b72590da247413b8f2
+기기: Samsung SM-S731N
+Android release: 16
+API: 36
+SDK_INT_FULL: 36.1
+ABI: arm64-v8a
+화면: 1080x2340, density 450
+초기 상태: 화면 켜짐, 잠금 해제, Chrome foreground
+화면 설정 전후: screen_off_timeout=30000, screen_brightness=248, accelerometer_rotation=1
+설치 APK version: 0.1.0-bootstrap, versionCode=1, minSdk=29, targetSdk=36
+테스트 APK SHA-256: 1639d939a34c7a7dfcf99b53b906d73c12951eae99b87757ecc2e8589b1e572e
+테스트 APK signer SHA-256: 65c84c2a21e0f0fe777858993c5484f9da8f66ba623203af2d351d5237ad1a97
+테스트 renderer/backend/GPU: WGPU / Vulkan / Samsung Xclipse 940
+입력 장치: sec_touchscreen, INPUT_PROP_DIRECT, 실행 당시 /dev/input/event6
+합성 음성 대조: PID 24835, ADB tap 1회
+합성 반복 블록: PID 25050, ADB tap 10회
+직접 입력 관찰: PID 25441, 약 30초, raw event 0건, app ACTION_UP 0건
+target_vsync_id: -1 (API 36)
+테스트 전 설치 APK SHA-256: 2ab336443bba5aabfcd6971ddcf90f7f8118d5e2bcc20435a5a6e18491c34d4a
+테스트 후 설치 APK SHA-256: 2ab336443bba5aabfcd6971ddcf90f7f8118d5e2bcc20435a5a6e18491c34d4a
+설치 복구: adb install -r, 앱 데이터 삭제 없음
+테스트 후 상태: 화면 켜짐, Chrome foreground, 화면 설정 유지
