@@ -1,0 +1,4 @@
+10-08 20:23:39.352 10645 10645 D nativeloader: Load /data/app/~~gvFnFXJGMmSZGoQTxmUbPA==/dev.spinon.bootstrap-oxq0-uWp_NC3kTJLj6x9hA==/base.apk!/lib/arm64-v8a/libspinon_bootstrap.so using class loader ns clns-9 (caller=/data/app/~~gvFnFXJGMmSZGoQTxmUbPA==/dev.spinon.bootstrap-oxq0-uWp_NC3kTJLj6x9hA==/base.apk!1): ok
+10-08 20:23:39.391 10645 10700 I SpinonBootstrap: SPINON_BOOTSTRAP_EXECUTION is_main_thread=false
+10-08 20:23:39.397 10645 10700 I SpinonBootstrap: SPINON_BOOTSTRAP_RESULT=nodes=2 last_node=8 tag=text text=이벤트:7 · 문서 revision 25 document_revision=25 render_tree_revision=15 document_nodes=10
+10-08 20:23:40.425 10718 10718 F libc    : Fatal signal 6 (SIGABRT), code -1 (SI_QUEUE) in tid 10718 (android.hardwar), pid 10718 (android.hardwar)

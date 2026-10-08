@@ -1,6 +1,6 @@
 # R05.3 Android API·16KB 호환성 실행 및 구현 적대 검토
 
-**실행일:** 2026-10-08 · **범위:** Android API 35·37.0·37.1 AVD와 제한된 R05 표시 fence fixture · **결론:** API 경계 fallback은 확인, 16KB 네이티브 바이너리의 RELRO 기준은 실패 · **R05.3/R05:** 미완료
+**실행일:** 2026-10-08 · **범위:** Android API 35·37.0·37.1 AVD와 제한된 R05 표시 fence fixture · **당시 결론:** API 경계 fallback은 확인, 기존 16KB APK의 GNU_RELRO 기준은 실패 · **후속:** [16KB 재빌드에서 GNU_RELRO·APK 정렬 통과](r05-android-16kb-rebuild-2026-10-08.md) · **R05.3/R05:** 미완료
 
 ## 실행 범위와 결과
 
@@ -19,7 +19,7 @@
 
 API 37.1 16KB AVD에서는 기본 V8 bootstrap이 `nativeRun` 결과 `nodes=2`를 반환했고, GLES 앱도 시작·입력·표시 fence callback까지 실행했다. WGPU 대조는 adapter 부재로 렌더링하지 못했다. 앱 실행 성공은 전체 API 호환이나 16KB 바이너리 적합성 판정과 같지 않다.
 
-## 16KB 정적 바이너리 검사와 빌드 차단
+## 수정 linker flags 적용 전 기존 APK 검사와 빌드 차단
 
 검사 APK에는 arm64-v8a `libspinon_bootstrap.so` 하나가 들어 있다. APK의 16KB zip alignment 검사는 성공했고, `.so`의 네 PT_LOAD segment는 모두 `2**14`(16,384 byte) 정렬이다. 하지만 GNU_RELRO의 `VirtAddr + MemSiz`는 `0x2dd5000`이며 `0x4000`으로 나눈 나머지가 `0x1000`이다. Android의 공식 16KB 지침이 제시하는 기준을 통과하지 못한다. [Android 공식 16KB 페이지 크기 지침](https://developer.android.com/guide/practices/page-sizes)
 
@@ -29,7 +29,7 @@ API 37.1 16KB AVD에서는 기본 V8 bootstrap이 `nativeRun` 결과 `nodes=2`�
 -Wl,-z,max-page-size=16384 -Wl,-z,common-page-size=16384
 ```
 
-현재 APK에는 이 변경을 적용해 재링크하지 못했다. `tools/build-android.sh`는 저장소가 고정한 V8 source checkout이 없어서 중단됐다. Java/Gradle APK 작업은 기존 네이티브 라이브러리를 재사용했고 APK SHA도 위 값 그대로다. 따라서 이번 실행은 **기존 artifact의 16KB AVD 동작 확인**과 **수정된 linker flags를 포함한 앱 바이너리 검사**를 혼합하지 않는다. 후자는 미실행이며, 변경된 최종 라이브러리의 PT_LOAD와 GNU_RELRO를 다시 검사해 모두 기준에 맞아야 이 이슈를 닫을 수 있다.
+당시 검사 APK에는 수정 linker flags를 적용해 재링크하지 못했다. `tools/build-android.sh`는 고정 V8 source checkout 부재로 중단됐다. Java/Gradle APK 작업은 기존 네이티브 라이브러리를 재사용했고 APK SHA도 위 값 그대로였다. 따라서 당시 실행은 **기존 artifact의 16KB AVD 동작 확인**과 **수정 linker flags를 포함한 앱 바이너리 검사**를 혼합하지 않았다. 이 blocker는 후속 [재빌드 보고서](r05-android-16kb-rebuild-2026-10-08.md)에서 해소했으며, 그 결과만으로 R05.3 전체를 완료 처리하지 않는다.
 
 - 기기: API 37.1 ARM64 Google APIs 16KB 전용 AVD, `getconf PAGE_SIZE=16384`.
 - 해당 전용 AVD에서 linker 호환 속성은 `fatal`, package-manager 호환 비활성은 `true`로 확인했다.
@@ -67,7 +67,7 @@ API 37.1 16KB AVD에서는 기본 V8 bootstrap이 `nativeRun` 결과 `nodes=2`�
 | 19 | GNU_RELRO misalignment를 runtime smoke 성공으로 덮는가 | `VirtAddr + MemSiz = 0x2dd5000`, remainder `0x1000`이어서 공식 정적 기준을 실패 처리했다. 16KB AVD 실행 성공은 이 결함을 해소하지 않는다. |
 | 20 | linker 수정이 실제 APK에 들어갔다고 잘못 보고하는가 | build script에는 flags가 있지만 V8 checkout 부재로 앱 재링크가 실패했다. 검사 APK는 이전 SHA 그대로다. fix 적용 및 최종 ELF 재검사는 다음 gate다. |
 
-검토에서 남은 명확한 blocker는 GNU_RELRO 끝 정렬과 수정 linker flags를 포함한 실제 앱 재빌드다. 그 외 API 29–34, API 37.0/37.1 WGPU adapter 환경, surface lifecycle·callback timeout/failure injection, iOS OS display callback runtime, 실기기 터치, 광학 scanout은 이 행렬에서 검증하지 않았다. 그러므로 R05.3·R05는 미완료이며 이번 결과를 입력→실제 픽셀 지연·렌더러 성능 비교로 사용하지 않는다.
+이 검토 시점에는 GNU_RELRO 끝 정렬과 수정 linker flags를 포함한 실제 앱 재빌드가 blocker였다. 후속 빌드에서 16KB ELF/ZIP 기준은 통과했다. API 29–34, API 37.0/37.1 WGPU adapter 환경, surface lifecycle·callback timeout/failure injection, iOS OS display callback runtime, 실기기 터치, 광학 scanout은 여전히 이 행렬에서 검증하지 않았다. 그러므로 R05.3·R05는 미완료이며 이번 결과를 입력→실제 픽셀 지연·렌더러 성능 비교로 사용하지 않는다.
 
 ## 재현 자료
 

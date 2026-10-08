@@ -1,0 +1,9 @@
+Verifying alignment of platforms/android/app/build/outputs/apk/debug/app-debug.apk (4)...
+      87 META-INF/com/android/build/gradle/app-metadata.properties (OK - compressed)
+     184 classes.dex (OK)
+48264243 assets/app.js (OK - compressed)
+48269029 AndroidManifest.xml (OK - compressed)
+48269884 resources.arsc (OK)
+48269968 classes2.dex (OK)
+   16384 lib/arm64-v8a/libspinon_bootstrap.so (OK)
+Verification successful
