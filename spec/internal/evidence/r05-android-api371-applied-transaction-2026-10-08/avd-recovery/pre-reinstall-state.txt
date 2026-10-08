@@ -1,0 +1,28 @@
+time_utc=2026-10-08T13:58:54Z
+stopped_spinon_pids=6922,10605
+unrelated_zl_poc_pid=23588 (left running)
+free_kib_before_create=87184516
+23588 08-12:59:23 /Users/yoonhb/Library/Android/sdk/emulator/qemu/darwin-aarch64/qemu-system-aarch64 -avd zl_poc -no-boot-anim
+List of devices attached
+emulator-5554          device product:sdk_gphone64_arm64 model:sdk_gphone64_arm64 device:emu64a transport_id:18
+
+
+--- previous AVD registration ---
+avd.ini.encoding=UTF-8
+path=/Users/yoonhb/.android/avd/spinon_api37_1_compat16k.avd
+path.rel=avd/spinon_api37_1_compat16k.avd
+target=android-37.1
+
+--- image package ---
+Pkg.Desc=System Image Page Size 16k arm64-v8a with Google APIs.
+Pkg.Revision=9
+Pkg.Dependencies=emulator#36.5.11
+AndroidVersion.ApiLevel=37.1
+AndroidVersion.ExtensionLevel=23
+AndroidVersion.IsBaseSdk=true
+SystemImage.Abi=arm64-v8a
+SystemImage.TagId=google_apis,page_size_16kb
+SystemImage.TagDisplay=Google APIs,16 KB Page Size
+SystemImage.GpuSupport=true
+Addon.VendorId=google
+Addon.VendorDisplay=Google Inc.

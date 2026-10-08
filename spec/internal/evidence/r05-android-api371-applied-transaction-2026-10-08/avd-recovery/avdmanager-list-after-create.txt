@@ -1,0 +1,28 @@
+Available Android Virtual Devices:
+    Name: spinon_api37_1_compat16k
+  Device: pixel_6 (Google)
+    Path: /Users/yoonhb/.android/avd/spinon_api37_1_compat16k.avd
+  Target: Google APIs (Google Inc.)
+          Based on: Android 17.0 ("CinnamonBun") Tag/ABI: google_apis/arm64-v8a
+  Sdcard: 512 MB
+
+The following Android Virtual Devices could not be loaded:
+    Name: spinon_api35_compat
+    Path: /Users/yoonhb/.android/avd/spinon_api35_compat.ini
+   Error: Corrupted AVD ini file: /Users/yoonhb/.android/avd/spinon_api35_compat.ini
+---------
+    Name: spinon_api37_2_modern
+    Path: /Users/yoonhb/.android/avd/spinon_api37_2_modern.ini
+   Error: Corrupted AVD ini file: /Users/yoonhb/.android/avd/spinon_api37_2_modern.ini
+---------
+    Name: spinon_api37_0_compat
+    Path: /Users/yoonhb/.android/avd/spinon_api37_0_compat.ini
+   Error: Corrupted AVD ini file: /Users/yoonhb/.android/avd/spinon_api37_0_compat.ini
+---------
+    Name: spinon_api37_2
+    Path: /Users/yoonhb/.android/avd/spinon_api37_2.ini
+   Error: Corrupted AVD ini file: /Users/yoonhb/.android/avd/spinon_api37_2.ini
+---------
+    Name: zl_poc
+    Path: /Users/yoonhb/.android/avd/zl_poc.ini
+   Error: Corrupted AVD ini file: /Users/yoonhb/.android/avd/zl_poc.ini

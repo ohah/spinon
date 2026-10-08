@@ -51,7 +51,7 @@
 - API 37.2 실행 log·환경·APK/source hash·스크린샷을 저장한다.
 - 정상 실제 callback, 실제 callback이 queue에 든 뒤의 surface destroy/recreate, 새 generation 복구 결과를 별도 scenario로 기록한다.
 - 이 계획의 검증을 추가해도 `spec/STATUS.md`의 R05.3은 미완료로 유지한다.
-- 다음 잔여 gate는 API 29–34 signal fallback, API 35/37.0/37.1에서 실제 적용 transaction/lifecycle, iOS device callback runtime·clock residual, device 측정 등이다.
+- 다음 잔여 gate는 API 29–34 signal fallback, API 35·37.0의 실제 적용 transaction/lifecycle, iOS device callback runtime·clock residual, 실기기와 optical measurement다. API 37.1 actual lifecycle은 별도 fresh AVD 실행에서 확인했다.
 
 ## 계획 적대 검토 · 독립 실패 관점 20개
 
@@ -87,3 +87,5 @@ API 37.2 ARM64 16KB emulator에서 actual R08 GLES `SurfaceView` transaction cal
 검증 시점의 AVD data directory는 이미 삭제된 상태였고 QEMU PID 10605가 열린 backing file로 실행 중이었다. 기존 emulator process를 사용했으며 fresh boot로 주장하지 않는다. 입력은 synthetic `MotionEvent`이고 fence signal 관찰은 event-to-present 지연이나 광학 표시 증거로 취급하지 않는다. 상세 원본과 제한은 [R05.3 실행 보고서](../spec/internal/evidence/r05-android-applied-transaction-lifecycle-2026-10-08/README.md)에 있다. API matrix 확장, 실기기, iOS callback runtime, 전체 R05.3은 미완료다.
 
 추가 교차 플랫폼 회귀 확인으로 iOS R05 callback-ledger 자체 시험의 6개 그룹을 20회 재실행했고 20/20 통과했다. iPhone 17 Pro / iOS 26.2 Simulator의 WGPU drawable-acquire tap XCTest도 1/1 통과했다. iOS는 Android `TransactionStats` lifecycle과 다른 계약이며 이 결과는 Android 경로를 대체하거나 R05.3 전체를 완료 처리하지 않는다. [iOS 재실행 근거](../spec/internal/evidence/r05-android-applied-transaction-lifecycle-2026-10-08/README.md#ios-별도-회귀-확인).
+
+후속 API 37.1 검증은 손상된 기존 AVD를 종료하고 새 Pixel 6 profile AVD로 재설치·fresh boot한 뒤 동일 R08 GLES applied-transaction fixture를 실행했다. actual baseline·stale callback·generation recovery 세 경로, 12 checks, 100회 경합, 60초 idle을 통과했고 종료 상태 pending/queue/active는 0이었다. 기존 AVD profile과의 geometry 동등성이나 event-to-present latency는 주장하지 않는다. [API 37.1 실행·복구 자료](../spec/internal/evidence/r05-android-api371-applied-transaction-2026-10-08/README.md) · [별도 계획](r05-android-api371-applied-transaction.md). API 35·37.0 actual lifecycle, API 29–34 fallback, iOS device callback runtime·실기기와 R05.3 전체는 미완료다.

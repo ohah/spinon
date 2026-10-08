@@ -1,0 +1,12 @@
+avd_name=spinon_api37_1_compat16k
+avd_data_dir=/Users/yoonhb/.android/avd/spinon_api37_1_compat16k.avd
+avd_data_dir_present=false
+emulator_process= 6922    03:33:58 /Users/yoonhb/Library/Android/sdk/emulator/qemu/darwin-aarch64/qemu-system-aarch64 -avd spinon_api37_1_compat16k -ports 5580,5581 -adb-path /Users/yoonhb/Library/Android/sdk/platform-tools/adb -no-direct-adb -gpu host -no-snapshot-load -no-snapshot-save -no-boot-anim -verbose
+--- emulator이 열어 둔 삭제 파일 ---
+qemu-syst 6922 yoonhb    9w   REG   1,17          0     0 393966126 /Users/yoonhb/.android/avd/spinon_api37_1_compat16k.avd/multiinstance.lock
+qemu-syst 6922 yoonhb   34u   REG   1,17    7274496     0 393966208 /Users/yoonhb/.android/avd/spinon_api37_1_compat16k.avd/encryptionkey.img.qcow2
+qemu-syst 6922 yoonhb   35r   REG   1,17   18874368     0 393966176 /Users/yoonhb/.android/avd/spinon_api37_1_compat16k.avd/encryptionkey.img
+qemu-syst 6922 yoonhb   36u   REG   1,17 1637482496     0 393966206 /Users/yoonhb/.android/avd/spinon_api37_1_compat16k.avd/userdata-qemu.img.qcow2
+qemu-syst 6922 yoonhb   37r   REG   1,17   10158080     0 393966175 /Users/yoonhb/.android/avd/spinon_api37_1_compat16k.avd/userdata-qemu.img
+qemu-syst 6922 yoonhb   38u   REG   1,17     196616     0 393966203 /Users/yoonhb/.android/avd/spinon_api37_1_compat16k.avd/cache.img.qcow2
+qemu-syst 6922 yoonhb   39r   REG   1,17   69206016     0 393966179 /Users/yoonhb/.android/avd/spinon_api37_1_compat16k.avd/cache.img
