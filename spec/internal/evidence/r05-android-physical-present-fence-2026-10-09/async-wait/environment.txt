@@ -1,0 +1,15 @@
+실행 날짜: 2026-10-09 (KST)
+기기 모델: Samsung SM-S731N
+Android: 16 · SDK 36 · SDK_INT_FULL 36.1
+ABI / page size: arm64-v8a / 4KB
+화면 크기 / density: 1080×2340 / 450
+앱: dev.spinon.bootstrap · 0.1.0-bootstrap · debug
+renderer: R08 WGPU/Vulkan · SurfaceView
+전면 앱 시작 전: Chrome
+화면 상태 시작/종료: 켜짐 / 켜짐
+stay_on_while_plugged_in 시작/종료: 3 / 3
+screen_off_timeout 시작/종료: 30000ms / 30000ms
+screen_brightness 시작/종료: 248 / 248
+전면 앱 종료 후: Chrome
+입력: adb shell input tap 기반 synthetic MotionEvent
+ADB serial: evidence에서 제외
