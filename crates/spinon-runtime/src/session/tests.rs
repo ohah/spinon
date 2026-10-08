@@ -390,42 +390,110 @@ fn bounded_queue_rejects_overflow_and_drains_after_cancellation() {
 
     let start = Arc::new(Barrier::new(66));
     let completed = Arc::new(AtomicUsize::new(0));
-    let statuses = Arc::new(Mutex::new(Vec::with_capacity(65)));
+    let outcomes = Arc::new(Mutex::new(Vec::with_capacity(65)));
     let mut callers = Vec::with_capacity(65);
     for node_id in 0..65 {
         let start = Arc::clone(&start);
         let completed = Arc::clone(&completed);
-        let statuses = Arc::clone(&statuses);
+        let outcomes = Arc::clone(&outcomes);
         let session = Arc::clone(&session);
         callers.push(thread::spawn(move || {
             start.wait();
-            let status = session.dispatch(node_id, TaskPriority::UserBlocking).status;
-            statuses.lock().unwrap().push(status);
+            let response = session.dispatch(node_id, TaskPriority::UserVisible);
+            let sequence = (response.status == OK)
+                .then(|| field(&response.report, "seq").parse::<u64>().unwrap());
+            outcomes
+                .lock()
+                .unwrap()
+                .push((node_id, response.status, sequence));
             completed.fetch_add(1, Ordering::Release);
         }));
     }
     start.wait();
     let deadline = Instant::now() + Duration::from_secs(2);
-    while completed.load(Ordering::Acquire) == 0 && Instant::now() < deadline {
+    while (session.next_sequence.load(Ordering::Acquire) != 66
+        || super::lock(&session.scheduler.state).queue.len() != QUEUE_CAPACITY
+        || completed.load(Ordering::Acquire) == 0)
+        && Instant::now() < deadline
+    {
         thread::sleep(Duration::from_millis(1));
     }
-    assert!(
-        completed.load(Ordering::Acquire) > 0,
-        "가득 찬 큐가 호출을 거부하지 않았습니다"
-    );
-    assert_eq!(session.cancel(), OK);
-
-    assert_eq!(long_eval.join().unwrap().status, ERR_CANCELLED);
+    let next_sequence = session.next_sequence.load(Ordering::Acquire);
+    let queued_before_cancel = super::lock(&session.scheduler.state).queue.len();
+    let completed_before_cancel = completed.load(Ordering::Acquire);
+    let cancel_status = session.cancel();
+    let blocker_status = long_eval.join().unwrap().status;
     for caller in callers {
         caller.join().unwrap();
     }
-    let statuses = statuses.lock().unwrap();
-    assert!(statuses.contains(&ERR_QUEUE_FULL));
-    assert!(
-        statuses
-            .iter()
-            .all(|status| *status == OK || *status == ERR_QUEUE_FULL)
+    assert_eq!(next_sequence, 66);
+    assert_eq!(queued_before_cancel, QUEUE_CAPACITY);
+    assert_eq!(
+        completed_before_cancel, 1,
+        "65개 제출 중 대기 큐 포화 거부가 정확히 한 건이어야 합니다"
     );
+    assert_eq!(cancel_status, OK);
+    assert_eq!(blocker_status, ERR_CANCELLED);
+    let outcomes = outcomes.lock().unwrap();
+    assert_eq!(
+        outcomes
+            .iter()
+            .filter(|(_, status, _)| *status == OK)
+            .count(),
+        QUEUE_CAPACITY
+    );
+    assert_eq!(
+        outcomes
+            .iter()
+            .filter(|(_, status, _)| *status == ERR_QUEUE_FULL)
+            .count(),
+        1
+    );
+    assert!(
+        outcomes
+            .iter()
+            .all(|(_, status, _)| { *status == OK || *status == ERR_QUEUE_FULL })
+    );
+
+    let rejected_node = outcomes
+        .iter()
+        .find_map(|(node_id, status, _)| (*status == ERR_QUEUE_FULL).then_some(*node_id))
+        .expect("정확히 한 번의 포화 거부가 있어야 합니다");
+    let mut accepted_by_sequence = outcomes
+        .iter()
+        .filter_map(|(node_id, status, sequence)| {
+            if *status == OK {
+                Some((
+                    sequence.expect("수락된 작업은 sequence를 가져야 합니다"),
+                    *node_id,
+                ))
+            } else {
+                None
+            }
+        })
+        .collect::<Vec<_>>();
+    accepted_by_sequence.sort_unstable_by_key(|(sequence, _)| *sequence);
+    let expected_order = accepted_by_sequence
+        .iter()
+        .map(|(_, node_id)| format!("dispatch:{node_id}"))
+        .collect::<Vec<_>>();
+    let runtime = super::lock(&session.control)
+        .runtime
+        .expect("세션 V8 실행기가 취소 뒤에도 유지되어야 합니다");
+    let operation_order = unsafe { &*(runtime as *const FakeV8Runtime) }
+        .operation_order
+        .lock()
+        .unwrap()
+        .clone();
+    assert_eq!(operation_order, expected_order);
+    assert!(!operation_order.contains(&format!("dispatch:{rejected_node}")));
+    assert_eq!(eval(&session, "after-overflow-drain").status, OK);
+    let operation_order = unsafe { &*(runtime as *const FakeV8Runtime) }
+        .operation_order
+        .lock()
+        .unwrap()
+        .clone();
+    assert_eq!(operation_order.last().unwrap(), "eval:after-overflow-drain");
 }
 
 fn field(report: &str, key: &str) -> String {

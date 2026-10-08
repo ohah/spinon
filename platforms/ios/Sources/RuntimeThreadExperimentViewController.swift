@@ -119,7 +119,7 @@ final class RuntimeThreadExperimentViewController: UIViewController {
         }
         if runPriorityProbe {
             setButtons(enabled: false)
-            setStatus("실제 V8 우선순위·유입 검증 중…")
+            setStatus("실제 V8 우선순위·큐 포화 검증 중…")
             DispatchQueue.global(qos: .userInitiated).async { [weak self] in
                 let priority = SpinonRunner.runRuntimePriorityProbe() ?? "우선순위 검증 응답 없음"
                 let fairness = SpinonRunner.runRuntimePriorityFairnessProbe() ?? "유입 검증 응답 없음"
@@ -129,7 +129,8 @@ final class RuntimeThreadExperimentViewController: UIViewController {
                     self.appendReport(report)
                     let passed = report.contains("status=0 priority_probe=PASS")
                         && report.contains("status=0 priority_stream_probe=PASS")
-                    self.setStatus(passed ? "실제 V8 우선순위·유입 검증 통과" : "실제 V8 우선순위·유입 검증 실패")
+                        && report.contains("queue_saturation_probe=PASS")
+                    self.setStatus(passed ? "실제 V8 우선순위·큐 포화 복구 검증 통과" : "실제 V8 우선순위·큐 포화 복구 검증 실패")
                 }
             }
             return
@@ -164,7 +165,7 @@ final class RuntimeThreadExperimentViewController: UIViewController {
             title.text = "SPINON · iOS V8 세션 종료 검증"
         } else {
             title.text = runPriorityProbe
-                ? "SPINON · V8 우선순위·유입 검증"
+                ? "SPINON · V8 우선순위·큐 포화 검증"
                 : "SPINON · V8 실행 스레드 실험"
         }
         title.font = .systemFont(ofSize: 20, weight: .bold)
@@ -178,7 +179,7 @@ final class RuntimeThreadExperimentViewController: UIViewController {
             description.text = "개발 전용 · 활성 평가 취소, 대기 명령 거부, 종료 후 호출 거부를 확인합니다"
         } else {
             description.text = runPriorityProbe
-                ? "개발 전용 · 실제 V8에서 우선순위 FIFO와 높은 등급 유입 중 낮은 등급 대기를 확인합니다"
+                ? "개발 전용 · 실제 V8 우선순위 FIFO, 큐 포화·거부·복구를 확인합니다"
                 : "개발 전용 · 긴 JavaScript 실행 중에도 화면 입력과 JS 이벤트 대기·취소를 확인합니다"
         }
         description.font = .systemFont(ofSize: 13)

@@ -7,6 +7,7 @@ ios_bundle_id="dev.spinon.bootstrap"
 expected_order='order=[user-blocking:1#seq4,user-blocking:2#seq6,user-visible:101#seq3,user-visible:102#seq7,background:201#seq2,background:202#seq5]'
 pass_marker='status=0 priority_probe=PASS blocker_status=-8 cancel_status=0'
 fairness_marker='status=0 priority_stream_probe=PASS capacity=64 initial_high=63 late_high=1024 accepted_high=1087 background_seq=2 background_order=1088'
+saturation_marker='queue_saturation_probe=PASS capacity=64 accepted=64 overflow_status=-5 overflow_returned_before_cancel=true overflow_queue_len=64 overflow_marker=not-run completed=64 recovered=PASS'
 run_id="$(date -u +%Y%m%dT%H%M%SZ)"
 result_dir="${SPINON_R06_PRIORITY_OUTPUT_DIR:-$repo_root/build/spinon/priority-validation/$run_id}"
 ios_stream_pid=""
@@ -126,7 +127,8 @@ for _ in $(seq 1 45); do
     | rg 'SPINON_PRIORITY_(PROBE|FAIRNESS_PROBE)' > "$android_log" || true
   if rg -Fq "$pass_marker" "$android_log" \
     && rg -Fq "$expected_order" "$android_log" \
-    && rg -Fq "$fairness_marker" "$android_log"; then
+    && rg -Fq "$fairness_marker" "$android_log" \
+    && rg -Fq "$saturation_marker" "$android_log"; then
     android_passed=true
     break
   fi
@@ -174,7 +176,8 @@ ios_passed=false
 for _ in $(seq 1 45); do
   if rg -Fq "$pass_marker" "$ios_stream_log" \
     && rg -Fq "$expected_order" "$ios_stream_log" \
-    && rg -Fq "$fairness_marker" "$ios_stream_log"; then
+    && rg -Fq "$fairness_marker" "$ios_stream_log" \
+    && rg -Fq "$saturation_marker" "$ios_stream_log"; then
     ios_passed=true
     break
   fi
@@ -200,6 +203,8 @@ ios_stream_pid=""
 rg 'SPINON_PRIORITY_(PROBE|FAIRNESS_PROBE) status=' "$ios_stream_log" > "$ios_log" || true
 rg -q 'owner_tid=[1-9][0-9]*' "$ios_log" || fail "iOS 로그에 유효한 owner thread가 없습니다"
 xcrun simctl io "$ios_simulator_udid" screenshot "$result_dir/ios.png" >/dev/null
+shasum -a 256 "$android_log" "$result_dir/android.png" "$ios_log" \
+  "$result_dir/ios.png" "$result_dir/environment.txt" > "$result_dir/SHA256SUMS"
 printf 'iOS 검증 통과 · 원본: %s · 화면: %s\n' "$ios_log" "$result_dir/ios.png"
 
-printf '\n두 시뮬레이터에서 실제 V8 우선순위·등급별 FIFO·유한 높은 등급 유입 검증을 통과했습니다.\n결과 폴더: %s\n' "$result_dir"
+printf '\n두 시뮬레이터에서 실제 V8 우선순위·등급별 FIFO·유한 유입·큐 포화와 복구 검증을 통과했습니다.\n결과 폴더: %s\n' "$result_dir"

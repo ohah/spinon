@@ -41,6 +41,8 @@ S03.3 세션 종료 검증은 [종료 경합 사전 비교 모델](internal/evid
 
 R06 우선순위 공정성 후보 비교의 동일 입력·정책 매개변수·판정 기준은 [R06 공정성 정책 비교 모델](internal/evidence/r06-priority-policy-comparison-2026-10-08.md)에 기록한다. 이 모델은 선택 규칙만 비교하는 결정론적 내부 fixture이며 제품 동작이나 사용자 API를 정하지 않는다.
 
+R06 큐 포화·복구 검증의 구현 전 기준과 사전 판정값은 [큐 포화·복구 비교 모델](internal/evidence/r06-queue-saturation-precomparison-2026-10-08.md), 작업 분해와 미해결 경계는 [R06 큐 포화 계획](../plan/r06-queue-saturation.md)에 기록한다. 이는 현재 내부 queue admission의 관찰 기준이며 제품 역압력 계약이 아니다.
+
 
 ## 적합성의 최소 단위
 

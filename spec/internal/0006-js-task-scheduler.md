@@ -57,7 +57,7 @@ Chromium의 현행 `TaskQueue` 문서는 우선순위가 낮은 큐에 일반적
 2. **제품 기본값과 우선순위 변경:** R06 FFI 어댑터의 기본값은 `dispatch=user-blocking`, `eval=user-visible`이다. 제품의 기본값, 동적 priority 변경, 일반 기아 방지 도입 여부는 미정이다. 실제 유한 유입과 분석 모델은 현재 strict-priority의 기아 가능성을 보여 주지만 허용 대기시간이나 공정성 보장 기준을 결정하지 않는다.
 3. **작업 출처 매핑:** 터치·키 입력, 접근성 활성화, 프레임워크 렌더, 네트워크 완료, 타이머, 네이티브 모듈 응답을 어떤 등급과 task source로 넣을지.
 4. **실행기 구조:** Isolate마다 전용 OS 스레드를 둘지, 여러 Isolate를 고정된 worker 스레드에 배치할지. 풀을 쓰면 Isolate를 한 worker에 고정해도 되는지, head-of-line blocking·공정성·메모리·종료 격리를 어떻게 측정할지.
-5. **큐와 역압력:** R06 런타임의 대기 총량은 실험상 최대 64개이며 세 등급이 용량을 공유한다. 등급별 예약 슬롯, 플랫폼 adapter와의 단일 접수 경계, 포화 오류, 거부·병합·폐기 기준은 미정이다. 여러 단계의 큐가 각각 무제한 증가하지 않게 해야 한다.
+5. **큐와 역압력:** 현재 R06 내부 구현은 세 우선순위가 공유하는 대기 용량 64개를 사용한다. 실제 V8 probe에서 65번째 제출은 blocker 실행 중 `-5`로 반환되고, 64개 수락 작업은 취소 후 모두 완료되며 drain 뒤 새 eval을 받는 것을 확인했다. 이는 현행 내부 경계의 관찰값이다. 등급별 예약 슬롯, 플랫폼 adapter와의 단일 접수 경계, 공개 포화 오류와 거부·병합·폐기 정책은 미정이며 여러 단계 큐의 총량도 미측정이다.
 6. **입력 이벤트 병합:** `pointermove`·스크롤을 어느 프레임까지 합칠지, 최신 좌표·timestamp를 어떻게 보존할지, `down`·`up`·`cancel`·키보드·접근성 이벤트의 순서와 누락 금지 조건.
 7. **프레임/문서 경계:** HostDocument 소유자, 변경 commit 및 `DocumentRevision` 충돌 복구, 레이아웃 snapshot 병합, 렌더러의 stale revision 폐기와 프레임 마감.
 8. **이벤트 루프 순서:** JS task 종료 뒤 microtask checkpoint, 타이머·Promise·host callback 순서, `scheduler.yield()` 양보 후 continuation 우선순위, 작업 중 예외 전달.
@@ -79,6 +79,10 @@ Android 16/API 36 ARM64 에뮬레이터와 iPhone 17 Pro / iOS 26.2 시뮬레이
 ### 대기열 유지 유입과 공정성 후보 비교
 
 실제 V8 producer가 높은 등급 task를 계속 추가하는 중 낮은 등급 작업이 선택되는지 확인하기 위해 초기 63개와 후속 1,024개 `user-blocking` 작업을 한 `background` 작업과 함께 실행했다. Android와 iOS Simulator에서 각각 5회, 총 10회 모두 높은 등급 1,087개 뒤 background가 선택됐다. 결정론적 모델에서 동일한 세 등급 지속 입력을 4,096회 처리한 결과 strict-priority는 background를 선택하지 않았고, 비교용 aging은 17번째, 8:4:1 가중 순환은 13번째 선택에 background를 처리했다. 후보값은 제품 큐나 공개 계약에 반영하지 않았다. [입력·모델·원본 로그·캡처·한계](evidence/r06-priority-policy-comparison-2026-10-08.md).
+
+### 큐 포화·거부·복구
+
+Android 16/API 36 ARM64 에뮬레이터와 iPhone 17 Pro / iOS 26.2 Simulator에서 고정된 실제 V8 입력을 각각 5회 실행했다. 열 번 모두 동기 blocker가 실행되는 동안 대기 queue를 64개로 채웠고, 별도 제출 thread의 65번째 요청이 취소 전에 `-5`로 반환됐다. 거부 후 queue는 64개를 유지했고, blocker는 `-8`로 취소됐다. 수락된 64개는 같은 priority FIFO로 모두 완료되고 거부 side effect는 나타나지 않았다. queue drain 뒤의 새 eval도 성공했다. 실행 환경, 로그, 대표 화면과 checksum은 [R06 큐 포화·복구 실행 근거](evidence/r06-queue-saturation-2026-10-08.md)에 보존한다. 이는 한 에뮬레이터와 한 시뮬레이터의 내부 admission 진단이며 성능 결과·제품 오류 정책·adapter 역압력 보장은 아니다.
 
 명령별 결과와 테스트 범위: [R06 Chromium 참고 우선순위 큐 구현 확인](evidence/r06-task-scheduler-2026-09-30.md).
 
