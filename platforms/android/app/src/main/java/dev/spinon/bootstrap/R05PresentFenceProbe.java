@@ -17,6 +17,7 @@ import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.BooleanSupplier;
@@ -30,6 +31,8 @@ final class R05PresentFenceProbe {
     private static final long CALLBACK_TIMEOUT_MS = 2_000;
     private static final AtomicLong NEXT_REQUEST_ID = new AtomicLong(1);
     private static final AtomicLong INLINE_CALLBACK_COUNT = new AtomicLong();
+    private static final AtomicLong CALLBACK_EVENT_TOTAL = new AtomicLong();
+    private static final AtomicLong TIMEOUT_EVENT_TOTAL = new AtomicLong();
     private static final Object PENDING_LOCK = new Object();
     private static final LinkedHashMap<Long, Request> PENDING_REQUESTS = new LinkedHashMap<>();
     private static final Handler TIMEOUT_HANDLER = new Handler(Looper.getMainLooper());
@@ -43,6 +46,196 @@ final class R05PresentFenceProbe {
             CALLBACK_POOL.execute(new CallbackTask(command));
 
     private R05PresentFenceProbe() {}
+
+    static final class FailureFixtureRequest {
+        private final Request request;
+        private final SurfaceControl.Transaction transaction;
+        private final AtomicBoolean transactionClosed = new AtomicBoolean();
+
+        FailureFixtureRequest(Request request, SurfaceControl.Transaction transaction) {
+            this.request = request;
+            this.transaction = transaction;
+        }
+
+        long requestId() {
+            return request.requestId;
+        }
+    }
+
+    static final class CallbackObservation {
+        final String outcome;
+        final String fenceState;
+        final boolean currentSurface;
+        final boolean fenceSignalUsable;
+        final boolean callbackInlineOverflow;
+
+        CallbackObservation(String outcome, String fenceState, boolean currentSurface,
+                            boolean fenceSignalUsable, boolean callbackInlineOverflow) {
+            this.outcome = outcome;
+            this.fenceState = fenceState;
+            this.currentSurface = currentSurface;
+            this.fenceSignalUsable = fenceSignalUsable;
+            this.callbackInlineOverflow = callbackInlineOverflow;
+        }
+    }
+
+    static boolean failureFixtureIdle() {
+        synchronized (PENDING_LOCK) {
+            return PENDING_REQUESTS.isEmpty()
+                    && CALLBACK_POOL.getActiveCount() == 0
+                    && CALLBACK_POOL.getQueue().isEmpty();
+        }
+    }
+
+    static FailureFixtureRequest attachUnappliedForFailureFixture(String renderer,
+                                                                   long inputSequence) {
+        if (Build.VERSION.SDK_INT < MIN_API) return null;
+        long requestId = nextRequestId();
+        if (requestId < 0) return null;
+
+        SurfaceControl.Transaction transaction;
+        try {
+            transaction = new SurfaceControl.Transaction();
+        } catch (RuntimeException | LinkageError error) {
+            Log.e(TAG, "SPINON_R05_CALLBACK_FAULT scenario=unapplied_timeout"
+                    + " outcome=transaction_create_failed"
+                    + " error=" + error.getClass().getSimpleName());
+            return null;
+        }
+
+        long generation = inputSequence;
+        long monotonicBeforeNanos = System.nanoTime();
+        long uptimeAnchorNanos = SystemClock.uptimeNanos();
+        long monotonicAfterNanos = System.nanoTime();
+        boolean attached = Api35.attach(transaction, requestId, renderer, generation,
+                () -> generation, () -> true, inputSequence, inputSequence,
+                uptimeAnchorNanos, uptimeAnchorNanos,
+                monotonicBeforeNanos, monotonicAfterNanos, -1L);
+        Request request;
+        synchronized (PENDING_LOCK) {
+            request = PENDING_REQUESTS.get(requestId);
+        }
+        if (!attached || request == null) {
+            Api35.closeTransaction(transaction, renderer, generation, requestId);
+            return null;
+        }
+        Log.i(TAG, "SPINON_R05_CALLBACK_FAULT scenario=unapplied_timeout"
+                + " request_id=" + requestId + " source=real_transaction"
+                + " transaction_applied=false");
+        return new FailureFixtureRequest(request, transaction);
+    }
+
+    static FailureFixtureRequest createSyntheticFailureRequest(String renderer,
+                                                                long generation,
+                                                                LongSupplier currentGeneration,
+                                                                BooleanSupplier surfaceAvailable,
+                                                                long inputSequence) {
+        long requestId = nextRequestId();
+        if (requestId < 0) return null;
+        long monotonicBeforeNanos = System.nanoTime();
+        long uptimeAnchorNanos = SystemClock.uptimeNanos();
+        long monotonicAfterNanos = System.nanoTime();
+        Request request = new Request(requestId, renderer, generation,
+                currentGeneration, surfaceAvailable, inputSequence, inputSequence,
+                uptimeAnchorNanos, uptimeAnchorNanos,
+                monotonicBeforeNanos, monotonicAfterNanos, -1L);
+        synchronized (PENDING_LOCK) {
+            if (PENDING_REQUESTS.size() >= MAX_PENDING
+                    || PENDING_REQUESTS.containsKey(requestId)) {
+                Log.e(TAG, "SPINON_R05_CALLBACK_FAULT scenario=synthetic_request"
+                        + " outcome=" + (PENDING_REQUESTS.containsKey(requestId)
+                        ? "duplicate_request_id" : "pending_limit"));
+                return null;
+            }
+            PENDING_REQUESTS.put(requestId, request);
+        }
+        return new FailureFixtureRequest(request, null);
+    }
+
+    static void timeoutForFailureFixture(FailureFixtureRequest fixtureRequest) {
+        Api35.timeout(fixtureRequest.request);
+    }
+
+    static CallbackObservation callbackForFailureFixture(FailureFixtureRequest fixtureRequest) {
+        return Api35.handleCallback(fixtureRequest.request, null);
+    }
+
+    static void cancelForFailureFixture(FailureFixtureRequest fixtureRequest,
+                                        String renderer, long generation, String reason) {
+        Api35.cancel(fixtureRequest.request.requestId, renderer, generation, reason);
+    }
+
+    static void cancelSurfaceForFailureFixture(String renderer, long generation,
+                                               String reason) {
+        Api35.cancelForSurface(renderer, generation, reason);
+    }
+
+    static String failureState(FailureFixtureRequest fixtureRequest) {
+        int state = fixtureRequest.request.state.get();
+        if (state == Api35.PENDING) return "pending";
+        if (state == Api35.CALLBACK_RECEIVED) return "callback_received";
+        if (state == Api35.TIMED_OUT) return "timed_out";
+        if (state == Api35.CANCELLED) return "cancelled";
+        return "unknown";
+    }
+
+    static boolean failureRequestPending(FailureFixtureRequest fixtureRequest) {
+        synchronized (PENDING_LOCK) {
+            return PENDING_REQUESTS.get(fixtureRequest.request.requestId)
+                    == fixtureRequest.request;
+        }
+    }
+
+    static boolean failureTimeoutScheduled(FailureFixtureRequest fixtureRequest) {
+        Runnable timeout = fixtureRequest.request.timeout;
+        return timeout != null && TIMEOUT_HANDLER.hasCallbacks(timeout);
+    }
+
+    static int failurePendingCount() {
+        synchronized (PENDING_LOCK) {
+            return PENDING_REQUESTS.size();
+        }
+    }
+
+    static int failureCallbackQueueDepth() {
+        return CALLBACK_POOL.getQueue().size();
+    }
+
+    static int failureCallbackActiveCount() {
+        return CALLBACK_POOL.getActiveCount();
+    }
+
+    static long failureInlineCallbackTotal() {
+        return INLINE_CALLBACK_COUNT.get();
+    }
+
+    static long failureCallbackEventTotal() {
+        return CALLBACK_EVENT_TOTAL.get();
+    }
+
+    static long failureTimeoutEventTotal() {
+        return TIMEOUT_EVENT_TOTAL.get();
+    }
+
+    static int failureCallbackCount(FailureFixtureRequest fixtureRequest) {
+        return fixtureRequest == null ? -1 : fixtureRequest.request.callbackCount.get();
+    }
+
+    static int failureTimeoutCount(FailureFixtureRequest fixtureRequest) {
+        return fixtureRequest == null ? -1 : fixtureRequest.request.timeoutCount.get();
+    }
+
+    static boolean closeFailureTransaction(FailureFixtureRequest fixtureRequest) {
+        if (fixtureRequest.transaction == null
+                || !fixtureRequest.transactionClosed.compareAndSet(false, true)) return false;
+        return Api35.closeTransaction(fixtureRequest.transaction,
+                fixtureRequest.request.renderer, fixtureRequest.request.generation,
+                fixtureRequest.request.requestId);
+    }
+
+    static void executeCallbackForFailureFixture(Runnable command) {
+        CALLBACK_EXECUTOR.execute(command);
+    }
 
     static void submitNextFrame(SurfaceView surface, String renderer, long generation,
                                 LongSupplier currentGeneration,
@@ -295,6 +488,8 @@ final class R05PresentFenceProbe {
 
         private static void timeout(Request request) {
             if (!request.state.compareAndSet(PENDING, TIMED_OUT)) return;
+            request.timeoutCount.incrementAndGet();
+            TIMEOUT_EVENT_TOTAL.incrementAndGet();
             removePending(request);
             Log.w(TAG, "SPINON_R05_PRESENT_FENCE renderer=" + request.renderer
                     + " request_id=" + request.requestId
@@ -325,8 +520,10 @@ final class R05PresentFenceProbe {
             }
         }
 
-        private static void handleCallback(Request request,
-                                           SurfaceControl.TransactionStats stats) {
+        private static CallbackObservation handleCallback(
+                Request request, SurfaceControl.TransactionStats stats) {
+            request.callbackCount.incrementAndGet();
+            CALLBACK_EVENT_TOTAL.incrementAndGet();
             boolean timely = request.state.compareAndSet(PENDING, CALLBACK_RECEIVED);
             if (timely) {
                 removePending(request);
@@ -436,6 +633,8 @@ final class R05PresentFenceProbe {
                     + " clock_offset_intervals_overlap=" + clockOffsetIntervalsOverlap
                     + " processing_error=" + processingError
                     + " fence_close_error=" + closeError);
+            return new CallbackObservation(outcome, fenceState, currentSurface,
+                    fenceSignalUsable, inlineOverflow);
         }
 
         private static long safeCurrentGeneration(Request request) {
@@ -466,15 +665,17 @@ final class R05PresentFenceProbe {
             }
         }
 
-        private static void closeTransaction(SurfaceControl.Transaction transaction,
-                                             String renderer, long generation,
-                                             long requestId) {
+        private static boolean closeTransaction(SurfaceControl.Transaction transaction,
+                                                String renderer, long generation,
+                                                long requestId) {
             try {
                 transaction.close();
+                return true;
             } catch (RuntimeException | LinkageError error) {
                 Log.w(TAG, "SPINON_R05_PRESENT_FENCE_TRANSACTION_CLOSE renderer=" + renderer
                         + " request_id=" + requestId + " generation=" + generation
                         + " outcome=failed error=" + error.getClass().getSimpleName());
+                return false;
             }
         }
     }
@@ -493,6 +694,8 @@ final class R05PresentFenceProbe {
         final long inputMonotonicAfterNanos;
         final long targetVsyncId;
         final AtomicInteger state = new AtomicInteger(Api35.PENDING);
+        final AtomicInteger callbackCount = new AtomicInteger();
+        final AtomicInteger timeoutCount = new AtomicInteger();
         Runnable timeout;
 
         Request(long requestId, String renderer, long generation,
