@@ -1,7 +1,7 @@
 # Android debug 기본 경로와 R08 probe-off 대조
 
 - **실행:** 2026-10-09 01:36–01:39 KST
-- **기기:** Samsung SM-S731N · Android 16 / API 36.1 · ARM64 · 1080×2340 · density 450
+- **기기:** Samsung SM-S731N · Android 16 / API 36 / SDK_INT_FULL 36.1 · ARM64 · 1080×2340 · density 450
 - **화면:** 시작·종료 active mode 2 = 60 Hz · 밝기 248 · timeout 30,000 ms · stay-awake 3
 - **앱:** 설치 APK는 PR #79의 고정 debug artifact와 SHA-256 일치. 새 process별 PID log를 수집했다.
 - **복구:** Spinon을 force-stop하고 Chrome foreground로 복귀했다. 화면 설정은 유지됐다.

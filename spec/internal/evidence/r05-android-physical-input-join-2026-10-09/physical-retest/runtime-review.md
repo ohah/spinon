@@ -20,11 +20,11 @@
 | 14 | stale signal 또는 다른 surface generation을 현재 결과로 연결 | 모든 sequence가 generation 1/current surface에 있었고 block 중 surface 전환 표식은 없었다. 한 block이므로 lifecycle 전환은 별도 미검증이다. |
 | 15 | queue가 남은 채 성공 처리 | 마지막 async 결과의 pending/active/queue_depth는 각각 0, completed는 11이었다. |
 | 16 | worker wait 시간을 제품 입력 latency로 부름 | 0.105–12.660 ms는 await 호출 구간일 뿐 입력→표시 수치로 사용하지 않았다. |
-| 17 | OS fence를 VSync·광자 시각으로 과장 | API 36.1 `target_vsync_id=-1`; transaction fence는 optical scanout이 아니다. |
+| 17 | OS fence를 VSync·광자 시각으로 과장 | API 36 (SDK_INT_FULL 36.1) `target_vsync_id=-1`; transaction fence는 optical scanout이 아니다. |
 | 18 | screenshot만으로 log join 성공을 주장 | visual tap count/color와 별도로 sequence 기반 input/submit/callback/wait log를 대조했다. |
 | 19 | 기기 상태 변경 또는 앱을 전경에 방치 | brightness/timeout/stay-awake/display mode를 전후 비교했고 Chrome을 foreground로 복귀, Spinon process는 종료했다. |
 | 20 | 작은 단일 block으로 성능 일반화 | 11개 synthetic 입력 feasibility 재실행으로만 기록했다. p95, renderer 우열, 실제 finger input, R05.3 완료는 미주장이다. |
 
 ### 검토 결과
 
-증거는 동일 실기기·동일 APK에서 synthetic input으로 11/11 input→submit→callback→async fence signal 경로가 재현된다는 주장만 지지한다. 실제 손가락 input-to-present join은 수집되지 않았으므로 이 부분은 보류다. API 36.1 VSync attribution, release runtime, scanout, 성능 일반화도 검증되지 않았다.
+증거는 동일 실기기·동일 APK에서 synthetic input으로 11/11 input→submit→callback→async fence signal 경로가 재현된다는 주장만 지지한다. 실제 손가락 input-to-present join은 수집되지 않았으므로 이 부분은 보류다. API 36 (SDK_INT_FULL 36.1) VSync attribution, release runtime, scanout, 성능 일반화도 검증되지 않았다.

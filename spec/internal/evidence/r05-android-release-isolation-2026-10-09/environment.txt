@@ -1,6 +1,6 @@
 실행 시각: 2026-10-09 01:36–01:39 KST
 대상: ADB 연결 Android 물리 기기 한 대, emulator process 없음; serial 저장 안 함
-모델: Samsung SM-S731N · Android 16 · API 36.1 · ARM64
+모델: Samsung SM-S731N · Android 16 · API 36 · SDK_INT_FULL 36.1 · ARM64
 화면: 1080x2340 · density 450 · active 60Hz (mode 2), 지원 120Hz
 설정: 밝기 248 · screen_off_timeout 30000ms · stay_on_while_plugged_in 3
 설치 APK SHA-256: 608fbdf9279ddded605c7129fb0123ce32a65d7452f6ff1b36702b9eed7b198e
