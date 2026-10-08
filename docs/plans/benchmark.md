@@ -33,6 +33,8 @@
 
 Android 진단 앱 자체의 지연을 조사할 때는 프레임워크 간 성능 비교와 별도로 [R05 Android 프레임 지연 귀속·계측 계약](../../spec/internal/0022-r05-benchmark-attribution.md)을 따른다. 같은 Android View 계층의 입력·상태·로그 대조와, 같은 MainActivity에서 runtime dispatch만 생략한 UI-only 대조를 나눠 측정한다. queue·V8·actor 응답 전 wall time과 caller/owner OS thread 상태를 연결해 기록한다. 에뮬레이터와 Perfetto trace 결과는 원인 분석용이며 제품 성능 결과로 합치지 않는다.
 
+2026-10-08 Android API 36 ARM64 Emulator의 Perfetto session과 iPhone 17 Pro / iOS 26.2 Simulator의 Time Profiler를 각각 10쌍 on/off로 비교했다. Android trace 품질과 iOS sample/trace 구간 정합성은 원본에서 검사했다. 모든 쌍별 분포가 0을 가로질러 계측 오버헤드는 미확정이다. 이는 시뮬레이터 debug 진단이며 실기기·release 결과가 아니다. [실행 증거](../../spec/internal/evidence/r05-trace-overhead-simulators-2026-10-08.md).
+
 - **사용자 지표:** 콜드 시작부터 첫 유효 화면까지, 입력 시각부터 변경된 픽셀이 표시될 때까지, 스크롤 프레임 시간 분포, 지연된 프레임 수, 성공한 입력 수.
 - **자원 지표:** 프로세스 메모리와 최고치, CPU 사용량, 앱 설치 크기와 JS/리소스 번들 크기. 크기 수치는 같은 ABI와 빌드 설정에서 비교한다.
 - **원인 분석 지표:** JS 실행, 트리 갱신, 레이아웃, GPU 장면 생성·제출 또는 플랫폼 뷰 적용 시간을 각 구현이 제공하는 범위에서 계측한다. 내부 단계의 이름과 경계가 다르면 한 열에서 직접 순위를 매기지 않는다.
