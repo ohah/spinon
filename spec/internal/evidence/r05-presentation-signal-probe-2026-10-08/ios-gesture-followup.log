@@ -1,0 +1,48 @@
+Timestamp               Ty Process[PID:TID]
+2026-10-08 14:04:17.619 Df SpinonBootstrap[26797:48baa83] [dev.spinon.bootstrap:r08] SPINON_R05_PROBE=ready renderer=wgpu input_source=unknown
+2026-10-08 14:04:17.619 Df SpinonBootstrap[26797:48baa83] [dev.spinon.bootstrap:r08] SPINON_R05_CLOCK_ANCHOR label=launch uptime_before_s=758001.954923 host_s=758001.954923 uptime_after_s=758001.954923
+2026-10-08 14:04:54.755 Df SpinonBootstrap[26797:48baa83] [dev.spinon.bootstrap:r08] SPINON_R05_INPUT=excluded renderer=wgpu reason=outside_target
+2026-10-08 14:05:05.212 Df SpinonBootstrap[26797:48baa83] [dev.spinon.bootstrap:r08] SPINON_R05_INPUT=excluded renderer=wgpu reason=gesture_moved
+2026-10-08 14:05:14.599 Df SpinonBootstrap[26797:48baa83] [dev.spinon.bootstrap:r08] SPINON_R05_CLOCK_ANCHOR label=wgpu_input_1 uptime_before_s=758058.934832 host_s=758058.934832 uptime_after_s=758058.934832
+2026-10-08 14:05:14.599 Df SpinonBootstrap[26797:48baa83] [dev.spinon.bootstrap:r08] SPINON_R05_INPUT renderer=wgpu input_seq=1 phase=ended input_source=unknown event_time_s=758058.922759 handler_uptime_s=758058.934831 generation=1
+2026-10-08 14:05:14.600 Df SpinonBootstrap[26797:48baa83] [dev.spinon.bootstrap:r08] SPINON_R05_SUBMIT renderer=wgpu input_seq=1 revision=1 generation=1 event_time_s=758058.922759 handler_uptime_s=758058.934831 call_return_uptime_s=758058.935619 result=0 present_signal=unavailable
+2026-10-08 14:05:29.256 Df SpinonBootstrap[29528:48bd86f] [dev.spinon.bootstrap:r08] SPINON_R05_PROBE=ready renderer=native-metal-control input_source=unknown
+2026-10-08 14:05:29.256 Df SpinonBootstrap[29528:48bd86f] [dev.spinon.bootstrap:r08] SPINON_R05_SIGNAL_CAPABILITY renderer=native-metal-control signal=drawable_present_callback available=false reason=installed_sdk_headers_do_not_expose_api
+2026-10-08 14:05:29.256 Df SpinonBootstrap[29528:48bd86f] [dev.spinon.bootstrap:r08] SPINON_R05_CLOCK_ANCHOR label=launch uptime_before_s=758073.591395 host_s=758073.591395 uptime_after_s=758073.591395
+2026-10-08 14:05:29.261 Df SpinonBootstrap[29528:48bd86f] [dev.spinon.bootstrap:r08] SPINON_R05_SURFACE renderer=native-metal-control generation=1
+2026-10-08 14:05:40.265 Df SpinonBootstrap[29528:48bd86f] [dev.spinon.bootstrap:r08] SPINON_R05_INPUT=excluded renderer=native-metal-control reason=outside_target
+2026-10-08 14:05:43.627 Df SpinonBootstrap[29528:48bd86f] [dev.spinon.bootstrap:r08] SPINON_R05_INPUT=excluded renderer=native-metal-control reason=gesture_moved
+2026-10-08 14:05:46.149 Df SpinonBootstrap[29528:48bd86f] [dev.spinon.bootstrap:r08] SPINON_R05_CLOCK_ANCHOR label=native_input_1 uptime_before_s=758090.484762 host_s=758090.484762 uptime_after_s=758090.484762
+2026-10-08 14:05:46.149 Df SpinonBootstrap[29528:48bd86f] [dev.spinon.bootstrap:r08] SPINON_R05_INPUT renderer=native-metal-control input_seq=1 phase=ended input_source=unknown event_time_s=758090.470763 handler_uptime_s=758090.484761 generation=1
+2026-10-08 14:05:46.151 Df SpinonBootstrap[29528:48bd86f] [dev.spinon.bootstrap:r08] SPINON_R05_SUBMIT renderer=native-metal-control input_seq=1 revision=1 generation=1 event_time_s=758090.470763 handler_uptime_s=758090.484761 present_request_uptime_s=758090.486567 presentation_signal=unavailable
+2026-10-08 14:05:46.160 Df SpinonBootstrap[29528:48bdee1] [dev.spinon.bootstrap:r08] SPINON_R05_GPU_COMPLETE renderer=native-metal-control input_seq=1 revision=1 generation=1 event_time_s=758090.470763 handler_uptime_s=758090.484761 callback_uptime_s=758090.496061 command_status=4 presentation_signal=unavailable
+2026-10-08 14:06:30.692 Df SpinonBootstrap[33102:48c0b7e] [dev.spinon.bootstrap:r08] SPINON_R05_PROBE=ready renderer=wgpu input_source=unknown
+2026-10-08 14:06:30.692 Df SpinonBootstrap[33102:48c0b7e] [dev.spinon.bootstrap:r08] SPINON_R05_CLOCK_ANCHOR label=launch uptime_before_s=758135.027627 host_s=758135.027627 uptime_after_s=758135.027627
+2026-10-08 14:06:33.333 Df SpinonBootstrap[33102:48c0b7e] [dev.spinon.bootstrap:r08] SPINON_R05_CLOCK_ANCHOR label=wgpu_input_1 uptime_before_s=758137.668397 host_s=758137.668398 uptime_after_s=758137.668398
+2026-10-08 14:06:33.333 Df SpinonBootstrap[33102:48c0b7e] [dev.spinon.bootstrap:r08] SPINON_R05_INPUT renderer=wgpu input_seq=1 phase=ended input_source=unknown event_time_s=758137.651339 handler_uptime_s=758137.668396 generation=1
+2026-10-08 14:06:33.334 Df SpinonBootstrap[33102:48c0b7e] [dev.spinon.bootstrap:r08] SPINON_R05_SUBMIT renderer=wgpu input_seq=1 revision=1 generation=1 event_time_s=758137.651339 handler_uptime_s=758137.668396 call_return_uptime_s=758137.669121 result=0 present_signal=unavailable
+2026-10-08 14:08:57.572 Df SpinonBootstrap[40045:48c76af] [dev.spinon.bootstrap:r08] SPINON_R05_PROBE=ready renderer=wgpu input_source=unknown
+2026-10-08 14:08:57.572 Df SpinonBootstrap[40045:48c76af] [dev.spinon.bootstrap:r08] SPINON_R05_CLOCK_ANCHOR label=launch uptime_before_s=758281.908050 host_s=758281.908050 uptime_after_s=758281.908050
+2026-10-08 14:08:57.577 Df SpinonBootstrap[40045:48c76af] [dev.spinon.bootstrap:r08] SPINON_R05_SURFACE renderer=wgpu generation=1
+2026-10-08 14:08:58.358 Df SpinonBootstrap[40045:48c76af] [dev.spinon.bootstrap:r08] SPINON_R05_SURFACE renderer=wgpu generation=2
+2026-10-08 14:09:08.216 Df SpinonBootstrap[40045:48c76af] [dev.spinon.bootstrap:r08] SPINON_R05_CLOCK_ANCHOR label=wgpu_input_1 uptime_before_s=758292.551573 host_s=758292.551573 uptime_after_s=758292.551573
+2026-10-08 14:09:08.216 Df SpinonBootstrap[40045:48c76af] [dev.spinon.bootstrap:r08] SPINON_R05_INPUT renderer=wgpu input_seq=1 phase=ended input_source=unknown event_time_s=758292.538654 handler_uptime_s=758292.551572 generation=2
+2026-10-08 14:09:08.217 Df SpinonBootstrap[40045:48c76af] [dev.spinon.bootstrap:r08] SPINON_R05_SUBMIT renderer=wgpu input_seq=1 revision=1 generation=2 event_time_s=758292.538654 handler_uptime_s=758292.551572 call_return_uptime_s=758292.552228 result=0 present_signal=unavailable
+2026-10-08 14:11:08.204 Df SpinonBootstrap[47495:48ce025] [dev.spinon.bootstrap:r08] SPINON_R05_PROBE=ready renderer=wgpu input_source=unknown
+2026-10-08 14:11:08.204 Df SpinonBootstrap[47495:48ce025] [dev.spinon.bootstrap:r08] SPINON_R05_CLOCK_ANCHOR label=launch uptime_before_s=758412.539810 host_s=758412.539810 uptime_after_s=758412.539810
+2026-10-08 14:11:08.209 Df SpinonBootstrap[47495:48ce025] [dev.spinon.bootstrap:r08] SPINON_R05_SURFACE renderer=wgpu generation=1
+2026-10-08 14:11:11.259 Df SpinonBootstrap[47495:48ce025] [dev.spinon.bootstrap:r08] SPINON_R05_INPUT=excluded renderer=wgpu reason=outside_target
+2026-10-08 14:11:14.487 Df SpinonBootstrap[47495:48ce025] [dev.spinon.bootstrap:r08] SPINON_R05_INPUT=excluded renderer=wgpu reason=gesture_moved
+2026-10-08 14:11:16.933 Df SpinonBootstrap[47495:48ce025] [dev.spinon.bootstrap:r08] SPINON_R05_CLOCK_ANCHOR label=wgpu_input_1 uptime_before_s=758421.268626 host_s=758421.268626 uptime_after_s=758421.268626
+2026-10-08 14:11:16.933 Df SpinonBootstrap[47495:48ce025] [dev.spinon.bootstrap:r08] SPINON_R05_INPUT renderer=wgpu input_seq=1 phase=ended input_source=unknown event_time_s=758421.250354 handler_uptime_s=758421.268625 generation=1
+2026-10-08 14:11:16.934 Df SpinonBootstrap[47495:48ce025] [dev.spinon.bootstrap:r08] SPINON_R05_SUBMIT renderer=wgpu input_seq=1 revision=1 generation=1 event_time_s=758421.250354 handler_uptime_s=758421.268625 call_return_uptime_s=758421.269563 result=0 present_signal=unavailable
+2026-10-08 14:11:26.246 Df SpinonBootstrap[47842:48ceabd] [dev.spinon.bootstrap:r08] SPINON_R05_PROBE=ready renderer=native-metal-control input_source=unknown
+2026-10-08 14:11:26.246 Df SpinonBootstrap[47842:48ceabd] [dev.spinon.bootstrap:r08] SPINON_R05_SIGNAL_CAPABILITY renderer=native-metal-control signal=drawable_present_callback available=false reason=installed_sdk_headers_do_not_expose_api
+2026-10-08 14:11:26.246 Df SpinonBootstrap[47842:48ceabd] [dev.spinon.bootstrap:r08] SPINON_R05_CLOCK_ANCHOR label=launch uptime_before_s=758430.581753 host_s=758430.581753 uptime_after_s=758430.581753
+2026-10-08 14:11:26.251 Df SpinonBootstrap[47842:48ceabd] [dev.spinon.bootstrap:r08] SPINON_R05_SURFACE renderer=native-metal-control generation=1
+2026-10-08 14:11:29.412 Df SpinonBootstrap[47842:48ceabd] [dev.spinon.bootstrap:r08] SPINON_R05_INPUT=excluded renderer=native-metal-control reason=outside_target
+2026-10-08 14:11:32.988 Df SpinonBootstrap[47842:48ceabd] [dev.spinon.bootstrap:r08] SPINON_R05_INPUT=excluded renderer=native-metal-control reason=gesture_moved
+2026-10-08 14:11:35.833 Df SpinonBootstrap[47842:48ceabd] [dev.spinon.bootstrap:r08] SPINON_R05_CLOCK_ANCHOR label=native_input_1 uptime_before_s=758440.168133 host_s=758440.168133 uptime_after_s=758440.168134
+2026-10-08 14:11:35.833 Df SpinonBootstrap[47842:48ceabd] [dev.spinon.bootstrap:r08] SPINON_R05_INPUT renderer=native-metal-control input_seq=1 phase=ended input_source=unknown event_time_s=758440.155521 handler_uptime_s=758440.168133 generation=1
+2026-10-08 14:11:35.834 Df SpinonBootstrap[47842:48ceabd] [dev.spinon.bootstrap:r08] SPINON_R05_SUBMIT renderer=native-metal-control input_seq=1 revision=1 generation=1 event_time_s=758440.155521 handler_uptime_s=758440.168133 present_request_uptime_s=758440.170063 presentation_signal=unavailable
+2026-10-08 14:11:35.844 Df SpinonBootstrap[47842:48ceace] [dev.spinon.bootstrap:r08] SPINON_R05_GPU_COMPLETE renderer=native-metal-control input_seq=1 revision=1 generation=1 event_time_s=758440.155521 handler_uptime_s=758440.168133 callback_uptime_s=758440.179342 command_status=4 presentation_signal=unavailable

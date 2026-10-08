@@ -1,0 +1,6 @@
+Timestamp               Ty Process[PID:TID]
+2026-10-08 14:13:11.509 Df SpinonBootstrap[50167:48d1ab8] [dev.spinon.bootstrap:r08] SPINON_R08_METAL=ready device=Apple iOS simulator GPU
+2026-10-08 14:13:11.511 Df SpinonBootstrap[50167:48d1ab8] [dev.spinon.bootstrap:r08] SPINON_R08_UI=ready text-input=UITextField accessibility=button+UITextField
+2026-10-08 14:13:11.525 Df SpinonBootstrap[50167:48d1ab8] [dev.spinon.bootstrap:r08] SPINON_R08_SURFACE=size 1206x2622
+2026-10-08 14:13:11.533 Df SpinonBootstrap[50167:48d1ab8] [dev.spinon.bootstrap:r08] SPINON_R08_FRAME=first_draw_submitted
+2026-10-08 14:13:13.749 Df SpinonBootstrap[50167:48d1ab8] [dev.spinon.bootstrap:r08] SPINON_R08_TOUCH count=1

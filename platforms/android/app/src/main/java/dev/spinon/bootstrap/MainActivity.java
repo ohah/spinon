@@ -179,15 +179,19 @@ public final class MainActivity extends Activity {
         }
         boolean runR13 = getIntent().getBooleanExtra("spinon_r13", false);
         boolean runS04 = getIntent().getBooleanExtra("spinon_s04", false);
-        if (runS04 || runR13 || getIntent().getBooleanExtra("spinon_r08", false)) {
+        boolean runR05PresentationProbe =
+                getIntent().getBooleanExtra("spinon_r05_presentation", false);
+        if (runS04 || runR13 || runR05PresentationProbe
+                || getIntent().getBooleanExtra("spinon_r08", false)) {
             int backend = getIntent().getIntExtra("spinon_r08_backend", 1);
             boolean useWgpu = runS04 || runR13
+                    || runR05PresentationProbe
                     || !getIntent().getBooleanExtra("spinon_r08_native", false);
             int failureInjection = getIntent().getIntExtra("spinon_r13_failure", 0);
             int recoveryFailureInjection = getIntent().getIntExtra("spinon_r13_recovery_failure", 0);
             R08WgpuSurface surface = R08GpuDemo.show(
                     this, useWgpu, backend, runR13, runS04, failureInjection,
-                    recoveryFailureInjection);
+                    recoveryFailureInjection, runR05PresentationProbe);
             hostGpuSurface = runS04 || runR13 ? surface : null;
             return;
         }

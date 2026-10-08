@@ -48,9 +48,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         let isR13 = arguments.contains("--spinon-r13")
+        let runR05PresentationProbe = arguments.contains("--spinon-r05-presentation")
         let isR08 = arguments.contains("--spinon-r08")
             || arguments.contains("--spinon-r08-wgpu")
             || arguments.contains("--spinon-r08-native")
+            || runR05PresentationProbe
         if isR08 || isR13 {
             let useWgpu = isR13 || !arguments.contains("--spinon-r08-native")
             let failureArgument = arguments.first { $0.hasPrefix("--spinon-r13-failure=") }
@@ -79,7 +81,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
                 useWgpu: useWgpu, r13Enabled: isR13,
                 r13FailureInjection: isR13 ? failureInjection : 0,
                 r13RecoveryFailureInjection: isR13 ? recoveryFailureInjection : 0,
-                r13WindowCycle: isR13 && runWindowCycle)
+                r13WindowCycle: isR13 && runWindowCycle,
+                r05PresentationProbe: runR05PresentationProbe)
             window.makeKeyAndVisible()
             self.window = window
             return true

@@ -1,0 +1,5 @@
+--------- beginning of main
+10-08 13:56:11.739  7016  7016 I SpinonBootstrap: SPINON_R08_UI=ready text-input=EditText accessibility=button+EditText
+10-08 13:56:12.055  7016  7016 I SpinonBootstrap: SPINON_R08_WGPU=ready backend=Vulkan device=Cpu name=llvmpipe (LLVM 21.1.4, 128 bits) google_display_timing_supported=false format=Rgba8Unorm color_space=Auto supported_formats=[Rgba8UnormSrgb, Rgba8Unorm, Rgba16Float, Rgb10a2Unorm]
+10-08 13:56:12.055  7016  7016 I SpinonBootstrap: SPINON_R08_WGPU_SURFACE=size 1080x2400
+10-08 13:56:14.385  7016  7016 I SpinonBootstrap: SPINON_R08_TOUCH count=1

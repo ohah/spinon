@@ -7,9 +7,11 @@ import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
+import android.os.Trace;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -39,7 +41,7 @@ final class R08GpuDemo {
 
     static R08WgpuSurface show(Activity activity, boolean useWgpu, int backend,
                                boolean r13, boolean s04, int failureInjection,
-                               int recoveryFailureInjection) {
+                               int recoveryFailureInjection, boolean r05PresentationProbe) {
         float density = activity.getResources().getDisplayMetrics().density;
         FrameLayout root = new FrameLayout(activity);
         root.setBackgroundColor(Color.rgb(14, 19, 31));
@@ -48,7 +50,8 @@ final class R08GpuDemo {
         final R08GpuSurfaceControl surface;
         if (useWgpu) {
             R08WgpuSurface wgpuSurface = new R08WgpuSurface(
-                    activity, backend, r13, s04, failureInjection, recoveryFailureInjection);
+                    activity, backend, r13, s04, failureInjection, recoveryFailureInjection,
+                    r05PresentationProbe);
             surfaceView = wgpuSurface;
             surface = wgpuSurface;
         } else {
@@ -65,7 +68,9 @@ final class R08GpuDemo {
         String backendName = !useWgpu ? "OpenGL ES 2.0"
                 : backend == 1 ? "wgpu · Vulkan" : "wgpu · OpenGL ES 3.0+";
         String titleText = s04 ? "SPINON · S04 CSS→GPU 픽스처"
-                : r13 ? "SPINON · R13 GPU 복구" : "SPINON · R08 GPU 표면";
+                : r13 ? "SPINON · R13 GPU 복구"
+                        : r05PresentationProbe ? "SPINON · R05 표시 신호 probe"
+                        : "SPINON · R08 GPU 표면";
         title.setText(titleText
                 + "\nAndroid · " + backendName);
         title.setTextColor(Color.rgb(235, 241, 250));
@@ -362,6 +367,7 @@ final class R08WgpuSurface extends SurfaceView
     private final int backend;
     private final boolean r13;
     private final boolean s04;
+    private final boolean r05PresentationProbe;
     private final int s04TouchSlop;
     private final Handler s04PollHandler = new Handler(Looper.getMainLooper());
     private final Runnable s04PollTask = this::pollS04Readback;
@@ -383,6 +389,15 @@ final class R08WgpuSurface extends SurfaceView
     private boolean s04ReadbackPending;
     private boolean s04ReadbackFinished;
     private long s04ReadbackStartedAt;
+    private long r05SurfaceGeneration;
+    private long r05InputSequence;
+    private long r05PendingInputSequence;
+    private long r05PendingEventTimeNanos;
+    private boolean r05InputPending;
+    private boolean r05GestureStartedInTarget;
+    private boolean r05GestureHadMultiplePointers;
+    private float r05GestureStartX;
+    private float r05GestureStartY;
     private int pendingFailureInjection;
     private int pendingRecoveryFailureInjection;
     private int recoveryFailureForNextRenderer;
@@ -406,11 +421,12 @@ final class R08WgpuSurface extends SurfaceView
     private static native void nativeDestroy(long renderer);
 
     R08WgpuSurface(Activity activity, int backend, boolean r13, boolean s04, int failureInjection,
-                   int recoveryFailureInjection) {
+                   int recoveryFailureInjection, boolean r05PresentationProbe) {
         super(activity);
         this.backend = backend;
         this.r13 = r13;
         this.s04 = s04;
+        this.r05PresentationProbe = r05PresentationProbe;
         this.s04TouchSlop = ViewConfiguration.get(activity).getScaledTouchSlop();
         this.pendingFailureInjection = failureInjection;
         this.pendingRecoveryFailureInjection = recoveryFailureInjection;
@@ -446,6 +462,13 @@ final class R08WgpuSurface extends SurfaceView
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         surfaceAvailable = true;
+        if (r05PresentationProbe) {
+            r05SurfaceGeneration++;
+            Log.i(TAG, "SPINON_R05_SURFACE renderer=wgpu type=SurfaceView generation="
+                    + r05SurfaceGeneration);
+            Log.i(TAG, "SPINON_R05_SIGNAL_CAPABILITY renderer=wgpu signal=Perfetto_FrameTimeline_on_SurfaceView available=false reason=unsupported_surface_type api="
+                    + Build.VERSION.SDK_INT);
+        }
         if (r13) Log.i(TAG, "SPINON_R13_SURFACE=created");
     }
 
@@ -463,6 +486,11 @@ final class R08WgpuSurface extends SurfaceView
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
         surfaceAvailable = false;
+        if (r05InputPending) {
+            Log.i(TAG, "SPINON_R05_INPUT=excluded renderer=wgpu reason=surface_destroyed input_seq="
+                    + r05PendingInputSequence + " generation=" + r05SurfaceGeneration);
+            r05InputPending = false;
+        }
         resetS04Touch();
         s04ReadbackPending = false;
         s04ReadbackFinished = false;
@@ -478,7 +506,28 @@ final class R08WgpuSurface extends SurfaceView
     @Override
     public void setActivationCount(int count) {
         activationCount = count;
-        if (!s04) drawCurrentFrame();
+        if (!s04) {
+            if (r05PresentationProbe) {
+                long handlerUptimeNanos = r05UptimeNanos();
+                long sequence = r05InputPending ? r05PendingInputSequence : 0;
+                long eventTimeNanos = r05InputPending ? r05PendingEventTimeNanos : 0;
+                Trace.beginSection("SpinonR05:revision-submit");
+                Trace.setCounter("SpinonR05RenderRevision", activationCount);
+                boolean accepted = drawCurrentFrame();
+                long presentCallReturnNanos = r05UptimeNanos();
+                Trace.endSection();
+                Log.i(TAG, "SPINON_R05_SUBMIT renderer=wgpu input_seq=" + sequence
+                        + " revision=" + activationCount + " generation=" + r05SurfaceGeneration
+                        + " event_time_ns=" + eventTimeNanos
+                        + " handler_uptime_ns=" + handlerUptimeNanos
+                        + " queue_present_return_uptime_ns=" + presentCallReturnNanos
+                        + " draw_accepted=" + accepted + " present_signal=unavailable"
+                        + " attribution=" + (r05InputPending ? "input" : "unmatched"));
+                r05InputPending = false;
+            } else {
+                drawCurrentFrame();
+            }
+        }
     }
 
     void onHostPaused() {
@@ -511,7 +560,12 @@ final class R08WgpuSurface extends SurfaceView
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (!s04) return super.onTouchEvent(event);
+        if (!s04) {
+            if (r05PresentationProbe) {
+                return handleR05Touch(event);
+            }
+            return super.onTouchEvent(event);
+        }
         switch (event.getActionMasked()) {
             case MotionEvent.ACTION_DOWN:
                 s04TouchTracking = rendererHandle != 0 && hostActive;
@@ -537,6 +591,88 @@ final class R08WgpuSurface extends SurfaceView
             default:
                 return s04TouchTracking;
         }
+    }
+
+    private boolean handleR05Touch(MotionEvent event) {
+        switch (event.getActionMasked()) {
+            case MotionEvent.ACTION_DOWN:
+                r05InputPending = false;
+                r05GestureHadMultiplePointers = event.getPointerCount() != 1;
+                r05GestureStartedInTarget = isR05TargetPoint(event.getX(), event.getY());
+                r05GestureStartX = event.getX();
+                r05GestureStartY = event.getY();
+                setPressed(r05GestureStartedInTarget);
+                return true;
+            case MotionEvent.ACTION_POINTER_DOWN:
+                r05GestureHadMultiplePointers = true;
+                setPressed(false);
+                return true;
+            case MotionEvent.ACTION_MOVE: {
+                float deltaX = event.getX() - r05GestureStartX;
+                float deltaY = event.getY() - r05GestureStartY;
+                if (deltaX * deltaX + deltaY * deltaY > s04TouchSlop * s04TouchSlop
+                        || !isR05TargetPoint(event.getX(), event.getY())) {
+                    r05GestureStartedInTarget = false;
+                    setPressed(false);
+                }
+                return true;
+            }
+            case MotionEvent.ACTION_POINTER_UP:
+                r05GestureHadMultiplePointers = true;
+                return true;
+            case MotionEvent.ACTION_UP:
+                setPressed(false);
+                if (r05GestureHadMultiplePointers || event.getPointerCount() != 1) {
+                    Log.i(TAG, "SPINON_R05_INPUT=excluded renderer=wgpu reason=multiple_pointers");
+                    return true;
+                }
+                if (!r05GestureStartedInTarget || !isR05TargetPoint(event.getX(), event.getY())) {
+                    Log.i(TAG, "SPINON_R05_INPUT=excluded renderer=wgpu reason=outside_target");
+                    return true;
+                }
+                r05InputSequence++;
+                r05PendingInputSequence = r05InputSequence;
+                boolean nanos = Build.VERSION.SDK_INT >= 34;
+                r05PendingEventTimeNanos = nanos
+                        ? event.getEventTimeNanos() : event.getEventTime() * 1_000_000L;
+                long handlerUptimeNanos = r05UptimeNanos();
+                Trace.beginSection("SpinonR05:input-up");
+                Trace.setCounter("SpinonR05InputSequence", r05InputSequence);
+                Trace.endSection();
+                r05InputPending = true;
+                Log.i(TAG, "SPINON_R05_INPUT renderer=wgpu input_seq=" + r05InputSequence
+                        + " phase=ACTION_UP timestamp_precision="
+                        + (nanos ? "nanosecond_representation" : "millisecond_fallback")
+                        + " input_source=unknown"
+                        + " handler_clock_resolution="
+                        + (Build.VERSION.SDK_INT >= 35 ? "nanosecond_api" : "millisecond_fallback")
+                        + " event_time_ns=" + r05PendingEventTimeNanos
+                        + " handler_uptime_ns=" + handlerUptimeNanos
+                        + " generation=" + r05SurfaceGeneration);
+                performClick();
+                return true;
+            case MotionEvent.ACTION_CANCEL:
+                setPressed(false);
+                r05InputPending = false;
+                r05GestureHadMultiplePointers = false;
+                Log.i(TAG, "SPINON_R05_INPUT=excluded renderer=wgpu reason=cancelled");
+                return true;
+            default:
+                return true;
+        }
+    }
+
+    private boolean isR05TargetPoint(float x, float y) {
+        float normalizedX = x / Math.max(1, getWidth());
+        float normalizedY = y / Math.max(1, getHeight());
+        return normalizedX >= 0.11f && normalizedX <= 0.89f
+                && normalizedY >= 0.40f && normalizedY <= 0.60f;
+    }
+
+    private static long r05UptimeNanos() {
+        return Build.VERSION.SDK_INT >= 35
+                ? SystemClock.uptimeNanos()
+                : SystemClock.uptimeMillis() * 1_000_000L;
     }
 
     private void updateS04TouchMovement(MotionEvent event) {
