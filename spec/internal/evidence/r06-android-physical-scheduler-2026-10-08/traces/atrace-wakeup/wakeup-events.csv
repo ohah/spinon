@@ -1,0 +1,8 @@
+capture,owner_tid,waker_comm,waker_tid,sched_wakeup_ts,owner_first_switch_in_ts,wake_to_run_us,owner_switch_out_R,owner_switch_out_S,entries_buffer,entries_written,buffer_overrun
+run-1,15638,spinon-platform,16035,2866844.904415,2866844.905106,691.0,10,1,21641,21641,no
+run-1,15638,V8 DefaultWorke,15646,2866844.906026,2866844.906125,99.0,10,1,21641,21641,no
+run-2,15638,spinon-platform,15749,2866953.654535,2866953.654550,15.0,4,0,13118,13118,no
+run-3,15638,spinon-platform,15884,2866962.052879,2866962.052919,40.0,7,0,14111,14111,no
+cancel-1,15638,spinon-platform,16035,2867071.320703,2867071.320723,20.0,5,1,21407,21407,no
+app-markers-1,15638,spinon-platform,15637,2867132.406911,2867132.406938,27.0,4,2,19239,19239,no
+app-markers-1,15638,V8 DefaultWorke,15646,2867132.409458,2867132.409471,13.0,4,2,19239,19239,no

@@ -66,6 +66,10 @@ Chromium의 기본 `TaskQueue` 문서는 우선순위가 낮은 큐에 일반적
 
 ## 현재 검증과 남은 검증 관문
 
+### Android 실기기 wake 원인 확인
+
+2026-10-08 Android 16/API 36 실기기에서 Perfetto `linux.ftrace` 없이 `atrace sched` 이벤트를 직접 기록했다. 독립 캡처 5개 모두에서 JS owner 대상 `spinon-platform-call` wake 요청이 관측됐고, 앱 표식 캡처는 scheduler enqueue와 요청 순서를 연결했다. 이는 Rust 큐 삽입 뒤 `Condvar::notify_one()` 및 owner의 빈 큐 `Condvar::wait()`와 일치한다. 두 trace에서는 V8 DefaultWorker의 추가 wake도 관측됐지만 내부 callsite는 미확정이다. owner wake 후 첫 CPU 실행은 관측별 15–691µs였으며 ATrace를 켠 소표본이므로 성능 기준으로 쓰지 않는다. 취소 trace에서는 실행 중인 owner가 V8 종료 요청 뒤 `status=-8`로 반환해 큐 대기로 복귀했고, 해당 취소 호출 뒤 owner 대상 scheduler wake는 없었다. 세부 이벤트와 한계는 [Android 실기기 wake 원인 근거](evidence/r06-android-physical-scheduler-2026-10-08.md#android-atrace-직접-wake-원인)에 둔다.
+
 분리 전에는 가짜 V8 혼합 우선순위 테스트에서 실행 순서를 확인했다. 분리 후에는 `mise exec -- bun run test`(Bun 1개·Rust 33개), Android ARM64 debug APK 빌드와 Android 16 에뮬레이터 취소·대기 이벤트 실행, iOS Simulator 빌드와 iPhone 17 Pro 자동 시나리오를 통과했다. 후속 실제 V8 단일 배치 검증에서 두 시뮬레이터 모두 `user-blocking` → `user-visible` → `background` 순서와 각 등급 FIFO를 통과했다. iOS에서 취소·대기 이벤트, heartbeat, owner thread 일치와 세션 재생성도 확인했다. Android 16/API 36 ARM64 실기기에서는 실제 V8 우선순위 probe를 3회 통과했고, 긴 동기 JavaScript 평가 중 입력·취소와 dispatch 대기를 5회 기록했다. 추가 `simpleperf --trace-offcpu` 5회에서 owner thread의 101개 schedule-out→schedule-in 구간은 p50 15.117µs, p95 69.102µs, 최대 730.976µs였다. 별도 한 번은 `/proc/<pid>/task/<tid>/schedstat`을 읽어 8.8초 동안 CPU 시간 8.711520849초, runqueue 대기 0.228829ms 증가를 교차 확인했다. 이 누적 카운터는 개별 스케줄 원인을 나타내지 않으며 off-CPU 구간 표본과 합치지 않았다. 같은 긴 JS 조건의 dispatch queue residence p50 1,100,059µs보다 OS off-CPU 구간이 짧아 이 실험에서 OS 재스케줄 대기는 긴 JS 이벤트 대기의 주원인이 아니었다. 이 계측은 Android 실기기 한 대의 debuggable 진단 경로이며 release 성능·다른 기기·iOS 실기기 결과가 아니다. 지속적인 상위 등급 유입 시 기아·공정성은 확인하지 않았다. 상세 결과는 [R06 검증 기록](evidence/r06-task-scheduler-2026-09-30.md), [실제 V8 우선순위 시뮬레이터 검증](evidence/r06-priority-simulators-2026-09-30.md), [Android 실기기 스케줄링 계측](evidence/r06-android-physical-scheduler-2026-10-08.md)에 둔다.
 
 명령별 결과와 테스트 범위: [R06 Chromium 참고 우선순위 큐 구현 확인](evidence/r06-task-scheduler-2026-09-30.md).

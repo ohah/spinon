@@ -1,0 +1,5 @@
+커널 sched tracepoint 접근 탐색 결과
+- system-wide simpleperf: 커널 sample 권한 오류로 거부됨: Can't record kernel samples. Please try -e sched:sched_waking:u instead.
+- simpleperf --app + sched tracepoint filter: 0 samples, 0 lost.
+- simpleperf --app + unfiltered sched:sched_switch: 0 samples, 0 lost.
+- Android atrace sched category: 성공. 앱 marker가 필요할 때 -a dev.spinon.bootstrap 추가.
