@@ -39,6 +39,8 @@ React, Vue, Svelte는 서로 다른 작성 문법과 상태 관리 방식을 가
 
 S03.3 세션 종료 검증은 [종료 경합 사전 비교 모델](internal/evidence/s03-shutdown-precomparison-2026-10-05.md)에 고정했다. 이 검증은 Rust 세션의 `Closing` 전환, 실행 중 V8 취소, 대기 명령의 종료 오류, 이후 접수 거부와 소유 스레드 종료를 대상으로 한다. raw C ABI 세션 포인터에 대한 동시 `free`는 기존 계약에서 금지하므로 시험하지 않는다.
 
+R06 우선순위 공정성 후보 비교의 동일 입력·정책 매개변수·판정 기준은 [R06 공정성 정책 비교 모델](internal/evidence/r06-priority-policy-comparison-2026-10-08.md)에 기록한다. 이 모델은 선택 규칙만 비교하는 결정론적 내부 fixture이며 제품 동작이나 사용자 API를 정하지 않는다.
+
 
 ## 적합성의 최소 단위
 
