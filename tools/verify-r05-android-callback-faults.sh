@@ -6,6 +6,30 @@ android_package="dev.spinon.bootstrap"
 run_id="$(date -u +%Y%m%dT%H%M%SZ)-$$"
 result_dir="${SPINON_R05_CALLBACK_OUTPUT_DIR:-$repo_root/build/spinon/r05-callback-faults/$run_id}"
 logcat_pid=""
+expected_api_full="${SPINON_R05_CALLBACK_EXPECTED_API_FULL:-37.2}"
+
+case "$expected_api_full" in
+  35)
+    expected_api_level="35"
+    expected_page_size="4096"
+    ;;
+  37.0)
+    expected_api_level="37"
+    expected_page_size="4096"
+    ;;
+  37.1)
+    expected_api_level="37"
+    expected_page_size="16384"
+    ;;
+  37.2)
+    expected_api_level="37"
+    expected_page_size="16384"
+    ;;
+  *)
+    printf '실패: 허용되지 않은 API 대상입니다: %s\n' "$expected_api_full" >&2
+    exit 1
+    ;;
+esac
 
 fail() {
   printf '실패: %s\n결과 폴더: %s\n' "$1" "$result_dir" >&2
@@ -38,19 +62,36 @@ android_serial="${SPINON_ANDROID_EMULATOR_SERIAL:-}"
 api_level="$("$adb" -s "$android_serial" shell getprop ro.build.version.sdk | tr -d '\r')"
 api_full="$("$adb" -s "$android_serial" shell getprop ro.build.version.sdk_full | tr -d '\r')"
 page_size="$("$adb" -s "$android_serial" shell getconf PAGE_SIZE | tr -d '\r')"
-[[ "$api_level" == "37" && "$api_full" == "37.2" && "$page_size" == "16384" ]] \
-  || fail "API 37.2·16KB AVD가 아닙니다: api=$api_level api_full=$api_full page_size=$page_size"
+if [[ "$expected_api_full" == "35" ]]; then
+  [[ "$api_level" == "$expected_api_level" && "$page_size" == "$expected_page_size" ]] \
+    || fail "API 35·4KB AVD가 아닙니다: api=$api_level api_full=${api_full:-미제공} page_size=$page_size"
+else
+  [[ "$api_level" == "$expected_api_level" && "$api_full" == "$expected_api_full" \
+      && "$page_size" == "$expected_page_size" ]] \
+    || fail "API ${expected_api_full}·${expected_page_size}B AVD가 아닙니다: api=$api_level api_full=${api_full:-미제공} page_size=$page_size"
+fi
 
 [[ ! -e "$result_dir" ]] || fail "기존 결과를 덮어쓰지 않도록 새 경로를 지정하세요"
 mkdir -p "$result_dir"
 {
   printf 'source_head=%s\n' "$(git -C "$repo_root" rev-parse HEAD)"
-  printf 'source_worktree_dirty=%s\n' "$(git -C "$repo_root" status --porcelain | wc -l | tr -d ' ')"
+  printf 'source_worktree_dirty=%s\n' "$(git -C "$repo_root" status --porcelain --untracked-files=no | wc -l | tr -d ' ')"
   printf 'android_serial=%s\n' "$android_serial"
   printf 'model=%s\n' "$("$adb" -s "$android_serial" shell getprop ro.product.model | tr -d '\r')"
-  printf 'api=%s\napi_full=%s\npage_size=%s\n' "$api_level" "$api_full" "$page_size"
+  printf 'expected_api_full=%s\nexpected_page_size=%s\n' "$expected_api_full" "$expected_page_size"
+  printf 'api=%s\napi_full=%s\npage_size=%s\n' "$api_level" "${api_full:-unavailable}" "$page_size"
   printf 'abi=%s\n' "$("$adb" -s "$android_serial" shell getprop ro.product.cpu.abi | tr -d '\r')"
 } > "$result_dir/environment.txt"
+{
+  for source_file in \
+    platforms/android/app/src/main/java/dev/spinon/bootstrap/MainActivity.java \
+    platforms/android/app/src/main/java/dev/spinon/bootstrap/R05PresentFenceProbe.java \
+    platforms/android/app/src/debug/java/dev/spinon/bootstrap/R05PresentFenceFailureFixture.java \
+    platforms/android/app/src/release/java/dev/spinon/bootstrap/R05PresentFenceFailureFixture.java \
+    tools/verify-r05-android-callback-faults.sh; do
+    shasum -a 256 "$repo_root/$source_file"
+  done
+} > "$result_dir/source-files.sha256"
 
 printf 'Android debug APK 빌드\n'
 if ! mise exec -- bun run build:android > "$result_dir/android-build.log" 2>&1; then
@@ -94,4 +135,5 @@ app_pid="$("$adb" -s "$android_serial" shell pidof "$android_package" | tr -d '\
 [[ -n "$app_pid" ]] || fail "검증 후 앱 PID가 없습니다"
 printf 'app_pid=%s\n' "$app_pid" > "$result_dir/app-pid.txt"
 "$adb" -s "$android_serial" exec-out screencap -p > "$result_dir/result.png"
-printf 'R05 callback fault fixture 통과\n결과 폴더: %s\n' "$result_dir"
+printf 'R05 callback fault fixture 통과: API %s\n결과 폴더: %s\n' \
+  "$expected_api_full" "$result_dir"

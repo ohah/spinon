@@ -1,0 +1,5 @@
+d8ab79fb8b491fd6d34f2876a083039267e9bf5d4128118fd3e54ec0250567fb  /private/tmp/spinon-r05-present-api-audit/platforms/android/app/src/main/java/dev/spinon/bootstrap/MainActivity.java
+91a04893f11a7e1ad2baa63ea477cbf44ee083d98af2dc8885a6303948ac046e  /private/tmp/spinon-r05-present-api-audit/platforms/android/app/src/main/java/dev/spinon/bootstrap/R05PresentFenceProbe.java
+2ba797983757722540fb0f03ed4223aa99e6cb0dfbe78798089b6f05e1278776  /private/tmp/spinon-r05-present-api-audit/platforms/android/app/src/debug/java/dev/spinon/bootstrap/R05PresentFenceFailureFixture.java
+46b5bad6393e62a69104a462d8037ae76eafa9d21aa291b1b6de5f08eed48ebc  /private/tmp/spinon-r05-present-api-audit/platforms/android/app/src/release/java/dev/spinon/bootstrap/R05PresentFenceFailureFixture.java
+5f5b01c1c59dd992d8e2c87598b9071ea69b6b626d71eb0320711a68e78d7119  /private/tmp/spinon-r05-present-api-audit/tools/verify-r05-android-callback-faults.sh
