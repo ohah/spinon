@@ -1,6 +1,6 @@
 # R05.3 · Android 실기기 물리 입력과 present-fence 연결 계획
 
-**상태:** 계획 20관점 검토 완료 · 실기기 synthetic provenance 재대조 통과 · 실제 touchscreen positive sample 대기
+**상태:** 계획 20관점 검토 완료 · synthetic provenance 재대조 통과 · Android Release smoke 통과 · 실제 touchscreen positive sample 대기
 **상위 계획:** [입력→표시 신호 상관 계측](r05-input-to-presentation.md) · [R05 상태 대장](../spec/STATUS.md) · [비동기 fence 관찰 구현](r05-android-async-present-fence.md)
 
 ## 목적과 범위
@@ -75,3 +75,7 @@
 ### 계획 검토 결과
 
 20개 실패 관점을 각각 확인했다. raw evdev positive/negative separation, 입력-source 보조 필드의 한계, exact frame join, clock interval, scanout 표현 경계를 계획에 반영했다. 이 계획의 적대 검토는 실행 후 구현·수집물 검토를 대체하지 않는다. 실행 뒤에는 실제 로그·프로세스 수명·원본 개수를 대상으로 새로운 20개 관점을 검토한다.
+
+## 2026-10-09 후속 실기기·Release 실행
+
+직접 touchscreen 수집을 32분 30초 유지했으나 raw contact와 app `ACTION_UP`이 없어 positive sample은 0건이다. 별도로 고정 V8 revision을 Android arm64 Release로 빌드하고 `assembleRelease`, Release 기본 cold launch, `spinon_r05_async_fence_wait=true`의 `debug_only` 거부를 실기기에서 확인했다. 임시 debug signing으로 설치한 뒤 PR #79와 동일한 debug APK를 복구하고 Chrome foreground와 화면 설정을 원상 대조했다. 이 결과는 physical 입력 검증을 대체하지 않으며 R05.3은 미완료다. 상세 실행과 별도 런타임 적대 검토는 [실기기 입력·Release smoke 근거](../spec/internal/evidence/r05-android-physical-touch-positive-2026-10-09/README.md), [런타임 검토](../spec/internal/evidence/r05-android-physical-touch-positive-2026-10-09/runtime-review.md)에 있다.
