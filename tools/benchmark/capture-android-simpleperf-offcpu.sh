@@ -8,6 +8,15 @@ repeats=5
 duration_seconds=6
 sample_frequency=1000
 output_root="${repo_root}/build/spinon/benchmark/android-simpleperf-offcpu"
+remote_profile=""
+
+cleanup_remote_profile() {
+    if [[ -n "$remote_profile" && -n "$adb_serial" ]] && command -v adb >/dev/null 2>&1; then
+        adb -s "$adb_serial" shell rm -f "$remote_profile" >/dev/null 2>&1 || true
+    fi
+}
+
+trap cleanup_remote_profile EXIT
 
 usage() {
     cat <<'EOF'
@@ -68,6 +77,9 @@ done
 [[ "$repeats" =~ ^[0-9]+$ ]] || fail "--repeats는 양의 정수여야 합니다"
 [[ "$duration_seconds" =~ ^[0-9]+$ ]] || fail "--duration은 양의 정수여야 합니다"
 [[ "$sample_frequency" =~ ^[0-9]+$ ]] || fail "--frequency는 양의 정수여야 합니다"
+repeats=$((10#$repeats))
+duration_seconds=$((10#$duration_seconds))
+sample_frequency=$((10#$sample_frequency))
 (( repeats >= 1 && repeats <= 20 )) || fail "--repeats는 1~20 범위여야 합니다"
 (( duration_seconds >= 1 && duration_seconds <= 8 )) \
     || fail "--duration은 1~8초 범위여야 하며, 긴 JavaScript 자동 취소보다 짧아야 합니다"
@@ -319,6 +331,14 @@ for ((run = 1; run <= repeats; run++)); do
     adb -s "$adb_serial" shell sha256sum "$remote_profile" \
         > "${run_dir}/device-profile.sha256"
     shasum -a 256 "${run_dir}/profile.perf.data" > "${run_dir}/host-profile.sha256"
+    device_profile_sha="$(awk '{print $1}' "${run_dir}/device-profile.sha256")"
+    host_profile_sha="$(awk '{print $1}' "${run_dir}/host-profile.sha256")"
+    [[ "$device_profile_sha" =~ ^[[:xdigit:]]{64}$ \
+        && "$device_profile_sha" == "$host_profile_sha" ]] \
+        || fail "실행 ${run}: 기기·호스트 profile SHA-256이 일치하지 않습니다"
+    adb -s "$adb_serial" shell rm -f "$remote_profile" \
+        || fail "실행 ${run}: 기기 임시 profile을 정리하지 못했습니다"
+    remote_profile=""
     printf '실행 %s/%s: 앱 프로세스 on/off-CPU를 기록하고 JavaScript owner TID를 확인했습니다.\n' \
         "$run" "$repeats"
     if grep -Fq 'status=available' "${run_dir}/schedstat-delta.txt"; then
