@@ -1,0 +1,10 @@
+실행 당시 `/dev/input/event6`:
+
+- name: `sec_touchscreen`
+- input property: `INPUT_PROP_DIRECT`
+- `ABS_MT_SLOT`: 0–9
+- `ABS_MT_POSITION_X`: 0–4095
+- `ABS_MT_POSITION_Y`: 0–4095
+- `ABS_MT_TRACKING_ID`: 0–65535
+
+장치 번호는 연결 시점의 값이며 고정 식별자로 취급하지 않는다. 이 run의 두 raw 수집 파일은 0 bytes다. 합성 tap 11건은 앱 로그에 들어왔으나 raw touchscreen stream에는 나타나지 않았다.

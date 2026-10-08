@@ -1,0 +1,7 @@
+--------- beginning of main
+1478742.540 25441 25441 I SpinonBootstrap: SPINON_R05_FENCE_WAIT_START api=36 timeout_ms=250 workers=2 queue_capacity=64
+1478742.557 25441 25441 I SpinonBootstrap: SPINON_R08_UI=ready text-input=EditText accessibility=button+EditText
+1478742.587 25441 25441 I SpinonBootstrap: SPINON_R05_SURFACE renderer=wgpu type=SurfaceView generation=1
+1478742.588 25441 25441 I SpinonBootstrap: SPINON_R05_SIGNAL_CAPABILITY renderer=wgpu signal=SurfaceView_JankData available=false reason=api_below_37 api=36 api_full=3600001
+1478742.621 25441 25441 I SpinonBootstrap: SPINON_R08_WGPU=ready backend=Vulkan device=IntegratedGpu name=Samsung Xclipse 940 google_display_timing_supported=true format=Rgba8Unorm color_space=Auto supported_formats=[Rgba8UnormSrgb, Rgba8Unorm, Rgba16Float, Rgb10a2Unorm]
+1478742.621 25441 25441 I SpinonBootstrap: SPINON_R08_WGPU_SURFACE=size 1080x2340
