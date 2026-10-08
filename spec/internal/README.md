@@ -51,6 +51,7 @@
 - [R06 · V8 런타임 세션 실험](./evidence/r06-v8-runtime-thread-2026-09-30.md) — Android 16 에뮬레이터와 iOS 26.2 시뮬레이터의 취소·입력·세션 재생성 근거와 한계.
 - [R06 · Chromium 참고 우선순위 큐](./evidence/r06-task-scheduler-2026-09-30.md) — strict-priority/FIFO 선택기, fake V8 순서 테스트, 분리 후 Rust 33개 테스트와 초기 Android·iOS 결과.
 - [R06 · 실제 V8 우선순위 시뮬레이터 검증](./evidence/r06-priority-simulators-2026-09-30.md) — Android 16 에뮬레이터와 iPhone 17 Pro / iOS 26.2 시뮬레이터에서 혼합 여섯 작업의 실제 V8 선택 순서와 등급별 FIFO를 확인한 후속 기록.
+- [R06 · Android 우선순위 유한 유입 검증](./evidence/r06-priority-fairness-android-2026-10-08.md) — Android 16 에뮬레이터에서 64개 대기 용량과 뒤늦은 높은 등급 입력 96개가 낮은 등급 작업을 지연시키는 유한 사례, 재현 명령·로그·캡처와 한계를 기록.
 - `evidence/r06-priority-android-emulator-2026-09-30.log` · `evidence/spinon-r06-priority-android-2026-09-30.png` · `evidence/r06-priority-ios-simulator-2026-09-30.log` · `evidence/spinon-r06-priority-ios-simulator-2026-09-30.png` — 원본 로그와 화면 캡처.
 - `evidence/r06-ios-simulator-post-split-2026-09-30.log` · `evidence/spinon-r06-ios-post-split-2026-09-30.png` — 저장 공간 확보 뒤 현재 런타임 분리 코드로 수행한 iOS 26.2 시뮬레이터 검증 원본 로그와 화면.
 - `evidence/r06-android-queue-pressure-2026-09-30.log` — 무한 JavaScript 중 주입한 UI 탭, 접수된 이벤트, 플랫폼 대기열의 명시적 거부와 세션 종료 원본 로그(저장소 파일).

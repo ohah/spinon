@@ -105,6 +105,30 @@ pub unsafe extern "C" fn spinon_runtime_priority_probe(
     status
 }
 
+/// 실제 V8 세션에서 높은 우선순위 작업 유입 중 낮은 등급 대기 작업의 선택 순서를 확인합니다.
+///
+/// # Safety
+///
+/// `output`은 `output_capacity` 바이트만큼 쓸 수 있는 메모리를 가리켜야 합니다.
+#[unsafe(no_mangle)]
+#[cfg(target_os = "android")]
+pub unsafe extern "C" fn spinon_runtime_priority_fairness_probe(
+    output: *mut c_char,
+    output_capacity: usize,
+) -> i32 {
+    if output.is_null() || output_capacity == 0 {
+        return -1;
+    }
+    let (status, report) = match spinon_runtime::run_priority_fairness_probe() {
+        Ok(report) => (0, report),
+        Err(error) => (-7, error),
+    };
+    if !write_report(output, output_capacity, &report) {
+        return -3;
+    }
+    status
+}
+
 /// 실제 V8 세션의 종료·대기 작업·종료 후 접수 경계를 확인하는 내부 진단 함수입니다.
 ///
 /// # Safety

@@ -60,6 +60,7 @@ public final class MainActivity extends Activity {
     private static native byte[] nativeSessionEval(long session, byte[] sourceUtf8);
     private static native byte[] nativeSessionDispatch(long session, int nodeId);
     private static native byte[] nativeSessionPriorityProbe();
+    private static native byte[] nativeSessionPriorityFairnessProbe();
     private static native byte[] nativeSessionShutdownProbe();
     private static native int nativeSessionCancel(long session);
     private static native int nativeSessionMemoryPressure(long session, int level);
@@ -255,7 +256,7 @@ public final class MainActivity extends Activity {
         root.addView(title);
 
         TextView description = new TextView(this);
-        description.setText("개발 전용 · 실제 V8의 세 우선순위 선택과 등급별 FIFO를 확인합니다");
+        description.setText("개발 전용 · 실제 V8 우선순위, FIFO, 높은 등급 유입 중 기아를 확인합니다");
         description.setTextColor(Color.rgb(170, 184, 207));
         description.setTextSize(13);
         description.setPadding(0, Math.round(8 * density), 0, Math.round(12 * density));
@@ -279,11 +280,14 @@ public final class MainActivity extends Activity {
         setContentView(root);
 
         bootstrapExecutor.execute(() -> {
-            String result = decode(nativeSessionPriorityProbe());
+            String priority = decode(nativeSessionPriorityProbe());
+            String fairness = decode(nativeSessionPriorityFairnessProbe());
+            String result = priority + " " + fairness;
             Log.i(TAG, "SPINON_PRIORITY_PROBE " + result);
             runOnUiThread(() -> {
-                boolean passed = result.contains("status=0 priority_probe=PASS");
-                status.setText(passed ? "실제 V8 우선순위 검증 통과" : "실제 V8 우선순위 검증 실패");
+                boolean passed = result.contains("status=0 priority_probe=PASS")
+                        && result.contains("status=0 priority_stream_probe=PASS");
+                status.setText(passed ? "실제 V8 우선순위·기아 검증 통과" : "실제 V8 우선순위·기아 검증 실패");
                 report.setText(result
                         .replace(" priority_probe=", "\npriority_probe=")
                         .replace(" blocker_status=", "\n차단 작업 status=")

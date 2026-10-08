@@ -50,6 +50,8 @@ SPINON_IOS_SIMULATOR_UDID=ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D \
 
 테스트 목적·단일 배치의 범위와 남은 한계는 [R06 우선순위 검증 기록](spec/internal/evidence/r06-priority-simulators-2026-09-30.md)에 있습니다.
 
+Android 에뮬레이터에서 높은 우선순위 작업이 계속 접수될 때 낮은 등급이 밀리는 유한 사례를 확인하려면 `SPINON_ANDROID_EMULATOR_SERIAL=emulator-5554 mise exec -- bun run verify:r06-priority:fairness:android`를 실행합니다. 이 명령은 Android 에뮬레이터만 대상으로 하고, 결과·범위·한계는 [R06 Android 유한 유입 기록](spec/internal/evidence/r06-priority-fairness-android-2026-10-08.md)에 둡니다.
+
 문서 사이트는 첫 공식 릴리스 전까지 자동 배포하지 않습니다. GitHub Pages 워크플로는 수동 실행만 허용하며, 별도 요청 없이 실행하지 않습니다. `packages/docs/rspress.config.ts`의 기본 경로는 `/spinon/`입니다.
 
 화면 이동과 딥링크의 공통 의미: [라우팅 명세](spec/0006-routing.md)

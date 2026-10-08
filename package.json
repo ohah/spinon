@@ -18,6 +18,7 @@
     "test:rust": "cargo test --locked --workspace",
     "test": "bun run test:js && bun run test:css-reference && cargo test --locked --workspace",
     "verify:r06-priority:simulators": "bash tools/verify-r06-priority-simulators.sh",
+    "verify:r06-priority:fairness:android": "bash tools/verify-r06-priority-fairness-android.sh",
     "verify:s03-dom-lifecycle:simulators": "bash tools/verify-s03-dom-lifecycle-simulators.sh",
     "verify:s03-shutdown:simulators": "bash tools/verify-s03-shutdown-simulators.sh",
     "build:android": "bash tools/build-android-app.sh",

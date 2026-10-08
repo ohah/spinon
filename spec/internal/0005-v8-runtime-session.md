@@ -9,7 +9,7 @@
 - Android ARM64 앱 경로: V8 소스의 `out/boson-android-mac/args.gn`에서 `v8_jitless = false`를 확인했다. Android 16 에뮬레이터에서 백그라운드 입력, 실제 V8 취소 후 같은 Isolate 재사용, Activity 종료·세션 재생성, 플랫폼 작업 대기열 압력을 확인했다.
 - Android 취소 UI: 기본 APK에서 긴 평가 시작·취소 버튼의 활성 전이와 실행 중 UI 입력을 확인했다. 취소 요청 `status=0`, 실제 평가 종료 `status=-8`, 취소 중 접수한 dispatch `status=0`을 확인하고 화면에는 `취소 완료`를 표시한다. 상세 원본은 [Android 긴 JavaScript 입력·취소 근거](evidence/s03-android-long-js-ui-2026-10-05.md)에 둔다. 이는 진단 화면 상태 검증이며 장시간 작업을 계속 실행하면서 JS 이벤트를 선점 처리하는 기능은 아니다.
 - iOS ARM64 시뮬레이터: iPhone 17 Pro / iOS 26.2에서 백그라운드 부팅, 수동 UIKit 입력, 실제 V8 무한 평가 취소 후 대기 이벤트 처리, 세션 종료·재생성을 확인했다. 분리 후 빌드에서도 자동 시나리오를 다시 통과했다. 시뮬레이터 V8 GN 설정은 `v8_jitless = false`다. 실기기 실행과 JITless 기기 정책은 확인하지 않았다.
-- 우선순위 선택: Android 16 ARM64 에뮬레이터와 iPhone 17 Pro / iOS 26.2 시뮬레이터에서 실제 V8 차단 작업을 취소한 뒤 섞어서 접수한 여섯 작업의 strict-priority 선택 및 등급별 FIFO를 확인했다. 두 환경의 V8 GN 설정은 `v8_jitless = false`다. 검증 절차와 원본은 [실제 V8 우선순위 시뮬레이터 검증](evidence/r06-priority-simulators-2026-09-30.md)에 둔다.
+- 우선순위 선택: Android 16 ARM64 에뮬레이터와 iPhone 17 Pro / iOS 26.2 시뮬레이터에서 실제 V8 차단 작업을 취소한 뒤 섞어서 접수한 여섯 작업의 strict-priority 선택 및 등급별 FIFO를 확인했다. 두 환경의 V8 GN 설정은 `v8_jitless = false`다. 추가로 Android 16 ARM64 에뮬레이터에서 별도 세션을 열어 높은 등급 작업 159개가 먼저 실행되고 먼저 접수된 `background` 작업이 마지막에 선택되는 유한 유입 사례를 최종 코드로 다섯 번 확인했다. 무한 유입 기아·공정성 정책은 검증하지 않았다. [기본 단일 배치 기록](evidence/r06-priority-simulators-2026-09-30.md) · [Android 유한 유입 기록](evidence/r06-priority-fairness-android-2026-10-08.md).
 - 공개 DOM·HostDocument·GPU·React·Fetch·Promise·타이머 API는 범위 밖이다.
 - 스레드 수·공정성·성능에 관한 비교 결론은 내리지 않는다.
 
@@ -46,7 +46,8 @@
 | JavaScript 평가 | `eval(&self, source: &str, priority: TaskPriority) -> OperationResponse` | 작업을 제한된 우선순위 큐에 넣고 완료를 기다린다. Rust 문자열에 NUL이 있으면 인자 오류 `-1`을 돌려준다. |
 | 이벤트 전달 | `dispatch(&self, node_id: i32, priority: TaskPriority) -> OperationResponse` | 지정한 노드 ID 이벤트를 같은 Isolate 소유 스레드에서 처리한다. |
 | 메모리 압박 통지 | `notify_memory_pressure(&self, level: MemoryPressureLevel) -> i32` | 호스트가 선택한 단계를 V8 Isolate에 전달한다. 자동 OS 신호 연결이나 압박 판단 시점은 포함하지 않는다. |
-| 우선순위 진단 | `run_priority_probe() -> Result<String, String>` | 새 세션에서 실제 V8 단일 배치의 세 등급 선택·등급별 FIFO와 callback owner thread를 검사한다. 앱 API가 아닌 개발용 시뮬레이터 진단이다. |
+| 우선순위 진단 | `run_priority_probe() -> Result<String, String>` | 새 세션에서 실제 V8 단일 배치의 세 등급 선택·등급별 FIFO와 callback owner thread를 검사한다. 앱 API가 아닌 개발용 진단이다. |
+| Android 유한 유입 진단 | `run_priority_fairness_probe() -> Result<String, String>` | Android 개발 화면에서 별도 세션의 64개 큐 용량, 높은 등급 159개 FIFO, 먼저 접수한 낮은 작업이 마지막에 선택되는지를 검사한다. 무한 유입·공정성 보장은 검증하지 않는다. 공개 앱 API가 아니다. |
 | 종료 진단 | `run_shutdown_probe() -> Result<String, String>` | 실제 V8의 활성 평가 취소, 큐 명령 거부, 종료 후 접수 거부, 반복 종료와 worker join을 검사한다. 앱 API가 아닌 개발용 시뮬레이터 진단이다. |
 | 취소 | `cancel(&self) -> i32` | 실행 중 평가 취소 요청은 `0`, 실행 중 작업 없음은 `1`, 실패는 음수다. 대기 작업은 취소하지 않는다. |
 | 응답 | `OperationResponse { status, report }` | Rust 상태 코드와 진단 보고 문자열이다. C 버퍼 복사는 FFI 어댑터가 맡는다. |
@@ -77,6 +78,7 @@
 | `spinon_runtime_session_dispatch_with_priority` | eval과 같은 상태 코드 | 내부 실험용으로 세 등급 중 지정 |
 | `spinon_runtime_session_notify_memory_pressure` | 성공 `0`, 인자·알 수 없는 단계 `-1`, 종료 중·종료 세션 `-6` | `SpinonMemoryPressureLevel`을 V8 알림으로 전달한다. 동기 알림이며 GC 완료를 기다리거나 보장하지 않는다. |
 | `spinon_runtime_priority_probe` | 성공 `0`, 인자 오류 `-1`, 출력 부족 `-3`, 검증 실패 `-7` | 새 실제 V8 세션에서 여섯 작업 단일 배치를 검사하는 개발용 진단; 제품 API 아님 |
+| `spinon_runtime_priority_fairness_probe` | 성공 `0`, 인자 오류 `-1`, 출력 부족 `-3`, 검증 실패 `-7` | Android 앱의 내부 화면에서만 호출하는 실제 V8 유한 유입 진단; 제품 API 아님 |
 | `spinon_runtime_shutdown_probe` | 성공 `0`, 인자 오류 `-1`, 출력 부족 `-3`, 검증 실패 `-7` | 실제 V8 세션 종료와 명령 접수·거부 상태를 검사하는 개발용 진단; 제품 API 아님 |
 | `spinon_runtime_session_cancel` | 취소 요청 `0`, 실행 중 아님 `1`, 오류 음수 | 별도 제어 스레드에서 호출 가능 |
 | `spinon_runtime_session_free` | 반환값 없음 | 다른 세션 호출자와 동시 호출 금지, 취소·join으로 기다릴 수 있음 |
