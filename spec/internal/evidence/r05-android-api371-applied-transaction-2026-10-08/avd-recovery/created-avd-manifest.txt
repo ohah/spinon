@@ -1,0 +1,35 @@
+time_utc=2026-10-08T14:03:31Z
+free_kib_before_boot=107266220
+avd_name=spinon_api37_1_compat16k
+profile=pixel_6
+resolution=1080x2400
+density=420
+Pkg.Desc=System Image Page Size 16k arm64-v8a with Google APIs.
+Pkg.Revision=9
+Pkg.Dependencies=emulator#36.5.11
+AndroidVersion.ApiLevel=37.1
+AndroidVersion.ExtensionLevel=23
+AndroidVersion.IsBaseSdk=true
+SystemImage.Abi=arm64-v8a
+SystemImage.TagId=google_apis,page_size_16kb
+SystemImage.TagDisplay=Google APIs,16 KB Page Size
+SystemImage.GpuSupport=true
+Addon.VendorId=google
+Addon.VendorDisplay=Google Inc.
+ac59e1ac4fd259d3db3a709e22ed670568d6f67245d1deee5af58af523bfbd02  /Users/yoonhb/.android/avd/spinon_api37_1_compat16k.ini
+a6880dc526488b44801f43f88ac64ce05251f339bdfac57c69332ca91f61ab60  /Users/yoonhb/.android/avd/spinon_api37_1_compat16k.avd/config.ini
+booted=true
+serial=emulator-5580
+api=37
+api_full=37.1
+page_size=16384
+abi=arm64-v8a
+actual_avd_name=spinon_api37_1_compat16k
+free_kib_after_boot=106334644
+persistent_session=true
+serial=emulator-5580
+api=37
+api_full=37.1
+page_size=16384
+abi=arm64-v8a
+actual_avd_name=spinon_api37_1_compat16k

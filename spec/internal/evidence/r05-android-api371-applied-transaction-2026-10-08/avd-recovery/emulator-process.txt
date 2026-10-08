@@ -1,0 +1,1 @@
+56444       00:28 /Users/yoonhb/Library/Android/sdk/emulator/qemu/darwin-aarch64/qemu-system-aarch64 -avd spinon_api37_1_compat16k -ports 5580,5581 -gpu host -no-snapshot-load -no-snapshot-save -no-boot-anim -verbose

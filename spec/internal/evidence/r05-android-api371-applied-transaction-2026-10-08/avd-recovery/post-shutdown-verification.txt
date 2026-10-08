@@ -1,0 +1,25 @@
+time_utc=2026-10-08T14:14:22Z
+--- requested Spinon emulator shutdown ---
+serial=emulator-5580
+avd=spinon_api37_1_compat16k
+result=stopped
+qemu_pid=56444
+qemu_process_after_stop=absent
+adb_serial_after_stop=absent
+--- retained fresh AVD installation ---
+avd_ini=/Users/yoonhb/.android/avd/spinon_api37_1_compat16k.ini
+avd_data_dir=/Users/yoonhb/.android/avd/spinon_api37_1_compat16k.avd
+avd_data_dir_present=true
+avdmanager_registration=valid
+--- remaining emulator ---
+serial=emulator-5554
+avd=zl_poc
+result=left_running; belongs to a different project
+avd_data_dir_present=false
+note=This process was not stopped or repaired as part of Spinon work. avdmanager reports its registration as corrupted even though the already-running QEMU remains attached.
+--- other stale registrations reported by avdmanager ---
+spinon_api35_compat: corrupted ini; data directory missing
+spinon_api37_0_compat: corrupted ini; data directory missing
+spinon_api37_2_modern: corrupted ini; data directory missing
+spinon_api37_2: corrupted ini; data directory missing
+note=No stale registrations were deleted or rewritten.
