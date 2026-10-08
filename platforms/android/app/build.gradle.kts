@@ -29,7 +29,11 @@ tasks.configureEach {
 
 android {
     namespace = "dev.spinon.bootstrap"
-    compileSdk = 36
+    compileSdk {
+        version = release(37) {
+            minorApiLevel = 2
+        }
+    }
     buildToolsVersion = "35.0.0"
     ndkVersion = spinonNdkVersion
 

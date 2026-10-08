@@ -1,0 +1,41 @@
+Xcode 26.2
+Build version 17C52
+
+[device SDK]
+26.2
+17: @discussion Be careful when you use delta between this presentedTime and previous frame's presentedTime to animate next frame. If the frame was presented using presentAfterMinimumDuration or presentAtTime, the presentedTime might includes delays to meet your specified present time. If you want to measure how much frame you can achieve, use GPUStartTime in the first command buffer of your frame rendering and GPUEndTime of your last frame rendering to calculate the frame interval.
+42: @method addPresentedHandler
+45:- (void)addPresentedHandler:(MTLDrawablePresentedHandler)block API_AVAILABLE(macos(10.15.4), ios(10.3), macCatalyst(13.4));
+48: @property presentedTime
+52:@property(nonatomic, readonly) CFTimeInterval presentedTime API_AVAILABLE(macos(10.15.4), ios(10.3), macCatalyst(13.4));
+55: @property drawableID
+59:@property (nonatomic, readonly) NSUInteger drawableID API_AVAILABLE(macos(10.15.4), ios(10.3), macCatalyst(13.4));
+device_typecheck_exit=0
+
+[simulator SDK]
+26.2
+17: @discussion Be careful when you use delta between this presentedTime and previous frame's presentedTime to animate next frame. If the frame was presented using presentAfterMinimumDuration or presentAtTime, the presentedTime might includes delays to meet your specified present time. If you want to measure how much frame you can achieve, use GPUStartTime in the first command buffer of your frame rendering and GPUEndTime of your last frame rendering to calculate the frame interval.
+spec/internal/evidence/r05-presentation-signal-probe-2026-10-08/metal-drawable-api-probe.swift:5:18: error: value of type 'any CAMetalDrawable' has no member 'drawableID'
+ 3 | 
+ 4 | func checkDrawablePresentationAPI(_ drawable: any CAMetalDrawable) {
+ 5 |     _ = drawable.drawableID
+   |                  `- error: value of type 'any CAMetalDrawable' has no member 'drawableID'
+ 6 |     drawable.addPresentedHandler { presentedDrawable in
+ 7 |         _ = presentedDrawable.presentedTime
+
+spec/internal/evidence/r05-presentation-signal-probe-2026-10-08/metal-drawable-api-probe.swift:6:14: error: value of type 'any CAMetalDrawable' has no member 'addPresentedHandler'
+ 4 | func checkDrawablePresentationAPI(_ drawable: any CAMetalDrawable) {
+ 5 |     _ = drawable.drawableID
+ 6 |     drawable.addPresentedHandler { presentedDrawable in
+   |              `- error: value of type 'any CAMetalDrawable' has no member 'addPresentedHandler'
+ 7 |         _ = presentedDrawable.presentedTime
+ 8 |     }
+
+spec/internal/evidence/r05-presentation-signal-probe-2026-10-08/metal-drawable-api-probe.swift:12:18: error: value of type 'any CAMetalDrawable' has no member 'presentedTime'
+10 | 
+11 | func checkPresentedTime(_ drawable: any CAMetalDrawable) {
+12 |     _ = drawable.presentedTime
+   |                  `- error: value of type 'any CAMetalDrawable' has no member 'presentedTime'
+13 | }
+14 | 
+simulator_typecheck_exit=1

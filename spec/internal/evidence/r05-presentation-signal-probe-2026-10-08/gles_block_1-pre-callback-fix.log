@@ -1,0 +1,157 @@
+--------- beginning of main
+10-08 15:40:15.776 23277 23277 I SpinonBootstrap: SPINON_R08_UI=ready text-input=EditText accessibility=button+EditText
+10-08 15:40:15.911 23277 23277 I SpinonBootstrap: SPINON_R05_SURFACE renderer=opengl_es type=GLSurfaceView generation=1
+10-08 15:40:15.912 23277 23277 I SpinonBootstrap: SPINON_R05_SIGNAL_CAPABILITY renderer=opengl_es signal=SurfaceView_JankData available=true reason=registered api=37 api_full=3700002
+10-08 15:40:15.912 23277 23277 I SpinonBootstrap: SPINON_R05_SURFACE_SIZE renderer=opengl_es generation=1 size=1080x1920
+10-08 15:40:17.653 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=1 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1772259000000 handler_uptime_ns=1772260807470 generation=1
+10-08 15:40:17.653 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=1 revision=1 generation=1 event_time_ns=1772259000000 handler_uptime_ns=1772261405303 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:17.654 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:17.654 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:17.654 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=1
+10-08 15:40:17.655 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_BATCH renderer=opengl_es generation=1 batch_seq=1 record_count=1 callback_tid=55 queue_depth=0 rejected_callback_batches=0 rejected_flush_tasks=0 callback_uptime_ns=1772263394720 attribution=unmatched
+10-08 15:40:17.656 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT renderer=opengl_es signal=SurfaceView_JankData generation=1 current_generation=1 current_surface=true batch_seq=1 record_index=0 callback_tid=55 queue_depth=0 vsync_id=39363 present_time_ns=-1 present_state=unknown jank_type=2 actual_app_frame_ns=93054154 scheduled_app_frame_ns=16666666 callback_uptime_ns=1772263394720 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:40:18.034 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=2 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1772641000000 handler_uptime_ns=1772642010386 generation=1
+10-08 15:40:18.034 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=2 revision=2 generation=1 event_time_ns=1772641000000 handler_uptime_ns=1772642079720 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:18.034 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:18.034 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:18.034 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=2
+10-08 15:40:18.413 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=3 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1773019000000 handler_uptime_ns=1773020507845 generation=1
+10-08 15:40:18.413 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=3 revision=3 generation=1 event_time_ns=1773019000000 handler_uptime_ns=1773020565678 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:18.413 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:18.413 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=3
+10-08 15:40:18.413 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:18.792 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=4 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1773399000000 handler_uptime_ns=1773400341512 generation=1
+10-08 15:40:18.793 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=4 revision=4 generation=1 event_time_ns=1773399000000 handler_uptime_ns=1773400491845 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:18.793 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:18.793 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=4
+10-08 15:40:18.793 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:19.170 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=5 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1773777000000 handler_uptime_ns=1773778378262 generation=1
+10-08 15:40:19.170 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=5 revision=5 generation=1 event_time_ns=1773777000000 handler_uptime_ns=1773778455679 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:19.171 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:19.171 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:19.171 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=5
+10-08 15:40:19.545 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=6 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1774151000000 handler_uptime_ns=1774152854845 generation=1
+10-08 15:40:19.545 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=6 revision=6 generation=1 event_time_ns=1774151000000 handler_uptime_ns=1774152956304 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:19.545 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:19.545 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:19.546 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=6
+10-08 15:40:19.917 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=7 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1774524000000 handler_uptime_ns=1774525014221 generation=1
+10-08 15:40:19.917 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=7 revision=7 generation=1 event_time_ns=1774524000000 handler_uptime_ns=1774525161387 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:19.917 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:19.917 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=7
+10-08 15:40:19.918 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:20.294 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=8 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1774901000000 handler_uptime_ns=1774902251554 generation=1
+10-08 15:40:20.294 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=8 revision=8 generation=1 event_time_ns=1774901000000 handler_uptime_ns=1774902331262 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:20.294 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:20.295 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:20.295 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=8
+10-08 15:40:20.666 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=9 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1775273000000 handler_uptime_ns=1775274074679 generation=1
+10-08 15:40:20.666 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=9 revision=9 generation=1 event_time_ns=1775273000000 handler_uptime_ns=1775274135471 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:20.666 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:20.666 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:20.666 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=9
+10-08 15:40:21.039 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=10 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1775646000000 handler_uptime_ns=1775647118721 generation=1
+10-08 15:40:21.039 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=10 revision=10 generation=1 event_time_ns=1775646000000 handler_uptime_ns=1775647197096 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:21.039 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:21.039 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:21.039 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=10
+10-08 15:40:21.418 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=11 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1776025000000 handler_uptime_ns=1776025861971 generation=1
+10-08 15:40:21.418 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=11 revision=11 generation=1 event_time_ns=1776025000000 handler_uptime_ns=1776025946680 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:21.418 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:21.418 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:21.418 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=11
+10-08 15:40:21.797 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=12 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1776404000000 handler_uptime_ns=1776405096305 generation=1
+10-08 15:40:21.797 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=12 revision=12 generation=1 event_time_ns=1776404000000 handler_uptime_ns=1776405204888 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:21.797 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:21.797 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:21.798 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=12
+10-08 15:40:22.176 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=13 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1776782000000 handler_uptime_ns=1776783516097 generation=1
+10-08 15:40:22.176 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=13 revision=13 generation=1 event_time_ns=1776782000000 handler_uptime_ns=1776783632472 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:22.176 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:22.176 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:22.176 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=13
+10-08 15:40:22.555 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=14 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1777162000000 handler_uptime_ns=1777163044264 generation=1
+10-08 15:40:22.555 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=14 revision=14 generation=1 event_time_ns=1777162000000 handler_uptime_ns=1777163125555 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:22.555 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:22.555 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:22.556 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=14
+10-08 15:40:22.926 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=15 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1777532000000 handler_uptime_ns=1777533609014 generation=1
+10-08 15:40:22.926 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=15 revision=15 generation=1 event_time_ns=1777532000000 handler_uptime_ns=1777533688180 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:22.926 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:22.926 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:22.926 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=15
+10-08 15:40:23.306 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=16 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1777912000000 handler_uptime_ns=1777913826014 generation=1
+10-08 15:40:23.306 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=16 revision=16 generation=1 event_time_ns=1777912000000 handler_uptime_ns=1777913960472 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:23.306 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:23.306 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:23.306 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=16
+10-08 15:40:23.678 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=17 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1778285000000 handler_uptime_ns=1778285890931 generation=1
+10-08 15:40:23.678 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=17 revision=17 generation=1 event_time_ns=1778285000000 handler_uptime_ns=1778285977556 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:23.678 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:23.678 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:23.679 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=17
+10-08 15:40:24.058 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=18 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1778664000000 handler_uptime_ns=1778665606223 generation=1
+10-08 15:40:24.058 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=18 revision=18 generation=1 event_time_ns=1778664000000 handler_uptime_ns=1778665720014 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:24.058 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:24.058 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:24.058 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=18
+10-08 15:40:24.429 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=19 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1779036000000 handler_uptime_ns=1779037316306 generation=1
+10-08 15:40:24.429 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=19 revision=19 generation=1 event_time_ns=1779036000000 handler_uptime_ns=1779037432014 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:24.430 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:24.430 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:24.430 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=19
+10-08 15:40:24.799 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=20 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1779406000000 handler_uptime_ns=1779407156098 generation=1
+10-08 15:40:24.799 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=20 revision=20 generation=1 event_time_ns=1779406000000 handler_uptime_ns=1779407252306 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:24.799 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:24.799 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:24.800 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=20
+10-08 15:40:25.174 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=21 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1779781000000 handler_uptime_ns=1779782053640 generation=1
+10-08 15:40:25.174 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=21 revision=21 generation=1 event_time_ns=1779781000000 handler_uptime_ns=1779782111140 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:25.174 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:25.174 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:25.175 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=21
+10-08 15:40:25.549 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=22 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1780156000000 handler_uptime_ns=1780157255807 generation=1
+10-08 15:40:25.549 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=22 revision=22 generation=1 event_time_ns=1780156000000 handler_uptime_ns=1780157316848 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:25.549 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:25.550 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:25.550 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=22
+10-08 15:40:25.929 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=23 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1780535000000 handler_uptime_ns=1780536640640 generation=1
+10-08 15:40:25.929 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=23 revision=23 generation=1 event_time_ns=1780535000000 handler_uptime_ns=1780536750515 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:25.929 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:25.929 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:25.929 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=23
+10-08 15:40:26.308 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=24 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1780914000000 handler_uptime_ns=1780915835849 generation=1
+10-08 15:40:26.308 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=24 revision=24 generation=1 event_time_ns=1780914000000 handler_uptime_ns=1780915915224 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:26.308 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:26.308 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:26.308 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=24
+10-08 15:40:26.683 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=25 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1781290000000 handler_uptime_ns=1781290836099 generation=1
+10-08 15:40:26.683 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=25 revision=25 generation=1 event_time_ns=1781290000000 handler_uptime_ns=1781290954057 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:26.683 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:26.683 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=25
+10-08 15:40:26.684 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:27.058 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=26 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1781665000000 handler_uptime_ns=1781665884349 generation=1
+10-08 15:40:27.058 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=26 revision=26 generation=1 event_time_ns=1781665000000 handler_uptime_ns=1781666034849 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:27.058 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:27.058 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:27.058 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=26
+10-08 15:40:27.438 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=27 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1782044000000 handler_uptime_ns=1782045821433 generation=1
+10-08 15:40:27.438 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=27 revision=27 generation=1 event_time_ns=1782044000000 handler_uptime_ns=1782045888474 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:27.438 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:27.438 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:27.438 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=27
+10-08 15:40:27.817 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=28 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1782424000000 handler_uptime_ns=1782425229766 generation=1
+10-08 15:40:27.817 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=28 revision=28 generation=1 event_time_ns=1782424000000 handler_uptime_ns=1782425411433 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:27.818 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:27.818 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:27.818 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=28
+10-08 15:40:28.191 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=29 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1782798000000 handler_uptime_ns=1782799397808 generation=1
+10-08 15:40:28.192 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=29 revision=29 generation=1 event_time_ns=1782798000000 handler_uptime_ns=1782799517766 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:28.192 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:28.192 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=29
+10-08 15:40:28.192 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:28.569 23277 23277 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=30 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=1783175000000 handler_uptime_ns=1783176574433 generation=1
+10-08 15:40:28.569 23277 23277 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=30 revision=30 generation=1 event_time_ns=1783175000000 handler_uptime_ns=1783176657475 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:40:28.569 23277 23277 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=1
+10-08 15:40:28.569 23277 23337 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=1
+10-08 15:40:28.569 23277 23277 I SpinonBootstrap: SPINON_R08_TOUCH count=30

@@ -1,0 +1,10 @@
+emulator: Android Emulator 37.2.12.0
+system image: android-37.2/google_apis_ps16k/arm64-v8a
+accel-check: exit 0; Hypervisor.Framework OS X Version 26.5
+AVD launch: emulator -avd spinon_api37_2 -no-snapshot -no-audio -no-boot-anim -gpu swiftshader_indirect -verbose
+launch log: CPU Acceleration: working; warning: hvf is not enabled on this aarch64 host
+guest fingerprint: google/generic_system_google/generic:17/CP41.260831.007/16416850:userdebug/dev-keys
+after 2 minutes: adb reports emulator-5556 offline; targeted adb reconnect leaves it offline; sys.boot_completed and app shell unavailable
+qemu sample: qemu_tcg_cpu_thread_fn
+existing API36 qemu sample: qemu_hvf_cpu_thread_fn
+result: API37.2 listener runtime not tested; exact emulator startup cause remains unresolved

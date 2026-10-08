@@ -1,0 +1,5 @@
+PID=13229
+Starting: Intent { cmp=dev.spinon.bootstrap/.MainActivity (has extras) }
+
+--------- beginning of main
+10-08 16:06:20.763 13229 13229 E SpinonBootstrap: SPINON_R05_MODE_ERROR renderer=opengl_es reason=conflicting_mode_flags

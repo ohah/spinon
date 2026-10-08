@@ -16,6 +16,18 @@ private func captureR05ClockAnchor(_ logger: Logger, label: String) {
     logger.notice("SPINON_R05_CLOCK_ANCHOR label=\(label, privacy: .public) uptime_before_s=\(uptimeBefore, privacy: .public) host_s=\(hostTime, privacy: .public) uptime_after_s=\(uptimeAfter, privacy: .public)")
 }
 
+private struct R05DrawableTicket {
+    let drawSequence: UInt64
+    let inputSequence: Int?
+    let revision: UInt32
+    let surfaceGeneration: Int
+
+    var logFields: String {
+        let inputField = inputSequence.map { String($0) } ?? "none"
+        return "draw_seq=\(drawSequence) input_seq=\(inputField) revision=\(revision) generation=\(surfaceGeneration)"
+    }
+}
+
 private enum R05TouchDecision {
     case accepted(UITouch)
     case excluded(String)
@@ -136,15 +148,24 @@ final class R08GpuDemoViewController: UIViewController, UITextFieldDelegate {
         self.r13Enabled = r13Enabled
         self.r13WindowCycle = r13WindowCycle
         self.r05PresentationProbe = r05PresentationProbe
-        self.canvas = useWgpu
-            ? R08WgpuCanvasView(
-                frame: .zero, r13Enabled: r13Enabled,
-                r13FailureInjection: r13FailureInjection,
-                r13RecoveryFailureInjection: r13RecoveryFailureInjection,
-                r05PresentationProbe: r05PresentationProbe)
-            : R08MetalCanvasView(
+        if useWgpu {
+            if r05PresentationProbe {
+                self.canvas = R05WgpuCanvasView(
+                    frame: .zero, r13Enabled: r13Enabled,
+                    r13FailureInjection: r13FailureInjection,
+                    r13RecoveryFailureInjection: r13RecoveryFailureInjection,
+                    r05PresentationProbe: true)
+            } else {
+                self.canvas = R08WgpuCanvasView(
+                    frame: .zero, r13Enabled: r13Enabled,
+                    r13FailureInjection: r13FailureInjection,
+                    r13RecoveryFailureInjection: r13RecoveryFailureInjection)
+            }
+        } else {
+            self.canvas = R08MetalCanvasView(
                 frame: .zero, device: MTLCreateSystemDefaultDevice(),
                 r05PresentationProbe: r05PresentationProbe)
+        }
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -277,7 +298,87 @@ final class R08GpuDemoViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
-private final class R08WgpuCanvasView: UIView {
+private final class R05ProbeMetalLayer: CAMetalLayer {
+    private let logger = Logger(subsystem: "dev.spinon.bootstrap", category: "r05-metal-layer")
+    private let ticketLock = NSLock()
+    private var activeDrawCount: UInt64 = 0
+    private var activeTicket: R05DrawableTicket?
+    private var ticketConsumed = false
+    private var overlappingDraws = false
+
+    fileprivate func beginWgpuDraw(ticket: R05DrawableTicket?) -> (tracked: Bool, isolated: Bool) {
+        ticketLock.lock()
+        let (nextCount, overflow) = activeDrawCount.addingReportingOverflow(1)
+        guard !overflow else {
+            overlappingDraws = true
+            activeTicket = nil
+            ticketConsumed = true
+            ticketLock.unlock()
+            return (false, false)
+        }
+        activeDrawCount = nextCount
+        if nextCount == 1 {
+            activeTicket = ticket
+            ticketConsumed = false
+            overlappingDraws = false
+        } else {
+            activeTicket = nil
+            ticketConsumed = true
+            overlappingDraws = true
+        }
+        ticketLock.unlock()
+        return (true, nextCount == 1)
+    }
+
+    fileprivate func endWgpuDraw() {
+        ticketLock.lock()
+        if activeDrawCount > 0 {
+            activeDrawCount -= 1
+        }
+        if activeDrawCount == 0 {
+            activeTicket = nil
+            ticketConsumed = false
+            overlappingDraws = false
+        }
+        ticketLock.unlock()
+    }
+
+    private func takeActiveTicket() -> R05DrawableTicket? {
+        ticketLock.lock()
+        defer { ticketLock.unlock() }
+        guard activeDrawCount == 1, !overlappingDraws, !ticketConsumed else { return nil }
+        ticketConsumed = true
+        let ticket = activeTicket
+        return ticket
+    }
+
+    override func nextDrawable() -> (any CAMetalDrawable)? {
+        let ticket = takeActiveTicket()
+        let drawable = super.nextDrawable()
+        let state = drawable == nil ? "unavailable" : "available"
+        let ticketFields = ticket?.logFields ?? "attribution=unattributed"
+        let thread = Thread.isMainThread ? "main" : "background"
+        #if targetEnvironment(simulator)
+        let drawableID = "not_recorded"
+        #else
+        let drawableID = drawable.map { String($0.drawableID) } ?? "none"
+        #endif
+        logger.notice("SPINON_R05_DRAWABLE_ACQUIRE renderer=wgpu state=\(state, privacy: .public) thread=\(thread, privacy: .public) drawable_id=\(drawableID, privacy: .public) \(ticketFields, privacy: .public)")
+        #if !targetEnvironment(simulator)
+        if let drawable {
+            let callbackLogger = logger
+            drawable.addPresentedHandler { presentedDrawable in
+                let presentedTime = presentedDrawable.presentedTime
+                let outcome = presentedTime > 0 ? "presented" : "zero_time"
+                callbackLogger.notice("SPINON_R05_DRAWABLE_PRESENTED renderer=wgpu outcome=\(outcome, privacy: .public) drawable_id=\(presentedDrawable.drawableID, privacy: .public) presented_time_s=\(presentedTime, privacy: .public) \(ticketFields, privacy: .public)")
+            }
+        }
+        #endif
+        return drawable
+    }
+}
+
+private class R08WgpuCanvasView: UIView {
     private let logger = Logger(subsystem: "dev.spinon.bootstrap", category: "r08")
     private let r13Enabled: Bool
     private let r05PresentationProbe: Bool
@@ -293,6 +394,7 @@ private final class R08WgpuCanvasView: UIView {
     private var hasReachedActiveState = false
     private var resumeRedrawPending = false
     private var r05InputSequence = 0
+    private var r05DrawSequence: UInt64 = 0
     private var pendingR05Input: R05InputSample?
     private var r05TouchGesture = R05TouchGesture()
     private var r05SurfaceGeneration = 0
@@ -397,6 +499,30 @@ private final class R08WgpuCanvasView: UIView {
         guard let renderer else {
             excludePendingR05Input(renderer: "wgpu", reason: "renderer_unavailable")
             return
+        }
+        let probeLayer = r05PresentationProbe ? layer as? R05ProbeMetalLayer : nil
+        var probeTicket: R05DrawableTicket?
+        var probeDrawTracked = false
+        if let probeLayer {
+            let (nextDrawSequence, overflow) = r05DrawSequence.addingReportingOverflow(1)
+            if overflow {
+                logger.error("SPINON_R05_DRAW_TICKET=unattributed reason=draw_sequence_overflow")
+            } else {
+                r05DrawSequence = nextDrawSequence
+                probeTicket = R05DrawableTicket(
+                    drawSequence: nextDrawSequence,
+                    inputSequence: pendingR05Input?.sequence,
+                    revision: activationCount,
+                    surfaceGeneration: r05SurfaceGeneration)
+            }
+            let admission = probeLayer.beginWgpuDraw(ticket: probeTicket)
+            probeDrawTracked = admission.tracked
+            if !admission.isolated {
+                logger.error("SPINON_R05_DRAW_TICKET=unattributed reason=overlapping_wgpu_draw")
+            }
+        }
+        defer {
+            if probeDrawTracked { probeLayer?.endWgpuDraw() }
         }
         let result = SpinonRunner.drawR08Wgpu(renderer, activationCount: activationCount)
         if let sample = pendingR05Input {
@@ -633,6 +759,10 @@ private final class R08WgpuCanvasView: UIView {
     deinit {
         destroyRenderer()
     }
+}
+
+private final class R05WgpuCanvasView: R08WgpuCanvasView {
+    override class var layerClass: AnyClass { R05ProbeMetalLayer.self }
 }
 
 private final class R08MetalCanvasView: MTKView, MTKViewDelegate {

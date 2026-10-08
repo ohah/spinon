@@ -1,0 +1,2 @@
+--------- beginning of main
+10-08 15:56:06.254  6908  6925 I SpinonBootstrap: SPINON_R05_QUEUE_PROBE=PASS renderer=wgpu capacity=64 blocker_accepted=true callback_tasks_accepted=64 overflow_callback_rejected=true overflow_callback_ran=false overflow_flush_rejected=true callback_reject_delta=1 flush_reject_delta=1 worker_recovered=true final_queue_depth=0

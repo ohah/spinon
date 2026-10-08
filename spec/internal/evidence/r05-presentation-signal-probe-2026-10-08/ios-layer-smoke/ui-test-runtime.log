@@ -1,0 +1,17 @@
+2026-10-08 17:46:08.667 Df R05LayerSmoke[93554:4c21dcd] [dev.spinon.bootstrap:r08] SPINON_R05_PROBE=ready renderer=wgpu input_source=unknown
+2026-10-08 17:46:08.667 Df R05LayerSmoke[93554:4c21dcd] [dev.spinon.bootstrap:r08] SPINON_R05_CLOCK_ANCHOR label=launch uptime_before_s=771312.988767 host_s=771312.988767 uptime_after_s=771312.988767
+2026-10-08 17:46:08.676 Df R05LayerSmoke[93554:4c21dcd] [dev.spinon.bootstrap:r08] SPINON_R05_SURFACE renderer=wgpu generation=1
+2026-10-08 17:46:08.702 Df R05LayerSmoke[93554:4c21dcd] SPINON_R05_SMOKE_WGPU_CREATE=ready backend=Metal device=DiscreteGpu name=Apple iOS simulator GPU google_display_timing_supported=false format=Bgra8Unorm color_space=Auto supported_formats=[Bgra8UnormSrgb, Bgra8Unorm, Rgba16Float]
+2026-10-08 17:46:08.703 Df R05LayerSmoke[93554:4c21dcd] [dev.spinon.bootstrap:r05-metal-layer] SPINON_R05_DRAWABLE_ACQUIRE renderer=wgpu state=available thread=main drawable_id=not_recorded draw_seq=1 input_seq=none revision=0 generation=1
+2026-10-08 17:46:08.704 Df R05LayerSmoke[93554:4c21dcd] SPINON_R05_SMOKE_WGPU_DRAW result=0
+2026-10-08 17:46:08.712 Df R05LayerSmoke[93554:4c21dcd] [dev.spinon.bootstrap:r05-metal-layer] SPINON_R05_DRAWABLE_ACQUIRE renderer=wgpu state=available thread=main drawable_id=not_recorded draw_seq=2 input_seq=none revision=0 generation=1
+2026-10-08 17:46:08.712 Df R05LayerSmoke[93554:4c21dcd] SPINON_R05_SMOKE_WGPU_DRAW result=0
+2026-10-08 17:46:08.720 Df R05LayerSmoke[93554:4c21dcd] [dev.spinon.bootstrap:r05-metal-layer] SPINON_R05_DRAWABLE_ACQUIRE renderer=wgpu state=available thread=main drawable_id=not_recorded draw_seq=3 input_seq=none revision=0 generation=1
+2026-10-08 17:46:08.721 Df R05LayerSmoke[93554:4c21dcd] SPINON_R05_SMOKE_WGPU_DRAW result=0
+2026-10-08 17:46:11.013 Df R05LayerSmoke[93554:4c21dcd] [dev.spinon.bootstrap:r08] SPINON_R05_CLOCK_ANCHOR label=wgpu_input_1 uptime_before_s=771315.334515 host_s=771315.334515 uptime_after_s=771315.334515
+2026-10-08 17:46:11.013 Df R05LayerSmoke[93554:4c21dcd] [dev.spinon.bootstrap:r08] SPINON_R05_INPUT renderer=wgpu input_seq=1 phase=ended input_source=unknown event_time_s=771315.322100 handler_uptime_s=771315.334515 generation=1
+2026-10-08 17:46:11.013 Df R05LayerSmoke[93554:4c21dcd] [dev.spinon.bootstrap:r05-metal-layer] SPINON_R05_DRAWABLE_ACQUIRE renderer=wgpu state=available thread=main drawable_id=not_recorded draw_seq=4 input_seq=1 revision=1 generation=1
+2026-10-08 17:46:11.013 Df R05LayerSmoke[93554:4c21dcd] SPINON_R05_SMOKE_WGPU_DRAW result=0
+2026-10-08 17:46:11.013 Df R05LayerSmoke[93554:4c21dcd] [dev.spinon.bootstrap:r08] SPINON_R05_SUBMIT renderer=wgpu input_seq=1 revision=1 generation=1 event_time_s=771315.322100 handler_uptime_s=771315.334515 call_return_uptime_s=771315.335086 result=0 present_signal=unavailable
+2026-10-08 17:46:11.014 Df R05LayerSmoke[93554:4c21dcd] [dev.spinon.bootstrap:r05-metal-layer] SPINON_R05_DRAWABLE_ACQUIRE renderer=wgpu state=available thread=main drawable_id=not_recorded draw_seq=5 input_seq=none revision=1 generation=1
+2026-10-08 17:46:11.014 Df R05LayerSmoke[93554:4c21dcd] SPINON_R05_SMOKE_WGPU_DRAW result=0

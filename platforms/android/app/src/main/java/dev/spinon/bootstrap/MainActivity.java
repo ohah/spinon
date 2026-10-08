@@ -79,6 +79,7 @@ public final class MainActivity extends Activity {
             runnable -> new Thread(runnable, "spinon-delayed-host"));
 
     private R08WgpuSurface hostGpuSurface;
+    private R08GpuSurface hostGlesSurface;
     private boolean gpuWasPaused;
     private volatile long runtimeSession;
     private volatile boolean activityClosing;
@@ -177,22 +178,53 @@ public final class MainActivity extends Activity {
             showShutdownProbe();
             return;
         }
+        if (getIntent().getBooleanExtra("spinon_r05_queue_saturation", false)) {
+            TextView status = new TextView(this);
+            status.setText("R05 표시 신호 callback 대기열 포화 검증 중…");
+            status.setTextColor(Color.WHITE);
+            status.setTextSize(18);
+            status.setGravity(Gravity.CENTER);
+            status.setBackgroundColor(Color.rgb(14, 19, 31));
+            setContentView(status);
+            R05PresentTimingProbe.runQueueSaturationProbe("wgpu");
+            return;
+        }
         boolean runR13 = getIntent().getBooleanExtra("spinon_r13", false);
         boolean runS04 = getIntent().getBooleanExtra("spinon_s04", false);
         boolean runR05PresentationProbe =
                 getIntent().getBooleanExtra("spinon_r05_presentation", false);
+        boolean runR05PresentFenceProbe =
+                getIntent().getBooleanExtra("spinon_r05_present_fence", false);
+        boolean runR05FrameTimelineJoin =
+                getIntent().getBooleanExtra("spinon_r05_frame_timeline_join", false)
+                        || (runR05PresentFenceProbe
+                        && R05PresentTimingProbe.isFrameTimelineJoinAvailable());
+        boolean runR05GlesControl =
+                getIntent().getBooleanExtra("spinon_r05_gles_control", false);
+        if ((runR05GlesControl || runR05PresentFenceProbe) && (runS04 || runR13)) {
+            Log.e(TAG, "SPINON_R05_MODE_ERROR renderer=opengl_es reason=conflicting_mode_flags");
+            finish();
+            return;
+        }
+        runR05PresentationProbe |= runR05GlesControl || runR05FrameTimelineJoin
+                || runR05PresentFenceProbe;
         if (runS04 || runR13 || runR05PresentationProbe
                 || getIntent().getBooleanExtra("spinon_r08", false)) {
             int backend = getIntent().getIntExtra("spinon_r08_backend", 1);
-            boolean useWgpu = runS04 || runR13
+            boolean useWgpu = !runR05GlesControl && (runS04 || runR13
                     || runR05PresentationProbe
-                    || !getIntent().getBooleanExtra("spinon_r08_native", false);
+                    || !getIntent().getBooleanExtra("spinon_r08_native", false));
             int failureInjection = getIntent().getIntExtra("spinon_r13_failure", 0);
             int recoveryFailureInjection = getIntent().getIntExtra("spinon_r13_recovery_failure", 0);
-            R08WgpuSurface surface = R08GpuDemo.show(
+            View surface = R08GpuDemo.show(
                     this, useWgpu, backend, runR13, runS04, failureInjection,
-                    recoveryFailureInjection, runR05PresentationProbe);
-            hostGpuSurface = runS04 || runR13 ? surface : null;
+                    recoveryFailureInjection, runR05PresentationProbe,
+                    runR05FrameTimelineJoin, runR05PresentFenceProbe);
+            hostGpuSurface = surface instanceof R08WgpuSurface
+                    && (runS04 || runR13 || runR05PresentationProbe)
+                    ? (R08WgpuSurface) surface : null;
+            hostGlesSurface = surface instanceof R08GpuSurface
+                    ? (R08GpuSurface) surface : null;
             return;
         }
 
@@ -1298,6 +1330,7 @@ public final class MainActivity extends Activity {
 
     @Override
     protected void onPause() {
+        if (hostGlesSurface != null) hostGlesSurface.onHostPaused();
         if (hostGpuSurface != null) {
             hostGpuSurface.onHostPaused();
             gpuWasPaused = true;
@@ -1308,6 +1341,7 @@ public final class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        if (hostGlesSurface != null) hostGlesSurface.onHostResumed();
         if (hostGpuSurface != null && gpuWasPaused) {
             gpuWasPaused = false;
             hostGpuSurface.onHostResumed();

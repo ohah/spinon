@@ -1,0 +1,128 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {};
+	objectVersion = 56;
+	objects = {
+		A00000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = { BuildIndependentTargetsInParallel = 1; LastUpgradeCheck = 2620; TargetAttributes = { A00000000000000000000011 = { CreatedOnToolsVersion = 26.2; TestTargetID = A00000000000000000000002; }; }; };
+			buildConfigurationList = D00000000000000000000001 /* Project configuration list */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (en, Base,);
+			mainGroup = A00000000000000000000003;
+			productRefGroup = A00000000000000000000003;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (A00000000000000000000002 /* R05LayerSmoke */, A00000000000000000000011 /* R05LayerSmokeUITests */,);
+		};
+		A00000000000000000000002 /* R05LayerSmoke */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D00000000000000000000002 /* Target configuration list */;
+			buildPhases = (A00000000000000000000008 /* Sources */, A00000000000000000000009 /* Frameworks */, A0000000000000000000000A /* Resources */,);
+			buildRules = ();
+			dependencies = ();
+			name = R05LayerSmoke;
+			productName = R05LayerSmoke;
+			productReference = A00000000000000000000007 /* R05LayerSmoke.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A00000000000000000000003 /* Sources */ = {
+			isa = PBXGroup;
+			children = (A00000000000000000000004 /* AppDelegate.swift */, A00000000000000000000005 /* R08GpuDemo.swift */, A00000000000000000000006 /* SpinonRunner.mm */, A00000000000000000000007 /* R05LayerSmoke.app */, A0000000000000000000000E /* R05LayerSmokeUITests.swift */, A0000000000000000000000F /* R05LayerSmokeUITests.xctest */, A00000000000000000000010 /* XCTest.framework */,);
+			sourceTree = "<group>";
+		};
+		A00000000000000000000004 /* AppDelegate.swift */ = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A00000000000000000000005 /* R08GpuDemo.swift */ = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ../../../../../platforms/ios/Sources/R08GpuDemo.swift; sourceTree = "<group>"; };
+		A00000000000000000000006 /* SpinonRunner.mm */ = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SpinonRunner.mm; sourceTree = "<group>"; };
+		A00000000000000000000007 /* R05LayerSmoke.app */ = { isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = R05LayerSmoke.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0000000000000000000000E /* R05LayerSmokeUITests.swift */ = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R05LayerSmokeUITests.swift; sourceTree = "<group>"; };
+		A0000000000000000000000F /* R05LayerSmokeUITests.xctest */ = { isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = R05LayerSmokeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A00000000000000000000010 /* XCTest.framework */ = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = System/Library/Frameworks/XCTest.framework; sourceTree = SDKROOT; };
+		A00000000000000000000008 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (B00000000000000000000001 /* AppDelegate.swift in Sources */, B00000000000000000000002 /* R08GpuDemo.swift in Sources */, B00000000000000000000003 /* SpinonRunner.mm in Sources */,);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A00000000000000000000009 /* Frameworks */ = { isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		A0000000000000000000000A /* Resources */ = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		A00000000000000000000011 /* R05LayerSmokeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D00000000000000000000003 /* UI test target configuration list */;
+			buildPhases = (A00000000000000000000012 /* UI test sources */, A00000000000000000000013 /* UI test frameworks */, A00000000000000000000014 /* UI test resources */,);
+			buildRules = ();
+			dependencies = (A00000000000000000000017 /* Target dependency */,);
+			name = R05LayerSmokeUITests;
+			productName = R05LayerSmokeUITests;
+			productReference = A0000000000000000000000F /* R05LayerSmokeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		A00000000000000000000012 /* UI test sources */ = { isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (B00000000000000000000004 /* R05LayerSmokeUITests.swift in Sources */,); runOnlyForDeploymentPostprocessing = 0; };
+		A00000000000000000000013 /* UI test frameworks */ = { isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (B00000000000000000000005 /* XCTest.framework in Frameworks */,); runOnlyForDeploymentPostprocessing = 0; };
+		A00000000000000000000014 /* UI test resources */ = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		B00000000000000000000001 /* AppDelegate.swift in Sources */ = { isa = PBXBuildFile; fileRef = A00000000000000000000004 /* AppDelegate.swift */; };
+		B00000000000000000000002 /* R08GpuDemo.swift in Sources */ = { isa = PBXBuildFile; fileRef = A00000000000000000000005 /* R08GpuDemo.swift */; };
+		B00000000000000000000003 /* SpinonRunner.mm in Sources */ = { isa = PBXBuildFile; fileRef = A00000000000000000000006 /* SpinonRunner.mm */; };
+		B00000000000000000000004 /* R05LayerSmokeUITests.swift in Sources */ = { isa = PBXBuildFile; fileRef = A0000000000000000000000E /* R05LayerSmokeUITests.swift */; };
+		B00000000000000000000005 /* XCTest.framework in Frameworks */ = { isa = PBXBuildFile; fileRef = A00000000000000000000010 /* XCTest.framework */; };
+		A00000000000000000000015 /* ContainerItemProxy */ = { isa = PBXContainerItemProxy; containerPortal = A00000000000000000000001 /* Project object */; proxyType = 1; remoteGlobalIDString = A00000000000000000000002; remoteInfo = R05LayerSmoke; };
+		A00000000000000000000017 /* Target dependency */ = { isa = PBXTargetDependency; target = A00000000000000000000002 /* R05LayerSmoke */; targetProxy = A00000000000000000000015 /* ContainerItemProxy */; };
+		C00000000000000000000001 /* Project Debug */ = { isa = XCBuildConfiguration; buildSettings = { CLANG_CXX_LANGUAGE_STANDARD = "gnu++20"; CLANG_ENABLE_MODULES = YES; IPHONEOS_DEPLOYMENT_TARGET = 18.0; SDKROOT = iphoneos; SWIFT_VERSION = 5.0; }; name = Debug; };
+		C00000000000000000000002 /* Project Release */ = { isa = XCBuildConfiguration; buildSettings = { CLANG_CXX_LANGUAGE_STANDARD = "gnu++20"; CLANG_ENABLE_MODULES = YES; IPHONEOS_DEPLOYMENT_TARGET = 18.0; SDKROOT = iphoneos; SWIFT_VERSION = 5.0; }; name = Release; };
+		C00000000000000000000003 /* App Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				CODE_SIGNING_ALLOWED = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = ("$(SRCROOT)/../../../../../spikes/wgpu-backend/include",);
+				INFOPLIST_KEY_CFBundleDisplayName = "R05 Layer Smoke";
+				INFOPLIST_KEY_LSRequiresIPhoneOS = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks",);
+				"SPINON_WGPU_ARCHIVE[sdk=iphonesimulator*]" = "$(SRCROOT)/../../../../../spikes/wgpu-backend/target/aarch64-apple-ios-sim/release/libspinon_wgpu_r08_spike.a";
+				"SPINON_WGPU_ARCHIVE[sdk=iphoneos*]" = "$(SRCROOT)/../../../../../spikes/wgpu-backend/target/aarch64-apple-ios/release/libspinon_wgpu_r08_spike.a";
+				OTHER_LDFLAGS = ("$(inherited)", "$(SPINON_WGPU_ARCHIVE)", "-framework", UIKit, "-framework", Foundation, "-framework", CoreFoundation, "-framework", Metal, "-framework", MetalKit, "-framework", QuartzCore, "-framework", CoreGraphics, "-lobjc", "-lc++", "-Wl,-dead_strip",);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.spinon.r05-layer-smoke;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/SpinonRunner.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C00000000000000000000004 /* App Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				CODE_SIGNING_ALLOWED = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = ("$(SRCROOT)/../../../../../spikes/wgpu-backend/include",);
+				INFOPLIST_KEY_CFBundleDisplayName = "R05 Layer Smoke";
+				INFOPLIST_KEY_LSRequiresIPhoneOS = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks",);
+				"SPINON_WGPU_ARCHIVE[sdk=iphonesimulator*]" = "$(SRCROOT)/../../../../../spikes/wgpu-backend/target/aarch64-apple-ios-sim/release/libspinon_wgpu_r08_spike.a";
+				"SPINON_WGPU_ARCHIVE[sdk=iphoneos*]" = "$(SRCROOT)/../../../../../spikes/wgpu-backend/target/aarch64-apple-ios/release/libspinon_wgpu_r08_spike.a";
+				OTHER_LDFLAGS = ("$(inherited)", "$(SPINON_WGPU_ARCHIVE)", "-framework", UIKit, "-framework", Foundation, "-framework", CoreFoundation, "-framework", Metal, "-framework", MetalKit, "-framework", QuartzCore, "-framework", CoreGraphics, "-lobjc", "-lc++", "-Wl,-dead_strip",);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.spinon.r05-layer-smoke;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/SpinonRunner.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C00000000000000000000005 /* UI test Debug */ = { isa = XCBuildConfiguration; buildSettings = { CODE_SIGNING_ALLOWED = NO; GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 18.0; PRODUCT_BUNDLE_IDENTIFIER = dev.spinon.r05-layer-smoke.uitests; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = "1,2"; TEST_TARGET_NAME = R05LayerSmoke; }; name = Debug; };
+		C00000000000000000000006 /* UI test Release */ = { isa = XCBuildConfiguration; buildSettings = { CODE_SIGNING_ALLOWED = NO; GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 18.0; PRODUCT_BUNDLE_IDENTIFIER = dev.spinon.r05-layer-smoke.uitests; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = "1,2"; TEST_TARGET_NAME = R05LayerSmoke; }; name = Release; };
+		D00000000000000000000001 /* Project configuration list */ = { isa = XCConfigurationList; buildConfigurations = (C00000000000000000000001 /* Project Debug */, C00000000000000000000002 /* Project Release */,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		D00000000000000000000002 /* Target configuration list */ = { isa = XCConfigurationList; buildConfigurations = (C00000000000000000000003 /* App Debug */, C00000000000000000000004 /* App Release */,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		D00000000000000000000003 /* UI test target configuration list */ = { isa = XCConfigurationList; buildConfigurations = (C00000000000000000000005 /* UI test Debug */, C00000000000000000000006 /* UI test Release */,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+	};
+	rootObject = A00000000000000000000001 /* Project object */;
+}

@@ -1,0 +1,41 @@
+--------- beginning of main
+10-08 15:50:00.455 31923 31923 I SpinonBootstrap: SPINON_R08_UI=ready text-input=EditText accessibility=button+EditText
+10-08 15:50:00.660 31923 31923 I SpinonBootstrap: SPINON_R05_SURFACE renderer=opengl_es type=GLSurfaceView generation=1
+10-08 15:50:00.663 31923 31923 I SpinonBootstrap: SPINON_R05_SIGNAL_CAPABILITY renderer=opengl_es signal=SurfaceView_JankData available=true reason=registered api=37 api_full=3700002
+10-08 15:50:00.663 31923 31923 I SpinonBootstrap: SPINON_R05_SURFACE_SIZE renderer=opengl_es generation=1 size=1080x1920
+10-08 15:50:00.689 31923 31944 I SpinonBootstrap: SPINON_R08_SURFACE=created api=OpenGL_ES_2 renderer=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) version=OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))
+10-08 15:50:00.732 31923 31944 I SpinonBootstrap: SPINON_R08_SHADER=ready
+10-08 15:50:00.732 31923 31944 I SpinonBootstrap: SPINON_R08_SURFACE=size 1080x1920
+10-08 15:50:00.732 31923 31944 I SpinonBootstrap: SPINON_R05_DRAW renderer=opengl_es draw_seq=1 revision=0 generation=1
+10-08 15:50:00.732 31923 31944 I SpinonBootstrap: SPINON_R08_FRAME=first_draw_submitted
+10-08 15:50:00.744 31923 31944 I SpinonBootstrap: SPINON_R05_DRAW renderer=opengl_es draw_seq=2 revision=0 generation=1
+10-08 15:50:01.557 31923 31923 I SpinonBootstrap: SPINON_R05_SIGNAL_LISTENER outcome=remove_requested renderer=opengl_es generation=1 rejected_callback_batches=0 rejected_flush_tasks=0
+10-08 15:50:01.601 31923 31923 I SpinonBootstrap: SPINON_R08_UI=ready text-input=EditText accessibility=button+EditText
+10-08 15:50:01.639 31923 31923 I SpinonBootstrap: SPINON_R05_SURFACE renderer=opengl_es type=GLSurfaceView generation=2
+10-08 15:50:01.639 31923 31923 I SpinonBootstrap: SPINON_R05_SIGNAL_CAPABILITY renderer=opengl_es signal=SurfaceView_JankData available=true reason=registered api=37 api_full=3700002
+10-08 15:50:01.639 31923 31923 I SpinonBootstrap: SPINON_R05_SURFACE_SIZE renderer=opengl_es generation=2 size=1920x1080
+10-08 15:50:01.672 31923 31991 I SpinonBootstrap: SPINON_R08_SURFACE=created api=OpenGL_ES_2 renderer=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) version=OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))
+10-08 15:50:01.676 31923 31991 I SpinonBootstrap: SPINON_R08_SHADER=ready
+10-08 15:50:01.676 31923 31991 I SpinonBootstrap: SPINON_R08_SURFACE=size 1920x1080
+10-08 15:50:01.676 31923 31991 I SpinonBootstrap: SPINON_R05_DRAW renderer=opengl_es draw_seq=1 revision=0 generation=2
+10-08 15:50:01.676 31923 31991 I SpinonBootstrap: SPINON_R08_FRAME=first_draw_submitted
+10-08 15:50:02.125 31923 31923 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=1 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=2356728000000 handler_uptime_ns=2356732530707 generation=2
+10-08 15:50:02.126 31923 31923 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=1 revision=1 generation=2 event_time_ns=2356728000000 handler_uptime_ns=2356733818415 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 15:50:02.126 31923 31923 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH renderer=opengl_es queued=true generation=2
+10-08 15:50:02.126 31923 31991 I SpinonBootstrap: SPINON_R05_DRAW renderer=opengl_es draw_seq=2 revision=1 generation=2
+10-08 15:50:02.126 31923 31923 I SpinonBootstrap: SPINON_R08_TOUCH count=1
+10-08 15:50:02.127 31923 32009 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true renderer=opengl_es generation=2
+10-08 15:50:02.143 31923 32009 I SpinonBootstrap: SPINON_R05_PRESENT_BATCH renderer=opengl_es generation=2 batch_seq=1 record_count=2 callback_tid=58 queue_depth=0 rejected_callback_batches=0 rejected_flush_tasks=0 callback_uptime_ns=2356751307873 attribution=unmatched
+10-08 15:50:02.143 31923 32009 I SpinonBootstrap: SPINON_R05_PRESENT renderer=opengl_es signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true batch_seq=1 record_index=0 callback_tid=58 queue_depth=0 vsync_id=75716 present_time_ns=-1 present_state=unknown jank_type=2 actual_app_frame_ns=80516714 scheduled_app_frame_ns=16666666 callback_uptime_ns=2356751307873 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:50:02.143 31923 32009 I SpinonBootstrap: SPINON_R05_PRESENT renderer=opengl_es signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true batch_seq=1 record_index=1 callback_tid=58 queue_depth=0 vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=2356751307873 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:50:03.251 31923 31923 I SpinonBootstrap: SPINON_R05_SIGNAL_LISTENER outcome=remove_requested renderer=opengl_es generation=2 rejected_callback_batches=0 rejected_flush_tasks=0
+10-08 15:50:03.278 31923 31923 I SpinonBootstrap: SPINON_R08_UI=ready text-input=EditText accessibility=button+EditText
+10-08 15:50:03.297 31923 31923 I SpinonBootstrap: SPINON_R05_SURFACE renderer=opengl_es type=GLSurfaceView generation=3
+10-08 15:50:03.297 31923 31923 I SpinonBootstrap: SPINON_R05_SIGNAL_CAPABILITY renderer=opengl_es signal=SurfaceView_JankData available=true reason=registered api=37 api_full=3700002
+10-08 15:50:03.299 31923 31923 I SpinonBootstrap: SPINON_R05_SURFACE_SIZE renderer=opengl_es generation=3 size=1080x1920
+10-08 15:50:03.311 31923 32025 I SpinonBootstrap: SPINON_R08_SURFACE=created api=OpenGL_ES_2 renderer=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) version=OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))
+10-08 15:50:03.330 31923 32025 I SpinonBootstrap: SPINON_R08_SHADER=ready
+10-08 15:50:03.330 31923 32025 I SpinonBootstrap: SPINON_R08_SURFACE=size 1080x1920
+10-08 15:50:03.330 31923 32025 I SpinonBootstrap: SPINON_R05_DRAW renderer=opengl_es draw_seq=1 revision=0 generation=3
+10-08 15:50:03.330 31923 32025 I SpinonBootstrap: SPINON_R08_FRAME=first_draw_submitted
+10-08 15:50:03.345 31923 32025 I SpinonBootstrap: SPINON_R05_DRAW renderer=opengl_es draw_seq=2 revision=0 generation=3

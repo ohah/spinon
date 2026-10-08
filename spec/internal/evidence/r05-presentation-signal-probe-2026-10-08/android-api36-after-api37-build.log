@@ -1,0 +1,4 @@
+10-08 14:44:35.159  7350  7350 I SpinonBootstrap: SPINON_R05_SURFACE renderer=wgpu type=SurfaceView generation=1
+10-08 14:44:35.159  7350  7350 I SpinonBootstrap: SPINON_R05_SIGNAL_CAPABILITY renderer=wgpu signal=SurfaceView_JankData available=false reason=api_below_37 api=36 api_full=3600000
+10-08 14:44:36.990  7350  7350 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=1 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=708285526000000 handler_uptime_ns=708285527427569 generation=1
+10-08 14:44:37.021  7350  7350 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=1 revision=1 generation=1 event_time_ns=708285526000000 handler_uptime_ns=708285529866736 queue_present_return_uptime_ns=708285558509361 draw_accepted=true present_signal=unavailable attribution=input

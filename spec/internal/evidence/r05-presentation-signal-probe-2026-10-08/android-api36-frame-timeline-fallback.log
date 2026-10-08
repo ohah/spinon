@@ -1,0 +1,6 @@
+--------- beginning of main
+10-08 16:22:53.496  9275  9275 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=1 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=714179889000000 handler_uptime_ns=714179895379712 generation=1
+10-08 16:22:53.501  9275  9275 W SpinonBootstrap: SPINON_R05_FRAME_TIMELINE renderer=wgpu input_seq=1 revision=1 generation=1 outcome=unmatched reason=present_signal_api_unavailable
+10-08 16:22:53.513  9275  9275 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=1 revision=1 generation=1 event_time_ns=714179889000000 handler_uptime_ns=714179900690337 queue_present_return_uptime_ns=714179911728420 draw_accepted=true present_signal=unavailable attribution=input
+10-08 16:22:53.513  9275  9275 I SpinonBootstrap: SPINON_R05_PRESENT_DRAIN renderer=wgpu generation=1 queued=true delay_ms=250
+10-08 16:22:53.520  9275  9275 I SpinonBootstrap: SPINON_R08_TOUCH count=1
