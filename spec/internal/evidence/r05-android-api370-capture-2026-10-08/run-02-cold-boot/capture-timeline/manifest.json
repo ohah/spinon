@@ -1,0 +1,51 @@
+{
+  "serial": "emulator-5580",
+  "timebase": "host monotonic_ns; adb screenshot request/receive interval, not frame-present time",
+  "base_utc": "2026-10-08T14:52:50.656954+00:00",
+  "captures": [
+    {
+      "label": "t0",
+      "target_offset_ns": 0,
+      "capture_start_offset_ns": 121750,
+      "capture_end_offset_ns": 108123625,
+      "capture_utc": "2026-10-08T14:52:50.657075+00:00",
+      "latency_ns": 108001875,
+      "bytes": 50724,
+      "sha256": "605f226e3188a73dfb831a66d419fefb9f2937352ec1a310892f151c0c6b0331",
+      "file": "t0.png"
+    },
+    {
+      "label": "t1",
+      "target_offset_ns": 1000000000,
+      "capture_start_offset_ns": 1004224250,
+      "capture_end_offset_ns": 1111390084,
+      "capture_utc": "2026-10-08T14:52:51.661183+00:00",
+      "latency_ns": 107165834,
+      "bytes": 50724,
+      "sha256": "605f226e3188a73dfb831a66d419fefb9f2937352ec1a310892f151c0c6b0331",
+      "file": "t1.png"
+    },
+    {
+      "label": "t5",
+      "target_offset_ns": 5000000000,
+      "capture_start_offset_ns": 5006164834,
+      "capture_end_offset_ns": 5134080167,
+      "capture_utc": "2026-10-08T14:52:55.663127+00:00",
+      "latency_ns": 127915333,
+      "bytes": 50724,
+      "sha256": "605f226e3188a73dfb831a66d419fefb9f2937352ec1a310892f151c0c6b0331",
+      "file": "t5.png"
+    },
+    {
+      "label": "t15",
+      "target_offset_ns": 15000000000,
+      "capture_start_offset_ns": 15003045750,
+      "capture_end_offset_ns": 15113803584,
+      "capture_utc": "2026-10-08T14:53:05.659939+00:00",
+      "latency_ns": 110757834,
+      "bytes": 50832,
+      "sha256": "f7f3399054572a6cb717203bc99b952603a0a5665bb8950f64974ed4a32573f8",
+      "file": "t15.png"
+    }
+  ]
+}

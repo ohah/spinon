@@ -1,6 +1,6 @@
 # R05 · Android 실기기 callback 실패 fixture 계획
 
-**상태:** 실행 전 비교 모델 확정 · 독립 실패 관점 20개 검토 완료 · 실행 전
+**상태:** 실행 완료 · 두 fixture run 통과 · 첫 수집기 시작 race 수정 · usable present fence는 미확인
 
 **목표:** 사용자가 연결한 Android 실기기에서 R05 callback 실패 주입과 R08 GLES `SurfaceView` 실제 applied-transaction 수명주기를 확인한다.
 
@@ -24,6 +24,14 @@
 3. Spinon 앱만 force-stop하고 `MainActivity`에 `spinon_r05_callback_faults=true` extra를 지정해 실행한다. 새 app PID를 확인하고 최대 100초까지 기다린다. 새 PID의 marker만 파싱한다.
 4. pass 기준을 모두 검증한다. 요약만 PASS이고 세 actual transaction scenario, queue/draw, timeout/overflow marker가 없으면 통과로 세지 않는다. 최종 화면을 capture하고 hierarchy·Activity state를 저장한다.
 5. 원래 foreground였던 Chrome을 다시 열고 package/focus를 확인한다. 기기에서 Spinon data를 초기화하거나 system update/설정을 바꾸지 않는다.
+
+## 실행 결과
+
+- Samsung SM-S731N / Android 16 SDK 36.1 / 4KB / ARM64에서 동일 APK를 두 번 설치·실행했다. 둘 다 12 checks, failures 0, timeout/callback 100회, idle 60 samples, pending·queue·active 0으로 끝났다. race winner는 run 01 87/13, run 02 93/7로 관찰됐고 비율은 성능 판정이 아니다.
+- run 01 앱 fixture는 PASS했지만 driver가 시작 직후 `pidof` no-process exit 1에서 종료했다. 앱은 독립적으로 fixture를 끝냈고 logcat buffer를 지우지 않았기 때문에 summary와 bitmap을 사후 보존했다. pid lookup의 초기 exit 1을 허용하도록 driver를 수정했고 run 02에서 build/install/logcat filtering/assertion/screenshot/복구까지 통과했다.
+- 세 실제 callback marker는 양 run에서 PASS다. baseline/recovery의 `TransactionStats`는 존재했지만 fence 상태가 pending이라 `fence_signal_usable=false`; stale callback은 generation 1→2 뒤 `late_after_cancel`로 남겼다. usable present timestamp는 얻지 못했다.
+- 두 PNG는 PASS 화면을 표시한다. run 02의 ui hierarchy 및 Activity/focus도 동일 화면이고, 테스트 뒤 Chrome foreground와 기존 screen setting을 복구했다.
+- 전체 원본과 실행 후 새 20개 실패 관점은 [실기기 보고서](../spec/internal/evidence/r05-android-physical-callback-faults-2026-10-08/README.md), [실행 후 검토](../spec/internal/evidence/r05-android-physical-callback-faults-2026-10-08/implementation-review.md)에 있다. 이는 synthetic fixture이며 physical touch, present latency 또는 R05.3 완료가 아니다.
 
 ## 중단·실패 기준
 

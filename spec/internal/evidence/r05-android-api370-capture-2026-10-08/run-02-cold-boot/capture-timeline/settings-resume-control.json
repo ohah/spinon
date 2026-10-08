@@ -1,0 +1,23 @@
+{
+  "serial": "emulator-5580",
+  "settings_start_output": "Starting: Intent { act=android.settings.SETTINGS }",
+  "settings_capture": {
+    "file": "settings-control.png",
+    "capture_utc": "2026-10-08T14:53:09.816739+00:00",
+    "start_monotonic_ns": 19175392291,
+    "end_monotonic_ns": 19298411250,
+    "latency_ns": 123018959,
+    "bytes": 211005,
+    "sha256": "bb2543a21357485b97ae8e35a7bb45a0fba8062f95db67b1827b0cc57536284f"
+  },
+  "resume_capture": {
+    "file": "app-resume-control.png",
+    "capture_utc": "2026-10-08T14:53:10.983348+00:00",
+    "start_monotonic_ns": 20342005958,
+    "end_monotonic_ns": 20445262541,
+    "latency_ns": 103256583,
+    "bytes": 50832,
+    "sha256": "f7f3399054572a6cb717203bc99b952603a0a5665bb8950f64974ed4a32573f8"
+  },
+  "note": "Host monotonic screenshot request/receive interval; Settings was opened and Back returned to prior app."
+}
