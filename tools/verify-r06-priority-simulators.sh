@@ -6,6 +6,7 @@ android_package="dev.spinon.bootstrap"
 ios_bundle_id="dev.spinon.bootstrap"
 expected_order='order=[user-blocking:1#seq4,user-blocking:2#seq6,user-visible:101#seq3,user-visible:102#seq7,background:201#seq2,background:202#seq5]'
 pass_marker='status=0 priority_probe=PASS blocker_status=-8 cancel_status=0'
+fairness_marker='status=0 priority_stream_probe=PASS capacity=64 initial_high=63 late_high=96 accepted_high=159 background_seq=2 background_order=160'
 run_id="$(date -u +%Y%m%dT%H%M%SZ)"
 result_dir="${SPINON_R06_PRIORITY_OUTPUT_DIR:-$repo_root/build/spinon/priority-validation/$run_id}"
 ios_stream_pid=""
@@ -28,6 +29,27 @@ command -v mise >/dev/null 2>&1 || fail "mise를 찾을 수 없습니다"
 command -v adb >/dev/null 2>&1 || fail "Android SDK platform-tools의 adb를 찾을 수 없습니다"
 command -v xcrun >/dev/null 2>&1 || fail "Xcode의 xcrun을 찾을 수 없습니다"
 command -v rg >/dev/null 2>&1 || fail "ripgrep의 rg를 찾을 수 없습니다"
+
+v8_dir="${SPINON_V8_DIR:-$repo_root/build/v8-source/v8}"
+expected_v8_revision="$(tr -d '\n' < "$repo_root/tools/v8/v8-revision.txt")"
+actual_v8_revision="$(git -C "$v8_dir" rev-parse HEAD 2>/dev/null || true)"
+[[ "$actual_v8_revision" == "$expected_v8_revision" ]] \
+  || fail "V8 checkout이 없거나 고정 revision과 다릅니다. SPINON_V8_DIR에 $expected_v8_revision checkout을 지정하세요"
+[[ -z "$(git -C "$v8_dir" status --porcelain --untracked-files=no)" ]] \
+  || fail "V8 고정 소스에 추적 파일 변경이 있습니다"
+android_v8_args="$v8_dir/out/boson-android-mac/args.gn"
+ios_v8_args="$v8_dir/out/boson-ios-sim/args.gn"
+[[ -f "$android_v8_args" && -f "$ios_v8_args" ]] \
+  || fail "Android·iOS 시뮬레이터 V8 args.gn을 찾을 수 없습니다"
+[[ "$(rg '^target_os = ' "$android_v8_args" | tail -n 1 || true)" == 'target_os = "android"' \
+  && "$(rg '^target_cpu = ' "$android_v8_args" | tail -n 1 || true)" == 'target_cpu = "arm64"' \
+  && "$(rg '^v8_jitless = ' "$android_v8_args" | tail -n 1 || true)" == 'v8_jitless = false' ]] \
+  || fail "Android 검증 V8은 arm64 Android, v8_jitless = false 설정이어야 합니다"
+[[ "$(rg '^target_os = ' "$ios_v8_args" | tail -n 1 || true)" == 'target_os = "ios"' \
+  && "$(rg '^target_cpu = ' "$ios_v8_args" | tail -n 1 || true)" == 'target_cpu = "arm64"' \
+  && "$(rg '^target_environment = ' "$ios_v8_args" | tail -n 1 || true)" == 'target_environment = "simulator"' \
+  && "$(rg '^v8_jitless = ' "$ios_v8_args" | tail -n 1 || true)" == 'v8_jitless = false' ]] \
+  || fail "iOS 검증 V8은 arm64 Simulator, v8_jitless = false 설정이어야 합니다"
 
 android_serial="${SPINON_ANDROID_EMULATOR_SERIAL:-}"
 if [[ -n "$android_serial" ]]; then
@@ -65,6 +87,8 @@ else
 fi
 
 mkdir -p "$result_dir"
+printf 'V8 revision=%s · Android/iOS v8_jitless=false\nAndroid serial=%s · iOS Simulator=%s\n' \
+  "$actual_v8_revision" "$android_serial" "$ios_simulator_udid" > "$result_dir/environment.txt"
 android_log="$result_dir/android.log"
 ios_log="$result_dir/ios.log"
 ios_stream_log="$result_dir/ios-stream.log"
@@ -99,14 +123,22 @@ adb -s "$android_serial" shell am start -n "$android_package/.MainActivity" --ez
 android_passed=false
 for _ in $(seq 1 45); do
   adb -s "$android_serial" logcat -d -s SpinonBootstrap:I \
-    | rg 'SPINON_PRIORITY_PROBE' > "$android_log" || true
-  if rg -Fq "$pass_marker" "$android_log" && rg -Fq "$expected_order" "$android_log"; then
+    | rg 'SPINON_PRIORITY_(PROBE|FAIRNESS_PROBE)' > "$android_log" || true
+  if rg -Fq "$pass_marker" "$android_log" \
+    && rg -Fq "$expected_order" "$android_log" \
+    && rg -Fq "$fairness_marker" "$android_log"; then
     android_passed=true
     break
   fi
-  if rg -Fq 'priority_probe=FAIL' "$android_log"; then
+  if rg -Fq 'SPINON_PRIORITY_PROBE status=-' "$android_log" \
+    || rg -Fq 'priority_probe=FAIL' "$android_log"; then
     cat "$android_log" >&2
     fail "Android 실제 V8 우선순위 진단이 실패했습니다"
+  fi
+  if rg -Fq 'SPINON_PRIORITY_FAIRNESS_PROBE status=-' "$android_log" \
+    || rg -Fq 'priority_stream_probe=FAIL' "$android_log"; then
+    cat "$android_log" >&2
+    fail "Android 실제 V8 우선순위 유입 진단이 실패했습니다"
   fi
   sleep 1
 done
@@ -130,7 +162,7 @@ ios_app="$repo_root/build/spinon/DerivedData/Build/Products/Debug-iphonesimulato
 printf '\niOS 시뮬레이터에서 실제 V8 검증을 실행합니다.\n'
 xcrun simctl install "$ios_simulator_udid" "$ios_app"
 xcrun simctl spawn "$ios_simulator_udid" log stream --style compact \
-  --predicate 'process == "SpinonBootstrap" AND eventMessage CONTAINS[c] "SPINON_PRIORITY_PROBE"' \
+  --predicate 'process == "SpinonBootstrap" AND (eventMessage CONTAINS[c] "SPINON_PRIORITY_PROBE" OR eventMessage CONTAINS[c] "SPINON_PRIORITY_FAIRNESS_PROBE")' \
   > "$ios_stream_log" 2>&1 &
 ios_stream_pid=$!
 sleep 1
@@ -140,13 +172,21 @@ xcrun simctl launch --terminate-running-process "$ios_simulator_udid" "$ios_bund
 
 ios_passed=false
 for _ in $(seq 1 45); do
-  if rg -Fq "$pass_marker" "$ios_stream_log" && rg -Fq "$expected_order" "$ios_stream_log"; then
+  if rg -Fq "$pass_marker" "$ios_stream_log" \
+    && rg -Fq "$expected_order" "$ios_stream_log" \
+    && rg -Fq "$fairness_marker" "$ios_stream_log"; then
     ios_passed=true
     break
   fi
-  if rg -Fq 'priority_probe=FAIL' "$ios_stream_log"; then
+  if rg -Fq 'SPINON_PRIORITY_PROBE status=-' "$ios_stream_log" \
+    || rg -Fq 'priority_probe=FAIL' "$ios_stream_log"; then
     cat "$ios_stream_log" >&2
     fail "iOS 실제 V8 우선순위 진단이 실패했습니다"
+  fi
+  if rg -Fq 'SPINON_PRIORITY_FAIRNESS_PROBE status=-' "$ios_stream_log" \
+    || rg -Fq 'priority_stream_probe=FAIL' "$ios_stream_log"; then
+    cat "$ios_stream_log" >&2
+    fail "iOS 실제 V8 우선순위 유입 진단이 실패했습니다"
   fi
   sleep 1
 done
@@ -157,9 +197,9 @@ ios_stream_pid=""
   cat "$ios_stream_log" >&2
   fail "45초 안에 iOS 검증 통과 로그를 받지 못했습니다"
 }
-rg 'SPINON_PRIORITY_PROBE status=' "$ios_stream_log" > "$ios_log" || true
+rg 'SPINON_PRIORITY_(PROBE|FAIRNESS_PROBE) status=' "$ios_stream_log" > "$ios_log" || true
 rg -q 'owner_tid=[1-9][0-9]*' "$ios_log" || fail "iOS 로그에 유효한 owner thread가 없습니다"
 xcrun simctl io "$ios_simulator_udid" screenshot "$result_dir/ios.png" >/dev/null
 printf 'iOS 검증 통과 · 원본: %s · 화면: %s\n' "$ios_log" "$result_dir/ios.png"
 
-printf '\n두 시뮬레이터에서 실제 V8 우선순위와 등급별 FIFO 검증을 통과했습니다.\n결과 폴더: %s\n' "$result_dir"
+printf '\n두 시뮬레이터에서 실제 V8 우선순위·등급별 FIFO·유한 높은 등급 유입 검증을 통과했습니다.\n결과 폴더: %s\n' "$result_dir"

@@ -1,0 +1,48 @@
+V8 revision=7b50b62cb18f28617959e8452e2cd18195b38bcf · Android/iOS v8_jitless=false
+Android=Android 16 API 36 sdk_gphone64_arm64 ARM64 emulator
+iOS=iPhone 17 Pro iOS 26.2 simulator
+
+[Android run 1]
+10-08 10:24:54.968 26230 26281 I SpinonBootstrap: SPINON_PRIORITY_PROBE status=0 priority_probe=PASS blocker_status=-8 cancel_status=0 order=[user-blocking:1#seq4,user-blocking:2#seq6,user-visible:101#seq3,user-visible:102#seq7,background:201#seq2,background:202#seq5] owner_tid=26282
+10-08 10:24:55.566 26230 26281 I SpinonBootstrap: SPINON_PRIORITY_FAIRNESS_PROBE status=0 priority_stream_probe=PASS capacity=64 initial_high=63 late_high=96 accepted_high=159 background_seq=2 background_order=160 background_wait_us=501074 elapsed_ms=584 owner_tid=26287
+10-08 10:24:55.566 26230 26281 I SpinonBootstrap: SPINON_PRIORITY_PROBE status=0 priority_probe=PASS blocker_status=-8 cancel_status=0 order=[user-blocking:1#seq4,user-blocking:2#seq6,user-visible:101#seq3,user-visible:102#seq7,background:201#seq2,background:202#seq5] owner_tid=26282 status=0 priority_stream_probe=PASS capacity=64 initial_high=63 late_high=96 accepted_high=159 background_seq=2 background_order=160 background_wait_us=501074 elapsed_ms=584 owner_tid=26287
+
+[iOS run 1]
+2026-10-08 10:25:20.351 Df SpinonBootstrap[97942:46670aa] SPINON_PRIORITY_PROBE status=0 priority_probe=PASS blocker_status=-8 cancel_status=0 order=[user-blocking:1#seq4,user-blocking:2#seq6,user-visible:101#seq3,user-visible:102#seq7,background:201#seq2,background:202#seq5] owner_tid=73822383
+2026-10-08 10:25:20.831 Df SpinonBootstrap[97942:46670aa] SPINON_PRIORITY_FAIRNESS_PROBE status=0 priority_stream_probe=PASS capacity=64 initial_high=63 late_high=96 accepted_high=159 background_seq=2 background_order=160 background_wait_us=477232 elapsed_ms=477 owner_tid=73822400
+
+[Android run 2]
+10-08 10:25:21.476 26335 26356 I SpinonBootstrap: SPINON_PRIORITY_PROBE status=0 priority_probe=PASS blocker_status=-8 cancel_status=0 order=[user-blocking:1#seq4,user-blocking:2#seq6,user-visible:101#seq3,user-visible:102#seq7,background:201#seq2,background:202#seq5] owner_tid=26357
+10-08 10:25:22.069 26335 26356 I SpinonBootstrap: SPINON_PRIORITY_FAIRNESS_PROBE status=0 priority_stream_probe=PASS capacity=64 initial_high=63 late_high=96 accepted_high=159 background_seq=2 background_order=160 background_wait_us=584811 elapsed_ms=585 owner_tid=26365
+10-08 10:25:22.069 26335 26356 I SpinonBootstrap: SPINON_PRIORITY_PROBE status=0 priority_probe=PASS blocker_status=-8 cancel_status=0 order=[user-blocking:1#seq4,user-blocking:2#seq6,user-visible:101#seq3,user-visible:102#seq7,background:201#seq2,background:202#seq5] owner_tid=26357 status=0 priority_stream_probe=PASS capacity=64 initial_high=63 late_high=96 accepted_high=159 background_seq=2 background_order=160 background_wait_us=584811 elapsed_ms=585 owner_tid=26365
+
+[iOS run 2]
+2026-10-08 10:25:46.711 Df SpinonBootstrap[98563:4667e62] SPINON_PRIORITY_PROBE status=0 priority_probe=PASS blocker_status=-8 cancel_status=0 order=[user-blocking:1#seq4,user-blocking:2#seq6,user-visible:101#seq3,user-visible:102#seq7,background:201#seq2,background:202#seq5] owner_tid=73825898
+2026-10-08 10:25:47.191 Df SpinonBootstrap[98563:4667e62] SPINON_PRIORITY_FAIRNESS_PROBE status=0 priority_stream_probe=PASS capacity=64 initial_high=63 late_high=96 accepted_high=159 background_seq=2 background_order=160 background_wait_us=476884 elapsed_ms=477 owner_tid=73825915
+
+[Android run 3]
+10-08 10:25:47.969 26430 26449 I SpinonBootstrap: SPINON_PRIORITY_PROBE status=0 priority_probe=PASS blocker_status=-8 cancel_status=0 order=[user-blocking:1#seq4,user-blocking:2#seq6,user-visible:101#seq3,user-visible:102#seq7,background:201#seq2,background:202#seq5] owner_tid=26450
+10-08 10:25:48.490 26430 26449 I SpinonBootstrap: SPINON_PRIORITY_FAIRNESS_PROBE status=0 priority_stream_probe=PASS capacity=64 initial_high=63 late_high=96 accepted_high=159 background_seq=2 background_order=160 background_wait_us=507639 elapsed_ms=508 owner_tid=26455
+10-08 10:25:48.491 26430 26449 I SpinonBootstrap: SPINON_PRIORITY_PROBE status=0 priority_probe=PASS blocker_status=-8 cancel_status=0 order=[user-blocking:1#seq4,user-blocking:2#seq6,user-visible:101#seq3,user-visible:102#seq7,background:201#seq2,background:202#seq5] owner_tid=26450 status=0 priority_stream_probe=PASS capacity=64 initial_high=63 late_high=96 accepted_high=159 background_seq=2 background_order=160 background_wait_us=507639 elapsed_ms=508 owner_tid=26455
+
+[iOS run 3]
+2026-10-08 10:26:13.167 Df SpinonBootstrap[99190:4668bdb] SPINON_PRIORITY_PROBE status=0 priority_probe=PASS blocker_status=-8 cancel_status=0 order=[user-blocking:1#seq4,user-blocking:2#seq6,user-visible:101#seq3,user-visible:102#seq7,background:201#seq2,background:202#seq5] owner_tid=73829343
+2026-10-08 10:26:13.647 Df SpinonBootstrap[99190:4668bdb] SPINON_PRIORITY_FAIRNESS_PROBE status=0 priority_stream_probe=PASS capacity=64 initial_high=63 late_high=96 accepted_high=159 background_seq=2 background_order=160 background_wait_us=476826 elapsed_ms=477 owner_tid=73829362
+
+[Android run 4]
+10-08 10:26:14.345 26523 26543 I SpinonBootstrap: SPINON_PRIORITY_PROBE status=0 priority_probe=PASS blocker_status=-8 cancel_status=0 order=[user-blocking:1#seq4,user-blocking:2#seq6,user-visible:101#seq3,user-visible:102#seq7,background:201#seq2,background:202#seq5] owner_tid=26544
+10-08 10:26:14.878 26523 26543 I SpinonBootstrap: SPINON_PRIORITY_FAIRNESS_PROBE status=0 priority_stream_probe=PASS capacity=64 initial_high=63 late_high=96 accepted_high=159 background_seq=2 background_order=160 background_wait_us=525773 elapsed_ms=526 owner_tid=26552
+10-08 10:26:14.878 26523 26543 I SpinonBootstrap: SPINON_PRIORITY_PROBE status=0 priority_probe=PASS blocker_status=-8 cancel_status=0 order=[user-blocking:1#seq4,user-blocking:2#seq6,user-visible:101#seq3,user-visible:102#seq7,background:201#seq2,background:202#seq5] owner_tid=26544 status=0 priority_stream_probe=PASS capacity=64 initial_high=63 late_high=96 accepted_high=159 background_seq=2 background_order=160 background_wait_us=525773 elapsed_ms=526 owner_tid=26552
+
+[iOS run 4]
+2026-10-08 10:26:39.787 Df SpinonBootstrap[99872:4669b40] SPINON_PRIORITY_PROBE status=0 priority_probe=PASS blocker_status=-8 cancel_status=0 order=[user-blocking:1#seq4,user-blocking:2#seq6,user-visible:101#seq3,user-visible:102#seq7,background:201#seq2,background:202#seq5] owner_tid=73833285
+2026-10-08 10:26:40.267 Df SpinonBootstrap[99872:4669b40] SPINON_PRIORITY_FAIRNESS_PROBE status=0 priority_stream_probe=PASS capacity=64 initial_high=63 late_high=96 accepted_high=159 background_seq=2 background_order=160 background_wait_us=476795 elapsed_ms=476 owner_tid=73833302
+
+[Android run 5]
+10-08 10:26:41.010 26628 26649 I SpinonBootstrap: SPINON_PRIORITY_PROBE status=0 priority_probe=PASS blocker_status=-8 cancel_status=0 order=[user-blocking:1#seq4,user-blocking:2#seq6,user-visible:101#seq3,user-visible:102#seq7,background:201#seq2,background:202#seq5] owner_tid=26650
+10-08 10:26:41.579 26628 26649 I SpinonBootstrap: SPINON_PRIORITY_FAIRNESS_PROBE status=0 priority_stream_probe=PASS capacity=64 initial_high=63 late_high=96 accepted_high=159 background_seq=2 background_order=160 background_wait_us=560906 elapsed_ms=561 owner_tid=26658
+10-08 10:26:41.579 26628 26649 I SpinonBootstrap: SPINON_PRIORITY_PROBE status=0 priority_probe=PASS blocker_status=-8 cancel_status=0 order=[user-blocking:1#seq4,user-blocking:2#seq6,user-visible:101#seq3,user-visible:102#seq7,background:201#seq2,background:202#seq5] owner_tid=26650 status=0 priority_stream_probe=PASS capacity=64 initial_high=63 late_high=96 accepted_high=159 background_seq=2 background_order=160 background_wait_us=560906 elapsed_ms=561 owner_tid=26658
+
+[iOS run 5]
+2026-10-08 10:27:06.550 Df SpinonBootstrap[950:466abde] SPINON_PRIORITY_PROBE status=0 priority_probe=PASS blocker_status=-8 cancel_status=0 order=[user-blocking:1#seq4,user-blocking:2#seq6,user-visible:101#seq3,user-visible:102#seq7,background:201#seq2,background:202#seq5] owner_tid=73837535
+2026-10-08 10:27:07.030 Df SpinonBootstrap[950:466abde] SPINON_PRIORITY_FAIRNESS_PROBE status=0 priority_stream_probe=PASS capacity=64 initial_high=63 late_high=96 accepted_high=159 background_seq=2 background_order=160 background_wait_us=477286 elapsed_ms=477 owner_tid=73837552

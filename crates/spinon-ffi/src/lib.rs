@@ -111,7 +111,7 @@ pub unsafe extern "C" fn spinon_runtime_priority_probe(
 ///
 /// `output`은 `output_capacity` 바이트만큼 쓸 수 있는 메모리를 가리켜야 합니다.
 #[unsafe(no_mangle)]
-#[cfg(target_os = "android")]
+#[cfg(any(target_os = "android", target_os = "ios"))]
 pub unsafe extern "C" fn spinon_runtime_priority_fairness_probe(
     output: *mut c_char,
     output_capacity: usize,

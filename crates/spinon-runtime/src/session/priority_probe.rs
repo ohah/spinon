@@ -8,7 +8,7 @@ use std::sync::{Arc, mpsc::Receiver};
 use std::thread;
 use std::time::{Duration, Instant};
 
-#[cfg(any(target_os = "android", test))]
+#[cfg(any(target_os = "android", target_os = "ios", test))]
 mod stream;
 
 struct PendingPriorityProbe {
@@ -25,7 +25,7 @@ struct PriorityProbeResult {
     execution_order: u64,
     owner_thread_id: u64,
     callback_thread_id: u64,
-    #[cfg(any(target_os = "android", test))]
+    #[cfg(any(target_os = "android", target_os = "ios", test))]
     queue_residence_us: u64,
 }
 
@@ -172,8 +172,8 @@ pub fn run_priority_probe() -> Result<String, String> {
     ))
 }
 
-/// Android 개발용 실제 V8 세션에서 높은 등급 유입 중 낮은 등급 작업의 선택 순서를 확인합니다.
-#[cfg(any(target_os = "android", test))]
+/// Android·iOS 시뮬레이터의 실제 V8 세션에서 높은 등급 유입 중 낮은 등급 작업의 선택 순서를 확인합니다.
+#[cfg(any(target_os = "android", target_os = "ios", test))]
 pub fn run_priority_fairness_probe() -> Result<String, String> {
     let (session, _) = RuntimeSession::new()?;
     let session = Arc::new(session);
@@ -215,7 +215,7 @@ fn parse_priority_probe_result(
     let sequence = parse("seq")?;
     let owner_thread_id = parse("owner_tid")?;
     let callback_thread_id = parse("callback_tid")?;
-    #[cfg(any(target_os = "android", test))]
+    #[cfg(any(target_os = "android", target_os = "ios", test))]
     let queue_residence_us = parse("queue_residence_us")?;
     if execution_order == 0 {
         return Err(format!(
@@ -230,7 +230,7 @@ fn parse_priority_probe_result(
         execution_order,
         owner_thread_id,
         callback_thread_id,
-        #[cfg(any(target_os = "android", test))]
+        #[cfg(any(target_os = "android", target_os = "ios", test))]
         queue_residence_us,
     })
 }

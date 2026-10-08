@@ -22,7 +22,7 @@ mod trace;
 #[cfg(test)]
 use actor::CallbackState;
 use actor::actor_loop;
-#[cfg(any(target_os = "android", test))]
+#[cfg(any(target_os = "android", target_os = "ios", test))]
 pub use priority_probe::run_priority_fairness_probe;
 pub use priority_probe::run_priority_probe;
 #[cfg(test)]

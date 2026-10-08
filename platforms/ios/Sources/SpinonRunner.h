@@ -18,6 +18,7 @@
 + (void)destroyR08Wgpu:(void *)renderer;
 + (uint64_t)createRuntimeSession;
 + (NSString *)runRuntimePriorityProbe;
++ (NSString *)runRuntimePriorityFairnessProbe;
 + (NSString *)runRuntimeShutdownProbe;
 + (NSString *)evalRuntimeSession:(uint64_t)handle source:(NSString *)source;
 + (NSString *)dispatchRuntimeSession:(uint64_t)handle nodeID:(int32_t)nodeID;
