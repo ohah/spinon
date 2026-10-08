@@ -31,7 +31,7 @@
 		};
 		A00000000000000000000003 /* Sources */ = {
 			isa = PBXGroup;
-			children = (A00000000000000000000004 /* AppDelegate.swift */, A00000000000000000000005 /* R08GpuDemo.swift */, A00000000000000000000006 /* SpinonRunner.mm */, A00000000000000000000007 /* R05LayerSmoke.app */, A0000000000000000000000E /* R05LayerSmokeUITests.swift */, A0000000000000000000000F /* R05LayerSmokeUITests.xctest */, A00000000000000000000010 /* XCTest.framework */,);
+			children = (A00000000000000000000004 /* AppDelegate.swift */, A00000000000000000000005 /* R08GpuDemo.swift */, A00000000000000000000006 /* SpinonRunner.mm */, A00000000000000000000007 /* R05LayerSmoke.app */, A0000000000000000000000E /* R05LayerSmokeUITests.swift */, A0000000000000000000000F /* R05LayerSmokeUITests.xctest */, A00000000000000000000010 /* XCTest.framework */, A00000000000000000000018 /* R05PresentationLedger.swift */,);
 			sourceTree = "<group>";
 		};
 		A00000000000000000000004 /* AppDelegate.swift */ = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,10 +41,11 @@
 		A0000000000000000000000E /* R05LayerSmokeUITests.swift */ = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R05LayerSmokeUITests.swift; sourceTree = "<group>"; };
 		A0000000000000000000000F /* R05LayerSmokeUITests.xctest */ = { isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = R05LayerSmokeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A00000000000000000000010 /* XCTest.framework */ = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = System/Library/Frameworks/XCTest.framework; sourceTree = SDKROOT; };
+		A00000000000000000000018 /* R05PresentationLedger.swift */ = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ../../../../../platforms/ios/Sources/R05PresentationLedger.swift; sourceTree = "<group>"; };
 		A00000000000000000000008 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
-			files = (B00000000000000000000001 /* AppDelegate.swift in Sources */, B00000000000000000000002 /* R08GpuDemo.swift in Sources */, B00000000000000000000003 /* SpinonRunner.mm in Sources */,);
+			files = (B00000000000000000000001 /* AppDelegate.swift in Sources */, B00000000000000000000002 /* R08GpuDemo.swift in Sources */, B00000000000000000000003 /* SpinonRunner.mm in Sources */, B00000000000000000000006 /* R05PresentationLedger.swift in Sources */,);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A00000000000000000000009 /* Frameworks */ = { isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
@@ -68,6 +69,7 @@
 		B00000000000000000000003 /* SpinonRunner.mm in Sources */ = { isa = PBXBuildFile; fileRef = A00000000000000000000006 /* SpinonRunner.mm */; };
 		B00000000000000000000004 /* R05LayerSmokeUITests.swift in Sources */ = { isa = PBXBuildFile; fileRef = A0000000000000000000000E /* R05LayerSmokeUITests.swift */; };
 		B00000000000000000000005 /* XCTest.framework in Frameworks */ = { isa = PBXBuildFile; fileRef = A00000000000000000000010 /* XCTest.framework */; };
+		B00000000000000000000006 /* R05PresentationLedger.swift in Sources */ = { isa = PBXBuildFile; fileRef = A00000000000000000000018 /* R05PresentationLedger.swift */; };
 		A00000000000000000000015 /* ContainerItemProxy */ = { isa = PBXContainerItemProxy; containerPortal = A00000000000000000000001 /* Project object */; proxyType = 1; remoteGlobalIDString = A00000000000000000000002; remoteInfo = R05LayerSmoke; };
 		A00000000000000000000017 /* Target dependency */ = { isa = PBXTargetDependency; target = A00000000000000000000002 /* R05LayerSmoke */; targetProxy = A00000000000000000000015 /* ContainerItemProxy */; };
 		C00000000000000000000001 /* Project Debug */ = { isa = XCBuildConfiguration; buildSettings = { CLANG_CXX_LANGUAGE_STANDARD = "gnu++20"; CLANG_ENABLE_MODULES = YES; IPHONEOS_DEPLOYMENT_TARGET = 18.0; SDKROOT = iphoneos; SWIFT_VERSION = 5.0; }; name = Debug; };
