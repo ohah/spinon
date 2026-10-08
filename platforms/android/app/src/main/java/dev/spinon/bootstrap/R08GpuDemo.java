@@ -298,6 +298,18 @@ final class R08GpuSurface extends GLSurfaceView implements GLSurfaceView.Rendere
         if (r05PresentationProbe) getHolder().addCallback(r05SurfaceHolderCallback);
     }
 
+    long r05SurfaceGenerationForFailureFixture() {
+        return r05SurfaceGeneration;
+    }
+
+    long r05InputSequenceForFailureFixture() {
+        return r05InputSequence;
+    }
+
+    boolean r05SurfaceAvailableForFailureFixture() {
+        return r05SurfaceAvailable;
+    }
+
     public void setActivationCount(int count) {
         activationCount = count;
         Runnable submit = () -> {

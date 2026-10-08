@@ -71,23 +71,65 @@ else
     || fail "API ${expected_api_full}·${expected_page_size}B AVD가 아닙니다: api=$api_level api_full=${api_full:-미제공} page_size=$page_size"
 fi
 
+avd_name_output="$("$adb" -s "$android_serial" emu avd name)"
+avd_name="$(awk '$0 != "OK" && NF { print; exit }' <<< "${avd_name_output//$'\r'/}")"
+avd_ini="$HOME/.android/avd/$avd_name.ini"
+avd_data_dir="미제공"
+if [[ -f "$avd_ini" ]]; then
+  avd_data_dir="$(awk -F= '$1 == "path" && !found { sub(/^[^=]*=/, ""); print; found = 1 }' \
+    "$avd_ini")"
+fi
+avd_data_dir_present=false
+if [[ -n "$avd_data_dir" && -d "$avd_data_dir" ]]; then
+  avd_data_dir_present=true
+fi
+emulator_process_line="$(ps -axo pid=,etime=,command= | awk -v name="$avd_name" \
+  '$0 ~ /qemu-system/ && !found { for (i = 1; i < NF; i++) if ($i == "-avd" && $(i + 1) == name) { print; found = 1 } }')"
+emulator_pid="$(awk 'NR == 1 { print $1 }' <<< "$emulator_process_line")"
+v8_dir="${SPINON_V8_DIR:-$repo_root/build/v8-source/v8}"
+v8_required_revision="$(tr -d '\n' < "$repo_root/tools/v8/v8-revision.txt")"
+v8_checkout_revision="$(git -C "$v8_dir" rev-parse HEAD 2>/dev/null || printf 'missing')"
+v8_checkout_clean=false
+if [[ "$v8_checkout_revision" == "$v8_required_revision" ]] \
+    && [[ -z "$(git -C "$v8_dir" status --porcelain 2>/dev/null)" ]]; then
+  v8_checkout_clean=true
+fi
+
 [[ ! -e "$result_dir" ]] || fail "기존 결과를 덮어쓰지 않도록 새 경로를 지정하세요"
 mkdir -p "$result_dir"
 {
   printf 'source_head=%s\n' "$(git -C "$repo_root" rev-parse HEAD)"
-  printf 'source_worktree_dirty=%s\n' "$(git -C "$repo_root" status --porcelain --untracked-files=no | wc -l | tr -d ' ')"
+  printf 'source_tracked_changes=%s\n' "$(git -C "$repo_root" status --porcelain --untracked-files=no | wc -l | tr -d ' ')"
   printf 'android_serial=%s\n' "$android_serial"
   printf 'model=%s\n' "$("$adb" -s "$android_serial" shell getprop ro.product.model | tr -d '\r')"
   printf 'expected_api_full=%s\nexpected_page_size=%s\n' "$expected_api_full" "$expected_page_size"
   printf 'api=%s\napi_full=%s\npage_size=%s\n' "$api_level" "${api_full:-unavailable}" "$page_size"
   printf 'abi=%s\n' "$("$adb" -s "$android_serial" shell getprop ro.product.cpu.abi | tr -d '\r')"
+  printf 'avd_name=%s\navd_ini=%s\navd_data_dir=%s\navd_data_dir_present=%s\n' \
+    "$avd_name" "$avd_ini" "$avd_data_dir" "$avd_data_dir_present"
+  printf 'emulator_pid=%s\nemulator_elapsed=%s\n' "$emulator_pid" \
+    "$(awk 'NR == 1 { print $2 }' <<< "$emulator_process_line")"
+  printf 'v8_dir=%s\nv8_required_revision=%s\nv8_checkout_revision=%s\nv8_checkout_clean=%s\n' \
+    "$v8_dir" "$v8_required_revision" "$v8_checkout_revision" "$v8_checkout_clean"
 } > "$result_dir/environment.txt"
+{
+  printf 'avd_name=%s\navd_data_dir=%s\navd_data_dir_present=%s\n' \
+    "$avd_name" "$avd_data_dir" "$avd_data_dir_present"
+  printf 'emulator_process=%s\n' "$emulator_process_line"
+  if [[ -n "$emulator_pid" ]] && command -v lsof >/dev/null 2>&1; then
+    printf '%s\n' '--- emulator이 열어 둔 삭제 파일 ---'
+    lsof -a +L1 -nP -p "$emulator_pid" 2>/dev/null | rg '\.android/avd/' || true
+  fi
+} > "$result_dir/avd-process-state.txt"
 {
   for source_file in \
     platforms/android/app/src/main/java/dev/spinon/bootstrap/MainActivity.java \
     platforms/android/app/src/main/java/dev/spinon/bootstrap/R05PresentFenceProbe.java \
+    platforms/android/app/src/main/java/dev/spinon/bootstrap/R08GpuDemo.java \
     platforms/android/app/src/debug/java/dev/spinon/bootstrap/R05PresentFenceFailureFixture.java \
+    platforms/android/app/src/debug/java/dev/spinon/bootstrap/R05AppliedTransactionLifecycleFixture.java \
     platforms/android/app/src/release/java/dev/spinon/bootstrap/R05PresentFenceFailureFixture.java \
+    tools/v8/v8-revision.txt \
     tools/verify-r05-android-callback-faults.sh; do
     shasum -a 256 "$repo_root/$source_file"
   done
@@ -124,6 +166,25 @@ done
 
 rg -Fq 'SPINON_R05_CALLBACK_FAULT_SUMMARY status=PASS' "$result_dir/logcat.txt" \
   || fail "100초 안에 fixture PASS 결과가 없습니다"
+for scenario in \
+  actual_surface_callback_baseline \
+  actual_surface_callback_after_recreation \
+  actual_surface_callback_recovery; do
+  rg -Fq "SPINON_R05_APPLIED_TRANSACTION scenario=$scenario outcome=PASS" \
+    "$result_dir/logcat.txt" \
+    || fail "실제 applied transaction lifecycle scenario가 통과하지 않았습니다: $scenario"
+done
+queued_callback_count="$(rg -c -F \
+  'SPINON_R05_APPLIED_TRANSACTION scenario=callback_queued outcome=PASS' \
+  "$result_dir/logcat.txt" || true)"
+[[ "$queued_callback_count" == "3" ]] \
+  || fail "실제 callback을 blocker 뒤에 세 번 큐잉하지 못했습니다: $queued_callback_count"
+for expected in "1 1" "2 1" "3 2"; do
+  read -r revision generation <<< "$expected"
+  rg -q "SPINON_R05_DRAW renderer=opengl_es draw_seq=[0-9]+ revision=$revision generation=$generation" \
+    "$result_dir/logcat.txt" \
+    || fail "R08 SurfaceView에서 요청 revision의 실제 draw 기록이 없습니다: revision=$revision generation=$generation"
+done
 rg -Fq 'scenario=actual_main_handler_timeout outcome=PASS' "$result_dir/logcat.txt" \
   || fail "실제 Handler timeout 결과가 없습니다"
 rg -Fq 'scenario=timeout_callback_race outcome=PASS' "$result_dir/logcat.txt" \
