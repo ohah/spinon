@@ -1,6 +1,6 @@
 # R05.3 iOS WGPU drawable 획득·입력 귀속 검증
 
-**실행일:** 2026-10-08 · **환경:** iPhone 17 Pro / iOS 26.2 Simulator, Xcode 26.2 · **결과:** Simulator WGPU acquire hook 및 단일 UI 입력의 draw/revision 귀속 통과 · **기기 표시 callback:** compile/link 통과, runtime 미실행 · **R05.3/R05:** 미완료
+**실행일:** 2026-10-08 · **환경:** iPhone 17 Pro / iOS 26.2 Simulator, Xcode 26.2 · **결과:** Simulator WGPU acquire hook·단일 UI 입력 귀속 및 callback ledger 자체 시험 통과 · **기기 표시 callback:** compile/link 통과, runtime 미실행 · **R05.3/R05:** 미완료
 
 ## 구현 범위
 
@@ -8,7 +8,7 @@
 
 각 WGPU draw에 `drawSequence`, 입력 sequence(없을 수 있음), render revision, surface generation을 담은 불변 ticket을 설정한다. 짧은 lock으로 활성 draw 개수와 ticket 소비 상태를 보호한다. 한 draw만 활성일 때 최초 `nextDrawable()` 호출에서 ticket을 한 번만 소비한다. overlap, sequence overflow, ticket이 없는 frame은 `unattributed`로 남긴다. native Metal 대조와 일반 R08 경로에는 probe layer를 적용하지 않는다.
 
-iPhoneOS device target에서만 반환 drawable의 `addPresentedHandler`를 등록하고 `drawableID`, `presentedTime` 및 캡처한 ticket을 기록한다. `presentedTime == 0`은 `zero_time`으로 기록한다. callback은 view를 캡처하지 않으며 event-to-present 시간 계산은 하지 않는다. 현재 구현에는 callback ledger, callback timeout/lost 정리, epoch 변환 또는 latency 집계가 없다.
+iPhoneOS device target에서만 입력과 연결된 drawable에 `addPresentedHandler`를 등록한다. WGPU acquire 때 불변 복사한 layer token·surface generation·draw sequence·drawable ID 키로 bounded callback ledger에 exact join한다. pending 64개, monotonic 2초 deadline, 100ms serial timer, tombstone 64개·10초 보존을 적용한다. 이 값은 R05 진단용 상수다. timeout은 callback 누락의 확정 증거가 아니며, 기한 뒤 positive `presentedTime`도 성공 분자에서 제외한다. zero·음수·NaN·무한대·late·duplicate·stale·unmatched·capacity·close를 따로 분류한다. 이 정책과 callback receipt의 lock linearization은 [구현 계획](../../../plan/r05-ios-present-feedback.md)에 명시했다. callback은 view/layer를 캡처하지 않는다.
 
 ## 실행 결과
 
@@ -20,11 +20,13 @@ iPhoneOS device target에서만 반환 drawable의 `addPresentedHandler`를 등�
 | iPhoneOS device Swift 전체 소스 type-check | 통과 · 기존 iOS 26 deprecation warning만 있음 |
 | 격리 앱 harness · iOS Simulator build/install/run | 성공 · Metal backend · WGPU draw result 0 |
 | 일반 R08 negative control | 첫 WGPU frame 제출 성공 · `SPINON_R05_DRAWABLE_ACQUIRE` 없음 |
-| R05 probe UI test | XCTest 1/1 통과 · 최종 실행 4.734초 · iPhone 17 Pro / iOS 26.2 Simulator |
+| R05 probe UI test | XCTest 1/1 통과 · 최종 실행 4.784초 · iPhone 17 Pro / iOS 26.2 Simulator |
 | probe의 첫 화면 draw | `draw_seq=1..3`, 각 acquire에 `input_seq=none`, `revision=0`, `generation=1` |
 | UI test 중앙 탭 | `input_seq=1`, `revision=1`이 `draw_seq=4` acquire에 exact match · 다음 draw 5는 `input_seq=none` |
 | iPhoneOS device target compile/link | 격리 앱 harness 성공 · 기기에서 설치·실행하지 않음 |
 | 전체 V8 앱 bundle 빌드 | 미실행 · 고정 V8 checkout `build/v8-source/v8`이 없어 기존 앱 build 준비 단계가 중단됨 |
+| ledger 자체 시험 | Swift standalone 6개 그룹을 한 실행에서 통과하고, 전체 suite를 다시 20회 독립 실행해 20/20 통과 · 분류·경계·identity·capacity·정렬된 surface lifecycle·overflow·tombstone·동시성·timer cancel/timeout·진단 queue 포화 |
+| iPhoneOS device target | Rust target library 및 격리 앱 harness compile/link 통과 · callback runtime은 미실행 |
 
 원본 실행 자료는 [`ios-layer-smoke/`](r05-presentation-signal-probe-2026-10-08/ios-layer-smoke/)에 둔다. XCTest 탭 뒤 GPU 도형 색과 활성화 횟수를 담은 [최종 화면 캡처](r05-presentation-signal-probe-2026-10-08/ios-layer-smoke/tap-after.png)와 [무결성 manifest](r05-presentation-signal-probe-2026-10-08/ios-layer-smoke/SHA256SUMS)를 함께 보존한다. 실제 R08 Swift 소스를 그대로 컴파일하며, 로컬 고정 V8 checkout 없이 surface 경로를 검사하기 위해 V8 앱 래퍼만 기존 WGPU FFI forwarding shim으로 대체한다. 따라서 격리 harness 성공을 전체 앱 bundle 성공으로 보지 않는다.
 
@@ -43,12 +45,13 @@ Simulator SDK에는 device-only drawable callback 멤버가 없으므로 위 `no
 
 - Simulator에서 확인한 것은 `nextDrawable()` acquire 진입과 입력→acquire ticket 귀속이다. actual-present callback은 Simulator에서 실행되지 않는다.
 - iPhoneOS device target은 API 분기를 정적 라이브러리와 함께 compile/link했지만 physical iPhone runtime을 확인하지 않았다.
-- `drawableID`는 generation 범위 안에서만 join에 사용할 수 있다. callback 누락·중복·late/stale generation 처리 ledger와 bounded timeout은 아직 없다.
+- `drawableID`는 layer token·surface generation·draw sequence와 결합해 join한다. 구현한 timeout은 callback 손실의 확정 판정이 아닌 bounded 관측 분류다.
+- Simulator 자체 시험은 ledger state machine·serial timer를 검증하지만 OS의 `addPresentedHandler` 호출은 흉내 내지 않는다. 실제 iPhone에서 handler 도착·presentedTime·surface 재부착 경합은 사용자 요청 전 검증하지 않는다.
 - `UITouch.timestamp`와 `presentedTime` 공통 clock, anchor residual, positive `presentedTime` 표본 및 event-to-present latency는 아직 확인하지 않았다.
 - 전체 V8 앱 bundle 및 실제 앱 scheme 실행은 고정 V8 checkout 부재로 미확인이다. 이 checkout을 자동 다운로드하거나 기존 캐시를 정리하지 않았다.
 - synthetic XCTest 입력이며 physical touch, optical scanout, pixel/photon 시각, 성능 비교가 아니다. 실기기 검증은 별도 사용자 요청 전 수행하지 않는다.
 
-## 구현 적대 검토 · 20개 독립 실패 관점
+## acquire hook 적대 검토 · 20개 독립 실패 관점
 
 각 항목은 코드·빌드·실행 근거를 대조했다. 실제로 주입하지 않은 고장 조건은 정적 검토와 런타임 통과를 구분했다.
 
@@ -75,6 +78,37 @@ Simulator SDK에는 device-only drawable callback 멤버가 없으므로 위 `no
 | 19 | drawable ID·clock epoch을 잘못 가정해 latency 계산 | generation을 ticket에 보존하며 시간 차 계산을 구현하지 않았다. 공통 clock 보정 전까지 latency 미보고다. |
 | 20 | 격리 harness 결과를 전체 앱·실기기·광학 완료로 확대 | 실제 R08 Swift와 실제 wgpu 정적 library를 썼지만 V8 wrapper는 제외했다. 별도 V8 app 빌드·physical iPhone·광학 측정은 미검증으로 기록했다. |
 
-### 검토 결과
+### acquire hook 검토 결과
 
-구현 중 중첩 draw와 `drawSequence` overflow가 ticket을 잘못 귀속하거나 debug 앱을 멈출 가능성을 확인해 fail-closed 분기를 추가했다. Simulator UI test는 입력 ticket과 WGPU drawable acquire를 연결했고 일반 R08 negative control은 probe 로그가 없음을 확인했다. device target compile/link도 통과했다. callback queue/timeout, callback 실패 주입, physical device runtime, 전체 V8 앱 bundle은 다음 검증 단계로 남겼으며 R05.3/R05 완료 체크는 하지 않는다.
+구현 중 중첩 draw와 `drawSequence` overflow가 ticket을 잘못 귀속하거나 debug 앱을 멈출 가능성을 확인해 fail-closed 분기를 추가했다. Simulator UI test는 입력 ticket과 WGPU drawable acquire를 연결했고 일반 R08 negative control은 probe 로그가 없음을 확인했다. device target compile/link도 통과했다.
+
+## callback ledger 구현 적대 검토 · 별도 20개 관점
+
+아래는 앞선 acquire hook 20개 검토를 재사용하지 않은 ledger·통합 전용 점검이다. 각 관점을 별도로 대조하고, 순수 Swift suite도 독립 실행 20회 반복했다. Simulator XCTest는 실제 WGPU acquire 경로만 확인한다.
+
+| # | 공격 관점 | 실제 대조와 결과 |
+|---:|---|---|
+| 1 | drawable ID 재사용이 다른 surface나 frame과 잘못 join | layer token·generation·draw sequence·drawable ID 전체 키 exact match; 키와 ticket 불일치 입력을 거부했다. |
+| 2 | 입력 없는 지속 frame이 callback 표본과 메모리를 불필요하게 늘림 | `inputSequence == nil` ticket은 ledger가 거부하며 device handler도 입력 ticket이 있을 때만 등록한다. |
+| 3 | draw sequence 0 또는 ticket mismatch가 유효 키처럼 등록 | 0과 키/ticket sequence mismatch를 `invalid_identity`로 거부한다. |
+| 4 | 동일 key 동시 등록이 pending entry를 덮어씀 | 활성 중복을 `duplicate_key`로 분류하고 기존 pending 하나를 보존한다. |
+| 5 | pending 한도 초과가 내부 메모리를 계속 증가하거나 handler가 거부 key에 등록 | 1개 한도에서 두 번째 key가 거부되고 pending count가 1로 유지됐다. 통합 코드는 `.registered` 결과에서만 OS handler를 추가한다. 기본 상한은 64다. |
+| 6 | deadline 덧셈 overflow가 즉시 만료나 성공으로 바뀜 | `UInt64.max - 5`에서 10ns를 더하는 경우 `deadline_overflow`, pending 0을 확인했다. |
+| 7 | deadline 1ns 직전 callback이 조기 만료 | 109/110 경계에서 109는 eligible `presented`였다. |
+| 8 | deadline과 같은 시각의 callback이 성공으로 계산 | 동일 경계 110은 먼저 timeout 후 `late_callback`; latency eligibility false였다. |
+| 9 | timeout 후 양수 `presentedTime`이 성공 표본을 부활 | timeout tombstone 이후 callback은 late이며 양수 시간을 보존해도 분류·eligibility가 바뀌지 않는다. |
+| 10 | callback이 영원히 없을 때 pending이 누적 | 30ms timeout·1ms sweep의 실제 Dispatch timer 시험이 timeout을 기록하고 pending을 0으로 만들었다. |
+| 11 | `presentedTime == 0`을 0ms 성공으로 취급 | `zero_time`, ineligible로 분리했다. |
+| 12 | 음수·NaN·±infinity를 유효 timestamp로 통과 | 네 입력 모두 `invalid_presented_time`, ineligible였다. |
+| 13 | 같은 drawable callback 재전달이 표본 수를 증가 | 성공 뒤 중복은 `duplicate_callback`; 병렬 64 callback에서 성공 1건·중복 63건을 확인했다. |
+| 14 | 외부 layer callback이 이 ledger 입력과 섞임 | 다른 token 등록은 `invalid_identity`, 다른 token callback은 `unmatched_callback`이다. |
+| 15 | surface 교체 중 이전 세대 pending이 새 화면 결과로 귀속 | generation 1→2 변경이 이전 pending을 stale 처리했고 이전 callback도 stale callback으로 남았다. |
+| 16 | detach 뒤 callback이 신규 surface 표본으로 합쳐지거나 terminal 로그 순서가 nondeterministic | retire가 pending을 `drawSequence` 기준으로 정렬해 stale terminal로 닫고, 뒤늦은 callback도 stale 처리했다. sequence 9·7·8로 등록한 fixture가 7·8·9 순서로 종결됐다. |
+| 17 | generation 회귀·0이 이전 ID를 재사용 | 회귀와 0을 거부했고 현재 세대는 유지됐다. UIKit generation 증가는 checked overflow에서 fail-closed한다. |
+| 18 | tombstone 폭주·시간 만료가 duplicate 구분을 깨뜨림 | 최대 2개 FIFO evict, retention 경계의 pruning을 확인했다. evict/만료 후 오래된 callback은 unmatched로만 남는다. |
+| 19 | timer/callback/log sink가 상태를 역전시키거나 lock 안에서 UI를 막고, queue backlog가 무한히 자람 | timestamp capture·expiry·전이는 같은 lock 구간에서 직렬화한다. event queue cap 1 negative case에서 진단 event drop 수 1과 측정 무효 marker를 확인했다. 첫 실행에서 queued event가 semaphore보다 오래 살아 macOS `SIGTRAP: Semaphore object deallocated while in use`를 재현했다. drain closure가 semaphore/drop counter 수명을 보유하도록 수정한 뒤 전체 자체 시험을 재실행해 통과했다. sink의 pendingCount 재진입 조회·event 순서도 확인했다. |
+| 20 | close와 callback/timeout 경쟁이 pending을 부활시키거나 상태 marker가 기기 callback 지원을 오표기 | close/callback 100회·expire/close 100회 경쟁에서 각 항목은 한 terminal 경로로만 종결됐고 pending은 매회 0이었다. 별도 timer close 시험에서 닫힌 pending의 timeout도 없었다. 최종 source audit에서 device `present_signal=unavailable` 표기를 발견해 device callback-ledger mode와 Simulator unavailable을 분리하고 두 대상 build/test로 확인했다. |
+
+### ledger 검토 결과
+
+검토 중 close 전 별도 timeout sweep이 상태 전이를 갈라놓는 문제와, lock 밖에서 이벤트를 enqueue하면 동시 기록 순서가 바뀔 수 있는 문제를 발견해 수정했다. 첫 queue 수명 시험은 semaphore 해제 SIGTRAP을 재현했고 drain 작업이 semaphore와 drop counter를 유지하도록 고쳤다. 테스트 fixture가 pending 한도 1인 ledger에서 pending 세 개를 기대하던 설정 오류도 분리해 한도 3의 lifecycle fixture로 재시험했다. ledger는 lock을 얻은 뒤 monotonic 시각을 읽고 만료·상태 전이를 한 구간에서 처리하며, diagnostic sink는 bounded serial queue에서 lock 밖으로 실행한다. Swift standalone self-test 6개 그룹과 전체 20회 반복이 20/20 통과했고, Simulator XCTest 1/1 및 iPhoneOS device target compile/link도 통과했다. 위 20개 관점은 개별 코드 경로·실패 입력·실행 결과를 구분해 대조했다. OS device callback runtime, 전체 V8 bundle, clock residual, 실기기·광학 표시 시각은 미검증이며 R05.3/R05 완료 체크는 하지 않는다.

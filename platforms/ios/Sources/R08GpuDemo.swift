@@ -16,18 +16,6 @@ private func captureR05ClockAnchor(_ logger: Logger, label: String) {
     logger.notice("SPINON_R05_CLOCK_ANCHOR label=\(label, privacy: .public) uptime_before_s=\(uptimeBefore, privacy: .public) host_s=\(hostTime, privacy: .public) uptime_after_s=\(uptimeAfter, privacy: .public)")
 }
 
-private struct R05DrawableTicket {
-    let drawSequence: UInt64
-    let inputSequence: Int?
-    let revision: UInt32
-    let surfaceGeneration: Int
-
-    var logFields: String {
-        let inputField = inputSequence.map { String($0) } ?? "none"
-        return "draw_seq=\(drawSequence) input_seq=\(inputField) revision=\(revision) generation=\(surfaceGeneration)"
-    }
-}
-
 private enum R05TouchDecision {
     case accepted(UITouch)
     case excluded(String)
@@ -300,11 +288,42 @@ final class R08GpuDemoViewController: UIViewController, UITextFieldDelegate {
 
 private final class R05ProbeMetalLayer: CAMetalLayer {
     private let logger = Logger(subsystem: "dev.spinon.bootstrap", category: "r05-metal-layer")
+    private let layerToken = UUID().uuidString
+    private let ledgerCreationLock = NSLock()
+    private var storedPresentationLedger: R05PresentationLedger?
     private let ticketLock = NSLock()
     private var activeDrawCount: UInt64 = 0
     private var activeTicket: R05DrawableTicket?
     private var ticketConsumed = false
     private var overlappingDraws = false
+
+    deinit {
+        ledgerCreationLock.lock()
+        let ledger = storedPresentationLedger
+        storedPresentationLedger = nil
+        ledgerCreationLock.unlock()
+        _ = ledger?.close()
+    }
+
+    fileprivate func setSurfaceGeneration(_ generation: Int) {
+        _ = getPresentationLedger().setSurfaceGeneration(generation)
+    }
+
+    fileprivate func retireSurfaceGeneration(_ generation: Int) {
+        _ = getPresentationLedger().retireSurfaceGeneration(generation)
+    }
+
+    private func getPresentationLedger() -> R05PresentationLedger {
+        ledgerCreationLock.lock()
+        defer { ledgerCreationLock.unlock() }
+        if let storedPresentationLedger { return storedPresentationLedger }
+        let callbackLogger = logger
+        let ledger = R05PresentationLedger(layerToken: layerToken) { event in
+            callbackLogger.notice("\(event.logMessage, privacy: .public)")
+        }
+        storedPresentationLedger = ledger
+        return ledger
+    }
 
     fileprivate func beginWgpuDraw(ticket: R05DrawableTicket?) -> (tracked: Bool, isolated: Bool) {
         ticketLock.lock()
@@ -365,12 +384,18 @@ private final class R05ProbeMetalLayer: CAMetalLayer {
         #endif
         logger.notice("SPINON_R05_DRAWABLE_ACQUIRE renderer=wgpu state=\(state, privacy: .public) thread=\(thread, privacy: .public) drawable_id=\(drawableID, privacy: .public) \(ticketFields, privacy: .public)")
         #if !targetEnvironment(simulator)
-        if let drawable {
-            let callbackLogger = logger
-            drawable.addPresentedHandler { presentedDrawable in
-                let presentedTime = presentedDrawable.presentedTime
-                let outcome = presentedTime > 0 ? "presented" : "zero_time"
-                callbackLogger.notice("SPINON_R05_DRAWABLE_PRESENTED renderer=wgpu outcome=\(outcome, privacy: .public) drawable_id=\(presentedDrawable.drawableID, privacy: .public) presented_time_s=\(presentedTime, privacy: .public) \(ticketFields, privacy: .public)")
+        if let drawable, let ticket, ticket.inputSequence != nil {
+            let key = R05PresentationKey(
+                layerToken: layerToken,
+                surfaceGeneration: ticket.surfaceGeneration,
+                drawSequence: ticket.drawSequence,
+                drawableID: UInt64(truncatingIfNeeded: drawable.drawableID))
+            let ledger = getPresentationLedger()
+            let registration = ledger.register(key: key, ticket: ticket)
+            if registration.outcome == .registered {
+                drawable.addPresentedHandler { presentedDrawable in
+                    _ = ledger.receiveCallback(key: key, presentedTime: presentedDrawable.presentedTime)
+                }
             }
         }
         #endif
@@ -451,12 +476,25 @@ private class R08WgpuCanvasView: UIView {
         if r05PresentationProbe {
             if window == nil {
                 excludePendingR05Input(renderer: "wgpu", reason: "surface_detached")
+                if r05SurfaceGeneration > 0 {
+                    #if !targetEnvironment(simulator)
+                    (layer as? R05ProbeMetalLayer)?.retireSurfaceGeneration(r05SurfaceGeneration)
+                    #endif
+                }
                 if let reason = r05TouchGesture.cancelForSurfaceDetach() {
                     logger.notice("SPINON_R05_INPUT=excluded renderer=wgpu reason=\(reason, privacy: .public)")
                 }
             } else {
-                r05SurfaceGeneration += 1
-                logger.notice("SPINON_R05_SURFACE renderer=wgpu generation=\(self.r05SurfaceGeneration, privacy: .public)")
+                let (generation, overflow) = r05SurfaceGeneration.addingReportingOverflow(1)
+                if overflow {
+                    logger.error("SPINON_R05_SURFACE=unavailable reason=generation_overflow")
+                } else {
+                    r05SurfaceGeneration = generation
+                    #if !targetEnvironment(simulator)
+                    (layer as? R05ProbeMetalLayer)?.setSurfaceGeneration(generation)
+                    #endif
+                    logger.notice("SPINON_R05_SURFACE renderer=wgpu generation=\(self.r05SurfaceGeneration, privacy: .public)")
+                }
             }
         }
         if r13Enabled && window == nil {
@@ -527,7 +565,12 @@ private class R08WgpuCanvasView: UIView {
         let result = SpinonRunner.drawR08Wgpu(renderer, activationCount: activationCount)
         if let sample = pendingR05Input {
             let handlerReturn = ProcessInfo.processInfo.systemUptime
-            logger.notice("SPINON_R05_SUBMIT renderer=wgpu input_seq=\(sample.sequence, privacy: .public) revision=\(self.activationCount, privacy: .public) generation=\(self.r05SurfaceGeneration, privacy: .public) event_time_s=\(sample.eventTimestamp, privacy: .public) handler_uptime_s=\(sample.handlerUptime, privacy: .public) call_return_uptime_s=\(handlerReturn, privacy: .public) result=\(result, privacy: .public) present_signal=unavailable")
+            #if targetEnvironment(simulator)
+            let presentSignal = "unavailable"
+            #else
+            let presentSignal = r05PresentationProbe ? "callback_ledger" : "unavailable"
+            #endif
+            logger.notice("SPINON_R05_SUBMIT renderer=wgpu input_seq=\(sample.sequence, privacy: .public) revision=\(self.activationCount, privacy: .public) generation=\(self.r05SurfaceGeneration, privacy: .public) event_time_s=\(sample.eventTimestamp, privacy: .public) handler_uptime_s=\(sample.handlerUptime, privacy: .public) call_return_uptime_s=\(handlerReturn, privacy: .public) result=\(result, privacy: .public) present_signal=\(presentSignal, privacy: .public)")
             pendingR05Input = nil
         }
         if result == 0, !firstFrameLogged {

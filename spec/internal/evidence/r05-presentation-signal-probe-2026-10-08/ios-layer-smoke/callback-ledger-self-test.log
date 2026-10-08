@@ -1,0 +1,7 @@
+통과: callback 결과 분류·표본 귀속·중복
+통과: deadline 직전·동일 시각·이후·timeout 이후 callback
+통과: identity·capacity·generation 교체·회귀·detach
+통과: checked deadline overflow·tombstone 상한·FIFO·보존 만료
+통과: 병렬 중복 callback 64개·close/callback 100회·expire/close 100회
+통과: bounded event 큐·drop 무효 표식·sink 순서/lock·serial timer timeout
+R05 callback ledger 자체 시험 통과: 6개 그룹
