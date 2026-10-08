@@ -387,12 +387,40 @@ mod tests {
     }
 
     #[test]
+    fn rejects_unexpected_first_execution_order() {
+        let error = validate_priority_stream_results(&valid_results(), 3, 8)
+            .expect_err("첫 높은 등급 작업은 예상한 실행 순서에서 시작해야 합니다");
+        assert!(error.contains("high_starts_expected=false"));
+    }
+
+    #[test]
+    fn rejects_gaps_in_high_priority_execution_order() {
+        let mut results = valid_results();
+        results[2].execution_order = 10;
+        results[0].execution_order = 11;
+
+        let error = validate_priority_stream_results(&results, 3, 7)
+            .expect_err("높은 등급 작업과 마지막 background 사이에 실행 순서 공백이 없어야 합니다");
+        assert!(error.contains("high_contiguous=false"));
+    }
+
+    #[test]
     fn rejects_callback_execution_on_a_different_owner_thread() {
         let mut results = valid_results();
         results[2].callback_thread_id = 18;
 
         let error = validate_priority_stream_results(&results, 3, 7)
             .expect_err("모든 V8 callback은 같은 owner thread에서 실행되어야 합니다");
+        assert!(error.contains("owner_thread=false"));
+    }
+
+    #[test]
+    fn rejects_a_zero_owner_thread_id() {
+        let mut results = valid_results();
+        results[0].owner_thread_id = 0;
+
+        let error = validate_priority_stream_results(&results, 3, 7)
+            .expect_err("owner thread ID가 0이면 유효한 실행 증거가 아닙니다");
         assert!(error.contains("owner_thread=false"));
     }
 

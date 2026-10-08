@@ -38,6 +38,7 @@ mise exec -- bun run build:ios-sim
 
 ```sh
 mise exec -- bun run verify:r06-priority:simulators
+mise exec -- bun run verify:r06-priority:fairness:simulators
 ```
 
 여러 대상이 부팅되어 있으면 serial과 UDID를 고정해 실행할 수 있습니다.
@@ -50,7 +51,7 @@ SPINON_IOS_SIMULATOR_UDID=ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D \
 
 테스트 목적·단일 배치의 범위와 남은 한계는 [R06 우선순위 검증 기록](spec/internal/evidence/r06-priority-simulators-2026-09-30.md)에 있습니다.
 
-Android 에뮬레이터에서 높은 우선순위 작업이 계속 접수될 때 낮은 등급이 밀리는 유한 사례를 확인하려면 `SPINON_ANDROID_EMULATOR_SERIAL=emulator-5554 mise exec -- bun run verify:r06-priority:fairness:android`를 실행합니다. 이 명령은 Android 에뮬레이터만 대상으로 하고, 결과·범위·한계는 [R06 Android 유한 유입 기록](spec/internal/evidence/r06-priority-fairness-android-2026-10-08.md)에 둡니다.
+Android 16 ARM64 에뮬레이터와 iPhone 17 Pro / iOS 26.2 Simulator에서 혼합 우선순위/FIFO와 유한 높은 등급 유입을 각각 5회 확인하려면 `mise exec -- bun run verify:r06-priority:fairness:simulators`를 실행합니다. 이 명령은 Android `emulator-*`와 부팅된 iOS Simulator만 사용하며, 고정 V8 revision과 양쪽 `v8_jitless=false` 설정을 빌드 전에 검사합니다. Android 전용 반복 진단은 `SPINON_ANDROID_EMULATOR_SERIAL=emulator-5554 mise exec -- bun run verify:r06-priority:fairness:android`입니다. [교차 플랫폼 실행 근거](spec/internal/evidence/r06-priority-fairness-simulators-2026-10-08.md)는 유한 입력만 검증하며 성능 우위나 무한 유입 기아를 판정하지 않습니다.
 
 문서 사이트는 첫 공식 릴리스 전까지 자동 배포하지 않습니다. GitHub Pages 워크플로는 수동 실행만 허용하며, 별도 요청 없이 실행하지 않습니다. `packages/docs/rspress.config.ts`의 기본 경로는 `/spinon/`입니다.
 

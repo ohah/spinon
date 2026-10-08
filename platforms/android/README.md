@@ -97,7 +97,7 @@ adb logcat -s SpinonBootstrap:I | rg 'SPINON_PRIORITY_PROBE'
 
 진단 화면은 두 개의 실제 V8 세션을 순서대로 실행합니다. 첫 세션에서 취소 후 우선순위를 섞어 접수한 6개 작업을 검사하고, 두 번째 Android 전용 세션에서 낮은 우선순위 작업을 먼저 넣고 큐 용량 64개를 채운 뒤 높은 우선순위 작업 96개를 추가합니다. 낮은 작업이 높은 등급 작업 159개 뒤에서 실행되는지, 높은 등급 FIFO와 owner thread가 유지되는지 봅니다. 유한 실험이므로 무한 유입 기아나 제품 공정성을 증명하지 않으며 성능 벤치마크도 아닙니다. 내부 검증 화면을 실행하려면 저장소 루트에서 `mise exec -- bun run verify:r06-priority:fairness:android`를 사용하세요. 이 명령은 `emulator-*` 대상만 허용하고 Android 에뮬레이터만 빌드·설치·실행합니다. 결과는 `build/spinon/priority-fairness-validation/`의 고유 실행 폴더에 저장됩니다. 단일 배치의 과거 근거는 [우선순위 시뮬레이터 검증](../../spec/internal/evidence/r06-priority-simulators-2026-09-30.md)을 참고하세요.
 
-Android와 iOS 시뮬레이터를 함께 자동 실행하고 로그를 판정하려면 저장소 루트에서 `mise exec -- bun run verify:r06-priority:simulators`를 실행합니다. 이 명령은 연결된 `emulator-*` Android 대상만 허용합니다.
+Android와 iOS 시뮬레이터에서 실제 V8의 혼합 우선순위/FIFO와 유한한 높은 등급 유입을 한 번씩 확인하려면 저장소 루트에서 `mise exec -- bun run verify:r06-priority:simulators`를 실행합니다. 이 명령은 `emulator-*` Android 대상과 부팅된 iOS 시뮬레이터만 사용합니다. 같은 시나리오를 각 플랫폼에서 5회 반복하려면 `mise exec -- bun run verify:r06-priority:fairness:simulators`를 실행합니다. 로그와 화면은 `build/spinon/priority-fairness-simulators/` 아래에 저장됩니다. [5회 교차 플랫폼 근거](../../spec/internal/evidence/r06-priority-fairness-simulators-2026-10-08.md).
 
 ### S03.3 DOM wrapper 회수 검증
 

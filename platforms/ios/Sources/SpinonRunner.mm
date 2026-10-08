@@ -239,6 +239,24 @@
                                     message ?: @"empty report"];
 }
 
++ (NSString *)runRuntimePriorityFairnessProbe {
+  std::array<char, 4096> output{};
+  const int32_t status =
+      spinon_runtime_priority_fairness_probe(output.data(), output.size());
+  NSString *message = [NSString stringWithUTF8String:output.data()];
+  if (status == 0) {
+    os_log(OS_LOG_DEFAULT,
+           "SPINON_PRIORITY_FAIRNESS_PROBE status=%{public}d %{public}@",
+           status, message ?: @"empty report");
+  } else {
+    os_log_error(OS_LOG_DEFAULT,
+                 "SPINON_PRIORITY_FAIRNESS_PROBE status=%{public}d %{public}@",
+                 status, message ?: @"empty report");
+  }
+  return [NSString stringWithFormat:@"status=%d %@", status,
+                                    message ?: @"empty report"];
+}
+
 + (NSString *)runRuntimeShutdownProbe {
   std::array<char, 4096> output{};
   const int32_t status =

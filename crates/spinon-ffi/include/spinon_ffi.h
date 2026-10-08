@@ -3,6 +3,9 @@
 
 #include <stddef.h>
 #include <stdint.h>
+#if defined(__APPLE__)
+#include <TargetConditionals.h>
+#endif
 
 #ifdef __cplusplus
 extern "C" {
@@ -23,8 +26,9 @@ int32_t spinon_app_run(const char *source, char *output, size_t output_capacity)
 /* 개발용 시뮬레이터 진단: 실제 V8 우선순위 선택과 FIFO 순서를 검증합니다. */
 int32_t spinon_runtime_priority_probe(char *output, size_t output_capacity);
 
-#if defined(__ANDROID__)
-/* Android 개발용 진단: 높은 등급 유입 중 낮은 등급의 실행 순서를 검증합니다. */
+#if defined(__ANDROID__) || (defined(__APPLE__) && TARGET_OS_IPHONE)
+/* Android·iOS 개발용 시뮬레이터 진단: 높은 등급 유입 중 낮은 등급의 실행 순서를
+   검증합니다. */
 int32_t spinon_runtime_priority_fairness_probe(char *output,
                                                size_t output_capacity);
 #endif
