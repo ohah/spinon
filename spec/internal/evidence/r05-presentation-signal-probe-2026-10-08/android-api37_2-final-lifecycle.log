@@ -1,0 +1,15 @@
+--------- beginning of main
+10-08 15:20:53.128 11315 11315 I SpinonBootstrap: SPINON_R05_SIGNAL_LISTENER outcome=remove_requested generation=1
+10-08 15:20:53.131 11315 11315 I SpinonBootstrap: SPINON_R08_WGPU_SURFACE=destroyed
+10-08 15:20:53.144 11315 11315 I SpinonBootstrap: SPINON_R08_UI=ready text-input=EditText accessibility=button+EditText
+10-08 15:20:53.161 11315 11315 I SpinonBootstrap: SPINON_R05_SURFACE renderer=wgpu type=SurfaceView generation=2
+10-08 15:20:53.161 11315 11315 I SpinonBootstrap: SPINON_R05_SIGNAL_CAPABILITY renderer=wgpu signal=SurfaceView_JankData available=true reason=registered api=37 api_full=3700002
+10-08 15:20:53.230 11315 11315 I SpinonBootstrap: SPINON_R08_WGPU=ready backend=Vulkan device=VirtualGpu name=Goldfish GFXStream (llvmpipe (LLVM 21.1.4, 128 bits)) google_display_timing_supported=false format=Rgba8Unorm color_space=Auto supported_formats=[Rgba8UnormSrgb, Rgba8Unorm, Rgba16Float, Rgb10a2Unorm]
+10-08 15:20:53.230 11315 11315 I SpinonBootstrap: SPINON_R08_WGPU_SURFACE=size 1920x1080
+10-08 15:20:56.226 11315 11315 I SpinonBootstrap: SPINON_R05_SIGNAL_LISTENER outcome=remove_requested generation=2
+10-08 15:20:56.229 11315 11315 I SpinonBootstrap: SPINON_R08_WGPU_SURFACE=destroyed
+10-08 15:20:56.253 11315 11315 I SpinonBootstrap: SPINON_R08_UI=ready text-input=EditText accessibility=button+EditText
+10-08 15:20:56.265 11315 11315 I SpinonBootstrap: SPINON_R05_SURFACE renderer=wgpu type=SurfaceView generation=3
+10-08 15:20:56.265 11315 11315 I SpinonBootstrap: SPINON_R05_SIGNAL_CAPABILITY renderer=wgpu signal=SurfaceView_JankData available=true reason=registered api=37 api_full=3700002
+10-08 15:20:56.345 11315 11315 I SpinonBootstrap: SPINON_R08_WGPU=ready backend=Vulkan device=VirtualGpu name=Goldfish GFXStream (llvmpipe (LLVM 21.1.4, 128 bits)) google_display_timing_supported=false format=Rgba8Unorm color_space=Auto supported_formats=[Rgba8UnormSrgb, Rgba8Unorm, Rgba16Float, Rgb10a2Unorm]
+10-08 15:20:56.345 11315 11315 I SpinonBootstrap: SPINON_R08_WGPU_SURFACE=size 1080x1920

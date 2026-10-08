@@ -1,0 +1,23 @@
+spec/internal/evidence/r05-presentation-signal-probe-2026-10-08/metal-drawable-api-probe.swift:5:18: error: value of type 'any CAMetalDrawable' has no member 'drawableID'
+ 3 | 
+ 4 | func checkDrawablePresentationAPI(_ drawable: any CAMetalDrawable) {
+ 5 |     _ = drawable.drawableID
+   |                  `- error: value of type 'any CAMetalDrawable' has no member 'drawableID'
+ 6 |     drawable.addPresentedHandler { presentedDrawable in
+ 7 |         _ = presentedDrawable.presentedTime
+
+spec/internal/evidence/r05-presentation-signal-probe-2026-10-08/metal-drawable-api-probe.swift:6:14: error: value of type 'any CAMetalDrawable' has no member 'addPresentedHandler'
+ 4 | func checkDrawablePresentationAPI(_ drawable: any CAMetalDrawable) {
+ 5 |     _ = drawable.drawableID
+ 6 |     drawable.addPresentedHandler { presentedDrawable in
+   |              `- error: value of type 'any CAMetalDrawable' has no member 'addPresentedHandler'
+ 7 |         _ = presentedDrawable.presentedTime
+ 8 |     }
+
+spec/internal/evidence/r05-presentation-signal-probe-2026-10-08/metal-drawable-api-probe.swift:12:18: error: value of type 'any CAMetalDrawable' has no member 'presentedTime'
+10 | 
+11 | func checkPresentedTime(_ drawable: any CAMetalDrawable) {
+12 |     _ = drawable.presentedTime
+   |                  `- error: value of type 'any CAMetalDrawable' has no member 'presentedTime'
+13 | }
+14 | 

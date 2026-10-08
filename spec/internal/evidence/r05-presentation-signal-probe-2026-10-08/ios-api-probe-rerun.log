@@ -1,0 +1,29 @@
+실행일: 2026-10-08
+Xcode: 26.2 (17C52)
+iOS Simulator SDK: 26.2
+대상: arm64-apple-ios26.2-simulator
+결과: Swift type-check 실패(exit 1); drawableID, addPresentedHandler, presentedTime을 CAMetalDrawable에서 찾지 못함
+명령: xcrun swiftc -sdk <iPhoneSimulator26.2.sdk> -target arm64-apple-ios26.2-simulator -typecheck metal-drawable-api-probe.swift
+spec/internal/evidence/r05-presentation-signal-probe-2026-10-08/metal-drawable-api-probe.swift:5:18: error: value of type 'any CAMetalDrawable' has no member 'drawableID'
+ 3 | 
+ 4 | func checkDrawablePresentationAPI(_ drawable: any CAMetalDrawable) {
+ 5 |     _ = drawable.drawableID
+   |                  `- error: value of type 'any CAMetalDrawable' has no member 'drawableID'
+ 6 |     drawable.addPresentedHandler { presentedDrawable in
+ 7 |         _ = presentedDrawable.presentedTime
+
+spec/internal/evidence/r05-presentation-signal-probe-2026-10-08/metal-drawable-api-probe.swift:6:14: error: value of type 'any CAMetalDrawable' has no member 'addPresentedHandler'
+ 4 | func checkDrawablePresentationAPI(_ drawable: any CAMetalDrawable) {
+ 5 |     _ = drawable.drawableID
+ 6 |     drawable.addPresentedHandler { presentedDrawable in
+   |              `- error: value of type 'any CAMetalDrawable' has no member 'addPresentedHandler'
+ 7 |         _ = presentedDrawable.presentedTime
+ 8 |     }
+
+spec/internal/evidence/r05-presentation-signal-probe-2026-10-08/metal-drawable-api-probe.swift:12:18: error: value of type 'any CAMetalDrawable' has no member 'presentedTime'
+10 | 
+11 | func checkPresentedTime(_ drawable: any CAMetalDrawable) {
+12 |     _ = drawable.presentedTime
+   |                  `- error: value of type 'any CAMetalDrawable' has no member 'presentedTime'
+13 | }
+14 | 

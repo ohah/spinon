@@ -1,0 +1,7 @@
+--------- beginning of main
+10-08 15:54:25.124  5609  5609 I SpinonBootstrap: SPINON_R08_UI=ready text-input=EditText accessibility=button+EditText
+10-08 15:54:25.357  5609  5629 I SpinonBootstrap: SPINON_R08_SURFACE=created api=OpenGL_ES_2 renderer=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) version=OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))
+10-08 15:54:25.359  5609  5629 I SpinonBootstrap: SPINON_R08_SHADER=ready
+10-08 15:54:25.359  5609  5629 I SpinonBootstrap: SPINON_R08_SURFACE=size 1080x1920
+10-08 15:54:25.359  5609  5629 I SpinonBootstrap: SPINON_R08_FRAME=first_draw_submitted
+10-08 15:54:25.788  5609  5609 I SpinonBootstrap: SPINON_R08_TOUCH count=1

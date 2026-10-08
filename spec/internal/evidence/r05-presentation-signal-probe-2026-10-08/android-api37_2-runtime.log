@@ -1,0 +1,181 @@
+--------- beginning of main
+10-08 15:14:38.124  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=2 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=232731000000 handler_uptime_ns=232731907610 generation=2
+10-08 15:14:38.160  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=2 revision=2 generation=2 event_time_ns=232731000000 handler_uptime_ns=232731984444 queue_present_return_uptime_ns=232767969735 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:38.160  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:38.161  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:38.161  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=2
+10-08 15:14:38.161  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=232768977485 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:38.337  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=3 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=232943000000 handler_uptime_ns=232944693652 generation=2
+10-08 15:14:38.343  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=3 revision=3 generation=2 event_time_ns=232943000000 handler_uptime_ns=232944810277 queue_present_return_uptime_ns=232950475611 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:38.343  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:38.343  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:38.343  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=3
+10-08 15:14:38.343  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=232951121361 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:38.514  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=4 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=233121000000 handler_uptime_ns=233122121402 generation=2
+10-08 15:14:38.520  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=4 revision=4 generation=2 event_time_ns=233121000000 handler_uptime_ns=233122208111 queue_present_return_uptime_ns=233128421319 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:38.520  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:38.521  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=4
+10-08 15:14:38.521  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:38.521  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=233129433194 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:38.699  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=5 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=233306000000 handler_uptime_ns=233306816902 generation=2
+10-08 15:14:38.701  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=5 revision=5 generation=2 event_time_ns=233306000000 handler_uptime_ns=233307076736 queue_present_return_uptime_ns=233309334444 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:38.701  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:38.701  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:38.702  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=5
+10-08 15:14:38.702  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=233309757944 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:38.877  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=6 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=233484000000 handler_uptime_ns=233485242277 generation=2
+10-08 15:14:38.880  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=6 revision=6 generation=2 event_time_ns=233484000000 handler_uptime_ns=233485404402 queue_present_return_uptime_ns=233487467236 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:38.880  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:38.880  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:38.880  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=6
+10-08 15:14:38.880  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=233488197527 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:39.055  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=7 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=233661000000 handler_uptime_ns=233662721528 generation=2
+10-08 15:14:39.057  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=7 revision=7 generation=2 event_time_ns=233661000000 handler_uptime_ns=233662772611 queue_present_return_uptime_ns=233665312986 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:39.057  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:39.058  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:39.058  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=233665988361 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:39.058  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=7
+10-08 15:14:39.238  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=8 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=233845000000 handler_uptime_ns=233846328069 generation=2
+10-08 15:14:39.241  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=8 revision=8 generation=2 event_time_ns=233845000000 handler_uptime_ns=233846411694 queue_present_return_uptime_ns=233848500819 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:39.241  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:39.241  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:39.241  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=8
+10-08 15:14:39.241  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=233849107236 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:39.415  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=9 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=234022000000 handler_uptime_ns=234023106444 generation=2
+10-08 15:14:39.417  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=9 revision=9 generation=2 event_time_ns=234022000000 handler_uptime_ns=234023189153 queue_present_return_uptime_ns=234025249028 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:39.417  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:39.418  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:39.418  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=234025997319 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:39.418  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=9
+10-08 15:14:39.599  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=10 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=234205000000 handler_uptime_ns=234206629236 generation=2
+10-08 15:14:39.601  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=10 revision=10 generation=2 event_time_ns=234205000000 handler_uptime_ns=234206716903 queue_present_return_uptime_ns=234208947153 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:39.601  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:39.601  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:39.602  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=234209498444 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:39.602  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=10
+10-08 15:14:39.778  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=11 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=234385000000 handler_uptime_ns=234385919778 generation=2
+10-08 15:14:39.780  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=11 revision=11 generation=2 event_time_ns=234385000000 handler_uptime_ns=234386007611 queue_present_return_uptime_ns=234387782403 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:39.780  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:39.780  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:39.780  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=11
+10-08 15:14:39.781  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=234388470778 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:39.962  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=12 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=234569000000 handler_uptime_ns=234570166528 generation=2
+10-08 15:14:39.965  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=12 revision=12 generation=2 event_time_ns=234569000000 handler_uptime_ns=234570313736 queue_present_return_uptime_ns=234572820195 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:39.965  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:39.965  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:39.965  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=12
+10-08 15:14:39.965  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=234573273403 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:40.154  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=13 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=234761000000 handler_uptime_ns=234762300320 generation=2
+10-08 15:14:40.157  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=13 revision=13 generation=2 event_time_ns=234761000000 handler_uptime_ns=234762403778 queue_present_return_uptime_ns=234764490653 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:40.157  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:40.157  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:40.157  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=234764879153 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:40.157  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=13
+10-08 15:14:40.333  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=14 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=234939000000 handler_uptime_ns=234941001945 generation=2
+10-08 15:14:40.335  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=14 revision=14 generation=2 event_time_ns=234939000000 handler_uptime_ns=234941061153 queue_present_return_uptime_ns=234942741236 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:40.335  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:40.335  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:40.335  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=14
+10-08 15:14:40.335  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=234943370070 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:40.515  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=15 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=235122000000 handler_uptime_ns=235123450153 generation=2
+10-08 15:14:40.518  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=15 revision=15 generation=2 event_time_ns=235122000000 handler_uptime_ns=235123526028 queue_present_return_uptime_ns=235125687862 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:40.518  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:40.518  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:40.518  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=15
+10-08 15:14:40.518  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=235126179403 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:40.699  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=16 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=235306000000 handler_uptime_ns=235307432237 generation=2
+10-08 15:14:40.702  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=16 revision=16 generation=2 event_time_ns=235306000000 handler_uptime_ns=235307506820 queue_present_return_uptime_ns=235309542070 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:40.702  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:40.702  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:40.702  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=235310042737 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:40.702  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=16
+10-08 15:14:40.882  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=17 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=235489000000 handler_uptime_ns=235490321112 generation=2
+10-08 15:14:40.885  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=17 revision=17 generation=2 event_time_ns=235489000000 handler_uptime_ns=235490374195 queue_present_return_uptime_ns=235492583862 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:40.885  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:40.885  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:40.885  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=17
+10-08 15:14:40.886  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=235493595278 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:41.063  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=18 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=235670000000 handler_uptime_ns=235671242528 generation=2
+10-08 15:14:41.065  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=18 revision=18 generation=2 event_time_ns=235670000000 handler_uptime_ns=235671313903 queue_present_return_uptime_ns=235673246028 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:41.065  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:41.065  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:41.066  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=18
+10-08 15:14:41.066  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=235673937070 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:41.247  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=19 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=235853000000 handler_uptime_ns=235854520237 generation=2
+10-08 15:14:41.249  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=19 revision=19 generation=2 event_time_ns=235853000000 handler_uptime_ns=235854604987 queue_present_return_uptime_ns=235856484487 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:41.249  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:41.249  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:41.249  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=19
+10-08 15:14:41.249  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=235856936612 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:41.428  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=20 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=236035000000 handler_uptime_ns=236035989195 generation=2
+10-08 15:14:41.430  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=20 revision=20 generation=2 event_time_ns=236035000000 handler_uptime_ns=236036136779 queue_present_return_uptime_ns=236037816945 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:41.430  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:41.430  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:41.430  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=20
+10-08 15:14:41.430  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=236038199904 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:41.607  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=21 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=236214000000 handler_uptime_ns=236215450195 generation=2
+10-08 15:14:41.610  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=21 revision=21 generation=2 event_time_ns=236214000000 handler_uptime_ns=236215608445 queue_present_return_uptime_ns=236217916779 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:41.610  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:41.610  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:41.610  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=21
+10-08 15:14:41.611  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=236218680737 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:41.787  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=22 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=236394000000 handler_uptime_ns=236394929737 generation=2
+10-08 15:14:41.790  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=22 revision=22 generation=2 event_time_ns=236394000000 handler_uptime_ns=236394988821 queue_present_return_uptime_ns=236397542029 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:41.790  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:41.790  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:41.790  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=236397913821 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:41.790  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=22
+10-08 15:14:41.974  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=23 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=236580000000 handler_uptime_ns=236581860696 generation=2
+10-08 15:14:41.976  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=23 revision=23 generation=2 event_time_ns=236580000000 handler_uptime_ns=236581952779 queue_present_return_uptime_ns=236584249571 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:41.976  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:41.977  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:41.977  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=23
+10-08 15:14:41.977  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=236584702321 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:42.153  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=24 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=236760000000 handler_uptime_ns=236761372779 generation=2
+10-08 15:14:42.156  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=24 revision=24 generation=2 event_time_ns=236760000000 handler_uptime_ns=236761647404 queue_present_return_uptime_ns=236763706446 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:42.156  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:42.156  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:42.156  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=236764456737 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:42.157  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=24
+10-08 15:14:42.337  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=25 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=236944000000 handler_uptime_ns=236944857404 generation=2
+10-08 15:14:42.339  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=25 revision=25 generation=2 event_time_ns=236944000000 handler_uptime_ns=236945081987 queue_present_return_uptime_ns=236947076446 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:42.339  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:42.339  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:42.339  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=25
+10-08 15:14:42.340  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=236947562321 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:42.517  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=26 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=237124000000 handler_uptime_ns=237125302446 generation=2
+10-08 15:14:42.520  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=26 revision=26 generation=2 event_time_ns=237124000000 handler_uptime_ns=237125378904 queue_present_return_uptime_ns=237127536279 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:42.520  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:42.520  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:42.520  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=26
+10-08 15:14:42.520  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=237128277779 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:42.698  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=27 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=237305000000 handler_uptime_ns=237306179821 generation=2
+10-08 15:14:42.700  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=27 revision=27 generation=2 event_time_ns=237305000000 handler_uptime_ns=237306257488 queue_present_return_uptime_ns=237308084988 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:42.700  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:42.700  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:42.700  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=27
+10-08 15:14:42.701  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=237308696488 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:42.880  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=28 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=237486000000 handler_uptime_ns=237487717238 generation=2
+10-08 15:14:42.882  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=28 revision=28 generation=2 event_time_ns=237486000000 handler_uptime_ns=237487796238 queue_present_return_uptime_ns=237489956696 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:42.882  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:42.882  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:42.882  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=28
+10-08 15:14:42.882  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=237490367446 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:43.058  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=29 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=237665000000 handler_uptime_ns=237666294238 generation=2
+10-08 15:14:43.060  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=29 revision=29 generation=2 event_time_ns=237665000000 handler_uptime_ns=237666349738 queue_present_return_uptime_ns=237668293738 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:43.060  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:43.061  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=29
+10-08 15:14:43.061  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:43.061  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=237668622904 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:43.238  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=30 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=237845000000 handler_uptime_ns=237846093196 generation=2
+10-08 15:14:43.240  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=30 revision=30 generation=2 event_time_ns=237845000000 handler_uptime_ns=237846158196 queue_present_return_uptime_ns=237848285321 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:43.240  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:43.240  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:43.241  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=30
+10-08 15:14:43.241  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=237848748571 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:43.413  6216  6216 I SpinonBootstrap: SPINON_R05_INPUT renderer=wgpu input_seq=31 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown handler_clock_resolution=nanosecond_api event_time_ns=238020000000 handler_uptime_ns=238021359155 generation=2
+10-08 15:14:43.415  6216  6216 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=wgpu input_seq=31 revision=31 generation=2 event_time_ns=238020000000 handler_uptime_ns=238021416155 queue_present_return_uptime_ns=238023347321 draw_accepted=true present_signal=unavailable attribution=input
+10-08 15:14:43.415  6216  6216 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH scheduled=true
+10-08 15:14:43.416  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT_FLUSH requested=true
+10-08 15:14:43.416  6216  6330 I SpinonBootstrap: SPINON_R05_PRESENT renderer=wgpu signal=SurfaceView_JankData generation=2 current_generation=2 current_surface=true vsync_id=-1 present_time_ns=-1 present_state=unknown jank_type=0 actual_app_frame_ns=0 scheduled_app_frame_ns=0 callback_uptime_ns=238023748071 frame_id=unmatched revision=unmatched attribution=unmatched
+10-08 15:14:43.416  6216  6216 I SpinonBootstrap: SPINON_R08_TOUCH count=31
