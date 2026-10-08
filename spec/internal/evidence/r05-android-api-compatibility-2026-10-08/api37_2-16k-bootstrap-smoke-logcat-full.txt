@@ -1,0 +1,1393 @@
+--------- beginning of main
+10-08 20:23:38.833   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.833   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.833   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.833   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.833   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.833   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.842   662   684 E AtomicFile: Failed to rename /data/system/install_sessions.xml.new to /data/system/install_sessions.xml
+10-08 20:23:38.843   662  1848 W ApplicationInfo: Large ApplicationInfo parcel: size=19872 package=com.google.android.googlequicksearchbox sharedLibs=3 resDirs=1 overlayPaths=1
+10-08 20:23:38.850   662   685 V GrammaticalInflectionUtils: AttributionSource: AttributionSource { uid = 10230, packageName = null, attributionTag = null, token = android.os.Binder@5dd927d, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+10-08 20:23:38.851  1461  1522 W LauncherActivityCachingLogic: loadIcon: Default app icon returned from PackageManager. component=ComponentInfo{dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity}, user=UserHandle{0}
+10-08 20:23:38.851  1461  1522 W LauncherActivityCachingLogic: java.lang.Exception
+10-08 20:23:38.851  1461  1522 W LauncherActivityCachingLogic: 	at com.android.launcher3.icons.cache.LauncherActivityCachingLogic.loadIcon(go/retraceme a6cdd0e17a5d17ccfa668016b0deb852c44cff1992f9dcc2b50740475ba6a353:59)
+10-08 20:23:38.851  1461  1522 W LauncherActivityCachingLogic: 	at com.android.launcher3.icons.cache.BaseIconCache.addIconToDBAndMemCache(go/retraceme a6cdd0e17a5d17ccfa668016b0deb852c44cff1992f9dcc2b50740475ba6a353:22)
+10-08 20:23:38.851  1461  1522 W LauncherActivityCachingLogic: 	at com.android.launcher3.model.tasks.PackageUpdatedTask.execute(go/retraceme a6cdd0e17a5d17ccfa668016b0deb852c44cff1992f9dcc2b50740475ba6a353:206)
+10-08 20:23:38.851  1461  1522 W LauncherActivityCachingLogic: 	at com.android.launcher3.LauncherModel$rebindCallbacks$1.run(go/retraceme a6cdd0e17a5d17ccfa668016b0deb852c44cff1992f9dcc2b50740475ba6a353:34)
+10-08 20:23:38.851  1461  1522 W LauncherActivityCachingLogic: 	at com.android.launcher3.util.LooperExecutor.execute(go/retraceme a6cdd0e17a5d17ccfa668016b0deb852c44cff1992f9dcc2b50740475ba6a353:16)
+10-08 20:23:38.851  1461  1522 W LauncherActivityCachingLogic: 	at com.android.launcher3.LauncherModel.enqueueModelUpdateTask(go/retraceme a6cdd0e17a5d17ccfa668016b0deb852c44cff1992f9dcc2b50740475ba6a353:20)
+10-08 20:23:38.851  1461  1522 W LauncherActivityCachingLogic: 	at com.android.launcher3.LauncherModel$newModelCallbacks$1.accept(go/retraceme a6cdd0e17a5d17ccfa668016b0deb852c44cff1992f9dcc2b50740475ba6a353:4)
+10-08 20:23:38.851  1461  1522 W LauncherActivityCachingLogic: 	at com.android.launcher3.model.ModelLauncherCallbacks.onPackageChanged(go/retraceme a6cdd0e17a5d17ccfa668016b0deb852c44cff1992f9dcc2b50740475ba6a353:12)
+10-08 20:23:38.851  1461  1522 W LauncherActivityCachingLogic: 	at android.content.pm.LauncherApps$CallbackMessageHandler.handleMessage(LauncherApps.java:2383)
+10-08 20:23:38.851  1461  1522 W LauncherActivityCachingLogic: 	at android.os.Handler.dispatchMessageImpl(Handler.java:142)
+10-08 20:23:38.851  1461  1522 W LauncherActivityCachingLogic: 	at android.os.Handler.dispatchMessage(Handler.java:126)
+10-08 20:23:38.851  1461  1522 W LauncherActivityCachingLogic: 	at android.os.Looper.loopOnce(Looper.java:285)
+10-08 20:23:38.851  1461  1522 W LauncherActivityCachingLogic: 	at android.os.Looper.loop(Looper.java:390)
+10-08 20:23:38.851  1461  1522 W LauncherActivityCachingLogic: 	at android.os.HandlerThread.run(HandlerThread.java:143)
+10-08 20:23:38.852   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.852   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.852   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.852   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.852   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.853  1325  1325 W VvmPkgInstalledRcvr: carrierVvmPkgAdded: carrier vvm packages doesn't contain dev.spinon.bootstrap
+--------- beginning of system
+10-08 20:23:38.853   662   685 W ActivityTaskManager: startActivity called from non-Activity context; forcing Intent.FLAG_ACTIVITY_NEW_TASK for: Intent { flg=0x8000 xflg=0x5 cmp=dev.spinon.bootstrap/.MainActivity }
+10-08 20:23:38.853   662   685 W TransitionChain: Combining AR.finish-clear-task-all into #196(CHANGE||0x0) from startNewTransit
+10-08 20:23:38.853  1461  1522 W LauncherActivityCachingLogic: loadIcon: Default app icon returned from PackageManager. component=ComponentInfo{dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity}, user=UserHandle{0}
+10-08 20:23:38.853  1461  1522 W LauncherActivityCachingLogic: java.lang.Exception
+10-08 20:23:38.853  1461  1522 W LauncherActivityCachingLogic: 	at com.android.launcher3.icons.cache.LauncherActivityCachingLogic.loadIcon(go/retraceme a6cdd0e17a5d17ccfa668016b0deb852c44cff1992f9dcc2b50740475ba6a353:59)
+10-08 20:23:38.853  1461  1522 W LauncherActivityCachingLogic: 	at com.android.launcher3.icons.cache.BaseIconCache.loadFallbackIcon(go/retraceme a6cdd0e17a5d17ccfa668016b0deb852c44cff1992f9dcc2b50740475ba6a353:8)
+10-08 20:23:38.853  1461  1522 W LauncherActivityCachingLogic: 	at com.android.launcher3.icons.cache.BaseIconCache.cacheLocked(go/retraceme a6cdd0e17a5d17ccfa668016b0deb852c44cff1992f9dcc2b50740475ba6a353:100)
+10-08 20:23:38.853  1461  1522 W LauncherActivityCachingLogic: 	at com.android.launcher3.icons.IconCache.getTitleAndIcon(go/retraceme a6cdd0e17a5d17ccfa668016b0deb852c44cff1992f9dcc2b50740475ba6a353:245)
+10-08 20:23:38.853  1461  1522 W LauncherActivityCachingLogic: 	at com.android.launcher3.icons.IconCache.getTitleAndIcon(go/retraceme a6cdd0e17a5d17ccfa668016b0deb852c44cff1992f9dcc2b50740475ba6a353:240)
+10-08 20:23:38.853  1461  1522 W LauncherActivityCachingLogic: 	at com.android.launcher3.model.tasks.PackageUpdatedTask.execute(go/retraceme a6cdd0e17a5d17ccfa668016b0deb852c44cff1992f9dcc2b50740475ba6a353:390)
+10-08 20:23:38.853  1461  1522 W LauncherActivityCachingLogic: 	at com.android.launcher3.LauncherModel$rebindCallbacks$1.run(go/retraceme a6cdd0e17a5d17ccfa668016b0deb852c44cff1992f9dcc2b50740475ba6a353:34)
+10-08 20:23:38.853  1461  1522 W LauncherActivityCachingLogic: 	at com.android.launcher3.util.LooperExecutor.execute(go/retraceme a6cdd0e17a5d17ccfa668016b0deb852c44cff1992f9dcc2b50740475ba6a353:16)
+10-08 20:23:38.853  1461  1522 W LauncherActivityCachingLogic: 	at com.android.launcher3.LauncherModel.enqueueModelUpdateTask(go/retraceme a6cdd0e17a5d17ccfa668016b0deb852c44cff1992f9dcc2b50740475ba6a353:20)
+10-08 20:23:38.853  1461  1522 W LauncherActivityCachingLogic: 	at com.android.launcher3.LauncherModel$newModelCallbacks$1.accept(go/retraceme a6cdd0e17a5d17ccfa668016b0deb852c44cff1992f9dcc2b50740475ba6a353:4)
+10-08 20:23:38.853  1461  1522 W LauncherActivityCachingLogic: 	at com.android.launcher3.model.ModelLauncherCallbacks.onPackageChanged(go/retraceme a6cdd0e17a5d17ccfa668016b0deb852c44cff1992f9dcc2b50740475ba6a353:12)
+10-08 20:23:38.853  1461  1522 W LauncherActivityCachingLogic: 	at android.content.pm.LauncherApps$CallbackMessageHandler.handleMessage(LauncherApps.java:2383)
+10-08 20:23:38.853  1461  1522 W LauncherActivityCachingLogic: 	at android.os.Handler.dispatchMessageImpl(Handler.java:142)
+10-08 20:23:38.853  1461  1522 W LauncherActivityCachingLogic: 	at android.os.Handler.dispatchMessage(Handler.java:126)
+10-08 20:23:38.853  1461  1522 W LauncherActivityCachingLogic: 	at android.os.Looper.loopOnce(Looper.java:285)
+10-08 20:23:38.853  1461  1522 W LauncherActivityCachingLogic: 	at android.os.Looper.loop(Looper.java:390)
+10-08 20:23:38.853  1461  1522 W LauncherActivityCachingLogic: 	at android.os.HandlerThread.run(HandlerThread.java:143)
+10-08 20:23:38.854  1461  1522 D AlphabeticIndexCompat: computeSectionName: cs: Spinon Bootstrap sectionName: S
+10-08 20:23:38.854  1461  1518 D AllAppsStore: setApps: apps.length=19
+10-08 20:23:38.854  1461  1518 D AllAppsStore: notifyUpdate: notifying listeners
+10-08 20:23:38.858  1325  1593 D ImsResolver: maybeAddedImsService, packageName: dev.spinon.bootstrap
+10-08 20:23:38.858  1325  1593 V ImsResolver: searchForImsServices: package=dev.spinon.bootstrap, users=[UserHandle{0}]
+10-08 20:23:38.858  1325  1593 V ImsResolver: searchForImsServices: package=dev.spinon.bootstrap, users=[UserHandle{0}]
+10-08 20:23:38.865   662   685 V ActivityTaskManager: TaskLaunchParamsModifier: phase=2 task=Task{13897ce #72 type=standard A=10230:dev.spinon.bootstrap} activity=ActivityRecord{145971431 u0 dev.spinon.bootstrap/.MainActivity t-1} display-from-task=0 display-id=0 task-display-area-windowing-mode=1 suggested-display-area=DefaultTaskDisplayArea@71386864 inherit-from-task=fullscreen non-freeform-task-display-area display-area=DefaultTaskDisplayArea@71386864 skip-bounds-fullscreen
+10-08 20:23:38.865   662   685 I ActivityTaskManager: START u0 {flg=0x8000 xflg=0x5 cmp=dev.spinon.bootstrap/.MainActivity} with LAUNCH_MULTIPLE from uid 10194 (com.android.systemui) (realCallingUid=1000) (BAL_ALLOW_PERMISSION [realCaller]) result code=0
+10-08 20:23:38.866  1461  1461 D AllAppsStore: setApps: apps.length=19
+10-08 20:23:38.866  1461  1461 D AllAppsStore: notifyUpdate: notifying listeners
+10-08 20:23:38.866  1461  1461 D ActivityAllAppsContainerView: onAppsUpdated; number of apps: 19
+10-08 20:23:38.866  1461  1461 D ActivityAllAppsContainerView: rebindAdapters: force: false
+10-08 20:23:38.866  1461  1461 D ActivityAllAppsContainerView: rebindAdapters: Not needed.
+10-08 20:23:38.866  1461  1461 D StatsLog: LAUNCHER_ALLAPPS_COUNT
+10-08 20:23:38.867  1461  1461 D AlphabeticalAppsList: Clearing FastScrollerSections.
+10-08 20:23:38.867  1461  1461 D AlphabeticalAppsList: Adding apps with sections. HasPrivateApps: false
+10-08 20:23:38.867  1461  1461 D AlphabeticalAppsList: addAppsWithSections: adding sectionName: C with appInfoTitle: Calendar
+10-08 20:23:38.867  1461  1461 D AlphabeticalAppsList: addAppsWithSections: adding sectionName: D with appInfoTitle: Drive
+10-08 20:23:38.867  1461  1461 D AlphabeticalAppsList: addAppsWithSections: adding sectionName: F with appInfoTitle: Files
+10-08 20:23:38.867  1461  1461 D AlphabeticalAppsList: addAppsWithSections: adding sectionName: G with appInfoTitle: Gmail
+10-08 20:23:38.867  1461  1461 D AlphabeticalAppsList: addAppsWithSections: adding sectionName: M with appInfoTitle: Maps
+10-08 20:23:38.867  1461  1461 D AlphabeticalAppsList: addAppsWithSections: adding sectionName: P with appInfoTitle: Phone
+10-08 20:23:38.867  1461  1461 D AlphabeticalAppsList: addAppsWithSections: adding sectionName: S with appInfoTitle: Safety
+10-08 20:23:38.867  1461  1461 D AlphabeticalAppsList: addAppsWithSections: adding sectionName: T with appInfoTitle: TMoble
+10-08 20:23:38.867  1461  1461 D AlphabeticalAppsList: addAppsWithSections: adding sectionName: Y with appInfoTitle: YouTube
+10-08 20:23:38.867  1461  1461 D AlphabeticalAppsList: Adding FastScrollSection duplicate to scroll to the bottom.
+10-08 20:23:38.867  1461  1461 D AlphabeticalAppsList: Clearing FastScrollerSections.
+10-08 20:23:38.868  1461  1461 D b/387844520: getOutlineOffsetX: measured width = 149, mNormalizedIconSize = 137, last updated width = 149
+10-08 20:23:38.870   662   662 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+10-08 20:23:38.870   662   662 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+10-08 20:23:38.870   662   662 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+10-08 20:23:38.870   662   662 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+10-08 20:23:38.870   662   662 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+10-08 20:23:38.873   662  2226 V WindowManager: continueTransitionReady deferReadyDepth=0 stack=com.android.server.wm.WindowOrganizerController.applyTransaction:832 com.android.server.wm.WindowOrganizerController.applyTransaction:619 com.android.server.wm.WindowOrganizerController.lambda$startTransition$0:364 com.android.server.wm.WindowOrganizerController.$r8$lambda$lCGU5JYle2xHOmuD8P6z5aN9LwU:0 com.android.server.wm.WindowOrganizerController$$ExternalSyntheticLambda3.onCollectStarted:0 
+10-08 20:23:38.876  1150  1273 W Looper  : Slow dispatch took 33ms wmshell.main app=com.android.systemui main=false group=TOP_APP h=android.os.Handler c=android.window.TaskOrganizer$1$$ExternalSyntheticLambda12@c0d84cd m=0
+10-08 20:23:38.877  4272  4277 W id.ext.services: Reducing the number of considered missed Gc histogram windows from 1254 to 100
+10-08 20:23:38.877  1150  1273 W Looper  : Slow delivery took 51ms wmshell.main app=com.android.systemui main=false group=TOP_APP h=android.content.pm.LauncherApps$CallbackMessageHandler c=null m=3
+10-08 20:23:38.877  1150  1273 W Looper  : Drained
+10-08 20:23:38.878   662   685 V GrammaticalInflectionUtils: AttributionSource: AttributionSource { uid = 10230, packageName = null, attributionTag = null, token = android.os.Binder@5dd927d, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+10-08 20:23:38.878   662   662 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+10-08 20:23:38.878   662   662 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+10-08 20:23:38.878   662   662 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+10-08 20:23:38.878   662   662 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+10-08 20:23:38.878   662   662 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+10-08 20:23:38.882   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.882   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.882   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.882   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.882   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.882   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.884   449   449 D Zygote  : Forked child process 10618
+10-08 20:23:38.884   662   692 I ActivityManager: Start proc 10618:dev.spinon.bootstrap/u0a230 for top-activity {dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity}
+10-08 20:23:38.886 10618 10618 I libprocessgroup: Created cgroup /sys/fs/cgroup/apps/uid_10230/pid_10618
+10-08 20:23:38.908   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.908   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.908   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.908   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.908   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.908   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.909 10618 10618 I Zygote  : Process 10618 created for dev.spinon.bootstrap
+10-08 20:23:38.909 10618 10618 I pinon.bootstrap: Late-enabling -Xcheck:jni
+10-08 20:23:38.926 10618 10618 I pinon.bootstrap: Using generational CollectorTypeCMC GC.
+10-08 20:23:38.930   509   599 I libbinder.BpBinder: onLastStrongRef automatically unlinking death recipients for binder (0xb4007562280497e0) with descriptor: '(not cached)'
+10-08 20:23:38.932 10618 10618 D nativeloader: Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+10-08 20:23:38.932   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.932   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.932   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.932   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.932   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.941   532   571 I adbd    : jdwp connection from 10618
+10-08 20:23:38.955 10618 10618 D nativeloader: Configuring clns-9 for other apk /data/app/~~gvFnFXJGMmSZGoQTxmUbPA==/dev.spinon.bootstrap-oxq0-uWp_NC3kTJLj6x9hA==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~gvFnFXJGMmSZGoQTxmUbPA==/dev.spinon.bootstrap-oxq0-uWp_NC3kTJLj6x9hA==/lib/arm64:/data/app/~~gvFnFXJGMmSZGoQTxmUbPA==/dev.spinon.bootstrap-oxq0-uWp_NC3kTJLj6x9hA==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/dev.spinon.bootstrap
+10-08 20:23:38.956   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.956   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.956   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.956   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.956   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.979 10618 10618 D ActivityThread: Set OS env TMPDIR to /data/user/0/dev.spinon.bootstrap/cache
+10-08 20:23:38.981 10618 10618 V GraphicsEnvironment: Currently set values for:
+10-08 20:23:38.981 10618 10618 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+10-08 20:23:38.981 10618 10618 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+10-08 20:23:38.981 10618 10618 V GraphicsEnvironment: dev.spinon.bootstrap is not listed in per-application setting
+10-08 20:23:38.982 10618 10618 V GraphicsEnvironment: No special selections for ANGLE, returning default driver choice
+10-08 20:23:38.982   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.982   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.982   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.982   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.982   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.982   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.983 10618 10618 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+10-08 20:23:38.983   532   532 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:am force-stop dev.spinon.bootstrap'
+10-08 20:23:38.990   662  1851 D CorePackageUpdate: Couldn't find a persistent state for task= 72
+10-08 20:23:38.995   662  1451 I ActivityManager: Force stopping dev.spinon.bootstrap appid=10230 user=0: from pid 10633
+10-08 20:23:38.997   662  1451 I WindowManager:   Force removing ActivityRecord{50570441 u0 dev.spinon.bootstrap/.MainActivity t72 f isRemovalRequested}
+10-08 20:23:38.997   662  1451 W WindowManager: removeAppToken: Attempted to remove non-existing token: Token{aad96ef ActivityRecord{50570441 u0 dev.spinon.bootstrap/.MainActivity t72 f isRemovalRequested}}
+10-08 20:23:38.997   662  1451 E ActivityManager: Unable to freeze binder for 10618: -11
+10-08 20:23:38.997   662  1451 I ActivityManager: Killing 10618:dev.spinon.bootstrap/u0a230 (adj 0): stop dev.spinon.bootstrap due to from pid 10633
+10-08 20:23:38.998   662  1451 W ActivityTaskManager: Force removing ActivityRecord{145971431 u0 dev.spinon.bootstrap/.MainActivity t72 f}: app died, no saved state
+10-08 20:23:38.998   662  1451 W TransitionChain: Combining appDied into #196(CHANGE||0x10000) from startNewTransit
+10-08 20:23:38.998   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.998   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.998   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.998   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.998   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.998   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.998   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:38.999   662  1451 D DifferentDisplayCheck: Focus gained for Task Task{2aabb53 #3 type=home I=com.google.android.apps.nexuslauncher/.NexusLauncherActivity} on display 0
+--------- beginning of kernel
+10-08 20:23:39.001  1451  1451 I binder  : 662:1451 ioctl 400c620e 7c192dc3829c returned -11
+10-08 20:23:39.001  1451  1451 I binder  : 662:1451 ioctl 400c620e 7c192dc3829c returned -11
+10-08 20:23:38.999   662  1451 V WindowManager: Defer transition id=196 for TaskFragmentTransaction=android.os.Binder@97636eb organizer (pid=1461, uid=10195)
+10-08 20:23:39.010  1150  1273 V RecentTasksController: Notify recent tasks changed: 1
+10-08 20:23:39.011  1461  1461 D BaseActivity: Launcher flags updated: [state_started] +[state_started]
+10-08 20:23:39.011  1461  1461 D BaseActivity: Launcher flags updated: [state_started|state_resumed|state_user_active] +[state_resumed|state_user_active]
+10-08 20:23:39.013  1461  1461 D TopTaskTracker: handleTaskMovedToFront: TaskInfo{userId=0 taskId=3 effectiveUid=10195 seqId=0 displayId=0 isRunning=true baseIntent=Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=com.google.android.apps.nexuslauncher/.NexusLauncherActivity } baseActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity} topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity} origActivity=null realActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity} realActivityIsAppLockEnabled=false numActivities=1 lastActiveTime=6761749 supportsMultiWindow=true supportsMultiWindowWithoutConstraints=true resizeMode=2 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{android.os.BinderProxy@8beae79} topActivityType=2 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 0 - 0, 0) topActivityInfo=ActivityInfo{972e392 com.google.android.apps.nexuslauncher.NexusLauncherActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isInteractive=false isVisible=false isVisibleRequested=false isTopActivityNoDisplay=false isSleeping=false locusId=LocusId[17_chars] displayAreaFeatureId=1 isTopActivityTransparent=false isActivityStackTransparent=false lastNonFullscreenBounds=null leafTaskBoundsFromOptions= false capturedLink=null capturedLinkTimestamp=0 requestedVisibleTypes=503 topActivityRequestOpenInBrowserEducationTimestamp=0 appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false isLeafTask= true eligibleForLetterboxEducation= false isLetterboxEducationEnabled= true isLetterboxDoubleTapEnabled= false eligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 topActivityAppBounds=Rect(0, 0 - 1080, 1920) isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false hasMinAspectRatioOverride=false topActivityLetterboxBounds=null topNonResizableActivityAspectRatio=-1.0 idealTaskOrientation=5} topActivityMainWindowFrame=null}
+10-08 20:23:39.013  1461  1461 D BaseActivity: Launcher flags updated: [state_started|state_resumed|state_deferred_resumed|state_user_active] +[state_deferred_resumed]
+10-08 20:23:39.013  1461  1461 D StatsLog: LAUNCHER_ONRESUME
+10-08 20:23:39.015  2727  2904 I AiAiEcho: Predicting[0]:  [CONTEXT sampling_count=5 ]
+10-08 20:23:39.015   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.016   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.016   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.016   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.016   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.016   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.017   449   449 I Zygote  : Process 10618 exited due to signal 9 (Killed)
+10-08 20:23:39.021   662  1451 I AppWidgetServiceImpl: No new profiles to load for user 0 profileIds: [0]
+10-08 20:23:39.022  2727  2904 I AiAiEcho: EchoTargets: 
+10-08 20:23:39.022  2727  2904 I AiAiEcho: Filtered by AiAi flag check: 
+10-08 20:23:39.022  2727  2904 I AiAiEcho: [CONTEXT ratelimit_period="10 SECONDS" ]
+10-08 20:23:39.022   662  1148 V ActivityManager: Got obituary of 10618:dev.spinon.bootstrap
+10-08 20:23:39.022  2727  2904 I AiAiEcho: #remoteViewsTwiddler: feature disabled.
+10-08 20:23:39.022   532   532 I adbd    : Remote process closed the socket (on MSG_PEEK)
+10-08 20:23:39.022   532   532 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:am start -n dev.spinon.bootstrap/.MainActivity'
+10-08 20:23:39.022  2727  2904 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+10-08 20:23:39.022   662  1242 D ActivityManager: sync unfroze 19671 com.google.android.apps.wellbeing for 7
+10-08 20:23:39.025  1150  1273 V WindowManagerShell: Transition animation finished (aborted=false), notifying core (#195) android.os.BinderProxy@8f8cf6b@0
+10-08 20:23:39.025  1461  1461 D SmartspaceInteractor: notifySmartspaceEvent: SmartspaceTargetEvent{mSmartspaceTarget=null, mSmartspaceActionId='null', mEventType=6}
+10-08 20:23:39.026  1461  1461 I Surface : Creating surface for consumer unnamed-1461-93 with slotExpansion=1 for 64 slots
+10-08 20:23:39.026  1461  1461 I Surface : Creating surface for consumer VRI[NexusLauncherActivity]#67(BLAST Consumer)67 with slotExpansion=1 for 64 slots
+10-08 20:23:39.027   662  1185 V WindowManager: Continue transition id=196 for TaskFragmentTransaction=android.os.Binder@97636eb
+10-08 20:23:39.027   662  1148 D WindowManager: setClientSurface Surface(name=VRI-com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#2143)/@0x8ac9006 for 3ecf597 com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity
+10-08 20:23:39.020  1017  1017 I binder  : undelivered TRANSACTION_COMPLETE
+10-08 20:23:39.020  1017  1017 I binder  : undelivered transaction 2830004, process died.
+10-08 20:23:39.032   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.032   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.032   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.035   662  2226 E libbinder.IPCThreadState: Binder transaction failure. id: 2830164, cmd: BR_DEAD_REPLY (29189), error: -22 (Invalid argument)
+10-08 20:23:39.035   662  2226 W ActivityManager: pid 662 system sent binder code 7 with flags 1 and got error -32
+10-08 20:23:39.035   662  2226 W WindowManager: Exception thrown during dispatchAppVisibility Window{1c16119 u0 dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity EXITING}
+10-08 20:23:39.035   662  2226 W WindowManager: android.os.DeadObjectException
+10-08 20:23:39.035   662  2226 W WindowManager: 	at android.os.BinderProxy.transactNative(Native Method)
+10-08 20:23:39.035   662  2226 W WindowManager: 	at android.os.BinderProxy.transact(BinderProxy.java:694)
+10-08 20:23:39.035   662  2226 W WindowManager: 	at android.view.IWindow$Stub$Proxy.dispatchAppVisibility(IWindow.java:603)
+10-08 20:23:39.035   662  2226 W WindowManager: 	at com.android.server.wm.WindowState.sendAppVisibilityToClients(WindowState.java:3573)
+10-08 20:23:39.035   662  2226 W WindowManager: 	at com.android.server.wm.WindowContainer.sendAppVisibilityToClients(WindowContainer.java:1267)
+10-08 20:23:39.035   662  2226 W WindowManager: 	at com.android.server.wm.WindowToken.setClientVisible(WindowToken.java:404)
+10-08 20:23:39.035   662  2226 W WindowManager: 	at com.android.server.wm.ActivityRecord.commitVisibility(ActivityRecord.java:5952)
+10-08 20:23:39.035   662  2226 W WindowManager: 	at com.android.server.wm.Transition.finishTransition(Transition.java:1683)
+10-08 20:23:39.035   662  2226 W WindowManager: 	at com.android.server.wm.TransitionController.finishTransition(TransitionController.java:1228)
+10-08 20:23:39.035   662  2226 W WindowManager: 	at com.android.server.wm.WindowOrganizerController.finishTransition(WindowOrganizerController.java:509)
+10-08 20:23:39.035   662  2226 W WindowManager: 	at android.window.IWindowOrganizerController$Stub.onTransact(IWindowOrganizerController.java:265)
+10-08 20:23:39.035   662  2226 W WindowManager: 	at com.android.server.wm.WindowOrganizerController.onTransact(WindowOrganizerController.java:236)
+10-08 20:23:39.035   662  2226 W WindowManager: 	at android.os.Binder.execTransactInternal(Binder.java:1342)
+10-08 20:23:39.035   662  2226 W WindowManager: 	at android.os.Binder.execTransact(Binder.java:1301)
+10-08 20:23:39.035   662  2226 W Process : Unable to open /proc/17675/status
+10-08 20:23:39.037   662   682 V WindowManager: Finish Transition (#195): created at 10-08 20:23:38.649 collect-started=0.128ms started=0.14ms ready=39.811ms sent=109.009ms commit=33.172ms finished=385.649ms
+10-08 20:23:39.043  1461  1522 D QuickstepModelDelegate: notifyAppTargetEvent action=1 launchLocation=workspace/0/[-1,-1]/[1,1]
+10-08 20:23:39.039  2226  2226 I binder  : 2226:662 cannot find target node
+10-08 20:23:39.047   662  1070 I AppWidgetServiceImpl: Received broadcast: android.intent.action.PACKAGE_RESTARTED on user 0
+10-08 20:23:39.039  2226  2226 I binder  : 662:2226 transaction async to 0:0 failed 2830164/29189/-22, code 7 size 68-0 line 3436
+10-08 20:23:39.047   662  1070 I AppWidgetServiceImpl: Updating package stopped masked state for uid 10230 package dev.spinon.bootstrap isStopped true
+10-08 20:23:39.047  1150  1273 V WindowManagerShell: Track 0 became idle
+10-08 20:23:39.047   662  1148 W ActivityTaskManager: callingPackage for (uid=2000, pid=10641) has no WPC
+10-08 20:23:39.048   662  1148 V GrammaticalInflectionUtils: AttributionSource: AttributionSource { uid = 10230, packageName = null, attributionTag = null, token = android.os.Binder@5dd927d, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+10-08 20:23:39.048   662  1148 W TransitionChain: Combining startAct into #196(CHANGE||0x10000) from startNewTransit
+10-08 20:23:39.048   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.048   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.048   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.048   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.048   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.050   662  1148 I ActivityTaskManager: Add Task{13897ce #72 type=standard A=10230:dev.spinon.bootstrap} to hidden list because adding Task{bc12d9a #73 type=standard A=10230:dev.spinon.bootstrap}
+10-08 20:23:39.050   662  1148 D CorePackageUpdate: onRecentTaskRemoved Removing task: 72
+10-08 20:23:39.050   662  1148 D CorePackageUpdate: Couldn't find a persistent state for task= 72
+10-08 20:23:39.050  1150  1273 V RecentTasksController: Notify recent tasks changed: 1
+10-08 20:23:39.050  1150  1273 D WindowManagerShell: setLauncherKeepClearAreaHeight: visible=true, height=471
+10-08 20:23:39.050  1150  1450 D WallpaperService: onVisibilityChanged(true): com.android.systemui.wallpapers.ImageWallpaper$CanvasEngine@22f7b9
+10-08 20:23:39.051  1325  1325 D CarrierSvcBindHelper: onHandleForceStop: [dev.spinon.bootstrap]
+10-08 20:23:39.051   662  1148 V ActivityTaskManager: TaskLaunchParamsModifier: phase=2 task=Task{bc12d9a #73 type=standard A=10230:dev.spinon.bootstrap} activity=ActivityRecord{129250958 u0 dev.spinon.bootstrap/.MainActivity t-1} display-from-task=0 display-id=0 task-display-area-windowing-mode=1 suggested-display-area=DefaultTaskDisplayArea@71386864 inherit-from-task=fullscreen non-freeform-task-display-area display-area=DefaultTaskDisplayArea@71386864 skip-bounds-fullscreen
+10-08 20:23:39.051   662  1148 I ActivityTaskManager: START u0 {flg=0x10000000 xflg=0x5 cmp=dev.spinon.bootstrap/.MainActivity} with LAUNCH_MULTIPLE from uid 2000 (com.android.shell) (BAL_ALLOW_SHELL_UID) result code=0
+10-08 20:23:39.051   662   685 V GrammaticalInflectionUtils: AttributionSource: AttributionSource { uid = 10230, packageName = null, attributionTag = null, token = android.os.Binder@5dd927d, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+10-08 20:23:39.058  2727  2904 I AiAiEcho: AmbientDataPredictorImpl No tracked ambient data found for ID: null; for event type: 6, skipping event processing.
+10-08 20:23:39.058  1325  1325 D CarrierSvcBindHelper: No carrier app for: 0
+10-08 20:23:39.059   662   693 I libprocessgroup: Removed cgroup /sys/fs/cgroup/apps/uid_10230/pid_10618
+10-08 20:23:39.059 19671 19671 W TimedProcessReaper: Current importance is: 100
+10-08 20:23:39.062   662  1242 W PackageManager: Cannot suspend package "com.android.dynsystem": has OP_SYSTEM_EXEMPT_FROM_SUSPENSION set
+10-08 20:23:39.063   449   449 D Zygote  : Forked child process 10645
+10-08 20:23:39.063  1461  1461 D BaseDepthController: setSurface:
+10-08 20:23:39.063  1461  1461 D BaseDepthController: 	mWaitingOnSurfaceValidity: false
+10-08 20:23:39.063  1461  1461 D BaseDepthController: 	mBaseSurface: Surface(name=VRI-com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#2143)/@0x556eb21
+10-08 20:23:39.063  1461  1461 V BaseDepthController: Applying blur: 0 to Surface(name=VRI-com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#2143)/@0x556eb21 applyImmediately: false
+10-08 20:23:39.063  1461  1461 D BaseDepthController: shouldBlurWorkspace: false targetState: Normal currentStableState: Normal mCurrentBlur: 0 mLauncher.getDepthBlurTargets(): [com.android.launcher3.Workspace{b094ef1 V.ED..... ......ID 0,0-1080,1920 #7f0a0499 app:id/workspace}, com.android.launcher3.Hotseat{86a3ad6 V.ED..... ......ID 0,1449-1080,1920 #7f0a01f6 app:id/hotseat}]
+10-08 20:23:39.067   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.067   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.067   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.067   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.069   662  1242 W PackageManager: Cannot suspend package "android": has OP_SYSTEM_EXEMPT_FROM_SUSPENSION set
+10-08 20:23:39.069   662  1242 W PackageManager: Cannot suspend package "com.google.android.sdksandbox": required system package
+10-08 20:23:39.069   662  1242 W PackageManager: Cannot suspend package "com.google.android.permissioncontroller": required for permissions management
+10-08 20:23:39.069 10645 10645 I libprocessgroup: Created cgroup /sys/fs/cgroup/apps/uid_10230/pid_10645
+10-08 20:23:39.069   662  1242 W PackageManager: Cannot suspend package "com.android.providers.settings": has OP_SYSTEM_EXEMPT_FROM_SUSPENSION set
+10-08 20:23:39.069   662  1242 W PackageManager: Cannot suspend package "com.android.inputdevices": has OP_SYSTEM_EXEMPT_FROM_SUSPENSION set
+10-08 20:23:39.069   662  1242 W PackageManager: Cannot suspend package "com.google.android.dialer": is the default dialer
+10-08 20:23:39.069   662  1242 W PackageManager: Cannot suspend package "com.android.server.telecom": has OP_SYSTEM_EXEMPT_FROM_SUSPENSION set
+10-08 20:23:39.069   662  1242 W PackageManager: Cannot suspend package "com.android.keychain": has OP_SYSTEM_EXEMPT_FROM_SUSPENSION set
+10-08 20:23:39.069   662  1242 W PackageManager: Cannot suspend package "com.google.android.packageinstaller": required for package installation
+10-08 20:23:39.069   662  1242 W PackageManager: Cannot suspend package "com.android.localtransport": has OP_SYSTEM_EXEMPT_FROM_SUSPENSION set
+10-08 20:23:39.069   662  1242 W PackageManager: Cannot suspend package "com.google.android.apps.nexuslauncher": contains the active launcher
+10-08 20:23:39.069   662  1242 W PackageManager: Cannot suspend package "com.android.DeviceAsWebcam": has OP_SYSTEM_EXEMPT_FROM_SUSPENSION set
+10-08 20:23:39.069   662  1242 W PackageManager: Cannot suspend package "com.android.emulator.multidisplay": has OP_SYSTEM_EXEMPT_FROM_SUSPENSION set
+10-08 20:23:39.069   662  1242 W PackageManager: Cannot suspend package "com.android.settings": has OP_SYSTEM_EXEMPT_FROM_SUSPENSION set
+10-08 20:23:39.069   662  1242 W PackageManager: Cannot suspend package "com.android.location.fused": has OP_SYSTEM_EXEMPT_FROM_SUSPENSION set
+10-08 20:23:39.073  1150  1273 V RecentTasksController: generateList(getRecentTasks)
+10-08 20:23:39.074  1150  1273 V RecentTasksController: initializeDesksMap - allDeskIds: []
+10-08 20:23:39.074  1150  1273 V RecentTasksController: Task 73 is not an active desktop task
+10-08 20:23:39.074  1150  1273 V RecentTasksController: Added fullscreen task: 73
+10-08 20:23:39.074  1150  1273 V RecentTasksController: generateList - complete
+10-08 20:23:39.074  1150  1273 V RecentTasksController: Notify recent tasks changed: 1
+10-08 20:23:39.075  1150  1273 V RecentTasksController: onRecentTaskRemovedForAddTask; removing task=72
+10-08 20:23:39.075  1150  1273 D ShellDesktopMode: (0): Removes freeform task: taskId=72
+10-08 20:23:39.075  1150  1273 W ShellDesktopMode: (0): No display id found for task: taskId=72
+10-08 20:23:39.075  1150  1273 V RecentTasksController: Notify recent tasks changed: 1
+10-08 20:23:39.076   662   692 I ActivityManager: Start proc 10645:dev.spinon.bootstrap/u0a230 for next-top-activity {dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity}
+10-08 20:23:39.077  1461  1519 D PreloadThumbnailUseCase: Preloading thumbnails for task ids: [[id=73 windowingMode=1 user=0 lastActiveTime=18773657 lastFocusedTime=0] null]
+10-08 20:23:39.081   662  2226 D CompatChangeReporter: Compat change id reported: 377864165; UID 10230; state: ENABLED
+10-08 20:23:39.082   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.082   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.082   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.082   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.089 19671 19675 W .apps.wellbeing: Reducing the number of considered missed Gc histogram windows from 1221 to 100
+10-08 20:23:39.092  1150  1292 D SplashScreenView: Build android.window.SplashScreenView{50050e7 V.E...... ......ID 0,0-0,0}
+10-08 20:23:39.092  1150  1292 D SplashScreenView: Icon: view: android.widget.ImageView{3730494 V.ED..... ......I. 0,0-0,0 #102059a android:id/splashscreen_icon_view} drawable: com.android.wm.shell.startingsurface.SplashscreenIconDrawableFactory$ImmobileIconDrawable@1d63b3d size: 420
+10-08 20:23:39.092  1150  1292 D SplashScreenView: Branding: view: android.view.View{c71ff32 G.ED..... ......I. 0,0-0,0 #1020599 android:id/splashscreen_branding_view} drawable: null size w: 0 h: 0
+10-08 20:23:39.094  1461  1461 D RecentTasksList: invalidateLoadedTasks - previous requestLoadId: -1
+10-08 20:23:39.094 10645 10645 I Zygote  : Process 10645 created for dev.spinon.bootstrap
+10-08 20:23:39.094 10645 10645 I pinon.bootstrap: Late-enabling -Xcheck:jni
+10-08 20:23:39.094  1461  1461 D RecentsView: onTaskDisplayChanged: 73, new displayId = 0
+10-08 20:23:39.094  1461  1461 D TopTaskTracker: handleTaskMovedToFront: TaskInfo{userId=0 taskId=73 effectiveUid=10230 seqId=0 displayId=0 isRunning=true baseIntent=Intent { flg=0x10000000 cmp=dev.spinon.bootstrap/.MainActivity } baseActivity=ComponentInfo{dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity} topActivity=ComponentInfo{dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity} origActivity=null realActivity=ComponentInfo{dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity} realActivityIsAppLockEnabled=false numActivities=1 lastActiveTime=18773656 supportsMultiWindow=true supportsMultiWindowWithoutConstraints=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{android.os.BinderProxy@e559953} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 0 - 0, 0) topActivityInfo=ActivityInfo{85bc290 dev.spinon.bootstrap.MainActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isInteractive=false isVisible=false isVisibleRequested=false isTopActivityNoDisplay=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=false isActivityStackTransparent=false lastNonFullscreenBounds=null leafTaskBoundsFromOptions= false capturedLink=null capturedLinkTimestamp=0 requestedVisibleTypes=503 topActivityRequestOpenInBrowserEducationTimestamp=0 appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false isLeafTask= true eligibleForLetterboxEducation= false isLetterboxEducationEnabled= true isLetterboxDoubleTapEnabled= false eligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 topActivityAppBounds=Rect(0, 0 - 1080, 1920) isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false hasMinAspectRatioOverride=false topActivityLetterboxBounds=null topNonResizableActivityAspectRatio=-1.0 idealTaskOrientation=-1} topActivityMainWindowFrame=null}
+10-08 20:23:39.094  1461  1461 D RecentTasksList: invalidateLoadedTasks - previous requestLoadId: -1
+10-08 20:23:39.094  1461  1461 D BaseActivity: Launcher flags updated: [state_started|state_resumed|state_deferred_resumed] -[state_user_active]
+10-08 20:23:39.095  1461  1461 D BaseActivity: Launcher flags updated: [state_started] -[state_resumed|state_deferred_resumed]
+10-08 20:23:39.095  1461  1461 W SplitSelectStateCtor: Missing session instanceIds
+10-08 20:23:39.095  1461  1461 D StatsLog: LAUNCHER_SPLIT_SELECTION_EXIT_INTERRUPTED
+10-08 20:23:39.095   509   611 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.095  1150  1273 D WindowManagerShell: setLauncherKeepClearAreaHeight: visible=false, height=471
+10-08 20:23:39.100   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.100   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.100   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.100   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.102   662  1242 D DifferentDisplayCheck: Focus lost for Task Task{2aabb53 #3 type=home I=com.google.android.apps.nexuslauncher/.NexusLauncherActivity} on display 0
+10-08 20:23:39.102   662  1242 D DifferentDisplayCheck: Focus gained for Task Task{bc12d9a #73 type=standard A=10230:dev.spinon.bootstrap} on display 0
+10-08 20:23:39.103   662  1242 V WindowManager: Defer transition id=196 for TaskFragmentTransaction=android.os.Binder@7e15f3e organizer (pid=1461, uid=10195)
+10-08 20:23:39.103   662  1070 I AppWidgetServiceImpl: Received broadcast: android.intent.action.PACKAGE_UNSTOPPED on user 0
+10-08 20:23:39.103   662  1070 I AppWidgetServiceImpl: Updating package stopped masked state for uid 10230 package dev.spinon.bootstrap isStopped false
+10-08 20:23:39.110  1461  1461 D RecentTasksList: invalidateLoadedTasks - previous requestLoadId: -1
+10-08 20:23:39.110  1461  1461 D RecentTasksList: invalidateLoadedTasks - previous requestLoadId: -1
+10-08 20:23:39.110 10645 10645 I pinon.bootstrap: Using generational CollectorTypeCMC GC.
+10-08 20:23:39.112  1150  1273 W FrameTracker: Missed App frame:jankTypeLegacy: JANK_APPLICATION, jankType: JANK_APPLICATION, vsyncId: 154123, totalDuration: 0, CUJ=J<APP_UPDATE::Opening>
+10-08 20:23:39.112   532   571 I adbd    : jdwp connection from 10645
+10-08 20:23:39.112   662  1851 W InputChannel-JNI: Channel already disposed.
+10-08 20:23:39.115   662  1242 V WindowManager: Continue transition id=196 for TaskFragmentTransaction=android.os.Binder@7e15f3e
+10-08 20:23:39.116   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.116   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.116   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.116   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.122 10645 10645 D nativeloader: Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+10-08 20:23:39.126  1461  1461 D SsBaseTemplateCard: Passed-in item info is null
+10-08 20:23:39.126  1461  1461 D SsBaseTemplateCard: Passed-in item info is null
+10-08 20:23:39.126  1461  1461 D SsBaseTemplateCard: Passed-in item info is null
+10-08 20:23:39.126  1461  1461 D SsBaseTemplateCard: Passed-in item info is null
+10-08 20:23:39.126  1461  1461 I SsBaseTemplateCard: Secondary card pane is null
+10-08 20:23:39.130   662  1851 D WindowManager: setClientSurface Surface(name=VRI-Splash Screen dev.spinon.bootstrap#2149)/@0xfb603f0 for 7059fa2 Splash Screen dev.spinon.bootstrap
+10-08 20:23:39.131  1150  1289 I Surface : Creating surface for consumer unnamed-1150-88 with slotExpansion=1 for 64 slots
+10-08 20:23:39.131  1150  1289 I Surface : Creating surface for consumer VRI[bootstrap]#88(BLAST Consumer)88 with slotExpansion=1 for 64 slots
+10-08 20:23:39.132   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.132   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.132   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.132   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.132   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.142   662   685 W ProcessStats: Tracking association SourceState{152fd69 com.google.android.apps.nexuslauncher/10195 BTop #23481} whose proc state 2 is better than process ProcessState{cba6437 com.google.android.apps.wellbeing/10155 pkg=com.google.android.apps.wellbeing} proc state 14 (15 skipped)
+10-08 20:23:39.148   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.149   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.149   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.149   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.149   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.149   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.151 10645 10645 D nativeloader: Configuring clns-9 for other apk /data/app/~~gvFnFXJGMmSZGoQTxmUbPA==/dev.spinon.bootstrap-oxq0-uWp_NC3kTJLj6x9hA==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~gvFnFXJGMmSZGoQTxmUbPA==/dev.spinon.bootstrap-oxq0-uWp_NC3kTJLj6x9hA==/lib/arm64:/data/app/~~gvFnFXJGMmSZGoQTxmUbPA==/dev.spinon.bootstrap-oxq0-uWp_NC3kTJLj6x9hA==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/dev.spinon.bootstrap
+10-08 20:23:39.153   662   685 W ActivityTaskManager: Activity top resumed state loss timeout for ActivityRecord{50570441 u0 dev.spinon.bootstrap/.MainActivity t72 f isRemovalRequested}
+10-08 20:23:39.164 10645 10645 D ActivityThread: Set OS env TMPDIR to /data/user/0/dev.spinon.bootstrap/cache
+10-08 20:23:39.165   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.169   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.181 10645 10645 V GraphicsEnvironment: Currently set values for:
+10-08 20:23:39.181 10645 10645 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+10-08 20:23:39.181 10645 10645 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+10-08 20:23:39.181 10645 10645 V GraphicsEnvironment: dev.spinon.bootstrap is not listed in per-application setting
+10-08 20:23:39.181 10645 10645 V GraphicsEnvironment: No special selections for ANGLE, returning default driver choice
+10-08 20:23:39.181 10645 10645 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+10-08 20:23:39.182   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.182   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.182   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.182   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.182   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.182   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.197   662  1148 D CorePackageUpdate: Couldn't find a persistent state for task= 73
+10-08 20:23:39.198   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.198   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.198   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.198   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.198   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.198   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.202   662   682 V WindowManager: Sent Transition (#196) createdAt=10-08 20:23:38.844
+10-08 20:23:39.202   662   682 V WindowManager:     startWCT=WindowContainerTransaction { changes= {} hops= [{pendingIntent: options=Bundle[{android.activity.splashScreenStyle=-1, android.pendingIntent.backgroundActivityAllowed=3, android.activity.avoidMoveToFront=true, android.activity.launchTaskId=72, android:activity.animAbortListener=null}]}] flags= 0 errorCallbackToken=null taskFragmentOrganizer=null }
+10-08 20:23:39.202   662   682 V WindowManager:     info={id=196 t=CHANGE f=0x10000 trk=1 r=[0@Point(0, 0)] c=[
+10-08 20:23:39.202   662   682 V WindowManager:         {WCT{RemoteToken{e33f0a1 Task{bc12d9a #73 type=standard A=10230:dev.spinon.bootstrap}}} m=OPEN f=MOVE_TO_TOP|FLAG_CHANGED_INTERACTIVE leash=Surface(name=Task=73#2146)/@0x13246ab sb=Rect(0, 0 - 1080, 1920) eb=Rect(0, 0 - 1080, 1920) epz=Point(1080, 1920) d=0 taskParent=-1 winMode=1 userId=0},
+10-08 20:23:39.202   662   682 V WindowManager:         {WCT{RemoteToken{c4565d7 Task{13897ce #72 type=standard A=10230:dev.spinon.bootstrap}}} m=TO_BACK f=FLAG_CHANGED_INTERACTIVE leash=Surface(name=Task=72#2116)/@0x1ff0f71 sb=Rect(0, 0 - 1080, 1920) eb=Rect(0, 0 - 1080, 1920) epz=Point(1080, 1920) d=0 taskParent=-1 winMode=1 userId=0}
+10-08 20:23:39.202   662   682 V WindowManager:     ]}
+10-08 20:23:39.205  2727  3085 W AiAiBesties: providePipelineSetup: Error fetching APK Info for [com.google.android.apps.pixel.relationships].
+10-08 20:23:39.205  2727  3085 W AiAiBesties: android.content.pm.PackageManager$NameNotFoundException: com.google.android.apps.pixel.relationships
+10-08 20:23:39.205  2727  3085 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfoAsUser(ApplicationPackageManager.java:297)
+10-08 20:23:39.205  2727  3085 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:257)
+10-08 20:23:39.205  2727  3085 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:251)
+10-08 20:23:39.205  2727  3085 W AiAiBesties: 	at jmd.a(PG:35)
+10-08 20:23:39.205  2727  3085 W AiAiBesties: 	at wng.a(PG:97)
+10-08 20:23:39.205  2727  3085 W AiAiBesties: 	at wnn.p(PG:79)
+10-08 20:23:39.205  2727  3085 W AiAiBesties: 	at wnn.e(PG:6)
+10-08 20:23:39.205  2727  3085 W AiAiBesties: 	at wmm.run(PG:4)
+10-08 20:23:39.205  2727  3085 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+10-08 20:23:39.205  2727  3085 W AiAiBesties: 	at aeok.a(PG:2)
+10-08 20:23:39.205  2727  3085 W AiAiBesties: 	at aenn.run(PG:18)
+10-08 20:23:39.205  2727  3085 W AiAiBesties: 	at aeol.run(PG:4)
+10-08 20:23:39.205  2727  3085 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+10-08 20:23:39.205  2727  3085 W AiAiBesties: 	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+10-08 20:23:39.205  2727  3085 W AiAiBesties: 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:323)
+10-08 20:23:39.205  2727  3085 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+10-08 20:23:39.205  2727  3085 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+10-08 20:23:39.205  2727  3085 W AiAiBesties: 	at mxs.run(PG:220)
+10-08 20:23:39.205  2727  3085 W AiAiBesties: 	at java.lang.Thread.run(Thread.java:1571)
+10-08 20:23:39.209  1150  1273 V ShellTaskOrganizer: Task appeared taskId=73 listener=FullscreenTaskListener
+10-08 20:23:39.209  1150  1273 V ShellTaskOrganizer: Fullscreen Task Appeared: #73
+10-08 20:23:39.209  1150  1273 D ShellPackageUpdate: PackageUpdateController: Setting handlePackageUpdate for task: 73
+10-08 20:23:39.210   662  1148 E TransitionChain: Can't collect into a chain with no transition
+10-08 20:23:39.212  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.googlequicksearchbox is in the allowlist
+10-08 20:23:39.212  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.search.assistant.verticals.ambient.standalone is in the allowlist
+10-08 20:23:39.212  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.gms is in the allowlist
+10-08 20:23:39.212  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.deskclock is in the allowlist
+10-08 20:23:39.212  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.wellbeing is in the allowlist
+10-08 20:23:39.212  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.messaging is in the allowlist
+10-08 20:23:39.212  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.maps is in the allowlist
+10-08 20:23:39.212  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.dialer is in the allowlist
+10-08 20:23:39.212  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.recorder is in the allowlist
+10-08 20:23:39.212  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin is in the allowlist
+10-08 20:23:39.212  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.dev is in the allowlist
+10-08 20:23:39.212  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.canary is in the allowlist
+10-08 20:23:39.212  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.whatsapp is in the allowlist
+10-08 20:23:39.212  2727  3085 I AiAiVC  : Centralized allowlist: requested package jp.naver.line.android is in the allowlist
+10-08 20:23:39.212  2727  3085 I AiAiVC  : Centralized allowlist: requested package org.thoughtcrime.securesms is in the allowlist
+10-08 20:23:39.212  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.autofill.testapps.autofillapp is in the allowlist
+10-08 20:23:39.212  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.translate.testapps.chatapp is in the allowlist
+10-08 20:23:39.212  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.testing.personalcontextapp is in the allowlist
+10-08 20:23:39.212  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ConversationListActivityGmail is in the allowlist
+10-08 20:23:39.212  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ComposeActivityGmail is in the allowlist
+10-08 20:23:39.212  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.android.chrome/com.google.android.apps.chrome.Main is in the allowlist
+10-08 20:23:39.212  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.apps.youtube.music/com.google.android.apps.youtube.music.activities.MusicActivity is in the allowlist
+10-08 20:23:39.212  1768  1768 W MediaProvider: WorkProfileOwnerApps cache is empty
+10-08 20:23:39.212   509   611 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.212  1768  1768 D PickerSyncLockManager: Trying to acquire lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@6da663c[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-08 20:23:39.212  1768  1768 D CloseableReentrantLock: Successfully acquired lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@6da663c[Locked by thread main]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-08 20:23:39.212  1768  1768 D CloseableReentrantLock: Successfully released lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@6da663c[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-08 20:23:39.213 10645 10660 I DisplayManager: Choreographer implicitly registered for the refresh rate.
+10-08 20:23:39.214  1150  1273 V RecentTasksController: Notify recent tasks changed: 1
+10-08 20:23:39.214  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.youtube/com.google.android.apps.youtube.app.watchwhile.WatchWhileActivity is in the allowlist
+10-08 20:23:39.214  1150 13087 V WindowManagerShell: onTransitionReady(transaction=2843268364189)
+10-08 20:23:39.215   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.215   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.215   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.215   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.215   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.215   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.215  1150  1273 V RecentTasksController: Notify recent tasks changed: 1
+10-08 20:23:39.221  1150  1273 V WindowManagerShell: onTransitionReady (#196) android.os.BinderProxy@4da3a64: {id=196 t=CHANGE f=0x10000 trk=1 r=[0@Point(0, 0)] c=[
+10-08 20:23:39.221  1150  1273 V WindowManagerShell:         {m=OPEN f=MOVE_TO_TOP|FLAG_CHANGED_INTERACTIVE leash=Surface(name=Task=73#2146)/@0x617612e sb=Rect(0, 0 - 1080, 1920) eb=Rect(0, 0 - 1080, 1920) epz=Point(1080, 1920) d=0 taskParent=-1 winMode=1 userId=0},
+10-08 20:23:39.221  1150  1273 V WindowManagerShell:         {m=TO_BACK f=FLAG_CHANGED_INTERACTIVE leash=Surface(name=Task=72#2116)/@0xf2494cf sb=Rect(0, 0 - 1080, 1920) eb=Rect(0, 0 - 1080, 1920) epz=Point(1080, 1920) d=0 taskParent=-1 winMode=1 userId=0}
+10-08 20:23:39.221  1150  1273 V WindowManagerShell:     ]}
+10-08 20:23:39.221  1150  1273 V WindowManagerShell: FocusTransitionObserver: Updating focus state for transition #196
+10-08 20:23:39.221  1150  1273 D WindowManagerShell: FocusTransitionObserver: Focus updated on displayId=0 to taskId=73
+10-08 20:23:39.221  1150  1273 V WindowManagerShell: FocusTransitionObserver: Notifying local listeners of task focus change: taskId=73, isFocusedOnDisplay=true, isFocusedGlobally=true
+10-08 20:23:39.221  1150  1273 V RecentTasksController: Notify recent tasks changed: 2
+10-08 20:23:39.221  1150  1273 V WindowManagerShell: FocusTransitionObserver: Notifying local listeners of task focus change: taskId=72, isFocusedOnDisplay=false, isFocusedGlobally=false
+10-08 20:23:39.221  1150  1273 V WindowManagerShell: Playing animation for (#196) android.os.BinderProxy@4da3a64@1
+10-08 20:23:39.221  1150  1273 V WindowManagerShell:  try firstHandler com.android.wm.shell.packageupdate.PackageUpdateTransitionHandler@fc68c
+10-08 20:23:39.222  1150  1273 V WindowManagerShell:  animated by firstHandler
+10-08 20:23:39.224  1461  1461 D RecentTasksList: invalidateLoadedTasks - previous requestLoadId: -1
+10-08 20:23:39.224  1461  1461 D RecentTasksList: invalidateLoadedTasks - previous requestLoadId: -1
+10-08 20:23:39.224  1461  1461 D RecentTasksList: invalidateLoadedTasks - previous requestLoadId: -1
+10-08 20:23:39.224  1461  1461 D TopTaskTracker: handleTaskMovedToFront: TaskInfo{userId=0 taskId=73 effectiveUid=10230 seqId=0 displayId=0 isRunning=true baseIntent=Intent { flg=0x10000000 cmp=dev.spinon.bootstrap/.MainActivity } baseActivity=ComponentInfo{dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity} topActivity=ComponentInfo{dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity} origActivity=null realActivity=ComponentInfo{dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity} realActivityIsAppLockEnabled=false numActivities=1 lastActiveTime=18773805 supportsMultiWindow=true supportsMultiWindowWithoutConstraints=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{android.os.BinderProxy@e559953} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 0 - 0, 0) topActivityInfo=ActivityInfo{31677af dev.spinon.bootstrap.MainActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=true isInteractive=true isVisible=true isVisibleRequested=true isTopActivityNoDisplay=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=false isActivityStackTransparent=false lastNonFullscreenBounds=null leafTaskBoundsFromOptions= false capturedLink=null capturedLinkTimestamp=0 requestedVisibleTypes=503 topActivityRequestOpenInBrowserEducationTimestamp=0 appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false isLeafTask= true eligibleForLetterboxEducation= false isLetterboxEducationEnabled= true isLetterboxDoubleTapEnabled= false eligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 topActivityAppBounds=Rect(0, 0 - 1080, 1920) isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false hasMinAspectRatioOverride=false topActivityLetterboxBounds=null topNonResizableActivityAspectRatio=-1.0 idealTaskOrientation=-1} topActivityMainWindowFrame=null}
+10-08 20:23:39.225 10645 10645 I ProtoLog: ProtoLog ready to log to logcat
+10-08 20:23:39.225 10645 10645 D pinon.bootstrap: Initializing ProtoLog
+10-08 20:23:39.225 10645 10645 D ProtoLog: Initializing ProtoLog DataSource
+10-08 20:23:39.223  2727  3085 W AiAiBesties: providePipelineSetup: Error fetching APK Info for [com.google.android.apps.pixel.relationships].
+10-08 20:23:39.223  2727  3085 W AiAiBesties: android.content.pm.PackageManager$NameNotFoundException: com.google.android.apps.pixel.relationships
+10-08 20:23:39.223  2727  3085 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfoAsUser(ApplicationPackageManager.java:297)
+10-08 20:23:39.223  2727  3085 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:257)
+10-08 20:23:39.223  2727  3085 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:251)
+10-08 20:23:39.223  2727  3085 W AiAiBesties: 	at jmd.a(PG:35)
+10-08 20:23:39.223  2727  3085 W AiAiBesties: 	at wng.a(PG:97)
+10-08 20:23:39.223  2727  3085 W AiAiBesties: 	at wnn.p(PG:79)
+10-08 20:23:39.223  2727  3085 W AiAiBesties: 	at wnn.e(PG:6)
+10-08 20:23:39.223  2727  3085 W AiAiBesties: 	at wmm.run(PG:4)
+10-08 20:23:39.223  2727  3085 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+10-08 20:23:39.223  2727  3085 W AiAiBesties: 	at aeok.a(PG:2)
+10-08 20:23:39.223  2727  3085 W AiAiBesties: 	at aenn.run(PG:18)
+10-08 20:23:39.223  2727  3085 W AiAiBesties: 	at aeol.run(PG:4)
+10-08 20:23:39.223  2727  3085 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+10-08 20:23:39.223  2727  3085 W AiAiBesties: 	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+10-08 20:23:39.223  2727  3085 W AiAiBesties: 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:323)
+10-08 20:23:39.223  2727  3085 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+10-08 20:23:39.223  2727  3085 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+10-08 20:23:39.223  2727  3085 W AiAiBesties: 	at mxs.run(PG:220)
+10-08 20:23:39.223  2727  3085 W AiAiBesties: 	at java.lang.Thread.run(Thread.java:1571)
+10-08 20:23:39.227   662  1848 I ProtoLogConfigurationService: Registered ProtoLog client: PID:0 (PID 0, UID 10230) with 1 groups: [IME_TRACKER]
+10-08 20:23:39.227  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.googlequicksearchbox is in the allowlist
+10-08 20:23:39.227 10645 10645 I ProtoLogConfigListener: Connected and registered client with 1 groups to ProtoLogConfigurationService (viewerConfig=null)
+10-08 20:23:39.228  1150  1273 V RecentTasksController: generateList(getRecentTasks)
+10-08 20:23:39.228  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.search.assistant.verticals.ambient.standalone is in the allowlist
+10-08 20:23:39.228  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.gms is in the allowlist
+10-08 20:23:39.228  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.deskclock is in the allowlist
+10-08 20:23:39.228  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.wellbeing is in the allowlist
+10-08 20:23:39.228  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.messaging is in the allowlist
+10-08 20:23:39.228  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.maps is in the allowlist
+10-08 20:23:39.228  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.dialer is in the allowlist
+10-08 20:23:39.228  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.recorder is in the allowlist
+10-08 20:23:39.228  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin is in the allowlist
+10-08 20:23:39.228  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.dev is in the allowlist
+10-08 20:23:39.228  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.canary is in the allowlist
+10-08 20:23:39.228  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.whatsapp is in the allowlist
+10-08 20:23:39.228  2727  3085 I AiAiVC  : Centralized allowlist: requested package jp.naver.line.android is in the allowlist
+10-08 20:23:39.228  2727  3085 I AiAiVC  : Centralized allowlist: requested package org.thoughtcrime.securesms is in the allowlist
+10-08 20:23:39.228  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.autofill.testapps.autofillapp is in the allowlist
+10-08 20:23:39.228  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.translate.testapps.chatapp is in the allowlist
+10-08 20:23:39.228  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.testing.personalcontextapp is in the allowlist
+10-08 20:23:39.228  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ConversationListActivityGmail is in the allowlist
+10-08 20:23:39.228  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ComposeActivityGmail is in the allowlist
+10-08 20:23:39.228  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.android.chrome/com.google.android.apps.chrome.Main is in the allowlist
+10-08 20:23:39.228  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.apps.youtube.music/com.google.android.apps.youtube.music.activities.MusicActivity is in the allowlist
+10-08 20:23:39.228  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.youtube/com.google.android.apps.youtube.app.watchwhile.WatchWhileActivity is in the allowlist
+10-08 20:23:39.229  2727  3085 W AiAiBesties: providePipelineSetup: Error fetching APK Info for [com.google.android.apps.pixel.relationships].
+10-08 20:23:39.229  2727  3085 W AiAiBesties: android.content.pm.PackageManager$NameNotFoundException: com.google.android.apps.pixel.relationships
+10-08 20:23:39.229  2727  3085 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfoAsUser(ApplicationPackageManager.java:297)
+10-08 20:23:39.229  2727  3085 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:257)
+10-08 20:23:39.229  2727  3085 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:251)
+10-08 20:23:39.229  2727  3085 W AiAiBesties: 	at jmd.a(PG:35)
+10-08 20:23:39.229  2727  3085 W AiAiBesties: 	at wng.a(PG:97)
+10-08 20:23:39.229  2727  3085 W AiAiBesties: 	at wnn.p(PG:79)
+10-08 20:23:39.229  2727  3085 W AiAiBesties: 	at wnn.e(PG:6)
+10-08 20:23:39.229  2727  3085 W AiAiBesties: 	at wmm.run(PG:4)
+10-08 20:23:39.229  2727  3085 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+10-08 20:23:39.229  2727  3085 W AiAiBesties: 	at aeok.a(PG:2)
+10-08 20:23:39.229  2727  3085 W AiAiBesties: 	at aenn.run(PG:18)
+10-08 20:23:39.229  2727  3085 W AiAiBesties: 	at aeol.run(PG:4)
+10-08 20:23:39.229  2727  3085 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+10-08 20:23:39.229  2727  3085 W AiAiBesties: 	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+10-08 20:23:39.229  2727  3085 W AiAiBesties: 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:323)
+10-08 20:23:39.229  2727  3085 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+10-08 20:23:39.229  2727  3085 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+10-08 20:23:39.229  2727  3085 W AiAiBesties: 	at mxs.run(PG:220)
+10-08 20:23:39.229  2727  3085 W AiAiBesties: 	at java.lang.Thread.run(Thread.java:1571)
+10-08 20:23:39.231  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.googlequicksearchbox is in the allowlist
+10-08 20:23:39.231  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.search.assistant.verticals.ambient.standalone is in the allowlist
+10-08 20:23:39.231  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.gms is in the allowlist
+10-08 20:23:39.231  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.deskclock is in the allowlist
+10-08 20:23:39.231  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.wellbeing is in the allowlist
+10-08 20:23:39.231  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.messaging is in the allowlist
+10-08 20:23:39.231  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.maps is in the allowlist
+10-08 20:23:39.231  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.dialer is in the allowlist
+10-08 20:23:39.231  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.recorder is in the allowlist
+10-08 20:23:39.231  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin is in the allowlist
+10-08 20:23:39.231  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.dev is in the allowlist
+10-08 20:23:39.231  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.canary is in the allowlist
+10-08 20:23:39.231  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.whatsapp is in the allowlist
+10-08 20:23:39.231  2727  3085 I AiAiVC  : Centralized allowlist: requested package jp.naver.line.android is in the allowlist
+10-08 20:23:39.231  2727  3085 I AiAiVC  : Centralized allowlist: requested package org.thoughtcrime.securesms is in the allowlist
+10-08 20:23:39.231  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.autofill.testapps.autofillapp is in the allowlist
+10-08 20:23:39.231  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.translate.testapps.chatapp is in the allowlist
+10-08 20:23:39.231  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.testing.personalcontextapp is in the allowlist
+10-08 20:23:39.231  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ConversationListActivityGmail is in the allowlist
+10-08 20:23:39.231  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ComposeActivityGmail is in the allowlist
+10-08 20:23:39.231  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.android.chrome/com.google.android.apps.chrome.Main is in the allowlist
+10-08 20:23:39.231  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.apps.youtube.music/com.google.android.apps.youtube.music.activities.MusicActivity is in the allowlist
+10-08 20:23:39.231  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.youtube/com.google.android.apps.youtube.app.watchwhile.WatchWhileActivity is in the allowlist
+10-08 20:23:39.231  2727  3085 W AiAiBesties: providePipelineSetup: Error fetching APK Info for [com.google.android.apps.pixel.relationships].
+10-08 20:23:39.231  2727  3085 W AiAiBesties: android.content.pm.PackageManager$NameNotFoundException: com.google.android.apps.pixel.relationships
+10-08 20:23:39.231  2727  3085 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfoAsUser(ApplicationPackageManager.java:297)
+10-08 20:23:39.231  2727  3085 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:257)
+10-08 20:23:39.231  2727  3085 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:251)
+10-08 20:23:39.231  2727  3085 W AiAiBesties: 	at jmd.a(PG:35)
+10-08 20:23:39.231  2727  3085 W AiAiBesties: 	at wng.a(PG:97)
+10-08 20:23:39.231  2727  3085 W AiAiBesties: 	at wnn.p(PG:79)
+10-08 20:23:39.231  2727  3085 W AiAiBesties: 	at wnn.e(PG:6)
+10-08 20:23:39.231  2727  3085 W AiAiBesties: 	at wmm.run(PG:4)
+10-08 20:23:39.231  2727  3085 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+10-08 20:23:39.231  2727  3085 W AiAiBesties: 	at aeok.a(PG:2)
+10-08 20:23:39.231  2727  3085 W AiAiBesties: 	at aenn.run(PG:18)
+10-08 20:23:39.231  2727  3085 W AiAiBesties: 	at aeol.run(PG:4)
+10-08 20:23:39.231  2727  3085 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+10-08 20:23:39.231  2727  3085 W AiAiBesties: 	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+10-08 20:23:39.231  2727  3085 W AiAiBesties: 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:323)
+10-08 20:23:39.231  2727  3085 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+10-08 20:23:39.231  2727  3085 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+10-08 20:23:39.231  2727  3085 W AiAiBesties: 	at mxs.run(PG:220)
+10-08 20:23:39.231  2727  3085 W AiAiBesties: 	at java.lang.Thread.run(Thread.java:1571)
+10-08 20:23:39.232   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.232   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.232   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.232   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.232   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.241  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.googlequicksearchbox is in the allowlist
+10-08 20:23:39.241  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.search.assistant.verticals.ambient.standalone is in the allowlist
+10-08 20:23:39.241  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.gms is in the allowlist
+10-08 20:23:39.241  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.deskclock is in the allowlist
+10-08 20:23:39.241  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.wellbeing is in the allowlist
+10-08 20:23:39.241  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.messaging is in the allowlist
+10-08 20:23:39.241  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.maps is in the allowlist
+10-08 20:23:39.241  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.dialer is in the allowlist
+10-08 20:23:39.241  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.recorder is in the allowlist
+10-08 20:23:39.241  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin is in the allowlist
+10-08 20:23:39.241  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.dev is in the allowlist
+10-08 20:23:39.241  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.canary is in the allowlist
+10-08 20:23:39.241  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.whatsapp is in the allowlist
+10-08 20:23:39.241  2727  3085 I AiAiVC  : Centralized allowlist: requested package jp.naver.line.android is in the allowlist
+10-08 20:23:39.241  2727  3085 I AiAiVC  : Centralized allowlist: requested package org.thoughtcrime.securesms is in the allowlist
+10-08 20:23:39.241  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.autofill.testapps.autofillapp is in the allowlist
+10-08 20:23:39.241  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.translate.testapps.chatapp is in the allowlist
+10-08 20:23:39.241  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.testing.personalcontextapp is in the allowlist
+10-08 20:23:39.241  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ConversationListActivityGmail is in the allowlist
+10-08 20:23:39.241  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ComposeActivityGmail is in the allowlist
+10-08 20:23:39.241  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.android.chrome/com.google.android.apps.chrome.Main is in the allowlist
+10-08 20:23:39.241  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.apps.youtube.music/com.google.android.apps.youtube.music.activities.MusicActivity is in the allowlist
+10-08 20:23:39.241  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.youtube/com.google.android.apps.youtube.app.watchwhile.WatchWhileActivity is in the allowlist
+10-08 20:23:39.243   662  1681 W libbinder.ServiceManagerCppClient: Waited one second for android.hardware.uwb.IUwb/default (is service started? Number of threads started in the threadpool: 32. Are binder threads started and available?)
+10-08 20:23:39.246   290   290 I servicemanager: Caller(pid=662,uid=1000,sid=u:r:system_server:s0) Since 'android.hardware.uwb.IUwb/default' could not be found trying to start it as a lazy AIDL service. (if it's not configured to be a lazy service, it may be stuck starting or still starting).
+10-08 20:23:39.250     1     1 E init    : Control message: Could not find 'aidl/android.hardware.uwb.IUwb/default' for ctl.interface_start from pid: 290 (/system/bin/servicemanager)
+10-08 20:23:39.244  1150  1273 V RecentTasksController: initializeDesksMap - allDeskIds: []
+10-08 20:23:39.244  1150  1273 V RecentTasksController: Task 73 is not an active desktop task
+10-08 20:23:39.244  1150  1273 V RecentTasksController: Added fullscreen task: 73
+10-08 20:23:39.244  1150  1273 V RecentTasksController: generateList - complete
+10-08 20:23:39.245  1461  1519 D PreloadThumbnailUseCase: Preloading thumbnails for task ids: [[id=73 windowingMode=1 user=0 lastActiveTime=18773805 lastFocusedTime=18773828] null]
+10-08 20:23:39.248   290 10666 W libc    : Unable to set property "ctl.interface_start" to "aidl/android.hardware.uwb.IUwb/default": PROP_ERROR_HANDLE_CONTROL_MESSAGE (0x20)
+10-08 20:23:39.248   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.251 10666 10666 I servicemanager: Caller(pid=662,uid=1000,sid=u:r:system_server:s0) Tried to start aidl service android.hardware.uwb.IUwb/default as a lazy service, but was unable to. Usually this happens when a service is not installed, but if the service is intended to be used as a lazy service, then it may be configured incorrectly.
+10-08 20:23:39.255  2727  3085 W AiAiBesties: providePipelineSetup: Error fetching APK Info for [com.google.android.apps.pixel.relationships].
+10-08 20:23:39.255  2727  3085 W AiAiBesties: android.content.pm.PackageManager$NameNotFoundException: com.google.android.apps.pixel.relationships
+10-08 20:23:39.255  2727  3085 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfoAsUser(ApplicationPackageManager.java:297)
+10-08 20:23:39.255  2727  3085 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:257)
+10-08 20:23:39.255  2727  3085 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:251)
+10-08 20:23:39.255  2727  3085 W AiAiBesties: 	at jmd.a(PG:35)
+10-08 20:23:39.255  2727  3085 W AiAiBesties: 	at wng.a(PG:97)
+10-08 20:23:39.255  2727  3085 W AiAiBesties: 	at wnn.p(PG:79)
+10-08 20:23:39.255  2727  3085 W AiAiBesties: 	at wnn.e(PG:6)
+10-08 20:23:39.255  2727  3085 W AiAiBesties: 	at wmm.run(PG:4)
+10-08 20:23:39.255  2727  3085 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+10-08 20:23:39.255  2727  3085 W AiAiBesties: 	at aeok.a(PG:2)
+10-08 20:23:39.255  2727  3085 W AiAiBesties: 	at aenn.run(PG:18)
+10-08 20:23:39.255  2727  3085 W AiAiBesties: 	at aeol.run(PG:4)
+10-08 20:23:39.255  2727  3085 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+10-08 20:23:39.255  2727  3085 W AiAiBesties: 	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+10-08 20:23:39.255  2727  3085 W AiAiBesties: 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:323)
+10-08 20:23:39.255  2727  3085 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+10-08 20:23:39.255  2727  3085 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+10-08 20:23:39.255  2727  3085 W AiAiBesties: 	at mxs.run(PG:220)
+10-08 20:23:39.255  2727  3085 W AiAiBesties: 	at java.lang.Thread.run(Thread.java:1571)
+10-08 20:23:39.263  1150  1285 W Looper  : Slow dispatch took 40ms wmshell.anim app=com.android.systemui main=false group=TOP_APP h=android.os.Handler c=com.android.wm.shell.packageupdate.PackageUpdateTransitionHandler$startAnimation$1@6284ec7 m=0
+10-08 20:23:39.264  1150  1285 W Looper  : Slow delivery took 31ms wmshell.anim app=com.android.systemui main=false group=TOP_APP h=android.view.Choreographer$FrameHandler c=android.view.Choreographer$FrameDisplayEventReceiver@6a7d8e m=0
+10-08 20:23:39.265   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.265   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.276  1150  1285 W Looper  : Drained
+10-08 20:23:39.277  1496 10674 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_REMOVED [CONTEXT service_id=17 ]
+10-08 20:23:39.279  1496 10673 I ProximityAuth: [RecentAppsMediator] Package added: (user=UserHandle{0}) dev.spinon.bootstrap
+10-08 20:23:39.283   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.283   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.283   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.283   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.283   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.283   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.294  1496 10675 I FontLog : Package dev.spinon.bootstrap has no metadata [CONTEXT service_id=132 ]
+10-08 20:23:39.298   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.309  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.googlequicksearchbox is in the allowlist
+10-08 20:23:39.309  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.search.assistant.verticals.ambient.standalone is in the allowlist
+10-08 20:23:39.309  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.gms is in the allowlist
+10-08 20:23:39.309  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.deskclock is in the allowlist
+10-08 20:23:39.309  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.wellbeing is in the allowlist
+10-08 20:23:39.309  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.messaging is in the allowlist
+10-08 20:23:39.309  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.maps is in the allowlist
+10-08 20:23:39.309  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.dialer is in the allowlist
+10-08 20:23:39.309  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.recorder is in the allowlist
+10-08 20:23:39.309  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin is in the allowlist
+10-08 20:23:39.309  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.dev is in the allowlist
+10-08 20:23:39.309  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.canary is in the allowlist
+10-08 20:23:39.309  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.whatsapp is in the allowlist
+10-08 20:23:39.309  2727  3085 I AiAiVC  : Centralized allowlist: requested package jp.naver.line.android is in the allowlist
+10-08 20:23:39.309  2727  3085 I AiAiVC  : Centralized allowlist: requested package org.thoughtcrime.securesms is in the allowlist
+10-08 20:23:39.309  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.autofill.testapps.autofillapp is in the allowlist
+10-08 20:23:39.309  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.translate.testapps.chatapp is in the allowlist
+10-08 20:23:39.309  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.testing.personalcontextapp is in the allowlist
+10-08 20:23:39.309  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ConversationListActivityGmail is in the allowlist
+10-08 20:23:39.309  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ComposeActivityGmail is in the allowlist
+10-08 20:23:39.309  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.android.chrome/com.google.android.apps.chrome.Main is in the allowlist
+10-08 20:23:39.309  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.apps.youtube.music/com.google.android.apps.youtube.music.activities.MusicActivity is in the allowlist
+10-08 20:23:39.309  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.youtube/com.google.android.apps.youtube.app.watchwhile.WatchWhileActivity is in the allowlist
+10-08 20:23:39.309  2727  3085 W AiAiBesties: providePipelineSetup: Error fetching APK Info for [com.google.android.apps.pixel.relationships].
+10-08 20:23:39.309  2727  3085 W AiAiBesties: android.content.pm.PackageManager$NameNotFoundException: com.google.android.apps.pixel.relationships
+10-08 20:23:39.309  2727  3085 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfoAsUser(ApplicationPackageManager.java:297)
+10-08 20:23:39.309  2727  3085 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:257)
+10-08 20:23:39.309  2727  3085 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:251)
+10-08 20:23:39.309  2727  3085 W AiAiBesties: 	at jmd.a(PG:35)
+10-08 20:23:39.309  2727  3085 W AiAiBesties: 	at wng.a(PG:97)
+10-08 20:23:39.309  2727  3085 W AiAiBesties: 	at wnn.p(PG:79)
+10-08 20:23:39.309  2727  3085 W AiAiBesties: 	at wnn.e(PG:6)
+10-08 20:23:39.309  2727  3085 W AiAiBesties: 	at wmm.run(PG:4)
+10-08 20:23:39.309  2727  3085 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+10-08 20:23:39.309  2727  3085 W AiAiBesties: 	at aeok.a(PG:2)
+10-08 20:23:39.309  2727  3085 W AiAiBesties: 	at aenn.run(PG:18)
+10-08 20:23:39.309  2727  3085 W AiAiBesties: 	at aeol.run(PG:4)
+10-08 20:23:39.309  2727  3085 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+10-08 20:23:39.309  2727  3085 W AiAiBesties: 	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+10-08 20:23:39.309  2727  3085 W AiAiBesties: 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:323)
+10-08 20:23:39.309  2727  3085 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+10-08 20:23:39.309  2727  3085 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+10-08 20:23:39.309  2727  3085 W AiAiBesties: 	at mxs.run(PG:220)
+10-08 20:23:39.309  2727  3085 W AiAiBesties: 	at java.lang.Thread.run(Thread.java:1571)
+10-08 20:23:39.309  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.googlequicksearchbox is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.search.assistant.verticals.ambient.standalone is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.gms is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.deskclock is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.wellbeing is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.messaging is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.maps is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.dialer is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.recorder is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.dev is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.canary is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.whatsapp is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package jp.naver.line.android is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package org.thoughtcrime.securesms is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.autofill.testapps.autofillapp is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.translate.testapps.chatapp is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.testing.personalcontextapp is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ConversationListActivityGmail is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ComposeActivityGmail is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.android.chrome/com.google.android.apps.chrome.Main is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.apps.youtube.music/com.google.android.apps.youtube.music.activities.MusicActivity is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.youtube/com.google.android.apps.youtube.app.watchwhile.WatchWhileActivity is in the allowlist
+10-08 20:23:39.310  2727  3085 W AiAiBesties: providePipelineSetup: Error fetching APK Info for [com.google.android.apps.pixel.relationships].
+10-08 20:23:39.310  2727  3085 W AiAiBesties: android.content.pm.PackageManager$NameNotFoundException: com.google.android.apps.pixel.relationships
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfoAsUser(ApplicationPackageManager.java:297)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:257)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:251)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at jmd.a(PG:35)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at wng.a(PG:97)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at wnn.p(PG:79)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at wnn.e(PG:6)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at wmm.run(PG:4)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at aeok.a(PG:2)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at aenn.run(PG:18)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at aeol.run(PG:4)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:323)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at mxs.run(PG:220)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at java.lang.Thread.run(Thread.java:1571)
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.googlequicksearchbox is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.search.assistant.verticals.ambient.standalone is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.gms is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.deskclock is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.wellbeing is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.messaging is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.maps is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.dialer is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.recorder is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.dev is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.canary is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.whatsapp is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package jp.naver.line.android is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package org.thoughtcrime.securesms is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.autofill.testapps.autofillapp is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.translate.testapps.chatapp is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.testing.personalcontextapp is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ConversationListActivityGmail is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ComposeActivityGmail is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.android.chrome/com.google.android.apps.chrome.Main is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.apps.youtube.music/com.google.android.apps.youtube.music.activities.MusicActivity is in the allowlist
+10-08 20:23:39.310  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.youtube/com.google.android.apps.youtube.app.watchwhile.WatchWhileActivity is in the allowlist
+10-08 20:23:39.310  2727  3085 W AiAiBesties: providePipelineSetup: Error fetching APK Info for [com.google.android.apps.pixel.relationships].
+10-08 20:23:39.310  2727  3085 W AiAiBesties: android.content.pm.PackageManager$NameNotFoundException: com.google.android.apps.pixel.relationships
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfoAsUser(ApplicationPackageManager.java:297)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:257)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:251)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at jmd.a(PG:35)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at wng.a(PG:97)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at wnn.p(PG:79)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at wnn.e(PG:6)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at wmm.run(PG:4)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at aeok.a(PG:2)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at aenn.run(PG:18)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at aeol.run(PG:4)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:323)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at mxs.run(PG:220)
+10-08 20:23:39.310  2727  3085 W AiAiBesties: 	at java.lang.Thread.run(Thread.java:1571)
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.googlequicksearchbox is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.search.assistant.verticals.ambient.standalone is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.gms is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.deskclock is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.wellbeing is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.messaging is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.maps is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.dialer is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.recorder is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.dev is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.canary is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.whatsapp is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package jp.naver.line.android is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package org.thoughtcrime.securesms is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.autofill.testapps.autofillapp is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.translate.testapps.chatapp is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.testing.personalcontextapp is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ConversationListActivityGmail is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ComposeActivityGmail is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.android.chrome/com.google.android.apps.chrome.Main is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.apps.youtube.music/com.google.android.apps.youtube.music.activities.MusicActivity is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.youtube/com.google.android.apps.youtube.app.watchwhile.WatchWhileActivity is in the allowlist
+10-08 20:23:39.311  2727  3085 W AiAiBesties: providePipelineSetup: Error fetching APK Info for [com.google.android.apps.pixel.relationships].
+10-08 20:23:39.311  2727  3085 W AiAiBesties: android.content.pm.PackageManager$NameNotFoundException: com.google.android.apps.pixel.relationships
+10-08 20:23:39.311  2727  3085 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfoAsUser(ApplicationPackageManager.java:297)
+10-08 20:23:39.311  2727  3085 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:257)
+10-08 20:23:39.311  2727  3085 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:251)
+10-08 20:23:39.311  2727  3085 W AiAiBesties: 	at jmd.a(PG:35)
+10-08 20:23:39.311  2727  3085 W AiAiBesties: 	at wng.a(PG:97)
+10-08 20:23:39.311  2727  3085 W AiAiBesties: 	at wnn.p(PG:79)
+10-08 20:23:39.311  2727  3085 W AiAiBesties: 	at wnn.e(PG:6)
+10-08 20:23:39.311  2727  3085 W AiAiBesties: 	at wmm.run(PG:4)
+10-08 20:23:39.311  2727  3085 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+10-08 20:23:39.311  2727  3085 W AiAiBesties: 	at aeok.a(PG:2)
+10-08 20:23:39.311  2727  3085 W AiAiBesties: 	at aenn.run(PG:18)
+10-08 20:23:39.311  2727  3085 W AiAiBesties: 	at aeol.run(PG:4)
+10-08 20:23:39.311  2727  3085 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+10-08 20:23:39.311  2727  3085 W AiAiBesties: 	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+10-08 20:23:39.311  2727  3085 W AiAiBesties: 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:323)
+10-08 20:23:39.311  2727  3085 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+10-08 20:23:39.311  2727  3085 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+10-08 20:23:39.311  2727  3085 W AiAiBesties: 	at mxs.run(PG:220)
+10-08 20:23:39.311  2727  3085 W AiAiBesties: 	at java.lang.Thread.run(Thread.java:1571)
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.googlequicksearchbox is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.search.assistant.verticals.ambient.standalone is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.gms is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.deskclock is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.wellbeing is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.messaging is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.maps is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.dialer is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.recorder is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.dev is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.canary is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.whatsapp is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package jp.naver.line.android is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package org.thoughtcrime.securesms is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.autofill.testapps.autofillapp is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.translate.testapps.chatapp is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.testing.personalcontextapp is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ConversationListActivityGmail is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ComposeActivityGmail is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.android.chrome/com.google.android.apps.chrome.Main is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.apps.youtube.music/com.google.android.apps.youtube.music.activities.MusicActivity is in the allowlist
+10-08 20:23:39.311  2727  3085 I AiAiVC  : Centralized allowlist: requested component com.google.android.youtube/com.google.android.apps.youtube.app.watchwhile.WatchWhileActivity is in the allowlist
+10-08 20:23:39.312   509   611 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.312   509   611 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.316  1705 10685 I AppBackupStateCleanupIO: Backup state cleanup on uninstall is disabled. [CONTEXT service_id=229 ]
+10-08 20:23:39.322  1705 10685 I FraudProtectUtils: Not in testing population, skipping local test bank apps. [CONTEXT service_id=469 ]
+10-08 20:23:39.322  1705 10685 I FraudProtectUtils: Latest bank app list size: 13, dev.spinon.bootstrap isBankApp: false [CONTEXT service_id=469 ]
+10-08 20:23:39.324  1705 10685 I PackageInstallIntentOp: Package dev.spinon.bootstrap is not a bank app. Skipping updates. [CONTEXT service_id=469 ]
+10-08 20:23:39.328  1150  1285 W Looper  : Slow delivery took 41ms wmshell.anim app=com.android.systemui main=false group=TOP_APP h=android.view.Choreographer$FrameHandler c=android.view.Choreographer$FrameDisplayEventReceiver@6a7d8e m=0
+10-08 20:23:39.328  1461  1518 D LauncherAmbientCueVM: recalculateStates: isRootAttached=false (isTestMode=false, hasActions=false, isAmbientCueEnabled=true, isNotDeactivated=true, isTaskFocused=false [focusedId=73, targetId=-1])
+10-08 20:23:39.329  1705 10678 I Auth    : [SupervisedAccountIntentOperation] onHandleIntent: android.intent.action.PACKAGE_ADDED [CONTEXT service_id=42 ]
+10-08 20:23:39.330  1705 10678 W AppInstallOperation: FDL Migration::InstallIntentOperation by FDL Module [CONTEXT service_id=77 ]
+10-08 20:23:39.331  1705 10679 I FraudProtectUtils: Not in testing population, skipping local test bank apps. [CONTEXT service_id=469 ]
+10-08 20:23:39.331  1705 10679 I FraudProtectUtils: Latest bank app list size: 13, dev.spinon.bootstrap isBankApp: false [CONTEXT service_id=469 ]
+10-08 20:23:39.331  1705 10679 I PackageInstallIntentOp: Package dev.spinon.bootstrap is not a bank app. Skipping updates. [CONTEXT service_id=469 ]
+10-08 20:23:39.331   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.332   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.332   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.332   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.332   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.332   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.332  1150  1285 W Looper  : Drained
+10-08 20:23:39.348  1496  1496 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.auth.aang.events.services.START dat=chimera-action:/... xflg=0x4 cmp=com.google.android.gms/.chimera.PersistentApiService }
+10-08 20:23:39.350   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.350   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.350   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.350   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.350   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.352   662  1148 I PackageManager: getInstalledPackages: callingUid=10206 flags=0 updatedFlags=786432 userId=0
+10-08 20:23:39.352 10645 10645 D nativeloader: Load /data/app/~~gvFnFXJGMmSZGoQTxmUbPA==/dev.spinon.bootstrap-oxq0-uWp_NC3kTJLj6x9hA==/base.apk!/lib/arm64-v8a/libspinon_bootstrap.so using class loader ns clns-9 (caller=/data/app/~~gvFnFXJGMmSZGoQTxmUbPA==/dev.spinon.bootstrap-oxq0-uWp_NC3kTJLj6x9hA==/base.apk!1): ok
+10-08 20:23:39.361  1705 10693 I NearbyDiscovery: processGrantSlicePermission: dev.spinon.bootstrap [CONTEXT service_id=265 ]
+10-08 20:23:39.362  1705 10692 W SQLiteLog: (28) double-quoted string literal: "dev.spinon.bootstrap"
+10-08 20:23:39.362  1705  1705 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS xflg=0x4 pkg=com.google.android.gms }
+10-08 20:23:39.362  1705  1705 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS xflg=0x4 pkg=com.google.android.gms }
+10-08 20:23:39.365   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.365   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.365   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.365   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.365   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.382   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.382   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.382   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.382   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.391 10645 10700 I SpinonBootstrap: SPINON_BOOTSTRAP_EXECUTION is_main_thread=false
+10-08 20:23:39.392 10645 10660 I GFXSTREAM: [eglDisplay.cpp(297)] Opening libGLESv1_CM_emulation.so
+10-08 20:23:39.392 10645 10660 I GFXSTREAM: [eglDisplay.cpp(297)] Opening libGLESv2_emulation.so
+10-08 20:23:39.393 10645 10645 D CompatChangeReporter: Compat change id reported: 377864165; UID 10230; state: ENABLED
+10-08 20:23:39.395 10645 10660 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-08 20:23:39.395 10645 10660 W HWUI    : Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+10-08 20:23:39.396 10645 10660 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+10-08 20:23:39.397 10645 10700 I SpinonBootstrap: SPINON_BOOTSTRAP_RESULT=nodes=2 last_node=8 tag=text text=이벤트:7 · 문서 revision 25 document_revision=25 render_tree_revision=15 document_nodes=10
+10-08 20:23:39.400   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.400   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.400   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.400   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.426   662  2072 I PackageManager: getInstalledPackages: callingUid=10206 flags=0 updatedFlags=786432 userId=0
+10-08 20:23:39.432   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.432   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.432   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.432   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.432   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.443   509   611 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.448   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.448   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.448   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.448   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.448   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.453 10592 10605 W libbinder.ServiceManagerCppClient: Waited one second for android.hardware.nfc.INfc/default (is service started? Number of threads started in the threadpool: 16. Are binder threads started and available?)
+10-08 20:23:39.454   290 10704 W libc    : Unable to set property "ctl.interface_start" to "aidl/android.hardware.nfc.INfc/default": PROP_ERROR_HANDLE_CONTROL_MESSAGE (0x20)
+10-08 20:23:39.457   290   290 I servicemanager: Caller(pid=10592,uid=1027,sid=u:r:nfc:s0) Since 'android.hardware.nfc.INfc/default' could not be found trying to start it as a lazy AIDL service. (if it's not configured to be a lazy service, it may be stuck starting or still starting).
+10-08 20:23:39.457  1705  1705 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.feedback.internal.IFeedbackService dat=chimera-action:/... xflg=0x4 cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+10-08 20:23:39.458     1     1 E init    : Control message: Could not find 'aidl/android.hardware.nfc.INfc/default' for ctl.interface_start from pid: 290 (/system/bin/servicemanager)
+10-08 20:23:39.458 10704 10704 I servicemanager: Caller(pid=10592,uid=1027,sid=u:r:nfc:s0) Tried to start aidl service android.hardware.nfc.INfc/default as a lazy service, but was unable to. Usually this happens when a service is not installed, but if the service is intended to be used as a lazy service, then it may be configured incorrectly.
+10-08 20:23:39.457  1705  1705 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.feedback.internal.IFeedbackService dat=chimera-action:/... xflg=0x4 cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+10-08 20:23:39.463 10645 10645 W HWUI    : Unknown dataspace 0
+10-08 20:23:39.467   290   290 I servicemanager: Caller(pid=10645,uid=10230,sid=u:r:untrusted_app_34:s0:c230,c256,c512,c768) Found android.hardware.graphics.allocator.IAllocator/default in device VINTF manifest.
+10-08 20:23:39.467   290   290 I servicemanager: Caller(pid=10645,uid=10230,sid=u:r:untrusted_app_34:s0:c230,c256,c512,c768) Found android.hardware.graphics.allocator.IAllocator/default in device VINTF manifest.
+10-08 20:23:39.467   290   290 I servicemanager: Caller(pid=10645,uid=10230,sid=u:r:untrusted_app_34:s0:c230,c256,c512,c768) Found mapper/ranchu in device VINTF manifest.
+10-08 20:23:39.465   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.465   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.465   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.465   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.465   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.465  1150  1273 V WindowManagerShell: Transition animation finished (aborted=false), notifying core (#196) android.os.BinderProxy@4da3a64@1
+10-08 20:23:39.472   662  1851 W InputChannel-JNI: Channel already disposed.
+10-08 20:23:39.472 10645 10706 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-08 20:23:39.472   662   682 V WindowManager: Finish Transition (#196): created at 10-08 20:23:38.844 collect-started=0.029ms started=0.035ms ready=354.158ms sent=357.781ms commit=30.772ms finished=628.283ms
+10-08 20:23:39.473   662  2072 I ImeTracker: system_server:71b0d314: onRequestHide at ORIGIN_SERVER reason ISP_UPDATE_CONTROL_FOR_TARGET fromUser false displayId 0
+10-08 20:23:39.473   662   781 I ImeTracker: system_server:71b0d314: onCancelled at PHASE_SERVER_SHOULD_HIDE
+10-08 20:23:39.474  1150  1450 D WallpaperService: onVisibilityChanged(false): com.android.systemui.wallpapers.ImageWallpaper$CanvasEngine@22f7b9
+10-08 20:23:39.475  1150  1150 D VRI[PackageUpdateActivity]: visibilityChanged oldVisibility=true newVisibility=false
+10-08 20:23:39.476  1150  1273 V WindowManagerShell: Track 1 became idle
+10-08 20:23:39.476  1150  1273 V WindowManagerShell: All active transition animations finished
+10-08 20:23:39.478 10645 10645 D WindowOnBackDispatcher: setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@e760621
+10-08 20:23:39.480 10645 10645 D VRI[MainActivity]: WindowInsets changed: 1080x1920 statusBars:[0,63,0,0] navigationBars:[0,0,0,63] mandatorySystemGestures:[0,63,0,84] 
+10-08 20:23:39.481 10645 10708 D WindowOnBackDispatcher: setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@e760621
+10-08 20:23:39.481   662   737 D CoreBackPreview: Window{c5b9741 u0 dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@984471f, mPriority=-1, mIsAnimationCallback=false, mOverrideBehavior=0}
+10-08 20:23:39.481   662   737 D WindowManager: setClientSurface Surface(name=VRI-dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity#2156)/@0xbf7ea6c for c5b9741 dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity
+10-08 20:23:39.481 10645 10645 I Surface : Creating surface for consumer unnamed-10645-0 with slotExpansion=1 for 64 slots
+10-08 20:23:39.482   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.482   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.482   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.482 10645 10645 I Surface : Creating surface for consumer VRI[MainActivity]#0(BLAST Consumer)0 with slotExpansion=1 for 64 slots
+10-08 20:23:39.482   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.498   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.498   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.498   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.498   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.515   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.515   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.515   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.530   662   682 I ActivityTaskManager: Displayed dev.spinon.bootstrap/.MainActivity for user 0: +481ms
+10-08 20:23:39.532   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.532   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.532   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.532   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.532   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.532   509   509 E BpTransactionCompletedListener: Failed to transact (-32)
+10-08 20:23:39.532   509   509 E BpTransactionCompletedListener: Failed to transact (-32)
+10-08 20:23:39.550  1150  1150 D WindowOnBackDispatcher: setTopOnBackInvokedCallback (unwrapped): null
+10-08 20:23:39.551  1150  1150 D ViewRootImpl: Skipping stats log for color mode
+10-08 20:23:39.551   509   611 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.552  1461  1461 D BaseActivity: Launcher flags updated: [] -[state_started]
+10-08 20:23:39.552  1461  1461 D BaseDepthController: setSurface:
+10-08 20:23:39.552  1461  1461 D BaseDepthController: 	mWaitingOnSurfaceValidity: false
+10-08 20:23:39.552  1461  1461 D BaseDepthController: 	mBaseSurface: null
+10-08 20:23:39.552  1461  1461 D BaseDepthController: mSurface is null and mCurrentBlur is: 0
+10-08 20:23:39.553  1461  1461 D LauncherStateManager: StateManager.goToState: fromState: Normal, toState: Normal, partial trace:
+10-08 20:23:39.553  1461  1461 D LauncherStateManager: 	at com.android.launcher3.statemanager.StateManager.moveToRestState(go/retraceme a6cdd0e17a5d17ccfa668016b0deb852c44cff1992f9dcc2b50740475ba6a353:26)
+10-08 20:23:39.553  1461  1461 D LauncherStateManager: 	at com.android.launcher3.statemanager.StateManager.moveToRestState(go/retraceme a6cdd0e17a5d17ccfa668016b0deb852c44cff1992f9dcc2b50740475ba6a353:35)
+10-08 20:23:39.553  1461  1461 D LauncherStateManager: 	at com.android.launcher3.statemanager.StatefulActivity.onStop(go/retraceme a6cdd0e17a5d17ccfa668016b0deb852c44cff1992f9dcc2b50740475ba6a353:31)
+10-08 20:23:39.553  1461  1461 D LauncherStateManager: StateManager.onRepeatStateSetAborted: state: Normal
+10-08 20:23:39.553  1461  1461 D KeyboardStateManager: hideKeyboard
+10-08 20:23:39.553  1461  1461 D KeyboardStateManager: isImeShown: false
+10-08 20:23:39.553  1461  1461 D StatsLog: LAUNCHER_ONSTOP
+10-08 20:23:39.553   662  1851 I AppWidgetServiceImpl: No new profiles to load for user 0 profileIds: [0]
+10-08 20:23:39.553  1461  1461 D StatsLog: LAUNCHER_GOOGLE_SEARCH_RESTORE_LIST_SIZE_AFTER_ACTIVITY_RESTART
+10-08 20:23:39.553  1461  1461 D SmartspaceInteractor: notifySmartspaceEvent: SmartspaceTargetEvent{mSmartspaceTarget=null, mSmartspaceActionId='null', mEventType=7}
+10-08 20:23:39.554  2727  2904 I AiAiEcho: AmbientDataPredictorImpl No tracked ambient data found for ID: null; for event type: 7, skipping event processing.
+10-08 20:23:39.557   662   737 W ActivityManager: Skipping manifest association check for null package. SourceUid: 10206, SourcePkg: null, TargetUid: 10206, TargetPkg: com.google.android.gms
+10-08 20:23:39.565   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.565   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.565   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.565   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.565   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.565   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.565  1461  1461 D SmartspaceInteractor: notifySmartspaceEvent: SmartspaceTargetEvent{mSmartspaceTarget=null, mSmartspaceActionId='null', mEventType=7}
+10-08 20:23:39.566  1705  1710 W gle.android.gms: Reducing the number of considered missed Gc histogram windows from 321 to 100
+10-08 20:23:39.576  1150  1273 W Looper  : Slow delivery took 36ms wmshell.main app=com.android.systemui main=false group=TOP_APP h=android.os.Handler c=com.android.internal.jank.FrameTracker$2@b3471de m=0
+10-08 20:23:39.576  1150  1273 W FrameTracker: Missed SF frame:jankTypeLegacy: JANK_COMPOSER, jankType: JANK_APPLICATION, vsyncId: 167430, totalDuration: 234023573, CUJ=J<APP_UPDATE::Closing>
+10-08 20:23:39.576  1150  1273 W Looper  : Drained
+10-08 20:23:39.577  1461  1461 D RecentsView: onTaskRemoved: 72, not handling task stack changes
+10-08 20:23:39.577  1461  1461 D TopTaskTracker: onTaskRemoved: 72
+10-08 20:23:39.577  1461  1461 D RecentsView: onTaskRemoved: 72, not handling task stack changes
+10-08 20:23:39.577  2727  2904 I AiAiEcho: AmbientDataPredictorImpl No tracked ambient data found for ID: null; for event type: 7, skipping event processing.
+10-08 20:23:39.581  1150  1273 V ShellTaskOrganizer: Task vanished taskId=72
+10-08 20:23:39.581  1150  1273 V ShellTaskOrganizer: Fullscreen Task Vanished: #72
+10-08 20:23:39.581  1150  1273 V ShellDesktopMode: Task Vanished: #72 closed=true
+10-08 20:23:39.581  1150  1273 D ShellPackageUpdate: PackageUpdateController: Removing handlePackageUpdate for task: 72
+10-08 20:23:39.582   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.582   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.582   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.582   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.582   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.582   662   781 I ImeTracker: system_server:cd58b3e5: onRequestHide at ORIGIN_SERVER reason ISP_UPDATE_CONTROL_FOR_TARGET fromUser false displayId 0
+10-08 20:23:39.582   662   781 I ImeTracker: dev.spinon.bootstrap:089534b3: onRequestHide at ORIGIN_SERVER reason HIDE_UNSPECIFIED_WINDOW fromUser false userId 0 displayId 0
+10-08 20:23:39.583   662   781 I ImeTracker: system_server:cd58b3e5: onCancelled at PHASE_SERVER_SHOULD_HIDE
+10-08 20:23:39.586   662  1848 W InputChannel-JNI: Channel already disposed.
+10-08 20:23:39.594  1862  1862 I SubtypeOperator: SubtypeOperator$1.onBindInput():33 
+10-08 20:23:39.596  1862  1862 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():2361 
+10-08 20:23:39.598  1862 10712 I Module  : DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatusInternal():119 repeatCheckTimes = 0, locked = false
+10-08 20:23:39.598  1862  1862 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1532 onStartInput(EditorInfo{EditorInfo{packageName=dev.spinon.bootstrap, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=0, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
+10-08 20:23:39.598  1862  1862 W LatinIMEBase: LatinIMEBase.updateInputViewCoverNavigation():321 Null input view, cannot update padding!
+10-08 20:23:39.598   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.598   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.598   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.598   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.598   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.600  1862 10715 I Module  : DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatusInternal():119 repeatCheckTimes = 1, locked = false
+10-08 20:23:39.609 10645 10645 D InsetsController: hide(ime())
+10-08 20:23:39.609 10645 10645 I ImeTracker: dev.spinon.bootstrap:089534b3: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+10-08 20:23:39.609   662  2072 E WindowOrganizerController: Attempting to externally change a non-organized container: Task{13897ce #72 type=standard A=10230:dev.spinon.bootstrap}={handlePackageUpdate:false,} playercount=2 taskorg=android.window.ITaskOrganizer$Stub$Proxy@bf3f2d0
+10-08 20:23:39.610  1461  1467 W s.nexuslauncher: Reducing the number of considered missed Gc histogram windows from 1202 to 100
+10-08 20:23:39.611  1150  1273 V RecentTasksController: Notify recent tasks changed: 1
+10-08 20:23:39.611  1150  1273 D ShellDesktopMode: Task 72 is vanishing. Removing task data from repository
+10-08 20:23:39.612  1150  1273 V AppCompat: []
+10-08 20:23:39.612  1150  1273 V AppCompat: []
+10-08 20:23:39.612  1150  1273 V AppCompat: []
+10-08 20:23:39.612  1150  1273 V AppCompat: {}
+10-08 20:23:39.612  1461  1461 D RecentTasksList: invalidateLoadedTasks - previous requestLoadId: -1
+10-08 20:23:39.612  1150  1273 W Looper  : Slow dispatch took 31ms wmshell.main app=com.android.systemui main=false group=TOP_APP h=android.os.Handler c=android.window.TaskOrganizer$1$$ExternalSyntheticLambda1@fba4fbf m=0
+10-08 20:23:39.612  1461  1469 W System  : A resource failed to call release. 
+10-08 20:23:39.612  1461  1469 W System  : A resource failed to call release. 
+10-08 20:23:39.612  1461  1469 W System  : A resource failed to call release. 
+10-08 20:23:39.612  1461  1469 W System  : A resource failed to call release. 
+10-08 20:23:39.612  1461  1469 W System  : A resource failed to call release. 
+10-08 20:23:39.614   662  1451 W PackageConfigPersister: App-specific configuration not found for packageName: dev.spinon.bootstrap and userId: 0
+10-08 20:23:39.615   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.615   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.615   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.615   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.633   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.648   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.682   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.682   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.686 10645 10650 I pinon.bootstrap: Compiler allocated 4558KB to compile void android.view.ViewRootImpl.performTraversals(long)
+10-08 20:23:39.694   509   611 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.694   509   611 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.702   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.702   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.702   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.702   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.702   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.702   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.718   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.718   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.718   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.718   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.718   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.729   662  1451 E AppOps  : attributionTag VCN not declared in manifest of android
+10-08 20:23:39.749   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.749   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.749   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.749   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.749   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.766   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.766   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.766   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.766   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.766   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.782   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.782   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.782   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.782   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.782   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.815   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.815   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.815   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.815   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.815   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.828   509   611 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.828   509   611 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.832   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.832   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.832   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.832   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.832   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.849   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.849   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.849   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.849   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.849   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.885   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.885   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.885   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.885   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.885   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.901   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.901   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.901   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.901   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.901   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.918   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.918   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.918   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.918   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.918   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.932   509   611 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.932   509   611 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.948   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.948   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.948   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.948   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.948   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.965   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.965   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.965   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.965   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:39.965   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.001   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.001   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.001   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.001   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.001  1150  1289 W FrameTracker: Missed App frame:jankTypeLegacy: JANK_APPLICATION, jankType: JANK_NONE, vsyncId: 167992, totalDuration: 29784719, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-08 20:23:40.001  1150  1289 W FrameTracker: Missed App frame:jankTypeLegacy: JANK_APPLICATION, jankType: JANK_NONE, vsyncId: 168006, totalDuration: 33618386, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-08 20:23:40.001  1150  1289 W FrameTracker: Missed App frame:jankTypeLegacy: JANK_APPLICATION, jankType: JANK_COMPOSER, vsyncId: 168028, totalDuration: 53863428, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-08 20:23:40.001  1150  1289 W FrameTracker: Missed App frame:jankTypeLegacy: UNKNOWN: 3, jankType: JANK_APPLICATION, vsyncId: 168057, totalDuration: 71078512, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-08 20:23:40.001  1150  1289 W FrameTracker: Missed SF frame:jankTypeLegacy: UNKNOWN: 3, jankType: JANK_APPLICATION, vsyncId: 168057, totalDuration: 71078512, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-08 20:23:40.001  1150  1289 W FrameTracker: Missed SF frame:jankTypeLegacy: JANK_COMPOSER, jankType: JANK_APPLICATION, vsyncId: 168080, totalDuration: 81898597, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-08 20:23:40.001  1150  1289 W FrameTracker: Missed App frame:jankTypeLegacy: UNKNOWN: 3, jankType: JANK_NONE, vsyncId: 168120, totalDuration: 43484184, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-08 20:23:40.001  1150  1289 W FrameTracker: Missed SF frame:jankTypeLegacy: UNKNOWN: 3, jankType: JANK_NONE, vsyncId: 168120, totalDuration: 43484184, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-08 20:23:40.001  1150  1289 W FrameTracker: Missed SF frame:jankTypeLegacy: JANK_COMPOSER, jankType: JANK_COMPOSER, vsyncId: 168144, totalDuration: 34333186, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-08 20:23:40.001  1150  1289 W FrameTracker: Missed App frame:jankTypeLegacy: UNKNOWN: 3, jankType: JANK_COMPOSER, vsyncId: 168152, totalDuration: 38001811, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-08 20:23:40.001  1150  1289 W FrameTracker: Missed SF frame:jankTypeLegacy: UNKNOWN: 3, jankType: JANK_COMPOSER, vsyncId: 168152, totalDuration: 38001811, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-08 20:23:40.001  1150  1289 W FrameTracker: Missed SF frame:jankTypeLegacy: JANK_COMPOSER, jankType: JANK_APPLICATION, vsyncId: 168160, totalDuration: 47271770, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-08 20:23:40.001  1150  1289 W FrameTracker: Missed App frame:jankTypeLegacy: UNKNOWN: 3, jankType: JANK_NONE, vsyncId: 168168, totalDuration: 51305813, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-08 20:23:40.001  1150  1289 W FrameTracker: Missed SF frame:jankTypeLegacy: UNKNOWN: 3, jankType: JANK_NONE, vsyncId: 168168, totalDuration: 51305813, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-08 20:23:40.001  1150  1289 W FrameTracker: Missed App frame:jankTypeLegacy: JANK_APPLICATION, jankType: JANK_COMPOSER, vsyncId: 168176, totalDuration: 55411563, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-08 20:23:40.001  1150  1289 W FrameTracker: Missed SF frame:jankTypeLegacy: JANK_COMPOSER, jankType: JANK_APPLICATION, vsyncId: 168184, totalDuration: 66284439, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-08 20:23:40.001  1150  1289 W FrameTracker: Missed App frame:jankTypeLegacy: JANK_APPLICATION, jankType: JANK_COMPOSER, vsyncId: 168192, totalDuration: 53552149, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-08 20:23:40.001  1150  1289 W FrameTracker: Missed App frame:jankTypeLegacy: JANK_APPLICATION, jankType: JANK_APPLICATION, vsyncId: 168200, totalDuration: 58977441, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-08 20:23:40.001  1150  1289 W FrameTracker: Missed SF frame:jankTypeLegacy: JANK_COMPOSER, jankType: JANK_NONE, vsyncId: 168208, totalDuration: 66979442, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-08 20:23:40.015   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.015   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.015   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.015   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.032   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.032   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.032   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.032   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.046   509   611 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.046   509   611 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.049   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.049   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.049   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.049   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.065   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.065   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.065   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.065   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.082   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.082   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.082   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.082   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.099   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.099   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.099   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.099   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.116   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.116   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.116   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.116   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.133   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.133   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.133   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.133   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.149   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.149   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.149   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.149   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.158   509   611 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.166   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.166   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.166   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.182   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.182   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.182   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.182   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.199   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.215   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.233   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.248   662  1681 W libbinder.ServiceManagerCppClient: Waited one second for android.hardware.uwb.IUwb/default (is service started? Number of threads started in the threadpool: 32. Are binder threads started and available?)
+10-08 20:23:40.248   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.249   290 10717 W libc    : Unable to set property "ctl.interface_start" to "aidl/android.hardware.uwb.IUwb/default": PROP_ERROR_HANDLE_CONTROL_MESSAGE (0x20)
+10-08 20:23:40.252   290   290 I servicemanager: Caller(pid=662,uid=1000,sid=u:r:system_server:s0) Since 'android.hardware.uwb.IUwb/default' could not be found trying to start it as a lazy AIDL service. (if it's not configured to be a lazy service, it may be stuck starting or still starting).
+10-08 20:23:40.252     1     1 E init    : Control message: Could not find 'aidl/android.hardware.uwb.IUwb/default' for ctl.interface_start from pid: 290 (/system/bin/servicemanager)
+10-08 20:23:40.252 10717 10717 I servicemanager: Caller(pid=662,uid=1000,sid=u:r:system_server:s0) Tried to start aidl service android.hardware.uwb.IUwb/default as a lazy service, but was unable to. Usually this happens when a service is not installed, but if the service is intended to be used as a lazy service, then it may be configured incorrectly.
+10-08 20:23:40.258   509   611 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.266   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.282   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.299   509   509 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.359   662  1032 D WifiClientModeImpl[9304:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=1 freq=2437 RxLinkSpeed=2
+10-08 20:23:40.359   509   611 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+10-08 20:23:40.359   662  1032 D WifiDataStall: tx tput in kbps: -1
+10-08 20:23:40.359   662  1032 D WifiDataStall: rx tput in kbps: -1
+10-08 20:23:40.359   662  1032 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+10-08 20:23:40.359   662  1032 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 1 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@2c398f6
+10-08 20:23:40.359   662  1032 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-08 20:23:40.359   662  1032 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-08 20:23:40.359   662  1032 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-08 20:23:40.359   662  1032 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-08 20:23:40.360   662  1032 I MlConnectedScorer: 1. stats.getStatusDataStall()=0
+10-08 20:23:40.360   662  1032 I MlConnectedScorer: 2. stats.getStatusDataStall()=0
+10-08 20:23:40.360   662  1032 I MlConnectedScorer: handleL2DataStallInMlScorer is true, shouldBlockBssid=false mBlockCurrentBssid=false
+10-08 20:23:40.360   662  1032 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 354733410 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:ba:00:00:00, IP: /10.0.2.16, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 1Mbps, Tx Link speed: 1Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+10-08 20:23:40.360   662  1032 D WifiScoreCard: txRate: 1 txSpeed: 1
+10-08 20:23:40.360   662  1032 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 1254290757 RSSI -50 txSpeed -1
+10-08 20:23:40.360   662  1032 D WifiClientModeImpl[9304:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=1 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3001] from screen [on:0 period:457257928] score=100
+10-08 20:23:40.416     1     1 I init    : starting service 'vendor.uwb_hal'...
+10-08 20:23:40.416     1     1 I libprocessgroup: Created cgroup /sys/fs/cgroup/system/uid_1083/pid_10718
+10-08 20:23:40.424 10718 10718 I android.hardware.uwb: uwb_default_hal: UWB HAL starting up
+10-08 20:23:40.425     1     1 I init    : ... started service 'vendor.uwb_hal' has pid 10718
+10-08 20:23:40.425 10718 10718 E android.hardware.uwb: uwb_default_hal: panicked at hardware/interfaces/uwb/aidl/default/src/uwb_chip.rs:56:14:
+10-08 20:23:40.425 10718 10718 E android.hardware.uwb: failed to open the serial device: Os { code: 6, kind: Uncategorized, message: "No such device or address" }
+--------- beginning of crash
+10-08 20:23:40.425 10718 10718 F libc    : Fatal signal 6 (SIGABRT), code -1 (SI_QUEUE) in tid 10718 (android.hardwar), pid 10718 (android.hardwar)
+10-08 20:23:40.429 10726 10726 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdTombstoneProto
+10-08 20:23:40.429   355   355 I tombstoned: received crash request for pid 10718
+10-08 20:23:40.430 10726 10726 I crash_dump64: performing dump of process 10718 (target tid = 10718)
+10-08 20:23:40.433 10726 10726 F DEBUG   : *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+10-08 20:23:40.433 10726 10726 F DEBUG   : Build fingerprint: 'google/sdk_gphone16k_arm64/emu64a16k:17/CP41.260831.007/16416850:userdebug/dev-keys'
+10-08 20:23:40.433 10726 10726 F DEBUG   : Kernel Release: '6.12.81-android16-6-g4f69fc7b210c-ab16167562'
+10-08 20:23:40.433 10726 10726 F DEBUG   : Revision: '0'
+10-08 20:23:40.433 10726 10726 F DEBUG   : ABI: 'arm64'
+10-08 20:23:40.433 10726 10726 F DEBUG   : Timestamp: 2026-10-08 20:23:40.430657952+0900
+10-08 20:23:40.433 10726 10726 F DEBUG   : Process uptime: 1s
+10-08 20:23:40.433 10726 10726 F DEBUG   : Page size: 16384 bytes
+10-08 20:23:40.433 10726 10726 F DEBUG   : Executable: /vendor/bin/hw/android.hardware.uwb-service
+10-08 20:23:40.433 10726 10726 F DEBUG   : Cmdline: /vendor/bin/hw/android.hardware.uwb-service /dev/uwb0
+10-08 20:23:40.433 10726 10726 F DEBUG   : pid: 10718, ppid: 1, tid: 10718, name: android.hardwar  >>> /vendor/bin/hw/android.hardware.uwb-service <<<
+10-08 20:23:40.433 10726 10726 F DEBUG   : uid: 1083
+10-08 20:23:40.433 10726 10726 F DEBUG   : tagged_addr_ctrl: 0000000000000001 (PR_TAGGED_ADDR_ENABLE)
+10-08 20:23:40.433 10726 10726 F DEBUG   : pac_enabled_keys: 000000000000000f (PR_PAC_APIAKEY, PR_PAC_APIBKEY, PR_PAC_APDAKEY, PR_PAC_APDBKEY)
+10-08 20:23:40.433 10726 10726 F DEBUG   : signal 6 (SIGABRT), code -1 (SI_QUEUE), fault addr --------
+10-08 20:23:40.433 10726 10726 F DEBUG   : Abort message: 'failed to open the serial device: Os { code: 6, kind: Uncategorized, message: "No such device or address" }'
+10-08 20:23:40.433 10726 10726 F DEBUG   : 
+10-08 20:23:40.433 10726 10726 F DEBUG   :     x0  0000000000000000  x1  00000000000029de  x2  0000000000000006  x3  00007fffcac04cf0
+10-08 20:23:40.433 10726 10726 F DEBUG   :     x4  6462687564631f6b  x5  6462687564631f6b  x6  6462687564631f6b  x7  7f7f7f7f7f7f7f7f
+10-08 20:23:40.433 10726 10726 F DEBUG   :     x8  00000000000000f0  x9  9ed4b059c9af7d26  x10 000000ff00000020  x11 000000000006c000
+10-08 20:23:40.433 10726 10726 F DEBUG   :     x12 000000007fffffff  x13 00000000006431d6  x14 0000110adc6f659f  x15 0000000029aaaaab
+10-08 20:23:40.433 10726 10726 F DEBUG   :     x16 000077f678f076f8  x17 000077f678eebfc0  x18 000077f67982c000  x19 00000000000029de
+10-08 20:23:40.433 10726 10726 F DEBUG   :     x20 00000000000029de  x21 00000000ffffffff  x22 00007fffcac04e80  x23 000064e3ae4169c0
+10-08 20:23:40.433 10726 10726 F DEBUG   :     x24 000064e3ae41c600  x25 00007fffcac05610  x26 00007fffcac05020  x27 000077f6791e2e80
+10-08 20:23:40.433 10726 10726 F DEBUG   :     x28 00007fffcac05e08  x29 00007fffcac04d70
+10-08 20:23:40.433 10726 10726 F DEBUG   :     lr  000077f678e888ec  sp  00007fffcac04cf0  pc  000077f678e88910  pst 0000000000000000
+10-08 20:23:40.433 10726 10726 F DEBUG   :     esr 0000000000000000  vg  0000000000000000
+10-08 20:23:40.433 10726 10726 F DEBUG   : 
+10-08 20:23:40.433 10726 10726 F DEBUG   : 18 total frames
+10-08 20:23:40.433 10726 10726 F DEBUG   : backtrace:
+10-08 20:23:40.433 10726 10726 F DEBUG   :       #00 pc 0000000000078910  /apex/com.android.runtime/lib64/bionic/libc.so (abort+160) (BuildId: c4b1f4a2273ae85d0a136e4d0a3aafa0)
+10-08 20:23:40.433 10726 10726 F DEBUG   :       #01 pc 000000000003e284  /vendor/bin/hw/android.hardware.uwb-service (std::sys::pal::unix::abort_internal+8) (BuildId: 8d8402af21e3e4939ff08b7bb72f3227)
+10-08 20:23:40.433 10726 10726 F DEBUG   :       #02 pc 000000000003bda8  /vendor/bin/hw/android.hardware.uwb-service (std::process::abort+8) (BuildId: 8d8402af21e3e4939ff08b7bb72f3227)
+10-08 20:23:40.433 10726 10726 F DEBUG   :       #03 pc 00000000000387d8  /vendor/bin/hw/android.hardware.uwb-service (__rustc::__rust_abort+8) (BuildId: 8d8402af21e3e4939ff08b7bb72f3227)
+10-08 20:23:40.433 10726 10726 F DEBUG   :       #04 pc 000000000002cf48  /vendor/bin/hw/android.hardware.uwb-service (__rustc::__rust_start_panic+16) (BuildId: 8d8402af21e3e4939ff08b7bb72f3227)
+10-08 20:23:40.433 10726 10726 F DEBUG   :       #05 pc 00000000000387cc  /vendor/bin/hw/android.hardware.uwb-service (__rustc::rust_panic+8) (BuildId: 8d8402af21e3e4939ff08b7bb72f3227)
+10-08 20:23:40.433 10726 10726 F DEBUG   :       #06 pc 000000000003c0b0  /vendor/bin/hw/android.hardware.uwb-service (std::panicking::panic_with_hook+276) (BuildId: 8d8402af21e3e4939ff08b7bb72f3227)
+10-08 20:23:40.433 10726 10726 F DEBUG   :       #07 pc 0000000000037f24  /vendor/bin/hw/android.hardware.uwb-service (std::panicking::panic_handler::{closure#0}+60) (BuildId: 8d8402af21e3e4939ff08b7bb72f3227)
+10-08 20:23:40.433 10726 10726 F DEBUG   :       #08 pc 00000000000387f8  /vendor/bin/hw/android.hardware.uwb-service (__rustc::rust_begin_unwind+28) (BuildId: 8d8402af21e3e4939ff08b7bb72f3227)
+10-08 20:23:40.433 10726 10726 F DEBUG   :       #09 pc 0000000000025f2c  /vendor/bin/hw/android.hardware.uwb-service (core::panicking::panic_fmt+36) (BuildId: 8d8402af21e3e4939ff08b7bb72f3227)
+10-08 20:23:40.433 10726 10726 F DEBUG   :       #10 pc 0000000000025df8  /vendor/bin/hw/android.hardware.uwb-service (core::result::unwrap_failed+72) (BuildId: 8d8402af21e3e4939ff08b7bb72f3227)
+10-08 20:23:40.433 10726 10726 F DEBUG   :       #11 pc 000000000006209c  /vendor/bin/hw/android.hardware.uwb-service (<uwb_default_hal::uwb_chip::UwbChip>::new::{closure#0}+6288) (BuildId: 8d8402af21e3e4939ff08b7bb72f3227)
+10-08 20:23:40.433 10726 10726 F DEBUG   :       #12 pc 0000000000065e18  /vendor/bin/hw/android.hardware.uwb-service (<core::iter::adapters::map::Map<core::iter::adapters::map::Map<core::iter::adapters::enumerate::Enumerate<core::iter::adapters::skip::Skip<std::env::Args>>, uwb_default_hal::main::{closure#1}>, <uwb_default_hal::uwb::Uwb>::from_chips<core::iter::adapters::map::Map<core::iter::adapters::enumerate::Enumerate<core::iter::adapters::skip::Skip<std::env::Args>>, uwb_default_hal::main::{closure#1}>>::{closure#0}> as core::iter::traits::iterator::Iterator>::next+2712) (BuildId: 8d8402af21e3e4939ff08b7bb72f3227)
+10-08 20:23:40.433 10726 10726 F DEBUG   :       #13 pc 0000000000063940  /vendor/bin/hw/android.hardware.uwb-service (uwb_default_hal::main+540) (BuildId: 8d8402af21e3e4939ff08b7bb72f3227)
+10-08 20:23:40.433 10726 10726 F DEBUG   :       #14 pc 000000000006011c  /vendor/bin/hw/android.hardware.uwb-service (std::rt::lang_start::<core::result::Result<(), anyhow::Error>>::{closure#0}+32) (BuildId: 8d8402af21e3e4939ff08b7bb72f3227)
+10-08 20:23:40.433 10726 10726 F DEBUG   :       #15 pc 000000000003b6b0  /vendor/bin/hw/android.hardware.uwb-service (std::rt::lang_start_internal+620) (BuildId: 8d8402af21e3e4939ff08b7bb72f3227)
+10-08 20:23:40.433 10726 10726 F DEBUG   :       #16 pc 00000000000687a0  /vendor/bin/hw/android.hardware.uwb-service (main+56) (BuildId: 8d8402af21e3e4939ff08b7bb72f3227)
+10-08 20:23:40.433 10726 10726 F DEBUG   :       #17 pc 000000000006fae4  /apex/com.android.runtime/lib64/bionic/libc.so (__libc_init+124) (BuildId: c4b1f4a2273ae85d0a136e4d0a3aafa0)
+10-08 20:23:40.433 10726 10726 F DEBUG   : 
+10-08 20:23:40.433 10726 10726 F DEBUG   : Note: To display stack pointer information, use the pbtombstone tool:
+10-08 20:23:40.433 10726 10726 F DEBUG   :         pbtombstone --display-sp tombstone_XX.pb
+10-08 20:23:40.434   662  1190 W NativeCrashListener: Couldn't find ProcessRecord for pid 10718
+10-08 20:23:40.435   355   355 E tombstoned: Tombstone written to: tombstone_01
+10-08 20:23:40.435   662   757 E NativeTombstoneManager: Tombstone's UID (1083) not an app, ignoring
+10-08 20:23:40.436   300   300 I logd    : logdr: UID=1083 GID=0 PID=10726 n tail=500 logMask=8 pid=10718 start=0ns deadline=0ns
+10-08 20:23:40.436   300   300 I logd    : logdr: UID=1083 GID=0 PID=10726 n tail=500 logMask=1 pid=10718 start=0ns deadline=0ns
+10-08 20:23:40.438     1     1 I init    : Untracked process (pid: 10726 name: (crash_dump64) ppid: 1 pgrp: 10725 state: Z) exited with status 0
+10-08 20:23:40.438     1     1 I init    : Untracked process (pid: 10726 name: (crash_dump64) ppid: 1 pgrp: 10725 state: Z) did not have an associated service entry and will not be reaped
+10-08 20:23:40.438     1     1 I init    : Untracked process (pid: 10728 name: (android.hardwar) ppid: 1 pgrp: 10728 state: Z) exited with status 0
+10-08 20:23:40.438     1     1 I init    : Untracked process (pid: 10728 name: (android.hardwar) ppid: 1 pgrp: 10728 state: Z) did not have an associated service entry and will not be reaped
+10-08 20:23:40.439     1     1 I init    : Service 'vendor.uwb_hal' (pid 10718) received SIGABRT
+10-08 20:23:40.439     1     1 I init    : Sending SIGKILL to service 'vendor.uwb_hal' (pid 10718) process group...
+10-08 20:23:40.439     1     1 I libprocessgroup: Removed cgroup /sys/fs/cgroup/system/uid_1083/pid_10718
+10-08 20:23:40.439     1     1 E init    : process with updatable components 'vendor.uwb_hal' exited 4 times in 4 minutes
+10-08 20:23:40.440     1     1 I init    : processing action (sys.init.updatable_crashing=1) from (/system/etc/init/flags_health_check.rc:10)
+10-08 20:23:40.440     1     1 I init    : starting service 'exec 3462 (/system/bin/flags_health_check UPDATABLE_CRASHING)'...
+10-08 20:23:40.440     1     1 I libprocessgroup: Created cgroup /sys/fs/cgroup/system/uid_1000/pid_10731
+10-08 20:23:40.457 10592 10605 W libbinder.ServiceManagerCppClient: Waited one second for android.hardware.nfc.INfc/default (is service started? Number of threads started in the threadpool: 16. Are binder threads started and available?)
+10-08 20:23:40.460   290 10732 W libc    : Unable to set property "ctl.interface_start" to "aidl/android.hardware.nfc.INfc/default": PROP_ERROR_HANDLE_CONTROL_MESSAGE (0x20)
+10-08 20:23:40.460   290   290 I servicemanager: Caller(pid=10592,uid=1027,sid=u:r:nfc:s0) Since 'android.hardware.nfc.INfc/default' could not be found trying to start it as a lazy AIDL service. (if it's not configured to be a lazy service, it may be stuck starting or still starting).
+10-08 20:23:40.461     1     1 I init    : ... started service 'exec 3462 (/system/bin/flags_health_check UPDATABLE_CRASHING)' has pid 10731
+10-08 20:23:40.461     1     1 I init    : SVC_EXEC service 'exec 3462 (/system/bin/flags_health_check UPDATABLE_CRASHING)' pid 10731 (uid 1000 gid 1000+0 context default) started; waiting...
+10-08 20:23:40.463     1     1 E init    : Control message: Could not find 'aidl/android.hardware.nfc.INfc/default' for ctl.interface_start from pid: 290 (/system/bin/servicemanager)
+10-08 20:23:40.463 10732 10732 I servicemanager: Caller(pid=10592,uid=1027,sid=u:r:nfc:s0) Tried to start aidl service android.hardware.nfc.INfc/default as a lazy service, but was unable to. Usually this happens when a service is not installed, but if the service is intended to be used as a lazy service, then it may be configured incorrectly.
+10-08 20:23:40.463 10731 10731 I flags_health_check: ServerConfigurableFlagsReset reset_mode value: 1
+10-08 20:23:40.463 10731 10731 I flags_health_check: ServerConfigurableFlagsReset updatable crashing detected, resetting flags.
+10-08 20:23:40.471     1     1 I init    : Service 'exec 3462 (/system/bin/flags_health_check UPDATABLE_CRASHING)' (pid 10731) exited with status 0 waiting took 0.030000 seconds
+10-08 20:23:40.471     1     1 I init    : Sending SIGKILL to service 'exec 3462 (/system/bin/flags_health_check UPDATABLE_CRASHING)' (pid 10731) process group...
+10-08 20:23:40.472     1     1 I libprocessgroup: Removed cgroup /sys/fs/cgroup/system/uid_1000/pid_10731
+10-08 20:23:41.258   662  1681 W libbinder.ServiceManagerCppClient: Waited one second for android.hardware.uwb.IUwb/default (is service started? Number of threads started in the threadpool: 32. Are binder threads started and available?)
+10-08 20:23:41.259   290 10733 W libc    : Unable to set property "ctl.interface_start" to "aidl/android.hardware.uwb.IUwb/default": PROP_ERROR_HANDLE_CONTROL_MESSAGE (0x20)
+10-08 20:23:41.262   290   290 I servicemanager: Caller(pid=662,uid=1000,sid=u:r:system_server:s0) Since 'android.hardware.uwb.IUwb/default' could not be found trying to start it as a lazy AIDL service. (if it's not configured to be a lazy service, it may be stuck starting or still starting).
+10-08 20:23:41.262     1     1 E init    : Control message: Could not find 'aidl/android.hardware.uwb.IUwb/default' for ctl.interface_start from pid: 290 (/system/bin/servicemanager)
+10-08 20:23:41.262 10733 10733 I servicemanager: Caller(pid=662,uid=1000,sid=u:r:system_server:s0) Tried to start aidl service android.hardware.uwb.IUwb/default as a lazy service, but was unable to. Usually this happens when a service is not installed, but if the service is intended to be used as a lazy service, then it may be configured incorrectly.
+10-08 20:23:41.454 10592 10592 E libnfc_nci: Timeout waiting for NFC AIDL service (future).
+10-08 20:23:41.454 10592 10592 I libnfc_nci: NfcAdaptation::InitializeHalDeviceContext: Failed to retrieve the NFC AIDL!
+10-08 20:23:41.454 10592 10592 E libnfc_nci: Exit current process to recover.
+10-08 20:23:41.456   662  1851 I ActivityManager: Process com.google.android.nfc (pid 10592) has died: pers PER 
+10-08 20:23:41.456   449   449 I Zygote  : Process 10592 exited cleanly (0)
+10-08 20:23:41.456   662  1851 W ActivityManager: Re-adding persistent process ProcessRecord{aa43e54 10592:com.google.android.nfc/1027}
+10-08 20:23:41.456   662   693 I libprocessgroup: Removed cgroup /sys/fs/cgroup/system/uid_1027/pid_10592
+10-08 20:23:41.456   662  1851 V GrammaticalInflectionUtils: AttributionSource: AttributionSource { uid = 1027, packageName = null, attributionTag = null, token = android.os.Binder@5dd927d, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+10-08 20:23:41.459   449   449 D Zygote  : Forked child process 10734
+10-08 20:23:41.459   662   692 I ActivityManager: Start proc 10734:com.google.android.nfc/1027 for restart com.google.android.nfc
+10-08 20:23:41.459 10734 10734 I libprocessgroup: Created cgroup /sys/fs/cgroup/system/uid_1027/pid_10734
+10-08 20:23:41.474 10734 10734 I Zygote  : Process 10734 created for com.google.android.nfc
+10-08 20:23:41.474 10734 10734 I gle.android.nfc: Using generational CollectorTypeCMC GC.
+10-08 20:23:41.476 10734 10734 D nativeloader: Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+10-08 20:23:41.478 10734 10734 D CompatChangeReporter: Compat change id reported: 333566037; UID 1027; state: ENABLED
+10-08 20:23:41.479 10734 10734 D nativeloader: Configuring clns-shared-9 for other apk /apex/com.android.nfcservices/priv-app/NfcNciApexGoogle@CP41.260831.007/NfcNciApexGoogle.apk. target_sdk_version=37, uses_libraries=, library_path=/apex/com.android.nfcservices/priv-app/NfcNciApexGoogle@CP41.260831.007/lib/arm64:/system/lib64:/system_ext/lib64, permitted_path=/data:/mnt/expand:/data/user_de/0/com.google.android.nfc:/apex/com.android.nfcservices/priv-app/NfcNciApexGoogle@CP41.260831.007:/system/lib64:/system_ext/lib64
+10-08 20:23:41.479 10734 10734 D nativeloader: InitApexLibraries:
+10-08 20:23:41.479 10734 10734 D nativeloader:   com_android_adservices: libhpke_jni.so:libtflite_support_classifiers_native.so
+10-08 20:23:41.479 10734 10734 D nativeloader:   com_android_appsearch: libappsearchservice.so:libicing_anywhere.so
+10-08 20:23:41.479 10734 10734 D nativeloader:   com_android_art: libartservice.so
+10-08 20:23:41.479 10734 10734 D nativeloader:   com_android_bt: libbluetooth_jni.so
+10-08 20:23:41.479 10734 10734 D nativeloader:   com_android_conscrypt: libjavacrypto.so
+10-08 20:23:41.479 10734 10734 D nativeloader:   com_android_extservices: libtflite_support_classifiers_native.so
+10-08 20:23:41.479 10734 10734 D nativeloader:   com_android_mediaprovider: libpdfclient.so
+10-08 20:23:41.479 10734 10734 D nativeloader:   com_android_nfcservices: libnfc_nci_jni.so:libnfc_rust_jni.so
+10-08 20:23:41.479 10734 10734 D nativeloader:   com_android_npumanager: libnpumanager_service_jni.so
+10-08 20:23:41.479 10734 10734 D nativeloader:   com_android_ondevicepersonalization: libfcp_cpp_dep_jni.so:libfcp_hpke_jni.so
+10-08 20:23:41.479 10734 10734 D nativeloader:   com_android_os_statsd: libstats_jni.so
+10-08 20:23:41.479 10734 10734 D nativeloader:   com_android_profiling: libanomaly_detector_service_jni.so
+10-08 20:23:41.479 10734 10734 D nativeloader:   com_android_tethering: libandroid_net_connectivity_com_android_net_module_util_jni.so:libandroid_net_connectivity_com_android_net_module_util_jni_CommonConnectivityJni.so:libcrypto_httpengine.so:libframework-connectivity-jni.so:libframework-connectivity-tiramisu-jni.so:libhttpengine.so:libservice-connectivity.so:libservice
+10-08 20:23:41.481 10734 10734 D ActivityThread: Set OS env TMPDIR to /data/user_de/0/com.google.android.nfc/cache
+10-08 20:23:41.481 10734 10734 V GraphicsEnvironment: Currently set values for:
+10-08 20:23:41.481 10734 10734 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+10-08 20:23:41.481 10734 10734 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+10-08 20:23:41.481 10734 10734 V GraphicsEnvironment: com.google.android.nfc is not listed in per-application setting
+10-08 20:23:41.481 10734 10734 V GraphicsEnvironment: No special selections for ANGLE, returning default driver choice
+10-08 20:23:41.482 10734 10734 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+10-08 20:23:41.483 10734 10734 D CompatChangeReporter: Compat change id reported: 407952621; UID 1027; state: ENABLED
+10-08 20:23:41.483 10734 10734 D CompatChangeReporter: Compat change id reported: 419020719; UID 1027; state: ENABLED
+10-08 20:23:41.487 10734 10734 I RegisteredComponentCache: generateComponentsList: New Components => 
+10-08 20:23:41.487 10734 10734 I RegisteredComponentCache: ComponentInfo: ResolveInfo{41f40d4 com.google.android.tag/com.android.apps.tag.TagViewer m=0x108000 userHandle=UserHandle{0}}, techs: android.nfc.tech.Ndef, 
+10-08 20:23:41.487 10734 10734 I RegisteredComponentCache: generateComponentsList: Removed Components => 
+10-08 20:23:41.487 10734 10745 D CompatChangeReporter: Compat change id reported: 458413887; UID 1027; state: ENABLED
+10-08 20:23:41.488 10734 10746 I NfcEventLog: readListFromLogFile: No NFC events found in log file
+10-08 20:23:41.489 10734 10734 I NfcService: Starting NFC service
+10-08 20:23:41.489 10734 10734 I NativeNfcManager: Loading C NFC Support
+10-08 20:23:41.490 10734 10734 D nativeloader: Load libnfc_nci_jni.so using class loader ns clns-shared-9 (caller=/apex/com.android.nfcservices/priv-app/NfcNciApexGoogle@CP41.260831.007/NfcNciApexGoogle.apk): ok
+10-08 20:23:41.491 10734 10734 I libnfc_nci: JNI_OnLoad: NFC Service: loading nci JNI
+10-08 20:23:41.491 10734 10734 I libnfc_nci: ConfigFile - Parsing file '/etc/libnfc-nci.conf'
+10-08 20:23:41.491 10734 10734 I libnfc_nci: ConfigFile - [NFC_DEBUG_ENABLED] = 0
+10-08 20:23:41.491 10734 10734 I libnfc_nci: ConfigFile - [NFA_STORAGE] = "/data/nfc"
+10-08 20:23:41.491 10734 10734 I libnfc_nci: ConfigFile - [PRESERVE_STORAGE] = 0x01
+10-08 20:23:41.491 10734 10734 I libnfc_nci: ConfigFile - [POLLING_TECH_MASK] = 0x0F
+10-08 20:23:41.491 10734 10734 I libnfc_nci: ConfigFile - [UICC_LISTEN_TECH_MASK] = 0x07
+10-08 20:23:41.491 10734 10734 I libnfc_nci: ConfigFile - [NFA_MAX_EE_SUPPORTED] = 0x02
+10-08 20:23:41.491 10734 10734 I libnfc_nci: ConfigFile - [AID_FOR_EMPTY_SELECT] = {08:A0:00:00:01:51:00:00:00}
+10-08 20:23:41.491 10734 10734 I libnfc_nci: ConfigFile - [AID_MATCHING_MODE] = 0x01
+10-08 20:23:41.491 10734 10734 I libnfc_nci: ConfigFile - [NCI_RESET_TYPE] = 0x00
+10-08 20:23:41.491 10734 10734 I libnfc_nci: ConfigFile - [PRESENCE_CHECK_RETRY_COUNT] = 0
+10-08 20:23:41.491 10734 10734 I libnfc_nci: ConfigFile - [EUICC_MEP_MODE] = 0x03
+10-08 20:23:41.491 10734 10734 I libnfc_nci: ConfigFile - [NFCEE_EVENT_RF_DISCOVERY_OPTION] = 0x00
+10-08 20:23:41.491 10734 10734 I libnfc_nci: ConfigFile - [OPTIMIZE_ROUTING_TABLE_UPDATE] = 0x00
+10-08 20:23:41.491 10734 10734 I libnfc_nci: ConfigFile - [NFA_EE_ROUTE_DEBOUNCE_TIMER] = 0x01
+10-08 20:23:41.491 10734 10734 I libnfc_nci: ConfigFile - [KOVIO_PRESENCE_CHECK_TYPE] = 0x00
+10-08 20:23:41.491 10734 10734 I libnfc_nci: ConfigFile - [RECOVERY_OPTION] = 1
+10-08 20:23:41.491 10734 10734 I libnfc_nci: NfcAdaptation:440
+10-08 20:23:41.491 10734 10734 I libnfc_nci: NfcAdaptation::InitializeHalDeviceContext: INfc::getService()
+10-08 20:23:41.491   291   291 I hwservicemanager: getTransport: Cannot find entry android.hardware.nfc@1.2::INfc/default in either framework or device VINTF manifest.
+10-08 20:23:41.491   291   291 I hwservicemanager: getTransport: Cannot find entry android.hardware.nfc@1.1::INfc/default in either framework or device VINTF manifest.
+10-08 20:23:41.491   291   291 I hwservicemanager: getTransport: Cannot find entry android.hardware.nfc@1.0::INfc/default in either framework or device VINTF manifest.
+10-08 20:23:41.492   290 10748 W libc    : Unable to set property "ctl.interface_start" to "aidl/android.hardware.nfc.INfc/default": PROP_ERROR_HANDLE_CONTROL_MESSAGE (0x20)
+10-08 20:23:41.495   290   290 I servicemanager: Caller(pid=10734,uid=1027,sid=u:r:nfc:s0) Since 'android.hardware.nfc.INfc/default' could not be found trying to start it as a lazy AIDL service. (if it's not configured to be a lazy service, it may be stuck starting or still starting).
+10-08 20:23:41.495     1     1 E init    : Control message: Could not find 'aidl/android.hardware.nfc.INfc/default' for ctl.interface_start from pid: 290 (/system/bin/servicemanager)
+10-08 20:23:41.496 10748 10748 I servicemanager: Caller(pid=10734,uid=1027,sid=u:r:nfc:s0) Tried to start aidl service android.hardware.nfc.INfc/default as a lazy service, but was unable to. Usually this happens when a service is not installed, but if the service is intended to be used as a lazy service, then it may be configured incorrectly.
+10-08 20:23:42.082   532   532 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:pidof dev.spinon.bootstrap'
+10-08 20:23:42.101   532   532 I adbd    : adbd service requested 'shell,v2,TERM=dumb:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '1500''

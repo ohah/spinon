@@ -1,0 +1,71 @@
+
+Elf file type is DYN (Shared object file)
+Entry point 0x0
+There are 11 program headers, starting at offset 64
+
+Program Headers:
+  Type           Offset   VirtAddr           PhysAddr           FileSiz  MemSiz   Flg Align
+  PHDR           0x000040 0x0000000000000040 0x0000000000000040 0x000268 0x000268 R   0x8
+  LOAD           0x000000 0x0000000000000000 0x0000000000000000 0x1359bfc 0x1359bfc R   0x4000
+  LOAD           0x1359c00 0x000000000135dc00 0x000000000135dc00 0x19a4260 0x19a4260 R E 0x4000
+  LOAD           0x2cfde60 0x0000000002d05e60 0x0000000002d05e60 0x0cf018 0x0d21a0 RW  0x4000
+  LOAD           0x2dd0000 0x0000000002ddc000 0x0000000002ddc000 0x01a8b0 0x033b78 RW  0x4000
+  TLS            0x2cfde60 0x0000000002d05e60 0x0000000002d05e60 0x000004 0x000098 R   0x8
+  DYNAMIC        0x2d71510 0x0000000002d79510 0x0000000002d79510 0x0001e0 0x0001e0 RW  0x8
+  GNU_RELRO      0x2cfde60 0x0000000002d05e60 0x0000000002d05e60 0x0cf018 0x0d21a0 R   0x1
+  GNU_EH_FRAME   0xf1033c 0x0000000000f1033c 0x0000000000f1033c 0x094884 0x094884 R   0x4
+  GNU_STACK      0x000000 0x0000000000000000 0x0000000000000000 0x000000 0x000000 RW  0x0
+  NOTE           0x0002a8 0x00000000000002a8 0x00000000000002a8 0x000098 0x000098 R   0x4
+
+ Section to Segment mapping:
+  Segment Sections...
+   00     
+   01     .note.android.ident .dynsym .gnu.version .gnu.version_r .gnu.hash .dynstr .rela.dyn .relr.dyn .rela.plt .gcc_except_table .rodata .eh_frame_hdr .eh_frame 
+   02     .text malloc_hook .plt 
+   03     .tdata .data.rel.ro .fini_array .init_array .dynamic .got .got.plt .relro_padding 
+   04     .data .bss 
+   05     .tdata .tbss 
+   06     .dynamic 
+   07     .tdata .data.rel.ro .fini_array .init_array .dynamic .got .got.plt .relro_padding 
+   08     .eh_frame_hdr 
+   09     
+   10     .note.android.ident 
+   None   .comment .debug_abbrev .debug_info .debug_aranges .debug_ranges .debug_str .debug_line .debug_rnglists .debug_str_offsets .debug_addr .debug_gnu_pubnames .debug_gnu_pubtypes .debug_line_str .debug_loc .debug_frame .symtab .shstrtab .strtab 
+
+5f76397873445980e81142fdba4809048142bc7c72dcf252fece0edc91d8cdcc  build/spinon/android/jniLibs/arm64-v8a/libspinon_bootstrap.so
+adf853b226373291fe7aa810fc6306ff74d81964c73495774e78fecdbfe3878c  /tmp/spinon-apk-audit/libspinon_bootstrap.so
+
+APK에서 추출한 debug-symbol-stripped 라이브러리 ELF 검사
+
+Elf file type is DYN (Shared object file)
+Entry point 0x0
+There are 11 program headers, starting at offset 64
+
+Program Headers:
+  Type           Offset   VirtAddr           PhysAddr           FileSiz  MemSiz   Flg Align
+  PHDR           0x000040 0x0000000000000040 0x0000000000000040 0x000268 0x000268 R   0x8
+  LOAD           0x000000 0x0000000000000000 0x0000000000000000 0x1359bfc 0x1359bfc R   0x4000
+  LOAD           0x1359c00 0x000000000135dc00 0x000000000135dc00 0x19a4260 0x19a4260 R E 0x4000
+  LOAD           0x2cfde60 0x0000000002d05e60 0x0000000002d05e60 0x0cf018 0x0d21a0 RW  0x4000
+  LOAD           0x2dd0000 0x0000000002ddc000 0x0000000002ddc000 0x01a8b0 0x033b78 RW  0x4000
+  TLS            0x2cfde60 0x0000000002d05e60 0x0000000002d05e60 0x000004 0x000098 R   0x8
+  DYNAMIC        0x2d71510 0x0000000002d79510 0x0000000002d79510 0x0001e0 0x0001e0 RW  0x8
+  GNU_RELRO      0x2cfde60 0x0000000002d05e60 0x0000000002d05e60 0x0cf018 0x0d21a0 R   0x1
+  GNU_EH_FRAME   0xf1033c 0x0000000000f1033c 0x0000000000f1033c 0x094884 0x094884 R   0x4
+  GNU_STACK      0x000000 0x0000000000000000 0x0000000000000000 0x000000 0x000000 RW  0x0
+  NOTE           0x0002a8 0x00000000000002a8 0x00000000000002a8 0x000098 0x000098 R   0x4
+
+ Section to Segment mapping:
+  Segment Sections...
+   00     
+   01     .note.android.ident .dynsym .gnu.version .gnu.version_r .gnu.hash .dynstr .rela.dyn .relr.dyn .rela.plt .gcc_except_table .rodata .eh_frame_hdr .eh_frame 
+   02     .text malloc_hook .plt 
+   03     .tdata .data.rel.ro .fini_array .init_array .dynamic .got .got.plt .relro_padding 
+   04     .data .bss 
+   05     .tdata .tbss 
+   06     .dynamic 
+   07     .tdata .data.rel.ro .fini_array .init_array .dynamic .got .got.plt .relro_padding 
+   08     .eh_frame_hdr 
+   09     
+   10     .note.android.ident 
+   None   .comment .shstrtab 

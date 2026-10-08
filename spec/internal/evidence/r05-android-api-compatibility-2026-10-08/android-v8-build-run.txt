@@ -1,0 +1,31 @@
+Android ARM64 V8 재빌드 및 APK 실행 · 2026-10-08
+
+도구 기준
+- depot_tools 41c9bd890277c2f551499d171d215dfdf5dab97d
+- V8 7b50b62cb18f28617959e8452e2cd18195b38bcf
+- Android NDK 27.1.12297006
+- GN: target_os=android, target_cpu=arm64, is_debug=false, v8_jitless=false
+
+실행
+- SPINON_V8_JOBS=4 bash tools/v8/build-android-macos.sh: 성공, Ninja 2,975/2,975, libv8_monolith.a 179MiB.
+- bash tools/build-android.sh: 성공, arm64-v8a/libspinon_bootstrap.so 링크 완료.
+- 직접 Gradle 호출은 Java PATH가 없어 실패했다. mise.toml의 JDK 17로 실행했을 때 SDK 위치 오류가 있어 ANDROID_HOME/ANDROID_SDK_ROOT를 고정 SDK 경로로 전달했다.
+- mise exec -- env ANDROID_HOME="$HOME/Library/Android/sdk" ANDROID_SDK_ROOT="$HOME/Library/Android/sdk" ./gradlew assembleDebug: BUILD SUCCESSFUL, 37개 task.
+- Gradle은 AGP 8.13.2가 compile SDK 37.2까지 검증되지 않았다는 경고를 출력했다. Debug APK 빌드·AVD 설치는 성공했지만 AGP의 37.2 지원 확인과 release APK는 범위 밖이다.
+- APK는 debug 빌드 46MiB이며 제품 release 크기를 뜻하지 않는다.
+- V8 build/config/BUILDCONFIG.gn은 빌드 뒤 git 기준과 동일하다. 임시 NDK symlink는 제거됐다.
+
+16KB 검사
+- 네 PT_LOAD의 Align은 각각 0x4000.
+- GNU_RELRO: VirtAddr 0x2d05e60 + MemSiz 0x0d21a0 = 0x2dd4000; 0x4000 나머지 0.
+- zipalign -c -P 16 -v 4: Verification successful.
+- APK 내 추출본도 PT_LOAD/GNU_RELRO 기준을 통과했다. 디버그 심볼 strip 때문에 패키징 전후 hash는 다르다.
+
+API 37.2 16KB AVD spinon_api37_2
+- Android API 37, ARM64, getconf PAGE_SIZE=16384.
+- APK 설치 성공. 앱 PID 10645 유지.
+- nativeloader: libspinon_bootstrap.so ... ok.
+- SPINON_BOOTSTRAP_EXECUTION is_main_thread=false.
+- SPINON_BOOTSTRAP_RESULT=nodes=2 ... document_revision=25 render_tree_revision=15 document_nodes=10.
+- 기본 화면은 흰 화면으로, 이 smoke는 UI 렌더링을 검증하지 않는다.
+- 전체 logcat에 emulator android.hardware.uwb 서비스의 별도 SIGABRT가 있다. 앱 PID는 별도로 생존했고 앱 전용 logcat에는 앱 fatal exception이 없다.

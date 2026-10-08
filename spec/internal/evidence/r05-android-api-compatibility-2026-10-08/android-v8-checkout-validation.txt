@@ -1,0 +1,20 @@
+Android V8 checkout 및 설정 거부 경로 검증 요약 · 2026-10-08
+
+새 checkout
+- 분리 임시 루트에서 bash tools/v8/checkout.sh 실행, 종료 코드 0.
+- V8 HEAD: 7b50b62cb18f28617959e8452e2cd18195b38bcf (고정 SHA와 일치).
+- git rev-parse --is-shallow-repository: true.
+- 생성된 .gclient: solutions URL이 고정 V8 저장소 하나, target_os=['android', 'ios'].
+- 최종 DEPS 동기화 출력: V8 및 DEPS 동기화 완료: 7b50b62cb18f28617959e8452e2cd18195b38bcf.
+- 임시 fresh checkout은 9.5GiB였으며 확인 후 제거했다.
+
+부정 입력
+- 다른 저장소 URL: 거부, .gclient SHA-256 전후 동일(e5b1385304c1674d3d6446ec2cd67ffae13f44ed56f7dce6dd73e05b829ca495).
+- 주석에만 V8 URL, 실제 URL은 다른 저장소: 거부, SHA-256 전후 동일(abbadf603db1eafcb05734a2d7c38a44596ec6fb885f484ccab34bbbd7879720).
+- 서로 다른 두 solutions 할당: 거부, SHA-256 전후 동일(5d1e2ea21bf733a619ce162d34a1bbdb47a24de468051aaaa18261f132f0a04e).
+- 다중 행 target_os: 최초 부정 시험에서 잘못 수락되는 결함을 발견. 정규식을 수정한 뒤 거부, SHA-256 전후 동일(eacd8fd67d1557a2c317958c19554b5bd200eeec5cf275828a5e67fa014fb254).
+- 문자열 target_os: 거부, SHA-256 전후 동일(b918302ee1eac006a26039de9f9f519059ba07f9d9be051e68bd66572fd5a5d7).
+- 중복 target_os 할당: 거부, SHA-256 전후 동일(819a45e846b0b126e81cc5b9e895b68e7b500097c83f69e89c068914f364a22e).
+- 위 부정 경로는 모두 비정상 설정을 덮어쓰지 않고 중단했다.
+- V8와 다른 저장소를 함께 나열한 solutions 목록: 거부, .gclient SHA-256 전후 동일(7b580e7a7a92060f12265161ff6ec19aad74172771d2030faaaae4f4332d16ab).
+- 사용자 지정 단일 행 target_os 목록은 Android/iOS를 합집합으로 추가하면서 기존 항목을 보존했고, 동일 변환을 두 번 적용해도 결과가 같았다.
