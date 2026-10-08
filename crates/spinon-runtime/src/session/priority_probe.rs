@@ -8,6 +8,9 @@ use std::sync::{Arc, mpsc::Receiver};
 use std::thread;
 use std::time::{Duration, Instant};
 
+#[cfg(any(target_os = "android", test))]
+mod stream;
+
 struct PendingPriorityProbe {
     priority: TaskPriority,
     marker: i32,
@@ -22,6 +25,8 @@ struct PriorityProbeResult {
     execution_order: u64,
     owner_thread_id: u64,
     callback_thread_id: u64,
+    #[cfg(any(target_os = "android", test))]
+    queue_residence_us: u64,
 }
 
 /// 실제 V8 Isolate에서 세 우선순위의 선택 순서와 같은 우선순위 FIFO를 확인합니다.
@@ -167,6 +172,20 @@ pub fn run_priority_probe() -> Result<String, String> {
     ))
 }
 
+/// Android 개발용 실제 V8 세션에서 높은 등급 유입 중 낮은 등급 작업의 선택 순서를 확인합니다.
+#[cfg(any(target_os = "android", test))]
+pub fn run_priority_fairness_probe() -> Result<String, String> {
+    let (session, _) = RuntimeSession::new()?;
+    let session = Arc::new(session);
+    match stream::run_priority_stream_probe(&session, 1) {
+        Ok(report) => Ok(report),
+        Err(error) => {
+            abort_priority_probe(&session);
+            Err(error)
+        }
+    }
+}
+
 fn abort_priority_probe(session: &RuntimeSession) {
     lock(&session.control).closing = true;
     let _ = cancel_control(&session.control);
@@ -196,6 +215,8 @@ fn parse_priority_probe_result(
     let sequence = parse("seq")?;
     let owner_thread_id = parse("owner_tid")?;
     let callback_thread_id = parse("callback_tid")?;
+    #[cfg(any(target_os = "android", test))]
+    let queue_residence_us = parse("queue_residence_us")?;
     if execution_order == 0 {
         return Err(format!(
             "검증 작업이 V8 콜백을 실행하지 않았습니다: {}",
@@ -209,6 +230,8 @@ fn parse_priority_probe_result(
         execution_order,
         owner_thread_id,
         callback_thread_id,
+        #[cfg(any(target_os = "android", test))]
+        queue_residence_us,
     })
 }
 
