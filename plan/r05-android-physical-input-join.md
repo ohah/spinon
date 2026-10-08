@@ -5,7 +5,7 @@
 
 ## 목적과 범위
 
-기존 Android 16.1 실기기 실행은 ADB가 주입한 synthetic `MotionEvent`였고, app log의 `input_source`도 `unknown`이다. 따라서 이전 33/33 input·submit·callback·async-fence exact join은 worker signal 경로의 근거이지 실제 touchscreen 입력의 근거가 아니다.
+기존 Android 16 / API 36 / SDK_INT_FULL 36.1 실기기 실행은 ADB가 주입한 synthetic `MotionEvent`였고, app log의 `input_source`도 `unknown`이다. 따라서 이전 33/33 input·submit·callback·async-fence exact join은 worker signal 경로의 근거이지 실제 touchscreen 입력의 근거가 아니다.
 
 다음 실행에서는 Android 입력 노드의 raw touchscreen event와 app `MotionEvent` 기록을 함께 수집해 **실기기 직접 입력인지**를 먼저 판별한다. 같은 단일 탭의 `input_seq`·revision·surface generation을 R08 WGPU submit, 실제 `TransactionStats` callback, 복제 fence의 async signal까지 exact join한다. 한 번의 exploratory block에서 최대 10개 직접 입력을 확인하며, 이 표본으로 p95·제품 성능·기기간 우열을 계산하지 않는다. 지연 후보를 만들 수 있더라도 endpoint는 OS transaction present fence signal이며 panel scanout이나 photon 시각은 아니다.
 
@@ -20,12 +20,12 @@
 
 ## 실행 절차
 
-1. `origin/main`의 고정 commit으로 debug APK를 빌드하거나 기존 설치본을 재사용하려면 merged PR artifact SHA-256 및 source manifest와 일치함을 확인해 기록한다. ADB device list에서 대상이 유일한 물리 기기인지 확인한 뒤 명령에는 현재 기기의 serial을 명시하되 evidence에는 serial을 저장하지 않는다. 대상은 Samsung SM-S731N / Android 16 SDK 36.1, R08 WGPU/Vulkan `SurfaceView`다. 기기 설정과 화면 주사율은 바꾸지 않고 화면이 켜져 있으며 앱이 foreground인지 확인한다.
+1. `origin/main`의 고정 commit으로 debug APK를 빌드하거나 기존 설치본을 재사용하려면 merged PR artifact SHA-256 및 source manifest와 일치함을 확인해 기록한다. ADB device list에서 대상이 유일한 물리 기기인지 확인한 뒤 명령에는 현재 기기의 serial을 명시하되 evidence에는 serial을 저장하지 않는다. 대상은 Samsung SM-S731N / Android 16 / API 36 / SDK_INT_FULL 36.1, R08 WGPU/Vulkan `SurfaceView`다. 기기 설정과 화면 주사율은 바꾸지 않고 화면이 켜져 있으며 앱이 foreground인지 확인한다.
 2. 동일 APK를 설치하고 새 process를 시작한다. 기존 experiment flag `spinon_r05_async_fence_wait=true`를 사용한다. process별 logcat을 시작하고 현재 touchscreen device 이름을 확인한 `getevent -lt <device>` 원본 수집을 준비한다.
 3. 새 process의 **synthetic negative control**에서 중앙 target을 `adb shell input tap`으로 한 번 누른다. app에는 하나의 input/action이 기록되어야 하며 raw touchscreen contact가 기록되면 안 된다. 이 결과는 입력 장치 경로 분리를 검증하는 control이며 scored physical sample이 아니다.
 4. control process를 종료하고 설정·foreground를 확인한 뒤 새 process를 띄워 raw touchscreen과 app log 수집을 함께 시작한다. 사용자가 중앙 GPU target을 한 번에 한 손가락으로 10회 이하 직접 탭한다. 탭 사이에는 독립 frame 처리와 fence wait가 끝나도록 충분히 기다린다. automation/ADB touch injection, 화면 원격제어, 화면 녹화 overlay 입력은 사용하지 않는다.
 5. raw event별 contact ID와 down/up, app의 `ACTION_UP`, submit, callback, async signal을 sequence·revision·generation으로 대조한다. 입력마다 유일한 callback/wait가 있어야 한다. block 종료 뒤 queue `pending/active/depth=0`을 확인하고 process 종료·Chrome 복귀 후 기기 설정을 전후 비교한다.
-6. 입력 `eventTimeNanos`는 uptime 기준이다. `offset_low = input_uptime_anchor - input_monotonic_after`, `offset_high = input_uptime_anchor - input_monotonic_before`로 두면 event monotonic 구간은 `[event_time - offset_high, event_time - offset_low]`이다. fence signal은 Android `SyncFence` 문서상 `CLOCK_MONOTONIC` domain이므로 후보 구간은 `[signal_time - event_monotonic_upper, signal_time - event_monotonic_lower]`로 계산한다. 변환 구간이 잘못되거나 후보 구간이 음수·모순이거나 signal이 invalid/pending/future/latch 순서 오류면 해당 latency 후보를 미계산으로 둔다. Android API 36.1의 `target_vsync_id=-1`은 그대로 보존한다. 이번 10회는 request/transaction-fence exact-link feasibility만 하며 VSync·화면 frame scanout을 증명하지 않는다. 분포 요약은 n과 범위까지만 기록한다.
+6. 입력 `eventTimeNanos`는 uptime 기준이다. `offset_low = input_uptime_anchor - input_monotonic_after`, `offset_high = input_uptime_anchor - input_monotonic_before`로 두면 event monotonic 구간은 `[event_time - offset_high, event_time - offset_low]`이다. fence signal은 Android `SyncFence` 문서상 `CLOCK_MONOTONIC` domain이므로 후보 구간은 `[signal_time - event_monotonic_upper, signal_time - event_monotonic_lower]`로 계산한다. 변환 구간이 잘못되거나 후보 구간이 음수·모순이거나 signal이 invalid/pending/future/latch 순서 오류면 해당 latency 후보를 미계산으로 둔다. Android API 36 (SDK_INT_FULL 36.1)의 `target_vsync_id=-1`은 그대로 보존한다. 이번 10회는 request/transaction-fence exact-link feasibility만 하며 VSync·화면 frame scanout을 증명하지 않는다. 분포 요약은 n과 범위까지만 기록한다.
 7. logcat, getevent, APK/source digest, 환경·window focus, 시작/결과 screenshot 및 checksum을 내부 evidence에 보존한다. app을 종료하고 Chrome을 foreground로 복귀시킨 뒤 화면 켜짐·timeout·밝기·refresh 설정이 시작 전과 같은지 확인한다. app log에 원치 않는 개인정보/다른 앱 입력이 섞이면 공개 전 제거하고 원본은 접근 제한된 작업 공간에 둔다.
 
 ## 사전 판정 기준
@@ -41,7 +41,7 @@
 
 ## 진행 중 대조 결과 · synthetic 입력 출처
 
-2026-10-09 Android 16.1 실기기에서 merged PR #79와 동일한 debug APK를 확인했다. 기기 설치 APK SHA-256은 `608fbdf9279ddded605c7129fb0123ce32a65d7452f6ff1b36702b9eed7b198e`로 공식 산출물과 일치한다. 새 process에서 `adb shell input tap 540 1170` 한 건은 app input sequence 1 → revision 1 submit → `TransactionStats` callback → usable async fence signal로 연결됐다. 동시 수집한 `sec_touchscreen` raw event는 0줄이었다. 이 synthetic 대조는 ADB 주입과 커널 touchscreen contact를 분리할 수 있음을 확인하며 physical 표본으로 집계하지 않는다. API 36.1 `target_vsync_id=-1`이며 latency는 계산하지 않았다. 상세는 [control 근거](../spec/internal/evidence/r05-android-physical-input-join-2026-10-09/control/summary.md)에 있다. 직접 입력 수집을 위해 앱 foreground와 raw/logcat capture를 준비했지만 capture window 동안 touchscreen 접촉이 없어 block을 시작하지 않았다.
+2026-10-09 Android 16 / API 36 / SDK_INT_FULL 36.1 실기기에서 merged PR #79와 동일한 debug APK를 확인했다. 기기 설치 APK SHA-256은 `608fbdf9279ddded605c7129fb0123ce32a65d7452f6ff1b36702b9eed7b198e`로 공식 산출물과 일치한다. 새 process에서 `adb shell input tap 540 1170` 한 건은 app input sequence 1 → revision 1 submit → `TransactionStats` callback → usable async fence signal로 연결됐다. 동시 수집한 `sec_touchscreen` raw event는 0줄이었다. 이 synthetic 대조는 ADB 주입과 커널 touchscreen contact를 분리할 수 있음을 확인하며 physical 표본으로 집계하지 않는다. API 36 (SDK_INT_FULL 36.1) `target_vsync_id=-1`이며 latency는 계산하지 않았다. 상세는 [control 근거](../spec/internal/evidence/r05-android-physical-input-join-2026-10-09/control/summary.md)에 있다. 직접 입력 수집을 위해 앱 foreground와 raw/logcat capture를 준비했지만 capture window 동안 touchscreen 접촉이 없어 block을 시작하지 않았다.
 
 사용자의 실기기 재검증 요청 뒤 같은 artifact hash의 앱을 새 process로 재실행했다. `adb shell input tap 540 1170` 11회는 input·submit·실제 `TransactionStats` callback·usable async fence signal까지 모두 exact join됐고 마지막 queue는 0/0/0이었다. 11회 중 raw `sec_touchscreen` contact는 없었으므로 이번에도 synthetic control이다. 시각적으로 활성화 11회와 GPU 도형 색상 변화를 확인했다. 기기 상태를 전후 비교하고 Spinon을 종료해 Chrome foreground로 복귀했다. VSync ID는 계속 -1이며 event-to-present latency는 계산하지 않았다. [실기기 재검증 자료와 별도 20관점 증거 검토](../spec/internal/evidence/r05-android-physical-input-join-2026-10-09/physical-retest/README.md). 직접 손가락 입력 positive sample은 여전히 없다.
 

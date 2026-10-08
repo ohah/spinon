@@ -1,6 +1,6 @@
 # 실행 증거 적대 검토 · debug 기본 경로와 R08 probe-off
 
-2026-10-09 Android 16.1 실기기의 process·intent·log·화면·복구 및 release build preflight를 독립 실패 관점 20개로 대조했다. 이 결과는 두 debug control의 부분 통과이며 release 또는 R05.3 완료 선언이 아니다.
+2026-10-09 Android 16 / API 36 / SDK_INT_FULL 36.1 실기기의 process·intent·log·화면·복구 및 release build preflight를 독립 실패 관점 20개로 대조했다. 이 결과는 두 debug control의 부분 통과이며 release 또는 R05.3 완료 선언이 아니다.
 
 | # | 실패 관점 | 대조 결과 |
 |---:|---|---|

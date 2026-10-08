@@ -1,7 +1,7 @@
 # Android 실기기 R05 비동기 fence 재검증
 
 - **실행:** 2026-10-09 01:27–01:29 KST
-- **기기:** Samsung SM-S731N · Android 16 · API 36.1 · 1080×2340 · density 450
+- **기기:** Samsung SM-S731N · Android 16 · API 36 · SDK_INT_FULL 36.1 · 1080×2340 · density 450
 - **화면:** active mode 60 Hz (기기는 120 Hz도 지원), 밝기 248, 화면 꺼짐 30,000 ms
 - **renderer:** R08 WGPU/Vulkan `SurfaceView`
 - **앱:** 새 process PID 27283, debug-only `spinon_r05_async_fence_wait=true`
@@ -31,7 +31,7 @@
 
 실행 뒤 Spinon을 force-stop하고 Chrome을 foreground로 복귀시켰다. 밝기 248, 화면 꺼짐 30,000 ms, `stay_on_while_plugged_in=3` 및 active display mode 2(60 Hz)가 유지됐다. ADB serial은 이 자료에 저장하지 않았다.
 
-실제 손가락 접촉과 MotionEvent의 물리 출처를 exact join한 표본은 아직 없다. 사용자 직접 탭 없이 ADB가 물리 동작을 대체할 수 없으므로 R05.3은 미완료다. API 36.1 VSync ID unavailable, release 실행, 광학 측정도 미검증이다.
+실제 손가락 접촉과 MotionEvent의 물리 출처를 exact join한 표본은 아직 없다. 사용자 직접 탭 없이 ADB가 물리 동작을 대체할 수 없으므로 R05.3은 미완료다. API 36 (SDK_INT_FULL 36.1) VSync ID unavailable, release 실행, 광학 측정도 미검증이다.
 
 별도 release 빌드 preflight는 Android SDK 경로 설정 뒤에도 `tools/build-android.sh`가 고정 V8 source tree 부재로 중단했다. 큰 V8 checkout을 자동 생성하거나 기존 작업을 덮어쓰지 않았다. [Gradle 로그](../../r05-android-release-isolation-2026-10-09/gradle-release-sdk-configured.log).
 

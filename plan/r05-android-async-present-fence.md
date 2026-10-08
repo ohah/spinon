@@ -1,11 +1,11 @@
 # R05.3 · Android 실기기 비동기 present fence 신호 확인 계획
 
-**상태:** debug 진단 구현 및 Android 16.1 실기기 synthetic 실행 완료 · 기본 debug 경로 부정 대조와 release runtime 미실행 · release build는 V8 source checkout 부재로 중단 · R05.3 제품 계측 미완료
+**상태:** debug 진단 구현 및 Android 16 / API 36 / SDK_INT_FULL 36.1 실기기 synthetic 실행 완료 · 기본 debug 경로 부정 대조와 release runtime 미실행 · release build는 V8 source checkout 부재로 중단 · R05.3 제품 계측 미완료
 **상위 계획:** [입력→표시 신호 상관 계측](r05-input-to-presentation.md) · [R05 상태 대장](../spec/STATUS.md)
 
 ## 목적
 
-2026-10-09 Samsung SM-S731N / Android 16 SDK 36.1 실기기에서 R08 WGPU SurfaceView를 대상으로 `adb shell input tap` 30회를 실행했다. 30회 모두 입력·revision 제출·`TransactionStats` callback이 연결됐고 fence descriptor도 유효했지만, callback 안에서 바로 읽은 `SyncFence.getSignalTime()`은 30회 모두 `SIGNAL_TIME_PENDING`이었다. 이번 경로는 callback 종료 직전에 fence를 닫으므로, 이 결과만으로 fence가 이후에도 영구히 pending이라고 결론 내릴 수 없다.
+2026-10-09 Samsung SM-S731N / Android 16 / API 36 / SDK_INT_FULL 36.1 실기기에서 R08 WGPU SurfaceView를 대상으로 `adb shell input tap` 30회를 실행했다. 30회 모두 입력·revision 제출·`TransactionStats` callback이 연결됐고 fence descriptor도 유효했지만, callback 안에서 바로 읽은 `SyncFence.getSignalTime()`은 30회 모두 `SIGNAL_TIME_PENDING`이었다. 이번 경로는 callback 종료 직전에 fence를 닫으므로, 이 결과만으로 fence가 이후에도 영구히 pending이라고 결론 내릴 수 없다.
 
 이 계획은 기존 callback 처리를 지연시키지 않고 fence handle을 복제해 별도 bounded worker에서 제한 시간 동안 기다린 뒤 신호 상태를 다시 읽는 진단 전용 실험을 정의한다. 목표는 다음 두 관찰을 구분하는 것이다.
 
@@ -16,7 +16,7 @@
 
 ## 실기기 실행 결과
 
-최종 debug APK를 Samsung SM-S731N / Android 16 SDK 36.1 실기기에 설치해 서로 다른 새 process 3개에서 각 10개 scored synthetic 탭과 1개 drain 탭을 실행했다. 33개 모두 input sequence·revision, R08 submit, 실제 `TransactionStats` callback 및 usable async fence signal이 1:1 연결됐다. callback 직후 fence 상태는 pending 32개·signaled 1개였고, 별도 worker의 bounded wait 결과는 33/33 signaled였다. 각 process 종료 시 pending/active/queue depth가 0이었다. 실제 finger touch·화면 scanout·event-to-present latency는 측정하지 않았다. 상세 로그·APK/source digest·화면 증거는 [실기기 실행 보고서](../spec/internal/evidence/r05-android-physical-present-fence-2026-10-09/async-wait/README.md)에 있다. 구현 및 실행 근거의 분리된 실패 관점 점검은 같은 보고서의 [구현 검토](../spec/internal/evidence/r05-android-physical-present-fence-2026-10-09/async-wait/implementation-review.md)를 따른다.
+최종 debug APK를 Samsung SM-S731N / Android 16 / API 36 / SDK_INT_FULL 36.1 실기기에 설치해 서로 다른 새 process 3개에서 각 10개 scored synthetic 탭과 1개 drain 탭을 실행했다. 33개 모두 input sequence·revision, R08 submit, 실제 `TransactionStats` callback 및 usable async fence signal이 1:1 연결됐다. callback 직후 fence 상태는 pending 32개·signaled 1개였고, 별도 worker의 bounded wait 결과는 33/33 signaled였다. 각 process 종료 시 pending/active/queue depth가 0이었다. 실제 finger touch·화면 scanout·event-to-present latency는 측정하지 않았다. 상세 로그·APK/source digest·화면 증거는 [실기기 실행 보고서](../spec/internal/evidence/r05-android-physical-present-fence-2026-10-09/async-wait/README.md)에 있다. 구현 및 실행 근거의 분리된 실패 관점 점검은 같은 보고서의 [구현 검토](../spec/internal/evidence/r05-android-physical-present-fence-2026-10-09/async-wait/implementation-review.md)를 따른다.
 
 ## 비교 모델과 실행 조건
 
