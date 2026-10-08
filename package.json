@@ -22,6 +22,8 @@
     "verify:r06-priority:fairness:simulators": "bash tools/verify-r06-priority-fairness-simulators.sh",
     "verify:s03-dom-lifecycle:simulators": "bash tools/verify-s03-dom-lifecycle-simulators.sh",
     "verify:s03-shutdown:simulators": "bash tools/verify-s03-shutdown-simulators.sh",
+    "benchmark:r05-trace-overhead:android": "bash tools/benchmark/run-android-trace-overhead-matrix.sh",
+    "benchmark:r05-trace-overhead:ios": "bash tools/benchmark/run-ios-trace-overhead-matrix.sh",
     "build:android": "bash tools/build-android-app.sh",
     "build:ios-sim": "bash tools/build-ios-sim.sh"
   }

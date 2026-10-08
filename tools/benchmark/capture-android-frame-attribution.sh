@@ -11,6 +11,7 @@ output_root="${repo_root}/build/spinon/benchmark/android-frame-attribution"
 trace_config="${SPINON_ANDROID_TRACE_CONFIG:-${repo_root}/tools/benchmark/android-frame-attribution.textproto}"
 skip_install=false
 async_main_handoff=false
+perfetto_enabled=true
 if [[ "${trace_config}" != /* ]]; then
     trace_config="${repo_root}/${trace_config}"
 fi
@@ -36,6 +37,7 @@ usage() {
   --out <디렉터리>          결과 디렉터리
   --skip-install            설치된 APK digest가 현재 빌드와 같을 때 재설치 생략
   --async-main-handoff      spinon-event 완료 callback을 동기화 장벽 우회 Handler에 게시
+  --perfetto <on|off>        spinon-event에서 OS Perfetto 수집 여부 (기본: on)
 
 설정:
   SPINON_ANDROID_TRACE_CONFIG  기본 Perfetto 설정 대신 사용할 파일 경로 (절대 경로 또는 저장소 상대 경로)
@@ -84,6 +86,15 @@ while [[ $# -gt 0 ]]; do
             async_main_handoff=true
             shift
             ;;
+        --perfetto)
+            [[ $# -ge 2 ]] || fail "--perfetto 값이 없습니다"
+            case "$2" in
+                on) perfetto_enabled=true ;;
+                off) perfetto_enabled=false ;;
+                *) fail "--perfetto는 on 또는 off여야 합니다" ;;
+            esac
+            shift 2
+            ;;
         -h|--help)
             usage
             exit 0
@@ -100,6 +111,9 @@ case "$scenario" in
 esac
 if [[ "$async_main_handoff" == "true" && "$scenario" != "spinon-event" ]]; then
     fail "--async-main-handoff는 spinon-event 조건에서만 사용할 수 있습니다"
+fi
+if [[ "$perfetto_enabled" == "false" && "$scenario" != "spinon-event" ]]; then
+    fail "--perfetto off는 spinon-event trace 오버헤드 대조에서만 사용할 수 있습니다"
 fi
 [[ "$input_count" =~ ^[0-9]+$ ]] || fail "--taps는 0 이상의 정수여야 합니다"
 [[ "$duration_seconds" =~ ^[0-9]+$ ]] || fail "--duration은 양의 정수여야 합니다"
@@ -127,10 +141,12 @@ if [[ "$is_emulator" == "1" ]]; then
 else
     device_kind="실기기"
 fi
-perfetto_sources="$(adb -s "$adb_serial" shell perfetto --query 2>&1)" \
-    || fail "기기 Perfetto 데이터 소스 조회에 실패했습니다"
-if ! printf '%s\n' "$perfetto_sources" | grep -Fq 'linux.ftrace'; then
-    fail "기기 Perfetto에 linux.ftrace 데이터 소스가 없습니다. 이 추적 설정으로 앱 ATrace·커널 스케줄러 원인을 수집할 수 없습니다. Android off-CPU scheduler 진단에는 tools/benchmark/capture-android-simpleperf-offcpu.sh를 사용하세요"
+if [[ "$perfetto_enabled" == "true" ]]; then
+    perfetto_sources="$(adb -s "$adb_serial" shell perfetto --query 2>&1)" \
+        || fail "기기 Perfetto 데이터 소스 조회에 실패했습니다"
+    if ! printf '%s\n' "$perfetto_sources" | grep -Fq 'linux.ftrace'; then
+        fail "기기 Perfetto에 linux.ftrace 데이터 소스가 없습니다. 이 추적 설정으로 앱 ATrace·커널 스케줄러 원인을 수집할 수 없습니다. Android off-CPU scheduler 진단에는 tools/benchmark/capture-android-simpleperf-offcpu.sh를 사용하세요"
+    fi
 fi
 
 case "$scenario" in
@@ -179,10 +195,14 @@ fi
 printf '%s\n' "$repo_root" > "${run_dir}/repository-root.txt"
 remote_trace="/data/misc/perfetto-traces/spinon-r05-${stamp}.pftrace"
 duration_ms=$((duration_seconds * 1000))
-[[ -f "${trace_config}" ]] || fail "Perfetto 설정 파일을 찾지 못했습니다: ${trace_config}"
-sed "s/^duration_ms: [0-9][0-9]*/duration_ms: ${duration_ms}/" \
-    "${trace_config}" \
-    > "${run_dir}/perfetto.textproto"
+if [[ "$perfetto_enabled" == "true" ]]; then
+    [[ -f "${trace_config}" ]] || fail "Perfetto 설정 파일을 찾지 못했습니다: ${trace_config}"
+    sed "s/^duration_ms: [0-9][0-9]*/duration_ms: ${duration_ms}/" \
+        "${trace_config}" \
+        > "${run_dir}/perfetto.textproto"
+else
+    printf 'Perfetto 수집을 끈 대조 실행입니다.\n' > "${run_dir}/perfetto-disabled.txt"
+fi
 
 debug_apk="${repo_root}/platforms/android/app/build/outputs/apk/debug/app-debug.apk"
 [[ -f "$debug_apk" ]] || fail "먼저 mise exec -- bun run build:android 로 APK를 빌드하세요"
@@ -294,6 +314,7 @@ sleep 5
     printf 'duration_seconds=%s\n' "$duration_seconds"
     printf 'warmup_seconds=5\n'
     printf 'input_count=%s\n' "$input_count"
+    printf 'perfetto_enabled=%s\n' "$perfetto_enabled"
     printf 'diagnostic_ui_mutations_suppressed=%s\n' "$diagnostic_ui_mutations_suppressed"
     printf 'async_main_handoff=%s\n' "$async_main_handoff"
     printf 'report_logcat_deferred_seconds=%s\n' "$report_logcat_deferred_seconds"
@@ -317,11 +338,15 @@ adb -s "$adb_serial" exec-out screencap -p > "${run_dir}/before.png"
 adb -s "$adb_serial" shell dumpsys gfxinfo "$app_id" reset \
     > "${run_dir}/gfxinfo-before-reset.txt"
 
-adb -s "$adb_serial" shell perfetto --txt -c - -o "$remote_trace" \
-    < "${run_dir}/perfetto.textproto" > "${run_dir}/perfetto-runner.txt" 2>&1 &
-perfetto_host_pid=$!
+measurement_window_start=$SECONDS
+perfetto_host_pid=""
+if [[ "$perfetto_enabled" == "true" ]]; then
+    adb -s "$adb_serial" shell perfetto --txt -c - -o "$remote_trace" \
+        < "${run_dir}/perfetto.textproto" > "${run_dir}/perfetto-runner.txt" 2>&1 &
+    perfetto_host_pid=$!
+fi
 sleep 2
-if ! kill -0 "$perfetto_host_pid" 2>/dev/null; then
+if [[ "$perfetto_enabled" == "true" ]] && ! kill -0 "$perfetto_host_pid" 2>/dev/null; then
     wait "$perfetto_host_pid" || true
     fail "Perfetto 캡처가 시작되지 않았습니다. ${run_dir}/perfetto-runner.txt를 확인하세요"
 fi
@@ -361,6 +386,15 @@ if [[ "$scenario" == "spinon-long-js" ]]; then
     fi
 else
     for ((tap_index = 1; tap_index <= input_count; tap_index++)); do
+        if ! adb -s "$adb_serial" shell dumpsys activity activities | grep -Fq "$expected_activity"; then
+            validation_error="입력 ${tap_index}회 직전 실험 Activity가 전경을 잃었습니다"
+            break
+        fi
+        current_pid="$(adb -s "$adb_serial" shell pidof "$app_id" | awk '{print $1}' | tr -d '\r')"
+        if [[ "$current_pid" != "$app_pid" ]]; then
+            validation_error="입력 ${tap_index}회 직전 앱 PID가 바뀌었습니다"
+            break
+        fi
         printf 'tap=%s host_time=%s x=%s y=%s\n' \
             "$tap_index" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$tap_x" "$tap_y" \
             >> "${run_dir}/input-events.txt"
@@ -369,9 +403,16 @@ else
     done
 fi
 
-wait "$perfetto_host_pid"
-adb -s "$adb_serial" pull "$remote_trace" \
-    "${run_dir}/frame-attribution.pftrace" >/dev/null
+if [[ "$perfetto_enabled" == "true" ]]; then
+    wait "$perfetto_host_pid"
+    adb -s "$adb_serial" pull "$remote_trace" \
+        "${run_dir}/frame-attribution.pftrace" >/dev/null
+    adb -s "$adb_serial" shell rm -f "$remote_trace"
+else
+    elapsed_seconds=$((SECONDS - measurement_window_start))
+    remaining_seconds=$((duration_seconds - elapsed_seconds))
+    if (( remaining_seconds > 0 )); then sleep "$remaining_seconds"; fi
+fi
 if [[ "$scenario" == "spinon-event" || "$scenario" == "spinon-ui-only" ]]; then
     sleep 6
 fi
@@ -379,10 +420,16 @@ adb -s "$adb_serial" shell dumpsys gfxinfo "$app_id" framestats \
     > "${run_dir}/gfxinfo-framestats.txt"
 final_app_pid="$(adb -s "$adb_serial" shell pidof "$app_id" | awk '{print $1}' | tr -d '\r')"
 printf 'app_pid_end=%s\n' "$final_app_pid" >> "${run_dir}/metadata.txt"
-[[ "$final_app_pid" == "$app_pid" ]] || fail "측정 중 앱 프로세스가 재시작되었습니다"
+if [[ "$final_app_pid" != "$app_pid" && -z "$validation_error" ]]; then
+    validation_error="측정 중 앱 프로세스가 재시작되었습니다"
+fi
 adb -s "$adb_serial" logcat -d --pid="$app_pid" -s SpinonBootstrap:I SpinonFrameBench:I '*:S' \
     > "${run_dir}/logcat.txt"
 adb -s "$adb_serial" exec-out screencap -p > "${run_dir}/after.png"
+if [[ -z "$validation_error" ]] \
+    && ! adb -s "$adb_serial" shell dumpsys activity activities | grep -Fq "$expected_activity"; then
+    validation_error="측정 종료 시 실험 Activity가 전경을 잃었습니다"
+fi
 if [[ "$scenario" == "spinon-long-js" ]]; then
     printf '%s\n' "$(read_window_xml)" > "${run_dir}/completion.xml"
     if ! grep -Fq '취소 완료 · 대기 중이던 JS 이벤트 처리 완료' "${run_dir}/completion.xml"; then
@@ -393,6 +440,34 @@ if [[ "$scenario" == "spinon-long-js" ]]; then
     elif ! grep -Fq '취소 요청 · status=0' "${run_dir}/logcat.txt" \
             || grep -Fq '시간 초과 · 안전을 위해 V8 취소를 요청합니다' "${run_dir}/logcat.txt"; then
         validation_error="수동 취소 성공을 확인하지 못했거나 안전 시간 초과가 발생했습니다"
+    fi
+fi
+if [[ "$scenario" == "spinon-event" ]]; then
+    report_count="$(grep -c 'SPINON_RUNTIME_DISPATCH=' "${run_dir}/logcat.txt" || true)"
+    bad_report_count="$(grep 'SPINON_RUNTIME_DISPATCH=' "${run_dir}/logcat.txt" \
+        | grep -vc 'status=0 ' || true)"
+    sequence_values="$(grep 'SPINON_RUNTIME_DISPATCH=' "${run_dir}/logcat.txt" \
+        | sed -nE 's/.* seq=([0-9]+) .*/\1/p' | sort -n)"
+    sequence_count=0
+    expected_sequence=""
+    sequence_error=false
+    while IFS= read -r sequence; do
+        [[ -n "$sequence" ]] || continue
+        if [[ ! "$sequence" =~ ^[0-9]+$ ]]; then
+            sequence_error=true
+            continue
+        fi
+        if [[ -z "$expected_sequence" ]]; then
+            expected_sequence="$sequence"
+        elif (( sequence != expected_sequence + 1 )); then
+            sequence_error=true
+        fi
+        expected_sequence="$sequence"
+        sequence_count=$((sequence_count + 1))
+    done <<< "$sequence_values"
+    if [[ "$report_count" -ne "$input_count" || "$bad_report_count" -ne 0 \
+        || "$sequence_count" -ne "$input_count" || "$sequence_error" == "true" ]]; then
+        validation_error="runtime 보고서 ${input_count}개/status=0/연속 순번 검증 실패 (보고서=${report_count}, 실패=${bad_report_count}, 순번=${sequence_count})"
     fi
 fi
 remote_apk="$(adb -s "$adb_serial" shell pm path "$app_id" \
