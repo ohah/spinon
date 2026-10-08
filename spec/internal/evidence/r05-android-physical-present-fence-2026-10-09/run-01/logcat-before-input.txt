@@ -1,0 +1,5 @@
+10-09 00:28:00.085 14487 14487 I SpinonBootstrap: SPINON_R08_UI=ready text-input=EditText accessibility=button+EditText
+10-09 00:28:00.114 14487 14487 I SpinonBootstrap: SPINON_R05_SURFACE renderer=wgpu type=SurfaceView generation=1
+10-09 00:28:00.114 14487 14487 I SpinonBootstrap: SPINON_R05_SIGNAL_CAPABILITY renderer=wgpu signal=SurfaceView_JankData available=false reason=api_below_37 api=36 api_full=3600001
+10-09 00:28:00.158 14487 14487 I SpinonBootstrap: SPINON_R08_WGPU=ready backend=Vulkan device=IntegratedGpu name=Samsung Xclipse 940 google_display_timing_supported=true format=Rgba8Unorm color_space=Auto supported_formats=[Rgba8UnormSrgb, Rgba8Unorm, Rgba16Float, Rgb10a2Unorm]
+10-09 00:28:00.158 14487 14487 I SpinonBootstrap: SPINON_R08_WGPU_SURFACE=size 1080x2340

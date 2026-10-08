@@ -1,0 +1,25 @@
+date_utc=2026-10-08T15:27:57Z
+device_alias=physical-android-01
+transport=usb
+input_source=adb_shell_input_tap_synthetic
+model=SM-S731N
+device=r13s
+api=36
+api_full=36.1
+page_size=4096
+abi=arm64-v8a
+fingerprint=samsung/r13sksx/r13s:16/BP4A.251205.006/S731NKSS9BZH2_OKR9BZH2:user/release-keys
+resolution=Physical size: 1080x2340
+density=Physical density: 450
+refresh_modes=[120.00001, 60.0]
+current_focus_before=  mCurrentFocus=Window{4de3cd u0 dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity}
+wakefulness=  mWakefulness=Awake
+stay_on_while_plugged_in=3
+screen_off_timeout_ms=30000
+installed_apk_sha256=d9a26b62d326d4f9310394b9eb06ffcecbb7c31e27758548c27eb1b454e40bb1
+installed_app_version=0.1.0-bootstrap
+apk_build_source_head=8cab5154d6ab7be558d04381dda7d04eef08dfa7
+source_manifest_matches_commit=f421b52
+v8_revision=7b50b62cb18f28617959e8452e2cd18195b38bcf
+current_render_frame_rate_hz=60.0
+supported_refresh_modes_hz=60.0,120.00001
