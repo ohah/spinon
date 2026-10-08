@@ -1,0 +1,207 @@
+--------- beginning of main
+10-09 03:24:39.186   190   190 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+10-09 03:24:39.191   122   122 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
+10-09 03:24:39.191  3531  3531 W Gralloc3: mapper 3.x is not supported
+10-09 03:24:39.193  3531  3531 D HostConnection: createUnique: call
+10-09 03:24:39.193  3531  3531 D HostConnection: HostConnection::get() New Host Connection established 0x76a94c95a0, tid 3531
+10-09 03:24:39.194  3531  3531 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_null_optional_strings ANDROID_EMU_vulkan_create_resources_with_requirements ANDROID_EMU_YUV_Cache ANDROID_EMU_vulkan_ignored_handles ANDROID_EMU_vulkan_free_memory_sync ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_sync_buffer_data ANDROID_EMU_vulkan_async_qsri ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_1 
+10-09 03:24:39.195  3531  3531 D eglCodecCommon: allocate: Ask for block of size 0x1000
+10-09 03:24:39.195  3531  3531 D eglCodecCommon: allocate: ioctl allocate returned offset 0x1ff7d0000 size 0x8000
+10-09 03:24:39.197  3531  3531 D eglCodecCommon: allocate: Ask for block of size 0x7ea000
+10-09 03:24:39.197  3531  3531 D eglCodecCommon: allocate: ioctl allocate returned offset 0x1fefe8000 size 0x7f0000
+10-09 03:24:39.338  3533  3533 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-09 03:24:39.333  3533  3533 W app_process: type=1400 audit(0.0:33): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=7286 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+10-09 03:24:39.333  3533  3533 W app_process: type=1400 audit(0.0:34): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=7286 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+10-09 03:24:39.339  3533  3533 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.enable_apex_image"
+10-09 03:24:39.339  3533  3533 I AndroidRuntime: Using default boot image
+10-09 03:24:39.339  3533  3533 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.disable_lock_profiling"
+10-09 03:24:39.339  3533  3533 I AndroidRuntime: Leaving lock profiling enabled
+10-09 03:24:39.333  3533  3533 W app_process: type=1400 audit(0.0:35): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=7286 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+10-09 03:24:39.340  3533  3533 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.enable_generational_cc"
+10-09 03:24:39.340  3533  3533 I app_process: Core platform API reporting enabled, enforcing=false
+10-09 03:24:39.358  3533  3533 D ICU     : Time zone APEX file found: /apex/com.android.tzdata/etc/icu/icu_tzdata.dat
+10-09 03:24:39.360  3533  3533 I app_process: The ClassLoaderContext is a special shared library.
+10-09 03:24:39.366  3533  3533 W app_process: JNI RegisterNativeMethods: attempt to register 0 native methods for android.media.AudioAttributes
+10-09 03:24:39.366  3533  3533 D AndroidRuntime: Calling main entry com.android.commands.input.Input
+10-09 03:24:39.369  3497  3497 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=1 phase=ACTION_UP timestamp_precision=millisecond_fallback input_source=unknown event_time_ns=60370000000 input_uptime_anchor_ns=60372000000 input_monotonic_before_ns=60372817694 input_monotonic_after_ns=60372818694 generation=1
+10-09 03:24:39.370  3497  3497 W SpinonBootstrap: SPINON_R05_PRESENT_FENCE renderer=opengl_es input_seq=1 revision=1 generation=1 outcome=unavailable reason=api_below_35
+10-09 03:24:39.370  3497  3497 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=1 revision=1 generation=1 event_time_ns=60370000000 handler_uptime_ns=60373000000 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-09 03:24:39.370  3497  3522 I SpinonBootstrap: SPINON_R05_DRAW renderer=opengl_es draw_seq=2 revision=1 generation=1
+10-09 03:24:39.372  3497  3497 I SpinonBootstrap: SPINON_R08_TOUCH count=1
+10-09 03:24:39.373   190   190 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 7479296
+10-09 03:24:39.373  3533  3533 D AndroidRuntime: Shutting down VM
+10-09 03:24:39.375   200   563 D AF::TrackHandle: OpPlayAudio: track:58 usage:13 not muted
+10-09 03:24:39.376   374   491 W AudioTrack: createTrack_l(6357059): AUDIO_OUTPUT_FLAG_FAST denied by server; frameCount 0 -> 4512
+10-09 03:24:40.050   374   402 E memtrack: Couldn't load memtrack module
+10-09 03:24:40.050   374   402 W android.os.Debug: failed to get memory consumption info: -1
+10-09 03:24:40.870   348   348 E netmgr  : Failed to open QEMU pipe 'qemud:network': Invalid argument
+10-09 03:24:40.902   350   350 E wifi_forwarder: RemoteConnection failed to initialize: RemoteConnection failed to open pipe
+10-09 03:24:41.382   181  3548 W audio_hw_generic: Hardware backing HAL too slow, could only write 0 of 661 frames
+10-09 03:24:41.432   190   190 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+10-09 03:24:41.437   122   122 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
+10-09 03:24:41.437  3554  3554 W Gralloc3: mapper 3.x is not supported
+10-09 03:24:41.439  3554  3554 D HostConnection: createUnique: call
+10-09 03:24:41.439  3554  3554 D HostConnection: HostConnection::get() New Host Connection established 0x792b2885a0, tid 3554
+10-09 03:24:41.440  3554  3554 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_null_optional_strings ANDROID_EMU_vulkan_create_resources_with_requirements ANDROID_EMU_YUV_Cache ANDROID_EMU_vulkan_ignored_handles ANDROID_EMU_vulkan_free_memory_sync ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_sync_buffer_data ANDROID_EMU_vulkan_async_qsri ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_1 
+10-09 03:24:41.440  3554  3554 D eglCodecCommon: allocate: Ask for block of size 0x1000
+10-09 03:24:41.440  3554  3554 D eglCodecCommon: allocate: ioctl allocate returned offset 0x1ff7d0000 size 0x8000
+10-09 03:24:41.443  3554  3554 D eglCodecCommon: allocate: Ask for block of size 0x7ea000
+10-09 03:24:41.443  3554  3554 D eglCodecCommon: allocate: ioctl allocate returned offset 0x1fefe8000 size 0x7f0000
+--------- beginning of system
+10-09 03:24:41.568   374   393 I ActivityManager: Force stopping dev.spinon.bootstrap appid=10144 user=0: from pid 3560
+10-09 03:24:41.568   374   393 I ActivityManager: Killing 3497:dev.spinon.bootstrap/u0a144 (adj 0): stop dev.spinon.bootstrap
+10-09 03:24:41.569   374   393 W ActivityTaskManager: Force removing ActivityRecord{db0d5ad u0 dev.spinon.bootstrap/.MainActivity t5 f}: app died, no saved state
+10-09 03:24:41.570   374   393 W InputReader: Device has associated, but no associated display id.
+10-09 03:24:41.570   374   393 I chatty  : uid=1000(system) Binder:374_2 identical 8 lines
+10-09 03:24:41.570   374   393 W InputReader: Device has associated, but no associated display id.
+10-09 03:24:41.571   374  3372 E InputDispatcher: Window handle Window{ab79fb7 u0 dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity} has no registered input channel
+10-09 03:24:41.572   374   393 W InputReader: Device has associated, but no associated display id.
+10-09 03:24:41.572   374   393 I chatty  : uid=1000(system) Binder:374_2 identical 8 lines
+10-09 03:24:41.572   374   393 W InputReader: Device has associated, but no associated display id.
+10-09 03:24:41.575   582   582 D CarrierSvcBindHelper: No carrier app for: 0
+10-09 03:24:41.586   374   397 W ActivityManager: setHasOverlayUi called on unknown pid: 3497
+10-09 03:24:41.586   176   176 I Zygote  : Process 3497 exited due to signal 9 (Killed)
+10-09 03:24:41.592   190   190 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+10-09 03:24:41.592   374   374 W ActivityManager: Unable to start service Intent { act=android.service.appprediction.AppPredictionService cmp=com.google.android.as/com.google.android.apps.miphone.aiai.app.AiAiPredictionService } U=0: not found
+10-09 03:24:41.592   374   374 W RemoteAppPredictionService: could not bind to Intent { act=android.service.appprediction.AppPredictionService cmp=com.google.android.as/com.google.android.apps.miphone.aiai.app.AiAiPredictionService } using flags 67108865
+10-09 03:24:41.594   190   190 I chatty  : uid=1000(system) allocator@2.0-s identical 1 line
+10-09 03:24:41.594   190   190 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+10-09 03:24:41.595  1301  1596 D EGL_emulation: eglMakeCurrent: 0x7a0a04c980: ver 3 1 (tinfo 0x7a0a0bb5c0)
+10-09 03:24:41.609  1301  1301 W ThreadPoolDumper: Queue length for executor EventBus is now 11. Perhaps some tasks are too long, or the pool is too small.
+10-09 03:24:41.610  1301  1493 W SessionLifecycleManager: Handover failed. Creating new session controller.
+10-09 03:24:41.610   190   190 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+10-09 03:24:41.611   190   190 I chatty  : uid=1000(system) allocator@2.0-s identical 1 line
+10-09 03:24:41.611   190   190 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+10-09 03:24:41.612   374   405 I libprocessgroup: Successfully killed process cgroup uid 10144 pid 3497 in 43ms
+10-09 03:24:41.612   699  1257 D EGL_emulation: eglMakeCurrent: 0x7a0552dae0: ver 3 1 (tinfo 0x7a0540b0c0)
+10-09 03:24:41.625   374  3563 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=dev.spinon.bootstrap/.MainActivity (has extras)} from uid 2000
+10-09 03:24:41.627   374   684 W InputReader: Device has associated, but no associated display id.
+10-09 03:24:41.627   374   684 I chatty  : uid=1000(system) Binder:374_5 identical 8 lines
+10-09 03:24:41.627   374   684 W InputReader: Device has associated, but no associated display id.
+10-09 03:24:41.636   176   176 D Zygote  : Forked child process 3571
+10-09 03:24:41.639  3571  3571 I pinon.bootstra: Late-enabling -Xcheck:jni
+10-09 03:24:41.641  1301  1493 I MicroDetectionWorker: #startMicroDetector [speakerMode: 0]
+10-09 03:24:41.643  1301  1493 I AudioController: Created new AudioSource
+10-09 03:24:41.644  1301  1493 I MicroDetectionWorker: onReady
+10-09 03:24:41.645   190   190 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+10-09 03:24:41.647   374   404 I ActivityManager: Start proc 3571:dev.spinon.bootstrap/u0a144 for activity {dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity}
+10-09 03:24:41.649  3571  3571 E pinon.bootstra: Unknown bits set in runtime_flags: 0x8000
+10-09 03:24:41.651  1301  1635 I MicroRecognitionRunner: Starting detection.
+10-09 03:24:41.652  1301  1635 I MultipleReaderAudioSrc: Using micInputStream
+10-09 03:24:41.652  1301  3009 I MicrophoneInputStream: mic_starting  SR : 16000 CC : 16 SO : 1999
+10-09 03:24:41.663   374   393 W InputReader: Device has associated, but no associated display id.
+10-09 03:24:41.665   374   393 I chatty  : uid=1000(system) Binder:374_2 identical 28 lines
+10-09 03:24:41.665   374   393 W InputReader: Device has associated, but no associated display id.
+10-09 03:24:41.667   200  3593 I AudioFlinger: AudioFlinger's thread 0x7b24010340 tid=3593 ready to run
+10-09 03:24:41.669  1301  3009 I MicrophoneInputStream: mic_started  SR : 16000 CC : 16 SO : 1999
+10-09 03:24:41.670   374   684 I AudioService.RecordingActivityMonitor: rec update riid:55 uid:10120 session:41 src:HOTWORD pack:com.google.android.googlequicksearchbox
+10-09 03:24:41.671   374   398 W InputReader: Device has associated, but no associated display id.
+10-09 03:24:41.671   374   398 I chatty  : uid=1000(system) android.anim identical 8 lines
+10-09 03:24:41.671   374   398 W InputReader: Device has associated, but no associated display id.
+10-09 03:24:41.683   210   733 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-09 03:24:41.683   210   733 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-09 03:24:41.684  3571  3599 D libEGL  : Emulator has host GPU support, qemu.gles is set to 1.
+10-09 03:24:41.684  3571  3599 W libc    : Unable to set property "qemu.gles" to "1": connection failed; errno=13 (Permission denied)
+10-09 03:24:41.681  3571  3571 W RenderThread: type=1400 audit(0.0:36): avc: denied { write } for name="property_service" dev="tmpfs" ino=7380 scontext=u:r:untrusted_app:s0:c144,c256,c512,c768 tcontext=u:object_r:property_socket:s0 tclass=sock_file permissive=0 app=dev.spinon.bootstrap
+10-09 03:24:41.685  3571  3599 D libEGL  : loaded /vendor/lib64/egl/libEGL_emulation.so
+10-09 03:24:41.686  3571  3599 D libEGL  : loaded /vendor/lib64/egl/libGLESv1_CM_emulation.so
+10-09 03:24:41.687  3571  3599 D libEGL  : loaded /vendor/lib64/egl/libGLESv2_emulation.so
+10-09 03:24:41.707  1301  1493 I MicroDetectionWorker: onReady
+10-09 03:24:41.721  3571  3571 I SpinonBootstrap: SPINON_R08_UI=ready text-input=EditText accessibility=button+EditText
+10-09 03:24:41.731  1301  1493 I MicroDetector: Keeping mic open: false
+10-09 03:24:41.731  1301  1515 I DeviceStateChecker: DeviceStateChecker cancelled
+10-09 03:24:41.731  1301  1500 I AudioController: internalShutdown
+10-09 03:24:41.731  1301  1672 I MicroRecognitionRunner: Stopping hotword detection.
+10-09 03:24:41.750  1301  1500 I MicrophoneInputStream: mic_close  SR : 16000 CC : 16 SO : 1999
+10-09 03:24:41.750  1301  1500 E AudioSource: Stop listening is called on already closed AudioSource
+10-09 03:24:41.750  1301  1635 I MicroRecognitionRunner: Detection finished
+10-09 03:24:41.752  3571  3597 D HostConnection: HostConnection::get() New Host Connection established 0x7a0a027a00, tid 3597
+10-09 03:24:41.753  3571  3571 I SpinonBootstrap: SPINON_R05_SURFACE renderer=opengl_es type=GLSurfaceView generation=1
+10-09 03:24:41.753  3571  3571 I SpinonBootstrap: SPINON_R05_SIGNAL_CAPABILITY renderer=opengl_es signal=SurfaceView_JankData available=false reason=api_below_36 api=29 api_full=0
+10-09 03:24:41.753  3571  3571 I SpinonBootstrap: SPINON_R05_SURFACE_SIZE renderer=opengl_es generation=1 size=1080x1731
+10-09 03:24:41.754  3571  3597 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_null_optional_strings ANDROID_EMU_vulkan_create_resources_with_requirements ANDROID_EMU_YUV_Cache ANDROID_EMU_vulkan_ignored_handles ANDROID_EMU_vulkan_free_memory_sync ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_sync_buffer_data ANDROID_EMU_vulkan_async_qsri ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_1 
+10-09 03:24:41.761  3571  3597 W OpenGLRenderer: Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+10-09 03:24:41.763  3571  3597 D EGL_emulation: eglCreateContext: 0x7a0a027be0: maj 3 min 1 rcv 4
+10-09 03:24:41.766  3571  3597 D EGL_emulation: eglMakeCurrent: 0x7a0a027be0: ver 3 1 (tinfo 0x7a0a0186e0)
+10-09 03:24:41.767  3571  3597 E eglCodecCommon: glUtilsParamSize: unknow param 0x000082da
+10-09 03:24:41.767  3571  3597 E eglCodecCommon: glUtilsParamSize: unknow param 0x000082da
+10-09 03:24:41.768  3571  3600 D HostConnection: HostConnection::get() New Host Connection established 0x7a0552f980, tid 3600
+10-09 03:24:41.769  3571  3600 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_null_optional_strings ANDROID_EMU_vulkan_create_resources_with_requirements ANDROID_EMU_YUV_Cache ANDROID_EMU_vulkan_ignored_handles ANDROID_EMU_vulkan_free_memory_sync ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_sync_buffer_data ANDROID_EMU_vulkan_async_qsri ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_1 
+10-09 03:24:41.769  3571  3600 D EGL_emulation: eglCreateContext: 0x7a0552fa20: maj 3 min 1 rcv 4
+10-09 03:24:41.780   190   190 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 7479296
+10-09 03:24:41.783   122   122 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
+10-09 03:24:41.783  3571  3600 W Gralloc3: mapper 3.x is not supported
+10-09 03:24:41.784  3571  3600 D HostConnection: createUnique: call
+10-09 03:24:41.785  3571  3600 D HostConnection: HostConnection::get() New Host Connection established 0x7a0552fb60, tid 3600
+10-09 03:24:41.785   190   190 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+10-09 03:24:41.785  3571  3600 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_null_optional_strings ANDROID_EMU_vulkan_create_resources_with_requirements ANDROID_EMU_YUV_Cache ANDROID_EMU_vulkan_ignored_handles ANDROID_EMU_vulkan_free_memory_sync ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_sync_buffer_data ANDROID_EMU_vulkan_async_qsri ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_1 
+10-09 03:24:41.785  3571  3600 D eglCodecCommon: allocate: Ask for block of size 0x1000
+10-09 03:24:41.785  3571  3600 D eglCodecCommon: allocate: ioctl allocate returned offset 0x1fffe0000 size 0x8000
+10-09 03:24:41.785  3571  3600 D EGL_emulation: eglMakeCurrent: 0x7a0552fa20: ver 3 1 (tinfo 0x7a05397b00)
+10-09 03:24:41.786  3571  3600 E eglCodecCommon: glUtilsParamSize: unknow param 0x000082da
+10-09 03:24:41.786  3571  3600 E eglCodecCommon: glUtilsParamSize: unknow param 0x000082da
+10-09 03:24:41.786  3571  3600 I SpinonBootstrap: SPINON_R08_SURFACE=created api=OpenGL_ES_2 renderer=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) version=OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))
+10-09 03:24:41.786   181  3548 W audio_hw_generic: Hardware backing HAL too slow, could only write 0 of 661 frames
+10-09 03:24:41.799  3571  3597 D EGL_emulation: eglMakeCurrent: 0x7a0a027be0: ver 3 1 (tinfo 0x7a0a0186e0)
+10-09 03:24:41.800  3571  3600 I SpinonBootstrap: SPINON_R08_SHADER=ready
+10-09 03:24:41.800  3571  3600 I SpinonBootstrap: SPINON_R08_SURFACE=size 1080x1731
+10-09 03:24:41.801  3571  3600 I SpinonBootstrap: SPINON_R05_DRAW renderer=opengl_es draw_seq=1 revision=0 generation=1
+10-09 03:24:41.801  3571  3600 I SpinonBootstrap: SPINON_R08_FRAME=first_draw_submitted
+10-09 03:24:41.805   190   190 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 7479296
+10-09 03:24:41.855   190   190 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+10-09 03:24:41.886   190   190 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+10-09 03:24:41.894   374   402 I ActivityTaskManager: Displayed dev.spinon.bootstrap/.MainActivity: +276ms
+10-09 03:24:41.971  1301  1596 D EGL_emulation: eglMakeCurrent: 0x7a0a04c980: ver 3 1 (tinfo 0x7a0a0bb5c0)
+10-09 03:24:41.971   699  1257 D EGL_emulation: eglMakeCurrent: 0x7a0552dae0: ver 3 1 (tinfo 0x7a0540b0c0)
+10-09 03:24:41.975  1301  3009 I PBSessionCacheImpl: Deleted sessionId[155353792224] from persistence.
+10-09 03:24:41.977  1301  1493 W SearchServiceCore: Abort, client detached.
+10-09 03:24:42.492   374   482 D ConnectivityService: handleLingerComplete for NetworkAgentInfo [MOBILE (LTE) - 100]
+10-09 03:24:42.493   175   520 I Netd    : Destroyed 12 sockets for netId 100 permission=1 in 0.4 ms
+10-09 03:24:42.493   853   905 V NativeCrypto: Read error: ssl=0x79ac3c6148: I/O error during system call, Software caused connection abort
+10-09 03:24:42.494   175   520 I netd    : networkSetPermissionForNetwork(100, 1) <1.52ms>
+10-09 03:24:42.494   853  1718 V NativeCrypto: Write error: ssl=0x79ac3c6148: I/O error during system call, Broken pipe
+10-09 03:24:42.495   853  1718 V NativeCrypto: SSL shutdown failed: ssl=0x79ac3c6148: I/O error during system call, Success
+10-09 03:24:42.516   175   520 I netd    : trafficSwapActiveStatsMap() <20.02ms>
+10-09 03:24:42.517   175   520 I netd    : tetherGetStats() <0.31ms>
+10-09 03:24:42.612   181   181 W audio_hw_generic: Not supplying enough data to HAL, expected position 272155 , only wrote 136827
+10-09 03:24:43.675   190   190 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+10-09 03:24:43.680   122   122 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
+10-09 03:24:43.680  3610  3610 W Gralloc3: mapper 3.x is not supported
+10-09 03:24:43.683  3610  3610 D HostConnection: createUnique: call
+10-09 03:24:43.683  3610  3610 D HostConnection: HostConnection::get() New Host Connection established 0x6fc40255a0, tid 3610
+10-09 03:24:43.684  3610  3610 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_null_optional_strings ANDROID_EMU_vulkan_create_resources_with_requirements ANDROID_EMU_YUV_Cache ANDROID_EMU_vulkan_ignored_handles ANDROID_EMU_vulkan_free_memory_sync ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_sync_buffer_data ANDROID_EMU_vulkan_async_qsri ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_1 
+10-09 03:24:43.684  3610  3610 D eglCodecCommon: allocate: Ask for block of size 0x1000
+10-09 03:24:43.684  3610  3610 D eglCodecCommon: allocate: ioctl allocate returned offset 0x1ff7d0000 size 0x8000
+10-09 03:24:43.686  3610  3610 D eglCodecCommon: allocate: Ask for block of size 0x7ea000
+10-09 03:24:43.686  3610  3610 D eglCodecCommon: allocate: ioctl allocate returned offset 0x1fefe8000 size 0x7f0000
+10-09 03:24:43.817  3612  3612 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-09 03:24:43.818  3612  3612 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.enable_apex_image"
+10-09 03:24:43.818  3612  3612 I AndroidRuntime: Using default boot image
+10-09 03:24:43.818  3612  3612 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.disable_lock_profiling"
+10-09 03:24:43.818  3612  3612 I AndroidRuntime: Leaving lock profiling enabled
+10-09 03:24:43.818  3612  3612 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.enable_generational_cc"
+10-09 03:24:43.813  3612  3612 W app_process: type=1400 audit(0.0:37): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=7286 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+10-09 03:24:43.813  3612  3612 I chatty  : uid=2000(shell) app_process identical 1 line
+10-09 03:24:43.813  3612  3612 W app_process: type=1400 audit(0.0:39): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=7286 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+10-09 03:24:43.819  3612  3612 I app_process: Core platform API reporting enabled, enforcing=false
+10-09 03:24:43.835  3612  3612 D ICU     : Time zone APEX file found: /apex/com.android.tzdata/etc/icu/icu_tzdata.dat
+10-09 03:24:43.839  3612  3612 I app_process: The ClassLoaderContext is a special shared library.
+10-09 03:24:43.843  3612  3612 W app_process: JNI RegisterNativeMethods: attempt to register 0 native methods for android.media.AudioAttributes
+10-09 03:24:43.844  3612  3612 D AndroidRuntime: Calling main entry com.android.commands.input.Input
+10-09 03:24:43.846  3571  3571 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=1 phase=ACTION_UP timestamp_precision=millisecond_fallback input_source=unknown event_time_ns=64848000000 input_uptime_anchor_ns=64849000000 input_monotonic_before_ns=64849898696 input_monotonic_after_ns=64849899612 generation=1
+10-09 03:24:43.847  3571  3571 W SpinonBootstrap: SPINON_R05_FRAME_TIMELINE renderer=opengl_es input_seq=1 revision=1 generation=1 outcome=unmatched reason=api_below_35
+10-09 03:24:43.847  3571  3571 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=1 revision=1 generation=1 event_time_ns=64848000000 handler_uptime_ns=64850000000 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-09 03:24:43.847  3571  3571 I SpinonBootstrap: SPINON_R05_PRESENT_DRAIN renderer=opengl_es generation=1 queued=true delay_ms=250
+10-09 03:24:43.847  3571  3600 I SpinonBootstrap: SPINON_R05_DRAW renderer=opengl_es draw_seq=2 revision=1 generation=1
+10-09 03:24:43.847  3571  3571 I SpinonBootstrap: SPINON_R08_TOUCH count=1
+10-09 03:24:43.847  3612  3612 D AndroidRuntime: Shutting down VM
+10-09 03:24:43.849   181  3548 W audio_hw_generic: Not supplying enough data to HAL, expected position 136854 , only wrote 136827
+10-09 03:24:43.850   190   190 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 7479296
+10-09 03:24:44.004   374   402 E memtrack: Couldn't load memtrack module
+10-09 03:24:44.004   374   402 W android.os.Debug: failed to get memory consumption info: -1
+10-09 03:24:44.004   374   402 E memtrack: Couldn't load memtrack module
+10-09 03:24:44.005   374   402 W android.os.Debug: failed to get memory consumption info: -1
+10-09 03:24:44.005   374   402 E memtrack: Couldn't load memtrack module
+10-09 03:24:44.005   374   402 W android.os.Debug: failed to get memory consumption info: -1
+10-09 03:24:44.005   374   402 E memtrack: Couldn't load memtrack module
+10-09 03:24:44.005   374   402 W android.os.Debug: failed to get memory consumption info: -1

@@ -1,0 +1,9 @@
+direct_device=/dev/input/event6
+device_name=sec_touchscreen
+input_property=INPUT_PROP_DIRECT
+capture_duration_seconds=about 30
+raw_event_lines=0
+raw_capture_file=raw-direct-touchscreen.txt (empty; collector produced no event lines)
+adb_synthetic_input_during_capture=no
+physical_positive_sample=not_observed
+interpretation=No direct touchscreen contact was captured. This run does not establish that a user attempted a touch.

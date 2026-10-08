@@ -1,0 +1,15 @@
+APK ELF: lib/arm64-v8a/libspinon_bootstrap.so
+
+Dynamic undefined symbols include:
+- _Unwind_Resume
+- _Unwind_GetIP
+- _Unwind_GetCFA
+- _Unwind_FindEnclosingFunction
+- _Unwind_Backtrace
+- _Unwind_GetIPInfo
+- _Unwind_RaiseException
+- _Unwind_DeleteException
+
+DT_NEEDED entries are libandroid.so, liblog.so, libdl.so, libm.so, libc.so. The shared object has no DT_NEEDED entry for libunwind or libc++_shared.
+
+The Android API 29 crash buffer identifies the first unresolved symbol as `_Unwind_Resume`. In `tools/build-android.sh`, the final C++ shared-library link command targets `aarch64-linux-android29` and passes `-nostdlib++ --unwindlib=none`. The resulting binary and command explain the immediate loader failure. No linker fix was applied in this run.

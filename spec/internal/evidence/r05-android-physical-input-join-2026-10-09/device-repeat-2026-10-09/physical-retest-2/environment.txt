@@ -1,0 +1,18 @@
+실행일: 2026-10-09 (KST)
+기기 모델: SM-S731N
+Android release/API: 16 / 36
+CPU ABI: arm64-v8a
+화면: 1080x2340, density 450, active mode 2 / 60 Hz
+화면 상태: Awake
+실행 전 전면 앱: Chrome
+실행 후 복구: Chrome 전면, Awake 유지
+실행 전후 설정 대조: screen_off_timeout 30000 ms, brightness 248, active mode 2 (60 Hz)
+앱 패키지: dev.spinon.bootstrap
+앱 PID: 5340
+저장소 기준 commit: 2b0b0218d8a0e0ce639a96244774fce9d456b424
+renderer: R08 WGPU / Vulkan / Samsung Xclipse 940
+입력 장치: sec_touchscreen, INPUT_PROP_DIRECT, /dev/input/event6 (실행 시 확인; 재연결 시 번호가 달라질 수 있음)
+직접 입력 수집: 약 60초, getevent 프로세스 정상 시작 후 호스트에서 수집 종료, raw event 0건
+ADB synthetic control: 중앙 좌표 (540, 1170) 10회, 0.5초 간격
+기기 설정 변경: 없음
+기존 설치 APK 재사용: 예

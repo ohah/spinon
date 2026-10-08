@@ -1,0 +1,17 @@
+synthetic_input_count=10
+app_action_up_count=10
+input_sequences=1..10
+revision_sequences=1..10
+surface_generation=1
+transaction_stats_callbacks=10
+usable_async_fence_signals=10
+fence_outcome=signaled
+callback_fence_valid_before_after=true
+completed_queue_state=pending:0,active:0,queue_depth:0
+raw_sec_touchscreen_event_count_during_direct_window=0
+raw_sec_touchscreen_bytes=0
+screen_activation_count=10
+target_vsync_id=-1 (all 10 completed fence records)
+event_to_present_latency=not_calculated
+optical_scanout=not_measured
+physical_finger_positive_sample=0

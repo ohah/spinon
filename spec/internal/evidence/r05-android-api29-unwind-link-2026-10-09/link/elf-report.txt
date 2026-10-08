@@ -1,0 +1,23 @@
+artifact: build/spinon/android/jniLibs/arm64-v8a/libspinon_bootstrap.so
+bbd40e9e8b0d297457ed405ad19f49e35b181b032a4c4cfbbabc20bf255bbdf0  build/spinon/android/jniLibs/arm64-v8a/libspinon_bootstrap.so
+size=128983232 bytes
+  Class:                             ELF64
+  Type:                              DYN (Shared object file)
+  Machine:                           AArch64
+
+PT_LOAD and GNU_RELRO:
+  LOAD           0x000000 0x0000000000000000 0x0000000000000000 0x135b2a4 0x135b2a4 R   0x4000
+  LOAD           0x135b2c0 0x000000000135f2c0 0x000000000135f2c0 0x19a8460 0x19a8460 R E 0x4000
+  LOAD           0x2d03720 0x0000000002d0b720 0x0000000002d0b720 0x0cf050 0x0d08e0 RW  0x4000
+  LOAD           0x2dd4000 0x0000000002de0000 0x0000000002de0000 0x01a8c8 0x0343f8 RW  0x4000
+  GNU_RELRO      0x2d03720 0x0000000002d0b720 0x0000000002d0b720 0x0cf050 0x0d08e0 R   0x1
+
+Dynamic _Unwind_* undefined symbols:
+count=0
+
+Dynamic _Unwind_* defined exports:
+count=0
+
+Unwind DT_NEEDED entries:
+
+APK zipalign check:

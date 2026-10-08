@@ -50,6 +50,17 @@ for required in "$v8_archive" "$v8_libcxx" "$v8_libcxxabi"; do
   fi
 done
 ndk_root="$(find "$ndk_dir/toolchains/llvm/prebuilt" -mindepth 1 -maxdepth 1 -type d | head -n 1)"
+unwind_candidates=("$ndk_root"/lib/clang/*/lib/linux/aarch64/libunwind.a)
+if [[ ${#unwind_candidates[@]} -ne 1 || ! -f "${unwind_candidates[0]}" ]]; then
+  echo "고정 Android NDK에서 AArch64 libunwind.a를 하나만 찾을 수 없습니다: $ndk_root" >&2
+  exit 1
+fi
+unwind_archive="${unwind_candidates[0]}"
+ndk_llvm_nm="$ndk_root/bin/llvm-nm"
+if [[ ! -x "$ndk_llvm_nm" ]] || ! "$ndk_llvm_nm" -g "$unwind_archive" | grep -Eq '[[:space:]]+[TtWw][[:space:]]+_Unwind_Resume$'; then
+  echo "Android AArch64 libunwind.a에 필요한 _Unwind_Resume 정의가 없습니다: $unwind_archive" >&2
+  exit 1
+fi
 v8_cxx="$v8_dir/third_party/llvm-build/Release+Asserts/bin/clang++"
 v8_lld="$v8_dir/third_party/llvm-build/Release+Asserts/bin/ld.lld"
 if [[ ! -x "$v8_cxx" || ! -x "$v8_lld" ]]; then
@@ -121,15 +132,17 @@ else
     -o "$output_dir/obj/spinon_jni.o"
 fi
 
+# 고정 NDK의 unwind ABI를 정적으로 포함하고 DSO 외부 심볼로는 내보내지 않는다.
 "$v8_cxx" "${common[@]}" -shared \
   "$output_dir/obj/spinon_jni.o" \
   "$output_dir/obj/spinon_v8.o" \
   "$repo_root/target/aarch64-linux-android/release/libspinon_ffi.a" \
   "$repo_root/spikes/wgpu-backend/target/aarch64-linux-android/release/libspinon_wgpu_r08_spike.a" \
-  "$v8_archive" "$v8_libcxx" "$v8_libcxxabi" \
-  "-fuse-ld=$v8_lld" -Wl,--gc-sections \
+  "$v8_archive" "$v8_libcxx" "$v8_libcxxabi" "$unwind_archive" \
+  "-fuse-ld=$v8_lld" -Wl,--gc-sections -Wl,--exclude-libs,libunwind.a \
   -Wl,-z,max-page-size=16384 -Wl,-z,common-page-size=16384 \
   -nostdlib++ --unwindlib=none -landroid -llog -ldl \
   -o "$output_dir/jniLibs/arm64-v8a/libspinon_bootstrap.so"
 
+echo "Android ARM64 unwind runtime: $unwind_archive"
 echo "Android ARM64 V8 smoke 라이브러리 준비 완료: $output_dir/jniLibs/arm64-v8a/libspinon_bootstrap.so"

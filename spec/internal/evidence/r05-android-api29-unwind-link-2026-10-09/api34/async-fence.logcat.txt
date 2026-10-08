@@ -1,0 +1,307 @@
+--------- beginning of main
+10-09 03:25:54.972  1180  1606 E OpenGLRenderer: Unable to match the desired swap behavior.
+--------- beginning of system
+10-09 03:25:54.990   544  1893 W ActivityTaskManager: callingPackage for (uid=2000, pid=4404) has no WPC
+10-09 03:25:54.991   544  1893 D CompatibilityChangeReporter: Compat change id reported: 265464455; UID 10192; state: DISABLED
+10-09 03:25:54.991   544  1893 D CompatibilityChangeReporter: Compat change id reported: 265452344; UID 10192; state: DISABLED
+10-09 03:25:54.991   544  1893 D CompatibilityChangeReporter: Compat change id reported: 266124927; UID 10192; state: DISABLED
+10-09 03:25:54.991   544  1893 D CompatibilityChangeReporter: Compat change id reported: 265451093; UID 10192; state: DISABLED
+10-09 03:25:54.991   544  1893 D CompatibilityChangeReporter: Compat change id reported: 265456536; UID 10192; state: DISABLED
+10-09 03:25:54.991   544  1893 D CompatibilityChangeReporter: Compat change id reported: 255940284; UID 10192; state: DISABLED
+10-09 03:25:54.991   544  1893 D CompatibilityChangeReporter: Compat change id reported: 236283604; UID 10192; state: DISABLED
+10-09 03:25:54.991   544  1893 D CompatibilityChangeReporter: Compat change id reported: 263959004; UID 10192; state: DISABLED
+10-09 03:25:54.991   544  1893 D CompatibilityChangeReporter: Compat change id reported: 264304459; UID 10192; state: DISABLED
+10-09 03:25:54.991   544  1893 D CompatibilityChangeReporter: Compat change id reported: 264301586; UID 10192; state: DISABLED
+10-09 03:25:54.991   544  1893 D CompatibilityChangeReporter: Compat change id reported: 254631730; UID 10192; state: DISABLED
+10-09 03:25:54.991   544  1893 D CompatibilityChangeReporter: Compat change id reported: 273509367; UID 10192; state: DISABLED
+10-09 03:25:54.991   544  1893 D CompatibilityChangeReporter: Compat change id reported: 263259275; UID 10192; state: DISABLED
+10-09 03:25:54.991   544  1893 D CompatibilityChangeReporter: Compat change id reported: 174042980; UID 10192; state: DISABLED
+10-09 03:25:54.991   544  1893 D CompatibilityChangeReporter: Compat change id reported: 174042936; UID 10192; state: DISABLED
+10-09 03:25:54.991   544  1893 D CompatibilityChangeReporter: Compat change id reported: 181136395; UID 10192; state: DISABLED
+10-09 03:25:54.992   544  1893 D CompatibilityChangeReporter: Compat change id reported: 194480991; UID 10192; state: ENABLED
+10-09 03:25:54.993   544  1893 D CompatibilityChangeReporter: Compat change id reported: 184838306; UID 10192; state: DISABLED
+10-09 03:25:54.993   544  1893 D CompatibilityChangeReporter: Compat change id reported: 185004937; UID 10192; state: DISABLED
+10-09 03:25:54.994   544  1893 D CompatibilityChangeReporter: Compat change id reported: 197654537; UID 10192; state: ENABLED
+10-09 03:25:54.995   544  1893 D CompatibilityChangeReporter: Compat change id reported: 205907456; UID 10192; state: ENABLED
+10-09 03:25:54.996   544  1893 I ActivityTaskManager: Add Task{1c1edf3 #13 type=standard A=10192:dev.spinon.bootstrap} to hidden list because adding Task{b9acf91 #14 type=standard A=10192:dev.spinon.bootstrap}
+10-09 03:25:54.999   544  1893 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=dev.spinon.bootstrap/.MainActivity (has extras)} with LAUNCH_MULTIPLE from uid 2000 (BAL_ALLOW_PERMISSION) result code=0
+10-09 03:25:55.001   544   565 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10192; state: DISABLED
+10-09 03:25:55.001   544   565 D CompatibilityChangeReporter: Compat change id reported: 177438394; UID 10192; state: DISABLED
+10-09 03:25:55.001   544   565 D CompatibilityChangeReporter: Compat change id reported: 135772972; UID 10192; state: DISABLED
+10-09 03:25:55.001   544   565 D CompatibilityChangeReporter: Compat change id reported: 135754954; UID 10192; state: ENABLED
+10-09 03:25:55.002   544   574 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10192; state: ENABLED
+10-09 03:25:55.005   355   355 D Zygote  : Forked child process 4407
+10-09 03:25:55.006   759   918 D SplashScreenView: Build android.window.SplashScreenView{d32ac32 V.E...... ......ID 0,0-0,0}
+10-09 03:25:55.006   759   918 D SplashScreenView: Icon: view: null drawable: null size: 0
+10-09 03:25:55.006   759   918 D SplashScreenView: Branding: view: android.view.View{fb6bd83 G.ED..... ......I. 0,0-0,0 #10204ef android:id/splashscreen_branding_view} drawable: null size w: 0 h: 0
+10-09 03:25:55.006   544   574 I ActivityManager: Start proc 4407:dev.spinon.bootstrap/u0a192 for next-top-activity {dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity}
+10-09 03:25:55.007   544  1893 D CompatibilityChangeReporter: Compat change id reported: 168419799; UID 10192; state: DISABLED
+10-09 03:25:55.007   544  1893 D CompatibilityChangeReporter: Compat change id reported: 273564678; UID 10192; state: DISABLED
+10-09 03:25:55.010  1616  1616 I A       : (REDACTED) Created gRPC endpoint for service %s
+10-09 03:25:55.012   544  1893 D CoreBackPreview: Window{11fd482 u0 Splash Screen dev.spinon.bootstrap}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@e0473d0, mPriority=0, mIsAnimationCallback=false}
+10-09 03:25:55.019   759   955 E OpenGLRenderer: Unable to match the desired swap behavior.
+10-09 03:25:55.055  4407  4407 I pinon.bootstrap: Late-enabling -Xcheck:jni
+10-09 03:25:55.059   544   619 D CompatibilityChangeReporter: Compat change id reported: 265195908; UID 10192; state: ENABLED
+10-09 03:25:55.062  4407  4407 I pinon.bootstrap: Using CollectorTypeCC GC.
+10-09 03:25:55.065  1520  2095 I AssistantForeground: (REDACTED) Get launcher package: %s
+10-09 03:25:55.067   411   446 I adbd    : jdwp connection from 4407
+10-09 03:25:55.068  1180  1180 D SearchTargetUtil:  query= size=0
+10-09 03:25:55.124  4407  4407 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 10192; state: ENABLED
+10-09 03:25:55.126  4407  4407 D CompatibilityChangeReporter: Compat change id reported: 242716250; UID 10192; state: ENABLED
+10-09 03:25:55.131   544  4363 D CompatibilityChangeReporter: Compat change id reported: 170503758; UID 10192; state: ENABLED
+10-09 03:25:55.157  4407  4407 W ziparchive: Unable to open '/data/app/~~2jkDeSxydTcgbibimPfm6g==/dev.spinon.bootstrap-ENzeYiIn8EYZRb-O4MGEsg==/base.dm': No such file or directory
+10-09 03:25:55.157  4407  4407 W ziparchive: Unable to open '/data/app/~~2jkDeSxydTcgbibimPfm6g==/dev.spinon.bootstrap-ENzeYiIn8EYZRb-O4MGEsg==/base.dm': No such file or directory
+10-09 03:25:55.157   544   566 W WindowManager: Failed to deliver inset control state change to w=Window{76c0be2 u0 dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity EXITING}
+10-09 03:25:55.157   544   566 W WindowManager: android.os.DeadObjectException
+10-09 03:25:55.157   544   566 W WindowManager: 	at android.os.BinderProxy.transactNative(Native Method)
+10-09 03:25:55.157   544   566 W WindowManager: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+10-09 03:25:55.157   544   566 W WindowManager: 	at android.view.IWindow$Stub$Proxy.insetsControlChanged(IWindow.java:479)
+10-09 03:25:55.157   544   566 W WindowManager: 	at com.android.server.wm.WindowState.notifyInsetsControlChanged(WindowState.java:3802)
+10-09 03:25:55.157   544   566 W WindowManager: 	at com.android.server.wm.InsetsStateController.lambda$notifyPendingInsetsControlChanged$3(InsetsStateController.java:343)
+10-09 03:25:55.157   544   566 W WindowManager: 	at com.android.server.wm.InsetsStateController.$r8$lambda$8yykPRG1GyNq_J17QvL9d5xANMc(InsetsStateController.java:0)
+10-09 03:25:55.157   544   566 W WindowManager: 	at com.android.server.wm.InsetsStateController$$ExternalSyntheticLambda2.run(R8$$SyntheticClass:0)
+10-09 03:25:55.157   544   566 W WindowManager: 	at com.android.server.wm.WindowAnimator.executeAfterPrepareSurfacesRunnables(WindowAnimator.java:294)
+10-09 03:25:55.157   544   566 W WindowManager: 	at com.android.server.wm.RootWindowContainer.performSurfacePlacementNoTrace(RootWindowContainer.java:811)
+10-09 03:25:55.157   544   566 W WindowManager: 	at com.android.server.wm.RootWindowContainer.performSurfacePlacement(RootWindowContainer.java:756)
+10-09 03:25:55.157   544   566 W WindowManager: 	at com.android.server.wm.WindowSurfacePlacer.performSurfacePlacementLoop(WindowSurfacePlacer.java:177)
+10-09 03:25:55.157   544   566 W WindowManager: 	at com.android.server.wm.WindowSurfacePlacer.performSurfacePlacement(WindowSurfacePlacer.java:126)
+10-09 03:25:55.157   544   566 W WindowManager: 	at com.android.server.wm.WindowSurfacePlacer.performSurfacePlacement(WindowSurfacePlacer.java:115)
+10-09 03:25:55.157   544   566 W WindowManager: 	at com.android.server.wm.WindowSurfacePlacer$Traverser.run(WindowSurfacePlacer.java:57)
+10-09 03:25:55.157   544   566 W WindowManager: 	at android.os.Handler.handleCallback(Handler.java:958)
+10-09 03:25:55.157   544   566 W WindowManager: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+10-09 03:25:55.157   544   566 W WindowManager: 	at android.os.Looper.loopOnce(Looper.java:205)
+10-09 03:25:55.157   544   566 W WindowManager: 	at android.os.Looper.loop(Looper.java:294)
+10-09 03:25:55.157   544   566 W WindowManager: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+10-09 03:25:55.157   544   566 W WindowManager: 	at com.android.server.ServiceThread.run(ServiceThread.java:46)
+10-09 03:25:55.159   759   858 V WindowManagerShell: onTransitionReady android.os.BinderProxy@6a9f2db: {id=5 t=CLOSE f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@196780a} m=OPEN f=MOVE_TO_TOP leash=Surface(name=Task=14)/@0x82cb9fe sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{WCT{android.window.IWindowContainerToken$Stub$Proxy@760587b} m=CLOSE f=NONE leash=Surface(name=Task=13)/@0x42ac55f sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{null m=TO_FRONT f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{bf853f token=android.os.Binder@3df0d5e})/@0x4d32bac sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0}]}
+10-09 03:25:55.159   759   858 V WindowManagerShell: Playing animation for (#5)android.os.BinderProxy@6a9f2db@0
+10-09 03:25:55.159   759   858 V WindowManagerShell:  try handler com.android.wm.shell.transition.DefaultMixedHandler@a7f3244
+10-09 03:25:55.159   759   858 V WindowManagerShell:  try handler com.android.wm.shell.keyguard.KeyguardTransitionHandler@e114f2d
+10-09 03:25:55.159   759   858 V WindowManagerShell:  try handler com.android.wm.shell.activityembedding.ActivityEmbeddingController@d4c9c62
+10-09 03:25:55.159   759   858 V WindowManagerShell:  try handler com.android.wm.shell.recents.RecentsTransitionHandler@710a1f3
+10-09 03:25:55.159   759   858 V ShellRecents: RecentsTransitionHandler.startAnimation: no controller found
+10-09 03:25:55.159   759   858 V WindowManagerShell:  try handler com.android.wm.shell.pip.PipTransition@85f2eb0
+10-09 03:25:55.159   759   858 V WindowManagerShell:  try handler com.android.wm.shell.splitscreen.StageCoordinator@ce0b129
+10-09 03:25:55.159   759   858 V WindowManagerShell:  try handler com.android.wm.shell.transition.RemoteTransitionHandler@5c1cae
+10-09 03:25:55.159   759   858 V WindowManagerShell: Transition doesn't have explicit remote, search filters for match for {id=5 t=CLOSE f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@196780a} m=OPEN f=MOVE_TO_TOP leash=Surface(name=Task=14)/@0x82cb9fe sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{WCT{android.window.IWindowContainerToken$Stub$Proxy@760587b} m=CLOSE f=NONE leash=Surface(name=Task=13)/@0x42ac55f sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{null m=TO_FRONT f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{bf853f token=android.os.Binder@3df0d5e})/@0x4d32bac sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0}]}
+10-09 03:25:55.160   759   858 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0] notFlags=0x0 checks=[{atype=dream independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=ANY topActivity=null},{atype=home independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@4bf1867, appThread = android.app.IApplicationThread$Stub$Proxy@576f614, debugName = LauncherToDream }}
+10-09 03:25:55.160   759   858 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0] notFlags=0x100 checks=[{atype=home independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=TOP topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity}},{atype=standard independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@3d75f80, appThread = android.app.IApplicationThread$Stub$Proxy@eccd9b9, debugName = QuickstepLaunchHome }}
+10-09 03:25:55.160   759   858 V WindowManagerShell:  Delegate animation for #5 to null
+10-09 03:25:55.160   759   858 V WindowManagerShell:  try handler com.android.wm.shell.transition.DefaultTransitionHandler@4896a4f
+10-09 03:25:55.160   759   858 V WindowManagerShell: start default transition animation, info = {id=5 t=CLOSE f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@196780a} m=OPEN f=MOVE_TO_TOP leash=Surface(name=Task=14)/@0x82cb9fe sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{WCT{android.window.IWindowContainerToken$Stub$Proxy@760587b} m=CLOSE f=NONE leash=Surface(name=Task=13)/@0x42ac55f sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{null m=TO_FRONT f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{bf853f token=android.os.Binder@3df0d5e})/@0x4d32bac sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0}]}
+10-09 03:25:55.161   759   858 V WindowManagerShell: loadAnimation: anim=android.view.animation.AnimationSet@32c0ad6 animAttr=0xb type=CLOSE isEntrance=false
+10-09 03:25:55.161   544   562 V WindowManager: Sent Transition #5 createdAt=10-09 03:25:54.929 via request=TransitionRequestInfo { type = CLOSE, triggerTask = TaskInfo{userId=0 taskId=13 displayId=0 isRunning=false baseIntent=Intent { flg=0x10000000 cmp=dev.spinon.bootstrap/.MainActivity } baseActivity=null topActivity=null origActivity=null realActivity=ComponentInfo{dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity} numActivities=0 lastActiveTime=18706 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{RemoteToken{224d879 Task{1c1edf3 #13 type=standard A=10192:dev.spinon.bootstrap}}} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 128 - 0, 0) topActivityInfo=null launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=true isVisible=true isVisibleRequested=true isSleeping=false topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= false topActivityLetterboxed= false isFromDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 locusId=null displayAreaFeatureId=1 cameraCompatControlState=hidden}, remoteTransition = null, displayChange = null }
+10-09 03:25:55.162   544   562 V WindowManager:     startWCT=WindowContainerTransaction { changes = {} hops = [] errorCallbackToken=null taskFragmentOrganizer=null }
+10-09 03:25:55.162   544   562 V WindowManager:     info={id=5 t=CLOSE f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{5f807e7 Task{b9acf91 #14 type=standard A=10192:dev.spinon.bootstrap}}} m=OPEN f=MOVE_TO_TOP leash=Surface(name=Task=14)/@0x60160b sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{WCT{RemoteToken{224d879 Task{1c1edf3 #13 type=standard A=10192:dev.spinon.bootstrap}}} m=CLOSE f=NONE leash=Surface(name=Task=13)/@0xdcb3b14 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{null m=TO_FRONT f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{bf853f token=android.os.Binder@3df0d5e})/@0xe8f71da sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0}]}
+10-09 03:25:55.162  4407  4407 D nativeloader: Configuring clns-6 for other apk /data/app/~~2jkDeSxydTcgbibimPfm6g==/dev.spinon.bootstrap-ENzeYiIn8EYZRb-O4MGEsg==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~2jkDeSxydTcgbibimPfm6g==/dev.spinon.bootstrap-ENzeYiIn8EYZRb-O4MGEsg==/lib/arm64:/data/app/~~2jkDeSxydTcgbibimPfm6g==/dev.spinon.bootstrap-ENzeYiIn8EYZRb-O4MGEsg==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/dev.spinon.bootstrap
+10-09 03:25:55.166   759   858 V WindowManagerShell: loadAnimation: anim=android.view.animation.AnimationSet@6922941 animAttr=0xa type=CLOSE isEntrance=true
+10-09 03:25:55.166   759   858 V WindowManagerShell:  animated by com.android.wm.shell.transition.DefaultTransitionHandler@4896a4f
+10-09 03:25:55.170  4407  4407 V GraphicsEnvironment: Currently set values for:
+10-09 03:25:55.170  4407  4407 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+10-09 03:25:55.170  4407  4407 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+10-09 03:25:55.170  4407  4407 V GraphicsEnvironment: ANGLE GameManagerService for dev.spinon.bootstrap: false
+10-09 03:25:55.170  4407  4407 V GraphicsEnvironment: dev.spinon.bootstrap is not listed in per-application setting
+10-09 03:25:55.170  4407  4407 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+10-09 03:25:55.172   544  1893 I ActivityManager: Flag disabled. Ignoring finishAttachApplication from uid: 10192. pid: 4407
+10-09 03:25:55.177  4407  4430 D libEGL  : loaded /vendor/lib64/egl/libEGL_emulation.so
+10-09 03:25:55.179   382   382 I android.hardware.power-service.example: Power isModeSupported: 6
+10-09 03:25:55.186  4407  4430 D libEGL  : loaded /vendor/lib64/egl/libGLESv1_CM_emulation.so
+10-09 03:25:55.186  4407  4430 D libEGL  : loaded /vendor/lib64/egl/libGLESv2_emulation.so
+10-09 03:25:55.200  4407  4407 E SpinonBootstrap: SPINON_R05_FENCE_WAIT status=UNAVAILABLE reason=api_below_35 api=34
+10-09 03:25:55.201   759   858 V WindowManagerShell: Transition requested: android.os.BinderProxy@df8742e TransitionRequestInfo { type = CLOSE, triggerTask = TaskInfo{userId=0 taskId=14 displayId=0 isRunning=false baseIntent=Intent { flg=0x10000000 cmp=dev.spinon.bootstrap/.MainActivity } baseActivity=null topActivity=null origActivity=null realActivity=ComponentInfo{dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity} numActivities=0 lastActiveTime=29648 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{android.window.IWindowContainerToken$Stub$Proxy@fc3abcf} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 128 - 0, 0) topActivityInfo=null launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=true isVisibleRequested=true isSleeping=false topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= false topActivityLetterboxed= false isFromDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 locusId=null displayAreaFeatureId=1 cameraCompatControlState=hidden}, remoteTransition = null, displayChange = null }
+10-09 03:25:55.202   544  1893 W WindowManager: Failed to deliver inset control state change to w=Window{76c0be2 u0 dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity EXITING}
+10-09 03:25:55.202   544  1893 W WindowManager: android.os.DeadObjectException
+10-09 03:25:55.202   544  1893 W WindowManager: 	at android.os.BinderProxy.transactNative(Native Method)
+10-09 03:25:55.202   544  1893 W WindowManager: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+10-09 03:25:55.202   544  1893 W WindowManager: 	at android.view.IWindow$Stub$Proxy.insetsControlChanged(IWindow.java:479)
+10-09 03:25:55.202   544  1893 W WindowManager: 	at com.android.server.wm.WindowState.notifyInsetsControlChanged(WindowState.java:3802)
+10-09 03:25:55.202   544  1893 W WindowManager: 	at com.android.server.wm.InsetsStateController.lambda$notifyPendingInsetsControlChanged$3(InsetsStateController.java:343)
+10-09 03:25:55.202   544  1893 W WindowManager: 	at com.android.server.wm.InsetsStateController.$r8$lambda$8yykPRG1GyNq_J17QvL9d5xANMc(InsetsStateController.java:0)
+10-09 03:25:55.202   544  1893 W WindowManager: 	at com.android.server.wm.InsetsStateController$$ExternalSyntheticLambda2.run(R8$$SyntheticClass:0)
+10-09 03:25:55.202   544  1893 W WindowManager: 	at com.android.server.wm.WindowAnimator.executeAfterPrepareSurfacesRunnables(WindowAnimator.java:294)
+10-09 03:25:55.202   544  1893 W WindowManager: 	at com.android.server.wm.RootWindowContainer.performSurfacePlacementNoTrace(RootWindowContainer.java:811)
+10-09 03:25:55.202   544  1893 W WindowManager: 	at com.android.server.wm.RootWindowContainer.performSurfacePlacement(RootWindowContainer.java:756)
+10-09 03:25:55.202   544  1893 W WindowManager: 	at com.android.server.wm.WindowSurfacePlacer.performSurfacePlacementLoop(WindowSurfacePlacer.java:177)
+10-09 03:25:55.202   544  1893 W WindowManager: 	at com.android.server.wm.WindowSurfacePlacer.performSurfacePlacement(WindowSurfacePlacer.java:126)
+10-09 03:25:55.202   544  1893 W WindowManager: 	at com.android.server.wm.WindowSurfacePlacer.performSurfacePlacement(WindowSurfacePlacer.java:115)
+10-09 03:25:55.202   544  1893 W WindowManager: 	at com.android.server.wm.WindowSurfacePlacer.continueLayout(WindowSurfacePlacer.java:97)
+10-09 03:25:55.202   544  1893 W WindowManager: 	at com.android.server.wm.ActivityTaskManagerService.continueWindowLayout(ActivityTaskManagerService.java:4660)
+10-09 03:25:55.202   544  1893 W WindowManager: 	at com.android.server.wm.ActivityRecord.finishIfPossible(ActivityRecord.java:3643)
+10-09 03:25:55.202   544  1893 W WindowManager: 	at com.android.server.wm.ActivityClientController.finishActivity(ActivityClientController.java:508)
+10-09 03:25:55.202   544  1893 W WindowManager: 	at android.app.IActivityClientController$Stub.onTransact(IActivityClientController.java:778)
+10-09 03:25:55.202   544  1893 W WindowManager: 	at com.android.server.wm.ActivityClientController.onTransact(ActivityClientController.java:153)
+10-09 03:25:55.202   544  1893 W WindowManager: 	at android.os.Binder.execTransactInternal(Binder.java:1339)
+10-09 03:25:55.202   544  1893 W WindowManager: 	at android.os.Binder.execTransact(Binder.java:1275)
+10-09 03:25:55.210   544  1546 W AppSearchIcing: icing-search-engine.cc:283: Error: 5, Message: Document (com.google.android.googlequicksearchbox$OneSearchZeroStateGoogleSuggestions/default, zp) not found.
+10-09 03:25:55.211  1180  1782 D OneSearchSuggestProvider: Established or reuse existing binder channel authority=com.google.android.googlequicksearchbox
+10-09 03:25:55.218  1520  2101 I AssistantForeground: (REDACTED) Get launcher package: %s
+10-09 03:25:55.219  1500  1784 I AiAiEcho: Predicting[0]: 
+10-09 03:25:55.219  1500  1784 I AiAiEcho: EchoTargets: 
+10-09 03:25:55.219  1500  1784 I AiAiEcho: Filtered by AiAi flag check: 
+10-09 03:25:55.220  1500  1784 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+10-09 03:25:55.220  1500  1784 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+10-09 03:25:55.223  1654  2045 W YouTube : Could not register for notifications with InnerTube: 
+10-09 03:25:55.223  1654  2045 W YouTube : aali: xud: Precondition check failed.
+10-09 03:25:55.223  1654  2045 W YouTube : 	at zyd.apply(PG:41)
+10-09 03:25:55.223  1654  2045 W YouTube : 	at xbn.u(PG:15)
+10-09 03:25:55.223  1654  2045 W YouTube : 	at xbn.d(PG:11)
+10-09 03:25:55.223  1654  2045 W YouTube : 	at aald.d(PG:18)
+10-09 03:25:55.223  1654  2045 W YouTube : 	at aepi.g(PG:493)
+10-09 03:25:55.223  1654  2045 W YouTube : 	at aedu.run(PG:138)
+10-09 03:25:55.223  1654  2045 W YouTube : 	at azjk.run(PG:27)
+10-09 03:25:55.223  1654  2045 W YouTube : 	at qgx.run(PG:7)
+10-09 03:25:55.223  1654  2045 W YouTube : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-09 03:25:55.223  1654  2045 W YouTube : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-09 03:25:55.223  1654  2045 W YouTube : 	at phd.run(PG:18)
+10-09 03:25:55.223  1654  2045 W YouTube : 	at java.lang.Thread.run(Thread.java:1012)
+10-09 03:25:55.223  1654  2045 W YouTube : 	at qig.run(PG:64)
+10-09 03:25:55.223  1654  2045 W YouTube : Caused by: xud: Precondition check failed.
+10-09 03:25:55.223  1654  2045 W YouTube : 	at aaka.e(PG:24)
+10-09 03:25:55.223  1654  2045 W YouTube : 	at xig.e(PG:41)
+10-09 03:25:55.223  1654  2045 W YouTube : 	at xig.d(PG:2)
+10-09 03:25:55.223  1654  2045 W YouTube : 	at uup.run(PG:347)
+10-09 03:25:55.223  1654  2045 W YouTube : 	at azjk.run(PG:27)
+10-09 03:25:55.223  1654  2045 W YouTube : 	at qgx.run(PG:7)
+10-09 03:25:55.223  1654  2045 W YouTube : 	at alga.run(PG:50)
+10-09 03:25:55.223  1654  2045 W YouTube : 	at qgg.run(PG:604)
+10-09 03:25:55.223  1654  2045 W YouTube : 	... 2 more
+10-09 03:25:55.223  1654  2045 W YouTube : Caused by: xes
+10-09 03:25:55.223  1654  2045 W YouTube : 	at uup.run(PG:271)
+10-09 03:25:55.223  1654  2045 W YouTube : 	... 6 more
+10-09 03:25:55.227  1180  1180 D SearchTargetUtil:  query= size=0
+10-09 03:25:55.235   544   562 V WindowManager: Sent Transition #6 createdAt=10-09 03:25:55.200 via request=TransitionRequestInfo { type = CLOSE, triggerTask = TaskInfo{userId=0 taskId=14 displayId=0 isRunning=false baseIntent=Intent { flg=0x10000000 cmp=dev.spinon.bootstrap/.MainActivity } baseActivity=null topActivity=null origActivity=null realActivity=ComponentInfo{dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity} numActivities=0 lastActiveTime=29648 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{RemoteToken{5f807e7 Task{b9acf91 #14 type=standard A=10192:dev.spinon.bootstrap}}} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 128 - 0, 0) topActivityInfo=null launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=true isVisibleRequested=true isSleeping=false topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= false topActivityLetterboxed= false isFromDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 locusId=null displayAreaFeatureId=1 cameraCompatControlState=hidden}, remoteTransition = null, displayChange = null }
+10-09 03:25:55.235   759   858 V WindowManagerShell: onTransitionReady android.os.BinderProxy@df8742e: {id=6 t=CLOSE f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@20ed74d} m=TO_FRONT f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0x436476 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{WCT{android.window.IWindowContainerToken$Stub$Proxy@8795202} m=CLOSE f=NONE leash=Surface(name=Task=14)/@0xe91ea77 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0}]}
+10-09 03:25:55.235   544   562 V WindowManager:     startWCT=WindowContainerTransaction { changes = {} hops = [] errorCallbackToken=null taskFragmentOrganizer=null }
+10-09 03:25:55.235   544   562 V WindowManager:     info={id=6 t=CLOSE f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{dc3aa1f Task{7e2f4e7 #1 type=home}}} m=TO_FRONT f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0x7e4913 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{WCT{RemoteToken{5f807e7 Task{b9acf91 #14 type=standard A=10192:dev.spinon.bootstrap}}} m=CLOSE f=NONE leash=Surface(name=Task=14)/@0x60160b sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0}]}
+10-09 03:25:55.235   759   858 V WindowManagerShell: Transition (#6)android.os.BinderProxy@df8742e@0 ready while (#5)android.os.BinderProxy@6a9f2db@0 is still animating. Notify the animating transition in case they can be merged
+10-09 03:25:55.240   759   858 V WindowManagerShell: Transition animation finished (aborted=false), notifying core (#5)android.os.BinderProxy@6a9f2db@0
+10-09 03:25:55.242   544   562 V WindowManager: Finish Transition #5: created at 10-09 03:25:54.929 collect-started=0.018ms request-sent=0.049ms started=2.784ms ready=192.587ms sent=227.788ms finished=311.924ms
+10-09 03:25:55.242   544   558 W WindowManager: Exception thrown during dispatchAppVisibility Window{76c0be2 u0 dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity EXITING}
+10-09 03:25:55.242   544   558 W WindowManager: android.os.DeadObjectException
+10-09 03:25:55.242   544   558 W WindowManager: 	at android.os.BinderProxy.transactNative(Native Method)
+10-09 03:25:55.242   544   558 W WindowManager: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+10-09 03:25:55.242   544   558 W WindowManager: 	at android.view.IWindow$Stub$Proxy.dispatchAppVisibility(IWindow.java:546)
+10-09 03:25:55.242   544   558 W WindowManager: 	at com.android.server.wm.WindowState.sendAppVisibilityToClients(WindowState.java:3271)
+10-09 03:25:55.242   544   558 W WindowManager: 	at com.android.server.wm.WindowContainer.sendAppVisibilityToClients(WindowContainer.java:1221)
+10-09 03:25:55.242   544   558 W WindowManager: 	at com.android.server.wm.WindowToken.setClientVisible(WindowToken.java:409)
+10-09 03:25:55.242   544   558 W WindowManager: 	at com.android.server.wm.ActivityRecord.setClientVisible(ActivityRecord.java:6946)
+10-09 03:25:55.242   544   558 W WindowManager: 	at com.android.server.wm.ActivityRecord.postApplyAnimation(ActivityRecord.java:5637)
+10-09 03:25:55.242   544   558 W WindowManager: 	at com.android.server.wm.ActivityRecord.commitVisibility(ActivityRecord.java:5580)
+10-09 03:25:55.242   544   558 W WindowManager: 	at com.android.server.wm.Transition.finishTransition(Transition.java:1151)
+10-09 03:25:55.242   544   558 W WindowManager: 	at com.android.server.wm.TransitionController.finishTransition(TransitionController.java:868)
+10-09 03:25:55.242   544   558 W WindowManager: 	at com.android.server.wm.WindowOrganizerController.finishTransition(WindowOrganizerController.java:396)
+10-09 03:25:55.242   544   558 W WindowManager: 	at android.window.IWindowOrganizerController$Stub.onTransact(IWindowOrganizerController.java:286)
+10-09 03:25:55.242   544   558 W WindowManager: 	at com.android.server.wm.WindowOrganizerController.onTransact(WindowOrganizerController.java:181)
+10-09 03:25:55.242   544   558 W WindowManager: 	at android.os.Binder.execTransactInternal(Binder.java:1344)
+10-09 03:25:55.242   544   558 W WindowManager: 	at android.os.Binder.execTransact(Binder.java:1275)
+10-09 03:25:55.242   544   558 I Process : Sending signal. PID: 4069 SIG: 9
+10-09 03:25:55.243   759   858 V WindowManagerShell: Playing animation for (#6)android.os.BinderProxy@df8742e@0
+10-09 03:25:55.243   759   858 V WindowManagerShell:  try handler com.android.wm.shell.transition.DefaultMixedHandler@a7f3244
+10-09 03:25:55.243   759   858 V WindowManagerShell:  try handler com.android.wm.shell.keyguard.KeyguardTransitionHandler@e114f2d
+10-09 03:25:55.243   759   858 V WindowManagerShell:  try handler com.android.wm.shell.activityembedding.ActivityEmbeddingController@d4c9c62
+10-09 03:25:55.243   759   858 V WindowManagerShell:  try handler com.android.wm.shell.recents.RecentsTransitionHandler@710a1f3
+10-09 03:25:55.243   759   858 V ShellRecents: RecentsTransitionHandler.startAnimation: no controller found
+10-09 03:25:55.243   759   858 V WindowManagerShell:  try handler com.android.wm.shell.pip.PipTransition@85f2eb0
+10-09 03:25:55.243   759   858 V WindowManagerShell:  try handler com.android.wm.shell.splitscreen.StageCoordinator@ce0b129
+10-09 03:25:55.243   759   858 V WindowManagerShell:  try handler com.android.wm.shell.transition.RemoteTransitionHandler@5c1cae
+10-09 03:25:55.243   759   858 V WindowManagerShell: Transition doesn't have explicit remote, search filters for match for {id=6 t=CLOSE f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@20ed74d} m=TO_FRONT f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0x436476 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{WCT{android.window.IWindowContainerToken$Stub$Proxy@8795202} m=CLOSE f=NONE leash=Surface(name=Task=14)/@0xe91ea77 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0}]}
+10-09 03:25:55.243   759   858 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0] notFlags=0x0 checks=[{atype=dream independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=ANY topActivity=null},{atype=home independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@4bf1867, appThread = android.app.IApplicationThread$Stub$Proxy@576f614, debugName = LauncherToDream }}
+10-09 03:25:55.245   759   858 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0] notFlags=0x100 checks=[{atype=home independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=TOP topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity}},{atype=standard independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@3d75f80, appThread = android.app.IApplicationThread$Stub$Proxy@eccd9b9, debugName = QuickstepLaunchHome }}
+10-09 03:25:55.245   759   858 D RemoteTransitionHandler: Found filterPair{{types=[] flags=0x0] notFlags=0x100 checks=[{atype=home independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=TOP topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity}},{atype=standard independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@3d75f80, appThread = android.app.IApplicationThread$Stub$Proxy@eccd9b9, debugName = QuickstepLaunchHome }}
+10-09 03:25:55.246   759   858 V WindowManagerShell:  Delegate animation for #6 to RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@3d75f80, appThread = android.app.IApplicationThread$Stub$Proxy@eccd9b9, debugName = QuickstepLaunchHome }
+10-09 03:25:55.251   759   858 V WindowManagerShell:  animated by com.android.wm.shell.transition.RemoteTransitionHandler@5c1cae
+10-09 03:25:55.252   544  1594 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+10-09 03:25:55.271   544  1834 I ImeTracker: com.google.android.apps.nexuslauncher:fc87765b: onRequestHide at ORIGIN_SERVER_HIDE_INPUT reason HIDE_UNSPECIFIED_WINDOW
+10-09 03:25:55.271   544  1834 I ImeTracker: com.google.android.apps.nexuslauncher:fc87765b: onCancelled at PHASE_SERVER_SHOULD_HIDE
+10-09 03:25:55.272  1426  1426 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():3227 
+10-09 03:25:55.273  1426  1426 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2087 repeatCheckTimes = 0, unlocked = true
+10-09 03:25:55.273  1426  1426 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1877 onStartInput(EditorInfo{inputType=0x0(NULL) imeOptions=0x0 privateImeOptions=null actionName=UNSPECIFIED actionLabel=null actionId=0 initialSelStart=-1 initialSelEnd=-1 initialCapsMode=0x0 hintText=null label=null packageName=com.google.android.apps.nexuslauncher fieldId=0 fieldName=null extras=null}, false)
+10-09 03:25:55.273  1426  1426 I GoogleInputMethodService: GoogleInputMethodService.shouldHideHeaderOnInitialState():4008 ShouldHideHeaderOnInitialState = false
+10-09 03:25:55.273  1426  1426 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2087 repeatCheckTimes = 2, unlocked = true
+10-09 03:25:55.276   759   955 D EGL_emulation: app_time_stats: avg=1110.36ms min=6.59ms max=10419.76ms count=10
+10-09 03:25:55.277   544   566 W WindowManager: Failed to deliver inset control state change to w=Window{76c0be2 u0 dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity EXITING}
+10-09 03:25:55.277   544   566 W WindowManager: android.os.DeadObjectException
+10-09 03:25:55.277   544   566 W WindowManager: 	at android.os.BinderProxy.transactNative(Native Method)
+10-09 03:25:55.277   544   566 W WindowManager: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+10-09 03:25:55.277   544   566 W WindowManager: 	at android.view.IWindow$Stub$Proxy.insetsControlChanged(IWindow.java:479)
+10-09 03:25:55.277   544   566 W WindowManager: 	at com.android.server.wm.WindowState.notifyInsetsControlChanged(WindowState.java:3802)
+10-09 03:25:55.277   544   566 W WindowManager: 	at com.android.server.wm.InsetsStateController.lambda$notifyPendingInsetsControlChanged$3(InsetsStateController.java:343)
+10-09 03:25:55.277   544   566 W WindowManager: 	at com.android.server.wm.InsetsStateController.$r8$lambda$8yykPRG1GyNq_J17QvL9d5xANMc(InsetsStateController.java:0)
+10-09 03:25:55.277   544   566 W WindowManager: 	at com.android.server.wm.InsetsStateController$$ExternalSyntheticLambda2.run(R8$$SyntheticClass:0)
+10-09 03:25:55.277   544   566 W WindowManager: 	at com.android.server.wm.WindowAnimator.executeAfterPrepareSurfacesRunnables(WindowAnimator.java:294)
+10-09 03:25:55.277   544   566 W WindowManager: 	at com.android.server.wm.RootWindowContainer.performSurfacePlacementNoTrace(RootWindowContainer.java:811)
+10-09 03:25:55.277   544   566 W WindowManager: 	at com.android.server.wm.RootWindowContainer.performSurfacePlacement(RootWindowContainer.java:756)
+10-09 03:25:55.277   544   566 W WindowManager: 	at com.android.server.wm.WindowSurfacePlacer.performSurfacePlacementLoop(WindowSurfacePlacer.java:177)
+10-09 03:25:55.277   544   566 W WindowManager: 	at com.android.server.wm.WindowSurfacePlacer.performSurfacePlacement(WindowSurfacePlacer.java:126)
+10-09 03:25:55.277   544   566 W WindowManager: 	at com.android.server.wm.WindowSurfacePlacer.performSurfacePlacement(WindowSurfacePlacer.java:115)
+10-09 03:25:55.277   544   566 W WindowManager: 	at com.android.server.wm.WindowSurfacePlacer$Traverser.run(WindowSurfacePlacer.java:57)
+10-09 03:25:55.277   544   566 W WindowManager: 	at android.os.Handler.handleCallback(Handler.java:958)
+10-09 03:25:55.277   544   566 W WindowManager: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+10-09 03:25:55.277   544   566 W WindowManager: 	at android.os.Looper.loopOnce(Looper.java:205)
+10-09 03:25:55.277   544   566 W WindowManager: 	at android.os.Looper.loop(Looper.java:294)
+10-09 03:25:55.277   544   566 W WindowManager: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+10-09 03:25:55.277   544   566 W WindowManager: 	at com.android.server.ServiceThread.run(ServiceThread.java:46)
+10-09 03:25:55.301  1426  1441 W putmethod.latin: Cleared Reference was only reachable from finalizer (only reported once)
+10-09 03:25:55.438   759   955 D EGL_emulation: app_time_stats: avg=4470.80ms min=33.13ms max=8908.48ms count=2
+10-09 03:25:55.621   759   858 V WindowManagerShell: Transition animation finished (aborted=false), notifying core (#6)android.os.BinderProxy@df8742e@0
+10-09 03:25:55.624   544   562 V WindowManager: Finish Transition #6: created at 10-09 03:25:55.200 collect-started=0.01ms request-sent=0.039ms started=1.787ms ready=8.158ms sent=33.927ms finished=421.373ms
+10-09 03:25:55.626   759   858 V WindowManagerShell: Track 0 became idle
+10-09 03:25:55.626   759   858 V WindowManagerShell: All active transition animations finished
+10-09 03:25:55.630   544   565 W ActivityManager: setHasOverlayUi called on unknown pid: 4069
+10-09 03:25:55.632   544   905 W InputManager-JNI: Input channel object '11fd482 Splash Screen dev.spinon.bootstrap (client)' was disposed without first being removed with the input manager!
+10-09 03:25:55.645   392   392 E BpTransactionCompletedListener: Failed to transact (-32)
+10-09 03:25:55.663   544   905 W WindowManager: Failed looking up window session=Session{2976204 759:u0a10169} callers=com.android.server.wm.WindowManagerService.windowForClientLocked:6034 com.android.server.wm.WindowManagerService.relayoutWindow:2190 com.android.server.wm.Session.relayout:249 
+10-09 03:25:55.667   759   917 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=falsecallback=android.view.ViewRootImpl$$ExternalSyntheticLambda17@f5b597e
+10-09 03:25:55.668   544   558 W WindowManager: Failed looking up window session=Session{2976204 759:u0a10169} callers=com.android.server.wm.WindowManagerService.windowForClientLocked:6034 com.android.server.wm.WindowManagerService.removeWindow:1974 com.android.server.wm.Session.remove:231 
+10-09 03:25:55.668   544   905 W WindowManager: Failed looking up window session=Session{2976204 759:u0a10169} callers=com.android.server.wm.WindowManagerService.windowForClientLocked:6034 com.android.server.wm.Session.setOnBackInvokedCallbackInfo:944 android.view.IWindowSession$Stub.onTransact:1145 
+10-09 03:25:55.668   544   905 I WindowManager: setOnBackInvokedCallback(): No window state for package:com.android.systemui
+10-09 03:25:55.740   544  4434 D libEGL  : loaded /vendor/lib64/egl/libEGL_emulation.so
+10-09 03:25:55.741   544  4434 D libEGL  : loaded /vendor/lib64/egl/libGLESv1_CM_emulation.so
+10-09 03:25:55.741   544  4434 D libEGL  : loaded /vendor/lib64/egl/libGLESv2_emulation.so
+10-09 03:25:55.755   544  4434 W OpenGLRenderer: Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+10-09 03:25:55.755   544  4434 W OpenGLRenderer: Failed to initialize 101010-2 format, error = EGL_SUCCESS
+10-09 03:25:55.760  2158  3453 I cr_CronetUrlRequestContext: destroyNativeStreamLocked org.chromium.net.impl.CronetBidirectionalStream@34c0afb
+10-09 03:25:55.770  2158  3422 I Bugle   : VerifiedSmsEnabledCheckerImpl: VSMS is disabled via Phenotype flag.
+10-09 03:25:55.771  2158  2380 I Bugle   : VerifiedSmsStartupTask: Checking if Verified SMS tasks should be enqueued. feature supported: false, feature enabled: false, eligible / has registered key: false, C11N: false
+10-09 03:25:55.771  2158  2380 I Bugle   : VerifiedSmsStartupTask: Not enqueuing VSMS periodic task, VSMS is disabled or not supported.
+10-09 03:25:55.771  2158  2676 I Bugle   : VerifiedSmsStartupTask: Not calling C11N to get phone numbers.
+10-09 03:25:56.253  1667  1667 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.feedback.internal.IFeedbackService dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+10-09 03:25:56.332   544   558 D WifiNl80211Manager: Scan result ready event
+10-09 03:25:56.332   544   558 D WifiNative: Scan result ready event
+10-09 03:25:56.418   544   722 I SdkSandboxManager: Reconciling sdk data package directories for 0
+10-09 03:25:56.455   759   955 D EGL_emulation: app_time_stats: avg=15.26ms min=0.71ms max=50.11ms count=52
+10-09 03:25:56.664  1616  1616 I BgTaskExecutorImpl: (REDACTED) Starting %s background task %s.
+10-09 03:25:56.666  1616  2408 I NetworkRecognitionRnr: Using pair HTTP connection
+10-09 03:25:56.668  1616  3537 I A       : [Upload] Connected
+10-09 03:25:56.669  1616  1616 E A       : onError
+10-09 03:25:56.669  1616  1616 E A       : com.google.android.apps.gsa.shared.speech.a.m: errorCode: 65561, engine: 2
+10-09 03:25:56.669  1616  1616 E A       : 	at com.google.android.apps.gsa.staticplugins.da.a.f.a(PG:3)
+10-09 03:25:56.669  1616  1616 E A       : 	at com.google.android.apps.gsa.s3.o.gO(PG:1)
+10-09 03:25:56.669  1616  1616 E A       : 	at com.google.cc.g.a.f.e(PG:2)
+10-09 03:25:56.669  1616  1616 E A       : 	at com.google.android.apps.gsa.speech.k.a.g.d(PG:22)
+10-09 03:25:56.669  1616  1616 E A       : 	at com.google.android.apps.gsa.speech.k.a.g.jB(PG:6)
+10-09 03:25:56.669  1616  1616 E A       : 	at com.google.android.apps.gsa.s3.p.c(PG:14)
+10-09 03:25:56.669  1616  1616 E A       : 	at com.google.android.apps.gsa.s3.q.run(PG:1)
+10-09 03:25:56.669  1616  1616 E A       : 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+10-09 03:25:56.669  1616  1616 E A       : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+10-09 03:25:56.669  1616  1616 E A       : 	at com.google.android.apps.gsa.shared.util.c.a.e.run(PG:2)
+10-09 03:25:56.669  1616  1616 E A       : 	at com.google.android.apps.gsa.shared.util.c.a.bi.run(PG:1)
+10-09 03:25:56.669  1616  1616 E A       : 	at com.google.android.apps.gsa.shared.util.c.a.bi.run(PG:1)
+10-09 03:25:56.669  1616  1616 E A       : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-09 03:25:56.669  1616  1616 E A       : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-09 03:25:56.669  1616  1616 E A       : 	at java.lang.Thread.run(Thread.java:1012)
+10-09 03:25:56.669  1616  1616 E A       : 	at com.google.android.apps.gsa.shared.util.c.a.l.run(PG:5)
+10-09 03:25:56.669  1616  1616 E A       : Caused by: com.google.android.apps.gsa.shared.speech.a.o: errorCode: 65586, engine: 2
+10-09 03:25:56.669  1616  1616 E A       : 	... 15 more
+10-09 03:25:56.669  1616  1616 E A       : Caused by: com.google.android.apps.gsa.shared.speech.a.k: errorCode: 401, engine: 2
+10-09 03:25:56.669  1616  1616 E A       : 	at com.google.android.apps.gsa.assistant.shared.n.h.a(PG:5)
+10-09 03:25:56.669  1616  1616 E A       : 	at com.google.android.apps.gsa.s3.producers.j.hh(PG:2)
+10-09 03:25:56.669  1616  1616 E A       : 	at com.google.android.apps.gsa.speech.k.a.g.d(PG:16)
+10-09 03:25:56.669  1616  1616 E A       : 	... 12 more
+10-09 03:25:56.669  1616  3537 I NetworkRecognitionRnr: Using pair HTTP connection
+10-09 03:25:56.670  1616  3538 I A       : [Upload] Connected
+10-09 03:25:56.671  1616  1616 W A       : Failed to sync device settings.
+10-09 03:25:56.671  1616  1616 I A       : Retrying to sync device settings.
+10-09 03:25:56.673   544   905 W JobScheduler: Job didn't exist in JobStore: ad73010 #u0a132/-353 com.google.android.googlequicksearchbox/com.google.android.apps.gsa.tasks.BackgroundTasksJobService
+10-09 03:25:56.906  1286  1286 I Nearby  : Successfully shutdown executor MBleClient.backgroundExecutor. [CONTEXT service_id=49 ]
+10-09 03:25:56.906  1286  1286 I Nearby  : Successfully shutdown executor MBleClient.alarmExecutor. [CONTEXT service_id=49 ]

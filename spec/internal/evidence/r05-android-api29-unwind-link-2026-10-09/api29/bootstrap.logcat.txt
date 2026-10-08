@@ -1,0 +1,322 @@
+--------- beginning of system
+10-09 03:23:55.291   374  1151 I ActivityManager: Killing 2307:com.google.android.configupdater/u0a117 (adj 985): empty #17
+--------- beginning of main
+10-09 03:23:55.318   176   176 I Zygote  : Process 2307 exited due to signal 9 (Killed)
+10-09 03:23:55.337   374   405 I libprocessgroup: Successfully killed process cgroup uid 10117 pid 2307 in 45ms
+10-09 03:23:55.456   374  1175 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+10-09 03:23:55.456   374   403 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+10-09 03:23:55.472  1191  1191 V MultiDisplayServiceReceiver: startService
+10-09 03:23:55.473  1191  1191 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.startService:1570 android.content.ContextWrapper.startService:669 android.content.ContextWrapper.startService:669 com.android.emulator.multidisplay.MultiDisplayServiceReceiver.onReceive:33 android.app.ActivityThread.handleReceiver:3788 
+10-09 03:23:55.473   374  1175 W FastPrintWriter: Write failure
+10-09 03:23:55.473   374  1175 W FastPrintWriter: java.io.IOException: write failed: EPIPE (Broken pipe)
+10-09 03:23:55.473   374  1175 W FastPrintWriter: 	at libcore.io.IoBridge.write(IoBridge.java:544)
+10-09 03:23:55.473   374  1175 W FastPrintWriter: 	at java.io.FileOutputStream.write(FileOutputStream.java:392)
+10-09 03:23:55.473   374  1175 W FastPrintWriter: 	at com.android.internal.util.FastPrintWriter.flushBytesLocked(FastPrintWriter.java:354)
+10-09 03:23:55.473   374  1175 W FastPrintWriter: 	at com.android.internal.util.FastPrintWriter.flushLocked(FastPrintWriter.java:377)
+10-09 03:23:55.473   374  1175 W FastPrintWriter: 	at com.android.internal.util.FastPrintWriter.flush(FastPrintWriter.java:412)
+10-09 03:23:55.473   374  1175 W FastPrintWriter: 	at com.android.server.am.ActivityManagerShellCommand$IntentReceiver.performReceive(ActivityManagerShellCommand.java:691)
+10-09 03:23:55.473   374  1175 W FastPrintWriter: 	at com.android.server.am.BroadcastQueue.performReceiveLocked(BroadcastQueue.java:609)
+10-09 03:23:55.473   374  1175 W FastPrintWriter: 	at com.android.server.am.BroadcastQueue.processNextBroadcastLocked(BroadcastQueue.java:1131)
+10-09 03:23:55.473   374  1175 W FastPrintWriter: 	at com.android.server.am.ActivityManagerService.finishReceiver(ActivityManagerService.java:15677)
+10-09 03:23:55.473   374  1175 W FastPrintWriter: 	at android.app.IActivityManager$Stub.onTransact(IActivityManager.java:1993)
+10-09 03:23:55.473   374  1175 W FastPrintWriter: 	at com.android.server.am.ActivityManagerService.onTransact(ActivityManagerService.java:2741)
+10-09 03:23:55.473   374  1175 W FastPrintWriter: 	at android.os.Binder.execTransactInternal(Binder.java:1021)
+10-09 03:23:55.473   374  1175 W FastPrintWriter: 	at android.os.Binder.execTransact(Binder.java:994)
+10-09 03:23:55.473   374  1175 W FastPrintWriter: Caused by: android.system.ErrnoException: write failed: EPIPE (Broken pipe)
+10-09 03:23:55.473   374  1175 W FastPrintWriter: 	at libcore.io.Linux.writeBytes(Native Method)
+10-09 03:23:55.473   374  1175 W FastPrintWriter: 	at libcore.io.Linux.write(Linux.java:294)
+10-09 03:23:55.473   374  1175 W FastPrintWriter: 	at libcore.io.ForwardingOs.write(ForwardingOs.java:241)
+10-09 03:23:55.473   374  1175 W FastPrintWriter: 	at libcore.io.BlockGuardOs.write(BlockGuardOs.java:416)
+10-09 03:23:55.473   374  1175 W FastPrintWriter: 	at libcore.io.IoBridge.write(IoBridge.java:539)
+10-09 03:23:55.473   374  1175 W FastPrintWriter: 	... 12 more
+10-09 03:23:55.476  1191  3150 I android_emulator_multidisplay_JNI: multidisplay pipe connected!!!
+10-09 03:23:55.477  1191  3150 D MultiDisplayService: received 1
+10-09 03:23:55.477  1191  3150 D MultiDisplayService: received 0
+10-09 03:23:55.477  1191  3150 D MultiDisplayService: received 1080
+10-09 03:23:55.477  1191  3150 D MultiDisplayService: received 1920
+10-09 03:23:55.477  1191  3150 D MultiDisplayService: received 0
+10-09 03:23:55.477  1191  3150 D MultiDisplayService: received 0
+10-09 03:23:55.477  1191  3150 E MultiDisplayService: invalid parameters for add/modify display
+10-09 03:23:55.486   745   745 I PhenotypeUpdate: onReceive() urgent = false
+10-09 03:23:55.504  2046  3141 I Bugle   : BuglePhenotypeBroadcastReceiver.onReceive
+10-09 03:23:55.507   176   176 D Zygote  : Forked child process 3158
+10-09 03:23:55.515   374   404 I ActivityManager: Start proc 3158:com.google.android.apps.messaging:rcs/u0a143 for broadcast {com.google.android.apps.messaging/com.google.android.ims.library.phenotype.PhenotypeConfigurationReceiver}
+10-09 03:23:55.522   853  1832 I Auth    : [AuthManaged,PasswordComplexityHelperImpl] Updating password complexity components state.
+10-09 03:23:55.523   853  1832 I Auth    : [AuthManaged,PasswordComplexityHelperImpl] Disabling com.google.android.gms.auth.managed.admin.DeviceAdminReceiver
+10-09 03:23:55.523   853  1832 I Auth    : [AuthManaged,PasswordComplexityHelperImpl] Disabling com.google.android.gms.auth.managed.ui.SetNewPasswordActivity
+10-09 03:23:55.531  3158  3158 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.hidl.base-V1.0-java.jar
+10-09 03:23:55.531  3158  3158 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.hidl.manager-V1.0-java.jar
+10-09 03:23:55.531  3158  3158 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.hidl.base-V1.0-java.jar
+10-09 03:23:55.531   853  3156 I aorp    : updateFromConfigurations using legacy put method [CONTEXT service_id=204 ]
+10-09 03:23:55.531   374   374 V SettingsProvider: Notifying for 0: content://settings/global/phenotype_test_setting
+10-09 03:23:55.533  3158  3158 I s.messaging:rc: The ClassLoaderContext is a special shared library.
+10-09 03:23:55.535  3158  3158 I s.messaging:rc: The ClassLoaderContext is a special shared library.
+10-09 03:23:55.537  3158  3158 I MultiDex: VM with version 2.1.0 has multidex support
+10-09 03:23:55.538  3158  3158 I MultiDex: install
+10-09 03:23:55.538  3158  3158 I MultiDex: VM has multidex support, MultiDex support library is disabled.
+10-09 03:23:55.544  2046  2046 I BugleRcs: RcsAvailability: updating
+10-09 03:23:55.544  2046  3184 I BugleRcs: RcsAvailability: No minimum Cs.apk version is set, not checking Cs.apk version
+10-09 03:23:55.546  2046  2112 I BugleRcs: MCCMNC is NOT RCS enabled
+10-09 03:23:55.546  2046  2112 I BugleRcs: Prod Fi device disabled - Not a Fi device
+10-09 03:23:55.546  2046  3184 I BugleRcs: RcsAvailability: config server url unavailable - Carrier is not RCS enabled
+10-09 03:23:55.548  3158  3183 I Bugle   : GServicesValues:
+10-09 03:23:55.548  3158  3183 I Bugle   : bugle_enable_primes_crash_metrics: true
+10-09 03:23:55.548  3158  3183 I Bugle   : bugle_max_telemetry_upload_retries: 10
+10-09 03:23:55.548  3158  3183 I Bugle   : bugle_sticker_set_list_version: 3
+10-09 03:23:55.550   853  3156 I Auth    : [AuthManaged,PasswordComplexityHelperImpl] Updating password complexity components state.
+10-09 03:23:55.550   853  3156 I Auth    : [AuthManaged,PasswordComplexityHelperImpl] Disabling com.google.android.gms.auth.managed.admin.DeviceAdminReceiver
+10-09 03:23:55.550   853  3156 I Auth    : [AuthManaged,PasswordComplexityHelperImpl] Disabling com.google.android.gms.auth.managed.ui.SetNewPasswordActivity
+10-09 03:23:55.551  3158  3158 W BugleStartup: StartupHandler: ContentProvider startup tasks did not execute before Application onCreate(), executed in onApplicationCreated().
+10-09 03:23:55.552  3158  3158 I Bugle   : BugleApplicationBase: Bugle version: 4.1.067 (ettin_rc12_alldpi.arm64-v8a.phone)
+10-09 03:23:55.571   374   392 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+10-09 03:23:55.571   374   403 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+10-09 03:23:55.578   853  3152 I Auth    : [AuthManaged,PasswordComplexityHelperImpl] Updating password complexity components state.
+10-09 03:23:55.578   853  3152 I Auth    : [AuthManaged,PasswordComplexityHelperImpl] Disabling com.google.android.gms.auth.managed.admin.DeviceAdminReceiver
+10-09 03:23:55.579   853  3152 I Auth    : [AuthManaged,PasswordComplexityHelperImpl] Disabling com.google.android.gms.auth.managed.ui.SetNewPasswordActivity
+10-09 03:23:55.581   853  3152 I Auth    : [AuthManaged,PasswordComplexityHelperImpl] Updating password complexity components state.
+10-09 03:23:55.581   853  3152 I Auth    : [AuthManaged,PasswordComplexityHelperImpl] Disabling com.google.android.gms.auth.managed.admin.DeviceAdminReceiver
+10-09 03:23:55.581   853  3152 I Auth    : [AuthManaged,PasswordComplexityHelperImpl] Disabling com.google.android.gms.auth.managed.ui.SetNewPasswordActivity
+10-09 03:23:55.601   374  1151 W ActivityManager: Unable to start service Intent { act=com.google.android.c2dm.intent.REGISTRATION pkg=com.google.android.apps.maps } U=0: not found
+10-09 03:23:55.607  3158  3185 W native  : commandlineflags.cc:976 Ignoring RegisterValidateFunction() for flag pointer 0x79a5be0868: no flag found at that address
+10-09 03:23:55.609  3158  3185 W native  : commandlineflags.cc:976 Ignoring RegisterValidateFunction() for flag pointer 0x79a553a9a8: no flag found at that address
+10-09 03:23:55.610  3158  3185 W native  : commandlineflags.cc:976 Ignoring RegisterValidateFunction() for flag pointer 0x79a5419838: no flag found at that address
+10-09 03:23:55.613  3158  3185 W native  : commandlineflags.cc:976 Ignoring RegisterValidateFunction() for flag pointer 0x79a524d4d8: no flag found at that address
+10-09 03:23:55.614   853  1832 I PTCommittedOperation: Receive new configuration for com.google.android.gms.clearcut.public
+10-09 03:23:55.615  1031  1521 I ChromeSync: [Sync,SyncIntentOperation] Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED flg=0x10 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }.
+10-09 03:23:55.618  1031  1520 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-09 03:23:55.621  1031  3208 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-09 03:23:55.634  1031  1046 W SQLiteConnectionPool: A SQLiteConnection object for database '/data/user/0/com.google.android.gms/databases/lighter_registration.db' was leaked!  Please fix your application to end transactions in progress properly and to close the database when it is no longer needed.
+10-09 03:23:55.634  1031  1046 W System  : A resource failed to call close. 
+10-09 03:23:55.634  1031  1046 I chatty  : uid=10119(com.google.android.gms) FinalizerDaemon identical 1 line
+10-09 03:23:55.634  1031  1046 W System  : A resource failed to call close. 
+10-09 03:23:55.635  1031  3210 I LT_StubFactory: tachyonHostName = instantmessaging-pa.googleapis.com and tachyonPortNumber = 443
+10-09 03:23:55.636  1031  3210 D LT_OkHttpChannelBuilder: Using Spatula header keyless authentication.
+10-09 03:23:55.641  1031  3210 D LT_Lighter: finalizing
+10-09 03:23:55.641  1031  3210 D LT_LiMsgController: No accounts with open bind channel
+10-09 03:23:55.643   853  2029 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+10-09 03:23:55.643   853  2029 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+10-09 03:23:55.644  1031  1031 D LT_ClntIntrcptrFctryV12: Spatula header: CjYKFmNvbS5nb29nbGUuYW5kcm9pZC5nbXMaHFdPSEVFejkwUWV3OUxDY0NjS0ZJQXRwSHVnND0YnoXM+betgvA+
+10-09 03:23:55.645  1031  3214 I LT_PhenotypeApiImplV12: Retrieve experiment configurations for: 
+10-09 03:23:55.646  1031  1031 I LT_PhenotypeApiImplV12: Phenotype registration succeeded
+10-09 03:23:55.824   236   236 I keystore: del USRPKEY_unstable.c7202ece89390c490b1b94d5b71225e1.A-6137473223784425739 10119
+10-09 03:23:55.824   236   236 I keystore: del USRSKEY_unstable.c7202ece89390c490b1b94d5b71225e1.A-6137473223784425739 10119
+10-09 03:23:55.824   236   236 I keystore: del USRCERT_unstable.c7202ece89390c490b1b94d5b71225e1.A-6137473223784425739 10119
+10-09 03:23:55.824   236   236 I keystore: del CACERT_unstable.c7202ece89390c490b1b94d5b71225e1.A-6137473223784425739 10119
+10-09 03:23:55.826   236  3224 D DropBoxManager: About to call service->add()
+10-09 03:23:55.826   374   392 I DropBoxManagerService: add tag=keymaster isTagEnabled=true flags=0x0
+10-09 03:23:55.827   236  3224 D DropBoxManager: service->add returned No error
+10-09 03:23:55.830   236   236 I keystore: del USRPKEY_unstable.c7202ece89390c490b1b94d5b71225e1.A-6137473223784425739 10119
+10-09 03:23:55.830   236   236 I keystore: del USRCERT_unstable.c7202ece89390c490b1b94d5b71225e1.A-6137473223784425739 10119
+10-09 03:23:55.831   236   236 I keystore: del CACERT_unstable.c7202ece89390c490b1b94d5b71225e1.A-6137473223784425739 10119
+10-09 03:23:55.831   236   236 I keystore: del USRPKEY_unstable.c7202ece89390c490b1b94d5b71225e1.B-6137473223784425739 10119
+10-09 03:23:55.831   236   236 I keystore: del USRSKEY_unstable.c7202ece89390c490b1b94d5b71225e1.B-6137473223784425739 10119
+10-09 03:23:55.832   236   236 I keystore: del USRCERT_unstable.c7202ece89390c490b1b94d5b71225e1.B-6137473223784425739 10119
+10-09 03:23:55.832   236   236 I keystore: del CACERT_unstable.c7202ece89390c490b1b94d5b71225e1.B-6137473223784425739 10119
+10-09 03:23:55.839  1859  1999 D HostConnection: HostConnection::get() New Host Connection established 0x7a0541a7e0, tid 1999
+10-09 03:23:55.839  1859  1999 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_null_optional_strings ANDROID_EMU_vulkan_create_resources_with_requirements ANDROID_EMU_YUV_Cache ANDROID_EMU_vulkan_ignored_handles ANDROID_EMU_vulkan_free_memory_sync ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_sync_buffer_data ANDROID_EMU_vulkan_async_qsri ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_1 
+10-09 03:23:55.839  1859  1999 D EGL_emulation: eglCreateContext: 0x7a0541a9c0: maj 3 min 1 rcv 4
+10-09 03:23:55.840  1859  1999 D EGL_emulation: eglMakeCurrent: 0x7a0541a9c0: ver 3 1 (tinfo 0x7a9ac9f5e0)
+10-09 03:23:55.840  1859  1999 E eglCodecCommon: glUtilsParamSize: unknow param 0x000082da
+10-09 03:23:55.840  1859  1999 E eglCodecCommon: glUtilsParamSize: unknow param 0x000082da
+10-09 03:23:55.845   175  3229 E ResolverController: No valid NAT64 prefix (100, <unspecified>/0)
+10-09 03:23:55.848  1859  1999 W SystemServiceRegistry: No service published for: persistent_data_block
+10-09 03:23:55.928  1031  2500 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+10-09 03:23:55.928  1031  2500 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414019@20.24.14 (040400-319035315):2)
+10-09 03:23:55.928  1031  2500 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414019@20.24.14 (040400-319035315):0)
+10-09 03:23:55.978  1031  2500 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+10-09 03:23:55.979  1031  2500 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414019@20.24.14 (040400-319035315):2)
+10-09 03:23:55.979  1031  2500 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414019@20.24.14 (040400-319035315):0)
+10-09 03:23:57.213  3233  3233 I abb     : StartCommandInProcess(73657474696e67730067657400676c6f settings.get.glo [truncated])
+10-09 03:23:57.209   374   374 W Binder:374_1: type=1400 audit(0.0:21): avc: denied { getopt } for scontext=u:r:system_server:s0 tcontext=u:r:shell:s0 tclass=unix_stream_socket permissive=0
+10-09 03:23:57.209   374   374 I chatty  : uid=1000 system_server identical 1 line
+10-09 03:23:57.209   374   374 W Binder:374_1: type=1400 audit(0.0:23): avc: denied { getopt } for scontext=u:r:system_server:s0 tcontext=u:r:shell:s0 tclass=unix_stream_socket permissive=0
+10-09 03:23:57.209   223   223 W adbd    : type=1400 audit(0.0:24): avc: denied { shutdown } for scontext=u:r:adbd:s0 tcontext=u:r:shell:s0 tclass=unix_stream_socket permissive=0
+10-09 03:23:57.215  3233  3233 I abb     : StartCommandInProcess(7061636b61676500696e7374616c6c00 package.install. [truncated])
+10-09 03:23:57.289   374   374 W Binder:374_8: type=1400 audit(0.0:25): avc: denied { getopt } for scontext=u:r:system_server:s0 tcontext=u:r:shell:s0 tclass=unix_stream_socket permissive=0
+10-09 03:23:57.322   374   403 I ActivityManager: Force stopping dev.spinon.bootstrap appid=10144 user=-1: installPackageLI
+10-09 03:23:57.322   374   415 I PackageManager: Update package dev.spinon.bootstrap code path from /data/app/dev.spinon.bootstrap-2aaQROeQH7-d6-ulxhpzEQ== to /data/app/dev.spinon.bootstrap-09uTkEtqP5FZR18vNDiRXQ==; Retain data and using new
+10-09 03:23:57.322   374   415 I PackageManager: Update package dev.spinon.bootstrap resource path from /data/app/dev.spinon.bootstrap-2aaQROeQH7-d6-ulxhpzEQ== to /data/app/dev.spinon.bootstrap-09uTkEtqP5FZR18vNDiRXQ==; Retain data and using new
+10-09 03:23:57.330   374   415 I PackageManager: Un-granting permission android.permission.MANAGE_DOCUMENTS from package com.google.android.youtube (protectionLevel=262146 flags=0x30dbbe45)
+10-09 03:23:57.330   374   415 I PackageManager: Un-granting permission com.google.android.googleapps.permission.GOOGLE_AUTH from package com.android.providers.calendar (protectionLevel=2 flags=0x30883e45)
+10-09 03:23:57.330   374   415 I PackageManager: Un-granting permission com.google.android.googleapps.permission.GOOGLE_AUTH.cl from package com.android.providers.calendar (protectionLevel=2 flags=0x30883e45)
+10-09 03:23:57.330   374   415 I PackageManager: Un-granting permission android.permission.WRITE_SECURE_SETTINGS from package com.google.android.apps.enterprise.dmagent (protectionLevel=50 flags=0x30083e05)
+10-09 03:23:57.331   374   415 I PackageManager: Un-granting permission android.permission.CONNECTIVITY_INTERNAL from package com.google.android.apps.enterprise.dmagent (protectionLevel=18 flags=0x30083e05)
+10-09 03:23:57.331   374   415 I PackageManager: Un-granting permission android.permission.MANAGE_USB from package com.google.android.apps.enterprise.dmagent (protectionLevel=18 flags=0x30083e05)
+10-09 03:23:57.331   374   415 I PackageManager: Un-granting permission android.permission.CHANGE_COMPONENT_ENABLED_STATE from package com.google.android.apps.enterprise.dmagent (protectionLevel=18 flags=0x30083e05)
+10-09 03:23:57.331   374   415 I PackageManager: Un-granting permission android.permission.MANAGE_CA_CERTIFICATES from package com.google.android.apps.enterprise.dmagent (protectionLevel=18 flags=0x30083e05)
+10-09 03:23:57.331   374   415 I PackageManager: Un-granting permission android.permission.MANAGE_USERS from package com.google.android.apps.enterprise.dmagent (protectionLevel=18 flags=0x30083e05)
+10-09 03:23:57.331   374   415 I PackageManager: Un-granting permission com.google.android.setupwizard.READ_DEVICE_ORIGIN from package com.google.android.apps.messaging (protectionLevel=18 flags=0x38cbbe45)
+10-09 03:23:57.331   374   415 I PackageManager: Un-granting permission android.permission.BIND_WALLPAPER from package com.android.camera2 (protectionLevel=18 flags=0x20d8bc45)
+10-09 03:23:57.331   374   415 I PackageManager: Un-granting permission android.permission.REQUEST_INSTALL_PACKAGES from package com.google.android.gm (protectionLevel=66 flags=0x38cbbe45)
+10-09 03:23:57.331   374   415 I PackageManager: Un-granting permission android.permission.BIND_JOB_SERVICE from package com.google.android.music (protectionLevel=2 flags=0x38cbbe65)
+10-09 03:23:57.331   374   415 I PackageManager: Un-granting permission android.permission.CONNECTIVITY_USE_RESTRICTED_NETWORKS from package com.google.android.captiveportallogin (protectionLevel=18 flags=0x38c8be45)
+10-09 03:23:57.331   374   415 I PackageManager: Un-granting permission android.permission.NETWORK_BYPASS_PRIVATE_DNS from package com.google.android.captiveportallogin (protectionLevel=2 flags=0x38c8be45)
+10-09 03:23:57.331   374   415 I PackageManager: Un-granting permission android.permission.REQUEST_INSTALL_PACKAGES from package com.google.android.apps.docs (protectionLevel=66 flags=0x38cbbe45)
+10-09 03:23:57.331   374   415 I PackageManager: Un-granting permission android.permission.INTERACT_ACROSS_USERS from package com.google.android.syncadapters.contacts (protectionLevel=50 flags=0x20883e45)
+10-09 03:23:57.331   374   415 I PackageManager: Un-granting permission android.permission.REQUEST_INSTALL_PACKAGES from package com.android.chrome (protectionLevel=66 flags=0xa0cbbe45)
+10-09 03:23:57.331   374   415 I PackageManager: Un-granting permission com.google.android.apps.now.CURRENT_ACCOUNT_ACCESS from package com.android.chrome (protectionLevel=2 flags=0xa0cbbe45)
+10-09 03:23:57.331   374   415 I PackageManager: Un-granting permission android.permission.CAPTURE_VIDEO_OUTPUT from package com.google.android.gms (protectionLevel=2 flags=0xb0cabe45)
+10-09 03:23:57.331   374   415 I PackageManager: Un-granting permission android.permission.MANAGE_DEVICE_ADMINS from package com.google.android.gms (protectionLevel=2 flags=0xb0cabe45)
+10-09 03:23:57.331   374   415 I PackageManager: Un-granting permission android.permission.MANAGE_ACTIVITY_STACKS from package com.google.android.gms (protectionLevel=2 flags=0xb0cabe45)
+10-09 03:23:57.331   374   415 I PackageManager: Un-granting permission android.permission.CAPTURE_SECURE_VIDEO_OUTPUT from package com.google.android.gms (protectionLevel=2 flags=0xb0cabe45)
+10-09 03:23:57.331   374   415 I PackageManager: Un-granting permission android.permission.MANAGE_ROLLBACKS from package com.google.android.gms (protectionLevel=514 flags=0xb0cabe45)
+10-09 03:23:57.331   374   415 I PackageManager: Un-granting permission android.permission.WRITE_MEDIA_STORAGE from package com.google.android.apps.photos (protectionLevel=18 flags=0x38d9be45)
+10-09 03:23:57.344   374   415 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-09 03:23:57.344   374   415 D PackageManager: Clear ephemeral installer activity
+10-09 03:23:57.346   234   234 E         : Couldn't opendir /data/app/vmdl831072549.tmp: No such file or directory
+10-09 03:23:57.346   234   234 E installd: Failed to delete /data/app/vmdl831072549.tmp: No such file or directory
+10-09 03:23:57.347   374   415 I ActivityManager: Force stopping dev.spinon.bootstrap appid=10144 user=0: pkg removed
+10-09 03:23:57.345   374   374 W Binder:374_8: type=1400 audit(0.0:26): avc: denied { getopt } for scontext=u:r:system_server:s0 tcontext=u:r:shell:s0 tclass=unix_stream_socket permissive=0
+10-09 03:23:57.345   374   374 I chatty  : uid=1000 system_server identical 1 line
+10-09 03:23:57.345   374   374 W Binder:374_8: type=1400 audit(0.0:28): avc: denied { getopt } for scontext=u:r:system_server:s0 tcontext=u:r:shell:s0 tclass=unix_stream_socket permissive=0
+10-09 03:23:57.357   374   471 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-09 03:23:57.359   374   403 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REMOVED dat=package:dev.spinon.bootstrap flg=0x4000010 (has extras) } to com.android.musicfx/.Compatibility$Receiver
+10-09 03:23:57.359   374   403 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REMOVED dat=package:dev.spinon.bootstrap flg=0x4000010 (has extras) } to com.google.android.gms/.games.chimera.GamesSystemBroadcastReceiverProxy
+10-09 03:23:57.359   374   403 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REMOVED dat=package:dev.spinon.bootstrap flg=0x4000010 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+10-09 03:23:57.359   374   403 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REMOVED dat=package:dev.spinon.bootstrap flg=0x4000010 (has extras) } to com.google.android.googlequicksearchbox/com.google.android.apps.gsa.googlequicksearchbox.GelStubAppWatcher
+10-09 03:23:57.359   374   403 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:dev.spinon.bootstrap flg=0x4000010 (has extras) } to com.google.android.packageinstaller/com.android.packageinstaller.PackageInstalledReceiver
+10-09 03:23:57.359   374   403 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:dev.spinon.bootstrap flg=0x4000010 (has extras) } to com.android.musicfx/.Compatibility$Receiver
+10-09 03:23:57.359   374   403 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:dev.spinon.bootstrap flg=0x4000010 (has extras) } to com.google.android.gms/.games.chimera.GamesSystemBroadcastReceiverProxy
+10-09 03:23:57.359   374   403 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:dev.spinon.bootstrap flg=0x4000010 (has extras) } to com.google.android.gms/.gass.chimera.PackageChangeBroadcastReceiver
+10-09 03:23:57.359   374   403 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:dev.spinon.bootstrap flg=0x4000010 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+10-09 03:23:57.359   374   403 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:dev.spinon.bootstrap flg=0x4000010 (has extras) } to com.google.android.googlequicksearchbox/com.google.android.apps.gsa.googlequicksearchbox.GelStubAppWatcher
+10-09 03:23:57.359   374   403 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:dev.spinon.bootstrap flg=0x4000010 (has extras) } to com.google.android.ims/.receivers.RcsAutoStartReceiver
+10-09 03:23:57.359   374   403 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REPLACED dat=package:dev.spinon.bootstrap flg=0x4000010 (has extras) } to com.android.musicfx/.Compatibility$Receiver
+10-09 03:23:57.359   374   403 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REPLACED dat=package:dev.spinon.bootstrap flg=0x4000010 (has extras) } to com.google.android.apps.photos/.account.full.FetchAccountPropertiesAppUpgradeBroadcastReceiver
+10-09 03:23:57.359   374   403 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REPLACED dat=package:dev.spinon.bootstrap flg=0x4000010 (has extras) } to com.google.android.apps.photos/.account.full.SyncAccountsForLoginBroadcastReceiver
+10-09 03:23:57.359   374   403 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REPLACED dat=package:dev.spinon.bootstrap flg=0x4000010 (has extras) } to com.google.android.apps.photos/.experiments.phenotype.full.PhenotypeAppUpgradeBroadcastReceiver
+10-09 03:23:57.359   374   403 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REPLACED dat=package:dev.spinon.bootstrap flg=0x4000010 (has extras) } to com.google.android.apps.photos/.notificationchannels.AppUpdateBroadcastReceiver
+10-09 03:23:57.359   374   403 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REPLACED dat=package:dev.spinon.bootstrap flg=0x4000010 (has extras) } to com.google.android.gms/.gass.chimera.PackageChangeBroadcastReceiver
+10-09 03:23:57.359   374   403 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REPLACED dat=package:dev.spinon.bootstrap flg=0x4000010 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+10-09 03:23:57.359   374   403 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REPLACED dat=package:dev.spinon.bootstrap flg=0x4000010 (has extras) } to com.google.android.googlequicksearchbox/com.google.android.apps.gsa.googlequicksearchbox.GelStubAppWatcher
+10-09 03:23:57.359   374   403 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REPLACED dat=package:dev.spinon.bootstrap flg=0x4000010 (has extras) } to com.google.android.ims/.receivers.RcsAutoStartReceiver
+10-09 03:23:57.362   374   374 I RoleManagerService: Granting default permissions...
+10-09 03:23:57.364   176   176 D Zygote  : Forked child process 3246
+10-09 03:23:57.365   374   471 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-09 03:23:57.370   374   404 I ActivityManager: Start proc 3246:com.android.keychain/1000 for service {com.android.keychain/com.android.keychain.KeyChainService}
+10-09 03:23:57.370   699  1593 E ActivityThread: Failed to find provider info for com.google.android.apps.wellbeing.api
+10-09 03:23:57.382  2623  3245 I SystemConfig: Adding association: com.google.android.as <- com.android.providers.contacts
+10-09 03:23:57.382  2623  3245 I SystemConfig: Adding association: com.google.android.as <- com.android.providers.media
+10-09 03:23:57.382  2623  3245 I SystemConfig: Adding association: com.google.android.as <- com.android.providers.telephony
+10-09 03:23:57.382  2623  3245 I SystemConfig: Adding association: com.google.android.as <- com.android.systemui
+10-09 03:23:57.382  2623  3245 I SystemConfig: Adding association: com.google.android.as <- com.google.android.gms
+10-09 03:23:57.382  2623  3245 I SystemConfig: Adding association: com.google.android.as <- com.google.android.gsf
+10-09 03:23:57.383  2623  3245 W SystemConfig: No directory /product_services/etc/sysconfig, skipping
+10-09 03:23:57.383  2623  3245 W SystemConfig: No directory /product_services/etc/permissions, skipping
+10-09 03:23:57.391   853  3157 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_REMOVED [CONTEXT service_id=17 ]
+10-09 03:23:57.392  3246  3246 I ndroid.keychai: The ClassLoaderContext is a special shared library.
+10-09 03:23:57.400  1031  3266 I Auth    : [SupervisedAccountIntentOperation] onHandleIntent(): android.intent.action.PACKAGE_ADDED
+10-09 03:23:57.400  1031  3266 I Auth    : [SupervisedAccountIntentOperation] This operation is disabled
+10-09 03:23:57.401  1031  3207 I ChromeSync: [Sync,SyncIntentOperation] Handling the intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package:dev.spinon.bootstrap flg=0x4000010 cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }.
+10-09 03:23:57.404   374  2354 W ActivityManager: Unable to start service Intent { act=com.google.android.gms.auth.key.retrieval.service.START pkg=com.google.android.gms } U=0: not found
+10-09 03:23:57.406  1031  3206 I FontLog : Package dev.spinon.bootstrap has no metadata [CONTEXT service_id=132 ]
+10-09 03:23:57.410   582   582 D CarrierSvcBindHelper: No carrier app for: 0
+10-09 03:23:57.411   374  1175 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@4b1237d
+10-09 03:23:57.410   582   582 D CarrierSvcBindHelper: No carrier app for: 0
+10-09 03:23:57.411  1031  1524 E GmsClient: unable to connect to service: com.google.android.gms.auth.key.retrieval.service.START on com.google.android.gms
+10-09 03:23:57.412   582   582 D CarrierConfigLoader: mHandler: 9 phoneId: 0
+10-09 03:23:57.429  3246  3282 W KeyChain: Creating new DB.
+10-09 03:23:57.431  1031  3216 I GmscoreIpa: Using regular flags by method 2 [CONTEXT service_id=255 ]
+10-09 03:23:57.432  3246  3282 W KeyChain: Got Alias from KeyStore: WifiConfigStore.xml.encrypted-checksum.data-integrity-checker-key
+10-09 03:23:57.432  3246  3282 W KeyChain: Existing alias: WifiConfigStore.xml.encrypted-checksum.data-integrity-checker-key
+10-09 03:23:57.432  3246  3282 W KeyChain: Marking as selectable: WifiConfigStore.xml.encrypted-checksum.data-integrity-checker-key
+10-09 03:23:57.441   374   374 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: CM.CCCR->CM.UECNT->CM.CCCR->CM.UECNT@ADk
+10-09 03:23:57.451  1031  2142 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.gms componentName=AppsCorpus serviceId=36
+10-09 03:23:57.467   374   471 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-09 03:23:57.467   374   374 I RoleManagerService: Granting default permissions...
+10-09 03:23:57.472  1031  3207 I ChromeSync: [Persistence,AffiliationManager] One of affiliation or grouping data for android://3DI6Gdrtl7ZNT7OQircifMq1y-PG1EMnoR0DdOKhfN7BLxbI1QNy3RRBHq7xISCun4GQl7UHAxAAvqq-BEHYQg==@dev.spinon.bootstrap/ was not found. Marking affiliation data as stale...
+10-09 03:23:57.476   374   374 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: CM.CCCR->CM.UECNT->CM.CCCR->CM.UECNT@ADk
+10-09 03:23:57.476   582   582 D CarrierSvcBindHelper: No carrier app for: 0
+10-09 03:23:57.477   374   689 I ActivityManager: Force stopping dev.spinon.bootstrap appid=10144 user=0: from pid 3293
+10-09 03:23:57.479   582   582 D CarrierSvcBindHelper: No carrier app for: 0
+10-09 03:23:57.514   853  1832 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+10-09 03:23:57.518   853  3271 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package:com.google.android.gms flg=0x45000010 cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) } [CONTEXT service_id=17 ]
+10-09 03:23:57.521  1031  1586 W Icing   : No valid account for uploading user actions
+10-09 03:23:57.527  1031  1586 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+10-09 03:23:57.528  1031  1568 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.gms componentName=null serviceId=30
+10-09 03:23:57.528   374  1151 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=dev.spinon.bootstrap/.MainActivity} from uid 2000
+10-09 03:23:57.529  1031  1586 I Icing   : updateResources: need to parse acek{com.google.android.gms}
+10-09 03:23:57.533   374  1151 W InputReader: Device has associated, but no associated display id.
+10-09 03:23:57.533   374  1151 I chatty  : uid=1000(system) Binder:374_B identical 8 lines
+10-09 03:23:57.533   374  1151 W InputReader: Device has associated, but no associated display id.
+10-09 03:23:57.535   374   398 E system_server: Invalid ID 0x00000000.
+10-09 03:23:57.535   374   398 W System  : ClassLoader referenced unknown path: 
+10-09 03:23:57.544   176   176 D Zygote  : Forked child process 3304
+10-09 03:23:57.546  3304  3304 I pinon.bootstra: Late-enabling -Xcheck:jni
+10-09 03:23:57.547   374   404 I ActivityManager: Start proc 3304:dev.spinon.bootstrap/u0a144 for activity {dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity}
+10-09 03:23:57.555  3304  3304 E pinon.bootstra: Unknown bits set in runtime_flags: 0x8000
+10-09 03:23:57.557  1031  1586 W Icing   : No valid account for uploading user actions
+10-09 03:23:57.559   190   190 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+10-09 03:23:57.561   122   122 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
+10-09 03:23:57.561   374   398 W Gralloc3: mapper 3.x is not supported
+10-09 03:23:57.563   374   398 D HostConnection: createUnique: call
+10-09 03:23:57.563   374   398 D HostConnection: HostConnection::get() New Host Connection established 0x7992f1f320, tid 398
+10-09 03:23:57.563   374   398 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_null_optional_strings ANDROID_EMU_vulkan_create_resources_with_requirements ANDROID_EMU_YUV_Cache ANDROID_EMU_vulkan_ignored_handles ANDROID_EMU_vulkan_free_memory_sync ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_sync_buffer_data ANDROID_EMU_vulkan_async_qsri ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_1 
+10-09 03:23:57.564   374   398 D eglCodecCommon: allocate: Ask for block of size 0x1000
+10-09 03:23:57.564   374   398 D eglCodecCommon: allocate: ioctl allocate returned offset 0x1fffe0000 size 0x8000
+10-09 03:23:57.568   374  1146 W InputReader: Device has associated, but no associated display id.
+10-09 03:23:57.568   374  1146 I chatty  : uid=1000(system) Binder:374_9 identical 8 lines
+10-09 03:23:57.568   374  1146 W InputReader: Device has associated, but no associated display id.
+10-09 03:23:57.568   374   398 D eglCodecCommon: allocate: Ask for block of size 0x7ea000
+10-09 03:23:57.568   374   398 D eglCodecCommon: allocate: ioctl allocate returned offset 0x1ff7d8000 size 0x7f0000
+10-09 03:23:57.569   374  1146 W InputReader: Device has associated, but no associated display id.
+10-09 03:23:57.569   374  1146 I chatty  : uid=1000(system) Binder:374_9 identical 18 lines
+10-09 03:23:57.569   374  1146 W InputReader: Device has associated, but no associated display id.
+10-09 03:23:57.570  1031  1586 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+10-09 03:23:57.582   374   398 W InputReader: Device has associated, but no associated display id.
+10-09 03:23:57.582   374   398 I chatty  : uid=1000(system) android.anim identical 8 lines
+10-09 03:23:57.582   374   398 W InputReader: Device has associated, but no associated display id.
+10-09 03:23:57.587   190   190 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+10-09 03:23:57.595   210   733 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-09 03:23:57.595   210   733 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-09 03:23:57.596  3304  3328 D libEGL  : Emulator has host GPU support, qemu.gles is set to 1.
+10-09 03:23:57.596  3304  3328 W libc    : Unable to set property "qemu.gles" to "1": connection failed; errno=13 (Permission denied)
+10-09 03:23:57.599  3304  3328 D libEGL  : loaded /vendor/lib64/egl/libEGL_emulation.so
+10-09 03:23:57.603  3304  3328 D libEGL  : loaded /vendor/lib64/egl/libGLESv1_CM_emulation.so
+10-09 03:23:57.603  3304  3328 D libEGL  : loaded /vendor/lib64/egl/libGLESv2_emulation.so
+10-09 03:23:57.630  3304  3329 I SpinonBootstrap: SPINON_BOOTSTRAP_EXECUTION is_main_thread=false
+10-09 03:23:57.634  1301  1493 I MicroDetector: Keeping mic open: false
+10-09 03:23:57.634  1301  1515 I DeviceStateChecker: DeviceStateChecker cancelled
+10-09 03:23:57.634  1301  3009 I MicroRecognitionRunner: Stopping hotword detection.
+10-09 03:23:57.634  1301  3010 I AudioController: internalShutdown
+10-09 03:23:57.651  1301  3010 I MicrophoneInputStream: mic_close  SR : 16000 CC : 16 SO : 1999
+10-09 03:23:57.651  1301  3010 E AudioSource: Stop listening is called on already closed AudioSource
+10-09 03:23:57.651  1301  1458 I MicroRecognitionRunner: Detection finished
+10-09 03:23:57.651  3304  3329 I SpinonBootstrap: SPINON_BOOTSTRAP_RESULT=nodes=2 last_node=8 tag=text text=이벤트:7 · 문서 revision 25 document_revision=25 render_tree_revision=15 document_nodes=10
+10-09 03:23:57.661  3304  3326 D HostConnection: HostConnection::get() New Host Connection established 0x7a0a027500, tid 3326
+10-09 03:23:57.662  3304  3326 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_null_optional_strings ANDROID_EMU_vulkan_create_resources_with_requirements ANDROID_EMU_YUV_Cache ANDROID_EMU_vulkan_ignored_handles ANDROID_EMU_vulkan_free_memory_sync ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_sync_buffer_data ANDROID_EMU_vulkan_async_qsri ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_1 
+10-09 03:23:57.665  3304  3326 W OpenGLRenderer: Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+10-09 03:23:57.665  3304  3326 D EGL_emulation: eglCreateContext: 0x7a0a0276e0: maj 3 min 1 rcv 4
+10-09 03:23:57.665  3304  3326 D EGL_emulation: eglMakeCurrent: 0x7a0a0276e0: ver 3 1 (tinfo 0x7a0a018660)
+10-09 03:23:57.666  3304  3326 E eglCodecCommon: glUtilsParamSize: unknow param 0x000082da
+10-09 03:23:57.666  3304  3326 E eglCodecCommon: glUtilsParamSize: unknow param 0x000082da
+10-09 03:23:57.668   190   190 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+10-09 03:23:57.669   122   122 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
+10-09 03:23:57.669  3304  3326 W Gralloc3: mapper 3.x is not supported
+10-09 03:23:57.669  3304  3326 D HostConnection: createUnique: call
+10-09 03:23:57.670  3304  3326 D HostConnection: HostConnection::get() New Host Connection established 0x7a0a0278c0, tid 3326
+10-09 03:23:57.670  3304  3326 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_null_optional_strings ANDROID_EMU_vulkan_create_resources_with_requirements ANDROID_EMU_YUV_Cache ANDROID_EMU_vulkan_ignored_handles ANDROID_EMU_vulkan_free_memory_sync ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_sync_buffer_data ANDROID_EMU_vulkan_async_qsri ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_1 
+10-09 03:23:57.670  3304  3326 D eglCodecCommon: allocate: Ask for block of size 0x1000
+10-09 03:23:57.670  3304  3326 D eglCodecCommon: allocate: ioctl allocate returned offset 0x1fffe0000 size 0x8000
+10-09 03:23:57.671   190   190 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+10-09 03:23:57.681   190   190 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+10-09 03:23:57.681  3304  3326 D EGL_emulation: eglMakeCurrent: 0x7a0a0276e0: ver 3 1 (tinfo 0x7a0a018660)
+10-09 03:23:57.694   374   402 I ActivityTaskManager: Displayed dev.spinon.bootstrap/.MainActivity: +164ms
+10-09 03:23:57.749   374   402 I RoleUserState: Wrote roles.xml successfully
+10-09 03:23:57.832   374   403 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+10-09 03:23:57.832   374   403 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+10-09 03:23:57.870  1301  1596 D EGL_emulation: eglMakeCurrent: 0x7a0a04c980: ver 3 1 (tinfo 0x7a0a0bb5c0)
+10-09 03:23:57.871   699  1257 D EGL_emulation: eglMakeCurrent: 0x7a0552dae0: ver 3 1 (tinfo 0x7a0540b0c0)
+10-09 03:23:57.881  1301  3009 I PBSessionCacheImpl: Deleted sessionId[155353791723] from persistence.
+10-09 03:23:57.884  1301  1493 W SearchServiceCore: Abort, client detached.
+10-09 03:23:58.307   374   403 W ProcessStats: Tracking association SourceState{262d595 com.google.android.gms.persistent/10119 ImpFg #2651} whose proc state 2 is better than process ProcessState{76686aa com.google.android.gms/10119 pkg=com.google.android.gms} proc state 3 (0 skipped)
+10-09 03:23:58.309  1031  1520 I Vision  : Requesting optional module download of ocr.
+10-09 03:23:58.311  1031  1520 I Vision  : Checking for download completion for 29314 -- ocr
+10-09 03:23:58.529  1031  3209 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+10-09 03:23:58.535  1031  3209 I Icing   : Indexing done com.google.android.gms-apps
+10-09 03:23:58.589  1031  3209 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+10-09 03:23:58.589  1031  3209 I Icing   : Indexing done com.google.android.gms-apps
+10-09 03:23:58.618  1031  3209 I Icing   : Indexing com.google.android.gms-internal.3p:MobileApplication from com.google.android.gms
+10-09 03:23:58.620  1031  3209 I Icing   : Indexing done com.google.android.gms-internal.3p:MobileApplication
+10-09 03:24:00.001   521   521 D KeyguardClockSwitch: Updating clock: 324
+10-09 03:24:00.557  3158  3182 I s.messaging:rc: Waiting for a blocking GC ProfileSaver

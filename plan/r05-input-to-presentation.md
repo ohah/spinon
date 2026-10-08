@@ -196,3 +196,17 @@ Samsung SM-S731N / Android 16 / API 36 / SDK_INT_FULL 36.1 / Xclipse 940 WGPU/Vu
 ## 2026-10-09 Android 실기기 재검증
 
 사용자 요청으로 같은 APK hash를 가진 debug 앱을 실기기에서 새 process로 실행했다. `adb shell input tap` synthetic 입력 11회에서 input·submit·actual `TransactionStats` callback·usable async fence signal이 모두 11/11 exact join됐고 queue는 drain됐다. 동시 `sec_touchscreen` raw capture는 0건이어서 실제 손가락 입력 positive sample은 없다. 화면 색상과 활성화 수 11회는 캡처로 보조 확인했다. API 36 (SDK_INT_FULL 36.1) `target_vsync_id=-1`이므로 VSync·event-to-present·optical scanout 결과는 없다. 앱은 종료하고 Chrome 및 화면 설정을 복구했다. [전체 증거와 새 20관점 실행 검토](../spec/internal/evidence/r05-android-physical-input-join-2026-10-09/physical-retest/README.md). 이 재검증은 R05.3을 완료하지 않는다.
+
+## 2026-10-09 Android 실기기 재연결 반복
+
+동일 SM-S731N / Android 16 / API 36 실기기에서 direct touchscreen raw와 앱 로그를 약 60초 함께 수집했으나 입력은 관측되지 않았다. 이어 fresh process의 ADB synthetic input 10회는 WGPU submit, 실제 `TransactionStats` callback, usable async fence signal까지 10/10 exact join됐다. synthetic raw touchscreen은 0 bytes이고 각 signal 뒤 pending/active/queue가 0이다. 앱 화면은 활성화 10회를 표시했다. `target_vsync_id=-1`; event-to-present latency와 p95는 산출하지 않았다. APK·환경·원본 및 실행 실패 경로 검토는 [재연결 실행 자료](../spec/internal/evidence/r05-android-physical-input-join-2026-10-09/device-repeat-2026-10-09/README.md)에 있다. 실제 touch positive sample과 R05.3 완료 판정은 여전히 미완료다.
+
+### API 29·34 fallback 경계 실행 · 2026-10-09
+
+같은 debug APK를 API 29/34 ARM64 AVD에서 확인했다. API 29는 설치됐지만 `MainActivity` native library load에서 unresolved `_Unwind_Resume`로 종료해 R05 probe에 들어가지 못했다. API 34는 기본 JS bootstrap, `api_below_35` async-fence 종료와 GLES present-fence/FrameTimeline unavailable fallback 뒤 draw 및 화면 변경을 통과했다. 전체 fallback gate는 미완료이며 API 30–33은 실행하지 않았다. [실행 자료·ELF 조사·20관점 검토](../spec/internal/evidence/r05-android-api29-34-fallback-2026-10-09/README.md) · [계획](r05-android-api29-34-fallback.md).
+
+같은 날 추가 재연결 실행에서 기존 APK hash의 R08 WGPU/Vulkan 화면을 새 process로 열었다. 약 60초 직접 입력 raw capture는 0 event였다. 별도 ADB synthetic tap 10회에서 input·submit·실제 `TransactionStats` callback·usable async fence signal은 10/10 exact join됐고 화면 활성화 수 10을 확인했다. `target_vsync_id=-1`이라 latency는 산출하지 않았다. [재연결 실행 자료와 20관점 검토](../spec/internal/evidence/r05-android-physical-input-join-2026-10-09/device-repeat-2026-10-09/physical-retest-2/README.md). 직접 손가락 입력, scanout 및 R05.3 완료는 미검증이다.
+
+## API 29 native startup 후속 수정 · 2026-10-09
+
+API 29 AVD의 초기 Debug APK에서 관측한 _Unwind_Resume load failure는 고정 NDK AArch64 libunwind 정적 연결로 수정했다. 새 APK는 API 29·34 ARM64 AVD에서 bootstrap, API 35 전용 guard, GLES fallback draw/화면 갱신을 통과했다. API 36 실기기에서는 새 APK의 WGPU/Vulkan synthetic 입력 13개가 callback과 usable async fence까지 exact join됐지만 direct touchscreen contact는 관측되지 않았고 VSync/latency/scanout을 확인하지 않았다. 상세 근거: [API 29 unwind 수정 및 실기기 regression](../spec/internal/evidence/r05-android-api29-unwind-link-2026-10-09/README.md). API 30–33, direct finger touch, iOS device callback runtime과 R05.3 전체는 계속 미완료다.

@@ -16,7 +16,7 @@
 
 `spinon_r08=true`만 전달하고 R05 extra는 모두 생략해 새 process(PID 28292)로 실행했다. `SPINON_R08_WGPU=ready backend=Vulkan device=IntegratedGpu name=Samsung Xclipse 940`과 surface 1080×2340을 확인했다. 한 번의 `adb shell input tap 540 1170` 뒤 `SPINON_R08_TOUCH count=1`이 기록됐고 화면 도형이 파란색에서 주황색으로 바뀌었다. PID log의 `SPINON_R05_` marker는 0건이며 fatal/ANR marker도 없었다. 입력은 synthetic이고 이번 control은 물리 touch/성능 측정이 아니다. [시작 화면](r08-probe-off/launch.png) · [한 번 탭한 화면](r08-probe-off/after-one-synthetic-tap.png) · [PID log](r08-probe-off/logcat.txt)
 
-## Release build 차단
+## 첫 Release build 시도 차단
 
 첫 `assembleRelease` 실행은 Gradle에 Android SDK 경로가 없어 중단됐다. `ANDROID_HOME`·`ANDROID_SDK_ROOT`를 설치된 SDK 경로로 명시한 재실행은 `:app:prepareSpinonBootstrap`에서 멈췄다. repository의 고정 V8 source tree가 이 worktree에 없어서 `tools/build-android.sh`가 종료했으며 release APK·release runtime은 만들지 않았다. 필요한 V8 revision은 `7b50b62cb18f28617959e8452e2cd18195b38bcf`다. 외부 source/dependency를 가져오는 checkout 절차는 자동 실행하지 않았다.
 
@@ -27,6 +27,6 @@
 
 ## 검증 경계
 
-두 debug 조건은 서로 다른 목적이다. 첫 조건은 default bootstrap worker 경로, 둘째는 R08 GPU surface가 R05 probe 없이 작동하는지 확인한다. 이 결과로 release 격리·제품 default visual UI·실제 손가락 입력·event-to-present·VSync·optical scanout·성능을 주장하지 않는다. Release 기본 launch와 release debug-only 거부는 V8 pinned source를 준비한 뒤 별도 실행해야 한다.
+두 debug 조건은 서로 다른 목적이다. 첫 조건은 default bootstrap worker 경로, 둘째는 R08 GPU surface가 R05 probe 없이 작동하는지 확인한다. 이 문서의 build 차단은 이 실행의 결과다. 이후 고정 V8 revision을 준비한 별도 run에서 Release build·기본 cold launch·debug-only 거부를 확인했다([후속 실기기·Release smoke](../r05-android-physical-touch-positive-2026-10-09/README.md)). 이 초기 결과만으로 release 격리·제품 default visual UI·실제 손가락 입력·event-to-present·VSync·optical scanout·성능을 주장하지 않는다.
 
 실행 로그·캡처·기기 설정·build failure 관점은 [runtime-review.md](runtime-review.md)에 20개 실패 관점으로 대조했다. 계획 전제 수정 및 재검토는 [비동기 fence 계획](../../../../plan/r05-android-async-present-fence.md)에서 관리한다.

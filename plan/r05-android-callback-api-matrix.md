@@ -4,7 +4,7 @@
 
 ## 목적
 
-앞선 callback failure fixture는 Android API 37.2 / 16KB ARM64 AVD에서 11개 scenario를 통과했다. 같은 failure 경로가 `SurfaceControl.TransactionStats` 및 `SyncFence` 최소 API인 API 35와 API 37.0·37.1에서도 성립하는지 확인한다. 이 작업은 API 35 이상 transaction completion failure fixture에 한정하며 API 29–34에서는 해당 `TransactionStats` 경로가 없으므로 정상 GLES fallback을 별도 판정한다.
+앞선 callback failure fixture는 Android API 37.2 / 16KB ARM64 AVD에서 11개 scenario를 통과했다. 같은 failure 경로가 `SurfaceControl.TransactionStats` 및 `SyncFence` 최소 API인 API 35와 API 37.0·37.1에서도 성립하는지 확인한다. 이 작업은 API 35 이상 transaction completion failure fixture에 한정하며 API 29–34에서는 해당 `TransactionStats` 경로가 없으므로 정상 GLES fallback을 별도 판정한다. API 29·34 fallback 경계 실행은 별도 [계획](r05-android-api29-34-fallback.md)에 둔다.
 
 | 대상 AVD | `SDK_INT` / full version | page size | 역할 |
 |---|---:|---:|---|
@@ -68,4 +68,8 @@
 
 ## 실행 결과
 
-API 35·4KB, API 37.0·4KB, API 37.1·16KB ARM64 emulator에서 같은 APK와 fixture 소스 hash로 각각 11개 scenario, timeout/callback 경합 100회, 종료 후 idle 60초를 통과했다. 원본 log·screenshot·APK hash·실행 환경과 구현 후 별도 검토는 [실행 근거](../spec/internal/evidence/r05-android-callback-api-matrix-2026-10-08/README.md)에 있다. API 37.0은 AVD 생성·렌더링 조건이 다른 세 시도 중 하나만 부팅에 성공했으며, 원인은 분리 확정하지 않았다. 이 검증은 에뮬레이터 내부 callback failure fixture이며 renderer의 실제 적용 transaction, iOS device callback, API 29–34 fallback, 제품 표시 지연은 검증하지 않았다. R05.3과 R05는 미완료다.
+API 35·4KB, API 37.0·4KB, API 37.1·16KB ARM64 emulator에서 같은 APK와 fixture 소스 hash로 각각 11개 scenario, timeout/callback 경합 100회, 종료 후 idle 60초를 통과했다. 원본 log·screenshot·APK hash·실행 환경과 구현 후 별도 검토는 [실행 근거](../spec/internal/evidence/r05-android-callback-api-matrix-2026-10-08/README.md)에 있다. API 37.0은 AVD 생성·렌더링 조건이 다른 세 시도 중 하나만 부팅에 성공했으며, 원인은 분리 확정하지 않았다. 별도 [API 29·34 fallback 실행](r05-android-api29-34-fallback.md)은 API 34의 bootstrap·GLES fallback은 통과했지만 API 29의 `_Unwind_Resume` native-link failure로 차단됐다. 이 검증은 에뮬레이터 내부 callback failure fixture이며 renderer의 실제 적용 transaction, iOS device callback, API 29–34 전체 범위, 제품 표시 지연은 검증하지 않았다. R05.3과 R05는 미완료다.
+
+## API 29 linker blocker 후속 처리 · 2026-10-09
+
+이 문서의 API 29 미지원 link 결과는 수정 전 artifact에 대한 역사적 관측이다. 고정 NDK AArch64 libunwind 정적 연결 뒤 새 APK로 API 29·34 ARM64 AVD의 bootstrap 및 GLES fallback을 재확인했다. API 30–33은 여전히 미측정이다. [수정 및 실행 근거](../spec/internal/evidence/r05-android-api29-unwind-link-2026-10-09/README.md).

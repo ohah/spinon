@@ -1,0 +1,16 @@
+--------- beginning of main
+         1791482838.233  5966  5966 I SpinonBootstrap: SPINON_R08_UI=ready text-input=EditText accessibility=button+EditText
+         1791482838.310  5966  5966 I SpinonBootstrap: SPINON_R05_SURFACE renderer=opengl_es type=GLSurfaceView generation=1
+         1791482838.310  5966  5966 I SpinonBootstrap: SPINON_R05_SIGNAL_CAPABILITY renderer=opengl_es signal=SurfaceView_JankData available=false reason=api_below_36 api=34 api_full=0
+         1791482838.310  5966  5966 I SpinonBootstrap: SPINON_R05_SURFACE_SIZE renderer=opengl_es generation=1 size=1080x2209
+         1791482838.382  5966  5988 I SpinonBootstrap: SPINON_R08_SURFACE=created api=OpenGL_ES_2 renderer=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) version=OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))
+         1791482838.398  5966  5988 I SpinonBootstrap: SPINON_R08_SHADER=ready
+         1791482838.398  5966  5988 I SpinonBootstrap: SPINON_R08_SURFACE=size 1080x2209
+         1791482838.398  5966  5988 I SpinonBootstrap: SPINON_R05_DRAW renderer=opengl_es draw_seq=1 revision=0 generation=1
+         1791482838.398  5966  5988 I SpinonBootstrap: SPINON_R08_FRAME=first_draw_submitted
+         1791482838.440  5966  5988 I SpinonBootstrap: SPINON_R05_DRAW renderer=opengl_es draw_seq=2 revision=0 generation=1
+         1791482842.184  5966  5966 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=1 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=79712000000 input_uptime_anchor_ns=79714000000 input_monotonic_before_ns=79714325579 input_monotonic_after_ns=79714326787 generation=1
+         1791482842.186  5966  5966 W SpinonBootstrap: SPINON_R05_PRESENT_FENCE renderer=opengl_es input_seq=1 revision=1 generation=1 outcome=unavailable reason=api_below_35
+         1791482842.186  5966  5966 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=1 revision=1 generation=1 event_time_ns=79712000000 handler_uptime_ns=79715000000 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+         1791482842.186  5966  5988 I SpinonBootstrap: SPINON_R05_DRAW renderer=opengl_es draw_seq=3 revision=1 generation=1
+         1791482842.186  5966  5966 I SpinonBootstrap: SPINON_R08_TOUCH count=1

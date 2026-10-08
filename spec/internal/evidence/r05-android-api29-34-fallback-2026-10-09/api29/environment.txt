@@ -1,0 +1,15 @@
+AVD: spinon_r05_api29_fallback
+device profile: Pixel 2
+system image: system-images;android-29;google_apis;arm64-v8a, Pkg.Revision=13
+guest: Android 10 / API 29 / arm64-v8a / page size 4096
+display: 1080x1920 / density 420
+emulator: 37.2.12.0, --no-snapshot --no-boot-anim --no-audio --no-window -gpu swiftshader
+APK: existing PR #79 debug artifact, SHA-256 608fbdf9279ddded605c7129fb0123ce32a65d7452f6ff1b36702b9eed7b198e
+APK manifest: minSdk 29, targetSdk 36
+install: Success
+default launch: failed before Activity body, MainActivity static initializer System.loadLibrary
+crash PID: 4504
+exception: UnsatisfiedLinkError; unresolved _Unwind_Resume in libspinon_bootstrap.so
+R05 markers: none
+R05 flag scenarios: not run because common native library load fails before intent dispatch
+physical device: remained attached; no install or settings command was sent to it

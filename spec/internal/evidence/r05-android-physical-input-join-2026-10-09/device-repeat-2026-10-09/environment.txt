@@ -1,0 +1,17 @@
+device=Samsung SM-S731N
+android_release=16
+api_level=36
+sdk_int_full=36.1
+abi=arm64-v8a
+resolution=1080x2340
+density=450
+input_device=sec_touchscreen /dev/input/event6
+input_property=INPUT_PROP_DIRECT
+renderer=R08 WGPU/Vulkan
+adapter=Samsung Xclipse 940
+active_display_mode=2
+refresh_rate_hz=60
+brightness=248
+screen_off_timeout_ms=30000
+wakefulness=Awake
+foreground_after_restore=com.android.chrome

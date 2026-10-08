@@ -1,0 +1,22 @@
+         1791482696.196  4504  4504 E AndroidRuntime: FATAL EXCEPTION: main
+         1791482696.196  4504  4504 E AndroidRuntime: Process: dev.spinon.bootstrap, PID: 4504
+         1791482696.196  4504  4504 E AndroidRuntime: java.lang.UnsatisfiedLinkError: dlopen failed: cannot locate symbol "_Unwind_Resume" referenced by "/data/app/dev.spinon.bootstrap-2aaQROeQH7-d6-ulxhpzEQ==/base.apk!/lib/arm64-v8a/libspinon_bootstrap.so"...
+         1791482696.196  4504  4504 E AndroidRuntime: 	at java.lang.Runtime.loadLibrary0(Runtime.java:1071)
+         1791482696.196  4504  4504 E AndroidRuntime: 	at java.lang.Runtime.loadLibrary0(Runtime.java:1007)
+         1791482696.196  4504  4504 E AndroidRuntime: 	at java.lang.System.loadLibrary(System.java:1667)
+         1791482696.196  4504  4504 E AndroidRuntime: 	at dev.spinon.bootstrap.MainActivity.<clinit>(MainActivity.java:54)
+         1791482696.196  4504  4504 E AndroidRuntime: 	at java.lang.Class.newInstance(Native Method)
+         1791482696.196  4504  4504 E AndroidRuntime: 	at android.app.AppComponentFactory.instantiateActivity(AppComponentFactory.java:95)
+         1791482696.196  4504  4504 E AndroidRuntime: 	at android.app.Instrumentation.newActivity(Instrumentation.java:1243)
+         1791482696.196  4504  4504 E AndroidRuntime: 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3182)
+         1791482696.196  4504  4504 E AndroidRuntime: 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:3409)
+         1791482696.196  4504  4504 E AndroidRuntime: 	at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:83)
+         1791482696.196  4504  4504 E AndroidRuntime: 	at android.app.servertransaction.TransactionExecutor.executeCallbacks(TransactionExecutor.java:135)
+         1791482696.196  4504  4504 E AndroidRuntime: 	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:95)
+         1791482696.196  4504  4504 E AndroidRuntime: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2016)
+         1791482696.196  4504  4504 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:107)
+         1791482696.196  4504  4504 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:214)
+         1791482696.196  4504  4504 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:7356)
+         1791482696.196  4504  4504 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+         1791482696.196  4504  4504 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:492)
+         1791482696.196  4504  4504 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:930)
