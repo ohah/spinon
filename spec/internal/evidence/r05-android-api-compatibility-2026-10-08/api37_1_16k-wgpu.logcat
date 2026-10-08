@@ -1,0 +1,6 @@
+--------- beginning of main
+10-08 19:18:27.118  4240  4240 I SpinonBootstrap: SPINON_R08_UI=ready text-input=EditText accessibility=button+EditText
+10-08 19:18:27.153  4240  4240 I SpinonBootstrap: SPINON_R05_SURFACE renderer=wgpu type=SurfaceView generation=1
+10-08 19:18:27.153  4240  4240 I SpinonBootstrap: SPINON_R05_SIGNAL_CAPABILITY renderer=wgpu signal=SurfaceView_JankData available=false reason=api_below_37_2 api=37 api_full=3700001
+10-08 19:18:27.167  4240  4240 E SpinonBootstrap: SPINON_R08_WGPU_ERROR=adapter request failed: No suitable graphics adapter found; noop not requested, vulkan found no adapters, metal not requested, dx12 not requested, gl not requested, webgpu not requested
+10-08 19:18:27.167  4240  4240 E SpinonBootstrap: SPINON_R08_WGPU_ERROR=renderer creation failed

@@ -67,6 +67,14 @@
 | 19 | 시뮬레이터 입력을 물리 touch로 또는 광자 시각으로 보고 | 로그의 input source는 synthetic으로 남겼다. 실기기 입력과 광학 측정은 하지 않았다. |
 | 20 | Android 결과로 iOS 지원을 대신하거나 R05 완료로 체크 | 이 Android 실행은 iOS를 대신하지 않는다. 후속 iOS Simulator acquire test와 iPhoneOS target compile/link는 별도 근거에 기록했으며 device callback runtime은 아직 미실행이다. unknown timestamp와 failure injection 한계 때문에 R05.3/R05는 계속 미완료다. |
 
-## 다음 gate
+## 다음 gate · 당시 기록
 
 Android frame identity 연결은 이 AVD의 on-demand 경로에서 재현됐다. 남은 Android 작업은 invalid/stale token과 surface lifecycle failure path를 주입하고 `presentTimeNanos` unknown 원인을 SurfaceFlinger/가상 display capability와 분리하는 것이다. iOS 후속에서는 공개 iPhoneOS API target compile/link와 Simulator의 실제 WGPU acquire/ticket join을 확인했다. 다음 iOS gate는 bounded callback ledger·timeout/lost 처리, clock residual, 기기 callback runtime 및 전체 V8 앱 통합이다. 어느 단계에서도 `CADisplayLink`, command-buffer completion, expected presentation을 actual present 대체값으로 쓰지 않는다. 실기기 검증은 사용자 요청 뒤에 한다.
+
+### 이후 iOS 상태 동기화 · 2026-10-08
+
+위 next-gate 문단은 당시 상태를 보존한다. 후속 변경에서 callback ledger와 timeout/lost 분류를 구현하고 Swift 시험 6개 그룹 및 전체 suite 독립 실행 20회를 통과했다. 현재 남은 iOS 관문은 실기기 callback runtime, clock epoch residual, 전체 V8 앱 통합이다. 현재 상태와 증거는 [iOS 표시 feedback 계획](../../../plan/r05-ios-present-feedback.md)과 [후속 실행 보고서](r05-ios-present-feedback-2026-10-08.md)를 따른다.
+
+### 후속 Android API 호환성 행렬 · 2026-10-08
+
+이 문서의 당시 미실행 항목 중 API 35·37.0·37.1은 후속으로 실행했다. API 35 WGPU/GLES와 API 37.0 GLES, API 37.1 16KB GLES에서 각각 세 독립 block을 실행해 input/submit/callback 11/11/11을 확인했다. API 37.0 WGPU와 API 37.1 16KB WGPU는 해당 AVD graphics 경로에 guest Vulkan adapter가 없어 점수화하지 않았다. API 35·37.0·37.1 모두 JankData API gate가 예상대로 거부되었다. API 37.1 APK는 zip alignment와 PT_LOAD 16KB 정렬은 통과했지만 GNU_RELRO end alignment는 실패했고, 수정 linker flags를 포함한 실제 `.so` 재링크도 고정 V8 checkout 부재로 미실행이다. 전체 행렬과 별도의 구현 실패 관점 20개는 [Android API 호환성 실행 및 구현 적대 검토](r05-android-api-compatibility-2026-10-08.md)에 기록했다. API 29–34, lifecycle·callback 고장 주입, iOS device callback runtime은 계속 남아 있다.

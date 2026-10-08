@@ -1,0 +1,147 @@
+APK SHA-256: 325611b9427ac66a2c82722f89c3193a24b7f04671dadd38b98f9aff90c605cd  platforms/android/app/build/outputs/apk/debug/app-debug.apk
+SO SHA-256: f016ec0b033db20d4b88290355a747505c2b724b37d9edc9f600ba118a2e4734  /var/folders/51/mr5cjhg13v324f1vgg9m237c0000gn/T/tmp.9KtsRBjSRg/libspinon_bootstrap.so
+
+APK native entries:
+lib/arm64-v8a/libspinon_bootstrap.so
+
+16 KB zip alignment check:
+Verifying alignment of platforms/android/app/build/outputs/apk/debug/app-debug.apk (4)...
+      87 META-INF/com/android/build/gradle/app-metadata.properties (OK - compressed)
+     184 classes.dex (OK)
+  114688 lib/arm64-v8a/libspinon_bootstrap.so (OK)
+48264243 assets/app.js (OK - compressed)
+48269029 AndroidManifest.xml (OK - compressed)
+48269884 resources.arsc (OK)
+48269968 classes2.dex (OK)
+Verification successful
+
+ELF program headers (llvm-objdump):
+    LOAD off    0x0000000000000000 vaddr 0x0000000000000000 paddr 0x0000000000000000 align 2**14
+    LOAD off    0x0000000001359c00 vaddr 0x000000000135dc00 paddr 0x000000000135dc00 align 2**14
+    LOAD off    0x0000000002cfde60 vaddr 0x0000000002d05e60 paddr 0x0000000002d05e60 align 2**14
+    LOAD off    0x0000000002dd0000 vaddr 0x0000000002ddc000 paddr 0x0000000002ddc000 align 2**14
+ DYNAMIC off    0x0000000002d71510 vaddr 0x0000000002d79510 paddr 0x0000000002d79510 align 2**3
+
+ELF program headers (llvm-readobj):
+ProgramHeaders [
+  ProgramHeader {
+    Type: PT_PHDR (0x6)
+    Offset: 0x40
+    VirtualAddress: 0x40
+    PhysicalAddress: 0x40
+    FileSize: 616
+    MemSize: 616
+--
+    Alignment: 8
+  }
+  ProgramHeader {
+    Type: PT_LOAD (0x1)
+    Offset: 0x0
+    VirtualAddress: 0x0
+    PhysicalAddress: 0x0
+    FileSize: 20290556
+    MemSize: 20290556
+    Flags [ (0x4)
+--
+    Alignment: 16384
+  }
+  ProgramHeader {
+    Type: PT_LOAD (0x1)
+    Offset: 0x1359C00
+    VirtualAddress: 0x135DC00
+    PhysicalAddress: 0x135DC00
+    FileSize: 26886752
+    MemSize: 26886752
+    Flags [ (0x5)
+--
+    Alignment: 16384
+  }
+  ProgramHeader {
+    Type: PT_LOAD (0x1)
+    Offset: 0x2CFDE60
+    VirtualAddress: 0x2D05E60
+    PhysicalAddress: 0x2D05E60
+    FileSize: 847896
+    MemSize: 848288
+    Flags [ (0x6)
+--
+    Alignment: 16384
+  }
+  ProgramHeader {
+    Type: PT_LOAD (0x1)
+    Offset: 0x2DD0000
+    VirtualAddress: 0x2DDC000
+    PhysicalAddress: 0x2DDC000
+    FileSize: 108720
+    MemSize: 211832
+    Flags [ (0x6)
+--
+    Alignment: 16384
+  }
+  ProgramHeader {
+    Type: PT_TLS (0x7)
+    Offset: 0x2CFDE60
+    VirtualAddress: 0x2D05E60
+    PhysicalAddress: 0x2D05E60
+    FileSize: 4
+    MemSize: 152
+--
+    Alignment: 8
+  }
+  ProgramHeader {
+    Type: PT_DYNAMIC (0x2)
+    Offset: 0x2D71510
+    VirtualAddress: 0x2D79510
+    PhysicalAddress: 0x2D79510
+    FileSize: 480
+    MemSize: 480
+--
+    Alignment: 8
+  }
+  ProgramHeader {
+    Type: PT_GNU_RELRO (0x6474E552)
+    Offset: 0x2CFDE60
+    VirtualAddress: 0x2D05E60
+    PhysicalAddress: 0x2D05E60
+    FileSize: 847896
+    MemSize: 848288
+    Flags [ (0x4)
+--
+    Alignment: 1
+  }
+  ProgramHeader {
+    Type: PT_GNU_EH_FRAME (0x6474E550)
+    Offset: 0xF1033C
+    VirtualAddress: 0xF1033C
+    PhysicalAddress: 0xF1033C
+    FileSize: 608388
+    MemSize: 608388
+--
+    Alignment: 4
+  }
+  ProgramHeader {
+    Type: PT_GNU_STACK (0x6474E551)
+    Offset: 0x0
+    VirtualAddress: 0x0
+    PhysicalAddress: 0x0
+    FileSize: 0
+    MemSize: 0
+--
+    Alignment: 0
+  }
+  ProgramHeader {
+    Type: PT_NOTE (0x4)
+    Offset: 0x2A8
+    VirtualAddress: 0x2A8
+    PhysicalAddress: 0x2A8
+    FileSize: 152
+    MemSize: 152
+--
+    Alignment: 4
+  }
+]
+
+16 KB device state:
+16384
+fatal
+true

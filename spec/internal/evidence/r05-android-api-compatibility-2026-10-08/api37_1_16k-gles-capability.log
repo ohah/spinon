@@ -1,0 +1,17 @@
+--------- beginning of main
+10-08 19:16:41.324  3562  3562 I SpinonBootstrap: SPINON_R08_UI=ready text-input=EditText accessibility=button+EditText
+10-08 19:16:41.521  3562  3562 I SpinonBootstrap: SPINON_R05_SURFACE renderer=opengl_es type=GLSurfaceView generation=1
+10-08 19:16:41.523  3562  3562 I SpinonBootstrap: SPINON_R05_SIGNAL_CAPABILITY renderer=opengl_es signal=SurfaceView_JankData available=false reason=api_below_37_2 api=37 api_full=3700001
+10-08 19:16:41.523  3562  3562 I SpinonBootstrap: SPINON_R05_SURFACE_SIZE renderer=opengl_es generation=1 size=1080x2400
+10-08 19:16:41.583  3562  3579 I SpinonBootstrap: SPINON_R08_SURFACE=created api=OpenGL_ES_2 renderer=Android Emulator OpenGL ES Translator (Apple M4 Max) version=OpenGL ES 3.0 (4.1 Metal - 90.5)
+10-08 19:16:41.585  3562  3579 I SpinonBootstrap: SPINON_R08_SHADER=ready
+10-08 19:16:41.585  3562  3579 I SpinonBootstrap: SPINON_R08_SURFACE=size 1080x2400
+10-08 19:16:41.585  3562  3579 I SpinonBootstrap: SPINON_R05_DRAW renderer=opengl_es draw_seq=1 revision=0 generation=1
+10-08 19:16:41.585  3562  3579 I SpinonBootstrap: SPINON_R08_FRAME=first_draw_submitted
+10-08 19:16:42.131  3562  3562 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=1 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=105733000000 input_uptime_anchor_ns=105741545133 input_monotonic_before_ns=105741543133 input_monotonic_after_ns=105741545383 generation=1
+10-08 19:16:42.136  3562  3562 I SpinonBootstrap: SPINON_R05_PRESENT_FENCE_LISTENER renderer=opengl_es request_id=1 input_seq=1 revision=1 generation=1 target_vsync_id=-1 state=registered timeout_ms=2000
+10-08 19:16:42.139  3562  3562 I SpinonBootstrap: SPINON_R05_PRESENT_FENCE_APPLY renderer=opengl_es request_id=1 input_seq=1 revision=1 generation=1 target_vsync_id=unavailable transaction=queued_for_next_surface_frame listener_attached=true
+10-08 19:16:42.139  3562  3562 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=1 revision=1 generation=1 event_time_ns=105733000000 handler_uptime_ns=105749315508 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-08 19:16:42.143  3562  3579 I SpinonBootstrap: SPINON_R05_DRAW renderer=opengl_es draw_seq=2 revision=1 generation=1
+10-08 19:16:42.147  3562  3562 I SpinonBootstrap: SPINON_R08_TOUCH count=1
+10-08 19:16:42.175  3562  3604 I SpinonBootstrap: SPINON_R05_PRESENT_FENCE renderer=opengl_es request_id=1 input_seq=1 revision=1 event_time_ns=105733000000 generation=1 current_generation=1 current_surface=true target_vsync_id=-1 outcome=callback_received fence_valid=true fence_state=signaled signal_time_ns=105785616050 latch_time_ns=105781444133 fence_signal_usable=true callback_inline_overflow=false inline_callback_total=0 callback_os_tid=3604 callback_thread_id=51 queue_depth=0 input_uptime_anchor_ns=105741545133 input_monotonic_before_ns=105741543133 input_monotonic_after_ns=105741545383 callback_uptime_anchor_ns=105786074508 callback_monotonic_before_ns=105786073466 callback_monotonic_after_ns=105786074591 signal_observed_monotonic_ns=105786091300 input_offset_min_ns=-250 input_offset_max_ns=2000 callback_offset_min_ns=-83 callback_offset_max_ns=1042 clock_offset_intervals_overlap=true processing_error=none fence_close_error=none

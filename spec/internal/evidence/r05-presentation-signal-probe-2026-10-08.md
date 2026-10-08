@@ -79,7 +79,7 @@ Apple 문서는 `MTLDrawable.presentedTime`과 `addPresentedHandler`를 표시 �
 | 19 | GPU command completion 또는 present() 반환을 화면 표시 시각이라 부르는가 | 로그를 GPU_COMPLETE/SUBMIT으로 분리하고 두 경로 모두 presentation_signal=unavailable임을 확인했다. 통과. |
 | 20 | Android API 36 SurfaceView에 FrameTimeline이 나온다고 가정하는가 | 실제 surface와 Perfetto 지원 계약을 대조해 unavailable로 남겼고 actual-present 지연을 계산하지 않았다. 통과. |
 
-초기 실행으로 확인한 것은 입력→revision→제출 호출 연결과 capability 실패의 안전한 표기였다. **R05.3 및 R05 전체는 미완료**다. 후속 iOS 작업에서 WGPU drawable acquire hook과 synthetic XCTest 입력 귀속을 확인했으며 [후속 실행 근거](r05-ios-present-feedback-2026-10-08.md)에 따로 기록했다. iPhoneOS callback runtime, bounded callback ledger, clock residual, 전체 V8 앱 bundle은 여전히 미검증이다. Android의 단일 59.2ms submit-call 관측은 통제 조건으로 재현해야 한다. 실기기 실행은 사용자 요청 전까지 보류한다.
+초기 실행 시점에 확인한 것은 입력→revision→제출 호출 연결과 capability 실패의 안전한 표기였다. **R05.3 및 R05 전체는 미완료**다. 후속 iOS 작업에서 WGPU drawable acquire hook과 synthetic XCTest 입력 귀속을 확인했고, 이후 callback ledger도 구현해 별도 Swift 시험과 iPhoneOS target compile/link를 통과했다. 현재 남은 iOS 항목은 기기 callback runtime, clock residual, 전체 V8 앱 bundle이다. 이 문서 뒤쪽 [후속 실행 근거](r05-ios-present-feedback-2026-10-08.md)를 현재 상태의 기준으로 본다. Android의 단일 59.2ms submit-call 관측은 통제 조건으로 재현해야 한다. 실기기 실행은 사용자 요청 전까지 보류한다.
 
 ## 2026-10-08 표시 신호 API 후속 검증
 
@@ -103,7 +103,7 @@ Apple의 현재 Metal 문서는 `MTLDrawable.drawableID`, `addPresentedHandler`,
 
 동일한 root `CAMetalLayer`를 사용하는 WGPU 경로에 `nextDrawable()` override를 둔 내부 후보가 컴파일되는지 확인하려고 [layer interception probe](r05-presentation-signal-probe-2026-10-08/metal-layer-interception-probe.swift)를 추가했다. 이 probe는 device target에서 callback code를 포함하고 Simulator에서는 acquire override만 포함한다. 두 target의 Swift type-check가 통과했다. 이는 method override signature가 SDK에서 유효하다는 뜻뿐이며 UIKit root layer 설치, WGPU acquire가 그 override로 dispatch되는지, 표시 callback runtime을 증명하지 않는다. 결과는 [type-check log](r05-presentation-signal-probe-2026-10-08/ios-layer-interception-typecheck.log)다.
 
-기능 구현은 시작하지 않았다. 기기용 public API compile 근거는 생겼지만 Simulator runtime의 WGPU acquire interception과 iPhone device callback runtime은 남아 있다. 세부 합격 기준과 별도 계획 검토는 [R05.3 iOS Metal 표시 feedback 계획](../../plan/r05-ios-present-feedback.md)에 둔다.
+기능 구현은 시작하지 않았다. 기기용 public API compile 근거는 생겼지만 Simulator runtime의 WGPU acquire interception과 iPhone device callback runtime은 남아 있다. 세부 합격 기준과 별도 계획 검토는 [R05.3 iOS Metal 표시 feedback 계획](../../../plan/r05-ios-present-feedback.md)에 둔다.
 
 ### 후속 변경 적대 검토
 
@@ -171,3 +171,7 @@ Apple의 현재 Metal 문서는 `MTLDrawable.drawableID`, `addPresentedHandler`,
 초기 probe 시점에는 iOS WGPU draw가 표시 완료 신호를 노출하지 않았다. 후속으로 Xcode 26.2 iPhoneOS device SDK의 공개 `MTLDrawable` API를 확인하고, probe 전용 `CAMetalLayer.nextDrawable()` hook을 추가했다. 같은 Xcode의 Simulator SDK에는 device-only callback 멤버가 없으므로 simulator에서는 drawable 획득과 ticket만 기록한다. [iOS 구현·실행 근거](r05-ios-present-feedback-2026-10-08.md).
 
 Simulator XCTest 1/1에서 실제 저장소 Swift view와 고정 `wgpu 30.0.1` 정적 라이브러리를 실행했다. 입력 sequence 1·revision 1은 draw sequence 4에 귀속됐고, 다음 draw 5는 입력 미귀속이었다. probe-off R08 대조에서 acquire marker가 없었다. iPhoneOS 격리 앱 target compile/link는 통과했지만 device callback runtime은 실행하지 않았다. 전체 V8 앱 bundle은 고정 V8 checkout이 없어 미빌드다.
+
+## 후속 Android API 호환성 행렬 · 2026-10-08
+
+위 최종 GLES 검토 당시 남았던 API 35·37.0·37.1 runtime 행렬은 후속으로 실행했다. 세 API의 JankData gate·R08 fallback, API35 WGPU/GLES, API37.0 GLES, API37.1 16KB GLES를 각각 3개 독립 block으로 확인했다. API 37.0/37.1 WGPU AVD adapter 미제공, 16KB GNU_RELRO 정렬 실패 및 실제 V8 재링크 미완료는 그대로 남는다. 상세 실행값·분모·별도 구현 적대 검토는 [Android API 호환성 보고서](r05-android-api-compatibility-2026-10-08.md)와 [원본 fixture](r05-android-api-compatibility-2026-10-08/)를 따른다. API 29–34, surface lifecycle·callback 오류 주입, 실기기·iOS device callback runtime은 아직 검증하지 않았다.

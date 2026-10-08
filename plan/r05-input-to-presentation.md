@@ -61,7 +61,42 @@ API 37.2 AVD의 잘못된 `target=android-0` 메타데이터를 `android-37.2`�
 
 기존 JankData listener·flush 경로는 단일 worker·용량 64 queue로 제한했다. API 37.2 포화 fixture의 callback 64개 수락, callback/flush 초과 1개씩 거부와 worker 복구, API 36 GLES fallback, 최종 APK 회전·모드 충돌 smoke를 확인했다. Xcode 26.2 iPhoneOS SDK device target은 Metal drawable 표시 API type-check를 통과했고 Simulator SDK는 같은 probe에서 실패했다. 후속 iOS Simulator harness는 실제 WGPU root layer acquire를 확인했고 XCTest 단일 tap의 input sequence 1·revision 1을 draw sequence 4에 연결했다. 기기 callback runtime과 event→present latency는 미검증이다. 후속 Android transaction present-fence 실행은 API 36·37.2의 WGPU/GLES 네 조합에서 각각 3×10 scored 입력을 반복했다. usable fence는 API36 WGPU 30/30·GLES 30/30, API37.2 WGPU 29/30·GLES 30/30이다. API37.2 JankData 60/60은 VSync ID exact join이지만 timestamp는 -1이며, WGPU pending fence 하나는 제외했다. bracket 교집합을 사용한 event→OS transaction-present 후보를 계산했으나 synthetic AVD 결과이므로 실기기 지연이나 renderer 우열이 아니다. API29–35 및 37.0/37.1, lifecycle·timeout 고장 주입과 iOS display feedback join은 남아 있다. [present-fence 계획](r05-android-present-fence.md) · [iOS Metal feedback 계획](r05-ios-present-feedback.md) · [iOS 실행 증거](../spec/internal/evidence/r05-ios-present-feedback-2026-10-08.md) · [반복 실행·구현 실패 관점 검토](../spec/internal/evidence/r05-android-present-fence-2026-10-08.md).
 
-### 남은 실행 · iOS 표시 join·failure-path·실기기 gate
+### 후속 실행 결과와 남은 gate
+
+#### 실행 결과 · Android API 35·37.0·37.1 호환성
+
+API 35·37.0을 ARM64 Google APIs 4 KB AVD로, API 37.1을 ARM64 Google APIs 16 KB AVD로 실행했다. 각 입력은 synthetic 중앙 탭이며 각 block은 점수 입력 10개와 별도 drain 입력 1개를 새 앱 프로세스에서 기록했다. API 35에서는 WGPU 27/30·GLES 25/30, API 37.0 GLES는 24/30, API 37.1 16 KB GLES는 28/30 scored fence가 usable이었다. API 37.0 WGPU는 auto·host·SwiftShader 모드에서, API 37.1 WGPU는 host 모드에서 guest Vulkan adapter가 없어 점수화하지 않았다. 점수 입력·submit·callback은 각 block에서 11/11/11이고 drain은 점수에서 제외했다.
+
+API 35 JankData는 `api_below_36`, API 37.0·37.1은 `api_below_37_2`로 거부되며 R08 화면·입력은 동작했다. 각 API R05-off 대조에서 R05 marker는 없고 R08 tap count는 1이었다. 결과는 API 이미지와 renderer backend가 다른 AVD 관찰로 제한하며 지연·성능 순위를 뜻하지 않는다.
+
+API 37.1 16 KB AVD에서는 APK zip alignment와 네 ELF PT_LOAD segment의 16 KB 정렬을 확인했지만 GNU_RELRO 끝은 `0x2dd5000`, 16KB 기준 나머지 `0x1000`으로 정적 검사에 실패했다. `tools/build-android.sh`의 최종 link 명령에 16KB flags를 넣었지만 고정 V8 checkout 부재로 앱 `.so` 재링크는 확인하지 못했다. 이 결과 때문에 16KB 적합성은 완료로 표시하지 않는다. 자세한 표·20개 구현 실패 관점·원본 자료는 [Android API 호환성 실행 및 구현 적대 검토](../spec/internal/evidence/r05-android-api-compatibility-2026-10-08.md)에 있다.
+
+##### 실행 전 계획 적대 검토 · 20개 실패 관점
+
+| # | 독립 실패 관점 | 계획의 차단·판정 |
+|---:|---|---|
+| 1 | API 35·37.0·37.1 실행에 다른 system image가 섞임 | 패키지·이미지 이름·ABI·실행 시 SDK 값 모두 보존하고 불일치 block은 무효 처리한다. |
+| 2 | API 37.0·37.1 image가 37.2로 잘못 라벨링됨 | `SDK_INT_FULL`을 반드시 기록하고 37.0·37.1·37.2를 합치지 않는다. |
+| 3 | 새 AVD 준비 과정에서 기존 API 36·37.2 사용자 데이터를 초기화 | 새 이름의 전용 AVD만 만들고 기존 AVD의 설정·데이터를 변경하지 않는다. |
+| 4 | API별 page size·GPU/backend 차이가 fence capability 비교를 오염 | image ABI·page size·renderer/backend를 기록하고 성능 비교는 금지한다. API 37.1 16 KB 결과는 해당 image 조건에만 한정한다. |
+| 5 | API 35 public API compile만으로 runtime 지원을 주장 | callback·fence runtime 신호를 AVD에서 관측하지 못하면 미지원/미확인으로 남긴다. |
+| 6 | API 35 `TransactionStats` callback을 JankData callback과 혼동 | 두 probe의 이벤트 prefix·API gate·원시 source를 별도 파싱한다. |
+| 7 | API 37.0·37.1을 37.2 전용 JankData 지원으로 오인 | 두 API에서 `api_below_37_2` capability 거부와 정상 R08 draw를 함께 확인한다. |
+| 8 | API 35에서 37.0 전용 `SDK_INT_FULL` 참조로 앱 시작이 실패 | 앱 전체의 class loading/launch 결과와 API 전용 중첩 class 경계를 확인한다. |
+| 9 | API 경계 또는 16 KB ELF alignment에서 `NoSuchMethodError`/`VerifyError`/`dlopen` 실패가 첫 입력 뒤 발생 | launch 직후뿐 아니라 WGPU/GLES 입력·표면 생명주기 후 logcat과 linker 오류를 검사하고 APK/ELF alignment도 기기 실행 전에 확인한다. |
+| 10 | callback이 없는데 timeout을 0ms 성공으로 바꿈 | callback 부재·pending·invalid sentinel을 원시 결과로 남기고 점수 분자에서 제외한다. |
+| 11 | drain 입력이 scored 수를 채우거나 누락 표본을 감춤 | scored 1–10과 drain 11을 block별로 분리하고 sequence 중복·누락을 검증한다. |
+| 12 | 표면이 준비되기 전 tap을 보내 호환성 실패로 오판 | surface/listener ready를 확인한 뒤 한 입력씩 보내고 입력 count를 대조한다. |
+| 13 | 일반 R08 경로에도 R05 probe flag가 누출됨 | R05 off 대조에서 R05 marker가 없고 화면·탭 동작이 유지되는지 확인한다. |
+| 14 | 앱이 crash/ANR한 뒤 재시작되어 일부 결과만 정상처럼 보임 | PID·process start·crash buffer·ANR trace를 수집하고 재시작 block은 실패다. |
+| 15 | API/renderer 조합을 바꿔도 이전 process의 request map이 남음 | 매 조합을 새 앱 process로 실행하고 시작·종료 PID를 기록한다. |
+| 16 | frame drop·stale generation을 현재 surface 결과로 집계 | request/generation exact fields가 빠지거나 불일치한 표본은 성공 처리하지 않는다. |
+| 17 | synthetic adb tap을 사용자 touch timing으로 해석 | 모든 block을 synthetic으로 표시하고 latency·사용성 결론을 금지한다. |
+| 18 | 한 API에서 positive 결과가 나와 다른 API/renderer 반복을 생략 | gate와 반복 조건을 API×renderer별 독립 적용하고 결과를 합산하지 않는다. |
+| 19 | 기존 SDK manager warning이나 설치 실패를 앱 실패·API 미지원으로 혼동 | Java·SDK tool 종료 상태와 emulator boot 확인을 먼저 저장하고 원인을 분리한다. 16 KB image는 공식 점검 절차의 page-size·APK·ELF 조건을 만족했는지 따로 기록한다. |
+| 20 | capability smoke 결과로 API 지원·R05.3 완료를 선언 | 지원 표·정식 계약·기기 검증과 분리해 제한된 AVD 관찰로만 기록하고 R05.3을 미완료로 둔다. |
+
+실행 전 SDK catalog·코드 경계·도구 환경을 대조하며 계획 실패 관점 20개를 각각 점검했다. 검토 중 빠져 있던 R05 비활성 negative control을 절차에 추가했고 API 35 capability 사유를 실제 코드의 `api_below_36`으로 고쳤다. 이 검토는 구현·실행 뒤 수행한 별도 20개 관점 검토와 다른 기록이다. 계획의 결함 여부만 판정하며 runtime 성공을 뜻하지 않는다. [Android 16 KB 페이지 크기 공식 지침](https://developer.android.com/guide/practices/page-sizes).
 
 #### Android API 37.2
 
@@ -77,7 +112,7 @@ API 37.2 AVD의 잘못된 `target=android-0` 메타데이터를 `android-37.2`�
 
 - Apple 공개 Metal API는 iPhoneOS SDK에 있고, Xcode 26.2 iPhoneOS target type-check가 통과했다. 같은 Xcode의 Simulator SDK header/type-check에는 관련 선언이 없다. 상세 실행 근거는 [iOS SDK capability matrix](../spec/internal/evidence/r05-presentation-signal-probe-2026-10-08/ios-sdk-matrix-typecheck.log)다.
 - 후속 R05.3 실행에서 같은 root layer subclass의 acquire hook을 Simulator WGPU 경로에서 확인했다. XCTest 단일 tap의 input sequence 1·revision 1을 draw sequence 4에 exact join했고 probe-off R08 대조에는 acquire 로그가 없었다. device-only callback 분기는 iPhoneOS SDK target 격리 app harness의 compile/link까지 통과했다. [iOS 실행 근거](../spec/internal/evidence/r05-ios-present-feedback-2026-10-08.md).
-- wgpu frame ID와 drawable ID 사이의 device callback closure ticket은 캡처하지만 callback ledger/timeout/lost accounting은 미구현이다. surface 교체 뒤 늦은 callback, frame drop, 중복/누락 callback, host-time과 input uptime 변환 오차는 미검증이다. command-buffer completion·`CADisplayLink`는 대체 신호가 아니다.
+- device callback closure ticket과 bounded callback ledger는 구현했다. Swift 자체 시험 6개 그룹 및 전체 suite 독립 실행 20회가 통과했고 iPhoneOS device target compile/link도 통과했다. 다만 Simulator SDK에는 표시 callback API가 없어 기기 callback runtime은 미검증이다. 실제 기기에서 surface 교체 뒤 늦은 callback, frame drop, 중복/누락 callback과 `presentedTime` join은 사용자가 실기기 검증을 요청한 뒤 확인한다. `UITouch.timestamp`와 Metal host-time의 clock epoch residual도 아직 판정하지 않아 event→present latency는 계산하지 않는다. command-buffer completion·`CADisplayLink`는 대체 신호가 아니다.
 
 #### 공통 정지 조건
 
