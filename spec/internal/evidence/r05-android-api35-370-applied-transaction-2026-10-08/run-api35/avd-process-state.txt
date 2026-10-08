@@ -1,0 +1,5 @@
+avd_name=spinon_api35_applied_txn
+avd_data_dir=/Users/yoonhb/.android/avd/spinon_api35_applied_txn.avd
+avd_data_dir_present=true
+emulator_process= 5067       00:32 /Users/yoonhb/Library/Android/sdk/emulator/qemu/darwin-aarch64/qemu-system-aarch64 -avd spinon_api35_applied_txn -ports 5580,5581 -gpu host -no-snapshot-load -no-snapshot-save -no-boot-anim -verbose
+--- emulator이 열어 둔 삭제 파일 ---
