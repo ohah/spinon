@@ -52,6 +52,28 @@ Android `simpleperf` 문서에 따르면 `--trace-offcpu`는 `cpu-clock` 표본�
 
 긴 JS 조건에서 queue p50은 일반 조건보다 약 4,867배 길었지만, V8 dispatch 구간 p50 자체는 17µs였다. 이는 대기열 체류와 실행 중인 동기 JavaScript의 비선점 동작을 구분해 보여준다. 작업 우선순위가 더 높아도 현재 V8 평가가 반환되기 전에는 다음 JS 작업을 실행하지 않는다.
 
+## Android ATrace 직접 wake 원인
+
+Perfetto `linux.ftrace` 데이터 소스는 이 기기에 없지만, `adb shell atrace --async_start -b 16384 sched`로 Android 커널 `sched_waking`, `sched_wakeup`, `sched_switch` 이벤트를 수집할 수 있었다. 앱 구간과 함께 보기 위해 한 반복에서는 `-a dev.spinon.bootstrap`을 추가해 이미 앱에 있던 ATrace 표식도 보존했다. 이 경로는 simpleperf의 system-wide kernel sample 권한 오류와 앱 범위 tracepoint의 0 samples를 우회했다. 시도 결과는 [simpleperf 시도 기록](r06-android-physical-scheduler-2026-10-08/traces/atrace-wakeup/simpleperf-attempts.txt)에 기록했다.
+
+Linux trace event 형식에서 sched_waking·sched_wakeup의 pid는 깨우는 대상이고 trace 행의 task/TID는 이벤트를 낸 쪽이다. sched_switch의 next_pid로 대상이 실제 CPU에 올라온 시각을 짝지었다. 이 방식은 이벤트별 wakeup 요청자와 요청 후 실행까지의 시간을 식별한다. [Linux event tracing](https://docs.kernel.org/trace/events.html) · [커널의 wakeup-to-switch 지연 계산 예시](https://docs.kernel.org/next/trace/histogram.html)
+
+다섯 번의 Android 실기기 캡처 모두에서 JS owner TID 15638 대상으로 `spinon-platform`의 wake 요청이 관측됐다. Java [`ThreadPoolExecutor`](../../../platforms/android/app/src/main/java/dev/spinon/bootstrap/MainActivity.java#L68-L72)의 실제 스레드 이름은 `spinon-platform-call`이며 Linux thread name 길이 제한으로 trace에는 `spinon-platform`으로 보인다. 앱 표식이 있는 캡처에서는 `scheduler-enqueue` 직후 이 스레드의 wake 요청이 이어졌다. Rust는 [작업 삽입 뒤 `Condvar::notify_one()`](../../../crates/spinon-runtime/src/session/scheduler.rs#L49)으로 owner를 알리고, owner는 빈 큐에서 [`Condvar::wait()`](../../../crates/spinon-runtime/src/session/scheduler.rs#L75-L91) 중이다. 계측 순서와 코드 경계가 일치한다.
+
+| 캡처 | owner wake 대상 / 발생 주체 TID | wakeup 후 첫 switch-in | owner가 CPU에서 나갈 때의 상태 | trace 기록 수 |
+| --- | --- | ---: | --- | ---: |
+| 1 | spinon-platform 16035 · V8 DefaultWorke 15646 | 691µs · 99µs | R 10회 · S 1회 | 21,641 / 21,641 |
+| 2 | spinon-platform 15749 | 15µs | R 4회 · S 0회 | 13,118 / 13,118 |
+| 3 | spinon-platform 15884 | 40µs | R 7회 · S 0회 | 14,111 / 14,111 |
+| 취소 포함 | spinon-platform 16035 | 20µs | R 5회 · S 1회 | 21,407 / 21,407 |
+| 앱 표식 포함 | spinon-platform 15637 · V8 DefaultWorke 15646 | 27µs · 13µs | R 4회 · S 2회 | 19,239 / 19,239 |
+
+R로 owner가 나간 구간은 계속 runnable한 채 CPU를 양보하거나 다른 CPU로 이동한 것이므로, 이후 sched_wakeup이 아니라 sched_switch에서 실행 재개를 확인했다. 두 캡처에서는 `V8 DefaultWorke`가 추가로 owner를 깨웠다. 이 이름은 Linux thread name 길이 제한으로 잘린 값이다. 코드는 [`v8::platform::NewDefaultPlatform()`](../../../native/v8/src/spinon_v8.cc#L78)으로 V8 플랫폼을 만들지만, trace만으로 내부 V8 작업의 정확한 호출 지점이나 작업 종류까지는 식별하지 않았다. 따라서 이 간헐적 wake는 큐 제출과 연결된 다섯 번의 platform-call wake와 구분해 미확정 항목으로 남긴다. 실행별 wake 행, TID, latency, 상태 및 buffer 수는 [wakeup-events.csv](r06-android-physical-scheduler-2026-10-08/traces/atrace-wakeup/wakeup-events.csv)에 두었다. [압축 원본 다섯 개와 SHA-256](r06-android-physical-scheduler-2026-10-08/traces/atrace-wakeup/) 및 [대응 Logcat](r06-android-physical-scheduler-2026-10-08/logs/atrace-wakeup/)을 보관한다. 다섯 trace 모두 `entries-in-buffer == entries-written`이며 기록 손실·buffer overrun은 없었다.
+
+취소 시점까지 포함한 앱 표식 캡처에서는 `long-eval-cancel-submit` (2867134.500612), `long-eval-cancel-call` (2867134.502472), owner의 `reply-send` (2867134.502620), `actor-condvar-wait` (2867134.502645), owner `sched_switch prev_state=S` (2867134.502652) 순서였다. 취소 호출 뒤 owner 대상 `sched_wakeup`은 0건이다. [대응 Logcat](r06-android-physical-scheduler-2026-10-08/logs/atrace-wakeup/app-markers-1-logcat.txt)의 평가는 `status=-8`, `v8_call_us=2095577`로 반환했다. Android [`runtime-control` 스레드의 취소 호출](../../../platforms/android/app/src/main/java/dev/spinon/bootstrap/MainActivity.java#L628-L636)은 이미 동기 JavaScript를 실행 중인 owner를 OS scheduler wake로 깨우지 않았다. V8 평가가 종료 요청을 확인해 반환한 뒤 actor가 큐 대기로 복귀했다. V8 경계는 [`TerminateExecution()`](../../../native/v8/src/spinon_v8.cc#L1000-L1002)에 연결된다. 이 결론은 이 캡처에서 확인된 이벤트 순서에 한정한다.
+
+판정은 이 한 Android 16 실기기·같은 debuggable APK의 진단 시나리오에 한정한다. 수 microsecond wake-to-run 값은 ATrace 활성 상태의 작은 표본이므로 성능 합격 기준이나 다른 기기·release 성능으로 일반화하지 않는다. 직접 원인 귀속은 가능해졌다. 이 시나리오에서 작업 제출과 함께 관측된 owner wake는 Android platform-call worker가 Rust Condvar를 알린 결과다. 긴 동기 JS 중 관측한 다른 CPU 전환은 대부분 runnable 상태의 재선택이었다. 취소 trace에서는 취소 호출 뒤 owner 대상 OS wakeup이 없었다.
+
 ## Perfetto 경로를 사용하지 않은 이유
 
 이 기기의 `adb shell perfetto --query`에는 `linux.ftrace`가 등록되어 있지 않았다. 동일한 `linux.ftrace` scheduler 설정의 실기기 smoke trace는 774바이트였고 `sched_slice`, `thread_state`, raw ftrace event가 모두 0이었다. Android Emulator 양성 대조에서는 같은 최소 설정이 scheduler event를 기록했다. 이 장치에서 Perfetto ftrace의 빈 테이블을 scheduler idle로 해석하면 안 된다.
@@ -59,8 +81,8 @@ Android `simpleperf` 문서에 따르면 `--trace-offcpu`는 `cpu-clock` 표본�
 등록된 `linux.perf`로 앱 명령줄을 지정한 보조 실험도 했다. 이 결과는 7,830개 표본 중 7,379개가 idle `swapper`였고 앱에 귀속 가능한 callsite 표본은 12개뿐이라 앱 scheduler 분석에 사용하지 않았다. 보조 trace와 설정은 [`traces/perfetto-linux-perf-physical-probe.pftrace`](r06-android-physical-scheduler-2026-10-08/traces/perfetto-linux-perf-physical-probe.pftrace), [`설정`](r06-android-physical-scheduler-2026-10-08/traces/perfetto-linux-perf-physical-probe.textproto)에 둔다.
 
 ## 한계와 남은 확인
-
-- `simpleperf` 결과는 schedule-out부터 schedule-in까지의 off-CPU 경과 시간을 측정한다. 이 프로필은 `sched_switch`의 이전 task state나 `sched_waking` 원인을 이 근거 묶음에 보존하지 않아, 각 구간이 runnable queue 대기였는지 다른 off-CPU 상태였는지 구간별로 나누지는 못한다. 실행 중 JavaScript는 blocking API 없이 무한 루프를 도는 조건이므로 관측 구간은 OS가 다른 작업을 실행한 뒤 owner thread를 재개하는 시간과 일치하지만, 더 세부적인 커널 원인 귀속은 남아 있다.
+- simpleperf --trace-offcpu 자체는 개별 switch state나 waker를 저장하지 않는다. 이번 별도 ATrace 추적이 그 경계를 보완해 작업 제출 시 깨운 TID와 R/S 전환을 식별했다. 간헐적으로 관찰된 V8 DefaultWorker의 정확한 내부 호출 지점·작업 종류, 다른 workload의 wake source는 커널 call stack 없이 확정하지 않았다.
+- `simpleperf` profile은 schedule-out부터 schedule-in까지의 off-CPU 경과를 측정하지만 개별 `sched_switch` 이전 상태나 waker를 보존하지 않는다. ATrace 보완 캡처로 큐 제출 wake 요청자와 일부 R/S 전환은 식별했다. 다만 simpleperf의 101개 off-CPU 구간 각각을 ATrace 이벤트와 일대일 연결하지 않았으므로 모든 구간의 대기 원인 분류는 남아 있다.
 - Perfetto `linux.ftrace`가 없는 이 기기의 앱 프레임 `sched_slice`·`thread_state`와 사용자 입력 시각은 수집하지 않았다. `simpleperf`는 owner scheduling만 보고 GPU·화면 frame 지연을 설명하지 않는다.
 - `cpu-clock` 1kHz의 디버그 표본은 원인 분석이다. 프로파일러 overhead on/off 대조, release 빌드, 반복 refresh mode 대조를 하지 않았으므로 성능 벤치마크로 해석하지 않는다.
 - `schedstat` 보조 실행은 누적 CPU·runnable wait만 비교한다. 샘플 간격 동안 runnable 상태가 아닌 blocked/off-CPU 시간을 분리하지 못하고, 개별 wakeup/schedule 이벤트의 원인 귀속 자료로 대체하지 않는다.
@@ -68,6 +90,11 @@ Android `simpleperf` 문서에 따르면 `--trace-offcpu`는 `cpu-clock` 표본�
 - 긴 JS 5회 matrix의 기존 ADB 입력 결과와 이번 simpleperf 표본은 모두 실기기 코드 경로 확인이다. 물리 손가락 입력, optical input-to-photon latency, 다른 앱 부하 조건은 미측정이다.
 
 ## 원본 근거
+
+- 직접 wake 이벤트 7건과 capture 요약: [wakeup-events.csv](r06-android-physical-scheduler-2026-10-08/traces/atrace-wakeup/wakeup-events.csv)
+- ATrace 설정·simpleperf 대체 시도: [capture-conditions.txt](r06-android-physical-scheduler-2026-10-08/traces/atrace-wakeup/capture-conditions.txt), [simpleperf-attempts.txt](r06-android-physical-scheduler-2026-10-08/traces/atrace-wakeup/simpleperf-attempts.txt)
+- 압축 trace 원본: [5개 trace](r06-android-physical-scheduler-2026-10-08/traces/atrace-wakeup/) · [SHA-256 목록](r06-android-physical-scheduler-2026-10-08/traces/atrace-wakeup/SHA256SUMS)
+- 취소·앱 표식 로그: [Logcat 원본](r06-android-physical-scheduler-2026-10-08/logs/atrace-wakeup/)
 
 - 5개 압축 profile: [`traces/simpleperf/`](r06-android-physical-scheduler-2026-10-08/traces/simpleperf/)
 - owner별 off-CPU 구간 101개: [`offcpu-intervals.csv`](r06-android-physical-scheduler-2026-10-08/traces/simpleperf/offcpu-intervals.csv)

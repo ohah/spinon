@@ -1,0 +1,7 @@
+기기: Samsung SM-S731N / Android 16 API 36 / arm64-v8a
+앱: dev.spinon.bootstrap debuggable, v8_jitless=false
+설치 APK SHA-256: 1767ff14b69a8451a272d060b4467a54f777daf8941da0a36b0477ad1560bf84
+owner TID: 15638 (spinon-js-runti; Linux TASK_COMM_LEN으로 표시가 잘림)
+계측: adb shell atrace --async_start -b 16384 [-a dev.spinon.bootstrap] sched
+시나리오: ADB로 무한 동기 JS 시작, 취소 포함 trace는 약 2초 뒤 취소 버튼을 눌러 평가 종료 확인
+범위: 스케줄러 wake 원인 분석용 debug trace; frame/GPU/release 성능 측정이 아님
