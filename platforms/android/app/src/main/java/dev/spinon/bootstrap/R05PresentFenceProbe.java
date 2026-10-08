@@ -599,6 +599,28 @@ final class R05PresentFenceProbe {
                         } else {
                             fenceState = "non_positive_signal_time";
                         }
+                        if (timely && request.callbackCount.get() == 1
+                                && R05PresentFenceWaitExperiment.isEnabled()) {
+                            long waitGeneration = safeCurrentGeneration(request);
+                            boolean waitSurface = safeSurfaceAvailable(request)
+                                    && waitGeneration == request.generation;
+                            try {
+                                R05PresentFenceWaitExperiment.observe(fence,
+                                        request.renderer, request.requestId,
+                                        request.inputSequence, request.revision,
+                                        request.generation, waitGeneration, waitSurface,
+                                        request.targetVsyncId, request.eventTimeNanos,
+                                        latchTimeNanos, fenceState, signalTimeNanos,
+                                        CALLBACK_RAN_INLINE.get());
+                            } catch (Throwable error) {
+                                Log.e(TAG, "SPINON_R05_FENCE_WAIT renderer="
+                                        + request.renderer
+                                        + " request_id=" + request.requestId
+                                        + " input_seq=" + request.inputSequence
+                                        + " outcome=observer_error error="
+                                        + error.getClass().getSimpleName());
+                            }
+                        }
                     }
                 }
             } catch (Throwable error) {

@@ -197,8 +197,15 @@ public final class MainActivity extends Activity {
         boolean runS04 = getIntent().getBooleanExtra("spinon_s04", false);
         boolean runR05PresentationProbe =
                 getIntent().getBooleanExtra("spinon_r05_presentation", false);
+        boolean runR05AsyncFenceWait =
+                getIntent().getBooleanExtra("spinon_r05_async_fence_wait", false);
+        if (runR05AsyncFenceWait && !R05PresentFenceWaitExperiment.enable()) {
+            finish();
+            return;
+        }
         boolean runR05PresentFenceProbe =
-                getIntent().getBooleanExtra("spinon_r05_present_fence", false);
+                getIntent().getBooleanExtra("spinon_r05_present_fence", false)
+                        || runR05AsyncFenceWait;
         boolean runR05FrameTimelineJoin =
                 getIntent().getBooleanExtra("spinon_r05_frame_timeline_join", false)
                         || (runR05PresentFenceProbe
@@ -1354,6 +1361,7 @@ public final class MainActivity extends Activity {
 
     @Override
     protected void onDestroy() {
+        R05PresentFenceWaitExperiment.disable();
         activityClosing = true;
         mainHandler.removeCallbacks(runtimeHeartbeat);
         mainHandler.removeCallbacks(longEvaluationTimeout);

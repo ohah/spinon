@@ -29,7 +29,7 @@
 
 예를 들어 첫 표본은 `input_seq=1`, `revision=1`, `generation=1`, `fence_valid=true`, `fence_state=pending`, `latch_time_ns=1461753264209354`로 기록됐다. 모든 표본에서 `processing_error=none`, `fence_close_error=none`, `callback_inline_overflow=false`였다.
 
-이 결과는 callback 시점의 `getSignalTime()`이 pending이었다는 것만 증명한다. 현재 코드가 callback 종료 전에 fence를 닫기 때문에 이후 signal 여부는 아직 관측하지 않았다. 따라서 `event→present` 지연값을 만들지 않았고, pending을 GPU 미완료나 화면 미표시로 해석하지 않는다. 이 미확인 지점을 검증할 별도 계획은 [비동기 fence 신호 확인 계획](../../../../plan/r05-android-async-present-fence.md)에 있다.
+이 baseline 결과만으로는 callback 이후 signal 여부를 알 수 없었다. 후속 debug-only worker가 복제 fence를 제한 대기한 결과와 device run 근거는 [비동기 fence 관찰 보고서](async-wait/README.md)에 별도로 기록했다. callback이 pending이었다는 값을 GPU 미완료나 화면 미표시로 해석하지 않으며, 어느 결과로도 `event→present` 제품 지연값을 산출하지 않는다. 실행 전 계획은 [비동기 fence 신호 확인 계획](../../../../plan/r05-android-async-present-fence.md)이다.
 
 ## 화면 확인
 

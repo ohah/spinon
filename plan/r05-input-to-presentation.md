@@ -187,3 +187,7 @@ API 37.1 16 KB AVD에서는 APK zip alignment와 네 ELF PT_LOAD segment의 16 K
 ## 2026-10-09 Android 실기기 baseline
 
 Samsung SM-S731N / Android 16 SDK 36.1 / Xclipse 940 WGPU/Vulkan에서 ADB synthetic 탭 30회를 실행했다. 입력·revision submit·실제 `TransactionStats` callback은 30/30 연결됐고 유효 fence descriptor도 30/30이었으나, callback 시점 `getSignalTime()`은 30/30 `pending`이었다. 이 probe는 callback 반환 전에 fence를 닫으므로 이 결과만으로 fence가 이후에도 signal되지 않는다고 단정할 수 없다. 지연값은 산출하지 않았고 실제 손가락 입력은 검증하지 않았다. [실행 자료](../spec/internal/evidence/r05-android-physical-present-fence-2026-10-09/README.md) · [bounded async wait 조사 계획](r05-android-async-present-fence.md). R05.3은 미완료다.
+
+## 2026-10-09 Android 실기기 비동기 fence 관찰
+
+같은 SM-S731N / Android 16 SDK 36.1 실기기에서 debug-only fence 복제·대기 probe를 새 process 3개로 실행했다. block마다 10개 scored 입력과 1개 drain 입력을 사용했고 input·submit·TransactionStats callback·usable async signal은 33/33 exact join됐다. callback 직후 32개 fence는 pending, 1개는 이미 signaled였으며 worker 결과는 33/33 signaled, 각 process의 마지막 pending/active/queue depth는 0이다. 입력은 ADB synthetic MotionEvent이며 event-to-present·광학 표시·실제 touch는 검증하지 않았다. 상세 근거는 [실행 보고서](../spec/internal/evidence/r05-android-physical-present-fence-2026-10-09/async-wait/README.md), [실행 전 계획](r05-android-async-present-fence.md), [구현 실패 관점 검토](../spec/internal/evidence/r05-android-physical-present-fence-2026-10-09/async-wait/implementation-review.md)에 둔다. R05.3은 미완료다.
