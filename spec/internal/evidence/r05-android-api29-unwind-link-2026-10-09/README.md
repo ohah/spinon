@@ -34,3 +34,5 @@ ADB synthetic tap 13회는 input sequence/revision 1–13, WGPU submit 13회, �
 API 30–33, 직접 손가락 입력, iOS 실행, 성능 비교와 표시 지연, Release APK의 NDK notice/license 배포 처리는 이번 변경으로 검증하지 않았다. NDK 설치 디렉터리의 NOTICE 파일 존재만 확인했으며 Release 배포에 필요한 고지 파일 수록 여부와 문구는 별도 확인이 필요하다. R05.3과 R05는 계속 미완료다.
 
 상세 실행 로그, 환경, 화면과 checksums는 이 디렉터리의 api29, api34, link, physical 하위에 있다. [계획과 사전 검토](../../../../plan/r05-android-api29-unwind-link.md) 및 [구현 후 검토](implementation-review.md)를 따른다. source-manifest.txt는 기반 commit과 수정 script·artifact hash를 연결한다.
+
+PR 통합 변경을 별도 경계로 검토한 결과는 [PR 검토 기록](pr-review.md)에 둔다.
