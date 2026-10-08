@@ -1,6 +1,6 @@
 # 스피논 구현 상태와 API 명세 대장
 
-**기준:** 2026-10-08 · **명세 버전:** `0.1.0-draft` · **현재 제품 지원 완료:** 없음
+**기준:** 2026-10-09 · **명세 버전:** `0.1.0-draft` · **현재 제품 지원 완료:** 없음
 
 Cargo·Bun 워크스페이스와 V8 Android/iOS 부팅 smoke는 저장소 개발 기반이다. 제품 기능 상태를 대신하지 않으며, 이 초기화만으로 아래 항목을 완료 처리하지 않는다.
 
@@ -21,7 +21,7 @@ Cargo·Bun 워크스페이스와 V8 Android/iOS 부팅 smoke는 저장소 개발
 각 항목의 `관련 계약`은 현재 제안 명세를 가리킨다. 기능 항목의 `API 명세: 미작성`은 실제 인터페이스·예제·오류 계약이 아직 게시되지 않았다는 뜻이다.
 
 ## 1. 위험 검증
-- [ ] **R01 웹 호환 범위 명세** — 요소·CSS·이벤트·제한된 DOM API의 첫 수직 구현 후보를 [0007 DOM 호환 제안](0007-dom-compatibility.md)에 정리했다. 첫 목표 범위와 현재 적합성 판정은 아직 확정되지 않았다. 관련 계약: [0001-conformance.md](0001-conformance.md) · API: 제안 문서만 있음 · 산출물: 미완료 · 근거: 없음
+- [ ] **R01 웹 호환 범위 명세** — [0003 웹 표면 명세](0003-web-surface.md#html-요소-인벤토리와-매핑-후보)에 113개 표준 HTML namespace 요소의 목표 매핑 분류와 HTML·CSS·이벤트·DOM·JS 호스트 API의 규범 원본 교차표를 추가했다. 첫 수직 구현 범위·첫 공식 릴리스 포함 결정과 요소별 적합성은 아직 미정이며, 현재 [공개 지원 완료 API](api/index.md)는 0개다. 관련 계약: [0001-conformance.md](0001-conformance.md) · [R01 계획](../plan/r01-web-compatibility-inventory.md) · API: 제안 문서만 있음 · 산출물: 인벤토리 제안, R01 미완료 · 근거: 없음
 - [ ] **R02 iOS 실기기 V8 검증** — JIT 없는 V8 앱을 실기기에 설치해 JS 실행·터치·메모리를 확인한다. 관련 계약: [0001-conformance.md](0001-conformance.md) · API: 해당 없음 · 산출물: 미완료 · 근거: 없음 · PoC: 시뮬레이터 PoC
 - [ ] **R03 공통 HostDocument·호스트 계약 구현** — [내부 인터페이스 0003](internal/0003-shared-host-contract.md) `0.2.0-draft`의 Rust 코어 부분을 구현했다. 요소·텍스트 혼합 자식 순서, generation별 핸들, 속성·상태 읽기, 분리·재삽입, OwnerId 경계, 원자 묶음과 문서/표시 revision은 [29개 코어 테스트](internal/evidence/r03-host-document-precomparison-2026-10-01.md)로 확인한다. 기존 S01 `Tree`는 유지하며 DOM 구현으로 간주하지 않는다. 미완료: DOM/V8 façade와 래퍼 수명, 프레임워크 어댑터, 동시 OwnerId 변경 충돌 복구, 앱 표시 루트, JS 오류 변환, 노드 회수, 플랫폼 통합. Stylo DOM trait 연결은 [C03 HostDocument adapter](internal/0010-stylo-dom-adapter-c03.md)에서 별도 구현했다. [계약 초안 검토 기록](internal/evidence/r03-host-contract-review-2026-09-29.md)은 제안 문서에 대한 검토이며 새 코드 검증을 대신하지 않는다. 관련 계약: [0002-ui-tree-events.md](0002-ui-tree-events.md) · [0007-dom-compatibility.md](0007-dom-compatibility.md) · 실행 기준과 근거: [R03 HostDocument 비교 모델](internal/evidence/r03-host-document-precomparison-2026-10-01.md) · 상태: 내부 코어 부분 구현, R03 미완료
 - [ ] **R04 세 비교 기준 앱** — React Native Fabric·ReactLynx·Android Views/UIKit의 같은 카운터 화면을 만든다. 관련 계약: [0001-conformance.md](0001-conformance.md) · API: 해당 없음 · 산출물: 미완료 · 근거: 없음

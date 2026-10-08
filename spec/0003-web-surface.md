@@ -6,15 +6,47 @@
 
 앱은 HTML 이름의 요소를 사용한다. React에서는 JSX/TSX의 `className`·`onClick`, Vue와 Svelte에서는 각자의 템플릿·이벤트 문법을 사용한다. 웹 빌드는 브라우저 DOM에 연결하고 모바일 빌드는 스피논 노드·GPU 장면에 연결한다. `<view>`를 기본 공개 요소로 도입하지 않는다.
 
-| 요소 | 첫 목표 | 모바일 의미 | 아직 결정할 것 |
+| 요소 | 초기 검토 후보(결정 전) | 모바일 의미 | 아직 결정할 것 |
 | --- | --- | --- | --- |
-| `<div>` | 수직 구현 | 일반 배치 상자 | 내장 기본 규칙은 초안이며 Chromium 기준값과 실제 적용은 C01·C04에서 검증 |
-| 텍스트 노드 | 수직 구현 | 내용·노드 ID·글리프 출력 | 인라인 조각·줄바꿈·선택 |
-| `<button>` | 수직 구현 | GPU 화면, 클릭, 버튼 접근성 역할 | 포커스·키보드·`disabled`·기본 동작·기본 외형 |
-| `<span>`, `<input>`, `<img>`, `<p>`, `<a>`, `<ul>`, `<li>` | 실사용 UI | 각각 인라인, 입력, 이미지, 문단, 링크, 목록 의미 | 태그별 속성·이벤트·접근성 세부 계약과 기본 외형 |
+| `<div>` | 수직 구현 후보 | 일반 배치 상자 | 내장 기본 규칙은 초안이며 Chromium 기준값과 실제 적용은 C01·C04에서 검증 |
+| 텍스트 노드 | 수직 구현 후보 | 내용·노드 ID·글리프 출력 | 인라인 조각·줄바꿈·선택 |
+| `<button>` | 수직 구현 후보 | GPU 화면, 클릭, 버튼 접근성 역할 | 포커스·키보드·`disabled`·기본 동작·기본 외형 |
+| `<span>`, `<input>`, `<img>`, `<p>`, `<a>`, `<ul>`, `<li>` | 실사용 UI 후보 | 각각 인라인, 입력, 이미지, 문단, 링크, 목록 의미 | 태그별 속성·이벤트·접근성 세부 계약과 기본 외형 |
+
+위 후보는 R01의 기술 검토 항목이며, 첫 공식 릴리스 포함 결정이나 현재 지원 선언이 아니다. [적합성 상태 정의](0001-conformance.md#지원-표기)에 따라 목표 범위와 현재 적합성은 분리한다. 현재 [공개 지원 완료 API 목록](api/index.md)은 0개다. 아래 표의 매핑은 목표 구조 제안이고, 요소별 첫 구현 포함 여부와 적합성 상태는 아직 `미정`이다.
+
+## HTML 요소 인벤토리와 매핑 후보
+
+### 기준과 판정 의미
+
+인벤토리 기준은 [WHATWG HTML Living Standard 요소 인덱스](https://html.spec.whatwg.org/multipage/indices.html#elements-3)다. 이 인덱스는 비규범 목록이므로 요소 이름의 기준으로만 쓴다. 표준 동작은 HTML 표준 본문과 아래 연결된 각 계약을 따른다. 2026-10-09 기준 스냅샷에서 HTML namespace 요소 113개를 분류했다. 인덱스의 SVG `svg`, MathML `math`, autonomous custom elements는 이 수에서 제외했다. `Text`는 요소가 아닌 노드 종류라 따로 다룬다.
+
+| 매핑 후보 | 요소 이름 | 목표 매핑의 뜻 | 현재 적합성 |
+| --- | --- | --- | --- |
+| 논리 요소 1:1 후보 | `abbr`, `address`, `article`, `aside`, `b`, `bdi`, `bdo`, `blockquote`, `br`, `cite`, `code`, `data`, `dd`, `del`, `dfn`, `div`, `dl`, `dt`, `em`, `figcaption`, `figure`, `footer`, `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `header`, `hgroup`, `hr`, `i`, `ins`, `kbd`, `main`, `mark`, `nav`, `p`, `pre`, `q`, `rp`, `rt`, `ruby`, `s`, `samp`, `search`, `section`, `small`, `span`, `strong`, `sub`, `sup`, `time`, `u`, `var`, `wbr` | 태그 이름·namespace·논리 노드 identity를 보존할 후보. DOM 유사 논리 요소 하나를 뜻할 뿐, 네이티브 뷰 하나·GPU 도형 하나·CSS/접근성/브라우저 동작의 1:1 대응을 뜻하지 않는다. | `미정` |
+| 조건부·전용 구현 | `a`, `area`, `audio`, `button`, `canvas`, `caption`, `col`, `colgroup`, `datalist`, `details`, `dialog`, `fieldset`, `form`, `img`, `input`, `label`, `legend`, `li`, `map`, `menu`, `meter`, `optgroup`, `option`, `output`, `picture`, `progress`, `select`, `selectedcontent`, `slot`, `source`, `summary`, `table`, `tbody`, `td`, `textarea`, `tfoot`, `th`, `thead`, `tr`, `track`, `ul`, `ol`, `video` | 논리 태그를 보존하더라도 목록·표 레이아웃, 폼 상태·입력, 미디어·이미지 자원, 내부 hit-test, 라우팅 또는 Web Components 계약 같은 전용 동작을 별도로 정하고 검증해야 한다. | `미정` |
+| 문서·빌드·DOM 전용 | `base`, `body`, `head`, `html`, `link`, `meta`, `noscript`, `script`, `style`, `template`, `title` | 모바일 GPU 화면 노드로 직접 그리지 않는다. 문서 루트 설정, 정적 번들 입력, DOM fragment 등 해당 단계의 계약으로 처리할 후보이며, 동적 DOM·CSSOM·모듈 로딩이 제공된다는 뜻은 아니다. | `미정` |
+| 모바일 GPU 장면에 직접 대응 없음 | `embed`, `iframe`, `object` | 일반 GPU UI 트리에 자체 대응이 없는 후보. 명시적으로 포함하는 별도 WebView 또는 미디어/플러그인 대체 기능이 있더라도 이 매핑을 자동으로 바꾸지 않는다. | `미정` |
+
+목록은 113개 HTML 요소 이름을 중복·누락 없이 한 번씩 포함한다. 모든 행의 현재 적합성 `미정`은 [적합성 상태 정의](0001-conformance.md#지원-표기)를 따른다. 첫 목표 범위가 아직 결정되지 않았다는 뜻이며 `미지원` 판정이 아니다. WHATWG 인덱스의 foreign-content 항목인 SVG `svg`와 MathML `math`는 각 namespace 규격·렌더링 계약을 별도로 정하기 전까지 이 표의 HTML 요소 지원으로 추론하지 않는다. autonomous custom element 이름도 일반 태그 보존과 구분한다. `CustomElementRegistry`, 생성·수명주기 callback, Shadow DOM을 제공한다는 계약은 아직 없다. `<slot>`의 존재 역시 이 기능들을 뜻하지 않는다.
+
+폐기된 HTML 요소는 [WHATWG 폐기 기능 목록](https://html.spec.whatwg.org/multipage/obsolete.html#non-conforming-features)에 별도 분류한다. `applet`, `acronym`, `bgsound`, `dir`, `frame`, `frameset`, `noframes`, `isindex`, `keygen`, `listing`, `menuitem`, `nextid`, `noembed`, `param`, `plaintext`, `rb`, `rtc`, `strike`, `xmp`, `basefont`, `big`, `blink`, `center`, `font`, `marquee`, `multicol`, `nobr`, `spacer`, `tt`는 위 113개에 포함하지 않는다. 이 목록을 일반 `<div>`로 조용히 변환하지 않으며, 수용 여부와 진단 형식은 구현 전 별도 계약으로 정한다. WHATWG 표준은 `acronym`을 의미·렌더링상 `abbr`과 동등하게 취급하도록 요구하지만, 그 요구가 스피논 지원을 자동으로 만들지는 않는다.
+
+### 호환 범위와 단일 원본
+
+| 표면 | 적합성 비교 단위 | 규범 원본과 현재 경계 |
+| --- | --- | --- |
+| HTML 요소·속성 | 최종 어댑터 출력의 tag·namespace·속성·자식 순서, 요소별 기본 동작 | 이 문서의 인벤토리는 매핑 후보만 정한다. 속성별 동작·오류는 이 문서에서 계약을 추가한 뒤 판정하며, 무시되거나 일반 상자로 대체되는 동작을 지원으로 표시하지 않는다. |
+| CSS | 선택자 매칭 → cascade/상속 → 계산값 → 레이아웃 → 페인트 | [CSS 호환 명세](0008-css-compatibility.md)가 범위·Chromium 비교·오차 기준의 원본이다. CSS 매칭·계산값만 성공해도 레이아웃·GPU 표시 지원을 뜻하지 않는다. |
+| 이벤트 | 프레임워크 adapter 문법과 런타임 입력·target·순서·취소 결과 | [UI 트리·이벤트 명세](0002-ui-tree-events.md)가 원본이다. `onClick` 문법은 DOM Event 전체나 capture/bubble/default action 지원을 뜻하지 않는다. |
+| DOM 유사 API | 메서드별 입력·반환·오류·변경 반영 시점·wrapper 수명 | [모바일 DOM 호환 명세](0007-dom-compatibility.md)가 원본이다. 제한된 façade는 브라우저 DOM·HTML parser·전체 `window`가 아니다. |
+| JavaScript 호스트 API | API·실행 환경별 타입·비동기·취소·오류·종료 동작 | 이 문서의 호스트 경계와 [J01–J18 구현 체크리스트](STATUS.md#javascript-api-구현-체크리스트)가 원본이다. V8 언어 기능에 `fetch`·타이머·DOM이 내장되는 것은 아니며 현재 공개 지원 API는 없다. |
+| 프레임워크·번들러 입력 | React/Vue/Svelte adapter와 웹·모바일 별 산출물의 실제 호출/태그 출력 | 프레임워크 구성요소 호출과 최종 host element 생성을 구분한다. 첫 적합성 대상은 React·Vite·단일 모바일 번들이며 다른 framework·bundler 조합은 별도 대상이다. 웹 빌드는 브라우저 DOM을 쓴다. 모바일 지원은 adapter와 호스트 동작의 검증으로 판정한다. |
+
+이 표의 `논리 요소 1:1 후보`, `조건부·전용 구현`, `문서·빌드·DOM 전용`, `모바일 GPU 장면에 직접 대응 없음`은 목표 매핑 분류다. 현재 적합성 표기가 아니다. 대상 버전·플랫폼을 정하지 않은 기능은 `미정`, 범위를 정했지만 아직 시험하지 않은 기능은 `미검증`이다. 근거 없이 `미지원`이라고 추정하거나 내부 노드 저장을 공개 지원으로 승격하지 않는다.
 
 
-지원 HTML 요소에 적용할 구조적 UA 규칙은 [`spinon-style` 내장 stylesheet 초안](https://github.com/ohah/spinon/blob/main/crates/spinon-style/resources/ua/supported-elements-v0.css)으로 관리한다. 이 자원은 Rust 바이너리에 포함되지만 Stylo cascade나 화면에는 아직 연결되지 않았다. 폼 컨트롤의 외형·링크 상태별 표현도 미구현이다. 세부 범위는 [CSS 호환 명세](0008-css-compatibility.md)와 [구현 상태 대장](STATUS.md)의 C01·C04를 따른다.
+초기 UA 규칙 후보는 [`spinon-style` 내장 stylesheet 초안](https://github.com/ohah/spinon/blob/main/crates/spinon-style/resources/ua/supported-elements-v0.css)으로 관리한다. 이 자원은 HTML namespace의 9개 태그를 대상으로 Rust 바이너리에 포함되지만 Stylo cascade나 화면에는 아직 연결되지 않았다. 이는 공개 지원 요소 목록이 아니다. 폼 컨트롤의 외형·링크 상태별 표현도 미구현이다. 세부 범위는 [CSS 호환 명세](0008-css-compatibility.md)와 [구현 상태 대장](STATUS.md)의 C01·C04를 따른다.
 
 첫 수직 구현 외의 요소를 조용히 일반 `<div>`처럼 바꾸지 않는다. 지원되지 않는 요소와 화면에 영향을 주는 속성은 빌드 또는 개발 실행에서 진단한다. 제한된 `document`·노드 API의 공개 후보는 [DOM 호환 명세](0007-dom-compatibility.md)에 둔다. S03.2 내부 시제품이 작은 모바일 façade를 V8·Rust 문서 트리에 연결했지만, 이는 공개 지원이나 전체 브라우저 DOM·모든 태그 조회 기능이 있다는 뜻이 아니다.
 
