@@ -1,6 +1,6 @@
 # R05.3 · Android API 37.0 결과 화면 캡처 재현 계획
 
-**상태:** 비교 모델 확정 · 실행 전 독립 실패 관점 20개 검토 완료 · 재현 실행 전
+**상태:** 비교 모델 확정 · 실행 완료 · 실행 후 독립 실패 관점 검토 완료 · Settings 복귀 직후 bitmap 미수집 편차 기록
 
 **대상:** PR #77에서 확인한 API 37.0 debug fixture의 검정 결과 캡처와 activity 복귀 뒤 PASS 캡처 차이
 
@@ -52,9 +52,17 @@ PR #77의 API 37.0 실행에서 runner의 `result.png`와 즉시 재확인 캡�
 - Settings/Back 전환이 fixture를 다시 실행하거나 새로운 앱 프로세스를 만들면 해당 캡처를 기존 fixture의 동일 화면으로 취급하지 않고 별도 상태로 분류한다.
 - UI hierarchy text, process state, SurfaceFlinger layer 존재 하나만으로 실제 픽셀 표시를 주장하지 않는다.
 
+## 실행 결과 및 편차
+
+- API 37.0·4KB·ARM64의 같은 기존 AVD를 새 QEMU process로 두 번 cold boot했다. 두 run 모두 동일 source/V8/APK digest, 12 checks·0 failures, 경합 100회, idle 60 samples와 pending·queue·active 0을 기록했다. 두 run의 runner screenshot과 시계열 0·1·5·15초 이미지는 PASS 문구를 표시했다. run 01의 0·1·5·15초 PNG digest는 같았고 run 02의 15초 digest 차이는 status bar 시각 변화였으며 PASS 화면은 유지됐다.
+- Settings 대조는 두 번 정상 표시됐다. Back 후 1초 시점에 Spinon MainActivity가 같은 process PID로 복귀했고 PASS bitmap을 캡처했다. **계획에는 Back 직후와 1초 뒤 bitmap 두 장이 있었지만, 두 run 모두 1초 뒤 bitmap만 수집했다.** 즉시 bitmap을 별도 수집하지 않았으므로 이 하위 관찰은 미완료 편차로 남긴다.
+- 첫 PR의 검은 runner screenshot은 cold boot 두 번 모두 재현되지 않았다. 기존 AVD/user data와 system image를 재사용해 재설치하지 않았으므로, 재설치 효과나 검은 캡처 root cause를 주장할 수 없다.
+- test 종료 뒤 Spinon AVD를 정상 종료했고 1.7GB data directory를 보존했다. `emulator-5580`과 해당 QEMU는 없어졌고 다른 프로젝트 `zl_poc`/`emulator-5554`는 살아 있다. AVD 등록 목록에는 data directory가 빠진 옛 `.ini`가 여럿 있어 사후 inventory에 남겼다.
+- 실행 증거·두 run screenshot·driver/Settings 편차 및 새 20개 실행 후 관점은 [R05 API 37.0 캡처 재현 보고서](../spec/internal/evidence/r05-android-api370-capture-2026-10-08/README.md)와 [실행 후 검토](../spec/internal/evidence/r05-android-api370-capture-2026-10-08/implementation-review.md)에 있다.
+
 ## 결과 산출물과 경계
 
-- `spec/internal/evidence/r05-android-api370-capture-2026-10-08/README.md`: 대조 모델, 타임라인, 캡처별 판정, 종료·AVD 상태.
+- `spec/internal/evidence/r05-android-api370-capture-2026-10-08/README.md`: 대조 모델, 타임라인, 캡처별 판정, 종료·AVD 상태 및 수집 편차.
 - `run-01-cold-boot/` 및 `run-02-cold-boot/`: environment, source/APK digest, fixture logcat, hierarchy/window/surface 상태, 시간별 screenshot, checksum.
 - 이 조사는 화면 캡처 진단이다. 공개 API/인터페이스 변경은 없다. `spec/STATUS.md`의 R05.3/R05 상태를 완료로 바꾸지 않는다.
 - 구현/실행 후 실제 evidence 대상으로 별도 20개 failure perspective를 검토한다. 이 계획의 관점으로 구현 후 검토를 대체하지 않는다.

@@ -118,9 +118,9 @@ API 37.1 16 KB AVD에서는 APK zip alignment와 네 ELF PT_LOAD segment의 16 K
 
 실제 OS 표시 timestamp와 해당 renderer의 frame/revision exact join 및 clock 변환 오차가 모두 플랫폼별로 검증되기 전에는 제품 입력 지연으로 보고하지 않는다. Android AVD에서는 TransactionStats present-fence와 clock bracket으로 synthetic 입력의 transaction-present 후보를 계산했으나 API별 기기 일반화가 남았다. iOS는 Simulator acquire join까지만 통과했고 device `presentedTime` runtime join은 미완료다. JankData presentTimeNanos 자체는 API 37.2에서도 unknown이며 이 경로만으로 지연을 산출하지 않는다. OS display signal은 물리적 scanout/광자 시각의 증명이 아니다.
 
-### 2단계 · 물리 입력 검증 (사용자 요청 뒤에만 실행)
+### 2단계 · 실기기 및 물리 입력 검증
 
-- 기기 연결·화면 잠금 해제·앱 foreground를 확인한 후 사용자가 명시적으로 요청한 경우에만 진행한다. 현재는 Android/iOS 실기기 조작·캡처를 하지 않는다.
+- 기기 연결·화면 잠금 해제·앱 foreground를 확인한 뒤 사용자가 요청한 플랫폼만 진행한다. Android는 2026-10-09 요청에 따라 Samsung SM-S731N / Android 16 SDK 36.1에서 debug callback failure fixture를 실행했다. 입력은 synthetic fixture라 실제 `MotionEvent` touch 결과는 아니다. iOS 실기기 실행은 하지 않았다. [Android physical run 결과](../spec/internal/evidence/r05-android-physical-callback-faults-2026-10-08/README.md).
 - 물리 입력은 `MotionEvent`/`UITouch` 경로로만 분류한다. `adb shell input`, `simctl`, UI test 주입은 synthetic 별도 그룹이며 물리 입력 결과를 대체하지 않는다.
 - 기기당 사전 warm-up과 최소 10개 독립 실행 block, block당 유효 입력·표시 표본 최소 30개(총 300개)를 기준으로 한다. 이는 탐색적 p95를 계산할 최소 수집량이지 비교 승자를 판정할 충분성 보장이 아니다. 입력 시퀀스·누락·추가 frame·중복 frame을 보존한다. p95는 유효 표본 300개 이상일 때만 95% block-bootstrap 신뢰 구간과 함께 탐색치로 보고하고, 미달이면 개별 값·중앙값·표본 수만 낸다. 기기 간 우열 또는 성능 우위는 이 작업에서 결론 내리지 않는다.
 - 기기별 결과를 분리한다. Android와 iOS의 latency 분포를 한 모집단으로 합치거나 기기 간 absolute rank를 만들지 않는다. debug/trace-on 진단과 release/trace-off 결과도 각각 분리한다.
@@ -174,7 +174,7 @@ API 37.1 16 KB AVD에서는 APK zip alignment와 네 ELF PT_LOAD segment의 16 K
 | 19 | 적은 표본으로 p95나 비교 승자를 과장 | 기존 “충분한 표본”이 모호했다. 총 300개를 탐색 p95 최소 수집량으로 명시하고 95% block-bootstrap 구간 및 비승자 판정 제한을 추가. |
 | 20 | OS signal을 photon/screen scanout 완료로 표현 | OS signal의 의미와 광학 측정의 경계를 명시하고 센서 없이는 input-to-photon을 내지 않는다. 통과. |
 
-남은 확인점은 stale/invalid VSync token과 surface lifecycle failure path, Android present timestamp가 unknown인 원인과 clock conversion residual, iOS device callback runtime·bounded callback/lost accounting·drawable/ticket join·clock conversion residual, 전체 V8 app bundle 통합, 실기기 적용성이다. Android API 37.2 AVD에서는 renderer당 30 sequence의 on-demand token join만 확인했다. iOS Simulator는 acquire 귀속만 확인했다. 실기기 검증은 사용자의 요청 전에는 실행하지 않는다.
+남은 확인점은 stale/invalid VSync token과 surface lifecycle failure path, Android present timestamp가 unknown인 원인과 clock conversion residual, iOS device callback runtime·bounded callback/lost accounting·drawable/ticket join·clock conversion residual, 전체 V8 app bundle 통합, 물리 touch와 사용성이다. Android API 37.2 AVD에서는 renderer당 30 sequence의 on-demand token join만 확인했다. API 36.1 Samsung 실기기에서 callback baseline·stale·recovery fixture는 통과했지만 baseline/recovery TransactionStats fence가 `pending`이어서 usable present 신호는 얻지 못했다. iOS Simulator는 acquire 귀속만 확인했다. Android physical 결과는 [실행 보고서](../spec/internal/evidence/r05-android-physical-callback-faults-2026-10-08/README.md)에 기록했다.
 
 후속 Android callback failure fixture는 API 37.2 ARM64 16KB AVD에서 11개 scenario를 통과했고 API 36 ARM64 GLES fallback과 Release compile도 확인했다. 구현 전 계획 검토와 별도로 구현 후 20개 실패 관점을 검토했다. 재현 원본·구현 검토·미검증 경계는 [Android callback 실패 주입 실행 보고서](../spec/internal/evidence/r05-android-callback-failure-injection-2026-10-08.md)와 [세부 계획](r05-android-callback-failure-injection.md)에 있다. 이 추가 범위는 Android callback failure fixture만 다루며 R05.3 전체 완료나 iOS callback runtime 검증을 뜻하지 않는다.
 

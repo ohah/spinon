@@ -1,0 +1,86 @@
+RequestedLayerState{WindowedMagnification:0:31#1 parentId=27}
+RequestedLayerState{OneHanded:0:23#2 parentId=1}
+RequestedLayerState{AppZoomOut:0:0#3 parentId=2}
+RequestedLayerState{Leaf:0:0#4 parentId=3}
+RequestedLayerState{Leaf:1:1#5 parentId=2 z=1}
+RequestedLayerState{AppZoomOut:2:14#6 parentId=2 z=2}
+RequestedLayerState{DefaultTaskDisplayArea#7 parentId=6}
+RequestedLayerState{Leaf:3:12#8 parentId=6 z=1}
+RequestedLayerState{ImePlaceholder:13:14#9 parentId=6 z=2}
+RequestedLayerState{ImeContainer#10 parentId=107 relativeParentId=114 z=1}
+RequestedLayerState{Leaf:15:15#11 parentId=2 z=3}
+RequestedLayerState{AppZoomOut:16:16#12 parentId=2 z=4}
+RequestedLayerState{Leaf:16:16#13 parentId=12}
+RequestedLayerState{Leaf:17:19#14 parentId=2 z=5}
+RequestedLayerState{AppZoomOut:20:22#15 parentId=2 z=6}
+RequestedLayerState{Leaf:20:22#16 parentId=15}
+RequestedLayerState{Leaf:23:23#17 parentId=2 z=7}
+RequestedLayerState{Leaf:24:25#18 parentId=1 z=1}
+RequestedLayerState{OneHanded:26:31#19 parentId=1 z=2}
+RequestedLayerState{Leaf:26:31#20 parentId=19}
+RequestedLayerState{OneHanded:32:32#21 parentId=27 z=1}
+RequestedLayerState{Leaf:32:32#22 parentId=21}
+RequestedLayerState{Leaf:33:33#23 parentId=27 z=2}
+RequestedLayerState{OneHanded:34:35#24 parentId=27 z=3}
+RequestedLayerState{Leaf:34:35#25 parentId=24}
+RequestedLayerState{Leaf:36:36#26 parentId=27 z=4}
+RequestedLayerState{Display 0 name="Built-in Screen"#27}
+RequestedLayerState{Display Overlays#28 parentId=27 z=2147483647}
+RequestedLayerState{Pointer Overlays#29 parentId=28 z=351000}
+RequestedLayerState{Input Overlays#30 parentId=27 z=2147483646}
+RequestedLayerState{PointerEventDispatcherOverlay0#31 parentId=30 z=2147483647}
+RequestedLayerState{Accessibility Overlays#32 parentId=27 z=2147483645}
+RequestedLayerState{Task=1#33 parentId=7}
+RequestedLayerState{Task=2#34 parentId=33}
+RequestedLayerState{home_task_overlay_container#35 parentId=33 z=2147483647}
+RequestedLayerState{ActivityRecord{85365375 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t2}#36 parentId=34 z=1}
+RequestedLayerState{[Gesture Monitor] minus-one#100 parentId=101 z=2147483647}
+RequestedLayerState{Bounds for - dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity#119 parentId=115}
+RequestedLayerState{Surface(name=da7270 InputMethod#88)/@0x12c666e - animation-leash of insets_animation#123 parentId=79}
+RequestedLayerState{12b97bb ActivityRecordInputSink dev.spinon.bootstrap/.MainActivity#113 parentId=107 z=-2147483648}
+RequestedLayerState{Task=4(SplitRoot)#44 parentId=7 z=1}
+RequestedLayerState{6a1079e ActivityRecordInputSink com.google.android.apps.nexuslauncher/.NexusLauncherActivity#42 parentId=36 z=-2147483648}
+RequestedLayerState{Task=3(Bubbles)#43 parentId=7 z=2}
+RequestedLayerState{Task=5(main)#45 parentId=44}
+RequestedLayerState{Task=6(side)#46 parentId=44 z=1}
+RequestedLayerState{Task=0(Bubbles-visibility-barrier)#47 parentId=43}
+RequestedLayerState{WindowToken{c087047 type=2038 android.os.BinderProxy@ecac5ac}#48 parentId=8}
+RequestedLayerState{418b86b ShellDropTarget#49 parentId=48}
+RequestedLayerState{Dim layer#50 parentId=45 z=2147483647}
+RequestedLayerState{Dim layer#51 parentId=46 z=2147483647}
+RequestedLayerState{WallpaperWindowToken{df1bc02}#52 parentId=5}
+RequestedLayerState{c5c8893 com.android.systemui.wallpapers.ImageWallpaper#53 parentId=52}
+RequestedLayerState{WallpaperService-com.android.systemui#54 parentId=53}
+RequestedLayerState{Wallpaper Transform wrapper#55 parentId=54}
+RequestedLayerState{Wallpaper BBQ wrapper#56 parentId=55}
+RequestedLayerState{WindowToken{9978e1b type=2024 android.os.BinderProxy@38802a}#57 z=1073741826}
+RequestedLayerState{1979d91 ScreenDecorOverlay#58 parentId=57}
+RequestedLayerState{WindowToken{72b0a6e type=2024 android.os.BinderProxy@83bde9}#59 z=1073741826}
+RequestedLayerState{28aca3 ScreenDecorOverlayBottom#60 parentId=59}
+RequestedLayerState{VRI-ScreenDecorOverlay#61 parentId=58}
+RequestedLayerState{VRI-ScreenDecorOverlayBottom#62 parentId=60}
+RequestedLayerState{WindowToken{64cf116 type=2024 android.os.BinderProxy@707f631}#63 parentId=18 z=1}
+RequestedLayerState{d3b8a97 DisplayBackGestureHandler 0#64 parentId=63}
+RequestedLayerState{[Gesture Monitor] edge-swipe#65 parentId=30 z=1}
+RequestedLayerState{WindowToken{651cda1 type=2000 android.os.BinderProxy@239bab}#66 parentId=11}
+RequestedLayerState{901cbc6 StatusBar#67 parentId=116}
+RequestedLayerState{VRI-dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity#115 parentId=114}
+RequestedLayerState{WindowToken{1abe5aa type=2019 android.os.BinderProxy@8a95eaa}#69 parentId=18}
+RequestedLayerState{8bea07f Taskbar#70 parentId=117}
+RequestedLayerState{TaskFragment{2f55606 mode=fullscreen}#101 parentId=34}
+RequestedLayerState{VRI-Taskbar#72 parentId=70}
+RequestedLayerState{WindowToken{9fb3d99 type=2040 android.os.BinderProxy@18a5347}#73 parentId=14}
+RequestedLayerState{58edce3 NotificationShade#74 parentId=73}
+RequestedLayerState{VRI-StatusBar#75 parentId=67}
+RequestedLayerState{e76b633 com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#96 parentId=36}
+RequestedLayerState{VRI-NotificationShade#77}
+RequestedLayerState{WindowToken{9c69915 type=2011 android.os.Binder@c8552cc}#79 parentId=10}
+RequestedLayerState{IME Handwriting Surface#84 parentId=30 z=2}
+RequestedLayerState{[Gesture Monitor] swipe-up#85 parentId=30 z=1}
+RequestedLayerState{da7270 InputMethod#88 parentId=123}
+RequestedLayerState{Input Consumer recents_animation_input_consumer#92}
+RequestedLayerState{Task=13#106 parentId=7 z=3}
+RequestedLayerState{ActivityRecord{225232088 u0 dev.spinon.bootstrap/.MainActivity t13}#107 parentId=106}
+RequestedLayerState{9f21adc dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity#114 parentId=107}
+RequestedLayerState{Surface(name=901cbc6 StatusBar#67)/@0xe3ede52 - animation-leash of insets_animation#116 parentId=66}
+RequestedLayerState{Surface(name=8bea07f Taskbar#70)/@0x586a76f - animation-leash of insets_animation#117 parentId=69}

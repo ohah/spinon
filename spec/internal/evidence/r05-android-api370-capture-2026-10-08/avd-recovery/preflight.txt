@@ -1,0 +1,35 @@
+time_utc=2026-10-08T14:45:26+00:00
+source_head=0ee91f480a8d2ff6f3dbd374ac797d3f6db68f44
+worktree_status=?? spec/internal/evidence/r05-android-api370-capture-2026-10-08/
+emulator_version=Android emulator version 37.2.12.0 (build_id 16428233) (CL:N/A)
+avd_registered=True
+avd_data_present=True
+avd_data_size=1.5G	/Users/yoonhb/.android/avd/spinon_api37_0_applied_txn.avd
+system_image_present=True
+api37_serial_5580_available=True
+
+--- adb devices ---
+List of devices attached
+emulator-5554          device product:sdk_gphone64_arm64 model:sdk_gphone64_arm64 device:emu64a transport_id:18
+
+--- registered AVDs ---
+spinon_api35_applied_txn
+spinon_api35_compat
+spinon_api37_0_applied_txn
+spinon_api37_0_compat
+spinon_api37_1_compat16k
+spinon_api37_2
+spinon_api37_2_modern
+zl_poc
+
+--- qemu processes ---
+23588     1 08-13:45:55 /Users/yoonhb/Library/Android/sdk/emulator/qemu/darwin-aarch64/qemu-system-aarch64 -avd zl_poc -no-boot-anim
+
+--- available disk ---
+Filesystem      Size    Used   Avail Capacity iused ifree %iused  Mounted on
+/dev/disk3s5   926Gi   814Gi    80Gi    92%    7.6M  842M    1%   /System/Volumes/Data
+
+--- pinned V8 ---
+checkout=7b50b62cb18f28617959e8452e2cd18195b38bcf
+required=7b50b62cb18f28617959e8452e2cd18195b38bcf
+clean=True

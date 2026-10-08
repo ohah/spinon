@@ -1,0 +1,37 @@
+$ bash tools/build-android-app.sh
+WARNING: We recommend using a newer Android Gradle plugin to use compile SDK version 37.2
+
+This Android Gradle plugin (8.13.2) was tested up to compile SDK version 36.1.
+
+You are strongly encouraged to update your project to use a newer
+Android Gradle plugin that has been tested with compile SDK version 37.2.
+
+If you are already using the latest version of the Android Gradle plugin,
+you may need to wait until a newer version with support for compile SDK version 37.2 is available.
+
+For more information refer to the compatibility table:
+https://d.android.com/r/tools/api-level-support
+
+To suppress this warning, add/update
+    android.suppressUnsupportedCompileSdk=37.2
+to this project's gradle.properties.
+
+> Task :app:prepareSpinonBootstrap FAILED
+ANDROID_NDK_HOME/ROOT가 고정 버전과 달라 무시하고 SDK의 NDK 27.1.12297006 을 사용합니다.
+V8 소스가 고정 커밋과 다릅니다. 먼저 bash tools/v8/checkout.sh를 실행하세요.
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:prepareSpinonBootstrap'.
+> Process 'command 'bash'' finished with non-zero exit value 1
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 363ms
+1 actionable task: 1 executed
+error: script "build:android" exited with code 1
