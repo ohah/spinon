@@ -1,0 +1,234 @@
+--------- beginning of system
+10-09 03:25:57.142   544  1834 D CompatibilityChangeReporter: Compat change id reported: 161252188; UID 10192; state: DISABLED
+10-09 03:25:57.143   544  1834 W ActivityTaskManager: callingPackage for (uid=2000, pid=4453) has no WPC
+--------- beginning of main
+10-09 03:25:57.144  1776  1936 D CompatibilityChangeReporter: Compat change id reported: 150939131; UID 10153; state: ENABLED
+10-09 03:25:57.149   759   858 V WindowManagerShell: Transition requested: android.os.BinderProxy@b534cf0 TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=15 displayId=0 isRunning=true baseIntent=Intent { flg=0x10000000 cmp=dev.spinon.bootstrap/.MainActivity } baseActivity=ComponentInfo{dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity} topActivity=ComponentInfo{dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity} origActivity=null realActivity=ComponentInfo{dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity} numActivities=1 lastActiveTime=31675 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{android.window.IWindowContainerToken$Stub$Proxy@5891269} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 128 - 0, 0) topActivityInfo=ActivityInfo{52f04ee dev.spinon.bootstrap.MainActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isSleeping=false topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= false topActivityLetterboxed= false isFromDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 locusId=null displayAreaFeatureId=1 cameraCompatControlState=hidden}, remoteTransition = null, displayChange = null }
+10-09 03:25:57.150   544  1834 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=dev.spinon.bootstrap/.MainActivity (has extras)} with LAUNCH_MULTIPLE from uid 2000 (BAL_ALLOW_PERMISSION) result code=0
+10-09 03:25:57.152   544   565 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10192; state: DISABLED
+10-09 03:25:57.152   544   565 D CompatibilityChangeReporter: Compat change id reported: 177438394; UID 10192; state: DISABLED
+10-09 03:25:57.152   544   565 D CompatibilityChangeReporter: Compat change id reported: 135772972; UID 10192; state: DISABLED
+10-09 03:25:57.152   544   565 D CompatibilityChangeReporter: Compat change id reported: 135754954; UID 10192; state: ENABLED
+10-09 03:25:57.154   544   574 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10192; state: ENABLED
+10-09 03:25:57.157   355   355 D Zygote  : Forked child process 4456
+10-09 03:25:57.157   544   574 I ActivityManager: Start proc 4456:dev.spinon.bootstrap/u0a192 for next-top-activity {dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity}
+10-09 03:25:57.157   759   918 D SplashScreenView: Build android.window.SplashScreenView{677a5a1 V.E...... ......ID 0,0-0,0}
+10-09 03:25:57.157   759   918 D SplashScreenView: Icon: view: android.widget.ImageView{eec3c6 V.ED..... ......I. 0,0-0,0 #10204f0 android:id/splashscreen_icon_view} drawable: com.android.wm.shell.startingsurface.SplashscreenIconDrawableFactory$ImmobileIconDrawable@673df87 size: 420
+10-09 03:25:57.157   759   918 D SplashScreenView: Branding: view: android.view.View{6db7eb4 G.ED..... ......I. 0,0-0,0 #10204ef android:id/splashscreen_branding_view} drawable: null size w: 0 h: 0
+10-09 03:25:57.161   392   392 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+10-09 03:25:57.161  1377  1377 V ContactsProvider: Scheduled notifyChange started.
+10-09 03:25:57.162   544  1834 D CoreBackPreview: Window{9275054 u0 Splash Screen dev.spinon.bootstrap}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@cd31dc0, mPriority=0, mIsAnimationCallback=false}
+10-09 03:25:57.170   860   860 D BluetoothPbapService:  onChange on contact uri 
+10-09 03:25:57.173  1520  2057 V ContactModelManager: Append shortcut contacts.
+10-09 03:25:57.177  1520  2057 W ContactModelManager: Could not load lightweighTokens model.
+10-09 03:25:57.177  1520  2044 D TextClassifierLibImpl: Skipping asynchronous actions model reload. No model change.
+10-09 03:25:57.177  1520  1960 D TextClassifierLibImpl: Skipping asynchronous LangId reload. No model change.
+10-09 03:25:57.184   860  4457 D BluetoothPbapUtils: primaryVersionCounter = 0, secondaryVersionCounter=0
+10-09 03:25:57.188   759   955 E OpenGLRenderer: Unable to match the desired swap behavior.
+10-09 03:25:57.192  1520  2057 D TextClassifierLibImpl: Loaded annotator model: en_v803
+10-09 03:25:57.193  1286  1995 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService started execution. cause:9 exec_start_elapsed_seconds: 31 [CONTEXT service_id=218 ]
+10-09 03:25:57.204  1286  3115 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService finished executing. cause:9 result: 1 elapsed_millis: 13 uptime_millis: 13 exec_start_elapsed_seconds: 31 [CONTEXT service_id=218 ]
+10-09 03:25:57.207  1180  1606 D EGL_emulation: app_time_stats: avg=144.49ms min=0.68ms max=1560.96ms count=14
+10-09 03:25:57.212  4456  4456 I pinon.bootstrap: Late-enabling -Xcheck:jni
+10-09 03:25:57.219  4456  4456 I pinon.bootstrap: Using CollectorTypeCC GC.
+10-09 03:25:57.222   759   858 V WindowManagerShell: onTransitionReady android.os.BinderProxy@b534cf0: {id=7 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@37c81ad} m=OPEN f=NONE leash=Surface(name=Task=15)/@0x3ad4156 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{WCT{android.window.IWindowContainerToken$Stub$Proxy@4541ce2} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0x93135d7 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0}]}
+10-09 03:25:57.222   544   562 V WindowManager: Sent Transition #7 createdAt=10-09 03:25:57.143 via request=TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=15 displayId=0 isRunning=true baseIntent=Intent { flg=0x10000000 cmp=dev.spinon.bootstrap/.MainActivity } baseActivity=ComponentInfo{dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity} topActivity=ComponentInfo{dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity} origActivity=null realActivity=ComponentInfo{dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity} numActivities=1 lastActiveTime=31675 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{RemoteToken{498f713 Task{383c1a8 #15 type=standard A=10192:dev.spinon.bootstrap}}} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 128 - 0, 0) topActivityInfo=ActivityInfo{c1b2d50 dev.spinon.bootstrap.MainActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isSleeping=false topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= false topActivityLetterboxed= false isFromDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 locusId=null displayAreaFeatureId=1 cameraCompatControlState=hidden}, remoteTransition = null, displayChange = null }
+10-09 03:25:57.222   544   562 V WindowManager:     startWCT=WindowContainerTransaction { changes = {} hops = [] errorCallbackToken=null taskFragmentOrganizer=null }
+10-09 03:25:57.222   544   562 V WindowManager:     info={id=7 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{498f713 Task{383c1a8 #15 type=standard A=10192:dev.spinon.bootstrap}}} m=OPEN f=NONE leash=Surface(name=Task=15)/@0xeca86e4 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{WCT{RemoteToken{dc3aa1f Task{7e2f4e7 #1 type=home}}} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0x7e4913 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0}]}
+10-09 03:25:57.224   759   858 V WindowManagerShell: Playing animation for (#7)android.os.BinderProxy@b534cf0@0
+10-09 03:25:57.224   759   858 V WindowManagerShell:  try handler com.android.wm.shell.transition.DefaultMixedHandler@a7f3244
+10-09 03:25:57.224   759   858 V WindowManagerShell:  try handler com.android.wm.shell.keyguard.KeyguardTransitionHandler@e114f2d
+10-09 03:25:57.224   759   858 V WindowManagerShell:  try handler com.android.wm.shell.activityembedding.ActivityEmbeddingController@d4c9c62
+10-09 03:25:57.224   759   858 V WindowManagerShell:  try handler com.android.wm.shell.recents.RecentsTransitionHandler@710a1f3
+10-09 03:25:57.224   759   858 V ShellRecents: RecentsTransitionHandler.startAnimation: no controller found
+10-09 03:25:57.224   759   858 V WindowManagerShell:  try handler com.android.wm.shell.pip.PipTransition@85f2eb0
+10-09 03:25:57.224   759   858 V WindowManagerShell:  try handler com.android.wm.shell.splitscreen.StageCoordinator@ce0b129
+10-09 03:25:57.224   759   858 V WindowManagerShell:  try handler com.android.wm.shell.transition.RemoteTransitionHandler@5c1cae
+10-09 03:25:57.224   759   858 V WindowManagerShell: Transition doesn't have explicit remote, search filters for match for {id=7 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@37c81ad} m=OPEN f=NONE leash=Surface(name=Task=15)/@0x3ad4156 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{WCT{android.window.IWindowContainerToken$Stub$Proxy@4541ce2} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0x93135d7 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0}]}
+10-09 03:25:57.224   759   858 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0] notFlags=0x0 checks=[{atype=dream independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=ANY topActivity=null},{atype=home independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@4bf1867, appThread = android.app.IApplicationThread$Stub$Proxy@576f614, debugName = LauncherToDream }}
+10-09 03:25:57.224   759   858 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0] notFlags=0x100 checks=[{atype=home independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=TOP topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity}},{atype=standard independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@3d75f80, appThread = android.app.IApplicationThread$Stub$Proxy@eccd9b9, debugName = QuickstepLaunchHome }}
+10-09 03:25:57.224   759   858 V WindowManagerShell:  Delegate animation for #7 to null
+10-09 03:25:57.224   759   858 V WindowManagerShell:  try handler com.android.wm.shell.transition.DefaultTransitionHandler@4896a4f
+10-09 03:25:57.224   759   858 V WindowManagerShell: start default transition animation, info = {id=7 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@37c81ad} m=OPEN f=NONE leash=Surface(name=Task=15)/@0x3ad4156 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{WCT{android.window.IWindowContainerToken$Stub$Proxy@4541ce2} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0x93135d7 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0}]}
+10-09 03:25:57.225   759   858 V WindowManagerShell: loadAnimation: anim=android.view.animation.AnimationSet@ebfe330 animAttr=0x13 type=OPEN isEntrance=false
+10-09 03:25:57.225   759   858 V WindowManagerShell: loadAnimation: anim=android.view.animation.AnimationSet@5f8025c animAttr=0x12 type=OPEN isEntrance=true
+10-09 03:25:57.226   759   858 V WindowManagerShell:  animated by com.android.wm.shell.transition.DefaultTransitionHandler@4896a4f
+10-09 03:25:57.233   411   446 I adbd    : jdwp connection from 4456
+10-09 03:25:57.259   759   955 D EGL_emulation: app_time_stats: avg=480.30ms min=6.54ms max=1803.74ms count=4
+10-09 03:25:57.293  1520  2101 I AssistantForeground: (REDACTED) Get launcher package: %s
+10-09 03:25:57.321  4456  4456 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 10192; state: ENABLED
+10-09 03:25:57.321  4456  4456 D CompatibilityChangeReporter: Compat change id reported: 242716250; UID 10192; state: ENABLED
+10-09 03:25:57.327  4456  4456 W ziparchive: Unable to open '/data/app/~~2jkDeSxydTcgbibimPfm6g==/dev.spinon.bootstrap-ENzeYiIn8EYZRb-O4MGEsg==/base.dm': No such file or directory
+10-09 03:25:57.327  4456  4456 W ziparchive: Unable to open '/data/app/~~2jkDeSxydTcgbibimPfm6g==/dev.spinon.bootstrap-ENzeYiIn8EYZRb-O4MGEsg==/base.dm': No such file or directory
+10-09 03:25:57.328  4456  4456 D nativeloader: Configuring clns-6 for other apk /data/app/~~2jkDeSxydTcgbibimPfm6g==/dev.spinon.bootstrap-ENzeYiIn8EYZRb-O4MGEsg==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~2jkDeSxydTcgbibimPfm6g==/dev.spinon.bootstrap-ENzeYiIn8EYZRb-O4MGEsg==/lib/arm64:/data/app/~~2jkDeSxydTcgbibimPfm6g==/dev.spinon.bootstrap-ENzeYiIn8EYZRb-O4MGEsg==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/dev.spinon.bootstrap
+10-09 03:25:57.340  4456  4456 V GraphicsEnvironment: Currently set values for:
+10-09 03:25:57.340  4456  4456 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+10-09 03:25:57.340  4456  4456 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+10-09 03:25:57.340  4456  4456 V GraphicsEnvironment: ANGLE GameManagerService for dev.spinon.bootstrap: false
+10-09 03:25:57.340  4456  4456 V GraphicsEnvironment: dev.spinon.bootstrap is not listed in per-application setting
+10-09 03:25:57.340  4456  4456 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+10-09 03:25:57.344   544  4363 I ActivityManager: Flag disabled. Ignoring finishAttachApplication from uid: 10192. pid: 4456
+10-09 03:25:57.369  4456  4456 W pinon.bootstrap: Accessing hidden method Landroid/os/SystemClock;->uptimeNanos()J (blocked, linking, denied)
+10-09 03:25:57.371  4456  4480 D libEGL  : loaded /vendor/lib64/egl/libEGL_emulation.so
+10-09 03:25:57.373  4456  4480 D libEGL  : loaded /vendor/lib64/egl/libGLESv1_CM_emulation.so
+10-09 03:25:57.374  4456  4480 D libEGL  : loaded /vendor/lib64/egl/libGLESv2_emulation.so
+10-09 03:25:57.377  4456  4456 D CompatibilityChangeReporter: Compat change id reported: 210923482; UID 10192; state: ENABLED
+10-09 03:25:57.403  1286  1286 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.contextmanager.service.ContextManagerService.START pkg=com.google.android.gms }
+10-09 03:25:57.421  4456  4456 I SpinonBootstrap: SPINON_R08_UI=ready text-input=EditText accessibility=button+EditText
+10-09 03:25:57.424  4456  4456 D CompatibilityChangeReporter: Compat change id reported: 237531167; UID 10192; state: DISABLED
+10-09 03:25:57.424  4456  4456 W OpenGLRenderer: Unknown dataspace 0
+10-09 03:25:57.436   544  1834 D CoreBackPreview: Window{efdcb03 u0 dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@201e4fe, mPriority=0, mIsAnimationCallback=false}
+10-09 03:25:57.460  4456  4456 D AutofillManager: notifyViewEnteredForFillDialog:1073741824
+10-09 03:25:57.468  4456  4478 W OpenGLRenderer: Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+10-09 03:25:57.468  4456  4478 W OpenGLRenderer: Failed to initialize 101010-2 format, error = EGL_SUCCESS
+10-09 03:25:57.471  4456  4456 I SpinonBootstrap: SPINON_R05_SURFACE renderer=opengl_es type=GLSurfaceView generation=1
+10-09 03:25:57.471  4456  4456 I SpinonBootstrap: SPINON_R05_SIGNAL_CAPABILITY renderer=opengl_es signal=SurfaceView_JankData available=false reason=api_below_36 api=34 api_full=0
+10-09 03:25:57.471  4456  4456 I SpinonBootstrap: SPINON_R05_SURFACE_SIZE renderer=opengl_es generation=1 size=1080x2209
+10-09 03:25:57.480   155   155 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+--------- beginning of kernel
+10-09 03:25:57.482   154   154 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+10-09 03:25:57.485  4456  4481 I Gralloc4: mapper 4.x is not supported
+10-09 03:25:57.495  4456  4481 I SpinonBootstrap: SPINON_R08_SURFACE=created api=OpenGL_ES_2 renderer=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) version=OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))
+10-09 03:25:57.508  4456  4478 E OpenGLRenderer: Unable to match the desired swap behavior.
+10-09 03:25:57.509  4456  4481 I SpinonBootstrap: SPINON_R08_SHADER=ready
+10-09 03:25:57.509  4456  4481 I SpinonBootstrap: SPINON_R08_SURFACE=size 1080x2209
+10-09 03:25:57.509  4456  4481 I SpinonBootstrap: SPINON_R05_DRAW renderer=opengl_es draw_seq=1 revision=0 generation=1
+10-09 03:25:57.509  4456  4481 I SpinonBootstrap: SPINON_R08_FRAME=first_draw_submitted
+10-09 03:25:57.511   759   858 V WindowManagerShell: Transition animation finished (aborted=false), notifying core (#7)android.os.BinderProxy@b534cf0@0
+10-09 03:25:57.512   544   562 V WindowManager: Finish Transition #7: created at 10-09 03:25:57.143 collect-started=0.012ms request-sent=5.989ms started=8.971ms ready=76.806ms sent=78.349ms finished=368.403ms
+10-09 03:25:57.513   759   858 V WindowManagerShell: Track 0 became idle
+10-09 03:25:57.513   759   858 V WindowManagerShell: All active transition animations finished
+10-09 03:25:57.557   759   955 D EGL_emulation: app_time_stats: avg=100.18ms min=33.37ms max=511.03ms count=11
+10-09 03:25:57.558  4456  4481 I SpinonBootstrap: SPINON_R05_DRAW renderer=opengl_es draw_seq=2 revision=0 generation=1
+10-09 03:25:57.589   544   562 W ziparchive: Unable to open '/data/app/~~2jkDeSxydTcgbibimPfm6g==/dev.spinon.bootstrap-ENzeYiIn8EYZRb-O4MGEsg==/base.dm': No such file or directory
+10-09 03:25:57.591   544   562 I ActivityTaskManager: Displayed dev.spinon.bootstrap/.MainActivity for user 0: +446ms
+10-09 03:25:57.596   544  4363 D CompatibilityChangeReporter: Compat change id reported: 214016041; UID 10192; state: ENABLED
+10-09 03:25:57.596   544  4363 I ImeTracker: dev.spinon.bootstrap:4a2adde2: onRequestHide at ORIGIN_SERVER_HIDE_INPUT reason HIDE_UNSPECIFIED_WINDOW
+10-09 03:25:57.596   544  4363 I ImeTracker: dev.spinon.bootstrap:4a2adde2: onCancelled at PHASE_SERVER_SHOULD_HIDE
+10-09 03:25:57.598  1426  1426 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():3227 
+10-09 03:25:57.599  1426  1426 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2087 repeatCheckTimes = 0, unlocked = true
+10-09 03:25:57.599  1426  1426 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1877 onStartInput(EditorInfo{inputType=0x0(NULL) imeOptions=0x0 privateImeOptions=null actionName=UNSPECIFIED actionLabel=null actionId=0 initialSelStart=-1 initialSelEnd=-1 initialCapsMode=0x0 hintText=null label=null packageName=dev.spinon.bootstrap fieldId=0 fieldName=null extras=null}, false)
+10-09 03:25:57.600  1426  1426 I GoogleInputMethodService: GoogleInputMethodService.shouldHideHeaderOnInitialState():4008 ShouldHideHeaderOnInitialState = false
+10-09 03:25:57.600  1426  1426 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2087 repeatCheckTimes = 2, unlocked = true
+10-09 03:25:57.612   860  1114 D BtGatt.ScanManager: uid 10128 isForeground true scanMode 1
+10-09 03:25:57.612   860  1114 D BtGatt.ScanManager: uid 10128 isForeground true scanMode -1
+10-09 03:25:57.616  1180  1211 I ImeTracker: com.google.android.apps.nexuslauncher:a6d47392: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+10-09 03:25:57.616  1180  1211 I ImeTracker: com.google.android.apps.nexuslauncher:a6d47392: onFailed at PHASE_CLIENT_VIEW_SERVED
+10-09 03:25:57.616  1180  1782 D OneSearchSuggestProvider: Shut down the binder channel
+10-09 03:25:57.616  1180  1477 I IPCThreadState: oneway function results for code 2 on binder at 0xb400006f842a6530 will be dropped but finished with status UNKNOWN_TRANSACTION
+10-09 03:25:57.702  3575  4431 D CompatibilityChangeReporter: Compat change id reported: 150939131; UID 10120; state: ENABLED
+10-09 03:25:57.976   759   917 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=falsecallback=android.view.ViewRootImpl$$ExternalSyntheticLambda17@f47fadd
+10-09 03:25:57.976   544  4363 D CoreBackPreview: Window{9275054 u0 Splash Screen dev.spinon.bootstrap EXITING}: Setting back callback null
+10-09 03:25:57.977   544  1905 W InputManager-JNI: Input channel object '9275054 Splash Screen dev.spinon.bootstrap (client)' was disposed without first being removed with the input manager!
+10-09 03:25:58.163   544   619 D OomAdjuster: Not killing cached processes
+10-09 03:25:58.174   544  2985 W JobScheduler: Job didn't exist in JobStore: a21974f #u0a153/7 com.google.android.contacts/com.google.android.apps.contacts.shortcut.ShortcutJobService
+10-09 03:25:58.571   759   955 D EGL_emulation: app_time_stats: avg=19.97ms min=0.48ms max=70.67ms count=48
+10-09 03:25:58.675   544   679 D ConnectivityService: reportNetworkConnectivity(101, false) by 10132
+10-09 03:25:58.675   804  3218 D NetworkMonitor/101: Forcing reevaluation for UID 10132. Dns signal count: 0
+10-09 03:25:58.676   804  4492 D TrafficStats: tagSocket(5) with statsTag=0xffffff81, statsUid=-1
+10-09 03:25:58.676   804  4493 D TrafficStats: tagSocket(107) with statsTag=0xffffff81, statsUid=-1
+10-09 03:25:58.677   804  4492 D TrafficStats: tagSocket(5) with statsTag=0xffffff81, statsUid=-1
+10-09 03:25:58.677   804  4493 D TrafficStats: tagSocket(107) with statsTag=0xffffff81, statsUid=-1
+10-09 03:25:58.678   354  4494 I resolv  : ResNSendHandler::run: 0 / {101 983141 101 983141 1073 1}
+10-09 03:25:58.678   354  4494 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0xb400006fdc7509d0
+10-09 03:25:58.678   354  4495 I resolv  : ResNSendHandler::run: 0 / {101 983141 101 983141 1073 1}
+10-09 03:25:58.678   354  4495 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0xb40000708c757fd0
+10-09 03:25:58.682   354  4496 I resolv  : ResNSendHandler::run: 0 / {101 983141 101 983141 1073 1}
+10-09 03:25:58.682   354  4496 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0xb40000708c7585f0
+10-09 03:25:58.683   804   804 D TrafficStats: tagSocket(5) with statsTag=0xffffffff, statsUid=-1
+10-09 03:25:58.683   804   804 D TrafficStats: tagSocket(5) with statsTag=0xffffffff, statsUid=-1
+10-09 03:25:58.684   804  4493 D NetworkMonitor/101: PROBE_DNS connectivitycheck.gstatic.com 8ms OK 142.251.150.120,2001:4860:4826:7800::
+10-09 03:25:58.684   354  4497 I resolv  : ResNSendHandler::run: 0 / {101 983141 101 983141 1073 1}
+10-09 03:25:58.685   354  4497 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0xb40000702c75c9f0
+10-09 03:25:58.685   804   804 D TrafficStats: tagSocket(5) with statsTag=0xffffffff, statsUid=-1
+10-09 03:25:58.685   354  4498 I resolv  : GetAddrInfoHandler::run: {101 983141 101 983141 1073 1}
+10-09 03:25:58.685   804   804 D TrafficStats: tagSocket(5) with statsTag=0xffffffff, statsUid=-1
+10-09 03:25:58.685   354  4500 I resolv  : res_nmkquery: (QUERY, IN, A)
+10-09 03:25:58.686   354  4500 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0xb40000708c7585f0
+10-09 03:25:58.686   354  4500 I resolv  : doQuery: rcode=0, ancount=1, return value=63
+10-09 03:25:58.686   354  4499 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+10-09 03:25:58.686   354  4499 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0xb40000708c757fd0
+10-09 03:25:58.686   354  4499 I resolv  : doQuery: rcode=0, ancount=1, return value=75
+10-09 03:25:58.686   804  4493 D TrafficStats: tagSocket(5) with statsTag=0xffffff81, statsUid=-1
+10-09 03:25:58.686   804   804 D TrafficStats: tagSocket(107) with statsTag=0xffffffff, statsUid=-1
+10-09 03:25:58.686   804   804 D TrafficStats: tagSocket(108) with statsTag=0xffffffff, statsUid=-1
+10-09 03:25:58.688   804   804 D TrafficStats: tagSocket(107) with statsTag=0xffffffff, statsUid=-1
+10-09 03:25:58.688   804   804 D TrafficStats: tagSocket(107) with statsTag=0xffffffff, statsUid=-1
+10-09 03:25:58.689   804   804 D TrafficStats: tagSocket(107) with statsTag=0xffffffff, statsUid=-1
+10-09 03:25:58.689   804   804 D TrafficStats: tagSocket(107) with statsTag=0xffffffff, statsUid=-1
+10-09 03:25:58.690   804   804 D TrafficStats: tagSocket(107) with statsTag=0xffffffff, statsUid=-1
+10-09 03:25:58.690   804   804 D TrafficStats: tagSocket(107) with statsTag=0xffffffff, statsUid=-1
+10-09 03:25:58.691   804   804 D TrafficStats: tagSocket(107) with statsTag=0xffffffff, statsUid=-1
+10-09 03:25:58.692   804   804 D TrafficStats: tagSocket(107) with statsTag=0xffffffff, statsUid=-1
+10-09 03:25:58.692   804   804 D TrafficStats: tagSocket(107) with statsTag=0xffffffff, statsUid=-1
+10-09 03:25:58.693   804   804 D TrafficStats: tagSocket(107) with statsTag=0xffffffff, statsUid=-1
+10-09 03:25:58.694   804   804 D TrafficStats: tagSocket(107) with statsTag=0xffffffff, statsUid=-1
+10-09 03:25:58.694   804   804 D TrafficStats: tagSocket(107) with statsTag=0xffffffff, statsUid=-1
+10-09 03:25:58.695   804  4492 D NetworkMonitor/101: PROBE_DNS www.google.com 18ms OK 142.251.151.119,142.251.157.119,142.251.155.119,142.251.152.119,142.251.153.119,142.251.154.119,142.251.150.119,142.251.156.119,2001:4860:482d:7700::,2001:4860:482c:7700::,2001:4860:4829:7700::,2001:4860:4826:7700::,2001:4860:4828:7700::,2001:4860:4827:7700::,2001:4860:482a:7700::,2001:4860:482b:7700::
+10-09 03:25:58.700   354  4501 I resolv  : GetAddrInfoHandler::run: {101 983141 101 983141 1073 1}
+10-09 03:25:58.700   354  4502 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+10-09 03:25:58.701   354  4502 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0xb400006fdc7509d0
+10-09 03:25:58.701   354  4502 I resolv  : doQuery: rcode=0, ancount=8, return value=256
+10-09 03:25:58.701   354  4503 I resolv  : res_nmkquery: (QUERY, IN, A)
+10-09 03:25:58.701   354  4503 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0xb40000702c75c9f0
+10-09 03:25:58.701   354  4503 I resolv  : doQuery: rcode=0, ancount=8, return value=160
+10-09 03:25:58.701   804  4492 D TrafficStats: tagSocket(107) with statsTag=0xffffff81, statsUid=-1
+10-09 03:25:58.770   804  4493 D NetworkMonitor/101: PROBE_HTTP http://connectivitycheck.gstatic.com/generate_204 time=86ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.32 Safari/537.36]} headers={null=[HTTP/1.1 204 No Content], Connection=[close], Content-Length=[0], Cross-Origin-Resource-Policy=[cross-origin], Date=[Thu, 08 Oct 2026 18:25:59 GMT], X-Android-Received-Millis=[1791483958770], X-Android-Response-Source=[NETWORK 204], X-Android-Selected-Protocol=[http/1.1], X-Android-Sent-Millis=[1791483958726]}
+10-09 03:25:58.834   804  4492 D NetworkMonitor/101: PROBE_HTTPS https://www.google.com/generate_204 time=134ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.32 Safari/537.36]} headers={null=[HTTP/1.1 204 No Content], Alt-Svc=[h3=":443"; ma=2592000,h3-29=":443"; ma=2592000], Connection=[close], Content-Length=[0], Cross-Origin-Resource-Policy=[cross-origin], Date=[Thu, 08 Oct 2026 18:25:59 GMT], X-Android-Received-Millis=[1791483958834], X-Android-Response-Source=[NETWORK 204], X-Android-Selected-Protocol=[http/1.1], X-Android-Sent-Millis=[1791483958786]}
+10-09 03:25:58.835   804  4491 D NetworkMonitor/101: isCaptivePortal: isSuccessful()=true isPortal()=false RedirectUrl=null isPartialConnectivity()=false Time=160ms
+10-09 03:25:58.836   544   679 D ConnectivityService: [101 WIFI] validation passed
+10-09 03:25:59.152  2158  2158 I BugleDataModel: ActionExecutorImpl: Timestamp for ACTION_EXECUTE_QUEUED_FixupMessageStatusOnStartupAction elapsedRealTime: 33678 currentTimeMillis: 1791483959152
+10-09 03:25:59.152  2158  2158 I BugleDataModel: ActionExecutorImpl: Timestamp for ACTION_EXECUTE_QUEUED_ProcessPendingMessagesAction elapsedRealTime: 33678 currentTimeMillis: 1791483959152
+10-09 03:25:59.154  2158  2439 I BugleDataModel: FixupMessageStatusOnStartupAction: sendFailedCnt: 0, downloadFailedCnt: 0, partsProcessingFailedCnt: 0
+10-09 03:25:59.156  2158  2439 W BugleConnectivity: Unregister ConnectivityStateListener for subId -1 fail.
+10-09 03:25:59.157  2158  2439 I BugleDataModel: PendingMessagesProcessor: process from FixupMessageStatusOnStartupAction due to connectivity changed with delay 0 with queues:
+10-09 03:25:59.157  2158  2439 I BugleDataModel: ProcessPendingMessagesTimers: cleared next retry time for channel sms_send 
+10-09 03:25:59.157  2158  2439 I BugleDataModel: ProcessPendingMessagesTimers: cleared next retry time for channel mms_send 
+10-09 03:25:59.157  2158  2439 I BugleDataModel: ProcessPendingMessagesTimers: cleared next retry time for channel mms_download 
+10-09 03:25:59.157  2158  2439 I BugleDataModel: ProcessPendingMessagesTimers: cleared next retry time for channel rcs_send 
+10-09 03:25:59.157  2158  2439 I BugleDataModel: ProcessPendingMessagesTimers: cleared next retry time for channel rcs_ft_upload 
+10-09 03:25:59.157  2158  2439 I BugleDataModel: ProcessPendingMessagesTimers: cleared next retry time for channel rcs_ft_download 
+10-09 03:25:59.157  2158  2439 I BugleDataModel: ProcessPendingMessagesTimers: cleared next retry time for channel cloud_sync_send 
+10-09 03:25:59.157  2158  2439 I BugleDataModel: ProcessPendingMessagesTimers: cleared next retry time for channel cloud_sync_attachment_download 
+10-09 03:25:59.158  2158  2439 W BugleConnectivity: Unregister ConnectivityStateListener for subId -1 fail.
+10-09 03:25:59.158  2158  2439 I BugleDataModel: PendingMessagesProcessor: process from ProcessPendingMessagesAction due to scheduled processing with delay 0 with queues:
+10-09 03:25:59.188  1286  1286 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.nearby.exposurenotification.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiServiceNoInstantApps }
+10-09 03:25:59.191  2158  2158 I BugleDataModel: ActionExecutorImpl: Timestamp for ACTION_EXECUTE_QUEUED_GenericWorkerQueueAction elapsedRealTime: 33718 currentTimeMillis: 1791483959191
+10-09 03:25:59.191  2158  2439 I BugleDataModel: ActionExecutorImpl: Timestamp for ACTION_BACKGROUND_QUEUED_GenericWorkerQueueAction elapsedRealTime: 33718 currentTimeMillis: 1791483959191
+10-09 03:25:59.193  2158  3422 I BugleJobs: GenericWorkerQueueAction: Bailing early, no work found, no failed work found
+10-09 03:25:59.193  2158  3422 I BugleDataModel: ActionExecutorImpl: Timestamp for ACTION_RESPONSE_QUEUED_GenericWorkerQueueAction elapsedRealTime: 33719 currentTimeMillis: 1791483959193
+10-09 03:25:59.229  4506  4506 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+10-09 03:25:59.229  4506  4506 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+10-09 03:25:59.236   155   155 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-09 03:25:59.236  4506  4507 I Gralloc4: mapper 4.x is not supported
+10-09 03:25:59.239   154   154 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+10-09 03:25:59.325  1180  1180 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_DOWN, actionButton=0, id[0]=0, x[0]=540.0, y[0]=1200.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, metaState=0, flags=0x0, edgeFlags=0x0, pointerCount=1, historySize=0, eventTime=33850, downTime=33850, deviceId=-1, source=0x1002, displayId=0, eventId=-148958629 }
+10-09 03:25:59.326  1180  1180 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_UP, actionButton=0, id[0]=0, x[0]=540.0, y[0]=1200.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, metaState=0, flags=0x0, edgeFlags=0x0, pointerCount=1, historySize=0, eventTime=33850, downTime=33850, deviceId=-1, source=0x1002, displayId=0, eventId=-458896681 }
+10-09 03:25:59.326  4456  4456 I SpinonBootstrap: SPINON_R05_INPUT renderer=opengl_es input_seq=1 phase=ACTION_UP timestamp_precision=nanosecond_representation input_source=unknown event_time_ns=33850000000 input_uptime_anchor_ns=33852000000 input_monotonic_before_ns=33852855724 input_monotonic_after_ns=33852856891 generation=1
+10-09 03:25:59.327  4456  4456 W pinon.bootstrap: Accessing hidden method Landroid/os/SystemClock;->uptimeNanos()J (blocked, linking, denied)
+10-09 03:25:59.328  4456  4456 W pinon.bootstrap: Accessing hidden method Landroid/os/SystemClock;->uptimeNanos()J (blocked, linking, denied)
+10-09 03:25:59.328  4456  4456 W SpinonBootstrap: SPINON_R05_PRESENT_FENCE renderer=opengl_es input_seq=1 revision=1 generation=1 outcome=unavailable reason=api_below_35
+10-09 03:25:59.328  4456  4456 I SpinonBootstrap: SPINON_R05_SUBMIT renderer=opengl_es input_seq=1 revision=1 generation=1 event_time_ns=33850000000 handler_uptime_ns=33854000000 draw_requested=true draw_completed=false present_signal=unavailable attribution=input
+10-09 03:25:59.328  4456  4481 I SpinonBootstrap: SPINON_R05_DRAW renderer=opengl_es draw_seq=3 revision=1 generation=1
+10-09 03:25:59.328  4456  4481 D EGL_emulation: app_time_stats: avg=883.46ms min=0.70ms max=1766.22ms count=2
+10-09 03:25:59.332  4456  4456 I SpinonBootstrap: SPINON_R08_TOUCH count=1
+10-09 03:25:59.343   388   693 W AudioFlinger: createTrack_l(): mismatch between requested flags (00000004) and output flags (00000002)
+10-09 03:25:59.345   388   693 D AF::TrackHandle: OpPlayAudio: track:55 usage:13 not muted
+10-09 03:25:59.358  4456  4478 D EGL_emulation: app_time_stats: avg=879.08ms min=34.09ms max=1724.06ms count=2
+10-09 03:25:59.372   388   693 D audioserver: FGS Logger Transaction failed
+10-09 03:25:59.372   388   693 D audioserver: -129
+10-09 03:25:59.546   388   506 D audioserver: FGS Logger Transaction failed
+10-09 03:25:59.546   388   506 D audioserver: -129
+10-09 03:25:59.627   544  1594 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+10-09 03:25:59.908  1286  1286 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.instantapps.START pkg=com.google.android.gms }
+10-09 03:25:59.965   544   627 D ActivityManager: freezing 3900 com.google.android.healthconnect.controller
+10-09 03:25:59.965   544   627 D ActivityManager: freezing 3863 com.android.emergency
+10-09 03:25:59.965   544   627 D ActivityManager: freezing 3947 com.google.android.marvin.talkback
+10-09 03:26:00.014  1500  1784 I AiAiEcho: Predicting[0]: 
+10-09 03:26:00.014  1500  1784 I AiAiEcho: EchoTargets: 
+10-09 03:26:00.014  1500  1784 I AiAiEcho: Filtered by AiAi flag check: 
+10-09 03:26:00.014  1500  1784 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+10-09 03:26:00.014  1500  1784 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+10-09 03:26:00.032   759   759 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+10-09 03:26:00.033   759   955 D EGL_emulation: app_time_stats: avg=197.63ms min=2.67ms max=2173.96ms count=14
+10-09 03:26:00.372  1616  2761 W A       : (REDACTED) [%s] response code: %d

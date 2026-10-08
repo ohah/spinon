@@ -1,0 +1,297 @@
+Activity Resolver Table:
+  Non-Data Actions:
+      android.intent.action.MAIN:
+        2df44f0 dev.spinon.bootstrap/.MainActivity filter 1b1aa69
+          Action: "android.intent.action.MAIN"
+          Category: "android.intent.category.LAUNCHER"
+
+Domain verification status:
+
+Key Set Manager:
+  [dev.spinon.bootstrap]
+      Signing KeySets: 151
+
+Packages:
+  Package [dev.spinon.bootstrap] (8d4ea66):
+    appId=10453
+    pkg=Package{8fb8d5 dev.spinon.bootstrap}
+    codePath=/data/app/~~D7rysgmyjWjGHpSzB6aHeA==/dev.spinon.bootstrap-0nxwRcsFnTLAny3SWc5Esg==
+    resourcePath=/data/app/~~D7rysgmyjWjGHpSzB6aHeA==/dev.spinon.bootstrap-0nxwRcsFnTLAny3SWc5Esg==
+    legacyNativeLibraryDir=/data/app/~~D7rysgmyjWjGHpSzB6aHeA==/dev.spinon.bootstrap-0nxwRcsFnTLAny3SWc5Esg==/lib
+    extractNativeLibs=false
+    primaryCpuAbi=arm64-v8a
+    secondaryCpuAbi=null
+    cpuAbiOverride=null
+    versionCode=1 minSdk=29 targetSdk=36
+    minExtensionVersions=[]
+    versionName=0.1.0-bootstrap
+    hiddenApiEnforcementPolicy=2
+    usesNonSdkApi=false
+    splits=[base]
+    apkSigningVersion=2
+    flags=[ DEBUGGABLE HAS_CODE ALLOW_CLEAR_USER_DATA ]
+    privateFlags=[ PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION ALLOW_AUDIO_PLAYBACK_CAPTURE PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING ]
+    forceQueryable=false
+    pageSizeCompat=0
+    scannedAsStoppedSystemApp=false
+    supportsScreens=[small, medium, large, xlarge, resizeable, anyDensity]
+    timeStamp=2026-10-09 02:27:26
+    lastUpdateTime=2026-10-09 02:27:28
+    installerPackageName=null
+    installerPackageUid=-1
+    initiatingPackageName=com.android.shell
+    originatingPackageName=null
+    category=manifest: -1, override: -1, by user: -1
+    packageSource=1
+    appMetadataFilePath=null
+    appMetadataSource=0
+    signatures=PackageSignatures{9426ab5 version:2, signatures:[dc955cce], past signatures:[]}
+    installPermissionsFixed=false
+    pkgFlags=[ DEBUGGABLE HAS_CODE ALLOW_CLEAR_USER_DATA ]
+    privatePkgFlags=[ PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION ALLOW_AUDIO_PLAYBACK_CAPTURE PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING ]
+    apexModuleName=null
+    componentsDeclared=3
+    User 0: ceDataInode=778118 deDataInode=633741 installed=true hidden=false suspended=false distractionFlags=0 stopped=false notLaunched=false enabled=0 instant=false virtual=false quarantined=false
+      installReason=0
+      dataDir=/data/user/0/dev.spinon.bootstrap
+      firstInstallTime=2026-09-28 04:27:21
+      uninstallReason=0
+      runtime permissions:
+
+Queries:
+  system apps queryable: false
+  queries via forceQueryable:
+  queries via package name:
+  queries via component:
+    com.samsung.android.bixby.agent:
+      dev.spinon.bootstrap
+    com.lguplus.lgugpsnwps:
+      dev.spinon.bootstrap
+    com.android.settings.intelligence:
+      dev.spinon.bootstrap
+    com.samsung.android.mocca:
+      dev.spinon.bootstrap
+    com.google.android.apps.accessibility.voiceaccess:
+      dev.spinon.bootstrap
+    com.google.android.as:
+      dev.spinon.bootstrap
+    com.google.android.as.oss:
+      dev.spinon.bootstrap
+    com.facebook.katana:
+      dev.spinon.bootstrap
+    com.instagram.android:
+      dev.spinon.bootstrap
+    com.microsoft.office.outlook:
+      dev.spinon.bootstrap
+    com.skt.tmap.ku:
+      dev.spinon.bootstrap
+    com.kakao.talk:
+      dev.spinon.bootstrap
+    viva.republica.toss:
+      dev.spinon.bootstrap
+    com.kakao.taxi:
+      dev.spinon.bootstrap
+    com.nhnent.payapp:
+      dev.spinon.bootstrap
+    com.reign.gentle:
+      dev.spinon.bootstrap
+    com.kbstar.kbbank:
+      dev.spinon.bootstrap
+    teamDoppelGanger.SmarterSubway:
+      dev.spinon.bootstrap
+    com.kbcard.cxh.appcard:
+      dev.spinon.bootstrap
+    com.hanaskcard.paycla:
+      dev.spinon.bootstrap
+    com.tms:
+      dev.spinon.bootstrap
+    kr.or.giro.android:
+      dev.spinon.bootstrap
+    com.whatsapp:
+      dev.spinon.bootstrap
+    kr.co.hanamembers.hmscustomer:
+      dev.spinon.bootstrap
+    com.gangdong.seoulbus_village:
+      dev.spinon.bootstrap
+    net.daum.android.map:
+      dev.spinon.bootstrap
+    com.kakaobank.channel:
+      dev.spinon.bootstrap
+    com.sampleapp:
+      dev.spinon.bootstrap
+    com.campmobile.snow:
+      dev.spinon.bootstrap
+    com.ibk.android.ionebank:
+      dev.spinon.bootstrap
+    kr.go.minwon.m:
+      dev.spinon.bootstrap
+    com.payhereofflinetableorder.dev:
+      dev.spinon.bootstrap
+    com.payhereuntact.prd:
+      dev.spinon.bootstrap
+    com.payhereofflinetableorder.prd:
+      dev.spinon.bootstrap
+    com.naverfin.payapp:
+      dev.spinon.bootstrap
+  queryable via interaction:
+    User 0:
+      [com.wssyncmldm,com.samsung.android.ese,com.samsung.slsi.telephony.silentlogging,com.sec.android.diagmonagent,com.samsung.android.forest,com.ims.dm,com.samsung.android.vtcamerasettings,com.samsung.android.knox.pushmanager,com.samsung.android.fmm,com.sec.bcservice,com.samsung.android.svcagent,com.sec.android.app.parser,com.samsung.android.knox.mpos,com.samsung.drm,com.sec.intc,com.skms.android.agent,com.sec.android.app.hwmoduletest,com.sec.android.app.SecSetupWizard,com.samsung.oda.service,com.samsung.gpuwatchapp,com.android.server.telecom,com.sec.android.app.factorykeystring,com.android.inputdevices,com.samsung.android.app.esimkeystring,com.sec.app.RilErrorNotifier,com.samsung.euicc,com.samsung.SMT,com.samsung.android.aircommandmanager,com.samsung.android.wifi.ai,com.sec.android.emergencylauncher,com.sec.epdg,com.samsung.android.da.daagent,com.sec.android.soagent,com.samsung.android.smartswitchassistant,com.samsung.android.smartface,com.sec.cpagent,com.samsung.android.hdmapp,com.sec.android.app.wlantest,com.samsung.android.globalpostprocmgr,com.samsung.android.brightnessbackupservice,com.samsung.android.camerasdkservice,com.samsung.android.mdecservice,com.samsung.accessibility,com.samsung.android.cameraxservice,com.samsung.android.photoremasterservice,com.samsung.android.qmdservice,com.samsung.android.lool,com.samsung.android.stickercenter,com.sec.imsservice,com.android.providers.settings,com.sec.modem.settings,com.android.location.fused,com.sem.factoryapp,com.samsung.sec.android.teegris.tui_service,com.samsung.android.motionphoto.app,com.android.keychain,com.sec.factory.camera,com.sec.android.iaft,com.sec.android.sdhms,com.sec.facatfunction,com.sec.mhs.smarttethering,com.android.dynsystem,com.sec.android.CcInfo,android,com.sec.automation,com.sec.sve,com.sec.tasmanager,com.samsung.sait.sohservice,com.samsung.android.messageguardsync,com.sec.android.app.servicemodeapp,com.sec.android.smartfpsadjuster,com.android.settings,com.samsung.android.app.omcagent,com.samsung.android.app.dressroom,com.sec.imslogger,com.samsung.android.knox.zt.framework,com.samsung.android.knox.attestation,com.samsung.android.vexfwk.service,com.samsung.aasaservice,com.sec.android.app.RilPhoneNumberService,com.samsung.android.emergency,com.samsung.android.dqagent,com.samsung.android.biometrics.app.setting,com.android.localtransport,com.sec.android.app.quicktool,com.samsung.android.providers.factory,com.samsung.android.provider.filterprovider,com.samsung.android.bbc.bbcagent,com.sec.usbsettings,com.samsung.android.themecenter,com.samsung.android.bixby.wakeup]:
+        dev.spinon.bootstrap
+      com.samsung.android.honeyboard:
+        dev.spinon.bootstrap
+  queryable via uses-library:
+
+Dexopt state:
+  [dev.spinon.bootstrap]
+    path: /data/app/~~D7rysgmyjWjGHpSzB6aHeA==/dev.spinon.bootstrap-0nxwRcsFnTLAny3SWc5Esg==/base.apk
+      arm64: [status=run-from-apk] [reason=unknown] [primary-abi]
+        [location is error]
+
+SPEG state:
+  Event #10: 23-09-2026 12:19:21.312 Success in.payhere.dev took 2450 ms
+  Event #9: 10-09-2026 08:09:13.033 Success in.payhere.dev took 2547 ms
+  Event #8: 07-09-2026 00:45:49.791 Success zerolist.example took 2339 ms
+  Event #7: 03-09-2026 07:21:36.412 Success in.payhere.dev took 2493 ms
+  Event #6: 18-08-2026 18:42:04.708 Failure com.payhereofflinetableorder.prd took 2065 ms
+  Event #5: 15-07-2026 18:33:41.313 Success in.payhere.dev took 2518 ms
+  Event #4: 12-03-2026 00:56:24.014 Success com.payhereuntact.dev took 2429 ms
+  Event #3: 04-02-2026 18:50:24.923 Success com.payhereofflinetableorder.dev took 2460 ms
+  Event #2: 04-02-2026 18:49:00.193 Success dev.firebase.appdistribution took 2303 ms
+  Event #1: 18-12-2025 15:13:20.241 Success org.chromium.webapk.ae97195eb30effff5_v2 took 2299 ms
+  Event #0: 17-12-2025 16:45:54.849 Success in.payhere.dev took 2462 ms
+
+Profile utilization state:
+  Current state:
+    Version: 2.1.2
+    Start reason: boot-after-ota
+    Start time: Sat Sep 05 04:43:06 GMT+09:00 2026 ts=1788550986091
+    Finish time: Sat Sep 05 05:12:51 GMT+09:00 2026 ts=1788552771469
+    Took time 1785sec
+    PU_StatusWatcher:
+      Initial thermal status: 0
+      Thermal status: 0
+      Screen off: true
+      Low battery: false
+    PU_DexoptTrigger:
+      Dexopt concurrency: 4
+      Dexopting: false
+      Hot apps list:
+        org.connectbot, w=64, s=OPTIMIZED, optTimeMs=1788550995552, cancelCount=0, dexopt=PERFORMED, [dex2oatTimeMs=830, filter=speed-profile]
+        com.kakao.talk, w=66, s=OPTIMIZED, optTimeMs=1788551553371, cancelCount=0, dexopt=PERFORMED, [dex2oatTimeMs=10039, filter=speed-profile]
+        dev.firebase.appdistribution, w=67, s=OPTIMIZED, optTimeMs=1788550995490, cancelCount=0, dexopt=PERFORMED, [primaryDex=true, reason=profile-utilization, dex2oatTimeMs=699, filter=speed-profile]
+        viva.republica.toss, w=73, s=OPTIMIZED, optTimeMs=1788551551421, cancelCount=0, dexopt=PERFORMED, [dex2oatTimeMs=7883, filter=speed-profile], [dex2oatTimeMs=0, filter=verify]
+        com.samsung.android.messaging, w=74, s=OPTIMIZED, optTimeMs=1788550995580, cancelCount=0, dexopt=SKIPPED, [primaryDex=true, reason=bg-dexopt, dex2oatTimeMs=0, filter=speed-profile]
+        kr.co.rememberapp, w=79, s=OPTIMIZED, optTimeMs=1788551011814, cancelCount=0, dexopt=PERFORMED, [dex2oatTimeMs=3836, filter=speed-profile]
+        com.sec.android.app.shealth, w=87, s=OPTIMIZED, optTimeMs=1788551001903, cancelCount=0, dexopt=PERFORMED, [dex2oatTimeMs=3112, filter=speed-profile]
+        com.anthropic.claude, w=89, s=OPTIMIZED, optTimeMs=1788551551749, cancelCount=0, dexopt=PERFORMED, [dex2oatTimeMs=4176, filter=speed-profile]
+        com.google.android.gm, w=91, s=OPTIMIZED, optTimeMs=1788551555847, cancelCount=0, dexopt=PERFORMED, [dex2oatTimeMs=7374, filter=speed-profile]
+        com.sec.android.app.music, w=91, s=OPTIMIZED, optTimeMs=1788551553159, cancelCount=0, dexopt=PERFORMED, [primaryDex=true, reason=profile-utilization, dex2oatTimeMs=1617, filter=speed-profile]
+        com.Slack, w=93, s=OPTIMIZED, optTimeMs=1788551642839, cancelCount=0, dexopt=PERFORMED, [dex2oatTimeMs=5686, filter=speed-profile]
+        com.google.android.googlequicksearchbox, w=93, s=OPTIMIZED, optTimeMs=1788552767637, cancelCount=0, dexopt=PERFORMED, [dex2oatTimeMs=7638, filter=speed-profile]
+        com.samsung.android.game.gamehome, w=97, s=OPTIMIZED, optTimeMs=1788551554694, cancelCount=0, dexopt=PERFORMED, [primaryDex=true, reason=profile-utilization, dex2oatTimeMs=1238, filter=speed-profile]
+        com.samsung.android.bixby.agent, w=102, s=OPTIMIZED, optTimeMs=1788551556622, cancelCount=0, dexopt=PERFORMED, [dex2oatTimeMs=1840, filter=speed-profile]
+        com.linkedin.android, w=104, s=OPTIMIZED, optTimeMs=1788552771469, cancelCount=0, dexopt=PERFORMED, [dex2oatTimeMs=8640, filter=speed-profile]
+        com.samsung.android.app.reminder, w=106, s=OPTIMIZED, optTimeMs=1788552613341, cancelCount=0, dexopt=PERFORMED, [primaryDex=true, reason=profile-utilization, dex2oatTimeMs=2646, filter=speed-profile]
+        com.android.settings, w=110, s=OPTIMIZED, optTimeMs=1788551642902, cancelCount=0, dexopt=SKIPPED, [primaryDex=true, reason=bg-dexopt, dex2oatTimeMs=0, filter=verify]
+        com.android.vending, w=115, s=OPTIMIZED, optTimeMs=1788552770927, cancelCount=0, dexopt=PERFORMED, [dex2oatTimeMs=6368, filter=speed-profile]
+        com.google.android.calendar, w=121, s=OPTIMIZED, optTimeMs=1788552769784, cancelCount=0, dexopt=PERFORMED, [dex2oatTimeMs=3450, filter=speed-profile]
+    PU_Storage:
+      Stored apps:
+        org.connectbot 64
+        com.kakao.talk 66
+        dev.firebase.appdistribution 67
+        viva.republica.toss 73
+        com.samsung.android.messaging 74
+        kr.co.rememberapp 79
+        com.sec.android.app.shealth 87
+        com.anthropic.claude 89
+        com.google.android.gm 91
+        com.sec.android.app.music 91
+        com.Slack 93
+        com.google.android.googlequicksearchbox 93
+        com.samsung.android.game.gamehome 97
+        com.samsung.android.bixby.agent 102
+        com.linkedin.android 104
+        com.samsung.android.app.reminder 106
+        com.android.settings 110
+        com.android.vending 115
+        com.google.android.calendar 121
+        com.samsung.android.dialer 121
+        com.google.android.apps.tachyon 125
+        com.hanaskcard.paycla 128
+        com.samsung.android.app.contacts 132
+        com.samsung.android.app.find 144
+        com.sktelecom.minit 144
+        teamDoppelGanger.SmarterSubway 144
+    Stored PU state:
+      Service:
+        Version: 2.1.2
+        Start reason: boot-after-ota
+        Start time: Sat Sep 05 04:43:06 GMT+09:00 2026 ts=1788550986091
+        Finish time: Sat Sep 05 05:12:51 GMT+09:00 2026 ts=1788552771469
+        Took time 1785sec
+      Watcher:
+        Initial thermal status: 0
+        Thermal status: 0
+        Screen off: true
+        Low battery: false
+      Metrics:
+        Predicted and launched apps: 8
+        Predicted apps: 19
+        Launched apps: 8
+        Best f1Score: 0.631579, prefixCount: 11, precision: 0.54545456, recall: 0.75
+      Trigger:
+        Dexopt concurrency: 4
+        Dexopting: false
+        Hot apps list:
+          org.connectbot, w=64, s=OPTIMIZED, optTimeMs=1788550995552, cancelCount=0, dexopt=PERFORMED, [primaryDex=true, reason=profile-utilization, dex2oatTimeMs=830, filter=speed-profile]
+          com.kakao.talk, w=66, s=OPTIMIZED, optTimeMs=1788551553371, cancelCount=0, dexopt=PERFORMED, [primaryDex=true, reason=profile-utilization, dex2oatTimeMs=10039, filter=speed-profile]
+          dev.firebase.appdistribution, w=67, s=OPTIMIZED, optTimeMs=1788550995490, cancelCount=0, dexopt=PERFORMED, [primaryDex=true, reason=profile-utilization, dex2oatTimeMs=699, filter=speed-profile]
+          viva.republica.toss, w=73, s=OPTIMIZED, optTimeMs=1788551551421, cancelCount=0, dexopt=PERFORMED, [primaryDex=true, reason=profile-utilization, dex2oatTimeMs=7883, filter=speed-profile], [primaryDex=true, reason=vdex, dex2oatTimeMs=0, filter=verify]
+          com.samsung.android.messaging, w=74, s=OPTIMIZED, optTimeMs=1788550995580, cancelCount=0, dexopt=SKIPPED, [primaryDex=true, reason=prebuilt-prep, dex2oatTimeMs=0, filter=speed-profile]
+          kr.co.rememberapp, w=79, s=OPTIMIZED, optTimeMs=1788551011814, cancelCount=0, dexopt=PERFORMED, [primaryDex=true, reason=profile-utilization, dex2oatTimeMs=3836, filter=speed-profile]
+          com.sec.android.app.shealth, w=87, s=OPTIMIZED, optTimeMs=1788551001903, cancelCount=0, dexopt=PERFORMED, [primaryDex=true, reason=profile-utilization, dex2oatTimeMs=3112, filter=speed-profile]
+          com.anthropic.claude, w=89, s=OPTIMIZED, optTimeMs=1788551551749, cancelCount=0, dexopt=PERFORMED, [primaryDex=true, reason=profile-utilization, dex2oatTimeMs=4176, filter=speed-profile]
+          com.google.android.gm, w=91, s=OPTIMIZED, optTimeMs=1788551555847, cancelCount=0, dexopt=PERFORMED, [primaryDex=true, reason=profile-utilization, dex2oatTimeMs=7374, filter=speed-profile]
+          com.sec.android.app.music, w=91, s=OPTIMIZED, optTimeMs=1788551553159, cancelCount=0, dexopt=PERFORMED, [primaryDex=true, reason=profile-utilization, dex2oatTimeMs=1617, filter=speed-profile]
+          com.Slack, w=93, s=OPTIMIZED, optTimeMs=1788551642839, cancelCount=0, dexopt=PERFORMED, [primaryDex=true, reason=profile-utilization, dex2oatTimeMs=5686, filter=speed-profile]
+          com.google.android.googlequicksearchbox, w=93, s=OPTIMIZED, optTimeMs=1788552767637, cancelCount=0, dexopt=PERFORMED, [primaryDex=true, reason=profile-utilization, dex2oatTimeMs=7638, filter=speed-profile]
+          com.samsung.android.game.gamehome, w=97, s=OPTIMIZED, optTimeMs=1788551554694, cancelCount=0, dexopt=PERFORMED, [primaryDex=true, reason=profile-utilization, dex2oatTimeMs=1238, filter=speed-profile]
+          com.samsung.android.bixby.agent, w=102, s=OPTIMIZED, optTimeMs=1788551556622, cancelCount=0, dexopt=PERFORMED, [primaryDex=true, reason=profile-utilization, dex2oatTimeMs=1840, filter=speed-profile]
+          com.linkedin.android, w=104, s=OPTIMIZED, optTimeMs=1788552771469, cancelCount=0, dexopt=PERFORMED, [primaryDex=true, reason=profile-utilization, dex2oatTimeMs=8640, filter=speed-profile]
+          com.samsung.android.app.reminder, w=106, s=OPTIMIZED, optTimeMs=1788552613341, cancelCount=0, dexopt=PERFORMED, [primaryDex=true, reason=profile-utilization, dex2oatTimeMs=2646, filter=speed-profile]
+          com.android.settings, w=110, s=OPTIMIZED, optTimeMs=1788551642902, cancelCount=0, dexopt=SKIPPED, [primaryDex=true, reason=prebuilt, dex2oatTimeMs=0, filter=verify]
+          com.android.vending, w=115, s=OPTIMIZED, optTimeMs=1788552770927, cancelCount=0, dexopt=PERFORMED, [primaryDex=true, reason=profile-utilization, dex2oatTimeMs=6368, filter=speed-profile]
+          com.google.android.calendar, w=121, s=OPTIMIZED, optTimeMs=1788552769784, cancelCount=0, dexopt=PERFORMED, [primaryDex=true, reason=profile-utilization, dex2oatTimeMs=3450, filter=speed-profile]
+    Stored SCPM state:
+      packages-9a07:
+        [                                            ]
+      disable-2bb4:
+        [                                            ]
+
+HeimdAllFS state:
+  [dev.spinon.bootstrap]
+    path: /data/app/~~D7rysgmyjWjGHpSzB6aHeA==/dev.spinon.bootstrap-0nxwRcsFnTLAny3SWc5Esg==/base.apk
+    Compressed? False
+  [ Summary ]
+    # of packages: 1 / # of packages in DATA: 1 (1)
+    Compressed apks info - sum of orig size: 11883 / sum of compr size : 11883
+  [Lfo status]
+    packageName: com.samsung.android.vision.model
+    Path: /data/app/SamsungVisionModel/SamsungVisionModel.apk
+    Fragmented: 1
+    Extent Count: 109
+    Version: 0
+    Flag: 0
+    Level: 0
+    Count: 0
+    
+    packageName: com.samsung.android.offline.languagemodel
+    Path: /data/app/~~w33VooEJfjyDVs11TlzSYw==/com.samsung.android.offline.languagemodel-6wvBFdxD_RLN5EcusFrY1A==/base.apk
+    Fragmented: 1
+    Extent Count: 651
+    Version: 0
+    Flag: 0
+    Level: 0
+    Count: 0
+    

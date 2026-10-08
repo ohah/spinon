@@ -1,0 +1,12 @@
+input_seq=10/10 (1..10)
+wgpu_submit=10/10
+transaction_stats_callback=10/10
+usable_async_fence_signal=10/10
+exact_join=true
+all_signal_pending_active_queue=0/0/0
+target_vsync_id=-1 (all 10)
+synthetic_raw_touchscreen=0 bytes
+physical_window_raw_touchscreen=0 bytes
+physical_window_app_input_actions=0
+visual_activation_count=10
+latency_or_p95_calculated=false

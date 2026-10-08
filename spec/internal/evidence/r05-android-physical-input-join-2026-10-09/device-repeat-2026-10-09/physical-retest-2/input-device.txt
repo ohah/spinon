@@ -1,0 +1,7 @@
+실행 직전 ADB shell `getevent -lp /dev/input/event6` 결과:
+
+name: sec_touchscreen
+input props: INPUT_PROP_DIRECT
+supports BTN_TOUCH, BTN_TOOL_FINGER, ABS_MT_POSITION_X/Y, ABS_MT_TRACKING_ID
+
+event node 번호는 Android 재부팅·재연결 때 바뀔 수 있으므로 이번 실행의 식별 보조값으로만 쓴다.

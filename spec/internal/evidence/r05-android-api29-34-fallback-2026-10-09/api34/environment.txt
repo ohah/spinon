@@ -1,0 +1,11 @@
+AVD: spinon_r05_api34_fallback
+device profile: Pixel 6
+system image: system-images;android-34;google_apis;arm64-v8a, Pkg.Revision=14
+guest: Android 14 / API 34 / arm64-v8a / page size 4096
+display: 1080x2400 / density 420
+emulator: 37.2.12.0, --no-snapshot --no-boot-anim --no-audio --no-window -gpu swiftshader
+renderer control: GLES 2.0 via emulator ANGLE/SwiftShader software graphics; not a performance result
+APK: existing PR #79 debug artifact, SHA-256 608fbdf9279ddded605c7129fb0123ce32a65d7452f6ff1b36702b9eed7b198e
+APK manifest: minSdk 29, targetSdk 36
+inputs: one ADB synthetic tap for each GLES probe, screen center (540,1200)
+physical touch: not tested

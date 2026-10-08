@@ -1,0 +1,4 @@
+repository_commit=2b0b0218d8a0e0ce639a96244774fce9d456b424
+apk_sha256=608fbdf9279ddded605c7129fb0123ce32a65d7452f6ff1b36702b9eed7b198e
+apk_origin=existing PR #79 debug artifact; not rebuilt from repository_commit
+source_link_inspected=tools/build-android.sh at repository_commit

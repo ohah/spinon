@@ -1,0 +1,7 @@
+실행 순서: 설치 성공 → logcat buffer 초기화 → cold start intent → 약 5초 대기 → process/focus/crash 확인
+Activity focus after failure: com.google.android.apps.nexuslauncher
+app process after failure: 종료
+SPINON_BOOTSTRAP_RESULT: 없음
+SPINON_R05_*: 없음
+FATAL EXCEPTION: main: 있음
+R05 intent flags: 실행하지 않음. library load가 intent 분기보다 먼저 실패함.

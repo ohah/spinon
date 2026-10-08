@@ -1,6 +1,6 @@
 # R05.3 · Android 실기기 물리 입력과 present-fence 연결 계획
 
-**상태:** 계획 20관점 검토 완료 · synthetic provenance 재대조 통과 · Android Release smoke 통과 · 실제 touchscreen positive sample 대기
+**상태:** 계획 20관점 검토 완료 · Android Release smoke 통과 · 이전 APK synthetic 10/10 및 API29 unwind 수정 APK 13/13 exact join · 약 60초 직접 입력 수집 0건 · 실제 touchscreen positive sample 대기
 **상위 계획:** [입력→표시 신호 상관 계측](r05-input-to-presentation.md) · [R05 상태 대장](../spec/STATUS.md) · [비동기 fence 관찰 구현](r05-android-async-present-fence.md)
 
 ## 목적과 범위
@@ -45,6 +45,8 @@
 
 사용자의 실기기 재검증 요청 뒤 같은 artifact hash의 앱을 새 process로 재실행했다. `adb shell input tap 540 1170` 11회는 input·submit·실제 `TransactionStats` callback·usable async fence signal까지 모두 exact join됐고 마지막 queue는 0/0/0이었다. 11회 중 raw `sec_touchscreen` contact는 없었으므로 이번에도 synthetic control이다. 시각적으로 활성화 11회와 GPU 도형 색상 변화를 확인했다. 기기 상태를 전후 비교하고 Spinon을 종료해 Chrome foreground로 복귀했다. VSync ID는 계속 -1이며 event-to-present latency는 계산하지 않았다. [실기기 재검증 자료와 별도 20관점 증거 검토](../spec/internal/evidence/r05-android-physical-input-join-2026-10-09/physical-retest/README.md). 직접 손가락 입력 positive sample은 여전히 없다.
 
+같은 날 기기를 다시 연결한 뒤 fresh process와 기존 PR #79 APK hash로 재검증했다. 약 60초 direct `sec_touchscreen` 수집에서는 contact가 0건이었다. 별도 ADB synthetic tap 10회는 input·WGPU submit·`TransactionStats` callback·usable async fence signal이 각각 10/10 exact join됐고 매 완료 시 queue는 0/0/0이었다. screenshot에서 activation count 10을 확인했다. 이 APK의 API 36에서는 `target_vsync_id=-1`이므로 latency·VSync·scanout을 주장하지 않는다. [재검증 2 원본과 20관점 검토](../spec/internal/evidence/r05-android-physical-input-join-2026-10-09/device-repeat-2026-10-09/physical-retest-2/README.md). 직접 손가락 입력 positive sample은 계속 대기 상태다.
+
 ## 계획 적대 검토 · 독립 실패 관점 20개
 
 계획, 기존 Android 입력 처리·R05 probe 코드, 기존 physical-fence 실행 근거 및 Android 공개 API 계약을 서로 다른 실패 경계로 검토했다. 아래 항목은 계획 검토이며 실행 결과가 아니다.
@@ -79,3 +81,13 @@
 ## 2026-10-09 후속 실기기·Release 실행
 
 직접 touchscreen 수집을 32분 30초 유지했으나 raw contact와 app `ACTION_UP`이 없어 positive sample은 0건이다. 별도로 고정 V8 revision을 Android arm64 Release로 빌드하고 `assembleRelease`, Release 기본 cold launch, `spinon_r05_async_fence_wait=true`의 `debug_only` 거부를 실기기에서 확인했다. 임시 debug signing으로 설치한 뒤 PR #79와 동일한 debug APK를 복구하고 Chrome foreground와 화면 설정을 원상 대조했다. 이 결과는 physical 입력 검증을 대체하지 않으며 R05.3은 미완료다. 상세 실행과 별도 런타임 적대 검토는 [실기기 입력·Release smoke 근거](../spec/internal/evidence/r05-android-physical-touch-positive-2026-10-09/README.md), [런타임 검토](../spec/internal/evidence/r05-android-physical-touch-positive-2026-10-09/runtime-review.md)에 있다.
+
+## 2026-10-09 Android 실기기 재연결 반복
+
+Samsung SM-S731N / Android 16 / API 36 / SDK_INT_FULL 36.1 / Xclipse 940 WGPU/Vulkan에서 기존 PR #79 debug APK hash를 재확인하고 설치 변경 없이 실행했다. `sec_touchscreen` direct 장치를 확인한 뒤 약 60초간 raw 입력과 앱 PID log를 함께 수집했지만 두 경로 모두 물리 입력은 0건이었다. 별도 process의 synthetic control 1회와 반복 block 10회는 raw touchscreen contact 없이 input→submit→실제 transaction callback→usable async fence signal로 각각 1/1, 10/10 exact join됐다. 10회 block은 generation 1, sequence/revision 1–10이며 종료 queue는 0/0/0이다. `target_vsync_id=-1`이므로 latency·VSync·scanout을 계산하지 않는다. [실행 원본·화면·20개 독립 실패 경로 검토](../spec/internal/evidence/r05-android-physical-input-join-2026-10-09/device-repeat-2026-10-09/README.md). 직접 손가락 입력 positive sample은 미수집이므로 R05.3은 계속 미완료다.
+
+## 2026-10-09 새 API 29 수정 APK 실기기 회귀
+
+사용자 요청으로 Samsung SM-S731N / Android 16 / API 36에서 새 API29 unwind 수정 Debug APK를 설치하고 fresh process로 확인했다. 설치 hash와 빌드 APK hash는 일치했다. cold bootstrap 성공 뒤 WGPU/Vulkan Samsung Xclipse 940 화면에서 ADB synthetic tap 13회가 input·submit·실제 transaction callback·usable async fence wait까지 13/13 exact join됐고, 마지막 queue는 pending/active/depth 모두 0이었다. 캡처에서 activation count 13과 파란색에서 주황색으로 변한 GPU 도형을 확인했다. ADB synthetic control의 raw sec_touchscreen event는 0건이다.
+
+별도로 direct touchscreen device를 약 30초 관찰했으나 raw event는 없었다. 손가락 positive sample은 없으며 API 36 실기기 실행을 API 29 proof로 확대하지 않는다. target_vsync_id=-1이므로 latency/VSync/scanout을 보고하지 않았다. app 종료 뒤 Chrome foreground와 screen 설정을 전후 대조했다. [새 APK 실행 원본·캡처·hash·join 보고서](../spec/internal/evidence/r05-android-api29-unwind-link-2026-10-09/physical/README.md). R05.3은 계속 미완료다.

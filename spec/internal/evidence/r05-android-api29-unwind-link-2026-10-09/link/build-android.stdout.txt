@@ -1,0 +1,10 @@
+ANDROID_NDK_HOME/ROOT가 고정 버전과 달라 무시하고 SDK의 NDK 27.1.12297006 을 사용합니다.
+$ mkdir -p build/spinon/bootstrap && bun build examples/bootstrap/app.js --target=browser --outfile build/spinon/bootstrap/app.js
+Bundled 1 module in 2ms
+
+  app.js  17.59 KB  (entry point)
+
+    Finished `release` profile [optimized] target(s) in 0.05s
+    Finished `release` profile [optimized] target(s) in 0.04s
+Android ARM64 unwind runtime: /Users/yoonhb/Library/Android/sdk/ndk/27.1.12297006/toolchains/llvm/prebuilt/darwin-x86_64/lib/clang/18/lib/linux/aarch64/libunwind.a
+Android ARM64 V8 smoke 라이브러리 준비 완료: /private/tmp/spinon-r05-physical-touch-positive-20261009/build/spinon/android/jniLibs/arm64-v8a/libspinon_bootstrap.so
