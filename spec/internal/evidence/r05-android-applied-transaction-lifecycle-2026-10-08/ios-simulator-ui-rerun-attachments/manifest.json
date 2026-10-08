@@ -1,0 +1,17 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+        "deviceName" : "iPhone 17 Pro",
+        "exportedFileName" : "4E89032B-9EC1-417D-BEE0-9AFDFEEF4648.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "R05 iOS WGPU 탭 후 화면_0_EB059F99-3BA7-46ED-BCC9-4FF0894ED49E.png",
+        "timestamp" : 1791466713.182
+      }
+    ],
+    "testIdentifier" : "R05LayerSmokeUITests/testTapCorrelatesInputRevisionWithDrawableAcquire()",
+    "testIdentifierURL" : "test://com.apple.xcode/R05LayerSmoke/R05LayerSmokeUITests/R05LayerSmokeUITests/testTapCorrelatesInputRevisionWithDrawableAcquire"
+  }
+]

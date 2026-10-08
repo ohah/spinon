@@ -1,0 +1,12 @@
+avd_name=spinon_api37_2
+avd_data_dir=/Users/yoonhb/.android/avd/spinon_api37_2.avd
+avd_data_dir_present=false
+emulator_process=10605    07:19:05 /Users/yoonhb/Library/Android/sdk/emulator/qemu/darwin-aarch64/qemu-system-aarch64 -avd spinon_api37_2 -port 5562 -wipe-data -no-snapshot -no-boot-anim -verbose
+--- emulator이 열어 둔 삭제 파일 ---
+qemu-syst 10605 yoonhb    9w   REG   1,17          0     0 391659963 /Users/yoonhb/.android/avd/spinon_api37_2.avd/multiinstance.lock
+qemu-syst 10605 yoonhb   29u   REG   1,17    7208960     0 391660094 /Users/yoonhb/.android/avd/spinon_api37_2.avd/encryptionkey.img.qcow2
+qemu-syst 10605 yoonhb   30r   REG   1,17   18874368     0 391660013 /Users/yoonhb/.android/avd/spinon_api37_2.avd/encryptionkey.img
+qemu-syst 10605 yoonhb   31u   REG   1,17 2221211648     0 391660093 /Users/yoonhb/.android/avd/spinon_api37_2.avd/userdata-qemu.img.qcow2
+qemu-syst 10605 yoonhb   32r   REG   1,17   10158080     0 391660012 /Users/yoonhb/.android/avd/spinon_api37_2.avd/userdata-qemu.img
+qemu-syst 10605 yoonhb   33u   REG   1,17     196616     0 391660092 /Users/yoonhb/.android/avd/spinon_api37_2.avd/cache.img.qcow2
+qemu-syst 10605 yoonhb   34r   REG   1,17   69206016     0 391660019 /Users/yoonhb/.android/avd/spinon_api37_2.avd/cache.img

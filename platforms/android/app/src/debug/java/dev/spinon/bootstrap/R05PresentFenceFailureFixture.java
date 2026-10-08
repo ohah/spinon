@@ -95,6 +95,10 @@ final class R05PresentFenceFailureFixture {
         runStaleGeneration();
         runTimeoutCallbackRace();
         runExecutorOverflow();
+        boolean appliedTransactionPassed =
+                R05AppliedTransactionLifecycleFixture.run(activity, statusView);
+        record("applied_transaction_surface_lifecycle", appliedTransactionPassed,
+                "renderer=opengl_es input_source=synthetic_fixture");
         MAIN_HANDLER.post(this::beginActualTimeouts);
     }
 

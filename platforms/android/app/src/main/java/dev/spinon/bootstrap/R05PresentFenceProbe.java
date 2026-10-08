@@ -60,20 +60,31 @@ final class R05PresentFenceProbe {
         long requestId() {
             return request.requestId;
         }
+
+        long generation() {
+            return request.generation;
+        }
+
+        long inputSequence() {
+            return request.inputSequence;
+        }
     }
 
     static final class CallbackObservation {
         final String outcome;
         final String fenceState;
         final boolean currentSurface;
+        final boolean transactionStatsAvailable;
         final boolean fenceSignalUsable;
         final boolean callbackInlineOverflow;
 
         CallbackObservation(String outcome, String fenceState, boolean currentSurface,
-                            boolean fenceSignalUsable, boolean callbackInlineOverflow) {
+                            boolean transactionStatsAvailable, boolean fenceSignalUsable,
+                            boolean callbackInlineOverflow) {
             this.outcome = outcome;
             this.fenceState = fenceState;
             this.currentSurface = currentSurface;
+            this.transactionStatsAvailable = transactionStatsAvailable;
             this.fenceSignalUsable = fenceSignalUsable;
             this.callbackInlineOverflow = callbackInlineOverflow;
         }
@@ -197,6 +208,21 @@ final class R05PresentFenceProbe {
         }
     }
 
+    static FailureFixtureRequest findPendingForFailureFixture(String renderer,
+                                                               long generation,
+                                                               long inputSequence) {
+        synchronized (PENDING_LOCK) {
+            for (Request request : PENDING_REQUESTS.values()) {
+                if (request.renderer.equals(renderer)
+                        && request.generation == generation
+                        && request.inputSequence == inputSequence) {
+                    return new FailureFixtureRequest(request, null);
+                }
+            }
+        }
+        return null;
+    }
+
     static int failureCallbackQueueDepth() {
         return CALLBACK_POOL.getQueue().size();
     }
@@ -223,6 +249,11 @@ final class R05PresentFenceProbe {
 
     static int failureTimeoutCount(FailureFixtureRequest fixtureRequest) {
         return fixtureRequest == null ? -1 : fixtureRequest.request.timeoutCount.get();
+    }
+
+    static CallbackObservation failureLastCallbackObservation(
+            FailureFixtureRequest fixtureRequest) {
+        return fixtureRequest == null ? null : fixtureRequest.request.lastCallbackObservation;
     }
 
     static boolean closeFailureTransaction(FailureFixtureRequest fixtureRequest) {
@@ -633,8 +664,10 @@ final class R05PresentFenceProbe {
                     + " clock_offset_intervals_overlap=" + clockOffsetIntervalsOverlap
                     + " processing_error=" + processingError
                     + " fence_close_error=" + closeError);
-            return new CallbackObservation(outcome, fenceState, currentSurface,
-                    fenceSignalUsable, inlineOverflow);
+            CallbackObservation observation = new CallbackObservation(outcome, fenceState,
+                    currentSurface, stats != null, fenceSignalUsable, inlineOverflow);
+            request.lastCallbackObservation = observation;
+            return observation;
         }
 
         private static long safeCurrentGeneration(Request request) {
@@ -696,6 +729,7 @@ final class R05PresentFenceProbe {
         final AtomicInteger state = new AtomicInteger(Api35.PENDING);
         final AtomicInteger callbackCount = new AtomicInteger();
         final AtomicInteger timeoutCount = new AtomicInteger();
+        volatile CallbackObservation lastCallbackObservation;
         Runnable timeout;
 
         Request(long requestId, String renderer, long generation,
