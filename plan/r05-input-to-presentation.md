@@ -1,6 +1,6 @@
 # R05.3 · 입력 이벤트에서 GPU 프레임 표시 신호까지 계측 계획
 
-**상태:** 적대적 계획 검토 20개 완료 · 구현·시뮬레이터 검증 미착수 · 실기기 실행은 사용자 요청 대기
+**상태:** 적대적 계획 검토 20개 완료 · 시뮬레이터 입력→제출 probe 부분 구현 · actual-present 신호 미지원 확인 · 실기기 실행은 사용자 요청 대기
 
 **상위 항목:** [R05 계측 상태](../spec/STATUS.md) · [R05 계측 계약](../spec/internal/0022-r05-benchmark-attribution.md) · [비교 측정 계획](../docs/plans/benchmark.md)
 
@@ -50,6 +50,12 @@ iOS에서는 `UITouch.timestamp`와 `MTLDrawable.presentedTime`을 원시값으�
 - iOS에서는 현재 wgpu/CAMetalLayer 경로에서 같은 출력 drawable의 `drawableID`, revision과 `presentedTime`을 callback까지 연결할 수 있는지 확인한다. wgpu가 drawable identity/callback을 노출하지 않으면 필요한 계층과 변경 범위만 기록하고, native Metal 대조값을 wgpu 제품 경로의 대체값으로 쓰지 않는다. 시뮬레이터에서 값이 0이거나 path가 노출되지 않으면 실패/미지원으로 남기고 `CADisplayLink`로 대체하지 않는다.
 - 각 플랫폼은 최소 30개의 sequence를 사용해 생성·handler·revision·frame·presentation 레코드의 개수와 1:1 관계를 검사한다. block 종료 때 presentation callback/trace 수집기를 bounded drain하고, 기한 뒤 도착하거나 끝내 미도착한 레코드는 pending/lost로 남긴다. 입력 누락, 중복 ID, stale surface generation, trace drop, 잘못된 clock join은 집계 성공으로 상쇄하지 않는다.
 - 계측을 추가한 뒤 trace on/off 영향을 다시 확인한다. 이전 R05 계측 오버헤드 표본은 새 marker·새 frame correlation 비용을 포함하지 않으므로 새 계측의 오버헤드 근거로 재사용하지 않는다.
+
+### 1단계 실행 결과 · 2026-10-08
+
+Android API 36 Emulator와 iPhone 17 Pro / iOS 26.2 Simulator에서 synthetic 바깥 탭과 중앙 탭을 실행했다. Android·iOS wgpu 경로 및 iOS native Metal 대조에서 중앙 입력 sequence와 revision이 연결되고 실제 색상 변경을 확인했다. iOS 양 renderer에서는 바깥 시작→안쪽 종료 swipe와 8pt를 넘는 내부 이동 swipe를 표본에서 제외했고, R13 window 재부착 뒤 surface generation 2 연결도 확인했다. 8pt는 probe의 gesture 오염 필터일 뿐 공개 입력 계약이 아니다. R05 비활성 대조에서도 기존 R08 입력 경로가 동작했다. [실행 로그·화면·체크섬 및 구현 적대 검토](../spec/internal/evidence/r05-presentation-signal-probe-2026-10-08.md).
+
+이 단계는 actual-present 연결 가능성 검증에는 실패했다. Android R08 surface가 Perfetto FrameTimeline의 지원 surface가 아닌 `SurfaceView`이며, 현재 iOS Simulator SDK는 문서상 Metal drawable presentation callback 멤버를 제공하지 않는다. 두 플랫폼 모두 제출/command completion을 표시 완료 신호로 대체하지 않았고 event-to-present 값은 산출하지 않았다. 단일 submit-call 지연 관측은 재현 측정 전까지 성능 근거로 쓰지 않는다. 다음 gate는 공개 SDK/API에서 exact surface/frame 표시 신호를 얻는 지원 경로나 별도 광학 측정 경로를 찾는 것이다. 실기기 검증은 사용자 요청 후에만 실행한다.
 
 ### 2단계 · 물리 입력 검증 (사용자 요청 뒤에만 실행)
 
@@ -107,4 +113,4 @@ iOS에서는 `UITouch.timestamp`와 `MTLDrawable.presentedTime`을 원시값으�
 | 19 | 적은 표본으로 p95나 비교 승자를 과장 | 기존 “충분한 표본”이 모호했다. 총 300개를 탐색 p95 최소 수집량으로 명시하고 95% block-bootstrap 구간 및 비승자 판정 제한을 추가. |
 | 20 | OS signal을 photon/screen scanout 완료로 표현 | OS signal의 의미와 광학 측정의 경계를 명시하고 센서 없이는 input-to-photon을 내지 않는다. 통과. |
 
-남은 구현 전 확인점은 Android actual surface frame ID와 입력 revision의 실측 join 가능성, 현재 iOS wgpu path의 drawable presentation callback 접근성, 양쪽 clock conversion residual이다. 이들은 계획을 보류시키는 설계 선택지가 아니라 1단계에서 통과/실패를 판정할 명시된 gate다. 실기기 검증은 사용자의 요청 전에는 실행하지 않는다.
+남은 확인점은 Android에서 지원되는 다른 surface/API로 exact frame과 입력 revision을 join할 수 있는지, 현재 배포 SDK에서 iOS drawable 표시 신호를 제공하는지, 양쪽 clock conversion residual, 최소 30 sequence의 레코드 무결성이다. 현재 R08 시뮬레이터 probe는 capability 한계까지만 기록했다. 실기기 검증은 사용자의 요청 전에는 실행하지 않는다.

@@ -1,6 +1,120 @@
 import MetalKit
 import OSLog
+import QuartzCore
 import UIKit
+
+private struct R05InputSample {
+    let sequence: Int
+    let eventTimestamp: TimeInterval
+    let handlerUptime: TimeInterval
+}
+
+private func captureR05ClockAnchor(_ logger: Logger, label: String) {
+    let uptimeBefore = ProcessInfo.processInfo.systemUptime
+    let hostTime = CACurrentMediaTime()
+    let uptimeAfter = ProcessInfo.processInfo.systemUptime
+    logger.notice("SPINON_R05_CLOCK_ANCHOR label=\(label, privacy: .public) uptime_before_s=\(uptimeBefore, privacy: .public) host_s=\(hostTime, privacy: .public) uptime_after_s=\(uptimeAfter, privacy: .public)")
+}
+
+private enum R05TouchDecision {
+    case accepted(UITouch)
+    case excluded(String)
+}
+
+private struct R05TouchGesture {
+    private static let maximumMovement: CGFloat = 8
+    private var touchID: ObjectIdentifier?
+    private var startPoint: CGPoint?
+    private var rejectionReason: String?
+
+    mutating func began(_ touches: Set<UITouch>, event: UIEvent?, in view: UIView) {
+        guard touchID == nil else {
+            reject("multiple_touches")
+            return
+        }
+        reset()
+        guard touches.count == 1,
+              (event?.allTouches?.count ?? touches.count) == 1,
+              let touch = touches.first else {
+            reject("multiple_touches")
+            return
+        }
+        touchID = ObjectIdentifier(touch)
+        let point = touch.location(in: view)
+        startPoint = point
+        if !isTarget(point, in: view) { reject("outside_target") }
+    }
+
+    mutating func moved(_ touches: Set<UITouch>, event: UIEvent?, in view: UIView) {
+        guard touchID != nil else { return }
+        guard touches.count == 1,
+              (event?.allTouches?.count ?? touches.count) == 1,
+              let touch = touches.first,
+              ObjectIdentifier(touch) == touchID else {
+            reject("multiple_touches")
+            return
+        }
+        rejectIfMoved(touch.location(in: view), in: view)
+    }
+
+    mutating func ended(_ touches: Set<UITouch>, event: UIEvent?, in view: UIView) -> R05TouchDecision {
+        defer { reset() }
+        guard let touchID else {
+            return .excluded(rejectionReason ?? "missing_touch_start")
+        }
+        guard touches.count == 1,
+              (event?.allTouches?.count ?? touches.count) == 1,
+              let touch = touches.first,
+              ObjectIdentifier(touch) == touchID else {
+            return .excluded(rejectionReason ?? "multiple_touches")
+        }
+        let point = touch.location(in: view)
+        rejectIfMoved(point, in: view)
+        if !isTarget(point, in: view) { reject("outside_target") }
+        if let rejectionReason { return .excluded(rejectionReason) }
+        return .accepted(touch)
+    }
+
+    mutating func cancelled() -> String {
+        let reason = rejectionReason ?? "cancelled"
+        reset()
+        return reason
+    }
+
+    mutating func cancelForSurfaceDetach() -> String? {
+        guard touchID != nil else { return nil }
+        let reason = rejectionReason ?? "surface_detached"
+        reset()
+        return reason
+    }
+
+    private mutating func rejectIfMoved(_ point: CGPoint, in view: UIView) {
+        guard let startPoint else { return }
+        let deltaX = point.x - startPoint.x
+        let deltaY = point.y - startPoint.y
+        if deltaX * deltaX + deltaY * deltaY > Self.maximumMovement * Self.maximumMovement
+            || !isTarget(point, in: view) {
+            reject("gesture_moved")
+        }
+    }
+
+    private func isTarget(_ point: CGPoint, in view: UIView) -> Bool {
+        return point.x >= view.bounds.width * 0.11
+            && point.x <= view.bounds.width * 0.89
+            && point.y >= view.bounds.height * 0.40
+            && point.y <= view.bounds.height * 0.60
+    }
+
+    private mutating func reject(_ reason: String) {
+        if rejectionReason == nil { rejectionReason = reason }
+    }
+
+    private mutating func reset() {
+        touchID = nil
+        startPoint = nil
+        rejectionReason = nil
+    }
+}
 
 final class R08GpuDemoViewController: UIViewController, UITextFieldDelegate {
     private let logger = Logger(subsystem: "dev.spinon.bootstrap", category: "r08")
@@ -8,6 +122,7 @@ final class R08GpuDemoViewController: UIViewController, UITextFieldDelegate {
     private let useWgpu: Bool
     private let r13Enabled: Bool
     private let r13WindowCycle: Bool
+    private let r05PresentationProbe: Bool
     private let titleLabel = UILabel()
     private let statusLabel = UILabel()
     private let inputField = UITextField()
@@ -15,16 +130,21 @@ final class R08GpuDemoViewController: UIViewController, UITextFieldDelegate {
     init(useWgpu: Bool = false, r13Enabled: Bool = false,
          r13FailureInjection: Int32 = 0,
          r13RecoveryFailureInjection: Int32 = 0,
-         r13WindowCycle: Bool = false) {
+         r13WindowCycle: Bool = false,
+         r05PresentationProbe: Bool = false) {
         self.useWgpu = useWgpu
         self.r13Enabled = r13Enabled
         self.r13WindowCycle = r13WindowCycle
+        self.r05PresentationProbe = r05PresentationProbe
         self.canvas = useWgpu
             ? R08WgpuCanvasView(
                 frame: .zero, r13Enabled: r13Enabled,
                 r13FailureInjection: r13FailureInjection,
-                r13RecoveryFailureInjection: r13RecoveryFailureInjection)
-            : R08MetalCanvasView(frame: .zero, device: MTLCreateSystemDefaultDevice())
+                r13RecoveryFailureInjection: r13RecoveryFailureInjection,
+                r05PresentationProbe: r05PresentationProbe)
+            : R08MetalCanvasView(
+                frame: .zero, device: MTLCreateSystemDefaultDevice(),
+                r05PresentationProbe: r05PresentationProbe)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -32,6 +152,7 @@ final class R08GpuDemoViewController: UIViewController, UITextFieldDelegate {
         self.useWgpu = false
         self.r13Enabled = false
         self.r13WindowCycle = false
+        self.r05PresentationProbe = false
         self.canvas = R08MetalCanvasView(frame: .zero, device: MTLCreateSystemDefaultDevice())
         super.init(coder: coder)
     }
@@ -44,7 +165,9 @@ final class R08GpuDemoViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(canvas)
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = r13Enabled
+        titleLabel.text = r05PresentationProbe
+            ? "SPINON · R05 표시 신호 probe\niOS · \(useWgpu ? "wgpu / Metal" : "native Metal control")"
+            : r13Enabled
             ? "SPINON · R13 GPU 복구\niOS · wgpu / Metal"
             : useWgpu
                 ? "SPINON · R08 GPU 표면\niOS · wgpu / Metal"
@@ -101,6 +224,13 @@ final class R08GpuDemoViewController: UIViewController, UITextFieldDelegate {
         if r13WindowCycle { runWindowCycleDiagnostic() }
 
         logger.notice("SPINON_R08_UI=ready text-input=UITextField accessibility=button+UITextField")
+        if r05PresentationProbe {
+            logger.notice("SPINON_R05_PROBE=ready renderer=\(self.useWgpu ? "wgpu" : "native-metal-control") input_source=unknown")
+            if !useWgpu {
+                logger.notice("SPINON_R05_SIGNAL_CAPABILITY renderer=native-metal-control signal=drawable_present_callback available=false reason=installed_sdk_headers_do_not_expose_api")
+            }
+            captureR05ClockAnchor(logger, label: "launch")
+        }
     }
 
     private func constrainCanvasToRootView() {
@@ -150,6 +280,7 @@ final class R08GpuDemoViewController: UIViewController, UITextFieldDelegate {
 private final class R08WgpuCanvasView: UIView {
     private let logger = Logger(subsystem: "dev.spinon.bootstrap", category: "r08")
     private let r13Enabled: Bool
+    private let r05PresentationProbe: Bool
     private var renderer: UnsafeMutableRawPointer?
     private var activationCount: UInt32 = 0
     private var firstFrameLogged = false
@@ -161,14 +292,20 @@ private final class R08WgpuCanvasView: UIView {
     private var hostActive: Bool
     private var hasReachedActiveState = false
     private var resumeRedrawPending = false
+    private var r05InputSequence = 0
+    private var pendingR05Input: R05InputSample?
+    private var r05TouchGesture = R05TouchGesture()
+    private var r05SurfaceGeneration = 0
     var onActivate: ((Int) -> Void)?
 
     override class var layerClass: AnyClass { CAMetalLayer.self }
 
     init(frame: CGRect, r13Enabled: Bool = false,
          r13FailureInjection: Int32 = 0,
-         r13RecoveryFailureInjection: Int32 = 0) {
+         r13RecoveryFailureInjection: Int32 = 0,
+         r05PresentationProbe: Bool = false) {
         self.r13Enabled = r13Enabled
+        self.r05PresentationProbe = r05PresentationProbe
         self.pendingFailureInjection = r13FailureInjection
         self.pendingRecoveryFailureInjection = r13RecoveryFailureInjection
         self.hostActive = r13Enabled
@@ -180,6 +317,7 @@ private final class R08WgpuCanvasView: UIView {
 
     required init?(coder: NSCoder) {
         self.r13Enabled = false
+        self.r05PresentationProbe = false
         self.pendingFailureInjection = 0
         self.pendingRecoveryFailureInjection = 0
         self.hostActive = true
@@ -195,6 +333,7 @@ private final class R08WgpuCanvasView: UIView {
         accessibilityValue = "활성화 0회"
         accessibilityHint = "중앙 도형을 두 번 탭하면 색이 바뀝니다."
         accessibilityTraits = .button
+        isMultipleTouchEnabled = r05PresentationProbe
         if r13Enabled {
             NotificationCenter.default.addObserver(
                 self, selector: #selector(hostWillResignActive),
@@ -207,6 +346,17 @@ private final class R08WgpuCanvasView: UIView {
 
     override func didMoveToWindow() {
         super.didMoveToWindow()
+        if r05PresentationProbe {
+            if window == nil {
+                excludePendingR05Input(renderer: "wgpu", reason: "surface_detached")
+                if let reason = r05TouchGesture.cancelForSurfaceDetach() {
+                    logger.notice("SPINON_R05_INPUT=excluded renderer=wgpu reason=\(reason, privacy: .public)")
+                }
+            } else {
+                r05SurfaceGeneration += 1
+                logger.notice("SPINON_R05_SURFACE renderer=wgpu generation=\(self.r05SurfaceGeneration, privacy: .public)")
+            }
+        }
         if r13Enabled && window == nil {
             destroyRenderer()
             configuredSize = .zero
@@ -232,14 +382,28 @@ private final class R08WgpuCanvasView: UIView {
     }
 
     func draw() {
-        guard hostActive else { return }
+        guard hostActive else {
+            excludePendingR05Input(renderer: "wgpu", reason: "host_inactive")
+            return
+        }
         if renderer == nil {
             setNeedsLayout()
             layoutIfNeeded()
+            if renderer == nil {
+                excludePendingR05Input(renderer: "wgpu", reason: "renderer_unavailable")
+            }
             return
         }
-        guard let renderer else { return }
+        guard let renderer else {
+            excludePendingR05Input(renderer: "wgpu", reason: "renderer_unavailable")
+            return
+        }
         let result = SpinonRunner.drawR08Wgpu(renderer, activationCount: activationCount)
+        if let sample = pendingR05Input {
+            let handlerReturn = ProcessInfo.processInfo.systemUptime
+            logger.notice("SPINON_R05_SUBMIT renderer=wgpu input_seq=\(sample.sequence, privacy: .public) revision=\(self.activationCount, privacy: .public) generation=\(self.r05SurfaceGeneration, privacy: .public) event_time_s=\(sample.eventTimestamp, privacy: .public) handler_uptime_s=\(sample.handlerUptime, privacy: .public) call_return_uptime_s=\(handlerReturn, privacy: .public) result=\(result, privacy: .public) present_signal=unavailable")
+            pendingR05Input = nil
+        }
         if result == 0, !firstFrameLogged {
             firstFrameLogged = true
             logger.notice("SPINON_R08_WGPU_FRAME=first_draw_submitted")
@@ -369,20 +533,60 @@ private final class R08WgpuCanvasView: UIView {
         }
     }
 
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let point = touches.first?.location(in: self),
-              point.x >= bounds.width * 0.11,
-              point.x <= bounds.width * 0.89,
-              point.y >= bounds.height * 0.40,
-              point.y <= bounds.height * 0.60 else {
-            super.touchesEnded(touches, with: event)
-            return
+    private func excludePendingR05Input(renderer: String, reason: String) {
+        guard let sample = pendingR05Input else { return }
+        logger.notice("SPINON_R05_INPUT=excluded renderer=\(renderer, privacy: .public) reason=\(reason, privacy: .public) input_seq=\(sample.sequence, privacy: .public) generation=\(self.r05SurfaceGeneration, privacy: .public)")
+        pendingR05Input = nil
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if r05PresentationProbe { r05TouchGesture.began(touches, event: event, in: self) }
+        super.touchesBegan(touches, with: event)
+    }
+
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if r05PresentationProbe { r05TouchGesture.moved(touches, event: event, in: self) }
+        super.touchesMoved(touches, with: event)
+    }
+
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if r05PresentationProbe {
+            let reason = r05TouchGesture.cancelled()
+            logger.notice("SPINON_R05_INPUT=excluded renderer=wgpu reason=\(reason, privacy: .public)")
         }
-        activate()
+        super.touchesCancelled(touches, with: event)
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch: UITouch
+        if r05PresentationProbe {
+            switch r05TouchGesture.ended(touches, event: event, in: self) {
+            case .accepted(let acceptedTouch): touch = acceptedTouch
+            case .excluded(let reason):
+                logger.notice("SPINON_R05_INPUT=excluded renderer=wgpu reason=\(reason, privacy: .public)")
+                super.touchesEnded(touches, with: event)
+                return
+            }
+        } else {
+            guard let endedTouch = touches.first else {
+                super.touchesEnded(touches, with: event)
+                return
+            }
+            let point = endedTouch.location(in: self)
+            guard point.x >= bounds.width * 0.11,
+                  point.x <= bounds.width * 0.89,
+                  point.y >= bounds.height * 0.40,
+                  point.y <= bounds.height * 0.60 else {
+                super.touchesEnded(touches, with: event)
+                return
+            }
+            touch = endedTouch
+        }
+        activate(from: touch)
     }
 
     override func accessibilityActivate() -> Bool {
-        activate()
+        activate(from: nil)
         return true
     }
 
@@ -400,12 +604,29 @@ private final class R08WgpuCanvasView: UIView {
         set {}
     }
 
-    private func activate() {
+    private func activate(from touch: UITouch?) {
         activationCount += 1
         accessibilityValue = "활성화 \(activationCount)회"
         onActivate?(Int(activationCount))
         let tag = r13Enabled ? "R13" : "R08"
         logger.notice("SPINON_\(tag)_TOUCH count=\(self.activationCount)")
+        if r05PresentationProbe {
+            guard let touch else {
+                logger.notice("SPINON_R05_INPUT=excluded renderer=wgpu reason=no_touch_event revision=\(self.activationCount, privacy: .public)")
+                logger.notice("SPINON_R05_REVISION_UNMATCHED renderer=wgpu revision=\(self.activationCount, privacy: .public) reason=non_touch_activation")
+                draw()
+                return
+            }
+            excludePendingR05Input(renderer: "wgpu", reason: "overlap_before_submission")
+            r05InputSequence += 1
+            let sample = R05InputSample(
+                sequence: r05InputSequence,
+                eventTimestamp: touch.timestamp,
+                handlerUptime: ProcessInfo.processInfo.systemUptime)
+            pendingR05Input = sample
+            captureR05ClockAnchor(logger, label: "wgpu_input_\(sample.sequence)")
+            logger.notice("SPINON_R05_INPUT renderer=wgpu input_seq=\(sample.sequence, privacy: .public) phase=ended input_source=unknown event_time_s=\(sample.eventTimestamp, privacy: .public) handler_uptime_s=\(sample.handlerUptime, privacy: .public) generation=\(self.r05SurfaceGeneration, privacy: .public)")
+        }
         draw()
     }
 
@@ -416,11 +637,16 @@ private final class R08WgpuCanvasView: UIView {
 
 private final class R08MetalCanvasView: MTKView, MTKViewDelegate {
     private let logger = Logger(subsystem: "dev.spinon.bootstrap", category: "r08")
+    private var r05PresentationProbe = false
     private var pipeline: MTLRenderPipelineState?
     private var commandQueue: MTLCommandQueue?
     private var vertexBuffer: MTLBuffer?
     private var activationCount = 0
     private var firstFrameLogged = false
+    private var r05InputSequence = 0
+    private var r05SurfaceGeneration = 0
+    private var pendingR05Input: R05InputSample?
+    private var r05TouchGesture = R05TouchGesture()
     var onActivate: ((Int) -> Void)?
 
     override init(frame: CGRect, device: MTLDevice?) {
@@ -428,7 +654,14 @@ private final class R08MetalCanvasView: MTKView, MTKViewDelegate {
         configure()
     }
 
+    convenience init(frame: CGRect, device: MTLDevice?, r05PresentationProbe: Bool) {
+        self.init(frame: frame, device: device)
+        self.r05PresentationProbe = r05PresentationProbe
+        isMultipleTouchEnabled = r05PresentationProbe
+    }
+
     required init(coder: NSCoder) {
+        self.r05PresentationProbe = false
         super.init(coder: coder)
         configure()
     }
@@ -445,6 +678,7 @@ private final class R08MetalCanvasView: MTKView, MTKViewDelegate {
         accessibilityValue = "활성화 0회"
         accessibilityHint = "중앙 도형을 두 번 탭하면 색이 바뀝니다."
         accessibilityTraits = .button
+        isMultipleTouchEnabled = r05PresentationProbe
 
         guard let device else {
             logger.error("SPINON_R08_METAL_ERROR=no_device")
@@ -499,7 +733,14 @@ private final class R08MetalCanvasView: MTKView, MTKViewDelegate {
     override func didMoveToWindow() {
         super.didMoveToWindow()
         if window != nil {
+            if r05PresentationProbe {
+                r05SurfaceGeneration += 1
+                logger.notice("SPINON_R05_SURFACE renderer=native-metal-control generation=\(self.r05SurfaceGeneration, privacy: .public)")
+            }
             draw()
+        } else if r05PresentationProbe,
+                  let reason = r05TouchGesture.cancelForSurfaceDetach() {
+            logger.notice("SPINON_R05_INPUT=excluded renderer=native-metal-control reason=\(reason, privacy: .public)")
         }
     }
 
@@ -514,6 +755,10 @@ private final class R08MetalCanvasView: MTKView, MTKViewDelegate {
               let vertexBuffer,
               let commandBuffer = commandQueue?.makeCommandBuffer(),
               let encoder = commandBuffer.makeRenderCommandEncoder(descriptor: descriptor) else {
+            if r05PresentationProbe, let sample = pendingR05Input {
+                logger.notice("SPINON_R05_INPUT=excluded renderer=native-metal-control reason=drawable_or_pipeline_unavailable input_seq=\(sample.sequence, privacy: .public) generation=\(self.r05SurfaceGeneration, privacy: .public)")
+                pendingR05Input = nil
+            }
             return
         }
 
@@ -525,6 +770,21 @@ private final class R08MetalCanvasView: MTKView, MTKViewDelegate {
         encoder.setFragmentBytes(&color, length: MemoryLayout<SIMD4<Float>>.stride, index: 0)
         encoder.drawPrimitives(type: .triangleStrip, vertexStart: 0, vertexCount: 4)
         encoder.endEncoding()
+        if let sample = pendingR05Input {
+            let inputSequence = sample.sequence
+            let revision = activationCount
+            let generation = r05SurfaceGeneration
+            let logger = self.logger
+            let eventTimestamp = sample.eventTimestamp
+            let handlerUptime = sample.handlerUptime
+            commandBuffer.addCompletedHandler { completedBuffer in
+                let callbackUptime = ProcessInfo.processInfo.systemUptime
+                logger.notice("SPINON_R05_GPU_COMPLETE renderer=native-metal-control input_seq=\(inputSequence, privacy: .public) revision=\(revision, privacy: .public) generation=\(generation, privacy: .public) event_time_s=\(eventTimestamp, privacy: .public) handler_uptime_s=\(handlerUptime, privacy: .public) callback_uptime_s=\(callbackUptime, privacy: .public) command_status=\(completedBuffer.status.rawValue, privacy: .public) presentation_signal=unavailable")
+            }
+            let requestUptime = ProcessInfo.processInfo.systemUptime
+            logger.notice("SPINON_R05_SUBMIT renderer=native-metal-control input_seq=\(inputSequence, privacy: .public) revision=\(revision, privacy: .public) generation=\(generation, privacy: .public) event_time_s=\(eventTimestamp, privacy: .public) handler_uptime_s=\(handlerUptime, privacy: .public) present_request_uptime_s=\(requestUptime, privacy: .public) presentation_signal=unavailable")
+            pendingR05Input = nil
+        }
         commandBuffer.present(drawable)
         commandBuffer.commit()
         if !firstFrameLogged {
@@ -533,20 +793,54 @@ private final class R08MetalCanvasView: MTKView, MTKViewDelegate {
         }
     }
 
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let point = touches.first?.location(in: self),
-              point.x >= bounds.width * 0.11,
-              point.x <= bounds.width * 0.89,
-              point.y >= bounds.height * 0.40,
-              point.y <= bounds.height * 0.60 else {
-            super.touchesEnded(touches, with: event)
-            return
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if r05PresentationProbe { r05TouchGesture.began(touches, event: event, in: self) }
+        super.touchesBegan(touches, with: event)
+    }
+
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if r05PresentationProbe { r05TouchGesture.moved(touches, event: event, in: self) }
+        super.touchesMoved(touches, with: event)
+    }
+
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if r05PresentationProbe {
+            let reason = r05TouchGesture.cancelled()
+            logger.notice("SPINON_R05_INPUT=excluded renderer=native-metal-control reason=\(reason, privacy: .public)")
         }
-        activate()
+        super.touchesCancelled(touches, with: event)
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch: UITouch
+        if r05PresentationProbe {
+            switch r05TouchGesture.ended(touches, event: event, in: self) {
+            case .accepted(let acceptedTouch): touch = acceptedTouch
+            case .excluded(let reason):
+                logger.notice("SPINON_R05_INPUT=excluded renderer=native-metal-control reason=\(reason, privacy: .public)")
+                super.touchesEnded(touches, with: event)
+                return
+            }
+        } else {
+            guard let endedTouch = touches.first else {
+                super.touchesEnded(touches, with: event)
+                return
+            }
+            let point = endedTouch.location(in: self)
+            guard point.x >= bounds.width * 0.11,
+                  point.x <= bounds.width * 0.89,
+                  point.y >= bounds.height * 0.40,
+                  point.y <= bounds.height * 0.60 else {
+                super.touchesEnded(touches, with: event)
+                return
+            }
+            touch = endedTouch
+        }
+        activate(from: touch)
     }
 
     override func accessibilityActivate() -> Bool {
-        activate()
+        activate(from: nil)
         return true
     }
 
@@ -564,11 +858,31 @@ private final class R08MetalCanvasView: MTKView, MTKViewDelegate {
         set {}
     }
 
-    private func activate() {
+    private func activate(from touch: UITouch?) {
         activationCount += 1
         accessibilityValue = "활성화 \(activationCount)회"
         onActivate?(activationCount)
         logger.notice("SPINON_R08_TOUCH count=\(self.activationCount)")
+        if r05PresentationProbe {
+            guard let touch else {
+                logger.notice("SPINON_R05_INPUT=excluded renderer=native-metal-control reason=no_touch_event revision=\(self.activationCount, privacy: .public)")
+                logger.notice("SPINON_R05_REVISION_UNMATCHED renderer=native-metal-control revision=\(self.activationCount, privacy: .public) reason=non_touch_activation")
+                draw()
+                return
+            }
+            if let previous = pendingR05Input {
+                logger.notice("SPINON_R05_INPUT=excluded renderer=native-metal-control reason=overlap_before_submission input_seq=\(previous.sequence, privacy: .public) generation=\(self.r05SurfaceGeneration, privacy: .public)")
+                pendingR05Input = nil
+            }
+            r05InputSequence += 1
+            let sample = R05InputSample(
+                sequence: r05InputSequence,
+                eventTimestamp: touch.timestamp,
+                handlerUptime: ProcessInfo.processInfo.systemUptime)
+            pendingR05Input = sample
+            captureR05ClockAnchor(logger, label: "native_input_\(sample.sequence)")
+            logger.notice("SPINON_R05_INPUT renderer=native-metal-control input_seq=\(sample.sequence, privacy: .public) phase=ended input_source=unknown event_time_s=\(sample.eventTimestamp, privacy: .public) handler_uptime_s=\(sample.handlerUptime, privacy: .public) generation=\(self.r05SurfaceGeneration, privacy: .public)")
+        }
         draw()
     }
 }

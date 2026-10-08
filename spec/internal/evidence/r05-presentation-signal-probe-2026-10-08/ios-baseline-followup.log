@@ -1,0 +1,4 @@
+Timestamp               Ty Process[PID:TID]
+2026-10-08 14:09:27.382 Df SpinonBootstrap[44329:48ca62c] [dev.spinon.bootstrap:r08] SPINON_R08_UI=ready text-input=UITextField accessibility=button+UITextField
+2026-10-08 14:09:27.396 Df SpinonBootstrap[44329:48ca62c] [dev.spinon.bootstrap:r08] SPINON_R08_WGPU_FRAME=first_draw_submitted
+2026-10-08 14:09:30.283 Df SpinonBootstrap[44329:48ca62c] [dev.spinon.bootstrap:r08] SPINON_R08_TOUCH count=1
