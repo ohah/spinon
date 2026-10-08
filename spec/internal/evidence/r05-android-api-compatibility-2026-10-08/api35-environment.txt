@@ -1,0 +1,11 @@
+avd=spinon_api35_compat
+system_image=system-images;android-35;google_apis;arm64-v8a
+abi=arm64-v8a
+page_size=4096
+emulator_version=37.2.12.0
+api=35
+extension_level=13
+api_full_capability_log=0_on_api_35
+apk_sha256=325611b9427ac66a2c82722f89c3193a24b7f04671dadd38b98f9aff90c605cd
+wgpu_backend=Vulkan llvmpipe
+gles_backend=ANGLE Vulkan SwiftShader

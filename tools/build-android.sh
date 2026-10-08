@@ -127,7 +127,9 @@ fi
   "$repo_root/target/aarch64-linux-android/release/libspinon_ffi.a" \
   "$repo_root/spikes/wgpu-backend/target/aarch64-linux-android/release/libspinon_wgpu_r08_spike.a" \
   "$v8_archive" "$v8_libcxx" "$v8_libcxxabi" \
-  "-fuse-ld=$v8_lld" -Wl,--gc-sections -nostdlib++ --unwindlib=none -landroid -llog -ldl \
+  "-fuse-ld=$v8_lld" -Wl,--gc-sections \
+  -Wl,-z,max-page-size=16384 -Wl,-z,common-page-size=16384 \
+  -nostdlib++ --unwindlib=none -landroid -llog -ldl \
   -o "$output_dir/jniLibs/arm64-v8a/libspinon_bootstrap.so"
 
 echo "Android ARM64 V8 smoke 라이브러리 준비 완료: $output_dir/jniLibs/arm64-v8a/libspinon_bootstrap.so"

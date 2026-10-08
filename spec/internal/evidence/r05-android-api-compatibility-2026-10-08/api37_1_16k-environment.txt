@@ -1,0 +1,13 @@
+avd=spinon_api37_1_compat16k
+system_image=system-images;android-37.1;google_apis_ps16k;arm64-v8a
+ports=5580,5581
+emulator_version=37.2.12.0
+gpu_mode=host (Apple M4 Max via MoltenVK)
+api=37
+page_size=16384
+fingerprint=google/sdk_gphone16k_arm64/emu64a16k:17/CP31.260623.012/16064790:userdebug/dev-keys
+app_compat_linker=fatal
+app_compat_pm_disabled=true
+apk_sha256=325611b9427ac66a2c82722f89c3193a24b7f04671dadd38b98f9aff90c605cd
+native_LOAD_alignment=all 0x4000
+native_GNU_RELRO_end=0x2dd5000 remainder_0x1000_mod_0x4000

@@ -66,6 +66,7 @@
 - [R05 · Android 프레임 지연 귀속 실험](./evidence/r05-android-frame-attribution-2026-10-06.md) — 고유 surface/display token 집계와 caller TID로 연결한 worker·actor·V8 구간. 고정 순서 matrix의 비교 한계, 균형 순서 50/100 dispatch 재측정, queue·caller wait·V8 handler 장시간 사례와 에뮬레이터 한계를 기록.
 - [R05 · iOS·Android callback·프레임 원인 분석](./evidence/r05-cross-platform-callback-root-cause-2026-10-07.md) — Android sync barrier 개입, 동기·비동기 반복, runtime dispatch 없는 UI-only RenderThread frame miss, iOS System Trace 측정 실패와 미측정 항목·후속 계측을 기록.
 - [R05 · Perfetto `gfx` 설정 오류 분석](./evidence/r05-perfetto-gfx-setup-errors-2026-10-07.md) — 설정 한 줄 최소차이 캡처로 37개 오류가 AVD에 없는 vendor GPU/display ftrace event임을 분류하고 generic trace 데이터와 계측 한계를 구분.
+- [R05.3 · Android API·16KB 호환성 및 구현 적대 검토](./evidence/r05-android-api-compatibility-2026-10-08.md) — API 35·37.0·37.1 AVD fence 결과와 API fallback, WGPU adapter 미제공 경로, 16KB APK/ELF 검사 및 GNU_RELRO 미정렬·실제 재링크 blocker를 기록.
 - [R13 · 플랫폼 생명주기·GPU 복구](./evidence/r13-platform-gpu-recovery-2026-09-29.md) — 회전·백그라운드·오류 주입·입력 복구의 로그와 화면 캡처.
 - [S02 · Taffy 레이아웃 연결](./evidence/s02-taffy-layout-2026-09-30.md) — Chromium 기준 fixture, Taffy·기존 행/열 엔진의 좌표 비교와 한계.
 - [S04.4 · Android GPU surface](./evidence/s04-android-gpu-surface-2026-10-03.md) — Android API 36 ARM64 emulator의 Vulkan llvmpipe surface 제출, 회전별 generation, sRGB 표본 readback과 화면 캡처. 실제 hardware GPU·실기기는 미검증.
