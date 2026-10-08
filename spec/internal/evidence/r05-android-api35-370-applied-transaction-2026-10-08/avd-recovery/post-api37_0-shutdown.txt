@@ -1,0 +1,29 @@
+time_utc=2026-10-08T14:34:28+00:00
+action=adb -s emulator-5580 emu kill
+
+--- adb devices ---
+List of devices attached
+emulator-5554          device product:sdk_gphone64_arm64 model:sdk_gphone64_arm64 device:emu64a transport_id:18
+
+--- registered AVDs ---
+spinon_api35_applied_txn
+spinon_api35_compat
+spinon_api37_0_applied_txn
+spinon_api37_0_compat
+spinon_api37_1_compat16k
+spinon_api37_2
+spinon_api37_2_modern
+zl_poc
+
+--- AVD directory status ---
+spinon_api35_applied_txn: ini=present, data=present
+spinon_api35_compat: ini=present, data=missing
+spinon_api37_0_applied_txn: ini=present, data=present
+spinon_api37_0_compat: ini=present, data=missing
+spinon_api37_1_compat16k: ini=present, data=present
+spinon_api37_2: ini=present, data=missing
+spinon_api37_2_modern: ini=present, data=missing
+zl_poc: ini=present, data=missing
+
+--- qemu processes ---
+23588     1 08-13:34:57 /Users/yoonhb/Library/Android/sdk/emulator/qemu/darwin-aarch64/qemu-system-aarch64 -avd zl_poc -no-boot-anim

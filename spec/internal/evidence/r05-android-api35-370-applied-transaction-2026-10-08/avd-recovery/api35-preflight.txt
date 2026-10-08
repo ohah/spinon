@@ -1,0 +1,15 @@
+time_utc=2026-10-08T14:24:02Z
+serial=emulator-5580
+state=device
+boot_completed=1
+api=35
+api_full=
+fingerprint=google/sdk_gphone64_arm64/emu64a:15/AE3A.240806.043/12960925:userdebug/dev-keys
+page_size=4096
+abi=arm64-v8a
+avd_name_output=spinon_api35_applied_txn;OK;
+
+--- processes ---
+ 5067       00:23 /Users/yoonhb/Library/Android/sdk/emulator/qemu/darwin-aarch64/qemu-system-aarch64 -avd spinon_api35_applied_txn -ports 5580,5581 -gpu host -no-snapshot-load -no-snapshot-save -no-boot-anim -verbose
+ 6298       00:09 /bin/zsh -lc android_sdk_adb=/Users/yoonhb/Library/Android/sdk/platform-tools/adb\012preflight=spec/internal/evidence/r05-android-api35-370-applied-transaction-2026-10-08/avd-recovery/api35-preflight.txt\012for attempt in $(seq 1 180); do\012  if "$android_sdk_adb" -s emulator-5580 get-state >/dev/null 2>&1; then\012    boot_state="$("$android_sdk_adb" -s emulator-5580 shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')"\012    if [[ "$boot_state" == "1" ]]; then break; fi\012  fi\012  sleep 1\012done\012if ! "$android_sdk_adb" -s emulator-5580 get-state >/dev/null 2>&1; then\012  printf 'serial=emulator-5580\nstate=missing_after_180s\n' | tee "$preflight"\012  exit 1\012fi\012{\012  printf 'time_utc=%s\n' "$(date -u '+%Y-%m-%dT%H:%M:%SZ')"\012  printf 'serial=emulator-5580\n'\012  printf 'state=%s\n' "$("$android_sdk_adb" -s emulator-5580 get-state | tr -d '\r')"\012  printf 'boot_completed=%s\n' "$("$android_sdk_adb" -s emulator-5580 shell getprop sys.boot_completed | tr -d '\r')"\012  printf 'api=%s\n' "$("$android_sdk_adb" -s emulator-5580 shell getprop ro.build.version.sdk | tr -d '\r')"\012  printf 'api_full=%s\n' "$("$android_sdk_adb" -s emulator-5580 shell getprop ro.build.version.sdk_full | tr -d '\r')"\012  printf 'fingerprint=%s\n' "$("$android_sdk_adb" -s emulator-5580 shell getprop ro.build.fingerprint | tr -d '\r')"\012  printf 'page_size=%s\n' "$("$android_sdk_adb" -s emulator-5580 shell getconf PAGE_SIZE | tr -d '\r')"\012  printf 'abi=%s\n' "$("$android_sdk_adb" -s emulator-5580 shell getprop ro.product.cpu.abi | tr -d '\r')"\012  printf 'avd_name_output=%s\n' "$("$android_sdk_adb" -s emulator-5580 emu avd name | tr '\n' ';' | tr -d '\r')"\012  printf '\n--- processes ---\n'\012  ps -axo pid=,etime=,command= | awk '$0 ~ /qemu-system/ && $0 ~ /spinon_api35_applied_txn/ { print }'\012} > "$preflight"\012cat "$preflight"\012
+ 7103       00:00 awk $0 ~ /qemu-system/ && $0 ~ /spinon_api35_applied_txn/ { print }

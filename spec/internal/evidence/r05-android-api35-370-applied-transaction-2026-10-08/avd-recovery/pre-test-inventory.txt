@@ -1,0 +1,106 @@
+time_utc=2026-10-08T14:23:20Z
+ProductName:		macOS
+ProductVersion:		26.5.1
+BuildVersion:		25F80
+
+--- SDK and emulator ---
+Android emulator version 37.2.12.0 (build_id 16428233) (CL:N/A)
+Copyright (C) 2006-2024 The Android Open Source Project and many others.
+This program is a derivative of the QEMU CPU emulator (www.qemu.org).
+
+  This software is licensed under the terms of the GNU General Public
+  License version 2, as published by the Free Software Foundation, and
+  may be copied, distributed, and modified under those terms.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+
+--- mise tool versions ---
+rust 1.96.1
+node 24.20.0
+bun 1.4.2
+java temurin-17.0.19+10
+zig 0.16.0
+
+--- source and V8 ---
+300443b868d06a4fdc59a0fb72770df4edb57ca8
+7b50b62cb18f28617959e8452e2cd18195b38bcf
+7b50b62cb18f28617959e8452e2cd18195b38bcf
+
+--- installed system image metadata ---
+Pkg.Desc=System Image arm64-v8a with Google APIs.
+Pkg.Revision=9
+Pkg.Dependencies=emulator#33.1.24
+AndroidVersion.ApiLevel=35
+AndroidVersion.ExtensionLevel=13
+AndroidVersion.IsBaseSdk=true
+SystemImage.Abi=arm64-v8a
+SystemImage.TagId=google_apis
+SystemImage.TagDisplay=Google APIs
+SystemImage.GpuSupport=true
+Addon.VendorId=google
+Addon.VendorDisplay=Google Inc.
+
+Pkg.Desc=System Image arm64-v8a with Google APIs.
+Pkg.Revision=6
+Pkg.Dependencies=emulator#36.5.11
+AndroidVersion.ApiLevel=37.0
+AndroidVersion.ExtensionLevel=22
+AndroidVersion.IsBaseSdk=true
+SystemImage.Abi=arm64-v8a
+SystemImage.TagId=google_apis,ai_glasses_compatible
+SystemImage.TagDisplay=Google APIs,AI Glasses Compatible
+SystemImage.GpuSupport=true
+Addon.VendorId=google
+Addon.VendorDisplay=Google Inc.
+
+
+--- available storage ---
+Filesystem      Size    Used   Avail Capacity iused ifree %iused  Mounted on
+/dev/disk3s5   926Gi   801Gi    93Gi    90%    7.6M  978M    1%   /System/Volumes/Data
+
+--- ADB devices before test ---
+List of devices attached
+emulator-5554          device product:sdk_gphone64_arm64 model:sdk_gphone64_arm64 device:emu64a transport_id:18
+
+
+--- AVD manager before test ---
+Available Android Virtual Devices:
+    Name: spinon_api37_1_compat16k
+  Device: pixel_6 (Google)
+    Path: /Users/yoonhb/.android/avd/spinon_api37_1_compat16k.avd
+  Target: Google APIs (Google Inc.)
+          Based on: Android 17.0 ("CinnamonBun") Tag/ABI: google_apis/arm64-v8a
+  Sdcard: 512 MB
+
+The following Android Virtual Devices could not be loaded:
+    Name: spinon_api35_compat
+    Path: /Users/yoonhb/.android/avd/spinon_api35_compat.ini
+   Error: Corrupted AVD ini file: /Users/yoonhb/.android/avd/spinon_api35_compat.ini
+---------
+    Name: spinon_api37_2_modern
+    Path: /Users/yoonhb/.android/avd/spinon_api37_2_modern.ini
+   Error: Corrupted AVD ini file: /Users/yoonhb/.android/avd/spinon_api37_2_modern.ini
+---------
+    Name: spinon_api37_0_compat
+    Path: /Users/yoonhb/.android/avd/spinon_api37_0_compat.ini
+   Error: Corrupted AVD ini file: /Users/yoonhb/.android/avd/spinon_api37_0_compat.ini
+---------
+    Name: spinon_api37_2
+    Path: /Users/yoonhb/.android/avd/spinon_api37_2.ini
+   Error: Corrupted AVD ini file: /Users/yoonhb/.android/avd/spinon_api37_2.ini
+---------
+    Name: zl_poc
+    Path: /Users/yoonhb/.android/avd/zl_poc.ini
+   Error: Corrupted AVD ini file: /Users/yoonhb/.android/avd/zl_poc.ini
+
+--- AVD names before test ---
+spinon_api35_compat
+spinon_api37_0_compat
+spinon_api37_1_compat16k
+spinon_api37_2
+spinon_api37_2_modern
+zl_poc
