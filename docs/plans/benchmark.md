@@ -35,6 +35,8 @@ Android 진단 앱 자체의 지연을 조사할 때는 프레임워크 간 성�
 
 2026-10-08 Android API 36 ARM64 Emulator의 Perfetto session과 iPhone 17 Pro / iOS 26.2 Simulator의 Time Profiler를 각각 10쌍 on/off로 비교했다. Android trace 품질과 iOS sample/trace 구간 정합성은 원본에서 검사했다. 모든 쌍별 분포가 0을 가로질러 계측 오버헤드는 미확정이다. 이는 시뮬레이터 debug 진단이며 실기기·release 결과가 아니다. [실행 증거](../../spec/internal/evidence/r05-trace-overhead-simulators-2026-10-08.md).
 
+다음 R05.3은 입력 event timestamp를 해당 GPU revision의 플랫폼 표시 신호와 연결하기 전에 surface/API capability를 확인하는 계획이다. 현재 Android R08 `SurfaceView`는 Perfetto FrameTimeline 지원을 가정할 수 없고, API 36의 direct present timestamp도 보장되지 않으므로 capability 실패 시 지연값을 산출하지 않는다. iOS는 wgpu drawable identity/callback 접근성을 먼저 확인한다. 먼저 시뮬레이터에서 frame identity와 clock 변환을 검증하며 실기기 실행은 사용자가 요청한 뒤에만 한다. OS 표시 신호와 광학적 pixel 발광은 구분한다. [R05.3 입력→표시 계측 계획](../../plan/r05-input-to-presentation.md).
+
 - **사용자 지표:** 콜드 시작부터 첫 유효 화면까지, 입력 시각부터 변경된 픽셀이 표시될 때까지, 스크롤 프레임 시간 분포, 지연된 프레임 수, 성공한 입력 수.
 - **자원 지표:** 프로세스 메모리와 최고치, CPU 사용량, 앱 설치 크기와 JS/리소스 번들 크기. 크기 수치는 같은 ABI와 빌드 설정에서 비교한다.
 - **원인 분석 지표:** JS 실행, 트리 갱신, 레이아웃, GPU 장면 생성·제출 또는 플랫폼 뷰 적용 시간을 각 구현이 제공하는 범위에서 계측한다. 내부 단계의 이름과 경계가 다르면 한 열에서 직접 순위를 매기지 않는다.
