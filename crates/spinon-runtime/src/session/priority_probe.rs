@@ -9,6 +9,8 @@ use std::thread;
 use std::time::{Duration, Instant};
 
 #[cfg(any(target_os = "android", target_os = "ios", test))]
+mod saturation;
+#[cfg(any(target_os = "android", target_os = "ios", test))]
 mod stream;
 
 struct PendingPriorityProbe {
@@ -177,7 +179,14 @@ pub fn run_priority_probe() -> Result<String, String> {
 pub fn run_priority_fairness_probe() -> Result<String, String> {
     let (session, _) = RuntimeSession::new()?;
     let session = Arc::new(session);
-    match stream::run_priority_stream_probe(&session, 1) {
+    let result = match stream::run_priority_stream_probe(&session, 1) {
+        Ok(fairness_report) => match saturation::run_priority_saturation_probe(&session) {
+            Ok(saturation_report) => Ok(format!("{fairness_report} {saturation_report}")),
+            Err(error) => Err(error),
+        },
+        Err(error) => Err(error),
+    };
+    match result {
         Ok(report) => Ok(report),
         Err(error) => {
             abort_priority_probe(&session);

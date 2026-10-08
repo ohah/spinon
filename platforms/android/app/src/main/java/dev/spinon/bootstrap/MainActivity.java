@@ -256,14 +256,14 @@ public final class MainActivity extends Activity {
         root.addView(title);
 
         TextView description = new TextView(this);
-        description.setText("개발 전용 · 실제 V8 우선순위, FIFO, 높은 등급 유입 중 기아를 확인합니다");
+        description.setText("개발 전용 · 실제 V8 우선순위, FIFO, 큐 포화·거부·복구를 확인합니다");
         description.setTextColor(Color.rgb(170, 184, 207));
         description.setTextSize(13);
         description.setPadding(0, Math.round(8 * density), 0, Math.round(12 * density));
         root.addView(description);
 
         TextView status = new TextView(this);
-        status.setText("실제 V8 우선순위 검증 중…");
+        status.setText("실제 V8 우선순위·큐 포화 검증 중…");
         status.setTextColor(Color.rgb(97, 185, 255));
         status.setTextSize(15);
         root.addView(status);
@@ -286,8 +286,9 @@ public final class MainActivity extends Activity {
             Log.i(TAG, "SPINON_PRIORITY_PROBE " + result);
             runOnUiThread(() -> {
                 boolean passed = result.contains("status=0 priority_probe=PASS")
-                        && result.contains("status=0 priority_stream_probe=PASS");
-                status.setText(passed ? "실제 V8 우선순위·기아 검증 통과" : "실제 V8 우선순위·기아 검증 실패");
+                        && result.contains("status=0 priority_stream_probe=PASS")
+                        && result.contains("queue_saturation_probe=PASS");
+                status.setText(passed ? "실제 V8 우선순위·큐 포화 복구 검증 통과" : "실제 V8 우선순위·큐 포화 복구 검증 실패");
                 report.setText(result
                         .replace(" priority_probe=", "\npriority_probe=")
                         .replace(" blocker_status=", "\n차단 작업 status=")

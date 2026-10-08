@@ -1,5 +1,9 @@
 # 내부 인터페이스 명세
 
+## R06 큐 포화·복구
+
+- [구현 전 비교 모델](./evidence/r06-queue-saturation-precomparison-2026-10-08.md) · [작업 계획·구현 점검](../../plan/r06-queue-saturation.md) · [실제 V8 실행 근거](./evidence/r06-queue-saturation-2026-10-08.md)
+
 이 폴더에는 앱 작성자에게 공개하지 않는 Rust·C++·플랫폼 사이 호출 계약을 둡니다. 내부 ABI라도 호출자, 입력·출력, 소유권, 오류와 현재 한계를 기록합니다. 이 문서는 제품 API 지원 완료로 연결하지 않으며 상태 표시는 [공식 대장](../STATUS.md)을 따릅니다.
 
 | 문서 | 범위 | 상태 |
@@ -9,7 +13,7 @@
 | [0003 · 공통 문서·호스트 계약](0003-shared-host-contract.md) | DOM 호환 계층과 프레임워크 어댑터의 문서 모델, 소유권, 동기 변경과 이벤트 경계 | 코어·제한 façade 일부 내부 구현 · 나머지 제안 초안 |
 | [0004 · R06 스레드·소유권 위험 분석](0004-thread-ownership-risks.md) | Isolate·문서·콜백·revision·비동기 완료·종료 경계의 위험과 검증 후보 | 검토 초안 · R06 미완료 |
 | [0005 · V8 런타임 세션 실험](0005-v8-runtime-session.md) | 세션별 Isolate 소유 스레드, 용량 제한 우선순위 큐, 취소·종료 경계 | 실험 전용 · R06 미완료 · 우선순위와 제한된 종료 경합의 실제 V8 시뮬레이터 검증 통과 |
-| [0006 · JavaScript 작업 스케줄러](0006-js-task-scheduler.md) | Chromium 참고 우선순위 선택과 앱 작업 출처·프레임·취소 경계 | Android·iOS Simulator 실제 V8에서 1,087개 고우선순위 유입을 각 5회 통과 · 동일 입력의 strict-priority·aging·가중 순환 분석 모델 비교 · 무한 유입 보장과 제품 정책은 미결정 |
+| [0006 · JavaScript 작업 스케줄러](0006-js-task-scheduler.md) | Chromium 참고 우선순위 선택과 앱 작업 출처·프레임·취소 경계 | Android·iOS Simulator 실제 V8에서 1,087개 유입 및 큐 포화·거부·복구를 각 5회 통과 · 무한 유입 보장과 제품 역압력 정책은 미결정 |
 | [0007 · 내장 UA stylesheet 자원](0007-ua-stylesheet-resource.md) | 지원 HTML 기본 CSS 자원과 읽기 전용 FFI 인터페이스 | 내부 초안 · fixture cascade 연결됨 · 제품 runtime은 미연결 |
 | [0008 · C02 Vite·Rspack CSS 비교 모델](0008-css-bundler-c02.md) | CSS 산출·자원·청크·오류 위치·resolver 비교 조건 | 내부 실험 계약 · C02 미완료 |
 | [0009 · 레이아웃 엔진](0009-layout-engine.md) | S01 Tree 및 HostDocument 요소 snapshot, source·style·environment revision stamp, Taffy 프레임과 fixture stale-admission 경계 | 구현 초안 `0.3.0-draft` · 제한된 Flex subset · 제품 revision 관리자와 GPU queue stale 검사는 미구현 |
@@ -54,6 +58,7 @@
 - [R06 · Android 우선순위 유한 유입 검증](./evidence/r06-priority-fairness-android-2026-10-08.md) — Android 16 에뮬레이터에서 64개 대기 용량과 뒤늦은 높은 등급 입력 96개가 낮은 등급 작업을 지연시키는 유한 사례, 재현 명령·로그·캡처와 한계를 기록.
 - [R06 · Android·iOS Simulator 유한 유입 검증](./evidence/r06-priority-fairness-simulators-2026-10-08.md) — Android 16 ARM64 에뮬레이터와 iPhone 17 Pro / iOS 26.2 Simulator의 실제 V8에서 같은 유한 높은 등급 유입을 각각 5회 실행한 순서·FIFO·owner thread·로그·화면과 한계를 기록.
 - [R06 · 공정성 정책 후보 비교](./evidence/r06-priority-policy-comparison-2026-10-08.md) — strict-priority·aging·가중 순환 동일 입력 모델, Android·iOS Simulator 실제 V8의 1,087개 높은 등급 유입 반복, 로그·화면과 정책 결정 한계를 기록.
+- [R06 · 실제 V8 큐 포화·복구 검증](./evidence/r06-queue-saturation-2026-10-08.md) — Android·iOS Simulator 각 5회에서 64개 수락·65번째 `-5` 즉시 반환·거부 side effect 부재·취소 뒤 FIFO drain·재접수를 확인한 로그, 화면, 환경과 checksum.
 - `evidence/r06-priority-android-emulator-2026-09-30.log` · `evidence/spinon-r06-priority-android-2026-09-30.png` · `evidence/r06-priority-ios-simulator-2026-09-30.log` · `evidence/spinon-r06-priority-ios-simulator-2026-09-30.png` — 원본 로그와 화면 캡처.
 - `evidence/r06-ios-simulator-post-split-2026-09-30.log` · `evidence/spinon-r06-ios-post-split-2026-09-30.png` — 저장 공간 확보 뒤 현재 런타임 분리 코드로 수행한 iOS 26.2 시뮬레이터 검증 원본 로그와 화면.
 - `evidence/r06-android-queue-pressure-2026-09-30.log` — 무한 JavaScript 중 주입한 UI 탭, 접수된 이벤트, 플랫폼 대기열의 명시적 거부와 세션 종료 원본 로그(저장소 파일).

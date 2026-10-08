@@ -7,6 +7,7 @@ run_id="$(date -u +%Y%m%dT%H%M%SZ)-$$"
 result_dir="${SPINON_R06_FAIRNESS_OUTPUT_DIR:-$repo_root/build/spinon/priority-fairness-validation/$run_id}"
 pass_marker='status=0 priority_probe=PASS'
 stream_marker='status=0 priority_stream_probe=PASS capacity=64 initial_high=63 late_high=1024 accepted_high=1087 background_seq=2 background_order=1088'
+saturation_marker='queue_saturation_probe=PASS capacity=64 accepted=64 overflow_status=-5 overflow_returned_before_cancel=true overflow_queue_len=64 overflow_marker=not-run completed=64 recovered=PASS'
 probe_started=false
 probe_passed=false
 
@@ -81,7 +82,9 @@ passed=false
 for _ in $(seq 1 120); do
   adb -s "$android_serial" logcat -d -s SpinonBootstrap:V \
     | rg 'SPINON_PRIORITY_(PROBE|FAIRNESS_PROBE)' > "$android_log" || true
-  if rg -Fq "$pass_marker" "$android_log" && rg -Fq "$stream_marker" "$android_log"; then
+  if rg -Fq "$pass_marker" "$android_log" \
+    && rg -Fq "$stream_marker" "$android_log" \
+    && rg -Fq "$saturation_marker" "$android_log"; then
     passed=true
     break
   fi
@@ -103,6 +106,6 @@ adb -s "$android_serial" exec-out screencap -p > "$result_dir/android.png"
 shasum -a 256 "$android_log" "$result_dir/android.png" > "$result_dir/SHA256SUMS"
 probe_passed=true
 
-printf 'Android 우선순위·유입 검증 통과\n'
+printf 'Android 우선순위·유입·큐 포화 및 복구 검증 통과\n'
 cat "$android_log"
 printf '로그와 캡처: %s\n' "$result_dir"
