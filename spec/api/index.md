@@ -16,7 +16,7 @@ title: 지원 완료 API
 
 | 분류 | 앞으로 게시할 명세 | 현재 상태 |
 | --- | --- | --- |
-| HTML 요소·이벤트 | 태그, 속성, 기본 동작, 입력·접근성 의미 | 제안 |
+| HTML 요소·이벤트 | 태그, 속성, 기본 동작, 입력·접근성 의미 · [HTML 요소 인벤토리와 매핑 후보](../0003-web-surface.md#html-요소-인벤토리와-매핑-후보) · [UI 트리·이벤트 계약](../0002-ui-tree-events.md) | 제안 |
 | DOM 호환 API | `Document`·`Node`·`Element`의 제한된 호출 표면과 웹 차이 | 제안 · [명세](../0007-dom-compatibility.md) |
 | CSS | 선택자, 속성, 값, 단위, 웹과 다른 점 | 제안 |
 | JavaScript 호스트 API | `fetch`·`Request`·`Response`, 타이머, 저장소 등 V8 밖에서 제공하는 기능 | 제안 · [웹 표면 명세](../0003-web-surface.md) |
