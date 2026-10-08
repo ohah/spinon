@@ -1,6 +1,6 @@
 # R05.3 · Android 실기기 비동기 present fence 신호 확인 계획
 
-**상태:** debug 진단 구현 및 Android 16.1 실기기 실행 완료 · 기본 debug 경로 부정 대조와 release runtime 미실행 · R05.3 제품 계측 미완료
+**상태:** debug 진단 구현 및 Android 16.1 실기기 synthetic 실행 완료 · 기본 debug 경로 부정 대조와 release runtime 미실행 · release build는 V8 source checkout 부재로 중단 · R05.3 제품 계측 미완료
 **상위 계획:** [입력→표시 신호 상관 계측](r05-input-to-presentation.md) · [R05 상태 대장](../spec/STATUS.md)
 
 ## 목적
@@ -70,3 +70,84 @@
 - 3개 독립 process block의 환경·digest·원본 logcat·screenshot·입력 protocol·checksum.
 - immediate result와 bounded async wait result를 request 단위로 조인한 요약과 실패/누락 수.
 - [상태 대장](../spec/STATUS.md) 및 [R05.3 계획](r05-input-to-presentation.md)의 미완료 경계를 갱신한다. 실기기 synthetic run만으로 실제 touch 또는 제품 latency를 완료 처리하지 않는다.
+
+## 후속 검증 계획 · debug 기본 경로와 release 격리
+
+2026-10-09 재검증에서 `mise exec -- env ANDROID_HOME=... ANDROID_SDK_ROOT=... ./gradlew --no-daemon :app:assembleRelease`로 Android SDK 경로 문제는 해소했으나 `:app:prepareSpinonBootstrap`가 고정 V8 source tree가 없어 실패했다. 작업 트리에 V8 source가 없음을 확인했으며 `tools/v8/checkout.sh`는 대규모 외부 source/dependency download와 생성 파일 변경을 시작할 수 있어 자동 실행하지 않았다. 따라서 release variant build·설치·runtime은 미실행으로 유지한다. [빌드 로그](../spec/internal/evidence/r05-android-release-isolation-2026-10-09/gradle-release-sdk-configured.log). 같은 날 debug APK를 실기기에서 다시 실행한 synthetic 입력 결과는 [별도 재검증 보고서](../spec/internal/evidence/r05-android-physical-input-join-2026-10-09/physical-retest/README.md)에 기록했다.
+
+**상태:** 계획 수정 후 20관점 재검토 완료 · debug 기본 bootstrap·R08 probe-off 대조 실행 완료 · release runtime은 V8 source checkout 부재로 미실행
+
+### 범위와 비교 조건
+
+비교 대상은 같은 source/artifact의 네 조건이다. 이 앱의 기본 `MainActivity`는 R08 화면을 만들지 않고 bootstrap JS fixture만 실행하므로, 기본 실행과 R08 GPU 시각 대조를 별도 조건으로 둔다.
+
+1. **debug 기본 bootstrap:** R05/R08 intent extra 없이 새 process를 시작한다. `SPINON_BOOTSTRAP_EXECUTION`과 `SPINON_BOOTSTRAP_RESULT`가 보여야 하고 `SPINON_R05_` 표식은 없어야 한다. 이 fixture는 화면 render report를 표시하지 않아 흰 화면이 정상이며, GPU 탭이 가능하다고 판정하지 않는다.
+2. **debug R08 probe-off 시각 대조:** `spinon_r08=true`만 전달하고 모든 R05 extra를 생략한다. WGPU surface가 ready인 log와 화면을 확인한 뒤 synthetic ADB tap 한 번에 GPU 도형 색상이 바뀌어야 하며 `SPINON_R05_` 표식이 없어야 한다. 이는 R08 개발 fixture의 probe-off 대조이지 앱 기본 실행이나 물리 입력 검증이 아니다.
+3. **release 기본 실행:** release variant를 시작해 bootstrap 결과가 나타나고 R05 fence-wait 표식이 없어야 한다.
+4. **release에 debug intent 요청:** `spinon_r05_async_fence_wait=true`를 전달한다. release stub가 `reason=debug_only`로 거부하고 Activity를 닫아야 한다. 이 경로는 release production signing·배포 가능성 검증이 아니다.
+
+네 조건을 각각 새 process/PID로 분리한다. 모든 ADB 입력은 synthetic 별도 그룹이며 physical input 또는 성능 표본으로 취급하지 않는다. release APK는 로컬 debug keystore로만 서명해 설치 smoke를 수행할 수 있으며, 그러면 **release build variant의 로컬 signed smoke**로만 보고하고 배포 서명 검증으로 부르지 않는다. 기존 debug APK는 현재 공식 APK hash와 일치하는 사본을 복원용으로 보존한다. `mise exec --`에서 고정된 JDK/Gradle 도구를 사용한다.
+
+### 실행과 복구
+
+- 시작 전에 공식 source tree SHA, 설치된 debug APK SHA, 연결된 Android 기기 1대, 화면 설정·foreground를 기록한다.
+- `mise exec --`를 통해 release variant를 빌드한다. 서명·설치가 필요한 경우 test-only 복사본을 local debug key로 서명하고 unsigned 원본과 signed APK를 각각 hash한다.
+- debug 기본 bootstrap, debug R08 probe-off, release 기본 실행, release의 명시적 debug-only 요청을 새 PID로 분리한다. PID-filtered logcat을 저장하고 각 모드에서 기대 표식이 있는지와 없는지를 모두 확인한다. global logcat buffer를 비우지 않는다.
+- release 모드에서 debug flag가 거부된 뒤 Activity가 화면에서 끝났는지 확인한다. Android가 idle process를 남기는 것은 실패로 간주하지 않고 crash/ANR과 구분한다. 이후 원래 공식 debug APK를 설치하고 Spinon을 force-stop, Chrome foreground 복귀, 화면 설정 전후 동일성을 확인한다.
+- 이 smoke는 R05 worker 기본 경로 격리만 확인한다. release 성능·스토어 signing·R05.3 완료는 주장하지 않는다.
+
+### 계획 적대 검토 · 독립 실패 관점 20개
+
+| # | 실패 관점 | 계획의 방어·판정 |
+|---:|---|---|
+| 1 | debug 기본 실행에 이전 intent extra가 남음 | 매 조건을 새 process와 명시적인 intent extra 집합으로 시작한다. |
+| 2 | 단순 앱 시작 실패를 marker 부정 대조 통과로 처리 | Activity launch 성공·PID·정상 기본 화면을 먼저 확인한다. |
+| 3 | release source set이 아닌 debug APK를 release로 오인 | variant, APK 산출 경로, manifest, SHA-256을 모두 기록한다. |
+| 4 | release 로그 부재를 `debug_only` 거부로 간주 | 요청 경로에서는 stub의 명시적인 `reason=debug_only` 로그를 합격 조건으로 둔다. |
+| 5 | intent key 오타로 release extra가 전달되지 않음 | 실제 명령의 key와 debug source `MainActivity` 수신 key를 대조한다. |
+| 6 | release 거부 종료를 crash로 오인 | process exit, crash buffer, ANR 및 `debug_only` marker를 함께 분류한다. |
+| 7 | debug-only 거부 뒤 Activity가 남아 intent가 재사용되거나 화면이 열린 채 유지 | Activity가 finish되어 전면 화면에서 사라졌는지 확인한다. Android idle process는 남을 수 있어 process 종료를 합격 조건으로 요구하지 않는다. |
+| 8 | release stub가 async worker를 참조해 class-load 오류 발생 | release default launch와 debug-only request를 분리 실행하고 linker/class verification 오류를 검사한다. |
+| 9 | Gradle daemon이 다른 JDK로 빌드 | `mise exec -- java -version` 및 Gradle runtime을 evidence에 기록한다. |
+| 10 | release build 과정이 고정 V8 artifact/source를 바꿈 | 시작 전 worktree status와 V8 revision을 기록하고 generated input diff를 검사한다. |
+| 11 | unsigned APK를 설치 실패 후 release runtime 성공으로 과장 | unsigned build 결과와 설치 가능한 signed test copy를 분리 기록한다. |
+| 12 | local debug signing을 production signing으로 오인 | 서명 key를 test-only라 명시하고 production release signing은 검증 범위 밖으로 둔다. |
+| 13 | release 서명 mismatch로 기존 debug 앱 덮어쓰기 실패 | install 전에 현재 package signer와 test APK signer compatibility를 확인하고 debug APK 사본을 복원 가능하게 보존한다. |
+| 14 | test package 데이터/기존 debug 앱을 불필요하게 제거 | `adb install -r`를 우선하고 uninstall은 하지 않는다. 설치 충돌이면 중단·기록한다. |
+| 15 | renderer surface가 준비되기 전에 tap을 전송 | release 화면·surface ready를 확인한 뒤 synthetic tap 한 건만 보낸다. |
+| 16 | R05 marker 필터가 main/debug/release tag 차이를 놓침 | package PID로 전체 app log를 수집한 뒤 모든 `SPINON_R05_` 접두사와 전용 start/result를 검사한다. |
+| 17 | debug worker marker가 다른 PID의 stale log에 섞임 | PID-filtered logcat과 process start time을 이용하고 global buffer를 지우지 않는다. |
+| 18 | Activity finish 뒤의 정상 idle process를 crash/ANR로 오인 | `dumpsys activity`의 resumed/visible Activity, crash buffer와 ANR을 따로 확인한다. process 생존만으로 crash를 판정하지 않는다. |
+| 19 | device settings·Chrome 복귀 누락 | 밝기·timeout·stay-on·refresh·focus를 before/after 비교하고 debug APK 복원 뒤 Chrome을 foreground로 연다. |
+| 20 | release smoke 결과로 성능·배포 안전·R05.3 완료 주장 | variant isolation smoke로만 기록하며 production key·release performance·physical input·VSync/scanout은 미검증으로 남긴다. |
+
+20개 계획 관점을 각각 검토했다. 이 표는 runtime 결과가 아니며 실행 후에는 실제 APK·설치·process·log를 대상으로 별도의 새로운 20개 검토를 작성한다.
+
+### 계획 수정 후 재검토 · 독립 실패 관점 20개
+
+기본 bootstrap과 R08 visual fixture를 한 화면으로 가정했던 전제를 실제 MainActivity 경로와 실기기 화면으로 대조한 뒤 계획을 고쳤다. 아래 재검토는 수정된 네 조건 각각의 오분류 경계를 다룬다.
+
+| # | 실패 관점 | 수정된 방어·판정 |
+|---:|---|---|
+| 1 | 이전 Activity intent extra가 새 기본 실행에 잔류 | 매 시나리오 force-stop 후 새 PID에서 전달한 extra를 명시적으로 기록한다. |
+| 2 | 기본 bootstrap 흰 화면을 앱 launch 실패로 오판 | `SPINON_BOOTSTRAP_EXECUTION`과 fixture result를 확인하며 이 화면에서 시각 UI를 기대하지 않는다. |
+| 3 | Activity 생존만으로 bootstrap JS 실행을 성공 처리 | worker 실행 marker와 `SPINON_BOOTSTRAP_RESULT` 모두를 요구한다. |
+| 4 | R08 probe-off 실행에 fence flag가 암묵적으로 포함 | `spinon_r08=true` 외 R05 extra가 없는 시작 명령과 `SPINON_R05_` marker 부재를 함께 확인한다. |
+| 5 | R08 surface가 준비되기 전 입력 | `SPINON_R08_WGPU=ready`, surface 크기, 전경 Activity를 확인한 뒤 한 tap을 보낸다. |
+| 6 | 보이는 도형과 실제 GPU backend가 다름 | 화면 문구와 PID log의 backend/device marker를 맞춘다. |
+| 7 | ADB tap을 물리 touch로 오분류 | synthetic을 명시하고 direct touchscreen raw event가 없으면 physical sample을 0으로 둔다. |
+| 8 | R05 marker 부재가 다른 PID를 필터해 생긴 거짓 음성 | launch 전에 PID를 확보해 process log 전체를 수집한다. |
+| 9 | 기본 모드에서 이전 debug APK가 실행 | 기기 설치 APK hash를 공식 baseline과 대조한다. |
+| 10 | 흰 화면 캡처를 render pass 통과로 과장 | 기본 bootstrap 결과는 DOM fixture 처리만 증명하고 화면 pixel rendering 결과는 증명하지 않는다고 고정한다. |
+| 11 | release build 실패를 release runtime 통과로 오인 | variant build가 실제 성공하기 전에는 설치·런타임 결과를 쓰지 않는다. |
+| 12 | V8 source checkout 부재를 SDK 문제로 혼동 | SDK 경로와 Gradle preBuild 실패 지점을 각각 기록한다. |
+| 13 | 검증 중 임의 V8 checkout/download로 disk·shared build 상태 변경 | pinned checkout이 없으면 원본을 생성·덮어쓰지 않고 release 실행을 보류한다. |
+| 14 | release debug-only 요청 key가 source와 불일치 | intent key를 debug MainActivity와 release stub에서 교차 확인한다. |
+| 15 | release stub 부재를 로그 없음으로 추정 | 요청 경로에서 `reason=debug_only`의 명시 marker를 합격 조건으로 둔다. |
+| 16 | release finish를 process 종료로만 판정 | visible/resumed Activity 부재를 확인하고 정상 idle process는 허용한다. |
+| 17 | 서명 충돌 해결을 위해 기존 앱 데이터를 삭제 | signer 확인 및 `install -r`만 허용하고 uninstall은 하지 않는다. |
+| 18 | 테스트 종료 뒤 밝기·refresh·Chrome 상태가 변함 | 화면 설정과 focus를 전후 기록하고 Spinon을 종료해 Chrome을 복귀시킨다. |
+| 19 | 앱 crash/ANR 확인 범위를 전체 OS log로 과장 | PID-filtered app log 및 Activity 상태에서 확인한 범위만 보고한다. |
+| 20 | 두 debug 대조만으로 release 격리 또는 R05.3 완료 선언 | debug 두 조건만 부분 통과로 기록하고 release 두 조건·physical input·VSync/scanout은 미완료로 유지한다. |
+
+수정된 계획의 20개 관점을 재검토했다. 실행 결과는 [Android 실기기 debug isolation 보고서](../spec/internal/evidence/r05-android-release-isolation-2026-10-09/README.md)에 별도로 기록하고 새 runtime 관점 검토를 붙인다.

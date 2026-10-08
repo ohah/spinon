@@ -1,0 +1,28 @@
+Device: Samsung SM-S731N · Android 16 / SDK 36 / SDK_INT_FULL 36.1
+Physical size: 1080x2340
+Physical density: 450
+Display mode:
+modeId 2
+renderFrameRate 60.0
+supportedRefreshRates [120.00001, 60.0]
+rotation 0
+state ON
+renderFrameRate 60.0
+supportedRefreshRates [120.00001, 60.0]
+rotation 0
+state ON
+renderFrameRate 60.0
+Thermal:
+	Temperature{mValue=0.0, mType=2, mName=SUBBAT, mStatus=0}
+	Temperature{mValue=38.7, mType=0, mName=AP, mStatus=0}
+	Temperature{mValue=34.9, mType=12, mName=CP, mStatus=0}
+	Temperature{mValue=39.0, mType=5, mName=PA, mStatus=0}
+Power/settings:
+  mWakefulness=Awake
+mWakefulness=1
+248
+0
+30000
+3
+  mCurrentFocus=Window{d785d50 u0 dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity}
+  mFocusedApp=ActivityRecord{53168688 u0 dev.spinon.bootstrap/.MainActivity t5481}
