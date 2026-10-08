@@ -68,6 +68,7 @@
 - [R05 · Perfetto `gfx` 설정 오류 분석](./evidence/r05-perfetto-gfx-setup-errors-2026-10-07.md) — 설정 한 줄 최소차이 캡처로 37개 오류가 AVD에 없는 vendor GPU/display ftrace event임을 분류하고 generic trace 데이터와 계측 한계를 구분.
 - [R05.3 · Android API·16KB 호환성 실행](./evidence/r05-android-api-compatibility-2026-10-08.md) — API 35·37.0·37.1 AVD fence 결과와 API fallback, WGPU adapter 미제공 경로, 수정 linker flags 적용 전 기존 APK의 GNU_RELRO 미정렬을 기록.
 - [R05.3 · Android 16KB 재빌드 및 후속 구현 공격 검토](./evidence/r05-android-16kb-rebuild-2026-10-08.md) — 고정 V8 checkout·Android ARM64 재빌드, ELF/ZIP 정렬, API 37.2 16KB AVD 로더 결과와 checkout 설정 보호 검토를 기록. R05.3 전체는 미완료.
+- [R05.3 · Android callback 실패 주입](./evidence/r05-android-callback-failure-injection-2026-10-08.md) — API 37.2 실제 Handler timeout·취소·100회 경합·executor 포화·60초 idle, API 36 GLES fallback, Release compile 및 별도 구현 실패 관점 검토를 기록. Android API 전체·iOS device callback·실기기·제품 표시 지연은 미완료.
 - [R13 · 플랫폼 생명주기·GPU 복구](./evidence/r13-platform-gpu-recovery-2026-09-29.md) — 회전·백그라운드·오류 주입·입력 복구의 로그와 화면 캡처.
 - [S02 · Taffy 레이아웃 연결](./evidence/s02-taffy-layout-2026-09-30.md) — Chromium 기준 fixture, Taffy·기존 행/열 엔진의 좌표 비교와 한계.
 - [S04.4 · Android GPU surface](./evidence/s04-android-gpu-surface-2026-10-03.md) — Android API 36 ARM64 emulator의 Vulkan llvmpipe surface 제출, 회전별 generation, sRGB 표본 readback과 화면 캡처. 실제 hardware GPU·실기기는 미검증.

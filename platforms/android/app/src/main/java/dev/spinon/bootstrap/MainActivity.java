@@ -178,6 +178,10 @@ public final class MainActivity extends Activity {
             showShutdownProbe();
             return;
         }
+        if (getIntent().getBooleanExtra("spinon_r05_callback_faults", false)) {
+            R05PresentFenceFailureFixture.start(this);
+            return;
+        }
         if (getIntent().getBooleanExtra("spinon_r05_queue_saturation", false)) {
             TextView status = new TextView(this);
             status.setText("R05 표시 신호 callback 대기열 포화 검증 중…");
