@@ -1,6 +1,6 @@
 # 내부 설계 0006 · JavaScript 작업 스케줄러
 
-**상태:** Chromium식 우선순위 선택 기준을 R06 실험 런타임에 반영 · **분리 후 테스트:** 저장 공간 확보 뒤 Bun 1개·Rust 33개 통과 · **플랫폼 빌드:** Android ARM64와 iOS Simulator 성공 · **시뮬레이터 실행:** Android 16 에뮬레이터와 iPhone 17 Pro / iOS 26.2 시뮬레이터에서 실제 V8 혼합 우선순위 단일 배치 및 등급별 FIFO, 취소·대기 이벤트·owner thread를 확인. iOS heartbeat·세션 재생성 확인 · **Android 실기기:** Android 16/API 36 ARM64 한 기기에서 실제 V8 우선순위 3회, 긴 JS 대기·취소 5회, `simpleperf --trace-offcpu` 5회 확인 · **Android·iOS Simulator 유한 유입:** 실제 V8 우선순위 유입 진단을 각 5회 실행해 두 플랫폼 모두 background 작업이 159개 user-blocking 뒤 실행됨. [검증 기록](evidence/r06-priority-fairness-simulators-2026-10-08.md) · **미검증:** 무한 유입 기아 및 공정성 정책 비교, iOS 실기기, release 성능 · **공개 API:** 아님 · **제품 지원:** 아님
+**상태:** Chromium식 우선순위 선택 기준을 R06 실험 런타임에 반영 · **분리 후 테스트:** 저장 공간 확보 뒤 Bun 1개·Rust 33개 통과 · **플랫폼 빌드:** Android ARM64와 iOS Simulator 성공 · **시뮬레이터 실행:** Android 16 에뮬레이터와 iPhone 17 Pro / iOS 26.2 시뮬레이터에서 실제 V8 혼합 우선순위 단일 배치 및 등급별 FIFO, 취소·대기 이벤트·owner thread를 확인. iOS heartbeat·세션 재생성 확인 · **Android 실기기:** Android 16/API 36 ARM64 한 기기에서 실제 V8 우선순위 3회, 긴 JS 대기·취소 5회, `simpleperf --trace-offcpu` 5회 확인 · **대기열 유지 유입:** 실제 V8에서 각 시뮬레이터마다 1,087개 user-blocking 작업이 먼저 실행되는 유한 입력을 5회 확인. 결정론적 정책 모델은 strict priority에서 4,096회 안에 background 0회, aging 17번째, 8:4:1 순환 13번째 background 선택을 확인. [정책 비교와 교차 플랫폼 근거](evidence/r06-priority-policy-comparison-2026-10-08.md) · **미검증:** 무한 유입 공정성 보장·제품 정책 선택, iOS 실기기, release 성능 · **공개 API:** 아님 · **제품 지원:** 아님
 
 이 문서는 앱 JavaScript 작업의 우선순위를 설계하기 위한 내부 기준이다. 웹의 작업 스케줄러 우선순위 이름과 Chromium의 기본 큐 선택 규칙을 참고한다. Blink의 내부 큐 구성이나 시점별 정책을 복제한다고 약속하지 않는다. 제품 API와 구현 상태의 원본은 각각 `spec/` 문서와 [상태 대장](../STATUS.md)이다.
 
@@ -14,7 +14,7 @@
 
 ## Chromium에서 가져온 기본 큐 규칙
 
-R06 런타임 세션은 한 Isolate의 명령을 세 개의 FIFO에 넣는다. 작업 경계마다 가장 높은 등급 중 대기 작업 하나를 꺼내며, 같은 등급에서는 먼저 접수한 작업을 먼저 실행한다. 실행을 시작한 JavaScript는 선점하지 않는다. 상위 우선순위가 계속 들어오면 하위 우선순위가 굶을 수 있으며 일반적인 aging이나 기아 방지 정책은 두지 않는다. 이 규칙은 Chromium `TaskQueueSelector`의 우선순위 선택과 같은 우선순위의 enqueue 순서 유지에서 가져왔다.
+R06 런타임 세션은 한 Isolate의 명령을 세 개의 FIFO에 넣는다. 작업 경계마다 가장 높은 등급 중 대기 작업 하나를 꺼내며, 같은 등급에서는 먼저 접수한 작업을 먼저 실행한다. 실행을 시작한 JavaScript는 선점하지 않는다. 상위 우선순위가 계속 들어오면 하위 우선순위가 굶을 수 있으며 일반적인 aging이나 기아 방지 정책은 두지 않는다. 이 규칙은 Chromium `TaskQueueSelector`의 현재 우선순위 선택과 같은 우선순위의 enqueue 순서 유지에서 가져왔다. 별도의 후보 비교는 [R06 공정성 정책 비교 모델](evidence/r06-priority-policy-comparison-2026-10-08.md)에 두며 제품 큐 정책은 바꾸지 않는다.
 
 현재 기본 매핑은 실험용 `spinon-ffi` ABI가 적용하고, 작업 큐와 세션 실행은 `spinon-runtime`이 소유한다. 기존 `dispatch`는 사용자 입력 핸들러로 간주해 `user-blocking`, 기존 `eval`은 일반 앱 작업으로 간주해 `user-visible`에 넣는다. 내부 호출자는 실험용 `*_with_priority` C ABI에서 세 등급 중 하나를 직접 고를 수 있다. 실제 타이머·네트워크·프레임워크 작업 출처의 매핑과 앱 공개 스케줄러 API는 아직 없다.
 
@@ -24,7 +24,7 @@ Chromium selector에 있는 지연 작업 대 즉시 작업의 제한된 starvat
 
 웹 Prioritized Task Scheduling 명세는 `user-blocking`·`user-visible`·`background`와 `scheduler.postTask()`·`scheduler.yield()`·취소/우선순위 신호 모델을 제안한다. 확인일 기준 WICG Community Group 초안이며 W3C 표준 트랙 문서는 아니다. 이 어휘는 Spinon의 설계 기준일 뿐, Spinon이 해당 API를 지원한다는 선언은 아니다.
 
-Chromium의 기본 `TaskQueue` 문서는 우선순위가 낮은 큐에 일반적인 기아 방지가 없으며, 높은 등급의 지속적인 작업이 낮은 등급을 막을 수 있다고 명시한다. `TaskQueueSelector`는 활성 등급 중 높은 등급부터 선택하고 같은 등급에서 enqueue 순서를 유지한다. 별도로 지연 작업과 즉시 작업 사이에는 제한된 starvation 보정이 있지만, 이는 모든 우선순위에 대한 공정성 보장이 아니다. Blink는 입력·컴포지터 상황에 맞춘 정책을 위에 추가한다. 이번 R06 기본 구현은 일반 우선순위 선택만 가져오며 Blink 동적 정책은 가져오지 않는다.
+Chromium의 현행 `TaskQueue` 문서는 우선순위가 낮은 큐에 일반적인 기아 방지가 없으며, 높은 등급의 지속적인 작업이 낮은 등급을 막을 수 있다고 명시한다. 현재 `TaskQueueSelector`는 활성 등급 중 가장 높은 등급을 고르고, 같은 등급에서는 가장 오래된 작업을 고른다. selector의 starvation 카운터는 같은 등급의 지연 작업이 즉시 작업을 계속 밀어내는 경우를 제한하며 우선순위 등급 사이의 aging은 아니다. [과거 selector revision](https://chromium.googlesource.com/chromium/src/+/aa595e0ebb8c5ecd64e1598bf1359f0cf076b818/base/task/sequence_manager/task_queue_selector.h)에는 우선순위 starvation score가 있었으므로 현행 동작과 구분한다. Blink는 입력·컴포지터 상황에 맞춘 정책을 위에 추가한다. 이번 R06 기본 구현은 일반 우선순위 선택만 가져오며 Blink 동적 정책은 가져오지 않는다.
 
 따라서 아래를 분리한다.
 
@@ -54,7 +54,7 @@ Chromium의 기본 `TaskQueue` 문서는 우선순위가 낮은 큐에 일반적
 ## 미결정 설계 목록
 
 1. **공개 JS API와 프레임워크 연결:** `scheduler.postTask()`·`scheduler.yield()`·`TaskController`/`TaskSignal`을 제공할지, 기존 `MessageChannel`·타이머 기반 연결만 둘지, 앱 내부 모듈 API로 한정할지. React `scheduler`가 실제로 요구하는 host primitive는 지원 버전을 고정한 뒤 번들 산출물로 확인한다.
-2. **제품 기본값과 우선순위 변경:** R06 FFI 어댑터의 기본값은 `dispatch=user-blocking`, `eval=user-visible`이다. 제품의 기본값, 동적 priority 변경, 일반 기아 방지 도입 여부는 미정이다. 현 R06 기준은 상위 작업이 지속되면 하위 작업이 굶을 수 있게 둔다.
+2. **제품 기본값과 우선순위 변경:** R06 FFI 어댑터의 기본값은 `dispatch=user-blocking`, `eval=user-visible`이다. 제품의 기본값, 동적 priority 변경, 일반 기아 방지 도입 여부는 미정이다. 실제 유한 유입과 분석 모델은 현재 strict-priority의 기아 가능성을 보여 주지만 허용 대기시간이나 공정성 보장 기준을 결정하지 않는다.
 3. **작업 출처 매핑:** 터치·키 입력, 접근성 활성화, 프레임워크 렌더, 네트워크 완료, 타이머, 네이티브 모듈 응답을 어떤 등급과 task source로 넣을지.
 4. **실행기 구조:** Isolate마다 전용 OS 스레드를 둘지, 여러 Isolate를 고정된 worker 스레드에 배치할지. 풀을 쓰면 Isolate를 한 worker에 고정해도 되는지, head-of-line blocking·공정성·메모리·종료 격리를 어떻게 측정할지.
 5. **큐와 역압력:** R06 런타임의 대기 총량은 실험상 최대 64개이며 세 등급이 용량을 공유한다. 등급별 예약 슬롯, 플랫폼 adapter와의 단일 접수 경계, 포화 오류, 거부·병합·폐기 기준은 미정이다. 여러 단계의 큐가 각각 무제한 증가하지 않게 해야 한다.
@@ -70,11 +70,15 @@ Chromium의 기본 `TaskQueue` 문서는 우선순위가 낮은 큐에 일반적
 
 2026-10-08 Android 16/API 36 실기기에서 Perfetto `linux.ftrace` 없이 `atrace sched` 이벤트를 직접 기록했다. 독립 캡처 5개 모두에서 JS owner 대상 `spinon-platform-call` wake 요청이 관측됐고, 앱 표식 캡처는 scheduler enqueue와 요청 순서를 연결했다. 이는 Rust 큐 삽입 뒤 `Condvar::notify_one()` 및 owner의 빈 큐 `Condvar::wait()`와 일치한다. 두 trace에서는 V8 DefaultWorker의 추가 wake도 관측됐지만 내부 callsite는 미확정이다. owner wake 후 첫 CPU 실행은 관측별 15–691µs였으며 ATrace를 켠 소표본이므로 성능 기준으로 쓰지 않는다. 취소 trace에서는 실행 중인 owner가 V8 종료 요청 뒤 `status=-8`로 반환해 큐 대기로 복귀했고, 해당 취소 호출 뒤 owner 대상 scheduler wake는 없었다. 세부 이벤트와 한계는 [Android 실기기 wake 원인 근거](evidence/r06-android-physical-scheduler-2026-10-08.md#android-atrace-직접-wake-원인)에 둔다.
 
-분리 전에는 가짜 V8 혼합 우선순위 테스트에서 실행 순서를 확인했다. 분리 후에는 `mise exec -- bun run test`(Bun 1개·Rust 33개), Android ARM64 debug APK 빌드와 Android 16 에뮬레이터 취소·대기 이벤트 실행, iOS Simulator 빌드와 iPhone 17 Pro 자동 시나리오를 통과했다. 후속 실제 V8 단일 배치 검증에서 두 시뮬레이터 모두 `user-blocking` → `user-visible` → `background` 순서와 각 등급 FIFO를 통과했다. iOS에서 취소·대기 이벤트, heartbeat, owner thread 일치와 세션 재생성도 확인했다. Android 16/API 36 ARM64 실기기에서는 실제 V8 우선순위 probe를 3회 통과했고, 긴 동기 JavaScript 평가 중 입력·취소와 dispatch 대기를 5회 기록했다. 추가 `simpleperf --trace-offcpu` 5회에서 owner thread의 101개 schedule-out→schedule-in 구간은 p50 15.117µs, p95 69.102µs, 최대 730.976µs였다. 별도 한 번은 `/proc/<pid>/task/<tid>/schedstat`을 읽어 8.8초 동안 CPU 시간 8.711520849초, runqueue 대기 0.228829ms 증가를 교차 확인했다. 이 누적 카운터는 개별 스케줄 원인을 나타내지 않으며 off-CPU 구간 표본과 합치지 않았다. 같은 긴 JS 조건의 dispatch queue residence p50 1,100,059µs보다 OS off-CPU 구간이 짧아 이 실험에서 OS 재스케줄 대기는 긴 JS 이벤트 대기의 주원인이 아니었다. Android 16/API 36 ARM64 에뮬레이터와 iPhone 17 Pro / iOS 26.2 시뮬레이터에서 유한한 높은 등급 유입을 각각 5회 실행했다. 두 플랫폼에서 먼저 접수한 `background`가 나중에 접수된 `user-blocking` 159개 뒤 마지막에 실행됐으며, queue residence는 각각 Android 501,074–584,811µs, iOS 476,795–477,286µs였다. 이 값은 성능 비교값이 아니며 무한 유입 기아나 공정성 정책도 검증하지 않는다. 상세 결과는 [R06 검증 기록](evidence/r06-task-scheduler-2026-09-30.md), [실제 V8 우선순위 시뮬레이터 검증](evidence/r06-priority-simulators-2026-09-30.md), [Android 실기기 스케줄링 계측](evidence/r06-android-physical-scheduler-2026-10-08.md), [Android 우선순위 유입 검증](evidence/r06-priority-fairness-android-2026-10-08.md), [교차 플랫폼 유입 검증](evidence/r06-priority-fairness-simulators-2026-10-08.md)에 둔다.
+분리 전에는 가짜 V8 혼합 우선순위 테스트에서 실행 순서를 확인했다. 분리 후에는 `mise exec -- bun run test`(Bun 1개·Rust 33개), Android ARM64 debug APK 빌드와 Android 16 에뮬레이터 취소·대기 이벤트 실행, iOS Simulator 빌드와 iPhone 17 Pro 자동 시나리오를 통과했다. 후속 실제 V8 단일 배치 검증에서 두 시뮬레이터 모두 `user-blocking` → `user-visible` → `background` 순서와 각 등급 FIFO를 통과했다. iOS에서 취소·대기 이벤트, heartbeat, owner thread 일치와 세션 재생성도 확인했다. Android 16/API 36 ARM64 실기기에서는 실제 V8 우선순위 probe를 3회 통과했고, 긴 동기 JavaScript 평가 중 입력·취소와 dispatch 대기를 5회 기록했다. 추가 `simpleperf --trace-offcpu` 5회에서 owner thread의 101개 schedule-out→schedule-in 구간은 p50 15.117µs, p95 69.102µs, 최대 730.976µs였다. 별도 한 번은 `/proc/<pid>/task/<tid>/schedstat`을 읽어 8.8초 동안 CPU 시간 8.711520849초, runqueue 대기 0.228829ms 증가를 교차 확인했다. 이 누적 카운터는 개별 스케줄 원인을 나타내지 않으며 off-CPU 구간 표본과 합치지 않았다. 같은 긴 JS 조건의 dispatch queue residence p50 1,100,059µs보다 OS off-CPU 구간이 짧아 이 실험에서 OS 재스케줄 대기는 긴 JS 이벤트 대기의 주원인이 아니었다. 이전 Android·iOS Simulator 유한 유입에서는 159개 높은 등급 작업을 확인했다. 이번 후속 실험은 높은 등급 producer가 큐를 보충하는 중 실제 V8에서 1,087개가 연속 실행되고 background가 1,088번째에 실행되는 유한 사례를 각 Simulator에서 5회 재현했다. 큐 residence는 Android 3,454,452–3,605,723µs, iOS 3,260,388–3,263,081µs였다. 별도 동일 입력 모델은 strict-priority·aging·가중 순환의 서비스 횟수를 비교했다. 이 값들은 성능 비교값이 아니며 무한 유입 공정성이나 제품 정책 선택을 확정하지 않는다. 상세 결과는 [R06 검증 기록](evidence/r06-task-scheduler-2026-09-30.md), [실제 V8 우선순위 시뮬레이터 검증](evidence/r06-priority-simulators-2026-09-30.md), [Android 실기기 스케줄링 계측](evidence/r06-android-physical-scheduler-2026-10-08.md), [이전 Android 우선순위 유입 검증](evidence/r06-priority-fairness-android-2026-10-08.md), [이전 교차 플랫폼 유한 유입](evidence/r06-priority-fairness-simulators-2026-10-08.md), [공정성 정책 비교와 후속 교차 플랫폼 V8 검증](evidence/r06-priority-policy-comparison-2026-10-08.md)에 둔다.
 
 ### Android·iOS 시뮬레이터의 유한한 높은 등급 유입
 
-Android 16/API 36 ARM64 에뮬레이터와 iPhone 17 Pro / iOS 26.2 시뮬레이터에서 실제 V8 세션의 64개 대기 슬롯을 채운 뒤 높은 등급 작업 96개를 추가 접수하는 진단을 각 5회 실행했다. 열 번 모두 먼저 접수한 `background`보다 높은 등급 작업 159개가 먼저 dequeue됐고, background는 실행 순서 160번이었다. 높은 등급 FIFO와 V8 owner/callback thread 일치도 통과했다. queue residence는 Android 501,074–584,811µs, iOS 476,795–477,286µs였다. 이는 두 Simulator의 유한한 진단 입력 관찰값으로 성능 비교값이나 사용자 표시 지연이 아니다. 무한 유입 기아, 공정성 정책 비교, iOS 실기기와 release 빌드는 미검증이다. [실행 방법·로그·화면·한계](evidence/r06-priority-fairness-simulators-2026-10-08.md).
+Android 16/API 36 ARM64 에뮬레이터와 iPhone 17 Pro / iOS 26.2 시뮬레이터에서 실제 V8 세션의 64개 대기 슬롯을 채운 뒤 높은 등급 작업 96개를 추가 접수하는 이전 진단을 각 5회 실행했다. 열 번 모두 먼저 접수한 `background`보다 높은 등급 작업 159개가 먼저 dequeue됐고, background는 실행 순서 160번이었다. 높은 등급 FIFO와 V8 owner/callback thread 일치도 통과했다. queue residence는 Android 501,074–584,811µs, iOS 476,795–477,286µs였다. 이는 두 Simulator의 유한한 진단 입력 관찰값으로 성능 비교값이나 사용자 표시 지연이 아니다. 무한 유입 공정성 보장, iOS 실기기와 release 빌드는 미검증이다. [이전 실행 방법·로그·화면·한계](evidence/r06-priority-fairness-simulators-2026-10-08.md).
+
+### 대기열 유지 유입과 공정성 후보 비교
+
+실제 V8 producer가 높은 등급 task를 계속 추가하는 중 낮은 등급 작업이 선택되는지 확인하기 위해 초기 63개와 후속 1,024개 `user-blocking` 작업을 한 `background` 작업과 함께 실행했다. Android와 iOS Simulator에서 각각 5회, 총 10회 모두 높은 등급 1,087개 뒤 background가 선택됐다. 결정론적 모델에서 동일한 세 등급 지속 입력을 4,096회 처리한 결과 strict-priority는 background를 선택하지 않았고, 비교용 aging은 17번째, 8:4:1 가중 순환은 13번째 선택에 background를 처리했다. 후보값은 제품 큐나 공개 계약에 반영하지 않았다. [입력·모델·원본 로그·캡처·한계](evidence/r06-priority-policy-comparison-2026-10-08.md).
 
 명령별 결과와 테스트 범위: [R06 Chromium 참고 우선순위 큐 구현 확인](evidence/r06-task-scheduler-2026-09-30.md).
 
@@ -88,8 +92,8 @@ Android 16/API 36 ARM64 에뮬레이터와 iPhone 17 Pro / iOS 26.2 시뮬레이
 ## 참고 기준
 
 - [WICG Prioritized Task Scheduling 초안](https://wicg.github.io/scheduling-apis/) — 우선순위 이름, `postTask()`·`yield()` 및 제어 신호 제안. 2026-09-30 확인.
-- [Chromium `TaskQueue`](https://chromium.googlesource.com/chromium/src/+/refs/heads/main/base/task/sequence_manager/task_queue.h) — 고정 우선순위에서 일반 기아 방지를 보장하지 않는다는 설명. 2026-09-30 확인.
-- [Chromium `TaskQueueSelector`](https://chromium.googlesource.com/chromium/src/+/refs/heads/main/base/task/sequence_manager/task_queue_selector.h) — 작업 선택과 제한된 지연/즉시 작업 starvation 보정. 2026-09-30 확인.
+- [Chromium `TaskQueue`](https://chromium.googlesource.com/chromium/src/+/refs/heads/main/base/task/sequence_manager/task_queue.h) — 현행 우선순위 큐에서 일반 기아 방지를 보장하지 않는다는 설명. 2026-10-08 확인.
+- [Chromium `TaskQueueSelector`](https://chromium.googlesource.com/chromium/src/+/refs/heads/main/base/task/sequence_manager/task_queue_selector.h) — 현행 selector의 최고 활성 등급 선택 및 제한된 지연/즉시 작업 starvation 보정. 2026-10-08 확인.
 - [Blink 메인 스레드 스케줄러](https://chromium.googlesource.com/chromium/src/+/f10bbdb7693a6ab4f54dd4a73cf68e3c218507a2/third_party/blink/renderer/platform/scheduler/main_thread/main_thread_scheduler_impl.cc) — 입력·컴포지터 중심의 별도 동적 정책. 2026-09-30 확인.
 - [Chromium Blink의 작업 스케줄링 지침](https://chromium.googlesource.com/chromium/src/+/master/third_party/blink/renderer/platform/scheduler/TaskSchedulingInBlink.md) — task source 분류, 입력 우선순위, 비선점 작업, starvation·백그라운드 정책에 관한 내부 문서. 2026-09-30 확인.
 - [WHATWG HTML 이벤트 루프](https://html.spec.whatwg.org/multipage/webappapis.html) — task와 microtask의 별도 실행 모델 참고. 이 문서로 Spinon 이벤트 루프 적합성을 주장하지 않는다.

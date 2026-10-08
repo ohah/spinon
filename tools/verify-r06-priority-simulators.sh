@@ -6,7 +6,7 @@ android_package="dev.spinon.bootstrap"
 ios_bundle_id="dev.spinon.bootstrap"
 expected_order='order=[user-blocking:1#seq4,user-blocking:2#seq6,user-visible:101#seq3,user-visible:102#seq7,background:201#seq2,background:202#seq5]'
 pass_marker='status=0 priority_probe=PASS blocker_status=-8 cancel_status=0'
-fairness_marker='status=0 priority_stream_probe=PASS capacity=64 initial_high=63 late_high=96 accepted_high=159 background_seq=2 background_order=160'
+fairness_marker='status=0 priority_stream_probe=PASS capacity=64 initial_high=63 late_high=1024 accepted_high=1087 background_seq=2 background_order=1088'
 run_id="$(date -u +%Y%m%dT%H%M%SZ)"
 result_dir="${SPINON_R06_PRIORITY_OUTPUT_DIR:-$repo_root/build/spinon/priority-validation/$run_id}"
 ios_stream_pid=""

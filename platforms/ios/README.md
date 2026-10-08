@@ -70,6 +70,8 @@ Android 에뮬레이터와 iOS 시뮬레이터를 빌드·실행해 실제 V8 �
 
 2026-10-08에는 Android 16 ARM64 에뮬레이터와 iPhone 17 Pro / iOS 26.2 Simulator에서 유한 높은 등급 유입을 각각 5회 통과했습니다. 두 플랫폼의 5회 모두 `background` 작업이 159개 `user-blocking` 작업 뒤 실행됐습니다. queue residence는 진단 입력의 대기값이며 플랫폼 간 성능 비교가 아닙니다. [실행 로그·캡처·범위](../../spec/internal/evidence/r06-priority-fairness-simulators-2026-10-08.md).
 
+후속 공정성 후보 비교에서는 producer가 높은 등급 작업을 계속 보충하는 동안 `background`가 1,087개 작업 뒤 실행되는 실제 V8 입력을 Android·iOS Simulator에서 각각 5회 확인했습니다. 결정론적 모델에서는 strict-priority가 4,096회 안에 background를 처리하지 못했고, 분석용 aging은 17번째, 8:4:1 가중 순환은 13번째 선택에 background를 처리했습니다. 후보 정책은 제품 계약으로 확정하지 않았습니다. [모델·실행 로그·캡처·한계](../../spec/internal/evidence/r06-priority-policy-comparison-2026-10-08.md).
+
 2026-09-30 기준 iPhone 17 Pro / iOS 26.2 시뮬레이터에서 앱 빌드·부팅, R06 수동·자동 시나리오, 실제 V8의 혼합 우선순위 여섯 작업 단일 배치를 확인했습니다. 순서는 `user-blocking` 두 개, `user-visible` 두 개, `background` 두 개였고 등급별 FIFO와 Isolate owner thread 콜백을 통과했습니다. 런타임 분리 후에도 빌드와 자동 시나리오를 다시 통과했습니다. 시뮬레이터 V8은 `v8_jitless=false` 구성입니다. 이 결과는 장기 기아·공정성, iOS 실기기, JIT 없는 기기 빌드, GPU·제품 렌더러·접근성 동작을 검증하지 않습니다. 분리 전 근거는 [R06 런타임 기록](../../spec/internal/evidence/r06-v8-runtime-thread-2026-09-30.md), 분리 후 근거는 [최신 재검증 기록](../../spec/internal/evidence/r06-task-scheduler-2026-09-30.md), [우선순위 시뮬레이터 검증](../../spec/internal/evidence/r06-priority-simulators-2026-09-30.md)과 [iOS 로그·캡처](../../spec/internal/README.md#검증-기록)에 있습니다. 구현 완료 표시는 [공식 상태 대장](../../spec/STATUS.md)을 따릅니다.
 
 V8 링크에는 `BrowserEngineCore`가 포함됩니다. 이 부트스트랩의 시뮬레이터 빌드는 앱 배포 자격이나 App Store 정책 적합성을 확인하지 않으며, 해당 정책 검토는 [구현 상태 대장](../../spec/STATUS.md)의 R09에서 별도로 진행합니다.

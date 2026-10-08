@@ -25,9 +25,9 @@ pub(super) fn run_priority_stream_probe(
     expected_first_execution_order: u64,
 ) -> Result<String, String> {
     const INITIAL_HIGH_TASKS: usize = 63;
-    const LATE_HIGH_TASKS: usize = 96;
+    const LATE_HIGH_TASKS: usize = 1_024;
     const QUEUE_ROOM_TIMEOUT: Duration = Duration::from_secs(10);
-    const RESPONSE_TIMEOUT: Duration = Duration::from_secs(30);
+    const RESPONSE_TIMEOUT: Duration = Duration::from_secs(60);
 
     let idle_deadline = Instant::now() + Duration::from_secs(2);
     while lock(&session.control).active && Instant::now() < idle_deadline {

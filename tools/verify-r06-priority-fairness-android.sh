@@ -6,7 +6,7 @@ android_package="dev.spinon.bootstrap"
 run_id="$(date -u +%Y%m%dT%H%M%SZ)-$$"
 result_dir="${SPINON_R06_FAIRNESS_OUTPUT_DIR:-$repo_root/build/spinon/priority-fairness-validation/$run_id}"
 pass_marker='status=0 priority_probe=PASS'
-stream_marker='status=0 priority_stream_probe=PASS capacity=64 initial_high=63 late_high=96 accepted_high=159 background_seq=2 background_order=160'
+stream_marker='status=0 priority_stream_probe=PASS capacity=64 initial_high=63 late_high=1024 accepted_high=1087 background_seq=2 background_order=1088'
 probe_started=false
 probe_passed=false
 
