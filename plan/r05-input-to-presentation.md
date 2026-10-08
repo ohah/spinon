@@ -122,6 +122,7 @@ API 37.1 16 KB AVD에서는 APK zip alignment와 네 ELF PT_LOAD segment의 16 K
 
 - 기기 연결·화면 잠금 해제·앱 foreground를 확인한 뒤 사용자가 요청한 플랫폼만 진행한다. Android는 2026-10-09 요청에 따라 Samsung SM-S731N / Android 16 SDK 36.1에서 debug callback failure fixture를 실행했다. 입력은 synthetic fixture라 실제 `MotionEvent` touch 결과는 아니다. iOS 실기기 실행은 하지 않았다. [Android physical run 결과](../spec/internal/evidence/r05-android-physical-callback-faults-2026-10-08/README.md).
 - 물리 입력은 `MotionEvent`/`UITouch` 경로로만 분류한다. `adb shell input`, `simctl`, UI test 주입은 synthetic 별도 그룹이며 물리 입력 결과를 대체하지 않는다.
+- 다음 Android 실기기 직접 입력 provenance 확인은 [물리 입력·present-fence 연결 계획](r05-android-physical-input-join.md)을 따른다. 이는 최대 10개 exploratory touch로 raw touchscreen event와 MotionEvent/frame/fence exact join 가능성을 확인하며 p95·제품 latency 완료 기준을 대체하지 않는다.
 - 기기당 사전 warm-up과 최소 10개 독립 실행 block, block당 유효 입력·표시 표본 최소 30개(총 300개)를 기준으로 한다. 이는 탐색적 p95를 계산할 최소 수집량이지 비교 승자를 판정할 충분성 보장이 아니다. 입력 시퀀스·누락·추가 frame·중복 frame을 보존한다. p95는 유효 표본 300개 이상일 때만 95% block-bootstrap 신뢰 구간과 함께 탐색치로 보고하고, 미달이면 개별 값·중앙값·표본 수만 낸다. 기기 간 우열 또는 성능 우위는 이 작업에서 결론 내리지 않는다.
 - 기기별 결과를 분리한다. Android와 iOS의 latency 분포를 한 모집단으로 합치거나 기기 간 absolute rank를 만들지 않는다. debug/trace-on 진단과 release/trace-off 결과도 각각 분리한다.
 - 열 상태, display refresh mode, 앱 전경/프로세스, surface generation, orientation, 배터리/전원 상태를 매 block 기록한다. 유효 표본 실패와 느린 outlier를 구분하고, 느리다는 이유만으로 제외하지 않는다.
@@ -191,3 +192,7 @@ Samsung SM-S731N / Android 16 SDK 36.1 / Xclipse 940 WGPU/Vulkan에서 ADB synth
 ## 2026-10-09 Android 실기기 비동기 fence 관찰
 
 같은 SM-S731N / Android 16 SDK 36.1 실기기에서 debug-only fence 복제·대기 probe를 새 process 3개로 실행했다. block마다 10개 scored 입력과 1개 drain 입력을 사용했고 input·submit·TransactionStats callback·usable async signal은 33/33 exact join됐다. callback 직후 32개 fence는 pending, 1개는 이미 signaled였으며 worker 결과는 33/33 signaled, 각 process의 마지막 pending/active/queue depth는 0이다. 입력은 ADB synthetic MotionEvent이며 event-to-present·광학 표시·실제 touch는 검증하지 않았다. 상세 근거는 [실행 보고서](../spec/internal/evidence/r05-android-physical-present-fence-2026-10-09/async-wait/README.md), [실행 전 계획](r05-android-async-present-fence.md), [구현 실패 관점 검토](../spec/internal/evidence/r05-android-physical-present-fence-2026-10-09/async-wait/implementation-review.md)에 둔다. R05.3은 미완료다.
+
+## 2026-10-09 Android 실기기 재검증
+
+사용자 요청으로 같은 APK hash를 가진 debug 앱을 실기기에서 새 process로 실행했다. `adb shell input tap` synthetic 입력 11회에서 input·submit·actual `TransactionStats` callback·usable async fence signal이 모두 11/11 exact join됐고 queue는 drain됐다. 동시 `sec_touchscreen` raw capture는 0건이어서 실제 손가락 입력 positive sample은 없다. 화면 색상과 활성화 수 11회는 캡처로 보조 확인했다. API 36.1 `target_vsync_id=-1`이므로 VSync·event-to-present·optical scanout 결과는 없다. 앱은 종료하고 Chrome 및 화면 설정을 복구했다. [전체 증거와 새 20관점 실행 검토](../spec/internal/evidence/r05-android-physical-input-join-2026-10-09/physical-retest/README.md). 이 재검증은 R05.3을 완료하지 않는다.

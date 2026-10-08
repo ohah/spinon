@@ -1,0 +1,25 @@
+실행 시각: 2026-10-09 01:27–01:29 KST
+대상: ADB 연결 물리 기기 단일 대상; serial은 의도적으로 기록하지 않음
+모델: Samsung SM-S731N
+Android: 16 / API 36 / SDK_INT_FULL 36.1 / ARM64
+화면: 1080 x 2340 / density 450
+주사율: active mode 2 = 60 Hz; supported 60 Hz 및 120 Hz
+렌더러: R08 WGPU/Vulkan SurfaceView, Xclipse 940
+패키지: dev.spinon.bootstrap, fresh process PID 27283
+실행 APK SHA-256: 608fbdf9279ddded605c7129fb0123ce32a65d7452f6ff1b36702b9eed7b198e
+실험 flag: spinon_r05_async_fence_wait=true
+터치 node: getevent -lp에서 이름 sec_touchscreen, INPUT_PROP_DIRECT인 /dev/input/event6을 매 run 재탐색
+입력 프로토콜: adb shell input tap 540 1170, 11회, 약 450ms 간격; 실제 손가락 입력 아님
+
+시작 전 설정:
+- 화면 밝기: 248
+- screen_off_timeout: 30000 ms
+- stay_on_while_plugged_in: 3
+
+종료 후 설정:
+- 화면 밝기: 248
+- screen_off_timeout: 30000 ms
+- stay_on_while_plugged_in: 3
+- active display mode: 2 / 60 Hz
+- resumed Activity: com.android.chrome/com.google.android.apps.chrome.Main
+- Spinon PID: 종료됨

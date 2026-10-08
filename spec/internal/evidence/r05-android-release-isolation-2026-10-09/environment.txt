@@ -1,0 +1,18 @@
+실행 시각: 2026-10-09 01:36–01:39 KST
+대상: ADB 연결 Android 물리 기기 한 대, emulator process 없음; serial 저장 안 함
+모델: Samsung SM-S731N · Android 16 · API 36.1 · ARM64
+화면: 1080x2340 · density 450 · active 60Hz (mode 2), 지원 120Hz
+설정: 밝기 248 · screen_off_timeout 30000ms · stay_on_while_plugged_in 3
+설치 APK SHA-256: 608fbdf9279ddded605c7129fb0123ce32a65d7452f6ff1b36702b9eed7b198e
+
+PID 28058: MainActivity, extras 없음 (debug bootstrap)
+- SPINON_BOOTSTRAP_EXECUTION is_main_thread=false
+- SPINON_BOOTSTRAP_RESULT=nodes=2 ... document_nodes=10
+- SPINON_R05_ marker 없음; 화면은 흰 bootstrap 화면
+
+PID 28292: MainActivity, spinon_r08=true만 전달 (debug R08 probe-off)
+- SPINON_R08_WGPU=ready, backend=Vulkan, Samsung Xclipse 940
+- SPINON_R05_ marker 없음
+- 1회 synthetic tap 후 SPINON_R08_TOUCH count=1, 도형 색상 변경
+
+종료 후: Chrome foreground · 밝기/timeout/stay-awake/display mode 유지
