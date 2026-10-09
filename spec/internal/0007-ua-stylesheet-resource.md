@@ -2,7 +2,7 @@
 
 **상태:** 내부 구현 초안 · **버전:** `0.1.0-draft` · **구현 범위:** 컴파일 시 자원 내장과 읽기 전용 조회
 
-이 문서는 Rust 앱 바이너리에 포함되는 기본 HTML 스타일 규칙과 C ABI 조회 경계를 정의한다. 이 자원이 존재하거나 조회된다고 Stylo cascade, 레이아웃, GPU 화면에 적용됐다는 뜻은 아니다. 스타일 계산 연결은 [CSS 호환 명세](../0008-css-compatibility.md)의 C03·C04에서 구현한다.
+이 문서는 Rust 앱 바이너리에 포함되는 기본 HTML 스타일 규칙과 C ABI 조회 경계를 정의한다. 이 자원이 존재하거나 조회된다고 제품 runtime·레이아웃·GPU 화면에 연결됐다는 뜻은 아니다. C04.5에서 지원 요소 UA computed-style을 반환하는 내부 Rust API를 추가했다. API 계약은 [0026](0026-c04-ua-baseline-snapshot.md)에서 정의한다.
 
 ## 자원
 
@@ -53,11 +53,11 @@ void register_default_ua_style(void) {
 }
 ```
 
-## 아직 연결하지 않은 런타임 동작
+## 적용 단계와 남은 runtime 연결
 
-1. **완료:** C03 DOM adapter가 HTML 문서 모드와 XHTML namespace를 함께 판정한다. 이 연결만으로 UA stylesheet를 적용하지는 않는다.
-2. C04에서 자원을 Stylo의 UA cascade 출처로 등록하고 앱 author stylesheet가 CSS cascade 규칙대로 덮어쓸 수 있게 한다.
-3. CSS 의미·계산 스타일·레이아웃·GPU 픽셀을 기준 Chromium과 Android·iOS에서 각각 비교한다.
+1. **완료:** C03 DOM adapter가 HTML 문서 모드와 XHTML namespace를 판정한다. 이 연결만으로 UA stylesheet를 계산하지는 않는다.
+2. **부분 완료:** C04.5 `compute_supported_elements_ua_cascade`가 내장 자원을 Stylo UA origin에 등록하고 인메모리 author sheets를 cascade한다. C01 HTML 9요소·19개 값은 고정 Chromium과 일치한다. [0026](0026-c04-ua-baseline-snapshot.md)과 [실행 근거](evidence/css-c04-ua-baseline-snapshot-2026-10-09.md)를 따른다.
+3. 실제 runtime stylesheet set, root/viewport 전달, off-owner style worker, Taffy layout, inline formatting·list marker, GPU 표시를 연결하고 CSS 계산값·레이아웃·GPU 결과를 Chromium 및 Android·iOS에서 비교한다.
 4. 버튼·입력 외형, 기본 폰트, 링크 상태 규칙은 별도 지원 프로필과 적합성 fixture가 정해지기 전까지 지원 완료로 표시하지 않는다.
 
 C01 초기 Chromium revision과 9개 요소 fixture는 기록했지만 전체 HTML·SVG 범위와 CSS feature inventory는 아직 고정하지 않았다. 이 부분 자료만으로는 호환성을 보증하지 않는다. 기본 규칙을 바꾸어 관찰 결과가 달라지면 프로필 ID와 이 인터페이스 버전을 함께 갱신한다.

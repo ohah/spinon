@@ -135,6 +135,11 @@ fn compute_profile_layout(
                 profile: format!("{profile:?}"),
             });
         }
+        ComputedStyleProfile::SupportedElementsUaV1 => {
+            return Err(StyleLayoutError::UnsupportedProfile {
+                profile: format!("{profile:?}"),
+            });
+        }
     };
     assert_matching_revision(snapshot, &computed_styles, profile)?;
     if let Some(diagnostic) = computed_styles.diagnostics.first().cloned() {
@@ -405,5 +410,56 @@ fn unsupported_value(node: NodeId, property: &'static str, value: &str) -> Style
         node,
         property,
         value: value.to_owned(),
+    }
+}
+
+#[cfg(test)]
+mod ua_profile_boundary_tests {
+    use spinon_core::{
+        DocumentChangeBatch, DocumentOperation, HostDocument, HostParent, OwnerId, StyleRevision,
+    };
+    use spinon_style::{ComputedStyleProfile, CssViewport, StyloDocumentView};
+    use style::context::QuirksMode;
+
+    use super::compute_profile_layout;
+    use crate::StyleLayoutError;
+
+    #[test]
+    fn ua_snapshot_profile_is_rejected_by_the_flex_layout_adapter() {
+        let mut document = HostDocument::new().unwrap();
+        let root = document.reserve_node_handle().unwrap();
+        let mut batch =
+            DocumentChangeBatch::new(OwnerId::new(860).unwrap(), document.document_revision());
+        batch.push(DocumentOperation::CreateElement {
+            node: root,
+            namespace: "http://www.w3.org/1999/xhtml".to_owned(),
+            local_name: "div".to_owned(),
+        });
+        batch.push(DocumentOperation::InsertBefore {
+            parent: HostParent::Root,
+            node: root,
+            before: None,
+        });
+        document.commit(batch).unwrap();
+
+        let snapshot = document.snapshot();
+        let view =
+            StyloDocumentView::new(snapshot.clone(), root, true, QuirksMode::NoQuirks).unwrap();
+        let error = compute_profile_layout(
+            &snapshot,
+            &view,
+            root,
+            &[],
+            CssViewport::C04_FIXTURE,
+            StyleRevision::default(),
+            ComputedStyleProfile::SupportedElementsUaV1,
+        )
+        .unwrap_err();
+
+        assert!(matches!(
+            error,
+            StyleLayoutError::UnsupportedProfile { profile }
+                if profile == "SupportedElementsUaV1"
+        ));
     }
 }
