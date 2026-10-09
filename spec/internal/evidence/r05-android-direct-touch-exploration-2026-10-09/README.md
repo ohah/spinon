@@ -54,7 +54,7 @@
 
 2026-10-09 13:09 KST 새 process에서 bounded collector를 시작했다. `sec_touchscreen` raw 32개 중 첫 30개를 scoring set으로 고정하고 drain 중 추가된 두 개는 제외했다. 첫 30개에는 raw release→app `ACTION_UP`→WGPU submit→현재 surface generation callback→같은 request의 usable fence가 28개 정확히 연결됐다. 점수 집합의 raw 두 건은 app `ACTION_UP`과 exact join되지 않았다. 앱 로그에는 `cancelled`와 `outside_target` 제외 이벤트가 각각 하나 있지만 event timestamp가 없어 이 둘을 해당 raw contact에 귀속할 수 없다. drain에서 수집된 추가 raw 두 건은 scoring에서 제외됐고, 이들과 exact timestamp가 일치하는 accepted `ACTION_UP` 두 건도 분석기에서 별도 집계했다. raw protocol error·active/pending contact·collector 잔존은 없었다.
 
-28개 유효 transaction-fence candidate interval의 block 범위는 28.230–61.515ms다. p95를 계산하지 않았고, `target_vsync_id=-1`이므로 제품 입력 지연·VSync·scanout·광자 시각을 뜻하지 않는다. 이전 exploratory n=5와 별도 no-contact 시도는 phase-2 표본에 넣지 않는다. 현재 **28/300**이며 10개 block 수집이 남아 R05.3은 미완료다.
+28개 유효 transaction-fence candidate interval의 block 범위는 28.230–61.515ms다. p95를 계산하지 않았고, `target_vsync_id=-1`이므로 제품 입력 지연·VSync·scanout·광자 시각을 뜻하지 않는다. 이전 exploratory n=5와 별도 no-contact 시도는 phase-2 표본에 넣지 않는다. 현재 **28/300**이며 12개 중 block 01 하나를 마쳐 11개 block 수집이 남아 R05.3은 미완료다.
 
 [`phase2-block01-direct-touch/`](phase2-block01-direct-touch/)에 serial과 좌표를 제거한 raw/contact summary, 앱 R05 로그, APK provenance, 기기 조건, cropped screenshot과 checksum을 보존했다. 저장소 사본에서도 분석기를 다시 실행해 **28/30** exact join을 재현했다. 과거 탐색 로그에서도 raw X/Y 값을 제거했다.
 
@@ -67,6 +67,7 @@
 - [`phase2-block01-prestart/`](phase2-block01-prestart/): 무접촉으로 무효 처리된 capture의 raw/app 요약·종료 사유·화면·시계 기록. 다른 앱 메타데이터가 포함될 수 있는 전체 Android system dump는 공개 저장소 사본에서 제외
 - [`phase2-block01-direct-touch/README.md`](phase2-block01-direct-touch/README.md): fresh process 직접 입력 28/30 join, bracket candidate 범위, 공개 저장소용 redacted evidence
 - [수집기 구현 검토](../r05-android-capture-supervisor-review-2026-10-09.md): collector의 서로 다른 실패 경로와 수정
+- [PR 통합 검토](../r05-android-direct-touch-pr-review-2026-10-09.md): 계획·근거·GitHub 첨부·표본 수의 일치 확인
 - [`SHA256SUMS`](SHA256SUMS): 보존 파일 checksum
 
 공개 미리보기에는 집계값과 화면 이미지까지만 공유하며 raw 좌표 로그와 기기 일련번호는 포함하지 않는다.
