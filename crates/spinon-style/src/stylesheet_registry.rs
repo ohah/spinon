@@ -238,6 +238,13 @@ impl StylesheetRegistry {
         css_profile::first_unsupported_author_feature(self, allowed_properties)
     }
 
+    pub(crate) fn first_unsupported_author_feature_with_layers(
+        &self,
+        allowed_properties: &[&str],
+    ) -> Option<(String, String)> {
+        css_profile::first_unsupported_author_feature_with_layers(self, allowed_properties)
+    }
+
     pub(crate) fn iter_stylo_sheets(
         &self,
     ) -> impl ExactSizeIterator<Item = (CssOrigin, &DocumentStyleSheet)> {

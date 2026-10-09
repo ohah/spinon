@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Spinon C04 cascade layers reference</title>
+  </head>
+  <body>
+    <main id="fixture-root">
+      <div id="flex-parent" class="layered">
+        <div id="flex-a"></div>
+        <div id="flex-b"></div>
+        <div id="flex-c"></div>
+      </div>
+    </main>
+    <pre id="reference-result"></pre>
+    <script>
+      const fixture = globalThis.__SPINON_C04_CASCADE_LAYERS__;
+      const caseId = new URLSearchParams(location.search).get('case');
+      const selected = fixture?.cases.find((item) => item.id === caseId);
+      if (!fixture || !selected) throw new Error('고정된 C04 cascade layers case를 찾지 못했습니다.');
+
+      const base = document.createElement('style');
+      base.textContent = fixture.baseCss;
+      document.head.append(base);
+      for (const [index, css] of selected.authorStylesheets.entries()) {
+        const stylesheet = document.createElement('style');
+        stylesheet.dataset.authorStylesheet = String(index);
+        stylesheet.textContent = css;
+        document.head.append(stylesheet);
+      }
+
+      const parent = document.querySelector('#flex-parent');
+      const parentRect = parent.getBoundingClientRect();
+      const children = [...parent.children];
+      const css = getComputedStyle(parent);
+      const result = {
+        caseId,
+        computed: {
+          alignItems: css.alignItems,
+          justifyContent: css.justifyContent,
+          flexDirection: css.flexDirection,
+          direction: css.direction,
+        },
+        itemStyles: children.map((element) => {
+          const itemCss = getComputedStyle(element);
+          return {
+            id: element.id,
+            flexGrow: itemCss.flexGrow,
+            flexShrink: itemCss.flexShrink,
+            flexBasis: itemCss.flexBasis,
+          };
+        }),
+        frames: [parent, ...children].map((element) => {
+          const rect = element.getBoundingClientRect();
+          return {
+            id: element.id,
+            x: rect.left - parentRect.left,
+            y: rect.top - parentRect.top,
+            width: rect.width,
+            height: rect.height,
+          };
+        }),
+      };
+      document.querySelector('#reference-result').textContent = btoa(unescape(encodeURIComponent(JSON.stringify(result))));
+    </script>
+  </body>
+</html>

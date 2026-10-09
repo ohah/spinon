@@ -1,0 +1,131 @@
+{
+  "schema": "spinon-css-c04-cascade-layers-input/v1",
+  "fixtureId": "C04-cascade-layers-v1",
+  "viewport": {
+    "widthCssPx": 301,
+    "heightCssPx": 40,
+    "deviceScaleFactor": 1
+  },
+  "cases": [
+    {
+      "id": "normal-layer-order",
+      "authorStylesheets": [
+        "#flex-a, #flex-b, #flex-c { flex: 0 0 40px; height: 10px; }",
+        "@layer base { #flex-parent { justify-content: center; align-items: flex-start; } } @layer theme { #flex-parent { justify-content: flex-end; align-items: flex-end; } }"
+      ]
+    },
+    {
+      "id": "explicit-layer-order",
+      "authorStylesheets": [
+        "#flex-a, #flex-b, #flex-c { flex: 0 0 40px; height: 10px; }",
+        "@layer theme, base; @layer base { #flex-parent { justify-content: center; } } @layer theme { #flex-parent { justify-content: flex-end; } }"
+      ]
+    },
+    {
+      "id": "layer-reopen-order",
+      "authorStylesheets": [
+        "#flex-a, #flex-b, #flex-c { flex: 0 0 40px; height: 10px; }",
+        "@layer base { #flex-parent { justify-content: center; } } @layer theme { #flex-parent { justify-content: flex-start; } } @layer base { #flex-parent { justify-content: flex-end; } }"
+      ]
+    },
+    {
+      "id": "cross-stylesheet-order",
+      "authorStylesheets": [
+        "#flex-a, #flex-b, #flex-c { flex: 0 0 40px; height: 10px; }",
+        "@layer base { #flex-parent { justify-content: center; } }",
+        "@layer theme { #flex-parent { justify-content: space-between; } }"
+      ]
+    },
+    {
+      "id": "same-layer-cross-stylesheet-order",
+      "authorStylesheets": [
+        "#flex-a, #flex-b, #flex-c { flex: 0 0 40px; height: 10px; }",
+        "@layer app { #flex-parent { justify-content: center; } }",
+        "@layer app { #flex-parent { justify-content: flex-end; } }"
+      ]
+    },
+    {
+      "id": "unlayered-normal",
+      "authorStylesheets": [
+        "#flex-a, #flex-b, #flex-c { flex: 0 0 40px; height: 10px; }",
+        "@layer app { #flex-parent { justify-content: flex-end; } } #flex-parent { justify-content: center; }"
+      ]
+    },
+    {
+      "id": "important-layer-reverse",
+      "authorStylesheets": [
+        "#flex-a, #flex-b, #flex-c { flex: 0 0 40px; height: 10px; }",
+        "@layer first, second; @layer first { #flex-parent { justify-content: center !important; } } @layer second { #flex-parent { justify-content: flex-end !important; } }"
+      ]
+    },
+    {
+      "id": "important-unlayered",
+      "authorStylesheets": [
+        "#flex-a, #flex-b, #flex-c { flex: 0 0 40px; height: 10px; }",
+        "@layer app { #flex-parent { justify-content: center !important; } } #flex-parent { justify-content: flex-end !important; }"
+      ]
+    },
+    {
+      "id": "importance-before-layer",
+      "authorStylesheets": [
+        "#flex-a, #flex-b, #flex-c { flex: 0 0 40px; height: 10px; }",
+        "@layer low, high; @layer high { #flex-parent { justify-content: center; } } @layer low { #flex-parent { justify-content: flex-end !important; } }"
+      ]
+    },
+    {
+      "id": "specificity-within-layer",
+      "authorStylesheets": [
+        "#flex-a, #flex-b, #flex-c { flex: 0 0 40px; height: 10px; }",
+        "@layer app { #flex-parent { justify-content: center; } div.layered { justify-content: flex-end; } }"
+      ]
+    },
+    {
+      "id": "layer-before-specificity",
+      "authorStylesheets": [
+        "#flex-a, #flex-b, #flex-c { flex: 0 0 40px; height: 10px; }",
+        "@layer base { div#flex-parent { justify-content: center; } } @layer overrides { div { justify-content: space-around; } }"
+      ]
+    },
+    {
+      "id": "nested-parent-implicit-layer",
+      "authorStylesheets": [
+        "#flex-a, #flex-b, #flex-c { flex: 0 0 40px; height: 10px; }",
+        "@layer framework { @layer theme { #flex-parent { justify-content: center; } } #flex-parent { justify-content: flex-end; } }"
+      ]
+    },
+    {
+      "id": "nested-sibling-order",
+      "authorStylesheets": [
+        "#flex-a, #flex-b, #flex-c { flex: 0 0 40px; height: 10px; }",
+        "@layer framework.components, framework.theme; @layer framework.theme { #flex-parent { justify-content: center; } } @layer framework.components { #flex-parent { justify-content: flex-end; } }"
+      ]
+    },
+    {
+      "id": "anonymous-layer-identity",
+      "authorStylesheets": [
+        "#flex-a, #flex-b, #flex-c { flex: 0 0 40px; height: 10px; }",
+        "@layer { #flex-parent { justify-content: center; } } @layer { #flex-parent { justify-content: flex-end; } }"
+      ]
+    },
+    {
+      "id": "multi-name-layer-statement",
+      "authorStylesheets": [
+        "#flex-a, #flex-b, #flex-c { flex: 0 0 40px; height: 10px; }",
+        "@layer reset, app, override; @layer reset { #flex-parent { justify-content: center; } } @layer app { #flex-parent { justify-content: flex-start; } } @layer override { #flex-parent { justify-content: space-between; } }"
+      ]
+    },
+    {
+      "id": "same-layer-source-order",
+      "authorStylesheets": [
+        "#flex-a, #flex-b, #flex-c { flex: 0 0 40px; height: 10px; }",
+        "@layer app { #flex-parent { justify-content: center; } #flex-parent { justify-content: flex-end; } }"
+      ]
+    }
+  ],
+  "comparison": {
+    "computedValues": "문자열 정확 일치",
+    "frameUnit": "CSS px",
+    "perCoordinateMaximumAbsoluteError": 0.5,
+    "aggregateAveragesAllowed": false
+  }
+}
