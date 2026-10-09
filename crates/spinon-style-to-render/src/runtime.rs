@@ -13,7 +13,7 @@ use crate::adapter::{
 use crate::{CurrentLayoutInputs, StyleRenderError};
 use spinon_style_to_layout::StyleLayoutOutput;
 
-/// 같은 HostDocument에서 계산한 C04.10 style/layout 결과를 dynamic scene으로 변환합니다.
+/// 같은 HostDocument에서 계산한 runtime style/layout 결과를 dynamic scene으로 변환합니다.
 pub fn build_runtime_render_snapshot(
     document: &HostDocumentSnapshot,
     root: HostNodeHandle,
@@ -21,7 +21,11 @@ pub fn build_runtime_render_snapshot(
     current: CurrentLayoutInputs,
 ) -> Result<RuntimeRenderSnapshot, StyleRenderError> {
     let styles = &output.computed_styles;
-    if styles.profile != ComputedStyleProfile::RuntimeFlexPaintV1 {
+    if !matches!(
+        styles.profile,
+        ComputedStyleProfile::RuntimeFlexPaintV1
+            | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
+    ) {
         return Err(StyleRenderError::UnsupportedRuntimeProfile);
     }
     if !styles.diagnostics.is_empty() {

@@ -176,4 +176,8 @@ pub enum ComputedStyleProfile {
     RuntimeFlexLayoutV1,
     /// C04.10 runtime layout 입력과 완전 투명 또는 불투명 단색 배경 paint입니다.
     RuntimeFlexPaintV1,
+    /// C05.1 사용자 지정 속성을 계산한 제한 runtime layout profile입니다.
+    RuntimeFlexCustomPropertiesV1,
+    /// C05.1 사용자 지정 속성과 단색 배경 paint를 계산한 제한 runtime profile입니다.
+    RuntimeFlexCustomPropertiesPaintV1,
 }

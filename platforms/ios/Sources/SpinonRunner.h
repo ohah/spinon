@@ -31,6 +31,7 @@
 + (NSString *)setRuntimeGpuEnvironment:(uint64_t)handle width:(float)width
                                 height:(float)height scale:(float)scale dark:(BOOL)dark;
 + (NSString *)evalRuntimeGpuFixture:(uint64_t)handle;
++ (NSString *)evalRuntimeGpuCustomPropertiesFixture:(uint64_t)handle;
 + (NSString *)prepareRuntimeGpuWgpuSurface:(uint64_t)handle view:(void *)view;
 + (NSString *)createRuntimeGpuWgpu:(uint64_t)handle width:(uint32_t)width
                              height:(uint32_t)height;

@@ -27,7 +27,9 @@ pub(super) fn project_styles(
                 ComputedStyleProfile::FlexAlignmentV1
                 | ComputedStyleProfile::FlexAlignmentCascadeLayersV1
                 | ComputedStyleProfile::RuntimeFlexLayoutV1
-                | ComputedStyleProfile::RuntimeFlexPaintV1 => {
+                | ComputedStyleProfile::RuntimeFlexPaintV1
+                | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+                | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1 => {
                     parse_align_items(node, required(element, "align-items")?)?
                 }
                 _ => LayoutStyle::default().align_items,
@@ -36,7 +38,9 @@ pub(super) fn project_styles(
                 ComputedStyleProfile::FlexAlignmentV1
                 | ComputedStyleProfile::FlexAlignmentCascadeLayersV1
                 | ComputedStyleProfile::RuntimeFlexLayoutV1
-                | ComputedStyleProfile::RuntimeFlexPaintV1 => {
+                | ComputedStyleProfile::RuntimeFlexPaintV1
+                | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+                | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1 => {
                     parse_justify_content(node, required(element, "justify-content")?)?
                 }
                 _ => LayoutStyle::default().justify_content,
@@ -50,7 +54,9 @@ pub(super) fn project_styles(
             margin: match snapshot.profile {
                 ComputedStyleProfile::FlexMarginV1
                 | ComputedStyleProfile::RuntimeFlexLayoutV1
-                | ComputedStyleProfile::RuntimeFlexPaintV1 => LayoutEdges {
+                | ComputedStyleProfile::RuntimeFlexPaintV1
+                | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+                | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1 => LayoutEdges {
                     top: parse_css_margin(node, "margin-top", required(element, "margin-top")?)?,
                     right: parse_css_margin(
                         node,
@@ -68,7 +74,9 @@ pub(super) fn project_styles(
             },
             padding: match snapshot.profile {
                 ComputedStyleProfile::RuntimeFlexLayoutV1
-                | ComputedStyleProfile::RuntimeFlexPaintV1 => LayoutEdges {
+                | ComputedStyleProfile::RuntimeFlexPaintV1
+                | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+                | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1 => LayoutEdges {
                     top: parse_css_px(node, "padding-top", required(element, "padding-top")?)?,
                     right: parse_css_px(
                         node,

@@ -1,0 +1,1 @@
+root.setAttribute('style','display:flex;box-sizing:border-box;width:100vw;height:100vh;--panel:#123456;background-color:var(--panel);--space:11px;gap:var(--space)');opaque.setAttribute('style','width:20px;height:10px;--surface:#3366ff;background-color:var(--surface)');transparent.setAttribute('style','width:30px;height:10px;--detail:#ffcc33;background-color:var(--detail)');

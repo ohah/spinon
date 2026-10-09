@@ -18,7 +18,8 @@ pub(super) fn computed_background_for_profile(
             let color = super::s04::computed_background_color(computed, node)?;
             Ok((Some(color), Some(ComputedBackgroundPaint::Opaque(color))))
         }
-        ComputedStyleProfile::RuntimeFlexPaintV1 => {
+        ComputedStyleProfile::RuntimeFlexPaintV1
+        | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1 => {
             let paint = computed_runtime_background_paint(computed, node)?;
             let color = match paint {
                 ComputedBackgroundPaint::Transparent => None,
@@ -45,6 +46,24 @@ pub fn compute_runtime_flex_paint_cascade(
         style_revision,
         &properties,
         super::ComputedStyleProfile::RuntimeFlexPaintV1,
+    )
+}
+
+/// C05.1 사용자 지정 속성과 `var()`를 포함하는 runtime layout·paint snapshot을 계산합니다.
+pub fn compute_runtime_flex_custom_properties_paint_cascade(
+    view: &StyloDocumentView,
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+) -> Result<super::ComputedStyleSnapshot, CssCascadeError> {
+    let mut properties = RUNTIME_FLEX_LAYOUT_PROPERTIES.to_vec();
+    properties.push(("background-color", LonghandId::BackgroundColor));
+    compute_cascade(
+        view,
+        &[],
+        viewport,
+        style_revision,
+        &properties,
+        super::ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1,
     )
 }
 

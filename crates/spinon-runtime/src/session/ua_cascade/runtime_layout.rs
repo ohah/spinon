@@ -6,8 +6,8 @@ use spinon_layout::{LayoutError, LayoutFrame, LayoutOutput};
 use spinon_render::RuntimeRenderSnapshot;
 use spinon_style::{
     CascadeDiagnostic, ComputedStyleSnapshot, StyloDocumentView,
-    first_unsupported_runtime_flex_paint_inline_property,
-    first_unsupported_runtime_layout_inline_property,
+    first_unsupported_runtime_custom_properties_inline_property,
+    first_unsupported_runtime_custom_properties_paint_inline_property,
 };
 use spinon_style_to_layout::{StyleLayoutError, compute_runtime_style_layout};
 use spinon_style_to_render::{CurrentLayoutInputs, build_runtime_render_snapshot};
@@ -137,9 +137,9 @@ pub(super) fn compute_runtime_layout(
     let (root, view, styles) =
         layout_context.expect("단일 스타일 root의 layout 입력이 있어야 합니다");
     let unsupported_property = if runtime_paint_enabled {
-        first_unsupported_runtime_flex_paint_inline_property(&view)
+        first_unsupported_runtime_custom_properties_paint_inline_property(&view)
     } else {
-        first_unsupported_runtime_layout_inline_property(&view)
+        first_unsupported_runtime_custom_properties_inline_property(&view)
     };
     if let Some((node, property)) = unsupported_property {
         return Err(layout_failure(

@@ -39,7 +39,9 @@ impl fmt::Display for StyleRenderError {
                 formatter.write_str("S04FlexPaintV1 computed-style profile만 지원합니다")
             }
             Self::UnsupportedRuntimeProfile => {
-                formatter.write_str("RuntimeFlexPaintV1 computed-style profile만 지원합니다")
+                formatter.write_str(
+                    "RuntimeFlexPaintV1 또는 RuntimeFlexCustomPropertiesPaintV1 computed-style profile만 지원합니다",
+                )
             }
             Self::SnapshotMismatch { field } => {
                 write!(
