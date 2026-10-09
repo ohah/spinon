@@ -13,8 +13,8 @@ use crate::{
 impl LayoutInput {
     /// HostDocument의 요소 하위 트리를 순서 보존 레이아웃 snapshot으로 만듭니다.
     ///
-    /// root는 HostRoot 직속 요소여야 합니다. 현재 텍스트 intrinsic measurement가
-    /// 없으므로 선택한 하위 트리에 텍스트 노드가 있으면 입력 전체를 거부합니다.
+    /// root는 HostRoot 직속 요소여야 합니다. 텍스트 intrinsic measurement가 없으므로
+    /// 보이는 텍스트는 거부하고 `display:none` 아래 텍스트는 입력에서 제외합니다.
     pub fn from_host_document(
         snapshot: &HostDocumentSnapshot,
         root: HostNodeHandle,
@@ -74,8 +74,8 @@ impl LayoutInput {
 
         let mut nodes = Vec::new();
         let mut included = BTreeSet::new();
-        let mut pending = vec![root];
-        while let Some(handle) = pending.pop() {
+        let mut pending = vec![(root, false)];
+        while let Some((handle, ancestor_hidden)) = pending.pop() {
             if !included.insert(handle.id()) {
                 return Err(LayoutError::DuplicateNode(handle.id()));
             }
@@ -84,8 +84,17 @@ impl LayoutInput {
                 .node(handle)
                 .ok_or(LayoutError::InvalidHostDocumentRoot(handle.id()))?;
             if matches!(node.kind(), HostNodeKind::Text(_)) {
+                if ancestor_hidden {
+                    continue;
+                }
                 return Err(LayoutError::UnsupportedTextNode(handle.id()));
             }
+
+            let style = styles
+                .get(&handle.id())
+                .copied()
+                .ok_or(LayoutError::MissingStyle(handle.id()))?;
+            let hidden = ancestor_hidden || style.display == crate::LayoutDisplay::None;
 
             let child_handles = snapshot
                 .children(handle)
@@ -100,21 +109,30 @@ impl LayoutInput {
                     });
                 };
                 if matches!(child_node.kind(), HostNodeKind::Text(_)) {
-                    return Err(LayoutError::UnsupportedTextNode(child.id()));
+                    if !hidden {
+                        return Err(LayoutError::UnsupportedTextNode(child.id()));
+                    }
+                    continue;
                 }
                 children.push(child.id());
             }
 
-            let style = styles
-                .get(&handle.id())
-                .copied()
-                .ok_or(LayoutError::MissingStyle(handle.id()))?;
             nodes.push(LayoutNode {
                 id: handle.id(),
                 children,
                 style,
             });
-            pending.extend(child_handles.into_iter().rev());
+            pending.extend(
+                child_handles
+                    .into_iter()
+                    .rev()
+                    .filter(|child| {
+                        snapshot
+                            .node(*child)
+                            .is_some_and(|node| matches!(node.kind(), HostNodeKind::Element(_)))
+                    })
+                    .map(|child| (child, hidden)),
+            );
         }
 
         if let Some(id) = styles.keys().find(|id| !included.contains(*id)) {

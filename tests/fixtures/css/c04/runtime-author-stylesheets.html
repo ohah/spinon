@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spinon C04.11 runtime author stylesheet oracle</title>
+</head>
+<body style="margin:0">
+  <div id="app">
+    <style id="sheet-one" type="text/css" media="screen">
+      #app { display:flex; box-sizing:border-box; width:100vw; height:100vh; flex-direction:row; align-items:flex-start; justify-content:flex-start; gap:var(--space); --space:11px; --surface:#123456; background-color:var(--surface); }
+      div.tile { display:block; box-sizing:border-box; width:24px; height:14px; --tile:#3366ff; background-color:var(--tile); }
+      .tile { width:31px; }
+      #second { width:43px !important; }
+    </style>
+    <div id="first" class="tile" style="width:47px !important"></div>
+    <style id="sheet-two" type="TEXT/CSS;charset=utf-8">
+      .tile { width:41px; }
+    </style>
+    <div id="second" class="tile" style="width:47px"></div>
+  </div>
+  <pre id="reference-result" hidden></pre>
+  <script>
+    (() => {
+      const inventory = window.__SPINON_C04_11_INVENTORY__;
+      if (inventory?.schema !== "spinon-css-runtime-author-stylesheets-inventory/v1"
+        || inventory.fixtureId !== "C04.11-runtime-author-stylesheets-v1") {
+        throw new Error("C04.11 inventory가 없거나 fixture와 다릅니다.");
+      }
+      const nodes = inventory.nodes.map(({ id, properties }) => {
+        const element = document.getElementById(id);
+        if (!element) throw new Error(`fixture node를 찾지 못했습니다: ${id}`);
+        const style = getComputedStyle(element);
+        const rect = element.getBoundingClientRect();
+        return {
+          id,
+          properties: Object.fromEntries(properties.map((property) => [property, style.getPropertyValue(property).trim()])),
+          rect: { x: rect.x, y: rect.y, width: rect.width, height: rect.height },
+        };
+      });
+      const observation = {
+        fixtureId: inventory.fixtureId,
+        viewport: { width: innerWidth, height: innerHeight, deviceScaleFactor: devicePixelRatio },
+        environment: {
+          locale: navigator.language,
+          intlLocale: Intl.DateTimeFormat().resolvedOptions().locale,
+          timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          dark: matchMedia("(prefers-color-scheme: dark)").matches,
+          coarsePointer: matchMedia("(pointer: coarse)").matches,
+          hover: matchMedia("(hover: hover)").matches,
+        },
+        nodes,
+      };
+      const bytes = new TextEncoder().encode(JSON.stringify(observation));
+      let binary = "";
+      for (const byte of bytes) binary += String.fromCharCode(byte);
+      document.querySelector("#reference-result").textContent = btoa(binary);
+    })();
+  </script>
+</body>
+</html>

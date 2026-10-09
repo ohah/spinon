@@ -5,6 +5,11 @@ use std::sync::{Arc, Condvar, Mutex, MutexGuard, PoisonError, mpsc};
 use std::thread::{self, JoinHandle};
 use std::time::{Duration, Instant};
 
+mod author_stylesheets;
+#[cfg(test)]
+mod author_stylesheets_edge_tests;
+#[cfg(test)]
+mod author_stylesheets_tests;
 mod calculation;
 mod runtime_layout;
 use calculation::{RuntimeCalculation, compute_request, compute_request_for_runtime_gpu};

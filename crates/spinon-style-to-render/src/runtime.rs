@@ -7,8 +7,8 @@ use spinon_render::{
 use spinon_style::{ComputedBackgroundPaint, ComputedStyleProfile};
 
 use crate::adapter::{
-    document_preorder, indexed_styles, validate_layout_node_set, validate_revisions,
-    validate_style_node_set, validate_viewport,
+    indexed_styles, validate_layout_node_set, validate_revisions, validate_style_node_set,
+    validate_viewport,
 };
 use crate::{CurrentLayoutInputs, StyleRenderError};
 use spinon_style_to_layout::StyleLayoutOutput;
@@ -35,8 +35,8 @@ pub fn build_runtime_render_snapshot(
     validate_viewport(current.viewport)?;
     validate_revisions(document, styles, output.layout.revision, current)?;
 
-    let preorder = document_preorder(document, root)?;
     let styles_by_node = indexed_styles(styles)?;
+    let preorder = runtime_document_preorder(document, root, &styles_by_node)?;
     validate_style_node_set(&preorder, &styles_by_node)?;
     validate_layout_node_set(&preorder, &output.layout.frames)?;
 
@@ -100,6 +100,63 @@ pub fn build_runtime_render_snapshot(
         current.revision.environment(),
     );
     RuntimeRenderSnapshot::new(key, viewport_css_px, boxes).map_err(Into::into)
+}
+
+fn runtime_document_preorder(
+    document: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    styles: &std::collections::BTreeMap<NodeId, &spinon_style::ComputedElementStyle>,
+) -> Result<Vec<NodeId>, StyleRenderError> {
+    if document.parent(root) != Some(spinon_core::HostParent::Root)
+        || !document
+            .node(root)
+            .is_some_and(|node| matches!(node.kind(), spinon_core::HostNodeKind::Element(_)))
+    {
+        return Err(StyleRenderError::InvalidRoot);
+    }
+
+    let mut result = Vec::new();
+    let mut visited = std::collections::BTreeSet::new();
+    let mut pending = vec![(root, false)];
+    while let Some((handle, ancestor_hidden)) = pending.pop() {
+        if !visited.insert(handle.id()) {
+            return Err(StyleRenderError::DuplicateDocumentNode(handle.id()));
+        }
+        let node = document.node(handle).ok_or(StyleRenderError::InvalidRoot)?;
+        if matches!(node.kind(), spinon_core::HostNodeKind::Text(_)) {
+            if ancestor_hidden {
+                continue;
+            }
+            return Err(StyleRenderError::UnsupportedTextNode(node.id()));
+        }
+        let style = styles
+            .get(&node.id())
+            .ok_or(StyleRenderError::MissingComputedStyle(node.id()))?;
+        let hidden =
+            ancestor_hidden || style.properties.get("display").map(String::as_str) == Some("none");
+        result.push(node.id());
+        if let Some(children) = document.children(handle) {
+            let children = children.collect::<Vec<_>>();
+            for child in &children {
+                let child_node = document.node(*child).ok_or(StyleRenderError::InvalidRoot)?;
+                if matches!(child_node.kind(), spinon_core::HostNodeKind::Text(_)) && !hidden {
+                    return Err(StyleRenderError::UnsupportedTextNode(child_node.id()));
+                }
+            }
+            pending.extend(
+                children
+                    .into_iter()
+                    .rev()
+                    .filter(|child| {
+                        document.node(*child).is_some_and(|node| {
+                            matches!(node.kind(), spinon_core::HostNodeKind::Element(_))
+                        })
+                    })
+                    .map(|child| (child, hidden)),
+            );
+        }
+    }
+    Ok(result)
 }
 
 fn validate_runtime_frame(node_id: NodeId, frame: LayoutFrame) -> Result<(), StyleRenderError> {

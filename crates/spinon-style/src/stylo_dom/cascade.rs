@@ -33,14 +33,17 @@ mod ua_baseline;
 
 use runtime_layout::RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES;
 pub use runtime_layout::{
-    compute_runtime_flex_custom_properties_cascade, compute_runtime_flex_layout_cascade,
+    compute_runtime_flex_custom_properties_cascade,
+    compute_runtime_flex_custom_properties_cascade_with_stylesheets,
+    compute_runtime_flex_layout_cascade,
     first_unsupported_runtime_custom_properties_inline_property,
     first_unsupported_runtime_custom_properties_paint_inline_property,
     first_unsupported_runtime_layout_inline_property,
 };
 pub use runtime_paint::{
-    compute_runtime_flex_custom_properties_paint_cascade, compute_runtime_flex_paint_cascade,
-    first_unsupported_runtime_flex_paint_inline_property,
+    compute_runtime_flex_custom_properties_paint_cascade,
+    compute_runtime_flex_custom_properties_paint_cascade_with_stylesheets,
+    compute_runtime_flex_paint_cascade, first_unsupported_runtime_flex_paint_inline_property,
 };
 
 #[cfg(test)]
@@ -141,6 +144,12 @@ pub enum CssCascadeError {
         stylesheet_id: String,
         feature: String,
     },
+    AuthorStylesheetDiagnostic {
+        stylesheet_id: String,
+        line: u32,
+        column: u32,
+        message: String,
+    },
     UnsupportedComputedBackgroundColor {
         node: NodeId,
         reason: String,
@@ -169,6 +178,15 @@ impl fmt::Display for CssCascadeError {
             } => write!(
                 formatter,
                 "stylesheet {stylesheet_id}가 지원 CSS 입력 profile 밖 기능을 사용합니다: {feature}"
+            ),
+            Self::AuthorStylesheetDiagnostic {
+                stylesheet_id,
+                line,
+                column,
+                message,
+            } => write!(
+                formatter,
+                "stylesheet {stylesheet_id}:{line}:{column} 파싱 진단: {message}"
             ),
             Self::UnsupportedComputedBackgroundColor { node, reason } => write!(
                 formatter,
@@ -324,20 +342,40 @@ fn compute_cascade(
         }
         ComputedStyleProfile::RuntimeFlexPaintV1 => None,
     };
-    if let Some(allowed) = allowed_author_properties
-        && let Some((stylesheet_id, feature)) = match profile {
-            ComputedStyleProfile::FlexAlignmentCascadeLayersV1 => {
-                registry.first_unsupported_author_feature_with_layers(allowed)
-            }
-            ComputedStyleProfile::FlexMediaEnvironmentV1 => {
-                registry.first_unsupported_author_feature_with_media(allowed)
-            }
-            _ => registry.first_unsupported_author_feature(allowed),
-        }
-    {
+    let unsupported_author_feature = match profile {
+        ComputedStyleProfile::FlexAlignmentCascadeLayersV1 => allowed_author_properties
+            .and_then(|allowed| registry.first_unsupported_author_feature_with_layers(allowed)),
+        ComputedStyleProfile::FlexMediaEnvironmentV1 => allowed_author_properties
+            .and_then(|allowed| registry.first_unsupported_author_feature_with_media(allowed)),
+        ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+        | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1 => allowed_author_properties
+            .and_then(|allowed| {
+                registry.first_unsupported_runtime_author_feature(
+                    allowed,
+                    true,
+                    profile == ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1,
+                )
+            }),
+        _ => allowed_author_properties
+            .and_then(|allowed| registry.first_unsupported_author_feature(allowed)),
+    };
+    if let Some((stylesheet_id, feature)) = unsupported_author_feature {
         return Err(CssCascadeError::UnsupportedAuthorCss {
             stylesheet_id,
             feature,
+        });
+    }
+    if matches!(
+        profile,
+        ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+            | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
+    ) && let Some((stylesheet_id, diagnostic)) = registry.first_runtime_author_diagnostic()
+    {
+        return Err(CssCascadeError::AuthorStylesheetDiagnostic {
+            stylesheet_id,
+            line: diagnostic.line,
+            column: diagnostic.column,
+            message: diagnostic.message,
         });
     }
     if profile == ComputedStyleProfile::S04FlexPaintV1 {

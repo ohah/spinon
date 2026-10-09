@@ -1,3 +1,4 @@
+use super::author_stylesheets::collect_runtime_author_stylesheets;
 use super::runtime_layout::{RuntimeLayoutContext, RuntimeLayoutFailure, compute_runtime_layout};
 use super::{
     CascadeDiagnostic, RuntimeLayoutCompleted, RuntimeUaCascadeRoot, WorkRequest,
@@ -5,8 +6,9 @@ use super::{
 };
 use spinon_core::{HostNodeHandle, HostNodeKind, HostParent, StyleRevision};
 use spinon_style::{
-    CssCascadeError, StyloDocumentView, compute_runtime_flex_custom_properties_cascade,
-    compute_runtime_flex_custom_properties_paint_cascade,
+    CssCascadeError, StyloDocumentView,
+    compute_runtime_flex_custom_properties_cascade_with_stylesheets,
+    compute_runtime_flex_custom_properties_paint_cascade_with_stylesheets,
 };
 use std::sync::Arc;
 use std::time::Instant;
@@ -37,6 +39,8 @@ fn compute_request_with_runtime_paint(
     let mut layout_context: Option<RuntimeLayoutContext> = None;
     let mut cascade_duration_us = 0_u128;
     let mut layout_diagnostics = Vec::new();
+    let author_stylesheets =
+        collect_runtime_author_stylesheets(&request.snapshot).map_err(|error| error.to_string())?;
     for root in request.snapshot.root_children() {
         let Some(node) = request.snapshot.node(root) else {
             return Err("HostRoot가 snapshot에 없는 노드를 가리킵니다".to_owned());
@@ -56,7 +60,8 @@ fn compute_request_with_runtime_paint(
                     ));
                 }
                 let cascade_started = Instant::now();
-                let (computed_root, view) = compute_root(request, root, runtime_paint_enabled)?;
+                let (computed_root, view) =
+                    compute_root(request, root, runtime_paint_enabled, &author_stylesheets)?;
                 cascade_duration_us =
                     cascade_duration_us.saturating_add(elapsed_microseconds(cascade_started));
                 layout_diagnostics.extend(computed_root.styles.diagnostics.iter().cloned());
@@ -85,19 +90,22 @@ fn compute_root(
     request: &WorkRequest,
     root: HostNodeHandle,
     runtime_paint_enabled: bool,
+    author_stylesheets: &[spinon_style::StylesheetSource],
 ) -> Result<(RuntimeUaCascadeRoot, StyloDocumentView), String> {
     let view =
         StyloDocumentView::new_html_fragment_child_shared(Arc::clone(&request.snapshot), root)
             .map_err(|error| error.to_string())?;
     let styles = if runtime_paint_enabled {
-        compute_runtime_flex_custom_properties_paint_cascade(
+        compute_runtime_flex_custom_properties_paint_cascade_with_stylesheets(
             &view,
+            author_stylesheets,
             request.viewport,
             StyleRevision::INITIAL,
         )
     } else {
-        compute_runtime_flex_custom_properties_cascade(
+        compute_runtime_flex_custom_properties_cascade_with_stylesheets(
             &view,
+            author_stylesheets,
             request.viewport,
             StyleRevision::INITIAL,
         )

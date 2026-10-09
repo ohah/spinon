@@ -252,6 +252,33 @@ impl StylesheetRegistry {
         css_profile::first_unsupported_author_feature_with_media(self, allowed_properties)
     }
 
+    pub(crate) fn first_unsupported_runtime_author_feature(
+        &self,
+        allowed_properties: &[&str],
+        allow_custom_properties: bool,
+        allow_background_color: bool,
+    ) -> Option<(String, String)> {
+        css_profile::first_unsupported_runtime_author_feature(
+            self,
+            allowed_properties,
+            allow_custom_properties,
+            allow_background_color,
+        )
+    }
+
+    pub(crate) fn first_runtime_author_diagnostic(&self) -> Option<(String, CssParseDiagnostic)> {
+        self.stylesheets
+            .iter()
+            .filter(|stylesheet| stylesheet.origin == CssOrigin::Author)
+            .find_map(|stylesheet| {
+                stylesheet
+                    .diagnostics
+                    .first()
+                    .cloned()
+                    .map(|diagnostic| (stylesheet.id.clone(), diagnostic))
+            })
+    }
+
     pub(crate) fn iter_stylo_sheets(
         &self,
     ) -> impl ExactSizeIterator<Item = (CssOrigin, &DocumentStyleSheet)> {

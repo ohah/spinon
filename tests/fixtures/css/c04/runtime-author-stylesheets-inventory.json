@@ -1,0 +1,33 @@
+{
+  "schema": "spinon-css-runtime-author-stylesheets-inventory/v1",
+  "fixtureId": "C04.11-runtime-author-stylesheets-v1",
+  "viewport": {
+    "width": 301,
+    "height": 100,
+    "deviceScaleFactor": 1
+  },
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "pointer": "coarse",
+    "hover": "none"
+  },
+  "nodes": [
+    { "id": "app", "properties": ["display", "width", "height", "gap", "background-color"] },
+    { "id": "sheet-one", "properties": ["display", "width", "height"] },
+    { "id": "first", "properties": ["display", "width", "height", "background-color"] },
+    { "id": "sheet-two", "properties": ["display", "width", "height"] },
+    { "id": "second", "properties": ["display", "width", "height", "background-color"] }
+  ],
+  "comparison": {
+    "computedValues": "문자열 정확 일치",
+    "nodeGeometry": {
+      "unit": "CSS px",
+      "perCoordinateMaximumAbsoluteError": 0.5,
+      "aggregateAveragesAllowed": false
+    },
+    "styleElement": "UA display none 및 0 geometry",
+    "scope": "type·ID·class·descendant selector와 stylesheet source order만 고정한 입력"
+  }
+}
