@@ -1,6 +1,6 @@
 # R05.3 · Android 실기기 직접 입력 표본 수집 계획
 
-**상태:** 실행 진행 중 · phase-2 exact candidate 28/300 · 총 12개 block × 30회로 사전 고정 · 기존 직접 touch 20건은 feasibility 근거로만 유지
+**상태:** 실행 진행 중 · phase-2 exact candidate 58/300 · 총 12개 block × 30회로 사전 고정 · 유효 block 2/12 · 기존 직접 touch 20건은 feasibility 근거로만 유지
 
 **상위 계획:** [입력→표시 신호 상관 계측](r05-input-to-presentation.md) · [Android 직접 입력 연결](r05-android-physical-input-join.md) · [R05 상태 대장](../spec/STATUS.md)
 
@@ -44,6 +44,10 @@ mise exec -- bun run benchmark:r05:physical-touch:android -- \
 앞선 새-process no-contact 시도는 `prestart_no_contact`로 무효였고 이전 수동 종료는 cutoff보다 67초 늦었다. 새 collector는 가짜 ADB 통합 검증에 이어 Android 16 실기기에서 2초 무접촉 smoke와 fresh R05 process의 60초 no-contact 시도를 통과했다. 두 run에서 자동 timeout이 작동하고 host getevent/logcat client가 SIGINT 뒤 종료됐으며 device `getevent` 잔존은 0개였다. [2초 smoke](../spec/internal/evidence/r05-android-direct-touch-exploration-2026-10-09/collector-device-smoke/README.md) · [60초 시도](../spec/internal/evidence/r05-android-direct-touch-exploration-2026-10-09/phase2-block01-supervised-no-contact/README.md).
 
 2026-10-09 13:09 KST 새 R05 process의 bounded capture는 raw contact 32개를 보존했다. 사전 고정 규칙상 down timestamp와 원본 행 순서로 정한 첫 30개 중 28개가 raw release→`ACTION_UP`→WGPU submit→현재 generation callback→usable fence와 clock bracket까지 exact join됐다. 점수 집합의 나머지 raw 두 건에는 exact `ACTION_UP` 대응이 없었다. 앱 로그에는 별도로 `cancelled`·`outside_target` 제외 이벤트가 하나씩 있으나 해당 행에 event timestamp가 없어 미연결 raw 두 건과 일대일 대응한다고 단정하지 않는다. drain의 raw 추가 두 건은 점수에서 제외됐고 이들과 일치하는 accepted `ACTION_UP` 두 건도 분석기에서 따로 집계한다. 28개 candidate interval의 block envelope는 28.230–61.515ms다. 단일 block이므로 p95는 계산하지 않는다. `target_vsync_id=-1`로 frame/scanout을 연결하지 못하며 제품 latency를 주장하지 않는다. 현재 phase-2 후보는 **28/300**이다. [실행·분석 evidence](../spec/internal/evidence/r05-android-direct-touch-exploration-2026-10-09/phase2-block01-direct-touch/README.md).
+
+2026-10-09 13:48 KST 새 R05 process의 block 02 시도는 `GO` 뒤 60초 동안 raw 접촉이 없어 `prestart_no_contact`로 자동 종료됐다. capture window는 무효이고 raw contact·앱 입력 marker는 0건이다. 종료 뒤 전달된 탭 완료 응답을 이 시도에 붙이지 않았다. 이 시점의 누적은 28/300, 완료한 유효 block은 1/12였다. [무접촉 시도 증거](../spec/internal/evidence/r05-android-direct-touch-exploration-2026-10-09/phase2-block02-prestart/README.md).
+
+2026-10-09 13:56 KST 별도 fresh R05 process와 새 GO window에서 block 02를 다시 수집했다. raw direct contact 30개 전부가 `ACTION_UP`→WGPU submit→현재 generation callback→usable async fence 및 clock bracket까지 exact join됐다. 제외·overlap·protocol error·collector 잔존은 없었다. block 02의 30개 transaction-fence 후보 interval envelope는 28.070127–45.156253ms다. 이 block도 `target_vsync_id=-1`이며 제품 입력 latency·VSync·scanout을 측정한 결과가 아니다. 현재 exact candidate는 **58/300**, 유효 block은 **2/12**, 남은 유효 block은 10개다. [block 02 실행·분석 근거](../spec/internal/evidence/r05-android-direct-touch-exploration-2026-10-09/phase2-block02-direct-touch/README.md).
 
 1. **Block 정의:** 한 block은 동일 APK·기기·OS·orientation·active refresh mode·renderer/backend를 유지하는 단일 fresh app process의 capture 구간이다. 30개 시도는 block 안에 묶어 시간상 의존성을 보존한다. process 재시작은 환경 독립성을 증명하지 않으므로 결과에서 통계적 독립을 단정하지 않는다.
 2. **입력:** 사용자가 중앙 GPU 사각형을 한 손가락으로 직접 누른다. 한 번에 한 접촉만 하고 가능한 한 초당 1회 정도 간격을 둔다. ADB/simulated injection·원격 touch·다른 포인터는 허용하지 않는다.
