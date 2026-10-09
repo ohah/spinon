@@ -34,9 +34,10 @@ mod ua_baseline;
 mod ua_baseline_tests;
 
 pub use margin::compute_flex_margin_cascade;
+pub use margin::compute_flex_media_environment_cascade;
 pub use snapshot::{
     CascadeDiagnostic, ComputedElementStyle, ComputedStyleProfile, ComputedStyleSnapshot,
-    CssViewport,
+    CssColorScheme, CssMediaEnvironment, CssPointerCapabilities, CssPrimaryPointer, CssViewport,
 };
 pub use ua_baseline::compute_supported_elements_ua_cascade;
 
@@ -118,6 +119,7 @@ const FLEX_ALIGNMENT_AUTHOR_PROPERTIES: &[&str] = &[
 #[derive(Debug)]
 pub enum CssCascadeError {
     InvalidViewport,
+    InvalidMediaEnvironment,
     InvalidStylesheetOrigin {
         id: String,
     },
@@ -137,6 +139,9 @@ impl fmt::Display for CssCascadeError {
         match self {
             Self::InvalidViewport => {
                 formatter.write_str("CSS viewport 크기와 배율은 유한한 양수여야 합니다")
+            }
+            Self::InvalidMediaEnvironment => {
+                formatter.write_str("CSS media 환경의 primary·전체 포인터 기능이 모순됩니다")
             }
             Self::InvalidStylesheetOrigin { id } => {
                 write!(
@@ -265,6 +270,9 @@ fn compute_cascade(
     if !viewport.is_valid() {
         return Err(CssCascadeError::InvalidViewport);
     }
+    if !viewport.media_environment.is_valid() {
+        return Err(CssCascadeError::InvalidMediaEnvironment);
+    }
 
     let mut registry = StylesheetRegistry::with_shared_lock(view.shared_lock().clone());
     registry.append(StylesheetSource {
@@ -287,7 +295,9 @@ fn compute_cascade(
         ComputedStyleProfile::BasicCascadeV1 => None,
         ComputedStyleProfile::SupportedElementsUaV1 => None,
         ComputedStyleProfile::FlexLayoutV1 => Some(FLEX_LAYOUT_AUTHOR_PROPERTIES),
-        ComputedStyleProfile::FlexMarginV1 => Some(FLEX_MARGIN_AUTHOR_PROPERTIES),
+        ComputedStyleProfile::FlexMarginV1 | ComputedStyleProfile::FlexMediaEnvironmentV1 => {
+            Some(FLEX_MARGIN_AUTHOR_PROPERTIES)
+        }
         ComputedStyleProfile::FlexAlignmentV1
         | ComputedStyleProfile::FlexAlignmentCascadeLayersV1 => {
             Some(FLEX_ALIGNMENT_AUTHOR_PROPERTIES)
@@ -295,12 +305,15 @@ fn compute_cascade(
         ComputedStyleProfile::S04FlexPaintV1 => Some(s04::S04_FLEX_PAINT_AUTHOR_PROPERTIES),
     };
     if let Some(allowed) = allowed_author_properties
-        && let Some((stylesheet_id, feature)) =
-            if profile == ComputedStyleProfile::FlexAlignmentCascadeLayersV1 {
+        && let Some((stylesheet_id, feature)) = match profile {
+            ComputedStyleProfile::FlexAlignmentCascadeLayersV1 => {
                 registry.first_unsupported_author_feature_with_layers(allowed)
-            } else {
-                registry.first_unsupported_author_feature(allowed)
             }
+            ComputedStyleProfile::FlexMediaEnvironmentV1 => {
+                registry.first_unsupported_author_feature_with_media(allowed)
+            }
+            _ => registry.first_unsupported_author_feature(allowed),
+        }
     {
         return Err(CssCascadeError::UnsupportedAuthorCss {
             stylesheet_id,
@@ -451,3 +464,7 @@ fn compute_element_style(
 #[cfg(test)]
 #[path = "cascade/tests.rs"]
 mod tests;
+
+#[cfg(test)]
+#[path = "cascade/media_environment_tests.rs"]
+mod media_environment_tests;

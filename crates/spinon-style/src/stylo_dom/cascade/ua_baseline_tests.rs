@@ -89,6 +89,7 @@ impl UaFixture {
             height_css_px: 600.0,
             device_scale_factor: 1.0,
             environment_revision: EnvironmentRevision::default(),
+            media_environment: super::CssMediaEnvironment::DESKTOP,
         }
     }
 }
@@ -167,12 +168,15 @@ fn reference() -> Value {
         value["fixture"]["profileCssSha256"],
         "bd15dd612a21cc8cb48e25eb38b86803868667df75cd56f111d7c476ddba3ebd"
     );
-    assert_eq!(value["environment"]["emulation"]["cssViewportPx"]["width"], 800);
-    assert_eq!(value["environment"]["emulation"]["cssViewportPx"]["height"], 600);
     assert_eq!(
-        value["environment"]["emulation"]["deviceScaleFactor"],
-        1
+        value["environment"]["emulation"]["cssViewportPx"]["width"],
+        800
     );
+    assert_eq!(
+        value["environment"]["emulation"]["cssViewportPx"]["height"],
+        600
+    );
+    assert_eq!(value["environment"]["emulation"]["deviceScaleFactor"], 1);
     assert_eq!(value["fixture"]["inventory"]["elementCount"], 9);
     assert_eq!(value["fixture"]["inventory"]["featureCount"], 19);
     assert_eq!(
@@ -456,6 +460,7 @@ fn html_ua_selectors_do_not_match_a_foreign_namespace_element() {
             height_css_px: 600.0,
             device_scale_factor: 1.0,
             environment_revision: EnvironmentRevision::default(),
+            media_environment: super::CssMediaEnvironment::DESKTOP,
         },
         StyleRevision::default(),
     )

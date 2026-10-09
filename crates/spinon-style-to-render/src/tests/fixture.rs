@@ -105,6 +105,7 @@ impl Fixture {
                 .as_f64()
                 .unwrap() as f32,
             environment_revision: Default::default(),
+            media_environment: spinon_style::CssMediaEnvironment::DESKTOP,
         }
     }
 

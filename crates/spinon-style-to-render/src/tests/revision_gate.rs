@@ -40,6 +40,7 @@ fn fixture_viewport(value: &Value, environment_revision: EnvironmentRevision) ->
         height_css_px: number(value, "heightCssPx"),
         device_scale_factor: number(value, "deviceScaleFactor"),
         environment_revision,
+        media_environment: spinon_style::CssMediaEnvironment::DESKTOP,
     }
 }
 

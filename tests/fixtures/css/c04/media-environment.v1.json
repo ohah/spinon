@@ -1,0 +1,55 @@
+{
+  "schema": "spinon-css-c04-media-environment-input/v1",
+  "fixtureId": "C04-media-environment-v1",
+  "viewport": {
+    "widthCssPx": 390,
+    "heightCssPx": 844,
+    "deviceScaleFactor": 3
+  },
+  "cases": [
+    {
+      "id": "desktop-light",
+      "mode": "desktop",
+      "colorScheme": "light",
+      "primaryPointer": "fine",
+      "primaryHover": true,
+      "allPointers": { "coarse": false, "fine": true, "hover": true }
+    },
+    {
+      "id": "desktop-dark",
+      "mode": "desktop",
+      "colorScheme": "dark",
+      "primaryPointer": "fine",
+      "primaryHover": true,
+      "allPointers": { "coarse": false, "fine": true, "hover": true }
+    },
+    {
+      "id": "mobile-light",
+      "mode": "mobile",
+      "colorScheme": "light",
+      "primaryPointer": "coarse",
+      "primaryHover": false,
+      "allPointers": { "coarse": true, "fine": false, "hover": false }
+    },
+    {
+      "id": "mobile-dark",
+      "mode": "mobile",
+      "colorScheme": "dark",
+      "primaryPointer": "coarse",
+      "primaryHover": false,
+      "allPointers": { "coarse": true, "fine": false, "hover": false }
+    }
+  ],
+  "probes": [
+    "scheme-light", "scheme-dark",
+    "pointer-none", "pointer-coarse", "pointer-fine",
+    "hover-none", "hover-hover",
+    "any-pointer-none", "any-pointer-coarse", "any-pointer-fine",
+    "any-hover-none", "any-hover-hover"
+  ],
+  "comparison": {
+    "mediaMatch": "boolean-exact",
+    "computedDisplay": "string-exact",
+    "geometry": "not-measured"
+  }
+}

@@ -17,6 +17,7 @@
     "css:reference:c04-margin-layout": "node tools/css-reference/capture-c04-margin-layout.mjs",
     "css:reference:c04-margin-logical-shorthand": "node tools/css-reference/capture-c04-margin-logical-shorthand.mjs",
     "css:reference:c04-cascade-layers": "node tools/css-reference/capture-c04-cascade-layers.mjs",
+    "css:reference:c04-media-environment": "node tools/css-reference/capture-c04-media-environment.mjs",
     "css:reference:s04": "node tools/css-reference/capture-s04-flex-paint.mjs",
     "css:reference:s04-y": "node tools/css-reference/capture-s04-flex-paint.mjs --fixture=asymmetric-y",
     "css:reference:s04-hit-test": "node tools/css-reference/capture-s04-flex-paint.mjs --fixture=asymmetric-y-hit-test",

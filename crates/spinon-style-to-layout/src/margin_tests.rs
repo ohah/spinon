@@ -3,7 +3,8 @@ use std::fs;
 use serde_json::Value;
 use spinon_core::{EnvironmentRevision, StyleRevision};
 use spinon_style::{
-    ComputedStyleProfile, CssCascadeError, CssOrigin, CssViewport, StylesheetSource,
+    ComputedStyleProfile, CssCascadeError, CssMediaEnvironment, CssOrigin, CssViewport,
+    StylesheetSource,
 };
 
 use crate::{
@@ -64,6 +65,7 @@ fn flex_margin_profile_matches_chromium_values_and_frames() {
             height_css_px: input["viewport"]["heightCssPx"].as_f64().unwrap() as f32,
             device_scale_factor: input["viewport"]["deviceScaleFactor"].as_f64().unwrap() as f32,
             environment_revision: EnvironmentRevision::INITIAL,
+            media_environment: CssMediaEnvironment::DESKTOP,
         };
         let output = compute_flex_margin_style_layout(
             &fixture.document.snapshot(),
@@ -174,6 +176,7 @@ fn logical_margin_shorthands_match_chromium_values_and_frames() {
                 device_scale_factor: input["viewport"]["deviceScaleFactor"].as_f64().unwrap()
                     as f32,
                 environment_revision: EnvironmentRevision::INITIAL,
+                media_environment: CssMediaEnvironment::DESKTOP,
             },
             StyleRevision::INITIAL,
         )
@@ -278,6 +281,7 @@ fn new_profile_preserves_revisions_inline_style_rejection_and_old_profile_bounda
         height_css_px: 80.0,
         device_scale_factor: 1.0,
         environment_revision,
+        media_environment: CssMediaEnvironment::DESKTOP,
     };
     let output = compute_flex_margin_style_layout(
         &fixture.document.snapshot(),
@@ -363,6 +367,7 @@ fn compute(
             height_css_px: 80.0,
             device_scale_factor: 1.0,
             environment_revision: EnvironmentRevision::INITIAL,
+            media_environment: CssMediaEnvironment::DESKTOP,
         },
         StyleRevision::INITIAL,
     )

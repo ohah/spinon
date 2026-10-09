@@ -33,6 +33,7 @@
 | [0024 · C04.3 Flex 정렬 전달](0024-c04-flex-alignment.md) | 별도 computed-style profile에서 제한 align-items·justify-content 값을 Taffy 입력으로 전달 | 내부 계약 `0.1.0` · 고정 Chromium fixture 통과 · 제품 runtime/API 미연결 |
 | [0025 · C04.4 Cascade Layers](0025-c04-cascade-layers.md) | 새 Flex alignment profile에서 Stylo CSS layer ordering·declaration allowlist를 확인하고 Taffy에 전달 | 내부 계약 `0.1.0` · 고정 Chromium 16-case fixture 통과 · 제품 runtime/API 미연결 |
 | [0026 · C04.5 지원 HTML UA 계산 스냅샷](0026-c04-ua-baseline-snapshot.md) | 내장 UA CSS를 Stylo UA origin으로 계산하고 지원 요소 7개 property의 제한 snapshot을 반환 | 내부 Rust API `0.1.0-draft` · C01 Chromium 19개 값 비교 · runtime/layout/GPU 미연결 |
+| [0028 · C04.7 CSS media 환경 입력](0028-c04-media-environment.md) | viewport와 revision에 묶은 scheme·primary/all pointer 입력 및 제한 `@media` cascade | 내부 Rust API `0.1.0` · Chromium 고정 4 case 비교 · OS/runtime 연결 미구현 |
 | [0013 · R15 청크 OTA 호환 모델](0013-r15-ota-chunk-compatibility.md) | 바이너리 호환 ID, 단일 target ESM specifier 매핑이 있는 기능·청크·자원 그래프, typed edge diff·영향 scope·최초/불확실 기준 fallback, 객체 차등 전달·전체 그래프 사전 확보·target별 stale/CAS publish 경계, 로컬 영속 저장·객체 재검증·용량 보호, 서명·압축 제한·상향 sequence rollback 및 offline authorization 미결정 | 내부 설계 제안 `0.1.0-draft` · 배포/로더/API 미구현 |
 | [0014 · C02 번들러 모듈 그래프 adapter](0014-c02-bundler-module-graph.md) | 입력 resolver graph와 최종 emitted ESM graph를 분리해 기능·청크·specifier 대응 및 추출 실패를 기록 | 내부 실험 계약 `0.1.0-draft` · 구현·제품 API 미완료 |
 | [0015 · C02 JavaScript·CSS 자원 그래프 결합](0015-c02-resource-graph-join.md) | 같은 production build에서 0011 CSS 자원과 0014 JavaScript feature·chunk 그래프를 결합 | 내부 구현 계약 `0.1.0-draft` · 고정 fixture 구현 완료 · 제품 API 아님 |
@@ -55,6 +56,7 @@
 - [C04.1 · 기본 cascade slice](./evidence/css-c04-basic-cascade-2026-10-03.md) — fixed Chromium reference의 computed value 80개와 Stylo 내부 cascade 비교 및 제한.
 - [C04.3 · Flex 정렬 전달](./evidence/css-c04-flex-alignment-2026-10-09.md) — 별도 computed-style profile의 16개 Chromium case·64개 frame 비교 및 미지원 경계.
 - [C04.4 · Cascade Layers](./evidence/css-c04-cascade-layers-2026-10-09.md) — 16개 Chromium case·64개 frame에서 layer ordering과 오류 거부를 대조한 내부 profile 근거.
+- [C04.7 · CSS media 환경 입력](./evidence/css-c04-media-environment-2026-10-09.md) — Chromium desktop/mobile × light/dark의 12개 media query와 computed-style 비교, 혼합/무포인터 Stylo mapping 및 제한 경계.
 - [R15 · 청크 OTA 호환 모델](./evidence/r15-ota-chunk-model-2026-10-02.md) — 기존 OTA·C02 문서 사이의 그래프·기능 rollout·runtime 호환·서명/rollback 경계를 정리한 설계 추적 근거. 실행 기능 검증은 포함하지 않음.
 
 - [R10 · Taffy 적합성 실험](./evidence/taffy-r10-2026-09-28.md) — 시뮬레이터·에뮬레이터 로그, 화면 캡처, fixture 범위와 해석 한계.

@@ -133,6 +133,7 @@ impl DocumentFixture {
             height_css_px: fixture["viewport"]["heightCssPx"].as_f64().unwrap() as f32,
             device_scale_factor: fixture["viewport"]["deviceScaleFactor"].as_f64().unwrap() as f32,
             environment_revision: Default::default(),
+            media_environment: spinon_style::CssMediaEnvironment::DESKTOP,
         }
     }
 
