@@ -866,6 +866,7 @@ version = "0.1.0"
 name = "spinon-ffi"
 version = "0.1.0"
 dependencies = [
+ "serde_json",
  "spinon-runtime",
  "spinon-style",
  "spinon-style-layout-spike",
@@ -893,6 +894,7 @@ name = "spinon-runtime"
 version = "0.1.0"
 dependencies = [
  "spinon-core",
+ "spinon-style",
 ]
 
 [[package]]

@@ -22,9 +22,11 @@ impl RuntimeSession {
         }
         let _ = cancel_control(&self.control);
         self.scheduler.stop();
-        if let Some(worker) = lock(&self.worker).take()
-            && worker.join().is_err()
-        {
+        let actor_failed = lock(&self.worker)
+            .take()
+            .is_some_and(|worker| worker.join().is_err());
+        let cascade_result = self.ua_cascade.shutdown();
+        if actor_failed {
             self.scheduler.reject_pending(
                 super::ERR_WORKER,
                 "V8 실행기 오류로 대기 명령을 실행하지 않았습니다",
@@ -34,6 +36,7 @@ impl RuntimeSession {
             control.runtime = None;
             return Err("V8 실행기 스레드가 정상 종료되지 않았습니다");
         }
+        cascade_result?;
         Ok(())
     }
 }
@@ -448,6 +451,8 @@ mod tests {
             submission: Mutex::new(()),
             shutdown_gate: Mutex::new(()),
             next_sequence: std::sync::atomic::AtomicU64::new(0),
+            ua_cascade: super::super::RuntimeUaCascadeCoordinator::new()
+                .expect("테스트 CSS worker를 만들어야 합니다"),
         };
 
         assert!(session.shutdown().is_err());

@@ -42,6 +42,17 @@ impl CssViewport {
             && device_height.is_finite()
             && device_height > 0.0
     }
+
+    /// 런타임 환경 입력이 CSS cascade에 전달 가능한지 검증합니다.
+    pub fn validate(self) -> Result<(), super::CssCascadeError> {
+        if !self.is_valid() {
+            return Err(super::CssCascadeError::InvalidViewport);
+        }
+        if !self.media_environment.is_valid() {
+            return Err(super::CssCascadeError::InvalidMediaEnvironment);
+        }
+        Ok(())
+    }
 }
 
 /// CSS `prefers-color-scheme` media feature 입력입니다.

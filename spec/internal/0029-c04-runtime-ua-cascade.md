@@ -14,7 +14,7 @@ RuntimeSession이 환경 revision 소유자다. 첫 유효 환경은 revision 0�
 
 ## 문서 root와 cascade 범위
 
-HostRoot 직속 Element 하나마다 독립 Stylo cascade root를 만든다. HostRoot, JavaScript `Document`, `documentElement`, `body` 의미를 부여하지 않는다. 모든 root는 같은 immutable HostDocument snapshot과 viewport/environment를 공유한다. 계산 전에 세대·부모·요소 종류를 검증한다. top-level Text가 있거나 root 계산 중 하나라도 실패하면 root 전체 결과를 버리고 오류를 게시한다. root가 없는 snapshot은 유효한 빈 결과다.
+HostRoot 직속 Element 하나마다 독립 fragment cascade scope를 만든다. 선택한 요소는 CSS `:root`/document element가 아니며 root display blockification을 받지 않는다. 따라서 `<span>` root는 `display: inline`을 유지하고 root의 inline `display` 선언도 계산된다. 기존 문서-root Stylo adapter는 그대로 두고, C04.8은 별도의 fragment-root adapter 모드를 사용한다. HostRoot, JavaScript `Document`, `documentElement`, `body` 의미를 HTML 노드나 추가 상속 경계로 만들지 않는다. 모든 root는 같은 immutable HostDocument snapshot과 viewport/environment를 공유하지만 root 사이 selector·상속은 격리된다. 계산 전에 세대·부모·요소 종류를 검증한다. top-level Text가 있거나 root 계산 중 하나라도 실패하면 root 전체 결과를 버리고 오류를 게시한다. root가 없는 snapshot은 유효한 빈 결과다.
 
 현재 stylesheet 목록은 비어 있고 컴파일 시 포함하는 `supported-elements-v0.css`가 UA origin으로 적용된다. `StyloDocumentView`가 기존 HostDocument HTML `style` 속성을 inline author origin으로 파싱하므로 `setAttribute("style", value)`로 설정한 선언도 적용한다. 이 문서 속성 변경은 `DocumentRevision`을 바꾼다. `Element.style`/`CSSStyleDeclaration` CSSOM, author stylesheet 전달·등록, 원격 자원은 포함하지 않는다. 계산 profile은 `SupportedElementsUaV1`이며 선언된 property whitelist만 반환한다.
 
@@ -42,7 +42,7 @@ environmentRevision
 
 revision 값의 오름차순 크기만으로 최신성을 판단하지 않는다. 세션의 generation을 포함한 tuple 전체가 일치해야 한다. `requested`와 `completed` key가 다르면 결과는 오래된 snapshot이다.
 
-요청은 `generation`, `documentRevision`, `renderTreeRevision`, `styleRevision`, `environmentRevision`의 전체 tuple로 식별한다. 새 요청 전에는 이전 `completed`를 비우므로, 공개 상태에 `completed`가 존재하면 그 key는 현재 `requested`와 항상 같다. `state=failed`는 해당 최신 key의 계산 실패를 나타내며 `completed`에는 key와 오류만 있고 roots는 빈 배열이다. `state=empty`는 계산 성공이며 HostRoot 직속 Element가 없음을 뜻한다. Element가 한 개라도 계산되면 `ready`다.
+요청은 `generation`, `documentRevision`, `renderTreeRevision`, `styleRevision`, `environmentRevision`의 전체 tuple로 식별한다. 새 요청을 등록할 때 이전 `completed`를 비우므로, 공개 상태에 `completed`가 있으면 그 안의 `key`는 현재 `requested`와 항상 같다. `state=failed`는 최신 요청의 계산 실패를 나타내며 `completed`는 null이고 `error`에 오류 문자열을 둔다. `state=empty`는 계산 성공이며 HostRoot 직속 Element가 없음을 뜻한다. Element가 한 개라도 계산되면 `ready`다.
 
 ## 내부 C ABI
 
@@ -66,22 +66,27 @@ JSON schema 이름은 `spinon.runtime.ua-cascade.v1`이다.
     "environmentRevision": 1
   },
   "completed": {
-    "generation": 1,
-    "documentRevision": 2,
-    "renderTreeRevision": 2,
-    "styleRevision": 0,
-    "environmentRevision": 1,
+    "key": {
+      "generation": 1,
+      "documentRevision": 2,
+      "renderTreeRevision": 2,
+      "styleRevision": 0,
+      "environmentRevision": 1
+    },
+    "computationDurationUs": 1,
     "roots": [
       { "rootNodeId": 1, "elements": [
         { "nodeId": 1, "properties": { "display": "block" } }
       ], "diagnostics": [] }
-    ],
-    "error": null
-  }
+    ]
+  },
+  "error": null
 }
 ```
 
-위 객체는 필드 모양 설명이다. 각 profile에서 `properties`는 `SupportedElementsUaV1`이 선언한 property whitelist만 포함한다. root별 `diagnostics`는 C04.5와 같이 `sourceId`, nullable `nodeId`, 0-based `line`, 1-based UTF-16 `column`, `message`를 보존한다. 잘못된 inline declaration은 Stylo CSS error-recovery로 무시되고 진단을 남기며 그 자체로 cascade 전체를 실패시키지 않는다. 계산 전에는 `requested` key가 있고 `completed`는 null이다. 새 요청을 게시할 때 이전 `completed`를 비운다. worker는 계산 완료 직전에 요청 key를 재확인하고 현재 요청과 다르면 결과를 버린다. 따라서 `completed`가 있으면 항상 `requested`와 같은 key를 가진다. fatal document/cascade 계산 오류는 top-level `state=failed`, 오류 문자열, 빈 `roots`로 표현한다. `not_configured`는 두 key가 모두 null이고 `pending`은 `requested`만 존재한다. caller는 top-level state가 `ready` 또는 `empty`일 때만 computed-style 값을 사용한다. `empty`는 유효한 빈 cascade 성공이며 `failed`와 구별한다.
+위 객체는 필드 모양 설명이다. 각 profile에서 `properties`는 `SupportedElementsUaV1`이 선언한 property whitelist만 포함한다. root별 `diagnostics`는 C04.5와 같이 `sourceId`, nullable `nodeId`, 0-based `line`, 1-based UTF-16 `column`, `message`를 보존한다. 잘못된 inline declaration은 Stylo CSS error-recovery로 무시되고 진단을 남기며 그 자체로 cascade 전체를 실패시키지 않는다. 계산 전에는 `requested` key가 있고 `completed`는 null이다. 새 요청을 게시할 때 이전 `completed`를 비운다. worker는 계산 완료 직전에 요청 key를 재확인하고 현재 요청과 다르면 결과를 버린다. 따라서 `completed`가 있으면 항상 `requested`와 같은 key를 가진다. fatal document/cascade 계산 오류는 top-level `state=failed`, `completed=null`, 오류 문자열로 표현하며 부분 root 결과를 공개하지 않는다. `not_configured`는 두 key가 모두 null이고 `pending`은 `requested`만 존재한다. caller는 top-level state가 `ready` 또는 `empty`일 때만 computed-style 값을 사용한다. `empty`는 유효한 빈 cascade 성공이며 `failed`와 구별한다.
+
+JSON timing 필드 `completed.computationDurationUs`는 worker가 cascade 계산을 시작한 때부터 계산 함수가 반환할 때까지의 시간이며 queue 대기, JSON 직렬화, actor snapshot 복제 시간은 포함하지 않는다. 새 runtime 측정값은 `RuntimeSession::new()` 보고의 `css_worker_ready_us`와 `session_startup_us`, JS task 보고의 `ua_snapshot_clone_us`와 `ua_snapshot_submit_us`다. 앞의 worker 시간은 thread 생성 요청부터 ready handshake까지, session 시간은 `RuntimeSession::new()` 진입부터 반환 직전까지, clone 시간은 전체 immutable HostDocument snapshot 생성, submit 시간은 CSS 상태 owner 등록까지를 포함한다. 양수 duration은 정수 microsecond로 올림해 1µs 미만을 0으로 오인하지 않게 한다. 소형·대형 fixture의 각 측정은 플랫폼별 단일 진단 표본이며 cascade 측정은 첫 요청과 후속 요청의 순서 효과를 포함하므로 서로의 성능 우열로 해석하지 않는다. 시간값은 해당 에뮬레이터/시뮬레이터 실행의 관찰값이며 제품 성능 보장이 아니다.
 
 복사 API는 Stylo 계산을 기다리지 않는다. `requiredCapacity`는 UTF-8 JSON과 마지막 NUL을 포함한 byte 수다. 출력 포인터·required pointer가 null이거나 capacity가 0이면 인자 오류 `-1`이다. 한 호출에서 현재 상태를 고정해 JSON을 만든다. 필요한 크기가 capacity보다 크면 output[0]을 NUL로 만들 수 있을 때만 그렇게 하고 `-3`과 required capacity를 반환한다. 부분 JSON은 쓰지 않는다. 버퍼 부족 뒤 다음 호출에서 상태가 바뀔 수 있고 caller는 매번 새 required capacity를 확인한다. 아직 환경 또는 결과가 없을 때도 schema가 있는 상태 JSON을 반환한다. JSON 생성·복사 비용은 node/property 수에 비례하므로 UI thread 호출 금지다.
 
@@ -103,7 +108,7 @@ JSON schema 이름은 `spinon.runtime.ua-cascade.v1`이다.
 
 ## 구현 검증 범위
 
-- Rust 단위 테스트: `not_configured`, 최초 빈 snapshot, `empty`, 단일·다중 root, top-level Text 및 root 오류의 원자 실패, detached mutation과 재삽입, task throw 뒤 commit, inline `style` override와 invalid syntax diagnostics, 환경 동일값·오류·overflow, worker 최신 pending slot, stale 결과 폐기, panic 뒤 worker 불능 상태, 짧은 출력 버퍼와 재시도 사이 변경.
+- Rust 단위 테스트: `not_configured`, 최초 빈 snapshot, `empty`, 단일·다중 fragment root, `span`의 Chromium `inline` 값, root inline-style override와 `:root` 미매칭, 기존 문서-root adapter 회귀, top-level Text 및 root 오류의 원자 실패, detached mutation과 재삽입, task throw 뒤 commit, inline `style` invalid syntax diagnostics, 환경 동일값·오류·overflow, worker 최신 pending slot, stale 결과 폐기, panic 뒤 worker 불능 상태, 짧은 출력 버퍼와 재시도 사이 변경.
 - 고정 Chromium fixture: `div`, `span`, `button`, `p` 등의 기존 C04.5 property 문자열을 수정하지 않고 같은 HostDocument node와 property를 정확 비교.
 - Android emulator 및 iOS Simulator: 실제 V8 JS façade가 생성·부착한 요소, 명시 CSS viewport/media 환경 설정, C ABI JSON의 schema·revision·computed value를 각각 확인.
-- session 초기화/유휴 worker 비용과 snapshot 복제 비용: CSS worker 시작을 포함한 `RuntimeSession::new()` 시간, 유휴 thread 수·메모리 관측, 고정 소형 DOM과 대량 DOM에서 actor thread가 snapshot을 만드는 시간을 분리 기록한다. 이 측정은 native GPU frame latency를 증명하지 않는다.
+- session 초기화/유휴 worker 비용과 snapshot 복제 비용: `css_worker_ready_us`, `session_startup_us`, `ua_snapshot_clone_us`, `ua_snapshot_submit_us`, `computationDurationUs`를 Android emulator와 iOS Simulator에서 각각 기록한다. 각 플랫폼에서 4개 연결 root와 추가 256개 detached node 문서의 단일 표본을 확인했다. 유휴 thread 수는 세션별 1개다. 별도 memory profiler를 사용한 thread stack/RSS 계측과 더 큰 문서 크기의 복수 반복 표본은 아직 수행하지 않았다. 첫 cascade와 후속 cascade 시간은 warm/cold 순서가 같지 않아 비교하지 않는다. 이 측정은 native GPU frame latency를 증명하지 않는다.

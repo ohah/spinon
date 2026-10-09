@@ -18,6 +18,7 @@ mod report;
 mod scheduler;
 mod shutdown;
 mod trace;
+mod ua_cascade;
 
 #[cfg(test)]
 use actor::CallbackState;
@@ -30,6 +31,11 @@ use report::{OperationReport, operation_report};
 use scheduler::{EnqueueError, TaskScheduler};
 pub use shutdown::run_shutdown_probe;
 use trace::{TraceSection, finish_reply_handoff};
+use ua_cascade::RuntimeUaCascadeCoordinator;
+pub use ua_cascade::{
+    RuntimeUaCascadeCompleted, RuntimeUaCascadeError, RuntimeUaCascadeKey, RuntimeUaCascadeRoot,
+    RuntimeUaCascadeSnapshot, RuntimeUaCascadeState,
+};
 
 const QUEUE_CAPACITY: usize = 64;
 static NEXT_REPLY_TRACE_COOKIE: AtomicU32 = AtomicU32::new(1);
@@ -66,6 +72,7 @@ pub struct RuntimeSession {
     submission: Mutex<()>,
     shutdown_gate: Mutex<()>,
     next_sequence: AtomicU64,
+    ua_cascade: RuntimeUaCascadeCoordinator,
 }
 
 enum Command {
@@ -222,6 +229,10 @@ fn cancel_control(control: &Mutex<RuntimeControl>) -> i32 {
 impl RuntimeSession {
     /// V8 Isolate를 만들고 소유 전용 OS 스레드의 준비를 기다립니다.
     pub fn new() -> Result<(Self, String), String> {
+        let startup_started = Instant::now();
+        let ua_cascade = RuntimeUaCascadeCoordinator::new()?;
+        let css_worker_ready_us = ua_cascade.startup_duration_us();
+        let actor_ua_cascade = ua_cascade.handle();
         let control = Arc::new(Mutex::new(RuntimeControl::new()));
         let worker_control = Arc::clone(&control);
         let scheduler = Arc::new(TaskScheduler::new());
@@ -229,7 +240,14 @@ impl RuntimeSession {
         let (ready_sender, ready_receiver) = mpsc::channel();
         let worker = thread::Builder::new()
             .name("spinon-js-runtime".to_owned())
-            .spawn(move || actor_loop(worker_scheduler, worker_control, ready_sender))
+            .spawn(move || {
+                actor_loop(
+                    worker_scheduler,
+                    worker_control,
+                    actor_ua_cascade,
+                    ready_sender,
+                )
+            })
             .map_err(|error| format!("실행기 스레드 생성 실패: {error}"))?;
 
         let owner_thread_id = match ready_receiver.recv() {
@@ -244,7 +262,8 @@ impl RuntimeSession {
             }
         };
         let report = format!(
-            "session=ready owner_tid={owner_thread_id} isolate_per_session=1 queue_capacity={QUEUE_CAPACITY} queue_policy=strict-priority-fifo"
+            "session=ready owner_tid={owner_thread_id} isolate_per_session=1 queue_capacity={QUEUE_CAPACITY} queue_policy=strict-priority-fifo css_worker_per_session=1 css_worker_ready_us={css_worker_ready_us} session_startup_us={}",
+            ua_cascade::elapsed_microseconds(startup_started)
         );
         Ok((
             Self {
@@ -254,6 +273,7 @@ impl RuntimeSession {
                 submission: Mutex::new(()),
                 shutdown_gate: Mutex::new(()),
                 next_sequence: AtomicU64::new(0),
+                ua_cascade,
             },
             report,
         ))
@@ -320,6 +340,31 @@ impl RuntimeSession {
     /// 실행 중인 JavaScript를 취소합니다. 실행 중인 작업이 없으면 1을 돌려줍니다.
     pub fn cancel(&self) -> i32 {
         cancel_control(&self.control)
+    }
+
+    /// Runtime이 사용할 CSS 환경을 명시하고 UA cascade 재계산을 요청합니다.
+    pub fn set_ua_cascade_environment(
+        &self,
+        width_css_px: f32,
+        height_css_px: f32,
+        device_scale_factor: f32,
+        media_environment: spinon_style::CssMediaEnvironment,
+    ) -> Result<spinon_core::EnvironmentRevision, RuntimeUaCascadeError> {
+        let _submission = lock(&self.submission);
+        if lock(&self.control).closing {
+            return Err(RuntimeUaCascadeError::Closed);
+        }
+        self.ua_cascade.handle().set_environment(
+            width_css_px,
+            height_css_px,
+            device_scale_factor,
+            media_environment,
+        )
+    }
+
+    /// 최신 UA cascade 상태를 한 번에 복사합니다. Stylo 계산 완료는 기다리지 않습니다.
+    pub fn ua_cascade_snapshot(&self) -> RuntimeUaCascadeSnapshot {
+        self.ua_cascade.handle().snapshot()
     }
 }
 

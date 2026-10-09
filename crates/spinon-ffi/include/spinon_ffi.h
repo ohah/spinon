@@ -85,6 +85,27 @@ int32_t spinon_runtime_session_cancel(SpinonRuntimeSession *session);
    진행 중인 세션 호출과 free의 동시 실행은 금지합니다. */
 int32_t spinon_runtime_session_notify_memory_pressure(
     SpinonRuntimeSession *session, SpinonMemoryPressureLevel level);
+/* 내부 C04.8 진단 API입니다. 환경 설정은 최초 값 revision 0, 이후 변경마다 +1이며
+   Stylo 계산 완료를 기다리지 않습니다. color_scheme: 0=light, 1=dark;
+   primary_pointer: 0=none, 1=coarse, 2=fine; primary_hover는 0|1;
+   all_pointer_flags bit0=coarse, bit1=fine, bit2=hover입니다.
+   잘못된 값 -1, 종료 중 -6, CSS worker 불능 -7이며 성공 revision만 출력합니다.
+   computed-style 조회는 JSON 비용이 있으므로 UI thread에서 호출하지 마세요.
+   JSON 복사 성공 0, 인자 오류 -1, 짧은 버퍼 -3이며 required_capacity는 UTF-8 JSON의
+   마지막 NUL을 포함합니다. 부족한 버퍼에는 부분 JSON 대신 NUL guard만 씁니다.
+   schema는 spinon.runtime.ua-cascade.v1입니다. 두 API는 free와 병행할 수 없습니다. */
+int32_t spinon_runtime_session_set_ua_cascade_environment(
+    SpinonRuntimeSession *session, float width_css_px, float height_css_px,
+    float device_scale_factor, int32_t color_scheme,
+    int32_t primary_pointer, int32_t primary_hover,
+    uint32_t all_pointer_flags, uint64_t *environment_revision);
+int32_t spinon_runtime_session_copy_ua_cascade_json(
+    SpinonRuntimeSession *session, char *output, size_t output_capacity,
+    size_t *required_capacity);
+/* Android emulator·iOS Simulator 내부 검증 fixture입니다. 실제 V8 DOM 변경 뒤 환경 setter,
+   비동기 Stylo 결과와 JSON readback을 검증합니다. 성공 0, 인자 오류 -1, 생성 오류 -2,
+   버퍼 부족 -3, cascade 검증 실패 -7을 반환합니다. 제품 렌더링 API가 아닙니다. */
+int32_t spinon_runtime_ua_cascade_probe(char *output, size_t output_capacity);
 void spinon_runtime_session_free(SpinonRuntimeSession *session);
 
 #ifdef __cplusplus

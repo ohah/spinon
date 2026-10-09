@@ -241,7 +241,7 @@ impl SelectorsElement for StyloElement<'_> {
     }
 
     fn is_root(&self) -> bool {
-        self.handle == self.view.root_handle()
+        self.handle == self.view.root_handle() && self.view.root_matches_root_pseudo()
     }
 
     fn add_element_unique_hashes(&self, _filter: &mut BloomFilter) -> bool {

@@ -62,6 +62,7 @@ public final class MainActivity extends Activity {
     private static native byte[] nativeSessionPriorityProbe();
     private static native byte[] nativeSessionPriorityFairnessProbe();
     private static native byte[] nativeSessionShutdownProbe();
+    private static native byte[] nativeSessionUaCascadeProbe();
     private static native int nativeSessionCancel(long session);
     private static native int nativeSessionMemoryPressure(long session, int level);
     private static native void nativeSessionFree(long session);
@@ -238,6 +239,10 @@ public final class MainActivity extends Activity {
                     ? (R08GpuSurface) surface : null;
             return;
         }
+        if (getIntent().getBooleanExtra("spinon_c048_ua_cascade", false)) {
+            showUaCascadeProbe();
+            return;
+        }
 
         try {
             String source = readAsset("app.js");
@@ -343,6 +348,58 @@ public final class MainActivity extends Activity {
                         .replace(" order=[", "\n실행 순서\n  ")
                         .replace(",", "\n  ")
                         .replace(" owner_tid=", "\n소유 스레드="));
+            });
+        });
+    }
+
+    private void showUaCascadeProbe() {
+        float density = getResources().getDisplayMetrics().density;
+        int inset = Math.round(24 * density);
+        LinearLayout root = new LinearLayout(this);
+        root.setOrientation(LinearLayout.VERTICAL);
+        root.setPadding(inset, inset, inset, inset);
+        root.setBackgroundColor(Color.rgb(14, 19, 31));
+
+        TextView title = new TextView(this);
+        title.setText("SPINON · C04.8 Runtime UA cascade");
+        title.setTextColor(Color.rgb(230, 237, 248));
+        title.setTextSize(20);
+        title.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+        root.addView(title);
+
+        TextView description = new TextView(this);
+        description.setText("개발 전용 · 실제 V8 DOM 변경, Stylo worker, revision JSON을 확인합니다");
+        description.setTextColor(Color.rgb(170, 184, 207));
+        description.setTextSize(13);
+        description.setPadding(0, Math.round(8 * density), 0, Math.round(12 * density));
+        root.addView(description);
+
+        TextView status = new TextView(this);
+        status.setText("실제 V8 UA cascade 검증 중…");
+        status.setTextColor(Color.rgb(97, 185, 255));
+        status.setTextSize(15);
+        root.addView(status);
+
+        TextView report = new TextView(this);
+        report.setTextColor(Color.rgb(230, 237, 248));
+        report.setTypeface(Typeface.MONOSPACE);
+        report.setTextSize(12);
+        ScrollView scroll = new ScrollView(this);
+        scroll.addView(report);
+        root.addView(scroll, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, 0, 1));
+        setContentView(root);
+
+        bootstrapExecutor.execute(() -> {
+            String result = decode(nativeSessionUaCascadeProbe());
+            Log.i(TAG, "SPINON_C048_UA_CASCADE_PROBE=" + result);
+            runOnUiThread(() -> {
+                boolean passed = result.startsWith("status=0 ua_cascade_probe=PASS");
+                status.setText(passed ? "실제 V8 UA cascade 검증 통과" : "실제 V8 UA cascade 검증 실패");
+                report.setText(result.replace(" roots=", "\nroots=")
+                        .replace(" document_revision=", "\ndocument_revision=")
+                        .replace(" ua_values=", "\nua_values=")
+                        .replace(" result=", "\nresult=\n"));
             });
         });
     }
