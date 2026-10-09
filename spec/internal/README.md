@@ -6,6 +6,8 @@
 
 이 폴더에는 앱 작성자에게 공개하지 않는 Rust·C++·플랫폼 사이 호출 계약을 둡니다. 내부 ABI라도 호출자, 입력·출력, 소유권, 오류와 현재 한계를 기록합니다. 이 문서는 제품 API 지원 완료로 연결하지 않으며 상태 표시는 [공식 대장](../STATUS.md)을 따릅니다.
 
+첫 공식 릴리스 전 내부 인터페이스 계약의 숫자 버전은 `0.1.0`으로 유지합니다. 구현·검증·문서 개정은 숫자 버전을 올리는 사유가 아닙니다. `-draft`는 성숙도 상태를 나타내며, 출시·호환성 버전은 사용자가 별도로 확정한 정책을 따릅니다. 의존성·도구의 버전이나 OTA 그래프 형식 버전과 혼동하지 않습니다.
+
 | 문서 | 범위 | 상태 |
 | --- | --- | --- |
 | [0001 · V8 부팅 실험](0001-v8-bootstrap.md) | Bun 번들, Rust FFI, V8 C++ 어댑터와 Android/iOS 빌드 smoke | 실험 전용 |
@@ -16,7 +18,7 @@
 | [0006 · JavaScript 작업 스케줄러](0006-js-task-scheduler.md) | Chromium 참고 우선순위 선택과 앱 작업 출처·프레임·취소 경계 | Android·iOS Simulator 실제 V8에서 1,087개 유입 및 큐 포화·거부·복구를 각 5회 통과 · 무한 유입 보장과 제품 역압력 정책은 미결정 |
 | [0007 · 내장 UA stylesheet 자원](0007-ua-stylesheet-resource.md) | 지원 HTML 기본 CSS 자원과 읽기 전용 FFI 인터페이스 | 내부 초안 · C04.5 제한 computed-style API 연결됨 · 제품 runtime은 미연결 |
 | [0008 · C02 Vite·Rspack CSS 비교 모델](0008-css-bundler-c02.md) | CSS 산출·자원·청크·오류 위치·resolver 비교 조건 | 내부 실험 계약 · C02 미완료 |
-| [0009 · 레이아웃 엔진](0009-layout-engine.md) | S01 Tree 및 HostDocument 요소 snapshot, source·style·environment revision stamp, Taffy 프레임과 fixture stale-admission 경계 | 구현 초안 `0.3.0-draft` · 제한된 Flex subset · 제품 revision 관리자와 GPU queue stale 검사는 미구현 |
+| [0009 · 레이아웃 엔진](0009-layout-engine.md) | S01 Tree 및 HostDocument 요소 snapshot, source·style·environment revision stamp, Taffy 프레임과 fixture stale-admission 경계 | 구현 초안 `0.1.0` · 제한된 Flex subset · 제품 revision 관리자와 GPU queue stale 검사는 미구현 |
 | [0010 · C03 Stylo DOM adapter](0010-stylo-dom-adapter-c03.md) | HostDocument snapshot에서 Stylo 문서·노드·요소·선택자 DOM으로의 변환 계약 | 내부 구현 계약 초안 `0.1.0-draft` · C03 구현 완료, 계산 스타일 제외 |
 | [0011 · C02 CSS 자원 어댑터](0011-css-resource-adapter-c02.md) | Vite·Rspack 산출을 빌드 단위 공통 CSS 자원 snapshot으로 정규화 | 내부 계약 후보 `0.1.0-draft` · fixture 스파이크 전용 · 제품 API 아님 |
 | [0012 · C04 stylesheet 입력 목록](0012-stylesheet-registry-c04.md) | Stylo stylesheet 파싱, CSS 출처·등록 순서와 parser 진단 보존 | 내부 구현 계약 초안 `0.1.0-draft` · cascade 계산 미연결 |
