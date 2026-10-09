@@ -43,7 +43,7 @@ R15는 X01이 사용할 로컬 그래프 매니페스트의 공통 필드와 호
 
 ```json
 {
-  "graphSchemaVersion": "1.0.0-draft",
+  "graphSchemaVersion": "TBD",
   "applicationId": "net.example.app",
   "target": { "platform": "android", "architecture": "arm64-v8a" },
   "runtimeId": "runtime:<binary-compatibility-id>",
@@ -133,7 +133,7 @@ R15는 X01이 사용할 로컬 그래프 매니페스트의 공통 필드와 호
 }
 ```
 
-문서 계약 버전 `0.1.0-draft`와 예제의 `graphSchemaVersion` 값은 서로 다른 표기다. 예제 값 `1.0.0-draft`는 필드 관계를 보여주는 자리표시자이며 실제 그래프 버전 형식이나 호환 계약을 확정하지 않는다. X01/D02 구현 전에 형식과 첫 정식 버전을 정하고, 클라이언트는 자신이 지원한다고 명시한 버전만 허용한다.
+문서 계약의 미출시 내부 숫자 버전 `0.1.0-draft`와 OTA 그래프 schema 값은 서로 다른 영역이다. 예제의 `graphSchemaVersion: "TBD"`는 실제 schema 값이 미정임을 표시하며 SemVer나 구현된 버전이 아니다. X01/D02 구현 전에 형식과 첫 schema 버전을 사용자와 확정하고, 클라이언트는 자신이 지원한다고 명시한 값만 허용한다.
 
 예제의 SHA-256 문자열은 형식만 맞춘 가상 식별자이며 예제 바이트의 실제 digest가 아니다. `sizeBytes`도 같은 이유로 표본 수치다. 실제 fixture에서는 해당 원본 바이트에서 직접 digest와 크기를 계산해야 한다.
 
