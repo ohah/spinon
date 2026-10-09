@@ -1,0 +1,271 @@
+{
+  "schema": "spinon-css-reference/v1",
+  "referenceId": "chromium-macos-arm64-macos-26.5.1-25f80-c04-runtime-layout-ebd9482a8d06-6849840baee0-6d02aa4972a1-ccffd5c5fe77",
+  "captureTool": {
+    "path": "tools/css-reference/capture-runtime-style-layout.mjs",
+    "sha256": "6d02aa4972a10b682b20ec4acca48760bffe3d26ae7760565e1e5b89f4988b3a",
+    "inventorySha256": "6849840baee033a565880224fbd308e87232a407d95bfa02e0ec90885ab4abd7"
+  },
+  "oracle": {
+    "name": "Chromium",
+    "product": "Google Chrome 154.0.8037.98",
+    "version": "154.0.8037.98",
+    "revision": "@b859317bf11f6be47f9b7799ec690a0a42a1fb33",
+    "executable": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "executableSha256": "ccffd5c5fe77ba3212e07c2c69091f8048b73c396b4647ecaa150e1e01a04954"
+  },
+  "environment": {
+    "os": "macOS 26.5.1",
+    "osBuild": "25F80",
+    "architecture": "arm64",
+    "nodeVersion": "v24.20.0",
+    "flags": [
+      "--headless=new",
+      "--no-first-run",
+      "--no-default-browser-check",
+      "--disable-background-networking",
+      "--lang=en-US",
+      "--remote-debugging-port=0",
+      "--user-data-dir=<temporary-profile>"
+    ],
+    "emulation": {
+      "cssViewportPx": {
+        "width": 800,
+        "height": 600
+      },
+      "deviceScaleFactor": 1,
+      "locale": "en-US",
+      "timeZone": "UTC",
+      "media": {
+        "locale": "en-US",
+        "timeZone": "UTC",
+        "colorScheme": "light",
+        "reducedMotion": "no-preference",
+        "forcedColors": "none"
+      }
+    }
+  },
+  "fixture": {
+    "id": "C04-runtime-style-layout",
+    "path": "tests/fixtures/css/c04/runtime-style-layout.html",
+    "sha256": "ebd9482a8d0638630d13168ed5c81531cde286ce1602f64061e6ae868de7ff10",
+    "inventoryPath": "tests/fixtures/css/c04/runtime-style-layout-inventory.json",
+    "inventorySha256": "6849840baee033a565880224fbd308e87232a407d95bfa02e0ec90885ab4abd7",
+    "comparison": {
+      "computedValues": "문자열 정확 일치",
+      "nodeGeometry": {
+        "unit": "CSS px",
+        "perCoordinateMaximumAbsoluteError": 0.5,
+        "aggregateAveragesAllowed": false
+      }
+    }
+  },
+  "observations": {
+    "fixtureId": "C04-runtime-style-layout",
+    "viewport": {
+      "width": 800,
+      "height": 600,
+      "deviceScaleFactor": 1
+    },
+    "environment": {
+      "locale": "en-US",
+      "intlLocale": "en-US",
+      "timeZone": "UTC",
+      "dark": false,
+      "reducedMotion": false,
+      "forcedColors": false
+    },
+    "nodes": [
+      {
+        "id": "root",
+        "properties": {
+          "display": "flex",
+          "box-sizing": "border-box",
+          "width": "300px",
+          "height": "140px",
+          "flex-direction": "row",
+          "flex-grow": "0",
+          "flex-shrink": "1",
+          "flex-basis": "auto",
+          "direction": "ltr",
+          "align-items": "center",
+          "justify-content": "flex-start",
+          "row-gap": "normal",
+          "column-gap": "7px",
+          "margin-top": "0px",
+          "margin-right": "0px",
+          "margin-bottom": "0px",
+          "margin-left": "0px",
+          "padding-top": "5px",
+          "padding-right": "5px",
+          "padding-bottom": "5px",
+          "padding-left": "5px",
+          "margin-block-start": "0px",
+          "margin-block-end": "0px",
+          "margin-inline-start": "0px",
+          "margin-inline-end": "0px",
+          "padding-inline-start": "5px",
+          "list-style-type": "disc"
+        },
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 300,
+          "height": 140
+        }
+      },
+      {
+        "id": "flex-a",
+        "properties": {
+          "display": "block",
+          "box-sizing": "content-box",
+          "width": "40px",
+          "height": "30px",
+          "flex-direction": "row",
+          "flex-grow": "0",
+          "flex-shrink": "1",
+          "flex-basis": "auto",
+          "direction": "ltr",
+          "align-items": "normal",
+          "justify-content": "normal",
+          "row-gap": "normal",
+          "column-gap": "normal",
+          "margin-top": "2px",
+          "margin-right": "2px",
+          "margin-bottom": "2px",
+          "margin-left": "2px",
+          "padding-top": "3px",
+          "padding-right": "3px",
+          "padding-bottom": "3px",
+          "padding-left": "3px",
+          "margin-block-start": "2px",
+          "margin-block-end": "2px",
+          "margin-inline-start": "2px",
+          "margin-inline-end": "2px",
+          "padding-inline-start": "3px",
+          "list-style-type": "disc"
+        },
+        "rect": {
+          "x": 7,
+          "y": 52,
+          "width": 46,
+          "height": 36
+        }
+      },
+      {
+        "id": "flex-b",
+        "properties": {
+          "display": "flex",
+          "box-sizing": "content-box",
+          "width": "100px",
+          "height": "80px",
+          "flex-direction": "column",
+          "flex-grow": "0",
+          "flex-shrink": "1",
+          "flex-basis": "auto",
+          "direction": "ltr",
+          "align-items": "normal",
+          "justify-content": "normal",
+          "row-gap": "4px",
+          "column-gap": "normal",
+          "margin-top": "0px",
+          "margin-right": "0px",
+          "margin-bottom": "0px",
+          "margin-left": "0px",
+          "padding-top": "2px",
+          "padding-right": "2px",
+          "padding-bottom": "2px",
+          "padding-left": "2px",
+          "margin-block-start": "0px",
+          "margin-block-end": "0px",
+          "margin-inline-start": "0px",
+          "margin-inline-end": "0px",
+          "padding-inline-start": "2px",
+          "list-style-type": "disc"
+        },
+        "rect": {
+          "x": 62,
+          "y": 28,
+          "width": 104,
+          "height": 84
+        }
+      },
+      {
+        "id": "block-child",
+        "properties": {
+          "display": "block",
+          "box-sizing": "content-box",
+          "width": "30px",
+          "height": "11px",
+          "flex-direction": "row",
+          "flex-grow": "0",
+          "flex-shrink": "1",
+          "flex-basis": "auto",
+          "direction": "ltr",
+          "align-items": "normal",
+          "justify-content": "normal",
+          "row-gap": "normal",
+          "column-gap": "normal",
+          "margin-top": "3px",
+          "margin-right": "0px",
+          "margin-bottom": "0px",
+          "margin-left": "0px",
+          "padding-top": "0px",
+          "padding-right": "0px",
+          "padding-bottom": "0px",
+          "padding-left": "0px",
+          "margin-block-start": "3px",
+          "margin-block-end": "0px",
+          "margin-inline-start": "0px",
+          "margin-inline-end": "0px",
+          "padding-inline-start": "0px",
+          "list-style-type": "disc"
+        },
+        "rect": {
+          "x": 64,
+          "y": 33,
+          "width": 30,
+          "height": 11
+        }
+      },
+      {
+        "id": "hidden",
+        "properties": {
+          "display": "none",
+          "box-sizing": "content-box",
+          "width": "20px",
+          "height": "20px",
+          "flex-direction": "row",
+          "flex-grow": "0",
+          "flex-shrink": "1",
+          "flex-basis": "auto",
+          "direction": "ltr",
+          "align-items": "normal",
+          "justify-content": "normal",
+          "row-gap": "normal",
+          "column-gap": "normal",
+          "margin-top": "0px",
+          "margin-right": "0px",
+          "margin-bottom": "0px",
+          "margin-left": "0px",
+          "padding-top": "0px",
+          "padding-right": "0px",
+          "padding-bottom": "0px",
+          "padding-left": "0px",
+          "margin-block-start": "0px",
+          "margin-block-end": "0px",
+          "margin-inline-start": "0px",
+          "margin-inline-end": "0px",
+          "padding-inline-start": "0px",
+          "list-style-type": "disc"
+        },
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    ]
+  }
+}

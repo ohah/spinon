@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=800, initial-scale=1">
+  <title>Spinon C04 runtime style layout oracle</title>
+  <style>html, body { margin: 0; }</style>
+</head>
+<body>
+  <div id="root" style="display:flex;box-sizing:border-box;width:300px;height:140px;flex-direction:row;align-items:center;justify-content:flex-start;column-gap:7px;padding:5px">
+    <div id="flex-a" style="display:block;width:40px;height:30px;margin:2px;padding:3px"></div>
+    <div id="flex-b" style="display:flex;width:100px;height:80px;flex-direction:column;row-gap:4px;padding:2px">
+      <div id="block-child" style="display:block;width:30px;height:11px;margin-top:3px"></div>
+      <div id="hidden" style="display:none;width:20px;height:20px"></div>
+    </div>
+  </div>
+  <pre id="reference-result" hidden></pre>
+  <script>
+    (() => {
+      const inventory = window.__SPINON_C04_RUNTIME_LAYOUT_INVENTORY__;
+      if (inventory?.schema !== "spinon-css-runtime-layout-inventory"
+        || inventory.fixtureId !== "C04-runtime-style-layout") {
+        throw new Error("C04 runtime layout inventory가 주입되지 않았거나 fixture와 다릅니다.");
+      }
+      const nodes = inventory.nodes.map(({ id, properties }) => {
+        const element = document.getElementById(id);
+        if (!element) throw new Error(`fixture node를 찾지 못했습니다: ${id}`);
+        const style = getComputedStyle(element);
+        const rect = element.getBoundingClientRect();
+        return {
+          id,
+          properties: Object.fromEntries(properties.map((property) => [property, style.getPropertyValue(property).trim()])),
+          rect: { x: rect.x, y: rect.y, width: rect.width, height: rect.height },
+        };
+      });
+      const observation = {
+        fixtureId: inventory.fixtureId,
+        viewport: { width: innerWidth, height: innerHeight, deviceScaleFactor: devicePixelRatio },
+        environment: {
+          locale: navigator.language,
+          intlLocale: Intl.DateTimeFormat().resolvedOptions().locale,
+          timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          dark: matchMedia("(prefers-color-scheme: dark)").matches,
+          reducedMotion: matchMedia("(prefers-reduced-motion: reduce)").matches,
+          forcedColors: matchMedia("(forced-colors: active)").matches,
+        },
+        nodes,
+      };
+      const bytes = new TextEncoder().encode(JSON.stringify(observation));
+      let binary = "";
+      for (const byte of bytes) binary += String.fromCharCode(byte);
+      document.querySelector("#reference-result").textContent = btoa(binary);
+    })();
+  </script>
+</body>
+</html>

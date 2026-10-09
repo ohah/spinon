@@ -1,0 +1,81 @@
+{
+  "schema": "spinon-css-runtime-layout-inventory",
+  "fixtureId": "C04-runtime-style-layout",
+  "viewport": {
+    "width": 800,
+    "height": 600,
+    "deviceScaleFactor": 1
+  },
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "reducedMotion": "no-preference",
+    "forcedColors": "none"
+  },
+  "nodes": [
+    {
+      "id": "root",
+      "properties": [
+        "display", "box-sizing", "width", "height", "flex-direction", "flex-grow",
+        "flex-shrink", "flex-basis", "direction", "align-items", "justify-content",
+        "row-gap", "column-gap", "margin-top", "margin-right", "margin-bottom",
+        "margin-left", "padding-top", "padding-right", "padding-bottom", "padding-left",
+        "margin-block-start", "margin-block-end", "margin-inline-start", "margin-inline-end",
+        "padding-inline-start", "list-style-type"
+      ]
+    },
+    {
+      "id": "flex-a",
+      "properties": [
+        "display", "box-sizing", "width", "height", "flex-direction", "flex-grow",
+        "flex-shrink", "flex-basis", "direction", "align-items", "justify-content",
+        "row-gap", "column-gap", "margin-top", "margin-right", "margin-bottom",
+        "margin-left", "padding-top", "padding-right", "padding-bottom", "padding-left",
+        "margin-block-start", "margin-block-end", "margin-inline-start", "margin-inline-end",
+        "padding-inline-start", "list-style-type"
+      ]
+    },
+    {
+      "id": "flex-b",
+      "properties": [
+        "display", "box-sizing", "width", "height", "flex-direction", "flex-grow",
+        "flex-shrink", "flex-basis", "direction", "align-items", "justify-content",
+        "row-gap", "column-gap", "margin-top", "margin-right", "margin-bottom",
+        "margin-left", "padding-top", "padding-right", "padding-bottom", "padding-left",
+        "margin-block-start", "margin-block-end", "margin-inline-start", "margin-inline-end",
+        "padding-inline-start", "list-style-type"
+      ]
+    },
+    {
+      "id": "block-child",
+      "properties": [
+        "display", "box-sizing", "width", "height", "flex-direction", "flex-grow",
+        "flex-shrink", "flex-basis", "direction", "align-items", "justify-content",
+        "row-gap", "column-gap", "margin-top", "margin-right", "margin-bottom",
+        "margin-left", "padding-top", "padding-right", "padding-bottom", "padding-left",
+        "margin-block-start", "margin-block-end", "margin-inline-start", "margin-inline-end",
+        "padding-inline-start", "list-style-type"
+      ]
+    },
+    {
+      "id": "hidden",
+      "properties": [
+        "display", "box-sizing", "width", "height", "flex-direction", "flex-grow",
+        "flex-shrink", "flex-basis", "direction", "align-items", "justify-content",
+        "row-gap", "column-gap", "margin-top", "margin-right", "margin-bottom",
+        "margin-left", "padding-top", "padding-right", "padding-bottom", "padding-left",
+        "margin-block-start", "margin-block-end", "margin-inline-start", "margin-inline-end",
+        "padding-inline-start", "list-style-type"
+      ]
+    }
+  ],
+  "comparison": {
+    "computedValues": "문자열 정확 일치",
+    "nodeGeometry": {
+      "unit": "CSS px",
+      "perCoordinateMaximumAbsoluteError": 0.5,
+      "aggregateAveragesAllowed": false
+    }
+  }
+}
