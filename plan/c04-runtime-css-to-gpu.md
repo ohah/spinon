@@ -9,7 +9,11 @@
 
 - 런타임 CSS 장면·WGPU Android/iOS 수직 경로, surface resize 왕복, latest-only lane, pending draw 종료, 내부 draw 오류 주입을 구현하고 시뮬레이터에서 확인했다.
 - Android·Swift lane 100,000건 단일 생산자 및 8개 동시 생산자 시험, 양 플랫폼 10,000개 pending 요청·종료·오류 복구 실행 근거를 [queue 시뮬레이터 기록](../spec/internal/evidence/c04-runtime-css-to-gpu-queue-simulators-2026-10-09.md)에 연결했다.
-- 전체 JS/CSS·Rust workspace·Clippy 회귀와 Android API 37 및 iOS 26.2 Simulator 앱 빌드를 통과했다. 구현 변경에 대한 별도 실패 관점 검토도 [검토 기록](../spec/internal/evidence/c04-runtime-css-to-gpu-final-implementation-review-2026-10-09.md)에 남겼다. 남은 관문은 PR 변경 검토다. 실기기·하드웨어 성능 근거는 주장하지 않는다.
+- 전체 JS/CSS·Rust workspace·Clippy 회귀와 Android API 37 및 iOS 26.2 Simulator 앱 빌드를 통과했다. 구현 변경에 대한 별도 실패 관점 검토도 [검토 기록](../spec/internal/evidence/c04-runtime-css-to-gpu-final-implementation-review-2026-10-09.md)에 남겼다. PR #96 변경 검토를 마쳤으며 병합을 기다린다. 실기기·하드웨어 성능 근거는 주장하지 않는다.
+
+## 확인된 수명 경계
+
+Android demo의 현재 `dispose`는 Activity UI thread에서 runtime·render executor drain을 동기 대기한다. C04.10은 저장소의 고정 JavaScript fixture만 실행하며 V8 실행 취소·시간 제한을 제공하지 않는다. 임의 앱 JavaScript를 연결하기 전에는 Activity UI를 막지 않는 비동기 teardown 또는 별도 취소·종료 계약을 추가한다.
 
 ## 목적
 
