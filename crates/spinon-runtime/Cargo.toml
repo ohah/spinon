@@ -6,6 +6,7 @@ publish = false
 
 [dependencies]
 spinon-core = { path = "../spinon-core" }
+spinon-style = { path = "../spinon-style" }
 
 [lints.rust]
 unsafe_op_in_unsafe_fn = "deny"

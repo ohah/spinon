@@ -274,6 +274,23 @@
                                     message ?: @"empty report"];
 }
 
++ (NSString *)runUaCascadeProbe {
+  std::array<char, 32768> output{};
+  const int32_t status =
+      spinon_runtime_ua_cascade_probe(output.data(), output.size());
+  NSString *message = [NSString stringWithUTF8String:output.data()];
+  if (status == 0) {
+    os_log(OS_LOG_DEFAULT,
+           "SPINON_C048_UA_CASCADE_PROBE %{public}@",
+           message ?: @"empty report");
+  } else {
+    os_log_error(OS_LOG_DEFAULT,
+                 "SPINON_C048_UA_CASCADE_PROBE %{public}@",
+                 message ?: @"empty report");
+  }
+  return message ?: [NSString stringWithFormat:@"status=%d empty report", status];
+}
+
 + (NSString *)evalRuntimeSession:(uint64_t)handle source:(NSString *)source {
   const char *sourceUTF8 = source.UTF8String;
   if (handle == 0 || sourceUTF8 == nullptr) return @"status=-1 invalid session or source";

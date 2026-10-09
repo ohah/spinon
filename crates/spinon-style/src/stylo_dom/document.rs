@@ -2,6 +2,7 @@ use std::{
     collections::{BTreeMap, BTreeSet},
     error::Error,
     fmt,
+    sync::Arc,
 };
 
 use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, HostParent, NodeId};
@@ -45,8 +46,9 @@ impl Error for StyloDomError {}
 ///
 /// 생성한 뒤에는 snapshot과 root가 고정됩니다. 문서 변경은 새 view로 전달합니다.
 pub struct StyloDocumentView {
-    snapshot: HostDocumentSnapshot,
+    snapshot: Arc<HostDocumentSnapshot>,
     root: HostNodeHandle,
+    root_matches_root_pseudo: bool,
     is_html_document: bool,
     quirks_mode: QuirksMode,
     members: BTreeSet<NodeId>,
@@ -63,13 +65,37 @@ impl StyloDocumentView {
         is_html_document: bool,
         quirks_mode: QuirksMode,
     ) -> Result<Self, StyloDomError> {
-        Self::new_with_base_url(
+        Self::new_shared_with_base_url(
+            Arc::new(snapshot),
+            root,
+            is_html_document,
+            quirks_mode,
+            "https://spinon.invalid/document.html",
+        )
+    }
+
+    /// 하나의 immutable snapshot을 여러 cascade root에서 공유하는 Stylo view를 만듭니다.
+    pub fn new_shared(
+        snapshot: Arc<HostDocumentSnapshot>,
+        root: HostNodeHandle,
+        is_html_document: bool,
+        quirks_mode: QuirksMode,
+    ) -> Result<Self, StyloDomError> {
+        Self::new_shared_with_base_url(
             snapshot,
             root,
             is_html_document,
             quirks_mode,
             "https://spinon.invalid/document.html",
         )
+    }
+
+    /// HTML UA cascade가 사용할 no-quirks Stylo view를 공유 snapshot으로 만듭니다.
+    pub fn new_html_shared(
+        snapshot: Arc<HostDocumentSnapshot>,
+        root: HostNodeHandle,
+    ) -> Result<Self, StyloDomError> {
+        Self::new_shared(snapshot, root, true, QuirksMode::NoQuirks)
     }
 
     /// 문서 URL을 기준으로 inline style 속성을 파싱하는 Stylo view를 만듭니다.
@@ -79,6 +105,59 @@ impl StyloDocumentView {
         is_html_document: bool,
         quirks_mode: QuirksMode,
         document_base_url: &str,
+    ) -> Result<Self, StyloDomError> {
+        Self::new_shared_with_base_url(
+            Arc::new(snapshot),
+            root,
+            is_html_document,
+            quirks_mode,
+            document_base_url,
+        )
+    }
+
+    /// immutable snapshot과 base URL을 공유하는 Stylo view를 만듭니다.
+    pub fn new_shared_with_base_url(
+        snapshot: Arc<HostDocumentSnapshot>,
+        root: HostNodeHandle,
+        is_html_document: bool,
+        quirks_mode: QuirksMode,
+        document_base_url: &str,
+    ) -> Result<Self, StyloDomError> {
+        Self::build_shared_with_base_url(
+            snapshot,
+            root,
+            is_html_document,
+            quirks_mode,
+            document_base_url,
+            true,
+        )
+    }
+
+    /// HTML UA cascade에서 앱 mount root를 fragment 자식으로 연결합니다.
+    ///
+    /// 선택한 HostNode는 CSS `:root`가 아니므로 document-root display blockification을 받지
+    /// 않습니다. 기존 `new` 계열 생성자는 문서 root semantics를 계속 사용합니다.
+    pub fn new_html_fragment_child_shared(
+        snapshot: Arc<HostDocumentSnapshot>,
+        root: HostNodeHandle,
+    ) -> Result<Self, StyloDomError> {
+        Self::build_shared_with_base_url(
+            snapshot,
+            root,
+            true,
+            QuirksMode::NoQuirks,
+            "https://spinon.invalid/document.html",
+            false,
+        )
+    }
+
+    fn build_shared_with_base_url(
+        snapshot: Arc<HostDocumentSnapshot>,
+        root: HostNodeHandle,
+        is_html_document: bool,
+        quirks_mode: QuirksMode,
+        document_base_url: &str,
+        root_matches_root_pseudo: bool,
     ) -> Result<Self, StyloDomError> {
         let document_base_url =
             Url::parse(document_base_url).map_err(|_| StyloDomError::InvalidDocumentBaseUrl)?;
@@ -130,6 +209,7 @@ impl StyloDocumentView {
         Ok(Self {
             snapshot,
             root,
+            root_matches_root_pseudo,
             is_html_document,
             quirks_mode,
             members,
@@ -164,17 +244,17 @@ impl StyloDocumentView {
     }
 
     /// view가 고정한 문서 revision입니다.
-    pub const fn document_revision(&self) -> spinon_core::DocumentRevision {
+    pub fn document_revision(&self) -> spinon_core::DocumentRevision {
         self.snapshot.document_revision()
     }
 
     /// 이 view가 고정한 문서 generation입니다.
-    pub const fn generation(&self) -> spinon_core::DocumentGeneration {
+    pub fn generation(&self) -> spinon_core::DocumentGeneration {
         self.snapshot.generation()
     }
 
     /// view가 고정한 연결 표시 트리 revision입니다.
-    pub const fn render_tree_revision(&self) -> spinon_core::RenderTreeRevision {
+    pub fn render_tree_revision(&self) -> spinon_core::RenderTreeRevision {
         self.snapshot.render_tree_revision()
     }
 
@@ -193,6 +273,10 @@ impl StyloDocumentView {
 
     pub(super) const fn root_handle(&self) -> HostNodeHandle {
         self.root
+    }
+
+    pub(super) const fn root_matches_root_pseudo(&self) -> bool {
+        self.root_matches_root_pseudo
     }
 
     pub(super) const fn quirks_mode(&self) -> QuirksMode {

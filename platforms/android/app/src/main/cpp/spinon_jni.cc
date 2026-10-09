@@ -370,6 +370,18 @@ Java_dev_spinon_bootstrap_MainActivity_nativeSessionShutdownProbe(JNIEnv *env,
 }
 
 extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_MainActivity_nativeSessionUaCascadeProbe(JNIEnv *env,
+                                                                   jclass) {
+  std::array<char, 32768> output{};
+  const int32_t status =
+      spinon_runtime_ua_cascade_probe(output.data(), output.size());
+  const std::string report = output.data();
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR, kTag,
+                      "SPINON_C048_UA_CASCADE_PROBE %s", report.c_str());
+  return ToByteArray(env, report);
+}
+
+extern "C" JNIEXPORT jbyteArray JNICALL
 Java_dev_spinon_bootstrap_MainActivity_nativeSessionDispatch(JNIEnv *env, jclass,
                                                               jlong handle,
                                                               jint node_id) {

@@ -27,6 +27,7 @@ pub extern "C" fn spinon_embedded_ua_stylesheet_len() -> usize {
 }
 
 mod runtime_session;
+mod runtime_ua_cascade;
 
 fn copy_report(report: &str, output: &mut [u8]) -> bool {
     let bytes = report.as_bytes();

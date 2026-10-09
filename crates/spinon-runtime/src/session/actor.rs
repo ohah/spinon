@@ -1,5 +1,6 @@
 use super::report::{OperationReport, append_early_error_context, operation_report};
 use super::trace::send_reply;
+use super::ua_cascade::RuntimeUaCascadeHandle;
 use super::{
     Command, ERR_CANCELLED, ERR_CLOSED, ERR_JAVASCRIPT, ERR_WORKER, OK, OperationResponse,
     RuntimeControl, SpinonDocumentCollectionStats, SpinonV8Runtime, TaskScheduler,
@@ -95,6 +96,7 @@ fn v8_collection_stats(runtime: *mut SpinonV8Runtime) -> SpinonDocumentCollectio
 pub(super) fn actor_loop(
     scheduler: Arc<TaskScheduler>,
     control: Arc<Mutex<RuntimeControl>>,
+    ua_cascade: RuntimeUaCascadeHandle,
     ready: mpsc::Sender<Result<u64, String>>,
 ) {
     let mut callbacks = match CallbackState::new() {
@@ -106,6 +108,14 @@ pub(super) fn actor_loop(
     };
     let callback_data = ptr::addr_of_mut!(callbacks).cast::<c_void>();
     let document_data = ptr::addr_of_mut!(callbacks.document).cast::<c_void>();
+    if let Err(error) =
+        ua_cascade.register_document_snapshot(Arc::new(callbacks.document.snapshot()))
+    {
+        let _ = ready.send(Err(format!(
+            "초기 HostDocument snapshot을 등록하지 못했습니다: {error:?}"
+        )));
+        return;
+    }
     let runtime = unsafe {
         spinon_v8_runtime_new(
             on_node,
@@ -164,9 +174,12 @@ pub(super) fn actor_loop(
                     }
                 };
                 callbacks.reset_operation();
+                let document_revision_before = callbacks.document.document_revision();
                 let started_at = Instant::now();
                 let v8_result = unsafe { spinon_v8_runtime_eval(runtime, source.as_ptr()) };
                 let v8_call_us = started_at.elapsed().as_micros();
+                let snapshot_submission =
+                    publish_document_change(&callbacks, &ua_cascade, document_revision_before);
                 let collection_error = v8_collection_error(runtime);
                 let collection_stats = v8_collection_stats(runtime);
                 let v8_was_terminated = unsafe { spinon_v8_runtime_was_terminated(runtime) != 0 };
@@ -183,7 +196,7 @@ pub(super) fn actor_loop(
                 } else {
                     ERR_JAVASCRIPT
                 };
-                let report = operation_report(OperationReport {
+                let mut report = operation_report(OperationReport {
                     sequence,
                     trace_cookie,
                     operation: "eval",
@@ -202,6 +215,7 @@ pub(super) fn actor_loop(
                     collection_stats,
                     error: &error,
                 });
+                append_snapshot_submission_report(&mut report, snapshot_submission);
                 send_reply(reply, OperationResponse { status, report }, trace_cookie);
             }
             Command::Dispatch {
@@ -228,9 +242,12 @@ pub(super) fn actor_loop(
                     }
                 };
                 callbacks.reset_operation();
+                let document_revision_before = callbacks.document.document_revision();
                 let started_at = Instant::now();
                 let v8_result = unsafe { spinon_v8_runtime_dispatch(runtime, node_id) };
                 let v8_call_us = started_at.elapsed().as_micros();
+                let snapshot_submission =
+                    publish_document_change(&callbacks, &ua_cascade, document_revision_before);
                 let post_v8_started_at = Instant::now();
                 let collection_error = v8_collection_error(runtime);
                 let collection_stats = v8_collection_stats(runtime);
@@ -273,6 +290,7 @@ pub(super) fn actor_loop(
                 let report_finalize_started_at = Instant::now();
                 let mut report =
                     format!("{report} post_v8_us={post_v8_us} report_build_us={report_build_us}");
+                append_snapshot_submission_report(&mut report, snapshot_submission);
                 let report_finalize_us = report_finalize_started_at.elapsed().as_micros();
                 let actor_before_reply_us = actor_started_at.elapsed().as_micros();
                 report.push_str(&format!(
@@ -289,6 +307,33 @@ pub(super) fn actor_loop(
         state.runtime = None;
     }
     unsafe { spinon_v8_runtime_free(runtime) };
+}
+
+fn publish_document_change(
+    callbacks: &CallbackState,
+    ua_cascade: &RuntimeUaCascadeHandle,
+    previous_revision: u64,
+) -> Option<(u128, u128, bool)> {
+    if callbacks.document.document_revision() != previous_revision {
+        let clone_started = Instant::now();
+        let snapshot = Arc::new(callbacks.document.snapshot());
+        let snapshot_clone_us = super::ua_cascade::elapsed_microseconds(clone_started);
+        let submit_started = Instant::now();
+        let submitted = ua_cascade.register_document_snapshot(snapshot).is_ok();
+        let submit_us = super::ua_cascade::elapsed_microseconds(submit_started);
+        Some((snapshot_clone_us, submit_us, submitted))
+    } else {
+        None
+    }
+}
+
+fn append_snapshot_submission_report(report: &mut String, submission: Option<(u128, u128, bool)>) {
+    match submission {
+        Some((clone_us, submit_us, submitted)) => report.push_str(&format!(
+            " host_document_changed=true ua_snapshot_clone_us={clone_us} ua_snapshot_submit_us={submit_us} ua_snapshot_submitted={submitted}"
+        )),
+        None => report.push_str(" host_document_changed=false"),
+    }
 }
 
 fn begin_execution(

@@ -34,7 +34,7 @@
 | [0025 · C04.4 Cascade Layers](0025-c04-cascade-layers.md) | 새 Flex alignment profile에서 Stylo CSS layer ordering·declaration allowlist를 확인하고 Taffy에 전달 | 내부 계약 `0.1.0` · 고정 Chromium 16-case fixture 통과 · 제품 runtime/API 미연결 |
 | [0026 · C04.5 지원 HTML UA 계산 스냅샷](0026-c04-ua-baseline-snapshot.md) | 내장 UA CSS를 Stylo UA origin으로 계산하고 지원 요소 7개 property의 제한 snapshot을 반환 | 내부 Rust API `0.1.0-draft` · C01 Chromium 19개 값 비교 · runtime/layout/GPU 미연결 |
 | [0028 · C04.7 CSS media 환경 입력](0028-c04-media-environment.md) | viewport와 revision에 묶은 scheme·primary/all pointer 입력 및 제한 `@media` cascade | 내부 Rust API `0.1.0` · Chromium 고정 4 case 비교 · OS/runtime 연결 미구현 |
-| [0029 · C04.8 Runtime UA cascade 재계산](0029-c04-runtime-ua-cascade.md) | HostDocument 전체 revision snapshot·기존 inline `style` 속성·명시 viewport/media 환경에서 세션 초기화 중 준비한 CSS worker가 내장 UA cascade와 diagnostics를 revision JSON으로 반환 | 내부 runtime 계약 초안 `0.1.0-draft` · 계획 검토 완료 · 구현/V8 실행 미완료 |
+| [0029 · C04.8 Runtime UA cascade 재계산](0029-c04-runtime-ua-cascade.md) | HostDocument 전체 revision snapshot·기존 inline `style` 속성·명시 viewport/media 환경에서 세션 초기화 중 준비한 CSS worker가 내장 UA cascade와 diagnostics를 revision JSON으로 반환 | 내부 runtime 계약 초안 `0.1.0-draft` · Android·iOS Simulator 실제 V8 실행 확인 · 제품 layout/GPU 연결 미완료 |
 | [0013 · R15 청크 OTA 호환 모델](0013-r15-ota-chunk-compatibility.md) | 바이너리 호환 ID, 단일 target ESM specifier 매핑이 있는 기능·청크·자원 그래프, typed edge diff·영향 scope·최초/불확실 기준 fallback, 객체 차등 전달·전체 그래프 사전 확보·target별 stale/CAS publish 경계, 로컬 영속 저장·객체 재검증·용량 보호, 서명·압축 제한·상향 sequence rollback 및 offline authorization 미결정 | 내부 설계 제안 `0.1.0-draft` · 배포/로더/API 미구현 |
 | [0014 · C02 번들러 모듈 그래프 adapter](0014-c02-bundler-module-graph.md) | 입력 resolver graph와 최종 emitted ESM graph를 분리해 기능·청크·specifier 대응 및 추출 실패를 기록 | 내부 실험 계약 `0.1.0-draft` · 구현·제품 API 미완료 |
 | [0015 · C02 JavaScript·CSS 자원 그래프 결합](0015-c02-resource-graph-join.md) | 같은 production build에서 0011 CSS 자원과 0014 JavaScript feature·chunk 그래프를 결합 | 내부 구현 계약 `0.1.0-draft` · 고정 fixture 구현 완료 · 제품 API 아님 |
@@ -59,6 +59,9 @@
 - [C04.4 · Cascade Layers](./evidence/css-c04-cascade-layers-2026-10-09.md) — 16개 Chromium case·64개 frame에서 layer ordering과 오류 거부를 대조한 내부 profile 근거.
 - [C04.7 · CSS media 환경 입력](./evidence/css-c04-media-environment-2026-10-09.md) — Chromium desktop/mobile × light/dark의 12개 media query와 computed-style 비교, 혼합/무포인터 Stylo mapping 및 제한 경계.
 - [C04.8 · Runtime UA cascade 계획 검토](./evidence/c04-runtime-ua-cascade-plan-review-2026-10-09.md) — V8 task 경계, 세션 초기화 CSS worker, latest-wins 요청, full revision 일치, startup/snapshot 복제 비용과 FFI readback 실패 경계.
+- [C04.8 · fragment root 의미 계획 보정 검토](./evidence/c04-runtime-ua-root-semantics-plan-review-2026-10-09.md) — direct HostRoot element의 Stylo `:root` blockification이 Chromium UA computed value를 바꾸는 불일치를 보정하고 fragment semantics·기존 adapter 회귀 경계를 검토.
+- [C04.8 · Runtime UA cascade 시뮬레이터 실행](./evidence/c04-runtime-ua-cascade-simulators-2026-10-09.md) — Android API 37.1·iPhone 17 Pro iOS 26.2 Simulator의 실제 V8 JSON 결과, 화면, 측정 경계와 한계.
+- [C04.8 · Runtime UA cascade 구현 후 검토](./evidence/c04-runtime-ua-cascade-implementation-review-2026-10-09.md) — 구현 경계별 실패 검토, 수정한 계약·iOS 보고서 표시, 현재 남은 제품 범위.
 - [R15 · 청크 OTA 호환 모델](./evidence/r15-ota-chunk-model-2026-10-02.md) — 기존 OTA·C02 문서 사이의 그래프·기능 rollout·runtime 호환·서명/rollback 경계를 정리한 설계 추적 근거. 실행 기능 검증은 포함하지 않음.
 
 - [R10 · Taffy 적합성 실험](./evidence/taffy-r10-2026-09-28.md) — 시뮬레이터·에뮬레이터 로그, 화면 캡처, fixture 범위와 해석 한계.

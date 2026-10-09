@@ -7,6 +7,7 @@ use spinon_core::{
     AttributeName, DocumentChangeBatch, DocumentOperation, ElementState, HostDocument,
     HostNodeHandle, HostParent, OwnerId,
 };
+use std::sync::Arc;
 use style::{
     context::QuirksMode,
     dom::{TDocument, TElement, TNode},
@@ -234,6 +235,21 @@ fn document_and_mixed_node_traversal_expose_only_the_selected_root_subtree() {
     assert!(view.node(fixture.detached).is_none());
     assert!(root.is_root());
     assert!(!view.element(fixture.span).unwrap().is_root());
+}
+
+#[test]
+fn fragment_root_is_not_a_css_root_but_keeps_ordinary_element_matching() {
+    let fixture = Fixture::new();
+    let document_root_view = fixture.view();
+    let fragment_view = StyloDocumentView::new_html_fragment_child_shared(
+        Arc::new(fixture.document.snapshot()),
+        fixture.root,
+    )
+    .unwrap();
+
+    assert!(matches(document_root_view.root_element(), "main:root"));
+    assert!(!matches(fragment_view.root_element(), "main:root"));
+    assert!(matches(fragment_view.root_element(), "main#app-root.shell"));
 }
 
 #[test]

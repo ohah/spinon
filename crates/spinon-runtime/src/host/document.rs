@@ -1,4 +1,3 @@
-#[cfg(test)]
 use spinon_core::HostDocumentSnapshot;
 use spinon_core::{HostDocument, HostNodeHandle, OwnerId};
 use std::collections::{BTreeMap, BTreeSet};
@@ -166,7 +165,6 @@ impl HostDocumentBridge {
         }
     }
 
-    #[cfg(test)]
     pub(crate) fn snapshot(&self) -> HostDocumentSnapshot {
         self.document.snapshot()
     }
