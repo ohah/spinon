@@ -44,3 +44,13 @@ node tools/css-reference/capture-layout.mjs
 ```
 
 이 수집기는 Chromium revision·바이너리 해시·OS·viewport·locale·미디어 상태와 fixture/inventory 해시를 JSON 스냅샷에 기록합니다. 기존 스냅샷은 덮어쓰지 않습니다. 현재 결과는 기준 데이터이며 Spinon 레이아웃 구현과의 비교나 CSS 기능 지원 판정이 아닙니다. 텍스트 shaping, GPU 픽셀, Android·iOS 측정은 포함하지 않습니다.
+
+## C01.3 CSSOM 속성 이름 표면
+
+`cssom-property-surface.html`의 HTML `div`에서 `getComputedStyle(element).item(index)` 이름을 수집합니다. Chrome version·Chromium revision·실행 파일 hash, OS·Node·viewport·scale·locale·time zone·media, fixture·수집기·보조 모듈 hash를 snapshot에 보존합니다. CDP command·event·WebSocket 연결은 제한 시간 안에 완료되어야 합니다. Chromium은 이번 실행 전용 process group으로 띄우며, group 내 각 프로세스가 임시 profile을 사용하는지 확인한 뒤에만 종료 신호를 보냅니다. 종료를 확인한 뒤 profile을 제거합니다. 최종 reference 경로가 이미 있으면 덮어쓰지 않고 실패합니다.
+
+```sh
+mise exec -- bun run css:reference:c01-property-surface
+```
+
+현재 Chrome `154.0.8037.98`에서 author stylesheet·외부 자원이 없는 HTML `div`의 CSSOM 이름 478개를 관찰했습니다. 이는 단일 요소의 computed-style property-name 표면이며 전체 CSS property registry나 속성 지원 목록이 아닙니다. 속성 값, 선언 지원, selector·at-rule, 전체 HTML·SVG, UA stylesheet 내용, layout·text·GPU·Android/iOS 호환성은 확인하지 않습니다. 고정 결과와 해시는 [C01.3 근거](../../spec/internal/evidence/css-c01-cssom-property-surface-2026-10-09.md)에 연결합니다.

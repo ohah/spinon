@@ -12,6 +12,7 @@
     "bundle:bootstrap": "mkdir -p build/spinon/bootstrap && bun build examples/bootstrap/app.js --target=browser --outfile build/spinon/bootstrap/app.js",
     "test:js": "cd examples/bootstrap && bun test",
     "test:css-reference": "node --test tools/css-reference/*.test.mjs",
+    "css:reference:c01-property-surface": "node tools/css-reference/capture-property-surface.mjs",
     "css:reference:s04": "node tools/css-reference/capture-s04-flex-paint.mjs",
     "css:reference:s04-y": "node tools/css-reference/capture-s04-flex-paint.mjs --fixture=asymmetric-y",
     "css:reference:s04-hit-test": "node tools/css-reference/capture-s04-flex-paint.mjs --fixture=asymmetric-y-hit-test",

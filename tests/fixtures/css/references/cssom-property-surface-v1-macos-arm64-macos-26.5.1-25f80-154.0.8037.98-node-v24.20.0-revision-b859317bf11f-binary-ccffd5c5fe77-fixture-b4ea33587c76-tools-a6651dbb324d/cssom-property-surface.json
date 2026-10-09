@@ -1,0 +1,2499 @@
+{
+  "schema": "spinon-cssom-property-surface/v1",
+  "capturedAtUtc": "2026-10-09T03:06:04.709Z",
+  "captureTool": {
+    "path": "tools/css-reference/capture-property-surface.mjs",
+    "sha256": "1b47c66a148998085b117cc3c322bbe51781594fa315e805453560bbcf6dd21f",
+    "supportModules": [
+      {
+        "path": "tools/css-reference/property-surface.mjs",
+        "sha256": "815c84d9cc6ec9f331df6fc310168555567a011ef158eadfe2e466d987b786c7"
+      },
+      {
+        "path": "tools/css-reference/chromium-session.mjs",
+        "sha256": "b010ada41ed75dc2d67ee25abd4266b17930f1de95fc683eebc5cdab6ad2cdc1"
+      }
+    ]
+  },
+  "oracle": {
+    "name": "Chromium",
+    "product": "Chrome/154.0.8037.98",
+    "version": "154.0.8037.98",
+    "revision": "@b859317bf11f6be47f9b7799ec690a0a42a1fb33",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "executable": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "executableSha256": "ccffd5c5fe77ba3212e07c2c69091f8048b73c396b4647ecaa150e1e01a04954"
+  },
+  "environment": {
+    "os": "macOS 26.5.1",
+    "osBuild": "25F80",
+    "architecture": "arm64",
+    "nodeVersion": "v24.20.0",
+    "flags": [
+      "--headless=new",
+      "--no-first-run",
+      "--no-default-browser-check",
+      "--disable-background-networking",
+      "--lang=en-US",
+      "--remote-debugging-port=0",
+      "--user-data-dir=<temporary-profile>"
+    ],
+    "emulation": {
+      "cssViewportPx": {
+        "width": 800,
+        "height": 600
+      },
+      "deviceScaleFactor": 1,
+      "locale": "en-US",
+      "acceptLanguage": "en-US",
+      "timeZone": "UTC",
+      "media": {
+        "prefersColorScheme": "light",
+        "prefersReducedMotion": "no-preference",
+        "forcedColors": "none"
+      }
+    },
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "observed": {
+      "viewport": {
+        "width": 800,
+        "height": 600,
+        "deviceScaleFactor": 1
+      },
+      "locale": "en-US",
+      "intlLocale": "en-US",
+      "timeZone": "UTC",
+      "media": {
+        "prefersColorSchemeDark": false,
+        "prefersReducedMotion": false,
+        "forcedColors": false
+      }
+    }
+  },
+  "fixture": {
+    "id": "C01-cssom-property-surface-v1",
+    "path": "tests/fixtures/css/c01/cssom-property-surface.html",
+    "sha256": "b4ea33587c76c7538a15218bcabcbfd3486bf19704a4e94d35ab0a8c8d7e4513",
+    "element": {
+      "id": "probe",
+      "tag": "div",
+      "namespace": "http://www.w3.org/1999/xhtml"
+    },
+    "authorStyleSheetCount": 0,
+    "externalResourceCount": 0
+  },
+  "inventory": {
+    "id": "C01-cssom-property-surface-v1",
+    "source": "getComputedStyle(element).item(index)",
+    "completeness": "partial",
+    "normalization": "CSSOM 원문 이름을 보존하고 JavaScript 기본 문자열 순서로 정렬",
+    "properties": [
+      {
+        "id": "cssom.property.2d7765626b69742d626f726465722d686f72697a6f6e74616c2d73706163696e67",
+        "name": "-webkit-border-horizontal-spacing",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d626f726465722d696d616765",
+        "name": "-webkit-border-image",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d626f726465722d766572746963616c2d73706163696e67",
+        "name": "-webkit-border-vertical-spacing",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d626f782d616c69676e",
+        "name": "-webkit-box-align",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d626f782d6465636f726174696f6e2d627265616b",
+        "name": "-webkit-box-decoration-break",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d626f782d646972656374696f6e",
+        "name": "-webkit-box-direction",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d626f782d666c6578",
+        "name": "-webkit-box-flex",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d626f782d6f7264696e616c2d67726f7570",
+        "name": "-webkit-box-ordinal-group",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d626f782d6f7269656e74",
+        "name": "-webkit-box-orient",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d626f782d7061636b",
+        "name": "-webkit-box-pack",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d626f782d7265666c656374",
+        "name": "-webkit-box-reflect",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d666f6e742d736d6f6f7468696e67",
+        "name": "-webkit-font-smoothing",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d6c696e652d627265616b",
+        "name": "-webkit-line-break",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d6c696e652d636c616d70",
+        "name": "-webkit-line-clamp",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d6c6f63616c65",
+        "name": "-webkit-locale",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d6d61736b2d626f782d696d616765",
+        "name": "-webkit-mask-box-image",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d6d61736b2d626f782d696d6167652d6f7574736574",
+        "name": "-webkit-mask-box-image-outset",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d6d61736b2d626f782d696d6167652d726570656174",
+        "name": "-webkit-mask-box-image-repeat",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d6d61736b2d626f782d696d6167652d736c696365",
+        "name": "-webkit-mask-box-image-slice",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d6d61736b2d626f782d696d6167652d736f75726365",
+        "name": "-webkit-mask-box-image-source",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d6d61736b2d626f782d696d6167652d7769647468",
+        "name": "-webkit-mask-box-image-width",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d6d61736b2d706f736974696f6e2d78",
+        "name": "-webkit-mask-position-x",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d6d61736b2d706f736974696f6e2d79",
+        "name": "-webkit-mask-position-y",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d72746c2d6f72646572696e67",
+        "name": "-webkit-rtl-ordering",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d727562792d706f736974696f6e",
+        "name": "-webkit-ruby-position",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d7461702d686967686c696768742d636f6c6f72",
+        "name": "-webkit-tap-highlight-color",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d746578742d636f6d62696e65",
+        "name": "-webkit-text-combine",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d746578742d6465636f726174696f6e732d696e2d656666656374",
+        "name": "-webkit-text-decorations-in-effect",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d746578742d66696c6c2d636f6c6f72",
+        "name": "-webkit-text-fill-color",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d746578742d6f7269656e746174696f6e",
+        "name": "-webkit-text-orientation",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d746578742d7365637572697479",
+        "name": "-webkit-text-security",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d746578742d7374726f6b652d636f6c6f72",
+        "name": "-webkit-text-stroke-color",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d746578742d7374726f6b652d7769647468",
+        "name": "-webkit-text-stroke-width",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d757365722d64726167",
+        "name": "-webkit-user-drag",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d757365722d6d6f64696679",
+        "name": "-webkit-user-modify",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.2d7765626b69742d77726974696e672d6d6f6465",
+        "name": "-webkit-writing-mode",
+        "category": "prefixed"
+      },
+      {
+        "id": "cssom.property.616363656e742d636f6c6f72",
+        "name": "accent-color",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.616c69676e2d636f6e74656e74",
+        "name": "align-content",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.616c69676e2d6974656d73",
+        "name": "align-items",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.616c69676e2d73656c66",
+        "name": "align-self",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.616c69676e6d656e742d626173656c696e65",
+        "name": "alignment-baseline",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.616e63686f722d6e616d65",
+        "name": "anchor-name",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.616e63686f722d73636f7065",
+        "name": "anchor-scope",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.616e696d6174696f6e2d636f6d706f736974696f6e",
+        "name": "animation-composition",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.616e696d6174696f6e2d64656c6179",
+        "name": "animation-delay",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.616e696d6174696f6e2d646972656374696f6e",
+        "name": "animation-direction",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.616e696d6174696f6e2d6475726174696f6e",
+        "name": "animation-duration",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.616e696d6174696f6e2d66696c6c2d6d6f6465",
+        "name": "animation-fill-mode",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.616e696d6174696f6e2d697465726174696f6e2d636f756e74",
+        "name": "animation-iteration-count",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.616e696d6174696f6e2d6e616d65",
+        "name": "animation-name",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.616e696d6174696f6e2d706c61792d7374617465",
+        "name": "animation-play-state",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.616e696d6174696f6e2d72616e67652d656e64",
+        "name": "animation-range-end",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.616e696d6174696f6e2d72616e67652d7374617274",
+        "name": "animation-range-start",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.616e696d6174696f6e2d74696d656c696e65",
+        "name": "animation-timeline",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.616e696d6174696f6e2d74696d696e672d66756e6374696f6e",
+        "name": "animation-timing-function",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.616e696d6174696f6e2d74726967676572",
+        "name": "animation-trigger",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6170702d726567696f6e",
+        "name": "app-region",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.617070656172616e6365",
+        "name": "appearance",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6173706563742d726174696f",
+        "name": "aspect-ratio",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6261636b64726f702d66696c746572",
+        "name": "backdrop-filter",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6261636b666163652d7669736962696c697479",
+        "name": "backface-visibility",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6261636b67726f756e642d6174746163686d656e74",
+        "name": "background-attachment",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6261636b67726f756e642d626c656e642d6d6f6465",
+        "name": "background-blend-mode",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6261636b67726f756e642d636c6970",
+        "name": "background-clip",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6261636b67726f756e642d636f6c6f72",
+        "name": "background-color",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6261636b67726f756e642d696d616765",
+        "name": "background-image",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6261636b67726f756e642d6f726967696e",
+        "name": "background-origin",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6261636b67726f756e642d706f736974696f6e",
+        "name": "background-position",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6261636b67726f756e642d726570656174",
+        "name": "background-repeat",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6261636b67726f756e642d73697a65",
+        "name": "background-size",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626173656c696e652d7368696674",
+        "name": "baseline-shift",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626173656c696e652d736f75726365",
+        "name": "baseline-source",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626c6f636b2d73697a65",
+        "name": "block-size",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d626c6f636b2d656e642d636f6c6f72",
+        "name": "border-block-end-color",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d626c6f636b2d656e642d7374796c65",
+        "name": "border-block-end-style",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d626c6f636b2d656e642d7769647468",
+        "name": "border-block-end-width",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d626c6f636b2d73746172742d636f6c6f72",
+        "name": "border-block-start-color",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d626c6f636b2d73746172742d7374796c65",
+        "name": "border-block-start-style",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d626c6f636b2d73746172742d7769647468",
+        "name": "border-block-start-width",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d626f74746f6d2d636f6c6f72",
+        "name": "border-bottom-color",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d626f74746f6d2d6c6566742d726164697573",
+        "name": "border-bottom-left-radius",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d626f74746f6d2d72696768742d726164697573",
+        "name": "border-bottom-right-radius",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d626f74746f6d2d7374796c65",
+        "name": "border-bottom-style",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d626f74746f6d2d7769647468",
+        "name": "border-bottom-width",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d636f6c6c61707365",
+        "name": "border-collapse",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d656e642d656e642d726164697573",
+        "name": "border-end-end-radius",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d656e642d73746172742d726164697573",
+        "name": "border-end-start-radius",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d696d6167652d6f7574736574",
+        "name": "border-image-outset",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d696d6167652d726570656174",
+        "name": "border-image-repeat",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d696d6167652d736c696365",
+        "name": "border-image-slice",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d696d6167652d736f75726365",
+        "name": "border-image-source",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d696d6167652d7769647468",
+        "name": "border-image-width",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d696e6c696e652d656e642d636f6c6f72",
+        "name": "border-inline-end-color",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d696e6c696e652d656e642d7374796c65",
+        "name": "border-inline-end-style",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d696e6c696e652d656e642d7769647468",
+        "name": "border-inline-end-width",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d696e6c696e652d73746172742d636f6c6f72",
+        "name": "border-inline-start-color",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d696e6c696e652d73746172742d7374796c65",
+        "name": "border-inline-start-style",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d696e6c696e652d73746172742d7769647468",
+        "name": "border-inline-start-width",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d6c6566742d636f6c6f72",
+        "name": "border-left-color",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d6c6566742d7374796c65",
+        "name": "border-left-style",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d6c6566742d7769647468",
+        "name": "border-left-width",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d72696768742d636f6c6f72",
+        "name": "border-right-color",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d72696768742d7374796c65",
+        "name": "border-right-style",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d72696768742d7769647468",
+        "name": "border-right-width",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d7368617065",
+        "name": "border-shape",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d73746172742d656e642d726164697573",
+        "name": "border-start-end-radius",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d73746172742d73746172742d726164697573",
+        "name": "border-start-start-radius",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d746f702d636f6c6f72",
+        "name": "border-top-color",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d746f702d6c6566742d726164697573",
+        "name": "border-top-left-radius",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d746f702d72696768742d726164697573",
+        "name": "border-top-right-radius",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d746f702d7374796c65",
+        "name": "border-top-style",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f726465722d746f702d7769647468",
+        "name": "border-top-width",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f74746f6d",
+        "name": "bottom",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f782d6465636f726174696f6e2d627265616b",
+        "name": "box-decoration-break",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f782d736861646f77",
+        "name": "box-shadow",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.626f782d73697a696e67",
+        "name": "box-sizing",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.627265616b2d6166746572",
+        "name": "break-after",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.627265616b2d6265666f7265",
+        "name": "break-before",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.627265616b2d696e73696465",
+        "name": "break-inside",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.62756666657265642d72656e646572696e67",
+        "name": "buffered-rendering",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.63617074696f6e2d73696465",
+        "name": "caption-side",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.63617265742d616e696d6174696f6e",
+        "name": "caret-animation",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.63617265742d636f6c6f72",
+        "name": "caret-color",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.63617265742d7368617065",
+        "name": "caret-shape",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636c656172",
+        "name": "clear",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636c6970",
+        "name": "clip",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636c69702d70617468",
+        "name": "clip-path",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636c69702d72756c65",
+        "name": "clip-rule",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6c6f72",
+        "name": "color",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6c6f722d696e746572706f6c6174696f6e",
+        "name": "color-interpolation",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6c6f722d696e746572706f6c6174696f6e2d66696c74657273",
+        "name": "color-interpolation-filters",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6c6f722d72656e646572696e67",
+        "name": "color-rendering",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6c6f722d736368656d65",
+        "name": "color-scheme",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6c756d6e2d636f756e74",
+        "name": "column-count",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6c756d6e2d66696c6c",
+        "name": "column-fill",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6c756d6e2d676170",
+        "name": "column-gap",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6c756d6e2d686569676874",
+        "name": "column-height",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6c756d6e2d72756c652d627265616b",
+        "name": "column-rule-break",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6c756d6e2d72756c652d636f6c6f72",
+        "name": "column-rule-color",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6c756d6e2d72756c652d696e7365742d6361702d656e64",
+        "name": "column-rule-inset-cap-end",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6c756d6e2d72756c652d696e7365742d6361702d7374617274",
+        "name": "column-rule-inset-cap-start",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6c756d6e2d72756c652d696e7365742d6a756e6374696f6e2d656e64",
+        "name": "column-rule-inset-junction-end",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6c756d6e2d72756c652d696e7365742d6a756e6374696f6e2d7374617274",
+        "name": "column-rule-inset-junction-start",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6c756d6e2d72756c652d7374796c65",
+        "name": "column-rule-style",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6c756d6e2d72756c652d7669736962696c6974792d6974656d73",
+        "name": "column-rule-visibility-items",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6c756d6e2d72756c652d7769647468",
+        "name": "column-rule-width",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6c756d6e2d7370616e",
+        "name": "column-span",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6c756d6e2d7769647468",
+        "name": "column-width",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6c756d6e2d77726170",
+        "name": "column-wrap",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6e7461696e",
+        "name": "contain",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6e7461696e2d696e7472696e7369632d626c6f636b2d73697a65",
+        "name": "contain-intrinsic-block-size",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6e7461696e2d696e7472696e7369632d686569676874",
+        "name": "contain-intrinsic-height",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6e7461696e2d696e7472696e7369632d696e6c696e652d73697a65",
+        "name": "contain-intrinsic-inline-size",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6e7461696e2d696e7472696e7369632d73697a65",
+        "name": "contain-intrinsic-size",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6e7461696e2d696e7472696e7369632d7769647468",
+        "name": "contain-intrinsic-width",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6e7461696e65722d6e616d65",
+        "name": "container-name",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6e7461696e65722d74797065",
+        "name": "container-type",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6e74656e74",
+        "name": "content",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f6e74656e742d7669736962696c697479",
+        "name": "content-visibility",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f726e65722d626f74746f6d2d6c6566742d7368617065",
+        "name": "corner-bottom-left-shape",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f726e65722d626f74746f6d2d72696768742d7368617065",
+        "name": "corner-bottom-right-shape",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f726e65722d656e642d656e642d7368617065",
+        "name": "corner-end-end-shape",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f726e65722d656e642d73746172742d7368617065",
+        "name": "corner-end-start-shape",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f726e65722d73746172742d656e642d7368617065",
+        "name": "corner-start-end-shape",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f726e65722d73746172742d73746172742d7368617065",
+        "name": "corner-start-start-shape",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f726e65722d746f702d6c6566742d7368617065",
+        "name": "corner-top-left-shape",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f726e65722d746f702d72696768742d7368617065",
+        "name": "corner-top-right-shape",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f756e7465722d696e6372656d656e74",
+        "name": "counter-increment",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f756e7465722d7265736574",
+        "name": "counter-reset",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.636f756e7465722d736574",
+        "name": "counter-set",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.637572736f72",
+        "name": "cursor",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6378",
+        "name": "cx",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6379",
+        "name": "cy",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.64",
+        "name": "d",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.646972656374696f6e",
+        "name": "direction",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.646973706c6179",
+        "name": "display",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.646f6d696e616e742d626173656c696e65",
+        "name": "dominant-baseline",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.64796e616d69632d72616e67652d6c696d6974",
+        "name": "dynamic-range-limit",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.656d7074792d63656c6c73",
+        "name": "empty-cells",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6669656c642d73697a696e67",
+        "name": "field-sizing",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.66696c6c",
+        "name": "fill",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.66696c6c2d6f706163697479",
+        "name": "fill-opacity",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.66696c6c2d72756c65",
+        "name": "fill-rule",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.66696c746572",
+        "name": "filter",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666c65782d6261736973",
+        "name": "flex-basis",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666c65782d646972656374696f6e",
+        "name": "flex-direction",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666c65782d67726f77",
+        "name": "flex-grow",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666c65782d6c696e652d636f756e74",
+        "name": "flex-line-count",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666c65782d736872696e6b",
+        "name": "flex-shrink",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666c65782d77726170",
+        "name": "flex-wrap",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666c6f6174",
+        "name": "float",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666c6f6f642d636f6c6f72",
+        "name": "flood-color",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666c6f6f642d6f706163697479",
+        "name": "flood-opacity",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666f6e742d66616d696c79",
+        "name": "font-family",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666f6e742d666561747572652d73657474696e6773",
+        "name": "font-feature-settings",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666f6e742d6b65726e696e67",
+        "name": "font-kerning",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666f6e742d6c616e67756167652d6f76657272696465",
+        "name": "font-language-override",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666f6e742d6f70746963616c2d73697a696e67",
+        "name": "font-optical-sizing",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666f6e742d70616c65747465",
+        "name": "font-palette",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666f6e742d73697a65",
+        "name": "font-size",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666f6e742d73697a652d61646a757374",
+        "name": "font-size-adjust",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666f6e742d73747265746368",
+        "name": "font-stretch",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666f6e742d7374796c65",
+        "name": "font-style",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666f6e742d73796e7468657369732d736d616c6c2d63617073",
+        "name": "font-synthesis-small-caps",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666f6e742d73796e7468657369732d7374796c65",
+        "name": "font-synthesis-style",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666f6e742d73796e7468657369732d776569676874",
+        "name": "font-synthesis-weight",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666f6e742d76617269616e74",
+        "name": "font-variant",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666f6e742d76617269616e742d616c7465726e61746573",
+        "name": "font-variant-alternates",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666f6e742d76617269616e742d63617073",
+        "name": "font-variant-caps",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666f6e742d76617269616e742d656173742d617369616e",
+        "name": "font-variant-east-asian",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666f6e742d76617269616e742d656d6f6a69",
+        "name": "font-variant-emoji",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666f6e742d76617269616e742d6c6967617475726573",
+        "name": "font-variant-ligatures",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666f6e742d76617269616e742d6e756d65726963",
+        "name": "font-variant-numeric",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666f6e742d76617269616e742d706f736974696f6e",
+        "name": "font-variant-position",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666f6e742d766172696174696f6e2d73657474696e6773",
+        "name": "font-variation-settings",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666f6e742d776569676874",
+        "name": "font-weight",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.666f726365642d636f6c6f722d61646a757374",
+        "name": "forced-color-adjust",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6672616d652d73697a696e67",
+        "name": "frame-sizing",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.677269642d6175746f2d636f6c756d6e73",
+        "name": "grid-auto-columns",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.677269642d6175746f2d666c6f77",
+        "name": "grid-auto-flow",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.677269642d6175746f2d726f7773",
+        "name": "grid-auto-rows",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.677269642d636f6c756d6e2d656e64",
+        "name": "grid-column-end",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.677269642d636f6c756d6e2d7374617274",
+        "name": "grid-column-start",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.677269642d726f772d656e64",
+        "name": "grid-row-end",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.677269642d726f772d7374617274",
+        "name": "grid-row-start",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.677269642d74656d706c6174652d6172656173",
+        "name": "grid-template-areas",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.677269642d74656d706c6174652d636f6c756d6e73",
+        "name": "grid-template-columns",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.677269642d74656d706c6174652d726f7773",
+        "name": "grid-template-rows",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.686569676874",
+        "name": "height",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.68797068656e6174652d636861726163746572",
+        "name": "hyphenate-character",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.68797068656e6174652d6c696d69742d6368617273",
+        "name": "hyphenate-limit-chars",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.68797068656e73",
+        "name": "hyphens",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.696d6167652d6f7269656e746174696f6e",
+        "name": "image-orientation",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.696d6167652d72656e646572696e67",
+        "name": "image-rendering",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.696e697469616c2d6c6574746572",
+        "name": "initial-letter",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.696e6c696e652d73697a65",
+        "name": "inline-size",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.696e7365742d626c6f636b2d656e64",
+        "name": "inset-block-end",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.696e7365742d626c6f636b2d7374617274",
+        "name": "inset-block-start",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.696e7365742d696e6c696e652d656e64",
+        "name": "inset-inline-end",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.696e7365742d696e6c696e652d7374617274",
+        "name": "inset-inline-start",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.696e7465726163746976697479",
+        "name": "interactivity",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.696e7465726573742d64656c61792d656e64",
+        "name": "interest-delay-end",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.696e7465726573742d64656c61792d7374617274",
+        "name": "interest-delay-start",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.696e746572706f6c6174652d73697a65",
+        "name": "interpolate-size",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.69736f6c6174696f6e",
+        "name": "isolation",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6a7573746966792d636f6e74656e74",
+        "name": "justify-content",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6a7573746966792d6974656d73",
+        "name": "justify-items",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6a7573746966792d73656c66",
+        "name": "justify-self",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6c656674",
+        "name": "left",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6c65747465722d73706163696e67",
+        "name": "letter-spacing",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6c69676874696e672d636f6c6f72",
+        "name": "lighting-color",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6c696e652d627265616b",
+        "name": "line-break",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6c696e652d686569676874",
+        "name": "line-height",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6c6973742d7374796c652d696d616765",
+        "name": "list-style-image",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6c6973742d7374796c652d706f736974696f6e",
+        "name": "list-style-position",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6c6973742d7374796c652d74797065",
+        "name": "list-style-type",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d617267696e2d626c6f636b2d656e64",
+        "name": "margin-block-end",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d617267696e2d626c6f636b2d7374617274",
+        "name": "margin-block-start",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d617267696e2d626f74746f6d",
+        "name": "margin-bottom",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d617267696e2d696e6c696e652d656e64",
+        "name": "margin-inline-end",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d617267696e2d696e6c696e652d7374617274",
+        "name": "margin-inline-start",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d617267696e2d6c656674",
+        "name": "margin-left",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d617267696e2d7269676874",
+        "name": "margin-right",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d617267696e2d746f70",
+        "name": "margin-top",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d61726b65722d656e64",
+        "name": "marker-end",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d61726b65722d6d6964",
+        "name": "marker-mid",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d61726b65722d7374617274",
+        "name": "marker-start",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d61736b2d636c6970",
+        "name": "mask-clip",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d61736b2d636f6d706f73697465",
+        "name": "mask-composite",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d61736b2d696d616765",
+        "name": "mask-image",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d61736b2d6d6f6465",
+        "name": "mask-mode",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d61736b2d6f726967696e",
+        "name": "mask-origin",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d61736b2d706f736974696f6e",
+        "name": "mask-position",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d61736b2d726570656174",
+        "name": "mask-repeat",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d61736b2d73697a65",
+        "name": "mask-size",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d61736b2d74797065",
+        "name": "mask-type",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d6174682d6465707468",
+        "name": "math-depth",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d6174682d7368696674",
+        "name": "math-shift",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d6174682d7374796c65",
+        "name": "math-style",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d61782d626c6f636b2d73697a65",
+        "name": "max-block-size",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d61782d686569676874",
+        "name": "max-height",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d61782d696e6c696e652d73697a65",
+        "name": "max-inline-size",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d61782d7769647468",
+        "name": "max-width",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d696e2d626c6f636b2d73697a65",
+        "name": "min-block-size",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d696e2d686569676874",
+        "name": "min-height",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d696e2d696e6c696e652d73697a65",
+        "name": "min-inline-size",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d696e2d7769647468",
+        "name": "min-width",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6d69782d626c656e642d6d6f6465",
+        "name": "mix-blend-mode",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6f626a6563742d666974",
+        "name": "object-fit",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6f626a6563742d706f736974696f6e",
+        "name": "object-position",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6f626a6563742d766965772d626f78",
+        "name": "object-view-box",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6f66667365742d616e63686f72",
+        "name": "offset-anchor",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6f66667365742d64697374616e6365",
+        "name": "offset-distance",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6f66667365742d70617468",
+        "name": "offset-path",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6f66667365742d706f736974696f6e",
+        "name": "offset-position",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6f66667365742d726f74617465",
+        "name": "offset-rotate",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6f706163697479",
+        "name": "opacity",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6f72646572",
+        "name": "order",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6f727068616e73",
+        "name": "orphans",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6f75746c696e652d636f6c6f72",
+        "name": "outline-color",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6f75746c696e652d6f6666736574",
+        "name": "outline-offset",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6f75746c696e652d7374796c65",
+        "name": "outline-style",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6f75746c696e652d7769647468",
+        "name": "outline-width",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6f766572666c6f772d616e63686f72",
+        "name": "overflow-anchor",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6f766572666c6f772d626c6f636b",
+        "name": "overflow-block",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6f766572666c6f772d636c69702d6d617267696e",
+        "name": "overflow-clip-margin",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6f766572666c6f772d696e6c696e65",
+        "name": "overflow-inline",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6f766572666c6f772d77726170",
+        "name": "overflow-wrap",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6f766572666c6f772d78",
+        "name": "overflow-x",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6f766572666c6f772d79",
+        "name": "overflow-y",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6f7665726c6179",
+        "name": "overlay",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6f7665727363726f6c6c2d6265686176696f722d626c6f636b",
+        "name": "overscroll-behavior-block",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6f7665727363726f6c6c2d6265686176696f722d696e6c696e65",
+        "name": "overscroll-behavior-inline",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6f7665727363726f6c6c2d6265686176696f722d78",
+        "name": "overscroll-behavior-x",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.6f7665727363726f6c6c2d6265686176696f722d79",
+        "name": "overscroll-behavior-y",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.70616464696e672d626c6f636b2d656e64",
+        "name": "padding-block-end",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.70616464696e672d626c6f636b2d7374617274",
+        "name": "padding-block-start",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.70616464696e672d626f74746f6d",
+        "name": "padding-bottom",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.70616464696e672d696e6c696e652d656e64",
+        "name": "padding-inline-end",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.70616464696e672d696e6c696e652d7374617274",
+        "name": "padding-inline-start",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.70616464696e672d6c656674",
+        "name": "padding-left",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.70616464696e672d7269676874",
+        "name": "padding-right",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.70616464696e672d746f70",
+        "name": "padding-top",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7061696e742d6f72646572",
+        "name": "paint-order",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7065727370656374697665",
+        "name": "perspective",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.70657273706563746976652d6f726967696e",
+        "name": "perspective-origin",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.706f696e7465722d6576656e7473",
+        "name": "pointer-events",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.706f736974696f6e",
+        "name": "position",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.706f736974696f6e2d616e63686f72",
+        "name": "position-anchor",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.706f736974696f6e2d61726561",
+        "name": "position-area",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.706f736974696f6e2d7472792d66616c6c6261636b73",
+        "name": "position-try-fallbacks",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.706f736974696f6e2d7472792d6f72646572",
+        "name": "position-try-order",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.706f736974696f6e2d7669736962696c697479",
+        "name": "position-visibility",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7072696e742d636f6c6f722d61646a757374",
+        "name": "print-color-adjust",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.71756f746573",
+        "name": "quotes",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.72",
+        "name": "r",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.72656164696e672d666c6f77",
+        "name": "reading-flow",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.72656164696e672d6f72646572",
+        "name": "reading-order",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.726573697a65",
+        "name": "resize",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7269676874",
+        "name": "right",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.726f74617465",
+        "name": "rotate",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.726f772d676170",
+        "name": "row-gap",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.726f772d72756c652d627265616b",
+        "name": "row-rule-break",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.726f772d72756c652d636f6c6f72",
+        "name": "row-rule-color",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.726f772d72756c652d696e7365742d6361702d656e64",
+        "name": "row-rule-inset-cap-end",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.726f772d72756c652d696e7365742d6361702d7374617274",
+        "name": "row-rule-inset-cap-start",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.726f772d72756c652d696e7365742d6a756e6374696f6e2d656e64",
+        "name": "row-rule-inset-junction-end",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.726f772d72756c652d696e7365742d6a756e6374696f6e2d7374617274",
+        "name": "row-rule-inset-junction-start",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.726f772d72756c652d7374796c65",
+        "name": "row-rule-style",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.726f772d72756c652d7669736962696c6974792d6974656d73",
+        "name": "row-rule-visibility-items",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.726f772d72756c652d7769647468",
+        "name": "row-rule-width",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.727562792d616c69676e",
+        "name": "ruby-align",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.727562792d6f76657268616e67",
+        "name": "ruby-overhang",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.727562792d706f736974696f6e",
+        "name": "ruby-position",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.72756c652d6f7665726c6170",
+        "name": "rule-overlap",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7278",
+        "name": "rx",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7279",
+        "name": "ry",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363616c65",
+        "name": "scale",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c2d617869732d6c6f636b",
+        "name": "scroll-axis-lock",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c2d6265686176696f72",
+        "name": "scroll-behavior",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c2d696e697469616c2d746172676574",
+        "name": "scroll-initial-target",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c2d6d617267696e2d626c6f636b2d656e64",
+        "name": "scroll-margin-block-end",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c2d6d617267696e2d626c6f636b2d7374617274",
+        "name": "scroll-margin-block-start",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c2d6d617267696e2d626f74746f6d",
+        "name": "scroll-margin-bottom",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c2d6d617267696e2d696e6c696e652d656e64",
+        "name": "scroll-margin-inline-end",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c2d6d617267696e2d696e6c696e652d7374617274",
+        "name": "scroll-margin-inline-start",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c2d6d617267696e2d6c656674",
+        "name": "scroll-margin-left",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c2d6d617267696e2d7269676874",
+        "name": "scroll-margin-right",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c2d6d617267696e2d746f70",
+        "name": "scroll-margin-top",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c2d6d61726b65722d67726f7570",
+        "name": "scroll-marker-group",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c2d70616464696e672d626c6f636b2d656e64",
+        "name": "scroll-padding-block-end",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c2d70616464696e672d626c6f636b2d7374617274",
+        "name": "scroll-padding-block-start",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c2d70616464696e672d626f74746f6d",
+        "name": "scroll-padding-bottom",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c2d70616464696e672d696e6c696e652d656e64",
+        "name": "scroll-padding-inline-end",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c2d70616464696e672d696e6c696e652d7374617274",
+        "name": "scroll-padding-inline-start",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c2d70616464696e672d6c656674",
+        "name": "scroll-padding-left",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c2d70616464696e672d7269676874",
+        "name": "scroll-padding-right",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c2d70616464696e672d746f70",
+        "name": "scroll-padding-top",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c2d736e61702d616c69676e",
+        "name": "scroll-snap-align",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c2d736e61702d73746f70",
+        "name": "scroll-snap-stop",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c2d736e61702d74797065",
+        "name": "scroll-snap-type",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c2d7461726765742d67726f7570",
+        "name": "scroll-target-group",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c2d74696d656c696e652d61786973",
+        "name": "scroll-timeline-axis",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c2d74696d656c696e652d6e616d65",
+        "name": "scroll-timeline-name",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c6261722d636f6c6f72",
+        "name": "scrollbar-color",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c6261722d677574746572",
+        "name": "scrollbar-gutter",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7363726f6c6c6261722d7769647468",
+        "name": "scrollbar-width",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.73686170652d696d6167652d7468726573686f6c64",
+        "name": "shape-image-threshold",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.73686170652d6d617267696e",
+        "name": "shape-margin",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.73686170652d6f757473696465",
+        "name": "shape-outside",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.73686170652d72656e646572696e67",
+        "name": "shape-rendering",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.737065616b",
+        "name": "speak",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.73746f702d636f6c6f72",
+        "name": "stop-color",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.73746f702d6f706163697479",
+        "name": "stop-opacity",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7374726f6b65",
+        "name": "stroke",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7374726f6b652d646173686172726179",
+        "name": "stroke-dasharray",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7374726f6b652d646173686f6666736574",
+        "name": "stroke-dashoffset",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7374726f6b652d6c696e65636170",
+        "name": "stroke-linecap",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7374726f6b652d6c696e656a6f696e",
+        "name": "stroke-linejoin",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7374726f6b652d6d697465726c696d6974",
+        "name": "stroke-miterlimit",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7374726f6b652d6f706163697479",
+        "name": "stroke-opacity",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7374726f6b652d7769647468",
+        "name": "stroke-width",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7461622d73697a65",
+        "name": "tab-size",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7461626c652d6c61796f7574",
+        "name": "table-layout",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d616c69676e",
+        "name": "text-align",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d616c69676e2d6c617374",
+        "name": "text-align-last",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d616e63686f72",
+        "name": "text-anchor",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d6175746f7370616365",
+        "name": "text-autospace",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d626f782d65646765",
+        "name": "text-box-edge",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d626f782d7472696d",
+        "name": "text-box-trim",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d636f6d62696e652d75707269676874",
+        "name": "text-combine-upright",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d6465636f726174696f6e",
+        "name": "text-decoration",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d6465636f726174696f6e2d636f6c6f72",
+        "name": "text-decoration-color",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d6465636f726174696f6e2d6c696e65",
+        "name": "text-decoration-line",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d6465636f726174696f6e2d736b69702d696e6b",
+        "name": "text-decoration-skip-ink",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d6465636f726174696f6e2d7374796c65",
+        "name": "text-decoration-style",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d6465636f726174696f6e2d746869636b6e657373",
+        "name": "text-decoration-thickness",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d656d7068617369732d636f6c6f72",
+        "name": "text-emphasis-color",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d656d7068617369732d706f736974696f6e",
+        "name": "text-emphasis-position",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d656d7068617369732d7374796c65",
+        "name": "text-emphasis-style",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d666974",
+        "name": "text-fit",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d696e64656e74",
+        "name": "text-indent",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d6a757374696679",
+        "name": "text-justify",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d6f7269656e746174696f6e",
+        "name": "text-orientation",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d6f766572666c6f77",
+        "name": "text-overflow",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d72656e646572696e67",
+        "name": "text-rendering",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d736861646f77",
+        "name": "text-shadow",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d73697a652d61646a757374",
+        "name": "text-size-adjust",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d73706163696e672d7472696d",
+        "name": "text-spacing-trim",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d7472616e73666f726d",
+        "name": "text-transform",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d756e6465726c696e652d6f6666736574",
+        "name": "text-underline-offset",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d756e6465726c696e652d706f736974696f6e",
+        "name": "text-underline-position",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d777261702d6d6f6465",
+        "name": "text-wrap-mode",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746578742d777261702d7374796c65",
+        "name": "text-wrap-style",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.74696d656c696e652d73636f7065",
+        "name": "timeline-scope",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.74696d656c696e652d747269676765722d61637469766174696f6e2d72616e67652d656e64",
+        "name": "timeline-trigger-activation-range-end",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.74696d656c696e652d747269676765722d61637469766174696f6e2d72616e67652d7374617274",
+        "name": "timeline-trigger-activation-range-start",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.74696d656c696e652d747269676765722d6163746976652d72616e67652d656e64",
+        "name": "timeline-trigger-active-range-end",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.74696d656c696e652d747269676765722d6163746976652d72616e67652d7374617274",
+        "name": "timeline-trigger-active-range-start",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.74696d656c696e652d747269676765722d6e616d65",
+        "name": "timeline-trigger-name",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.74696d656c696e652d747269676765722d736f75726365",
+        "name": "timeline-trigger-source",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746f70",
+        "name": "top",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.746f7563682d616374696f6e",
+        "name": "touch-action",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7472616e73666f726d",
+        "name": "transform",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7472616e73666f726d2d626f78",
+        "name": "transform-box",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7472616e73666f726d2d6f726967696e",
+        "name": "transform-origin",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7472616e73666f726d2d7374796c65",
+        "name": "transform-style",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7472616e736974696f6e2d6265686176696f72",
+        "name": "transition-behavior",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7472616e736974696f6e2d64656c6179",
+        "name": "transition-delay",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7472616e736974696f6e2d6475726174696f6e",
+        "name": "transition-duration",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7472616e736974696f6e2d70726f7065727479",
+        "name": "transition-property",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7472616e736974696f6e2d74696d696e672d66756e6374696f6e",
+        "name": "transition-timing-function",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7472616e736c617465",
+        "name": "translate",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.747269676765722d73636f7065",
+        "name": "trigger-scope",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.756e69636f64652d62696469",
+        "name": "unicode-bidi",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.757365722d73656c656374",
+        "name": "user-select",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.766563746f722d656666656374",
+        "name": "vector-effect",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.766572746963616c2d616c69676e",
+        "name": "vertical-align",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.766965772d74696d656c696e652d61786973",
+        "name": "view-timeline-axis",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.766965772d74696d656c696e652d696e736574",
+        "name": "view-timeline-inset",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.766965772d74696d656c696e652d6e616d65",
+        "name": "view-timeline-name",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.766965772d7472616e736974696f6e2d636c617373",
+        "name": "view-transition-class",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.766965772d7472616e736974696f6e2d67726f7570",
+        "name": "view-transition-group",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.766965772d7472616e736974696f6e2d6e616d65",
+        "name": "view-transition-name",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.766965772d7472616e736974696f6e2d73636f7065",
+        "name": "view-transition-scope",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7669736962696c697479",
+        "name": "visibility",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.77686974652d73706163652d636f6c6c61707365",
+        "name": "white-space-collapse",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7769646f7773",
+        "name": "widows",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7769647468",
+        "name": "width",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.77696c6c2d6368616e6765",
+        "name": "will-change",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.77696e646f772d64726167",
+        "name": "window-drag",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.776f72642d627265616b",
+        "name": "word-break",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.776f72642d73706163696e67",
+        "name": "word-spacing",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.77726974696e672d6d6f6465",
+        "name": "writing-mode",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.78",
+        "name": "x",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.79",
+        "name": "y",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7a2d696e646578",
+        "name": "z-index",
+        "category": "unprefixed"
+      },
+      {
+        "id": "cssom.property.7a6f6f6d",
+        "name": "zoom",
+        "category": "unprefixed"
+      }
+    ],
+    "counts": {
+      "total": 478,
+      "unprefixed": 442,
+      "prefixed": 36,
+      "custom": 0
+    },
+    "propertyNamesSha256": "7a2d87e6df1d13d0bfb335ff86b38e684e19d192d4a243f52d1dfa3772b1fbcb",
+    "uncovered": [
+      "CSS 속성별 허용 값·함수·초기값 조합",
+      "selector, pseudo-class, pseudo-element, at-rule 및 cascade 결과",
+      "지원 HTML·SVG 요소 전체와 요소별 속성 적용성",
+      "UA stylesheet 내용과 브라우저 origin 동작",
+      "레이아웃·텍스트 shaping·GPU pixel 출력",
+      "Android·iOS runtime 및 플랫폼 간 호환성"
+    ]
+  },
+  "referenceId": "cssom-property-surface-v1-macos-arm64-macos-26.5.1-25f80-154.0.8037.98-node-v24.20.0-revision-b859317bf11f-binary-ccffd5c5fe77-fixture-b4ea33587c76-tools-a6651dbb324d"
+}

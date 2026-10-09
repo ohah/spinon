@@ -12,3 +12,7 @@
 수집기는 JSON inventory를 검증한 뒤 새 문서가 열리기 전에 깊게 동결해 fixture에 주입합니다. fixture selector·feature 목록, Chromium의 실제 node ID·HTML 태그·namespace가 inventory와 정확히 맞는지 검사합니다. 캡처 JSON에는 inventory SHA-256·부분 범위·요소 수·feature 수가 기록되고 reference-id에도 inventory 해시가 포함됩니다. v1 입력의 SHA-256은 단위 테스트에 고정해 실수로 입력 내용을 바꾸면 감지합니다. 브라우저 버전이나 inventory가 바뀌면 기존 결과를 덮어쓰지 않고 새 디렉터리를 만듭니다.
 
 현재 seed inventory는 9개 요소와 19개 값을 다룹니다. 전체 HTML/SVG·CSSWG/WPT 기준·모든 feature 값 조합·레이아웃/텍스트/페인트·모바일 비교는 포함하지 않으므로 `C01` 전체는 미완료로 유지합니다.
+
+## CSSOM 속성 이름 표면
+
+[`cssom-property-surface.html`](cssom-property-surface.html)은 author stylesheet·외부 자원이 없는 HTML namespace `div` 하나를 고정한다. [`property surface 수집기`](../../../../tools/css-reference/capture-property-surface.mjs)는 해당 노드의 `getComputedStyle(element).item(index)` 이름만 별도 snapshot으로 기록한다. 현재 Chrome 154.0.8037.98 관찰 결과는 총 478개(일반 442·prefixed 36·custom 0)다. 이 결과는 전체 속성 registry, 표준 속성 분류, 속성 값 지원, 전체 요소 적용성 또는 제품 CSS 지원을 의미하지 않는다. 실행 환경·provenance·미포함 범위는 [C01.3 근거](../../../../spec/internal/evidence/css-c01-cssom-property-surface-2026-10-09.md)와 고정 reference JSON에서 확인한다.
