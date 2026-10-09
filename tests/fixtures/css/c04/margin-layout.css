@@ -1,0 +1,16 @@
+* {
+  box-sizing: border-box;
+}
+
+#flex-parent {
+  display: flex;
+  width: 301px;
+  height: 80px;
+}
+
+#flex-a,
+#flex-b,
+#flex-c {
+  flex: 0 0 40px;
+  height: 10px;
+}

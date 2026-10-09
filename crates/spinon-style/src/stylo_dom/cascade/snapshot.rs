@@ -77,6 +77,8 @@ pub enum ComputedStyleProfile {
     BasicCascadeV1,
     /// C04.2의 제한 Taffy Flex 입력 속성입니다.
     FlexLayoutV1,
+    /// C04.6의 Flex 입력과 네 방향 CSS margin입니다.
+    FlexMarginV1,
     /// C04.3의 Flex 입력과 제한 정렬 속성입니다.
     FlexAlignmentV1,
     /// C04.4의 Flex 정렬 입력과 제한 Cascade Layers입니다.

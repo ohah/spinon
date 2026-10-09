@@ -24,6 +24,7 @@ use crate::{
 
 use super::{StyloDocumentView, StyloElement};
 mod device;
+mod margin;
 mod s04;
 mod snapshot;
 mod ua_baseline;
@@ -32,6 +33,7 @@ mod ua_baseline;
 #[path = "cascade/ua_baseline_tests.rs"]
 mod ua_baseline_tests;
 
+pub use margin::compute_flex_margin_cascade;
 pub use snapshot::{
     CascadeDiagnostic, ComputedElementStyle, ComputedStyleProfile, ComputedStyleSnapshot,
     CssViewport,
@@ -39,6 +41,7 @@ pub use snapshot::{
 pub use ua_baseline::compute_supported_elements_ua_cascade;
 
 use self::device::{LayoutThreadState, make_device};
+use self::margin::FLEX_MARGIN_AUTHOR_PROPERTIES;
 
 const UA_STYLESHEET_ID: &str = "spinon-ua-supported-elements-v0";
 const UA_STYLESHEET_URL: &str = "https://spinon.invalid/ua/supported-elements-v0.css";
@@ -284,6 +287,7 @@ fn compute_cascade(
         ComputedStyleProfile::BasicCascadeV1 => None,
         ComputedStyleProfile::SupportedElementsUaV1 => None,
         ComputedStyleProfile::FlexLayoutV1 => Some(FLEX_LAYOUT_AUTHOR_PROPERTIES),
+        ComputedStyleProfile::FlexMarginV1 => Some(FLEX_MARGIN_AUTHOR_PROPERTIES),
         ComputedStyleProfile::FlexAlignmentV1
         | ComputedStyleProfile::FlexAlignmentCascadeLayersV1 => {
             Some(FLEX_ALIGNMENT_AUTHOR_PROPERTIES)

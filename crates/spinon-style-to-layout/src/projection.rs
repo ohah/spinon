@@ -1,18 +1,21 @@
 use std::collections::BTreeMap;
 
-use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, NodeId, StyleRevision};
+use spinon_core::{HostDocumentSnapshot, HostNodeHandle, NodeId, StyleRevision};
 use spinon_layout::{
-    FlexDirection, LayoutAlignItems, LayoutBoxSizing, LayoutDimension, LayoutDisplay, LayoutEngine,
-    LayoutGap, LayoutInput, LayoutJustifyContent, LayoutOutput, LayoutStyle, TaffyLayoutEngine,
-    TextDirection, Viewport,
+    FlexDirection, LayoutAlignItems, LayoutBoxSizing, LayoutDimension, LayoutDisplay, LayoutEdges,
+    LayoutEngine, LayoutGap, LayoutInput, LayoutJustifyContent, LayoutOutput, LayoutStyle,
+    TaffyLayoutEngine, TextDirection, Viewport,
 };
 use spinon_style::{
     ComputedStyleProfile, ComputedStyleSnapshot, CssViewport, StylesheetSource, StyloDocumentView,
     compute_flex_alignment_cascade, compute_flex_alignment_layers_cascade,
-    compute_flex_layout_cascade, compute_s04_flex_paint_cascade,
+    compute_flex_layout_cascade, compute_flex_margin_cascade, compute_s04_flex_paint_cascade,
 };
 
 use crate::StyleLayoutError;
+use validation::{assert_matching_revision, assert_no_inline_style, assert_view_matches_snapshot};
+
+mod validation;
 
 /// 같은 document snapshot에서 계산한 제한 CSS style과 Taffy layout 결과입니다.
 #[derive(Clone, Debug)]
@@ -38,6 +41,26 @@ pub fn compute_style_layout(
         viewport,
         style_revision,
         ComputedStyleProfile::FlexLayoutV1,
+    )
+}
+
+/// C04.6 profile로 네 방향 CSS margin을 계산하고 Taffy Flex에 전달합니다.
+pub fn compute_flex_margin_style_layout(
+    snapshot: &HostDocumentSnapshot,
+    view: &StyloDocumentView,
+    root: HostNodeHandle,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    compute_profile_layout(
+        snapshot,
+        view,
+        root,
+        author_stylesheets,
+        viewport,
+        style_revision,
+        ComputedStyleProfile::FlexMarginV1,
     )
 }
 
@@ -116,6 +139,9 @@ fn compute_profile_layout(
         ComputedStyleProfile::FlexLayoutV1 => {
             compute_flex_layout_cascade(view, author_stylesheets, viewport, style_revision)?
         }
+        ComputedStyleProfile::FlexMarginV1 => {
+            compute_flex_margin_cascade(view, author_stylesheets, viewport, style_revision)?
+        }
         ComputedStyleProfile::FlexAlignmentV1 => {
             compute_flex_alignment_cascade(view, author_stylesheets, viewport, style_revision)?
         }
@@ -146,6 +172,13 @@ fn compute_profile_layout(
         return Err(StyleLayoutError::CascadeDiagnostic(diagnostic));
     }
     let styles = project_styles(&computed_styles)?;
+    if profile == ComputedStyleProfile::FlexMarginV1
+        && styles
+            .get(&root.id())
+            .is_some_and(|style| style.margin != LayoutEdges::default())
+    {
+        return Err(StyleLayoutError::UnsupportedRootMargin(root.id()));
+    }
     let layout_viewport = Viewport {
         width: viewport.width_css_px,
         height: viewport.height_css_px,
@@ -163,80 +196,6 @@ fn compute_profile_layout(
         computed_styles,
         layout,
     })
-}
-
-fn assert_no_inline_style(
-    snapshot: &HostDocumentSnapshot,
-    root: HostNodeHandle,
-) -> Result<(), StyleLayoutError> {
-    let mut pending = vec![root];
-    while let Some(handle) = pending.pop() {
-        let Some(node) = snapshot.node(handle) else {
-            continue;
-        };
-        if let HostNodeKind::Element(element) = node.kind()
-            && element.attributes().keys().any(|attribute| {
-                attribute.namespace().is_none()
-                    && attribute.local_name().eq_ignore_ascii_case("style")
-            })
-        {
-            return Err(StyleLayoutError::UnsupportedInlineStyle(node.id()));
-        }
-        if let Some(children) = snapshot.children(handle) {
-            pending.extend(children);
-        }
-    }
-    Ok(())
-}
-
-fn assert_view_matches_snapshot(
-    snapshot: &HostDocumentSnapshot,
-    view: &StyloDocumentView,
-) -> Result<(), StyleLayoutError> {
-    if snapshot.generation() != view.generation() {
-        return Err(StyleLayoutError::SnapshotMismatch {
-            field: "DocumentGeneration",
-        });
-    }
-    if snapshot.document_revision() != view.document_revision() {
-        return Err(StyleLayoutError::SnapshotMismatch {
-            field: "DocumentRevision",
-        });
-    }
-    if snapshot.render_tree_revision() != view.render_tree_revision() {
-        return Err(StyleLayoutError::SnapshotMismatch {
-            field: "RenderTreeRevision",
-        });
-    }
-    Ok(())
-}
-
-fn assert_matching_revision(
-    snapshot: &HostDocumentSnapshot,
-    styles: &ComputedStyleSnapshot,
-    expected_profile: ComputedStyleProfile,
-) -> Result<(), StyleLayoutError> {
-    if styles.profile != expected_profile {
-        return Err(StyleLayoutError::UnsupportedProfile {
-            profile: format!("{:?}", styles.profile),
-        });
-    }
-    if snapshot.generation() != styles.generation {
-        return Err(StyleLayoutError::SnapshotMismatch {
-            field: "DocumentGeneration",
-        });
-    }
-    if snapshot.document_revision() != styles.document_revision {
-        return Err(StyleLayoutError::SnapshotMismatch {
-            field: "DocumentRevision",
-        });
-    }
-    if snapshot.render_tree_revision() != styles.render_tree_revision {
-        return Err(StyleLayoutError::SnapshotMismatch {
-            field: "RenderTreeRevision",
-        });
-    }
-    Ok(())
 }
 
 fn project_styles(
@@ -272,6 +231,23 @@ fn project_styles(
             gap: LayoutGap {
                 row: parse_gap(node, "row-gap", required(element, "row-gap")?)?,
                 column: parse_gap(node, "column-gap", required(element, "column-gap")?)?,
+            },
+            margin: match snapshot.profile {
+                ComputedStyleProfile::FlexMarginV1 => LayoutEdges {
+                    top: parse_css_margin(node, "margin-top", required(element, "margin-top")?)?,
+                    right: parse_css_margin(
+                        node,
+                        "margin-right",
+                        required(element, "margin-right")?,
+                    )?,
+                    bottom: parse_css_margin(
+                        node,
+                        "margin-bottom",
+                        required(element, "margin-bottom")?,
+                    )?,
+                    left: parse_css_margin(node, "margin-left", required(element, "margin-left")?)?,
+                },
+                _ => LayoutEdges::default(),
             },
             ..LayoutStyle::default()
         };
@@ -394,6 +370,21 @@ fn parse_css_px(
         .parse::<f32>()
         .ok()
         .filter(|number| number.is_finite() && *number >= 0.0);
+    parsed.ok_or_else(|| unsupported_value(node, property, value))
+}
+
+fn parse_css_margin(
+    node: NodeId,
+    property: &'static str,
+    value: &str,
+) -> Result<f32, StyleLayoutError> {
+    let Some(number) = value.strip_suffix("px") else {
+        return unsupported(node, property, value);
+    };
+    let parsed = number
+        .parse::<f32>()
+        .ok()
+        .filter(|number| number.is_finite());
     parsed.ok_or_else(|| unsupported_value(node, property, value))
 }
 
