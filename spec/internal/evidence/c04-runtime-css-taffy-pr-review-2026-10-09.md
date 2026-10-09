@@ -25,10 +25,10 @@
 | 17 | 새 API 함수 선언·JSON 필드·오류·buffer 규칙이 서로 일치하는가 | Rust export, C header, 0030 계약, FFI helper test와 one-byte retry probe를 대조했다. |
 | 18 | 로그와 screenshot이 같은 최신 build에서 나왔고 확인 가능한가 | Android·iOS를 각각 다시 빌드·설치·실행한 뒤 로그와 캡처를 저장하고 SHA-256을 기록했다. |
 | 19 | 문서 작성 과정에서 사용자가 금지한 배포나 링크를 실행하는가 | GitHub Pages 배포, Tailnet 링크 삽입, Tailnet 업로드는 이 PR에서 하지 않는다. |
-| 20 | 필수 검증·한글 문서 규칙·rebase merge 흐름과 맞는가 | Bun 통합 suite, Rust workspace test·Clippy, Android/iOS Simulator 실행을 통과했고 신규 설명은 한글로 작성했다. GitHub PR의 라벨·필수 check·mergeability는 PR 생성 후 병합 전에 별도로 확인한다. PR 제목 type prefix만 영어로 둔다. |
+| 20 | 필수 검증·한글 문서 규칙·rebase merge 흐름과 맞는가 | Bun 통합 suite, Rust workspace test·Clippy, Android/iOS Simulator 실행을 통과했고 신규 설명은 한글로 작성했다. PR 생성 뒤 라벨·본문 이미지·리뷰·mergeability를 대조했다. GitHub는 이 브랜치에 상태 체크를 보고하지 않았고 main에도 필수 상태 체크가 없어, 이를 CI 통과로 표현하지 않는다. 저장소는 rebase merge를 허용하며 mergeability는 CLEAN이다. PR 제목 type prefix만 영어로 둔다. |
 
 ## 변경 후 재검증
 
 최종 변경 묶음은 Bun 통합 suite에서 JavaScript 2개, CSS reference 19개, Android touch analyzer/capture 29개가 모두 통과했다. Rust workspace 252 tests와 doc-test, Clippy warnings-as-errors, Android/iOS Simulator의 실제 V8 runtime probe도 완료했다. 별도 성능 주장이나 전체 제품 CSS 완료 선언은 하지 않는다.
 
-PR을 올린 뒤에는 GitHub가 계산한 mergeability와 필수 check를 다시 확인하고, 병합 직전 diff·버전·증거 파일을 재대조한다.
+GitHub PR 상태는 OPEN, mergeability는 MERGEABLE/CLEAN이며 리뷰와 코멘트는 없다. GitHub 상태 체크는 보고되지 않았고 main 보호 규칙의 필수 상태 체크도 null이다. 따라서 CI 결과가 아니라 기록된 로컬 검증 및 Android/iOS 시뮬레이터 실행을 근거로 판단한다. 병합 직전 diff·버전·증거 파일을 재대조한다.
