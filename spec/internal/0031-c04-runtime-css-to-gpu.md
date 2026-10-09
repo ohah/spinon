@@ -1,6 +1,6 @@
 # 0031 · C04.10 Runtime CSS → WGPU 장면
 
-**계약 버전:** 미출시 내부 계약 `0.1.0` 고정 · **상태:** 구현·시뮬레이터 검증 및 구현 검토 완료, PR 검토 전 · **공개 API:** 아님 · **제품 CSS 지원 완료:** 아님
+**계약 버전:** 미출시 내부 계약 `0.1.0` 고정 · **상태:** 구현·시뮬레이터 검증 및 PR 변경 검토 완료, 병합 전 · **공개 API:** 아님 · **제품 CSS 지원 완료:** 아님
 
 ## 범위
 
@@ -42,7 +42,7 @@ Android backend 기본값은 Vulkan을 먼저 초기화한다. adapter/device �
 - JS 평가와 DOM 변경은 순서 보존하며 절대 병합·대체하지 않는다. 환경·viewport 재계산과 표시 요청만 latest-wins다.
 - runtime presentation lane은 최신 environment state와 dirty marker 하나만 보관한다. render surface lane은 최신 surface generation·수명·format·크기와 draw 요청을 canonical state로 유지하고 하나의 reconciler가 따라잡는다. 각 lane은 실행 하나와 pending drain 하나를 넘지 않는다. 유입이 멈춘 뒤 마지막 입력을 적용하며 지연 상한은 보장하지 않는다.
 - stale renderer 생성물은 파괴한다. 현재 generation에서 surface 생성/configure가 실패하면 오류를 보고하고 새 surface 입력 또는 명시 retry 전까지 자동 재시도하지 않는다. lane의 복구 가능한 작업 실패나 executor 예약 실패는 lane 상태를 되살려 이후 입력을 받을 수 있게 한다. fatal process error는 삼키지 않는다.
-- Android `surfaceDestroyed`는 새 draw를 닫고 renderer queue가 surface 사용을 끝낼 때까지 기다린다. 안전한 해제보다 timeout 반환을 택하지 않으며 대기 시간을 기록한다. 상태 잠금을 잡고 native 호출이나 대기를 하지 않는다. Android Activity 종료는 runtime drain 뒤 render 해제와 host free를 직렬화한다.
+- Android `surfaceDestroyed`는 새 draw를 닫고 renderer queue가 surface 사용을 끝낼 때까지 기다린다. 안전한 해제보다 timeout 반환을 택하지 않으며 대기 시간을 기록한다. 상태 잠금을 잡고 native 호출이나 대기를 하지 않는다. 현재 Android demo의 `dispose`는 Activity UI thread에서 runtime·render executor 종료를 동기 대기한 뒤 host를 해제한다. V8 실행에는 취소·실행 시간 제한이 없으므로 대기 중인 runtime/native 작업이 길면 화면 종료가 지연될 수 있다. 현재 demo는 고정 fixture만 실행한다. 임의 JavaScript 실행을 사용자에게 연결하기 전에는 비동기 teardown 또는 별도 취소·종료 계약을 정해야 한다.
 - iOS UIKit/`CAMetalLayer` 접근은 main thread에서만 한다. UIKit configure callback은 하나만 pending으로 두고 그동안의 크기 변경은 최신 상태에 합친다. main thread는 render queue를 동기 대기하지 않는다.
 - draw 오류 주입은 내부 검증 빌드에만 포함한다. 오류는 nonzero로 전달되고 JS/DOM/CSS snapshot을 바꾸지 않으며, hook을 소비한 후 다음 정상 draw를 확인한다. 합성 오류는 실제 GPU/driver 고장 복구 증거로 보지 않는다.
 
