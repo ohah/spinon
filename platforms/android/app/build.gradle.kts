@@ -9,9 +9,29 @@ val spinonS03DomGcFixtureValue = spinonS03DomGcFixture.get()
 require(spinonS03DomGcFixtureValue == "0" || spinonS03DomGcFixtureValue == "1") {
     "spinonS03DomGcFixture는 0 또는 1이어야 합니다."
 }
+val spinonC04RuntimeGpu = providers.gradleProperty("spinonC04RuntimeGpu").orElse("0")
+val spinonC04RuntimeGpuValue = spinonC04RuntimeGpu.get()
+require(spinonC04RuntimeGpuValue == "0" || spinonC04RuntimeGpuValue == "1") {
+    "spinonC04RuntimeGpu는 0 또는 1이어야 합니다."
+}
+val spinonC04RuntimeGpuFailureFixture =
+    providers.gradleProperty("spinonC04RuntimeGpuFailureFixture").orElse("0")
+val spinonC04RuntimeGpuFailureFixtureValue = spinonC04RuntimeGpuFailureFixture.get()
+require(spinonC04RuntimeGpuFailureFixtureValue == "0" ||
+    spinonC04RuntimeGpuFailureFixtureValue == "1") {
+    "spinonC04RuntimeGpuFailureFixture는 0 또는 1이어야 합니다."
+}
+require(spinonC04RuntimeGpuFailureFixtureValue != "1" || spinonC04RuntimeGpuValue == "1") {
+    "draw 실패 fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다."
+}
 val prepareSpinonBootstrap by tasks.registering(Exec::class) {
     workingDir = repoRoot
     environment("SPINON_ENABLE_S03_DOM_GC_FIXTURE", spinonS03DomGcFixture.get())
+    environment("SPINON_ENABLE_C04_RUNTIME_GPU", spinonC04RuntimeGpu.get())
+    environment(
+        "SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE",
+        spinonC04RuntimeGpuFailureFixture.get(),
+    )
     commandLine("bash", "tools/build-android.sh")
 }
 
@@ -47,6 +67,16 @@ android {
             "boolean",
             "SPINON_S03_DOM_GC_FIXTURE",
             (spinonS03DomGcFixtureValue == "1").toString(),
+        )
+        buildConfigField(
+            "boolean",
+            "SPINON_C04_RUNTIME_GPU",
+            (spinonC04RuntimeGpuValue == "1").toString(),
+        )
+        buildConfigField(
+            "boolean",
+            "SPINON_C04_RUNTIME_GPU_FAILURE_FIXTURE",
+            (spinonC04RuntimeGpuFailureFixtureValue == "1").toString(),
         )
     }
 

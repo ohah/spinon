@@ -55,6 +55,7 @@ int32_t spinon_taffy_r10_run(float width, float height, float scale,
    cancel은 취소 요청 0, 실행 중인 JS 없음 1, 오류는 음수를 반환합니다.
    free 전에 eval/dispatch/cancel/memory-pressure 호출을 모두 끝내야 합니다. */
 typedef struct SpinonRuntimeSession SpinonRuntimeSession;
+typedef struct SpinonRuntimeGpuHost SpinonRuntimeGpuHost;
 typedef enum SpinonTaskPriority {
   SPINON_TASK_PRIORITY_USER_BLOCKING = 0,
   SPINON_TASK_PRIORITY_USER_VISIBLE = 1,
@@ -115,6 +116,61 @@ int32_t spinon_runtime_session_copy_layout_json(
    버퍼 부족 -3, cascade 검증 실패 -7을 반환합니다. 제품 렌더링 API가 아닙니다. */
 int32_t spinon_runtime_ua_cascade_probe(char *output, size_t output_capacity);
 void spinon_runtime_session_free(SpinonRuntimeSession *session);
+
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new(char *output,
+                                                  size_t output_capacity);
+/* UI event에서 viewport·색상 체계·surface 변경을 플랫폼 큐에 넣기 전에
+   호출합니다. 잠금·대기를 하지 않으며 실패는 0입니다. 반환값은 내부 무효화 순번이며
+   호출자가 다른 함수에 전달하지 않습니다. 성공 여부 확인 외 용도로 보관하지 마세요. */
+uint64_t spinon_runtime_gpu_host_begin_presentation_update(
+    SpinonRuntimeGpuHost *host);
+/* `layout_timeout_millis`는 CSS 계산 결과 대기만 제한합니다. */
+int32_t spinon_runtime_gpu_host_set_environment(
+    SpinonRuntimeGpuHost *host, float width_css_px, float height_css_px,
+    float device_scale_factor, int32_t dark, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
+/* JavaScript는 동기 실행합니다. `layout_timeout_millis`는 평가 후 CSS 계산 결과 대기만
+   제한하며 JavaScript 실행 자체를 종료하지 않습니다. */
+int32_t spinon_runtime_gpu_host_eval(SpinonRuntimeGpuHost *host,
+                                    const char *source,
+                                    uint64_t layout_timeout_millis, char *output,
+                                    size_t output_capacity);
+int32_t spinon_runtime_gpu_host_eval_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
+/* Android backend: 0=Vulkan 실패 뒤 GL 순차 재시도, 1=Vulkan 강제, 2=GL 강제. iOS는 3=Metal. */
+void *spinon_runtime_gpu_host_create_android(
+    SpinonRuntimeGpuHost *host, void *native_window, uint32_t width,
+    uint32_t height, uint32_t backend, char *output, size_t output_capacity);
+/* UIKit surface 준비는 UIView.layer 접근 때문에 메인 스레드에서 호출합니다. */
+int32_t spinon_runtime_gpu_host_prepare_uikit_surface(
+    SpinonRuntimeGpuHost *host, void *view, uint32_t backend, char *output,
+    size_t output_capacity);
+/* 준비된 surface의 GPU 장치와 pipeline 초기화는 전용 render queue에서 호출합니다.
+   UIKit 표면 구성은 다음 configure 함수를 메인 스레드에서 호출합니다. */
+int32_t spinon_runtime_gpu_host_create_uikit(
+    SpinonRuntimeGpuHost *host, uint32_t width, uint32_t height, char *output,
+    size_t output_capacity);
+/* UIKit CAMetalLayer의 surface 속성을 갱신하므로 메인 스레드에서 호출합니다. */
+int32_t spinon_runtime_gpu_host_configure_uikit_surface(
+    SpinonRuntimeGpuHost *host, char *output, size_t output_capacity);
+/* Android는 render queue, UIKit은 메인 스레드에서 호출합니다. */
+int32_t spinon_runtime_gpu_host_resize(SpinonRuntimeGpuHost *host,
+                                       uint32_t width, uint32_t height,
+                                       char *output, size_t output_capacity);
+int32_t spinon_runtime_gpu_host_draw(SpinonRuntimeGpuHost *host,
+                                     char *output, size_t output_capacity);
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE
+/* 내부 검증 빌드에서 다음 draw 오류를 한 번 주입합니다. */
+int32_t spinon_runtime_gpu_host_inject_next_draw_failure_for_test(
+    SpinonRuntimeGpuHost *host, char *output, size_t output_capacity);
+#endif
+int32_t spinon_runtime_gpu_host_destroy_renderer(
+    SpinonRuntimeGpuHost *host, char *output, size_t output_capacity);
+void spinon_runtime_gpu_host_free(SpinonRuntimeGpuHost *host);
+#endif
 
 #ifdef __cplusplus
 }

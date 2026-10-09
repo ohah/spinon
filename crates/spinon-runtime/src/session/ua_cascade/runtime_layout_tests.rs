@@ -121,6 +121,70 @@ fn runtime_layout_frames_follow_dom_order_not_node_id_order() {
 }
 
 #[test]
+fn runtime_gpu_profile_keeps_background_paint_out_of_the_legacy_layout_contract() {
+    let (snapshot, root, children) = make_layout_snapshot(
+        "display:flex;box-sizing:border-box;width:301px;height:100px;flex-direction:row;align-items:flex-start;justify-content:flex-start;column-gap:11px;background-color:#123456",
+        &[
+            "display:block;box-sizing:border-box;width:51px;height:31px;background-color:#3366ff",
+            "display:block;box-sizing:border-box;width:41px;height:31px;background-color:transparent",
+            "display:none;width:23px;height:17px;background-color:#ff0000",
+        ],
+        true,
+        None,
+    );
+    let request = WorkRequest {
+        key: key_for(&snapshot, EnvironmentRevision::INITIAL),
+        snapshot,
+        viewport: CssViewport {
+            width_css_px: 301.0,
+            height_css_px: 100.0,
+            device_scale_factor: 1.0,
+            environment_revision: EnvironmentRevision::INITIAL,
+            media_environment: CssMediaEnvironment::MOBILE,
+        },
+    };
+
+    let legacy = compute_request(&request).unwrap();
+    assert_eq!(
+        legacy.layout.unwrap_err().code,
+        "unsupported_inline_property"
+    );
+
+    let runtime_gpu = compute_request_for_runtime_gpu(&request).unwrap();
+    let layout = runtime_gpu.layout.unwrap();
+    assert_eq!(
+        layout
+            .frames
+            .iter()
+            .map(|frame| frame.node_id)
+            .collect::<Vec<_>>(),
+        [
+            root.id().get(),
+            children[0].id().get(),
+            children[1].id().get(),
+            children[2].id().get(),
+        ]
+    );
+    let scene = layout.render_snapshot.unwrap();
+    assert_eq!(scene.boxes().len(), 3);
+    assert_eq!(scene.boxes()[0].node_id(), root.id());
+    assert_eq!(scene.boxes()[0].frame_css_px().width(), 301.0);
+    assert_eq!(
+        scene.boxes()[0].paint(),
+        spinon_render::RuntimePaint::Opaque(spinon_render::OpaqueCssSrgb::new(18, 52, 86))
+    );
+    assert_eq!(scene.boxes()[1].node_id(), children[0].id());
+    assert_eq!(scene.boxes()[1].frame_css_px().width(), 51.0);
+    assert_eq!(
+        scene.boxes()[1].paint(),
+        spinon_render::RuntimePaint::Opaque(spinon_render::OpaqueCssSrgb::new(51, 102, 255))
+    );
+    assert_eq!(scene.boxes()[2].node_id(), children[1].id());
+    assert_eq!(scene.boxes()[2].frame_css_px().x(), 62.0);
+    assert_eq!(scene.boxes()[2].paint(), spinon_render::RuntimePaint::None);
+}
+
+#[test]
 fn unsupported_layout_style_does_not_fail_the_ua_cascade_snapshot() {
     let (snapshot, _, _) = make_layout_snapshot(
         "display:block;width:300px;height:140px;color:red",
@@ -241,6 +305,7 @@ fn stale_completion_cannot_replace_a_newer_requested_key() {
             layout: Ok(RuntimeLayoutCompleted {
                 key: stale_key,
                 frames: Vec::new(),
+                render_snapshot: None,
                 projection_duration_us: 0,
             }),
             layout_diagnostics: Vec::new(),

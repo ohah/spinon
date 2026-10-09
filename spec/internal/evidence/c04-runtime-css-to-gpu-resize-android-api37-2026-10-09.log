@@ -1,0 +1,20 @@
+10-09 22:46:58.189 I/SpinonBootstrap( 7687): SPINON_C0410_ENVIRONMENT viewport=301.0x100.0 scale=2.625 dark=false status=0 environment_revision=0 layout=empty boxes=0 generation=1 document_revision=0 render_tree_revision=0 style_revision=0 environment_revision=0
+10-09 22:46:58.457 I/SpinonBootstrap( 7687): SPINON_C0410_SURFACE_CHANGED generation=2 size=790x263
+10-09 22:46:58.812 I/SpinonBootstrap( 7687): SPINON_C0410_RENDERER=backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=790x263 selection=auto
+10-09 22:46:58.813 I/SpinonBootstrap( 7687): SPINON_C0410_NATIVE_WINDOW requested=790x263 before=790x263
+10-09 22:46:58.825 I/SpinonBootstrap( 7687): SPINON_C0410_ENVIRONMENT viewport=300.9524x100.190475 scale=2.625 dark=false sequence=5 status=0 environment_revision=1 layout=ready boxes=3 generation=1 document_revision=12 render_tree_revision=4 style_revision=0 environment_revision=1 root_frame_css_px=300.95x100.183 render_viewport_css_px=300.9524x100.190475 render_root_css_px=300.95x100.183
+10-09 22:46:58.827 I/SpinonBootstrap( 7687): SPINON_C0410_RESIZE status=0 surface resized and prior scene invalidated
+10-09 22:46:58.827 I/SpinonBootstrap( 7687): SPINON_C0410_NATIVE_WINDOW after=790x263
+10-09 22:46:58.827 I/SpinonBootstrap( 7687): SPINON_C0410_RESIZE status=0 size=790x263
+10-09 22:46:58.843 I/SpinonBootstrap( 7687): SPINON_C0410_DRAW status=0 presented empty scene while runtime calculation is pending
+10-09 22:46:58.843 I/SpinonBootstrap( 7687): SPINON_C0410_DRAW status=0 presented empty scene while runtime calculation is pending
+10-09 22:46:58.843 I/SpinonBootstrap( 7687): SPINON_C0410_ENVIRONMENT viewport=300.9524x100.190475 scale=2.625 dark=false sequence=8 status=0 environment_revision=1 layout=ready boxes=3 generation=1 document_revision=12 render_tree_revision=4 style_revision=0 environment_revision=1 root_frame_css_px=300.95x100.183 render_viewport_css_px=300.9524x100.190475 render_root_css_px=300.95x100.183
+10-09 22:46:58.935 I/SpinonBootstrap( 7687): SPINON_C0410_DRAW status=0 presented boxes=3 environment_revision=1 viewport_css_px=300.9524x100.190475 surface_texture=790x263 root_css_px=300.95x100.183
+10-09 22:46:58.935 I/SpinonBootstrap( 7687): SPINON_C0410_DRAW status=0 presented boxes=3 environment_revision=1 viewport_css_px=300.9524x100.190475 surface_texture=790x263 root_css_px=300.95x100.183
+10-09 22:47:01.017 I/SpinonBootstrap( 7687): SPINON_C0410_RESIZE_REQUEST viewport=341x128
+10-09 22:47:01.026 I/SpinonBootstrap( 7687): SPINON_C0410_SURFACE_CHANGED generation=3 size=895x336
+10-09 22:47:01.036 I/SpinonBootstrap( 7687): SPINON_C0410_RENDERER_DESTROY status=0 renderer destroyed
+10-09 22:47:01.102 I/SpinonBootstrap( 7687): SPINON_C0410_RENDERER=backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=895x336 selection=auto
+10-09 22:47:01.102 I/SpinonBootstrap( 7687): SPINON_C0410_ENVIRONMENT viewport=340.9524x128.0 scale=2.625 dark=false sequence=12 status=0 environment_revision=2 layout=ready boxes=3 generation=1 document_revision=12 render_tree_revision=4 style_revision=0 environment_revision=2 root_frame_css_px=340.95x128 render_viewport_css_px=340.9524x128 render_root_css_px=340.95x128
+10-09 22:47:01.106 I/SpinonBootstrap( 7687): SPINON_C0410_DRAW status=0 presented boxes=3 environment_revision=2 viewport_css_px=340.9524x128 surface_texture=895x336 root_css_px=340.95x128
+10-09 22:47:01.106 I/SpinonBootstrap( 7687): SPINON_C0410_DRAW status=0 presented boxes=3 environment_revision=2 viewport_css_px=340.9524x128 surface_texture=895x336 root_css_px=340.95x128

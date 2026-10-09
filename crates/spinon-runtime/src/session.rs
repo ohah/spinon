@@ -10,7 +10,7 @@ use std::sync::atomic::{AtomicU32, AtomicU64, Ordering};
 use std::sync::mpsc::{self, Receiver, SyncSender};
 use std::sync::{Arc, Mutex, MutexGuard};
 use std::thread::{self, JoinHandle};
-use std::time::Instant;
+use std::time::{Duration, Instant};
 
 mod actor;
 mod priority_probe;
@@ -230,8 +230,21 @@ fn cancel_control(control: &Mutex<RuntimeControl>) -> i32 {
 impl RuntimeSession {
     /// V8 Isolate를 만들고 소유 전용 OS 스레드의 준비를 기다립니다.
     pub fn new() -> Result<(Self, String), String> {
+        Self::new_with_runtime_gpu(false)
+    }
+
+    /// C04.10 내부 GPU renderer 전용 Flex paint profile로 런타임을 만듭니다.
+    pub fn new_runtime_gpu() -> Result<(Self, String), String> {
+        Self::new_with_runtime_gpu(true)
+    }
+
+    fn new_with_runtime_gpu(runtime_gpu: bool) -> Result<(Self, String), String> {
         let startup_started = Instant::now();
-        let ua_cascade = RuntimeUaCascadeCoordinator::new()?;
+        let ua_cascade = if runtime_gpu {
+            RuntimeUaCascadeCoordinator::new_runtime_gpu()?
+        } else {
+            RuntimeUaCascadeCoordinator::new()?
+        };
         let css_worker_ready_us = ua_cascade.startup_duration_us();
         let actor_ua_cascade = ua_cascade.handle();
         let control = Arc::new(Mutex::new(RuntimeControl::new()));
@@ -371,6 +384,11 @@ impl RuntimeSession {
     /// 최신 runtime layout 결과를 한 번에 복사합니다. 계산 완료는 기다리지 않습니다.
     pub fn layout_snapshot(&self) -> RuntimeLayoutSnapshot {
         self.ua_cascade.handle().layout_snapshot()
+    }
+
+    /// Runtime GPU host가 background executor에서 최신 layout 결과를 제한 시간 동안 기다립니다.
+    pub fn wait_for_layout_snapshot(&self, timeout: Duration) -> RuntimeLayoutSnapshot {
+        self.ua_cascade.handle().wait_for_layout_snapshot(timeout)
     }
 }
 

@@ -5,7 +5,7 @@ use super::{
 use spinon_core::{NodeId, StyleRevision};
 use style::properties::LonghandId;
 
-const RUNTIME_FLEX_LAYOUT_PROPERTIES: &[(&str, LonghandId)] = &[
+pub(super) const RUNTIME_FLEX_LAYOUT_PROPERTIES: &[(&str, LonghandId)] = &[
     ("display", LonghandId::Display),
     ("list-style-type", LonghandId::ListStyleType),
     ("margin-block-start", LonghandId::MarginBlockStart),
@@ -130,6 +130,13 @@ pub fn first_unsupported_runtime_layout_inline_property(
         "padding-inline-end",
     ];
 
+    first_unsupported_inline_property(view, |property| ALLOWED_PROPERTIES.contains(&property))
+}
+
+pub(super) fn first_unsupported_inline_property(
+    view: &StyloDocumentView,
+    is_allowed: impl Fn(&str) -> bool,
+) -> Option<(NodeId, String)> {
     let guard = view.shared_lock().read();
     let mut pending = vec![view.root_handle()];
     while let Some(handle) = pending.pop() {
@@ -139,7 +146,7 @@ pub fn first_unsupported_runtime_layout_inline_property(
             let block = inline_style.read_with(&guard);
             for declaration in block.declarations() {
                 let property = declaration.id().name().into_owned();
-                if !ALLOWED_PROPERTIES.contains(&property.as_str()) {
+                if !is_allowed(&property) {
                     return Some((handle.id(), property));
                 }
             }

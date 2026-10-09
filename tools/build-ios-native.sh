@@ -29,7 +29,44 @@ case "${SPINON_ENABLE_S03_DOM_GC_FIXTURE:-0}" in
     exit 2
     ;;
 esac
+case "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" in
+  0|1) ;;
+  *)
+    echo "SPINON_ENABLE_C04_RUNTIME_GPU은 0 또는 1이어야 합니다." >&2
+    exit 2
+    ;;
+esac
+case "${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}" in
+  0|1) ;;
+  *)
+    echo "SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE은 0 또는 1이어야 합니다." >&2
+    exit 2
+    ;;
+esac
+if [[ "${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}" == "1" \
+      && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
+  echo "draw 실패 fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다." >&2
+  exit 2
+fi
 s03_dom_gc_cpp_flag="-DSPINON_ENABLE_S03_DOM_GC_FIXTURE=${SPINON_ENABLE_S03_DOM_GC_FIXTURE:-0}"
+runtime_gpu_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU=${SPINON_ENABLE_C04_RUNTIME_GPU:-0}"
+runtime_gpu_failure_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE=${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}"
+ffi_features=""
+append_ffi_feature() {
+  if [[ -n "$ffi_features" ]]; then
+    ffi_features+=','
+  fi
+  ffi_features+="$1"
+}
+if [[ "${SPINON_ENABLE_R10_EXPERIMENT:-0}" == "1" ]]; then
+  append_ffi_feature r10-experiment
+fi
+if [[ "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" == "1" ]]; then
+  append_ffi_feature c04-runtime-gpu
+fi
+if [[ "${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}" == "1" ]]; then
+  append_ffi_feature c04-runtime-gpu-test-hooks
+fi
 
 case "$platform_name" in
   iphonesimulator)
@@ -66,8 +103,8 @@ fi
 if command -v mise >/dev/null 2>&1; then
   mise exec -- bun run bundle:bootstrap
   mise exec -- rustup target add "$rustup_target"
-  if [[ "${SPINON_ENABLE_R10_EXPERIMENT:-0}" == "1" ]]; then
-    mise exec -- env CARGO_PROFILE_RELEASE_PANIC=abort cargo build --locked --release --target "$rust_target" -p spinon-ffi --features r10-experiment
+  if [[ -n "$ffi_features" ]]; then
+    mise exec -- env CARGO_PROFILE_RELEASE_PANIC=abort cargo build --locked --release --target "$rust_target" -p spinon-ffi --features "$ffi_features"
   else
     mise exec -- env CARGO_PROFILE_RELEASE_PANIC=abort cargo build --locked --release --target "$rust_target" -p spinon-ffi
   fi
@@ -79,8 +116,8 @@ if command -v mise >/dev/null 2>&1; then
 else
   bun run bundle:bootstrap
   rustup target add "$rustup_target"
-  if [[ "${SPINON_ENABLE_R10_EXPERIMENT:-0}" == "1" ]]; then
-    CARGO_PROFILE_RELEASE_PANIC=abort cargo build --locked --release --target "$rust_target" -p spinon-ffi --features r10-experiment
+  if [[ -n "$ffi_features" ]]; then
+    CARGO_PROFILE_RELEASE_PANIC=abort cargo build --locked --release --target "$rust_target" -p spinon-ffi --features "$ffi_features"
   else
     CARGO_PROFILE_RELEASE_PANIC=abort cargo build --locked --release --target "$rust_target" -p spinon-ffi
   fi
@@ -104,7 +141,8 @@ output_dir="$repo_root/build/spinon/$platform_name"
 mkdir -p "$output_dir"
 sdk_path="$(xcrun --sdk "$sdk" --show-sdk-path)"
 xcrun --sdk "$sdk" clang++ -std=c++20 -O2 -fPIC -target "$target" \
-  -isysroot "$sdk_path" -I"$v8_dir/include" "$s03_dom_gc_cpp_flag" \
+  -isysroot "$sdk_path" -I"$v8_dir/include" "$s03_dom_gc_cpp_flag" "$runtime_gpu_cpp_flag" \
+  "$runtime_gpu_failure_cpp_flag" \
   -I"$repo_root/native/v8/include" \
   -c "$repo_root/native/v8/src/spinon_v8.cc" \
   -o "$output_dir/spinon_v8.o"

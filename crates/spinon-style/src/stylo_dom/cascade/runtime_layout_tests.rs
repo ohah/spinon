@@ -2,7 +2,11 @@ use std::sync::Arc;
 
 use spinon_core::{AttributeName, DocumentChangeBatch, DocumentOperation, HostDocument, OwnerId};
 
-use super::{CssViewport, StyloDocumentView, first_unsupported_runtime_layout_inline_property};
+use super::{
+    CssCascadeError, CssViewport, StyloDocumentView, compute_runtime_flex_paint_cascade,
+    first_unsupported_runtime_flex_paint_inline_property,
+    first_unsupported_runtime_layout_inline_property,
+};
 
 const HTML: &str = "http://www.w3.org/1999/xhtml";
 
@@ -76,4 +80,88 @@ fn runtime_inline_allowlist_ignores_invalid_declarations_after_css_recovery() {
     )
     .unwrap();
     assert_eq!(snapshot.diagnostics.len(), 1);
+}
+
+#[test]
+fn runtime_paint_profile_accepts_only_background_color_beyond_layout_properties() {
+    let (view, _) = view_for_inline_style(
+        "display:flex;width:51px;height:31px;gap:11px;background-color:#3366ff",
+    );
+    assert_eq!(
+        first_unsupported_runtime_flex_paint_inline_property(&view),
+        None
+    );
+    assert_eq!(
+        first_unsupported_runtime_layout_inline_property(&view),
+        Some((view.root_handle().id(), "background-color".to_owned()))
+    );
+}
+
+#[test]
+fn runtime_paint_profile_preserves_opaque_and_transparent_computed_paint() {
+    let (opaque_view, opaque_node) =
+        view_for_inline_style("display:block;width:51px;height:31px;background-color:#3366ff");
+    let opaque = compute_runtime_flex_paint_cascade(
+        &opaque_view,
+        CssViewport::C04_FIXTURE,
+        Default::default(),
+    )
+    .unwrap();
+    let opaque_style = opaque
+        .elements
+        .iter()
+        .find(|style| style.node_id == opaque_node)
+        .unwrap();
+    assert_eq!(
+        opaque_style.properties["background-color"],
+        "rgb(51, 102, 255)"
+    );
+    assert_eq!(
+        opaque_style.background_paint,
+        Some(crate::ComputedBackgroundPaint::Opaque(
+            crate::OpaqueCssSrgb {
+                red: 51,
+                green: 102,
+                blue: 255,
+            }
+        ))
+    );
+
+    let (transparent_view, transparent_node) =
+        view_for_inline_style("display:block;width:41px;height:31px;background-color:transparent");
+    let transparent = compute_runtime_flex_paint_cascade(
+        &transparent_view,
+        CssViewport::C04_FIXTURE,
+        Default::default(),
+    )
+    .unwrap();
+    let transparent_style = transparent
+        .elements
+        .iter()
+        .find(|style| style.node_id == transparent_node)
+        .unwrap();
+    assert_eq!(
+        transparent_style.properties["background-color"],
+        "rgba(0, 0, 0, 0)"
+    );
+    assert_eq!(
+        transparent_style.background_paint,
+        Some(crate::ComputedBackgroundPaint::Transparent)
+    );
+}
+
+#[test]
+fn runtime_paint_profile_rejects_partial_alpha_and_keeps_layout_profile_strict() {
+    let (view, node) = view_for_inline_style(
+        "display:block;width:51px;height:31px;background-color:rgba(1, 2, 3, 0.5)",
+    );
+    assert!(matches!(
+        compute_runtime_flex_paint_cascade(&view, CssViewport::C04_FIXTURE, Default::default()),
+        Err(CssCascadeError::UnsupportedComputedBackgroundColor { node: actual, .. })
+            if actual == node
+    ));
+    assert_eq!(
+        first_unsupported_runtime_layout_inline_property(&view),
+        Some((node, "background-color".to_owned()))
+    );
 }

@@ -7,6 +7,11 @@ use spinon_core::{
     StyleRevision,
 };
 
+mod runtime;
+pub use runtime::{
+    RuntimePaint, RuntimeRenderBox, RuntimeRenderError, RuntimeRenderKey, RuntimeRenderSnapshot,
+};
+
 /// CSS px 좌표계의 양수 viewport 크기입니다.
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct CssSize {

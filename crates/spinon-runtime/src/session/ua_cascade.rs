@@ -7,7 +7,7 @@ use std::time::{Duration, Instant};
 
 mod calculation;
 mod runtime_layout;
-use calculation::{RuntimeCalculation, compute_request};
+use calculation::{RuntimeCalculation, compute_request, compute_request_for_runtime_gpu};
 use runtime_layout::layout_failure;
 pub use runtime_layout::{
     RuntimeLayoutCompleted, RuntimeLayoutFailure, RuntimeLayoutFrame, RuntimeLayoutSnapshot,
@@ -185,6 +185,10 @@ impl RuntimeUaCascadeCoordinator {
         Self::new_with_computer(Arc::new(compute_request))
     }
 
+    pub(super) fn new_runtime_gpu() -> Result<Self, String> {
+        Self::new_with_computer(Arc::new(compute_request_for_runtime_gpu))
+    }
+
     fn new_with_computer(compute: Arc<CascadeComputer>) -> Result<Self, String> {
         let startup_started = Instant::now();
         let shared = Arc::new(Shared {
@@ -307,17 +311,6 @@ impl RuntimeUaCascadeHandle {
             error: state.error.clone(),
         }
     }
-
-    pub(super) fn layout_snapshot(&self) -> RuntimeLayoutSnapshot {
-        let state = lock(&self.shared.state);
-        RuntimeLayoutSnapshot {
-            state: state.layout_status,
-            requested: state.requested,
-            completed: state.layout_completed.clone(),
-            diagnostics: state.layout_diagnostics.clone(),
-            error: state.layout_error.clone(),
-        }
-    }
 }
 
 fn request_latest(shared: &Shared, state: &mut State) {
@@ -355,7 +348,7 @@ fn request_latest(shared: &Shared, state: &mut State) {
         snapshot: Arc::clone(snapshot),
         viewport: environment.viewport(),
     });
-    shared.wake.notify_one();
+    shared.wake.notify_all();
 }
 
 fn key_for(
@@ -408,6 +401,8 @@ fn publish_result(
 ) {
     let mut state = lock(&shared.state);
     if state.closing || state.requested != Some(key) {
+        drop(state);
+        shared.wake.notify_all();
         return;
     }
     match computed {
@@ -450,6 +445,8 @@ fn publish_result(
             state.layout_error = Some(layout_failure("cascade_failed", None, None));
         }
     }
+    drop(state);
+    shared.wake.notify_all();
 }
 
 fn fail_worker(shared: &Shared, message: &str) {
@@ -464,6 +461,8 @@ fn fail_worker(shared: &Shared, message: &str) {
         state.layout_completed = None;
         state.layout_error = Some(layout_failure("worker_failed", None, None));
     }
+    drop(state);
+    shared.wake.notify_all();
 }
 
 fn lock<T>(mutex: &Mutex<T>) -> MutexGuard<'_, T> {

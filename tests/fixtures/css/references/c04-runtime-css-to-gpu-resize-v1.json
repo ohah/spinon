@@ -1,0 +1,237 @@
+{
+  "schema": "spinon-css-runtime-css-to-gpu-resize-reference/v1",
+  "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.98-daac2f9266a3-6b838ef870d2-ccffd5c5fe77",
+  "fixture": {
+    "id": "C04-runtime-css-to-gpu-resize-v1",
+    "inventoryPath": "tests/fixtures/css/c04/runtime-css-to-gpu-resize-inventory.json",
+    "inventorySha256": "daac2f9266a33669dd2ba58bfa9400b49457f31af1a228ad15925396da51acdc",
+    "htmlPath": "tests/fixtures/css/c04/runtime-css-to-gpu-resize.html",
+    "htmlSha256": "0f6a7ec944e597c9073588204008d0567873acf7886b7885f9da57615aff168b",
+    "javascriptPath": "tests/fixtures/css/c04/runtime-css-to-gpu-resize.js",
+    "javascriptSha256": "bc352b23c63f7e8fdab1baccc6d35be52657a5399370aee11810b67bd3402407"
+  },
+  "captureTool": {
+    "path": "tools/css-reference/capture-runtime-css-to-gpu-resize.mjs",
+    "sha256": "6b838ef870d2be16c3dba73088f967ddf030e0933d65fb16ac958b69cec4fa8a",
+    "dependencies": [
+      {
+        "path": "tools/css-reference/chromium-session.mjs",
+        "sha256": "b010ada41ed75dc2d67ee25abd4266b17930f1de95fc683eebc5cdab6ad2cdc1"
+      }
+    ]
+  },
+  "oracle": {
+    "name": "Chromium",
+    "product": "Chrome/154.0.8037.98",
+    "revision": "@b859317bf11f6be47f9b7799ec690a0a42a1fb33",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "executable": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "executableSha256": "ccffd5c5fe77ba3212e07c2c69091f8048b73c396b4647ecaa150e1e01a04954"
+  },
+  "environment": {
+    "os": "macOS 26.5.1",
+    "osBuild": "25F80",
+    "architecture": "arm64",
+    "nodeVersion": "v24.20.0",
+    "browserFlags": [
+      "--headless=new",
+      "--no-first-run",
+      "--no-default-browser-check",
+      "--disable-background-networking",
+      "--lang=en-US",
+      "--remote-debugging-port=0",
+      "--user-data-dir=<temporary-profile>"
+    ],
+    "viewports": [
+      {
+        "id": "baseline",
+        "width": 301,
+        "height": 100,
+        "deviceScaleFactor": 1
+      },
+      {
+        "id": "expanded",
+        "width": 341,
+        "height": 128,
+        "deviceScaleFactor": 1
+      }
+    ],
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "media": {
+      "locale": "en-US",
+      "timeZone": "UTC",
+      "colorScheme": "light",
+      "pointer": "coarse",
+      "hover": "none"
+    }
+  },
+  "comparison": {
+    "computedValues": "문자열 정확 일치",
+    "nodeGeometry": {
+      "unit": "CSS px",
+      "perCoordinateMaximumAbsoluteError": 0.5,
+      "aggregateAveragesAllowed": false
+    },
+    "viewportPropagation": "surface resize 뒤 CSS viewport와 root의 100vw/100vh frame이 각각 정확히 일치",
+    "paintPreservation": "배경색·투명·display:none의 기존 결과 유지"
+  },
+  "observations": {
+    "baseline": {
+      "fixtureId": "C04-runtime-css-to-gpu-resize-v1",
+      "viewport": {
+        "width": 301,
+        "height": 100,
+        "deviceScaleFactor": 1
+      },
+      "environment": {
+        "locale": "en-US",
+        "intlLocale": "en-US",
+        "timeZone": "UTC",
+        "dark": false,
+        "coarsePointer": true,
+        "hover": false
+      },
+      "nodes": [
+        {
+          "id": "root",
+          "properties": {
+            "display": "flex",
+            "width": "301px",
+            "height": "100px",
+            "background-color": "rgb(18, 52, 86)"
+          },
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 301,
+            "height": 100
+          }
+        },
+        {
+          "id": "opaque",
+          "properties": {
+            "display": "block",
+            "width": "51px",
+            "height": "31px",
+            "background-color": "rgb(51, 102, 255)"
+          },
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 51,
+            "height": 31
+          }
+        },
+        {
+          "id": "transparent",
+          "properties": {
+            "display": "block",
+            "width": "41px",
+            "height": "31px",
+            "background-color": "rgba(0, 0, 0, 0)"
+          },
+          "rect": {
+            "x": 62,
+            "y": 0,
+            "width": 41,
+            "height": 31
+          }
+        },
+        {
+          "id": "hidden",
+          "properties": {
+            "display": "none",
+            "width": "23px",
+            "height": "17px",
+            "background-color": "rgb(255, 0, 0)"
+          },
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        }
+      ]
+    },
+    "expanded": {
+      "fixtureId": "C04-runtime-css-to-gpu-resize-v1",
+      "viewport": {
+        "width": 341,
+        "height": 128,
+        "deviceScaleFactor": 1
+      },
+      "environment": {
+        "locale": "en-US",
+        "intlLocale": "en-US",
+        "timeZone": "UTC",
+        "dark": false,
+        "coarsePointer": true,
+        "hover": false
+      },
+      "nodes": [
+        {
+          "id": "root",
+          "properties": {
+            "display": "flex",
+            "width": "341px",
+            "height": "128px",
+            "background-color": "rgb(18, 52, 86)"
+          },
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 341,
+            "height": 128
+          }
+        },
+        {
+          "id": "opaque",
+          "properties": {
+            "display": "block",
+            "width": "51px",
+            "height": "31px",
+            "background-color": "rgb(51, 102, 255)"
+          },
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 51,
+            "height": 31
+          }
+        },
+        {
+          "id": "transparent",
+          "properties": {
+            "display": "block",
+            "width": "41px",
+            "height": "31px",
+            "background-color": "rgba(0, 0, 0, 0)"
+          },
+          "rect": {
+            "x": 62,
+            "y": 0,
+            "width": 41,
+            "height": 31
+          }
+        },
+        {
+          "id": "hidden",
+          "properties": {
+            "display": "none",
+            "width": "23px",
+            "height": "17px",
+            "background-color": "rgb(255, 0, 0)"
+          },
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        }
+      ]
+    }
+  }
+}
