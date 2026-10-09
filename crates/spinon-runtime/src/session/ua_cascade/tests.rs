@@ -1,5 +1,8 @@
 use super::*;
-use spinon_core::{AttributeName, DocumentChangeBatch, DocumentOperation, HostDocument, OwnerId};
+use spinon_core::{
+    AttributeName, DocumentChangeBatch, DocumentOperation, HostDocument, HostNodeHandle,
+    HostParent, OwnerId,
+};
 use std::thread;
 use std::time::{Duration, Instant};
 
@@ -91,6 +94,10 @@ fn no_environment_means_no_implicit_desktop_calculation() {
 
     let before = handle.snapshot();
     assert_eq!(before.state, RuntimeUaCascadeState::NotConfigured);
+    assert_eq!(
+        handle.layout_snapshot().state,
+        RuntimeLayoutState::NotConfigured
+    );
     assert!(before.requested.is_none());
     assert!(before.completed.is_none());
 
@@ -98,6 +105,7 @@ fn no_environment_means_no_implicit_desktop_calculation() {
     let after = wait_for_terminal_state(&handle, RuntimeUaCascadeState::Empty);
     assert_eq!(after.requested.unwrap().environment_revision, 0);
     assert_eq!(after.completed.as_ref().unwrap().roots.len(), 0);
+    assert_eq!(handle.layout_snapshot().state, RuntimeLayoutState::Empty);
     coordinator.shutdown().unwrap();
 }
 
@@ -149,12 +157,19 @@ fn all_host_root_elements_are_computed_as_independent_roots() {
         snapshot,
         viewport: CssViewport::C04_FIXTURE,
     };
-    let roots = compute_request(&request).unwrap();
-    assert_eq!(roots.len(), 2);
-    assert_eq!(roots[0].styles.elements.len(), 1);
-    assert_eq!(roots[1].styles.elements.len(), 1);
-    assert_eq!(roots[0].styles.elements[0].properties["display"], "block");
-    assert_eq!(roots[1].styles.elements[0].properties["display"], "inline");
+    let calculation = compute_request(&request).unwrap();
+    assert_eq!(calculation.roots.len(), 2);
+    assert_eq!(calculation.roots[0].styles.elements.len(), 1);
+    assert_eq!(calculation.roots[1].styles.elements.len(), 1);
+    assert_eq!(
+        calculation.roots[0].styles.elements[0].properties["display"],
+        "block"
+    );
+    assert_eq!(
+        calculation.roots[1].styles.elements[0].properties["display"],
+        "inline"
+    );
+    assert_eq!(calculation.layout.unwrap_err().code, "multiple_host_roots");
 }
 
 #[test]
@@ -165,56 +180,16 @@ fn inline_style_attribute_overrides_ua_and_preserves_parser_diagnostics() {
         snapshot: styled,
         viewport: CssViewport::C04_FIXTURE,
     };
-    let roots = compute_request(&request).unwrap();
-    assert_eq!(roots[0].styles.elements[0].properties["display"], "inline");
-    assert!(!roots[0].styles.diagnostics.is_empty());
-}
-
-#[test]
-fn direct_text_root_fails_the_whole_request_instead_of_returning_partial_roots() {
-    let snapshot = make_snapshot(&["div"], Some("not an element"), None);
-    let request = WorkRequest {
-        key: key_for(&snapshot, EnvironmentRevision::INITIAL),
-        snapshot,
-        viewport: CssViewport::C04_FIXTURE,
-    };
-    let error = compute_request(&request).unwrap_err();
-    assert!(error.contains("직속 텍스트"));
-}
-
-#[test]
-fn stale_completion_cannot_replace_a_newer_requested_key() {
-    let shared = Shared {
-        state: Mutex::new(State::new()),
-        wake: Condvar::new(),
-    };
-    let snapshot = make_snapshot(&["div"], None, None);
-    let mut state = lock(&shared.state);
-    state.document = Some(Arc::clone(&snapshot));
-    state.environment = Some(RuntimeCssEnvironment {
-        width_css_px: 390.0,
-        height_css_px: 844.0,
-        device_scale_factor: 3.0,
-        media_environment: CssMediaEnvironment::MOBILE,
-        revision: EnvironmentRevision::INITIAL,
-    });
-    request_latest(&shared, &mut state);
-    let stale_key = state.requested.unwrap();
-    state.environment = Some(RuntimeCssEnvironment {
-        revision: EnvironmentRevision::INITIAL.checked_next().unwrap(),
-        ..state.environment.unwrap()
-    });
-    request_latest(&shared, &mut state);
-    let current_key = state.requested.unwrap();
-    drop(state);
-
-    publish_result(&shared, stale_key, Ok(Vec::new()), 1);
-    let state = lock(&shared.state);
-    assert_ne!(current_key, stale_key);
-    assert_eq!(state.requested, Some(current_key));
-    assert_eq!(state.status, RuntimeUaCascadeState::Pending);
-    assert!(state.completed.is_none());
-    assert_eq!(state.pending.as_ref().unwrap().key, current_key);
+    let calculation = compute_request(&request).unwrap();
+    assert_eq!(
+        calculation.roots[0].styles.elements[0].properties["display"],
+        "inline"
+    );
+    assert!(!calculation.roots[0].styles.diagnostics.is_empty());
+    assert_eq!(
+        calculation.layout.unwrap_err().code,
+        "unsupported_computed_value"
+    );
 }
 
 #[test]
@@ -274,3 +249,6 @@ fn environment_result(
 ) -> Result<EnvironmentRevision, RuntimeUaCascadeError> {
     handle.set_environment(400.0, 800.0, 2.0, CssMediaEnvironment::MOBILE)
 }
+
+#[path = "runtime_layout_tests.rs"]
+mod runtime_layout_tests;

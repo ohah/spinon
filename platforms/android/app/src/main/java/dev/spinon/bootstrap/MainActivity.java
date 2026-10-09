@@ -361,21 +361,21 @@ public final class MainActivity extends Activity {
         root.setBackgroundColor(Color.rgb(14, 19, 31));
 
         TextView title = new TextView(this);
-        title.setText("SPINON · C04.8 Runtime UA cascade");
+        title.setText("SPINON · C04 Runtime CSS→Taffy");
         title.setTextColor(Color.rgb(230, 237, 248));
         title.setTextSize(20);
         title.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
         root.addView(title);
 
         TextView description = new TextView(this);
-        description.setText("개발 전용 · 실제 V8 DOM 변경, Stylo worker, revision JSON을 확인합니다");
+        description.setText("개발 전용 · 실제 V8 DOM 변경부터 Stylo cascade와 Taffy 프레임 JSON까지 확인합니다");
         description.setTextColor(Color.rgb(170, 184, 207));
         description.setTextSize(13);
         description.setPadding(0, Math.round(8 * density), 0, Math.round(12 * density));
         root.addView(description);
 
         TextView status = new TextView(this);
-        status.setText("실제 V8 UA cascade 검증 중…");
+        status.setText("실제 V8 CSS→Taffy 검증 중…");
         status.setTextColor(Color.rgb(97, 185, 255));
         status.setTextSize(15);
         root.addView(status);
@@ -392,10 +392,11 @@ public final class MainActivity extends Activity {
 
         bootstrapExecutor.execute(() -> {
             String result = decode(nativeSessionUaCascadeProbe());
-            Log.i(TAG, "SPINON_C048_UA_CASCADE_PROBE=" + result);
+            Log.i(TAG, "SPINON_C04_RUNTIME_LAYOUT_PROBE=" + result);
             runOnUiThread(() -> {
-                boolean passed = result.startsWith("status=0 ua_cascade_probe=PASS");
-                status.setText(passed ? "실제 V8 UA cascade 검증 통과" : "실제 V8 UA cascade 검증 실패");
+                boolean passed = result.startsWith("status=0 ua_cascade_probe=PASS")
+                        && result.contains("runtime_layout=PASS");
+                status.setText(passed ? "실제 V8 CSS→Taffy 검증 통과" : "실제 V8 CSS→Taffy 검증 실패");
                 report.setText(result.replace(" roots=", "\nroots=")
                         .replace(" document_revision=", "\ndocument_revision=")
                         .replace(" ua_values=", "\nua_values=")

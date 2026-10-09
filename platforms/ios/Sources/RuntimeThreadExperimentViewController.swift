@@ -107,15 +107,16 @@ final class RuntimeThreadExperimentViewController: UIViewController {
         configureView()
         if runUaCascadeProbe {
             setButtons(enabled: false)
-            setStatus("실제 V8 UA cascade 검증 중…")
+            setStatus("실제 V8 CSS→Taffy 검증 중…")
             DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-                let report = SpinonRunner.runUaCascadeProbe() ?? "UA cascade 검증 응답 없음"
+                let report = SpinonRunner.runUaCascadeProbe() ?? "CSS→Taffy 검증 응답 없음"
                 DispatchQueue.main.async {
                     guard let self else { return }
                     self.appendReport(report)
                     self.setStatus(report.contains("status=0 ua_cascade_probe=PASS")
-                        ? "실제 V8 UA cascade 검증 통과"
-                        : "실제 V8 UA cascade 검증 실패")
+                        && report.contains("runtime_layout=PASS")
+                        ? "실제 V8 CSS→Taffy 검증 통과"
+                        : "실제 V8 CSS→Taffy 검증 실패")
                 }
             }
             return
@@ -178,7 +179,7 @@ final class RuntimeThreadExperimentViewController: UIViewController {
 
         let title = UILabel()
         if runUaCascadeProbe {
-            title.text = "SPINON · C04.8 Runtime UA cascade"
+            title.text = "SPINON · C04 Runtime CSS→Taffy"
         } else if automaticallyRunLifecycleProbe {
             title.text = "SPINON · iOS DOM wrapper 수명 검증"
         } else if runShutdownProbe {
@@ -194,7 +195,7 @@ final class RuntimeThreadExperimentViewController: UIViewController {
 
         let description = UILabel()
         if runUaCascadeProbe {
-            description.text = "개발 전용 · 실제 V8 DOM 변경, Stylo worker, revision JSON을 확인합니다"
+            description.text = "개발 전용 · 실제 V8 DOM 변경부터 Stylo cascade와 Taffy 프레임 JSON까지 확인합니다"
         } else if automaticallyRunLifecycleProbe {
             description.text = "개발 전용 · V8 weak Global 회수 후 Rust HostDocument root와 node count를 확인합니다"
         } else if runShutdownProbe {

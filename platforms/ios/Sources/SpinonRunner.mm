@@ -281,11 +281,11 @@
   NSString *message = [NSString stringWithUTF8String:output.data()];
   if (status == 0) {
     os_log(OS_LOG_DEFAULT,
-           "SPINON_C048_UA_CASCADE_PROBE %{public}@",
+           "SPINON_C04_RUNTIME_LAYOUT_PROBE %{public}@",
            message ?: @"empty report");
   } else {
     os_log_error(OS_LOG_DEFAULT,
-                 "SPINON_C048_UA_CASCADE_PROBE %{public}@",
+                 "SPINON_C04_RUNTIME_LAYOUT_PROBE %{public}@",
                  message ?: @"empty report");
   }
   return message ?: [NSString stringWithFormat:@"status=%d empty report", status];

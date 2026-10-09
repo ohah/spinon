@@ -1,7 +1,11 @@
+#[path = "layout_probe.rs"]
+mod layout_probe;
+
 use super::{
     ERR_ARGUMENT, ERR_OUTPUT_TOO_SMALL, spinon_runtime_session_copy_ua_cascade_json,
     spinon_runtime_session_set_ua_cascade_environment,
 };
+use layout_probe::run_runtime_layout_fixture_probe;
 use serde_json::Value;
 use std::ffi::{CStr, CString, c_char};
 use std::thread;
@@ -148,8 +152,9 @@ fn run_ua_cascade_probe(
         return Err("detached node가 기존 HostRoot cascade 결과를 바꿨습니다".to_owned());
     }
     let large_compute_us = computation_duration_us(&large_snapshot)?;
+    let runtime_layout_summary = run_runtime_layout_fixture_probe()?;
     Ok(format!(
-        "{small_summary} {large_summary} css_worker_ready_us={} session_startup_us={} snapshot_clone_small_us={} snapshot_submit_small_us={} cascade_compute_small_us={small_compute_us} detached_nodes=256 snapshot_clone_large_us={} snapshot_submit_large_us={} cascade_compute_large_us={large_compute_us}",
+        "{small_summary} {large_summary} {runtime_layout_summary} css_worker_ready_us={} session_startup_us={} snapshot_clone_small_us={} snapshot_submit_small_us={} cascade_compute_small_us={small_compute_us} detached_nodes=256 snapshot_clone_large_us={} snapshot_submit_large_us={} cascade_compute_large_us={large_compute_us}",
         session_metrics.css_worker_ready_us,
         session_metrics.session_startup_us,
         small_metrics.snapshot_clone_us,

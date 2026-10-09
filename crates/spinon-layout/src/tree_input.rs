@@ -4,7 +4,7 @@ use spinon_core::{EnvironmentRevision, NodeId, StyleRevision, Tree};
 
 use crate::{
     LayoutError, LayoutInput, LayoutInputRevision, LayoutNode, LayoutSourceRevision, LayoutStyle,
-    Viewport,
+    RootSizingPolicy, Viewport,
 };
 
 impl LayoutInput {
@@ -47,6 +47,7 @@ impl LayoutInput {
                 environment_revision,
             ),
             viewport,
+            root_sizing: RootSizingPolicy::MatchViewport,
             nodes,
         })
     }

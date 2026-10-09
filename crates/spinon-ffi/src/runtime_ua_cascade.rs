@@ -5,11 +5,21 @@ use spinon_runtime::{
 use spinon_style::{
     CssColorScheme, CssMediaEnvironment, CssPointerCapabilities, CssPrimaryPointer, CssViewport,
 };
+use std::collections::BTreeMap;
 use std::ffi::c_char;
 
 const ERR_ARGUMENT: i32 = -1;
 const ERR_OUTPUT_TOO_SMALL: i32 = -3;
 const VALID_POINTER_FLAGS: u32 = 0b111;
+const LEGACY_UA_PROPERTIES: &[&str] = &[
+    "display",
+    "list-style-type",
+    "margin-block-start",
+    "margin-block-end",
+    "margin-inline-start",
+    "margin-inline-end",
+    "padding-inline-start",
+];
 
 fn color_scheme_from_abi(value: i32) -> Option<CssColorScheme> {
     match value {
@@ -141,7 +151,7 @@ pub unsafe extern "C" fn spinon_runtime_session_copy_ua_cascade_json(
     copy_json(json.as_bytes(), output)
 }
 
-fn copy_json(json: &[u8], output: &mut [u8]) -> i32 {
+pub(crate) fn copy_json(json: &[u8], output: &mut [u8]) -> i32 {
     let Some(required) = json.len().checked_add(1) else {
         if let Some(first) = output.first_mut() {
             *first = 0;
@@ -191,7 +201,7 @@ fn completed_json(completed: &RuntimeUaCascadeCompleted) -> Value {
                 .map(|element| {
                     json!({
                         "nodeId": element.node_id.get(),
-                        "properties": element.properties,
+                        "properties": legacy_ua_properties(&element.properties),
                     })
                 })
                 .collect::<Vec<_>>();
@@ -223,17 +233,26 @@ fn completed_json(completed: &RuntimeUaCascadeCompleted) -> Value {
     })
 }
 
+fn legacy_ua_properties(properties: &BTreeMap<String, String>) -> BTreeMap<String, &str> {
+    properties
+        .iter()
+        .filter(|(name, _)| LEGACY_UA_PROPERTIES.contains(&name.as_str()))
+        .map(|(name, value)| (name.clone(), value.as_str()))
+        .collect()
+}
+
 #[path = "runtime_ua_cascade/probe.rs"]
 mod probe;
 
 #[cfg(test)]
 mod tests {
     use super::{
-        ERR_ARGUMENT, ERR_OUTPUT_TOO_SMALL, copy_json, media_environment_from_abi, snapshot_json,
-        spinon_runtime_session_copy_ua_cascade_json,
+        ERR_ARGUMENT, ERR_OUTPUT_TOO_SMALL, copy_json, legacy_ua_properties,
+        media_environment_from_abi, snapshot_json, spinon_runtime_session_copy_ua_cascade_json,
         spinon_runtime_session_set_ua_cascade_environment,
     };
     use spinon_runtime::{RuntimeUaCascadeKey, RuntimeUaCascadeSnapshot, RuntimeUaCascadeState};
+    use std::collections::BTreeMap;
 
     #[test]
     fn abi_environment_rejects_unknown_flags_and_non_boolean_values() {
@@ -292,6 +311,26 @@ mod tests {
     }
 
     #[test]
+    fn extended_runtime_profile_keeps_legacy_ua_property_shape() {
+        let properties = BTreeMap::from([
+            ("display".to_owned(), "flex".to_owned()),
+            ("list-style-type".to_owned(), "disc".to_owned()),
+            ("margin-block-start".to_owned(), "0px".to_owned()),
+            ("margin-block-end".to_owned(), "0px".to_owned()),
+            ("margin-inline-start".to_owned(), "0px".to_owned()),
+            ("margin-inline-end".to_owned(), "0px".to_owned()),
+            ("padding-inline-start".to_owned(), "5px".to_owned()),
+            ("width".to_owned(), "300px".to_owned()),
+            ("padding-left".to_owned(), "5px".to_owned()),
+        ]);
+        let json = serde_json::to_value(legacy_ua_properties(&properties)).unwrap();
+        assert_eq!(json.as_object().unwrap().len(), 7);
+        assert_eq!(json["display"], "flex");
+        assert!(json.get("width").is_none());
+        assert!(json.get("padding-left").is_none());
+    }
+
+    #[test]
     fn output_short_buffer_contract_uses_nul_guard_and_capacity_status() {
         let json = b"{\"state\":\"pending\"}";
         let mut output = [0x7f_u8; 4];
@@ -315,6 +354,17 @@ mod tests {
         assert_eq!(
             unsafe {
                 spinon_runtime_session_copy_ua_cascade_json(
+                    std::ptr::null_mut(),
+                    std::ptr::null_mut(),
+                    0,
+                    std::ptr::null_mut(),
+                )
+            },
+            ERR_ARGUMENT
+        );
+        assert_eq!(
+            unsafe {
+                crate::runtime_layout::spinon_runtime_session_copy_layout_json(
                     std::ptr::null_mut(),
                     std::ptr::null_mut(),
                     0,

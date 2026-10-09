@@ -25,9 +25,15 @@ use crate::{
 use super::{StyloDocumentView, StyloElement};
 mod device;
 mod margin;
+mod runtime_layout;
 mod s04;
 mod snapshot;
 mod ua_baseline;
+
+use runtime_layout::RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES;
+pub use runtime_layout::{
+    compute_runtime_flex_layout_cascade, first_unsupported_runtime_layout_inline_property,
+};
 
 #[cfg(test)]
 #[path = "cascade/ua_baseline_tests.rs"]
@@ -303,6 +309,7 @@ fn compute_cascade(
             Some(FLEX_ALIGNMENT_AUTHOR_PROPERTIES)
         }
         ComputedStyleProfile::S04FlexPaintV1 => Some(s04::S04_FLEX_PAINT_AUTHOR_PROPERTIES),
+        ComputedStyleProfile::RuntimeFlexLayoutV1 => Some(RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES),
     };
     if let Some(allowed) = allowed_author_properties
         && let Some((stylesheet_id, feature)) = match profile {
@@ -468,3 +475,7 @@ mod tests;
 #[cfg(test)]
 #[path = "cascade/media_environment_tests.rs"]
 mod media_environment_tests;
+
+#[cfg(test)]
+#[path = "cascade/runtime_layout_tests.rs"]
+mod runtime_layout_tests;

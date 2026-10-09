@@ -148,7 +148,14 @@ pub struct LayoutInput {
     root: NodeId,
     revision: LayoutInputRevision,
     viewport: Viewport,
+    root_sizing: RootSizingPolicy,
     nodes: Vec<LayoutNode>,
+}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub(crate) enum RootSizingPolicy {
+    MatchViewport,
+    ResolveWithinViewport,
 }
 
 impl LayoutInput {
@@ -262,12 +269,14 @@ fn validate(input: &LayoutInput) -> Result<BTreeMap<NodeId, usize>, LayoutError>
         validate_style(node)?;
     }
 
-    let root = &input.nodes[root_position];
-    if root.style.width != LayoutDimension::Fixed(input.viewport.width) {
-        return Err(LayoutError::RootSizeMismatch { axis: "width" });
-    }
-    if root.style.height != LayoutDimension::Fixed(input.viewport.height) {
-        return Err(LayoutError::RootSizeMismatch { axis: "height" });
+    if input.root_sizing == RootSizingPolicy::MatchViewport {
+        let root = &input.nodes[root_position];
+        if root.style.width != LayoutDimension::Fixed(input.viewport.width) {
+            return Err(LayoutError::RootSizeMismatch { axis: "width" });
+        }
+        if root.style.height != LayoutDimension::Fixed(input.viewport.height) {
+            return Err(LayoutError::RootSizeMismatch { axis: "height" });
+        }
     }
 
     let mut parent_count = BTreeMap::<NodeId, usize>::new();

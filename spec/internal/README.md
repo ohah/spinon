@@ -22,6 +22,9 @@
 | [0010 · C03 Stylo DOM adapter](0010-stylo-dom-adapter-c03.md) | HostDocument snapshot에서 Stylo 문서·노드·요소·선택자 DOM으로의 변환 계약 | 내부 구현 계약 초안 `0.1.0-draft` · C03 구현 완료, 계산 스타일 제외 |
 | [0011 · C02 CSS 자원 어댑터](0011-css-resource-adapter-c02.md) | Vite·Rspack 산출을 빌드 단위 공통 CSS 자원 snapshot으로 정규화 | 내부 계약 후보 `0.1.0-draft` · fixture 스파이크 전용 · 제품 API 아님 |
 | [0012 · C04 stylesheet 입력 목록](0012-stylesheet-registry-c04.md) | Stylo stylesheet 파싱, CSS 출처·등록 순서와 parser 진단 보존 | 내부 구현 계약 초안 `0.1.0-draft` · cascade 계산 미연결 |
+| [0013 · R15 청크 OTA 호환 모델](0013-r15-ota-chunk-compatibility.md) | 바이너리 호환 ID, 단일 target ESM specifier 매핑이 있는 기능·청크·자원 그래프, typed edge diff·영향 scope·최초/불확실 기준 fallback, 객체 차등 전달·전체 그래프 사전 확보·target별 stale/CAS publish 경계, 로컬 영속 저장·객체 재검증·용량 보호, 서명·압축 제한·상향 sequence rollback 및 offline authorization 미결정 | 내부 설계 제안 `0.1.0-draft` · 배포/로더/API 미구현 |
+| [0014 · C02 번들러 모듈 그래프 adapter](0014-c02-bundler-module-graph.md) | 입력 resolver graph와 최종 emitted ESM graph를 분리해 기능·청크·specifier 대응 및 추출 실패를 기록 | 내부 실험 계약 `0.1.0-draft` · 구현·제품 API 미완료 |
+| [0015 · C02 JavaScript·CSS 자원 그래프 결합](0015-c02-resource-graph-join.md) | 같은 production build에서 0011 CSS 자원과 0014 JavaScript feature·chunk graph를 결합 | 내부 구현 계약 `0.1.0-draft` · 고정 fixture 구현 완료 · 제품 API 아님 |
 | [0016 · C04 기본 stylesheet cascade](0016-c04-basic-cascade.md) | 불변 HostDocument revision의 UA·author·inline cascade와 whitelist computed-style snapshot | fixture 전용 내부 구현 계약 `0.1.0-draft` · Chromium 비교 통과 · 제품/API 연결 미완료 |
 | [0017 · C04 computed style→Taffy 입력 adapter](0017-c04-style-layout-bridge.md) | revision이 일치하는 computed-style snapshot을 제한 Taffy 입력으로 변환하고 진단·미지원 값을 전체 실패 처리 | 내부 구현 계약 `0.1.0` · 고정 fixture 검증 완료 · 제품 runtime/API 미연결 |
 | [0018 · S03.1 V8 HostDocument 변경 묶음](0018-s03-v8-hostdocument-bridge.md) | V8 내부 JS 배열을 UTF-16 C ABI로 복사하고 세션별 HostDocument에 원자 변경을 적용해 BigInt 영수증을 반환 | 내부 구현 계약 `0.1.0` · Android/iOS 시뮬레이터 실제 V8 검증 완료 · 공개 DOM API 아님 |
@@ -33,14 +36,18 @@
 | [0024 · C04.3 Flex 정렬 전달](0024-c04-flex-alignment.md) | 별도 computed-style profile에서 제한 align-items·justify-content 값을 Taffy 입력으로 전달 | 내부 계약 `0.1.0` · 고정 Chromium fixture 통과 · 제품 runtime/API 미연결 |
 | [0025 · C04.4 Cascade Layers](0025-c04-cascade-layers.md) | 새 Flex alignment profile에서 Stylo CSS layer ordering·declaration allowlist를 확인하고 Taffy에 전달 | 내부 계약 `0.1.0` · 고정 Chromium 16-case fixture 통과 · 제품 runtime/API 미연결 |
 | [0026 · C04.5 지원 HTML UA 계산 스냅샷](0026-c04-ua-baseline-snapshot.md) | 내장 UA CSS를 Stylo UA origin으로 계산하고 지원 요소 7개 property의 제한 snapshot을 반환 | 내부 Rust API `0.1.0-draft` · C01 Chromium 19개 값 비교 · runtime/layout/GPU 미연결 |
+| [0027 · C04.6 Flex margin → Taffy 입력](0027-c04-flex-margin-layout.md) | 별도 computed-style profile의 physical/logical margin 값을 제한 Taffy Flex 입력으로 전달 | 내부 Rust API `0.1.0` · 고정 Chromium fixture 통과 · 제품 runtime/API 미연결 |
 | [0028 · C04.7 CSS media 환경 입력](0028-c04-media-environment.md) | viewport와 revision에 묶은 scheme·primary/all pointer 입력 및 제한 `@media` cascade | 내부 Rust API `0.1.0` · Chromium 고정 4 case 비교 · OS/runtime 연결 미구현 |
 | [0029 · C04.8 Runtime UA cascade 재계산](0029-c04-runtime-ua-cascade.md) | HostDocument 전체 revision snapshot·기존 inline `style` 속성·명시 viewport/media 환경에서 세션 초기화 중 준비한 CSS worker가 내장 UA cascade와 diagnostics를 revision JSON으로 반환 | 내부 runtime 계약 초안 `0.1.0-draft` · Android·iOS Simulator 실제 V8 실행 확인 · 제품 layout/GPU 연결 미완료 |
-| [0013 · R15 청크 OTA 호환 모델](0013-r15-ota-chunk-compatibility.md) | 바이너리 호환 ID, 단일 target ESM specifier 매핑이 있는 기능·청크·자원 그래프, typed edge diff·영향 scope·최초/불확실 기준 fallback, 객체 차등 전달·전체 그래프 사전 확보·target별 stale/CAS publish 경계, 로컬 영속 저장·객체 재검증·용량 보호, 서명·압축 제한·상향 sequence rollback 및 offline authorization 미결정 | 내부 설계 제안 `0.1.0-draft` · 배포/로더/API 미구현 |
-| [0014 · C02 번들러 모듈 그래프 adapter](0014-c02-bundler-module-graph.md) | 입력 resolver graph와 최종 emitted ESM graph를 분리해 기능·청크·specifier 대응 및 추출 실패를 기록 | 내부 실험 계약 `0.1.0-draft` · 구현·제품 API 미완료 |
-| [0015 · C02 JavaScript·CSS 자원 그래프 결합](0015-c02-resource-graph-join.md) | 같은 production build에서 0011 CSS 자원과 0014 JavaScript feature·chunk 그래프를 결합 | 내부 구현 계약 `0.1.0-draft` · 고정 fixture 구현 완료 · 제품 API 아님 |
+| [0030 · C04.9 Runtime CSS→Taffy layout snapshot](0030-c04-runtime-css-to-taffy.md) | 같은 RuntimeSession HostDocument revision에서 UA cascade와 제한 inline CSS profile을 계산하고 Taffy CSS px frame을 비동기 snapshot으로 복사 | 미출시 내부 계약 0.1.0 고정 · Android·iOS Simulator 실제 V8 실행 확인 · GPU scene/제품 CSS 미완료 |
 | [R13 · 플랫폼 생명주기·GPU 복구](r13-platform-gpu-recovery.md) | wgpu 실험 ABI, 플랫폼 표면 수명과 복구 경계 | 실험 전용 |
 
 ## 검증 기록
+
+- [C04.9 · Runtime CSS→Taffy 계획 적대 검토](./evidence/c04-runtime-style-layout-plan-review-2026-10-09.md) — 구현 계획의 불변 조건·미지원 경계와 보정 뒤 계획문서 hash를 대조.
+- [C04.9 · Runtime CSS→Taffy 시뮬레이터 실행](./evidence/c04-runtime-css-taffy-simulators-2026-10-09.md) — 고정 Chromium oracle과 Android·iOS Simulator의 실제 V8 layout JSON·프레임 비교 및 검증 경계.
+- [C04.9 · Runtime CSS→Taffy 구현 후 검토](./evidence/c04-runtime-css-taffy-implementation-review-2026-10-09.md) — C ABI·CSS recovery·revision·root/frame·worker 및 플랫폼 실패 관점을 확인하고 수정한 동작을 기록.
+- [C04.9 · PR 변경 검토](./evidence/c04-runtime-css-taffy-pr-review-2026-10-09.md) — 구현·명세·상태 대장·실행 근거·버전 고정을 함께 대조한 merge 전 확인.
 
 - [S04.10 · 플랫폼 presentation 신호 API·기기 조사](./evidence/s04-10-presentation-signal-audit-2026-10-07.md) — wgpu 30.0.1·Metal·Android/Vulkan API 경계, emulator와 Xclipse 940 실기기 capability 차이, 잠금 해제 후 실기기 화면 제출·surface 재생성·36개 오프스크린 표본 readback, 미실행 timing correlation 경계.
 - [C01 · Chromium HTML UA 스타일 초기 비교](./evidence/css-c01-chromium-ua-2026-10-01.md) — macOS Chromium oracle와 고정 author baseline을 덮는 19개 computed value 비교 및 한계.
