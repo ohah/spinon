@@ -76,6 +76,13 @@ pub struct RuntimeSession {
     ua_cascade: RuntimeUaCascadeCoordinator,
 }
 
+#[derive(Clone, Copy)]
+enum RuntimeCssProfile {
+    Default,
+    RuntimeGpu,
+    RegisteredPropertiesFixture,
+}
+
 enum Command {
     Eval {
         sequence: u64,
@@ -230,20 +237,27 @@ fn cancel_control(control: &Mutex<RuntimeControl>) -> i32 {
 impl RuntimeSession {
     /// V8 Isolate를 만들고 소유 전용 OS 스레드의 준비를 기다립니다.
     pub fn new() -> Result<(Self, String), String> {
-        Self::new_with_runtime_gpu(false)
+        Self::new_with_css_profile(RuntimeCssProfile::Default)
     }
 
     /// C04.10 내부 GPU renderer 전용 Flex paint profile로 런타임을 만듭니다.
     pub fn new_runtime_gpu() -> Result<(Self, String), String> {
-        Self::new_with_runtime_gpu(true)
+        Self::new_with_css_profile(RuntimeCssProfile::RuntimeGpu)
     }
 
-    fn new_with_runtime_gpu(runtime_gpu: bool) -> Result<(Self, String), String> {
+    /// C05.2 등록 사용자 지정 속성을 사용하는 내부 검증 runtime을 만듭니다.
+    pub fn new_runtime_gpu_registered_properties_fixture() -> Result<(Self, String), String> {
+        Self::new_with_css_profile(RuntimeCssProfile::RegisteredPropertiesFixture)
+    }
+
+    fn new_with_css_profile(profile: RuntimeCssProfile) -> Result<(Self, String), String> {
         let startup_started = Instant::now();
-        let ua_cascade = if runtime_gpu {
-            RuntimeUaCascadeCoordinator::new_runtime_gpu()?
-        } else {
-            RuntimeUaCascadeCoordinator::new()?
+        let ua_cascade = match profile {
+            RuntimeCssProfile::Default => RuntimeUaCascadeCoordinator::new()?,
+            RuntimeCssProfile::RuntimeGpu => RuntimeUaCascadeCoordinator::new_runtime_gpu()?,
+            RuntimeCssProfile::RegisteredPropertiesFixture => {
+                RuntimeUaCascadeCoordinator::new_runtime_gpu_registered_properties()?
+            }
         };
         let css_worker_ready_us = ua_cascade.startup_duration_us();
         let actor_ua_cascade = ua_cascade.handle();

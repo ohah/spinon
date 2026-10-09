@@ -1,0 +1,42 @@
+{
+  "schema": "spinon-css-runtime-registered-properties-inventory/v1",
+  "fixtureId": "C05.2-runtime-registered-properties-v1",
+  "viewport": {
+    "width": 301,
+    "height": 100,
+    "deviceScaleFactor": 1
+  },
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "pointer": "coarse",
+    "hover": "none"
+  },
+  "nodes": [
+    { "id": "app", "properties": ["display", "width", "height", "gap", "background-color"] },
+    { "id": "sheet-one", "properties": ["display", "width", "height"] },
+    { "id": "declared", "properties": ["width", "height", "flex-shrink", "background-color", "--tile-width", "--tile-color"] },
+    { "id": "default", "properties": ["width", "height", "flex-shrink", "--tile-width"] },
+    { "id": "invalid", "properties": ["width", "height", "flex-shrink", "--tile-width"] },
+    { "id": "inherit-parent", "properties": ["display", "width", "height", "flex-shrink", "--tile-width", "--tone"] },
+    { "id": "not-inherited", "properties": ["width", "height", "flex-shrink", "--tile-width", "--tone"] },
+    { "id": "inherited", "properties": ["width", "height", "flex-shrink", "--tone"] },
+    { "id": "late", "properties": ["width", "height", "flex-shrink", "--late-width"] },
+    { "id": "unknown", "properties": ["width", "height", "flex-shrink", "--unknown-descriptor"] },
+    { "id": "inline-priority", "properties": ["width", "height", "flex-shrink", "--tile-width"] },
+    { "id": "color-override", "properties": ["width", "height", "flex-shrink", "background-color", "--tile-color"] },
+    { "id": "duplicate", "properties": ["flex-shrink", "--duplicate"] },
+    { "id": "sheet-two", "properties": ["display", "width", "height"] }
+  ],
+  "comparison": {
+    "computedValues": "문자열 정확 일치",
+    "nodeGeometry": {
+      "unit": "CSS px",
+      "perCoordinateMaximumAbsoluteError": 0.5,
+      "aggregateAveragesAllowed": false
+    },
+    "styleElement": "UA display none 및 0 geometry",
+    "scope": "registered syntax·inherits·initial value, unknown descriptor 무시, source order 및 기존 제한 CSS properties"
+  }
+}

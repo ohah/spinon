@@ -266,6 +266,18 @@ impl StylesheetRegistry {
         )
     }
 
+    pub(crate) fn first_unsupported_runtime_registered_properties_author_feature(
+        &self,
+        allowed_properties: &[&str],
+        allow_background_color: bool,
+    ) -> Option<(String, String)> {
+        css_profile::first_unsupported_runtime_registered_properties_author_feature(
+            self,
+            allowed_properties,
+            allow_background_color,
+        )
+    }
+
     pub(crate) fn first_runtime_author_diagnostic(&self) -> Option<(String, CssParseDiagnostic)> {
         self.stylesheets
             .iter()
@@ -274,6 +286,26 @@ impl StylesheetRegistry {
                 stylesheet
                     .diagnostics
                     .first()
+                    .cloned()
+                    .map(|diagnostic| (stylesheet.id.clone(), diagnostic))
+            })
+    }
+
+    pub(crate) fn first_runtime_registered_property_author_diagnostic(
+        &self,
+    ) -> Option<(String, CssParseDiagnostic)> {
+        self.stylesheets
+            .iter()
+            .filter(|stylesheet| stylesheet.origin == CssOrigin::Author)
+            .find_map(|stylesheet| {
+                stylesheet
+                    .diagnostics
+                    .iter()
+                    .find(|diagnostic| {
+                        !diagnostic
+                            .message
+                            .starts_with("Unsupported @property descriptor declaration:")
+                    })
                     .cloned()
                     .map(|diagnostic| (stylesheet.id.clone(), diagnostic))
             })

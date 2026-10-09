@@ -372,19 +372,25 @@ void C0410LogReport(os_log_type_t type, const char *label, NSString *report) {
   os_log(OS_LOG_DEFAULT, "SPINON_RUNTIME_SESSION_FREE done");
 }
 
-+ (uint64_t)createRuntimeGpuHost {
++ (uint64_t)createRuntimeGpuHostWithRegisteredPropertiesFixture:(BOOL)enabled {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
   std::array<char, 1024> output{};
   SpinonRuntimeGpuHost *host =
-      spinon_runtime_gpu_host_new(output.data(), output.size());
+      enabled == YES
+          ? spinon_runtime_gpu_host_new_registered_properties_fixture(
+                output.data(), output.size())
+          : spinon_runtime_gpu_host_new(output.data(), output.size());
   if (host == nullptr) {
-    os_log_error(OS_LOG_DEFAULT, "SPINON_C0410_HOST_ERROR=%{public}s",
+    os_log_error(OS_LOG_DEFAULT, "%{public}s_HOST_ERROR=%{public}s",
+                 enabled == YES ? "SPINON_C052" : "SPINON_C0410",
                  output.data());
     return 0;
   }
-  os_log(OS_LOG_DEFAULT, "SPINON_C0410_HOST=%{public}s", output.data());
+  os_log(OS_LOG_DEFAULT, "%{public}s_HOST=%{public}s",
+         enabled == YES ? "SPINON_C052" : "SPINON_C0410", output.data());
   return static_cast<uint64_t>(reinterpret_cast<uintptr_t>(host));
 #else
+  (void)enabled;
   os_log_error(OS_LOG_DEFAULT,
                "SPINON_C0410_DISABLED rebuild with SPINON_ENABLE_C04_RUNTIME_GPU=1");
   return 0;
@@ -478,6 +484,23 @@ void C0410LogReport(os_log_type_t type, const char *label, NSString *report) {
   NSString *report = C0410Report(status, output);
   C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
                  "SPINON_C051_EVAL", report);
+  return report;
+#else
+  (void)handle;
+  return @"status=-90 feature-disabled";
+#endif
+}
+
++ (NSString *)evalRuntimeGpuRegisteredPropertiesFixture:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 4096> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_registered_properties_fixture(
+      host, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C052_EVAL", report);
   return report;
 #else
   (void)handle;

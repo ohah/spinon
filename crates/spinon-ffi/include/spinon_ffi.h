@@ -120,6 +120,9 @@ void spinon_runtime_session_free(SpinonRuntimeSession *session);
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new(char *output,
                                                   size_t output_capacity);
+/* C05.2 검증 fixture 전용 `@property` CSS profile로 V8 GPU host를 생성합니다. */
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_registered_properties_fixture(
+    char *output, size_t output_capacity);
 /* UI event에서 viewport·색상 체계·surface 변경을 플랫폼 큐에 넣기 전에
    호출합니다. 잠금·대기를 하지 않으며 실패는 0입니다. 반환값은 내부 무효화 순번이며
    호출자가 다른 함수에 전달하지 않습니다. 성공 여부 확인 외 용도로 보관하지 마세요. */
@@ -145,6 +148,10 @@ int32_t spinon_runtime_gpu_host_eval_author_stylesheets_fixture(
     char *output, size_t output_capacity);
 /* 기존 C04.10 HostDocument에 C05.1 `--*`·`var()` style 값을 적용하는 내부 검증 fixture입니다. */
 int32_t spinon_runtime_gpu_host_eval_custom_properties_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
+/* C05.2: 연결 HTML style 요소의 @property 등록을 처리하는 검증 전용 fixture입니다. */
+int32_t spinon_runtime_gpu_host_eval_registered_properties_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);
 /* Android backend: 0=Vulkan 실패 뒤 GL 순차 재시도, 1=Vulkan 강제, 2=GL 강제. iOS는 3=Metal. */

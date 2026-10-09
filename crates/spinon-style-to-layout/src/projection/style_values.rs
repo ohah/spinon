@@ -29,7 +29,9 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexLayoutV1
                 | ComputedStyleProfile::RuntimeFlexPaintV1
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
-                | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1 => {
+                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
+                | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
+                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1 => {
                     parse_align_items(node, required(element, "align-items")?)?
                 }
                 _ => LayoutStyle::default().align_items,
@@ -40,7 +42,9 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexLayoutV1
                 | ComputedStyleProfile::RuntimeFlexPaintV1
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
-                | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1 => {
+                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
+                | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
+                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1 => {
                     parse_justify_content(node, required(element, "justify-content")?)?
                 }
                 _ => LayoutStyle::default().justify_content,
@@ -56,7 +60,9 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexLayoutV1
                 | ComputedStyleProfile::RuntimeFlexPaintV1
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
-                | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1 => LayoutEdges {
+                | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
+                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
+                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1 => LayoutEdges {
                     top: parse_css_margin(node, "margin-top", required(element, "margin-top")?)?,
                     right: parse_css_margin(
                         node,
@@ -76,7 +82,9 @@ pub(super) fn project_styles(
                 ComputedStyleProfile::RuntimeFlexLayoutV1
                 | ComputedStyleProfile::RuntimeFlexPaintV1
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
-                | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1 => LayoutEdges {
+                | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
+                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
+                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1 => LayoutEdges {
                     top: parse_css_px(node, "padding-top", required(element, "padding-top")?)?,
                     right: parse_css_px(
                         node,

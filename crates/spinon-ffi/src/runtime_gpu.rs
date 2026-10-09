@@ -17,6 +17,8 @@ const RUNTIME_AUTHOR_STYLESHEETS_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c04/runtime-author-stylesheets.js");
 const RUNTIME_CSS_CUSTOM_PROPERTIES_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c05/runtime-custom-properties-app.js");
+const RUNTIME_CSS_REGISTERED_PROPERTIES_FIXTURE_SOURCE: &str =
+    include_str!("../../../tests/fixtures/css/c05/runtime-registered-properties.js");
 
 #[repr(C)]
 pub struct SpinonRuntimeGpuHost {
@@ -90,16 +92,22 @@ impl PresentationScenes {
 impl RuntimeGpuHost {
     fn new() -> Result<(Self, String), String> {
         let (session, report) = RuntimeSession::new_runtime_gpu()?;
-        Ok((
-            Self {
-                session,
-                operation: Mutex::new(()),
-                presentation: PresentationScenes::new(),
-                renderer: Mutex::new(None),
-                pending_uikit_surface: Mutex::new(None),
-            },
-            report,
-        ))
+        Ok((Self::from_session(session), report))
+    }
+
+    fn new_registered_properties_fixture() -> Result<(Self, String), String> {
+        let (session, report) = RuntimeSession::new_runtime_gpu_registered_properties_fixture()?;
+        Ok((Self::from_session(session), report))
+    }
+
+    fn from_session(session: RuntimeSession) -> Self {
+        Self {
+            session,
+            operation: Mutex::new(()),
+            presentation: PresentationScenes::new(),
+            renderer: Mutex::new(None),
+            pending_uikit_surface: Mutex::new(None),
+        }
     }
 
     fn invalidate_scene(&self) -> Result<u64, String> {

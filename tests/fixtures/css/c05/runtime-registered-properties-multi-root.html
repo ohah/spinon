@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="margin:0">
+  <main id="first-root">
+    <style>
+      @property --cross-root-size {
+        syntax: "<length>";
+        inherits: false;
+        initial-value: 19px;
+      }
+      #shared-target {
+        display: block;
+        height: 14px;
+        width: var(--cross-root-size);
+      }
+    </style>
+  </main>
+  <div id="shared-target"></div>
+</body>
+</html>

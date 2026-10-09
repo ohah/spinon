@@ -11,8 +11,13 @@ mod author_stylesheets_edge_tests;
 #[cfg(test)]
 mod author_stylesheets_tests;
 mod calculation;
+#[cfg(test)]
+mod registered_properties_tests;
 mod runtime_layout;
-use calculation::{RuntimeCalculation, compute_request, compute_request_for_runtime_gpu};
+use calculation::{
+    RuntimeCalculation, compute_request, compute_request_for_registered_properties_gpu,
+    compute_request_for_runtime_gpu,
+};
 use runtime_layout::layout_failure;
 pub use runtime_layout::{
     RuntimeLayoutCompleted, RuntimeLayoutFailure, RuntimeLayoutFrame, RuntimeLayoutSnapshot,
@@ -192,6 +197,10 @@ impl RuntimeUaCascadeCoordinator {
 
     pub(super) fn new_runtime_gpu() -> Result<Self, String> {
         Self::new_with_computer(Arc::new(compute_request_for_runtime_gpu))
+    }
+
+    pub(super) fn new_runtime_gpu_registered_properties() -> Result<Self, String> {
+        Self::new_with_computer(Arc::new(compute_request_for_registered_properties_gpu))
     }
 
     fn new_with_computer(compute: Arc<CascadeComputer>) -> Result<Self, String> {

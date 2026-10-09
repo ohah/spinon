@@ -51,16 +51,23 @@ SpinonRuntimeSession *SessionFromHandle(jlong handle) {
 #if SPINON_ENABLE_C04_RUNTIME_GPU
 extern "C" JNIEXPORT jlong JNICALL
 Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateHost(
-    JNIEnv *, jclass) {
+    JNIEnv *, jclass, jboolean registered_properties_fixture) {
   std::array<char, 1024> output{};
-  SpinonRuntimeGpuHost *host =
-      spinon_runtime_gpu_host_new(output.data(), output.size());
+  SpinonRuntimeGpuHost *host = registered_properties_fixture == JNI_TRUE
+      ? spinon_runtime_gpu_host_new_registered_properties_fixture(
+            output.data(), output.size())
+      : spinon_runtime_gpu_host_new(output.data(), output.size());
   if (host == nullptr) {
     __android_log_print(ANDROID_LOG_ERROR, kTag,
-                        "SPINON_C0410_HOST_ERROR=%s", output.data());
+                        "%s_HOST_ERROR=%s",
+                        registered_properties_fixture == JNI_TRUE
+                            ? "SPINON_C052" : "SPINON_C0410",
+                        output.data());
     return 0;
   }
-  __android_log_print(ANDROID_LOG_INFO, kTag, "SPINON_C0410_HOST=%s",
+  __android_log_print(ANDROID_LOG_INFO, kTag, "%s_HOST=%s",
+                      registered_properties_fixture == JNI_TRUE
+                          ? "SPINON_C052" : "SPINON_C0410",
                       output.data());
   return static_cast<jlong>(reinterpret_cast<uintptr_t>(host));
 }
@@ -132,6 +139,21 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalCustomPropertiesFixture(
       "status=" + std::to_string(status) + " " + output.data();
   __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
                       kTag, "SPINON_C051_EVAL %s", report.c_str());
+  return ToByteArray(env, report);
+}
+
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalRegisteredPropertiesFixture(
+    JNIEnv *env, jclass, jlong host_handle) {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+  std::array<char, 4096> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_registered_properties_fixture(
+      host, 10000, output.data(), output.size());
+  const std::string report =
+      "status=" + std::to_string(status) + " " + output.data();
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
+                      kTag, "SPINON_C052_EVAL %s", report.c_str());
   return ToByteArray(env, report);
 }
 
