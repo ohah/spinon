@@ -56,6 +56,26 @@ pub enum TextDirection {
     Rtl,
 }
 
+/// Flex 항목의 교차축 정렬입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum LayoutAlignItems {
+    Stretch,
+    FlexStart,
+    FlexEnd,
+    Center,
+}
+
+/// Flex 항목 묶음의 주축 정렬입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum LayoutJustifyContent {
+    FlexStart,
+    FlexEnd,
+    Center,
+    SpaceBetween,
+    SpaceAround,
+    SpaceEvenly,
+}
+
 /// 네 방향의 내부 여백입니다.
 #[derive(Clone, Copy, Debug, Default, PartialEq)]
 pub struct LayoutEdges {
@@ -82,6 +102,8 @@ pub struct LayoutStyle {
     pub flex_basis: LayoutDimension,
     pub flex_direction: FlexDirection,
     pub direction: TextDirection,
+    pub align_items: LayoutAlignItems,
+    pub justify_content: LayoutJustifyContent,
     pub padding: LayoutEdges,
     pub gap: LayoutGap,
     pub flex_grow: f32,
@@ -98,6 +120,8 @@ impl Default for LayoutStyle {
             flex_basis: LayoutDimension::Auto,
             flex_direction: FlexDirection::Column,
             direction: TextDirection::Ltr,
+            align_items: LayoutAlignItems::Stretch,
+            justify_content: LayoutJustifyContent::FlexStart,
             padding: LayoutEdges::default(),
             gap: LayoutGap::default(),
             flex_grow: 0.0,

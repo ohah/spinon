@@ -1,0 +1,81 @@
+{
+  "schema": "spinon-css-c04-flex-alignment-input/v1",
+  "fixtureId": "C04-flex-alignment-v1",
+  "viewport": {
+    "widthCssPx": 301,
+    "heightCssPx": 40,
+    "deviceScaleFactor": 1
+  },
+  "cases": [
+    {
+      "id": "initial-row",
+      "overrideCss": "#flex-a, #flex-b, #flex-c { flex-grow: 0; flex-shrink: 0; flex-basis: 40px; height: auto; }"
+    },
+    {
+      "id": "align-normal-row",
+      "overrideCss": "#flex-parent { align-items: normal; } #flex-a, #flex-b, #flex-c { flex-grow: 0; flex-shrink: 0; flex-basis: 40px; height: auto; }"
+    },
+    {
+      "id": "align-stretch-row",
+      "overrideCss": "#flex-parent { align-items: stretch; } #flex-a, #flex-b, #flex-c { flex-grow: 0; flex-shrink: 0; flex-basis: 40px; height: auto; }"
+    },
+    {
+      "id": "align-center-row",
+      "overrideCss": "#flex-parent { align-items: center; } #flex-a, #flex-b, #flex-c { flex-grow: 0; flex-shrink: 0; flex-basis: 40px; height: 10px; }"
+    },
+    {
+      "id": "align-flex-start-row",
+      "overrideCss": "#flex-parent { align-items: flex-start; } #flex-a, #flex-b, #flex-c { flex-grow: 0; flex-shrink: 0; flex-basis: 40px; height: 10px; }"
+    },
+    {
+      "id": "align-flex-end-row",
+      "overrideCss": "#flex-parent { align-items: flex-end; } #flex-a, #flex-b, #flex-c { flex-grow: 0; flex-shrink: 0; flex-basis: 40px; height: 10px; }"
+    },
+    {
+      "id": "align-center-column",
+      "overrideCss": "#flex-parent { flex-direction: column; align-items: center; row-gap: 5px; column-gap: 0px; } #flex-a, #flex-b, #flex-c { flex-grow: 0; flex-shrink: 0; flex-basis: 10px; width: 40px; height: auto; }"
+    },
+    {
+      "id": "justify-normal-row",
+      "overrideCss": "#flex-parent { justify-content: normal; } #flex-a, #flex-b, #flex-c { flex-grow: 0; flex-shrink: 0; flex-basis: 40px; height: 10px; }"
+    },
+    {
+      "id": "justify-flex-start-row",
+      "overrideCss": "#flex-parent { justify-content: flex-start; } #flex-a, #flex-b, #flex-c { flex-grow: 0; flex-shrink: 0; flex-basis: 40px; height: 10px; }"
+    },
+    {
+      "id": "justify-flex-end-row",
+      "overrideCss": "#flex-parent { justify-content: flex-end; } #flex-a, #flex-b, #flex-c { flex-grow: 0; flex-shrink: 0; flex-basis: 40px; height: 10px; }"
+    },
+    {
+      "id": "justify-center-row",
+      "overrideCss": "#flex-parent { justify-content: center; } #flex-a, #flex-b, #flex-c { flex-grow: 0; flex-shrink: 0; flex-basis: 40px; height: 10px; }"
+    },
+    {
+      "id": "justify-space-between-row",
+      "overrideCss": "#flex-parent { justify-content: space-between; } #flex-a, #flex-b, #flex-c { flex-grow: 0; flex-shrink: 0; flex-basis: 40px; height: 10px; }"
+    },
+    {
+      "id": "justify-space-around-row",
+      "overrideCss": "#flex-parent { justify-content: space-around; } #flex-a, #flex-b, #flex-c { flex-grow: 0; flex-shrink: 0; flex-basis: 40px; height: 10px; }"
+    },
+    {
+      "id": "justify-space-evenly-row",
+      "overrideCss": "#flex-parent { justify-content: space-evenly; } #flex-a, #flex-b, #flex-c { flex-grow: 0; flex-shrink: 0; flex-basis: 40px; height: 10px; }"
+    },
+    {
+      "id": "justify-flex-start-rtl-row",
+      "overrideCss": "#flex-parent { direction: rtl; justify-content: flex-start; } #flex-a, #flex-b, #flex-c { flex-grow: 0; flex-shrink: 0; flex-basis: 40px; height: 10px; }"
+    },
+    {
+      "id": "justify-center-column",
+      "overrideCss": "#flex-parent { flex-direction: column; justify-content: center; row-gap: 5px; column-gap: 0px; } #flex-a, #flex-b, #flex-c { flex-grow: 0; flex-shrink: 0; flex-basis: 5px; width: 40px; height: auto; }"
+    }
+  ],
+  "comparison": {
+    "computedValues": "문자열 정확 일치",
+    "frameUnit": "CSS px",
+    "perCoordinateMaximumAbsoluteError": 0.5,
+    "aggregateAveragesAllowed": false
+  }
+}
