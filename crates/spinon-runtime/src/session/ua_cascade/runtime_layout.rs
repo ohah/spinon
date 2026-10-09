@@ -218,6 +218,16 @@ fn runtime_frames(
     let mut frames = Vec::with_capacity(output.frames.len());
     let mut pending = vec![root];
     while let Some(handle) = pending.pop() {
+        let Some(node) = snapshot.node(handle) else {
+            return Err(layout_failure(
+                "missing_node",
+                Some(handle.id().get()),
+                None,
+            ));
+        };
+        if matches!(node.kind(), spinon_core::HostNodeKind::Text(_)) {
+            continue;
+        }
         let Some(frame) = output.frames.get(&handle.id()) else {
             return Err(layout_failure(
                 "missing_frame",

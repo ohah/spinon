@@ -451,6 +451,23 @@ void C0410LogReport(os_log_type_t type, const char *label, NSString *report) {
 #endif
 }
 
++ (NSString *)evalRuntimeGpuAuthorStylesheetsFixture:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 4096> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_author_stylesheets_fixture(
+      host, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C0411_EVAL", report);
+  return report;
+#else
+  (void)handle;
+  return @"status=-90 feature-disabled";
+#endif
+}
+
 + (NSString *)evalRuntimeGpuCustomPropertiesFixture:(uint64_t)handle {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(

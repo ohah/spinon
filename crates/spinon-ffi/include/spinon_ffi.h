@@ -139,6 +139,10 @@ int32_t spinon_runtime_gpu_host_eval(SpinonRuntimeGpuHost *host,
 int32_t spinon_runtime_gpu_host_eval_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);
+/* C04.11: 연결된 HTML style 요소의 CSS 본문을 실제 V8 DOM에서 평가하는 fixture입니다. */
+int32_t spinon_runtime_gpu_host_eval_author_stylesheets_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
 /* 기존 C04.10 HostDocument에 C05.1 `--*`·`var()` style 값을 적용하는 내부 검증 fixture입니다. */
 int32_t spinon_runtime_gpu_host_eval_custom_properties_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,

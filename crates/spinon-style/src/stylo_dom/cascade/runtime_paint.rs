@@ -1,7 +1,7 @@
 use spinon_core::{NodeId, StyleRevision};
 use style::properties::{ComputedValues, LonghandId};
 
-use crate::{ComputedBackgroundPaint, OpaqueCssSrgb};
+use crate::{ComputedBackgroundPaint, OpaqueCssSrgb, StylesheetSource};
 
 use super::{
     ComputedStyleProfile, CssCascadeError, CssViewport, StyloDocumentView, compute_cascade,
@@ -55,11 +55,26 @@ pub fn compute_runtime_flex_custom_properties_paint_cascade(
     viewport: CssViewport,
     style_revision: StyleRevision,
 ) -> Result<super::ComputedStyleSnapshot, CssCascadeError> {
+    compute_runtime_flex_custom_properties_paint_cascade_with_stylesheets(
+        view,
+        &[],
+        viewport,
+        style_revision,
+    )
+}
+
+/// C04.11 author stylesheet와 C05.1 사용자 지정 속성을 runtime layout·paint에서 계산합니다.
+pub fn compute_runtime_flex_custom_properties_paint_cascade_with_stylesheets(
+    view: &StyloDocumentView,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+) -> Result<super::ComputedStyleSnapshot, CssCascadeError> {
     let mut properties = RUNTIME_FLEX_LAYOUT_PROPERTIES.to_vec();
     properties.push(("background-color", LonghandId::BackgroundColor));
     compute_cascade(
         view,
-        &[],
+        author_stylesheets,
         viewport,
         style_revision,
         &properties,

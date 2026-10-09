@@ -28,6 +28,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native byte[] nativeSetEnvironment(
             long host, float widthCssPx, float heightCssPx, float scale, boolean dark);
     private static native byte[] nativeEvalFixture(long host);
+    private static native byte[] nativeEvalAuthorStylesheetsFixture(long host);
     private static native byte[] nativeEvalCustomPropertiesFixture(long host);
     private static native long nativeCreateSurface(
             long host, Surface surface, int width, int height, int backend);
@@ -53,6 +54,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean failureProbeRequested;
     private final boolean shutdownProbeRequested;
     private final boolean customPropertiesProbeRequested;
+    private final boolean authorStylesheetsProbeRequested;
     private final float density;
     private volatile boolean darkMode;
     private volatile long hostHandle;
@@ -82,7 +84,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         this.backend = backend;
         this.failureProbeRequested = failureProbeRequested;
         this.shutdownProbeRequested = shutdownProbeRequested;
-        customPropertiesProbeRequested = activity.getIntent()
+        authorStylesheetsProbeRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c0411_author_stylesheets", false);
+        customPropertiesProbeRequested = !authorStylesheetsProbeRequested && activity.getIntent()
                 .getBooleanExtra("spinon_c051_custom_properties", false);
         density = activity.getResources().getDisplayMetrics().density;
         darkMode = (activity.getResources().getConfiguration().uiMode
@@ -93,14 +97,17 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         setBackgroundColor(Color.rgb(14, 19, 31));
 
         TextView title = new TextView(activity);
-        title.setText("SPINON · C04.10 CSS → WGPU");
+        title.setText(authorStylesheetsProbeRequested
+                ? "SPINON · C04.11 CSS → WGPU" : "SPINON · C04.10 CSS → WGPU");
         title.setTextColor(Color.rgb(235, 241, 250));
         title.setTextSize(22);
         title.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
         addView(title, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 
         TextView description = new TextView(activity);
-        description.setText("실제 V8 DOM → Stylo → Taffy → Rust 장면 → wgpu surface");
+        description.setText(authorStylesheetsProbeRequested
+                ? "실제 V8 DOM <style> → Stylo → Taffy → wgpu surface"
+                : "실제 V8 DOM → Stylo → Taffy → Rust 장면 → wgpu surface");
         description.setTextColor(Color.rgb(200, 211, 228));
         description.setTextSize(14);
         LayoutParams descriptionParams =
@@ -115,7 +122,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
         surfaceView = new SurfaceView(activity);
         surfaceView.getHolder().addCallback(this);
-        surfaceView.setContentDescription("C04.10 Chromium fixture의 WGPU 장면");
+        surfaceView.setContentDescription(authorStylesheetsProbeRequested
+                ? "C04.11 Chromium stylesheet fixture의 WGPU 장면"
+                : "C04.10 Chromium fixture의 WGPU 장면");
         LayoutParams surfaceParams = new LayoutParams(dp(301, density), dp(100, density));
         stage.addView(surfaceView, surfaceParams);
 
@@ -130,6 +139,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         Button customPropertiesButton = new Button(activity);
         customPropertiesButton.setText("C05 · 사용자 지정 속성 다시 적용");
         customPropertiesButton.setOnClickListener(view -> evaluateCustomPropertiesFixture());
+        if (authorStylesheetsProbeRequested) customPropertiesButton.setVisibility(GONE);
         LayoutParams customPropertiesButtonParams =
                 new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         customPropertiesButtonParams.topMargin = dp(4, density);
@@ -206,12 +216,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         Log.i(TAG, "SPINON_C0410_ENVIRONMENT viewport=" + widthCssPx + "x" + heightCssPx
                 + " scale=" + density + " dark=" + dark + " " + environment);
-        String result = decode(nativeEvalFixture(host));
+        String result = authorStylesheetsProbeRequested
+                ? decode(nativeEvalAuthorStylesheetsFixture(host))
+                : decode(nativeEvalFixture(host));
         if (!result.startsWith("status=0 ")) {
             postStatus("실패 · " + result);
             return;
         }
-        Log.i(TAG, "SPINON_C0410_EVAL " + result);
+        Log.i(TAG, (authorStylesheetsProbeRequested
+                ? "SPINON_C0411_EVAL " : "SPINON_C0410_EVAL ") + result);
         if (customPropertiesProbeRequested) {
             result = decode(nativeEvalCustomPropertiesFixture(host));
             if (!result.startsWith("status=0 ")) {

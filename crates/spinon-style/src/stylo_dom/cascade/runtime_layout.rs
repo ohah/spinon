@@ -2,6 +2,7 @@ use super::{
     ComputedStyleProfile, ComputedStyleSnapshot, CssCascadeError, CssViewport, StyloDocumentView,
     compute_cascade,
 };
+use crate::StylesheetSource;
 use spinon_core::{NodeId, StyleRevision};
 use style::properties::LonghandId;
 
@@ -97,9 +98,24 @@ pub fn compute_runtime_flex_custom_properties_cascade(
     viewport: CssViewport,
     style_revision: StyleRevision,
 ) -> Result<ComputedStyleSnapshot, CssCascadeError> {
-    compute_cascade(
+    compute_runtime_flex_custom_properties_cascade_with_stylesheets(
         view,
         &[],
+        viewport,
+        style_revision,
+    )
+}
+
+/// C04.11에서 수집한 author stylesheet와 C05.1 사용자 지정 속성을 runtime layout에서 계산합니다.
+pub fn compute_runtime_flex_custom_properties_cascade_with_stylesheets(
+    view: &StyloDocumentView,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+) -> Result<ComputedStyleSnapshot, CssCascadeError> {
+    compute_cascade(
+        view,
+        author_stylesheets,
         viewport,
         style_revision,
         RUNTIME_FLEX_LAYOUT_PROPERTIES,

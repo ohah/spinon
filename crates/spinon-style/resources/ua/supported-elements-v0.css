@@ -21,6 +21,10 @@ img {
   display: inline;
 }
 
+style {
+  display: none;
+}
+
 button,
 input {
   display: inline-block;

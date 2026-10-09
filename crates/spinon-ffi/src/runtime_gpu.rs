@@ -13,6 +13,8 @@ const ERR_LAYOUT: i32 = -11;
 const ERR_STALE: i32 = -12;
 const RUNTIME_GPU_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c04/runtime-css-to-gpu-resize.js");
+const RUNTIME_AUTHOR_STYLESHEETS_FIXTURE_SOURCE: &str =
+    include_str!("../../../tests/fixtures/css/c04/runtime-author-stylesheets.js");
 const RUNTIME_CSS_CUSTOM_PROPERTIES_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c05/runtime-custom-properties-app.js");
 

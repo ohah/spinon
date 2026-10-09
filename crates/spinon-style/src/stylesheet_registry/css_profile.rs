@@ -23,7 +23,30 @@ pub(super) fn first_unsupported_author_feature_with_media(
     registry: &StylesheetRegistry,
     allowed_properties: &[&str],
 ) -> Option<(String, String)> {
-    first_unsupported_author_feature_with_rules(registry, allowed_properties, false, true)
+    first_unsupported_author_feature_with_rules(
+        registry,
+        allowed_properties,
+        false,
+        true,
+        false,
+        false,
+    )
+}
+
+pub(super) fn first_unsupported_runtime_author_feature(
+    registry: &StylesheetRegistry,
+    allowed_properties: &[&str],
+    allow_custom_properties: bool,
+    allow_background_color: bool,
+) -> Option<(String, String)> {
+    first_unsupported_author_feature_with_rules(
+        registry,
+        allowed_properties,
+        false,
+        false,
+        allow_custom_properties,
+        allow_background_color,
+    )
 }
 
 fn first_unsupported_author_feature_with_layer_rules(
@@ -31,7 +54,14 @@ fn first_unsupported_author_feature_with_layer_rules(
     allowed_properties: &[&str],
     allow_layers: bool,
 ) -> Option<(String, String)> {
-    first_unsupported_author_feature_with_rules(registry, allowed_properties, allow_layers, false)
+    first_unsupported_author_feature_with_rules(
+        registry,
+        allowed_properties,
+        allow_layers,
+        false,
+        false,
+        false,
+    )
 }
 
 fn first_unsupported_author_feature_with_rules(
@@ -39,6 +69,8 @@ fn first_unsupported_author_feature_with_rules(
     allowed_properties: &[&str],
     allow_layers: bool,
     allow_media: bool,
+    allow_custom_properties: bool,
+    allow_background_color: bool,
 ) -> Option<(String, String)> {
     let guard = registry.shared_lock.read();
     for stylesheet in registry
@@ -67,6 +99,8 @@ fn first_unsupported_author_feature_with_rules(
                 allowed_properties,
                 allow_layers,
                 allow_media,
+                allow_custom_properties,
+                allow_background_color,
             ) {
                 return Some((stylesheet.id.clone(), feature));
             }
@@ -87,6 +121,8 @@ fn unsupported_rule_feature(
     allowed_properties: &[&str],
     allow_layers: bool,
     allow_media: bool,
+    allow_custom_properties: bool,
+    allow_background_color: bool,
 ) -> Option<String> {
     match rule {
         CssRule::LayerStatement(_) if allow_layers => None,
@@ -99,6 +135,8 @@ fn unsupported_rule_feature(
                     allowed_properties,
                     allow_layers,
                     allow_media,
+                    allow_custom_properties,
+                    allow_background_color,
                 )
             })
         }
@@ -116,6 +154,8 @@ fn unsupported_rule_feature(
                     allowed_properties,
                     allow_layers,
                     allow_media,
+                    allow_custom_properties,
+                    allow_background_color,
                 )
             })
         }
@@ -130,7 +170,14 @@ fn unsupported_rule_feature(
                     PropertyDeclarationId::Longhand(id) => id.name().to_owned(),
                     PropertyDeclarationId::Custom(_) => "사용자 지정 속성".to_owned(),
                 };
-                if !allowed_properties.contains(&name.as_str()) {
+                let allowed = match property {
+                    PropertyDeclarationId::Custom(_) => allow_custom_properties,
+                    PropertyDeclarationId::Longhand(_) => {
+                        allowed_properties.contains(&name.as_str())
+                            || (allow_background_color && name == "background-color")
+                    }
+                };
+                if !allowed {
                     return Some(format!("지원하지 않는 CSS 선언 {name}"));
                 }
             }
