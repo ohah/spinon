@@ -23,13 +23,14 @@ import java.util.concurrent.TimeUnit;
 
 final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Callback {
     private static final String TAG = "SpinonBootstrap";
-    private static native long nativeCreateHost();
+    private static native long nativeCreateHost(boolean registeredPropertiesFixture);
     private static native long nativeBeginPresentationUpdate(long host);
     private static native byte[] nativeSetEnvironment(
             long host, float widthCssPx, float heightCssPx, float scale, boolean dark);
     private static native byte[] nativeEvalFixture(long host);
     private static native byte[] nativeEvalAuthorStylesheetsFixture(long host);
     private static native byte[] nativeEvalCustomPropertiesFixture(long host);
+    private static native byte[] nativeEvalRegisteredPropertiesFixture(long host);
     private static native long nativeCreateSurface(
             long host, Surface surface, int width, int height, int backend);
     private static native int nativeResizeSurface(long renderer, int width, int height);
@@ -54,6 +55,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean failureProbeRequested;
     private final boolean shutdownProbeRequested;
     private final boolean customPropertiesProbeRequested;
+    private final boolean registeredPropertiesProbeRequested;
     private final boolean authorStylesheetsProbeRequested;
     private final float density;
     private volatile boolean darkMode;
@@ -84,9 +86,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         this.backend = backend;
         this.failureProbeRequested = failureProbeRequested;
         this.shutdownProbeRequested = shutdownProbeRequested;
+        registeredPropertiesProbeRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c052_registered_properties", false);
         authorStylesheetsProbeRequested = activity.getIntent()
-                .getBooleanExtra("spinon_c0411_author_stylesheets", false);
-        customPropertiesProbeRequested = !authorStylesheetsProbeRequested && activity.getIntent()
+                .getBooleanExtra("spinon_c0411_author_stylesheets", false)
+                && !registeredPropertiesProbeRequested;
+        customPropertiesProbeRequested = !authorStylesheetsProbeRequested
+                && !registeredPropertiesProbeRequested && activity.getIntent()
                 .getBooleanExtra("spinon_c051_custom_properties", false);
         density = activity.getResources().getDisplayMetrics().density;
         darkMode = (activity.getResources().getConfiguration().uiMode
@@ -97,16 +103,20 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         setBackgroundColor(Color.rgb(14, 19, 31));
 
         TextView title = new TextView(activity);
-        title.setText(authorStylesheetsProbeRequested
-                ? "SPINON · C04.11 CSS → WGPU" : "SPINON · C04.10 CSS → WGPU");
+        title.setText(registeredPropertiesProbeRequested
+                ? "SPINON · C05.2 @property"
+                : authorStylesheetsProbeRequested
+                        ? "SPINON · C04.11 CSS → WGPU" : "SPINON · C04.10 CSS → WGPU");
         title.setTextColor(Color.rgb(235, 241, 250));
         title.setTextSize(22);
         title.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
         addView(title, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 
         TextView description = new TextView(activity);
-        description.setText(authorStylesheetsProbeRequested
-                ? "실제 V8 DOM <style> → Stylo → Taffy → wgpu surface"
+        description.setText(registeredPropertiesProbeRequested
+                ? "V8 DOM <style> → Stylo → Taffy → WGPU"
+                : authorStylesheetsProbeRequested
+                        ? "실제 V8 DOM <style> → Stylo → Taffy → wgpu surface"
                 : "실제 V8 DOM → Stylo → Taffy → Rust 장면 → wgpu surface");
         description.setTextColor(Color.rgb(200, 211, 228));
         description.setTextSize(14);
@@ -122,8 +132,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
         surfaceView = new SurfaceView(activity);
         surfaceView.getHolder().addCallback(this);
-        surfaceView.setContentDescription(authorStylesheetsProbeRequested
-                ? "C04.11 Chromium stylesheet fixture의 WGPU 장면"
+        surfaceView.setContentDescription(registeredPropertiesProbeRequested
+                ? "C05.2 등록 사용자 지정 속성 Chromium fixture의 WGPU 장면"
+                : authorStylesheetsProbeRequested
+                        ? "C04.11 Chromium stylesheet fixture의 WGPU 장면"
                 : "C04.10 Chromium fixture의 WGPU 장면");
         LayoutParams surfaceParams = new LayoutParams(dp(301, density), dp(100, density));
         stage.addView(surfaceView, surfaceParams);
@@ -137,8 +149,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         addView(resizeButton, resizeButtonParams);
 
         Button customPropertiesButton = new Button(activity);
-        customPropertiesButton.setText("C05 · 사용자 지정 속성 다시 적용");
-        customPropertiesButton.setOnClickListener(view -> evaluateCustomPropertiesFixture());
+        customPropertiesButton.setText(registeredPropertiesProbeRequested
+                ? "C05.2 · 등록 사용자 지정 속성 다시 적용"
+                : "C05 · 사용자 지정 속성 다시 적용");
+        customPropertiesButton.setOnClickListener(view -> {
+            if (registeredPropertiesProbeRequested) evaluateRegisteredPropertiesFixture();
+            else evaluateCustomPropertiesFixture();
+        });
         if (authorStylesheetsProbeRequested) customPropertiesButton.setVisibility(GONE);
         LayoutParams customPropertiesButtonParams =
                 new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
@@ -193,7 +210,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private void initializeRuntime() {
-        long host = nativeCreateHost();
+        long host = nativeCreateHost(registeredPropertiesProbeRequested);
         if (host == 0) {
             postStatus("실패 · V8 runtime host를 만들지 못했습니다");
             return;
@@ -216,15 +233,19 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         Log.i(TAG, "SPINON_C0410_ENVIRONMENT viewport=" + widthCssPx + "x" + heightCssPx
                 + " scale=" + density + " dark=" + dark + " " + environment);
-        String result = authorStylesheetsProbeRequested
-                ? decode(nativeEvalAuthorStylesheetsFixture(host))
-                : decode(nativeEvalFixture(host));
+        String result = registeredPropertiesProbeRequested
+                ? decode(nativeEvalRegisteredPropertiesFixture(host))
+                : authorStylesheetsProbeRequested
+                        ? decode(nativeEvalAuthorStylesheetsFixture(host))
+                        : decode(nativeEvalFixture(host));
         if (!result.startsWith("status=0 ")) {
             postStatus("실패 · " + result);
             return;
         }
-        Log.i(TAG, (authorStylesheetsProbeRequested
-                ? "SPINON_C0411_EVAL " : "SPINON_C0410_EVAL ") + result);
+        Log.i(TAG, (registeredPropertiesProbeRequested
+                ? "SPINON_C052_EVAL "
+                : authorStylesheetsProbeRequested
+                        ? "SPINON_C0411_EVAL " : "SPINON_C0410_EVAL ") + result);
         if (customPropertiesProbeRequested) {
             result = decode(nativeEvalCustomPropertiesFixture(host));
             if (!result.startsWith("status=0 ")) {
@@ -233,7 +254,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             }
             Log.i(TAG, "SPINON_C051_EVAL " + result);
         }
-        postStatus(result);
+        postStatus(runtimeStatusSummary(result));
         requestDraw();
         renderLane.request();
     }
@@ -247,9 +268,32 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             }
             String result = decode(nativeEvalCustomPropertiesFixture(host));
             Log.i(TAG, "SPINON_C051_EVAL " + result);
-            postStatus(result);
+            postStatus(runtimeStatusSummary(result));
             if (result.startsWith("status=0 ")) requestDraw();
         });
+    }
+
+    private void evaluateRegisteredPropertiesFixture() {
+        enqueueRuntime(() -> {
+            final long host;
+            synchronized (stateLock) {
+                if (closing || hostHandle == 0) return;
+                host = hostHandle;
+            }
+            String result = decode(nativeEvalRegisteredPropertiesFixture(host));
+            Log.i(TAG, "SPINON_C052_EVAL " + result);
+            postStatus(runtimeStatusSummary(result));
+            if (result.startsWith("status=0 ")) requestDraw();
+        });
+    }
+
+    private static String runtimeStatusSummary(String report) {
+        int statusEnd = report.indexOf(' ');
+        int layoutStart = report.indexOf(" layout=");
+        if (statusEnd >= 0 && layoutStart >= 0) {
+            return report.substring(0, statusEnd) + " " + report.substring(layoutStart + 1);
+        }
+        return report.length() <= 180 ? report : report.substring(0, 180) + "…";
     }
 
     private void refreshEnvironment() {

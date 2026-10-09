@@ -22,6 +22,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         let runUaCascadeProbe = arguments.contains("--spinon-c048-ua-cascade")
         let runRuntimeGpu = arguments.contains("--spinon-c0410-runtime-gpu")
             || arguments.contains("--spinon-c0411-runtime-author-stylesheets")
+            || arguments.contains("--spinon-c052-registered-properties")
         let runR05AttributionProbe = arguments.contains("--spinon-r05-attribution")
         let runLifecycleProbe = arguments.contains("--spinon-dom-gc-auto")
         if runLifecycleProbe && !spinonS03DomGcFixtureEnabled {

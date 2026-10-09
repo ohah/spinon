@@ -23,6 +23,8 @@ pub use stylo_dom::{
     compute_runtime_flex_custom_properties_paint_cascade,
     compute_runtime_flex_custom_properties_paint_cascade_with_stylesheets,
     compute_runtime_flex_layout_cascade, compute_runtime_flex_paint_cascade,
+    compute_runtime_flex_registered_properties_cascade_with_stylesheets,
+    compute_runtime_flex_registered_properties_paint_cascade_with_stylesheets,
     compute_s04_flex_paint_cascade, compute_supported_elements_ua_cascade,
     first_unsupported_runtime_custom_properties_inline_property,
     first_unsupported_runtime_custom_properties_paint_inline_property,

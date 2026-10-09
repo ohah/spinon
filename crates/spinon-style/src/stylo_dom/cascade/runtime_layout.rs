@@ -123,6 +123,23 @@ pub fn compute_runtime_flex_custom_properties_cascade_with_stylesheets(
     )
 }
 
+/// C05.2 stylesheet `@property` 등록을 포함하는 제한 runtime layout snapshot을 계산합니다.
+pub fn compute_runtime_flex_registered_properties_cascade_with_stylesheets(
+    view: &StyloDocumentView,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+) -> Result<ComputedStyleSnapshot, CssCascadeError> {
+    compute_cascade(
+        view,
+        author_stylesheets,
+        viewport,
+        style_revision,
+        RUNTIME_FLEX_LAYOUT_PROPERTIES,
+        ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1,
+    )
+}
+
 /// Runtime CSS layout에서 계산 가능한 inline declaration만 통과시킵니다.
 ///
 /// CSS parser가 확장한 longhand를 검사하므로 shorthand와 논리 속성도 원래 규칙에 따라

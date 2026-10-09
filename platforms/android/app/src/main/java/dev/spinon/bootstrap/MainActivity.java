@@ -182,7 +182,8 @@ public final class MainActivity extends Activity {
             return;
         }
         if (getIntent().getBooleanExtra("spinon_c0410_runtime_gpu", false)
-                || getIntent().getBooleanExtra("spinon_c0411_author_stylesheets", false)) {
+                || getIntent().getBooleanExtra("spinon_c0411_author_stylesheets", false)
+                || getIntent().getBooleanExtra("spinon_c052_registered_properties", false)) {
             if (!BuildConfig.SPINON_C04_RUNTIME_GPU) {
                 TextView unavailable = new TextView(this);
                 unavailable.setText("C04.10 GPU 실험을 켜서 빌드해야 합니다.");

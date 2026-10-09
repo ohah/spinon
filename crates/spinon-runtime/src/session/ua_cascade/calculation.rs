@@ -9,6 +9,7 @@ use spinon_style::{
     CssCascadeError, StyloDocumentView,
     compute_runtime_flex_custom_properties_cascade_with_stylesheets,
     compute_runtime_flex_custom_properties_paint_cascade_with_stylesheets,
+    compute_runtime_flex_registered_properties_paint_cascade_with_stylesheets,
 };
 use std::sync::Arc;
 use std::time::Instant;
@@ -22,18 +23,25 @@ pub(super) struct RuntimeCalculation {
 }
 
 pub(super) fn compute_request(request: &WorkRequest) -> Result<RuntimeCalculation, String> {
-    compute_request_with_runtime_paint(request, false)
+    compute_request_with_runtime_paint(request, false, false)
 }
 
 pub(super) fn compute_request_for_runtime_gpu(
     request: &WorkRequest,
 ) -> Result<RuntimeCalculation, String> {
-    compute_request_with_runtime_paint(request, true)
+    compute_request_with_runtime_paint(request, true, false)
+}
+
+pub(super) fn compute_request_for_registered_properties_gpu(
+    request: &WorkRequest,
+) -> Result<RuntimeCalculation, String> {
+    compute_request_with_runtime_paint(request, true, true)
 }
 
 fn compute_request_with_runtime_paint(
     request: &WorkRequest,
     runtime_paint_enabled: bool,
+    registered_properties_enabled: bool,
 ) -> Result<RuntimeCalculation, String> {
     let mut roots = Vec::new();
     let mut layout_context: Option<RuntimeLayoutContext> = None;
@@ -60,8 +68,13 @@ fn compute_request_with_runtime_paint(
                     ));
                 }
                 let cascade_started = Instant::now();
-                let (computed_root, view) =
-                    compute_root(request, root, runtime_paint_enabled, &author_stylesheets)?;
+                let (computed_root, view) = compute_root(
+                    request,
+                    root,
+                    runtime_paint_enabled,
+                    registered_properties_enabled,
+                    &author_stylesheets,
+                )?;
                 cascade_duration_us =
                     cascade_duration_us.saturating_add(elapsed_microseconds(cascade_started));
                 layout_diagnostics.extend(computed_root.styles.diagnostics.iter().cloned());
@@ -90,12 +103,20 @@ fn compute_root(
     request: &WorkRequest,
     root: HostNodeHandle,
     runtime_paint_enabled: bool,
+    registered_properties_enabled: bool,
     author_stylesheets: &[spinon_style::StylesheetSource],
 ) -> Result<(RuntimeUaCascadeRoot, StyloDocumentView), String> {
     let view =
         StyloDocumentView::new_html_fragment_child_shared(Arc::clone(&request.snapshot), root)
             .map_err(|error| error.to_string())?;
-    let styles = if runtime_paint_enabled {
+    let styles = if runtime_paint_enabled && registered_properties_enabled {
+        compute_runtime_flex_registered_properties_paint_cascade_with_stylesheets(
+            &view,
+            author_stylesheets,
+            request.viewport,
+            StyleRevision::INITIAL,
+        )
+    } else if runtime_paint_enabled {
         compute_runtime_flex_custom_properties_paint_cascade_with_stylesheets(
             &view,
             author_stylesheets,

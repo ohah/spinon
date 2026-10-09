@@ -1,0 +1,391 @@
+Timestamp               Ty Process[PID:TID]
+2026-10-10 02:44:37.372 Df SpinonBootstrap[38006:64a752d] (libMobileGestalt.dylib) No persisted cache on this platform.
+2026-10-10 02:44:37.373 Df SpinonBootstrap[38006:64a7534] [com.apple.xpc:connection] [0x104505400] activating connection: mach=true listener=false peer=false name=com.apple.cfprefsd.daemon
+2026-10-10 02:44:37.373 Df SpinonBootstrap[38006:64a7535] [com.apple.BoardServices:XPCErrors] [C:1] Alloc com.apple.frontboard.systemappservices
+2026-10-10 02:44:37.373 Df SpinonBootstrap[38006:64a7535] [com.apple.xpc:connection] [0x104606930] activating connection: mach=false listener=false peer=false name=(anonymous)
+2026-10-10 02:44:37.373 A  SpinonBootstrap[38006:64a7534] (CoreFoundation) Loading Preferences From User Session CFPrefsD
+2026-10-10 02:44:37.376 Df SpinonBootstrap[38006:64a7533] [com.apple.UIKit:BackgroundTask] Creating new assertion because there is no existing background assertion.
+2026-10-10 02:44:37.376 Df SpinonBootstrap[38006:64a7533] [com.apple.UIKit:BackgroundTask] Creating new background assertion
+2026-10-10 02:44:37.376 Df SpinonBootstrap[38006:64a7533] [com.apple.UIKit:BackgroundTask] Created new background assertion <BKSProcessAssertion: 0x600002112800>
+2026-10-10 02:44:37.376 Df SpinonBootstrap[38006:64a7533] [com.apple.runningboard:connection] Initializing connection
+2026-10-10 02:44:37.376 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:Application] Deactivation reason added: 10; deactivation reasons: 0 -> 1024; animating application lifecycle event: 0
+2026-10-10 02:44:37.376 Df SpinonBootstrap[38006:64a7533] [com.apple.runningboard:process] Removing all cached process handles
+2026-10-10 02:44:37.376 Df SpinonBootstrap[38006:64a7534] [com.apple.runningboard:connection] Sending handshake request attempt #1 to server
+2026-10-10 02:44:37.376 Df SpinonBootstrap[38006:64a7534] [com.apple.runningboard:connection] Creating connection to com.apple.runningboard
+2026-10-10 02:44:37.376 Df SpinonBootstrap[38006:64a7534] [com.apple.xpc:connection] [0x105804270] activating connection: mach=true listener=false peer=false name=com.apple.runningboard
+2026-10-10 02:44:37.376 Df SpinonBootstrap[38006:64a752d] [com.apple.BoardServices:Injection] activating monitor for service com.apple.frontboard.open
+2026-10-10 02:44:37.377 Df SpinonBootstrap[38006:64a752d] [com.apple.BoardServices:Injection] activating monitor for service com.apple.frontboard.workspace-service
+2026-10-10 02:44:37.377 A  SpinonBootstrap[38006:64a7538] (RunningBoardServices) didChangeInheritances
+2026-10-10 02:44:37.377 Df SpinonBootstrap[38006:64a752d] [com.apple.FrontBoard:Common] FBSWorkspace registering source: com.apple.frontboard.systemappservices
+2026-10-10 02:44:37.377 Df SpinonBootstrap[38006:64a7534] [com.apple.runningboard:connection] Handshake succeeded
+2026-10-10 02:44:37.377 Df SpinonBootstrap[38006:64a7534] [com.apple.runningboard:connection] Identity resolved as app<dev.spinon.bootstrap((null))>
+2026-10-10 02:44:37.377 Df SpinonBootstrap[38006:64a7533] [com.apple.UIKit:BackgroundTask] Incrementing reference count for background assertion <BKSProcessAssertion: 0x600002112800>
+2026-10-10 02:44:37.377 Df SpinonBootstrap[38006:64a7533] [com.apple.UIKit:BackgroundTask] Created background task <_UIBackgroundTaskInfo: 0x600001710fc0>: taskID = 1, taskName = Launch Background Task for Coalescing, creationTime = 890021 (elapsed = 0).
+2026-10-10 02:44:37.378 Df SpinonBootstrap[38006:64a7533] [com.apple.FrontBoard:SceneExtension] Realizing settings extension _UIApplicationSceneKeyboardSettings on FBSSceneSettings
+2026-10-10 02:44:37.378 Df SpinonBootstrap[38006:64a7533] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneOcclusionSettings> on FBSSceneSettings
+2026-10-10 02:44:37.378 Df SpinonBootstrap[38006:64a752d] [com.apple.FrontBoard:Common] FBSWorkspace connected to endpoint : <BSServiceConnectionEndpoint: 0x60000020c700; target: com.apple.frontboard.systemappservices; service: com.apple.frontboard.workspace-service>
+2026-10-10 02:44:37.378 Df SpinonBootstrap[38006:64a752d] [com.apple.FrontBoard:Common] <FBSWorkspaceScenesClient:0x60000300c480 com.apple.frontboard.systemappservices> attempting immediate handshake from activate
+2026-10-10 02:44:37.378 Df SpinonBootstrap[38006:64a7533] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneInterfaceProtectionSettings> on FBSSceneSettings
+2026-10-10 02:44:37.378 Df SpinonBootstrap[38006:64a752d] [com.apple.FrontBoard:Common] <FBSWorkspaceScenesClient:0x60000300c480 com.apple.frontboard.systemappservices> sent handshake
+2026-10-10 02:44:37.378 Df SpinonBootstrap[38006:64a752d] [com.apple.runningboard:general] Added observer for process assertions expiration warning: <_RBSExpirationWarningClient: 0x60000020dcc0>
+2026-10-10 02:44:37.378 Df SpinonBootstrap[38006:64a7533] [com.apple.FrontBoard:SceneExtension] Realizing settings extension _UISceneLayoutPreferencesHostSettingsExtension on FBSSceneSettings
+2026-10-10 02:44:37.378 Df SpinonBootstrap[38006:64a7533] [com.apple.FrontBoard:SceneExtension] Realizing settings extension _UISceneSafeAreaSettingsExtension on FBSSceneSettings
+2026-10-10 02:44:37.378 Df SpinonBootstrap[38006:64a7533] [com.apple.FrontBoard:SceneExtension] Realizing settings extension _UISceneLayoutPreferenceClientSettingsExtension on FBSSceneClientSettings
+2026-10-10 02:44:37.378 Df SpinonBootstrap[38006:64a7533] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UIHomeAffordanceHostSceneSettings> on FBSSceneSettings
+2026-10-10 02:44:37.379 Df SpinonBootstrap[38006:64a7533] [com.apple.FrontBoard:SceneExtension] Realizing settings extension _UISystemShellSceneHostingEnvironmentSettings on FBSSceneSettings
+2026-10-10 02:44:37.379 Df SpinonBootstrap[38006:64a7533] [com.apple.FrontBoard:SceneExtension] Realizing settings extension _UISceneRenderingEnvironmentSettings on FBSSceneSettings
+2026-10-10 02:44:37.379 Df SpinonBootstrap[38006:64a7533] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneRenderingEnvironmentClientSettings> on FBSSceneClientSettings
+2026-10-10 02:44:37.379 Df SpinonBootstrap[38006:64a7533] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneTransitioningHostSettings> on FBSSceneSettings
+2026-10-10 02:44:37.379 Df SpinonBootstrap[38006:64a7533] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneFocusSystemSettings> on FBSSceneSettings
+2026-10-10 02:44:37.379 Df SpinonBootstrap[38006:64a7533] [com.apple.FrontBoard:SceneExtension] Realizing settings extension _UISceneOrientationSettingsExtension on FBSSceneSettings
+2026-10-10 02:44:37.379 Df SpinonBootstrap[38006:64a7533] [com.apple.FrontBoard:SceneExtension] Realizing settings extension _UISceneOrientationClientSettingsExtension on FBSSceneClientSettings
+2026-10-10 02:44:37.379 Df SpinonBootstrap[38006:64a7533] [com.apple.FrontBoard:SceneExtension] Realizing settings extension _UISceneWindowingControlClientSettings on FBSSceneClientSettings
+2026-10-10 02:44:37.379 Df SpinonBootstrap[38006:64a7533] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneHostingContentSizePreferenceClientSettings> on FBSSceneClientSettings
+2026-10-10 02:44:37.379 Df SpinonBootstrap[38006:64a7533] [com.apple.FrontBoard:SceneExtension] Realizing settings extension _UISceneHostingTraitCollectionPropagationSettings on FBSSceneSettings
+2026-10-10 02:44:37.379 Df SpinonBootstrap[38006:64a7533] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneHostingSheetPresentationSettings> on FBSSceneSettings
+2026-10-10 02:44:37.379 Df SpinonBootstrap[38006:64a7533] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneHostingSheetPresentationClientSettings> on FBSSceneClientSettings
+2026-10-10 02:44:37.379 Df SpinonBootstrap[38006:64a7533] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneHostingEventDeferringSettings> on FBSSceneSettings
+2026-10-10 02:44:37.379 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:UIScreen] Evaluated capturing state as 0 on <UIScreen: 0x104705ae0> for initial
+2026-10-10 02:44:37.379 Df SpinonBootstrap[38006:64a7533] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <UIKit__UITypedKeyValueSceneSettings> on FBSSceneSettings
+2026-10-10 02:44:37.379 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:UIScreen] Evaluated capturing state as 0 on <UIScreen: 0x104705ae0> for CADisplay KVO
+2026-10-10 02:44:37.379 Df SpinonBootstrap[38006:64a7533] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <UIKit__UITypedKeyValueSceneSettings> on FBSSceneClientSettings
+2026-10-10 02:44:37.380 Df SpinonBootstrap[38006:64a7533] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneHostingViewControllerPreferencePropagationClientSettings> on FBSSceneClientSettings
+2026-10-10 02:44:37.380 Df SpinonBootstrap[38006:64a7533] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneZoomTransitionSettings> on FBSSceneSettings
+2026-10-10 02:44:37.380 Df SpinonBootstrap[38006:64a7536] [com.apple.FrontBoard:SceneExtension] Realizing settings extension FBSSceneSettingsCore on FBSSceneSettings
+2026-10-10 02:44:37.380 Df SpinonBootstrap[38006:64a7536] [com.apple.FrontBoard:SceneExtension] Realizing settings extension FBSSceneClientSettingsCore on FBSSceneClientSettings
+2026-10-10 02:44:37.380 Df SpinonBootstrap[38006:64a752d] [com.apple.Accessibility:AXSupportCommon] Read CategoryName: per-app = 1, category name = (null)
+2026-10-10 02:44:37.380 Df SpinonBootstrap[38006:64a752d] [com.apple.Accessibility:AXSupportCommon] Read CategoryName: per-app = 0, category name = UICTContentSizeCategoryL
+2026-10-10 02:44:37.385 Df SpinonBootstrap[38006:64a7536] [com.apple.FrontBoard:SceneExtension] UIMutableApplicationSceneSettings setting counterpart class: UIApplicationSceneSettings
+2026-10-10 02:44:37.385 Df SpinonBootstrap[38006:64a7536] [com.apple.FrontBoard:SceneExtension] UIMutableApplicationSceneClientSettings setting counterpart class: UIApplicationSceneClientSettings
+2026-10-10 02:44:37.385 Df SpinonBootstrap[38006:64a7536] [com.apple.FrontBoard:SceneExtension] Realizing settings extension FBSSceneTransitionContextCore on FBSSceneTransitionContext
+2026-10-10 02:44:37.385 Df SpinonBootstrap[38006:64a752d] [com.apple.dt.xctest:Default] Registering for test daemon availability notify post.
+2026-10-10 02:44:37.385 Df SpinonBootstrap[38006:64a752d] [com.apple.dt.xctest:Default] notify_get_state check indicated test daemon not ready.
+2026-10-10 02:44:37.385 Df SpinonBootstrap[38006:64a752d] [com.apple.dt.xctest:Default] notify_get_state check indicated test daemon not ready.
+2026-10-10 02:44:37.385 Df SpinonBootstrap[38006:64a752d] [com.apple.dt.xctest:Default] notify_get_state check indicated test daemon not ready.
+2026-10-10 02:44:37.385 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:UpdateScheduler] Selected display: name=LCD (PurpleMain), id=1
+2026-10-10 02:44:37.386 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:BackgroundTask] Will add backgroundTask with taskName: Persistent SceneSession Map Update, expirationHandler: <__NSGlobalBlock__: 0x1e61729e0>
+2026-10-10 02:44:37.386 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:BackgroundTask] Reusing background assertion <BKSProcessAssertion: 0x600002112800>
+2026-10-10 02:44:37.386 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:BackgroundTask] Incrementing reference count for background assertion <BKSProcessAssertion: 0x600002112800>
+2026-10-10 02:44:37.386 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:BackgroundTask] Created background task <_UIBackgroundTaskInfo: 0x600001707880>: taskID = 2, taskName = Persistent SceneSession Map Update, creationTime = 890021 (elapsed = 0).
+2026-10-10 02:44:37.386 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:Application] Deactivation reason added: 5; deactivation reasons: 1024 -> 1056; animating application lifecycle event: 1
+2026-10-10 02:44:37.386 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 2, <UIWindowScene: 0x104608690> (F5E6004D-BAA6-49C7-B519-8363344A080F)
+2026-10-10 02:44:37.386 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:InterfaceStyle] Should send trait collection or coordinate space update, interface style 2 -> 2, <UIWindowScene: 0x104608690> (F5E6004D-BAA6-49C7-B519-8363344A080F)
+2026-10-10 02:44:37.387 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 2, <UIWindowScene: 0x104608690> (F5E6004D-BAA6-49C7-B519-8363344A080F)
+2026-10-10 02:44:37.387 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:HomeAffordanceObservation] Initializing: <_UIHomeAffordanceSceneNotifier: 0x600002901ce0>; with scene: <UIWindowScene: 0x104608690>
+2026-10-10 02:44:37.387 Df SpinonBootstrap[38006:64a752d] [com.apple.BacklightServices:scenes] 0x600000c0a1f0 setDelegate:<0x600000c0abe0 _UIBacklightEnvironment> hasDelegate:YES for environment:sceneID:dev.spinon.bootstrap-default
+2026-10-10 02:44:37.387 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 2, <UIWindowScene: 0x104608690> (F5E6004D-BAA6-49C7-B519-8363344A080F)
+2026-10-10 02:44:37.387 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:EventDeferring] [0x600002901b90] Initialized with scene: <UIWindowScene: 0x104608690>; behavior: <_UIEventDeferringBehavior_iOS: 0x600000233ca0>; availableForProcess: 1, systemShellManagesKeyboardFocus: 1
+2026-10-10 02:44:37.387 Df SpinonBootstrap[38006:64a752d] [com.apple.BoardServices:XPCErrors] [C:2] Alloc com.apple.backboard.hid-services.xpc
+2026-10-10 02:44:37.387 Df SpinonBootstrap[38006:64a752d] [com.apple.xpc:connection] [0x104505580] activating connection: mach=false listener=false peer=false name=(anonymous)
+2026-10-10 02:44:37.388 Df SpinonBootstrap[38006:64a7533] [com.apple.BackBoard:EventDelivery] BKSHIDEventObserver - connection activation
+2026-10-10 02:44:37.388 Df SpinonBootstrap[38006:64a752d] [com.apple.BackBoard:EventDelivery] policyStatus:<BKSHIDEventDeliveryPolicyObserver: 0x6000026053e0; process scope; status: target> was:none
+2026-10-10 02:44:37.388 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:KeyWindow] Setting default evaluation strategy for UIUserInterfaceIdiomPhone to LastOneWins
+2026-10-10 02:44:37.388 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:KeyWindow] Scene target of keyboard event deferring environment did change: 1; scene: UIWindowScene: 0x104608690; scene identity: com.apple.frontboard.systemappservices/FBSceneManager:sceneID%3Adev.spinon.bootstrap-default
+2026-10-10 02:44:37.388 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:EventDeferring] [0x600002901b90] Scene target of event deferring environments did update: scene: 0x104608690; current systemShellManagesKeyboardFocus: 1; systemShellManagesKeyboardFocusForScene: 1; eligibleForRecordRemoval: 1;
+2026-10-10 02:44:37.388 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:KeyWindow] Scene became target of keyboard event deferring environment: UIWindowScene: 0x104608690; scene identity: com.apple.frontboard.systemappservices/FBSceneManager:sceneID%3Adev.spinon.bootstrap-default
+2026-10-10 02:44:37.388 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:KeyWindow] Stack[KeyWindow] 0x600000c0ae20: Taking no further action for migration from LastOneWins -> SystemShellManaged as there are no scenes
+2026-10-10 02:44:37.388 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:KeyWindow] Setting default evaluation strategy for UIUserInterfaceIdiomPhone to SystemShellManaged
+2026-10-10 02:44:37.388 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:KeyWindow] Key window needs update: 0; currentKeyWindowScene: 0x0; evaluatedKeyWindowScene: 0x104608690; currentApplicationKeyWindow: 0x0; evaluatedApplicationKeyWindow: 0x0; reason: UIWindowScene: 0x104608690: Window scene became target of keyboard environment
+2026-10-10 02:44:37.388 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 2, <UIWindowScene: 0x104608690> (F5E6004D-BAA6-49C7-B519-8363344A080F)
+2026-10-10 02:44:37.388 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 2, <UIWindowScene: 0x104608690> (F5E6004D-BAA6-49C7-B519-8363344A080F)
+2026-10-10 02:44:37.388 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 2, <UIWindowScene: 0x104608690> (F5E6004D-BAA6-49C7-B519-8363344A080F)
+2026-10-10 02:44:37.388 F  SpinonBootstrap[38006:64a752d] [com.apple.runtime-issues:UIKit App Config] `UIScene` lifecycle will soon be required. Failure to adopt will result in an assert in the future.
+2026-10-10 02:44:37.388 A  SpinonBootstrap[38006:64a752d] (libsystem_trace.dylib) Activity for state dumps
+2026-10-10 02:44:37.388 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 2, <UIWindowScene: 0x104608690> (F5E6004D-BAA6-49C7-B519-8363344A080F)
+2026-10-10 02:44:37.388 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:AppLifecycle] sceneOfRecord: sceneID: sceneID:dev.spinon.bootstrap-default  persistentID: F5E6004D-BAA6-49C7-B519-8363344A080F
+2026-10-10 02:44:37.389 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:Application] Ignoring already applied deactivation reason: 5; deactivation reasons: 1056
+2026-10-10 02:44:37.389 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:Application] Deactivation reason added: 11; deactivation reasons: 1056 -> 3104; animating application lifecycle event: 1
+2026-10-10 02:44:37.389 Df SpinonBootstrap[38006:64a752d] [com.apple.KeyboardArbiter:Client] startConnection
+2026-10-10 02:44:37.389 Df SpinonBootstrap[38006:64a752d] [com.apple.xpc:connection] [0x1047068c0] activating connection: mach=true listener=false peer=false name=com.apple.UIKit.KeyboardManagement.hosted
+2026-10-10 02:44:37.397 Df SpinonBootstrap[38006:64a752d] [com.apple.xpc:connection] [0x105d055f0] activating connection: mach=true listener=false peer=false name=com.apple.metal.simulator
+2026-10-10 02:44:37.397 Df SpinonBootstrap[38006:64a752d] [com.apple.xpc:connection] [0x105904080] activating connection: mach=true listener=false peer=false name=com.apple.metal.simulator
+2026-10-10 02:44:37.397 Df SpinonBootstrap[38006:64a752d] [com.apple.xpc:connection] [0x105d05720] activating connection: mach=true listener=false peer=false name=com.apple.metal.simulator
+2026-10-10 02:44:37.400 Df SpinonBootstrap[38006:64a7534] [com.apple.xpc:connection] [0x1059041b0] activating connection: mach=true listener=false peer=false name=com.apple.fontservicesd
+2026-10-10 02:44:37.406 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:Orientation] <UIWindowScene: 0x104608690> (F5E6004D-BAA6-49C7-B519-8363344A080F) Scene updated orientation preferences: none -> ( Pu Ll Lr )
+2026-10-10 02:44:37.407 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:KeyWindow] Key window API is scene-level: YES
+2026-10-10 02:44:37.407 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:KeyWindow] UIWindowScene: 0x104608690: Window became key in scene: UIWindow: 0x104709da0; contextId: 0x3C8E3A51: reason: UIWindowScene: 0x104608690: Window requested to become key in scene: 0x104709da0
+2026-10-10 02:44:37.407 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:KeyWindow] Key window needs update: 1; currentKeyWindowScene: 0x0; evaluatedKeyWindowScene: 0x104608690; currentApplicationKeyWindow: 0x0; evaluatedApplicationKeyWindow: 0x104709da0; reason: UIWindowScene: 0x104608690: Window requested to become key in scene: 0x104709da0
+2026-10-10 02:44:37.407 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:KeyWindow] Window did become application key: UIWindow: 0x104709da0; contextId: 0x3C8E3A51; scene identity: com.apple.frontboard.systemappservices/FBSceneManager:sceneID%3Adev.spinon.bootstrap-default
+2026-10-10 02:44:37.407 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:EventDeferring] [0x600002901b90] Begin local event deferring requested for token: 0x600002601a40; environments: 1; reason: UIWindowScene: 0x104608690: Begin event deferring in keyboardFocus for window: 0x104709da0
+2026-10-10 02:44:37.407 Df SpinonBootstrap[38006:64a7534] [com.apple.BackBoard:EventDelivery] BKSHIDEventDeliveryManager - connection activation
+2026-10-10 02:44:37.407 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:Application] Deactivation reason removed: 10; deactivation reasons: 3104 -> 2080; animating application lifecycle event: 1
+2026-10-10 02:44:37.408 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:Application] Deactivation reason added: 12; deactivation reasons: 2080 -> 6176; animating application lifecycle event: 1
+2026-10-10 02:44:37.408 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:Application] Deactivation reason removed: 11; deactivation reasons: 6176 -> 4128; animating application lifecycle event: 1
+2026-10-10 02:44:37.408 Df SpinonBootstrap[38006:64a7534] [com.apple.BackBoard:EventDelivery] policyStatus:<BKSHIDEventDeliveryPolicyObserver: 0x6000026053e0; token: com.apple.frontboard.systemappservices/FBSceneManager:sceneID%3Adev.spinon.bootstrap-default; status: ancestor> was:target
+2026-10-10 02:44:37.408 Df SpinonBootstrap[38006:64a752d] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneIntelligenceSupportSettings> on FBSSceneSettings
+2026-10-10 02:44:37.408 Df SpinonBootstrap[38006:64a7538] [com.apple.UIIntelligenceSupport:xpc] establishing connection to agent
+2026-10-10 02:44:37.408 Df SpinonBootstrap[38006:64a7538] [com.apple.xpc:session] [0x6000021088c0] Session created.
+2026-10-10 02:44:37.408 Df SpinonBootstrap[38006:64a7538] [com.apple.xpc:session] [0x6000021088c0] Session created from connection [0x104508b30]
+2026-10-10 02:44:37.408 Df SpinonBootstrap[38006:64a7538] [com.apple.xpc:connection] [0x104508b30] activating connection: mach=true listener=false peer=false name=com.apple.uiintelligencesupport.agent
+2026-10-10 02:44:37.408 Df SpinonBootstrap[38006:64a7538] [com.apple.xpc:session] [0x6000021088c0] Session activated
+2026-10-10 02:44:37.408 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 2, <UIWindowScene: 0x104608690> (F5E6004D-BAA6-49C7-B519-8363344A080F)
+2026-10-10 02:44:37.412 Df SpinonBootstrap[38006:64a752d] (Foundation) SPINON_C0410_VIEWPORT_CHANGED css=301.0x100.0 scale=3.0 drawable=903x300
+2026-10-10 02:44:37.412 Df SpinonBootstrap[38006:64a752d] (Foundation) SPINON_C0410_SURFACE_CHANGED generation=1 size=903x300
+2026-10-10 02:44:37.412 Df SpinonBootstrap[38006:64a752d] [PrototypeTools:domain] Not observing PTDefaults on customer install.
+2026-10-10 02:44:37.418 A  SpinonBootstrap[38006:64a7534] (RunningBoardServices) didChangeInheritances
+2026-10-10 02:44:37.418 Df SpinonBootstrap[38006:64a752d] [com.apple.xpc:connection] [0x1137047e0] activating connection: mach=true listener=false peer=false name=com.apple.lsd.mapdb
+2026-10-10 02:44:37.420 A  SpinonBootstrap[38006:64a7534] (RunningBoardServices) didChangeInheritances
+2026-10-10 02:44:37.423 Df SpinonBootstrap[38006:64a752d] [com.apple.network:activity] Create activity from XPC object <nw_activity 50:1 [634419FB-7AB2-4E61-A0EA-9AA592CC91BA] (reporting strategy default)>
+2026-10-10 02:44:37.423 Df SpinonBootstrap[38006:64a752d] [com.apple.network:activity] Create activity from XPC object <nw_activity 50:2 [23DE79FA-98B0-41D4-BD24-3E77EC06AA45] (reporting strategy default)>
+2026-10-10 02:44:37.423 Df SpinonBootstrap[38006:64a752d] [com.apple.network:activity] Set activity <nw_activity 50:1 [634419FB-7AB2-4E61-A0EA-9AA592CC91BA] (reporting strategy default)> as the global parent
+2026-10-10 02:44:37.423 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:BackgroundTask] Ending background task with UIBackgroundTaskIdentifier: 1
+2026-10-10 02:44:37.423 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:BackgroundTask] Ending task with identifier 1 and description: <_UIBackgroundTaskInfo: 0x600001710fc0>: taskID = 1, taskName = Launch Background Task for Coalescing, creationTime = 890021 (elapsed = 0), _expireHandler: (null)
+2026-10-10 02:44:37.423 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:BackgroundTask] Decrementing reference count for assertion <BKSProcessAssertion: 0x600002112800> (used by background task with identifier 1: <_UIBackgroundTaskInfo: 0x600001710fc0>: taskID = 1, taskName = Launch Background Task for Coalescing, creationTime = 890021 (elapsed = 0))
+2026-10-10 02:44:37.424 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:EventBus] Event Timing Profile for Touch: not found, path="/System/Library/EventTimingProfiles/Sim.Touch.plist"
+2026-10-10 02:44:37.424 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:EventBus] Event Timing Profile for Pencil: not found, path="/System/Library/EventTimingProfiles/Sim.Pencil.plist"
+2026-10-10 02:44:37.424 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:UpdateScheduler] Target list changed: <CADisplay:LCD PurpleMain>
+2026-10-10 02:44:37.424 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:AppLifecycle] sceneOfRecord: sceneID: sceneID:dev.spinon.bootstrap-default  persistentID: F5E6004D-BAA6-49C7-B519-8363344A080F
+2026-10-10 02:44:37.424 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 2, <UIWindowScene: 0x104608690> (F5E6004D-BAA6-49C7-B519-8363344A080F)
+2026-10-10 02:44:37.424 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:EventDeferring] [0x600002901b90] Scene target of event deferring environments did update: scene: 0x104608690; current systemShellManagesKeyboardFocus: 1; systemShellManagesKeyboardFocusForScene: 1; eligibleForRecordRemoval: 1;
+2026-10-10 02:44:37.424 Sd SpinonBootstrap[38006:0] (IOKit) IOHIDManager State
+{
+    DispatchQueue = 0;
+    RunLoop = 1;
+    createOptions = 0;
+    isOpen = 0;
+    openOptions = 0;
+}
+2026-10-10 02:44:37.424 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:KeyWindow] Scene became target of keyboard event deferring environment: UIWindowScene: 0x104608690; scene identity: com.apple.frontboard.systemappservices/FBSceneManager:sceneID%3Adev.spinon.bootstrap-default
+2026-10-10 02:44:37.424 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:AppLifecycle] sceneOfRecord: sceneID: sceneID:dev.spinon.bootstrap-default  persistentID: F5E6004D-BAA6-49C7-B519-8363344A080F
+2026-10-10 02:44:37.424 Df SpinonBootstrap[38006:64a752d] [com.apple.KeyboardArbiter:Client] startConnection
+2026-10-10 02:44:37.424 Df SpinonBootstrap[38006:64a752d] [com.apple.KeyboardArbiter:Client] handleKeyboardChange: set currentKeyboard:N (wasKeyboard:N)
+2026-10-10 02:44:37.425 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:KeyboardArbiterClientLog] isWritingToolsHandlingKeyboardTracking:Y (WT ready:Y, Arbiter ready:Y)
+2026-10-10 02:44:37.426 Df SpinonBootstrap[38006:64a7535] SPINON_C052_HOST=session=ready owner_tid=105542970 isolate_per_session=1 queue_capacity=64 queue_policy=strict-priority-fifo css_worker_per_session=1 css_worker_ready_us=785 session_startup_us=21892
+2026-10-10 02:44:37.426 Df SpinonBootstrap[38006:64a7535] (Foundation) SPINON_C0410_HOST_RETURNED handle=4369628768
+2026-10-10 02:44:37.426 Df SpinonBootstrap[38006:64a7535] (Foundation) SPINON_C0410_HOST_STORED continue=true
+2026-10-10 02:44:37.426 Df SpinonBootstrap[38006:64a7535] (Foundation) SPINON_C0410_ENVIRONMENT_REQUEST width=301.0 height=100.0
+2026-10-10 02:44:37.426 Df SpinonBootstrap[38006:64a7535] SPINON_C0410_ENVIRONMENT_FFI_BEGIN width=301.0 height=100.0
+2026-10-10 02:44:37.426 Df SpinonBootstrap[38006:64a7535] (Foundation) SPINON_C0410_ENVIRONMENT status=0 environment_revision=0 layout=empty boxes=0 generation=1 document_revision=0 render_tree_revision=0 style_revision=0 environment_revision=0
+2026-10-10 02:44:37.437 Df SpinonBootstrap[38006:64a7535] (Foundation) SPINON_C052_EVAL status=0 seq=1 trace_cookie=1 op=eval status=0 caller_tid=105542965 owner_tid=105542970 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=16 v8_call_us=3202 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=57 render_tree_revision=14 document_nodes=16 document_string_units=2481 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=16 document_collection_live_handles=16 document_collection_empty_handles=0 document_collection_last_scan_start_ns=890021488559666 document_collection_last_scan_us=239 document_collection_wrapper_root_buffer_bytes=64 document_collection_reclaimed_node_buffer_bytes=64 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=2 ua_snapshot_submit_us=171 ua_snapshot_submitted=true enqueue_total_us=14 response_wait_us=3398 submit_total_us=3412 response_report_appen<…>
+2026-10-10 02:44:37.439 Df SpinonBootstrap[38006:64a7533] SPINON_C0410_ENVIRONMENT_FFI_BEGIN width=301.0 height=100.0
+2026-10-10 02:44:37.439 Df SpinonBootstrap[38006:64a7533] (Foundation) SPINON_C0410_ENVIRONMENT viewport=301.0x100.0 scale=3.0 dark=true sequence=3 status=0 environment_revision=0 layout=ready boxes=11 generation=1 document_revision=57 render_tree_revision=14 style_revision=0 environment_revision=0 root_frame_css_px=301x100 render_viewport_css_px=301x100 render_root_css_px=301x100
+2026-10-10 02:44:37.445 Df SpinonBootstrap[38006:64a752d] (Foundation) SPINON_C0410_SURFACE_CONFIGURE thread=main status=0 UIKit surface가 메인 스레드에서 구성되었습니다
+2026-10-10 02:44:37.445 Df SpinonBootstrap[38006:64a7535] SPINON_C0410_ENVIRONMENT_FFI_BEGIN width=301.0 height=100.0
+2026-10-10 02:44:37.445 Df SpinonBootstrap[38006:64a7535] (Foundation) SPINON_C0410_ENVIRONMENT viewport=301.0x100.0 scale=3.0 dark=true sequence=5 status=0 environment_revision=0 layout=ready boxes=11 generation=1 document_revision=57 render_tree_revision=14 style_revision=0 environment_revision=0 root_frame_css_px=301x100 render_viewport_css_px=301x100 render_root_css_px=301x100
+2026-10-10 02:44:37.445 Df SpinonBootstrap[38006:64a7535] [com.apple.xpc:connection] [0x104513930] activating connection: mach=true listener=false peer=false name=com.apple.IOSurface.Remote
+2026-10-10 02:44:37.447 Df SpinonBootstrap[38006:64a7535] (Foundation) SPINON_C0410_DRAW generation=1 status=0 presented boxes=11 environment_revision=0 viewport_css_px=301x100 surface_texture=903x300 root_css_px=301x100
+2026-10-10 02:44:37.465 Df SpinonBootstrap[38006:64a752d] [com.apple.network:activity] <nw_activity 50:1 [634419FB-7AB2-4E61-A0EA-9AA592CC91BA] (global parent) (reporting strategy default) complete (reason success)> complete with reason 2 (success), duration 272ms
+2026-10-10 02:44:37.465 Df SpinonBootstrap[38006:64a752d] [com.apple.network:activity] <nw_activity 50:2 [23DE79FA-98B0-41D4-BD24-3E77EC06AA45] (reporting strategy default) complete (reason success)> complete with reason 2 (success), duration 272ms
+2026-10-10 02:44:37.465 Df SpinonBootstrap[38006:64a752d] [com.apple.network:activity] Unsetting the global parent activity <nw_activity 50:1 [634419FB-7AB2-4E61-A0EA-9AA592CC91BA] (global parent) (reporting strategy default) complete (reason success)>
+2026-10-10 02:44:37.465 Df SpinonBootstrap[38006:64a752d] [com.apple.network:activity] Unset the global parent activity
+2026-10-10 02:44:37.528 A  SpinonBootstrap[38006:64a7535] (RunningBoardServices) didChangeInheritances
+2026-10-10 02:44:37.528 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 2, <UIWindowScene: 0x104608690> (F5E6004D-BAA6-49C7-B519-8363344A080F)
+2026-10-10 02:44:37.528 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:AppLifecycle] sceneOfRecord: sceneID: sceneID:dev.spinon.bootstrap-default  persistentID: F5E6004D-BAA6-49C7-B519-8363344A080F
+2026-10-10 02:44:37.528 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:Application] Deactivation reason removed: 12; deactivation reasons: 4128 -> 32; animating application lifecycle event: 1
+2026-10-10 02:44:37.528 Df SpinonBootstrap[38006:64a752d] [com.apple.KeyboardArbiter:Client] Send setDeactivating: N (-DeactivationReason:SuspendedEventsOnly)
+2026-10-10 02:44:37.528 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:Application] Deactivation reason removed: 5; deactivation reasons: 32 -> 0; animating application lifecycle event: 0
+2026-10-10 02:44:37.686 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:AppLifecycle] sceneOfRecord: sceneID: sceneID:dev.spinon.bootstrap-default  persistentID: F5E6004D-BAA6-49C7-B519-8363344A080F
+2026-10-10 02:44:37.902 Df SpinonBootstrap[38006:64a752d] [com.apple.Accessibility:AXCommon] Read Per-App on Init: Smart invert = (null)
+2026-10-10 02:44:37.904 Df SpinonBootstrap[38006:64a7533] [com.apple.UIKit:BackgroundTask] Ending background task with UIBackgroundTaskIdentifier: 2
+2026-10-10 02:44:37.904 Df SpinonBootstrap[38006:64a7533] [com.apple.UIKit:BackgroundTask] Ending task with identifier 2 and description: <_UIBackgroundTaskInfo: 0x600001707880>: taskID = 2, taskName = Persistent SceneSession Map Update, creationTime = 890021 (elapsed = 0), _expireHandler: <__NSGlobalBlock__: 0x1e61729e0>
+2026-10-10 02:44:37.904 Df SpinonBootstrap[38006:64a7533] [com.apple.UIKit:BackgroundTask] Decrementing reference count for assertion <BKSProcessAssertion: 0x600002112800> (used by background task with identifier 2: <_UIBackgroundTaskInfo: 0x600001707880>: taskID = 2, taskName = Persistent SceneSession Map Update, creationTime = 890021 (elapsed = 0))
+2026-10-10 02:44:37.904 Df SpinonBootstrap[38006:64a7533] [com.apple.UIKit:BackgroundTask] Will invalidate assertion: <BKSProcessAssertion: 0x600002112800> for task identifier: 2
+2026-10-10 02:44:38.535 A  SpinonBootstrap[38006:64a7535] (RunningBoardServices) didChangeInheritances
+2026-10-10 02:44:42.238 Df SpinonBootstrap[38006:64a752d] [com.apple.KeyboardArbiter:Client] TX focusApplication (peekAppEvent) stealKB:Y scene:dev.spinon.bootstrap-default
+2026-10-10 02:44:42.238 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:EventDispatch] Evaluating dispatch of UIEvent: 0x600003d40000; type: 0; subtype: 0; backing type: 11; shouldSend: 1; ignoreInteractionEvents: 0, systemGestureStateChange: 0
+2026-10-10 02:44:42.238 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:EventDispatch] Sending UIEvent type: 0; subtype: 0; to windows: 1
+2026-10-10 02:44:42.238 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:EventDispatch] Sending UIEvent type: 0; subtype: 0; to window: <UIWindow: 0x104709da0>; contextId: 0x3C8E3A51
+2026-10-10 02:44:42.238 A  SpinonBootstrap[38006:64a752d] (UIKitCore) send control actions
+2026-10-10 02:44:42.241 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:EventDispatch] Evaluating dispatch of UIEvent: 0x600003d40000; type: 0; subtype: 0; backing type: 11; shouldSend: 1; ignoreInteractionEvents: 0, systemGestureStateChange: 0
+2026-10-10 02:44:42.241 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:EventDispatch] Sending UIEvent type: 0; subtype: 0; to windows: 1
+2026-10-10 02:44:42.241 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:EventDispatch] Sending UIEvent type: 0; subtype: 0; to window: <UIWindow: 0x104709da0>; contextId: 0x3C8E3A51
+2026-10-10 02:44:42.241 A  SpinonBootstrap[38006:64a752d] (UIKitCore) send control actions
+2026-10-10 02:44:42.242 A  SpinonBootstrap[38006:64a752d] (UIKitCore) send control actions
+2026-10-10 02:44:42.244 Df SpinonBootstrap[38006:64a7535] (Foundation) SPINON_C052_EVAL status=0 seq=2 trace_cookie=2 op=eval status=0 caller_tid=105542965 owner_tid=105542970 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=869 v8_call_us=993 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=59 render_tree_revision=16 document_nodes=16 document_string_units=2481 document_collection_scans=2 document_collection_deferred=0 document_collection_scanned_handles=16 document_collection_live_handles=16 document_collection_empty_handles=0 document_collection_last_scan_start_ns=890026302746041 document_collection_last_scan_us=9 document_collection_wrapper_root_buffer_bytes=64 document_collection_reclaimed_node_buffer_bytes=64 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=2 ua_snapshot_submit_us=18 ua_snapshot_submitted=true enqueue_total_us=8 response_wait_us=1887 submit_total_us=1896 response_report_append_us<…>
+2026-10-10 02:44:42.246 Df SpinonBootstrap[38006:64a7535] (Foundation) SPINON_C0410_DRAW generation=1 status=0 presented boxes=12 environment_revision=0 viewport_css_px=301x100 surface_texture=903x300 root_css_px=301x100
+2026-10-10 02:44:42.258 Df SpinonBootstrap[38006:64a752d] [com.apple.UIKit:EventDispatch] Evaluating dispatch of UIEvent: 0x600003d40000; type: 0; subtype: 0; backing type: 11; shouldSend: 0; ignoreInteractionEvents: 0, systemGestureStateChange: 1
+2026-10-10 02:46:07.365 Df SpinonBootstrap[40387:64a9d77] (libMobileGestalt.dylib) No persisted cache on this platform.
+2026-10-10 02:46:07.365 Df SpinonBootstrap[40387:64a9d93] [com.apple.xpc:connection] [0x105c04080] activating connection: mach=true listener=false peer=false name=com.apple.cfprefsd.daemon
+2026-10-10 02:46:07.365 Df SpinonBootstrap[40387:64a9d94] [com.apple.BoardServices:XPCErrors] [C:1] Alloc com.apple.frontboard.systemappservices
+2026-10-10 02:46:07.365 Df SpinonBootstrap[40387:64a9d94] [com.apple.xpc:connection] [0x104e04e30] activating connection: mach=false listener=false peer=false name=(anonymous)
+2026-10-10 02:46:07.366 A  SpinonBootstrap[40387:64a9d93] (CoreFoundation) Loading Preferences From User Session CFPrefsD
+2026-10-10 02:46:07.369 Df SpinonBootstrap[40387:64a9d92] [com.apple.UIKit:BackgroundTask] Creating new assertion because there is no existing background assertion.
+2026-10-10 02:46:07.369 Df SpinonBootstrap[40387:64a9d92] [com.apple.UIKit:BackgroundTask] Creating new background assertion
+2026-10-10 02:46:07.369 Df SpinonBootstrap[40387:64a9d92] [com.apple.UIKit:BackgroundTask] Created new background assertion <BKSProcessAssertion: 0x600002112850>
+2026-10-10 02:46:07.369 Df SpinonBootstrap[40387:64a9d92] [com.apple.runningboard:connection] Initializing connection
+2026-10-10 02:46:07.369 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:Application] Deactivation reason added: 10; deactivation reasons: 0 -> 1024; animating application lifecycle event: 0
+2026-10-10 02:46:07.369 Df SpinonBootstrap[40387:64a9d92] [com.apple.runningboard:process] Removing all cached process handles
+2026-10-10 02:46:07.369 Df SpinonBootstrap[40387:64a9d93] [com.apple.runningboard:connection] Sending handshake request attempt #1 to server
+2026-10-10 02:46:07.369 Df SpinonBootstrap[40387:64a9d93] [com.apple.runningboard:connection] Creating connection to com.apple.runningboard
+2026-10-10 02:46:07.369 Df SpinonBootstrap[40387:64a9d93] [com.apple.xpc:connection] [0x105c04190] activating connection: mach=true listener=false peer=false name=com.apple.runningboard
+2026-10-10 02:46:07.369 Df SpinonBootstrap[40387:64a9d77] [com.apple.BoardServices:Injection] activating monitor for service com.apple.frontboard.open
+2026-10-10 02:46:07.369 Df SpinonBootstrap[40387:64a9d77] [com.apple.BoardServices:Injection] activating monitor for service com.apple.frontboard.workspace-service
+2026-10-10 02:46:07.369 A  SpinonBootstrap[40387:64a9d97] (RunningBoardServices) didChangeInheritances
+2026-10-10 02:46:07.369 Df SpinonBootstrap[40387:64a9d77] [com.apple.FrontBoard:Common] FBSWorkspace registering source: com.apple.frontboard.systemappservices
+2026-10-10 02:46:07.369 Df SpinonBootstrap[40387:64a9d93] [com.apple.runningboard:connection] Handshake succeeded
+2026-10-10 02:46:07.369 Df SpinonBootstrap[40387:64a9d93] [com.apple.runningboard:connection] Identity resolved as app<dev.spinon.bootstrap((null))>
+2026-10-10 02:46:07.370 Df SpinonBootstrap[40387:64a9d92] [com.apple.UIKit:BackgroundTask] Incrementing reference count for background assertion <BKSProcessAssertion: 0x600002112850>
+2026-10-10 02:46:07.370 Df SpinonBootstrap[40387:64a9d92] [com.apple.UIKit:BackgroundTask] Created background task <_UIBackgroundTaskInfo: 0x600001718980>: taskID = 1, taskName = Launch Background Task for Coalescing, creationTime = 890111 (elapsed = 0).
+2026-10-10 02:46:07.370 Df SpinonBootstrap[40387:64a9d92] [com.apple.FrontBoard:SceneExtension] Realizing settings extension _UIApplicationSceneKeyboardSettings on FBSSceneSettings
+2026-10-10 02:46:07.370 Df SpinonBootstrap[40387:64a9d92] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneOcclusionSettings> on FBSSceneSettings
+2026-10-10 02:46:07.370 Df SpinonBootstrap[40387:64a9d77] [com.apple.FrontBoard:Common] FBSWorkspace connected to endpoint : <BSServiceConnectionEndpoint: 0x600000210500; target: com.apple.frontboard.systemappservices; service: com.apple.frontboard.workspace-service>
+2026-10-10 02:46:07.370 Df SpinonBootstrap[40387:64a9d92] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneInterfaceProtectionSettings> on FBSSceneSettings
+2026-10-10 02:46:07.370 Df SpinonBootstrap[40387:64a9d77] [com.apple.FrontBoard:Common] <FBSWorkspaceScenesClient:0x6000030081b0 com.apple.frontboard.systemappservices> attempting immediate handshake from activate
+2026-10-10 02:46:07.370 Df SpinonBootstrap[40387:64a9d77] [com.apple.FrontBoard:Common] <FBSWorkspaceScenesClient:0x6000030081b0 com.apple.frontboard.systemappservices> sent handshake
+2026-10-10 02:46:07.370 Df SpinonBootstrap[40387:64a9d92] [com.apple.FrontBoard:SceneExtension] Realizing settings extension _UISceneLayoutPreferencesHostSettingsExtension on FBSSceneSettings
+2026-10-10 02:46:07.370 Df SpinonBootstrap[40387:64a9d92] [com.apple.FrontBoard:SceneExtension] Realizing settings extension _UISceneSafeAreaSettingsExtension on FBSSceneSettings
+2026-10-10 02:46:07.370 Df SpinonBootstrap[40387:64a9d77] [com.apple.runningboard:general] Added observer for process assertions expiration warning: <_RBSExpirationWarningClient: 0x600000211a40>
+2026-10-10 02:46:07.370 Df SpinonBootstrap[40387:64a9d92] [com.apple.FrontBoard:SceneExtension] Realizing settings extension _UISceneLayoutPreferenceClientSettingsExtension on FBSSceneClientSettings
+2026-10-10 02:46:07.371 Df SpinonBootstrap[40387:64a9d92] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UIHomeAffordanceHostSceneSettings> on FBSSceneSettings
+2026-10-10 02:46:07.371 Df SpinonBootstrap[40387:64a9d92] [com.apple.FrontBoard:SceneExtension] Realizing settings extension _UISystemShellSceneHostingEnvironmentSettings on FBSSceneSettings
+2026-10-10 02:46:07.371 Df SpinonBootstrap[40387:64a9d92] [com.apple.FrontBoard:SceneExtension] Realizing settings extension _UISceneRenderingEnvironmentSettings on FBSSceneSettings
+2026-10-10 02:46:07.371 Df SpinonBootstrap[40387:64a9d92] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneRenderingEnvironmentClientSettings> on FBSSceneClientSettings
+2026-10-10 02:46:07.371 Df SpinonBootstrap[40387:64a9d92] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneTransitioningHostSettings> on FBSSceneSettings
+2026-10-10 02:46:07.371 Df SpinonBootstrap[40387:64a9d92] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneFocusSystemSettings> on FBSSceneSettings
+2026-10-10 02:46:07.371 Df SpinonBootstrap[40387:64a9d92] [com.apple.FrontBoard:SceneExtension] Realizing settings extension _UISceneOrientationSettingsExtension on FBSSceneSettings
+2026-10-10 02:46:07.371 Df SpinonBootstrap[40387:64a9d92] [com.apple.FrontBoard:SceneExtension] Realizing settings extension _UISceneOrientationClientSettingsExtension on FBSSceneClientSettings
+2026-10-10 02:46:07.371 Df SpinonBootstrap[40387:64a9d92] [com.apple.FrontBoard:SceneExtension] Realizing settings extension _UISceneWindowingControlClientSettings on FBSSceneClientSettings
+2026-10-10 02:46:07.371 Df SpinonBootstrap[40387:64a9d92] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneHostingContentSizePreferenceClientSettings> on FBSSceneClientSettings
+2026-10-10 02:46:07.371 Df SpinonBootstrap[40387:64a9d92] [com.apple.FrontBoard:SceneExtension] Realizing settings extension _UISceneHostingTraitCollectionPropagationSettings on FBSSceneSettings
+2026-10-10 02:46:07.371 Df SpinonBootstrap[40387:64a9d92] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneHostingSheetPresentationSettings> on FBSSceneSettings
+2026-10-10 02:46:07.371 Df SpinonBootstrap[40387:64a9d92] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneHostingSheetPresentationClientSettings> on FBSSceneClientSettings
+2026-10-10 02:46:07.371 Df SpinonBootstrap[40387:64a9d92] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneHostingEventDeferringSettings> on FBSSceneSettings
+2026-10-10 02:46:07.372 Df SpinonBootstrap[40387:64a9d92] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <UIKit__UITypedKeyValueSceneSettings> on FBSSceneSettings
+2026-10-10 02:46:07.372 Df SpinonBootstrap[40387:64a9d92] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <UIKit__UITypedKeyValueSceneSettings> on FBSSceneClientSettings
+2026-10-10 02:46:07.372 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:UIScreen] Evaluated capturing state as 0 on <UIScreen: 0x104e05330> for initial
+2026-10-10 02:46:07.372 Df SpinonBootstrap[40387:64a9d92] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneHostingViewControllerPreferencePropagationClientSettings> on FBSSceneClientSettings
+2026-10-10 02:46:07.372 Df SpinonBootstrap[40387:64a9d92] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneZoomTransitionSettings> on FBSSceneSettings
+2026-10-10 02:46:07.372 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:UIScreen] Evaluated capturing state as 0 on <UIScreen: 0x104e05330> for CADisplay KVO
+2026-10-10 02:46:07.372 Df SpinonBootstrap[40387:64a9d93] [com.apple.FrontBoard:SceneExtension] Realizing settings extension FBSSceneSettingsCore on FBSSceneSettings
+2026-10-10 02:46:07.372 Df SpinonBootstrap[40387:64a9d93] [com.apple.FrontBoard:SceneExtension] Realizing settings extension FBSSceneClientSettingsCore on FBSSceneClientSettings
+2026-10-10 02:46:07.372 Df SpinonBootstrap[40387:64a9d77] [com.apple.Accessibility:AXSupportCommon] Read CategoryName: per-app = 1, category name = (null)
+2026-10-10 02:46:07.373 Df SpinonBootstrap[40387:64a9d77] [com.apple.Accessibility:AXSupportCommon] Read CategoryName: per-app = 0, category name = UICTContentSizeCategoryL
+2026-10-10 02:46:07.377 Df SpinonBootstrap[40387:64a9d93] [com.apple.FrontBoard:SceneExtension] UIMutableApplicationSceneSettings setting counterpart class: UIApplicationSceneSettings
+2026-10-10 02:46:07.377 Df SpinonBootstrap[40387:64a9d93] [com.apple.FrontBoard:SceneExtension] UIMutableApplicationSceneClientSettings setting counterpart class: UIApplicationSceneClientSettings
+2026-10-10 02:46:07.377 Df SpinonBootstrap[40387:64a9d93] [com.apple.FrontBoard:SceneExtension] Realizing settings extension FBSSceneTransitionContextCore on FBSSceneTransitionContext
+2026-10-10 02:46:07.377 Df SpinonBootstrap[40387:64a9d77] [com.apple.dt.xctest:Default] Registering for test daemon availability notify post.
+2026-10-10 02:46:07.377 Df SpinonBootstrap[40387:64a9d77] [com.apple.dt.xctest:Default] notify_get_state check indicated test daemon not ready.
+2026-10-10 02:46:07.377 Df SpinonBootstrap[40387:64a9d77] [com.apple.dt.xctest:Default] notify_get_state check indicated test daemon not ready.
+2026-10-10 02:46:07.377 Df SpinonBootstrap[40387:64a9d77] [com.apple.dt.xctest:Default] notify_get_state check indicated test daemon not ready.
+2026-10-10 02:46:07.377 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:UpdateScheduler] Selected display: name=LCD (PurpleMain), id=1
+2026-10-10 02:46:07.378 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:BackgroundTask] Will add backgroundTask with taskName: Persistent SceneSession Map Update, expirationHandler: <__NSGlobalBlock__: 0x1e61729e0>
+2026-10-10 02:46:07.378 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:BackgroundTask] Reusing background assertion <BKSProcessAssertion: 0x600002112850>
+2026-10-10 02:46:07.378 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:BackgroundTask] Incrementing reference count for background assertion <BKSProcessAssertion: 0x600002112850>
+2026-10-10 02:46:07.378 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:BackgroundTask] Created background task <_UIBackgroundTaskInfo: 0x600001703380>: taskID = 2, taskName = Persistent SceneSession Map Update, creationTime = 890111 (elapsed = 0).
+2026-10-10 02:46:07.378 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:Application] Deactivation reason added: 5; deactivation reasons: 1024 -> 1056; animating application lifecycle event: 1
+2026-10-10 02:46:07.378 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 2, <UIWindowScene: 0x104e071e0> (F5E6004D-BAA6-49C7-B519-8363344A080F)
+2026-10-10 02:46:07.378 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:InterfaceStyle] Should send trait collection or coordinate space update, interface style 2 -> 2, <UIWindowScene: 0x104e071e0> (F5E6004D-BAA6-49C7-B519-8363344A080F)
+2026-10-10 02:46:07.379 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 2, <UIWindowScene: 0x104e071e0> (F5E6004D-BAA6-49C7-B519-8363344A080F)
+2026-10-10 02:46:07.379 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:HomeAffordanceObservation] Initializing: <_UIHomeAffordanceSceneNotifier: 0x60000291a450>; with scene: <UIWindowScene: 0x104e071e0>
+2026-10-10 02:46:07.379 Df SpinonBootstrap[40387:64a9d77] [com.apple.BacklightServices:scenes] 0x600000c00840 setDelegate:<0x600000c00450 _UIBacklightEnvironment> hasDelegate:YES for environment:sceneID:dev.spinon.bootstrap-default
+2026-10-10 02:46:07.379 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 2, <UIWindowScene: 0x104e071e0> (F5E6004D-BAA6-49C7-B519-8363344A080F)
+2026-10-10 02:46:07.379 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:EventDeferring] [0x60000291a4c0] Initialized with scene: <UIWindowScene: 0x104e071e0>; behavior: <_UIEventDeferringBehavior_iOS: 0x600000217b80>; availableForProcess: 1, systemShellManagesKeyboardFocus: 1
+2026-10-10 02:46:07.379 Df SpinonBootstrap[40387:64a9d77] [com.apple.BoardServices:XPCErrors] [C:2] Alloc com.apple.backboard.hid-services.xpc
+2026-10-10 02:46:07.379 Df SpinonBootstrap[40387:64a9d77] [com.apple.xpc:connection] [0x104e08930] activating connection: mach=false listener=false peer=false name=(anonymous)
+2026-10-10 02:46:07.380 Df SpinonBootstrap[40387:64a9d92] [com.apple.BackBoard:EventDelivery] BKSHIDEventObserver - connection activation
+2026-10-10 02:46:07.380 Df SpinonBootstrap[40387:64a9d77] [com.apple.BackBoard:EventDelivery] policyStatus:<BKSHIDEventDeliveryPolicyObserver: 0x600002618540; process scope; status: target> was:none
+2026-10-10 02:46:07.380 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:KeyWindow] Setting default evaluation strategy for UIUserInterfaceIdiomPhone to LastOneWins
+2026-10-10 02:46:07.380 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:KeyWindow] Scene target of keyboard event deferring environment did change: 1; scene: UIWindowScene: 0x104e071e0; scene identity: com.apple.frontboard.systemappservices/FBSceneManager:sceneID%3Adev.spinon.bootstrap-default
+2026-10-10 02:46:07.380 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:EventDeferring] [0x60000291a4c0] Scene target of event deferring environments did update: scene: 0x104e071e0; current systemShellManagesKeyboardFocus: 1; systemShellManagesKeyboardFocusForScene: 1; eligibleForRecordRemoval: 1;
+2026-10-10 02:46:07.380 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:KeyWindow] Scene became target of keyboard event deferring environment: UIWindowScene: 0x104e071e0; scene identity: com.apple.frontboard.systemappservices/FBSceneManager:sceneID%3Adev.spinon.bootstrap-default
+2026-10-10 02:46:07.380 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:KeyWindow] Stack[KeyWindow] 0x600000c03390: Taking no further action for migration from LastOneWins -> SystemShellManaged as there are no scenes
+2026-10-10 02:46:07.380 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:KeyWindow] Setting default evaluation strategy for UIUserInterfaceIdiomPhone to SystemShellManaged
+2026-10-10 02:46:07.380 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:KeyWindow] Key window needs update: 0; currentKeyWindowScene: 0x0; evaluatedKeyWindowScene: 0x104e071e0; currentApplicationKeyWindow: 0x0; evaluatedApplicationKeyWindow: 0x0; reason: UIWindowScene: 0x104e071e0: Window scene became target of keyboard environment
+2026-10-10 02:46:07.380 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 2, <UIWindowScene: 0x104e071e0> (F5E6004D-BAA6-49C7-B519-8363344A080F)
+2026-10-10 02:46:07.380 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 2, <UIWindowScene: 0x104e071e0> (F5E6004D-BAA6-49C7-B519-8363344A080F)
+2026-10-10 02:46:07.380 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 2, <UIWindowScene: 0x104e071e0> (F5E6004D-BAA6-49C7-B519-8363344A080F)
+2026-10-10 02:46:07.380 F  SpinonBootstrap[40387:64a9d77] [com.apple.runtime-issues:UIKit App Config] `UIScene` lifecycle will soon be required. Failure to adopt will result in an assert in the future.
+2026-10-10 02:46:07.380 A  SpinonBootstrap[40387:64a9d77] (libsystem_trace.dylib) Activity for state dumps
+2026-10-10 02:46:07.380 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 2, <UIWindowScene: 0x104e071e0> (F5E6004D-BAA6-49C7-B519-8363344A080F)
+2026-10-10 02:46:07.381 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:AppLifecycle] sceneOfRecord: sceneID: sceneID:dev.spinon.bootstrap-default  persistentID: F5E6004D-BAA6-49C7-B519-8363344A080F
+2026-10-10 02:46:07.381 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:Application] Ignoring already applied deactivation reason: 5; deactivation reasons: 1056
+2026-10-10 02:46:07.381 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:Application] Deactivation reason added: 11; deactivation reasons: 1056 -> 3104; animating application lifecycle event: 1
+2026-10-10 02:46:07.381 Df SpinonBootstrap[40387:64a9d77] [com.apple.KeyboardArbiter:Client] startConnection
+2026-10-10 02:46:07.381 Df SpinonBootstrap[40387:64a9d77] [com.apple.xpc:connection] [0x105a05980] activating connection: mach=true listener=false peer=false name=com.apple.UIKit.KeyboardManagement.hosted
+2026-10-10 02:46:07.389 Df SpinonBootstrap[40387:64a9d77] [com.apple.xpc:connection] [0x105a0b200] activating connection: mach=true listener=false peer=false name=com.apple.metal.simulator
+2026-10-10 02:46:07.390 Df SpinonBootstrap[40387:64a9d77] [com.apple.xpc:connection] [0x105a0b330] activating connection: mach=true listener=false peer=false name=com.apple.metal.simulator
+2026-10-10 02:46:07.390 Df SpinonBootstrap[40387:64a9d77] [com.apple.xpc:connection] [0x105b051a0] activating connection: mach=true listener=false peer=false name=com.apple.metal.simulator
+2026-10-10 02:46:07.392 Df SpinonBootstrap[40387:64a9d95] [com.apple.xpc:connection] [0x105a0b580] activating connection: mach=true listener=false peer=false name=com.apple.fontservicesd
+2026-10-10 02:46:07.399 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:Orientation] <UIWindowScene: 0x104e071e0> (F5E6004D-BAA6-49C7-B519-8363344A080F) Scene updated orientation preferences: none -> ( Pu Ll Lr )
+2026-10-10 02:46:07.400 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:KeyWindow] Key window API is scene-level: YES
+2026-10-10 02:46:07.400 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:KeyWindow] UIWindowScene: 0x104e071e0: Window became key in scene: UIWindow: 0x104f07070; contextId: 0xF2B20CA8: reason: UIWindowScene: 0x104e071e0: Window requested to become key in scene: 0x104f07070
+2026-10-10 02:46:07.400 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:KeyWindow] Key window needs update: 1; currentKeyWindowScene: 0x0; evaluatedKeyWindowScene: 0x104e071e0; currentApplicationKeyWindow: 0x0; evaluatedApplicationKeyWindow: 0x104f07070; reason: UIWindowScene: 0x104e071e0: Window requested to become key in scene: 0x104f07070
+2026-10-10 02:46:07.400 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:KeyWindow] Window did become application key: UIWindow: 0x104f07070; contextId: 0xF2B20CA8; scene identity: com.apple.frontboard.systemappservices/FBSceneManager:sceneID%3Adev.spinon.bootstrap-default
+2026-10-10 02:46:07.400 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:EventDeferring] [0x60000291a4c0] Begin local event deferring requested for token: 0x600002619740; environments: 1; reason: UIWindowScene: 0x104e071e0: Begin event deferring in keyboardFocus for window: 0x104f07070
+2026-10-10 02:46:07.400 Df SpinonBootstrap[40387:64a9d95] [com.apple.BackBoard:EventDelivery] BKSHIDEventDeliveryManager - connection activation
+2026-10-10 02:46:07.400 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:Application] Deactivation reason removed: 10; deactivation reasons: 3104 -> 2080; animating application lifecycle event: 1
+2026-10-10 02:46:07.401 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:Application] Deactivation reason added: 12; deactivation reasons: 2080 -> 6176; animating application lifecycle event: 1
+2026-10-10 02:46:07.401 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:Application] Deactivation reason removed: 11; deactivation reasons: 6176 -> 4128; animating application lifecycle event: 1
+2026-10-10 02:46:07.401 Df SpinonBootstrap[40387:64a9d77] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneIntelligenceSupportSettings> on FBSSceneSettings
+2026-10-10 02:46:07.401 Df SpinonBootstrap[40387:64a9d97] [com.apple.BackBoard:EventDelivery] policyStatus:<BKSHIDEventDeliveryPolicyObserver: 0x600002618540; token: com.apple.frontboard.systemappservices/FBSceneManager:sceneID%3Adev.spinon.bootstrap-default; status: ancestor> was:target
+2026-10-10 02:46:07.401 Df SpinonBootstrap[40387:64a9dad] [com.apple.UIIntelligenceSupport:xpc] establishing connection to agent
+2026-10-10 02:46:07.401 Df SpinonBootstrap[40387:64a9dad] [com.apple.xpc:session] [0x600002124050] Session created.
+2026-10-10 02:46:07.401 Df SpinonBootstrap[40387:64a9dad] [com.apple.xpc:session] [0x600002124050] Session created from connection [0x10d9047e0]
+2026-10-10 02:46:07.401 Df SpinonBootstrap[40387:64a9dad] [com.apple.xpc:connection] [0x10d9047e0] activating connection: mach=true listener=false peer=false name=com.apple.uiintelligencesupport.agent
+2026-10-10 02:46:07.401 Df SpinonBootstrap[40387:64a9dad] [com.apple.xpc:session] [0x600002124050] Session activated
+2026-10-10 02:46:07.401 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 2, <UIWindowScene: 0x104e071e0> (F5E6004D-BAA6-49C7-B519-8363344A080F)
+2026-10-10 02:46:07.405 Df SpinonBootstrap[40387:64a9d77] (Foundation) SPINON_C0410_VIEWPORT_CHANGED css=301.0x100.0 scale=3.0 drawable=903x300
+2026-10-10 02:46:07.405 Df SpinonBootstrap[40387:64a9d77] (Foundation) SPINON_C0410_SURFACE_CHANGED generation=1 size=903x300
+2026-10-10 02:46:07.406 Df SpinonBootstrap[40387:64a9d77] [PrototypeTools:domain] Not observing PTDefaults on customer install.
+2026-10-10 02:46:07.412 A  SpinonBootstrap[40387:64a9d95] (RunningBoardServices) didChangeInheritances
+2026-10-10 02:46:07.413 Df SpinonBootstrap[40387:64a9d77] [com.apple.xpc:connection] [0x10d904920] activating connection: mach=true listener=false peer=false name=com.apple.lsd.mapdb
+2026-10-10 02:46:07.414 A  SpinonBootstrap[40387:64a9dad] (RunningBoardServices) didChangeInheritances
+2026-10-10 02:46:07.418 Df SpinonBootstrap[40387:64a9d77] [com.apple.network:activity] Create activity from XPC object <nw_activity 50:1 [3B2E67FF-98AB-4ACE-A758-D4CAB45AF00F] (reporting strategy default)>
+2026-10-10 02:46:07.418 Df SpinonBootstrap[40387:64a9d77] [com.apple.network:activity] Create activity from XPC object <nw_activity 50:2 [90F52FE6-1F14-45A7-9650-A13857D2E928] (reporting strategy default)>
+2026-10-10 02:46:07.418 Df SpinonBootstrap[40387:64a9d77] [com.apple.network:activity] Set activity <nw_activity 50:1 [3B2E67FF-98AB-4ACE-A758-D4CAB45AF00F] (reporting strategy default)> as the global parent
+2026-10-10 02:46:07.418 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:BackgroundTask] Ending background task with UIBackgroundTaskIdentifier: 1
+2026-10-10 02:46:07.418 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:BackgroundTask] Ending task with identifier 1 and description: <_UIBackgroundTaskInfo: 0x600001718980>: taskID = 1, taskName = Launch Background Task for Coalescing, creationTime = 890111 (elapsed = 0), _expireHandler: (null)
+2026-10-10 02:46:07.418 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:BackgroundTask] Decrementing reference count for assertion <BKSProcessAssertion: 0x600002112850> (used by background task with identifier 1: <_UIBackgroundTaskInfo: 0x600001718980>: taskID = 1, taskName = Launch Background Task for Coalescing, creationTime = 890111 (elapsed = 0))
+2026-10-10 02:46:07.418 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:EventBus] Event Timing Profile for Touch: not found, path="/System/Library/EventTimingProfiles/Sim.Touch.plist"
+2026-10-10 02:46:07.418 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:EventBus] Event Timing Profile for Pencil: not found, path="/System/Library/EventTimingProfiles/Sim.Pencil.plist"
+2026-10-10 02:46:07.418 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:AppLifecycle] sceneOfRecord: sceneID: sceneID:dev.spinon.bootstrap-default  persistentID: F5E6004D-BAA6-49C7-B519-8363344A080F
+2026-10-10 02:46:07.418 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 2, <UIWindowScene: 0x104e071e0> (F5E6004D-BAA6-49C7-B519-8363344A080F)
+2026-10-10 02:46:07.418 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:UpdateScheduler] Target list changed: <CADisplay:LCD PurpleMain>
+2026-10-10 02:46:07.418 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:EventDeferring] [0x60000291a4c0] Scene target of event deferring environments did update: scene: 0x104e071e0; current systemShellManagesKeyboardFocus: 1; systemShellManagesKeyboardFocusForScene: 1; eligibleForRecordRemoval: 1;
+2026-10-10 02:46:07.418 Sd SpinonBootstrap[40387:0] (IOKit) IOHIDManager State
+{
+    DispatchQueue = 0;
+    RunLoop = 1;
+    createOptions = 0;
+    isOpen = 0;
+    openOptions = 0;
+}
+2026-10-10 02:46:07.418 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:KeyWindow] Scene became target of keyboard event deferring environment: UIWindowScene: 0x104e071e0; scene identity: com.apple.frontboard.systemappservices/FBSceneManager:sceneID%3Adev.spinon.bootstrap-default
+2026-10-10 02:46:07.418 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:AppLifecycle] sceneOfRecord: sceneID: sceneID:dev.spinon.bootstrap-default  persistentID: F5E6004D-BAA6-49C7-B519-8363344A080F
+2026-10-10 02:46:07.418 Df SpinonBootstrap[40387:64a9d77] [com.apple.KeyboardArbiter:Client] startConnection
+2026-10-10 02:46:07.419 Df SpinonBootstrap[40387:64a9d77] [com.apple.KeyboardArbiter:Client] handleKeyboardChange: set currentKeyboard:N (wasKeyboard:N)
+2026-10-10 02:46:07.419 Df SpinonBootstrap[40387:64a9d94] SPINON_C052_HOST=session=ready owner_tid=105553309 isolate_per_session=1 queue_capacity=64 queue_policy=strict-priority-fifo css_worker_per_session=1 css_worker_ready_us=877 session_startup_us=22330
+2026-10-10 02:46:07.419 Df SpinonBootstrap[40387:64a9d94] (Foundation) SPINON_C0410_HOST_RETURNED handle=4377828016
+2026-10-10 02:46:07.419 Df SpinonBootstrap[40387:64a9d94] (Foundation) SPINON_C0410_HOST_STORED continue=true
+2026-10-10 02:46:07.419 Df SpinonBootstrap[40387:64a9d94] (Foundation) SPINON_C0410_ENVIRONMENT_REQUEST width=301.0 height=100.0
+2026-10-10 02:46:07.419 Df SpinonBootstrap[40387:64a9d94] SPINON_C0410_ENVIRONMENT_FFI_BEGIN width=301.0 height=100.0
+2026-10-10 02:46:07.419 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:KeyboardArbiterClientLog] isWritingToolsHandlingKeyboardTracking:Y (WT ready:Y, Arbiter ready:Y)
+2026-10-10 02:46:07.419 Df SpinonBootstrap[40387:64a9d94] (Foundation) SPINON_C0410_ENVIRONMENT status=0 environment_revision=0 layout=empty boxes=0 generation=1 document_revision=0 render_tree_revision=0 style_revision=0 environment_revision=0
+2026-10-10 02:46:07.431 Df SpinonBootstrap[40387:64a9d94] (Foundation) SPINON_C052_EVAL status=0 seq=1 trace_cookie=1 op=eval status=0 caller_tid=105553300 owner_tid=105553309 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=16 v8_call_us=3437 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=57 render_tree_revision=14 document_nodes=16 document_string_units=2481 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=16 document_collection_live_handles=16 document_collection_empty_handles=0 document_collection_last_scan_start_ns=890111482041000 document_collection_last_scan_us=236 document_collection_wrapper_root_buffer_bytes=64 document_collection_reclaimed_node_buffer_bytes=64 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=6 ua_snapshot_submit_us=159 ua_snapshot_submitted=true enqueue_total_us=14 response_wait_us=3624 submit_total_us=3638 response_report_appen<…>
+2026-10-10 02:46:07.433 Df SpinonBootstrap[40387:64a9d93] SPINON_C0410_ENVIRONMENT_FFI_BEGIN width=301.0 height=100.0
+2026-10-10 02:46:07.433 Df SpinonBootstrap[40387:64a9d93] (Foundation) SPINON_C0410_ENVIRONMENT viewport=301.0x100.0 scale=3.0 dark=true sequence=3 status=0 environment_revision=0 layout=ready boxes=11 generation=1 document_revision=57 render_tree_revision=14 style_revision=0 environment_revision=0 root_frame_css_px=301x100 render_viewport_css_px=301x100 render_root_css_px=301x100
+2026-10-10 02:46:07.439 Df SpinonBootstrap[40387:64a9d77] (Foundation) SPINON_C0410_SURFACE_CONFIGURE thread=main status=0 UIKit surface가 메인 스레드에서 구성되었습니다
+2026-10-10 02:46:07.439 Df SpinonBootstrap[40387:64a9d92] SPINON_C0410_ENVIRONMENT_FFI_BEGIN width=301.0 height=100.0
+2026-10-10 02:46:07.439 Df SpinonBootstrap[40387:64a9d92] (Foundation) SPINON_C0410_ENVIRONMENT viewport=301.0x100.0 scale=3.0 dark=true sequence=5 status=0 environment_revision=0 layout=ready boxes=11 generation=1 document_revision=57 render_tree_revision=14 style_revision=0 environment_revision=0 root_frame_css_px=301x100 render_viewport_css_px=301x100 render_root_css_px=301x100
+2026-10-10 02:46:07.439 Df SpinonBootstrap[40387:64a9d92] [com.apple.xpc:connection] [0x105b09c60] activating connection: mach=true listener=false peer=false name=com.apple.IOSurface.Remote
+2026-10-10 02:46:07.441 Df SpinonBootstrap[40387:64a9d92] (Foundation) SPINON_C0410_DRAW generation=1 status=0 presented boxes=11 environment_revision=0 viewport_css_px=301x100 surface_texture=903x300 root_css_px=301x100
+2026-10-10 02:46:07.458 Df SpinonBootstrap[40387:64a9d77] [com.apple.network:activity] <nw_activity 50:1 [3B2E67FF-98AB-4ACE-A758-D4CAB45AF00F] (global parent) (reporting strategy default) complete (reason success)> complete with reason 2 (success), duration 274ms
+2026-10-10 02:46:07.458 Df SpinonBootstrap[40387:64a9d77] [com.apple.network:activity] <nw_activity 50:2 [90F52FE6-1F14-45A7-9650-A13857D2E928] (reporting strategy default) complete (reason success)> complete with reason 2 (success), duration 274ms
+2026-10-10 02:46:07.458 Df SpinonBootstrap[40387:64a9d77] [com.apple.network:activity] Unsetting the global parent activity <nw_activity 50:1 [3B2E67FF-98AB-4ACE-A758-D4CAB45AF00F] (global parent) (reporting strategy default) complete (reason success)>
+2026-10-10 02:46:07.458 Df SpinonBootstrap[40387:64a9d77] [com.apple.network:activity] Unset the global parent activity
+2026-10-10 02:46:07.521 A  SpinonBootstrap[40387:64a9d93] (RunningBoardServices) didChangeInheritances
+2026-10-10 02:46:07.521 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 2, <UIWindowScene: 0x104e071e0> (F5E6004D-BAA6-49C7-B519-8363344A080F)
+2026-10-10 02:46:07.521 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:AppLifecycle] sceneOfRecord: sceneID: sceneID:dev.spinon.bootstrap-default  persistentID: F5E6004D-BAA6-49C7-B519-8363344A080F
+2026-10-10 02:46:07.521 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:Application] Deactivation reason removed: 12; deactivation reasons: 4128 -> 32; animating application lifecycle event: 1
+2026-10-10 02:46:07.521 Df SpinonBootstrap[40387:64a9d77] [com.apple.KeyboardArbiter:Client] Send setDeactivating: N (-DeactivationReason:SuspendedEventsOnly)
+2026-10-10 02:46:07.521 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:Application] Deactivation reason removed: 5; deactivation reasons: 32 -> 0; animating application lifecycle event: 0
+2026-10-10 02:46:07.687 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:AppLifecycle] sceneOfRecord: sceneID: sceneID:dev.spinon.bootstrap-default  persistentID: F5E6004D-BAA6-49C7-B519-8363344A080F
+2026-10-10 02:46:07.897 Df SpinonBootstrap[40387:64a9d77] [com.apple.Accessibility:AXCommon] Read Per-App on Init: Smart invert = (null)
+2026-10-10 02:46:07.899 Df SpinonBootstrap[40387:64a9d92] [com.apple.UIKit:BackgroundTask] Ending background task with UIBackgroundTaskIdentifier: 2
+2026-10-10 02:46:07.899 Df SpinonBootstrap[40387:64a9d92] [com.apple.UIKit:BackgroundTask] Ending task with identifier 2 and description: <_UIBackgroundTaskInfo: 0x600001703380>: taskID = 2, taskName = Persistent SceneSession Map Update, creationTime = 890111 (elapsed = 0), _expireHandler: <__NSGlobalBlock__: 0x1e61729e0>
+2026-10-10 02:46:07.899 Df SpinonBootstrap[40387:64a9d92] [com.apple.UIKit:BackgroundTask] Decrementing reference count for assertion <BKSProcessAssertion: 0x600002112850> (used by background task with identifier 2: <_UIBackgroundTaskInfo: 0x600001703380>: taskID = 2, taskName = Persistent SceneSession Map Update, creationTime = 890111 (elapsed = 0))
+2026-10-10 02:46:07.899 Df SpinonBootstrap[40387:64a9d92] [com.apple.UIKit:BackgroundTask] Will invalidate assertion: <BKSProcessAssertion: 0x600002112850> for task identifier: 2
+2026-10-10 02:46:08.527 A  SpinonBootstrap[40387:64a9d92] (RunningBoardServices) didChangeInheritances
+2026-10-10 02:46:12.203 Df SpinonBootstrap[40387:64a9d77] [com.apple.KeyboardArbiter:Client] TX focusApplication (peekAppEvent) stealKB:Y scene:dev.spinon.bootstrap-default
+2026-10-10 02:46:12.203 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:EventDispatch] Evaluating dispatch of UIEvent: 0x600003d48000; type: 0; subtype: 0; backing type: 11; shouldSend: 1; ignoreInteractionEvents: 0, systemGestureStateChange: 0
+2026-10-10 02:46:12.203 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:EventDispatch] Sending UIEvent type: 0; subtype: 0; to windows: 1
+2026-10-10 02:46:12.203 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:EventDispatch] Sending UIEvent type: 0; subtype: 0; to window: <UIWindow: 0x104f07070>; contextId: 0xF2B20CA8
+2026-10-10 02:46:12.203 A  SpinonBootstrap[40387:64a9d77] (UIKitCore) send control actions
+2026-10-10 02:46:12.208 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:EventDispatch] Evaluating dispatch of UIEvent: 0x600003d48000; type: 0; subtype: 0; backing type: 11; shouldSend: 1; ignoreInteractionEvents: 0, systemGestureStateChange: 0
+2026-10-10 02:46:12.208 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:EventDispatch] Sending UIEvent type: 0; subtype: 0; to windows: 1
+2026-10-10 02:46:12.208 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:EventDispatch] Sending UIEvent type: 0; subtype: 0; to window: <UIWindow: 0x104f07070>; contextId: 0xF2B20CA8
+2026-10-10 02:46:12.208 A  SpinonBootstrap[40387:64a9d77] (UIKitCore) send control actions
+2026-10-10 02:46:12.208 A  SpinonBootstrap[40387:64a9d77] (UIKitCore) send control actions
+2026-10-10 02:46:12.211 Df SpinonBootstrap[40387:64a9dad] (Foundation) SPINON_C052_EVAL status=0 seq=2 trace_cookie=2 op=eval status=0 caller_tid=105553325 owner_tid=105553309 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=625 v8_call_us=1035 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=59 render_tree_revision=16 document_nodes=16 document_string_units=2481 document_collection_scans=2 document_collection_deferred=0 document_collection_scanned_handles=16 document_collection_live_handles=16 document_collection_empty_handles=0 document_collection_last_scan_start_ns=890116269177375 document_collection_last_scan_us=16 document_collection_wrapper_root_buffer_bytes=64 document_collection_reclaimed_node_buffer_bytes=64 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=4 ua_snapshot_submit_us=40 ua_snapshot_submitted=true enqueue_total_us=7 response_wait_us=1717 submit_total_us=1725 response_report_append_<…>
+2026-10-10 02:46:12.213 Df SpinonBootstrap[40387:64a9dad] (Foundation) SPINON_C0410_DRAW generation=1 status=0 presented boxes=12 environment_revision=0 viewport_css_px=301x100 surface_texture=903x300 root_css_px=301x100
+2026-10-10 02:46:12.225 Df SpinonBootstrap[40387:64a9d77] [com.apple.UIKit:EventDispatch] Evaluating dispatch of UIEvent: 0x600003d48000; type: 0; subtype: 0; backing type: 11; shouldSend: 0; ignoreInteractionEvents: 0, systemGestureStateChange: 1

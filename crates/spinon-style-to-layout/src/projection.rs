@@ -180,7 +180,9 @@ fn compute_profile_layout(
         ComputedStyleProfile::SupportedElementsUaV1
         | ComputedStyleProfile::RuntimeFlexLayoutV1
         | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
-        | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1 => {
+        | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
+        | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
+        | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1 => {
             return Err(StyleLayoutError::UnsupportedProfile {
                 profile: format!("{profile:?}"),
             });
@@ -210,6 +212,8 @@ fn compute_layout_from_styles(
             | ComputedStyleProfile::RuntimeFlexPaintV1
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
+            | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
+            | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
     ) && styles
         .get(&root.id())
         .is_some_and(|style| style.margin != LayoutEdges::default())
@@ -226,6 +230,8 @@ fn compute_layout_from_styles(
             | ComputedStyleProfile::RuntimeFlexPaintV1
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
+            | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
+            | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
     ) {
         LayoutInput::from_host_document_with_viewport_containing_block(
             snapshot,
@@ -252,6 +258,8 @@ fn compute_layout_from_styles(
             | ComputedStyleProfile::RuntimeFlexPaintV1
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
+            | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
+            | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
     ) {
         zero_display_none_frames(snapshot, root, &styles, &mut layout);
     }

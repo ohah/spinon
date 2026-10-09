@@ -180,4 +180,8 @@ pub enum ComputedStyleProfile {
     RuntimeFlexCustomPropertiesV1,
     /// C05.1 사용자 지정 속성과 단색 배경 paint를 계산한 제한 runtime profile입니다.
     RuntimeFlexCustomPropertiesPaintV1,
+    /// C05.2 등록 사용자 지정 속성을 계산한 제한 runtime layout profile입니다.
+    RuntimeFlexRegisteredPropertiesV1,
+    /// C05.2 등록 사용자 지정 속성과 단색 배경 paint를 계산한 제한 runtime profile입니다.
+    RuntimeFlexRegisteredPropertiesPaintV1,
 }

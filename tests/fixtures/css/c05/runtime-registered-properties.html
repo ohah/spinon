@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>C05.2 registered custom properties</title>
+</head>
+<body style="margin:0">
+  <div id="app">
+    <style id="sheet-one">
+      @property --tile-width {
+        syntax: "<length>";
+        inherits: false;
+        initial-value: 23px;
+      }
+      @property --tone {
+        syntax: "<length>";
+        inherits: true;
+        initial-value: 7px;
+      }
+      @property --tile-color {
+        syntax: "<color>";
+        inherits: false;
+        initial-value: rgb(51, 102, 255);
+      }
+      @property --unknown-descriptor {
+        syntax: "<length>";
+        inherits: false;
+        initial-value: 13px;
+        vendor-extension: ignored;
+      }
+      #app {
+        display: flex;
+        box-sizing: border-box;
+        width: 301px;
+        height: 100px;
+        align-items: flex-start;
+        gap: 5px;
+        background-color: #123456;
+      }
+      .tile {
+        display: block;
+        box-sizing: border-box;
+        height: 14px;
+        flex-shrink: 0;
+        background-color: var(--tile-color);
+      }
+      #declared { --tile-width: 41px; width: var(--tile-width); }
+      #default { width: var(--tile-width); }
+      #invalid { --tile-width: red; width: var(--tile-width); }
+      #inherit-parent {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        width: 60px;
+        height: 30px;
+        flex-shrink: 0;
+        --tile-width: 71px;
+        --tone: 19px;
+      }
+      #not-inherited { width: var(--tile-width); }
+      #inherited { width: var(--tone); }
+      #late { width: var(--late-width); }
+      @property --late-width {
+        syntax: "<length>";
+        inherits: false;
+        initial-value: 31px;
+      }
+      #unknown { width: var(--unknown-descriptor); }
+      #inline-priority { --tile-width: 39px; width: var(--tile-width); }
+      #color-override { --tile-color: #ff6600; width: 11px; }
+      @property --duplicate {
+        syntax: "<length>";
+        inherits: false;
+        initial-value: 17px;
+      }
+    </style>
+    <div class="tile" id="declared"></div>
+    <div class="tile" id="default"></div>
+    <div class="tile" id="invalid"></div>
+    <div id="inherit-parent">
+      <div class="tile" id="not-inherited"></div>
+      <div class="tile" id="inherited"></div>
+    </div>
+    <div class="tile" id="late"></div>
+    <div class="tile" id="unknown"></div>
+    <div class="tile" id="inline-priority" style="--tile-width: 47px !important"></div>
+    <div class="tile" id="color-override"></div>
+    <div class="tile" id="duplicate"></div>
+    <style id="sheet-two">
+      @property --duplicate {
+        syntax: "<number>";
+        inherits: false;
+        initial-value: 3;
+      }
+      #duplicate { --duplicate: 29px; width: var(--duplicate); }
+    </style>
+  </div>
+</body>
+</html>

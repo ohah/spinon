@@ -36,6 +36,7 @@ pub use runtime_layout::{
     compute_runtime_flex_custom_properties_cascade,
     compute_runtime_flex_custom_properties_cascade_with_stylesheets,
     compute_runtime_flex_layout_cascade,
+    compute_runtime_flex_registered_properties_cascade_with_stylesheets,
     first_unsupported_runtime_custom_properties_inline_property,
     first_unsupported_runtime_custom_properties_paint_inline_property,
     first_unsupported_runtime_layout_inline_property,
@@ -43,7 +44,9 @@ pub use runtime_layout::{
 pub use runtime_paint::{
     compute_runtime_flex_custom_properties_paint_cascade,
     compute_runtime_flex_custom_properties_paint_cascade_with_stylesheets,
-    compute_runtime_flex_paint_cascade, first_unsupported_runtime_flex_paint_inline_property,
+    compute_runtime_flex_paint_cascade,
+    compute_runtime_flex_registered_properties_paint_cascade_with_stylesheets,
+    first_unsupported_runtime_flex_paint_inline_property,
 };
 
 #[cfg(test)]
@@ -337,7 +340,9 @@ fn compute_cascade(
         ComputedStyleProfile::S04FlexPaintV1 => Some(s04::S04_FLEX_PAINT_AUTHOR_PROPERTIES),
         ComputedStyleProfile::RuntimeFlexLayoutV1
         | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
-        | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1 => {
+        | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
+        | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
+        | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1 => {
             Some(RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES)
         }
         ComputedStyleProfile::RuntimeFlexPaintV1 => None,
@@ -354,6 +359,14 @@ fn compute_cascade(
                     allowed,
                     true,
                     profile == ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1,
+                )
+            }),
+        ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
+        | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1 => allowed_author_properties
+            .and_then(|allowed| {
+                registry.first_unsupported_runtime_registered_properties_author_feature(
+                    allowed,
+                    profile == ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1,
                 )
             }),
         _ => allowed_author_properties
@@ -378,6 +391,20 @@ fn compute_cascade(
             message: diagnostic.message,
         });
     }
+    if matches!(
+        profile,
+        ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
+            | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
+    ) && let Some((stylesheet_id, diagnostic)) =
+        registry.first_runtime_registered_property_author_diagnostic()
+    {
+        return Err(CssCascadeError::AuthorStylesheetDiagnostic {
+            stylesheet_id,
+            line: diagnostic.line,
+            column: diagnostic.column,
+            message: diagnostic.message,
+        });
+    }
     if profile == ComputedStyleProfile::S04FlexPaintV1 {
         for source in author_stylesheets {
             if let Some(feature) = first_invalid_background_color(&source.css) {
@@ -394,13 +421,26 @@ fn compute_cascade(
     let mut elements = Vec::new();
     let mut diagnostics = Vec::new();
     for stylesheet in registry.iter() {
-        diagnostics.extend(stylesheet.diagnostics().iter().cloned().map(|diagnostic| {
-            CascadeDiagnostic {
-                source_id: stylesheet.id().to_owned(),
-                node_id: None,
-                diagnostic,
-            }
-        }));
+        diagnostics.extend(
+            stylesheet
+                .diagnostics()
+                .iter()
+                .filter(|diagnostic| {
+                    !matches!(
+                        profile,
+                        ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
+                            | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
+                    ) || !diagnostic
+                        .message
+                        .starts_with("Unsupported @property descriptor declaration:")
+                })
+                .cloned()
+                .map(|diagnostic| CascadeDiagnostic {
+                    source_id: stylesheet.id().to_owned(),
+                    node_id: None,
+                    diagnostic,
+                }),
+        );
     }
 
     let guard = view.shared_lock().read();
@@ -532,3 +572,7 @@ mod runtime_layout_tests;
 #[cfg(test)]
 #[path = "cascade/custom_properties_tests.rs"]
 mod custom_properties_tests;
+
+#[cfg(test)]
+#[path = "cascade/registered_properties_tests.rs"]
+mod registered_properties_tests;

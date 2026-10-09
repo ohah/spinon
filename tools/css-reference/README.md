@@ -35,6 +35,20 @@ mise exec -- node tools/css-reference/capture-c04-cascade.mjs
 
 기존 reference 경로는 덮어쓰지 않습니다. 이 기준은 CSS 의미의 제한된 cascade slice만 비교하며 layout·font shaping·GPU pixels·Android/iOS 동작이나 전체 CSS 지원을 뜻하지 않습니다. 계산 결과 비교는 `mise exec -- cargo test -p spinon-style`에서 같은 fixture와 고정 reference를 읽어 수행합니다.
 
+## C05.2 registered custom properties 기준 수집
+
+[`runtime-registered-properties.html`](../../tests/fixtures/css/c05/runtime-registered-properties.html)과 inventory는 등록값·typed fallback·상속·source order·frame 비교 대상을 고정합니다. 실행기는 Chrome `154.0.8037.98` revision과 fixture, runtime JavaScript, capture tool, Chromium 바이너리의 SHA-256을 기록하고 stylesheet 순서 이동 뒤의 중복 등록 승자도 확인합니다. 기존 reference를 덮어쓰지 않습니다.
+
+```sh
+mise exec -- bun run css:reference:c05-registered-properties
+node --test tools/css-reference/c05-runtime-registered-properties.test.mjs
+node tools/css-reference/verify-c05-runtime-registered-properties-multi-root.mjs
+```
+
+다중 HostRoot 보조 비교는 첫 root의 연결 `<style>`에서 등록한 `@property`가 둘째 root의 computed value와 frame에 적용되는지 고정 Chrome에서 직접 확인합니다. 이 보조 비교는 Chrome 없는 기본 `test:css-reference`에는 포함하지 않습니다. 해당 경계는 [C05.2 사전 비교](../../spec/internal/evidence/c05-runtime-registered-properties-precomparison-2026-10-10.md)에 기록합니다.
+
+이 기준은 제한 C05.2 profile 비교 전용입니다. CSSOM, `CSS.registerProperty()`, 외부 CSS 자원, 전체 CSS 지원 판정은 포함하지 않습니다.
+
 ## C01 레이아웃 기준 수집
 
 `layout-units-flex-grid.html`과 [`layout-inventory.v1.json`](../../tests/fixtures/css/c01/layout-inventory.v1.json)은 `rem`·`em`, content-box 기준 퍼센트 크기, 분수 Flexbox 성장·줄바꿈, 분수 Grid track의 Chromium 기준을 정의합니다. computed CSS 값은 앞뒤 공백 제거 후 문자열 정확 일치로 비교하고, 각 노드의 `x`·`y`·`width`·`height` 최대 절대 오차는 각각 `0.5 CSS px`로 제한합니다. 평균값으로 개별 노드의 실패를 상쇄하지 않습니다.

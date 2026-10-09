@@ -5,6 +5,15 @@ use style_traits::ToCss;
 
 use super::{CssOrigin, StylesheetRegistry};
 
+#[derive(Clone, Copy)]
+struct AuthorFeaturePolicy {
+    allow_layers: bool,
+    allow_media: bool,
+    allow_custom_properties: bool,
+    allow_background_color: bool,
+    allow_property_registration: bool,
+}
+
 pub(super) fn first_unsupported_author_feature(
     registry: &StylesheetRegistry,
     allowed_properties: &[&str],
@@ -26,10 +35,13 @@ pub(super) fn first_unsupported_author_feature_with_media(
     first_unsupported_author_feature_with_rules(
         registry,
         allowed_properties,
-        false,
-        true,
-        false,
-        false,
+        AuthorFeaturePolicy {
+            allow_layers: false,
+            allow_media: true,
+            allow_custom_properties: false,
+            allow_background_color: false,
+            allow_property_registration: false,
+        },
     )
 }
 
@@ -42,10 +54,31 @@ pub(super) fn first_unsupported_runtime_author_feature(
     first_unsupported_author_feature_with_rules(
         registry,
         allowed_properties,
-        false,
-        false,
-        allow_custom_properties,
-        allow_background_color,
+        AuthorFeaturePolicy {
+            allow_layers: false,
+            allow_media: false,
+            allow_custom_properties,
+            allow_background_color,
+            allow_property_registration: false,
+        },
+    )
+}
+
+pub(super) fn first_unsupported_runtime_registered_properties_author_feature(
+    registry: &StylesheetRegistry,
+    allowed_properties: &[&str],
+    allow_background_color: bool,
+) -> Option<(String, String)> {
+    first_unsupported_author_feature_with_rules(
+        registry,
+        allowed_properties,
+        AuthorFeaturePolicy {
+            allow_layers: false,
+            allow_media: false,
+            allow_custom_properties: true,
+            allow_background_color,
+            allow_property_registration: true,
+        },
     )
 }
 
@@ -57,20 +90,20 @@ fn first_unsupported_author_feature_with_layer_rules(
     first_unsupported_author_feature_with_rules(
         registry,
         allowed_properties,
-        allow_layers,
-        false,
-        false,
-        false,
+        AuthorFeaturePolicy {
+            allow_layers,
+            allow_media: false,
+            allow_custom_properties: false,
+            allow_background_color: false,
+            allow_property_registration: false,
+        },
     )
 }
 
 fn first_unsupported_author_feature_with_rules(
     registry: &StylesheetRegistry,
     allowed_properties: &[&str],
-    allow_layers: bool,
-    allow_media: bool,
-    allow_custom_properties: bool,
-    allow_background_color: bool,
+    policy: AuthorFeaturePolicy,
 ) -> Option<(String, String)> {
     let guard = registry.shared_lock.read();
     for stylesheet in registry
@@ -79,7 +112,7 @@ fn first_unsupported_author_feature_with_rules(
         .filter(|stylesheet| stylesheet.origin == CssOrigin::Author)
     {
         // Stylo 0.22 exposes these typed parser events through stable diagnostic prefixes.
-        if allow_media
+        if policy.allow_media
             && stylesheet
                 .diagnostics
                 .iter()
@@ -93,15 +126,9 @@ fn first_unsupported_author_feature_with_rules(
         let contents = stylesheet.sheet.0.contents.read_with(&guard);
         let rules = contents.rules.read_with(&guard);
         for rule in &rules.0 {
-            if let Some(feature) = unsupported_rule_feature(
-                rule,
-                &guard,
-                allowed_properties,
-                allow_layers,
-                allow_media,
-                allow_custom_properties,
-                allow_background_color,
-            ) {
+            if let Some(feature) =
+                unsupported_rule_feature(rule, &guard, allowed_properties, policy)
+            {
                 return Some((stylesheet.id.clone(), feature));
             }
         }
@@ -119,28 +146,17 @@ fn unsupported_rule_feature(
     rule: &CssRule,
     guard: &SharedRwLockReadGuard<'_>,
     allowed_properties: &[&str],
-    allow_layers: bool,
-    allow_media: bool,
-    allow_custom_properties: bool,
-    allow_background_color: bool,
+    policy: AuthorFeaturePolicy,
 ) -> Option<String> {
     match rule {
-        CssRule::LayerStatement(_) if allow_layers => None,
-        CssRule::LayerBlock(layer) if allow_layers => {
+        CssRule::LayerStatement(_) if policy.allow_layers => None,
+        CssRule::LayerBlock(layer) if policy.allow_layers => {
             let rules = layer.rules.read_with(guard);
             rules.0.iter().find_map(|nested| {
-                unsupported_rule_feature(
-                    nested,
-                    guard,
-                    allowed_properties,
-                    allow_layers,
-                    allow_media,
-                    allow_custom_properties,
-                    allow_background_color,
-                )
+                unsupported_rule_feature(nested, guard, allowed_properties, policy)
             })
         }
-        CssRule::Media(media) if allow_media => {
+        CssRule::Media(media) if policy.allow_media => {
             let media_queries = media.media_queries.read_with(guard);
             let serialized = media_queries.to_css_string();
             if !supported_media_query_surface(&serialized) {
@@ -148,15 +164,7 @@ fn unsupported_rule_feature(
             }
             let rules = media.rules.read_with(guard);
             rules.0.iter().find_map(|nested| {
-                unsupported_rule_feature(
-                    nested,
-                    guard,
-                    allowed_properties,
-                    allow_layers,
-                    allow_media,
-                    allow_custom_properties,
-                    allow_background_color,
-                )
+                unsupported_rule_feature(nested, guard, allowed_properties, policy)
             })
         }
         CssRule::Style(rule) => {
@@ -171,10 +179,10 @@ fn unsupported_rule_feature(
                     PropertyDeclarationId::Custom(_) => "사용자 지정 속성".to_owned(),
                 };
                 let allowed = match property {
-                    PropertyDeclarationId::Custom(_) => allow_custom_properties,
+                    PropertyDeclarationId::Custom(_) => policy.allow_custom_properties,
                     PropertyDeclarationId::Longhand(_) => {
                         allowed_properties.contains(&name.as_str())
-                            || (allow_background_color && name == "background-color")
+                            || (policy.allow_background_color && name == "background-color")
                     }
                 };
                 if !allowed {
@@ -183,6 +191,7 @@ fn unsupported_rule_feature(
             }
             None
         }
+        CssRule::Property(_) if policy.allow_property_registration => None,
         _ => Some("at-rule 또는 비스타일 규칙".to_owned()),
     }
 }
