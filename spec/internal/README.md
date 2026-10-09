@@ -14,7 +14,7 @@
 | [0004 · R06 스레드·소유권 위험 분석](0004-thread-ownership-risks.md) | Isolate·문서·콜백·revision·비동기 완료·종료 경계의 위험과 검증 후보 | 검토 초안 · R06 미완료 |
 | [0005 · V8 런타임 세션 실험](0005-v8-runtime-session.md) | 세션별 Isolate 소유 스레드, 용량 제한 우선순위 큐, 취소·종료 경계 | 실험 전용 · R06 미완료 · 우선순위와 제한된 종료 경합의 실제 V8 시뮬레이터 검증 통과 |
 | [0006 · JavaScript 작업 스케줄러](0006-js-task-scheduler.md) | Chromium 참고 우선순위 선택과 앱 작업 출처·프레임·취소 경계 | Android·iOS Simulator 실제 V8에서 1,087개 유입 및 큐 포화·거부·복구를 각 5회 통과 · 무한 유입 보장과 제품 역압력 정책은 미결정 |
-| [0007 · 내장 UA stylesheet 자원](0007-ua-stylesheet-resource.md) | 지원 HTML 기본 CSS 자원과 읽기 전용 FFI 인터페이스 | 내부 초안 · fixture cascade 연결됨 · 제품 runtime은 미연결 |
+| [0007 · 내장 UA stylesheet 자원](0007-ua-stylesheet-resource.md) | 지원 HTML 기본 CSS 자원과 읽기 전용 FFI 인터페이스 | 내부 초안 · C04.5 제한 computed-style API 연결됨 · 제품 runtime은 미연결 |
 | [0008 · C02 Vite·Rspack CSS 비교 모델](0008-css-bundler-c02.md) | CSS 산출·자원·청크·오류 위치·resolver 비교 조건 | 내부 실험 계약 · C02 미완료 |
 | [0009 · 레이아웃 엔진](0009-layout-engine.md) | S01 Tree 및 HostDocument 요소 snapshot, source·style·environment revision stamp, Taffy 프레임과 fixture stale-admission 경계 | 구현 초안 `0.3.0-draft` · 제한된 Flex subset · 제품 revision 관리자와 GPU queue stale 검사는 미구현 |
 | [0010 · C03 Stylo DOM adapter](0010-stylo-dom-adapter-c03.md) | HostDocument snapshot에서 Stylo 문서·노드·요소·선택자 DOM으로의 변환 계약 | 내부 구현 계약 초안 `0.1.0-draft` · C03 구현 완료, 계산 스타일 제외 |
@@ -30,6 +30,7 @@
 | [0023 · S05 입력 이벤트 전달](0023-s05-event-delivery.md) | FrameId·revision stamp, 표시 확인과 입력 순서, stale target, callback owner와 실패 처리 | 내부 계약 `0.1.0-draft` · 설계 산출물만 작성 · 런타임·public API 미구현 |
 | [0024 · C04.3 Flex 정렬 전달](0024-c04-flex-alignment.md) | 별도 computed-style profile에서 제한 align-items·justify-content 값을 Taffy 입력으로 전달 | 내부 계약 `0.1.0` · 고정 Chromium fixture 통과 · 제품 runtime/API 미연결 |
 | [0025 · C04.4 Cascade Layers](0025-c04-cascade-layers.md) | 새 Flex alignment profile에서 Stylo CSS layer ordering·declaration allowlist를 확인하고 Taffy에 전달 | 내부 계약 `0.1.0` · 고정 Chromium 16-case fixture 통과 · 제품 runtime/API 미연결 |
+| [0026 · C04.5 지원 HTML UA 계산 스냅샷](0026-c04-ua-baseline-snapshot.md) | 내장 UA CSS를 Stylo UA origin으로 계산하고 지원 요소 7개 property의 제한 snapshot을 반환 | 내부 Rust API `0.1.0-draft` · C01 Chromium 19개 값 비교 · runtime/layout/GPU 미연결 |
 | [0013 · R15 청크 OTA 호환 모델](0013-r15-ota-chunk-compatibility.md) | 바이너리 호환 ID, 단일 target ESM specifier 매핑이 있는 기능·청크·자원 그래프, typed edge diff·영향 scope·최초/불확실 기준 fallback, 객체 차등 전달·전체 그래프 사전 확보·target별 stale/CAS publish 경계, 로컬 영속 저장·객체 재검증·용량 보호, 서명·압축 제한·상향 sequence rollback 및 offline authorization 미결정 | 내부 설계 제안 `0.1.0-draft` · 배포/로더/API 미구현 |
 | [0014 · C02 번들러 모듈 그래프 adapter](0014-c02-bundler-module-graph.md) | 입력 resolver graph와 최종 emitted ESM graph를 분리해 기능·청크·specifier 대응 및 추출 실패를 기록 | 내부 실험 계약 `0.1.0-draft` · 구현·제품 API 미완료 |
 | [0015 · C02 JavaScript·CSS 자원 그래프 결합](0015-c02-resource-graph-join.md) | 같은 production build에서 0011 CSS 자원과 0014 JavaScript feature·chunk 그래프를 결합 | 내부 구현 계약 `0.1.0-draft` · 고정 fixture 구현 완료 · 제품 API 아님 |

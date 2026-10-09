@@ -17,6 +17,7 @@ pub use stylo_dom::{
     CssCascadeError, CssViewport, StyloDocument, StyloDocumentView, StyloDomError, StyloElement,
     StyloNode, compute_flex_alignment_cascade, compute_flex_alignment_layers_cascade,
     compute_flex_layout_cascade, compute_s04_flex_paint_cascade,
+    compute_supported_elements_ua_cascade,
 };
 
 /// 지원 HTML 요소 기본 스타일 프로필의 초안 식별자입니다.

@@ -71,6 +71,8 @@ pub struct ComputedStyleSnapshot {
 /// computed-style snapshot을 만든 whitelist profile입니다.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum ComputedStyleProfile {
+    /// 컴파일 시 포함한 지원 HTML 요소 UA 규칙의 기본 computed-style snapshot입니다.
+    SupportedElementsUaV1,
     /// C04.1의 5개 cascade 비교 속성입니다.
     BasicCascadeV1,
     /// C04.2의 제한 Taffy Flex 입력 속성입니다.

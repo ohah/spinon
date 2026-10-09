@@ -12,7 +12,7 @@ pub use cascade::{
     CascadeDiagnostic, ComputedElementStyle, ComputedStyleProfile, ComputedStyleSnapshot,
     CssCascadeError, CssViewport, compute_flex_alignment_cascade,
     compute_flex_alignment_layers_cascade, compute_flex_layout_cascade,
-    compute_s04_flex_paint_cascade,
+    compute_s04_flex_paint_cascade, compute_supported_elements_ua_cascade,
 };
 pub use document::{StyloDocument, StyloDocumentView, StyloDomError};
 pub use element::StyloElement;

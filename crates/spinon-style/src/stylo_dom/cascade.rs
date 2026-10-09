@@ -6,24 +6,14 @@ use selectors::matching::{
 use spinon_core::{NodeId, StyleRevision};
 use style::{
     applicable_declarations::ApplicableDeclarationList,
-    context::{CascadeInputs, QuirksMode, TreeCountingCaches},
-    device::{Device, servo::FontMetricsProvider},
+    context::{CascadeInputs, TreeCountingCaches},
     dom::TElement,
-    font_metrics::FontMetrics,
-    media_queries::MediaType,
-    properties::{
-        ComputedValues, FirstLineReparenting, LonghandId, PropertyDeclarationId,
-        style_structs::Font,
-    },
-    queries::values::PrefersColorScheme,
+    properties::{ComputedValues, FirstLineReparenting, LonghandId, PropertyDeclarationId},
     rule_cache::RuleCacheConditions,
     rule_tree::RuleCascadeFlags,
     selector_parser::SelectorImpl,
-    servo::media_features::PointerCapabilities,
     shared_lock::StylesheetGuards,
     stylist::{RuleInclusion, Stylist},
-    thread_state::{self, ThreadState},
-    values::computed::{CSSPixelLength, Length, font::QueryFontMetricsFlags},
 };
 use url::Url;
 
@@ -33,13 +23,22 @@ use crate::{
 };
 
 use super::{StyloDocumentView, StyloElement};
+mod device;
 mod s04;
 mod snapshot;
+mod ua_baseline;
+
+#[cfg(test)]
+#[path = "cascade/ua_baseline_tests.rs"]
+mod ua_baseline_tests;
 
 pub use snapshot::{
     CascadeDiagnostic, ComputedElementStyle, ComputedStyleProfile, ComputedStyleSnapshot,
     CssViewport,
 };
+pub use ua_baseline::compute_supported_elements_ua_cascade;
+
+use self::device::{LayoutThreadState, make_device};
 
 const UA_STYLESHEET_ID: &str = "spinon-ua-supported-elements-v0";
 const UA_STYLESHEET_URL: &str = "https://spinon.invalid/ua/supported-elements-v0.css";
@@ -283,6 +282,7 @@ fn compute_cascade(
     }
     let allowed_author_properties = match profile {
         ComputedStyleProfile::BasicCascadeV1 => None,
+        ComputedStyleProfile::SupportedElementsUaV1 => None,
         ComputedStyleProfile::FlexLayoutV1 => Some(FLEX_LAYOUT_AUTHOR_PROPERTIES),
         ComputedStyleProfile::FlexAlignmentV1
         | ComputedStyleProfile::FlexAlignmentCascadeLayersV1 => {
@@ -442,71 +442,6 @@ fn compute_element_style(
         &mut RuleCacheConditions::default(),
         &mut TreeCountingCaches::default(),
     )
-}
-
-fn make_device(quirks_mode: QuirksMode, viewport: CssViewport) -> Device {
-    let font_metrics = FixedFontMetricsProvider;
-    let viewport_size = euclid::Size2D::new(viewport.width_css_px, viewport.height_css_px);
-    let device_size = euclid::Size2D::new(
-        viewport.width_css_px * viewport.device_scale_factor,
-        viewport.height_css_px * viewport.device_scale_factor,
-    );
-    Device::new(
-        MediaType::screen(),
-        quirks_mode,
-        viewport_size,
-        device_size,
-        euclid::Scale::new(viewport.device_scale_factor),
-        Box::new(font_metrics),
-        ComputedValues::initial_values_with_font_override(Font::initial_values()),
-        PrefersColorScheme::Light,
-        PointerCapabilities::default(),
-        PointerCapabilities::default(),
-    )
-}
-
-#[derive(Debug)]
-struct FixedFontMetricsProvider;
-
-impl FontMetricsProvider for FixedFontMetricsProvider {
-    fn query_font_metrics(
-        &self,
-        _vertical: bool,
-        _font: &Font,
-        _base_size: CSSPixelLength,
-        _flags: QueryFontMetricsFlags,
-    ) -> FontMetrics {
-        FontMetrics::default()
-    }
-
-    fn base_size_for_generic(
-        &self,
-        _generic: style::values::computed::font::GenericFontFamily,
-    ) -> Length {
-        Length::new(16.0)
-    }
-}
-
-struct LayoutThreadState {
-    entered: bool,
-}
-
-impl LayoutThreadState {
-    fn enter() -> Self {
-        let entered = !thread_state::get().contains(ThreadState::LAYOUT);
-        if entered {
-            thread_state::enter(ThreadState::LAYOUT);
-        }
-        Self { entered }
-    }
-}
-
-impl Drop for LayoutThreadState {
-    fn drop(&mut self) {
-        if self.entered {
-            thread_state::exit(ThreadState::LAYOUT);
-        }
-    }
 }
 
 #[cfg(test)]
