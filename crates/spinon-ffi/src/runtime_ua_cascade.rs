@@ -229,6 +229,7 @@ fn completed_json(completed: &RuntimeUaCascadeCompleted) -> Value {
     json!({
         "key": key_json(completed.key),
         "computationDurationUs": completed.computation_duration_us,
+        "cacheHit": completed.cache_hit,
         "roots": roots,
     })
 }
@@ -247,11 +248,14 @@ mod probe;
 #[cfg(test)]
 mod tests {
     use super::{
-        ERR_ARGUMENT, ERR_OUTPUT_TOO_SMALL, copy_json, legacy_ua_properties,
+        ERR_ARGUMENT, ERR_OUTPUT_TOO_SMALL, completed_json, copy_json, legacy_ua_properties,
         media_environment_from_abi, snapshot_json, spinon_runtime_session_copy_ua_cascade_json,
         spinon_runtime_session_set_ua_cascade_environment,
     };
-    use spinon_runtime::{RuntimeUaCascadeKey, RuntimeUaCascadeSnapshot, RuntimeUaCascadeState};
+    use spinon_runtime::{
+        RuntimeUaCascadeCompleted, RuntimeUaCascadeKey, RuntimeUaCascadeSnapshot,
+        RuntimeUaCascadeState,
+    };
     use std::collections::BTreeMap;
 
     #[test]
@@ -289,6 +293,25 @@ mod tests {
         assert!(json["requested"].is_null());
         assert!(json["completed"].is_null());
         assert!(json["error"].is_null());
+    }
+
+    #[test]
+    fn completed_json_reports_cache_hit_without_changing_the_schema_version() {
+        let json = completed_json(&RuntimeUaCascadeCompleted {
+            key: RuntimeUaCascadeKey {
+                generation: 1,
+                document_revision: 3,
+                render_tree_revision: 2,
+                style_revision: 0,
+                environment_revision: 1,
+            },
+            roots: Vec::new().into(),
+            computation_duration_us: 0,
+            cache_hit: true,
+        });
+        assert_eq!(json["cacheHit"], true);
+        assert_eq!(json["computationDurationUs"], 0);
+        assert_eq!(json["key"]["documentRevision"], 3);
     }
 
     #[test]

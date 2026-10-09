@@ -29,8 +29,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c0410-failure-probe")
     private let shutdownProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c0410-shutdown-probe")
+    private let runtimeResultCacheProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c053-runtime-result-cache")
     private let registeredPropertiesProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c052-registered-properties")
+        || ProcessInfo.processInfo.arguments.contains("--spinon-c053-runtime-result-cache")
     private var authorStylesheetsProbeRequested: Bool {
         !registeredPropertiesProbeRequested && ProcessInfo.processInfo.arguments
             .contains("--spinon-c0411-runtime-author-stylesheets")
@@ -55,7 +58,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         let title = UILabel()
         title.text = registeredPropertiesProbeRequested
-            ? "SPINON · C05.2 @property"
+            ? runtimeResultCacheProbeRequested ? "SPINON · C05.3 runtime cache"
+                : "SPINON · C05.2 @property"
             : authorStylesheetsProbeRequested
                 ? "SPINON · C04.11 CSS → WGPU" : "SPINON · C04.10 CSS → WGPU"
         title.textColor = UIColor(red: 0.92, green: 0.95, blue: 0.99, alpha: 1)
@@ -65,7 +69,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         let description = UILabel()
         description.text = registeredPropertiesProbeRequested
-            ? "V8 DOM <style> → Stylo → Taffy → WGPU"
+            ? runtimeResultCacheProbeRequested
+                ? "V8 detached DOM → worker cache → WGPU"
+                : "V8 DOM <style> → Stylo → Taffy → WGPU"
             : authorStylesheetsProbeRequested
                 ? "실제 V8 DOM <style> → Stylo → Taffy → wgpu surface"
             : "실제 V8 DOM → Stylo → Taffy → Rust 장면 → wgpu surface"
@@ -78,7 +84,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         canvasView.translatesAutoresizingMaskIntoConstraints = false
         canvasView.isAccessibilityElement = true
         canvasView.accessibilityLabel = registeredPropertiesProbeRequested
-            ? "C05.2 등록 사용자 지정 속성 Chromium fixture의 WGPU 장면"
+            ? runtimeResultCacheProbeRequested
+                ? "C05.3 detached-node 결과 재사용 검증 WGPU 장면"
+                : "C05.2 등록 사용자 지정 속성 Chromium fixture의 WGPU 장면"
             : authorStylesheetsProbeRequested
                 ? "C04.11 Chromium stylesheet fixture의 WGPU 장면"
             : "C04.10 Chromium fixture의 WGPU 장면"
@@ -91,14 +99,18 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         customPropertiesButton.setTitle(
             registeredPropertiesProbeRequested
-                ? "C05.2 · 등록 사용자 지정 속성 다시 적용"
+                ? runtimeResultCacheProbeRequested
+                    ? "C05.3 · detached / 연결 변경 실행"
+                    : "C05.2 · 등록 사용자 지정 속성 다시 적용"
                 : "C05 · 사용자 지정 속성 다시 적용",
             for: .normal
         )
         customPropertiesButton.addTarget(
             self,
             action: registeredPropertiesProbeRequested
-                ? #selector(evaluateRegisteredPropertiesFixture)
+                ? runtimeResultCacheProbeRequested
+                    ? #selector(evaluateRuntimeResultCacheFixture)
+                    : #selector(evaluateRegisteredPropertiesFixture)
                 : #selector(evaluateCustomPropertiesFixture),
             for: .touchUpInside
         )
@@ -326,12 +338,14 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             return
         }
         if sceneWasSupersededAfterCommit {
-            let scope = registeredPropertiesProbeRequested ? "SPINON_C052"
+            let scope = registeredPropertiesProbeRequested
+                ? runtimeResultCacheProbeRequested ? "SPINON_C053" : "SPINON_C052"
                 : authorStylesheetsProbeRequested ? "SPINON_C0411" : "SPINON_C0410"
             log("\(scope)_EVAL_SCENE_SUPERSEDED \(result ?? "")")
             postStatus("JavaScript 적용 완료 · 최신 CSS 장면 다시 계산 중")
         } else {
-            let scope = registeredPropertiesProbeRequested ? "SPINON_C052"
+            let scope = registeredPropertiesProbeRequested
+                ? runtimeResultCacheProbeRequested ? "SPINON_C053" : "SPINON_C052"
                 : authorStylesheetsProbeRequested ? "SPINON_C0411" : "SPINON_C0410"
             log("\(scope)_EVAL \(result ?? "")")
             postStatus(runtimeStatusSummary(result ?? "runtime scene 준비 완료"))
@@ -382,6 +396,21 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             postStatus(runtimeStatusSummary(report ?? "등록 사용자 지정 속성 실행 결과가 없습니다"))
             guard report?.hasPrefix("status=0 ") == true else { return }
             requestDraw()
+        }
+    }
+
+    @objc private func evaluateRuntimeResultCacheFixture() {
+        enqueueRuntime { [weak self] in
+            guard let self, !self.isClosing else { return }
+            let handle = self.hostLifetime.load()
+            guard handle != 0 else { return }
+            let report = SpinonRunner.evalRuntimeGpuRuntimeResultCacheFixture(handle)
+            self.log("SPINON_C053_EVAL \(report ?? "runtime cache fixture 보고 없음")")
+            self.postStatus(self.runtimeStatusSummary(report ?? "runtime cache fixture 보고 없음"))
+            if report?.hasPrefix("status=0 ") == true {
+                self.canvasView.setNeedsDisplay()
+                self.renderDrawLane?.request()
+            }
         }
     }
 
@@ -848,6 +877,12 @@ private final class C0410RuntimeGpuHostLifetime {
         lock.lock()
         handle = value
         lock.unlock()
+    }
+
+    func load() -> UInt64 {
+        lock.lock()
+        defer { lock.unlock() }
+        return handle
     }
 
     func take() -> UInt64 {

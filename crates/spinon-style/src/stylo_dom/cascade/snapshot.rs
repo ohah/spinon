@@ -1,4 +1,5 @@
 use std::collections::BTreeMap;
+use std::sync::Arc;
 
 use spinon_core::{
     DocumentGeneration, DocumentRevision, EnvironmentRevision, NodeId, RenderTreeRevision,
@@ -149,7 +150,7 @@ pub struct ComputedStyleSnapshot {
     pub generation: DocumentGeneration,
     pub document_revision: DocumentRevision,
     pub render_tree_revision: RenderTreeRevision,
-    pub elements: Vec<ComputedElementStyle>,
+    pub elements: Arc<[ComputedElementStyle]>,
     pub diagnostics: Vec<CascadeDiagnostic>,
 }
 

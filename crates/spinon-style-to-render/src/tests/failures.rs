@@ -106,14 +106,18 @@ fn revision_mismatch_and_incomplete_node_sets_fail_atomically() {
     ));
 
     let mut missing_style = output.clone();
-    missing_style.computed_styles.elements.remove(1);
+    let mut elements = missing_style.computed_styles.elements.to_vec();
+    elements.remove(1);
+    missing_style.computed_styles.elements = elements.into();
     assert!(matches!(
         fixture.build(&missing_style),
         Err(StyleRenderError::MissingComputedStyle(_))
     ));
 
     let mut missing_color = output.clone();
-    missing_color.computed_styles.elements[1].background_color = None;
+    let mut elements = missing_color.computed_styles.elements.to_vec();
+    elements[1].background_color = None;
+    missing_color.computed_styles.elements = elements.into();
     assert!(matches!(
         fixture.build(&missing_color),
         Err(StyleRenderError::MissingBackgroundColor(_))
@@ -126,10 +130,9 @@ fn duplicate_nodes_bad_mapping_and_non_finite_frames_fail_closed() {
     let output = fixture.compute().unwrap();
 
     let mut duplicate_style = output.clone();
-    duplicate_style
-        .computed_styles
-        .elements
-        .push(duplicate_style.computed_styles.elements[0].clone());
+    let mut elements = duplicate_style.computed_styles.elements.to_vec();
+    elements.push(elements[0].clone());
+    duplicate_style.computed_styles.elements = elements.into();
     assert!(matches!(
         fixture.build(&duplicate_style),
         Err(StyleRenderError::DuplicateComputedStyle(_))
@@ -374,7 +377,9 @@ fn mapping_and_node_sets_reject_missing_extra_and_duplicate_entries() {
     let mut unexpected_style = output.clone();
     let mut extra_style = unexpected_style.computed_styles.elements[0].clone();
     extra_style.node_id = extra_node;
-    unexpected_style.computed_styles.elements.push(extra_style);
+    let mut elements = unexpected_style.computed_styles.elements.to_vec();
+    elements.push(extra_style);
+    unexpected_style.computed_styles.elements = elements.into();
     assert!(matches!(
         fixture.build(&unexpected_style),
         Err(StyleRenderError::UnexpectedComputedStyle(node)) if node == extra_node

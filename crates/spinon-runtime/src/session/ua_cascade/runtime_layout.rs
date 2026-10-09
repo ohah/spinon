@@ -54,9 +54,10 @@ pub struct RuntimeLayoutFailure {
 #[derive(Clone, Debug, PartialEq)]
 pub struct RuntimeLayoutCompleted {
     pub key: RuntimeUaCascadeKey,
-    pub frames: Vec<RuntimeLayoutFrame>,
+    pub frames: Arc<[RuntimeLayoutFrame]>,
     pub render_snapshot: Option<RuntimeRenderSnapshot>,
     pub projection_duration_us: u128,
+    pub cache_hit: bool,
 }
 
 #[derive(Clone, Debug, PartialEq)]
@@ -125,9 +126,10 @@ pub(super) fn compute_runtime_layout(
         };
         return Ok(RuntimeLayoutCompleted {
             key: request.key,
-            frames: Vec::new(),
+            frames: Vec::new().into(),
             render_snapshot,
             projection_duration_us: 0,
+            cache_hit: false,
         });
     }
     if root_count > 1 {
@@ -171,9 +173,10 @@ pub(super) fn compute_runtime_layout(
     };
     Ok(RuntimeLayoutCompleted {
         key: request.key,
-        frames,
+        frames: frames.into(),
         render_snapshot,
         projection_duration_us: elapsed_microseconds(projection_started),
+        cache_hit: false,
     })
 }
 

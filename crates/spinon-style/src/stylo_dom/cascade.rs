@@ -502,7 +502,7 @@ fn compute_cascade(
         generation: view.snapshot().generation(),
         document_revision: view.document_revision(),
         render_tree_revision: view.render_tree_revision(),
-        elements,
+        elements: elements.into(),
         diagnostics,
     })
 }

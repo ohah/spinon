@@ -66,6 +66,7 @@ fn layout_completed_json(completed: &RuntimeLayoutCompleted) -> Value {
         "key": key_json(completed.key),
         "unit": "css-px",
         "projectionDurationUs": completed.projection_duration_us,
+        "cacheHit": completed.cache_hit,
         "frames": completed.frames.iter().map(|frame| json!({
             "nodeId": frame.node_id,
             "x": frame.x,
@@ -149,12 +150,15 @@ mod tests {
                 y: 2.0,
                 width: 30.0,
                 height: 40.0,
-            }],
+            }]
+            .into(),
             render_snapshot: None,
             projection_duration_us: 12,
+            cache_hit: true,
         });
         assert_eq!(json["unit"], "css-px");
         assert_eq!(json["projectionDurationUs"], 12);
+        assert_eq!(json["cacheHit"], true);
         assert_eq!(json["frames"][0]["nodeId"], 7);
         assert_eq!(json["frames"][0]["x"], 1.0);
     }

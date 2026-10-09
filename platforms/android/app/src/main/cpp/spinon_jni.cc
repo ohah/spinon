@@ -157,6 +157,21 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalRegisteredPropertiesFixt
   return ToByteArray(env, report);
 }
 
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalRuntimeResultCacheFixture(
+    JNIEnv *env, jclass, jlong host_handle) {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+  std::array<char, 4096> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_runtime_result_cache_fixture(
+      host, 10000, output.data(), output.size());
+  const std::string report =
+      "status=" + std::to_string(status) + " " + output.data();
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
+                      kTag, "SPINON_C053_EVAL %s", report.c_str());
+  return ToByteArray(env, report);
+}
+
 extern "C" JNIEXPORT jlong JNICALL
 Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateSurface(
     JNIEnv *env, jclass, jlong host_handle, jobject surface, jint width,

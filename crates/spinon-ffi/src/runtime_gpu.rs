@@ -19,6 +19,8 @@ const RUNTIME_CSS_CUSTOM_PROPERTIES_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c05/runtime-custom-properties-app.js");
 const RUNTIME_CSS_REGISTERED_PROPERTIES_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c05/runtime-registered-properties.js");
+const RUNTIME_CSS_RESULT_CACHE_FIXTURE_SOURCE: &str =
+    include_str!("../../../tests/fixtures/css/c05/runtime-result-cache.js");
 
 #[repr(C)]
 pub struct SpinonRuntimeGpuHost {
@@ -202,7 +204,7 @@ impl RuntimeGpuHost {
             .map(|frame| format!(" root_frame_css_px={}x{}", frame.width, frame.height))
             .unwrap_or_default();
         Ok(format!(
-            "layout={} boxes={} generation={} document_revision={} render_tree_revision={} style_revision={} environment_revision={}{}{}",
+            "layout={} boxes={} generation={} document_revision={} render_tree_revision={} style_revision={} environment_revision={} cacheHit={}{}{}",
             snapshot.state.as_str(),
             box_count,
             completed.key.generation,
@@ -210,6 +212,7 @@ impl RuntimeGpuHost {
             completed.key.render_tree_revision,
             completed.key.style_revision,
             completed.key.environment_revision,
+            completed.cache_hit,
             root_frame,
             render_root,
         ))

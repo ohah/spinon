@@ -296,20 +296,29 @@ fn stale_completion_cannot_replace_a_newer_requested_key() {
     let current_key = state.requested.unwrap();
     drop(state);
 
+    let stale_request = WorkRequest {
+        key: stale_key,
+        snapshot,
+        viewport: CssViewport::C04_FIXTURE,
+    };
+    let mut cache = None;
     publish_result(
         &shared,
-        stale_key,
+        &stale_request,
         Ok(RuntimeCalculation {
-            roots: Vec::new(),
+            roots: Vec::new().into(),
             cascade_duration_us: 1,
             layout: Ok(RuntimeLayoutCompleted {
                 key: stale_key,
-                frames: Vec::new(),
+                frames: Vec::new().into(),
                 render_snapshot: None,
                 projection_duration_us: 0,
+                cache_hit: false,
             }),
             layout_diagnostics: Vec::new(),
         }),
+        false,
+        &mut cache,
     );
     let state = lock(&shared.state);
     assert_ne!(current_key, stale_key);

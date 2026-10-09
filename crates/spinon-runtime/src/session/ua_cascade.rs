@@ -10,14 +10,24 @@ mod author_stylesheets;
 mod author_stylesheets_edge_tests;
 #[cfg(test)]
 mod author_stylesheets_tests;
+mod cache;
+#[cfg(test)]
+mod cache_benchmark;
+#[cfg(test)]
+mod cache_tests;
 mod calculation;
+mod environment;
 #[cfg(test)]
 mod registered_properties_tests;
 mod runtime_layout;
+use cache::RuntimeCalculationCacheEntry;
+#[cfg(test)]
+use cache::RuntimeCalculationCacheKey;
 use calculation::{
     RuntimeCalculation, compute_request, compute_request_for_registered_properties_gpu,
     compute_request_for_runtime_gpu,
 };
+use environment::RuntimeCssEnvironment;
 use runtime_layout::layout_failure;
 pub use runtime_layout::{
     RuntimeLayoutCompleted, RuntimeLayoutFailure, RuntimeLayoutFrame, RuntimeLayoutSnapshot,
@@ -90,8 +100,9 @@ pub struct RuntimeUaCascadeRoot {
 #[derive(Clone, Debug, PartialEq)]
 pub struct RuntimeUaCascadeCompleted {
     pub key: RuntimeUaCascadeKey,
-    pub roots: Vec<RuntimeUaCascadeRoot>,
+    pub roots: Arc<[RuntimeUaCascadeRoot]>,
     pub computation_duration_us: u128,
+    pub cache_hit: bool,
 }
 
 #[derive(Clone, Debug, PartialEq)]
@@ -100,34 +111,6 @@ pub struct RuntimeUaCascadeSnapshot {
     pub requested: Option<RuntimeUaCascadeKey>,
     pub completed: Option<Arc<RuntimeUaCascadeCompleted>>,
     pub error: Option<String>,
-}
-
-#[derive(Clone, Copy, Debug, PartialEq)]
-struct RuntimeCssEnvironment {
-    width_css_px: f32,
-    height_css_px: f32,
-    device_scale_factor: f32,
-    media_environment: CssMediaEnvironment,
-    revision: EnvironmentRevision,
-}
-
-impl RuntimeCssEnvironment {
-    fn same_input(self, other: Self) -> bool {
-        self.width_css_px == other.width_css_px
-            && self.height_css_px == other.height_css_px
-            && self.device_scale_factor == other.device_scale_factor
-            && self.media_environment == other.media_environment
-    }
-
-    fn viewport(self) -> CssViewport {
-        CssViewport {
-            width_css_px: self.width_css_px,
-            height_css_px: self.height_css_px,
-            device_scale_factor: self.device_scale_factor,
-            environment_revision: self.revision,
-            media_environment: self.media_environment,
-        }
-    }
 }
 
 struct WorkRequest {
@@ -380,6 +363,7 @@ fn key_for(
 
 fn worker_loop(shared: Arc<Shared>, ready: mpsc::SyncSender<()>, compute: Arc<CascadeComputer>) {
     let _ = ready.send(());
+    let mut cache: Option<RuntimeCalculationCacheEntry> = None;
     loop {
         let request = {
             let mut state = lock(&shared.state);
@@ -397,9 +381,17 @@ fn worker_loop(shared: Arc<Shared>, ready: mpsc::SyncSender<()>, compute: Arc<Ca
                 .take()
                 .expect("대기 중인 cascade 요청이 있어야 합니다")
         };
+        let cached = cache.as_ref().and_then(|entry| entry.rekey_for(&request));
+        if cached.is_none() {
+            cache = None;
+        }
+        if let Some(calculation) = cached {
+            publish_result(&shared, &request, Ok(calculation), true, &mut cache);
+            continue;
+        }
         let result = catch_unwind(AssertUnwindSafe(|| compute(&request)));
         match result {
-            Ok(computed) => publish_result(&shared, request.key, computed),
+            Ok(computed) => publish_result(&shared, &request, computed, false, &mut cache),
             Err(_) => {
                 fail_worker(&shared, "CSS runtime worker 내부에서 panic이 발생했습니다");
                 return;
@@ -410,9 +402,12 @@ fn worker_loop(shared: Arc<Shared>, ready: mpsc::SyncSender<()>, compute: Arc<Ca
 
 fn publish_result(
     shared: &Shared,
-    key: RuntimeUaCascadeKey,
+    request: &WorkRequest,
     computed: Result<RuntimeCalculation, String>,
+    cache_hit: bool,
+    cache: &mut Option<RuntimeCalculationCacheEntry>,
 ) {
+    let key = request.key;
     let mut state = lock(&shared.state);
     if state.closing || state.requested != Some(key) {
         drop(state);
@@ -421,6 +416,12 @@ fn publish_result(
     }
     match computed {
         Ok(calculation) => {
+            if !cache_hit && calculation.layout.is_ok() {
+                *cache = Some(RuntimeCalculationCacheEntry::new(
+                    request,
+                    calculation.clone(),
+                ));
+            }
             state.status = if calculation.roots.is_empty() {
                 RuntimeUaCascadeState::Empty
             } else {
@@ -428,8 +429,9 @@ fn publish_result(
             };
             state.completed = Some(Arc::new(RuntimeUaCascadeCompleted {
                 key,
-                roots: calculation.roots,
+                roots: Arc::clone(&calculation.roots),
                 computation_duration_us: calculation.cascade_duration_us,
+                cache_hit,
             }));
             state.error = None;
             state.layout_diagnostics = calculation.layout_diagnostics;
@@ -440,6 +442,8 @@ fn publish_result(
                     } else {
                         RuntimeLayoutState::Ready
                     };
+                    let mut layout = layout.clone();
+                    layout.cache_hit = cache_hit;
                     state.layout_completed = Some(Arc::new(layout));
                     state.layout_error = None;
                 }
