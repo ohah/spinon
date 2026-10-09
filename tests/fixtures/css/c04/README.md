@@ -11,3 +11,9 @@
 `margin-layout.v1.json`은 C04.6 기본 10개 case이고 `margin-logical-shorthand.v1.json`은 logical inline/block shorthand의 3개 보충 case다. 각 Chromium 캡처 도구는 별도 immutable reference에 입력·HTML·CSS·캡처 도구 hash와 Chrome 환경을 고정한다. `FlexMarginV1` 내부 profile은 C04.2의 제한 Flex 입력에 네 물리 margin computed value를 더한다. CSS px의 음수 값과 지원 가능한 shorthand를 Taffy로 전달하며 `%`, `auto`, 비-px computed value는 오류로 반환한다.
 
 이는 내부 Rust 레이아웃 기능이다. 제품 runtime, CSSOM, 텍스트·Block formatting 전체, GPU 화면 및 Android·iOS 앱 적용은 포함하지 않는다. 상세 계약은 [C04.6 Flex margin 내부 계약](../../../../spec/internal/0027-c04-flex-margin-layout.md)을 따른다.
+
+## CSS media 환경 cascade
+
+`media-environment.v1.json`은 viewport와 media 환경을 고정한다. Chromium capture는 desktop/mobile × light/dark 네 case에서 `matchMedia()` 결과와 CSS probe의 computed `display`를 저장한다. mobile case의 coarse/no-hover는 기기 규격으로 추정하지 않고 Chromium CDP touch emulation에서 실제 관찰한다. Rust의 별도 `FlexMediaEnvironmentV1` profile은 scheme, primary/all pointer와 hover 입력을 cascade에 전달한다. C04.6 `FlexMarginV1` 범위는 바꾸지 않는다.
+
+혼합 포인터와 장치 없음은 이 emulation에서 직접 만들지 않는다. 해당 case는 Stylo mapping 단위 검증이며 Chromium reference 결과로 세지 않는다. OS 설정 수집, 자동 revision 발급, style 재계산, layout·GPU·앱 runtime 연결은 포함하지 않는다. 범위는 [C04.7 내부 계약](../../../../spec/internal/0028-c04-media-environment.md)을 따른다.

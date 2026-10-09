@@ -907,6 +907,7 @@ dependencies = [
  "spinon-core",
  "stylo",
  "stylo_dom",
+ "stylo_traits",
  "url",
 ]
 

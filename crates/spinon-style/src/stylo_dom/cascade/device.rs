@@ -10,7 +10,7 @@ use style::{
     values::computed::{CSSPixelLength, Length, font::QueryFontMetricsFlags},
 };
 
-use super::CssViewport;
+use super::{CssColorScheme, CssPrimaryPointer, CssViewport};
 
 pub(super) fn make_device(quirks_mode: QuirksMode, viewport: CssViewport) -> Device {
     let font_metrics = FixedFontMetricsProvider;
@@ -19,6 +19,36 @@ pub(super) fn make_device(quirks_mode: QuirksMode, viewport: CssViewport) -> Dev
         viewport.width_css_px * viewport.device_scale_factor,
         viewport.height_css_px * viewport.device_scale_factor,
     );
+    let media_environment = viewport.media_environment;
+    let color_scheme = match media_environment.color_scheme {
+        CssColorScheme::Light => PrefersColorScheme::Light,
+        CssColorScheme::Dark => PrefersColorScheme::Dark,
+    };
+    let primary_pointer = match media_environment.primary_pointer {
+        CssPrimaryPointer::None => PointerCapabilities::empty(),
+        CssPrimaryPointer::Coarse => PointerCapabilities::COARSE,
+        CssPrimaryPointer::Fine => PointerCapabilities::FINE,
+    } | if media_environment.primary_hover {
+        PointerCapabilities::HOVER
+    } else {
+        PointerCapabilities::empty()
+    };
+    let all_pointers = {
+        let capabilities = media_environment.all_pointers;
+        (if capabilities.coarse {
+            PointerCapabilities::COARSE
+        } else {
+            PointerCapabilities::empty()
+        }) | (if capabilities.fine {
+            PointerCapabilities::FINE
+        } else {
+            PointerCapabilities::empty()
+        }) | (if capabilities.hover {
+            PointerCapabilities::HOVER
+        } else {
+            PointerCapabilities::empty()
+        })
+    };
     Device::new(
         MediaType::screen(),
         quirks_mode,
@@ -27,9 +57,9 @@ pub(super) fn make_device(quirks_mode: QuirksMode, viewport: CssViewport) -> Dev
         euclid::Scale::new(viewport.device_scale_factor),
         Box::new(font_metrics),
         ComputedValues::initial_values_with_font_override(Font::initial_values()),
-        PrefersColorScheme::Light,
-        PointerCapabilities::default(),
-        PointerCapabilities::default(),
+        color_scheme,
+        primary_pointer,
+        all_pointers,
     )
 }
 

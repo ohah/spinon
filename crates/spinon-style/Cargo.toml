@@ -12,6 +12,7 @@ selectors = "=0.41.0"
 spinon-core = { path = "../spinon-core" }
 stylo = "=0.22.0"
 stylo_dom = "=0.22.0"
+style_traits = { package = "stylo_traits", version = "=0.22.0", features = ["servo"] }
 url = "2.5"
 
 [dev-dependencies]

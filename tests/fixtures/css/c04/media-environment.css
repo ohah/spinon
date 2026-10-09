@@ -1,0 +1,14 @@
+div { display: block; }
+
+@media (prefers-color-scheme: light) { #scheme-light { display: none; } }
+@media (prefers-color-scheme: dark) { #scheme-dark { display: none; } }
+@media (pointer: none) { #pointer-none { display: none; } }
+@media (pointer: coarse) { #pointer-coarse { display: none; } }
+@media (pointer: fine) { #pointer-fine { display: none; } }
+@media (hover: none) { #hover-none { display: none; } }
+@media (hover: hover) { #hover-hover { display: none; } }
+@media (any-pointer: none) { #any-pointer-none { display: none; } }
+@media (any-pointer: coarse) { #any-pointer-coarse { display: none; } }
+@media (any-pointer: fine) { #any-pointer-fine { display: none; } }
+@media (any-hover: none) { #any-hover-none { display: none; } }
+@media (any-hover: hover) { #any-hover-hover { display: none; } }

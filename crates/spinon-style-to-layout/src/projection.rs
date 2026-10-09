@@ -156,7 +156,7 @@ fn compute_profile_layout(
         ComputedStyleProfile::S04FlexPaintV1 => {
             compute_s04_flex_paint_cascade(view, author_stylesheets, viewport, style_revision)?
         }
-        ComputedStyleProfile::BasicCascadeV1 => {
+        ComputedStyleProfile::BasicCascadeV1 | ComputedStyleProfile::FlexMediaEnvironmentV1 => {
             return Err(StyleLayoutError::UnsupportedProfile {
                 profile: format!("{profile:?}"),
             });

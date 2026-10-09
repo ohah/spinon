@@ -62,3 +62,20 @@ pub fn compute_flex_margin_cascade(
         ComputedStyleProfile::FlexMarginV1,
     )
 }
+
+/// C04.7의 scheme·pointer media query를 평가하는 제한 computed-style snapshot입니다.
+pub fn compute_flex_media_environment_cascade(
+    view: &StyloDocumentView,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+) -> Result<ComputedStyleSnapshot, CssCascadeError> {
+    compute_cascade(
+        view,
+        author_stylesheets,
+        viewport,
+        style_revision,
+        FLEX_MARGIN_PROPERTIES,
+        ComputedStyleProfile::FlexMediaEnvironmentV1,
+    )
+}
