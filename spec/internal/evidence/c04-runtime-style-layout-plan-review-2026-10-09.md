@@ -1,8 +1,8 @@
 # C04 Runtime CSS→Taffy 계획 적대 검토
 
 검토 대상: [`plan/c04-runtime-style-layout.md`](../../../plan/c04-runtime-style-layout.md)
-검토 대상 SHA-256: `231207e4138d6bfd9f43ad7f215f945fddcacdaba9792c5a9024f2c038055778`
-검토 성격: 구현 전 계획 검토. 코드를 검토하거나 실행한 결과가 아니다.
+검토 대상 SHA-256: `1f8c107e0ba3685980a950799e219b1debbdeb9ac9e63cc61e0372124199058d`
+검토 성격: 구현 전 계획 검토와 구현 중 보정 뒤 계획 재검토. 코드 실행 결과를 계획 검토로 대신하지 않는다.
 
 ## 서로 다른 실패 관점 20개
 
@@ -10,7 +10,7 @@
 |---:|---|---|---|
 | 1 | C04.8 UA JSON 소비자 호환성 | 새 profile의 속성 집합이 기존 7개 UA 필드의 직렬화 결과를 바꿀 수 있다. | C04.8 JSON은 superset 계산 결과 중 원래 7개 속성만 기존 schema·키·revision으로 직렬화한다. 기존 고정 JSON shape 회귀 fixture를 둔다. |
 | 2 | cascade 중복 비용 | UA 계산과 Taffy 계산 준비를 위해 같은 DOM을 두 번 cascade할 수 있다. | `RuntimeFlexLayout` 단일 Stylo 결과에서 기존 UA·신규 layout projection을 분리한다. 재계산은 금지한다. |
-| 3 | allowlist 누락 선언 | 미지원 선언을 무시하면 Chromium과 다른 프레임을 성공으로 게시할 수 있다. | CSS parser가 정규화한 선언 이름을 명시 allowlist와 대조하고, 밖의 선언은 layout만 실패시킨다. |
+| 3 | allowlist 누락 선언과 shorthand 확장 | 미지원 선언을 무시하거나 Stylo가 longhand로 확장하는 shorthand를 계획 allowlist와 다르게 판정하면 Chromium과 다른 프레임을 성공으로 게시할 수 있다. | 허용 shorthand는 `flex`로 명시하고 Stylo expanded longhand 이름으로 검사한다. 계산된 값도 Taffy projection 허용 범위여야 한다. `flex: 0 1 auto` 통과와 percentage basis를 만드는 `flex: 1` 거부를 나눠 고정한다. |
 | 4 | CSS 문법 오류의 recovery | 잘못된 선언 하나 때문에 브라우저가 적용할 나머지 유효 선언까지 버릴 수 있다. | Stylo syntax diagnostics를 보존하고 파서 recovery 결과로 계산한다. layout 실패 사유와 parser diagnostic을 구분한다. |
 | 5 | CSS fragment root 오해 | 앱 root를 document element로 취급하면 `:root`와 root display blockification 결과가 변한다. | C04.8의 fragment-root view를 그대로 유지하고 HostRoot를 CSS 노드로 만들지 않는다. |
 | 6 | HostRoot 다중 자식 위치 충돌 | 각 자식 root를 viewport 원점에 배치하면 여러 화면이 겹친다. | 첫 slice는 root 하나만 허용한다. 복수 root는 위치를 추측하지 않고 layout 상태 전체를 실패시킨다. |
@@ -40,5 +40,6 @@
 - cascade 시간과 layout 시간의 측정 의미를 분리했다.
 - 구현 코드보다 먼저 Chromium 실행 파일 hash가 고정된 CSS·geometry oracle을 생성하도록 순서를 바꿨다.
 - 실제 설치된 Chrome `.98`의 revision·binary hash를 계획과 oracle에 함께 고정했다. computed 값 135개와 geometry oracle은 Rust 변경 전에 생성했다.
+- 구현 중 shorthand 정책과 계획 문구가 어긋난 점을 발견해 `flex` shorthand 허용 조건과 percentage basis 거부를 계획에 추가하고, 이 최종 문서 hash를 대상으로 아래 20개 계획 관점을 다시 대조했다.
 
-이 검토는 계획 문서의 실패 경로만 확인했다. 실제 Stylo parser 속성 분류 API, C ABI 구현, Chromium frame oracle, Android·iOS V8 실행은 구현 PR에서 새 관점으로 검토하고 확인해야 한다. 미출시 내부 숫자 계약 버전은 `0.1.0`으로 유지한다.
+이 검토는 계획 문서의 실패 경로만 확인한다. 구현 관점의 검증은 별도 구현 검토 근거에 기록한다. 미출시 내부 숫자 계약 버전은 `0.1.0`으로 유지한다.

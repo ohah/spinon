@@ -33,8 +33,9 @@ pub use shutdown::run_shutdown_probe;
 use trace::{TraceSection, finish_reply_handoff};
 use ua_cascade::RuntimeUaCascadeCoordinator;
 pub use ua_cascade::{
-    RuntimeUaCascadeCompleted, RuntimeUaCascadeError, RuntimeUaCascadeKey, RuntimeUaCascadeRoot,
-    RuntimeUaCascadeSnapshot, RuntimeUaCascadeState,
+    RuntimeLayoutCompleted, RuntimeLayoutFailure, RuntimeLayoutFrame, RuntimeLayoutSnapshot,
+    RuntimeLayoutState, RuntimeUaCascadeCompleted, RuntimeUaCascadeError, RuntimeUaCascadeKey,
+    RuntimeUaCascadeRoot, RuntimeUaCascadeSnapshot, RuntimeUaCascadeState,
 };
 
 const QUEUE_CAPACITY: usize = 64;
@@ -365,6 +366,11 @@ impl RuntimeSession {
     /// 최신 UA cascade 상태를 한 번에 복사합니다. Stylo 계산 완료는 기다리지 않습니다.
     pub fn ua_cascade_snapshot(&self) -> RuntimeUaCascadeSnapshot {
         self.ua_cascade.handle().snapshot()
+    }
+
+    /// 최신 runtime layout 결과를 한 번에 복사합니다. 계산 완료는 기다리지 않습니다.
+    pub fn layout_snapshot(&self) -> RuntimeLayoutSnapshot {
+        self.ua_cascade.handle().layout_snapshot()
     }
 }
 

@@ -7,7 +7,7 @@ use spinon_core::{
 
 use crate::{
     LayoutError, LayoutInput, LayoutInputRevision, LayoutNode, LayoutSourceRevision, LayoutStyle,
-    Viewport,
+    RootSizingPolicy, Viewport,
 };
 
 impl LayoutInput {
@@ -22,6 +22,46 @@ impl LayoutInput {
         styles: &BTreeMap<NodeId, LayoutStyle>,
         style_revision: StyleRevision,
         environment_revision: EnvironmentRevision,
+    ) -> Result<Self, LayoutError> {
+        Self::from_host_document_with_root_sizing(
+            snapshot,
+            root,
+            viewport,
+            styles,
+            style_revision,
+            environment_revision,
+            RootSizingPolicy::MatchViewport,
+        )
+    }
+
+    /// HostRoot 직속 요소를 viewport containing block 안에서 CSS 크기로 계산합니다.
+    pub fn from_host_document_with_viewport_containing_block(
+        snapshot: &HostDocumentSnapshot,
+        root: HostNodeHandle,
+        viewport: Viewport,
+        styles: &BTreeMap<NodeId, LayoutStyle>,
+        style_revision: StyleRevision,
+        environment_revision: EnvironmentRevision,
+    ) -> Result<Self, LayoutError> {
+        Self::from_host_document_with_root_sizing(
+            snapshot,
+            root,
+            viewport,
+            styles,
+            style_revision,
+            environment_revision,
+            RootSizingPolicy::ResolveWithinViewport,
+        )
+    }
+
+    fn from_host_document_with_root_sizing(
+        snapshot: &HostDocumentSnapshot,
+        root: HostNodeHandle,
+        viewport: Viewport,
+        styles: &BTreeMap<NodeId, LayoutStyle>,
+        style_revision: StyleRevision,
+        environment_revision: EnvironmentRevision,
+        root_sizing: RootSizingPolicy,
     ) -> Result<Self, LayoutError> {
         let root_node = snapshot
             .node(root)
@@ -94,6 +134,7 @@ impl LayoutInput {
                 environment_revision,
             ),
             viewport,
+            root_sizing,
             nodes,
         })
     }

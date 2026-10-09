@@ -894,7 +894,9 @@ name = "spinon-runtime"
 version = "0.1.0"
 dependencies = [
  "spinon-core",
+ "spinon-layout",
  "spinon-style",
+ "spinon-style-to-layout",
 ]
 
 [[package]]

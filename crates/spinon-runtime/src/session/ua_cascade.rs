@@ -1,15 +1,18 @@
-use spinon_core::{
-    EnvironmentRevision, HostDocumentSnapshot, HostNodeHandle, HostNodeKind, HostParent,
-    StyleRevision,
-};
-use spinon_style::{
-    ComputedStyleSnapshot, CssCascadeError, CssMediaEnvironment, CssViewport, StyloDocumentView,
-    compute_supported_elements_ua_cascade,
-};
+use spinon_core::{EnvironmentRevision, HostDocumentSnapshot, StyleRevision};
+use spinon_style::{CascadeDiagnostic, ComputedStyleSnapshot, CssMediaEnvironment, CssViewport};
 use std::panic::{AssertUnwindSafe, catch_unwind};
 use std::sync::{Arc, Condvar, Mutex, MutexGuard, PoisonError, mpsc};
 use std::thread::{self, JoinHandle};
 use std::time::{Duration, Instant};
+
+mod calculation;
+mod runtime_layout;
+use calculation::{RuntimeCalculation, compute_request};
+use runtime_layout::layout_failure;
+pub use runtime_layout::{
+    RuntimeLayoutCompleted, RuntimeLayoutFailure, RuntimeLayoutFrame, RuntimeLayoutSnapshot,
+    RuntimeLayoutState,
+};
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum RuntimeUaCascadeState {
@@ -123,8 +126,7 @@ struct WorkRequest {
     viewport: CssViewport,
 }
 
-type CascadeComputer =
-    dyn Fn(&WorkRequest) -> Result<Vec<RuntimeUaCascadeRoot>, String> + Send + Sync;
+type CascadeComputer = dyn Fn(&WorkRequest) -> Result<RuntimeCalculation, String> + Send + Sync;
 
 struct State {
     closing: bool,
@@ -136,6 +138,10 @@ struct State {
     status: RuntimeUaCascadeState,
     completed: Option<Arc<RuntimeUaCascadeCompleted>>,
     error: Option<String>,
+    layout_status: RuntimeLayoutState,
+    layout_completed: Option<Arc<RuntimeLayoutCompleted>>,
+    layout_diagnostics: Vec<CascadeDiagnostic>,
+    layout_error: Option<RuntimeLayoutFailure>,
 }
 
 impl State {
@@ -150,6 +156,10 @@ impl State {
             status: RuntimeUaCascadeState::NotConfigured,
             completed: None,
             error: None,
+            layout_status: RuntimeLayoutState::NotConfigured,
+            layout_completed: None,
+            layout_diagnostics: Vec::new(),
+            layout_error: None,
         }
     }
 }
@@ -297,6 +307,17 @@ impl RuntimeUaCascadeHandle {
             error: state.error.clone(),
         }
     }
+
+    pub(super) fn layout_snapshot(&self) -> RuntimeLayoutSnapshot {
+        let state = lock(&self.shared.state);
+        RuntimeLayoutSnapshot {
+            state: state.layout_status,
+            requested: state.requested,
+            completed: state.layout_completed.clone(),
+            diagnostics: state.layout_diagnostics.clone(),
+            error: state.layout_error.clone(),
+        }
+    }
 }
 
 fn request_latest(shared: &Shared, state: &mut State) {
@@ -306,15 +327,25 @@ fn request_latest(shared: &Shared, state: &mut State) {
         state.pending = None;
         state.completed = None;
         state.error = None;
+        state.layout_status = RuntimeLayoutState::NotConfigured;
+        state.layout_completed = None;
+        state.layout_diagnostics.clear();
+        state.layout_error = None;
         return;
     };
     let key = key_for(snapshot, environment.revision);
     state.requested = Some(key);
     state.completed = None;
     state.error = None;
+    state.layout_status = RuntimeLayoutState::Pending;
+    state.layout_completed = None;
+    state.layout_diagnostics.clear();
+    state.layout_error = None;
     if !state.worker_available {
         state.status = RuntimeUaCascadeState::Failed;
         state.error = Some("CSS cascade worker를 사용할 수 없습니다".to_owned());
+        state.layout_status = RuntimeLayoutState::Failed;
+        state.layout_error = Some(layout_failure("worker_unavailable", None, None));
         state.pending = None;
         return;
     }
@@ -359,13 +390,11 @@ fn worker_loop(shared: Arc<Shared>, ready: mpsc::SyncSender<()>, compute: Arc<Ca
                 .take()
                 .expect("대기 중인 cascade 요청이 있어야 합니다")
         };
-        let computation_started = Instant::now();
         let result = catch_unwind(AssertUnwindSafe(|| compute(&request)));
-        let computation_duration_us = elapsed_microseconds(computation_started);
         match result {
-            Ok(computed) => publish_result(&shared, request.key, computed, computation_duration_us),
+            Ok(computed) => publish_result(&shared, request.key, computed),
             Err(_) => {
-                fail_worker(&shared, "CSS cascade worker 내부에서 panic이 발생했습니다");
+                fail_worker(&shared, "CSS runtime worker 내부에서 panic이 발생했습니다");
                 return;
             }
         }
@@ -375,31 +404,50 @@ fn worker_loop(shared: Arc<Shared>, ready: mpsc::SyncSender<()>, compute: Arc<Ca
 fn publish_result(
     shared: &Shared,
     key: RuntimeUaCascadeKey,
-    computed: Result<Vec<RuntimeUaCascadeRoot>, String>,
-    computation_duration_us: u128,
+    computed: Result<RuntimeCalculation, String>,
 ) {
     let mut state = lock(&shared.state);
     if state.closing || state.requested != Some(key) {
         return;
     }
     match computed {
-        Ok(roots) => {
-            state.status = if roots.is_empty() {
+        Ok(calculation) => {
+            state.status = if calculation.roots.is_empty() {
                 RuntimeUaCascadeState::Empty
             } else {
                 RuntimeUaCascadeState::Ready
             };
             state.completed = Some(Arc::new(RuntimeUaCascadeCompleted {
                 key,
-                roots,
-                computation_duration_us,
+                roots: calculation.roots,
+                computation_duration_us: calculation.cascade_duration_us,
             }));
             state.error = None;
+            state.layout_diagnostics = calculation.layout_diagnostics;
+            match calculation.layout {
+                Ok(layout) => {
+                    state.layout_status = if layout.frames.is_empty() {
+                        RuntimeLayoutState::Empty
+                    } else {
+                        RuntimeLayoutState::Ready
+                    };
+                    state.layout_completed = Some(Arc::new(layout));
+                    state.layout_error = None;
+                }
+                Err(error) => {
+                    state.layout_status = RuntimeLayoutState::Failed;
+                    state.layout_completed = None;
+                    state.layout_error = Some(error);
+                }
+            }
         }
         Err(error) => {
             state.status = RuntimeUaCascadeState::Failed;
             state.completed = None;
             state.error = Some(error);
+            state.layout_status = RuntimeLayoutState::Failed;
+            state.layout_completed = None;
+            state.layout_error = Some(layout_failure("cascade_failed", None, None));
         }
     }
 }
@@ -412,58 +460,10 @@ fn fail_worker(shared: &Shared, message: &str) {
         state.status = RuntimeUaCascadeState::Failed;
         state.completed = None;
         state.error = Some(message.to_owned());
+        state.layout_status = RuntimeLayoutState::Failed;
+        state.layout_completed = None;
+        state.layout_error = Some(layout_failure("worker_failed", None, None));
     }
-}
-
-fn compute_request(request: &WorkRequest) -> Result<Vec<RuntimeUaCascadeRoot>, String> {
-    let mut roots = Vec::new();
-    for root in request.snapshot.root_children() {
-        let Some(node) = request.snapshot.node(root) else {
-            return Err("HostRoot가 snapshot에 없는 노드를 가리킵니다".to_owned());
-        };
-        match node.kind() {
-            HostNodeKind::Text(_) => {
-                return Err(format!(
-                    "HostRoot 직속 텍스트 노드 {}는 지원하지 않습니다",
-                    root.id()
-                ));
-            }
-            HostNodeKind::Element(_) => {
-                if request.snapshot.parent(root) != Some(HostParent::Root) {
-                    return Err(format!(
-                        "cascade root {}의 부모가 HostRoot가 아닙니다",
-                        root.id()
-                    ));
-                }
-                roots.push(compute_root(request, root)?);
-            }
-        }
-    }
-    Ok(roots)
-}
-
-fn compute_root(
-    request: &WorkRequest,
-    root: HostNodeHandle,
-) -> Result<RuntimeUaCascadeRoot, String> {
-    let view =
-        StyloDocumentView::new_html_fragment_child_shared(Arc::clone(&request.snapshot), root)
-            .map_err(|error| error.to_string())?;
-    let styles =
-        compute_supported_elements_ua_cascade(&view, &[], request.viewport, StyleRevision::INITIAL)
-            .map_err(|error: CssCascadeError| error.to_string())?;
-    if key_for(&request.snapshot, request.viewport.environment_revision) != request.key
-        || styles.generation.get() != request.key.generation
-        || styles.document_revision.get() != request.key.document_revision
-        || styles.render_tree_revision.get() != request.key.render_tree_revision
-        || styles.style_revision.get() != request.key.style_revision
-    {
-        return Err("Stylo 결과 revision이 요청 key와 다릅니다".to_owned());
-    }
-    Ok(RuntimeUaCascadeRoot {
-        root_node_id: root.id().get(),
-        styles,
-    })
 }
 
 fn lock<T>(mutex: &Mutex<T>) -> MutexGuard<'_, T> {

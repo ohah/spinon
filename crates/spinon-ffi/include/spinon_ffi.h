@@ -102,6 +102,14 @@ int32_t spinon_runtime_session_set_ua_cascade_environment(
 int32_t spinon_runtime_session_copy_ua_cascade_json(
     SpinonRuntimeSession *session, char *output, size_t output_capacity,
     size_t *required_capacity);
+/* 내부 C04 runtime CSS→Taffy 결과 조회입니다. UI thread에서 호출하지 마세요.
+   기다리지 않고 UTF-8 JSON을 복사하며 성공 0, 인자 오류 -1, 짧은 버퍼 -3입니다.
+   schema는 spinon.runtime.layout입니다. 상태와 revision, CSS px 프레임,
+   Stylo parser 진단과 원문 CSS를 포함하지 않는 안정 오류 코드를 반환합니다.
+   두 출력 범위는 서로 또는 session 저장 공간과 겹치면 안 되며 free와 병행할 수 없습니다. */
+int32_t spinon_runtime_session_copy_layout_json(
+    SpinonRuntimeSession *session, char *output, size_t output_capacity,
+    size_t *required_capacity);
 /* Android emulator·iOS Simulator 내부 검증 fixture입니다. 실제 V8 DOM 변경 뒤 환경 setter,
    비동기 Stylo 결과와 JSON readback을 검증합니다. 성공 0, 인자 오류 -1, 생성 오류 -2,
    버퍼 부족 -3, cascade 검증 실패 -7을 반환합니다. 제품 렌더링 API가 아닙니다. */

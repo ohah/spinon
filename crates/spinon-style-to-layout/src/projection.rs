@@ -1,10 +1,12 @@
 use std::collections::BTreeMap;
 
+mod style_values;
+use style_values::project_styles;
+
 use spinon_core::{HostDocumentSnapshot, HostNodeHandle, NodeId, StyleRevision};
 use spinon_layout::{
-    FlexDirection, LayoutAlignItems, LayoutBoxSizing, LayoutDimension, LayoutDisplay, LayoutEdges,
-    LayoutEngine, LayoutGap, LayoutInput, LayoutJustifyContent, LayoutOutput, LayoutStyle,
-    TaffyLayoutEngine, TextDirection, Viewport,
+    LayoutDisplay, LayoutEdges, LayoutEngine, LayoutFrame, LayoutInput, LayoutOutput, LayoutStyle,
+    TaffyLayoutEngine, Viewport,
 };
 use spinon_style::{
     ComputedStyleProfile, ComputedStyleSnapshot, CssViewport, StylesheetSource, StyloDocumentView,
@@ -124,6 +126,16 @@ pub fn compute_s04_style_layout(
     )
 }
 
+/// 이미 계산한 runtime profile을 Stylo를 다시 호출하지 않고 Taffy에 전달합니다.
+pub fn compute_runtime_style_layout(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    computed_styles: ComputedStyleSnapshot,
+    viewport: CssViewport,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    compute_layout_from_styles(snapshot, root, computed_styles, viewport, false)
+}
+
 fn compute_profile_layout(
     snapshot: &HostDocumentSnapshot,
     view: &StyloDocumentView,
@@ -161,21 +173,35 @@ fn compute_profile_layout(
                 profile: format!("{profile:?}"),
             });
         }
-        ComputedStyleProfile::SupportedElementsUaV1 => {
+        ComputedStyleProfile::SupportedElementsUaV1 | ComputedStyleProfile::RuntimeFlexLayoutV1 => {
             return Err(StyleLayoutError::UnsupportedProfile {
                 profile: format!("{profile:?}"),
             });
         }
     };
-    assert_matching_revision(snapshot, &computed_styles, profile)?;
-    if let Some(diagnostic) = computed_styles.diagnostics.first().cloned() {
+    compute_layout_from_styles(snapshot, root, computed_styles, viewport, true)
+}
+
+fn compute_layout_from_styles(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    computed_styles: ComputedStyleSnapshot,
+    viewport: CssViewport,
+    reject_cascade_diagnostics: bool,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    assert_matching_revision(snapshot, &computed_styles, computed_styles.profile)?;
+    if reject_cascade_diagnostics
+        && let Some(diagnostic) = computed_styles.diagnostics.first().cloned()
+    {
         return Err(StyleLayoutError::CascadeDiagnostic(diagnostic));
     }
     let styles = project_styles(&computed_styles)?;
-    if profile == ComputedStyleProfile::FlexMarginV1
-        && styles
-            .get(&root.id())
-            .is_some_and(|style| style.margin != LayoutEdges::default())
+    if matches!(
+        computed_styles.profile,
+        ComputedStyleProfile::FlexMarginV1 | ComputedStyleProfile::RuntimeFlexLayoutV1
+    ) && styles
+        .get(&root.id())
+        .is_some_and(|style| style.margin != LayoutEdges::default())
     {
         return Err(StyleLayoutError::UnsupportedRootMargin(root.id()));
     }
@@ -183,224 +209,58 @@ fn compute_profile_layout(
         width: viewport.width_css_px,
         height: viewport.height_css_px,
     };
-    let input = LayoutInput::from_host_document(
-        snapshot,
-        root,
-        layout_viewport,
-        &styles,
-        computed_styles.style_revision,
-        viewport.environment_revision,
-    )?;
-    let layout = TaffyLayoutEngine.compute(&input)?;
+    let input = if computed_styles.profile == ComputedStyleProfile::RuntimeFlexLayoutV1 {
+        LayoutInput::from_host_document_with_viewport_containing_block(
+            snapshot,
+            root,
+            layout_viewport,
+            &styles,
+            computed_styles.style_revision,
+            viewport.environment_revision,
+        )?
+    } else {
+        LayoutInput::from_host_document(
+            snapshot,
+            root,
+            layout_viewport,
+            &styles,
+            computed_styles.style_revision,
+            viewport.environment_revision,
+        )?
+    };
+    let mut layout = TaffyLayoutEngine.compute(&input)?;
+    if computed_styles.profile == ComputedStyleProfile::RuntimeFlexLayoutV1 {
+        zero_display_none_frames(snapshot, root, &styles, &mut layout);
+    }
     Ok(StyleLayoutOutput {
         computed_styles,
         layout,
     })
 }
 
-fn project_styles(
-    snapshot: &ComputedStyleSnapshot,
-) -> Result<BTreeMap<NodeId, LayoutStyle>, StyleLayoutError> {
-    let mut output = BTreeMap::new();
-    for element in &snapshot.elements {
-        let node = element.node_id;
-        let style = LayoutStyle {
-            display: parse_display(node, required(element, "display")?)?,
-            box_sizing: parse_box_sizing(node, required(element, "box-sizing")?)?,
-            width: parse_dimension(node, "width", required(element, "width")?)?,
-            height: parse_dimension(node, "height", required(element, "height")?)?,
-            flex_basis: parse_dimension(node, "flex-basis", required(element, "flex-basis")?)?,
-            flex_direction: parse_flex_direction(node, required(element, "flex-direction")?)?,
-            direction: parse_direction(node, required(element, "direction")?)?,
-            align_items: match snapshot.profile {
-                ComputedStyleProfile::FlexAlignmentV1
-                | ComputedStyleProfile::FlexAlignmentCascadeLayersV1 => {
-                    parse_align_items(node, required(element, "align-items")?)?
-                }
-                _ => LayoutStyle::default().align_items,
-            },
-            justify_content: match snapshot.profile {
-                ComputedStyleProfile::FlexAlignmentV1
-                | ComputedStyleProfile::FlexAlignmentCascadeLayersV1 => {
-                    parse_justify_content(node, required(element, "justify-content")?)?
-                }
-                _ => LayoutStyle::default().justify_content,
-            },
-            flex_grow: parse_number(node, "flex-grow", required(element, "flex-grow")?)?,
-            flex_shrink: parse_number(node, "flex-shrink", required(element, "flex-shrink")?)?,
-            gap: LayoutGap {
-                row: parse_gap(node, "row-gap", required(element, "row-gap")?)?,
-                column: parse_gap(node, "column-gap", required(element, "column-gap")?)?,
-            },
-            margin: match snapshot.profile {
-                ComputedStyleProfile::FlexMarginV1 => LayoutEdges {
-                    top: parse_css_margin(node, "margin-top", required(element, "margin-top")?)?,
-                    right: parse_css_margin(
-                        node,
-                        "margin-right",
-                        required(element, "margin-right")?,
-                    )?,
-                    bottom: parse_css_margin(
-                        node,
-                        "margin-bottom",
-                        required(element, "margin-bottom")?,
-                    )?,
-                    left: parse_css_margin(node, "margin-left", required(element, "margin-left")?)?,
-                },
-                _ => LayoutEdges::default(),
-            },
-            ..LayoutStyle::default()
-        };
-        if output.insert(node, style).is_some() {
-            return Err(StyleLayoutError::DuplicateComputedElement(node));
+fn zero_display_none_frames(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    styles: &BTreeMap<NodeId, LayoutStyle>,
+    layout: &mut LayoutOutput,
+) {
+    let mut pending = vec![(root, false)];
+    while let Some((handle, ancestor_hidden)) = pending.pop() {
+        let hidden = ancestor_hidden
+            || styles
+                .get(&handle.id())
+                .is_some_and(|style| style.display == LayoutDisplay::None);
+        if hidden && let Some(frame) = layout.frames.get_mut(&handle.id()) {
+            *frame = LayoutFrame {
+                x: 0.0,
+                y: 0.0,
+                width: 0.0,
+                height: 0.0,
+            };
         }
-    }
-    Ok(output)
-}
-
-fn parse_align_items(node: NodeId, value: &str) -> Result<LayoutAlignItems, StyleLayoutError> {
-    match value {
-        "normal" | "stretch" => Ok(LayoutAlignItems::Stretch),
-        "flex-start" => Ok(LayoutAlignItems::FlexStart),
-        "flex-end" => Ok(LayoutAlignItems::FlexEnd),
-        "center" => Ok(LayoutAlignItems::Center),
-        value => unsupported(node, "align-items", value),
-    }
-}
-
-fn parse_justify_content(
-    node: NodeId,
-    value: &str,
-) -> Result<LayoutJustifyContent, StyleLayoutError> {
-    match value {
-        "normal" | "flex-start" => Ok(LayoutJustifyContent::FlexStart),
-        "flex-end" => Ok(LayoutJustifyContent::FlexEnd),
-        "center" => Ok(LayoutJustifyContent::Center),
-        "space-between" => Ok(LayoutJustifyContent::SpaceBetween),
-        "space-around" => Ok(LayoutJustifyContent::SpaceAround),
-        "space-evenly" => Ok(LayoutJustifyContent::SpaceEvenly),
-        value => unsupported(node, "justify-content", value),
-    }
-}
-
-fn required<'a>(
-    element: &'a spinon_style::ComputedElementStyle,
-    property: &'static str,
-) -> Result<&'a str, StyleLayoutError> {
-    element.properties.get(property).map(String::as_str).ok_or(
-        StyleLayoutError::MissingComputedProperty {
-            node: element.node_id,
-            property,
-        },
-    )
-}
-
-fn parse_display(node: NodeId, value: &str) -> Result<LayoutDisplay, StyleLayoutError> {
-    match value {
-        "flex" => Ok(LayoutDisplay::Flex),
-        "block" => Ok(LayoutDisplay::Block),
-        "none" => Ok(LayoutDisplay::None),
-        value => unsupported(node, "display", value),
-    }
-}
-
-fn parse_box_sizing(node: NodeId, value: &str) -> Result<LayoutBoxSizing, StyleLayoutError> {
-    match value {
-        "border-box" => Ok(LayoutBoxSizing::BorderBox),
-        "content-box" => Ok(LayoutBoxSizing::ContentBox),
-        value => unsupported(node, "box-sizing", value),
-    }
-}
-
-fn parse_dimension(
-    node: NodeId,
-    property: &'static str,
-    value: &str,
-) -> Result<LayoutDimension, StyleLayoutError> {
-    if value == "auto" {
-        return Ok(LayoutDimension::Auto);
-    }
-    parse_css_px(node, property, value).map(LayoutDimension::Fixed)
-}
-
-fn parse_flex_direction(node: NodeId, value: &str) -> Result<FlexDirection, StyleLayoutError> {
-    match value {
-        "row" => Ok(FlexDirection::Row),
-        "column" => Ok(FlexDirection::Column),
-        value => unsupported(node, "flex-direction", value),
-    }
-}
-
-fn parse_direction(node: NodeId, value: &str) -> Result<TextDirection, StyleLayoutError> {
-    match value {
-        "ltr" => Ok(TextDirection::Ltr),
-        "rtl" => Ok(TextDirection::Rtl),
-        value => unsupported(node, "direction", value),
-    }
-}
-
-fn parse_number(
-    node: NodeId,
-    property: &'static str,
-    value: &str,
-) -> Result<f32, StyleLayoutError> {
-    let parsed = value
-        .parse::<f32>()
-        .ok()
-        .filter(|number| number.is_finite() && *number >= 0.0);
-    parsed.ok_or_else(|| unsupported_value(node, property, value))
-}
-
-fn parse_gap(node: NodeId, property: &'static str, value: &str) -> Result<f32, StyleLayoutError> {
-    if value == "normal" {
-        return Ok(0.0);
-    }
-    parse_css_px(node, property, value)
-}
-
-fn parse_css_px(
-    node: NodeId,
-    property: &'static str,
-    value: &str,
-) -> Result<f32, StyleLayoutError> {
-    let Some(number) = value.strip_suffix("px") else {
-        return unsupported(node, property, value);
-    };
-    let parsed = number
-        .parse::<f32>()
-        .ok()
-        .filter(|number| number.is_finite() && *number >= 0.0);
-    parsed.ok_or_else(|| unsupported_value(node, property, value))
-}
-
-fn parse_css_margin(
-    node: NodeId,
-    property: &'static str,
-    value: &str,
-) -> Result<f32, StyleLayoutError> {
-    let Some(number) = value.strip_suffix("px") else {
-        return unsupported(node, property, value);
-    };
-    let parsed = number
-        .parse::<f32>()
-        .ok()
-        .filter(|number| number.is_finite());
-    parsed.ok_or_else(|| unsupported_value(node, property, value))
-}
-
-fn unsupported<T>(
-    node: NodeId,
-    property: &'static str,
-    value: &str,
-) -> Result<T, StyleLayoutError> {
-    Err(unsupported_value(node, property, value))
-}
-
-fn unsupported_value(node: NodeId, property: &'static str, value: &str) -> StyleLayoutError {
-    StyleLayoutError::UnsupportedComputedValue {
-        node,
-        property,
-        value: value.to_owned(),
+        if let Some(children) = snapshot.children(handle) {
+            pending.extend(children.map(|child| (child, hidden)));
+        }
     }
 }
 

@@ -170,4 +170,6 @@ pub enum ComputedStyleProfile {
     FlexAlignmentCascadeLayersV1,
     /// S04의 Flex layout 속성과 불투명 `#RRGGBB` 배경 페인트입니다.
     S04FlexPaintV1,
+    /// C04 runtime UA snapshot과 제한 CSS layout 입력을 한 cascade에서 계산합니다.
+    RuntimeFlexLayoutV1,
 }
