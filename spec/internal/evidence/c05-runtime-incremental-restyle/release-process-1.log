@@ -1,0 +1,22 @@
+    Finished `release` profile [optimized] target(s) in 0.06s
+     Running unittests src/lib.rs (target/release/deps/spinon_runtime-6723e09623aaf652)
+
+running 1 test
+test session::ua_cascade::incremental_benchmark::c05_runtime_incremental_restyle_release_benchmark ... C05.4 release worker nodes=16 samples=30 full_cascade_p50_p95_us=73.0/105.0 incremental_cascade_p50_p95_us=73.0/119.0 full_layout_scene_p50_p95_us=20.0/39.0 incremental_layout_scene_p50_p95_us=20.0/42.0 full_request_p50_p95_us=105.4/154.8 incremental_request_p50_p95_us=106.1/184.6 full_recomputed=16 incremental_recomputed=2 incremental_reused=14 incremental_context=1
+C05.4 release worker nodes=256 samples=30 full_cascade_p50_p95_us=944.0/999.0 incremental_cascade_p50_p95_us=835.0/903.0 full_layout_scene_p50_p95_us=419.0/481.0 incremental_layout_scene_p50_p95_us=406.0/486.0 full_request_p50_p95_us=1499.1/1625.6 incremental_request_p50_p95_us=1376.5/1558.9 full_recomputed=256 incremental_recomputed=2 incremental_reused=254 incremental_context=1
+C05.4 release worker nodes=2048 samples=30 full_cascade_p50_p95_us=7608.0/7841.0 incremental_cascade_p50_p95_us=6583.0/6959.0 full_layout_scene_p50_p95_us=4033.0/4123.0 incremental_layout_scene_p50_p95_us=4079.0/4244.0 full_request_p50_p95_us=12912.5/13113.3 incremental_request_p50_p95_us=11937.6/12442.3 full_recomputed=2048 incremental_recomputed=2 incremental_reused=2046 incremental_context=1
+ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 112 filtered out; finished in 1.01s
+
+     Running tests/priority_policy_comparison.rs (target/release/deps/priority_policy_comparison-cbf2c0d49a890f78)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/release/deps/s03_node_lifecycle_contract-5528bee3b096123b)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s

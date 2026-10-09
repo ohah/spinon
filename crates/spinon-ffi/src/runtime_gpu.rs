@@ -21,6 +21,8 @@ const RUNTIME_CSS_REGISTERED_PROPERTIES_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c05/runtime-registered-properties.js");
 const RUNTIME_CSS_RESULT_CACHE_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c05/runtime-result-cache.js");
+const RUNTIME_CSS_INCREMENTAL_RESTYLE_FIXTURE_SOURCE: &str =
+    include_str!("../../../tests/fixtures/css/c05/runtime-incremental-restyle-runtime.js");
 
 #[repr(C)]
 pub struct SpinonRuntimeGpuHost {
@@ -164,6 +166,16 @@ impl RuntimeGpuHost {
                 "요청 key와 완료 key가 달라 오래된 장면을 거부했습니다".to_owned(),
             ));
         }
+        let cascade_snapshot = self.session.ua_cascade_snapshot();
+        let Some(cascade_completed) = cascade_snapshot
+            .completed
+            .filter(|cascade| cascade.key == completed.key)
+        else {
+            return Err((
+                ERR_STALE,
+                "layout과 같은 revision의 cascade 결과가 없습니다".to_owned(),
+            ));
+        };
         let Some(scene) = completed.render_snapshot.clone() else {
             return Err((
                 ERR_LAYOUT,
@@ -204,7 +216,7 @@ impl RuntimeGpuHost {
             .map(|frame| format!(" root_frame_css_px={}x{}", frame.width, frame.height))
             .unwrap_or_default();
         Ok(format!(
-            "layout={} boxes={} generation={} document_revision={} render_tree_revision={} style_revision={} environment_revision={} cacheHit={}{}{}",
+            "layout={} boxes={} generation={} document_revision={} render_tree_revision={} style_revision={} environment_revision={} cacheHit={} cascadeRecomputedStyleElements={} cascadeReusedStyleElements={} cascadeContextStyleElements={}{}{}",
             snapshot.state.as_str(),
             box_count,
             completed.key.generation,
@@ -213,6 +225,9 @@ impl RuntimeGpuHost {
             completed.key.style_revision,
             completed.key.environment_revision,
             completed.cache_hit,
+            cascade_completed.cascade_recomputed_style_elements,
+            cascade_completed.cascade_reused_style_elements,
+            cascade_completed.cascade_context_style_elements,
             root_frame,
             render_root,
         ))

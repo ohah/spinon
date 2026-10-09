@@ -46,6 +46,10 @@ fn request(document: &HostDocument) -> WorkRequest {
             environment_revision: EnvironmentRevision::INITIAL,
             media_environment: CssMediaEnvironment::MOBILE,
         },
+        previous_snapshot: None,
+        force_full: true,
+        invalidation: None,
+        previous_styles: None,
     }
 }
 

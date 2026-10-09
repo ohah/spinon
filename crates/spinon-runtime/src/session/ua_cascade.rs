@@ -18,11 +18,21 @@ mod cache_tests;
 mod calculation;
 mod environment;
 #[cfg(test)]
+mod incremental_benchmark;
+mod invalidation;
+#[cfg(test)]
+mod invalidation_runtime_tests;
+#[cfg(test)]
+mod invalidation_test_support;
+#[cfg(test)]
+mod invalidation_tests;
+#[cfg(test)]
 mod registered_properties_tests;
 mod runtime_layout;
 use cache::RuntimeCalculationCacheEntry;
 #[cfg(test)]
 use cache::RuntimeCalculationCacheKey;
+use cache::RuntimeStyleCacheEntry;
 use calculation::{
     RuntimeCalculation, compute_request, compute_request_for_registered_properties_gpu,
     compute_request_for_runtime_gpu,
@@ -103,6 +113,9 @@ pub struct RuntimeUaCascadeCompleted {
     pub roots: Arc<[RuntimeUaCascadeRoot]>,
     pub computation_duration_us: u128,
     pub cache_hit: bool,
+    pub cascade_recomputed_style_elements: u64,
+    pub cascade_reused_style_elements: u64,
+    pub cascade_context_style_elements: u64,
 }
 
 #[derive(Clone, Debug, PartialEq)]
@@ -117,6 +130,10 @@ struct WorkRequest {
     key: RuntimeUaCascadeKey,
     snapshot: Arc<HostDocumentSnapshot>,
     viewport: CssViewport,
+    previous_snapshot: Option<Arc<HostDocumentSnapshot>>,
+    force_full: bool,
+    invalidation: Option<invalidation::RuntimeStyleInvalidation>,
+    previous_styles: Option<Arc<[RuntimeUaCascadeRoot]>>,
 }
 
 type CascadeComputer = dyn Fn(&WorkRequest) -> Result<RuntimeCalculation, String> + Send + Sync;
@@ -248,8 +265,8 @@ impl RuntimeUaCascadeHandle {
         if state.closing {
             return Err(RuntimeUaCascadeError::Closed);
         }
-        state.document = Some(snapshot);
-        request_latest(&self.shared, &mut state);
+        let previous = state.document.replace(Arc::clone(&snapshot));
+        request_latest(&self.shared, &mut state, previous, false);
         Ok(())
     }
 
@@ -295,7 +312,7 @@ impl RuntimeUaCascadeHandle {
             revision,
             ..candidate
         });
-        request_latest(&self.shared, &mut state);
+        request_latest(&self.shared, &mut state, None, true);
         Ok(revision)
     }
 
@@ -310,7 +327,12 @@ impl RuntimeUaCascadeHandle {
     }
 }
 
-fn request_latest(shared: &Shared, state: &mut State) {
+fn request_latest(
+    shared: &Shared,
+    state: &mut State,
+    previous_snapshot: Option<Arc<HostDocumentSnapshot>>,
+    force_full: bool,
+) {
     let (Some(environment), Some(snapshot)) = (state.environment, state.document.as_ref()) else {
         state.status = RuntimeUaCascadeState::NotConfigured;
         state.requested = None;
@@ -340,10 +362,28 @@ fn request_latest(shared: &Shared, state: &mut State) {
         return;
     }
     state.status = RuntimeUaCascadeState::Pending;
+    let (previous_snapshot, force_full) = match state.pending.take() {
+        Some(pending) => {
+            let contiguous = previous_snapshot.as_ref().is_some_and(|previous| {
+                pending.snapshot.generation() == previous.generation()
+                    && pending.snapshot.document_revision() == previous.document_revision()
+            });
+            if contiguous {
+                (pending.previous_snapshot, force_full || pending.force_full)
+            } else {
+                (None, true)
+            }
+        }
+        None => (previous_snapshot, force_full),
+    };
     state.pending = Some(WorkRequest {
         key,
         snapshot: Arc::clone(snapshot),
         viewport: environment.viewport(),
+        previous_snapshot,
+        force_full,
+        invalidation: None,
+        previous_styles: None,
     });
     shared.wake.notify_all();
 }
@@ -364,8 +404,9 @@ fn key_for(
 fn worker_loop(shared: Arc<Shared>, ready: mpsc::SyncSender<()>, compute: Arc<CascadeComputer>) {
     let _ = ready.send(());
     let mut cache: Option<RuntimeCalculationCacheEntry> = None;
+    let mut style_cache: Option<RuntimeStyleCacheEntry> = None;
     loop {
-        let request = {
+        let mut request = {
             let mut state = lock(&shared.state);
             while state.pending.is_none() && !state.closing {
                 state = shared
@@ -381,17 +422,43 @@ fn worker_loop(shared: Arc<Shared>, ready: mpsc::SyncSender<()>, compute: Arc<Ca
                 .take()
                 .expect("대기 중인 cascade 요청이 있어야 합니다")
         };
+        request.invalidation = Some(if request.force_full {
+            invalidation::RuntimeStyleInvalidation::Full
+        } else {
+            invalidation::classify_style_invalidation(
+                request.previous_snapshot.as_deref(),
+                &request.snapshot,
+            )
+        });
+        request.previous_snapshot = None;
+        request.previous_styles = style_cache
+            .as_ref()
+            .and_then(|entry| entry.styles_for_request(&request));
         let cached = cache.as_ref().and_then(|entry| entry.rekey_for(&request));
         if cached.is_none() {
             cache = None;
         }
         if let Some(calculation) = cached {
-            publish_result(&shared, &request, Ok(calculation), true, &mut cache);
+            publish_result(
+                &shared,
+                &request,
+                Ok(calculation),
+                true,
+                &mut cache,
+                &mut style_cache,
+            );
             continue;
         }
         let result = catch_unwind(AssertUnwindSafe(|| compute(&request)));
         match result {
-            Ok(computed) => publish_result(&shared, &request, computed, false, &mut cache),
+            Ok(computed) => publish_result(
+                &shared,
+                &request,
+                computed,
+                false,
+                &mut cache,
+                &mut style_cache,
+            ),
             Err(_) => {
                 fail_worker(&shared, "CSS runtime worker 내부에서 panic이 발생했습니다");
                 return;
@@ -406,6 +473,7 @@ fn publish_result(
     computed: Result<RuntimeCalculation, String>,
     cache_hit: bool,
     cache: &mut Option<RuntimeCalculationCacheEntry>,
+    style_cache: &mut Option<RuntimeStyleCacheEntry>,
 ) {
     let key = request.key;
     let mut state = lock(&shared.state);
@@ -422,6 +490,7 @@ fn publish_result(
                     calculation.clone(),
                 ));
             }
+            *style_cache = RuntimeStyleCacheEntry::new(request, &calculation);
             state.status = if calculation.roots.is_empty() {
                 RuntimeUaCascadeState::Empty
             } else {
@@ -432,6 +501,9 @@ fn publish_result(
                 roots: Arc::clone(&calculation.roots),
                 computation_duration_us: calculation.cascade_duration_us,
                 cache_hit,
+                cascade_recomputed_style_elements: calculation.cascade_recomputed_style_elements,
+                cascade_reused_style_elements: calculation.cascade_reused_style_elements,
+                cascade_context_style_elements: calculation.cascade_context_style_elements,
             }));
             state.error = None;
             state.layout_diagnostics = calculation.layout_diagnostics;
@@ -455,6 +527,7 @@ fn publish_result(
             }
         }
         Err(error) => {
+            *style_cache = None;
             state.status = RuntimeUaCascadeState::Failed;
             state.completed = None;
             state.error = Some(error);

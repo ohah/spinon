@@ -45,6 +45,7 @@
 | [0033 · C04.11 런타임 문서 author stylesheet](0033-c04-runtime-author-stylesheets.md) | 연결된 HTML `<style>` source 수집, Stylo origin/source order, C05.1 runtime custom properties·WGPU cascade 및 숨긴 style text 처리 | 미출시 내부 계약 `0.1.0` 고정 · Chromium 비교, Rust workspace, Android API 37·iOS 26.2 Simulator 검증 완료 · 공개 CSS 지원 아님 |
 | [0034 · C05.2 Runtime CSS `@property` 등록](0034-c05-runtime-registered-properties.md) | 연결 HTML `<style>`의 registered custom properties, Stylo profile 경계, revision별 수명과 제한 layout·paint 연결 | 미출시 내부 계약 `0.1.0` 고정 · Android API 37/iOS 26.2 Simulator 검증 완료 · 공개 CSS 지원 아님 |
 | [0035 · C05.3 연결 장면 불변 결과 재사용](0035-c05-runtime-result-cache.md) | worker-local 단일 계산 결과 cache, DocumentRevision 재발행, viewport/media 무효화 및 immutable payload 공유 | 미출시 내부 계약 `0.1.0` 고정 · Android API 37/iOS 26.2 Simulator, Rust release 반복 측정 완료 · 공개 API 아님 |
+| [0036 · C05.4 runtime 하위 트리 cascade 재계산](0036-c05-runtime-incremental-restyle.md) | author stylesheet가 없는 단일 연결 root에서 namespace 없는 HTML inline `style` 변경만 dirty subtree Stylo cascade로 처리하고 나머지 직렬화 출력 재사용 | 미출시 내부 계약 `0.1.0` 고정 · Android API 37 emulator/iOS 26.2 Simulator, Chromium fixture 및 Rust release worker 비교 · 공개 API 아님 |
 | [R13 · 플랫폼 생명주기·GPU 복구](r13-platform-gpu-recovery.md) | wgpu 실험 ABI, 플랫폼 표면 수명과 복구 경계 | 실험 전용 |
 
 C04.10 검토 기록: [PR 변경 검토](evidence/c04-runtime-css-to-gpu-pr-review-2026-10-10.md) · [계획 검토](evidence/c04-runtime-css-to-gpu-plan-review-revised-2026-10-09.md) · [UIKit surface 스레드 분리 계획 재검토](evidence/c04-runtime-css-to-gpu-plan-surface-thread-review-2026-10-09.md) · [resize 계획 재검토](evidence/c04-runtime-css-to-gpu-resize-plan-review-revised-2026-10-09.md) · [대기열·종료·실패 보완 계획 검토](evidence/c04-runtime-css-to-gpu-queue-plan-review-2026-10-09.md) · [구현 전 Chromium 비교 기준](evidence/c04-runtime-css-to-gpu-precomparison-2026-10-09.md) · [resize 사전 기준](evidence/c04-runtime-css-to-gpu-resize-precomparison-2026-10-09.md).
@@ -54,6 +55,10 @@ C05.1 검토와 실행 기록: [구현 전 계획 검토](evidence/c05-runtime-c
 C04.11 계획·구현 검토와 실행 기록: [계획 20개 실패 관점 검토](evidence/c04-runtime-author-stylesheets-plan-review-2026-10-10.md) · [구현 전 Chromium 비교 기준](evidence/c04-runtime-author-stylesheets-precomparison-2026-10-10.md) · [구현 20개 실패 관점 검토와 Simulator 근거](evidence/c04-runtime-author-stylesheets-2026-10-10.md).
 
 C05.2 계획·구현 검토와 실행 기록: [계획 실패 관점 검토](evidence/c05-runtime-registered-properties-plan-review-2026-10-10.md) · [구현 전 Chromium 기준](evidence/c05-runtime-registered-properties-precomparison-2026-10-10.md) · [구현 실패 관점 검토와 Android·iOS Simulator 근거](evidence/c05-runtime-registered-properties-implementation-review-2026-10-10.md).
+
+C05.3 계획·구현 검토와 실행 기록: [계획 실패 관점 검토](evidence/c05-runtime-result-cache-plan-review-2026-10-10.md) · [구현 전 Chromium 기준](evidence/c05-runtime-result-cache-precomparison-2026-10-10.md) · [구현 실패 관점 검토·release 측정·Android/iOS Simulator 근거](evidence/c05-runtime-result-cache-implementation-review-2026-10-10.md).
+
+C05.4 계획·구현 검토와 실행 기록: [계획 실패 관점 검토](evidence/c05-runtime-incremental-restyle-plan-review-2026-10-10.md) · [구현 전 Chromium 기준](evidence/c05-runtime-incremental-restyle-precomparison-2026-10-10.md) · [구현 실패 관점 검토·release 측정·Android/iOS Simulator 근거](evidence/c05-runtime-incremental-restyle-implementation-review-2026-10-10.md).
 
 ## 검증 기록
 

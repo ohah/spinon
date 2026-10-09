@@ -230,6 +230,9 @@ fn completed_json(completed: &RuntimeUaCascadeCompleted) -> Value {
         "key": key_json(completed.key),
         "computationDurationUs": completed.computation_duration_us,
         "cacheHit": completed.cache_hit,
+        "cascadeRecomputedStyleElements": completed.cascade_recomputed_style_elements,
+        "cascadeReusedStyleElements": completed.cascade_reused_style_elements,
+        "cascadeContextStyleElements": completed.cascade_context_style_elements,
         "roots": roots,
     })
 }
@@ -308,6 +311,9 @@ mod tests {
             roots: Vec::new().into(),
             computation_duration_us: 0,
             cache_hit: true,
+            cascade_recomputed_style_elements: 0,
+            cascade_reused_style_elements: 0,
+            cascade_context_style_elements: 0,
         });
         assert_eq!(json["cacheHit"], true);
         assert_eq!(json["computationDurationUs"], 0);

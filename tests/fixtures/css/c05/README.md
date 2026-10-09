@@ -25,3 +25,9 @@ node tools/css-reference/verify-c05-runtime-registered-properties-multi-root.mjs
 ## C05.3 재계산 cache 사전 비교
 
 `bun run css:verify:c05-result-cache-precomparison`은 기존 C05.2 HTML에서 문서에 연결하지 않은 노드의 style을 바꿔도 연결된 세 노드의 computed width와 geometry가 고정되는지 Chromium으로 확인한다. 이는 cache 도입 전 CSS 기준이며 runtime cache가 구현되었다는 뜻은 아니다.
+
+## C05.4 하위 트리 restyle
+
+`runtime-incremental-restyle.html`과 `runtime-incremental-restyle.js`는 author stylesheet 없이 inline 사용자 지정 속성의 상속만 사용하는 Chromium 비교 입력이다. 두 번째 실행에서 왼쪽 branch의 style을 바꾸면 그 자손의 computed width는 `32px → 46px`, 오른쪽 branch의 너비와 위치는 유지되어야 한다. 고정 Chrome `154.0.8037.98` 관찰은 `tests/fixtures/css/references/c05-runtime-incremental-restyle-v1.json`에 두며 capture/검증 도구가 fixture와 실행 도구 hash를 확인한다.
+
+`runtime-incremental-restyle-runtime.js`는 같은 두 branch 변경을 실제 V8·HostDocument에 적용하는 모바일 fixture다. Chromium 비교 입력과 DOM을 따로 만드는 이유는 browser document 생성과 HostDocument fixture 초기화 경계가 다르기 때문이다. 두 입력은 변경 값과 기대 geometry를 공유한다. author stylesheet, selector, 구조·text·다른 속성 변경은 이 증분 경로의 대상이 아니며 전체 계산으로 되돌린다.
