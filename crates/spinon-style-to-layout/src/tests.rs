@@ -9,7 +9,10 @@ use spinon_layout::LayoutSourceRevision;
 use spinon_style::{CssCascadeError, CssOrigin, CssViewport, StylesheetSource, StyloDocumentView};
 use style::context::QuirksMode;
 
-use crate::{StyleLayoutError, compute_flex_alignment_style_layout, compute_style_layout};
+use crate::{
+    StyleLayoutError, compute_flex_alignment_layers_style_layout,
+    compute_flex_alignment_style_layout, compute_style_layout,
+};
 
 const HTML: &str = "http://www.w3.org/1999/xhtml";
 const FIXTURE_JSON: &str = concat!(
@@ -27,6 +30,14 @@ pub(super) const FLEX_ALIGNMENT_INPUT: &str = concat!(
 pub(super) const FLEX_ALIGNMENT_REFERENCE: &str = concat!(
     env!("CARGO_MANIFEST_DIR"),
     "/../../tests/fixtures/css/references/c04-flex-alignment-v1.json"
+);
+pub(super) const FLEX_ALIGNMENT_LAYERS_INPUT: &str = concat!(
+    env!("CARGO_MANIFEST_DIR"),
+    "/../../tests/fixtures/css/c04/cascade-layers.v1.json"
+);
+pub(super) const FLEX_ALIGNMENT_LAYERS_REFERENCE: &str = concat!(
+    env!("CARGO_MANIFEST_DIR"),
+    "/../../tests/fixtures/css/references/c04-cascade-layers-v1.json"
 );
 
 pub(super) struct DocumentFixture {
@@ -163,6 +174,22 @@ impl DocumentFixture {
             });
         }
         compute_flex_alignment_style_layout(
+            &self.document.snapshot(),
+            &self.view(),
+            self.root,
+            &stylesheets,
+            self.viewport(),
+            StyleRevision::default(),
+        )
+    }
+
+    pub(super) fn compute_flex_alignment_layers(
+        &self,
+        author_stylesheets: &[StylesheetSource],
+    ) -> Result<crate::StyleLayoutOutput, StyleLayoutError> {
+        let mut stylesheets = vec![self.stylesheet()];
+        stylesheets.extend_from_slice(author_stylesheets);
+        compute_flex_alignment_layers_style_layout(
             &self.document.snapshot(),
             &self.view(),
             self.root,

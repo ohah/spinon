@@ -77,6 +77,8 @@ pub enum ComputedStyleProfile {
     FlexLayoutV1,
     /// C04.3의 Flex 입력과 제한 정렬 속성입니다.
     FlexAlignmentV1,
+    /// C04.4의 Flex 정렬 입력과 제한 Cascade Layers입니다.
+    FlexAlignmentCascadeLayersV1,
     /// S04의 Flex layout 속성과 불투명 `#RRGGBB` 배경 페인트입니다.
     S04FlexPaintV1,
 }

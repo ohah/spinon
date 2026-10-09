@@ -8,7 +8,8 @@ use spinon_layout::{
 };
 use spinon_style::{
     ComputedStyleProfile, ComputedStyleSnapshot, CssViewport, StylesheetSource, StyloDocumentView,
-    compute_flex_alignment_cascade, compute_flex_layout_cascade, compute_s04_flex_paint_cascade,
+    compute_flex_alignment_cascade, compute_flex_alignment_layers_cascade,
+    compute_flex_layout_cascade, compute_s04_flex_paint_cascade,
 };
 
 use crate::StyleLayoutError;
@@ -60,6 +61,26 @@ pub fn compute_flex_alignment_style_layout(
     )
 }
 
+/// C04.4 profile로 CSS Cascade Layers를 포함한 제한 Flex 정렬과 레이아웃을 계산합니다.
+pub fn compute_flex_alignment_layers_style_layout(
+    snapshot: &HostDocumentSnapshot,
+    view: &StyloDocumentView,
+    root: HostNodeHandle,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    compute_profile_layout(
+        snapshot,
+        view,
+        root,
+        author_stylesheets,
+        viewport,
+        style_revision,
+        ComputedStyleProfile::FlexAlignmentCascadeLayersV1,
+    )
+}
+
 /// S04 새 paint profile만 대상으로 계산 style과 Taffy layout을 연결합니다.
 pub fn compute_s04_style_layout(
     snapshot: &HostDocumentSnapshot,
@@ -97,6 +118,14 @@ fn compute_profile_layout(
         }
         ComputedStyleProfile::FlexAlignmentV1 => {
             compute_flex_alignment_cascade(view, author_stylesheets, viewport, style_revision)?
+        }
+        ComputedStyleProfile::FlexAlignmentCascadeLayersV1 => {
+            compute_flex_alignment_layers_cascade(
+                view,
+                author_stylesheets,
+                viewport,
+                style_revision,
+            )?
         }
         ComputedStyleProfile::S04FlexPaintV1 => {
             compute_s04_flex_paint_cascade(view, author_stylesheets, viewport, style_revision)?
@@ -220,13 +249,15 @@ fn project_styles(
             flex_direction: parse_flex_direction(node, required(element, "flex-direction")?)?,
             direction: parse_direction(node, required(element, "direction")?)?,
             align_items: match snapshot.profile {
-                ComputedStyleProfile::FlexAlignmentV1 => {
+                ComputedStyleProfile::FlexAlignmentV1
+                | ComputedStyleProfile::FlexAlignmentCascadeLayersV1 => {
                     parse_align_items(node, required(element, "align-items")?)?
                 }
                 _ => LayoutStyle::default().align_items,
             },
             justify_content: match snapshot.profile {
-                ComputedStyleProfile::FlexAlignmentV1 => {
+                ComputedStyleProfile::FlexAlignmentV1
+                | ComputedStyleProfile::FlexAlignmentCascadeLayersV1 => {
                     parse_justify_content(node, required(element, "justify-content")?)?
                 }
                 _ => LayoutStyle::default().justify_content,

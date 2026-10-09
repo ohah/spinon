@@ -218,6 +218,23 @@ pub fn compute_flex_alignment_cascade(
     )
 }
 
+/// C04.4의 Cascade Layers를 허용하는 제한 Flex alignment snapshot을 계산합니다.
+pub fn compute_flex_alignment_layers_cascade(
+    view: &StyloDocumentView,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+) -> Result<ComputedStyleSnapshot, CssCascadeError> {
+    compute_cascade(
+        view,
+        author_stylesheets,
+        viewport,
+        style_revision,
+        FLEX_ALIGNMENT_PROPERTIES,
+        ComputedStyleProfile::FlexAlignmentCascadeLayersV1,
+    )
+}
+
 /// S04 고정 fixture용 Flex layout 및 불투명 배경색 계산 style을 계산합니다.
 pub fn compute_s04_flex_paint_cascade(
     view: &StyloDocumentView,
@@ -267,11 +284,19 @@ fn compute_cascade(
     let allowed_author_properties = match profile {
         ComputedStyleProfile::BasicCascadeV1 => None,
         ComputedStyleProfile::FlexLayoutV1 => Some(FLEX_LAYOUT_AUTHOR_PROPERTIES),
-        ComputedStyleProfile::FlexAlignmentV1 => Some(FLEX_ALIGNMENT_AUTHOR_PROPERTIES),
+        ComputedStyleProfile::FlexAlignmentV1
+        | ComputedStyleProfile::FlexAlignmentCascadeLayersV1 => {
+            Some(FLEX_ALIGNMENT_AUTHOR_PROPERTIES)
+        }
         ComputedStyleProfile::S04FlexPaintV1 => Some(s04::S04_FLEX_PAINT_AUTHOR_PROPERTIES),
     };
     if let Some(allowed) = allowed_author_properties
-        && let Some((stylesheet_id, feature)) = registry.first_unsupported_author_feature(allowed)
+        && let Some((stylesheet_id, feature)) =
+            if profile == ComputedStyleProfile::FlexAlignmentCascadeLayersV1 {
+                registry.first_unsupported_author_feature_with_layers(allowed)
+            } else {
+                registry.first_unsupported_author_feature(allowed)
+            }
     {
         return Err(CssCascadeError::UnsupportedAuthorCss {
             stylesheet_id,

@@ -11,3 +11,4 @@
 | [개발 경험 계획](developer-experience.md) | CLI·HMR·Inspector·미리보기·MCP |
 | [계획 적대적 검토](audit.md) | 계획 문서의 의존성·범위·완료 관문 검토 |
 | [C04.3 Flex 정렬 전달](../../plan/c04-flex-alignment.md) | Stylo 계산값을 Taffy Flex 정렬 입력으로 전달하는 내부 구현 slice |
+| [C04.4 CSS Cascade Layers](../../plan/c04-cascade-layers.md) | 제한된 Flex profile에서 named·anonymous·nested author layer cascade 순서를 구현하는 계획 |

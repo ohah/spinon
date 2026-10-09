@@ -15,8 +15,8 @@ pub use stylesheet_registry::{
 pub use stylo_dom::{
     CascadeDiagnostic, ComputedElementStyle, ComputedStyleProfile, ComputedStyleSnapshot,
     CssCascadeError, CssViewport, StyloDocument, StyloDocumentView, StyloDomError, StyloElement,
-    StyloNode, compute_flex_alignment_cascade, compute_flex_layout_cascade,
-    compute_s04_flex_paint_cascade,
+    StyloNode, compute_flex_alignment_cascade, compute_flex_alignment_layers_cascade,
+    compute_flex_layout_cascade, compute_s04_flex_paint_cascade,
 };
 
 /// 지원 HTML 요소 기본 스타일 프로필의 초안 식별자입니다.
