@@ -1,13 +1,18 @@
-use super::{RuntimeUaCascadeKey, WorkRequest, elapsed_microseconds};
+use super::{
+    RuntimeUaCascadeHandle, RuntimeUaCascadeKey, State, WorkRequest, elapsed_microseconds, lock,
+};
 use spinon_core::HostNodeHandle;
 use spinon_layout::{LayoutError, LayoutFrame, LayoutOutput};
+use spinon_render::RuntimeRenderSnapshot;
 use spinon_style::{
     CascadeDiagnostic, ComputedStyleSnapshot, StyloDocumentView,
+    first_unsupported_runtime_flex_paint_inline_property,
     first_unsupported_runtime_layout_inline_property,
 };
 use spinon_style_to_layout::{StyleLayoutError, compute_runtime_style_layout};
+use spinon_style_to_render::{CurrentLayoutInputs, build_runtime_render_snapshot};
 use std::sync::Arc;
-use std::time::Instant;
+use std::time::{Duration, Instant};
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum RuntimeLayoutState {
@@ -50,6 +55,7 @@ pub struct RuntimeLayoutFailure {
 pub struct RuntimeLayoutCompleted {
     pub key: RuntimeUaCascadeKey,
     pub frames: Vec<RuntimeLayoutFrame>,
+    pub render_snapshot: Option<RuntimeRenderSnapshot>,
     pub projection_duration_us: u128,
 }
 
@@ -62,17 +68,65 @@ pub struct RuntimeLayoutSnapshot {
     pub error: Option<RuntimeLayoutFailure>,
 }
 
+impl RuntimeUaCascadeHandle {
+    pub(in crate::session) fn layout_snapshot(&self) -> RuntimeLayoutSnapshot {
+        let state = lock(&self.shared.state);
+        layout_snapshot_from_state(&state)
+    }
+
+    pub(in crate::session) fn wait_for_layout_snapshot(
+        &self,
+        timeout: Duration,
+    ) -> RuntimeLayoutSnapshot {
+        let deadline = Instant::now() + timeout;
+        let mut state = lock(&self.shared.state);
+        while state.layout_status == RuntimeLayoutState::Pending && !state.closing {
+            let remaining = deadline.saturating_duration_since(Instant::now());
+            if remaining.is_zero() {
+                break;
+            }
+            let (next, timed_out) = self
+                .shared
+                .wake
+                .wait_timeout(state, remaining)
+                .unwrap_or_else(std::sync::PoisonError::into_inner);
+            state = next;
+            if timed_out.timed_out() {
+                break;
+            }
+        }
+        layout_snapshot_from_state(&state)
+    }
+}
+
+fn layout_snapshot_from_state(state: &State) -> RuntimeLayoutSnapshot {
+    RuntimeLayoutSnapshot {
+        state: state.layout_status,
+        requested: state.requested,
+        completed: state.layout_completed.clone(),
+        diagnostics: state.layout_diagnostics.clone(),
+        error: state.layout_error.clone(),
+    }
+}
+
 pub(super) type RuntimeLayoutContext = (HostNodeHandle, StyloDocumentView, ComputedStyleSnapshot);
 
 pub(super) fn compute_runtime_layout(
     request: &WorkRequest,
     root_count: usize,
     layout_context: Option<RuntimeLayoutContext>,
+    runtime_paint_enabled: bool,
 ) -> Result<RuntimeLayoutCompleted, RuntimeLayoutFailure> {
     if root_count == 0 {
+        let render_snapshot = if runtime_paint_enabled {
+            Some(empty_runtime_render_snapshot(request)?)
+        } else {
+            None
+        };
         return Ok(RuntimeLayoutCompleted {
             key: request.key,
             frames: Vec::new(),
+            render_snapshot,
             projection_duration_us: 0,
         });
     }
@@ -82,7 +136,12 @@ pub(super) fn compute_runtime_layout(
 
     let (root, view, styles) =
         layout_context.expect("단일 스타일 root의 layout 입력이 있어야 합니다");
-    if let Some((node, property)) = first_unsupported_runtime_layout_inline_property(&view) {
+    let unsupported_property = if runtime_paint_enabled {
+        first_unsupported_runtime_flex_paint_inline_property(&view)
+    } else {
+        first_unsupported_runtime_layout_inline_property(&view)
+    };
+    if let Some((node, property)) = unsupported_property {
         return Err(layout_failure(
             "unsupported_inline_property",
             Some(node.get()),
@@ -90,15 +149,61 @@ pub(super) fn compute_runtime_layout(
         ));
     }
     let projection_started = Instant::now();
+    if runtime_paint_enabled && !styles.diagnostics.is_empty() {
+        return Err(layout_failure("cascade_diagnostics", None, None));
+    }
     let output =
         compute_runtime_style_layout(&request.snapshot, root, styles.clone(), request.viewport)
             .map_err(layout_failure_from_error)?;
     let frames = runtime_frames(&request.snapshot, root, &styles, &output.layout)?;
+    let render_snapshot = if runtime_paint_enabled {
+        let current = CurrentLayoutInputs::for_host_document(
+            &request.snapshot,
+            styles.style_revision,
+            request.viewport,
+        );
+        Some(
+            build_runtime_render_snapshot(&request.snapshot, root, &output, current)
+                .map_err(|_| layout_failure("render_snapshot_failed", None, None))?,
+        )
+    } else {
+        None
+    };
     Ok(RuntimeLayoutCompleted {
         key: request.key,
         frames,
+        render_snapshot,
         projection_duration_us: elapsed_microseconds(projection_started),
     })
+}
+
+fn empty_runtime_render_snapshot(
+    request: &WorkRequest,
+) -> Result<RuntimeRenderSnapshot, RuntimeLayoutFailure> {
+    use spinon_render::{CssSize, RuntimeRenderKey};
+
+    if request.key.generation != request.snapshot.generation().get()
+        || request.key.document_revision != request.snapshot.document_revision().get()
+        || request.key.render_tree_revision != request.snapshot.render_tree_revision().get()
+        || request.key.style_revision != spinon_core::StyleRevision::INITIAL.get()
+        || request.key.environment_revision != request.viewport.environment_revision.get()
+    {
+        return Err(layout_failure("invalid_revision", None, None));
+    }
+    let key = RuntimeRenderKey::new(
+        request.snapshot.generation(),
+        request.snapshot.document_revision(),
+        request.snapshot.render_tree_revision(),
+        spinon_core::StyleRevision::INITIAL,
+        request.viewport.environment_revision,
+    );
+    let viewport = CssSize::new(
+        request.viewport.width_css_px,
+        request.viewport.height_css_px,
+    )
+    .map_err(|_| layout_failure("invalid_viewport", None, None))?;
+    RuntimeRenderSnapshot::new(key, viewport, Vec::new())
+        .map_err(|_| layout_failure("render_snapshot_failed", None, None))
 }
 
 fn runtime_frames(

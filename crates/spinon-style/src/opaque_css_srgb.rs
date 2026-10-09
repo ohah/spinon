@@ -8,6 +8,13 @@ pub struct OpaqueCssSrgb {
     pub blue: u8,
 }
 
+/// 런타임 단색 배경 페인트입니다. 완전 투명은 draw 생략으로 표현합니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum ComputedBackgroundPaint {
+    Transparent,
+    Opaque(OpaqueCssSrgb),
+}
+
 impl OpaqueCssSrgb {
     pub(crate) fn from_absolute_color(color: AbsoluteColor) -> Result<Self, &'static str> {
         let color = color.into_srgb_legacy();
@@ -21,6 +28,24 @@ impl OpaqueCssSrgb {
             green: to_srgb_byte(green)?,
             blue: to_srgb_byte(blue)?,
         })
+    }
+
+    pub(crate) fn runtime_paint_from_absolute_color(
+        color: AbsoluteColor,
+    ) -> Result<ComputedBackgroundPaint, &'static str> {
+        let color = color.into_srgb_legacy();
+        let [red, green, blue, alpha] = *color.raw_components();
+        if alpha == 0.0 {
+            return Ok(ComputedBackgroundPaint::Transparent);
+        }
+        if alpha != 1.0 {
+            return Err("computed background-color alpha가 0 또는 1이 아닙니다");
+        }
+        Ok(ComputedBackgroundPaint::Opaque(Self {
+            red: to_srgb_byte(red)?,
+            green: to_srgb_byte(green)?,
+            blue: to_srgb_byte(blue)?,
+        }))
     }
 }
 

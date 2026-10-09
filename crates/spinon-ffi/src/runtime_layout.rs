@@ -150,6 +150,7 @@ mod tests {
                 width: 30.0,
                 height: 40.0,
             }],
+            render_snapshot: None,
             projection_duration_us: 12,
         });
         assert_eq!(json["unit"], "css-px");

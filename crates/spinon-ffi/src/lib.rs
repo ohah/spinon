@@ -26,6 +26,8 @@ pub extern "C" fn spinon_embedded_ua_stylesheet_len() -> usize {
     UA_STYLESHEET.len()
 }
 
+#[cfg(feature = "c04-runtime-gpu")]
+mod runtime_gpu;
 pub(crate) mod runtime_layout;
 mod runtime_session;
 mod runtime_ua_cascade;

@@ -12,6 +12,8 @@
 		100000000000000000000004 /* RuntimeThreadExperimentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000008 /* RuntimeThreadExperimentViewController.swift */; };
 		100000000000000000000005 /* S04GpuDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000009 /* S04GpuDemo.swift */; };
 		100000000000000000000006 /* R05PresentationLedger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000010 /* R05PresentationLedger.swift */; };
+		100000000000000000000007 /* C0410RuntimeGpuDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000011 /* C0410RuntimeGpuDemo.swift */; };
+		100000000000000000000008 /* C0410LatestTaskLane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000012 /* C0410LatestTaskLane.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		200000000000000000000008 /* RuntimeThreadExperimentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeThreadExperimentViewController.swift; sourceTree = "<group>"; };
 		200000000000000000000009 /* S04GpuDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S04GpuDemo.swift; sourceTree = "<group>"; };
 		200000000000000000000010 /* R05PresentationLedger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R05PresentationLedger.swift; sourceTree = "<group>"; };
+		200000000000000000000011 /* C0410RuntimeGpuDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C0410RuntimeGpuDemo.swift; sourceTree = "<group>"; };
+		200000000000000000000012 /* C0410LatestTaskLane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C0410LatestTaskLane.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +50,8 @@
 				200000000000000000000001 /* AppDelegate.swift */,
 				200000000000000000000007 /* R08GpuDemo.swift */,
 				200000000000000000000010 /* R05PresentationLedger.swift */,
+				200000000000000000000011 /* C0410RuntimeGpuDemo.swift */,
+				200000000000000000000012 /* C0410LatestTaskLane.swift */,
 				200000000000000000000008 /* RuntimeThreadExperimentViewController.swift */,
 				200000000000000000000009 /* S04GpuDemo.swift */,
 				200000000000000000000002 /* SpinonRunner.mm */,
@@ -105,7 +111,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		500000000000000000000002 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (100000000000000000000001 /* AppDelegate.swift in Sources */, 100000000000000000000002 /* SpinonRunner.mm in Sources */, 100000000000000000000003 /* R08GpuDemo.swift in Sources */, 100000000000000000000004 /* RuntimeThreadExperimentViewController.swift in Sources */, 100000000000000000000005 /* S04GpuDemo.swift in Sources */, 100000000000000000000006 /* R05PresentationLedger.swift in Sources */,); runOnlyForDeploymentPostprocessing = 0; };
+		500000000000000000000002 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (100000000000000000000001 /* AppDelegate.swift in Sources */, 100000000000000000000002 /* SpinonRunner.mm in Sources */, 100000000000000000000003 /* R08GpuDemo.swift in Sources */, 100000000000000000000004 /* RuntimeThreadExperimentViewController.swift in Sources */, 100000000000000000000005 /* S04GpuDemo.swift in Sources */, 100000000000000000000006 /* R05PresentationLedger.swift in Sources */, 100000000000000000000007 /* C0410RuntimeGpuDemo.swift in Sources */, 100000000000000000000008 /* C0410LatestTaskLane.swift in Sources */,); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -134,7 +140,7 @@
 				ARCHS = arm64;
 				CODE_SIGN_STYLE = Automatic;
 				GENERATE_INFOPLIST_FILE = NO;
-				GCC_PREPROCESSOR_DEFINITIONS = ("$(inherited)", "SPINON_ENABLE_S04_IOS_FIXTURE=$(SPINON_ENABLE_S04_IOS_FIXTURE)", "SPINON_ENABLE_S03_DOM_GC_FIXTURE=$(SPINON_ENABLE_S03_DOM_GC_FIXTURE)",);
+				GCC_PREPROCESSOR_DEFINITIONS = ("$(inherited)", "SPINON_ENABLE_S04_IOS_FIXTURE=$(SPINON_ENABLE_S04_IOS_FIXTURE)", "SPINON_ENABLE_S03_DOM_GC_FIXTURE=$(SPINON_ENABLE_S03_DOM_GC_FIXTURE)", "SPINON_ENABLE_C04_RUNTIME_GPU=$(SPINON_ENABLE_C04_RUNTIME_GPU)", "SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE=$(SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE)",);
 				HEADER_SEARCH_PATHS = ("$(SRCROOT)/../../crates/spinon-ffi/include", "$(SRCROOT)/../../spikes/wgpu-backend/include",);
 				INFOPLIST_FILE = Sources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks",);
@@ -143,7 +149,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPINON_ENABLE_S04_IOS_FIXTURE = 0;
 				SPINON_ENABLE_S03_DOM_GC_FIXTURE = 0;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SPINON_ENABLE_S03_DOM_GC_FIXTURE_$(SPINON_ENABLE_S03_DOM_GC_FIXTURE)";
+				SPINON_ENABLE_C04_RUNTIME_GPU = 0;
+				SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE = 0;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SPINON_ENABLE_S03_DOM_GC_FIXTURE_$(SPINON_ENABLE_S03_DOM_GC_FIXTURE) SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE_$(SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE)";
 				"SPINON_V8_OUT[sdk=iphonesimulator*]" = boson-ios-sim;
 				"SPINON_V8_OUT[sdk=iphoneos*]" = boson-ios-device;
 				SWIFT_OBJC_BRIDGING_HEADER = Sources/SpinonBootstrap-Bridging-Header.h;
@@ -158,7 +166,7 @@
 				ARCHS = arm64;
 				CODE_SIGN_STYLE = Automatic;
 				GENERATE_INFOPLIST_FILE = NO;
-				GCC_PREPROCESSOR_DEFINITIONS = ("$(inherited)", "SPINON_ENABLE_S04_IOS_FIXTURE=$(SPINON_ENABLE_S04_IOS_FIXTURE)", "SPINON_ENABLE_S03_DOM_GC_FIXTURE=$(SPINON_ENABLE_S03_DOM_GC_FIXTURE)",);
+				GCC_PREPROCESSOR_DEFINITIONS = ("$(inherited)", "SPINON_ENABLE_S04_IOS_FIXTURE=$(SPINON_ENABLE_S04_IOS_FIXTURE)", "SPINON_ENABLE_S03_DOM_GC_FIXTURE=$(SPINON_ENABLE_S03_DOM_GC_FIXTURE)", "SPINON_ENABLE_C04_RUNTIME_GPU=$(SPINON_ENABLE_C04_RUNTIME_GPU)", "SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE=$(SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE)",);
 				HEADER_SEARCH_PATHS = ("$(SRCROOT)/../../crates/spinon-ffi/include", "$(SRCROOT)/../../spikes/wgpu-backend/include",);
 				INFOPLIST_FILE = Sources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks",);
@@ -167,7 +175,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPINON_ENABLE_S04_IOS_FIXTURE = 0;
 				SPINON_ENABLE_S03_DOM_GC_FIXTURE = 0;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SPINON_ENABLE_S03_DOM_GC_FIXTURE_$(SPINON_ENABLE_S03_DOM_GC_FIXTURE)";
+				SPINON_ENABLE_C04_RUNTIME_GPU = 0;
+				SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE = 0;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SPINON_ENABLE_S03_DOM_GC_FIXTURE_$(SPINON_ENABLE_S03_DOM_GC_FIXTURE) SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE_$(SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE)";
 				"SPINON_V8_OUT[sdk=iphonesimulator*]" = boson-ios-sim;
 				"SPINON_V8_OUT[sdk=iphoneos*]" = boson-ios-device;
 				SWIFT_OBJC_BRIDGING_HEADER = Sources/SpinonBootstrap-Bridging-Header.h;

@@ -11,7 +11,8 @@ use spinon_layout::{
 use spinon_style::{
     ComputedStyleProfile, ComputedStyleSnapshot, CssViewport, StylesheetSource, StyloDocumentView,
     compute_flex_alignment_cascade, compute_flex_alignment_layers_cascade,
-    compute_flex_layout_cascade, compute_flex_margin_cascade, compute_s04_flex_paint_cascade,
+    compute_flex_layout_cascade, compute_flex_margin_cascade, compute_runtime_flex_paint_cascade,
+    compute_s04_flex_paint_cascade,
 };
 
 use crate::StyleLayoutError;
@@ -168,6 +169,9 @@ fn compute_profile_layout(
         ComputedStyleProfile::S04FlexPaintV1 => {
             compute_s04_flex_paint_cascade(view, author_stylesheets, viewport, style_revision)?
         }
+        ComputedStyleProfile::RuntimeFlexPaintV1 => {
+            compute_runtime_flex_paint_cascade(view, viewport, style_revision)?
+        }
         ComputedStyleProfile::BasicCascadeV1 | ComputedStyleProfile::FlexMediaEnvironmentV1 => {
             return Err(StyleLayoutError::UnsupportedProfile {
                 profile: format!("{profile:?}"),
@@ -198,7 +202,9 @@ fn compute_layout_from_styles(
     let styles = project_styles(&computed_styles)?;
     if matches!(
         computed_styles.profile,
-        ComputedStyleProfile::FlexMarginV1 | ComputedStyleProfile::RuntimeFlexLayoutV1
+        ComputedStyleProfile::FlexMarginV1
+            | ComputedStyleProfile::RuntimeFlexLayoutV1
+            | ComputedStyleProfile::RuntimeFlexPaintV1
     ) && styles
         .get(&root.id())
         .is_some_and(|style| style.margin != LayoutEdges::default())
@@ -209,7 +215,10 @@ fn compute_layout_from_styles(
         width: viewport.width_css_px,
         height: viewport.height_css_px,
     };
-    let input = if computed_styles.profile == ComputedStyleProfile::RuntimeFlexLayoutV1 {
+    let input = if matches!(
+        computed_styles.profile,
+        ComputedStyleProfile::RuntimeFlexLayoutV1 | ComputedStyleProfile::RuntimeFlexPaintV1
+    ) {
         LayoutInput::from_host_document_with_viewport_containing_block(
             snapshot,
             root,
@@ -229,7 +238,10 @@ fn compute_layout_from_styles(
         )?
     };
     let mut layout = TaffyLayoutEngine.compute(&input)?;
-    if computed_styles.profile == ComputedStyleProfile::RuntimeFlexLayoutV1 {
+    if matches!(
+        computed_styles.profile,
+        ComputedStyleProfile::RuntimeFlexLayoutV1 | ComputedStyleProfile::RuntimeFlexPaintV1
+    ) {
         zero_display_none_frames(snapshot, root, &styles, &mut layout);
     }
     Ok(StyleLayoutOutput {

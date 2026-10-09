@@ -9,12 +9,19 @@ crate-type = ["staticlib", "rlib"]
 
 [features]
 r10-experiment = ["dep:spinon-style-layout-spike"]
+c04-runtime-gpu = ["dep:spinon-render-wgpu"]
+c04-runtime-gpu-test-hooks = ["c04-runtime-gpu", "spinon-render-wgpu/test-hooks"]
 
 [dependencies]
 spinon-style = { path = "../spinon-style" }
 spinon-runtime = { path = "../spinon-runtime" }
+spinon-render = { path = "../spinon-render" }
+spinon-render-wgpu = { path = "../spinon-render-wgpu", optional = true }
 spinon-style-layout-spike = { path = "../../spikes/style-layout", optional = true }
 serde_json = "1.0.151"
+
+[dev-dependencies]
+spinon-core = { path = "../spinon-core" }
 
 [lints.rust]
 unsafe_op_in_unsafe_fn = "deny"

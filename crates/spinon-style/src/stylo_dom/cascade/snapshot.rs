@@ -5,7 +5,7 @@ use spinon_core::{
     StyleRevision,
 };
 
-use crate::{CssParseDiagnostic, OpaqueCssSrgb};
+use crate::{ComputedBackgroundPaint, CssParseDiagnostic, OpaqueCssSrgb};
 
 /// CSS 계산에 적용할 viewport와 플랫폼 환경 snapshot 출처입니다.
 #[derive(Clone, Copy, Debug, PartialEq)]
@@ -130,6 +130,8 @@ pub struct ComputedElementStyle {
     pub properties: BTreeMap<String, String>,
     /// S04 paint profile에서만 설정하는 Stylo 계산 배경색입니다.
     pub background_color: Option<OpaqueCssSrgb>,
+    /// S04 또는 런타임 paint profile에서만 설정하는 투명/불투명 paint입니다.
+    pub background_paint: Option<ComputedBackgroundPaint>,
 }
 
 #[derive(Clone, Debug, Eq, PartialEq)]
@@ -172,4 +174,6 @@ pub enum ComputedStyleProfile {
     S04FlexPaintV1,
     /// C04 runtime UA snapshot과 제한 CSS layout 입력을 한 cascade에서 계산합니다.
     RuntimeFlexLayoutV1,
+    /// C04.10 runtime layout 입력과 완전 투명 또는 불투명 단색 배경 paint입니다.
+    RuntimeFlexPaintV1,
 }

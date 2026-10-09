@@ -1,12 +1,13 @@
 use std::{error::Error, fmt};
 
 use spinon_core::NodeId;
-use spinon_render::SnapshotError;
+use spinon_render::{RuntimeRenderError, SnapshotError};
 
 /// CSS, layout, HostDocument와의 일관성을 확인하지 못한 이유입니다.
 #[derive(Debug)]
 pub enum StyleRenderError {
     UnsupportedProfile,
+    UnsupportedRuntimeProfile,
     SnapshotMismatch { field: &'static str },
     CascadeDiagnostics,
     InvalidFixtureMetadata,
@@ -28,6 +29,7 @@ pub enum StyleRenderError {
     InvalidFrame(NodeId),
     PaintOrderOverflow,
     RenderSnapshot(SnapshotError),
+    RuntimeRender(RuntimeRenderError),
 }
 
 impl fmt::Display for StyleRenderError {
@@ -35,6 +37,9 @@ impl fmt::Display for StyleRenderError {
         match self {
             Self::UnsupportedProfile => {
                 formatter.write_str("S04FlexPaintV1 computed-style profile만 지원합니다")
+            }
+            Self::UnsupportedRuntimeProfile => {
+                formatter.write_str("RuntimeFlexPaintV1 computed-style profile만 지원합니다")
             }
             Self::SnapshotMismatch { field } => {
                 write!(
@@ -111,6 +116,7 @@ impl fmt::Display for StyleRenderError {
             }
             Self::PaintOrderOverflow => formatter.write_str("paint 순서가 u32 범위를 초과합니다"),
             Self::RenderSnapshot(error) => write!(formatter, "렌더 snapshot 검증 실패: {error}"),
+            Self::RuntimeRender(error) => write!(formatter, "runtime scene 검증 실패: {error}"),
         }
     }
 }
@@ -119,6 +125,7 @@ impl Error for StyleRenderError {
     fn source(&self) -> Option<&(dyn Error + 'static)> {
         match self {
             Self::RenderSnapshot(error) => Some(error),
+            Self::RuntimeRender(error) => Some(error),
             _ => None,
         }
     }
@@ -127,5 +134,11 @@ impl Error for StyleRenderError {
 impl From<SnapshotError> for StyleRenderError {
     fn from(error: SnapshotError) -> Self {
         Self::RenderSnapshot(error)
+    }
+}
+
+impl From<RuntimeRenderError> for StyleRenderError {
+    fn from(error: RuntimeRenderError) -> Self {
+        Self::RuntimeRender(error)
     }
 }

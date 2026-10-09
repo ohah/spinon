@@ -20,11 +20,20 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         let runPriorityProbe = arguments.contains("--spinon-priority-probe")
         let runShutdownProbe = arguments.contains("--spinon-shutdown-probe")
         let runUaCascadeProbe = arguments.contains("--spinon-c048-ua-cascade")
+        let runRuntimeGpu = arguments.contains("--spinon-c0410-runtime-gpu")
         let runR05AttributionProbe = arguments.contains("--spinon-r05-attribution")
         let runLifecycleProbe = arguments.contains("--spinon-dom-gc-auto")
         if runLifecycleProbe && !spinonS03DomGcFixtureEnabled {
             logger.error("SPINON_DOM_GC_FIXTURE_DISABLED · 검증 전용 빌드로 다시 빌드하세요")
         }
+        if runRuntimeGpu {
+            let window = UIWindow(frame: UIScreen.main.bounds)
+            window.rootViewController = C0410RuntimeGpuDemoViewController()
+            window.makeKeyAndVisible()
+            self.window = window
+            return true
+        }
+
         if arguments.contains("--spinon-runtime-threads") || runPriorityProbe || runShutdownProbe || runUaCascadeProbe || runR05AttributionProbe || runLifecycleProbe {
             let window = UIWindow(frame: UIScreen.main.bounds)
             window.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)

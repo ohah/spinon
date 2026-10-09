@@ -7,7 +7,7 @@ mod s04_color_syntax;
 mod stylesheet_registry;
 mod stylo_dom;
 
-pub use opaque_css_srgb::OpaqueCssSrgb;
+pub use opaque_css_srgb::{ComputedBackgroundPaint, OpaqueCssSrgb};
 pub use stylesheet_registry::{
     CssOrigin, CssParseDiagnostic, RegisteredStylesheet, StylesheetRegistry,
     StylesheetRegistryError, StylesheetSource,
@@ -19,7 +19,8 @@ pub use stylo_dom::{
     StyloNode, compute_flex_alignment_cascade, compute_flex_alignment_layers_cascade,
     compute_flex_layout_cascade, compute_flex_margin_cascade,
     compute_flex_media_environment_cascade, compute_runtime_flex_layout_cascade,
-    compute_s04_flex_paint_cascade, compute_supported_elements_ua_cascade,
+    compute_runtime_flex_paint_cascade, compute_s04_flex_paint_cascade,
+    compute_supported_elements_ua_cascade, first_unsupported_runtime_flex_paint_inline_property,
     first_unsupported_runtime_layout_inline_property,
 };
 

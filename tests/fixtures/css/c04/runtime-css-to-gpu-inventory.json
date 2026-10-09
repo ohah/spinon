@@ -1,0 +1,32 @@
+{
+  "schema": "spinon-css-runtime-gpu-inventory/v1",
+  "fixtureId": "C04-runtime-css-to-gpu-v1",
+  "viewport": {
+    "width": 301,
+    "height": 100,
+    "deviceScaleFactor": 1
+  },
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "pointer": "coarse",
+    "hover": "none"
+  },
+  "nodes": [
+    { "id": "root", "properties": ["display", "background-color"] },
+    { "id": "opaque", "properties": ["display", "background-color"] },
+    { "id": "transparent", "properties": ["display", "background-color"] },
+    { "id": "hidden", "properties": ["display", "background-color"] }
+  ],
+  "comparison": {
+    "computedValues": "문자열 정확 일치",
+    "nodeGeometry": {
+      "unit": "CSS px",
+      "perCoordinateMaximumAbsoluteError": 0.5,
+      "aggregateAveragesAllowed": false
+    },
+    "opaquePaint": "같은 draw pass의 offscreen 중심 표본을 sRGB 채널별 정확 비교",
+    "hiddenAndTransparent": "그리지 않음을 확인"
+  }
+}

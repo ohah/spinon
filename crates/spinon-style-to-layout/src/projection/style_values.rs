@@ -26,7 +26,8 @@ pub(super) fn project_styles(
             align_items: match snapshot.profile {
                 ComputedStyleProfile::FlexAlignmentV1
                 | ComputedStyleProfile::FlexAlignmentCascadeLayersV1
-                | ComputedStyleProfile::RuntimeFlexLayoutV1 => {
+                | ComputedStyleProfile::RuntimeFlexLayoutV1
+                | ComputedStyleProfile::RuntimeFlexPaintV1 => {
                     parse_align_items(node, required(element, "align-items")?)?
                 }
                 _ => LayoutStyle::default().align_items,
@@ -34,7 +35,8 @@ pub(super) fn project_styles(
             justify_content: match snapshot.profile {
                 ComputedStyleProfile::FlexAlignmentV1
                 | ComputedStyleProfile::FlexAlignmentCascadeLayersV1
-                | ComputedStyleProfile::RuntimeFlexLayoutV1 => {
+                | ComputedStyleProfile::RuntimeFlexLayoutV1
+                | ComputedStyleProfile::RuntimeFlexPaintV1 => {
                     parse_justify_content(node, required(element, "justify-content")?)?
                 }
                 _ => LayoutStyle::default().justify_content,
@@ -46,34 +48,27 @@ pub(super) fn project_styles(
                 column: parse_gap(node, "column-gap", required(element, "column-gap")?)?,
             },
             margin: match snapshot.profile {
-                ComputedStyleProfile::FlexMarginV1 | ComputedStyleProfile::RuntimeFlexLayoutV1 => {
-                    LayoutEdges {
-                        top: parse_css_margin(
-                            node,
-                            "margin-top",
-                            required(element, "margin-top")?,
-                        )?,
-                        right: parse_css_margin(
-                            node,
-                            "margin-right",
-                            required(element, "margin-right")?,
-                        )?,
-                        bottom: parse_css_margin(
-                            node,
-                            "margin-bottom",
-                            required(element, "margin-bottom")?,
-                        )?,
-                        left: parse_css_margin(
-                            node,
-                            "margin-left",
-                            required(element, "margin-left")?,
-                        )?,
-                    }
-                }
+                ComputedStyleProfile::FlexMarginV1
+                | ComputedStyleProfile::RuntimeFlexLayoutV1
+                | ComputedStyleProfile::RuntimeFlexPaintV1 => LayoutEdges {
+                    top: parse_css_margin(node, "margin-top", required(element, "margin-top")?)?,
+                    right: parse_css_margin(
+                        node,
+                        "margin-right",
+                        required(element, "margin-right")?,
+                    )?,
+                    bottom: parse_css_margin(
+                        node,
+                        "margin-bottom",
+                        required(element, "margin-bottom")?,
+                    )?,
+                    left: parse_css_margin(node, "margin-left", required(element, "margin-left")?)?,
+                },
                 _ => LayoutEdges::default(),
             },
             padding: match snapshot.profile {
-                ComputedStyleProfile::RuntimeFlexLayoutV1 => LayoutEdges {
+                ComputedStyleProfile::RuntimeFlexLayoutV1
+                | ComputedStyleProfile::RuntimeFlexPaintV1 => LayoutEdges {
                     top: parse_css_px(node, "padding-top", required(element, "padding-top")?)?,
                     right: parse_css_px(
                         node,

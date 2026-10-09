@@ -2,6 +2,7 @@ package dev.spinon.bootstrap;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -81,6 +82,7 @@ public final class MainActivity extends Activity {
 
     private R08WgpuSurface hostGpuSurface;
     private R08GpuSurface hostGlesSurface;
+    private C0410RuntimeGpuDemo runtimeGpuDemo;
     private boolean gpuWasPaused;
     private volatile long runtimeSession;
     private volatile boolean activityClosing;
@@ -177,6 +179,47 @@ public final class MainActivity extends Activity {
         }
         if (getIntent().getBooleanExtra("spinon_shutdown_probe", false)) {
             showShutdownProbe();
+            return;
+        }
+        if (getIntent().getBooleanExtra("spinon_c0410_runtime_gpu", false)) {
+            if (!BuildConfig.SPINON_C04_RUNTIME_GPU) {
+                TextView unavailable = new TextView(this);
+                unavailable.setText("C04.10 GPU 실험을 켜서 빌드해야 합니다.");
+                unavailable.setTextColor(Color.WHITE);
+                unavailable.setGravity(Gravity.CENTER);
+                setContentView(unavailable);
+                Log.e(TAG, "SPINON_C0410_DISABLED · SPINON_ENABLE_C04_RUNTIME_GPU=1로 빌드하세요");
+                return;
+            }
+            boolean failureProbe = getIntent().getBooleanExtra(
+                    "spinon_c0410_failure_probe", false);
+            boolean shutdownProbe = getIntent().getBooleanExtra(
+                    "spinon_c0410_shutdown_probe", false);
+            if (failureProbe && shutdownProbe) {
+                TextView unavailable = new TextView(this);
+                unavailable.setText("draw 복구와 종료 검증은 나눠 실행해야 합니다.");
+                unavailable.setTextColor(Color.WHITE);
+                unavailable.setGravity(Gravity.CENTER);
+                setContentView(unavailable);
+                Log.e(TAG, "SPINON_C0410_PROBE_ARGUMENT_ERROR · "
+                        + "failure와 shutdown 검증을 동시에 요청했습니다");
+                return;
+            }
+            if ((failureProbe || shutdownProbe)
+                    && !BuildConfig.SPINON_C04_RUNTIME_GPU_FAILURE_FIXTURE) {
+                TextView unavailable = new TextView(this);
+                unavailable.setText("draw 실패 검증용 빌드 옵션을 켜야 합니다.");
+                unavailable.setTextColor(Color.WHITE);
+                unavailable.setGravity(Gravity.CENTER);
+                setContentView(unavailable);
+                Log.e(TAG, "SPINON_C0410_FAILURE_PROBE_DISABLED · "
+                        + "SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE=1로 빌드하세요");
+                return;
+            }
+            int backend = getIntent().getIntExtra("spinon_r08_backend", 0);
+            runtimeGpuDemo = new C0410RuntimeGpuDemo(
+                    this, backend, failureProbe, shutdownProbe);
+            setContentView(runtimeGpuDemo);
             return;
         }
         if (getIntent().getBooleanExtra("spinon_r05_callback_faults", false)) {
@@ -1418,9 +1461,16 @@ public final class MainActivity extends Activity {
     }
 
     @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if (runtimeGpuDemo != null) runtimeGpuDemo.updateColorScheme(newConfig);
+    }
+
+    @Override
     protected void onDestroy() {
         R05PresentFenceWaitExperiment.disable();
         activityClosing = true;
+        if (runtimeGpuDemo != null) runtimeGpuDemo.dispose();
         mainHandler.removeCallbacks(runtimeHeartbeat);
         mainHandler.removeCallbacks(longEvaluationTimeout);
         bootstrapExecutor.shutdownNow();

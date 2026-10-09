@@ -136,7 +136,7 @@ pub fn build_s04_static_render_snapshot(
     StaticRenderSnapshot::new(source, viewport_css_px, boxes).map_err(Into::into)
 }
 
-fn validate_profile(styles: &ComputedStyleSnapshot) -> Result<(), StyleRenderError> {
+pub(super) fn validate_profile(styles: &ComputedStyleSnapshot) -> Result<(), StyleRenderError> {
     if styles.profile != ComputedStyleProfile::S04FlexPaintV1 {
         return Err(StyleRenderError::UnsupportedProfile);
     }
@@ -146,7 +146,7 @@ fn validate_profile(styles: &ComputedStyleSnapshot) -> Result<(), StyleRenderErr
     Ok(())
 }
 
-fn validate_revisions(
+pub(super) fn validate_revisions(
     document: &HostDocumentSnapshot,
     styles: &ComputedStyleSnapshot,
     layout_revision: LayoutInputRevision,
@@ -220,7 +220,9 @@ fn validate_provenance(provenance: &RenderFixtureProvenance) -> Result<(), Style
     Ok(())
 }
 
-fn validate_viewport(viewport: spinon_style::CssViewport) -> Result<(), StyleRenderError> {
+pub(super) fn validate_viewport(
+    viewport: spinon_style::CssViewport,
+) -> Result<(), StyleRenderError> {
     let device_width = viewport.width_css_px * viewport.device_scale_factor;
     let device_height = viewport.height_css_px * viewport.device_scale_factor;
     if !viewport.width_css_px.is_finite()
@@ -237,7 +239,7 @@ fn validate_viewport(viewport: spinon_style::CssViewport) -> Result<(), StyleRen
     Ok(())
 }
 
-fn document_preorder(
+pub(super) fn document_preorder(
     document: &HostDocumentSnapshot,
     root: HostNodeHandle,
 ) -> Result<Vec<NodeId>, StyleRenderError> {
@@ -309,7 +311,7 @@ fn validate_fixture_mapping(
     Ok(())
 }
 
-fn indexed_styles(
+pub(super) fn indexed_styles(
     styles: &ComputedStyleSnapshot,
 ) -> Result<BTreeMap<NodeId, &spinon_style::ComputedElementStyle>, StyleRenderError> {
     let mut result = BTreeMap::new();
@@ -321,7 +323,7 @@ fn indexed_styles(
     Ok(result)
 }
 
-fn validate_style_node_set(
+pub(super) fn validate_style_node_set(
     preorder: &[NodeId],
     styles: &BTreeMap<NodeId, &spinon_style::ComputedElementStyle>,
 ) -> Result<(), StyleRenderError> {
@@ -337,7 +339,7 @@ fn validate_style_node_set(
     Ok(())
 }
 
-fn validate_layout_node_set(
+pub(super) fn validate_layout_node_set(
     preorder: &[NodeId],
     frames: &BTreeMap<NodeId, spinon_layout::LayoutFrame>,
 ) -> Result<(), StyleRenderError> {

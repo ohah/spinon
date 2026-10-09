@@ -26,6 +26,7 @@ use super::{StyloDocumentView, StyloElement};
 mod device;
 mod margin;
 mod runtime_layout;
+mod runtime_paint;
 mod s04;
 mod snapshot;
 mod ua_baseline;
@@ -33,6 +34,9 @@ mod ua_baseline;
 use runtime_layout::RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES;
 pub use runtime_layout::{
     compute_runtime_flex_layout_cascade, first_unsupported_runtime_layout_inline_property,
+};
+pub use runtime_paint::{
+    compute_runtime_flex_paint_cascade, first_unsupported_runtime_flex_paint_inline_property,
 };
 
 #[cfg(test)]
@@ -310,6 +314,7 @@ fn compute_cascade(
         }
         ComputedStyleProfile::S04FlexPaintV1 => Some(s04::S04_FLEX_PAINT_AUTHOR_PROPERTIES),
         ComputedStyleProfile::RuntimeFlexLayoutV1 => Some(RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES),
+        ComputedStyleProfile::RuntimeFlexPaintV1 => None,
     };
     if let Some(allowed) = allowed_author_properties
         && let Some((stylesheet_id, feature)) = match profile {
@@ -372,11 +377,8 @@ fn compute_cascade(
             }
             let computed =
                 compute_element_style(&stylist, element, &guards, parent_style.as_deref());
-            let background_color = if profile == ComputedStyleProfile::S04FlexPaintV1 {
-                Some(s04::computed_background_color(&computed, handle.id())?)
-            } else {
-                None
-            };
+            let (background_color, background_paint) =
+                runtime_paint::computed_background_for_profile(profile, &computed, handle.id())?;
             elements.push(ComputedElementStyle {
                 node_id: handle.id(),
                 properties: properties
@@ -389,6 +391,7 @@ fn compute_cascade(
                     })
                     .collect(),
                 background_color,
+                background_paint,
             });
             Some(computed)
         } else {

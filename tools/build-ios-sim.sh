@@ -17,6 +17,25 @@ case "${SPINON_ENABLE_S03_DOM_GC_FIXTURE:-0}" in
     exit 2
     ;;
 esac
+case "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" in
+  0|1) ;;
+  *)
+    echo "SPINON_ENABLE_C04_RUNTIME_GPU은 0 또는 1이어야 합니다." >&2
+    exit 2
+    ;;
+esac
+case "${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}" in
+  0|1) ;;
+  *)
+    echo "SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE은 0 또는 1이어야 합니다." >&2
+    exit 2
+    ;;
+esac
+if [[ "${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}" == "1" \
+      && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
+  echo "draw 실패 fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다." >&2
+  exit 2
+fi
 
 if command -v mise >/dev/null 2>&1; then
   mise exec -- xcodebuild \
@@ -28,6 +47,8 @@ if command -v mise >/dev/null 2>&1; then
     "SPINON_V8_ROOT=$v8_dir" \
     "SPINON_ENABLE_S04_IOS_FIXTURE=${SPINON_ENABLE_S04_IOS_FIXTURE:-0}" \
     "SPINON_ENABLE_S03_DOM_GC_FIXTURE=${SPINON_ENABLE_S03_DOM_GC_FIXTURE:-0}" \
+    "SPINON_ENABLE_C04_RUNTIME_GPU=${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" \
+    "SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE=${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}" \
     CODE_SIGNING_ALLOWED=NO build
 else
   xcodebuild \
@@ -39,5 +60,7 @@ else
     "SPINON_V8_ROOT=$v8_dir" \
     "SPINON_ENABLE_S04_IOS_FIXTURE=${SPINON_ENABLE_S04_IOS_FIXTURE:-0}" \
     "SPINON_ENABLE_S03_DOM_GC_FIXTURE=${SPINON_ENABLE_S03_DOM_GC_FIXTURE:-0}" \
+    "SPINON_ENABLE_C04_RUNTIME_GPU=${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" \
+    "SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE=${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}" \
     CODE_SIGNING_ALLOWED=NO build
 fi

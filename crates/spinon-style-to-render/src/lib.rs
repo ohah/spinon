@@ -2,6 +2,7 @@
 
 mod adapter;
 mod error;
+mod runtime;
 
 #[cfg(test)]
 mod tests;
@@ -11,3 +12,4 @@ pub use adapter::{
     build_s04_static_render_snapshot,
 };
 pub use error::StyleRenderError;
+pub use runtime::build_runtime_render_snapshot;

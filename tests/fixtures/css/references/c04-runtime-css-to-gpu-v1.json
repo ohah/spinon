@@ -1,0 +1,138 @@
+{
+  "schema": "spinon-css-runtime-css-to-gpu-reference/v1",
+  "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.98-7492b2947d5a-78e344cc9342-ccffd5c5fe77",
+  "fixture": {
+    "id": "C04-runtime-css-to-gpu-v1",
+    "inventoryPath": "tests/fixtures/css/c04/runtime-css-to-gpu-inventory.json",
+    "inventorySha256": "7492b2947d5a628a8ece4abf64df436dd747ca268569de3bfa79fff3b93541ef",
+    "htmlPath": "tests/fixtures/css/c04/runtime-css-to-gpu.html",
+    "htmlSha256": "7d6c9023eeacb530b1b6df415c7d9fbf3d981cf378195bf60f5490427a894477"
+  },
+  "captureTool": {
+    "path": "tools/css-reference/capture-runtime-css-to-gpu.mjs",
+    "sha256": "78e344cc93428a6dfecb42c76da9341867fc463ea53e18158badb848d3d1dca7",
+    "dependencies": [
+      {
+        "path": "tools/css-reference/chromium-session.mjs",
+        "sha256": "b010ada41ed75dc2d67ee25abd4266b17930f1de95fc683eebc5cdab6ad2cdc1"
+      }
+    ]
+  },
+  "oracle": {
+    "name": "Chromium",
+    "product": "Chrome/154.0.8037.98",
+    "revision": "@b859317bf11f6be47f9b7799ec690a0a42a1fb33",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "executable": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "executableSha256": "ccffd5c5fe77ba3212e07c2c69091f8048b73c396b4647ecaa150e1e01a04954"
+  },
+  "environment": {
+    "os": "macOS 26.5.1",
+    "osBuild": "25F80",
+    "architecture": "arm64",
+    "nodeVersion": "v26.7.0",
+    "browserFlags": [
+      "--headless=new",
+      "--no-first-run",
+      "--no-default-browser-check",
+      "--disable-background-networking",
+      "--lang=en-US",
+      "--remote-debugging-port=0",
+      "--user-data-dir=<temporary-profile>"
+    ],
+    "viewportCssPx": {
+      "width": 301,
+      "height": 100,
+      "deviceScaleFactor": 1
+    },
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "media": {
+      "locale": "en-US",
+      "timeZone": "UTC",
+      "colorScheme": "light",
+      "pointer": "coarse",
+      "hover": "none"
+    }
+  },
+  "comparison": {
+    "computedValues": "문자열 정확 일치",
+    "nodeGeometry": {
+      "unit": "CSS px",
+      "perCoordinateMaximumAbsoluteError": 0.5,
+      "aggregateAveragesAllowed": false
+    },
+    "opaquePaint": "같은 draw pass의 offscreen 중심 표본을 sRGB 채널별 정확 비교",
+    "hiddenAndTransparent": "그리지 않음을 확인"
+  },
+  "observation": {
+    "fixtureId": "C04-runtime-css-to-gpu-v1",
+    "viewport": {
+      "width": 301,
+      "height": 100,
+      "deviceScaleFactor": 1
+    },
+    "environment": {
+      "locale": "en-US",
+      "intlLocale": "en-US",
+      "timeZone": "UTC",
+      "dark": false,
+      "coarsePointer": true,
+      "hover": false
+    },
+    "nodes": [
+      {
+        "id": "root",
+        "properties": {
+          "display": "flex",
+          "background-color": "rgb(18, 52, 86)"
+        },
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 301,
+          "height": 100
+        }
+      },
+      {
+        "id": "opaque",
+        "properties": {
+          "display": "block",
+          "background-color": "rgb(51, 102, 255)"
+        },
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 51,
+          "height": 31
+        }
+      },
+      {
+        "id": "transparent",
+        "properties": {
+          "display": "block",
+          "background-color": "rgba(0, 0, 0, 0)"
+        },
+        "rect": {
+          "x": 62,
+          "y": 0,
+          "width": 41,
+          "height": 31
+        }
+      },
+      {
+        "id": "hidden",
+        "properties": {
+          "display": "none",
+          "background-color": "rgb(255, 0, 0)"
+        },
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    ]
+  }
+}

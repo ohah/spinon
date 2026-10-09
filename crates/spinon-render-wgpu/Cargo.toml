@@ -1,0 +1,21 @@
+[package]
+name = "spinon-render-wgpu"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[features]
+test-hooks = []
+
+[dependencies]
+bytemuck = { version = "1.23", features = ["derive"] }
+pollster = "0.4"
+raw-window-handle = "0.6.2"
+spinon-render = { path = "../spinon-render" }
+wgpu = { version = "30.0.1", default-features = false, features = ["std", "parking_lot", "metal", "vulkan", "gles", "wgsl"] }
+
+[dev-dependencies]
+spinon-core = { path = "../spinon-core" }
+
+[lints.rust]
+unsafe_op_in_unsafe_fn = "deny"

@@ -8,6 +8,23 @@
 
 #import <os/log.h>
 
+namespace {
+
+template <std::size_t N>
+NSString *C0410Report(int32_t status, const std::array<char, N> &output) {
+  NSString *detail = [NSString stringWithUTF8String:output.data()];
+  if (detail == nil) detail = @"C ABI 보고가 유효한 UTF-8이 아닙니다";
+  return [NSString stringWithFormat:@"status=%d %@", status, detail];
+}
+
+void C0410LogReport(os_log_type_t type, const char *label, NSString *report) {
+  const char *detail = report.UTF8String;
+  os_log_with_type(OS_LOG_DEFAULT, type, "%{public}s %{public}s", label,
+                   detail != nullptr ? detail : "C ABI 보고를 UTF-8로 변환하지 못했습니다");
+}
+
+}  // namespace
+
 @implementation SpinonRunner
 
 + (NSString *)runSource:(NSString *)source {
@@ -353,6 +370,224 @@
   spinon_runtime_session_free(
       reinterpret_cast<SpinonRuntimeSession *>(static_cast<uintptr_t>(handle)));
   os_log(OS_LOG_DEFAULT, "SPINON_RUNTIME_SESSION_FREE done");
+}
+
++ (uint64_t)createRuntimeGpuHost {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  std::array<char, 1024> output{};
+  SpinonRuntimeGpuHost *host =
+      spinon_runtime_gpu_host_new(output.data(), output.size());
+  if (host == nullptr) {
+    os_log_error(OS_LOG_DEFAULT, "SPINON_C0410_HOST_ERROR=%{public}s",
+                 output.data());
+    return 0;
+  }
+  os_log(OS_LOG_DEFAULT, "SPINON_C0410_HOST=%{public}s", output.data());
+  return static_cast<uint64_t>(reinterpret_cast<uintptr_t>(host));
+#else
+  os_log_error(OS_LOG_DEFAULT,
+               "SPINON_C0410_DISABLED rebuild with SPINON_ENABLE_C04_RUNTIME_GPU=1");
+  return 0;
+#endif
+}
+
++ (uint64_t)beginRuntimeGpuPresentationUpdate:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  if (handle == 0) return 0;
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  const uint64_t sequence =
+      spinon_runtime_gpu_host_begin_presentation_update(host);
+  if (sequence == 0) {
+    os_log_error(OS_LOG_DEFAULT,
+                 "SPINON_C0410_PRESENTATION_INVALIDATION failed");
+  }
+  return sequence;
+#else
+  (void)handle;
+  return 0;
+#endif
+}
+
++ (NSString *)setRuntimeGpuEnvironment:(uint64_t)handle
+                                  width:(float)width
+                                 height:(float)height
+                                  scale:(float)scale
+                                   dark:(BOOL)dark {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 2048> output{};
+  os_log(OS_LOG_DEFAULT,
+         "SPINON_C0410_ENVIRONMENT_FFI_BEGIN width=%{public}.1f height=%{public}.1f",
+         width, height);
+  const int32_t status = spinon_runtime_gpu_host_set_environment(
+      host, width, height, scale, dark ? 1 : 0, 10000, output.data(),
+      output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C0410_ENVIRONMENT", report);
+  return report;
+#else
+  (void)handle; (void)width; (void)height; (void)scale; (void)dark;
+  return @"status=-90 feature-disabled";
+#endif
+}
+
++ (NSString *)evalRuntimeGpuFixture:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 4096> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_fixture(
+      host, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C0410_EVAL", report);
+  return report;
+#else
+  (void)handle;
+  return @"status=-90 feature-disabled";
+#endif
+}
+
++ (NSString *)prepareRuntimeGpuWgpuSurface:(uint64_t)handle view:(void *)view {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  if (![NSThread isMainThread]) {
+    return @"status=-1 UIKit surface preparation requires the main thread";
+  }
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 2048> output{};
+  const int32_t status = spinon_runtime_gpu_host_prepare_uikit_surface(
+      host, view, SPINON_WGPU_R08_METAL, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C0410_SURFACE_PREPARE", report);
+  return report;
+#else
+  (void)handle; (void)view;
+  return @"status=-90 feature-disabled";
+#endif
+}
+
++ (NSString *)createRuntimeGpuWgpu:(uint64_t)handle width:(uint32_t)width
+                             height:(uint32_t)height {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 2048> output{};
+  const int32_t status = spinon_runtime_gpu_host_create_uikit(
+      host, width, height, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C0410_RENDERER", report);
+  return report;
+#else
+  (void)handle; (void)width; (void)height;
+  return @"status=-90 feature-disabled";
+#endif
+}
+
++ (NSString *)configureRuntimeGpuWgpuSurface:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  if (![NSThread isMainThread]) {
+    return @"status=-1 UIKit surface configuration requires the main thread";
+  }
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 2048> output{};
+  const int32_t status = spinon_runtime_gpu_host_configure_uikit_surface(
+      host, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C0410_SURFACE_CONFIGURE", report);
+  return report;
+#else
+  (void)handle;
+  return @"status=-90 feature-disabled";
+#endif
+}
+
++ (int32_t)resizeRuntimeGpuWgpu:(uint64_t)handle width:(uint32_t)width
+                          height:(uint32_t)height {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  if (![NSThread isMainThread]) return -1;
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 1024> output{};
+  const int32_t status = spinon_runtime_gpu_host_resize(
+      host, width, height, output.data(), output.size());
+  if (status != 0) {
+    os_log_error(OS_LOG_DEFAULT,
+                 "SPINON_C0410_RESIZE status=%{public}d %{public}s", status,
+                 output.data());
+  }
+  return status;
+#else
+  (void)handle; (void)width; (void)height;
+  return -90;
+#endif
+}
+
++ (NSString *)drawRuntimeGpuWgpu:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 1024> output{};
+  const int32_t status = spinon_runtime_gpu_host_draw(
+      host, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C0410_DRAW", report);
+  return report;
+#else
+  (void)handle;
+  return @"status=-90 feature-disabled";
+#endif
+}
+
++ (NSString *)injectNextRuntimeGpuDrawFailure:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 1024> output{};
+  const int32_t status = spinon_runtime_gpu_host_inject_next_draw_failure_for_test(
+      host, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C0410_DRAW_FAILURE_HOOK", report);
+  return report;
+#else
+  (void)handle;
+  return @"status=-90 failure fixture is not enabled in this build";
+#endif
+}
+
++ (void)destroyRuntimeGpuRenderer:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  std::array<char, 1024> output{};
+  const int32_t status = spinon_runtime_gpu_host_destroy_renderer(
+      reinterpret_cast<SpinonRuntimeGpuHost *>(static_cast<uintptr_t>(handle)),
+      output.data(), output.size());
+  os_log_with_type(OS_LOG_DEFAULT,
+                   status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                   "SPINON_C0410_RENDERER_DESTROY status=%{public}d %{public}s",
+                   status, output.data());
+#else
+  (void)handle;
+#endif
+}
+
++ (void)freeRuntimeGpuHost:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  spinon_runtime_gpu_host_free(reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle)));
+#else
+  (void)handle;
+#endif
 }
 
 @end

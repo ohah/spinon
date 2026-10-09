@@ -9,6 +9,8 @@ spinon-core = { path = "../spinon-core" }
 spinon-layout = { path = "../spinon-layout" }
 spinon-style = { path = "../spinon-style" }
 spinon-style-to-layout = { path = "../spinon-style-to-layout" }
+spinon-style-to-render = { path = "../spinon-style-to-render" }
+spinon-render = { path = "../spinon-render" }
 
 [lints.rust]
 unsafe_op_in_unsafe_fn = "deny"

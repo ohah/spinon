@@ -27,6 +27,13 @@ struct WgpuRendererContext {
   void *renderer;
 };
 
+#if SPINON_ENABLE_C04_RUNTIME_GPU
+struct C0410RuntimeGpuContext {
+  ANativeWindow *window;
+  SpinonRuntimeGpuHost *host;
+};
+#endif
+
 jbyteArray ToByteArray(JNIEnv *env, const std::string &value) {
   const auto length = static_cast<jsize>(value.size());
   jbyteArray output = env->NewByteArray(length);
@@ -40,6 +47,178 @@ SpinonRuntimeSession *SessionFromHandle(jlong handle) {
   return reinterpret_cast<SpinonRuntimeSession *>(static_cast<uintptr_t>(handle));
 }
 }
+
+#if SPINON_ENABLE_C04_RUNTIME_GPU
+extern "C" JNIEXPORT jlong JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateHost(
+    JNIEnv *, jclass) {
+  std::array<char, 1024> output{};
+  SpinonRuntimeGpuHost *host =
+      spinon_runtime_gpu_host_new(output.data(), output.size());
+  if (host == nullptr) {
+    __android_log_print(ANDROID_LOG_ERROR, kTag,
+                        "SPINON_C0410_HOST_ERROR=%s", output.data());
+    return 0;
+  }
+  __android_log_print(ANDROID_LOG_INFO, kTag, "SPINON_C0410_HOST=%s",
+                      output.data());
+  return static_cast<jlong>(reinterpret_cast<uintptr_t>(host));
+}
+
+extern "C" JNIEXPORT jlong JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeBeginPresentationUpdate(
+    JNIEnv *, jclass, jlong host_handle) {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+  return static_cast<jlong>(spinon_runtime_gpu_host_begin_presentation_update(host));
+}
+
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeSetEnvironment(
+    JNIEnv *env, jclass, jlong host_handle, jfloat width_css_px,
+    jfloat height_css_px, jfloat scale, jboolean dark) {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+  std::array<char, 2048> output{};
+  const int32_t status = spinon_runtime_gpu_host_set_environment(
+      host, width_css_px, height_css_px, scale, dark == JNI_TRUE ? 1 : 0,
+      10000, output.data(), output.size());
+  const std::string report =
+      "status=" + std::to_string(status) + " " + output.data();
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
+                      kTag, "SPINON_C0410_ENVIRONMENT %s", report.c_str());
+  return ToByteArray(env, report);
+}
+
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalFixture(
+    JNIEnv *env, jclass, jlong host_handle) {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+  std::array<char, 4096> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_fixture(
+      host, 10000, output.data(), output.size());
+  const std::string report =
+      "status=" + std::to_string(status) + " " + output.data();
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
+                      kTag, "SPINON_C0410_EVAL %s", report.c_str());
+  return ToByteArray(env, report);
+}
+
+extern "C" JNIEXPORT jlong JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateSurface(
+    JNIEnv *env, jclass, jlong host_handle, jobject surface, jint width,
+    jint height, jint backend) {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+  ANativeWindow *window = ANativeWindow_fromSurface(env, surface);
+  if (host == nullptr || window == nullptr || width <= 0 || height <= 0) {
+    if (window != nullptr) ANativeWindow_release(window);
+    __android_log_print(ANDROID_LOG_ERROR, kTag,
+                        "SPINON_C0410_SURFACE_ERROR=invalid surface input");
+    return 0;
+  }
+  std::array<char, 1024> output{};
+  void *created = spinon_runtime_gpu_host_create_android(
+      host, window, static_cast<uint32_t>(width), static_cast<uint32_t>(height),
+      static_cast<uint32_t>(backend), output.data(), output.size());
+  if (created == nullptr) {
+    __android_log_print(ANDROID_LOG_ERROR, kTag,
+                        "SPINON_C0410_SURFACE_ERROR=%s", output.data());
+    ANativeWindow_release(window);
+    return 0;
+  }
+  auto *context = new C0410RuntimeGpuContext{window, host};
+  __android_log_print(ANDROID_LOG_INFO, kTag, "SPINON_C0410_RENDERER=%s",
+                      output.data());
+  return static_cast<jlong>(reinterpret_cast<uintptr_t>(context));
+}
+
+extern "C" JNIEXPORT jint JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeResizeSurface(
+    JNIEnv *, jclass, jlong context_handle, jint width, jint height) {
+  auto *context = reinterpret_cast<C0410RuntimeGpuContext *>(
+      static_cast<uintptr_t>(context_handle));
+  if (context == nullptr) return -1;
+  __android_log_print(ANDROID_LOG_INFO, kTag,
+                      "SPINON_C0410_NATIVE_WINDOW requested=%dx%d before=%dx%d",
+                      width, height, ANativeWindow_getWidth(context->window),
+                      ANativeWindow_getHeight(context->window));
+  std::array<char, 1024> output{};
+  const int32_t status = spinon_runtime_gpu_host_resize(
+      context->host, static_cast<uint32_t>(width),
+      static_cast<uint32_t>(height), output.data(), output.size());
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
+                      kTag, "SPINON_C0410_RESIZE status=%d %s", status,
+                      output.data());
+  __android_log_print(ANDROID_LOG_INFO, kTag,
+                      "SPINON_C0410_NATIVE_WINDOW after=%dx%d",
+                      ANativeWindow_getWidth(context->window),
+                      ANativeWindow_getHeight(context->window));
+  return status;
+}
+
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeDrawSurface(
+    JNIEnv *env, jclass, jlong context_handle) {
+  auto *context = reinterpret_cast<C0410RuntimeGpuContext *>(
+      static_cast<uintptr_t>(context_handle));
+  if (context == nullptr) return ToByteArray(env, "status=-1 null renderer");
+  std::array<char, 1024> output{};
+  const int32_t status = spinon_runtime_gpu_host_draw(
+      context->host, output.data(), output.size());
+  const std::string report =
+      "status=" + std::to_string(status) + " " + output.data();
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
+                      kTag, "SPINON_C0410_DRAW %s", report.c_str());
+  return ToByteArray(env, report);
+}
+
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeInjectNextDrawFailure(
+    JNIEnv *env, jclass, jlong context_handle) {
+  auto *context = reinterpret_cast<C0410RuntimeGpuContext *>(
+      static_cast<uintptr_t>(context_handle));
+  if (context == nullptr) return ToByteArray(env, "status=-1 null renderer");
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE
+  std::array<char, 1024> output{};
+  const int32_t status = spinon_runtime_gpu_host_inject_next_draw_failure_for_test(
+      context->host, output.data(), output.size());
+  const std::string report =
+      "status=" + std::to_string(status) + " " + output.data();
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
+                      kTag, "SPINON_C0410_DRAW_FAILURE_HOOK %s", report.c_str());
+  return ToByteArray(env, report);
+#else
+  return ToByteArray(env, "status=-90 failure fixture is not enabled in this build");
+#endif
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeDestroySurface(
+    JNIEnv *, jclass, jlong context_handle) {
+  auto *context = reinterpret_cast<C0410RuntimeGpuContext *>(
+      static_cast<uintptr_t>(context_handle));
+  if (context == nullptr) return;
+  std::array<char, 1024> output{};
+  const int32_t status = spinon_runtime_gpu_host_destroy_renderer(
+      context->host, output.data(), output.size());
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
+                      kTag, "SPINON_C0410_RENDERER_DESTROY status=%d %s",
+                      status, output.data());
+  ANativeWindow_release(context->window);
+  delete context;
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeFreeHost(
+    JNIEnv *, jclass, jlong host_handle) {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+  spinon_runtime_gpu_host_free(host);
+}
+#endif
 
 extern "C" JNIEXPORT jbyteArray JNICALL
 Java_dev_spinon_bootstrap_MainActivity_nativeRun(JNIEnv *env, jclass,

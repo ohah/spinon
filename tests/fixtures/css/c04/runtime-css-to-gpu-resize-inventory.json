@@ -1,0 +1,31 @@
+{
+  "schema": "spinon-css-runtime-gpu-resize-inventory/v1",
+  "fixtureId": "C04-runtime-css-to-gpu-resize-v1",
+  "viewports": [
+    { "id": "baseline", "width": 301, "height": 100, "deviceScaleFactor": 1 },
+    { "id": "expanded", "width": 341, "height": 128, "deviceScaleFactor": 1 }
+  ],
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "pointer": "coarse",
+    "hover": "none"
+  },
+  "nodes": [
+    { "id": "root", "properties": ["display", "width", "height", "background-color"] },
+    { "id": "opaque", "properties": ["display", "width", "height", "background-color"] },
+    { "id": "transparent", "properties": ["display", "width", "height", "background-color"] },
+    { "id": "hidden", "properties": ["display", "width", "height", "background-color"] }
+  ],
+  "comparison": {
+    "computedValues": "문자열 정확 일치",
+    "nodeGeometry": {
+      "unit": "CSS px",
+      "perCoordinateMaximumAbsoluteError": 0.5,
+      "aggregateAveragesAllowed": false
+    },
+    "viewportPropagation": "surface resize 뒤 CSS viewport와 root의 100vw/100vh frame이 각각 정확히 일치",
+    "paintPreservation": "배경색·투명·display:none의 기존 결과 유지"
+  }
+}

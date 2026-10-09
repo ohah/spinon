@@ -32,10 +32,45 @@ case "${SPINON_ENABLE_S03_DOM_GC_FIXTURE:-0}" in
     exit 2
     ;;
 esac
+case "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" in
+  0|1) ;;
+  *)
+    echo "SPINON_ENABLE_C04_RUNTIME_GPU은 0 또는 1이어야 합니다." >&2
+    exit 2
+    ;;
+esac
+case "${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}" in
+  0|1) ;;
+  *)
+    echo "SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE은 0 또는 1이어야 합니다." >&2
+    exit 2
+    ;;
+esac
+if [[ "${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}" == "1" \
+      && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
+  echo "draw 실패 fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다." >&2
+  exit 2
+fi
 s03_dom_gc_cpp_flag="-DSPINON_ENABLE_S03_DOM_GC_FIXTURE=${SPINON_ENABLE_S03_DOM_GC_FIXTURE:-0}"
+s04_runtime_gpu_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU=${SPINON_ENABLE_C04_RUNTIME_GPU:-0}"
+s04_runtime_gpu_failure_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE=${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}"
 s04_android_cpp_flags=()
 if [[ "${SPINON_ENABLE_S04_ANDROID_FIXTURE:-0}" == "1" ]]; then
   s04_android_cpp_flags=(-DSPINON_ENABLE_S04_ANDROID_FIXTURE=1)
+fi
+ffi_features=()
+if [[ "${SPINON_ENABLE_R10_EXPERIMENT:-0}" == "1" ]]; then
+  ffi_features+=(r10-experiment)
+fi
+if [[ "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" == "1" ]]; then
+  ffi_features+=(c04-runtime-gpu)
+fi
+if [[ "${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}" == "1" ]]; then
+  ffi_features+=(c04-runtime-gpu-test-hooks)
+fi
+ffi_feature_args=()
+if ((${#ffi_features[@]} > 0)); then
+  ffi_feature_args=(--features "$(IFS=,; printf '%s' "${ffi_features[*]}")")
 fi
 
 if [[ ! -d "$v8_dir" ]] || [[ "$(git -C "$v8_dir" rev-parse HEAD 2>/dev/null || true)" != "$v8_revision" ]]; then
@@ -70,11 +105,7 @@ fi
 
 if command -v mise >/dev/null 2>&1; then
   mise exec -- bun run bundle:bootstrap
-  if [[ "${SPINON_ENABLE_R10_EXPERIMENT:-0}" == "1" ]]; then
-    mise exec -- env CARGO_PROFILE_RELEASE_PANIC=abort cargo build --locked --release --target aarch64-linux-android -p spinon-ffi --features r10-experiment
-  else
-    mise exec -- env CARGO_PROFILE_RELEASE_PANIC=abort cargo build --locked --release --target aarch64-linux-android -p spinon-ffi
-  fi
+  mise exec -- env CARGO_PROFILE_RELEASE_PANIC=abort cargo build --locked --release --target aarch64-linux-android -p spinon-ffi "${ffi_feature_args[@]}"
   if [[ "${SPINON_ENABLE_S04_ANDROID_FIXTURE:-0}" == "1" ]]; then
     mise exec -- cargo build --manifest-path "$repo_root/spikes/wgpu-backend/Cargo.toml" --locked --release --target aarch64-linux-android --features s04-android-fixture
   else
@@ -82,11 +113,7 @@ if command -v mise >/dev/null 2>&1; then
   fi
 else
   bun run bundle:bootstrap
-  if [[ "${SPINON_ENABLE_R10_EXPERIMENT:-0}" == "1" ]]; then
-    CARGO_PROFILE_RELEASE_PANIC=abort cargo build --locked --release --target aarch64-linux-android -p spinon-ffi --features r10-experiment
-  else
-    CARGO_PROFILE_RELEASE_PANIC=abort cargo build --locked --release --target aarch64-linux-android -p spinon-ffi
-  fi
+  CARGO_PROFILE_RELEASE_PANIC=abort cargo build --locked --release --target aarch64-linux-android -p spinon-ffi "${ffi_feature_args[@]}"
   if [[ "${SPINON_ENABLE_S04_ANDROID_FIXTURE:-0}" == "1" ]]; then
     cargo build --manifest-path "$repo_root/spikes/wgpu-backend/Cargo.toml" --locked --release --target aarch64-linux-android --features s04-android-fixture
   else
@@ -109,6 +136,8 @@ target="--target=aarch64-linux-android29"
 sysroot="--sysroot=$ndk_root/sysroot"
 common=("$target" "$sysroot" -std=c++20 -O2 -fPIC
   -fexperimental-relative-c++-abi-vtables -nostdinc++
+  "$s04_runtime_gpu_cpp_flag"
+  "$s04_runtime_gpu_failure_cpp_flag"
   -D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_EXTENSIVE
   -I"$v8_dir/buildtools/third_party/libc++"
   -isystem "$v8_dir/third_party/libc++/src/include"
@@ -122,7 +151,7 @@ common=("$target" "$sysroot" -std=c++20 -O2 -fPIC
   -c "$repo_root/native/v8/src/spinon_v8.cc" \
   -o "$output_dir/obj/spinon_v8.o"
 if [[ "${SPINON_ENABLE_S04_ANDROID_FIXTURE:-0}" == "1" ]]; then
-  "$v8_cxx" "${common[@]}" -I"$repo_root/platforms/android/app/src/main/cpp" \
+  "$v8_cxx" "${common[@]}" "$s04_runtime_gpu_cpp_flag" -I"$repo_root/platforms/android/app/src/main/cpp" \
     "${s04_android_cpp_flags[@]}" \
     -c "$repo_root/platforms/android/app/src/main/cpp/spinon_jni.cc" \
     -o "$output_dir/obj/spinon_jni.o"

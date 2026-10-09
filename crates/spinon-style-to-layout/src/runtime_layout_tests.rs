@@ -7,7 +7,8 @@ use spinon_core::{
 };
 use spinon_style::{
     ComputedStyleProfile, CssMediaEnvironment, CssViewport, StyloDocumentView,
-    compute_runtime_flex_layout_cascade, first_unsupported_runtime_layout_inline_property,
+    compute_runtime_flex_layout_cascade, compute_runtime_flex_paint_cascade,
+    first_unsupported_runtime_layout_inline_property,
 };
 
 use crate::{StyleLayoutError, compute_runtime_style_layout};
@@ -16,6 +17,10 @@ const HTML: &str = "http://www.w3.org/1999/xhtml";
 const REFERENCE: &str = concat!(
     env!("CARGO_MANIFEST_DIR"),
     "/../../tests/fixtures/css/references/chromium-macos-arm64-macos-26.5.1-25f80-c04-runtime-layout-ebd9482a8d06-6849840baee0-6d02aa4972a1-ccffd5c5fe77/runtime-style-layout.json"
+);
+const RESIZE_REFERENCE: &str = concat!(
+    env!("CARGO_MANIFEST_DIR"),
+    "/../../tests/fixtures/css/references/c04-runtime-css-to-gpu-resize-v1.json"
 );
 
 fn runtime_fixture() -> (
@@ -100,6 +105,150 @@ fn runtime_fixture_with_flex_b_style(
     }
     document.commit(batch).unwrap();
     (document, root, nodes)
+}
+
+fn runtime_resize_fixture() -> (
+    HostDocument,
+    HostNodeHandle,
+    BTreeMap<String, HostNodeHandle>,
+) {
+    let mut document = HostDocument::new().unwrap();
+    let owner = OwnerId::new(4902).unwrap();
+    let root = document.reserve_node_handle().unwrap();
+    let opaque = document.reserve_node_handle().unwrap();
+    let transparent = document.reserve_node_handle().unwrap();
+    let hidden = document.reserve_node_handle().unwrap();
+    let nodes = BTreeMap::from([
+        ("root".to_owned(), root),
+        ("opaque".to_owned(), opaque),
+        ("transparent".to_owned(), transparent),
+        ("hidden".to_owned(), hidden),
+    ]);
+    let mut batch = DocumentChangeBatch::new(owner, document.document_revision());
+    for (id, handle, parent, style) in [
+        (
+            "root",
+            root,
+            spinon_core::HostParent::Root,
+            "display:flex;box-sizing:border-box;width:100vw;height:100vh;flex-direction:row;align-items:flex-start;justify-content:flex-start;column-gap:11px;background-color:#123456",
+        ),
+        (
+            "opaque",
+            opaque,
+            spinon_core::HostParent::Node(root),
+            "display:block;box-sizing:border-box;width:51px;height:31px;background-color:#3366ff",
+        ),
+        (
+            "transparent",
+            transparent,
+            spinon_core::HostParent::Node(root),
+            "display:block;box-sizing:border-box;width:41px;height:31px",
+        ),
+        (
+            "hidden",
+            hidden,
+            spinon_core::HostParent::Node(root),
+            "display:none;width:23px;height:17px;background-color:#ff0000",
+        ),
+    ] {
+        batch.push(DocumentOperation::CreateElement {
+            node: handle,
+            namespace: HTML.to_owned(),
+            local_name: "div".to_owned(),
+        });
+        batch.push(DocumentOperation::SetAttribute {
+            node: handle,
+            name: AttributeName::new(None, "id").unwrap(),
+            value: id.into(),
+        });
+        batch.push(DocumentOperation::SetAttribute {
+            node: handle,
+            name: AttributeName::new(None, "style").unwrap(),
+            value: style.into(),
+        });
+        batch.push(DocumentOperation::InsertBefore {
+            parent,
+            node: handle,
+            before: None,
+        });
+    }
+    document.commit(batch).unwrap();
+    (document, root, nodes)
+}
+
+#[test]
+fn runtime_viewport_units_recompute_to_each_frozen_chromium_resize_size() {
+    let (document, root, nodes) = runtime_resize_fixture();
+    let snapshot = document.snapshot();
+    let reference: Value =
+        serde_json::from_slice(&std::fs::read(RESIZE_REFERENCE).unwrap()).unwrap();
+
+    for (scenario, width, height) in [("baseline", 301.0, 100.0), ("expanded", 341.0, 128.0)] {
+        let viewport = CssViewport {
+            width_css_px: width,
+            height_css_px: height,
+            device_scale_factor: 1.0,
+            environment_revision: Default::default(),
+            media_environment: CssMediaEnvironment::MOBILE,
+        };
+        let view = StyloDocumentView::new_html_fragment_child_shared(
+            std::sync::Arc::new(snapshot.clone()),
+            root,
+        )
+        .unwrap();
+        let computed =
+            compute_runtime_flex_paint_cascade(&view, viewport, StyleRevision::INITIAL).unwrap();
+        let output = compute_runtime_style_layout(&snapshot, root, computed, viewport).unwrap();
+        let expected_nodes = reference["observations"][scenario]["nodes"]
+            .as_array()
+            .unwrap();
+
+        for expected_node in expected_nodes {
+            let id = expected_node["id"].as_str().unwrap();
+            let node_id = nodes[id].id();
+            let style = output
+                .computed_styles
+                .elements
+                .iter()
+                .find(|element| element.node_id == node_id)
+                .unwrap_or_else(|| panic!("{scenario}.{id}의 computed style이 없습니다"));
+            for (property, expected) in expected_node["properties"].as_object().unwrap() {
+                assert_eq!(
+                    style.properties.get(property).map(String::as_str),
+                    expected.as_str(),
+                    "{scenario}.{id}.{property}"
+                );
+            }
+            let frame = output.layout.frames.get(&node_id).unwrap();
+            for (field, actual, expected) in [
+                (
+                    "x",
+                    frame.x,
+                    expected_node["rect"]["x"].as_f64().unwrap() as f32,
+                ),
+                (
+                    "y",
+                    frame.y,
+                    expected_node["rect"]["y"].as_f64().unwrap() as f32,
+                ),
+                (
+                    "width",
+                    frame.width,
+                    expected_node["rect"]["width"].as_f64().unwrap() as f32,
+                ),
+                (
+                    "height",
+                    frame.height,
+                    expected_node["rect"]["height"].as_f64().unwrap() as f32,
+                ),
+            ] {
+                assert!(
+                    (actual - expected).abs() <= 0.5,
+                    "{scenario}.{id}.{field}: 실제 {actual}, Chromium {expected}, 허용치 0.5 CSS px"
+                );
+            }
+        }
+    }
 }
 
 #[test]
