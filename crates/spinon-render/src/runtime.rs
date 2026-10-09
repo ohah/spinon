@@ -1,8 +1,9 @@
+use std::sync::Arc;
 use std::{collections::BTreeSet, error::Error, fmt};
 
 use spinon_core::{
-    DocumentGeneration, DocumentRevision, EnvironmentRevision, NodeId, RenderTreeRevision,
-    StyleRevision,
+    DocumentGeneration, DocumentRevision, EnvironmentRevision, HostDocumentSnapshot, NodeId,
+    RenderTreeRevision, StyleRevision,
 };
 
 use super::{CssRect, CssSize, OpaqueCssSrgb};
@@ -108,7 +109,7 @@ impl RuntimeRenderBox {
 pub struct RuntimeRenderSnapshot {
     key: RuntimeRenderKey,
     viewport_css_px: CssSize,
-    boxes: Vec<RuntimeRenderBox>,
+    boxes: Arc<[RuntimeRenderBox]>,
 }
 
 impl RuntimeRenderSnapshot {
@@ -129,7 +130,28 @@ impl RuntimeRenderSnapshot {
         Ok(Self {
             key,
             viewport_css_px,
-            boxes,
+            boxes: boxes.into(),
+        })
+    }
+
+    /// 같은 문서 세대와 연결 트리 revision의 snapshot에서 document revision을 다시 발행합니다.
+    pub fn with_document_snapshot_revision(&self, snapshot: &HostDocumentSnapshot) -> Option<Self> {
+        if self.key.generation != snapshot.generation()
+            || self.key.render_tree_revision != snapshot.render_tree_revision()
+        {
+            return None;
+        }
+        let key = RuntimeRenderKey::new(
+            self.key.generation,
+            snapshot.document_revision(),
+            self.key.render_tree_revision,
+            self.key.style_revision,
+            self.key.environment_revision,
+        );
+        Some(Self {
+            key,
+            viewport_css_px: self.viewport_css_px,
+            boxes: Arc::clone(&self.boxes),
         })
     }
 

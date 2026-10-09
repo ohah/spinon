@@ -13,7 +13,7 @@ pub(super) fn project_styles(
     snapshot: &ComputedStyleSnapshot,
 ) -> Result<BTreeMap<NodeId, LayoutStyle>, StyleLayoutError> {
     let mut output = BTreeMap::new();
-    for element in &snapshot.elements {
+    for element in snapshot.elements.iter() {
         let node = element.node_id;
         let style = LayoutStyle {
             display: parse_display(node, required(element, "display")?)?,

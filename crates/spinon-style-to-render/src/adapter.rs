@@ -315,7 +315,7 @@ pub(super) fn indexed_styles(
     styles: &ComputedStyleSnapshot,
 ) -> Result<BTreeMap<NodeId, &spinon_style::ComputedElementStyle>, StyleRenderError> {
     let mut result = BTreeMap::new();
-    for style in &styles.elements {
+    for style in styles.elements.iter() {
         if result.insert(style.node_id, style).is_some() {
             return Err(StyleRenderError::DuplicateComputedStyle(style.node_id));
         }

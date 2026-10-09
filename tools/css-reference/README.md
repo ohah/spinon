@@ -49,6 +49,14 @@ node tools/css-reference/verify-c05-runtime-registered-properties-multi-root.mjs
 
 이 기준은 제한 C05.2 profile 비교 전용입니다. CSSOM, `CSS.registerProperty()`, 외부 CSS 자원, 전체 CSS 지원 판정은 포함하지 않습니다.
 
+## C05.3 detached-only 결과 재사용 사전 비교
+
+[`verify-c05-runtime-result-cache-precomparison.mjs`](./verify-c05-runtime-result-cache-precomparison.mjs)는 C05.2 고정 HTML에서 연결하지 않은 요소의 inline style을 두 번 바꾸고 연결 노드의 computed CSS·rectangle 불변을 확인합니다. Chrome `154.0.8037.98` revision과 viewport를 고정하며, runtime cache 구현 전 독립 CSS 의미 비교에 사용합니다.
+
+```sh
+bun run css:verify:c05-result-cache-precomparison
+```
+
 ## C01 레이아웃 기준 수집
 
 `layout-units-flex-grid.html`과 [`layout-inventory.v1.json`](../../tests/fixtures/css/c01/layout-inventory.v1.json)은 `rem`·`em`, content-box 기준 퍼센트 크기, 분수 Flexbox 성장·줄바꿈, 분수 Grid track의 Chromium 기준을 정의합니다. computed CSS 값은 앞뒤 공백 제거 후 문자열 정확 일치로 비교하고, 각 노드의 `x`·`y`·`width`·`height` 최대 절대 오차는 각각 `0.5 CSS px`로 제한합니다. 평균값으로 개별 노드의 실패를 상쇄하지 않습니다.

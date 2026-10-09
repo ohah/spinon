@@ -14,12 +14,85 @@ use spinon_style::{
 use std::sync::Arc;
 use std::time::Instant;
 
-#[derive(Debug)]
+#[derive(Clone, Debug)]
 pub(super) struct RuntimeCalculation {
-    pub(super) roots: Vec<RuntimeUaCascadeRoot>,
+    pub(super) roots: Arc<[RuntimeUaCascadeRoot]>,
     pub(super) cascade_duration_us: u128,
     pub(super) layout: Result<RuntimeLayoutCompleted, RuntimeLayoutFailure>,
     pub(super) layout_diagnostics: Vec<CascadeDiagnostic>,
+}
+
+impl RuntimeCalculation {
+    pub(super) fn matches_origin(
+        &self,
+        key: super::RuntimeUaCascadeKey,
+        viewport: spinon_style::CssViewport,
+    ) -> bool {
+        self.roots.iter().all(|root| {
+            let styles = &root.styles;
+            styles.generation.get() == key.generation
+                && styles.document_revision.get() == key.document_revision
+                && styles.render_tree_revision.get() == key.render_tree_revision
+                && styles.style_revision.get() == key.style_revision
+                && styles.viewport.width_css_px.to_bits() == viewport.width_css_px.to_bits()
+                && styles.viewport.height_css_px.to_bits() == viewport.height_css_px.to_bits()
+                && styles.viewport.device_scale_factor.to_bits()
+                    == viewport.device_scale_factor.to_bits()
+                && styles.viewport.environment_revision == viewport.environment_revision
+                && styles.viewport.media_environment == viewport.media_environment
+        }) && self.layout.as_ref().is_ok_and(|layout| {
+            if layout.key != key {
+                return false;
+            }
+            layout.render_snapshot.as_ref().is_none_or(|snapshot| {
+                let render_key = snapshot.key();
+                let scene_viewport = snapshot.viewport_css_px();
+                render_key.generation().get() == key.generation
+                    && render_key.document_revision().get() == key.document_revision
+                    && render_key.render_tree_revision().get() == key.render_tree_revision
+                    && render_key.style_revision().get() == key.style_revision
+                    && render_key.environment_revision().get() == key.environment_revision
+                    && scene_viewport.width().to_bits() == viewport.width_css_px.to_bits()
+                    && scene_viewport.height().to_bits() == viewport.height_css_px.to_bits()
+            })
+        })
+    }
+
+    pub(super) fn rekey_for_request(&self, request: &WorkRequest) -> Option<Self> {
+        let roots = self
+            .roots
+            .iter()
+            .map(|root| {
+                let mut styles = root.styles.clone();
+                styles.generation = request.snapshot.generation();
+                styles.document_revision = request.snapshot.document_revision();
+                styles.render_tree_revision = request.snapshot.render_tree_revision();
+                RuntimeUaCascadeRoot {
+                    root_node_id: root.root_node_id,
+                    styles,
+                }
+            })
+            .collect::<Vec<_>>()
+            .into();
+        let previous_layout = self.layout.as_ref().ok()?;
+        let render_snapshot = match previous_layout.render_snapshot.as_ref() {
+            Some(snapshot) => Some(snapshot.with_document_snapshot_revision(&request.snapshot)?),
+            None => None,
+        };
+        let layout = Ok(RuntimeLayoutCompleted {
+            key: request.key,
+            frames: Arc::clone(&previous_layout.frames),
+            render_snapshot,
+            projection_duration_us: 0,
+            cache_hit: true,
+        });
+        Some(Self {
+            roots,
+            cascade_duration_us: 0,
+            layout,
+            layout_diagnostics: self.layout_diagnostics.clone(),
+        })
+    }
 }
 
 pub(super) fn compute_request(request: &WorkRequest) -> Result<RuntimeCalculation, String> {
@@ -92,7 +165,7 @@ fn compute_request_with_runtime_paint(
         compute_runtime_layout(request, roots.len(), layout_context, runtime_paint_enabled);
 
     Ok(RuntimeCalculation {
-        roots,
+        roots: roots.into(),
         cascade_duration_us,
         layout,
         layout_diagnostics,

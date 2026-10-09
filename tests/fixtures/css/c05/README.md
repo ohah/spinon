@@ -21,3 +21,7 @@ node tools/css-reference/verify-c05-runtime-registered-properties-multi-root.mjs
 ```
 
 내부 profile 계약은 [C05.2 명세](../../../../spec/internal/0034-c05-runtime-registered-properties.md), 범위는 [구현 계획](../../../../plan/c05-runtime-registered-properties.md)을 따른다. 이는 `CSS.registerProperty()`, CSSOM, 전체 CSS 지원 또는 실기기 검증을 뜻하지 않는다.
+
+## C05.3 재계산 cache 사전 비교
+
+`bun run css:verify:c05-result-cache-precomparison`은 기존 C05.2 HTML에서 문서에 연결하지 않은 노드의 style을 바꿔도 연결된 세 노드의 computed width와 geometry가 고정되는지 Chromium으로 확인한다. 이는 cache 도입 전 CSS 기준이며 runtime cache가 구현되었다는 뜻은 아니다.

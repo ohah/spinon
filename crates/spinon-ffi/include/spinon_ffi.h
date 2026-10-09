@@ -154,6 +154,10 @@ int32_t spinon_runtime_gpu_host_eval_custom_properties_fixture(
 int32_t spinon_runtime_gpu_host_eval_registered_properties_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);
+/* C05.3: detached mutation cache hit, 연결·분리 cache miss 검증 fixture입니다. */
+int32_t spinon_runtime_gpu_host_eval_runtime_result_cache_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
 /* Android backend: 0=Vulkan 실패 뒤 GL 순차 재시도, 1=Vulkan 강제, 2=GL 강제. iOS는 3=Metal. */
 void *spinon_runtime_gpu_host_create_android(
     SpinonRuntimeGpuHost *host, void *native_window, uint32_t width,
