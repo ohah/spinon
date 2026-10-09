@@ -177,7 +177,10 @@ fn compute_profile_layout(
                 profile: format!("{profile:?}"),
             });
         }
-        ComputedStyleProfile::SupportedElementsUaV1 | ComputedStyleProfile::RuntimeFlexLayoutV1 => {
+        ComputedStyleProfile::SupportedElementsUaV1
+        | ComputedStyleProfile::RuntimeFlexLayoutV1
+        | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+        | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1 => {
             return Err(StyleLayoutError::UnsupportedProfile {
                 profile: format!("{profile:?}"),
             });
@@ -205,6 +208,8 @@ fn compute_layout_from_styles(
         ComputedStyleProfile::FlexMarginV1
             | ComputedStyleProfile::RuntimeFlexLayoutV1
             | ComputedStyleProfile::RuntimeFlexPaintV1
+            | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+            | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
     ) && styles
         .get(&root.id())
         .is_some_and(|style| style.margin != LayoutEdges::default())
@@ -217,7 +222,10 @@ fn compute_layout_from_styles(
     };
     let input = if matches!(
         computed_styles.profile,
-        ComputedStyleProfile::RuntimeFlexLayoutV1 | ComputedStyleProfile::RuntimeFlexPaintV1
+        ComputedStyleProfile::RuntimeFlexLayoutV1
+            | ComputedStyleProfile::RuntimeFlexPaintV1
+            | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+            | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
     ) {
         LayoutInput::from_host_document_with_viewport_containing_block(
             snapshot,
@@ -240,7 +248,10 @@ fn compute_layout_from_styles(
     let mut layout = TaffyLayoutEngine.compute(&input)?;
     if matches!(
         computed_styles.profile,
-        ComputedStyleProfile::RuntimeFlexLayoutV1 | ComputedStyleProfile::RuntimeFlexPaintV1
+        ComputedStyleProfile::RuntimeFlexLayoutV1
+            | ComputedStyleProfile::RuntimeFlexPaintV1
+            | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+            | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
     ) {
         zero_display_none_frames(snapshot, root, &styles, &mut layout);
     }

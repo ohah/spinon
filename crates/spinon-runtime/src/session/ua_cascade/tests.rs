@@ -252,3 +252,6 @@ fn environment_result(
 
 #[path = "runtime_layout_tests.rs"]
 mod runtime_layout_tests;
+
+#[path = "custom_properties_tests.rs"]
+mod custom_properties_tests;

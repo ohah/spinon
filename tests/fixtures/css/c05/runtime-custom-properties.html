@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spinon C05 runtime custom properties</title>
+</head>
+<body style="margin:0">
+  <div id="inherit-parent" style="--measure:41px">
+    <div id="inherit-child" style="width:var(--measure);height:8px"></div>
+  </div>
+  <div id="case-parent" style="--Measure:17px">
+    <div id="case-child" style="width:var(--measure,23px);height:8px"></div>
+  </div>
+  <div id="fallback-parent" style="--space:13px">
+    <div id="fallback-child" style="width:var(--missing,var(--space,29px));height:8px"></div>
+  </div>
+  <div id="keyword-parent" style="--base:41px">
+    <div id="keyword-inherit" style="--base:inherit;width:var(--base,23px);height:8px"></div>
+    <div id="keyword-unset" style="--base:unset;width:var(--base,23px);height:8px"></div>
+    <div id="keyword-initial" style="--base:initial;width:var(--base,23px);height:8px"></div>
+    <div id="keyword-revert" style="--base:revert;width:var(--base,23px);height:8px"></div>
+  </div>
+  <div id="cycle" style="--self:var(--self);--left:var(--right);--right:var(--left);width:var(--self,37px);margin-left:var(--left,7px);height:8px"></div>
+  <div id="invalid" style="--bad:red;margin-left:var(--bad);height:8px"></div>
+  <div id="empty" style="--empty: ;margin-left:var(--empty,7px);height:8px"></div>
+  <div id="important" style="--rank:19px!important;--rank:43px;width:var(--rank);height:8px"></div>
+  <div id="gap-parent" style="display:flex;box-sizing:border-box;width:100vw;height:100vh;--panel:#123456;background-color:var(--panel);--space:11px;gap:var(--space)">
+    <div id="gap-first" style="width:20px;height:10px;--surface:#3366ff;background-color:var(--surface)"></div>
+    <div id="gap-second" style="width:30px;height:10px;--detail:#ffcc33;background-color:var(--detail)"></div>
+  </div>
+  <div id="source-parent" style="--size:41px">
+    <div id="moving-target" style="width:var(--size);height:8px"></div>
+  </div>
+  <div id="destination-parent" style="--size:91px"></div>
+</body>
+</html>

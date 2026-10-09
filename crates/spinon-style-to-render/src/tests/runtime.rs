@@ -7,7 +7,7 @@ use spinon_core::{
 use spinon_layout::{LayoutInputRevision, LayoutSourceRevision};
 use spinon_style::{
     ComputedBackgroundPaint, CssMediaEnvironment, CssViewport, StyloDocumentView,
-    compute_runtime_flex_paint_cascade,
+    compute_runtime_flex_custom_properties_paint_cascade, compute_runtime_flex_paint_cascade,
 };
 use spinon_style_to_layout::compute_runtime_style_layout;
 
@@ -210,4 +210,88 @@ fn runtime_scene_uses_typed_stylo_paint_not_css_string_reparsing() {
         style.background_paint,
         Some(ComputedBackgroundPaint::Transparent | ComputedBackgroundPaint::Opaque(_))
     )));
+}
+
+#[test]
+fn runtime_scene_accepts_custom_properties_paint_profile() {
+    let (document, root, children) = fixture_with_root_style(
+        "display:flex;box-sizing:border-box;width:100vw;height:100vh;--panel:#123456;background-color:var(--panel);--space:11px;gap:var(--space)",
+        &[
+            "width:20px;height:10px;--surface:#3366ff;background-color:var(--surface)",
+            "width:30px;height:10px;--detail:#ffcc33;background-color:var(--detail)",
+        ],
+        false,
+    );
+    let snapshot = document.snapshot();
+    let view = StyloDocumentView::new_html_fragment_child_shared(Arc::new(snapshot.clone()), root)
+        .unwrap();
+    let css_viewport = CssViewport {
+        width_css_px: 390.0,
+        height_css_px: 844.0,
+        device_scale_factor: 1.0,
+        environment_revision: Default::default(),
+        media_environment: CssMediaEnvironment::MOBILE,
+    };
+    let styles = compute_runtime_flex_custom_properties_paint_cascade(
+        &view,
+        css_viewport,
+        Default::default(),
+    )
+    .unwrap();
+    let output = compute_runtime_style_layout(&snapshot, root, styles, css_viewport).unwrap();
+    let current =
+        CurrentLayoutInputs::for_host_document(&snapshot, Default::default(), css_viewport);
+    let render = build_runtime_render_snapshot(&snapshot, root, &output, current).unwrap();
+
+    assert_eq!(render.boxes().len(), 3);
+    assert_eq!(render.boxes()[0].node_id(), root.id());
+    assert_eq!(render.boxes()[1].node_id(), children[0].id());
+    assert_eq!(render.boxes()[2].node_id(), children[1].id());
+
+    let reference_path = concat!(
+        env!("CARGO_MANIFEST_DIR"),
+        "/../../tests/fixtures/css/references/c05-runtime-custom-properties-v1.json"
+    );
+    let reference: serde_json::Value =
+        serde_json::from_str(&std::fs::read_to_string(reference_path).unwrap()).unwrap();
+    let reference_root = &reference["observations"]["initial"]["gap-parent"]["rect"];
+    let actual_root = render.boxes()[0].frame_css_px();
+    for (render_box, node) in render
+        .boxes()
+        .iter()
+        .zip(["gap-parent", "gap-first", "gap-second"])
+    {
+        let actual = render_box.frame_css_px();
+        let expected = &reference["observations"]["initial"][node]["rect"];
+        let actual_values = [
+            f64::from(actual.x() - actual_root.x()),
+            f64::from(actual.y() - actual_root.y()),
+            f64::from(actual.width()),
+            f64::from(actual.height()),
+        ];
+        let expected_values = [
+            expected["x"].as_f64().unwrap() - reference_root["x"].as_f64().unwrap(),
+            expected["y"].as_f64().unwrap() - reference_root["y"].as_f64().unwrap(),
+            expected["width"].as_f64().unwrap(),
+            expected["height"].as_f64().unwrap(),
+        ];
+        for (actual, expected) in actual_values.into_iter().zip(expected_values) {
+            assert!(
+                (actual - expected).abs() <= 0.5,
+                "{node} geometry differs from pinned Chromium: actual={actual}, expected={expected}"
+            );
+        }
+    }
+    assert_eq!(
+        render.boxes()[0].paint(),
+        spinon_render::RuntimePaint::Opaque(spinon_render::OpaqueCssSrgb::new(18, 52, 86))
+    );
+    assert_eq!(
+        render.boxes()[1].paint(),
+        spinon_render::RuntimePaint::Opaque(spinon_render::OpaqueCssSrgb::new(51, 102, 255))
+    );
+    assert_eq!(
+        render.boxes()[2].paint(),
+        spinon_render::RuntimePaint::Opaque(spinon_render::OpaqueCssSrgb::new(255, 204, 51))
+    );
 }

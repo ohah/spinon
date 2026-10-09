@@ -5,8 +5,8 @@ use super::{
 };
 use spinon_core::{HostNodeHandle, HostNodeKind, HostParent, StyleRevision};
 use spinon_style::{
-    CssCascadeError, StyloDocumentView, compute_runtime_flex_layout_cascade,
-    compute_runtime_flex_paint_cascade,
+    CssCascadeError, StyloDocumentView, compute_runtime_flex_custom_properties_cascade,
+    compute_runtime_flex_custom_properties_paint_cascade,
 };
 use std::sync::Arc;
 use std::time::Instant;
@@ -90,9 +90,17 @@ fn compute_root(
         StyloDocumentView::new_html_fragment_child_shared(Arc::clone(&request.snapshot), root)
             .map_err(|error| error.to_string())?;
     let styles = if runtime_paint_enabled {
-        compute_runtime_flex_paint_cascade(&view, request.viewport, StyleRevision::INITIAL)
+        compute_runtime_flex_custom_properties_paint_cascade(
+            &view,
+            request.viewport,
+            StyleRevision::INITIAL,
+        )
     } else {
-        compute_runtime_flex_layout_cascade(&view, request.viewport, StyleRevision::INITIAL)
+        compute_runtime_flex_custom_properties_cascade(
+            &view,
+            request.viewport,
+            StyleRevision::INITIAL,
+        )
     }
     .map_err(|error: CssCascadeError| error.to_string())?;
     if key_for(&request.snapshot, request.viewport.environment_revision) != request.key

@@ -91,6 +91,22 @@ pub fn compute_runtime_flex_layout_cascade(
     )
 }
 
+/// C05.1 사용자 지정 속성과 `var()`를 포함하는 제한 runtime layout snapshot을 계산합니다.
+pub fn compute_runtime_flex_custom_properties_cascade(
+    view: &StyloDocumentView,
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+) -> Result<ComputedStyleSnapshot, CssCascadeError> {
+    compute_cascade(
+        view,
+        &[],
+        viewport,
+        style_revision,
+        RUNTIME_FLEX_LAYOUT_PROPERTIES,
+        ComputedStyleProfile::RuntimeFlexCustomPropertiesV1,
+    )
+}
+
 /// Runtime CSS layout에서 계산 가능한 inline declaration만 통과시킵니다.
 ///
 /// CSS parser가 확장한 longhand를 검사하므로 shorthand와 논리 속성도 원래 규칙에 따라
@@ -131,6 +147,31 @@ pub fn first_unsupported_runtime_layout_inline_property(
     ];
 
     first_unsupported_inline_property(view, |property| ALLOWED_PROPERTIES.contains(&property))
+}
+
+/// C05.1 runtime layout에서 허용하지 않은 inline CSS 속성을 반환합니다.
+pub fn first_unsupported_runtime_custom_properties_inline_property(
+    view: &StyloDocumentView,
+) -> Option<(NodeId, String)> {
+    first_unsupported_runtime_custom_properties_inline_property_with_paint(view, false)
+}
+
+/// C05.1 paint profile에서 허용하지 않은 inline CSS 속성을 반환합니다.
+pub fn first_unsupported_runtime_custom_properties_paint_inline_property(
+    view: &StyloDocumentView,
+) -> Option<(NodeId, String)> {
+    first_unsupported_runtime_custom_properties_inline_property_with_paint(view, true)
+}
+
+fn first_unsupported_runtime_custom_properties_inline_property_with_paint(
+    view: &StyloDocumentView,
+    allow_background_color: bool,
+) -> Option<(NodeId, String)> {
+    first_unsupported_inline_property(view, |property| {
+        property.starts_with("--")
+            || RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES.contains(&property)
+            || (allow_background_color && property == "background-color")
+    })
 }
 
 pub(super) fn first_unsupported_inline_property(

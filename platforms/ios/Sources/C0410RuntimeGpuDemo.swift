@@ -9,6 +9,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     private let hostLifetime = C0410RuntimeGpuHostLifetime()
     private let canvasView = C0410RuntimeGpuCanvasView()
     private let resizeButton = UIButton(type: .system)
+    private let customPropertiesButton = UIButton(type: .system)
     private let statusLabel = UILabel()
     private var canvasWidthConstraint: NSLayoutConstraint?
     private var canvasHeightConstraint: NSLayoutConstraint?
@@ -28,6 +29,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c0410-failure-probe")
     private let shutdownProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c0410-shutdown-probe")
+    private let customPropertiesProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c051-custom-properties")
     private var failureProbeStarted = false
     private var shutdownProbeStarted = false
     private var closing = false
@@ -67,6 +70,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         resizeButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(resizeButton)
 
+        customPropertiesButton.setTitle("C05 · 사용자 지정 속성 다시 적용", for: .normal)
+        customPropertiesButton.addTarget(
+            self,
+            action: #selector(evaluateCustomPropertiesFixture),
+            for: .touchUpInside
+        )
+        customPropertiesButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(customPropertiesButton)
+
         statusLabel.text = "V8·CSS runtime 준비 중…"
         statusLabel.textColor = UIColor(red: 0.38, green: 0.73, blue: 1, alpha: 1)
         statusLabel.font = .monospacedSystemFont(ofSize: 11, weight: .regular)
@@ -91,6 +103,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             canvasHeight,
             resizeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             resizeButton.topAnchor.constraint(equalTo: canvasView.bottomAnchor, constant: 12),
+            customPropertiesButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            customPropertiesButton.topAnchor.constraint(equalTo: resizeButton.bottomAnchor, constant: 4),
             statusLabel.leadingAnchor.constraint(equalTo: title.leadingAnchor),
             statusLabel.trailingAnchor.constraint(equalTo: title.trailingAnchor),
             statusLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -18),
@@ -263,7 +277,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
         log("SPINON_C0410_ENVIRONMENT \(environment ?? "")")
 
-        let result = SpinonRunner.evalRuntimeGpuFixture(handle)
+        var result = SpinonRunner.evalRuntimeGpuFixture(handle)
         let sceneWasSupersededAfterCommit = result?.hasPrefix("status=-12 ") == true
             && result?.contains("op=eval status=0 ") == true
         guard result?.hasPrefix("status=0 ") == true || sceneWasSupersededAfterCommit else {
@@ -277,6 +291,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             log("SPINON_C0410_EVAL \(result ?? "")")
             postStatus(result ?? "runtime scene 준비 완료")
         }
+        if customPropertiesProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuCustomPropertiesFixture(handle)
+            guard result?.hasPrefix("status=0 ") == true else {
+                postStatus("실패 · C05 사용자 지정 속성 · \(result ?? "보고 없음")")
+                return
+            }
+            log("SPINON_C051_EVAL \(result ?? "")")
+            postStatus(result ?? "C05 장면 준비 완료")
+        }
         DispatchQueue.main.async { [weak self] in
             guard let self else { return }
             let size = self.lastDrawableSize
@@ -284,6 +307,21 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 self.ensureRenderer(width: Int(size.width), height: Int(size.height))
             }
             self.refreshEnvironment()
+        }
+    }
+
+    @objc private func evaluateCustomPropertiesFixture() {
+        enqueueRuntime { [weak self] in
+            guard let self else { return }
+            stateLock.lock()
+            let handle = closing ? 0 : hostHandle
+            stateLock.unlock()
+            guard handle != 0 else { return }
+            let report = SpinonRunner.evalRuntimeGpuCustomPropertiesFixture(handle)
+            log("SPINON_C051_EVAL \(report ?? "보고 없음")")
+            postStatus(report ?? "사용자 지정 속성 실행 결과가 없습니다")
+            guard report?.hasPrefix("status=0 ") == true else { return }
+            requestDraw()
         }
     }
 

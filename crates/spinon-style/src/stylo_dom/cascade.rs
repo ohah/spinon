@@ -33,10 +33,14 @@ mod ua_baseline;
 
 use runtime_layout::RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES;
 pub use runtime_layout::{
-    compute_runtime_flex_layout_cascade, first_unsupported_runtime_layout_inline_property,
+    compute_runtime_flex_custom_properties_cascade, compute_runtime_flex_layout_cascade,
+    first_unsupported_runtime_custom_properties_inline_property,
+    first_unsupported_runtime_custom_properties_paint_inline_property,
+    first_unsupported_runtime_layout_inline_property,
 };
 pub use runtime_paint::{
-    compute_runtime_flex_paint_cascade, first_unsupported_runtime_flex_paint_inline_property,
+    compute_runtime_flex_custom_properties_paint_cascade, compute_runtime_flex_paint_cascade,
+    first_unsupported_runtime_flex_paint_inline_property,
 };
 
 #[cfg(test)]
@@ -313,7 +317,11 @@ fn compute_cascade(
             Some(FLEX_ALIGNMENT_AUTHOR_PROPERTIES)
         }
         ComputedStyleProfile::S04FlexPaintV1 => Some(s04::S04_FLEX_PAINT_AUTHOR_PROPERTIES),
-        ComputedStyleProfile::RuntimeFlexLayoutV1 => Some(RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES),
+        ComputedStyleProfile::RuntimeFlexLayoutV1
+        | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+        | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1 => {
+            Some(RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES)
+        }
         ComputedStyleProfile::RuntimeFlexPaintV1 => None,
     };
     if let Some(allowed) = allowed_author_properties
@@ -482,3 +490,7 @@ mod media_environment_tests;
 #[cfg(test)]
 #[path = "cascade/runtime_layout_tests.rs"]
 mod runtime_layout_tests;
+
+#[cfg(test)]
+#[path = "cascade/custom_properties_tests.rs"]
+mod custom_properties_tests;

@@ -1,0 +1,38 @@
+{
+  "schema": "spinon-css-c05-runtime-custom-properties-input/v1",
+  "fixtureId": "C05-runtime-inline-custom-properties-v1",
+  "viewport": {
+    "widthCssPx": 390,
+    "heightCssPx": 844,
+    "deviceScaleFactor": 1
+  },
+  "nodes": [
+    "inherit-child",
+    "case-child",
+    "fallback-child",
+    "keyword-inherit",
+    "keyword-unset",
+    "keyword-initial",
+    "keyword-revert",
+    "cycle",
+    "invalid",
+    "empty",
+    "important",
+    "gap-parent",
+    "gap-first",
+    "gap-second",
+    "moving-target"
+  ],
+  "transitions": [
+    "initial",
+    "ancestor-value-updated",
+    "moved-to-different-parent"
+  ],
+  "comparison": {
+    "computedStyleStrings": "exact",
+    "geometryCssPxMaxAbsoluteError": 0.5,
+    "averageMayHideOutlier": false,
+    "viewport": "390x844-css-px-dpr-1",
+    "media": "screen-light"
+  }
+}

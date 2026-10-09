@@ -1,0 +1,293 @@
+{
+  "schema": "spinon-css-c05-runtime-custom-properties-reference/v1",
+  "fixtureId": "C05-runtime-inline-custom-properties-v1",
+  "fixture": {
+    "inputPath": "tests/fixtures/css/c05/runtime-custom-properties.v1.json",
+    "inputSha256": "46c82ef2c9e7208500085ce99e199b0be9a55d7bac3f3f98d7839ed6811d501d",
+    "htmlPath": "tests/fixtures/css/c05/runtime-custom-properties.html",
+    "htmlSha256": "1dab429fce80212c60833ea851d7d7a8140dad6f0ca64b78a10c6ab725d93998",
+    "appJavascriptPath": "tests/fixtures/css/c05/runtime-custom-properties-app.js",
+    "appJavascriptSha256": "5cab5c4e8e56b092cd5e115b64a4ff797db19cea1f2e91dc669b54d0e4b0b71a"
+  },
+  "captureTool": {
+    "path": "tools/css-reference/capture-c05-runtime-custom-properties.mjs",
+    "sha256": "549c252ba72e24d805f2b14b56e925b065d5ca591a6cfee05f7a3f3d90f3befd",
+    "dependencies": [
+      {
+        "path": "tools/css-reference/chromium-session.mjs",
+        "sha256": "b010ada41ed75dc2d67ee25abd4266b17930f1de95fc683eebc5cdab6ad2cdc1"
+      }
+    ]
+  },
+  "oracle": {
+    "name": "Google Chrome",
+    "product": "Chrome/154.0.8037.98",
+    "cliVersion": "Google Chrome 154.0.8037.98",
+    "revision": "@b859317bf11f6be47f9b7799ec690a0a42a1fb33",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "executablePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "executableSha256": "ccffd5c5fe77ba3212e07c2c69091f8048b73c396b4647ecaa150e1e01a04954",
+    "host": {
+      "platform": "darwin",
+      "architecture": "arm64",
+      "release": "25.5.0",
+      "node": "v24.20.0"
+    },
+    "flags": [
+      "--headless=new",
+      "--no-first-run",
+      "--no-default-browser-check",
+      "--disable-background-networking",
+      "--lang=en-US",
+      "--remote-debugging-port=0",
+      "--user-data-dir=<temporary-profile>"
+    ]
+  },
+  "environment": {
+    "viewportCssPx": {
+      "width": 390,
+      "height": 844
+    },
+    "deviceScaleFactor": 1,
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "forcedColors": "none"
+  },
+  "comparison": {
+    "computedStyleStrings": "exact",
+    "geometryCssPxMaxAbsoluteError": 0.5,
+    "averageMayHideOutlier": false,
+    "viewport": "390x844-css-px-dpr-1",
+    "media": "screen-light"
+  },
+  "observations": {
+    "initial": {
+      "inherit-child": {
+        "width": "41px",
+        "marginLeft": "0px",
+        "rowGap": "normal",
+        "columnGap": "normal",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 41,
+          "height": 8
+        }
+      },
+      "case-child": {
+        "width": "23px",
+        "marginLeft": "0px",
+        "rowGap": "normal",
+        "columnGap": "normal",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "rect": {
+          "x": 0,
+          "y": 8,
+          "width": 23,
+          "height": 8
+        }
+      },
+      "fallback-child": {
+        "width": "13px",
+        "marginLeft": "0px",
+        "rowGap": "normal",
+        "columnGap": "normal",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "rect": {
+          "x": 0,
+          "y": 16,
+          "width": 13,
+          "height": 8
+        }
+      },
+      "keyword-inherit": {
+        "width": "41px",
+        "marginLeft": "0px",
+        "rowGap": "normal",
+        "columnGap": "normal",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "rect": {
+          "x": 0,
+          "y": 24,
+          "width": 41,
+          "height": 8
+        }
+      },
+      "keyword-unset": {
+        "width": "41px",
+        "marginLeft": "0px",
+        "rowGap": "normal",
+        "columnGap": "normal",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "rect": {
+          "x": 0,
+          "y": 32,
+          "width": 41,
+          "height": 8
+        }
+      },
+      "keyword-initial": {
+        "width": "23px",
+        "marginLeft": "0px",
+        "rowGap": "normal",
+        "columnGap": "normal",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "rect": {
+          "x": 0,
+          "y": 40,
+          "width": 23,
+          "height": 8
+        }
+      },
+      "keyword-revert": {
+        "width": "41px",
+        "marginLeft": "0px",
+        "rowGap": "normal",
+        "columnGap": "normal",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "rect": {
+          "x": 0,
+          "y": 48,
+          "width": 41,
+          "height": 8
+        }
+      },
+      "cycle": {
+        "width": "37px",
+        "marginLeft": "7px",
+        "rowGap": "normal",
+        "columnGap": "normal",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "rect": {
+          "x": 7,
+          "y": 56,
+          "width": 37,
+          "height": 8
+        }
+      },
+      "invalid": {
+        "width": "375px",
+        "marginLeft": "0px",
+        "rowGap": "normal",
+        "columnGap": "normal",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "rect": {
+          "x": 0,
+          "y": 64,
+          "width": 375,
+          "height": 8
+        }
+      },
+      "empty": {
+        "width": "375px",
+        "marginLeft": "0px",
+        "rowGap": "normal",
+        "columnGap": "normal",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "rect": {
+          "x": 0,
+          "y": 72,
+          "width": 375,
+          "height": 8
+        }
+      },
+      "important": {
+        "width": "19px",
+        "marginLeft": "0px",
+        "rowGap": "normal",
+        "columnGap": "normal",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "rect": {
+          "x": 0,
+          "y": 80,
+          "width": 19,
+          "height": 8
+        }
+      },
+      "gap-parent": {
+        "width": "390px",
+        "marginLeft": "0px",
+        "rowGap": "11px",
+        "columnGap": "11px",
+        "backgroundColor": "rgb(18, 52, 86)",
+        "rect": {
+          "x": 0,
+          "y": 88,
+          "width": 390,
+          "height": 844
+        }
+      },
+      "gap-first": {
+        "width": "20px",
+        "marginLeft": "0px",
+        "rowGap": "normal",
+        "columnGap": "normal",
+        "backgroundColor": "rgb(51, 102, 255)",
+        "rect": {
+          "x": 0,
+          "y": 88,
+          "width": 20,
+          "height": 10
+        }
+      },
+      "gap-second": {
+        "width": "30px",
+        "marginLeft": "0px",
+        "rowGap": "normal",
+        "columnGap": "normal",
+        "backgroundColor": "rgb(255, 204, 51)",
+        "rect": {
+          "x": 31,
+          "y": 88,
+          "width": 30,
+          "height": 10
+        }
+      },
+      "moving-target": {
+        "width": "41px",
+        "marginLeft": "0px",
+        "rowGap": "normal",
+        "columnGap": "normal",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "rect": {
+          "x": 0,
+          "y": 932,
+          "width": 41,
+          "height": 8
+        }
+      }
+    },
+    "ancestorValueUpdated": {
+      "moving-target": {
+        "width": "73px",
+        "marginLeft": "0px",
+        "rowGap": "normal",
+        "columnGap": "normal",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "rect": {
+          "x": 0,
+          "y": 932,
+          "width": 73,
+          "height": 8
+        }
+      }
+    },
+    "movedToDifferentParent": {
+      "moving-target": {
+        "width": "91px",
+        "marginLeft": "0px",
+        "rowGap": "normal",
+        "columnGap": "normal",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "rect": {
+          "x": 0,
+          "y": 932,
+          "width": 91,
+          "height": 8
+        }
+      }
+    }
+  }
+}

@@ -28,6 +28,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native byte[] nativeSetEnvironment(
             long host, float widthCssPx, float heightCssPx, float scale, boolean dark);
     private static native byte[] nativeEvalFixture(long host);
+    private static native byte[] nativeEvalCustomPropertiesFixture(long host);
     private static native long nativeCreateSurface(
             long host, Surface surface, int width, int height, int backend);
     private static native int nativeResizeSurface(long renderer, int width, int height);
@@ -51,6 +52,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final int backend;
     private final boolean failureProbeRequested;
     private final boolean shutdownProbeRequested;
+    private final boolean customPropertiesProbeRequested;
     private final float density;
     private volatile boolean darkMode;
     private volatile long hostHandle;
@@ -80,6 +82,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         this.backend = backend;
         this.failureProbeRequested = failureProbeRequested;
         this.shutdownProbeRequested = shutdownProbeRequested;
+        customPropertiesProbeRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c051_custom_properties", false);
         density = activity.getResources().getDisplayMetrics().density;
         darkMode = (activity.getResources().getConfiguration().uiMode
                 & android.content.res.Configuration.UI_MODE_NIGHT_MASK)
@@ -122,6 +126,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         resizeButtonParams.topMargin = dp(8, density);
         addView(resizeButton, resizeButtonParams);
+
+        Button customPropertiesButton = new Button(activity);
+        customPropertiesButton.setText("C05 · 사용자 지정 속성 다시 적용");
+        customPropertiesButton.setOnClickListener(view -> evaluateCustomPropertiesFixture());
+        LayoutParams customPropertiesButtonParams =
+                new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        customPropertiesButtonParams.topMargin = dp(4, density);
+        addView(customPropertiesButton, customPropertiesButtonParams);
 
         status = new TextView(activity);
         status.setText("V8·CSS runtime 준비 중…");
@@ -200,9 +212,31 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             return;
         }
         Log.i(TAG, "SPINON_C0410_EVAL " + result);
+        if (customPropertiesProbeRequested) {
+            result = decode(nativeEvalCustomPropertiesFixture(host));
+            if (!result.startsWith("status=0 ")) {
+                postStatus("실패 · C05 사용자 지정 속성 · " + result);
+                return;
+            }
+            Log.i(TAG, "SPINON_C051_EVAL " + result);
+        }
         postStatus(result);
         requestDraw();
         renderLane.request();
+    }
+
+    private void evaluateCustomPropertiesFixture() {
+        enqueueRuntime(() -> {
+            final long host;
+            synchronized (stateLock) {
+                if (closing || hostHandle == 0) return;
+                host = hostHandle;
+            }
+            String result = decode(nativeEvalCustomPropertiesFixture(host));
+            Log.i(TAG, "SPINON_C051_EVAL " + result);
+            postStatus(result);
+            if (result.startsWith("status=0 ")) requestDraw();
+        });
     }
 
     private void refreshEnvironment() {
