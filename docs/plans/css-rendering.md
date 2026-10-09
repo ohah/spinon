@@ -27,6 +27,10 @@ Node.js 내장 WebSocket과 Chromium DevTools Protocol로 HTML fixture를 확인
 
 `layout-inventory.v1.json`과 `layout-units-flex-grid.html`은 `rem`·`em`, content-box 퍼센트, 분수 Flexbox grow와 wrap/gap, 분수 Grid track의 5개 case를 정의한다. Chrome `154.0.8037.95` / revision `@05d469856e75794131cc2e5d9b2f6b6f10a70388`에서 16개 요소의 41개 computed 값과 CSS px 좌표를 수집했다. 계산값은 앞뒤 공백 제거 후 정확 비교하고 각 노드의 좌표·크기별 최대 절대 오차를 `0.5 CSS px`로 고정했다. [C01.2 근거](../../spec/internal/evidence/css-c01-layout-2026-10-02.md)와 [JSON 결과](../../tests/fixtures/css/references/chromium-macos-arm64-macos-26.5.1-25f80-154.0.8037.95-layout-v1-778a2065ac58-inventory-ef6d0b87a506-capture-85a34bd9a1a2-bin-affc6715a14a/core-layout.json)는 해당 결과가 Chromium 기준 데이터일 뿐 Spinon/Taffy 동작이나 CSS 지원 완료가 아님을 구분한다. 같은 `.95` revision에서 C01.1 UA fixture도 다시 수집했고 `.93` 결과와 관찰 배열이 같았다. 전체 목록, 텍스트·페인트, CSSWG/WPT coverage, Android·iOS는 남아 있어 C01 전체는 미완료다.
 
+### C01.3 CSSOM 속성 이름 표면
+
+Chrome `154.0.8037.98` / Chromium revision `@b859317bf11f6be47f9b7799ec690a0a42a1fb33`, macOS `26.5.1` (`25F80`, arm64)에서 author stylesheet·외부 자원이 없는 HTML `div` 하나의 `getComputedStyle(element).item(index)` 이름 478개를 수집했다(일반 442, prefixed 36, custom 0). 이 값은 해당 fixture의 **CSSOM 속성 이름 표면**이다. 전체 CSS property registry, 표준 속성 집합, 값 문법·선언 지원, 요소별 적용성 또는 제품 지원으로 해석하지 않는다. 고정 viewport·배율·locale·time zone·media 관측, browser binary·fixture·도구 해시, WebSocket timeout, Chromium process group 소유 확인·정리, 기존 결과를 덮어쓰지 않는 snapshot 저장을 포함한다. [C01.3 실행 근거](../../spec/internal/evidence/css-c01-cssom-property-surface-2026-10-09.md)와 [JSON snapshot](../../tests/fixtures/css/references/cssom-property-surface-v1-macos-arm64-macos-26.5.1-25f80-154.0.8037.98-node-v24.20.0-revision-b859317bf11f-binary-ccffd5c5fe77-fixture-b4ea33587c76-tools-a6651dbb324d/cssom-property-surface.json)에 provenance와 한계를 저장했다. C01 전체의 값·선택자·at-rule·지원 HTML/SVG·UA stylesheet·layout·text·GPU·Android/iOS inventory는 미완료다.
+
 ## 소유 모듈과 데이터 흐름
 
 ```mermaid
