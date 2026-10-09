@@ -1,0 +1,52 @@
+{
+  "schema": "spinon-r05-android-physical-touch-capture-v1",
+  "appId": "dev.spinon.bootstrap",
+  "appPid": 17482,
+  "appProcessAgeSeconds": 35.52000000001863,
+  "expectedApkSha256": "b87a5cdd1d3589a5ffea66b784d9bf40f64843b69ad4aeb876086412f4db5669",
+  "installedApkSha256": "b87a5cdd1d3589a5ffea66b784d9bf40f64843b69ad4aeb876086412f4db5669",
+  "inputEventPath": "/dev/input/event6",
+  "startedUtc": "2026-10-09T04:48:15.977Z",
+  "preflightCompleteUtc": "2026-10-09T04:48:17.905Z",
+  "goUtc": "2026-10-09T04:48:18.279Z",
+  "stopRequestedUtc": "2026-10-09T04:49:18.280Z",
+  "stoppedUtc": "2026-10-09T04:49:18.971Z",
+  "captureStatus": "no_contact_timeout",
+  "captureWindowValid": false,
+  "stopReason": "prestart_no_contact",
+  "captureError": null,
+  "raw": {
+    "completedContactGroups": 0,
+    "activeContactsAtStop": 0,
+    "pendingReleaseFramesAtStop": 0,
+    "overlappingContactReports": 0,
+    "protocolErrors": []
+  },
+  "deviceGeteventProcessesAfterCount": 0,
+  "collectorExit": [
+    {
+      "label": "getevent",
+      "code": null,
+      "signal": "SIGINT"
+    },
+    {
+      "label": "logcat",
+      "code": null,
+      "signal": "SIGINT"
+    }
+  ],
+  "policy": {
+    "firstContactTimeoutSeconds": 60,
+    "afterFirstContactTimeoutSeconds": 60,
+    "completeContactLimit": 30,
+    "drainSeconds": 2,
+    "maxProcessAgeSeconds": 300,
+    "hostStopEscalation": [
+      "SIGINT",
+      "SIGTERM",
+      "SIGKILL"
+    ],
+    "stopStepTimeoutMs": 2000
+  },
+  "deviceSerial": "<redacted>"
+}
