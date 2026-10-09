@@ -1,0 +1,59 @@
+{
+  "schema": "spinon-r05-android-physical-touch-capture-v1",
+  "startedUtc": "2026-10-09T04:05:28.545Z",
+  "preflightCompleteUtc": "2026-10-09T04:05:30.765Z",
+  "appProcessAgeSeconds": 10.860000000335276,
+  "expectedApkSha256": "b87a5cdd1d3589a5ffea66b784d9bf40f64843b69ad4aeb876086412f4db5669",
+  "installedApkSha256": "b87a5cdd1d3589a5ffea66b784d9bf40f64843b69ad4aeb876086412f4db5669",
+  "goUtc": "2026-10-09T04:05:31.155Z",
+  "stoppedUtc": "2026-10-09T04:06:31.881Z",
+  "hostMonotonicGoNs": "840875283169375",
+  "hostMonotonicStopNs": "840936009129583",
+  "stopReason": "prestart_no_contact",
+  "captureError": null,
+  "captureWindowValid": false,
+  "captureStatus": "no_contact_timeout",
+  "analysisStatus": "not_analyzed_join_required",
+  "raw": {
+    "completedContactGroups": 0,
+    "activeContactsAtStop": 0,
+    "pendingReleaseFramesAtStop": 0,
+    "overlappingContactReports": 0,
+    "protocolErrors": []
+  },
+  "deviceGeteventProcessesAfter": [],
+  "collectorExit": [
+    {
+      "label": "getevent",
+      "code": null,
+      "signal": "SIGINT"
+    },
+    {
+      "label": "logcat",
+      "code": null,
+      "signal": "SIGINT"
+    }
+  ],
+  "stopEscalation": [
+    {
+      "label": "getevent",
+      "result": {
+        "exited": true,
+        "escalation": [
+          "SIGINT"
+        ],
+        "exitedBeforeSignal": false
+      }
+    },
+    {
+      "label": "logcat",
+      "result": {
+        "exited": true,
+        "escalation": [
+          "SIGINT"
+        ],
+        "exitedBeforeSignal": false
+      }
+    }
+  ]
+}

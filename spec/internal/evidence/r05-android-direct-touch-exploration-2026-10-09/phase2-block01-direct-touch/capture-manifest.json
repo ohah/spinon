@@ -1,0 +1,117 @@
+{
+  "schema": "spinon-r05-android-physical-touch-capture-v1",
+  "startedUtc": "2026-10-09T04:09:44.263Z",
+  "appId": "dev.spinon.bootstrap",
+  "appPid": 12769,
+  "inputEventPath": "/dev/input/event6",
+  "expectedApkSha256": "b87a5cdd1d3589a5ffea66b784d9bf40f64843b69ad4aeb876086412f4db5669",
+  "policy": {
+    "firstContactTimeoutSeconds": 60,
+    "afterFirstContactTimeoutSeconds": 60,
+    "completeContactLimit": 30,
+    "drainSeconds": 2,
+    "maxProcessAgeSeconds": 300,
+    "hostStopEscalation": [
+      "SIGINT",
+      "SIGTERM",
+      "SIGKILL"
+    ],
+    "stopStepTimeoutMs": 2000
+  },
+  "host": {
+    "platform": "darwin",
+    "node": "v24.20.0"
+  },
+  "collectors": [
+    {
+      "label": "getevent",
+      "pid": 25408,
+      "parentPid": 24858,
+      "startedAt": "Fri Oct 9 13:09:46 2026",
+      "command": [
+        "adb",
+        "-s",
+        "<serial-redacted>",
+        "shell",
+        "getevent",
+        "-lt",
+        "/dev/input/event6"
+      ],
+      "startUtc": "2026-10-09T04:09:46.417Z"
+    },
+    {
+      "label": "logcat",
+      "pid": 25430,
+      "parentPid": 24858,
+      "startedAt": "Fri Oct 9 13:09:46 2026",
+      "command": [
+        "adb",
+        "-s",
+        "<serial-redacted>",
+        "logcat",
+        "--pid=12769",
+        "-v",
+        "threadtime"
+      ],
+      "startUtc": "2026-10-09T04:09:46.420Z"
+    }
+  ],
+  "appProcessAgeSeconds": 20.359999999869615,
+  "installedApkSha256": "b87a5cdd1d3589a5ffea66b784d9bf40f64843b69ad4aeb876086412f4db5669",
+  "resumedActivity": "topResumedActivity=dev.spinon.bootstrap/.MainActivity",
+  "preflightCompleteUtc": "2026-10-09T04:09:46.411Z",
+  "goUtc": "2026-10-09T04:09:46.794Z",
+  "hostMonotonicGoNs": "841130920955708",
+  "stopReason": "contact_limit",
+  "analysisStatus": "not_analyzed_join_required",
+  "firstRawContactUtc": "2026-10-09T04:10:01.280Z",
+  "contactLimitReachedUtc": "2026-10-09T04:10:23.831Z",
+  "stopRequestedUtc": "2026-10-09T04:10:25.832Z",
+  "stopEscalation": [
+    {
+      "label": "getevent",
+      "result": {
+        "exited": true,
+        "escalation": [
+          "SIGINT"
+        ],
+        "exitedBeforeSignal": false
+      }
+    },
+    {
+      "label": "logcat",
+      "result": {
+        "exited": true,
+        "escalation": [
+          "SIGINT"
+        ],
+        "exitedBeforeSignal": false
+      }
+    }
+  ],
+  "deviceGeteventProcessesAfter": [],
+  "raw": {
+    "completedContactGroups": 32,
+    "activeContactsAtStop": 0,
+    "pendingReleaseFramesAtStop": 0,
+    "overlappingContactReports": 1,
+    "protocolErrors": []
+  },
+  "captureError": null,
+  "stoppedUtc": "2026-10-09T04:10:26.542Z",
+  "hostMonotonicStopNs": "841170668781958",
+  "collectorExit": [
+    {
+      "label": "getevent",
+      "code": null,
+      "signal": "SIGINT"
+    },
+    {
+      "label": "logcat",
+      "code": null,
+      "signal": "SIGINT"
+    }
+  ],
+  "captureWindowValid": true,
+  "captureStatus": "raw_capture_complete_pending_join_validation"
+}

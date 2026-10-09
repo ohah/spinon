@@ -1,0 +1,133 @@
+--------- beginning of main
+10-09 12:26:17.093  7244  7244 I Zygote  : Process 7244 created for dev.spinon.bootstrap
+10-09 12:26:17.093  7244  7244 I pinon.bootstrap: Late-enabling -Xcheck:jni
+10-09 12:26:17.115  7244  7244 I pinon.bootstrap: Using CollectorTypeCMC GC.
+10-09 12:26:17.120  7244  7244 D nativeloader: Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+10-09 12:26:17.124  7244  7244 D ActivityThread: setConscryptValidator
+10-09 12:26:17.124  7244  7244 D ActivityThread: setConscryptValidator - put
+10-09 12:26:17.144  7244  7244 D nativeloader: Configuring clns-9 for other apk /data/app/~~tUbCo_H4A0q_9u6RDVI5tg==/dev.spinon.bootstrap-J5FkVtiHjqkor5o-eXdc4Q==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~tUbCo_H4A0q_9u6RDVI5tg==/dev.spinon.bootstrap-J5FkVtiHjqkor5o-eXdc4Q==/lib/arm64:/data/app/~~tUbCo_H4A0q_9u6RDVI5tg==/dev.spinon.bootstrap-J5FkVtiHjqkor5o-eXdc4Q==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/dev.spinon.bootstrap
+10-09 12:26:17.148  7244  7244 V GraphicsEnvironment: Currently set values for:
+10-09 12:26:17.148  7244  7244 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+10-09 12:26:17.148  7244  7244 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+10-09 12:26:17.148  7244  7244 V GraphicsEnvironment: dev.spinon.bootstrap is not listed in per-application setting
+10-09 12:26:17.148  7244  7244 V GraphicsEnvironment: ANGLE allowlist from config: com.dreamgames.royalmatch com.dts.freefiremax com.dxx.firenow com.gramgames.mergedragons com.ludo.king com.mojang.minecraftpe com.my.defense com.nintendo.zaka com.os.airforce com.playrix.fishdomdd.gplay io.teslatech.callbreak jp.konami.prospia net.peakgames.toonblast
+10-09 12:26:17.148  7244  7244 V GraphicsEnvironment: No special selections for ANGLE, returning default driver choice
+10-09 12:26:17.148  7244  7244 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+--------- beginning of system
+10-09 12:26:17.174  7244  7244 D ActivityThread: dev.spinon.bootstrap will use render engine as VK
+10-09 12:26:17.174  7244  7244 D HWUI    : HWUI - treat SMPTE_170M as sRGB
+10-09 12:26:17.176  7244  7290 I DisplayManager: Choreographer implicitly registered for the refresh rate.
+10-09 12:26:17.177  7244  7290 D HWUI    : CacheManager constructor. deviceInfo=(1080, 1920)
+10-09 12:26:17.177  7244  7290 D vulkan  : searching for layers in '/data/app/~~tUbCo_H4A0q_9u6RDVI5tg==/dev.spinon.bootstrap-J5FkVtiHjqkor5o-eXdc4Q==/lib/arm64'
+10-09 12:26:17.177  7244  7290 D vulkan  : searching for layers in '/data/app/~~tUbCo_H4A0q_9u6RDVI5tg==/dev.spinon.bootstrap-J5FkVtiHjqkor5o-eXdc4Q==/base.apk!/lib/arm64-v8a'
+10-09 12:26:17.177  7244  7290 V XGL     : ----------------------------------------------------------------------
+10-09 12:26:17.177  7244  7290 V XGL     : SUMD version compiled date     = 2026-01-09 09:57 - KST
+10-09 12:26:17.177  7244  7290 V XGL     : SUMD version revision number   = 1900168dcb
+10-09 12:26:17.177  7244  7290 V XGL     : SUMD version info              = Driver version: 24.0.534, git hash: 1900168dcb
+10-09 12:26:17.177  7244  7290 V XGL     : ----------------------------------------------------------------------
+10-09 12:26:17.177  7244  7290 V XGL     : Entering: Create
+10-09 12:26:17.184  7244  7290 V XGL     : Exiting: Create
+10-09 12:26:17.194  7244  7244 D nativeloader: Load /data/app/~~tUbCo_H4A0q_9u6RDVI5tg==/dev.spinon.bootstrap-J5FkVtiHjqkor5o-eXdc4Q==/base.apk!/lib/arm64-v8a/libspinon_bootstrap.so using class loader ns clns-9 (caller=/data/app/~~tUbCo_H4A0q_9u6RDVI5tg==/dev.spinon.bootstrap-J5FkVtiHjqkor5o-eXdc4Q==/base.apk!classes2.dex): ok
+10-09 12:26:17.198  7244  7244 E ashmem  : Pinning is deprecated since Android Q. Please use trim or other methods.
+10-09 12:26:17.201  7244  7244 I SpinonBootstrap: SPINON_R05_FENCE_WAIT_START api=36 timeout_ms=250 workers=2 queue_capacity=64
+10-09 12:26:17.218  7244  7244 D CompatChangeReporter: Compat change id reported: 377864165; UID 10453; state: ENABLED
+10-09 12:26:17.218  7244  7244 D DesktopExperienceFlags: Toggle override initialized to: false
+10-09 12:26:17.218  7244  7244 D DesktopModeFlags: Toggle override initialized to: OVERRIDE_UNSET
+10-09 12:26:17.220  7244  7244 I DecorView: setWindowBackground: isPopOver=false color=fffafafa d=android.graphics.drawable.ColorDrawable@ab83805
+10-09 12:26:17.220  7244  7244 I SpinonBootstrap: SPINON_R08_UI=ready text-input=EditText accessibility=button+EditText
+10-09 12:26:17.226  7244  7244 D ViewRootImpl: desktopMode is false
+10-09 12:26:17.226  7244  7244 I ViewRootImpl: dVRR is disabled
+10-09 12:26:17.227  7244  7244 D HardwareRenderer: onDisplayChanged. displayId=0 current wxh=1080x2340 mLargest wxh=0x0
+10-09 12:26:17.227  7244  7244 D HardwareRenderer: Set largestWidth and largestHeight as logical resolution. (1080x2340)
+10-09 12:26:17.227  7244  7290 D HWUI    : setMaxSurfaceArea requested wxh=(1080,2340) requestedSurfaceArea(2527200) mMaxSurfaceArea(2073600)
+10-09 12:26:17.227  7244  7290 D NativeCustomFrequencyManager: [NativeCFMS] BpCustomFrequencyManager::BpCustomFrequencyManager()
+10-09 12:26:17.229  7244  7307 I pinon.bootstrap: [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+10-09 12:26:17.245  7244  7244 D InputTransport: Input channel constructed: 'c72dfcd', fd=114
+10-09 12:26:17.246  7244  7244 I InsetsController: onStateChanged: host=dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity, from=android.view.ViewRootImpl.onInsetsStateChanged:3038, state=InsetsState: {mDisplayFrame=Rect(0, 0 - 1080, 2340), mDisplayCutout=DisplayCutout{insets=Rect(0, 82 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(511, 24 - 569, 82), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=1080 displayHeight=2340 physicalDisplayWidth=1080 physicalDisplayHeight=2340 density={2.8125} cutoutSpec={M 0,0 M 0, 8.533333333333333 a 10.31111111111111,10.31111111111111 0 1,0 0,20.62222222222222 a 10.31111111111111,10.31111111111111 0 1,0 0,-20.62222222222222 Z @dp} rotation={0} scale={1.0} physicalPixelDisplaySizeRatio={1.0}}} sideOverrides={}}, mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=113, center=Point(113, 113)}, RoundedCorner{position=TopRight, radius=113, center=Point(967, 113)}, RoundedCorner{position=BottomRight, radius=113, center=Point(967, 2227)}, RoundedCorner{position=BottomLeft, radius=113, center=Point(113, 2227)}]}  mRoundedCornerFrame=Rect(0, 0 - 1080, 2340), mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=Rect(956, 0 - 1080, 97) rotation=0}, mDisplayShape=DisplayShape{ spec=-311912193 displayWidth=1080 displayHeight=2340 physicalPixelDisplaySizeRatio=1.0 rotation=0 offsetX=0 offsetY=0 scale=1.0}, mSources= { InsetsSource: {3 mType=ime mFrame=[0,0][0,0] mAttachedInsets=null mVisible=false mFlags=INVALID mSideHint=NONE mBoundingRects=null}, InsetsSource: {27 mType=displayCutout mFrame=[0,0][1080,82] mAttachedInsets=null mVisible=true mFlags= mSideHint=TOP mBoundingRects=null}, InsetsSource: {1edd0001 mType=navigationBars mFrame=[0,2205][1080,2340] mAttachedInsets=null mVisible=true mFlags= mSideHint=BOTTOM mBoundingRects=null}, InsetsSource: {1edd0004 mType=systemGestures mFrame=[0,0][0,0] mAttachedInsets=null mVisible=true mFlags= mSideHint=NONE mBoundingRects=null}, InsetsSource: {1edd0005 mType=mandatorySystemGestures mFrame=[0,2205][1080,2340] mAttachedInsets=null mVisible=true mFlags= mSideHint=BOTTOM mBoundingRects=null}, InsetsSource: {1edd0006 mType=tappableElement mFrame=[0,2205][1080,2340] mAttachedInsets=null mVisible=true mFlags= mSideHint=BOTTOM mBoundingRects=null}, InsetsSource: {1edd0024 mType=systemGestures mFrame=[0,0][0,0] mAttachedInsets=null mVisible=true mFlags= mSideHint=NONE mBoundingRects=null}, InsetsSource: {1f350000 mType=statusBars mFrame=[0,0][1080,97] mAttachedInsets=null mVisible=true mFlags= mSideHint=TOP mBoundingRects=null}, InsetsSource: {1f350005 mType=mandatorySystemGestures mFrame=[0,0][1080,116] mAttachedInsets=null mVisible=true mFlags= mSideHint=TOP mBoundingRects=null}, InsetsSource: {1f350006 mType=tappableElement mFrame=[0,0][1080,97] mAttachedInsets=null mVisible=true mFlags= mSideHint=TOP mBoundingRects=null} }
+10-09 12:26:17.247  7244  7244 I VRI[MainActivity]@2f645fe: synced displayState. AttachInfo displayState=2
+10-09 12:26:17.248  7244  7244 I VRI[MainActivity]@2f645fe: setView = com.android.internal.policy.DecorView@dc41af1 IsHRR=false mFlingFrameRateChange=0 TM=true
+10-09 12:26:17.248  7244  7244 I IDS_TAG : Starting IDS observe window
+10-09 12:26:17.248  7244  7244 I IDS_TAG : Getting Shared Preference for android.app.Application@ffff954 uid = 10453
+10-09 12:26:17.250  7244  7244 I IDS_TAG : App android.app.Application@ffff954 has not finished training
+10-09 12:26:17.251  7244  7290 D HWUI    : HWUI - treat SMPTE_170M as sRGB
+10-09 12:26:17.251  7244  7244 I IDS_TAG : Closing IDS observe window
+10-09 12:26:17.251  7244  7244 I IDS_TAG : Getting Shared Preference for android.app.Application@ffff954 uid = 10453
+10-09 12:26:17.251  7244  7244 I IDS_TAG : IDS count updated to 9 for android.app.Application@ffff954
+10-09 12:26:17.252  7244  7244 D WindowOnBackDispatcher: setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@989ca62
+10-09 12:26:17.253  7244  7244 I SV[267299746 MainActivity]: onWindowVisibilityChanged(0) true dev.spinon.bootstrap.R08WgpuSurface{feeaba2 VFE...C.. ......I. 0,0-0,0} of VRI[MainActivity]@2f645fe
+10-09 12:26:17.253  7244  7244 D SurfaceView: 267299746 updateSurface: has no frame
+10-09 12:26:17.254  7244  7244 D VRI[MainActivity]@2f645fe: WindowInsets changed: 1080x2340 statusBars:[0,97,0,0] navigationBars:[0,0,0,135] mandatorySystemGestures:[0,116,0,135]
+10-09 12:26:17.255  7244  7244 I HWUI    : Using FreeType backend (prop=Auto)
+10-09 12:26:17.262  7244  7244 W libc    : Access denied finding property "vendor.perf.ems.egg"
+10-09 12:26:17.263  7244  7244 I BLASTBufferQueue_Java: new BLASTBufferQueue, mName= VRI[MainActivity]@2f645fe mNativeObject= 0xb400006eca4f4900 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:3603 android.view.ViewRootImpl.relayoutWindow:11813 android.view.ViewRootImpl.performTraversals:4840 android.view.ViewRootImpl.doTraversal:3959 android.view.ViewRootImpl$TraversalRunnable.run:13034 android.view.Choreographer$CallbackRecord.run:1961 android.view.Choreographer$CallbackRecord.run:1970 android.view.Choreographer.doCallbacks:1423 android.view.Choreographer.doFrame:1348 android.view.Choreographer$FrameDisplayEventReceiver.run:1930
+10-09 12:26:17.263  7244  7244 I BLASTBufferQueue_Java: update, w= 1080 h= 2340 mName = VRI[MainActivity]@2f645fe mNativeObject= 0xb400006eca4f4900 sc.mNativeObject= 0xb400006eda46f410 format= -3 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:3608 android.view.ViewRootImpl.relayoutWindow:11813 android.view.ViewRootImpl.performTraversals:4840 android.view.ViewRootImpl.doTraversal:3959 android.view.ViewRootImpl$TraversalRunnable.run:13034 android.view.Choreographer$CallbackRecord.run:1961
+10-09 12:26:17.263  7244  7244 W libc    : Access denied finding property "vendor.perf.ems.egg"
+10-09 12:26:17.264  7244  7244 I VRI[MainActivity]@2f645fe: Relayout returned: old=(0,0,1080,2340) new=(0,0,1080,2340) relayoutAsync=false req=(1080,2340)0 dur=3 res=0x3 s={true 0xb400006e7a4889b0} ch=true seqId=0
+10-09 12:26:17.264  7244  7244 I VRI[MainActivity]@2f645fe: performConfigurationChange setNightDimText nightDimLevel=0
+10-09 12:26:17.265  7244  7244 D VRI[MainActivity]@2f645fe: mThreadedRenderer.initialize() mSurface={isValid=true 0xb400006e7a4889b0} hwInitialized=true
+10-09 12:26:17.266  7244  7244 D SurfaceView: 267299746 updateSurface: has no frame
+10-09 12:26:17.266  7244  7244 I SV[267299746 MainActivity]: windowStopped(false) true dev.spinon.bootstrap.R08WgpuSurface{feeaba2 VFE...C.. ......ID 0,0-1080,2340} of VRI[MainActivity]@2f645fe
+10-09 12:26:17.266  7244  7244 D SurfaceView: 267299746 updateSurface: has no frame
+10-09 12:26:17.267  7244  7244 D VRI[MainActivity]@2f645fe: reportNextDraw android.view.ViewRootImpl.performTraversals:5507 android.view.ViewRootImpl.doTraversal:3959 android.view.ViewRootImpl$TraversalRunnable.run:13034 android.view.Choreographer$CallbackRecord.run:1961 android.view.Choreographer$CallbackRecord.run:1970
+10-09 12:26:17.267  7244  7244 I SurfaceView: 267299746 Changes: creating=true format=true size=true visible=true alpha=false hint=false left=true top=true z=false attached=true lifecycleStrategy=false
+10-09 12:26:17.268  7244  7244 W libc    : Access denied finding property "vendor.perf.ems.egg"
+10-09 12:26:17.268  7244  7244 I BLASTBufferQueue_Java: new BLASTBufferQueue, mName= feeaba2 SurfaceView[dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity]@0 mNativeObject= 0xb400006eca4f5910 caller= android.view.SurfaceView.createBlastSurfaceControls:1878 android.view.SurfaceView.updateSurface:1519 android.view.SurfaceView.lambda$new$0:283 android.view.SurfaceView.$r8$lambda$NfZyM_TG8F8lqzaOVZ7noREFjzU:0 android.view.SurfaceView$$ExternalSyntheticLambda1.onPreDraw:0 android.view.ViewTreeObserver.dispatchOnPreDraw:1295 android.view.ViewRootImpl.performTraversals:5512 android.view.ViewRootImpl.doTraversal:3959 android.view.ViewRootImpl$TraversalRunnable.run:13034 android.view.Choreographer$CallbackRecord.run:1961
+10-09 12:26:17.268  7244  7244 I BLASTBufferQueue_Java: update, w= 1080 h= 2340 mName = feeaba2 SurfaceView[dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity]@0 mNativeObject= 0xb400006eca4f5910 sc.mNativeObject= 0xb400006eda471b10 format= 4 caller= android.view.SurfaceView.createBlastSurfaceControls:1879 android.view.SurfaceView.updateSurface:1519 android.view.SurfaceView.lambda$new$0:283 android.view.SurfaceView.$r8$lambda$NfZyM_TG8F8lqzaOVZ7noREFjzU:0 android.view.SurfaceView$$ExternalSyntheticLambda1.onPreDraw:0 android.view.ViewTreeObserver.dispatchOnPreDraw:1295
+10-09 12:26:17.268  7244  7244 I SurfaceView: 267299746 Cur surface: Surface(name=null mNativeObject=0)/@0x484e186
+10-09 12:26:17.268  7244  7244 I SV[267299746 MainActivity]: pST: sr = Rect(0, 0 - 1080, 2340) sw = 1080 sh = 2340
+10-09 12:26:17.268  7244  7244 D SurfaceView: 267299746 performSurfaceTransaction RenderWorker position = [0, 0, 1080, 2340] surfaceSize = 1080x2340
+10-09 12:26:17.268  7244  7244 W libc    : Access denied finding property "vendor.perf.ems.egg"
+10-09 12:26:17.268  7244  7244 I SV[267299746 MainActivity]: updateSurface: mVisible = true mSurface.isValid() = true
+10-09 12:26:17.268  7244  7244 I SV[267299746 MainActivity]: updateSurface: mSurfaceCreated = false surfaceChanged = true visibleChanged = true
+10-09 12:26:17.268  7244  7244 I SurfaceView: 267299746 visibleChanged -- surfaceCreated
+10-09 12:26:17.268  7244  7244 I SV[267299746 MainActivity]: surfaceCreated 1 #8 dev.spinon.bootstrap.R08WgpuSurface{feeaba2 VFE...C.. ......ID 0,0-1080,2340}
+10-09 12:26:17.268  7244  7244 I SpinonBootstrap: SPINON_R05_SURFACE renderer=wgpu type=SurfaceView generation=1
+10-09 12:26:17.268  7244  7244 I SpinonBootstrap: SPINON_R05_SIGNAL_CAPABILITY renderer=wgpu signal=SurfaceView_JankData available=false reason=api_below_37 api=36 api_full=3600001
+10-09 12:26:17.268  7244  7244 I SurfaceView: 267299746 surfaceChanged -- format=4 w=1080 h=2340
+10-09 12:26:17.268  7244  7244 I SV[267299746 MainActivity]: surfaceChanged (1080,2340) 1 #8 dev.spinon.bootstrap.R08WgpuSurface{feeaba2 VFE...C.. ......ID 0,0-1080,2340}
+10-09 12:26:17.269  7244  7244 V XGL     : ----------------------------------------------------------------------
+10-09 12:26:17.269  7244  7244 V XGL     : SUMD version compiled date     = 2026-01-09 09:57 - KST
+10-09 12:26:17.269  7244  7244 V XGL     : SUMD version revision number   = 1900168dcb
+10-09 12:26:17.269  7244  7244 V XGL     : SUMD version info              = Driver version: 24.0.534, git hash: 1900168dcb
+10-09 12:26:17.269  7244  7244 V XGL     : ----------------------------------------------------------------------
+10-09 12:26:17.269  7244  7244 V XGL     : Entering: Create
+10-09 12:26:17.272  7244  7244 V XGL     : Exiting: Create
+10-09 12:26:17.272  7244  7244 D pinon.bootstrap: [is_supported_usage] Other IPs besides the CPU do not support the format 59
+10-09 12:26:17.272  7244  7244 D pinon.bootstrap: [is_supported_usage] Other IPs besides the CPU do not support the format 59
+10-09 12:26:17.295  7244  7244 D pinon.bootstrap: [is_supported_usage] Other IPs besides the CPU do not support the format 59
+10-09 12:26:17.295  7244  7244 D pinon.bootstrap: [is_supported_usage] Other IPs besides the CPU do not support the format 59
+10-09 12:26:17.295  7244  7244 D pinon.bootstrap: [is_supported_usage] Other IPs besides the CPU do not support the format 59
+10-09 12:26:17.295  7244  7244 D pinon.bootstrap: [is_supported_usage] Other IPs besides the CPU do not support the format 59
+10-09 12:26:17.295  7244  7244 D pinon.bootstrap: [is_supported_usage] Other IPs besides the CPU do not support the format 59
+10-09 12:26:17.295  7244  7244 D pinon.bootstrap: [is_supported_usage] Other IPs besides the CPU do not support the format 59
+10-09 12:26:17.295  7244  7244 W libc    : Access denied finding property "ro.hardware.vulkan.rotation_sajc_enable"
+10-09 12:26:17.302  7244  7244 I SpinonBootstrap: SPINON_R08_WGPU=ready backend=Vulkan device=IntegratedGpu name=Samsung Xclipse 940 google_display_timing_supported=true format=Rgba8Unorm color_space=Auto supported_formats=[Rgba8UnormSrgb, Rgba8Unorm, Rgba16Float, Rgb10a2Unorm]
+10-09 12:26:17.303  7244  7244 I SpinonBootstrap: SPINON_R08_WGPU_SURFACE=size 1080x2340
+10-09 12:26:17.304  7244  7244 I BLASTBufferQueue: [feeaba2 SurfaceView[dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity]@0#1](f:0,a:0,s:0) onFrameAvailable the first frame is available
+10-09 12:26:17.305  7244  7244 I SurfaceView: 267299746 surfaceRedrawNeeded
+10-09 12:26:17.305  7244  7244 I SurfaceView: 267299746 finishedDrawing
+10-09 12:26:17.305  7244  7244 V SurfaceView: Layout: x=0 y=0 w=1080 h=2340, frame=Rect(0, 0 - 1080, 2340)
+10-09 12:26:17.306  7244  7244 D VRI[MainActivity]@2f645fe: Setup new sync=wmsSync-VRI[MainActivity]@2f645fe#1
+10-09 12:26:17.306  7244  7244 I VRI[MainActivity]@2f645fe: Creating new active sync group VRI[MainActivity]@2f645fe#2
+10-09 12:26:17.306  7244  7244 D VRI[MainActivity]@2f645fe: registerCallbacksForSync syncBuffer=false
+10-09 12:26:17.309  7244  7290 D SurfaceView: 267299746 updateSurfacePosition RenderWorker, frameNr = 1, position = [0, 0, 1080, 2340] surfaceSize = 1080x2340
+10-09 12:26:17.309  7244  7290 I SV[267299746 MainActivity]: uSP: rtp = Rect(0, 0 - 1080, 2340) rtsw = 1080 rtsh = 2340
+10-09 12:26:17.309  7244  7290 I SV[267299746 MainActivity]: onSSPAndSRT: pl = 0 pt = 0 sx = 1.0 sy = 1.0
+10-09 12:26:17.309  7244  7290 I SV[267299746 MainActivity]: aOrMT: VRI[MainActivity]@2f645fe t = android.view.SurfaceControl$Transaction@80803e3 fN = 1 android.view.SurfaceView.-$$Nest$mapplyOrMergeTransaction:0 android.view.SurfaceView$SurfaceViewPositionUpdateListener.positionChanged:2029 android.graphics.RenderNode$CompositePositionUpdateListener.positionChanged:401
+10-09 12:26:17.309  7244  7290 I VRI[MainActivity]@2f645fe: mWNT: t=0xb400006e3a4887c0 mBlastBufferQueue=0xb400006eca4f4900 fn= 1 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.SurfaceView.applyOrMergeTransaction:1960 android.view.SurfaceView.-$$Nest$mapplyOrMergeTransaction:0 android.view.SurfaceView$SurfaceViewPositionUpdateListener.positionChanged:2029
+10-09 12:26:17.309  7244  7307 D VRI[MainActivity]@2f645fe: Received frameDrawingCallback syncResult=0 frameNum=1.
+10-09 12:26:17.310  7244  7307 I VRI[MainActivity]@2f645fe: mWNT: t=0xb400006e3a497f30 mBlastBufferQueue=0xb400006eca4f4900 fn= 1 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.ViewRootImpl$12.onFrameDraw:15561 android.view.ThreadedRenderer$1.onFrameDraw:751 <bottom of call stack>
+10-09 12:26:17.310  7244  7307 I VRI[MainActivity]@2f645fe: Setting up sync and frameCommitCallback
+10-09 12:26:17.315  7244  7290 I BLASTBufferQueue: [VRI[MainActivity]@2f645fe#0](f:0,a:0,s:0) onFrameAvailable the first frame is available
+10-09 12:26:17.315  7244  7290 I VRI[MainActivity]@2f645fe: Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true
+10-09 12:26:17.316  7244  7290 D HWUI    : CFMS:: SetUp Pid : 7244    Tid : 7290
+10-09 12:26:17.316  7244  7244 D VRI[MainActivity]@2f645fe: reportDrawFinished seqId=0
+10-09 12:26:17.317  7244  7244 I InsetsSourceConsumer: applyRequestedVisibilityToControl: visible=true, type=statusBars, host=dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity
+10-09 12:26:17.318  7244  7244 I InsetsSourceConsumer: applyRequestedVisibilityToControl: visible=true, type=navigationBars, host=dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity
+10-09 12:26:17.349  7244  7244 D VRI[MainActivity]@2f645fe: mThreadedRenderer.initializeIfNeeded()#2 mSurface={isValid=true 0xb400006e7a4889b0}
+10-09 12:26:17.350  7244  7244 D InputMethodManagerUtils: startInputInner - Id : 0
+10-09 12:26:17.350  7244  7244 I InputMethodManager: startInputInner - IInputMethodManagerGlobalInvoker.startInputOrWindowGainedFocus
+10-09 12:26:17.351  7244  7244 D InsetsController: hide(ime())
+10-09 12:26:17.351  7244  7244 I ImeTracker: dev.spinon.bootstrap:f0b53545: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+10-09 12:26:17.353  7244  7316 D InputTransport: Input channel constructed: 'ClientS', fd=135
+10-09 12:26:17.552  7244  7260 I pinon.bootstrap: Compiler allocated 5214KB to compile void android.view.ViewRootImpl.performTraversals()
