@@ -1,0 +1,93 @@
+{
+  "schema": "spinon-r05-android-physical-touch-capture-v1",
+  "startedUtc": "2026-10-09T04:03:46.436Z",
+  "deviceSerial": "[비공개]",
+  "appId": "dev.spinon.bootstrap",
+  "appPid": "[비공개]",
+  "inputEventPath": "/dev/input/event6",
+  "expectedApkSha256": "b87a5cdd1d3589a5ffea66b784d9bf40f64843b69ad4aeb876086412f4db5669",
+  "policy": {
+    "firstContactTimeoutSeconds": 2,
+    "afterFirstContactTimeoutSeconds": 2,
+    "completeContactLimit": 1,
+    "drainSeconds": 0,
+    "maxProcessAgeSeconds": 300,
+    "hostStopEscalation": [
+      "SIGINT",
+      "SIGTERM",
+      "SIGKILL"
+    ],
+    "stopStepTimeoutMs": 2000
+  },
+  "host": {
+    "platform": "darwin",
+    "node": "v24.20.0"
+  },
+  "collectors": [
+    {
+      "label": "getevent",
+      "startUtc": "2026-10-09T04:03:48.612Z"
+    },
+    {
+      "label": "logcat",
+      "startUtc": "2026-10-09T04:03:48.620Z"
+    }
+  ],
+  "appProcessAgeSeconds": 129.14999999990687,
+  "installedApkSha256": "b87a5cdd1d3589a5ffea66b784d9bf40f64843b69ad4aeb876086412f4db5669",
+  "resumedActivity": "topResumedActivity=ActivityRecord{18129968 u0 dev.spinon.bootstrap/.MainActivity t5623}",
+  "preflightCompleteUtc": "2026-10-09T04:03:48.606Z",
+  "goUtc": "2026-10-09T04:03:49.003Z",
+  "hostMonotonicGoNs": "840773131688333",
+  "stopReason": "prestart_no_contact",
+  "analysisStatus": "not_analyzed_join_required",
+  "stopRequestedUtc": "2026-10-09T04:03:51.006Z",
+  "stopEscalation": [
+    {
+      "label": "getevent",
+      "result": {
+        "exited": true,
+        "escalation": [
+          "SIGINT"
+        ],
+        "exitedBeforeSignal": false
+      }
+    },
+    {
+      "label": "logcat",
+      "result": {
+        "exited": true,
+        "escalation": [
+          "SIGINT"
+        ],
+        "exitedBeforeSignal": false
+      }
+    }
+  ],
+  "deviceGeteventProcessesAfter": [],
+  "raw": {
+    "completedContactGroups": 0,
+    "activeContactsAtStop": 0,
+    "pendingReleaseFramesAtStop": 0,
+    "overlappingContactReports": 0,
+    "protocolErrors": []
+  },
+  "captureError": null,
+  "stoppedUtc": "2026-10-09T04:03:51.693Z",
+  "hostMonotonicStopNs": "840775821735416",
+  "collectorExit": [
+    {
+      "label": "getevent",
+      "code": null,
+      "signal": "SIGINT"
+    },
+    {
+      "label": "logcat",
+      "code": null,
+      "signal": "SIGINT"
+    }
+  ],
+  "captureWindowValid": false,
+  "captureStatus": "no_contact_timeout",
+  "runError": "prestart_no_contact: raw direct touch가 제한 시간 안에 없었습니다"
+}

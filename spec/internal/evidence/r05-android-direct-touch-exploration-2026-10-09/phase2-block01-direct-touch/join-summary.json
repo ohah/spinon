@@ -1,0 +1,606 @@
+{
+  "schema": "spinon-r05-android-physical-touch-join-v1",
+  "analysisStatus": "analyzed",
+  "scoringRule": "GO 이후 raw tracking ID 시작 시각순 첫 30개만 채점하고 뒤의 입력은 원본에 보존하되 제외한다.",
+  "captureStatus": "raw_capture_complete_pending_join_validation",
+  "rawCaptureValid": true,
+  "raw": {
+    "completedContacts": 32,
+    "scoredContacts": 30,
+    "extraContactsOutsideScoringSet": 2,
+    "overlappingContactReports": 1,
+    "protocolErrors": 0
+  },
+  "app": {
+    "acceptedActionUps": 30,
+    "acceptedActionUpsAfterScoringSet": 2,
+    "acceptedActionUpsNotJoinedToScoredRaw": 2,
+    "excludedInputs": 2,
+    "excludedReasons": {
+      "cancelled": 1,
+      "outside_target": 1
+    },
+    "exclusionToRawAttemptAssociation": "앱 제외 행에 event timestamp가 없어 개별 raw 접촉과 연결하지 않는다."
+  },
+  "joins": {
+    "exactRawReleaseToActionUp": 28,
+    "submit": 28,
+    "currentGenerationCallback": 28,
+    "usableFence": 28,
+    "usableClockBracketCandidate": 28,
+    "unjoinedScoredContactsByStatus": {
+      "raw_release_without_action_up": 2
+    }
+  },
+  "candidateIntervalRangeNs": {
+    "minimumLower": "28230409",
+    "maximumUpper": "61515214"
+  },
+  "statisticalClaim": "한 block 결과이며 p95·제품 input-to-photon·VSync·scanout을 주장하지 않는다.",
+  "attempts": [
+    {
+      "attempt": 1,
+      "rawOrdinal": 0,
+      "trackingId": 19050,
+      "slot": 0,
+      "rawDownNs": "1507469122393000",
+      "rawReleaseNs": "1507469253344000",
+      "completeRawContact": true,
+      "appInputSeq": 1,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "53249808",
+        "upper": "53255511"
+      }
+    },
+    {
+      "attempt": 2,
+      "rawOrdinal": 1,
+      "trackingId": 19051,
+      "slot": 0,
+      "rawDownNs": "1507470191092000",
+      "rawReleaseNs": "1507470303761000",
+      "completeRawContact": true,
+      "appInputSeq": 2,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "37478510",
+        "upper": "37488822"
+      }
+    },
+    {
+      "attempt": 3,
+      "rawOrdinal": 2,
+      "trackingId": 19052,
+      "slot": 0,
+      "rawDownNs": "1507471020186000",
+      "rawReleaseNs": "1507471221151000",
+      "completeRawContact": true,
+      "appInputSeq": 3,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "36577260",
+        "upper": "36585659"
+      }
+    },
+    {
+      "attempt": 4,
+      "rawOrdinal": 3,
+      "trackingId": 19053,
+      "slot": 0,
+      "rawDownNs": "1507471890459000",
+      "rawReleaseNs": "1507472079781000",
+      "completeRawContact": true,
+      "appInputSeq": 4,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "45189018",
+        "upper": "45201987"
+      }
+    },
+    {
+      "attempt": 5,
+      "rawOrdinal": 4,
+      "trackingId": 19054,
+      "slot": 0,
+      "rawDownNs": "1507472849329000",
+      "rawReleaseNs": "1507473073658000",
+      "completeRawContact": true,
+      "appInputSeq": 5,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "34807565",
+        "upper": "34816745"
+      }
+    },
+    {
+      "attempt": 6,
+      "rawOrdinal": 5,
+      "trackingId": 19055,
+      "slot": 0,
+      "rawDownNs": "1507473705822000",
+      "rawReleaseNs": "1507473930715000",
+      "completeRawContact": true,
+      "appInputSeq": 6,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "28230409",
+        "upper": "28237245"
+      }
+    },
+    {
+      "attempt": 7,
+      "rawOrdinal": 6,
+      "trackingId": 19056,
+      "slot": 0,
+      "rawDownNs": "1507474609354000",
+      "rawReleaseNs": "1507474898219000",
+      "completeRawContact": true,
+      "appInputSeq": 7,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "44600237",
+        "upper": "44609261"
+      }
+    },
+    {
+      "attempt": 8,
+      "rawOrdinal": 7,
+      "trackingId": 19057,
+      "slot": 0,
+      "rawDownNs": "1507475405141000",
+      "rawReleaseNs": "1507475682500000",
+      "completeRawContact": true,
+      "appInputSeq": 8,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "44500955",
+        "upper": "44508885"
+      }
+    },
+    {
+      "attempt": 9,
+      "rawOrdinal": 8,
+      "trackingId": 19058,
+      "slot": 0,
+      "rawDownNs": "1507476079672000",
+      "rawReleaseNs": "1507476415203000",
+      "completeRawContact": true,
+      "appInputSeq": 9,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "28353190",
+        "upper": "28359401"
+      }
+    },
+    {
+      "attempt": 10,
+      "rawOrdinal": 9,
+      "trackingId": 19059,
+      "slot": 0,
+      "rawDownNs": "1507476904970000",
+      "rawReleaseNs": "1507477165915000",
+      "completeRawContact": true,
+      "appInputSeq": 10,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "61508299",
+        "upper": "61515214"
+      }
+    },
+    {
+      "attempt": 11,
+      "rawOrdinal": 10,
+      "trackingId": 19060,
+      "slot": 0,
+      "rawDownNs": "1507477664667000",
+      "rawReleaseNs": "1507477899688000",
+      "completeRawContact": true,
+      "appInputSeq": 11,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "44904245",
+        "upper": "44913698"
+      }
+    },
+    {
+      "attempt": 12,
+      "rawOrdinal": 11,
+      "trackingId": 19061,
+      "slot": 0,
+      "rawDownNs": "1507478330433000",
+      "rawReleaseNs": "1507478658512000",
+      "completeRawContact": true,
+      "appInputSeq": 12,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "36324581",
+        "upper": "36333175"
+      }
+    },
+    {
+      "attempt": 13,
+      "rawOrdinal": 12,
+      "trackingId": 19062,
+      "slot": 0,
+      "rawDownNs": "1507479039733000",
+      "rawReleaseNs": "1507479325513000",
+      "completeRawContact": true,
+      "appInputSeq": 13,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "36407605",
+        "upper": "36415573"
+      }
+    },
+    {
+      "attempt": 14,
+      "rawOrdinal": 13,
+      "trackingId": 19063,
+      "slot": 0,
+      "rawDownNs": "1507479757220000",
+      "rawReleaseNs": "1507480175983000",
+      "completeRawContact": true,
+      "appInputSeq": 14,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "36451589",
+        "upper": "36460573"
+      }
+    },
+    {
+      "attempt": 15,
+      "rawOrdinal": 14,
+      "trackingId": 19064,
+      "slot": 0,
+      "rawDownNs": "1507480574253000",
+      "rawReleaseNs": "1507480984880000",
+      "completeRawContact": true,
+      "appInputSeq": 15,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "44775917",
+        "upper": "44923925"
+      }
+    },
+    {
+      "attempt": 16,
+      "rawOrdinal": 15,
+      "trackingId": 19065,
+      "slot": 0,
+      "rawDownNs": "1507481340629000",
+      "rawReleaseNs": "1507481668464000",
+      "completeRawContact": true,
+      "appInputSeq": 16,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "44816799",
+        "upper": "44823557"
+      }
+    },
+    {
+      "attempt": 17,
+      "rawOrdinal": 16,
+      "trackingId": 19066,
+      "slot": 0,
+      "rawDownNs": "1507482092299000",
+      "rawReleaseNs": "1507482385270000",
+      "completeRawContact": true,
+      "appInputSeq": 17,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "45031854",
+        "upper": "45039393"
+      }
+    },
+    {
+      "attempt": 18,
+      "rawOrdinal": 17,
+      "trackingId": 19067,
+      "slot": 0,
+      "rawDownNs": "1507482784667000",
+      "rawReleaseNs": "1507483085982000",
+      "completeRawContact": true,
+      "appInputSeq": 18,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "44661495",
+        "upper": "44669776"
+      }
+    },
+    {
+      "attempt": 19,
+      "rawOrdinal": 18,
+      "trackingId": 19068,
+      "slot": 0,
+      "rawDownNs": "1507483525629000",
+      "rawReleaseNs": "1507483802984000",
+      "completeRawContact": true,
+      "appInputSeq": 19,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "44526487",
+        "upper": "44534495"
+      }
+    },
+    {
+      "attempt": 20,
+      "rawOrdinal": 19,
+      "trackingId": 19069,
+      "slot": 0,
+      "rawDownNs": "1507484243027000",
+      "rawReleaseNs": "1507484544732000",
+      "completeRawContact": true,
+      "appInputSeq": 20,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "36501729",
+        "upper": "36510049"
+      }
+    },
+    {
+      "attempt": 21,
+      "rawOrdinal": 20,
+      "trackingId": 19070,
+      "slot": 0,
+      "rawDownNs": "1507484967842000",
+      "rawReleaseNs": "1507485270155000",
+      "completeRawContact": true,
+      "appInputSeq": 21,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "44777049",
+        "upper": "44785995"
+      }
+    },
+    {
+      "attempt": 22,
+      "rawOrdinal": 21,
+      "trackingId": 19071,
+      "slot": 0,
+      "rawDownNs": "1507485751745000",
+      "rawReleaseNs": "1507486062386000",
+      "completeRawContact": true,
+      "appInputSeq": 22,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "36329917",
+        "upper": "36339760"
+      }
+    },
+    {
+      "attempt": 23,
+      "rawOrdinal": 22,
+      "trackingId": 19072,
+      "slot": 0,
+      "rawDownNs": "1507486517957000",
+      "rawReleaseNs": "1507486820836000",
+      "completeRawContact": true,
+      "appInputSeq": 23,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "45089213",
+        "upper": "45096557"
+      }
+    },
+    {
+      "attempt": 24,
+      "rawOrdinal": 23,
+      "trackingId": 19073,
+      "slot": 0,
+      "rawDownNs": "1507487175700000",
+      "rawReleaseNs": "1507487646391000",
+      "completeRawContact": true,
+      "appInputSeq": 24,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "36978511",
+        "upper": "36987222"
+      }
+    },
+    {
+      "attempt": 25,
+      "rawOrdinal": 24,
+      "trackingId": 19074,
+      "slot": 0,
+      "rawDownNs": "1507488010026000",
+      "rawReleaseNs": "1507488430463000",
+      "completeRawContact": true,
+      "appInputSeq": 25,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "36347253",
+        "upper": "36356628"
+      }
+    },
+    {
+      "attempt": 26,
+      "rawOrdinal": 25,
+      "trackingId": 19075,
+      "slot": 0,
+      "rawDownNs": "1507488828406000",
+      "rawReleaseNs": "1507489230612000",
+      "completeRawContact": true,
+      "appInputSeq": 26,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "36642237",
+        "upper": "36651729"
+      }
+    },
+    {
+      "attempt": 27,
+      "rawOrdinal": 26,
+      "trackingId": 19076,
+      "slot": 0,
+      "rawDownNs": "1507489611824000",
+      "rawReleaseNs": "1507489964954000",
+      "completeRawContact": true,
+      "appInputSeq": 27,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "35968207",
+        "upper": "35977152"
+      }
+    },
+    {
+      "attempt": 28,
+      "rawOrdinal": 27,
+      "trackingId": 19077,
+      "slot": 0,
+      "rawDownNs": "1507490439137000",
+      "rawReleaseNs": "1507490790140000",
+      "completeRawContact": true,
+      "appInputSeq": null,
+      "joinStatus": "raw_release_without_action_up",
+      "submit": false,
+      "callback": false,
+      "usableFence": false,
+      "targetVsyncId": null,
+      "latencyCandidateNs": null
+    },
+    {
+      "attempt": 29,
+      "rawOrdinal": 28,
+      "trackingId": 19078,
+      "slot": 1,
+      "rawDownNs": "1507490473844000",
+      "rawReleaseNs": "1507490481676000",
+      "completeRawContact": true,
+      "appInputSeq": null,
+      "joinStatus": "raw_release_without_action_up",
+      "submit": false,
+      "callback": false,
+      "usableFence": false,
+      "targetVsyncId": null,
+      "latencyCandidateNs": null
+    },
+    {
+      "attempt": 30,
+      "rawOrdinal": 29,
+      "trackingId": 19079,
+      "slot": 0,
+      "rawDownNs": "1507491390045000",
+      "rawReleaseNs": "1507491673842000",
+      "completeRawContact": true,
+      "appInputSeq": 28,
+      "joinStatus": "exact_join_usable_fence",
+      "submit": true,
+      "callback": true,
+      "usableFence": true,
+      "targetVsyncId": "-1",
+      "latencyCandidateNs": {
+        "lower": "44689073",
+        "upper": "44696690"
+      }
+    }
+  ]
+}

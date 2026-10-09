@@ -1,0 +1,126 @@
+{
+  "raw_direct_contacts": 8,
+  "app_action_up": 5,
+  "gpu_submit": 5,
+  "usable_fence_waits": 5,
+  "raw_to_app_exact_matches": 5,
+  "unmatched_contacts": 3,
+  "candidate_event_to_usable_fence_ms": [
+    44.886565,
+    27.890714,
+    44.724253,
+    36.387073,
+    44.734261
+  ],
+  "candidate_range_ms": [
+    27.890714,
+    44.886565
+  ],
+  "candidate_median_ms": 44.724253,
+  "contacts": [
+    {
+      "id": 19026,
+      "start_s": 1504357.934514,
+      "end_s": 1504358.050479,
+      "x_min": 1728,
+      "x_max": 1728,
+      "y_min": 2068,
+      "y_max": 2068
+    },
+    {
+      "id": 19027,
+      "start_s": 1504359.044692,
+      "end_s": 1504359.218052,
+      "x_min": 1558,
+      "x_max": 1577,
+      "y_min": 2054,
+      "y_max": 2054
+    },
+    {
+      "id": 19028,
+      "start_s": 1504359.910906,
+      "end_s": 1504360.251831,
+      "x_min": 1705,
+      "x_max": 1705,
+      "y_min": 2154,
+      "y_max": 2158
+    },
+    {
+      "id": 19029,
+      "start_s": 1504360.836772,
+      "end_s": 1504361.394084,
+      "x_min": 2077,
+      "x_max": 2093,
+      "y_min": 2167,
+      "y_max": 2171
+    },
+    {
+      "id": 19030,
+      "start_s": 1504361.986734,
+      "end_s": 1504362.269514,
+      "x_min": 2022,
+      "x_max": 2034,
+      "y_min": 2171,
+      "y_max": 2189
+    },
+    {
+      "id": 19031,
+      "start_s": 1504363.790104,
+      "end_s": 1504364.562292,
+      "x_min": 545,
+      "x_max": 927,
+      "y_min": 89,
+      "y_max": 2737
+    },
+    {
+      "id": 19032,
+      "start_s": 1504365.069015,
+      "end_s": 1504365.270533,
+      "x_min": 908,
+      "x_max": 1011,
+      "y_min": 1271,
+      "y_max": 2068
+    },
+    {
+      "id": 19033,
+      "start_s": 1504365.993582,
+      "end_s": 1504366.095635,
+      "x_min": 1078,
+      "x_max": 1348,
+      "y_min": 1769,
+      "y_max": 3163
+    }
+  ],
+  "join": [
+    {
+      "seq": 1,
+      "raw_end_ns": 1504358050479000,
+      "app_event_ns": 1504358050479000,
+      "exact_match": true
+    },
+    {
+      "seq": 2,
+      "raw_end_ns": 1504359218052000,
+      "app_event_ns": 1504359218052000,
+      "exact_match": true
+    },
+    {
+      "seq": 3,
+      "raw_end_ns": 1504360251831000,
+      "app_event_ns": 1504360251831000,
+      "exact_match": true
+    },
+    {
+      "seq": 4,
+      "raw_end_ns": 1504361394084000,
+      "app_event_ns": 1504361394084000,
+      "exact_match": true
+    },
+    {
+      "seq": 5,
+      "raw_end_ns": 1504362269514000,
+      "app_event_ns": 1504362269514000,
+      "exact_match": true
+    }
+  ]
+}

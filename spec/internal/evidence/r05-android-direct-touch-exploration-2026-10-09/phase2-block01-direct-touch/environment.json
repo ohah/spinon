@@ -1,0 +1,35 @@
+{
+  "goUtc": "2026-10-09T04:09:46.794Z",
+  "stoppedUtc": "2026-10-09T04:10:26.542Z",
+  "deviceModel": "SM-S731N",
+  "androidRelease": "16",
+  "androidApi": 36,
+  "socProperty": "s5e9945",
+  "display": {
+    "physicalPixels": "1080x2340",
+    "orientation": "portrait",
+    "rotation": 0,
+    "activeModeId": 2,
+    "refreshHz": 60
+  },
+  "input": {
+    "deviceName": "sec_touchscreen",
+    "eventPath": "/dev/input/event6",
+    "mode": "DIRECT",
+    "rawAxisRange": "0..4095",
+    "rawToDisplayRotation": "ROT_0",
+    "rawToDisplayScale": [0.2637, 0.5713]
+  },
+  "renderer": "WGPU / Vulkan, confirmed by R05 screen and app log",
+  "thermalStatusBefore": 0,
+  "batteryBefore": {
+    "levelPercent": 100,
+    "usbPowered": true,
+    "acPowered": false,
+    "status": "full"
+  },
+  "appId": "dev.spinon.bootstrap",
+  "experimentFlag": "spinon_r05_async_fence_wait=true",
+  "apkSha256": "b87a5cdd1d3589a5ffea66b784d9bf40f64843b69ad4aeb876086412f4db5669",
+  "apkSourceCommit": "364bbc3105300da4a45ea8d3badd12c814cd7942"
+}
