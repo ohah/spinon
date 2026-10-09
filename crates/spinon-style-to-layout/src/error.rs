@@ -16,6 +16,7 @@ pub enum StyleLayoutError {
         field: &'static str,
     },
     UnsupportedInlineStyle(NodeId),
+    UnsupportedRootMargin(NodeId),
     MissingComputedElement(NodeId),
     DuplicateComputedElement(NodeId),
     MissingComputedProperty {
@@ -54,6 +55,10 @@ impl fmt::Display for StyleLayoutError {
             Self::UnsupportedInlineStyle(node) => write!(
                 formatter,
                 "노드 {node}의 inline style 속성은 현재 layout 입력 profile에서 지원하지 않습니다"
+            ),
+            Self::UnsupportedRootMargin(node) => write!(
+                formatter,
+                "레이아웃 root 노드 {node}의 nonzero margin은 root viewport 계약에서 지원하지 않습니다"
             ),
             Self::MissingComputedElement(node) => {
                 write!(formatter, "노드 {node}의 computed-style 항목이 없습니다")

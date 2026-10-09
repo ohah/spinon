@@ -10,6 +10,9 @@ use crate::{
     TextDirection, Viewport,
 };
 
+#[path = "tests/margin.rs"]
+mod margin;
+
 #[derive(Debug, Deserialize)]
 #[serde(deny_unknown_fields)]
 struct Fixture {

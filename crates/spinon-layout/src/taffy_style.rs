@@ -1,6 +1,6 @@
 use taffy::prelude::{
     AlignItems, Dimension, Display, FlexDirection as TaffyFlexDirection, FlexWrap, JustifyContent,
-    LengthPercentage, Rect, Size, Style,
+    LengthPercentage, LengthPercentageAuto, Rect, Size, Style,
 };
 use taffy::style::{BoxSizing, Direction as TaffyDirection};
 
@@ -52,6 +52,12 @@ pub(super) fn to_taffy_style(style: LayoutStyle) -> Style {
             LayoutJustifyContent::SpaceAround => JustifyContent::SPACE_AROUND,
             LayoutJustifyContent::SpaceEvenly => JustifyContent::SPACE_EVENLY,
         }),
+        margin: Rect {
+            top: LengthPercentageAuto::length(style.margin.top),
+            right: LengthPercentageAuto::length(style.margin.right),
+            bottom: LengthPercentageAuto::length(style.margin.bottom),
+            left: LengthPercentageAuto::length(style.margin.left),
+        },
         flex_basis: to_taffy_dimension(style.flex_basis),
         flex_direction: match style.flex_direction {
             FlexDirection::Row => TaffyFlexDirection::Row,

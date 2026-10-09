@@ -1,6 +1,6 @@
 # 내부 인터페이스 0009 · 레이아웃 엔진
 
-**버전:** `0.3.0-draft` · **상태:** 구현 초안 · **구현:** `crates/spinon-layout` · **대상:** Rust 코어 내부
+**버전:** `0.1.0` · **상태:** 구현 초안 · **구현:** `crates/spinon-layout` · **대상:** Rust 코어 내부
 
 이 문서는 코어 트리와 레이아웃 계산기 사이의 입력·출력 계약을 정합니다. 앱 작성자용 CSS 지원이나 공개 API를 선언하지 않습니다.
 
@@ -48,7 +48,7 @@ assert_eq!(output.revision, input.revision());
 
 예시의 `root`는 `snapshot`에서 유효한 HostRoot 직속 요소 handle이며 선택한 subtree에는 텍스트 노드가 없습니다.
 
-## 입력 계약 `0.3.0-draft`
+## 입력 계약 `0.1.0`
 
 한 계산 입력은 루트 ID, 양수·유한 viewport, `LayoutInputRevision`, 모든 요소 노드의 스타일을 포함합니다. revision은 source·style·environment 세 축을 각각 보존합니다. 루트의 고정 너비·높이는 viewport와 정확히 같아야 합니다. viewport와 스타일 값은 같은 좌표 단위를 사용합니다. 이 계약은 CSS px을 Android dp나 iOS point로 변환하지 않습니다.
 
@@ -61,6 +61,7 @@ assert_eq!(output.revision, input.revision());
 | `width`, `height`, `flex_basis` | `Auto` 또는 음수가 아닌 유한 고정 길이. 백분율은 없음 |
 | `flex_direction` | `row`, `column` |
 | `direction` | `ltr`, `rtl` |
+| `margin` | 네 방향의 유한한 길이. 음수 허용 |
 | `padding` | 네 방향의 음수가 아닌 유한 길이 |
 | `gap` | `row`, `column` gap. 음수가 아닌 유한 길이 |
 | `flex_grow`, `flex_shrink` | 0 이상 유한 값 |
@@ -86,7 +87,7 @@ assert_eq!(output.revision, input.revision());
 | 선택한 HostDocument 하위 트리에 텍스트 노드가 있음 | `UnsupportedTextNode` |
 | 입력 ID·연결 그래프가 잘못됨 | 해당 `MissingRoot`, `DuplicateNode`, `MissingChild`, `DuplicateChild`, `RootHasParent`, `MultipleParents`, `DetachedNode`, `Cycle`, `UnreachableNode` |
 | 루트 크기가 viewport와 다름 | `RootSizeMismatch` |
-| 음수 또는 유한하지 않은 길이·간격·grow | `InvalidStyle` |
+| 유한하지 않은 길이·간격·grow 또는 음수 padding·gap·grow·shrink | `InvalidStyle` |
 | Taffy가 오류를 반환하거나 계산 중 panic | `Taffy`, `TaffyPanicked` |
 | 계산 프레임 누락 또는 NaN·무한대 | `MissingComputedLayout`, `NonFiniteFrame` |
 
@@ -102,7 +103,7 @@ assert_eq!(output.revision, input.revision());
 
 ## 현재 미지원
 
-이 인터페이스는 CSS parser/cascade 결과를 직접 받거나 변환하지 않습니다. CSS parser/cascade, selector, 상속, CSS 변수·단위 변환, percentage, margin, border, min/max constraints, flex wrapping, 일반 정렬, position, overflow·scroll, Grid, 완전한 Block formatting, 글꼴 shaping, 텍스트/이미지 intrinsic measurement를 제공하지 않습니다. HostDocument의 텍스트 노드를 레이아웃 입력으로 받지 않으며 `Auto` leaf의 콘텐츠 기반 측정도 없습니다. 그러므로 일반 웹 Flexbox 동등성, 완성된 CSS 엔진 또는 사용자 UI 지원으로 해석하면 안 됩니다.
+이 인터페이스는 CSS parser/cascade 결과를 직접 받거나 변환하지 않습니다. CSS parser/cascade, selector, 상속, CSS 변수·단위 변환, percentage margin, border, min/max constraints, flex wrapping, 일반 정렬, position, overflow·scroll, Grid, 완전한 Block formatting, 글꼴 shaping, 텍스트/이미지 intrinsic measurement를 제공하지 않습니다. HostDocument의 텍스트 노드를 레이아웃 입력으로 받지 않으며 `Auto` leaf의 콘텐츠 기반 측정도 없습니다. 그러므로 일반 웹 Flexbox 동등성, 완성된 CSS 엔진 또는 사용자 UI 지원으로 해석하면 안 됩니다. 제한 CSS px margin 투영은 [C04.6 내부 계약](0027-c04-flex-margin-layout.md)에 둡니다.
 
 ## 의존성과 비교 기준
 

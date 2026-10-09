@@ -1,0 +1,29 @@
+{
+  "schema": "spinon-css-c04-margin-logical-shorthand-input/v1",
+  "fixtureId": "C04-margin-logical-shorthand-v1",
+  "viewport": {
+    "widthCssPx": 301,
+    "heightCssPx": 80,
+    "deviceScaleFactor": 1
+  },
+  "cases": [
+    {
+      "id": "logical-inline-shorthand-ltr",
+      "overrideCss": "#flex-a { margin-inline: 11px 5px; }"
+    },
+    {
+      "id": "logical-block-shorthand",
+      "overrideCss": "#flex-a { margin-block: 3px 7px; }"
+    },
+    {
+      "id": "logical-inline-shorthand-rtl",
+      "overrideCss": "#flex-parent { direction: rtl; } #flex-a { margin-inline: 11px 5px; }"
+    }
+  ],
+  "comparison": {
+    "computedValues": "문자열 정확 일치",
+    "frameUnit": "CSS px",
+    "perCoordinateMaximumAbsoluteError": 0.5,
+    "aggregateAveragesAllowed": false
+  }
+}

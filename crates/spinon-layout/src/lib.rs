@@ -76,7 +76,7 @@ pub enum LayoutJustifyContent {
     SpaceEvenly,
 }
 
-/// 네 방향의 내부 여백입니다.
+/// 위·오른쪽·아래·왼쪽 상자 가장자리 값입니다.
 #[derive(Clone, Copy, Debug, Default, PartialEq)]
 pub struct LayoutEdges {
     pub top: f32,
@@ -104,6 +104,9 @@ pub struct LayoutStyle {
     pub direction: TextDirection,
     pub align_items: LayoutAlignItems,
     pub justify_content: LayoutJustifyContent,
+    /// 음수 값도 허용하는 외부 여백입니다.
+    pub margin: LayoutEdges,
+    /// 음수 값을 허용하지 않는 내부 여백입니다.
     pub padding: LayoutEdges,
     pub gap: LayoutGap,
     pub flex_grow: f32,
@@ -122,6 +125,7 @@ impl Default for LayoutStyle {
             direction: TextDirection::Ltr,
             align_items: LayoutAlignItems::Stretch,
             justify_content: LayoutJustifyContent::FlexStart,
+            margin: LayoutEdges::default(),
             padding: LayoutEdges::default(),
             gap: LayoutGap::default(),
             flex_grow: 0.0,
@@ -338,6 +342,19 @@ fn validate_style(node: &LayoutNode) -> Result<(), LayoutError> {
             node: node.id,
             field: "flex_basis",
         });
+    }
+    for (field, value) in [
+        ("margin.top", node.style.margin.top),
+        ("margin.right", node.style.margin.right),
+        ("margin.bottom", node.style.margin.bottom),
+        ("margin.left", node.style.margin.left),
+    ] {
+        if !value.is_finite() {
+            return Err(LayoutError::InvalidStyle {
+                node: node.id,
+                field,
+            });
+        }
     }
     for (field, value) in [
         ("padding.top", node.style.padding.top),

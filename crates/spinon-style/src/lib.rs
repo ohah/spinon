@@ -16,7 +16,7 @@ pub use stylo_dom::{
     CascadeDiagnostic, ComputedElementStyle, ComputedStyleProfile, ComputedStyleSnapshot,
     CssCascadeError, CssViewport, StyloDocument, StyloDocumentView, StyloDomError, StyloElement,
     StyloNode, compute_flex_alignment_cascade, compute_flex_alignment_layers_cascade,
-    compute_flex_layout_cascade, compute_s04_flex_paint_cascade,
+    compute_flex_layout_cascade, compute_flex_margin_cascade, compute_s04_flex_paint_cascade,
     compute_supported_elements_ua_cascade,
 };
 
