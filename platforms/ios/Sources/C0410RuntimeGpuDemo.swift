@@ -31,6 +31,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c0410-shutdown-probe")
     private let runtimeResultCacheProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c053-runtime-result-cache")
+    private let incrementalRestyleProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c054-incremental-restyle")
     private let registeredPropertiesProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c052-registered-properties")
         || ProcessInfo.processInfo.arguments.contains("--spinon-c053-runtime-result-cache")
@@ -57,7 +59,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
 
         let title = UILabel()
-        title.text = registeredPropertiesProbeRequested
+        title.text = incrementalRestyleProbeRequested
+            ? "SPINON · C05.4 incremental restyle"
+            : registeredPropertiesProbeRequested
             ? runtimeResultCacheProbeRequested ? "SPINON · C05.3 runtime cache"
                 : "SPINON · C05.2 @property"
             : authorStylesheetsProbeRequested
@@ -68,7 +72,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.addSubview(title)
 
         let description = UILabel()
-        description.text = registeredPropertiesProbeRequested
+        description.text = incrementalRestyleProbeRequested
+            ? "V8 inline style → dirty subtree → Stylo → Taffy → WGPU"
+            : registeredPropertiesProbeRequested
             ? runtimeResultCacheProbeRequested
                 ? "V8 detached DOM → worker cache → WGPU"
                 : "V8 DOM <style> → Stylo → Taffy → WGPU"
@@ -83,7 +89,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         canvasView.translatesAutoresizingMaskIntoConstraints = false
         canvasView.isAccessibilityElement = true
-        canvasView.accessibilityLabel = registeredPropertiesProbeRequested
+        canvasView.accessibilityLabel = incrementalRestyleProbeRequested
+            ? "C05.4 inline style 하위 트리 재계산 검증 WGPU 장면"
+            : registeredPropertiesProbeRequested
             ? runtimeResultCacheProbeRequested
                 ? "C05.3 detached-node 결과 재사용 검증 WGPU 장면"
                 : "C05.2 등록 사용자 지정 속성 Chromium fixture의 WGPU 장면"
@@ -98,7 +106,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.addSubview(resizeButton)
 
         customPropertiesButton.setTitle(
-            registeredPropertiesProbeRequested
+            incrementalRestyleProbeRequested
+                ? "C05.4 · 왼쪽 branch style 전환"
+                : registeredPropertiesProbeRequested
                 ? runtimeResultCacheProbeRequested
                     ? "C05.3 · detached / 연결 변경 실행"
                     : "C05.2 · 등록 사용자 지정 속성 다시 적용"
@@ -107,7 +117,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         )
         customPropertiesButton.addTarget(
             self,
-            action: registeredPropertiesProbeRequested
+            action: incrementalRestyleProbeRequested
+                ? #selector(evaluateIncrementalRestyleFixture)
+                : registeredPropertiesProbeRequested
                 ? runtimeResultCacheProbeRequested
                     ? #selector(evaluateRuntimeResultCacheFixture)
                     : #selector(evaluateRegisteredPropertiesFixture)
@@ -326,7 +338,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
         log("SPINON_C0410_ENVIRONMENT \(environment ?? "")")
 
-        var result = registeredPropertiesProbeRequested
+        var result = incrementalRestyleProbeRequested
+            ? SpinonRunner.evalRuntimeGpuIncrementalRestyleFixture(handle)
+            : registeredPropertiesProbeRequested
             ? SpinonRunner.evalRuntimeGpuRegisteredPropertiesFixture(handle)
             : authorStylesheetsProbeRequested
                 ? SpinonRunner.evalRuntimeGpuAuthorStylesheetsFixture(handle)
@@ -338,13 +352,17 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             return
         }
         if sceneWasSupersededAfterCommit {
-            let scope = registeredPropertiesProbeRequested
+            let scope = incrementalRestyleProbeRequested
+                ? "SPINON_C054"
+                : registeredPropertiesProbeRequested
                 ? runtimeResultCacheProbeRequested ? "SPINON_C053" : "SPINON_C052"
                 : authorStylesheetsProbeRequested ? "SPINON_C0411" : "SPINON_C0410"
             log("\(scope)_EVAL_SCENE_SUPERSEDED \(result ?? "")")
             postStatus("JavaScript 적용 완료 · 최신 CSS 장면 다시 계산 중")
         } else {
-            let scope = registeredPropertiesProbeRequested
+            let scope = incrementalRestyleProbeRequested
+                ? "SPINON_C054"
+                : registeredPropertiesProbeRequested
                 ? runtimeResultCacheProbeRequested ? "SPINON_C053" : "SPINON_C052"
                 : authorStylesheetsProbeRequested ? "SPINON_C0411" : "SPINON_C0410"
             log("\(scope)_EVAL \(result ?? "")")
@@ -407,6 +425,21 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             let report = SpinonRunner.evalRuntimeGpuRuntimeResultCacheFixture(handle)
             self.log("SPINON_C053_EVAL \(report ?? "runtime cache fixture 보고 없음")")
             self.postStatus(self.runtimeStatusSummary(report ?? "runtime cache fixture 보고 없음"))
+            if report?.hasPrefix("status=0 ") == true {
+                self.canvasView.setNeedsDisplay()
+                self.renderDrawLane?.request()
+            }
+        }
+    }
+
+    @objc private func evaluateIncrementalRestyleFixture() {
+        enqueueRuntime { [weak self] in
+            guard let self, !self.isClosing else { return }
+            let handle = self.hostLifetime.load()
+            guard handle != 0 else { return }
+            let report = SpinonRunner.evalRuntimeGpuIncrementalRestyleFixture(handle)
+            self.log("SPINON_C054_EVAL \(report ?? "incremental restyle fixture 보고 없음")")
+            self.postStatus(self.runtimeStatusSummary(report ?? "incremental restyle 결과가 없습니다"))
             if report?.hasPrefix("status=0 ") == true {
                 self.canvasView.setNeedsDisplay()
                 self.renderDrawLane?.request()

@@ -35,6 +35,7 @@
 + (NSString *)evalRuntimeGpuCustomPropertiesFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuRegisteredPropertiesFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuRuntimeResultCacheFixture:(uint64_t)handle;
++ (NSString *)evalRuntimeGpuIncrementalRestyleFixture:(uint64_t)handle;
 + (NSString *)prepareRuntimeGpuWgpuSurface:(uint64_t)handle view:(void *)view;
 + (NSString *)createRuntimeGpuWgpu:(uint64_t)handle width:(uint32_t)width
                              height:(uint32_t)height;

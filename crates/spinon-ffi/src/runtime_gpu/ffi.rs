@@ -273,6 +273,36 @@ pub unsafe extern "C" fn spinon_runtime_gpu_host_eval_runtime_result_cache_fixtu
 }
 
 #[unsafe(no_mangle)]
+/// 실제 V8 HostDocument에서 inline style 하위 트리 재계산 fixture를 한 단계 실행합니다.
+///
+/// 첫 호출은 단일 root와 좌우 branch를 만들고, 이후 호출은 왼쪽 branch의 사용자 지정 속성만
+/// 번갈아 바꿉니다. 완료 보고에는 cascade 재계산·재사용·상속 문맥 계산 수가 포함됩니다.
+///
+/// # Safety
+/// `host`는 살아 있는 GPU host여야 하고 다른 host 호출·해제와 경합시키면 안 됩니다. 호출은
+/// 기다림 허용 background executor에서 해야 합니다. `output`은 `output_capacity` 바이트를 쓸 수 있어야 합니다.
+pub unsafe extern "C" fn spinon_runtime_gpu_host_eval_incremental_restyle_fixture(
+    host: *mut SpinonRuntimeGpuHost,
+    layout_timeout_millis: u64,
+    output: *mut c_char,
+    output_capacity: usize,
+) -> i32 {
+    if output.is_null() || output_capacity == 0 {
+        return ERR_ARGUMENT;
+    }
+    let Some(host) = raw_host(host) else {
+        return ERR_ARGUMENT;
+    };
+    match host.eval(
+        super::RUNTIME_CSS_INCREMENTAL_RESTYLE_FIXTURE_SOURCE,
+        layout_timeout_millis,
+    ) {
+        Ok(report) => write_host_status(0, report, output, output_capacity),
+        Err((status, report)) => write_host_status(status, report, output, output_capacity),
+    }
+}
+
+#[unsafe(no_mangle)]
 /// Android native window에서 WGPU 표면을 생성합니다. 호출과 이후 표면 접근은 같은 render thread여야 합니다.
 ///
 /// # Safety

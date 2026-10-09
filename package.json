@@ -24,6 +24,7 @@
     "css:reference:c05-registered-properties": "node tools/css-reference/capture-c05-runtime-registered-properties.mjs",
     "css:verify:c05-registered-properties-multi-root": "node tools/css-reference/verify-c05-runtime-registered-properties-multi-root.mjs",
     "css:verify:c05-result-cache-precomparison": "node tools/css-reference/verify-c05-runtime-result-cache-precomparison.mjs",
+    "css:verify:c05-incremental-restyle-precomparison": "node tools/css-reference/verify-c05-runtime-incremental-restyle-precomparison.mjs",
     "css:reference:s04": "node tools/css-reference/capture-s04-flex-paint.mjs",
     "css:reference:s04-y": "node tools/css-reference/capture-s04-flex-paint.mjs --fixture=asymmetric-y",
     "css:reference:s04-hit-test": "node tools/css-reference/capture-s04-flex-paint.mjs --fixture=asymmetric-y-hit-test",

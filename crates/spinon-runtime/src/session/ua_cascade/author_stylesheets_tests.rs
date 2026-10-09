@@ -97,6 +97,10 @@ fn request(document: &HostDocument, viewport: CssViewport) -> WorkRequest {
         key: key_for(&snapshot, viewport.environment_revision),
         snapshot,
         viewport,
+        previous_snapshot: None,
+        force_full: true,
+        invalidation: None,
+        previous_styles: None,
     }
 }
 

@@ -1,29 +1,14 @@
-use std::{error::Error, fmt};
-
-use selectors::matching::{
-    MatchingContext, MatchingForInvalidation, MatchingMode, NeedsSelectorFlags, SelectorCaches,
-};
 use spinon_core::{NodeId, StyleRevision};
-use style::{
-    applicable_declarations::ApplicableDeclarationList,
-    context::{CascadeInputs, TreeCountingCaches},
-    dom::TElement,
-    properties::{ComputedValues, FirstLineReparenting, LonghandId, PropertyDeclarationId},
-    rule_cache::RuleCacheConditions,
-    rule_tree::RuleCascadeFlags,
-    selector_parser::SelectorImpl,
-    shared_lock::StylesheetGuards,
-    stylist::{RuleInclusion, Stylist},
-};
-use url::Url;
+use std::{error::Error, fmt};
+use style::properties::LonghandId;
 
-use crate::{
-    CssOrigin, StylesheetRegistry, StylesheetRegistryError, StylesheetSource, UA_STYLESHEET,
-    s04_color_syntax::first_invalid_background_color,
-};
+#[cfg(test)]
+use crate::UA_STYLESHEET;
+use crate::{StylesheetRegistryError, StylesheetSource};
 
-use super::{StyloDocumentView, StyloElement};
+use super::StyloDocumentView;
 mod device;
+mod incremental;
 mod margin;
 mod runtime_layout;
 mod runtime_paint;
@@ -31,7 +16,9 @@ mod s04;
 mod snapshot;
 mod ua_baseline;
 
-use runtime_layout::RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES;
+pub use incremental::{
+    RuntimeCascadeReuseStats, compute_runtime_incremental_cascade_with_stylesheets,
+};
 pub use runtime_layout::{
     compute_runtime_flex_custom_properties_cascade,
     compute_runtime_flex_custom_properties_cascade_with_stylesheets,
@@ -53,6 +40,10 @@ pub use runtime_paint::{
 #[path = "cascade/ua_baseline_tests.rs"]
 mod ua_baseline_tests;
 
+#[cfg(test)]
+#[path = "cascade/ua_incremental_profile_tests.rs"]
+mod ua_incremental_profile_tests;
+
 pub use margin::compute_flex_margin_cascade;
 pub use margin::compute_flex_media_environment_cascade;
 pub use snapshot::{
@@ -60,9 +51,6 @@ pub use snapshot::{
     CssColorScheme, CssMediaEnvironment, CssPointerCapabilities, CssPrimaryPointer, CssViewport,
 };
 pub use ua_baseline::compute_supported_elements_ua_cascade;
-
-use self::device::{LayoutThreadState, make_device};
-use self::margin::FLEX_MARGIN_AUTHOR_PROPERTIES;
 
 const UA_STYLESHEET_ID: &str = "spinon-ua-supported-elements-v0";
 const UA_STYLESHEET_URL: &str = "https://spinon.invalid/ua/supported-elements-v0.css";
@@ -147,6 +135,7 @@ pub enum CssCascadeError {
         stylesheet_id: String,
         feature: String,
     },
+    IncrementalReuseUnavailable,
     AuthorStylesheetDiagnostic {
         stylesheet_id: String,
         line: u32,
@@ -182,6 +171,9 @@ impl fmt::Display for CssCascadeError {
                 formatter,
                 "stylesheet {stylesheet_id}가 지원 CSS 입력 profile 밖 기능을 사용합니다: {feature}"
             ),
+            Self::IncrementalReuseUnavailable => {
+                formatter.write_str("증분 cascade 재사용 조건이 맞지 않습니다")
+            }
             Self::AuthorStylesheetDiagnostic {
                 stylesheet_id,
                 line,
@@ -302,259 +294,19 @@ fn compute_cascade(
     properties: &[(&str, LonghandId)],
     profile: ComputedStyleProfile,
 ) -> Result<ComputedStyleSnapshot, CssCascadeError> {
-    if !viewport.is_valid() {
-        return Err(CssCascadeError::InvalidViewport);
-    }
-    if !viewport.media_environment.is_valid() {
-        return Err(CssCascadeError::InvalidMediaEnvironment);
-    }
-
-    let mut registry = StylesheetRegistry::with_shared_lock(view.shared_lock().clone());
-    registry.append(StylesheetSource {
-        id: UA_STYLESHEET_ID.to_owned(),
-        base_url: Url::parse(UA_STYLESHEET_URL)
-            .expect("내장 UA stylesheet URL은 절대 URL이어야 합니다")
-            .to_string(),
-        origin: CssOrigin::UserAgent,
-        css: UA_STYLESHEET.to_owned(),
-    })?;
-    for source in author_stylesheets {
-        if source.origin != CssOrigin::Author {
-            return Err(CssCascadeError::InvalidStylesheetOrigin {
-                id: source.id.clone(),
-            });
-        }
-        registry.append(source.clone())?;
-    }
-    let allowed_author_properties = match profile {
-        ComputedStyleProfile::BasicCascadeV1 => None,
-        ComputedStyleProfile::SupportedElementsUaV1 => None,
-        ComputedStyleProfile::FlexLayoutV1 => Some(FLEX_LAYOUT_AUTHOR_PROPERTIES),
-        ComputedStyleProfile::FlexMarginV1 | ComputedStyleProfile::FlexMediaEnvironmentV1 => {
-            Some(FLEX_MARGIN_AUTHOR_PROPERTIES)
-        }
-        ComputedStyleProfile::FlexAlignmentV1
-        | ComputedStyleProfile::FlexAlignmentCascadeLayersV1 => {
-            Some(FLEX_ALIGNMENT_AUTHOR_PROPERTIES)
-        }
-        ComputedStyleProfile::S04FlexPaintV1 => Some(s04::S04_FLEX_PAINT_AUTHOR_PROPERTIES),
-        ComputedStyleProfile::RuntimeFlexLayoutV1
-        | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
-        | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
-        | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
-        | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1 => {
-            Some(RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES)
-        }
-        ComputedStyleProfile::RuntimeFlexPaintV1 => None,
-    };
-    let unsupported_author_feature = match profile {
-        ComputedStyleProfile::FlexAlignmentCascadeLayersV1 => allowed_author_properties
-            .and_then(|allowed| registry.first_unsupported_author_feature_with_layers(allowed)),
-        ComputedStyleProfile::FlexMediaEnvironmentV1 => allowed_author_properties
-            .and_then(|allowed| registry.first_unsupported_author_feature_with_media(allowed)),
-        ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
-        | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1 => allowed_author_properties
-            .and_then(|allowed| {
-                registry.first_unsupported_runtime_author_feature(
-                    allowed,
-                    true,
-                    profile == ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1,
-                )
-            }),
-        ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
-        | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1 => allowed_author_properties
-            .and_then(|allowed| {
-                registry.first_unsupported_runtime_registered_properties_author_feature(
-                    allowed,
-                    profile == ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1,
-                )
-            }),
-        _ => allowed_author_properties
-            .and_then(|allowed| registry.first_unsupported_author_feature(allowed)),
-    };
-    if let Some((stylesheet_id, feature)) = unsupported_author_feature {
-        return Err(CssCascadeError::UnsupportedAuthorCss {
-            stylesheet_id,
-            feature,
-        });
-    }
-    if matches!(
-        profile,
-        ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
-            | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
-    ) && let Some((stylesheet_id, diagnostic)) = registry.first_runtime_author_diagnostic()
-    {
-        return Err(CssCascadeError::AuthorStylesheetDiagnostic {
-            stylesheet_id,
-            line: diagnostic.line,
-            column: diagnostic.column,
-            message: diagnostic.message,
-        });
-    }
-    if matches!(
-        profile,
-        ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
-            | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
-    ) && let Some((stylesheet_id, diagnostic)) =
-        registry.first_runtime_registered_property_author_diagnostic()
-    {
-        return Err(CssCascadeError::AuthorStylesheetDiagnostic {
-            stylesheet_id,
-            line: diagnostic.line,
-            column: diagnostic.column,
-            message: diagnostic.message,
-        });
-    }
-    if profile == ComputedStyleProfile::S04FlexPaintV1 {
-        for source in author_stylesheets {
-            if let Some(feature) = first_invalid_background_color(&source.css) {
-                return Err(CssCascadeError::UnsupportedAuthorCss {
-                    stylesheet_id: source.id.clone(),
-                    feature,
-                });
-            }
-        }
-    }
-
-    let device = make_device(view.quirks_mode(), viewport);
-    let mut stylist = Stylist::new(device, view.quirks_mode());
-    let mut elements = Vec::new();
-    let mut diagnostics = Vec::new();
-    for stylesheet in registry.iter() {
-        diagnostics.extend(
-            stylesheet
-                .diagnostics()
-                .iter()
-                .filter(|diagnostic| {
-                    !matches!(
-                        profile,
-                        ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
-                            | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
-                    ) || !diagnostic
-                        .message
-                        .starts_with("Unsupported @property descriptor declaration:")
-                })
-                .cloned()
-                .map(|diagnostic| CascadeDiagnostic {
-                    source_id: stylesheet.id().to_owned(),
-                    node_id: None,
-                    diagnostic,
-                }),
-        );
-    }
-
-    let guard = view.shared_lock().read();
-    for (_, stylesheet) in registry.iter_stylo_sheets() {
-        stylist.append_stylesheet(stylesheet.clone(), &guard);
-    }
-    let guards = StylesheetGuards::same(&guard);
-    stylist.flush(&guards);
-
-    let _layout_state = LayoutThreadState::enter();
-    let mut pending = vec![(view.root_handle(), None)];
-    while let Some((handle, parent_style)) = pending.pop() {
-        let computed = if let Some(element) = view.element(handle) {
-            for diagnostic in &element.data().inline_style_diagnostics {
-                diagnostics.push(CascadeDiagnostic {
-                    source_id: format!("inline:{}", handle.id()),
-                    node_id: Some(handle.id()),
-                    diagnostic: diagnostic.clone(),
-                });
-            }
-            let computed =
-                compute_element_style(&stylist, element, &guards, parent_style.as_deref());
-            let (background_color, background_paint) =
-                runtime_paint::computed_background_for_profile(profile, &computed, handle.id())?;
-            elements.push(ComputedElementStyle {
-                node_id: handle.id(),
-                properties: properties
-                    .iter()
-                    .map(|(name, id)| {
-                        (
-                            (*name).to_owned(),
-                            computed.computed_value_to_string(PropertyDeclarationId::Longhand(*id)),
-                        )
-                    })
-                    .collect(),
-                background_color,
-                background_paint,
-            });
-            Some(computed)
-        } else {
-            parent_style
-        };
-
-        if let Some(children) = view.snapshot().children(handle) {
-            let children = children.collect::<Vec<_>>();
-            pending.extend(
-                children
-                    .into_iter()
-                    .rev()
-                    .map(|child| (child, computed.clone())),
-            );
-        }
-    }
-
-    Ok(ComputedStyleSnapshot {
-        profile,
+    incremental::compute_cascade_with_reuse(
+        view,
+        author_stylesheets,
         viewport,
         style_revision,
-        generation: view.snapshot().generation(),
-        document_revision: view.document_revision(),
-        render_tree_revision: view.render_tree_revision(),
-        elements: elements.into(),
-        diagnostics,
-    })
-}
-
-fn compute_element_style(
-    stylist: &Stylist,
-    element: StyloElement<'_>,
-    guards: &StylesheetGuards<'_>,
-    parent_style: Option<&ComputedValues>,
-) -> style::servo_arc::Arc<ComputedValues> {
-    let mut selector_caches = SelectorCaches::default();
-    let mut matching_context = MatchingContext::<SelectorImpl>::new(
-        MatchingMode::Normal,
+        properties,
+        profile,
         None,
-        &mut selector_caches,
-        element.view.quirks_mode(),
-        NeedsSelectorFlags::Yes,
-        MatchingForInvalidation::No,
-    );
-    let mut declarations = ApplicableDeclarationList::new();
-    stylist.push_applicable_declarations(
-        element,
-        None,
-        element.style_attribute(),
-        None,
-        Default::default(),
-        RuleInclusion::All,
-        &mut declarations,
-        &mut matching_context,
-    );
-    let rules = stylist
-        .rule_tree()
-        .compute_rule_node(&mut declarations, guards);
-    let inputs = CascadeInputs {
-        rules: Some(rules),
-        visited_rules: None,
-        flags: matching_context.extra_data.cascade_input_flags,
-        included_cascade_flags: RuleCascadeFlags::empty(),
-    };
-    stylist.cascade_style_and_visited(
-        Some(element),
-        None,
-        &inputs,
-        guards,
-        parent_style,
-        parent_style,
-        FirstLineReparenting::No,
-        &Default::default(),
-        None,
-        &mut RuleCacheConditions::default(),
-        &mut TreeCountingCaches::default(),
     )
+    .and_then(|result| match result {
+        Some((snapshot, _)) => Ok(snapshot),
+        None => Err(CssCascadeError::IncrementalReuseUnavailable),
+    })
 }
 
 #[cfg(test)]
@@ -572,6 +324,10 @@ mod runtime_layout_tests;
 #[cfg(test)]
 #[path = "cascade/custom_properties_tests.rs"]
 mod custom_properties_tests;
+
+#[cfg(test)]
+#[path = "cascade/incremental_tests.rs"]
+mod incremental_tests;
 
 #[cfg(test)]
 #[path = "cascade/registered_properties_tests.rs"]

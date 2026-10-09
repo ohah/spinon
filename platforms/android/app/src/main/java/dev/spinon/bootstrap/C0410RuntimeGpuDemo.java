@@ -32,6 +32,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native byte[] nativeEvalCustomPropertiesFixture(long host);
     private static native byte[] nativeEvalRegisteredPropertiesFixture(long host);
     private static native byte[] nativeEvalRuntimeResultCacheFixture(long host);
+    private static native byte[] nativeEvalIncrementalRestyleFixture(long host);
     private static native long nativeCreateSurface(
             long host, Surface surface, int width, int height, int backend);
     private static native int nativeResizeSurface(long renderer, int width, int height);
@@ -57,6 +58,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean shutdownProbeRequested;
     private final boolean customPropertiesProbeRequested;
     private final boolean runtimeResultCacheProbeRequested;
+    private final boolean incrementalRestyleProbeRequested;
     private final boolean registeredPropertiesProbeRequested;
     private final boolean authorStylesheetsProbeRequested;
     private final float density;
@@ -90,6 +92,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         this.shutdownProbeRequested = shutdownProbeRequested;
         runtimeResultCacheProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c053_runtime_result_cache", false);
+        incrementalRestyleProbeRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c054_incremental_restyle", false);
         registeredPropertiesProbeRequested = runtimeResultCacheProbeRequested
                 || activity.getIntent().getBooleanExtra("spinon_c052_registered_properties", false);
         authorStylesheetsProbeRequested = activity.getIntent()
@@ -107,7 +111,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         setBackgroundColor(Color.rgb(14, 19, 31));
 
         TextView title = new TextView(activity);
-        title.setText(registeredPropertiesProbeRequested
+        title.setText(incrementalRestyleProbeRequested
+                ? "SPINON · C05.4 incremental restyle"
+                : registeredPropertiesProbeRequested
                 ? runtimeResultCacheProbeRequested ? "SPINON · C05.3 runtime cache"
                         : "SPINON · C05.2 @property"
                 : authorStylesheetsProbeRequested
@@ -118,7 +124,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         addView(title, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 
         TextView description = new TextView(activity);
-        description.setText(registeredPropertiesProbeRequested
+        description.setText(incrementalRestyleProbeRequested
+                ? "V8 inline style → dirty subtree → Stylo → Taffy → WGPU"
+                : registeredPropertiesProbeRequested
                 ? runtimeResultCacheProbeRequested
                         ? "V8 detached DOM → worker cache → WGPU"
                         : "V8 DOM <style> → Stylo → Taffy → WGPU"
@@ -139,7 +147,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
         surfaceView = new SurfaceView(activity);
         surfaceView.getHolder().addCallback(this);
-        surfaceView.setContentDescription(registeredPropertiesProbeRequested
+        surfaceView.setContentDescription(incrementalRestyleProbeRequested
+                ? "C05.4 inline style 하위 트리 재계산 검증 WGPU 장면"
+                : registeredPropertiesProbeRequested
                 ? runtimeResultCacheProbeRequested
                         ? "C05.3 detached-node 결과 재사용 검증 WGPU 장면"
                         : "C05.2 등록 사용자 지정 속성 Chromium fixture의 WGPU 장면"
@@ -158,13 +168,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         addView(resizeButton, resizeButtonParams);
 
         Button customPropertiesButton = new Button(activity);
-        customPropertiesButton.setText(registeredPropertiesProbeRequested
+        customPropertiesButton.setText(incrementalRestyleProbeRequested
+                ? "C05.4 · 왼쪽 branch style 전환"
+                : registeredPropertiesProbeRequested
                 ? runtimeResultCacheProbeRequested
                         ? "C05.3 · detached / 연결 변경 실행"
                         : "C05.2 · 등록 사용자 지정 속성 다시 적용"
                 : "C05 · 사용자 지정 속성 다시 적용");
         customPropertiesButton.setOnClickListener(view -> {
-            if (runtimeResultCacheProbeRequested) evaluateRuntimeResultCacheFixture();
+            if (incrementalRestyleProbeRequested) evaluateIncrementalRestyleFixture();
+            else if (runtimeResultCacheProbeRequested) evaluateRuntimeResultCacheFixture();
             else if (registeredPropertiesProbeRequested) evaluateRegisteredPropertiesFixture();
             else evaluateCustomPropertiesFixture();
         });
@@ -245,7 +258,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         Log.i(TAG, "SPINON_C0410_ENVIRONMENT viewport=" + widthCssPx + "x" + heightCssPx
                 + " scale=" + density + " dark=" + dark + " " + environment);
-        String result = registeredPropertiesProbeRequested
+        String result = incrementalRestyleProbeRequested
+                ? decode(nativeEvalIncrementalRestyleFixture(host))
+                : registeredPropertiesProbeRequested
                 ? decode(nativeEvalRegisteredPropertiesFixture(host))
                 : authorStylesheetsProbeRequested
                         ? decode(nativeEvalAuthorStylesheetsFixture(host))
@@ -254,7 +269,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             postStatus("실패 · " + result);
             return;
         }
-        Log.i(TAG, (registeredPropertiesProbeRequested
+        Log.i(TAG, (incrementalRestyleProbeRequested
+                ? "SPINON_C054_INIT "
+                : registeredPropertiesProbeRequested
                 ? runtimeResultCacheProbeRequested ? "SPINON_C053_INIT " : "SPINON_C052_EVAL "
                 : authorStylesheetsProbeRequested
                         ? "SPINON_C0411_EVAL " : "SPINON_C0410_EVAL ") + result);
@@ -308,6 +325,20 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             }
             String result = decode(nativeEvalRuntimeResultCacheFixture(host));
             Log.i(TAG, "SPINON_C053_EVAL " + result);
+            postStatus(runtimeStatusSummary(result));
+            if (result.startsWith("status=0 ")) requestDraw();
+        });
+    }
+
+    private void evaluateIncrementalRestyleFixture() {
+        enqueueRuntime(() -> {
+            final long host;
+            synchronized (stateLock) {
+                if (closing || hostHandle == 0) return;
+                host = hostHandle;
+            }
+            String result = decode(nativeEvalIncrementalRestyleFixture(host));
+            Log.i(TAG, "SPINON_C054_EVAL " + result);
             postStatus(runtimeStatusSummary(result));
             if (result.startsWith("status=0 ")) requestDraw();
         });

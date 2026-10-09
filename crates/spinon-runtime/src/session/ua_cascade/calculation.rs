@@ -6,10 +6,11 @@ use super::{
 };
 use spinon_core::{HostNodeHandle, HostNodeKind, HostParent, StyleRevision};
 use spinon_style::{
-    CssCascadeError, StyloDocumentView,
+    ComputedStyleProfile, CssCascadeError, RuntimeCascadeReuseStats, StyloDocumentView,
     compute_runtime_flex_custom_properties_cascade_with_stylesheets,
     compute_runtime_flex_custom_properties_paint_cascade_with_stylesheets,
     compute_runtime_flex_registered_properties_paint_cascade_with_stylesheets,
+    compute_runtime_incremental_cascade_with_stylesheets,
 };
 use std::sync::Arc;
 use std::time::Instant;
@@ -18,6 +19,9 @@ use std::time::Instant;
 pub(super) struct RuntimeCalculation {
     pub(super) roots: Arc<[RuntimeUaCascadeRoot]>,
     pub(super) cascade_duration_us: u128,
+    pub(super) cascade_recomputed_style_elements: u64,
+    pub(super) cascade_reused_style_elements: u64,
+    pub(super) cascade_context_style_elements: u64,
     pub(super) layout: Result<RuntimeLayoutCompleted, RuntimeLayoutFailure>,
     pub(super) layout_diagnostics: Vec<CascadeDiagnostic>,
 }
@@ -89,6 +93,13 @@ impl RuntimeCalculation {
         Some(Self {
             roots,
             cascade_duration_us: 0,
+            cascade_recomputed_style_elements: 0,
+            cascade_reused_style_elements: self
+                .roots
+                .iter()
+                .map(|root| root.styles.elements.len() as u64)
+                .sum(),
+            cascade_context_style_elements: 0,
             layout,
             layout_diagnostics: self.layout_diagnostics.clone(),
         })
@@ -119,6 +130,9 @@ fn compute_request_with_runtime_paint(
     let mut roots = Vec::new();
     let mut layout_context: Option<RuntimeLayoutContext> = None;
     let mut cascade_duration_us = 0_u128;
+    let mut cascade_recomputed_style_elements = 0_u64;
+    let mut cascade_reused_style_elements = 0_u64;
+    let mut cascade_context_style_elements = 0_u64;
     let mut layout_diagnostics = Vec::new();
     let author_stylesheets =
         collect_runtime_author_stylesheets(&request.snapshot).map_err(|error| error.to_string())?;
@@ -141,7 +155,7 @@ fn compute_request_with_runtime_paint(
                     ));
                 }
                 let cascade_started = Instant::now();
-                let (computed_root, view) = compute_root(
+                let (computed_root, view, reuse_stats) = compute_root(
                     request,
                     root,
                     runtime_paint_enabled,
@@ -150,6 +164,12 @@ fn compute_request_with_runtime_paint(
                 )?;
                 cascade_duration_us =
                     cascade_duration_us.saturating_add(elapsed_microseconds(cascade_started));
+                cascade_recomputed_style_elements = cascade_recomputed_style_elements
+                    .saturating_add(reuse_stats.recomputed_style_elements);
+                cascade_reused_style_elements =
+                    cascade_reused_style_elements.saturating_add(reuse_stats.reused_style_elements);
+                cascade_context_style_elements = cascade_context_style_elements
+                    .saturating_add(reuse_stats.context_style_elements);
                 layout_diagnostics.extend(computed_root.styles.diagnostics.iter().cloned());
                 if roots.is_empty() {
                     layout_context = Some((root, view, computed_root.styles.clone()));
@@ -167,6 +187,9 @@ fn compute_request_with_runtime_paint(
     Ok(RuntimeCalculation {
         roots: roots.into(),
         cascade_duration_us,
+        cascade_recomputed_style_elements,
+        cascade_reused_style_elements,
+        cascade_context_style_elements,
         layout,
         layout_diagnostics,
     })
@@ -178,33 +201,95 @@ fn compute_root(
     runtime_paint_enabled: bool,
     registered_properties_enabled: bool,
     author_stylesheets: &[spinon_style::StylesheetSource],
-) -> Result<(RuntimeUaCascadeRoot, StyloDocumentView), String> {
+) -> Result<
+    (
+        RuntimeUaCascadeRoot,
+        StyloDocumentView,
+        RuntimeCascadeReuseStats,
+    ),
+    String,
+> {
     let view =
         StyloDocumentView::new_html_fragment_child_shared(Arc::clone(&request.snapshot), root)
             .map_err(|error| error.to_string())?;
-    let styles = if runtime_paint_enabled && registered_properties_enabled {
-        compute_runtime_flex_registered_properties_paint_cascade_with_stylesheets(
-            &view,
-            author_stylesheets,
-            request.viewport,
-            StyleRevision::INITIAL,
-        )
+    let profile = if runtime_paint_enabled && registered_properties_enabled {
+        ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
     } else if runtime_paint_enabled {
-        compute_runtime_flex_custom_properties_paint_cascade_with_stylesheets(
-            &view,
-            author_stylesheets,
-            request.viewport,
-            StyleRevision::INITIAL,
-        )
+        ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
     } else {
-        compute_runtime_flex_custom_properties_cascade_with_stylesheets(
-            &view,
-            author_stylesheets,
-            request.viewport,
-            StyleRevision::INITIAL,
+        ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+    };
+    let previous_style_root = request
+        .previous_styles
+        .as_deref()
+        .and_then(|roots| (roots.len() == 1).then_some(&roots[0]))
+        .filter(|cached| cached.root_node_id == root.id().get());
+    let dirty_root_ids = request
+        .invalidation
+        .as_ref()
+        .map(super::invalidation::RuntimeStyleInvalidation::dirty_roots)
+        .unwrap_or_default()
+        .iter()
+        .map(|handle| handle.id())
+        .collect::<Vec<_>>();
+    let incremental = if let Some(previous) = previous_style_root {
+        if matches!(
+            request.invalidation.as_ref(),
+            Some(super::invalidation::RuntimeStyleInvalidation::Unchanged { .. })
+                | Some(super::invalidation::RuntimeStyleInvalidation::Subtrees { .. })
+        ) {
+            compute_runtime_incremental_cascade_with_stylesheets(
+                &view,
+                author_stylesheets,
+                request.viewport,
+                StyleRevision::INITIAL,
+                profile,
+                &previous.styles,
+                &dirty_root_ids,
+            )
+            .map_err(|error| error.to_string())?
+        } else {
+            None
+        }
+    } else {
+        None
+    };
+    let (styles, reuse_stats) = if let Some((styles, stats)) = incremental {
+        (styles, stats)
+    } else {
+        let styles = if runtime_paint_enabled && registered_properties_enabled {
+            compute_runtime_flex_registered_properties_paint_cascade_with_stylesheets(
+                &view,
+                author_stylesheets,
+                request.viewport,
+                StyleRevision::INITIAL,
+            )
+        } else if runtime_paint_enabled {
+            compute_runtime_flex_custom_properties_paint_cascade_with_stylesheets(
+                &view,
+                author_stylesheets,
+                request.viewport,
+                StyleRevision::INITIAL,
+            )
+        } else {
+            compute_runtime_flex_custom_properties_cascade_with_stylesheets(
+                &view,
+                author_stylesheets,
+                request.viewport,
+                StyleRevision::INITIAL,
+            )
+        }
+        .map_err(|error: CssCascadeError| error.to_string())?;
+        let full_count = styles.elements.len() as u64;
+        (
+            styles,
+            RuntimeCascadeReuseStats {
+                recomputed_style_elements: full_count,
+                reused_style_elements: 0,
+                context_style_elements: 0,
+            },
         )
-    }
-    .map_err(|error: CssCascadeError| error.to_string())?;
+    };
     if key_for(&request.snapshot, request.viewport.environment_revision) != request.key
         || styles.generation.get() != request.key.generation
         || styles.document_revision.get() != request.key.document_revision
@@ -219,5 +304,6 @@ fn compute_root(
             styles,
         },
         view,
+        reuse_stats,
     ))
 }

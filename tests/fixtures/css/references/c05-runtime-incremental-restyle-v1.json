@@ -1,0 +1,59 @@
+{
+  "schema": "spinon-css-runtime-incremental-restyle-reference/v1",
+  "fixture": {
+    "id": "c05-runtime-incremental-restyle-v1",
+    "htmlPath": "tests/fixtures/css/c05/runtime-incremental-restyle.html",
+    "htmlSha256": "1f6ab910b6790456214818a9d968c1b9003bb4ca9d37cff70cdd9c372f6d2c0b",
+    "runtimeFixturePath": "tests/fixtures/css/c05/runtime-incremental-restyle.js",
+    "runtimeFixtureSha256": "c599150d11b4c56179ce21cd21715022832383e7b71f47615a0ae76e4dfb08e7"
+  },
+  "captureTool": {
+    "path": "tools/css-reference/verify-c05-runtime-incremental-restyle-precomparison.mjs",
+    "sha256": "f5dcbc366f788885c5f84e06a2d7e665b6b2954df4f1a6875067d4309ca6a21d",
+    "dependencies": [
+      {
+        "path": "tools/css-reference/chromium-session.mjs",
+        "sha256": "b010ada41ed75dc2d67ee25abd4266b17930f1de95fc683eebc5cdab6ad2cdc1"
+      }
+    ]
+  },
+  "oracle": {
+    "name": "Google Chrome",
+    "product": "Chrome/154.0.8037.98",
+    "cliVersion": "Google Chrome 154.0.8037.98",
+    "revision": "@b859317bf11f6be47f9b7799ec690a0a42a1fb33"
+  },
+  "viewport": {
+    "widthCssPx": 320,
+    "heightCssPx": 180,
+    "deviceScaleFactor": 1,
+    "locale": "en-US",
+    "timezone": "UTC"
+  },
+  "comparison": {
+    "computedProperties": ["width", "height"],
+    "geometryToleranceCssPx": 0.5,
+    "unchangedNodes": ["c054-app", "c054-left", "c054-right", "c054-right-a", "c054-right-b"],
+    "changedNodes": ["c054-left-a", "c054-left-b"]
+  },
+  "observation": {
+    "before": {
+      "c054-app": { "width": "300px", "height": "100px", "rect": { "x": 0, "y": 0, "width": 300, "height": 100 } },
+      "c054-left": { "width": "140px", "height": "80px", "rect": { "x": 0, "y": 0, "width": 140, "height": 80 } },
+      "c054-left-a": { "width": "32px", "height": "10px", "rect": { "x": 0, "y": 0, "width": 32, "height": 10 } },
+      "c054-left-b": { "width": "32px", "height": "10px", "rect": { "x": 0, "y": 14, "width": 32, "height": 10 } },
+      "c054-right": { "width": "140px", "height": "80px", "rect": { "x": 150, "y": 0, "width": 140, "height": 80 } },
+      "c054-right-a": { "width": "41px", "height": "10px", "rect": { "x": 150, "y": 0, "width": 41, "height": 10 } },
+      "c054-right-b": { "width": "41px", "height": "10px", "rect": { "x": 150, "y": 14, "width": 41, "height": 10 } }
+    },
+    "after": {
+      "c054-app": { "width": "300px", "height": "100px", "rect": { "x": 0, "y": 0, "width": 300, "height": 100 } },
+      "c054-left": { "width": "140px", "height": "80px", "rect": { "x": 0, "y": 0, "width": 140, "height": 80 } },
+      "c054-left-a": { "width": "46px", "height": "10px", "rect": { "x": 0, "y": 0, "width": 46, "height": 10 } },
+      "c054-left-b": { "width": "46px", "height": "10px", "rect": { "x": 0, "y": 14, "width": 46, "height": 10 } },
+      "c054-right": { "width": "140px", "height": "80px", "rect": { "x": 150, "y": 0, "width": 140, "height": 80 } },
+      "c054-right-a": { "width": "41px", "height": "10px", "rect": { "x": 150, "y": 0, "width": 41, "height": 10 } },
+      "c054-right-b": { "width": "41px", "height": "10px", "rect": { "x": 150, "y": 14, "width": 41, "height": 10 } }
+    }
+  }
+}

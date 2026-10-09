@@ -156,6 +156,11 @@ fn all_host_root_elements_are_computed_as_independent_roots() {
         key: key_for(&snapshot, EnvironmentRevision::INITIAL),
         snapshot,
         viewport: CssViewport::C04_FIXTURE,
+
+        previous_snapshot: None,
+        force_full: true,
+        invalidation: None,
+        previous_styles: None,
     };
     let calculation = compute_request(&request).unwrap();
     assert_eq!(calculation.roots.len(), 2);
@@ -179,6 +184,11 @@ fn inline_style_attribute_overrides_ua_and_preserves_parser_diagnostics() {
         key: key_for(&styled, EnvironmentRevision::INITIAL),
         snapshot: styled,
         viewport: CssViewport::C04_FIXTURE,
+
+        previous_snapshot: None,
+        force_full: true,
+        invalidation: None,
+        previous_styles: None,
     };
     let calculation = compute_request(&request).unwrap();
     assert_eq!(

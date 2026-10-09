@@ -8,11 +8,21 @@ fn cache_key_uses_exact_viewport_bits_and_all_media_inputs() {
         key: key_for(&snapshot, EnvironmentRevision::INITIAL),
         snapshot: Arc::clone(&snapshot),
         viewport: CssViewport::C04_FIXTURE,
+
+        previous_snapshot: None,
+        force_full: true,
+        invalidation: None,
+        previous_styles: None,
     };
     let mut changed_bits = WorkRequest {
         key: base.key,
         snapshot: Arc::clone(&snapshot),
         viewport: base.viewport,
+
+        previous_snapshot: None,
+        force_full: true,
+        invalidation: None,
+        previous_styles: None,
     };
     let base_cache_key = RuntimeCalculationCacheKey::for_request(&base);
     changed_bits.viewport.width_css_px = f32::from_bits(base.viewport.width_css_px.to_bits() + 1);

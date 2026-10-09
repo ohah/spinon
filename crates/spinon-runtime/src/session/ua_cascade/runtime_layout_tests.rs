@@ -102,6 +102,11 @@ fn runtime_layout_frames_follow_dom_order_not_node_id_order() {
         key: key_for(&snapshot, EnvironmentRevision::INITIAL),
         snapshot,
         viewport: CssViewport::C04_FIXTURE,
+
+        previous_snapshot: None,
+        force_full: true,
+        invalidation: None,
+        previous_styles: None,
     };
     let calculation = compute_request(&request).unwrap();
     let layout = calculation.layout.unwrap();
@@ -142,6 +147,11 @@ fn runtime_gpu_profile_keeps_background_paint_out_of_the_legacy_layout_contract(
             environment_revision: EnvironmentRevision::INITIAL,
             media_environment: CssMediaEnvironment::MOBILE,
         },
+
+        previous_snapshot: None,
+        force_full: true,
+        invalidation: None,
+        previous_styles: None,
     };
 
     let legacy = compute_request(&request).unwrap();
@@ -196,6 +206,11 @@ fn unsupported_layout_style_does_not_fail_the_ua_cascade_snapshot() {
         key: key_for(&snapshot, EnvironmentRevision::INITIAL),
         snapshot: Arc::clone(&snapshot),
         viewport: CssViewport::C04_FIXTURE,
+
+        previous_snapshot: None,
+        force_full: true,
+        invalidation: None,
+        previous_styles: None,
     };
     let calculation = compute_request(&request).unwrap();
     assert_eq!(calculation.roots.len(), 1);
@@ -242,6 +257,11 @@ fn recoverable_inline_parse_diagnostics_do_not_discard_layout() {
         key: key_for(&snapshot, EnvironmentRevision::INITIAL),
         snapshot,
         viewport: CssViewport::C04_FIXTURE,
+
+        previous_snapshot: None,
+        force_full: true,
+        invalidation: None,
+        previous_styles: None,
     };
     let calculation = compute_request(&request).unwrap();
     assert!(!calculation.roots[0].styles.diagnostics.is_empty());
@@ -261,6 +281,11 @@ fn text_inside_element_fails_layout_without_discarding_computed_style() {
         key: key_for(&snapshot, EnvironmentRevision::INITIAL),
         snapshot,
         viewport: CssViewport::C04_FIXTURE,
+
+        previous_snapshot: None,
+        force_full: true,
+        invalidation: None,
+        previous_styles: None,
     };
     let calculation = compute_request(&request).unwrap();
     assert_eq!(calculation.roots.len(), 1);
@@ -286,13 +311,13 @@ fn stale_completion_cannot_replace_a_newer_requested_key() {
         media_environment: CssMediaEnvironment::MOBILE,
         revision: EnvironmentRevision::INITIAL,
     });
-    request_latest(&shared, &mut state);
+    request_latest(&shared, &mut state, None, true);
     let stale_key = state.requested.unwrap();
     state.environment = Some(RuntimeCssEnvironment {
         revision: EnvironmentRevision::INITIAL.checked_next().unwrap(),
         ..state.environment.unwrap()
     });
-    request_latest(&shared, &mut state);
+    request_latest(&shared, &mut state, None, true);
     let current_key = state.requested.unwrap();
     drop(state);
 
@@ -300,6 +325,11 @@ fn stale_completion_cannot_replace_a_newer_requested_key() {
         key: stale_key,
         snapshot,
         viewport: CssViewport::C04_FIXTURE,
+
+        previous_snapshot: None,
+        force_full: true,
+        invalidation: None,
+        previous_styles: None,
     };
     let mut cache = None;
     publish_result(
@@ -308,6 +338,9 @@ fn stale_completion_cannot_replace_a_newer_requested_key() {
         Ok(RuntimeCalculation {
             roots: Vec::new().into(),
             cascade_duration_us: 1,
+            cascade_recomputed_style_elements: 0,
+            cascade_reused_style_elements: 0,
+            cascade_context_style_elements: 0,
             layout: Ok(RuntimeLayoutCompleted {
                 key: stale_key,
                 frames: Vec::new().into(),
@@ -319,6 +352,7 @@ fn stale_completion_cannot_replace_a_newer_requested_key() {
         }),
         false,
         &mut cache,
+        &mut None,
     );
     let state = lock(&shared.state);
     assert_ne!(current_key, stale_key);
@@ -337,6 +371,11 @@ fn direct_text_root_fails_the_whole_request_instead_of_returning_partial_roots()
         key: key_for(&snapshot, EnvironmentRevision::INITIAL),
         snapshot,
         viewport: CssViewport::C04_FIXTURE,
+
+        previous_snapshot: None,
+        force_full: true,
+        invalidation: None,
+        previous_styles: None,
     };
     let error = compute_request(&request).unwrap_err();
     assert!(error.contains("직속 텍스트"));
