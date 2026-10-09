@@ -69,7 +69,7 @@ CSSOM은 모바일 CSS 렌더링의 선행 조건이 아니다. 첫 CSS 경로�
 
 현재 S01의 `spinon-core`는 안정적 ID와 원자 변경 묶음을 검증하는 최소 실험이다. 현재 `Node`는 노드마다 태그와 선택적 텍스트를 보관하고 자식 목록에는 다른 노드 ID를 둔다. 따라서 요소의 자식 위치마다 텍스트 노드가 끼어드는 DOM의 순서, `Element`와 `Text`의 서로 다른 노드 종류, 노드 객체의 연결·분리 수명을 표현하지 못한다. 또한 S01의 전체 변경 묶음 커밋은 개별 DOM 메서드의 동기 성공·오류 결과를 정의하지 않는다.
 
-S01의 `Tree`는 DOM에 연결할 수 없지만, R03의 별도 [`HostDocument`](internal/0003-shared-host-contract.md)는 요소·텍스트 혼합 순서, namespace·속성·상태, 분리 노드 수명, 소유권, 동기 변경 묶음과 revision snapshot을 내부 `0.2.0-draft`로 구현했다. 이 모델은 JS 래퍼 객체 정체성·GC, Web IDL 변환, 공개 DOM 예외, 루트 연결과 Stylo trait를 제공하지 않는다. S01을 DOM 의미로 간주하지 않는다.
+S01의 `Tree`는 DOM에 연결할 수 없지만, R03의 별도 [`HostDocument`](internal/0003-shared-host-contract.md)는 요소·텍스트 혼합 순서, namespace·속성·상태, 분리 노드 수명, 소유권, 동기 변경 묶음과 revision snapshot을 내부 `0.1.0-draft`로 구현했다. 이 모델은 JS 래퍼 객체 정체성·GC, Web IDL 변환, 공개 DOM 예외, 루트 연결과 Stylo trait를 제공하지 않는다. S01을 DOM 의미로 간주하지 않는다.
 
 이 공통 모델은 [R03 공통 문서·호스트 계약](internal/0003-shared-host-contract.md)과 `crates/spinon-core/src/document.rs`에 구현되어 있다. 하나의 `HostDocument`와 내부 `HostRoot`, 순서가 섞인 요소·텍스트 노드, 소유권이 겹치지 않는 어댑터별 하위 트리, 동기 논리 변경과 revision snapshot을 제공한다. 실행 근거는 [R03 HostDocument 비교 모델](internal/evidence/r03-host-document-precomparison-2026-10-01.md)이다. 이 내부 모델은 아래 공개 DOM 결정과 지원 범위를 확정하지 않는다.
 

@@ -220,7 +220,7 @@ S04.1 정책 확정 뒤 이어갈 내부 fixture 작업입니다. 아래 단계�
 
 ## 관련 계약과 근거
 
-- [S02 레이아웃 엔진 `0.3.0-draft`](0009-layout-engine.md)
+- [S02 레이아웃 엔진 `0.1.0`](0009-layout-engine.md)
 - [S04.4 Android GPU surface 실행 근거](evidence/s04-android-gpu-surface-2026-10-03.md)
 - [S04.5 iOS GPU surface 실행 근거](evidence/s04-ios-gpu-surface-2026-10-03.md)
 - [C04.1 stylesheet cascade](0016-c04-basic-cascade.md)
