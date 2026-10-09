@@ -9,7 +9,7 @@ use spinon_layout::LayoutSourceRevision;
 use spinon_style::{CssCascadeError, CssOrigin, CssViewport, StylesheetSource, StyloDocumentView};
 use style::context::QuirksMode;
 
-use crate::{StyleLayoutError, compute_style_layout};
+use crate::{StyleLayoutError, compute_flex_alignment_style_layout, compute_style_layout};
 
 const HTML: &str = "http://www.w3.org/1999/xhtml";
 const FIXTURE_JSON: &str = concat!(
@@ -20,15 +20,23 @@ const C01_LAYOUT_REFERENCE: &str = concat!(
     env!("CARGO_MANIFEST_DIR"),
     "/../../tests/fixtures/css/references/chromium-macos-arm64-macos-26.5.1-25f80-154.0.8037.95-layout-v1-778a2065ac58-inventory-ef6d0b87a506-capture-85a34bd9a1a2-bin-affc6715a14a/core-layout.json"
 );
+pub(super) const FLEX_ALIGNMENT_INPUT: &str = concat!(
+    env!("CARGO_MANIFEST_DIR"),
+    "/../../tests/fixtures/css/c04/flex-alignment.v1.json"
+);
+pub(super) const FLEX_ALIGNMENT_REFERENCE: &str = concat!(
+    env!("CARGO_MANIFEST_DIR"),
+    "/../../tests/fixtures/css/references/c04-flex-alignment-v1.json"
+);
 
-struct DocumentFixture {
-    document: HostDocument,
-    root: HostNodeHandle,
-    nodes: BTreeMap<String, HostNodeHandle>,
+pub(super) struct DocumentFixture {
+    pub(super) document: HostDocument,
+    pub(super) root: HostNodeHandle,
+    pub(super) nodes: BTreeMap<String, HostNodeHandle>,
 }
 
 impl DocumentFixture {
-    fn new(with_text: bool) -> Self {
+    pub(super) fn new(with_text: bool) -> Self {
         let mut document = HostDocument::new().unwrap();
         let owner = OwnerId::new(1702).unwrap();
         let root = document.reserve_node_handle().unwrap();
@@ -74,7 +82,7 @@ impl DocumentFixture {
         }
     }
 
-    fn with_inline_style(style: &str) -> Self {
+    pub(super) fn with_inline_style(style: &str) -> Self {
         let mut fixture = Self::new(false);
         let owner = OwnerId::new(1702).unwrap();
         let mut batch = DocumentChangeBatch::new(owner, fixture.document.document_revision());
@@ -87,7 +95,7 @@ impl DocumentFixture {
         fixture
     }
 
-    fn view(&self) -> StyloDocumentView {
+    pub(super) fn view(&self) -> StyloDocumentView {
         StyloDocumentView::new_with_base_url(
             self.document.snapshot(),
             self.root,
@@ -98,7 +106,7 @@ impl DocumentFixture {
         .unwrap()
     }
 
-    fn stylesheet(&self) -> StylesheetSource {
+    pub(super) fn stylesheet(&self) -> StylesheetSource {
         StylesheetSource {
             id: "c04-style-layout-bridge".to_owned(),
             base_url: "https://spinon.invalid/c04/style-layout-bridge.css".to_owned(),
@@ -107,7 +115,7 @@ impl DocumentFixture {
         }
     }
 
-    fn viewport(&self) -> CssViewport {
+    pub(super) fn viewport(&self) -> CssViewport {
         let fixture = load_fixture();
         CssViewport {
             width_css_px: fixture["viewport"]["widthCssPx"].as_f64().unwrap() as f32,
@@ -117,7 +125,7 @@ impl DocumentFixture {
         }
     }
 
-    fn compute(
+    pub(super) fn compute(
         &self,
         extra_css: Option<&str>,
     ) -> Result<crate::StyleLayoutOutput, StyleLayoutError> {
@@ -133,6 +141,29 @@ impl DocumentFixture {
         let snapshot = self.document.snapshot();
         compute_style_layout(
             &snapshot,
+            &self.view(),
+            self.root,
+            &stylesheets,
+            self.viewport(),
+            StyleRevision::default(),
+        )
+    }
+
+    pub(super) fn compute_flex_alignment(
+        &self,
+        override_css: Option<&str>,
+    ) -> Result<crate::StyleLayoutOutput, StyleLayoutError> {
+        let mut stylesheets = vec![self.stylesheet()];
+        if let Some(css) = override_css {
+            stylesheets.push(StylesheetSource {
+                id: "c04-flex-alignment-override".to_owned(),
+                base_url: "https://spinon.invalid/c04/flex-alignment.css".to_owned(),
+                origin: CssOrigin::Author,
+                css: css.to_owned(),
+            });
+        }
+        compute_flex_alignment_style_layout(
+            &self.document.snapshot(),
             &self.view(),
             self.root,
             &stylesheets,

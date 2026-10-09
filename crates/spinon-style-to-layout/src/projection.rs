@@ -2,12 +2,13 @@ use std::collections::BTreeMap;
 
 use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, NodeId, StyleRevision};
 use spinon_layout::{
-    FlexDirection, LayoutBoxSizing, LayoutDimension, LayoutDisplay, LayoutEngine, LayoutGap,
-    LayoutInput, LayoutOutput, LayoutStyle, TaffyLayoutEngine, TextDirection, Viewport,
+    FlexDirection, LayoutAlignItems, LayoutBoxSizing, LayoutDimension, LayoutDisplay, LayoutEngine,
+    LayoutGap, LayoutInput, LayoutJustifyContent, LayoutOutput, LayoutStyle, TaffyLayoutEngine,
+    TextDirection, Viewport,
 };
 use spinon_style::{
     ComputedStyleProfile, ComputedStyleSnapshot, CssViewport, StylesheetSource, StyloDocumentView,
-    compute_flex_layout_cascade, compute_s04_flex_paint_cascade,
+    compute_flex_alignment_cascade, compute_flex_layout_cascade, compute_s04_flex_paint_cascade,
 };
 
 use crate::StyleLayoutError;
@@ -36,6 +37,26 @@ pub fn compute_style_layout(
         viewport,
         style_revision,
         ComputedStyleProfile::FlexLayoutV1,
+    )
+}
+
+/// C04.3 profile로 제한된 Flex 정렬 값과 레이아웃을 연결합니다.
+pub fn compute_flex_alignment_style_layout(
+    snapshot: &HostDocumentSnapshot,
+    view: &StyloDocumentView,
+    root: HostNodeHandle,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    compute_profile_layout(
+        snapshot,
+        view,
+        root,
+        author_stylesheets,
+        viewport,
+        style_revision,
+        ComputedStyleProfile::FlexAlignmentV1,
     )
 }
 
@@ -73,6 +94,9 @@ fn compute_profile_layout(
     let computed_styles = match profile {
         ComputedStyleProfile::FlexLayoutV1 => {
             compute_flex_layout_cascade(view, author_stylesheets, viewport, style_revision)?
+        }
+        ComputedStyleProfile::FlexAlignmentV1 => {
+            compute_flex_alignment_cascade(view, author_stylesheets, viewport, style_revision)?
         }
         ComputedStyleProfile::S04FlexPaintV1 => {
             compute_s04_flex_paint_cascade(view, author_stylesheets, viewport, style_revision)?
@@ -195,6 +219,18 @@ fn project_styles(
             flex_basis: parse_dimension(node, "flex-basis", required(element, "flex-basis")?)?,
             flex_direction: parse_flex_direction(node, required(element, "flex-direction")?)?,
             direction: parse_direction(node, required(element, "direction")?)?,
+            align_items: match snapshot.profile {
+                ComputedStyleProfile::FlexAlignmentV1 => {
+                    parse_align_items(node, required(element, "align-items")?)?
+                }
+                _ => LayoutStyle::default().align_items,
+            },
+            justify_content: match snapshot.profile {
+                ComputedStyleProfile::FlexAlignmentV1 => {
+                    parse_justify_content(node, required(element, "justify-content")?)?
+                }
+                _ => LayoutStyle::default().justify_content,
+            },
             flex_grow: parse_number(node, "flex-grow", required(element, "flex-grow")?)?,
             flex_shrink: parse_number(node, "flex-shrink", required(element, "flex-shrink")?)?,
             gap: LayoutGap {
@@ -208,6 +244,31 @@ fn project_styles(
         }
     }
     Ok(output)
+}
+
+fn parse_align_items(node: NodeId, value: &str) -> Result<LayoutAlignItems, StyleLayoutError> {
+    match value {
+        "normal" | "stretch" => Ok(LayoutAlignItems::Stretch),
+        "flex-start" => Ok(LayoutAlignItems::FlexStart),
+        "flex-end" => Ok(LayoutAlignItems::FlexEnd),
+        "center" => Ok(LayoutAlignItems::Center),
+        value => unsupported(node, "align-items", value),
+    }
+}
+
+fn parse_justify_content(
+    node: NodeId,
+    value: &str,
+) -> Result<LayoutJustifyContent, StyleLayoutError> {
+    match value {
+        "normal" | "flex-start" => Ok(LayoutJustifyContent::FlexStart),
+        "flex-end" => Ok(LayoutJustifyContent::FlexEnd),
+        "center" => Ok(LayoutJustifyContent::Center),
+        "space-between" => Ok(LayoutJustifyContent::SpaceBetween),
+        "space-around" => Ok(LayoutJustifyContent::SpaceAround),
+        "space-evenly" => Ok(LayoutJustifyContent::SpaceEvenly),
+        value => unsupported(node, "justify-content", value),
+    }
 }
 
 fn required<'a>(

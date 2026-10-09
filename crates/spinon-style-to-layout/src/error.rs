@@ -53,7 +53,7 @@ impl fmt::Display for StyleLayoutError {
             }
             Self::UnsupportedInlineStyle(node) => write!(
                 formatter,
-                "노드 {node}의 inline style 속성은 C04.2 입력 profile에서 지원하지 않습니다"
+                "노드 {node}의 inline style 속성은 현재 layout 입력 profile에서 지원하지 않습니다"
             ),
             Self::MissingComputedElement(node) => {
                 write!(formatter, "노드 {node}의 computed-style 항목이 없습니다")

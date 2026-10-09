@@ -75,6 +75,8 @@ pub enum ComputedStyleProfile {
     BasicCascadeV1,
     /// C04.2의 제한 Taffy Flex 입력 속성입니다.
     FlexLayoutV1,
+    /// C04.3의 Flex 입력과 제한 정렬 속성입니다.
+    FlexAlignmentV1,
     /// S04의 Flex layout 속성과 불투명 `#RRGGBB` 배경 페인트입니다.
     S04FlexPaintV1,
 }

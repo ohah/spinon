@@ -81,6 +81,38 @@ const FLEX_LAYOUT_AUTHOR_PROPERTIES: &[&str] = &[
     "column-gap",
 ];
 
+const FLEX_ALIGNMENT_PROPERTIES: &[(&str, LonghandId)] = &[
+    ("display", LonghandId::Display),
+    ("box-sizing", LonghandId::BoxSizing),
+    ("width", LonghandId::Width),
+    ("height", LonghandId::Height),
+    ("flex-direction", LonghandId::FlexDirection),
+    ("flex-grow", LonghandId::FlexGrow),
+    ("flex-shrink", LonghandId::FlexShrink),
+    ("flex-basis", LonghandId::FlexBasis),
+    ("direction", LonghandId::Direction),
+    ("row-gap", LonghandId::RowGap),
+    ("column-gap", LonghandId::ColumnGap),
+    ("align-items", LonghandId::AlignItems),
+    ("justify-content", LonghandId::JustifyContent),
+];
+
+const FLEX_ALIGNMENT_AUTHOR_PROPERTIES: &[&str] = &[
+    "display",
+    "box-sizing",
+    "width",
+    "height",
+    "flex-direction",
+    "flex-grow",
+    "flex-shrink",
+    "flex-basis",
+    "direction",
+    "row-gap",
+    "column-gap",
+    "align-items",
+    "justify-content",
+];
+
 #[derive(Debug)]
 pub enum CssCascadeError {
     InvalidViewport,
@@ -115,7 +147,7 @@ impl fmt::Display for CssCascadeError {
                 feature,
             } => write!(
                 formatter,
-                "stylesheet {stylesheet_id}가 C04.2 CSS 입력 profile 밖 기능을 사용합니다: {feature}"
+                "stylesheet {stylesheet_id}가 지원 CSS 입력 profile 밖 기능을 사용합니다: {feature}"
             ),
             Self::UnsupportedComputedBackgroundColor { node, reason } => write!(
                 formatter,
@@ -169,6 +201,23 @@ pub fn compute_flex_layout_cascade(
     )
 }
 
+/// C04.3 Flex alignment adapter가 사용하는 제한 computed-style snapshot을 계산합니다.
+pub fn compute_flex_alignment_cascade(
+    view: &StyloDocumentView,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+) -> Result<ComputedStyleSnapshot, CssCascadeError> {
+    compute_cascade(
+        view,
+        author_stylesheets,
+        viewport,
+        style_revision,
+        FLEX_ALIGNMENT_PROPERTIES,
+        ComputedStyleProfile::FlexAlignmentV1,
+    )
+}
+
 /// S04 고정 fixture용 Flex layout 및 불투명 배경색 계산 style을 계산합니다.
 pub fn compute_s04_flex_paint_cascade(
     view: &StyloDocumentView,
@@ -218,6 +267,7 @@ fn compute_cascade(
     let allowed_author_properties = match profile {
         ComputedStyleProfile::BasicCascadeV1 => None,
         ComputedStyleProfile::FlexLayoutV1 => Some(FLEX_LAYOUT_AUTHOR_PROPERTIES),
+        ComputedStyleProfile::FlexAlignmentV1 => Some(FLEX_ALIGNMENT_AUTHOR_PROPERTIES),
         ComputedStyleProfile::S04FlexPaintV1 => Some(s04::S04_FLEX_PAINT_AUTHOR_PROPERTIES),
     };
     if let Some(allowed) = allowed_author_properties

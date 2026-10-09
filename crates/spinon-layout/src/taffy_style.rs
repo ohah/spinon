@@ -1,11 +1,12 @@
 use taffy::prelude::{
-    AlignItems, Dimension, Display, FlexDirection as TaffyFlexDirection, FlexWrap,
+    AlignItems, Dimension, Display, FlexDirection as TaffyFlexDirection, FlexWrap, JustifyContent,
     LengthPercentage, Rect, Size, Style,
 };
 use taffy::style::{BoxSizing, Direction as TaffyDirection};
 
 use crate::{
-    FlexDirection, LayoutBoxSizing, LayoutDimension, LayoutDisplay, LayoutStyle, TextDirection,
+    FlexDirection, LayoutAlignItems, LayoutBoxSizing, LayoutDimension, LayoutDisplay,
+    LayoutJustifyContent, LayoutStyle, TextDirection,
 };
 
 pub(super) fn to_taffy_style(style: LayoutStyle) -> Style {
@@ -37,7 +38,20 @@ pub(super) fn to_taffy_style(style: LayoutStyle) -> Style {
             width: LengthPercentage::length(style.gap.column),
             height: LengthPercentage::length(style.gap.row),
         },
-        align_items: Some(AlignItems::STRETCH),
+        align_items: Some(match style.align_items {
+            LayoutAlignItems::Stretch => AlignItems::STRETCH,
+            LayoutAlignItems::FlexStart => AlignItems::FLEX_START,
+            LayoutAlignItems::FlexEnd => AlignItems::FLEX_END,
+            LayoutAlignItems::Center => AlignItems::CENTER,
+        }),
+        justify_content: Some(match style.justify_content {
+            LayoutJustifyContent::FlexStart => JustifyContent::FLEX_START,
+            LayoutJustifyContent::FlexEnd => JustifyContent::FLEX_END,
+            LayoutJustifyContent::Center => JustifyContent::CENTER,
+            LayoutJustifyContent::SpaceBetween => JustifyContent::SPACE_BETWEEN,
+            LayoutJustifyContent::SpaceAround => JustifyContent::SPACE_AROUND,
+            LayoutJustifyContent::SpaceEvenly => JustifyContent::SPACE_EVENLY,
+        }),
         flex_basis: to_taffy_dimension(style.flex_basis),
         flex_direction: match style.flex_direction {
             FlexDirection::Row => TaffyFlexDirection::Row,

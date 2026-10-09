@@ -10,3 +10,4 @@
 | [성능 비교 계획](benchmark.md) | 네이티브·React Native·ReactLynx·Spinon의 비교 입력과 측정 조건 |
 | [개발 경험 계획](developer-experience.md) | CLI·HMR·Inspector·미리보기·MCP |
 | [계획 적대적 검토](audit.md) | 계획 문서의 의존성·범위·완료 관문 검토 |
+| [C04.3 Flex 정렬 전달](../../plan/c04-flex-alignment.md) | Stylo 계산값을 Taffy Flex 정렬 입력으로 전달하는 내부 구현 slice |
