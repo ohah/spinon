@@ -6,7 +6,7 @@ use spinon_core::{
 
 use super::{
     ComputedStyleProfile, CssViewport, StyloDocumentView,
-    compute_runtime_flex_custom_properties_cascade,
+    compute_runtime_flex_custom_properties_paint_cascade,
     compute_runtime_incremental_cascade_with_stylesheets,
 };
 
@@ -52,7 +52,7 @@ fn inline_style_subtree_reuse_matches_full_cascade_and_keeps_sibling_output() {
     create_element(
         &mut initial,
         handles[1],
-        "display:flex;width:140px;height:80px;--tile-size:32px",
+        "display:flex;flex-wrap:nowrap;width:140px;height:80px;--tile-size:32px;background-color:#101827",
     );
     create_element(
         &mut initial,
@@ -97,7 +97,7 @@ fn inline_style_subtree_reuse_matches_full_cascade_and_keeps_sibling_output() {
         environment_revision: Default::default(),
         media_environment: super::CssMediaEnvironment::MOBILE,
     };
-    let previous = compute_runtime_flex_custom_properties_cascade(
+    let previous = compute_runtime_flex_custom_properties_paint_cascade(
         &previous_view,
         viewport,
         Default::default(),
@@ -109,7 +109,7 @@ fn inline_style_subtree_reuse_matches_full_cascade_and_keeps_sibling_output() {
     change.push(DocumentOperation::SetAttribute {
         node: handles[1],
         name: AttributeName::new(None, "style").unwrap(),
-        value: "display:flex;width:140px;height:80px;--tile-size:46px"
+        value: "display:flex;flex-wrap:wrap;width:140px;height:80px;--tile-size:46px;background-color:#243047"
             .to_owned()
             .into(),
     });
@@ -119,15 +119,18 @@ fn inline_style_subtree_reuse_matches_full_cascade_and_keeps_sibling_output() {
         handles[0],
     )
     .unwrap();
-    let full =
-        compute_runtime_flex_custom_properties_cascade(&current_view, viewport, Default::default())
-            .unwrap();
+    let full = compute_runtime_flex_custom_properties_paint_cascade(
+        &current_view,
+        viewport,
+        Default::default(),
+    )
+    .unwrap();
     let (partial, stats) = compute_runtime_incremental_cascade_with_stylesheets(
         &current_view,
         &[],
         viewport,
         Default::default(),
-        ComputedStyleProfile::RuntimeFlexCustomPropertiesV1,
+        ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1,
         &previous,
         &[handles[1].id()],
     )
@@ -136,6 +139,24 @@ fn inline_style_subtree_reuse_matches_full_cascade_and_keeps_sibling_output() {
 
     assert_eq!(partial.elements, full.elements);
     assert_eq!(partial.diagnostics, full.diagnostics);
+    assert_eq!(
+        partial
+            .elements
+            .iter()
+            .find(|element| element.node_id == handles[1].id())
+            .unwrap()
+            .properties["flex-wrap"],
+        "wrap"
+    );
+    assert_eq!(
+        partial
+            .elements
+            .iter()
+            .find(|element| element.node_id == handles[1].id())
+            .unwrap()
+            .properties["background-color"],
+        "rgb(36, 48, 71)"
+    );
     assert_eq!(node_style(&partial, handles[2].id()), "46px");
     assert_eq!(node_style(&partial, handles[4].id()), "41px");
     assert_eq!(

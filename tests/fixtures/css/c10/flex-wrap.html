@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spinon C10.1 flex-wrap reference</title>
+  <style>
+    html, body { margin: 0; padding: 0; }
+    body { direction: ltr; writing-mode: horizontal-tb; }
+    *, *::before, *::after { box-sizing: border-box; }
+    [data-c10-case] { display: none; margin: 0; padding: 0; border: 0; }
+    [data-c10-case="row-default-nowrap"],
+    [data-c10-case="row-exact-fit"],
+    [data-c10-case="row-one-pixel-over"],
+    [data-c10-case="row-three-lines-gap"],
+    [data-c10-case="column-wrap-gap"],
+    [data-c10-case="empty-container"],
+    [data-c10-case="single-item"],
+    [data-c10-case="display-none-child"],
+    [data-c10-case="flow-shorthand-override"],
+    [data-c10-case="block-wrap-noop"],
+    [data-c10-case="nested-wrap-not-inherited"] { display: block; }
+    [data-c10-case="runtime-three-lines-gap"] { display: flow-root; }
+    .flex-row {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-grow: 0;
+      flex-shrink: 0;
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+    .flex-column {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-grow: 0;
+      flex-shrink: 0;
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+    .item { flex: 0 0 auto; margin: 0; padding: 0; border: 0; }
+  </style>
+</head>
+<body>
+  <section data-c10-case="row-default-nowrap">
+    <div class="flex-row" id="c101-default-root" style="width:100px;height:12px">
+      <div class="item" id="c101-default-first" style="width:60px;height:10px"></div>
+      <div class="item" id="c101-default-second" style="width:60px;height:10px"></div>
+    </div>
+  </section>
+
+  <section data-c10-case="row-exact-fit">
+    <div class="flex-row" id="c101-exact-root" style="flex-wrap:wrap;width:105px;height:10px;column-gap:5px">
+      <div class="item" id="c101-exact-first" style="width:50px;height:10px"></div>
+      <div class="item" id="c101-exact-second" style="width:50px;height:10px"></div>
+    </div>
+  </section>
+
+  <section data-c10-case="row-one-pixel-over">
+    <div class="flex-row" id="c101-over-root" style="flex-wrap:wrap;width:104px;height:20px;column-gap:5px;row-gap:0">
+      <div class="item" id="c101-over-first" style="width:50px;height:10px"></div>
+      <div class="item" id="c101-over-second" style="width:50px;height:10px"></div>
+    </div>
+  </section>
+
+  <section data-c10-case="row-three-lines-gap">
+    <div class="flex-row" id="c101-lines-root" style="flex-wrap:wrap;width:95px;height:34px;column-gap:5px;row-gap:2px">
+      <div class="item" id="c101-lines-first" style="width:40px;height:10px"></div>
+      <div class="item" id="c101-lines-second" style="width:40px;height:10px"></div>
+      <div class="item" id="c101-lines-third" style="width:40px;height:10px"></div>
+      <div class="item" id="c101-lines-fourth" style="width:40px;height:10px"></div>
+      <div class="item" id="c101-lines-fifth" style="width:20px;height:10px"></div>
+    </div>
+  </section>
+
+  <section data-c10-case="column-wrap-gap">
+    <div class="flex-column" id="c101-column-root" style="flex-wrap:wrap;width:23px;height:40px;row-gap:4px;column-gap:3px">
+      <div class="item" id="c101-column-first" style="width:10px;height:18px"></div>
+      <div class="item" id="c101-column-second" style="width:10px;height:18px"></div>
+      <div class="item" id="c101-column-third" style="width:10px;height:18px"></div>
+    </div>
+  </section>
+
+  <section data-c10-case="empty-container">
+    <div class="flex-row" id="c101-empty-root" style="flex-wrap:wrap;width:100px;height:20px"></div>
+  </section>
+
+  <section data-c10-case="single-item">
+    <div class="flex-row" id="c101-single-root" style="flex-wrap:wrap;width:30px;height:10px">
+      <div class="item" id="c101-single-child" style="width:20px;height:10px"></div>
+    </div>
+  </section>
+
+  <section data-c10-case="display-none-child">
+    <div class="flex-row" id="c101-hidden-root" style="flex-wrap:wrap;width:100px;height:20px;column-gap:10px">
+      <div class="item" id="c101-hidden-first" style="width:45px;height:10px"></div>
+      <div class="item" id="c101-hidden-item" style="display:none;width:80px;height:10px"></div>
+      <div class="item" id="c101-hidden-last" style="width:45px;height:10px"></div>
+    </div>
+  </section>
+
+  <section data-c10-case="flow-shorthand-override">
+    <div id="c101-flow-root" style="display:flex;flex-flow:column wrap;width:105px;height:10px;flex-direction:row;justify-content:flex-start;align-items:flex-start;flex-grow:0;flex-shrink:0;min-width:0;min-height:0;margin:0;padding:0;border:0;column-gap:5px">
+      <div class="item" id="c101-flow-first" style="width:50px;height:10px"></div>
+      <div class="item" id="c101-flow-second" style="width:50px;height:10px"></div>
+    </div>
+  </section>
+
+  <section data-c10-case="block-wrap-noop">
+    <div id="c101-block-root" style="display:block;flex-wrap:wrap;width:100px;height:auto;min-width:0;min-height:0;margin:0;padding:0;border:0">
+      <div id="c101-block-first" style="width:50px;height:10px"></div>
+      <div id="c101-block-second" style="width:50px;height:10px"></div>
+    </div>
+  </section>
+
+  <section data-c10-case="nested-wrap-not-inherited">
+    <div class="flex-row" id="c101-nested-outer" style="flex-wrap:wrap;width:100px;height:20px;column-gap:5px;row-gap:0">
+      <div id="c101-nested-inner" style="display:flex;flex-direction:row;width:60px;height:10px;justify-content:flex-start;align-items:flex-start;flex-grow:0;flex-shrink:0;min-width:0;min-height:0;margin:0;padding:0;border:0">
+        <div class="item" id="c101-nested-first" style="width:40px;height:10px"></div>
+        <div class="item" id="c101-nested-second" style="width:40px;height:10px"></div>
+      </div>
+      <div class="item" id="c101-nested-sibling" style="width:45px;height:10px"></div>
+    </div>
+  </section>
+
+  <section data-c10-case="runtime-three-lines-gap">
+    <div id="c101-runtime-root" style="display:flex;box-sizing:border-box;width:320px;height:240px;flex-direction:column;flex-wrap:nowrap;justify-content:flex-start;align-items:flex-start;flex-grow:0;flex-shrink:0;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#101827">
+      <div id="c101-runtime-flex" style="display:flex;box-sizing:border-box;width:170px;height:68px;flex-direction:row;flex-wrap:wrap;justify-content:flex-start;align-items:flex-start;flex-grow:0;flex-shrink:0;min-width:0;min-height:0;row-gap:4px;column-gap:6px;margin:8px;padding:0;border:0;background-color:#243047">
+        <div id="c101-runtime-item-1" style="display:block;box-sizing:border-box;width:70px;height:20px;min-width:0;min-height:0;flex-grow:0;flex-shrink:0;flex-basis:auto;margin:0;padding:0;border:0;background-color:#3366ff"></div>
+        <div id="c101-runtime-item-2" style="display:block;box-sizing:border-box;width:70px;height:20px;min-width:0;min-height:0;flex-grow:0;flex-shrink:0;flex-basis:auto;margin:0;padding:0;border:0;background-color:#12b981"></div>
+        <div id="c101-runtime-item-3" style="display:block;box-sizing:border-box;width:70px;height:20px;min-width:0;min-height:0;flex-grow:0;flex-shrink:0;flex-basis:auto;margin:0;padding:0;border:0;background-color:#f59e0b"></div>
+        <div id="c101-runtime-item-4" style="display:block;box-sizing:border-box;width:70px;height:20px;min-width:0;min-height:0;flex-grow:0;flex-shrink:0;flex-basis:auto;margin:0;padding:0;border:0;background-color:#ec4899"></div>
+        <div id="c101-runtime-item-5" style="display:block;box-sizing:border-box;width:70px;height:20px;min-width:0;min-height:0;flex-grow:0;flex-shrink:0;flex-basis:auto;margin:0;padding:0;border:0;background-color:#a78bfa"></div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

@@ -51,6 +51,7 @@
 + (NSString *)evalRuntimeGpuBlockFormattingFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuMarginCollapseFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuFlowRootFixture:(uint64_t)handle;
++ (NSString *)evalRuntimeGpuFlexWrapFixture:(uint64_t)handle;
 + (NSString *)prepareRuntimeGpuWgpuSurface:(uint64_t)handle view:(void *)view;
 + (NSString *)createRuntimeGpuWgpu:(uint64_t)handle width:(uint32_t)width
                              height:(uint32_t)height;

@@ -1,0 +1,1793 @@
+{
+  "schema": "spinon-css-c10-flex-wrap-reference/v1",
+  "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.98-d5723a167141-8c22a3d3f46b",
+  "fixture": {
+    "id": "C10.1-flex-wrap-v1",
+    "inventoryPath": "tests/fixtures/css/c10/flex-wrap-inventory.json",
+    "inventorySha256": "d5723a1671410368caa6edc418c119d944d73f8db1f9af57b1aeb6e09baf49b1",
+    "htmlPath": "tests/fixtures/css/c10/flex-wrap.html",
+    "htmlSha256": "a855c063d182ef2ff2a4672dc3c00ca9aba03220c6af8280af8df14a7e234dd8"
+  },
+  "captureTool": {
+    "path": "tools/css-reference/capture-c10-flex-wrap.mjs",
+    "sha256": "8c22a3d3f46be77ae63cc9fef8590eff1422431b5d0e7b1b0e44fdece64da23e",
+    "dependencies": [
+      {
+        "path": "tools/css-reference/chromium-session.mjs",
+        "sha256": "b010ada41ed75dc2d67ee25abd4266b17930f1de95fc683eebc5cdab6ad2cdc1"
+      }
+    ]
+  },
+  "oracle": {
+    "name": "Google Chrome",
+    "product": "Chrome/154.0.8037.98",
+    "cliVersion": "Google Chrome 154.0.8037.98",
+    "revision": "@b859317bf11f6be47f9b7799ec690a0a42a1fb33",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "executablePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "executableSha256": "ccffd5c5fe77ba3212e07c2c69091f8048b73c396b4647ecaa150e1e01a04954",
+    "host": {
+      "platform": "darwin",
+      "architecture": "arm64",
+      "release": "25.5.0",
+      "node": "v26.7.0"
+    },
+    "flags": [
+      "--headless=new",
+      "--no-first-run",
+      "--no-default-browser-check",
+      "--disable-background-networking",
+      "--lang=en-US",
+      "--remote-debugging-port=0",
+      "--user-data-dir=<temporary-profile>"
+    ]
+  },
+  "environment": {
+    "viewportCssPx": {
+      "width": 320,
+      "height": 240
+    },
+    "deviceScaleFactors": [
+      1,
+      2
+    ],
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "forcedColors": "none",
+    "pointer": "coarse",
+    "hover": "none"
+  },
+  "comparison": {
+    "computedProperties": [
+      "display",
+      "flex-direction",
+      "flex-wrap",
+      "row-gap",
+      "column-gap"
+    ],
+    "rectFields": [
+      "x",
+      "y",
+      "width",
+      "height"
+    ],
+    "maximumAbsoluteRectErrorCssPx": 0.5
+  },
+  "observations": [
+    {
+      "viewport": {
+        "width": 320,
+        "height": 240,
+        "deviceScaleFactor": 1,
+        "locale": "en-US",
+        "timeZone": "UTC",
+        "dark": false,
+        "coarsePointer": true,
+        "hover": false
+      },
+      "environment": {
+        "locale": "en-US",
+        "timeZone": "UTC",
+        "dark": false,
+        "coarsePointer": true,
+        "hover": false
+      },
+      "cases": [
+        {
+          "id": "row-default-nowrap",
+          "harness": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 12
+          },
+          "nodes": [
+            {
+              "id": "c101-default-root",
+              "properties": {
+                "display": "flex",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 12
+              }
+            },
+            {
+              "id": "c101-default-first",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 60,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-default-second",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 60,
+                "y": 0,
+                "width": 60,
+                "height": 10
+              }
+            }
+          ]
+        },
+        {
+          "id": "row-exact-fit",
+          "harness": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 10
+          },
+          "nodes": [
+            {
+              "id": "c101-exact-root",
+              "properties": {
+                "display": "flex",
+                "flex-direction": "row",
+                "flex-wrap": "wrap",
+                "row-gap": "normal",
+                "column-gap": "5px"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 105,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-exact-first",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 50,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-exact-second",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 55,
+                "y": 0,
+                "width": 50,
+                "height": 10
+              }
+            }
+          ]
+        },
+        {
+          "id": "row-one-pixel-over",
+          "harness": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 20
+          },
+          "nodes": [
+            {
+              "id": "c101-over-root",
+              "properties": {
+                "display": "flex",
+                "flex-direction": "row",
+                "flex-wrap": "wrap",
+                "row-gap": "0px",
+                "column-gap": "5px"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 104,
+                "height": 20
+              }
+            },
+            {
+              "id": "c101-over-first",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 50,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-over-second",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 10,
+                "width": 50,
+                "height": 10
+              }
+            }
+          ]
+        },
+        {
+          "id": "row-three-lines-gap",
+          "harness": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 34
+          },
+          "nodes": [
+            {
+              "id": "c101-lines-root",
+              "properties": {
+                "display": "flex",
+                "flex-direction": "row",
+                "flex-wrap": "wrap",
+                "row-gap": "2px",
+                "column-gap": "5px"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 95,
+                "height": 34
+              }
+            },
+            {
+              "id": "c101-lines-first",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 40,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-lines-second",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 45,
+                "y": 0,
+                "width": 40,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-lines-third",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 12,
+                "width": 40,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-lines-fourth",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 45,
+                "y": 12,
+                "width": 40,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-lines-fifth",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 24,
+                "width": 20,
+                "height": 10
+              }
+            }
+          ]
+        },
+        {
+          "id": "column-wrap-gap",
+          "harness": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 40
+          },
+          "nodes": [
+            {
+              "id": "c101-column-root",
+              "properties": {
+                "display": "flex",
+                "flex-direction": "column",
+                "flex-wrap": "wrap",
+                "row-gap": "4px",
+                "column-gap": "3px"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 23,
+                "height": 40
+              }
+            },
+            {
+              "id": "c101-column-first",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 10,
+                "height": 18
+              }
+            },
+            {
+              "id": "c101-column-second",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 22,
+                "width": 10,
+                "height": 18
+              }
+            },
+            {
+              "id": "c101-column-third",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 13,
+                "y": 0,
+                "width": 10,
+                "height": 18
+              }
+            }
+          ]
+        },
+        {
+          "id": "empty-container",
+          "harness": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 20
+          },
+          "nodes": [
+            {
+              "id": "c101-empty-root",
+              "properties": {
+                "display": "flex",
+                "flex-direction": "row",
+                "flex-wrap": "wrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 20
+              }
+            }
+          ]
+        },
+        {
+          "id": "single-item",
+          "harness": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 10
+          },
+          "nodes": [
+            {
+              "id": "c101-single-root",
+              "properties": {
+                "display": "flex",
+                "flex-direction": "row",
+                "flex-wrap": "wrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 30,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-single-child",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 20,
+                "height": 10
+              }
+            }
+          ]
+        },
+        {
+          "id": "display-none-child",
+          "harness": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 20
+          },
+          "nodes": [
+            {
+              "id": "c101-hidden-root",
+              "properties": {
+                "display": "flex",
+                "flex-direction": "row",
+                "flex-wrap": "wrap",
+                "row-gap": "normal",
+                "column-gap": "10px"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 20
+              }
+            },
+            {
+              "id": "c101-hidden-first",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 45,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-hidden-item",
+              "properties": {
+                "display": "none",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            {
+              "id": "c101-hidden-last",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 55,
+                "y": 0,
+                "width": 45,
+                "height": 10
+              }
+            }
+          ]
+        },
+        {
+          "id": "flow-shorthand-override",
+          "harness": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 10
+          },
+          "nodes": [
+            {
+              "id": "c101-flow-root",
+              "properties": {
+                "display": "flex",
+                "flex-direction": "row",
+                "flex-wrap": "wrap",
+                "row-gap": "normal",
+                "column-gap": "5px"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 105,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-flow-first",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 50,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-flow-second",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 55,
+                "y": 0,
+                "width": 50,
+                "height": 10
+              }
+            }
+          ]
+        },
+        {
+          "id": "block-wrap-noop",
+          "harness": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 20
+          },
+          "nodes": [
+            {
+              "id": "c101-block-root",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "wrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 20
+              }
+            },
+            {
+              "id": "c101-block-first",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 50,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-block-second",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 10,
+                "width": 50,
+                "height": 10
+              }
+            }
+          ]
+        },
+        {
+          "id": "nested-wrap-not-inherited",
+          "harness": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 20
+          },
+          "nodes": [
+            {
+              "id": "c101-nested-outer",
+              "properties": {
+                "display": "flex",
+                "flex-direction": "row",
+                "flex-wrap": "wrap",
+                "row-gap": "0px",
+                "column-gap": "5px"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 20
+              }
+            },
+            {
+              "id": "c101-nested-inner",
+              "properties": {
+                "display": "flex",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 60,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-nested-first",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 40,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-nested-second",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 40,
+                "y": 0,
+                "width": 40,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-nested-sibling",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 10,
+                "width": 45,
+                "height": 10
+              }
+            }
+          ]
+        },
+        {
+          "id": "runtime-three-lines-gap",
+          "harness": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 240
+          },
+          "nodes": [
+            {
+              "id": "c101-runtime-root",
+              "properties": {
+                "display": "flex",
+                "flex-direction": "column",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 320,
+                "height": 240
+              }
+            },
+            {
+              "id": "c101-runtime-flex",
+              "properties": {
+                "display": "flex",
+                "flex-direction": "row",
+                "flex-wrap": "wrap",
+                "row-gap": "4px",
+                "column-gap": "6px"
+              },
+              "rect": {
+                "x": 8,
+                "y": 8,
+                "width": 170,
+                "height": 68
+              }
+            },
+            {
+              "id": "c101-runtime-item-1",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 8,
+                "y": 8,
+                "width": 70,
+                "height": 20
+              }
+            },
+            {
+              "id": "c101-runtime-item-2",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 84,
+                "y": 8,
+                "width": 70,
+                "height": 20
+              }
+            },
+            {
+              "id": "c101-runtime-item-3",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 8,
+                "y": 32,
+                "width": 70,
+                "height": 20
+              }
+            },
+            {
+              "id": "c101-runtime-item-4",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 84,
+                "y": 32,
+                "width": 70,
+                "height": 20
+              }
+            },
+            {
+              "id": "c101-runtime-item-5",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 8,
+                "y": 56,
+                "width": 70,
+                "height": 20
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 240,
+        "deviceScaleFactor": 2,
+        "locale": "en-US",
+        "timeZone": "UTC",
+        "dark": false,
+        "coarsePointer": true,
+        "hover": false
+      },
+      "environment": {
+        "locale": "en-US",
+        "timeZone": "UTC",
+        "dark": false,
+        "coarsePointer": true,
+        "hover": false
+      },
+      "cases": [
+        {
+          "id": "row-default-nowrap",
+          "harness": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 12
+          },
+          "nodes": [
+            {
+              "id": "c101-default-root",
+              "properties": {
+                "display": "flex",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 12
+              }
+            },
+            {
+              "id": "c101-default-first",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 60,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-default-second",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 60,
+                "y": 0,
+                "width": 60,
+                "height": 10
+              }
+            }
+          ]
+        },
+        {
+          "id": "row-exact-fit",
+          "harness": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 10
+          },
+          "nodes": [
+            {
+              "id": "c101-exact-root",
+              "properties": {
+                "display": "flex",
+                "flex-direction": "row",
+                "flex-wrap": "wrap",
+                "row-gap": "normal",
+                "column-gap": "5px"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 105,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-exact-first",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 50,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-exact-second",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 55,
+                "y": 0,
+                "width": 50,
+                "height": 10
+              }
+            }
+          ]
+        },
+        {
+          "id": "row-one-pixel-over",
+          "harness": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 20
+          },
+          "nodes": [
+            {
+              "id": "c101-over-root",
+              "properties": {
+                "display": "flex",
+                "flex-direction": "row",
+                "flex-wrap": "wrap",
+                "row-gap": "0px",
+                "column-gap": "5px"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 104,
+                "height": 20
+              }
+            },
+            {
+              "id": "c101-over-first",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 50,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-over-second",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 10,
+                "width": 50,
+                "height": 10
+              }
+            }
+          ]
+        },
+        {
+          "id": "row-three-lines-gap",
+          "harness": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 34
+          },
+          "nodes": [
+            {
+              "id": "c101-lines-root",
+              "properties": {
+                "display": "flex",
+                "flex-direction": "row",
+                "flex-wrap": "wrap",
+                "row-gap": "2px",
+                "column-gap": "5px"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 95,
+                "height": 34
+              }
+            },
+            {
+              "id": "c101-lines-first",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 40,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-lines-second",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 45,
+                "y": 0,
+                "width": 40,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-lines-third",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 12,
+                "width": 40,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-lines-fourth",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 45,
+                "y": 12,
+                "width": 40,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-lines-fifth",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 24,
+                "width": 20,
+                "height": 10
+              }
+            }
+          ]
+        },
+        {
+          "id": "column-wrap-gap",
+          "harness": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 40
+          },
+          "nodes": [
+            {
+              "id": "c101-column-root",
+              "properties": {
+                "display": "flex",
+                "flex-direction": "column",
+                "flex-wrap": "wrap",
+                "row-gap": "4px",
+                "column-gap": "3px"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 23,
+                "height": 40
+              }
+            },
+            {
+              "id": "c101-column-first",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 10,
+                "height": 18
+              }
+            },
+            {
+              "id": "c101-column-second",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 22,
+                "width": 10,
+                "height": 18
+              }
+            },
+            {
+              "id": "c101-column-third",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 13,
+                "y": 0,
+                "width": 10,
+                "height": 18
+              }
+            }
+          ]
+        },
+        {
+          "id": "empty-container",
+          "harness": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 20
+          },
+          "nodes": [
+            {
+              "id": "c101-empty-root",
+              "properties": {
+                "display": "flex",
+                "flex-direction": "row",
+                "flex-wrap": "wrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 20
+              }
+            }
+          ]
+        },
+        {
+          "id": "single-item",
+          "harness": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 10
+          },
+          "nodes": [
+            {
+              "id": "c101-single-root",
+              "properties": {
+                "display": "flex",
+                "flex-direction": "row",
+                "flex-wrap": "wrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 30,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-single-child",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 20,
+                "height": 10
+              }
+            }
+          ]
+        },
+        {
+          "id": "display-none-child",
+          "harness": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 20
+          },
+          "nodes": [
+            {
+              "id": "c101-hidden-root",
+              "properties": {
+                "display": "flex",
+                "flex-direction": "row",
+                "flex-wrap": "wrap",
+                "row-gap": "normal",
+                "column-gap": "10px"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 20
+              }
+            },
+            {
+              "id": "c101-hidden-first",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 45,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-hidden-item",
+              "properties": {
+                "display": "none",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            },
+            {
+              "id": "c101-hidden-last",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 55,
+                "y": 0,
+                "width": 45,
+                "height": 10
+              }
+            }
+          ]
+        },
+        {
+          "id": "flow-shorthand-override",
+          "harness": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 10
+          },
+          "nodes": [
+            {
+              "id": "c101-flow-root",
+              "properties": {
+                "display": "flex",
+                "flex-direction": "row",
+                "flex-wrap": "wrap",
+                "row-gap": "normal",
+                "column-gap": "5px"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 105,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-flow-first",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 50,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-flow-second",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 55,
+                "y": 0,
+                "width": 50,
+                "height": 10
+              }
+            }
+          ]
+        },
+        {
+          "id": "block-wrap-noop",
+          "harness": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 20
+          },
+          "nodes": [
+            {
+              "id": "c101-block-root",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "wrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 20
+              }
+            },
+            {
+              "id": "c101-block-first",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 50,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-block-second",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 10,
+                "width": 50,
+                "height": 10
+              }
+            }
+          ]
+        },
+        {
+          "id": "nested-wrap-not-inherited",
+          "harness": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 20
+          },
+          "nodes": [
+            {
+              "id": "c101-nested-outer",
+              "properties": {
+                "display": "flex",
+                "flex-direction": "row",
+                "flex-wrap": "wrap",
+                "row-gap": "0px",
+                "column-gap": "5px"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 20
+              }
+            },
+            {
+              "id": "c101-nested-inner",
+              "properties": {
+                "display": "flex",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 60,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-nested-first",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 40,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-nested-second",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 40,
+                "y": 0,
+                "width": 40,
+                "height": 10
+              }
+            },
+            {
+              "id": "c101-nested-sibling",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 10,
+                "width": 45,
+                "height": 10
+              }
+            }
+          ]
+        },
+        {
+          "id": "runtime-three-lines-gap",
+          "harness": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 240
+          },
+          "nodes": [
+            {
+              "id": "c101-runtime-root",
+              "properties": {
+                "display": "flex",
+                "flex-direction": "column",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 320,
+                "height": 240
+              }
+            },
+            {
+              "id": "c101-runtime-flex",
+              "properties": {
+                "display": "flex",
+                "flex-direction": "row",
+                "flex-wrap": "wrap",
+                "row-gap": "4px",
+                "column-gap": "6px"
+              },
+              "rect": {
+                "x": 8,
+                "y": 8,
+                "width": 170,
+                "height": 68
+              }
+            },
+            {
+              "id": "c101-runtime-item-1",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 8,
+                "y": 8,
+                "width": 70,
+                "height": 20
+              }
+            },
+            {
+              "id": "c101-runtime-item-2",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 84,
+                "y": 8,
+                "width": 70,
+                "height": 20
+              }
+            },
+            {
+              "id": "c101-runtime-item-3",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 8,
+                "y": 32,
+                "width": 70,
+                "height": 20
+              }
+            },
+            {
+              "id": "c101-runtime-item-4",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 84,
+                "y": 32,
+                "width": 70,
+                "height": 20
+              }
+            },
+            {
+              "id": "c101-runtime-item-5",
+              "properties": {
+                "display": "block",
+                "flex-direction": "row",
+                "flex-wrap": "nowrap",
+                "row-gap": "normal",
+                "column-gap": "normal"
+              },
+              "rect": {
+                "x": 8,
+                "y": 56,
+                "width": 70,
+                "height": 20
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

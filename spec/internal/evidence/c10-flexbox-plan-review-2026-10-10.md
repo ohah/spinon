@@ -28,3 +28,32 @@
 계획 단계에서 발견한 모호점은 C09.4와 C10의 순서, `nowrap`의 초기·비상속 의미, shorthand override, hidden/empty item, cross-axis free space, profile 밖 진단이었다. 모두 계획에 경계나 관찰 조건으로 반영했다. 코드는 아직 변경하지 않았다.
 
 계획 문구 최종 재확인: line cross-size를 item stretch가 바꾸는 경로를 추가로 배제했고, container/item 모두 `border-box`와 zero border/padding을 고정했다. Flex profile에서 Block 요소에 선언된 wrap 값의 no-op semantics도 따로 분리했다. 수정은 적용 대상·축·cascade·line sizing 관점을 다시 대조했다.
+
+## 2026-10-10 · 기본 runtime profile 경로 재검토
+
+구현 전 코드 경로를 따라가며 처음 계획의 profile 경계가 실제 앱 실행을 포함하는지 다시 공격했다. 기본 V8 GPU host의 `RuntimeCalculationProfile::FlexPaint`는 `RuntimeFlexPaintV1`이 아니라 `RuntimeFlexCustomPropertiesPaintV1` computed style을 사용한다. 따라서 처음 적은 두 profile만 확장하면 단위 시험은 통과해도 실제 앱의 C10.1 fixture는 `flex-wrap`을 소비하지 못한다. 계획을 여섯 runtime Flex profile 전체로 넓혔고, Block 전용 profile은 기존 fail-closed 경계에 남겼다.
+
+| # | 독립 검토 관점 | 실패 가능성 및 확인 | 계획에 반영한 통제 |
+| --- | --- | --- | --- |
+| 1 | 실제 앱 profile 선택 | C0410 기본 GPU host가 어떤 cascade profile을 만드는가? | 기본 host가 쓰는 `RuntimeFlexCustomPropertiesPaintV1`을 명시적인 완료 조건에 넣었다. |
+| 2 | layout 전용 runtime | paint 없이 layout 계산하는 앱 경로에서 값이 사라지지 않는가? | `RuntimeFlexCustomPropertiesV1`도 같은 typed wrap 입력을 가져야 한다. |
+| 3 | base layout profile | 직접 호출 가능한 `RuntimeFlexLayoutV1`에서 initial `nowrap`이 보존되는가? | base profile을 여섯 profile 목록과 test matrix에 유지한다. |
+| 4 | base paint profile | S04 이후 base paint가 layout 결과와 다른가? | `RuntimeFlexPaintV1`도 동일한 typed projection에 연결한다. |
+| 5 | custom property paint | `var()`가 있는 앱 스타일에서 wrap 선언이 preflight나 cascade에서 누락되는가? | custom property paint cascade와 author allowlist를 같은 범위로 수정하도록 계획을 구체화했다. |
+| 6 | custom property layout | paint 없는 custom-property cascade가 별도 기본값을 사용하는가? | `RuntimeFlexCustomPropertiesV1`의 computed property·layout projection 일치를 요구한다. |
+| 7 | registered property paint | 등록 색상 등 `@property` 사용 시 layout property가 바뀌지 않는가? | registered property paint profile에도 같은 wrap 값을 적용하고 `@property` 자체 결과는 유지한다. |
+| 8 | registered property layout | registered custom property 전용 layout 경로를 놓치지 않는가? | `RuntimeFlexRegisteredPropertiesV1`도 matrix에 포함한다. |
+| 9 | inline property preflight | CSS 선언은 통과하지만 computed snapshot에는 값이 없는 반쪽 지원이 되는가? | allowlist·computed property 목록·Taffy typed field를 profile별로 함께 비교한다. |
+| 10 | author stylesheet gate | `<style>` 선언과 inline 선언이 다른 profile에서 허용되는가? | 여섯 runtime Flex profile의 inline 및 author stylesheet gate를 완료 기준에 명시했다. |
+| 11 | Block paint 누출 | 공용 Flex property 목록 확장으로 Block 전용 계산이 flex-wrap을 노출하는가? | Block 전용 computed property 목록을 별도로 유지하고 `flex-wrap` author 입력은 거부하도록 계획에 분리 경계를 추가했다. |
+| 12 | Block formatting 누출 | C09 `flow-root`/Block 경로가 wrap을 무시한 채 성공하는가? | `RuntimeBlockFormattingV1`은 C10.1 밖 fail-closed profile로 분명히 구분했다. |
+| 13 | static compatibility profile | 기존 C04/C06 static profile의 성공 조건이 넓어지는가? | 여섯 runtime Flex profile만 지원하며 static profile은 그대로 제외한다. |
+| 14 | incremental cache property set | profile 재사용 경로가 full cascade와 다른 computed property 집합을 만드는가? | incremental profile property selection도 여섯 profile에서 동일해야 한다. |
+| 15 | cache/profile identity | 이전 C05 snapshot이 wrap 없는 입력으로 새 wrap 요청을 만족시키는가? | 기존 profile·revision tuple을 유지하되 profile별 property set과 revision 변화 후 full fallback을 검증한다. |
+| 16 | `var()` 값 경로 | custom property로 `flex-flow` 토큰을 만들 때 wrap 값이 확장되는가? | C10.1에서는 shorthand의 현재 지원 문법만 허용하고 custom property 조합의 computed result를 실제 custom profile에서 비교한다. |
+| 17 | `@property` 영향 | 등록 속성 이름이나 syntax가 flex-wrap parser와 충돌하는가? | CSS `flex-wrap` longhand만 projection 대상으로 두고 등록 custom property 처리 순서는 그대로 둔다. |
+| 18 | 지원 밖 값 진단 | `wrap-reverse`가 profile 확장 때문에 default로 성공하는가? | 모든 runtime Flex profile에서 `wrap-reverse`와 비기본 `order`/`align-content`가 fail closed인지 확인한다. |
+| 19 | shorthand cascade | custom property profile에서 `flex-flow`와 longhand 승자가 달라지는가? | 실제 runtime profile에서 shorthand 뒤 longhand override fixture를 실행하도록 완료 조건을 좁혔다. |
+| 20 | platform integration과 완료 주장 | Android/iOS 데모가 예전 C05 custom-property renderer를 써서 테스트 결과가 잘못 귀속되는가? | Android API 37 및 iOS 26.2 Simulator가 기본 앱의 실제 사용자 지정 속성 paint profile로 보고한 node frame을 Chromium과 비교해야 완료한다. |
+
+수정 계획 경계는 여섯 runtime Flex profile과 Block 전용 profile의 구분이다. 아직 기능 구현 결과를 완료로 표시하지 않는다.

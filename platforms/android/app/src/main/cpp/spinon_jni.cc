@@ -43,6 +43,29 @@ jbyteArray ToByteArray(JNIEnv *env, const std::string &value) {
   return env->ExceptionCheck() ? nullptr : output;
 }
 
+void LogC101NodeFrames(const std::string &report) {
+  constexpr char kMarker[] = " node_frames_css_px=[";
+  const auto marker = report.find(kMarker);
+  if (marker == std::string::npos) return;
+  const auto start = marker + sizeof(kMarker) - 1;
+  const auto end = report.find(']', start);
+  if (end == std::string::npos) return;
+
+  std::size_t frame_start = start;
+  while (frame_start < end) {
+    const auto separator = report.find(';', frame_start);
+    const auto frame_end = separator == std::string::npos || separator > end
+        ? end : separator;
+    if (frame_end > frame_start) {
+      const auto frame = report.substr(frame_start, frame_end - frame_start);
+      __android_log_print(ANDROID_LOG_INFO, kTag,
+                          "SPINON_C101_NODE_FRAME %s", frame.c_str());
+    }
+    if (frame_end == end) break;
+    frame_start = frame_end + 1;
+  }
+}
+
 SpinonRuntimeSession *SessionFromHandle(jlong handle) {
   return reinterpret_cast<SpinonRuntimeSession *>(static_cast<uintptr_t>(handle));
 }
@@ -411,6 +434,21 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalFlowRootFixture(
   const std::string report = "status=" + std::to_string(status) + " " + output.data();
   __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
                       kTag, "SPINON_C093_EVAL %s", report.c_str());
+  return ToByteArray(env, report);
+}
+
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalFlexWrapFixture(
+    JNIEnv *env, jclass, jlong host_handle) {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+  std::array<char, 4096> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_flex_wrap_fixture(
+      host, 10000, output.data(), output.size());
+  const std::string report = "status=" + std::to_string(status) + " " + output.data();
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
+                      kTag, "SPINON_C101_EVAL %s", report.c_str());
+  if (status == 0) LogC101NodeFrames(report);
   return ToByteArray(env, report);
 }
 

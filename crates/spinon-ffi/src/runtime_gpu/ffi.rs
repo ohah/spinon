@@ -9,6 +9,7 @@ mod c06;
 mod c07;
 mod c08;
 mod c09;
+mod c10;
 mod surface;
 
 const ERR_ARGUMENT: i32 = -1;

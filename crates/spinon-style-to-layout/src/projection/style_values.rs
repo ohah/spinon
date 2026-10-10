@@ -2,9 +2,9 @@ use std::collections::BTreeMap;
 
 use spinon_core::NodeId;
 use spinon_layout::{
-    FlexDirection, LayoutAlignItems, LayoutBorder, LayoutBoxSizing, LayoutCssMathProperty,
-    LayoutDimension, LayoutDisplay, LayoutEdges, LayoutGap, LayoutJustifyContent,
-    LayoutLengthPercentage, LayoutStyle, TextDirection,
+    FlexDirection, FlexWrap, LayoutAlignItems, LayoutBorder, LayoutBoxSizing,
+    LayoutCssMathProperty, LayoutDimension, LayoutDisplay, LayoutEdges, LayoutGap,
+    LayoutJustifyContent, LayoutLengthPercentage, LayoutStyle, TextDirection,
 };
 use spinon_style::{
     ComputedCssDimension, ComputedCssMath, ComputedCssMaxSize, ComputedCssSpacingValue,
@@ -50,6 +50,15 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeBlockPaintV1
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
+        );
+        let supports_flex_wrap = matches!(
+            snapshot.profile,
+            ComputedStyleProfile::RuntimeFlexLayoutV1
+                | ComputedStyleProfile::RuntimeFlexPaintV1
+                | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+                | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
+                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
+                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
         );
         let style = LayoutStyle {
             display: parse_display(
@@ -136,6 +145,11 @@ pub(super) fn project_styles(
                 &mut math,
             )?,
             flex_direction: parse_flex_direction(node, required(element, "flex-direction")?)?,
+            flex_wrap: if supports_flex_wrap {
+                parse_flex_wrap(node, required(element, "flex-wrap")?)?
+            } else {
+                LayoutStyle::default().flex_wrap
+            },
             direction: parse_direction(node, required(element, "direction")?)?,
             align_items: match snapshot.profile {
                 ComputedStyleProfile::FlexAlignmentV1
@@ -416,6 +430,14 @@ fn parse_flex_direction(node: NodeId, value: &str) -> Result<FlexDirection, Styl
         "row" => Ok(FlexDirection::Row),
         "column" => Ok(FlexDirection::Column),
         value => unsupported(node, "flex-direction", value),
+    }
+}
+
+fn parse_flex_wrap(node: NodeId, value: &str) -> Result<FlexWrap, StyleLayoutError> {
+    match value {
+        "nowrap" => Ok(FlexWrap::NoWrap),
+        "wrap" => Ok(FlexWrap::Wrap),
+        value => unsupported(node, "flex-wrap", value),
     }
 }
 
