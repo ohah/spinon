@@ -19,9 +19,9 @@ pub use css_math::{LayoutCalcId, LayoutCssMath, LayoutCssMathProperty, LayoutCss
 pub use error::LayoutError;
 pub use revision::{LayoutInputRevision, LayoutSourceRevision};
 pub use style::{
-    FlexDirection, LayoutAlignItems, LayoutBorder, LayoutBoxSizing, LayoutDimension, LayoutDisplay,
-    LayoutEdges, LayoutGap, LayoutJustifyContent, LayoutLengthPercentage, LayoutStyle,
-    TextDirection, Viewport,
+    FlexDirection, FlexWrap, LayoutAlignItems, LayoutBorder, LayoutBoxSizing, LayoutDimension,
+    LayoutDisplay, LayoutEdges, LayoutGap, LayoutJustifyContent, LayoutLengthPercentage,
+    LayoutStyle, TextDirection, Viewport,
 };
 
 /// 부모와 자식 ID 순서 및 레이아웃 스타일을 묶은 입력 노드입니다.

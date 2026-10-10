@@ -56,6 +56,14 @@ pub enum FlexDirection {
     Column,
 }
 
+/// Flex 컨테이너의 항목을 주축의 다음 줄로 보낼지 정합니다.
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+pub enum FlexWrap {
+    #[default]
+    NoWrap,
+    Wrap,
+}
+
 /// Taffy가 계산하는 제한 CSS display 값입니다.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum LayoutDisplay {
@@ -144,6 +152,7 @@ pub struct LayoutStyle {
     pub aspect_ratio: Option<f32>,
     pub flex_basis: LayoutDimension,
     pub flex_direction: FlexDirection,
+    pub flex_wrap: FlexWrap,
     pub direction: TextDirection,
     pub align_items: LayoutAlignItems,
     pub justify_content: LayoutJustifyContent,
@@ -265,6 +274,7 @@ impl Default for LayoutStyle {
             aspect_ratio: None,
             flex_basis: LayoutDimension::Auto,
             flex_direction: FlexDirection::Column,
+            flex_wrap: FlexWrap::NoWrap,
             direction: TextDirection::Ltr,
             align_items: LayoutAlignItems::Stretch,
             justify_content: LayoutJustifyContent::FlexStart,

@@ -49,6 +49,8 @@ const RUNTIME_CSS_MARGIN_COLLAPSE_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c09/runtime-margin-collapse.js");
 const RUNTIME_CSS_FLOW_ROOT_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c09/runtime-flow-root.js");
+const RUNTIME_CSS_FLEX_WRAP_FIXTURE_SOURCE: &str =
+    include_str!("../../../tests/fixtures/css/c10/runtime-flex-wrap.js");
 
 #[repr(C)]
 pub struct SpinonRuntimeGpuHost {
@@ -176,6 +178,7 @@ impl RuntimeGpuHost {
         &self,
         sequence: u64,
         layout_timeout_millis: u64,
+        include_node_frame_report: bool,
     ) -> Result<String, (i32, String)> {
         let snapshot = self
             .session
@@ -264,7 +267,7 @@ impl RuntimeGpuHost {
             .first()
             .map(|frame| format!(" root_frame_css_px={}x{}", frame.width, frame.height))
             .unwrap_or_default();
-        let node_frame_report = if self.include_node_frame_report {
+        let node_frame_report = if include_node_frame_report {
             let frames = completed
                 .frames
                 .iter()
@@ -340,11 +343,28 @@ impl RuntimeGpuHost {
                 environment,
             )
             .map_err(|error| (ERR_LAYOUT, format!("CSS runtime 환경 갱신 실패: {error:?}")))?;
-        let ready = self.wait_and_publish(sequence, layout_timeout_millis)?;
+        let ready = self.wait_and_publish(
+            sequence,
+            layout_timeout_millis,
+            self.include_node_frame_report,
+        )?;
         Ok(format!("environment_revision={} {ready}", revision.get()))
     }
 
     fn eval(&self, source: &str, layout_timeout_millis: u64) -> Result<String, (i32, String)> {
+        self.eval_with_node_frame_report(
+            source,
+            layout_timeout_millis,
+            self.include_node_frame_report,
+        )
+    }
+
+    fn eval_with_node_frame_report(
+        &self,
+        source: &str,
+        layout_timeout_millis: u64,
+        include_node_frame_report: bool,
+    ) -> Result<String, (i32, String)> {
         if layout_timeout_millis == 0 {
             return Err((
                 ERR_ARGUMENT,
@@ -356,7 +376,8 @@ impl RuntimeGpuHost {
             .invalidate_scene()
             .map_err(|error| (ERR_STALE, error))?;
         let response = self.session.eval(source, TaskPriority::UserVisible);
-        let ready = self.wait_and_publish(sequence, layout_timeout_millis);
+        let ready =
+            self.wait_and_publish(sequence, layout_timeout_millis, include_node_frame_report);
         match (response.status, ready) {
             (0, Ok(ready)) => Ok(format!("{} {ready}", response.report)),
             (0, Err((status, error))) => Err((status, format!("{} {error}", response.report))),

@@ -160,22 +160,26 @@ fn runtime_properties_for_profile(
     }
     let has_paint = matches!(
         profile,
-        ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
+        ComputedStyleProfile::RuntimeFlexPaintV1
+            | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
     );
-    match profile {
-        ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
-        | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
-        | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
-        | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1 => {
-            let mut properties = runtime_layout::RUNTIME_FLEX_LAYOUT_PROPERTIES.to_vec();
-            if has_paint {
-                properties.push(("background-color", LonghandId::BackgroundColor));
-            }
-            Some(properties)
+    if matches!(
+        profile,
+        ComputedStyleProfile::RuntimeFlexLayoutV1
+            | ComputedStyleProfile::RuntimeFlexPaintV1
+            | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+            | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
+            | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
+            | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
+    ) {
+        let mut properties = runtime_layout::RUNTIME_FLEX_LAYOUT_PROPERTIES.to_vec();
+        if has_paint {
+            properties.push(("background-color", LonghandId::BackgroundColor));
         }
-        _ => None,
+        return Some(properties);
     }
+    None
 }
 
 fn same_viewport(left: CssViewport, right: CssViewport) -> bool {

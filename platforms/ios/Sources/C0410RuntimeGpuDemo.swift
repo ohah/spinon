@@ -57,6 +57,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c092-margin-collapse")
     private let flowRootProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c093-flow-root")
+    private let flexWrapProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c101-flex-wrap")
     private let blockFormattingProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c091-block-formatting")
         || ProcessInfo.processInfo.arguments.contains("--spinon-c092-margin-collapse")
@@ -71,6 +73,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     private var customPropertiesProbeRequested: Bool {
         !registeredPropertiesProbeRequested && !authorStylesheetsProbeRequested
             && ProcessInfo.processInfo.arguments.contains("--spinon-c051-custom-properties")
+    }
+    private var fixedSizeCssFixtureRequested: Bool {
+        blockFormattingProbeRequested || flexWrapProbeRequested
     }
     private var failureProbeStarted = false
     private var shutdownProbeStarted = false
@@ -87,7 +92,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
 
         let title = UILabel()
-        title.text = flowRootProbeRequested
+        title.text = flexWrapProbeRequested
+            ? "SPINON · C10.1 flex-wrap"
+            : flowRootProbeRequested
             ? "SPINON · C09.3 flow-root"
             : marginCollapseProbeRequested
             ? "SPINON · C09.2 margin collapse"
@@ -126,7 +133,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.addSubview(title)
 
         let description = UILabel()
-        description.text = flowRootProbeRequested
+        description.text = flexWrapProbeRequested
+            ? "V8 CSS flex-wrap row·gap → Stylo → Taffy → WGPU · 320×240 CSS px"
+            : flowRootProbeRequested
             ? "V8 DOM flow-root BFC 경계 → Stylo → Taffy → WGPU · 320×240 CSS px"
             : marginCollapseProbeRequested
             ? "V8 DOM signed vertical margins → Stylo → Taffy → WGPU · 320×240 CSS px"
@@ -169,7 +178,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         canvasView.translatesAutoresizingMaskIntoConstraints = false
         canvasView.isAccessibilityElement = true
-        canvasView.accessibilityLabel = flowRootProbeRequested
+        canvasView.accessibilityLabel = flexWrapProbeRequested
+            ? "C10.1 세 줄 flex-wrap·gap WGPU 장면"
+            : flowRootProbeRequested
             ? "C09.3 flow-root 내부 margin 격리와 외부 collapse WGPU 장면"
             : marginCollapseProbeRequested
             ? "C09.2 signed vertical margin collapse WGPU 장면"
@@ -209,7 +220,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         resizeButton.setTitle("표면 크기 전환 · 301×100 CSS px", for: .normal)
         resizeButton.addTarget(self, action: #selector(toggleSurfaceSize), for: .touchUpInside)
         resizeButton.translatesAutoresizingMaskIntoConstraints = false
-        if blockFormattingProbeRequested { resizeButton.isHidden = true }
+        if fixedSizeCssFixtureRequested { resizeButton.isHidden = true }
         view.addSubview(resizeButton)
 
         customPropertiesButton.setTitle(
@@ -255,7 +266,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         )
         customPropertiesButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(customPropertiesButton)
-        if authorStylesheetsProbeRequested || blockFormattingProbeRequested || blockPaintProbeRequested
+        if authorStylesheetsProbeRequested || fixedSizeCssFixtureRequested || blockPaintProbeRequested
             || minMaxSizingProbeRequested || borderWidthProbeRequested
             || aspectRatioProbeRequested
             || typedCssMathProbeRequested
@@ -274,10 +285,10 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.addSubview(statusLabel)
 
         let canvasWidth = canvasView.widthAnchor.constraint(
-            equalToConstant: blockFormattingProbeRequested ? 320 : 301
+            equalToConstant: fixedSizeCssFixtureRequested ? 320 : 301
         )
         let canvasHeight = canvasView.heightAnchor.constraint(
-            equalToConstant: blockFormattingProbeRequested ? 240 : 100
+            equalToConstant: fixedSizeCssFixtureRequested ? 240 : 100
         )
         canvasWidthConstraint = canvasWidth
         canvasHeightConstraint = canvasHeight
@@ -471,8 +482,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         guard shouldContinue else { return }
 
         let environmentInputs = currentEnvironment()
-        let viewportWidth: Float = blockFormattingProbeRequested ? 320 : environmentInputs.width
-        let viewportHeight: Float = blockFormattingProbeRequested ? 240 : environmentInputs.height
+        let viewportWidth: Float = fixedSizeCssFixtureRequested ? 320 : environmentInputs.width
+        let viewportHeight: Float = fixedSizeCssFixtureRequested ? 240 : environmentInputs.height
         log("SPINON_C0410_ENVIRONMENT_REQUEST width=\(viewportWidth) height=\(viewportHeight)")
         let environment = SpinonRunner.setRuntimeGpuEnvironment(
             handle, width: viewportWidth, height: viewportHeight,
@@ -484,7 +495,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
         log("SPINON_C0410_ENVIRONMENT \(environment ?? "")")
 
-        var result = flowRootProbeRequested
+        var result = flexWrapProbeRequested
+            ? SpinonRunner.evalRuntimeGpuFlexWrapFixture(handle)
+            : flowRootProbeRequested
             ? SpinonRunner.evalRuntimeGpuFlowRootFixture(handle)
             : marginCollapseProbeRequested
             ? SpinonRunner.evalRuntimeGpuMarginCollapseFixture(handle)
@@ -524,7 +537,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             return
         }
         if sceneWasSupersededAfterCommit {
-            let scope = marginCollapseProbeRequested
+            let scope = flexWrapProbeRequested
+                ? "SPINON_C101"
+                : marginCollapseProbeRequested
                 ? "SPINON_C092"
                 : viewportUnitsProbeRequested
                 ? "SPINON_C066A"
@@ -556,7 +571,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             log("\(scope)_EVAL_SCENE_SUPERSEDED \(result ?? "")")
             postStatus("JavaScript 적용 완료 · 최신 CSS 장면 다시 계산 중")
         } else {
-            let scope = marginCollapseProbeRequested
+            let scope = flexWrapProbeRequested
+                ? "SPINON_C101"
+                : marginCollapseProbeRequested
                 ? "SPINON_C092"
                 : viewportUnitsProbeRequested
                 ? "SPINON_C066A"

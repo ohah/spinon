@@ -28,6 +28,7 @@ pub(super) const RUNTIME_FLEX_LAYOUT_PROPERTIES: &[(&str, LonghandId)] = &[
     ("flex-shrink", LonghandId::FlexShrink),
     ("flex-basis", LonghandId::FlexBasis),
     ("direction", LonghandId::Direction),
+    ("flex-wrap", LonghandId::FlexWrap),
     ("align-items", LonghandId::AlignItems),
     ("justify-content", LonghandId::JustifyContent),
     ("row-gap", LonghandId::RowGap),
@@ -50,6 +51,11 @@ pub(super) const RUNTIME_FLEX_LAYOUT_PROPERTIES: &[(&str, LonghandId)] = &[
     ("border-left-style", LonghandId::BorderLeftStyle),
 ];
 
+/// Runtime Flex profile에서 사용할 layout 속성 목록입니다.
+pub(super) fn runtime_flex_wrap_properties() -> Vec<(&'static str, LonghandId)> {
+    RUNTIME_FLEX_LAYOUT_PROPERTIES.to_vec()
+}
+
 pub(super) const RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES: &[&str] = &[
     "display",
     "font-size",
@@ -63,6 +69,8 @@ pub(super) const RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES: &[&str] = &[
     "aspect-ratio",
     "flex",
     "flex-direction",
+    "flex-wrap",
+    "flex-flow",
     "flex-grow",
     "flex-shrink",
     "flex-basis",
@@ -122,12 +130,13 @@ pub fn compute_runtime_flex_layout_cascade(
     viewport: CssViewport,
     style_revision: StyleRevision,
 ) -> Result<ComputedStyleSnapshot, CssCascadeError> {
+    let properties = runtime_flex_wrap_properties();
     compute_cascade(
         view,
         &[],
         viewport,
         style_revision,
-        RUNTIME_FLEX_LAYOUT_PROPERTIES,
+        &properties,
         ComputedStyleProfile::RuntimeFlexLayoutV1,
     )
 }
@@ -199,6 +208,8 @@ pub fn first_unsupported_runtime_layout_inline_property(
         "max-height",
         "aspect-ratio",
         "flex-direction",
+        "flex-wrap",
+        "flex-flow",
         "flex-grow",
         "flex-shrink",
         "flex-basis",

@@ -3,15 +3,15 @@ use std::collections::BTreeMap;
 use spinon_core::NodeId;
 use taffy::geometry::Point;
 use taffy::prelude::{
-    AlignItems, Dimension, Display, FlexDirection as TaffyFlexDirection, FlexWrap, JustifyContent,
-    LengthPercentage, LengthPercentageAuto, Rect, Size, Style,
+    AlignItems, Dimension, Display, FlexDirection as TaffyFlexDirection, FlexWrap as TaffyFlexWrap,
+    JustifyContent, LengthPercentage, LengthPercentageAuto, Rect, Size, Style,
 };
 use taffy::style::{BoxSizing, Direction as TaffyDirection, Overflow};
 
 use crate::{
-    FlexDirection, LayoutAlignItems, LayoutBoxSizing, LayoutCalcId, LayoutCssMathProperty,
-    LayoutDimension, LayoutDisplay, LayoutError, LayoutJustifyContent, LayoutLengthPercentage,
-    LayoutStyle, TextDirection,
+    FlexDirection, FlexWrap, LayoutAlignItems, LayoutBoxSizing, LayoutCalcId,
+    LayoutCssMathProperty, LayoutDimension, LayoutDisplay, LayoutError, LayoutJustifyContent,
+    LayoutLengthPercentage, LayoutStyle, TextDirection,
 };
 
 pub(super) fn to_taffy_style(
@@ -173,7 +173,10 @@ pub(super) fn to_taffy_style(
             FlexDirection::Row => TaffyFlexDirection::Row,
             FlexDirection::Column => TaffyFlexDirection::Column,
         },
-        flex_wrap: FlexWrap::NoWrap,
+        flex_wrap: match style.flex_wrap {
+            FlexWrap::NoWrap => TaffyFlexWrap::NoWrap,
+            FlexWrap::Wrap => TaffyFlexWrap::Wrap,
+        },
         flex_grow: style.flex_grow,
         flex_shrink: style.flex_shrink,
         ..Default::default()

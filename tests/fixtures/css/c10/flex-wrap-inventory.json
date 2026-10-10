@@ -1,0 +1,42 @@
+{
+  "schema": "spinon-css-c10-flex-wrap-inventory/v1",
+  "fixtureId": "C10.1-flex-wrap-v1",
+  "viewport": {
+    "width": 320,
+    "height": 240,
+    "deviceScaleFactors": [1, 2]
+  },
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "forcedColors": "none",
+    "pointer": "coarse",
+    "hover": "none"
+  },
+  "comparison": {
+    "computedProperties": [
+      "display",
+      "flex-direction",
+      "flex-wrap",
+      "row-gap",
+      "column-gap"
+    ],
+    "rectFields": ["x", "y", "width", "height"],
+    "maximumAbsoluteRectErrorCssPx": 0.5
+  },
+  "cases": [
+    { "id": "row-default-nowrap", "nodes": ["c101-default-root", "c101-default-first", "c101-default-second"] },
+    { "id": "row-exact-fit", "nodes": ["c101-exact-root", "c101-exact-first", "c101-exact-second"] },
+    { "id": "row-one-pixel-over", "nodes": ["c101-over-root", "c101-over-first", "c101-over-second"] },
+    { "id": "row-three-lines-gap", "nodes": ["c101-lines-root", "c101-lines-first", "c101-lines-second", "c101-lines-third", "c101-lines-fourth", "c101-lines-fifth"] },
+    { "id": "column-wrap-gap", "nodes": ["c101-column-root", "c101-column-first", "c101-column-second", "c101-column-third"] },
+    { "id": "empty-container", "nodes": ["c101-empty-root"] },
+    { "id": "single-item", "nodes": ["c101-single-root", "c101-single-child"] },
+    { "id": "display-none-child", "nodes": ["c101-hidden-root", "c101-hidden-first", "c101-hidden-item", "c101-hidden-last"] },
+    { "id": "flow-shorthand-override", "nodes": ["c101-flow-root", "c101-flow-first", "c101-flow-second"] },
+    { "id": "block-wrap-noop", "nodes": ["c101-block-root", "c101-block-first", "c101-block-second"] },
+    { "id": "nested-wrap-not-inherited", "nodes": ["c101-nested-outer", "c101-nested-inner", "c101-nested-first", "c101-nested-second", "c101-nested-sibling"] },
+    { "id": "runtime-three-lines-gap", "nodes": ["c101-runtime-root", "c101-runtime-flex", "c101-runtime-item-1", "c101-runtime-item-2", "c101-runtime-item-3", "c101-runtime-item-4", "c101-runtime-item-5"] }
+  ]
+}

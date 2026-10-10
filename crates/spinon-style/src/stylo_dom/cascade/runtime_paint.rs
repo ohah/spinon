@@ -61,7 +61,7 @@ pub(super) const RUNTIME_BLOCK_FORMATTING_AUTHOR_PROPERTIES: &[&str] = &[
 ];
 
 pub(super) fn runtime_block_paint_properties() -> Vec<(&'static str, LonghandId)> {
-    let mut properties = RUNTIME_FLEX_LAYOUT_PROPERTIES.to_vec();
+    let mut properties = runtime_block_layout_properties();
     properties.extend([
         ("background-color", LonghandId::BackgroundColor),
         ("color", LonghandId::Color),
@@ -71,13 +71,21 @@ pub(super) fn runtime_block_paint_properties() -> Vec<(&'static str, LonghandId)
 }
 
 pub(super) fn runtime_block_formatting_properties() -> Vec<(&'static str, LonghandId)> {
-    let mut properties = RUNTIME_FLEX_LAYOUT_PROPERTIES.to_vec();
+    let mut properties = runtime_block_layout_properties();
     properties.extend([
         ("background-color", LonghandId::BackgroundColor),
         ("color", LonghandId::Color),
         ("font-family", LonghandId::FontFamily),
     ]);
     properties
+}
+
+fn runtime_block_layout_properties() -> Vec<(&'static str, LonghandId)> {
+    RUNTIME_FLEX_LAYOUT_PROPERTIES
+        .iter()
+        .copied()
+        .filter(|(name, _)| *name != "flex-wrap")
+        .collect()
 }
 
 pub(super) fn computed_background_for_profile(
@@ -157,7 +165,7 @@ pub fn compute_runtime_flex_paint_cascade(
     viewport: CssViewport,
     style_revision: StyleRevision,
 ) -> Result<super::ComputedStyleSnapshot, CssCascadeError> {
-    let mut properties = RUNTIME_FLEX_LAYOUT_PROPERTIES.to_vec();
+    let mut properties = super::runtime_layout::runtime_flex_wrap_properties();
     properties.push(("background-color", LonghandId::BackgroundColor));
     compute_cascade(
         view,
@@ -245,7 +253,10 @@ pub fn first_unsupported_runtime_flex_paint_inline_property(
     view: &StyloDocumentView,
 ) -> Option<(NodeId, String)> {
     super::runtime_layout::first_unsupported_inline_property(view, |property| {
-        property == "background-color" || RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES.contains(&property)
+        property == "background-color"
+            || property == "flex-wrap"
+            || property == "flex-flow"
+            || RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES.contains(&property)
     })
 }
 
