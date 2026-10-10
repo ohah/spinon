@@ -1,8 +1,8 @@
 # 0047 · C09 Block formatting
 
-**문서 ID:** `0047` · **내부 계약 숫자 버전:** `0.1.0` 고정 · **상태:** C09.1 구현 브랜치 검증 완료·PR 검토 전; C09.2–C09.4 미구현 · **공개 API:** 아님
+**문서 ID:** `0047` · **내부 계약 숫자 버전:** `0.1.0` 고정 · **상태:** C09.1 구현·검증 완료 · [PR #107 리베이스 병합](https://github.com/ohah/spinon/pull/107); C09.2–C09.4 미구현 · **공개 API:** 아님
 
-`0047`은 문서 ID다. 구현·검증·문서 개정만으로 앱·crate·내부 계약의 숫자 버전을 올리지 않는다. C08.1 PR #105와 C09 계획·reference는 `main`에 병합됐다. C09.1 결과는 현재 구현 브랜치에서 검증했으며 PR 검토·병합 전에는 완료된 공개 지원으로 표시하지 않는다.
+`0047`은 문서 ID다. 구현·검증·문서 개정만으로 앱·crate·내부 계약의 숫자 버전을 올리지 않는다. C08.1 PR #105와 C09 계획·reference가 병합됐고, C09.1 runtime 구현은 PR #107로 병합됐다. 내부 fixture profile의 완료이며 전체 C09 또는 공개 CSS 지원 완료를 뜻하지 않는다.
 
 ## 1. 입력과 profile
 
@@ -19,7 +19,7 @@
 - `display:none` subtree는 margin strut·배치·paint에 참여하지 않는다. DOM preorder frame 기록은 C04.9 계약대로 유지하고 해당 node와 자손의 frame은 모두 0이어야 한다. 이전 revision frame으로 대체하지 않는다.
 - RTL, vertical writing, inline line box, replaced element content measurement는 이 계약의 성공 조건이 아니다.
 
-### C09.1 구현 브랜치의 지원 경계
+### C09.1 구현의 지원 경계
 
 | 입력 | 현재 동작 |
 | --- | --- |
@@ -30,7 +30,7 @@
 | 스타일 선언 | C09.1 profile의 제한 author-property 목록만 받는다. `display`의 알려진 지원 밖 값은 inline·`<style>` 원문을 CSS token parser로 검사한다. 사전 검사기는 `@media`·`@supports`와 CSS 중첩 규칙 안의 style rule도 깊이 64까지 순회한다. 다만 at-rule 자체는 현재 cascade profile의 지원 범위 밖이며 실패한다. 그보다 깊은 규칙도 fail-closed로 거부한다. |
 | 실패 경계 | rtl 방향 지정, position, float, clear, overflow, transform, writing-mode, visible text와 여러 root는 성공 layout이 아니다. inline display 오류는 `unsupported_block_display`와 node/value를, author stylesheet 사전 검사 오류는 `unsupported_block_stylesheet`와 stylesheet ID/원인을 담는다. |
 
-이 표는 구현 브랜치의 테스트된 C09.1 범위다. `border-width`는 geometry에만 반영되며 border 선 paint는 포함하지 않는다. 전체 HTML/CSS 지원, C09.2–C09.4 또는 공개 API 지원을 뜻하지 않는다.
+이 표는 PR #107로 병합된 C09.1의 테스트된 내부 범위다. `border-width`는 geometry에만 반영되며 border 선 paint는 포함하지 않는다. 전체 HTML/CSS 지원, C09.2–C09.4 또는 공개 API 지원을 뜻하지 않는다.
 
 현재 fail-closed 검사는 author input 전체를 대상으로 한다. 따라서 선택되지 않는 stylesheet selector 안의 `display:grid`나 뒤에서 `display:block`으로 덮는 fallback 선언도 거부한다. 적용 요소·cascade 승자만 지원 판정하는 웹과 같은 conditional matching은 아직 없다. 중첩 at-rule과 CSS 중첩 규칙은 64단계까지만 순회하고 더 깊으면 실패한다. 이 제약을 완화하려면 selector match 및 cascade winner를 보존하는 값 검사를 별도 작업으로 다뤄야 한다.
 
@@ -77,4 +77,4 @@
 - [CSS Display Level 3 `flow-root`](https://www.w3.org/TR/css-display-3/#flow-root) — Editor’s Draft; Chromium 고정 reference가 구현 비교 oracle이다.
 - [Taffy 0.14.0 문서](https://docs.rs/taffy/0.14.0/taffy/) — Spinon은 `=0.14.0`을 pin하고 `default-features=false`로 `float_layout`을 끈다.
 
-이 계약은 미출시 내부 계약이다. RuntimeBlockFormattingV1은 PR 검토·병합 전까지 사용 가능 API나 공개 CSS 지원으로 취급할 수 없다.
+이 계약은 미출시 내부 계약이다. RuntimeBlockFormattingV1은 C09.1 내부 fixture에서 구현·검증했지만 공개 API나 일반 CSS 지원으로 게시하지 않는다.

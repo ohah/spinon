@@ -4,11 +4,11 @@
 
 현재 모바일 우선 Runtime CSS 경로에 Chromium과 일치하는 Block formatting 동작을 단계적으로 연결한다. CSS 선언은 Stylo가 계산하고, 레이아웃 adapter와 Taffy는 typed style·트리·포함 블록을 받아 geometry를 계산한다. 지원 선언을 조용히 버리거나 Block 기본값으로 바꾸지 않는다.
 
-C08.1 구현 PR [#105](https://github.com/ohah/spinon/pull/105)와 C09 계획·reference는 `main`에 병합됐다. C09.1 구현 브랜치는 Chromium 기준 10개 case·30개 node를 연결했고 전체 Rust/CSS/JS 검증과 Android API 37·iOS 26.2 Simulator 실행을 마쳤다. 현재 PR 검토 전이며 C09.2–C09.4는 시작하지 않았다. C08.1의 기본 Block 흐름은 margin collapse나 formatting context 구현을 대신하지 않는다.
+C08.1 구현 PR [#105](https://github.com/ohah/spinon/pull/105)와 C09 계획·reference가 `main`에 병합됐다. C09.1은 Chromium 기준 10개 case·30개 node를 연결하고 Rust/CSS 검증, Android API 37·iOS 26.2 Simulator 실행을 마쳐 [PR #107](https://github.com/ohah/spinon/pull/107)로 리베이스 병합했다. C09.2–C09.4는 시작하지 않았다. C08.1의 기본 Block 흐름은 margin collapse나 formatting context 구현을 대신하지 않는다.
 
 | 하위 ID | 동작 범위 | 순서·선행 조건 |
 | --- | --- | --- |
-| C09.1 | 일반 in-flow Block 크기 방정식, 수직 흐름, containing block | 구현 브랜치 검증 완료·PR 검토 전 |
+| C09.1 | 일반 in-flow Block 크기 방정식, 수직 흐름, containing block | PR #107 리베이스 병합 · 내부 fixture 검증 완료 |
 | C09.2 | 수직 margin collapse와 signed margin strut | C09.1 뒤 구현 |
 | C09.3 | `display: flow-root`와 Block formatting context 경계 | C09.2 뒤 구현 |
 | C09.4 | shrink-to-fit이 필요한 float·inline-block·absolute 문맥 | C12 positioning, C14 intrinsic sizing, C15 inline/text 측정, C26 float 중 해당 문맥의 선행 구현이 된 뒤 연결. 이 항목이 끝날 때까지 C09 상위는 미완료 |
@@ -80,7 +80,7 @@ C09.4는 단순히 Taffy의 `fit-content` 값으로 바꾸어 완료 처리하�
 2. 완료된 [C09 HTML·inventory·Chromium capture](../tests/fixtures/css/c09/block-formatting.html)와 [`css:reference:c09-block-formatting`](../tools/css-reference/capture-c09-block-formatting.mjs)을 유지한다. [고정 JSON reference](../tests/fixtures/css/references/c09-block-formatting-v1.json) 및 [검증 테스트](../tools/css-reference/c09-block-formatting.test.mjs)가 전달하는 독립 oracle·환경·입력 digest를 runtime 구현 전에 확인한다.
 3. 계획 자체를 기능 코드와 분리해 20개의 서로 다른 실패 관점으로 검토하고, 지적을 반영한 최종 계획 hash와 검토 결과를 남긴다.
 4. 내부 계약 ID `0047`과 C09.1–C09.4 상태 대장을 추가한다. 공개 API가 아닌 내부 profile임을 적고 숫자 버전은 `0.1.0`으로 고정한다.
-5. **C09.1 구현 브랜치 완료·PR 전 검토:** Stylo typed layout input, viewport containing block, 일반 Block width equation과 Taffy projection을 연결했다. 고정 Chromium 기준에서 10개 case·30개 node를 DPR 1·2로 대조하고 Android API 37·iOS 26.2 Simulator의 실제 V8 경로에서 `layout=ready`, 3개 frame, CSS px viewport를 확인했다. 세로 margin collapse와 `flow-root`는 여전히 제외한다. 실패 관점 검토와 플랫폼 캡처는 [C09.1 구현 근거](../spec/internal/evidence/c09-block-formatting-implementation-review-2026-10-10.md)에 기록한다. PR 검토·병합 전에는 구현이 공개 지원이나 완료로 간주되지 않는다.
+5. **C09.1 구현·병합 완료:** Stylo typed layout input, viewport containing block, 일반 Block width equation과 Taffy projection을 연결했다. 고정 Chromium 기준에서 10개 case·30개 node를 DPR 1·2로 대조하고 Android API 37·iOS 26.2 Simulator의 실제 V8 경로에서 `layout=ready`, 3개 frame, CSS px viewport를 확인해 PR #107로 리베이스 병합했다. 세로 margin collapse와 `flow-root`는 여전히 제외한다. 실패 관점 검토와 플랫폼 캡처는 [C09.1 구현 근거](../spec/internal/evidence/c09-block-formatting-implementation-review-2026-10-10.md)에 기록한다. 공개 API나 전체 C09 지원은 아니다.
 6. C09.2에서 same-BFC margin strut과 collapse eligibility를 연결한다. multi-margin, 음수 조합, parent/child, empty block, used border/padding barrier와 root boundary를 개별 fixture로 대조한다.
 7. C09.3에서 `flow-root` profile과 BFC 경계를 연결한다. 내부 child margin과 flow-root 외부 margin을 별도로 검증하고 다른 BFC 생성 값을 fail closed한다.
 8. C12/C14/C15/C26의 해당 입력·측정기가 준비되면 C09.4의 float·inline-block·absolute 문맥을 각자 별도 profile/fixture로 통합한다. 그전까지 C09 상위의 shrink-to-fit 부분은 미완료로 남긴다.
