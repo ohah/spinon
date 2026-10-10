@@ -1,6 +1,6 @@
 # C10.2 · Flex 크기 배분과 min/max freeze 계획
 
-**상태:** 계획 단계 · 구현 전
+**상태:** 구현·검증·실패 경로 검토 완료(작업 브랜치) · PR 생성 준비 완료 · 공식 병합 전
 
 **상위 항목:** [C10 Flexbox](./c10-flexbox.md) · [공식 상태 대장](../spec/STATUS.md)
 
@@ -54,7 +54,7 @@
 | --- | --- | --- |
 | `grow-equal` | 폭 600, basis 100×2, grow 1/1 | 각 item 폭 300 |
 | `grow-weighted` | 폭 600, basis 100×3, grow 1/2/1 | 폭 175/250/175 |
-| `grow-subunit` | 폭 300, basis 100×2, grow 0.25/0.25 | 폭 112.5/112.5, 주축 끝에 50 남음 |
+| `grow-subunit` | 폭 300, basis 100×2, grow 0.25/0.25 | 초기 여유 100의 절반인 50을 분배해 폭 125/125, 주축 끝에 50 남음 |
 | `grow-zero` | 폭 300, basis 100×2, grow 0/1 | 폭 100/200 |
 | `shrink-scaled` | 폭 240, basis 200/100, shrink 1/1 | 폭 160/80 |
 | `shrink-weighted` | 폭 200, basis 200/100, shrink 1/2 | scaled factor 200/200, 폭 150/50 |
@@ -63,6 +63,7 @@
 | `basis-auto-explicit-size` | basis auto와 명시 주축 width 또는 height | 명시 main size를 basis로 사용 |
 | `basis-percent-row-column` | definite row width 400 및 column height 240, 25%/50% | 해당 main size 기준 100/200 및 60/120 |
 | `flex-shorthand` | `flex:1`, `flex:auto`, `flex:none`, `flex:2 1 80px`와 longhand override | Chrome computed longhand와 frame을 각각 대조 |
+| `stylesheet-grow` | ID 선택자 author stylesheet의 basis 100/100, grow 1/3, 폭 300 | stylesheet cascade에서 폭 125/175 |
 | `grow-max-freeze` | 폭 500, basis 100×3, grow 1, 첫 item max 120 | 폭 120/190/190, max freeze 후 재분배 |
 | `grow-min-freeze` | 폭 300, basis 100×2, grow 1, 첫 item min 180 | 폭 180/120, min freeze 후 재분배 |
 | `shrink-min-freeze` | 폭 200, basis 200/100, shrink 1, 첫 item min 150 | 폭 150/50 |
@@ -72,13 +73,13 @@
 | `min-over-max` | basis 100, min 150, max 120, factor 0 | used main size 150; min wins |
 | `hypothetical-factor-choice` | 폭 240, bases 50/150, 첫 item min 100, 두 item shrink 1 | min 때문에 hypothetical 합이 250이 되어 shrink 분기를 택하고 폭 100/140 |
 | `gap-accounting` | 폭 300, basis 100×2, grow 1, 주축 gap 20 | 폭 140/140, 두 번째 item x=160 |
-| `fixed-margin-accounting` | row 폭 300, basis 100×2, grow 1, 각 item에 좌우 margin 10 | content 폭 130/130, border-box x=10/160 |
+| `fixed-margin-accounting` | row 폭 300, basis 100×2, grow 1, 각 item에 좌우 margin 10 | border-box frame 폭 130/130, x=10/160 |
 | `wrapped-per-line` | wrap 폭 250, basis 150/150/80, grow 1/1/2 | 첫 line item 폭 250; 둘째 line 폭 156.667/93.333, 서로 재분배하지 않음 |
-| `box-sizing-basis` | content-box/border-box pair, 100px basis, padding 10px, border 5px | border-box frame 폭 130/100; paint는 판정에 쓰지 않음 |
-| `fractional-and-large-factors` | 폭 500, basis 100/100, grow `1e20`/`3e20`, 소수 좌표 | 폭 175/325, node별 CSS frame 허용치 준수 |
+| `box-sizing-basis` | content-box/border-box pair, 100px basis, 좌우 padding 10px, 좌우 border 5px | border-box frame 폭 130/100; paint는 판정에 쓰지 않음 |
+| `fractional-and-large-factors` | 폭 500.5, basis 100.5/100, grow `1e20`/`3e20` | 폭 175.5/325, 두 번째 item의 x=175.5 |
 | `invalid-css-factor` | 유효 grow 선언 뒤 `flex-grow:-1` 선언 | computed style과 frame이 Chrome의 invalid declaration cascade와 일치 |
 
-Fixture 합계는 구현 전에 확정 reference에서 세며, row/column, full/incremental cascade, inline/stylesheet 및 실제 앱 입력을 별도 matrix 축으로 기록한다. 테스트 case 수를 계획에서 미리 고정하지 않는다. adapter 직접 입력의 음수·NaN·무한대는 Rust 단위 시험으로 분리한다. 자동화가 없는 값은 계획 완료로 간주하지 않는다.
+Fixture 합계는 구현 전에 확정 reference에서 세며, row/column, inline full/incremental cascade, author stylesheet full cascade 및 실제 앱 입력을 별도 matrix 축으로 기록한다. 현재 incremental API는 author stylesheet가 포함되면 안전한 재사용을 거절하고 전체 계산 fallback을 요구하므로, stylesheet incremental reuse를 완료 조건으로 암묵적으로 추가하지 않는다. 테스트 case 수를 계획에서 미리 고정하지 않는다. capture harness는 비활성 case를 `display:none`으로 두고 선택한 case만 정상 문서 흐름에 표시한다. harness 밖으로 flex node를 위치시켜 결과를 바꾸지 않는다. adapter 직접 입력의 음수·NaN·무한대는 Rust 단위 시험으로 분리한다. 자동화가 없는 값은 계획 완료로 간주하지 않는다.
 
 ## 구현 순서
 
@@ -91,11 +92,19 @@ Fixture 합계는 구현 전에 확정 reference에서 세며, row/column, full/
 7. **동일 PR 문서화:** 내부 인터페이스 문서(새 ID, 숫자 버전 `0.1.0` 고정), 상태 대장, fixture inventory, 실패 경계, 실행 원본과 사용자 미리보기(`allthatnba/spinon/`)를 함께 갱신한다. PR은 구현 전 비교 모델, 테스트 결과, 플랫폼 한계와 발견·수정 내용을 한글로 설명한다.
 8. **구현 뒤 새 검토:** 계획 검토 표를 재사용하지 않고 실제 코드·fixture·오류·platform path를 대상으로 새로 20개 서로 다른 실패 관점을 검토한다. 발견 항목은 수정하고 관련 관점을 다시 확인한다.
 
+## 현재 구현 진행
+
+- 고정 Chromium `154.0.8037.98`의 27개 case·92개 node를 DPR 1·2로 캡처했다. 입력, capture 도구, helper, 실행 파일 digest를 저장하고 테스트 실행 중 reference 덮어쓰기를 막았다.
+- Rust 비교 시험은 각 case의 모든 node frame field에서 Taffy 0.14.0 결과가 Chrome 기준 오차 `0.5 CSS px` 이하임을 확인한다. 잘못된 음수·NaN·무한대 factor는 node와 property 문맥을 포함해 실패해야 한다.
+- Stylo cascade 시험은 여섯 runtime Flex profile의 basis·grow·shrink·min/max typed projection, inline full/incremental 결과, author stylesheet의 사용자 지정 속성 및 등록 shorthand 경로를 확인한다.
+- Android API 37 emulator와 iPhone 17 Pro / iOS 26.2 Simulator에서 실제 V8 fixture를 실행했다. 두 플랫폼의 root·flex·세 item frame을 Chromium 기준과 각각 대조해 일치했고 WGPU에 다섯 box가 제출됐다. Android는 ANGLE/SwiftShader software backend다. 실기기·hardware GPU 성능 검증은 아니다.
+- 서로 다른 구현 실패 관점 20개 검토에서 수정이 필요한 동작 결함은 남지 않았다. Clippy가 찾은 테스트 보조 함수의 불필요한 lifetime은 제거하고 다시 검사했다. 구체 결과는 [구현 검토와 Simulator 근거](../spec/internal/evidence/c10-2-flex-distribution-implementation-review-2026-10-10.md)에 둔다.
+
 ## 완료 조건
 
 - Chromium reference와 일치하는 Rust computed-style·layout output을 fixture의 모든 지원 입력에서 얻는다. 모든 node/frame field가 DPR 1·2 각각 `0.5 CSS px` 허용치 이내여야 한다.
 - grow factor 부분 합, scaled shrink, 초기 freeze 조건, min/max 위반 방향과 재분배 반복이 각각 독립 관찰값을 가진다. 내부 Taffy output만 비교하는 test로 대체하지 않는다.
-- 여섯 runtime Flex profile에서 full/incremental cascade가 같은 typed output을 내고, author stylesheet와 실제 V8 앱 사용자 지정 속성 paint path도 통과한다.
+- 여섯 runtime Flex profile의 typed projection을 확인하고, inline-style 변경에서는 incremental 결과가 full cascade와 같아야 한다. author stylesheet는 지원 profile의 full cascade에서 검사하고, incremental 경로가 재사용을 거절하면 full cascade fallback을 확인한다. 실제 V8 앱 사용자 지정 속성 paint path도 통과한다.
 - Android API 37 emulator와 iOS 26.2 Simulator에서 같은 runtime fixture의 node별 CSS frames가 Chrome 기준과 허용치 내에서 일치하고 WGPU 제출·오류 로그를 저장한다. 시뮬레이터를 실제 기기 성능 증거로 주장하지 않는다.
 - 새 내부 계약·사용 예제·지원 범위·오류·revision behavior를 기록하고, `spec/STATUS.md`의 C10.2만 완료한다. C10 상위와 Flexbox 전체 지원은 미완료로 남긴다.
 - 구현 시 crate나 앱 버전, 내부 계약 숫자 버전을 변경하지 않는다. 필요한 경우 fixture/reference schema 버전만 이름 공간에서 독립 관리한다.

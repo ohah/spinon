@@ -13,7 +13,7 @@
 | 7 | percentage basis의 containing block | indefinite main size나 잘못된 축에서 percentage를 px로 처리할 수 있다. | definite row width·column height의 percent만 지원 범위로 두고 indefinite 입력은 후속으로 남긴다. |
 | 8 | shorthand 전개·source order | `flex:1`의 omitted component 기본값이나 shorthand 이후 longhand override를 잘못 적용할 수 있다. | `1`, `auto`, `none`, 3-part 및 override를 Chrome computed longhand와 대조한다. |
 | 9 | grow 비율 정규화 | factor가 1 이상인 단순 두 항목은 맞아도 unequal factor에서 잘못 배분할 수 있다. | basis 100×3, grow 1/2/1에서 175/250/175 손계산 기대를 둔다. |
-| 10 | grow factor 합 1 미만 | grow factor를 무조건 1로 정규화하면 남는 공간까지 채우는 오동작이 생긴다. | 0.25+0.25 입력에서 112.5/112.5와 50 CSS px 잔여를 관찰한다. |
+| 10 | grow factor 합 1 미만 | grow factor를 무조건 1로 정규화하면 남는 공간까지 채우는 오동작이 생긴다. | 0.25+0.25 입력에서 125/125와 50 CSS px 잔여를 관찰한다. |
 | 11 | factor 0 및 inflexible item | 0 factor item을 나누기에 포함하거나 초기 freeze를 생략해 다른 항목이 틀어질 수 있다. | grow/shrink 0 case 및 Taffy projection의 factor 검증을 별도 둔다. |
 | 12 | scaled shrink | shrink factor만 정규화하고 basis 곱을 빼먹어 큰 항목이 잘못 줄어들 수 있다. | basis 200/100, shrink 1/1에서 폭 160/80을 독립 기대값으로 둔다. |
 | 13 | grow/shrink 분기 선택 | flex base 합만 보고 mode를 선택해 min/max가 만든 hypothetical main size의 영향을 놓칠 수 있다. | `hypothetical-factor-choice`에서 base와 hypothetical 합이 다른 입력을 관찰한다. |
@@ -30,3 +30,11 @@
 검토 중 확인한 모호점은 세 가지였다. 첫째, 기존 `flex-*` typed mapping만으로 distribution 호환을 가정할 위험이 있어 목표와 완료 조건을 Chromium frame 비교로 좁혔다. 둘째, grow factor 합이 1 미만일 때의 부분 채움 규칙이 일반 비율 나누기에 묻힐 수 있어 독립 수치 case를 추가했다. 셋째, grow/shrink branch가 basis 합이 아니라 hypothetical main size 합에 의존하므로 분기 선택 case를 추가했다. 이 변경은 표의 관점 2, 10, 13에 반영했다.
 
 최종 재검토에서 각 case가 Chromium oracle을 먼저 만들고 Taffy를 후보로 둔다는 점, 명시 min/max와 자동 최소 크기의 경계, wrapped line별 독립 분배, full/incremental profile coverage, 내부 버전 고정을 확인했다. 이 계획만으로 C10.2 기능을 지원 완료로 표시하지 않는다. 코드 수정·테스트·Android/iOS 실행은 계획 PR의 완료 주장에 포함하지 않는다.
+
+## Fixture 구체화 중 관점 재확인
+
+기준 HTML을 만들기 전 flex 계산을 손으로 다시 계산했다. `grow-subunit`은 초기 free space 100px에 grow 합 0.5를 곱해 50px을 남은 공간으로 사용하고, 두 항목에 25px씩 분배하므로 폭이 125/125다. 기존 112.5/112.5는 실제 증가량 25px과 기대 잔여 공간 50px이 서로 모순되어 수정했다. `fixed-margin-accounting`은 브라우저 사각형으로 측정하는 값이 content box가 아니라 border-box frame이므로 표현을 고쳤다. 이 수정은 capture와 제품 코드 변경 전에 반영한다.
+
+현재 incremental cascade 구현도 따라가며 계획의 검사 축을 정정했다. `compute_runtime_incremental_cascade_with_stylesheets`는 author stylesheet가 비어 있지 않으면 `None`을 반환해 전체 cascade fallback을 요청한다. 따라서 inline-style incremental 결과와 author stylesheet full-cascade 결과를 별도로 검증하고, 지원되지 않는 stylesheet incremental reuse를 완료 조건으로 오인하지 않도록 계획을 고쳤다.
+
+비교 fixture를 실제 수치로 펼치며 관점 19를 다시 확인했다. 최초 표의 큰 factor 예제는 모두 정수 frame을 내므로 “소수 좌표” 판정이 성립하지 않았다. parent 폭을 `500.5`, basis를 `100.5/100`, grow를 `1e20/3e20`으로 바꿔 기대 폭을 `175.5/325`로 고정했다. author stylesheet 실행 경로도 표에 빠져 있어 폭 `300`, basis `100/100`, grow `1/3`의 `125/175` case를 추가했다. capture harness는 선택 case만 정상 흐름에 보이도록 `display:none` 방식으로 고정한다. 세 수정은 구현 변경 전에 수행했고, 기존 구현 성공을 전제하지 않는다.

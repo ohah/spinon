@@ -12,6 +12,8 @@ use crate::{
 
 #[path = "tests/border.rs"]
 mod border;
+#[path = "tests/flex_distribution.rs"]
+mod flex_distribution;
 #[path = "tests/invalid_inputs.rs"]
 mod invalid_inputs;
 #[path = "tests/legacy_oracle.rs"]

@@ -58,7 +58,7 @@ C09.4 shrink-to-fit은 C12 positioning, C14 intrinsic sizing, C15 inline/text me
 
 ## C10.2 · flex basis와 유연 크기 배분
 
-C10.2의 독립 계획과 범위·fixture·완료 조건은 [C10.2 전용 계획](c10-2-flex-distribution.md)에 둔다. 이 단계는 C10.1이 정한 줄에 대해 CSS Flexbox의 flex base/hypothetical main size, grow·scaled shrink 배분, 명시 min/max clamp와 freeze 재분배를 검증한다. 자동 최소 크기·내재 크기·indefinite percentage와 콘텐츠 기반 basis는 C10.4 및 C14 선행 작업으로 남긴다. 계획은 별도 20개 관점 검토 뒤 PR로 병합하고, 구현은 그 이후 새 비교 자료와 별도 20개 구현 검토로 진행한다.
+C10.2의 독립 계획과 범위·fixture·완료 조건은 [C10.2 전용 계획](c10-2-flex-distribution.md)에 둔다. 이 단계는 C10.1이 정한 줄에 대해 CSS Flexbox의 flex base/hypothetical main size, grow·scaled shrink 배분, 명시 min/max clamp와 freeze 재분배를 검증한다. 자동 최소 크기·내재 크기·indefinite percentage와 콘텐츠 기반 basis는 C10.4 및 C14 선행 작업으로 남긴다. 계획 PR #115는 별도 실패 관점 검토 뒤 병합했다. 구현 브랜치에서 고정 Chromium 27개 case·92개 node와 Rust·cascade 검사를 통과했고, Android·iOS Simulator 실제 V8 실행의 다섯 DOM frame과 WGPU 제출을 확인했다. 구현 실패 경로 검토도 마쳤다. 기능 구현 PR은 병합 전이며 PR 생성·리뷰·병합 뒤 공식 완료 상태를 반영한다.
 
 ## 기준 자료
 

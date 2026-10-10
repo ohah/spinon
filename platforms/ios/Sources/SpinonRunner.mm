@@ -23,24 +23,39 @@ void C0410LogReport(os_log_type_t type, const char *label, NSString *report) {
                    detail != nullptr ? detail : "C ABI 보고를 UTF-8로 변환하지 못했습니다");
 }
 
-void C101LogNodeFrames(NSString *report) {
+NSUInteger C10LogNodeFrames(NSString *report, const char *label) {
   NSString *marker = @" node_frames_css_px=[";
   NSRange markerRange = [report rangeOfString:marker];
-  if (markerRange.location == NSNotFound) return;
+  if (markerRange.location == NSNotFound) {
+    NSString *detail = [NSString stringWithFormat:
+        @"marker=missing report_length=%lu", (unsigned long)report.length];
+    C0410LogReport(OS_LOG_TYPE_ERROR, "SPINON_C10_FRAME_REPORT_ERROR", detail);
+    return 0;
+  }
   NSUInteger framesStart = NSMaxRange(markerRange);
   NSRange closingRange = [report rangeOfString:@"]"
                                             options:NSBackwardsSearch
                                               range:NSMakeRange(framesStart,
                                                                 report.length - framesStart)];
-  if (closingRange.location == NSNotFound) return;
+  if (closingRange.location == NSNotFound) {
+    C0410LogReport(OS_LOG_TYPE_ERROR, "SPINON_C10_FRAME_REPORT_ERROR",
+                   @"closing bracket is missing");
+    return 0;
+  }
 
   NSString *frames = [report substringWithRange:
       NSMakeRange(framesStart, closingRange.location - framesStart)];
+  NSUInteger count = 0;
   for (NSString *frame in [frames componentsSeparatedByString:@";"]) {
     if (frame.length > 0) {
-      C0410LogReport(OS_LOG_TYPE_INFO, "SPINON_C101_NODE_FRAME", frame);
+      C0410LogReport(OS_LOG_TYPE_INFO, label, frame);
+      count += 1;
     }
   }
+  NSString *detail = [NSString stringWithFormat:@"label=%s count=%lu", label,
+                                                (unsigned long)count];
+  C0410LogReport(OS_LOG_TYPE_INFO, "SPINON_C10_NODE_FRAME_COUNT", detail);
+  return count;
 }
 
 }  // namespace
@@ -839,7 +854,33 @@ void C101LogNodeFrames(NSString *report) {
   NSString *report = C0410Report(status, output);
   C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
                  "SPINON_C101_EVAL", report);
-  if (status == 0) C101LogNodeFrames(report);
+  if (status == 0) C10LogNodeFrames(report, "SPINON_C101_NODE_FRAME");
+  return report;
+#else
+  (void)handle;
+  return @"status=-1 C04.10 GPU fixture 빌드가 비활성화되었습니다";
+#endif
+}
+
++ (NSString *)evalRuntimeGpuFlexDistributionFixture:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 4096> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_flex_distribution_fixture(
+      host, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C102_EVAL", report);
+  if (status == 0) {
+    const NSUInteger frameCount = C10LogNodeFrames(report, "SPINON_C102_NODE_FRAME");
+    NSString *summary = [NSString stringWithFormat:
+        @"frames=%lu marker=%@ report_length=%lu", (unsigned long)frameCount,
+        [report containsString:@"node_frames_css_px=["] ? @"present" : @"missing",
+        (unsigned long)report.length];
+    C0410LogReport(OS_LOG_TYPE_INFO, "SPINON_C102_FRAME_SUMMARY", summary);
+  }
   return report;
 #else
   (void)handle;

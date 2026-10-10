@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spinon C10.2 flex distribution reference</title>
+  <style>
+    html, body { margin: 0; padding: 0; }
+    body { direction: ltr; writing-mode: horizontal-tb; }
+    *, *::before, *::after { box-sizing: border-box; }
+    [data-c10-case] { display: none; margin: 0; padding: 0; border: 0; }
+    .flex-row, .flex-column {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+    .flex-row { flex-direction: row; }
+    .flex-column { flex-direction: column; }
+    .item { min-width: 0; min-height: 0; margin: 0; padding: 0; border: 0; flex: 0 0 auto; }
+    #c102-stylesheet-first { flex: 1 0 100px; }
+    #c102-stylesheet-second { flex: 3 0 100px; }
+  </style>
+</head>
+<body>
+<section data-c10-case="grow-equal">
+<div class="flex-row" id="c102-grow-equal-root" style="width:600px;height:20px;"><div class="item" id="c102-grow-equal-first" style="height:10px;flex:1 0 100px"></div><div class="item" id="c102-grow-equal-second" style="height:10px;flex:1 0 100px"></div></div>
+</section>
+<section data-c10-case="grow-weighted">
+<div class="flex-row" id="c102-grow-weighted-root" style="width:600px;height:20px;"><div class="item" id="c102-grow-weighted-first" style="height:10px;flex:1 0 100px"></div><div class="item" id="c102-grow-weighted-second" style="height:10px;flex:2 0 100px"></div><div class="item" id="c102-grow-weighted-third" style="height:10px;flex:1 0 100px"></div></div>
+</section>
+<section data-c10-case="grow-subunit">
+<div class="flex-row" id="c102-grow-subunit-root" style="width:300px;height:20px;"><div class="item" id="c102-grow-subunit-first" style="height:10px;flex:0.25 0 100px"></div><div class="item" id="c102-grow-subunit-second" style="height:10px;flex:0.25 0 100px"></div></div>
+</section>
+<section data-c10-case="grow-zero">
+<div class="flex-row" id="c102-grow-zero-root" style="width:300px;height:20px;"><div class="item" id="c102-grow-zero-first" style="height:10px;flex:0 0 100px"></div><div class="item" id="c102-grow-zero-second" style="height:10px;flex:1 0 100px"></div></div>
+</section>
+<section data-c10-case="shrink-scaled">
+<div class="flex-row" id="c102-shrink-scaled-root" style="width:240px;height:20px;"><div class="item" id="c102-shrink-scaled-first" style="height:10px;flex:0 1 200px"></div><div class="item" id="c102-shrink-scaled-second" style="height:10px;flex:0 1 100px"></div></div>
+</section>
+<section data-c10-case="shrink-weighted">
+<div class="flex-row" id="c102-shrink-weighted-root" style="width:200px;height:20px;"><div class="item" id="c102-shrink-weighted-first" style="height:10px;flex:0 1 200px"></div><div class="item" id="c102-shrink-weighted-second" style="height:10px;flex:0 2 100px"></div></div>
+</section>
+<section data-c10-case="shrink-zero">
+<div class="flex-row" id="c102-shrink-zero-root" style="width:240px;height:20px;"><div class="item" id="c102-shrink-zero-first" style="height:10px;flex:0 0 200px"></div><div class="item" id="c102-shrink-zero-second" style="height:10px;flex:0 1 100px"></div></div>
+</section>
+<section data-c10-case="basis-overrides-size">
+<div class="flex-row" id="c102-basis-overrides-root" style="width:300px;height:20px;"><div class="item" id="c102-basis-overrides-item" style="width:200px;height:10px;flex:0 0 100px"></div></div>
+</section>
+<section data-c10-case="basis-auto-explicit-size">
+<div class="flex-row" id="c102-basis-auto-row-root" style="width:300px;height:20px;"><div class="item" id="c102-basis-auto-row-item" style="width:200px;height:10px;flex:0 0 auto"></div></div>
+<div class="flex-column" id="c102-basis-auto-column-root" style="width:100px;height:180px;margin-top:10px;"><div class="item" id="c102-basis-auto-column-item" style="height:60px;width:10px;flex:0 0 auto"></div></div>
+</section>
+<section data-c10-case="basis-percent-row-column">
+<div class="flex-row" id="c102-basis-percent-row-root" style="width:400px;height:20px;"><div class="item" id="c102-basis-percent-row-first" style="height:10px;flex:0 0 25%"></div><div class="item" id="c102-basis-percent-row-second" style="height:10px;flex:0 0 50%"></div></div>
+<div class="flex-column" id="c102-basis-percent-column-root" style="width:100px;height:240px;margin-top:10px;"><div class="item" id="c102-basis-percent-column-first" style="width:10px;flex:0 0 25%"></div><div class="item" id="c102-basis-percent-column-second" style="width:10px;flex:0 0 50%"></div></div>
+</section>
+<section data-c10-case="flex-shorthand">
+<div class="flex-row" id="c102-shorthand-root" style="width:800px;height:20px;"><div class="item" id="c102-shorthand-one" style="height:10px;flex:1"></div><div class="item" id="c102-shorthand-auto" style="height:10px;width:100px;flex:auto"></div><div class="item" id="c102-shorthand-none" style="height:10px;width:100px;flex:none"></div><div class="item" id="c102-shorthand-three-part" style="height:10px;flex:2 1 80px"></div><div class="item" id="c102-shorthand-override" style="height:10px;flex:1 1 60px;flex-grow:0.5"></div></div>
+</section>
+<section data-c10-case="stylesheet-grow">
+<div class="flex-row" id="c102-stylesheet-root" style="width:300px;height:20px;"><div class="item" id="c102-stylesheet-first" style="height:10px"></div><div class="item" id="c102-stylesheet-second" style="height:10px"></div></div>
+</section>
+<section data-c10-case="grow-max-freeze">
+<div class="flex-row" id="c102-grow-max-root" style="width:500px;height:20px;"><div class="item" id="c102-grow-max-first" style="height:10px;flex:1 0 100px;max-width:120px"></div><div class="item" id="c102-grow-max-second" style="height:10px;flex:1 0 100px"></div><div class="item" id="c102-grow-max-third" style="height:10px;flex:1 0 100px"></div></div>
+</section>
+<section data-c10-case="grow-min-freeze">
+<div class="flex-row" id="c102-grow-min-root" style="width:300px;height:20px;"><div class="item" id="c102-grow-min-first" style="height:10px;flex:1 0 100px;min-width:180px"></div><div class="item" id="c102-grow-min-second" style="height:10px;flex:1 0 100px"></div></div>
+</section>
+<section data-c10-case="shrink-min-freeze">
+<div class="flex-row" id="c102-shrink-min-root" style="width:200px;height:20px;"><div class="item" id="c102-shrink-min-first" style="height:10px;flex:0 1 200px;min-width:150px"></div><div class="item" id="c102-shrink-min-second" style="height:10px;flex:0 1 100px"></div></div>
+</section>
+<section data-c10-case="shrink-max-freeze">
+<div class="flex-row" id="c102-shrink-max-root" style="width:200px;height:20px;"><div class="item" id="c102-shrink-max-first" style="height:10px;flex:0 1 200px;max-width:120px"></div><div class="item" id="c102-shrink-max-second" style="height:10px;flex:0 1 100px"></div></div>
+</section>
+<section data-c10-case="shrink-min-overflow">
+<div class="flex-row" id="c102-shrink-overflow-root" style="width:200px;height:20px;"><div class="item" id="c102-shrink-overflow-first" style="height:10px;flex:0 1 200px;min-width:150px"></div><div class="item" id="c102-shrink-overflow-second" style="height:10px;flex:0 1 100px;min-width:150px"></div></div>
+</section>
+<section data-c10-case="mixed-violation-freeze">
+<div class="flex-row" id="c102-mixed-root" style="width:500px;height:20px;"><div class="item" id="c102-mixed-first" style="height:10px;flex:1 0 100px;max-width:120px"></div><div class="item" id="c102-mixed-second" style="height:10px;flex:1 0 100px;min-width:200px"></div><div class="item" id="c102-mixed-third" style="height:10px;flex:1 0 100px"></div></div>
+</section>
+<section data-c10-case="min-over-max">
+<div class="flex-row" id="c102-min-over-max-root" style="width:200px;height:20px;"><div class="item" id="c102-min-over-max-item" style="height:10px;flex:0 0 100px;min-width:150px;max-width:120px"></div></div>
+</section>
+<section data-c10-case="hypothetical-factor-choice">
+<div class="flex-row" id="c102-hypothetical-root" style="width:240px;height:20px;"><div class="item" id="c102-hypothetical-first" style="height:10px;flex:0 1 50px;min-width:100px"></div><div class="item" id="c102-hypothetical-second" style="height:10px;flex:0 1 150px"></div></div>
+</section>
+<section data-c10-case="gap-accounting">
+<div class="flex-row" id="c102-gap-root" style="width:300px;height:20px;column-gap:20px;"><div class="item" id="c102-gap-first" style="height:10px;flex:1 0 100px"></div><div class="item" id="c102-gap-second" style="height:10px;flex:1 0 100px"></div></div>
+</section>
+<section data-c10-case="fixed-margin-accounting">
+<div class="flex-row" id="c102-margin-root" style="width:300px;height:20px;"><div class="item" id="c102-margin-first" style="height:10px;flex:1 0 100px;margin:0 10px"></div><div class="item" id="c102-margin-second" style="height:10px;flex:1 0 100px;margin:0 10px"></div></div>
+</section>
+<section data-c10-case="wrapped-per-line">
+<div class="flex-row" id="c102-wrapped-root" style="width:250px;height:20px;flex-wrap:wrap;"><div class="item" id="c102-wrapped-first" style="height:10px;flex:1 0 150px"></div><div class="item" id="c102-wrapped-second" style="height:10px;flex:1 0 150px"></div><div class="item" id="c102-wrapped-third" style="height:10px;flex:2 0 80px"></div></div>
+</section>
+<section data-c10-case="box-sizing-basis">
+<div class="flex-row" id="c102-box-sizing-root" style="width:300px;height:40px;"><div class="item" id="c102-box-sizing-content" style="height:20px;flex:0 0 100px;box-sizing:content-box;width:100px;padding:0 10px;border-width:0 5px;border-style:solid"></div><div class="item" id="c102-box-sizing-border" style="height:20px;flex:0 0 100px;box-sizing:border-box;width:100px;padding:0 10px;border-width:0 5px;border-style:solid"></div></div>
+</section>
+<section data-c10-case="fractional-and-large-factors">
+<div class="flex-row" id="c102-fractional-root" style="width:500.5px;height:20px;"><div class="item" id="c102-fractional-first" style="height:10px;flex:1e20 0 100.5px"></div><div class="item" id="c102-fractional-second" style="height:10px;flex:3e20 0 100px"></div></div>
+</section>
+<section data-c10-case="invalid-css-factor">
+<div class="flex-row" id="c102-invalid-root" style="width:300px;height:20px;"><div class="item" id="c102-invalid-first" style="height:10px;flex-basis:100px;flex-grow:1;flex-grow:-1;flex-shrink:0"></div><div class="item" id="c102-invalid-second" style="height:10px;flex:1 0 100px"></div></div>
+</section>
+<section data-c10-case="runtime-flex-distribution">
+<div class="flex-column" id="c102-runtime-root" style="width:320px;height:240px;background-color:#101827;--c102-first:#3366ff;--c102-second:#12b981;--c102-third:#f59e0b"><div class="flex-row" id="c102-runtime-flex" style="width:304px;height:24px;margin:8px;background-color:#243047"><div class="item" id="c102-runtime-item-1" style="height:20px;flex:1 0 60px;max-width:80px;background-color:var(--c102-first)"></div><div class="item" id="c102-runtime-item-2" style="height:20px;flex:1 0 60px;min-width:120px;background-color:var(--c102-second)"></div><div class="item" id="c102-runtime-item-3" style="height:20px;flex:1 0 60px;background-color:var(--c102-third)"></div></div></div>
+</section>
+</body>
+</html>

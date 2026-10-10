@@ -59,6 +59,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c093-flow-root")
     private let flexWrapProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c101-flex-wrap")
+    private let flexDistributionProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c102-flex-distribution")
     private let blockFormattingProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c091-block-formatting")
         || ProcessInfo.processInfo.arguments.contains("--spinon-c092-margin-collapse")
@@ -75,7 +77,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             && ProcessInfo.processInfo.arguments.contains("--spinon-c051-custom-properties")
     }
     private var fixedSizeCssFixtureRequested: Bool {
-        blockFormattingProbeRequested || flexWrapProbeRequested
+        blockFormattingProbeRequested || flexWrapProbeRequested || flexDistributionProbeRequested
     }
     private var failureProbeStarted = false
     private var shutdownProbeStarted = false
@@ -92,7 +94,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
 
         let title = UILabel()
-        title.text = flexWrapProbeRequested
+        title.text = flexDistributionProbeRequested
+            ? "SPINON · C10.2 flex distribution"
+            : flexWrapProbeRequested
             ? "SPINON · C10.1 flex-wrap"
             : flowRootProbeRequested
             ? "SPINON · C09.3 flow-root"
@@ -133,7 +137,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.addSubview(title)
 
         let description = UILabel()
-        description.text = flexWrapProbeRequested
+        description.text = flexDistributionProbeRequested
+            ? "V8 flex basis·grow·shrink·min/max freeze → Stylo → Taffy → WGPU · 320×240 CSS px"
+            : flexWrapProbeRequested
             ? "V8 CSS flex-wrap row·gap → Stylo → Taffy → WGPU · 320×240 CSS px"
             : flowRootProbeRequested
             ? "V8 DOM flow-root BFC 경계 → Stylo → Taffy → WGPU · 320×240 CSS px"
@@ -178,7 +184,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         canvasView.translatesAutoresizingMaskIntoConstraints = false
         canvasView.isAccessibilityElement = true
-        canvasView.accessibilityLabel = flexWrapProbeRequested
+        canvasView.accessibilityLabel = flexDistributionProbeRequested
+            ? "C10.2 flex grow·shrink·min/max freeze WGPU 장면"
+            : flexWrapProbeRequested
             ? "C10.1 세 줄 flex-wrap·gap WGPU 장면"
             : flowRootProbeRequested
             ? "C09.3 flow-root 내부 margin 격리와 외부 collapse WGPU 장면"
@@ -495,7 +503,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
         log("SPINON_C0410_ENVIRONMENT \(environment ?? "")")
 
-        var result = flexWrapProbeRequested
+        var result = flexDistributionProbeRequested
+            ? SpinonRunner.evalRuntimeGpuFlexDistributionFixture(handle)
+            : flexWrapProbeRequested
             ? SpinonRunner.evalRuntimeGpuFlexWrapFixture(handle)
             : flowRootProbeRequested
             ? SpinonRunner.evalRuntimeGpuFlowRootFixture(handle)
@@ -537,7 +547,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             return
         }
         if sceneWasSupersededAfterCommit {
-            let scope = flexWrapProbeRequested
+            let scope = flexDistributionProbeRequested
+                ? "SPINON_C102"
+                : flexWrapProbeRequested
                 ? "SPINON_C101"
                 : marginCollapseProbeRequested
                 ? "SPINON_C092"
@@ -571,7 +583,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             log("\(scope)_EVAL_SCENE_SUPERSEDED \(result ?? "")")
             postStatus("JavaScript 적용 완료 · 최신 CSS 장면 다시 계산 중")
         } else {
-            let scope = flexWrapProbeRequested
+            let scope = flexDistributionProbeRequested
+                ? "SPINON_C102"
+                : flexWrapProbeRequested
                 ? "SPINON_C101"
                 : marginCollapseProbeRequested
                 ? "SPINON_C092"

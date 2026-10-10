@@ -39,6 +39,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             || arguments.contains("--spinon-c092-margin-collapse")
             || arguments.contains("--spinon-c093-flow-root")
             || arguments.contains("--spinon-c101-flex-wrap")
+            || arguments.contains("--spinon-c102-flex-distribution")
         let runR05AttributionProbe = arguments.contains("--spinon-r05-attribution")
         let runLifecycleProbe = arguments.contains("--spinon-dom-gc-auto")
         if runLifecycleProbe && !spinonS03DomGcFixtureEnabled {
