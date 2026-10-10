@@ -3,6 +3,7 @@ use std::collections::BTreeMap;
 use style::{
     properties::ComputedValues,
     typed_om::{MathValue, NumericValue, ToTyped, TypedValue},
+    values::computed::position::Inset,
     values::computed::{FlexBasis, LengthPercentage, MaxSize, NonNegativeLengthPercentage, Size},
 };
 
@@ -62,6 +63,16 @@ pub(super) fn computed_layout_math_values(
         ("margin-left", computed.clone_margin_left()),
     ] {
         if let style::values::computed::Margin::LengthPercentage(value) = value {
+            insert_math(&mut output, name, value);
+        }
+    }
+    for (name, value) in [
+        ("top", computed.clone_top()),
+        ("right", computed.clone_right()),
+        ("bottom", computed.clone_bottom()),
+        ("left", computed.clone_left()),
+    ] {
+        if let Inset::LengthPercentage(value) = value {
             insert_math(&mut output, name, value);
         }
     }

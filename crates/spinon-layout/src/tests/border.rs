@@ -23,6 +23,7 @@ fn border_input() -> LayoutInput {
         },
         root_sizing: RootSizingPolicy::Match,
         css_math: vec![],
+        positioning: Default::default(),
         nodes: vec![
             LayoutNode {
                 id: root,

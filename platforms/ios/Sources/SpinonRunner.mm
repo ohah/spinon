@@ -116,7 +116,7 @@ NSUInteger C10LogNodeFrames(NSString *report, const char *label) {
                              density:(float)density
                    surfaceGeneration:(uint64_t)surfaceGeneration {
 #if defined(SPINON_ENABLE_S04_IOS_FIXTURE) && SPINON_ENABLE_S04_IOS_FIXTURE
-  std::array<char, 2048> output{};
+  std::array<char, 32768> output{};
   void *renderer = spinon_wgpu_create_uikit_s04(
       view, width, height, SPINON_WGPU_R08_METAL, density, surfaceGeneration,
       output.data(), output.size());
@@ -327,7 +327,7 @@ NSUInteger C10LogNodeFrames(NSString *report, const char *label) {
 }
 
 + (NSString *)runUaCascadeProbe {
-  std::array<char, 32768> output{};
+  std::array<char, 2048> output{};
   const int32_t status =
       spinon_runtime_ua_cascade_probe(output.data(), output.size());
   NSString *message = [NSString stringWithUTF8String:output.data()];
@@ -468,6 +468,24 @@ NSUInteger C10LogNodeFrames(NSString *report, const char *label) {
 #endif
 }
 
++ (uint64_t)createRuntimeGpuHostWithC12_1PositionFixture {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  std::array<char, 1024> output{};
+  SpinonRuntimeGpuHost *host = spinon_runtime_gpu_host_new_c12_1_position_fixture(
+      output.data(), output.size());
+  if (host == nullptr) {
+    os_log_error(OS_LOG_DEFAULT, "SPINON_C121_HOST_ERROR=%{public}s", output.data());
+    return 0;
+  }
+  os_log(OS_LOG_DEFAULT, "SPINON_C121_HOST=%{public}s", output.data());
+  return static_cast<uint64_t>(reinterpret_cast<uintptr_t>(host));
+#else
+  os_log_error(OS_LOG_DEFAULT,
+               "SPINON_C121_DISABLED rebuild with SPINON_ENABLE_C04_RUNTIME_GPU=1");
+  return 0;
+#endif
+}
+
 + (uint64_t)beginRuntimeGpuPresentationUpdate:(uint64_t)handle {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
   if (handle == 0) return 0;
@@ -494,7 +512,7 @@ NSUInteger C10LogNodeFrames(NSString *report, const char *label) {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
-  std::array<char, 2048> output{};
+  std::array<char, 32768> output{};
   os_log(OS_LOG_DEFAULT,
          "SPINON_C0410_ENVIRONMENT_FFI_BEGIN width=%{public}.1f height=%{public}.1f",
          width, height);
@@ -804,6 +822,41 @@ NSUInteger C10LogNodeFrames(NSString *report, const char *label) {
 #else
   (void)handle;
   return @"status=-1 C04.10 GPU fixture 빌드가 비활성화되었습니다";
+#endif
+}
+
++ (NSString *)evalRuntimeGpuC12_1PositionFixture:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 32768> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_c12_1_position_fixture(
+      host, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C121_EVAL", report);
+  return report;
+#else
+  (void)handle;
+  return @"status=-90 feature-disabled";
+#endif
+}
+
++ (NSString *)evalRuntimeGpuC12_1PositionState:(uint64_t)handle state:(uint32_t)state {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 32768> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_c12_1_position_state(
+      host, state, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C121_STATE", report);
+  return report;
+#else
+  (void)handle;
+  (void)state;
+  return @"status=-90 feature-disabled";
 #endif
 }
 

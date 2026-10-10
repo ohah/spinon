@@ -65,6 +65,28 @@ pub(super) fn parse_nonnegative_spacing(
     )
 }
 
+pub(super) fn parse_inset(
+    node: NodeId,
+    property: &'static str,
+    serialized_value: &str,
+    value: ComputedCssSpacingValue,
+    math: Option<&ComputedCssMath>,
+    projector: &mut CssMathProjector,
+) -> Result<LayoutLengthPercentage, StyleLayoutError> {
+    if math.is_none() && value == ComputedCssSpacingValue::Auto {
+        return Ok(LayoutLengthPercentage::Auto);
+    }
+    parse_spacing(
+        node,
+        property,
+        serialized_value,
+        value,
+        true,
+        math,
+        projector,
+    )
+}
+
 fn parse_spacing(
     node: NodeId,
     property: &'static str,
@@ -107,6 +129,10 @@ pub(super) fn layout_math_property(
         "min-height" => Ok(LayoutCssMathProperty::MinHeight),
         "max-height" => Ok(LayoutCssMathProperty::MaxHeight),
         "flex-basis" => Ok(LayoutCssMathProperty::FlexBasis),
+        "top" => Ok(LayoutCssMathProperty::Top),
+        "right" => Ok(LayoutCssMathProperty::Right),
+        "bottom" => Ok(LayoutCssMathProperty::Bottom),
+        "left" => Ok(LayoutCssMathProperty::Left),
         "margin-top" => Ok(LayoutCssMathProperty::MarginTop),
         "margin-right" => Ok(LayoutCssMathProperty::MarginRight),
         "margin-bottom" => Ok(LayoutCssMathProperty::MarginBottom),

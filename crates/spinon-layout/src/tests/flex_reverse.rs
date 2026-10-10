@@ -197,6 +197,7 @@ fn layout_input(case: &CapturedCase) -> LayoutInput {
         root_sizing: RootSizingPolicy::ResolveWithin,
         nodes,
         css_math: Vec::new(),
+        positioning: Default::default(),
     }
 }
 

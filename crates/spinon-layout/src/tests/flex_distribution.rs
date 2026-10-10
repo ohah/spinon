@@ -288,6 +288,7 @@ fn layout_input_for_root(
             root_sizing: RootSizingPolicy::Match,
             nodes,
             css_math: vec![],
+            positioning: Default::default(),
         },
         ids,
     )

@@ -8,7 +8,7 @@
     "htmlPath": "tests/fixtures/css/c12/position-static-relative.html",
     "htmlSha256": "19df906772c084a4de37370545ef1feea964df5e74ac3c062fb3d5ffb88b50a2",
     "runtimeSourcePath": "tests/fixtures/css/c12/runtime-position-static-relative.js",
-    "runtimeSourceSha256": "194b89df392306676f3f0bcb8f8dff138092339a2dd480b71a9c83ce020e0891"
+    "runtimeSourceSha256": "e8527c50f1640acdd5d01b5ce83226ba86ada09e0874bd928ec20746dfa3fb0a"
   },
   "captureTool": {
     "path": "tools/css-reference/capture-c12-1-static-relative.mjs",

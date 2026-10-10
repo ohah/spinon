@@ -176,6 +176,7 @@ impl LayoutInput {
             root_sizing,
             nodes,
             css_math: Vec::new(),
+            positioning: Default::default(),
         })
     }
 }

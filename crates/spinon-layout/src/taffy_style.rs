@@ -9,21 +9,29 @@ use taffy::prelude::{
 use taffy::style::{
     AlignContent, AlignContentKeyword, AlignItems, AlignItemsKeyword, AlignSelf,
     AlignmentSafety as TaffyAlignmentSafety, BoxSizing, Direction as TaffyDirection,
-    JustifyContent, Overflow,
+    JustifyContent, Overflow, Position as TaffyPosition,
 };
 
 use crate::{
     AlignmentSafety, ContentAlignmentPosition, FlexDirection, FlexWrap, ItemAlignmentPosition,
     JustifyContentPosition, LayoutAlignContent, LayoutAlignItems, LayoutAlignSelf, LayoutBoxSizing,
-    LayoutCalcId, LayoutCssMathProperty, LayoutDimension, LayoutDisplay, LayoutError,
-    LayoutJustifyContent, LayoutLengthPercentage, LayoutStyle, TextDirection,
+    LayoutCalcId, LayoutCssMathProperty, LayoutDimension, LayoutDisplay, LayoutEdges, LayoutError,
+    LayoutJustifyContent, LayoutLengthPercentage, LayoutPosition, LayoutPositioning, LayoutStyle,
+    TextDirection,
 };
 
 pub(super) fn to_taffy_style(
     node: NodeId,
     style: LayoutStyle,
+    positioning: LayoutPositioning,
+    ignore_relative_inset: bool,
     calc_handles: &BTreeMap<LayoutCalcId, *const ()>,
 ) -> Result<Style, LayoutError> {
+    let inset = if positioning.position == LayoutPosition::Relative && !ignore_relative_inset {
+        positioning.inset
+    } else {
+        LayoutEdges::auto()
+    };
     Ok(Style {
         display: match style.display {
             LayoutDisplay::Flex => Display::Flex,
@@ -38,6 +46,33 @@ pub(super) fn to_taffy_style(
         direction: match style.direction {
             TextDirection::Ltr => TaffyDirection::Ltr,
             TextDirection::Rtl => TaffyDirection::Rtl,
+        },
+        position: TaffyPosition::Relative,
+        inset: Rect {
+            top: to_taffy_length_percentage_auto(
+                node,
+                LayoutCssMathProperty::Top,
+                inset.top,
+                calc_handles,
+            )?,
+            right: to_taffy_length_percentage_auto(
+                node,
+                LayoutCssMathProperty::Right,
+                inset.right,
+                calc_handles,
+            )?,
+            bottom: to_taffy_length_percentage_auto(
+                node,
+                LayoutCssMathProperty::Bottom,
+                inset.bottom,
+                calc_handles,
+            )?,
+            left: to_taffy_length_percentage_auto(
+                node,
+                LayoutCssMathProperty::Left,
+                inset.left,
+                calc_handles,
+            )?,
         },
         size: Size {
             width: to_taffy_dimension(

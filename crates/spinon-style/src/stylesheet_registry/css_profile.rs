@@ -52,6 +52,7 @@ pub(super) fn first_unsupported_author_feature_with_media(
 pub(super) fn first_unsupported_runtime_author_feature(
     registry: &StylesheetRegistry,
     allowed_properties: &[&str],
+    allow_layers: bool,
     allow_custom_properties: bool,
     allow_background_color: bool,
 ) -> Option<(String, String)> {
@@ -59,7 +60,7 @@ pub(super) fn first_unsupported_runtime_author_feature(
         registry,
         allowed_properties,
         AuthorFeaturePolicy {
-            allow_layers: false,
+            allow_layers,
             allow_media: false,
             allow_custom_properties,
             allow_background_color,

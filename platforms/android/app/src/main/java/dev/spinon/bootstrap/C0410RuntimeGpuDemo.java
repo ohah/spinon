@@ -26,6 +26,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native long nativeCreateHost(boolean registeredPropertiesFixture);
     private static native long nativeCreateBlockPaintHost();
     private static native long nativeCreateBlockFormattingHost();
+    private static native long nativeCreateC121PositionHost();
     private static native long nativeBeginPresentationUpdate(long host);
     private static native byte[] nativeSetEnvironment(
             long host, float widthCssPx, float heightCssPx, float scale, boolean dark);
@@ -46,6 +47,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native byte[] nativeEvalAspectRatioFixture(long host);
     private static native byte[] nativeEvalBlockPaintFixture(long host);
     private static native byte[] nativeEvalBlockFormattingFixture(long host);
+    private static native byte[] nativeEvalC121PositionFixture(long host);
+    private static native byte[] nativeEvalC121PositionState(long host, int state);
     private static native byte[] nativeEvalMarginCollapseFixture(long host);
     private static native byte[] nativeEvalFlowRootFixture(long host);
     private static native byte[] nativeEvalFlexWrapFixture(long host);
@@ -91,6 +94,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean aspectRatioProbeRequested;
     private final boolean blockPaintProbeRequested;
     private final boolean blockFormattingProbeRequested;
+    private final boolean c121PositioningProbeRequested;
     private final boolean marginCollapseProbeRequested;
     private final boolean flowRootProbeRequested;
     private final boolean flexWrapProbeRequested;
@@ -113,6 +117,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private long rendererGeneration = -1;
     private volatile boolean surfaceAvailable;
     private volatile boolean closing;
+    private boolean runtimeInitializationQueued;
     private long hostPresentationSequence;
     private boolean expandedSurface;
     private boolean pendingDraw;
@@ -171,6 +176,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 .getBooleanExtra("spinon_c1033_flex_alignment", false);
         flexBaselineProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c1034_flex_baseline", false);
+        c121PositioningProbeRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c121_static_relative", false);
         blockFormattingProbeRequested = flowRootProbeRequested || marginCollapseProbeRequested
                 || activity.getIntent().getBooleanExtra("spinon_c091_block_formatting", false);
         fixedSizeCssFixtureRequested = blockFormattingProbeRequested || flexWrapProbeRequested
@@ -205,7 +212,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         setBackgroundColor(Color.rgb(14, 19, 31));
 
         TextView title = new TextView(activity);
-        title.setText(flexBaselineProbeRequested
+        title.setText(c121PositioningProbeRequested
+                ? "SPINON · C12.1 정적·상대 위치"
+                : flexBaselineProbeRequested
                 ? "SPINON · C10.3.4 Flex baseline"
                 : flexAlignmentProbeRequested
                 ? "SPINON · C10.3.3 Flex 정렬"
@@ -256,7 +265,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         addView(title, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 
         TextView description = new TextView(activity);
-        description.setText(flexBaselineProbeRequested
+        description.setText(c121PositioningProbeRequested
+                ? "V8 position·inset·flow/visual frame → Stylo → Taffy → WGPU"
+                : flexBaselineProbeRequested
                 ? "V8 first·last baseline·중첩 전파 → Stylo → Taffy → WGPU · 320×240 CSS px"
                 : flexAlignmentProbeRequested
                 ? "V8 align-items/self/content·place-* → Stylo → Taffy → WGPU · 320×240 CSS px"
@@ -413,7 +424,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             else if (registeredPropertiesProbeRequested) evaluateRegisteredPropertiesFixture();
             else evaluateCustomPropertiesFixture();
         });
-        if (authorStylesheetsProbeRequested || viewportUnitsProbeRequested || fixedSizeCssFixtureRequested || blockPaintProbeRequested || aspectRatioProbeRequested
+        if (c121PositioningProbeRequested || authorStylesheetsProbeRequested || viewportUnitsProbeRequested || fixedSizeCssFixtureRequested || blockPaintProbeRequested || aspectRatioProbeRequested
                 || minMaxSizingProbeRequested
                 || borderWidthProbeRequested
                 || typedCssMathProbeRequested
@@ -443,7 +454,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 renderQueue,
                 this::reconcileRenderState,
                 error -> reportLaneFailure("render", error));
-        enqueueRuntime(this::initializeRuntime);
+        if (!c121PositioningProbeRequested) enqueueRuntime(this::initializeRuntime);
     }
 
     private static int dp(int value, float density) {
@@ -476,7 +487,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private void initializeRuntime() {
-        long host = blockFormattingProbeRequested
+        long host = c121PositioningProbeRequested
+                ? nativeCreateC121PositionHost()
+                : blockFormattingProbeRequested
                 ? nativeCreateBlockFormattingHost()
                 : blockPaintProbeRequested
                 ? nativeCreateBlockPaintHost() : nativeCreateHost(registeredPropertiesProbeRequested);
@@ -502,7 +515,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         Log.i(TAG, "SPINON_C0410_ENVIRONMENT viewport=" + widthCssPx + "x" + heightCssPx
                 + " scale=" + density + " dark=" + dark + " " + environment);
-        String result = flexBaselineProbeRequested
+        String result = c121PositioningProbeRequested
+                ? decode(nativeEvalC121PositionFixture(host))
+                : flexBaselineProbeRequested
                 ? decode(nativeEvalFlexBaselineFixture(host))
                 : flexAlignmentProbeRequested
                 ? decode(nativeEvalFlexAlignmentFixture(host))
@@ -551,7 +566,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             postStatus("실패 · " + result);
             return;
         }
-        Log.i(TAG, (flexBaselineProbeRequested
+        Log.i(TAG, (c121PositioningProbeRequested
+                ? "SPINON_C121_INITIAL " : flexBaselineProbeRequested
                 ? "SPINON_C1034_EVAL " : flexAlignmentProbeRequested
                 ? "SPINON_C1033_EVAL " : flexOrderProbeRequested
                 ? "SPINON_C1032_EVAL " : flexReverseProbeRequested
@@ -575,6 +591,39 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? runtimeResultCacheProbeRequested ? "SPINON_C053_INIT " : "SPINON_C052_EVAL "
                 : authorStylesheetsProbeRequested
                         ? "SPINON_C0411_EVAL " : "SPINON_C0410_EVAL ") + result);
+        if (c121PositioningProbeRequested) {
+            Log.i(TAG, "SPINON_C121_SUMMARY state=initial " + runtimeStatusSummary(result));
+            logC121NodeFrames("initial", result);
+            for (int state = 1; state <= 2; state++) {
+                String stateName = state == 1 ? "target-relative" : "ancestor-relative";
+                String stateResult = "";
+                int attempts = 0;
+                do {
+                    attempts++;
+                    stateResult = decode(nativeEvalC121PositionState(host, state));
+                    boolean superseded = stateResult.startsWith("status=-12 ")
+                            && stateResult.contains("op=eval status=0 ");
+                    if (!superseded || attempts == 5) break;
+                    Log.i(TAG, "SPINON_C121_STATE_RETRY name=" + stateName
+                            + " attempt=" + attempts + " reason=scene-superseded");
+                    try {
+                        Thread.sleep(25);
+                    } catch (InterruptedException error) {
+                        Thread.currentThread().interrupt();
+                        postStatus("실패 · C12.1 " + stateName + " 재시도가 중단됐습니다");
+                        return;
+                    }
+                } while (attempts < 5);
+                if (!stateResult.startsWith("status=0 ")) {
+                    postStatus("실패 · C12.1 " + stateName + " · " + stateResult);
+                    return;
+                }
+                Log.i(TAG, "SPINON_C121_STATE name=" + stateName + " attempts=" + attempts + " "
+                        + runtimeStatusSummary(stateResult));
+                logC121NodeFrames(stateName, stateResult);
+                result = stateResult;
+            }
+        }
         if (customPropertiesProbeRequested) {
             result = decode(nativeEvalCustomPropertiesFixture(host));
             if (!result.startsWith("status=0 ")) {
@@ -586,6 +635,27 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         postStatus(runtimeStatusSummary(result));
         requestDraw();
         renderLane.request();
+    }
+
+    private void scheduleC121InitializationForReadySurface() {
+        if (!c121PositioningProbeRequested) return;
+        synchronized (stateLock) {
+            if (closing || hostHandle != 0 || runtimeInitializationQueued
+                    || !surfaceAvailable || surfaceWidth <= 0 || surfaceHeight <= 0) {
+                return;
+            }
+            runtimeInitializationQueued = true;
+        }
+        enqueueRuntime(() -> {
+            synchronized (stateLock) {
+                if (closing || hostHandle != 0 || !surfaceAvailable
+                        || surfaceWidth <= 0 || surfaceHeight <= 0) {
+                    runtimeInitializationQueued = false;
+                    return;
+                }
+            }
+            initializeRuntime();
+        });
     }
 
     private void evaluateCustomPropertiesFixture() {
@@ -758,11 +828,36 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static String runtimeStatusSummary(String report) {
         int statusEnd = report.indexOf(' ');
-        int layoutStart = report.indexOf(" layout=");
-        if (statusEnd >= 0 && layoutStart >= 0) {
-            return report.substring(0, statusEnd) + " " + report.substring(layoutStart + 1);
+        if (statusEnd >= 0 && report.contains(" layout=")) {
+            return report.substring(0, statusEnd)
+                    + " layout=" + reportField(report, "layout=")
+                    + " boxes=" + reportField(report, "boxes=")
+                    + " generation=" + reportField(report, "generation=")
+                    + " document_revision=" + reportField(report, "document_revision=")
+                    + " environment_revision=" + reportField(report, "environment_revision=");
         }
         return report.length() <= 180 ? report : report.substring(0, 180) + "…";
+    }
+
+    private void logC121NodeFrames(String state, String report) {
+        String marker = "node_frames_css_px=[";
+        int start = report.indexOf(marker);
+        int end = start < 0 ? -1 : report.indexOf(']', start + marker.length());
+        if (start < 0 || end < 0) {
+            Log.w(TAG, "SPINON_C121_FRAME_SUMMARY state=" + state
+                    + " marker=missing report_length=" + report.length());
+            return;
+        }
+        String[] frames = report.substring(start + marker.length(), end).split(";", -1);
+        int loggedFrames = 0;
+        for (String frame : frames) {
+            if (!frame.isEmpty()) {
+                Log.i(TAG, "SPINON_C121_NODE_FRAME state=" + state + " " + frame);
+                loggedFrames++;
+            }
+        }
+        Log.i(TAG, "SPINON_C121_FRAME_SUMMARY state=" + state
+                + " frames=" + loggedFrames + " marker=present");
     }
 
     private void refreshEnvironment() {
@@ -795,7 +890,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         Log.i(TAG, "SPINON_C0410_ENVIRONMENT viewport=" + widthCssPx + "x" + heightCssPx
                 + " scale=" + density + " dark=" + dark + " sequence=" + sequence
                 + " " + result);
-        postStatus(result);
+        postStatus(runtimeStatusSummary(result));
         if (result.startsWith("status=0 ") && isCurrentPresentation(generation, sequence)) {
             requestDraw();
         }
@@ -1144,6 +1239,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         Log.i(TAG, "SPINON_C0410_SURFACE_CHANGED generation=" + generation
                 + " size=" + width + "x" + height + " changed=" + changed);
         if (changed) refreshEnvironment();
+        scheduleC121InitializationForReadySurface();
         renderLane.request();
     }
 

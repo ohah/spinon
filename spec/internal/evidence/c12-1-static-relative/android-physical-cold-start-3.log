@@ -1,0 +1,8 @@
+10-11 06:43:58.279 20141 20208 I SpinonBootstrap: SPINON_C121_SUMMARY state=initial status=0 layout=ready boxes=45 generation=1 document_revision=230 environment_revision=0
+10-11 06:43:58.281 20141 20208 I SpinonBootstrap: SPINON_C121_FRAME_SUMMARY state=initial frames=48 marker=present
+10-11 06:43:58.287 20141 20208 I SpinonBootstrap: SPINON_C121_STATE name=target-relative attempts=1 status=0 layout=ready boxes=45 generation=1 document_revision=231 environment_revision=0
+10-11 06:43:58.288 20141 20208 I SpinonBootstrap: SPINON_C121_FRAME_SUMMARY state=target-relative frames=48 marker=present
+10-11 06:43:58.298 20141 20208 I SpinonBootstrap: SPINON_C121_STATE name=ancestor-relative attempts=1 status=0 layout=ready boxes=45 generation=1 document_revision=233 environment_revision=0
+10-11 06:43:58.299 20141 20208 I SpinonBootstrap: SPINON_C121_FRAME_SUMMARY state=ancestor-relative frames=48 marker=present
+10-11 06:43:58.341 20141 20207 I SpinonBootstrap: SPINON_C0410_RENDERER=backend=Vulkan device=Samsung Xclipse 940 format=Rgba8UnormSrgb size=847x281 selection=auto
+10-11 06:43:58.343 20141 20207 I SpinonBootstrap: SPINON_C0410_DRAW generation=2 status=0 presented boxes=45 environment_revision=0 viewport_css_px=301.15555x99.91111 surface_texture=847x281 root_css_px=301.15x99.916664

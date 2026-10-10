@@ -1,10 +1,12 @@
 mod calc_tree;
+mod compute;
 mod css_math;
 mod error;
 mod flex_auto_margin;
 mod flex_baseline;
 mod host_document;
 mod percentage_basis;
+mod positioning;
 mod revision;
 mod style;
 mod taffy_style;
@@ -12,11 +14,9 @@ mod tree_input;
 
 use std::collections::{BTreeMap, BTreeSet};
 
-use calc_tree::CalcLayoutTree;
-use flex_auto_margin::negative_cross_axis_auto_margin_offset_correction;
 use percentage_basis::validate_spacing_percentage_bases;
+use positioning::validate_positioning;
 use spinon_core::NodeId;
-use taffy::prelude::{AvailableSpace, Size};
 
 pub use css_math::{LayoutCalcId, LayoutCssMath, LayoutCssMathProperty, LayoutCssMathValue};
 pub use error::LayoutError;
@@ -25,7 +25,8 @@ pub use style::{
     AlignmentSafety, ContentAlignmentPosition, FlexDirection, FlexWrap, ItemAlignmentPosition,
     JustifyContentPosition, LayoutAlignContent, LayoutAlignItems, LayoutAlignSelf, LayoutBorder,
     LayoutBoxSizing, LayoutDimension, LayoutDisplay, LayoutEdges, LayoutGap, LayoutJustifyContent,
-    LayoutLengthPercentage, LayoutStyle, TextDirection, Viewport,
+    LayoutLengthPercentage, LayoutPosition, LayoutPositioning, LayoutStyle, TextDirection,
+    Viewport,
 };
 
 /// 부모와 자식 ID 순서 및 레이아웃 스타일을 묶은 입력 노드입니다.
@@ -45,6 +46,7 @@ pub struct LayoutInput {
     root_sizing: RootSizingPolicy,
     nodes: Vec<LayoutNode>,
     css_math: Vec<LayoutCssMathValue>,
+    positioning: BTreeMap<NodeId, LayoutPositioning>,
 }
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -80,6 +82,12 @@ impl LayoutInput {
         self.css_math = values;
         self
     }
+
+    /// Typed position과 inset 값을 일반 크기·Flex 스타일과 별도로 연결합니다.
+    pub fn with_positioning(mut self, values: BTreeMap<NodeId, LayoutPositioning>) -> Self {
+        self.positioning = values;
+        self
+    }
 }
 
 /// 화면 루트 왼쪽 위 기준의 절대 프레임입니다.
@@ -95,7 +103,20 @@ pub struct LayoutFrame {
 #[derive(Clone, Debug, Default, PartialEq)]
 pub struct LayoutOutput {
     pub revision: LayoutInputRevision,
+    /// 조상·자기 상대 inset을 반영해 renderer에 게시할 최종 프레임입니다.
     pub frames: BTreeMap<NodeId, LayoutFrame>,
+    /// 상대 inset을 모두 중립화한 normal-flow 기준 프레임입니다.
+    pub flow_frames: BTreeMap<NodeId, LayoutFrame>,
+    /// 각 box가 사용할 수 있는 가장 가까운 relative containing block입니다.
+    pub positioned_owners: BTreeMap<NodeId, PositionedContainingBlockOwner>,
+}
+
+/// 계산 트리 안에서 nearest positioned containing block이 되는 owner입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum PositionedContainingBlockOwner {
+    Viewport,
+    Node(NodeId),
+    NoBox,
 }
 
 /// 입력 트리를 검증하고 논리 단위 프레임을 반환하는 내부 엔진 경계입니다.
@@ -106,34 +127,6 @@ pub trait LayoutEngine {
 /// Taffy Flexbox 기반의 현재 내부 엔진입니다.
 #[derive(Clone, Copy, Debug, Default)]
 pub struct TaffyLayoutEngine;
-
-impl LayoutEngine for TaffyLayoutEngine {
-    fn compute(&self, input: &LayoutInput) -> Result<LayoutOutput, LayoutError> {
-        let index = validate(input)?;
-        let postorder = postorder(input, &index)?;
-        let mut tree = CalcLayoutTree::new(input, &index, &postorder)?;
-        let engine_root = tree.root_engine_id(input.root);
-        let compute_result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
-            tree.compute_layout(
-                engine_root,
-                Size {
-                    width: AvailableSpace::Definite(input.viewport.width),
-                    height: AvailableSpace::Definite(input.viewport.height),
-                },
-            );
-        }));
-        if compute_result.is_err() {
-            return Err(LayoutError::TaffyPanicked);
-        }
-        if let Some(error) = tree.take_calc_error() {
-            return Err(error);
-        }
-
-        flex_baseline::apply(input, &index, &postorder, &mut tree)?;
-
-        collect_frames(input, &index, &tree.engine_ids, &tree)
-    }
-}
 
 fn validate(input: &LayoutInput) -> Result<BTreeMap<NodeId, usize>, LayoutError> {
     if !input.viewport.width.is_finite()
@@ -215,6 +208,7 @@ fn validate(input: &LayoutInput) -> Result<BTreeMap<NodeId, usize>, LayoutError>
         return Err(LayoutError::UnreachableNode(*id));
     }
 
+    validate_positioning(input, &index)?;
     validate_css_math_bindings(input)?;
     validate_spacing_percentage_bases(input, &index)?;
 
@@ -359,6 +353,24 @@ fn validate_css_math_bindings(input: &LayoutInput) -> Result<(), LayoutError> {
             }
         }
     }
+    for (&node, positioning) in &input.positioning {
+        for (property, id) in positioning.calc_values() {
+            let Some(value) = by_id.get(&id) else {
+                return Err(LayoutError::MissingCssMath {
+                    node,
+                    property: property.name(),
+                    id,
+                });
+            };
+            if value.node_id != node || value.property != property {
+                return Err(LayoutError::CssMathBindingMismatch {
+                    node,
+                    property: property.name(),
+                    id,
+                });
+            }
+        }
+    }
     Ok(())
 }
 
@@ -396,83 +408,7 @@ fn detect_cycles(input: &LayoutInput, index: &BTreeMap<NodeId, usize>) -> Result
     Ok(())
 }
 
-fn postorder(
-    input: &LayoutInput,
-    index: &BTreeMap<NodeId, usize>,
-) -> Result<Vec<NodeId>, LayoutError> {
-    let mut output = Vec::with_capacity(input.nodes.len());
-    let mut visited = BTreeSet::new();
-    let mut pending = vec![(input.root, false)];
-    while let Some((id, exiting)) = pending.pop() {
-        if exiting {
-            output.push(id);
-            continue;
-        }
-        if !visited.insert(id) {
-            continue;
-        }
-        pending.push((id, true));
-        for &child in input.nodes[index[&id]].children.iter().rev() {
-            pending.push((child, false));
-        }
-    }
-    if output.len() != input.nodes.len() {
-        return Err(LayoutError::UnreachableNode(
-            index
-                .keys()
-                .find(|id| !visited.contains(id))
-                .copied()
-                .unwrap_or(input.root),
-        ));
-    }
-    Ok(output)
-}
-
-fn collect_frames(
-    input: &LayoutInput,
-    index: &BTreeMap<NodeId, usize>,
-    engine_ids: &BTreeMap<NodeId, taffy::prelude::NodeId>,
-    tree: &CalcLayoutTree,
-) -> Result<LayoutOutput, LayoutError> {
-    let mut frames = BTreeMap::new();
-    let mut pending = vec![(input.root, 0.0_f32, 0.0_f32, None)];
-    while let Some((external_id, parent_x, parent_y, parent_id)) = pending.pop() {
-        let engine_id = engine_ids[&external_id];
-        let layout = tree
-            .layout(engine_id)
-            .ok_or(LayoutError::MissingComputedLayout(external_id))?;
-        let (correction_x, correction_y) = parent_id
-            .map(|parent_id| {
-                negative_cross_axis_auto_margin_offset_correction(
-                    input.nodes[index[&parent_id]].style,
-                    input.nodes[index[&external_id]].style,
-                    layout,
-                )
-            })
-            .unwrap_or((0.0, 0.0));
-        let frame = LayoutFrame {
-            x: parent_x + layout.location.x + correction_x,
-            y: parent_y + layout.location.y + correction_y,
-            width: layout.size.width,
-            height: layout.size.height,
-        };
-        if [frame.x, frame.y, frame.width, frame.height]
-            .into_iter()
-            .any(|value| !value.is_finite())
-        {
-            return Err(LayoutError::NonFiniteFrame(external_id));
-        }
-        frames.insert(external_id, frame);
-        let node = &input.nodes[index[&external_id]];
-        for &child in node.children.iter().rev() {
-            pending.push((child, frame.x, frame.y, Some(external_id)));
-        }
-    }
-    Ok(LayoutOutput {
-        revision: input.revision,
-        frames,
-    })
-}
-
+#[cfg(test)]
+mod positioning_tests;
 #[cfg(test)]
 mod tests;

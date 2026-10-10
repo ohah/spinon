@@ -2,7 +2,7 @@
 
 **상위:** [공식 상태 대장](../spec/STATUS.md) · [코어 아키텍처](../docs/architecture.md)
 
-**현재 상태:** 계획 단계 · 구현 미완료
+**현재 상태:** C12.1 구현·검증 완료 · PR 검토 전 · C12 상위 구현은 미완료
 **목표:** `position`, 물리 inset, containing block, out-of-flow geometry, 고정·sticky 위치, stacking과 `z-index`를 Chromium 기준으로 단계별 연결한다. 계획 초안이나 Taffy 기능 목록을 제품 지원 판정으로 쓰지 않는다.
 
 ## 로드맵 순서와 완료 경계
@@ -45,6 +45,7 @@ C10.3.4는 PR #125로 병합했다. 다음 칸반 작업 C10.3.5는 C12의 posit
 
 - CSS 기본 `position`은 `static`이다. `static`에서는 inset 값이 used positioning offset이 아니며 absolute containing block을 만들지 않는다.
 - `relative`는 normal-flow에서 계산한 위치를 보존한 채 최종 시각 frame만 offset한다. 이 offset은 sibling의 layout position과 부모의 normal-flow 크기를 바꾸지 않는다. 상대 inset의 반대편·양쪽 값, `auto`, 음수, percentage, `calc()`는 고정 Chromium 기준으로 정한다.
+- layout root가 `relative`인 경우 자신의 containing block은 viewport다. Taffy가 root inset을 계산하도록 viewport 크기의 synthetic parent를 해당 입력에만 추가하며, 이 parent는 HostDocument·NodeId·renderer tree에 노출하지 않는다.
 - `relative` offset이 scrollable overflow에 미치는 효과는 C13 scroll/overflow 계약과 함께 닫는다. scrollable overflow 미구현 상태의 작은 fixture는 clipping·스크롤 지원 완료 증거가 아니다.
 - `relative`는 자손의 absolute containing block이 될 수 있다. 자식의 containing-block owner를 computed `position` 값에서 찾고, static 중간 ancestor가 이를 가로채지 않는지 확인한다.
 - `inset` shorthand의 1–4 값, longhand 재정의, cascade layer·specificity·`!important`·`var()`를 computed typed side에 보존한다. 속성 원문 파서로 CSS 문법을 재구현하지 않는다.

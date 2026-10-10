@@ -144,6 +144,7 @@ fn to_input(fixture: &Fixture) -> LayoutInput {
         },
         root_sizing: RootSizingPolicy::Match,
         css_math: vec![],
+        positioning: Default::default(),
         nodes: fixture
             .nodes
             .iter()
@@ -306,6 +307,7 @@ fn fractional_dimensions_are_not_rounded_by_the_layout_engine() {
         },
         root_sizing: RootSizingPolicy::Match,
         css_math: vec![],
+        positioning: Default::default(),
         nodes: vec![
             LayoutNode {
                 id: root,

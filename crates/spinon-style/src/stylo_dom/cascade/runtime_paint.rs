@@ -13,6 +13,12 @@ use super::{
 
 pub(super) const RUNTIME_BLOCK_PAINT_AUTHOR_PROPERTIES: &[&str] = &[
     "display",
+    "position",
+    "inset",
+    "top",
+    "right",
+    "bottom",
+    "left",
     "box-sizing",
     "width",
     "height",
@@ -24,6 +30,12 @@ pub(super) const RUNTIME_BLOCK_PAINT_AUTHOR_PROPERTIES: &[&str] = &[
 
 pub(super) const RUNTIME_BLOCK_FORMATTING_AUTHOR_PROPERTIES: &[&str] = &[
     "display",
+    "position",
+    "inset",
+    "top",
+    "right",
+    "bottom",
+    "left",
     "box-sizing",
     "width",
     "height",

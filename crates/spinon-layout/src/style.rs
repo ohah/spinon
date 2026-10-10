@@ -19,7 +19,7 @@ pub enum LayoutDimension {
 /// 상자 간격과 가장자리에 쓰는 CSS 길이 또는 비율입니다.
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum LayoutLengthPercentage {
-    /// 해당 속성의 자동 사용값 계산을 Taffy에 맡깁니다. 현재 margin에만 허용합니다.
+    /// 해당 속성의 자동 사용값 계산을 Taffy에 맡깁니다. margin과 위치 inset에서 사용합니다.
     Auto,
     LengthPx(f32),
     Percentage(f32),
@@ -213,6 +213,77 @@ pub struct LayoutEdges {
     pub right: LayoutLengthPercentage,
     pub bottom: LayoutLengthPercentage,
     pub left: LayoutLengthPercentage,
+}
+
+impl LayoutEdges {
+    pub const fn auto() -> Self {
+        Self {
+            top: LayoutLengthPercentage::Auto,
+            right: LayoutLengthPercentage::Auto,
+            bottom: LayoutLengthPercentage::Auto,
+            left: LayoutLengthPercentage::Auto,
+        }
+    }
+}
+
+/// 현재 제한 CSS profile에서 사용할 수 있는 계산 위치 값입니다.
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+pub enum LayoutPosition {
+    #[default]
+    Static,
+    Relative,
+}
+
+/// `LayoutStyle`의 기존 크기·Flex 입력과 분리한 CSS positioning 입력입니다.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct LayoutPositioning {
+    pub position: LayoutPosition,
+    pub inset: LayoutEdges,
+}
+
+impl LayoutPositioning {
+    pub(crate) fn calc_values(self) -> impl Iterator<Item = (LayoutCssMathProperty, LayoutCalcId)> {
+        let values = if self.position == LayoutPosition::Static {
+            Vec::new()
+        } else {
+            [
+                (
+                    LayoutCssMathProperty::Top,
+                    calc_length_percentage(self.inset.top),
+                ),
+                (
+                    LayoutCssMathProperty::Right,
+                    calc_length_percentage(self.inset.right),
+                ),
+                (
+                    LayoutCssMathProperty::Bottom,
+                    calc_length_percentage(self.inset.bottom),
+                ),
+                (
+                    LayoutCssMathProperty::Left,
+                    calc_length_percentage(self.inset.left),
+                ),
+            ]
+            .into_iter()
+            .filter_map(|(property, id)| id.map(|id| (property, id)))
+            .collect()
+        };
+        values.into_iter()
+    }
+}
+
+impl Default for LayoutPositioning {
+    fn default() -> Self {
+        Self {
+            position: LayoutPosition::Static,
+            inset: LayoutEdges {
+                top: LayoutLengthPercentage::Auto,
+                right: LayoutLengthPercentage::Auto,
+                bottom: LayoutLengthPercentage::Auto,
+                left: LayoutLengthPercentage::Auto,
+            },
+        }
+    }
 }
 
 /// Taffy에 전달하는 면별 CSS border used width입니다. 모든 값은 CSS px입니다.

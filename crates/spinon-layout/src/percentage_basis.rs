@@ -54,6 +54,15 @@ pub(super) fn validate_spacing_percentage_bases(
                 },
                 _ => DefiniteAxes::default(),
             });
+        let position_parent_axes = if id == input.root {
+            // 레이아웃 루트의 containing block은 호출 환경의 확정 viewport입니다.
+            DefiniteAxes {
+                width: true,
+                height: true,
+            }
+        } else {
+            parent_axes
+        };
         let is_hidden = parent
             .and_then(|parent| hidden.get(&parent.id))
             .copied()
@@ -85,10 +94,54 @@ pub(super) fn validate_spacing_percentage_bases(
                 validate_root_gap_percentage(node, &calc_percentages)?;
             }
             validate_edge_percentages(node, parent_axes, &calc_percentages)?;
+            validate_position_percentage_bases(
+                id,
+                input.positioning.get(&id).copied(),
+                position_parent_axes,
+                &calc_percentages,
+            )?;
             validate_main_axis_gap(node, axes, &calc_percentages)?;
         }
         definite.insert(id, axes);
         pending.extend(node.children.iter().rev().copied());
+    }
+    Ok(())
+}
+
+fn validate_position_percentage_bases(
+    node: NodeId,
+    positioning: Option<crate::LayoutPositioning>,
+    parent_axes: DefiniteAxes,
+    calc_percentages: &BTreeMap<LayoutCalcId, bool>,
+) -> Result<(), LayoutError> {
+    let Some(positioning) = positioning else {
+        return Ok(());
+    };
+    if positioning.position != crate::LayoutPosition::Relative {
+        return Ok(());
+    }
+    for (property, value, is_definite, axis) in [
+        ("top", positioning.inset.top, parent_axes.height, "height"),
+        ("right", positioning.inset.right, parent_axes.width, "width"),
+        (
+            "bottom",
+            positioning.inset.bottom,
+            parent_axes.height,
+            "height",
+        ),
+        ("left", positioning.inset.left, parent_axes.width, "width"),
+    ] {
+        if has_percentage(value, calc_percentages) && !is_definite {
+            return Err(LayoutError::IndefinitePercentageBasis {
+                node,
+                property,
+                axis: if axis == "width" {
+                    "containing block width"
+                } else {
+                    "containing block height"
+                },
+            });
+        }
     }
     Ok(())
 }

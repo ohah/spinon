@@ -168,6 +168,7 @@ fn unknown_taffy_handle_is_recorded_instead_of_dereferenced() {
             },
         }],
         css_math: vec![],
+        positioning: Default::default(),
     };
     let index = BTreeMap::from([(root, 0)]);
     let mut tree = CalcLayoutTree::new(&input, &index, &[root]).unwrap();
@@ -229,6 +230,7 @@ fn input_with_child(
             height: 800.0,
         },
         root_sizing: RootSizingPolicy::Match,
+        positioning: Default::default(),
         nodes: vec![
             LayoutNode {
                 id: root,
