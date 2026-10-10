@@ -12,6 +12,8 @@ use crate::{
 
 #[path = "tests/border.rs"]
 mod border;
+#[path = "tests/flex_baseline.rs"]
+mod flex_baseline;
 #[path = "tests/flex_distribution.rs"]
 mod flex_distribution;
 #[path = "tests/flex_order.rs"]

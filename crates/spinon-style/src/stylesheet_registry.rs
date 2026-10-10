@@ -189,8 +189,12 @@ impl StylesheetRegistry {
         let normalized_base_url = base_url.as_str().to_owned();
 
         let diagnostics = ParseDiagnostics::default();
-        let stylesheet = Stylesheet::from_str(
+        let parser_css = crate::c10_flex_baseline_css::invalidate_chrome_unsupported_last_baseline(
             &source.css,
+            true,
+        );
+        let stylesheet = Stylesheet::from_str(
+            &parser_css,
             UrlExtraData::from(base_url),
             source.origin.as_stylo_origin(),
             Arc::new(self.shared_lock.wrap(MediaList::empty())),
@@ -336,8 +340,10 @@ pub(super) fn parse_inline_style_attribute(
     Vec<CssParseDiagnostic>,
 ) {
     let diagnostics = ParseDiagnostics::default();
+    let parser_source =
+        crate::c10_flex_baseline_css::invalidate_chrome_unsupported_last_baseline(source, false);
     let declarations = parse_style_attribute(
-        source,
+        &parser_source,
         &UrlExtraData::from(base_url.clone()),
         Some(&diagnostics),
         quirks_mode,

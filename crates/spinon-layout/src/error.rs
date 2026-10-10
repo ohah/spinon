@@ -34,6 +34,10 @@ pub enum LayoutError {
         node: NodeId,
         field: &'static str,
     },
+    UnsupportedBaseline {
+        node: NodeId,
+        reason: &'static str,
+    },
     UnsupportedRootPercentageSpacing {
         node: NodeId,
         property: &'static str,
@@ -108,6 +112,12 @@ impl fmt::Display for LayoutError {
             }
             Self::InvalidStyle { node, field } => {
                 write!(formatter, "노드 {node}의 {field} 값이 유효하지 않습니다")
+            }
+            Self::UnsupportedBaseline { node, reason } => {
+                write!(
+                    formatter,
+                    "노드 {node}의 baseline 계산을 지원하지 않습니다: {reason}"
+                )
             }
             Self::UnsupportedRootPercentageSpacing { node, property } => write!(
                 formatter,

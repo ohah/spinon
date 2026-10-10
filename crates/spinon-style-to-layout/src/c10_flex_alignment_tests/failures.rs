@@ -64,8 +64,8 @@ fn unsupported_adapter_values_fail_with_node_and_property_context() {
         media_environment: CssMediaEnvironment::MOBILE,
     };
     for (property, value, target) in [
-        ("align-items", "baseline", "root"),
-        ("align-self", "baseline", "child"),
+        ("align-items", "anchor-center", "root"),
+        ("align-self", "anchor-center", "child"),
         ("align-content", "left", "root"),
         ("justify-content", "safe space-between", "root"),
     ] {

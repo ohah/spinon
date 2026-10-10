@@ -49,6 +49,8 @@ pub(super) fn parse_runtime_align_items(
         "flex-start" => Some(LayoutAlignItems::FlexStart),
         "flex-end" => Some(LayoutAlignItems::FlexEnd),
         "center" => Some(LayoutAlignItems::Center),
+        "baseline" | "first baseline" => Some(LayoutAlignItems::FirstBaseline),
+        "last baseline" => Some(LayoutAlignItems::LastBaseline),
         _ => parse_item_position(value)
             .map(|(position, safety)| LayoutAlignItems::Position { position, safety }),
     };
@@ -66,6 +68,8 @@ pub(super) fn parse_runtime_align_self(
         "flex-start" => Some(LayoutAlignSelf::FlexStart),
         "flex-end" => Some(LayoutAlignSelf::FlexEnd),
         "center" => Some(LayoutAlignSelf::Center),
+        "baseline" | "first baseline" => Some(LayoutAlignSelf::FirstBaseline),
+        "last baseline" => Some(LayoutAlignSelf::LastBaseline),
         _ => parse_item_position(value)
             .map(|(position, safety)| LayoutAlignSelf::Position { position, safety }),
     };
@@ -85,6 +89,7 @@ pub(super) fn parse_runtime_align_content(
         "space-between" => Some(LayoutAlignContent::SpaceBetween),
         "space-around" => Some(LayoutAlignContent::SpaceAround),
         "space-evenly" => Some(LayoutAlignContent::SpaceEvenly),
+        "baseline" | "first baseline" => Some(LayoutAlignContent::FirstBaseline),
         _ => parse_content_position(value)
             .map(|(position, safety)| LayoutAlignContent::Position { position, safety }),
     };

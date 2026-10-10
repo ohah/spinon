@@ -46,6 +46,7 @@
     "benchmark:r05-trace-overhead:ios": "bash tools/benchmark/run-ios-trace-overhead-matrix.sh",
     "build:android": "bash tools/build-android-app.sh",
     "build:ios-sim": "bash tools/build-ios-sim.sh",
-    "css:reference:c10-3-3-alignment": "node tools/css-reference/capture-c10-3-3-flex-alignment.mjs"
+    "css:reference:c10-3-3-alignment": "node tools/css-reference/capture-c10-3-3-flex-alignment.mjs",
+    "css:reference:c10-3-4-baseline": "node tools/css-reference/capture-c10-3-4-flex-baseline.mjs"
   }
 }
