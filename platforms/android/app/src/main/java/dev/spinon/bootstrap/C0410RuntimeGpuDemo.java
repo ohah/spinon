@@ -50,6 +50,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native byte[] nativeEvalFlowRootFixture(long host);
     private static native byte[] nativeEvalFlexWrapFixture(long host);
     private static native byte[] nativeEvalFlexDistributionFixture(long host);
+    private static native byte[] nativeEvalFlexReverseFixture(long host);
     private static native long nativeCreateSurface(
             long host, Surface surface, int width, int height, int backend);
     private static native int nativeResizeSurface(long renderer, int width, int height);
@@ -91,6 +92,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean flowRootProbeRequested;
     private final boolean flexWrapProbeRequested;
     private final boolean flexDistributionProbeRequested;
+    private final boolean flexReverseProbeRequested;
     private final boolean registeredPropertiesProbeRequested;
     private final boolean authorStylesheetsProbeRequested;
     private final float density;
@@ -154,6 +156,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 .getBooleanExtra("spinon_c101_flex_wrap", false);
         flexDistributionProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c102_flex_distribution", false);
+        flexReverseProbeRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c1031_flex_reverse", false);
         blockFormattingProbeRequested = flowRootProbeRequested || marginCollapseProbeRequested
                 || activity.getIntent().getBooleanExtra("spinon_c091_block_formatting", false);
         registeredPropertiesProbeRequested = runtimeResultCacheProbeRequested
@@ -173,7 +177,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         setBackgroundColor(Color.rgb(14, 19, 31));
 
         TextView title = new TextView(activity);
-        title.setText(flexDistributionProbeRequested
+        title.setText(flexReverseProbeRequested
+                ? "SPINON · C10.3.1 reverse Flex"
+                : flexDistributionProbeRequested
                 ? "SPINON · C10.2 flex distribution"
                 : flexWrapProbeRequested
                 ? "SPINON · C10.1 flex-wrap"
@@ -216,7 +222,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         addView(title, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 
         TextView description = new TextView(activity);
-        description.setText(flexDistributionProbeRequested
+        description.setText(flexReverseProbeRequested
+                ? "V8 row-reverse·wrap-reverse → Stylo → Taffy → WGPU · 320×240 CSS px"
+                : flexDistributionProbeRequested
                 ? "V8 flex basis·grow·shrink·min/max freeze → Stylo → Taffy → WGPU · 320×240 CSS px"
                 : flexWrapProbeRequested
                 ? "V8 CSS flex-wrap row·gap → Stylo → Taffy → WGPU · 320×240 CSS px"
@@ -269,7 +277,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
         surfaceView = new SurfaceView(activity);
         surfaceView.getHolder().addCallback(this);
-        surfaceView.setContentDescription(flexDistributionProbeRequested
+        surfaceView.setContentDescription(flexReverseProbeRequested
+                ? "C10.3.1 row-reverse와 wrap-reverse WGPU 장면"
+                : flexDistributionProbeRequested
                 ? "C10.2 flex grow·shrink·min/max freeze WGPU 장면"
                 : flexWrapProbeRequested
                 ? "C10.1 세 줄 flex-wrap·gap WGPU 장면"
@@ -309,8 +319,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         ? "C04.11 Chromium stylesheet fixture의 WGPU 장면"
                 : "C04.10 Chromium fixture의 WGPU 장면");
         int initialSurfaceWidth = blockFormattingProbeRequested || flexWrapProbeRequested
+                || flexReverseProbeRequested
                 || flexDistributionProbeRequested ? 320 : 301;
         int initialSurfaceHeight = blockFormattingProbeRequested || flexWrapProbeRequested
+                || flexReverseProbeRequested
                 || flexDistributionProbeRequested ? 240 : 100;
         LayoutParams surfaceParams = new LayoutParams(
                 dp(initialSurfaceWidth, density), dp(initialSurfaceHeight, density));
@@ -319,7 +331,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         Button resizeButton = new Button(activity);
         resizeButton.setText("표면 크기 전환 · 301×100 CSS px");
         resizeButton.setOnClickListener(view -> toggleSurfaceSize(resizeButton));
-        if (blockFormattingProbeRequested || flexWrapProbeRequested
+        if (blockFormattingProbeRequested || flexWrapProbeRequested || flexReverseProbeRequested
                 || flexDistributionProbeRequested) resizeButton.setVisibility(GONE);
         LayoutParams resizeButtonParams =
                 new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
@@ -360,7 +372,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             else if (registeredPropertiesProbeRequested) evaluateRegisteredPropertiesFixture();
             else evaluateCustomPropertiesFixture();
         });
-        if (authorStylesheetsProbeRequested || viewportUnitsProbeRequested || blockFormattingProbeRequested || flexWrapProbeRequested || flexDistributionProbeRequested || blockPaintProbeRequested || aspectRatioProbeRequested
+        if (authorStylesheetsProbeRequested || viewportUnitsProbeRequested || blockFormattingProbeRequested || flexWrapProbeRequested || flexReverseProbeRequested || flexDistributionProbeRequested || blockPaintProbeRequested || aspectRatioProbeRequested
                 || minMaxSizingProbeRequested
                 || borderWidthProbeRequested
                 || typedCssMathProbeRequested
@@ -438,9 +450,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         final float heightCssPx;
         final boolean dark;
         synchronized (stateLock) {
-            widthCssPx = blockFormattingProbeRequested || flexWrapProbeRequested
+            widthCssPx = blockFormattingProbeRequested || flexWrapProbeRequested || flexReverseProbeRequested
                     || flexDistributionProbeRequested ? 320 : cssViewportWidthLocked();
-            heightCssPx = blockFormattingProbeRequested || flexWrapProbeRequested
+            heightCssPx = blockFormattingProbeRequested || flexWrapProbeRequested || flexReverseProbeRequested
                     || flexDistributionProbeRequested ? 240 : cssViewportHeightLocked();
             dark = darkMode;
         }
@@ -451,7 +463,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         Log.i(TAG, "SPINON_C0410_ENVIRONMENT viewport=" + widthCssPx + "x" + heightCssPx
                 + " scale=" + density + " dark=" + dark + " " + environment);
-        String result = flexDistributionProbeRequested
+        String result = flexReverseProbeRequested
+                ? decode(nativeEvalFlexReverseFixture(host))
+                : flexDistributionProbeRequested
                 ? decode(nativeEvalFlexDistributionFixture(host))
                 : flexWrapProbeRequested
                 ? decode(nativeEvalFlexWrapFixture(host))
@@ -492,7 +506,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             postStatus("실패 · " + result);
             return;
         }
-        Log.i(TAG, (flexDistributionProbeRequested
+        Log.i(TAG, (flexReverseProbeRequested
+                ? "SPINON_C1031_EVAL " : flexDistributionProbeRequested
                 ? "SPINON_C102_EVAL " : flexWrapProbeRequested
                 ? "SPINON_C101_EVAL " : marginCollapseProbeRequested
                 ? "SPINON_C092_EVAL " : blockFormattingProbeRequested
@@ -739,10 +754,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private float cssViewportWidthLocked() {
+        if (blockFormattingProbeRequested || flexWrapProbeRequested || flexReverseProbeRequested
+                || flexDistributionProbeRequested) return 320.0f;
         return surfaceWidth > 0 ? (float) surfaceWidth / density : 301.0f;
     }
 
     private float cssViewportHeightLocked() {
+        if (blockFormattingProbeRequested || flexWrapProbeRequested || flexReverseProbeRequested
+                || flexDistributionProbeRequested) return 240.0f;
         return surfaceHeight > 0 ? (float) surfaceHeight / density : 100.0f;
     }
 
@@ -894,6 +913,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         String result = decode(nativeDrawSurface(renderer));
         Log.i(TAG, "SPINON_C0410_DRAW generation=" + generation + " " + result);
+        if (result.startsWith("status=-12 ")) {
+            Log.i(TAG, "SPINON_C0410_DRAW_SUPERSEDED generation=" + generation);
+            requestDraw();
+            return;
+        }
         if (!result.startsWith("status=0 ")) {
             postStatus("실패 · " + result);
             return;

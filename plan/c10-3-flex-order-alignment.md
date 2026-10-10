@@ -1,7 +1,7 @@
 # C10.3 · Flex 순서와 정렬 구현 계획
 
 **상위:** [C10 Flexbox](c10-flexbox.md) · [공식 상태 대장](../spec/STATUS.md)
-**현재 상태:** 계획 단계. 기능 구현·테스트·플랫폼 실행을 주장하지 않는다.
+**현재 상태:** C10.3.1 구현 브랜치 검증 완료·미병합. 나머지 C10.3 단계는 계획 단계다.
 **내부 계약 숫자 버전:** 출시 전 `0.1.0` 고정.
 
 ## 목표
@@ -14,7 +14,7 @@
 
 | 하위 ID | 범위 | 완료 전제 | 상태 |
 | --- | --- | --- | --- |
-| C10.3.1 | `row-reverse`, `column-reverse`, `wrap-reverse`와 `flex-flow` 조합 | C10.1·C10.2에서 고정한 line 수집·크기 배분과 분리해 축 시작점 및 line stacking을 비교한다. | 미구현 |
+| C10.3.1 | `row-reverse`, `column-reverse`, `wrap-reverse`와 `flex-flow` 조합 | C10.1·C10.2에서 고정한 line 수집·크기 배분과 분리해 축 시작점 및 line stacking을 비교한다. | 구현 브랜치 검증 완료·PR 미병합 · [계약 0050](../spec/internal/0050-c10-3-1-flex-reverse.md) |
 | C10.3.2 | `order`의 안정적인 계산 순서와 paint 순서 | HostDocument 자식 순서를 유지하고 layout·paint·source traversal을 분리한다. | 미구현 |
 | C10.3.3 | `align-self`와 `align-content`의 비-baseline 값 | auto margin, stretch, wrap 상태, line 수와 gap의 상호작용을 비교한다. | 미구현 |
 | C10.3.4 | item·line baseline 정렬 및 Flex container baseline | 우선 빈 고정 크기 상자의 합성 first/last baseline을 비교한다. 텍스트 baseline은 C15의 실제 글꼴 측정 계약과 연결하기 전까지 미완료로 남긴다. | 미구현 |

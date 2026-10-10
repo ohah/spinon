@@ -54,6 +54,8 @@ impl LayoutLengthPercentage {
 pub enum FlexDirection {
     Row,
     Column,
+    RowReverse,
+    ColumnReverse,
 }
 
 /// Flex 컨테이너의 항목을 주축의 다음 줄로 보낼지 정합니다.
@@ -62,6 +64,7 @@ pub enum FlexWrap {
     #[default]
     NoWrap,
     Wrap,
+    WrapReverse,
 }
 
 /// Taffy가 계산하는 제한 CSS display 값입니다.

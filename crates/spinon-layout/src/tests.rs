@@ -14,6 +14,8 @@ use crate::{
 mod border;
 #[path = "tests/flex_distribution.rs"]
 mod flex_distribution;
+#[path = "tests/flex_reverse.rs"]
+mod flex_reverse;
 #[path = "tests/invalid_inputs.rs"]
 mod invalid_inputs;
 #[path = "tests/legacy_oracle.rs"]
@@ -150,6 +152,8 @@ fn to_input(fixture: &Fixture) -> LayoutInput {
                     flex_direction: match node.style.flex_direction.as_str() {
                         "row" => FlexDirection::Row,
                         "column" => FlexDirection::Column,
+                        "row-reverse" => FlexDirection::RowReverse,
+                        "column-reverse" => FlexDirection::ColumnReverse,
                         other => panic!("알 수 없는 fixture flexDirection: {other}"),
                     },
                     direction: match node.style.direction.as_str() {
