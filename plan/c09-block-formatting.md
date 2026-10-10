@@ -4,13 +4,13 @@
 
 현재 모바일 우선 Runtime CSS 경로에 Chromium과 일치하는 Block formatting 동작을 단계적으로 연결한다. CSS 선언은 Stylo가 계산하고, 레이아웃 adapter와 Taffy는 typed style·트리·포함 블록을 받아 geometry를 계산한다. 지원 선언을 조용히 버리거나 Block 기본값으로 바꾸지 않는다.
 
-C08.1 구현 PR [#105](https://github.com/ohah/spinon/pull/105)와 C09 계획·reference가 `main`에 병합됐다. C09.1은 Chromium 기준 10개 case·30개 node를 연결하고 Rust/CSS 검증, Android API 37·iOS 26.2 Simulator 실행을 마쳐 [PR #107](https://github.com/ohah/spinon/pull/107)로 리베이스 병합했다. C09.2는 pinned Taffy Block 알고리즘이 이미 계산하는 signed margin collapse를 Chromium 기준·실제 V8→WGPU 경로로 고정해 [PR #109](https://github.com/ohah/spinon/pull/109)로 리베이스 병합했다. C09.3–C09.4는 미구현이다. C08.1의 기본 Block 흐름은 margin collapse나 formatting context 구현을 대신하지 않는다.
+C08.1 구현 PR [#105](https://github.com/ohah/spinon/pull/105)와 C09 계획·reference가 `main`에 병합됐다. C09.1은 Chromium 기준 10개 case·30개 node를 연결하고 Rust/CSS 검증, Android API 37·iOS 26.2 Simulator 실행을 마쳐 [PR #107](https://github.com/ohah/spinon/pull/107)로 리베이스 병합했다. C09.2는 pinned Taffy Block 알고리즘이 이미 계산하는 signed margin collapse를 Chromium 기준·실제 V8→WGPU 경로로 고정해 [PR #109](https://github.com/ohah/spinon/pull/109)로 리베이스 병합했다. C09.3도 구현·비교·시뮬레이터 검증을 마쳐 [PR #111](https://github.com/ohah/spinon/pull/111)로 리베이스 병합했다. C09.4는 미구현이다. C08.1의 기본 Block 흐름은 margin collapse나 formatting context 구현을 대신하지 않는다.
 
 | 하위 ID | 동작 범위 | 순서·선행 조건 |
 | --- | --- | --- |
 | C09.1 | 일반 in-flow Block 크기 방정식, 수직 흐름, containing block | PR #107 리베이스 병합 · 내부 fixture 검증 완료 |
 | C09.2 | 수직 margin collapse와 signed margin strut | 구현·검증 완료 · [PR #109 리베이스 병합](https://github.com/ohah/spinon/pull/109) |
-| C09.3 | `display: flow-root`와 Block formatting context 경계 | C09.2 뒤 구현 |
+| C09.3 | `display: flow-root`와 Block formatting context 경계 | 구현·검증 완료 · [PR #111 리베이스 병합](https://github.com/ohah/spinon/pull/111) |
 | C09.4 | shrink-to-fit이 필요한 float·inline-block·absolute 문맥 | C12 positioning, C14 intrinsic sizing, C15 inline/text 측정, C26 float 중 해당 문맥의 선행 구현이 된 뒤 연결. 이 항목이 끝날 때까지 C09 상위는 미완료 |
 
 C09.4는 단순히 Taffy의 `fit-content` 값으로 바꾸어 완료 처리하지 않는다. CSS 2.1의 shrink-to-fit 사용처는 서로 다른 formatting context에 있으므로 각 문맥과 intrinsic width 측정이 준비된 뒤 Chromium 기준을 별도로 닫는다.
@@ -57,7 +57,7 @@ C09.4는 단순히 Taffy의 `fit-content` 값으로 바꾸어 완료 처리하�
 - 실제 V8→Stylo→Taffy→WGPU 경로에는 독립 `runtime-flow-root.js` fixture와 C09.3 전용 Android/iOS 실행 인자를 연결한다. 화면의 색상 box는 격리된 내부 child margin과 외부 parent/neighbor margin을 보여주는 smoke evidence다. 네 fixture의 수치 정확성은 Rust·Chromium 대조가 판정하며, 플랫폼 캡처는 layout report가 준비되고 해당 실행 인자가 선택된 것을 보조 확인한다.
 - C09.3 전용 계획 공격 검토 20개를 본 구현 전에 기록하고, 구현 이후에는 그 표를 재사용하지 않는 새로운 코드·오류·플랫폼 경계 20개를 별도 기록한다. Android API 37 emulator와 iPhone 17 Pro / iOS 26.2 Simulator를 실행하며, 실기기·성능·하드웨어 GPU 주장은 하지 않는다.
 
-실행 상태: C09.3 고정 reference 4개 case·16개 node를 DPR 1·2의 style/geometry 비교로 통과했고, FlowRoot percentage basis와 childless leaf 회귀도 추가 확인했다. Android API 37 emulator와 iPhone 17 Pro / iOS 26.2 Simulator에서 5개 box의 동일 CSS frame을 표시했다. 독립 구현 검토 및 두 플랫폼 캡처는 [C09.3 구현 검토·실행 근거](../spec/internal/evidence/c09-3-flow-root-implementation-review-2026-10-10.md)에 기록한다. 현재 PR 미병합 상태다.
+실행 상태: C09.3 고정 reference 4개 case·16개 node를 DPR 1·2의 style/geometry 비교로 통과했고, FlowRoot percentage basis와 childless leaf 회귀도 추가 확인했다. Android API 37 emulator와 iPhone 17 Pro / iOS 26.2 Simulator에서 5개 box의 동일 CSS frame을 표시했다. 독립 구현 검토 및 두 플랫폼 캡처는 [C09.3 구현 검토·실행 근거](../spec/internal/evidence/c09-3-flow-root-implementation-review-2026-10-10.md)에 기록했다. 구현 PR [#111](https://github.com/ohah/spinon/pull/111)이 리베이스 병합됐다.
 
 계획 검토 및 실행의 고정 근거는 [C09.3 실행 계획 검토](../spec/internal/evidence/c09-3-flow-root-plan-review-2026-10-10.md)와 [C09.3 구현 검토](../spec/internal/evidence/c09-3-flow-root-implementation-review-2026-10-10.md)에 기록한다.
 
