@@ -1,7 +1,7 @@
 # C10.3 · Flex 순서와 정렬 구현 계획
 
 **상위:** [C10 Flexbox](c10-flexbox.md) · [공식 상태 대장](../spec/STATUS.md)
-**현재 상태:** C10.3.1은 PR #119, C10.3.2는 PR #120으로 리베이스 병합했다. C10.3.3의 제한 구현·검증은 완료했고 PR 검토·병합을 기다린다. 고정 Chrome 154의 50개 case·134개 node를 여섯 runtime profile에서 검사했고, Android SM-S731N 실기기와 iPhone 17 Pro / iOS 26.2 Simulator의 실제 V8→Stylo→Taffy→WGPU 8-node frame이 runtime Chrome 기준과 일치했다. WPT 실행과 전체 모바일 fixture 행렬, RTL·다른 writing mode는 완료 범위에 포함하지 않는다. C10.3.4와 C12 뒤의 C10.3.5는 미구현이다.
+**현재 상태:** C10.3.1은 PR #119, C10.3.2는 PR #120, C10.3.3은 PR #122로 리베이스 병합했다. C10.3.3은 고정 Chrome 154 50개 case·134개 node를 여섯 runtime profile에서 검사했고, Android SM-S731N 실기기와 iPhone 17 Pro / iOS 26.2 Simulator에서 실제 V8→Stylo→Taffy→WGPU 8-node frame이 Chrome 기준과 일치했다. WPT 실행, 전체 모바일 fixture 행렬, RTL·다른 writing mode는 완료 범위에 포함하지 않는다. C10.3.4는 계획 검토를 반영했으며 구현 전이다. C12 뒤의 C10.3.5는 미구현이다.
 **내부 계약 숫자 버전:** 출시 전 `0.1.0` 고정.
 
 ## 목표
@@ -16,8 +16,8 @@
 | --- | --- | --- | --- |
 | C10.3.1 | `row-reverse`, `column-reverse`, `wrap-reverse`와 `flex-flow` 조합 | C10.1·C10.2에서 고정한 line 수집·크기 배분과 분리해 축 시작점 및 line stacking을 비교한다. | PR #119 병합 · [계약 0050](../spec/internal/0050-c10-3-1-flex-reverse.md) |
 | C10.3.2 | `order`의 안정적인 계산 순서와 paint 순서 | HostDocument 자식 순서를 유지하고 layout·paint·source traversal을 분리한다. | [PR #120 병합](https://github.com/ohah/spinon/pull/120) · 제한 구현과 Android/iOS Simulator runtime 검증 완료 · [계획 검토](../spec/internal/evidence/c10-3-2-order-plan-review-2026-10-10.md) · [구현 계약 0051](../spec/internal/0051-c10-3-2-flex-order.md) · [실행 근거](../spec/internal/evidence/c10-3-2-flex-order-implementation-review-2026-10-10.md) |
-| C10.3.3 | Flex Box Alignment의 비-baseline longhand·shorthand | `align-items`·`align-self`·`align-content`와 `place-items`·`place-self`·`place-content`를 계산·layout 경계까지 비교한다. `place-content`가 설정하는 `justify-content`도 shorthand의 전체 값을 처리할 수 있게 runtime Flex 범위에서 함께 확장한다. | 제한 구현·검증 완료, PR 검토 대기 · [내부 계약 0052](../spec/internal/0052-c10-3-3-flex-box-alignment.md) · [실패 관점 검토·실행](../spec/internal/evidence/c10-3-3-flex-alignment-implementation-review-2026-10-11.md) |
-| C10.3.4 | item·line baseline 정렬 및 Flex container baseline | 우선 빈 고정 크기 상자의 합성 first/last baseline을 비교한다. 텍스트 baseline은 C15의 실제 글꼴 측정 계약과 연결하기 전까지 미완료로 남긴다. | 미구현 |
+| C10.3.3 | Flex Box Alignment의 비-baseline longhand·shorthand | `align-items`·`align-self`·`align-content`와 `place-items`·`place-self`·`place-content`를 계산·layout 경계까지 비교한다. `place-content`가 설정하는 `justify-content`도 shorthand의 전체 값을 처리할 수 있게 runtime Flex 범위에서 함께 확장한다. | [PR #122 병합](https://github.com/ohah/spinon/pull/122) · [내부 계약 0052](../spec/internal/0052-c10-3-3-flex-box-alignment.md) · [실패 관점 검토·실행](../spec/internal/evidence/c10-3-3-flex-alignment-implementation-review-2026-10-11.md) |
+| C10.3.4 | item baseline self-alignment, baseline content-alignment 경계, Flex container baseline | `align-items`·`align-self`의 first/last baseline과 order·line별 baseline 참여를 비교한다. `align-content:first baseline`은 line baseline 분배로 간주하지 않고 textless fixed-box의 Chrome computed/geometry 관찰에 한정한다. Flex container의 first/last baseline 전파를 별도 nested fixture로 비교한다. | 계획 검토 반영 · 구현 전 · [계획 검토](../spec/internal/evidence/c10-3-4-baseline-plan-review-2026-10-11.md) |
 | C10.3.5 | positioned flex child와 순서·정렬 교차 통합 | C12 이후 absolute child는 flex line 계산에서 제외하고 paint order에서는 `order:0`으로 취급하며, static-position `align-self`를 비교한다. | C12 선행 |
 
 각 구현 PR은 하나의 하위 단계를 소유한다. C10.3.1부터 C10.3.4까지 순서대로 진행하고, C10.3.5는 C12 positioning 구현 뒤 별도 PR로 진행한다. 한 PR에 여러 단계를 묶지 않는다. C10.3 parent는 다섯 단계와 C15 텍스트 baseline 연결이 모두 닫히기 전까지 미완료다. 각 기능 구현 PR은 계획 검토와 독립된 새 실패 관점 20개를 기록한다.
@@ -145,8 +145,11 @@
 | `align-self-auto-and-stretch` | parent `align-items:center`; child `align-self:auto`; 별도 auto cross-size child에 stretch | auto의 computed value는 `auto`로 남고 used alignment/geometry는 center와 같으며, stretch child는 제한 조건이 없을 때 line의 사용 cross size를 채운다. |
 | `align-content-wrap-single-line` | definite 높이 100의 `flex-wrap:wrap`, 실제 line 하나, item height 20 | `flex-start`·`space-between` y=0, `center`·`space-around`·`space-evenly` y=40, `flex-end` y=80, `stretch`와 `normal`은 line cross size 100인 결과를 Chrome과 비교한다. `nowrap` 대조와 구별한다. |
 | `align-content-wrap-two-lines` | `wrap`, 실제 두 line의 높이 20, 컨테이너 높이 100, gap 0 | line 시작 y는 `flex-start=0/20`, `flex-end=60/80`, `center=30/50`, `space-between=0/80`, `space-around=15/65`, `space-evenly=20/60`, `stretch=0/50`이며 stretch line 높이는 50이다. `normal`의 결과도 Chrome과 비교한다. |
-| `baseline-empty-boxes` | 서로 다른 높이의 empty fixed-size item, baseline alignment | node별 frame과 baseline fallback을 Chromium/Taffy에서 직접 비교한다. text node는 넣지 않는다. |
-| `baseline-content-lines` | row wrap 두 line, line마다 높이가 다른 empty fixed-size item, `align-content:first baseline`/`last baseline` | computed keyword, line frame과 baseline fallback을 비교한다. 같은 fixture의 column wrap 대조는 CSS Align baseline content-alignment 축 제한을 확인한다. |
+| `baseline-first-items` | row, 높이 20/40/30px인 빈 fixed-size item, `align-items:baseline`과 `first baseline` | computed `baseline` alias, 공유 baseline 위치, 단일 참여자 fallback과 비참여 형제의 line 크기를 node별 비교한다. |
+| `baseline-last-items` | 같은 row에 `align-items` 또는 `align-self:last baseline`; first·last 그룹을 따로 실행 | computed `last baseline`, line cross-end fallback, bottom margin이 서로 다른 경우를 비교한다. last를 Taffy first-baseline 값으로 축약하지 않는다. |
+| `baseline-content-empty-items` | nested row Flex item에 `align-content:first baseline`, 내부는 빈 fixed-size box; 별도 2-line Flex line 분배 대조 | 첫 baseline content-alignment를 Flex line끼리 baseline 정렬하는 기능으로 해석하지 않는다. computed `baseline`과 고정 Chrome의 empty-content geometry만 기록하고 텍스트 콘텐츠 정렬은 C15 전까지 지원 완료로 표시하지 않는다. |
+| `baseline-content-last-invalid` | `align-content`에 `last baseline`을 유효 선언 뒤 설정 | pinned Chrome의 invalid/fallback 결과를 확인한다. 이 입력을 `align-content:last baseline` 성공 경로로 투영하지 않는다. |
+| `baseline-container-first-last` | 중첩 row Flex container, wrap·wrap-reverse·order와 비균등 높이 item | 첫/마지막 baseline set의 시각적 startmost/endmost line·item 선택과 바깥 baseline 정렬을 분리해 비교한다. text node는 넣지 않는다. |
 
 | 축 | 고정·변형 값 | 잡을 오류 |
 | --- | --- | --- |
@@ -157,6 +160,17 @@
 | cascade | 초기값, shorthand, longhand override, invalid declaration, stylesheet | computed style과 typed projection 불일치 |
 | 자식 종류 | visible element, display none, nested flex | item 참여 조건 또는 NodeId 매핑 오류 |
 | 환경 | DPR 1/2, fixed viewport, simulator profile | 반올림·환경 차이를 CSS geometry 오차로 가림 |
+
+### C10.3.4 · 범위와 baseline 모델
+
+- `align-items`·`align-self`의 `baseline`과 `first baseline`은 first-baseline self-alignment다. `last baseline`은 서로 다른 값이며 first baseline alias로 축약하지 않는다. `place-items`·`place-self`가 만드는 longhand도 같은 값을 사용한다.
+- baseline sharing group은 같은 Flex line 안의 호환되는 first 또는 last 참여자만 포함한다. 다른 그룹의 참여자, `align-self` 비참여자, cross-axis auto margin은 각각 분리한다.
+- 현재 단계의 성공 경로는 빈 fixed-size element box다. 실제 line box와 텍스트 baseline은 C15의 font shaping·line layout 계약 전까지 산출하거나 추정하지 않는다. baseline 계산에 텍스트가 필요한 입력은 일반 높이로 조용히 대체하지 않는다.
+- Flex item baseline 합성은 border edge에서 시작한다. 각 item의 first/last baseline 값과 item baseline 그룹을 별도 계산한다. C07.2 border 폭·padding·cross margin이 baseline과 line cross size에 미치는 영향을 fixture로 비교한다.
+- `align-content:first baseline`은 content-alignment다. Flex item 내부 콘텐츠의 baseline content-alignment와 Flex line distribution을 구분한다. pinned Chrome에서 관찰한 textless empty-content 기하는 `flex-start` 대조와 같았지만, 이를 유용한 text baseline 지원으로 확대하지 않는다. pinned Chrome에서 `align-content:last baseline`은 지원되지 않아 invalid declaration/cascade fallback으로 다룬다.
+- Flex container baseline은 `order` 반영 뒤 시각적 startmost/endmost line에서 파생한다. row·wrap-reverse를 포함하고, nested container가 baseline participant가 되는 경로를 비교한다. Taffy `0.14.0`은 Flex output에 first baseline만 제공하므로 last baseline을 Taffy 출력의 alias로 취급할 수 없다. implementation은 first·last 메타데이터와 frame 보정의 소유자·revision을 명시하고, 없는 근거를 추정하지 않는다.
+- `row`는 baseline self-alignment를 비교한다. `column`은 computed keyword와 pinned Chrome의 cross-start fallback을 별도 확인하며 row baseline 계산을 적용하지 않는다. RTL·다른 writing mode는 C17 선행 계약이다.
+- 계획 검토에서 확정한 실패 경계와 실제 비교 관찰은 [C10.3.4 계획 검토 기록](../spec/internal/evidence/c10-3-4-baseline-plan-review-2026-10-11.md)에 있다. 계획 검토 결과를 구현 검토 20개 관점에 재사용하지 않는다.
 
 HTML reference는 기본 empty box와 명시 치수를 사용한다. 각 단계에서 텍스트 또는 replaced 요소가 꼭 필요한 경우 C15/C14를 의존성으로 기록하고, 해당 단계의 완료를 그 입력까지 넓히지 않는다. 캡처 reference에는 전체 DOM node 식별자, 계산 속성, frame, 필요 시 paint 순서를 저장한다. Runtime report에는 CSS px 좌표를 node ID와 함께 남긴다.
 

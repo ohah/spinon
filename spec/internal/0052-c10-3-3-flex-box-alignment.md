@@ -1,6 +1,6 @@
 # C10.3.3 · Flex 비-baseline Box Alignment
 
-**문서 ID:** `0052` · **내부 계약 숫자 버전:** `0.1.0` 고정 · **상태:** 제한 구현·검증 완료, PR 검토 대기 · **공개 CSS/API 전체 완료:** 아님
+**문서 ID:** `0052` · **내부 계약 숫자 버전:** `0.1.0` 고정 · **상태:** 제한 구현·검증 완료, PR #122 리베이스 병합 · **공개 CSS/API 전체 완료:** 아님
 
 이 계약은 여섯 runtime Flex profile에서 비-baseline Flex 정렬 속성을 Stylo computed style부터 Taffy frame까지 연결한다. Taffy 0.14.0은 계산기이고, 판정 기준은 고정 Chrome 154 reference다. 지원 목록 밖의 값을 기본값으로 바꿔 성공시키지 않는다.
 
