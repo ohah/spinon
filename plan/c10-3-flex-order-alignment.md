@@ -1,7 +1,7 @@
 # C10.3 · Flex 순서와 정렬 구현 계획
 
 **상위:** [C10 Flexbox](c10-flexbox.md) · [공식 상태 대장](../spec/STATUS.md)
-**현재 상태:** C10.3.1은 PR #119, C10.3.2는 PR #120, C10.3.3은 PR #122로 리베이스 병합했다. C10.3.3은 고정 Chrome 154 50개 case·134개 node를 여섯 runtime profile에서 검사했고, Android SM-S731N 실기기와 iPhone 17 Pro / iOS 26.2 Simulator에서 실제 V8→Stylo→Taffy→WGPU 8-node frame이 Chrome 기준과 일치했다. WPT 실행, 전체 모바일 fixture 행렬, RTL·다른 writing mode는 완료 범위에 포함하지 않는다. C10.3.4는 계획 검토를 반영했으며 구현 전이다. C12 뒤의 C10.3.5는 미구현이다.
+**현재 상태:** C10.3.1은 PR #119, C10.3.2는 PR #120, C10.3.3은 PR #122로 리베이스 병합했다. C10.3.3은 고정 Chrome 154 50개 case·134개 node를 여섯 runtime profile에서 검사했고, Android SM-S731N 실기기와 iPhone 17 Pro / iOS 26.2 Simulator에서 실제 V8→Stylo→Taffy→WGPU 8-node frame이 Chrome 기준과 일치했다. WPT 실행, 전체 모바일 fixture 행렬, RTL·다른 writing mode는 완료 범위에 포함하지 않는다. C10.3.4는 제한 구현·검증을 마쳐 [PR #125 검토 중](https://github.com/ohah/spinon/pull/125)이다. C12 뒤의 C10.3.5는 미구현이다.
 **내부 계약 숫자 버전:** 출시 전 `0.1.0` 고정.
 
 ## 목표
@@ -17,7 +17,7 @@
 | C10.3.1 | `row-reverse`, `column-reverse`, `wrap-reverse`와 `flex-flow` 조합 | C10.1·C10.2에서 고정한 line 수집·크기 배분과 분리해 축 시작점 및 line stacking을 비교한다. | PR #119 병합 · [계약 0050](../spec/internal/0050-c10-3-1-flex-reverse.md) |
 | C10.3.2 | `order`의 안정적인 계산 순서와 paint 순서 | HostDocument 자식 순서를 유지하고 layout·paint·source traversal을 분리한다. | [PR #120 병합](https://github.com/ohah/spinon/pull/120) · 제한 구현과 Android/iOS Simulator runtime 검증 완료 · [계획 검토](../spec/internal/evidence/c10-3-2-order-plan-review-2026-10-10.md) · [구현 계약 0051](../spec/internal/0051-c10-3-2-flex-order.md) · [실행 근거](../spec/internal/evidence/c10-3-2-flex-order-implementation-review-2026-10-10.md) |
 | C10.3.3 | Flex Box Alignment의 비-baseline longhand·shorthand | `align-items`·`align-self`·`align-content`와 `place-items`·`place-self`·`place-content`를 계산·layout 경계까지 비교한다. `place-content`가 설정하는 `justify-content`도 shorthand의 전체 값을 처리할 수 있게 runtime Flex 범위에서 함께 확장한다. | [PR #122 병합](https://github.com/ohah/spinon/pull/122) · [내부 계약 0052](../spec/internal/0052-c10-3-3-flex-box-alignment.md) · [실패 관점 검토·실행](../spec/internal/evidence/c10-3-3-flex-alignment-implementation-review-2026-10-11.md) |
-| C10.3.4 | item baseline self-alignment, baseline content-alignment 경계, Flex container baseline | `align-items`·`align-self`의 first/last baseline과 order·line별 baseline 참여를 비교한다. `align-content:first baseline`은 line baseline 분배로 간주하지 않고 textless fixed-box의 Chrome computed/geometry 관찰에 한정한다. Flex container의 first/last baseline 전파를 별도 nested fixture로 비교한다. | 계획 검토 반영 · 구현 전 · [계획 검토](../spec/internal/evidence/c10-3-4-baseline-plan-review-2026-10-11.md) |
+| C10.3.4 | item baseline self-alignment, baseline content-alignment 경계, Flex container baseline | `align-items`·`align-self`의 first/last baseline과 order·line별 baseline 참여를 비교한다. `align-content:first baseline`은 line baseline 분배로 간주하지 않고 textless fixed-box의 Chrome computed/geometry 관찰에 한정한다. Flex container의 first/last baseline 전파를 별도 nested fixture로 비교한다. | 제한 구현·검증 완료 · [PR #125 검토 중](https://github.com/ohah/spinon/pull/125) · [계획 검토](../spec/internal/evidence/c10-3-4-baseline-plan-review-2026-10-11.md) |
 | C10.3.5 | positioned flex child와 순서·정렬 교차 통합 | C12 이후 absolute child는 flex line 계산에서 제외하고 paint order에서는 `order:0`으로 취급하며, static-position `align-self`를 비교한다. | C12 선행 |
 
 각 구현 PR은 하나의 하위 단계를 소유한다. C10.3.1부터 C10.3.4까지 순서대로 진행하고, C10.3.5는 C12 positioning 구현 뒤 별도 PR로 진행한다. 한 PR에 여러 단계를 묶지 않는다. C10.3 parent는 다섯 단계와 C15 텍스트 baseline 연결이 모두 닫히기 전까지 미완료다. 각 기능 구현 PR은 계획 검토와 독립된 새 실패 관점 20개를 기록한다.
@@ -175,7 +175,7 @@
 
 #### 구현 상태 · 2026-10-11
 
-- 제한 구현과 검증은 끝났으며 PR 생성 전이다. 내부 계약은 [0053](../spec/internal/0053-c10-3-4-flex-baseline.md)에서 관리한다. 내부 숫자 버전은 `0.1.0`을 유지한다.
+- 제한 구현과 검증은 끝났으며 [PR #125 검토 중](https://github.com/ohah/spinon/pull/125)이다. 내부 계약은 [0053](../spec/internal/0053-c10-3-4-flex-baseline.md)에서 관리한다. 내부 숫자 버전은 `0.1.0`을 유지한다.
 - Chrome 154 고정 기준은 18 case·73 node, DPR 1·2다. 여섯 runtime Flex profile에서 computed baseline 값과 각 node frame을 비교하고, invalid `align-content:last baseline`의 cascade fallback을 확인했다.
 - wrapped line의 `align-content:stretch`·`row-gap`, `wrap-reverse`·`order`, single-item line과 동일 main 좌표의 zero-size/gap 경계를 확인했다. Taffy final frame으로 line을 재구성할 수 없는 음수 main margin은 fail-closed다.
 - Android SM-S731N 실기기와 iPhone 17 Pro / iOS 26.2 Simulator에서 12-node V8→Stylo→Taffy→WGPU smoke를 재실행했다. 이는 18 case 전체의 모바일 비교가 아니다.
