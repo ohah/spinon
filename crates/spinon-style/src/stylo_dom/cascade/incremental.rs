@@ -94,6 +94,8 @@ mod dimensions;
 mod element;
 #[path = "incremental/reuse.rs"]
 mod reuse;
+#[path = "incremental/source_border.rs"]
+mod source_border;
 #[path = "incremental/source_math.rs"]
 mod source_math;
 #[path = "incremental/spacing.rs"]

@@ -67,6 +67,7 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         }
         registry.append(source.clone())?;
     }
+    let stylesheet_border_sources = registry.raw_style_declaration_sources();
     if is_runtime_layout_profile(profile) {
         for source in author_stylesheets {
             match first_container_relative_unit(&source.css) {
@@ -273,7 +274,14 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
     let mut mount_parent_style = None;
     if is_runtime_layout_profile(profile) && view.has_synthetic_html_document() {
         let html = view.root_element();
-        let html_style = compute_element_style(&stylist, html, &guards, None);
+        let html_style = compute_element_style(
+            &stylist,
+            html,
+            &guards,
+            None,
+            viewport,
+            &stylesheet_border_sources,
+        );
         validate_synthetic_document_box(&html_style, "html")?;
         document_root_font_size_css_px = computed_font_size_css_px(&html_style);
         if !document_root_font_size_css_px.is_finite() || document_root_font_size_css_px < 0.0 {
@@ -286,7 +294,14 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         let body = view
             .synthetic_body_element()
             .expect("합성 HTML 문서에는 body wrapper가 있어야 합니다");
-        let body_style = compute_element_style(&stylist, body, &guards, Some(&html_style));
+        let body_style = compute_element_style(
+            &stylist,
+            body,
+            &guards,
+            Some(&html_style),
+            viewport,
+            &stylesheet_border_sources,
+        );
         validate_synthetic_document_box(&body_style, "body")?;
         mount_parent_style = Some(body_style);
     }
@@ -305,11 +320,13 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
                 plan.dirty_nodes.contains(&node_id) || plan.context_nodes.contains(&node_id)
             });
             if should_compute {
-                let (computed, source_math) = compute_element_style_with_math(
+                let (computed, source_math, source_border_widths) = compute_element_style_with_math(
                     &stylist,
                     element,
                     &guards,
                     parent_style.as_deref(),
+                    viewport,
+                    &stylesheet_border_sources,
                 );
                 if handle == view.root_handle() && view.root_matches_root_pseudo() {
                     document_root_font_size_css_px = computed_font_size_css_px(&computed);
@@ -345,6 +362,7 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
                         &computed,
                         node_id,
                         source_math,
+                        source_border_widths,
                     )?);
                     reuse_stats.recomputed_style_elements += 1;
                 }

@@ -7,8 +7,10 @@ import test from 'node:test';
 
 const repositoryRoot = resolve(fileURLToPath(new URL('../..', import.meta.url)));
 const referencePath = 'tests/fixtures/css/references/c07-2-border-width-layout-v1.json';
+const highDprReferencePath = 'tests/fixtures/css/references/c07-2-border-width-high-dpr-v1.json';
 const inventoryPath = 'tests/fixtures/css/c07/border-width-layout-inventory.json';
 const reference = JSON.parse(await readFile(join(repositoryRoot, referencePath), 'utf8'));
+const highDprReference = JSON.parse(await readFile(join(repositoryRoot, highDprReferencePath), 'utf8'));
 const inventory = JSON.parse(await readFile(join(repositoryRoot, inventoryPath), 'utf8'));
 const observations = reference.observations;
 const readSource = (path) => readFile(join(repositoryRoot, path), 'utf8');
@@ -29,6 +31,34 @@ test('고정 Chrome 기준의 원본 입력과 도구 digest가 일치한다', a
     digest(await readSource(reference.captureTool.dependencies[0].path)),
   );
   assert.equal(reference.oracle.executableSha256.length, 64);
+});
+
+test('고 DPR 정수 경계와 원문 viewport 단위의 CSS px 결과를 고정한다', async () => {
+  assert.equal(highDprReference.schema, 'spinon-css-c07-2-border-width-boundary/v1');
+  assert.equal(highDprReference.fixtureId, 'C07.2-border-width-high-dpr-v1');
+  assert.equal(highDprReference.browserVersion.product, 'Chrome/154.0.8037.98');
+  assert.equal(highDprReference.browserVersion.revision, '@b859317bf11f6be47f9b7799ec690a0a42a1fb33');
+  assert.deepEqual(highDprReference.environment.deviceScaleFactors, [1, 2, 2.625, 3]);
+  assert.equal(highDprReference.observations.length, 4);
+  assert.equal(highDprReference.captureTool.sha256,
+    digest(await readSource(highDprReference.captureTool.path)));
+  assert.equal(highDprReference.captureTool.dependencies.length, 1);
+  assert.equal(highDprReference.captureTool.dependencies[0].sha256,
+    digest(await readSource(highDprReference.captureTool.dependencies[0].path)));
+
+  for (const observation of highDprReference.observations) {
+    assert.deepEqual(observation.widths.map(({ computedCssPx, borderBoxWidthCssPx }) => (
+      [computedCssPx, borderBoxWidthCssPx]
+    )), [['1px', 102], ['1px', 102], ['2px', 104], ['2px', 104]]);
+    assert.deepEqual(observation.relativeWidths.map(({ unit, computedCssPx, borderBoxWidthCssPx }) => (
+      [unit, computedCssPx, borderBoxWidthCssPx]
+    )), [
+      ['em', '2px', 104],
+      ['vw', '2px', 104],
+      ['vh', '2px', 104],
+      ['var-vh', '2px', 104],
+    ]);
+  }
 });
 
 test('두 DPR 관찰은 고정 viewport·환경·50개 고유 node를 가진다', () => {

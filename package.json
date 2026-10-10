@@ -23,6 +23,7 @@
     "css:reference:c04-runtime-css-to-gpu-resize": "node tools/css-reference/capture-runtime-css-to-gpu-resize.mjs",
     "css:reference:c05-registered-properties": "node tools/css-reference/capture-c05-runtime-registered-properties.mjs",
     "css:reference:c07-1-min-max-sizing": "node tools/css-reference/capture-c07-min-max-sizing.mjs",
+    "css:reference:c07-2-border-width-high-dpr": "node tools/css-reference/capture-c07-2-border-width-high-dpr.mjs",
     "css:reference:c08-block-flow": "node tools/css-reference/capture-c08-block-flow.mjs",
     "css:reference:c09-block-formatting": "node tools/css-reference/capture-c09-block-formatting.mjs",
     "css:verify:c05-registered-properties-multi-root": "node tools/css-reference/verify-c05-runtime-registered-properties-multi-root.mjs",

@@ -1,3 +1,6 @@
+#[path = "runtime_layout_tests/c07_border.rs"]
+mod c07_border;
+
 use std::sync::Arc;
 
 use spinon_core::{AttributeName, DocumentChangeBatch, DocumentOperation, HostDocument, OwnerId};
