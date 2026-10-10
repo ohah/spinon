@@ -1434,6 +1434,7 @@ dependencies = [
 name = "spinon-runtime"
 version = "0.1.0"
 dependencies = [
+ "serde_json",
  "spinon-core",
  "spinon-layout",
  "spinon-render",

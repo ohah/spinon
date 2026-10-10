@@ -9,6 +9,7 @@ use super::super::{
     device::{LayoutThreadState, make_device},
     margin::FLEX_MARGIN_AUTHOR_PROPERTIES,
     runtime_layout::RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES,
+    runtime_paint::RUNTIME_BLOCK_PAINT_AUTHOR_PROPERTIES,
     s04,
 };
 use super::{
@@ -157,6 +158,7 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1 => {
             Some(RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES)
         }
+        ComputedStyleProfile::RuntimeBlockPaintV1 => Some(RUNTIME_BLOCK_PAINT_AUTHOR_PROPERTIES),
         ComputedStyleProfile::RuntimeFlexPaintV1 => None,
     };
     let unsupported_author_feature = match profile {

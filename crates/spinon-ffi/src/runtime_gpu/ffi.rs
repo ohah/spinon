@@ -7,6 +7,7 @@ use std::ptr;
 
 mod c06;
 mod c07;
+mod c08;
 mod surface;
 
 const ERR_ARGUMENT: i32 = -1;
@@ -51,6 +52,31 @@ pub unsafe extern "C" fn spinon_runtime_gpu_host_new_registered_properties_fixtu
         return ptr::null_mut();
     }
     let (host, report) = match RuntimeGpuHost::new_registered_properties_fixture() {
+        Ok(host) => host,
+        Err(error) => {
+            crate::write_report(output, output_capacity, &error);
+            return ptr::null_mut();
+        }
+    };
+    if !crate::write_report(output, output_capacity, &report) {
+        return ptr::null_mut();
+    }
+    Box::into_raw(Box::new(host)).cast::<SpinonRuntimeGpuHost>()
+}
+
+#[unsafe(no_mangle)]
+/// C08 Block 흐름과 기본 배경 페인트 전용 runtime host를 생성합니다.
+///
+/// # Safety
+/// `output`은 `output_capacity` 바이트를 쓸 수 있어야 합니다.
+pub unsafe extern "C" fn spinon_runtime_gpu_host_new_block_paint_fixture(
+    output: *mut c_char,
+    output_capacity: usize,
+) -> *mut SpinonRuntimeGpuHost {
+    if output.is_null() || output_capacity == 0 {
+        return ptr::null_mut();
+    }
+    let (host, report) = match RuntimeGpuHost::new_block_paint_fixture() {
         Ok(host) => host,
         Err(error) => {
             crate::write_report(output, output_capacity, &error);

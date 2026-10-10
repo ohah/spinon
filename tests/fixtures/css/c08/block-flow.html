@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=320, initial-scale=1">
+  <title>Spinon C08 Block flow 기준</title>
+  <style>html, body { margin: 0; }</style>
+</head>
+<body>
+  <div id="root" style="box-sizing:border-box;width:280px;background-color:#101827">
+    <div id="hero" style="display:block;height:32px;background-color:#3366ff;color:#f9fafb;font-size:20px;font-family:Arial,sans-serif">
+      <div id="hero-child" style="display:block;height:10px;background-color:#60a5fa"></div>
+    </div>
+    <div id="group" style="display:block;background-color:transparent">
+      <div id="first" style="display:block;height:20px;background-color:#e11d48"></div>
+      <div id="second" style="display:block;width:120px;height:18px;background-color:#f97316"></div>
+    </div>
+    <div id="hidden" style="display:none;height:40px;background-color:#ff0000">
+      <div id="hidden-child" style="display:block;height:14px;background-color:#00ff00"></div>
+    </div>
+    <div id="last" style="display:block;height:16px;background-color:#22c55e"></div>
+  </div>
+  <pre id="reference-result" hidden></pre>
+  <script>
+    (() => {
+      const inventory = window.__SPINON_C08_BLOCK_FLOW_INVENTORY__;
+      if (inventory?.schema !== "spinon-css-c08-block-flow-inventory/v1"
+        || inventory.fixtureId !== "C08-block-flow-v1") {
+        throw new Error("C08 Block flow inventory가 없거나 fixture와 다릅니다.");
+      }
+      const nodes = inventory.nodes.map(({ id, properties }) => {
+        const element = document.getElementById(id);
+        if (!element) throw new Error(`fixture node를 찾지 못했습니다: ${id}`);
+        const style = getComputedStyle(element);
+        const rect = element.getBoundingClientRect();
+        return {
+          id,
+          properties: Object.fromEntries(properties.map((property) => [property, style.getPropertyValue(property).trim()])),
+          rect: { x: rect.x, y: rect.y, width: rect.width, height: rect.height },
+        };
+      });
+      const observation = {
+        fixtureId: inventory.fixtureId,
+        viewport: { width: innerWidth, height: innerHeight, deviceScaleFactor: devicePixelRatio },
+        environment: {
+          locale: navigator.language,
+          intlLocale: Intl.DateTimeFormat().resolvedOptions().locale,
+          timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          dark: matchMedia("(prefers-color-scheme: dark)").matches,
+          coarsePointer: matchMedia("(pointer: coarse)").matches,
+          hover: matchMedia("(hover: hover)").matches,
+        },
+        nodes,
+      };
+      const bytes = new TextEncoder().encode(JSON.stringify(observation));
+      let binary = "";
+      for (const byte of bytes) binary += String.fromCharCode(byte);
+      document.querySelector("#reference-result").textContent = btoa(binary);
+    })();
+  </script>
+</body>
+</html>

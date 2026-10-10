@@ -183,7 +183,8 @@ fn compute_profile_layout(
         | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
         | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
         | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
-        | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1 => {
+        | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
+        | ComputedStyleProfile::RuntimeBlockPaintV1 => {
             return Err(StyleLayoutError::UnsupportedProfile {
                 profile: format!("{profile:?}"),
             });
@@ -205,6 +206,22 @@ fn compute_layout_from_styles(
     {
         return Err(StyleLayoutError::CascadeDiagnostic(diagnostic));
     }
+    if computed_styles.profile == ComputedStyleProfile::RuntimeBlockPaintV1 {
+        for element in computed_styles.elements.iter() {
+            let display = element.properties.get("display").ok_or(
+                StyleLayoutError::MissingComputedProperty {
+                    node: element.node_id,
+                    property: "display",
+                },
+            )?;
+            if !matches!(display.as_str(), "block" | "none") {
+                return Err(StyleLayoutError::UnsupportedBlockDisplay {
+                    node: element.node_id,
+                    value: display.clone(),
+                });
+            }
+        }
+    }
     let projected = project_styles(&computed_styles)?;
     let styles = projected.styles;
     if matches!(
@@ -216,6 +233,7 @@ fn compute_layout_from_styles(
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
+            | ComputedStyleProfile::RuntimeBlockPaintV1
     ) && styles
         .get(&root.id())
         .is_some_and(|style| style.margin != LayoutEdges::default())
@@ -234,6 +252,7 @@ fn compute_layout_from_styles(
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
+            | ComputedStyleProfile::RuntimeBlockPaintV1
     ) {
         LayoutInput::from_host_document_with_viewport_containing_block(
             snapshot,
@@ -263,6 +282,7 @@ fn compute_layout_from_styles(
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
+            | ComputedStyleProfile::RuntimeBlockPaintV1
     ) {
         zero_display_none_frames(snapshot, root, &styles, &mut layout);
     }

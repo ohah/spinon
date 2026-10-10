@@ -6,6 +6,7 @@ use spinon_layout::{LayoutError, LayoutFrame, LayoutOutput};
 use spinon_render::RuntimeRenderSnapshot;
 use spinon_style::{
     CascadeDiagnostic, ComputedStyleSnapshot, StyloDocumentView,
+    first_unsupported_runtime_block_paint_inline_property,
     first_unsupported_runtime_custom_properties_inline_property,
     first_unsupported_runtime_custom_properties_paint_inline_property,
 };
@@ -117,6 +118,7 @@ pub(super) fn compute_runtime_layout(
     root_count: usize,
     layout_context: Option<RuntimeLayoutContext>,
     runtime_paint_enabled: bool,
+    profile: super::calculation::RuntimeCalculationProfile,
 ) -> Result<RuntimeLayoutCompleted, RuntimeLayoutFailure> {
     if root_count == 0 {
         let render_snapshot = if runtime_paint_enabled {
@@ -138,10 +140,17 @@ pub(super) fn compute_runtime_layout(
 
     let (root, view, styles) =
         layout_context.expect("단일 스타일 root의 layout 입력이 있어야 합니다");
-    let unsupported_property = if runtime_paint_enabled {
-        first_unsupported_runtime_custom_properties_paint_inline_property(&view)
-    } else {
-        first_unsupported_runtime_custom_properties_inline_property(&view)
+    let unsupported_property = match profile {
+        super::calculation::RuntimeCalculationProfile::BlockPaint => {
+            first_unsupported_runtime_block_paint_inline_property(&view)
+        }
+        super::calculation::RuntimeCalculationProfile::FlexPaint
+        | super::calculation::RuntimeCalculationProfile::RegisteredPropertiesPaint => {
+            first_unsupported_runtime_custom_properties_paint_inline_property(&view)
+        }
+        super::calculation::RuntimeCalculationProfile::FlexLayout => {
+            first_unsupported_runtime_custom_properties_inline_property(&view)
+        }
     };
     if let Some((node, property)) = unsupported_property {
         return Err(layout_failure(
@@ -274,6 +283,9 @@ fn valid_frame(frame: LayoutFrame) -> bool {
 
 fn layout_failure_from_error(error: StyleLayoutError) -> RuntimeLayoutFailure {
     match error {
+        StyleLayoutError::UnsupportedBlockDisplay { node, value } => {
+            layout_failure("unsupported_block_display", Some(node.get()), Some(value))
+        }
         StyleLayoutError::UnsupportedComputedValue { node, property, .. } => layout_failure(
             "unsupported_computed_value",
             Some(node.get()),

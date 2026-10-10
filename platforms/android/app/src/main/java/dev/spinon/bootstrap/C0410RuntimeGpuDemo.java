@@ -24,6 +24,7 @@ import java.util.concurrent.TimeUnit;
 final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Callback {
     private static final String TAG = "SpinonBootstrap";
     private static native long nativeCreateHost(boolean registeredPropertiesFixture);
+    private static native long nativeCreateBlockPaintHost();
     private static native long nativeBeginPresentationUpdate(long host);
     private static native byte[] nativeSetEnvironment(
             long host, float widthCssPx, float heightCssPx, float scale, boolean dark);
@@ -42,6 +43,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native byte[] nativeEvalMinMaxSizingFixture(long host);
     private static native byte[] nativeEvalBorderWidthFixture(long host);
     private static native byte[] nativeEvalAspectRatioFixture(long host);
+    private static native byte[] nativeEvalBlockPaintFixture(long host);
     private static native long nativeCreateSurface(
             long host, Surface surface, int width, int height, int backend);
     private static native int nativeResizeSurface(long renderer, int width, int height);
@@ -77,6 +79,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean minMaxSizingProbeRequested;
     private final boolean borderWidthProbeRequested;
     private final boolean aspectRatioProbeRequested;
+    private final boolean blockPaintProbeRequested;
     private final boolean registeredPropertiesProbeRequested;
     private final boolean authorStylesheetsProbeRequested;
     private final float density;
@@ -130,6 +133,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 .getBooleanExtra("spinon_c072_border_width", false);
         aspectRatioProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c073_aspect_ratio", false);
+        blockPaintProbeRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c08_block_paint", false);
         registeredPropertiesProbeRequested = runtimeResultCacheProbeRequested
                 || activity.getIntent().getBooleanExtra("spinon_c052_registered_properties", false);
         authorStylesheetsProbeRequested = activity.getIntent()
@@ -149,6 +154,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         TextView title = new TextView(activity);
         title.setText(viewportUnitsProbeRequested
                 ? "SPINON · C06.6 viewport units"
+                : blockPaintProbeRequested
+                ? "SPINON · C08 Block 흐름"
                 : aspectRatioProbeRequested
                 ? "SPINON · C07.3 aspect ratio"
                 : borderWidthProbeRequested
@@ -180,6 +187,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         TextView description = new TextView(activity);
         description.setText(viewportUnitsProbeRequested
                 ? "V8 vw/svw/lvw/dvw → Stylo CSS px → Taffy → WGPU"
+                : blockPaintProbeRequested
+                ? "V8 DOM Block 흐름 → Stylo → Taffy → WGPU"
                 : aspectRatioProbeRequested
                 ? "V8 CSS aspect-ratio → Stylo → Taffy → WGPU"
                 : borderWidthProbeRequested
@@ -221,6 +230,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         surfaceView.getHolder().addCallback(this);
         surfaceView.setContentDescription(viewportUnitsProbeRequested
                 ? "C06.6 viewport units WGPU 장면"
+                : blockPaintProbeRequested
+                ? "C08 Block 흐름 기본 페인트 WGPU 장면"
                 : aspectRatioProbeRequested
                 ? "C07.3 종횡비 WGPU 장면"
                 : borderWidthProbeRequested
@@ -291,7 +302,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             else if (registeredPropertiesProbeRequested) evaluateRegisteredPropertiesFixture();
             else evaluateCustomPropertiesFixture();
         });
-        if (authorStylesheetsProbeRequested || viewportUnitsProbeRequested || aspectRatioProbeRequested
+        if (authorStylesheetsProbeRequested || viewportUnitsProbeRequested || blockPaintProbeRequested || aspectRatioProbeRequested
                 || minMaxSizingProbeRequested
                 || borderWidthProbeRequested
                 || typedCssMathProbeRequested
@@ -354,7 +365,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private void initializeRuntime() {
-        long host = nativeCreateHost(registeredPropertiesProbeRequested);
+        long host = blockPaintProbeRequested
+                ? nativeCreateBlockPaintHost() : nativeCreateHost(registeredPropertiesProbeRequested);
         if (host == 0) {
             postStatus("실패 · V8 runtime host를 만들지 못했습니다");
             return;
@@ -379,6 +391,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 + " scale=" + density + " dark=" + dark + " " + environment);
         String result = viewportUnitsProbeRequested
                 ? decode(nativeEvalViewportUnitsFixture(host))
+                : blockPaintProbeRequested
+                ? decode(nativeEvalBlockPaintFixture(host))
                 : aspectRatioProbeRequested
                 ? decode(nativeEvalAspectRatioFixture(host))
                 : borderWidthProbeRequested
@@ -407,7 +421,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             return;
         }
         Log.i(TAG, (viewportUnitsProbeRequested
-                ? "SPINON_C066A_EVAL " : aspectRatioProbeRequested
+                ? "SPINON_C066A_EVAL " : blockPaintProbeRequested
+                ? "SPINON_C08_EVAL " : aspectRatioProbeRequested
                 ? "SPINON_C073_EVAL " : borderWidthProbeRequested
                 ? "SPINON_C072_EVAL " : minMaxSizingProbeRequested
                 ? "SPINON_C071_EVAL " : typedCssMathProbeRequested

@@ -76,3 +76,14 @@ mise exec -- bun run css:reference:c01-property-surface
 ```
 
 현재 Chrome `154.0.8037.98`에서 author stylesheet·외부 자원이 없는 HTML `div`의 CSSOM 이름 478개를 관찰했습니다. 이는 단일 요소의 computed-style property-name 표면이며 전체 CSS property registry나 속성 지원 목록이 아닙니다. 속성 값, 선언 지원, selector·at-rule, 전체 HTML·SVG, UA stylesheet 내용, layout·text·GPU·Android/iOS 호환성은 확인하지 않습니다. 고정 결과와 해시는 [C01.3 근거](../../spec/internal/evidence/css-c01-cssom-property-surface-2026-10-09.md)에 연결합니다.
+
+## C08 Block 흐름·기본 페인트 기준
+
+고정 HTML fixture와 실제 V8 runtime fixture는 [`tests/fixtures/css/c08`](../../tests/fixtures/css/c08)에 있습니다. Chromium 154 기준은 DPR 1·2의 computed style과 각 DOM node의 geometry를 보존하며, Node 테스트는 입력 해시와 기준 결과를 검증합니다.
+
+```sh
+node tools/css-reference/capture-c08-block-flow.mjs
+node --test tools/css-reference/c08-block-flow.test.mjs
+```
+
+캡처는 기준 JSON을 갱신하는 명시적 개발 명령입니다. 기본 테스트는 기준을 다시 만들지 않습니다. viewport, fixture 또는 지원 경계가 바뀌면 새 기준과 내부 근거를 함께 검토합니다.

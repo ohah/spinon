@@ -16,6 +16,10 @@ pub enum StyleLayoutError {
         field: &'static str,
     },
     UnsupportedInlineStyle(NodeId),
+    UnsupportedBlockDisplay {
+        node: NodeId,
+        value: String,
+    },
     UnsupportedRootMargin(NodeId),
     UnsupportedAspectRatioConstraint {
         node: NodeId,
@@ -59,6 +63,10 @@ impl fmt::Display for StyleLayoutError {
             Self::UnsupportedInlineStyle(node) => write!(
                 formatter,
                 "노드 {node}의 inline style 속성은 현재 layout 입력 profile에서 지원하지 않습니다"
+            ),
+            Self::UnsupportedBlockDisplay { node, value } => write!(
+                formatter,
+                "C08 Block profile에서 노드 {node}의 display 값 {value:?}를 지원하지 않습니다"
             ),
             Self::UnsupportedRootMargin(node) => write!(
                 formatter,
