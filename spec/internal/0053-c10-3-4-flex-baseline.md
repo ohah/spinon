@@ -1,6 +1,6 @@
 # C10.3.4 · Flex baseline 내부 계약
 
-**문서 ID:** `0053` · **내부 계약 숫자 버전:** `0.1.0` 고정 · **상태:** 제한 구현·검증 완료, PR 작성 전 · **공개 CSS/API 전체 완료:** 아님
+**문서 ID:** `0053` · **내부 계약 숫자 버전:** `0.1.0` 고정 · **상태:** 제한 구현·검증 완료, [PR #125 검토 중](https://github.com/ohah/spinon/pull/125) · **공개 CSS/API 전체 완료:** 아님
 
 이 계약은 고정 Chrome 154에서 관찰한 빈 고정 크기 element box의 Flex baseline 정렬을 내부 cascade-to-layout 경로에 연결한다. 전체 Flexbox baseline, 텍스트 shaping, 공개 CSS 지원 완료를 뜻하지 않는다.
 
