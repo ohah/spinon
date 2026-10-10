@@ -14,6 +14,17 @@ node tools/css-reference/capture.mjs
 
 inventory 단위 검증은 `mise exec -- bun run test:css-reference`로 실행합니다. 전체 기본 테스트 명령 `bun run test`에도 포함됩니다.
 
+## C12.1 정적·상대 위치 기준
+
+고정된 Chromium 기준 좌표를 새로 수집하려면 아래 명령을 사용합니다. 생성된 기준 파일은 기본적으로 덮어쓰지 않습니다. 비교 입력이나 Chromium 기준을 의도적으로 바꿀 때만 `--replace-reference`를 지정하고, 기존 결과와 변경 사유를 함께 검토합니다.
+
+```sh
+mise exec -- bun run css:reference:c12-1-static-relative
+mise exec -- node --test tools/css-reference/c12-1-static-relative.test.mjs
+```
+
+기준은 Chrome 154.0.8037.98, 360×800 CSS px, DPR 1·2이며 정적 inset 무시, 상대 위치의 흐름·시각 좌표 분리, 네 방향 inset, percentage/calc, shorthand/cascade, positioned ancestor owner, `display:none`, 위치 변경을 기록합니다. WPT는 고정 commit의 case를 subset 대응표로만 기록하며 실행했다고 주장하지 않습니다. 입력·판정 경계는 [C12.1 사전 비교 결과](../../spec/internal/evidence/c12-1-static-relative-precomparison-2026-10-11.md)에 있습니다.
+
 ## S04 배경색 GPU fixture 기준 수집
 
 [`S04 CSS fixture 목록`](../../tests/fixtures/css/s04/README.md)은 기존 가로 Flex fixture와 비대칭 y fixture의 고정 입력·sample 지점을 설명합니다. 두 fixture는 서로 다른 viewport와 Chromium reference를 사용합니다.

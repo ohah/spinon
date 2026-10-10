@@ -130,6 +130,8 @@ C06.1~C06.6a 및 C07.1 누적 변경의 ABI·캐시·CSS 의미·Android/iOS run
 - [C07.3 · 종횡비 계획 실패 경로 검토](./evidence/c07-3-aspect-ratio-plan-review-2026-10-10.md) — 계획과 실제 사전 기준을 20개 독립 실패 관점으로 대조.
 - [C12 · 위치 지정 계획 실패 경로 검토](./evidence/c12-positioning-plan-review-2026-10-11.md) — `position` 의미, containing block·static-position owner, Taffy·renderer 경계와 단계 선행 조건.
 - [C12 · 위치 지정 계획 PR 변경 검토](./evidence/c12-positioning-plan-pr-review-2026-10-11.md) — 상태 대장·로드맵 동기화, 단계 의존성, 고정 비교 기준과 미구현 경계를 문서 변경 관점에서 대조.
+- [C12.1 · 정적·상대 위치 사전 비교](./evidence/c12-1-static-relative-precomparison-2026-10-11.md) — pinned Chromium 관찰값, 재현 입력, geometry 판정, WPT subset 및 아직 실행하지 않은 플랫폼 경계.
+- [C12.1 · 사전 비교 변경 검토](./evidence/c12-1-precomparison-change-review-2026-10-11.md) — 입력 고정, fixture 연결, 의미 경계, 데이터 유실·오인 보고 실패 관점과 반영 결과.
 - [C07.3 · 종횡비 내부 계약](./0045-c07-3-aspect-ratio.md) — 제한 runtime layout 내부 구현 계획 계약. 문서 ID `0045`, 숫자 버전 `0.1.0` 고정.
 - [C08 · Block 흐름 구현 전 비교 모델](./evidence/c08-block-flow-precomparison-2026-10-10.md) — 고정 Chromium 154·DPR 1/2의 기본 Block 흐름, visibility, 배경·글꼴 값과 한계를 기록.
 - [C08 · Block 흐름 계획 실패 경로 검토](./evidence/c08-block-flow-plan-review-2026-10-10.md) — 별도 계획의 20개 실패 관점 및 반영한 fixture/contract 경계.

@@ -1,0 +1,150 @@
+{
+  "schema": "spinon-css-c12-1-position-inventory/v1",
+  "fixtureId": "C12.1-static-relative-v1",
+  "cssPosition": {
+    "url": "https://www.w3.org/TR/2025/WD-css-position-3-20251007/",
+    "versionDate": "2025-10-07",
+    "status": "W3C Working Draft"
+  },
+  "viewport": {
+    "width": 360,
+    "height": 800,
+    "deviceScaleFactors": [1, 2]
+  },
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "forcedColors": "none",
+    "pointer": "coarse",
+    "hover": "none",
+    "direction": "ltr",
+    "writingMode": "horizontal-tb"
+  },
+  "comparison": {
+    "rectFields": ["x", "y", "width", "height"],
+    "computedProperties": ["display", "position", "top", "right", "bottom", "left"],
+    "maximumAbsoluteRectErrorCssPx": 0.5,
+    "cssComputedValuesMustMatch": true,
+    "flowFrameMustBeSeparate": true,
+    "ownerMismatchIsFailure": true
+  },
+  "cases": [
+    {"id": "static-insets-ignored", "nodeIds": ["static-row", "static-target", "static-after"]},
+    {"id": "relative-flow-preserved", "nodeIds": ["relative-row", "relative-target", "relative-after"]},
+    {"id": "relative-one-sided-auto", "nodeIds": ["opposite-row", "right-only", "bottom-only", "auto-insets"]},
+    {"id": "relative-overconstrained-ltr", "nodeIds": ["overconstrained-row", "overconstrained-target", "overconstrained-after"]},
+    {"id": "relative-percentage-containing-block", "nodeIds": ["percent-row", "percent-container", "percent-target"]},
+    {"id": "relative-calc-custom-property", "nodeIds": ["calc-row", "calc-container", "calc-target"]},
+    {"id": "relative-inset-cascade", "nodeIds": ["cascade-row", "layered-target", "important-target"]},
+    {"id": "relative-nested-offset-owner", "nodeIds": ["nested-row", "nested-parent", "nested-child", "nested-grandchild", "nested-parent-after", "nested-outside-after"]},
+    {"id": "relative-inset-shorthand-1-4-values", "nodeIds": ["shorthand-row", "inset-one", "inset-two", "inset-three", "inset-four"]},
+    {"id": "relative-flex-item", "nodeIds": ["flex-row", "flex-relative", "flex-sibling"]},
+    {"id": "display-none-positioned-subtree", "nodeIds": ["hidden-row", "hidden-parent", "hidden-child", "hidden-sibling"]},
+    {"id": "position-inset-revision-mutation", "nodeIds": ["mutation-row", "dynamic-parent", "dynamic-target", "dynamic-nested-parent", "dynamic-nested-child", "dynamic-after"]}
+  ],
+  "nodes": [
+    {"id": "c12-root", "parentId": null, "caseId": "root", "expectedOwner": "initial"},
+    {"id": "static-row", "parentId": "c12-root", "caseId": "static-insets-ignored", "expectedOwner": "initial"},
+    {"id": "static-target", "parentId": "static-row", "caseId": "static-insets-ignored", "expectedOwner": "initial"},
+    {"id": "static-after", "parentId": "static-row", "caseId": "static-insets-ignored", "expectedOwner": "initial"},
+    {"id": "relative-row", "parentId": "c12-root", "caseId": "relative-flow-preserved", "expectedOwner": "initial"},
+    {"id": "relative-target", "parentId": "relative-row", "caseId": "relative-flow-preserved", "expectedOwner": "initial"},
+    {"id": "relative-after", "parentId": "relative-row", "caseId": "relative-flow-preserved", "expectedOwner": "initial"},
+    {"id": "opposite-row", "parentId": "c12-root", "caseId": "relative-one-sided-auto", "expectedOwner": "initial"},
+    {"id": "right-only", "parentId": "opposite-row", "caseId": "relative-one-sided-auto", "expectedOwner": "initial"},
+    {"id": "bottom-only", "parentId": "opposite-row", "caseId": "relative-one-sided-auto", "expectedOwner": "initial"},
+    {"id": "auto-insets", "parentId": "opposite-row", "caseId": "relative-one-sided-auto", "expectedOwner": "initial"},
+    {"id": "overconstrained-row", "parentId": "c12-root", "caseId": "relative-overconstrained-ltr", "expectedOwner": "initial"},
+    {"id": "overconstrained-target", "parentId": "overconstrained-row", "caseId": "relative-overconstrained-ltr", "expectedOwner": "initial"},
+    {"id": "overconstrained-after", "parentId": "overconstrained-row", "caseId": "relative-overconstrained-ltr", "expectedOwner": "initial"},
+    {"id": "percent-row", "parentId": "c12-root", "caseId": "relative-percentage-containing-block", "expectedOwner": "initial"},
+    {"id": "percent-container", "parentId": "percent-row", "caseId": "relative-percentage-containing-block", "expectedOwner": "initial"},
+    {"id": "percent-target", "parentId": "percent-container", "caseId": "relative-percentage-containing-block", "expectedOwner": "initial"},
+    {"id": "calc-row", "parentId": "c12-root", "caseId": "relative-calc-custom-property", "expectedOwner": "initial"},
+    {"id": "calc-container", "parentId": "calc-row", "caseId": "relative-calc-custom-property", "expectedOwner": "initial"},
+    {"id": "calc-target", "parentId": "calc-container", "caseId": "relative-calc-custom-property", "expectedOwner": "initial"},
+    {"id": "cascade-row", "parentId": "c12-root", "caseId": "relative-inset-cascade", "expectedOwner": "initial"},
+    {"id": "layered-target", "parentId": "cascade-row", "caseId": "relative-inset-cascade", "expectedOwner": "initial"},
+    {"id": "important-target", "parentId": "cascade-row", "caseId": "relative-inset-cascade", "expectedOwner": "initial"},
+    {"id": "nested-row", "parentId": "c12-root", "caseId": "relative-nested-offset-owner", "expectedOwner": "initial"},
+    {"id": "nested-parent", "parentId": "nested-row", "caseId": "relative-nested-offset-owner", "expectedOwner": "initial"},
+    {"id": "nested-child", "parentId": "nested-parent", "caseId": "relative-nested-offset-owner", "expectedOwner": "nested-parent"},
+    {"id": "nested-grandchild", "parentId": "nested-child", "caseId": "relative-nested-offset-owner", "expectedOwner": "nested-child"},
+    {"id": "nested-parent-after", "parentId": "nested-parent", "caseId": "relative-nested-offset-owner", "expectedOwner": "nested-parent"},
+    {"id": "nested-outside-after", "parentId": "nested-row", "caseId": "relative-nested-offset-owner", "expectedOwner": "initial"},
+    {"id": "shorthand-row", "parentId": "c12-root", "caseId": "relative-inset-shorthand-1-4-values", "expectedOwner": "initial"},
+    {"id": "inset-one", "parentId": "shorthand-row", "caseId": "relative-inset-shorthand-1-4-values", "expectedOwner": "initial"},
+    {"id": "inset-two", "parentId": "shorthand-row", "caseId": "relative-inset-shorthand-1-4-values", "expectedOwner": "initial"},
+    {"id": "inset-three", "parentId": "shorthand-row", "caseId": "relative-inset-shorthand-1-4-values", "expectedOwner": "initial"},
+    {"id": "inset-four", "parentId": "shorthand-row", "caseId": "relative-inset-shorthand-1-4-values", "expectedOwner": "initial"},
+    {"id": "flex-row", "parentId": "c12-root", "caseId": "relative-flex-item", "expectedOwner": "initial"},
+    {"id": "flex-relative", "parentId": "flex-row", "caseId": "relative-flex-item", "expectedOwner": "initial"},
+    {"id": "flex-sibling", "parentId": "flex-row", "caseId": "relative-flex-item", "expectedOwner": "initial"},
+    {"id": "hidden-row", "parentId": "c12-root", "caseId": "display-none-positioned-subtree", "expectedOwner": "initial"},
+    {"id": "hidden-parent", "parentId": "hidden-row", "caseId": "display-none-positioned-subtree", "expectedOwner": "none", "hasLayoutBox": false},
+    {"id": "hidden-child", "parentId": "hidden-parent", "caseId": "display-none-positioned-subtree", "expectedOwner": "none", "hasLayoutBox": false},
+    {"id": "hidden-sibling", "parentId": "hidden-row", "caseId": "display-none-positioned-subtree", "expectedOwner": "initial"},
+    {"id": "mutation-row", "parentId": "c12-root", "caseId": "position-inset-revision-mutation", "expectedOwner": "initial"},
+    {"id": "dynamic-parent", "parentId": "mutation-row", "caseId": "position-inset-revision-mutation", "expectedOwner": "initial", "ancestorMutationOwner": "initial"},
+    {"id": "dynamic-target", "parentId": "dynamic-parent", "caseId": "position-inset-revision-mutation", "expectedOwner": "initial", "ancestorMutationOwner": "dynamic-parent"},
+    {"id": "dynamic-nested-parent", "parentId": "mutation-row", "caseId": "position-inset-revision-mutation", "expectedOwner": "initial", "ancestorMutationOwner": "initial"},
+    {"id": "dynamic-nested-child", "parentId": "dynamic-nested-parent", "caseId": "position-inset-revision-mutation", "expectedOwner": "initial", "ancestorMutationOwner": "dynamic-nested-parent"},
+    {"id": "dynamic-after", "parentId": "mutation-row", "caseId": "position-inset-revision-mutation", "expectedOwner": "initial", "ancestorMutationOwner": "initial"}
+  ],
+  "mutations": [
+    {
+      "state": "target-relative",
+      "changes": {"dynamic-target": "position:relative;left:15px;top:2px;width:40px;height:12px;background-color:#3366ff"},
+      "unchangedFlowNodeIds": ["dynamic-parent", "dynamic-target", "dynamic-after"],
+      "expectedVisualOffsetCssPx": {"dynamic-target": {"x": 15, "y": 2}}
+    },
+    {
+      "state": "ancestor-relative",
+      "changes": {
+        "dynamic-parent": "position:relative;left:10px;top:3px;width:200px;height:24px;background-color:#24324a",
+        "dynamic-nested-parent": "position:relative;left:6px;top:1px;width:200px;height:24px",
+        "dynamic-target": "position:relative;left:15px;top:2px;width:40px;height:12px;background-color:#3366ff"
+      },
+      "expectedOwnerOverrides": {"dynamic-target": "dynamic-parent", "dynamic-nested-child": "dynamic-nested-parent"},
+      "expectedVisualOffsetCssPx": {"dynamic-target": {"x": 25, "y": 5}, "dynamic-nested-child": {"x": 14, "y": 1}}
+    }
+  ],
+  "wpt": {
+    "repository": "https://github.com/web-platform-tests/wpt",
+    "revision": "9ec154ff43db468923997c08bb08f905ceab62a5",
+    "execution": "not-run",
+    "paths": [
+      {
+        "path": "css/css-position/position-static-001.html",
+        "disposition": "mapped-subset",
+        "caseIds": ["static-insets-ignored"],
+        "reason": "정적 위치에서 inset이 적용되지 않는 의미만 Block case로 매핑했다. 원본은 Grid item을 포함하며 Grid 자체는 이 단계의 입력이 아니다."
+      },
+      {
+        "path": "css/css-position/position-relative-001.html",
+        "disposition": "mapped-subset",
+        "caseIds": ["relative-percentage-containing-block"],
+        "reason": "백분율 inset의 물리 축 기준만 매핑했다. 원본의 inline ancestor와 fragment 규칙은 지원 주장에 포함하지 않는다."
+      },
+      {
+        "path": "css/css-position/position-relative-002.html",
+        "disposition": "mapped-subset",
+        "caseIds": ["relative-percentage-containing-block"],
+        "reason": "사용 가능 크기에 대한 relative percentage offset을 고정 definite Block 상자로 축소해 관찰한다. WPT 원본 실행 결과를 뜻하지 않는다."
+      },
+      {
+        "path": "css/css-position/position-relative-006.html",
+        "disposition": "excluded",
+        "caseIds": [],
+        "reason": "height가 indefinite인 containing block에서 percentage top을 처리하는 경계다. 초기 C12.1 성공 inventory에서는 definite containing block만 판정하고 이 입력은 별도 fail-closed로 둔다."
+      },
+      {
+        "path": "css/css-position/position-relative-007.html",
+        "disposition": "excluded",
+        "caseIds": [],
+        "reason": "auto-sized containing block의 percentage inset은 초기 성공 경로에 포함하지 않는다."
+      }
+    ]
+  }
+}
