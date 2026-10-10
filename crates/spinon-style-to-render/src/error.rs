@@ -8,20 +8,39 @@ use spinon_render::{RuntimeRenderError, SnapshotError};
 pub enum StyleRenderError {
     UnsupportedProfile,
     UnsupportedRuntimeProfile,
-    SnapshotMismatch { field: &'static str },
+    SnapshotMismatch {
+        field: &'static str,
+    },
     CascadeDiagnostics,
     InvalidFixtureMetadata,
     InvalidViewport,
     InvalidRoot,
     UnsupportedTextNode(NodeId),
     DuplicateDocumentNode(NodeId),
-    FixtureMappingLength { expected: usize, actual: usize },
-    EmptyFixtureId { index: usize },
+    FixtureMappingLength {
+        expected: usize,
+        actual: usize,
+    },
+    EmptyFixtureId {
+        index: usize,
+    },
     DuplicateFixtureId(String),
     DuplicateFixtureNode(NodeId),
-    FixtureMappingOrder { index: usize, fixture_id: String },
+    FixtureMappingOrder {
+        index: usize,
+        fixture_id: String,
+    },
     DuplicateComputedStyle(NodeId),
     MissingComputedStyle(NodeId),
+    MissingComputedProperty {
+        node: NodeId,
+        property: &'static str,
+    },
+    UnsupportedComputedValue {
+        node: NodeId,
+        property: &'static str,
+        value: String,
+    },
     UnexpectedComputedStyle(NodeId),
     MissingBackgroundColor(NodeId),
     MissingLayoutFrame(NodeId),
@@ -92,6 +111,17 @@ impl fmt::Display for StyleRenderError {
             Self::MissingComputedStyle(node) => {
                 write!(formatter, "노드 {node}의 계산 style이 없습니다")
             }
+            Self::MissingComputedProperty { node, property } => {
+                write!(formatter, "노드 {node}의 계산 속성 {property}가 없습니다")
+            }
+            Self::UnsupportedComputedValue {
+                node,
+                property,
+                value,
+            } => write!(
+                formatter,
+                "노드 {node}의 계산 속성 {property} 값 {value:?}를 runtime renderer가 지원하지 않습니다"
+            ),
             Self::UnexpectedComputedStyle(node) => {
                 write!(
                     formatter,

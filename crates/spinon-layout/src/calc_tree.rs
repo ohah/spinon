@@ -82,11 +82,18 @@ impl CalcLayoutTree {
         let mut nodes = Vec::with_capacity(postorder.len());
         for (position, external_id) in postorder.iter().copied().enumerate() {
             let source = &input.nodes[index[&external_id]];
-            let children = source
+            let mut children = source
                 .children
                 .iter()
                 .map(|child| engine_ids[child])
-                .collect();
+                .collect::<Vec<_>>();
+            if source.style.display == crate::LayoutDisplay::Flex {
+                // CSS order 값이 같으면 원본 순서를 유지하도록 안정 정렬합니다.
+                children.sort_by_key(|child| {
+                    let child_id = postorder[usize::from(*child)];
+                    input.nodes[index[&child_id]].style.order
+                });
+            }
             let style = to_taffy_style(external_id, source.style, &calc_handles)?;
             let order = u32::try_from(position).map_err(|_| LayoutError::TooManyNodes)?;
             nodes.push(Node::new(children, style, order));

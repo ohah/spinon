@@ -914,6 +914,32 @@ NSUInteger C10LogNodeFrames(NSString *report, const char *label) {
 #endif
 }
 
++ (NSString *)evalRuntimeGpuFlexOrderFixture:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 4096> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_flex_order_fixture(
+      host, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C1032_EVAL", report);
+  if (status == 0) {
+    const NSUInteger frameCount = C10LogNodeFrames(report, "SPINON_C1032_NODE_FRAME");
+    NSString *summary = [NSString stringWithFormat:
+        @"frames=%lu marker=%@ report_length=%lu", (unsigned long)frameCount,
+        [report containsString:@"node_frames_css_px=["] ? @"present" : @"missing",
+        (unsigned long)report.length];
+    C0410LogReport(OS_LOG_TYPE_INFO, "SPINON_C1032_FRAME_SUMMARY", summary);
+  }
+  return report;
+#else
+  (void)handle;
+  return @"status=-1 C04.10 GPU fixture 빌드가 비활성화되었습니다";
+#endif
+}
+
 + (NSString *)prepareRuntimeGpuWgpuSurface:(uint64_t)handle view:(void *)view {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
   if (![NSThread isMainThread]) {

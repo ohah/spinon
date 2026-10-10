@@ -2,17 +2,24 @@ use std::collections::BTreeMap;
 
 use spinon_core::NodeId;
 use spinon_layout::{
-    FlexDirection, FlexWrap, LayoutAlignItems, LayoutBorder, LayoutBoxSizing,
-    LayoutCssMathProperty, LayoutDimension, LayoutDisplay, LayoutEdges, LayoutGap,
-    LayoutJustifyContent, LayoutLengthPercentage, LayoutStyle, TextDirection,
+    FlexDirection, LayoutBorder, LayoutBoxSizing, LayoutDimension, LayoutDisplay, LayoutEdges,
+    LayoutGap, LayoutStyle, TextDirection,
 };
 use spinon_style::{
-    ComputedCssDimension, ComputedCssMath, ComputedCssMaxSize, ComputedCssSpacingValue,
-    ComputedElementStyle, ComputedStyleProfile, ComputedStyleSnapshot,
+    ComputedCssDimension, ComputedCssMath, ComputedCssMaxSize, ComputedElementStyle,
+    ComputedStyleProfile, ComputedStyleSnapshot,
 };
+
+mod flex_values;
+mod spacing_values;
 
 use super::typed_math::CssMathProjector;
 use crate::StyleLayoutError;
+use flex_values::{
+    parse_align_items, parse_direction, parse_flex_direction, parse_flex_wrap,
+    parse_justify_content, parse_number, parse_order,
+};
+use spacing_values::{layout_math_property, parse_gap, parse_margin, parse_nonnegative_spacing};
 
 pub(super) struct ProjectedStyles {
     pub styles: BTreeMap<NodeId, LayoutStyle>,
@@ -158,6 +165,11 @@ pub(super) fn project_styles(
                 element.layout_aspect_ratio
             } else {
                 None
+            },
+            order: if supports_runtime_flex {
+                parse_order(node, required(element, "order")?)?
+            } else {
+                0
             },
             flex_basis: parse_dimension(
                 node,
@@ -354,31 +366,6 @@ fn unsupported_aspect_ratio_constraint(element: &ComputedElementStyle) -> Option
     }
 }
 
-fn parse_align_items(node: NodeId, value: &str) -> Result<LayoutAlignItems, StyleLayoutError> {
-    match value {
-        "normal" | "stretch" => Ok(LayoutAlignItems::Stretch),
-        "flex-start" => Ok(LayoutAlignItems::FlexStart),
-        "flex-end" => Ok(LayoutAlignItems::FlexEnd),
-        "center" => Ok(LayoutAlignItems::Center),
-        value => unsupported(node, "align-items", value),
-    }
-}
-
-fn parse_justify_content(
-    node: NodeId,
-    value: &str,
-) -> Result<LayoutJustifyContent, StyleLayoutError> {
-    match value {
-        "normal" | "flex-start" => Ok(LayoutJustifyContent::FlexStart),
-        "flex-end" => Ok(LayoutJustifyContent::FlexEnd),
-        "center" => Ok(LayoutJustifyContent::Center),
-        "space-between" => Ok(LayoutJustifyContent::SpaceBetween),
-        "space-around" => Ok(LayoutJustifyContent::SpaceAround),
-        "space-evenly" => Ok(LayoutJustifyContent::SpaceEvenly),
-        value => unsupported(node, "justify-content", value),
-    }
-}
-
 fn required<'a>(
     element: &'a spinon_style::ComputedElementStyle,
     property: &'static str,
@@ -445,161 +432,6 @@ fn parse_dimension(
         ComputedCssDimension::LengthPx(_)
         | ComputedCssDimension::Percentage(_)
         | ComputedCssDimension::Unsupported => unsupported(node, property, serialized_value),
-    }
-}
-
-fn parse_flex_direction(
-    node: NodeId,
-    value: &str,
-    supports_reverse: bool,
-) -> Result<FlexDirection, StyleLayoutError> {
-    match value {
-        "row" => Ok(FlexDirection::Row),
-        "column" => Ok(FlexDirection::Column),
-        "row-reverse" if supports_reverse => Ok(FlexDirection::RowReverse),
-        "column-reverse" if supports_reverse => Ok(FlexDirection::ColumnReverse),
-        value => unsupported(node, "flex-direction", value),
-    }
-}
-
-fn parse_flex_wrap(node: NodeId, value: &str) -> Result<FlexWrap, StyleLayoutError> {
-    match value {
-        "nowrap" => Ok(FlexWrap::NoWrap),
-        "wrap" => Ok(FlexWrap::Wrap),
-        "wrap-reverse" => Ok(FlexWrap::WrapReverse),
-        value => unsupported(node, "flex-wrap", value),
-    }
-}
-
-fn parse_direction(node: NodeId, value: &str) -> Result<TextDirection, StyleLayoutError> {
-    match value {
-        "ltr" => Ok(TextDirection::Ltr),
-        "rtl" => Ok(TextDirection::Rtl),
-        value => unsupported(node, "direction", value),
-    }
-}
-
-fn parse_number(
-    node: NodeId,
-    property: &'static str,
-    value: &str,
-) -> Result<f32, StyleLayoutError> {
-    let parsed = value
-        .parse::<f32>()
-        .ok()
-        .filter(|number| number.is_finite() && *number >= 0.0);
-    parsed.ok_or_else(|| unsupported_value(node, property, value))
-}
-
-fn parse_gap(
-    node: NodeId,
-    property: &'static str,
-    serialized_value: &str,
-    value: ComputedCssSpacingValue,
-    math: Option<&ComputedCssMath>,
-    projector: &mut CssMathProjector,
-) -> Result<LayoutLengthPercentage, StyleLayoutError> {
-    if math.is_none() && value == ComputedCssSpacingValue::Normal {
-        return Ok(LayoutLengthPercentage::ZERO);
-    }
-    parse_nonnegative_spacing(node, property, serialized_value, value, math, projector)
-}
-
-fn parse_margin(
-    node: NodeId,
-    property: &'static str,
-    serialized_value: &str,
-    value: ComputedCssSpacingValue,
-    math: Option<&ComputedCssMath>,
-    projector: &mut CssMathProjector,
-    allow_auto: bool,
-) -> Result<LayoutLengthPercentage, StyleLayoutError> {
-    if allow_auto && math.is_none() && value == ComputedCssSpacingValue::Auto {
-        return Ok(LayoutLengthPercentage::Auto);
-    }
-    parse_spacing(
-        node,
-        property,
-        serialized_value,
-        value,
-        true,
-        math,
-        projector,
-    )
-}
-
-fn parse_nonnegative_spacing(
-    node: NodeId,
-    property: &'static str,
-    serialized_value: &str,
-    value: ComputedCssSpacingValue,
-    math: Option<&ComputedCssMath>,
-    projector: &mut CssMathProjector,
-) -> Result<LayoutLengthPercentage, StyleLayoutError> {
-    parse_spacing(
-        node,
-        property,
-        serialized_value,
-        value,
-        false,
-        math,
-        projector,
-    )
-}
-
-fn parse_spacing(
-    node: NodeId,
-    property: &'static str,
-    serialized_value: &str,
-    value: ComputedCssSpacingValue,
-    allow_negative: bool,
-    math: Option<&ComputedCssMath>,
-    projector: &mut CssMathProjector,
-) -> Result<LayoutLengthPercentage, StyleLayoutError> {
-    if let Some(math) = math {
-        let id = projector.project(node, layout_math_property(node, property)?, math)?;
-        return Ok(LayoutLengthPercentage::Calc(id));
-    }
-    let convert = |value: f32, percentage: bool| {
-        (value.is_finite() && (allow_negative || value >= 0.0)).then_some(if percentage {
-            LayoutLengthPercentage::percent(value)
-        } else {
-            LayoutLengthPercentage::length(value)
-        })
-    };
-    match value {
-        ComputedCssSpacingValue::LengthPx(value) => convert(value, false),
-        ComputedCssSpacingValue::Percentage(value) => convert(value, true),
-        ComputedCssSpacingValue::Auto
-        | ComputedCssSpacingValue::Normal
-        | ComputedCssSpacingValue::Unsupported => None,
-    }
-    .ok_or_else(|| unsupported_value(node, property, serialized_value))
-}
-
-fn layout_math_property(
-    node: NodeId,
-    property: &'static str,
-) -> Result<LayoutCssMathProperty, StyleLayoutError> {
-    match property {
-        "width" => Ok(LayoutCssMathProperty::Width),
-        "height" => Ok(LayoutCssMathProperty::Height),
-        "min-width" => Ok(LayoutCssMathProperty::MinWidth),
-        "max-width" => Ok(LayoutCssMathProperty::MaxWidth),
-        "min-height" => Ok(LayoutCssMathProperty::MinHeight),
-        "max-height" => Ok(LayoutCssMathProperty::MaxHeight),
-        "flex-basis" => Ok(LayoutCssMathProperty::FlexBasis),
-        "margin-top" => Ok(LayoutCssMathProperty::MarginTop),
-        "margin-right" => Ok(LayoutCssMathProperty::MarginRight),
-        "margin-bottom" => Ok(LayoutCssMathProperty::MarginBottom),
-        "margin-left" => Ok(LayoutCssMathProperty::MarginLeft),
-        "padding-top" => Ok(LayoutCssMathProperty::PaddingTop),
-        "padding-right" => Ok(LayoutCssMathProperty::PaddingRight),
-        "padding-bottom" => Ok(LayoutCssMathProperty::PaddingBottom),
-        "padding-left" => Ok(LayoutCssMathProperty::PaddingLeft),
-        "row-gap" => Ok(LayoutCssMathProperty::RowGap),
-        "column-gap" => Ok(LayoutCssMathProperty::ColumnGap),
-        _ => Err(unsupported_value(node, property, "typed CSS math")),
     }
 }
 

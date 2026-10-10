@@ -179,7 +179,7 @@ impl fmt::Display for RuntimeRenderError {
         match self {
             Self::DuplicateNode(node) => write!(formatter, "runtime 렌더 노드 {node}가 중복됩니다"),
             Self::InvalidPaintOrder => {
-                formatter.write_str("runtime paint_order가 DOM preorder의 0부터 연속값이 아닙니다")
+                formatter.write_str("runtime paint_order가 장면 순서의 0부터 연속값이 아닙니다")
             }
         }
     }

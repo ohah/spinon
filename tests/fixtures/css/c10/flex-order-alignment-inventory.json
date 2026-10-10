@@ -1,0 +1,209 @@
+{
+  "schema": "spinon-css-c10-3-2-flex-order-inventory/v1",
+  "fixtureId": "C10.3.2-flex-order-v1",
+  "viewport": {
+    "width": 320,
+    "height": 240,
+    "deviceScaleFactors": [1, 2]
+  },
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "forcedColors": "none",
+    "pointer": "coarse",
+    "hover": "none"
+  },
+  "wpt": {
+    "repository": "https://github.com/web-platform-tests/wpt",
+    "revision": "d5a765f1089ce6d3f72300281481edf3dddff7f3",
+    "paths": [
+      {
+        "path": "css/css-flexbox/flex-order.html",
+        "covers": "양수·음수 order 값에 따른 Flex item 시각 순서 변경"
+      },
+      {
+        "path": "css/css-flexbox/flexbox-order-from-lowest.html",
+        "covers": "가장 낮은 order 그룹부터 layout 배치"
+      },
+      {
+        "path": "css/css-flexbox/flexbox-order-only-flexitems.html",
+        "covers": "order가 비-Flex item을 재정렬하지 않음"
+      },
+      {
+        "path": "css/css-flexbox/flexbox-paint-ordering-001.xhtml",
+        "covers": "겹치는 in-flow Flex item의 paint 순서"
+      }
+    ],
+    "excludedPaths": [
+      {
+        "path": "css/css-flexbox/flexbox-paint-ordering-002.xhtml",
+        "reason": "z-index와 stacking context는 C10.3.2 범위 밖이며 C22에서 다룬다"
+      },
+      {
+        "path": "css/css-flexbox/flexbox-paint-ordering-003.html",
+        "reason": "absolute position Flex child는 C12/C10.3.5에서 다룬다"
+      },
+      {
+        "path": "css/css-flexbox/flex-order-last-baseline.html",
+        "reason": "baseline 상호작용은 C10.3.4와 C15에서 다룬다"
+      }
+    ]
+  },
+  "comparison": {
+    "computedProperties": [
+      "display",
+      "order",
+      "box-sizing",
+      "width",
+      "height",
+      "min-width",
+      "max-width",
+      "min-height",
+      "max-height",
+      "flex-direction",
+      "flex-wrap",
+      "flex-grow",
+      "flex-shrink",
+      "flex-basis",
+      "direction",
+      "align-items",
+      "justify-content",
+      "row-gap",
+      "column-gap",
+      "margin-top",
+      "margin-right",
+      "margin-bottom",
+      "margin-left",
+      "padding-top",
+      "padding-right",
+      "padding-bottom",
+      "padding-left",
+      "border-top-width",
+      "border-right-width",
+      "border-bottom-width",
+      "border-left-width",
+      "background-color"
+    ],
+    "typedIntegerProperties": ["order"],
+    "rectFields": ["x", "y", "width", "height"],
+    "maximumAbsoluteRectErrorCssPx": 0.5,
+    "paintOrderCheck": "per-container stable order-modified element list plus WGPU overlap image"
+  },
+  "cases": [
+    {
+      "id": "order-basic-mixed",
+      "nodes": [
+        { "id": "c1032-basic-root", "children": ["c1032-basic-a", "c1032-basic-b", "c1032-basic-c"] },
+        { "id": "c1032-basic-a", "children": [] },
+        { "id": "c1032-basic-b", "children": [] },
+        { "id": "c1032-basic-c", "children": [] }
+      ],
+      "wptPaths": ["css/css-flexbox/flex-order.html", "css/css-flexbox/flexbox-order-from-lowest.html"]
+    },
+    {
+      "id": "order-ties-and-hidden",
+      "nodes": [
+        { "id": "c1032-tie-root", "children": ["c1032-tie-a", "c1032-tie-b", "c1032-tie-hidden", "c1032-tie-c", "c1032-tie-d"] },
+        { "id": "c1032-tie-a", "children": [] },
+        { "id": "c1032-tie-b", "children": [] },
+        { "id": "c1032-tie-hidden", "children": [] },
+        { "id": "c1032-tie-c", "children": [] },
+        { "id": "c1032-tie-d", "children": [] }
+      ],
+      "wptPaths": ["css/css-flexbox/flexbox-order-only-flexitems.html"]
+    },
+    {
+      "id": "order-wrap-line-collection",
+      "nodes": [
+        { "id": "c1032-wrap-root", "children": ["c1032-wrap-a", "c1032-wrap-b", "c1032-wrap-c"] },
+        { "id": "c1032-wrap-a", "children": [] },
+        { "id": "c1032-wrap-b", "children": [] },
+        { "id": "c1032-wrap-c", "children": [] }
+      ],
+      "wptPaths": []
+    },
+    {
+      "id": "order-grow-distribution",
+      "nodes": [
+        { "id": "c1032-grow-root", "children": ["c1032-grow-a", "c1032-grow-b", "c1032-grow-c"] },
+        { "id": "c1032-grow-a", "children": [] },
+        { "id": "c1032-grow-b", "children": [] },
+        { "id": "c1032-grow-c", "children": [] }
+      ],
+      "wptPaths": []
+    },
+    {
+      "id": "order-calc-invalid",
+      "nodes": [
+        { "id": "c1032-calc-root", "children": ["c1032-calc-a", "c1032-calc-b", "c1032-calc-c", "c1032-calc-d"] },
+        { "id": "c1032-calc-a", "children": [] },
+        { "id": "c1032-calc-b", "children": [] },
+        { "id": "c1032-calc-c", "children": [] },
+        { "id": "c1032-calc-d", "children": [] }
+      ],
+      "wptPaths": []
+    },
+    {
+      "id": "order-int32-upper-clamp",
+      "nodes": [
+        { "id": "c1032-high-root", "children": ["c1032-high-a", "c1032-high-b", "c1032-high-c"] },
+        { "id": "c1032-high-a", "children": [] },
+        { "id": "c1032-high-b", "children": [] },
+        { "id": "c1032-high-c", "children": [] }
+      ],
+      "wptPaths": []
+    },
+    {
+      "id": "order-int32-lower-clamp",
+      "nodes": [
+        { "id": "c1032-low-root", "children": ["c1032-low-a", "c1032-low-b", "c1032-low-c"] },
+        { "id": "c1032-low-a", "children": [] },
+        { "id": "c1032-low-b", "children": [] },
+        { "id": "c1032-low-c", "children": [] }
+      ],
+      "wptPaths": []
+    },
+    {
+      "id": "order-custom-property",
+      "nodes": [
+        { "id": "c1032-custom-root", "children": ["c1032-custom-a", "c1032-custom-b", "c1032-custom-c"] },
+        { "id": "c1032-custom-a", "children": [] },
+        { "id": "c1032-custom-b", "children": [] },
+        { "id": "c1032-custom-c", "children": [] }
+      ],
+      "wptPaths": []
+    },
+    {
+      "id": "order-non-flex",
+      "nodes": [
+        { "id": "c1032-block-root", "children": ["c1032-block-a", "c1032-block-b"] },
+        { "id": "c1032-block-a", "children": [] },
+        { "id": "c1032-block-b", "children": [] }
+      ],
+      "wptPaths": ["css/css-flexbox/flexbox-order-only-flexitems.html"]
+    },
+    {
+      "id": "order-nested-scope",
+      "nodes": [
+        { "id": "c1032-nested-root", "children": ["c1032-nested-a", "c1032-nested-b"] },
+        { "id": "c1032-nested-a", "children": ["c1032-nested-a1", "c1032-nested-a2", "c1032-nested-a3"] },
+        { "id": "c1032-nested-a1", "children": [] },
+        { "id": "c1032-nested-a2", "children": [] },
+        { "id": "c1032-nested-a3", "children": [] },
+        { "id": "c1032-nested-b", "children": [] }
+      ],
+      "wptPaths": []
+    },
+    {
+      "id": "order-overlap-paint",
+      "nodes": [
+        { "id": "c1032-paint-root", "children": ["c1032-paint-a", "c1032-paint-b", "c1032-paint-c"] },
+        { "id": "c1032-paint-a", "children": [] },
+        { "id": "c1032-paint-b", "children": [] },
+        { "id": "c1032-paint-c", "children": [] }
+      ],
+      "wptPaths": ["css/css-flexbox/flexbox-paint-ordering-001.xhtml"]
+    }
+  ]
+}
