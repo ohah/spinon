@@ -1,0 +1,61 @@
+{
+  "schema": "spinon-css-c07-3-aspect-ratio-inventory/v1",
+  "fixtureId": "C07.3-aspect-ratio-v1",
+  "viewport": {
+    "width": 400,
+    "height": 1200,
+    "deviceScaleFactors": [1, 2]
+  },
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "forcedColors": "none",
+    "pointer": "coarse",
+    "hover": "none"
+  },
+  "comparison": {
+    "rectFields": ["x", "y", "width", "height"],
+    "maximumAbsoluteRectErrorCssPx": 0.5,
+    "computedStyleMapPropertiesMustMatch": ["aspect-ratio", "box-sizing"],
+    "getComputedStyleResolvedValuesAreDiagnosticOnly": true,
+    "unsupportedAspectRatioConstraints": "Separate fail-closed runtime tests; positive-flow positions use fixed-size spacers"
+  },
+  "nodes": [
+    {"id":"ratio-16-9-width","properties":["aspect-ratio","box-sizing","width","height","min-width","max-width","min-height","max-height","padding-top","padding-right","padding-bottom","padding-left","border-top-width","border-right-width","border-bottom-width","border-left-width"]},
+    {"id":"ratio-one-width","properties":["aspect-ratio","width","height"]},
+    {"id":"ratio-four-three-width","properties":["aspect-ratio","width","height"]},
+    {"id":"ratio-fraction-width","properties":["aspect-ratio","width","height"]},
+    {"id":"ratio-calc-number","properties":["aspect-ratio","width","height"]},
+    {"id":"ratio-empty-auto-sizes","properties":["aspect-ratio","width","height"]},
+    {"id":"ratio-definite-both","properties":["aspect-ratio","width","height"]},
+    {"id":"ratio-content-box","properties":["aspect-ratio","box-sizing","width","height","padding-top","padding-right","padding-bottom","padding-left"]},
+    {"id":"ratio-border-box","properties":["aspect-ratio","box-sizing","width","height","padding-top","padding-right","padding-bottom","padding-left"]},
+    {"id":"ratio-border-box-border","properties":["aspect-ratio","box-sizing","width","height","padding-top","padding-right","padding-bottom","padding-left","border-top-width","border-right-width","border-bottom-width","border-left-width"]},
+    {"id":"ratio-content-box-border","properties":["aspect-ratio","box-sizing","width","height","padding-top","padding-right","padding-bottom","padding-left","border-top-width","border-right-width","border-bottom-width","border-left-width"]},
+    {"id":"ratio-min-height-transfer","layoutSupport":"unsupported-min-max-ratio","properties":["aspect-ratio","width","height","min-height"]},
+    {"id":"ratio-max-height-transfer","layoutSupport":"unsupported-min-max-ratio","properties":["aspect-ratio","width","height","max-height"]},
+    {"id":"ratio-min-width-transfer","layoutSupport":"unsupported-min-max-ratio","properties":["aspect-ratio","width","height","min-width"]},
+    {"id":"ratio-max-width-transfer","layoutSupport":"unsupported-min-max-ratio","properties":["aspect-ratio","width","height","max-width"]},
+    {"id":"ratio-zero-numerator","properties":["aspect-ratio","width","height"]},
+    {"id":"ratio-zero-denominator","properties":["aspect-ratio","width","height"]},
+    {"id":"ratio-zero-both","properties":["aspect-ratio","width","height"]},
+    {"id":"ratio-var","properties":["aspect-ratio","width","height"]},
+    {"id":"ratio-invalid-fallback","properties":["aspect-ratio","width","height"]},
+    {"id":"ratio-parent","properties":["aspect-ratio","width","height"]},
+    {"id":"ratio-not-inherited","parent":"ratio-parent","class":"child","properties":["aspect-ratio","width","height"]},
+    {"id":"ratio-display-none","properties":["aspect-ratio","display","width","height"]},
+    {"id":"ratio-flex-row","properties":["display","width","height"]},
+    {"id":"ratio-flex-row-child","parent":"ratio-flex-row","class":"child","properties":["aspect-ratio","width","height"]},
+    {"id":"ratio-flex-row-start","properties":["display","align-items","width","height"]},
+    {"id":"ratio-flex-row-start-child","parent":"ratio-flex-row-start","class":"child","properties":["aspect-ratio","width","height"]},
+    {"id":"ratio-flex-column","properties":["display","flex-direction","width","height"]},
+    {"id":"ratio-flex-column-child","parent":"ratio-flex-column","class":"child","properties":["aspect-ratio","width","height"]},
+    {"id":"ratio-flex-column-start","properties":["display","flex-direction","align-items","width","height"]},
+    {"id":"ratio-flex-column-start-child","parent":"ratio-flex-column-start","class":"child","properties":["aspect-ratio","width","height"]},
+    {"id":"ratio-flex-min-max","properties":["display","width","height"]},
+    {"id":"ratio-flex-min-max-child","parent":"ratio-flex-min-max","class":"child","layoutSupport":"unsupported-min-max-ratio","properties":["aspect-ratio","width","height","min-height","max-height"]},
+    {"id":"ratio-auto-explicit","properties":["aspect-ratio","width","height"]},
+    {"id":"ratio-auto-initial","properties":["aspect-ratio","width","height"]}
+  ]
+}

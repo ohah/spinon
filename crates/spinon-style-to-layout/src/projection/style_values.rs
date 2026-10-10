@@ -8,7 +8,7 @@ use spinon_layout::{
 };
 use spinon_style::{
     ComputedCssDimension, ComputedCssMath, ComputedCssMaxSize, ComputedCssSpacingValue,
-    ComputedStyleProfile, ComputedStyleSnapshot,
+    ComputedElementStyle, ComputedStyleProfile, ComputedStyleSnapshot,
 };
 
 use super::typed_math::CssMathProjector;
@@ -26,6 +26,9 @@ pub(super) fn project_styles(
     let mut math = CssMathProjector::default();
     for element in snapshot.elements.iter() {
         let node = element.node_id;
+        if let Some(property) = unsupported_aspect_ratio_constraint(element) {
+            return Err(StyleLayoutError::UnsupportedAspectRatioConstraint { node, property });
+        }
         let supports_size_constraints = matches!(
             snapshot.profile,
             ComputedStyleProfile::RuntimeFlexLayoutV1
@@ -110,6 +113,11 @@ pub(super) fn project_styles(
                 )?
             } else {
                 LayoutStyle::default().max_height
+            },
+            aspect_ratio: if supports_size_constraints {
+                element.layout_aspect_ratio
+            } else {
+                None
             },
             flex_basis: parse_dimension(
                 node,
@@ -271,6 +279,22 @@ pub(super) fn project_styles(
         styles: output,
         css_math: math.into_values(),
     })
+}
+
+fn unsupported_aspect_ratio_constraint(element: &ComputedElementStyle) -> Option<&'static str> {
+    element.layout_aspect_ratio?;
+    let dimensions = element.layout_dimensions;
+    if dimensions.min_width != ComputedCssDimension::Auto {
+        Some("min-width")
+    } else if dimensions.max_width != ComputedCssMaxSize::None {
+        Some("max-width")
+    } else if dimensions.min_height != ComputedCssDimension::Auto {
+        Some("min-height")
+    } else if dimensions.max_height != ComputedCssMaxSize::None {
+        Some("max-height")
+    } else {
+        None
+    }
 }
 
 fn parse_align_items(node: NodeId, value: &str) -> Result<LayoutAlignItems, StyleLayoutError> {

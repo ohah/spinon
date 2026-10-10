@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+html, body { margin: 0; padding: 0; }
+#fixture { display: block; width: 400px; }
+.case { display: block; margin: 0; padding: 0; border: 0; }
+#ratio-16-9-width { width: 160px; aspect-ratio: 16 / 9; }
+#ratio-one-width { width: 100px; aspect-ratio: 1; }
+#ratio-four-three-width { width: 120px; aspect-ratio: 4 / 3; }
+#ratio-fraction-width { width: 101px; aspect-ratio: 1.5; }
+#ratio-calc-number { width: 160px; aspect-ratio: calc(16 / 9); }
+#ratio-empty-auto-sizes { aspect-ratio: 16 / 9; }
+#ratio-definite-both { width: 160px; height: 80px; aspect-ratio: 16 / 9; }
+#ratio-content-box { width: 100px; padding: 10px; box-sizing: content-box; aspect-ratio: 2; }
+#ratio-border-box { width: 120px; padding: 10px; box-sizing: border-box; aspect-ratio: 2; }
+#ratio-border-box-border { width: 120px; padding: 10px; border: 2px solid; box-sizing: border-box; aspect-ratio: 2; }
+#ratio-content-box-border { width: 100px; padding: 10px; border: 2px solid; box-sizing: content-box; aspect-ratio: 2; }
+#ratio-min-height-transfer { width: 100px; min-height: 80px; aspect-ratio: 2; }
+#ratio-max-height-transfer { width: 160px; max-height: 60px; aspect-ratio: 2; }
+#ratio-min-width-transfer { height: 40px; min-width: 100px; aspect-ratio: 2; }
+#ratio-max-width-transfer { height: 80px; max-width: 120px; aspect-ratio: 2; }
+#ratio-zero-numerator { width: 100px; aspect-ratio: 0 / 1; }
+#ratio-zero-denominator { width: 100px; aspect-ratio: 1 / 0; }
+#ratio-zero-both { width: 100px; aspect-ratio: 0 / 0; }
+#ratio-var { --preferred: 4 / 3; width: 120px; aspect-ratio: var(--preferred); }
+#ratio-invalid-fallback { width: 100px; aspect-ratio: 2; aspect-ratio: -1; }
+#ratio-not-inherited { width: 100px; }
+#ratio-parent { width: 200px; aspect-ratio: 2; }
+#ratio-parent > .child { width: 100px; }
+#ratio-display-none { display: none; width: 100px; aspect-ratio: 2; }
+#ratio-flex-row { display: flex; width: 300px; height: 100px; }
+#ratio-flex-row > .child { width: 100px; aspect-ratio: 2; flex: 0 0 auto; }
+#ratio-flex-row-start { display: flex; align-items: flex-start; width: 300px; height: 100px; }
+#ratio-flex-row-start > .child { width: 100px; aspect-ratio: 2; flex: 0 0 auto; }
+#ratio-flex-column { display: flex; flex-direction: column; width: 100px; height: 300px; }
+#ratio-flex-column > .child { height: 100px; aspect-ratio: 2; flex: 0 0 auto; }
+#ratio-flex-column-start { display: flex; flex-direction: column; align-items: flex-start; width: 100px; height: 300px; }
+#ratio-flex-column-start > .child { height: 100px; aspect-ratio: 2; flex: 0 0 auto; }
+#ratio-flex-min-max { display: flex; width: 180px; height: 100px; }
+#ratio-flex-min-max > .child { width: 120px; min-height: 70px; max-height: 80px; aspect-ratio: 2; flex: 0 1 auto; }
+#ratio-auto-explicit { width: 100px; aspect-ratio: auto; }
+#ratio-auto-initial { width: 100px; }
+</style>
+</head>
+<body>
+<div id="fixture">
+  <div id="ratio-16-9-width" class="case"></div>
+  <div id="ratio-one-width" class="case"></div>
+  <div id="ratio-four-three-width" class="case"></div>
+  <div id="ratio-fraction-width" class="case"></div>
+  <div id="ratio-calc-number" class="case"></div>
+  <div id="ratio-empty-auto-sizes" class="case"></div>
+  <div id="ratio-definite-both" class="case"></div>
+  <div id="ratio-content-box" class="case"></div>
+  <div id="ratio-border-box" class="case"></div>
+  <div id="ratio-border-box-border" class="case"></div>
+  <div id="ratio-content-box-border" class="case"></div>
+  <div id="ratio-min-height-transfer" class="case"></div>
+  <div id="ratio-max-height-transfer" class="case"></div>
+  <div id="ratio-min-width-transfer" class="case"></div>
+  <div id="ratio-max-width-transfer" class="case"></div>
+  <div id="ratio-zero-numerator" class="case"></div>
+  <div id="ratio-zero-denominator" class="case"></div>
+  <div id="ratio-zero-both" class="case"></div>
+  <div id="ratio-var" class="case"></div>
+  <div id="ratio-invalid-fallback" class="case"></div>
+  <div id="ratio-parent" class="case"><div id="ratio-not-inherited" class="child" style="width:100px"></div></div>
+  <div id="ratio-display-none" class="case"></div>
+  <div id="ratio-flex-row"><div id="ratio-flex-row-child" class="child"></div></div>
+  <div id="ratio-flex-row-start"><div id="ratio-flex-row-start-child" class="child"></div></div>
+  <div id="ratio-flex-column"><div id="ratio-flex-column-child" class="child"></div></div>
+  <div id="ratio-flex-column-start"><div id="ratio-flex-column-start-child" class="child"></div></div>
+  <div id="ratio-flex-min-max"><div id="ratio-flex-min-max-child" class="child"></div></div>
+  <div id="ratio-auto-explicit" class="case"></div>
+  <div id="ratio-auto-initial" class="case"></div>
+</div>
+</body>
+</html>

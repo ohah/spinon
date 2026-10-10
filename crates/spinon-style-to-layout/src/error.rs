@@ -17,6 +17,10 @@ pub enum StyleLayoutError {
     },
     UnsupportedInlineStyle(NodeId),
     UnsupportedRootMargin(NodeId),
+    UnsupportedAspectRatioConstraint {
+        node: NodeId,
+        property: &'static str,
+    },
     MissingComputedElement(NodeId),
     DuplicateComputedElement(NodeId),
     MissingComputedProperty {
@@ -59,6 +63,10 @@ impl fmt::Display for StyleLayoutError {
             Self::UnsupportedRootMargin(node) => write!(
                 formatter,
                 "레이아웃 root 노드 {node}의 nonzero margin은 root viewport 계약에서 지원하지 않습니다"
+            ),
+            Self::UnsupportedAspectRatioConstraint { node, property } => write!(
+                formatter,
+                "노드 {node}의 aspect-ratio와 {property} 조합은 현재 layout adapter가 지원하지 않습니다"
             ),
             Self::MissingComputedElement(node) => {
                 write!(formatter, "노드 {node}의 computed-style 항목이 없습니다")

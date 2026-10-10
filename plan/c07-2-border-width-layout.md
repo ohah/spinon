@@ -23,7 +23,7 @@ border 색상·선 모양의 GPU 페인트, radius, border-image, outline, shado
 
 ## 현재 구현 상태
 
-Stylo typed border width/style → `LayoutBorder` → Taffy, 50-node Chrome 비교, Android API 37·iOS 26.2 Simulator runtime 연결, 실행 증거 및 구현 실패 관점 검토까지 작업 브랜치에서 완료했다. 내부·crate 버전은 계속 `0.1.0`이다. 공식 완료와 미리보기 상태는 PR 병합 뒤 갱신한다. 자세한 실행 결과는 [시뮬레이터 증거](../spec/internal/evidence/c07-2-border-width-layout-simulators-2026-10-10.md), 구현 검토는 [구현 실패 관점 기록](../spec/internal/evidence/c07-2-border-width-layout-implementation-review-2026-10-10.md)을 본다.
+PR #103 리베이스 병합으로 C07.2 구현·검증과 내부·crate 버전 `0.1.0` 고정을 공식 상태 대장에 반영했다. 자세한 실행 결과는 [시뮬레이터 증거](../spec/internal/evidence/c07-2-border-width-layout-simulators-2026-10-10.md), 구현 검토는 [구현 실패 관점 기록](../spec/internal/evidence/c07-2-border-width-layout-implementation-review-2026-10-10.md)을 본다.
 
 ## 자료 흐름과 오류 계약
 

@@ -192,6 +192,11 @@ pub enum CssCascadeError {
         node: NodeId,
         reason: String,
     },
+    /// 현재 layout bridge가 의미를 보존할 수 없는 computed `aspect-ratio`입니다.
+    UnsupportedComputedAspectRatio {
+        node: NodeId,
+        reason: String,
+    },
     StylesheetRegistry(StylesheetRegistryError),
 }
 
@@ -270,6 +275,10 @@ impl fmt::Display for CssCascadeError {
             Self::UnsupportedComputedBackgroundColor { node, reason } => write!(
                 formatter,
                 "노드 {node}의 계산 background-color를 S04 불투명 sRGB로 변환할 수 없습니다: {reason}"
+            ),
+            Self::UnsupportedComputedAspectRatio { node, reason } => write!(
+                formatter,
+                "노드 {node}의 computed aspect-ratio를 현재 layout 계약으로 표현할 수 없습니다: {reason}"
             ),
             Self::StylesheetRegistry(error) => error.fmt(formatter),
         }

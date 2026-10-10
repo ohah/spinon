@@ -19,10 +19,10 @@ use style::{
 use super::super::{
     ComputedCssMath, ComputedElementStyle, ComputedStyleProfile, CssCascadeError, runtime_paint,
 };
-use super::computed_layout_border;
 use super::dimensions::{computed_layout_dimensions, computed_layout_math_values};
 use super::source_math::winning_layout_math_values;
 use super::spacing::computed_layout_spacing;
+use super::{computed_layout_aspect_ratio, computed_layout_border};
 use crate::StyloElement;
 
 pub(super) fn computed_element_output(
@@ -36,6 +36,19 @@ pub(super) fn computed_element_output(
         runtime_paint::computed_background_for_profile(profile, computed, node_id)?;
     let font_size_css_px = computed.get_font().clone_font_size().computed_size().px();
     let layout_border = computed_layout_border(computed);
+    let layout_aspect_ratio = if matches!(
+        profile,
+        ComputedStyleProfile::RuntimeFlexLayoutV1
+            | ComputedStyleProfile::RuntimeFlexPaintV1
+            | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+            | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
+            | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
+            | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
+    ) {
+        computed_layout_aspect_ratio(computed, node_id)?
+    } else {
+        None
+    };
     let mut computed_properties = properties
         .iter()
         .map(|(name, id)| {
@@ -59,6 +72,7 @@ pub(super) fn computed_element_output(
         node_id,
         font_size_css_px,
         layout_dimensions: computed_layout_dimensions(computed),
+        layout_aspect_ratio,
         layout_spacing: computed_layout_spacing(computed),
         layout_border,
         layout_math_values: computed_layout_math_values(computed, source_math),

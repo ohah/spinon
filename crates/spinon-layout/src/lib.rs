@@ -251,6 +251,16 @@ fn validate_style(node: &LayoutNode) -> Result<(), LayoutError> {
             field: "flex_basis",
         });
     }
+    if node
+        .style
+        .aspect_ratio
+        .is_some_and(|ratio| !ratio.is_finite() || ratio <= 0.0)
+    {
+        return Err(LayoutError::InvalidStyle {
+            node: node.id,
+            field: "aspect_ratio",
+        });
+    }
     for (field, value) in [
         ("margin.top", node.style.margin.top),
         ("margin.right", node.style.margin.right),

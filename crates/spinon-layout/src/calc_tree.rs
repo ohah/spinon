@@ -6,11 +6,11 @@ use std::{
 
 use spinon_core::NodeId as SpinonNodeId;
 use taffy::{
-    AvailableSpace, BlockContext, Cache, CacheTree, Display, Layout, LayoutBlockContainer,
-    LayoutFlexboxContainer, LayoutInput as TaffyLayoutInput, LayoutOutput as TaffyLayoutOutput,
-    LayoutPartialTree, NodeId as TaffyNodeId, RunMode, Size, Style, TraversePartialTree,
-    compute_block_layout, compute_cached_layout, compute_flexbox_layout, compute_hidden_layout,
-    compute_leaf_layout, compute_root_layout,
+    AvailableSpace, BlockContext, Cache, CacheTree, CoreStyle, Display, Layout,
+    LayoutBlockContainer, LayoutFlexboxContainer, LayoutInput as TaffyLayoutInput,
+    LayoutOutput as TaffyLayoutOutput, LayoutPartialTree, MaybeResolve, NodeId as TaffyNodeId,
+    RunMode, Size, Style, TraversePartialTree, compute_block_layout, compute_cached_layout,
+    compute_flexbox_layout, compute_hidden_layout, compute_leaf_layout, compute_root_layout,
 };
 
 use crate::{
@@ -142,7 +142,19 @@ impl CalcLayoutTree {
                 }
                 (Display::Flex, true) => compute_flexbox_layout(tree, node_id, inputs),
                 (_, false) => {
-                    let style = tree.node(node_id).style.clone();
+                    let mut style = tree.node(node_id).style.clone();
+                    let style_size = style
+                        .size()
+                        .maybe_resolve(inputs.parent_size, |value, basis| {
+                            tree.resolve_calc_value(value, basis)
+                        });
+                    if style_size.width.is_some() && style_size.height.is_some() {
+                        // Taffy 0.14's leaf path treats the preferred ratio as a minimum for
+                        // height even when both CSS sizes are definite. CSS leaves both sizes
+                        // untouched in that case, so keep the leaf path but disable that
+                        // incompatible post-measure adjustment.
+                        style.aspect_ratio = None;
+                    }
                     compute_leaf_layout(
                         inputs,
                         &style,

@@ -81,6 +81,8 @@ fn validate_synthetic_document_box(
     Ok(())
 }
 
+#[path = "incremental/aspect_ratio.rs"]
+mod aspect_ratio;
 #[path = "incremental/border.rs"]
 mod border;
 #[path = "incremental/compute.rs"]
@@ -95,6 +97,7 @@ mod reuse;
 mod source_math;
 #[path = "incremental/spacing.rs"]
 mod spacing;
+pub(super) use aspect_ratio::computed_layout_aspect_ratio;
 pub(super) use border::computed_layout_border;
 pub(super) use compute::compute_cascade_with_reuse;
 
