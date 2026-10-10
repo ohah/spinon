@@ -47,7 +47,13 @@ pub(super) fn validate_spacing_percentage_bases(
             .get(&id)
             .and_then(|parent_id| definite.get(parent_id))
             .copied()
-            .unwrap_or_default();
+            .unwrap_or_else(|| match input.root_sizing {
+                RootSizingPolicy::BlockFormatting if id == input.root => DefiniteAxes {
+                    width: true,
+                    height: true,
+                },
+                _ => DefiniteAxes::default(),
+            });
         let is_hidden = parent
             .and_then(|parent| hidden.get(&parent.id))
             .copied()
@@ -133,11 +139,11 @@ fn root_axes(
     _calc_percentages: &BTreeMap<LayoutCalcId, bool>,
 ) -> DefiniteAxes {
     match policy {
-        RootSizingPolicy::MatchViewport => DefiniteAxes {
+        RootSizingPolicy::Match => DefiniteAxes {
             width: true,
             height: true,
         },
-        RootSizingPolicy::ResolveWithinViewport => DefiniteAxes {
+        RootSizingPolicy::ResolveWithin | RootSizingPolicy::BlockFormatting => DefiniteAxes {
             width: match node.style.width {
                 LayoutDimension::Fixed(_)
                 | LayoutDimension::Percent(_)
@@ -238,6 +244,7 @@ fn has_percentage(
     calc_percentages: &BTreeMap<LayoutCalcId, bool>,
 ) -> bool {
     match value {
+        LayoutLengthPercentage::Auto => false,
         LayoutLengthPercentage::LengthPx(_) => false,
         LayoutLengthPercentage::Percentage(_) => true,
         LayoutLengthPercentage::Calc(id) => calc_percentages.get(&id).copied().unwrap_or(true),

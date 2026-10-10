@@ -74,7 +74,7 @@ fn block_request_with_parents(
     )
 }
 
-fn block_request_with_author_stylesheet(css: &str) -> (WorkRequest, HostNodeHandle) {
+pub(super) fn block_request_with_author_stylesheet(css: &str) -> (WorkRequest, HostNodeHandle) {
     let mut document = HostDocument::new().unwrap();
     let root = document.reserve_node_handle().unwrap();
     let style = document.reserve_node_handle().unwrap();

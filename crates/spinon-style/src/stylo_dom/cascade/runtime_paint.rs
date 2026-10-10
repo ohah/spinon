@@ -19,7 +19,58 @@ pub(super) const RUNTIME_BLOCK_PAINT_AUTHOR_PROPERTIES: &[&str] = &[
     "font-family",
 ];
 
+pub(super) const RUNTIME_BLOCK_FORMATTING_AUTHOR_PROPERTIES: &[&str] = &[
+    "display",
+    "box-sizing",
+    "width",
+    "height",
+    "min-width",
+    "max-width",
+    "min-height",
+    "max-height",
+    "margin",
+    "margin-top",
+    "margin-right",
+    "margin-bottom",
+    "margin-left",
+    "padding",
+    "padding-top",
+    "padding-right",
+    "padding-bottom",
+    "padding-left",
+    "border",
+    "border-width",
+    "border-top-width",
+    "border-right-width",
+    "border-bottom-width",
+    "border-left-width",
+    "border-style",
+    "border-top-style",
+    "border-right-style",
+    "border-bottom-style",
+    "border-left-style",
+    "border-color",
+    "border-top-color",
+    "border-right-color",
+    "border-bottom-color",
+    "border-left-color",
+    "background-color",
+    "color",
+    "font-size",
+    "font-family",
+];
+
 pub(super) fn runtime_block_paint_properties() -> Vec<(&'static str, LonghandId)> {
+    let mut properties = RUNTIME_FLEX_LAYOUT_PROPERTIES.to_vec();
+    properties.extend([
+        ("background-color", LonghandId::BackgroundColor),
+        ("color", LonghandId::Color),
+        ("font-family", LonghandId::FontFamily),
+    ]);
+    properties
+}
+
+pub(super) fn runtime_block_formatting_properties() -> Vec<(&'static str, LonghandId)> {
     let mut properties = RUNTIME_FLEX_LAYOUT_PROPERTIES.to_vec();
     properties.extend([
         ("background-color", LonghandId::BackgroundColor),
@@ -42,7 +93,8 @@ pub(super) fn computed_background_for_profile(
         ComputedStyleProfile::RuntimeFlexPaintV1
         | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
         | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
-        | ComputedStyleProfile::RuntimeBlockPaintV1 => {
+        | ComputedStyleProfile::RuntimeBlockPaintV1
+        | ComputedStyleProfile::RuntimeBlockFormattingV1 => {
             let paint = computed_runtime_background_paint(computed, node)?;
             let color = match paint {
                 ComputedBackgroundPaint::Transparent => None,
@@ -78,6 +130,24 @@ pub fn compute_runtime_block_paint_cascade_with_stylesheets(
         style_revision,
         &properties,
         ComputedStyleProfile::RuntimeBlockPaintV1,
+    )
+}
+
+/// C09.1의 Block 흐름·상자 속성과 기본 paint를 같은 Stylo cascade에서 계산합니다.
+pub fn compute_runtime_block_formatting_cascade_with_stylesheets(
+    view: &StyloDocumentView,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+) -> Result<super::ComputedStyleSnapshot, CssCascadeError> {
+    let properties = runtime_block_formatting_properties();
+    compute_cascade(
+        view,
+        author_stylesheets,
+        viewport,
+        style_revision,
+        &properties,
+        ComputedStyleProfile::RuntimeBlockFormattingV1,
     )
 }
 
@@ -184,5 +254,13 @@ pub fn first_unsupported_runtime_block_paint_inline_property(
 ) -> Option<(NodeId, String)> {
     super::runtime_layout::first_unsupported_inline_property(view, |property| {
         RUNTIME_BLOCK_PAINT_AUTHOR_PROPERTIES.contains(&property)
+    })
+}
+
+pub fn first_unsupported_runtime_block_formatting_inline_property(
+    view: &StyloDocumentView,
+) -> Option<(NodeId, String)> {
+    super::runtime_layout::first_unsupported_inline_property(view, |property| {
+        RUNTIME_BLOCK_FORMATTING_AUTHOR_PROPERTIES.contains(&property)
     })
 }

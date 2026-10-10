@@ -45,8 +45,9 @@ pub struct LayoutInput {
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub(crate) enum RootSizingPolicy {
-    MatchViewport,
-    ResolveWithinViewport,
+    Match,
+    ResolveWithin,
+    BlockFormatting,
 }
 
 impl LayoutInput {
@@ -107,7 +108,7 @@ impl LayoutEngine for TaffyLayoutEngine {
         let index = validate(input)?;
         let postorder = postorder(input, &index)?;
         let mut tree = CalcLayoutTree::new(input, &index, &postorder)?;
-        let engine_root = tree.engine_id(input.root);
+        let engine_root = tree.root_engine_id(input.root);
         let compute_result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
             tree.compute_layout(
                 engine_root,
@@ -151,7 +152,7 @@ fn validate(input: &LayoutInput) -> Result<BTreeMap<NodeId, usize>, LayoutError>
         validate_style(node)?;
     }
 
-    if input.root_sizing == RootSizingPolicy::MatchViewport {
+    if input.root_sizing == RootSizingPolicy::Match {
         let root = &input.nodes[root_position];
         if root.style.width != LayoutDimension::Fixed(input.viewport.width) {
             return Err(LayoutError::RootSizeMismatch { axis: "width" });
@@ -267,7 +268,10 @@ fn validate_style(node: &LayoutNode) -> Result<(), LayoutError> {
         ("margin.bottom", node.style.margin.bottom),
         ("margin.left", node.style.margin.left),
     ] {
-        if !value.is_calc() && !value.value().is_finite() {
+        if !matches!(value, LayoutLengthPercentage::Auto)
+            && !value.is_calc()
+            && !value.value().is_finite()
+        {
             return Err(LayoutError::InvalidStyle {
                 node: node.id,
                 field,

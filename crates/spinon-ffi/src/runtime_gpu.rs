@@ -43,6 +43,8 @@ const RUNTIME_CSS_ASPECT_RATIO_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c07/runtime-aspect-ratio.js");
 const RUNTIME_CSS_BLOCK_PAINT_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c08/runtime-block-paint.js");
+const RUNTIME_CSS_BLOCK_FORMATTING_FIXTURE_SOURCE: &str =
+    include_str!("../../../tests/fixtures/css/c09/runtime-block-formatting.js");
 
 #[repr(C)]
 pub struct SpinonRuntimeGpuHost {
@@ -51,6 +53,7 @@ pub struct SpinonRuntimeGpuHost {
 
 struct RuntimeGpuHost {
     session: RuntimeSession,
+    include_node_frame_report: bool,
     operation: Mutex<()>,
     presentation: PresentationScenes,
     renderer: Mutex<Option<RuntimeRenderer>>,
@@ -129,9 +132,26 @@ impl RuntimeGpuHost {
         Ok((Self::from_session(session), report))
     }
 
+    fn new_block_formatting_fixture() -> Result<(Self, String), String> {
+        let (session, report) = RuntimeSession::new_runtime_gpu_block_formatting_fixture()?;
+        Ok((Self::from_session_with_frame_report(session), report))
+    }
+
     fn from_session(session: RuntimeSession) -> Self {
+        Self::from_session_with_frame_report_mode(session, false)
+    }
+
+    fn from_session_with_frame_report(session: RuntimeSession) -> Self {
+        Self::from_session_with_frame_report_mode(session, true)
+    }
+
+    fn from_session_with_frame_report_mode(
+        session: RuntimeSession,
+        include_node_frame_report: bool,
+    ) -> Self {
         Self {
             session,
+            include_node_frame_report,
             operation: Mutex::new(()),
             presentation: PresentationScenes::new(),
             renderer: Mutex::new(None),
@@ -240,8 +260,25 @@ impl RuntimeGpuHost {
             .first()
             .map(|frame| format!(" root_frame_css_px={}x{}", frame.width, frame.height))
             .unwrap_or_default();
+        let node_frame_report = if self.include_node_frame_report {
+            let frames = completed
+                .frames
+                .iter()
+                .enumerate()
+                .map(|(preorder, frame)| {
+                    format!(
+                        "{preorder}:node={},x={},y={},width={},height={}",
+                        frame.node_id, frame.x, frame.y, frame.width, frame.height
+                    )
+                })
+                .collect::<Vec<_>>()
+                .join(";");
+            format!(" node_frames_css_px=[{frames}]")
+        } else {
+            String::new()
+        };
         Ok(format!(
-            "layout={} boxes={} generation={} document_revision={} render_tree_revision={} style_revision={} environment_revision={} cacheHit={} cascadeRecomputedStyleElements={} cascadeReusedStyleElements={} cascadeContextStyleElements={}{}{}",
+            "layout={} boxes={} generation={} document_revision={} render_tree_revision={} style_revision={} environment_revision={} cacheHit={} cascadeRecomputedStyleElements={} cascadeReusedStyleElements={} cascadeContextStyleElements={}{}{}{}",
             snapshot.state.as_str(),
             box_count,
             completed.key.generation,
@@ -255,6 +292,7 @@ impl RuntimeGpuHost {
             cascade_completed.cascade_context_style_elements,
             root_frame,
             render_root,
+            node_frame_report,
         ))
     }
 

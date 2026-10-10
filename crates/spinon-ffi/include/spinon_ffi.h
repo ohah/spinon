@@ -126,6 +126,9 @@ SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_registered_properties_fixture(
 /* C08 Block·기본 페인트 검증 전용 CSS runtime host를 생성합니다. */
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_block_paint_fixture(
     char *output, size_t output_capacity);
+/* C09.1 일반 Block 흐름·포함 블록·auto margin 검증 fixture 전용 host입니다. */
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_block_formatting_fixture(
+    char *output, size_t output_capacity);
 /* UI event에서 viewport·색상 체계·surface 변경을 플랫폼 큐에 넣기 전에
    호출합니다. 잠금·대기를 하지 않으며 실패는 0입니다. 반환값은 내부 무효화 순번이며
    호출자가 다른 함수에 전달하지 않습니다. 성공 여부 확인 외 용도로 보관하지 마세요. */
@@ -203,6 +206,10 @@ int32_t spinon_runtime_gpu_host_eval_aspect_ratio_fixture(
     char *output, size_t output_capacity);
 /* C08: 제한 Block 흐름과 배경 페인트를 실제 V8·Stylo·Taffy 경로에서 확인합니다. */
 int32_t spinon_runtime_gpu_host_eval_block_paint_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
+/* C09.1 actual V8 fixture; 보고에는 DOM preorder node별 CSS frame이 포함됩니다. */
+int32_t spinon_runtime_gpu_host_eval_block_formatting_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);
 /* Android backend: 0=Vulkan 실패 뒤 GL 순차 재시도, 1=Vulkan 강제, 2=GL 강제. iOS는 3=Metal. */

@@ -11,6 +11,8 @@ mod author_stylesheets_edge_tests;
 #[cfg(test)]
 mod author_stylesheets_tests;
 #[cfg(test)]
+mod block_formatting_tests;
+#[cfg(test)]
 mod block_paint_tests;
 mod cache;
 #[cfg(test)]
@@ -36,8 +38,9 @@ use cache::RuntimeCalculationCacheEntry;
 use cache::RuntimeCalculationCacheKey;
 use cache::RuntimeStyleCacheEntry;
 use calculation::{
-    RuntimeCalculation, compute_request, compute_request_for_block_paint,
-    compute_request_for_registered_properties_gpu, compute_request_for_runtime_gpu,
+    RuntimeCalculation, compute_request, compute_request_for_block_formatting,
+    compute_request_for_block_paint, compute_request_for_registered_properties_gpu,
+    compute_request_for_runtime_gpu,
 };
 use environment::RuntimeCssEnvironment;
 use runtime_layout::layout_failure;
@@ -207,6 +210,10 @@ impl RuntimeUaCascadeCoordinator {
 
     pub(super) fn new_runtime_gpu_block_paint() -> Result<Self, String> {
         Self::new_with_computer(Arc::new(compute_request_for_block_paint))
+    }
+
+    pub(super) fn new_runtime_gpu_block_formatting() -> Result<Self, String> {
+        Self::new_with_computer(Arc::new(compute_request_for_block_formatting))
     }
 
     fn new_with_computer(compute: Arc<CascadeComputer>) -> Result<Self, String> {

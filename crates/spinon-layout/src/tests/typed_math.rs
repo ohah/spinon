@@ -156,7 +156,7 @@ fn unknown_taffy_handle_is_recorded_instead_of_dereferenced() {
             width: 320.0,
             height: 800.0,
         },
-        root_sizing: RootSizingPolicy::MatchViewport,
+        root_sizing: RootSizingPolicy::Match,
         nodes: vec![LayoutNode {
             id: root,
             children: vec![],
@@ -228,7 +228,7 @@ fn input_with_child(
             width: 320.0,
             height: 800.0,
         },
-        root_sizing: RootSizingPolicy::MatchViewport,
+        root_sizing: RootSizingPolicy::Match,
         nodes: vec![
             LayoutNode {
                 id: root,

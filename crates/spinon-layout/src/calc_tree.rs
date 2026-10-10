@@ -14,7 +14,8 @@ use taffy::{
 };
 
 use crate::{
-    LayoutCalcId, LayoutCssMathValue, LayoutError, LayoutInput, taffy_style::to_taffy_style,
+    LayoutCalcId, LayoutCssMathValue, LayoutError, LayoutInput, RootSizingPolicy,
+    taffy_style::{to_taffy_style, viewport_block_containing_style},
 };
 
 /// Taffy stores calc handles in the low three tag bits, so every owner is eight-byte aligned.
@@ -44,6 +45,7 @@ impl Node {
 pub(super) struct CalcLayoutTree {
     nodes: Vec<Node>,
     pub(super) engine_ids: BTreeMap<SpinonNodeId, TaffyNodeId>,
+    viewport_root: Option<TaffyNodeId>,
     calc_values: HashMap<*const (), Arc<CalcOwner>>,
     calc_error: RefCell<Option<LayoutError>>,
 }
@@ -90,9 +92,28 @@ impl CalcLayoutTree {
             nodes.push(Node::new(children, style, order));
         }
 
+        let viewport_root = if input.root_sizing == RootSizingPolicy::BlockFormatting {
+            let position = postorder.len();
+            u32::try_from(position).map_err(|_| LayoutError::TooManyNodes)?;
+            let engine_id = TaffyNodeId::from(position);
+            if usize::from(engine_id) != position {
+                return Err(LayoutError::TooManyNodes);
+            }
+            let order = u32::try_from(position).map_err(|_| LayoutError::TooManyNodes)?;
+            nodes.push(Node::new(
+                vec![engine_ids[&input.root]],
+                viewport_block_containing_style(input.viewport),
+                order,
+            ));
+            Some(engine_id)
+        } else {
+            None
+        };
+
         Ok(Self {
             nodes,
             engine_ids,
+            viewport_root,
             calc_values,
             calc_error: RefCell::new(None),
         })
@@ -100,6 +121,10 @@ impl CalcLayoutTree {
 
     pub(super) fn engine_id(&self, id: SpinonNodeId) -> TaffyNodeId {
         self.engine_ids[&id]
+    }
+
+    pub(super) fn root_engine_id(&self, id: SpinonNodeId) -> TaffyNodeId {
+        self.viewport_root.unwrap_or_else(|| self.engine_id(id))
     }
 
     pub(super) fn compute_layout(&mut self, root: TaffyNodeId, available: Size<AvailableSpace>) {

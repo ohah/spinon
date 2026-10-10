@@ -38,6 +38,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeBlockPaintV1
+                | ComputedStyleProfile::RuntimeBlockFormattingV1
         );
         let supports_border_layout = matches!(
             snapshot.profile,
@@ -48,6 +49,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeBlockPaintV1
+                | ComputedStyleProfile::RuntimeBlockFormattingV1
         );
         let style = LayoutStyle {
             display: parse_display(node, required(element, "display")?)?,
@@ -140,7 +142,8 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
-                | ComputedStyleProfile::RuntimeBlockPaintV1 => {
+                | ComputedStyleProfile::RuntimeBlockPaintV1
+                | ComputedStyleProfile::RuntimeBlockFormattingV1 => {
                     parse_align_items(node, required(element, "align-items")?)?
                 }
                 _ => LayoutStyle::default().align_items,
@@ -154,7 +157,8 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
-                | ComputedStyleProfile::RuntimeBlockPaintV1 => {
+                | ComputedStyleProfile::RuntimeBlockPaintV1
+                | ComputedStyleProfile::RuntimeBlockFormattingV1 => {
                     parse_justify_content(node, required(element, "justify-content")?)?
                 }
                 _ => LayoutStyle::default().justify_content,
@@ -187,7 +191,8 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
-                | ComputedStyleProfile::RuntimeBlockPaintV1 => LayoutEdges {
+                | ComputedStyleProfile::RuntimeBlockPaintV1
+                | ComputedStyleProfile::RuntimeBlockFormattingV1 => LayoutEdges {
                     top: parse_margin(
                         node,
                         "margin-top",
@@ -195,6 +200,7 @@ pub(super) fn project_styles(
                         element.layout_spacing.margin.top,
                         element.layout_math_values.get("margin-top"),
                         &mut math,
+                        snapshot.profile == ComputedStyleProfile::RuntimeBlockFormattingV1,
                     )?,
                     right: parse_margin(
                         node,
@@ -203,6 +209,7 @@ pub(super) fn project_styles(
                         element.layout_spacing.margin.right,
                         element.layout_math_values.get("margin-right"),
                         &mut math,
+                        snapshot.profile == ComputedStyleProfile::RuntimeBlockFormattingV1,
                     )?,
                     bottom: parse_margin(
                         node,
@@ -211,6 +218,7 @@ pub(super) fn project_styles(
                         element.layout_spacing.margin.bottom,
                         element.layout_math_values.get("margin-bottom"),
                         &mut math,
+                        snapshot.profile == ComputedStyleProfile::RuntimeBlockFormattingV1,
                     )?,
                     left: parse_margin(
                         node,
@@ -219,6 +227,7 @@ pub(super) fn project_styles(
                         element.layout_spacing.margin.left,
                         element.layout_math_values.get("margin-left"),
                         &mut math,
+                        snapshot.profile == ComputedStyleProfile::RuntimeBlockFormattingV1,
                     )?,
                 },
                 _ => LayoutEdges::default(),
@@ -230,7 +239,8 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
-                | ComputedStyleProfile::RuntimeBlockPaintV1 => LayoutEdges {
+                | ComputedStyleProfile::RuntimeBlockPaintV1
+                | ComputedStyleProfile::RuntimeBlockFormattingV1 => LayoutEdges {
                     top: parse_nonnegative_spacing(
                         node,
                         "padding-top",
@@ -441,7 +451,11 @@ fn parse_margin(
     value: ComputedCssSpacingValue,
     math: Option<&ComputedCssMath>,
     projector: &mut CssMathProjector,
+    allow_auto: bool,
 ) -> Result<LayoutLengthPercentage, StyleLayoutError> {
+    if allow_auto && math.is_none() && value == ComputedCssSpacingValue::Auto {
+        return Ok(LayoutLengthPercentage::Auto);
+    }
     parse_spacing(
         node,
         property,

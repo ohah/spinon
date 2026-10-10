@@ -19,6 +19,8 @@ pub enum LayoutDimension {
 /// 상자 간격과 가장자리에 쓰는 CSS 길이 또는 비율입니다.
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum LayoutLengthPercentage {
+    /// 해당 속성의 자동 사용값 계산을 Taffy에 맡깁니다. 현재 margin에만 허용합니다.
+    Auto,
     LengthPx(f32),
     Percentage(f32),
     Calc(LayoutCalcId),
@@ -38,7 +40,7 @@ impl LayoutLengthPercentage {
     pub(crate) fn value(self) -> f32 {
         match self {
             Self::LengthPx(value) | Self::Percentage(value) => value,
-            Self::Calc(_) => f32::NAN,
+            Self::Auto | Self::Calc(_) => f32::NAN,
         }
     }
 
@@ -235,7 +237,9 @@ fn calc_dimension(value: LayoutDimension) -> Option<LayoutCalcId> {
 fn calc_length_percentage(value: LayoutLengthPercentage) -> Option<LayoutCalcId> {
     match value {
         LayoutLengthPercentage::Calc(id) => Some(id),
-        LayoutLengthPercentage::LengthPx(_) | LayoutLengthPercentage::Percentage(_) => None,
+        LayoutLengthPercentage::Auto
+        | LayoutLengthPercentage::LengthPx(_)
+        | LayoutLengthPercentage::Percentage(_) => None,
     }
 }
 

@@ -30,7 +30,7 @@ impl LayoutInput {
             styles,
             style_revision,
             environment_revision,
-            RootSizingPolicy::MatchViewport,
+            RootSizingPolicy::Match,
         )
     }
 
@@ -50,7 +50,28 @@ impl LayoutInput {
             styles,
             style_revision,
             environment_revision,
-            RootSizingPolicy::ResolveWithinViewport,
+            RootSizingPolicy::ResolveWithin,
+        )
+    }
+
+    /// Block formatting을 위해 가상 viewport containing block을 둡니다.
+    /// HostRoot 직속 요소도 일반 자식 Block처럼 margin과 auto width를 계산합니다.
+    pub fn from_host_document_with_block_formatting_viewport(
+        snapshot: &HostDocumentSnapshot,
+        root: HostNodeHandle,
+        viewport: Viewport,
+        styles: &BTreeMap<NodeId, LayoutStyle>,
+        style_revision: StyleRevision,
+        environment_revision: EnvironmentRevision,
+    ) -> Result<Self, LayoutError> {
+        Self::from_host_document_with_root_sizing(
+            snapshot,
+            root,
+            viewport,
+            styles,
+            style_revision,
+            environment_revision,
+            RootSizingPolicy::BlockFormatting,
         )
     }
 

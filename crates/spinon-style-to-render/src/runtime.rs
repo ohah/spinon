@@ -27,6 +27,7 @@ pub fn build_runtime_render_snapshot(
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
             | ComputedStyleProfile::RuntimeBlockPaintV1
+            | ComputedStyleProfile::RuntimeBlockFormattingV1
     ) {
         return Err(StyleRenderError::UnsupportedRuntimeProfile);
     }

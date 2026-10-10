@@ -21,7 +21,7 @@ fn border_input() -> LayoutInput {
             width: 320.0,
             height: 100.0,
         },
-        root_sizing: RootSizingPolicy::MatchViewport,
+        root_sizing: RootSizingPolicy::Match,
         css_math: vec![],
         nodes: vec![
             LayoutNode {
