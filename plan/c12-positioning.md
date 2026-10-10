@@ -2,12 +2,12 @@
 
 **상위:** [공식 상태 대장](../spec/STATUS.md) · [코어 아키텍처](../docs/architecture.md)
 
-**현재 상태:** C12.1 PR #128 병합 완료 · C12.2 제한 Block/LTR 구현과 Android 실기기·iOS Simulator 검증 완료, [PR #130 검토 중](https://github.com/ohah/spinon/pull/130) · C12 상위 구현은 미완료
+**현재 상태:** C12.1 PR #128 병합 완료 · C12.2 제한 Block/LTR 구현과 Android 실기기·iOS Simulator 검증 완료, [PR #130 병합](https://github.com/ohah/spinon/pull/130) · 다음은 [C10.3.5 전용 계획](c10-3-5-positioned-flex.md) 검토 · C12 상위 구현은 미완료
 **목표:** `position`, 물리 inset, containing block, out-of-flow geometry, 고정·sticky 위치, stacking과 `z-index`를 Chromium 기준으로 단계별 연결한다. 계획 초안이나 Taffy 기능 목록을 제품 지원 판정으로 쓰지 않는다.
 
 ## 로드맵 순서와 완료 경계
 
-C10.3.4는 PR #125로 병합했다. 다음 칸반 작업 C10.3.5는 C12의 positioned child 계약에 의존한다. 그래서 이 계획은 C12를 여러 독립 구현 단계로 나누고, C12.2에서 Block 절대 위치 기준을 닫은 뒤 C10.3.5에서 Flex 절대 자식의 static-position 정렬·`order: 0` paint 교차를 별도 PR로 구현한다. C12 전체는 고정·sticky·쌓임까지 완료되기 전까지 미완료다. C09.4의 absolute shrink-to-fit은 C12 외에도 C14·C15·C26 선행 구현 뒤 별도로 진행한다.
+C10.3.4는 PR #125로, C12.2는 PR #130으로 병합했다. 다음 단계 C10.3.5는 [전용 계획](c10-3-5-positioned-flex.md)과 독립된 계획 실패 관점 검토를 먼저 통과한 뒤 Flex absolute child의 static-position 정렬·`order: 0` paint 교차를 별도 구현 PR로 닫는다. 이 계획은 C12를 여러 독립 구현 단계로 나누며, C12 전체는 fixed·sticky·stacking까지 완료되기 전까지 미완료다. C09.4의 absolute shrink-to-fit은 C12 외에도 C14·C15·C26 선행 구현 뒤 별도로 진행한다.
 
 | 단계 | 소유 범위 | 선행 조건 | 완료 증거 |
 | --- | --- | --- | --- |
