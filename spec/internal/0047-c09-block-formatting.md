@@ -1,6 +1,6 @@
 # 0047 · C09 Block formatting
 
-**문서 ID:** `0047` · **내부 계약 숫자 버전:** `0.1.0` 고정 · **상태:** C09.1 [PR #107 리베이스 병합](https://github.com/ohah/spinon/pull/107); C09.2 구현·Chromium/Rust·시뮬레이터 검증 완료; C09.3–C09.4 미구현 · **공개 API:** 아님
+**문서 ID:** `0047` · **내부 계약 숫자 버전:** `0.1.0` 고정 · **상태:** C09.1 [PR #107 리베이스 병합](https://github.com/ohah/spinon/pull/107); C09.2 구현·Chromium/Rust·시뮬레이터 검증 완료 · [PR #109 검토 중](https://github.com/ohah/spinon/pull/109); C09.3–C09.4 미구현 · **공개 API:** 아님
 
 `0047`은 문서 ID다. 구현·검증·문서 개정만으로 앱·crate·내부 계약의 숫자 버전을 올리지 않는다. C08.1 PR #105와 C09 계획·reference가 병합됐고, C09.1 runtime 구현은 PR #107로 병합됐다. C09.2는 이번 변경에서 내부 fixture·runtime 연결과 검증을 마쳤다. C09 상위, C09.3–C09.4 또는 공개 CSS 지원 완료를 뜻하지 않는다.
 

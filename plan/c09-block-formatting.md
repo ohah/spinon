@@ -4,12 +4,12 @@
 
 현재 모바일 우선 Runtime CSS 경로에 Chromium과 일치하는 Block formatting 동작을 단계적으로 연결한다. CSS 선언은 Stylo가 계산하고, 레이아웃 adapter와 Taffy는 typed style·트리·포함 블록을 받아 geometry를 계산한다. 지원 선언을 조용히 버리거나 Block 기본값으로 바꾸지 않는다.
 
-C08.1 구현 PR [#105](https://github.com/ohah/spinon/pull/105)와 C09 계획·reference가 `main`에 병합됐다. C09.1은 Chromium 기준 10개 case·30개 node를 연결하고 Rust/CSS 검증, Android API 37·iOS 26.2 Simulator 실행을 마쳐 [PR #107](https://github.com/ohah/spinon/pull/107)로 리베이스 병합했다. C09.2는 pinned Taffy Block 알고리즘이 이미 계산하는 signed margin collapse를 Chromium 기준·실제 V8→WGPU 경로로 고정한다. C09.3–C09.4는 미구현이다. C08.1의 기본 Block 흐름은 margin collapse나 formatting context 구현을 대신하지 않는다.
+C08.1 구현 PR [#105](https://github.com/ohah/spinon/pull/105)와 C09 계획·reference가 `main`에 병합됐다. C09.1은 Chromium 기준 10개 case·30개 node를 연결하고 Rust/CSS 검증, Android API 37·iOS 26.2 Simulator 실행을 마쳐 [PR #107](https://github.com/ohah/spinon/pull/107)로 리베이스 병합했다. C09.2는 pinned Taffy Block 알고리즘이 이미 계산하는 signed margin collapse를 Chromium 기준·실제 V8→WGPU 경로로 고정하며 [PR #109](https://github.com/ohah/spinon/pull/109)에서 검토 중이다. C09.3–C09.4는 미구현이다. C08.1의 기본 Block 흐름은 margin collapse나 formatting context 구현을 대신하지 않는다.
 
 | 하위 ID | 동작 범위 | 순서·선행 조건 |
 | --- | --- | --- |
 | C09.1 | 일반 in-flow Block 크기 방정식, 수직 흐름, containing block | PR #107 리베이스 병합 · 내부 fixture 검증 완료 |
-| C09.2 | 수직 margin collapse와 signed margin strut | C09.1 뒤 구현 · 현재 변경에서 검증 |
+| C09.2 | 수직 margin collapse와 signed margin strut | 구현·검증 완료 · [PR #109 검토 중](https://github.com/ohah/spinon/pull/109) |
 | C09.3 | `display: flow-root`와 Block formatting context 경계 | C09.2 뒤 구현 |
 | C09.4 | shrink-to-fit이 필요한 float·inline-block·absolute 문맥 | C12 positioning, C14 intrinsic sizing, C15 inline/text 측정, C26 float 중 해당 문맥의 선행 구현이 된 뒤 연결. 이 항목이 끝날 때까지 C09 상위는 미완료 |
 
