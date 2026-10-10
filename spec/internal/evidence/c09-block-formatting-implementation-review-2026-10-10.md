@@ -3,6 +3,7 @@
 ## 범위
 
 - 대상: C09.1 normal Block geometry 구현 branch; 내부 계약 `0047`, 숫자 버전 `0.1.0` 고정.
+- 병합: [PR #107](https://github.com/ohah/spinon/pull/107)로 `main`에 리베이스 병합했다. 근거는 C09.1 내부 구현 항목의 완료를 뒷받침하며 C09 상위나 C09.2–C09.4 완료를 뜻하지 않는다.
 - 비교 기준: 고정 Chromium `154.0.8037.98`, revision `@b859317bf11f6be47f9b7799ec690a0a42a1fb33`, viewport `320×240` CSS px, DPR 1·2.
 - C09 기준 전체는 23개 case·76개 node다. C09.1 범위인 10개 case·30개 node를 Rust/runtime에서 비교했다. C09.2–C09.4는 이 결과에 포함하지 않는다.
 - 실제 기기 성능 또는 hardware GPU에 대한 주장은 하지 않는다.
