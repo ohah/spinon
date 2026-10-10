@@ -1,7 +1,7 @@
 use selectors::matching::{
     MatchingContext, MatchingForInvalidation, MatchingMode, NeedsSelectorFlags, SelectorCaches,
 };
-use std::collections::BTreeMap;
+use std::collections::{BTreeMap, HashMap};
 
 use spinon_core::NodeId;
 use style::{
@@ -17,9 +17,13 @@ use style::{
 };
 
 use super::super::{
-    ComputedCssMath, ComputedElementStyle, ComputedStyleProfile, CssCascadeError, runtime_paint,
+    ComputedCssMath, ComputedElementStyle, ComputedStyleProfile, CssCascadeError, CssViewport,
+    runtime_paint,
 };
 use super::dimensions::{computed_layout_dimensions, computed_layout_math_values};
+use super::source_border::{
+    CssLengthContext, computed_border_width_values, winning_border_width_sources,
+};
 use super::source_math::winning_layout_math_values;
 use super::spacing::computed_layout_spacing;
 use super::{computed_layout_aspect_ratio, computed_layout_border};
@@ -31,11 +35,12 @@ pub(super) fn computed_element_output(
     computed: &ComputedValues,
     node_id: NodeId,
     source_math: BTreeMap<String, ComputedCssMath>,
+    source_border_widths: BTreeMap<&'static str, f32>,
 ) -> Result<ComputedElementStyle, CssCascadeError> {
     let (background_color, background_paint) =
         runtime_paint::computed_background_for_profile(profile, computed, node_id)?;
     let font_size_css_px = computed.get_font().clone_font_size().computed_size().px();
-    let layout_border = computed_layout_border(computed);
+    let layout_border = computed_layout_border(computed, &source_border_widths);
     let layout_aspect_ratio = if matches!(
         profile,
         ComputedStyleProfile::RuntimeFlexLayoutV1
@@ -87,8 +92,18 @@ pub(super) fn compute_element_style(
     element: StyloElement<'_>,
     guards: &StylesheetGuards<'_>,
     parent_style: Option<&ComputedValues>,
+    viewport: CssViewport,
+    stylesheet_sources: &HashMap<usize, String>,
 ) -> style::servo_arc::Arc<ComputedValues> {
-    compute_element_style_with_math(stylist, element, guards, parent_style).0
+    compute_element_style_with_math(
+        stylist,
+        element,
+        guards,
+        parent_style,
+        viewport,
+        stylesheet_sources,
+    )
+    .0
 }
 
 pub(super) fn compute_element_style_with_math(
@@ -96,9 +111,12 @@ pub(super) fn compute_element_style_with_math(
     element: StyloElement<'_>,
     guards: &StylesheetGuards<'_>,
     parent_style: Option<&ComputedValues>,
+    viewport: CssViewport,
+    stylesheet_sources: &HashMap<usize, String>,
 ) -> (
     style::servo_arc::Arc<ComputedValues>,
     BTreeMap<String, ComputedCssMath>,
+    BTreeMap<&'static str, f32>,
 ) {
     let mut selector_caches = SelectorCaches::default();
     let mut matching_context = MatchingContext::<SelectorImpl>::new(
@@ -124,6 +142,12 @@ pub(super) fn compute_element_style_with_math(
         .rule_tree()
         .compute_rule_node(&mut declarations, guards);
     let source_math = winning_layout_math_values(&rules, guards);
+    let source_border_width_sources = winning_border_width_sources(
+        &rules,
+        guards,
+        element.data().inline_style.as_ref(),
+        stylesheet_sources,
+    );
     let inputs = CascadeInputs {
         rules: Some(rules),
         visited_rules: None,
@@ -143,5 +167,20 @@ pub(super) fn compute_element_style_with_math(
         &mut RuleCacheConditions::default(),
         &mut TreeCountingCaches::default(),
     );
-    (computed, source_math)
+    let length_context = CssLengthContext {
+        font_size_css_px: f64::from(computed.get_font().clone_font_size().computed_size().px()),
+        root_font_size_css_px: f64::from(stylist.device().root_font_size().px()),
+        viewport_width_css_px: f64::from(viewport.width_css_px),
+        viewport_height_css_px: f64::from(viewport.height_css_px),
+    };
+    let source_border_widths = computed_border_width_values(
+        &source_border_width_sources,
+        &computed,
+        element.view.quirks_mode(),
+        element.data().inline_style_text.as_deref(),
+        element.view.document_base_url(),
+        element.view.shared_lock(),
+        length_context,
+    );
+    (computed, source_math, source_border_widths)
 }

@@ -118,6 +118,7 @@ C06.1~C06.6a 및 C07.1 누적 변경의 ABI·캐시·CSS 의미·Android/iOS run
 - [C07.2 · 테두리 폭 계획 실패 경로 검토](./evidence/c07-2-border-width-layout-plan-review-2026-10-10.md) — 계획의 20개 독립 실패 관점, fixture에서 발견해 추가한 shorthand/style/min-max/math 경계.
 - [C07.2 · 테두리 폭 Simulator 실행](./evidence/c07-2-border-width-layout-simulators-2026-10-10.md) — 50-node Chrome 기준, Android API 37·iOS 26.2 Simulator V8→WGPU 실행, 화면·로그와 측정 한계.
 - [C07.2 · 테두리 폭 구현 실패 관점 검토](./evidence/c07-2-border-width-layout-implementation-review-2026-10-10.md) — 구현 후 코드·실행 경로의 실패 점검과 수정한 non-finite 값 경계.
+- [C07.2 · 고 DPR CSS 경계·원문 복구 검토](./evidence/c07-2-border-width-high-dpr-implementation-review-2026-10-11.md) — Chrome 154 정수 경계와 inline·author stylesheet `var()` 복구, 실패 관점 및 Rust 회귀 결과.
 - [C07.3 · 종횡비 수정 계획 재검토](./evidence/c07-3-aspect-ratio-plan-review-scope-followup-2026-10-10.md) — Taffy differential 이후 축소한 범위, computed/used oracle 분리, 시뮬레이터 주장 경계를 재대조.
 - [C07.3 · Taffy 차이와 시뮬레이터 결과](./evidence/c07-3-taffy-differential-2026-10-10.md) — definite leaf 차이와 min/max fail-closed 근거, 전체 회귀검사, Android/iOS V8→WGPU 화면·로그.
 - [C07.3 · 구현 실패 경로 검토](./evidence/c07-3-aspect-ratio-implementation-review-2026-10-10.md) — Stylo typed 값부터 플랫폼 fixture까지 실패 경계를 점검하고 테스트·실행 결과를 기록.

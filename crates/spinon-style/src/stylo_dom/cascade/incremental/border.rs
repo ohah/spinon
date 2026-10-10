@@ -1,23 +1,40 @@
+use std::collections::BTreeMap;
+
 use style::properties::ComputedValues;
 
 use crate::stylo_dom::cascade::ComputedLayoutBorder;
 
-pub(crate) fn computed_layout_border(computed: &ComputedValues) -> ComputedLayoutBorder {
+pub(crate) fn computed_layout_border(
+    computed: &ComputedValues,
+    source_widths: &BTreeMap<&'static str, f32>,
+) -> ComputedLayoutBorder {
     ComputedLayoutBorder {
         top: used_width(
-            computed.clone_border_top_width().0.to_f32_px(),
+            source_widths
+                .get("border-top-width")
+                .copied()
+                .unwrap_or_else(|| computed.clone_border_top_width().0.to_f32_px()),
             computed.clone_border_top_style().none_or_hidden(),
         ),
         right: used_width(
-            computed.clone_border_right_width().0.to_f32_px(),
+            source_widths
+                .get("border-right-width")
+                .copied()
+                .unwrap_or_else(|| computed.clone_border_right_width().0.to_f32_px()),
             computed.clone_border_right_style().none_or_hidden(),
         ),
         bottom: used_width(
-            computed.clone_border_bottom_width().0.to_f32_px(),
+            source_widths
+                .get("border-bottom-width")
+                .copied()
+                .unwrap_or_else(|| computed.clone_border_bottom_width().0.to_f32_px()),
             computed.clone_border_bottom_style().none_or_hidden(),
         ),
         left: used_width(
-            computed.clone_border_left_width().0.to_f32_px(),
+            source_widths
+                .get("border-left-width")
+                .copied()
+                .unwrap_or_else(|| computed.clone_border_left_width().0.to_f32_px()),
             computed.clone_border_left_style().none_or_hidden(),
         ),
     }

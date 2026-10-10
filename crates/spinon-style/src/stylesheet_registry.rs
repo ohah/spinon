@@ -5,6 +5,7 @@ use std::{
     sync::{Mutex, PoisonError},
 };
 mod css_profile;
+mod raw_style;
 pub(crate) use css_profile::is_border_image_initial;
 
 use cssparser::SourceLocation;
@@ -318,6 +319,10 @@ impl StylesheetRegistry {
         self.stylesheets
             .iter()
             .map(|registered| (registered.origin, &registered.sheet))
+    }
+
+    pub(crate) fn raw_style_declaration_sources(&self) -> std::collections::HashMap<usize, String> {
+        raw_style::declaration_sources(&self.stylesheets)
     }
 }
 
