@@ -53,7 +53,7 @@ fixture에는 고정 크기의 빈 block만 둔다. 따라서 auto height는 자
 - RuntimeBlockPaintV1, Taffy Block 투영, 제한 background scene, Android/iOS V8→WGPU fixture를 구현했다. 고정 Chromium reference의 9개 node와 DPR 1·2를 비교한다.
 - 실패 경로 검토에서 빠져 있던 supported stylesheet, unsupported stylesheet, parse diagnostic, visible/hidden text, zero-area box, stale style revision 검사를 추가하고 재실행했다.
 - Rust crate 회귀, C08 reference 검사, Android API 37 emulator와 iPhone 17 Pro / iOS 26.2 Simulator 검증은 통과했다. 로그·화면·hash 및 한계는 [구현 검토](../spec/internal/evidence/c08-block-flow-implementation-review-2026-10-10.md)와 [Simulator 근거](../spec/internal/evidence/c08-block-flow-simulators-2026-10-10.md)에 있다.
-- PR 전이라 `spec/STATUS.md` 체크박스는 미완료로 유지한다. C09 Block semantics, C15/S07 glyph, C22 border paint는 이 하위 항목의 완료 범위에 포함하지 않는다.
+- [PR #105](https://github.com/ohah/spinon/pull/105) 병합 전이라 `spec/STATUS.md` 체크박스는 미완료로 유지한다. C09 Block semantics, C15/S07 glyph, C22 border paint는 이 하위 항목의 완료 범위에 포함하지 않는다.
 
 ## 통과 기준과 남는 항목
 
