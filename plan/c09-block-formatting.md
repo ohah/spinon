@@ -15,6 +15,8 @@ C08.1 구현 PR [#105](https://github.com/ohah/spinon/pull/105)은 현재 열려
 
 C09.4는 단순히 Taffy의 `fit-content` 값으로 바꾸어 완료 처리하지 않는다. CSS 2.1의 shrink-to-fit 사용처는 서로 다른 formatting context에 있으므로 각 문맥과 intrinsic width 측정이 준비된 뒤 Chromium 기준을 별도로 닫는다.
 
+구현 전 Chromium reference는 [23개 fixture·76개 node JSON](../tests/fixtures/css/references/c09-block-formatting-v1.json)으로 고정했다. [사전 비교 기록](../spec/internal/evidence/c09-block-formatting-precomparison-2026-10-10.md)에 입력 digest·환경·관찰 범위를 남겼다. 이는 Chromium oracle 준비 결과이며 C09 Rust/runtime 구현이나 Android·iOS 검증 결과가 아니다.
+
 ## 구현 경계
 
 ### C09.1 · 일반 Block 흐름과 containing block
@@ -23,7 +25,7 @@ C09.4는 단순히 Taffy의 `fit-content` 값으로 바꾸어 완료 처리하�
 - 자식의 containing block은 CSS 규칙에 따라 상위 Block content box를 기준으로 한다. viewport/초기 containing block, 중첩 definite·indefinite 크기, content-box·border-box, C06 percentage basis와 C07 box model을 교차 검증한다. C06 단위 환산이나 C07 상자 계산을 다시 구현하지 않는다.
 - Block width 방정식에서 `auto` width 및 좌우 `auto` margin 분배, 모든 값이 지정된 over-constrained LTR 경우의 우측 margin 처리, 음수·분수 margin, min/max 제약, 일반 자식 순서와 auto height를 검증한다. vertical `auto` margin은 CSS 사용값을 확인한다. LTR만 이 하위 항목의 성공 범위다. RTL·bidi·vertical writing mode는 C17에 둔다.
 - `display:none` subtree는 margin strut·배치·paint에 참여하지 않고 기존 C04.9 frame 계약대로 DOM preorder 기록은 유지하되 subtree 모든 frame을 0으로 낸다. 보이는 텍스트, replaced element, inline/table/flex/grid item은 이 하위 항목에서 측정하지 않으며 기존 오류·별도 profile 경계를 유지한다.
-- C04.8 의미상 HostRoot 직속 Element는 CSS `:root`나 `documentElement`가 아니라 독립 fragment cascade root다. C09.1 성공 범위는 HostRoot 직속 Element 하나로 한정하고 여러 root와 `body`·`documentElement` 의미는 제외한다. Chrome reference에서는 `html, body { margin:0; padding:0 }`로 초기 여백을 없앤 뒤 margin·padding·border가 0이고 크기가 viewport와 같은 `display:flow-root` wrapper 안에 일반 앱 Block 하나를 둔다. wrapper는 비교 fixture의 containing-block 경계일 뿐 Spinon DOM·paint node가 아니다. 이 방식으로 HTML root/body 특례와 wrapper-child margin collapse를 차단하고 앱 Block의 자기 margin 및 viewport 기준 frame을 대조한다. 실제 CSS root margin propagation은 이 runtime profile에 적용하지 않는다.
+- C04.8 의미상 HostRoot 직속 Element는 CSS `:root`나 `documentElement`가 아니라 독립 fragment cascade root다. C09.1 성공 범위는 HostRoot 직속 Element 하나로 한정하고 여러 root와 `body`·`documentElement` 의미는 제외한다. Chrome reference에서는 `html, body { margin:0; padding:0 }`로 초기 여백을 없앤 뒤 viewport 크기의 `display:flow-root` wrapper 안에 일반 앱 Block 하나를 둔다. case별 wrapper는 fixture에서 같은 viewport 원점에 절대 배치해 서로 겹치며, wrapper와 그 위치는 Spinon DOM·paint node가 아니다. runtime 비교기는 inventory에서 case 하나씩 materialize하고 wrapper를 제품 트리에 넣지 않은 채 viewport를 containing-block 입력으로 제공한다. wrapper는 HTML root/body 특례와 wrapper-child margin collapse를 차단하고 숨김 box의 원점 rectangle도 안정시키는 비교 장치다. 앱 Block의 자기 margin 및 viewport 기준 frame만 대조하며 실제 CSS root margin propagation은 적용하지 않는다.
 
 ### C09.2 · 수직 margin collapse
 
@@ -63,9 +65,9 @@ C09.4는 단순히 Taffy의 `fit-content` 값으로 바꾸어 완료 처리하�
 
 ## 비교 기준과 통과 판정
 
-- Oracle은 기존 CSS 기준과 동일한 고정 Chromium `154.0.8037.98`, revision `@b859317bf11f6be47f9b7799ec690a0a42a1fb33`로 한다. 기준 HTML, inventory, capture runner, Chrome 실행 파일 hash, viewport `320×240` CSS px, `en-US`, `UTC`, light, DPR 1·2의 provenance를 `c09` 전용 사전 비교 문서와 JSON에 고정한다. capture 입력이나 digest가 바뀌면 비교를 중단하고 새 reference를 검토한다.
+- Oracle은 기존 CSS 기준과 동일한 고정 Chromium `154.0.8037.98`, revision `@b859317bf11f6be47f9b7799ec690a0a42a1fb33`로 한다. 기준 HTML, inventory, capture runner, Chrome 실행 파일 hash, viewport `320×240` CSS px, `en-US`, `UTC`, light, DPR 1·2의 provenance를 [reference JSON](../tests/fixtures/css/references/c09-block-formatting-v1.json)에 고정한다. 현재 고정 입력은 23개 case·76개 app node다. capture 입력이나 digest가 바뀌면 기존 reference를 덮어쓰지 않고 새 기준을 검토한다.
 - 기준 CSS는 margin 값·computed value, display, box-sizing, width/height/min/max, padding·used border, 부모/자식 관계를 inventory 순서대로 관찰한다. collapse 결과는 직접 관찰 가능한 별도 CSS property가 아니므로 node별 `getBoundingClientRect()`의 x/y/width/height 및 주변 sibling의 상대 위치를 판정한다. computed 값과 used geometry를 혼합하지 않는다.
-- fixture는 Chromium 원본 하나를 Rust 비교기와 실제 runtime에서 공유한다. node ID·parent ID·DOM preorder가 명시되며 capture가 누락·중복 node, 실행 파일/버전/revision/hash 불일치, viewport·DPR 변화를 감지하면 결과를 실패 처리한다. reference를 테스트 중 자동 갱신하지 않는다.
+- fixture 원본 HTML과 inventory는 Chromium reference 및 Rust/runtime 비교의 공통 입력이다. 단, runtime은 inventory의 case 하나씩 materialize해 그 case의 단일 app root를 HostRoot에 연결하고 viewport를 별도 containing-block 입력으로 전달한다. wrapper 및 다른 겹친 case를 제품 트리에 포함하지 않는다. node ID·parent ID·DOM preorder가 명시되며 capture가 누락·중복 node, 실행 파일/버전/revision/hash 불일치, viewport·DPR 변화를 감지하면 결과를 실패 처리한다. reference를 테스트 중 자동 갱신하지 않는다.
 - 모든 지원 node의 frame field별 최대 절대 오차는 `0.5 CSS px` 이하다. 평균 오차로 개별 실패를 가리지 않는다. DPR 1과 2의 CSS px computed value·geometry는 같아야 한다. geometry 테스트는 pixel screenshot 색상이나 장치 pixel로 대신하지 않는다.
 - 계산 실패·미지원 값·Stylo 진단·stale source/style/environment revision은 node/property를 식별하는 오류여야 한다. Taffy 호출 뒤 partial tree, 이전 frame과 새 frame의 혼합, 누락 margin을 0으로 대체하는 결과를 성공으로 반환하지 않는다.
 - 각 하위 항목은 C09 profile의 실제 V8 JavaScript 경로를 Android API 37 emulator와 iPhone 17 Pro / iOS 26.2 Simulator에서 실행한다. 두 플랫폼 모두 동일 fixture의 node별 CSS frame/revision을 로그로 수집해 고정 Chromium reference와 비교하고 화면 캡처를 보조 근거로 남긴다. box count나 screenshot만으로 layout 정확도를 승인하지 않는다. 실기기와 hardware GPU 성능은 주장하지 않는다.
@@ -74,7 +76,7 @@ C09.4는 단순히 Taffy의 `fit-content` 값으로 바꾸어 완료 처리하�
 ## 구현 단계
 
 1. C08.1 PR #105가 병합됐는지 확인하고 `main` 최신 기준에서 작업 branch를 만든다. 병합 전에는 계획·reference 설계만 진행하고 C09 제품 코드는 추가하지 않는다.
-2. `c09` HTML·inventory·Chromium capture를 작성한다. 계획 단계의 독립 oracle과 환경을 먼저 고정하고, 사전 비교 결과·digest·도구 버전을 기록한다.
+2. 완료된 [C09 HTML·inventory·Chromium capture](../tests/fixtures/css/c09/block-formatting.html)와 [`css:reference:c09-block-formatting`](../tools/css-reference/capture-c09-block-formatting.mjs)을 유지한다. [고정 JSON reference](../tests/fixtures/css/references/c09-block-formatting-v1.json) 및 [검증 테스트](../tools/css-reference/c09-block-formatting.test.mjs)가 전달하는 독립 oracle·환경·입력 digest를 runtime 구현 전에 확인한다.
 3. 계획 자체를 기능 코드와 분리해 20개의 서로 다른 실패 관점으로 검토하고, 지적을 반영한 최종 계획 hash와 검토 결과를 남긴다.
 4. 내부 계약 ID `0047`과 C09.1–C09.4 상태 대장을 추가한다. 공개 API가 아닌 내부 profile임을 적고 숫자 버전은 `0.1.0`으로 고정한다.
 5. C09.1에서 Stylo typed layout input, normal-flow containing block, Block width equation과 Taffy projection을 연결한다. box-sizing·percentage·border/min/max 회귀를 유지하고 실제 V8 Android/iOS 경로의 node별 frame을 기준에 대조한다.
