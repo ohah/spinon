@@ -136,6 +136,7 @@ C06.1~C06.6a 및 C07.1 누적 변경의 ABI·캐시·CSS 의미·Android/iOS run
 - [C12.2 · Block absolute 사전 비교](./evidence/c12-2-absolute-block-precomparison-2026-10-11.md) — Chrome 154의 23 case·82 node, DPR 1/2 기준과 WPT 미실행 경계를 고정.
 - [C12.2 · Block absolute 구현 검토·실행 근거](./evidence/c12-2-absolute-block-implementation-review-2026-10-11.md) — 계산 트리·owner·percentage·정적 위치·오류 원자성·Android/iOS 최종 화면의 구현 실패 경계를 별도로 대조.
 - [C10.3.5 · 위치 지정 Flex 자식 계획 실패 관점 검토](./evidence/c10-3-5-positioned-flex-plan-review-2026-10-11.md) — source parent, Flex static-position formatting owner, containing-block owner와 paint rank를 계획 단계에서 대조.
+- [C10.3.5 · 계획 PR 변경 검토](./evidence/c10-3-5-positioned-flex-plan-pr-review-2026-10-11.md) — 병합 상태, 계획/구현 구분, 상태 대장·칸반·Tailnet preview 간 동기화를 대조.
 - [C12.1 · 정적·상대 위치 사전 비교](./evidence/c12-1-static-relative-precomparison-2026-10-11.md) — pinned Chromium 관찰값, 재현 입력, geometry 판정, WPT subset 및 아직 실행하지 않은 플랫폼 경계.
 - [C12.1 · 사전 비교 변경 검토](./evidence/c12-1-precomparison-change-review-2026-10-11.md) — 입력 고정, fixture 연결, 의미 경계, 데이터 유실·오인 보고 실패 관점과 반영 결과.
 - [C12.1 · 구현 실패 경로 검토](./evidence/c12-1-static-relative-implementation-review-2026-10-11.md) — flow·visual 좌표, inset·percentage·owner·오류·runtime 경계와 수정 내용.
