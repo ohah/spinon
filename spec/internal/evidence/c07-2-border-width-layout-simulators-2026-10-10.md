@@ -2,7 +2,7 @@
 
 ## 상태와 범위
 
-- 작업 브랜치에서 구현·검증을 마쳤다. PR은 아직 만들지 않았으며 공식 병합 완료가 아니다.
+- 작업 브랜치에서 구현·검증을 마쳤고 [PR #103](https://github.com/ohah/spinon/pull/103)이 열려 있다. 병합 전이므로 공식 병합 완료가 아니다.
 - 내부 계약 숫자 버전과 모든 crate 버전은 `0.1.0`이다. `0044`는 명세 문서 ID다.
 - 현재 runtime layout profile의 물리 네 면 border used width를 Stylo에서 `LayoutBorder`와 Taffy로 전달한다.
 - border 선·색상 페인트, radius, border-image 페인트, Grid·텍스트 intrinsic sizing은 구현하지 않았다.
