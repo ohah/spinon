@@ -1,6 +1,6 @@
 # 0049 · C10.2 Flex 크기 배분
 
-**문서 ID:** `0049` · **내부 계약 숫자 버전:** `0.1.0` 고정 · **상태:** 구현 브랜치 검증 완료·미병합 · **공개 API:** 아님
+**문서 ID:** `0049` · **내부 계약 숫자 버전:** `0.1.0` 고정 · **상태:** [PR #116 리베이스 병합 완료](https://github.com/ohah/spinon/pull/116) · **공개 API:** 아님
 
 `0049`는 C10.2의 제한된 내부 레이아웃 계약이다. 앱 작성자에게 공개하는 CSS 지원 선언이나 전체 Flexbox 완료 표시가 아니다. 실제 구현 상태는 [상태 대장](../STATUS.md)을 따른다.
 
@@ -44,4 +44,4 @@ CSS parser/cascade 이후 어댑터에 직접 주입된 유효하지 않은 fact
 
 - [C10 Flexbox 계획](../../plan/c10-flexbox.md) · [C10.2 전용 계획](../../plan/c10-2-flex-distribution.md)
 - [C10.2 계획 검토 기록](./evidence/c10-2-flex-distribution-plan-review-2026-10-10.md)
-- [C10.2 구현 검토와 Simulator 근거](./evidence/c10-2-flex-distribution-implementation-review-2026-10-10.md)
+- [C10.2 구현 검토와 Simulator 근거](./evidence/c10-2-flex-distribution-implementation-review-2026-10-10.md) · [병합 후 문서 동기화 검토](./evidence/c10-2-postmerge-doc-sync-review-2026-10-10.md)

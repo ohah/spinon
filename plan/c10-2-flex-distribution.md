@@ -1,6 +1,6 @@
 # C10.2 · Flex 크기 배분과 min/max freeze 계획
 
-**상태:** 구현·검증·실패 경로 검토 완료(작업 브랜치) · PR 생성 준비 완료 · 공식 병합 전
+**상태:** 구현·검증·실패 경로 검토 완료 · [PR #116 리베이스 병합 완료](https://github.com/ohah/spinon/pull/116)
 
 **상위 항목:** [C10 Flexbox](./c10-flexbox.md) · [공식 상태 대장](../spec/STATUS.md)
 
