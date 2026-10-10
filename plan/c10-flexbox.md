@@ -8,12 +8,12 @@ C09.4 shrink-to-fit은 C12 positioning, C14 intrinsic sizing, C15 inline/text me
 
 | 하위 ID | 범위 | 선행·완료 조건 |
 | --- | --- | --- |
-| C10.1 | `flex-wrap: nowrap|wrap`의 row·column 줄 수집과 gap 배치 | 이 계획을 병합한 뒤 진행. 고정 Chromium·DPR 1/2와 Android/iOS Simulator 실행이 일치해야 한다. |
-| C10.2 | flex basis·grow·shrink 배분과 freeze 반복 | C10.1 이후. 각 배분 단계와 min/max 제약을 별도 oracle로 고정한다. |
+| C10.1 | `flex-wrap: nowrap|wrap`의 row·column 줄 수집과 gap 배치 | PR #114 리베이스 병합 완료. |
+| C10.2 | flex basis·grow·shrink 배분과 freeze 반복 | [전용 계획](c10-2-flex-distribution.md)을 먼저 검토·병합한 뒤 진행한다. 각 배분 단계와 min/max 제약을 별도 Chromium oracle로 고정한다. |
 | C10.3 | 축 역방향, `wrap-reverse`, `order`, `align-self`, `align-content`, baseline | 방향·그리기 순서·접근성 순서를 함께 정한 뒤 속성별로 진행한다. |
 | C10.4 | 자동 최소 크기, 내재 크기, percentage와 재배치 상호작용 | C14 intrinsic sizing 및 C17 writing mode 의존성을 확인한 뒤 진행한다. |
 
-위 분해는 C10 하위 작업 계획이며 C10 전체 완료 표시가 아니다. 먼저 구현할 C10.1은 여섯 runtime Flex profile(`RuntimeFlexLayoutV1`, `RuntimeFlexPaintV1`, `RuntimeFlexCustomPropertiesV1`, `RuntimeFlexCustomPropertiesPaintV1`, `RuntimeFlexRegisteredPropertiesV1`, `RuntimeFlexRegisteredPropertiesPaintV1`)에서 같은 `nowrap|wrap` 동작을 제공한다. 실제 V8 앱은 사용자 지정 속성 paint profile을 사용하므로 이 profile들을 포함한다. Block 전용 및 기존 static compatibility profile에는 동작이 새지 않도록 fail-closed 검사를 둔다. 기존 내부 계약 숫자 버전은 출시 전 `0.1.0`으로 유지한다.
+위 분해는 C10 하위 작업 계획이며 C10 전체 완료 표시가 아니다. C10.1은 여섯 runtime Flex profile(`RuntimeFlexLayoutV1`, `RuntimeFlexPaintV1`, `RuntimeFlexCustomPropertiesV1`, `RuntimeFlexCustomPropertiesPaintV1`, `RuntimeFlexRegisteredPropertiesV1`, `RuntimeFlexRegisteredPropertiesPaintV1`)의 `nowrap|wrap` 줄 수집과 gap 배치를 구현해 PR #114로 리베이스 병합했다. C10.2는 같은 runtime Flex 경계에서 flex basis·grow·shrink·min/max의 줄별 크기 배분을 다룬다. 실제 V8 앱은 사용자 지정 속성 paint profile을 사용하므로 반드시 포함한다. Block 전용 및 기존 static compatibility profile에는 지원 동작이 새지 않도록 fail-closed 경계를 유지한다. 출시 전 내부 계약 숫자 버전은 `0.1.0`으로 유지한다.
 
 ## C10.1 · flex line wrapping
 
@@ -55,6 +55,10 @@ C09.4 shrink-to-fit은 C12 positioning, C14 intrinsic sizing, C15 inline/text me
 - C10.1은 공개 CSS API를 추가하거나 전체 Flexbox 지원 완료를 선언하지 않는다. 앱 작성자 지원 표는 이 runtime slice가 제품 API로 승인될 때 별도 검토한다.
 - 기존 profile 값, fallback, 오류 우선순위와 render revision tuple을 변경하지 않는다. 지원 profile의 새로운 wrap input만 해당 layout snapshot을 바꾼다.
 - C10.1만으로 C10 parent, S02, 전체 CSS, border paint 또는 C09.4를 완료 처리하지 않는다.
+
+## C10.2 · flex basis와 유연 크기 배분
+
+C10.2의 독립 계획과 범위·fixture·완료 조건은 [C10.2 전용 계획](c10-2-flex-distribution.md)에 둔다. 이 단계는 C10.1이 정한 줄에 대해 CSS Flexbox의 flex base/hypothetical main size, grow·scaled shrink 배분, 명시 min/max clamp와 freeze 재분배를 검증한다. 자동 최소 크기·내재 크기·indefinite percentage와 콘텐츠 기반 basis는 C10.4 및 C14 선행 작업으로 남긴다. 계획은 별도 20개 관점 검토 뒤 PR로 병합하고, 구현은 그 이후 새 비교 자료와 별도 20개 구현 검토로 진행한다.
 
 ## 기준 자료
 
