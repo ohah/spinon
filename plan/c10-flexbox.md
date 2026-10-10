@@ -10,10 +10,12 @@ C09.4 shrink-to-fit은 C12 positioning, C14 intrinsic sizing, C15 inline/text me
 | --- | --- | --- |
 | C10.1 | `flex-wrap: nowrap|wrap`의 row·column 줄 수집과 gap 배치 | PR #114 리베이스 병합 완료. |
 | C10.2 | flex basis·grow·shrink 배분과 freeze 반복 | [전용 계획](c10-2-flex-distribution.md)과 계획 PR #115를 병합했고, 구현은 [PR #116](https://github.com/ohah/spinon/pull/116)으로 리베이스 병합했다. 각 배분 단계와 min/max 제약은 별도 Chromium oracle로 고정했다. |
-| C10.3 | 축 역방향, `wrap-reverse`, `order`, `align-self`, `align-content`, baseline | 방향·그리기 순서·접근성 순서를 함께 정한 뒤 속성별로 진행한다. |
+| C10.3 | 축 역방향, `wrap-reverse`, in-flow `order`, 항목·줄 정렬, baseline | [전용 계획](c10-3-flex-order-alignment.md)의 다섯 구현 단계로 진행한다. CSS 시각 순서와 원본 트리·탐색 순서를 분리하며, C12 positioned child의 paint/alignment 교차 통합까지 닫기 전에는 완료하지 않는다. |
 | C10.4 | 자동 최소 크기, 내재 크기, percentage와 재배치 상호작용 | C14 intrinsic sizing 및 C17 writing mode 의존성을 확인한 뒤 진행한다. |
 
 위 분해는 C10 하위 작업 계획이며 C10 전체 완료 표시가 아니다. C10.1은 여섯 runtime Flex profile(`RuntimeFlexLayoutV1`, `RuntimeFlexPaintV1`, `RuntimeFlexCustomPropertiesV1`, `RuntimeFlexCustomPropertiesPaintV1`, `RuntimeFlexRegisteredPropertiesV1`, `RuntimeFlexRegisteredPropertiesPaintV1`)의 `nowrap|wrap` 줄 수집과 gap 배치를 구현해 PR #114로 리베이스 병합했다. C10.2는 같은 runtime Flex 경계에서 flex basis·grow·shrink·min/max의 줄별 크기 배분을 다뤄 [PR #116](https://github.com/ohah/spinon/pull/116)으로 리베이스 병합했다. 실제 V8 앱은 사용자 지정 속성 paint profile을 사용하므로 검증에 포함했다. Block 전용 및 기존 static compatibility profile에는 지원 동작이 새지 않도록 fail-closed 경계를 유지한다. 출시 전 내부 계약 숫자 버전은 `0.1.0`으로 유지한다.
+
+C10.3의 계획·비교 조건과 구현 순서는 [전용 계획](c10-3-flex-order-alignment.md)에 둔다. `order`와 역방향 속성은 Flex 계산에 사용할 시각 순서를 바꿀 수 있지만 HostDocument의 자식 벡터와 DOM/source traversal을 재정렬하지 않는다. `order`가 바꾸는 in-flow paint 순서, CSS가 유지하는 source·순차 탐색 순서, 아직 구현되지 않은 네이티브 접근성 트리를 각각 별도 계약으로 확인한다. 절대 위치 Flex child는 line 계산에 참여하지 않고 paint order에서 `order:0`으로 처리되므로, 해당 교차 계약은 C12 이후 C10.3.5에서 닫는다.
 
 ## C10.1 · flex line wrapping
 
