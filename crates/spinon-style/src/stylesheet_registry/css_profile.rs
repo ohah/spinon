@@ -1,5 +1,7 @@
 use style::{
-    properties::PropertyDeclarationId, shared_lock::SharedRwLockReadGuard, stylesheets::CssRule,
+    properties::{PropertyDeclaration, PropertyDeclarationId},
+    shared_lock::SharedRwLockReadGuard,
+    stylesheets::CssRule,
 };
 use style_traits::ToCss;
 
@@ -12,6 +14,7 @@ struct AuthorFeaturePolicy {
     allow_custom_properties: bool,
     allow_background_color: bool,
     allow_property_registration: bool,
+    allow_border_image_initial_resets: bool,
 }
 
 pub(super) fn first_unsupported_author_feature(
@@ -41,6 +44,7 @@ pub(super) fn first_unsupported_author_feature_with_media(
             allow_custom_properties: false,
             allow_background_color: false,
             allow_property_registration: false,
+            allow_border_image_initial_resets: false,
         },
     )
 }
@@ -60,6 +64,7 @@ pub(super) fn first_unsupported_runtime_author_feature(
             allow_custom_properties,
             allow_background_color,
             allow_property_registration: false,
+            allow_border_image_initial_resets: true,
         },
     )
 }
@@ -78,6 +83,7 @@ pub(super) fn first_unsupported_runtime_registered_properties_author_feature(
             allow_custom_properties: true,
             allow_background_color,
             allow_property_registration: true,
+            allow_border_image_initial_resets: true,
         },
     )
 }
@@ -96,6 +102,7 @@ fn first_unsupported_author_feature_with_layer_rules(
             allow_custom_properties: false,
             allow_background_color: false,
             allow_property_registration: false,
+            allow_border_image_initial_resets: false,
         },
     )
 }
@@ -173,7 +180,8 @@ fn unsupported_rule_feature(
                 return Some("중첩 CSS 규칙".to_owned());
             }
             let block = rule.block.read_with(guard);
-            for property in block.property_ids().iter() {
+            for declaration in block.declarations() {
+                let property = declaration.id();
                 let name = match property {
                     PropertyDeclarationId::Longhand(id) => id.name().to_owned(),
                     PropertyDeclarationId::Custom(_) => "사용자 지정 속성".to_owned(),
@@ -185,7 +193,10 @@ fn unsupported_rule_feature(
                             || (policy.allow_background_color && name == "background-color")
                     }
                 };
-                if !allowed {
+                if !(allowed
+                    || (policy.allow_border_image_initial_resets
+                        && is_border_image_initial(declaration, &name)))
+                {
                     return Some(format!("지원하지 않는 CSS 선언 {name}"));
                 }
             }
@@ -194,6 +205,20 @@ fn unsupported_rule_feature(
         CssRule::Property(_) if policy.allow_property_registration => None,
         _ => Some("at-rule 또는 비스타일 규칙".to_owned()),
     }
+}
+
+pub(crate) fn is_border_image_initial(declaration: &PropertyDeclaration, name: &str) -> bool {
+    let initial = match name {
+        "border-image-outset" => "0",
+        "border-image-repeat" => "stretch",
+        "border-image-slice" => "100%",
+        "border-image-source" => "none",
+        "border-image-width" => "1",
+        _ => return false,
+    };
+    let mut serialized = String::new();
+    declaration.to_css(&mut serialized).unwrap();
+    serialized == initial
 }
 
 fn supported_media_query_surface(source: &str) -> bool {

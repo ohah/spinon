@@ -40,6 +40,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native byte[] nativeEvalTypedCssMathFixture(long host);
     private static native byte[] nativeEvalViewportUnitsFixture(long host);
     private static native byte[] nativeEvalMinMaxSizingFixture(long host);
+    private static native byte[] nativeEvalBorderWidthFixture(long host);
     private static native long nativeCreateSurface(
             long host, Surface surface, int width, int height, int backend);
     private static native int nativeResizeSurface(long renderer, int width, int height);
@@ -73,6 +74,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean typedCssMathProbeRequested;
     private final boolean viewportUnitsProbeRequested;
     private final boolean minMaxSizingProbeRequested;
+    private final boolean borderWidthProbeRequested;
     private final boolean registeredPropertiesProbeRequested;
     private final boolean authorStylesheetsProbeRequested;
     private final float density;
@@ -122,6 +124,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 .getBooleanExtra("spinon_c066_viewport_units", false);
         minMaxSizingProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c071_min_max_sizing", false);
+        borderWidthProbeRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c072_border_width", false);
         registeredPropertiesProbeRequested = runtimeResultCacheProbeRequested
                 || activity.getIntent().getBooleanExtra("spinon_c052_registered_properties", false);
         authorStylesheetsProbeRequested = activity.getIntent()
@@ -141,6 +145,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         TextView title = new TextView(activity);
         title.setText(viewportUnitsProbeRequested
                 ? "SPINON · C06.6 viewport units"
+                : borderWidthProbeRequested
+                ? "SPINON · C07.2 border width"
                 : minMaxSizingProbeRequested
                 ? "SPINON · C07.1 min/max sizing"
                 : typedCssMathProbeRequested
@@ -168,6 +174,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         TextView description = new TextView(activity);
         description.setText(viewportUnitsProbeRequested
                 ? "V8 vw/svw/lvw/dvw → Stylo CSS px → Taffy → WGPU"
+                : borderWidthProbeRequested
+                ? "V8 CSS border widths → Stylo → Taffy → WGPU · 테두리 페인트 제외"
                 : minMaxSizingProbeRequested
                 ? "V8 min/max size → Stylo typed values → Taffy → WGPU"
                 : typedCssMathProbeRequested
@@ -205,6 +213,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         surfaceView.getHolder().addCallback(this);
         surfaceView.setContentDescription(viewportUnitsProbeRequested
                 ? "C06.6 viewport units WGPU 장면"
+                : borderWidthProbeRequested
+                ? "C07.2 border width layout WGPU 장면"
                 : minMaxSizingProbeRequested
                 ? "C07.1 min/max sizing WGPU 장면"
                 : typedCssMathProbeRequested
@@ -270,6 +280,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             else evaluateCustomPropertiesFixture();
         });
         if (authorStylesheetsProbeRequested || viewportUnitsProbeRequested || minMaxSizingProbeRequested
+                || borderWidthProbeRequested
                 || typedCssMathProbeRequested
                 || fontRelativeUnitsProbeRequested
                 || absoluteLengthsProbeRequested
@@ -355,6 +366,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 + " scale=" + density + " dark=" + dark + " " + environment);
         String result = viewportUnitsProbeRequested
                 ? decode(nativeEvalViewportUnitsFixture(host))
+                : borderWidthProbeRequested
+                ? decode(nativeEvalBorderWidthFixture(host))
                 : minMaxSizingProbeRequested
                 ? decode(nativeEvalMinMaxSizingFixture(host))
                 : typedCssMathProbeRequested
@@ -379,7 +392,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             return;
         }
         Log.i(TAG, (viewportUnitsProbeRequested
-                ? "SPINON_C066A_EVAL " : minMaxSizingProbeRequested
+                ? "SPINON_C066A_EVAL " : borderWidthProbeRequested
+                ? "SPINON_C072_EVAL " : minMaxSizingProbeRequested
                 ? "SPINON_C071_EVAL " : typedCssMathProbeRequested
                 ? "SPINON_C065_EVAL " : fontRelativeUnitsProbeRequested
                 ? "SPINON_C064_EVAL " : absoluteLengthsProbeRequested
@@ -553,6 +567,20 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             }
             String result = decode(nativeEvalMinMaxSizingFixture(host));
             Log.i(TAG, "SPINON_C071_EVAL " + result);
+            postStatus(runtimeStatusSummary(result));
+            if (result.startsWith("status=0 ")) requestDraw();
+        });
+    }
+
+    private void evaluateBorderWidthFixture() {
+        enqueueRuntime(() -> {
+            final long host;
+            synchronized (stateLock) {
+                if (closing || hostHandle == 0) return;
+                host = hostHandle;
+            }
+            String result = decode(nativeEvalBorderWidthFixture(host));
+            Log.i(TAG, "SPINON_C072_EVAL " + result);
             postStatus(runtimeStatusSummary(result));
             if (result.startsWith("status=0 ")) requestDraw();
         });

@@ -53,6 +53,7 @@
 | [0041 · C06.5 Typed CSS math](0041-c06-typed-css-math.md) | 제한된 typed `calc()`·`min()`·`max()`·`clamp()` AST, Taffy resolver, 속성별 final-value censor와 failure-atomic layout | 내부 계약 숫자 버전 `0.1.0` 고정 · 현재 작업 브랜치 구현·검증 완료·미병합 · 공개 API 아님 |
 | [0042 · C06.6a 네이티브 viewport 길이 단위](0042-c06-viewport-units.md) | `vw`/`vh`·`vi`/`vb`·`vmin`/`vmax`와 small/large/dynamic viewport 변형의 cascade·layout·resize 경계 | 내부 계약 숫자 버전 `0.1.0` 고정 · 현재 작업 브랜치 구현·Chromium/Rust·Android/iOS Simulator 검증 완료·미병합 · 제품 API 아님 |
 | [0043 · C07.1 물리 축 최소·최대 크기](0043-c07-1-min-max-sizing.md) | `min-width`·`max-width`·`min-height`·`max-height`의 typed 값, box-sizing·percentage·CSS math·Flex clamp 및 fail-closed 경계 | 내부 계약 숫자 버전 `0.1.0` 고정 · Chromium/Rust 35-node 비교, Android API 37·iOS 26.2 Simulator runtime 확인 완료 · 공개 API 아님 |
+| [0044 · C07.2 테두리 폭 레이아웃](0044-c07-2-border-width-layout.md) | 물리 네 면 border width·style gate, shorthand/cascade, box-sizing·min/max·flex 기하 및 오류 경계 | 현재 작업 브랜치 구현·검증 완료 · PR 병합 대기 · 내부 계약 숫자 버전 `0.1.0` 고정 · 공개 API 아님 |
 | [R13 · 플랫폼 생명주기·GPU 복구](r13-platform-gpu-recovery.md) | wgpu 실험 ABI, 플랫폼 표면 수명과 복구 경계 | 실험 전용 |
 
 C04.10 검토 기록: [PR 변경 검토](evidence/c04-runtime-css-to-gpu-pr-review-2026-10-10.md) · [계획 검토](evidence/c04-runtime-css-to-gpu-plan-review-revised-2026-10-09.md) · [UIKit surface 스레드 분리 계획 재검토](evidence/c04-runtime-css-to-gpu-plan-surface-thread-review-2026-10-09.md) · [resize 계획 재검토](evidence/c04-runtime-css-to-gpu-resize-plan-review-revised-2026-10-09.md) · [대기열·종료·실패 보완 계획 검토](evidence/c04-runtime-css-to-gpu-queue-plan-review-2026-10-09.md) · [구현 전 Chromium 비교 기준](evidence/c04-runtime-css-to-gpu-precomparison-2026-10-09.md) · [resize 사전 기준](evidence/c04-runtime-css-to-gpu-resize-precomparison-2026-10-09.md).
@@ -99,6 +100,11 @@ C06.1~C06.6a 및 C07.1 누적 변경의 ABI·캐시·CSS 의미·Android/iOS run
 - [C07.1 · 최소·최대 크기 구현 전 비교 모델](./evidence/c07-1-min-max-sizing-precomparison-2026-10-10.md) — Chrome 154 기준 35개 노드의 min/max CSS 값·box-sizing·percentage·flex 관찰과 입력 hash.
 - [C07.1 · 최소·최대 크기 계획 실패 경로 검토](./evidence/c07-1-min-max-sizing-plan-review-2026-10-10.md) — 계획 구현 전 oracle, CSS sizing 경계, flex clamp, typed AST, profile 및 시뮬레이터 주장 검토.
 - [C07.1 · 최소·최대 크기 구현 검토와 실행 근거](./evidence/c07-1-min-max-sizing-implementation-review-2026-10-10.md) — 별도 구현 실패 경로, workspace·FFI 검사와 Android API 37/iOS 26.2 Simulator 실제 V8→WGPU 화면·로그.
+- [C07.2 · 테두리 폭 구현 전 비교 모델](./evidence/c07-2-border-width-layout-precomparison-2026-10-10.md) — pinned Chrome 154의 50-node·DPR 1/2 기준, fixture hash와 box geometry.
+- [C07.2 · 테두리 폭 계획 실패 경로 검토](./evidence/c07-2-border-width-layout-plan-review-2026-10-10.md) — 계획의 20개 독립 실패 관점, fixture에서 발견해 추가한 shorthand/style/min-max/math 경계.
+- [C07.2 · 테두리 폭 Simulator 실행](./evidence/c07-2-border-width-layout-simulators-2026-10-10.md) — 50-node Chrome 기준, Android API 37·iOS 26.2 Simulator V8→WGPU 실행, 화면·로그와 측정 한계.
+- [C07.2 · 테두리 폭 구현 실패 관점 검토](./evidence/c07-2-border-width-layout-implementation-review-2026-10-10.md) — 구현 후 코드·실행 경로의 실패 점검과 수정한 non-finite 값 경계.
+- [C07.2 · 테두리 폭 내부 계약](./0044-c07-2-border-width-layout.md) — 제한 runtime profile 내부 구현 계약. 문서 ID `0044`, 숫자 버전 `0.1.0` 고정.
 - [C06·C07.1 · 통합 변경 적대적 검토](./evidence/c06-c071-integrated-review-2026-10-10.md) — 누적 diff의 단위·cache·revision·C ABI·Android/iOS 경계를 교차 확인하고 수정 및 현재 검증 상태를 기록.
 - [C07.1 · 물리 축 최소·최대 크기 내부 계약](./0043-c07-1-min-max-sizing.md) — 출시 전 숫자 버전 `0.1.0`으로 고정한 Stylo typed DTO→Taffy 제약과 오류 경계.
 - [C02 · Vite·Rspack CSS 산출 비교](./evidence/css-c02-bundler-2026-10-01.md) — production fixture의 CSS Modules·자원·청크, 기본 진단 차이와 공통 snapshot 원본 위치 근거.

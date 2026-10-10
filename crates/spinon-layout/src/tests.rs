@@ -9,6 +9,8 @@ use crate::{
     RootSizingPolicy, TaffyLayoutEngine, TextDirection, Viewport,
 };
 
+#[path = "tests/border.rs"]
+mod border;
 #[path = "tests/invalid_inputs.rs"]
 mod invalid_inputs;
 #[path = "tests/legacy_oracle.rs"]

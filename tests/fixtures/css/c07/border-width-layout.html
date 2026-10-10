@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+html, body { margin: 0; padding: 0; }
+#fixture { display: block; width: 400px; }
+.case { display: block; height: 30px; margin: 0; padding: 0; }
+#explicit-one-value { width: 100px; border-width: 2px; border-style: solid; }
+#shorthand-two { width: 100px; border-width: 2px 4px; border-style: solid; }
+#shorthand-three { width: 100px; border-width: 1px 2px 3px; border-style: solid; }
+#shorthand-four { width: 100px; border-width: 1px 2px 3px 4px; border-style: solid; }
+#side-overrides { width: 100px; border: 1px solid red; border-top-width: 4px; border-right-width: 5px; border-bottom-width: 6px; border-left-width: 7px; }
+#longhand-cascade { width: 100px; border-width: 1px 2px; border-style: solid; border-left-width: 7px; border-bottom-width: 5px; }
+#border-shorthand-reset { width: 100px; border-top-width: 1px; border-right-width: 2px; border-bottom-width: 3px; border-left-width: 4px; border-style: solid; border: 3px solid blue; }
+#default-medium-solid { width: 100px; border-style: solid; }
+#thin-solid { width: 100px; border-width: thin; border-style: solid; }
+#medium-solid { width: 100px; border-width: medium; border-style: solid; }
+#thick-solid { width: 100px; border-width: thick; border-style: solid; }
+#none-zero { width: 100px; border: 6px solid red; border-style: none; }
+#hidden-zero { width: 100px; border: 6px solid red; border-style: hidden; }
+#dashed-contributes { width: 100px; border-width: 4px; border-style: dashed; }
+#dotted-contributes { width: 100px; border-width: 4px; border-style: dotted; }
+#double-contributes { width: 100px; border-width: 4px; border-style: double; }
+#groove-contributes { width: 100px; border-width: 4px; border-style: groove; }
+#ridge-contributes { width: 100px; border-width: 4px; border-style: ridge; }
+#inset-contributes { width: 100px; border-width: 4px; border-style: inset; }
+#outset-contributes { width: 100px; border-width: 4px; border-style: outset; }
+#transparent-solid { width: 100px; border-width: 3px; border-style: solid; border-color: transparent; }
+#content-box { width: 100px; height: 40px; padding: 10px; border: 2px solid red; box-sizing: content-box; }
+#border-box { width: 100px; height: 40px; padding: 10px; border: 2px solid red; box-sizing: border-box; }
+#border-box-padding-floor { width: 10px; height: 10px; padding: 12px; border: 2px solid red; box-sizing: border-box; }
+#border-box-min { width: 60px; min-width: 80px; padding: 5px; border: 2px solid red; box-sizing: border-box; }
+#border-box-max { width: 120px; max-width: 80px; padding: 5px; border: 2px solid red; box-sizing: border-box; }
+#content-box-min-border { width: 60px; min-width: 80px; padding: 5px; border: 2px solid red; box-sizing: content-box; }
+#content-box-max-border { width: 120px; max-width: 80px; padding: 5px; border: 2px solid red; box-sizing: content-box; }
+#calc-width { width: 100px; border-width: calc(1px + 1.5px); border-style: solid; }
+#calc-asymmetric { width: 100px; border-top-width: calc(1px + 0.5px); border-right-width: calc(2px + 0.5px); border-bottom-width: calc(3px + 0.5px); border-left-width: calc(4px + 0.5px); border-style: solid; }
+#var-width { width: 100px; --edge: 3px; border-width: var(--edge); border-style: solid; }
+#fractional-width { width: 100px; border-width: 0.25px 0.5px 0.75px 1.25px; border-style: solid; }
+#fractional-025-all { border: 0.25px solid; }
+#fractional-050-all { border: 0.5px solid; }
+#fractional-075-all { border: 0.75px solid; }
+#fractional-125-all { border: 1.25px solid; }
+#fractional-150-all { border: 1.5px solid; }
+#fractional-225-all { border: 2.25px solid; }
+#fractional-175-all { border: 1.75px solid; }
+#fractional-250-all { border: 2.5px solid; }
+#fractional-275-all { border: 2.75px solid; }
+#fractional-350-all { border: 3.5px solid; }
+#zero-width { width: 100px; border-width: 0; border-style: solid; }
+#invalid-negative-fallback { width: 100px; border-style: solid; border-width: 4px; border-width: -1px; }
+#invalid-percent-fallback { width: 100px; border-style: solid; border-width: 4px; border-width: 10%; }
+#outline-excluded { width: 80px; outline: 20px solid red; }
+#flex-parent { display: flex; width: 120px; height: 40px; }
+#flex-shrink-border { width: 100px; flex: 0 1 100px; border: 5px solid red; }
+#flex-shrink-sibling { width: 100px; flex: 0 1 100px; }
+</style>
+</head>
+<body>
+<div id="fixture">
+<div id="default-none" class="case" style="width:50px"></div>
+<div id="explicit-one-value" class="case"></div>
+<div id="shorthand-two" class="case"></div>
+<div id="shorthand-three" class="case"></div>
+<div id="shorthand-four" class="case"></div>
+<div id="side-overrides" class="case"></div>
+<div id="longhand-cascade" class="case"></div>
+<div id="border-shorthand-reset" class="case"></div>
+<div id="default-medium-solid" class="case"></div>
+<div id="thin-solid" class="case"></div>
+<div id="medium-solid" class="case"></div>
+<div id="thick-solid" class="case"></div>
+<div id="none-zero" class="case"></div>
+<div id="hidden-zero" class="case"></div>
+<div id="dashed-contributes" class="case"></div>
+<div id="dotted-contributes" class="case"></div>
+<div id="double-contributes" class="case"></div>
+<div id="groove-contributes" class="case"></div>
+<div id="ridge-contributes" class="case"></div>
+<div id="inset-contributes" class="case"></div>
+<div id="outset-contributes" class="case"></div>
+<div id="transparent-solid" class="case"></div>
+<div id="content-box" class="case"></div>
+<div id="border-box" class="case"></div>
+<div id="border-box-padding-floor" class="case"></div>
+<div id="border-box-min" class="case"></div>
+<div id="border-box-max" class="case"></div>
+<div id="content-box-min-border" class="case"></div>
+<div id="content-box-max-border" class="case"></div>
+<div id="calc-width" class="case"></div>
+<div id="calc-asymmetric" class="case"></div>
+<div id="var-width" class="case"></div>
+<div id="fractional-width" class="case"></div>
+<div id="fractional-025-all" class="case"></div>
+<div id="fractional-050-all" class="case"></div>
+<div id="fractional-075-all" class="case"></div>
+<div id="fractional-125-all" class="case"></div>
+<div id="fractional-150-all" class="case"></div>
+<div id="fractional-225-all" class="case"></div>
+<div id="fractional-175-all" class="case"></div>
+<div id="fractional-250-all" class="case"></div>
+<div id="fractional-275-all" class="case"></div>
+<div id="fractional-350-all" class="case"></div>
+<div id="zero-width" class="case"></div>
+<div id="invalid-negative-fallback" class="case"></div>
+<div id="invalid-percent-fallback" class="case"></div>
+<div id="outline-excluded" class="case"></div>
+<div id="flex-parent"><div id="flex-shrink-border" class="case"></div><div id="flex-shrink-sibling" class="case"></div></div>
+</div>
+</body>
+</html>

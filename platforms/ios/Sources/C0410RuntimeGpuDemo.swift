@@ -47,6 +47,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c066-viewport-units")
     private let minMaxSizingProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c071-min-max-sizing")
+    private let borderWidthProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c072-border-width")
     private let registeredPropertiesProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c052-registered-properties")
         || ProcessInfo.processInfo.arguments.contains("--spinon-c053-runtime-result-cache")
@@ -75,6 +77,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let title = UILabel()
         title.text = viewportUnitsProbeRequested
             ? "SPINON · C06.6 viewport units"
+            : borderWidthProbeRequested
+            ? "SPINON · C07.2 border width"
             : minMaxSizingProbeRequested
             ? "SPINON · C07.1 min/max sizing"
             : typedCssMathProbeRequested
@@ -102,6 +106,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let description = UILabel()
         description.text = viewportUnitsProbeRequested
             ? "V8 vw/svw/lvw/dvw → Stylo CSS px → Taffy → WGPU"
+            : borderWidthProbeRequested
+            ? "V8 CSS border widths → Stylo → Taffy → WGPU · 테두리 페인트 제외"
             : minMaxSizingProbeRequested
             ? "V8 min/max size → Stylo typed values → Taffy → WGPU"
             : typedCssMathProbeRequested
@@ -133,6 +139,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         canvasView.isAccessibilityElement = true
         canvasView.accessibilityLabel = viewportUnitsProbeRequested
             ? "C06.6 viewport units WGPU 장면"
+            : borderWidthProbeRequested
+            ? "C07.2 테두리 폭 레이아웃 WGPU 장면"
             : minMaxSizingProbeRequested
             ? "C07.1 min/max sizing WGPU 장면"
             : typedCssMathProbeRequested
@@ -204,7 +212,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         )
         customPropertiesButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(customPropertiesButton)
-        if authorStylesheetsProbeRequested || minMaxSizingProbeRequested || typedCssMathProbeRequested
+        if authorStylesheetsProbeRequested || minMaxSizingProbeRequested || borderWidthProbeRequested
+            || typedCssMathProbeRequested
             || fontRelativeUnitsProbeRequested
             || absoluteLengthsProbeRequested
             || percentageDimensionsProbeRequested
@@ -422,6 +431,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         var result = viewportUnitsProbeRequested
             ? SpinonRunner.evalRuntimeGpuViewportUnitsFixture(handle)
+            : borderWidthProbeRequested
+            ? SpinonRunner.evalRuntimeGpuBorderWidthFixture(handle)
             : minMaxSizingProbeRequested
             ? SpinonRunner.evalRuntimeGpuMinMaxSizingFixture(handle)
             : typedCssMathProbeRequested
@@ -450,6 +461,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         if sceneWasSupersededAfterCommit {
             let scope = viewportUnitsProbeRequested
                 ? "SPINON_C066A"
+                : borderWidthProbeRequested
+                ? "SPINON_C072"
                 : minMaxSizingProbeRequested
                 ? "SPINON_C071"
                 : typedCssMathProbeRequested
@@ -472,6 +485,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         } else {
             let scope = viewportUnitsProbeRequested
                 ? "SPINON_C066A"
+                : borderWidthProbeRequested
+                ? "SPINON_C072"
                 : minMaxSizingProbeRequested
                 ? "SPINON_C071"
                 : typedCssMathProbeRequested
@@ -491,6 +506,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 : authorStylesheetsProbeRequested ? "SPINON_C0411" : "SPINON_C0410"
             log("\(scope)_EVAL \(result ?? "")")
             postStatus(runtimeStatusSummary(result ?? "runtime scene 준비 완료"))
+            if borderWidthProbeRequested {
+                log("SPINON_C072_SUMMARY \(runtimeStatusSummary(result ?? ""))")
+            }
         }
         if customPropertiesProbeRequested && !authorStylesheetsProbeRequested {
             result = SpinonRunner.evalRuntimeGpuCustomPropertiesFixture(handle)
