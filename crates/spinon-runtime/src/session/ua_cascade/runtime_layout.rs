@@ -170,6 +170,9 @@ pub(super) fn compute_runtime_layout(
         super::calculation::RuntimeCalculationProfile::BlockFormatting => {
             spinon_style::first_unsupported_runtime_block_formatting_inline_property(&view)
         }
+        super::calculation::RuntimeCalculationProfile::BlockPositioning => {
+            spinon_style::first_unsupported_runtime_block_formatting_inline_property(&view)
+        }
         super::calculation::RuntimeCalculationProfile::FlexPaint
         | super::calculation::RuntimeCalculationProfile::RegisteredPropertiesPaint => {
             first_unsupported_runtime_custom_properties_paint_inline_property(&view)

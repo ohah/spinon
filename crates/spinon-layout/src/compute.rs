@@ -8,20 +8,36 @@ use super::{
     calc_tree::CalcLayoutTree,
     flex_auto_margin::negative_cross_axis_auto_margin_offset_correction,
     flex_baseline,
-    positioning::{collect_positioned_owners, has_relative_inset},
+    positioning::{collect_positioned_owners, needs_flow_pass},
 };
 
 impl LayoutEngine for TaffyLayoutEngine {
     fn compute(&self, input: &LayoutInput) -> Result<LayoutOutput, LayoutError> {
         let index = super::validate(input)?;
         let postorder = postorder(input, &index)?;
-        let visual_tree = compute_tree(input, &index, &postorder, false)?;
-        let mut output = collect_frames(input, &index, &visual_tree.engine_ids, &visual_tree)?;
-        output.positioned_owners = collect_positioned_owners(input, &index);
-        if has_relative_inset(input) {
+        let flow_frames = if needs_flow_pass(input) {
             let flow_tree = compute_tree(input, &index, &postorder, true)?;
-            output.flow_frames =
-                collect_frames(input, &index, &flow_tree.engine_ids, &flow_tree)?.frames;
+            Some(collect_frames(input, &index, &flow_tree, &BTreeMap::new())?.frames)
+        } else {
+            None
+        };
+        let visual_tree = compute_tree(input, &index, &postorder, false)?;
+        let raw_output = collect_frames(input, &index, &visual_tree, &BTreeMap::new())?;
+        let adjustments = flow_frames
+            .as_ref()
+            .map(|flow| {
+                absolute_static_position_adjustments(input, &index, &raw_output.frames, flow)
+            })
+            .transpose()?
+            .unwrap_or_default();
+        let mut output = if adjustments.is_empty() {
+            raw_output
+        } else {
+            collect_frames(input, &index, &visual_tree, &adjustments)?
+        };
+        output.positioned_owners = collect_positioned_owners(input, &index);
+        if let Some(flow_frames) = flow_frames {
+            output.flow_frames = flow_frames;
         } else {
             output.flow_frames.clone_from(&output.frames);
         }
@@ -94,13 +110,18 @@ fn postorder(
 fn collect_frames(
     input: &LayoutInput,
     index: &BTreeMap<NodeId, usize>,
-    engine_ids: &BTreeMap<NodeId, taffy::prelude::NodeId>,
     tree: &CalcLayoutTree,
+    adjustments: &BTreeMap<NodeId, (f32, f32)>,
 ) -> Result<LayoutOutput, LayoutError> {
     let mut frames = BTreeMap::new();
-    let mut pending = vec![(input.root, 0.0_f32, 0.0_f32, None)];
+    let mut pending = tree
+        .root_children(input.root)
+        .into_iter()
+        .rev()
+        .map(|id| (id, 0.0_f32, 0.0_f32, None))
+        .collect::<Vec<_>>();
     while let Some((external_id, parent_x, parent_y, parent_id)) = pending.pop() {
-        let engine_id = engine_ids[&external_id];
+        let engine_id = tree.engine_id(external_id);
         let layout = tree
             .layout(engine_id)
             .ok_or(LayoutError::MissingComputedLayout(external_id))?;
@@ -114,8 +135,14 @@ fn collect_frames(
             })
             .unwrap_or((0.0, 0.0));
         let frame = LayoutFrame {
-            x: parent_x + layout.location.x + correction_x,
-            y: parent_y + layout.location.y + correction_y,
+            x: parent_x
+                + layout.location.x
+                + correction_x
+                + adjustments.get(&external_id).map_or(0.0, |value| value.0),
+            y: parent_y
+                + layout.location.y
+                + correction_y
+                + adjustments.get(&external_id).map_or(0.0, |value| value.1),
             width: layout.size.width,
             height: layout.size.height,
         };
@@ -126,8 +153,7 @@ fn collect_frames(
             return Err(LayoutError::NonFiniteFrame(external_id));
         }
         frames.insert(external_id, frame);
-        let node = &input.nodes[index[&external_id]];
-        for &child in node.children.iter().rev() {
+        for &child in tree.layout_children(external_id).iter().rev() {
             pending.push((child, frame.x, frame.y, Some(external_id)));
         }
     }
@@ -137,4 +163,59 @@ fn collect_frames(
         positioned_owners: BTreeMap::new(),
         frames,
     })
+}
+
+fn absolute_static_position_adjustments(
+    input: &LayoutInput,
+    index: &BTreeMap<NodeId, usize>,
+    visual_frames: &BTreeMap<NodeId, LayoutFrame>,
+    flow_frames: &BTreeMap<NodeId, LayoutFrame>,
+) -> Result<BTreeMap<NodeId, (f32, f32)>, LayoutError> {
+    let owners = collect_positioned_owners(input, index);
+    let mut adjustments = BTreeMap::new();
+    for (&id, positioning) in &input.positioning {
+        if positioning.position != crate::LayoutPosition::Absolute {
+            continue;
+        }
+        let Some(flow_frame) = flow_frames.get(&id).copied() else {
+            return Err(LayoutError::MissingComputedLayout(id));
+        };
+        let Some(visual_frame) = visual_frames.get(&id).copied() else {
+            return Err(LayoutError::MissingComputedLayout(id));
+        };
+        let owner_delta = match owners[&id] {
+            crate::PositionedContainingBlockOwner::Viewport => (0.0, 0.0),
+            crate::PositionedContainingBlockOwner::Node(owner) => {
+                let Some(flow_owner) = flow_frames.get(&owner) else {
+                    return Err(LayoutError::MissingComputedLayout(owner));
+                };
+                let Some(visual_owner) = visual_frames.get(&owner) else {
+                    return Err(LayoutError::MissingComputedLayout(owner));
+                };
+                (visual_owner.x - flow_owner.x, visual_owner.y - flow_owner.y)
+            }
+            crate::PositionedContainingBlockOwner::NoBox => continue,
+        };
+        let delta_x = if positioning.inset.left == crate::LayoutLengthPercentage::Auto
+            && positioning.inset.right == crate::LayoutLengthPercentage::Auto
+        {
+            flow_frame.x + owner_delta.0 - visual_frame.x
+        } else {
+            0.0
+        };
+        let delta_y = if positioning.inset.top == crate::LayoutLengthPercentage::Auto
+            && positioning.inset.bottom == crate::LayoutLengthPercentage::Auto
+        {
+            flow_frame.y + owner_delta.1 - visual_frame.y
+        } else {
+            0.0
+        };
+        if !delta_x.is_finite() || !delta_y.is_finite() {
+            return Err(LayoutError::NonFiniteFrame(id));
+        }
+        if delta_x != 0.0 || delta_y != 0.0 {
+            adjustments.insert(id, (delta_x, delta_y));
+        }
+    }
+    Ok(adjustments)
 }

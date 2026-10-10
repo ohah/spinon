@@ -47,6 +47,8 @@ const RUNTIME_CSS_BLOCK_FORMATTING_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c09/runtime-block-formatting.js");
 const RUNTIME_CSS_C12_1_POSITION_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c12/runtime-position-static-relative.js");
+const RUNTIME_CSS_C12_2_ABSOLUTE_BLOCK_FIXTURE_SOURCE: &str =
+    include_str!("../../../tests/fixtures/css/c12/runtime-position-absolute-block.js");
 const RUNTIME_CSS_MARGIN_COLLAPSE_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c09/runtime-margin-collapse.js");
 const RUNTIME_CSS_FLOW_ROOT_FIXTURE_SOURCE: &str =
@@ -157,6 +159,11 @@ impl RuntimeGpuHost {
 
     fn new_c12_1_position_fixture() -> Result<(Self, String), String> {
         let (session, report) = RuntimeSession::new_runtime_gpu()?;
+        Ok((Self::from_session_with_frame_report(session), report))
+    }
+
+    fn new_c12_2_absolute_block_fixture() -> Result<(Self, String), String> {
+        let (session, report) = RuntimeSession::new_runtime_gpu_block_positioning_fixture()?;
         Ok((Self::from_session_with_frame_report(session), report))
     }
 

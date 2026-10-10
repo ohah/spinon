@@ -1,0 +1,97 @@
+--------- beginning of main
+10-11 07:48:34.340 27360 27360 I SpinonBootstrap: SPINON_C0410_SURFACE_CREATED generation=1
+10-11 07:48:34.340 27360 27360 I SpinonBootstrap: SPINON_C0410_SURFACE_CHANGED generation=2 size=900x675 changed=true
+10-11 07:48:34.350 27360 27443 I SpinonBootstrap: SPINON_C122_HOST=session=ready owner_tid=27446 isolate_per_session=1 queue_capacity=64 queue_policy=strict-priority-fifo css_worker_per_session=1 css_worker_ready_us=400 session_startup_us=9984
+10-11 07:48:34.351 27360 27443 I SpinonBootstrap: SPINON_C0410_ENVIRONMENT status=0 environment_revision=0 layout=empty boxes=0 generation=1 document_revision=0 render_tree_revision=0 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=0 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 node_frames_css_px=[]
+10-11 07:48:34.351 27360 27443 I SpinonBootstrap: SPINON_C0410_ENVIRONMENT viewport=360.0x800.0 scale=2.8125 dark=true status=0 environment_revision=0 layout=empty boxes=0 generation=1 document_revision=0 render_tree_revision=0 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=0 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 node_frames_css_px=[]
+10-11 07:48:34.401 27360 27443 I SpinonBootstrap: SPINON_C122_EVAL status=0 seq=1 trace_cookie=1 op=eval status=0 caller_tid=27443 owner_tid=27446 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=336 v8_call_us=41742 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=462 render_tree_revision=1 document_nodes=84 document_string_units=16188 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=84 document_collection_live_handles=84 document_collection_empty_handles=0 document_collection_last_scan_start_ns=1603436728580330 document_collection_last_scan_us=112 document_collection_wrapper_root_buffer_bytes=512 document_collection_reclaimed_node_buffer_bytes=336 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=41 ua_snapshot_submit_us=24 ua_snapshot_submitted=true enqueue_total_us=6 response_wait_us=47385 submit_total_us=47392 response_report_append_us=3 la
+10-11 07:48:34.402 27360 27443 I SpinonBootstrap: SPINON_C122_INITIAL status=0 seq=1 trace_cookie=1 op=eval status=0 caller_tid=27443 owner_tid=27446 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=336 v8_call_us=41742 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=462 render_tree_revision=1 document_nodes=84 document_string_units=16188 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=84 document_collection_live_handles=84 document_collection_empty_handles=0 document_collection_last_scan_start_ns=1603436728580330 document_collection_last_scan_us=112 document_collection_wrapper_root_buffer_bytes=512 document_collection_reclaimed_node_buffer_bytes=336 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=41 ua_snapshot_submit_us=24 ua_snapshot_submitted=true enqueue_total_us=6 response_wait_us=47385 submit_total_us=47392 response_report_append_us=3 layout=ready boxes=80 generation=1 document_revision=462 render_tree_revision=1 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=83 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=360x800 render_viewport_css_px=360x800 render_root_css_px=360x800 node_frames_css_px=[0:node=1,x=0,y=0,width=360,height=800;1:node=83,x=0,y=0,width=0,height=0;2:node=2,x=0,y=0,width=320,height=70;3:node=3,x=17,y=11,width=30,height=20;4:node=4,x=0,y=70,width=320,height=70;5:node=5,x=0,y=70,width=200,height=64;6:node=6,x=14,y=84,width=120,height=32;7:node=7,x=9,y=81,width=30,height=12;8:node=8,x=0,y=140,width=320,height=70;9:node=9,x=0,y=140,width=200,height=58;10:node=10,x=10,y=150,width=120,height=30;11:node=11,x=8,y=146,width=24,height=10;12:node=12,x=0,y=210,width=320,height=70;13:node=13,x=0,y=210,width=266,height=76;14:node=14,x=8,y=218,width=180,height=45;15:node=15,x=20,y=222,width=96,height=50;16:node=16,x=32,y=232,width=20,height=12;17:node=17,x=0,y=280,width=300,height=24;18:node=18,x=0,y=280,width=40,height=12;19:node=19,x=0,y=280,width=50,height=16;20:node=20,x=0,y=292,width=40,height=12;21:node=21,x=0,y=304,width=320,height=70;22:node=22,x=0,y=304,width=200,height=58;23:node=23,x=158,y=341,width=31,height=13;24:node=24,x=0,y=374,width=320,height=70;25:node=25,x=0,y=374,width=200,height=120;26:node=26,x=52,y=389.2,width=20,height=10;27:node=27,x=0,y=444,width=320,height=70;28:node=28,x=0,y=444,width=200,height=120;29:node=29,x=27.2,y=461.2,width=20,height=10;30:node=30,x=0,y=514,width=320,height=70;31:node=31,x=0,y=514,width=200,height=80;32:node=32,x=12,y=523,width=172,height=60;33:node=33,x=0,y=584,width=320,height=70;34:node=34,x=0,y=584,width=200,height=58;35:node=35,x=9,y=590,width=30,height=12;36:node=36,x=0,y=654,width=320,height=70;37:node=37,x=0,y=654,width=200,height=58;38:node=38,x=80,y=661,width=40,height=12;39:node=39,x=0,y=724,width=320,height=70;40:node=40,x=0,y=724,width=200,height=58;41:node=41,x=10,y=729,width=130,height=12;42:node=42,x=0,y=794,width=320,height=70;43:node=43,x=0,y=794,width=200,height=58;44:node=44,x=4,y=798,width=60,height=30;45:node=45,x=80,y=798,width=80,height=50;46:node=46,x=0,y=864,width=200,height=26;47:node=47,x=0,y=864,width=36,height=12;48:node=48,x=0,y=876,width=40,height=10;49:node=49,x=0,y=876,width=32,height=14;50:node=50,x=0,y=890,width=320,height=70;51:node=51,x=0,y=890,width=180,height=48;52:node=52,x=3,y=894,width=30,height=12;53:node=53,x=0,y=960,width=320,height=70;54:node=54,x=0,y=960,width=180,height=48;55:node=55,x=3,y=964,width=80,height=22;56:node=56,x=3,y=974,width=30,height=12;57:node=57,x=0,y=1030,width=320,height=70;58:node=58,x=0,y=0,width=0,height=0;59:node=59,x=0,y=0,width=0,height=0;60:node=60,x=0,y=1030,width=30,height=12;61:node=61,x=0,y=1100,width=320,height=70;62:node=62,x=0,y=1100,width=220,height=60;63:node=63,x=17,y=1110,width=70,height=42;64:node=64,x=26,y=1117,width=18,height=9;65:node=65,x=0,y=1170,width=320,height=70;66:node=66,x=0,y=1170,wid
+10-11 07:48:34.402 27360 27443 I SpinonBootstrap: SPINON_C122_SUMMARY status=0 layout=ready boxes=80 generation=1 document_revision=462 environment_revision=0
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 0:node=1,x=0,y=0,width=360,height=800
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 1:node=83,x=0,y=0,width=0,height=0
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 2:node=2,x=0,y=0,width=320,height=70
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 3:node=3,x=17,y=11,width=30,height=20
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 4:node=4,x=0,y=70,width=320,height=70
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 5:node=5,x=0,y=70,width=200,height=64
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 6:node=6,x=14,y=84,width=120,height=32
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 7:node=7,x=9,y=81,width=30,height=12
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 8:node=8,x=0,y=140,width=320,height=70
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 9:node=9,x=0,y=140,width=200,height=58
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 10:node=10,x=10,y=150,width=120,height=30
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 11:node=11,x=8,y=146,width=24,height=10
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 12:node=12,x=0,y=210,width=320,height=70
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 13:node=13,x=0,y=210,width=266,height=76
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 14:node=14,x=8,y=218,width=180,height=45
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 15:node=15,x=20,y=222,width=96,height=50
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 16:node=16,x=32,y=232,width=20,height=12
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 17:node=17,x=0,y=280,width=300,height=24
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 18:node=18,x=0,y=280,width=40,height=12
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 19:node=19,x=0,y=280,width=50,height=16
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 20:node=20,x=0,y=292,width=40,height=12
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 21:node=21,x=0,y=304,width=320,height=70
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 22:node=22,x=0,y=304,width=200,height=58
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 23:node=23,x=158,y=341,width=31,height=13
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 24:node=24,x=0,y=374,width=320,height=70
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 25:node=25,x=0,y=374,width=200,height=120
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 26:node=26,x=52,y=389.2,width=20,height=10
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 27:node=27,x=0,y=444,width=320,height=70
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 28:node=28,x=0,y=444,width=200,height=120
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 29:node=29,x=27.2,y=461.2,width=20,height=10
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 30:node=30,x=0,y=514,width=320,height=70
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 31:node=31,x=0,y=514,width=200,height=80
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 32:node=32,x=12,y=523,width=172,height=60
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 33:node=33,x=0,y=584,width=320,height=70
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 34:node=34,x=0,y=584,width=200,height=58
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 35:node=35,x=9,y=590,width=30,height=12
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 36:node=36,x=0,y=654,width=320,height=70
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 37:node=37,x=0,y=654,width=200,height=58
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 38:node=38,x=80,y=661,width=40,height=12
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 39:node=39,x=0,y=724,width=320,height=70
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 40:node=40,x=0,y=724,width=200,height=58
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 41:node=41,x=10,y=729,width=130,height=12
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 42:node=42,x=0,y=794,width=320,height=70
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 43:node=43,x=0,y=794,width=200,height=58
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 44:node=44,x=4,y=798,width=60,height=30
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 45:node=45,x=80,y=798,width=80,height=50
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 46:node=46,x=0,y=864,width=200,height=26
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 47:node=47,x=0,y=864,width=36,height=12
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 48:node=48,x=0,y=876,width=40,height=10
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 49:node=49,x=0,y=876,width=32,height=14
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 50:node=50,x=0,y=890,width=320,height=70
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 51:node=51,x=0,y=890,width=180,height=48
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 52:node=52,x=3,y=894,width=30,height=12
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 53:node=53,x=0,y=960,width=320,height=70
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 54:node=54,x=0,y=960,width=180,height=48
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 55:node=55,x=3,y=964,width=80,height=22
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 56:node=56,x=3,y=974,width=30,height=12
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 57:node=57,x=0,y=1030,width=320,height=70
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 58:node=58,x=0,y=0,width=0,height=0
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 59:node=59,x=0,y=0,width=0,height=0
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 60:node=60,x=0,y=1030,width=30,height=12
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 61:node=61,x=0,y=1100,width=320,height=70
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 62:node=62,x=0,y=1100,width=220,height=60
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 63:node=63,x=17,y=1110,width=70,height=42
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 64:node=64,x=26,y=1117,width=18,height=9
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 65:node=65,x=0,y=1170,width=320,height=70
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 66:node=66,x=0,y=1170,width=200,height=58
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 67:node=67,x=3,y=1171,width=32,height=12
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 68:node=68,x=0,y=1240,width=320,height=70
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 69:node=69,x=0,y=1240,width=200,height=58
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 70:node=70,x=19,y=1247,width=30,height=12
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 71:node=71,x=0,y=1310,width=320,height=70
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 72:node=72,x=0,y=1310,width=200,height=58
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 73:node=73,x=5,y=1314,width=40,height=20
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 74:node=74,x=0,y=1380,width=320,height=70
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 75:node=75,x=0,y=1380,width=200,height=58
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 76:node=76,x=161,y=1388,width=24,height=10
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 77:node=77,x=0,y=1450,width=320,height=70
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 78:node=78,x=0,y=1450,width=220,height=70
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 79:node=79,x=8,y=1458,width=120,height=50
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 80:node=80,x=8,y=1458,width=40,height=12
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 81:node=81,x=11,y=1472,width=40,height=10
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_NODE_FRAME state=initial 82:node=82,x=8,y=1470,width=30,height=14
+10-11 07:48:34.404 27360 27443 I SpinonBootstrap: SPINON_C122_FRAME_SUMMARY state=initial frames=83 marker=present
+10-11 07:48:34.492 27360 27442 I SpinonBootstrap: SPINON_C0410_RENDERER=backend=Vulkan device=Samsung Xclipse 940 format=Rgba8UnormSrgb size=900x675 selection=auto
+10-11 07:48:34.492 27360 27442 I SpinonBootstrap: SPINON_C0410_RENDERER generation=2 size=900x675
+10-11 07:48:34.495 27360 27442 I SpinonBootstrap: SPINON_C0410_DRAW status=0 presented boxes=80 environment_revision=0 viewport_css_px=360x800 surface_texture=900x675 root_css_px=360x800
+10-11 07:48:34.495 27360 27442 I SpinonBootstrap: SPINON_C0410_DRAW generation=2 status=0 presented boxes=80 environment_revision=0 viewport_css_px=360x800 surface_texture=900x675 root_css_px=360x800

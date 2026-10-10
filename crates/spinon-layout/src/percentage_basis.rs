@@ -4,7 +4,8 @@ use spinon_core::NodeId;
 
 use crate::{
     FlexDirection, LayoutCalcId, LayoutDimension, LayoutDisplay, LayoutInput,
-    LayoutLengthPercentage, LayoutNode, RootSizingPolicy, error::LayoutError,
+    LayoutLengthPercentage, LayoutNode, LayoutPosition, PositionedContainingBlockOwner,
+    RootSizingPolicy, error::LayoutError, positioning::collect_positioned_owners,
 };
 
 #[derive(Clone, Copy, Debug, Default)]
@@ -33,6 +34,7 @@ pub(super) fn validate_spacing_percentage_bases(
             parents.insert(*child, node.id);
         }
     }
+    let positioned_owners = collect_positioned_owners(input, index);
 
     let mut definite = BTreeMap::<NodeId, DefiniteAxes>::new();
     let mut hidden = BTreeMap::<NodeId, bool>::new();
@@ -60,8 +62,32 @@ pub(super) fn validate_spacing_percentage_bases(
                 width: true,
                 height: true,
             }
+        } else if input
+            .positioning
+            .get(&id)
+            .is_some_and(|positioning| positioning.position == LayoutPosition::Absolute)
+        {
+            owner_axes(positioned_owners[&id], &definite)
         } else {
             parent_axes
+        };
+        let is_absolute = input
+            .positioning
+            .get(&id)
+            .is_some_and(|positioning| positioning.position == LayoutPosition::Absolute);
+        let sizing_parent_axes = if is_absolute {
+            position_parent_axes
+        } else {
+            parent_axes
+        };
+        let sizing_parent = if is_absolute {
+            match positioned_owners[&id] {
+                PositionedContainingBlockOwner::Node(owner) => Some(&input.nodes[index[&owner]]),
+                PositionedContainingBlockOwner::Viewport
+                | PositionedContainingBlockOwner::NoBox => None,
+            }
+        } else {
+            parent
         };
         let is_hidden = parent
             .and_then(|parent| hidden.get(&parent.id))
@@ -71,20 +97,27 @@ pub(super) fn validate_spacing_percentage_bases(
         hidden.insert(id, is_hidden);
         let axes = if id == input.root {
             root_axes(input.root_sizing, node, &calc_percentages)
+        } else if is_absolute {
+            absolute_axes(
+                node,
+                input.positioning[&id],
+                position_parent_axes,
+                &calc_percentages,
+            )
         } else {
             DefiniteAxes {
                 width: is_axis_definite(
                     LayoutAxis::Width,
                     node,
-                    parent.expect("검증된 비루트 노드에는 부모가 있습니다"),
-                    parent_axes,
+                    sizing_parent.expect("검증된 일반 노드에는 부모가 있습니다"),
+                    sizing_parent_axes,
                     &calc_percentages,
                 ),
                 height: is_axis_definite(
                     LayoutAxis::Height,
                     node,
-                    parent.expect("검증된 비루트 노드에는 부모가 있습니다"),
-                    parent_axes,
+                    sizing_parent.expect("검증된 일반 노드에는 부모가 있습니다"),
+                    sizing_parent_axes,
                     &calc_percentages,
                 ),
             }
@@ -93,7 +126,14 @@ pub(super) fn validate_spacing_percentage_bases(
             if id == input.root {
                 validate_root_gap_percentage(node, &calc_percentages)?;
             }
-            validate_edge_percentages(node, parent_axes, &calc_percentages)?;
+            validate_edge_percentages(node, sizing_parent_axes, &calc_percentages)?;
+            if is_absolute {
+                validate_absolute_dimension_percentage_bases(
+                    node,
+                    sizing_parent_axes,
+                    &calc_percentages,
+                )?;
+            }
             validate_position_percentage_bases(
                 id,
                 input.positioning.get(&id).copied(),
@@ -108,6 +148,51 @@ pub(super) fn validate_spacing_percentage_bases(
     Ok(())
 }
 
+fn owner_axes(
+    owner: PositionedContainingBlockOwner,
+    definite: &BTreeMap<NodeId, DefiniteAxes>,
+) -> DefiniteAxes {
+    match owner {
+        PositionedContainingBlockOwner::Viewport => DefiniteAxes {
+            width: true,
+            height: true,
+        },
+        PositionedContainingBlockOwner::Node(id) => definite.get(&id).copied().unwrap_or_default(),
+        PositionedContainingBlockOwner::NoBox => DefiniteAxes::default(),
+    }
+}
+
+fn absolute_axes(
+    node: &LayoutNode,
+    positioning: crate::LayoutPositioning,
+    owner_axes: DefiniteAxes,
+    calc_percentages: &BTreeMap<LayoutCalcId, bool>,
+) -> DefiniteAxes {
+    let axis_is_definite = |axis: LayoutAxis| match axis.dimension(node.style) {
+        LayoutDimension::Fixed(_) => true,
+        LayoutDimension::Percent(_) => axis.parent_definite(owner_axes),
+        LayoutDimension::Calc(id) => {
+            !calc_percentages.get(&id).copied().unwrap_or(true) || axis.parent_definite(owner_axes)
+        }
+        LayoutDimension::Auto => match axis {
+            LayoutAxis::Width => {
+                positioning.inset.left != LayoutLengthPercentage::Auto
+                    && positioning.inset.right != LayoutLengthPercentage::Auto
+                    && owner_axes.width
+            }
+            LayoutAxis::Height => {
+                positioning.inset.top != LayoutLengthPercentage::Auto
+                    && positioning.inset.bottom != LayoutLengthPercentage::Auto
+                    && owner_axes.height
+            }
+        },
+    };
+    DefiniteAxes {
+        width: axis_is_definite(LayoutAxis::Width),
+        height: axis_is_definite(LayoutAxis::Height),
+    }
+}
+
 fn validate_position_percentage_bases(
     node: NodeId,
     positioning: Option<crate::LayoutPositioning>,
@@ -117,7 +202,10 @@ fn validate_position_percentage_bases(
     let Some(positioning) = positioning else {
         return Ok(());
     };
-    if positioning.position != crate::LayoutPosition::Relative {
+    if !matches!(
+        positioning.position,
+        LayoutPosition::Relative | LayoutPosition::Absolute
+    ) {
         return Ok(());
     }
     for (property, value, is_definite, axis) in [
@@ -269,6 +357,36 @@ fn validate_edge_percentages(
                 node: node.id,
                 property,
                 axis: "containing block width",
+            });
+        }
+    }
+    Ok(())
+}
+
+fn validate_absolute_dimension_percentage_bases(
+    node: &LayoutNode,
+    containing_block: DefiniteAxes,
+    calc_percentages: &BTreeMap<LayoutCalcId, bool>,
+) -> Result<(), LayoutError> {
+    for (property, value, is_definite, axis) in [
+        ("width", node.style.width, containing_block.width, "width"),
+        (
+            "height",
+            node.style.height,
+            containing_block.height,
+            "height",
+        ),
+    ] {
+        let contains_percentage = match value {
+            LayoutDimension::Auto | LayoutDimension::Fixed(_) => false,
+            LayoutDimension::Percent(_) => true,
+            LayoutDimension::Calc(id) => calc_percentages.get(&id).copied().unwrap_or(true),
+        };
+        if contains_percentage && !is_definite {
+            return Err(LayoutError::IndefinitePercentageBasis {
+                node: node.id,
+                property,
+                axis,
             });
         }
     }

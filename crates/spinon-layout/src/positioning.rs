@@ -7,17 +7,18 @@ use crate::{
     PositionedContainingBlockOwner, TextDirection,
 };
 
-pub(super) fn has_relative_inset(input: &LayoutInput) -> bool {
+pub(super) fn needs_flow_pass(input: &LayoutInput) -> bool {
     input.positioning.values().any(|positioning| {
-        positioning.position == LayoutPosition::Relative
-            && [
-                positioning.inset.top,
-                positioning.inset.right,
-                positioning.inset.bottom,
-                positioning.inset.left,
-            ]
-            .into_iter()
-            .any(|inset| inset != LayoutLengthPercentage::Auto)
+        positioning.position == LayoutPosition::Absolute
+            || (positioning.position == LayoutPosition::Relative
+                && [
+                    positioning.inset.top,
+                    positioning.inset.right,
+                    positioning.inset.bottom,
+                    positioning.inset.left,
+                ]
+                .into_iter()
+                .any(|inset| inset != LayoutLengthPercentage::Auto))
     })
 }
 
@@ -39,7 +40,10 @@ pub(super) fn collect_positioned_owners(
         let positioning = input.positioning.get(&id).copied().unwrap_or_default();
         let child_owner = if hidden {
             PositionedContainingBlockOwner::NoBox
-        } else if positioning.position == LayoutPosition::Relative {
+        } else if matches!(
+            positioning.position,
+            LayoutPosition::Relative | LayoutPosition::Absolute
+        ) {
             PositionedContainingBlockOwner::Node(id)
         } else {
             inherited_owner
@@ -58,6 +62,13 @@ pub(super) fn validate_positioning(
     input: &LayoutInput,
     index: &BTreeMap<NodeId, usize>,
 ) -> Result<(), LayoutError> {
+    let owners = collect_positioned_owners(input, index);
+    let mut source_parents = BTreeMap::new();
+    for node in &input.nodes {
+        for &child in &node.children {
+            source_parents.insert(child, node.id);
+        }
+    }
     for (&id, positioning) in &input.positioning {
         let Some(&position) = index.get(&id) else {
             return Err(LayoutError::UnknownPositioningNode(id));
@@ -65,11 +76,33 @@ pub(super) fn validate_positioning(
         if positioning.position == LayoutPosition::Static {
             continue;
         }
+        if positioning.position == LayoutPosition::Absolute && id == input.root {
+            return Err(LayoutError::UnsupportedPositioning {
+                node: id,
+                reason: "레이아웃 root 자체의 absolute 배치는 현재 profile에서 지원하지 않습니다",
+            });
+        }
         if input.nodes[position].style.direction == TextDirection::Rtl {
             return Err(LayoutError::UnsupportedPositioning {
                 node: id,
-                reason: "relative inset은 현재 LTR subset만 지원합니다",
+                reason: "relative·absolute inset은 현재 LTR subset만 지원합니다",
             });
+        }
+        if positioning.position == LayoutPosition::Absolute {
+            let flex_source_parent = source_parents.get(&id).is_some_and(|parent| {
+                input.nodes[index[parent]].style.display == crate::LayoutDisplay::Flex
+            });
+            let flex_owner = matches!(
+                owners[&id],
+                PositionedContainingBlockOwner::Node(owner)
+                    if input.nodes[index[&owner]].style.display == crate::LayoutDisplay::Flex
+            );
+            if flex_source_parent || flex_owner {
+                return Err(LayoutError::UnsupportedPositioning {
+                    node: id,
+                    reason: "Flex absolute child의 static-position 통합은 C10.3.5 범위입니다",
+                });
+            }
         }
         for (field, value) in [
             ("top", positioning.inset.top),

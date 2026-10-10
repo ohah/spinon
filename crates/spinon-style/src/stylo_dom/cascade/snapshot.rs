@@ -310,4 +310,6 @@ pub enum ComputedStyleProfile {
     RuntimeBlockPaintV1,
     /// C09.1 일반 Block 흐름·containing block과 단색 배경 paint를 계산하는 제한 runtime profile입니다.
     RuntimeBlockFormattingV1,
+    /// C12.2 Block absolute positioning과 기존 Block formatting 입력을 계산하는 runtime profile입니다.
+    RuntimeBlockPositioningV1,
 }

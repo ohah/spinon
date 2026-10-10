@@ -56,6 +56,7 @@ pub(super) fn computed_element_output(
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
+            | ComputedStyleProfile::RuntimeBlockPositioningV1
     ) {
         computed_layout_aspect_ratio(computed, node_id)?
     } else {

@@ -2,7 +2,7 @@
 
 **상위:** [공식 상태 대장](../spec/STATUS.md) · [코어 아키텍처](../docs/architecture.md)
 
-**현재 상태:** C12.1 구현·검증 및 PR #128 리베이스 병합 완료 · 다음 단계 C12.2 Block absolute · C12 상위 구현은 미완료
+**현재 상태:** C12.1 PR #128 병합 완료 · C12.2 제한 Block/LTR 구현과 Android 실기기·iOS Simulator 검증 완료, PR 준비 중 · C12 상위 구현은 미완료
 **목표:** `position`, 물리 inset, containing block, out-of-flow geometry, 고정·sticky 위치, stacking과 `z-index`를 Chromium 기준으로 단계별 연결한다. 계획 초안이나 Taffy 기능 목록을 제품 지원 판정으로 쓰지 않는다.
 
 ## 로드맵 순서와 완료 경계
@@ -89,6 +89,12 @@ C10.3.4는 PR #125로 병합했다. 다음 칸반 작업 C10.3.5는 C12의 posit
 | 모바일 | 각 단계에서 지원한다고 판정할 동일한 JS/CSS fixture case를 실제 V8→Stylo→Taffy→WGPU 경로로 Android 연결 실기기와 iOS Simulator에서 실행한다. 양쪽 실행이 불가능하면 실행한 플랫폼만 검증 완료로 기록한다. 빌드·환경·로그·화면을 증거에 보관하며, 별도 smoke를 전체 Chromium 행렬·성능·pixel equality로 확대하지 않는다. |
 
 초기 C12.1/C12.2 inventory는 syntax/cascade 8개, static/relative flow 8개, CB ancestry와 edge geometry 12개, insets·size·margin 16개, negative/fail-closed 8개 이상을 포함한다. 각 case는 고정 CSS Position 3 버전·고정 Chromium·고정 WPT commit/case 경로와 예상 좌표를 기록하고, 실제 Chromium oracle을 캡처하기 전에는 구현 코드를 바꾸지 않는다. fixture case 수를 구현 완료 조건 대신으로 사용하지 않는다.
+
+#### C12.2 Block absolute 사전 기준
+
+C12.2 전용 기준은 [사전 비교 기록](../spec/internal/evidence/c12-2-absolute-block-precomparison-2026-10-11.md), [23-case inventory](../tests/fixtures/css/c12/position-absolute-block-inventory.json), [공용 JavaScript fixture](../tests/fixtures/css/c12/runtime-position-absolute-block.js), [HTML 진입점](../tests/fixtures/css/c12/position-absolute-block.html), [Chromium reference](../tests/fixtures/css/references/c12-2-position-absolute-block-v1.json)다. 고정 Chrome 154.0.8037.98·revision `@b859317bf11f6be47f9b7799ec690a0a42a1fb33`, macOS arm64에서 360×800 CSS px·DPR 1/2, 23 case·82 node의 computed property·source parent·containing-block owner·frame을 수집했다. 지원 field 오차 한도는 각 축 `0.5 CSS px`이며 누락·중복 NodeId 및 owner 차이는 별도 실패다. `flow-absolute`, `static-absolute`, `static-diff-absolute`는 각 target을 잠시 `position:static; inset:auto`로 바꾼 독립 관찰값을 함께 고정한다. 마지막 target은 source parent와 nearest positioned containing-block owner가 다른 경우의 좌표 변환을 검증한다.
+
+기준은 CSS Position 3 2025-10-07 Working Draft다. WPT revision `9ec154ff43db468923997c08bb08f905ceab62a5`에서 `position-absolute-padding-percentage.html`, `position-absolute-percentage-height.html`, `position-absolute-margin-auto-001.html`, `position-absolute-dynamic-static-position.html`, `position-absolute-dynamic-formatting-context.html` 경로가 존재함을 확인했다. WPT suite 자체는 실행하지 않았고 이 fixture 결과를 WPT 통과로 표현하지 않는다. 현재 inventory는 Block·LTR의 고정 크기 요소만 다룬다. 텍스트/replaced intrinsic sizing, Flex static-position, Grid, transform/contain, RTL·논리 inset, paint·hit-test는 계속 선행/후속 계약으로 남긴다.
 
 ## 구현·검증 게이트
 

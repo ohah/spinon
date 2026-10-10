@@ -83,6 +83,7 @@ enum RuntimeCssProfile {
     RegisteredPropertiesFixture,
     BlockPaintFixture,
     BlockFormattingFixture,
+    BlockPositioningFixture,
 }
 
 enum Command {
@@ -262,6 +263,11 @@ impl RuntimeSession {
         Self::new_with_css_profile(RuntimeCssProfile::BlockFormattingFixture)
     }
 
+    /// C12.2 Block absolute positioning fixture 전용 runtime을 만듭니다.
+    pub fn new_runtime_gpu_block_positioning_fixture() -> Result<(Self, String), String> {
+        Self::new_with_css_profile(RuntimeCssProfile::BlockPositioningFixture)
+    }
+
     fn new_with_css_profile(profile: RuntimeCssProfile) -> Result<(Self, String), String> {
         let startup_started = Instant::now();
         let ua_cascade = match profile {
@@ -275,6 +281,9 @@ impl RuntimeSession {
             }
             RuntimeCssProfile::BlockFormattingFixture => {
                 RuntimeUaCascadeCoordinator::new_runtime_gpu_block_formatting()?
+            }
+            RuntimeCssProfile::BlockPositioningFixture => {
+                RuntimeUaCascadeCoordinator::new_runtime_gpu_block_positioning()?
             }
         };
         let css_worker_ready_us = ua_cascade.startup_duration_us();
