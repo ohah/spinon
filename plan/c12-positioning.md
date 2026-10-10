@@ -2,7 +2,7 @@
 
 **상위:** [공식 상태 대장](../spec/STATUS.md) · [코어 아키텍처](../docs/architecture.md)
 
-**현재 상태:** C12.1 PR #128 병합 완료 · C12.2 제한 Block/LTR 구현과 Android 실기기·iOS Simulator 검증 완료, PR 준비 중 · C12 상위 구현은 미완료
+**현재 상태:** C12.1 PR #128 병합 완료 · C12.2 제한 Block/LTR 구현과 Android 실기기·iOS Simulator 검증 완료, [PR #130 검토 중](https://github.com/ohah/spinon/pull/130) · C12 상위 구현은 미완료
 **목표:** `position`, 물리 inset, containing block, out-of-flow geometry, 고정·sticky 위치, stacking과 `z-index`를 Chromium 기준으로 단계별 연결한다. 계획 초안이나 Taffy 기능 목록을 제품 지원 판정으로 쓰지 않는다.
 
 ## 로드맵 순서와 완료 경계
