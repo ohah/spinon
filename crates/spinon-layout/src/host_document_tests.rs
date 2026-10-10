@@ -7,7 +7,8 @@ use spinon_core::{
 
 use crate::{
     FlexDirection, LayoutDimension, LayoutEdges, LayoutEngine, LayoutError, LayoutFrame, LayoutGap,
-    LayoutInput, LayoutSourceRevision, LayoutStyle, TaffyLayoutEngine, Viewport,
+    LayoutInput, LayoutLengthPercentage, LayoutSourceRevision, LayoutStyle, TaffyLayoutEngine,
+    Viewport,
 };
 
 const HTML: &str = "http://www.w3.org/1999/xhtml";
@@ -25,14 +26,14 @@ fn styles() -> BTreeMap<NodeId, LayoutStyle> {
                 height: LayoutDimension::Fixed(80.0),
                 flex_direction: FlexDirection::Row,
                 padding: LayoutEdges {
-                    top: 2.0,
-                    right: 3.0,
-                    bottom: 4.0,
-                    left: 5.0,
+                    top: LayoutLengthPercentage::length(2.0),
+                    right: LayoutLengthPercentage::length(3.0),
+                    bottom: LayoutLengthPercentage::length(4.0),
+                    left: LayoutLengthPercentage::length(5.0),
                 },
                 gap: LayoutGap {
-                    row: 1.0,
-                    column: 7.0,
+                    row: LayoutLengthPercentage::length(1.0),
+                    column: LayoutLengthPercentage::length(7.0),
                 },
                 ..LayoutStyle::default()
             },
@@ -232,7 +233,7 @@ fn display_box_sizing_and_flex_shrink_reach_taffy() {
     first_style.box_sizing = crate::LayoutBoxSizing::ContentBox;
     first_style.width = crate::LayoutDimension::Fixed(20.0);
     first_style.height = crate::LayoutDimension::Fixed(20.0);
-    first_style.padding.left = 5.0;
+    first_style.padding.left = LayoutLengthPercentage::length(5.0);
     let second_style = styles.get_mut(&second.id()).unwrap();
     second_style.display = crate::LayoutDisplay::None;
 

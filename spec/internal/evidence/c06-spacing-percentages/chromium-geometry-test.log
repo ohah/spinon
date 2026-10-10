@@ -1,0 +1,8 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.06s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-7d143b0ba7440221)
+
+running 1 test
+C06.2 Chromium 비교: nodes=71 max_abs_error_css_px=0.01953125
+test spacing_percentage_tests::cases::full_chromium_fixture_matches_every_supported_runtime_node ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 32 filtered out; finished in 0.01s

@@ -1,0 +1,61 @@
+<!doctype html>
+<html id="html" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spinon C06.4 font-relative units oracle</title>
+  <style>
+    :root { font-size: 1.25rem; }
+    body { margin: 0; }
+    #mount {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      height: 780px;
+      font-size: 10px;
+      row-gap: 2px;
+    }
+    #em-inherit { width: 2em; height: 1em; }
+    #em-parent { font-size: 1.2em; width: 2em; height: 1em; }
+    #em-child { font-size: 1.5em; width: 1em; height: 1em; }
+    #rem-target {
+      font-size: 1.25rem;
+      width: 2rem;
+      height: 1rem;
+      margin-left: 0.25rem;
+      padding-left: 0.5rem;
+    }
+    #font-size-percent { font-size: 150%; width: 1em; height: 1em; }
+    #zero { font-size: 0; width: 2em; height: 2em; }
+    #var-em { font-size: 14px; --box: 2em; width: var(--box); height: 1em; }
+    #var-rem { font-size: 14px; --box: 2rem; width: var(--box); height: 1em; }
+    #spacing {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      width: 120px;
+      height: 60px;
+      font-size: 12px;
+      row-gap: 0.25em;
+      column-gap: 0.5em;
+      margin-left: 0.5em;
+      padding-left: 0.25em;
+    }
+    #basis-a { flex: 0 0 2em; height: 1rem; }
+    #basis-b { flex: 0 0 1rem; height: 1em; }
+  </style>
+</head>
+<body id="body">
+  <div id="mount">
+    <div id="em-inherit"></div>
+    <div id="em-parent"><div id="em-child"></div></div>
+    <div id="rem-target"></div>
+    <div id="font-size-percent"></div>
+    <div id="zero"></div>
+    <div id="var-em"></div>
+    <div id="var-rem"></div>
+    <div id="spacing"><div id="basis-a"></div><div id="basis-b"></div></div>
+  </div>
+</body>
+</html>

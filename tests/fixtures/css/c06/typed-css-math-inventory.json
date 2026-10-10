@@ -1,0 +1,52 @@
+{
+  "schema": "spinon-css-c06-typed-css-math-inventory/v1",
+  "fixtureId": "C06.5-typed-css-math-v1",
+  "viewport": {
+    "width": 320,
+    "height": 800,
+    "deviceScaleFactors": [1, 2]
+  },
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "pointer": "coarse",
+    "hover": "none"
+  },
+  "comparison": {
+    "coordinateSpace": "CSS px",
+    "maximumAbsoluteFrameErrorCssPx": 0.5,
+    "properties": ["width", "height", "flex-basis", "margin-left", "padding-left", "column-gap"],
+    "mathFunctions": ["calc", "min", "max", "clamp"],
+    "nonFiniteCases": ["divide-by-zero", "zero-divided-by-zero"],
+    "unsupportedCases": ["invalid-dimension", "round-function"]
+  },
+  "nodes": [
+    { "id": "root", "properties": ["width", "height"] },
+    { "id": "calc-length", "properties": ["width", "height"] },
+    { "id": "calc-mixed", "properties": ["width", "height"] },
+    { "id": "calc-nested", "properties": ["width", "height"] },
+    { "id": "calc-product", "properties": ["width", "height"] },
+    { "id": "min-value", "properties": ["width", "height"] },
+    { "id": "max-value", "properties": ["width", "height"] },
+    { "id": "min-mixed", "properties": ["width", "height"] },
+    { "id": "max-nested", "properties": ["width", "height"] },
+    { "id": "clamp-value", "properties": ["width", "height"] },
+    { "id": "clamp-negative", "properties": ["width", "height"] },
+    { "id": "clamp-inverted-bounds", "properties": ["width", "height"] },
+    { "id": "clamp-nan", "properties": ["width", "height"] },
+    { "id": "var-math", "properties": ["width", "height"] },
+    { "id": "negative-margin", "properties": ["width", "height", "margin-left"] },
+    { "id": "padding-math", "properties": ["width", "height", "padding-left"] },
+    { "id": "gap-container", "properties": ["width", "height", "column-gap"] },
+    { "id": "gap-first", "properties": ["width", "height"] },
+    { "id": "gap-second", "properties": ["width", "height"] },
+    { "id": "basis-container", "properties": ["width", "height"] },
+    { "id": "basis-math", "properties": ["width", "height", "flex-basis"] },
+    { "id": "divide-by-zero", "properties": ["width", "height"] },
+    { "id": "zero-divided-by-zero", "properties": ["width", "height"] },
+    { "id": "negative-size", "properties": ["width", "height"] },
+    { "id": "invalid-dimension", "properties": ["width", "height"] },
+    { "id": "round-function", "properties": ["width", "height"] }
+  ]
+}

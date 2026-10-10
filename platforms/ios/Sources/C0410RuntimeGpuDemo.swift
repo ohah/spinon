@@ -33,6 +33,20 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c053-runtime-result-cache")
     private let incrementalRestyleProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c054-incremental-restyle")
+    private let percentageDimensionsProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c061-percentage-dimensions")
+    private let spacingPercentagesProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c062-spacing-percentages")
+    private let absoluteLengthsProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c063-absolute-lengths")
+    private let fontRelativeUnitsProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c064-font-relative-units")
+    private let typedCssMathProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c065-typed-css-math")
+    private let viewportUnitsProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c066-viewport-units")
+    private let minMaxSizingProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c071-min-max-sizing")
     private let registeredPropertiesProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c052-registered-properties")
         || ProcessInfo.processInfo.arguments.contains("--spinon-c053-runtime-result-cache")
@@ -59,7 +73,21 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
 
         let title = UILabel()
-        title.text = incrementalRestyleProbeRequested
+        title.text = viewportUnitsProbeRequested
+            ? "SPINON · C06.6 viewport units"
+            : minMaxSizingProbeRequested
+            ? "SPINON · C07.1 min/max sizing"
+            : typedCssMathProbeRequested
+            ? "SPINON · C06.5 typed CSS math"
+            : fontRelativeUnitsProbeRequested
+            ? "SPINON · C06.4 font-relative units"
+            : absoluteLengthsProbeRequested
+            ? "SPINON · C06.3 absolute lengths"
+            : spacingPercentagesProbeRequested
+            ? "SPINON · C06.2 spacing percentages"
+            : percentageDimensionsProbeRequested
+            ? "SPINON · C06.1 percentage dimensions"
+            : incrementalRestyleProbeRequested
             ? "SPINON · C05.4 incremental restyle"
             : registeredPropertiesProbeRequested
             ? runtimeResultCacheProbeRequested ? "SPINON · C05.3 runtime cache"
@@ -72,7 +100,21 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.addSubview(title)
 
         let description = UILabel()
-        description.text = incrementalRestyleProbeRequested
+        description.text = viewportUnitsProbeRequested
+            ? "V8 vw/svw/lvw/dvw → Stylo CSS px → Taffy → WGPU"
+            : minMaxSizingProbeRequested
+            ? "V8 min/max size → Stylo typed values → Taffy → WGPU"
+            : typedCssMathProbeRequested
+            ? "V8 calc/min/max/clamp → Stylo typed values → Taffy → WGPU"
+            : fontRelativeUnitsProbeRequested
+            ? "V8 CSS em/rem → Stylo computed CSS px → Taffy → WGPU"
+            : absoluteLengthsProbeRequested
+            ? "V8 CSS absolute lengths → Stylo CSS px → Taffy → WGPU"
+            : spacingPercentagesProbeRequested
+            ? "V8 CSS spacing % → Stylo → Taffy → WGPU"
+            : percentageDimensionsProbeRequested
+            ? "V8 CSS % → typed dimensions → Taffy → WGPU"
+            : incrementalRestyleProbeRequested
             ? "V8 inline style → dirty subtree → Stylo → Taffy → WGPU"
             : registeredPropertiesProbeRequested
             ? runtimeResultCacheProbeRequested
@@ -89,7 +131,21 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         canvasView.translatesAutoresizingMaskIntoConstraints = false
         canvasView.isAccessibilityElement = true
-        canvasView.accessibilityLabel = incrementalRestyleProbeRequested
+        canvasView.accessibilityLabel = viewportUnitsProbeRequested
+            ? "C06.6 viewport units WGPU 장면"
+            : minMaxSizingProbeRequested
+            ? "C07.1 min/max sizing WGPU 장면"
+            : typedCssMathProbeRequested
+            ? "C06.5 calc min max clamp WGPU 장면"
+            : fontRelativeUnitsProbeRequested
+            ? "C06.4 em/rem font-relative units WGPU 장면"
+            : absoluteLengthsProbeRequested
+            ? "C06.3 absolute CSS length units WGPU 장면"
+            : spacingPercentagesProbeRequested
+            ? "C06.2 percentage margin, padding, gap WGPU 장면"
+            : percentageDimensionsProbeRequested
+            ? "C06.1 percentage width, height, flex-basis WGPU 장면"
+            : incrementalRestyleProbeRequested
             ? "C05.4 inline style 하위 트리 재계산 검증 WGPU 장면"
             : registeredPropertiesProbeRequested
             ? runtimeResultCacheProbeRequested
@@ -106,7 +162,17 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.addSubview(resizeButton)
 
         customPropertiesButton.setTitle(
-            incrementalRestyleProbeRequested
+            typedCssMathProbeRequested
+                ? "C06.5 typed CSS math fixture 다시 실행"
+                : fontRelativeUnitsProbeRequested
+                ? "C06.4 em/rem fixture 실행 완료"
+                : absoluteLengthsProbeRequested
+                ? "C06.3 absolute length fixture 실행 완료"
+                : spacingPercentagesProbeRequested
+                ? "C06.2 spacing percentage fixture 실행 완료"
+                : percentageDimensionsProbeRequested
+                ? "C06.1 percentage fixture 실행 완료"
+                : incrementalRestyleProbeRequested
                 ? "C05.4 · 왼쪽 branch style 전환"
                 : registeredPropertiesProbeRequested
                 ? runtimeResultCacheProbeRequested
@@ -117,7 +183,17 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         )
         customPropertiesButton.addTarget(
             self,
-            action: incrementalRestyleProbeRequested
+            action: typedCssMathProbeRequested
+                ? #selector(evaluateTypedCssMathFixture)
+                : fontRelativeUnitsProbeRequested
+                ? #selector(evaluateFontRelativeUnitsFixture)
+                : absoluteLengthsProbeRequested
+                ? #selector(evaluateAbsoluteLengthsFixture)
+                : spacingPercentagesProbeRequested
+                ? #selector(evaluateSpacingPercentagesFixture)
+                : percentageDimensionsProbeRequested
+                ? #selector(evaluatePercentageDimensionsFixture)
+                : incrementalRestyleProbeRequested
                 ? #selector(evaluateIncrementalRestyleFixture)
                 : registeredPropertiesProbeRequested
                 ? runtimeResultCacheProbeRequested
@@ -128,7 +204,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         )
         customPropertiesButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(customPropertiesButton)
-        if authorStylesheetsProbeRequested { customPropertiesButton.isHidden = true }
+        if authorStylesheetsProbeRequested || minMaxSizingProbeRequested || typedCssMathProbeRequested
+            || fontRelativeUnitsProbeRequested
+            || absoluteLengthsProbeRequested
+            || percentageDimensionsProbeRequested
+            || spacingPercentagesProbeRequested {
+            customPropertiesButton.isHidden = true
+        }
 
         statusLabel.text = "V8·CSS runtime 준비 중…"
         statusLabel.textColor = UIColor(red: 0.38, green: 0.73, blue: 1, alpha: 1)
@@ -338,7 +420,21 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
         log("SPINON_C0410_ENVIRONMENT \(environment ?? "")")
 
-        var result = incrementalRestyleProbeRequested
+        var result = viewportUnitsProbeRequested
+            ? SpinonRunner.evalRuntimeGpuViewportUnitsFixture(handle)
+            : minMaxSizingProbeRequested
+            ? SpinonRunner.evalRuntimeGpuMinMaxSizingFixture(handle)
+            : typedCssMathProbeRequested
+            ? SpinonRunner.evalRuntimeGpuTypedCssMathFixture(handle)
+            : fontRelativeUnitsProbeRequested
+            ? SpinonRunner.evalRuntimeGpuFontRelativeUnitsFixture(handle)
+            : absoluteLengthsProbeRequested
+            ? SpinonRunner.evalRuntimeGpuAbsoluteLengthsFixture(handle)
+            : spacingPercentagesProbeRequested
+            ? SpinonRunner.evalRuntimeGpuSpacingPercentagesFixture(handle)
+            : percentageDimensionsProbeRequested
+            ? SpinonRunner.evalRuntimeGpuPercentageDimensionsFixture(handle)
+            : incrementalRestyleProbeRequested
             ? SpinonRunner.evalRuntimeGpuIncrementalRestyleFixture(handle)
             : registeredPropertiesProbeRequested
             ? SpinonRunner.evalRuntimeGpuRegisteredPropertiesFixture(handle)
@@ -352,7 +448,21 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             return
         }
         if sceneWasSupersededAfterCommit {
-            let scope = incrementalRestyleProbeRequested
+            let scope = viewportUnitsProbeRequested
+                ? "SPINON_C066A"
+                : minMaxSizingProbeRequested
+                ? "SPINON_C071"
+                : typedCssMathProbeRequested
+                ? "SPINON_C065"
+                : fontRelativeUnitsProbeRequested
+                ? "SPINON_C064"
+                : absoluteLengthsProbeRequested
+                ? "SPINON_C063"
+                : spacingPercentagesProbeRequested
+                ? "SPINON_C062"
+                : percentageDimensionsProbeRequested
+                ? "SPINON_C061"
+                : incrementalRestyleProbeRequested
                 ? "SPINON_C054"
                 : registeredPropertiesProbeRequested
                 ? runtimeResultCacheProbeRequested ? "SPINON_C053" : "SPINON_C052"
@@ -360,7 +470,21 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             log("\(scope)_EVAL_SCENE_SUPERSEDED \(result ?? "")")
             postStatus("JavaScript 적용 완료 · 최신 CSS 장면 다시 계산 중")
         } else {
-            let scope = incrementalRestyleProbeRequested
+            let scope = viewportUnitsProbeRequested
+                ? "SPINON_C066A"
+                : minMaxSizingProbeRequested
+                ? "SPINON_C071"
+                : typedCssMathProbeRequested
+                ? "SPINON_C065"
+                : fontRelativeUnitsProbeRequested
+                ? "SPINON_C064"
+                : absoluteLengthsProbeRequested
+                ? "SPINON_C063"
+                : spacingPercentagesProbeRequested
+                ? "SPINON_C062"
+                : percentageDimensionsProbeRequested
+                ? "SPINON_C061"
+                : incrementalRestyleProbeRequested
                 ? "SPINON_C054"
                 : registeredPropertiesProbeRequested
                 ? runtimeResultCacheProbeRequested ? "SPINON_C053" : "SPINON_C052"
@@ -440,6 +564,81 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             let report = SpinonRunner.evalRuntimeGpuIncrementalRestyleFixture(handle)
             self.log("SPINON_C054_EVAL \(report ?? "incremental restyle fixture 보고 없음")")
             self.postStatus(self.runtimeStatusSummary(report ?? "incremental restyle 결과가 없습니다"))
+            if report?.hasPrefix("status=0 ") == true {
+                self.canvasView.setNeedsDisplay()
+                self.renderDrawLane?.request()
+            }
+        }
+    }
+
+    @objc private func evaluatePercentageDimensionsFixture() {
+        enqueueRuntime { [weak self] in
+            guard let self, !self.isClosing else { return }
+            let handle = self.hostLifetime.load()
+            guard handle != 0 else { return }
+            let report = SpinonRunner.evalRuntimeGpuPercentageDimensionsFixture(handle)
+            self.log("SPINON_C061_EVAL \(report ?? "percentage fixture 보고 없음")")
+            self.postStatus(self.runtimeStatusSummary(report ?? "percentage fixture 보고 없음"))
+            if report?.hasPrefix("status=0 ") == true {
+                self.canvasView.setNeedsDisplay()
+                self.renderDrawLane?.request()
+            }
+        }
+    }
+
+    @objc private func evaluateSpacingPercentagesFixture() {
+        enqueueRuntime { [weak self] in
+            guard let self, !self.isClosing else { return }
+            let handle = self.hostLifetime.load()
+            guard handle != 0 else { return }
+            let report = SpinonRunner.evalRuntimeGpuSpacingPercentagesFixture(handle)
+            self.log("SPINON_C062_EVAL \(report ?? "spacing percentage 보고 없음")")
+            self.postStatus(self.runtimeStatusSummary(report ?? "spacing percentage 보고 없음"))
+            if report?.hasPrefix("status=0 ") == true {
+                self.canvasView.setNeedsDisplay()
+                self.renderDrawLane?.request()
+            }
+        }
+    }
+
+    @objc private func evaluateAbsoluteLengthsFixture() {
+        enqueueRuntime { [weak self] in
+            guard let self, !self.isClosing else { return }
+            let handle = self.hostLifetime.load()
+            guard handle != 0 else { return }
+            let report = SpinonRunner.evalRuntimeGpuAbsoluteLengthsFixture(handle)
+            self.log("SPINON_C063_EVAL \(report ?? "absolute length fixture 보고 없음")")
+            self.postStatus(self.runtimeStatusSummary(report ?? "absolute length fixture 보고 없음"))
+            if report?.hasPrefix("status=0 ") == true {
+                self.canvasView.setNeedsDisplay()
+                self.renderDrawLane?.request()
+            }
+        }
+    }
+
+    @objc private func evaluateFontRelativeUnitsFixture() {
+        enqueueRuntime { [weak self] in
+            guard let self, !self.isClosing else { return }
+            let handle = self.hostLifetime.load()
+            guard handle != 0 else { return }
+            let report = SpinonRunner.evalRuntimeGpuFontRelativeUnitsFixture(handle)
+            self.log("SPINON_C064_EVAL \(report ?? "font-relative fixture 보고 없음")")
+            self.postStatus(self.runtimeStatusSummary(report ?? "font-relative fixture 보고 없음"))
+            if report?.hasPrefix("status=0 ") == true {
+                self.canvasView.setNeedsDisplay()
+                self.renderDrawLane?.request()
+            }
+        }
+    }
+
+    @objc private func evaluateTypedCssMathFixture() {
+        enqueueRuntime { [weak self] in
+            guard let self, !self.isClosing else { return }
+            let handle = self.hostLifetime.load()
+            guard handle != 0 else { return }
+            let report = SpinonRunner.evalRuntimeGpuTypedCssMathFixture(handle)
+            self.log("SPINON_C065_EVAL \(report ?? "typed CSS math fixture 보고 없음")")
+            self.postStatus(self.runtimeStatusSummary(report ?? "typed CSS math fixture 보고 없음"))
             if report?.hasPrefix("status=0 ") == true {
                 self.canvasView.setNeedsDisplay()
                 self.renderDrawLane?.request()

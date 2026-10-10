@@ -8,6 +8,7 @@ use style::properties::LonghandId;
 
 pub(super) const RUNTIME_FLEX_LAYOUT_PROPERTIES: &[(&str, LonghandId)] = &[
     ("display", LonghandId::Display),
+    ("font-size", LonghandId::FontSize),
     ("list-style-type", LonghandId::ListStyleType),
     ("margin-block-start", LonghandId::MarginBlockStart),
     ("margin-block-end", LonghandId::MarginBlockEnd),
@@ -17,6 +18,10 @@ pub(super) const RUNTIME_FLEX_LAYOUT_PROPERTIES: &[(&str, LonghandId)] = &[
     ("box-sizing", LonghandId::BoxSizing),
     ("width", LonghandId::Width),
     ("height", LonghandId::Height),
+    ("min-width", LonghandId::MinWidth),
+    ("max-width", LonghandId::MaxWidth),
+    ("min-height", LonghandId::MinHeight),
+    ("max-height", LonghandId::MaxHeight),
     ("flex-direction", LonghandId::FlexDirection),
     ("flex-grow", LonghandId::FlexGrow),
     ("flex-shrink", LonghandId::FlexShrink),
@@ -38,9 +43,14 @@ pub(super) const RUNTIME_FLEX_LAYOUT_PROPERTIES: &[(&str, LonghandId)] = &[
 
 pub(super) const RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES: &[&str] = &[
     "display",
+    "font-size",
     "box-sizing",
     "width",
     "height",
+    "min-width",
+    "max-width",
+    "min-height",
+    "max-height",
     "flex",
     "flex-direction",
     "flex-grow",
@@ -149,9 +159,14 @@ pub fn first_unsupported_runtime_layout_inline_property(
 ) -> Option<(NodeId, String)> {
     const ALLOWED_PROPERTIES: &[&str] = &[
         "display",
+        "font-size",
         "box-sizing",
         "width",
         "height",
+        "min-width",
+        "max-width",
+        "min-height",
+        "max-height",
         "flex-direction",
         "flex-grow",
         "flex-shrink",
@@ -214,8 +229,8 @@ pub(super) fn first_unsupported_inline_property(
     let guard = view.shared_lock().read();
     let mut pending = vec![view.root_handle()];
     while let Some(handle) = pending.pop() {
-        if let Some(data) = view.element_data(handle)
-            && let Some(inline_style) = data.inline_style.as_ref()
+        if let Some(element) = view.element(handle)
+            && let Some(inline_style) = element.data().inline_style.as_ref()
         {
             let block = inline_style.read_with(&guard);
             for declaration in block.declarations() {

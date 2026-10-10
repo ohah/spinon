@@ -1,138 +1,27 @@
+mod calc_tree;
+mod css_math;
 mod error;
 mod host_document;
+mod percentage_basis;
 mod revision;
+mod style;
 mod taffy_style;
 mod tree_input;
 
-use std::collections::{BTreeMap, BTreeSet, HashMap};
+use std::collections::{BTreeMap, BTreeSet};
 
+use calc_tree::CalcLayoutTree;
+use percentage_basis::validate_spacing_percentage_bases;
 use spinon_core::NodeId;
-use taffy::prelude::{AvailableSpace, Size, TaffyTree};
-use taffy_style::to_taffy_style;
+use taffy::prelude::{AvailableSpace, Size};
 
+pub use css_math::{LayoutCalcId, LayoutCssMath, LayoutCssMathProperty, LayoutCssMathValue};
 pub use error::LayoutError;
 pub use revision::{LayoutInputRevision, LayoutSourceRevision};
-
-/// 루트 기준으로 계산할 고정 화면 크기입니다.
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub struct Viewport {
-    pub width: f32,
-    pub height: f32,
-}
-
-/// 축에 지정할 크기입니다. 고정 값은 CSS px·Android dp·iOS point 변환 전의 레이아웃 값입니다.
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum LayoutDimension {
-    Auto,
-    Fixed(f32),
-}
-
-/// Flex 자식 배치의 주축입니다.
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
-pub enum FlexDirection {
-    Row,
-    Column,
-}
-
-/// Taffy가 계산하는 제한 CSS display 값입니다.
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
-pub enum LayoutDisplay {
-    Flex,
-    Block,
-    None,
-}
-
-/// CSS 상자의 너비·높이를 해석하는 기준입니다.
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
-pub enum LayoutBoxSizing {
-    BorderBox,
-    ContentBox,
-}
-
-/// 가로 방향의 순서와 시작점을 정합니다.
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
-pub enum TextDirection {
-    Ltr,
-    Rtl,
-}
-
-/// Flex 항목의 교차축 정렬입니다.
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
-pub enum LayoutAlignItems {
-    Stretch,
-    FlexStart,
-    FlexEnd,
-    Center,
-}
-
-/// Flex 항목 묶음의 주축 정렬입니다.
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
-pub enum LayoutJustifyContent {
-    FlexStart,
-    FlexEnd,
-    Center,
-    SpaceBetween,
-    SpaceAround,
-    SpaceEvenly,
-}
-
-/// 위·오른쪽·아래·왼쪽 상자 가장자리 값입니다.
-#[derive(Clone, Copy, Debug, Default, PartialEq)]
-pub struct LayoutEdges {
-    pub top: f32,
-    pub right: f32,
-    pub bottom: f32,
-    pub left: f32,
-}
-
-/// Flex 행·열 사이의 간격입니다.
-#[derive(Clone, Copy, Debug, Default, PartialEq)]
-pub struct LayoutGap {
-    pub row: f32,
-    pub column: f32,
-}
-
-/// 이 초기 내부 계약이 표현하는 제한된 Flex 스타일입니다.
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub struct LayoutStyle {
-    pub display: LayoutDisplay,
-    pub box_sizing: LayoutBoxSizing,
-    pub width: LayoutDimension,
-    pub height: LayoutDimension,
-    pub flex_basis: LayoutDimension,
-    pub flex_direction: FlexDirection,
-    pub direction: TextDirection,
-    pub align_items: LayoutAlignItems,
-    pub justify_content: LayoutJustifyContent,
-    /// 음수 값도 허용하는 외부 여백입니다.
-    pub margin: LayoutEdges,
-    /// 음수 값을 허용하지 않는 내부 여백입니다.
-    pub padding: LayoutEdges,
-    pub gap: LayoutGap,
-    pub flex_grow: f32,
-    pub flex_shrink: f32,
-}
-
-impl Default for LayoutStyle {
-    fn default() -> Self {
-        Self {
-            display: LayoutDisplay::Flex,
-            box_sizing: LayoutBoxSizing::BorderBox,
-            width: LayoutDimension::Auto,
-            height: LayoutDimension::Auto,
-            flex_basis: LayoutDimension::Auto,
-            flex_direction: FlexDirection::Column,
-            direction: TextDirection::Ltr,
-            align_items: LayoutAlignItems::Stretch,
-            justify_content: LayoutJustifyContent::FlexStart,
-            margin: LayoutEdges::default(),
-            padding: LayoutEdges::default(),
-            gap: LayoutGap::default(),
-            flex_grow: 0.0,
-            flex_shrink: 0.0,
-        }
-    }
-}
+pub use style::{
+    FlexDirection, LayoutAlignItems, LayoutBoxSizing, LayoutDimension, LayoutDisplay, LayoutEdges,
+    LayoutGap, LayoutJustifyContent, LayoutLengthPercentage, LayoutStyle, TextDirection, Viewport,
+};
 
 /// 부모와 자식 ID 순서 및 레이아웃 스타일을 묶은 입력 노드입니다.
 #[derive(Clone, Debug, PartialEq)]
@@ -150,6 +39,7 @@ pub struct LayoutInput {
     viewport: Viewport,
     root_sizing: RootSizingPolicy,
     nodes: Vec<LayoutNode>,
+    css_math: Vec<LayoutCssMathValue>,
 }
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -177,6 +67,12 @@ impl LayoutInput {
 
     pub fn nodes(&self) -> &[LayoutNode] {
         &self.nodes
+    }
+
+    /// Stylo에서 보존한 계산식을 노드·속성 식별자와 함께 이 레이아웃 입력에 연결합니다.
+    pub fn with_css_math(mut self, values: Vec<LayoutCssMathValue>) -> Self {
+        self.css_math = values;
+        self
     }
 }
 
@@ -209,24 +105,8 @@ impl LayoutEngine for TaffyLayoutEngine {
     fn compute(&self, input: &LayoutInput) -> Result<LayoutOutput, LayoutError> {
         let index = validate(input)?;
         let postorder = postorder(input, &index)?;
-        let mut tree = TaffyTree::<()>::with_capacity(input.nodes.len());
-        tree.disable_rounding();
-        let mut engine_ids = HashMap::with_capacity(input.nodes.len());
-
-        for external_id in postorder {
-            let node = &input.nodes[index[&external_id]];
-            let children = node
-                .children
-                .iter()
-                .map(|child| engine_ids[child])
-                .collect::<Vec<_>>();
-            let engine_id = tree
-                .new_with_children(to_taffy_style(node.style), &children)
-                .map_err(|error| LayoutError::Taffy(error.to_string()))?;
-            engine_ids.insert(external_id, engine_id);
-        }
-
-        let engine_root = engine_ids[&input.root];
+        let mut tree = CalcLayoutTree::new(input, &index, &postorder)?;
+        let engine_root = tree.engine_id(input.root);
         let compute_result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
             tree.compute_layout(
                 engine_root,
@@ -234,15 +114,16 @@ impl LayoutEngine for TaffyLayoutEngine {
                     width: AvailableSpace::Definite(input.viewport.width),
                     height: AvailableSpace::Definite(input.viewport.height),
                 },
-            )
+            );
         }));
-        match compute_result {
-            Ok(Ok(())) => {}
-            Ok(Err(error)) => return Err(LayoutError::Taffy(error.to_string())),
-            Err(_) => return Err(LayoutError::TaffyPanicked),
+        if compute_result.is_err() {
+            return Err(LayoutError::TaffyPanicked);
+        }
+        if let Some(error) = tree.take_calc_error() {
+            return Err(error);
         }
 
-        collect_frames(input, &index, &engine_ids, &tree)
+        collect_frames(input, &index, &tree.engine_ids, &tree)
     }
 }
 
@@ -326,13 +207,17 @@ fn validate(input: &LayoutInput) -> Result<BTreeMap<NodeId, usize>, LayoutError>
         return Err(LayoutError::UnreachableNode(*id));
     }
 
+    validate_css_math_bindings(input)?;
+    validate_spacing_percentage_bases(input, &index)?;
+
     Ok(index)
 }
 
 fn validate_style(node: &LayoutNode) -> Result<(), LayoutError> {
     let valid_dimension = |dimension| match dimension {
-        LayoutDimension::Auto => true,
+        LayoutDimension::Auto | LayoutDimension::Calc(_) => true,
         LayoutDimension::Fixed(value) => value.is_finite() && value >= 0.0,
+        LayoutDimension::Percent(value) => value.is_finite() && value >= 0.0,
     };
     if !valid_dimension(node.style.width) {
         return Err(LayoutError::InvalidStyle {
@@ -346,6 +231,19 @@ fn validate_style(node: &LayoutNode) -> Result<(), LayoutError> {
             field: "height",
         });
     }
+    for (field, dimension) in [
+        ("min_width", node.style.min_width),
+        ("max_width", node.style.max_width),
+        ("min_height", node.style.min_height),
+        ("max_height", node.style.max_height),
+    ] {
+        if !valid_dimension(dimension) {
+            return Err(LayoutError::InvalidStyle {
+                node: node.id,
+                field,
+            });
+        }
+    }
     if !valid_dimension(node.style.flex_basis) {
         return Err(LayoutError::InvalidStyle {
             node: node.id,
@@ -358,7 +256,7 @@ fn validate_style(node: &LayoutNode) -> Result<(), LayoutError> {
         ("margin.bottom", node.style.margin.bottom),
         ("margin.left", node.style.margin.left),
     ] {
-        if !value.is_finite() {
+        if !value.is_calc() && !value.value().is_finite() {
             return Err(LayoutError::InvalidStyle {
                 node: node.id,
                 field,
@@ -372,6 +270,15 @@ fn validate_style(node: &LayoutNode) -> Result<(), LayoutError> {
         ("padding.left", node.style.padding.left),
         ("gap.row", node.style.gap.row),
         ("gap.column", node.style.gap.column),
+    ] {
+        if !value.is_calc() && (!value.value().is_finite() || value.value() < 0.0) {
+            return Err(LayoutError::InvalidStyle {
+                node: node.id,
+                field,
+            });
+        }
+    }
+    for (field, value) in [
         ("flex_grow", node.style.flex_grow),
         ("flex_shrink", node.style.flex_shrink),
     ] {
@@ -380,6 +287,42 @@ fn validate_style(node: &LayoutNode) -> Result<(), LayoutError> {
                 node: node.id,
                 field,
             });
+        }
+    }
+    Ok(())
+}
+
+fn validate_css_math_bindings(input: &LayoutInput) -> Result<(), LayoutError> {
+    let by_id = input
+        .css_math
+        .iter()
+        .map(|value| (value.id, value))
+        .collect::<BTreeMap<_, _>>();
+    if by_id.len() != input.css_math.len() {
+        return Err(LayoutError::DuplicateCssMathId);
+    }
+
+    for value in &input.css_math {
+        value
+            .contains_percentage()
+            .map_err(|reason| value.error(reason))?;
+    }
+    for node in &input.nodes {
+        for (property, id) in node.style.calc_values() {
+            let Some(value) = by_id.get(&id) else {
+                return Err(LayoutError::MissingCssMath {
+                    node: node.id,
+                    property: property.name(),
+                    id,
+                });
+            };
+            if value.node_id != node.id || value.property != property {
+                return Err(LayoutError::CssMathBindingMismatch {
+                    node: node.id,
+                    property: property.name(),
+                    id,
+                });
+            }
         }
     }
     Ok(())
@@ -454,8 +397,8 @@ fn postorder(
 fn collect_frames(
     input: &LayoutInput,
     index: &BTreeMap<NodeId, usize>,
-    engine_ids: &HashMap<NodeId, taffy::prelude::NodeId>,
-    tree: &TaffyTree<()>,
+    engine_ids: &BTreeMap<NodeId, taffy::prelude::NodeId>,
+    tree: &CalcLayoutTree,
 ) -> Result<LayoutOutput, LayoutError> {
     let mut frames = BTreeMap::new();
     let mut pending = vec![(input.root, 0.0_f32, 0.0_f32)];
@@ -463,7 +406,7 @@ fn collect_frames(
         let engine_id = engine_ids[&external_id];
         let layout = tree
             .layout(engine_id)
-            .map_err(|_| LayoutError::MissingComputedLayout(external_id))?;
+            .ok_or(LayoutError::MissingComputedLayout(external_id))?;
         let frame = LayoutFrame {
             x: parent_x + layout.location.x,
             y: parent_y + layout.location.y,

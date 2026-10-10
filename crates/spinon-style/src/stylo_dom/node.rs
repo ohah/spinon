@@ -6,41 +6,100 @@ use style::dom::{NodeInfo, OpaqueNode, TDocument, TNode, TShadowRoot};
 use style::shared_lock::SharedRwLock;
 use style::stylist::CascadeData;
 
-use super::{StyloDocument, StyloDocumentView, StyloElement};
+use super::{StyloDocument, StyloDocumentView, StyloElement, element::StyloElementRef};
 
-/// HostDocument의 node 또는 어댑터가 제공하는 가상 Document node입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+enum StyloNodeRef {
+    Document,
+    SyntheticHtml,
+    SyntheticBody,
+    Host(HostNodeHandle),
+}
+
+/// HostDocument의 node 또는 view가 제공하는 가상 Document/HTML wrapper node입니다.
 #[derive(Clone, Copy)]
 pub struct StyloNode<'a> {
     view: &'a StyloDocumentView,
-    handle: Option<HostNodeHandle>,
+    node_ref: StyloNodeRef,
 }
 
 impl<'a> StyloNode<'a> {
     pub(super) const fn new(view: &'a StyloDocumentView, handle: Option<HostNodeHandle>) -> Self {
-        Self { view, handle }
+        match handle {
+            Some(handle) => Self::host(view, handle),
+            None => Self::document(view),
+        }
+    }
+
+    pub(super) const fn document(view: &'a StyloDocumentView) -> Self {
+        Self {
+            view,
+            node_ref: StyloNodeRef::Document,
+        }
+    }
+
+    pub(super) const fn synthetic_html(view: &'a StyloDocumentView) -> Self {
+        Self {
+            view,
+            node_ref: StyloNodeRef::SyntheticHtml,
+        }
+    }
+
+    pub(super) const fn synthetic_body(view: &'a StyloDocumentView) -> Self {
+        Self {
+            view,
+            node_ref: StyloNodeRef::SyntheticBody,
+        }
+    }
+
+    pub(super) const fn host(view: &'a StyloDocumentView, handle: HostNodeHandle) -> Self {
+        Self {
+            view,
+            node_ref: StyloNodeRef::Host(handle),
+        }
+    }
+
+    pub(super) const fn for_element(element: StyloElement<'a>) -> Self {
+        match element.element_ref {
+            StyloElementRef::Host(handle) => Self::host(element.view, handle),
+            StyloElementRef::SyntheticHtml => Self::synthetic_html(element.view),
+            StyloElementRef::SyntheticBody => Self::synthetic_body(element.view),
+        }
     }
 
     pub const fn handle(self) -> Option<HostNodeHandle> {
-        self.handle
+        match self.node_ref {
+            StyloNodeRef::Host(handle) => Some(handle),
+            StyloNodeRef::Document | StyloNodeRef::SyntheticHtml | StyloNodeRef::SyntheticBody => {
+                None
+            }
+        }
     }
 
-    fn node_children(self) -> Vec<Self> {
-        match self.handle {
-            None => vec![Self::new(self.view, Some(self.view.root_handle()))],
-            Some(handle) => self
+    pub(super) fn node_children(self) -> Vec<Self> {
+        match self.node_ref {
+            StyloNodeRef::Document if self.view.has_synthetic_html_document() => {
+                vec![Self::synthetic_html(self.view)]
+            }
+            StyloNodeRef::Document => vec![Self::host(self.view, self.view.root_handle())],
+            StyloNodeRef::SyntheticHtml => vec![Self::synthetic_body(self.view)],
+            StyloNodeRef::SyntheticBody => vec![Self::host(self.view, self.view.root_handle())],
+            StyloNodeRef::Host(handle) => self
                 .view
                 .snapshot()
                 .children(handle)
                 .into_iter()
                 .flatten()
                 .filter(|child| self.view.is_member(*child))
-                .map(|child| Self::new(self.view, Some(child)))
+                .map(|child| Self::host(self.view, child))
                 .collect(),
         }
     }
 
     fn sibling(self, next: bool) -> Option<Self> {
-        let handle = self.handle?;
+        let StyloNodeRef::Host(handle) = self.node_ref else {
+            return None;
+        };
         if handle == self.view.root_handle() {
             return None;
         }
@@ -51,20 +110,28 @@ impl<'a> StyloNode<'a> {
         }?;
         self.view
             .is_member(sibling)
-            .then(|| Self::new(self.view, Some(sibling)))
+            .then(|| Self::host(self.view, sibling))
     }
 
     fn parent(self) -> Option<Self> {
-        let handle = self.handle?;
-        match self.view.snapshot().parent(handle)? {
-            HostParent::Root if handle == self.view.root_handle() => {
-                Some(Self::new(self.view, None))
-            }
-            HostParent::Root => None,
-            HostParent::Node(parent) if self.view.is_member(parent) => {
-                Some(Self::new(self.view, Some(parent)))
-            }
-            HostParent::Node(_) => None,
+        match self.node_ref {
+            StyloNodeRef::Document => None,
+            StyloNodeRef::SyntheticHtml => Some(Self::document(self.view)),
+            StyloNodeRef::SyntheticBody => Some(Self::synthetic_html(self.view)),
+            StyloNodeRef::Host(handle) => match self.view.snapshot().parent(handle)? {
+                HostParent::Root if handle == self.view.root_handle() => {
+                    if self.view.has_synthetic_html_document() {
+                        Some(Self::synthetic_body(self.view))
+                    } else {
+                        Some(Self::document(self.view))
+                    }
+                }
+                HostParent::Root => None,
+                HostParent::Node(parent) if self.view.is_member(parent) => {
+                    Some(Self::host(self.view, parent))
+                }
+                HostParent::Node(_) => None,
+            },
         }
     }
 }
@@ -73,14 +140,14 @@ impl fmt::Debug for StyloNode<'_> {
     fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
         formatter
             .debug_struct("StyloNode")
-            .field("handle", &self.handle)
+            .field("node_ref", &self.node_ref)
             .finish()
     }
 }
 
 impl PartialEq for StyloNode<'_> {
     fn eq(&self, other: &Self) -> bool {
-        std::ptr::eq(self.view, other.view) && self.handle == other.handle
+        std::ptr::eq(self.view, other.view) && self.node_ref == other.node_ref
     }
 }
 
@@ -90,7 +157,7 @@ impl NodeInfo for StyloNode<'_> {
     }
 
     fn is_text_node(&self) -> bool {
-        self.handle
+        self.handle()
             .and_then(|handle| self.view.snapshot().node(handle))
             .is_some_and(|node| matches!(node.kind(), HostNodeKind::Text(_)))
     }
@@ -126,7 +193,12 @@ impl<'a> TNode for StyloNode<'a> {
     }
 
     fn is_in_document(&self) -> bool {
-        self.handle.is_none_or(|handle| self.view.is_member(handle))
+        match self.node_ref {
+            StyloNodeRef::Document | StyloNodeRef::SyntheticHtml | StyloNodeRef::SyntheticBody => {
+                true
+            }
+            StyloNodeRef::Host(handle) => self.view.is_member(handle),
+        }
     }
 
     fn traversal_parent(&self) -> Option<StyloElement<'a>> {
@@ -134,13 +206,19 @@ impl<'a> TNode for StyloNode<'a> {
     }
 
     fn opaque(&self) -> OpaqueNode {
-        let address = match self.handle {
-            Some(handle) => self
+        let address = match self.node_ref {
+            StyloNodeRef::Host(handle) => self
                 .view
                 .snapshot()
                 .node(handle)
                 .map_or(0, |node| std::ptr::from_ref(node) as usize),
-            None => std::ptr::from_ref(self.view) as usize,
+            StyloNodeRef::Document => std::ptr::from_ref(self.view) as usize,
+            StyloNodeRef::SyntheticHtml => {
+                std::ptr::from_ref(self.view.element_data(StyloElementRef::SyntheticHtml)) as usize
+            }
+            StyloNodeRef::SyntheticBody => {
+                std::ptr::from_ref(self.view.element_data(StyloElementRef::SyntheticBody)) as usize
+            }
         };
         OpaqueNode(address)
     }
@@ -150,13 +228,20 @@ impl<'a> TNode for StyloNode<'a> {
     }
 
     fn as_element(&self) -> Option<StyloElement<'a>> {
-        self.handle.and_then(|handle| self.view.element(handle))
+        match self.node_ref {
+            StyloNodeRef::Document => None,
+            StyloNodeRef::SyntheticHtml => {
+                Some(StyloElement::new(self.view, StyloElementRef::SyntheticHtml))
+            }
+            StyloNodeRef::SyntheticBody => {
+                Some(StyloElement::new(self.view, StyloElementRef::SyntheticBody))
+            }
+            StyloNodeRef::Host(handle) => self.view.element(handle),
+        }
     }
 
     fn as_document(&self) -> Option<StyloDocument<'a>> {
-        self.handle
-            .is_none()
-            .then_some(StyloDocument { view: self.view })
+        (self.node_ref == StyloNodeRef::Document).then_some(StyloDocument { view: self.view })
     }
 
     fn as_shadow_root(&self) -> Option<StyloShadowRoot<'a>> {
@@ -168,7 +253,7 @@ impl<'a> TDocument for StyloDocument<'a> {
     type ConcreteNode = StyloNode<'a>;
 
     fn as_node(&self) -> StyloNode<'a> {
-        StyloNode::new(self.view, None)
+        StyloNode::document(self.view)
     }
 
     fn is_html_document(&self) -> bool {

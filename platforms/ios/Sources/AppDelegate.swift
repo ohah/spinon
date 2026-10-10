@@ -25,6 +25,13 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             || arguments.contains("--spinon-c052-registered-properties")
             || arguments.contains("--spinon-c053-runtime-result-cache")
             || arguments.contains("--spinon-c054-incremental-restyle")
+            || arguments.contains("--spinon-c061-percentage-dimensions")
+            || arguments.contains("--spinon-c062-spacing-percentages")
+            || arguments.contains("--spinon-c063-absolute-lengths")
+            || arguments.contains("--spinon-c064-font-relative-units")
+            || arguments.contains("--spinon-c065-typed-css-math")
+            || arguments.contains("--spinon-c066-viewport-units")
+            || arguments.contains("--spinon-c071-min-max-sizing")
         let runR05AttributionProbe = arguments.contains("--spinon-r05-attribution")
         let runLifecycleProbe = arguments.contains("--spinon-dom-gc-auto")
         if runLifecycleProbe && !spinonS03DomGcFixtureEnabled {

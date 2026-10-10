@@ -1,0 +1,42 @@
+$ node --test tools/css-reference/*.test.mjs
+✔ C04 Cascade Layers reference matches its immutable input and capture sources (10.827334ms)
+✔ C04 Flex alignment Chromium reference matches its immutable input and capture sources (12.492958ms)
+✔ C04 margin Chromium reference matches its immutable input and capture sources (6.829833ms)
+✔ C04 logical margin shorthand Chromium reference matches its immutable input and capture sources (7.328167ms)
+✔ C04 media environment Chromium reference is tied to immutable fixture and capture sources (7.238083ms)
+✔ C04.11 Chromium reference is bound to the fixed author stylesheet fixture (6.709ms)
+✔ 두 viewport Chromium reference가 고정 입력과 oracle에 묶여 있다 (6.98775ms)
+✔ Android와 iOS runtime viewport가 고정 fixture 크기 대신 surface bounds를 사용한다 (4.187584ms)
+✔ C04 runtime CSS to GPU reference is bound to the fixed Chromium inputs (8.433125ms)
+✔ Android and iOS run the same checked-in JavaScript fixture through V8 (3.224208ms)
+✔ C05 custom-property Chromium oracle is tied to immutable fixture and capture inputs (10.846875ms)
+✔ C05 Android와 iOS fixture가 Chromium HTML과 같은 style·WGPU runtime 경로를 쓴다 (3.826375ms)
+✔ C05.4 Chromium fixture pins input bytes and inherited restyle boundary (6.34875ms)
+✔ C05.2 Chromium reference is tied to immutable HTML and V8 runtime fixtures (6.231958ms)
+✔ C06.1 Chromium oracle is bound to immutable inputs and partial support scope (9.38125ms)
+✔ C06.2 Chromium reference는 고정 버전·입력 hash·inventory를 보존한다 (2.801583ms)
+✔ margin·padding 백분율은 containing block content width를 사용한다 (0.196333ms)
+✔ Flex gap은 대응 content-box 차원·cascade·invalid value를 보존한다 (0.080542ms)
+✔ computed-value invalidation과 cyclic·inline-flex oracle 경계가 서로 구분된다 (0.066667ms)
+✔ DevTools WebSocket 열림·오류·조기 종료·시간 초과를 구분한다 (1.355875ms)
+✔ Chromium 종료 전에 group 멤버 모두가 이 캡처의 임시 profile을 가리켜야 한다 (0.628042ms)
+✔ C01 inventory v1의 입력 hash·정체성·부분 범위를 고정한다 (2.273417ms)
+✔ 안정 selector, node ID, feature ID를 검증한다 (0.4065ms)
+✔ 부분 인벤토리를 전체 지원 목록으로 오인할 수 없게 거부한다 (0.12025ms)
+✔ CSSOM 속성 이름을 원문·종류별로 보존하고 결정적으로 정렬한다 (0.787125ms)
+✔ CSSOM 속성 목록이 비었거나 중복·잘못된 이름이면 거부한다 (0.23725ms)
+✔ 고정 환경·부분 범위·정렬된 이름 digest가 있는 snapshot을 받는다 (1.609709ms)
+✔ ID·분류·정렬·목록 수·digest가 달라진 snapshot을 거부한다 (0.623958ms)
+✔ 외부 환경 문자열이 reference 디렉터리 경로 구분자나 상위 경로가 되지 않는다 (0.125541ms)
+✔ 부분 inventory를 전체 CSS 지원으로 승격하거나 비교 경계를 흐리면 거부한다 (0.15075ms)
+✔ 외부 resource나 author stylesheet가 기준 fixture에 들어오면 거부한다 (0.09925ms)
+✔ Chromium·환경·fixture provenance가 빠지거나 달라지면 거부한다 (0.321875ms)
+✔ 고정 Chromium reference가 현재 fixture·캡처 코드와 일치하고 부분 property surface로 남는다 (4.0515ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 33
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 105.626958

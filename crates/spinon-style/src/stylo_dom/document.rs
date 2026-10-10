@@ -12,7 +12,7 @@ use url::Url;
 
 use crate::stylo_dom::{element::StyloElementData, node::StyloNode};
 
-use super::StyloElement;
+use super::{StyloElement, element::StyloElementRef};
 
 /// Stylo view를 만들 수 없는 내부 문서 입력입니다.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -53,6 +53,8 @@ pub struct StyloDocumentView {
     quirks_mode: QuirksMode,
     members: BTreeSet<NodeId>,
     elements: BTreeMap<NodeId, StyloElementData>,
+    synthetic_html: Option<StyloElementData>,
+    synthetic_body: Option<StyloElementData>,
     shared_lock: SharedRwLock,
     document_base_url: Url,
 }
@@ -130,6 +132,7 @@ impl StyloDocumentView {
             quirks_mode,
             document_base_url,
             true,
+            false,
         )
     }
 
@@ -148,6 +151,26 @@ impl StyloDocumentView {
             QuirksMode::NoQuirks,
             "https://spinon.invalid/document.html",
             false,
+            false,
+        )
+    }
+
+    /// runtime 앱 mount를 합성 HTML 문서 루트와 body 아래에 연결하는 view를 만듭니다.
+    ///
+    /// 합성 요소는 Stylo selector/cascade에만 참여하고 HostDocument 노드나 layout 결과가 되지
+    /// 않습니다. 공개 DOM `documentElement`를 대신하지 않습니다.
+    pub fn new_html_runtime_mount_shared(
+        snapshot: Arc<HostDocumentSnapshot>,
+        root: HostNodeHandle,
+    ) -> Result<Self, StyloDomError> {
+        Self::build_shared_with_base_url(
+            snapshot,
+            root,
+            true,
+            QuirksMode::NoQuirks,
+            "https://spinon.invalid/document.html",
+            false,
+            true,
         )
     }
 
@@ -158,6 +181,7 @@ impl StyloDocumentView {
         quirks_mode: QuirksMode,
         document_base_url: &str,
         root_matches_root_pseudo: bool,
+        synthetic_html_document: bool,
     ) -> Result<Self, StyloDomError> {
         let document_base_url =
             Url::parse(document_base_url).map_err(|_| StyloDomError::InvalidDocumentBaseUrl)?;
@@ -214,6 +238,10 @@ impl StyloDocumentView {
             quirks_mode,
             members,
             elements,
+            synthetic_html: synthetic_html_document
+                .then(|| StyloElementData::synthetic_html("html")),
+            synthetic_body: synthetic_html_document
+                .then(|| StyloElementData::synthetic_html("body")),
             shared_lock,
             document_base_url,
         })
@@ -226,7 +254,16 @@ impl StyloDocumentView {
 
     /// 선택한 유일한 문서 루트를 반환합니다.
     pub fn root_element(&self) -> StyloElement<'_> {
-        StyloElement::new(self, self.root)
+        if self.synthetic_html.is_some() {
+            StyloElement::new(self, StyloElementRef::SyntheticHtml)
+        } else {
+            self.mount_root_element()
+        }
+    }
+
+    /// layout에서 선택한 실제 HostDocument mount 요소를 반환합니다.
+    pub fn mount_root_element(&self) -> StyloElement<'_> {
+        StyloElement::new(self, StyloElementRef::Host(self.root))
     }
 
     /// 선택한 루트 하위 트리의 노드만 반환합니다.
@@ -240,7 +277,7 @@ impl StyloDocumentView {
         (self.members.contains(&handle.id())
             && self.snapshot.node(handle).is_some()
             && self.elements.contains_key(&handle.id()))
-        .then(|| StyloElement::new(self, handle))
+        .then(|| StyloElement::new(self, StyloElementRef::Host(handle)))
     }
 
     /// view가 고정한 문서 revision입니다.
@@ -283,8 +320,40 @@ impl StyloDocumentView {
         self.quirks_mode
     }
 
-    pub(super) fn element_data(&self, handle: HostNodeHandle) -> Option<&StyloElementData> {
-        self.elements.get(&handle.id())
+    pub(super) fn element_data(&self, element_ref: StyloElementRef) -> &StyloElementData {
+        match element_ref {
+            StyloElementRef::Host(handle) => self
+                .elements
+                .get(&handle.id())
+                .expect("Host StyloElement은 view에 속한 요소여야 합니다"),
+            StyloElementRef::SyntheticHtml => self
+                .synthetic_html
+                .as_ref()
+                .expect("합성 HTML 루트가 있는 view여야 합니다"),
+            StyloElementRef::SyntheticBody => self
+                .synthetic_body
+                .as_ref()
+                .expect("합성 body가 있는 view여야 합니다"),
+        }
+    }
+
+    pub(super) const fn has_synthetic_html_document(&self) -> bool {
+        self.synthetic_html.is_some()
+    }
+
+    pub(super) fn synthetic_body_element(&self) -> Option<StyloElement<'_>> {
+        self.synthetic_body
+            .as_ref()
+            .map(|_| StyloElement::new(self, StyloElementRef::SyntheticBody))
+    }
+
+    pub(super) fn inline_style_sources(&self) -> impl Iterator<Item = (NodeId, &str)> {
+        self.elements.iter().filter_map(|(node_id, element)| {
+            element
+                .inline_style_text
+                .as_deref()
+                .map(|css| (*node_id, css))
+        })
     }
 
     pub(super) fn is_member(&self, handle: HostNodeHandle) -> bool {

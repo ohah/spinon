@@ -5,8 +5,8 @@ use spinon_core::{ChangeBatch, EnvironmentRevision, NodeId, Revision, StyleRevis
 
 use crate::{
     FlexDirection, LayoutDimension, LayoutEdges, LayoutEngine, LayoutError, LayoutGap, LayoutInput,
-    LayoutInputRevision, LayoutNode, LayoutSourceRevision, LayoutStyle, RootSizingPolicy,
-    TaffyLayoutEngine, TextDirection, Viewport,
+    LayoutInputRevision, LayoutLengthPercentage, LayoutNode, LayoutSourceRevision, LayoutStyle,
+    RootSizingPolicy, TaffyLayoutEngine, TextDirection, Viewport,
 };
 
 #[path = "tests/invalid_inputs.rs"]
@@ -15,6 +15,12 @@ mod invalid_inputs;
 mod legacy_oracle;
 #[path = "tests/margin.rs"]
 mod margin;
+#[path = "tests/percentage_spacing.rs"]
+mod percentage_spacing;
+#[path = "tests/percentages.rs"]
+mod percentages;
+#[path = "tests/typed_math.rs"]
+mod typed_math;
 
 #[derive(Debug, Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -126,6 +132,7 @@ fn to_input(fixture: &Fixture) -> LayoutInput {
             height: fixture.viewport.height,
         },
         root_sizing: RootSizingPolicy::MatchViewport,
+        css_math: vec![],
         nodes: fixture
             .nodes
             .iter()
@@ -146,14 +153,14 @@ fn to_input(fixture: &Fixture) -> LayoutInput {
                         other => panic!("알 수 없는 fixture direction: {other}"),
                     },
                     padding: LayoutEdges {
-                        top: node.style.padding.top,
-                        right: node.style.padding.right,
-                        bottom: node.style.padding.bottom,
-                        left: node.style.padding.left,
+                        top: LayoutLengthPercentage::length(node.style.padding.top),
+                        right: LayoutLengthPercentage::length(node.style.padding.right),
+                        bottom: LayoutLengthPercentage::length(node.style.padding.bottom),
+                        left: LayoutLengthPercentage::length(node.style.padding.left),
                     },
                     gap: LayoutGap {
-                        row: node.style.row_gap,
-                        column: node.style.column_gap,
+                        row: LayoutLengthPercentage::length(node.style.row_gap),
+                        column: LayoutLengthPercentage::length(node.style.column_gap),
                     },
                     flex_grow: node.style.flex_grow,
                     ..LayoutStyle::default()
@@ -285,6 +292,7 @@ fn fractional_dimensions_are_not_rounded_by_the_layout_engine() {
             height: 80.5,
         },
         root_sizing: RootSizingPolicy::MatchViewport,
+        css_math: vec![],
         nodes: vec![
             LayoutNode {
                 id: root,
@@ -317,7 +325,7 @@ fn duplicate_ids_and_invalid_styles_are_rejected() {
     );
 
     let mut invalid = valid.clone();
-    invalid.nodes[1].style.gap.row = -1.0;
+    invalid.nodes[1].style.gap.row = LayoutLengthPercentage::length(-1.0);
     assert_eq!(
         TaffyLayoutEngine.compute(&invalid),
         Err(LayoutError::InvalidStyle {
@@ -347,7 +355,7 @@ fn duplicate_ids_and_invalid_styles_are_rejected() {
     );
 
     let mut invalid = valid.clone();
-    invalid.nodes[1].style.padding.left = -1.0;
+    invalid.nodes[1].style.padding.left = LayoutLengthPercentage::length(-1.0);
     assert_eq!(
         TaffyLayoutEngine.compute(&invalid),
         Err(LayoutError::InvalidStyle {

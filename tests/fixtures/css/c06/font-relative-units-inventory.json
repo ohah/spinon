@@ -1,0 +1,39 @@
+{
+  "schema": "spinon-css-c06-font-relative-units-inventory/v1",
+  "fixtureId": "C06.4-font-relative-units-v1",
+  "viewport": {
+    "width": 320,
+    "height": 800,
+    "deviceScaleFactors": [1, 2]
+  },
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "pointer": "coarse",
+    "hover": "none"
+  },
+  "comparison": {
+    "coordinateSpace": "CSS px",
+    "maximumAbsoluteFrameErrorCssPx": 0.5,
+    "fontRelativeUnits": ["em", "rem"],
+    "metricUnitsFailClosed": ["ex", "rex", "ch", "rch", "cap", "rcap", "ic", "ric", "lh", "rlh"],
+    "textLayout": "out of scope"
+  },
+  "nodes": [
+    { "id": "html", "properties": ["font-size"] },
+    { "id": "body", "properties": ["font-size", "width", "height"] },
+    { "id": "mount", "properties": ["font-size", "width", "height"] },
+    { "id": "em-inherit", "properties": ["font-size", "width", "height"] },
+    { "id": "em-parent", "properties": ["font-size", "width", "height"] },
+    { "id": "em-child", "properties": ["font-size", "width", "height"] },
+    { "id": "rem-target", "properties": ["font-size", "width", "height", "margin-left", "padding-left"] },
+    { "id": "font-size-percent", "properties": ["font-size", "width", "height"] },
+    { "id": "zero", "properties": ["font-size", "width", "height"] },
+    { "id": "var-em", "properties": ["font-size", "width", "height"] },
+    { "id": "var-rem", "properties": ["font-size", "width", "height"] },
+    { "id": "spacing", "properties": ["font-size", "width", "height", "row-gap", "column-gap", "margin-left", "padding-left"] },
+    { "id": "basis-a", "properties": ["font-size", "flex-basis", "height"] },
+    { "id": "basis-b", "properties": ["font-size", "flex-basis", "height"] }
+  ]
+}

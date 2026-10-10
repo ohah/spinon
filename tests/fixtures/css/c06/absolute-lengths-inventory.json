@@ -1,0 +1,47 @@
+{
+  "schema": "spinon-css-c06-absolute-lengths-inventory/v1",
+  "fixtureId": "C06.3-absolute-lengths-v1",
+  "viewport": { "width": 320, "height": 800, "deviceScaleFactor": 1 },
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "pointer": "coarse",
+    "hover": "none"
+  },
+  "comparison": {
+    "computedStyle": "exact trimmed CSSOM serialization for listed properties",
+    "geometry": "each x, y, width, and height differs by at most 0.5 CSS px",
+    "purpose": "absolute CSS lengths normalize to CSS px independent of device pixel ratio",
+    "unitEquivalence": "96px = 1in = 2.54cm = 25.4mm = 101.6Q = 72pt = 6pc",
+    "supportBoundary": "existing runtime Flex layout properties only; font-relative, viewport, container and CSS math are excluded"
+  },
+  "nodes": [
+    { "id": "root", "kind": "viewport-root", "properties": ["width", "height", "row-gap"] },
+    { "id": "probe-px", "kind": "absolute-length-row", "properties": ["width", "height", "margin-left", "padding-left", "column-gap"] },
+    { "id": "px-a", "kind": "absolute-width", "properties": ["width", "height"] },
+    { "id": "px-b", "kind": "absolute-flex-basis", "properties": ["flex-basis", "height"] },
+    { "id": "probe-negative", "kind": "negative-absolute-margin-row", "properties": ["margin-left"] },
+    { "id": "negative-a", "kind": "negative-margin-child", "properties": ["width", "height"] },
+    { "id": "probe-variable", "kind": "absolute-length-custom-property-row", "properties": ["margin-left", "padding-left", "column-gap"] },
+    { "id": "variable-a", "kind": "absolute-length-custom-property", "properties": ["width", "height"] },
+    { "id": "probe-in", "kind": "absolute-length-row", "properties": ["width", "height", "margin-left", "padding-left", "column-gap"] },
+    { "id": "in-a", "kind": "absolute-width", "properties": ["width", "height"] },
+    { "id": "in-b", "kind": "absolute-flex-basis", "properties": ["flex-basis", "height"] },
+    { "id": "probe-cm", "kind": "absolute-length-row", "properties": ["width", "height", "margin-left", "padding-left", "column-gap"] },
+    { "id": "cm-a", "kind": "absolute-width", "properties": ["width", "height"] },
+    { "id": "cm-b", "kind": "absolute-flex-basis", "properties": ["flex-basis", "height"] },
+    { "id": "probe-mm", "kind": "absolute-length-row", "properties": ["width", "height", "margin-left", "padding-left", "column-gap"] },
+    { "id": "mm-a", "kind": "absolute-width", "properties": ["width", "height"] },
+    { "id": "mm-b", "kind": "absolute-flex-basis", "properties": ["flex-basis", "height"] },
+    { "id": "probe-q", "kind": "absolute-length-row", "properties": ["width", "height", "margin-left", "padding-left", "column-gap"] },
+    { "id": "q-a", "kind": "absolute-width", "properties": ["width", "height"] },
+    { "id": "q-b", "kind": "absolute-flex-basis", "properties": ["flex-basis", "height"] },
+    { "id": "probe-pt", "kind": "absolute-length-row", "properties": ["width", "height", "margin-left", "padding-left", "column-gap"] },
+    { "id": "pt-a", "kind": "absolute-width", "properties": ["width", "height"] },
+    { "id": "pt-b", "kind": "absolute-flex-basis", "properties": ["flex-basis", "height"] },
+    { "id": "probe-pc", "kind": "absolute-length-row", "properties": ["width", "height", "margin-left", "padding-left", "column-gap"] },
+    { "id": "pc-a", "kind": "absolute-width", "properties": ["width", "height"] },
+    { "id": "pc-b", "kind": "absolute-flex-basis", "properties": ["flex-basis", "height"] }
+  ]
+}

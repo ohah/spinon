@@ -1,0 +1,71 @@
+<!doctype html>
+<html id="html" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spinon C06.5 typed CSS math oracle</title>
+  <style>
+    :root { font-size: 16px; }
+    body { margin: 0; }
+    #root {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      height: 780px;
+      margin: 0;
+      padding: 0;
+    }
+    #calc-length { width: calc(20px + 25px); height: 10px; }
+    #calc-mixed { width: calc(10px + 25%); height: 10px; }
+    #calc-nested { width: calc(10px + calc(20px + 10%)); height: 10px; }
+    #calc-product { width: calc(10px + 4 * 5px + 20px / 4); height: 10px; }
+    #min-value { width: min(100px, 50%); height: 10px; }
+    #max-value { width: max(100px, 50%); height: 10px; }
+    #min-mixed { width: min(calc(50px + 10%), calc(80px + 5%)); height: 10px; }
+    #max-nested { width: max(20px, min(40%, 60px)); height: 10px; }
+    #clamp-value { width: clamp(20px, 50%, 100px); height: 10px; }
+    #clamp-negative { width: clamp(20px, -10px, 100px); height: 10px; }
+    #clamp-inverted-bounds { width: clamp(100px, 80px, 50px); height: 10px; }
+    #clamp-nan { width: clamp(10px, calc(0px / 0), 20px); height: 10px; }
+    #var-math { --box: calc(20px + 10%); width: var(--box); height: 10px; }
+    #negative-margin { width: 30px; height: 10px; margin-left: calc(5px - 10px); }
+    #padding-math { box-sizing: border-box; width: 50px; height: 10px; padding-left: calc(5px + 10px); }
+    #gap-container { box-sizing: border-box; display: flex; flex-direction: row; width: 300px; height: 20px; column-gap: calc(5px + 5%); }
+    #gap-first, #gap-second { flex: 0 0 30px; height: 10px; }
+    #basis-container { box-sizing: border-box; display: flex; flex-direction: row; width: 300px; height: 20px; }
+    #basis-math { flex: 0 0 calc(40px + 10%); height: 10px; }
+    #divide-by-zero { width: calc(10px / 0); height: 10px; }
+    #zero-divided-by-zero { width: calc(0px / 0); height: 10px; }
+    #negative-size { width: calc(20px - 50px); height: 10px; }
+    #invalid-dimension { width: 23px; width: calc(1px + 1s); height: 10px; }
+    #round-function { width: round(10px, 4px); height: 10px; }
+  </style>
+</head>
+<body>
+  <main id="root">
+    <div id="calc-length"></div>
+    <div id="calc-mixed"></div>
+    <div id="calc-nested"></div>
+    <div id="calc-product"></div>
+    <div id="min-value"></div>
+    <div id="max-value"></div>
+    <div id="min-mixed"></div>
+    <div id="max-nested"></div>
+    <div id="clamp-value"></div>
+    <div id="clamp-negative"></div>
+    <div id="clamp-inverted-bounds"></div>
+    <div id="clamp-nan"></div>
+    <div id="var-math"></div>
+    <div id="negative-margin"></div>
+    <div id="padding-math"></div>
+    <div id="gap-container"><div id="gap-first"></div><div id="gap-second"></div></div>
+    <div id="basis-container"><div id="basis-math"></div></div>
+    <div id="divide-by-zero"></div>
+    <div id="zero-divided-by-zero"></div>
+    <div id="negative-size"></div>
+    <div id="invalid-dimension"></div>
+    <div id="round-function"></div>
+  </main>
+</body>
+</html>

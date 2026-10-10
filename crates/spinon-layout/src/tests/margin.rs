@@ -1,5 +1,5 @@
 use super::{fixture, node_id, to_input};
-use crate::{LayoutEngine, LayoutError, TaffyLayoutEngine};
+use crate::{LayoutEngine, LayoutError, LayoutLengthPercentage, TaffyLayoutEngine};
 
 #[test]
 fn negative_margin_reaches_taffy_and_non_finite_margin_is_rejected() {
@@ -14,7 +14,7 @@ fn negative_margin_reaches_taffy_and_non_finite_margin_is_rejected() {
         .unwrap()
         .style
         .margin
-        .left = -7.0;
+        .left = LayoutLengthPercentage::length(-7.0);
     let with_negative_margin = TaffyLayoutEngine.compute(&input).unwrap();
     assert_eq!(
         with_negative_margin.frames[&first_child].x,
@@ -29,7 +29,7 @@ fn negative_margin_reaches_taffy_and_non_finite_margin_is_rejected() {
             .unwrap()
             .style
             .margin
-            .top = invalid;
+            .top = LayoutLengthPercentage::length(invalid);
         assert!(matches!(
             TaffyLayoutEngine.compute(&input),
             Err(LayoutError::InvalidStyle {

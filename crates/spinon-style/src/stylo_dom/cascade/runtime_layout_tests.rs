@@ -49,6 +49,33 @@ fn runtime_inline_allowlist_accepts_supported_shorthand_expansions() {
 }
 
 #[test]
+fn runtime_inline_allowlist_accepts_physical_min_max_size_longhands() {
+    let (view, node) = view_for_inline_style(
+        "display:flex;min-width:11px;max-width:90%;min-height:calc(10px + 2px);max-height:none",
+    );
+    assert_eq!(
+        first_unsupported_runtime_layout_inline_property(&view),
+        None
+    );
+    let snapshot = super::compute_runtime_flex_layout_cascade(
+        &view,
+        CssViewport::C04_FIXTURE,
+        Default::default(),
+    )
+    .unwrap();
+    let style = snapshot
+        .elements
+        .iter()
+        .find(|style| style.node_id == node)
+        .unwrap();
+    assert_eq!(style.properties["min-width"], "11px");
+    assert_eq!(style.properties["max-width"], "90%");
+    assert_eq!(style.properties["min-height"], "12px");
+    assert!(style.layout_math_values.contains_key("min-height"));
+    assert_eq!(style.properties["max-height"], "none");
+}
+
+#[test]
 fn runtime_inline_allowlist_reports_valid_unsupported_properties_without_values() {
     let (view, root) = view_for_inline_style("display:block;color:rgb(1,2,3)");
     assert_eq!(

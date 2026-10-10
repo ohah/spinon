@@ -1,0 +1,42 @@
+{
+  "schema": "spinon-css-c06-viewport-units-inventory/v1",
+  "fixtureId": "C06.6a-viewport-units-v1",
+  "viewports": [
+    { "width": 320, "height": 800 },
+    { "width": 800, "height": 320 },
+    { "width": 390, "height": 844 }
+  ],
+  "deviceScaleFactors": [1, 2],
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "pointer": "coarse",
+    "hover": "none"
+  },
+  "comparison": {
+    "coordinateSpace": "CSS px",
+    "maximumAbsoluteFrameErrorCssPx": 0.5,
+    "properties": ["width", "height", "flex-basis", "margin-left", "padding-left", "column-gap"],
+    "viewportKinds": ["default-large", "small", "large", "dynamic"],
+    "dprInvariant": true,
+    "unsupportedUnits": ["cqw", "cqh", "cqi", "cqb", "cqmin", "cqmax"]
+  },
+  "nodes": [
+    { "id": "root", "properties": ["width", "height"] },
+    { "id": "default-units", "properties": ["width", "height"] },
+    { "id": "small-units", "properties": ["width", "height"] },
+    { "id": "large-units", "properties": ["width", "height"] },
+    { "id": "dynamic-units", "properties": ["width", "height"] },
+    { "id": "logical-units", "properties": ["width", "height"] },
+    { "id": "minmax-units", "properties": ["width", "height"] },
+    { "id": "math-units", "properties": ["width", "height"] },
+    { "id": "var-units", "properties": ["width", "height"] },
+    { "id": "spacing-units", "properties": ["width", "height", "margin-left", "padding-left"] },
+    { "id": "gap-row", "properties": ["width", "height", "column-gap"] },
+    { "id": "gap-a", "properties": ["width", "height"] },
+    { "id": "gap-b", "properties": ["width", "height"] },
+    { "id": "basis-row", "properties": ["width", "height"] },
+    { "id": "basis-item", "properties": ["width", "height", "flex-basis"] }
+  ]
+}

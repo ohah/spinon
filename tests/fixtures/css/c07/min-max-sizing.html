@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spinon C07.1 min/max sizing oracle</title>
+  <style>
+    html, body { margin: 0; padding: 0; }
+    #root { box-sizing: border-box; display: block; width: 280px; height: 960px; }
+    #block-parent { box-sizing: content-box; display: block; width: 200px; height: 800px; }
+    #percentage-height-parent { box-sizing: content-box; display: block; width: 200px; height: 120px; }
+    #min-width-raises { width: 60px; height: 20px; min-width: 90px; }
+    #max-width-limits { width: 120px; height: 20px; max-width: 90px; }
+    #min-height-raises { width: 40px; height: 20px; min-height: 55px; }
+    #max-height-limits { width: 40px; height: 80px; max-height: 55px; }
+    #min-over-max { width: 100px; height: 20px; min-width: 80px; max-width: 50px; }
+    #content-box-max { box-sizing: content-box; width: 160px; height: 20px; padding: 0 10px; max-width: 100px; }
+    #border-box-max { box-sizing: border-box; width: 160px; height: 20px; padding: 0 10px; max-width: 100px; }
+    #border-box-min { box-sizing: border-box; width: 60px; height: 20px; padding: 0 10px; min-width: 100px; }
+    #border-box-padding-floor { box-sizing: border-box; width: 10px; height: 20px; padding: 0 12px; min-width: 10px; }
+    #percentage-min { width: 70px; height: 20px; min-width: 50%; }
+    #percentage-max { width: 160px; height: 20px; max-width: 75%; }
+    #percentage-height-max { width: 20px; height: 100px; max-height: 50%; }
+    #calc-min { width: 40px; height: 20px; min-width: calc(20px + 15%); }
+    #calc-max { width: 170px; height: 20px; max-width: min(120px, 40%); }
+    #var-min { --minimum: calc(20px + 20%); width: 40px; height: 20px; min-width: var(--minimum); }
+    #zero-min { width: 0; height: 20px; min-width: 0; }
+    #zero-max { width: 100px; height: 20px; max-width: 0; }
+    #invalid-min-fallback { width: 10px; height: 20px; min-width: 25px; min-width: -10px; }
+    #invalid-max-fallback { width: 150px; height: 20px; max-width: 100px; max-width: -10px; }
+    #default-auto-none { width: 60px; height: 20px; min-width: auto; max-width: none; }
+    #flex-min-parent, #flex-zero-parent, #flex-max-parent {
+      box-sizing: border-box; display: flex; flex-direction: row; align-items: flex-start;
+      width: 150px; height: 40px; padding: 0; margin: 0;
+    }
+    #flex-min-parent > div, #flex-zero-parent > div { flex: 0 1 100px; height: 20px; }
+    #flex-min-a, #flex-min-b { min-width: 80px; }
+    #flex-zero-a, #flex-zero-b { min-width: 0; }
+    #flex-max-parent { width: 200px; justify-content: space-between; }
+    #flex-max-a, #flex-max-b { flex: 1 1 0; min-width: 0; max-width: 60px; height: 20px; }
+    #flex-auto-parent { box-sizing: border-box; display: flex; flex-direction: row; align-items: flex-start; width: 100px; height: 40px; }
+    #flex-auto-a, #flex-auto-b { flex: 0 1 80px; min-width: auto; height: 20px; }
+  </style>
+</head>
+<body>
+  <main id="root">
+    <section id="block-parent">
+      <div id="min-width-raises"></div>
+      <div id="max-width-limits"></div>
+      <div id="min-height-raises"></div>
+      <div id="max-height-limits"></div>
+      <div id="min-over-max"></div>
+      <div id="content-box-max"></div>
+      <div id="border-box-max"></div>
+      <div id="border-box-min"></div>
+      <div id="border-box-padding-floor"></div>
+      <div id="percentage-min"></div>
+      <div id="percentage-max"></div>
+      <div id="calc-min"></div>
+      <div id="calc-max"></div>
+      <div id="var-min"></div>
+      <div id="zero-min"></div>
+      <div id="zero-max"></div>
+      <div id="invalid-min-fallback"></div>
+      <div id="invalid-max-fallback"></div>
+      <div id="default-auto-none"></div>
+      <div id="flex-min-parent"><div id="flex-min-a"></div><div id="flex-min-b"></div></div>
+      <div id="flex-zero-parent"><div id="flex-zero-a"></div><div id="flex-zero-b"></div></div>
+      <div id="flex-max-parent"><div id="flex-max-a"></div><div id="flex-max-b"></div></div>
+      <div id="flex-auto-parent"><div id="flex-auto-a"></div><div id="flex-auto-b"></div></div>
+    </section>
+    <section id="percentage-height-parent"><div id="percentage-height-max"></div></section>
+  </main>
+</body>
+</html>

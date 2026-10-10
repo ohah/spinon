@@ -33,6 +33,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native byte[] nativeEvalRegisteredPropertiesFixture(long host);
     private static native byte[] nativeEvalRuntimeResultCacheFixture(long host);
     private static native byte[] nativeEvalIncrementalRestyleFixture(long host);
+    private static native byte[] nativeEvalPercentageDimensionsFixture(long host);
+    private static native byte[] nativeEvalSpacingPercentagesFixture(long host);
+    private static native byte[] nativeEvalAbsoluteLengthsFixture(long host);
+    private static native byte[] nativeEvalFontRelativeUnitsFixture(long host);
+    private static native byte[] nativeEvalTypedCssMathFixture(long host);
+    private static native byte[] nativeEvalViewportUnitsFixture(long host);
+    private static native byte[] nativeEvalMinMaxSizingFixture(long host);
     private static native long nativeCreateSurface(
             long host, Surface surface, int width, int height, int backend);
     private static native int nativeResizeSurface(long renderer, int width, int height);
@@ -59,6 +66,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean customPropertiesProbeRequested;
     private final boolean runtimeResultCacheProbeRequested;
     private final boolean incrementalRestyleProbeRequested;
+    private final boolean percentageDimensionsProbeRequested;
+    private final boolean spacingPercentagesProbeRequested;
+    private final boolean absoluteLengthsProbeRequested;
+    private final boolean fontRelativeUnitsProbeRequested;
+    private final boolean typedCssMathProbeRequested;
+    private final boolean viewportUnitsProbeRequested;
+    private final boolean minMaxSizingProbeRequested;
     private final boolean registeredPropertiesProbeRequested;
     private final boolean authorStylesheetsProbeRequested;
     private final float density;
@@ -94,6 +108,20 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 .getBooleanExtra("spinon_c053_runtime_result_cache", false);
         incrementalRestyleProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c054_incremental_restyle", false);
+        percentageDimensionsProbeRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c061_percentage_dimensions", false);
+        spacingPercentagesProbeRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c062_spacing_percentages", false);
+        absoluteLengthsProbeRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c063_absolute_lengths", false);
+        fontRelativeUnitsProbeRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c064_font_relative_units", false);
+        typedCssMathProbeRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c065_typed_css_math", false);
+        viewportUnitsProbeRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c066_viewport_units", false);
+        minMaxSizingProbeRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c071_min_max_sizing", false);
         registeredPropertiesProbeRequested = runtimeResultCacheProbeRequested
                 || activity.getIntent().getBooleanExtra("spinon_c052_registered_properties", false);
         authorStylesheetsProbeRequested = activity.getIntent()
@@ -111,7 +139,21 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         setBackgroundColor(Color.rgb(14, 19, 31));
 
         TextView title = new TextView(activity);
-        title.setText(incrementalRestyleProbeRequested
+        title.setText(viewportUnitsProbeRequested
+                ? "SPINON · C06.6 viewport units"
+                : minMaxSizingProbeRequested
+                ? "SPINON · C07.1 min/max sizing"
+                : typedCssMathProbeRequested
+                ? "SPINON · C06.5 typed CSS math"
+                : fontRelativeUnitsProbeRequested
+                ? "SPINON · C06.4 font-relative units"
+                : absoluteLengthsProbeRequested
+                ? "SPINON · C06.3 absolute lengths"
+                : spacingPercentagesProbeRequested
+                ? "SPINON · C06.2 spacing percentages"
+                : percentageDimensionsProbeRequested
+                ? "SPINON · C06.1 percentage dimensions"
+                : incrementalRestyleProbeRequested
                 ? "SPINON · C05.4 incremental restyle"
                 : registeredPropertiesProbeRequested
                 ? runtimeResultCacheProbeRequested ? "SPINON · C05.3 runtime cache"
@@ -124,7 +166,21 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         addView(title, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 
         TextView description = new TextView(activity);
-        description.setText(incrementalRestyleProbeRequested
+        description.setText(viewportUnitsProbeRequested
+                ? "V8 vw/svw/lvw/dvw → Stylo CSS px → Taffy → WGPU"
+                : minMaxSizingProbeRequested
+                ? "V8 min/max size → Stylo typed values → Taffy → WGPU"
+                : typedCssMathProbeRequested
+                ? "V8 calc/min/max/clamp → Stylo typed values → Taffy → WGPU"
+                : fontRelativeUnitsProbeRequested
+                ? "V8 CSS em/rem → Stylo computed CSS px → Taffy → WGPU"
+                : absoluteLengthsProbeRequested
+                ? "V8 CSS absolute lengths → Stylo CSS px → Taffy → WGPU"
+                : spacingPercentagesProbeRequested
+                ? "V8 CSS spacing % → Stylo → Taffy → WGPU"
+                : percentageDimensionsProbeRequested
+                ? "V8 CSS % → typed dimensions → Taffy → WGPU"
+                : incrementalRestyleProbeRequested
                 ? "V8 inline style → dirty subtree → Stylo → Taffy → WGPU"
                 : registeredPropertiesProbeRequested
                 ? runtimeResultCacheProbeRequested
@@ -147,7 +203,21 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
         surfaceView = new SurfaceView(activity);
         surfaceView.getHolder().addCallback(this);
-        surfaceView.setContentDescription(incrementalRestyleProbeRequested
+        surfaceView.setContentDescription(viewportUnitsProbeRequested
+                ? "C06.6 viewport units WGPU 장면"
+                : minMaxSizingProbeRequested
+                ? "C07.1 min/max sizing WGPU 장면"
+                : typedCssMathProbeRequested
+                ? "C06.5 calc min max clamp WGPU 장면"
+                : fontRelativeUnitsProbeRequested
+                ? "C06.4 em/rem font-relative units WGPU 장면"
+                : absoluteLengthsProbeRequested
+                ? "C06.3 absolute CSS length units WGPU 장면"
+                : spacingPercentagesProbeRequested
+                ? "C06.2 percentage margin, padding, gap WGPU 장면"
+                : percentageDimensionsProbeRequested
+                ? "C06.1 percentage width, height, flex-basis WGPU 장면"
+                : incrementalRestyleProbeRequested
                 ? "C05.4 inline style 하위 트리 재계산 검증 WGPU 장면"
                 : registeredPropertiesProbeRequested
                 ? runtimeResultCacheProbeRequested
@@ -168,7 +238,19 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         addView(resizeButton, resizeButtonParams);
 
         Button customPropertiesButton = new Button(activity);
-        customPropertiesButton.setText(incrementalRestyleProbeRequested
+        customPropertiesButton.setText(viewportUnitsProbeRequested
+                ? "C06.6 viewport unit fixture 다시 실행"
+                : typedCssMathProbeRequested
+                ? "C06.5 typed CSS math fixture 다시 실행"
+                : fontRelativeUnitsProbeRequested
+                ? "C06.4 em/rem fixture 실행 완료"
+                : absoluteLengthsProbeRequested
+                ? "C06.3 absolute length fixture 실행 완료"
+                : spacingPercentagesProbeRequested
+                ? "C06.2 spacing percentage fixture 실행 완료"
+                : percentageDimensionsProbeRequested
+                ? "C06.1 percentage fixture 실행 완료"
+                : incrementalRestyleProbeRequested
                 ? "C05.4 · 왼쪽 branch style 전환"
                 : registeredPropertiesProbeRequested
                 ? runtimeResultCacheProbeRequested
@@ -176,12 +258,25 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         : "C05.2 · 등록 사용자 지정 속성 다시 적용"
                 : "C05 · 사용자 지정 속성 다시 적용");
         customPropertiesButton.setOnClickListener(view -> {
-            if (incrementalRestyleProbeRequested) evaluateIncrementalRestyleFixture();
+            if (viewportUnitsProbeRequested) evaluateViewportUnitsFixture();
+            else if (typedCssMathProbeRequested) evaluateTypedCssMathFixture();
+            else if (fontRelativeUnitsProbeRequested) evaluateFontRelativeUnitsFixture();
+            else if (absoluteLengthsProbeRequested) evaluateAbsoluteLengthsFixture();
+            else if (spacingPercentagesProbeRequested) evaluateSpacingPercentagesFixture();
+            else if (percentageDimensionsProbeRequested) evaluatePercentageDimensionsFixture();
+            else if (incrementalRestyleProbeRequested) evaluateIncrementalRestyleFixture();
             else if (runtimeResultCacheProbeRequested) evaluateRuntimeResultCacheFixture();
             else if (registeredPropertiesProbeRequested) evaluateRegisteredPropertiesFixture();
             else evaluateCustomPropertiesFixture();
         });
-        if (authorStylesheetsProbeRequested) customPropertiesButton.setVisibility(GONE);
+        if (authorStylesheetsProbeRequested || viewportUnitsProbeRequested || minMaxSizingProbeRequested
+                || typedCssMathProbeRequested
+                || fontRelativeUnitsProbeRequested
+                || absoluteLengthsProbeRequested
+                || percentageDimensionsProbeRequested
+                || spacingPercentagesProbeRequested) {
+            customPropertiesButton.setVisibility(GONE);
+        }
         LayoutParams customPropertiesButtonParams =
                 new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         customPropertiesButtonParams.topMargin = dp(4, density);
@@ -258,7 +353,21 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         Log.i(TAG, "SPINON_C0410_ENVIRONMENT viewport=" + widthCssPx + "x" + heightCssPx
                 + " scale=" + density + " dark=" + dark + " " + environment);
-        String result = incrementalRestyleProbeRequested
+        String result = viewportUnitsProbeRequested
+                ? decode(nativeEvalViewportUnitsFixture(host))
+                : minMaxSizingProbeRequested
+                ? decode(nativeEvalMinMaxSizingFixture(host))
+                : typedCssMathProbeRequested
+                ? decode(nativeEvalTypedCssMathFixture(host))
+                : fontRelativeUnitsProbeRequested
+                ? decode(nativeEvalFontRelativeUnitsFixture(host))
+                : absoluteLengthsProbeRequested
+                ? decode(nativeEvalAbsoluteLengthsFixture(host))
+                : spacingPercentagesProbeRequested
+                ? decode(nativeEvalSpacingPercentagesFixture(host))
+                : percentageDimensionsProbeRequested
+                ? decode(nativeEvalPercentageDimensionsFixture(host))
+                : incrementalRestyleProbeRequested
                 ? decode(nativeEvalIncrementalRestyleFixture(host))
                 : registeredPropertiesProbeRequested
                 ? decode(nativeEvalRegisteredPropertiesFixture(host))
@@ -269,7 +378,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             postStatus("실패 · " + result);
             return;
         }
-        Log.i(TAG, (incrementalRestyleProbeRequested
+        Log.i(TAG, (viewportUnitsProbeRequested
+                ? "SPINON_C066A_EVAL " : minMaxSizingProbeRequested
+                ? "SPINON_C071_EVAL " : typedCssMathProbeRequested
+                ? "SPINON_C065_EVAL " : fontRelativeUnitsProbeRequested
+                ? "SPINON_C064_EVAL " : absoluteLengthsProbeRequested
+                ? "SPINON_C063_EVAL " : spacingPercentagesProbeRequested
+                ? "SPINON_C062_EVAL " : percentageDimensionsProbeRequested
+                ? "SPINON_C061_EVAL " : incrementalRestyleProbeRequested
                 ? "SPINON_C054_INIT "
                 : registeredPropertiesProbeRequested
                 ? runtimeResultCacheProbeRequested ? "SPINON_C053_INIT " : "SPINON_C052_EVAL "
@@ -339,6 +455,104 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             }
             String result = decode(nativeEvalIncrementalRestyleFixture(host));
             Log.i(TAG, "SPINON_C054_EVAL " + result);
+            postStatus(runtimeStatusSummary(result));
+            if (result.startsWith("status=0 ")) requestDraw();
+        });
+    }
+
+    private void evaluatePercentageDimensionsFixture() {
+        enqueueRuntime(() -> {
+            final long host;
+            synchronized (stateLock) {
+                if (closing || hostHandle == 0) return;
+                host = hostHandle;
+            }
+            String result = decode(nativeEvalPercentageDimensionsFixture(host));
+            Log.i(TAG, "SPINON_C061_EVAL " + result);
+            postStatus(runtimeStatusSummary(result));
+            if (result.startsWith("status=0 ")) requestDraw();
+        });
+    }
+
+    private void evaluateSpacingPercentagesFixture() {
+        enqueueRuntime(() -> {
+            final long host;
+            synchronized (stateLock) {
+                if (closing || hostHandle == 0) return;
+                host = hostHandle;
+            }
+            String result = decode(nativeEvalSpacingPercentagesFixture(host));
+            Log.i(TAG, "SPINON_C062_EVAL " + result);
+            postStatus(runtimeStatusSummary(result));
+            if (result.startsWith("status=0 ")) requestDraw();
+        });
+    }
+
+    private void evaluateAbsoluteLengthsFixture() {
+        enqueueRuntime(() -> {
+            final long host;
+            synchronized (stateLock) {
+                if (closing || hostHandle == 0) return;
+                host = hostHandle;
+            }
+            String result = decode(nativeEvalAbsoluteLengthsFixture(host));
+            Log.i(TAG, "SPINON_C063_EVAL " + result);
+            postStatus(runtimeStatusSummary(result));
+            if (result.startsWith("status=0 ")) requestDraw();
+        });
+    }
+
+    private void evaluateFontRelativeUnitsFixture() {
+        enqueueRuntime(() -> {
+            final long host;
+            synchronized (stateLock) {
+                if (closing || hostHandle == 0) return;
+                host = hostHandle;
+            }
+            String result = decode(nativeEvalFontRelativeUnitsFixture(host));
+            Log.i(TAG, "SPINON_C064_EVAL " + result);
+            postStatus(runtimeStatusSummary(result));
+            if (result.startsWith("status=0 ")) requestDraw();
+        });
+    }
+
+    private void evaluateTypedCssMathFixture() {
+        enqueueRuntime(() -> {
+            final long host;
+            synchronized (stateLock) {
+                if (closing || hostHandle == 0) return;
+                host = hostHandle;
+            }
+            String result = decode(nativeEvalTypedCssMathFixture(host));
+            Log.i(TAG, "SPINON_C065_EVAL " + result);
+            postStatus(runtimeStatusSummary(result));
+            if (result.startsWith("status=0 ")) requestDraw();
+        });
+    }
+
+    private void evaluateViewportUnitsFixture() {
+        enqueueRuntime(() -> {
+            final long host;
+            synchronized (stateLock) {
+                if (closing || hostHandle == 0) return;
+                host = hostHandle;
+            }
+            String result = decode(nativeEvalViewportUnitsFixture(host));
+            Log.i(TAG, "SPINON_C066A_EVAL " + result);
+            postStatus(runtimeStatusSummary(result));
+            if (result.startsWith("status=0 ")) requestDraw();
+        });
+    }
+
+    private void evaluateMinMaxSizingFixture() {
+        enqueueRuntime(() -> {
+            final long host;
+            synchronized (stateLock) {
+                if (closing || hostHandle == 0) return;
+                host = hostHandle;
+            }
+            String result = decode(nativeEvalMinMaxSizingFixture(host));
+            Log.i(TAG, "SPINON_C071_EVAL " + result);
             postStatus(runtimeStatusSummary(result));
             if (result.startsWith("status=0 ")) requestDraw();
         });

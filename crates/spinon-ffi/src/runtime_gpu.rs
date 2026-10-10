@@ -23,6 +23,20 @@ const RUNTIME_CSS_RESULT_CACHE_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c05/runtime-result-cache.js");
 const RUNTIME_CSS_INCREMENTAL_RESTYLE_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c05/runtime-incremental-restyle-runtime.js");
+const RUNTIME_CSS_PERCENTAGE_DIMENSIONS_FIXTURE_SOURCE: &str =
+    include_str!("../../../tests/fixtures/css/c06/runtime-percentage-dimensions.js");
+const RUNTIME_CSS_SPACING_PERCENTAGES_FIXTURE_SOURCE: &str =
+    include_str!("../../../tests/fixtures/css/c06/runtime-spacing-percentages.js");
+const RUNTIME_CSS_ABSOLUTE_LENGTHS_FIXTURE_SOURCE: &str =
+    include_str!("../../../tests/fixtures/css/c06/runtime-absolute-lengths.js");
+const RUNTIME_CSS_FONT_RELATIVE_UNITS_FIXTURE_SOURCE: &str =
+    include_str!("../../../tests/fixtures/css/c06/runtime-font-relative-units.js");
+const RUNTIME_CSS_TYPED_MATH_FIXTURE_SOURCE: &str =
+    include_str!("../../../tests/fixtures/css/c06/runtime-typed-css-math.js");
+const RUNTIME_CSS_VIEWPORT_UNITS_FIXTURE_SOURCE: &str =
+    include_str!("../../../tests/fixtures/css/c06/runtime-viewport-units.js");
+const RUNTIME_CSS_MIN_MAX_SIZING_FIXTURE_SOURCE: &str =
+    include_str!("../../../tests/fixtures/css/c07/runtime-min-max-sizing.js");
 
 #[repr(C)]
 pub struct SpinonRuntimeGpuHost {
@@ -444,8 +458,6 @@ impl RuntimeGpuHost {
     }
 
     fn destroy_renderer(&self) -> Result<(), (i32, String)> {
-        self.invalidate_scene()
-            .map_err(|error| (ERR_STALE, error))?;
         let renderer = lock(&self.renderer).take();
         let pending = lock(&self.pending_uikit_surface).take();
         drop(renderer);

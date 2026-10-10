@@ -1,0 +1,520 @@
+{
+  "schema": "spinon-css-c06-font-relative-units-reference/v1",
+  "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.98-b35f36f8a735-583528be2ea6",
+  "fixture": {
+    "id": "C06.4-font-relative-units-v1",
+    "inventoryPath": "tests/fixtures/css/c06/font-relative-units-inventory.json",
+    "inventorySha256": "b35f36f8a735b4beb2bf5526e04c4eccdcb04632e04d9fbef92ae5e0726df7c5",
+    "htmlPath": "tests/fixtures/css/c06/font-relative-units.html",
+    "htmlSha256": "afbb23143d8da1ecf9b5d2aec70aa1c7276981e3d6b0eec7cabc52b19e654628"
+  },
+  "captureTool": {
+    "path": "tools/css-reference/capture-c06-font-relative-units.mjs",
+    "sha256": "583528be2ea6ce7719fb04b8ea985fc2d2924dc62b53ecb99f0b69c4de3381a7",
+    "dependencies": [
+      {
+        "path": "tools/css-reference/chromium-session.mjs",
+        "sha256": "b010ada41ed75dc2d67ee25abd4266b17930f1de95fc683eebc5cdab6ad2cdc1"
+      }
+    ]
+  },
+  "oracle": {
+    "name": "Google Chrome",
+    "product": "Chrome/154.0.8037.98",
+    "cliVersion": "Google Chrome 154.0.8037.98",
+    "revision": "@b859317bf11f6be47f9b7799ec690a0a42a1fb33",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "executablePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "executableSha256": "ccffd5c5fe77ba3212e07c2c69091f8048b73c396b4647ecaa150e1e01a04954",
+    "host": {
+      "platform": "darwin",
+      "architecture": "arm64",
+      "release": "25.5.0",
+      "node": "v26.7.0"
+    },
+    "flags": [
+      "--headless=new",
+      "--no-first-run",
+      "--no-default-browser-check",
+      "--disable-background-networking",
+      "--lang=en-US",
+      "--remote-debugging-port=0",
+      "--user-data-dir=<temporary-profile>"
+    ]
+  },
+  "environment": {
+    "viewportCssPx": {
+      "width": 320,
+      "height": 800
+    },
+    "deviceScaleFactors": [
+      1,
+      2
+    ],
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "forcedColors": "none",
+    "pointer": "coarse",
+    "hover": "none"
+  },
+  "comparison": {
+    "coordinateSpace": "CSS px",
+    "maximumAbsoluteFrameErrorCssPx": 0.5,
+    "fontRelativeUnits": [
+      "em",
+      "rem"
+    ],
+    "metricUnitsFailClosed": [
+      "ex",
+      "rex",
+      "ch",
+      "rch",
+      "cap",
+      "rcap",
+      "ic",
+      "ric",
+      "lh",
+      "rlh"
+    ],
+    "textLayout": "out of scope"
+  },
+  "observations": [
+    {
+      "fixtureId": "C06.4-font-relative-units-v1",
+      "viewport": {
+        "width": 320,
+        "height": 800,
+        "deviceScaleFactor": 1
+      },
+      "environment": {
+        "locale": "en-US",
+        "intlLocale": "en-US",
+        "timeZone": "UTC",
+        "dark": false,
+        "coarsePointer": true,
+        "hover": false
+      },
+      "nodes": [
+        {
+          "id": "html",
+          "properties": {
+            "font-size": "20px"
+          },
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 780
+          }
+        },
+        {
+          "id": "body",
+          "properties": {
+            "font-size": "20px",
+            "width": "320px",
+            "height": "780px"
+          },
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 780
+          }
+        },
+        {
+          "id": "mount",
+          "properties": {
+            "font-size": "10px",
+            "width": "300px",
+            "height": "780px"
+          },
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 300,
+            "height": 780
+          }
+        },
+        {
+          "id": "em-inherit",
+          "properties": {
+            "font-size": "10px",
+            "width": "20px",
+            "height": "10px"
+          },
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 10
+          }
+        },
+        {
+          "id": "em-parent",
+          "properties": {
+            "font-size": "12px",
+            "width": "24px",
+            "height": "12px"
+          },
+          "rect": {
+            "x": 0,
+            "y": 12,
+            "width": 24,
+            "height": 12
+          }
+        },
+        {
+          "id": "em-child",
+          "properties": {
+            "font-size": "18px",
+            "width": "18px",
+            "height": "18px"
+          },
+          "rect": {
+            "x": 0,
+            "y": 12,
+            "width": 18,
+            "height": 18
+          }
+        },
+        {
+          "id": "rem-target",
+          "properties": {
+            "font-size": "25px",
+            "width": "40px",
+            "height": "20px",
+            "margin-left": "5px",
+            "padding-left": "10px"
+          },
+          "rect": {
+            "x": 5,
+            "y": 26,
+            "width": 50,
+            "height": 20
+          }
+        },
+        {
+          "id": "font-size-percent",
+          "properties": {
+            "font-size": "15px",
+            "width": "15px",
+            "height": "15px"
+          },
+          "rect": {
+            "x": 0,
+            "y": 48,
+            "width": 15,
+            "height": 15
+          }
+        },
+        {
+          "id": "zero",
+          "properties": {
+            "font-size": "0px",
+            "width": "0px",
+            "height": "0px"
+          },
+          "rect": {
+            "x": 0,
+            "y": 65,
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "id": "var-em",
+          "properties": {
+            "font-size": "14px",
+            "width": "28px",
+            "height": "14px"
+          },
+          "rect": {
+            "x": 0,
+            "y": 67,
+            "width": 28,
+            "height": 14
+          }
+        },
+        {
+          "id": "var-rem",
+          "properties": {
+            "font-size": "14px",
+            "width": "40px",
+            "height": "14px"
+          },
+          "rect": {
+            "x": 0,
+            "y": 83,
+            "width": 40,
+            "height": 14
+          }
+        },
+        {
+          "id": "spacing",
+          "properties": {
+            "font-size": "12px",
+            "width": "120px",
+            "height": "60px",
+            "row-gap": "3px",
+            "column-gap": "6px",
+            "margin-left": "6px",
+            "padding-left": "3px"
+          },
+          "rect": {
+            "x": 6,
+            "y": 99,
+            "width": 120,
+            "height": 60
+          }
+        },
+        {
+          "id": "basis-a",
+          "properties": {
+            "font-size": "12px",
+            "flex-basis": "24px",
+            "height": "24px"
+          },
+          "rect": {
+            "x": 9,
+            "y": 99,
+            "width": 117,
+            "height": 24
+          }
+        },
+        {
+          "id": "basis-b",
+          "properties": {
+            "font-size": "12px",
+            "flex-basis": "20px",
+            "height": "20px"
+          },
+          "rect": {
+            "x": 9,
+            "y": 126,
+            "width": 117,
+            "height": 20
+          }
+        }
+      ]
+    },
+    {
+      "fixtureId": "C06.4-font-relative-units-v1",
+      "viewport": {
+        "width": 320,
+        "height": 800,
+        "deviceScaleFactor": 2
+      },
+      "environment": {
+        "locale": "en-US",
+        "intlLocale": "en-US",
+        "timeZone": "UTC",
+        "dark": false,
+        "coarsePointer": true,
+        "hover": false
+      },
+      "nodes": [
+        {
+          "id": "html",
+          "properties": {
+            "font-size": "20px"
+          },
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 780
+          }
+        },
+        {
+          "id": "body",
+          "properties": {
+            "font-size": "20px",
+            "width": "320px",
+            "height": "780px"
+          },
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 780
+          }
+        },
+        {
+          "id": "mount",
+          "properties": {
+            "font-size": "10px",
+            "width": "300px",
+            "height": "780px"
+          },
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 300,
+            "height": 780
+          }
+        },
+        {
+          "id": "em-inherit",
+          "properties": {
+            "font-size": "10px",
+            "width": "20px",
+            "height": "10px"
+          },
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 10
+          }
+        },
+        {
+          "id": "em-parent",
+          "properties": {
+            "font-size": "12px",
+            "width": "24px",
+            "height": "12px"
+          },
+          "rect": {
+            "x": 0,
+            "y": 12,
+            "width": 24,
+            "height": 12
+          }
+        },
+        {
+          "id": "em-child",
+          "properties": {
+            "font-size": "18px",
+            "width": "18px",
+            "height": "18px"
+          },
+          "rect": {
+            "x": 0,
+            "y": 12,
+            "width": 18,
+            "height": 18
+          }
+        },
+        {
+          "id": "rem-target",
+          "properties": {
+            "font-size": "25px",
+            "width": "40px",
+            "height": "20px",
+            "margin-left": "5px",
+            "padding-left": "10px"
+          },
+          "rect": {
+            "x": 5,
+            "y": 26,
+            "width": 50,
+            "height": 20
+          }
+        },
+        {
+          "id": "font-size-percent",
+          "properties": {
+            "font-size": "15px",
+            "width": "15px",
+            "height": "15px"
+          },
+          "rect": {
+            "x": 0,
+            "y": 48,
+            "width": 15,
+            "height": 15
+          }
+        },
+        {
+          "id": "zero",
+          "properties": {
+            "font-size": "0px",
+            "width": "0px",
+            "height": "0px"
+          },
+          "rect": {
+            "x": 0,
+            "y": 65,
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "id": "var-em",
+          "properties": {
+            "font-size": "14px",
+            "width": "28px",
+            "height": "14px"
+          },
+          "rect": {
+            "x": 0,
+            "y": 67,
+            "width": 28,
+            "height": 14
+          }
+        },
+        {
+          "id": "var-rem",
+          "properties": {
+            "font-size": "14px",
+            "width": "40px",
+            "height": "14px"
+          },
+          "rect": {
+            "x": 0,
+            "y": 83,
+            "width": 40,
+            "height": 14
+          }
+        },
+        {
+          "id": "spacing",
+          "properties": {
+            "font-size": "12px",
+            "width": "120px",
+            "height": "60px",
+            "row-gap": "3px",
+            "column-gap": "6px",
+            "margin-left": "6px",
+            "padding-left": "3px"
+          },
+          "rect": {
+            "x": 6,
+            "y": 99,
+            "width": 120,
+            "height": 60
+          }
+        },
+        {
+          "id": "basis-a",
+          "properties": {
+            "font-size": "12px",
+            "flex-basis": "24px",
+            "height": "24px"
+          },
+          "rect": {
+            "x": 9,
+            "y": 99,
+            "width": 117,
+            "height": 24
+          }
+        },
+        {
+          "id": "basis-b",
+          "properties": {
+            "font-size": "12px",
+            "flex-basis": "20px",
+            "height": "20px"
+          },
+          "rect": {
+            "x": 9,
+            "y": 126,
+            "width": 117,
+            "height": 20
+          }
+        }
+      ]
+    }
+  ]
+}

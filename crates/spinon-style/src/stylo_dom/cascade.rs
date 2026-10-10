@@ -44,11 +44,25 @@ mod ua_baseline_tests;
 #[path = "cascade/ua_incremental_profile_tests.rs"]
 mod ua_incremental_profile_tests;
 
+#[cfg(test)]
+#[path = "cascade/font_relative_units_tests.rs"]
+mod font_relative_units_tests;
+
+#[cfg(test)]
+#[path = "cascade/container_relative_units_tests.rs"]
+mod container_relative_units_tests;
+
+#[cfg(test)]
+#[path = "cascade/typed_css_math_tests.rs"]
+mod typed_css_math_tests;
+
 pub use margin::compute_flex_margin_cascade;
 pub use margin::compute_flex_media_environment_cascade;
 pub use snapshot::{
-    CascadeDiagnostic, ComputedElementStyle, ComputedStyleProfile, ComputedStyleSnapshot,
-    CssColorScheme, CssMediaEnvironment, CssPointerCapabilities, CssPrimaryPointer, CssViewport,
+    CascadeDiagnostic, ComputedCssDimension, ComputedCssEdges, ComputedCssMath, ComputedCssMaxSize,
+    ComputedCssSpacingValue, ComputedElementStyle, ComputedLayoutDimensions, ComputedLayoutSpacing,
+    ComputedStyleProfile, ComputedStyleSnapshot, CssColorScheme, CssMediaEnvironment,
+    CssPointerCapabilities, CssPrimaryPointer, CssViewport,
 };
 pub use ua_baseline::compute_supported_elements_ua_cascade;
 
@@ -128,6 +142,38 @@ const FLEX_ALIGNMENT_AUTHOR_PROPERTIES: &[&str] = &[
 pub enum CssCascadeError {
     InvalidViewport,
     InvalidMediaEnvironment,
+    /// computed font-size를 유한한 음이 아닌 CSS px로 바꿀 수 없습니다.
+    InvalidComputedFontSize {
+        node: Option<NodeId>,
+    },
+    /// 값이 실제 플랫폼 font metrics에 의존하지만 현재 metric provider가 고정 placeholder입니다.
+    UnsupportedFontMetricUnit {
+        source_id: String,
+        node: Option<NodeId>,
+        unit: String,
+    },
+    /// C21 container query ownership가 아직 없어서 container-relative length를 계산할 수 없습니다.
+    UnsupportedContainerRelativeUnit {
+        source_id: String,
+        node: Option<NodeId>,
+        unit: String,
+    },
+    /// 합성 cascade 전용 html/body 상자의 미지원 레이아웃 변경을 조용히 버리지 않습니다.
+    UnsupportedSyntheticDocumentStyle {
+        element: &'static str,
+        property: &'static str,
+        value: String,
+    },
+    /// font metric 검사기가 CSS token stream을 안전하게 끝까지 읽지 못했습니다.
+    InvalidFontMetricInput {
+        source_id: String,
+        node: Option<NodeId>,
+    },
+    /// container-relative unit 검사기가 CSS token stream을 안전하게 끝까지 읽지 못했습니다.
+    InvalidContainerRelativeUnitInput {
+        source_id: String,
+        node: Option<NodeId>,
+    },
     InvalidStylesheetOrigin {
         id: String,
     },
@@ -158,6 +204,44 @@ impl fmt::Display for CssCascadeError {
             Self::InvalidMediaEnvironment => {
                 formatter.write_str("CSS media 환경의 primary·전체 포인터 기능이 모순됩니다")
             }
+            Self::InvalidComputedFontSize { node } => {
+                write!(
+                    formatter,
+                    "computed font-size가 유한한 CSS px가 아닙니다: {node:?}"
+                )
+            }
+            Self::UnsupportedFontMetricUnit {
+                source_id,
+                node,
+                unit,
+            } => write!(
+                formatter,
+                "{source_id}의 font metric 단위 {unit}은 현재 지원하지 않습니다: {node:?}"
+            ),
+            Self::UnsupportedContainerRelativeUnit {
+                source_id,
+                node,
+                unit,
+            } => write!(
+                formatter,
+                "{source_id}의 container 상대 단위 {unit}은 C21 container query 지원 전까지 사용할 수 없습니다: {node:?}"
+            ),
+            Self::UnsupportedSyntheticDocumentStyle {
+                element,
+                property,
+                value,
+            } => write!(
+                formatter,
+                "합성 {element}은 cascade 전용이라 {property}: {value} 레이아웃을 지원하지 않습니다"
+            ),
+            Self::InvalidFontMetricInput { source_id, node } => write!(
+                formatter,
+                "{source_id}의 CSS 단위 입력을 안전하게 검사할 수 없습니다: {node:?}"
+            ),
+            Self::InvalidContainerRelativeUnitInput { source_id, node } => write!(
+                formatter,
+                "{source_id}의 container 단위 입력을 안전하게 검사할 수 없습니다: {node:?}"
+            ),
             Self::InvalidStylesheetOrigin { id } => {
                 write!(
                     formatter,
