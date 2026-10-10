@@ -232,6 +232,7 @@ pub enum LayoutPosition {
     #[default]
     Static,
     Relative,
+    Absolute,
 }
 
 /// `LayoutStyle`의 기존 크기·Flex 입력과 분리한 CSS positioning 입력입니다.

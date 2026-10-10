@@ -24,10 +24,10 @@ pub(super) fn to_taffy_style(
     node: NodeId,
     style: LayoutStyle,
     positioning: LayoutPositioning,
-    ignore_relative_inset: bool,
+    flow_only: bool,
     calc_handles: &BTreeMap<LayoutCalcId, *const ()>,
 ) -> Result<Style, LayoutError> {
-    let inset = if positioning.position == LayoutPosition::Relative && !ignore_relative_inset {
+    let inset = if !flow_only && positioning.position != LayoutPosition::Static {
         positioning.inset
     } else {
         LayoutEdges::auto()
@@ -47,7 +47,10 @@ pub(super) fn to_taffy_style(
             TextDirection::Ltr => TaffyDirection::Ltr,
             TextDirection::Rtl => TaffyDirection::Rtl,
         },
-        position: TaffyPosition::Relative,
+        position: match (flow_only, positioning.position) {
+            (false, LayoutPosition::Absolute) => TaffyPosition::Absolute,
+            _ => TaffyPosition::Relative,
+        },
         inset: Rect {
             top: to_taffy_length_percentage_auto(
                 node,

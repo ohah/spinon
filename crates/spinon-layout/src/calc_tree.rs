@@ -14,7 +14,9 @@ use taffy::{
 };
 
 use crate::{
-    LayoutCalcId, LayoutCssMathValue, LayoutError, LayoutInput, RootSizingPolicy,
+    LayoutCalcId, LayoutCssMathValue, LayoutError, LayoutInput, LayoutPosition,
+    PositionedContainingBlockOwner, RootSizingPolicy,
+    positioning::collect_positioned_owners,
     taffy_style::{to_taffy_style, viewport_block_containing_style},
 };
 
@@ -45,6 +47,8 @@ impl Node {
 pub(super) struct CalcLayoutTree {
     nodes: Vec<Node>,
     pub(super) engine_ids: BTreeMap<SpinonNodeId, TaffyNodeId>,
+    layout_children: BTreeMap<SpinonNodeId, Vec<SpinonNodeId>>,
+    viewport_children: Vec<SpinonNodeId>,
     viewport_root: Option<TaffyNodeId>,
     calc_values: HashMap<*const (), Arc<CalcOwner>>,
     calc_error: RefCell<Option<LayoutError>>,
@@ -71,7 +75,7 @@ impl CalcLayoutTree {
         input: &LayoutInput,
         index: &BTreeMap<SpinonNodeId, usize>,
         postorder: &[SpinonNodeId],
-        ignore_relative_inset: bool,
+        flow_only: bool,
     ) -> Result<Self, LayoutError> {
         let mut calc_owners = BTreeMap::<LayoutCalcId, Arc<CalcOwner>>::new();
         for value in &input.css_math {
@@ -96,11 +100,26 @@ impl CalcLayoutTree {
             engine_ids.insert(external_id, engine_id);
         }
 
-        let mut nodes = Vec::with_capacity(postorder.len());
+        let mut layout_children = input
+            .nodes
+            .iter()
+            .map(|node| (node.id, node.children.clone()))
+            .collect::<BTreeMap<_, _>>();
+        let mut viewport_children = Vec::new();
+        if !flow_only {
+            reparent_absolute_children(
+                input,
+                index,
+                postorder,
+                &mut layout_children,
+                &mut viewport_children,
+            )?;
+        }
+
+        let mut nodes = Vec::with_capacity(postorder.len() + 1);
         for (position, external_id) in postorder.iter().copied().enumerate() {
             let source = &input.nodes[index[&external_id]];
-            let mut children = source
-                .children
+            let mut children = layout_children[&external_id]
                 .iter()
                 .map(|child| engine_ids[child])
                 .collect::<Vec<_>>();
@@ -120,7 +139,7 @@ impl CalcLayoutTree {
                 external_id,
                 source.style,
                 positioning,
-                ignore_relative_inset,
+                flow_only,
                 &calc_handles,
             )?;
             let order = u32::try_from(position).map_err(|_| LayoutError::TooManyNodes)?;
@@ -132,7 +151,8 @@ impl CalcLayoutTree {
             || input
                 .positioning
                 .get(&input.root)
-                .is_some_and(|positioning| positioning.position == crate::LayoutPosition::Relative);
+                .is_some_and(|positioning| positioning.position == LayoutPosition::Relative)
+            || !viewport_children.is_empty();
         let viewport_root = if needs_viewport_containing_block {
             let position = postorder.len();
             u32::try_from(position).map_err(|_| LayoutError::TooManyNodes)?;
@@ -141,8 +161,11 @@ impl CalcLayoutTree {
                 return Err(LayoutError::TooManyNodes);
             }
             let order = u32::try_from(position).map_err(|_| LayoutError::TooManyNodes)?;
+            let mut root_children = Vec::with_capacity(viewport_children.len() + 1);
+            root_children.push(engine_ids[&input.root]);
+            root_children.extend(viewport_children.iter().map(|id| engine_ids[id]));
             nodes.push(Node::new(
-                vec![engine_ids[&input.root]],
+                root_children,
                 viewport_block_containing_style(input.viewport),
                 order,
             ));
@@ -154,6 +177,8 @@ impl CalcLayoutTree {
         Ok(Self {
             nodes,
             engine_ids,
+            layout_children,
+            viewport_children,
             viewport_root,
             calc_values,
             calc_error: RefCell::new(None),
@@ -166,6 +191,21 @@ impl CalcLayoutTree {
 
     pub(super) fn root_engine_id(&self, id: SpinonNodeId) -> TaffyNodeId {
         self.viewport_root.unwrap_or_else(|| self.engine_id(id))
+    }
+
+    pub(super) fn layout_children(&self, id: SpinonNodeId) -> &[SpinonNodeId] {
+        &self.layout_children[&id]
+    }
+
+    pub(super) fn root_children(&self, id: SpinonNodeId) -> Vec<SpinonNodeId> {
+        if self.viewport_root.is_some() {
+            let mut children = Vec::with_capacity(self.viewport_children.len() + 1);
+            children.push(id);
+            children.extend(self.viewport_children.iter().copied());
+            children
+        } else {
+            vec![id]
+        }
     }
 
     pub(super) fn compute_layout(&mut self, root: TaffyNodeId, available: Size<AvailableSpace>) {
@@ -254,6 +294,79 @@ impl CalcLayoutTree {
             *slot = Some(error);
         }
     }
+}
+
+fn reparent_absolute_children(
+    input: &LayoutInput,
+    index: &BTreeMap<SpinonNodeId, usize>,
+    postorder: &[SpinonNodeId],
+    children: &mut BTreeMap<SpinonNodeId, Vec<SpinonNodeId>>,
+    viewport_children: &mut Vec<SpinonNodeId>,
+) -> Result<(), LayoutError> {
+    let owners = collect_positioned_owners(input, index);
+    let mut source_parents = BTreeMap::new();
+    for node in &input.nodes {
+        for &child in &node.children {
+            source_parents.insert(child, node.id);
+        }
+    }
+
+    for &id in postorder {
+        if input
+            .positioning
+            .get(&id)
+            .is_none_or(|value| value.position != LayoutPosition::Absolute)
+        {
+            continue;
+        }
+        let destination = owners[&id];
+        if destination == PositionedContainingBlockOwner::NoBox {
+            continue;
+        }
+        let source_parent =
+            source_parents
+                .get(&id)
+                .copied()
+                .ok_or(LayoutError::UnsupportedPositioning {
+                    node: id,
+                    reason: "absolute 노드의 원본 부모를 찾을 수 없습니다",
+                })?;
+        let destination_parent = match destination {
+            PositionedContainingBlockOwner::Viewport => None,
+            PositionedContainingBlockOwner::Node(owner) => Some(owner),
+            PositionedContainingBlockOwner::NoBox => unreachable!(),
+        };
+        if destination_parent == Some(source_parent) {
+            continue;
+        }
+
+        let source_children =
+            children
+                .get_mut(&source_parent)
+                .ok_or(LayoutError::UnsupportedPositioning {
+                    node: id,
+                    reason: "absolute 노드의 원본 layout parent가 없습니다",
+                })?;
+        let Some(source_position) = source_children.iter().position(|&child| child == id) else {
+            return Err(LayoutError::UnsupportedPositioning {
+                node: id,
+                reason: "absolute 노드를 원본 layout parent에서 찾을 수 없습니다",
+            });
+        };
+        source_children.remove(source_position);
+        if let Some(owner) = destination_parent {
+            children
+                .get_mut(&owner)
+                .ok_or(LayoutError::UnsupportedPositioning {
+                    node: id,
+                    reason: "absolute containing block owner가 layout graph에 없습니다",
+                })?
+                .push(id);
+        } else {
+            viewport_children.push(id);
+        }
+    }
+    Ok(())
 }
 
 impl TraversePartialTree for CalcLayoutTree {

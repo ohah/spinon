@@ -1,4 +1,7 @@
-use super::{PresentationScenes, scene_matches_layout_key};
+use super::{
+    PresentationScenes, RUNTIME_CSS_C12_2_ABSOLUTE_BLOCK_FIXTURE_SOURCE, RuntimeGpuHost,
+    scene_matches_layout_key,
+};
 use spinon_core::{EnvironmentRevision, HostDocument, StyleRevision};
 use spinon_render::{CssSize, RuntimeRenderKey, RuntimeRenderSnapshot};
 use spinon_runtime::RuntimeUaCascadeKey;
@@ -75,6 +78,111 @@ fn new_presentation_sequence_hides_the_old_scene_and_accepts_only_current_publis
 
     assert!(presentation.publish(second, empty_scene()));
     assert_eq!(presentation.sequence(), second);
+}
+
+#[test]
+#[ignore = "호스트 V8 바인딩이 초기화되지 않는 환경에서는 Android·iOS fixture 실행으로 검증합니다"]
+fn c12_2_absolute_runtime_frames_match_the_pinned_chromium_geometry() {
+    let inventory: serde_json::Value = serde_json::from_str(include_str!(
+        "../../../../tests/fixtures/css/c12/position-absolute-block-inventory.json"
+    ))
+    .unwrap();
+    let reference: serde_json::Value = serde_json::from_str(include_str!(
+        "../../../../tests/fixtures/css/references/c12-2-position-absolute-block-v1.json"
+    ))
+    .unwrap();
+    let expected_nodes = inventory["nodes"].as_array().unwrap();
+    let reference_nodes = reference["observations"][0]["nodes"].as_array().unwrap();
+    assert_eq!(expected_nodes.len(), 82);
+    assert_eq!(reference_nodes.len(), expected_nodes.len());
+    for (expected, observed) in expected_nodes.iter().zip(reference_nodes) {
+        assert_eq!(expected["id"], observed["id"]);
+    }
+
+    let (host, _) = RuntimeGpuHost::new_c12_2_absolute_block_fixture().unwrap();
+    host.set_environment(360.0, 800.0, 1.0, false, 10_000)
+        .unwrap();
+    let report = host
+        .eval(RUNTIME_CSS_C12_2_ABSOLUTE_BLOCK_FIXTURE_SOURCE, 10_000)
+        .unwrap();
+    let actual_nodes = parse_node_frames(&report);
+    assert_eq!(actual_nodes.len(), expected_nodes.len() + 1, "{report}");
+    let style_element = actual_nodes[1];
+    assert_eq!(
+        (
+            style_element.2,
+            style_element.3,
+            style_element.4,
+            style_element.5
+        ),
+        (0.0, 0.0, 0.0, 0.0)
+    );
+    let actual_nodes = actual_nodes
+        .iter()
+        .enumerate()
+        .filter_map(|(index, frame)| (index != 1).then_some(*frame))
+        .collect::<Vec<_>>();
+    assert_eq!(actual_nodes.len(), expected_nodes.len(), "{report}");
+
+    let tolerance = reference["comparison"]["maximumAbsoluteRectErrorCssPx"]
+        .as_f64()
+        .unwrap() as f32;
+    for (((expected, observed), actual), index) in expected_nodes
+        .iter()
+        .zip(reference_nodes)
+        .zip(actual_nodes)
+        .zip(0..)
+    {
+        let node_id = expected["id"].as_str().unwrap();
+        assert_eq!(
+            actual.0,
+            if index > 0 { index + 1 } else { index },
+            "node {index} ({node_id}) runtime source-order index"
+        );
+        let rect = &observed["rect"];
+        for (field, value) in [
+            ("x", actual.2),
+            ("y", actual.3),
+            ("width", actual.4),
+            ("height", actual.5),
+        ] {
+            let target = rect[field].as_f64().unwrap() as f32;
+            assert!(
+                (value - target).abs() <= tolerance,
+                "node {index} ({node_id}) {field}: runtime={value} Chromium={target}; {report}"
+            );
+        }
+    }
+}
+
+fn parse_node_frames(report: &str) -> Vec<(usize, u64, f32, f32, f32, f32)> {
+    let Some(frames) = report
+        .split_once(" node_frames_css_px=[")
+        .and_then(|(_, value)| value.split_once(']'))
+        .map(|(frames, _)| frames)
+    else {
+        panic!("runtime frame 보고가 없습니다: {report}");
+    };
+    frames
+        .split(';')
+        .map(|frame| {
+            let (index, values) = frame.split_once(':').unwrap();
+            let fields = values
+                .split(',')
+                .map(|field| field.split_once('=').unwrap())
+                .collect::<Vec<_>>();
+            assert_eq!(fields.len(), 5);
+            assert_eq!(fields[0].0, "node");
+            (
+                index.parse().unwrap(),
+                fields[0].1.parse().unwrap(),
+                fields[1].1.parse().unwrap(),
+                fields[2].1.parse().unwrap(),
+                fields[3].1.parse().unwrap(),
+                fields[4].1.parse().unwrap(),
+            )
+        })
+        .collect()
 }
 
 #[test]

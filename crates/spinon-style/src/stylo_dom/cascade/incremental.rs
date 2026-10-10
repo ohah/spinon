@@ -160,6 +160,9 @@ fn runtime_properties_for_profile(
     if profile == ComputedStyleProfile::RuntimeBlockFormattingV1 {
         return Some(runtime_paint::runtime_block_formatting_properties());
     }
+    if profile == ComputedStyleProfile::RuntimeBlockPositioningV1 {
+        return Some(runtime_paint::runtime_block_positioning_properties());
+    }
     let has_paint = matches!(
         profile,
         ComputedStyleProfile::RuntimeFlexPaintV1
@@ -203,5 +206,6 @@ fn is_runtime_layout_profile(profile: ComputedStyleProfile) -> bool {
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
             | ComputedStyleProfile::RuntimeBlockPaintV1
             | ComputedStyleProfile::RuntimeBlockFormattingV1
+            | ComputedStyleProfile::RuntimeBlockPositioningV1
     )
 }

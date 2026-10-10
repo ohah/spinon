@@ -9,6 +9,7 @@ use spinon_style::{
     ComputedStyleProfile, CssCascadeError, RuntimeCascadeReuseStats, StyloDocumentView,
     compute_runtime_block_formatting_cascade_with_stylesheets,
     compute_runtime_block_paint_cascade_with_stylesheets,
+    compute_runtime_block_positioning_cascade_with_stylesheets,
     compute_runtime_flex_custom_properties_cascade_with_stylesheets,
     compute_runtime_flex_custom_properties_paint_cascade_with_stylesheets,
     compute_runtime_flex_registered_properties_paint_cascade_with_stylesheets,
@@ -24,6 +25,7 @@ pub(super) enum RuntimeCalculationProfile {
     RegisteredPropertiesPaint,
     BlockPaint,
     BlockFormatting,
+    BlockPositioning,
 }
 
 impl RuntimeCalculationProfile {
@@ -154,6 +156,12 @@ pub(super) fn compute_request_for_block_formatting(
     compute_request_with_profile(request, RuntimeCalculationProfile::BlockFormatting)
 }
 
+pub(super) fn compute_request_for_block_positioning(
+    request: &WorkRequest,
+) -> Result<RuntimeCalculation, String> {
+    compute_request_with_profile(request, RuntimeCalculationProfile::BlockPositioning)
+}
+
 fn compute_request_with_profile(
     request: &WorkRequest,
     profile: RuntimeCalculationProfile,
@@ -257,6 +265,9 @@ fn compute_root(
         RuntimeCalculationProfile::BlockFormatting => {
             ComputedStyleProfile::RuntimeBlockFormattingV1
         }
+        RuntimeCalculationProfile::BlockPositioning => {
+            ComputedStyleProfile::RuntimeBlockPositioningV1
+        }
     };
     let previous_style_root = request
         .previous_styles
@@ -331,6 +342,14 @@ fn compute_root(
             }
             RuntimeCalculationProfile::BlockFormatting => {
                 compute_runtime_block_formatting_cascade_with_stylesheets(
+                    &view,
+                    author_stylesheets,
+                    request.viewport,
+                    StyleRevision::INITIAL,
+                )
+            }
+            RuntimeCalculationProfile::BlockPositioning => {
+                compute_runtime_block_positioning_cascade_with_stylesheets(
                     &view,
                     author_stylesheets,
                     request.viewport,

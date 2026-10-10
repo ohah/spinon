@@ -20,6 +20,8 @@ mod c10_flex_wrap_tests;
 #[cfg(test)]
 mod c12_1_position_tests;
 #[cfg(test)]
+mod c12_2_absolute_tests;
+#[cfg(test)]
 mod cascade_layers_tests;
 #[cfg(test)]
 mod flex_alignment_tests;

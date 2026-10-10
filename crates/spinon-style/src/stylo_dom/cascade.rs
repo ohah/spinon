@@ -36,6 +36,7 @@ pub use runtime_layout::{
 pub use runtime_paint::{
     compute_runtime_block_formatting_cascade_with_stylesheets, compute_runtime_block_paint_cascade,
     compute_runtime_block_paint_cascade_with_stylesheets,
+    compute_runtime_block_positioning_cascade_with_stylesheets,
     compute_runtime_flex_custom_properties_paint_cascade,
     compute_runtime_flex_custom_properties_paint_cascade_with_stylesheets,
     compute_runtime_flex_paint_cascade,

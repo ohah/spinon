@@ -299,3 +299,102 @@ fn malformed_position_inputs_fail_closed_before_frame_publication() {
         Err(crate::LayoutError::UnsupportedPositioning { node, .. }) if node == child
     ));
 }
+
+#[test]
+fn absolute_child_of_flex_source_parent_fails_closed_until_c1035() {
+    let root = id(1);
+    let flex_parent = id(2);
+    let target = id(3);
+    let mut flex_node = fixed_block(flex_parent, vec![target], 80.0, 40.0);
+    flex_node.style.display = LayoutDisplay::Flex;
+    let result = TaffyLayoutEngine.compute(&input(
+        vec![
+            fixed_block(root, vec![flex_parent], 100.0, 100.0),
+            flex_node,
+            fixed_block(target, vec![], 20.0, 10.0),
+        ],
+        BTreeMap::from([(
+            target,
+            LayoutPositioning {
+                position: LayoutPosition::Absolute,
+                inset: LayoutEdges {
+                    left: LayoutLengthPercentage::length(4.0),
+                    top: LayoutLengthPercentage::length(3.0),
+                    ..LayoutEdges::auto()
+                },
+            },
+        )]),
+    ));
+
+    assert!(matches!(
+        result,
+        Err(crate::LayoutError::UnsupportedPositioning { node, reason })
+            if node == target && reason.contains("C10.3.5")
+    ));
+}
+
+#[test]
+fn absolute_child_with_flex_containing_block_fails_closed_until_c1035() {
+    let root = id(1);
+    let wrapper = id(2);
+    let target = id(3);
+    let mut root_node = fixed_block(root, vec![wrapper], 100.0, 100.0);
+    root_node.style.display = LayoutDisplay::Flex;
+    let result = TaffyLayoutEngine.compute(&input(
+        vec![
+            root_node,
+            fixed_block(wrapper, vec![target], 40.0, 20.0),
+            fixed_block(target, vec![], 20.0, 10.0),
+        ],
+        BTreeMap::from([
+            (
+                root,
+                LayoutPositioning {
+                    position: LayoutPosition::Relative,
+                    ..Default::default()
+                },
+            ),
+            (
+                target,
+                LayoutPositioning {
+                    position: LayoutPosition::Absolute,
+                    inset: LayoutEdges {
+                        left: LayoutLengthPercentage::length(4.0),
+                        top: LayoutLengthPercentage::length(3.0),
+                        ..LayoutEdges::auto()
+                    },
+                },
+            ),
+        ]),
+    ));
+
+    assert!(matches!(
+        result,
+        Err(crate::LayoutError::UnsupportedPositioning { node, reason })
+            if node == target && reason.contains("C10.3.5")
+    ));
+}
+
+#[test]
+fn absolute_layout_root_fails_closed_before_a_partial_frame_map_exists() {
+    let root = id(1);
+    let result = TaffyLayoutEngine.compute(&input(
+        vec![fixed_block(root, vec![], 100.0, 100.0)],
+        BTreeMap::from([(
+            root,
+            LayoutPositioning {
+                position: LayoutPosition::Absolute,
+                inset: LayoutEdges {
+                    left: LayoutLengthPercentage::length(4.0),
+                    top: LayoutLengthPercentage::length(3.0),
+                    ..LayoutEdges::auto()
+                },
+            },
+        )]),
+    ));
+
+    assert!(matches!(
+        result,
+        Err(crate::LayoutError::UnsupportedPositioning { node, .. }) if node == root
+    ));
+}

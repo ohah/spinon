@@ -163,6 +163,9 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         ComputedStyleProfile::RuntimeBlockFormattingV1 => {
             Some(super::runtime_paint::RUNTIME_BLOCK_FORMATTING_AUTHOR_PROPERTIES)
         }
+        ComputedStyleProfile::RuntimeBlockPositioningV1 => {
+            Some(super::runtime_paint::RUNTIME_BLOCK_POSITIONING_AUTHOR_PROPERTIES)
+        }
         ComputedStyleProfile::RuntimeFlexPaintV1 => None,
     };
     let unsupported_author_feature = match profile {
@@ -188,6 +191,11 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
                     profile == ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1,
                 )
             }),
+        ComputedStyleProfile::RuntimeBlockPositioningV1 => {
+            allowed_author_properties.and_then(|allowed| {
+                registry.first_unsupported_runtime_author_feature(allowed, true, true, true)
+            })
+        }
         _ => allowed_author_properties
             .and_then(|allowed| registry.first_unsupported_author_feature(allowed)),
     };

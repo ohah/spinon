@@ -409,6 +409,8 @@ fn detect_cycles(input: &LayoutInput, index: &BTreeMap<NodeId, usize>) -> Result
 }
 
 #[cfg(test)]
+mod absolute_position_tests;
+#[cfg(test)]
 mod positioning_tests;
 #[cfg(test)]
 mod tests;

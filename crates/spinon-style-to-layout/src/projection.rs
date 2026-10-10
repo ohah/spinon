@@ -185,7 +185,8 @@ fn compute_profile_layout(
         | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
         | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
         | ComputedStyleProfile::RuntimeBlockPaintV1
-        | ComputedStyleProfile::RuntimeBlockFormattingV1 => {
+        | ComputedStyleProfile::RuntimeBlockFormattingV1
+        | ComputedStyleProfile::RuntimeBlockPositioningV1 => {
             return Err(StyleLayoutError::UnsupportedProfile {
                 profile: format!("{profile:?}"),
             });
@@ -209,7 +210,9 @@ fn compute_layout_from_styles(
     }
     if matches!(
         computed_styles.profile,
-        ComputedStyleProfile::RuntimeBlockPaintV1 | ComputedStyleProfile::RuntimeBlockFormattingV1
+        ComputedStyleProfile::RuntimeBlockPaintV1
+            | ComputedStyleProfile::RuntimeBlockFormattingV1
+            | ComputedStyleProfile::RuntimeBlockPositioningV1
     ) {
         for element in computed_styles.elements.iter() {
             let display = element.properties.get("display").ok_or(
@@ -219,7 +222,8 @@ fn compute_layout_from_styles(
                 },
             )?;
             let supported_display = match computed_styles.profile {
-                ComputedStyleProfile::RuntimeBlockFormattingV1 => {
+                ComputedStyleProfile::RuntimeBlockFormattingV1
+                | ComputedStyleProfile::RuntimeBlockPositioningV1 => {
                     matches!(display.as_str(), "block" | "flow-root" | "none")
                 }
                 _ => matches!(display.as_str(), "block" | "none"),
@@ -255,7 +259,11 @@ fn compute_layout_from_styles(
         width: viewport.width_css_px,
         height: viewport.height_css_px,
     };
-    let input = if computed_styles.profile == ComputedStyleProfile::RuntimeBlockFormattingV1 {
+    let input = if matches!(
+        computed_styles.profile,
+        ComputedStyleProfile::RuntimeBlockFormattingV1
+            | ComputedStyleProfile::RuntimeBlockPositioningV1
+    ) {
         LayoutInput::from_host_document_with_block_formatting_viewport(
             snapshot,
             root,
@@ -274,6 +282,7 @@ fn compute_layout_from_styles(
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
             | ComputedStyleProfile::RuntimeBlockPaintV1
             | ComputedStyleProfile::RuntimeBlockFormattingV1
+            | ComputedStyleProfile::RuntimeBlockPositioningV1
     ) {
         LayoutInput::from_host_document_with_viewport_containing_block(
             snapshot,
@@ -306,6 +315,7 @@ fn compute_layout_from_styles(
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
             | ComputedStyleProfile::RuntimeBlockPaintV1
             | ComputedStyleProfile::RuntimeBlockFormattingV1
+            | ComputedStyleProfile::RuntimeBlockPositioningV1
     ) {
         zero_display_none_frames(snapshot, root, &styles, &mut layout);
     }
