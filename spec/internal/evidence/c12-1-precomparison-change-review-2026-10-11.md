@@ -34,4 +34,6 @@
 
 - 최초 검토에서 CSS Position 원본의 날짜 고정 URL, node-to-case 양방향 연결 검증, 한국어 fixture title이 빠져 있어 추가했다.
 - reference 검사에서 WPT 실행을 한 것으로 오인하지 않도록 고정 `not-run` 판정과 excluded path를 유지했다.
+- Tailscale 배포 경로를 대조했을 때 Funnel 자체는 실행 중이었지만 이미 빌드된 preview 파일이 이전 진행 문구를 담고 있었다. `spec/public/roadmap.html`의 현재 진행을 C12.1/PR #127로 수정하고 기존 preview 출력 파일도 갱신했다.
+- 갱신 후 외부 페이지 HTTP 200, 저장소 HTML·빌드 출력·응답 body의 SHA-256 `cad98ebcedf28a1b42e4abefe46b7b389faa5f5e03fb470d5159b75c7eb842a9` 일치, C12.1/PR #127 문구 존재와 이전 C10.3.3 진행 문구 제거를 확인했다. PR 본문에는 Tailscale URL을 넣지 않았고 GitHub Pages 배포를 실행하지 않았다.
 - 현재 남은 제품 작업은 내부 API 계약, Stylo cascade, Taffy 위치 DTO, flow/visual frame 전달, cache invalidation, Android 실기기·iOS Simulator 실행이다.
