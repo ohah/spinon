@@ -1472,6 +1472,7 @@ dependencies = [
 name = "spinon-style-to-layout"
 version = "0.1.0"
 dependencies = [
+ "serde",
  "serde_json",
  "spinon-core",
  "spinon-layout",

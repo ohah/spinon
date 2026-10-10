@@ -53,6 +53,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native byte[] nativeEvalFlexReverseFixture(long host);
     private static native byte[] nativeEvalFlexOrderFixture(long host);
     private static native byte[] nativeEvalFlexAlignmentFixture(long host);
+    private static native byte[] nativeEvalFlexBaselineFixture(long host);
     private static native long nativeCreateSurface(
             long host, Surface surface, int width, int height, int backend);
     private static native int nativeResizeSurface(long renderer, int width, int height);
@@ -97,6 +98,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean flexReverseProbeRequested;
     private final boolean flexOrderProbeRequested;
     private final boolean flexAlignmentProbeRequested;
+    private final boolean flexBaselineProbeRequested;
     private final boolean fixedSizeCssFixtureRequested;
     private final boolean registeredPropertiesProbeRequested;
     private final boolean authorStylesheetsProbeRequested;
@@ -167,11 +169,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 .getBooleanExtra("spinon_c1032_flex_order", false);
         flexAlignmentProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c1033_flex_alignment", false);
+        flexBaselineProbeRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c1034_flex_baseline", false);
         blockFormattingProbeRequested = flowRootProbeRequested || marginCollapseProbeRequested
                 || activity.getIntent().getBooleanExtra("spinon_c091_block_formatting", false);
         fixedSizeCssFixtureRequested = blockFormattingProbeRequested || flexWrapProbeRequested
                 || flexDistributionProbeRequested || flexReverseProbeRequested
-                || flexOrderProbeRequested || flexAlignmentProbeRequested;
+                || flexOrderProbeRequested || flexAlignmentProbeRequested
+                || flexBaselineProbeRequested;
         registeredPropertiesProbeRequested = runtimeResultCacheProbeRequested
                 || activity.getIntent().getBooleanExtra("spinon_c052_registered_properties", false);
         authorStylesheetsProbeRequested = activity.getIntent()
@@ -200,7 +205,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         setBackgroundColor(Color.rgb(14, 19, 31));
 
         TextView title = new TextView(activity);
-        title.setText(flexAlignmentProbeRequested
+        title.setText(flexBaselineProbeRequested
+                ? "SPINON · C10.3.4 Flex baseline"
+                : flexAlignmentProbeRequested
                 ? "SPINON · C10.3.3 Flex 정렬"
                 : flexReverseProbeRequested
                 ? "SPINON · C10.3.1 reverse Flex"
@@ -249,7 +256,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         addView(title, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 
         TextView description = new TextView(activity);
-        description.setText(flexAlignmentProbeRequested
+        description.setText(flexBaselineProbeRequested
+                ? "V8 first·last baseline·중첩 전파 → Stylo → Taffy → WGPU · 320×240 CSS px"
+                : flexAlignmentProbeRequested
                 ? "V8 align-items/self/content·place-* → Stylo → Taffy → WGPU · 320×240 CSS px"
                 : flexReverseProbeRequested
                 ? "V8 row-reverse·wrap-reverse → Stylo → Taffy → WGPU · 320×240 CSS px"
@@ -308,7 +317,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
         surfaceView = new SurfaceView(activity);
         surfaceView.getHolder().addCallback(this);
-        surfaceView.setContentDescription(flexAlignmentProbeRequested
+        surfaceView.setContentDescription(flexBaselineProbeRequested
+                ? "C10.3.4 Flex first·last baseline WGPU 장면"
+                : flexAlignmentProbeRequested
                 ? "C10.3.3 Flex Box Alignment WGPU 장면"
                 : flexReverseProbeRequested
                 ? "C10.3.1 row-reverse와 wrap-reverse WGPU 장면"
@@ -491,7 +502,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         Log.i(TAG, "SPINON_C0410_ENVIRONMENT viewport=" + widthCssPx + "x" + heightCssPx
                 + " scale=" + density + " dark=" + dark + " " + environment);
-        String result = flexAlignmentProbeRequested
+        String result = flexBaselineProbeRequested
+                ? decode(nativeEvalFlexBaselineFixture(host))
+                : flexAlignmentProbeRequested
                 ? decode(nativeEvalFlexAlignmentFixture(host))
                 : flexOrderProbeRequested
                 ? decode(nativeEvalFlexOrderFixture(host))
@@ -538,7 +551,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             postStatus("실패 · " + result);
             return;
         }
-        Log.i(TAG, (flexAlignmentProbeRequested
+        Log.i(TAG, (flexBaselineProbeRequested
+                ? "SPINON_C1034_EVAL " : flexAlignmentProbeRequested
                 ? "SPINON_C1033_EVAL " : flexOrderProbeRequested
                 ? "SPINON_C1032_EVAL " : flexReverseProbeRequested
                 ? "SPINON_C1031_EVAL " : flexDistributionProbeRequested

@@ -1,0 +1,124 @@
+{
+  "schema": "spinon-css-c10-3-4-flex-baseline-inventory/v1",
+  "fixtureId": "C10.3.4-flex-baseline-v1",
+  "viewport": {
+    "width": 320,
+    "height": 640,
+    "deviceScaleFactors": [1, 2]
+  },
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "forcedColors": "none",
+    "pointer": "coarse",
+    "hover": "none",
+    "writingMode": "horizontal-tb",
+    "direction": "ltr"
+  },
+  "comparison": {
+    "computedProperties": [
+      "align-items",
+      "align-self",
+      "align-content",
+      "place-items",
+      "place-self",
+      "place-content"
+    ],
+    "rectFields": ["x", "y", "width", "height"],
+    "maxCssPxDelta": 0.5
+  },
+  "wpt": {
+    "repository": "https://github.com/web-platform-tests/wpt",
+    "revision": "d5a765f1089ce6d3f72300281481edf3dddff7f3",
+    "execution": "not-run",
+    "paths": [
+      {
+        "path": "css/css-flexbox/align-items-baseline-row-horz.html",
+        "disposition": "excluded",
+        "caseIds": [],
+        "reason": "실제 텍스트 baseline과 글꼴·line box가 필요하며 C15 선행 계약 범위다."
+      },
+      {
+        "path": "css/css-flexbox/align-self-baseline-with-flex-wrap.html",
+        "disposition": "mapped-subset",
+        "caseIds": ["nested-first-wrap", "nested-last-wrap", "nested-first-wrap-reverse-order", "wrapped-first-parent-stretch", "wrapped-last-parent-stretch", "wrapped-last-parent-wrap-reverse-order", "wrapped-last-parent-single-item-lines"],
+        "reason": "요소 상자와 빈 fixed-size box에 한정해 wrap·wrap-reverse·order 상호작용을 대조한다. 원본 WPT 전체를 실행한 결과는 아니다."
+      },
+      {
+        "path": "css/css-flexbox/flexbox_align-items-baseline.html",
+        "disposition": "excluded",
+        "caseIds": [],
+        "reason": "원본 테스트의 텍스트 baseline 요구를 이 element-only fixture가 대체하지 않는다."
+      },
+      {
+        "path": "css/css-flexbox/flexbox_align-self-baseline.html",
+        "disposition": "excluded",
+        "caseIds": [],
+        "reason": "원본 테스트의 텍스트 baseline 요구를 이 element-only fixture가 대체하지 않는다."
+      },
+      {
+        "path": "css/css-flexbox/flex-align-baseline-001.html",
+        "disposition": "excluded",
+        "caseIds": [],
+        "reason": "고정 대상 revision의 텍스트·글꼴 동작을 C15 전까지 구현 범위에 포함하지 않는다."
+      },
+      {
+        "path": "css/css-flexbox/flex-align-baseline-002.html",
+        "disposition": "excluded",
+        "caseIds": [],
+        "reason": "고정 대상 revision의 텍스트·글꼴 동작을 C15 전까지 구현 범위에 포함하지 않는다."
+      },
+      {
+        "path": "css/css-flexbox/flex-align-baseline-003.html",
+        "disposition": "excluded",
+        "caseIds": [],
+        "reason": "고정 대상 revision의 텍스트·글꼴 동작을 C15 전까지 구현 범위에 포함하지 않는다."
+      },
+      {
+        "path": "css/css-flexbox/flex-align-baseline-004.html",
+        "disposition": "excluded",
+        "caseIds": [],
+        "reason": "고정 대상 revision의 텍스트·글꼴 동작을 C15 전까지 구현 범위에 포함하지 않는다."
+      },
+      {
+        "path": "css/css-flexbox/flex-align-baseline-005.html",
+        "disposition": "excluded",
+        "caseIds": [],
+        "reason": "고정 대상 revision의 텍스트·글꼴 동작을 C15 전까지 구현 범위에 포함하지 않는다."
+      },
+      {
+        "path": "css/css-flexbox/flex-align-baseline-006.html",
+        "disposition": "excluded",
+        "caseIds": [],
+        "reason": "고정 대상 revision의 텍스트·글꼴 동작을 C15 전까지 구현 범위에 포함하지 않는다."
+      },
+      {
+        "path": "css/css-flexbox/flex-align-baseline-007.html",
+        "disposition": "excluded",
+        "caseIds": [],
+        "reason": "고정 대상 revision의 텍스트·글꼴 동작을 C15 전까지 구현 범위에 포함하지 않는다."
+      }
+    ]
+  },
+  "cases": [
+    {"id":"first-group","nodes":[{"id":"c1034-first-root","children":["c1034-first-a","c1034-first-b","c1034-first-c"]},{"id":"c1034-first-a","children":[]},{"id":"c1034-first-b","children":[]},{"id":"c1034-first-c","children":[]}]},
+    {"id":"first-explicit-and-place-self","nodes":[{"id":"c1034-explicit-root","children":["c1034-explicit-first","c1034-explicit-place"]},{"id":"c1034-explicit-first","children":[]},{"id":"c1034-explicit-place","children":[]}]},
+    {"id":"last-group","nodes":[{"id":"c1034-last-root","children":["c1034-last-a","c1034-last-b","c1034-last-c"]},{"id":"c1034-last-a","children":[]},{"id":"c1034-last-b","children":[]},{"id":"c1034-last-c","children":[]}]},
+    {"id":"mixed-groups","nodes":[{"id":"c1034-mixed-root","children":["c1034-mixed-first-a","c1034-mixed-first-b","c1034-mixed-last-a","c1034-mixed-last-b"]},{"id":"c1034-mixed-first-a","children":[]},{"id":"c1034-mixed-first-b","children":[]},{"id":"c1034-mixed-last-a","children":[]},{"id":"c1034-mixed-last-b","children":[]}]},
+    {"id":"single-first-participant","nodes":[{"id":"c1034-single-first-root","children":["c1034-single-first-participant","c1034-single-first-peer-a","c1034-single-first-peer-b"]},{"id":"c1034-single-first-participant","children":[]},{"id":"c1034-single-first-peer-a","children":[]},{"id":"c1034-single-first-peer-b","children":[]}]},
+    {"id":"single-last-participant","nodes":[{"id":"c1034-single-last-root","children":["c1034-single-last-participant","c1034-single-last-peer-a","c1034-single-last-peer-b"]},{"id":"c1034-single-last-participant","children":[]},{"id":"c1034-single-last-peer-a","children":[]},{"id":"c1034-single-last-peer-b","children":[]}]},
+    {"id":"last-cross-margins","nodes":[{"id":"c1034-margin-root","children":["c1034-margin-a","c1034-margin-b"]},{"id":"c1034-margin-a","children":[]},{"id":"c1034-margin-b","children":[]}]},
+    {"id":"border-padding-synthesized","nodes":[{"id":"c1034-border-root","children":["c1034-border-a","c1034-border-b"]},{"id":"c1034-border-a","children":[]},{"id":"c1034-border-b","children":[]}]},
+    {"id":"column-fallback","nodes":[{"id":"c1034-column-root","children":["c1034-column-a","c1034-column-b"]},{"id":"c1034-column-a","children":[]},{"id":"c1034-column-b","children":[]}]},
+    {"id":"align-content-first-baseline","nodes":[{"id":"c1034-content-first-root","children":["c1034-content-first-a","c1034-content-first-b"]},{"id":"c1034-content-first-a","children":[]},{"id":"c1034-content-first-b","children":[]}]},
+    {"id":"align-content-last-invalid-fallback","nodes":[{"id":"c1034-content-last-root","children":["c1034-content-last-a","c1034-content-last-b"]},{"id":"c1034-content-last-a","children":[]},{"id":"c1034-content-last-b","children":[]}]},
+    {"id":"nested-first-wrap","nodes":[{"id":"c1034-nested-first-root","children":["c1034-nested-first-flex","c1034-nested-first-peer"]},{"id":"c1034-nested-first-flex","children":["c1034-nested-first-a","c1034-nested-first-b"]},{"id":"c1034-nested-first-a","children":[]},{"id":"c1034-nested-first-b","children":[]},{"id":"c1034-nested-first-peer","children":[]}]},
+    {"id":"nested-last-wrap","nodes":[{"id":"c1034-nested-last-root","children":["c1034-nested-last-flex","c1034-nested-last-peer"]},{"id":"c1034-nested-last-flex","children":["c1034-nested-last-a","c1034-nested-last-b"]},{"id":"c1034-nested-last-a","children":[]},{"id":"c1034-nested-last-b","children":[]},{"id":"c1034-nested-last-peer","children":[]}]},
+    {"id":"nested-first-wrap-reverse-order","nodes":[{"id":"c1034-reverse-root","children":["c1034-reverse-flex","c1034-reverse-peer"]},{"id":"c1034-reverse-flex","children":["c1034-reverse-a","c1034-reverse-b"]},{"id":"c1034-reverse-a","children":[]},{"id":"c1034-reverse-b","children":[]},{"id":"c1034-reverse-peer","children":[]}]},
+    {"id":"wrapped-first-parent-stretch","nodes":[{"id":"c1034-wrapped-first-root","children":["c1034-wrapped-first-a","c1034-wrapped-first-b","c1034-wrapped-first-c","c1034-wrapped-first-d"]},{"id":"c1034-wrapped-first-a","children":[]},{"id":"c1034-wrapped-first-b","children":[]},{"id":"c1034-wrapped-first-c","children":[]},{"id":"c1034-wrapped-first-d","children":[]}]},
+    {"id":"wrapped-last-parent-stretch","nodes":[{"id":"c1034-wrapped-last-root","children":["c1034-wrapped-last-a","c1034-wrapped-last-b","c1034-wrapped-last-c","c1034-wrapped-last-d"]},{"id":"c1034-wrapped-last-a","children":[]},{"id":"c1034-wrapped-last-b","children":[]},{"id":"c1034-wrapped-last-c","children":[]},{"id":"c1034-wrapped-last-d","children":[]}]},
+    {"id":"wrapped-last-parent-wrap-reverse-order","nodes":[{"id":"c1034-wrapped-reverse-root","children":["c1034-wrapped-reverse-a","c1034-wrapped-reverse-b","c1034-wrapped-reverse-c","c1034-wrapped-reverse-d"]},{"id":"c1034-wrapped-reverse-a","children":[]},{"id":"c1034-wrapped-reverse-b","children":[]},{"id":"c1034-wrapped-reverse-c","children":[]},{"id":"c1034-wrapped-reverse-d","children":[]}]},
+    {"id":"wrapped-last-parent-single-item-lines","nodes":[{"id":"c1034-single-line-root","children":["c1034-single-line-a","c1034-single-line-b","c1034-single-line-c"]},{"id":"c1034-single-line-a","children":[]},{"id":"c1034-single-line-b","children":[]},{"id":"c1034-single-line-c","children":[]}]}
+  ]
+}

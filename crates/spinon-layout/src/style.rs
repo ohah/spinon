@@ -140,6 +140,8 @@ pub enum LayoutAlignItems {
     FlexStart,
     FlexEnd,
     Center,
+    FirstBaseline,
+    LastBaseline,
     Position {
         position: ItemAlignmentPosition,
         safety: Option<AlignmentSafety>,
@@ -161,6 +163,8 @@ pub enum LayoutAlignSelf {
     FlexStart,
     FlexEnd,
     Center,
+    FirstBaseline,
+    LastBaseline,
     Position {
         position: ItemAlignmentPosition,
         safety: Option<AlignmentSafety>,
@@ -178,6 +182,7 @@ pub enum LayoutAlignContent {
     SpaceBetween,
     SpaceAround,
     SpaceEvenly,
+    FirstBaseline,
     Position {
         position: ContentAlignmentPosition,
         safety: Option<AlignmentSafety>,

@@ -1,0 +1,17 @@
+Timestamp               Ty Process[PID:TID]
+2026-10-11 05:04:40.287 Df SpinonBootstrap[83424:77fdd35] (Foundation) SPINON_C1034_RUNTIME_SUMMARY status=0 layout=ready boxes=12 error=none
+2026-10-11 05:04:40.287 Df SpinonBootstrap[83424:77fdd35] (Foundation) SPINON_C1034_NODE_FRAME 0:node=1,x=0,y=0,width=320,height=640
+2026-10-11 05:04:40.287 Df SpinonBootstrap[83424:77fdd35] (Foundation) SPINON_C1034_NODE_FRAME 1:node=2,x=0,y=0,width=280,height=100
+2026-10-11 05:04:40.287 Df SpinonBootstrap[83424:77fdd35] (Foundation) SPINON_C1034_NODE_FRAME 2:node=3,x=0,y=20,width=48,height=20
+2026-10-11 05:04:40.287 Df SpinonBootstrap[83424:77fdd35] (Foundation) SPINON_C1034_NODE_FRAME 3:node=4,x=48,y=0,width=48,height=40
+2026-10-11 05:04:40.287 Df SpinonBootstrap[83424:77fdd35] (Foundation) SPINON_C1034_NODE_FRAME 4:node=5,x=0,y=100,width=280,height=100
+2026-10-11 05:04:40.287 Df SpinonBootstrap[83424:77fdd35] (Foundation) SPINON_C1034_NODE_FRAME 5:node=6,x=0,y=180,width=48,height=20
+2026-10-11 05:04:40.287 Df SpinonBootstrap[83424:77fdd35] (Foundation) SPINON_C1034_NODE_FRAME 6:node=7,x=48,y=160,width=48,height=40
+2026-10-11 05:04:40.287 Df SpinonBootstrap[83424:77fdd35] (Foundation) SPINON_C1034_NODE_FRAME 7:node=8,x=0,y=200,width=280,height=100
+2026-10-11 05:04:40.287 Df SpinonBootstrap[83424:77fdd35] (Foundation) SPINON_C1034_NODE_FRAME 8:node=9,x=0,y=240,width=100,height=60
+2026-10-11 05:04:40.287 Df SpinonBootstrap[83424:77fdd35] (Foundation) SPINON_C1034_NODE_FRAME 9:node=10,x=0,y=240,width=60,height=20
+2026-10-11 05:04:40.287 Df SpinonBootstrap[83424:77fdd35] (Foundation) SPINON_C1034_NODE_FRAME 10:node=11,x=0,y=260,width=60,height=40
+2026-10-11 05:04:40.287 Df SpinonBootstrap[83424:77fdd35] (Foundation) SPINON_C1034_NODE_FRAME 11:node=12,x=100,y=275,width=48,height=25
+2026-10-11 05:04:40.287 Df SpinonBootstrap[83424:77fdd35] (Foundation) SPINON_C1034_FRAME_SUMMARY frames=12 marker=present
+2026-10-11 05:04:40.287 Df SpinonBootstrap[83424:77fdd35] (Foundation) SPINON_C1034_EVAL status=0 seq=1 trace_cookie=1 op=eval status=0 caller_tid=125820213 owner_tid=125820227 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=4 v8_call_us=3719 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=48 render_tree_revision=12 document_nodes=12 document_string_units=2878 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=12 document_collection_live_handles=12 document_collection_empty_handles=0 document_collection_last_scan_start_ns=984824234131291 document_collection_last_scan_us=22 document_collection_wrapper_root_buffer_bytes=64 document_collection_reclaimed_node_buffer_bytes=48 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=2 ua_snapshot_submit_us=4 ua_snapshot_submitted=true enqueue_total_us=3 response_wait_us=3748 submit_total_us=3752 response_report_append_us<…>
+2026-10-11 05:04:40.298 Df SpinonBootstrap[83424:77fdd35] (Foundation) SPINON_C0410_DRAW generation=1 status=0 presented boxes=12 environment_revision=0 viewport_css_px=320x240 surface_texture=960x720 root_css_px=320x640

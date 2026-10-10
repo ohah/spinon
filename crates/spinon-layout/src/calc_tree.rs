@@ -146,6 +146,21 @@ impl CalcLayoutTree {
         self.nodes.get(usize::from(id)).map(|node| node.layout)
     }
 
+    pub(crate) fn layout_for(&self, id: SpinonNodeId) -> Option<Layout> {
+        self.layout(self.engine_id(id))
+    }
+
+    pub(crate) fn shift_y(&mut self, id: SpinonNodeId, delta: f32) -> Result<(), LayoutError> {
+        let engine_id = self.engine_id(id);
+        let node = self.node_mut(engine_id);
+        let y = node.layout.location.y + delta;
+        if !y.is_finite() {
+            return Err(LayoutError::NonFiniteFrame(id));
+        }
+        node.layout.location.y = y;
+        Ok(())
+    }
+
     fn node(&self, id: TaffyNodeId) -> &Node {
         &self.nodes[usize::from(id)]
     }

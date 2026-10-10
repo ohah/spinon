@@ -2,6 +2,7 @@
 
 use std::ffi::CStr;
 
+mod c10_flex_baseline_css;
 mod container_relative_units;
 mod font_relative_units;
 mod opaque_css_srgb;

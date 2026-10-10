@@ -2,6 +2,7 @@ mod calc_tree;
 mod css_math;
 mod error;
 mod flex_auto_margin;
+mod flex_baseline;
 mod host_document;
 mod percentage_basis;
 mod revision;
@@ -127,6 +128,8 @@ impl LayoutEngine for TaffyLayoutEngine {
         if let Some(error) = tree.take_calc_error() {
             return Err(error);
         }
+
+        flex_baseline::apply(input, &index, &postorder, &mut tree)?;
 
         collect_frames(input, &index, &tree.engine_ids, &tree)
     }

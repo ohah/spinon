@@ -43,6 +43,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             || arguments.contains("--spinon-c1031-flex-reverse")
             || arguments.contains("--spinon-c1032-flex-order")
             || arguments.contains("--spinon-c1033-flex-alignment")
+            || arguments.contains("--spinon-c1034-flex-baseline")
         let runR05AttributionProbe = arguments.contains("--spinon-r05-attribution")
         let runLifecycleProbe = arguments.contains("--spinon-dom-gc-auto")
         if runLifecycleProbe && !spinonS03DomGcFixtureEnabled {

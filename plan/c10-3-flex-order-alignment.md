@@ -173,6 +173,14 @@
 - `row`는 baseline self-alignment를 비교한다. `column`은 computed keyword와 pinned Chrome의 cross-start fallback을 별도 확인하며 row baseline 계산을 적용하지 않는다. RTL·다른 writing mode는 C17 선행 계약이다.
 - 계획 검토에서 확정한 실패 경계와 실제 비교 관찰은 [C10.3.4 계획 검토 기록](../spec/internal/evidence/c10-3-4-baseline-plan-review-2026-10-11.md)에 있다. 계획 검토 결과를 구현 검토 20개 관점에 재사용하지 않는다.
 
+#### 구현 상태 · 2026-10-11
+
+- 제한 구현과 검증은 끝났으며 PR 생성 전이다. 내부 계약은 [0053](../spec/internal/0053-c10-3-4-flex-baseline.md)에서 관리한다. 내부 숫자 버전은 `0.1.0`을 유지한다.
+- Chrome 154 고정 기준은 18 case·73 node, DPR 1·2다. 여섯 runtime Flex profile에서 computed baseline 값과 각 node frame을 비교하고, invalid `align-content:last baseline`의 cascade fallback을 확인했다.
+- wrapped line의 `align-content:stretch`·`row-gap`, `wrap-reverse`·`order`, single-item line과 동일 main 좌표의 zero-size/gap 경계를 확인했다. Taffy final frame으로 line을 재구성할 수 없는 음수 main margin은 fail-closed다.
+- Android SM-S731N 실기기와 iPhone 17 Pro / iOS 26.2 Simulator에서 12-node V8→Stylo→Taffy→WGPU smoke를 재실행했다. 이는 18 case 전체의 모바일 비교가 아니다.
+- 미검증: WPT 원본 실행, text/replaced baseline, RTL·다른 writing mode, 18-case 전체 모바일 행렬, Chrome과의 pixel equality, 제품 성능.
+
 HTML reference는 기본 empty box와 명시 치수를 사용한다. 각 단계에서 텍스트 또는 replaced 요소가 꼭 필요한 경우 C15/C14를 의존성으로 기록하고, 해당 단계의 완료를 그 입력까지 넓히지 않는다. 캡처 reference에는 전체 DOM node 식별자, 계산 속성, frame, 필요 시 paint 순서를 저장한다. Runtime report에는 CSS px 좌표를 node ID와 함께 남긴다.
 
 ## 단계별 작업 순서

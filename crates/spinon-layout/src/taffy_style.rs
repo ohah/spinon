@@ -210,6 +210,9 @@ fn to_taffy_align_items(value: LayoutAlignItems) -> AlignItems {
         LayoutAlignItems::FlexStart => AlignItems::FLEX_START,
         LayoutAlignItems::FlexEnd => AlignItems::FLEX_END,
         LayoutAlignItems::Center => AlignItems::CENTER,
+        // Taffy 0.14는 row first-baseline 알고리즘을 제공합니다. 레이아웃 후 어댑터에서
+        // first/last 그룹을 분리하고 last baseline 위치를 보정합니다.
+        LayoutAlignItems::FirstBaseline | LayoutAlignItems::LastBaseline => AlignItems::BASELINE,
         LayoutAlignItems::Position { position, safety } => AlignItems {
             keyword: to_taffy_item_alignment_keyword(position),
             safety: to_taffy_alignment_safety(safety),
@@ -224,6 +227,7 @@ fn to_taffy_align_self(value: LayoutAlignSelf) -> Option<AlignSelf> {
         LayoutAlignSelf::FlexStart => Some(AlignSelf::FLEX_START),
         LayoutAlignSelf::FlexEnd => Some(AlignSelf::FLEX_END),
         LayoutAlignSelf::Center => Some(AlignSelf::CENTER),
+        LayoutAlignSelf::FirstBaseline | LayoutAlignSelf::LastBaseline => Some(AlignSelf::BASELINE),
         LayoutAlignSelf::Position { position, safety } => Some(AlignSelf {
             keyword: to_taffy_item_alignment_keyword(position),
             safety: to_taffy_alignment_safety(safety),
@@ -250,6 +254,7 @@ fn to_taffy_align_content(value: LayoutAlignContent) -> AlignContent {
         LayoutAlignContent::SpaceBetween => AlignContent::SPACE_BETWEEN,
         LayoutAlignContent::SpaceAround => AlignContent::SPACE_AROUND,
         LayoutAlignContent::SpaceEvenly => AlignContent::SPACE_EVENLY,
+        LayoutAlignContent::FirstBaseline => AlignContent::FLEX_START,
         LayoutAlignContent::Position { position, safety } => AlignContent {
             keyword: to_taffy_content_alignment_keyword(position),
             safety: to_taffy_alignment_safety(safety),

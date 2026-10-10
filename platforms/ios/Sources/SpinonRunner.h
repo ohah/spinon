@@ -56,6 +56,7 @@
 + (NSString *)evalRuntimeGpuFlexReverseFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuFlexOrderFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuFlexAlignmentFixture:(uint64_t)handle;
++ (NSString *)evalRuntimeGpuFlexBaselineFixture:(uint64_t)handle;
 + (NSString *)prepareRuntimeGpuWgpuSurface:(uint64_t)handle view:(void *)view;
 + (NSString *)createRuntimeGpuWgpu:(uint64_t)handle width:(uint32_t)width
                              height:(uint32_t)height;
