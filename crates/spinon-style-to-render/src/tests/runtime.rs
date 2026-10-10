@@ -213,6 +213,166 @@ fn runtime_scene_uses_typed_stylo_paint_not_css_string_reparsing() {
 }
 
 #[test]
+fn runtime_scene_sorts_flex_paint_order_per_parent_and_keeps_nested_subtrees() {
+    let mut document = HostDocument::new().unwrap();
+    let root = document.reserve_node_handle().unwrap();
+    let item_a = document.reserve_node_handle().unwrap();
+    let item_b = document.reserve_node_handle().unwrap();
+    let nested_a = document.reserve_node_handle().unwrap();
+    let nested_b = document.reserve_node_handle().unwrap();
+    let mut batch =
+        DocumentChangeBatch::new(OwnerId::new(411).unwrap(), document.document_revision());
+    for (node, parent, style) in [
+        (
+            root,
+            HostParent::Root,
+            "display:flex;box-sizing:border-box;width:120px;height:40px;flex-direction:row;align-items:flex-start;justify-content:flex-start;background-color:#101827",
+        ),
+        (
+            item_a,
+            HostParent::Node(root),
+            "display:flex;box-sizing:border-box;width:60px;height:40px;order:2;flex-direction:row;align-items:flex-start;justify-content:flex-start;background-color:#243047",
+        ),
+        (
+            item_b,
+            HostParent::Node(root),
+            "display:block;box-sizing:border-box;width:60px;height:40px;order:-1;background-color:#a855f7",
+        ),
+        (
+            nested_a,
+            HostParent::Node(item_a),
+            "display:block;box-sizing:border-box;width:20px;height:20px;order:2;background-color:#e5484d",
+        ),
+        (
+            nested_b,
+            HostParent::Node(item_a),
+            "display:block;box-sizing:border-box;width:20px;height:20px;order:-1;background-color:#28a745",
+        ),
+    ] {
+        create_element(&mut batch, node, style);
+        batch.push(DocumentOperation::InsertBefore {
+            parent,
+            node,
+            before: None,
+        });
+    }
+    document.commit(batch).unwrap();
+    let snapshot = document.snapshot();
+    let view = StyloDocumentView::new_html_fragment_child_shared(Arc::new(snapshot.clone()), root)
+        .unwrap();
+    let css_viewport = viewport();
+    let styles =
+        compute_runtime_flex_paint_cascade(&view, css_viewport, Default::default()).unwrap();
+    let output = compute_runtime_style_layout(&snapshot, root, styles, css_viewport).unwrap();
+    let current =
+        CurrentLayoutInputs::for_host_document(&snapshot, Default::default(), css_viewport);
+    let render = build_runtime_render_snapshot(&snapshot, root, &output, current).unwrap();
+
+    assert_eq!(
+        snapshot.children(root).unwrap().collect::<Vec<_>>(),
+        [item_a, item_b],
+        "렌더 순서를 만들 때 원본 HostDocument 자식 벡터는 재정렬되지 않습니다"
+    );
+    assert_eq!(
+        snapshot.children(item_a).unwrap().collect::<Vec<_>>(),
+        [nested_a, nested_b],
+        "중첩 Flex item의 원본 순서도 보존됩니다"
+    );
+    assert_eq!(output.layout.frames[&item_a.id()].x, 60.0);
+    assert_eq!(output.layout.frames[&item_b.id()].x, 0.0);
+    assert_eq!(output.layout.frames[&nested_a.id()].x, 80.0);
+    assert_eq!(output.layout.frames[&nested_b.id()].x, 60.0);
+    assert_eq!(
+        render
+            .boxes()
+            .iter()
+            .map(|box_| box_.node_id())
+            .collect::<Vec<_>>(),
+        [
+            root.id(),
+            item_b.id(),
+            item_a.id(),
+            nested_b.id(),
+            nested_a.id()
+        ]
+    );
+    assert_eq!(
+        render
+            .boxes()
+            .iter()
+            .map(|box_| box_.paint_order())
+            .collect::<Vec<_>>(),
+        [0, 1, 2, 3, 4]
+    );
+}
+
+#[test]
+fn runtime_scene_ignores_order_for_non_flex_siblings() {
+    let (document, root, children) = fixture_with_root_style(
+        "display:block;box-sizing:border-box;width:301px;height:100px;background-color:#123456",
+        &[
+            "display:block;box-sizing:border-box;width:51px;height:31px;order:2;background-color:#3366ff",
+            "display:block;box-sizing:border-box;width:41px;height:31px;order:-1;background-color:#12b981",
+        ],
+        false,
+    );
+    let snapshot = document.snapshot();
+    let (output, current) = build_fixture(&document, root);
+    let render = build_runtime_render_snapshot(&snapshot, root, &output, current).unwrap();
+    assert_eq!(render.boxes()[1].node_id(), children[0].id());
+    assert_eq!(render.boxes()[2].node_id(), children[1].id());
+}
+
+#[test]
+fn runtime_scene_rejects_missing_or_invalid_flex_item_order() {
+    let (document, root, children) = fixture_with_root_style(
+        "display:flex;box-sizing:border-box;width:301px;height:100px;background-color:#123456",
+        &[
+            "display:block;box-sizing:border-box;width:51px;height:31px;order:2;background-color:#3366ff",
+            "display:block;box-sizing:border-box;width:41px;height:31px;order:-1;background-color:#12b981",
+        ],
+        false,
+    );
+    let snapshot = document.snapshot();
+    let (output, current) = build_fixture(&document, root);
+
+    let mut missing_order = output.clone();
+    let mut elements = missing_order.computed_styles.elements.to_vec();
+    let child = elements
+        .iter_mut()
+        .find(|style| style.node_id == children[0].id())
+        .unwrap();
+    child.properties.remove("order");
+    missing_order.computed_styles.elements = elements.into();
+    assert!(matches!(
+        build_runtime_render_snapshot(&snapshot, root, &missing_order, current),
+        Err(StyleRenderError::MissingComputedProperty {
+            node,
+            property: "order"
+        }) if node == children[0].id()
+    ));
+
+    let mut invalid_order = output;
+    let mut elements = invalid_order.computed_styles.elements.to_vec();
+    let child = elements
+        .iter_mut()
+        .find(|style| style.node_id == children[1].id())
+        .unwrap();
+    child
+        .properties
+        .insert("order".to_owned(), "not-an-integer".to_owned());
+    invalid_order.computed_styles.elements = elements.into();
+    assert!(matches!(
+        build_runtime_render_snapshot(&snapshot, root, &invalid_order, current),
+        Err(StyleRenderError::UnsupportedComputedValue {
+            node,
+            property: "order",
+            value
+        }) if node == children[1].id() && value == "not-an-integer"
+    ));
+}
+
+#[test]
 fn runtime_scene_accepts_custom_properties_paint_profile() {
     let (document, root, children) = fixture_with_root_style(
         "display:flex;box-sizing:border-box;width:100vw;height:100vh;--panel:#123456;background-color:var(--panel);--space:11px;gap:var(--space)",

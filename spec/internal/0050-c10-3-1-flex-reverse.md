@@ -35,7 +35,7 @@ Stylo가 계산한 `flex-direction`·`flex-wrap` longhand를 여섯 runtime Flex
 
 ## C10.3 진행 상태
 
-C10.3.1 구현 브랜치의 Chromium·Rust·Android·iOS Simulator 검증은 완료했다. 이 계약의 상태는 PR 병합 전까지 구현 브랜치 기준이며 공식 상태 대장의 C10.3 parent는 계속 미완료다. C10.3.2 `order`, C10.3.3 item/line alignment, C10.3.4 baseline, C10.3.5 positioned child 교차와 C15 text baseline 연결은 남아 있다. 계약 숫자 버전 `0.1.0`은 유지한다.
+C10.3.1 구현은 PR #119로 병합했다. Chromium·Rust·Android·iOS Simulator 검증 결과와 C10.3 parent 미완료 상태를 유지한다. C10.3.2 `order`는 [내부 계약 0051](0051-c10-3-2-flex-order.md)에 제한 구현과 남은 모바일 runtime 검증을 기록했다. C10.3.3 item/line alignment, C10.3.4 baseline, C10.3.5 positioned child 교차와 C15 text baseline 연결도 남아 있다. 계약 숫자 버전 `0.1.0`은 유지한다.
 
 ## 참고
 

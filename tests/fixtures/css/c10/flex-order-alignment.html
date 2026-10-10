@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Spinon C10.3.2 flex order oracle</title>
+    <style>
+      html, body { margin: 0; padding: 0; }
+      [data-c1032-case] { display: none; }
+      .row { display: flex; flex-direction: row; flex-wrap: nowrap; align-items: flex-start; gap: 0; margin: 0; padding: 0; border: 0; }
+      .tile { box-sizing: border-box; flex-shrink: 0; height: 20px; margin: 0; padding: 0; border: 0; }
+    </style>
+  </head>
+  <body>
+    <section data-c1032-case="order-basic-mixed">
+      <div id="c1032-basic-root" class="row" style="width:160px;height:20px;order:-7;background-color:#101827">
+        <div id="c1032-basic-a" class="tile" style="width:40px;order:2;background-color:#e5484d"></div>
+        <div id="c1032-basic-b" class="tile" style="width:40px;order:-1;background-color:#28a745"></div>
+        <div id="c1032-basic-c" class="tile" style="width:40px;background-color:#2866f6"></div>
+      </div>
+    </section>
+
+    <section data-c1032-case="order-ties-and-hidden">
+      <div id="c1032-tie-root" class="row" style="width:120px;height:20px;background-color:#101827">
+        <div id="c1032-tie-a" class="tile" style="width:30px;order:0;background-color:#e5484d"></div>
+        <div id="c1032-tie-b" class="tile" style="width:30px;order:-1;background-color:#28a745"></div>
+        <div id="c1032-tie-hidden" class="tile" style="display:none;width:30px;order:-99;background-color:#f59e0b"></div>
+        <div id="c1032-tie-c" class="tile" style="width:30px;order:0;background-color:#2866f6"></div>
+        <div id="c1032-tie-d" class="tile" style="width:30px;order:1;background-color:#a855f7"></div>
+      </div>
+    </section>
+
+    <section data-c1032-case="order-wrap-line-collection">
+      <div id="c1032-wrap-root" class="row" style="width:120px;height:60px;flex-wrap:wrap;background-color:#101827">
+        <div id="c1032-wrap-a" class="tile" style="width:60px;order:2;background-color:#e5484d"></div>
+        <div id="c1032-wrap-b" class="tile" style="width:60px;order:-1;background-color:#28a745"></div>
+        <div id="c1032-wrap-c" class="tile" style="width:60px;background-color:#2866f6"></div>
+      </div>
+    </section>
+
+    <section data-c1032-case="order-grow-distribution">
+      <div id="c1032-grow-root" class="row" style="width:300px;height:20px;background-color:#101827">
+        <div id="c1032-grow-a" class="tile" style="width:auto;flex:1 0 40px;order:2;background-color:#e5484d"></div>
+        <div id="c1032-grow-b" class="tile" style="width:auto;flex:2 0 40px;order:-1;background-color:#28a745"></div>
+        <div id="c1032-grow-c" class="tile" style="width:auto;flex:0 0 40px;background-color:#2866f6"></div>
+      </div>
+    </section>
+
+    <section data-c1032-case="order-calc-invalid">
+      <div id="c1032-calc-root" class="row" style="width:160px;height:20px;background-color:#101827">
+        <div id="c1032-calc-a" class="tile" style="width:30px;order:4;order:1.5;background-color:#e5484d"></div>
+        <div id="c1032-calc-b" class="tile" style="width:30px;order:1.5;background-color:#28a745"></div>
+        <div id="c1032-calc-c" class="tile" style="width:30px;order:calc(1.5);background-color:#2866f6"></div>
+        <div id="c1032-calc-d" class="tile" style="width:30px;order:calc(-1.5);background-color:#a855f7"></div>
+      </div>
+    </section>
+
+    <section data-c1032-case="order-int32-upper-clamp">
+      <div id="c1032-high-root" class="row" style="width:150px;height:20px;background-color:#101827">
+        <div id="c1032-high-a" class="tile" style="width:50px;order:2147483649;background-color:#e5484d"></div>
+        <div id="c1032-high-b" class="tile" style="width:50px;order:2147483648;background-color:#28a745"></div>
+        <div id="c1032-high-c" class="tile" style="width:50px;order:2147483647;background-color:#2866f6"></div>
+      </div>
+    </section>
+
+    <section data-c1032-case="order-int32-lower-clamp">
+      <div id="c1032-low-root" class="row" style="width:150px;height:20px;background-color:#101827">
+        <div id="c1032-low-a" class="tile" style="width:50px;order:-2147483647;background-color:#e5484d"></div>
+        <div id="c1032-low-b" class="tile" style="width:50px;order:-2147483648;background-color:#28a745"></div>
+        <div id="c1032-low-c" class="tile" style="width:50px;order:-2147483649;background-color:#2866f6"></div>
+      </div>
+    </section>
+
+    <section data-c1032-case="order-custom-property">
+      <div id="c1032-custom-root" class="row" style="width:120px;height:20px;background-color:#101827">
+        <div id="c1032-custom-a" class="tile" style="width:40px;--item-order:2;order:var(--item-order);background-color:#e5484d"></div>
+        <div id="c1032-custom-b" class="tile" style="width:40px;--item-order:-1;order:var(--item-order);background-color:#28a745"></div>
+        <div id="c1032-custom-c" class="tile" style="width:40px;background-color:#2866f6"></div>
+      </div>
+    </section>
+
+    <section data-c1032-case="order-non-flex">
+      <div id="c1032-block-root" style="display:block;width:100px;height:60px;order:-10;background-color:#101827">
+        <div id="c1032-block-a" style="display:block;width:50px;height:20px;order:2;background-color:#e5484d"></div>
+        <div id="c1032-block-b" style="display:block;width:50px;height:20px;order:-1;background-color:#28a745"></div>
+      </div>
+    </section>
+
+    <section data-c1032-case="order-nested-scope">
+      <div id="c1032-nested-root" class="row" style="width:120px;height:40px;background-color:#101827">
+        <div id="c1032-nested-a" class="row" style="width:60px;height:40px;order:1;background-color:#243047">
+          <div id="c1032-nested-a1" class="tile" style="width:20px;order:1;background-color:#e5484d"></div>
+          <div id="c1032-nested-a2" class="tile" style="width:20px;order:-1;background-color:#28a745"></div>
+          <div id="c1032-nested-a3" class="tile" style="width:20px;background-color:#2866f6"></div>
+        </div>
+        <div id="c1032-nested-b" class="tile" style="width:60px;height:40px;background-color:#a855f7"></div>
+      </div>
+    </section>
+
+    <section data-c1032-case="order-overlap-paint">
+      <div id="c1032-paint-root" class="row" style="width:60px;height:20px;background-color:#101827">
+        <div id="c1032-paint-a" class="tile" style="width:40px;height:20px;order:2;margin-left:-30px;background-color:#e5484d"></div>
+        <div id="c1032-paint-b" class="tile" style="width:40px;height:20px;order:-1;margin-left:-30px;background-color:#28a745"></div>
+        <div id="c1032-paint-c" class="tile" style="width:40px;height:20px;margin-left:-30px;background-color:#2866f6"></div>
+      </div>
+    </section>
+  </body>
+</html>

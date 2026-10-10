@@ -14,6 +14,8 @@ use crate::{
 mod border;
 #[path = "tests/flex_distribution.rs"]
 mod flex_distribution;
+#[path = "tests/flex_order.rs"]
+mod flex_order;
 #[path = "tests/flex_reverse.rs"]
 mod flex_reverse;
 #[path = "tests/invalid_inputs.rs"]

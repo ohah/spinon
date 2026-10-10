@@ -139,12 +139,46 @@ fn runtime_document_preorder(
             ancestor_hidden || style.properties.get("display").map(String::as_str) == Some("none");
         result.push(node.id());
         if let Some(children) = document.children(handle) {
-            let children = children.collect::<Vec<_>>();
+            let mut children = children.collect::<Vec<_>>();
             for child in &children {
                 let child_node = document.node(*child).ok_or(StyleRenderError::InvalidRoot)?;
                 if matches!(child_node.kind(), spinon_core::HostNodeKind::Text(_)) && !hidden {
                     return Err(StyleRenderError::UnsupportedTextNode(child_node.id()));
                 }
+            }
+            if !hidden && style.properties.get("display").map(String::as_str) == Some("flex") {
+                let mut ordered = children
+                    .into_iter()
+                    .filter(|child| {
+                        document.node(*child).is_some_and(|node| {
+                            matches!(node.kind(), spinon_core::HostNodeKind::Element(_))
+                        })
+                    })
+                    .map(|child| {
+                        let child_node =
+                            document.node(child).ok_or(StyleRenderError::InvalidRoot)?;
+                        let child_style = styles
+                            .get(&child_node.id())
+                            .ok_or(StyleRenderError::MissingComputedStyle(child_node.id()))?;
+                        let order_value = child_style.properties.get("order").ok_or(
+                            StyleRenderError::MissingComputedProperty {
+                                node: child_node.id(),
+                                property: "order",
+                            },
+                        )?;
+                        let order = order_value.parse::<i32>().map_err(|_| {
+                            StyleRenderError::UnsupportedComputedValue {
+                                node: child_node.id(),
+                                property: "order",
+                                value: order_value.clone(),
+                            }
+                        })?;
+                        Ok((order, child))
+                    })
+                    .collect::<Result<Vec<_>, StyleRenderError>>()?;
+                // order 값이 같으면 원본 순서를 유지하도록 안정 정렬합니다.
+                ordered.sort_by_key(|(order, _)| *order);
+                children = ordered.into_iter().map(|(_, child)| child).collect();
             }
             pending.extend(
                 children

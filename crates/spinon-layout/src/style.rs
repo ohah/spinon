@@ -153,6 +153,8 @@ pub struct LayoutStyle {
     pub max_height: LayoutDimension,
     /// 선호 비율 `width / height`; 값은 유한한 양수여야 합니다.
     pub aspect_ratio: Option<f32>,
+    /// Flex item의 order-modified document order 값입니다. CSS 기본값은 0입니다.
+    pub order: i32,
     pub flex_basis: LayoutDimension,
     pub flex_direction: FlexDirection,
     pub flex_wrap: FlexWrap,
@@ -275,6 +277,7 @@ impl Default for LayoutStyle {
             min_height: LayoutDimension::Auto,
             max_height: LayoutDimension::Auto,
             aspect_ratio: None,
+            order: 0,
             flex_basis: LayoutDimension::Auto,
             flex_direction: FlexDirection::Column,
             flex_wrap: FlexWrap::NoWrap,

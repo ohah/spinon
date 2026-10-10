@@ -1,7 +1,7 @@
 # C10.3 · Flex 순서와 정렬 구현 계획
 
 **상위:** [C10 Flexbox](c10-flexbox.md) · [공식 상태 대장](../spec/STATUS.md)
-**현재 상태:** C10.3.1 구현 브랜치 검증 완료·미병합. 나머지 C10.3 단계는 계획 단계다.
+**현재 상태:** C10.3.1은 PR #119로 병합했다. C10.3.2의 제한된 in-flow element 범위는 Chrome reference, Rust suite, Android API 37 emulator와 iPhone 17 Pro / iOS 26.2 Simulator의 V8→WGPU 실행까지 확인했다. C10.3.3·C10.3.4 및 C12 뒤의 C10.3.5는 미구현이다.
 **내부 계약 숫자 버전:** 출시 전 `0.1.0` 고정.
 
 ## 목표
@@ -14,8 +14,8 @@
 
 | 하위 ID | 범위 | 완료 전제 | 상태 |
 | --- | --- | --- | --- |
-| C10.3.1 | `row-reverse`, `column-reverse`, `wrap-reverse`와 `flex-flow` 조합 | C10.1·C10.2에서 고정한 line 수집·크기 배분과 분리해 축 시작점 및 line stacking을 비교한다. | 구현 브랜치 검증 완료·PR 미병합 · [계약 0050](../spec/internal/0050-c10-3-1-flex-reverse.md) |
-| C10.3.2 | `order`의 안정적인 계산 순서와 paint 순서 | HostDocument 자식 순서를 유지하고 layout·paint·source traversal을 분리한다. | 미구현 |
+| C10.3.1 | `row-reverse`, `column-reverse`, `wrap-reverse`와 `flex-flow` 조합 | C10.1·C10.2에서 고정한 line 수집·크기 배분과 분리해 축 시작점 및 line stacking을 비교한다. | PR #119 병합 · [계약 0050](../spec/internal/0050-c10-3-1-flex-reverse.md) |
+| C10.3.2 | `order`의 안정적인 계산 순서와 paint 순서 | HostDocument 자식 순서를 유지하고 layout·paint·source traversal을 분리한다. | 제한 구현과 Android/iOS Simulator runtime 검증 완료 · [계획 검토](../spec/internal/evidence/c10-3-2-order-plan-review-2026-10-10.md) · [구현 계약 0051](../spec/internal/0051-c10-3-2-flex-order.md) · [실행 근거](../spec/internal/evidence/c10-3-2-flex-order-implementation-review-2026-10-10.md) |
 | C10.3.3 | `align-self`와 `align-content`의 비-baseline 값 | auto margin, stretch, wrap 상태, line 수와 gap의 상호작용을 비교한다. | 미구현 |
 | C10.3.4 | item·line baseline 정렬 및 Flex container baseline | 우선 빈 고정 크기 상자의 합성 first/last baseline을 비교한다. 텍스트 baseline은 C15의 실제 글꼴 측정 계약과 연결하기 전까지 미완료로 남긴다. | 미구현 |
 | C10.3.5 | positioned flex child와 순서·정렬 교차 통합 | C12 이후 absolute child는 flex line 계산에서 제외하고 paint order에서는 `order:0`으로 취급하며, static-position `align-self`를 비교한다. | C12 선행 |
@@ -25,8 +25,9 @@
 ## 공통 비교 계약
 
 - **Oracle:** Chromium `154.0.8037.98`, revision `@b859317bf11f6be47f9b7799ec690a0a42a1fb33`. fixture, capture 도구와 Chromium 실행 파일의 SHA-256을 reference에 저장하고 테스트 실행으로 reference를 자동 갱신하지 않는다.
+- **표준 기준:** CSS Flexbox Level 1, 2025-10-14 Candidate Recommendation Draft는 Flex item layout·paint 순서 기준이고, `order` longhand의 값·초깃값·상속 여부는 CSS Display Level 3, 2026-06-05 Candidate Recommendation Draft를 기준으로 한다. CSS Values Level 4, 2024-03-12 Working Draft의 integer 계산·반올림 규칙을 함께 확인한다. 이 문서들은 초안이므로 실제 고정 Chromium과 잠긴 Stylo 결과도 별도로 기록한다.
 - **환경:** viewport `320×240 CSS px`, locale `en-US`, timezone `UTC`, DPR 1과 2 각각. 입력 fixture는 `writing-mode:horizontal-tb`, `direction:ltr`를 명시한다. RTL과 다른 writing mode는 C17 선행 계약을 확인하기 전까지 지원 범위에 넣지 않는다.
-- **관찰값:** 각 지원 노드의 computed `flex-direction`, `flex-wrap`, `flex-flow`의 longhand 결과, `order`, `align-items`, `align-self`, `align-content`, node ID별 `x`, `y`, `width`, `height`, 필요 시 paint-list 순서를 기록한다. computed CSS 문자열과 Rust typed 값은 별도 필드로 보존한다. 현재 없는 runtime hit-test와 pointer target은 C10.3 관찰값에 넣지 않으며 S05에서 별도 연결한다.
+- **관찰값:** 각 지원 노드의 computed `flex-direction`, `flex-wrap`, `flex-flow`의 longhand 결과, `order`, `align-items`, `align-self`, `align-content`, node ID별 `x`, `y`, `width`, `height`, 필요 시 paint-list 순서를 기록한다. computed CSS 문자열, Chromium Typed OM에서 읽은 integer, Rust typed 값은 별도 필드로 보존한다. Chromium `getComputedStyle().order`는 int32 경계에서 지수 표기로 정밀도를 잃으므로 경계값 비교는 `computedStyleMap().get("order").value`와 geometry를 사용한다. 현재 없는 runtime hit-test와 pointer target은 C10.3 관찰값에 넣지 않으며 S05에서 별도 연결한다.
 - **기하 허용치:** 각 노드·각 frame field의 최대 절대 오차 `0.5 CSS px`. 평균 오차로 단일 실패를 가리지 않는다. DPR 1·2 결과가 각각 통과해야 하고 CSS px geometry는 DPR에 따라 달라지면 안 된다.
 - **스타일 경로:** `RuntimeFlexLayoutV1`, `RuntimeFlexPaintV1`, `RuntimeFlexCustomPropertiesV1`, `RuntimeFlexCustomPropertiesPaintV1`, `RuntimeFlexRegisteredPropertiesV1`, `RuntimeFlexRegisteredPropertiesPaintV1` 여섯 profile의 typed projection, inline full/incremental cascade, author stylesheet full cascade, 등록 사용자 지정 속성 경로를 확인한다. 현재 author stylesheet incremental 경로가 재사용을 거부하면 전체 cascade fallback을 확인하며, 지원하지 않는 stylesheet 재사용을 성공으로 간주하지 않는다.
 - **순서 경계:** 현재 `CalcLayoutTree`는 Taffy 노드를 postorder 위치로 만들고 `Layout::order`를 초기화한다. Flex algorithm은 일부 자식의 출력 order를 다시 지정한다. 현재 runtime paint snapshot은 별도로 HostDocument preorder를 순회해 paint rank를 만든다. 이 세 순서를 CSS `order` 값과 혼동하지 않는다. 필요한 계산 child 순서는 flex container의 형제 범위에서만 안정 정렬하고, paint list는 해당 형제 item의 order-modified 순서를 재귀적으로 반영하되 nested subtree를 부모 밖으로 끌어내지 않는다. HostDocument는 원본 순서를 보존한다.
@@ -56,18 +57,19 @@
 
 ### 포함 범위
 
-- `order`의 초기값 0, 음수·양수, 동일값 tie, source order와 다른 값의 혼합, 큰 값 경계, 소수처럼 문법상 invalid한 선언, 스타일 변경 전후를 비교한다. 수치 범위는 Stylo computed representation과 Chromium 결과를 먼저 조사해 고정하고, 임의 Rust 정수 변환으로 범위를 줄이지 않는다.
-- `order`는 상속되지 않으며 flex item의 line collection과 layout 순서를 바꾼다. 이 단계의 fixture는 in-flow element child로 한정하고, 텍스트/anonymous flex item은 C15에서 연결한다. `display:none`과 out-of-flow absolute child는 flex line 계산에서 제외한다. 고정 Flexbox 표준에서는 absolute child가 flex item의 paint order와 비교될 때 `order:0`으로 취급되므로, 이 혼합 paint 순서와 static-position alignment는 C10.3.5/C12에서 따로 닫고 그전에는 `order` 전체를 완료 처리하지 않는다.
+- `order`는 음수와 양수를 받는 정수이며 initial은 0, 비상속이다. CSS 표준의 abstract integer와 별도로, 잠긴 Stylo 0.22.0은 computed integer를 `i32`로 표현하고 고정 Chromium 154도 literal 초과값을 `i32::MIN..=i32::MAX`로 clamp한다. 따라서 typed layout 값은 `i32`로 두고 `i32::MIN`, `i32::MIN - 1`, `i32::MAX`, `i32::MAX + 1`의 적용 결과를 반대 source order로 비교해 경계 clamp와 동점 안정성을 구분한다. 참조 문자열만으로 경계값을 비교하지 않는다.
+- 일반 `1.0`·`1.5` 같은 non-integer token은 invalid declaration로 무시되고, 앞선 유효 선언 또는 initial `0`이 남아야 한다. CSS integer 계산은 유효할 수 있으므로 `calc(1.5)`와 `calc(-1.5)`의 tie rounding도 포함한다. 고정 Chromium 154는 각각 `2`, `-1`을 계산한다. `var()`를 이용한 order와 등록 여부가 다른 runtime custom-property profile도 확인한다.
+- `order`는 Flex item의 line collection과 layout 순서를 바꾼다. 이 단계는 지원 runtime Flex profile의 in-flow element child만 다루며, CSS Grid item 적용은 Grid layout 지원 전까지 제외하고 `display:grid`를 기본 Flex/Block으로 조용히 바꾸지 않는다. text/anonymous flex item은 C15에서 연결한다. `display:none` child는 Flex item이 아니며 line 계산과 paint에서 제외한다. out-of-flow absolute child는 flex line 계산에서 제외되지만 Flexbox 기준 paint 비교에서는 `order:0`이므로, 이 혼합 순서와 static-position alignment는 C10.3.5/C12에서 따로 닫고 그전에는 `order` 전체를 완료 처리하지 않는다.
 - line collection, basis/grow/shrink 계산과 item frame이 order-modified document order를 따른다. 값이 같은 item은 원본 문서 순서를 유지한다. 전체 HostDocument 및 사용자 JS의 `childNodes`/`children` 결과는 원본 source order다.
-- W3C가 정한 in-flow Flex paint 순서와 layout 순서를 분리한다. `order`가 달라진 겹침 case에서는 runtime paint-list 순서 또는 겹쳐진 불투명 box 결과로 order-modified paint 순서를 확인한다. sibling flex item을 정렬할 때 각 item의 descendant subtree를 함께 유지한다. 서로 다른 nested container의 item을 한 global `order` 값으로 섞지 않는다. `row-reverse`와 `column-reverse`는 이 paint rank를 대신 바꾸지 않는다. absolute child의 `order:0` 상호 순서, static-position alignment, `z-index`와 stacking context는 C10.3.5와 C12·C22 계약에 맡긴다.
+- W3C가 정한 in-flow Flex paint 순서와 layout 순서를 별도 경로에서 확인한다. `order`가 달라진 겹침 case에서는 runtime paint-list 순서와 실제 Android/iOS WGPU 출력의 불투명 box 픽셀을 모두 확인한다. sibling flex item을 정렬할 때 각 item의 descendant subtree를 함께 유지한다. 서로 다른 nested container의 item을 한 global `order` 값으로 섞지 않는다. `row-reverse`와 `column-reverse`는 이 paint rank를 대신 바꾸지 않는다. absolute child의 `order:0` 상호 순서, static-position alignment, `z-index`와 stacking context는 C10.3.5와 C12·C22 계약에 맡긴다.
 - 현재 `RuntimeRenderSnapshot`에는 일반 runtime hit-test API가 없고 S05 입력 이벤트 전달도 미구현이다. 이 단계에서는 frame·paint entry가 안정된 NodeId와 연결되는 것까지만 확인한다. CSS paint order를 실제 플랫폼 pointer target으로 사용한다고 주장하지 않는다. S05가 구현될 때 overlap target 선택을 별도 계약·검증으로 연결한다.
 - 시각 `order`는 source/speech/순차 키보드 탐색 순서를 재정렬하지 않는다. HostDocument source order 불변식을 테스트한다. 네이티브 접근성 트리는 아직 별도 구현 범위이므로 접근성 통합이 완료되었다고 주장하지 않는다.
 
 ### 완료 조건
 
-- 같은 order tie는 입력 tree order로 안정적이며, signed order가 작은 item부터 배치·그려진다. 변화 후 layout, paint와 style revision이 하나의 일관된 결과로 게시된다.
+- 같은 order tie는 입력 tree order로 안정적이며, signed `i32` order가 작은 item부터 배치·그려진다. 변화 후 layout, paint와 style revision이 하나의 일관된 결과로 게시된다. Chromium 경계값은 CSS Typed OM 값 및 frame으로 판정하고 `getComputedStyle()`의 지수 표기 손실을 허용치에 숨기지 않는다.
 - order는 CSS non-flex context의 일반 자식·다른 subtree ordering을 바꾸지 않고, 다른 flex container의 item과 비교하지 않는다. 계산 순서 정렬용 vector를 원본 DOM 자식 목록에 다시 써 넣지 않는다.
-- 최신 style이 실패하면 과거 paint order를 새 revision frame으로 노출하지 않는다. 오류에는 node/property가 포함된다.
+- Chromium fixture의 node별 geometry와 paint rank가 일치하고, Android API 37 emulator와 iOS 26.2 Simulator에서 겹친 색상 결과까지 확인한다. latest style 계산이 실패하면 과거 paint order를 새 revision frame으로 노출하지 않는다. 오류에는 node/property가 포함된다.
 
 ## C10.3.3 · `align-self`와 `align-content`
 
