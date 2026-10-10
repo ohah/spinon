@@ -121,11 +121,12 @@
 
 ## C10.3.4 · baseline
 
-- `align-items:baseline`, `align-self:baseline`과 기본 first-baseline 동작을 지원 후보로 둔다. `last baseline`, vertical writing mode, fragmented layout, inline/text descendants는 별도의 선행 계약이 없으면 지원 완료에 포함하지 않는다.
-- 먼저 높이가 서로 다른 빈 fixed-size flex item의 CSS가 요구하는 synthesized baseline을 비교한다. Taffy의 baseline 입력·fallback이 Chromium의 border-box/child baseline synthesis와 같은지 확인하고, Taffy 동작에 대한 단위 비교만으로 완료 처리하지 않는다.
-- parent flex container가 다른 Flex container 안에서 baseline-aligned item으로 사용되는 경우, `order`와 reverse/wrap-reverse 후 어느 line/item이 first baseline을 제공하는지 함께 검사한다.
-- 실제 텍스트 baseline과 글꼴·script·line box는 C15의 text layout/measurement 결과를 받아야 한다. C15가 완료되기 전에는 text baseline을 구현했다고 주장하지 않고 C10.3.4를 미완료로 유지한다. baseline fallback을 임의로 bottom edge 또는 font ascent로 고정하지 않는다.
-- `baseline`은 first-baseline alignment의 별칭으로 처리한다. `align-self`/`align-items`의 `first baseline`과 `last baseline`, 그리고 row wrap의 `align-content:first baseline`/`last baseline` line 정렬을 별도 값으로 다룬다. Column Flex에서 cross axis가 block axis와 평행하지 않아 baseline content-alignment가 적용되지 않는 경계도 고정한다. 모든 텍스트 기반 first/last baseline 결과는 C15까지 미완료다.
+- `align-items`·`align-self`의 `baseline`/`first baseline`과 `last baseline`은 이 하위 단계의 성공 범위다. `baseline`은 first-baseline self-alignment의 computed alias로, `last baseline`은 별도 값으로 보존한다. `place-items`·`place-self`가 만드는 해당 longhand도 같은 입력·출력 계약을 따른다.
+- 성공 입력은 `horizontal-tb`·LTR에서 텍스트가 없는 빈 fixed-size element box다. first·last baseline fallback, single participant, first/last 그룹의 공존, cross-axis margin, order-modified 순서, wrap·wrap-reverse와 중첩 Flex container의 first/last baseline 전파를 각각 reference에 둔다. column은 computed keyword와 cross-start fallback을 비교하고 row baseline 알고리즘을 적용하지 않는다.
+- Taffy 0.14.0의 Flex output은 first baseline만 제공한다. first와 last를 같은 Taffy 값으로 축약하지 않는다. 구현은 baseline 측정치·Flex line 식별·frame 보정의 소유자와 revision을 명시해야 하며, last baseline이 필요한 중첩 입력에서도 parent가 정확한 last baseline을 받도록 해야 한다.
+- `align-content:first baseline`은 line 간 baseline 정렬로 설명하지 않는다. 이 단계에서는 computed value와 pinned Chrome에서 관찰한 textless empty-content geometry만 비교하며, 실제 콘텐츠 baseline distribution을 지원했다고 주장하지 않는다. `align-content:last baseline`은 pinned Chrome의 invalid declaration/cascade fallback을 비교하고 성공 문법으로 처리하지 않는다. `place-content`는 동일한 computed longhand 경계를 따른다.
+- text node·anonymous flex item·replaced intrinsic size·font shaping·line box·vertical writing mode·fragmentation은 완료 범위 밖이며 각 선행 계약(C14/C15/C17)을 따른다. baseline 산출에 해당 입력이 필요하면 임의 높이로 대체하지 않고 명확히 실패 처리한다.
+- C10.3.4의 계획 검토와 확정된 관찰은 [기준선 계획 검토](../spec/internal/evidence/c10-3-4-baseline-plan-review-2026-10-11.md)와 [범위 모순 수정 후 재검토](../spec/internal/evidence/c10-3-4-scope-revision-review-2026-10-11.md)에 기록한다. 계획 검토 기록은 구현 후의 새 실패 관점 검토로 재사용하지 않는다.
 
 ## fixture와 회귀 축
 
