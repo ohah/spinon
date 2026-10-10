@@ -37,6 +37,8 @@ const RUNTIME_CSS_VIEWPORT_UNITS_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c06/runtime-viewport-units.js");
 const RUNTIME_CSS_MIN_MAX_SIZING_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c07/runtime-min-max-sizing.js");
+const RUNTIME_CSS_BORDER_WIDTH_FIXTURE_SOURCE: &str =
+    include_str!("../../../tests/fixtures/css/c07/runtime-border-width.js");
 
 #[repr(C)]
 pub struct SpinonRuntimeGpuHost {

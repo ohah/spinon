@@ -105,6 +105,15 @@ pub struct LayoutEdges {
     pub left: LayoutLengthPercentage,
 }
 
+/// Taffy에 전달하는 면별 CSS border used width입니다. 모든 값은 CSS px입니다.
+#[derive(Clone, Copy, Debug, Default, PartialEq)]
+pub struct LayoutBorder {
+    pub top: f32,
+    pub right: f32,
+    pub bottom: f32,
+    pub left: f32,
+}
+
 /// Flex 행·열 사이의 간격입니다.
 #[derive(Clone, Copy, Debug, Default, PartialEq)]
 pub struct LayoutGap {
@@ -136,6 +145,8 @@ pub struct LayoutStyle {
     pub margin: LayoutEdges,
     /// 음수 값을 허용하지 않는 내부 여백입니다.
     pub padding: LayoutEdges,
+    /// 면별 CSS border used width입니다. paint 속성은 포함하지 않습니다.
+    pub border: LayoutBorder,
     pub gap: LayoutGap,
     pub flex_grow: f32,
     pub flex_shrink: f32,
@@ -250,6 +261,7 @@ impl Default for LayoutStyle {
             justify_content: LayoutJustifyContent::FlexStart,
             margin: LayoutEdges::default(),
             padding: LayoutEdges::default(),
+            border: LayoutBorder::default(),
             gap: LayoutGap::default(),
             flex_grow: 0.0,
             flex_shrink: 0.0,

@@ -40,11 +40,20 @@ fn view_for_inline_style(style: &str) -> (StyloDocumentView, spinon_core::NodeId
 #[test]
 fn runtime_inline_allowlist_accepts_supported_shorthand_expansions() {
     let (view, _) = view_for_inline_style(
-        "display:flex;flex:0 1 auto;gap:2px;margin-inline:3px;padding-block:4px",
+        "display:flex;flex:0 1 auto;gap:2px;margin-inline:3px;padding-block:4px;border:2px solid red",
     );
     assert_eq!(
         first_unsupported_runtime_layout_inline_property(&view),
         None
+    );
+}
+
+#[test]
+fn runtime_inline_allowlist_rejects_noninitial_border_image_values() {
+    let (view, node) = view_for_inline_style("border:2px solid red;border-image-repeat:round");
+    assert_eq!(
+        first_unsupported_runtime_layout_inline_property(&view),
+        Some((node, "border-image-repeat".to_owned()))
     );
 }
 

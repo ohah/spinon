@@ -32,6 +32,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             || arguments.contains("--spinon-c065-typed-css-math")
             || arguments.contains("--spinon-c066-viewport-units")
             || arguments.contains("--spinon-c071-min-max-sizing")
+            || arguments.contains("--spinon-c072-border-width")
         let runR05AttributionProbe = arguments.contains("--spinon-r05-attribution")
         let runLifecycleProbe = arguments.contains("--spinon-dom-gc-auto")
         if runLifecycleProbe && !spinonS03DomGcFixtureEnabled {

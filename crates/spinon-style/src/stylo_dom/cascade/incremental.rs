@@ -81,6 +81,8 @@ fn validate_synthetic_document_box(
     Ok(())
 }
 
+#[path = "incremental/border.rs"]
+mod border;
 #[path = "incremental/compute.rs"]
 mod compute;
 #[path = "incremental/dimensions.rs"]
@@ -93,6 +95,7 @@ mod reuse;
 mod source_math;
 #[path = "incremental/spacing.rs"]
 mod spacing;
+pub(super) use border::computed_layout_border;
 pub(super) use compute::compute_cascade_with_reuse;
 
 /// 안전한 runtime subtree 변경에서 이전 직렬화 스타일 출력을 재사용합니다.

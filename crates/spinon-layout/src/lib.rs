@@ -19,8 +19,9 @@ pub use css_math::{LayoutCalcId, LayoutCssMath, LayoutCssMathProperty, LayoutCss
 pub use error::LayoutError;
 pub use revision::{LayoutInputRevision, LayoutSourceRevision};
 pub use style::{
-    FlexDirection, LayoutAlignItems, LayoutBoxSizing, LayoutDimension, LayoutDisplay, LayoutEdges,
-    LayoutGap, LayoutJustifyContent, LayoutLengthPercentage, LayoutStyle, TextDirection, Viewport,
+    FlexDirection, LayoutAlignItems, LayoutBorder, LayoutBoxSizing, LayoutDimension, LayoutDisplay,
+    LayoutEdges, LayoutGap, LayoutJustifyContent, LayoutLengthPercentage, LayoutStyle,
+    TextDirection, Viewport,
 };
 
 /// 부모와 자식 ID 순서 및 레이아웃 스타일을 묶은 입력 노드입니다.
@@ -272,6 +273,19 @@ fn validate_style(node: &LayoutNode) -> Result<(), LayoutError> {
         ("gap.column", node.style.gap.column),
     ] {
         if !value.is_calc() && (!value.value().is_finite() || value.value() < 0.0) {
+            return Err(LayoutError::InvalidStyle {
+                node: node.id,
+                field,
+            });
+        }
+    }
+    for (field, value) in [
+        ("border.top", node.style.border.top),
+        ("border.right", node.style.border.right),
+        ("border.bottom", node.style.border.bottom),
+        ("border.left", node.style.border.left),
+    ] {
+        if !value.is_finite() || value < 0.0 {
             return Err(LayoutError::InvalidStyle {
                 node: node.id,
                 field,

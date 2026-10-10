@@ -39,6 +39,14 @@ pub(super) const RUNTIME_FLEX_LAYOUT_PROPERTIES: &[(&str, LonghandId)] = &[
     ("padding-right", LonghandId::PaddingRight),
     ("padding-bottom", LonghandId::PaddingBottom),
     ("padding-left", LonghandId::PaddingLeft),
+    ("border-top-width", LonghandId::BorderTopWidth),
+    ("border-right-width", LonghandId::BorderRightWidth),
+    ("border-bottom-width", LonghandId::BorderBottomWidth),
+    ("border-left-width", LonghandId::BorderLeftWidth),
+    ("border-top-style", LonghandId::BorderTopStyle),
+    ("border-right-style", LonghandId::BorderRightStyle),
+    ("border-bottom-style", LonghandId::BorderBottomStyle),
+    ("border-left-style", LonghandId::BorderLeftStyle),
 ];
 
 pub(super) const RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES: &[&str] = &[
@@ -84,6 +92,26 @@ pub(super) const RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES: &[&str] = &[
     "padding-inline",
     "padding-inline-start",
     "padding-inline-end",
+    "border",
+    "border-width",
+    "border-top-width",
+    "border-right-width",
+    "border-bottom-width",
+    "border-left-width",
+    "border-top",
+    "border-right",
+    "border-bottom",
+    "border-left",
+    "border-style",
+    "border-top-style",
+    "border-right-style",
+    "border-bottom-style",
+    "border-left-style",
+    "border-color",
+    "border-top-color",
+    "border-right-color",
+    "border-bottom-color",
+    "border-left-color",
 ];
 
 /// C04 runtime에서 UA 속성과 제한 layout 입력을 한 번의 cascade로 계산합니다.
@@ -191,6 +219,26 @@ pub fn first_unsupported_runtime_layout_inline_property(
         "padding-block-start",
         "padding-block-end",
         "padding-inline-start",
+        "border",
+        "border-width",
+        "border-top-width",
+        "border-right-width",
+        "border-bottom-width",
+        "border-left-width",
+        "border-top",
+        "border-right",
+        "border-bottom",
+        "border-left",
+        "border-style",
+        "border-top-style",
+        "border-right-style",
+        "border-bottom-style",
+        "border-left-style",
+        "border-color",
+        "border-top-color",
+        "border-right-color",
+        "border-bottom-color",
+        "border-left-color",
         "padding-inline-end",
     ];
 
@@ -235,7 +283,9 @@ pub(super) fn first_unsupported_inline_property(
             let block = inline_style.read_with(&guard);
             for declaration in block.declarations() {
                 let property = declaration.id().name().into_owned();
-                if !is_allowed(&property) {
+                if !is_allowed(&property)
+                    && !crate::stylesheet_registry::is_border_image_initial(declaration, &property)
+                {
                     return Some((handle.id(), property));
                 }
             }

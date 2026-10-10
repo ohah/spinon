@@ -100,6 +100,12 @@ pub(super) fn to_taffy_style(
                 calc_handles,
             )?,
         },
+        border: Rect {
+            top: LengthPercentage::length(style.border.top),
+            right: LengthPercentage::length(style.border.right),
+            bottom: LengthPercentage::length(style.border.bottom),
+            left: LengthPercentage::length(style.border.left),
+        },
         gap: Size {
             width: to_taffy_length_percentage(
                 node,

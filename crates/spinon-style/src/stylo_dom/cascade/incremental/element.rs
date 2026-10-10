@@ -19,6 +19,7 @@ use style::{
 use super::super::{
     ComputedCssMath, ComputedElementStyle, ComputedStyleProfile, CssCascadeError, runtime_paint,
 };
+use super::computed_layout_border;
 use super::dimensions::{computed_layout_dimensions, computed_layout_math_values};
 use super::source_math::winning_layout_math_values;
 use super::spacing::computed_layout_spacing;
@@ -34,21 +35,34 @@ pub(super) fn computed_element_output(
     let (background_color, background_paint) =
         runtime_paint::computed_background_for_profile(profile, computed, node_id)?;
     let font_size_css_px = computed.get_font().clone_font_size().computed_size().px();
+    let layout_border = computed_layout_border(computed);
+    let mut computed_properties = properties
+        .iter()
+        .map(|(name, id)| {
+            (
+                (*name).to_owned(),
+                computed.computed_value_to_string(PropertyDeclarationId::Longhand(*id)),
+            )
+        })
+        .collect::<BTreeMap<_, _>>();
+    for (name, width) in [
+        ("border-top-width", layout_border.top),
+        ("border-right-width", layout_border.right),
+        ("border-bottom-width", layout_border.bottom),
+        ("border-left-width", layout_border.left),
+    ] {
+        if let Some(value) = computed_properties.get_mut(name) {
+            *value = format!("{width:.0}px");
+        }
+    }
     Ok(ComputedElementStyle {
         node_id,
         font_size_css_px,
         layout_dimensions: computed_layout_dimensions(computed),
         layout_spacing: computed_layout_spacing(computed),
+        layout_border,
         layout_math_values: computed_layout_math_values(computed, source_math),
-        properties: properties
-            .iter()
-            .map(|(name, id)| {
-                (
-                    (*name).to_owned(),
-                    computed.computed_value_to_string(PropertyDeclarationId::Longhand(*id)),
-                )
-            })
-            .collect(),
+        properties: computed_properties,
         background_color,
         background_paint,
     })

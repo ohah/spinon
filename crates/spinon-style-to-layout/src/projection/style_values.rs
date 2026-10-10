@@ -2,9 +2,9 @@ use std::collections::BTreeMap;
 
 use spinon_core::NodeId;
 use spinon_layout::{
-    FlexDirection, LayoutAlignItems, LayoutBoxSizing, LayoutCssMathProperty, LayoutDimension,
-    LayoutDisplay, LayoutEdges, LayoutGap, LayoutJustifyContent, LayoutLengthPercentage,
-    LayoutStyle, TextDirection,
+    FlexDirection, LayoutAlignItems, LayoutBorder, LayoutBoxSizing, LayoutCssMathProperty,
+    LayoutDimension, LayoutDisplay, LayoutEdges, LayoutGap, LayoutJustifyContent,
+    LayoutLengthPercentage, LayoutStyle, TextDirection,
 };
 use spinon_style::{
     ComputedCssDimension, ComputedCssMath, ComputedCssMaxSize, ComputedCssSpacingValue,
@@ -27,6 +27,15 @@ pub(super) fn project_styles(
     for element in snapshot.elements.iter() {
         let node = element.node_id;
         let supports_size_constraints = matches!(
+            snapshot.profile,
+            ComputedStyleProfile::RuntimeFlexLayoutV1
+                | ComputedStyleProfile::RuntimeFlexPaintV1
+                | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+                | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
+                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
+                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
+        );
+        let supports_border_layout = matches!(
             snapshot.profile,
             ComputedStyleProfile::RuntimeFlexLayoutV1
                 | ComputedStyleProfile::RuntimeFlexPaintV1
@@ -242,6 +251,16 @@ pub(super) fn project_styles(
                     )?,
                 },
                 _ => LayoutEdges::default(),
+            },
+            border: if supports_border_layout {
+                LayoutBorder {
+                    top: element.layout_border.top,
+                    right: element.layout_border.right,
+                    bottom: element.layout_border.bottom,
+                    left: element.layout_border.left,
+                }
+            } else {
+                LayoutBorder::default()
             },
         };
         if output.insert(node, style).is_some() {

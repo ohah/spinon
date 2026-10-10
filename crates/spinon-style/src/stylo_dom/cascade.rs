@@ -60,9 +60,9 @@ pub use margin::compute_flex_margin_cascade;
 pub use margin::compute_flex_media_environment_cascade;
 pub use snapshot::{
     CascadeDiagnostic, ComputedCssDimension, ComputedCssEdges, ComputedCssMath, ComputedCssMaxSize,
-    ComputedCssSpacingValue, ComputedElementStyle, ComputedLayoutDimensions, ComputedLayoutSpacing,
-    ComputedStyleProfile, ComputedStyleSnapshot, CssColorScheme, CssMediaEnvironment,
-    CssPointerCapabilities, CssPrimaryPointer, CssViewport,
+    ComputedCssSpacingValue, ComputedElementStyle, ComputedLayoutBorder, ComputedLayoutDimensions,
+    ComputedLayoutSpacing, ComputedStyleProfile, ComputedStyleSnapshot, CssColorScheme,
+    CssMediaEnvironment, CssPointerCapabilities, CssPrimaryPointer, CssViewport,
 };
 pub use ua_baseline::compute_supported_elements_ua_cascade;
 

@@ -190,6 +190,10 @@ int32_t spinon_runtime_gpu_host_eval_viewport_units_fixture(
 int32_t spinon_runtime_gpu_host_eval_min_max_sizing_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);
+/* C07.2: border width layout을 실제 V8·Stylo·Taffy 경로에서 확인합니다. */
+int32_t spinon_runtime_gpu_host_eval_border_width_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
 /* Android backend: 0=Vulkan 실패 뒤 GL 순차 재시도, 1=Vulkan 강제, 2=GL 강제. iOS는 3=Metal. */
 void *spinon_runtime_gpu_host_create_android(
     SpinonRuntimeGpuHost *host, void *native_window, uint32_t width,
