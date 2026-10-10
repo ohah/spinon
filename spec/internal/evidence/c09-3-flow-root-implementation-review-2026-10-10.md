@@ -46,4 +46,4 @@
 - iOS: `SPINON_C0410_ENVIRONMENT layout=ready boxes=5`, `SPINON_C0410_DRAW presented boxes=5`, root 320×240 CSS px.
 - [Android screenshot](./c09-3-flow-root/android.png) · [Android log](./c09-3-flow-root/android.log) · [iOS screenshot](./c09-3-flow-root/ios.png) · [iOS log](./c09-3-flow-root/ios.log).
 
-현재 결과는 구현 branch에서 검토 중이며 merge 전이다.
+PR #111이 2026-10-10에 리베이스 병합됐다. 공식 C09.3 완료 체크와 내부 계약·구현 인덱스를 병합 뒤 문서 동기화 PR에서 반영했다.
