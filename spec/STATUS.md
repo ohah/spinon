@@ -232,7 +232,11 @@ R05 Android 수집 supervisor와 direct-touch join 분석기를 추가했다. �
 
 ### P1 · 일반 모바일 앱 레이아웃과 텍스트
 
-- [ ] **C09 Block formatting** — margin collapse, formatting context, shrink-to-fit, 흐름·포함 블록 등 Block 배치의 Chromium 차이를 속성·fixture 단위로 닫는다. 상위: S02, U02, X16.
+- [ ] **C09 Block formatting** — normal Block 흐름·containing block, margin collapse, `flow-root` BFC와 의존 intrinsic width 문맥의 shrink-to-fit을 하위 계약·Chromium fixture 단위로 닫는다. C08.1 PR #105 병합 뒤 runtime 구현을 시작한다. C09.4는 C12/C14/C15/C26 선행 항목에 걸려 있으므로 완료까지 상위는 미완료다. [계획](../plan/c09-block-formatting.md) · [내부 제안 계약 ID 0047](internal/0047-c09-block-formatting.md) · [계획 실패 관점 검토](internal/evidence/c09-block-formatting-plan-review-2026-10-10.md). 숫자 계약 버전 `0.1.0` 고정.
+  - [ ] **C09.1 일반 Block 흐름·포함 블록** — `auto` width·horizontal auto margin, normal-flow containing block, auto height와 C06/C07 상자 모델 통합. [계획](../plan/c09-block-formatting.md) · 미구현.
+  - [ ] **C09.2 수직 margin collapse** — sibling·parent-child·empty/self-collapsing, signed multi-margin strut과 used border/padding 장벽. [계획](../plan/c09-block-formatting.md) · 미구현.
+  - [ ] **C09.3 `flow-root` formatting context** — 내부 child margin 차단과 flow-root box 자신의 비-BFC 부모 첫/마지막 자식·상위 BFC 형제에 대한 외부 margin collapse를 분리해 검증한다. 다른 BFC 생성 조건은 owner 작업과 교차 검증한다. [계획](../plan/c09-block-formatting.md) · 미구현.
+  - [ ] **C09.4 shrink-to-fit 문맥 통합** — float·inline-block·조건을 충족하는 absolute 사용처를 C26·C15·C12 및 C14/C15 intrinsic measure와 각각 연결한다. 선행 구현 뒤 진행하며 현재 미구현. [계획](../plan/c09-block-formatting.md) · 미구현.
 - [ ] **C10 Flexbox** — basis·grow·shrink·wrap·order·축·정렬·gap·기준선·분수 좌표·min-size 자동값과 재배치를 검증한다. 상위: S02, U03, X16.
 - [ ] **C11 CSS Grid** — explicit/implicit track, repeat·named lines/areas, auto placement, minmax·fit-content, spanning·fractional tracks와 정렬을 검증한다. 상위: S02, X09, X16.
 - [ ] **C12 위치 지정과 쌓임** — static·relative·absolute·fixed·sticky, containing block, inset, stacking context, `z-index`와 viewport·scroll interaction을 구현한다. Taffy fallback 매핑만으로 완료하지 않는다. 상위: S02, U02, X16.
