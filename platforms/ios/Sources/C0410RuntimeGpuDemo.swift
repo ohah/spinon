@@ -61,6 +61,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c101-flex-wrap")
     private let flexDistributionProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c102-flex-distribution")
+    private let flexReverseProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c1031-flex-reverse")
     private let blockFormattingProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c091-block-formatting")
         || ProcessInfo.processInfo.arguments.contains("--spinon-c092-margin-collapse")
@@ -78,6 +80,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     }
     private var fixedSizeCssFixtureRequested: Bool {
         blockFormattingProbeRequested || flexWrapProbeRequested || flexDistributionProbeRequested
+            || flexReverseProbeRequested
     }
     private var failureProbeStarted = false
     private var shutdownProbeStarted = false
@@ -94,7 +97,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
 
         let title = UILabel()
-        title.text = flexDistributionProbeRequested
+        title.text = flexReverseProbeRequested
+            ? "SPINON · C10.3.1 reverse Flex"
+            : flexDistributionProbeRequested
             ? "SPINON · C10.2 flex distribution"
             : flexWrapProbeRequested
             ? "SPINON · C10.1 flex-wrap"
@@ -137,7 +142,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.addSubview(title)
 
         let description = UILabel()
-        description.text = flexDistributionProbeRequested
+        description.text = flexReverseProbeRequested
+            ? "V8 row-reverse·wrap-reverse → Stylo → Taffy → WGPU · 320×240 CSS px"
+            : flexDistributionProbeRequested
             ? "V8 flex basis·grow·shrink·min/max freeze → Stylo → Taffy → WGPU · 320×240 CSS px"
             : flexWrapProbeRequested
             ? "V8 CSS flex-wrap row·gap → Stylo → Taffy → WGPU · 320×240 CSS px"
@@ -184,7 +191,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         canvasView.translatesAutoresizingMaskIntoConstraints = false
         canvasView.isAccessibilityElement = true
-        canvasView.accessibilityLabel = flexDistributionProbeRequested
+        canvasView.accessibilityLabel = flexReverseProbeRequested
+            ? "C10.3.1 row-reverse와 wrap-reverse WGPU 장면"
+            : flexDistributionProbeRequested
             ? "C10.2 flex grow·shrink·min/max freeze WGPU 장면"
             : flexWrapProbeRequested
             ? "C10.1 세 줄 flex-wrap·gap WGPU 장면"
@@ -451,6 +460,19 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         return "\(status) layout=\(report[layoutRange.upperBound...])"
     }
 
+    private func logC1031NodeFrames(_ report: String) {
+        guard let marker = report.range(of: "node_frames_css_px=["),
+              let closing = report[marker.upperBound...].firstIndex(of: "]") else {
+            log("SPINON_C1031_FRAME_SUMMARY marker=missing report_length=\(report.count)")
+            return
+        }
+        let frames = report[marker.upperBound..<closing].split(separator: ";")
+        for frame in frames {
+            log("SPINON_C1031_NODE_FRAME \(frame)")
+        }
+        log("SPINON_C1031_FRAME_SUMMARY frames=\(frames.count) marker=present")
+    }
+
     @objc private func toggleSurfaceSize() {
         guard !isClosing else { return }
         expandedSurface.toggle()
@@ -503,7 +525,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
         log("SPINON_C0410_ENVIRONMENT \(environment ?? "")")
 
-        var result = flexDistributionProbeRequested
+        var result = flexReverseProbeRequested
+            ? SpinonRunner.evalRuntimeGpuFlexReverseFixture(handle)
+            : flexDistributionProbeRequested
             ? SpinonRunner.evalRuntimeGpuFlexDistributionFixture(handle)
             : flexWrapProbeRequested
             ? SpinonRunner.evalRuntimeGpuFlexWrapFixture(handle)
@@ -546,8 +570,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             postStatus("실패 · \(result ?? "JavaScript 보고 없음")")
             return
         }
+        if flexReverseProbeRequested, result?.hasPrefix("status=0 ") == true {
+            logC1031NodeFrames(result ?? "")
+        }
         if sceneWasSupersededAfterCommit {
-            let scope = flexDistributionProbeRequested
+            let scope = flexReverseProbeRequested
+                ? "SPINON_C1031"
+                : flexDistributionProbeRequested
                 ? "SPINON_C102"
                 : flexWrapProbeRequested
                 ? "SPINON_C101"
@@ -583,7 +612,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             log("\(scope)_EVAL_SCENE_SUPERSEDED \(result ?? "")")
             postStatus("JavaScript 적용 완료 · 최신 CSS 장면 다시 계산 중")
         } else {
-            let scope = flexDistributionProbeRequested
+            let scope = flexReverseProbeRequested
+                ? "SPINON_C1031"
+                : flexDistributionProbeRequested
                 ? "SPINON_C102"
                 : flexWrapProbeRequested
                 ? "SPINON_C101"
@@ -1024,6 +1055,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         guard canUseSurfaceGeneration(generation) else { return }
         let result = SpinonRunner.drawRuntimeGpuWgpu(handle)
         log("SPINON_C0410_DRAW generation=\(generation) \(result ?? "")")
+        if result?.hasPrefix("status=-12 ") == true {
+            log("SPINON_C0410_DRAW_SUPERSEDED generation=\(generation)")
+            requestDraw()
+            return
+        }
         if result?.hasPrefix("status=0 ") != true {
             postStatus("실패 · \(result ?? "WGPU draw 보고 없음")")
             throw C0410LatestTaskLaneError.operationFailed(result ?? "WGPU draw 실패 보고 없음")

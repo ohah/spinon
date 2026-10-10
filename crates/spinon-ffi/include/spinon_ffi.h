@@ -224,6 +224,10 @@ int32_t spinon_runtime_gpu_host_eval_flow_root_fixture(
 int32_t spinon_runtime_gpu_host_eval_flex_wrap_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);
+/* C10.3.1: flex-direction reverse와 flex-wrap reverse를 실제 V8·Stylo·Taffy·WGPU 경로에서 확인합니다. */
+int32_t spinon_runtime_gpu_host_eval_flex_reverse_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
 int32_t spinon_runtime_gpu_host_eval_flex_distribution_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);

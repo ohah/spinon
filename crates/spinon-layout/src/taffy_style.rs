@@ -172,10 +172,13 @@ pub(super) fn to_taffy_style(
         flex_direction: match style.flex_direction {
             FlexDirection::Row => TaffyFlexDirection::Row,
             FlexDirection::Column => TaffyFlexDirection::Column,
+            FlexDirection::RowReverse => TaffyFlexDirection::RowReverse,
+            FlexDirection::ColumnReverse => TaffyFlexDirection::ColumnReverse,
         },
         flex_wrap: match style.flex_wrap {
             FlexWrap::NoWrap => TaffyFlexWrap::NoWrap,
             FlexWrap::Wrap => TaffyFlexWrap::Wrap,
+            FlexWrap::WrapReverse => TaffyFlexWrap::WrapReverse,
         },
         flex_grow: style.flex_grow,
         flex_shrink: style.flex_shrink,

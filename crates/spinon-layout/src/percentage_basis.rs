@@ -184,7 +184,9 @@ fn is_axis_definite(
                 && parent.style.align_items == crate::LayoutAlignItems::Stretch
                 && match (parent.style.flex_direction, axis) {
                     (FlexDirection::Row, LayoutAxis::Height)
-                    | (FlexDirection::Column, LayoutAxis::Width) => {
+                    | (FlexDirection::RowReverse, LayoutAxis::Height)
+                    | (FlexDirection::Column, LayoutAxis::Width)
+                    | (FlexDirection::ColumnReverse, LayoutAxis::Width) => {
                         axis.parent_definite(parent_axes)
                     }
                     _ => false,
@@ -229,8 +231,12 @@ fn validate_main_axis_gap(
         return Ok(());
     }
     let (property, value, axis, is_definite) = match node.style.flex_direction {
-        FlexDirection::Row => ("column-gap", node.style.gap.column, "width", definite.width),
-        FlexDirection::Column => ("row-gap", node.style.gap.row, "height", definite.height),
+        FlexDirection::Row | FlexDirection::RowReverse => {
+            ("column-gap", node.style.gap.column, "width", definite.width)
+        }
+        FlexDirection::Column | FlexDirection::ColumnReverse => {
+            ("row-gap", node.style.gap.row, "height", definite.height)
+        }
     };
     if has_percentage(value, calc_percentages) && !is_definite {
         return Err(LayoutError::IndefinitePercentageBasis {

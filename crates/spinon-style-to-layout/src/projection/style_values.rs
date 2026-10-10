@@ -51,7 +51,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockPaintV1
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
         );
-        let supports_flex_wrap = matches!(
+        let supports_runtime_flex = matches!(
             snapshot.profile,
             ComputedStyleProfile::RuntimeFlexLayoutV1
                 | ComputedStyleProfile::RuntimeFlexPaintV1
@@ -60,6 +60,29 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
         );
+        let flex_direction = parse_flex_direction(
+            node,
+            required(element, "flex-direction")?,
+            supports_runtime_flex,
+        )?;
+        let direction = parse_direction(node, required(element, "direction")?)?;
+        if direction == TextDirection::Rtl
+            && matches!(
+                flex_direction,
+                FlexDirection::RowReverse | FlexDirection::ColumnReverse
+            )
+        {
+            let value = match flex_direction {
+                FlexDirection::RowReverse => "row-reverse",
+                FlexDirection::ColumnReverse => "column-reverse",
+                FlexDirection::Row | FlexDirection::Column => unreachable!(),
+            };
+            return Err(unsupported_value(
+                node,
+                "flex-direction",
+                &format!("{value} with direction:rtl"),
+            ));
+        }
         let style = LayoutStyle {
             display: parse_display(
                 node,
@@ -144,13 +167,13 @@ pub(super) fn project_styles(
                 element.layout_math_values.get("flex-basis"),
                 &mut math,
             )?,
-            flex_direction: parse_flex_direction(node, required(element, "flex-direction")?)?,
-            flex_wrap: if supports_flex_wrap {
+            flex_direction,
+            flex_wrap: if supports_runtime_flex {
                 parse_flex_wrap(node, required(element, "flex-wrap")?)?
             } else {
                 LayoutStyle::default().flex_wrap
             },
-            direction: parse_direction(node, required(element, "direction")?)?,
+            direction,
             align_items: match snapshot.profile {
                 ComputedStyleProfile::FlexAlignmentV1
                 | ComputedStyleProfile::FlexAlignmentCascadeLayersV1
@@ -425,10 +448,16 @@ fn parse_dimension(
     }
 }
 
-fn parse_flex_direction(node: NodeId, value: &str) -> Result<FlexDirection, StyleLayoutError> {
+fn parse_flex_direction(
+    node: NodeId,
+    value: &str,
+    supports_reverse: bool,
+) -> Result<FlexDirection, StyleLayoutError> {
     match value {
         "row" => Ok(FlexDirection::Row),
         "column" => Ok(FlexDirection::Column),
+        "row-reverse" if supports_reverse => Ok(FlexDirection::RowReverse),
+        "column-reverse" if supports_reverse => Ok(FlexDirection::ColumnReverse),
         value => unsupported(node, "flex-direction", value),
     }
 }
@@ -437,6 +466,7 @@ fn parse_flex_wrap(node: NodeId, value: &str) -> Result<FlexWrap, StyleLayoutErr
     match value {
         "nowrap" => Ok(FlexWrap::NoWrap),
         "wrap" => Ok(FlexWrap::Wrap),
+        "wrap-reverse" => Ok(FlexWrap::WrapReverse),
         value => unsupported(node, "flex-wrap", value),
     }
 }
