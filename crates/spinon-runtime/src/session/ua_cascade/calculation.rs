@@ -210,7 +210,7 @@ fn compute_root(
     String,
 > {
     let view =
-        StyloDocumentView::new_html_fragment_child_shared(Arc::clone(&request.snapshot), root)
+        StyloDocumentView::new_html_runtime_mount_shared(Arc::clone(&request.snapshot), root)
             .map_err(|error| error.to_string())?;
     let profile = if runtime_paint_enabled && registered_properties_enabled {
         ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1

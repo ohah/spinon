@@ -1,0 +1,1361 @@
+{
+  "schema": "spinon-css-c06-typed-css-math-reference/v1",
+  "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.98-1cac0952928a-af9650f48dd6",
+  "fixture": {
+    "id": "C06.5-typed-css-math-v1",
+    "inventoryPath": "tests/fixtures/css/c06/typed-css-math-inventory.json",
+    "inventorySha256": "1cac0952928ae9e0051c57baf850bd19d320bf4f6162cf278e708e03ae11ce05",
+    "htmlPath": "tests/fixtures/css/c06/typed-css-math.html",
+    "htmlSha256": "d8e135a4057d0cfcac34e628b63e3122b384990ba42c23735a967c617cf85ba4"
+  },
+  "captureTool": {
+    "path": "tools/css-reference/capture-c06-typed-css-math.mjs",
+    "sha256": "af9650f48dd67af4ce1fb81f427a58bf287ddc541fde87d1f136baacdac6f65f",
+    "dependencies": [
+      {
+        "path": "tools/css-reference/chromium-session.mjs",
+        "sha256": "b010ada41ed75dc2d67ee25abd4266b17930f1de95fc683eebc5cdab6ad2cdc1"
+      }
+    ]
+  },
+  "oracle": {
+    "name": "Google Chrome",
+    "product": "Chrome/154.0.8037.98",
+    "cliVersion": "Google Chrome 154.0.8037.98",
+    "revision": "@b859317bf11f6be47f9b7799ec690a0a42a1fb33",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "executablePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "executableSha256": "ccffd5c5fe77ba3212e07c2c69091f8048b73c396b4647ecaa150e1e01a04954",
+    "host": {
+      "platform": "darwin",
+      "architecture": "arm64",
+      "release": "25.5.0",
+      "node": "v24.20.0"
+    },
+    "flags": [
+      "--headless=new",
+      "--no-first-run",
+      "--no-default-browser-check",
+      "--disable-background-networking",
+      "--lang=en-US",
+      "--remote-debugging-port=0",
+      "--user-data-dir=<temporary-profile>"
+    ]
+  },
+  "environment": {
+    "viewportCssPx": {
+      "width": 320,
+      "height": 800
+    },
+    "deviceScaleFactors": [
+      1,
+      2
+    ],
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "forcedColors": "none",
+    "pointer": "coarse",
+    "hover": "none"
+  },
+  "comparison": {
+    "coordinateSpace": "CSS px",
+    "maximumAbsoluteFrameErrorCssPx": 0.5,
+    "properties": [
+      "width",
+      "height",
+      "flex-basis",
+      "margin-left",
+      "padding-left",
+      "column-gap"
+    ],
+    "mathFunctions": [
+      "calc",
+      "min",
+      "max",
+      "clamp"
+    ],
+    "nonFiniteCases": [
+      "divide-by-zero",
+      "zero-divided-by-zero"
+    ],
+    "unsupportedCases": [
+      "invalid-dimension",
+      "round-function"
+    ]
+  },
+  "observations": [
+    {
+      "fixtureId": "C06.5-typed-css-math-v1",
+      "viewport": {
+        "width": 320,
+        "height": 800,
+        "deviceScaleFactor": 1
+      },
+      "environment": {
+        "locale": "en-US",
+        "intlLocale": "en-US",
+        "timeZone": "UTC",
+        "dark": false,
+        "coarsePointer": true,
+        "hover": false
+      },
+      "nodes": [
+        {
+          "id": "root",
+          "properties": {
+            "width": "300px",
+            "height": "780px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "300px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "780px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 300,
+            "height": 780
+          }
+        },
+        {
+          "id": "calc-length",
+          "properties": {
+            "width": "45px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "45px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 45,
+            "height": 10
+          }
+        },
+        {
+          "id": "calc-mixed",
+          "properties": {
+            "width": "85px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSMathSum",
+              "text": "calc(25% + 10px)"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 10,
+            "width": 85,
+            "height": 10
+          }
+        },
+        {
+          "id": "calc-nested",
+          "properties": {
+            "width": "60px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSMathSum",
+              "text": "calc(10% + 30px)"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 20,
+            "width": 60,
+            "height": 10
+          }
+        },
+        {
+          "id": "calc-product",
+          "properties": {
+            "width": "35px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "35px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 30,
+            "width": 35,
+            "height": 10
+          }
+        },
+        {
+          "id": "min-value",
+          "properties": {
+            "width": "100px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSMathMin",
+              "text": "min(100px, 50%)"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 40,
+            "width": 100,
+            "height": 10
+          }
+        },
+        {
+          "id": "max-value",
+          "properties": {
+            "width": "150px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSMathMax",
+              "text": "max(100px, 50%)"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 50,
+            "width": 150,
+            "height": 10
+          }
+        },
+        {
+          "id": "min-mixed",
+          "properties": {
+            "width": "80px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSMathMin",
+              "text": "min(10% + 50px, 5% + 80px)"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 60,
+            "width": 80,
+            "height": 10
+          }
+        },
+        {
+          "id": "max-nested",
+          "properties": {
+            "width": "60px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSMathMax",
+              "text": "max(20px, min(40%, 60px))"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 70,
+            "width": 60,
+            "height": 10
+          }
+        },
+        {
+          "id": "clamp-value",
+          "properties": {
+            "width": "100px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSMathClamp",
+              "text": "clamp(20px, 50%, 100px)"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 80,
+            "width": 100,
+            "height": 10
+          }
+        },
+        {
+          "id": "clamp-negative",
+          "properties": {
+            "width": "20px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "20px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 90,
+            "width": 20,
+            "height": 10
+          }
+        },
+        {
+          "id": "clamp-inverted-bounds",
+          "properties": {
+            "width": "100px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "100px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 100,
+            "width": 100,
+            "height": 10
+          }
+        },
+        {
+          "id": "clamp-nan",
+          "properties": {
+            "width": "0px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "0px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 110,
+            "width": 0,
+            "height": 10
+          }
+        },
+        {
+          "id": "var-math",
+          "properties": {
+            "width": "50px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSMathSum",
+              "text": "calc(10% + 20px)"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 120,
+            "width": 50,
+            "height": 10
+          }
+        },
+        {
+          "id": "negative-margin",
+          "properties": {
+            "width": "30px",
+            "height": "10px",
+            "margin-left": "-5px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "30px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            },
+            "margin-left": {
+              "type": "CSSUnitValue",
+              "text": "-5px"
+            }
+          },
+          "rect": {
+            "x": -5,
+            "y": 130,
+            "width": 30,
+            "height": 10
+          }
+        },
+        {
+          "id": "padding-math",
+          "properties": {
+            "width": "50px",
+            "height": "10px",
+            "padding-left": "15px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "50px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            },
+            "padding-left": {
+              "type": "CSSUnitValue",
+              "text": "15px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 140,
+            "width": 50,
+            "height": 10
+          }
+        },
+        {
+          "id": "gap-container",
+          "properties": {
+            "width": "300px",
+            "height": "20px",
+            "column-gap": "calc(5% + 5px)"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "300px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "20px"
+            },
+            "column-gap": {
+              "type": "CSSMathSum",
+              "text": "calc(5% + 5px)"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 150,
+            "width": 300,
+            "height": 20
+          }
+        },
+        {
+          "id": "gap-first",
+          "properties": {
+            "width": "30px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 150,
+            "width": 30,
+            "height": 10
+          }
+        },
+        {
+          "id": "gap-second",
+          "properties": {
+            "width": "30px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 50,
+            "y": 150,
+            "width": 30,
+            "height": 10
+          }
+        },
+        {
+          "id": "basis-container",
+          "properties": {
+            "width": "300px",
+            "height": "20px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "300px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "20px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 170,
+            "width": 300,
+            "height": 20
+          }
+        },
+        {
+          "id": "basis-math",
+          "properties": {
+            "width": "70px",
+            "height": "10px",
+            "flex-basis": "calc(10% + 40px)"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            },
+            "flex-basis": {
+              "type": "CSSMathSum",
+              "text": "calc(10% + 40px)"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 170,
+            "width": 70,
+            "height": 10
+          }
+        },
+        {
+          "id": "divide-by-zero",
+          "properties": {
+            "width": "3.35544e+07px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "3.35544e+07px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 190,
+            "width": 33554428,
+            "height": 10
+          }
+        },
+        {
+          "id": "zero-divided-by-zero",
+          "properties": {
+            "width": "0px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "0px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 200,
+            "width": 0,
+            "height": 10
+          }
+        },
+        {
+          "id": "negative-size",
+          "properties": {
+            "width": "0px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "0px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 210,
+            "width": 0,
+            "height": 10
+          }
+        },
+        {
+          "id": "invalid-dimension",
+          "properties": {
+            "width": "23px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "23px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 220,
+            "width": 23,
+            "height": 10
+          }
+        },
+        {
+          "id": "round-function",
+          "properties": {
+            "width": "12px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "12px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 230,
+            "width": 12,
+            "height": 10
+          }
+        }
+      ]
+    },
+    {
+      "fixtureId": "C06.5-typed-css-math-v1",
+      "viewport": {
+        "width": 320,
+        "height": 800,
+        "deviceScaleFactor": 2
+      },
+      "environment": {
+        "locale": "en-US",
+        "intlLocale": "en-US",
+        "timeZone": "UTC",
+        "dark": false,
+        "coarsePointer": true,
+        "hover": false
+      },
+      "nodes": [
+        {
+          "id": "root",
+          "properties": {
+            "width": "300px",
+            "height": "780px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "300px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "780px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 300,
+            "height": 780
+          }
+        },
+        {
+          "id": "calc-length",
+          "properties": {
+            "width": "45px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "45px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 45,
+            "height": 10
+          }
+        },
+        {
+          "id": "calc-mixed",
+          "properties": {
+            "width": "85px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSMathSum",
+              "text": "calc(25% + 10px)"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 10,
+            "width": 85,
+            "height": 10
+          }
+        },
+        {
+          "id": "calc-nested",
+          "properties": {
+            "width": "60px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSMathSum",
+              "text": "calc(10% + 30px)"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 20,
+            "width": 60,
+            "height": 10
+          }
+        },
+        {
+          "id": "calc-product",
+          "properties": {
+            "width": "35px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "35px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 30,
+            "width": 35,
+            "height": 10
+          }
+        },
+        {
+          "id": "min-value",
+          "properties": {
+            "width": "100px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSMathMin",
+              "text": "min(100px, 50%)"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 40,
+            "width": 100,
+            "height": 10
+          }
+        },
+        {
+          "id": "max-value",
+          "properties": {
+            "width": "150px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSMathMax",
+              "text": "max(100px, 50%)"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 50,
+            "width": 150,
+            "height": 10
+          }
+        },
+        {
+          "id": "min-mixed",
+          "properties": {
+            "width": "80px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSMathMin",
+              "text": "min(10% + 50px, 5% + 80px)"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 60,
+            "width": 80,
+            "height": 10
+          }
+        },
+        {
+          "id": "max-nested",
+          "properties": {
+            "width": "60px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSMathMax",
+              "text": "max(20px, min(40%, 60px))"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 70,
+            "width": 60,
+            "height": 10
+          }
+        },
+        {
+          "id": "clamp-value",
+          "properties": {
+            "width": "100px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSMathClamp",
+              "text": "clamp(20px, 50%, 100px)"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 80,
+            "width": 100,
+            "height": 10
+          }
+        },
+        {
+          "id": "clamp-negative",
+          "properties": {
+            "width": "20px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "20px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 90,
+            "width": 20,
+            "height": 10
+          }
+        },
+        {
+          "id": "clamp-inverted-bounds",
+          "properties": {
+            "width": "100px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "100px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 100,
+            "width": 100,
+            "height": 10
+          }
+        },
+        {
+          "id": "clamp-nan",
+          "properties": {
+            "width": "0px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "0px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 110,
+            "width": 0,
+            "height": 10
+          }
+        },
+        {
+          "id": "var-math",
+          "properties": {
+            "width": "50px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSMathSum",
+              "text": "calc(10% + 20px)"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 120,
+            "width": 50,
+            "height": 10
+          }
+        },
+        {
+          "id": "negative-margin",
+          "properties": {
+            "width": "30px",
+            "height": "10px",
+            "margin-left": "-5px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "30px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            },
+            "margin-left": {
+              "type": "CSSUnitValue",
+              "text": "-5px"
+            }
+          },
+          "rect": {
+            "x": -5,
+            "y": 130,
+            "width": 30,
+            "height": 10
+          }
+        },
+        {
+          "id": "padding-math",
+          "properties": {
+            "width": "50px",
+            "height": "10px",
+            "padding-left": "15px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "50px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            },
+            "padding-left": {
+              "type": "CSSUnitValue",
+              "text": "15px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 140,
+            "width": 50,
+            "height": 10
+          }
+        },
+        {
+          "id": "gap-container",
+          "properties": {
+            "width": "300px",
+            "height": "20px",
+            "column-gap": "calc(5% + 5px)"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "300px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "20px"
+            },
+            "column-gap": {
+              "type": "CSSMathSum",
+              "text": "calc(5% + 5px)"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 150,
+            "width": 300,
+            "height": 20
+          }
+        },
+        {
+          "id": "gap-first",
+          "properties": {
+            "width": "30px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 150,
+            "width": 30,
+            "height": 10
+          }
+        },
+        {
+          "id": "gap-second",
+          "properties": {
+            "width": "30px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 50,
+            "y": 150,
+            "width": 30,
+            "height": 10
+          }
+        },
+        {
+          "id": "basis-container",
+          "properties": {
+            "width": "300px",
+            "height": "20px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "300px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "20px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 170,
+            "width": 300,
+            "height": 20
+          }
+        },
+        {
+          "id": "basis-math",
+          "properties": {
+            "width": "70px",
+            "height": "10px",
+            "flex-basis": "calc(10% + 40px)"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            },
+            "flex-basis": {
+              "type": "CSSMathSum",
+              "text": "calc(10% + 40px)"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 170,
+            "width": 70,
+            "height": 10
+          }
+        },
+        {
+          "id": "divide-by-zero",
+          "properties": {
+            "width": "3.35544e+07px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "3.35544e+07px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 190,
+            "width": 33554428,
+            "height": 10
+          }
+        },
+        {
+          "id": "zero-divided-by-zero",
+          "properties": {
+            "width": "0px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "0px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 200,
+            "width": 0,
+            "height": 10
+          }
+        },
+        {
+          "id": "negative-size",
+          "properties": {
+            "width": "0px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "0px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 210,
+            "width": 0,
+            "height": 10
+          }
+        },
+        {
+          "id": "invalid-dimension",
+          "properties": {
+            "width": "23px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "23px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 220,
+            "width": 23,
+            "height": 10
+          }
+        },
+        {
+          "id": "round-function",
+          "properties": {
+            "width": "12px",
+            "height": "10px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "12px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 230,
+            "width": 12,
+            "height": 10
+          }
+        }
+      ]
+    }
+  ]
+}

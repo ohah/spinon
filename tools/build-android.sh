@@ -68,10 +68,18 @@ fi
 if [[ "${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}" == "1" ]]; then
   ffi_features+=(c04-runtime-gpu-test-hooks)
 fi
-ffi_feature_args=()
+ffi_feature_csv=""
 if ((${#ffi_features[@]} > 0)); then
-  ffi_feature_args=(--features "$(IFS=,; printf '%s' "${ffi_features[*]}")")
+  ffi_feature_csv="$(IFS=,; printf '%s' "${ffi_features[*]}")"
 fi
+
+build_spinon_ffi() {
+  if [[ -n "$ffi_feature_csv" ]]; then
+    "$@" --features "$ffi_feature_csv"
+  else
+    "$@"
+  fi
+}
 
 if [[ ! -d "$v8_dir" ]] || [[ "$(git -C "$v8_dir" rev-parse HEAD 2>/dev/null || true)" != "$v8_revision" ]]; then
   echo "V8 소스가 고정 커밋과 다릅니다. 먼저 bash tools/v8/checkout.sh를 실행하세요." >&2
@@ -105,7 +113,7 @@ fi
 
 if command -v mise >/dev/null 2>&1; then
   mise exec -- bun run bundle:bootstrap
-  mise exec -- env CARGO_PROFILE_RELEASE_PANIC=abort cargo build --locked --release --target aarch64-linux-android -p spinon-ffi "${ffi_feature_args[@]}"
+  build_spinon_ffi mise exec -- env CARGO_PROFILE_RELEASE_PANIC=abort cargo build --locked --release --target aarch64-linux-android -p spinon-ffi
   if [[ "${SPINON_ENABLE_S04_ANDROID_FIXTURE:-0}" == "1" ]]; then
     mise exec -- cargo build --manifest-path "$repo_root/spikes/wgpu-backend/Cargo.toml" --locked --release --target aarch64-linux-android --features s04-android-fixture
   else
@@ -113,7 +121,7 @@ if command -v mise >/dev/null 2>&1; then
   fi
 else
   bun run bundle:bootstrap
-  CARGO_PROFILE_RELEASE_PANIC=abort cargo build --locked --release --target aarch64-linux-android -p spinon-ffi "${ffi_feature_args[@]}"
+  build_spinon_ffi env CARGO_PROFILE_RELEASE_PANIC=abort cargo build --locked --release --target aarch64-linux-android -p spinon-ffi
   if [[ "${SPINON_ENABLE_S04_ANDROID_FIXTURE:-0}" == "1" ]]; then
     cargo build --manifest-path "$repo_root/spikes/wgpu-backend/Cargo.toml" --locked --release --target aarch64-linux-android --features s04-android-fixture
   else

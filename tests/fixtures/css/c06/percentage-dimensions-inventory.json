@@ -1,0 +1,43 @@
+{
+  "schema": "spinon-css-c06-percentage-dimensions-inventory/v1",
+  "fixtureId": "C06.1-percentage-dimensions-v1",
+  "viewport": { "width": 320, "height": 800, "deviceScaleFactor": 1 },
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "pointer": "coarse",
+    "hover": "none"
+  },
+  "comparison": {
+    "computedStyle": "exact trimmed CSSOM serialization for listed properties",
+    "geometry": "each x, y, width, and height differs by at most 0.5 CSS px",
+    "purpose": "Chromium behavior reference; unsupported C06.1 properties are observations, not support claims",
+    "fixtureConstraint": "No nonzero borders or positioned layout: the current product projection has no border or position model",
+    "serializerBoundary": "Chromium used-value CSSOM for dimensions is compared to final frames; Stylo typed computed dimensions are compared to the preserved CSS value kind"
+  },
+  "nodes": [
+    { "id": "root", "kind": "runtime-root", "properties": ["width", "height"] },
+    { "id": "root-half", "kind": "percentage-size", "properties": ["width", "height"] },
+    { "id": "content-parent", "kind": "content-box-containing-block", "properties": ["width", "height", "box-sizing", "padding-left"] },
+    { "id": "content-50", "kind": "percentage-size", "properties": ["width", "height"] },
+    { "id": "content-125", "kind": "over-100-percent", "properties": ["width", "height"] },
+    { "id": "content-zero", "kind": "zero-percent", "properties": ["width", "height"] },
+    { "id": "content-fraction", "kind": "fractional-percent", "properties": ["width", "height"] },
+    { "id": "content-negative", "kind": "invalid-negative-declaration", "properties": ["width", "height"] },
+    { "id": "border-parent", "kind": "border-box-containing-block", "properties": ["width", "height", "box-sizing", "padding-left"] },
+    { "id": "border-50", "kind": "percentage-size", "properties": ["width", "height"] },
+    { "id": "row-flex", "kind": "row-flex-container", "properties": ["width", "height", "flex-direction"] },
+    { "id": "row-50", "kind": "row-flex-basis", "properties": ["width", "flex-basis"] },
+    { "id": "row-25", "kind": "row-flex-basis", "properties": ["width", "flex-basis"] },
+    { "id": "column-flex", "kind": "column-flex-container", "properties": ["width", "height", "flex-direction"] },
+    { "id": "column-50", "kind": "column-flex-basis", "properties": ["height", "flex-basis"] },
+    { "id": "column-25", "kind": "column-flex-basis", "properties": ["height", "flex-basis"] },
+    { "id": "auto-parent", "kind": "indefinite-height-containing-block", "properties": ["height"] },
+    { "id": "auto-height-child", "kind": "indefinite-height-percentage", "properties": ["width", "height"] },
+    { "id": "unsupported-calc", "kind": "unsupported-math-observation", "properties": ["width"] },
+    { "id": "unsupported-margin", "kind": "unsupported-margin-percent-observation", "properties": ["width", "margin-left"] },
+    { "id": "unsupported-padding", "kind": "unsupported-padding-percent-observation", "properties": ["width", "padding-left"] },
+    { "id": "unsupported-gap", "kind": "unsupported-gap-percent-observation", "properties": ["width", "column-gap"] }
+  ]
+}

@@ -39,7 +39,7 @@ fn node_style(snapshot: &super::ComputedStyleSnapshot, id: spinon_core::NodeId) 
 #[test]
 fn inline_style_subtree_reuse_matches_full_cascade_and_keeps_sibling_output() {
     let mut document = HostDocument::new().unwrap();
-    let handles = (0..5)
+    let handles = (0..6)
         .map(|_| document.reserve_node_handle().unwrap())
         .collect::<Vec<_>>();
     let mut initial =
@@ -69,12 +69,14 @@ fn inline_style_subtree_reuse_matches_full_cascade_and_keeps_sibling_output() {
         handles[4],
         "width:var(--tile-size);height:10px",
     );
+    create_element(&mut initial, handles[5], "width:50%;height:10px");
     for (node, parent) in [
         (handles[0], HostParent::Root),
         (handles[1], HostParent::Node(handles[0])),
         (handles[2], HostParent::Node(handles[1])),
         (handles[3], HostParent::Node(handles[0])),
         (handles[4], HostParent::Node(handles[3])),
+        (handles[5], HostParent::Node(handles[0])),
     ] {
         initial.push(DocumentOperation::InsertBefore {
             parent,
@@ -136,7 +138,17 @@ fn inline_style_subtree_reuse_matches_full_cascade_and_keeps_sibling_output() {
     assert_eq!(partial.diagnostics, full.diagnostics);
     assert_eq!(node_style(&partial, handles[2].id()), "46px");
     assert_eq!(node_style(&partial, handles[4].id()), "41px");
+    assert_eq!(
+        partial
+            .elements
+            .iter()
+            .find(|element| element.node_id == handles[5].id())
+            .unwrap()
+            .layout_dimensions
+            .width,
+        super::ComputedCssDimension::Percentage(0.5)
+    );
     assert_eq!(stats.recomputed_style_elements, 2);
-    assert_eq!(stats.reused_style_elements, 3);
+    assert_eq!(stats.reused_style_elements, 4);
     assert_eq!(stats.context_style_elements, 1);
 }

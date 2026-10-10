@@ -10,19 +10,26 @@ use style::{LocalName, Namespace};
 
 use super::{
     StyloElement,
-    element::{atom_text, attribute_name_matches},
+    element::{StyloElementRef, atom_text, attribute_name_matches},
 };
 
 impl SelectorsElement for StyloElement<'_> {
     type Impl = SelectorImpl;
 
     fn opaque(&self) -> selectors::OpaqueElement {
-        let node = self
-            .view
-            .snapshot()
-            .node(self.handle)
-            .expect("Stylo 요소의 HostNode가 있어야 합니다");
-        selectors::OpaqueElement::new(node)
+        match self.element_ref {
+            StyloElementRef::Host(handle) => {
+                let node = self
+                    .view
+                    .snapshot()
+                    .node(handle)
+                    .expect("Stylo 요소의 HostNode가 있어야 합니다");
+                selectors::OpaqueElement::new(node)
+            }
+            StyloElementRef::SyntheticHtml | StyloElementRef::SyntheticBody => {
+                selectors::OpaqueElement::new(self.data())
+            }
+        }
     }
 
     fn parent_element(&self) -> Option<Self> {
@@ -223,25 +230,28 @@ impl SelectorsElement for StyloElement<'_> {
     }
 
     fn is_empty(&self) -> bool {
-        self.view
-            .snapshot()
-            .children(self.handle)
-            .into_iter()
-            .flatten()
-            .filter(|handle| self.view.is_member(*handle))
-            .all(|handle| {
-                self.view
-                    .snapshot()
-                    .node(handle)
-                    .is_some_and(|node| match node.kind() {
-                        spinon_core::HostNodeKind::Element(_) => false,
-                        spinon_core::HostNodeKind::Text(text) => text.code_units().is_empty(),
-                    })
-            })
+        self.as_node().node_children().into_iter().all(|child| {
+            if child.as_element().is_some() {
+                return false;
+            }
+            child
+                .handle()
+                .and_then(|handle| self.view.snapshot().node(handle))
+                .is_some_and(|node| match node.kind() {
+                    spinon_core::HostNodeKind::Element(_) => false,
+                    spinon_core::HostNodeKind::Text(text) => text.code_units().is_empty(),
+                })
+        })
     }
 
     fn is_root(&self) -> bool {
-        self.handle == self.view.root_handle() && self.view.root_matches_root_pseudo()
+        match self.element_ref {
+            StyloElementRef::SyntheticHtml => true,
+            StyloElementRef::Host(handle) => {
+                handle == self.view.root_handle() && self.view.root_matches_root_pseudo()
+            }
+            StyloElementRef::SyntheticBody => false,
+        }
     }
 
     fn add_element_unique_hashes(&self, _filter: &mut BloomFilter) -> bool {
@@ -254,28 +264,14 @@ impl StyloElement<'_> {
         if self.has_state(stylo_dom::ElementState::FOCUS) {
             return true;
         }
-        let mut pending = self
-            .view
-            .snapshot()
-            .children(self.handle)
-            .into_iter()
-            .flatten()
-            .filter(|handle| self.view.is_member(*handle))
-            .collect::<Vec<_>>();
-        while let Some(handle) = pending.pop() {
-            if let Some(element) = self.view.element(handle)
+        let mut pending = self.as_node().node_children();
+        while let Some(node) = pending.pop() {
+            if let Some(element) = node.as_element()
                 && element.has_state(stylo_dom::ElementState::FOCUS)
             {
                 return true;
             }
-            pending.extend(
-                self.view
-                    .snapshot()
-                    .children(handle)
-                    .into_iter()
-                    .flatten()
-                    .filter(|child| self.view.is_member(*child)),
-            );
+            pending.extend(node.node_children());
         }
         false
     }

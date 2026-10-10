@@ -1,0 +1,2311 @@
+{
+  "schema": "spinon-css-c07-min-max-sizing-reference/v1",
+  "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.98-9ca887a1d386-561a5e08abed",
+  "fixture": {
+    "id": "C07.1-min-max-size-v1",
+    "inventoryPath": "tests/fixtures/css/c07/min-max-sizing-inventory.json",
+    "inventorySha256": "9ca887a1d3866d362e80fb873955c669ed08ecb669677f859bc188c652eb859b",
+    "htmlPath": "tests/fixtures/css/c07/min-max-sizing.html",
+    "htmlSha256": "412e00d964e42e30cc05df51d291c44d5f046fe69365058856adcf6c935efb34"
+  },
+  "captureTool": {
+    "path": "tools/css-reference/capture-c07-min-max-sizing.mjs",
+    "sha256": "561a5e08abed56e6bea49bc35be71ef4e82b4fd276e288e6062d5b2ce529b8a4",
+    "dependencies": [
+      {
+        "path": "tools/css-reference/chromium-session.mjs",
+        "sha256": "b010ada41ed75dc2d67ee25abd4266b17930f1de95fc683eebc5cdab6ad2cdc1"
+      }
+    ]
+  },
+  "oracle": {
+    "name": "Google Chrome",
+    "product": "Chrome/154.0.8037.98",
+    "cliVersion": "Google Chrome 154.0.8037.98",
+    "revision": "@b859317bf11f6be47f9b7799ec690a0a42a1fb33",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "executablePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "executableSha256": "ccffd5c5fe77ba3212e07c2c69091f8048b73c396b4647ecaa150e1e01a04954",
+    "host": {
+      "platform": "darwin",
+      "architecture": "arm64",
+      "release": "25.5.0",
+      "node": "v26.7.0"
+    },
+    "flags": [
+      "--headless=new",
+      "--no-first-run",
+      "--no-default-browser-check",
+      "--disable-background-networking",
+      "--lang=en-US",
+      "--remote-debugging-port=0",
+      "--user-data-dir=<temporary-profile>"
+    ]
+  },
+  "environment": {
+    "viewportCssPx": {
+      "width": 400,
+      "height": 1000
+    },
+    "deviceScaleFactors": [
+      1,
+      2
+    ],
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "forcedColors": "none",
+    "pointer": "coarse",
+    "hover": "none"
+  },
+  "comparison": {
+    "computedCss": "exact string per property against pinned Chromium",
+    "rectFields": [
+      "x",
+      "y",
+      "width",
+      "height"
+    ],
+    "maximumAbsoluteRectErrorCssPx": 0.5,
+    "dprInvariant": true,
+    "includeUnsupportedOraclesInPassCount": false
+  },
+  "observations": [
+    {
+      "fixtureId": "C07.1-min-max-size-v1",
+      "viewport": {
+        "width": 400,
+        "height": 1000,
+        "deviceScaleFactor": 1
+      },
+      "environment": {
+        "locale": "en-US",
+        "intlLocale": "en-US",
+        "timeZone": "UTC",
+        "dark": false,
+        "coarsePointer": true,
+        "hover": false
+      },
+      "nodes": [
+        {
+          "id": "root",
+          "properties": {
+            "box-sizing": "border-box",
+            "width": "280px",
+            "height": "960px"
+          },
+          "typed": {
+            "box-sizing": {
+              "type": "CSSKeywordValue",
+              "text": "border-box"
+            },
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "280px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "960px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 280,
+            "height": 960
+          }
+        },
+        {
+          "id": "block-parent",
+          "properties": {
+            "box-sizing": "content-box",
+            "width": "200px",
+            "height": "800px"
+          },
+          "typed": {
+            "box-sizing": {
+              "type": "CSSKeywordValue",
+              "text": "content-box"
+            },
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "200px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "800px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 200,
+            "height": 800
+          }
+        },
+        {
+          "id": "percentage-height-parent",
+          "properties": {
+            "box-sizing": "content-box",
+            "width": "200px",
+            "height": "120px"
+          },
+          "typed": {
+            "box-sizing": {
+              "type": "CSSKeywordValue",
+              "text": "content-box"
+            },
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "200px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "120px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 800,
+            "width": 200,
+            "height": 120
+          }
+        },
+        {
+          "id": "min-width-raises",
+          "properties": {
+            "box-sizing": "content-box",
+            "width": "90px",
+            "height": "20px",
+            "min-width": "90px",
+            "max-width": "none"
+          },
+          "typed": {
+            "box-sizing": {
+              "type": "CSSKeywordValue",
+              "text": "content-box"
+            },
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "60px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "20px"
+            },
+            "min-width": {
+              "type": "CSSUnitValue",
+              "text": "90px"
+            },
+            "max-width": {
+              "type": "CSSKeywordValue",
+              "text": "none"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 90,
+            "height": 20
+          }
+        },
+        {
+          "id": "max-width-limits",
+          "properties": {
+            "box-sizing": "content-box",
+            "width": "90px",
+            "height": "20px",
+            "min-width": "0px",
+            "max-width": "90px"
+          },
+          "typed": {
+            "box-sizing": {
+              "type": "CSSKeywordValue",
+              "text": "content-box"
+            },
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "120px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "20px"
+            },
+            "min-width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "max-width": {
+              "type": "CSSUnitValue",
+              "text": "90px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 20,
+            "width": 90,
+            "height": 20
+          }
+        },
+        {
+          "id": "min-height-raises",
+          "properties": {
+            "box-sizing": "content-box",
+            "width": "40px",
+            "height": "55px",
+            "min-height": "55px",
+            "max-height": "none"
+          },
+          "typed": {
+            "box-sizing": {
+              "type": "CSSKeywordValue",
+              "text": "content-box"
+            },
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "40px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "20px"
+            },
+            "min-height": {
+              "type": "CSSUnitValue",
+              "text": "55px"
+            },
+            "max-height": {
+              "type": "CSSKeywordValue",
+              "text": "none"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 40,
+            "width": 40,
+            "height": 55
+          }
+        },
+        {
+          "id": "max-height-limits",
+          "properties": {
+            "box-sizing": "content-box",
+            "width": "40px",
+            "height": "55px",
+            "min-height": "0px",
+            "max-height": "55px"
+          },
+          "typed": {
+            "box-sizing": {
+              "type": "CSSKeywordValue",
+              "text": "content-box"
+            },
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "40px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "80px"
+            },
+            "min-height": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "max-height": {
+              "type": "CSSUnitValue",
+              "text": "55px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 95,
+            "width": 40,
+            "height": 55
+          }
+        },
+        {
+          "id": "min-over-max",
+          "properties": {
+            "box-sizing": "content-box",
+            "width": "80px",
+            "min-width": "80px",
+            "max-width": "50px"
+          },
+          "typed": {
+            "box-sizing": {
+              "type": "CSSKeywordValue",
+              "text": "content-box"
+            },
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "100px"
+            },
+            "min-width": {
+              "type": "CSSUnitValue",
+              "text": "80px"
+            },
+            "max-width": {
+              "type": "CSSUnitValue",
+              "text": "50px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 150,
+            "width": 80,
+            "height": 20
+          }
+        },
+        {
+          "id": "content-box-max",
+          "properties": {
+            "box-sizing": "content-box",
+            "width": "100px",
+            "padding-left": "10px",
+            "padding-right": "10px",
+            "max-width": "100px"
+          },
+          "typed": {
+            "box-sizing": {
+              "type": "CSSKeywordValue",
+              "text": "content-box"
+            },
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "160px"
+            },
+            "padding-left": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            },
+            "padding-right": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            },
+            "max-width": {
+              "type": "CSSUnitValue",
+              "text": "100px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 170,
+            "width": 120,
+            "height": 20
+          }
+        },
+        {
+          "id": "border-box-max",
+          "properties": {
+            "box-sizing": "border-box",
+            "width": "100px",
+            "padding-left": "10px",
+            "padding-right": "10px",
+            "max-width": "100px"
+          },
+          "typed": {
+            "box-sizing": {
+              "type": "CSSKeywordValue",
+              "text": "border-box"
+            },
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "160px"
+            },
+            "padding-left": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            },
+            "padding-right": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            },
+            "max-width": {
+              "type": "CSSUnitValue",
+              "text": "100px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 190,
+            "width": 100,
+            "height": 20
+          }
+        },
+        {
+          "id": "border-box-min",
+          "properties": {
+            "box-sizing": "border-box",
+            "width": "100px",
+            "padding-left": "10px",
+            "padding-right": "10px",
+            "min-width": "100px"
+          },
+          "typed": {
+            "box-sizing": {
+              "type": "CSSKeywordValue",
+              "text": "border-box"
+            },
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "60px"
+            },
+            "padding-left": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            },
+            "padding-right": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            },
+            "min-width": {
+              "type": "CSSUnitValue",
+              "text": "100px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 210,
+            "width": 100,
+            "height": 20
+          }
+        },
+        {
+          "id": "border-box-padding-floor",
+          "properties": {
+            "box-sizing": "border-box",
+            "width": "24px",
+            "padding-left": "12px",
+            "padding-right": "12px",
+            "min-width": "10px"
+          },
+          "typed": {
+            "box-sizing": {
+              "type": "CSSKeywordValue",
+              "text": "border-box"
+            },
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            },
+            "padding-left": {
+              "type": "CSSUnitValue",
+              "text": "12px"
+            },
+            "padding-right": {
+              "type": "CSSUnitValue",
+              "text": "12px"
+            },
+            "min-width": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 230,
+            "width": 24,
+            "height": 20
+          }
+        },
+        {
+          "id": "percentage-min",
+          "properties": {
+            "width": "100px",
+            "min-width": "50%"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "70px"
+            },
+            "min-width": {
+              "type": "CSSUnitValue",
+              "text": "50%"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 250,
+            "width": 100,
+            "height": 20
+          }
+        },
+        {
+          "id": "percentage-max",
+          "properties": {
+            "width": "150px",
+            "max-width": "75%"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "160px"
+            },
+            "max-width": {
+              "type": "CSSUnitValue",
+              "text": "75%"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 270,
+            "width": 150,
+            "height": 20
+          }
+        },
+        {
+          "id": "percentage-height-max",
+          "properties": {
+            "height": "60px",
+            "max-height": "50%"
+          },
+          "typed": {
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "100px"
+            },
+            "max-height": {
+              "type": "CSSUnitValue",
+              "text": "50%"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 800,
+            "width": 20,
+            "height": 60
+          }
+        },
+        {
+          "id": "calc-min",
+          "properties": {
+            "width": "50px",
+            "min-width": "calc(15% + 20px)"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "40px"
+            },
+            "min-width": {
+              "type": "CSSMathSum",
+              "text": "calc(15% + 20px)"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 290,
+            "width": 50,
+            "height": 20
+          }
+        },
+        {
+          "id": "calc-max",
+          "properties": {
+            "width": "80px",
+            "max-width": "min(120px, 40%)"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "170px"
+            },
+            "max-width": {
+              "type": "CSSMathMin",
+              "text": "min(120px, 40%)"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 310,
+            "width": 80,
+            "height": 20
+          }
+        },
+        {
+          "id": "var-min",
+          "properties": {
+            "width": "60px",
+            "min-width": "calc(20% + 20px)"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "40px"
+            },
+            "min-width": {
+              "type": "CSSMathSum",
+              "text": "calc(20% + 20px)"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 330,
+            "width": 60,
+            "height": 20
+          }
+        },
+        {
+          "id": "zero-min",
+          "properties": {
+            "width": "0px",
+            "min-width": "0px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "0px"
+            },
+            "min-width": {
+              "type": "CSSUnitValue",
+              "text": "0px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 350,
+            "width": 0,
+            "height": 20
+          }
+        },
+        {
+          "id": "zero-max",
+          "properties": {
+            "width": "0px",
+            "max-width": "0px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "100px"
+            },
+            "max-width": {
+              "type": "CSSUnitValue",
+              "text": "0px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 370,
+            "width": 0,
+            "height": 20
+          }
+        },
+        {
+          "id": "invalid-min-fallback",
+          "properties": {
+            "width": "25px",
+            "min-width": "25px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            },
+            "min-width": {
+              "type": "CSSUnitValue",
+              "text": "25px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 390,
+            "width": 25,
+            "height": 20
+          }
+        },
+        {
+          "id": "invalid-max-fallback",
+          "properties": {
+            "width": "100px",
+            "max-width": "100px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "150px"
+            },
+            "max-width": {
+              "type": "CSSUnitValue",
+              "text": "100px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 410,
+            "width": 100,
+            "height": 20
+          }
+        },
+        {
+          "id": "default-auto-none",
+          "properties": {
+            "width": "60px",
+            "min-width": "0px",
+            "max-width": "none"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "60px"
+            },
+            "min-width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "max-width": {
+              "type": "CSSKeywordValue",
+              "text": "none"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 430,
+            "width": 60,
+            "height": 20
+          }
+        },
+        {
+          "id": "flex-min-parent",
+          "properties": {
+            "width": "150px",
+            "height": "40px",
+            "display": "flex",
+            "flex-direction": "row"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "150px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "40px"
+            },
+            "display": {
+              "type": "CSSKeywordValue",
+              "text": "flex"
+            },
+            "flex-direction": {
+              "type": "CSSKeywordValue",
+              "text": "row"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 450,
+            "width": 150,
+            "height": 40
+          }
+        },
+        {
+          "id": "flex-min-a",
+          "properties": {
+            "width": "80px",
+            "min-width": "80px",
+            "flex-basis": "100px",
+            "flex-shrink": "1"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "min-width": {
+              "type": "CSSUnitValue",
+              "text": "80px"
+            },
+            "flex-basis": {
+              "type": "CSSUnitValue",
+              "text": "100px"
+            },
+            "flex-shrink": {
+              "type": "CSSUnitValue",
+              "text": "1"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 450,
+            "width": 80,
+            "height": 20
+          }
+        },
+        {
+          "id": "flex-min-b",
+          "properties": {
+            "width": "80px",
+            "min-width": "80px",
+            "flex-basis": "100px",
+            "flex-shrink": "1"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "min-width": {
+              "type": "CSSUnitValue",
+              "text": "80px"
+            },
+            "flex-basis": {
+              "type": "CSSUnitValue",
+              "text": "100px"
+            },
+            "flex-shrink": {
+              "type": "CSSUnitValue",
+              "text": "1"
+            }
+          },
+          "rect": {
+            "x": 80,
+            "y": 450,
+            "width": 80,
+            "height": 20
+          }
+        },
+        {
+          "id": "flex-zero-parent",
+          "properties": {
+            "width": "150px",
+            "height": "40px",
+            "display": "flex",
+            "flex-direction": "row"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "150px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "40px"
+            },
+            "display": {
+              "type": "CSSKeywordValue",
+              "text": "flex"
+            },
+            "flex-direction": {
+              "type": "CSSKeywordValue",
+              "text": "row"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 490,
+            "width": 150,
+            "height": 40
+          }
+        },
+        {
+          "id": "flex-zero-a",
+          "properties": {
+            "width": "75px",
+            "min-width": "0px",
+            "flex-basis": "100px",
+            "flex-shrink": "1"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "min-width": {
+              "type": "CSSUnitValue",
+              "text": "0px"
+            },
+            "flex-basis": {
+              "type": "CSSUnitValue",
+              "text": "100px"
+            },
+            "flex-shrink": {
+              "type": "CSSUnitValue",
+              "text": "1"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 490,
+            "width": 75,
+            "height": 20
+          }
+        },
+        {
+          "id": "flex-zero-b",
+          "properties": {
+            "width": "75px",
+            "min-width": "0px",
+            "flex-basis": "100px",
+            "flex-shrink": "1"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "min-width": {
+              "type": "CSSUnitValue",
+              "text": "0px"
+            },
+            "flex-basis": {
+              "type": "CSSUnitValue",
+              "text": "100px"
+            },
+            "flex-shrink": {
+              "type": "CSSUnitValue",
+              "text": "1"
+            }
+          },
+          "rect": {
+            "x": 75,
+            "y": 490,
+            "width": 75,
+            "height": 20
+          }
+        },
+        {
+          "id": "flex-max-parent",
+          "properties": {
+            "width": "200px",
+            "height": "40px",
+            "display": "flex",
+            "flex-direction": "row",
+            "justify-content": "space-between"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "200px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "40px"
+            },
+            "display": {
+              "type": "CSSKeywordValue",
+              "text": "flex"
+            },
+            "flex-direction": {
+              "type": "CSSKeywordValue",
+              "text": "row"
+            },
+            "justify-content": {
+              "type": "CSSStyleValue",
+              "text": "space-between"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 530,
+            "width": 200,
+            "height": 40
+          }
+        },
+        {
+          "id": "flex-max-a",
+          "properties": {
+            "width": "60px",
+            "min-width": "0px",
+            "max-width": "60px",
+            "flex-basis": "0px",
+            "flex-grow": "1",
+            "flex-shrink": "1"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "min-width": {
+              "type": "CSSUnitValue",
+              "text": "0px"
+            },
+            "max-width": {
+              "type": "CSSUnitValue",
+              "text": "60px"
+            },
+            "flex-basis": {
+              "type": "CSSUnitValue",
+              "text": "0px"
+            },
+            "flex-grow": {
+              "type": "CSSUnitValue",
+              "text": "1"
+            },
+            "flex-shrink": {
+              "type": "CSSUnitValue",
+              "text": "1"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 530,
+            "width": 60,
+            "height": 20
+          }
+        },
+        {
+          "id": "flex-max-b",
+          "properties": {
+            "width": "60px",
+            "min-width": "0px",
+            "max-width": "60px",
+            "flex-basis": "0px",
+            "flex-grow": "1",
+            "flex-shrink": "1"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "min-width": {
+              "type": "CSSUnitValue",
+              "text": "0px"
+            },
+            "max-width": {
+              "type": "CSSUnitValue",
+              "text": "60px"
+            },
+            "flex-basis": {
+              "type": "CSSUnitValue",
+              "text": "0px"
+            },
+            "flex-grow": {
+              "type": "CSSUnitValue",
+              "text": "1"
+            },
+            "flex-shrink": {
+              "type": "CSSUnitValue",
+              "text": "1"
+            }
+          },
+          "rect": {
+            "x": 140,
+            "y": 530,
+            "width": 60,
+            "height": 20
+          }
+        },
+        {
+          "id": "flex-auto-parent",
+          "properties": {
+            "width": "100px",
+            "height": "40px",
+            "display": "flex",
+            "flex-direction": "row"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "100px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "40px"
+            },
+            "display": {
+              "type": "CSSKeywordValue",
+              "text": "flex"
+            },
+            "flex-direction": {
+              "type": "CSSKeywordValue",
+              "text": "row"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 570,
+            "width": 100,
+            "height": 40
+          }
+        },
+        {
+          "id": "flex-auto-a",
+          "properties": {
+            "width": "50px",
+            "min-width": "auto",
+            "flex-basis": "80px",
+            "flex-shrink": "1"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "min-width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "flex-basis": {
+              "type": "CSSUnitValue",
+              "text": "80px"
+            },
+            "flex-shrink": {
+              "type": "CSSUnitValue",
+              "text": "1"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 570,
+            "width": 50,
+            "height": 20
+          }
+        },
+        {
+          "id": "flex-auto-b",
+          "properties": {
+            "width": "50px",
+            "min-width": "auto",
+            "flex-basis": "80px",
+            "flex-shrink": "1"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "min-width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "flex-basis": {
+              "type": "CSSUnitValue",
+              "text": "80px"
+            },
+            "flex-shrink": {
+              "type": "CSSUnitValue",
+              "text": "1"
+            }
+          },
+          "rect": {
+            "x": 50,
+            "y": 570,
+            "width": 50,
+            "height": 20
+          }
+        }
+      ]
+    },
+    {
+      "fixtureId": "C07.1-min-max-size-v1",
+      "viewport": {
+        "width": 400,
+        "height": 1000,
+        "deviceScaleFactor": 2
+      },
+      "environment": {
+        "locale": "en-US",
+        "intlLocale": "en-US",
+        "timeZone": "UTC",
+        "dark": false,
+        "coarsePointer": true,
+        "hover": false
+      },
+      "nodes": [
+        {
+          "id": "root",
+          "properties": {
+            "box-sizing": "border-box",
+            "width": "280px",
+            "height": "960px"
+          },
+          "typed": {
+            "box-sizing": {
+              "type": "CSSKeywordValue",
+              "text": "border-box"
+            },
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "280px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "960px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 280,
+            "height": 960
+          }
+        },
+        {
+          "id": "block-parent",
+          "properties": {
+            "box-sizing": "content-box",
+            "width": "200px",
+            "height": "800px"
+          },
+          "typed": {
+            "box-sizing": {
+              "type": "CSSKeywordValue",
+              "text": "content-box"
+            },
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "200px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "800px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 200,
+            "height": 800
+          }
+        },
+        {
+          "id": "percentage-height-parent",
+          "properties": {
+            "box-sizing": "content-box",
+            "width": "200px",
+            "height": "120px"
+          },
+          "typed": {
+            "box-sizing": {
+              "type": "CSSKeywordValue",
+              "text": "content-box"
+            },
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "200px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "120px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 800,
+            "width": 200,
+            "height": 120
+          }
+        },
+        {
+          "id": "min-width-raises",
+          "properties": {
+            "box-sizing": "content-box",
+            "width": "90px",
+            "height": "20px",
+            "min-width": "90px",
+            "max-width": "none"
+          },
+          "typed": {
+            "box-sizing": {
+              "type": "CSSKeywordValue",
+              "text": "content-box"
+            },
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "60px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "20px"
+            },
+            "min-width": {
+              "type": "CSSUnitValue",
+              "text": "90px"
+            },
+            "max-width": {
+              "type": "CSSKeywordValue",
+              "text": "none"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 90,
+            "height": 20
+          }
+        },
+        {
+          "id": "max-width-limits",
+          "properties": {
+            "box-sizing": "content-box",
+            "width": "90px",
+            "height": "20px",
+            "min-width": "0px",
+            "max-width": "90px"
+          },
+          "typed": {
+            "box-sizing": {
+              "type": "CSSKeywordValue",
+              "text": "content-box"
+            },
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "120px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "20px"
+            },
+            "min-width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "max-width": {
+              "type": "CSSUnitValue",
+              "text": "90px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 20,
+            "width": 90,
+            "height": 20
+          }
+        },
+        {
+          "id": "min-height-raises",
+          "properties": {
+            "box-sizing": "content-box",
+            "width": "40px",
+            "height": "55px",
+            "min-height": "55px",
+            "max-height": "none"
+          },
+          "typed": {
+            "box-sizing": {
+              "type": "CSSKeywordValue",
+              "text": "content-box"
+            },
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "40px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "20px"
+            },
+            "min-height": {
+              "type": "CSSUnitValue",
+              "text": "55px"
+            },
+            "max-height": {
+              "type": "CSSKeywordValue",
+              "text": "none"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 40,
+            "width": 40,
+            "height": 55
+          }
+        },
+        {
+          "id": "max-height-limits",
+          "properties": {
+            "box-sizing": "content-box",
+            "width": "40px",
+            "height": "55px",
+            "min-height": "0px",
+            "max-height": "55px"
+          },
+          "typed": {
+            "box-sizing": {
+              "type": "CSSKeywordValue",
+              "text": "content-box"
+            },
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "40px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "80px"
+            },
+            "min-height": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "max-height": {
+              "type": "CSSUnitValue",
+              "text": "55px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 95,
+            "width": 40,
+            "height": 55
+          }
+        },
+        {
+          "id": "min-over-max",
+          "properties": {
+            "box-sizing": "content-box",
+            "width": "80px",
+            "min-width": "80px",
+            "max-width": "50px"
+          },
+          "typed": {
+            "box-sizing": {
+              "type": "CSSKeywordValue",
+              "text": "content-box"
+            },
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "100px"
+            },
+            "min-width": {
+              "type": "CSSUnitValue",
+              "text": "80px"
+            },
+            "max-width": {
+              "type": "CSSUnitValue",
+              "text": "50px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 150,
+            "width": 80,
+            "height": 20
+          }
+        },
+        {
+          "id": "content-box-max",
+          "properties": {
+            "box-sizing": "content-box",
+            "width": "100px",
+            "padding-left": "10px",
+            "padding-right": "10px",
+            "max-width": "100px"
+          },
+          "typed": {
+            "box-sizing": {
+              "type": "CSSKeywordValue",
+              "text": "content-box"
+            },
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "160px"
+            },
+            "padding-left": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            },
+            "padding-right": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            },
+            "max-width": {
+              "type": "CSSUnitValue",
+              "text": "100px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 170,
+            "width": 120,
+            "height": 20
+          }
+        },
+        {
+          "id": "border-box-max",
+          "properties": {
+            "box-sizing": "border-box",
+            "width": "100px",
+            "padding-left": "10px",
+            "padding-right": "10px",
+            "max-width": "100px"
+          },
+          "typed": {
+            "box-sizing": {
+              "type": "CSSKeywordValue",
+              "text": "border-box"
+            },
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "160px"
+            },
+            "padding-left": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            },
+            "padding-right": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            },
+            "max-width": {
+              "type": "CSSUnitValue",
+              "text": "100px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 190,
+            "width": 100,
+            "height": 20
+          }
+        },
+        {
+          "id": "border-box-min",
+          "properties": {
+            "box-sizing": "border-box",
+            "width": "100px",
+            "padding-left": "10px",
+            "padding-right": "10px",
+            "min-width": "100px"
+          },
+          "typed": {
+            "box-sizing": {
+              "type": "CSSKeywordValue",
+              "text": "border-box"
+            },
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "60px"
+            },
+            "padding-left": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            },
+            "padding-right": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            },
+            "min-width": {
+              "type": "CSSUnitValue",
+              "text": "100px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 210,
+            "width": 100,
+            "height": 20
+          }
+        },
+        {
+          "id": "border-box-padding-floor",
+          "properties": {
+            "box-sizing": "border-box",
+            "width": "24px",
+            "padding-left": "12px",
+            "padding-right": "12px",
+            "min-width": "10px"
+          },
+          "typed": {
+            "box-sizing": {
+              "type": "CSSKeywordValue",
+              "text": "border-box"
+            },
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            },
+            "padding-left": {
+              "type": "CSSUnitValue",
+              "text": "12px"
+            },
+            "padding-right": {
+              "type": "CSSUnitValue",
+              "text": "12px"
+            },
+            "min-width": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 230,
+            "width": 24,
+            "height": 20
+          }
+        },
+        {
+          "id": "percentage-min",
+          "properties": {
+            "width": "100px",
+            "min-width": "50%"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "70px"
+            },
+            "min-width": {
+              "type": "CSSUnitValue",
+              "text": "50%"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 250,
+            "width": 100,
+            "height": 20
+          }
+        },
+        {
+          "id": "percentage-max",
+          "properties": {
+            "width": "150px",
+            "max-width": "75%"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "160px"
+            },
+            "max-width": {
+              "type": "CSSUnitValue",
+              "text": "75%"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 270,
+            "width": 150,
+            "height": 20
+          }
+        },
+        {
+          "id": "percentage-height-max",
+          "properties": {
+            "height": "60px",
+            "max-height": "50%"
+          },
+          "typed": {
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "100px"
+            },
+            "max-height": {
+              "type": "CSSUnitValue",
+              "text": "50%"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 800,
+            "width": 20,
+            "height": 60
+          }
+        },
+        {
+          "id": "calc-min",
+          "properties": {
+            "width": "50px",
+            "min-width": "calc(15% + 20px)"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "40px"
+            },
+            "min-width": {
+              "type": "CSSMathSum",
+              "text": "calc(15% + 20px)"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 290,
+            "width": 50,
+            "height": 20
+          }
+        },
+        {
+          "id": "calc-max",
+          "properties": {
+            "width": "80px",
+            "max-width": "min(120px, 40%)"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "170px"
+            },
+            "max-width": {
+              "type": "CSSMathMin",
+              "text": "min(120px, 40%)"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 310,
+            "width": 80,
+            "height": 20
+          }
+        },
+        {
+          "id": "var-min",
+          "properties": {
+            "width": "60px",
+            "min-width": "calc(20% + 20px)"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "40px"
+            },
+            "min-width": {
+              "type": "CSSMathSum",
+              "text": "calc(20% + 20px)"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 330,
+            "width": 60,
+            "height": 20
+          }
+        },
+        {
+          "id": "zero-min",
+          "properties": {
+            "width": "0px",
+            "min-width": "0px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "0px"
+            },
+            "min-width": {
+              "type": "CSSUnitValue",
+              "text": "0px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 350,
+            "width": 0,
+            "height": 20
+          }
+        },
+        {
+          "id": "zero-max",
+          "properties": {
+            "width": "0px",
+            "max-width": "0px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "100px"
+            },
+            "max-width": {
+              "type": "CSSUnitValue",
+              "text": "0px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 370,
+            "width": 0,
+            "height": 20
+          }
+        },
+        {
+          "id": "invalid-min-fallback",
+          "properties": {
+            "width": "25px",
+            "min-width": "25px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "10px"
+            },
+            "min-width": {
+              "type": "CSSUnitValue",
+              "text": "25px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 390,
+            "width": 25,
+            "height": 20
+          }
+        },
+        {
+          "id": "invalid-max-fallback",
+          "properties": {
+            "width": "100px",
+            "max-width": "100px"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "150px"
+            },
+            "max-width": {
+              "type": "CSSUnitValue",
+              "text": "100px"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 410,
+            "width": 100,
+            "height": 20
+          }
+        },
+        {
+          "id": "default-auto-none",
+          "properties": {
+            "width": "60px",
+            "min-width": "0px",
+            "max-width": "none"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "60px"
+            },
+            "min-width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "max-width": {
+              "type": "CSSKeywordValue",
+              "text": "none"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 430,
+            "width": 60,
+            "height": 20
+          }
+        },
+        {
+          "id": "flex-min-parent",
+          "properties": {
+            "width": "150px",
+            "height": "40px",
+            "display": "flex",
+            "flex-direction": "row"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "150px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "40px"
+            },
+            "display": {
+              "type": "CSSKeywordValue",
+              "text": "flex"
+            },
+            "flex-direction": {
+              "type": "CSSKeywordValue",
+              "text": "row"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 450,
+            "width": 150,
+            "height": 40
+          }
+        },
+        {
+          "id": "flex-min-a",
+          "properties": {
+            "width": "80px",
+            "min-width": "80px",
+            "flex-basis": "100px",
+            "flex-shrink": "1"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "min-width": {
+              "type": "CSSUnitValue",
+              "text": "80px"
+            },
+            "flex-basis": {
+              "type": "CSSUnitValue",
+              "text": "100px"
+            },
+            "flex-shrink": {
+              "type": "CSSUnitValue",
+              "text": "1"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 450,
+            "width": 80,
+            "height": 20
+          }
+        },
+        {
+          "id": "flex-min-b",
+          "properties": {
+            "width": "80px",
+            "min-width": "80px",
+            "flex-basis": "100px",
+            "flex-shrink": "1"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "min-width": {
+              "type": "CSSUnitValue",
+              "text": "80px"
+            },
+            "flex-basis": {
+              "type": "CSSUnitValue",
+              "text": "100px"
+            },
+            "flex-shrink": {
+              "type": "CSSUnitValue",
+              "text": "1"
+            }
+          },
+          "rect": {
+            "x": 80,
+            "y": 450,
+            "width": 80,
+            "height": 20
+          }
+        },
+        {
+          "id": "flex-zero-parent",
+          "properties": {
+            "width": "150px",
+            "height": "40px",
+            "display": "flex",
+            "flex-direction": "row"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "150px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "40px"
+            },
+            "display": {
+              "type": "CSSKeywordValue",
+              "text": "flex"
+            },
+            "flex-direction": {
+              "type": "CSSKeywordValue",
+              "text": "row"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 490,
+            "width": 150,
+            "height": 40
+          }
+        },
+        {
+          "id": "flex-zero-a",
+          "properties": {
+            "width": "75px",
+            "min-width": "0px",
+            "flex-basis": "100px",
+            "flex-shrink": "1"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "min-width": {
+              "type": "CSSUnitValue",
+              "text": "0px"
+            },
+            "flex-basis": {
+              "type": "CSSUnitValue",
+              "text": "100px"
+            },
+            "flex-shrink": {
+              "type": "CSSUnitValue",
+              "text": "1"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 490,
+            "width": 75,
+            "height": 20
+          }
+        },
+        {
+          "id": "flex-zero-b",
+          "properties": {
+            "width": "75px",
+            "min-width": "0px",
+            "flex-basis": "100px",
+            "flex-shrink": "1"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "min-width": {
+              "type": "CSSUnitValue",
+              "text": "0px"
+            },
+            "flex-basis": {
+              "type": "CSSUnitValue",
+              "text": "100px"
+            },
+            "flex-shrink": {
+              "type": "CSSUnitValue",
+              "text": "1"
+            }
+          },
+          "rect": {
+            "x": 75,
+            "y": 490,
+            "width": 75,
+            "height": 20
+          }
+        },
+        {
+          "id": "flex-max-parent",
+          "properties": {
+            "width": "200px",
+            "height": "40px",
+            "display": "flex",
+            "flex-direction": "row",
+            "justify-content": "space-between"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "200px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "40px"
+            },
+            "display": {
+              "type": "CSSKeywordValue",
+              "text": "flex"
+            },
+            "flex-direction": {
+              "type": "CSSKeywordValue",
+              "text": "row"
+            },
+            "justify-content": {
+              "type": "CSSStyleValue",
+              "text": "space-between"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 530,
+            "width": 200,
+            "height": 40
+          }
+        },
+        {
+          "id": "flex-max-a",
+          "properties": {
+            "width": "60px",
+            "min-width": "0px",
+            "max-width": "60px",
+            "flex-basis": "0px",
+            "flex-grow": "1",
+            "flex-shrink": "1"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "min-width": {
+              "type": "CSSUnitValue",
+              "text": "0px"
+            },
+            "max-width": {
+              "type": "CSSUnitValue",
+              "text": "60px"
+            },
+            "flex-basis": {
+              "type": "CSSUnitValue",
+              "text": "0px"
+            },
+            "flex-grow": {
+              "type": "CSSUnitValue",
+              "text": "1"
+            },
+            "flex-shrink": {
+              "type": "CSSUnitValue",
+              "text": "1"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 530,
+            "width": 60,
+            "height": 20
+          }
+        },
+        {
+          "id": "flex-max-b",
+          "properties": {
+            "width": "60px",
+            "min-width": "0px",
+            "max-width": "60px",
+            "flex-basis": "0px",
+            "flex-grow": "1",
+            "flex-shrink": "1"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "min-width": {
+              "type": "CSSUnitValue",
+              "text": "0px"
+            },
+            "max-width": {
+              "type": "CSSUnitValue",
+              "text": "60px"
+            },
+            "flex-basis": {
+              "type": "CSSUnitValue",
+              "text": "0px"
+            },
+            "flex-grow": {
+              "type": "CSSUnitValue",
+              "text": "1"
+            },
+            "flex-shrink": {
+              "type": "CSSUnitValue",
+              "text": "1"
+            }
+          },
+          "rect": {
+            "x": 140,
+            "y": 530,
+            "width": 60,
+            "height": 20
+          }
+        },
+        {
+          "id": "flex-auto-parent",
+          "properties": {
+            "width": "100px",
+            "height": "40px",
+            "display": "flex",
+            "flex-direction": "row"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSUnitValue",
+              "text": "100px"
+            },
+            "height": {
+              "type": "CSSUnitValue",
+              "text": "40px"
+            },
+            "display": {
+              "type": "CSSKeywordValue",
+              "text": "flex"
+            },
+            "flex-direction": {
+              "type": "CSSKeywordValue",
+              "text": "row"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 570,
+            "width": 100,
+            "height": 40
+          }
+        },
+        {
+          "id": "flex-auto-a",
+          "properties": {
+            "width": "50px",
+            "min-width": "auto",
+            "flex-basis": "80px",
+            "flex-shrink": "1"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "min-width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "flex-basis": {
+              "type": "CSSUnitValue",
+              "text": "80px"
+            },
+            "flex-shrink": {
+              "type": "CSSUnitValue",
+              "text": "1"
+            }
+          },
+          "rect": {
+            "x": 0,
+            "y": 570,
+            "width": 50,
+            "height": 20
+          }
+        },
+        {
+          "id": "flex-auto-b",
+          "properties": {
+            "width": "50px",
+            "min-width": "auto",
+            "flex-basis": "80px",
+            "flex-shrink": "1"
+          },
+          "typed": {
+            "width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "min-width": {
+              "type": "CSSKeywordValue",
+              "text": "auto"
+            },
+            "flex-basis": {
+              "type": "CSSUnitValue",
+              "text": "80px"
+            },
+            "flex-shrink": {
+              "type": "CSSUnitValue",
+              "text": "1"
+            }
+          },
+          "rect": {
+            "x": 50,
+            "y": 570,
+            "width": 50,
+            "height": 20
+          }
+        }
+      ]
+    }
+  ]
+}

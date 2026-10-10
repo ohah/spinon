@@ -8,7 +8,7 @@
 
 첫 공식 릴리스 전 내부 인터페이스 계약의 숫자 버전은 `0.1.0`으로 유지합니다. 구현·검증·문서 개정은 숫자 버전을 올리는 사유가 아닙니다. `-draft`는 성숙도 상태를 나타내며, 출시·호환성 버전은 사용자가 별도로 확정한 정책을 따릅니다. 의존성·도구의 버전이나 OTA 그래프 형식 버전과 혼동하지 않습니다.
 
-| 문서 | 범위 | 상태 |
+| 문서 ID | 범위 | 상태 |
 | --- | --- | --- |
 | [0001 · V8 부팅 실험](0001-v8-bootstrap.md) | Bun 번들, Rust FFI, V8 C++ 어댑터와 Android/iOS 빌드 smoke | 실험 전용 |
 | [0002 · Rust 트리 코어](0002-rust-tree-core.md) | 노드 ID, 트리 구조, 원자적 변경 묶음과 revision | 실험 전용 |
@@ -46,6 +46,13 @@
 | [0034 · C05.2 Runtime CSS `@property` 등록](0034-c05-runtime-registered-properties.md) | 연결 HTML `<style>`의 registered custom properties, Stylo profile 경계, revision별 수명과 제한 layout·paint 연결 | 미출시 내부 계약 `0.1.0` 고정 · Android API 37/iOS 26.2 Simulator 검증 완료 · 공개 CSS 지원 아님 |
 | [0035 · C05.3 연결 장면 불변 결과 재사용](0035-c05-runtime-result-cache.md) | worker-local 단일 계산 결과 cache, DocumentRevision 재발행, viewport/media 무효화 및 immutable payload 공유 | 미출시 내부 계약 `0.1.0` 고정 · Android API 37/iOS 26.2 Simulator, Rust release 반복 측정 완료 · 공개 API 아님 |
 | [0036 · C05.4 runtime 하위 트리 cascade 재계산](0036-c05-runtime-incremental-restyle.md) | author stylesheet가 없는 단일 연결 root에서 namespace 없는 HTML inline `style` 변경만 dirty subtree Stylo cascade로 처리하고 나머지 직렬화 출력 재사용 | 미출시 내부 계약 `0.1.0` 고정 · Android API 37 emulator/iOS 26.2 Simulator, Chromium fixture 및 Rust release worker 비교 · 공개 API 아님 |
+| [0037 · C06.1 백분율 크기](0037-c06-percentage-dimensions.md) | Stylo typed `width`·`height`·`flex-basis` percentage를 Taffy layout 입력까지 보존 | 내부 계약 숫자 버전 `0.1.0` 고정 · 별도 계획·Chromium/Rust fixture·Android/iOS Simulator 근거 · C06.1만 완료 |
+| [0038 · C06.2 백분율 margin·padding·gap](0038-c06-spacing-percentages.md) | definite basis의 typed spacing percentage, Taffy 전달, cyclic/indefinite basis 오류 계약 | 내부 계약 숫자 버전 `0.1.0` 고정 · 현재 브랜치 검증 완료·미병합 · 공개 API 아님 |
+| [0039 · C06.3 절대 길이 단위](0039-c06-absolute-lengths.md) | Stylo typed 절대 길이의 CSS px 정규화와 runtime 크기·spacing 입력 | 내부 계약 숫자 버전 `0.1.0` 고정 · 현재 브랜치 구현·검증 완료·미병합 · 공개 CSS 지원 아님 |
+| [0040 · C06.4 글꼴 상대 길이 단위](0040-c06-font-relative-units.md) | 합성 HTML 문서 루트의 em/rem·font-size cascade, typed CSS px layout 전달, metric unit fail-closed 경계 | 내부 계약 숫자 버전 `0.1.0` 고정 · 현재 작업 브랜치 구현·Chromium/Rust 비교·Android/iOS Simulator 검증 완료·미병합 · 공개 API 아님 |
+| [0041 · C06.5 Typed CSS math](0041-c06-typed-css-math.md) | 제한된 typed `calc()`·`min()`·`max()`·`clamp()` AST, Taffy resolver, 속성별 final-value censor와 failure-atomic layout | 내부 계약 숫자 버전 `0.1.0` 고정 · 현재 작업 브랜치 구현·검증 완료·미병합 · 공개 API 아님 |
+| [0042 · C06.6a 네이티브 viewport 길이 단위](0042-c06-viewport-units.md) | `vw`/`vh`·`vi`/`vb`·`vmin`/`vmax`와 small/large/dynamic viewport 변형의 cascade·layout·resize 경계 | 내부 계약 숫자 버전 `0.1.0` 고정 · 현재 작업 브랜치 구현·Chromium/Rust·Android/iOS Simulator 검증 완료·미병합 · 제품 API 아님 |
+| [0043 · C07.1 물리 축 최소·최대 크기](0043-c07-1-min-max-sizing.md) | `min-width`·`max-width`·`min-height`·`max-height`의 typed 값, box-sizing·percentage·CSS math·Flex clamp 및 fail-closed 경계 | 내부 계약 숫자 버전 `0.1.0` 고정 · Chromium/Rust 35-node 비교, Android API 37·iOS 26.2 Simulator runtime 확인 완료 · 공개 API 아님 |
 | [R13 · 플랫폼 생명주기·GPU 복구](r13-platform-gpu-recovery.md) | wgpu 실험 ABI, 플랫폼 표면 수명과 복구 경계 | 실험 전용 |
 
 C04.10 검토 기록: [PR 변경 검토](evidence/c04-runtime-css-to-gpu-pr-review-2026-10-10.md) · [계획 검토](evidence/c04-runtime-css-to-gpu-plan-review-revised-2026-10-09.md) · [UIKit surface 스레드 분리 계획 재검토](evidence/c04-runtime-css-to-gpu-plan-surface-thread-review-2026-10-09.md) · [resize 계획 재검토](evidence/c04-runtime-css-to-gpu-resize-plan-review-revised-2026-10-09.md) · [대기열·종료·실패 보완 계획 검토](evidence/c04-runtime-css-to-gpu-queue-plan-review-2026-10-09.md) · [구현 전 Chromium 비교 기준](evidence/c04-runtime-css-to-gpu-precomparison-2026-10-09.md) · [resize 사전 기준](evidence/c04-runtime-css-to-gpu-resize-precomparison-2026-10-09.md).
@@ -54,11 +61,17 @@ C05.1 검토와 실행 기록: [구현 전 계획 검토](evidence/c05-runtime-c
 
 C04.11 계획·구현 검토와 실행 기록: [계획 20개 실패 관점 검토](evidence/c04-runtime-author-stylesheets-plan-review-2026-10-10.md) · [구현 전 Chromium 비교 기준](evidence/c04-runtime-author-stylesheets-precomparison-2026-10-10.md) · [구현 20개 실패 관점 검토와 Simulator 근거](evidence/c04-runtime-author-stylesheets-2026-10-10.md).
 
+C06.3 계획·구현 검토와 실행 기록: [계획 실패 경로 20개](evidence/c06-3-absolute-lengths-plan-review-2026-10-10.md) · [구현 실패 경로 20개와 Android/iOS Simulator 근거](evidence/c06-absolute-lengths-implementation-2026-10-10.md).
+
 C05.2 계획·구현 검토와 실행 기록: [계획 실패 관점 검토](evidence/c05-runtime-registered-properties-plan-review-2026-10-10.md) · [구현 전 Chromium 기준](evidence/c05-runtime-registered-properties-precomparison-2026-10-10.md) · [구현 실패 관점 검토와 Android·iOS Simulator 근거](evidence/c05-runtime-registered-properties-implementation-review-2026-10-10.md).
 
 C05.3 계획·구현 검토와 실행 기록: [계획 실패 관점 검토](evidence/c05-runtime-result-cache-plan-review-2026-10-10.md) · [구현 전 Chromium 기준](evidence/c05-runtime-result-cache-precomparison-2026-10-10.md) · [구현 실패 관점 검토·release 측정·Android/iOS Simulator 근거](evidence/c05-runtime-result-cache-implementation-review-2026-10-10.md).
 
 C05.4 계획·구현 검토와 실행 기록: [계획 실패 관점 검토](evidence/c05-runtime-incremental-restyle-plan-review-2026-10-10.md) · [구현 전 Chromium 기준](evidence/c05-runtime-incremental-restyle-precomparison-2026-10-10.md) · [구현 실패 관점 검토·release 측정·Android/iOS Simulator 근거](evidence/c05-runtime-incremental-restyle-implementation-review-2026-10-10.md).
+
+C06 계획·구현 검토와 실행 기록: [전체 C06 계획 공격 검토](evidence/c06-value-unit-conversion-plan-review-2026-10-10.md) · [C06.2 계획 공격 검토](evidence/c06-2-spacing-plan-review-2026-10-10.md) · [C06.2 구현 공격 검토·Chromium 수치 비교·Android/iOS Simulator 실행](evidence/c06-spacing-percentages-implementation-2026-10-10.md) · [C06.4 Chromium 사전 비교](evidence/c06-4-font-relative-units-precomparison-2026-10-10.md) · [C06.4 계획 공격 검토](evidence/c06-4-font-relative-units-plan-review-2026-10-10.md) · [C06.4 구현 실패 경로 검토·Rust workspace·Android/iOS Simulator 실행](evidence/c06-font-relative-units-implementation-review-2026-10-10.md) · [C06.5 typed CSS math 계획 검토](evidence/c06-5-typed-css-math-plan-review-2026-10-10.md) · [C06.5 Chromium 사전 비교·Stylo DTO 근거](evidence/c06-5-typed-css-math-precomparison-2026-10-10.md) · [C06.5 구현 실패 경로·전체 Rust workspace·Android/iOS Simulator 실행](evidence/c06-typed-css-math-implementation-review-2026-10-10.md) · [C06.6 viewport 단위 계획 실패 경로 검토](evidence/c06-6-viewport-units-plan-review-2026-10-10.md) · [C06.6 viewport 단위 구현 실패 경로·Android/iOS Simulator 실행](evidence/c06-viewport-units-implementation-review-2026-10-10.md).
+
+C06.1~C06.6a 및 C07.1 누적 변경의 ABI·캐시·CSS 의미·Android/iOS runtime 경계를 교차 점검한 [통합 적대적 검토와 현재 브랜치 검증 결과](evidence/c06-c071-integrated-review-2026-10-10.md).
 
 ## 검증 기록
 
@@ -80,6 +93,14 @@ C05.4 계획·구현 검토와 실행 기록: [계획 실패 관점 검토](evid
 - [C01 · Chromium HTML UA 스타일 초기 비교](./evidence/css-c01-chromium-ua-2026-10-01.md) — macOS Chromium oracle와 고정 author baseline을 덮는 19개 computed value 비교 및 한계.
 - [C01.2 · Chromium 단위·Flexbox·Grid 기준](./evidence/css-c01-layout-2026-10-02.md) — Chrome 154.0.8037.95의 `rem`·`em`·퍼센트·분수 Flexbox/Grid 기준값 41개와 CSS px 좌표 오차 계약. Spinon/Taffy 비교는 포함하지 않음.
 - [C01.3 · Chromium CSSOM 속성 이름 표면](./evidence/css-c01-cssom-property-surface-2026-10-09.md) — Chrome 154.0.8037.98에서 HTML `div` 하나의 계산 스타일 속성 이름 478개를 관찰한 내부 기준. 전체 속성 지원 목록이나 제품 CSS 지원 판정은 아님.
+- [C06.2 · 백분율 spacing 계획 공격 검토](./evidence/c06-2-spacing-plan-review-2026-10-10.md) — 고정 Chrome 78-node reference로 속성별 기준 축·Flex cyclic gap·definite auto-size 및 지원 범위를 결정한 계획 검토.
+- [C06.2 · 백분율 spacing 구현 공격 검토와 실행](./evidence/c06-spacing-percentages-implementation-2026-10-10.md) — 별도 코드 실패 경로 20개, Chrome 71-node geometry 최대 오차, Rust 전체 검사 및 Android/iOS Simulator 실제 V8→WGPU 화면·로그.
+- [C06.3 · 절대 길이 단위 변환 계획 검토](./evidence/c06-3-absolute-lengths-plan-review-2026-10-10.md) — Stylo CSS px 정규화, 7개 절대 단위, 화면 배율 경계, 26-node Chrome fixture와 검증 범위 검토.
+- [C07.1 · 최소·최대 크기 구현 전 비교 모델](./evidence/c07-1-min-max-sizing-precomparison-2026-10-10.md) — Chrome 154 기준 35개 노드의 min/max CSS 값·box-sizing·percentage·flex 관찰과 입력 hash.
+- [C07.1 · 최소·최대 크기 계획 실패 경로 검토](./evidence/c07-1-min-max-sizing-plan-review-2026-10-10.md) — 계획 구현 전 oracle, CSS sizing 경계, flex clamp, typed AST, profile 및 시뮬레이터 주장 검토.
+- [C07.1 · 최소·최대 크기 구현 검토와 실행 근거](./evidence/c07-1-min-max-sizing-implementation-review-2026-10-10.md) — 별도 구현 실패 경로, workspace·FFI 검사와 Android API 37/iOS 26.2 Simulator 실제 V8→WGPU 화면·로그.
+- [C06·C07.1 · 통합 변경 적대적 검토](./evidence/c06-c071-integrated-review-2026-10-10.md) — 누적 diff의 단위·cache·revision·C ABI·Android/iOS 경계를 교차 확인하고 수정 및 현재 검증 상태를 기록.
+- [C07.1 · 물리 축 최소·최대 크기 내부 계약](./0043-c07-1-min-max-sizing.md) — 출시 전 숫자 버전 `0.1.0`으로 고정한 Stylo typed DTO→Taffy 제약과 오류 경계.
 - [C02 · Vite·Rspack CSS 산출 비교](./evidence/css-c02-bundler-2026-10-01.md) — production fixture의 CSS Modules·자원·청크, 기본 진단 차이와 공통 snapshot 원본 위치 근거.
 - [C02.1 · Vite·Rspack CSS resolver 비교](./evidence/css-c02-resolver-2026-10-02.md) — fixture alias·package `exports`로 선택한 CSS 및 내부 `@import`의 production graph·snapshot 연결 근거.
 - [C02.2 · 공통 모듈 그래프 계약 검증기](./evidence/css-c02-module-graph-contract-2026-10-02.md) — 0014 snapshot 검증·digest·최종 ESM AST parser와 통합 suite 결과.

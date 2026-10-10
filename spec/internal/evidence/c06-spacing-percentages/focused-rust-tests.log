@@ -1,0 +1,103 @@
+   Compiling spinon-layout v0.1.0 (/private/tmp/spinon-c06-unit-conversion-20261010/crates/spinon-layout)
+   Compiling spinon-style-to-layout v0.1.0 (/private/tmp/spinon-c06-unit-conversion-20261010/crates/spinon-style-to-layout)
+warning: unused import: `serde_json::Value`
+ --> crates/spinon-style-to-layout/src/spacing_percentage_tests/cases.rs:1:5
+  |
+1 | use serde_json::Value;
+  |     ^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `ComputedCssSpacingValue`
+ --> crates/spinon-style-to-layout/src/spacing_percentage_tests/fixture.rs:9:5
+  |
+9 |     ComputedCssSpacingValue, CssMediaEnvironment, CssOrigin, CssViewport, StylesheetSource,
+  |     ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `spinon-style-to-layout` (lib test) generated 2 warnings (run `cargo fix --lib -p spinon-style-to-layout --tests` to apply 2 suggestions)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.81s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-420dab61510537ef)
+
+running 29 tests
+test tests::legacy_oracle::legacy_tree::tests::failed_event_can_restore_tree_snapshot ... ok
+test tests::legacy_oracle::legacy_tree::tests::subtree_deletion_and_id_reuse ... ok
+test tests::legacy_oracle::legacy_tree::tests::overfull_and_extreme_dimensions_do_not_panic ... ok
+test tests::legacy_oracle::legacy_tree::tests::invalid_ids_and_parents_leave_tree_unchanged ... ok
+test tests::legacy_oracle::legacy_tree::tests::nested_order_gap_and_flex_layout ... ok
+test tests::duplicate_ids_and_invalid_styles_are_rejected ... ok
+test tests::invalid_inputs::invalid_viewport_root_and_graph_are_rejected_before_layout ... ok
+test host_document::tests::host_document_input_preserves_distinct_document_and_render_revisions ... ok
+test tests::fractional_dimensions_are_not_rounded_by_the_layout_engine ... ok
+test tests::fractional_flex_distribution_matches_chromium_without_integer_rounding ... ok
+test tests::percentage_spacing::root_gap_percentage_is_rejected_before_taffy_resolution ... ok
+test tests::percentage_spacing::percentage_edges_with_unprovable_containing_width_fail_closed ... ok
+test tests::input_snapshot_reads_the_core_tree_and_keeps_child_order ... ok
+test tests::percentage_spacing::non_finite_spacing_and_negative_padding_or_gap_fail_with_the_property ... ok
+test host_document::tests::host_document_input_rejects_missing_styles_text_and_non_root_elements ... ok
+test host_document::tests::host_document_projection_matches_legacy_tree_and_taffy_frames ... ok
+test tests::percentages::cyclic_column_gap_fails_with_node_property_and_axis ... ok
+test host_document::tests::display_box_sizing_and_flex_shrink_reach_taffy ... ok
+test tests::percentages::percentage_dimensions_reject_negative_and_non_finite_values_but_allow_overflow ... ok
+test tests::margin::negative_margin_reaches_taffy_and_non_finite_margin_is_rejected ... ok
+test tests::percentages::percentage_dimensions_resolve_against_parent_content_box_without_clamping ... ok
+test tests::percentages::percentage_flex_basis_uses_the_container_main_axis ... ok
+test tests::percentages::viewport_resolving_root_accepts_full_and_partial_percentage_dimensions ... ok
+test tests::percentages::percentage_margin_and_padding_keep_the_containing_block_width_basis ... ok
+test tests::percentages::percentage_gap_uses_the_definite_main_axis_content_size ... ok
+test tests::rtl_row_preserves_dom_child_order_while_starting_at_the_right ... ok
+test tests::taffy_matches_the_browser_reference_fixture ... ok
+test tests::taffy_matches_the_preserved_small_engine_on_the_shared_fixture ... ok
+test tests::legacy_oracle::legacy_tree::tests::one_thousand_nodes_can_be_laid_out_and_removed ... ok
+
+test result: ok. 29 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-7d143b0ba7440221)
+
+running 33 tests
+test projection::ua_profile_boundary_tests::ua_snapshot_profile_is_rejected_by_the_flex_layout_adapter ... ok
+test flex_alignment_tests::flex_alignment_profile_keeps_c042_and_inline_style_boundaries ... ok
+test cascade_layers_tests::cascade_layers_profile_preserves_revision_tuple_and_rejects_foreign_generation ... ok
+test runtime_layout_tests::runtime_flex_shorthand_matches_frozen_chromium_longhand_values_and_geometry ... ok
+test flex_alignment_tests::flex_alignment_profile_preserves_current_revisions_and_rejects_foreign_generation ... ok
+test runtime_layout_tests::runtime_flex_shorthand_preserves_percentage_basis_for_taffy ... ok
+test cascade_layers_tests::cascade_layers_allowlist_is_checked_recursively_and_old_profile_rejects_layers ... ok
+test margin_tests::new_profile_preserves_revisions_inline_style_rejection_and_old_profile_boundary ... ok
+test percentage_tests::calc_dimension_is_not_misread_from_its_resolved_serialized_string ... ok
+test percentage_tests::typed_percentages_match_chromium_geometry_for_supported_runtime_nodes ... ok
+test percentage_tests::unsupported_spacing_still_fails_closed ... ok
+test tests::a_snapshot_from_another_document_generation_is_rejected_before_cascade ... ok
+test margin_tests::logical_margin_shorthands_match_chromium_values_and_frames ... ok
+test runtime_layout_tests::runtime_profile_matches_frozen_chromium_styles_and_geometry ... ok
+test runtime_layout_tests::runtime_viewport_units_recompute_to_each_frozen_chromium_resize_size ... ok
+test tests::inline_style_attributes_are_rejected_before_layout_projection ... ok
+test tests::stale_document_revision_is_rejected_before_cascade_or_layout ... ok
+test tests::layout_rejects_text_in_a_host_document_subtree ... ok
+test tests::c04_computed_flex_style_projects_to_chromium_fractional_taffy_frames ... ok
+test tests::css_values_outside_the_flex_projection_fail_closed ... ok
+test margin_tests::unsupported_margin_values_and_other_properties_fail_closed ... ok
+test tests::projection_errors_keep_the_css_node_and_property_context ... ok
+test tests::style_and_environment_revisions_survive_the_cascade_to_layout_projection ... ok
+test percentage_tests::percentage_margin_padding_and_gap_are_preserved_when_basis_is_definite ... ok
+test flex_alignment_tests::flex_alignment_rejects_unsupported_valid_values_and_properties ... ok
+test spacing_percentage_tests::cases::runtime_spacing_percentages_match_pinned_chromium_local_geometry ... ok
+test spacing_percentage_tests::cases::block_auto_width_and_flex_stretch_prove_definite_gap_bases ... ok
+test spacing_percentage_tests::cases::custom_property_spacing_keeps_the_typed_percentage_value ... ok
+test spacing_percentage_tests::cases::cyclic_gap_root_spacing_and_unsupported_margin_fail_with_context ... ok
+test margin_tests::flex_margin_profile_matches_chromium_values_and_frames ... ok
+test spacing_percentage_tests::cases::full_chromium_fixture_matches_every_supported_runtime_node ... ok
+test flex_alignment_tests::flex_alignment_profile_matches_pinned_chromium_values_and_frames ... ok
+test cascade_layers_tests::flex_alignment_cascade_layers_profile_matches_chromium_values_and_frames ... ok
+
+test result: ok. 33 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+   Doc-tests spinon_layout
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests spinon_style_to_layout
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

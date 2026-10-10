@@ -1,0 +1,61 @@
+{
+  "schema": "spinon-css-c07-min-max-sizing-inventory/v1",
+  "fixtureId": "C07.1-min-max-size-v1",
+  "viewport": {
+    "width": 400,
+    "height": 1000,
+    "deviceScaleFactors": [1, 2]
+  },
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "forcedColors": "none",
+    "pointer": "coarse",
+    "hover": "none"
+  },
+  "comparison": {
+    "computedCss": "exact string per property against pinned Chromium",
+    "rectFields": ["x", "y", "width", "height"],
+    "maximumAbsoluteRectErrorCssPx": 0.5,
+    "dprInvariant": true,
+    "includeUnsupportedOraclesInPassCount": false
+  },
+  "nodes": [
+    { "id": "root", "properties": ["box-sizing", "width", "height"] },
+    { "id": "block-parent", "properties": ["box-sizing", "width", "height"] },
+    { "id": "percentage-height-parent", "properties": ["box-sizing", "width", "height"] },
+    { "id": "min-width-raises", "properties": ["box-sizing", "width", "height", "min-width", "max-width"] },
+    { "id": "max-width-limits", "properties": ["box-sizing", "width", "height", "min-width", "max-width"] },
+    { "id": "min-height-raises", "properties": ["box-sizing", "width", "height", "min-height", "max-height"] },
+    { "id": "max-height-limits", "properties": ["box-sizing", "width", "height", "min-height", "max-height"] },
+    { "id": "min-over-max", "properties": ["box-sizing", "width", "min-width", "max-width"] },
+    { "id": "content-box-max", "properties": ["box-sizing", "width", "padding-left", "padding-right", "max-width"] },
+    { "id": "border-box-max", "properties": ["box-sizing", "width", "padding-left", "padding-right", "max-width"] },
+    { "id": "border-box-min", "properties": ["box-sizing", "width", "padding-left", "padding-right", "min-width"] },
+    { "id": "border-box-padding-floor", "properties": ["box-sizing", "width", "padding-left", "padding-right", "min-width"] },
+    { "id": "percentage-min", "properties": ["width", "min-width"] },
+    { "id": "percentage-max", "properties": ["width", "max-width"] },
+    { "id": "percentage-height-max", "properties": ["height", "max-height"] },
+    { "id": "calc-min", "properties": ["width", "min-width"] },
+    { "id": "calc-max", "properties": ["width", "max-width"] },
+    { "id": "var-min", "properties": ["width", "min-width"] },
+    { "id": "zero-min", "properties": ["width", "min-width"] },
+    { "id": "zero-max", "properties": ["width", "max-width"] },
+    { "id": "invalid-min-fallback", "properties": ["width", "min-width"] },
+    { "id": "invalid-max-fallback", "properties": ["width", "max-width"] },
+    { "id": "default-auto-none", "properties": ["width", "min-width", "max-width"] },
+    { "id": "flex-min-parent", "properties": ["width", "height", "display", "flex-direction"] },
+    { "id": "flex-min-a", "properties": ["width", "min-width", "flex-basis", "flex-shrink"] },
+    { "id": "flex-min-b", "properties": ["width", "min-width", "flex-basis", "flex-shrink"] },
+    { "id": "flex-zero-parent", "properties": ["width", "height", "display", "flex-direction"] },
+    { "id": "flex-zero-a", "properties": ["width", "min-width", "flex-basis", "flex-shrink"] },
+    { "id": "flex-zero-b", "properties": ["width", "min-width", "flex-basis", "flex-shrink"] },
+    { "id": "flex-max-parent", "properties": ["width", "height", "display", "flex-direction", "justify-content"] },
+    { "id": "flex-max-a", "properties": ["width", "min-width", "max-width", "flex-basis", "flex-grow", "flex-shrink"] },
+    { "id": "flex-max-b", "properties": ["width", "min-width", "max-width", "flex-basis", "flex-grow", "flex-shrink"] },
+    { "id": "flex-auto-parent", "properties": ["width", "height", "display", "flex-direction"] },
+    { "id": "flex-auto-a", "properties": ["width", "min-width", "flex-basis", "flex-shrink"] },
+    { "id": "flex-auto-b", "properties": ["width", "min-width", "flex-basis", "flex-shrink"] }
+  ]
+}

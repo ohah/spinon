@@ -9,9 +9,11 @@ mod style;
 mod tests;
 
 pub use cascade::{
-    CascadeDiagnostic, ComputedElementStyle, ComputedStyleProfile, ComputedStyleSnapshot,
-    CssCascadeError, CssColorScheme, CssMediaEnvironment, CssPointerCapabilities,
-    CssPrimaryPointer, CssViewport, RuntimeCascadeReuseStats, compute_flex_alignment_cascade,
+    CascadeDiagnostic, ComputedCssDimension, ComputedCssEdges, ComputedCssMath, ComputedCssMaxSize,
+    ComputedCssSpacingValue, ComputedElementStyle, ComputedLayoutDimensions, ComputedLayoutSpacing,
+    ComputedStyleProfile, ComputedStyleSnapshot, CssCascadeError, CssColorScheme,
+    CssMediaEnvironment, CssPointerCapabilities, CssPrimaryPointer, CssViewport,
+    RuntimeCascadeReuseStats, compute_flex_alignment_cascade,
     compute_flex_alignment_layers_cascade, compute_flex_layout_cascade,
     compute_flex_margin_cascade, compute_flex_media_environment_cascade,
     compute_runtime_flex_custom_properties_cascade,

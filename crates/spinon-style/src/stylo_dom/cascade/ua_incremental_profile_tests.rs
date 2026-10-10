@@ -57,6 +57,7 @@ fn incremental_ua_profile_uses_only_the_pinned_type_selectors() {
         selectors,
         BTreeSet::from([
             "a".to_owned(),
+            "body".to_owned(),
             "button".to_owned(),
             "div".to_owned(),
             "img".to_owned(),

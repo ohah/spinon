@@ -11,7 +11,7 @@ use spinon_style::{
     first_unsupported_runtime_layout_inline_property,
 };
 
-use crate::{StyleLayoutError, compute_runtime_style_layout};
+use crate::compute_runtime_style_layout;
 
 const HTML: &str = "http://www.w3.org/1999/xhtml";
 const REFERENCE: &str = concat!(
@@ -400,9 +400,9 @@ fn runtime_flex_shorthand_matches_frozen_chromium_longhand_values_and_geometry()
 }
 
 #[test]
-fn runtime_flex_shorthand_with_percentage_basis_fails_closed() {
-    let (document, root, _) = runtime_fixture_with_flex_b_style(
-        "display:flex;width:100px;height:80px;flex-direction:column;row-gap:4px;padding:2px;flex:1",
+fn runtime_flex_shorthand_preserves_percentage_basis_for_taffy() {
+    let (document, root, nodes) = runtime_fixture_with_flex_b_style(
+        "display:flex;width:100px;height:80px;flex-direction:column;row-gap:4px;padding:2px;flex:0 0 50%",
     );
     let snapshot = document.snapshot();
     let view = StyloDocumentView::new_html_fragment_child_shared(
@@ -420,11 +420,18 @@ fn runtime_flex_shorthand_with_percentage_basis_fails_closed() {
         first_unsupported_runtime_layout_inline_property(&view),
         None
     );
-    assert!(matches!(
-        compute_runtime_style_layout(&snapshot, root, computed, CssViewport::C04_FIXTURE),
-        Err(StyleLayoutError::UnsupportedComputedValue {
-            property: "flex-basis",
-            ..
-        })
-    ));
+    let output =
+        compute_runtime_style_layout(&snapshot, root, computed, CssViewport::C04_FIXTURE).unwrap();
+    let flex_basis = output
+        .computed_styles
+        .elements
+        .iter()
+        .find(|style| style.node_id == nodes["flex-b"].id())
+        .unwrap()
+        .layout_dimensions
+        .flex_basis;
+    assert_eq!(
+        flex_basis,
+        spinon_style::ComputedCssDimension::Percentage(0.5)
+    );
 }

@@ -1,5 +1,6 @@
 use std::{error::Error, fmt};
 
+use crate::LayoutCalcId;
 use spinon_core::NodeId;
 
 /// 입력 검증, Taffy 계산 또는 결과 변환 실패입니다.
@@ -13,15 +14,53 @@ pub enum LayoutError {
     MissingStyle(NodeId),
     UnknownStyleNode(NodeId),
     DuplicateNode(NodeId),
-    MissingChild { parent: NodeId, child: NodeId },
-    DuplicateChild { parent: NodeId, child: NodeId },
+    MissingChild {
+        parent: NodeId,
+        child: NodeId,
+    },
+    DuplicateChild {
+        parent: NodeId,
+        child: NodeId,
+    },
     RootHasParent(NodeId),
     MultipleParents(NodeId),
     DetachedNode(NodeId),
     Cycle(NodeId),
     UnreachableNode(NodeId),
-    RootSizeMismatch { axis: &'static str },
-    InvalidStyle { node: NodeId, field: &'static str },
+    RootSizeMismatch {
+        axis: &'static str,
+    },
+    InvalidStyle {
+        node: NodeId,
+        field: &'static str,
+    },
+    UnsupportedRootPercentageSpacing {
+        node: NodeId,
+        property: &'static str,
+    },
+    IndefinitePercentageBasis {
+        node: NodeId,
+        property: &'static str,
+        axis: &'static str,
+    },
+    DuplicateCssMathId,
+    MissingCssMath {
+        node: NodeId,
+        property: &'static str,
+        id: LayoutCalcId,
+    },
+    CssMathBindingMismatch {
+        node: NodeId,
+        property: &'static str,
+        id: LayoutCalcId,
+    },
+    InvalidCssMath {
+        node: NodeId,
+        property: &'static str,
+        reason: &'static str,
+    },
+    UnknownCssMathHandle,
+    TooManyNodes,
     Taffy(String),
     TaffyPanicked,
     MissingComputedLayout(NodeId),
@@ -70,6 +109,44 @@ impl fmt::Display for LayoutError {
             Self::InvalidStyle { node, field } => {
                 write!(formatter, "노드 {node}의 {field} 값이 유효하지 않습니다")
             }
+            Self::UnsupportedRootPercentageSpacing { node, property } => write!(
+                formatter,
+                "레이아웃 root 노드 {node}의 {property} 백분율은 현재 계약에서 지원하지 않습니다"
+            ),
+            Self::IndefinitePercentageBasis {
+                node,
+                property,
+                axis,
+            } => write!(
+                formatter,
+                "노드 {node}의 {property} 백분율 기준 {axis} 크기를 확정할 수 없습니다"
+            ),
+            Self::DuplicateCssMathId => write!(formatter, "CSS 계산식 ID가 중복되었습니다"),
+            Self::MissingCssMath { node, property, id } => write!(
+                formatter,
+                "노드 {node}의 {property} CSS 계산식 ID {}를 찾을 수 없습니다",
+                id.0
+            ),
+            Self::CssMathBindingMismatch { node, property, id } => write!(
+                formatter,
+                "노드 {node}의 {property}가 다른 노드·속성의 CSS 계산식 ID {}를 참조합니다",
+                id.0
+            ),
+            Self::InvalidCssMath {
+                node,
+                property,
+                reason,
+            } => write!(
+                formatter,
+                "노드 {node}의 {property} CSS 계산식을 안전하게 평가할 수 없습니다: {reason}"
+            ),
+            Self::UnknownCssMathHandle => {
+                write!(
+                    formatter,
+                    "Taffy가 현재 layout owner가 만들지 않은 CSS 계산식 handle을 요청했습니다"
+                )
+            }
+            Self::TooManyNodes => write!(formatter, "Taffy 노드 ID 범위를 초과했습니다"),
             Self::Taffy(message) => {
                 write!(formatter, "Taffy 레이아웃 계산에 실패했습니다: {message}")
             }

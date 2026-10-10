@@ -238,22 +238,29 @@ fn unsupported_margin_values_and_other_properties_fail_closed() {
         "수직 writing mode가 허용되면 안 됩니다: {css}; 결과 {result:?}"
     );
 
-    for css in [
-        "#flex-a { margin-left: 10%; }",
-        "#flex-a { margin-left: auto; }",
-        "#flex-a { margin-left: calc(10% + 2px); }",
-    ] {
-        assert!(
-            matches!(
-                compute(&fixture, css),
-                Err(StyleLayoutError::UnsupportedComputedValue {
-                    property: "margin-left",
-                    ..
-                })
-            ),
-            "px 이외 computed margin을 조용히 변환하면 안 됩니다: {css}"
-        );
-    }
+    let percentage = compute(&fixture, "#flex-a { margin-left: 10%; }");
+    assert!(
+        percentage.is_ok(),
+        "확정된 containing block의 margin %를 보존해야 합니다"
+    );
+
+    let unsupported = compute(&fixture, "#flex-a { margin-left: auto; }");
+    assert!(
+        matches!(
+            unsupported,
+            Err(StyleLayoutError::UnsupportedComputedValue {
+                property: "margin-left",
+                ..
+            })
+        ),
+        "미지원 margin 값을 조용히 변환하면 안 됩니다: {unsupported:?}"
+    );
+
+    let mixed_unit = compute(&fixture, "#flex-a { margin-left: calc(10% + 2px); }");
+    assert!(
+        mixed_unit.is_ok(),
+        "계산식 margin은 확정된 containing block 기준으로 해석해야 합니다: {mixed_unit:?}"
+    );
 
     assert!(matches!(
         compute(&fixture, "#flex-a { padding: 1px; }"),

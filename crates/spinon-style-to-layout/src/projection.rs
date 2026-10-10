@@ -1,6 +1,7 @@
 use std::collections::BTreeMap;
 
 mod style_values;
+mod typed_math;
 use style_values::project_styles;
 
 use spinon_core::{HostDocumentSnapshot, HostNodeHandle, NodeId, StyleRevision};
@@ -204,7 +205,8 @@ fn compute_layout_from_styles(
     {
         return Err(StyleLayoutError::CascadeDiagnostic(diagnostic));
     }
-    let styles = project_styles(&computed_styles)?;
+    let projected = project_styles(&computed_styles)?;
+    let styles = projected.styles;
     if matches!(
         computed_styles.profile,
         ComputedStyleProfile::FlexMarginV1
@@ -250,7 +252,8 @@ fn compute_layout_from_styles(
             computed_styles.style_revision,
             viewport.environment_revision,
         )?
-    };
+    }
+    .with_css_math(projected.css_math);
     let mut layout = TaffyLayoutEngine.compute(&input)?;
     if matches!(
         computed_styles.profile,

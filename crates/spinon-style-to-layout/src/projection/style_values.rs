@@ -2,25 +2,114 @@ use std::collections::BTreeMap;
 
 use spinon_core::NodeId;
 use spinon_layout::{
-    FlexDirection, LayoutAlignItems, LayoutBoxSizing, LayoutDimension, LayoutDisplay, LayoutEdges,
-    LayoutGap, LayoutJustifyContent, LayoutStyle, TextDirection,
+    FlexDirection, LayoutAlignItems, LayoutBoxSizing, LayoutCssMathProperty, LayoutDimension,
+    LayoutDisplay, LayoutEdges, LayoutGap, LayoutJustifyContent, LayoutLengthPercentage,
+    LayoutStyle, TextDirection,
 };
-use spinon_style::{ComputedStyleProfile, ComputedStyleSnapshot};
+use spinon_style::{
+    ComputedCssDimension, ComputedCssMath, ComputedCssMaxSize, ComputedCssSpacingValue,
+    ComputedStyleProfile, ComputedStyleSnapshot,
+};
 
+use super::typed_math::CssMathProjector;
 use crate::StyleLayoutError;
+
+pub(super) struct ProjectedStyles {
+    pub styles: BTreeMap<NodeId, LayoutStyle>,
+    pub css_math: Vec<spinon_layout::LayoutCssMathValue>,
+}
 
 pub(super) fn project_styles(
     snapshot: &ComputedStyleSnapshot,
-) -> Result<BTreeMap<NodeId, LayoutStyle>, StyleLayoutError> {
+) -> Result<ProjectedStyles, StyleLayoutError> {
     let mut output = BTreeMap::new();
+    let mut math = CssMathProjector::default();
     for element in snapshot.elements.iter() {
         let node = element.node_id;
+        let supports_size_constraints = matches!(
+            snapshot.profile,
+            ComputedStyleProfile::RuntimeFlexLayoutV1
+                | ComputedStyleProfile::RuntimeFlexPaintV1
+                | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+                | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
+                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
+                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
+        );
         let style = LayoutStyle {
             display: parse_display(node, required(element, "display")?)?,
             box_sizing: parse_box_sizing(node, required(element, "box-sizing")?)?,
-            width: parse_dimension(node, "width", required(element, "width")?)?,
-            height: parse_dimension(node, "height", required(element, "height")?)?,
-            flex_basis: parse_dimension(node, "flex-basis", required(element, "flex-basis")?)?,
+            width: parse_dimension(
+                node,
+                "width",
+                required(element, "width")?,
+                element.layout_dimensions.width,
+                element.layout_math_values.get("width"),
+                &mut math,
+            )?,
+            height: parse_dimension(
+                node,
+                "height",
+                required(element, "height")?,
+                element.layout_dimensions.height,
+                element.layout_math_values.get("height"),
+                &mut math,
+            )?,
+            min_width: if supports_size_constraints {
+                parse_dimension(
+                    node,
+                    "min-width",
+                    required(element, "min-width")?,
+                    element.layout_dimensions.min_width,
+                    element.layout_math_values.get("min-width"),
+                    &mut math,
+                )?
+            } else {
+                LayoutStyle::default().min_width
+            },
+            max_width: if supports_size_constraints {
+                parse_dimension(
+                    node,
+                    "max-width",
+                    required(element, "max-width")?,
+                    max_size_as_dimension(element.layout_dimensions.max_width),
+                    element.layout_math_values.get("max-width"),
+                    &mut math,
+                )?
+            } else {
+                LayoutStyle::default().max_width
+            },
+            min_height: if supports_size_constraints {
+                parse_dimension(
+                    node,
+                    "min-height",
+                    required(element, "min-height")?,
+                    element.layout_dimensions.min_height,
+                    element.layout_math_values.get("min-height"),
+                    &mut math,
+                )?
+            } else {
+                LayoutStyle::default().min_height
+            },
+            max_height: if supports_size_constraints {
+                parse_dimension(
+                    node,
+                    "max-height",
+                    required(element, "max-height")?,
+                    max_size_as_dimension(element.layout_dimensions.max_height),
+                    element.layout_math_values.get("max-height"),
+                    &mut math,
+                )?
+            } else {
+                LayoutStyle::default().max_height
+            },
+            flex_basis: parse_dimension(
+                node,
+                "flex-basis",
+                required(element, "flex-basis")?,
+                element.layout_dimensions.flex_basis,
+                element.layout_math_values.get("flex-basis"),
+                &mut math,
+            )?,
             flex_direction: parse_flex_direction(node, required(element, "flex-direction")?)?,
             direction: parse_direction(node, required(element, "direction")?)?,
             align_items: match snapshot.profile {
@@ -52,8 +141,22 @@ pub(super) fn project_styles(
             flex_grow: parse_number(node, "flex-grow", required(element, "flex-grow")?)?,
             flex_shrink: parse_number(node, "flex-shrink", required(element, "flex-shrink")?)?,
             gap: LayoutGap {
-                row: parse_gap(node, "row-gap", required(element, "row-gap")?)?,
-                column: parse_gap(node, "column-gap", required(element, "column-gap")?)?,
+                row: parse_gap(
+                    node,
+                    "row-gap",
+                    required(element, "row-gap")?,
+                    element.layout_spacing.row_gap,
+                    element.layout_math_values.get("row-gap"),
+                    &mut math,
+                )?,
+                column: parse_gap(
+                    node,
+                    "column-gap",
+                    required(element, "column-gap")?,
+                    element.layout_spacing.column_gap,
+                    element.layout_math_values.get("column-gap"),
+                    &mut math,
+                )?,
             },
             margin: match snapshot.profile {
                 ComputedStyleProfile::FlexMarginV1
@@ -63,18 +166,38 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1 => LayoutEdges {
-                    top: parse_css_margin(node, "margin-top", required(element, "margin-top")?)?,
-                    right: parse_css_margin(
+                    top: parse_margin(
+                        node,
+                        "margin-top",
+                        required(element, "margin-top")?,
+                        element.layout_spacing.margin.top,
+                        element.layout_math_values.get("margin-top"),
+                        &mut math,
+                    )?,
+                    right: parse_margin(
                         node,
                         "margin-right",
                         required(element, "margin-right")?,
+                        element.layout_spacing.margin.right,
+                        element.layout_math_values.get("margin-right"),
+                        &mut math,
                     )?,
-                    bottom: parse_css_margin(
+                    bottom: parse_margin(
                         node,
                         "margin-bottom",
                         required(element, "margin-bottom")?,
+                        element.layout_spacing.margin.bottom,
+                        element.layout_math_values.get("margin-bottom"),
+                        &mut math,
                     )?,
-                    left: parse_css_margin(node, "margin-left", required(element, "margin-left")?)?,
+                    left: parse_margin(
+                        node,
+                        "margin-left",
+                        required(element, "margin-left")?,
+                        element.layout_spacing.margin.left,
+                        element.layout_math_values.get("margin-left"),
+                        &mut math,
+                    )?,
                 },
                 _ => LayoutEdges::default(),
             },
@@ -85,18 +208,38 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1 => LayoutEdges {
-                    top: parse_css_px(node, "padding-top", required(element, "padding-top")?)?,
-                    right: parse_css_px(
+                    top: parse_nonnegative_spacing(
+                        node,
+                        "padding-top",
+                        required(element, "padding-top")?,
+                        element.layout_spacing.padding.top,
+                        element.layout_math_values.get("padding-top"),
+                        &mut math,
+                    )?,
+                    right: parse_nonnegative_spacing(
                         node,
                         "padding-right",
                         required(element, "padding-right")?,
+                        element.layout_spacing.padding.right,
+                        element.layout_math_values.get("padding-right"),
+                        &mut math,
                     )?,
-                    bottom: parse_css_px(
+                    bottom: parse_nonnegative_spacing(
                         node,
                         "padding-bottom",
                         required(element, "padding-bottom")?,
+                        element.layout_spacing.padding.bottom,
+                        element.layout_math_values.get("padding-bottom"),
+                        &mut math,
                     )?,
-                    left: parse_css_px(node, "padding-left", required(element, "padding-left")?)?,
+                    left: parse_nonnegative_spacing(
+                        node,
+                        "padding-left",
+                        required(element, "padding-left")?,
+                        element.layout_spacing.padding.left,
+                        element.layout_math_values.get("padding-left"),
+                        &mut math,
+                    )?,
                 },
                 _ => LayoutEdges::default(),
             },
@@ -105,7 +248,10 @@ pub(super) fn project_styles(
             return Err(StyleLayoutError::DuplicateComputedElement(node));
         }
     }
-    Ok(output)
+    Ok(ProjectedStyles {
+        styles: output,
+        css_math: math.into_values(),
+    })
 }
 
 fn parse_align_items(node: NodeId, value: &str) -> Result<LayoutAlignItems, StyleLayoutError> {
@@ -162,15 +308,39 @@ fn parse_box_sizing(node: NodeId, value: &str) -> Result<LayoutBoxSizing, StyleL
     }
 }
 
+fn max_size_as_dimension(value: ComputedCssMaxSize) -> ComputedCssDimension {
+    match value {
+        ComputedCssMaxSize::None => ComputedCssDimension::Auto,
+        ComputedCssMaxSize::LengthPx(value) => ComputedCssDimension::LengthPx(value),
+        ComputedCssMaxSize::Percentage(value) => ComputedCssDimension::Percentage(value),
+        ComputedCssMaxSize::Unsupported => ComputedCssDimension::Unsupported,
+    }
+}
+
 fn parse_dimension(
     node: NodeId,
     property: &'static str,
-    value: &str,
+    serialized_value: &str,
+    value: ComputedCssDimension,
+    math: Option<&ComputedCssMath>,
+    projector: &mut CssMathProjector,
 ) -> Result<LayoutDimension, StyleLayoutError> {
-    if value == "auto" {
-        return Ok(LayoutDimension::Auto);
+    if let Some(math) = math {
+        let id = projector.project(node, layout_math_property(node, property)?, math)?;
+        return Ok(LayoutDimension::Calc(id));
     }
-    parse_css_px(node, property, value).map(LayoutDimension::Fixed)
+    match value {
+        ComputedCssDimension::Auto => Ok(LayoutDimension::Auto),
+        ComputedCssDimension::LengthPx(value) if value.is_finite() && value >= 0.0 => {
+            Ok(LayoutDimension::Fixed(value))
+        }
+        ComputedCssDimension::Percentage(value) if value.is_finite() && value >= 0.0 => {
+            Ok(LayoutDimension::Percent(value))
+        }
+        ComputedCssDimension::LengthPx(_)
+        | ComputedCssDimension::Percentage(_)
+        | ComputedCssDimension::Unsupported => unsupported(node, property, serialized_value),
+    }
 }
 
 fn parse_flex_direction(node: NodeId, value: &str) -> Result<FlexDirection, StyleLayoutError> {
@@ -201,41 +371,112 @@ fn parse_number(
     parsed.ok_or_else(|| unsupported_value(node, property, value))
 }
 
-fn parse_gap(node: NodeId, property: &'static str, value: &str) -> Result<f32, StyleLayoutError> {
-    if value == "normal" {
-        return Ok(0.0);
+fn parse_gap(
+    node: NodeId,
+    property: &'static str,
+    serialized_value: &str,
+    value: ComputedCssSpacingValue,
+    math: Option<&ComputedCssMath>,
+    projector: &mut CssMathProjector,
+) -> Result<LayoutLengthPercentage, StyleLayoutError> {
+    if math.is_none() && value == ComputedCssSpacingValue::Normal {
+        return Ok(LayoutLengthPercentage::ZERO);
     }
-    parse_css_px(node, property, value)
+    parse_nonnegative_spacing(node, property, serialized_value, value, math, projector)
 }
 
-fn parse_css_px(
+fn parse_margin(
     node: NodeId,
     property: &'static str,
-    value: &str,
-) -> Result<f32, StyleLayoutError> {
-    let Some(number) = value.strip_suffix("px") else {
-        return unsupported(node, property, value);
-    };
-    let parsed = number
-        .parse::<f32>()
-        .ok()
-        .filter(|number| number.is_finite() && *number >= 0.0);
-    parsed.ok_or_else(|| unsupported_value(node, property, value))
+    serialized_value: &str,
+    value: ComputedCssSpacingValue,
+    math: Option<&ComputedCssMath>,
+    projector: &mut CssMathProjector,
+) -> Result<LayoutLengthPercentage, StyleLayoutError> {
+    parse_spacing(
+        node,
+        property,
+        serialized_value,
+        value,
+        true,
+        math,
+        projector,
+    )
 }
 
-fn parse_css_margin(
+fn parse_nonnegative_spacing(
     node: NodeId,
     property: &'static str,
-    value: &str,
-) -> Result<f32, StyleLayoutError> {
-    let Some(number) = value.strip_suffix("px") else {
-        return unsupported(node, property, value);
+    serialized_value: &str,
+    value: ComputedCssSpacingValue,
+    math: Option<&ComputedCssMath>,
+    projector: &mut CssMathProjector,
+) -> Result<LayoutLengthPercentage, StyleLayoutError> {
+    parse_spacing(
+        node,
+        property,
+        serialized_value,
+        value,
+        false,
+        math,
+        projector,
+    )
+}
+
+fn parse_spacing(
+    node: NodeId,
+    property: &'static str,
+    serialized_value: &str,
+    value: ComputedCssSpacingValue,
+    allow_negative: bool,
+    math: Option<&ComputedCssMath>,
+    projector: &mut CssMathProjector,
+) -> Result<LayoutLengthPercentage, StyleLayoutError> {
+    if let Some(math) = math {
+        let id = projector.project(node, layout_math_property(node, property)?, math)?;
+        return Ok(LayoutLengthPercentage::Calc(id));
+    }
+    let convert = |value: f32, percentage: bool| {
+        (value.is_finite() && (allow_negative || value >= 0.0)).then_some(if percentage {
+            LayoutLengthPercentage::percent(value)
+        } else {
+            LayoutLengthPercentage::length(value)
+        })
     };
-    let parsed = number
-        .parse::<f32>()
-        .ok()
-        .filter(|number| number.is_finite());
-    parsed.ok_or_else(|| unsupported_value(node, property, value))
+    match value {
+        ComputedCssSpacingValue::LengthPx(value) => convert(value, false),
+        ComputedCssSpacingValue::Percentage(value) => convert(value, true),
+        ComputedCssSpacingValue::Auto
+        | ComputedCssSpacingValue::Normal
+        | ComputedCssSpacingValue::Unsupported => None,
+    }
+    .ok_or_else(|| unsupported_value(node, property, serialized_value))
+}
+
+fn layout_math_property(
+    node: NodeId,
+    property: &'static str,
+) -> Result<LayoutCssMathProperty, StyleLayoutError> {
+    match property {
+        "width" => Ok(LayoutCssMathProperty::Width),
+        "height" => Ok(LayoutCssMathProperty::Height),
+        "min-width" => Ok(LayoutCssMathProperty::MinWidth),
+        "max-width" => Ok(LayoutCssMathProperty::MaxWidth),
+        "min-height" => Ok(LayoutCssMathProperty::MinHeight),
+        "max-height" => Ok(LayoutCssMathProperty::MaxHeight),
+        "flex-basis" => Ok(LayoutCssMathProperty::FlexBasis),
+        "margin-top" => Ok(LayoutCssMathProperty::MarginTop),
+        "margin-right" => Ok(LayoutCssMathProperty::MarginRight),
+        "margin-bottom" => Ok(LayoutCssMathProperty::MarginBottom),
+        "margin-left" => Ok(LayoutCssMathProperty::MarginLeft),
+        "padding-top" => Ok(LayoutCssMathProperty::PaddingTop),
+        "padding-right" => Ok(LayoutCssMathProperty::PaddingRight),
+        "padding-bottom" => Ok(LayoutCssMathProperty::PaddingBottom),
+        "padding-left" => Ok(LayoutCssMathProperty::PaddingLeft),
+        "row-gap" => Ok(LayoutCssMathProperty::RowGap),
+        "column-gap" => Ok(LayoutCssMathProperty::ColumnGap),
+        _ => Err(unsupported_value(node, property, "typed CSS math")),
+    }
 }
 
 fn unsupported<T>(

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spinon C06 percentage dimensions oracle</title>
+  <style>
+    html, body { width: 100%; height: 100%; margin: 0; }
+    #root { position: relative; width: 100%; height: 100%; }
+    #root-half { width: 50%; height: 50%; }
+    #content-parent {
+      box-sizing: content-box; width: 100px; height: 80px; padding: 10px;
+    }
+    #content-50 { width: 50%; height: 50%; }
+    #content-125 { width: 125%; height: 125%; }
+    #content-zero { width: 0%; height: 0%; }
+    #content-fraction { width: 33.333%; height: 33.333%; }
+    #content-negative { width: -10%; height: -10%; }
+    #border-parent {
+      box-sizing: border-box; width: 124px; height: 104px; padding: 10px;
+    }
+    #border-50 { width: 50%; height: 50%; }
+    #row-flex {
+      display: flex; width: 120px; height: 40px;
+    }
+    #row-50 { flex: 0 0 50%; width: 20px; }
+    #row-25 { flex: 0 0 25%; width: 20px; }
+    #column-flex {
+      display: flex; flex-direction: column; width: 80px; height: 60px;
+    }
+    #column-50 { flex: 0 0 50%; height: 10px; }
+    #column-25 { flex: 0 0 25%; height: 10px; }
+    #auto-parent { width: 100px; }
+    #auto-height-child { width: 50%; height: 50%; }
+    #unsupported-parent {
+      box-sizing: content-box; display: flex; width: 120px; height: 30px;
+    }
+    #unsupported-calc { width: calc(50% + 10px); }
+    #unsupported-margin { width: 10px; margin-left: 10%; }
+    #unsupported-padding { width: 10px; padding-left: 10%; }
+    #unsupported-gap { display: flex; width: 100px; column-gap: 10%; }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <div id="root-half"></div>
+    <div id="content-parent">
+      <div id="content-50"></div>
+      <div id="content-125"></div>
+      <div id="content-zero"></div>
+      <div id="content-fraction"></div>
+      <div id="content-negative"></div>
+    </div>
+    <div id="border-parent"><div id="border-50"></div></div>
+    <div id="row-flex"><div id="row-50"></div><div id="row-25"></div></div>
+    <div id="column-flex"><div id="column-50"></div><div id="column-25"></div></div>
+    <div id="auto-parent"><div id="auto-height-child"></div></div>
+    <div id="unsupported-parent">
+      <div id="unsupported-calc"></div>
+      <div id="unsupported-margin"></div>
+      <div id="unsupported-padding"></div>
+      <div id="unsupported-gap"><div></div><div></div></div>
+    </div>
+  </div>
+</body>
+</html>

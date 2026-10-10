@@ -43,10 +43,39 @@ pub(super) struct StyloElementData {
     pub data_present: Cell<bool>,
     pub style_data: ElementDataWrapper,
     pub inline_style: Option<Arc<Locked<PropertyDeclarationBlock>>>,
+    pub inline_style_text: Option<String>,
     pub inline_style_diagnostics: Vec<CssParseDiagnostic>,
 }
 
+#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq)]
+pub(super) enum StyloElementRef {
+    Host(HostNodeHandle),
+    SyntheticHtml,
+    SyntheticBody,
+}
+
 impl StyloElementData {
+    pub fn synthetic_html(local_name: &str) -> Self {
+        Self {
+            local_name: LocalName::from(local_name),
+            namespace: Namespace::from("http://www.w3.org/1999/xhtml"),
+            id: None,
+            classes: Vec::new(),
+            attributes: Vec::new(),
+            state: ElementState::empty(),
+            selector_flags: Cell::new(ElementSelectorFlags::empty()),
+            dirty_descendants: Cell::new(false),
+            has_snapshot: Cell::new(false),
+            handled_snapshot: Cell::new(false),
+            children_to_process: Cell::new(0),
+            data_present: Cell::new(false),
+            style_data: ElementDataWrapper::default(),
+            inline_style: None,
+            inline_style_text: None,
+            inline_style_diagnostics: Vec::new(),
+        }
+    }
+
     pub fn from_host_element(
         element: &HostElement,
         is_html_document: bool,
@@ -70,6 +99,7 @@ impl StyloElementData {
             atom_text(&attribute.namespace.0).is_empty()
                 && attribute_name_matches(&attribute.local_name, "style", html_name_matching)
         });
+        let inline_style_text = style_attribute.map(|attribute| attribute.value.clone());
         let (inline_style, inline_style_diagnostics) = if html_name_matching {
             style_attribute.map_or((None, Vec::new()), |attribute| {
                 let (declarations, diagnostics) = parse_inline_style_attribute(
@@ -133,6 +163,7 @@ impl StyloElementData {
             data_present: Cell::new(false),
             style_data: ElementDataWrapper::default(),
             inline_style,
+            inline_style_text,
             inline_style_diagnostics,
         }
     }
@@ -155,16 +186,19 @@ pub(super) fn attribute_name_matches(
 #[derive(Clone, Copy)]
 pub struct StyloElement<'a> {
     pub(super) view: &'a StyloDocumentView,
-    pub(super) handle: HostNodeHandle,
+    pub(super) element_ref: StyloElementRef,
 }
 
 impl<'a> StyloElement<'a> {
-    pub(super) const fn new(view: &'a StyloDocumentView, handle: HostNodeHandle) -> Self {
-        Self { view, handle }
+    pub(super) const fn new(view: &'a StyloDocumentView, element_ref: StyloElementRef) -> Self {
+        Self { view, element_ref }
     }
 
-    pub const fn handle(self) -> HostNodeHandle {
-        self.handle
+    pub const fn handle(self) -> Option<HostNodeHandle> {
+        match self.element_ref {
+            StyloElementRef::Host(handle) => Some(handle),
+            StyloElementRef::SyntheticHtml | StyloElementRef::SyntheticBody => None,
+        }
     }
 
     pub fn local_name(self) -> &'a LocalName {
@@ -176,21 +210,18 @@ impl<'a> StyloElement<'a> {
     }
 
     pub(super) fn data(self) -> &'a StyloElementData {
-        self.view
-            .element_data(self.handle)
-            .expect("StyloElement은 view에 속한 요소여야 합니다")
+        self.view.element_data(self.element_ref)
     }
 
-    pub(super) fn host_element(self) -> &'a HostElement {
-        let node = self
-            .view
-            .snapshot()
-            .node(self.handle)
-            .expect("view 요소의 HostNode가 있어야 합니다");
-        let spinon_core::HostNodeKind::Element(element) = node.kind() else {
-            unreachable!("StyloElement은 HostElement를 가리켜야 합니다");
+    pub(super) fn host_element(self) -> Option<&'a HostElement> {
+        let StyloElementRef::Host(handle) = self.element_ref else {
+            return None;
         };
-        element
+        let node = self.view.snapshot().node(handle)?;
+        let spinon_core::HostNodeKind::Element(element) = node.kind() else {
+            return None;
+        };
+        Some(element)
     }
 
     pub(super) fn attribute(
@@ -226,7 +257,7 @@ impl fmt::Debug for StyloElement<'_> {
     fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
         formatter
             .debug_struct("StyloElement")
-            .field("handle", &self.handle)
+            .field("element_ref", &self.element_ref)
             .field("local_name", &self.data().local_name)
             .finish()
     }
@@ -234,7 +265,7 @@ impl fmt::Debug for StyloElement<'_> {
 
 impl PartialEq for StyloElement<'_> {
     fn eq(&self, other: &Self) -> bool {
-        std::ptr::eq(self.view, other.view) && self.handle == other.handle
+        std::ptr::eq(self.view, other.view) && self.element_ref == other.element_ref
     }
 }
 
@@ -243,6 +274,6 @@ impl Eq for StyloElement<'_> {}
 impl Hash for StyloElement<'_> {
     fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
         std::ptr::from_ref(self.view).hash(state);
-        self.handle.hash(state);
+        self.element_ref.hash(state);
     }
 }

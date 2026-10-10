@@ -11,6 +11,12 @@
 
 @namespace "http://www.w3.org/1999/xhtml";
 
+/* Synthetic body is a cascade parent; its zero margin keeps the app mount at viewport origin. */
+body {
+  display: block;
+  margin: 0;
+}
+
 div {
   display: block;
 }

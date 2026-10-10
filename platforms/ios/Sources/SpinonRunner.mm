@@ -538,6 +538,132 @@ void C0410LogReport(os_log_type_t type, const char *label, NSString *report) {
 #endif
 }
 
++ (NSString *)evalRuntimeGpuPercentageDimensionsFixture:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 4096> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_percentage_dimensions_fixture(
+      host, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C061_EVAL", report);
+  return report;
+#else
+  (void)handle;
+  return @"status=-1 C04.10 GPU fixture 빌드가 비활성화되었습니다";
+#endif
+}
+
++ (NSString *)evalRuntimeGpuSpacingPercentagesFixture:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 4096> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_spacing_percentages_fixture(
+      host, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C062_EVAL", report);
+  return report;
+#else
+  (void)handle;
+  return @"status=-1 C04.10 GPU fixture 빌드가 비활성화되었습니다";
+#endif
+}
+
++ (NSString *)evalRuntimeGpuAbsoluteLengthsFixture:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 4096> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_absolute_lengths_fixture(
+      host, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C063_EVAL", report);
+  return report;
+#else
+  (void)handle;
+  return @"status=-1 C04.10 GPU fixture 빌드가 비활성화되었습니다";
+#endif
+}
+
++ (NSString *)evalRuntimeGpuFontRelativeUnitsFixture:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 4096> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_font_relative_units_fixture(
+      host, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C064_EVAL", report);
+  return report;
+#else
+  (void)handle;
+  return @"status=-1 C04.10 GPU fixture 빌드가 비활성화되었습니다";
+#endif
+}
+
++ (NSString *)evalRuntimeGpuTypedCssMathFixture:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 4096> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_typed_css_math_fixture(
+      host, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C065_EVAL", report);
+  return report;
+#else
+  (void)handle;
+  return @"status=-1 C04.10 GPU fixture 빌드가 비활성화되었습니다";
+#endif
+}
+
++ (NSString *)evalRuntimeGpuViewportUnitsFixture:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 4096> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_viewport_units_fixture(
+      host, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C066A_EVAL", report);
+  return report;
+#else
+  (void)handle;
+  return @"status=-1 C04.10 GPU fixture 빌드가 비활성화되었습니다";
+#endif
+}
+
++ (NSString *)evalRuntimeGpuMinMaxSizingFixture:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 4096> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_min_max_sizing_fixture(
+      host, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C071_EVAL", report);
+  return report;
+#else
+  (void)handle;
+  return @"status=-1 C04.10 GPU fixture 빌드가 비활성화되었습니다";
+#endif
+}
+
 + (NSString *)prepareRuntimeGpuWgpuSurface:(uint64_t)handle view:(void *)view {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
   if (![NSThread isMainThread]) {

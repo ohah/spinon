@@ -25,19 +25,11 @@ impl<'a> TElement for StyloElement<'a> {
     type TraversalChildrenIterator = std::vec::IntoIter<Self::ConcreteNode>;
 
     fn as_node(&self) -> StyloNode<'a> {
-        StyloNode::new(self.view, Some(self.handle))
+        StyloNode::for_element(*self)
     }
 
     fn traversal_children(&self) -> LayoutIterator<Self::TraversalChildrenIterator> {
-        let children = self
-            .view
-            .snapshot()
-            .children(self.handle)
-            .into_iter()
-            .flatten()
-            .filter(|handle| self.view.is_member(*handle))
-            .map(|handle| StyloNode::new(self.view, Some(handle)))
-            .collect::<Vec<_>>();
+        let children = self.as_node().node_children();
         LayoutIterator(children.into_iter())
     }
 
@@ -282,7 +274,7 @@ impl<'a> TElement for StyloElement<'a> {
 
 impl StyloElement<'_> {
     pub(super) fn language_attribute(self) -> Option<String> {
-        let host = self.host_element();
+        let host = self.host_element()?;
         host.attributes()
             .iter()
             .find(|(name, _)| {

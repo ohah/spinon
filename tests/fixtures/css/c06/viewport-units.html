@@ -1,0 +1,41 @@
+<!doctype html>
+<html id="html" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spinon C06.6 viewport units oracle</title>
+  <style>
+    :root { font-size: 16px; }
+    body { margin: 0; }
+    #root { box-sizing: border-box; display: block; width: 100vw; height: 100vh; }
+    #default-units { width: 50vw; height: 5vh; }
+    #small-units { width: calc(25svw + 1svi + 1svmin); height: calc(5svh + 1svb + 1svmax); }
+    #large-units { width: calc(25lvw + 1lvi + 1lvmin); height: calc(5lvh + 1lvb + 1lvmax); }
+    #dynamic-units { width: calc(25dvw + 1dvi + 1dvmin); height: calc(5dvh + 1dvb + 1dvmax); }
+    #logical-units { width: 10vi; height: 5vb; }
+    #minmax-units { width: 10vmin; height: 5vmax; }
+    #math-units { width: calc(10vw + 10px); height: min(5vh, 45px); }
+    #var-units { --viewport-width: 12vw; width: var(--viewport-width); height: 6px; }
+    #spacing-units { box-sizing: border-box; width: 30px; height: 6px; margin-left: 5vw; padding-left: 2vw; }
+    #gap-row { box-sizing: border-box; display: flex; flex-direction: row; width: 50vw; height: 6px; column-gap: 5vw; }
+    #gap-a, #gap-b { box-sizing: border-box; flex: 0 0 10vw; height: 6px; }
+    #basis-row { box-sizing: border-box; display: flex; flex-direction: row; width: 50vw; height: 6px; }
+    #basis-item { box-sizing: border-box; flex: 0 0 25vw; height: 6px; }
+  </style>
+</head>
+<body>
+  <main id="root">
+    <div id="default-units"></div>
+    <div id="small-units"></div>
+    <div id="large-units"></div>
+    <div id="dynamic-units"></div>
+    <div id="logical-units"></div>
+    <div id="minmax-units"></div>
+    <div id="math-units"></div>
+    <div id="var-units"></div>
+    <div id="spacing-units"></div>
+    <div id="gap-row"><div id="gap-a"></div><div id="gap-b"></div></div>
+    <div id="basis-row"><div id="basis-item"></div></div>
+  </main>
+</body>
+</html>

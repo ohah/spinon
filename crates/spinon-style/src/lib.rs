@@ -2,6 +2,8 @@
 
 use std::ffi::CStr;
 
+mod container_relative_units;
+mod font_relative_units;
 mod opaque_css_srgb;
 mod s04_color_syntax;
 mod stylesheet_registry;
@@ -13,13 +15,14 @@ pub use stylesheet_registry::{
     StylesheetRegistryError, StylesheetSource,
 };
 pub use stylo_dom::{
-    CascadeDiagnostic, ComputedElementStyle, ComputedStyleProfile, ComputedStyleSnapshot,
-    CssCascadeError, CssColorScheme, CssMediaEnvironment, CssPointerCapabilities,
-    CssPrimaryPointer, CssViewport, RuntimeCascadeReuseStats, StyloDocument, StyloDocumentView,
-    StyloDomError, StyloElement, StyloNode, compute_flex_alignment_cascade,
-    compute_flex_alignment_layers_cascade, compute_flex_layout_cascade,
-    compute_flex_margin_cascade, compute_flex_media_environment_cascade,
-    compute_runtime_flex_custom_properties_cascade,
+    CascadeDiagnostic, ComputedCssDimension, ComputedCssEdges, ComputedCssMath, ComputedCssMaxSize,
+    ComputedCssSpacingValue, ComputedElementStyle, ComputedLayoutDimensions, ComputedLayoutSpacing,
+    ComputedStyleProfile, ComputedStyleSnapshot, CssCascadeError, CssColorScheme,
+    CssMediaEnvironment, CssPointerCapabilities, CssPrimaryPointer, CssViewport,
+    RuntimeCascadeReuseStats, StyloDocument, StyloDocumentView, StyloDomError, StyloElement,
+    StyloNode, compute_flex_alignment_cascade, compute_flex_alignment_layers_cascade,
+    compute_flex_layout_cascade, compute_flex_margin_cascade,
+    compute_flex_media_environment_cascade, compute_runtime_flex_custom_properties_cascade,
     compute_runtime_flex_custom_properties_cascade_with_stylesheets,
     compute_runtime_flex_custom_properties_paint_cascade,
     compute_runtime_flex_custom_properties_paint_cascade_with_stylesheets,

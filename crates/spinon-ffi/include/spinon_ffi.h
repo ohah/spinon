@@ -162,6 +162,34 @@ int32_t spinon_runtime_gpu_host_eval_runtime_result_cache_fixture(
 int32_t spinon_runtime_gpu_host_eval_incremental_restyle_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);
+/* C06.1: percentage width·height·flex-basis를 실제 V8·Taffy 경로에서 확인합니다. */
+int32_t spinon_runtime_gpu_host_eval_percentage_dimensions_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
+/* C06.2: percentage margin·padding·gap을 실제 V8·Stylo·Taffy 경로에서 확인합니다. */
+int32_t spinon_runtime_gpu_host_eval_spacing_percentages_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
+/* C06.3: 절대 CSS 길이를 실제 V8·Stylo·Taffy 경로에서 확인합니다. */
+int32_t spinon_runtime_gpu_host_eval_absolute_lengths_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
+/* C06.4: em/rem cascade와 Taffy/WGPU runtime 경로를 확인합니다. */
+int32_t spinon_runtime_gpu_host_eval_font_relative_units_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
+/* C06.5: calc/min/max/clamp를 실제 V8·Stylo·Taffy 경로에서 확인합니다. */
+int32_t spinon_runtime_gpu_host_eval_typed_css_math_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
+/* C06.6a: viewport length 단위를 실제 V8·Stylo·Taffy 경로에서 확인합니다. */
+int32_t spinon_runtime_gpu_host_eval_viewport_units_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
+/* C07.1: 물리 축 min/max sizing을 실제 V8·Stylo·Taffy 경로에서 확인합니다. */
+int32_t spinon_runtime_gpu_host_eval_min_max_sizing_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
 /* Android backend: 0=Vulkan 실패 뒤 GL 순차 재시도, 1=Vulkan 강제, 2=GL 강제. iOS는 3=Metal. */
 void *spinon_runtime_gpu_host_create_android(
     SpinonRuntimeGpuHost *host, void *native_window, uint32_t width,

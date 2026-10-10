@@ -154,6 +154,7 @@ impl LayoutInput {
             viewport,
             root_sizing,
             nodes,
+            css_math: Vec::new(),
         })
     }
 }

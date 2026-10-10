@@ -1,3 +1,6 @@
+use std::collections::BTreeMap;
+
+use spinon_core::NodeId;
 use taffy::prelude::{
     AlignItems, Dimension, Display, FlexDirection as TaffyFlexDirection, FlexWrap, JustifyContent,
     LengthPercentage, LengthPercentageAuto, Rect, Size, Style,
@@ -5,12 +8,17 @@ use taffy::prelude::{
 use taffy::style::{BoxSizing, Direction as TaffyDirection};
 
 use crate::{
-    FlexDirection, LayoutAlignItems, LayoutBoxSizing, LayoutDimension, LayoutDisplay,
-    LayoutJustifyContent, LayoutStyle, TextDirection,
+    FlexDirection, LayoutAlignItems, LayoutBoxSizing, LayoutCalcId, LayoutCssMathProperty,
+    LayoutDimension, LayoutDisplay, LayoutError, LayoutJustifyContent, LayoutLengthPercentage,
+    LayoutStyle, TextDirection,
 };
 
-pub(super) fn to_taffy_style(style: LayoutStyle) -> Style {
-    Style {
+pub(super) fn to_taffy_style(
+    node: NodeId,
+    style: LayoutStyle,
+    calc_handles: &BTreeMap<LayoutCalcId, *const ()>,
+) -> Result<Style, LayoutError> {
+    Ok(Style {
         display: match style.display {
             LayoutDisplay::Flex => Display::Flex,
             LayoutDisplay::Block => Display::Block,
@@ -25,18 +33,86 @@ pub(super) fn to_taffy_style(style: LayoutStyle) -> Style {
             TextDirection::Rtl => TaffyDirection::Rtl,
         },
         size: Size {
-            width: to_taffy_dimension(style.width),
-            height: to_taffy_dimension(style.height),
+            width: to_taffy_dimension(
+                node,
+                LayoutCssMathProperty::Width,
+                style.width,
+                calc_handles,
+            )?,
+            height: to_taffy_dimension(
+                node,
+                LayoutCssMathProperty::Height,
+                style.height,
+                calc_handles,
+            )?,
+        },
+        min_size: Size {
+            width: to_taffy_size_constraint(
+                node,
+                LayoutCssMathProperty::MinWidth,
+                style.min_width,
+                calc_handles,
+            )?,
+            height: to_taffy_size_constraint(
+                node,
+                LayoutCssMathProperty::MinHeight,
+                style.min_height,
+                calc_handles,
+            )?,
+        },
+        max_size: Size {
+            width: to_taffy_size_constraint(
+                node,
+                LayoutCssMathProperty::MaxWidth,
+                style.max_width,
+                calc_handles,
+            )?,
+            height: to_taffy_size_constraint(
+                node,
+                LayoutCssMathProperty::MaxHeight,
+                style.max_height,
+                calc_handles,
+            )?,
         },
         padding: Rect {
-            top: LengthPercentage::length(style.padding.top),
-            right: LengthPercentage::length(style.padding.right),
-            bottom: LengthPercentage::length(style.padding.bottom),
-            left: LengthPercentage::length(style.padding.left),
+            top: to_taffy_length_percentage(
+                node,
+                LayoutCssMathProperty::PaddingTop,
+                style.padding.top,
+                calc_handles,
+            )?,
+            right: to_taffy_length_percentage(
+                node,
+                LayoutCssMathProperty::PaddingRight,
+                style.padding.right,
+                calc_handles,
+            )?,
+            bottom: to_taffy_length_percentage(
+                node,
+                LayoutCssMathProperty::PaddingBottom,
+                style.padding.bottom,
+                calc_handles,
+            )?,
+            left: to_taffy_length_percentage(
+                node,
+                LayoutCssMathProperty::PaddingLeft,
+                style.padding.left,
+                calc_handles,
+            )?,
         },
         gap: Size {
-            width: LengthPercentage::length(style.gap.column),
-            height: LengthPercentage::length(style.gap.row),
+            width: to_taffy_length_percentage(
+                node,
+                LayoutCssMathProperty::ColumnGap,
+                style.gap.column,
+                calc_handles,
+            )?,
+            height: to_taffy_length_percentage(
+                node,
+                LayoutCssMathProperty::RowGap,
+                style.gap.row,
+                calc_handles,
+            )?,
         },
         align_items: Some(match style.align_items {
             LayoutAlignItems::Stretch => AlignItems::STRETCH,
@@ -53,12 +129,37 @@ pub(super) fn to_taffy_style(style: LayoutStyle) -> Style {
             LayoutJustifyContent::SpaceEvenly => JustifyContent::SPACE_EVENLY,
         }),
         margin: Rect {
-            top: LengthPercentageAuto::length(style.margin.top),
-            right: LengthPercentageAuto::length(style.margin.right),
-            bottom: LengthPercentageAuto::length(style.margin.bottom),
-            left: LengthPercentageAuto::length(style.margin.left),
+            top: to_taffy_length_percentage_auto(
+                node,
+                LayoutCssMathProperty::MarginTop,
+                style.margin.top,
+                calc_handles,
+            )?,
+            right: to_taffy_length_percentage_auto(
+                node,
+                LayoutCssMathProperty::MarginRight,
+                style.margin.right,
+                calc_handles,
+            )?,
+            bottom: to_taffy_length_percentage_auto(
+                node,
+                LayoutCssMathProperty::MarginBottom,
+                style.margin.bottom,
+                calc_handles,
+            )?,
+            left: to_taffy_length_percentage_auto(
+                node,
+                LayoutCssMathProperty::MarginLeft,
+                style.margin.left,
+                calc_handles,
+            )?,
         },
-        flex_basis: to_taffy_dimension(style.flex_basis),
+        flex_basis: to_taffy_dimension(
+            node,
+            LayoutCssMathProperty::FlexBasis,
+            style.flex_basis,
+            calc_handles,
+        )?,
         flex_direction: match style.flex_direction {
             FlexDirection::Row => TaffyFlexDirection::Row,
             FlexDirection::Column => TaffyFlexDirection::Column,
@@ -67,12 +168,81 @@ pub(super) fn to_taffy_style(style: LayoutStyle) -> Style {
         flex_grow: style.flex_grow,
         flex_shrink: style.flex_shrink,
         ..Default::default()
+    })
+}
+
+fn calc_handle(
+    node: NodeId,
+    property: LayoutCssMathProperty,
+    id: LayoutCalcId,
+    handles: &BTreeMap<LayoutCalcId, *const ()>,
+) -> Result<*const (), LayoutError> {
+    handles
+        .get(&id)
+        .copied()
+        .ok_or(LayoutError::MissingCssMath {
+            node,
+            property: property.name(),
+            id,
+        })
+}
+
+fn to_taffy_length_percentage(
+    node: NodeId,
+    property: LayoutCssMathProperty,
+    value: LayoutLengthPercentage,
+    handles: &BTreeMap<LayoutCalcId, *const ()>,
+) -> Result<LengthPercentage, LayoutError> {
+    match value {
+        LayoutLengthPercentage::LengthPx(value) => Ok(LengthPercentage::length(value)),
+        LayoutLengthPercentage::Percentage(value) => Ok(LengthPercentage::percent(value)),
+        LayoutLengthPercentage::Calc(id) => Ok(LengthPercentage::calc(calc_handle(
+            node, property, id, handles,
+        )?)),
     }
 }
 
-fn to_taffy_dimension(dimension: LayoutDimension) -> Dimension {
+fn to_taffy_length_percentage_auto(
+    node: NodeId,
+    property: LayoutCssMathProperty,
+    value: LayoutLengthPercentage,
+    handles: &BTreeMap<LayoutCalcId, *const ()>,
+) -> Result<LengthPercentageAuto, LayoutError> {
+    match value {
+        LayoutLengthPercentage::LengthPx(value) => Ok(LengthPercentageAuto::length(value)),
+        LayoutLengthPercentage::Percentage(value) => Ok(LengthPercentageAuto::percent(value)),
+        LayoutLengthPercentage::Calc(id) => Ok(LengthPercentageAuto::calc(calc_handle(
+            node, property, id, handles,
+        )?)),
+    }
+}
+
+fn to_taffy_dimension(
+    node: NodeId,
+    property: LayoutCssMathProperty,
+    dimension: LayoutDimension,
+    handles: &BTreeMap<LayoutCalcId, *const ()>,
+) -> Result<Dimension, LayoutError> {
     match dimension {
-        LayoutDimension::Auto => Dimension::auto(),
-        LayoutDimension::Fixed(value) => Dimension::length(value),
+        LayoutDimension::Auto => Ok(Dimension::auto()),
+        LayoutDimension::Fixed(value) => Ok(Dimension::length(value)),
+        LayoutDimension::Percent(value) => Ok(Dimension::percent(value)),
+        LayoutDimension::Calc(id) => Ok(Dimension::calc(calc_handle(node, property, id, handles)?)),
+    }
+}
+
+fn to_taffy_size_constraint(
+    node: NodeId,
+    property: LayoutCssMathProperty,
+    dimension: LayoutDimension,
+    handles: &BTreeMap<LayoutCalcId, *const ()>,
+) -> Result<LengthPercentageAuto, LayoutError> {
+    match dimension {
+        LayoutDimension::Auto => Ok(LengthPercentageAuto::auto()),
+        LayoutDimension::Fixed(value) => Ok(LengthPercentageAuto::length(value)),
+        LayoutDimension::Percent(value) => Ok(LengthPercentageAuto::percent(value)),
+        LayoutDimension::Calc(id) => Ok(LengthPercentageAuto::calc(calc_handle(
+            node, property, id, handles,
+        )?)),
     }
 }

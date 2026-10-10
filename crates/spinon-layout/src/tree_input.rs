@@ -49,6 +49,7 @@ impl LayoutInput {
             viewport,
             root_sizing: RootSizingPolicy::MatchViewport,
             nodes,
+            css_math: Vec::new(),
         })
     }
 }
