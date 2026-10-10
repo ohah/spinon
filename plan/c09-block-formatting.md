@@ -46,6 +46,21 @@ C09.4는 단순히 Taffy의 `fit-content` 값으로 바꾸어 완료 처리하�
 - C09에서 명시적으로 구현하는 formatting-context 생성 값은 `flow-root`다. `overflow`의 BFC 효과는 C13, positioned box는 C12, flex/grid는 C10/C11, float와 table은 C26, inline-block은 C15가 소유한다. 이 값들이 C09 profile에 전달되면 조용히 `block`으로 바꾸지 말고 지원 profile 밖으로 거부한다. 각 소유 항목이 구현될 때 C09 collapse·BFC fixture를 교차 실행한다.
 - BFC 경계가 margin collapse, 외부 float 상호작용, 내부 float 포함 동작을 모두 자동 구현했다고 주장하지 않는다. 외부 float와 float containment는 C26 fixture에서 추가로 닫는다.
 
+#### C09.3 구현 실행 계획
+
+- 고정 Taffy `0.14.0`에는 `Display::FlowRoot`가 있으나 현재 Spinon의 `LayoutDisplay`와 사용자 정의 Taffy tree 실행기가 이를 전달하지 않는다. `LayoutDisplay::FlowRoot`를 추가하고 해당 값은 `RuntimeBlockFormattingV1`에서만 허용한다. C08 Block paint와 다른 Flex profile에서는 계속 거부한다.
+- `spinon-style-to-layout`은 Stylo computed `display: flow-root`를 별도 typed variant로 보존한다. Taffy adapter는 이를 `taffy::Display::FlowRoot`에 매핑한다. 사용자 정의 tree dispatcher는 자식이 있는 FlowRoot에 `compute_block_layout(..., None)`을 호출해 별도 BFC를 만들고, 자식이 없는 FlowRoot는 leaf 경로로 처리한다. 일반 Block은 기존 부모 BFC context를 그대로 받는다.
+- percentage basis 판정에서 auto-width FlowRoot와 FlowRoot 안의 auto-width Block을 Block containing block과 같이 취급한다. 그렇지 않으면 실제 사용 가능한 containing width가 있는데도 그 자손의 percentage margin/padding을 indefinite로 잘못 거부한다. FlowRoot leaf와 viewport BlockFormatting root도 회귀 테스트로 분리한다.
+- C09.2의 부호 있는 margin 계산은 복제하지 않는다. 고정 Taffy Block 구현의 `CoreStyle::is_block`과 FlowRoot dispatcher가 부모/형제 collapse와 내부 격리를 처리하는지 기존 Chromium fixture로 검증한다. 이 네 경계가 불일치하면 단순 fallback을 넣지 않고 실제 Taffy 입력·호출 경로를 수정한다.
+- inline style과 nested author stylesheet의 `display` 사전 검사에서 `flow-root`만 허용 목록에 추가한다. `inline`, `flex`, `grid`, `table`, 미지원 복합 키워드 및 `var()`는 계속 fail-closed이며, 다른 profile로 지원이 새어 나가지 않는 테스트를 둔다.
+- 기존 고정 C09 reference v2의 C09.3 네 case·16 node를 재사용한다. Rust runtime 비교는 각 case의 node preorder·parent ID·computed display/box values·frame 네 필드를 비교하고 DPR 1·2에서 동일한 CSS geometry를 확인한다. 기준은 Chromium `154.0.8037.98`, 입력·capture digest 및 `0.5 CSS px` 허용치다. 기존 고정 JSON은 자동 갱신하지 않는다.
+- 실제 V8→Stylo→Taffy→WGPU 경로에는 독립 `runtime-flow-root.js` fixture와 C09.3 전용 Android/iOS 실행 인자를 연결한다. 화면의 색상 box는 격리된 내부 child margin과 외부 parent/neighbor margin을 보여주는 smoke evidence다. 네 fixture의 수치 정확성은 Rust·Chromium 대조가 판정하며, 플랫폼 캡처는 layout report가 준비되고 해당 실행 인자가 선택된 것을 보조 확인한다.
+- C09.3 전용 계획 공격 검토 20개를 본 구현 전에 기록하고, 구현 이후에는 그 표를 재사용하지 않는 새로운 코드·오류·플랫폼 경계 20개를 별도 기록한다. Android API 37 emulator와 iPhone 17 Pro / iOS 26.2 Simulator를 실행하며, 실기기·성능·하드웨어 GPU 주장은 하지 않는다.
+
+실행 상태: C09.3 고정 reference 4개 case·16개 node를 DPR 1·2의 style/geometry 비교로 통과했고, FlowRoot percentage basis와 childless leaf 회귀도 추가 확인했다. Android API 37 emulator와 iPhone 17 Pro / iOS 26.2 Simulator에서 5개 box의 동일 CSS frame을 표시했다. 독립 구현 검토 및 두 플랫폼 캡처는 [C09.3 구현 검토·실행 근거](../spec/internal/evidence/c09-3-flow-root-implementation-review-2026-10-10.md)에 기록한다. 현재 PR 미병합 상태다.
+
+계획 검토 및 실행의 고정 근거는 [C09.3 실행 계획 검토](../spec/internal/evidence/c09-3-flow-root-plan-review-2026-10-10.md)와 [C09.3 구현 검토](../spec/internal/evidence/c09-3-flow-root-implementation-review-2026-10-10.md)에 기록한다.
+
 ### C09.4 · shrink-to-fit
 
 - 대상 문맥을 분리한다: float non-replaced auto width(C26), inline-block non-replaced auto width(C15), absolute non-replaced의 CSS 2.1 §10.3.7 cases 1·3처럼 inset/width 조합이 실제 shrink-to-fit을 선택하는 경우(C12). absolute의 모든 `width:auto`가 shrink-to-fit인 것은 아니다. 각 문맥은 실제 사용처가 구현되는 시점에 해당 profile의 입력·오류 계약을 먼저 고정한다.

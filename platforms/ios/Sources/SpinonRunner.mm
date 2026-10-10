@@ -790,6 +790,24 @@ void C0410LogReport(os_log_type_t type, const char *label, NSString *report) {
 #endif
 }
 
++ (NSString *)evalRuntimeGpuFlowRootFixture:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 4096> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_flow_root_fixture(
+      host, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C093_EVAL", report);
+  return report;
+#else
+  (void)handle;
+  return @"status=-1 C04.10 GPU fixture 빌드가 비활성화되었습니다";
+#endif
+}
+
 + (NSString *)prepareRuntimeGpuWgpuSurface:(uint64_t)handle view:(void *)view {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
   if (![NSThread isMainThread]) {

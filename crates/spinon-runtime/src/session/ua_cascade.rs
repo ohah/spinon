@@ -11,6 +11,10 @@ mod author_stylesheets_edge_tests;
 #[cfg(test)]
 mod author_stylesheets_tests;
 #[cfg(test)]
+mod block_formatting_flow_root_tests;
+#[cfg(test)]
+mod block_formatting_test_support;
+#[cfg(test)]
 mod block_formatting_tests;
 #[cfg(test)]
 mod block_paint_tests;

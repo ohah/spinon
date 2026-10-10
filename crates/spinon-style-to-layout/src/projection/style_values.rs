@@ -52,7 +52,11 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
         );
         let style = LayoutStyle {
-            display: parse_display(node, required(element, "display")?)?,
+            display: parse_display(
+                node,
+                required(element, "display")?,
+                snapshot.profile == ComputedStyleProfile::RuntimeBlockFormattingV1,
+            )?,
             box_sizing: parse_box_sizing(node, required(element, "box-sizing")?)?,
             width: parse_dimension(
                 node,
@@ -350,10 +354,15 @@ fn required<'a>(
     )
 }
 
-fn parse_display(node: NodeId, value: &str) -> Result<LayoutDisplay, StyleLayoutError> {
+fn parse_display(
+    node: NodeId,
+    value: &str,
+    allow_flow_root: bool,
+) -> Result<LayoutDisplay, StyleLayoutError> {
     match value {
         "flex" => Ok(LayoutDisplay::Flex),
         "block" => Ok(LayoutDisplay::Block),
+        "flow-root" if allow_flow_root => Ok(LayoutDisplay::FlowRoot),
         "none" => Ok(LayoutDisplay::None),
         value => unsupported(node, "display", value),
     }

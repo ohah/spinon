@@ -165,6 +165,7 @@ impl CalcLayoutTree {
                 (Display::Block, true) => {
                     compute_block_layout(tree, node_id, inputs, block_context)
                 }
+                (Display::FlowRoot, true) => compute_block_layout(tree, node_id, inputs, None),
                 (Display::Flex, true) => compute_flexbox_layout(tree, node_id, inputs),
                 (_, false) => {
                     let mut style = tree.node(node_id).style.clone();
@@ -186,12 +187,6 @@ impl CalcLayoutTree {
                         |value, basis| tree.resolve_calc_value(value, basis),
                         |_, _| Size::ZERO,
                     )
-                }
-                (display, true) => {
-                    tree.record_error(LayoutError::Taffy(format!(
-                        "지원하지 않는 Taffy display 값입니다: {display:?}"
-                    )));
-                    compute_hidden_layout(tree, node_id)
                 }
             }
         })

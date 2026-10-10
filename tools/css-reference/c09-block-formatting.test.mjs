@@ -12,7 +12,9 @@ const referencePath = 'tests/fixtures/css/references/c09-block-formatting-v2.jso
 const capturePath = 'tools/css-reference/capture-c09-block-formatting.mjs';
 const helperPath = 'tools/css-reference/chromium-session.mjs';
 const runtimeFixturePath = 'tests/fixtures/css/c09/runtime-margin-collapse.js';
+const flowRootRuntimeFixturePath = 'tests/fixtures/css/c09/runtime-flow-root.js';
 const ffiRuntimePath = 'crates/spinon-ffi/src/runtime_gpu/ffi/c09.rs';
+const ffiRuntimeSourcePath = 'crates/spinon-ffi/src/runtime_gpu.rs';
 const ffiHeaderPath = 'crates/spinon-ffi/include/spinon_ffi.h';
 const androidRuntimePath = 'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java';
 const androidJniPath = 'platforms/android/app/src/main/cpp/spinon_jni.cc';
@@ -24,11 +26,13 @@ const iosLaunchPath = 'platforms/ios/Sources/AppDelegate.swift';
 const hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const read = async (path) => readFile(join(repositoryRoot, path));
 const [inventoryBytes, htmlBytes, captureBytes, helperBytes, referenceBytes,
-  runtimeFixtureBytes, ffiRuntimeBytes, ffiHeaderBytes, androidRuntimeBytes,
+  runtimeFixtureBytes, flowRootRuntimeFixtureBytes, ffiRuntimeBytes, ffiSourceBytes,
+  ffiHeaderBytes, androidRuntimeBytes,
   androidJniBytes, androidLaunchBytes, iosRuntimeBytes, iosRunnerHeaderBytes,
   iosRunnerBytes, iosLaunchBytes] = await Promise.all([
   read(inventoryPath), read(htmlPath), read(capturePath), read(helperPath), read(referencePath),
-  read(runtimeFixturePath), read(ffiRuntimePath), read(ffiHeaderPath), read(androidRuntimePath),
+  read(runtimeFixturePath), read(flowRootRuntimeFixturePath), read(ffiRuntimePath),
+  read(ffiRuntimeSourcePath), read(ffiHeaderPath), read(androidRuntimePath),
   read(androidJniPath), read(androidLaunchPath), read(iosRuntimePath), read(iosRunnerHeaderPath),
   read(iosRunnerPath), read(iosLaunchPath),
 ]);
@@ -260,6 +264,32 @@ test('flow-root 내부 margin 차단과 외부 parent·sibling margin을 구분�
   assert.equal(siblingMargin.get('c093-flow-root-sibling').rect.y, 40);
   assert.equal(siblingMargin.get('c093-flow-root-sibling-after').rect.y, 80);
   assert.equal(siblingMargin.get('c093-flow-root-sibling-root').rect.height, 90);
+});
+
+test('C09.3 flow-root fixture가 Android·iOS 실제 V8·WGPU 실행기에 연결되어 있다', () => {
+  const fixture = flowRootRuntimeFixtureBytes.toString('utf8');
+  assert.match(fixture, /display:flow-root/);
+  assert.match(fixture, /c093-runtime-child/);
+  assert.match(fixture, /margin-top:20px;margin-bottom:30px/);
+  assert.match(ffiRuntimeBytes.toString('utf8'), /RUNTIME_CSS_FLOW_ROOT_FIXTURE_SOURCE/);
+  assert.match(ffiSourceBytes.toString('utf8'), /runtime-flow-root\.js/);
+  assert.match(ffiRuntimeBytes.toString('utf8'),
+    /spinon_runtime_gpu_host_eval_flow_root_fixture/);
+  assert.match(ffiHeaderBytes.toString('utf8'),
+    /spinon_runtime_gpu_host_eval_flow_root_fixture/);
+  assert.match(androidRuntimeBytes.toString('utf8'),
+    /nativeEvalFlowRootFixture\(host\)/);
+  assert.match(androidRuntimeBytes.toString('utf8'), /spinon_c093_flow_root/);
+  assert.match(androidJniBytes.toString('utf8'),
+    /nativeEvalFlowRootFixture[\s\S]+?spinon_runtime_gpu_host_eval_flow_root_fixture/);
+  assert.match(androidLaunchBytes.toString('utf8'), /spinon_c093_flow_root/);
+  assert.match(iosRuntimeBytes.toString('utf8'),
+    /evalRuntimeGpuFlowRootFixture\(handle\)/);
+  assert.match(iosRuntimeBytes.toString('utf8'), /--spinon-c093-flow-root/);
+  assert.match(iosRunnerHeaderBytes.toString('utf8'), /evalRuntimeGpuFlowRootFixture/);
+  assert.match(iosRunnerBytes.toString('utf8'),
+    /evalRuntimeGpuFlowRootFixture[\s\S]+?spinon_runtime_gpu_host_eval_flow_root_fixture/);
+  assert.match(iosLaunchBytes.toString('utf8'), /--spinon-c093-flow-root/);
 });
 
 test('CSS px computed values와 used geometry는 DPR 1·2에서 변하지 않는다', () => {
