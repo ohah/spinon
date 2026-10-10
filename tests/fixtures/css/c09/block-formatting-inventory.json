@@ -1,6 +1,6 @@
 {
-  "schema": "spinon-css-c09-block-formatting-inventory/v1",
-  "fixtureId": "C09-block-formatting-precomparison-v1",
+  "schema": "spinon-css-c09-block-formatting-inventory/v2",
+  "fixtureId": "C09-block-formatting-precomparison-v2",
   "viewport": {
     "width": 320,
     "height": 240,
@@ -51,6 +51,13 @@
     { "id": "c092-padding-barrier", "harnessId": "viewport-c092-padding-barrier", "tree": { "id": "c092-padding-root", "children": [{ "id": "c092-padding-parent", "children": [{ "id": "c092-padding-child" }] }] } },
     { "id": "c092-border-none", "harnessId": "viewport-c092-border-none", "tree": { "id": "c092-border-none-root", "children": [{ "id": "c092-border-none-parent", "children": [{ "id": "c092-border-none-child" }] }] } },
     { "id": "c092-border-solid", "harnessId": "viewport-c092-border-solid", "tree": { "id": "c092-border-solid-root", "children": [{ "id": "c092-border-solid-parent", "children": [{ "id": "c092-border-solid-child" }] }] } },
+    { "id": "c092-fixed-height-barrier", "harnessId": "viewport-c092-fixed-height-barrier", "tree": { "id": "c092-fixed-height-root", "children": [{ "id": "c092-fixed-height-parent", "children": [{ "id": "c092-fixed-height-child" }] }, { "id": "c092-fixed-height-after" }] } },
+    { "id": "c092-min-height-barrier", "harnessId": "viewport-c092-min-height-barrier", "tree": { "id": "c092-min-height-root", "children": [{ "id": "c092-min-height-parent", "children": [{ "id": "c092-min-height-child" }] }, { "id": "c092-min-height-after" }] } },
+    { "id": "c092-min-height-self-collapse", "harnessId": "viewport-c092-min-height-self-collapse", "tree": { "id": "c092-min-height-self-root", "children": [{ "id": "c092-min-height-self-first" }, { "id": "c092-min-height-self-empty" }, { "id": "c092-min-height-self-last" }] } },
+    { "id": "c092-percentage-margins", "harnessId": "viewport-c092-percentage-margins", "tree": { "id": "c092-percentage-margins-root", "children": [{ "id": "c092-percentage-margins-parent", "children": [{ "id": "c092-percentage-margins-first" }, { "id": "c092-percentage-margins-second" }] }] } },
+    { "id": "c092-hidden-margin-subtree", "harnessId": "viewport-c092-hidden-margin-subtree", "tree": { "id": "c092-hidden-margin-root", "children": [{ "id": "c092-hidden-margin-first" }, { "id": "c092-hidden-margin-hidden", "children": [{ "id": "c092-hidden-margin-hidden-child" }] }, { "id": "c092-hidden-margin-last" }] } },
+    { "id": "c092-border-hidden", "harnessId": "viewport-c092-border-hidden", "tree": { "id": "c092-border-hidden-root", "children": [{ "id": "c092-border-hidden-parent", "children": [{ "id": "c092-border-hidden-child" }] }] } },
+    { "id": "c092-zero-margins", "harnessId": "viewport-c092-zero-margins", "tree": { "id": "c092-zero-margins-root", "children": [{ "id": "c092-zero-margins-first" }, { "id": "c092-zero-margins-second" }] } },
     { "id": "c093-flow-root-internal", "harnessId": "viewport-c093-flow-root-internal", "tree": { "id": "c093-flow-root-internal-root", "children": [{ "id": "c093-flow-root-internal", "children": [{ "id": "c093-flow-root-internal-child" }] }] } },
     { "id": "c093-flow-root-parent-margin", "harnessId": "viewport-c093-flow-root-parent-margin", "tree": { "id": "c093-flow-root-parent-root", "children": [{ "id": "c093-flow-root-parent", "children": [{ "id": "c093-flow-root-parent-child", "children": [{ "id": "c093-flow-root-parent-grandchild" }] }] }] } },
     { "id": "c093-flow-root-parent-last-child", "harnessId": "viewport-c093-flow-root-parent-last-child", "tree": { "id": "c093-flow-root-parent-last-root", "children": [{ "id": "c093-flow-root-parent-last", "children": [{ "id": "c093-flow-root-parent-last-child", "children": [{ "id": "c093-flow-root-parent-last-grandchild" }] }] }, { "id": "c093-flow-root-parent-last-after" }] } },

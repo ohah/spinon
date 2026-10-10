@@ -212,6 +212,10 @@ int32_t spinon_runtime_gpu_host_eval_block_paint_fixture(
 int32_t spinon_runtime_gpu_host_eval_block_formatting_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);
+/* C09.2 실제 V8 fixture: 부호 있는 세로 margin collapse와 노드별 CSS frame입니다. */
+int32_t spinon_runtime_gpu_host_eval_margin_collapse_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
 /* Android backend: 0=Vulkan 실패 뒤 GL 순차 재시도, 1=Vulkan 강제, 2=GL 강제. iOS는 3=Metal. */
 void *spinon_runtime_gpu_host_create_android(
     SpinonRuntimeGpuHost *host, void *native_window, uint32_t width,

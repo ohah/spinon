@@ -175,6 +175,66 @@
     </div>
   </div>
 
+  <div class="viewport" id="viewport-c092-fixed-height-barrier">
+    <div class="root" id="c092-fixed-height-root">
+      <div id="c092-fixed-height-parent" style="width:200px;height:20px">
+        <div id="c092-fixed-height-child" style="height:10px;margin-bottom:20px"></div>
+      </div>
+      <div id="c092-fixed-height-after" style="height:10px;margin-top:15px"></div>
+    </div>
+  </div>
+
+  <div class="viewport" id="viewport-c092-min-height-barrier">
+    <div class="root" id="c092-min-height-root">
+      <div id="c092-min-height-parent" style="width:200px;min-height:1px">
+        <div id="c092-min-height-child" style="height:10px;margin-bottom:20px"></div>
+      </div>
+      <div id="c092-min-height-after" style="height:10px;margin-top:15px"></div>
+    </div>
+  </div>
+
+  <div class="viewport" id="viewport-c092-min-height-self-collapse">
+    <div class="root" id="c092-min-height-self-root">
+      <div id="c092-min-height-self-first" style="height:10px"></div>
+      <div id="c092-min-height-self-empty" style="height:0;min-height:1px;margin-top:20px;margin-bottom:30px"></div>
+      <div id="c092-min-height-self-last" style="height:10px;margin-top:5px"></div>
+    </div>
+  </div>
+
+  <div class="viewport" id="viewport-c092-percentage-margins">
+    <div class="root" id="c092-percentage-margins-root">
+      <div id="c092-percentage-margins-parent" style="width:200px">
+        <div id="c092-percentage-margins-first" style="width:100px;height:10px;margin-bottom:10%"></div>
+        <div id="c092-percentage-margins-second" style="width:100px;height:10px;margin-top:15%"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="viewport" id="viewport-c092-hidden-margin-subtree">
+    <div class="root" id="c092-hidden-margin-root">
+      <div id="c092-hidden-margin-first" style="height:10px;margin-bottom:20px"></div>
+      <div id="c092-hidden-margin-hidden" style="display:none;margin-top:60px;margin-bottom:70px">
+        <div id="c092-hidden-margin-hidden-child" style="height:10px;margin:80px"></div>
+      </div>
+      <div id="c092-hidden-margin-last" style="height:10px;margin-top:30px"></div>
+    </div>
+  </div>
+
+  <div class="viewport" id="viewport-c092-border-hidden">
+    <div class="root" id="c092-border-hidden-root">
+      <div id="c092-border-hidden-parent" style="width:200px;border-top:4px hidden">
+        <div id="c092-border-hidden-child" style="height:10px;margin-top:20px"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="viewport" id="viewport-c092-zero-margins">
+    <div class="root" id="c092-zero-margins-root">
+      <div id="c092-zero-margins-first" style="height:10px;margin-bottom:0"></div>
+      <div id="c092-zero-margins-second" style="height:10px;margin-top:0"></div>
+    </div>
+  </div>
+
   <div class="viewport" id="viewport-c093-flow-root-internal">
     <div class="root" id="c093-flow-root-internal-root">
       <div id="c093-flow-root-internal" style="display:flow-root;margin-top:10px">

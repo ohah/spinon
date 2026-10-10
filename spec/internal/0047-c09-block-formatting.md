@@ -1,8 +1,8 @@
 # 0047 · C09 Block formatting
 
-**문서 ID:** `0047` · **내부 계약 숫자 버전:** `0.1.0` 고정 · **상태:** C09.1 구현·검증 완료 · [PR #107 리베이스 병합](https://github.com/ohah/spinon/pull/107); C09.2–C09.4 미구현 · **공개 API:** 아님
+**문서 ID:** `0047` · **내부 계약 숫자 버전:** `0.1.0` 고정 · **상태:** C09.1 [PR #107 리베이스 병합](https://github.com/ohah/spinon/pull/107); C09.2 구현·Chromium/Rust·시뮬레이터 검증 완료; C09.3–C09.4 미구현 · **공개 API:** 아님
 
-`0047`은 문서 ID다. 구현·검증·문서 개정만으로 앱·crate·내부 계약의 숫자 버전을 올리지 않는다. C08.1 PR #105와 C09 계획·reference가 병합됐고, C09.1 runtime 구현은 PR #107로 병합됐다. 내부 fixture profile의 완료이며 전체 C09 또는 공개 CSS 지원 완료를 뜻하지 않는다.
+`0047`은 문서 ID다. 구현·검증·문서 개정만으로 앱·crate·내부 계약의 숫자 버전을 올리지 않는다. C08.1 PR #105와 C09 계획·reference가 병합됐고, C09.1 runtime 구현은 PR #107로 병합됐다. C09.2는 이번 변경에서 내부 fixture·runtime 연결과 검증을 마쳤다. C09 상위, C09.3–C09.4 또는 공개 CSS 지원 완료를 뜻하지 않는다.
 
 ## 1. 입력과 profile
 
@@ -42,6 +42,19 @@
 - collapse 경계는 선언 문자열이 아니라 computed style과 C07.2의 면별 **used** border width/padding을 입력으로 판단한다. used border가 0인 경우와 nonzero인 경우를 구분한다. border paint는 이 계약의 결과물이 아니다.
 - 중첩된 부모·자식 사이의 margin collapse 여부는 면별 border/padding, used height, min-height와 in-flow child 조건별 fixture로 검증한다. HostRoot fragment Element에는 CSS parent가 없으므로 root 경계에서 부모-자식 collapse는 발생하지 않는다. 여러 HostRoot root는 이 profile 밖이다. Clearance·float interaction은 C26 전까지 미지원이다.
 
+### C09.2 내부 fixture에서 확인한 범위
+
+| 구분 | 현재 확인한 동작 |
+| --- | --- |
+| 형제 | 양수만, 음수만, 양·음수 혼합, 0, 분수 CSS px margin strut을 Chromium과 대조한다. |
+| 부모·자식 | 첫 자식·마지막 자식과 부모의 collapse, padding 및 실제 0이 아닌 border 장벽을 대조한다. |
+| 빈 상자 | 높이 0 self-collapse, signed margin, `min-height`로 높이가 생기는 self-collapse 차단을 대조한다. |
+| collapse 차단 조건 | 명시 height, `min-height`, 자식 `display:none`, `border-style:none`·`hidden`의 used border 폭 0을 개별 fixture로 다룬다. |
+| percentage | 세로 margin의 백분율이 containing block의 inline size를 기준으로 계산된 뒤 collapse하는 결과를 대조한다. |
+| 구현 경계 | Stylo typed 값과 used border/padding을 Taffy 0.14.0 Block layout 입력으로 전달한다. margin-collapse 알고리즘을 별도로 복제하지 않는다. |
+
+이 범위는 pinned Chromium `154.0.8037.98`의 C09.2 16개 case·57개 node를 DPR 1·2로 비교한 내부 fixture 범위다. 같은 BFC의 제한된 Block 흐름만 검증했다. `flow-root`의 BFC 경계, float·clear·clearance, inline line box, CSS root margin propagation, 일반 HTML/CSS 적합성은 포함하지 않는다. 실제 V8 fixture는 Android API 37 emulator와 iPhone 17 Pro / iOS 26.2 Simulator에서 실행했으며, 이는 시뮬레이터 검증이지 실기기 성능 검증이 아니다.
+
 ## 4. C09.3 BFC와 flow-root
 
 - C09가 추가하는 명시적 BFC 생성 값은 `display:flow-root`다. computed `block`과 `flow-root`를 구분하고, flow-root 내부 자식 margin은 그 box의 외부 margin과 collapse하지 않는다.
@@ -59,7 +72,7 @@
 
 ## 6. 비교·오류·검증
 
-- 구현 전 기준 artifact는 [`c09-block-formatting-v1.json`](../../tests/fixtures/css/references/c09-block-formatting-v1.json)이다. 고정 Chromium `154.0.8037.98`, revision `@b859317bf11f6be47f9b7799ec690a0a42a1fb33`, viewport `320×240` CSS px, DPR 1·2와 23개 case·76개 node를 담는다. 실행 파일 hash, HTML·inventory·capture digest, locale/timezone/color scheme/pointer와 capture provenance가 맞지 않으면 비교를 중지한다. 재생성 명령은 `bun run css:reference:c09-block-formatting`이며 기존 JSON을 덮어쓰지 않는다.
+- 현재 기준 artifact는 [`c09-block-formatting-v2.json`](../../tests/fixtures/css/references/c09-block-formatting-v2.json)이다. 고정 Chromium `154.0.8037.98`, revision `@b859317bf11f6be47f9b7799ec690a0a42a1fb33`, viewport `320×240` CSS px, DPR 1·2와 30개 case·103개 node를 담는다. C09.1은 10개/30개, C09.2는 16개/57개, C09.3은 4개/16개다. v1은 C09.1 전의 과거 기준으로 보존한다. 실행 파일 hash, HTML·inventory·capture digest, locale/timezone/color scheme/pointer와 capture provenance가 맞지 않으면 비교를 중지한다. 재생성 명령은 `bun run css:reference:c09-block-formatting`이며 기존 JSON을 덮어쓰지 않는다.
 - authored/computed margin 값은 computed value oracle로, collapse가 반영된 결과는 node별 `getBoundingClientRect()` geometry로 따로 대조한다. 각 지원 node의 x/y/width/height 필드마다 최대 오차 `0.5 CSS px`, DPR 간 CSS geometry 일치를 요구한다. screenshot이나 평균 오차로 실패를 숨기지 않는다.
 - Chromium 원본 HTML·inventory를 Rust 비교기 및 실제 runtime fixture의 공통 입력으로 쓴다. runtime은 case 하나를 별도 HostDocument root로 materialize하며 fixture wrapper를 제품 트리에 복제하지 않는다. node ID·부모·document order를 보존하며 각 platform V8 실행은 예상 node별 CSS frame과 revision을 수집해 같은 reference에 대조한다.
 - unsupported declaration, Stylo parser 진단, 불명확한 basis, 잘못된/non-finite geometry, stale revision, Taffy 오류는 node/property가 식별되는 전체 실패다. 이전 partial tree나 이전 revision scene을 새 계산의 성공 결과로 보이지 않는다.
@@ -71,10 +84,11 @@
 - [계획의 fixture 통합 재검토](./evidence/c09-block-formatting-plan-review-precomparison-followup-2026-10-10.md)
 - [Chromium 사전 비교 결과·도구 검토](./evidence/c09-block-formatting-precomparison-2026-10-10.md)
 - [C09.1 구현 실패 관점 검토·Android/iOS Simulator 근거](./evidence/c09-block-formatting-implementation-review-2026-10-10.md)
+- [C09.2 구현 실패 관점 검토·Android/iOS Simulator 근거](./evidence/c09-2-margin-collapse-implementation-review-2026-10-10.md)
 - [고정 Chromium HTML fixture](../../tests/fixtures/css/c09/block-formatting.html) · [inventory](../../tests/fixtures/css/c09/block-formatting-inventory.json) · [capture 도구](../../tools/css-reference/capture-c09-block-formatting.mjs) · [reference 테스트](../../tools/css-reference/c09-block-formatting.test.mjs)
 - [CSS 2.1 margin collapse](https://www.w3.org/TR/CSS21/box.html#collapsing-margins), [Block formatting context](https://www.w3.org/TR/CSS21/visuren.html#block-formatting), [containing block와 width](https://www.w3.org/TR/CSS21/visudet.html#containing-block-details)
 - [CSS 2.1 §10.3.5 float](https://www.w3.org/TR/CSS21/visudet.html#float-width), [§10.3.7 absolute non-replaced](https://www.w3.org/TR/CSS21/visudet.html#abs-non-replaced-width), [§10.3.9 inline-block](https://www.w3.org/TR/CSS21/visudet.html#inlineblock-width) shrink-to-fit 문맥. 정확한 알고리즘을 정의하지 않은 부분은 pinned Chromium과 대조한다.
 - [CSS Display Level 3 `flow-root`](https://www.w3.org/TR/css-display-3/#flow-root) — Editor’s Draft; Chromium 고정 reference가 구현 비교 oracle이다.
 - [Taffy 0.14.0 문서](https://docs.rs/taffy/0.14.0/taffy/) — Spinon은 `=0.14.0`을 pin하고 `default-features=false`로 `float_layout`을 끈다.
 
-이 계약은 미출시 내부 계약이다. RuntimeBlockFormattingV1은 C09.1 내부 fixture에서 구현·검증했지만 공개 API나 일반 CSS 지원으로 게시하지 않는다.
+이 계약은 미출시 내부 계약이다. RuntimeBlockFormattingV1은 C09.1·C09.2 내부 fixture에서 구현·검증했지만 공개 API나 일반 CSS 지원으로 게시하지 않는다.
