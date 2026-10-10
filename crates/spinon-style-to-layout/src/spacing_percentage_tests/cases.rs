@@ -157,7 +157,10 @@ fn cyclic_gap_root_spacing_and_unsupported_margin_fail_with_context() {
     ));
 
     let mut fixture = RuntimeSpacingFixture::new();
-    fixture.set_style("m-physical", "width:20px;height:20px;margin-left:auto");
+    fixture.set_style(
+        "margin-cb",
+        "display:flex;flex-direction:column;width:200px;height:120px;margin-left:auto",
+    );
     assert!(matches!(
         fixture.compute(),
         Err(StyleLayoutError::UnsupportedComputedValue {

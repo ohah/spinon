@@ -91,24 +91,114 @@ pub enum TextDirection {
     Rtl,
 }
 
-/// Flex 항목의 교차축 정렬입니다.
+/// CSS overflow alignment modifier입니다. 생략된 modifier와 명시적 `unsafe`를 구분합니다.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
-pub enum LayoutAlignItems {
-    Stretch,
+pub enum AlignmentSafety {
+    Safe,
+    Unsafe,
+}
+
+/// `align-items`·`align-self`에서 사용하는 비-baseline positional 값입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum ItemAlignmentPosition {
+    Start,
+    End,
+    FlexStart,
+    FlexEnd,
+    SelfStart,
+    SelfEnd,
+    Center,
+}
+
+/// `align-content`에서 사용하는 비-baseline positional 값입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum ContentAlignmentPosition {
+    Start,
+    End,
     FlexStart,
     FlexEnd,
     Center,
 }
 
-/// Flex 항목 묶음의 주축 정렬입니다.
+/// `justify-content`에서 사용하는 positional 값입니다.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
-pub enum LayoutJustifyContent {
+pub enum JustifyContentPosition {
+    Start,
+    End,
+    FlexStart,
+    FlexEnd,
+    Center,
+    Left,
+    Right,
+}
+
+/// Flex item의 교차축 정렬입니다. `Normal`은 computed keyword를 유지합니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum LayoutAlignItems {
+    Normal,
+    Stretch,
+    FlexStart,
+    FlexEnd,
+    Center,
+    Position {
+        position: ItemAlignmentPosition,
+        safety: Option<AlignmentSafety>,
+    },
+}
+
+impl LayoutAlignItems {
+    pub(crate) const fn uses_stretch_behavior(self) -> bool {
+        matches!(self, Self::Normal | Self::Stretch)
+    }
+}
+
+/// 개별 Flex item의 교차축 정렬입니다. `Auto`는 부모 `align-items`를 사용합니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum LayoutAlignSelf {
+    Auto,
+    Normal,
+    Stretch,
+    FlexStart,
+    FlexEnd,
+    Center,
+    Position {
+        position: ItemAlignmentPosition,
+        safety: Option<AlignmentSafety>,
+    },
+}
+
+/// Flex line 묶음의 교차축 정렬입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum LayoutAlignContent {
+    Normal,
+    Stretch,
     FlexStart,
     FlexEnd,
     Center,
     SpaceBetween,
     SpaceAround,
     SpaceEvenly,
+    Position {
+        position: ContentAlignmentPosition,
+        safety: Option<AlignmentSafety>,
+    },
+}
+
+/// Flex item 묶음의 주축 정렬입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum LayoutJustifyContent {
+    Normal,
+    Stretch,
+    FlexStart,
+    FlexEnd,
+    Center,
+    SpaceBetween,
+    SpaceAround,
+    SpaceEvenly,
+    Position {
+        position: JustifyContentPosition,
+        safety: Option<AlignmentSafety>,
+    },
 }
 
 /// 위·오른쪽·아래·왼쪽 상자 가장자리 값입니다.
@@ -160,6 +250,9 @@ pub struct LayoutStyle {
     pub flex_wrap: FlexWrap,
     pub direction: TextDirection,
     pub align_items: LayoutAlignItems,
+    pub align_self: LayoutAlignSelf,
+    /// `None`은 프로파일이 `align-content`를 지원하지 않음을 뜻합니다.
+    pub align_content: Option<LayoutAlignContent>,
     pub justify_content: LayoutJustifyContent,
     /// 음수 값도 허용하는 외부 여백입니다.
     pub margin: LayoutEdges,
@@ -282,8 +375,10 @@ impl Default for LayoutStyle {
             flex_direction: FlexDirection::Column,
             flex_wrap: FlexWrap::NoWrap,
             direction: TextDirection::Ltr,
-            align_items: LayoutAlignItems::Stretch,
-            justify_content: LayoutJustifyContent::FlexStart,
+            align_items: LayoutAlignItems::Normal,
+            align_self: LayoutAlignSelf::Auto,
+            align_content: None,
+            justify_content: LayoutJustifyContent::Normal,
             margin: LayoutEdges::default(),
             padding: LayoutEdges::default(),
             border: LayoutBorder::default(),

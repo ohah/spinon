@@ -1,0 +1,13 @@
+Timestamp               Ty Process[PID:TID]
+2026-10-11 03:06:21.086 Df SpinonBootstrap[74024:7705ff9] (Foundation) SPINON_C1033_RUNTIME_SUMMARY status=0 layout=ready boxes=8 error=none
+2026-10-11 03:06:21.086 Df SpinonBootstrap[74024:7705ff9] (Foundation) SPINON_C1033_NODE_FRAME 0:node=1,x=0,y=0,width=320,height=240
+2026-10-11 03:06:21.086 Df SpinonBootstrap[74024:7705ff9] (Foundation) SPINON_C1033_NODE_FRAME 1:node=2,x=12,y=12,width=230,height=160
+2026-10-11 03:06:21.086 Df SpinonBootstrap[74024:7705ff9] (Foundation) SPINON_C1033_NODE_FRAME 2:node=3,x=22,y=42,width=100,height=36
+2026-10-11 03:06:21.086 Df SpinonBootstrap[74024:7705ff9] (Foundation) SPINON_C1033_NODE_FRAME 3:node=4,x=132,y=50,width=100,height=20
+2026-10-11 03:06:21.086 Df SpinonBootstrap[74024:7705ff9] (Foundation) SPINON_C1033_NODE_FRAME 4:node=5,x=22,y=106,width=100,height=36
+2026-10-11 03:06:21.086 Df SpinonBootstrap[74024:7705ff9] (Foundation) SPINON_C1033_NODE_FRAME 5:node=6,x=132,y=106,width=100,height=36
+2026-10-11 03:06:21.086 Df SpinonBootstrap[74024:7705ff9] (Foundation) SPINON_C1033_NODE_FRAME 6:node=7,x=0,y=184,width=60,height=10
+2026-10-11 03:06:21.086 Df SpinonBootstrap[74024:7705ff9] (Foundation) SPINON_C1033_NODE_FRAME 7:node=8,x=0,y=184,width=20,height=20
+2026-10-11 03:06:21.086 Df SpinonBootstrap[74024:7705ff9] (Foundation) SPINON_C1033_FRAME_SUMMARY frames=8 marker=present
+2026-10-11 03:06:21.086 Df SpinonBootstrap[74024:7705ff9] (Foundation) SPINON_C1033_EVAL status=0 seq=1 trace_cookie=1 op=eval status=0 caller_tid=124805113 owner_tid=124805118 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=7 v8_call_us=4755 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=32 render_tree_revision=8 document_nodes=8 document_string_units=2289 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=8 document_collection_live_handles=8 document_collection_empty_handles=0 document_collection_last_scan_start_ns=977725060813875 document_collection_last_scan_us=29 document_collection_wrapper_root_buffer_bytes=32 document_collection_reclaimed_node_buffer_bytes=32 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=4 ua_snapshot_submit_us=6 ua_snapshot_submitted=true enqueue_total_us=3 response_wait_us=4786 submit_total_us=4789 response_report_append_us=0 l<…>
+2026-10-11 03:06:21.101 Df SpinonBootstrap[74024:7705ff9] (Foundation) SPINON_C0410_DRAW generation=1 status=0 presented boxes=8 environment_revision=0 viewport_css_px=320x240 surface_texture=960x720 root_css_px=320x240

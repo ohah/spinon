@@ -175,7 +175,7 @@ fn runtime_properties_for_profile(
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
     ) {
-        let mut properties = runtime_layout::RUNTIME_FLEX_LAYOUT_PROPERTIES.to_vec();
+        let mut properties = runtime_layout::runtime_flex_wrap_properties();
         if has_paint {
             properties.push(("background-color", LonghandId::BackgroundColor));
         }

@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C10.3.3 Flex alignment oracle fixture</title>
+  <style>
+    html, body { margin: 0; padding: 0; width: 320px; height: 240px; }
+    section[data-c1033-case] { display: none; }
+  </style>
+</head>
+<body>
+  <section data-c1033-case="align-normal">
+    <div id="c1033-normal-root" data-c1033-node style="display:flex;width:120px;height:60px;align-items:normal;flex-direction:row">
+      <div id="c1033-normal-item" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="self-positions">
+    <div id="c1033-position-root" data-c1033-node style="display:flex;width:160px;height:60px;align-items:stretch;flex-direction:row">
+      <div id="c1033-pos-start" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px;align-self:start"></div>
+      <div id="c1033-pos-end" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px;align-self:end"></div>
+      <div id="c1033-pos-self-start" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px;align-self:self-start"></div>
+      <div id="c1033-pos-self-end" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px;align-self:self-end"></div>
+      <div id="c1033-pos-flex-start" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px;align-self:flex-start"></div>
+      <div id="c1033-pos-flex-end" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px;align-self:flex-end"></div>
+      <div id="c1033-pos-center" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px;align-self:center"></div>
+    </div>
+  </section>
+  <section data-c1033-case="self-safety-overflow">
+    <div id="c1033-safety-root" data-c1033-node style="display:flex;width:90px;height:20px;align-items:flex-start;flex-direction:row">
+      <div id="c1033-safety-safe-center" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:30px;height:40px;align-self:safe center"></div>
+      <div id="c1033-safety-unsafe-center" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:30px;height:40px;align-self:unsafe center"></div>
+      <div id="c1033-safety-safe-end" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:30px;height:40px;align-self:safe flex-end"></div>
+    </div>
+  </section>
+  <section data-c1033-case="cross-auto-margin">
+    <div id="c1033-auto-margin-root" data-c1033-node style="display:flex;width:120px;height:100px;align-items:center;flex-direction:row">
+      <div id="c1033-auto-margin-top" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:20px;margin-top:auto;align-self:flex-end"></div>
+      <div id="c1033-auto-margin-both" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:20px;margin-top:auto;margin-bottom:auto;align-self:flex-end"></div>
+    </div>
+  </section>
+  <section data-c1033-case="stretch-minmax-padding-border">
+    <div id="c1033-stretch-root" data-c1033-node style="display:flex;width:120px;height:80px;align-items:stretch;flex-direction:row">
+      <div id="c1033-stretch-item" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;min-height:30px;max-height:50px;padding-top:5px;border-top:2px solid #000"></div>
+    </div>
+  </section>
+  <section data-c1033-case="content-nowrap">
+    <div id="c1033-nowrap-root" data-c1033-node style="display:flex;width:100px;height:100px;flex-wrap:nowrap;align-items:flex-start;align-content:center;flex-direction:row">
+      <div id="c1033-nowrap-item" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:20px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="content-wrap-one-line">
+    <div id="c1033-one-line-root" data-c1033-node style="display:flex;width:100px;height:100px;flex-wrap:wrap;align-items:flex-start;align-content:center;flex-direction:row">
+      <div id="c1033-one-line-item" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:20px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="content-space-between-gap">
+    <div id="c1033-between-root" data-c1033-node style="display:flex;width:130px;height:100px;flex-wrap:wrap;row-gap:10px;align-content:space-between;justify-content:space-between;align-items:flex-start;flex-direction:row">
+      <div id="c1033-between-a" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:60px;height:20px"></div>
+      <div id="c1033-between-b" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:60px;height:20px"></div>
+      <div id="c1033-between-c" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:60px;height:20px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="content-space-around">
+    <div id="c1033-around-root" data-c1033-node style="display:flex;width:70px;height:100px;flex-wrap:wrap;align-content:space-around;align-items:flex-start;flex-direction:row">
+      <div id="c1033-around-a" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:50px;height:20px"></div>
+      <div id="c1033-around-b" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:50px;height:20px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="content-space-evenly">
+    <div id="c1033-evenly-root" data-c1033-node style="display:flex;width:70px;height:100px;flex-wrap:wrap;align-content:space-evenly;align-items:flex-start;flex-direction:row">
+      <div id="c1033-evenly-a" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:50px;height:20px"></div>
+      <div id="c1033-evenly-b" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:50px;height:20px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="content-stretch-chain">
+    <div id="c1033-chain-root" data-c1033-node style="display:flex;width:70px;height:100px;flex-wrap:wrap;align-content:stretch;align-items:stretch;flex-direction:row">
+      <div id="c1033-chain-a" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:50px"></div>
+      <div id="c1033-chain-b" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:50px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="wrap-reverse-flex-start">
+    <div id="c1033-reverse-flex-root" data-c1033-node style="display:flex;width:70px;height:100px;flex-wrap:wrap-reverse;align-content:flex-start;align-items:flex-start;flex-direction:row">
+      <div id="c1033-reverse-flex-a" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:50px;height:20px"></div>
+      <div id="c1033-reverse-flex-b" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:50px;height:20px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="wrap-reverse-start">
+    <div id="c1033-reverse-start-root" data-c1033-node style="display:flex;width:70px;height:100px;flex-wrap:wrap-reverse;align-content:start;align-items:flex-start;flex-direction:row">
+      <div id="c1033-reverse-start-a" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:50px;height:20px"></div>
+      <div id="c1033-reverse-start-b" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:50px;height:20px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="content-overflow-safe">
+    <div id="c1033-content-safe-root" data-c1033-node style="display:flex;width:100px;height:30px;flex-wrap:wrap;align-content:safe center;align-items:flex-start;flex-direction:row">
+      <div id="c1033-content-safe-a" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:100px;height:20px"></div>
+      <div id="c1033-content-safe-b" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:100px;height:20px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="content-overflow-unsafe">
+    <div id="c1033-content-unsafe-root" data-c1033-node style="display:flex;width:100px;height:30px;flex-wrap:wrap;align-content:unsafe center;align-items:flex-start;flex-direction:row">
+      <div id="c1033-content-unsafe-a" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:100px;height:20px"></div>
+      <div id="c1033-content-unsafe-b" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:100px;height:20px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="place-items">
+    <div id="c1033-place-items-root" data-c1033-node style="display:flex;width:100px;height:60px;place-items:end center;flex-direction:row">
+      <div id="c1033-place-items-item" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="place-self">
+    <div id="c1033-place-self-root" data-c1033-node style="display:flex;width:100px;height:60px;align-items:flex-start;flex-direction:row">
+      <div id="c1033-place-self-item" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px;place-self:safe end center"></div>
+    </div>
+  </section>
+  <section data-c1033-case="place-content-single">
+    <div id="c1033-place-content-single-root" data-c1033-node style="display:flex;width:100px;height:100px;flex-wrap:wrap;place-content:end;align-items:flex-start;flex-direction:row">
+      <div id="c1033-place-content-single-a" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:60px;height:20px"></div>
+      <div id="c1033-place-content-single-b" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:60px;height:20px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="place-content-two-values">
+    <div id="c1033-place-content-two-root" data-c1033-node style="display:flex;width:120px;height:100px;flex-wrap:wrap;place-content:center space-between;align-items:flex-start;flex-direction:row">
+      <div id="c1033-place-content-two-a" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:50px;height:20px"></div>
+      <div id="c1033-place-content-two-b" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:50px;height:20px"></div>
+      <div id="c1033-place-content-two-c" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:50px;height:20px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="justify-normal">
+    <div id="c1033-justify-normal-root" data-c1033-node style="display:flex;width:100px;height:40px;justify-content:normal;flex-direction:row">
+      <div id="c1033-justify-normal-item" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="justify-stretch">
+    <div id="c1033-justify-stretch-root" data-c1033-node style="display:flex;width:100px;height:40px;justify-content:stretch;flex-direction:row">
+      <div id="c1033-justify-stretch-item" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="justify-center-row">
+    <div id="c1033-justify-center-root" data-c1033-node style="display:flex;width:100px;height:40px;justify-content:center;flex-direction:row">
+      <div id="c1033-justify-center-item" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="justify-space-between-single-item">
+    <div id="c1033-justify-single-root" data-c1033-node style="display:flex;width:100px;height:40px;justify-content:space-between;flex-direction:row">
+      <div id="c1033-justify-single-item" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="justify-center-overflow">
+    <div id="c1033-justify-center-overflow-root" data-c1033-node style="display:flex;width:100px;height:40px;justify-content:center;flex-direction:row">
+      <div id="c1033-justify-center-overflow-item" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:130px;height:10px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="justify-space-between-negative">
+    <div id="c1033-justify-between-negative-root" data-c1033-node style="display:flex;width:100px;height:40px;justify-content:space-between;flex-direction:row">
+      <div id="c1033-justify-between-negative-a" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:70px;height:10px"></div>
+      <div id="c1033-justify-between-negative-b" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:70px;height:10px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="justify-left-row">
+    <div id="c1033-justify-left-row-root" data-c1033-node style="display:flex;width:100px;height:40px;justify-content:left;flex-direction:row">
+      <div id="c1033-justify-left-row-item" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="justify-right-row">
+    <div id="c1033-justify-right-row-root" data-c1033-node style="display:flex;width:100px;height:40px;justify-content:right;flex-direction:row">
+      <div id="c1033-justify-right-row-item" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="justify-left-row-reverse">
+    <div id="c1033-justify-left-reverse-root" data-c1033-node style="display:flex;width:100px;height:40px;justify-content:left;flex-direction:row-reverse">
+      <div id="c1033-justify-left-reverse-item" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="justify-right-row-reverse">
+    <div id="c1033-justify-right-reverse-root" data-c1033-node style="display:flex;width:100px;height:40px;justify-content:right;flex-direction:row-reverse">
+      <div id="c1033-justify-right-reverse-item" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="justify-left-column">
+    <div id="c1033-justify-left-column-root" data-c1033-node style="display:flex;width:100px;height:100px;justify-content:left;flex-direction:column">
+      <div id="c1033-justify-left-column-item" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:10px;height:20px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="justify-right-column">
+    <div id="c1033-justify-right-column-root" data-c1033-node style="display:flex;width:100px;height:100px;justify-content:right;flex-direction:column">
+      <div id="c1033-justify-right-column-item" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:10px;height:20px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="justify-overflow-safe-right">
+    <div id="c1033-justify-safe-root" data-c1033-node style="display:flex;width:100px;height:40px;justify-content:safe right;flex-direction:row">
+      <div id="c1033-justify-safe-item" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:130px;height:10px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="justify-overflow-unsafe-right">
+    <div id="c1033-justify-unsafe-root" data-c1033-node style="display:flex;width:100px;height:40px;justify-content:unsafe right;flex-direction:row">
+      <div id="c1033-justify-unsafe-item" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:130px;height:10px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="invalid-declaration-fallback">
+    <div id="c1033-invalid-root" data-c1033-node style="display:flex;width:100px;height:60px;align-items:center;align-items:safe space-between;align-content:flex-end;align-content:left;justify-content:center;justify-content:safe space-between;flex-wrap:wrap;flex-direction:row">
+      <div id="c1033-invalid-item" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="custom-property-values">
+    <div id="c1033-custom-root" data-c1033-node style="display:flex;width:40px;height:60px;flex-wrap:wrap;--cross-item:safe flex-end;--cross-lines:space-evenly;align-items:var(--cross-item);align-content:var(--cross-lines);flex-direction:row">
+      <div id="c1033-custom-a" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px;--own-alignment:safe center;align-self:var(--own-alignment)"></div>
+      <div id="c1033-custom-b" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px"></div>
+      <div id="c1033-custom-c" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="non-flex-boundary">
+    <div id="c1033-block-root" data-c1033-node style="display:block;width:100px;height:60px;align-items:end;align-content:center;justify-content:center">
+      <div id="c1033-block-a" data-c1033-node style="display:block;width:20px;height:10px;align-self:end"></div>
+      <div id="c1033-block-b" data-c1033-node style="display:block;width:20px;height:10px;align-self:center"></div>
+    </div>
+  </section>
+  <section data-c1033-case="align-items-column">
+    <div id="c1033-column-root" data-c1033-node style="display:flex;width:100px;height:100px;flex-direction:column;align-items:center">
+      <div id="c1033-column-auto" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px;align-self:auto"></div>
+      <div id="c1033-column-end" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px;align-self:flex-end"></div>
+    </div>
+  </section>
+  <section data-c1033-case="align-self-normal">
+    <div id="c1033-self-normal-root" data-c1033-node style="display:flex;width:100px;height:60px;flex-direction:row;align-items:center">
+      <div id="c1033-self-normal-item" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;align-self:normal"></div>
+    </div>
+  </section>
+  <section data-c1033-case="align-content-normal-wrap">
+    <div id="c1033-content-normal-root" data-c1033-node style="display:flex;width:70px;height:100px;flex-direction:row;flex-wrap:wrap;align-items:flex-start;align-content:normal">
+      <div id="c1033-content-normal-a" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:50px;height:20px"></div>
+      <div id="c1033-content-normal-b" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:50px;height:20px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="align-content-zero-free-space">
+    <div id="c1033-content-zero-root" data-c1033-node style="display:flex;width:70px;height:40px;flex-direction:row;flex-wrap:wrap;align-items:flex-start;align-content:space-around">
+      <div id="c1033-content-zero-a" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:50px;height:20px"></div>
+      <div id="c1033-content-zero-b" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:50px;height:20px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="wrap-reverse-flex-end">
+    <div id="c1033-reverse-flex-end-root" data-c1033-node style="display:flex;width:70px;height:100px;flex-direction:row;flex-wrap:wrap-reverse;align-items:flex-start;align-content:flex-end">
+      <div id="c1033-reverse-flex-end-a" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:50px;height:20px"></div>
+      <div id="c1033-reverse-flex-end-b" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:50px;height:20px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="wrap-reverse-end">
+    <div id="c1033-reverse-end-root" data-c1033-node style="display:flex;width:70px;height:100px;flex-direction:row;flex-wrap:wrap-reverse;align-items:flex-start;align-content:end">
+      <div id="c1033-reverse-end-a" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:50px;height:20px"></div>
+      <div id="c1033-reverse-end-b" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:50px;height:20px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="cross-auto-margin-zero-space">
+    <div id="c1033-auto-zero-root" data-c1033-node style="display:flex;width:60px;height:20px;flex-direction:row;align-items:center">
+      <div id="c1033-auto-zero-item" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:20px;margin-top:auto;align-self:flex-end"></div>
+    </div>
+  </section>
+  <section data-c1033-case="cross-auto-margin-negative-space">
+    <div id="c1033-auto-negative-root" data-c1033-node style="display:flex;width:60px;height:10px;flex-direction:row;align-items:center">
+      <div id="c1033-auto-negative-item" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:20px;margin-top:auto;align-self:flex-end"></div>
+    </div>
+  </section>
+  <section data-c1033-case="stretch-auto-cross-margin">
+    <div id="c1033-stretch-auto-root" data-c1033-node style="display:flex;width:60px;height:60px;flex-direction:row;align-items:stretch">
+      <div id="c1033-stretch-auto-item" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:auto;margin-top:auto;align-self:stretch"></div>
+    </div>
+  </section>
+  <section data-c1033-case="place-content-longhand-override">
+    <div id="c1033-place-override-root" data-c1033-node style="display:flex;width:70px;height:100px;flex-direction:row;flex-wrap:wrap;align-items:flex-start;place-content:center space-between;align-content:flex-end;justify-content:flex-start">
+      <div id="c1033-place-override-a" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:50px;height:20px"></div>
+      <div id="c1033-place-override-b" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:50px;height:20px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="justify-space-around">
+    <div id="c1033-justify-around-root" data-c1033-node style="display:flex;width:100px;height:40px;flex-direction:row;justify-content:space-around">
+      <div id="c1033-justify-around-a" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px"></div>
+      <div id="c1033-justify-around-b" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="justify-space-evenly">
+    <div id="c1033-justify-evenly-root" data-c1033-node style="display:flex;width:100px;height:40px;flex-direction:row;justify-content:space-evenly">
+      <div id="c1033-justify-evenly-a" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px"></div>
+      <div id="c1033-justify-evenly-b" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="justify-space-between-positive-space">
+    <div id="c1033-justify-between-positive-root" data-c1033-node style="display:flex;width:100px;height:40px;flex-direction:row;justify-content:space-between">
+      <div id="c1033-justify-between-positive-a" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px"></div>
+      <div id="c1033-justify-between-positive-b" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:10px"></div>
+    </div>
+  </section>
+  <section data-c1033-case="content-space-between-one-line">
+    <div id="c1033-content-between-single-root" data-c1033-node style="display:flex;width:100px;height:100px;flex-direction:row;flex-wrap:wrap;align-items:flex-start;align-content:space-between">
+      <div id="c1033-content-between-single-item" data-c1033-node style="box-sizing:border-box;flex:0 0 auto;margin:0;padding:0;border:0;width:20px;height:20px"></div>
+    </div>
+  </section>
+</body>
+</html>

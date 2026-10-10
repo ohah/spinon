@@ -1,25 +1,30 @@
-use std::collections::BTreeMap;
+use std::collections::{BTreeMap, BTreeSet};
 
-use spinon_core::NodeId;
+use spinon_core::{HostDocumentSnapshot, HostNodeHandle, NodeId};
 use spinon_layout::{
-    FlexDirection, LayoutBorder, LayoutBoxSizing, LayoutDimension, LayoutDisplay, LayoutEdges,
-    LayoutGap, LayoutStyle, TextDirection,
+    FlexDirection, LayoutBorder, LayoutEdges, LayoutGap, LayoutStyle, TextDirection,
 };
 use spinon_style::{
-    ComputedCssDimension, ComputedCssMath, ComputedCssMaxSize, ComputedElementStyle,
-    ComputedStyleProfile, ComputedStyleSnapshot,
+    ComputedCssDimension, ComputedCssMaxSize, ComputedElementStyle, ComputedStyleProfile,
+    ComputedStyleSnapshot,
 };
 
 mod flex_values;
+mod primitive_values;
 mod spacing_values;
 
 use super::typed_math::CssMathProjector;
 use crate::StyleLayoutError;
 use flex_values::{
     parse_align_items, parse_direction, parse_flex_direction, parse_flex_wrap,
-    parse_justify_content, parse_number, parse_order,
+    parse_justify_content, parse_number, parse_order, parse_runtime_align_content,
+    parse_runtime_align_items, parse_runtime_align_self, parse_runtime_justify_content,
 };
-use spacing_values::{layout_math_property, parse_gap, parse_margin, parse_nonnegative_spacing};
+use primitive_values::{
+    max_size_as_dimension, parse_box_sizing, parse_dimension, parse_display, required,
+    unsupported_value,
+};
+use spacing_values::{parse_gap, parse_margin, parse_nonnegative_spacing};
 
 pub(super) struct ProjectedStyles {
     pub styles: BTreeMap<NodeId, LayoutStyle>,
@@ -27,10 +32,17 @@ pub(super) struct ProjectedStyles {
 }
 
 pub(super) fn project_styles(
+    tree: &HostDocumentSnapshot,
+    root: HostNodeHandle,
     snapshot: &ComputedStyleSnapshot,
 ) -> Result<ProjectedStyles, StyleLayoutError> {
     let mut output = BTreeMap::new();
     let mut math = CssMathProjector::default();
+    let runtime_flex_items = if supports_runtime_flex(snapshot.profile) {
+        runtime_flex_item_nodes(tree, root, snapshot)
+    } else {
+        BTreeSet::new()
+    };
     for element in snapshot.elements.iter() {
         let node = element.node_id;
         if let Some(property) = unsupported_aspect_ratio_constraint(element) {
@@ -58,15 +70,9 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockPaintV1
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
         );
-        let supports_runtime_flex = matches!(
-            snapshot.profile,
-            ComputedStyleProfile::RuntimeFlexLayoutV1
-                | ComputedStyleProfile::RuntimeFlexPaintV1
-                | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
-                | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
-                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
-                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
-        );
+        let supports_runtime_flex = supports_runtime_flex(snapshot.profile);
+        let supports_auto_margin = runtime_flex_items.contains(&node)
+            || snapshot.profile == ComputedStyleProfile::RuntimeBlockFormattingV1;
         let flex_direction = parse_flex_direction(
             node,
             required(element, "flex-direction")?,
@@ -187,32 +193,49 @@ pub(super) fn project_styles(
             },
             direction,
             align_items: match snapshot.profile {
-                ComputedStyleProfile::FlexAlignmentV1
-                | ComputedStyleProfile::FlexAlignmentCascadeLayersV1
-                | ComputedStyleProfile::RuntimeFlexLayoutV1
+                ComputedStyleProfile::RuntimeFlexLayoutV1
                 | ComputedStyleProfile::RuntimeFlexPaintV1
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
-                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
-                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
+                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
+                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1 => {
+                    parse_runtime_align_items(node, required(element, "align-items")?)?
+                }
+                ComputedStyleProfile::FlexAlignmentV1
+                | ComputedStyleProfile::FlexAlignmentCascadeLayersV1
                 | ComputedStyleProfile::RuntimeBlockPaintV1
                 | ComputedStyleProfile::RuntimeBlockFormattingV1 => {
                     parse_align_items(node, required(element, "align-items")?)?
                 }
                 _ => LayoutStyle::default().align_items,
             },
+            align_self: if supports_runtime_flex {
+                parse_runtime_align_self(node, required(element, "align-self")?)?
+            } else {
+                LayoutStyle::default().align_self
+            },
+            align_content: if supports_runtime_flex {
+                Some(parse_runtime_align_content(
+                    node,
+                    required(element, "align-content")?,
+                )?)
+            } else {
+                None
+            },
             justify_content: match snapshot.profile {
                 ComputedStyleProfile::FlexAlignmentV1
                 | ComputedStyleProfile::FlexAlignmentCascadeLayersV1
-                | ComputedStyleProfile::RuntimeFlexLayoutV1
-                | ComputedStyleProfile::RuntimeFlexPaintV1
-                | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
-                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
-                | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
-                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeBlockPaintV1
                 | ComputedStyleProfile::RuntimeBlockFormattingV1 => {
                     parse_justify_content(node, required(element, "justify-content")?)?
+                }
+                ComputedStyleProfile::RuntimeFlexLayoutV1
+                | ComputedStyleProfile::RuntimeFlexPaintV1
+                | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+                | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
+                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
+                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1 => {
+                    parse_runtime_justify_content(node, required(element, "justify-content")?)?
                 }
                 _ => LayoutStyle::default().justify_content,
             },
@@ -253,7 +276,7 @@ pub(super) fn project_styles(
                         element.layout_spacing.margin.top,
                         element.layout_math_values.get("margin-top"),
                         &mut math,
-                        snapshot.profile == ComputedStyleProfile::RuntimeBlockFormattingV1,
+                        supports_auto_margin,
                     )?,
                     right: parse_margin(
                         node,
@@ -262,7 +285,7 @@ pub(super) fn project_styles(
                         element.layout_spacing.margin.right,
                         element.layout_math_values.get("margin-right"),
                         &mut math,
-                        snapshot.profile == ComputedStyleProfile::RuntimeBlockFormattingV1,
+                        supports_auto_margin,
                     )?,
                     bottom: parse_margin(
                         node,
@@ -271,7 +294,7 @@ pub(super) fn project_styles(
                         element.layout_spacing.margin.bottom,
                         element.layout_math_values.get("margin-bottom"),
                         &mut math,
-                        snapshot.profile == ComputedStyleProfile::RuntimeBlockFormattingV1,
+                        supports_auto_margin,
                     )?,
                     left: parse_margin(
                         node,
@@ -280,7 +303,7 @@ pub(super) fn project_styles(
                         element.layout_spacing.margin.left,
                         element.layout_math_values.get("margin-left"),
                         &mut math,
-                        snapshot.profile == ComputedStyleProfile::RuntimeBlockFormattingV1,
+                        supports_auto_margin,
                     )?,
                 },
                 _ => LayoutEdges::default(),
@@ -350,6 +373,52 @@ pub(super) fn project_styles(
     })
 }
 
+fn supports_runtime_flex(profile: ComputedStyleProfile) -> bool {
+    matches!(
+        profile,
+        ComputedStyleProfile::RuntimeFlexLayoutV1
+            | ComputedStyleProfile::RuntimeFlexPaintV1
+            | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+            | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
+            | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
+            | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
+    )
+}
+
+fn runtime_flex_item_nodes(
+    tree: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    styles: &ComputedStyleSnapshot,
+) -> BTreeSet<NodeId> {
+    let display_by_node = styles
+        .elements
+        .iter()
+        .filter_map(|element| {
+            element
+                .properties
+                .get("display")
+                .map(|display| (element.node_id, display.as_str()))
+        })
+        .collect::<BTreeMap<_, _>>();
+    let mut flex_items = BTreeSet::new();
+    let mut pending = vec![root];
+    while let Some(parent) = pending.pop() {
+        let is_flex_container = display_by_node
+            .get(&parent.id())
+            .is_some_and(|display| *display == "flex");
+        let Some(children) = tree.children(parent) else {
+            continue;
+        };
+        for child in children {
+            if is_flex_container {
+                flex_items.insert(child.id());
+            }
+            pending.push(child);
+        }
+    }
+    flex_items
+}
+
 fn unsupported_aspect_ratio_constraint(element: &ComputedElementStyle) -> Option<&'static str> {
     element.layout_aspect_ratio?;
     let dimensions = element.layout_dimensions;
@@ -363,90 +432,5 @@ fn unsupported_aspect_ratio_constraint(element: &ComputedElementStyle) -> Option
         Some("max-height")
     } else {
         None
-    }
-}
-
-fn required<'a>(
-    element: &'a spinon_style::ComputedElementStyle,
-    property: &'static str,
-) -> Result<&'a str, StyleLayoutError> {
-    element.properties.get(property).map(String::as_str).ok_or(
-        StyleLayoutError::MissingComputedProperty {
-            node: element.node_id,
-            property,
-        },
-    )
-}
-
-fn parse_display(
-    node: NodeId,
-    value: &str,
-    allow_flow_root: bool,
-) -> Result<LayoutDisplay, StyleLayoutError> {
-    match value {
-        "flex" => Ok(LayoutDisplay::Flex),
-        "block" => Ok(LayoutDisplay::Block),
-        "flow-root" if allow_flow_root => Ok(LayoutDisplay::FlowRoot),
-        "none" => Ok(LayoutDisplay::None),
-        value => unsupported(node, "display", value),
-    }
-}
-
-fn parse_box_sizing(node: NodeId, value: &str) -> Result<LayoutBoxSizing, StyleLayoutError> {
-    match value {
-        "border-box" => Ok(LayoutBoxSizing::BorderBox),
-        "content-box" => Ok(LayoutBoxSizing::ContentBox),
-        value => unsupported(node, "box-sizing", value),
-    }
-}
-
-fn max_size_as_dimension(value: ComputedCssMaxSize) -> ComputedCssDimension {
-    match value {
-        ComputedCssMaxSize::None => ComputedCssDimension::Auto,
-        ComputedCssMaxSize::LengthPx(value) => ComputedCssDimension::LengthPx(value),
-        ComputedCssMaxSize::Percentage(value) => ComputedCssDimension::Percentage(value),
-        ComputedCssMaxSize::Unsupported => ComputedCssDimension::Unsupported,
-    }
-}
-
-fn parse_dimension(
-    node: NodeId,
-    property: &'static str,
-    serialized_value: &str,
-    value: ComputedCssDimension,
-    math: Option<&ComputedCssMath>,
-    projector: &mut CssMathProjector,
-) -> Result<LayoutDimension, StyleLayoutError> {
-    if let Some(math) = math {
-        let id = projector.project(node, layout_math_property(node, property)?, math)?;
-        return Ok(LayoutDimension::Calc(id));
-    }
-    match value {
-        ComputedCssDimension::Auto => Ok(LayoutDimension::Auto),
-        ComputedCssDimension::LengthPx(value) if value.is_finite() && value >= 0.0 => {
-            Ok(LayoutDimension::Fixed(value))
-        }
-        ComputedCssDimension::Percentage(value) if value.is_finite() && value >= 0.0 => {
-            Ok(LayoutDimension::Percent(value))
-        }
-        ComputedCssDimension::LengthPx(_)
-        | ComputedCssDimension::Percentage(_)
-        | ComputedCssDimension::Unsupported => unsupported(node, property, serialized_value),
-    }
-}
-
-fn unsupported<T>(
-    node: NodeId,
-    property: &'static str,
-    value: &str,
-) -> Result<T, StyleLayoutError> {
-    Err(unsupported_value(node, property, value))
-}
-
-fn unsupported_value(node: NodeId, property: &'static str, value: &str) -> StyleLayoutError {
-    StyleLayoutError::UnsupportedComputedValue {
-        node,
-        property,
-        value: value.to_owned(),
     }
 }

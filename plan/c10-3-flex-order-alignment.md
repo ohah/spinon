@@ -1,7 +1,7 @@
 # C10.3 · Flex 순서와 정렬 구현 계획
 
 **상위:** [C10 Flexbox](c10-flexbox.md) · [공식 상태 대장](../spec/STATUS.md)
-**현재 상태:** C10.3.1은 PR #119로 병합했다. C10.3.2의 제한된 in-flow element 범위는 Chrome reference, Rust suite, Android API 37 emulator와 iPhone 17 Pro / iOS 26.2 Simulator의 V8→WGPU 실행까지 확인했다. C10.3.3·C10.3.4 및 C12 뒤의 C10.3.5는 미구현이다.
+**현재 상태:** C10.3.1은 PR #119, C10.3.2는 PR #120으로 리베이스 병합했다. C10.3.3의 제한 구현·검증은 완료했고 PR 검토·병합을 기다린다. 고정 Chrome 154의 50개 case·134개 node를 여섯 runtime profile에서 검사했고, Android SM-S731N 실기기와 iPhone 17 Pro / iOS 26.2 Simulator의 실제 V8→Stylo→Taffy→WGPU 8-node frame이 runtime Chrome 기준과 일치했다. WPT 실행과 전체 모바일 fixture 행렬, RTL·다른 writing mode는 완료 범위에 포함하지 않는다. C10.3.4와 C12 뒤의 C10.3.5는 미구현이다.
 **내부 계약 숫자 버전:** 출시 전 `0.1.0` 고정.
 
 ## 목표
@@ -15,8 +15,8 @@
 | 하위 ID | 범위 | 완료 전제 | 상태 |
 | --- | --- | --- | --- |
 | C10.3.1 | `row-reverse`, `column-reverse`, `wrap-reverse`와 `flex-flow` 조합 | C10.1·C10.2에서 고정한 line 수집·크기 배분과 분리해 축 시작점 및 line stacking을 비교한다. | PR #119 병합 · [계약 0050](../spec/internal/0050-c10-3-1-flex-reverse.md) |
-| C10.3.2 | `order`의 안정적인 계산 순서와 paint 순서 | HostDocument 자식 순서를 유지하고 layout·paint·source traversal을 분리한다. | 제한 구현과 Android/iOS Simulator runtime 검증 완료 · [계획 검토](../spec/internal/evidence/c10-3-2-order-plan-review-2026-10-10.md) · [구현 계약 0051](../spec/internal/0051-c10-3-2-flex-order.md) · [실행 근거](../spec/internal/evidence/c10-3-2-flex-order-implementation-review-2026-10-10.md) |
-| C10.3.3 | `align-self`와 `align-content`의 비-baseline 값 | auto margin, stretch, wrap 상태, line 수와 gap의 상호작용을 비교한다. | 미구현 |
+| C10.3.2 | `order`의 안정적인 계산 순서와 paint 순서 | HostDocument 자식 순서를 유지하고 layout·paint·source traversal을 분리한다. | [PR #120 병합](https://github.com/ohah/spinon/pull/120) · 제한 구현과 Android/iOS Simulator runtime 검증 완료 · [계획 검토](../spec/internal/evidence/c10-3-2-order-plan-review-2026-10-10.md) · [구현 계약 0051](../spec/internal/0051-c10-3-2-flex-order.md) · [실행 근거](../spec/internal/evidence/c10-3-2-flex-order-implementation-review-2026-10-10.md) |
+| C10.3.3 | Flex Box Alignment의 비-baseline longhand·shorthand | `align-items`·`align-self`·`align-content`와 `place-items`·`place-self`·`place-content`를 계산·layout 경계까지 비교한다. `place-content`가 설정하는 `justify-content`도 shorthand의 전체 값을 처리할 수 있게 runtime Flex 범위에서 함께 확장한다. | 제한 구현·검증 완료, PR 검토 대기 · [내부 계약 0052](../spec/internal/0052-c10-3-3-flex-box-alignment.md) · [실패 관점 검토·실행](../spec/internal/evidence/c10-3-3-flex-alignment-implementation-review-2026-10-11.md) |
 | C10.3.4 | item·line baseline 정렬 및 Flex container baseline | 우선 빈 고정 크기 상자의 합성 first/last baseline을 비교한다. 텍스트 baseline은 C15의 실제 글꼴 측정 계약과 연결하기 전까지 미완료로 남긴다. | 미구현 |
 | C10.3.5 | positioned flex child와 순서·정렬 교차 통합 | C12 이후 absolute child는 flex line 계산에서 제외하고 paint order에서는 `order:0`으로 취급하며, static-position `align-self`를 비교한다. | C12 선행 |
 
@@ -25,13 +25,13 @@
 ## 공통 비교 계약
 
 - **Oracle:** Chromium `154.0.8037.98`, revision `@b859317bf11f6be47f9b7799ec690a0a42a1fb33`. fixture, capture 도구와 Chromium 실행 파일의 SHA-256을 reference에 저장하고 테스트 실행으로 reference를 자동 갱신하지 않는다.
-- **표준 기준:** CSS Flexbox Level 1, 2025-10-14 Candidate Recommendation Draft는 Flex item layout·paint 순서 기준이고, `order` longhand의 값·초깃값·상속 여부는 CSS Display Level 3, 2026-06-05 Candidate Recommendation Draft를 기준으로 한다. CSS Values Level 4, 2024-03-12 Working Draft의 integer 계산·반올림 규칙을 함께 확인한다. 이 문서들은 초안이므로 실제 고정 Chromium과 잠긴 Stylo 결과도 별도로 기록한다.
+- **표준 기준:** CSS Flexbox Level 1, 2025-10-14 Candidate Recommendation Draft는 Flex item layout·paint 순서, CSS Box Alignment Level 3, 2026-10-08 Working Draft는 C10.3.3 alignment grammar와 shorthand 기준이다. Box Alignment 초안에서 overflow-position은 at-risk로 표시되므로 이를 안정 표준 기능으로 단정하지 않고 pinned Chrome 결과와 명세 버전을 함께 보존한다. `order` longhand는 CSS Display Level 3, 2026-06-05 Candidate Recommendation Draft, CSS Values Level 4, 2024-03-12 Working Draft는 integer 계산·반올림 기준으로 삼는다. 초안·후보 초안은 고정된 기준 문서일 뿐 최종 표준이라고 주장하지 않으며, 실제 고정 Chromium과 잠긴 Stylo 결과를 함께 기록한다. [CSS Flexbox 2025-10-14](https://www.w3.org/TR/2025/CRD-css-flexbox-1-20251014/) · [CSS Box Alignment 2026-10-08](https://www.w3.org/TR/2026/WD-css-align-3-20261008/).
 - **환경:** viewport `320×240 CSS px`, locale `en-US`, timezone `UTC`, DPR 1과 2 각각. 입력 fixture는 `writing-mode:horizontal-tb`, `direction:ltr`를 명시한다. RTL과 다른 writing mode는 C17 선행 계약을 확인하기 전까지 지원 범위에 넣지 않는다.
-- **관찰값:** 각 지원 노드의 computed `flex-direction`, `flex-wrap`, `flex-flow`의 longhand 결과, `order`, `align-items`, `align-self`, `align-content`, node ID별 `x`, `y`, `width`, `height`, 필요 시 paint-list 순서를 기록한다. computed CSS 문자열, Chromium Typed OM에서 읽은 integer, Rust typed 값은 별도 필드로 보존한다. Chromium `getComputedStyle().order`는 int32 경계에서 지수 표기로 정밀도를 잃으므로 경계값 비교는 `computedStyleMap().get("order").value`와 geometry를 사용한다. 현재 없는 runtime hit-test와 pointer target은 C10.3 관찰값에 넣지 않으며 S05에서 별도 연결한다.
+- **관찰값:** 각 지원 노드의 computed `flex-direction`, `flex-wrap`, `flex-flow`의 longhand 결과, `order`, `align-items`, `align-self`, `align-content`, `justify-content`, node ID별 `x`, `y`, `width`, `height`, 필요 시 paint-list 순서를 기록한다. computed CSS 문자열, Chromium Typed OM에서 읽은 integer, Rust typed 값은 별도 필드로 보존한다. Chromium `getComputedStyle().order`는 int32 경계에서 지수 표기로 정밀도를 잃으므로 경계값 비교는 `computedStyleMap().get("order").value`와 geometry를 사용한다. 현재 없는 runtime hit-test와 pointer target은 C10.3 관찰값에 넣지 않으며 S05에서 별도 연결한다.
 - **기하 허용치:** 각 노드·각 frame field의 최대 절대 오차 `0.5 CSS px`. 평균 오차로 단일 실패를 가리지 않는다. DPR 1·2 결과가 각각 통과해야 하고 CSS px geometry는 DPR에 따라 달라지면 안 된다.
 - **스타일 경로:** `RuntimeFlexLayoutV1`, `RuntimeFlexPaintV1`, `RuntimeFlexCustomPropertiesV1`, `RuntimeFlexCustomPropertiesPaintV1`, `RuntimeFlexRegisteredPropertiesV1`, `RuntimeFlexRegisteredPropertiesPaintV1` 여섯 profile의 typed projection, inline full/incremental cascade, author stylesheet full cascade, 등록 사용자 지정 속성 경로를 확인한다. 현재 author stylesheet incremental 경로가 재사용을 거부하면 전체 cascade fallback을 확인하며, 지원하지 않는 stylesheet 재사용을 성공으로 간주하지 않는다.
 - **순서 경계:** 현재 `CalcLayoutTree`는 Taffy 노드를 postorder 위치로 만들고 `Layout::order`를 초기화한다. Flex algorithm은 일부 자식의 출력 order를 다시 지정한다. 현재 runtime paint snapshot은 별도로 HostDocument preorder를 순회해 paint rank를 만든다. 이 세 순서를 CSS `order` 값과 혼동하지 않는다. 필요한 계산 child 순서는 flex container의 형제 범위에서만 안정 정렬하고, paint list는 해당 형제 item의 order-modified 순서를 재귀적으로 반영하되 nested subtree를 부모 밖으로 끌어내지 않는다. HostDocument는 원본 순서를 보존한다.
-- **앱 실행:** 각 구현 단계가 Rust·고정 Chromium oracle을 통과한 뒤 Android API 37 emulator와 iPhone 17 Pro / iOS 26.2 Simulator에서 V8 fixture를 실행한다. runtime node frame, WGPU 제출과 오류 로그를 보존한다. Android software backend 및 simulator 실행을 실기기·하드웨어 GPU 성능 증거로 확대하지 않는다.
+- **앱 실행:** 각 구현 단계가 Rust·고정 Chromium oracle을 통과한 뒤, 연결된 Android 실기기가 있으면 우선 사용하고 없으면 Android emulator를 사용한다. iOS는 iPhone 17 Pro / iOS 26.2 Simulator에서 확인한다. runtime node frame, WGPU 제출과 오류 로그를 보존한다. Android software backend 및 simulator 실행을 실기기·하드웨어 GPU 성능 증거로 확대하지 않는다.
 - **오류:** cascade에서 유효하지 않은 CSS declaration은 CSS cascade 규칙으로 무시되는지 Chromium과 비교한다. adapter 직접 입력이나 지원 밖 상호작용은 기본값으로 성공시키지 말고 node/property 문맥을 포함해 거부한다. 실패 뒤 이전 frame이 새 revision의 결과로 노출되면 안 된다.
 - **WPT 교차표:** 각 지원 값과 의미 상호작용을 upstream Web Platform Tests의 Flexbox/Baseline test path에 대응한다. inventory에는 WPT git commit과 경로를 고정하고, 해당 profile로 실행할 수 없는 원본 case는 제외 이유와 로컬 fixture 대응 case를 적는다. 자체 fixture에 대응 기준이 없는 지원 문법은 완료 처리하지 않는다.
 
@@ -71,27 +71,53 @@
 - order는 CSS non-flex context의 일반 자식·다른 subtree ordering을 바꾸지 않고, 다른 flex container의 item과 비교하지 않는다. 계산 순서 정렬용 vector를 원본 DOM 자식 목록에 다시 써 넣지 않는다.
 - Chromium fixture의 node별 geometry와 paint rank가 일치하고, Android API 37 emulator와 iOS 26.2 Simulator에서 겹친 색상 결과까지 확인한다. latest style 계산이 실패하면 과거 paint order를 새 revision frame으로 노출하지 않는다. 오류에는 node/property가 포함된다.
 
-## C10.3.3 · `align-self`와 `align-content`
+## C10.3.3 · Flex Box Alignment의 비-baseline 값
 
-### `align-self`
+### 지원할 값과 cascade 범위
 
-- 첫 값 집합은 `auto`, `flex-start`, `flex-end`, `center`, `stretch`다. 현재 지원 `align-items` 값도 기존 C04.3 계약에 따라 함께 고정한다.
-- `align-self`는 상속되지 않으며 flex item에서만 geometry에 영향을 준다. `auto`의 computed value가 `auto`로 보존되는지와 used alignment가 부모의 `align-items`에 따라 정해지는지를 따로 확인한다. 기본·명시 item cross size, stretch의 auto cross size, nonzero cross size, min/max clamp, padding/border, cross-axis auto margin을 각각 분리한다. CSS에서 cross-axis auto margin이 우선해 align-self를 무효화하는 경우를 포함한다.
-- 이 substep에서 `normal`, `start`, `end`, `self-start`, `self-end`, overflow-position(`safe`/`unsafe`), anchor-specific alignment는 지원하지 않는다. `baseline`/`first baseline`/`last baseline`은 C10.3.4에서만 다룬다. stylesheet의 잘못된 선언 무시와 유효하지만 typed adapter가 지원하지 않는 computed value의 명시적 거부를 구분한다.
-- row와 column에서 실제 물리 cross axis가 서로 달라지는 paired case를 둔다. align-items가 자식 안쪽 정렬이 아닌 컨테이너 자식에 대한 기본값이며, align-self가 개별 item override임을 확인한다.
+- 기준 문법은 위에 고정한 CSS Box Alignment 2026-10-08 §4–§7 및 CSS Flexbox 2025-10-14를 사용한다. Box Alignment는 Working Draft이며 overflow-position(`safe`/`unsafe`)을 at-risk로 표시한다. 이 범위는 “그 문서에 있는 모든 CSS Box Alignment”가 아니라 아래 Flex 관련 longhand·shorthand 및 명시한 교차 조건이다.
+- `align-items`: `normal`, `stretch`, 그리고 선택적 `safe|unsafe`가 붙는 `center|start|end|self-start|self-end|flex-start|flex-end`. `baseline` 계열은 C10.3.4에 맡긴다. 이 단계는 기존 C04.3 profile을 넓히지 않고 여섯 runtime Flex profile의 값만 확장한다.
+- `align-self`: `auto`, `normal`, `stretch`, 그리고 `align-items`와 같은 비-baseline positional set 및 `safe|unsafe`. `auto`는 CSSOM에 `auto`로 보존하며 used alignment는 같은 Flex container의 computed `align-items`를 따른다. 부모 값의 CSS 상속으로 구현하지 않는다. `normal`은 Flex에서 used `stretch` 동작을 한다.
+- `align-content`: `normal`, `stretch`, `space-between|space-around|space-evenly`, 그리고 선택적 `safe|unsafe`가 붙는 `center|start|end|flex-start|flex-end`. `normal`은 computed keyword로 보존하면서 Flex의 used 동작을 `stretch`와 비교한다. `left|right`는 `align-*` 값이 아니므로 invalid declaration이다. baseline 계열은 C10.3.4 소유다.
+- `place-items`와 `place-self`는 해당 align longhand의 입력 shorthand로 포함한다. 한 값일 때 두 번째 `justify-items`/`justify-self` 성분이 복사되는 cascade 결과를 보존하되, 그 성분은 Flex item 배치에 영향을 주지 않아야 한다. Flex가 아닌 Grid 효과를 지원한다고 주장하지 않는다.
+- `place-content`는 `align-content`와 `justify-content`를 함께 설정하므로 두 성분을 모두 이 단계에서 지원한다. 두 번째 값 생략 시 CSS shorthand 규칙대로 첫 값을 복사한다. 이에 따라 여섯 runtime Flex profile의 `justify-content`도 `normal`, `stretch`, distribution 값, `center|start|end|flex-start|flex-end|left|right` 및 positional 값의 `safe|unsafe` 조합을 처리한다. Flex main-axis의 `stretch`는 Flexbox 규칙에 따른 used `flex-start` 결과를 낸다. `left|right`는 `justify-content`의 두 번째 성분에만 허용하고, `column`처럼 main axis가 좌우 축과 평행하지 않은 경우 pinned Chrome fallback과 비교한다. 기존 C04 profile은 변경하지 않는다.
+- `safe`/`unsafe`는 positional 값에만 허용한다. `safe space-between`, `unsafe stretch`, `safe auto`, `safe` 단독, `align-items:auto`, `align-content:left` 등 잘못된 조합은 cascade에서 invalid declaration로 무시되는지 Chrome과 비교한다. 유효한 지원 값과 baseline 등 이 단계 밖의 computed 값을 Rust adapter가 받으면 기본값으로 대체하지 않고 property/node 문맥을 포함해 실패한다.
 
-### `align-content`
+### 사용값과 레이아웃 상호작용
 
-- 첫 값 집합은 `normal`, `stretch`, `flex-start`, `flex-end`, `center`, `space-between`, `space-around`, `space-evenly`다. `normal`은 computed CSSOM에서 키워드를 보존하고 used geometry가 `stretch`와 같은지 pinned Chromium으로 고정한다. `safe`/`unsafe`, `start`/`end`, 물리 `left`/`right` 값은 이 substep에 포함하지 않는다. `baseline`/`first baseline`/`last baseline`은 C10.3.4 소유다. Taffy enum 이름을 CSS computed value로 가정하지 않는다.
-- `flex-wrap:nowrap`은 단일-line container이므로 `align-content`가 line 위치·크기를 바꾸지 않아야 한다. `flex-wrap:wrap`은 line이 실제 하나만 만들어져도 multi-line container이므로 `align-content`가 line에 미치는 효과를 별도 확인한다. 이를 “실제 line 개수”만으로 분기하지 않는다.
-- 실제 여러 line일 때 cross-axis free space가 0, 양수, 음수인 경우를 다룬다. `stretch`, 각 분배 값, overflow fallback과 `row-gap`/`column-gap`이 함께 있을 때의 사용 간격을 기록한다. `wrap-reverse`와 조합해 cross-start/end를 바꾼다.
-- `align-content:stretch`가 line cross size를 늘리고 `align-items`/`align-self:stretch` item size를 다시 바꾸는 연쇄를 별도 case로 둔다. line 위치만 맞는 결과를 완료로 보지 않는다.
+- `align-items`는 line 안의 모든 Flex item 기본값이고 `align-self`는 개별 item override다. 두 속성 모두 비상속으로 처리한다. `align-self:auto`가 부모 `align-items`를 참조하는 경로와 inline/stylesheet/custom-property cascade가 같은 computed 값을 읽는 경로를 확인한다.
+- 정렬 대상은 Flex item의 margin box이며 정렬 컨테이너는 해당 item이 속한 flex line이다. row와 column의 교차축, 각 child별 line, 빈 컨테이너·item 하나를 분리한다. `row-reverse`, `column-reverse`, `wrap-reverse`의 flex-relative start와 writing-mode-relative `start/end`를 혼동하지 않는다. 기준 환경은 `writing-mode:horizontal-tb; direction:ltr`; 다른 writing mode, 상이한 item direction 및 RTL은 C17에서 다룬다. 이 제한 안에서 `self-start/end`의 의미와 `flex-start/end`가 `wrap-reverse` 등으로 달라지는 경우를 고정한다.
+- cross-axis auto margin은 align-self보다 우선한다. positive free space가 auto margin에 먼저 분배되는 경우, 남는 free space가 0인 경우, item이 overflow해 auto margin이 효과를 잃는 경우를 각각 둔다. align-self가 남은 공간을 다시 차지한다고 가정하지 않는다.
+- `stretch`는 해당 축의 computed size가 `auto`이고 그 축에 auto margin이 없을 때만 늘어난다. 고정 cross size, cross-axis auto margin, min/max clamp, `box-sizing`, padding, border를 조합해 content/border/margin box 차이를 대조한다. 한 line 안의 다른 item 크기가 line cross size를 결정하는 상호작용과 stretch 이후 min/max 제한도 확인한다.
+- `align-content`는 flex line을 교차축에서 정렬하고 Flex의 multi-line container에만 효과가 있다. `nowrap`에서는 한 개 line만 존재하므로 `align-content`가 배치·크기를 바꾸지 않는 음성 대조를 둔다. `wrap`/`wrap-reverse`는 실제로 line이 한 개만 생성되어도 multi-line container로 동작하는지 별도로 확인한다. `space-between`처럼 subject 하나에서 분배할 공간이 없는 값은 해당 fallback과 비교한다.
+- 실제 2개 이상 line은 cross-axis free space 양수·0·음수 상태를 둔다. `stretch`, 모든 distribution 값, positional 값, safe/unsafe 및 생략된 safety를 pairwise 조합한다. `row-gap`/`column-gap`은 line/item 간 기존 gap 위에 정렬 공간을 중복 분배하지 않는지 검사한다. `wrap-reverse`와 `align-content:flex-start|flex-end` 및 `start|end`를 교차해 축 의미를 고정한다.
+- `align-content:stretch`가 line cross size를 바꾸고 그 뒤 `align-items`/`align-self:stretch`가 item used size에 미치는 연쇄를 확인한다. line 위치만 일치해도 item 크기 오차가 있으면 실패다. safe/unsafe는 overflow 시 Chrome의 사용 좌표로 비교한다. C13 scroll container의 scrollable overflow·자동 scroll-safety 동작은 이 단계 범위 밖이다. W3C 초안의 일반 안전 기본값을 구현 근거로 대신하지 않는다.
+- Shorthand 단일/두 값, 뒤따르는 longhand override, inline 대 author stylesheet의 우선순위, `var()` fallback/미정의 값/등록 사용자 지정 속성, incremental 변경을 검사한다. 특히 부모 `align-items` 변경이 자식 `align-self:auto`에 재계산되는지, `place-content` 한 값이 두 computed longhand와 두 layout 축 모두에 반영되는지 본다.
+
+### 비교 행렬 seed
+
+구현 전 고정 Chromium reference는 최소한 다음 독립 조건을 담고, 명시된 상호작용만 pairwise case로 추가한다. 크기 계산이 범위 밖의 intrinsic/text 동작을 끌어들이지 않도록 빈 element와 definite container/item 크기를 기본으로 쓴다.
+
+| 비교 축 | 최소 입력 | 독립 예상·실패 조건 |
+| --- | --- | --- |
+| 기본값·override | `align-items:normal`; 자식 `align-self:auto|center`; row·column | computed `normal`/`auto`를 보존하고 used frame은 pinned Chrome과 대조한다. |
+| self positions | 모든 positional 값과 safe/unsafe, `wrap-reverse`, item direction은 LTR 동일 | `start/end`와 flex-relative start/end를 한 좌표로 치환하지 않는다. |
+| auto margin | cross-axis 한쪽/양쪽 auto, positive/zero/negative free space | auto margin 우선순위와 overflow 시 좌표가 align-self fallback과 혼동되지 않는다. |
+| stretch | cross size auto/fixed, auto margin, min/max, content-box/border-box, padding/border | stretch eligibility 및 clamp 뒤 content/border/margin box가 일치한다. |
+| line alignment | nowrap 1 line, wrap 1 actual line, wrap 2+ lines | nowrap 음성 대조와 wrap 1-line 효과를 구분한다. |
+| distribution | `normal`, `stretch`, positional/distribution 전체; 양수·0·음수 공간 | 단일 subject fallback, gap 공제, wrap-reverse 축, line·item 연쇄가 일치한다. |
+| overflow | safe/unsafe positional values와 안전 값 생략, scroll container 아님 | safe fallback, unsafe overflow, Chromium의 기본 동작을 각각 관찰한다. |
+| shorthand/cascade | `place-items`, `place-self`, `place-content` 한 값/두 값 및 longhand override | 확장된 computed longhand, 무효 paired property, incremental 재계산·revision을 확인한다. |
+| invalid·profile 경계 | 잘못된 safety 조합, baseline, legacy C04 profile, non-Flex parent | CSS invalid declaration 처리와 adapter fail-closed, 범위 격리를 구분한다. |
 
 ### 완료 조건
 
-- 각 typed style 값의 inline full/incremental 결과, author stylesheet full cascade, 여섯 runtime Flex profile과 실제 V8 path의 frame을 고정 Chromium과 비교한다.
-- item 정렬과 line 정렬을 독립적으로 검증한다. `nowrap`과 `wrap`의 의미를 혼동하지 않고, single actual line `wrap` case에서 align-content 동작이 유지된다.
-- cross-axis margin, explicit cross size, min/max, padding/border 중 fixture가 사용한 값은 결과의 설명 가능한 입력으로 남긴다. 기준을 넘는 차이는 평균이나 pixel screenshot으로 숨기지 않는다.
+- 구현 전에 HTML/CSS, inventory와 손계산 불변식을 확정해 pinned Chrome 154 reference를 캡처한다. capture는 기존 reference를 덮어쓰지 않고 fixture·inventory·capture script·helper·Chromium binary digest를 기록한다. 각 지원 node의 computed longhand와 `x/y/width/height`를 DPR 1·2로 저장하고 node/frame field마다 최대 `0.5 CSS px` 오차를 각각 적용한다.
+- `RuntimeFlexLayoutV1`, `RuntimeFlexPaintV1`, `RuntimeFlexCustomPropertiesV1`, `RuntimeFlexCustomPropertiesPaintV1`, `RuntimeFlexRegisteredPropertiesV1`, `RuntimeFlexRegisteredPropertiesPaintV1`에서 typed projection, inline full/incremental cascade, author stylesheet cascade, custom-property 경로를 확인한다. C04·Block·다른 profile로 값이나 동작이 새지 않아야 한다.
+- Taffy 0.14.0 매핑은 참고 구현일 뿐이다. computed CSS keyword와 safety modifier를 typed projection에서 보존하고, used layout 동작을 Taffy에 전달하는 변환을 별도 검증한다. 기존 Taffy enum/associated constant 이름과 CSS semantics가 같다고 가정하지 않는다.
+- Chromium/Rust fixture와 별도 불변식이 통과한 뒤 연결된 Android 실기기를 우선 사용하고, 없을 때 API 37 emulator로 대체한다. iPhone 17 Pro / iOS 26.2 Simulator에서는 V8 fixture의 computed 값·frame·WGPU 제출·오류 로그를 확인한다. simulator나 software backend 결과를 실기기 또는 hardware GPU 성능 증거라고 부르지 않는다.
+- upstream WPT는 `d5a765f1089ce6d3f72300281481edf3dddff7f3`로 고정하고 `css/css-align/`·`css/css-flexbox/`의 적용 가능한 shorthand, computed style, auto-margin, stretch, distribution, overflow tests를 fixture inventory에서 개별 경로로 대응한다. 경로별 pass를 확인하지 않고 WPT 전체 지원을 주장하지 않는다. 유효 baseline/positioned/text/scroll case는 각각 C10.3.4, C10.3.5/C12, C15, C13 범위 밖으로 기록한다.
+- 이 하위 단계는 [기존 fixture 경로](../tests/fixtures/css/c10/flex-order-alignment.html)를 재사용하지 않고 전용 `flex-alignment-v1` inventory/fixture/reference를 둔다. 권장 경로는 `tests/fixtures/css/c10/flex-alignment.html`, `tests/fixtures/css/c10/flex-alignment-inventory.json`, `tests/fixtures/css/c10/runtime-flex-alignment.js`, `tools/css-reference/capture-c10-3-3-flex-alignment.mjs`, `tools/css-reference/c10-3-3-flex-alignment.test.mjs`, `tests/fixtures/css/references/c10-3-3-flex-alignment-v1.json`이다. inventory는 WPT revision/path, 제외 이유, 독립 예상, 지원 profile과 case/node 수를 함께 고정한다.
 
 ## C10.3.4 · baseline
 
