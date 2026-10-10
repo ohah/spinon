@@ -60,4 +60,4 @@
 - 30 supported node의 Chrome 154 geometry 비교, DPR 1·2와 전체 Rust/CSS reference 회귀 검사를 통과했다. 다섯 min/max+ratio 조합은 supported result로 세지 않고 명시적으로 fail closed한다.
 - Android API 37 emulator와 iPhone 17 Pro / iOS 26.2 Simulator에서 같은 V8 fixture를 실행해 세 ratio 사각형, `layout=ready`, WGPU 5-box 제출을 확인했다. 자식별 frame의 Chrome 대조는 고정 Rust fixture 결과이며 simulator가 별도 수치 계측한 것은 아니다.
 - 계획 수정 범위는 [수정 계획 재검토](../spec/internal/evidence/c07-3-aspect-ratio-plan-review-scope-followup-2026-10-10.md), 코드·플랫폼 실패 경로는 [구현 검토](../spec/internal/evidence/c07-3-aspect-ratio-implementation-review-2026-10-10.md), 차이와 실행 근거는 [Taffy·시뮬레이터 evidence](../spec/internal/evidence/c07-3-taffy-differential-2026-10-10.md)에 기록했다.
-- 현재 브랜치에서 구현과 검증은 끝났지만 미병합이다. `spec/STATUS.md`의 공식 완료 체크는 병합 전까지 유지한다. 내부 계약·crate 숫자 버전은 `0.1.0`이다.
+- 구현과 검증은 끝났고 [PR #104](https://github.com/ohah/spinon/pull/104)에서 검토 중이다. `spec/STATUS.md`의 공식 완료 체크는 병합 전까지 유지한다. 내부 계약·crate 숫자 버전은 `0.1.0`이다.
