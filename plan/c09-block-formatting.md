@@ -4,11 +4,11 @@
 
 현재 모바일 우선 Runtime CSS 경로에 Chromium과 일치하는 Block formatting 동작을 단계적으로 연결한다. CSS 선언은 Stylo가 계산하고, 레이아웃 adapter와 Taffy는 typed style·트리·포함 블록을 받아 geometry를 계산한다. 지원 선언을 조용히 버리거나 Block 기본값으로 바꾸지 않는다.
 
-C08.1 구현 PR [#105](https://github.com/ohah/spinon/pull/105)은 현재 열려 있다. C09 계획은 독립 문서로 먼저 작성하지만, C09 제품 코드 작업은 C08.1이 `main`에 병합된 뒤 시작한다. C08.1의 기본 Block 흐름은 margin collapse나 formatting context 구현을 대신하지 않는다.
+C08.1 구현 PR [#105](https://github.com/ohah/spinon/pull/105)은 `main`에 리베이스 병합됐다. C09 제품 코드 작업은 이 계획·reference 변경이 `main`에 병합된 뒤 C09.1부터 시작한다. C08.1의 기본 Block 흐름은 margin collapse나 formatting context 구현을 대신하지 않는다.
 
 | 하위 ID | 동작 범위 | 순서·선행 조건 |
 | --- | --- | --- |
-| C09.1 | 일반 in-flow Block 크기 방정식, 수직 흐름, containing block | C08.1 병합 뒤 첫 구현 |
+| C09.1 | 일반 in-flow Block 크기 방정식, 수직 흐름, containing block | C08.1과 C09 계획/reference 병합 뒤 첫 구현 |
 | C09.2 | 수직 margin collapse와 signed margin strut | C09.1 뒤 구현 |
 | C09.3 | `display: flow-root`와 Block formatting context 경계 | C09.2 뒤 구현 |
 | C09.4 | shrink-to-fit이 필요한 float·inline-block·absolute 문맥 | C12 positioning, C14 intrinsic sizing, C15 inline/text 측정, C26 float 중 해당 문맥의 선행 구현이 된 뒤 연결. 이 항목이 끝날 때까지 C09 상위는 미완료 |
@@ -75,7 +75,7 @@ C09.4는 단순히 Taffy의 `fit-content` 값으로 바꾸어 완료 처리하�
 
 ## 구현 단계
 
-1. C08.1 PR #105가 병합됐는지 확인하고 `main` 최신 기준에서 작업 branch를 만든다. 병합 전에는 계획·reference 설계만 진행하고 C09 제품 코드는 추가하지 않는다.
+1. C08.1 PR #105는 병합됐다. 이 계획·reference 변경이 `main`에 병합된 뒤 최신 `main`에서 작업 branch를 만든다. 그 전에는 C09 제품 코드를 추가하지 않는다.
 2. 완료된 [C09 HTML·inventory·Chromium capture](../tests/fixtures/css/c09/block-formatting.html)와 [`css:reference:c09-block-formatting`](../tools/css-reference/capture-c09-block-formatting.mjs)을 유지한다. [고정 JSON reference](../tests/fixtures/css/references/c09-block-formatting-v1.json) 및 [검증 테스트](../tools/css-reference/c09-block-formatting.test.mjs)가 전달하는 독립 oracle·환경·입력 digest를 runtime 구현 전에 확인한다.
 3. 계획 자체를 기능 코드와 분리해 20개의 서로 다른 실패 관점으로 검토하고, 지적을 반영한 최종 계획 hash와 검토 결과를 남긴다.
 4. 내부 계약 ID `0047`과 C09.1–C09.4 상태 대장을 추가한다. 공개 API가 아닌 내부 profile임을 적고 숫자 버전은 `0.1.0`으로 고정한다.
