@@ -4,6 +4,7 @@ use style::properties::{ComputedValues, LonghandId};
 use super::{
     ComputedCssDimension, ComputedCssSpacingValue, ComputedStyleProfile, ComputedStyleSnapshot,
     CssCascadeError, CssViewport, StyloDocumentView, UA_STYLESHEET_ID, runtime_layout,
+    runtime_paint,
 };
 use crate::StylesheetSource;
 
@@ -151,6 +152,9 @@ pub struct RuntimeCascadeReuseStats {
 fn runtime_properties_for_profile(
     profile: ComputedStyleProfile,
 ) -> Option<Vec<(&'static str, LonghandId)>> {
+    if profile == ComputedStyleProfile::RuntimeBlockPaintV1 {
+        return Some(runtime_paint::runtime_block_paint_properties());
+    }
     let has_paint = matches!(
         profile,
         ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
@@ -188,5 +192,6 @@ fn is_runtime_layout_profile(profile: ComputedStyleProfile) -> bool {
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
+            | ComputedStyleProfile::RuntimeBlockPaintV1
     )
 }

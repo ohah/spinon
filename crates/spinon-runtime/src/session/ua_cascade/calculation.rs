@@ -7,6 +7,7 @@ use super::{
 use spinon_core::{HostNodeHandle, HostNodeKind, HostParent, StyleRevision};
 use spinon_style::{
     ComputedStyleProfile, CssCascadeError, RuntimeCascadeReuseStats, StyloDocumentView,
+    compute_runtime_block_paint_cascade_with_stylesheets,
     compute_runtime_flex_custom_properties_cascade_with_stylesheets,
     compute_runtime_flex_custom_properties_paint_cascade_with_stylesheets,
     compute_runtime_flex_registered_properties_paint_cascade_with_stylesheets,
@@ -14,6 +15,20 @@ use spinon_style::{
 };
 use std::sync::Arc;
 use std::time::Instant;
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub(super) enum RuntimeCalculationProfile {
+    FlexLayout,
+    FlexPaint,
+    RegisteredPropertiesPaint,
+    BlockPaint,
+}
+
+impl RuntimeCalculationProfile {
+    const fn has_paint(self) -> bool {
+        !matches!(self, Self::FlexLayout)
+    }
+}
 
 #[derive(Clone, Debug)]
 pub(super) struct RuntimeCalculation {
@@ -107,25 +122,33 @@ impl RuntimeCalculation {
 }
 
 pub(super) fn compute_request(request: &WorkRequest) -> Result<RuntimeCalculation, String> {
-    compute_request_with_runtime_paint(request, false, false)
+    compute_request_with_profile(request, RuntimeCalculationProfile::FlexLayout)
 }
 
 pub(super) fn compute_request_for_runtime_gpu(
     request: &WorkRequest,
 ) -> Result<RuntimeCalculation, String> {
-    compute_request_with_runtime_paint(request, true, false)
+    compute_request_with_profile(request, RuntimeCalculationProfile::FlexPaint)
 }
 
 pub(super) fn compute_request_for_registered_properties_gpu(
     request: &WorkRequest,
 ) -> Result<RuntimeCalculation, String> {
-    compute_request_with_runtime_paint(request, true, true)
+    compute_request_with_profile(
+        request,
+        RuntimeCalculationProfile::RegisteredPropertiesPaint,
+    )
 }
 
-fn compute_request_with_runtime_paint(
+pub(super) fn compute_request_for_block_paint(
     request: &WorkRequest,
-    runtime_paint_enabled: bool,
-    registered_properties_enabled: bool,
+) -> Result<RuntimeCalculation, String> {
+    compute_request_with_profile(request, RuntimeCalculationProfile::BlockPaint)
+}
+
+fn compute_request_with_profile(
+    request: &WorkRequest,
+    profile: RuntimeCalculationProfile,
 ) -> Result<RuntimeCalculation, String> {
     let mut roots = Vec::new();
     let mut layout_context: Option<RuntimeLayoutContext> = None;
@@ -155,13 +178,8 @@ fn compute_request_with_runtime_paint(
                     ));
                 }
                 let cascade_started = Instant::now();
-                let (computed_root, view, reuse_stats) = compute_root(
-                    request,
-                    root,
-                    runtime_paint_enabled,
-                    registered_properties_enabled,
-                    &author_stylesheets,
-                )?;
+                let (computed_root, view, reuse_stats) =
+                    compute_root(request, root, profile, &author_stylesheets)?;
                 cascade_duration_us =
                     cascade_duration_us.saturating_add(elapsed_microseconds(cascade_started));
                 cascade_recomputed_style_elements = cascade_recomputed_style_elements
@@ -181,8 +199,13 @@ fn compute_request_with_runtime_paint(
         }
     }
 
-    let layout =
-        compute_runtime_layout(request, roots.len(), layout_context, runtime_paint_enabled);
+    let layout = compute_runtime_layout(
+        request,
+        roots.len(),
+        layout_context,
+        profile.has_paint(),
+        profile,
+    );
 
     Ok(RuntimeCalculation {
         roots: roots.into(),
@@ -198,8 +221,7 @@ fn compute_request_with_runtime_paint(
 fn compute_root(
     request: &WorkRequest,
     root: HostNodeHandle,
-    runtime_paint_enabled: bool,
-    registered_properties_enabled: bool,
+    calculation_profile: RuntimeCalculationProfile,
     author_stylesheets: &[spinon_style::StylesheetSource],
 ) -> Result<
     (
@@ -212,12 +234,17 @@ fn compute_root(
     let view =
         StyloDocumentView::new_html_runtime_mount_shared(Arc::clone(&request.snapshot), root)
             .map_err(|error| error.to_string())?;
-    let profile = if runtime_paint_enabled && registered_properties_enabled {
-        ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
-    } else if runtime_paint_enabled {
-        ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
-    } else {
-        ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+    let profile = match calculation_profile {
+        RuntimeCalculationProfile::FlexLayout => {
+            ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+        }
+        RuntimeCalculationProfile::FlexPaint => {
+            ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
+        }
+        RuntimeCalculationProfile::RegisteredPropertiesPaint => {
+            ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
+        }
+        RuntimeCalculationProfile::BlockPaint => ComputedStyleProfile::RuntimeBlockPaintV1,
     };
     let previous_style_root = request
         .previous_styles
@@ -257,27 +284,39 @@ fn compute_root(
     let (styles, reuse_stats) = if let Some((styles, stats)) = incremental {
         (styles, stats)
     } else {
-        let styles = if runtime_paint_enabled && registered_properties_enabled {
-            compute_runtime_flex_registered_properties_paint_cascade_with_stylesheets(
-                &view,
-                author_stylesheets,
-                request.viewport,
-                StyleRevision::INITIAL,
-            )
-        } else if runtime_paint_enabled {
-            compute_runtime_flex_custom_properties_paint_cascade_with_stylesheets(
-                &view,
-                author_stylesheets,
-                request.viewport,
-                StyleRevision::INITIAL,
-            )
-        } else {
-            compute_runtime_flex_custom_properties_cascade_with_stylesheets(
-                &view,
-                author_stylesheets,
-                request.viewport,
-                StyleRevision::INITIAL,
-            )
+        let styles = match calculation_profile {
+            RuntimeCalculationProfile::FlexLayout => {
+                compute_runtime_flex_custom_properties_cascade_with_stylesheets(
+                    &view,
+                    author_stylesheets,
+                    request.viewport,
+                    StyleRevision::INITIAL,
+                )
+            }
+            RuntimeCalculationProfile::FlexPaint => {
+                compute_runtime_flex_custom_properties_paint_cascade_with_stylesheets(
+                    &view,
+                    author_stylesheets,
+                    request.viewport,
+                    StyleRevision::INITIAL,
+                )
+            }
+            RuntimeCalculationProfile::RegisteredPropertiesPaint => {
+                compute_runtime_flex_registered_properties_paint_cascade_with_stylesheets(
+                    &view,
+                    author_stylesheets,
+                    request.viewport,
+                    StyleRevision::INITIAL,
+                )
+            }
+            RuntimeCalculationProfile::BlockPaint => {
+                compute_runtime_block_paint_cascade_with_stylesheets(
+                    &view,
+                    author_stylesheets,
+                    request.viewport,
+                    StyleRevision::INITIAL,
+                )
+            }
         }
         .map_err(|error: CssCascadeError| error.to_string())?;
         let full_count = styles.elements.len() as u64;

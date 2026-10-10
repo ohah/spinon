@@ -27,6 +27,7 @@
 + (int32_t)notifyRuntimeMemoryPressure:(uint64_t)handle level:(int32_t)level;
 + (void)freeRuntimeSession:(uint64_t)handle;
 + (uint64_t)createRuntimeGpuHostWithRegisteredPropertiesFixture:(BOOL)enabled;
++ (uint64_t)createRuntimeGpuHostWithBlockPaintFixture;
 + (uint64_t)beginRuntimeGpuPresentationUpdate:(uint64_t)handle;
 + (NSString *)setRuntimeGpuEnvironment:(uint64_t)handle width:(float)width
                                 height:(float)height scale:(float)scale dark:(BOOL)dark;
@@ -45,6 +46,7 @@
 + (NSString *)evalRuntimeGpuMinMaxSizingFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuBorderWidthFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuAspectRatioFixture:(uint64_t)handle;
++ (NSString *)evalRuntimeGpuBlockPaintFixture:(uint64_t)handle;
 + (NSString *)prepareRuntimeGpuWgpuSurface:(uint64_t)handle view:(void *)view;
 + (NSString *)createRuntimeGpuWgpu:(uint64_t)handle width:(uint32_t)width
                              height:(uint32_t)height;

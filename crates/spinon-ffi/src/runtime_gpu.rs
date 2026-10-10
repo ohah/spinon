@@ -41,6 +41,8 @@ const RUNTIME_CSS_BORDER_WIDTH_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c07/runtime-border-width.js");
 const RUNTIME_CSS_ASPECT_RATIO_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c07/runtime-aspect-ratio.js");
+const RUNTIME_CSS_BLOCK_PAINT_FIXTURE_SOURCE: &str =
+    include_str!("../../../tests/fixtures/css/c08/runtime-block-paint.js");
 
 #[repr(C)]
 pub struct SpinonRuntimeGpuHost {
@@ -119,6 +121,11 @@ impl RuntimeGpuHost {
 
     fn new_registered_properties_fixture() -> Result<(Self, String), String> {
         let (session, report) = RuntimeSession::new_runtime_gpu_registered_properties_fixture()?;
+        Ok((Self::from_session(session), report))
+    }
+
+    fn new_block_paint_fixture() -> Result<(Self, String), String> {
+        let (session, report) = RuntimeSession::new_runtime_gpu_block_paint_fixture()?;
         Ok((Self::from_session(session), report))
     }
 

@@ -1,0 +1,37 @@
+{
+  "schema": "spinon-css-c08-block-flow-inventory/v1",
+  "fixtureId": "C08-block-flow-v1",
+  "viewport": {
+    "width": 320,
+    "height": 240,
+    "deviceScaleFactors": [1, 2]
+  },
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "pointer": "coarse",
+    "hover": "none"
+  },
+  "nodes": [
+    { "id": "root", "properties": ["display", "background-color", "color", "font-size", "font-family"] },
+    { "id": "hero", "properties": ["display", "background-color", "color", "font-size", "font-family"] },
+    { "id": "hero-child", "properties": ["display", "background-color", "color", "font-size", "font-family"] },
+    { "id": "group", "properties": ["display", "background-color", "color", "font-size", "font-family"] },
+    { "id": "first", "properties": ["display", "background-color", "color", "font-size", "font-family"] },
+    { "id": "second", "properties": ["display", "background-color", "color", "font-size", "font-family"] },
+    { "id": "hidden", "properties": ["display", "background-color", "color", "font-size", "font-family"] },
+    { "id": "hidden-child", "properties": ["display", "background-color", "color", "font-size", "font-family"] },
+    { "id": "last", "properties": ["display", "background-color", "color", "font-size", "font-family"] }
+  ],
+  "comparison": {
+    "computedValues": "문자열 정확 일치",
+    "nodeGeometry": {
+      "unit": "CSS px",
+      "perCoordinateMaximumAbsoluteError": 0.5,
+      "aggregateAveragesAllowed": false
+    },
+    "opaquePaint": "고정된 색상과 노드 순서로 GPU 장면 연결 확인",
+    "hidden": "display:none 노드와 descendant의 frame이 0이고 장면에서 제외"
+  }
+}

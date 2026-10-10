@@ -51,6 +51,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c072-border-width")
     private let aspectRatioProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c073-aspect-ratio")
+    private let blockPaintProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c08-block-paint")
     private let registeredPropertiesProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c052-registered-properties")
         || ProcessInfo.processInfo.arguments.contains("--spinon-c053-runtime-result-cache")
@@ -79,6 +81,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let title = UILabel()
         title.text = viewportUnitsProbeRequested
             ? "SPINON · C06.6 viewport units"
+            : blockPaintProbeRequested
+            ? "SPINON · C08 Block 흐름"
             : aspectRatioProbeRequested
             ? "SPINON · C07.3 aspect ratio"
             : borderWidthProbeRequested
@@ -110,6 +114,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let description = UILabel()
         description.text = viewportUnitsProbeRequested
             ? "V8 vw/svw/lvw/dvw → Stylo CSS px → Taffy → WGPU"
+            : blockPaintProbeRequested
+            ? "V8 DOM Block 흐름 → Stylo → Taffy → WGPU"
             : aspectRatioProbeRequested
             ? "V8 CSS aspect-ratio → Stylo → Taffy → WGPU"
             : borderWidthProbeRequested
@@ -145,6 +151,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         canvasView.isAccessibilityElement = true
         canvasView.accessibilityLabel = viewportUnitsProbeRequested
             ? "C06.6 viewport units WGPU 장면"
+            : blockPaintProbeRequested
+            ? "C08 Block 흐름 기본 페인트 WGPU 장면"
             : aspectRatioProbeRequested
             ? "C07.3 종횡비 WGPU 장면"
             : borderWidthProbeRequested
@@ -220,7 +228,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         )
         customPropertiesButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(customPropertiesButton)
-        if authorStylesheetsProbeRequested || minMaxSizingProbeRequested || borderWidthProbeRequested
+        if authorStylesheetsProbeRequested || blockPaintProbeRequested
+            || minMaxSizingProbeRequested || borderWidthProbeRequested
             || aspectRatioProbeRequested
             || typedCssMathProbeRequested
             || fontRelativeUnitsProbeRequested
@@ -410,9 +419,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
     private func initializeRuntime() {
         guard !isClosing else { return }
-        let handle = SpinonRunner.createRuntimeGpuHost(
-            withRegisteredPropertiesFixture: registeredPropertiesProbeRequested
-        )
+        let handle = blockPaintProbeRequested
+            ? SpinonRunner.createRuntimeGpuHostWithBlockPaintFixture()
+            : SpinonRunner.createRuntimeGpuHost(
+                withRegisteredPropertiesFixture: registeredPropertiesProbeRequested
+            )
         guard handle != 0 else {
             postStatus("실패 · V8 runtime host를 만들지 못했습니다")
             return
@@ -440,6 +451,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         var result = viewportUnitsProbeRequested
             ? SpinonRunner.evalRuntimeGpuViewportUnitsFixture(handle)
+            : blockPaintProbeRequested
+            ? SpinonRunner.evalRuntimeGpuBlockPaintFixture(handle)
             : aspectRatioProbeRequested
             ? SpinonRunner.evalRuntimeGpuAspectRatioFixture(handle)
             : borderWidthProbeRequested
@@ -472,6 +485,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         if sceneWasSupersededAfterCommit {
             let scope = viewportUnitsProbeRequested
                 ? "SPINON_C066A"
+                : blockPaintProbeRequested
+                ? "SPINON_C08"
                 : aspectRatioProbeRequested
                 ? "SPINON_C073"
                 : borderWidthProbeRequested
@@ -498,6 +513,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         } else {
             let scope = viewportUnitsProbeRequested
                 ? "SPINON_C066A"
+                : blockPaintProbeRequested
+                ? "SPINON_C08"
                 : aspectRatioProbeRequested
                 ? "SPINON_C073"
                 : borderWidthProbeRequested

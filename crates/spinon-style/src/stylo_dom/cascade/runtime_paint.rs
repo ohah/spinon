@@ -8,6 +8,27 @@ use super::{
     runtime_layout::{RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES, RUNTIME_FLEX_LAYOUT_PROPERTIES},
 };
 
+pub(super) const RUNTIME_BLOCK_PAINT_AUTHOR_PROPERTIES: &[&str] = &[
+    "display",
+    "box-sizing",
+    "width",
+    "height",
+    "background-color",
+    "color",
+    "font-size",
+    "font-family",
+];
+
+pub(super) fn runtime_block_paint_properties() -> Vec<(&'static str, LonghandId)> {
+    let mut properties = RUNTIME_FLEX_LAYOUT_PROPERTIES.to_vec();
+    properties.extend([
+        ("background-color", LonghandId::BackgroundColor),
+        ("color", LonghandId::Color),
+        ("font-family", LonghandId::FontFamily),
+    ]);
+    properties
+}
+
 pub(super) fn computed_background_for_profile(
     profile: ComputedStyleProfile,
     computed: &ComputedValues,
@@ -20,7 +41,8 @@ pub(super) fn computed_background_for_profile(
         }
         ComputedStyleProfile::RuntimeFlexPaintV1
         | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
-        | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1 => {
+        | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
+        | ComputedStyleProfile::RuntimeBlockPaintV1 => {
             let paint = computed_runtime_background_paint(computed, node)?;
             let color = match paint {
                 ComputedBackgroundPaint::Transparent => None,
@@ -30,6 +52,33 @@ pub(super) fn computed_background_for_profile(
         }
         _ => Ok((None, None)),
     }
+}
+
+/// C08의 제한 Block 입력과 background paint를 같은 Stylo cascade에서 계산합니다.
+pub fn compute_runtime_block_paint_cascade(
+    view: &StyloDocumentView,
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+) -> Result<super::ComputedStyleSnapshot, CssCascadeError> {
+    compute_runtime_block_paint_cascade_with_stylesheets(view, &[], viewport, style_revision)
+}
+
+/// C08의 제한 author stylesheet와 inline 입력을 같은 Stylo cascade에서 계산합니다.
+pub fn compute_runtime_block_paint_cascade_with_stylesheets(
+    view: &StyloDocumentView,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+) -> Result<super::ComputedStyleSnapshot, CssCascadeError> {
+    let properties = runtime_block_paint_properties();
+    compute_cascade(
+        view,
+        author_stylesheets,
+        viewport,
+        style_revision,
+        &properties,
+        ComputedStyleProfile::RuntimeBlockPaintV1,
+    )
 }
 
 /// C04.10 runtime Flex와 단색 배경 paint를 같은 Stylo cascade에서 계산합니다.
@@ -127,5 +176,13 @@ pub fn first_unsupported_runtime_flex_paint_inline_property(
 ) -> Option<(NodeId, String)> {
     super::runtime_layout::first_unsupported_inline_property(view, |property| {
         property == "background-color" || RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES.contains(&property)
+    })
+}
+
+pub fn first_unsupported_runtime_block_paint_inline_property(
+    view: &StyloDocumentView,
+) -> Option<(NodeId, String)> {
+    super::runtime_layout::first_unsupported_inline_property(view, |property| {
+        RUNTIME_BLOCK_PAINT_AUTHOR_PROPERTIES.contains(&property)
     })
 }

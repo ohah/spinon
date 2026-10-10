@@ -40,7 +40,7 @@ impl fmt::Display for StyleRenderError {
             }
             Self::UnsupportedRuntimeProfile => {
                 formatter.write_str(
-                    "RuntimeFlexPaintV1, RuntimeFlexCustomPropertiesPaintV1 또는 RuntimeFlexRegisteredPropertiesPaintV1 computed-style profile만 지원합니다",
+                    "RuntimeFlexPaintV1 계열 또는 RuntimeBlockPaintV1 computed-style profile만 지원합니다",
                 )
             }
             Self::SnapshotMismatch { field } => {

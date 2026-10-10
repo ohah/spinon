@@ -81,6 +81,7 @@ enum RuntimeCssProfile {
     Default,
     RuntimeGpu,
     RegisteredPropertiesFixture,
+    BlockPaintFixture,
 }
 
 enum Command {
@@ -250,6 +251,11 @@ impl RuntimeSession {
         Self::new_with_css_profile(RuntimeCssProfile::RegisteredPropertiesFixture)
     }
 
+    /// C08 제한 Block·기본 페인트 fixture 전용 runtime을 만듭니다.
+    pub fn new_runtime_gpu_block_paint_fixture() -> Result<(Self, String), String> {
+        Self::new_with_css_profile(RuntimeCssProfile::BlockPaintFixture)
+    }
+
     fn new_with_css_profile(profile: RuntimeCssProfile) -> Result<(Self, String), String> {
         let startup_started = Instant::now();
         let ua_cascade = match profile {
@@ -257,6 +263,9 @@ impl RuntimeSession {
             RuntimeCssProfile::RuntimeGpu => RuntimeUaCascadeCoordinator::new_runtime_gpu()?,
             RuntimeCssProfile::RegisteredPropertiesFixture => {
                 RuntimeUaCascadeCoordinator::new_runtime_gpu_registered_properties()?
+            }
+            RuntimeCssProfile::BlockPaintFixture => {
+                RuntimeUaCascadeCoordinator::new_runtime_gpu_block_paint()?
             }
         };
         let css_worker_ready_us = ua_cascade.startup_duration_us();

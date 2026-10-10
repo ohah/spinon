@@ -1,6 +1,6 @@
 # 0045 · C07.3 종횡비
 
-**문서 ID:** `0045` · **내부 계약 숫자 버전:** `0.1.0` 고정 · **상태:** [PR #104](https://github.com/ohah/spinon/pull/104) 구현·검증 완료, 검토 중 · **공개 API:** 아님
+**문서 ID:** `0045` · **내부 계약 숫자 버전:** `0.1.0` 고정 · **상태:** [PR #104](https://github.com/ohah/spinon/pull/104) rebase merge 완료 · **공개 API:** 아님
 
 `0045`는 문서 ID다. 출시 전 내부 계약·Spinon crate 숫자 버전은 `0.1.0`으로 고정하며 구현이나 문서 추가로 올리지 않는다.
 
@@ -45,4 +45,4 @@ width가 320 CSS px로 확정되고 height가 auto인 경우, 빈 content box라
 
 ## 검증과 상태
 
-계획·Chromium 기준·구현·계획 재검토·구현 실패 경로 검토 및 Android/iOS Simulator 결과는 [C07.3 계획](../../plan/c07-3-aspect-ratio.md), [Chrome 사전 기준](evidence/c07-3-aspect-ratio-precomparison-2026-10-10.md), [Taffy 차이·시뮬레이터 결과](evidence/c07-3-taffy-differential-2026-10-10.md), [수정 계획 재검토](evidence/c07-3-aspect-ratio-plan-review-scope-followup-2026-10-10.md), [구현 검토](evidence/c07-3-aspect-ratio-implementation-review-2026-10-10.md)에서 추적한다. Chrome의 resolved `getComputedStyle()` 문자열은 Stylo computed 문자열과 직접 비교하지 않고, `computedStyleMap()`의 `aspect-ratio`·`box-sizing`와 used geometry를 구분한다. 병합 전까지 공식 완료 체크와 공개 API 목록은 변경하지 않는다.
+계획·Chromium 기준·구현·계획 재검토·구현 실패 경로 검토 및 Android/iOS Simulator 결과는 [C07.3 계획](../../plan/c07-3-aspect-ratio.md), [Chrome 사전 기준](evidence/c07-3-aspect-ratio-precomparison-2026-10-10.md), [Taffy 차이·시뮬레이터 결과](evidence/c07-3-taffy-differential-2026-10-10.md), [수정 계획 재검토](evidence/c07-3-aspect-ratio-plan-review-scope-followup-2026-10-10.md), [구현 검토](evidence/c07-3-aspect-ratio-implementation-review-2026-10-10.md)에서 추적한다. PR #104는 2026-10-10에 rebase merge로 병합됐으며 공식 상태 대장에 반영했다. Chrome의 resolved `getComputedStyle()` 문자열은 Stylo computed 문자열과 직접 비교하지 않고, `computedStyleMap()`의 `aspect-ratio`·`box-sizing`와 used geometry를 구분한다.
