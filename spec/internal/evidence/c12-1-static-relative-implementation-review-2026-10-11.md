@@ -34,7 +34,7 @@
 - `position:absolute`가 이제 구체적인 `unsupported_computed_value`로 거부되므로 C09 테스트의 오래된 일반 오류 기대값을 갱신했다.
 - inset 공용 parser가 인자 8개를 받아 Clippy에서 실패했다. inset `auto` 처리를 호출자에 두어 공용 parser를 단순화했다.
 - runtime state 실행에서 `document.getElementById`를 사용할 수 없었다. 초기 fixture가 보관한 node reference로 바꿨다.
-- Android에서 첫 scene supersession 응답을 최종 실패로 처리할 수 있었다. 같은 inventory state만 최대 5회 재시도하고 성공·재시도 횟수를 로그에 남긴다. 검증 실행에서는 한 차례 retry 뒤 통과했다.
+- Android C12.1 상태 전환 평가에서 scene supersession 응답을 최종 실패로 처리할 수 있었다. 같은 inventory state만 최대 5회 재시도하고 성공·재시도 횟수를 로그에 남긴다. 검증 실행에서는 한 차례 retry 뒤 통과했다.
 - 모바일 frame 증거가 원래 build 디렉터리에만 있었고 reference suite가 이를 확인하지 않았다. 로그와 캡처를 체크인하고 47개 노드 비교를 CSS reference suite에 연결했다.
 
 ## Android 초기 표면 준비 후속 수정 검토
