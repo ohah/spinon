@@ -1,0 +1,59 @@
+{
+  "schema": "spinon-css-c09-block-formatting-inventory/v1",
+  "fixtureId": "C09-block-formatting-precomparison-v1",
+  "viewport": {
+    "width": 320,
+    "height": 240,
+    "deviceScaleFactors": [1, 2]
+  },
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "forcedColors": "none",
+    "pointer": "coarse",
+    "hover": "none"
+  },
+  "comparison": {
+    "rectFields": ["x", "y", "width", "height"],
+    "maximumAbsoluteRectErrorCssPx": 0.5,
+    "computedProperties": [
+      "display", "direction", "writing-mode", "position", "float", "clear", "transform", "box-sizing", "width", "height", "min-width", "max-width", "min-height", "max-height",
+      "margin-top", "margin-right", "margin-bottom", "margin-left",
+      "padding-top", "padding-right", "padding-bottom", "padding-left",
+      "border-top-style", "border-right-style", "border-bottom-style", "border-left-style",
+      "border-top-width", "border-right-width", "border-bottom-width", "border-left-width"
+    ],
+    "typedProperties": [
+      "width", "height", "margin-top", "margin-right", "margin-bottom", "margin-left",
+      "padding-top", "padding-right", "padding-bottom", "padding-left",
+      "border-top-width", "border-right-width", "border-bottom-width", "border-left-width"
+    ],
+    "notes": "computed CSS values and used frame geometry are stored separately; each app root is one independent HostRoot fragment inside a fixture-only flow-root viewport wrapper"
+  },
+  "cases": [
+    { "id": "c091-root-viewport", "harnessId": "viewport-c091-root-viewport", "tree": { "id": "c091-root-viewport", "children": [{ "id": "c091-root-viewport-child" }] } },
+    { "id": "c091-auto-width", "harnessId": "viewport-c091-auto-width", "tree": { "id": "c091-auto-width-root", "children": [{ "id": "c091-auto-width-parent", "children": [{ "id": "c091-auto-width-child" }] }] } },
+    { "id": "c091-auto-width-min-width", "harnessId": "viewport-c091-auto-width-min-width", "tree": { "id": "c091-min-width-root", "children": [{ "id": "c091-min-width-parent", "children": [{ "id": "c091-min-width-child" }] }] } },
+    { "id": "c091-percentage-containing-block", "harnessId": "viewport-c091-percentage-containing-block", "tree": { "id": "c091-percentage-root", "children": [{ "id": "c091-percentage-parent", "children": [{ "id": "c091-percentage-child" }] }] } },
+    { "id": "c091-centered-auto-margins", "harnessId": "viewport-c091-centered-auto-margins", "tree": { "id": "c091-centered-root", "children": [{ "id": "c091-centered-parent", "children": [{ "id": "c091-centered-child" }] }] } },
+    { "id": "c091-vertical-auto-margins", "harnessId": "viewport-c091-vertical-auto-margins", "tree": { "id": "c091-vertical-auto-root", "children": [{ "id": "c091-vertical-auto-parent", "children": [{ "id": "c091-vertical-auto-child" }] }] } },
+    { "id": "c091-overconstrained-ltr", "harnessId": "viewport-c091-overconstrained-ltr", "tree": { "id": "c091-overconstrained-root", "children": [{ "id": "c091-overconstrained-parent", "children": [{ "id": "c091-overconstrained-child" }] }] } },
+    { "id": "c091-negative-margin-auto-width", "harnessId": "viewport-c091-negative-margin-auto-width", "tree": { "id": "c091-negative-root", "children": [{ "id": "c091-negative-parent", "children": [{ "id": "c091-negative-auto-width-child" }] }] } },
+    { "id": "c091-auto-height-order", "harnessId": "viewport-c091-auto-height-order", "tree": { "id": "c091-auto-height-root", "children": [{ "id": "c091-auto-height-first" }, { "id": "c091-auto-height-second" }] } },
+    { "id": "c091-hidden-subtree", "harnessId": "viewport-c091-hidden-subtree", "tree": { "id": "c091-hidden-root", "children": [{ "id": "c091-hidden-parent", "children": [{ "id": "c091-hidden-child" }] }, { "id": "c091-hidden-visible-sibling" }] } },
+    { "id": "c092-positive-siblings", "harnessId": "viewport-c092-positive-siblings", "tree": { "id": "c092-positive-root", "children": [{ "id": "c092-positive-first" }, { "id": "c092-positive-second" }] } },
+    { "id": "c092-signed-self-collapse", "harnessId": "viewport-c092-signed-self-collapse", "tree": { "id": "c092-signed-root", "children": [{ "id": "c092-signed-first" }, { "id": "c092-signed-empty" }, { "id": "c092-signed-last" }] } },
+    { "id": "c092-fractional-signed-collapse", "harnessId": "viewport-c092-fractional-signed-collapse", "tree": { "id": "c092-fractional-root", "children": [{ "id": "c092-fractional-first" }, { "id": "c092-fractional-empty" }, { "id": "c092-fractional-last" }] } },
+    { "id": "c092-negative-siblings", "harnessId": "viewport-c092-negative-siblings", "tree": { "id": "c092-negative-sibling-root", "children": [{ "id": "c092-negative-first" }, { "id": "c092-negative-second" }] } },
+    { "id": "c092-parent-first-child", "harnessId": "viewport-c092-parent-first-child", "tree": { "id": "c092-parent-first-root", "children": [{ "id": "c092-parent-first", "children": [{ "id": "c092-parent-first-child" }] }] } },
+    { "id": "c092-parent-last-child", "harnessId": "viewport-c092-parent-last-child", "tree": { "id": "c092-parent-last-root", "children": [{ "id": "c092-parent-last", "children": [{ "id": "c092-parent-last-child" }] }, { "id": "c092-parent-last-after" }] } },
+    { "id": "c092-padding-barrier", "harnessId": "viewport-c092-padding-barrier", "tree": { "id": "c092-padding-root", "children": [{ "id": "c092-padding-parent", "children": [{ "id": "c092-padding-child" }] }] } },
+    { "id": "c092-border-none", "harnessId": "viewport-c092-border-none", "tree": { "id": "c092-border-none-root", "children": [{ "id": "c092-border-none-parent", "children": [{ "id": "c092-border-none-child" }] }] } },
+    { "id": "c092-border-solid", "harnessId": "viewport-c092-border-solid", "tree": { "id": "c092-border-solid-root", "children": [{ "id": "c092-border-solid-parent", "children": [{ "id": "c092-border-solid-child" }] }] } },
+    { "id": "c093-flow-root-internal", "harnessId": "viewport-c093-flow-root-internal", "tree": { "id": "c093-flow-root-internal-root", "children": [{ "id": "c093-flow-root-internal", "children": [{ "id": "c093-flow-root-internal-child" }] }] } },
+    { "id": "c093-flow-root-parent-margin", "harnessId": "viewport-c093-flow-root-parent-margin", "tree": { "id": "c093-flow-root-parent-root", "children": [{ "id": "c093-flow-root-parent", "children": [{ "id": "c093-flow-root-parent-child", "children": [{ "id": "c093-flow-root-parent-grandchild" }] }] }] } },
+    { "id": "c093-flow-root-parent-last-child", "harnessId": "viewport-c093-flow-root-parent-last-child", "tree": { "id": "c093-flow-root-parent-last-root", "children": [{ "id": "c093-flow-root-parent-last", "children": [{ "id": "c093-flow-root-parent-last-child", "children": [{ "id": "c093-flow-root-parent-last-grandchild" }] }] }, { "id": "c093-flow-root-parent-last-after" }] } },
+    { "id": "c093-flow-root-sibling-margin", "harnessId": "viewport-c093-flow-root-sibling-margin", "tree": { "id": "c093-flow-root-sibling-root", "children": [{ "id": "c093-flow-root-sibling-before" }, { "id": "c093-flow-root-sibling" }, { "id": "c093-flow-root-sibling-after" }] } }
+  ]
+}

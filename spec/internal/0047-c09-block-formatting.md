@@ -10,7 +10,7 @@
 - 입력은 같은 HostDocument snapshot, layout root, viewport/containing block, cascade result와 source/document/style/environment revision tuple이어야 한다. 반환 frame과 진단도 동일 tuple을 echo한다. tuple 일부가 달라지면 전체 계산을 거부한다.
 - CSS computed value는 Stylo가 소유하고 레이아웃 adapter는 typed 값을 projection한다. CSS 문자열 재파싱, 기본값 대체, 오류 뒤 부분 frame 공개를 하지 않는다.
 - 이 계약의 초기 성공 범위는 `horizontal-tb`, `direction:ltr`, in-flow non-replaced Block box와 `display:none` subtree다. visible text, line box, float/clear, positioned, inline/table/flex/grid, replaced intrinsic sizing은 별도 소유 항목이 준비되기 전까지 profile 밖이다.
-- C04.8 의미상 HostRoot 직속 Element는 CSS `:root`/`documentElement`가 아니라 독립 fragment cascade root다. 초기 성공 범위는 HostRoot 직속 Element 하나이며 여러 root와 `body`·`documentElement` 의미는 제외한다. viewport는 containing block 입력으로 제공하고 DOM·paint node로 노출하지 않는다. Chromium 기준 fixture는 `html, body { margin:0; padding:0 }`로 초기 여백을 없앤 뒤 viewport와 같은 크기의 `display:flow-root` wrapper 안에 일반 앱 Block 하나를 두고 wrapper margin·padding·border를 0으로 둔다. 이 wrapper는 HTML root/body 특례와 wrapper-child margin collapse를 차단하는 비교 장치이며 Spinon node/API가 아니다. 앱 Block 자신의 margin과 viewport 기준 frame만 비교한다. CSS root margin propagation은 이 profile에 적용하지 않는다.
+- C04.8 의미상 HostRoot 직속 Element는 CSS `:root`/`documentElement`가 아니라 독립 fragment cascade root다. 초기 성공 범위는 HostRoot 직속 Element 하나이며 여러 root와 `body`·`documentElement` 의미는 제외한다. viewport는 containing block 입력으로 제공하고 DOM·paint node로 노출하지 않는다. Chromium 기준 fixture는 `html, body { margin:0; padding:0 }`로 초기 여백을 없앤 뒤 viewport 크기의 `display:flow-root` wrapper 안에 일반 앱 Block 하나를 둔다. case별 wrapper는 테스트 문서에서 viewport 원점에 절대 배치해 겹친다. 비교기는 inventory의 case 하나를 HostRoot 직속 Element로 materialize하고 wrapper와 다른 case는 제품 트리에서 제외하며, viewport를 별도 containing-block 입력으로 준다. wrapper는 HTML root/body 특례, wrapper-child margin collapse, 숨김 box의 문서상 위치에 따른 좌표 오염을 차단하는 fixture harness이며 Spinon node/API가 아니다. 앱 Block 자신의 margin과 viewport 기준 frame만 비교한다. CSS root margin propagation은 이 profile에 적용하지 않는다.
 
 ## 2. C09.1 normal Block geometry
 
@@ -44,15 +44,18 @@
 
 ## 6. 비교·오류·검증
 
-- 기준 환경은 고정 Chromium `154.0.8037.98`, revision `@b859317bf11f6be47f9b7799ec690a0a42a1fb33`, viewport `320×240` CSS px, DPR 1·2다. executable hash, fixture·inventory digest, locale/timezone/color scheme/pointer와 capture provenance가 맞지 않으면 비교를 중지한다.
+- 구현 전 기준 artifact는 [`c09-block-formatting-v1.json`](../../tests/fixtures/css/references/c09-block-formatting-v1.json)이다. 고정 Chromium `154.0.8037.98`, revision `@b859317bf11f6be47f9b7799ec690a0a42a1fb33`, viewport `320×240` CSS px, DPR 1·2와 23개 case·76개 node를 담는다. 실행 파일 hash, HTML·inventory·capture digest, locale/timezone/color scheme/pointer와 capture provenance가 맞지 않으면 비교를 중지한다. 재생성 명령은 `bun run css:reference:c09-block-formatting`이며 기존 JSON을 덮어쓰지 않는다.
 - authored/computed margin 값은 computed value oracle로, collapse가 반영된 결과는 node별 `getBoundingClientRect()` geometry로 따로 대조한다. 각 지원 node의 x/y/width/height 필드마다 최대 오차 `0.5 CSS px`, DPR 간 CSS geometry 일치를 요구한다. screenshot이나 평균 오차로 실패를 숨기지 않는다.
-- Chromium 원본 HTML·inventory를 Rust 비교기 및 실제 runtime fixture의 공통 입력으로 쓴다. node ID·부모·document order를 보존하며 각 platform V8 실행은 예상 node별 CSS frame과 revision을 수집해 같은 reference에 대조한다.
+- Chromium 원본 HTML·inventory를 Rust 비교기 및 실제 runtime fixture의 공통 입력으로 쓴다. runtime은 case 하나를 별도 HostDocument root로 materialize하며 fixture wrapper를 제품 트리에 복제하지 않는다. node ID·부모·document order를 보존하며 각 platform V8 실행은 예상 node별 CSS frame과 revision을 수집해 같은 reference에 대조한다.
 - unsupported declaration, Stylo parser 진단, 불명확한 basis, 잘못된/non-finite geometry, stale revision, Taffy 오류는 node/property가 식별되는 전체 실패다. 이전 partial tree나 이전 revision scene을 새 계산의 성공 결과로 보이지 않는다.
 - 계획 검토 20개 관점은 기능 구현 검토와 별도다. 구현 뒤에는 새 20개 failure perspective를 작성한다. 둘 중 하나도 다른 문서의 표를 재사용하지 않는다.
 
 ## 7. 공식 참고
 
 - [C09 계획·하위 작업·판정 기준](../../plan/c09-block-formatting.md)
+- [계획의 fixture 통합 재검토](./evidence/c09-block-formatting-plan-review-precomparison-followup-2026-10-10.md)
+- [Chromium 사전 비교 결과·도구 검토](./evidence/c09-block-formatting-precomparison-2026-10-10.md)
+- [고정 Chromium HTML fixture](../../tests/fixtures/css/c09/block-formatting.html) · [inventory](../../tests/fixtures/css/c09/block-formatting-inventory.json) · [capture 도구](../../tools/css-reference/capture-c09-block-formatting.mjs) · [reference 테스트](../../tools/css-reference/c09-block-formatting.test.mjs)
 - [CSS 2.1 margin collapse](https://www.w3.org/TR/CSS21/box.html#collapsing-margins), [Block formatting context](https://www.w3.org/TR/CSS21/visuren.html#block-formatting), [containing block와 width](https://www.w3.org/TR/CSS21/visudet.html#containing-block-details)
 - [CSS 2.1 §10.3.5 float](https://www.w3.org/TR/CSS21/visudet.html#float-width), [§10.3.7 absolute non-replaced](https://www.w3.org/TR/CSS21/visudet.html#abs-non-replaced-width), [§10.3.9 inline-block](https://www.w3.org/TR/CSS21/visudet.html#inlineblock-width) shrink-to-fit 문맥. 정확한 알고리즘을 정의하지 않은 부분은 pinned Chromium과 대조한다.
 - [CSS Display Level 3 `flow-root`](https://www.w3.org/TR/css-display-3/#flow-root) — Editor’s Draft; Chromium 고정 reference가 구현 비교 oracle이다.
