@@ -55,9 +55,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c08-block-paint")
     private let marginCollapseProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c092-margin-collapse")
+    private let flowRootProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c093-flow-root")
     private let blockFormattingProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c091-block-formatting")
         || ProcessInfo.processInfo.arguments.contains("--spinon-c092-margin-collapse")
+        || ProcessInfo.processInfo.arguments.contains("--spinon-c093-flow-root")
     private let registeredPropertiesProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c052-registered-properties")
         || ProcessInfo.processInfo.arguments.contains("--spinon-c053-runtime-result-cache")
@@ -84,7 +87,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
 
         let title = UILabel()
-        title.text = marginCollapseProbeRequested
+        title.text = flowRootProbeRequested
+            ? "SPINON · C09.3 flow-root"
+            : marginCollapseProbeRequested
             ? "SPINON · C09.2 margin collapse"
             : blockFormattingProbeRequested
             ? "SPINON · C09.1 Block formatting"
@@ -121,7 +126,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.addSubview(title)
 
         let description = UILabel()
-        description.text = marginCollapseProbeRequested
+        description.text = flowRootProbeRequested
+            ? "V8 DOM flow-root BFC 경계 → Stylo → Taffy → WGPU · 320×240 CSS px"
+            : marginCollapseProbeRequested
             ? "V8 DOM signed vertical margins → Stylo → Taffy → WGPU · 320×240 CSS px"
             : blockFormattingProbeRequested
             ? "V8 DOM Block·auto margin → Stylo → Taffy → WGPU · 320×240 CSS px"
@@ -162,7 +169,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         canvasView.translatesAutoresizingMaskIntoConstraints = false
         canvasView.isAccessibilityElement = true
-        canvasView.accessibilityLabel = marginCollapseProbeRequested
+        canvasView.accessibilityLabel = flowRootProbeRequested
+            ? "C09.3 flow-root 내부 margin 격리와 외부 collapse WGPU 장면"
+            : marginCollapseProbeRequested
             ? "C09.2 signed vertical margin collapse WGPU 장면"
             : viewportUnitsProbeRequested
             ? "C06.6 viewport units WGPU 장면"
@@ -475,7 +484,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
         log("SPINON_C0410_ENVIRONMENT \(environment ?? "")")
 
-        var result = marginCollapseProbeRequested
+        var result = flowRootProbeRequested
+            ? SpinonRunner.evalRuntimeGpuFlowRootFixture(handle)
+            : marginCollapseProbeRequested
             ? SpinonRunner.evalRuntimeGpuMarginCollapseFixture(handle)
             : viewportUnitsProbeRequested
             ? SpinonRunner.evalRuntimeGpuViewportUnitsFixture(handle)

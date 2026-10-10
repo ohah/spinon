@@ -8,7 +8,7 @@ use super::StyloDocumentView;
 
 const MAX_NESTED_RULE_DEPTH: usize = 64;
 
-/// C09.1의 Block profile이 계산 전에 거부해야 하는 `display` 값을 찾습니다.
+/// C09 Block profile이 계산 전에 거부해야 하는 `display` 값을 찾습니다.
 pub fn first_unsupported_runtime_block_display_inline_value(
     view: &StyloDocumentView,
 ) -> Option<(NodeId, String)> {
@@ -203,7 +203,6 @@ fn is_unsupported_display_keyword(value: &str) -> bool {
         value,
         "contents"
             | "flow"
-            | "flow-root"
             | "inherit"
             | "initial"
             | "inline"
@@ -273,6 +272,11 @@ mod tests {
             None
         );
         assert_eq!(
+            first_unsupported_declaration_value("display: flow-root"),
+            None,
+            "C09 formatting profile에서 flow-root를 허용합니다"
+        );
+        assert_eq!(
             first_unsupported_declaration_value("display: unknown-value"),
             None,
             "CSS 문법상 무효한 keyword는 Stylo의 정상 cascade recovery에 맡깁니다"
@@ -319,7 +323,7 @@ mod tests {
             first_unsupported_runtime_block_display_stylesheet_value(
                 "@supports (display: grid) { @layer app { .box { display: flow-root; } } }",
             ),
-            Some("flow-root".to_owned())
+            None
         );
     }
 

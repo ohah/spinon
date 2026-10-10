@@ -151,7 +151,7 @@ fn root_axes(
                 LayoutDimension::Auto => {
                     matches!(
                         node.style.display,
-                        LayoutDisplay::Block | LayoutDisplay::Flex
+                        LayoutDisplay::Block | LayoutDisplay::FlowRoot | LayoutDisplay::Flex
                     )
                 }
             },
@@ -175,7 +175,10 @@ fn is_axis_definite(
         }
         LayoutDimension::Auto => {
             let block_auto_width = matches!(axis, LayoutAxis::Width)
-                && parent.style.display == LayoutDisplay::Block
+                && matches!(
+                    parent.style.display,
+                    LayoutDisplay::Block | LayoutDisplay::FlowRoot
+                )
                 && parent_axes.width;
             let stretched_cross_size = parent.style.display == LayoutDisplay::Flex
                 && parent.style.align_items == crate::LayoutAlignItems::Stretch

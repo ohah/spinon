@@ -373,12 +373,14 @@ fn block_profile_accepts_hidden_root_and_omits_its_scene() {
 
 #[test]
 fn block_profile_rejects_flex_display_and_unsupported_inline_properties() {
-    let (request, _) = block_request("display:flex;width:280px", &[]);
-    let failure = compute_request_for_block_paint(&request)
-        .unwrap()
-        .layout
-        .unwrap_err();
-    assert_eq!(failure.code, "unsupported_block_display");
+    for display in ["flex", "flow-root"] {
+        let (request, _) = block_request(&format!("display:{display};width:280px"), &[]);
+        let failure = compute_request_for_block_paint(&request)
+            .unwrap()
+            .layout
+            .unwrap_err();
+        assert_eq!(failure.code, "unsupported_block_display", "{display}");
+    }
 
     let (request, _) = block_request("width:280px;border:1px solid red", &[]);
     let failure = compute_request_for_block_paint(&request)

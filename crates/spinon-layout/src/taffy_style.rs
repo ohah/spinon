@@ -23,6 +23,7 @@ pub(super) fn to_taffy_style(
         display: match style.display {
             LayoutDisplay::Flex => Display::Flex,
             LayoutDisplay::Block => Display::Block,
+            LayoutDisplay::FlowRoot => Display::FlowRoot,
             LayoutDisplay::None => Display::None,
         },
         box_sizing: match style.box_sizing {

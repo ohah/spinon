@@ -1,8 +1,8 @@
 # 0047 · C09 Block formatting
 
-**문서 ID:** `0047` · **내부 계약 숫자 버전:** `0.1.0` 고정 · **상태:** C09.1 [PR #107 리베이스 병합](https://github.com/ohah/spinon/pull/107); C09.2 구현·Chromium/Rust·시뮬레이터 검증 완료 · [PR #109 리베이스 병합](https://github.com/ohah/spinon/pull/109); C09.3–C09.4 미구현 · **공개 API:** 아님
+**문서 ID:** `0047` · **내부 계약 숫자 버전:** `0.1.0` 고정 · **상태:** C09.1 [PR #107 리베이스 병합](https://github.com/ohah/spinon/pull/107); C09.2 [PR #109 리베이스 병합](https://github.com/ohah/spinon/pull/109); C09.3 구현·Chromium/Rust·Android/iOS Simulator 검증 완료, PR 미병합; C09.4 미구현 · **공개 API:** 아님
 
-`0047`은 문서 ID다. 구현·검증·문서 개정만으로 앱·crate·내부 계약의 숫자 버전을 올리지 않는다. C08.1 PR #105와 C09 계획·reference가 병합됐고, C09.1 runtime 구현은 PR #107로 병합됐다. C09.2는 이번 변경에서 내부 fixture·runtime 연결과 검증을 마쳤다. C09 상위, C09.3–C09.4 또는 공개 CSS 지원 완료를 뜻하지 않는다.
+`0047`은 문서 ID다. 구현·검증·문서 개정만으로 앱·crate·내부 계약의 숫자 버전을 올리지 않는다. C08.1 PR #105와 C09 계획·reference가 병합됐고, C09.1 runtime 구현은 PR #107, C09.2는 PR #109로 병합됐다. C09.3 내부 fixture·runtime 연결과 시뮬레이터 검증은 현재 PR에서 완료했으며 아직 병합되지 않았다. C09 상위, C09.4 또는 공개 CSS 지원 완료를 뜻하지 않는다.
 
 ## 1. 입력과 profile
 
@@ -62,6 +62,20 @@
 - `overflow`, position, float, flex/grid, table, inline-block 등이 만드는 formatting context는 이 profile에서 추정하거나 `block`으로 치환하지 않는다. 각 기능의 C12/C13/C10/C11/C15/C26 구현 단계에서 C09 fixture로 교차 검증한다.
 - `flow-root` 하나를 구현했다고 모든 BFC 생성 조건, float containment 또는 외부 float 상호작용을 지원한다고 표시하지 않는다.
 
+### C09.3 구현의 지원 경계와 실행 근거
+
+| 입력·경로 | 현재 동작 |
+| --- | --- |
+| display 값 | `RuntimeBlockFormattingV1`에서 `block`, `none`, `flow-root`를 구분한다. `flow-root`는 typed `LayoutDisplay::FlowRoot`로 보존해 Taffy 0.14.0 `Display::FlowRoot`에 전달한다. |
+| profile 경계 | C09 `RuntimeBlockFormattingV1` 외의 profile은 `flow-root`를 거부한다. 특히 C08 `RuntimeBlockPaintV1`은 계속 지원하지 않는다. |
+| authored CSS | inline style과 제한 author stylesheet 검사에서 `flow-root`를 허용한다. `inline`, `flex`, `grid`, `table`, `inline flow-root`, `var()` 등 다른 미지원 display 값은 계속 fail-closed다. |
+| layout 경계 | 자식이 있는 flow-root는 사용자 정의 Taffy tree 경로에서 새 Block formatting context로 계산하고, leaf는 leaf 경로를 사용한다. 자식 margin은 내부에서 격리하고 flow-root 자체의 형제·부모 margin은 기존 collapse 경로를 따른다. |
+| percentage basis | `flow-root`의 auto width와 flow-root containing block 안의 auto-width Block을 definite inline-size로 판정해 자손 margin·padding 백분율을 계속 계산할 수 있다. |
+| Chromium 비교 | 고정 C09 reference v2의 C09.3 4개 case·16개 node 모두를 DPR 1·2에서 computed style과 x/y/width/height 필드별로 비교했다. 기준은 Chromium `154.0.8037.98`, 필드별 허용 오차 `0.5 CSS px`다. |
+| 실제 runtime | 독립 V8 fixture가 Android API 37 emulator와 iPhone 17 Pro / iOS 26.2 Simulator에서 `layout=ready`, 5개 box 및 같은 node별 CSS frame으로 계산·표시됐다. 화면은 smoke 근거이며 네 fixture의 Chromium 수치 비교를 대신하지 않는다. |
+
+Android/iOS simulator 화면과 실행 로그, 20개 구현 실패 관점 검토는 [C09.3 구현 근거](./evidence/c09-3-flow-root-implementation-review-2026-10-10.md)에 있다. 실기기·성능·하드웨어 GPU 검증은 하지 않았다.
+
 ## 5. C09.4 shrink-to-fit 의존 계약
 
 - 사용처를 float non-replaced auto width, inline-block non-replaced auto width, absolute non-replaced 중 CSS 2.1 §10.3.7 cases 1·3처럼 inset/width 조합이 shrink-to-fit을 선택하는 경우로 나누고 각각 C26, C15, C12 구현과 연결한다. absolute의 모든 `width:auto`가 shrink-to-fit인 것은 아니다.
@@ -76,7 +90,7 @@
 - authored/computed margin 값은 computed value oracle로, collapse가 반영된 결과는 node별 `getBoundingClientRect()` geometry로 따로 대조한다. 각 지원 node의 x/y/width/height 필드마다 최대 오차 `0.5 CSS px`, DPR 간 CSS geometry 일치를 요구한다. screenshot이나 평균 오차로 실패를 숨기지 않는다.
 - Chromium 원본 HTML·inventory를 Rust 비교기 및 실제 runtime fixture의 공통 입력으로 쓴다. runtime은 case 하나를 별도 HostDocument root로 materialize하며 fixture wrapper를 제품 트리에 복제하지 않는다. node ID·부모·document order를 보존하며 각 platform V8 실행은 예상 node별 CSS frame과 revision을 수집해 같은 reference에 대조한다.
 - unsupported declaration, Stylo parser 진단, 불명확한 basis, 잘못된/non-finite geometry, stale revision, Taffy 오류는 node/property가 식별되는 전체 실패다. 이전 partial tree나 이전 revision scene을 새 계산의 성공 결과로 보이지 않는다.
-- 계획 검토 20개 관점은 기능 구현 검토와 별도다. 구현 뒤에는 새 20개 failure perspective를 작성한다. 둘 중 하나도 다른 문서의 표를 재사용하지 않는다.
+- 계획 검토 20개 관점은 기능 구현 검토와 별도다. C09.3 구현 뒤 별도 20개 failure perspective를 실행하고 발견점을 수정·재검증했다. 두 검토는 서로 표를 재사용하지 않는다.
 
 ## 7. 공식 참고
 

@@ -218,7 +218,13 @@ fn compute_layout_from_styles(
                     property: "display",
                 },
             )?;
-            if !matches!(display.as_str(), "block" | "none") {
+            let supported_display = match computed_styles.profile {
+                ComputedStyleProfile::RuntimeBlockFormattingV1 => {
+                    matches!(display.as_str(), "block" | "flow-root" | "none")
+                }
+                _ => matches!(display.as_str(), "block" | "none"),
+            };
+            if !supported_display {
                 return Err(StyleLayoutError::UnsupportedBlockDisplay {
                     node: element.node_id,
                     value: display.clone(),

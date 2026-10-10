@@ -61,6 +61,8 @@ pub enum FlexDirection {
 pub enum LayoutDisplay {
     Flex,
     Block,
+    /// Block layout을 사용하면서 자식에 독립적인 Block formatting context를 만듭니다.
+    FlowRoot,
     None,
 }
 
