@@ -53,8 +53,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c073-aspect-ratio")
     private let blockPaintProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c08-block-paint")
+    private let marginCollapseProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c092-margin-collapse")
     private let blockFormattingProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c091-block-formatting")
+        || ProcessInfo.processInfo.arguments.contains("--spinon-c092-margin-collapse")
     private let registeredPropertiesProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c052-registered-properties")
         || ProcessInfo.processInfo.arguments.contains("--spinon-c053-runtime-result-cache")
@@ -81,7 +84,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
 
         let title = UILabel()
-        title.text = blockFormattingProbeRequested
+        title.text = marginCollapseProbeRequested
+            ? "SPINON · C09.2 margin collapse"
+            : blockFormattingProbeRequested
             ? "SPINON · C09.1 Block formatting"
             : viewportUnitsProbeRequested
             ? "SPINON · C06.6 viewport units"
@@ -116,7 +121,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.addSubview(title)
 
         let description = UILabel()
-        description.text = blockFormattingProbeRequested
+        description.text = marginCollapseProbeRequested
+            ? "V8 DOM signed vertical margins → Stylo → Taffy → WGPU · 320×240 CSS px"
+            : blockFormattingProbeRequested
             ? "V8 DOM Block·auto margin → Stylo → Taffy → WGPU · 320×240 CSS px"
             : viewportUnitsProbeRequested
             ? "V8 vw/svw/lvw/dvw → Stylo CSS px → Taffy → WGPU"
@@ -155,7 +162,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         canvasView.translatesAutoresizingMaskIntoConstraints = false
         canvasView.isAccessibilityElement = true
-        canvasView.accessibilityLabel = viewportUnitsProbeRequested
+        canvasView.accessibilityLabel = marginCollapseProbeRequested
+            ? "C09.2 signed vertical margin collapse WGPU 장면"
+            : viewportUnitsProbeRequested
             ? "C06.6 viewport units WGPU 장면"
             : blockFormattingProbeRequested
             ? "C09.1 일반 Block 흐름·auto margin WGPU 장면"
@@ -466,7 +475,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
         log("SPINON_C0410_ENVIRONMENT \(environment ?? "")")
 
-        var result = viewportUnitsProbeRequested
+        var result = marginCollapseProbeRequested
+            ? SpinonRunner.evalRuntimeGpuMarginCollapseFixture(handle)
+            : viewportUnitsProbeRequested
             ? SpinonRunner.evalRuntimeGpuViewportUnitsFixture(handle)
             : blockFormattingProbeRequested
             ? SpinonRunner.evalRuntimeGpuBlockFormattingFixture(handle)
@@ -502,7 +513,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             return
         }
         if sceneWasSupersededAfterCommit {
-            let scope = viewportUnitsProbeRequested
+            let scope = marginCollapseProbeRequested
+                ? "SPINON_C092"
+                : viewportUnitsProbeRequested
                 ? "SPINON_C066A"
                 : blockFormattingProbeRequested
                 ? "SPINON_C091"
@@ -532,7 +545,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             log("\(scope)_EVAL_SCENE_SUPERSEDED \(result ?? "")")
             postStatus("JavaScript 적용 완료 · 최신 CSS 장면 다시 계산 중")
         } else {
-            let scope = viewportUnitsProbeRequested
+            let scope = marginCollapseProbeRequested
+                ? "SPINON_C092"
+                : viewportUnitsProbeRequested
                 ? "SPINON_C066A"
                 : blockFormattingProbeRequested
                 ? "SPINON_C091"

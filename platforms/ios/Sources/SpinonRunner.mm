@@ -421,14 +421,14 @@ void C0410LogReport(os_log_type_t type, const char *label, NSString *report) {
   SpinonRuntimeGpuHost *host = spinon_runtime_gpu_host_new_block_formatting_fixture(
       output.data(), output.size());
   if (host == nullptr) {
-    os_log_error(OS_LOG_DEFAULT, "SPINON_C091_HOST_ERROR=%{public}s", output.data());
+    os_log_error(OS_LOG_DEFAULT, "SPINON_C09_BLOCK_HOST_ERROR=%{public}s", output.data());
     return 0;
   }
-  os_log(OS_LOG_DEFAULT, "SPINON_C091_HOST=%{public}s", output.data());
+  os_log(OS_LOG_DEFAULT, "SPINON_C09_BLOCK_HOST=%{public}s", output.data());
   return static_cast<uint64_t>(reinterpret_cast<uintptr_t>(host));
 #else
   os_log_error(OS_LOG_DEFAULT,
-               "SPINON_C091_DISABLED rebuild with SPINON_ENABLE_C04_RUNTIME_GPU=1");
+               "SPINON_C09_BLOCK_DISABLED rebuild with SPINON_ENABLE_C04_RUNTIME_GPU=1");
   return 0;
 #endif
 }
@@ -765,6 +765,24 @@ void C0410LogReport(os_log_type_t type, const char *label, NSString *report) {
   NSString *report = C0410Report(status, output);
   C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
                  "SPINON_C091_EVAL", report);
+  return report;
+#else
+  (void)handle;
+  return @"status=-1 C04.10 GPU fixture 빌드가 비활성화되었습니다";
+#endif
+}
+
++ (NSString *)evalRuntimeGpuMarginCollapseFixture:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 4096> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_margin_collapse_fixture(
+      host, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C092_EVAL", report);
   return report;
 #else
   (void)handle;

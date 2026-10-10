@@ -12,7 +12,7 @@ const inventoryRelativePath = 'tests/fixtures/css/c09/block-formatting-inventory
 const htmlRelativePath = 'tests/fixtures/css/c09/block-formatting.html';
 const captureRelativePath = 'tools/css-reference/capture-c09-block-formatting.mjs';
 const helperRelativePath = 'tools/css-reference/chromium-session.mjs';
-const outputRelativePath = 'tests/fixtures/css/references/c09-block-formatting-v1.json';
+const outputRelativePath = 'tests/fixtures/css/references/c09-block-formatting-v2.json';
 const inventoryPath = join(repositoryRoot, inventoryRelativePath);
 const htmlPath = join(repositoryRoot, htmlRelativePath);
 const outputPath = join(repositoryRoot, outputRelativePath);
@@ -31,13 +31,13 @@ function flatten(tree, parentId = null, result = []) {
   return result;
 }
 
-if (inventory.schema !== 'spinon-css-c09-block-formatting-inventory/v1'
-  || inventory.fixtureId !== 'C09-block-formatting-precomparison-v1'
+if (inventory.schema !== 'spinon-css-c09-block-formatting-inventory/v2'
+  || inventory.fixtureId !== 'C09-block-formatting-precomparison-v2'
   || inventory.viewport?.width !== 320 || inventory.viewport?.height !== 240
   || JSON.stringify(inventory.viewport?.deviceScaleFactors) !== '[1,2]'
   || inventory.environment?.locale !== 'en-US' || inventory.environment?.timeZone !== 'UTC'
   || inventory.environment?.colorScheme !== 'light'
-  || !Array.isArray(inventory.cases) || inventory.cases.length !== 23
+  || !Array.isArray(inventory.cases) || inventory.cases.length !== 30
   || !Array.isArray(inventory.comparison?.computedProperties)
   || !Array.isArray(inventory.comparison?.typedProperties)) {
   throw new Error('C09 inventory의 고정 계약이 올바르지 않습니다.');
@@ -207,7 +207,7 @@ const { captureResult, browserFlags } = await runChromiumPage({
 
 const hashBytes = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const reference = {
-  schema: 'spinon-css-c09-block-formatting-reference/v1',
+  schema: 'spinon-css-c09-block-formatting-reference/v2',
   referenceId: 'chromium-' + platform() + '-' + arch() + '-'
     + captureResult.browserVersion.product.replaceAll(/[^a-zA-Z0-9.-]/g, '-')
     + '-' + hashBytes(inventoryBytes).slice(0, 12)

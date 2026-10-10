@@ -4,18 +4,18 @@
 
 현재 모바일 우선 Runtime CSS 경로에 Chromium과 일치하는 Block formatting 동작을 단계적으로 연결한다. CSS 선언은 Stylo가 계산하고, 레이아웃 adapter와 Taffy는 typed style·트리·포함 블록을 받아 geometry를 계산한다. 지원 선언을 조용히 버리거나 Block 기본값으로 바꾸지 않는다.
 
-C08.1 구현 PR [#105](https://github.com/ohah/spinon/pull/105)와 C09 계획·reference가 `main`에 병합됐다. C09.1은 Chromium 기준 10개 case·30개 node를 연결하고 Rust/CSS 검증, Android API 37·iOS 26.2 Simulator 실행을 마쳐 [PR #107](https://github.com/ohah/spinon/pull/107)로 리베이스 병합했다. C09.2–C09.4는 시작하지 않았다. C08.1의 기본 Block 흐름은 margin collapse나 formatting context 구현을 대신하지 않는다.
+C08.1 구현 PR [#105](https://github.com/ohah/spinon/pull/105)와 C09 계획·reference가 `main`에 병합됐다. C09.1은 Chromium 기준 10개 case·30개 node를 연결하고 Rust/CSS 검증, Android API 37·iOS 26.2 Simulator 실행을 마쳐 [PR #107](https://github.com/ohah/spinon/pull/107)로 리베이스 병합했다. C09.2는 pinned Taffy Block 알고리즘이 이미 계산하는 signed margin collapse를 Chromium 기준·실제 V8→WGPU 경로로 고정한다. C09.3–C09.4는 미구현이다. C08.1의 기본 Block 흐름은 margin collapse나 formatting context 구현을 대신하지 않는다.
 
 | 하위 ID | 동작 범위 | 순서·선행 조건 |
 | --- | --- | --- |
 | C09.1 | 일반 in-flow Block 크기 방정식, 수직 흐름, containing block | PR #107 리베이스 병합 · 내부 fixture 검증 완료 |
-| C09.2 | 수직 margin collapse와 signed margin strut | C09.1 뒤 구현 |
+| C09.2 | 수직 margin collapse와 signed margin strut | C09.1 뒤 구현 · 현재 변경에서 검증 |
 | C09.3 | `display: flow-root`와 Block formatting context 경계 | C09.2 뒤 구현 |
 | C09.4 | shrink-to-fit이 필요한 float·inline-block·absolute 문맥 | C12 positioning, C14 intrinsic sizing, C15 inline/text 측정, C26 float 중 해당 문맥의 선행 구현이 된 뒤 연결. 이 항목이 끝날 때까지 C09 상위는 미완료 |
 
 C09.4는 단순히 Taffy의 `fit-content` 값으로 바꾸어 완료 처리하지 않는다. CSS 2.1의 shrink-to-fit 사용처는 서로 다른 formatting context에 있으므로 각 문맥과 intrinsic width 측정이 준비된 뒤 Chromium 기준을 별도로 닫는다.
 
-구현 전 Chromium reference는 [23개 fixture·76개 node JSON](../tests/fixtures/css/references/c09-block-formatting-v1.json)으로 고정했다. [사전 비교 기록](../spec/internal/evidence/c09-block-formatting-precomparison-2026-10-10.md)에 입력 digest·환경·관찰 범위를 남겼다. 이는 Chromium oracle 준비 결과이며 C09 Rust/runtime 구현이나 Android·iOS 검증 결과가 아니다.
+최초 Chromium reference v1은 C09.1 전 23개 fixture·76개 node 기준이며 [사전 비교 기록](../spec/internal/evidence/c09-block-formatting-precomparison-2026-10-10.md)에 입력 digest·환경·관찰 범위를 남겼다. 현재 [reference v2](../tests/fixtures/css/references/c09-block-formatting-v2.json)는 C09 전체 30개 fixture·103개 node를 담고, 그중 C09.1은 10/30, C09.2는 16/57, C09.3은 4/16이다. v1은 과거 비교 상태로 보존하고 현재 runtime 비교는 v2를 쓴다.
 
 ## 구현 경계
 
@@ -36,6 +36,8 @@ C09.4는 단순히 Taffy의 `fit-content` 값으로 바꾸어 완료 처리하�
 - collapse 인접성은 computed author `border-width` 문자열이 아니라 C07.2의 used border width와 padding을 사용해 판정한다. 예를 들어 `border-style:none`으로 used width가 0인 면은 보이는 border/padding barrier가 아니며, 유효한 nonzero used border는 barrier다. C09는 border 선 페인트를 요구하지 않는다.
 - 부모·자식 사이의 조건은 면별 border/padding, 실제 used height, min-height, in-flow child 유무와 fragment 경계를 조합해 검사한다. HostRoot 직속 fragment Element에는 CSS parent가 없으므로 부모-자식 collapse를 만들어내지 않는다. text/inline line box가 collapse를 막는 사례는 C15와 함께 교차 검증하기 전까지 성공 입력으로 허용하지 않는다.
 - CSS clearance 및 float가 개입하는 margin은 C26 전까지 지원 완료로 표시하지 않는다. `float`·`clear`가 성공 path에서 무시되거나 일반 Block으로 위장하지 않게 실패 경계를 둔다.
+
+현재 검증 결과: `RuntimeBlockFormattingV1`이 Stylo typed margin과 used border/padding을 pinned Taffy 0.14.0 Block 계산에 전달한다. 별도 CSS margin-collapse 계산을 복제하지 않는다. Chromium 기준 16개 case·57개 node를 Rust에서 DPR 1·2로 비교했고, Android API 37 emulator와 iPhone 17 Pro / iOS 26.2 Simulator에서 실제 V8 fixture의 `layout=ready`, node별 CSS frame과 WGPU 장면을 확인했다. 상세 실패 관점과 화면·로그는 [C09.2 구현 근거](../spec/internal/evidence/c09-2-margin-collapse-implementation-review-2026-10-10.md)에 둔다.
 
 ### C09.3 · formatting context와 `flow-root`
 
@@ -66,7 +68,7 @@ C09.4는 단순히 Taffy의 `fit-content` 값으로 바꾸어 완료 처리하�
 
 ## 비교 기준과 통과 판정
 
-- Oracle은 기존 CSS 기준과 동일한 고정 Chromium `154.0.8037.98`, revision `@b859317bf11f6be47f9b7799ec690a0a42a1fb33`로 한다. 기준 HTML, inventory, capture runner, Chrome 실행 파일 hash, viewport `320×240` CSS px, `en-US`, `UTC`, light, DPR 1·2의 provenance를 [reference JSON](../tests/fixtures/css/references/c09-block-formatting-v1.json)에 고정한다. 현재 고정 입력은 23개 case·76개 app node다. capture 입력이나 digest가 바뀌면 기존 reference를 덮어쓰지 않고 새 기준을 검토한다.
+- Oracle은 고정 Chromium `154.0.8037.98`, revision `@b859317bf11f6be47f9b7799ec690a0a42a1fb33`다. 기준 HTML, inventory, capture runner, Chrome 실행 파일 hash, viewport `320×240` CSS px, `en-US`, `UTC`, light, DPR 1·2 provenance를 [현재 reference v2](../tests/fixtures/css/references/c09-block-formatting-v2.json)에 고정한다. 현재 입력은 30개 case·103개 app node다. 이전 reference v1은 C09.1 전 상태 기록이다. capture 입력이나 digest가 바뀌면 기존 reference를 덮어쓰지 않고 새 기준을 검토한다.
 - 기준 CSS는 margin 값·computed value, display, box-sizing, width/height/min/max, padding·used border, 부모/자식 관계를 inventory 순서대로 관찰한다. collapse 결과는 직접 관찰 가능한 별도 CSS property가 아니므로 node별 `getBoundingClientRect()`의 x/y/width/height 및 주변 sibling의 상대 위치를 판정한다. computed 값과 used geometry를 혼합하지 않는다.
 - fixture 원본 HTML과 inventory는 Chromium reference 및 Rust/runtime 비교의 공통 입력이다. 단, runtime은 inventory의 case 하나씩 materialize해 그 case의 단일 app root를 HostRoot에 연결하고 viewport를 별도 containing-block 입력으로 전달한다. wrapper 및 다른 겹친 case를 제품 트리에 포함하지 않는다. node ID·parent ID·DOM preorder가 명시되며 capture가 누락·중복 node, 실행 파일/버전/revision/hash 불일치, viewport·DPR 변화를 감지하면 결과를 실패 처리한다. reference를 테스트 중 자동 갱신하지 않는다.
 - 모든 지원 node의 frame field별 최대 절대 오차는 `0.5 CSS px` 이하다. 평균 오차로 개별 실패를 가리지 않는다. DPR 1과 2의 CSS px computed value·geometry는 같아야 한다. geometry 테스트는 pixel screenshot 색상이나 장치 pixel로 대신하지 않는다.
@@ -77,15 +79,15 @@ C09.4는 단순히 Taffy의 `fit-content` 값으로 바꾸어 완료 처리하�
 ## 구현 단계
 
 1. C08.1 PR #105와 C09 계획/reference가 `main`에 병합됐다. 구현은 최신 `main`의 분리된 C09.1 branch에서 진행한다. 기존 문서·사용자 변경은 그 branch로 가져오지 않는다.
-2. 완료된 [C09 HTML·inventory·Chromium capture](../tests/fixtures/css/c09/block-formatting.html)와 [`css:reference:c09-block-formatting`](../tools/css-reference/capture-c09-block-formatting.mjs)을 유지한다. [고정 JSON reference](../tests/fixtures/css/references/c09-block-formatting-v1.json) 및 [검증 테스트](../tools/css-reference/c09-block-formatting.test.mjs)가 전달하는 독립 oracle·환경·입력 digest를 runtime 구현 전에 확인한다.
+2. 완료된 [C09 HTML·inventory·Chromium capture](../tests/fixtures/css/c09/block-formatting.html)와 [`css:reference:c09-block-formatting`](../tools/css-reference/capture-c09-block-formatting.mjs)을 유지한다. [현재 고정 JSON reference v2](../tests/fixtures/css/references/c09-block-formatting-v2.json) 및 [검증 테스트](../tools/css-reference/c09-block-formatting.test.mjs)가 전달하는 독립 oracle·환경·입력 digest를 runtime 구현 전에 확인한다.
 3. 계획 자체를 기능 코드와 분리해 20개의 서로 다른 실패 관점으로 검토하고, 지적을 반영한 최종 계획 hash와 검토 결과를 남긴다.
 4. 내부 계약 ID `0047`과 C09.1–C09.4 상태 대장을 추가한다. 공개 API가 아닌 내부 profile임을 적고 숫자 버전은 `0.1.0`으로 고정한다.
 5. **C09.1 구현·병합 완료:** Stylo typed layout input, viewport containing block, 일반 Block width equation과 Taffy projection을 연결했다. 고정 Chromium 기준에서 10개 case·30개 node를 DPR 1·2로 대조하고 Android API 37·iOS 26.2 Simulator의 실제 V8 경로에서 `layout=ready`, 3개 frame, CSS px viewport를 확인해 PR #107로 리베이스 병합했다. 세로 margin collapse와 `flow-root`는 여전히 제외한다. 실패 관점 검토와 플랫폼 캡처는 [C09.1 구현 근거](../spec/internal/evidence/c09-block-formatting-implementation-review-2026-10-10.md)에 기록한다. 공개 API나 전체 C09 지원은 아니다.
-6. C09.2에서 same-BFC margin strut과 collapse eligibility를 연결한다. multi-margin, 음수 조합, parent/child, empty block, used border/padding barrier와 root boundary를 개별 fixture로 대조한다.
+6. **C09.2 검증 완료:** same-BFC signed margin strut, sibling·parent/child·empty/self-collapse, fixed/min-height, percentage margin, `display:none`, zero-used-border와 nonzero border/padding barrier를 pinned Chromium의 16개 case·57개 node와 대조했다. 실제 V8 fixture는 Android API 37 emulator와 iOS 26.2 Simulator에서 WGPU로 보이고 node frame을 보고한다. pinned Taffy가 이 계산을 제공하므로 별도 margin 알고리즘은 복제하지 않는다. 실패 관점과 simulator 근거는 [C09.2 구현 근거](../spec/internal/evidence/c09-2-margin-collapse-implementation-review-2026-10-10.md)에 남긴다.
 7. C09.3에서 `flow-root` profile과 BFC 경계를 연결한다. 내부 child margin과 flow-root 외부 margin을 별도로 검증하고 다른 BFC 생성 값을 fail closed한다.
 8. C12/C14/C15/C26의 해당 입력·측정기가 준비되면 C09.4의 float·inline-block·absolute 문맥을 각자 별도 profile/fixture로 통합한다. 그전까지 C09 상위의 shrink-to-fit 부분은 미완료로 남긴다.
 9. 각 하위 구현 뒤 계획 검토와 겹치지 않는 새 실패 관점 20개로 코드·Chromium 차이·V8/FFI·Android/iOS runtime을 검토한다. 결함을 수정하면 영향받은 oracle과 양 플랫폼 실행을 다시 수행한다.
-10. 계약·계획·STATUS·internal index·evidence index·PR 본문과 Tailscale 미리보기를 같은 PR 상태로 동기화한다. 문서 사이트 자동 배포는 실행하지 않는다.
+10. 계약·계획·STATUS·internal index·evidence index·PR 본문과 Tailscale 미리보기를 같은 병합 상태로 동기화한다. 문서 사이트 자동 배포는 실행하지 않는다.
 
 ## 완료 조건
 

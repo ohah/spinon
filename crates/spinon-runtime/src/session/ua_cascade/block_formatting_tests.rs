@@ -10,7 +10,7 @@ const HTML: &str = include_str!("../../../../../tests/fixtures/css/c09/block-for
 const INVENTORY: &str =
     include_str!("../../../../../tests/fixtures/css/c09/block-formatting-inventory.json");
 const REFERENCE: &str =
-    include_str!("../../../../../tests/fixtures/css/references/c09-block-formatting-v1.json");
+    include_str!("../../../../../tests/fixtures/css/references/c09-block-formatting-v2.json");
 const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
 const RECT_TOLERANCE_CSS_PX: f32 = 0.5;
 
@@ -82,6 +82,68 @@ fn c091_block_flow_and_containing_block_match_pinned_chromium_for_all_cases() {
 
     assert_eq!(tested_case_count, 10);
     assert_eq!(tested_node_count, 30);
+}
+
+#[test]
+fn c092_margin_collapse_matches_pinned_chromium_for_all_cases() {
+    let inventory: Value = serde_json::from_str(INVENTORY).unwrap();
+    let reference: Value = serde_json::from_str(REFERENCE).unwrap();
+    let inventory_cases = inventory["cases"].as_array().unwrap();
+    let reference_cases = reference["observations"][0]["cases"].as_array().unwrap();
+    let mut tested_case_count = 0;
+    let mut tested_node_count = 0;
+
+    for case in inventory_cases
+        .iter()
+        .filter(|case| case["id"].as_str().unwrap().starts_with("c092-"))
+    {
+        let case_id = case["id"].as_str().unwrap();
+        let expected = reference_cases
+            .iter()
+            .find(|candidate| candidate["id"] == case_id)
+            .unwrap_or_else(|| panic!("Chromium reference에 case가 없습니다: {case_id}"));
+        let fixtures = flatten_fixture_tree(&case["tree"], None);
+        let expected_nodes = expected["nodes"].as_array().unwrap();
+        assert_eq!(fixtures.len(), expected_nodes.len(), "{case_id} node 수");
+
+        for (fixture, expected_node) in fixtures.iter().zip(expected_nodes) {
+            assert_eq!(
+                fixture.id,
+                expected_node["id"].as_str().unwrap(),
+                "{case_id} preorder"
+            );
+            assert_eq!(
+                fixture.parent_id.as_deref(),
+                expected_node["parentId"].as_str()
+            );
+        }
+
+        let (request, handles) = make_request(&fixtures, 1.0);
+        let first = compute_request_for_block_formatting(&request)
+            .unwrap_or_else(|error| panic!("{case_id} cascade 실패: {error}"));
+        assert_layout_matches_reference(case_id, &first, &handles, expected);
+        assert_styles_match_reference(case_id, &first, &handles, expected);
+
+        let (scaled_request, scaled_handles) = make_request(&fixtures, 2.0);
+        let scaled = compute_request_for_block_formatting(&scaled_request)
+            .unwrap_or_else(|error| panic!("{case_id} DPR 2 cascade 실패: {error}"));
+        assert_layout_matches_reference(case_id, &scaled, &scaled_handles, expected);
+        assert_styles_match_reference(case_id, &scaled, &scaled_handles, expected);
+        assert_eq!(
+            first.layout.as_ref().unwrap().frames,
+            scaled.layout.as_ref().unwrap().frames
+        );
+        assert_eq!(
+            first.roots[0].styles.elements, scaled.roots[0].styles.elements,
+            "{case_id}: DPR 변경으로 computed style이 달라졌습니다"
+        );
+
+        tested_case_count += 1;
+        tested_node_count += fixtures.len();
+    }
+
+    assert_eq!(tested_case_count, 16);
+    assert_eq!(tested_node_count, 57);
 }
 
 #[test]
@@ -447,10 +509,6 @@ fn assert_styles_match_reference(
             "padding-right",
             "padding-bottom",
             "padding-left",
-            "border-top-width",
-            "border-right-width",
-            "border-bottom-width",
-            "border-left-width",
         ] {
             let Some(expected_value) = expected["typed"][property]["text"].as_str() else {
                 // Chrome의 getComputedStyle은 auto min/max를 used value로 보여 주지만
@@ -461,6 +519,21 @@ fn assert_styles_match_reference(
                 actual.properties.get(property).map(String::as_str),
                 Some(expected_value),
                 "{case_id}/{node_id}.{property} typed value"
+            );
+        }
+        for property in [
+            "border-top-width",
+            "border-right-width",
+            "border-bottom-width",
+            "border-left-width",
+        ] {
+            let expected_value = expected["properties"][property]
+                .as_str()
+                .unwrap_or_else(|| panic!("{case_id}/{node_id}.{property} used value 없음"));
+            assert_eq!(
+                actual.properties.get(property).map(String::as_str),
+                Some(expected_value),
+                "{case_id}/{node_id}.{property} used value"
             );
         }
     }

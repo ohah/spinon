@@ -8,13 +8,29 @@ import test from 'node:test';
 const repositoryRoot = resolve(fileURLToPath(new URL('../..', import.meta.url)));
 const inventoryPath = 'tests/fixtures/css/c09/block-formatting-inventory.json';
 const htmlPath = 'tests/fixtures/css/c09/block-formatting.html';
-const referencePath = 'tests/fixtures/css/references/c09-block-formatting-v1.json';
+const referencePath = 'tests/fixtures/css/references/c09-block-formatting-v2.json';
 const capturePath = 'tools/css-reference/capture-c09-block-formatting.mjs';
 const helperPath = 'tools/css-reference/chromium-session.mjs';
+const runtimeFixturePath = 'tests/fixtures/css/c09/runtime-margin-collapse.js';
+const ffiRuntimePath = 'crates/spinon-ffi/src/runtime_gpu/ffi/c09.rs';
+const ffiHeaderPath = 'crates/spinon-ffi/include/spinon_ffi.h';
+const androidRuntimePath = 'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java';
+const androidJniPath = 'platforms/android/app/src/main/cpp/spinon_jni.cc';
+const androidLaunchPath = 'platforms/android/app/src/main/java/dev/spinon/bootstrap/MainActivity.java';
+const iosRuntimePath = 'platforms/ios/Sources/C0410RuntimeGpuDemo.swift';
+const iosRunnerHeaderPath = 'platforms/ios/Sources/SpinonRunner.h';
+const iosRunnerPath = 'platforms/ios/Sources/SpinonRunner.mm';
+const iosLaunchPath = 'platforms/ios/Sources/AppDelegate.swift';
 const hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const read = async (path) => readFile(join(repositoryRoot, path));
-const [inventoryBytes, htmlBytes, captureBytes, helperBytes, referenceBytes] = await Promise.all([
+const [inventoryBytes, htmlBytes, captureBytes, helperBytes, referenceBytes,
+  runtimeFixtureBytes, ffiRuntimeBytes, ffiHeaderBytes, androidRuntimeBytes,
+  androidJniBytes, androidLaunchBytes, iosRuntimeBytes, iosRunnerHeaderBytes,
+  iosRunnerBytes, iosLaunchBytes] = await Promise.all([
   read(inventoryPath), read(htmlPath), read(capturePath), read(helperPath), read(referencePath),
+  read(runtimeFixturePath), read(ffiRuntimePath), read(ffiHeaderPath), read(androidRuntimePath),
+  read(androidJniPath), read(androidLaunchPath), read(iosRuntimePath), read(iosRunnerHeaderPath),
+  read(iosRunnerPath), read(iosLaunchPath),
 ]);
 const inventory = JSON.parse(inventoryBytes.toString('utf8'));
 const reference = JSON.parse(referenceBytes.toString('utf8'));
@@ -31,7 +47,7 @@ const baseCases = caseMap(observations[0]);
 const scaledCases = caseMap(observations[1]);
 
 test('C09 reference는 Chrome 154와 fixture·inventory·capture 입력 digest를 고정한다', () => {
-  assert.equal(reference.schema, 'spinon-css-c09-block-formatting-reference/v1');
+  assert.equal(reference.schema, 'spinon-css-c09-block-formatting-reference/v2');
   assert.equal(reference.fixture.id, inventory.fixtureId);
   assert.equal(reference.oracle.product, 'Chrome/154.0.8037.98');
   assert.equal(reference.oracle.cliVersion, 'Google Chrome 154.0.8037.98');
@@ -41,8 +57,8 @@ test('C09 reference는 Chrome 154와 fixture·inventory·capture 입력 digest�
   assert.equal(reference.captureTool.sha256, hash(captureBytes));
   assert.equal(reference.captureTool.dependencies[0].sha256, hash(helperBytes));
   assert.match(reference.oracle.executableSha256, /^[a-f0-9]{64}$/);
-  assert.equal(inventory.cases.length, 23);
-  assert.equal(cases.flatMap(({ tree }) => flatten(tree)).length, 76);
+  assert.equal(inventory.cases.length, 30);
+  assert.equal(cases.flatMap(({ tree }) => flatten(tree)).length, 103);
   assert.deepEqual(reference.environment.viewportCssPx, { width: 320, height: 240 });
   assert.deepEqual(reference.environment.deviceScaleFactors, [1, 2]);
 });
@@ -164,6 +180,64 @@ test('양수·음수 margin strut과 parent·child·padding·used border 경계�
   const border = nodeMap(baseCases.get('c092-border-solid'));
   assert.equal(border.get('c092-border-solid-parent').properties['border-top-width'], '4px');
   assert.equal(border.get('c092-border-solid-child').rect.y, 24);
+
+  const fixedHeight = nodeMap(baseCases.get('c092-fixed-height-barrier'));
+  assert.equal(fixedHeight.get('c092-fixed-height-parent').rect.height, 20);
+  assert.equal(fixedHeight.get('c092-fixed-height-after').rect.y, 35);
+
+  const minHeight = nodeMap(baseCases.get('c092-min-height-barrier'));
+  assert.equal(minHeight.get('c092-min-height-parent').properties['min-height'], '1px');
+  assert.equal(minHeight.get('c092-min-height-after').rect.y, 30);
+
+  const minHeightSelf = nodeMap(baseCases.get('c092-min-height-self-collapse'));
+  assert.equal(minHeightSelf.get('c092-min-height-self-empty').rect.height, 1);
+  assert.equal(minHeightSelf.get('c092-min-height-self-empty').properties['min-height'], '1px');
+  assert.equal(minHeightSelf.get('c092-min-height-self-last').rect.y, 61);
+  assert.equal(minHeightSelf.get('c092-min-height-self-root').rect.height, 71);
+
+  const percentages = nodeMap(baseCases.get('c092-percentage-margins'));
+  assert.equal(percentages.get('c092-percentage-margins-first').rect.y, 0);
+  assert.equal(percentages.get('c092-percentage-margins-second').rect.y, 40);
+  assert.equal(percentages.get('c092-percentage-margins-root').rect.height, 50);
+
+  const hidden = nodeMap(baseCases.get('c092-hidden-margin-subtree'));
+  assert.equal(hidden.get('c092-hidden-margin-hidden').rect.height, 0);
+  assert.equal(hidden.get('c092-hidden-margin-hidden-child').rect.height, 0);
+  assert.equal(hidden.get('c092-hidden-margin-last').rect.y, 40);
+
+  const hiddenBorder = nodeMap(baseCases.get('c092-border-hidden'));
+  assert.equal(hiddenBorder.get('c092-border-hidden-parent').properties['border-top-width'], '0px');
+  assert.equal(hiddenBorder.get('c092-border-hidden-child').rect.y, 20);
+
+  const zero = nodeMap(baseCases.get('c092-zero-margins'));
+  assert.equal(zero.get('c092-zero-margins-second').rect.y, 10);
+  assert.equal(zero.get('c092-zero-margins-root').rect.height, 20);
+});
+
+test('C09.2 부호 있는 margin fixture가 Android·iOS 실제 V8·WGPU 실행기에 연결되어 있다', () => {
+  const fixture = runtimeFixtureBytes.toString('utf8');
+  assert.match(fixture, /c092-margin-collapse-first/);
+  assert.match(fixture, /margin-bottom:24px/);
+  assert.match(fixture, /margin-top:30px;margin-bottom:-12px/);
+  assert.match(fixture, /c092-margin-collapse-last/);
+  assert.match(ffiRuntimeBytes.toString('utf8'),
+    /spinon_runtime_gpu_host_eval_margin_collapse_fixture/);
+  assert.match(ffiHeaderBytes.toString('utf8'),
+    /spinon_runtime_gpu_host_eval_margin_collapse_fixture/);
+  assert.match(androidRuntimeBytes.toString('utf8'),
+    /nativeEvalMarginCollapseFixture\(host\)/);
+  assert.match(androidRuntimeBytes.toString('utf8'), /spinon_c092_margin_collapse/);
+  assert.match(androidJniBytes.toString('utf8'),
+    /nativeEvalMarginCollapseFixture[\s\S]+?spinon_runtime_gpu_host_eval_margin_collapse_fixture/);
+  assert.match(androidLaunchBytes.toString('utf8'), /spinon_c092_margin_collapse/);
+  assert.match(iosRuntimeBytes.toString('utf8'),
+    /evalRuntimeGpuMarginCollapseFixture\(handle\)/);
+  assert.match(iosRuntimeBytes.toString('utf8'), /--spinon-c092-margin-collapse/);
+  assert.match(iosRunnerHeaderBytes.toString('utf8'),
+    /evalRuntimeGpuMarginCollapseFixture/);
+  assert.match(iosRunnerBytes.toString('utf8'),
+    /evalRuntimeGpuMarginCollapseFixture[\s\S]+?spinon_runtime_gpu_host_eval_margin_collapse_fixture/);
+  assert.match(iosLaunchBytes.toString('utf8'), /--spinon-c092-margin-collapse/);
 });
 
 test('flow-root 내부 margin 차단과 외부 parent·sibling margin을 구분한다', () => {

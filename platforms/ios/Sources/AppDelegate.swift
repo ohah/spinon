@@ -36,6 +36,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             || arguments.contains("--spinon-c073-aspect-ratio")
             || arguments.contains("--spinon-c08-block-paint")
             || arguments.contains("--spinon-c091-block-formatting")
+            || arguments.contains("--spinon-c092-margin-collapse")
         let runR05AttributionProbe = arguments.contains("--spinon-r05-attribution")
         let runLifecycleProbe = arguments.contains("--spinon-dom-gc-auto")
         if runLifecycleProbe && !spinonS03DomGcFixtureEnabled {

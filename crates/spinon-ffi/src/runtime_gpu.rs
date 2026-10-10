@@ -45,6 +45,8 @@ const RUNTIME_CSS_BLOCK_PAINT_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c08/runtime-block-paint.js");
 const RUNTIME_CSS_BLOCK_FORMATTING_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c09/runtime-block-formatting.js");
+const RUNTIME_CSS_MARGIN_COLLAPSE_FIXTURE_SOURCE: &str =
+    include_str!("../../../tests/fixtures/css/c09/runtime-margin-collapse.js");
 
 #[repr(C)]
 pub struct SpinonRuntimeGpuHost {
