@@ -14,6 +14,8 @@ const paths = {
   runtimeFixture: 'tests/fixtures/css/c12/runtime-position-static-relative.js',
   capture: 'tools/css-reference/capture-c12-1-static-relative.mjs',
   helper: 'tools/css-reference/chromium-session.mjs',
+  androidRuntimeLog: 'spec/internal/evidence/c12-1-static-relative/android-physical.log',
+  iosRuntimeLog: 'spec/internal/evidence/c12-1-static-relative/ios-simulator.log',
 };
 const read = async (path) => readFile(join(repositoryRoot, path));
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
@@ -204,6 +206,65 @@ test('DPR만 바뀔 때 computed CSSOM 값과 geometry는 달라지지 않는다
       assert.deepEqual(second.get(id).properties, first.get(id).properties, stateName + '/' + id + ' properties');
       assert.deepEqual(second.get(id).rect, first.get(id).rect, stateName + '/' + id + ' rect');
       assert.deepEqual(second.get(id).flowRect, first.get(id).flowRect, stateName + '/' + id + ' flowRect');
+    }
+  }
+});
+
+test('Android 실기기와 iOS Simulator의 V8 runtime frame이 고정 Chromium geometry와 일치한다', async () => {
+  const expectedStates = byState(reference.observations[0]);
+  for (const [platform, path] of [
+    ['Android 실기기', paths.androidRuntimeLog],
+    ['iOS Simulator', paths.iosRuntimeLog],
+  ]) {
+    const log = (await read(path)).toString('utf8');
+    assert.match(log, /SPINON_C0410_DRAW .*status=0 presented boxes=45/, platform + ' WGPU 제출');
+
+    for (const stateName of ['initial', 'target-relative', 'ancestor-relative']) {
+      assert.match(
+        log,
+        new RegExp(
+          'SPINON_C121_(?:SUMMARY state=' + stateName + '|STATE name=' + stateName
+            + ' attempts=\\d+) .*status=0 layout=ready boxes=45',
+        ),
+        platform + ' ' + stateName + ' runtime layout',
+      );
+      assert.match(
+        log,
+        new RegExp('SPINON_C121_FRAME_SUMMARY state=' + stateName + ' frames=48 marker=present'),
+        platform + ' ' + stateName + ' frame count',
+      );
+      const frames = new Map();
+      const pattern = new RegExp(
+        'SPINON_C121_NODE_FRAME state=' + stateName
+          + ' \\d+:node=(\\d+),x=([^,]+),y=([^,]+),width=([^,]+),height=([^\\s]+)',
+        'g',
+      );
+      for (const match of log.toString().matchAll(pattern)) {
+        frames.set(Number(match[1]), match.slice(2).map(Number));
+      }
+      assert.equal(frames.size, 48, platform + ' ' + stateName + ' raw frame count');
+
+      const expectedNodes = nodeMap(expectedStates.get(stateName));
+      let maximumError = 0;
+      for (let index = 0; index < inventory.nodes.length; index++) {
+        const fixtureNode = inventory.nodes[index];
+        // 런타임은 root(1), style(2), style text(3) 뒤에 fixture div를 source order로 만든다.
+        const runtimeNodeId = index === 0 ? 1 : index + 3;
+        const actual = frames.get(runtimeNodeId);
+        assert.ok(actual, platform + ' ' + stateName + ' ' + fixtureNode.id + ' frame');
+        const expected = expectedNodes.get(fixtureNode.id).rect;
+        const expectedValues = [expected.x, expected.y, expected.width, expected.height];
+        for (let axis = 0; axis < expectedValues.length; axis++) {
+          // 모바일 fixture viewport는 301×100 CSS px라 root의 viewport 크기만 Chrome과 다르다.
+          if (index === 0 && axis >= 2) continue;
+          const error = Math.abs(actual[axis] - expectedValues[axis]);
+          maximumError = Math.max(maximumError, error);
+          assert.ok(error <= inventory.comparison.maximumAbsoluteRectErrorCssPx,
+            platform + ' ' + stateName + ' ' + fixtureNode.id + ' rect axis ' + axis
+              + ': actual=' + actual[axis] + ', expected=' + expectedValues[axis]);
+        }
+      }
+      assert.ok(maximumError <= inventory.comparison.maximumAbsoluteRectErrorCssPx);
     }
   }
 });

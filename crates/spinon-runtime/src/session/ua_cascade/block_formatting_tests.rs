@@ -174,7 +174,7 @@ fn c091_profile_rejects_other_formatting_models_and_unimplemented_positioning() 
         ),
         (
             "position:absolute",
-            "unsupported_inline_property",
+            "unsupported_computed_value",
             Some("position"),
         ),
         ("float:left", "unsupported_inline_property", Some("float")),

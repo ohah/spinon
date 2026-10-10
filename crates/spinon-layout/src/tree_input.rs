@@ -50,6 +50,7 @@ impl LayoutInput {
             root_sizing: RootSizingPolicy::Match,
             nodes,
             css_math: Vec::new(),
+            positioning: Default::default(),
         })
     }
 }

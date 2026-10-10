@@ -6,7 +6,7 @@ use style::{
     shared_lock::StylesheetGuards,
     typed_om::{ToTyped, TypedValue},
     values::specified::length::NonNegativeLengthPercentageOrNormal,
-    values::specified::{FlexBasis, LengthPercentage, Margin, MaxSize, Size},
+    values::specified::{FlexBasis, Inset, LengthPercentage, Margin, MaxSize, Size},
 };
 
 use super::{super::ComputedCssMath, dimensions::computed_math};
@@ -61,6 +61,10 @@ fn layout_property(declaration: &PropertyDeclaration) -> Option<&'static str> {
         LonghandId::MinHeight => "min-height",
         LonghandId::MaxHeight => "max-height",
         LonghandId::FlexBasis => "flex-basis",
+        LonghandId::Top => "top",
+        LonghandId::Right => "right",
+        LonghandId::Bottom => "bottom",
+        LonghandId::Left => "left",
         LonghandId::MarginTop => "margin-top",
         LonghandId::MarginRight => "margin-right",
         LonghandId::MarginBottom => "margin-bottom",
@@ -88,6 +92,10 @@ fn specified_math(declaration: &PropertyDeclaration) -> Option<ComputedCssMath> 
             FlexBasis::Size(Size::LengthPercentage(value)) => &value.0,
             _ => return None,
         },
+        PropertyDeclaration::Top(Inset::LengthPercentage(value))
+        | PropertyDeclaration::Right(Inset::LengthPercentage(value))
+        | PropertyDeclaration::Bottom(Inset::LengthPercentage(value))
+        | PropertyDeclaration::Left(Inset::LengthPercentage(value)) => value,
         PropertyDeclaration::MarginTop(Margin::LengthPercentage(value))
         | PropertyDeclaration::MarginRight(Margin::LengthPercentage(value))
         | PropertyDeclaration::MarginBottom(Margin::LengthPercentage(value))

@@ -2,7 +2,8 @@ use std::collections::{BTreeMap, BTreeSet};
 
 use spinon_core::{HostDocumentSnapshot, HostNodeHandle, NodeId};
 use spinon_layout::{
-    FlexDirection, LayoutBorder, LayoutEdges, LayoutGap, LayoutStyle, TextDirection,
+    FlexDirection, LayoutBorder, LayoutEdges, LayoutGap, LayoutPositioning, LayoutStyle,
+    TextDirection,
 };
 use spinon_style::{
     ComputedCssDimension, ComputedCssMaxSize, ComputedElementStyle, ComputedStyleProfile,
@@ -10,6 +11,7 @@ use spinon_style::{
 };
 
 mod flex_values;
+mod positioning_values;
 mod primitive_values;
 mod spacing_values;
 
@@ -20,6 +22,7 @@ use flex_values::{
     parse_justify_content, parse_number, parse_order, parse_runtime_align_content,
     parse_runtime_align_items, parse_runtime_align_self, parse_runtime_justify_content,
 };
+use positioning_values::parse_positioning;
 use primitive_values::{
     max_size_as_dimension, parse_box_sizing, parse_dimension, parse_display, required,
     unsupported_value,
@@ -28,6 +31,7 @@ use spacing_values::{parse_gap, parse_margin, parse_nonnegative_spacing};
 
 pub(super) struct ProjectedStyles {
     pub styles: BTreeMap<NodeId, LayoutStyle>,
+    pub positioning: BTreeMap<NodeId, LayoutPositioning>,
     pub css_math: Vec<spinon_layout::LayoutCssMathValue>,
 }
 
@@ -37,6 +41,7 @@ pub(super) fn project_styles(
     snapshot: &ComputedStyleSnapshot,
 ) -> Result<ProjectedStyles, StyleLayoutError> {
     let mut output = BTreeMap::new();
+    let mut positioning = BTreeMap::new();
     let mut math = CssMathProjector::default();
     let runtime_flex_items = if supports_runtime_flex(snapshot.profile) {
         runtime_flex_item_nodes(tree, root, snapshot)
@@ -363,14 +368,32 @@ pub(super) fn project_styles(
                 LayoutBorder::default()
             },
         };
+        if supports_positioning(snapshot.profile) {
+            positioning.insert(node, parse_positioning(element, &mut math)?);
+        }
         if output.insert(node, style).is_some() {
             return Err(StyleLayoutError::DuplicateComputedElement(node));
         }
     }
     Ok(ProjectedStyles {
         styles: output,
+        positioning,
         css_math: math.into_values(),
     })
+}
+
+fn supports_positioning(profile: ComputedStyleProfile) -> bool {
+    matches!(
+        profile,
+        ComputedStyleProfile::RuntimeFlexLayoutV1
+            | ComputedStyleProfile::RuntimeFlexPaintV1
+            | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+            | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
+            | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
+            | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
+            | ComputedStyleProfile::RuntimeBlockPaintV1
+            | ComputedStyleProfile::RuntimeBlockFormattingV1
+    )
 }
 
 fn supports_runtime_flex(profile: ComputedStyleProfile) -> bool {

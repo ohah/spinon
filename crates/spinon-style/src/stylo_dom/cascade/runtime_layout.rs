@@ -8,6 +8,11 @@ use style::properties::LonghandId;
 
 pub(super) const RUNTIME_FLEX_LAYOUT_PROPERTIES: &[(&str, LonghandId)] = &[
     ("display", LonghandId::Display),
+    ("position", LonghandId::Position),
+    ("top", LonghandId::Top),
+    ("right", LonghandId::Right),
+    ("bottom", LonghandId::Bottom),
+    ("left", LonghandId::Left),
     ("font-size", LonghandId::FontSize),
     ("list-style-type", LonghandId::ListStyleType),
     ("margin-block-start", LonghandId::MarginBlockStart),
@@ -70,6 +75,12 @@ pub(super) fn runtime_flex_wrap_properties() -> Vec<(&'static str, LonghandId)> 
 
 pub(super) const RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES: &[&str] = &[
     "display",
+    "position",
+    "inset",
+    "top",
+    "right",
+    "bottom",
+    "left",
     "font-size",
     "box-sizing",
     "width",

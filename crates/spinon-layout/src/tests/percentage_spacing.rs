@@ -61,6 +61,7 @@ fn root_gap_percentage_is_rejected_before_taffy_resolution() {
         },
         root_sizing: RootSizingPolicy::Match,
         css_math: vec![],
+        positioning: Default::default(),
         nodes: vec![LayoutNode {
             id: root_id,
             children: vec![],
@@ -104,6 +105,7 @@ fn percentage_edges_with_unprovable_containing_width_fail_closed() {
         },
         root_sizing: RootSizingPolicy::Match,
         css_math: vec![],
+        positioning: Default::default(),
         nodes: vec![
             LayoutNode {
                 id: root,
@@ -171,6 +173,7 @@ fn flow_root_containing_block_keeps_nested_auto_block_width_definite() {
         },
         root_sizing: RootSizingPolicy::Match,
         css_math: vec![],
+        positioning: Default::default(),
         nodes: vec![
             LayoutNode {
                 id: root,
@@ -240,6 +243,7 @@ fn block_formatting_root_flow_root_uses_viewport_width_as_definite_basis() {
         },
         root_sizing: RootSizingPolicy::BlockFormatting,
         css_math: vec![],
+        positioning: Default::default(),
         nodes: vec![
             LayoutNode {
                 id: root,
@@ -297,6 +301,7 @@ fn childless_flow_root_uses_the_leaf_layout_path() {
         },
         root_sizing: RootSizingPolicy::Match,
         css_math: vec![],
+        positioning: Default::default(),
         nodes: vec![
             LayoutNode {
                 id: root,
@@ -361,6 +366,7 @@ fn spacing_input(child_style: LayoutStyle) -> LayoutInput {
         },
         root_sizing: RootSizingPolicy::Match,
         css_math: vec![],
+        positioning: Default::default(),
         nodes: vec![
             LayoutNode {
                 id: root,

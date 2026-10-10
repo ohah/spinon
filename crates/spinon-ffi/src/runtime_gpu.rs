@@ -45,6 +45,8 @@ const RUNTIME_CSS_BLOCK_PAINT_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c08/runtime-block-paint.js");
 const RUNTIME_CSS_BLOCK_FORMATTING_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c09/runtime-block-formatting.js");
+const RUNTIME_CSS_C12_1_POSITION_FIXTURE_SOURCE: &str =
+    include_str!("../../../tests/fixtures/css/c12/runtime-position-static-relative.js");
 const RUNTIME_CSS_MARGIN_COLLAPSE_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c09/runtime-margin-collapse.js");
 const RUNTIME_CSS_FLOW_ROOT_FIXTURE_SOURCE: &str =
@@ -153,6 +155,11 @@ impl RuntimeGpuHost {
         Ok((Self::from_session_with_frame_report(session), report))
     }
 
+    fn new_c12_1_position_fixture() -> Result<(Self, String), String> {
+        let (session, report) = RuntimeSession::new_runtime_gpu()?;
+        Ok((Self::from_session_with_frame_report(session), report))
+    }
+
     fn from_session(session: RuntimeSession) -> Self {
         Self::from_session_with_frame_report_mode(session, false)
     }
@@ -214,7 +221,14 @@ impl RuntimeGpuHost {
                     )
                 })
                 .unwrap_or_else(|| "원인을 보고하지 않았습니다".to_owned());
-            return Err((ERR_LAYOUT, format!("CSS runtime 장면 생성 실패: {error}")));
+            let cascade_error = self.session.ua_cascade_snapshot().error;
+            let detail = cascade_error
+                .map(|message| format!(" cascade_error={message}"))
+                .unwrap_or_default();
+            return Err((
+                ERR_LAYOUT,
+                format!("CSS runtime 장면 생성 실패: {error}{detail}"),
+            ));
         }
         let Some(completed) = snapshot.completed else {
             return Err((

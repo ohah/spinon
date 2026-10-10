@@ -1,10 +1,13 @@
 use style::values::computed::length::NonNegativeLengthPercentageOrNormal;
 use style::{
     properties::ComputedValues,
+    values::computed::position::Inset as ComputedInset,
     values::computed::{LengthPercentage, Margin, NonNegativeLengthPercentage},
 };
 
-use crate::stylo_dom::cascade::{ComputedCssEdges, ComputedCssSpacingValue, ComputedLayoutSpacing};
+use crate::stylo_dom::cascade::{
+    ComputedCssEdges, ComputedCssSpacingValue, ComputedLayoutInsets, ComputedLayoutSpacing,
+};
 
 pub(super) fn computed_layout_spacing(computed: &ComputedValues) -> ComputedLayoutSpacing {
     ComputedLayoutSpacing {
@@ -22,6 +25,26 @@ pub(super) fn computed_layout_spacing(computed: &ComputedValues) -> ComputedLayo
         },
         row_gap: computed_gap(computed.clone_row_gap()),
         column_gap: computed_gap(computed.clone_column_gap()),
+    }
+}
+
+pub(super) fn computed_layout_insets(computed: &ComputedValues) -> ComputedLayoutInsets {
+    ComputedLayoutInsets {
+        top: computed_inset(computed.clone_top()),
+        right: computed_inset(computed.clone_right()),
+        bottom: computed_inset(computed.clone_bottom()),
+        left: computed_inset(computed.clone_left()),
+    }
+}
+
+fn computed_inset(value: ComputedInset) -> ComputedCssSpacingValue {
+    match value {
+        ComputedInset::Auto => ComputedCssSpacingValue::Auto,
+        ComputedInset::LengthPercentage(value) => computed_length_percentage(value),
+        ComputedInset::AnchorSizeFunction(_) | ComputedInset::AnchorContainingCalcFunction(_) => {
+            ComputedCssSpacingValue::Unsupported
+        }
+        ComputedInset::AnchorFunction(_) => ComputedCssSpacingValue::Unsupported,
     }
 }
 

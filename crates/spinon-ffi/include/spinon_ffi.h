@@ -129,6 +129,9 @@ SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_block_paint_fixture(
 /* C09.1 일반 Block 흐름·포함 블록·auto margin 검증 fixture 전용 host입니다. */
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_block_formatting_fixture(
     char *output, size_t output_capacity);
+/* C12.1 정적·상대 위치 V8 GPU runtime fixture host입니다. */
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c12_1_position_fixture(
+    char *output, size_t output_capacity);
 /* UI event에서 viewport·색상 체계·surface 변경을 플랫폼 큐에 넣기 전에
    호출합니다. 잠금·대기를 하지 않으며 실패는 0입니다. 반환값은 내부 무효화 순번이며
    호출자가 다른 함수에 전달하지 않습니다. 성공 여부 확인 외 용도로 보관하지 마세요. */
@@ -211,6 +214,14 @@ int32_t spinon_runtime_gpu_host_eval_block_paint_fixture(
 /* C09.1 actual V8 fixture; 보고에는 DOM preorder node별 CSS frame이 포함됩니다. */
 int32_t spinon_runtime_gpu_host_eval_block_formatting_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
+/* C12.1 정적·상대 위치 CSS를 실제 V8·Stylo·Taffy 경로에서 평가합니다. */
+int32_t spinon_runtime_gpu_host_eval_c12_1_position_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
+/* C12.1 inventory의 고정 mutation 상태: 1=target-relative, 2=ancestor-relative. */
+int32_t spinon_runtime_gpu_host_eval_c12_1_position_state(
+    SpinonRuntimeGpuHost *host, uint32_t state, uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);
 /* C09.2 실제 V8 fixture: 부호 있는 세로 margin collapse와 노드별 CSS frame입니다. */
 int32_t spinon_runtime_gpu_host_eval_margin_collapse_fixture(

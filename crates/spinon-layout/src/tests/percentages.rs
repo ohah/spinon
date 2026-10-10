@@ -21,6 +21,7 @@ fn percentage_dimensions_resolve_against_parent_content_box_without_clamping() {
         },
         root_sizing: RootSizingPolicy::Match,
         css_math: vec![],
+        positioning: Default::default(),
         nodes: vec![
             LayoutNode {
                 id: root,
@@ -89,6 +90,7 @@ fn percentage_flex_basis_uses_the_container_main_axis() {
         },
         root_sizing: RootSizingPolicy::Match,
         css_math: vec![],
+        positioning: Default::default(),
         nodes: vec![
             fixed_node_with_children(root, &[row, column], 320.0, 800.0),
             LayoutNode {
@@ -148,6 +150,7 @@ fn viewport_resolving_root_accepts_full_and_partial_percentage_dimensions() {
         },
         root_sizing: RootSizingPolicy::ResolveWithin,
         css_math: vec![],
+        positioning: Default::default(),
         nodes: vec![LayoutNode {
             id: root,
             children: vec![],
@@ -209,6 +212,7 @@ fn percentage_margin_and_padding_keep_the_containing_block_width_basis() {
         },
         root_sizing: RootSizingPolicy::Match,
         css_math: vec![],
+        positioning: Default::default(),
         nodes: vec![
             fixed_node_with_children(root, &[parent], 320.0, 800.0),
             LayoutNode {
@@ -258,6 +262,7 @@ fn percentage_gap_uses_the_definite_main_axis_content_size() {
         },
         root_sizing: RootSizingPolicy::Match,
         css_math: vec![],
+        positioning: Default::default(),
         nodes: vec![
             fixed_node_with_children(root, &[row, column, row_cross_gap], 320.0, 800.0),
             LayoutNode {
@@ -337,6 +342,7 @@ fn cyclic_column_gap_fails_with_node_property_and_axis() {
         },
         root_sizing: RootSizingPolicy::Match,
         css_math: vec![],
+        positioning: Default::default(),
         nodes: vec![
             fixed_node_with_children(root, &[column], 320.0, 800.0),
             LayoutNode {
@@ -443,6 +449,7 @@ fn simple_percent_input(value: f32) -> LayoutInput {
         },
         root_sizing: RootSizingPolicy::Match,
         css_math: vec![],
+        positioning: Default::default(),
         nodes: vec![
             LayoutNode {
                 id: root,

@@ -175,6 +175,7 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
             .and_then(|allowed| {
                 registry.first_unsupported_runtime_author_feature(
                     allowed,
+                    profile == ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1,
                     true,
                     profile == ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1,
                 )

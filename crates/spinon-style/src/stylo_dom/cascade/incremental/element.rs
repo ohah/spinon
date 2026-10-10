@@ -17,15 +17,15 @@ use style::{
 };
 
 use super::super::{
-    ComputedCssMath, ComputedElementStyle, ComputedStyleProfile, CssCascadeError, CssViewport,
-    runtime_paint,
+    ComputedCssMath, ComputedCssPosition, ComputedElementStyle, ComputedStyleProfile,
+    CssCascadeError, CssViewport, runtime_paint,
 };
 use super::dimensions::{computed_layout_dimensions, computed_layout_math_values};
 use super::source_border::{
     CssLengthContext, computed_border_width_values, winning_border_width_sources,
 };
 use super::source_math::winning_layout_math_values;
-use super::spacing::computed_layout_spacing;
+use super::spacing::{computed_layout_insets, computed_layout_spacing};
 use super::{computed_layout_aspect_ratio, computed_layout_border};
 use crate::StyloElement;
 
@@ -41,6 +41,13 @@ pub(super) fn computed_element_output(
         runtime_paint::computed_background_for_profile(profile, computed, node_id)?;
     let font_size_css_px = computed.get_font().clone_font_size().computed_size().px();
     let layout_border = computed_layout_border(computed, &source_border_widths);
+    let layout_position = match computed.clone_position() {
+        style::values::computed::PositionProperty::Static => ComputedCssPosition::Static,
+        style::values::computed::PositionProperty::Relative => ComputedCssPosition::Relative,
+        style::values::computed::PositionProperty::Absolute => ComputedCssPosition::Absolute,
+        style::values::computed::PositionProperty::Fixed => ComputedCssPosition::Fixed,
+        style::values::computed::PositionProperty::Sticky => ComputedCssPosition::Sticky,
+    };
     let layout_aspect_ratio = if matches!(
         profile,
         ComputedStyleProfile::RuntimeFlexLayoutV1
@@ -75,6 +82,8 @@ pub(super) fn computed_element_output(
     }
     Ok(ComputedElementStyle {
         node_id,
+        layout_position,
+        layout_insets: computed_layout_insets(computed),
         font_size_css_px,
         layout_dimensions: computed_layout_dimensions(computed),
         layout_aspect_ratio,

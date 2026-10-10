@@ -127,6 +127,22 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateBlockFormattingHost(
 }
 
 extern "C" JNIEXPORT jlong JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC121PositionHost(
+    JNIEnv *, jclass) {
+  std::array<char, 1024> output{};
+  SpinonRuntimeGpuHost *host = spinon_runtime_gpu_host_new_c12_1_position_fixture(
+      output.data(), output.size());
+  if (host == nullptr) {
+    __android_log_print(ANDROID_LOG_ERROR, kTag,
+                        "SPINON_C121_HOST_ERROR=%s", output.data());
+    return 0;
+  }
+  __android_log_print(ANDROID_LOG_INFO, kTag,
+                      "SPINON_C121_HOST=%s", output.data());
+  return static_cast<jlong>(reinterpret_cast<uintptr_t>(host));
+}
+
+extern "C" JNIEXPORT jlong JNICALL
 Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeBeginPresentationUpdate(
     JNIEnv *, jclass, jlong host_handle) {
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
@@ -140,7 +156,7 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeSetEnvironment(
     jfloat height_css_px, jfloat scale, jboolean dark) {
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(host_handle));
-  std::array<char, 2048> output{};
+  std::array<char, 32768> output{};
   const int32_t status = spinon_runtime_gpu_host_set_environment(
       host, width_css_px, height_css_px, scale, dark == JNI_TRUE ? 1 : 0,
       10000, output.data(), output.size());
@@ -405,6 +421,35 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalBlockFormattingFixture(
   const std::string report = "status=" + std::to_string(status) + " " + output.data();
   __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
                       kTag, "SPINON_C091_EVAL %s", report.c_str());
+  return ToByteArray(env, report);
+}
+
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC121PositionFixture(
+    JNIEnv *env, jclass, jlong host_handle) {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+  std::array<char, 32768> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_c12_1_position_fixture(
+      host, 10000, output.data(), output.size());
+  const std::string report = "status=" + std::to_string(status) + " " + output.data();
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
+                      kTag, "SPINON_C121_EVAL %s", report.c_str());
+  return ToByteArray(env, report);
+}
+
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC121PositionState(
+    JNIEnv *env, jclass, jlong host_handle, jint state) {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+  std::array<char, 32768> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_c12_1_position_state(
+      host, static_cast<uint32_t>(state), 10000, output.data(), output.size());
+  const std::string report = "status=" + std::to_string(status) + " " + output.data();
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
+                      kTag, "SPINON_C121_STATE status=%d state=%d %s", status,
+                      state, output.data());
   return ToByteArray(env, report);
 }
 

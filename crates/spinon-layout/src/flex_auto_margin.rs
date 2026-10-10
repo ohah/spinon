@@ -211,6 +211,7 @@ mod tests {
                 },
                 root_sizing: RootSizingPolicy::ResolveWithin,
                 css_math: vec![],
+                positioning: Default::default(),
                 nodes: vec![
                     LayoutNode {
                         id: root,

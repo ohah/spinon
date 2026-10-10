@@ -261,12 +261,14 @@ impl StylesheetRegistry {
     pub(crate) fn first_unsupported_runtime_author_feature(
         &self,
         allowed_properties: &[&str],
+        allow_layers: bool,
         allow_custom_properties: bool,
         allow_background_color: bool,
     ) -> Option<(String, String)> {
         css_profile::first_unsupported_runtime_author_feature(
             self,
             allowed_properties,
+            allow_layers,
             allow_custom_properties,
             allow_background_color,
         )

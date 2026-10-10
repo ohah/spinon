@@ -17,11 +17,12 @@ pub use stylesheet_registry::{
 };
 pub use stylo_dom::{
     CascadeDiagnostic, ComputedCssDimension, ComputedCssEdges, ComputedCssMath, ComputedCssMaxSize,
-    ComputedCssSpacingValue, ComputedElementStyle, ComputedLayoutBorder, ComputedLayoutDimensions,
-    ComputedLayoutSpacing, ComputedStyleProfile, ComputedStyleSnapshot, CssCascadeError,
-    CssColorScheme, CssMediaEnvironment, CssPointerCapabilities, CssPrimaryPointer, CssViewport,
-    RuntimeCascadeReuseStats, StyloDocument, StyloDocumentView, StyloDomError, StyloElement,
-    StyloNode, compute_flex_alignment_cascade, compute_flex_alignment_layers_cascade,
+    ComputedCssPosition, ComputedCssSpacingValue, ComputedElementStyle, ComputedLayoutBorder,
+    ComputedLayoutDimensions, ComputedLayoutInsets, ComputedLayoutSpacing, ComputedStyleProfile,
+    ComputedStyleSnapshot, CssCascadeError, CssColorScheme, CssMediaEnvironment,
+    CssPointerCapabilities, CssPrimaryPointer, CssViewport, RuntimeCascadeReuseStats,
+    StyloDocument, StyloDocumentView, StyloDomError, StyloElement, StyloNode,
+    compute_flex_alignment_cascade, compute_flex_alignment_layers_cascade,
     compute_flex_layout_cascade, compute_flex_margin_cascade,
     compute_flex_media_environment_cascade,
     compute_runtime_block_formatting_cascade_with_stylesheets, compute_runtime_block_paint_cascade,

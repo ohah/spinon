@@ -234,6 +234,7 @@ fn compute_layout_from_styles(
     }
     let projected = project_styles(snapshot, root, &computed_styles)?;
     let styles = projected.styles;
+    let positioning = projected.positioning;
     if matches!(
         computed_styles.profile,
         ComputedStyleProfile::FlexMarginV1
@@ -292,7 +293,8 @@ fn compute_layout_from_styles(
             viewport.environment_revision,
         )?
     }
-    .with_css_math(projected.css_math);
+    .with_css_math(projected.css_math)
+    .with_positioning(positioning);
     let mut layout = TaffyLayoutEngine.compute(&input)?;
     if matches!(
         computed_styles.profile,
@@ -326,6 +328,14 @@ fn zero_display_none_frames(
                 .get(&handle.id())
                 .is_some_and(|style| style.display == LayoutDisplay::None);
         if hidden && let Some(frame) = layout.frames.get_mut(&handle.id()) {
+            *frame = LayoutFrame {
+                x: 0.0,
+                y: 0.0,
+                width: 0.0,
+                height: 0.0,
+            };
+        }
+        if hidden && let Some(frame) = layout.flow_frames.get_mut(&handle.id()) {
             *frame = LayoutFrame {
                 x: 0.0,
                 y: 0.0,

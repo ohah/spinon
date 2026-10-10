@@ -69,6 +69,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c1033-flex-alignment")
     private let flexBaselineProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c1034-flex-baseline")
+    private let c121PositioningProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c121-static-relative")
     private let blockFormattingProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c091-block-formatting")
         || ProcessInfo.processInfo.arguments.contains("--spinon-c092-margin-collapse")
@@ -104,7 +106,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
 
         let title = UILabel()
-        title.text = flexBaselineProbeRequested
+        title.text = c121PositioningProbeRequested
+            ? "SPINON · C12.1 정적·상대 위치"
+            : flexBaselineProbeRequested
             ? "SPINON · C10.3.4 Flex baseline"
             : flexAlignmentProbeRequested
             ? "SPINON · C10.3.3 Flex 정렬"
@@ -155,7 +159,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.addSubview(title)
 
         let description = UILabel()
-        description.text = flexBaselineProbeRequested
+        description.text = c121PositioningProbeRequested
+            ? "V8 position·inset·flow/visual frame → Stylo → Taffy → WGPU"
+            : flexBaselineProbeRequested
             ? "V8 first·last baseline·중첩 전파 → Stylo → Taffy → WGPU · 320×240 CSS px"
             : flexAlignmentProbeRequested
             ? "V8 align-items/self/content·place-* → Stylo → Taffy → WGPU · 320×240 CSS px"
@@ -210,7 +216,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         canvasView.translatesAutoresizingMaskIntoConstraints = false
         canvasView.isAccessibilityElement = true
-        canvasView.accessibilityLabel = flexBaselineProbeRequested
+        canvasView.accessibilityLabel = c121PositioningProbeRequested
+            ? "C12.1 정적·상대 위치 WGPU 장면"
+            : flexBaselineProbeRequested
             ? "C10.3.4 Flex first·last baseline WGPU 장면"
             : flexAlignmentProbeRequested
             ? "C10.3.3 Flex Box Alignment WGPU 장면"
@@ -308,7 +316,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         )
         customPropertiesButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(customPropertiesButton)
-        if authorStylesheetsProbeRequested || fixedSizeCssFixtureRequested || blockPaintProbeRequested
+        if c121PositioningProbeRequested || authorStylesheetsProbeRequested
+            || fixedSizeCssFixtureRequested || blockPaintProbeRequested
             || minMaxSizingProbeRequested || borderWidthProbeRequested
             || aspectRatioProbeRequested
             || typedCssMathProbeRequested
@@ -479,10 +488,17 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
     private func runtimeStatusSummary(_ report: String) -> String {
         let status = String(report.split(separator: " ", maxSplits: 1).first ?? "")
-        guard let layoutRange = report.range(of: " layout=") else {
+        guard report.contains(" layout=") else {
             return String(report.prefix(180))
         }
-        return "\(status) layout=\(report[layoutRange.upperBound...])"
+        return [
+            status,
+            "layout=\(reportField(report, "layout="))",
+            "boxes=\(reportField(report, "boxes="))",
+            "generation=\(reportField(report, "generation="))",
+            "document_revision=\(reportField(report, "document_revision="))",
+            "environment_revision=\(reportField(report, "environment_revision="))"
+        ].joined(separator: " ")
     }
 
     private func logC1031NodeFrames(_ report: String) {
@@ -496,6 +512,36 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             log("SPINON_C1031_NODE_FRAME \(frame)")
         }
         log("SPINON_C1031_FRAME_SUMMARY frames=\(frames.count) marker=present")
+    }
+
+    private func logC121NodeFrames(_ state: String, _ report: String) {
+        guard let marker = report.range(of: "node_frames_css_px=["),
+              let closing = report[marker.upperBound...].firstIndex(of: "]") else {
+            log("SPINON_C121_FRAME_SUMMARY state=\(state) marker=missing report_length=\(report.count)")
+            return
+        }
+        let frames = report[marker.upperBound..<closing].split(separator: ";")
+        for frame in frames {
+            log("SPINON_C121_NODE_FRAME state=\(state) \(frame)")
+        }
+        log("SPINON_C121_FRAME_SUMMARY state=\(state) frames=\(frames.count) marker=present")
+    }
+
+    private func evalC121PositionState(
+        host: UInt64,
+        state: UInt32
+    ) -> (report: String, attempts: Int) {
+        var report = ""
+        for attempt in 1...5 {
+            report = SpinonRunner.evalRuntimeGpuC12_1PositionState(host, state: state)
+            let superseded = report.hasPrefix("status=-12 ")
+                && report.contains("op=eval status=0 ")
+            if !superseded || attempt == 5 {
+                return (report, attempt)
+            }
+            Thread.sleep(forTimeInterval: 0.025)
+        }
+        return (report, 5)
     }
 
     private func logC1032NodeFrames(_ report: String) {
@@ -571,7 +617,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
     private func initializeRuntime() {
         guard !isClosing else { return }
-        let handle = blockFormattingProbeRequested
+        let handle = c121PositioningProbeRequested
+            ? SpinonRunner.createRuntimeGpuHostWithC12_1PositionFixture()
+            : blockFormattingProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithBlockFormattingFixture()
             : blockPaintProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithBlockPaintFixture()
@@ -605,7 +653,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
         log("SPINON_C0410_ENVIRONMENT \(environment ?? "")")
 
-        var result = flexBaselineProbeRequested
+        var result = c121PositioningProbeRequested
+            ? SpinonRunner.evalRuntimeGpuC12_1PositionFixture(handle)
+            : flexBaselineProbeRequested
             ? SpinonRunner.evalRuntimeGpuFlexBaselineFixture(handle)
             : flexAlignmentProbeRequested
             ? SpinonRunner.evalRuntimeGpuFlexAlignmentFixture(handle)
@@ -670,8 +720,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         if flexOrderProbeRequested, result?.hasPrefix("status=0 ") == true {
             logC1032NodeFrames(result ?? "")
         }
+        if c121PositioningProbeRequested, result?.hasPrefix("status=0 ") == true {
+            logC121NodeFrames("initial", result ?? "")
+        }
         if sceneWasSupersededAfterCommit {
-            let scope = flexAlignmentProbeRequested
+            let scope = c121PositioningProbeRequested
+                ? "SPINON_C121"
+                : flexAlignmentProbeRequested
                 ? "SPINON_C1033"
                 : flexBaselineProbeRequested
                 ? "SPINON_C1034"
@@ -715,7 +770,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             log("\(scope)_EVAL_SCENE_SUPERSEDED \(result ?? "")")
             postStatus("JavaScript 적용 완료 · 최신 CSS 장면 다시 계산 중")
         } else {
-            let scope = flexAlignmentProbeRequested
+            let scope = c121PositioningProbeRequested
+                ? "SPINON_C121"
+                : flexAlignmentProbeRequested
                 ? "SPINON_C1033"
                 : flexBaselineProbeRequested
                 ? "SPINON_C1034"
@@ -758,11 +815,28 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 : authorStylesheetsProbeRequested ? "SPINON_C0411" : "SPINON_C0410"
             log("\(scope)_EVAL \(result ?? "")")
             postStatus(runtimeStatusSummary(result ?? "runtime scene 준비 완료"))
-            if aspectRatioProbeRequested {
+            if c121PositioningProbeRequested {
+                log("SPINON_C121_SUMMARY state=initial \(runtimeStatusSummary(result ?? ""))")
+            } else if aspectRatioProbeRequested {
                 log("SPINON_C073_SUMMARY \(runtimeStatusSummary(result ?? ""))")
             } else if borderWidthProbeRequested {
                 log("SPINON_C072_SUMMARY \(runtimeStatusSummary(result ?? ""))")
             }
+        }
+        if c121PositioningProbeRequested, !sceneWasSupersededAfterCommit {
+            for state in UInt32(1)...UInt32(2) {
+                let stateName = state == 1 ? "target-relative" : "ancestor-relative"
+                let stateRun = evalC121PositionState(host: handle, state: state)
+                let stateReport = stateRun.report
+                guard stateReport.hasPrefix("status=0 ") else {
+                    postStatus("실패 · C12.1 \(stateName) · \(stateReport)")
+                    return
+                }
+                log("SPINON_C121_SUMMARY state=\(stateName) attempts=\(stateRun.attempts) \(runtimeStatusSummary(stateReport))")
+                logC121NodeFrames(stateName, stateReport)
+                result = stateReport
+            }
+            postStatus(runtimeStatusSummary(result ?? "C12.1 mutation 보고 없음"))
         }
         if customPropertiesProbeRequested && !authorStylesheetsProbeRequested {
             result = SpinonRunner.evalRuntimeGpuCustomPropertiesFixture(handle)
@@ -1125,7 +1199,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             scale: environmentInputs.scale, dark: environmentInputs.dark
         )
         log("SPINON_C0410_ENVIRONMENT viewport=\(environmentInputs.width)x\(environmentInputs.height) scale=\(environmentInputs.scale) dark=\(environmentInputs.dark) sequence=\(sequence) \(report ?? "")")
-        postStatus(report ?? "환경 보고 없음")
+        postStatus(runtimeStatusSummary(report ?? "환경 보고 없음"))
         guard report?.hasPrefix("status=0 ") == true else {
             throw C0410LatestTaskLaneError.operationFailed(report ?? "환경 갱신 보고 없음")
         }

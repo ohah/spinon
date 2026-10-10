@@ -181,6 +181,25 @@ pub struct ComputedLayoutSpacing {
     pub column_gap: ComputedCssSpacingValue,
 }
 
+/// Stylo에서 추출한 계산 `position` keyword입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum ComputedCssPosition {
+    Static,
+    Relative,
+    Absolute,
+    Fixed,
+    Sticky,
+}
+
+/// 한 cascade revision에서 추출한 물리 방향 inset 값입니다.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct ComputedLayoutInsets {
+    pub top: ComputedCssSpacingValue,
+    pub right: ComputedCssSpacingValue,
+    pub bottom: ComputedCssSpacingValue,
+    pub left: ComputedCssSpacingValue,
+}
+
 /// Stylo border style gate를 적용한 면별 used width이며 단위는 CSS px입니다.
 #[derive(Clone, Copy, Debug, Default, PartialEq)]
 pub struct ComputedLayoutBorder {
@@ -213,6 +232,10 @@ pub enum ComputedCssMath {
 pub struct ComputedElementStyle {
     pub node_id: NodeId,
     pub properties: BTreeMap<String, String>,
+    /// `properties`와 같은 cascade 결과에서 추출한 typed CSS position입니다.
+    pub layout_position: ComputedCssPosition,
+    /// 같은 cascade 결과의 물리 방향 inset 값입니다.
+    pub layout_insets: ComputedLayoutInsets,
     /// 같은 cascade 결과에서 얻은 computed `font-size` CSS px입니다.
     pub font_size_css_px: f32,
     /// `properties`와 같은 계산 결과에서 추출한 typed width·height·flex-basis입니다.

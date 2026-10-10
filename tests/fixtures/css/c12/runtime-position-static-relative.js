@@ -29,6 +29,7 @@ const stylesheet = String.raw`html, body { margin: 0; padding: 0; }
 const fixture = document.createElement("div");
 fixture.setAttribute("id", "c12-root");
 fixture.setAttribute("data-c12-node", "");
+const c12NodeRefs = Object.create(null);
 
 const style = document.createElement("style");
 style.setAttribute("type", "text/css");
@@ -41,6 +42,7 @@ function node(parent, id, inlineStyle = "", className = "") {
   element.setAttribute("data-c12-node", "");
   if (className) element.setAttribute("class", className);
   if (inlineStyle) element.setAttribute("style", inlineStyle);
+  c12NodeRefs[id] = element;
   parent.appendChild(element);
   return element;
 }
@@ -109,3 +111,4 @@ node(mutationRow, "dynamic-after", "width:20px;height:8px;background-color:#22aa
 
 const mountPoint = document.body || document;
 mountPoint.appendChild(fixture);
+globalThis.__spinonC121NodeRefs = c12NodeRefs;

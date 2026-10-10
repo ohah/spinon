@@ -12,6 +12,10 @@ pub enum LayoutCssMathProperty {
     MinHeight,
     MaxHeight,
     FlexBasis,
+    Top,
+    Right,
+    Bottom,
+    Left,
     MarginTop,
     MarginRight,
     MarginBottom,
@@ -34,6 +38,10 @@ impl LayoutCssMathProperty {
             Self::MinHeight => "min-height",
             Self::MaxHeight => "max-height",
             Self::FlexBasis => "flex-basis",
+            Self::Top => "top",
+            Self::Right => "right",
+            Self::Bottom => "bottom",
+            Self::Left => "left",
             Self::MarginTop => "margin-top",
             Self::MarginRight => "margin-right",
             Self::MarginBottom => "margin-bottom",
@@ -50,7 +58,14 @@ impl LayoutCssMathProperty {
     pub const fn is_nonnegative(self) -> bool {
         !matches!(
             self,
-            Self::MarginTop | Self::MarginRight | Self::MarginBottom | Self::MarginLeft
+            Self::Top
+                | Self::Right
+                | Self::Bottom
+                | Self::Left
+                | Self::MarginTop
+                | Self::MarginRight
+                | Self::MarginBottom
+                | Self::MarginLeft
         )
     }
 }

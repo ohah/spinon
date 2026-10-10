@@ -56,6 +56,23 @@ impl CalcLayoutTree {
         index: &BTreeMap<SpinonNodeId, usize>,
         postorder: &[SpinonNodeId],
     ) -> Result<Self, LayoutError> {
+        Self::new_with_inset_mode(input, index, postorder, false)
+    }
+
+    pub(super) fn new_flow_only(
+        input: &LayoutInput,
+        index: &BTreeMap<SpinonNodeId, usize>,
+        postorder: &[SpinonNodeId],
+    ) -> Result<Self, LayoutError> {
+        Self::new_with_inset_mode(input, index, postorder, true)
+    }
+
+    fn new_with_inset_mode(
+        input: &LayoutInput,
+        index: &BTreeMap<SpinonNodeId, usize>,
+        postorder: &[SpinonNodeId],
+        ignore_relative_inset: bool,
+    ) -> Result<Self, LayoutError> {
         let mut calc_owners = BTreeMap::<LayoutCalcId, Arc<CalcOwner>>::new();
         for value in &input.css_math {
             calc_owners.insert(value.id, Arc::new(CalcOwner(value.clone())));
@@ -94,12 +111,29 @@ impl CalcLayoutTree {
                     input.nodes[index[&child_id]].style.order
                 });
             }
-            let style = to_taffy_style(external_id, source.style, &calc_handles)?;
+            let positioning = input
+                .positioning
+                .get(&external_id)
+                .copied()
+                .unwrap_or_default();
+            let style = to_taffy_style(
+                external_id,
+                source.style,
+                positioning,
+                ignore_relative_inset,
+                &calc_handles,
+            )?;
             let order = u32::try_from(position).map_err(|_| LayoutError::TooManyNodes)?;
             nodes.push(Node::new(children, style, order));
         }
 
-        let viewport_root = if input.root_sizing == RootSizingPolicy::BlockFormatting {
+        let needs_viewport_containing_block = input.root_sizing
+            == RootSizingPolicy::BlockFormatting
+            || input
+                .positioning
+                .get(&input.root)
+                .is_some_and(|positioning| positioning.position == crate::LayoutPosition::Relative);
+        let viewport_root = if needs_viewport_containing_block {
             let position = postorder.len();
             u32::try_from(position).map_err(|_| LayoutError::TooManyNodes)?;
             let engine_id = TaffyNodeId::from(position);

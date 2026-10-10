@@ -34,6 +34,15 @@ pub enum LayoutError {
         node: NodeId,
         field: &'static str,
     },
+    UnknownPositioningNode(NodeId),
+    InvalidPositioning {
+        node: NodeId,
+        field: &'static str,
+    },
+    UnsupportedPositioning {
+        node: NodeId,
+        reason: &'static str,
+    },
     UnsupportedBaseline {
         node: NodeId,
         reason: &'static str,
@@ -112,6 +121,24 @@ impl fmt::Display for LayoutError {
             }
             Self::InvalidStyle { node, field } => {
                 write!(formatter, "노드 {node}의 {field} 값이 유효하지 않습니다")
+            }
+            Self::UnknownPositioningNode(id) => {
+                write!(
+                    formatter,
+                    "position 입력의 노드 {id}가 레이아웃 트리에 없습니다"
+                )
+            }
+            Self::InvalidPositioning { node, field } => {
+                write!(
+                    formatter,
+                    "노드 {node}의 position {field} 값이 유효하지 않습니다"
+                )
+            }
+            Self::UnsupportedPositioning { node, reason } => {
+                write!(
+                    formatter,
+                    "노드 {node}의 position 계산을 지원하지 않습니다: {reason}"
+                )
             }
             Self::UnsupportedBaseline { node, reason } => {
                 write!(
