@@ -1,11 +1,12 @@
 use std::collections::BTreeMap;
 
 use spinon_core::NodeId;
+use taffy::geometry::Point;
 use taffy::prelude::{
     AlignItems, Dimension, Display, FlexDirection as TaffyFlexDirection, FlexWrap, JustifyContent,
     LengthPercentage, LengthPercentageAuto, Rect, Size, Style,
 };
-use taffy::style::{BoxSizing, Direction as TaffyDirection};
+use taffy::style::{BoxSizing, Direction as TaffyDirection, Overflow};
 
 use crate::{
     FlexDirection, LayoutAlignItems, LayoutBoxSizing, LayoutCalcId, LayoutCssMathProperty,
@@ -178,6 +179,21 @@ pub(super) fn to_taffy_style(
     })
 }
 
+pub(super) fn viewport_block_containing_style(viewport: crate::Viewport) -> Style {
+    Style {
+        display: Display::Block,
+        size: Size {
+            width: Dimension::length(viewport.width),
+            height: Dimension::length(viewport.height),
+        },
+        overflow: Point {
+            x: Overflow::Hidden,
+            y: Overflow::Hidden,
+        },
+        ..Default::default()
+    }
+}
+
 fn calc_handle(
     node: NodeId,
     property: LayoutCssMathProperty,
@@ -201,6 +217,10 @@ fn to_taffy_length_percentage(
     handles: &BTreeMap<LayoutCalcId, *const ()>,
 ) -> Result<LengthPercentage, LayoutError> {
     match value {
+        LayoutLengthPercentage::Auto => Err(LayoutError::InvalidStyle {
+            node,
+            field: property.name(),
+        }),
         LayoutLengthPercentage::LengthPx(value) => Ok(LengthPercentage::length(value)),
         LayoutLengthPercentage::Percentage(value) => Ok(LengthPercentage::percent(value)),
         LayoutLengthPercentage::Calc(id) => Ok(LengthPercentage::calc(calc_handle(
@@ -216,6 +236,7 @@ fn to_taffy_length_percentage_auto(
     handles: &BTreeMap<LayoutCalcId, *const ()>,
 ) -> Result<LengthPercentageAuto, LayoutError> {
     match value {
+        LayoutLengthPercentage::Auto => Ok(LengthPercentageAuto::auto()),
         LayoutLengthPercentage::LengthPx(value) => Ok(LengthPercentageAuto::length(value)),
         LayoutLengthPercentage::Percentage(value) => Ok(LengthPercentageAuto::percent(value)),
         LayoutLengthPercentage::Calc(id) => Ok(LengthPercentageAuto::calc(calc_handle(

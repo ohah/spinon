@@ -59,7 +59,7 @@ fn root_gap_percentage_is_rejected_before_taffy_resolution() {
             width: 320.0,
             height: 800.0,
         },
-        root_sizing: RootSizingPolicy::MatchViewport,
+        root_sizing: RootSizingPolicy::Match,
         css_math: vec![],
         nodes: vec![LayoutNode {
             id: root_id,
@@ -102,7 +102,7 @@ fn percentage_edges_with_unprovable_containing_width_fail_closed() {
             width: 320.0,
             height: 800.0,
         },
-        root_sizing: RootSizingPolicy::MatchViewport,
+        root_sizing: RootSizingPolicy::Match,
         css_math: vec![],
         nodes: vec![
             LayoutNode {
@@ -183,7 +183,7 @@ fn spacing_input(child_style: LayoutStyle) -> LayoutInput {
             width: 320.0,
             height: 800.0,
         },
-        root_sizing: RootSizingPolicy::MatchViewport,
+        root_sizing: RootSizingPolicy::Match,
         css_math: vec![],
         nodes: vec![
             LayoutNode {

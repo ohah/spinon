@@ -159,6 +159,9 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
             Some(RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES)
         }
         ComputedStyleProfile::RuntimeBlockPaintV1 => Some(RUNTIME_BLOCK_PAINT_AUTHOR_PROPERTIES),
+        ComputedStyleProfile::RuntimeBlockFormattingV1 => {
+            Some(super::runtime_paint::RUNTIME_BLOCK_FORMATTING_AUTHOR_PROPERTIES)
+        }
         ComputedStyleProfile::RuntimeFlexPaintV1 => None,
     };
     let unsupported_author_feature = match profile {

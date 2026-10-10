@@ -134,7 +134,7 @@ fn to_input(fixture: &Fixture) -> LayoutInput {
             width: fixture.viewport.width,
             height: fixture.viewport.height,
         },
-        root_sizing: RootSizingPolicy::MatchViewport,
+        root_sizing: RootSizingPolicy::Match,
         css_math: vec![],
         nodes: fixture
             .nodes
@@ -294,7 +294,7 @@ fn fractional_dimensions_are_not_rounded_by_the_layout_engine() {
             width: 100.5,
             height: 80.5,
         },
-        root_sizing: RootSizingPolicy::MatchViewport,
+        root_sizing: RootSizingPolicy::Match,
         css_math: vec![],
         nodes: vec![
             LayoutNode {

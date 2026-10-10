@@ -5,7 +5,9 @@ use spinon_core::HostNodeHandle;
 use spinon_layout::{LayoutError, LayoutFrame, LayoutOutput};
 use spinon_render::RuntimeRenderSnapshot;
 use spinon_style::{
-    CascadeDiagnostic, ComputedStyleSnapshot, StyloDocumentView,
+    CascadeDiagnostic, ComputedStyleSnapshot, StylesheetSource, StyloDocumentView,
+    first_unsupported_runtime_block_display_inline_value,
+    first_unsupported_runtime_block_display_stylesheet_value,
     first_unsupported_runtime_block_paint_inline_property,
     first_unsupported_runtime_custom_properties_inline_property,
     first_unsupported_runtime_custom_properties_paint_inline_property,
@@ -117,6 +119,7 @@ pub(super) fn compute_runtime_layout(
     request: &WorkRequest,
     root_count: usize,
     layout_context: Option<RuntimeLayoutContext>,
+    author_stylesheets: &[StylesheetSource],
     runtime_paint_enabled: bool,
     profile: super::calculation::RuntimeCalculationProfile,
 ) -> Result<RuntimeLayoutCompleted, RuntimeLayoutFailure> {
@@ -140,9 +143,32 @@ pub(super) fn compute_runtime_layout(
 
     let (root, view, styles) =
         layout_context.expect("단일 스타일 root의 layout 입력이 있어야 합니다");
+    if profile == super::calculation::RuntimeCalculationProfile::BlockFormatting {
+        if let Some((node, value)) = first_unsupported_runtime_block_display_inline_value(&view) {
+            return Err(layout_failure(
+                "unsupported_block_display",
+                Some(node.get()),
+                Some(value),
+            ));
+        }
+        for stylesheet in author_stylesheets {
+            if let Some(value) =
+                first_unsupported_runtime_block_display_stylesheet_value(&stylesheet.css)
+            {
+                return Err(layout_failure(
+                    "unsupported_block_stylesheet",
+                    None,
+                    Some(format!("{}: {value}", stylesheet.id)),
+                ));
+            }
+        }
+    }
     let unsupported_property = match profile {
         super::calculation::RuntimeCalculationProfile::BlockPaint => {
             first_unsupported_runtime_block_paint_inline_property(&view)
+        }
+        super::calculation::RuntimeCalculationProfile::BlockFormatting => {
+            spinon_style::first_unsupported_runtime_block_formatting_inline_property(&view)
         }
         super::calculation::RuntimeCalculationProfile::FlexPaint
         | super::calculation::RuntimeCalculationProfile::RegisteredPropertiesPaint => {

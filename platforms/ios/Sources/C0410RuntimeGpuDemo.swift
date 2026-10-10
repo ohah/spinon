@@ -53,6 +53,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c073-aspect-ratio")
     private let blockPaintProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c08-block-paint")
+    private let blockFormattingProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c091-block-formatting")
     private let registeredPropertiesProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c052-registered-properties")
         || ProcessInfo.processInfo.arguments.contains("--spinon-c053-runtime-result-cache")
@@ -79,7 +81,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
 
         let title = UILabel()
-        title.text = viewportUnitsProbeRequested
+        title.text = blockFormattingProbeRequested
+            ? "SPINON · C09.1 Block formatting"
+            : viewportUnitsProbeRequested
             ? "SPINON · C06.6 viewport units"
             : blockPaintProbeRequested
             ? "SPINON · C08 Block 흐름"
@@ -112,7 +116,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.addSubview(title)
 
         let description = UILabel()
-        description.text = viewportUnitsProbeRequested
+        description.text = blockFormattingProbeRequested
+            ? "V8 DOM Block·auto margin → Stylo → Taffy → WGPU · 320×240 CSS px"
+            : viewportUnitsProbeRequested
             ? "V8 vw/svw/lvw/dvw → Stylo CSS px → Taffy → WGPU"
             : blockPaintProbeRequested
             ? "V8 DOM Block 흐름 → Stylo → Taffy → WGPU"
@@ -151,6 +157,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         canvasView.isAccessibilityElement = true
         canvasView.accessibilityLabel = viewportUnitsProbeRequested
             ? "C06.6 viewport units WGPU 장면"
+            : blockFormattingProbeRequested
+            ? "C09.1 일반 Block 흐름·auto margin WGPU 장면"
             : blockPaintProbeRequested
             ? "C08 Block 흐름 기본 페인트 WGPU 장면"
             : aspectRatioProbeRequested
@@ -183,6 +191,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         resizeButton.setTitle("표면 크기 전환 · 301×100 CSS px", for: .normal)
         resizeButton.addTarget(self, action: #selector(toggleSurfaceSize), for: .touchUpInside)
         resizeButton.translatesAutoresizingMaskIntoConstraints = false
+        if blockFormattingProbeRequested { resizeButton.isHidden = true }
         view.addSubview(resizeButton)
 
         customPropertiesButton.setTitle(
@@ -228,7 +237,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         )
         customPropertiesButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(customPropertiesButton)
-        if authorStylesheetsProbeRequested || blockPaintProbeRequested
+        if authorStylesheetsProbeRequested || blockFormattingProbeRequested || blockPaintProbeRequested
             || minMaxSizingProbeRequested || borderWidthProbeRequested
             || aspectRatioProbeRequested
             || typedCssMathProbeRequested
@@ -246,8 +255,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(statusLabel)
 
-        let canvasWidth = canvasView.widthAnchor.constraint(equalToConstant: 301)
-        let canvasHeight = canvasView.heightAnchor.constraint(equalToConstant: 100)
+        let canvasWidth = canvasView.widthAnchor.constraint(
+            equalToConstant: blockFormattingProbeRequested ? 320 : 301
+        )
+        let canvasHeight = canvasView.heightAnchor.constraint(
+            equalToConstant: blockFormattingProbeRequested ? 240 : 100
+        )
         canvasWidthConstraint = canvasWidth
         canvasHeightConstraint = canvasHeight
         NSLayoutConstraint.activate([
@@ -419,7 +432,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
     private func initializeRuntime() {
         guard !isClosing else { return }
-        let handle = blockPaintProbeRequested
+        let handle = blockFormattingProbeRequested
+            ? SpinonRunner.createRuntimeGpuHostWithBlockFormattingFixture()
+            : blockPaintProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithBlockPaintFixture()
             : SpinonRunner.createRuntimeGpuHost(
                 withRegisteredPropertiesFixture: registeredPropertiesProbeRequested
@@ -438,9 +453,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         guard shouldContinue else { return }
 
         let environmentInputs = currentEnvironment()
-        log("SPINON_C0410_ENVIRONMENT_REQUEST width=\(environmentInputs.width) height=\(environmentInputs.height)")
+        let viewportWidth: Float = blockFormattingProbeRequested ? 320 : environmentInputs.width
+        let viewportHeight: Float = blockFormattingProbeRequested ? 240 : environmentInputs.height
+        log("SPINON_C0410_ENVIRONMENT_REQUEST width=\(viewportWidth) height=\(viewportHeight)")
         let environment = SpinonRunner.setRuntimeGpuEnvironment(
-            handle, width: environmentInputs.width, height: environmentInputs.height,
+            handle, width: viewportWidth, height: viewportHeight,
             scale: environmentInputs.scale, dark: environmentInputs.dark
         )
         guard environment?.hasPrefix("status=0 ") == true else {
@@ -451,6 +468,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         var result = viewportUnitsProbeRequested
             ? SpinonRunner.evalRuntimeGpuViewportUnitsFixture(handle)
+            : blockFormattingProbeRequested
+            ? SpinonRunner.evalRuntimeGpuBlockFormattingFixture(handle)
             : blockPaintProbeRequested
             ? SpinonRunner.evalRuntimeGpuBlockPaintFixture(handle)
             : aspectRatioProbeRequested
@@ -485,6 +504,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         if sceneWasSupersededAfterCommit {
             let scope = viewportUnitsProbeRequested
                 ? "SPINON_C066A"
+                : blockFormattingProbeRequested
+                ? "SPINON_C091"
                 : blockPaintProbeRequested
                 ? "SPINON_C08"
                 : aspectRatioProbeRequested
@@ -513,6 +534,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         } else {
             let scope = viewportUnitsProbeRequested
                 ? "SPINON_C066A"
+                : blockFormattingProbeRequested
+                ? "SPINON_C091"
                 : blockPaintProbeRequested
                 ? "SPINON_C08"
                 : aspectRatioProbeRequested

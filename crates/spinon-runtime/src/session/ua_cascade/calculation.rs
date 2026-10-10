@@ -7,6 +7,7 @@ use super::{
 use spinon_core::{HostNodeHandle, HostNodeKind, HostParent, StyleRevision};
 use spinon_style::{
     ComputedStyleProfile, CssCascadeError, RuntimeCascadeReuseStats, StyloDocumentView,
+    compute_runtime_block_formatting_cascade_with_stylesheets,
     compute_runtime_block_paint_cascade_with_stylesheets,
     compute_runtime_flex_custom_properties_cascade_with_stylesheets,
     compute_runtime_flex_custom_properties_paint_cascade_with_stylesheets,
@@ -22,6 +23,7 @@ pub(super) enum RuntimeCalculationProfile {
     FlexPaint,
     RegisteredPropertiesPaint,
     BlockPaint,
+    BlockFormatting,
 }
 
 impl RuntimeCalculationProfile {
@@ -146,6 +148,12 @@ pub(super) fn compute_request_for_block_paint(
     compute_request_with_profile(request, RuntimeCalculationProfile::BlockPaint)
 }
 
+pub(super) fn compute_request_for_block_formatting(
+    request: &WorkRequest,
+) -> Result<RuntimeCalculation, String> {
+    compute_request_with_profile(request, RuntimeCalculationProfile::BlockFormatting)
+}
+
 fn compute_request_with_profile(
     request: &WorkRequest,
     profile: RuntimeCalculationProfile,
@@ -203,6 +211,7 @@ fn compute_request_with_profile(
         request,
         roots.len(),
         layout_context,
+        &author_stylesheets,
         profile.has_paint(),
         profile,
     );
@@ -245,6 +254,9 @@ fn compute_root(
             ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
         }
         RuntimeCalculationProfile::BlockPaint => ComputedStyleProfile::RuntimeBlockPaintV1,
+        RuntimeCalculationProfile::BlockFormatting => {
+            ComputedStyleProfile::RuntimeBlockFormattingV1
+        }
     };
     let previous_style_root = request
         .previous_styles
@@ -311,6 +323,14 @@ fn compute_root(
             }
             RuntimeCalculationProfile::BlockPaint => {
                 compute_runtime_block_paint_cascade_with_stylesheets(
+                    &view,
+                    author_stylesheets,
+                    request.viewport,
+                    StyleRevision::INITIAL,
+                )
+            }
+            RuntimeCalculationProfile::BlockFormatting => {
+                compute_runtime_block_formatting_cascade_with_stylesheets(
                     &view,
                     author_stylesheets,
                     request.viewport,

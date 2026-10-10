@@ -1,8 +1,8 @@
 # 0047 · C09 Block formatting
 
-**문서 ID:** `0047` · **내부 계약 숫자 버전:** `0.1.0` 고정 · **상태:** 제안 계약·미구현 · **공개 API:** 아님
+**문서 ID:** `0047` · **내부 계약 숫자 버전:** `0.1.0` 고정 · **상태:** C09.1 구현 브랜치 검증 완료·PR 검토 전; C09.2–C09.4 미구현 · **공개 API:** 아님
 
-`0047`은 문서 ID다. 구현·검증·문서 개정만으로 앱·crate·내부 계약의 숫자 버전을 올리지 않는다. C08.1 PR #105는 병합됐다. 이 계획·reference 변경이 `main`에 병합되기 전까지 C09 runtime 코드는 시작하지 않는다.
+`0047`은 문서 ID다. 구현·검증·문서 개정만으로 앱·crate·내부 계약의 숫자 버전을 올리지 않는다. C08.1 PR #105와 C09 계획·reference는 `main`에 병합됐다. C09.1 결과는 현재 구현 브랜치에서 검증했으며 PR 검토·병합 전에는 완료된 공개 지원으로 표시하지 않는다.
 
 ## 1. 입력과 profile
 
@@ -18,6 +18,21 @@
 - 일반 Block width 방정식의 `auto` width 및 LTR 좌우 `auto` margin 분배, 모든 값 지정 시 over-constrained LTR의 우측 margin 처리, 수직 auto margin 사용값, negative/fractional margins와 자식 document order를 다룬다. C06/C07의 단위와 box model 계약을 복사해 새 환산 규칙을 만들지 않는다.
 - `display:none` subtree는 margin strut·배치·paint에 참여하지 않는다. DOM preorder frame 기록은 C04.9 계약대로 유지하고 해당 node와 자손의 frame은 모두 0이어야 한다. 이전 revision frame으로 대체하지 않는다.
 - RTL, vertical writing, inline line box, replaced element content measurement는 이 계약의 성공 조건이 아니다.
+
+### C09.1 구현 브랜치의 지원 경계
+
+| 입력 | 현재 동작 |
+| --- | --- |
+| root·flow | HostRoot 직속 HTML element 하나를 수평 쓰기·LTR normal-flow Block으로 계산한다. viewport는 합성 Taffy containing block이고 DOM/frame 결과에 포함하지 않는다. |
+| display | `block`, `none`을 계산한다. inline·flow-root·flex·grid·table·contents와 CSS-wide 초기/상속 값은 계산 결과가 `block`으로 정규화되더라도 원문 선언을 검사해 실패한다. |
+| 크기 | `width:auto`와 기존 C06 typed length·percentage·CSS math, C07 box-sizing·padding·used border·min/max를 이어 쓴다. 일반 Block width 방정식과 수직 normal flow로 auto height를 계산한다. |
+| margin | 네 면의 기존 length·percentage·음수 margin과 C09.1 좌우 `auto` 분배를 계산한다. 세로 `auto` 사용값은 0으로 처리한다. 수직 margin collapse는 아직 하지 않는다. |
+| 스타일 선언 | C09.1 profile의 제한 author-property 목록만 받는다. `display`의 알려진 지원 밖 값은 inline·`<style>` 원문을 CSS token parser로 검사한다. 사전 검사기는 `@media`·`@supports`와 CSS 중첩 규칙 안의 style rule도 깊이 64까지 순회한다. 다만 at-rule 자체는 현재 cascade profile의 지원 범위 밖이며 실패한다. 그보다 깊은 규칙도 fail-closed로 거부한다. |
+| 실패 경계 | rtl 방향 지정, position, float, clear, overflow, transform, writing-mode, visible text와 여러 root는 성공 layout이 아니다. inline display 오류는 `unsupported_block_display`와 node/value를, author stylesheet 사전 검사 오류는 `unsupported_block_stylesheet`와 stylesheet ID/원인을 담는다. |
+
+이 표는 구현 브랜치의 테스트된 C09.1 범위다. `border-width`는 geometry에만 반영되며 border 선 paint는 포함하지 않는다. 전체 HTML/CSS 지원, C09.2–C09.4 또는 공개 API 지원을 뜻하지 않는다.
+
+현재 fail-closed 검사는 author input 전체를 대상으로 한다. 따라서 선택되지 않는 stylesheet selector 안의 `display:grid`나 뒤에서 `display:block`으로 덮는 fallback 선언도 거부한다. 적용 요소·cascade 승자만 지원 판정하는 웹과 같은 conditional matching은 아직 없다. 중첩 at-rule과 CSS 중첩 규칙은 64단계까지만 순회하고 더 깊으면 실패한다. 이 제약을 완화하려면 selector match 및 cascade winner를 보존하는 값 검사를 별도 작업으로 다뤄야 한다.
 
 ## 3. C09.2 margin collapse
 
@@ -55,10 +70,11 @@
 - [C09 계획·하위 작업·판정 기준](../../plan/c09-block-formatting.md)
 - [계획의 fixture 통합 재검토](./evidence/c09-block-formatting-plan-review-precomparison-followup-2026-10-10.md)
 - [Chromium 사전 비교 결과·도구 검토](./evidence/c09-block-formatting-precomparison-2026-10-10.md)
+- [C09.1 구현 실패 관점 검토·Android/iOS Simulator 근거](./evidence/c09-block-formatting-implementation-review-2026-10-10.md)
 - [고정 Chromium HTML fixture](../../tests/fixtures/css/c09/block-formatting.html) · [inventory](../../tests/fixtures/css/c09/block-formatting-inventory.json) · [capture 도구](../../tools/css-reference/capture-c09-block-formatting.mjs) · [reference 테스트](../../tools/css-reference/c09-block-formatting.test.mjs)
 - [CSS 2.1 margin collapse](https://www.w3.org/TR/CSS21/box.html#collapsing-margins), [Block formatting context](https://www.w3.org/TR/CSS21/visuren.html#block-formatting), [containing block와 width](https://www.w3.org/TR/CSS21/visudet.html#containing-block-details)
 - [CSS 2.1 §10.3.5 float](https://www.w3.org/TR/CSS21/visudet.html#float-width), [§10.3.7 absolute non-replaced](https://www.w3.org/TR/CSS21/visudet.html#abs-non-replaced-width), [§10.3.9 inline-block](https://www.w3.org/TR/CSS21/visudet.html#inlineblock-width) shrink-to-fit 문맥. 정확한 알고리즘을 정의하지 않은 부분은 pinned Chromium과 대조한다.
 - [CSS Display Level 3 `flow-root`](https://www.w3.org/TR/css-display-3/#flow-root) — Editor’s Draft; Chromium 고정 reference가 구현 비교 oracle이다.
 - [Taffy 0.14.0 문서](https://docs.rs/taffy/0.14.0/taffy/) — Spinon은 `=0.14.0`을 pin하고 `default-features=false`로 `float_layout`을 끈다.
 
-이 계약은 계획 단계의 내부 제안이다. RuntimeBlockFormattingV1은 구현·fixture·Android/iOS 검증이 병합되기 전까지 사용 가능 API나 공개 CSS 지원으로 취급할 수 없다.
+이 계약은 미출시 내부 계약이다. RuntimeBlockFormattingV1은 PR 검토·병합 전까지 사용 가능 API나 공개 CSS 지원으로 취급할 수 없다.
