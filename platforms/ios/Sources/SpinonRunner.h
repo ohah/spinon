@@ -44,6 +44,7 @@
 + (NSString *)evalRuntimeGpuViewportUnitsFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuMinMaxSizingFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuBorderWidthFixture:(uint64_t)handle;
++ (NSString *)evalRuntimeGpuAspectRatioFixture:(uint64_t)handle;
 + (NSString *)prepareRuntimeGpuWgpuSurface:(uint64_t)handle view:(void *)view;
 + (NSString *)createRuntimeGpuWgpu:(uint64_t)handle width:(uint32_t)width
                              height:(uint32_t)height;

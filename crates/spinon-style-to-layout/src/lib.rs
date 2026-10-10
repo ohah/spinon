@@ -8,6 +8,8 @@ mod absolute_length_tests;
 #[cfg(test)]
 mod c07_2_border_layout_tests;
 #[cfg(test)]
+mod c07_3_aspect_ratio_tests;
+#[cfg(test)]
 mod cascade_layers_tests;
 #[cfg(test)]
 mod flex_alignment_tests;

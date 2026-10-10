@@ -74,6 +74,7 @@ pub(super) fn to_taffy_style(
                 calc_handles,
             )?,
         },
+        aspect_ratio: style.aspect_ratio,
         padding: Rect {
             top: to_taffy_length_percentage(
                 node,

@@ -136,6 +136,8 @@ pub struct LayoutStyle {
     pub min_height: LayoutDimension,
     /// `auto`는 CSS `none`처럼 제한이 없음을 뜻합니다.
     pub max_height: LayoutDimension,
+    /// 선호 비율 `width / height`; 값은 유한한 양수여야 합니다.
+    pub aspect_ratio: Option<f32>,
     pub flex_basis: LayoutDimension,
     pub flex_direction: FlexDirection,
     pub direction: TextDirection,
@@ -254,6 +256,7 @@ impl Default for LayoutStyle {
             max_width: LayoutDimension::Auto,
             min_height: LayoutDimension::Auto,
             max_height: LayoutDimension::Auto,
+            aspect_ratio: None,
             flex_basis: LayoutDimension::Auto,
             flex_direction: FlexDirection::Column,
             direction: TextDirection::Ltr,

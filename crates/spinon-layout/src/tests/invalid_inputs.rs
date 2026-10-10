@@ -97,3 +97,21 @@ fn negative_and_non_finite_min_max_sizes_are_rejected_before_taffy() {
         );
     }
 }
+
+#[test]
+fn nonpositive_and_nonfinite_aspect_ratios_are_rejected_before_taffy() {
+    let valid = to_input(&fixture());
+    let node = valid.nodes[1].id;
+
+    for ratio in [0.0, -1.0, f32::NAN, f32::INFINITY, f32::NEG_INFINITY] {
+        let mut invalid = valid.clone();
+        invalid.nodes[1].style.aspect_ratio = Some(ratio);
+        assert_eq!(
+            TaffyLayoutEngine.compute(&invalid),
+            Err(LayoutError::InvalidStyle {
+                node,
+                field: "aspect_ratio",
+            })
+        );
+    }
+}

@@ -217,6 +217,8 @@ pub struct ComputedElementStyle {
     pub font_size_css_px: f32,
     /// `properties`와 같은 계산 결과에서 추출한 typed width·height·flex-basis입니다.
     pub layout_dimensions: ComputedLayoutDimensions,
+    /// 현재 runtime layout profile에서 추출한 preferred width/height ratio입니다.
+    pub layout_aspect_ratio: Option<f32>,
     /// 같은 Stylo computed-style revision에서 추출한 margin·padding·gap 값입니다.
     pub layout_spacing: ComputedLayoutSpacing,
     /// 같은 cascade 결과에서 `none`·`hidden` gate를 적용한 면별 border 폭입니다.

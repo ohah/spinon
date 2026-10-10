@@ -193,7 +193,8 @@ public final class MainActivity extends Activity {
                 || getIntent().getBooleanExtra("spinon_c065_typed_css_math", false)
                 || getIntent().getBooleanExtra("spinon_c066_viewport_units", false)
                 || getIntent().getBooleanExtra("spinon_c071_min_max_sizing", false)
-                || getIntent().getBooleanExtra("spinon_c072_border_width", false)) {
+                || getIntent().getBooleanExtra("spinon_c072_border_width", false)
+                || getIntent().getBooleanExtra("spinon_c073_aspect_ratio", false)) {
             if (!BuildConfig.SPINON_C04_RUNTIME_GPU) {
                 TextView unavailable = new TextView(this);
                 unavailable.setText("C04.10 GPU 실험을 켜서 빌드해야 합니다.");

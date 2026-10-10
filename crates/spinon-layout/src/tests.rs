@@ -4,9 +4,10 @@ use serde::Deserialize;
 use spinon_core::{ChangeBatch, EnvironmentRevision, NodeId, Revision, StyleRevision, Tree};
 
 use crate::{
-    FlexDirection, LayoutDimension, LayoutEdges, LayoutEngine, LayoutError, LayoutGap, LayoutInput,
-    LayoutInputRevision, LayoutLengthPercentage, LayoutNode, LayoutSourceRevision, LayoutStyle,
-    RootSizingPolicy, TaffyLayoutEngine, TextDirection, Viewport,
+    FlexDirection, LayoutDimension, LayoutDisplay, LayoutEdges, LayoutEngine, LayoutError,
+    LayoutGap, LayoutInput, LayoutInputRevision, LayoutLengthPercentage, LayoutNode,
+    LayoutSourceRevision, LayoutStyle, RootSizingPolicy, TaffyLayoutEngine, TextDirection,
+    Viewport,
 };
 
 #[path = "tests/border.rs"]
@@ -488,4 +489,56 @@ fn fixed_node(id: NodeId, width: f32, height: f32) -> LayoutNode {
             ..LayoutStyle::default()
         },
     }
+}
+
+#[test]
+fn aspect_ratio_preserves_two_definite_block_sizes() {
+    let root = node_id(1);
+    let child = node_id(2);
+    let mut tree = Tree::new();
+    let mut batch = ChangeBatch::new(tree.revision());
+    batch
+        .create(root, "div")
+        .insert(root, None, 0)
+        .create(child, "div")
+        .insert(child, Some(root), 0);
+    tree.commit(batch).unwrap();
+
+    let styles = BTreeMap::from([
+        (
+            root,
+            LayoutStyle {
+                display: LayoutDisplay::Block,
+                width: LayoutDimension::Fixed(400.0),
+                height: LayoutDimension::Fixed(1200.0),
+                ..LayoutStyle::default()
+            },
+        ),
+        (
+            child,
+            LayoutStyle {
+                display: LayoutDisplay::Block,
+                width: LayoutDimension::Fixed(160.0),
+                height: LayoutDimension::Fixed(80.0),
+                aspect_ratio: Some(16.0 / 9.0),
+                ..LayoutStyle::default()
+            },
+        ),
+    ]);
+    let input = LayoutInput::from_tree(
+        &tree,
+        Viewport {
+            width: 400.0,
+            height: 1200.0,
+        },
+        &styles,
+        StyleRevision::default(),
+        EnvironmentRevision::default(),
+    )
+    .unwrap();
+
+    let output = TaffyLayoutEngine.compute(&input).unwrap();
+
+    assert_eq!(output.frames[&child].width, 160.0);
+    assert_eq!(output.frames[&child].height, 80.0);
 }
