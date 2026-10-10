@@ -181,7 +181,7 @@ fn is_axis_definite(
                 )
                 && parent_axes.width;
             let stretched_cross_size = parent.style.display == LayoutDisplay::Flex
-                && parent.style.align_items == crate::LayoutAlignItems::Stretch
+                && parent.style.align_items.uses_stretch_behavior()
                 && match (parent.style.flex_direction, axis) {
                     (FlexDirection::Row, LayoutAxis::Height)
                     | (FlexDirection::RowReverse, LayoutAxis::Height)

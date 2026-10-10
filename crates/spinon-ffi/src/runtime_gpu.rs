@@ -57,6 +57,8 @@ const RUNTIME_CSS_FLEX_ORDER_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c10/runtime-flex-order-alignment.js");
 const RUNTIME_CSS_FLEX_DISTRIBUTION_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c10/runtime-flex-distribution.js");
+const RUNTIME_CSS_FLEX_ALIGNMENT_FIXTURE_SOURCE: &str =
+    include_str!("../../../tests/fixtures/css/c10/runtime-flex-alignment.js");
 
 #[repr(C)]
 pub struct SpinonRuntimeGpuHost {

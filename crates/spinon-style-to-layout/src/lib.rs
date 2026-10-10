@@ -10,6 +10,8 @@ mod c07_2_border_layout_tests;
 #[cfg(test)]
 mod c07_3_aspect_ratio_tests;
 #[cfg(test)]
+mod c10_flex_alignment_tests;
+#[cfg(test)]
 mod c10_flex_order_tests;
 #[cfg(test)]
 mod c10_flex_wrap_tests;

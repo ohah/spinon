@@ -7,7 +7,7 @@ use spinon_style::{ComputedCssMath, ComputedCssSpacingValue};
 use crate::StyleLayoutError;
 
 use super::super::typed_math::CssMathProjector;
-use super::unsupported_value;
+use super::primitive_values::unsupported_value;
 
 pub(super) fn parse_gap(
     node: NodeId,

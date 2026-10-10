@@ -5,7 +5,10 @@ use crate::{ComputedBackgroundPaint, OpaqueCssSrgb, StylesheetSource};
 
 use super::{
     ComputedStyleProfile, CssCascadeError, CssViewport, StyloDocumentView, compute_cascade,
-    runtime_layout::{RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES, RUNTIME_FLEX_LAYOUT_PROPERTIES},
+    runtime_layout::{
+        RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES, RUNTIME_FLEX_LAYOUT_PROPERTIES,
+        runtime_flex_wrap_properties,
+    },
 };
 
 pub(super) const RUNTIME_BLOCK_PAINT_AUTHOR_PROPERTIES: &[&str] = &[
@@ -198,7 +201,7 @@ pub fn compute_runtime_flex_custom_properties_paint_cascade_with_stylesheets(
     viewport: CssViewport,
     style_revision: StyleRevision,
 ) -> Result<super::ComputedStyleSnapshot, CssCascadeError> {
-    let mut properties = RUNTIME_FLEX_LAYOUT_PROPERTIES.to_vec();
+    let mut properties = runtime_flex_wrap_properties();
     properties.push(("background-color", LonghandId::BackgroundColor));
     compute_cascade(
         view,
@@ -217,7 +220,7 @@ pub fn compute_runtime_flex_registered_properties_paint_cascade_with_stylesheets
     viewport: CssViewport,
     style_revision: StyleRevision,
 ) -> Result<super::ComputedStyleSnapshot, CssCascadeError> {
-    let mut properties = RUNTIME_FLEX_LAYOUT_PROPERTIES.to_vec();
+    let mut properties = runtime_flex_wrap_properties();
     properties.push(("background-color", LonghandId::BackgroundColor));
     compute_cascade(
         view,

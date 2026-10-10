@@ -65,6 +65,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c1031-flex-reverse")
     private let flexOrderProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c1032-flex-order")
+    private let flexAlignmentProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c1033-flex-alignment")
     private let blockFormattingProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c091-block-formatting")
         || ProcessInfo.processInfo.arguments.contains("--spinon-c092-margin-collapse")
@@ -82,7 +84,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     }
     private var fixedSizeCssFixtureRequested: Bool {
         blockFormattingProbeRequested || flexWrapProbeRequested || flexDistributionProbeRequested
-            || flexReverseProbeRequested || flexOrderProbeRequested
+            || flexReverseProbeRequested || flexOrderProbeRequested || flexAlignmentProbeRequested
     }
     private var failureProbeStarted = false
     private var shutdownProbeStarted = false
@@ -99,7 +101,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
 
         let title = UILabel()
-        title.text = flexReverseProbeRequested
+        title.text = flexAlignmentProbeRequested
+            ? "SPINON · C10.3.3 Flex 정렬"
+            : flexReverseProbeRequested
             ? "SPINON · C10.3.1 reverse Flex"
             : flexOrderProbeRequested
             ? "SPINON · C10.3.2 Flex order"
@@ -146,7 +150,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.addSubview(title)
 
         let description = UILabel()
-        description.text = flexReverseProbeRequested
+        description.text = flexAlignmentProbeRequested
+            ? "V8 align-items/self/content·place-* → Stylo → Taffy → WGPU · 320×240 CSS px"
+            : flexReverseProbeRequested
             ? "V8 row-reverse·wrap-reverse → Stylo → Taffy → WGPU · 320×240 CSS px"
             : flexOrderProbeRequested
             ? "V8 Flex order·stable ties·overlap paint → Stylo → Taffy → WGPU · 320×240 CSS px"
@@ -197,7 +203,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         canvasView.translatesAutoresizingMaskIntoConstraints = false
         canvasView.isAccessibilityElement = true
-        canvasView.accessibilityLabel = flexReverseProbeRequested
+        canvasView.accessibilityLabel = flexAlignmentProbeRequested
+            ? "C10.3.3 Flex Box Alignment WGPU 장면"
+            : flexReverseProbeRequested
             ? "C10.3.1 row-reverse와 wrap-reverse WGPU 장면"
             : flexOrderProbeRequested
             ? "C10.3.2 Flex order와 겹친 색상 WGPU 장면"
@@ -494,6 +502,27 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         log("SPINON_C1032_FRAME_SUMMARY frames=\(frames.count) marker=present")
     }
 
+    private func logC1033NodeFrames(_ report: String) {
+        guard let marker = report.range(of: "node_frames_css_px=["),
+              let closing = report[marker.upperBound...].firstIndex(of: "]") else {
+            log("SPINON_C1033_FRAME_SUMMARY marker=missing report_length=\(report.count)")
+            return
+        }
+        let frames = report[marker.upperBound..<closing].split(separator: ";")
+        for frame in frames {
+            log("SPINON_C1033_NODE_FRAME \(frame)")
+        }
+        log("SPINON_C1033_FRAME_SUMMARY frames=\(frames.count) marker=present")
+    }
+
+    private func logC1033RuntimeSummary(_ report: String) {
+        let fields = report.split(whereSeparator: \.isWhitespace)
+        func field(_ name: String) -> String {
+            fields.first(where: { $0.hasPrefix(name) }).map(String.init) ?? "\(name)missing"
+        }
+        log("SPINON_C1033_RUNTIME_SUMMARY \(field("status=")) \(field("layout=")) \(field("boxes=")) \(field("error="))")
+    }
+
     @objc private func toggleSurfaceSize() {
         guard !isClosing else { return }
         expandedSurface.toggle()
@@ -546,7 +575,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
         log("SPINON_C0410_ENVIRONMENT \(environment ?? "")")
 
-        var result = flexOrderProbeRequested
+        var result = flexAlignmentProbeRequested
+            ? SpinonRunner.evalRuntimeGpuFlexAlignmentFixture(handle)
+            : flexOrderProbeRequested
             ? SpinonRunner.evalRuntimeGpuFlexOrderFixture(handle)
             : flexReverseProbeRequested
             ? SpinonRunner.evalRuntimeGpuFlexReverseFixture(handle)
@@ -596,11 +627,17 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         if flexReverseProbeRequested, result?.hasPrefix("status=0 ") == true {
             logC1031NodeFrames(result ?? "")
         }
+        if flexAlignmentProbeRequested, result?.hasPrefix("status=0 ") == true {
+            logC1033RuntimeSummary(result ?? "")
+            logC1033NodeFrames(result ?? "")
+        }
         if flexOrderProbeRequested, result?.hasPrefix("status=0 ") == true {
             logC1032NodeFrames(result ?? "")
         }
         if sceneWasSupersededAfterCommit {
-            let scope = flexOrderProbeRequested
+            let scope = flexAlignmentProbeRequested
+                ? "SPINON_C1033"
+                : flexOrderProbeRequested
                 ? "SPINON_C1032"
                 : flexReverseProbeRequested
                 ? "SPINON_C1031"
@@ -640,7 +677,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             log("\(scope)_EVAL_SCENE_SUPERSEDED \(result ?? "")")
             postStatus("JavaScript 적용 완료 · 최신 CSS 장면 다시 계산 중")
         } else {
-            let scope = flexOrderProbeRequested
+            let scope = flexAlignmentProbeRequested
+                ? "SPINON_C1033"
+                : flexOrderProbeRequested
                 ? "SPINON_C1032"
                 : flexReverseProbeRequested
                 ? "SPINON_C1031"

@@ -232,7 +232,7 @@ fn compute_layout_from_styles(
             }
         }
     }
-    let projected = project_styles(&computed_styles)?;
+    let projected = project_styles(snapshot, root, &computed_styles)?;
     let styles = projected.styles;
     if matches!(
         computed_styles.profile,

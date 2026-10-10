@@ -1,6 +1,7 @@
 mod calc_tree;
 mod css_math;
 mod error;
+mod flex_auto_margin;
 mod host_document;
 mod percentage_basis;
 mod revision;
@@ -11,6 +12,7 @@ mod tree_input;
 use std::collections::{BTreeMap, BTreeSet};
 
 use calc_tree::CalcLayoutTree;
+use flex_auto_margin::negative_cross_axis_auto_margin_offset_correction;
 use percentage_basis::validate_spacing_percentage_bases;
 use spinon_core::NodeId;
 use taffy::prelude::{AvailableSpace, Size};
@@ -19,9 +21,10 @@ pub use css_math::{LayoutCalcId, LayoutCssMath, LayoutCssMathProperty, LayoutCss
 pub use error::LayoutError;
 pub use revision::{LayoutInputRevision, LayoutSourceRevision};
 pub use style::{
-    FlexDirection, FlexWrap, LayoutAlignItems, LayoutBorder, LayoutBoxSizing, LayoutDimension,
-    LayoutDisplay, LayoutEdges, LayoutGap, LayoutJustifyContent, LayoutLengthPercentage,
-    LayoutStyle, TextDirection, Viewport,
+    AlignmentSafety, ContentAlignmentPosition, FlexDirection, FlexWrap, ItemAlignmentPosition,
+    JustifyContentPosition, LayoutAlignContent, LayoutAlignItems, LayoutAlignSelf, LayoutBorder,
+    LayoutBoxSizing, LayoutDimension, LayoutDisplay, LayoutEdges, LayoutGap, LayoutJustifyContent,
+    LayoutLengthPercentage, LayoutStyle, TextDirection, Viewport,
 };
 
 /// 부모와 자식 ID 순서 및 레이아웃 스타일을 묶은 입력 노드입니다.
@@ -429,15 +432,24 @@ fn collect_frames(
     tree: &CalcLayoutTree,
 ) -> Result<LayoutOutput, LayoutError> {
     let mut frames = BTreeMap::new();
-    let mut pending = vec![(input.root, 0.0_f32, 0.0_f32)];
-    while let Some((external_id, parent_x, parent_y)) = pending.pop() {
+    let mut pending = vec![(input.root, 0.0_f32, 0.0_f32, None)];
+    while let Some((external_id, parent_x, parent_y, parent_id)) = pending.pop() {
         let engine_id = engine_ids[&external_id];
         let layout = tree
             .layout(engine_id)
             .ok_or(LayoutError::MissingComputedLayout(external_id))?;
+        let (correction_x, correction_y) = parent_id
+            .map(|parent_id| {
+                negative_cross_axis_auto_margin_offset_correction(
+                    input.nodes[index[&parent_id]].style,
+                    input.nodes[index[&external_id]].style,
+                    layout,
+                )
+            })
+            .unwrap_or((0.0, 0.0));
         let frame = LayoutFrame {
-            x: parent_x + layout.location.x,
-            y: parent_y + layout.location.y,
+            x: parent_x + layout.location.x + correction_x,
+            y: parent_y + layout.location.y + correction_y,
             width: layout.size.width,
             height: layout.size.height,
         };
@@ -450,7 +462,7 @@ fn collect_frames(
         frames.insert(external_id, frame);
         let node = &input.nodes[index[&external_id]];
         for &child in node.children.iter().rev() {
-            pending.push((child, frame.x, frame.y));
+            pending.push((child, frame.x, frame.y, Some(external_id)));
         }
     }
     Ok(LayoutOutput {

@@ -52,9 +52,20 @@ pub(super) const RUNTIME_FLEX_LAYOUT_PROPERTIES: &[(&str, LonghandId)] = &[
     ("border-left-style", LonghandId::BorderLeftStyle),
 ];
 
+const RUNTIME_FLEX_ALIGNMENT_PROPERTIES: &[(&str, LonghandId)] = &[
+    ("align-self", LonghandId::AlignSelf),
+    ("align-content", LonghandId::AlignContent),
+    ("justify-items", LonghandId::JustifyItems),
+    ("justify-self", LonghandId::JustifySelf),
+];
+
 /// Runtime Flex profile에서 사용할 layout 속성 목록입니다.
 pub(super) fn runtime_flex_wrap_properties() -> Vec<(&'static str, LonghandId)> {
-    RUNTIME_FLEX_LAYOUT_PROPERTIES.to_vec()
+    RUNTIME_FLEX_LAYOUT_PROPERTIES
+        .iter()
+        .chain(RUNTIME_FLEX_ALIGNMENT_PROPERTIES)
+        .copied()
+        .collect()
 }
 
 pub(super) const RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES: &[&str] = &[
@@ -78,7 +89,14 @@ pub(super) const RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES: &[&str] = &[
     "flex-basis",
     "direction",
     "align-items",
+    "align-self",
+    "align-content",
     "justify-content",
+    "justify-items",
+    "justify-self",
+    "place-items",
+    "place-self",
+    "place-content",
     "gap",
     "row-gap",
     "column-gap",
@@ -169,7 +187,7 @@ pub fn compute_runtime_flex_custom_properties_cascade_with_stylesheets(
         author_stylesheets,
         viewport,
         style_revision,
-        RUNTIME_FLEX_LAYOUT_PROPERTIES,
+        &runtime_flex_wrap_properties(),
         ComputedStyleProfile::RuntimeFlexCustomPropertiesV1,
     )
 }
@@ -186,7 +204,7 @@ pub fn compute_runtime_flex_registered_properties_cascade_with_stylesheets(
         author_stylesheets,
         viewport,
         style_revision,
-        RUNTIME_FLEX_LAYOUT_PROPERTIES,
+        &runtime_flex_wrap_properties(),
         ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1,
     )
 }
@@ -218,7 +236,14 @@ pub fn first_unsupported_runtime_layout_inline_property(
         "flex-basis",
         "direction",
         "align-items",
+        "align-self",
+        "align-content",
         "justify-content",
+        "justify-items",
+        "justify-self",
+        "place-items",
+        "place-self",
+        "place-content",
         "row-gap",
         "column-gap",
         "margin-top",
