@@ -26,6 +26,7 @@
 | 18 | intrinsic text/replaced sizing이 아직 없는데 auto-size abs box가 0 크기로 성공하는가 | 필요한 C14/C15 측정이 없으면 진단 오류로 전파하도록 계획에 명시했다. |
 | 19 | sticky가 실제 scrollport/clip 없이 viewport offset으로 먼저 구현되는가 | C13 scroll·offset·clip 계약 전에는 C12.5와 완료 주장을 차단했다. |
 | 20 | 시뮬레이터 smoke나 적은 case가 모바일 전체 적합성으로 과장되는가 | 단계별 지원 fixture를 Android 연결 실기기와 iOS Simulator에서 동일하게 실행하며 미실행 플랫폼·범위는 별도로 남기도록 했다. |
+| 21 | PR 본문 안의 상대 링크가 GitHub에서 잘못된 경로로 해석되는가 | 계획·상태·검토 근거 링크를 현재 PR 브랜치를 가리키는 절대 GitHub 경로로 바꿨다. |
 
 ## 이 PR에 포함하지 않은 결과
 
