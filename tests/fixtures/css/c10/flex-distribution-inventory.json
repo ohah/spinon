@@ -1,0 +1,291 @@
+{
+  "schema": "spinon-css-c10-flex-distribution-inventory/v1",
+  "fixtureId": "C10.2-flex-distribution-v1",
+  "viewport": {
+    "width": 320,
+    "height": 240,
+    "deviceScaleFactors": [
+      1,
+      2
+    ]
+  },
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "forcedColors": "none",
+    "pointer": "coarse",
+    "hover": "none"
+  },
+  "comparison": {
+    "computedProperties": [
+      "display",
+      "flex-direction",
+      "flex-wrap",
+      "flex",
+      "flex-grow",
+      "flex-shrink",
+      "flex-basis",
+      "width",
+      "height",
+      "min-width",
+      "max-width",
+      "min-height",
+      "max-height",
+      "margin-left",
+      "margin-right",
+      "margin-top",
+      "margin-bottom",
+      "row-gap",
+      "column-gap",
+      "box-sizing",
+      "direction",
+      "align-items",
+      "justify-content",
+      "padding-top",
+      "padding-right",
+      "padding-bottom",
+      "padding-left",
+      "border-top-width",
+      "border-right-width",
+      "border-bottom-width",
+      "border-left-width"
+    ],
+    "rectFields": [
+      "x",
+      "y",
+      "width",
+      "height"
+    ],
+    "maximumAbsoluteRectErrorCssPx": 0.5
+  },
+  "cases": [
+    {
+      "id": "grow-equal",
+      "nodes": [
+        "c102-grow-equal-root",
+        "c102-grow-equal-first",
+        "c102-grow-equal-second"
+      ]
+    },
+    {
+      "id": "grow-weighted",
+      "nodes": [
+        "c102-grow-weighted-root",
+        "c102-grow-weighted-first",
+        "c102-grow-weighted-second",
+        "c102-grow-weighted-third"
+      ]
+    },
+    {
+      "id": "grow-subunit",
+      "nodes": [
+        "c102-grow-subunit-root",
+        "c102-grow-subunit-first",
+        "c102-grow-subunit-second"
+      ]
+    },
+    {
+      "id": "grow-zero",
+      "nodes": [
+        "c102-grow-zero-root",
+        "c102-grow-zero-first",
+        "c102-grow-zero-second"
+      ]
+    },
+    {
+      "id": "shrink-scaled",
+      "nodes": [
+        "c102-shrink-scaled-root",
+        "c102-shrink-scaled-first",
+        "c102-shrink-scaled-second"
+      ]
+    },
+    {
+      "id": "shrink-weighted",
+      "nodes": [
+        "c102-shrink-weighted-root",
+        "c102-shrink-weighted-first",
+        "c102-shrink-weighted-second"
+      ]
+    },
+    {
+      "id": "shrink-zero",
+      "nodes": [
+        "c102-shrink-zero-root",
+        "c102-shrink-zero-first",
+        "c102-shrink-zero-second"
+      ]
+    },
+    {
+      "id": "basis-overrides-size",
+      "nodes": [
+        "c102-basis-overrides-root",
+        "c102-basis-overrides-item"
+      ]
+    },
+    {
+      "id": "basis-auto-explicit-size",
+      "nodes": [
+        "c102-basis-auto-row-root",
+        "c102-basis-auto-row-item",
+        "c102-basis-auto-column-root",
+        "c102-basis-auto-column-item"
+      ]
+    },
+    {
+      "id": "basis-percent-row-column",
+      "nodes": [
+        "c102-basis-percent-row-root",
+        "c102-basis-percent-row-first",
+        "c102-basis-percent-row-second",
+        "c102-basis-percent-column-root",
+        "c102-basis-percent-column-first",
+        "c102-basis-percent-column-second"
+      ]
+    },
+    {
+      "id": "flex-shorthand",
+      "nodes": [
+        "c102-shorthand-root",
+        "c102-shorthand-one",
+        "c102-shorthand-auto",
+        "c102-shorthand-none",
+        "c102-shorthand-three-part",
+        "c102-shorthand-override"
+      ]
+    },
+    {
+      "id": "stylesheet-grow",
+      "nodes": [
+        "c102-stylesheet-root",
+        "c102-stylesheet-first",
+        "c102-stylesheet-second"
+      ]
+    },
+    {
+      "id": "grow-max-freeze",
+      "nodes": [
+        "c102-grow-max-root",
+        "c102-grow-max-first",
+        "c102-grow-max-second",
+        "c102-grow-max-third"
+      ]
+    },
+    {
+      "id": "grow-min-freeze",
+      "nodes": [
+        "c102-grow-min-root",
+        "c102-grow-min-first",
+        "c102-grow-min-second"
+      ]
+    },
+    {
+      "id": "shrink-min-freeze",
+      "nodes": [
+        "c102-shrink-min-root",
+        "c102-shrink-min-first",
+        "c102-shrink-min-second"
+      ]
+    },
+    {
+      "id": "shrink-max-freeze",
+      "nodes": [
+        "c102-shrink-max-root",
+        "c102-shrink-max-first",
+        "c102-shrink-max-second"
+      ]
+    },
+    {
+      "id": "shrink-min-overflow",
+      "nodes": [
+        "c102-shrink-overflow-root",
+        "c102-shrink-overflow-first",
+        "c102-shrink-overflow-second"
+      ]
+    },
+    {
+      "id": "mixed-violation-freeze",
+      "nodes": [
+        "c102-mixed-root",
+        "c102-mixed-first",
+        "c102-mixed-second",
+        "c102-mixed-third"
+      ]
+    },
+    {
+      "id": "min-over-max",
+      "nodes": [
+        "c102-min-over-max-root",
+        "c102-min-over-max-item"
+      ]
+    },
+    {
+      "id": "hypothetical-factor-choice",
+      "nodes": [
+        "c102-hypothetical-root",
+        "c102-hypothetical-first",
+        "c102-hypothetical-second"
+      ]
+    },
+    {
+      "id": "gap-accounting",
+      "nodes": [
+        "c102-gap-root",
+        "c102-gap-first",
+        "c102-gap-second"
+      ]
+    },
+    {
+      "id": "fixed-margin-accounting",
+      "nodes": [
+        "c102-margin-root",
+        "c102-margin-first",
+        "c102-margin-second"
+      ]
+    },
+    {
+      "id": "wrapped-per-line",
+      "nodes": [
+        "c102-wrapped-root",
+        "c102-wrapped-first",
+        "c102-wrapped-second",
+        "c102-wrapped-third"
+      ]
+    },
+    {
+      "id": "box-sizing-basis",
+      "nodes": [
+        "c102-box-sizing-root",
+        "c102-box-sizing-content",
+        "c102-box-sizing-border"
+      ]
+    },
+    {
+      "id": "fractional-and-large-factors",
+      "nodes": [
+        "c102-fractional-root",
+        "c102-fractional-first",
+        "c102-fractional-second"
+      ]
+    },
+    {
+      "id": "invalid-css-factor",
+      "nodes": [
+        "c102-invalid-root",
+        "c102-invalid-first",
+        "c102-invalid-second"
+      ]
+    },
+    {
+      "id": "runtime-flex-distribution",
+      "nodes": [
+        "c102-runtime-root",
+        "c102-runtime-flex",
+        "c102-runtime-item-1",
+        "c102-runtime-item-2",
+        "c102-runtime-item-3"
+      ]
+    }
+  ]
+}

@@ -43,7 +43,7 @@ jbyteArray ToByteArray(JNIEnv *env, const std::string &value) {
   return env->ExceptionCheck() ? nullptr : output;
 }
 
-void LogC101NodeFrames(const std::string &report) {
+void LogC10NodeFrames(const std::string &report, const char *label) {
   constexpr char kMarker[] = " node_frames_css_px=[";
   const auto marker = report.find(kMarker);
   if (marker == std::string::npos) return;
@@ -58,8 +58,7 @@ void LogC101NodeFrames(const std::string &report) {
         ? end : separator;
     if (frame_end > frame_start) {
       const auto frame = report.substr(frame_start, frame_end - frame_start);
-      __android_log_print(ANDROID_LOG_INFO, kTag,
-                          "SPINON_C101_NODE_FRAME %s", frame.c_str());
+      __android_log_print(ANDROID_LOG_INFO, kTag, "%s %s", label, frame.c_str());
     }
     if (frame_end == end) break;
     frame_start = frame_end + 1;
@@ -448,7 +447,22 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalFlexWrapFixture(
   const std::string report = "status=" + std::to_string(status) + " " + output.data();
   __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
                       kTag, "SPINON_C101_EVAL %s", report.c_str());
-  if (status == 0) LogC101NodeFrames(report);
+  if (status == 0) LogC10NodeFrames(report, "SPINON_C101_NODE_FRAME");
+  return ToByteArray(env, report);
+}
+
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalFlexDistributionFixture(
+    JNIEnv *env, jclass, jlong host_handle) {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+  std::array<char, 4096> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_flex_distribution_fixture(
+      host, 10000, output.data(), output.size());
+  const std::string report = "status=" + std::to_string(status) + " " + output.data();
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
+                      kTag, "SPINON_C102_EVAL %s", report.c_str());
+  if (status == 0) LogC10NodeFrames(report, "SPINON_C102_NODE_FRAME");
   return ToByteArray(env, report);
 }
 

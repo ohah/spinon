@@ -424,6 +424,10 @@ mod media_environment_tests;
 mod runtime_layout_tests;
 
 #[cfg(test)]
+#[path = "cascade/c10_flex_distribution_tests.rs"]
+mod c10_flex_distribution_tests;
+
+#[cfg(test)]
 #[path = "cascade/custom_properties_tests.rs"]
 mod custom_properties_tests;
 
