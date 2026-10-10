@@ -1,6 +1,6 @@
 # 스피논 구현 상태와 API 명세 대장
 
-**기준:** 2026-10-10 · **출시 상태:** 미출시 · **내부 계약 숫자 버전:** `0.1.0` 고정 · **현재 제품 지원 완료:** 없음
+**기준:** 2026-10-11 · **출시 상태:** 미출시 · **내부 계약 숫자 버전:** `0.1.0` 고정 · **현재 제품 지원 완료:** 없음
 
 Cargo·Bun 워크스페이스와 V8 Android/iOS 부팅 smoke는 저장소 개발 기반이다. 제품 기능 상태를 대신하지 않으며, 이 초기화만으로 아래 항목을 완료 처리하지 않는다.
 
@@ -248,7 +248,7 @@ R05 Android 수집 supervisor와 direct-touch join 분석기를 추가했다. �
   - [ ] **C10.3.5 positioned Flex child 교차 통합** — C12.2 뒤 absolute child의 line 제외, order-0 paint 위치, static-position `align-self`와 stacking 경계를 비교한다. [전용 계획](../plan/c10-3-flex-order-alignment.md) · [C12 위치 지정 계획](../plan/c12-positioning.md) · C12.2 선행; 미구현.
 - [ ] **C11 CSS Grid** — explicit/implicit track, repeat·named lines/areas, auto placement, minmax·fit-content, spanning·fractional tracks와 정렬을 검증한다. 상위: S02, X09, X16.
 - [ ] **C12 위치 지정과 쌓임** — `position`, 물리 inset, containing block, out-of-flow geometry, fixed·sticky, stacking·`z-index`를 단계별 구현한다. [전용 계획](../plan/c12-positioning.md) · [계획 실패 관점 검토](internal/evidence/c12-positioning-plan-review-2026-10-11.md). C12.1–C12.5와 C10.3.5 교차 계약 전까지 parent 미완료. 상위: S02, U02, U03, X16.
-  - [ ] **C12.1 static·relative와 inset cascade** — CSS position/inset typed snapshot, normal-flow 불변·relative visual offset, containing-block owner와 cache revision 경계를 연결했다. 수정 전 Android 초기 Surface 경합에서 첫 장면 `-12`를 확인해 C12.1 fixture 시작을 양수 Surface 크기 확정 뒤로 옮겼다. Rust workspace·Clippy·141개 CSS reference 검사, Android SM-S731N 실기기 앱 종료 후 재실행 3회, iOS 26.2 Simulator를 확인했고 두 플랫폼의 47개 element geometry 최대 오차는 0 CSS px다. PR 검토·merge 전이라 완료 체크는 보류한다. [계획](../plan/c12-positioning.md) · [내부 계약 0054](internal/0054-c12-1-static-relative.md) · [Chromium 사전 비교](internal/evidence/c12-1-static-relative-precomparison-2026-10-11.md) · [구현 실패 경로 검토](internal/evidence/c12-1-static-relative-implementation-review-2026-10-11.md) · [플랫폼 근거·캡처](internal/evidence/c12-1-static-relative/README.md). 공개 API 아님.
+  - [x] **C12.1 static·relative와 inset cascade** — CSS position/inset typed snapshot, normal-flow 불변·relative visual offset, containing-block owner와 cache revision 경계를 연결했다. 수정 전 Android 초기 Surface 경합에서 첫 장면 `-12`를 확인해 C12.1 fixture 시작을 양수 Surface 크기 확정 뒤로 옮겼다. Rust workspace·Clippy·141개 CSS reference 검사, Android SM-S731N 실기기 앱 종료 후 재실행 3회, iOS 26.2 Simulator를 확인했고 두 플랫폼의 47개 element geometry 최대 오차는 0 CSS px다. PR #128 리베이스 병합을 완료했다. [계획](../plan/c12-positioning.md) · [내부 계약 0054](internal/0054-c12-1-static-relative.md) · [Chromium 사전 비교](internal/evidence/c12-1-static-relative-precomparison-2026-10-11.md) · [구현 실패 경로 검토](internal/evidence/c12-1-static-relative-implementation-review-2026-10-11.md) · [플랫폼 근거·캡처](internal/evidence/c12-1-static-relative/README.md). 공개 API 아님.
   - [ ] **C12.2 Block absolute positioning** — nearest positioned ancestor의 padding-edge containing block, out-of-flow sizing, inset·auto·percentage와 실패 경계를 구현한다. [계획](../plan/c12-positioning.md) · C12.1 선행.
   - [ ] **C12.3 viewport fixed positioning** — CSS viewport containing block, resize/environment revision 및 미지원 ancestor 효과 거부를 연결한다. [계획](../plan/c12-positioning.md) · C12.1–C12.2 선행.
   - [ ] **C12.4 stacking context와 `z-index`** — nested paint order·stack level·Flex item 예외를 GPU painter와 대조한다. [계획](../plan/c12-positioning.md) · C10.3.5·C22 paint 계약 선행.

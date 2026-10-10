@@ -1,6 +1,6 @@
 # 0054 · C12.1 정적·상대 위치와 물리 inset
 
-**문서 ID:** `0054` · **내부 계약 숫자 버전:** `0.1.0` 고정 · **상태:** 구현·검증 완료 · PR 검토 전 · **공개 API:** 아님
+**문서 ID:** `0054` · **내부 계약 숫자 버전:** `0.1.0` 고정 · **상태:** 구현·검증 완료 · PR #128 리베이스 병합 완료 · **공개 API:** 아님
 
 `0054`는 문서 ID다. 출시 전 숫자 버전은 구현·검증·문서 갱신으로 올리지 않는다.
 
@@ -47,7 +47,7 @@ C12.1 Android fixture는 Surface의 폭·높이가 모두 양수로 확정된 `s
 
 Rust style/layout/reference 검사를 통과했고 같은 JavaScript fixture를 Android 실기기와 iOS Simulator의 V8→Stylo→Taffy→WGPU 경로에서 실행했다. 두 플랫폼은 301×100 CSS px surface에서 47개 fixture 요소의 세 상태 geometry를 Chrome과 비교해 최대 오차 0 CSS px를 기록했다. root viewport의 폭·높이는 surface 크기가 달라 비교에서 제외했다. Android에서는 초기 Surface 경합을 수정한 뒤 앱 종료 후 다시 실행 3회 모두 세 상태를 기록했다. 모바일 화면은 scene presentation과 frame 로그의 보조 근거다. 구현 후 별도 실패 관점 검토에서 cascade·layout·frame·revision·runtime·platform 경계를 다시 확인하고 발견한 결함을 수정했다. 상세 근거는 [실행 기록](./evidence/c12-1-static-relative/README.md)과 [구현 실패 경로 검토](./evidence/c12-1-static-relative-implementation-review-2026-10-11.md)에 둔다.
 
-이 상태는 현재 구현 브랜치의 검증 완료를 뜻한다. PR 검토·merge 전이며 C12 상위 범위를 완료 처리하지 않는다.
+이 상태는 PR #128이 리베이스 병합된 C12.1 내부 구현의 검증 완료를 뜻한다. 공개 API 지원 완료나 C12 상위 범위 완료로 확대하지 않는다.
 
 ## 근거
 
