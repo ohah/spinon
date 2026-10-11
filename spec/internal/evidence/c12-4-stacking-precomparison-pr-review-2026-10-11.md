@@ -25,7 +25,12 @@
 | 19 | 임의 CI·버전 bump가 부수적으로 끼는가 | CI 파일·crate/package release version은 추가하지 않고 기존 node test 명령만 기록한다. |
 | 20 | PR의 파일·요약·증거·라벨이 실제 변경과 어긋나는가 | PR 작성 전에 staged diff, 테스트 출력, screenshot 경로 및 기존 라벨/양식을 재대조하고 PR 본문은 한국어로 작성한다. |
 
-이 문서는 PR을 만들기 전 검토 기록이다. GitHub PR 생성·업로드·병합 상태는 실제 결과가 난 뒤 별도로 기록한다.
+## PR 생성 후 확인
+
+- PR [#140](https://github.com/ohah/spinon/pull/140)을 `feat(css): C12.4 Chrome 사전 비교 수집`으로 생성했다.
+- GitHub CLI의 기본 `gh pr create --attach` 기능으로 DPR 1·2 PNG 두 장을 업로드했고 PR 본문에서 GitHub 첨부 자산 URL로 렌더링되는 것을 확인했다.
+- 원격 상태는 `OPEN`, mergeability는 `MERGEABLE`이다. `gh pr checks 140`은 `no checks reported`를 반환했다. 이는 CI 통과가 아니라 이 브랜치에 보고된 자동 검사가 없다는 뜻이다.
+- `benchmark`, `area: layout`, `area: renderer`, `area: testing` 라벨이 적용됐다. PR 본문은 한글이며 Tailscale 링크와 Pages 배포는 포함하지 않았다.
 
 ## 미리보기 동기화 결과
 
@@ -33,5 +38,3 @@
 - 새 빌드를 기존 출력에 덮기 전에 후보 HTML route 집합을 비교했다. 기존 HTML route는 모두 후보에 남아 있었다. 이전 출력은 별도 `build/` 백업 디렉터리에 보존했다.
 - Tailnet에서 로드맵, C12.4 계획·계약·상태·사전 비교 페이지와 DPR 1·2 PNG, reference JSON이 모두 HTTP 200으로 열렸다. `agent-browser` 화면에서 새 C12.4 진행 문구와 사전 비교 링크를 확인했다. GitHub Pages는 배포하지 않았다.
 - C12.3 Android 실기기와 iOS Simulator comparator를 다시 실행해 각각 13 상태·364 frame 일치(최대 오차 `0.009375 CSS px`)를 확인했고 회귀 3개가 통과했다. 이는 이전 C12.3 근거 검토이며 C12.4 모바일 실행이 아니다.
-
-PR 생성 뒤에는 GitHub 번호, 실제 첨부 자산, mergeability와 check 상태를 이 기록에 추가한다.
