@@ -136,6 +136,8 @@ C06.1~C06.6a 및 C07.1 누적 변경의 ABI·캐시·CSS 의미·Android/iOS run
 - [C12.2 · Block absolute 계획 실패 경로 검토](./evidence/c12-2-absolute-block-plan-review-2026-10-11.md) — owner/source parent 분리, padding edge, flow probe·margin, cascade·오류·fixture 판정 관점을 구현 전에 확인.
 - [C12.2 · Block absolute 사전 비교](./evidence/c12-2-absolute-block-precomparison-2026-10-11.md) — Chrome 154의 23 case·82 node, DPR 1/2 기준과 WPT 미실행 경계를 고정.
 - [C12.2 · Block absolute 구현 검토·실행 근거](./evidence/c12-2-absolute-block-implementation-review-2026-10-11.md) — 계산 트리·owner·percentage·정적 위치·오류 원자성·Android/iOS 최종 화면의 구현 실패 경계를 별도로 대조.
+- [C12.3 · viewport fixed 계획 실패 관점 검토](./evidence/c12-3-fixed-positioning-plan-review-2026-10-11.md) — fixed/absolute owner 분리, Chromium fixed-CB 효과, viewport·DPR revision과 C13/C12.4 제외 경계를 구현 전에 확인.
+- [C12.3 · 계획 PR 변경 검토](./evidence/c12-3-plan-pr-review-2026-10-11.md) — 계획·상태 대장·RSPress route·Tailnet preview가 구현 전 단계로 서로 일치하는지 대조.
 - [C10.3.5 · 위치 지정 Flex 자식 계획 실패 관점 검토](./evidence/c10-3-5-positioned-flex-plan-review-2026-10-11.md) — source parent, Flex static-position formatting owner, containing-block owner와 paint rank를 계획 단계에서 대조.
 - [C10.3.5 · paint phase 계획 보정 검토](./evidence/c10-3-5-positioned-flex-paint-plan-review-2026-10-11.md) — pinned Chrome·WPT 관측에서 발견한 absolute child `order` 가정 오류를 고치고 positioned paint phase를 대조.
 - [C10.3.5 · 계획 PR 변경 검토](./evidence/c10-3-5-positioned-flex-plan-pr-review-2026-10-11.md) — 병합 상태, 계획/구현 구분, 상태 대장·칸반·Tailnet preview 간 동기화를 대조.
