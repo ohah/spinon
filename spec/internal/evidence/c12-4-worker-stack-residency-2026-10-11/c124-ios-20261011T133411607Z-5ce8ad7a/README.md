@@ -1,0 +1,8 @@
+# C12.4 CSS worker stack bounds와 상주 페이지 표본
+
+- 실행 ID: c124-ios-20261011T133411607Z-5ce8ad7a
+- 플랫폼: ios
+- process-level 동시 session 측정: [c124-ios-20261011T133411607Z-5ce8ad7a](../c12-4-concurrent-session-stack-cost-2026-10-11/c124-ios-20261011T133411607Z-5ce8ad7a/README.md)
+- 각 C12.4 CSS worker에서 OS stack bounds를 얻고 coordinator에서 mincore를 세 번 표본화했다.
+- Android에서는 같은 앱 UID로 TID별 stack VMA와 smaps RSS/PSS를 교차 확인하고 해제 뒤 worker stack VMA 부재를 확인했다.
+- resident page·RSS·PSS·요청 stack 크기는 별개 metric이다. commit·high-water mark·실기기 수치로 해석하지 않는다.

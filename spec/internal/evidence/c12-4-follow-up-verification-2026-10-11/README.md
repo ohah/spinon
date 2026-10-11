@@ -12,6 +12,18 @@
 
 - 고정 iPhone 17 Pro / iOS 26.2 Simulator에서 같은 26-scene·77-node 입력을 실행했다. 21개 지원·5개 기대 거부가 모두 일치했고, 지원 fixture node 64개의 x/y/width/height 최대 오차는 0 CSS px였다(허용 0.5 CSS px). 이 비교는 geometry 및 거부 진단만 다루며 Metal surface pixel이나 WPT 적합성은 아니다. [계획](../../../../plan/c12-4-ios-runtime-matrix.md) · [20개 구현 실패 관점](../c12-4-ios-runtime-matrix-implementation-review-2026-10-11.md) · [실행 원본](../c12-4-ios-runtime-matrix-2026-10-11/run-c124-ios-matrix-20261011T114910232Z-7f5abd20/README.md) · [비교 JSON](../c12-4-ios-runtime-matrix-2026-10-11/run-c124-ios-matrix-20261011T114910232Z-7f5abd20/comparison.json).
 
+## 최신 상태 재실행 · 2026-10-11
+
+앞선 요약에서 아래 항목을 미실행이라고 적었으나, 저장소의 기존 실행 기록에는 이미 완료 결과가 있었다. 최신 main 코드에서 시뮬레이터 실행을 다시 수행해 입력 hash와 새 실행 ID를 남겼다.
+
+- iPhone 17 Pro / iOS 26.2 Simulator에서 실제 WGPU Metal surface texture를 다시 읽었다. 고정 Chromium 표본의 `row`, `row-reverse`, `column`, `column-reverse`와 두 `order` 조합이 8/8 일치했고 channel 오차는 0이다. [실행 기록](../c12-4-ios-metal-surface-pixels-2026-10-11/run-c124-ios-20261011T133240528Z-d5df9bb0/README.md) · [비교 JSON](../c12-4-ios-metal-surface-pixels-2026-10-11/run-c124-ios-20261011T133240528Z-d5df9bb0/comparison.json).
+- iOS 앱의 26-scene 행렬도 새로 실행했다. 입력에 수정된 `flex-row-reverse-paint` scene이 포함됨을 확인했다. 지원 21개·기대 거부 5개, 지원 node 64개의 geometry 최대 오차 0 CSS px, hit-test 관측 21개가 모두 기준과 일치했다. [실행 기록](../c12-4-ios-runtime-matrix-2026-10-11/run-c124-ios-matrix-20261011T133335019Z-e6f15f3b/README.md) · [비교 JSON](../c12-4-ios-runtime-matrix-2026-10-11/run-c124-ios-matrix-20261011T133335019Z-e6f15f3b/comparison.json).
+- iOS Simulator와 Android API 37 AVD에서 동시 session 0·1·2·4·8개를 다시 만들고 각 단계 process memory를 3회 측정한 뒤 해제했다. worker pthread/mincore 표본도 재수집했다. process-level 관측은 thread stack 단독 commit이나 실기기 RSS로 해석하지 않는다. [iOS 원본](../c12-4-concurrent-session-stack-cost-2026-10-11/c124-ios-20261011T133411607Z-5ce8ad7a/README.md) · [Android AVD 원본](../c12-4-concurrent-session-stack-cost-2026-10-11/c124-android-20261011T133542636Z-83651b09/README.md).
+
+이번 실행의 첫 process sample에서 iOS `phys_footprint`는 0→8 session 동안 17→28 MB였고, session 해제 후 26 MB였다. Android AVD의 PSS는 53,206→73,310 KiB, RSS는 179,296→200,448 KiB, `VmSize`는 16,701,568→38,085,920 KiB였다. 해제 뒤 PSS/RSS는 70,094/197,232 KiB였다. 각 단계는 세 번 측정했다. Android 첫 session에서 큰 `VmSize` 증가가 나타나지만 mapping 소유자와 원인은 미확정이다. 이 process-level 변화는 CSS worker stack의 committed memory나 누수로 귀속할 수 없다.
+
+이번 재실행에서도 AVD는 ANGLE/SwiftShader이며, Android hardware GPU 비교는 하지 않았다. iOS 실행은 Simulator 결과다. 두 재실행은 WPT runner 통합, 실기기 RSS, worker stack commit/high-water, 전역 allocator OOM recovery를 대신하지 않는다.
+
 ## 이 세션에서 다시 실행한 회귀
 
 | 명령 | 결과 | 원본 |
