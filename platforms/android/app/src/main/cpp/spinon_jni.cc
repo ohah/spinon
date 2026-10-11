@@ -159,6 +159,22 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC122AbsoluteBlockHost(
 }
 
 extern "C" JNIEXPORT jlong JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC1035PositionedFlexHost(
+    JNIEnv *, jclass) {
+  std::array<char, 1024> output{};
+  SpinonRuntimeGpuHost *host = spinon_runtime_gpu_host_new_c10_3_5_positioned_flex_fixture(
+      output.data(), output.size());
+  if (host == nullptr) {
+    __android_log_print(ANDROID_LOG_ERROR, kTag,
+                        "SPINON_C1035_HOST_ERROR=%s", output.data());
+    return 0;
+  }
+  __android_log_print(ANDROID_LOG_INFO, kTag,
+                      "SPINON_C1035_HOST=%s", output.data());
+  return static_cast<jlong>(reinterpret_cast<uintptr_t>(host));
+}
+
+extern "C" JNIEXPORT jlong JNICALL
 Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeBeginPresentationUpdate(
     JNIEnv *, jclass, jlong host_handle) {
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
@@ -465,6 +481,20 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC122AbsoluteBlockFixture
   const std::string report = "status=" + std::to_string(status) + " " + output.data();
   __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
                       kTag, "SPINON_C122_EVAL %s", report.c_str());
+  return ToByteArray(env, report);
+}
+
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC1035PositionedFlexFixture(
+    JNIEnv *env, jclass, jlong host_handle) {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+  std::array<char, 32768> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_c10_3_5_positioned_flex_fixture(
+      host, 10000, output.data(), output.size());
+  const std::string report = "status=" + std::to_string(status) + " " + output.data();
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
+                      kTag, "SPINON_C1035_EVAL %s", report.c_str());
   return ToByteArray(env, report);
 }
 

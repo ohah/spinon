@@ -44,6 +44,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             || arguments.contains("--spinon-c1032-flex-order")
             || arguments.contains("--spinon-c1033-flex-alignment")
             || arguments.contains("--spinon-c1034-flex-baseline")
+            || arguments.contains("--spinon-c1035-positioned-flex")
             || arguments.contains("--spinon-c121-static-relative")
             || arguments.contains("--spinon-c122-absolute-block")
         let runR05AttributionProbe = arguments.contains("--spinon-r05-attribution")

@@ -388,7 +388,8 @@ pub(super) fn project_styles(
                 parse_positioning(
                     element,
                     &mut math,
-                    snapshot.profile == ComputedStyleProfile::RuntimeBlockPositioningV1,
+                    snapshot.profile == ComputedStyleProfile::RuntimeBlockPositioningV1
+                        || supports_runtime_flex,
                 )?,
             );
         }

@@ -73,6 +73,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c121-static-relative")
     private let c122AbsoluteBlockProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c122-absolute-block")
+    private let c1035PositionedFlexProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c1035-positioned-flex")
     private let blockFormattingProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c091-block-formatting")
         || ProcessInfo.processInfo.arguments.contains("--spinon-c092-margin-collapse")
@@ -89,7 +91,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             && ProcessInfo.processInfo.arguments.contains("--spinon-c051-custom-properties")
     }
     private var fixedSizeCssFixtureRequested: Bool {
-        c122AbsoluteBlockProbeRequested || blockFormattingProbeRequested
+        c122AbsoluteBlockProbeRequested || c1035PositionedFlexProbeRequested
+            || blockFormattingProbeRequested
             || flexWrapProbeRequested || flexDistributionProbeRequested
             || flexReverseProbeRequested || flexOrderProbeRequested || flexAlignmentProbeRequested
             || flexBaselineProbeRequested
@@ -109,7 +112,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
 
         let title = UILabel()
-        title.text = c122AbsoluteBlockProbeRequested
+        title.text = c1035PositionedFlexProbeRequested
+            ? "SPINON · C10.3.5 positioned Flex"
+            : c122AbsoluteBlockProbeRequested
             ? "SPINON · C12.2 Block absolute"
             : c121PositioningProbeRequested
             ? "SPINON · C12.1 정적·상대 위치"
@@ -165,7 +170,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.addSubview(title)
 
         let description = UILabel()
-        description.text = c122AbsoluteBlockProbeRequested
+        description.text = c1035PositionedFlexProbeRequested
+            ? "V8 직접 Flex 자식·wrapper·paint 순서 → Stylo → Taffy → WGPU · 320×240 CSS px"
+            : c122AbsoluteBlockProbeRequested
             ? "V8 absolute·containing block·inset → Stylo → Taffy → WGPU · 360×800 CSS px"
             : c121PositioningProbeRequested
             ? "V8 position·inset·flow/visual frame → Stylo → Taffy → WGPU"
@@ -225,7 +232,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         canvasView.translatesAutoresizingMaskIntoConstraints = false
         canvasView.isAccessibilityElement = true
-        canvasView.accessibilityLabel = c122AbsoluteBlockProbeRequested
+        canvasView.accessibilityLabel = c1035PositionedFlexProbeRequested
+            ? "C10.3.5 positioned Flex 정렬·wrapper·paint 순서 WGPU 장면"
+            : c122AbsoluteBlockProbeRequested
             ? "C12.2 Block absolute WGPU 장면"
             : c121PositioningProbeRequested
             ? "C12.1 정적·상대 위치 WGPU 장면"
@@ -556,6 +565,19 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         log("SPINON_C122_FRAME_SUMMARY frames=\(frames.count) marker=present")
     }
 
+    private func logC1035NodeFrames(_ report: String) {
+        guard let marker = report.range(of: "node_frames_css_px=["),
+              let closing = report[marker.upperBound...].firstIndex(of: "]") else {
+            log("SPINON_C1035_FRAME_SUMMARY marker=missing report_length=\(report.count)")
+            return
+        }
+        let frames = report[marker.upperBound..<closing].split(separator: ";")
+        for frame in frames {
+            log("SPINON_C1035_NODE_FRAME \(frame)")
+        }
+        log("SPINON_C1035_FRAME_SUMMARY frames=\(frames.count) marker=present")
+    }
+
     private func evalC121PositionState(
         host: UInt64,
         state: UInt32
@@ -646,7 +668,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
     private func initializeRuntime() {
         guard !isClosing else { return }
-        let handle = c122AbsoluteBlockProbeRequested
+        let handle = c1035PositionedFlexProbeRequested
+            ? SpinonRunner.createRuntimeGpuHostWithC10_3_5PositionedFlexFixture()
+            : c122AbsoluteBlockProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithC12_2AbsoluteBlockFixture()
             : c121PositioningProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithC12_1PositionFixture()
@@ -686,7 +710,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
         log("SPINON_C0410_ENVIRONMENT \(environment ?? "")")
 
-        var result = c122AbsoluteBlockProbeRequested
+        var result = c1035PositionedFlexProbeRequested
+            ? SpinonRunner.evalRuntimeGpuC10_3_5PositionedFlexFixture(handle)
+            : c122AbsoluteBlockProbeRequested
             ? SpinonRunner.evalRuntimeGpuC12_2AbsoluteBlockFixture(handle)
             : c121PositioningProbeRequested
             ? SpinonRunner.evalRuntimeGpuC12_1PositionFixture(handle)
@@ -762,8 +788,14 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             log("SPINON_C122_SUMMARY \(runtimeStatusSummary(result ?? ""))")
             logC122NodeFrames(result ?? "")
         }
+        if c1035PositionedFlexProbeRequested, result?.hasPrefix("status=0 ") == true {
+            log("SPINON_C1035_SUMMARY \(runtimeStatusSummary(result ?? ""))")
+            logC1035NodeFrames(result ?? "")
+        }
         if sceneWasSupersededAfterCommit {
-            let scope = c122AbsoluteBlockProbeRequested
+            let scope = c1035PositionedFlexProbeRequested
+                ? "SPINON_C1035"
+                : c122AbsoluteBlockProbeRequested
                 ? "SPINON_C122"
                 : c121PositioningProbeRequested
                 ? "SPINON_C121"
@@ -811,7 +843,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             log("\(scope)_EVAL_SCENE_SUPERSEDED \(result ?? "")")
             postStatus("JavaScript 적용 완료 · 최신 CSS 장면 다시 계산 중")
         } else {
-            let scope = c122AbsoluteBlockProbeRequested
+            let scope = c1035PositionedFlexProbeRequested
+                ? "SPINON_C1035"
+                : c122AbsoluteBlockProbeRequested
                 ? "SPINON_C122"
                 : c121PositioningProbeRequested
                 ? "SPINON_C121"
@@ -1052,6 +1086,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let surfaceReport = SpinonRunner.prepareRuntimeGpuWgpuSurface(
             handle, view: viewPointer
         )
+        log("SPINON_C0410_SURFACE_PREPARE \(surfaceReport ?? "")")
         guard surfaceReport?.hasPrefix("status=0 ") == true else {
             stateLock.lock()
             rendererCreationPending = false
@@ -1073,6 +1108,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             let report = SpinonRunner.createRuntimeGpuWgpu(
                 handle, width: UInt32(width), height: UInt32(height)
             )
+            self.log("SPINON_C0410_RENDERER \(report ?? "")")
             guard report?.hasPrefix("status=0 ") == true else {
                 self.stateLock.lock()
                 self.rendererCreationPending = false

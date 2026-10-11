@@ -11,6 +11,8 @@ use super::{
     positioning::{collect_positioned_owners, needs_flow_pass},
 };
 
+mod positioned_flex;
+
 impl LayoutEngine for TaffyLayoutEngine {
     fn compute(&self, input: &LayoutInput) -> Result<LayoutOutput, LayoutError> {
         let index = super::validate(input)?;
@@ -26,7 +28,12 @@ impl LayoutEngine for TaffyLayoutEngine {
         let adjustments = flow_frames
             .as_ref()
             .map(|flow| {
-                absolute_static_position_adjustments(input, &index, &raw_output.frames, flow)
+                positioned_flex::absolute_static_position_adjustments(
+                    input,
+                    &index,
+                    &raw_output.frames,
+                    flow,
+                )
             })
             .transpose()?
             .unwrap_or_default();
@@ -163,59 +170,4 @@ fn collect_frames(
         positioned_owners: BTreeMap::new(),
         frames,
     })
-}
-
-fn absolute_static_position_adjustments(
-    input: &LayoutInput,
-    index: &BTreeMap<NodeId, usize>,
-    visual_frames: &BTreeMap<NodeId, LayoutFrame>,
-    flow_frames: &BTreeMap<NodeId, LayoutFrame>,
-) -> Result<BTreeMap<NodeId, (f32, f32)>, LayoutError> {
-    let owners = collect_positioned_owners(input, index);
-    let mut adjustments = BTreeMap::new();
-    for (&id, positioning) in &input.positioning {
-        if positioning.position != crate::LayoutPosition::Absolute {
-            continue;
-        }
-        let Some(flow_frame) = flow_frames.get(&id).copied() else {
-            return Err(LayoutError::MissingComputedLayout(id));
-        };
-        let Some(visual_frame) = visual_frames.get(&id).copied() else {
-            return Err(LayoutError::MissingComputedLayout(id));
-        };
-        let owner_delta = match owners[&id] {
-            crate::PositionedContainingBlockOwner::Viewport => (0.0, 0.0),
-            crate::PositionedContainingBlockOwner::Node(owner) => {
-                let Some(flow_owner) = flow_frames.get(&owner) else {
-                    return Err(LayoutError::MissingComputedLayout(owner));
-                };
-                let Some(visual_owner) = visual_frames.get(&owner) else {
-                    return Err(LayoutError::MissingComputedLayout(owner));
-                };
-                (visual_owner.x - flow_owner.x, visual_owner.y - flow_owner.y)
-            }
-            crate::PositionedContainingBlockOwner::NoBox => continue,
-        };
-        let delta_x = if positioning.inset.left == crate::LayoutLengthPercentage::Auto
-            && positioning.inset.right == crate::LayoutLengthPercentage::Auto
-        {
-            flow_frame.x + owner_delta.0 - visual_frame.x
-        } else {
-            0.0
-        };
-        let delta_y = if positioning.inset.top == crate::LayoutLengthPercentage::Auto
-            && positioning.inset.bottom == crate::LayoutLengthPercentage::Auto
-        {
-            flow_frame.y + owner_delta.1 - visual_frame.y
-        } else {
-            0.0
-        };
-        if !delta_x.is_finite() || !delta_y.is_finite() {
-            return Err(LayoutError::NonFiniteFrame(id));
-        }
-        if delta_x != 0.0 || delta_y != 0.0 {
-            adjustments.insert(id, (delta_x, delta_y));
-        }
-    }
-    Ok(adjustments)
 }

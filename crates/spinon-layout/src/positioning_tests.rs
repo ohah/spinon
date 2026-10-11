@@ -301,7 +301,7 @@ fn malformed_position_inputs_fail_closed_before_frame_publication() {
 }
 
 #[test]
-fn absolute_child_of_flex_source_parent_fails_closed_until_c1035() {
+fn absolute_child_of_flex_source_parent_uses_explicit_insets_without_joining_flow() {
     let root = id(1);
     let flex_parent = id(2);
     let target = id(3);
@@ -326,15 +326,16 @@ fn absolute_child_of_flex_source_parent_fails_closed_until_c1035() {
         )]),
     ));
 
-    assert!(matches!(
-        result,
-        Err(crate::LayoutError::UnsupportedPositioning { node, reason })
-            if node == target && reason.contains("C10.3.5")
-    ));
+    let output = result.unwrap();
+    assert_eq!(
+        (output.frames[&target].x, output.frames[&target].y),
+        (4.0, 3.0)
+    );
+    assert_eq!(output.frames[&flex_parent].width, 80.0);
 }
 
 #[test]
-fn absolute_child_with_flex_containing_block_fails_closed_until_c1035() {
+fn block_wrapper_absolute_child_keeps_explicit_insets_with_flex_owner() {
     let root = id(1);
     let wrapper = id(2);
     let target = id(3);
@@ -368,11 +369,12 @@ fn absolute_child_with_flex_containing_block_fails_closed_until_c1035() {
         ]),
     ));
 
-    assert!(matches!(
-        result,
-        Err(crate::LayoutError::UnsupportedPositioning { node, reason })
-            if node == target && reason.contains("C10.3.5")
-    ));
+    let output = result.unwrap();
+    assert_eq!(
+        (output.frames[&target].x, output.frames[&target].y),
+        (4.0, 3.0)
+    );
+    assert_eq!(output.frames[&wrapper].width, 40.0);
 }
 
 #[test]

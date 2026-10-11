@@ -455,3 +455,6 @@ fn runtime_scene_accepts_custom_properties_paint_profile() {
         spinon_render::RuntimePaint::Opaque(spinon_render::OpaqueCssSrgb::new(255, 204, 51))
     );
 }
+
+#[path = "runtime_positioned_flex.rs"]
+mod positioned_flex;

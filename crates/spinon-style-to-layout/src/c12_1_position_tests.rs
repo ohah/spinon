@@ -153,7 +153,7 @@ fn stylo_relative_inset_reaches_layout_without_changing_flow_or_flex_sibling() {
 }
 
 #[test]
-fn static_position_ignores_computed_insets_and_absolute_is_rejected() {
+fn static_position_ignores_computed_insets_and_absolute_layout_root_is_rejected() {
     let static_fixture = Fixture::new(
         "display:block;box-sizing:border-box;width:20px;height:10px;position:static;left:12px;top:3px;margin:0;padding:0",
     );
@@ -163,7 +163,32 @@ fn static_position_ignores_computed_insets_and_absolute_is_rejected() {
         static_output.layout.flow_frames
     );
 
-    for position in ["absolute", "fixed", "sticky"] {
+    let absolute_child = Fixture::new(
+        "display:block;box-sizing:border-box;width:20px;height:10px;position:absolute;left:12px;top:3px;margin:0;padding:0",
+    );
+    let absolute_output = absolute_child.compute().unwrap();
+    assert_eq!(
+        absolute_output.layout.flow_frames[&absolute_child.id("target")].x,
+        0.0
+    );
+    assert_eq!(
+        absolute_output.layout.flow_frames[&absolute_child.id("target")].y,
+        0.0
+    );
+    assert_eq!(
+        absolute_output.layout.frames[&absolute_child.id("target")].x,
+        12.0
+    );
+    assert_eq!(
+        absolute_output.layout.frames[&absolute_child.id("target")].y,
+        3.0
+    );
+    assert_eq!(
+        absolute_output.layout.frames[&absolute_child.id("sibling")].x,
+        0.0
+    );
+
+    for position in ["fixed", "sticky"] {
         let positioned_fixture = Fixture::new(&format!(
             "display:block;box-sizing:border-box;width:20px;height:10px;position:{position};left:12px;top:3px;margin:0;padding:0"
         ));

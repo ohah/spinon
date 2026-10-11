@@ -135,6 +135,9 @@ SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c12_1_position_fixture(
 /* C12.2 Block absolute positioning V8 GPU runtime fixture host입니다. */
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c12_2_absolute_block_fixture(
     char *output, size_t output_capacity);
+/* C10.3.5 positioned Flex child V8 GPU runtime fixture host입니다. */
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c10_3_5_positioned_flex_fixture(
+    char *output, size_t output_capacity);
 /* UI event에서 viewport·색상 체계·surface 변경을 플랫폼 큐에 넣기 전에
    호출합니다. 잠금·대기를 하지 않으며 실패는 0입니다. 반환값은 내부 무효화 순번이며
    호출자가 다른 함수에 전달하지 않습니다. 성공 여부 확인 외 용도로 보관하지 마세요. */
@@ -259,6 +262,10 @@ int32_t spinon_runtime_gpu_host_eval_flex_alignment_fixture(
     char *output, size_t output_capacity);
 /* C10.3.4: Flex first/last baseline 및 중첩 container 전파를 확인합니다. */
 int32_t spinon_runtime_gpu_host_eval_flex_baseline_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
+/* C10.3.5 positioned Flex child runtime subset; DOM preorder frame을 포함합니다. */
+int32_t spinon_runtime_gpu_host_eval_c10_3_5_positioned_flex_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);
 /* Android backend: 0=Vulkan 실패 뒤 GL 순차 재시도, 1=Vulkan 강제, 2=GL 강제. iOS는 3=Metal. */

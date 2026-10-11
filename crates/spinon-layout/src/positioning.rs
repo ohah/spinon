@@ -62,13 +62,6 @@ pub(super) fn validate_positioning(
     input: &LayoutInput,
     index: &BTreeMap<NodeId, usize>,
 ) -> Result<(), LayoutError> {
-    let owners = collect_positioned_owners(input, index);
-    let mut source_parents = BTreeMap::new();
-    for node in &input.nodes {
-        for &child in &node.children {
-            source_parents.insert(child, node.id);
-        }
-    }
     for (&id, positioning) in &input.positioning {
         let Some(&position) = index.get(&id) else {
             return Err(LayoutError::UnknownPositioningNode(id));
@@ -87,22 +80,6 @@ pub(super) fn validate_positioning(
                 node: id,
                 reason: "relative·absolute inset은 현재 LTR subset만 지원합니다",
             });
-        }
-        if positioning.position == LayoutPosition::Absolute {
-            let flex_source_parent = source_parents.get(&id).is_some_and(|parent| {
-                input.nodes[index[parent]].style.display == crate::LayoutDisplay::Flex
-            });
-            let flex_owner = matches!(
-                owners[&id],
-                PositionedContainingBlockOwner::Node(owner)
-                    if input.nodes[index[&owner]].style.display == crate::LayoutDisplay::Flex
-            );
-            if flex_source_parent || flex_owner {
-                return Err(LayoutError::UnsupportedPositioning {
-                    node: id,
-                    reason: "Flex absolute child의 static-position 통합은 C10.3.5 범위입니다",
-                });
-            }
         }
         for (field, value) in [
             ("top", positioning.inset.top),

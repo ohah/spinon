@@ -40,14 +40,14 @@ pub fn build_runtime_render_snapshot(
     validate_revisions(document, styles, output.layout.revision, current)?;
 
     let styles_by_node = indexed_styles(styles)?;
-    let preorder = runtime_document_preorder(document, root, &styles_by_node)?;
-    validate_style_node_set(&preorder, &styles_by_node)?;
-    validate_layout_node_set(&preorder, &output.layout.frames)?;
+    let order = runtime_document_order(document, root, &styles_by_node)?;
+    validate_style_node_set(&order.document_nodes, &styles_by_node)?;
+    validate_layout_node_set(&order.document_nodes, &output.layout.frames)?;
 
     let viewport_css_px = CssSize::new(styles.viewport.width_css_px, styles.viewport.height_css_px)
         .map_err(|_| StyleRenderError::InvalidViewport)?;
-    let mut boxes = Vec::with_capacity(preorder.len());
-    for node_id in preorder {
+    let mut boxes = Vec::with_capacity(order.paint_nodes.len());
+    for node_id in order.paint_nodes {
         let style = styles_by_node
             .get(&node_id)
             .ok_or(StyleRenderError::MissingComputedStyle(node_id))?;
@@ -106,11 +106,16 @@ pub fn build_runtime_render_snapshot(
     RuntimeRenderSnapshot::new(key, viewport_css_px, boxes).map_err(Into::into)
 }
 
-fn runtime_document_preorder(
+struct RuntimeDocumentOrder {
+    document_nodes: Vec<NodeId>,
+    paint_nodes: Vec<NodeId>,
+}
+
+fn runtime_document_order(
     document: &HostDocumentSnapshot,
     root: HostNodeHandle,
     styles: &std::collections::BTreeMap<NodeId, &spinon_style::ComputedElementStyle>,
-) -> Result<Vec<NodeId>, StyleRenderError> {
+) -> Result<RuntimeDocumentOrder, StyleRenderError> {
     if document.parent(root) != Some(spinon_core::HostParent::Root)
         || !document
             .node(root)
@@ -119,7 +124,9 @@ fn runtime_document_preorder(
         return Err(StyleRenderError::InvalidRoot);
     }
 
-    let mut result = Vec::new();
+    let mut document_nodes = Vec::new();
+    let mut visible_nodes = std::collections::BTreeSet::new();
+    let mut positioned_roots = Vec::new();
     let mut visited = std::collections::BTreeSet::new();
     let mut pending = vec![(root, false)];
     while let Some((handle, ancestor_hidden)) = pending.pop() {
@@ -138,63 +145,177 @@ fn runtime_document_preorder(
             .ok_or(StyleRenderError::MissingComputedStyle(node.id()))?;
         let hidden =
             ancestor_hidden || style.properties.get("display").map(String::as_str) == Some("none");
-        result.push(node.id());
+        document_nodes.push(node.id());
+        let absolute = style.properties.get("position").map(String::as_str) == Some("absolute");
+        if !hidden {
+            visible_nodes.insert(node.id());
+            if absolute {
+                positioned_roots.push(handle);
+            }
+        }
         if let Some(children) = document.children(handle) {
-            let mut children = children.collect::<Vec<_>>();
-            for child in &children {
-                let child_node = document.node(*child).ok_or(StyleRenderError::InvalidRoot)?;
-                if matches!(child_node.kind(), spinon_core::HostNodeKind::Text(_)) && !hidden {
-                    return Err(StyleRenderError::UnsupportedTextNode(child_node.id()));
-                }
-            }
-            if !hidden && style.properties.get("display").map(String::as_str) == Some("flex") {
-                let mut ordered = children
-                    .into_iter()
-                    .filter(|child| {
-                        document.node(*child).is_some_and(|node| {
-                            matches!(node.kind(), spinon_core::HostNodeKind::Element(_))
-                        })
-                    })
-                    .map(|child| {
-                        let child_node =
-                            document.node(child).ok_or(StyleRenderError::InvalidRoot)?;
-                        let child_style = styles
-                            .get(&child_node.id())
-                            .ok_or(StyleRenderError::MissingComputedStyle(child_node.id()))?;
-                        let order_value = child_style.properties.get("order").ok_or(
-                            StyleRenderError::MissingComputedProperty {
-                                node: child_node.id(),
-                                property: "order",
-                            },
-                        )?;
-                        let order = order_value.parse::<i32>().map_err(|_| {
-                            StyleRenderError::UnsupportedComputedValue {
-                                node: child_node.id(),
-                                property: "order",
-                                value: order_value.clone(),
-                            }
-                        })?;
-                        Ok((order, child))
-                    })
-                    .collect::<Result<Vec<_>, StyleRenderError>>()?;
-                // order 값이 같으면 원본 순서를 유지하도록 안정 정렬합니다.
-                ordered.sort_by_key(|(order, _)| *order);
-                children = ordered.into_iter().map(|(_, child)| child).collect();
-            }
             pending.extend(
                 children
+                    .collect::<Vec<_>>()
                     .into_iter()
                     .rev()
-                    .filter(|child| {
-                        document.node(*child).is_some_and(|node| {
-                            matches!(node.kind(), spinon_core::HostNodeKind::Element(_))
-                        })
-                    })
                     .map(|child| (child, hidden)),
             );
         }
     }
+
+    let mut paint_nodes = flow_paint_preorder(document, root, styles)?;
+    for positioned_root in positioned_roots {
+        append_positioned_subtree(document, positioned_root, styles, &mut paint_nodes)?;
+    }
+    let unique_paint_nodes = paint_nodes
+        .iter()
+        .copied()
+        .collect::<std::collections::BTreeSet<_>>();
+    if unique_paint_nodes.len() != paint_nodes.len() || unique_paint_nodes != visible_nodes {
+        return Err(StyleRenderError::InvalidRoot);
+    }
+    Ok(RuntimeDocumentOrder {
+        document_nodes,
+        paint_nodes,
+    })
+}
+
+fn flow_paint_preorder(
+    document: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    styles: &std::collections::BTreeMap<NodeId, &spinon_style::ComputedElementStyle>,
+) -> Result<Vec<NodeId>, StyleRenderError> {
+    let mut result = Vec::new();
+    let mut pending = vec![(root, false)];
+    while let Some((handle, ancestor_hidden)) = pending.pop() {
+        let node = document.node(handle).ok_or(StyleRenderError::InvalidRoot)?;
+        let style = styles
+            .get(&node.id())
+            .ok_or(StyleRenderError::MissingComputedStyle(node.id()))?;
+        let hidden =
+            ancestor_hidden || style.properties.get("display").map(String::as_str) == Some("none");
+        if hidden || style.properties.get("position").map(String::as_str) == Some("absolute") {
+            continue;
+        }
+        result.push(node.id());
+        let Some(children) = document.children(handle) else {
+            continue;
+        };
+        let mut element_children = children
+            .filter(|child| {
+                document.node(*child).is_some_and(|child_node| {
+                    matches!(child_node.kind(), spinon_core::HostNodeKind::Element(_))
+                })
+            })
+            .collect::<Vec<_>>();
+        if style.properties.get("display").map(String::as_str) == Some("flex") {
+            element_children = flex_in_flow_children(document, element_children, styles)?;
+        }
+        pending.extend(
+            element_children
+                .into_iter()
+                .rev()
+                .map(|child| (child, hidden)),
+        );
+    }
     Ok(result)
+}
+
+fn append_positioned_subtree(
+    document: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    styles: &std::collections::BTreeMap<NodeId, &spinon_style::ComputedElementStyle>,
+    output: &mut Vec<NodeId>,
+) -> Result<(), StyleRenderError> {
+    let mut pending = vec![(root, false)];
+    while let Some((handle, ancestor_hidden)) = pending.pop() {
+        let node = document.node(handle).ok_or(StyleRenderError::InvalidRoot)?;
+        let style = styles
+            .get(&node.id())
+            .ok_or(StyleRenderError::MissingComputedStyle(node.id()))?;
+        let hidden =
+            ancestor_hidden || style.properties.get("display").map(String::as_str) == Some("none");
+        if hidden {
+            continue;
+        }
+        if handle != root
+            && style.properties.get("position").map(String::as_str) == Some("absolute")
+        {
+            continue;
+        }
+        output.push(node.id());
+        let Some(children) = document.children(handle) else {
+            continue;
+        };
+        let element_children = children
+            .filter(|child| {
+                document.node(*child).is_some_and(|child_node| {
+                    matches!(child_node.kind(), spinon_core::HostNodeKind::Element(_))
+                })
+            })
+            .collect::<Vec<_>>();
+        let ordered = if style.properties.get("display").map(String::as_str) == Some("flex") {
+            flex_in_flow_children(document, element_children, styles)?
+        } else {
+            element_children
+        };
+        pending.extend(ordered.into_iter().rev().map(|child| (child, hidden)));
+    }
+    Ok(())
+}
+
+fn flex_in_flow_children(
+    document: &HostDocumentSnapshot,
+    children: Vec<HostNodeHandle>,
+    styles: &std::collections::BTreeMap<NodeId, &spinon_style::ComputedElementStyle>,
+) -> Result<Vec<HostNodeHandle>, StyleRenderError> {
+    let children = children
+        .into_iter()
+        .filter(|child| {
+            document.node(*child).is_some_and(|node| {
+                styles
+                    .get(&node.id())
+                    .and_then(|style| style.properties.get("position"))
+                    .is_none_or(|position| position != "absolute")
+            })
+        })
+        .collect();
+    order_flex_children(document, children, styles)
+}
+
+fn order_flex_children(
+    document: &HostDocumentSnapshot,
+    children: Vec<HostNodeHandle>,
+    styles: &std::collections::BTreeMap<NodeId, &spinon_style::ComputedElementStyle>,
+) -> Result<Vec<HostNodeHandle>, StyleRenderError> {
+    let mut ordered =
+        children
+            .into_iter()
+            .map(|child| {
+                let node = document.node(child).ok_or(StyleRenderError::InvalidRoot)?;
+                let style = styles
+                    .get(&node.id())
+                    .ok_or(StyleRenderError::MissingComputedStyle(node.id()))?;
+                let order_value = style.properties.get("order").ok_or(
+                    StyleRenderError::MissingComputedProperty {
+                        node: node.id(),
+                        property: "order",
+                    },
+                )?;
+                let order = order_value.parse::<i32>().map_err(|_| {
+                    StyleRenderError::UnsupportedComputedValue {
+                        node: node.id(),
+                        property: "order",
+                        value: order_value.clone(),
+                    }
+                })?;
+                Ok((order, child))
+            })
+            .collect::<Result<Vec<_>, StyleRenderError>>()?;
+    // 같은 order 값에서는 HostDocument source order를 유지합니다.
+    ordered.sort_by_key(|(order, _)| *order);
+    Ok(ordered.into_iter().map(|(_, child)| child).collect())
 }
 
 fn validate_runtime_frame(node_id: NodeId, frame: LayoutFrame) -> Result<(), StyleRenderError> {

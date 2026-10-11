@@ -19,9 +19,9 @@
 | 11 | `justify-content` 분배 값의 0/음수 free-space 동작을 임의 추정하는가 | single-item 고정 크기 알고리즘에서도 분배·overflow 경계가 있다. | 모든 값을 직접 reference로 캡처하고 unsupported declaration fallback도 비교한다. |
 | 12 | `flex-direction: row-reverse`를 paint order 변경과 합치는가 | main-axis 배치와 order-modified paint rank는 다른 규칙이다. | 네 방향에서 geometry와 paint rank를 별도 기록한다. |
 | 13 | `flex-wrap` 또는 `align-content`가 absolute child를 Flex line으로 만들어내는가 | absolute child는 line collection 밖에 있고 static rectangle은 content box 기준이다. | nowrap/wrap·한 줄/다중 줄 조합에서 line 및 frame 불변을 확인한다. |
-| 14 | absolute child의 authored `order`를 paint rank로 사용하거나 0 rank를 무시하는가 | Flexbox는 absolute child를 Flex item과 paint 순서 비교 시 `order:0`으로 취급한다. | direct absolute child의 effective paint rank 0과 authored order 독립성을 명시했다. |
-| 15 | equal-rank item에서 source order tie를 잃거나 absolute끼리 재정렬되는가 | order-modified order는 안정된 시각 순서가 필요하다. | 음수/0/양수 item·absolute sibling을 겹치고 equal-rank tie를 검사한다. |
-| 16 | nested Flex descendants를 전역 order 숫자 하나로 섞는가 | 각 Flex container는 자기 direct item 순서를 소유한다. | paint subtree를 부모 item rank 아래에서 연속 유지한다. |
+| 14 | absolute child의 authored `order`를 paint rank로 사용하는가 | 최초 계획은 `order:0`처럼 취급한다고 추정했으나, 기준 캡처에서 틀렸음이 드러났다. pinned WPT `flexbox-paint-ordering-003.html`은 absolute 자식이 Flex item이 아니며 authored `order`가 paint 순서를 바꾸지 않는다고 명시한다. | 캡처 후속 검토에서 기존 가정을 철회했다. in-flow Flex item에만 order-modified paint를 적용하고 positioned auto box는 별도 positioned phase의 source tree order로 둔다. |
+| 15 | positioned absolute 형제의 source order를 authored `order`가 뒤집는가 | Chrome 겹침 probe에서 authored order와 무관하게 positioned source order가 유지되고 positioned boxes가 in-flow Flex item 위에 페인트됐다. | absolute sibling 둘 이상과 음수·양수 authored order를 fixture에 둔다. |
+| 16 | nested Flex descendant가 부모 item 순서와 positioned phase를 혼합하는가 | in-flow subtree의 순서와 positioned descendant의 paint phase는 다른 순서 소유자다. | in-flow descendant subtree는 item rank 아래 두고, absolute descendant는 positioned phase로 모아 source tree preorder를 유지한다. |
 | 17 | `display:none` child를 line/paint에 남기거나 HostDocument에서 삭제하는가 | 숨은 box는 layout/paint에서 제외되지만 source node와 lifetime은 별개다. | source tree 보존과 layout/paint 제외를 별도 확인한다. |
 | 18 | ancestor effect, `z-index`, clip, scroll, hit-test까지 암묵 지원했다고 주장하는가 | stacking 및 input 경로는 C12.4/C13/S05/C22 소유다. | 이 단계 범위 밖과 불투명 box 캡처 경계를 분명히 했다. |
 | 19 | stale owner/style/revision 또는 좌표 변환 일부 실패가 혼합 frame을 내는가 | 이전 positioning 구현은 입력 오류를 layout commit 전에 실패시키도록 설계했다. | 오류의 NodeId/property/revision 및 frame 원자성을 완료 gate에 포함했다. |
