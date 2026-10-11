@@ -109,6 +109,8 @@ pub struct LayoutOutput {
     pub flow_frames: BTreeMap<NodeId, LayoutFrame>,
     /// 각 box가 사용할 수 있는 가장 가까운 relative containing block입니다.
     pub positioned_owners: BTreeMap<NodeId, PositionedContainingBlockOwner>,
+    /// CSS fixed box의 viewport owner를 absolute owner와 별도로 보존합니다.
+    pub fixed_owners: BTreeMap<NodeId, FixedContainingBlockOwner>,
 }
 
 /// 계산 트리 안에서 nearest positioned containing block이 되는 owner입니다.
@@ -116,6 +118,13 @@ pub struct LayoutOutput {
 pub enum PositionedContainingBlockOwner {
     Viewport,
     Node(NodeId),
+    NoBox,
+}
+
+/// 현재 viewport-only fixed profile에서 각 fixed box의 owner입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum FixedContainingBlockOwner {
+    Viewport,
     NoBox,
 }
 
@@ -410,6 +419,8 @@ fn detect_cycles(input: &LayoutInput, index: &BTreeMap<NodeId, usize>) -> Result
 
 #[cfg(test)]
 mod absolute_position_tests;
+#[cfg(test)]
+mod fixed_position_tests;
 #[cfg(test)]
 mod positioning_tests;
 #[cfg(test)]

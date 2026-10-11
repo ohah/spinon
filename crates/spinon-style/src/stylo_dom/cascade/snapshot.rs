@@ -191,6 +191,52 @@ pub enum ComputedCssPosition {
     Sticky,
 }
 
+/// Fixed descendant의 viewport owner를 바꾸는 Chromium 고정 기준 effect입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum FixedContainingBlockEffect {
+    Transform,
+    Translate,
+    Rotate,
+    Scale,
+    MotionPath,
+    TransformStylePreserve3d,
+    Perspective,
+    Filter,
+    BackdropFilter,
+    LayoutContainment,
+    PaintContainment,
+    ContentVisibility,
+    WillChangeTransform,
+    WillChangePerspective,
+    WillChangeFilter,
+    WillChangeBackdropFilter,
+    WillChangeContain,
+}
+
+impl FixedContainingBlockEffect {
+    pub const fn css_name(self) -> &'static str {
+        match self {
+            Self::Transform => "transform",
+            Self::Translate => "translate",
+            Self::Rotate => "rotate",
+            Self::Scale => "scale",
+            Self::MotionPath => "offset-path",
+            Self::TransformStylePreserve3d => "transform-style:preserve-3d",
+            Self::Perspective => "perspective",
+            Self::Filter => "filter",
+            Self::BackdropFilter => "backdrop-filter",
+            Self::LayoutContainment => "contain:layout",
+            Self::PaintContainment => "contain:paint",
+            Self::ContentVisibility => "content-visibility",
+            Self::WillChangeTransform => "will-change:transform-related",
+            Self::WillChangePerspective => "will-change:perspective",
+            Self::WillChangeFilter => "will-change:filter",
+            Self::WillChangeBackdropFilter => "will-change:backdrop-filter",
+            Self::WillChangeContain => "will-change:contain",
+        }
+    }
+}
+
 /// 한 cascade revision에서 추출한 물리 방향 inset 값입니다.
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct ComputedLayoutInsets {
@@ -234,6 +280,8 @@ pub struct ComputedElementStyle {
     pub properties: BTreeMap<String, String>,
     /// `properties`와 같은 cascade 결과에서 추출한 typed CSS position입니다.
     pub layout_position: ComputedCssPosition,
+    /// 같은 Stylo computed values에서 추출한 fixed-CB effect입니다.
+    pub fixed_containing_block_effects: Vec<FixedContainingBlockEffect>,
     /// 같은 cascade 결과의 물리 방향 inset 값입니다.
     pub layout_insets: ComputedLayoutInsets,
     /// 같은 cascade 결과에서 얻은 computed `font-size` CSS px입니다.

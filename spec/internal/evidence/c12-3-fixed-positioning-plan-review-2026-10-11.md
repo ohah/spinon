@@ -1,6 +1,6 @@
 # C12.3 viewport fixed 위치 계획 검토
 
-이 검토는 [C12.3 계획](../../../plan/c12-3-fixed-positioning.md)이 구현에 들어가기 전에 CSS 의미, 현재 Spinon 구조, 고정 Chromium 동작, 모바일 환경 경계를 놓치지 않았는지 서로 다른 실패 경로로 대조한다. 계획을 수정한 뒤 현재 남은 선행 산출물과 완료 조건을 다시 확인했다.
+이 검토는 `plan/c12-3-fixed-positioning.md`가 구현에 들어가기 전에 CSS 의미, 현재 Spinon 구조, 고정 Chromium 동작, 모바일 환경 경계를 놓치지 않았는지 서로 다른 실패 경로로 대조한다. 계획을 수정한 뒤 현재 남은 선행 산출물과 완료 조건을 다시 확인했다.
 
 ## 기준 자료
 
@@ -45,6 +45,6 @@
 
 ## 남은 구현 전 게이트
 
-- 계획 검토는 끝났지만 fixed 전용 Chrome HTML/inventory/reference와 입력 hash는 아직 만들지 않았다. 구현보다 먼저 고정해야 한다. WPT subset 경로는 viewport fixed, fixed의 absolute 자손, transformed sibling negative case로 계획에 고정했으며 전체 WPT를 실행한 것으로 취급하지 않는다.
-- 실제 fixed ancestor effect 표식이 Stylo typed computed style에서 어느 API로 추출되는지 구현 전 코드 위치와 테스트 seam을 확정해야 한다. property whitelist가 바뀌면 effect inventory 테스트도 함께 바꾼다.
+- 구현 전 Chrome 비교 산출물은 PR #135에서 병합했다. 22개 case·79개 node, 2개 viewport와 DPR 1·2·2.625·3, resize 왕복·no-op가 고정되어 있다. 이 사전 비교는 런타임 테스트를 대신하지 않고 WPT subset도 실행하지 않았다.
+- computed effect 추출 seam은 `crates/spinon-style/src/stylo_dom/cascade/incremental/element.rs`의 Stylo `ComputedValues`에서 확인했다. Stylo 0.22.0의 `content-visibility`는 Gecko 전용이므로 generated longhand API에 없고 computed snapshot에서 추출할 수 없다. 이 속성은 author preflight에서 거부하며, 직접 계산 가능한 effects는 projection 경계에서도 다시 검사한다.
 - Android 실기기와 iOS Simulator의 동작 검증은 기능 구현 뒤에만 한다. 이번 계획 검토는 런타임·플랫폼 구현 검증이 아니다.

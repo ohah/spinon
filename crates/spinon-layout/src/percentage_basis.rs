@@ -62,26 +62,38 @@ pub(super) fn validate_spacing_percentage_bases(
                 width: true,
                 height: true,
             }
-        } else if input
-            .positioning
-            .get(&id)
-            .is_some_and(|positioning| positioning.position == LayoutPosition::Absolute)
-        {
-            owner_axes(positioned_owners[&id], &definite)
+        } else if input.positioning.get(&id).is_some_and(|positioning| {
+            matches!(
+                positioning.position,
+                LayoutPosition::Absolute | LayoutPosition::Fixed
+            )
+        }) {
+            if input.positioning[&id].position == LayoutPosition::Fixed {
+                owner_axes(PositionedContainingBlockOwner::Viewport, &definite)
+            } else {
+                owner_axes(positioned_owners[&id], &definite)
+            }
         } else {
             parent_axes
         };
-        let is_absolute = input
-            .positioning
-            .get(&id)
-            .is_some_and(|positioning| positioning.position == LayoutPosition::Absolute);
-        let sizing_parent_axes = if is_absolute {
+        let is_positioned = input.positioning.get(&id).is_some_and(|positioning| {
+            matches!(
+                positioning.position,
+                LayoutPosition::Absolute | LayoutPosition::Fixed
+            )
+        });
+        let sizing_parent_axes = if is_positioned {
             position_parent_axes
         } else {
             parent_axes
         };
-        let sizing_parent = if is_absolute {
-            match positioned_owners[&id] {
+        let sizing_parent = if is_positioned {
+            let owner = if input.positioning[&id].position == LayoutPosition::Fixed {
+                PositionedContainingBlockOwner::Viewport
+            } else {
+                positioned_owners[&id]
+            };
+            match owner {
                 PositionedContainingBlockOwner::Node(owner) => Some(&input.nodes[index[&owner]]),
                 PositionedContainingBlockOwner::Viewport
                 | PositionedContainingBlockOwner::NoBox => None,
@@ -97,7 +109,7 @@ pub(super) fn validate_spacing_percentage_bases(
         hidden.insert(id, is_hidden);
         let axes = if id == input.root {
             root_axes(input.root_sizing, node, &calc_percentages)
-        } else if is_absolute {
+        } else if is_positioned {
             absolute_axes(
                 node,
                 input.positioning[&id],
@@ -127,7 +139,7 @@ pub(super) fn validate_spacing_percentage_bases(
                 validate_root_gap_percentage(node, &calc_percentages)?;
             }
             validate_edge_percentages(node, sizing_parent_axes, &calc_percentages)?;
-            if is_absolute {
+            if is_positioned {
                 validate_absolute_dimension_percentage_bases(
                     node,
                     sizing_parent_axes,
@@ -204,7 +216,7 @@ fn validate_position_percentage_bases(
     };
     if !matches!(
         positioning.position,
-        LayoutPosition::Relative | LayoutPosition::Absolute
+        LayoutPosition::Relative | LayoutPosition::Absolute | LayoutPosition::Fixed
     ) {
         return Ok(());
     }

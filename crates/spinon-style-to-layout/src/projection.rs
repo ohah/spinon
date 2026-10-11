@@ -19,6 +19,7 @@ use spinon_style::{
 use crate::StyleLayoutError;
 use validation::{assert_matching_revision, assert_no_inline_style, assert_view_matches_snapshot};
 
+mod fixed_containing_block;
 mod validation;
 
 /// 같은 document snapshot에서 계산한 제한 CSS style과 Taffy layout 결과입니다.
@@ -135,7 +136,17 @@ pub fn compute_runtime_style_layout(
     computed_styles: ComputedStyleSnapshot,
     viewport: CssViewport,
 ) -> Result<StyleLayoutOutput, StyleLayoutError> {
-    compute_layout_from_styles(snapshot, root, computed_styles, viewport, false)
+    let reject_cascade_diagnostics = matches!(
+        computed_styles.profile,
+        ComputedStyleProfile::RuntimeBlockPositioningV1
+    );
+    compute_layout_from_styles(
+        snapshot,
+        root,
+        computed_styles,
+        viewport,
+        reject_cascade_diagnostics,
+    )
 }
 
 fn compute_profile_layout(

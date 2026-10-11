@@ -8,7 +8,7 @@ use super::{
     calc_tree::CalcLayoutTree,
     flex_auto_margin::negative_cross_axis_auto_margin_offset_correction,
     flex_baseline,
-    positioning::{collect_positioned_owners, needs_flow_pass},
+    positioning::{collect_fixed_owners, collect_positioned_owners, needs_flow_pass},
 };
 
 mod positioned_flex;
@@ -43,6 +43,7 @@ impl LayoutEngine for TaffyLayoutEngine {
             collect_frames(input, &index, &visual_tree, &adjustments)?
         };
         output.positioned_owners = collect_positioned_owners(input, &index);
+        output.fixed_owners = collect_fixed_owners(input, &index);
         if let Some(flow_frames) = flow_frames {
             output.flow_frames = flow_frames;
         } else {
@@ -168,6 +169,7 @@ fn collect_frames(
         revision: input.revision,
         flow_frames: frames.clone(),
         positioned_owners: BTreeMap::new(),
+        fixed_owners: BTreeMap::new(),
         frames,
     })
 }
