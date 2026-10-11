@@ -49,6 +49,17 @@ const RUNTIME_CSS_C12_1_POSITION_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c12/runtime-position-static-relative.js");
 const RUNTIME_CSS_C12_2_ABSOLUTE_BLOCK_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c12/runtime-position-absolute-block.js");
+const RUNTIME_CSS_C12_3_FIXED_FIXTURE_SOURCE: &str =
+    include_str!("../../../tests/fixtures/css/c12/runtime-position-fixed.js");
+const C12_3_FIXED_INVENTORY: &str =
+    include_str!("../../../tests/fixtures/css/c12/position-fixed-inventory.json");
+const C12_3_FIXED_SUPPORTED_CASES: &[&str] = &[
+    "viewport-insets",
+    "unpositioned-ancestor",
+    "positioned-ancestors",
+    "fixed-nesting",
+    "hidden-subtree",
+];
 const RUNTIME_CSS_MARGIN_COLLAPSE_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c09/runtime-margin-collapse.js");
 const RUNTIME_CSS_FLOW_ROOT_FIXTURE_SOURCE: &str =
@@ -71,6 +82,70 @@ const C10_3_5_POSITIONED_FLEX_INVENTORY: &str =
     include_str!("../../../tests/fixtures/css/c10/positioned-flex-inventory.json");
 const C10_3_5_POSITIONED_FLEX_RUNTIME_INVENTORY: &str =
     include_str!("../../../tests/fixtures/css/c10/positioned-flex-runtime-inventory.json");
+
+fn c12_3_fixed_supported_nodes() -> Result<Vec<serde_json::Value>, String> {
+    let inventory: serde_json::Value = serde_json::from_str(C12_3_FIXED_INVENTORY)
+        .map_err(|error| format!("C12.3 inventory를 읽지 못했습니다: {error}"))?;
+    if inventory["schema"].as_str() != Some("spinon-css-c12-3-position-fixed-inventory/v1") {
+        return Err("C12.3 inventory schema가 다릅니다".to_owned());
+    }
+    let nodes = inventory["nodes"]
+        .as_array()
+        .ok_or_else(|| "C12.3 inventory node 목록이 없습니다".to_owned())?;
+    let supported_cases = C12_3_FIXED_SUPPORTED_CASES
+        .iter()
+        .copied()
+        .collect::<std::collections::BTreeSet<_>>();
+    let selected = nodes
+        .iter()
+        .filter(|node| {
+            node["id"].as_str() == Some("c12-root")
+                || node["caseId"]
+                    .as_str()
+                    .is_some_and(|case| supported_cases.contains(case))
+        })
+        .cloned()
+        .collect::<Vec<_>>();
+    if selected.first().and_then(|node| node["id"].as_str()) != Some("c12-root")
+        || selected
+            .first()
+            .is_none_or(|node| !node["parentId"].is_null())
+    {
+        return Err("C12.3 runtime subset의 root가 inventory 첫 node가 아닙니다".to_owned());
+    }
+    let mut seen = std::collections::BTreeSet::new();
+    for node in &selected {
+        let Some(id) = node["id"].as_str() else {
+            return Err("C12.3 runtime node에 id가 없습니다".to_owned());
+        };
+        if !seen.insert(id) {
+            return Err(format!("C12.3 runtime node id가 중복되었습니다: {id}"));
+        }
+        if let Some(parent_id) = node["parentId"].as_str()
+            && !seen.contains(parent_id)
+        {
+            return Err(format!(
+                "C12.3 runtime subset에서 parent가 자식보다 뒤에 있거나 제외되었습니다: {id}/{parent_id}"
+            ));
+        }
+        if node["style"].as_str().is_none()
+            || node["caseId"].as_str().is_none()
+            || node["expectedPosition"].as_str().is_none()
+        {
+            return Err(format!("C12.3 runtime node 계약 필드가 없습니다: {id}"));
+        }
+    }
+    Ok(selected)
+}
+
+fn c12_3_fixed_runtime_script() -> Result<String, String> {
+    let nodes = c12_3_fixed_supported_nodes()?;
+    let encoded_nodes = serde_json::to_string(&nodes)
+        .map_err(|error| format!("C12.3 runtime node 목록 인코딩 실패: {error}"))?;
+    Ok(format!(
+        "globalThis.__spinonC123FixtureNodes={encoded_nodes};\n{RUNTIME_CSS_C12_3_FIXED_FIXTURE_SOURCE}"
+    ))
+}
 
 #[repr(C)]
 pub struct SpinonRuntimeGpuHost {
@@ -169,6 +244,11 @@ impl RuntimeGpuHost {
     }
 
     fn new_c12_2_absolute_block_fixture() -> Result<(Self, String), String> {
+        let (session, report) = RuntimeSession::new_runtime_gpu_block_positioning_fixture()?;
+        Ok((Self::from_session_with_frame_report(session), report))
+    }
+
+    fn new_c12_3_fixed_fixture() -> Result<(Self, String), String> {
         let (session, report) = RuntimeSession::new_runtime_gpu_block_positioning_fixture()?;
         Ok((Self::from_session_with_frame_report(session), report))
     }

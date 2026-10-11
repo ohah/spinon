@@ -2,7 +2,7 @@ use std::{error::Error, fmt};
 
 use spinon_core::NodeId;
 use spinon_layout::LayoutError;
-use spinon_style::{CascadeDiagnostic, CssCascadeError};
+use spinon_style::{CascadeDiagnostic, CssCascadeError, FixedContainingBlockEffect};
 
 /// 계산 스타일과 제한 Taffy profile을 연결하지 못한 이유입니다.
 #[derive(Debug)]
@@ -21,6 +21,11 @@ pub enum StyleLayoutError {
         value: String,
     },
     UnsupportedRootMargin(NodeId),
+    UnsupportedFixedContainingBlockEffect {
+        node: NodeId,
+        ancestor: NodeId,
+        effect: FixedContainingBlockEffect,
+    },
     UnsupportedAspectRatioConstraint {
         node: NodeId,
         property: &'static str,
@@ -71,6 +76,15 @@ impl fmt::Display for StyleLayoutError {
             Self::UnsupportedRootMargin(node) => write!(
                 formatter,
                 "레이아웃 root 노드 {node}의 nonzero margin은 root viewport 계약에서 지원하지 않습니다"
+            ),
+            Self::UnsupportedFixedContainingBlockEffect {
+                node,
+                ancestor,
+                effect,
+            } => write!(
+                formatter,
+                "fixed 노드 {node}의 조상 {ancestor}에 있는 {} effect는 현재 viewport-only profile에서 지원하지 않습니다",
+                effect.css_name()
             ),
             Self::UnsupportedAspectRatioConstraint { node, property } => write!(
                 formatter,

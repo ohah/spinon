@@ -1,6 +1,6 @@
 use super::{
     PresentationScenes, RUNTIME_CSS_C12_2_ABSOLUTE_BLOCK_FIXTURE_SOURCE, RuntimeGpuHost,
-    scene_matches_layout_key,
+    c12_3_fixed_runtime_script, c12_3_fixed_supported_nodes, scene_matches_layout_key,
 };
 use spinon_core::{EnvironmentRevision, HostDocument, StyleRevision};
 use spinon_render::{CssSize, RuntimeRenderKey, RuntimeRenderSnapshot};
@@ -150,6 +150,193 @@ fn c12_2_absolute_runtime_frames_match_the_pinned_chromium_geometry() {
             assert!(
                 (value - target).abs() <= tolerance,
                 "node {index} ({node_id}) {field}: runtime={value} Chromium={target}; {report}"
+            );
+        }
+    }
+}
+
+#[test]
+fn c12_3_runtime_fixture_is_a_parent_closed_inventory_subset() {
+    let nodes = c12_3_fixed_supported_nodes().unwrap();
+    let ids = nodes
+        .iter()
+        .map(|node| node["id"].as_str().unwrap())
+        .collect::<std::collections::BTreeSet<_>>();
+    assert_eq!(nodes.len(), 28);
+    assert_eq!(nodes[0]["id"], "c12-root");
+    assert!(ids.contains("viewport-aspect-ratio"));
+    for node in nodes.iter().skip(1) {
+        assert!(ids.contains(node["parentId"].as_str().unwrap()));
+        assert!(matches!(
+            node["caseId"].as_str().unwrap(),
+            "viewport-insets"
+                | "unpositioned-ancestor"
+                | "positioned-ancestors"
+                | "fixed-nesting"
+                | "hidden-subtree"
+        ));
+    }
+    let source = c12_3_fixed_runtime_script().unwrap();
+    assert!(source.contains("globalThis.__spinonC123FixtureNodes="));
+    assert!(source.contains("spinonC123NodeRefs"));
+    assert!(!source.contains("offset-path"));
+    assert!(!source.contains("content-visibility"));
+    assert!(!source.contains("will-change:"));
+}
+
+#[test]
+#[ignore = "C12.3 V8 runtime frame comparison runs on the Android device and iOS Simulator"]
+fn c12_3_fixed_runtime_frames_match_chromium_across_dpr_and_resize() {
+    let inventory: serde_json::Value = serde_json::from_str(include_str!(
+        "../../../../tests/fixtures/css/c12/position-fixed-inventory.json"
+    ))
+    .unwrap();
+    let reference: serde_json::Value = serde_json::from_str(include_str!(
+        "../../../../tests/fixtures/css/references/c12-3-position-fixed-v1.json"
+    ))
+    .unwrap();
+    let expected_nodes = c12_3_fixed_supported_nodes().unwrap();
+    let (host, _) = RuntimeGpuHost::new_c12_3_fixed_fixture().unwrap();
+    let script = c12_3_fixed_runtime_script().unwrap();
+
+    let matrix = [
+        (360.0, 800.0, 1.0, "matrix-360x800-dpr-1"),
+        (360.0, 800.0, 2.0, "matrix-360x800-dpr-2"),
+        (360.0, 800.0, 2.625, "matrix-360x800-dpr-2.625"),
+        (360.0, 800.0, 3.0, "matrix-360x800-dpr-3"),
+        (390.0, 844.0, 1.0, "matrix-390x844-dpr-1"),
+        (390.0, 844.0, 2.0, "matrix-390x844-dpr-2"),
+        (390.0, 844.0, 2.625, "matrix-390x844-dpr-2.625"),
+        (390.0, 844.0, 3.0, "matrix-390x844-dpr-3"),
+    ];
+    let mut environment_revision = EnvironmentRevision::INITIAL.get();
+    for (index, (width, height, scale, observation_id)) in matrix.into_iter().enumerate() {
+        let environment = host
+            .set_environment(width, height, scale, false, 10_000)
+            .unwrap();
+        if index != 0 {
+            environment_revision += 1;
+        }
+        assert_eq!(
+            reported_environment_revision(&environment),
+            environment_revision,
+            "{environment}"
+        );
+        let report = if index == 0 {
+            host.eval(&script, 10_000).unwrap()
+        } else {
+            environment
+        };
+        assert_eq!(
+            reported_environment_revision(&report),
+            environment_revision,
+            "{report}"
+        );
+        assert_c12_3_report_matches(&report, &expected_nodes, &reference, observation_id);
+    }
+
+    let resize_sequence = [
+        (360.0, 800.0, 1.0, "resize-start"),
+        (390.0, 844.0, 1.0, "resize-outbound"),
+        (390.0, 844.0, 1.0, "resize-noop"),
+        (360.0, 800.0, 1.0, "resize-return"),
+    ];
+    for (index, (width, height, scale, observation_id)) in resize_sequence.into_iter().enumerate() {
+        let report = host
+            .set_environment(width, height, scale, false, 10_000)
+            .unwrap();
+        if index != 2 {
+            environment_revision += 1;
+        }
+        assert_eq!(
+            reported_environment_revision(&report),
+            environment_revision,
+            "{report}"
+        );
+        assert_c12_3_report_matches(&report, &expected_nodes, &reference, observation_id);
+    }
+
+    assert_eq!(
+        inventory["comparison"]["maximumAbsoluteRectErrorCssPx"],
+        reference["comparison"]["maximumAbsoluteRectErrorCssPx"]
+    );
+}
+
+fn reported_environment_revision(report: &str) -> u64 {
+    report
+        .split_once("environment_revision=")
+        .and_then(|(_, suffix)| suffix.split_whitespace().next())
+        .unwrap()
+        .parse()
+        .unwrap()
+}
+
+fn assert_c12_3_report_matches(
+    report: &str,
+    expected_nodes: &[serde_json::Value],
+    reference: &serde_json::Value,
+    observation_id: &str,
+) {
+    let observation = reference["observations"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|observation| observation["id"].as_str() == Some(observation_id))
+        .unwrap();
+    let expected_ids = expected_nodes
+        .iter()
+        .map(|node| node["id"].as_str().unwrap())
+        .collect::<std::collections::BTreeSet<_>>();
+    let reference_nodes = observation["nodes"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .filter(|node| expected_ids.contains(node["id"].as_str().unwrap()))
+        .map(|node| (node["id"].as_str().unwrap(), node))
+        .collect::<std::collections::BTreeMap<_, _>>();
+    let actual_nodes = parse_node_frames(report);
+    assert_eq!(actual_nodes.len(), expected_nodes.len(), "{report}");
+    assert_eq!(
+        reference_nodes.len(),
+        expected_nodes.len(),
+        "{observation_id}"
+    );
+    let actual_by_node_id = actual_nodes
+        .iter()
+        .map(|frame| (frame.1, frame))
+        .collect::<std::collections::BTreeMap<_, _>>();
+    assert_eq!(actual_by_node_id.len(), expected_nodes.len(), "{report}");
+    let mut frame_indexes = actual_nodes.iter().map(|frame| frame.0).collect::<Vec<_>>();
+    frame_indexes.sort_unstable();
+    assert_eq!(frame_indexes, (0..expected_nodes.len()).collect::<Vec<_>>());
+
+    let tolerance = reference["comparison"]["maximumAbsoluteRectErrorCssPx"]
+        .as_f64()
+        .unwrap() as f32;
+    for (index, expected) in expected_nodes.iter().enumerate() {
+        let node_id = expected["id"].as_str().unwrap();
+        let observed = reference_nodes.get(node_id).unwrap();
+        let runtime_node_id = index as u64 + 1;
+        let (_, _, x, y, width, height) = actual_by_node_id
+            .get(&runtime_node_id)
+            .unwrap_or_else(|| panic!("runtime NodeId {runtime_node_id} 누락: {report}"));
+        assert_eq!(expected["id"], observed["id"]);
+        assert_eq!(expected["parentId"], observed["parentId"]);
+        assert_eq!(expected["expectedOwner"], observed["owner"]);
+        assert_eq!(
+            expected["expectedPosition"],
+            observed["properties"]["position"]
+        );
+        let has_layout_box = expected["hasLayoutBox"].as_bool().unwrap_or(true);
+        if !has_layout_box {
+            assert_eq!((*x, *y, *width, *height), (0.0, 0.0, 0.0, 0.0));
+        }
+        let rect = &observed["rect"];
+        for (field, value) in [("x", *x), ("y", *y), ("width", *width), ("height", *height)] {
+            let target = rect[field].as_f64().unwrap() as f32;
+            assert!(
+                (value - target).abs() <= tolerance,
+                "node {node_id} {field}: runtime={value} Chromium={target} observation={observation_id}; {report}"
             );
         }
     }

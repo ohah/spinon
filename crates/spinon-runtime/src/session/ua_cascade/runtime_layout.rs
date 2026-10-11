@@ -9,6 +9,7 @@ use spinon_style::{
     first_unsupported_runtime_block_display_inline_value,
     first_unsupported_runtime_block_display_stylesheet_value,
     first_unsupported_runtime_block_paint_inline_property,
+    first_unsupported_runtime_block_positioning_inline_property,
     first_unsupported_runtime_custom_properties_inline_property,
     first_unsupported_runtime_custom_properties_paint_inline_property,
 };
@@ -171,7 +172,7 @@ pub(super) fn compute_runtime_layout(
             spinon_style::first_unsupported_runtime_block_formatting_inline_property(&view)
         }
         super::calculation::RuntimeCalculationProfile::BlockPositioning => {
-            spinon_style::first_unsupported_runtime_block_formatting_inline_property(&view)
+            first_unsupported_runtime_block_positioning_inline_property(&view)
         }
         super::calculation::RuntimeCalculationProfile::FlexPaint
         | super::calculation::RuntimeCalculationProfile::RegisteredPropertiesPaint => {

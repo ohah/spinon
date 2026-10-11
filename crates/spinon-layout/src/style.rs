@@ -233,6 +233,8 @@ pub enum LayoutPosition {
     Static,
     Relative,
     Absolute,
+    /// CSS fixed 의미를 유지하고 Taffy 경계에서만 absolute로 투영합니다.
+    Fixed,
 }
 
 /// `LayoutStyle`의 기존 크기·Flex 입력과 분리한 CSS positioning 입력입니다.

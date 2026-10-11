@@ -15,6 +15,7 @@ mod positioning_values;
 mod primitive_values;
 mod spacing_values;
 
+use super::fixed_containing_block::validate_fixed_ancestor_effects;
 use super::typed_math::CssMathProjector;
 use crate::StyleLayoutError;
 use flex_values::{
@@ -40,6 +41,7 @@ pub(super) fn project_styles(
     root: HostNodeHandle,
     snapshot: &ComputedStyleSnapshot,
 ) -> Result<ProjectedStyles, StyleLayoutError> {
+    validate_fixed_ancestor_effects(tree, root, snapshot)?;
     let mut output = BTreeMap::new();
     let mut positioning = BTreeMap::new();
     let mut math = CssMathProjector::default();
@@ -390,6 +392,7 @@ pub(super) fn project_styles(
                     &mut math,
                     snapshot.profile == ComputedStyleProfile::RuntimeBlockPositioningV1
                         || supports_runtime_flex,
+                    snapshot.profile == ComputedStyleProfile::RuntimeBlockPositioningV1,
                 )?,
             );
         }

@@ -18,7 +18,7 @@ use style::{
 
 use super::super::{
     ComputedCssMath, ComputedCssPosition, ComputedElementStyle, ComputedStyleProfile,
-    CssCascadeError, CssViewport, runtime_paint,
+    CssCascadeError, CssViewport, FixedContainingBlockEffect, runtime_paint,
 };
 use super::dimensions::{computed_layout_dimensions, computed_layout_math_values};
 use super::source_border::{
@@ -48,6 +48,7 @@ pub(super) fn computed_element_output(
         style::values::computed::PositionProperty::Fixed => ComputedCssPosition::Fixed,
         style::values::computed::PositionProperty::Sticky => ComputedCssPosition::Sticky,
     };
+    let fixed_containing_block_effects = fixed_containing_block_effects(computed);
     let layout_aspect_ratio = if matches!(
         profile,
         ComputedStyleProfile::RuntimeFlexLayoutV1
@@ -84,6 +85,7 @@ pub(super) fn computed_element_output(
     Ok(ComputedElementStyle {
         node_id,
         layout_position,
+        fixed_containing_block_effects,
         layout_insets: computed_layout_insets(computed),
         font_size_css_px,
         layout_dimensions: computed_layout_dimensions(computed),
@@ -95,6 +97,73 @@ pub(super) fn computed_element_output(
         background_color,
         background_paint,
     })
+}
+
+fn fixed_containing_block_effects(computed: &ComputedValues) -> Vec<FixedContainingBlockEffect> {
+    let css_value =
+        |property| computed.computed_value_to_string(PropertyDeclarationId::Longhand(property));
+    let mut effects = Vec::new();
+    for (property, effect) in [
+        (LonghandId::Transform, FixedContainingBlockEffect::Transform),
+        (LonghandId::Translate, FixedContainingBlockEffect::Translate),
+        (LonghandId::Rotate, FixedContainingBlockEffect::Rotate),
+        (LonghandId::Scale, FixedContainingBlockEffect::Scale),
+        (
+            LonghandId::OffsetPath,
+            FixedContainingBlockEffect::MotionPath,
+        ),
+        (
+            LonghandId::Perspective,
+            FixedContainingBlockEffect::Perspective,
+        ),
+        (LonghandId::Filter, FixedContainingBlockEffect::Filter),
+        (
+            LonghandId::BackdropFilter,
+            FixedContainingBlockEffect::BackdropFilter,
+        ),
+    ] {
+        if css_value(property) != "none" {
+            effects.push(effect);
+        }
+    }
+    if css_value(LonghandId::TransformStyle) == "preserve-3d" {
+        effects.push(FixedContainingBlockEffect::TransformStylePreserve3d);
+    }
+
+    let contain = computed.clone_contain();
+    if contain.contains(style::values::computed::Contain::LAYOUT) {
+        effects.push(FixedContainingBlockEffect::LayoutContainment);
+    }
+    if contain.contains(style::values::computed::Contain::PAINT) {
+        effects.push(FixedContainingBlockEffect::PaintContainment);
+    }
+
+    let will_change = css_value(LonghandId::WillChange);
+    let has_will_change =
+        |property: &str| will_change.split(',').any(|value| value.trim() == property);
+    if ["transform", "translate", "rotate", "scale", "offset-path"]
+        .into_iter()
+        .any(has_will_change)
+    {
+        effects.push(FixedContainingBlockEffect::WillChangeTransform);
+    }
+    for (property, effect) in [
+        (
+            "perspective",
+            FixedContainingBlockEffect::WillChangePerspective,
+        ),
+        ("filter", FixedContainingBlockEffect::WillChangeFilter),
+        (
+            "backdrop-filter",
+            FixedContainingBlockEffect::WillChangeBackdropFilter,
+        ),
+        ("contain", FixedContainingBlockEffect::WillChangeContain),
+    ] {
+        if has_will_change(property) {
+            effects.push(effect);
+        }
+    }
+    effects
 }
 
 pub(super) fn compute_element_style(

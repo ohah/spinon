@@ -20,11 +20,12 @@
 - 연속 미디어의 앱 CSS viewport를 initial fixed containing block으로 사용한다. 원점은 `(0, 0)` CSS px이며 크기는 같은 계산의 `CssViewport.width_css_px`·`height_css_px`다.
 - `horizontal-tb`·LTR, Block root, 현재 runtime CSS whitelist가 표현하는 box 입력을 대상으로 한다. C12.2의 fixed-size 박스와 inset·min/max로 측정 가능한 조합을 재사용하되, 고정 comparator에서 개별 동작을 먼저 확정한다.
 - fixed box에는 기존 C12.2가 지원하는 물리 `top/right/bottom/left`, `inset`, 길이·percentage·지원 CSS math, margin, padding, border, box-sizing, min/max를 viewport basis로 적용한다. top/bottom percentage는 viewport 높이, left/right percentage는 viewport 너비를 사용한다.
+- 기준 inventory의 `viewport-aspect-ratio`도 이번 성공 subset에 포함한다. definite width `40px`, `height:auto`, computed `aspect-ratio:2 / 1` 조합에서 C07.3 계산을 재사용해 `40×20 CSS px`를 만든다. 이 단일 조합은 replaced/intrinsic ratio나 ratio와 min/max의 새 조합을 지원한다는 뜻이 아니다.
 - 두 축 모두에서 static-position 계산을 요구하지 않는 입력만 허용한다. 한 축의 두 inset이 모두 `auto`여서 static position에 의존하는 입력은 이번 성공 profile에서 명시 오류로 거부한다. definite 양쪽 inset과 auto 크기·margin은 C12.2가 지원한다고 고정한 측정 가능 박스에 한해 comparator로 확인한다.
 - 일반 `static`·`relative`·`absolute` 조상은 fixed containing block이 아니다. 따라서 viewport-only subset에서는 fixed box를 그 조상들의 크기·position·padding에 붙이지 않는다.
 - `display:none` 자신 또는 조상 아래의 fixed box는 viewport synthetic root로 올리지 않는다. 숨겨진 subtree는 layout frame과 render entry를 만들지 않는다.
 - fixed box는 absolute positioned descendant를 위한 absolute containing block이 된다. 반면 fixed descendant는 viewport fixed containing block을 계속 사용한다. 두 owner 관계를 별도 계산한다.
-- Stylo computed snapshot에는 현재 Chromium fixed-CB trigger에 해당하는 computed effect 표식을 별도 보존한다. 최소한 transform 관련 속성/`transform-style: preserve-3d`, non-initial `filter`·`backdrop-filter`, layout/paint containment, `content-visibility`가 활성화한 containment, 이에 해당하는 `will-change`와 적용되는 containment shorthand를 추적한다. author/inline preflight가 이 입력을 먼저 거부하더라도 표식은 style-to-layout 경계에서의 두 번째 검증으로 유지한다. CSS `position:fixed` 자체는 fixed-CB effect 표식으로 취급하지 않는다.
+- Stylo computed snapshot에는 현재 Chromium fixed-CB trigger에 해당하는 computed effect 표식을 별도 보존한다. 계산 가능한 transform 관련 속성(`transform`, 개별 `translate`·`rotate`·`scale`), `transform-style: preserve-3d`, `perspective`, `filter`와 `will-change` trigger는 typed computed 값에서 추출한다. locked Stylo 0.22.0에서는 `offset-path`, `backdrop-filter`, `contain` 선언이 이 저장소의 빌드 설정에서 `UnknownProperty` 진단을 내며, `content-visibility`는 Gecko 전용 longhand라 generated computed API가 없다. 이 네 property family는 computed effect marker로 가장하지 않고 author stylesheet·inline cascade 진단으로 보존한 뒤 RuntimeBlockPositioning layout 경계에서 전체 계산을 거부한다. 진단을 무시하거나 부분 layout을 반환하지 않는다. preflight로 거부되는 계산 가능 effect 표식도 style-to-layout 경계에서 다시 검사한다. CSS `position:fixed` 자체는 fixed-CB effect 표식으로 취급하지 않는다.
 - CSS source parent, DOM parent, event/lifetime 소유 관계는 유지한다. viewport synthetic root는 Taffy 계산 내부 전용이며 HostDocument·NodeId·render tree에 노출하지 않는다.
 - viewport 폭·높이, device scale factor, media environment 중 유효 값이 바뀌면 새 `EnvironmentRevision`과 그 revision에 맞는 cascade/layout/render snapshot만 게시한다. 동일 환경 입력은 불필요한 revision 증가를 만들지 않는다.
 
@@ -50,7 +51,7 @@
 
 - 비교 oracle은 저장소가 고정한 Chrome `154.0.8037.98`, Chromium revision `b859317bf11f6be47f9b7799ec690a0a42a1fb33`다. 기준은 [CSS Position 3 · 2025-10-07 WD](https://www.w3.org/TR/2025/WD-css-position-3-20251007/)의 fixed containing block과 inset 계산, [CSS Transforms 1](https://www.w3.org/TR/css-transforms-1/), [CSS Containment 2](https://www.w3.org/TR/css-contain-2/) 및 pinned Chromium의 `LayoutObject::ComputeIsFixedContainer`와 대조한다.
 - Chromium oracle은 viewport `360×800` 및 `390×844` CSS px, LTR, `horizontal-tb`, light, `en-US`, UTC에서 캡처한다. 각 viewport는 DPR 1·2·2.625·3으로 관찰한다. same CSS viewport에서 DPR만 바뀌면 computed CSS px geometry는 같아야 한다.
-- 고정 inventory는 최소 다음을 각각 구분한다: top/left 및 right/bottom 고정 inset, 축별 percentage와 `calc()`, negative·zero inset, auto 반대편 inset, 양쪽 inset 기반의 측정 가능한 stretch, margin·box-sizing·border·padding·min/max, static/relative/absolute 중첩 ancestor, fixed ancestor, fixed 내부 absolute child, fixed descendant, root frame 크기·원점이 viewport와 다른 경우, `display:none`, 360×800→390×844→360×800 resize, DPR-only 변경, 같은 입력의 no-op.
+- 고정 inventory는 최소 다음을 각각 구분한다: top/left 및 right/bottom 고정 inset, 축별 percentage와 `calc()`, negative·zero inset, auto 반대편 inset, 양쪽 inset 기반의 측정 가능한 stretch, margin·box-sizing·border·padding·min/max, `width:40px;height:auto;aspect-ratio:2 / 1`, static/relative/absolute 중첩 ancestor, fixed ancestor, fixed 내부 absolute child, fixed descendant, root frame 크기·원점이 viewport와 다른 경우, `display:none`, 360×800→390×844→360×800 resize, DPR-only 변경, 같은 입력의 no-op.
 - 실패 inventory는 양 stylesheet/inline의 unsupported fixed-CB ancestor 효과, root fixed, unsupported static-position 입력, invalid viewport·non-finite 값, overflow/indefinite percentage, stale style/environment revision, hidden ancestor, node·owner 불일치와 계산 실패 뒤 이전 scene 잔존을 포함한다.
 - 각 지원 node의 `x/y/width/height` 최대 절대 오차는 `0.5 CSS px` 이하여야 한다. 개별 node·field identity, computed inset, owner 종류, source parent 불변, hidden 상태를 따로 판정하며 평균 오차로 실패를 숨기지 않는다.
 - viewport가 같은 경우 DPR 변경은 CSS geometry를 바꾸지 않아야 한다. CSS viewport 변경은 Chrome frame과 일치해야 하고, 실제 runtime에서는 새 environment revision의 frame만 제출되어야 한다. resize 전후 프레임 제출 순서를 고정하며 예전 revision이 뒤늦게 게시되면 실패다.
@@ -60,7 +61,7 @@
 
 1. 이 계획과 계획 실패 관점 기록을 먼저 확정한다. 계획 검토 지적을 반영하기 전에는 런타임 기능 코드를 수정하지 않는다.
 2. [구현 전 비교 완료](../spec/internal/evidence/c12-3-fixed-precomparison-2026-10-11.md). 전용 HTML·inventory·Chrome capture에서 viewport owner, ancestor owner와 resize/DPR 환경을 관찰하고 지원·거부 경계 및 tolerance를 고정했다. runtime 구현은 이 고정 기준을 바꾸지 않는다.
-3. Stylo author stylesheet source preflight와 inline style preflight를 각각 확인한다. computed snapshot→layout projection에도 fixed-CB effect 표식과 ancestor validation을 전달한다. effect 속성이 preflight를 우회해 cascade/layout에 도달하면 해당 입력을 reject하는 회귀 테스트를 추가한다.
+3. Stylo author stylesheet source preflight와 inline style preflight를 각각 확인한다. computed snapshot→layout projection에도 fixed-CB effect 표식과 ancestor validation을 전달한다. effect 속성이 preflight를 우회해 cascade/layout에 도달하면 해당 입력을 reject하는 회귀 테스트를 추가한다. Stylo가 알 수 없는 property의 parse 진단도 RuntimeBlockPositioning projection에서 reject되는지 확인한다.
 4. layout DTO에 `Fixed` 의미를 추가하고 Taffy absolute 매핑, 별도 absolute/fixed owner, viewport synthetic root 연결을 구현한다. source tree와 viewport root 사이의 graph consistency를 검증한다.
 5. C12.2 absolute fixture 전부를 회귀 실행하고, C12.3 지원/실패 fixture의 Chrome geometry를 node별 비교한다. resize·DPR-only·stale completion·invalid viewport 테스트를 추가한다.
 6. Rust workspace test, Clippy, rustfmt, CSS reference suite와 앱 빌드를 실행한다. Android 실기기에서 실제 V8→Stylo→Taffy→WGPU를 먼저 확인하고 iOS Simulator에서 같은 fixture를 확인한다. 플랫폼은 CSS px viewport, device scale factor, EnvironmentRevision, 최종 제출 revision을 별도 로그로 보존한다.
@@ -71,6 +72,7 @@
 ## 완료 판정
 
 - 고정 Chrome 지원 fixture에서 모든 지원 node의 field별 오차와 owner/source-tree invariant가 사전 기준을 만족한다.
+- `viewport-aspect-ratio`의 fixed frame은 C07.3의 지원 geometry와 C12.3 viewport owner를 동시에 보존하고 40×20 CSS px 기준에 맞는다.
 - 지원하지 않는 ancestor 효과·static position·invalid input·stale revision이 오류로 닫히고 이전/부분 frame이 성공처럼 게시되지 않는다.
 - C12.2 절대 배치·C10.3.5 Flex positioned regression이 유지된다.
 - Android 실기기와 iOS Simulator에서 동일 V8 fixture가 새 environment revision을 사용해 resize 전후 화면을 표시하고, 각 시점에 제출된 revision을 로그로 확인한다.

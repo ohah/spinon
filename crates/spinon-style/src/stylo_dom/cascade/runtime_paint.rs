@@ -362,3 +362,11 @@ pub fn first_unsupported_runtime_block_formatting_inline_property(
         RUNTIME_BLOCK_FORMATTING_AUTHOR_PROPERTIES.contains(&property)
     })
 }
+
+pub fn first_unsupported_runtime_block_positioning_inline_property(
+    view: &StyloDocumentView,
+) -> Option<(NodeId, String)> {
+    super::runtime_layout::first_unsupported_inline_property(view, |property| {
+        RUNTIME_BLOCK_POSITIONING_AUTHOR_PROPERTIES.contains(&property)
+    })
+}

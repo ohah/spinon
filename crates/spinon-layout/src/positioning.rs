@@ -3,7 +3,7 @@ use std::collections::BTreeMap;
 use spinon_core::NodeId;
 
 use crate::{
-    LayoutError, LayoutInput, LayoutLengthPercentage, LayoutPosition,
+    FixedContainingBlockOwner, LayoutError, LayoutInput, LayoutLengthPercentage, LayoutPosition,
     PositionedContainingBlockOwner, TextDirection,
 };
 
@@ -42,7 +42,7 @@ pub(super) fn collect_positioned_owners(
             PositionedContainingBlockOwner::NoBox
         } else if matches!(
             positioning.position,
-            LayoutPosition::Relative | LayoutPosition::Absolute
+            LayoutPosition::Relative | LayoutPosition::Absolute | LayoutPosition::Fixed
         ) {
             PositionedContainingBlockOwner::Node(id)
         } else {
@@ -58,6 +58,34 @@ pub(super) fn collect_positioned_owners(
     owners
 }
 
+pub(super) fn collect_fixed_owners(
+    input: &LayoutInput,
+    index: &BTreeMap<NodeId, usize>,
+) -> BTreeMap<NodeId, FixedContainingBlockOwner> {
+    let mut owners = BTreeMap::new();
+    let mut pending = vec![(input.root, false)];
+    while let Some((id, ancestor_hidden)) = pending.pop() {
+        let node = &input.nodes[index[&id]];
+        let hidden = ancestor_hidden || node.style.display == crate::LayoutDisplay::None;
+        if input
+            .positioning
+            .get(&id)
+            .is_some_and(|positioning| positioning.position == LayoutPosition::Fixed)
+        {
+            owners.insert(
+                id,
+                if hidden {
+                    FixedContainingBlockOwner::NoBox
+                } else {
+                    FixedContainingBlockOwner::Viewport
+                },
+            );
+        }
+        pending.extend(node.children.iter().rev().map(|child| (*child, hidden)));
+    }
+    owners
+}
+
 pub(super) fn validate_positioning(
     input: &LayoutInput,
     index: &BTreeMap<NodeId, usize>,
@@ -69,16 +97,31 @@ pub(super) fn validate_positioning(
         if positioning.position == LayoutPosition::Static {
             continue;
         }
-        if positioning.position == LayoutPosition::Absolute && id == input.root {
+        if matches!(
+            positioning.position,
+            LayoutPosition::Absolute | LayoutPosition::Fixed
+        ) && id == input.root
+        {
             return Err(LayoutError::UnsupportedPositioning {
                 node: id,
-                reason: "레이아웃 root 자체의 absolute 배치는 현재 profile에서 지원하지 않습니다",
+                reason: "레이아웃 root 자체의 out-of-flow 배치는 현재 profile에서 지원하지 않습니다",
             });
         }
         if input.nodes[position].style.direction == TextDirection::Rtl {
             return Err(LayoutError::UnsupportedPositioning {
                 node: id,
-                reason: "relative·absolute inset은 현재 LTR subset만 지원합니다",
+                reason: "relative·absolute·fixed inset은 현재 LTR subset만 지원합니다",
+            });
+        }
+        if positioning.position == LayoutPosition::Fixed
+            && ((positioning.inset.left == LayoutLengthPercentage::Auto
+                && positioning.inset.right == LayoutLengthPercentage::Auto)
+                || (positioning.inset.top == LayoutLengthPercentage::Auto
+                    && positioning.inset.bottom == LayoutLengthPercentage::Auto))
+        {
+            return Err(LayoutError::UnsupportedPositioning {
+                node: id,
+                reason: "fixed 축의 양쪽 inset이 모두 auto인 static position은 지원하지 않습니다",
             });
         }
         for (field, value) in [

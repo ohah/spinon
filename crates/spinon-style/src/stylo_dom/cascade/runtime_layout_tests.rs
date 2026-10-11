@@ -6,6 +6,8 @@ mod c10_flex_alignment;
 mod c10_flex_wrap;
 #[path = "runtime_layout_tests/c12_absolute.rs"]
 mod c12_absolute;
+#[path = "runtime_layout_tests/c12_fixed.rs"]
+mod c12_fixed;
 
 use std::sync::Arc;
 

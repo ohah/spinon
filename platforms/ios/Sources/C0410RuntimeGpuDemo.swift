@@ -73,6 +73,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c121-static-relative")
     private let c122AbsoluteBlockProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c122-absolute-block")
+    private let c123FixedPositionProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c123-fixed-position")
     private let c1035PositionedFlexProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c1035-positioned-flex")
     private let blockFormattingProbeRequested = ProcessInfo.processInfo.arguments
@@ -91,7 +93,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             && ProcessInfo.processInfo.arguments.contains("--spinon-c051-custom-properties")
     }
     private var fixedSizeCssFixtureRequested: Bool {
-        c122AbsoluteBlockProbeRequested || c1035PositionedFlexProbeRequested
+        c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
+            || c1035PositionedFlexProbeRequested
             || blockFormattingProbeRequested
             || flexWrapProbeRequested || flexDistributionProbeRequested
             || flexReverseProbeRequested || flexOrderProbeRequested || flexAlignmentProbeRequested
@@ -114,6 +117,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let title = UILabel()
         title.text = c1035PositionedFlexProbeRequested
             ? "SPINON · C10.3.5 positioned Flex"
+            : c123FixedPositionProbeRequested
+            ? "SPINON · C12.3 viewport fixed"
             : c122AbsoluteBlockProbeRequested
             ? "SPINON · C12.2 Block absolute"
             : c121PositioningProbeRequested
@@ -166,12 +171,14 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         title.textColor = UIColor(red: 0.92, green: 0.95, blue: 0.99, alpha: 1)
         title.font = .systemFont(ofSize: 22, weight: .bold)
         title.translatesAutoresizingMaskIntoConstraints = false
-        title.isHidden = c122AbsoluteBlockProbeRequested
+        title.isHidden = c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
         view.addSubview(title)
 
         let description = UILabel()
         description.text = c1035PositionedFlexProbeRequested
             ? "V8 직접 Flex 자식·wrapper·paint 순서 → Stylo → Taffy → WGPU · 320×240 CSS px"
+            : c123FixedPositionProbeRequested
+            ? "V8 fixed viewport owner·inset·resize → Stylo → Taffy → WGPU · 360×800 CSS px"
             : c122AbsoluteBlockProbeRequested
             ? "V8 absolute·containing block·inset → Stylo → Taffy → WGPU · 360×800 CSS px"
             : c121PositioningProbeRequested
@@ -227,13 +234,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         description.font = .systemFont(ofSize: 14)
         description.numberOfLines = 2
         description.translatesAutoresizingMaskIntoConstraints = false
-        description.isHidden = c122AbsoluteBlockProbeRequested
+        description.isHidden = c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
         view.addSubview(description)
 
         canvasView.translatesAutoresizingMaskIntoConstraints = false
         canvasView.isAccessibilityElement = true
         canvasView.accessibilityLabel = c1035PositionedFlexProbeRequested
             ? "C10.3.5 positioned Flex 정렬·wrapper·paint 순서 WGPU 장면"
+            : c123FixedPositionProbeRequested
+            ? "C12.3 viewport fixed 배치 WGPU 장면"
             : c122AbsoluteBlockProbeRequested
             ? "C12.2 Block absolute WGPU 장면"
             : c121PositioningProbeRequested
@@ -336,7 +345,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         )
         customPropertiesButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(customPropertiesButton)
-        if c122AbsoluteBlockProbeRequested || c121PositioningProbeRequested
+        if c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
+            || c121PositioningProbeRequested
             || authorStylesheetsProbeRequested
             || fixedSizeCssFixtureRequested || blockPaintProbeRequested
             || minMaxSizingProbeRequested || borderWidthProbeRequested
@@ -354,15 +364,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         statusLabel.font = .monospacedSystemFont(ofSize: 11, weight: .regular)
         statusLabel.numberOfLines = 0
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
-        statusLabel.isHidden = c122AbsoluteBlockProbeRequested
+        statusLabel.isHidden = c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
         view.addSubview(statusLabel)
 
         let canvasWidth = canvasView.widthAnchor.constraint(
-            equalToConstant: c122AbsoluteBlockProbeRequested
+            equalToConstant: c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
                 ? 360 : fixedSizeCssFixtureRequested ? 320 : 301
         )
         let canvasHeight = canvasView.heightAnchor.constraint(
-            equalToConstant: c122AbsoluteBlockProbeRequested
+            equalToConstant: c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
                 ? 800 : fixedSizeCssFixtureRequested ? 240 : 100
         )
         canvasWidthConstraint = canvasWidth
@@ -439,7 +449,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         let scale = view.window?.screen.scale ?? UIScreen.main.scale
-        let viewportSize = c122AbsoluteBlockProbeRequested
+        let viewportSize = c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
             ? CGSize(width: 360, height: 800) : canvasView.bounds.size
         guard viewportSize.width > 0, viewportSize.height > 0 else { return }
         stateLock.lock()
@@ -565,6 +575,71 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         log("SPINON_C122_FRAME_SUMMARY frames=\(frames.count) marker=present")
     }
 
+    private func logC123NodeFrames(_ state: String, _ report: String) {
+        guard let marker = report.range(of: "node_frames_css_px=["),
+              let closing = report[marker.upperBound...].firstIndex(of: "]") else {
+            log("SPINON_C123_FRAME_SUMMARY state=\(state) marker=missing report_length=\(report.count)")
+            return
+        }
+        let frames = report[marker.upperBound..<closing].split(separator: ";")
+        for frame in frames {
+            log("SPINON_C123_NODE_FRAME state=\(state) \(frame)")
+        }
+        log("SPINON_C123_FRAME_SUMMARY state=\(state) frames=\(frames.count) marker=present")
+    }
+
+    private func logC123FailureDetails(_ report: String) {
+        let chunkSize = 600
+        let characters = Array(report)
+        let chunkCount = (characters.count + chunkSize - 1) / chunkSize
+        for index in 0..<chunkCount {
+            let start = index * chunkSize
+            let end = min(characters.count, start + chunkSize)
+            log("SPINON_C123_EVAL_DETAIL part=\(index + 1)/\(chunkCount) \(String(characters[start..<end]))")
+        }
+    }
+
+    private func runC123EnvironmentMatrix(
+        host: UInt64,
+        dark: Bool,
+        deviceScaleFactor: Float,
+        initialEnvironmentRevision: UInt64
+    ) -> Bool {
+        let steps: [(String, Float, Float, Float)] = [
+            ("matrix-360x800-dpr-2", 360, 800, 2),
+            ("matrix-360x800-dpr-2.625", 360, 800, 2.625),
+            ("matrix-360x800-dpr-3", 360, 800, 3),
+            ("matrix-390x844-dpr-1", 390, 844, 1),
+            ("matrix-390x844-dpr-2", 390, 844, 2),
+            ("matrix-390x844-dpr-2.625", 390, 844, 2.625),
+            ("matrix-390x844-dpr-3", 390, 844, 3),
+            ("resize-start", 360, 800, 1),
+            ("resize-outbound", 390, 844, 1),
+            ("resize-noop", 390, 844, 1),
+            ("resize-return", 360, 800, 1),
+            ("device-final", 360, 800, deviceScaleFactor),
+        ]
+        var expectedRevision = initialEnvironmentRevision
+        for (state, width, height, scale) in steps {
+            if state != "resize-noop" { expectedRevision += 1 }
+            let report = SpinonRunner.setRuntimeGpuEnvironment(
+                host, width: width, height: height, scale: scale, dark: dark
+            )
+            guard let report, report.hasPrefix("status=0 ") else {
+                log("SPINON_C123_MATRIX_FAILURE state=\(state) report=\(report ?? "missing")")
+                return false
+            }
+            let actualRevision = reportField(report, "environment_revision=")
+            guard actualRevision == String(expectedRevision) else {
+                log("SPINON_C123_MATRIX_FAILURE state=\(state) expected_revision=\(expectedRevision) actual_revision=\(actualRevision)")
+                return false
+            }
+            log("SPINON_C123_SUMMARY state=\(state) \(runtimeStatusSummary(report))")
+            logC123NodeFrames(state, report)
+        }
+        return true
+    }
+
     private func logC1035NodeFrames(_ report: String) {
         guard let marker = report.range(of: "node_frames_css_px=["),
               let closing = report[marker.upperBound...].firstIndex(of: "]") else {
@@ -670,6 +745,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         guard !isClosing else { return }
         let handle = c1035PositionedFlexProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithC10_3_5PositionedFlexFixture()
+            : c123FixedPositionProbeRequested
+            ? SpinonRunner.createRuntimeGpuHostWithC12_3FixedFixture()
             : c122AbsoluteBlockProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithC12_2AbsoluteBlockFixture()
             : c121PositioningProbeRequested
@@ -696,13 +773,16 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         let environmentInputs = currentEnvironment()
         let viewportWidth: Float = c122AbsoluteBlockProbeRequested
+            || c123FixedPositionProbeRequested
             ? 360 : fixedSizeCssFixtureRequested ? 320 : environmentInputs.width
         let viewportHeight: Float = c122AbsoluteBlockProbeRequested
+            || c123FixedPositionProbeRequested
             ? 800 : fixedSizeCssFixtureRequested ? 240 : environmentInputs.height
         log("SPINON_C0410_ENVIRONMENT_REQUEST width=\(viewportWidth) height=\(viewportHeight)")
         let environment = SpinonRunner.setRuntimeGpuEnvironment(
             handle, width: viewportWidth, height: viewportHeight,
-            scale: environmentInputs.scale, dark: environmentInputs.dark
+            scale: c123FixedPositionProbeRequested ? 1 : environmentInputs.scale,
+            dark: environmentInputs.dark
         )
         guard environment?.hasPrefix("status=0 ") == true else {
             postStatus("실패 · \(environment ?? "환경 보고 없음")")
@@ -712,6 +792,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         var result = c1035PositionedFlexProbeRequested
             ? SpinonRunner.evalRuntimeGpuC10_3_5PositionedFlexFixture(handle)
+            : c123FixedPositionProbeRequested
+            ? SpinonRunner.evalRuntimeGpuC12_3FixedFixture(handle)
             : c122AbsoluteBlockProbeRequested
             ? SpinonRunner.evalRuntimeGpuC12_2AbsoluteBlockFixture(handle)
             : c121PositioningProbeRequested
@@ -763,6 +845,16 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 : SpinonRunner.evalRuntimeGpuFixture(handle)
         let sceneWasSupersededAfterCommit = result?.hasPrefix("status=-12 ") == true
             && result?.contains("op=eval status=0 ") == true
+        if c123FixedPositionProbeRequested,
+           let result,
+           !result.hasPrefix("status=0 ") {
+            logC123FailureDetails(result)
+        }
+        if c123FixedPositionProbeRequested && sceneWasSupersededAfterCommit {
+            postStatus("실패 · C12.3 초기 장면이 environment matrix 전에 교체됐습니다")
+            log("SPINON_C123_MATRIX_FAILURE reason=initial-scene-superseded report=\(result ?? "missing")")
+            return
+        }
         guard result?.hasPrefix("status=0 ") == true || sceneWasSupersededAfterCommit else {
             postStatus("실패 · \(result ?? "JavaScript 보고 없음")")
             return
@@ -787,6 +879,32 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         if c122AbsoluteBlockProbeRequested, result?.hasPrefix("status=0 ") == true {
             log("SPINON_C122_SUMMARY \(runtimeStatusSummary(result ?? ""))")
             logC122NodeFrames(result ?? "")
+        }
+        if c123FixedPositionProbeRequested, result?.hasPrefix("status=0 ") == true {
+            guard let initialEnvironmentRevision = UInt64(
+                reportField(environment ?? "", "environment_revision=")
+            ) else {
+                log("SPINON_C123_MATRIX_FAILURE state=initial missing_environment_revision")
+                postStatus("실패 · C12.3 초기 환경 revision이 없습니다")
+                return
+            }
+            let initialEvalRevision = reportField(result ?? "", "environment_revision=")
+            guard initialEvalRevision == String(initialEnvironmentRevision) else {
+                log("SPINON_C123_MATRIX_FAILURE state=initial expected_revision=\(initialEnvironmentRevision) actual_revision=\(initialEvalRevision)")
+                postStatus("실패 · C12.3 초기 environment revision 불일치")
+                return
+            }
+            log("SPINON_C123_SUMMARY state=matrix-360x800-dpr-1 \(runtimeStatusSummary(result ?? ""))")
+            logC123NodeFrames("matrix-360x800-dpr-1", result ?? "")
+            guard runC123EnvironmentMatrix(
+                host: handle,
+                dark: environmentInputs.dark,
+                deviceScaleFactor: environmentInputs.scale,
+                initialEnvironmentRevision: initialEnvironmentRevision
+            ) else {
+                postStatus("실패 · C12.3 environment matrix")
+                return
+            }
         }
         if c1035PositionedFlexProbeRequested, result?.hasPrefix("status=0 ") == true {
             log("SPINON_C1035_SUMMARY \(runtimeStatusSummary(result ?? ""))")

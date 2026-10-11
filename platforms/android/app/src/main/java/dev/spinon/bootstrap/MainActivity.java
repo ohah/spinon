@@ -207,6 +207,7 @@ public final class MainActivity extends Activity {
                 || getIntent().getBooleanExtra("spinon_c1034_flex_baseline", false)
                 || getIntent().getBooleanExtra("spinon_c1035_positioned_flex", false)
                 || getIntent().getBooleanExtra("spinon_c122_absolute_block", false)
+                || getIntent().getBooleanExtra("spinon_c123_fixed_position", false)
                 || getIntent().getBooleanExtra("spinon_c121_static_relative", false)) {
             if (!BuildConfig.SPINON_C04_RUNTIME_GPU) {
                 TextView unavailable = new TextView(this);

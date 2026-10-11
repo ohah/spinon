@@ -48,7 +48,8 @@ pub(super) fn to_taffy_style(
             TextDirection::Rtl => TaffyDirection::Rtl,
         },
         position: match (flow_only, positioning.position) {
-            (false, LayoutPosition::Absolute) => TaffyPosition::Absolute,
+            (false, LayoutPosition::Absolute | LayoutPosition::Fixed)
+            | (true, LayoutPosition::Fixed) => TaffyPosition::Absolute,
             _ => TaffyPosition::Relative,
         },
         inset: Rect {

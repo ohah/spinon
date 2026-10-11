@@ -107,7 +107,7 @@ impl CalcLayoutTree {
             .collect::<BTreeMap<_, _>>();
         let mut viewport_children = Vec::new();
         if !flow_only {
-            reparent_absolute_children(
+            reparent_out_of_flow_children(
                 input,
                 index,
                 postorder,
@@ -296,7 +296,7 @@ impl CalcLayoutTree {
     }
 }
 
-fn reparent_absolute_children(
+fn reparent_out_of_flow_children(
     input: &LayoutInput,
     index: &BTreeMap<SpinonNodeId, usize>,
     postorder: &[SpinonNodeId],
@@ -312,14 +312,17 @@ fn reparent_absolute_children(
     }
 
     for &id in postorder {
-        if input
-            .positioning
-            .get(&id)
-            .is_none_or(|value| value.position != LayoutPosition::Absolute)
-        {
+        let Some(positioning) = input.positioning.get(&id) else {
             continue;
-        }
-        let destination = owners[&id];
+        };
+        let destination = match positioning.position {
+            LayoutPosition::Absolute => owners[&id],
+            LayoutPosition::Fixed if owners[&id] == PositionedContainingBlockOwner::NoBox => {
+                PositionedContainingBlockOwner::NoBox
+            }
+            LayoutPosition::Fixed => PositionedContainingBlockOwner::Viewport,
+            LayoutPosition::Static | LayoutPosition::Relative => continue,
+        };
         if destination == PositionedContainingBlockOwner::NoBox {
             continue;
         }
@@ -329,7 +332,7 @@ fn reparent_absolute_children(
                 .copied()
                 .ok_or(LayoutError::UnsupportedPositioning {
                     node: id,
-                    reason: "absolute 노드의 원본 부모를 찾을 수 없습니다",
+                    reason: "out-of-flow 노드의 원본 부모를 찾을 수 없습니다",
                 })?;
         let destination_parent = match destination {
             PositionedContainingBlockOwner::Viewport => None,
@@ -345,12 +348,12 @@ fn reparent_absolute_children(
                 .get_mut(&source_parent)
                 .ok_or(LayoutError::UnsupportedPositioning {
                     node: id,
-                    reason: "absolute 노드의 원본 layout parent가 없습니다",
+                    reason: "out-of-flow 노드의 원본 layout parent가 없습니다",
                 })?;
         let Some(source_position) = source_children.iter().position(|&child| child == id) else {
             return Err(LayoutError::UnsupportedPositioning {
                 node: id,
-                reason: "absolute 노드를 원본 layout parent에서 찾을 수 없습니다",
+                reason: "out-of-flow 노드를 원본 layout parent에서 찾을 수 없습니다",
             });
         };
         source_children.remove(source_position);
@@ -359,7 +362,7 @@ fn reparent_absolute_children(
                 .get_mut(&owner)
                 .ok_or(LayoutError::UnsupportedPositioning {
                     node: id,
-                    reason: "absolute containing block owner가 layout graph에 없습니다",
+                    reason: "positioned containing block owner가 layout graph에 없습니다",
                 })?
                 .push(id);
         } else {

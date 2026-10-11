@@ -1,0 +1,442 @@
+--------- beginning of main
+10-11 10:55:04.472 24964 24964 I SpinonBootstrap: SPINON_C0410_SURFACE_CREATED generation=1
+10-11 10:55:04.473 24964 24964 I SpinonBootstrap: SPINON_C0410_SURFACE_CHANGED generation=2 size=900x675 changed=true
+10-11 10:55:04.484 24964 25014 I SpinonBootstrap: SPINON_C123_HOST=session=ready owner_tid=25017 isolate_per_session=1 queue_capacity=64 queue_policy=strict-priority-fifo css_worker_per_session=1 css_worker_ready_us=709 session_startup_us=8500
+10-11 10:55:04.484 24964 25014 I SpinonBootstrap: SPINON_C0410_ENVIRONMENT status=0 environment_revision=0 layout=empty boxes=0 generation=1 document_revision=0 render_tree_revision=0 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=0 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 node_frames_css_px=[]
+10-11 10:55:04.484 24964 25014 I SpinonBootstrap: SPINON_C0410_ENVIRONMENT viewport=360.0x800.0 scale=1.0 dark=true status=0 environment_revision=0 layout=empty boxes=0 generation=1 document_revision=0 render_tree_revision=0 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=0 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 node_frames_css_px=[]
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_EVAL status=0 seq=1 trace_cookie=1 op=eval status=0 caller_tid=25014 owner_tid=25017 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=39 v8_call_us=9225 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=168 render_tree_revision=1 document_nodes=28 document_string_units=5999 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=28 document_collection_live_handles=28 document_collection_empty_handles=0 document_collection_last_scan_start_ns=1614626829787869 document_collection_last_scan_us=45 document_collection_wrapper_root_buffer_bytes=128 document_collection_reclaimed_node_buffer_bytes=112 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=14 ua_snapshot_submit_us=20 ua_snapshot_submitted=true enqueue_total_us=29 response_wait_us=9315 submit_total_us=9345 response_report_append_us=2 layout=
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 0:node=1,x=0,y=0,width=360,height=3600
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 1:node=2,x=0,y=0,width=320,height=64
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 2:node=3,x=17,y=11,width=30,height=20
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 3:node=4,x=319,y=770,width=33,height=21
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 4:node=5,x=90,y=80,width=40,height=18
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 5:node=6,x=21,y=21,width=25,height=14
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 6:node=7,x=-5,y=797,width=12,height=10
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 7:node=8,x=20,y=120,width=315,height=530
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 8:node=9,x=10,y=170,width=150,height=18
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 9:node=10,x=308,y=220,width=32,height=14
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 10:node=26,x=0,y=0,width=8,height=8
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 11:node=27,x=35,y=43,width=30,height=20
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 12:node=28,x=50,y=60,width=40,height=20
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 13:node=11,x=0,y=64,width=320,height=64
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 14:node=12,x=0,y=64,width=200,height=32
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 15:node=13,x=41,y=31,width=24,height=12
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 16:node=14,x=0,y=128,width=320,height=64
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 17:node=15,x=40,y=132,width=180,height=28
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 18:node=16,x=51,y=41,width=24,height=12
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 19:node=17,x=35,y=500,width=180,height=28
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 20:node=18,x=61,y=51,width=24,height=12
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 21:node=19,x=0,y=192,width=320,height=64
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 22:node=20,x=210,y=250,width=110,height=70
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 23:node=21,x=217,y=259,width=20,height=10
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 24:node=22,x=15,y=12,width=12,height=8
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 25:node=23,x=0,y=256,width=320,height=64
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 26:node=24,x=0,y=0,width=0,height=0
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME 27:node=25,x=0,y=0,width=0,height=0
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_EVAL status=0 seq=1 trace_cookie=1 op=eval status=0 caller_tid=25014 owner_tid=25017 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=39 v8_call_us=9225 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=168 render_tree_revision=1 document_nodes=28 document_string_units=5999 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=28 document_collection_live_handles=28 document_collection_empty_handles=0 document_collection_last_scan_start_ns=1614626829787869 document_collection_last_scan_us=45 document_collection_wrapper_root_buffer_bytes=128 document_collection_reclaimed_node_buffer_bytes=112 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=14 ua_snapshot_submit_us=20 ua_snapshot_submitted=true enqueue_total_us=29 response_wait_us=9315 submit_total_us=9345 response_report_append_us=2 layout=ready boxes=26 generation=1 document_revision=168 render_tree_revision=1 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=28 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=360x3600 render_viewport_css_px=360x800 render_root_css_px=360x3600 node_frames_css_px=[0:node=1,x=0,y=0,width=360,height=3600;1:node=2,x=0,y=0,width=320,height=64;2:node=3,x=17,y=11,width=30,height=20;3:node=4,x=319,y=770,width=33,height=21;4:node=5,x=90,y=80,width=40,height=18;5:node=6,x=21,y=21,width=25,height=14;6:node=7,x=-5,y=797,width=12,height=10;7:node=8,x=20,y=120,width=315,height=530;8:node=9,x=10,y=170,width=150,height=18;9:node=10,x=308,y=220,width=32,height=14;10:node=26,x=0,y=0,width=8,height=8;11:node=27,x=35,y=43,width=30,height=20;12:node=28,x=50,y=60,width=40,height=20;13:node=11,x=0,y=64,width=320,height=64;14:node=12,x=0,y=64,width=200,height=32;15:node=13,x=41,y=31,width=24,height=12;16:node=14,x=0,y=128,width=320,height=64;17:node=15,x=40,y=132,width=180,height=28;18:node=16,x=51,y=41,width=24,height=12;19:node=17,x=35,y=500,width=180,height=28;20:node=18,x=61,y=51,width=24,height=12;21:node=19,x=0,y=192,width=320,height=64;22:node=20,x=210,y=250,width=110,height=70;23:node=21,x=217,y=259,width=20,height=10;24:node=22,x=15,y=12,width=12,height=8;25:node=23,x=0,y=256,width=320,height=64;26:node=24,x=0,y=0,width=0,height=0;27:node=25,x=0,y=0,width=0,height=0]
+10-11 10:55:04.499 24964 25014 I SpinonBootstrap: SPINON_C123_SUMMARY state=matrix-360x800-dpr-1 status=0 layout=ready boxes=26 generation=1 document_revision=168 environment_revision=0
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 0:node=1,x=0,y=0,width=360,height=3600
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 1:node=2,x=0,y=0,width=320,height=64
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 2:node=3,x=17,y=11,width=30,height=20
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 3:node=4,x=319,y=770,width=33,height=21
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 4:node=5,x=90,y=80,width=40,height=18
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 5:node=6,x=21,y=21,width=25,height=14
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 6:node=7,x=-5,y=797,width=12,height=10
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 7:node=8,x=20,y=120,width=315,height=530
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 8:node=9,x=10,y=170,width=150,height=18
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 9:node=10,x=308,y=220,width=32,height=14
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 10:node=26,x=0,y=0,width=8,height=8
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 11:node=27,x=35,y=43,width=30,height=20
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 12:node=28,x=50,y=60,width=40,height=20
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 13:node=11,x=0,y=64,width=320,height=64
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 14:node=12,x=0,y=64,width=200,height=32
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 15:node=13,x=41,y=31,width=24,height=12
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 16:node=14,x=0,y=128,width=320,height=64
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 17:node=15,x=40,y=132,width=180,height=28
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 18:node=16,x=51,y=41,width=24,height=12
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 19:node=17,x=35,y=500,width=180,height=28
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 20:node=18,x=61,y=51,width=24,height=12
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 21:node=19,x=0,y=192,width=320,height=64
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 22:node=20,x=210,y=250,width=110,height=70
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 23:node=21,x=217,y=259,width=20,height=10
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 24:node=22,x=15,y=12,width=12,height=8
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 25:node=23,x=0,y=256,width=320,height=64
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 26:node=24,x=0,y=0,width=0,height=0
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-1 27:node=25,x=0,y=0,width=0,height=0
+10-11 10:55:04.500 24964 25014 I SpinonBootstrap: SPINON_C123_FRAME_SUMMARY state=matrix-360x800-dpr-1 frames=28 marker=present
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C0410_ENVIRONMENT status=0 environment_revision=1 layout=ready boxes=26 generation=1 document_revision=168 render_tree_revision=1 style_revision=0 environment_revision=1 cacheHit=false cascadeRecomputedStyleElements=28 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=360x3600 render_viewport_css_px=360x800 render_root_css_px=360x3600 node_frames_css_px=[0:node=1,x=0,y=0,width=360,height=3600;1:node=2,x=0,y=0,width=320,height=64;2:node=3,x=17,y=11,width=30,height=20;3:node=4,x=319,y=770,width=33,height=21;4:node=5,x=90,y=80,width=40,height=18;5:node=6,x=21,y=21,width=25,height=14;6:node=7,x=-5,y=797,width=12,height=10;7:node=8,x=20,y=120,width=315,height=530;8:node=9,x=10,y=170,width=150,height=18;9:node=10,x=308,y=220,width=32,height=14;10:node=26,x=0,y=0,width=8,height=8;11:node=27,x=35,y=43,width=30,height=20;12:node=28,x=50,y=60,width=40,height=20;13:node=11,x=0,y=64,width=320,height=64;14:node=12,x=0,y=64,width=200,height=32;15:node=13,x=41,y=31,width=24,height=12;16:no
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_SUMMARY state=matrix-360x800-dpr-2 viewport=360.0x800.0 scale=2.0 status=0 layout=ready boxes=26 generation=1 document_revision=168 environment_revision=1
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 0:node=1,x=0,y=0,width=360,height=3600
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 1:node=2,x=0,y=0,width=320,height=64
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 2:node=3,x=17,y=11,width=30,height=20
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 3:node=4,x=319,y=770,width=33,height=21
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 4:node=5,x=90,y=80,width=40,height=18
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 5:node=6,x=21,y=21,width=25,height=14
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 6:node=7,x=-5,y=797,width=12,height=10
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 7:node=8,x=20,y=120,width=315,height=530
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 8:node=9,x=10,y=170,width=150,height=18
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 9:node=10,x=308,y=220,width=32,height=14
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 10:node=26,x=0,y=0,width=8,height=8
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 11:node=27,x=35,y=43,width=30,height=20
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 12:node=28,x=50,y=60,width=40,height=20
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 13:node=11,x=0,y=64,width=320,height=64
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 14:node=12,x=0,y=64,width=200,height=32
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 15:node=13,x=41,y=31,width=24,height=12
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 16:node=14,x=0,y=128,width=320,height=64
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 17:node=15,x=40,y=132,width=180,height=28
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 18:node=16,x=51,y=41,width=24,height=12
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 19:node=17,x=35,y=500,width=180,height=28
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 20:node=18,x=61,y=51,width=24,height=12
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 21:node=19,x=0,y=192,width=320,height=64
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 22:node=20,x=210,y=250,width=110,height=70
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 23:node=21,x=217,y=259,width=20,height=10
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 24:node=22,x=15,y=12,width=12,height=8
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 25:node=23,x=0,y=256,width=320,height=64
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 26:node=24,x=0,y=0,width=0,height=0
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2 27:node=25,x=0,y=0,width=0,height=0
+10-11 10:55:04.503 24964 25014 I SpinonBootstrap: SPINON_C123_FRAME_SUMMARY state=matrix-360x800-dpr-2 frames=28 marker=present
+10-11 10:55:04.505 24964 25014 I SpinonBootstrap: SPINON_C0410_ENVIRONMENT status=0 environment_revision=2 layout=ready boxes=26 generation=1 document_revision=168 render_tree_revision=1 style_revision=0 environment_revision=2 cacheHit=false cascadeRecomputedStyleElements=28 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=360x3600 render_viewport_css_px=360x800 render_root_css_px=360x3600 node_frames_css_px=[0:node=1,x=0,y=0,width=360,height=3600;1:node=2,x=0,y=0,width=320,height=64;2:node=3,x=17,y=11,width=30,height=20;3:node=4,x=319,y=770,width=33,height=21;4:node=5,x=90,y=80,width=40,height=18;5:node=6,x=21,y=21,width=25,height=14;6:node=7,x=-5,y=797,width=12,height=10;7:node=8,x=20,y=120,width=315,height=530;8:node=9,x=10,y=170,width=150,height=18;9:node=10,x=308,y=220,width=32,height=14;10:node=26,x=0,y=0,width=8,height=8;11:node=27,x=35,y=43,width=30,height=20;12:node=28,x=50,y=60,width=40,height=20;13:node=11,x=0,y=64,width=320,height=64;14:node=12,x=0,y=64,width=200,height=32;15:node=13,x=41,y=31,width=24,height=12;16:no
+10-11 10:55:04.506 24964 25014 I SpinonBootstrap: SPINON_C123_SUMMARY state=matrix-360x800-dpr-2.625 viewport=360.0x800.0 scale=2.625 status=0 layout=ready boxes=26 generation=1 document_revision=168 environment_revision=2
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 0:node=1,x=0,y=0,width=360,height=3600
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 1:node=2,x=0,y=0,width=320,height=64
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 2:node=3,x=17,y=11,width=30,height=20
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 3:node=4,x=319,y=770,width=33,height=21
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 4:node=5,x=90,y=80,width=40,height=18
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 5:node=6,x=21,y=21,width=25,height=14
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 6:node=7,x=-5,y=797,width=12,height=10
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 7:node=8,x=20,y=120,width=315,height=530
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 8:node=9,x=10,y=170,width=150,height=18
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 9:node=10,x=308,y=220,width=32,height=14
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 10:node=26,x=0,y=0,width=8,height=8
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 11:node=27,x=35,y=43,width=30,height=20
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 12:node=28,x=50,y=60,width=40,height=20
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 13:node=11,x=0,y=64,width=320,height=64
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 14:node=12,x=0,y=64,width=200,height=32
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 15:node=13,x=41,y=31,width=24,height=12
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 16:node=14,x=0,y=128,width=320,height=64
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 17:node=15,x=40,y=132,width=180,height=28
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 18:node=16,x=51,y=41,width=24,height=12
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 19:node=17,x=35,y=500,width=180,height=28
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 20:node=18,x=61,y=51,width=24,height=12
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 21:node=19,x=0,y=192,width=320,height=64
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 22:node=20,x=210,y=250,width=110,height=70
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 23:node=21,x=217,y=259,width=20,height=10
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 24:node=22,x=15,y=12,width=12,height=8
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 25:node=23,x=0,y=256,width=320,height=64
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 26:node=24,x=0,y=0,width=0,height=0
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-2.625 27:node=25,x=0,y=0,width=0,height=0
+10-11 10:55:04.507 24964 25014 I SpinonBootstrap: SPINON_C123_FRAME_SUMMARY state=matrix-360x800-dpr-2.625 frames=28 marker=present
+10-11 10:55:04.516 24964 25014 I SpinonBootstrap: SPINON_C0410_ENVIRONMENT status=0 environment_revision=3 layout=ready boxes=26 generation=1 document_revision=168 render_tree_revision=1 style_revision=0 environment_revision=3 cacheHit=false cascadeRecomputedStyleElements=28 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=360x3600 render_viewport_css_px=360x800 render_root_css_px=360x3600 node_frames_css_px=[0:node=1,x=0,y=0,width=360,height=3600;1:node=2,x=0,y=0,width=320,height=64;2:node=3,x=17,y=11,width=30,height=20;3:node=4,x=319,y=770,width=33,height=21;4:node=5,x=90,y=80,width=40,height=18;5:node=6,x=21,y=21,width=25,height=14;6:node=7,x=-5,y=797,width=12,height=10;7:node=8,x=20,y=120,width=315,height=530;8:node=9,x=10,y=170,width=150,height=18;9:node=10,x=308,y=220,width=32,height=14;10:node=26,x=0,y=0,width=8,height=8;11:node=27,x=35,y=43,width=30,height=20;12:node=28,x=50,y=60,width=40,height=20;13:node=11,x=0,y=64,width=320,height=64;14:node=12,x=0,y=64,width=200,height=32;15:node=13,x=41,y=31,width=24,height=12;16:no
+10-11 10:55:04.516 24964 25014 I SpinonBootstrap: SPINON_C123_SUMMARY state=matrix-360x800-dpr-3 viewport=360.0x800.0 scale=3.0 status=0 layout=ready boxes=26 generation=1 document_revision=168 environment_revision=3
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 0:node=1,x=0,y=0,width=360,height=3600
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 1:node=2,x=0,y=0,width=320,height=64
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 2:node=3,x=17,y=11,width=30,height=20
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 3:node=4,x=319,y=770,width=33,height=21
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 4:node=5,x=90,y=80,width=40,height=18
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 5:node=6,x=21,y=21,width=25,height=14
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 6:node=7,x=-5,y=797,width=12,height=10
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 7:node=8,x=20,y=120,width=315,height=530
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 8:node=9,x=10,y=170,width=150,height=18
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 9:node=10,x=308,y=220,width=32,height=14
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 10:node=26,x=0,y=0,width=8,height=8
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 11:node=27,x=35,y=43,width=30,height=20
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 12:node=28,x=50,y=60,width=40,height=20
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 13:node=11,x=0,y=64,width=320,height=64
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 14:node=12,x=0,y=64,width=200,height=32
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 15:node=13,x=41,y=31,width=24,height=12
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 16:node=14,x=0,y=128,width=320,height=64
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 17:node=15,x=40,y=132,width=180,height=28
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 18:node=16,x=51,y=41,width=24,height=12
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 19:node=17,x=35,y=500,width=180,height=28
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 20:node=18,x=61,y=51,width=24,height=12
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 21:node=19,x=0,y=192,width=320,height=64
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 22:node=20,x=210,y=250,width=110,height=70
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 23:node=21,x=217,y=259,width=20,height=10
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 24:node=22,x=15,y=12,width=12,height=8
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 25:node=23,x=0,y=256,width=320,height=64
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 26:node=24,x=0,y=0,width=0,height=0
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-360x800-dpr-3 27:node=25,x=0,y=0,width=0,height=0
+10-11 10:55:04.517 24964 25014 I SpinonBootstrap: SPINON_C123_FRAME_SUMMARY state=matrix-360x800-dpr-3 frames=28 marker=present
+10-11 10:55:04.519 24964 25014 I SpinonBootstrap: SPINON_C0410_ENVIRONMENT status=0 environment_revision=4 layout=ready boxes=26 generation=1 document_revision=168 render_tree_revision=1 style_revision=0 environment_revision=4 cacheHit=false cascadeRecomputedStyleElements=28 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=390x3600 render_viewport_css_px=390x844 render_root_css_px=390x3600 node_frames_css_px=[0:node=1,x=0,y=0,width=390,height=3600;1:node=2,x=0,y=0,width=320,height=64;2:node=3,x=17,y=11,width=30,height=20;3:node=4,x=349,y=814,width=33,height=21;4:node=5,x=97.5,y=84.4,width=40,height=18;5:node=6,x=22.5,y=21.866667,width=25,height=14;6:node=7,x=-5,y=841,width=12,height=10;7:node=8,x=20,y=120,width=345,height=574;8:node=9,x=10,y=170,width=150,height=18;9:node=10,x=338,y=220,width=32,height=14;10:node=26,x=0,y=0,width=8,height=8;11:node=27,x=35,y=43,width=30,height=20;12:node=28,x=50,y=60,width=40,height=20;13:node=11,x=0,y=64,width=320,height=64;14:node=12,x=0,y=64,width=200,height=32;15:node=13,x=41,y=31,width=24,he
+10-11 10:55:04.519 24964 25014 I SpinonBootstrap: SPINON_C123_SUMMARY state=matrix-390x844-dpr-1 viewport=390.0x844.0 scale=1.0 status=0 layout=ready boxes=26 generation=1 document_revision=168 environment_revision=4
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 0:node=1,x=0,y=0,width=390,height=3600
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 1:node=2,x=0,y=0,width=320,height=64
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 2:node=3,x=17,y=11,width=30,height=20
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 3:node=4,x=349,y=814,width=33,height=21
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 4:node=5,x=97.5,y=84.4,width=40,height=18
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 5:node=6,x=22.5,y=21.866667,width=25,height=14
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 6:node=7,x=-5,y=841,width=12,height=10
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 7:node=8,x=20,y=120,width=345,height=574
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 8:node=9,x=10,y=170,width=150,height=18
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 9:node=10,x=338,y=220,width=32,height=14
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 10:node=26,x=0,y=0,width=8,height=8
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 11:node=27,x=35,y=43,width=30,height=20
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 12:node=28,x=50,y=60,width=40,height=20
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 13:node=11,x=0,y=64,width=320,height=64
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 14:node=12,x=0,y=64,width=200,height=32
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 15:node=13,x=41,y=31,width=24,height=12
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 16:node=14,x=0,y=128,width=320,height=64
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 17:node=15,x=40,y=132,width=180,height=28
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 18:node=16,x=51,y=41,width=24,height=12
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 19:node=17,x=35,y=500,width=180,height=28
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 20:node=18,x=61,y=51,width=24,height=12
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 21:node=19,x=0,y=192,width=320,height=64
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 22:node=20,x=210,y=250,width=110,height=70
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 23:node=21,x=217,y=259,width=20,height=10
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 24:node=22,x=15,y=12,width=12,height=8
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 25:node=23,x=0,y=256,width=320,height=64
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 26:node=24,x=0,y=0,width=0,height=0
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-1 27:node=25,x=0,y=0,width=0,height=0
+10-11 10:55:04.520 24964 25014 I SpinonBootstrap: SPINON_C123_FRAME_SUMMARY state=matrix-390x844-dpr-1 frames=28 marker=present
+10-11 10:55:04.522 24964 25014 I SpinonBootstrap: SPINON_C0410_ENVIRONMENT status=0 environment_revision=5 layout=ready boxes=26 generation=1 document_revision=168 render_tree_revision=1 style_revision=0 environment_revision=5 cacheHit=false cascadeRecomputedStyleElements=28 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=390x3600 render_viewport_css_px=390x844 render_root_css_px=390x3600 node_frames_css_px=[0:node=1,x=0,y=0,width=390,height=3600;1:node=2,x=0,y=0,width=320,height=64;2:node=3,x=17,y=11,width=30,height=20;3:node=4,x=349,y=814,width=33,height=21;4:node=5,x=97.5,y=84.4,width=40,height=18;5:node=6,x=22.5,y=21.866667,width=25,height=14;6:node=7,x=-5,y=841,width=12,height=10;7:node=8,x=20,y=120,width=345,height=574;8:node=9,x=10,y=170,width=150,height=18;9:node=10,x=338,y=220,width=32,height=14;10:node=26,x=0,y=0,width=8,height=8;11:node=27,x=35,y=43,width=30,height=20;12:node=28,x=50,y=60,width=40,height=20;13:node=11,x=0,y=64,width=320,height=64;14:node=12,x=0,y=64,width=200,height=32;15:node=13,x=41,y=31,width=24,he
+10-11 10:55:04.522 24964 25014 I SpinonBootstrap: SPINON_C123_SUMMARY state=matrix-390x844-dpr-2 viewport=390.0x844.0 scale=2.0 status=0 layout=ready boxes=26 generation=1 document_revision=168 environment_revision=5
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 0:node=1,x=0,y=0,width=390,height=3600
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 1:node=2,x=0,y=0,width=320,height=64
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 2:node=3,x=17,y=11,width=30,height=20
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 3:node=4,x=349,y=814,width=33,height=21
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 4:node=5,x=97.5,y=84.4,width=40,height=18
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 5:node=6,x=22.5,y=21.866667,width=25,height=14
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 6:node=7,x=-5,y=841,width=12,height=10
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 7:node=8,x=20,y=120,width=345,height=574
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 8:node=9,x=10,y=170,width=150,height=18
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 9:node=10,x=338,y=220,width=32,height=14
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 10:node=26,x=0,y=0,width=8,height=8
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 11:node=27,x=35,y=43,width=30,height=20
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 12:node=28,x=50,y=60,width=40,height=20
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 13:node=11,x=0,y=64,width=320,height=64
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 14:node=12,x=0,y=64,width=200,height=32
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 15:node=13,x=41,y=31,width=24,height=12
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 16:node=14,x=0,y=128,width=320,height=64
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 17:node=15,x=40,y=132,width=180,height=28
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 18:node=16,x=51,y=41,width=24,height=12
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 19:node=17,x=35,y=500,width=180,height=28
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 20:node=18,x=61,y=51,width=24,height=12
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 21:node=19,x=0,y=192,width=320,height=64
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 22:node=20,x=210,y=250,width=110,height=70
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 23:node=21,x=217,y=259,width=20,height=10
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 24:node=22,x=15,y=12,width=12,height=8
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 25:node=23,x=0,y=256,width=320,height=64
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 26:node=24,x=0,y=0,width=0,height=0
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2 27:node=25,x=0,y=0,width=0,height=0
+10-11 10:55:04.523 24964 25014 I SpinonBootstrap: SPINON_C123_FRAME_SUMMARY state=matrix-390x844-dpr-2 frames=28 marker=present
+10-11 10:55:04.526 24964 25014 I SpinonBootstrap: SPINON_C0410_ENVIRONMENT status=0 environment_revision=6 layout=ready boxes=26 generation=1 document_revision=168 render_tree_revision=1 style_revision=0 environment_revision=6 cacheHit=false cascadeRecomputedStyleElements=28 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=390x3600 render_viewport_css_px=390x844 render_root_css_px=390x3600 node_frames_css_px=[0:node=1,x=0,y=0,width=390,height=3600;1:node=2,x=0,y=0,width=320,height=64;2:node=3,x=17,y=11,width=30,height=20;3:node=4,x=349,y=814,width=33,height=21;4:node=5,x=97.5,y=84.4,width=40,height=18;5:node=6,x=22.5,y=21.866667,width=25,height=14;6:node=7,x=-5,y=841,width=12,height=10;7:node=8,x=20,y=120,width=345,height=574;8:node=9,x=10,y=170,width=150,height=18;9:node=10,x=338,y=220,width=32,height=14;10:node=26,x=0,y=0,width=8,height=8;11:node=27,x=35,y=43,width=30,height=20;12:node=28,x=50,y=60,width=40,height=20;13:node=11,x=0,y=64,width=320,height=64;14:node=12,x=0,y=64,width=200,height=32;15:node=13,x=41,y=31,width=24,he
+10-11 10:55:04.526 24964 25014 I SpinonBootstrap: SPINON_C123_SUMMARY state=matrix-390x844-dpr-2.625 viewport=390.0x844.0 scale=2.625 status=0 layout=ready boxes=26 generation=1 document_revision=168 environment_revision=6
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 0:node=1,x=0,y=0,width=390,height=3600
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 1:node=2,x=0,y=0,width=320,height=64
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 2:node=3,x=17,y=11,width=30,height=20
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 3:node=4,x=349,y=814,width=33,height=21
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 4:node=5,x=97.5,y=84.4,width=40,height=18
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 5:node=6,x=22.5,y=21.866667,width=25,height=14
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 6:node=7,x=-5,y=841,width=12,height=10
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 7:node=8,x=20,y=120,width=345,height=574
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 8:node=9,x=10,y=170,width=150,height=18
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 9:node=10,x=338,y=220,width=32,height=14
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 10:node=26,x=0,y=0,width=8,height=8
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 11:node=27,x=35,y=43,width=30,height=20
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 12:node=28,x=50,y=60,width=40,height=20
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 13:node=11,x=0,y=64,width=320,height=64
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 14:node=12,x=0,y=64,width=200,height=32
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 15:node=13,x=41,y=31,width=24,height=12
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 16:node=14,x=0,y=128,width=320,height=64
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 17:node=15,x=40,y=132,width=180,height=28
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 18:node=16,x=51,y=41,width=24,height=12
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 19:node=17,x=35,y=500,width=180,height=28
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 20:node=18,x=61,y=51,width=24,height=12
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 21:node=19,x=0,y=192,width=320,height=64
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 22:node=20,x=210,y=250,width=110,height=70
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 23:node=21,x=217,y=259,width=20,height=10
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 24:node=22,x=15,y=12,width=12,height=8
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 25:node=23,x=0,y=256,width=320,height=64
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 26:node=24,x=0,y=0,width=0,height=0
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-2.625 27:node=25,x=0,y=0,width=0,height=0
+10-11 10:55:04.527 24964 25014 I SpinonBootstrap: SPINON_C123_FRAME_SUMMARY state=matrix-390x844-dpr-2.625 frames=28 marker=present
+10-11 10:55:04.529 24964 25014 I SpinonBootstrap: SPINON_C0410_ENVIRONMENT status=0 environment_revision=7 layout=ready boxes=26 generation=1 document_revision=168 render_tree_revision=1 style_revision=0 environment_revision=7 cacheHit=false cascadeRecomputedStyleElements=28 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=390x3600 render_viewport_css_px=390x844 render_root_css_px=390x3600 node_frames_css_px=[0:node=1,x=0,y=0,width=390,height=3600;1:node=2,x=0,y=0,width=320,height=64;2:node=3,x=17,y=11,width=30,height=20;3:node=4,x=349,y=814,width=33,height=21;4:node=5,x=97.5,y=84.4,width=40,height=18;5:node=6,x=22.5,y=21.866667,width=25,height=14;6:node=7,x=-5,y=841,width=12,height=10;7:node=8,x=20,y=120,width=345,height=574;8:node=9,x=10,y=170,width=150,height=18;9:node=10,x=338,y=220,width=32,height=14;10:node=26,x=0,y=0,width=8,height=8;11:node=27,x=35,y=43,width=30,height=20;12:node=28,x=50,y=60,width=40,height=20;13:node=11,x=0,y=64,width=320,height=64;14:node=12,x=0,y=64,width=200,height=32;15:node=13,x=41,y=31,width=24,he
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_SUMMARY state=matrix-390x844-dpr-3 viewport=390.0x844.0 scale=3.0 status=0 layout=ready boxes=26 generation=1 document_revision=168 environment_revision=7
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 0:node=1,x=0,y=0,width=390,height=3600
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 1:node=2,x=0,y=0,width=320,height=64
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 2:node=3,x=17,y=11,width=30,height=20
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 3:node=4,x=349,y=814,width=33,height=21
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 4:node=5,x=97.5,y=84.4,width=40,height=18
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 5:node=6,x=22.5,y=21.866667,width=25,height=14
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 6:node=7,x=-5,y=841,width=12,height=10
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 7:node=8,x=20,y=120,width=345,height=574
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 8:node=9,x=10,y=170,width=150,height=18
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 9:node=10,x=338,y=220,width=32,height=14
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 10:node=26,x=0,y=0,width=8,height=8
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 11:node=27,x=35,y=43,width=30,height=20
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 12:node=28,x=50,y=60,width=40,height=20
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 13:node=11,x=0,y=64,width=320,height=64
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 14:node=12,x=0,y=64,width=200,height=32
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 15:node=13,x=41,y=31,width=24,height=12
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 16:node=14,x=0,y=128,width=320,height=64
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 17:node=15,x=40,y=132,width=180,height=28
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 18:node=16,x=51,y=41,width=24,height=12
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 19:node=17,x=35,y=500,width=180,height=28
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 20:node=18,x=61,y=51,width=24,height=12
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 21:node=19,x=0,y=192,width=320,height=64
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 22:node=20,x=210,y=250,width=110,height=70
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 23:node=21,x=217,y=259,width=20,height=10
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 24:node=22,x=15,y=12,width=12,height=8
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 25:node=23,x=0,y=256,width=320,height=64
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 26:node=24,x=0,y=0,width=0,height=0
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=matrix-390x844-dpr-3 27:node=25,x=0,y=0,width=0,height=0
+10-11 10:55:04.530 24964 25014 I SpinonBootstrap: SPINON_C123_FRAME_SUMMARY state=matrix-390x844-dpr-3 frames=28 marker=present
+10-11 10:55:04.532 24964 25014 I SpinonBootstrap: SPINON_C0410_ENVIRONMENT status=0 environment_revision=8 layout=ready boxes=26 generation=1 document_revision=168 render_tree_revision=1 style_revision=0 environment_revision=8 cacheHit=false cascadeRecomputedStyleElements=28 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=360x3600 render_viewport_css_px=360x800 render_root_css_px=360x3600 node_frames_css_px=[0:node=1,x=0,y=0,width=360,height=3600;1:node=2,x=0,y=0,width=320,height=64;2:node=3,x=17,y=11,width=30,height=20;3:node=4,x=319,y=770,width=33,height=21;4:node=5,x=90,y=80,width=40,height=18;5:node=6,x=21,y=21,width=25,height=14;6:node=7,x=-5,y=797,width=12,height=10;7:node=8,x=20,y=120,width=315,height=530;8:node=9,x=10,y=170,width=150,height=18;9:node=10,x=308,y=220,width=32,height=14;10:node=26,x=0,y=0,width=8,height=8;11:node=27,x=35,y=43,width=30,height=20;12:node=28,x=50,y=60,width=40,height=20;13:node=11,x=0,y=64,width=320,height=64;14:node=12,x=0,y=64,width=200,height=32;15:node=13,x=41,y=31,width=24,height=12;16:no
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_SUMMARY state=resize-start viewport=360.0x800.0 scale=1.0 status=0 layout=ready boxes=26 generation=1 document_revision=168 environment_revision=8
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 0:node=1,x=0,y=0,width=360,height=3600
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 1:node=2,x=0,y=0,width=320,height=64
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 2:node=3,x=17,y=11,width=30,height=20
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 3:node=4,x=319,y=770,width=33,height=21
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 4:node=5,x=90,y=80,width=40,height=18
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 5:node=6,x=21,y=21,width=25,height=14
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 6:node=7,x=-5,y=797,width=12,height=10
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 7:node=8,x=20,y=120,width=315,height=530
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 8:node=9,x=10,y=170,width=150,height=18
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 9:node=10,x=308,y=220,width=32,height=14
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 10:node=26,x=0,y=0,width=8,height=8
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 11:node=27,x=35,y=43,width=30,height=20
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 12:node=28,x=50,y=60,width=40,height=20
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 13:node=11,x=0,y=64,width=320,height=64
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 14:node=12,x=0,y=64,width=200,height=32
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 15:node=13,x=41,y=31,width=24,height=12
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 16:node=14,x=0,y=128,width=320,height=64
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 17:node=15,x=40,y=132,width=180,height=28
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 18:node=16,x=51,y=41,width=24,height=12
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 19:node=17,x=35,y=500,width=180,height=28
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 20:node=18,x=61,y=51,width=24,height=12
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 21:node=19,x=0,y=192,width=320,height=64
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 22:node=20,x=210,y=250,width=110,height=70
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 23:node=21,x=217,y=259,width=20,height=10
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 24:node=22,x=15,y=12,width=12,height=8
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 25:node=23,x=0,y=256,width=320,height=64
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 26:node=24,x=0,y=0,width=0,height=0
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-start 27:node=25,x=0,y=0,width=0,height=0
+10-11 10:55:04.533 24964 25014 I SpinonBootstrap: SPINON_C123_FRAME_SUMMARY state=resize-start frames=28 marker=present
+10-11 10:55:04.536 24964 25014 I SpinonBootstrap: SPINON_C0410_ENVIRONMENT status=0 environment_revision=9 layout=ready boxes=26 generation=1 document_revision=168 render_tree_revision=1 style_revision=0 environment_revision=9 cacheHit=false cascadeRecomputedStyleElements=28 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=390x3600 render_viewport_css_px=390x844 render_root_css_px=390x3600 node_frames_css_px=[0:node=1,x=0,y=0,width=390,height=3600;1:node=2,x=0,y=0,width=320,height=64;2:node=3,x=17,y=11,width=30,height=20;3:node=4,x=349,y=814,width=33,height=21;4:node=5,x=97.5,y=84.4,width=40,height=18;5:node=6,x=22.5,y=21.866667,width=25,height=14;6:node=7,x=-5,y=841,width=12,height=10;7:node=8,x=20,y=120,width=345,height=574;8:node=9,x=10,y=170,width=150,height=18;9:node=10,x=338,y=220,width=32,height=14;10:node=26,x=0,y=0,width=8,height=8;11:node=27,x=35,y=43,width=30,height=20;12:node=28,x=50,y=60,width=40,height=20;13:node=11,x=0,y=64,width=320,height=64;14:node=12,x=0,y=64,width=200,height=32;15:node=13,x=41,y=31,width=24,he
+10-11 10:55:04.536 24964 25014 I SpinonBootstrap: SPINON_C123_SUMMARY state=resize-outbound viewport=390.0x844.0 scale=1.0 status=0 layout=ready boxes=26 generation=1 document_revision=168 environment_revision=9
+10-11 10:55:04.536 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 0:node=1,x=0,y=0,width=390,height=3600
+10-11 10:55:04.536 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 1:node=2,x=0,y=0,width=320,height=64
+10-11 10:55:04.536 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 2:node=3,x=17,y=11,width=30,height=20
+10-11 10:55:04.536 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 3:node=4,x=349,y=814,width=33,height=21
+10-11 10:55:04.536 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 4:node=5,x=97.5,y=84.4,width=40,height=18
+10-11 10:55:04.536 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 5:node=6,x=22.5,y=21.866667,width=25,height=14
+10-11 10:55:04.536 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 6:node=7,x=-5,y=841,width=12,height=10
+10-11 10:55:04.536 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 7:node=8,x=20,y=120,width=345,height=574
+10-11 10:55:04.536 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 8:node=9,x=10,y=170,width=150,height=18
+10-11 10:55:04.536 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 9:node=10,x=338,y=220,width=32,height=14
+10-11 10:55:04.536 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 10:node=26,x=0,y=0,width=8,height=8
+10-11 10:55:04.536 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 11:node=27,x=35,y=43,width=30,height=20
+10-11 10:55:04.536 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 12:node=28,x=50,y=60,width=40,height=20
+10-11 10:55:04.536 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 13:node=11,x=0,y=64,width=320,height=64
+10-11 10:55:04.536 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 14:node=12,x=0,y=64,width=200,height=32
+10-11 10:55:04.536 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 15:node=13,x=41,y=31,width=24,height=12
+10-11 10:55:04.536 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 16:node=14,x=0,y=128,width=320,height=64
+10-11 10:55:04.536 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 17:node=15,x=40,y=132,width=180,height=28
+10-11 10:55:04.536 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 18:node=16,x=51,y=41,width=24,height=12
+10-11 10:55:04.536 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 19:node=17,x=35,y=500,width=180,height=28
+10-11 10:55:04.536 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 20:node=18,x=61,y=51,width=24,height=12
+10-11 10:55:04.536 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 21:node=19,x=0,y=192,width=320,height=64
+10-11 10:55:04.536 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 22:node=20,x=210,y=250,width=110,height=70
+10-11 10:55:04.536 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 23:node=21,x=217,y=259,width=20,height=10
+10-11 10:55:04.536 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 24:node=22,x=15,y=12,width=12,height=8
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 25:node=23,x=0,y=256,width=320,height=64
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 26:node=24,x=0,y=0,width=0,height=0
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-outbound 27:node=25,x=0,y=0,width=0,height=0
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_FRAME_SUMMARY state=resize-outbound frames=28 marker=present
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C0410_ENVIRONMENT status=0 environment_revision=9 layout=ready boxes=26 generation=1 document_revision=168 render_tree_revision=1 style_revision=0 environment_revision=9 cacheHit=false cascadeRecomputedStyleElements=28 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=390x3600 render_viewport_css_px=390x844 render_root_css_px=390x3600 node_frames_css_px=[0:node=1,x=0,y=0,width=390,height=3600;1:node=2,x=0,y=0,width=320,height=64;2:node=3,x=17,y=11,width=30,height=20;3:node=4,x=349,y=814,width=33,height=21;4:node=5,x=97.5,y=84.4,width=40,height=18;5:node=6,x=22.5,y=21.866667,width=25,height=14;6:node=7,x=-5,y=841,width=12,height=10;7:node=8,x=20,y=120,width=345,height=574;8:node=9,x=10,y=170,width=150,height=18;9:node=10,x=338,y=220,width=32,height=14;10:node=26,x=0,y=0,width=8,height=8;11:node=27,x=35,y=43,width=30,height=20;12:node=28,x=50,y=60,width=40,height=20;13:node=11,x=0,y=64,width=320,height=64;14:node=12,x=0,y=64,width=200,height=32;15:node=13,x=41,y=31,width=24,he
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_SUMMARY state=resize-noop viewport=390.0x844.0 scale=1.0 status=0 layout=ready boxes=26 generation=1 document_revision=168 environment_revision=9
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 0:node=1,x=0,y=0,width=390,height=3600
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 1:node=2,x=0,y=0,width=320,height=64
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 2:node=3,x=17,y=11,width=30,height=20
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 3:node=4,x=349,y=814,width=33,height=21
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 4:node=5,x=97.5,y=84.4,width=40,height=18
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 5:node=6,x=22.5,y=21.866667,width=25,height=14
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 6:node=7,x=-5,y=841,width=12,height=10
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 7:node=8,x=20,y=120,width=345,height=574
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 8:node=9,x=10,y=170,width=150,height=18
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 9:node=10,x=338,y=220,width=32,height=14
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 10:node=26,x=0,y=0,width=8,height=8
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 11:node=27,x=35,y=43,width=30,height=20
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 12:node=28,x=50,y=60,width=40,height=20
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 13:node=11,x=0,y=64,width=320,height=64
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 14:node=12,x=0,y=64,width=200,height=32
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 15:node=13,x=41,y=31,width=24,height=12
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 16:node=14,x=0,y=128,width=320,height=64
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 17:node=15,x=40,y=132,width=180,height=28
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 18:node=16,x=51,y=41,width=24,height=12
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 19:node=17,x=35,y=500,width=180,height=28
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 20:node=18,x=61,y=51,width=24,height=12
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 21:node=19,x=0,y=192,width=320,height=64
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 22:node=20,x=210,y=250,width=110,height=70
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 23:node=21,x=217,y=259,width=20,height=10
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 24:node=22,x=15,y=12,width=12,height=8
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 25:node=23,x=0,y=256,width=320,height=64
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 26:node=24,x=0,y=0,width=0,height=0
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-noop 27:node=25,x=0,y=0,width=0,height=0
+10-11 10:55:04.537 24964 25014 I SpinonBootstrap: SPINON_C123_FRAME_SUMMARY state=resize-noop frames=28 marker=present
+10-11 10:55:04.540 24964 25014 I SpinonBootstrap: SPINON_C0410_ENVIRONMENT status=0 environment_revision=10 layout=ready boxes=26 generation=1 document_revision=168 render_tree_revision=1 style_revision=0 environment_revision=10 cacheHit=false cascadeRecomputedStyleElements=28 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=360x3600 render_viewport_css_px=360x800 render_root_css_px=360x3600 node_frames_css_px=[0:node=1,x=0,y=0,width=360,height=3600;1:node=2,x=0,y=0,width=320,height=64;2:node=3,x=17,y=11,width=30,height=20;3:node=4,x=319,y=770,width=33,height=21;4:node=5,x=90,y=80,width=40,height=18;5:node=6,x=21,y=21,width=25,height=14;6:node=7,x=-5,y=797,width=12,height=10;7:node=8,x=20,y=120,width=315,height=530;8:node=9,x=10,y=170,width=150,height=18;9:node=10,x=308,y=220,width=32,height=14;10:node=26,x=0,y=0,width=8,height=8;11:node=27,x=35,y=43,width=30,height=20;12:node=28,x=50,y=60,width=40,height=20;13:node=11,x=0,y=64,width=320,height=64;14:node=12,x=0,y=64,width=200,height=32;15:node=13,x=41,y=31,width=24,height=12;16:
+10-11 10:55:04.541 24964 25014 I SpinonBootstrap: SPINON_C123_SUMMARY state=resize-return viewport=360.0x800.0 scale=1.0 status=0 layout=ready boxes=26 generation=1 document_revision=168 environment_revision=10
+10-11 10:55:04.543 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 0:node=1,x=0,y=0,width=360,height=3600
+10-11 10:55:04.543 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 1:node=2,x=0,y=0,width=320,height=64
+10-11 10:55:04.543 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 2:node=3,x=17,y=11,width=30,height=20
+10-11 10:55:04.543 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 3:node=4,x=319,y=770,width=33,height=21
+10-11 10:55:04.543 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 4:node=5,x=90,y=80,width=40,height=18
+10-11 10:55:04.543 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 5:node=6,x=21,y=21,width=25,height=14
+10-11 10:55:04.543 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 6:node=7,x=-5,y=797,width=12,height=10
+10-11 10:55:04.543 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 7:node=8,x=20,y=120,width=315,height=530
+10-11 10:55:04.543 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 8:node=9,x=10,y=170,width=150,height=18
+10-11 10:55:04.543 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 9:node=10,x=308,y=220,width=32,height=14
+10-11 10:55:04.543 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 10:node=26,x=0,y=0,width=8,height=8
+10-11 10:55:04.543 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 11:node=27,x=35,y=43,width=30,height=20
+10-11 10:55:04.543 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 12:node=28,x=50,y=60,width=40,height=20
+10-11 10:55:04.543 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 13:node=11,x=0,y=64,width=320,height=64
+10-11 10:55:04.543 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 14:node=12,x=0,y=64,width=200,height=32
+10-11 10:55:04.543 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 15:node=13,x=41,y=31,width=24,height=12
+10-11 10:55:04.543 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 16:node=14,x=0,y=128,width=320,height=64
+10-11 10:55:04.544 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 17:node=15,x=40,y=132,width=180,height=28
+10-11 10:55:04.544 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 18:node=16,x=51,y=41,width=24,height=12
+10-11 10:55:04.544 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 19:node=17,x=35,y=500,width=180,height=28
+10-11 10:55:04.544 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 20:node=18,x=61,y=51,width=24,height=12
+10-11 10:55:04.544 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 21:node=19,x=0,y=192,width=320,height=64
+10-11 10:55:04.544 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 22:node=20,x=210,y=250,width=110,height=70
+10-11 10:55:04.544 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 23:node=21,x=217,y=259,width=20,height=10
+10-11 10:55:04.544 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 24:node=22,x=15,y=12,width=12,height=8
+10-11 10:55:04.544 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 25:node=23,x=0,y=256,width=320,height=64
+10-11 10:55:04.544 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 26:node=24,x=0,y=0,width=0,height=0
+10-11 10:55:04.544 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=resize-return 27:node=25,x=0,y=0,width=0,height=0
+10-11 10:55:04.544 24964 25014 I SpinonBootstrap: SPINON_C123_FRAME_SUMMARY state=resize-return frames=28 marker=present
+10-11 10:55:04.546 24964 25014 I SpinonBootstrap: SPINON_C0410_ENVIRONMENT status=0 environment_revision=11 layout=ready boxes=26 generation=1 document_revision=168 render_tree_revision=1 style_revision=0 environment_revision=11 cacheHit=false cascadeRecomputedStyleElements=28 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=360x3600 render_viewport_css_px=360x800 render_root_css_px=360x3600 node_frames_css_px=[0:node=1,x=0,y=0,width=360,height=3600;1:node=2,x=0,y=0,width=320,height=64;2:node=3,x=17,y=11,width=30,height=20;3:node=4,x=319,y=770,width=33,height=21;4:node=5,x=90,y=80,width=40,height=18;5:node=6,x=21,y=21,width=25,height=14;6:node=7,x=-5,y=797,width=12,height=10;7:node=8,x=20,y=120,width=315,height=530;8:node=9,x=10,y=170,width=150,height=18;9:node=10,x=308,y=220,width=32,height=14;10:node=26,x=0,y=0,width=8,height=8;11:node=27,x=35,y=43,width=30,height=20;12:node=28,x=50,y=60,width=40,height=20;13:node=11,x=0,y=64,width=320,height=64;14:node=12,x=0,y=64,width=200,height=32;15:node=13,x=41,y=31,width=24,height=12;16:
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_SUMMARY state=device-final viewport=360.0x800.0 scale=2.8125 status=0 layout=ready boxes=26 generation=1 document_revision=168 environment_revision=11
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 0:node=1,x=0,y=0,width=360,height=3600
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 1:node=2,x=0,y=0,width=320,height=64
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 2:node=3,x=17,y=11,width=30,height=20
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 3:node=4,x=319,y=770,width=33,height=21
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 4:node=5,x=90,y=80,width=40,height=18
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 5:node=6,x=21,y=21,width=25,height=14
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 6:node=7,x=-5,y=797,width=12,height=10
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 7:node=8,x=20,y=120,width=315,height=530
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 8:node=9,x=10,y=170,width=150,height=18
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 9:node=10,x=308,y=220,width=32,height=14
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 10:node=26,x=0,y=0,width=8,height=8
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 11:node=27,x=35,y=43,width=30,height=20
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 12:node=28,x=50,y=60,width=40,height=20
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 13:node=11,x=0,y=64,width=320,height=64
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 14:node=12,x=0,y=64,width=200,height=32
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 15:node=13,x=41,y=31,width=24,height=12
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 16:node=14,x=0,y=128,width=320,height=64
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 17:node=15,x=40,y=132,width=180,height=28
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 18:node=16,x=51,y=41,width=24,height=12
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 19:node=17,x=35,y=500,width=180,height=28
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 20:node=18,x=61,y=51,width=24,height=12
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 21:node=19,x=0,y=192,width=320,height=64
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 22:node=20,x=210,y=250,width=110,height=70
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 23:node=21,x=217,y=259,width=20,height=10
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 24:node=22,x=15,y=12,width=12,height=8
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 25:node=23,x=0,y=256,width=320,height=64
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 26:node=24,x=0,y=0,width=0,height=0
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_NODE_FRAME state=device-final 27:node=25,x=0,y=0,width=0,height=0
+10-11 10:55:04.547 24964 25014 I SpinonBootstrap: SPINON_C123_FRAME_SUMMARY state=device-final frames=28 marker=present
+10-11 10:55:04.596 24964 25013 I SpinonBootstrap: SPINON_C0410_RENDERER=backend=Vulkan device=Samsung Xclipse 940 format=Rgba8UnormSrgb size=900x675 selection=auto
+10-11 10:55:04.596 24964 25013 I SpinonBootstrap: SPINON_C0410_RENDERER generation=2 size=900x675
+10-11 10:55:04.599 24964 25013 I SpinonBootstrap: SPINON_C0410_DRAW status=0 presented boxes=26 environment_revision=11 viewport_css_px=360x800 surface_texture=900x675 root_css_px=360x3600
+10-11 10:55:04.599 24964 25013 I SpinonBootstrap: SPINON_C0410_DRAW generation=2 status=0 presented boxes=26 environment_revision=11 viewport_css_px=360x800 surface_texture=900x675 root_css_px=360x3600

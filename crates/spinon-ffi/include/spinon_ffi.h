@@ -135,6 +135,9 @@ SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c12_1_position_fixture(
 /* C12.2 Block absolute positioning V8 GPU runtime fixture host입니다. */
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c12_2_absolute_block_fixture(
     char *output, size_t output_capacity);
+/* C12.3 viewport fixed V8 GPU runtime fixture host입니다. */
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c12_3_fixed_fixture(
+    char *output, size_t output_capacity);
 /* C10.3.5 positioned Flex child V8 GPU runtime fixture host입니다. */
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c10_3_5_positioned_flex_fixture(
     char *output, size_t output_capacity);
@@ -227,6 +230,10 @@ int32_t spinon_runtime_gpu_host_eval_c12_1_position_fixture(
     char *output, size_t output_capacity);
 /* C12.2 Block absolute CSS를 실제 V8·Stylo·Taffy 경로에서 평가합니다. */
 int32_t spinon_runtime_gpu_host_eval_c12_2_absolute_block_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
+/* C12.3 지원 viewport fixed subset을 실제 V8·Stylo·Taffy 경로에서 평가합니다. */
+int32_t spinon_runtime_gpu_host_eval_c12_3_fixed_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);
 /* C12.1 inventory의 고정 mutation 상태: 1=target-relative, 2=ancestor-relative. */

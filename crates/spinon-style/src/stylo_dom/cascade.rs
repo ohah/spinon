@@ -43,6 +43,7 @@ pub use runtime_paint::{
     compute_runtime_flex_registered_properties_paint_cascade_with_stylesheets,
     first_unsupported_runtime_block_formatting_inline_property,
     first_unsupported_runtime_block_paint_inline_property,
+    first_unsupported_runtime_block_positioning_inline_property,
     first_unsupported_runtime_flex_paint_inline_property,
 };
 
@@ -73,7 +74,7 @@ pub use snapshot::{
     ComputedCssPosition, ComputedCssSpacingValue, ComputedElementStyle, ComputedLayoutBorder,
     ComputedLayoutDimensions, ComputedLayoutInsets, ComputedLayoutSpacing, ComputedStyleProfile,
     ComputedStyleSnapshot, CssColorScheme, CssMediaEnvironment, CssPointerCapabilities,
-    CssPrimaryPointer, CssViewport,
+    CssPrimaryPointer, CssViewport, FixedContainingBlockEffect,
 };
 pub use ua_baseline::compute_supported_elements_ua_cascade;
 
