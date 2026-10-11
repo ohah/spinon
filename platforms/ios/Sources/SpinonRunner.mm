@@ -505,6 +505,25 @@ NSUInteger C10LogNodeFrames(NSString *report, const char *label) {
 #endif
 }
 
++ (uint64_t)createRuntimeGpuHostWithC10_3_5PositionedFlexFixture {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  std::array<char, 1024> output{};
+  SpinonRuntimeGpuHost *host =
+      spinon_runtime_gpu_host_new_c10_3_5_positioned_flex_fixture(
+          output.data(), output.size());
+  if (host == nullptr) {
+    os_log_error(OS_LOG_DEFAULT, "SPINON_C1035_HOST_ERROR=%{public}s", output.data());
+    return 0;
+  }
+  os_log(OS_LOG_DEFAULT, "SPINON_C1035_HOST=%{public}s", output.data());
+  return static_cast<uint64_t>(reinterpret_cast<uintptr_t>(host));
+#else
+  os_log_error(OS_LOG_DEFAULT,
+               "SPINON_C1035_DISABLED rebuild with SPINON_ENABLE_C04_RUNTIME_GPU=1");
+  return 0;
+#endif
+}
+
 + (uint64_t)beginRuntimeGpuPresentationUpdate:(uint64_t)handle {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
   if (handle == 0) return 0;
@@ -871,6 +890,24 @@ NSUInteger C10LogNodeFrames(NSString *report, const char *label) {
   NSString *report = C0410Report(status, output);
   C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
                  "SPINON_C122_EVAL", report);
+  return report;
+#else
+  (void)handle;
+  return @"status=-90 feature-disabled";
+#endif
+}
+
++ (NSString *)evalRuntimeGpuC10_3_5PositionedFlexFixture:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 32768> output{};
+  const int32_t status =
+      spinon_runtime_gpu_host_eval_c10_3_5_positioned_flex_fixture(
+          host, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C1035_EVAL", report);
   return report;
 #else
   (void)handle;

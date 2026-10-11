@@ -1,0 +1,705 @@
+{
+  "schema": "spinon-css-c10-3-5-positioned-flex-inventory/v1",
+  "fixtureId": "C10.3.5-positioned-flex-v1",
+  "viewport": {
+    "width": 320,
+    "height": 240,
+    "deviceScaleFactors": [
+      1,
+      2
+    ]
+  },
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "forcedColors": "none",
+    "pointer": "coarse",
+    "hover": "none",
+    "writingMode": "horizontal-tb",
+    "direction": "ltr"
+  },
+  "comparison": {
+    "rectFields": [
+      "x",
+      "y",
+      "width",
+      "height"
+    ],
+    "computedProperties": [
+      "display",
+      "position",
+      "top",
+      "right",
+      "bottom",
+      "left",
+      "order",
+      "width",
+      "height",
+      "min-width",
+      "max-width",
+      "min-height",
+      "max-height",
+      "box-sizing",
+      "flex-direction",
+      "flex-wrap",
+      "justify-content",
+      "align-items",
+      "align-self",
+      "margin-top",
+      "margin-right",
+      "margin-bottom",
+      "margin-left",
+      "padding-top",
+      "padding-right",
+      "padding-bottom",
+      "padding-left",
+      "border-top-width",
+      "border-right-width",
+      "border-bottom-width",
+      "border-left-width"
+    ],
+    "maximumAbsoluteRectErrorCssPx": 0.5,
+    "ownerMismatchIsFailure": true,
+    "missingNodeIsFailure": true,
+    "paintOrderCheck": "elementsFromPoint on explicit overlapping opaque Flex items"
+  },
+  "wpt": {
+    "repository": "https://github.com/web-platform-tests/wpt",
+    "revision": "d5a765f1089ce6d3f72300281481edf3dddff7f3",
+    "execution": "not-run",
+    "paths": [
+      "css/css-flexbox/abspos/abspos-autopos-htb-ltr.html",
+      "css/css-flexbox/abspos/dynamic-align-self-001.html",
+      "css/css-flexbox/abspos/flex-abspos-staticpos-align-self-001.html",
+      "css/css-flexbox/abspos/flex-abspos-staticpos-justify-content-001.html",
+      "css/css-flexbox/abspos/flex-abspos-staticpos-margin-001.html",
+      "css/css-flexbox/abspos/abspos-descendent-001.html",
+      "css/css-flexbox/flexbox-paint-ordering-001.xhtml",
+      "css/css-flexbox/flexbox-paint-ordering-003.html"
+    ]
+  },
+  "cases": [
+    {
+      "id": "direct-row-center-end",
+      "nodes": [
+        {
+          "id": "c1035-row-center-root",
+          "children": [
+            "c1035-row-center-before",
+            "c1035-row-center-abs",
+            "c1035-row-center-after"
+          ],
+          "style": "display:flex;box-sizing:border-box;flex-wrap:nowrap;gap:0;margin:0;position:relative;width:180px;height:100px;flex-direction:row;justify-content:center;align-items:flex-end;padding:10px;border:2px solid transparent;background:#101827"
+        },
+        {
+          "id": "c1035-row-center-before",
+          "children": [],
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;width:20px;height:20px;background:#e5484d"
+        },
+        {
+          "id": "c1035-row-center-abs",
+          "children": [],
+          "expectedContainingBlock": "c1035-row-center-root",
+          "expectedStaticPositionOwner": "c1035-row-center-root",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;order:-7;width:30px;height:20px;background:#2866f6"
+        },
+        {
+          "id": "c1035-row-center-after",
+          "children": [],
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;width:20px;height:20px;background:#28a745"
+        }
+      ]
+    },
+    {
+      "id": "direct-row-reverse",
+      "nodes": [
+        {
+          "id": "c1035-row-reverse-root",
+          "children": [
+            "c1035-row-reverse-abs"
+          ],
+          "style": "display:flex;box-sizing:border-box;flex-wrap:nowrap;gap:0;margin:0;position:relative;width:160px;height:80px;flex-direction:row-reverse;justify-content:flex-end;align-items:center;padding:8px;background:#101827"
+        },
+        {
+          "id": "c1035-row-reverse-abs",
+          "children": [],
+          "expectedContainingBlock": "c1035-row-reverse-root",
+          "expectedStaticPositionOwner": "c1035-row-reverse-root",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;width:24px;height:18px;align-self:flex-start;background:#2866f6"
+        }
+      ]
+    },
+    {
+      "id": "direct-column-center",
+      "nodes": [
+        {
+          "id": "c1035-column-root",
+          "children": [
+            "c1035-column-before",
+            "c1035-column-abs",
+            "c1035-column-after"
+          ],
+          "style": "display:flex;box-sizing:border-box;flex-wrap:nowrap;gap:0;margin:0;position:relative;width:120px;height:140px;flex-direction:column;justify-content:center;align-items:flex-end;padding:6px;background:#101827"
+        },
+        {
+          "id": "c1035-column-before",
+          "children": [],
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;width:20px;height:16px;background:#e5484d"
+        },
+        {
+          "id": "c1035-column-abs",
+          "children": [],
+          "expectedContainingBlock": "c1035-column-root",
+          "expectedStaticPositionOwner": "c1035-column-root",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;width:30px;height:20px;align-self:center;background:#2866f6"
+        },
+        {
+          "id": "c1035-column-after",
+          "children": [],
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;width:20px;height:16px;background:#28a745"
+        }
+      ]
+    },
+    {
+      "id": "mixed-insets",
+      "nodes": [
+        {
+          "id": "c1035-mixed-root",
+          "children": [
+            "c1035-mixed-abs"
+          ],
+          "style": "display:flex;box-sizing:border-box;flex-wrap:nowrap;gap:0;margin:0;position:relative;width:140px;height:90px;flex-direction:row;justify-content:center;align-items:flex-end;padding:5px;background:#101827"
+        },
+        {
+          "id": "c1035-mixed-abs",
+          "children": [],
+          "expectedContainingBlock": "c1035-mixed-root",
+          "expectedStaticPositionOwner": "c1035-mixed-root",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;left:7px;top:auto;right:auto;bottom:9px;width:24px;height:18px;background:#2866f6"
+        }
+      ]
+    },
+    {
+      "id": "different-containing-block",
+      "nodes": [
+        {
+          "id": "c1035-owner-root",
+          "children": [
+            "c1035-owner-flex"
+          ],
+          "style": "display:block;box-sizing:border-box;position:relative;left:30px;top:20px;width:220px;height:120px;padding:1px;background:#243047"
+        },
+        {
+          "id": "c1035-owner-flex",
+          "children": [
+            "c1035-owner-abs"
+          ],
+          "style": "display:flex;box-sizing:border-box;flex-wrap:nowrap;gap:0;margin:0;position:static;width:140px;height:70px;flex-direction:row;justify-content:flex-end;align-items:center;margin-left:18px;margin-top:12px;background:#101827"
+        },
+        {
+          "id": "c1035-owner-abs",
+          "children": [],
+          "expectedContainingBlock": "c1035-owner-root",
+          "expectedStaticPositionOwner": "c1035-owner-flex",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;width:24px;height:18px;background:#2866f6"
+        }
+      ]
+    },
+    {
+      "id": "block-wrapper-static-position",
+      "nodes": [
+        {
+          "id": "c1035-wrapper-flex",
+          "children": [
+            "c1035-wrapper-block"
+          ],
+          "style": "display:flex;box-sizing:border-box;flex-wrap:nowrap;gap:0;margin:0;position:relative;width:180px;height:100px;flex-direction:row;align-items:flex-start;background:#101827"
+        },
+        {
+          "id": "c1035-wrapper-block",
+          "children": [
+            "c1035-wrapper-before",
+            "c1035-wrapper-abs",
+            "c1035-wrapper-after"
+          ],
+          "style": "display:block;position:static;width:100px;height:50px;margin-left:12px;margin-top:9px;background:#243047"
+        },
+        {
+          "id": "c1035-wrapper-before",
+          "children": [],
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;width:20px;height:10px;background:#e5484d"
+        },
+        {
+          "id": "c1035-wrapper-abs",
+          "children": [],
+          "expectedContainingBlock": "c1035-wrapper-flex",
+          "expectedStaticPositionOwner": "c1035-wrapper-block",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;width:24px;height:16px;background:#2866f6"
+        },
+        {
+          "id": "c1035-wrapper-after",
+          "children": [],
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;width:20px;height:10px;background:#28a745"
+        }
+      ]
+    },
+    {
+      "id": "paint-order",
+      "nodes": [
+        {
+          "id": "c1035-paint-root",
+          "children": [
+            "c1035-paint-zero",
+            "c1035-paint-abs",
+            "c1035-paint-negative",
+            "c1035-paint-positive",
+            "c1035-paint-abs-later"
+          ],
+          "style": "display:flex;box-sizing:border-box;flex-wrap:nowrap;gap:0;margin:0;position:relative;left:40px;top:20px;width:120px;height:40px;flex-direction:row;align-items:flex-start;justify-content:flex-start;background:#101827"
+        },
+        {
+          "id": "c1035-paint-zero",
+          "children": [],
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;width:40px;height:30px;order:0;margin-left:-40px;background:#e5484d"
+        },
+        {
+          "id": "c1035-paint-abs",
+          "children": [],
+          "expectedContainingBlock": "c1035-paint-root",
+          "expectedStaticPositionOwner": "c1035-paint-root",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;left:-40px;top:0;width:40px;height:30px;order:50;background:#2866f6"
+        },
+        {
+          "id": "c1035-paint-negative",
+          "children": [],
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;width:40px;height:30px;order:-1;margin-left:-40px;background:#28a745"
+        },
+        {
+          "id": "c1035-paint-positive",
+          "children": [],
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;width:40px;height:30px;order:1;margin-left:-40px;background:#a855f7"
+        },
+        {
+          "id": "c1035-paint-abs-later",
+          "children": [],
+          "expectedContainingBlock": "c1035-paint-root",
+          "expectedStaticPositionOwner": "c1035-paint-root",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;left:-40px;top:0;width:40px;height:30px;order:-25;background:#f59e0b"
+        }
+      ],
+      "paintProbe": {
+        "x": 5,
+        "y": 25,
+        "topToBottom": [
+          "c1035-paint-abs-later",
+          "c1035-paint-abs",
+          "c1035-paint-positive",
+          "c1035-paint-zero",
+          "c1035-paint-negative"
+        ]
+      },
+      "expectedPaintNodeOrder": [
+        "c1035-paint-root",
+        "c1035-paint-negative",
+        "c1035-paint-zero",
+        "c1035-paint-positive",
+        "c1035-paint-abs",
+        "c1035-paint-abs-later"
+      ]
+    },
+    {
+      "id": "nested-paint-scope",
+      "nodes": [
+        {
+          "id": "c1035-nested-root",
+          "children": [
+            "c1035-nested-a",
+            "c1035-nested-b"
+          ],
+          "style": "display:flex;box-sizing:border-box;flex-wrap:nowrap;gap:0;margin:0;position:relative;width:100px;height:50px;background:#101827"
+        },
+        {
+          "id": "c1035-nested-a",
+          "children": [
+            "c1035-nested-a-abs",
+            "c1035-nested-a-child"
+          ],
+          "style": "display:flex;box-sizing:border-box;flex-wrap:nowrap;gap:0;margin:0;position:relative;width:50px;height:40px;order:1;background:#243047"
+        },
+        {
+          "id": "c1035-nested-a-abs",
+          "children": [],
+          "expectedContainingBlock": "c1035-nested-a",
+          "expectedStaticPositionOwner": "c1035-nested-a",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;width:12px;height:12px;order:-99;background:#2866f6"
+        },
+        {
+          "id": "c1035-nested-a-child",
+          "children": [],
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;width:16px;height:16px;order:-1;background:#28a745"
+        },
+        {
+          "id": "c1035-nested-b",
+          "children": [],
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;width:50px;height:40px;order:0;background:#a855f7"
+        }
+      ],
+      "expectedPaintNodeOrder": [
+        "c1035-nested-root",
+        "c1035-nested-b",
+        "c1035-nested-a",
+        "c1035-nested-a-child",
+        "c1035-nested-a-abs"
+      ]
+    },
+    {
+      "id": "direct-column-reverse",
+      "nodes": [
+        {
+          "id": "c1035-column-reverse-root",
+          "children": [
+            "c1035-column-reverse-abs"
+          ],
+          "style": "display:flex;box-sizing:border-box;flex-wrap:nowrap;gap:0;margin:0;position:relative;width:120px;height:140px;flex-direction:column-reverse;justify-content:flex-end;align-items:center;padding:6px;background:#101827"
+        },
+        {
+          "id": "c1035-column-reverse-abs",
+          "children": [],
+          "expectedContainingBlock": "c1035-column-reverse-root",
+          "expectedStaticPositionOwner": "c1035-column-reverse-root",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;width:30px;height:20px;align-self:flex-end;background:#2866f6"
+        }
+      ]
+    },
+    {
+      "id": "wrap-two-lines",
+      "nodes": [
+        {
+          "id": "c1035-wrap-root",
+          "children": [
+            "c1035-wrap-first",
+            "c1035-wrap-second",
+            "c1035-wrap-abs"
+          ],
+          "style": "display:flex;box-sizing:border-box;flex-wrap:wrap;gap:0;margin:0;position:relative;width:100px;height:90px;flex-direction:row;justify-content:center;align-items:flex-end;align-content:space-between;padding:5px;background:#101827"
+        },
+        {
+          "id": "c1035-wrap-first",
+          "children": [],
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;width:60px;height:20px;background:#e5484d"
+        },
+        {
+          "id": "c1035-wrap-second",
+          "children": [],
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;width:60px;height:20px;background:#28a745"
+        },
+        {
+          "id": "c1035-wrap-abs",
+          "children": [],
+          "expectedContainingBlock": "c1035-wrap-root",
+          "expectedStaticPositionOwner": "c1035-wrap-root",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;width:20px;height:10px;background:#2866f6"
+        }
+      ]
+    },
+    {
+      "id": "wrap-reverse-two-lines",
+      "nodes": [
+        {
+          "id": "c1035-wrap-reverse-root",
+          "children": [
+            "c1035-wrap-reverse-first",
+            "c1035-wrap-reverse-second",
+            "c1035-wrap-reverse-abs"
+          ],
+          "style": "display:flex;box-sizing:border-box;flex-wrap:wrap-reverse;gap:0;margin:0;position:relative;width:100px;height:90px;flex-direction:row;justify-content:flex-start;align-items:flex-start;align-content:space-between;padding:5px;background:#101827"
+        },
+        {
+          "id": "c1035-wrap-reverse-first",
+          "children": [],
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;width:60px;height:20px;background:#e5484d"
+        },
+        {
+          "id": "c1035-wrap-reverse-second",
+          "children": [],
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;width:60px;height:20px;background:#28a745"
+        },
+        {
+          "id": "c1035-wrap-reverse-abs",
+          "children": [],
+          "expectedContainingBlock": "c1035-wrap-reverse-root",
+          "expectedStaticPositionOwner": "c1035-wrap-reverse-root",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;width:20px;height:10px;align-self:flex-start;background:#2866f6"
+        }
+      ]
+    },
+    {
+      "id": "direct-align-self-values",
+      "nodes": [
+        {
+          "id": "c1035-align-values-root",
+          "children": [
+            "c1035-align-auto",
+            "c1035-align-start",
+            "c1035-align-center",
+            "c1035-align-end",
+            "c1035-align-stretch"
+          ],
+          "style": "display:flex;box-sizing:border-box;flex-wrap:nowrap;gap:0;margin:0;position:relative;width:120px;height:60px;flex-direction:row;justify-content:flex-start;align-items:flex-end;background:#101827"
+        },
+        {
+          "id": "c1035-align-auto",
+          "children": [],
+          "expectedContainingBlock": "c1035-align-values-root",
+          "expectedStaticPositionOwner": "c1035-align-values-root",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;width:20px;height:10px;align-self:auto;background:#2866f6"
+        },
+        {
+          "id": "c1035-align-start",
+          "children": [],
+          "expectedContainingBlock": "c1035-align-values-root",
+          "expectedStaticPositionOwner": "c1035-align-values-root",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;width:20px;height:10px;align-self:flex-start;background:#28a745"
+        },
+        {
+          "id": "c1035-align-center",
+          "children": [],
+          "expectedContainingBlock": "c1035-align-values-root",
+          "expectedStaticPositionOwner": "c1035-align-values-root",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;width:20px;height:10px;align-self:center;background:#e5484d"
+        },
+        {
+          "id": "c1035-align-end",
+          "children": [],
+          "expectedContainingBlock": "c1035-align-values-root",
+          "expectedStaticPositionOwner": "c1035-align-values-root",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;width:20px;height:10px;align-self:flex-end;background:#a855f7"
+        },
+        {
+          "id": "c1035-align-stretch",
+          "children": [],
+          "expectedContainingBlock": "c1035-align-values-root",
+          "expectedStaticPositionOwner": "c1035-align-values-root",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;width:20px;height:10px;align-self:stretch;background:#f59e0b"
+        }
+      ],
+      "expectedPaintNodeOrder": [
+        "c1035-align-values-root",
+        "c1035-align-auto",
+        "c1035-align-start",
+        "c1035-align-center",
+        "c1035-align-end",
+        "c1035-align-stretch"
+      ]
+    },
+    {
+      "id": "negative-space-around",
+      "nodes": [
+        {
+          "id": "c1035-around-root",
+          "children": [
+            "c1035-around-abs"
+          ],
+          "style": "display:flex;box-sizing:border-box;flex-wrap:nowrap;gap:0;margin:0;position:relative;width:30px;height:30px;flex-direction:row;justify-content:space-around;align-items:center;background:#101827"
+        },
+        {
+          "id": "c1035-around-abs",
+          "children": [],
+          "expectedContainingBlock": "c1035-around-root",
+          "expectedStaticPositionOwner": "c1035-around-root",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;width:50px;height:10px;background:#2866f6"
+        }
+      ]
+    },
+    {
+      "id": "negative-space-evenly",
+      "nodes": [
+        {
+          "id": "c1035-evenly-root",
+          "children": [
+            "c1035-evenly-abs"
+          ],
+          "style": "display:flex;box-sizing:border-box;flex-wrap:nowrap;gap:0;margin:0;position:relative;width:30px;height:30px;flex-direction:row;justify-content:space-evenly;align-items:center;background:#101827"
+        },
+        {
+          "id": "c1035-evenly-abs",
+          "children": [],
+          "expectedContainingBlock": "c1035-evenly-root",
+          "expectedStaticPositionOwner": "c1035-evenly-root",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;width:50px;height:10px;background:#2866f6"
+        }
+      ]
+    },
+    {
+      "id": "safe-center-overflow",
+      "nodes": [
+        {
+          "id": "c1035-safe-root",
+          "children": [
+            "c1035-safe-abs"
+          ],
+          "style": "display:flex;box-sizing:border-box;flex-wrap:nowrap;gap:0;margin:0;position:relative;width:30px;height:30px;flex-direction:row;justify-content:safe center;align-items:safe center;background:#101827"
+        },
+        {
+          "id": "c1035-safe-abs",
+          "children": [],
+          "expectedContainingBlock": "c1035-safe-root",
+          "expectedStaticPositionOwner": "c1035-safe-root",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;width:50px;height:50px;background:#2866f6"
+        }
+      ]
+    },
+    {
+      "id": "unsafe-center-overflow",
+      "nodes": [
+        {
+          "id": "c1035-unsafe-root",
+          "children": [
+            "c1035-unsafe-abs"
+          ],
+          "style": "display:flex;box-sizing:border-box;flex-wrap:nowrap;gap:0;margin:0;position:relative;width:30px;height:30px;flex-direction:row;justify-content:unsafe center;align-items:unsafe center;background:#101827"
+        },
+        {
+          "id": "c1035-unsafe-abs",
+          "children": [],
+          "expectedContainingBlock": "c1035-unsafe-root",
+          "expectedStaticPositionOwner": "c1035-unsafe-root",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;width:50px;height:50px;background:#2866f6"
+        }
+      ]
+    },
+    {
+      "id": "margin-border-content-edge",
+      "nodes": [
+        {
+          "id": "c1035-margin-root",
+          "children": [
+            "c1035-margin-abs"
+          ],
+          "style": "display:flex;box-sizing:border-box;flex-wrap:nowrap;gap:0;margin:0;position:relative;width:160px;height:80px;flex-direction:row;justify-content:center;align-items:flex-end;padding:10px 14px 6px 8px;border-width:3px 2px 5px 4px;border-style:solid;background:#101827"
+        },
+        {
+          "id": "c1035-margin-abs",
+          "children": [],
+          "expectedContainingBlock": "c1035-margin-root",
+          "expectedStaticPositionOwner": "c1035-margin-root",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;width:20px;height:10px;margin:8px 6px 4px -2px;background:#2866f6"
+        }
+      ]
+    },
+    {
+      "id": "auto-margin-zero",
+      "nodes": [
+        {
+          "id": "c1035-auto-margin-root",
+          "children": [
+            "c1035-auto-margin-abs"
+          ],
+          "style": "display:flex;box-sizing:border-box;flex-wrap:nowrap;gap:0;margin:0;position:relative;width:120px;height:70px;flex-direction:row;justify-content:center;align-items:flex-end;padding:0;background:#101827"
+        },
+        {
+          "id": "c1035-auto-margin-abs",
+          "children": [],
+          "expectedContainingBlock": "c1035-auto-margin-root",
+          "expectedStaticPositionOwner": "c1035-auto-margin-root",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;width:20px;height:10px;margin:auto 6px 4px -2px;background:#2866f6"
+        }
+      ]
+    },
+    {
+      "id": "inset-axis-matrix",
+      "nodes": [
+        {
+          "id": "c1035-inset-root",
+          "children": [
+            "c1035-inset-all-auto",
+            "c1035-inset-left",
+            "c1035-inset-top",
+            "c1035-inset-right",
+            "c1035-inset-bottom",
+            "c1035-inset-opposite"
+          ],
+          "style": "display:flex;box-sizing:border-box;flex-wrap:nowrap;gap:0;margin:0;position:relative;width:160px;height:120px;flex-direction:row;justify-content:center;align-items:flex-end;padding:5px;background:#101827"
+        },
+        {
+          "id": "c1035-inset-all-auto",
+          "children": [],
+          "expectedContainingBlock": "c1035-inset-root",
+          "expectedStaticPositionOwner": "c1035-inset-root",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;width:20px;height:10px;background:#2866f6"
+        },
+        {
+          "id": "c1035-inset-left",
+          "children": [],
+          "expectedContainingBlock": "c1035-inset-root",
+          "expectedStaticPositionOwner": "c1035-inset-root",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;left:7px;width:20px;height:10px;align-self:center;background:#28a745"
+        },
+        {
+          "id": "c1035-inset-top",
+          "children": [],
+          "expectedContainingBlock": "c1035-inset-root",
+          "expectedStaticPositionOwner": "c1035-inset-root",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;top:9px;width:20px;height:10px;background:#e5484d"
+        },
+        {
+          "id": "c1035-inset-right",
+          "children": [],
+          "expectedContainingBlock": "c1035-inset-root",
+          "expectedStaticPositionOwner": "c1035-inset-root",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;right:11px;width:20px;height:10px;align-self:center;background:#a855f7"
+        },
+        {
+          "id": "c1035-inset-bottom",
+          "children": [],
+          "expectedContainingBlock": "c1035-inset-root",
+          "expectedStaticPositionOwner": "c1035-inset-root",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;bottom:12px;width:20px;height:10px;background:#f59e0b"
+        },
+        {
+          "id": "c1035-inset-opposite",
+          "children": [],
+          "expectedContainingBlock": "c1035-inset-root",
+          "expectedStaticPositionOwner": "c1035-inset-root",
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;left:7px;right:11px;top:9px;bottom:12px;width:20px;height:10px;background:#12b981"
+        }
+      ]
+    },
+    {
+      "id": "display-none",
+      "nodes": [
+        {
+          "id": "c1035-hidden-root",
+          "children": [
+            "c1035-hidden-parent",
+            "c1035-hidden-after"
+          ],
+          "style": "display:flex;box-sizing:border-box;flex-wrap:nowrap;gap:0;margin:0;position:relative;width:100px;height:50px;background:#101827"
+        },
+        {
+          "id": "c1035-hidden-parent",
+          "children": [
+            "c1035-hidden-abs"
+          ],
+          "expectedHasLayoutBox": false,
+          "style": "display:flex;box-sizing:border-box;flex-wrap:nowrap;gap:0;margin:0;display:none;position:relative;width:40px;height:20px"
+        },
+        {
+          "id": "c1035-hidden-abs",
+          "children": [],
+          "expectedContainingBlock": "none",
+          "expectedStaticPositionOwner": null,
+          "expectedHasLayoutBox": false,
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;position:absolute;width:12px;height:12px;background:#2866f6"
+        },
+        {
+          "id": "c1035-hidden-after",
+          "children": [],
+          "expectedHasLayoutBox": true,
+          "style": "display:block;box-sizing:border-box;flex:none;margin:0;padding:0;border:0;width:20px;height:20px;background:#28a745"
+        }
+      ]
+    }
+  ]
+}

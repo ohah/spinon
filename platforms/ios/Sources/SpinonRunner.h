@@ -31,6 +31,7 @@
 + (uint64_t)createRuntimeGpuHostWithBlockFormattingFixture;
 + (uint64_t)createRuntimeGpuHostWithC12_1PositionFixture;
 + (uint64_t)createRuntimeGpuHostWithC12_2AbsoluteBlockFixture;
++ (uint64_t)createRuntimeGpuHostWithC10_3_5PositionedFlexFixture;
 + (uint64_t)beginRuntimeGpuPresentationUpdate:(uint64_t)handle;
 + (NSString *)setRuntimeGpuEnvironment:(uint64_t)handle width:(float)width
                                 height:(float)height scale:(float)scale dark:(BOOL)dark;
@@ -53,6 +54,7 @@
 + (NSString *)evalRuntimeGpuBlockFormattingFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuC12_1PositionFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuC12_2AbsoluteBlockFixture:(uint64_t)handle;
++ (NSString *)evalRuntimeGpuC10_3_5PositionedFlexFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuC12_1PositionState:(uint64_t)handle state:(uint32_t)state;
 + (NSString *)evalRuntimeGpuMarginCollapseFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuFlowRootFixture:(uint64_t)handle;

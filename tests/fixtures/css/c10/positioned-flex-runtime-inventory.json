@@ -1,0 +1,29 @@
+{
+  "schema": "spinon-css-c10-3-5-positioned-flex-runtime-inventory/v1",
+  "fixtureId": "C10.3.5-positioned-flex-runtime-v1",
+  "viewport": {
+    "width": 320,
+    "height": 240
+  },
+  "rootStyle": "display:block;position:static;box-sizing:border-box;width:320px;height:240px;margin:0;padding:0;border:0;background-color:#0b1020",
+  "styleNormalization": {
+    "from": "background",
+    "to": "background-color",
+    "reason": "runtime paint profile의 단색 배경만 재사용하며 배경 레이아웃·이미지 속성은 포함하지 않는다"
+  },
+  "cases": [
+    {
+      "id": "direct-row-center-end",
+      "frameOffset": { "x": 0, "y": 0 }
+    },
+    {
+      "id": "paint-order",
+      "frameOffset": { "x": 0, "y": 100 }
+    },
+    {
+      "id": "block-wrapper-static-position",
+      "frameOffset": { "x": 0, "y": 190 },
+      "rootStyleAppend": "margin-top:50px"
+    }
+  ]
+}

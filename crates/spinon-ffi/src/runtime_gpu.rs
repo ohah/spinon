@@ -65,6 +65,12 @@ const RUNTIME_CSS_FLEX_ALIGNMENT_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c10/runtime-flex-alignment.js");
 const RUNTIME_CSS_FLEX_BASELINE_FIXTURE_SOURCE: &str =
     include_str!("../../../tests/fixtures/css/c10/runtime-flex-baseline.js");
+const RUNTIME_CSS_C10_3_5_POSITIONED_FLEX_FIXTURE_SOURCE: &str =
+    include_str!("../../../tests/fixtures/css/c10/runtime-positioned-flex.js");
+const C10_3_5_POSITIONED_FLEX_INVENTORY: &str =
+    include_str!("../../../tests/fixtures/css/c10/positioned-flex-inventory.json");
+const C10_3_5_POSITIONED_FLEX_RUNTIME_INVENTORY: &str =
+    include_str!("../../../tests/fixtures/css/c10/positioned-flex-runtime-inventory.json");
 
 #[repr(C)]
 pub struct SpinonRuntimeGpuHost {
@@ -164,6 +170,11 @@ impl RuntimeGpuHost {
 
     fn new_c12_2_absolute_block_fixture() -> Result<(Self, String), String> {
         let (session, report) = RuntimeSession::new_runtime_gpu_block_positioning_fixture()?;
+        Ok((Self::from_session_with_frame_report(session), report))
+    }
+
+    fn new_c10_3_5_positioned_flex_fixture() -> Result<(Self, String), String> {
+        let (session, report) = RuntimeSession::new_runtime_gpu()?;
         Ok((Self::from_session_with_frame_report(session), report))
     }
 
@@ -569,6 +580,22 @@ impl RuntimeGpuHost {
         drop(pending);
         Ok(())
     }
+}
+
+fn c10_3_5_positioned_flex_fixture_source() -> String {
+    let mut source = String::with_capacity(
+        C10_3_5_POSITIONED_FLEX_INVENTORY.len()
+            + C10_3_5_POSITIONED_FLEX_RUNTIME_INVENTORY.len()
+            + RUNTIME_CSS_C10_3_5_POSITIONED_FLEX_FIXTURE_SOURCE.len()
+            + 128,
+    );
+    source.push_str("globalThis.__spinonC1035FixtureInventory = ");
+    source.push_str(C10_3_5_POSITIONED_FLEX_INVENTORY);
+    source.push_str(";\nglobalThis.__spinonC1035RuntimeInventory = ");
+    source.push_str(C10_3_5_POSITIONED_FLEX_RUNTIME_INVENTORY);
+    source.push_str(";\n");
+    source.push_str(RUNTIME_CSS_C10_3_5_POSITIONED_FLEX_FIXTURE_SOURCE);
+    source
 }
 
 fn scene_matches_layout_key(

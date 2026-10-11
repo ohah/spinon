@@ -1,8 +1,10 @@
 # C10.3.5 · 위치 지정 Flex 자식 계획
 
 **상위:** [C10.3 Flex 순서·정렬](c10-3-flex-order-alignment.md) · [C12 위치 지정](c12-positioning.md) · [공식 상태 대장](../spec/STATUS.md)
-**현재 상태:** 계획 문서 작성 완료 · 기능 구현 전
+**현재 상태:** 제한된 계산·paint 경로 구현 및 모바일 smoke 완료 · 최종 검토/PR 진행 중
 **내부 계약 숫자 버전:** 출시 전 `0.1.0` 고정
+
+고정 Chrome 비교는 20개 case·70개 source node 전체를 DPR 1·2로 수행했다. Android 실기기와 iOS Simulator는 같은 Chrome 입력에서 직접 Flex child, paint 겹침, Block wrapper를 포함한 3개 case·15개 node를 실행했다. 두 앱의 V8 frame은 Chrome과 최대 오차 0 CSS px이고 각 GPU 표면에서 16개 상자를 제출했다. WPT suite, 전체 Chrome 행렬의 모바일 재실행, GPU 픽셀 동일성은 아직 검증하지 않았다.
 
 ## 목표
 
@@ -31,11 +33,12 @@
 - 첫 지원 slice는 fixed-size Flex container와 fixed-size element child로 한정한다. `horizontal-tb`·LTR, 물리 inset, 유한 CSS px 값만 성공 입력으로 둔다. percentage/intrinsic size가 기존 C12.2 지원 범위 밖이면 함께 지원한다고 추정하지 않는다.
 - `align-self:auto`, `stretch`, baseline, safe/unsafe overflow, `justify-content:normal` 및 분배 값의 구체 동작은 열거형 매핑으로 추정하지 않는다. pinned Chrome reference로 관찰한 지원 값만 구현 계약에 고정하고, 지원하지 못하는 값은 해당 노드·속성의 구체 오류로 닫는다.
 
-## Flex item 순서와 paint 계약
+## Flex item 순서와 paint phase 계약
 
-- 각 Flex container의 직접 element 자식 목록은 source order로 수집한다. in-flow Flex item의 effective paint rank는 computed `order`다. absolute 직접 Flex 자식은 authored `order`와 관계없이 effective rank `0`이다.
-- 같은 effective rank에서는 source order를 유지한다. absolute 형제끼리도 source order를 보존한다. 이 정렬은 시각 paint 전용이며 HostDocument child order, DOM 유사 조회, 이벤트·접근성 순서를 바꾸지 않는다.
-- 각 자식의 descendant paint subtree는 부모 Flex item의 rank 아래에서 연속으로 유지한다. 다른 nested Flex container의 `order` 값을 전역 정렬하지 않는다.
+- 각 Flex container의 **in-flow Flex item**은 computed `order` 오름차순, 같은 값이면 source order로 페인트한다. 이 시각 정렬은 HostDocument child order, DOM 유사 조회, 이벤트·접근성 순서를 바꾸지 않는다.
+- absolute 자식은 out-of-flow이므로 Flex item이 아니다. computed `order`는 보존하지만 paint 순서 계산에는 사용하지 않는다. 고정 Chrome 154 관측과 WPT `flexbox-paint-ordering-003.html`은 authored `order`가 서로 다른 absolute Flex 자식 사이에서도 source tree order가 유지됨을 확인한다.
+- 현재 제한 profile의 `z-index:auto` positioned box는 in-flow paint 뒤 positioned phase에서 그린다. positioned 형제는 같은 paint context의 source tree preorder를 따른다. 겹치는 opaque-box fixture와 node별 scene order로 검증하며, 별도 stacking context·`z-index`는 이 계약에 포함하지 않는다.
+- in-flow Flex item의 non-positioned descendant subtree는 해당 item의 order-modified 순서 안에 둔다. 그 subtree의 absolute descendant는 in-flow subtree에서 분리해 positioned phase에 모으고 source tree preorder를 보존한다. nested Flex의 `order`를 전역 정렬하지 않는다.
 - `display:none` 노드는 layout frame과 paint list에서 제외하고 source tree에는 보존한다. absolute 자식이 Flex 계산에서 제외되더라도 필요한 CSS·paint 정보와 NodeId/revision은 잃지 않는다.
 - 이 단계는 positioned `z-index`, stacking context, transform/opacity/clip, scroll clipping, hit-test·pointer target, 접근성 순서를 구현 완료로 주장하지 않는다. 겹침 fixture는 기존 불투명 단색 box만 사용한다.
 
@@ -64,7 +67,7 @@
 - descendant 경계: [`abspos/abspos-descendent-001.html`](https://github.com/web-platform-tests/wpt/blob/d5a765f1089ce6d3f72300281481edf3dddff7f3/css/css-flexbox/abspos/abspos-descendent-001.html)
 - paint 순서: [`flexbox-paint-ordering-001.xhtml`](https://github.com/web-platform-tests/wpt/blob/d5a765f1089ce6d3f72300281481edf3dddff7f3/css/css-flexbox/flexbox-paint-ordering-001.xhtml), [`flexbox-paint-ordering-003.html`](https://github.com/web-platform-tests/wpt/blob/d5a765f1089ce6d3f72300281481edf3dddff7f3/css/css-flexbox/flexbox-paint-ordering-003.html)
 
-### 필수 local fixture 축
+### 고정 Chromium fixture
 
 1. `row`, `row-reverse`, `column`, `column-reverse`에서 main/cross axis의 `justify-content`·`align-self` static position.
 2. wrap/nowrap, 한 줄/두 줄, `align-content` 차이에서 absolute child가 line 계산에 기여하지 않는지 확인.
@@ -72,15 +75,23 @@
 4. inset 양 축 auto, 한 축 auto/반대 축 definite, 네 inset definite를 나눠 static-position 사용 여부를 확인.
 5. fixed used child size, signed margin, auto margin, border/padding을 둬 static rectangle과 containing block geometry를 분리.
 6. source parent가 Flex인 direct child, Flex ancestor 아래 Block wrapper descendant, Flex source parent와 별도 positioned containing block, ancestor Flex owner와 Block source parent 조합.
-7. `order` 음수·0·양수 in-flow 형제와 absolute child의 authored 음수·양수 order를 겹치게 하고, equal-rank source tie와 중첩 descendant subtree를 확인.
+7. `order` 음수·0·양수 in-flow 형제와 authored order가 다른 absolute 형제를 겹친다. in-flow 형제는 order-modified 순서, absolute 형제는 source tree 순서로 페인트되는지 각각 확인한다. positioned descendant가 in-flow Flex item subtree에 섞이지 않는지도 둔다.
 8. `display:none`, invalid cascade/fallback, missing style/owner, stale revision 및 일부 frame만 만들어지는 실패 입력.
-9. absolute child 유무·order 변경 전후 in-flow node frames와 Flex line 결과 불변, Chrome node geometry 및 paint rank 일치.
+9. absolute child 유무·order 변경 전후 in-flow node frames와 Flex line 결과 불변, Chrome node geometry 및 paint phase 일치.
 
 fixture 수와 node 수는 HTML/CSS를 고정한 다음 확정한다. Chromium oracle, 손계산 가능한 불변식, WPT path 존재 확인은 각각 별도 필드로 보존한다. WPT pass로 보고하지 않는다.
 
+고정 inventory는 20개 case·70개 고유 node다. 입력 HTML/CSS, Chrome 실행 파일, capture 도구 digest는 reference JSON에서 고정한다. 모바일 앱에는 전체 fixture 대신 아래 3개 case를 source style 그대로 연결한다.
+
+- `direct-row-center-end`: 직접 absolute Flex child의 static position
+- `paint-order`: in-flow `order`와 authored `order`가 다른 absolute 형제의 겹침
+- `block-wrapper-static-position`: Flex ancestor 아래 Block wrapper 후손의 Block static position
+
+runtime host가 허용하는 단색 paint 선언을 위해 이 subset의 `background` shorthand만 같은 색의 `background-color`로 정규화한다. 이 smoke는 background shorthand parser 자체를 검증하지 않는다. viewport는 CSS `320×240`이고 root 포함 16개 runtime box의 NodeId/frame을 비교한다. 15개 fixture node의 기대 좌표는 pinned Chrome observation에 case별 viewport offset을 더해 만들며 비교 도구는 최대 오차 `0.5 CSS px`를 적용한다.
+
 ## 모바일 실행 관문
 
-같은 고정 fixture subset을 실제 V8→Stylo→typed style/layout→Taffy→WGPU 경로로 실행한다. Android는 연결된 실기기를 우선 사용하고 기기·OS·GPU backend·build type·viewport·DPR·V8 mode·로그·캡처를 남긴다. iOS Simulator도 동일 NodeId/frame와 WGPU box 제출을 확인한다. 전체 Chrome fixture 행렬, 실기기 성능, GPU pixel equality를 별도 측정 없이 추정하지 않는다.
+같은 고정 fixture subset을 실제 V8→Stylo→typed style/layout→Taffy→WGPU 경로로 실행한다. Android SM-S731N / Android 16 API 36 실기기는 Samsung Xclipse 940 / Vulkan을 선택했다. iPhone 17 Pro / iOS 26.2 Simulator는 Metal backend를 선택했다. 각 플랫폼의 15개 fixture node는 pinned Chrome과 최대 오차 0 CSS px였고, root 포함 `presented boxes=16`을 기록했다. [로그·비교 JSON·캡처](../spec/internal/evidence/c10-3-5-positioned-flex-2026-10-11/README.md). 전체 Chrome fixture 행렬, 전체 WPT suite, 실기기 iOS, 실기기 성능, GPU pixel equality를 별도 측정 없이 추정하지 않는다.
 
 ## 미지원·오류 경계
 
@@ -97,6 +108,8 @@ fixture 수와 node 수는 HTML/CSS를 고정한 다음 확정한다. Chromium o
 ## 기준 자료
 
 - [CSS Flexbox Level 1 §4.1 absolutely-positioned flex children](https://www.w3.org/TR/2025/CRD-css-flexbox-1-20251014/#abspos-items): absolute 자식은 Flex layout에 참여하지 않고, static-position rectangle은 content edge와 단일 used-size Flex item 동작으로 정의한다.
-- [CSS Flexbox Level 1 §4.3 Flex item z-order](https://www.w3.org/TR/2025/CRD-css-flexbox-1-20251014/#painting): Flex item paint에는 order-modified document order가 적용되며 positioned `z-index`는 별도 stacking context 규칙이다.
+- [CSS Flexbox Level 1 §4.3 Flex item z-order](https://www.w3.org/TR/2025/CRD-css-flexbox-1-20251014/#painting): `order`-modified document order는 Flex item paint에 적용되며 absolute 자식은 out-of-flow라 Flex item이 아니다.
+- pinned [WPT `flexbox-paint-ordering-003.html`](https://github.com/web-platform-tests/wpt/blob/d5a765f1089ce6d3f72300281481edf3dddff7f3/css/css-flexbox/flexbox-paint-ordering-003.html): authored `order`가 서로 다른 overlapping absolute Flex 자식의 paint가 `order`를 무시하고 source order를 따른다는 기준이다. suite 실행은 별도 상태로 기록한다.
+- [CSS 2 stacking-context painting order §E.2](https://www.w3.org/TR/CSS2/zindex.html#painting-order): 제한 profile의 `z-index:auto` positioned descendants paint phase를 구분하는 기준이다.
 - [CSS Flexbox Level 1 §5.4 `order`](https://www.w3.org/TR/2025/CRD-css-flexbox-1-20251014/#order-property): source order를 바꾸지 않는 visual reordering 경계를 따른다.
 - 저장소의 C12.2 [내부 계약 0055](../spec/internal/0055-c12-2-absolute-block.md), [C10.3.2 내부 계약 0051](../spec/internal/0051-c10-3-2-flex-order.md), 잠긴 Taffy `0.14.0` 구현을 대조한다. Taffy 결과를 CSS oracle로 간주하지 않는다.
