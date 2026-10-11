@@ -2,7 +2,7 @@
 
 ## 상태와 범위
 
-- 작업 브랜치에서 구현·검증을 마쳤고 [PR #103](https://github.com/ohah/spinon/pull/103)이 열려 있다. 병합 전이므로 공식 병합 완료가 아니다.
+- 제한 구현·검증은 [PR #103](https://github.com/ohah/spinon/pull/103)으로 리베이스 병합했다. 이 페이지의 Android API 37 emulator·iOS Simulator 결과 외에 Android 실기기 보조 smoke를 [별도 기록](./c07-2-android-physical-2026-10-11/README.md)에 추가했다.
 - 내부 계약 숫자 버전과 모든 crate 버전은 `0.1.0`이다. `0044`는 명세 문서 ID다.
 - 현재 runtime layout profile의 물리 네 면 border used width를 Stylo에서 `LayoutBorder`와 Taffy로 전달한다.
 - border 선·색상 페인트, radius, border-image 페인트, Grid·텍스트 intrinsic sizing은 구현하지 않았다.
@@ -24,7 +24,7 @@
 | Android | API 37 ARM64 emulator, Android 17. `SPINON_C072_EVAL`에서 `layout=ready boxes=6`; WGPU는 GLES 경로의 ANGLE/SwiftShader software backend에서 6 boxes를 제출했다. | [Logcat](./c07-2-border-width-layout-android-emulator-2026-10-10.log) · [화면](./c07-2-border-width-layout-android-emulator-2026-10-10.png) |
 | iOS | iPhone 17 Pro / iOS 26.2 Simulator. `SPINON_C072_SUMMARY`에서 `status=0 layout=ready boxes=6`; UIKit WGPU surface가 6 boxes를 제출했다. | [실행 로그](./c07-2-border-width-layout-ios-simulator-2026-10-10.log) · [화면](./c07-2-border-width-layout-ios-simulator-2026-10-10.png) |
 
-화면의 색상 사각형은 layout geometry 시각화다. 테두리 선은 그리지 않으므로 border paint가 구현됐다는 증거가 아니다. 시뮬레이터 런타임 로그는 개별 자식 frame을 Chromium과 수치 대조하지 않는다. 수치 비교는 고정 50-node fixture의 Rust·Stylo·Taffy 비교에서만 주장한다. 실기기와 hardware GPU는 이번 검증에 포함하지 않았다.
+화면의 색상 사각형은 layout geometry 시각화다. 테두리 선은 그리지 않으므로 border paint가 구현됐다는 증거가 아니다. 시뮬레이터 런타임 로그는 개별 자식 frame을 Chromium과 수치 대조하지 않는다. 수치 비교는 고정 50-node fixture의 Rust·Stylo·Taffy 비교에서만 주장한다. 이 문서에 기록한 두 Simulator 결과는 실기기나 hardware GPU 근거가 아니다.
 
 iOS의 전체 C ABI 보고 문자열은 OSLog 길이 제한으로 잘릴 수 있어 짧은 `SPINON_C072_SUMMARY`를 추가했다. 전체 처리량 수치를 추정하지 않고 summary, 별도 environment layout 로그, draw 제출 로그를 보존했다.
 
