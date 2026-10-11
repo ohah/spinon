@@ -35,11 +35,15 @@
 
 ## 실행 결과와 남은 한계
 
-- `cargo test --locked --workspace --all-features`: 255 passed, 1 ignored. ignored는 macOS host V8 초기화가 되지 않는 기존 C12.2 fixture이며 Android/iOS 실제 runtime 경로로 별도 확인했다.
+- `cargo test --locked --workspace --all-features --quiet`: 533 passed, 3 ignored (전체 536개 test case). 미실행은 C12.2 macOS V8 runtime fixture 1건과 C05 release benchmark 2건이다. Android 실기기/iOS Simulator C10.3.5 runtime fixture는 별도로 실행했다.
 - `cargo clippy --locked --workspace --all-targets --all-features -- -D warnings`: 통과.
 - `cargo fmt --all -- --check`, `bun run test:css-reference`: 통과, CSS reference 155 tests.
 - Android 실기기와 iOS Simulator 각각 15/15 fixture node 일치, 최대 absolute frame 오차 0 CSS px, WGPU 16 boxes presented.
 - WPT suite, 전체 20 case 모바일 실행, iOS 실기기, Chrome과 GPU pixel-by-pixel 비교, hardware GPU 성능은 검증하지 않았다.
 - Android 빌드는 성공했으며 compile SDK 37.2 / AGP 8.13.2 조합 경고가 있었다. iOS build 성공 로그에는 고정 V8 archive의 중복 timestamp debug-map 경고가 남았다.
+
+## 후속 집계 정정
+
+초기 검토 기록의 workspace test 수 `255 passed, 1 ignored`는 해당 검토에 사용한 출력과 일치하지 않는 잘못된 집계였다. PR 재검토에서 전체 workspace를 다시 실행해 536개 중 533개 통과·3개 ignored임을 확인하고 이 기록과 PR 본문을 정정했다. `--list --ignored`가 반환한 세 항목은 `runtime_gpu::tests::c12_2_absolute_runtime_frames_match_the_pinned_chromium_geometry`, `session::ua_cascade::cache_benchmark::c05_runtime_result_cache_release_benchmark`, `session::ua_cascade::incremental_benchmark::c05_runtime_incremental_restyle_release_benchmark`다.
 
 플랫폼 raw 로그와 캡처는 [실행 evidence 디렉터리](./c10-3-5-positioned-flex-2026-10-11/README.md)에 있다.
