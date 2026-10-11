@@ -1,0 +1,19 @@
+{
+  "runID": "c124-ios-matrix-20261011T133335019Z-e6f15f3b",
+  "branchHead": "5ed036b36e1a08c62b0bcef82a3e93bc98d67804",
+  "simulator": {
+    "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "name": "iPhone 17 Pro",
+    "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2"
+  },
+  "xcodeVersion": "Xcode 26.2\nBuild version 17C52",
+  "appBundleID": "dev.spinon.bootstrap",
+  "appExecutableSHA256": "abeb5ddaf663059231784bce32737d18d04660aca618c416fa8aab59996785ea",
+  "matrixInputSHA256": "a21f025f99c9fd0f716e60c0db30e58deb0cd92fc856cc30cb5898e4e93339d9",
+  "inventorySHA256": "f7890fdab13afb896fa9678be192f1829aae43ef0eef197ca879aa78f8bdc6aa",
+  "chromiumReferencePath": "tests/fixtures/css/references/c12-4-stacking-context-v1.json",
+  "chromiumReferenceID": "chromium-darwin-arm64-Chrome-154.0.8037.98-c12-4",
+  "chromiumReferenceSHA256": "0fd023da34b8488fd6da6330d720b3c2b5af0ece2fe4a0e670a9b140fb0b93ba",
+  "geometryToleranceCssPx": 0.5,
+  "comparisonScope": "런타임 geometry와 기대 거부 진단 비교; Metal 표면 pixel readback 미포함"
+}

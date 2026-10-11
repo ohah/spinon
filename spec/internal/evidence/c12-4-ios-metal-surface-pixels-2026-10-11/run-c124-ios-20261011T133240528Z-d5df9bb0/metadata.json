@@ -1,0 +1,15 @@
+{
+  "batchID": "c124-ios-20261011T133240528Z-d5df9bb0",
+  "simulator": {
+    "name": "iPhone 17 Pro",
+    "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+    "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro"
+  },
+  "xcode": "Xcode 26.2\nBuild version 17C52",
+  "appBundleID": "dev.spinon.bootstrap",
+  "appBinarySha256": "3ee288a9fd9f18c85f05089c38cc547bc0ff8162e6cdcca3c8a3cb75e31579c3",
+  "referenceSha256": "0fd023da34b8488fd6da6330d720b3c2b5af0ece2fe4a0e670a9b140fb0b93ba",
+  "fixtureSha256": "0e28db166cc11208054aff9f44b57b999779d5bb64eee4de3ce4160498da4d22",
+  "startedAt": "c124-ios-20261011T133240528Z-d5df9bb0"
+}
