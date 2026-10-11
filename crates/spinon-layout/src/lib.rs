@@ -18,6 +18,9 @@ use percentage_basis::validate_spacing_percentage_bases;
 use positioning::validate_positioning;
 use spinon_core::NodeId;
 
+/// 현재 재귀형 Taffy 경로에서 허용하는 최대 입력 트리 깊이입니다. 루트 깊이는 1입니다.
+pub const MAX_LAYOUT_TREE_DEPTH: usize = 1_024;
+
 pub use css_math::{LayoutCalcId, LayoutCssMath, LayoutCssMathProperty, LayoutCssMathValue};
 pub use error::LayoutError;
 pub use revision::{LayoutInputRevision, LayoutSourceRevision};
@@ -207,10 +210,24 @@ fn validate(input: &LayoutInput) -> Result<BTreeMap<NodeId, usize>, LayoutError>
 
     detect_cycles(input, &index)?;
     let mut reachable = BTreeSet::new();
-    let mut pending = vec![input.root];
-    while let Some(id) = pending.pop() {
+    let mut pending = vec![(input.root, 1_usize)];
+    while let Some((id, depth)) = pending.pop() {
         if reachable.insert(id) {
-            pending.extend(input.nodes[index[&id]].children.iter().copied());
+            if depth > MAX_LAYOUT_TREE_DEPTH {
+                return Err(LayoutError::TreeDepthExceeded {
+                    node: id,
+                    depth,
+                    maximum: MAX_LAYOUT_TREE_DEPTH,
+                });
+            }
+            pending.extend(
+                input.nodes[index[&id]]
+                    .children
+                    .iter()
+                    .rev()
+                    .copied()
+                    .map(|child| (child, depth.saturating_add(1))),
+            );
         }
     }
     if let Some(id) = index.keys().find(|id| !reachable.contains(id)) {
@@ -419,6 +436,8 @@ fn detect_cycles(input: &LayoutInput, index: &BTreeMap<NodeId, usize>) -> Result
 
 #[cfg(test)]
 mod absolute_position_tests;
+#[cfg(test)]
+mod depth_tests;
 #[cfg(test)]
 mod fixed_position_tests;
 #[cfg(test)]

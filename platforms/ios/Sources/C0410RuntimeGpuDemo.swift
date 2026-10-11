@@ -1,6 +1,50 @@
 import MetalKit
 import UIKit
 
+private struct C124MetalPixelCase {
+    let direction: String
+    let blueOrder: Int
+    let redOrder: Int
+    let runID: String
+
+    var caseID: String {
+        "flex-\(direction)-paint-order-\(blueOrder)-\(redOrder)"
+    }
+
+    var cssSample: (x: Int, y: Int) {
+        (70, direction.hasPrefix("column") && direction == "column-reverse" ? 175 : 155)
+    }
+
+    var expectedRGBA: String {
+        let blueOnTop = (direction == "row-reverse" || direction == "column-reverse")
+            ? blueOrder == 0 : blueOrder == 1
+        return blueOnTop ? "#2866f6ff" : "#e5484dff"
+    }
+
+    static func parse(arguments: [String]) -> C124MetalPixelCase? {
+        guard let raw = arguments.first(where: {
+            $0.hasPrefix("--spinon-c124-metal-surface-readback=")
+        }) else { return nil }
+        let fields = String(raw.dropFirst("--spinon-c124-metal-surface-readback=".count))
+            .split(separator: ",", omittingEmptySubsequences: false)
+        guard fields.count == 3,
+              let blueOrder = Int(fields[1]), let redOrder = Int(fields[2]),
+              ["row", "row-reverse", "column", "column-reverse"].contains(String(fields[0])),
+              (blueOrder == 0 || blueOrder == 1), redOrder == 0,
+              let runArgument = arguments.first(where: {
+                  $0.hasPrefix("--spinon-c124-metal-surface-run=")
+              }) else { return nil }
+        let runID = String(runArgument.dropFirst("--spinon-c124-metal-surface-run=".count))
+        guard !runID.isEmpty,
+              runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") })
+        else { return nil }
+        return C124MetalPixelCase(
+            direction: String(fields[0]), blueOrder: blueOrder,
+            redOrder: redOrder, runID: runID
+        )
+    }
+}
+
 final class C0410RuntimeGpuDemoViewController: UIViewController {
     private let runtimeQueue = DispatchQueue(label: "spinon.c0410.runtime")
     private let renderQueue = DispatchQueue(label: "spinon.c0410.render")
@@ -75,6 +119,18 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c122-absolute-block")
     private let c123FixedPositionProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c123-fixed-position")
+    private let c124StackingProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c124-stacking-context")
+        || ProcessInfo.processInfo.arguments.contains("--spinon-c124-depth-safety")
+        || ProcessInfo.processInfo.arguments.contains(where: {
+            $0.hasPrefix("--spinon-c124-metal-surface-readback=")
+        })
+    private let c124MetalPixelCase = C124MetalPixelCase.parse(
+        arguments: ProcessInfo.processInfo.arguments
+    )
+    private var c124MetalPixelReadbackFinished = false
+    private let c124DepthSafetyProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c124-depth-safety")
     private let c1035PositionedFlexProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c1035-positioned-flex")
     private let blockFormattingProbeRequested = ProcessInfo.processInfo.arguments
@@ -94,6 +150,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     }
     private var fixedSizeCssFixtureRequested: Bool {
         c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
+            || c124StackingProbeRequested
             || c1035PositionedFlexProbeRequested
             || blockFormattingProbeRequested
             || flexWrapProbeRequested || flexDistributionProbeRequested
@@ -119,6 +176,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? "SPINON · C10.3.5 positioned Flex"
             : c123FixedPositionProbeRequested
             ? "SPINON · C12.3 viewport fixed"
+            : c124StackingProbeRequested
+            ? "SPINON · C12.4 stacking context"
             : c122AbsoluteBlockProbeRequested
             ? "SPINON · C12.2 Block absolute"
             : c121PositioningProbeRequested
@@ -243,6 +302,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? "C10.3.5 positioned Flex 정렬·wrapper·paint 순서 WGPU 장면"
             : c123FixedPositionProbeRequested
             ? "C12.3 viewport fixed 배치 WGPU 장면"
+            : c124StackingProbeRequested
+            ? "C12.4 z-index 쌓임 맥락 WGPU 장면"
             : c122AbsoluteBlockProbeRequested
             ? "C12.2 Block absolute WGPU 장면"
             : c121PositioningProbeRequested
@@ -743,10 +804,22 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
     private func initializeRuntime() {
         guard !isClosing else { return }
-        let handle = c1035PositionedFlexProbeRequested
+        if c124StackingProbeRequested && c124MetalPixelCase == nil
+            && ProcessInfo.processInfo.arguments.contains(where: {
+                $0.hasPrefix("--spinon-c124-metal-surface-readback=")
+            }) {
+            log("SPINON_C124_METAL_PIXEL status=error reason=invalid-case-arguments")
+            postStatus("실패 · C12.4 Metal 표본 case 인수가 올바르지 않습니다")
+            return
+        }
+        let handle = c124MetalPixelCase != nil
+            ? SpinonRunner.createRuntimeGpuHostWithC12_4SurfaceReadbackFixture()
+            : c1035PositionedFlexProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithC10_3_5PositionedFlexFixture()
             : c123FixedPositionProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithC12_3FixedFixture()
+            : c124StackingProbeRequested || c124DepthSafetyProbeRequested
+            ? SpinonRunner.createRuntimeGpuHostWithC12_4StackingFixture()
             : c122AbsoluteBlockProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithC12_2AbsoluteBlockFixture()
             : c121PositioningProbeRequested
@@ -794,6 +867,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? SpinonRunner.evalRuntimeGpuC10_3_5PositionedFlexFixture(handle)
             : c123FixedPositionProbeRequested
             ? SpinonRunner.evalRuntimeGpuC12_3FixedFixture(handle)
+            : c124StackingProbeRequested || c124DepthSafetyProbeRequested
+            ? SpinonRunner.evalRuntimeGpuC12_4StackingFixture(handle)
             : c122AbsoluteBlockProbeRequested
             ? SpinonRunner.evalRuntimeGpuC12_2AbsoluteBlockFixture(handle)
             : c121PositioningProbeRequested
@@ -859,6 +934,31 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             postStatus("실패 · \(result ?? "JavaScript 보고 없음")")
             return
         }
+        if let pixelCase = c124MetalPixelCase {
+            let mutation = SpinonRunner.evalRuntimeGpuC12_4Source(
+                handle, source: c124MetalPixelMutationSource(for: pixelCase)
+            ) ?? "status=-1 missing-report"
+            guard mutation.hasPrefix("status=0 ") else {
+                log("SPINON_C124_METAL_PIXEL status=error run_id=\(pixelCase.runID) case=\(pixelCase.caseID) stage=fixture-mutation report=\(mutation)")
+                postStatus("실패 · C12.4 reverse Flex fixture 변경 · \(mutation)")
+                return
+            }
+            result = mutation
+            log("SPINON_C124_METAL_FIXTURE run_id=\(pixelCase.runID) case=\(pixelCase.caseID) direction=\(pixelCase.direction) blue_order=\(pixelCase.blueOrder) red_order=\(pixelCase.redOrder) expected=\(pixelCase.expectedRGBA) \(runtimeStatusSummary(mutation))")
+        }
+        if c124DepthSafetyProbeRequested {
+            guard let fixtureNodeCount = Int(reportField(result ?? "", "document_nodes=")) else {
+                postStatus("실패 · C12.4 fixture 기본 노드 수를 읽지 못했습니다")
+                return
+            }
+            let depthProbe = runC124DepthSafetyProbe(
+                host: handle, fixtureNodeCount: fixtureNodeCount
+            )
+            guard depthProbe.passed else {
+                postStatus("실패 · C12.4 깊이 검증 · \(depthProbe.failure)")
+                return
+            }
+        }
         if flexReverseProbeRequested, result?.hasPrefix("status=0 ") == true {
             logC1031NodeFrames(result ?? "")
         }
@@ -915,6 +1015,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 ? "SPINON_C1035"
                 : c122AbsoluteBlockProbeRequested
                 ? "SPINON_C122"
+                : c124StackingProbeRequested
+                ? "SPINON_C124"
                 : c121PositioningProbeRequested
                 ? "SPINON_C121"
                 : flexAlignmentProbeRequested
@@ -965,6 +1067,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 ? "SPINON_C1035"
                 : c122AbsoluteBlockProbeRequested
                 ? "SPINON_C122"
+                : c124StackingProbeRequested
+                ? "SPINON_C124"
                 : c121PositioningProbeRequested
                 ? "SPINON_C121"
                 : flexAlignmentProbeRequested
@@ -1042,6 +1146,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             log("SPINON_C051_EVAL \(result ?? "")")
             postStatus(runtimeStatusSummary(result ?? "C05 장면 준비 완료"))
         }
+        if c124DepthSafetyProbeRequested {
+            postStatus("C12.4 깊이 검증 통과 · 1024 통과, 1025 거부, 얕은 revision 복구")
+        }
         DispatchQueue.main.async { [weak self] in
             guard let self else { return }
             let size = self.lastDrawableSize
@@ -1050,6 +1157,135 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             }
             self.refreshEnvironment()
         }
+    }
+
+    private func runC124DepthSafetyProbe(
+        host: UInt64,
+        fixtureNodeCount: Int
+    ) -> (passed: Bool, failure: String) {
+        let maximumStarted = ProcessInfo.processInfo.systemUptime
+        let maximum = SpinonRunner.evalRuntimeGpuC12_4Source(
+            host, source: c124DepthBuildSource(maximumDepth: 1024)
+        ) ?? "status=-1 missing-report"
+        let maximumMillis = Int((ProcessInfo.processInfo.systemUptime - maximumStarted) * 1000)
+        let maximumPassed = maximum.hasPrefix("status=0 ")
+            && reportField(maximum, "layout=") == "ready"
+            && reportField(maximum, "boxes=") == String(fixtureNodeCount + 1023)
+            && reportField(maximum, "cascadeRecomputedStyleElements=")
+                == String(fixtureNodeCount + 1023)
+        log("SPINON_C124_DEPTH_STAGE stage=maximum expected=1024 passed=\(maximumPassed) elapsed_ms=\(maximumMillis) report_length=\(maximum.utf8.count)")
+        guard maximumPassed else {
+            log("SPINON_C124_DEPTH_SUMMARY status=failed stage=maximum report=\(maximum)")
+            return (false, "1024 깊이를 계산하지 못했습니다")
+        }
+
+        let overflowStarted = ProcessInfo.processInfo.systemUptime
+        let overflow = SpinonRunner.evalRuntimeGpuC12_4Source(
+            host, source: c124DepthOverflowSource()
+        ) ?? "status=-1 missing-report"
+        let overflowMillis = Int((ProcessInfo.processInfo.systemUptime - overflowStarted) * 1000)
+        let overflowPassed = !overflow.hasPrefix("status=0 ")
+            && overflow.contains("tree_depth_exceeded")
+            && overflow.contains("1025") && overflow.contains("1024")
+        log("SPINON_C124_DEPTH_STAGE stage=overflow expected=reject-1025 passed=\(overflowPassed) elapsed_ms=\(overflowMillis) report=\(overflow)")
+        guard overflowPassed else {
+            log("SPINON_C124_DEPTH_SUMMARY status=failed stage=overflow")
+            return (false, "1025 초과 요청이 지정된 오류로 거부되지 않았습니다")
+        }
+
+        let recoveryStarted = ProcessInfo.processInfo.systemUptime
+        let recovery = SpinonRunner.evalRuntimeGpuC12_4Source(
+            host, source: c124DepthRecoverySource()
+        ) ?? "status=-1 missing-report"
+        let recoveryMillis = Int((ProcessInfo.processInfo.systemUptime - recoveryStarted) * 1000)
+        let recoveryPassed = recovery.hasPrefix("status=0 ")
+            && reportField(recovery, "layout=") == "ready"
+            && reportField(recovery, "boxes=") == String(fixtureNodeCount)
+        log("SPINON_C124_DEPTH_STAGE stage=recovery expected=shallow-ready passed=\(recoveryPassed) elapsed_ms=\(recoveryMillis) report_length=\(recovery.utf8.count)")
+        let passed = maximumPassed && overflowPassed && recoveryPassed
+        log("SPINON_C124_DEPTH_SUMMARY status=\(passed ? "passed" : "failed") maximum=1024 overflow=1025 recovery=\(recoveryPassed) platform=ios-simulator")
+        return (passed, recoveryPassed ? "" : "초과 거부 후 얕은 revision 계산이 복구되지 않았습니다")
+    }
+
+    private func c124DepthBuildSource(maximumDepth: Int) -> String {
+        """
+        (() => {
+          var parent = globalThis.spinonC124NodeRefs['c124-root'];
+          var root = null;
+          for (let index = 0; index < \(maximumDepth - 1); index += 1) {
+            const node = document.createElement('div');
+            node.setAttribute('style', 'position:relative;z-index:0;width:1px;height:1px');
+            parent.appendChild(node);
+            if (root === null) root = node;
+            parent = node;
+          }
+          globalThis.__spinonC124DepthRoot = root;
+          globalThis.__spinonC124DepthLeaf = parent;
+          return 'SPINON_C124_DEPTH_MAX=\(maximumDepth)';
+        })()
+        """
+    }
+
+    private func c124MetalPixelMutationSource(for pixelCase: C124MetalPixelCase) -> String {
+        let column = pixelCase.direction.hasPrefix("column")
+        let reverse = pixelCase.direction.hasSuffix("reverse")
+        let itemSize = column
+            ? "flex:0 0 60px;width:100px;height:60px"
+            : "flex:0 0 80px;width:80px;height:60px"
+        let overlapMargin: String
+        switch (column, reverse) {
+        case (false, false): overlapMargin = "margin-right:-40px"
+        case (false, true): overlapMargin = "margin-left:-40px"
+        case (true, false): overlapMargin = "margin-bottom:-40px"
+        case (true, true): overlapMargin = "margin-top:-40px"
+        }
+        let containerStyle = "display:flex;position:absolute;left:20px;top:125px;width:100px;height:100px;flex-direction:\(pixelCase.direction);align-items:flex-start;justify-content:flex-start"
+        let blueStyle = "position:static;\(itemSize);\(overlapMargin);order:\(pixelCase.blueOrder);background-color:#2866f6"
+        let redStyle = "position:static;\(itemSize);\(overlapMargin);order:\(pixelCase.redOrder);background-color:#e5484d"
+        return """
+        (() => {
+          const nodes = globalThis.spinonC124NodeRefs;
+          if (!nodes) throw new Error('C12.4 surface readback fixture node map is missing');
+          const targets = [
+            ['c124-static-flex-container', '\(containerStyle)'],
+            ['c124-static-flex-z-one', '\(blueStyle)'],
+            ['c124-static-flex-z-two', '\(redStyle)'],
+          ];
+          for (const [id, style] of targets) {
+            const element = nodes[id];
+            if (!element) throw new Error('C12.4 surface readback target missing: ' + id);
+            element.setAttribute('style', style);
+          }
+          return { direction: '\(pixelCase.direction)', blueOrder: \(pixelCase.blueOrder), redOrder: \(pixelCase.redOrder) };
+        })()
+        """
+    }
+
+    private func c124DepthOverflowSource() -> String {
+        """
+        (() => {
+          const node = document.createElement('div');
+          node.setAttribute('style', 'position:relative;z-index:0;width:1px;height:1px');
+          globalThis.__spinonC124DepthLeaf.appendChild(node);
+          globalThis.__spinonC124DepthOverflow = node;
+          return 'SPINON_C124_DEPTH_OVERFLOW=1025';
+        })()
+        """
+    }
+
+    private func c124DepthRecoverySource() -> String {
+        """
+        (() => {
+          globalThis.__spinonC124DepthLeaf.removeChild(globalThis.__spinonC124DepthOverflow);
+          globalThis.spinonC124NodeRefs['c124-root'].removeChild(
+            globalThis.__spinonC124DepthRoot
+          );
+          delete globalThis.__spinonC124DepthOverflow;
+          delete globalThis.__spinonC124DepthRoot;
+          delete globalThis.__spinonC124DepthLeaf;
+          return 'SPINON_C124_DEPTH_RECOVERED';
+        })()
+        """
     }
 
     @objc private func evaluateCustomPropertiesFixture() {
@@ -1433,6 +1669,23 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             runShutdownProbeGate()
         }
         guard canUseSurfaceGeneration(generation) else { return }
+        if let pixelCase = c124MetalPixelCase, !c124MetalPixelReadbackFinished {
+            stateLock.lock()
+            let scale = displayScale
+            stateLock.unlock()
+            let pixelX = UInt32(((Float(pixelCase.cssSample.x) + 0.5) * scale).rounded(.down))
+            let pixelY = UInt32(((Float(pixelCase.cssSample.y) + 0.5) * scale).rounded(.down))
+            let request = SpinonRunner.requestRuntimeGpuSurfacePixelReadback(
+                forTest: handle,
+                x: pixelX, y: pixelY
+            ) ?? "status=-1 missing-request-report"
+            guard request.hasPrefix("status=0 ") else {
+                log("SPINON_C124_METAL_PIXEL status=error run_id=\(pixelCase.runID) case=\(pixelCase.caseID) stage=request report=\(request)")
+                c124MetalPixelReadbackFinished = true
+                throw C0410LatestTaskLaneError.operationFailed(request)
+            }
+            log("SPINON_C124_METAL_PIXEL_REQUESTED run_id=\(pixelCase.runID) case=\(pixelCase.caseID) css_x=\(pixelCase.cssSample.x) css_y=\(pixelCase.cssSample.y) scale=\(scale) pixel_x=\(pixelX) pixel_y=\(pixelY)")
+        }
         let result = SpinonRunner.drawRuntimeGpuWgpu(handle)
         log("SPINON_C0410_DRAW generation=\(generation) \(result ?? "")")
         if result?.hasPrefix("status=-12 ") == true {
@@ -1443,6 +1696,33 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         if result?.hasPrefix("status=0 ") != true {
             postStatus("실패 · \(result ?? "WGPU draw 보고 없음")")
             throw C0410LatestTaskLaneError.operationFailed(result ?? "WGPU draw 실패 보고 없음")
+        }
+        if let pixelCase = c124MetalPixelCase, !c124MetalPixelReadbackFinished {
+            let sampleXValue = reportField(result ?? "", "surface_pixel_x=")
+            let sampleYValue = reportField(result ?? "", "surface_pixel_y=")
+            let rgba = reportField(result ?? "", "surface_pixel_rgba=")
+            let surfaceSize = reportField(result ?? "", "surface_texture=")
+            guard let sampleX = UInt32(sampleXValue),
+                  let sampleY = UInt32(sampleYValue),
+                  !rgba.isEmpty, !surfaceSize.isEmpty else {
+                log("SPINON_C124_METAL_PIXEL status=error run_id=\(pixelCase.runID) case=\(pixelCase.caseID) stage=missing-sample report=\(result ?? "missing")")
+                c124MetalPixelReadbackFinished = true
+                throw C0410LatestTaskLaneError.operationFailed("Metal surface pixel 표본이 draw 보고에 없습니다")
+            }
+            stateLock.lock()
+            let scale = displayScale
+            stateLock.unlock()
+            let passed = rgba == pixelCase.expectedRGBA
+                && sampleX == UInt32(((Float(pixelCase.cssSample.x) + 0.5) * scale).rounded(.down))
+                && sampleY == UInt32(((Float(pixelCase.cssSample.y) + 0.5) * scale).rounded(.down))
+            c124MetalPixelReadbackFinished = true
+            let status = passed ? "ok" : "error"
+            log("SPINON_C124_METAL_PIXEL status=\(status) run_id=\(pixelCase.runID) case=\(pixelCase.caseID) direction=\(pixelCase.direction) blue_order=\(pixelCase.blueOrder) red_order=\(pixelCase.redOrder) css_x=\(pixelCase.cssSample.x) css_y=\(pixelCase.cssSample.y) scale=\(scale) pixel_x=\(sampleX) pixel_y=\(sampleY) rgba=\(rgba) expected=\(pixelCase.expectedRGBA) surface=\(surfaceSize) renderer=metal-surface")
+            guard passed else {
+                postStatus("실패 · C12.4 Metal surface 색상·좌표 비교")
+                throw C0410LatestTaskLaneError.operationFailed("Metal surface sample이 고정 Chrome 표본과 다릅니다")
+            }
+            postStatus("C12.4 Metal surface 표본 통과 · \(pixelCase.caseID)")
         }
         if failureProbeRequested && !failureProbeStarted {
             failureProbeStarted = true

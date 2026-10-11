@@ -1,6 +1,7 @@
 use super::super::{
     RUNTIME_CSS_C12_1_POSITION_FIXTURE_SOURCE, RUNTIME_CSS_C12_2_ABSOLUTE_BLOCK_FIXTURE_SOURCE,
-    SpinonRuntimeGpuHost, c12_3_fixed_runtime_script, raw_host,
+    RUNTIME_CSS_C12_4_STACKING_FIXTURE_SOURCE, SpinonRuntimeGpuHost, c12_3_fixed_runtime_script,
+    raw_host,
 };
 use super::{ERR_ARGUMENT, write_host_status};
 use std::ffi::c_char;
@@ -113,6 +114,81 @@ pub unsafe extern "C" fn spinon_runtime_gpu_host_eval_c12_3_fixed_fixture(
     match host.eval(&source, layout_timeout_millis) {
         Ok(report) => write_host_status(0, report, output, output_capacity),
         Err((status, report)) => write_host_status(status, report, output, output_capacity),
+    }
+}
+
+#[unsafe(no_mangle)]
+/// C12.4 제한 Block/Flex 쌓임 맥락 fixture를 V8·Stylo·Taffy·WGPU 경로에서 평가합니다.
+///
+/// # Safety
+/// `host`는 살아 있는 C12.4 runtime host여야 합니다. 같은 host의 호출·해제와 경합시키면 안 됩니다.
+/// 호출은 기다림 허용 background executor에서 해야 하며, `output`은 `output_capacity` 바이트를 쓸 수 있어야 합니다.
+pub unsafe extern "C" fn spinon_runtime_gpu_host_eval_c12_4_stacking_fixture(
+    host: *mut SpinonRuntimeGpuHost,
+    layout_timeout_millis: u64,
+    output: *mut c_char,
+    output_capacity: usize,
+) -> i32 {
+    if output.is_null() || output_capacity == 0 {
+        return ERR_ARGUMENT;
+    }
+    let Some(host) = raw_host(host) else {
+        return ERR_ARGUMENT;
+    };
+    match host.eval(
+        RUNTIME_CSS_C12_4_STACKING_FIXTURE_SOURCE,
+        layout_timeout_millis,
+    ) {
+        Ok(report) => write_host_status(0, report, output, output_capacity),
+        Err((status, report)) => write_host_status(status, report, output, output_capacity),
+    }
+}
+
+#[cfg(feature = "c12-4-worker-stack-residency-test")]
+#[unsafe(no_mangle)]
+/// 실제 C12.4 CSS worker의 stack bounds와 순간 mincore residency를 테스트용으로 표본화합니다.
+///
+/// # Safety
+/// `host`는 살아 있는 C12.4 runtime host여야 하며 `output`은 `output_capacity` 바이트를 쓸 수 있어야 합니다.
+pub unsafe extern "C" fn spinon_runtime_gpu_host_css_worker_stack_residency_for_test(
+    host: *mut SpinonRuntimeGpuHost,
+    output: *mut c_char,
+    output_capacity: usize,
+) -> i32 {
+    if output.is_null() || output_capacity == 0 {
+        return ERR_ARGUMENT;
+    }
+    let Some(host) = raw_host(host) else {
+        return ERR_ARGUMENT;
+    };
+    match host.css_worker_stack_residency_sample_json_for_test() {
+        Ok(report) => write_host_status(0, report, output, output_capacity),
+        Err(error) => write_host_status(-13, error, output, output_capacity),
+    }
+}
+
+#[cfg(feature = "c12-4-metal-surface-readback-test")]
+#[unsafe(no_mangle)]
+/// 같은 C12.4 host가 제출할 Metal surface frame에서 단일 표본을 요청합니다.
+///
+/// # Safety
+/// `host`는 살아 있는 C12.4 surface-readback host이며 같은 render queue에서 직렬 호출해야 합니다.
+pub unsafe extern "C" fn spinon_runtime_gpu_host_request_c12_4_surface_pixel_for_test(
+    host: *mut SpinonRuntimeGpuHost,
+    x: u32,
+    y: u32,
+    output: *mut c_char,
+    output_capacity: usize,
+) -> i32 {
+    if output.is_null() || output_capacity == 0 {
+        return ERR_ARGUMENT;
+    }
+    let Some(host) = raw_host(host) else {
+        return ERR_ARGUMENT;
+    };
+    match host.request_surface_pixel_readback_for_test(x, y) {
+        Ok(report) => write_host_status(0, report, output, output_capacity),
+        Err(error) => write_host_status(ERR_ARGUMENT, error, output, output_capacity),
     }
 }
 

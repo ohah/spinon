@@ -3,6 +3,11 @@
 #include <android/native_window_jni.h>
 #include <android/trace.h>
 #include <jni.h>
+#include <errno.h>
+#include <pthread.h>
+#include <sys/mman.h>
+#include <sys/syscall.h>
+#include <unistd.h>
 
 #include "spinon_ffi.h"
 #include "spinon_wgpu_r08.h"
@@ -10,8 +15,81 @@
 #include <array>
 #include <cstdint>
 #include <cstring>
+#include <memory>
+#include <new>
 #include <string>
 #include <vector>
+
+extern "C" int spinon_c124_capture_current_thread_stack(
+    uint64_t *thread_id, uintptr_t *start_address, size_t *stack_size,
+    size_t *guard_size, size_t *page_size, int *error_code) {
+  if (thread_id == nullptr || start_address == nullptr || stack_size == nullptr ||
+      guard_size == nullptr || page_size == nullptr || error_code == nullptr) {
+    return -1;
+  }
+  *error_code = 0;
+  pthread_attr_t attributes{};
+  const int attributes_status = pthread_getattr_np(pthread_self(), &attributes);
+  if (attributes_status != 0) {
+    *error_code = attributes_status;
+    return -1;
+  }
+  void *stack_base = nullptr;
+  size_t observed_stack_size = 0;
+  const int stack_status = pthread_attr_getstack(
+      &attributes, &stack_base, &observed_stack_size);
+  size_t observed_guard_size = 0;
+  const int guard_status = pthread_attr_getguardsize(&attributes, &observed_guard_size);
+  const int destroy_status = pthread_attr_destroy(&attributes);
+  if (stack_status != 0 || guard_status != 0 || destroy_status != 0 ||
+      stack_base == nullptr || observed_stack_size == 0 ||
+      observed_guard_size >= observed_stack_size) {
+    *error_code = stack_status != 0 ? stack_status :
+        (guard_status != 0 ? guard_status : (destroy_status != 0 ? destroy_status : EINVAL));
+    if (observed_guard_size >= observed_stack_size) *error_code = EINVAL;
+    return -1;
+  }
+  const long observed_page_size = sysconf(_SC_PAGESIZE);
+  if (observed_page_size <= 0) {
+    *error_code = errno != 0 ? errno : EINVAL;
+    return -1;
+  }
+  *thread_id = static_cast<uint64_t>(syscall(SYS_gettid));
+  // Bionic's pthread_attr_getstack range begins at the stack guard. /proc labels
+  // only the writable stack-and-TLS mapping, which begins after that guard.
+  *start_address = reinterpret_cast<uintptr_t>(stack_base);
+  *stack_size = observed_stack_size;
+  *guard_size = observed_guard_size;
+  *page_size = static_cast<size_t>(observed_page_size);
+  return 0;
+}
+
+extern "C" int spinon_c124_sample_stack_residency(
+    uintptr_t start_address, size_t stack_size, uint8_t *page_flags,
+    size_t page_capacity, size_t *page_size, int *error_code) {
+  if (page_flags == nullptr || page_size == nullptr || error_code == nullptr) {
+    return -1;
+  }
+  *error_code = 0;
+  const long observed_page_size = sysconf(_SC_PAGESIZE);
+  if (observed_page_size <= 0) {
+    *error_code = errno != 0 ? errno : EINVAL;
+    return -1;
+  }
+  const size_t current_page_size = static_cast<size_t>(observed_page_size);
+  if (current_page_size == 0 || start_address % current_page_size != 0 ||
+      stack_size % current_page_size != 0 ||
+      stack_size / current_page_size != page_capacity) {
+    *error_code = EINVAL;
+    return -1;
+  }
+  *page_size = current_page_size;
+  errno = 0;
+  const int status = mincore(reinterpret_cast<void *>(start_address),
+                             stack_size, page_flags);
+  if (status != 0) *error_code = errno;
+  return status;
+}
 
 namespace {
 constexpr char kTag[] = "SpinonBootstrap";
@@ -173,6 +251,40 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC123FixedHost(
                       "SPINON_C123_HOST=%s", output.data());
   return static_cast<jlong>(reinterpret_cast<uintptr_t>(host));
 }
+
+extern "C" JNIEXPORT jlong JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC124StackingHost(
+    JNIEnv *, jclass) {
+  std::array<char, 1024> output{};
+  SpinonRuntimeGpuHost *host = spinon_runtime_gpu_host_new_c12_4_stacking_fixture(
+      output.data(), output.size());
+  if (host == nullptr) {
+    __android_log_print(ANDROID_LOG_ERROR, kTag,
+                        "SPINON_C124_HOST_ERROR=%s", output.data());
+    return 0;
+  }
+  __android_log_print(ANDROID_LOG_INFO, kTag,
+                      "SPINON_C124_HOST=%s", output.data());
+  return static_cast<jlong>(reinterpret_cast<uintptr_t>(host));
+}
+
+#if defined(SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST) && \
+    SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeC124WorkerStackResidencySample(
+    JNIEnv *env, jclass, jlong host_handle) {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+  std::array<char, 1024> output{};
+  const int32_t status = spinon_runtime_gpu_host_css_worker_stack_residency_for_test(
+      host, output.data(), output.size());
+  const std::string report = status == 0
+      ? output.data()
+      : "{\"status\":\"error\",\"native_status\":" +
+            std::to_string(status) + ",\"detail\":\"" + output.data() + "\"}";
+  return ToByteArray(env, report);
+}
+#endif
 
 extern "C" JNIEXPORT jlong JNICALL
 Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC1035PositionedFlexHost(
@@ -512,6 +624,41 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC123FixedFixture(
   __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
                       kTag, "SPINON_C123_EVAL %s", report.c_str());
   if (status == 0) LogC10NodeFrames(report, "SPINON_C123_NODE_FRAME");
+  return ToByteArray(env, report);
+}
+
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC124StackingFixture(
+    JNIEnv *env, jclass, jlong host_handle) {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+  std::array<char, 32768> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_c12_4_stacking_fixture(
+      host, 10000, output.data(), output.size());
+  const std::string report = "status=" + std::to_string(status) + " " + output.data();
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
+                      kTag, "SPINON_C124_EVAL %s", report.c_str());
+  if (status == 0) LogC10NodeFrames(report, "SPINON_C124_NODE_FRAME");
+  return ToByteArray(env, report);
+}
+
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC124Source(
+    JNIEnv *env, jclass, jlong host_handle, jstring source_value) {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+  if (source_value == nullptr) return nullptr;
+  const char *source = env->GetStringUTFChars(source_value, nullptr);
+  if (source == nullptr) return nullptr;
+  constexpr std::size_t kOutputCapacity = 256 * 1024;
+  std::unique_ptr<char[]> output(new (std::nothrow) char[kOutputCapacity]{});
+  if (output == nullptr) {
+    return ToByteArray(env, "status=-3 C12.4 진단 보고서 버퍼 할당 실패");
+  }
+  const int32_t status = spinon_runtime_gpu_host_eval(
+      host, source, 60000, output.get(), kOutputCapacity);
+  env->ReleaseStringUTFChars(source_value, source);
+  const std::string report = "status=" + std::to_string(status) + " " + output.get();
   return ToByteArray(env, report);
 }
 

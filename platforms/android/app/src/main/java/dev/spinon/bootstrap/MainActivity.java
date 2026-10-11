@@ -181,6 +181,15 @@ public final class MainActivity extends Activity {
             showShutdownProbe();
             return;
         }
+        if (getIntent().getBooleanExtra("spinon_c124_session_stack_cost", false)) {
+            TextView probe = new TextView(this);
+            probe.setText("C12.4 동시 runtime session 메모리 진단 중…");
+            probe.setTextColor(Color.WHITE);
+            probe.setGravity(Gravity.CENTER);
+            setContentView(probe);
+            C0410RuntimeGpuDemo.runC124SessionStackCostProbe(this);
+            return;
+        }
         if (getIntent().getBooleanExtra("spinon_c0410_runtime_gpu", false)
                 || getIntent().getBooleanExtra("spinon_c0411_author_stylesheets", false)
                 || getIntent().getBooleanExtra("spinon_c052_registered_properties", false)
@@ -208,6 +217,10 @@ public final class MainActivity extends Activity {
                 || getIntent().getBooleanExtra("spinon_c1035_positioned_flex", false)
                 || getIntent().getBooleanExtra("spinon_c122_absolute_block", false)
                 || getIntent().getBooleanExtra("spinon_c123_fixed_position", false)
+                || getIntent().getBooleanExtra("spinon_c124_stacking_context", false)
+                || getIntent().getBooleanExtra("spinon_c124_stacking_matrix", false)
+                || getIntent().getBooleanExtra("spinon_c124_depth_safety", false)
+                || getIntent().getStringExtra("spinon_c124_surface_case") != null
                 || getIntent().getBooleanExtra("spinon_c121_static_relative", false)) {
             if (!BuildConfig.SPINON_C04_RUNTIME_GPU) {
                 TextView unavailable = new TextView(this);

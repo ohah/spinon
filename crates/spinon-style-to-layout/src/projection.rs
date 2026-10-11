@@ -139,6 +139,7 @@ pub fn compute_runtime_style_layout(
     let reject_cascade_diagnostics = matches!(
         computed_styles.profile,
         ComputedStyleProfile::RuntimeBlockPositioningV1
+            | ComputedStyleProfile::RuntimeBlockFlexStackingV1
     );
     compute_layout_from_styles(
         snapshot,
@@ -197,7 +198,8 @@ fn compute_profile_layout(
         | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
         | ComputedStyleProfile::RuntimeBlockPaintV1
         | ComputedStyleProfile::RuntimeBlockFormattingV1
-        | ComputedStyleProfile::RuntimeBlockPositioningV1 => {
+        | ComputedStyleProfile::RuntimeBlockPositioningV1
+        | ComputedStyleProfile::RuntimeBlockFlexStackingV1 => {
             return Err(StyleLayoutError::UnsupportedProfile {
                 profile: format!("{profile:?}"),
             });
@@ -224,6 +226,7 @@ fn compute_layout_from_styles(
         ComputedStyleProfile::RuntimeBlockPaintV1
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1
+            | ComputedStyleProfile::RuntimeBlockFlexStackingV1
     ) {
         for element in computed_styles.elements.iter() {
             let display = element.properties.get("display").ok_or(
@@ -237,13 +240,26 @@ fn compute_layout_from_styles(
                 | ComputedStyleProfile::RuntimeBlockPositioningV1 => {
                     matches!(display.as_str(), "block" | "flow-root" | "none")
                 }
+                ComputedStyleProfile::RuntimeBlockFlexStackingV1 => {
+                    matches!(display.as_str(), "block" | "flow-root" | "flex" | "none")
+                }
                 _ => matches!(display.as_str(), "block" | "none"),
             };
             if !supported_display {
-                return Err(StyleLayoutError::UnsupportedBlockDisplay {
-                    node: element.node_id,
-                    value: display.clone(),
-                });
+                return Err(
+                    if computed_styles.profile == ComputedStyleProfile::RuntimeBlockFlexStackingV1 {
+                        StyleLayoutError::UnsupportedComputedValue {
+                            node: element.node_id,
+                            property: "display",
+                            value: display.clone(),
+                        }
+                    } else {
+                        StyleLayoutError::UnsupportedBlockDisplay {
+                            node: element.node_id,
+                            value: display.clone(),
+                        }
+                    },
+                );
             }
         }
     }
@@ -294,6 +310,7 @@ fn compute_layout_from_styles(
             | ComputedStyleProfile::RuntimeBlockPaintV1
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1
+            | ComputedStyleProfile::RuntimeBlockFlexStackingV1
     ) {
         LayoutInput::from_host_document_with_viewport_containing_block(
             snapshot,
@@ -327,6 +344,7 @@ fn compute_layout_from_styles(
             | ComputedStyleProfile::RuntimeBlockPaintV1
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1
+            | ComputedStyleProfile::RuntimeBlockFlexStackingV1
     ) {
         zero_display_none_frames(snapshot, root, &styles, &mut layout);
     }

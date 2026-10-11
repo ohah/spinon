@@ -1,0 +1,14 @@
+{
+  "status": "matched",
+  "platform": "iPhone · iOS 26.2 Simulator",
+  "cases": 26,
+  "supportedCases": 21,
+  "rejectedCases": 5,
+  "comparedNodes": 64,
+  "comparedHitTestObservations": 21,
+  "maximumAbsoluteErrorCssPx": 0,
+  "toleranceCssPx": 0.5,
+  "worstField": null,
+  "auxiliaryPaintOrderDifferences": [],
+  "mismatches": []
+}

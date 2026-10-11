@@ -1,0 +1,12 @@
+✔ 공통 비교기는 정상 iOS matrix에서 모든 Chromium frame을 확인한다 (142.431083ms)
+✔ 공통 비교기는 잘못된 inventory hash를 거부한다 (52.889125ms)
+✔ 공통 비교기는 중복 case와 허용치를 넘는 개별 frame 오차를 거부한다 (102.440666ms)
+✔ 공통 비교기는 기대 속성과 다른 거부 진단을 통과시키지 않는다 (41.507167ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 385.662167

@@ -1,0 +1,3 @@
+exit_status=1
+
+cat: /proc/13843/smaps_rollup: Permission denied

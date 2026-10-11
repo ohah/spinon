@@ -13,6 +13,7 @@ mod margin;
 mod runtime_block_display;
 mod runtime_layout;
 mod runtime_paint;
+mod runtime_stacking;
 mod s04;
 mod snapshot;
 mod ua_baseline;
@@ -46,6 +47,10 @@ pub use runtime_paint::{
     first_unsupported_runtime_block_positioning_inline_property,
     first_unsupported_runtime_flex_paint_inline_property,
 };
+pub use runtime_stacking::{
+    compute_runtime_block_flex_stacking_cascade_with_stylesheets,
+    first_unsupported_runtime_block_flex_stacking_inline_property,
+};
 
 #[cfg(test)]
 #[path = "cascade/ua_baseline_tests.rs"]
@@ -54,6 +59,10 @@ mod ua_baseline_tests;
 #[cfg(test)]
 #[path = "cascade/ua_incremental_profile_tests.rs"]
 mod ua_incremental_profile_tests;
+
+#[cfg(test)]
+#[path = "cascade/runtime_stacking_tests.rs"]
+mod runtime_stacking_tests;
 
 #[cfg(test)]
 #[path = "cascade/font_relative_units_tests.rs"]
@@ -71,10 +80,11 @@ pub use margin::compute_flex_margin_cascade;
 pub use margin::compute_flex_media_environment_cascade;
 pub use snapshot::{
     CascadeDiagnostic, ComputedCssDimension, ComputedCssEdges, ComputedCssMath, ComputedCssMaxSize,
-    ComputedCssPosition, ComputedCssSpacingValue, ComputedElementStyle, ComputedLayoutBorder,
-    ComputedLayoutDimensions, ComputedLayoutInsets, ComputedLayoutSpacing, ComputedStyleProfile,
-    ComputedStyleSnapshot, CssColorScheme, CssMediaEnvironment, CssPointerCapabilities,
-    CssPrimaryPointer, CssViewport, FixedContainingBlockEffect,
+    ComputedCssPosition, ComputedCssSpacingValue, ComputedCssVisibility, ComputedCssZIndex,
+    ComputedElementStyle, ComputedLayoutBorder, ComputedLayoutDimensions, ComputedLayoutInsets,
+    ComputedLayoutSpacing, ComputedStyleProfile, ComputedStyleSnapshot, CssColorScheme,
+    CssMediaEnvironment, CssPointerCapabilities, CssPrimaryPointer, CssViewport,
+    FixedContainingBlockEffect,
 };
 pub use ua_baseline::compute_supported_elements_ua_cascade;
 

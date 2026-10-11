@@ -43,14 +43,39 @@ case "${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}" in
     exit 2
     ;;
 esac
+case "${SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST:-0}" in
+  0|1) ;;
+  *)
+    echo "SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST은 0 또는 1이어야 합니다." >&2
+    exit 2
+    ;;
+esac
+case "${SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST:-0}" in
+  0|1) ;;
+  *)
+    echo "SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST은 0 또는 1이어야 합니다." >&2
+    exit 2
+    ;;
+esac
 if [[ "${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}" == "1" \
       && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
   echo "draw 실패 fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다." >&2
   exit 2
 fi
+if [[ "${SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST:-0}" == "1" \
+      && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
+  echo "C12.4 worker stack 검증은 C04.10 runtime GPU fixture와 함께 켜야 합니다." >&2
+  exit 2
+fi
+if [[ "${SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST:-0}" == "1" \
+      && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
+  echo "C12.4 Metal surface readback은 C04.10 runtime GPU fixture와 함께 켜야 합니다." >&2
+  exit 2
+fi
 s03_dom_gc_cpp_flag="-DSPINON_ENABLE_S03_DOM_GC_FIXTURE=${SPINON_ENABLE_S03_DOM_GC_FIXTURE:-0}"
 runtime_gpu_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU=${SPINON_ENABLE_C04_RUNTIME_GPU:-0}"
 runtime_gpu_failure_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE=${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}"
+c124_surface_readback_cpp_flag="-DSPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST=${SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST:-0}"
 ffi_features=""
 append_ffi_feature() {
   if [[ -n "$ffi_features" ]]; then
@@ -66,6 +91,12 @@ if [[ "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" == "1" ]]; then
 fi
 if [[ "${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}" == "1" ]]; then
   append_ffi_feature c04-runtime-gpu-test-hooks
+fi
+if [[ "${SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST:-0}" == "1" ]]; then
+  append_ffi_feature c12-4-metal-surface-readback-test
+fi
+if [[ "${SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST:-0}" == "1" ]]; then
+  append_ffi_feature c12-4-worker-stack-residency-test
 fi
 
 case "$platform_name" in
@@ -142,7 +173,7 @@ mkdir -p "$output_dir"
 sdk_path="$(xcrun --sdk "$sdk" --show-sdk-path)"
 xcrun --sdk "$sdk" clang++ -std=c++20 -O2 -fPIC -target "$target" \
   -isysroot "$sdk_path" -I"$v8_dir/include" "$s03_dom_gc_cpp_flag" "$runtime_gpu_cpp_flag" \
-  "$runtime_gpu_failure_cpp_flag" \
+  "$runtime_gpu_failure_cpp_flag" "$c124_surface_readback_cpp_flag" \
   -I"$repo_root/native/v8/include" \
   -c "$repo_root/native/v8/src/spinon_v8.cc" \
   -o "$output_dir/spinon_v8.o"

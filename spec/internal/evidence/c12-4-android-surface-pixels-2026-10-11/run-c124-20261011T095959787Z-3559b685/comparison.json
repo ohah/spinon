@@ -1,0 +1,739 @@
+{
+  "schema": "spinon-c12-4-android-surface-pixels/v1",
+  "status": "mismatch",
+  "runId": "c124-20261011T095959787Z-3559b685",
+  "device": {
+    "serial": "emulator-5554",
+    "model": "sdk_gphone16k_arm64",
+    "sdk": 37,
+    "buildFingerprint": "google/sdk_gphone16k_arm64/emu64a16k:17/CP31.260623.012/16064790:userdebug/dev-keys",
+    "displaySize": {
+      "width": 1080,
+      "height": 2400
+    },
+    "densityDpi": 420,
+    "density": 2.625,
+    "egl": "emulation",
+    "surfaceFlingerGles": "GLES: Google (Google Inc. (Google)), Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)), OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))",
+    "classification": "Android AVD; simulator-only surface pixel result"
+  },
+  "inputs": {
+    "inventory": {
+      "path": "tests/fixtures/css/c12/stacking-context-inventory.json",
+      "sha256": "f7890fdab13afb896fa9678be192f1829aae43ef0eef197ca879aa78f8bdc6aa"
+    },
+    "reference": {
+      "path": "tests/fixtures/css/references/c12-4-stacking-context-v1.json",
+      "sha256": "0fd023da34b8488fd6da6330d720b3c2b5af0ece2fe4a0e670a9b140fb0b93ba",
+      "chromium": {
+        "version": "Chrome/154.0.8037.98",
+        "cliVersion": "Google Chrome 154.0.8037.98",
+        "revision": "@b859317bf11f6be47f9b7799ec690a0a42a1fb33",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "executable": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+        "binarySha256": "ccffd5c5fe77ba3212e07c2c69091f8048b73c396b4647ecaa150e1e01a04954",
+        "javascriptVersion": "15.4.80.20"
+      },
+      "screenshotDeviceScaleFactor": 1
+    },
+    "apk": {
+      "path": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+      "bytes": 108906272,
+      "sha256": "cfa3cd816938d2f12a612a41b49133dcf85fbc838208d4651fdbb3877c4fc12b"
+    }
+  },
+  "expected": {
+    "supportedCases": 21,
+    "supportedNodes": 64,
+    "samples": 22,
+    "rejectedCases": 5
+  },
+  "actual": {
+    "supportedCases": 20,
+    "samples": 21,
+    "maximumChannelError": 0
+  },
+  "captures": [
+    {
+      "caseId": "root-negative-flow",
+      "runId": "c124-20261011T095959787Z-3559b685_root-negative-flow",
+      "width": 840,
+      "height": 630,
+      "density": 2.625,
+      "attempts": 1,
+      "imageSha256": "043193116200891cc1a623cec3ab6c483dcb6d3ee9dbb2bbef4699684566fcf2",
+      "samples": [
+        {
+          "id": "negative-under-flow",
+          "x": 224,
+          "y": 145,
+          "actualRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "maxChannelError": 0
+        },
+        {
+          "id": "root-canvas-background",
+          "x": 40,
+          "y": 40,
+          "actualRgba": [
+            17,
+            34,
+            51,
+            255
+          ],
+          "expectedRgba": [
+            17,
+            34,
+            51,
+            255
+          ],
+          "maxChannelError": 0
+        }
+      ],
+      "maximumChannelError": 0,
+      "pngPath": "root-negative-flow.png",
+      "logPath": "root-negative-flow.log",
+      "renderer": "backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=840x630 selection=auto"
+    },
+    {
+      "caseId": "negative-level-tie",
+      "runId": "c124-20261011T095959787Z-3559b685_negative-level-tie",
+      "width": 840,
+      "height": 630,
+      "density": 2.625,
+      "attempts": 1,
+      "imageSha256": "86aba478ff7ca5193f5eb49b686689672f1ab97087446133faaefa2ae44212b9",
+      "samples": [
+        {
+          "id": "negative-order",
+          "x": 224,
+          "y": 145,
+          "actualRgba": [
+            40,
+            167,
+            69,
+            255
+          ],
+          "expectedRgba": [
+            40,
+            167,
+            69,
+            255
+          ],
+          "maxChannelError": 0
+        }
+      ],
+      "maximumChannelError": 0,
+      "pngPath": "negative-level-tie.png",
+      "logPath": "negative-level-tie.log",
+      "renderer": "backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=840x630 selection=auto"
+    },
+    {
+      "caseId": "auto-zero-positive",
+      "runId": "c124-20261011T095959787Z-3559b685_auto-zero-positive",
+      "width": 840,
+      "height": 630,
+      "density": 2.625,
+      "attempts": 1,
+      "imageSha256": "86aba478ff7ca5193f5eb49b686689672f1ab97087446133faaefa2ae44212b9",
+      "samples": [
+        {
+          "id": "auto-zero-positive",
+          "x": 224,
+          "y": 145,
+          "actualRgba": [
+            40,
+            167,
+            69,
+            255
+          ],
+          "expectedRgba": [
+            40,
+            167,
+            69,
+            255
+          ],
+          "maxChannelError": 0
+        }
+      ],
+      "maximumChannelError": 0,
+      "pngPath": "auto-zero-positive.png",
+      "logPath": "auto-zero-positive.log",
+      "renderer": "backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=840x630 selection=auto"
+    },
+    {
+      "caseId": "positive-level-tie",
+      "runId": "c124-20261011T095959787Z-3559b685_positive-level-tie",
+      "width": 840,
+      "height": 630,
+      "density": 2.625,
+      "attempts": 1,
+      "imageSha256": "86aba478ff7ca5193f5eb49b686689672f1ab97087446133faaefa2ae44212b9",
+      "samples": [
+        {
+          "id": "positive-tie",
+          "x": 224,
+          "y": 145,
+          "actualRgba": [
+            40,
+            167,
+            69,
+            255
+          ],
+          "expectedRgba": [
+            40,
+            167,
+            69,
+            255
+          ],
+          "maxChannelError": 0
+        }
+      ],
+      "maximumChannelError": 0,
+      "pngPath": "positive-level-tie.png",
+      "logPath": "positive-level-tie.log",
+      "renderer": "backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=840x630 selection=auto"
+    },
+    {
+      "caseId": "integer-boundaries",
+      "runId": "c124-20261011T095959787Z-3559b685_integer-boundaries",
+      "width": 840,
+      "height": 630,
+      "density": 2.625,
+      "attempts": 1,
+      "imageSha256": "86aba478ff7ca5193f5eb49b686689672f1ab97087446133faaefa2ae44212b9",
+      "samples": [
+        {
+          "id": "integer-range",
+          "x": 224,
+          "y": 145,
+          "actualRgba": [
+            40,
+            167,
+            69,
+            255
+          ],
+          "expectedRgba": [
+            40,
+            167,
+            69,
+            255
+          ],
+          "maxChannelError": 0
+        }
+      ],
+      "maximumChannelError": 0,
+      "pngPath": "integer-boundaries.png",
+      "logPath": "integer-boundaries.log",
+      "renderer": "backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=840x630 selection=auto"
+    },
+    {
+      "caseId": "nested-context-atomic",
+      "runId": "c124-20261011T095959787Z-3559b685_nested-context-atomic",
+      "width": 840,
+      "height": 630,
+      "density": 2.625,
+      "attempts": 1,
+      "imageSha256": "86aba478ff7ca5193f5eb49b686689672f1ab97087446133faaefa2ae44212b9",
+      "samples": [
+        {
+          "id": "atomic-child",
+          "x": 224,
+          "y": 145,
+          "actualRgba": [
+            40,
+            167,
+            69,
+            255
+          ],
+          "expectedRgba": [
+            40,
+            167,
+            69,
+            255
+          ],
+          "maxChannelError": 0
+        }
+      ],
+      "maximumChannelError": 0,
+      "pngPath": "nested-context-atomic.png",
+      "logPath": "nested-context-atomic.log",
+      "renderer": "backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=840x630 selection=auto"
+    },
+    {
+      "caseId": "relative-auto-escape",
+      "runId": "c124-20261011T095959787Z-3559b685_relative-auto-escape",
+      "width": 840,
+      "height": 630,
+      "density": 2.625,
+      "attempts": 1,
+      "imageSha256": "ea989b7e1db585f22033b3f048719f7e5525744dc1378f9d0a6bfe02ccbb8995",
+      "samples": [
+        {
+          "id": "auto-pseudo-context",
+          "x": 224,
+          "y": 145,
+          "actualRgba": [
+            40,
+            102,
+            246,
+            255
+          ],
+          "expectedRgba": [
+            40,
+            102,
+            246,
+            255
+          ],
+          "maxChannelError": 0
+        }
+      ],
+      "maximumChannelError": 0,
+      "pngPath": "relative-auto-escape.png",
+      "logPath": "relative-auto-escape.log",
+      "renderer": "backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=840x630 selection=auto"
+    },
+    {
+      "caseId": "relative-zero-isolation",
+      "runId": "c124-20261011T095959787Z-3559b685_relative-zero-isolation",
+      "width": 840,
+      "height": 630,
+      "density": 2.625,
+      "attempts": 1,
+      "imageSha256": "86aba478ff7ca5193f5eb49b686689672f1ab97087446133faaefa2ae44212b9",
+      "samples": [
+        {
+          "id": "zero-context-atomic",
+          "x": 224,
+          "y": 145,
+          "actualRgba": [
+            40,
+            167,
+            69,
+            255
+          ],
+          "expectedRgba": [
+            40,
+            167,
+            69,
+            255
+          ],
+          "maxChannelError": 0
+        }
+      ],
+      "maximumChannelError": 0,
+      "pngPath": "relative-zero-isolation.png",
+      "logPath": "relative-zero-isolation.log",
+      "renderer": "backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=840x630 selection=auto"
+    },
+    {
+      "caseId": "fixed-auto-isolation",
+      "runId": "c124-20261011T095959787Z-3559b685_fixed-auto-isolation",
+      "width": 840,
+      "height": 630,
+      "density": 2.625,
+      "attempts": 1,
+      "imageSha256": "86aba478ff7ca5193f5eb49b686689672f1ab97087446133faaefa2ae44212b9",
+      "samples": [
+        {
+          "id": "fixed-auto-context",
+          "x": 224,
+          "y": 145,
+          "actualRgba": [
+            40,
+            167,
+            69,
+            255
+          ],
+          "expectedRgba": [
+            40,
+            167,
+            69,
+            255
+          ],
+          "maxChannelError": 0
+        }
+      ],
+      "maximumChannelError": 0,
+      "pngPath": "fixed-auto-isolation.png",
+      "logPath": "fixed-auto-isolation.log",
+      "renderer": "backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=840x630 selection=auto"
+    },
+    {
+      "caseId": "static-block-z-ignored",
+      "runId": "c124-20261011T095959787Z-3559b685_static-block-z-ignored",
+      "width": 840,
+      "height": 630,
+      "density": 2.625,
+      "attempts": 1,
+      "imageSha256": "86aba478ff7ca5193f5eb49b686689672f1ab97087446133faaefa2ae44212b9",
+      "samples": [
+        {
+          "id": "static-block-no-effect",
+          "x": 224,
+          "y": 145,
+          "actualRgba": [
+            40,
+            167,
+            69,
+            255
+          ],
+          "expectedRgba": [
+            40,
+            167,
+            69,
+            255
+          ],
+          "maxChannelError": 0
+        }
+      ],
+      "maximumChannelError": 0,
+      "pngPath": "static-block-z-ignored.png",
+      "logPath": "static-block-z-ignored.log",
+      "renderer": "backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=840x630 selection=auto"
+    },
+    {
+      "caseId": "static-flex-item-z-context",
+      "runId": "c124-20261011T095959787Z-3559b685_static-flex-item-z-context",
+      "width": 840,
+      "height": 630,
+      "density": 2.625,
+      "attempts": 1,
+      "imageSha256": "d7be31cb4ace85b62c0ab9dcc2d526364995cb06d22ecc99fa8b6abdd7273002",
+      "samples": [
+        {
+          "id": "static-flex-z-index",
+          "x": 224,
+          "y": 106,
+          "actualRgba": [
+            40,
+            167,
+            69,
+            255
+          ],
+          "expectedRgba": [
+            40,
+            167,
+            69,
+            255
+          ],
+          "maxChannelError": 0
+        }
+      ],
+      "maximumChannelError": 0,
+      "pngPath": "static-flex-item-z-context.png",
+      "logPath": "static-flex-item-z-context.log",
+      "renderer": "backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=840x630 selection=auto"
+    },
+    {
+      "caseId": "flex-order-and-tie",
+      "runId": "c124-20261011T095959787Z-3559b685_flex-order-and-tie",
+      "width": 840,
+      "height": 630,
+      "density": 2.625,
+      "attempts": 1,
+      "imageSha256": "7b23324b14ea4b84a54f80fcd283098234757a9ca0a3ac3d44815be84dfd43d2",
+      "samples": [
+        {
+          "id": "order-tie",
+          "x": 290,
+          "y": 106,
+          "actualRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "maxChannelError": 0
+        }
+      ],
+      "maximumChannelError": 0,
+      "pngPath": "flex-order-and-tie.png",
+      "logPath": "flex-order-and-tie.log",
+      "renderer": "backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=840x630 selection=auto"
+    },
+    {
+      "caseId": "nested-flex-local-order",
+      "runId": "c124-20261011T095959787Z-3559b685_nested-flex-local-order",
+      "width": 840,
+      "height": 630,
+      "density": 2.625,
+      "attempts": 1,
+      "imageSha256": "6861e7f703683b6aef8a0b4fd6dcff36ecf5494011017e3d41f76f85356c447e",
+      "samples": [
+        {
+          "id": "nested-owner-locality",
+          "x": 224,
+          "y": 106,
+          "actualRgba": [
+            40,
+            167,
+            69,
+            255
+          ],
+          "expectedRgba": [
+            40,
+            167,
+            69,
+            255
+          ],
+          "maxChannelError": 0
+        }
+      ],
+      "maximumChannelError": 0,
+      "pngPath": "nested-flex-local-order.png",
+      "logPath": "nested-flex-local-order.log",
+      "renderer": "backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=840x630 selection=auto"
+    },
+    {
+      "caseId": "absolute-flex-order-ignored",
+      "runId": "c124-20261011T095959787Z-3559b685_absolute-flex-order-ignored",
+      "width": 840,
+      "height": 630,
+      "density": 2.625,
+      "attempts": 1,
+      "imageSha256": "043193116200891cc1a623cec3ab6c483dcb6d3ee9dbb2bbef4699684566fcf2",
+      "samples": [
+        {
+          "id": "absolute-not-flex-item",
+          "x": 224,
+          "y": 145,
+          "actualRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "maxChannelError": 0
+        }
+      ],
+      "maximumChannelError": 0,
+      "pngPath": "absolute-flex-order-ignored.png",
+      "logPath": "absolute-flex-order-ignored.log",
+      "renderer": "backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=840x630 selection=auto"
+    },
+    {
+      "caseId": "fixed-flex-order-ignored",
+      "runId": "c124-20261011T095959787Z-3559b685_fixed-flex-order-ignored",
+      "width": 840,
+      "height": 630,
+      "density": 2.625,
+      "attempts": 1,
+      "imageSha256": "043193116200891cc1a623cec3ab6c483dcb6d3ee9dbb2bbef4699684566fcf2",
+      "samples": [
+        {
+          "id": "fixed-not-flex-item",
+          "x": 224,
+          "y": 145,
+          "actualRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "maxChannelError": 0
+        }
+      ],
+      "maximumChannelError": 0,
+      "pngPath": "fixed-flex-order-ignored.png",
+      "logPath": "fixed-flex-order-ignored.log",
+      "renderer": "backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=840x630 selection=auto"
+    },
+    {
+      "caseId": "block-before-flex-tie",
+      "runId": "c124-20261011T095959787Z-3559b685_block-before-flex-tie",
+      "width": 840,
+      "height": 630,
+      "density": 2.625,
+      "attempts": 1,
+      "imageSha256": "043193116200891cc1a623cec3ab6c483dcb6d3ee9dbb2bbef4699684566fcf2",
+      "samples": [
+        {
+          "id": "block-flex-source-order",
+          "x": 224,
+          "y": 145,
+          "actualRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "maxChannelError": 0
+        }
+      ],
+      "maximumChannelError": 0,
+      "pngPath": "block-before-flex-tie.png",
+      "logPath": "block-before-flex-tie.log",
+      "renderer": "backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=840x630 selection=auto"
+    },
+    {
+      "caseId": "flex-before-block-tie",
+      "runId": "c124-20261011T095959787Z-3559b685_flex-before-block-tie",
+      "width": 840,
+      "height": 630,
+      "density": 2.625,
+      "attempts": 1,
+      "imageSha256": "043193116200891cc1a623cec3ab6c483dcb6d3ee9dbb2bbef4699684566fcf2",
+      "samples": [
+        {
+          "id": "flex-block-source-order",
+          "x": 224,
+          "y": 145,
+          "actualRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "maxChannelError": 0
+        }
+      ],
+      "maximumChannelError": 0,
+      "pngPath": "flex-before-block-tie.png",
+      "logPath": "flex-before-block-tie.log",
+      "renderer": "backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=840x630 selection=auto"
+    },
+    {
+      "caseId": "cascade-layer-and-inline",
+      "runId": "c124-20261011T095959787Z-3559b685_cascade-layer-and-inline",
+      "width": 840,
+      "height": 630,
+      "density": 2.625,
+      "attempts": 1,
+      "imageSha256": "d927ce16b5307ec7d30b7d1ac2d4c66e2773c4a1166eca491ab2173bd6d91d97",
+      "samples": [
+        {
+          "id": "cascade-layer-order",
+          "x": 224,
+          "y": 145,
+          "actualRgba": [
+            214,
+            158,
+            46,
+            255
+          ],
+          "expectedRgba": [
+            214,
+            158,
+            46,
+            255
+          ],
+          "maxChannelError": 0
+        }
+      ],
+      "maximumChannelError": 0,
+      "pngPath": "cascade-layer-and-inline.png",
+      "logPath": "cascade-layer-and-inline.log",
+      "renderer": "backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=840x630 selection=auto"
+    },
+    {
+      "caseId": "custom-property-z-index",
+      "runId": "c124-20261011T095959787Z-3559b685_custom-property-z-index",
+      "width": 840,
+      "height": 630,
+      "density": 2.625,
+      "attempts": 1,
+      "imageSha256": "ea989b7e1db585f22033b3f048719f7e5525744dc1378f9d0a6bfe02ccbb8995",
+      "samples": [
+        {
+          "id": "computed-var-z-index",
+          "x": 224,
+          "y": 145,
+          "actualRgba": [
+            40,
+            102,
+            246,
+            255
+          ],
+          "expectedRgba": [
+            40,
+            102,
+            246,
+            255
+          ],
+          "maxChannelError": 0
+        }
+      ],
+      "maximumChannelError": 0,
+      "pngPath": "custom-property-z-index.png",
+      "logPath": "custom-property-z-index.log",
+      "renderer": "backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=840x630 selection=auto"
+    },
+    {
+      "caseId": "registered-property-z-index",
+      "runId": "c124-20261011T095959787Z-3559b685_registered-property-z-index",
+      "width": 840,
+      "height": 630,
+      "density": 2.625,
+      "attempts": 1,
+      "imageSha256": "ea989b7e1db585f22033b3f048719f7e5525744dc1378f9d0a6bfe02ccbb8995",
+      "samples": [
+        {
+          "id": "registered-z-index",
+          "x": 224,
+          "y": 145,
+          "actualRgba": [
+            40,
+            102,
+            246,
+            255
+          ],
+          "expectedRgba": [
+            40,
+            102,
+            246,
+            255
+          ],
+          "maxChannelError": 0
+        }
+      ],
+      "maximumChannelError": 0,
+      "pngPath": "registered-property-z-index.png",
+      "logPath": "registered-property-z-index.log",
+      "renderer": "backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=840x630 selection=auto"
+    }
+  ],
+  "failures": [
+    "flex-row-reverse-paint: flex-row-reverse-paint/row-reverse-chrome-front-to-back: Chrome pixel 차이가 허용치를 넘었습니다: actual=229,72,77,255 expected=40,102,246,255"
+  ]
+}

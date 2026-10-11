@@ -138,6 +138,15 @@ SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c12_2_absolute_block_fixture(
 /* C12.3 viewport fixed V8 GPU runtime fixture host입니다. */
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c12_3_fixed_fixture(
     char *output, size_t output_capacity);
+/* C12.4 쌓임 맥락 V8 GPU runtime fixture host입니다. */
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c12_4_stacking_fixture(
+    char *output, size_t output_capacity);
+#if defined(SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST) && \
+    SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST
+/* iOS 시뮬레이터 전용 Metal 표면 진단 host입니다. */
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c12_4_surface_readback_fixture(
+    char *output, size_t output_capacity);
+#endif
 /* C10.3.5 positioned Flex child V8 GPU runtime fixture host입니다. */
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c10_3_5_positioned_flex_fixture(
     char *output, size_t output_capacity);
@@ -236,6 +245,13 @@ int32_t spinon_runtime_gpu_host_eval_c12_2_absolute_block_fixture(
 int32_t spinon_runtime_gpu_host_eval_c12_3_fixed_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);
+/* C12.4 제한 쌓임 맥락 CSS를 실제 V8·Stylo·Taffy 경로에서 평가합니다. */
+int32_t spinon_runtime_gpu_host_eval_c12_4_stacking_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
+/* C12.4 내부 테스트: 실제 CSS worker stack 범위와 순간 mincore 상주 페이지 표본입니다. */
+int32_t spinon_runtime_gpu_host_css_worker_stack_residency_for_test(
+    SpinonRuntimeGpuHost *host, char *output, size_t output_capacity);
 /* C12.1 inventory의 고정 mutation 상태: 1=target-relative, 2=ancestor-relative. */
 int32_t spinon_runtime_gpu_host_eval_c12_1_position_state(
     SpinonRuntimeGpuHost *host, uint32_t state, uint64_t layout_timeout_millis,
@@ -297,6 +313,12 @@ int32_t spinon_runtime_gpu_host_resize(SpinonRuntimeGpuHost *host,
                                        char *output, size_t output_capacity);
 int32_t spinon_runtime_gpu_host_draw(SpinonRuntimeGpuHost *host,
                                      char *output, size_t output_capacity);
+#if defined(SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST) && \
+    SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST
+int32_t spinon_runtime_gpu_host_request_c12_4_surface_pixel_for_test(
+    SpinonRuntimeGpuHost *host, uint32_t x, uint32_t y, char *output,
+    size_t output_capacity);
+#endif
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE) && \
     SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE
 /* 내부 검증 빌드에서 다음 draw 오류를 한 번 주입합니다. */

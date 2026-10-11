@@ -1,12 +1,16 @@
 use super::author_stylesheets::collect_runtime_author_stylesheets;
-use super::runtime_layout::{RuntimeLayoutContext, RuntimeLayoutFailure, compute_runtime_layout};
+use super::runtime_layout::{
+    RuntimeLayoutContext, RuntimeLayoutFailure, compute_runtime_layout, layout_failure,
+};
 use super::{
     CascadeDiagnostic, RuntimeLayoutCompleted, RuntimeUaCascadeRoot, WorkRequest,
     elapsed_microseconds, key_for,
 };
-use spinon_core::{HostNodeHandle, HostNodeKind, HostParent, StyleRevision};
+use spinon_core::{HostNodeHandle, HostNodeKind, HostParent, NodeId, StyleRevision};
+use spinon_layout::MAX_LAYOUT_TREE_DEPTH;
 use spinon_style::{
     ComputedStyleProfile, CssCascadeError, RuntimeCascadeReuseStats, StyloDocumentView,
+    compute_runtime_block_flex_stacking_cascade_with_stylesheets,
     compute_runtime_block_formatting_cascade_with_stylesheets,
     compute_runtime_block_paint_cascade_with_stylesheets,
     compute_runtime_block_positioning_cascade_with_stylesheets,
@@ -26,6 +30,7 @@ pub(super) enum RuntimeCalculationProfile {
     BlockPaint,
     BlockFormatting,
     BlockPositioning,
+    BlockFlexStacking,
 }
 
 impl RuntimeCalculationProfile {
@@ -37,6 +42,7 @@ impl RuntimeCalculationProfile {
 #[derive(Clone, Debug)]
 pub(super) struct RuntimeCalculation {
     pub(super) roots: Arc<[RuntimeUaCascadeRoot]>,
+    pub(super) cascade_error: Option<String>,
     pub(super) cascade_duration_us: u128,
     pub(super) cascade_recomputed_style_elements: u64,
     pub(super) cascade_reused_style_elements: u64,
@@ -111,6 +117,7 @@ impl RuntimeCalculation {
         });
         Some(Self {
             roots,
+            cascade_error: self.cascade_error.clone(),
             cascade_duration_us: 0,
             cascade_recomputed_style_elements: 0,
             cascade_reused_style_elements: self
@@ -162,10 +169,20 @@ pub(super) fn compute_request_for_block_positioning(
     compute_request_with_profile(request, RuntimeCalculationProfile::BlockPositioning)
 }
 
+pub(super) fn compute_request_for_block_flex_stacking(
+    request: &WorkRequest,
+) -> Result<RuntimeCalculation, String> {
+    compute_request_with_profile(request, RuntimeCalculationProfile::BlockFlexStacking)
+}
+
 fn compute_request_with_profile(
     request: &WorkRequest,
     profile: RuntimeCalculationProfile,
 ) -> Result<RuntimeCalculation, String> {
+    if let Some((node, depth)) = first_node_past_layout_depth_limit(&request.snapshot)? {
+        return Ok(tree_depth_failure(node, depth));
+    }
+
     let mut roots = Vec::new();
     let mut layout_context: Option<RuntimeLayoutContext> = None;
     let mut cascade_duration_us = 0_u128;
@@ -226,6 +243,7 @@ fn compute_request_with_profile(
 
     Ok(RuntimeCalculation {
         roots: roots.into(),
+        cascade_error: None,
         cascade_duration_us,
         cascade_recomputed_style_elements,
         cascade_reused_style_elements,
@@ -233,6 +251,65 @@ fn compute_request_with_profile(
         layout,
         layout_diagnostics,
     })
+}
+
+fn first_node_past_layout_depth_limit(
+    snapshot: &spinon_core::HostDocumentSnapshot,
+) -> Result<Option<(NodeId, usize)>, String> {
+    let mut pending = snapshot
+        .root_children()
+        .map(|root| (root, 1_usize))
+        .collect::<Vec<_>>();
+    pending.reverse();
+    let mut visited = std::collections::BTreeSet::new();
+
+    while let Some((handle, depth)) = pending.pop() {
+        if !visited.insert(handle.id()) {
+            continue;
+        }
+        if snapshot.node(handle).is_none() {
+            return Err(format!(
+                "레이아웃 깊이 사전 검사에서 HostDocument 노드 {}를 찾을 수 없습니다",
+                handle.id()
+            ));
+        }
+        if depth > MAX_LAYOUT_TREE_DEPTH {
+            return Ok(Some((handle.id(), depth)));
+        }
+        let Some(children) = snapshot.children(handle) else {
+            return Err(format!(
+                "레이아웃 깊이 사전 검사에서 HostDocument 자식 목록을 읽을 수 없습니다: {}",
+                handle.id()
+            ));
+        };
+        let mut children = children.collect::<Vec<_>>();
+        pending.extend(
+            children
+                .drain(..)
+                .rev()
+                .map(|child| (child, depth.saturating_add(1))),
+        );
+    }
+    Ok(None)
+}
+
+fn tree_depth_failure(node: NodeId, depth: usize) -> RuntimeCalculation {
+    RuntimeCalculation {
+        roots: Vec::new().into(),
+        cascade_error: Some(format!(
+            "레이아웃 트리 깊이 {depth}가 최대 {MAX_LAYOUT_TREE_DEPTH}를 초과했습니다 (노드 {node})"
+        )),
+        cascade_duration_us: 0,
+        cascade_recomputed_style_elements: 0,
+        cascade_reused_style_elements: 0,
+        cascade_context_style_elements: 0,
+        layout: Err(layout_failure(
+            "tree_depth_exceeded",
+            Some(node.get()),
+            None,
+        )),
+        layout_diagnostics: Vec::new(),
+    }
 }
 
 fn compute_root(
@@ -267,6 +344,9 @@ fn compute_root(
         }
         RuntimeCalculationProfile::BlockPositioning => {
             ComputedStyleProfile::RuntimeBlockPositioningV1
+        }
+        RuntimeCalculationProfile::BlockFlexStacking => {
+            ComputedStyleProfile::RuntimeBlockFlexStackingV1
         }
     };
     let previous_style_root = request
@@ -350,6 +430,14 @@ fn compute_root(
             }
             RuntimeCalculationProfile::BlockPositioning => {
                 compute_runtime_block_positioning_cascade_with_stylesheets(
+                    &view,
+                    author_stylesheets,
+                    request.viewport,
+                    StyleRevision::INITIAL,
+                )
+            }
+            RuntimeCalculationProfile::BlockFlexStacking => {
+                compute_runtime_block_flex_stacking_cascade_with_stylesheets(
                     &view,
                     author_stylesheets,
                     request.viewport,

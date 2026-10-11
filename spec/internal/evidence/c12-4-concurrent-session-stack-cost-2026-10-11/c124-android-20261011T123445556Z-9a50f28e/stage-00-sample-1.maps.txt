@@ -1,0 +1,3 @@
+exit_status=1
+
+cat: /proc/13244/maps: Permission denied

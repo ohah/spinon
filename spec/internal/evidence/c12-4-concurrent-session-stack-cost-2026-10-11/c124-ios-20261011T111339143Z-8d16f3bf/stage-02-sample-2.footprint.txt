@@ -1,0 +1,36 @@
+======================================================================
+SpinonBootstrap [43523]: 64-bit    Footprint: 19 MB (16384 bytes per page)
+======================================================================
+
+  Dirty      Clean  Reclaimable    Regions    Category
+    ---        ---          ---        ---    ---
+3098 KB      32 KB          0 B        449    __DATA
+3024 KB        0 B        32 KB          1    MALLOC_NANO
+2652 KB      16 KB          0 B        467    __DATA_CONST
+2452 KB        0 B          0 B          1    page table
+1568 KB        0 B          0 B         13    MALLOC_SMALL
+1424 KB        0 B          0 B         64    app-specific tag 16
+1296 KB        0 B          0 B          3    MALLOC_MEDIUM
+ 880 KB        0 B          0 B         20    MALLOC_TINY
+ 858 KB        0 B          0 B        802    unused dyld shared cache area
+ 736 KB        0 B          0 B          7    dyld private memory
+ 624 KB        0 B          0 B         46    stack
+ 400 KB        0 B          0 B         25    MALLOC metadata
+ 155 KB        0 B          0 B         14    __DATA_DIRTY
+  64 KB        0 B          0 B         18    untagged (VM_ALLOCATE)
+  52 KB        0 B          0 B          3    __TPRO_CONST
+  32 KB        0 B          0 B          1    __AUTH_CONST
+  32 KB        0 B          0 B          1    Activity Tracing
+  16 KB        0 B          0 B          1    Foundation
+  16 KB        0 B          0 B          1    os_alloc_once
+    0 B    6656 KB          0 B        480    __TEXT
+    0 B    1376 KB          0 B          9    __LINKEDIT
+    0 B     544 KB          0 B          4    mapped file
+    0 B        0 B          0 B          1    __FONT_DATA
+    ---        ---          ---        ---    ---
+  19 MB    8624 KB        32 KB       2433    TOTAL
+
+Auxiliary data:
+    phys_footprint: 19 MB
+    phys_footprint_peak: 19 MB
+

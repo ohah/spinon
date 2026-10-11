@@ -1427,6 +1427,9 @@ dependencies = [
  "raw-window-handle",
  "spinon-core",
  "spinon-render",
+ "spinon-style",
+ "spinon-style-to-layout",
+ "spinon-style-to-render",
  "wgpu",
 ]
 

@@ -21,6 +21,9 @@ pub fn build_runtime_render_snapshot(
     current: CurrentLayoutInputs,
 ) -> Result<RuntimeRenderSnapshot, StyleRenderError> {
     let styles = &output.computed_styles;
+    if styles.profile == ComputedStyleProfile::RuntimeBlockFlexStackingV1 {
+        return super::stacking::build_runtime_render_snapshot(document, root, output, current);
+    }
     if !matches!(
         styles.profile,
         ComputedStyleProfile::RuntimeFlexPaintV1

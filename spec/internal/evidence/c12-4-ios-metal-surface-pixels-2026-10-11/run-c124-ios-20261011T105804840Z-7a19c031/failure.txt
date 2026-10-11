@@ -1,0 +1,3 @@
+AssertionError [ERR_ASSERTION]: 실패 표본 기록이 있습니다.
+    at compareC124IOSMetalPixelLogs (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/compare-c12-4-ios-metal-surface-pixels.mjs:52:10)
+    at main (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c12-4-ios-metal-surface-pixels.mjs:143:22)

@@ -66,6 +66,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockPaintV1
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
                 | ComputedStyleProfile::RuntimeBlockPositioningV1
+                | ComputedStyleProfile::RuntimeBlockFlexStackingV1
         );
         let supports_border_layout = matches!(
             snapshot.profile,
@@ -78,6 +79,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockPaintV1
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
                 | ComputedStyleProfile::RuntimeBlockPositioningV1
+                | ComputedStyleProfile::RuntimeBlockFlexStackingV1
         );
         let supports_runtime_flex = supports_runtime_flex(snapshot.profile);
         let supports_auto_margin = runtime_flex_items.contains(&node)
@@ -85,6 +87,7 @@ pub(super) fn project_styles(
                 snapshot.profile,
                 ComputedStyleProfile::RuntimeBlockFormattingV1
                     | ComputedStyleProfile::RuntimeBlockPositioningV1
+                    | ComputedStyleProfile::RuntimeBlockFlexStackingV1
             );
         let flex_direction = parse_flex_direction(
             node,
@@ -117,6 +120,7 @@ pub(super) fn project_styles(
                     snapshot.profile,
                     ComputedStyleProfile::RuntimeBlockFormattingV1
                         | ComputedStyleProfile::RuntimeBlockPositioningV1
+                        | ComputedStyleProfile::RuntimeBlockFlexStackingV1
                 ),
             )?,
             box_sizing: parse_box_sizing(node, required(element, "box-sizing")?)?,
@@ -215,7 +219,8 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
-                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1 => {
+                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
+                | ComputedStyleProfile::RuntimeBlockFlexStackingV1 => {
                     parse_runtime_align_items(node, required(element, "align-items")?)?
                 }
                 ComputedStyleProfile::FlexAlignmentV1
@@ -253,7 +258,8 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
-                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1 => {
+                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
+                | ComputedStyleProfile::RuntimeBlockFlexStackingV1 => {
                     parse_runtime_justify_content(node, required(element, "justify-content")?)?
                 }
                 _ => LayoutStyle::default().justify_content,
@@ -288,7 +294,8 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeBlockPaintV1
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
-                | ComputedStyleProfile::RuntimeBlockPositioningV1 => LayoutEdges {
+                | ComputedStyleProfile::RuntimeBlockPositioningV1
+                | ComputedStyleProfile::RuntimeBlockFlexStackingV1 => LayoutEdges {
                     top: parse_margin(
                         node,
                         "margin-top",
@@ -337,7 +344,8 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeBlockPaintV1
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
-                | ComputedStyleProfile::RuntimeBlockPositioningV1 => LayoutEdges {
+                | ComputedStyleProfile::RuntimeBlockPositioningV1
+                | ComputedStyleProfile::RuntimeBlockFlexStackingV1 => LayoutEdges {
                     top: parse_nonnegative_spacing(
                         node,
                         "padding-top",
@@ -391,8 +399,10 @@ pub(super) fn project_styles(
                     element,
                     &mut math,
                     snapshot.profile == ComputedStyleProfile::RuntimeBlockPositioningV1
+                        || snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexStackingV1
                         || supports_runtime_flex,
-                    snapshot.profile == ComputedStyleProfile::RuntimeBlockPositioningV1,
+                    snapshot.profile == ComputedStyleProfile::RuntimeBlockPositioningV1
+                        || snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexStackingV1,
                 )?,
             );
         }
@@ -419,6 +429,7 @@ fn supports_positioning(profile: ComputedStyleProfile) -> bool {
             | ComputedStyleProfile::RuntimeBlockPaintV1
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1
+            | ComputedStyleProfile::RuntimeBlockFlexStackingV1
     )
 }
 
@@ -431,6 +442,7 @@ fn supports_runtime_flex(profile: ComputedStyleProfile) -> bool {
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
+            | ComputedStyleProfile::RuntimeBlockFlexStackingV1
     )
 }
 
