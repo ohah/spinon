@@ -2,27 +2,27 @@
 
 **상위:** [공식 상태 대장](../spec/STATUS.md) · [코어 아키텍처](../docs/architecture.md)
 
-**현재 상태:** C12.1 PR #128 병합 완료 · C12.2 제한 Block/LTR 구현과 Android 실기기·iOS Simulator 검증 완료, [PR #130 병합](https://github.com/ohah/spinon/pull/130) · 다음은 [C10.3.5 전용 계획](c10-3-5-positioned-flex.md) 검토 · C12 상위 구현은 미완료
+**현재 상태:** C12.1 PR #128, C12.2 PR #130, C10.3.5 교차 구현 PR #132 리베이스 병합 완료 · 다음 단계는 C12.3 viewport fixed 위치 전용 계획 작성과 독립된 20개 계획 실패 관점 검토 · C12 상위 구현은 미완료
 **목표:** `position`, 물리 inset, containing block, out-of-flow geometry, 고정·sticky 위치, stacking과 `z-index`를 Chromium 기준으로 단계별 연결한다. 계획 초안이나 Taffy 기능 목록을 제품 지원 판정으로 쓰지 않는다.
 
 ## 로드맵 순서와 완료 경계
 
-C10.3.4는 PR #125로, C12.2는 PR #130으로 병합했다. 다음 단계 C10.3.5는 [전용 계획](c10-3-5-positioned-flex.md)과 독립된 계획 실패 관점 검토를 먼저 통과한 뒤 Flex absolute child의 static-position 정렬·`order: 0` paint 교차를 별도 구현 PR로 닫는다. 이 계획은 C12를 여러 독립 구현 단계로 나누며, C12 전체는 fixed·sticky·stacking까지 완료되기 전까지 미완료다. C09.4의 absolute shrink-to-fit은 C12 외에도 C14·C15·C26 선행 구현 뒤 별도로 진행한다.
+C10.3.4는 PR #125, C12.2는 PR #130, C10.3.5는 PR #132로 병합했다. 다음 단계 C12.3은 전용 계획 작성과 독립된 20개 계획 실패 관점 검토를 먼저 통과한 뒤, viewport fixed containing block과 viewport resize 반영을 별도 구현 PR로 닫는다. 이 계획은 C12를 여러 독립 구현 단계로 나누며, C12 전체는 fixed·sticky·stacking까지 완료되기 전까지 미완료다. C09.4의 absolute shrink-to-fit은 C12 외에도 C14·C15·C26 선행 구현 뒤 별도로 진행한다.
 
 | 단계 | 소유 범위 | 선행 조건 | 완료 증거 |
 | --- | --- | --- | --- |
 | C12.1 | CSS `position` 및 물리 `top/right/bottom/left`·`inset` cascade typed snapshot, `static` normal flow, `relative` 시각 offset과 containing-block 자격 | 현재 C04 runtime profile과 C07/C09 상자·Block 입력 | Chrome computed style·좌표를 비교하고 지원 fixture를 Android 실기기와 iOS Simulator에서 같은 입력으로 실행 |
 | C12.2 | Block formatting context의 `absolute`, nearest positioned ancestor, padding-edge containing block, percentage·auto inset과 positioned size 계산 | C12.1 · C09.1/C09.3 · C07.1/C07.2 | Chrome 기하·computed style 비교, 정적 경로와 실패 경계, 양 플랫폼 runtime fixture |
 | C10.3.5 | Flex absolute child의 line 제외, static-position rectangle/`align-self`, paint에서 `order: 0` 상호 순서 | C12.1–C12.2 · C10.3.1–C10.3.4 | [C10.3 계획](c10-3-flex-order-alignment.md)의 별도 구현 PR과 Flex 전용 Chrome·GPU 증거 |
-| C12.3 | 기본 fixed viewport containing block과 viewport resize 반영 | C12.1–C12.2 · 환경 revision 경로 | resize·DPR reference 비교, 새 revision frame만 표시 |
+| C12.3 | 기본 fixed viewport containing block과 viewport resize 반영 | C12.1–C12.2 · C10.3.5 · 환경 revision 경로 | 전용 계획·계획 검토 후 resize·DPR reference 비교, 새 revision frame만 표시 |
 | C12.4 | paint order, positioned `z-index`, stacking context의 생성·중첩·격리 | C10.3.2/C10.3.5 · renderer paint-list 계약 | 중첩·겹침 픽셀과 paint-list 순서, Android 실기기·iOS Simulator 비교 |
 | C12.5 | `sticky`와 nearest scrollport 제약 | C13 실제 scroll container·scroll offset·clip 계약 | 정지/경계/양방향 scroll 시 Chrome과 frame·clip 비교 |
 
-각 구현 단계는 독립 PR과 내부 계약·고정 비교 기준을 가진다. C12 상태를 완료로 바꾸려면 위 다섯 C12 단계와 C10.3.5 교차 계약이 모두 닫혀야 한다. C12.1–C12.2의 유효한 비지원 조합은 기본 배치로 대체하지 않고 위치·속성·원인을 진단한다.
+각 구현 단계는 독립 PR과 내부 계약·고정 비교 기준을 가진다. C12 상태를 완료로 바꾸려면 위 다섯 C12 단계와 C10.3.5 교차 계약이 모두 닫혀야 한다. C12.1–C12.2 및 C10.3.5의 유효한 비지원 조합은 기본 배치로 대체하지 않고 위치·속성·원인을 진단한다.
 
 ## 현재 경계와 구조 결정
 
-- 현재 `LayoutStyle`에는 CSS position과 inset 값이 없고, style-to-layout projection도 이를 전달하지 않는다. `CalcLayoutTree`는 HostDocument 자식 관계를 직접 Taffy 자식 관계로 쓴다. 현재 runtime CSS 성공 profile은 위치 지정 속성을 계산하지 않는다.
+- CSS position/inset은 `LayoutStyle` 필드가 아니라 NodeId별 `LayoutPositioning` 입력으로 전달된다. runtime projection은 제한된 `static`·`relative`와 Block/Flex `absolute` 경로를 지원한다. 계산 트리는 absolute 자식을 containing-block owner 아래에 배치할 수 있지만 HostDocument source parent는 보존한다. `fixed`·`sticky`와 이 계획에서 다루지 않는 조합은 아직 지원하지 않으며 성공처럼 투영하지 않고 오류로 거부한다.
 - Cargo.lock은 Taffy `0.14.0`을 고정한다. 그 버전의 `Position`은 `Relative`와 `Absolute` 두 값이며 CSS의 `static`, `fixed`, `sticky`를 모델링하지 않는다. 기본값도 CSS `static`이 아닌 Taffy `Relative`다. 그러므로 CSS `static`을 Taffy 기본 `Relative`에 그대로 맡기면 안 된다.
 - source/DOM parent, normal-flow formatting parent, absolute containing-block owner, Flex static-position owner, paint traversal은 별도 관계다. HostDocument 자식 벡터를 재부모화하거나 하나의 Taffy parent를 네 관계의 SSOT로 취급하지 않는다. Style-to-layout 입력에 필요한 owner ID를 보존하고, adapter가 geometry를 계산한 뒤 NodeId별 최종 frame과 paint 입력을 만든다.
 - 레이아웃 요청의 root가 HostRoot보다 아래인 경우에도 실제 containing block을 찾는 데 필요한 ancestor computed style·border/padding·revision을 입력에 보존한다. owner가 계산 subtree 밖에 있어도 root viewport로 바꾸지 않으며, owner snapshot이 없으면 명시 오류를 낸다.
@@ -94,7 +94,7 @@ C10.3.4는 PR #125로, C12.2는 PR #130으로 병합했다. 다음 단계 C10.3.
 
 C12.2 전용 기준은 [사전 비교 기록](../spec/internal/evidence/c12-2-absolute-block-precomparison-2026-10-11.md), [23-case inventory](../tests/fixtures/css/c12/position-absolute-block-inventory.json), [공용 JavaScript fixture](../tests/fixtures/css/c12/runtime-position-absolute-block.js), [HTML 진입점](../tests/fixtures/css/c12/position-absolute-block.html), [Chromium reference](../tests/fixtures/css/references/c12-2-position-absolute-block-v1.json)다. 고정 Chrome 154.0.8037.98·revision `@b859317bf11f6be47f9b7799ec690a0a42a1fb33`, macOS arm64에서 360×800 CSS px·DPR 1/2, 23 case·82 node의 computed property·source parent·containing-block owner·frame을 수집했다. 지원 field 오차 한도는 각 축 `0.5 CSS px`이며 누락·중복 NodeId 및 owner 차이는 별도 실패다. `flow-absolute`, `static-absolute`, `static-diff-absolute`는 각 target을 잠시 `position:static; inset:auto`로 바꾼 독립 관찰값을 함께 고정한다. 마지막 target은 source parent와 nearest positioned containing-block owner가 다른 경우의 좌표 변환을 검증한다.
 
-기준은 CSS Position 3 2025-10-07 Working Draft다. WPT revision `9ec154ff43db468923997c08bb08f905ceab62a5`에서 `position-absolute-padding-percentage.html`, `position-absolute-percentage-height.html`, `position-absolute-margin-auto-001.html`, `position-absolute-dynamic-static-position.html`, `position-absolute-dynamic-formatting-context.html` 경로가 존재함을 확인했다. WPT suite 자체는 실행하지 않았고 이 fixture 결과를 WPT 통과로 표현하지 않는다. 현재 inventory는 Block·LTR의 고정 크기 요소만 다룬다. 텍스트/replaced intrinsic sizing, Flex static-position, Grid, transform/contain, RTL·논리 inset, paint·hit-test는 계속 선행/후속 계약으로 남긴다.
+기준은 CSS Position 3 2025-10-07 Working Draft다. WPT revision `9ec154ff43db468923997c08bb08f905ceab62a5`에서 `position-absolute-padding-percentage.html`, `position-absolute-percentage-height.html`, `position-absolute-margin-auto-001.html`, `position-absolute-dynamic-static-position.html`, `position-absolute-dynamic-formatting-context.html` 경로가 존재함을 확인했다. WPT suite 자체는 실행하지 않았고 이 fixture 결과를 WPT 통과로 표현하지 않는다. C12.2 inventory는 Block·LTR의 고정 크기 요소만 다룬다. Flex static-position은 C10.3.5의 별도 제한 fixture에서 구현·검증했으며 이 사실이 C12.2의 전체 범위를 넓히지는 않는다. 텍스트/replaced intrinsic sizing, Grid, transform/contain, RTL·논리 inset, paint·hit-test는 계속 선행/후속 계약으로 남긴다.
 
 ## 구현·검증 게이트
 

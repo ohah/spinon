@@ -1,7 +1,7 @@
 # C10.3.5 · 위치 지정 Flex 자식 계획
 
 **상위:** [C10.3 Flex 순서·정렬](c10-3-flex-order-alignment.md) · [C12 위치 지정](c12-positioning.md) · [공식 상태 대장](../spec/STATUS.md)
-**현재 상태:** 제한된 계산·paint 경로 구현 및 모바일 smoke 완료 · [PR #132 리뷰 중](https://github.com/ohah/spinon/pull/132)
+**현재 상태:** 제한된 계산·paint 경로 구현 및 모바일 smoke 완료 · [PR #132 리베이스 병합](https://github.com/ohah/spinon/pull/132)
 **내부 계약 숫자 버전:** 출시 전 `0.1.0` 고정
 
 고정 Chrome 비교는 20개 case·70개 source node 전체를 DPR 1·2로 수행했다. Android 실기기와 iOS Simulator는 같은 Chrome 입력에서 직접 Flex child, paint 겹침, Block wrapper를 포함한 3개 case·15개 node를 실행했다. 두 앱의 V8 frame은 Chrome과 최대 오차 0 CSS px이고 각 GPU 표면에서 16개 상자를 제출했다. WPT suite, 전체 Chrome 행렬의 모바일 재실행, GPU 픽셀 동일성은 아직 검증하지 않았다.
