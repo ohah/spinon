@@ -59,7 +59,7 @@
 ## 구현·검증 순서
 
 1. 이 계획과 계획 실패 관점 기록을 먼저 확정한다. 계획 검토 지적을 반영하기 전에는 런타임 기능 코드를 수정하지 않는다.
-2. C12.2 fixture 구조를 복사하지 말고 C12.3 전용 HTML·inventory·Chrome capture를 만든다. viewport owner, ancestor owner와 resize/DPR 환경을 독립 관찰한다. comparator의 지원/거부 fixture와 tolerance를 구현 전에 고정한다.
+2. [구현 전 비교 완료](../spec/internal/evidence/c12-3-fixed-precomparison-2026-10-11.md). 전용 HTML·inventory·Chrome capture에서 viewport owner, ancestor owner와 resize/DPR 환경을 관찰하고 지원·거부 경계 및 tolerance를 고정했다. runtime 구현은 이 고정 기준을 바꾸지 않는다.
 3. Stylo author stylesheet source preflight와 inline style preflight를 각각 확인한다. computed snapshot→layout projection에도 fixed-CB effect 표식과 ancestor validation을 전달한다. effect 속성이 preflight를 우회해 cascade/layout에 도달하면 해당 입력을 reject하는 회귀 테스트를 추가한다.
 4. layout DTO에 `Fixed` 의미를 추가하고 Taffy absolute 매핑, 별도 absolute/fixed owner, viewport synthetic root 연결을 구현한다. source tree와 viewport root 사이의 graph consistency를 검증한다.
 5. C12.2 absolute fixture 전부를 회귀 실행하고, C12.3 지원/실패 fixture의 Chrome geometry를 node별 비교한다. resize·DPR-only·stale completion·invalid viewport 테스트를 추가한다.

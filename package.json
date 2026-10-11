@@ -52,6 +52,7 @@
     "css:compare:c10-3-5-positioned-flex-runtime": "node tools/css-reference/compare-c10-3-5-positioned-flex-runtime.mjs",
     "css:reference:c12-1-static-relative": "node tools/css-reference/capture-c12-1-static-relative.mjs",
     "css:reference:c12-2-absolute-block": "node tools/css-reference/capture-c12-2-absolute-block.mjs",
-    "css:compare:c12-2-absolute-block": "node tools/css-reference/compare-c12-2-absolute-block-runtime.mjs"
+    "css:compare:c12-2-absolute-block": "node tools/css-reference/compare-c12-2-absolute-block-runtime.mjs",
+    "css:reference:c12-3-fixed-positioning": "node tools/css-reference/capture-c12-3-fixed-positioning.mjs"
   }
 }
