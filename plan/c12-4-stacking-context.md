@@ -3,7 +3,7 @@
 **상위:** [C12 위치 지정 계획](c12-positioning.md) · [공식 상태 대장](../spec/STATUS.md)
 **계약:** [내부 계약 0058](../spec/internal/0058-c12-4-stacking-context.md)
 **계획 검토:** [서로 다른 20개 실패 관점](../spec/internal/evidence/c12-4-stacking-plan-review-2026-10-11.md)
-**현재 상태:** 계획·내부 계약 초안 · 기능 구현 전
+**현재 상태:** 계획·내부 계약·고정 Chrome 사전 비교 완료 · 기능 구현 전
 **목표:** CSS 쌓임 맥락의 원자성, `z-index` 단계, Flex paint 예외를 고정된 Chromium 결과와 GPU paint-list 양쪽에서 확인한다.
 
 ## 범위
@@ -26,13 +26,15 @@ C12.4는 기존 layout frame 위에 CSS paint 순서를 적용한다. 레이아�
 
 1. Host root element가 항상 만드는 root stacking context를 시작한다. 이 단계는 기존 C08 root background paint 동작을 보존하고 canvas·body background 전파를 새로 구현하지 않는다.
 2. 각 실제 stacking context 안에서는 음수 stack level context를 오름차순으로 그리고, 같은 level은 해당 context의 CSS tree order로 안정적으로 정렬한다.
-3. 지원되는 in-flow Block-level box는 기존 Block paint 순서를 따른다. Flex container 자체는 자기 formatting context에서 block-level box로 취급하고, 그 직접 in-flow Flex item은 Flexbox가 정한 order-modified document order의 paint participant로 처리한다. 중첩 container의 `order`를 조상 전체의 단일 정렬 키로 합치지 않는다. `row-reverse`/`column-reverse`는 order-modified document order 자체를 뒤집지 않는다.
+3. 지원되는 in-flow Block-level box는 기존 Block paint 순서를 따른다. Flex container 자체는 자기 formatting context에서 block-level box로 취급하고, 그 직접 in-flow Flex item의 computed `order`는 자기 Flex container 안에서만 적용한다. 중첩 container의 `order`를 조상 전체의 단일 정렬 키로 합치지 않는다. `row-reverse`/`column-reverse`의 computed `order` 값과 front-to-back pixel 순서를 같은 값으로 추론하지 않는다. pinned Chrome overlap fixture가 실제 front-to-back 기준을 제공한다.
 4. Flex item은 inline-block 유사 paint 규칙과 z-axis 예외를 따른다. static Flex item의 non-auto `z-index`는 실제 stacking context를 만든다. 해당 Flex item이 실제 context가 아니면 자손 context는 이를 건너뛰어 상위 context에 참여할 수 있다. 자식 stacking context를 무조건 Flex item 아래로 묶는 구현은 금지한다.
 5. positioned descendant의 `z-index:auto` pseudo-context 및 stack level 0의 context를 같은 paint 단계에서 CSS tree order로 처리한다. `auto` pseudo-context는 자손 stacking context를 격리하지 않으며, 실제 `z-index:0` context는 자손을 원자적으로 격리한다.
 6. 양수 stacking context를 stack level 오름차순으로 그리고, 같은 level은 context 안의 유효 CSS tree order로 안정적으로 정렬한다. 음수·0·양수 값은 전역 비교하지 않고 현재 context의 자식끼리만 비교한다.
 7. 각 실제 자식 stacking context는 완전히 paint한 뒤 하나의 원자적 participant로 부모 순서에 합친다. 자손의 큰 숫자가 context 바깥 sibling 위로 빠져나오면 안 된다. 비-context positioned/Flex box의 자손은 규격의 pseudo-context/tree-order 규칙을 따라 해당 부모 context phase에 참여한다.
 
-구현 전 Chrome 사전 비교에서 위 participant phase와 tie-break를 supported box 유형별로 확인한다. 특히 Flex item subtree가 non-context item을 넘어 참여하는 경우, fixed/absolute Flex child의 `order`, Flex container와 같은 단계의 Block sibling 간 tie를 별도 overlap case로 고정한다. 이 관측값을 확인하기 전에는 paint builder의 세부 순서를 더 좁혀 구현하지 않는다.
+고정 Chrome 사전 비교는 [실행 근거](../spec/internal/evidence/c12-4-stacking-precomparison-2026-10-11.md)에 기록했다. DPR 1·2의 26 scene·77 node 및 23 negative control을 수집했다. WPT source candidate는 고정했지만 실행하지 않았다. 특히 Flex item subtree가 non-context item을 넘어 참여하는 경우, fixed/absolute Flex child의 `order`, Flex container와 같은 단계의 Block sibling 간 tie는 Chrome fixture 관측에 맞춘 inventory로 남기고, WPT 미실행 범위와 엔진 고유 관찰을 구현 시 분리해 다룬다.
+
+고정 Chrome 사전 비교에서 `flex-direction:row-reverse`이고 겹치는 동일-level Flex item 두 개의 screenshot pixel은 source-first item을 topmost로 확인했다. 이 결과를 `order`-modified document order의 일반 규칙으로 확대하지 않는다. 이는 pinned Chrome 버전의 empirical 기준이며 해당 custom fixture의 WPT 실행·다른 브라우저 일치 증거는 아니다. 구현은 이 관측을 inventory pixel과 별도 top-to-bottom 후보에 고정하고, WPT 또는 다른 엔진에서 불일치가 나오면 범위를 넓혀 해석하지 말고 차이를 기록한다.
 
 실제 context 생성 규칙은 다음과 같이 한정한다.
 
@@ -98,7 +100,8 @@ WPT 의미 후보는 upstream commit `c999c58338ee1d223df5ad62e48be1202ced0d37`�
 ## 작업 목록과 순서
 
 - [ ] **계약·profile:** position/block/flex를 결합하는 단일 computed-style/layout profile, allowlist, Stylo typed z-index snapshot, custom-property/registered-property 경계와 diagnostic을 확정한다.
-- [ ] **독립 oracle:** Chrome 154 fixture, viewport/DPR, screenshot sample coordinate, geometry/paint rank inventory와 WPT 고정 revision/hash를 생성한다. expected stacking order는 input CSS/fixture metadata 또는 별도 규격 판정표에 저장하고, 구현 후 생성된 paint list를 정답으로 재사용하지 않는다. 비교 전 기대값을 기록하고 fixture 변경으로 실패를 없애지 않는다.
+- [x] **독립 oracle 사전 비교:** Chrome 154 fixture, viewport/DPR, screenshot sample coordinate, geometry/overlap inventory와 WPT 고정 revision/hash를 [evidence](../spec/internal/evidence/c12-4-stacking-precomparison-2026-10-11.md)에 기록했다. expected pixel은 pinned Chrome에서 관측했고 capture·reference·PNG hash를 고정했다. WPT source는 고정했으나 실행하지 않았다.
+- [ ] **구현 검증:** WPT candidate를 해당 제한 profile에서 실행해 지원·예상 미지원·불일치 경계를 분류한다. 이 실행은 Chrome fixture만으로 구현을 시작하지 못하게 하는 선행 조건은 아니며, pinned Chrome의 empirical 관측과 별도 결과로 남긴다.
 - [ ] **paint builder:** HostDocument/Flex 순서를 보존한 stacking-context staging, stack-level별 안정 정렬, atomic child-context flattening, overflow/할당 오류의 원자성을 구현한다.
 - [ ] **GPU/runtime:** 변경된 flat paint list를 revision key로 검증하고 WGPU에 같은 순서로 제출한다. scene consumer가 향후 hit-test를 지원할 때 GPU paint와 topmost target이 같은 순서를 쓰는지 별도 관문으로 둔다. Android 실기기에서 동일 JS fixture를 실행하고 iOS Simulator에서 보완 실행한다. 로그, screenshot, offscreen pixel readback, device/OS/GPU/backend를 저장한다.
 - [ ] **검증:** 새 Rust unit/integration/reference tests, 기존 C10/C12 regression, 실패 주입, Clippy/rustfmt/workspace 검증을 실행한다. 기능 구현 뒤 계획 검토와 겹치지 않는 코드·런타임 실패 관점 20개를 따로 기록한다.
@@ -117,4 +120,4 @@ WPT 의미 후보는 upstream commit `c999c58338ee1d223df5ad62e48be1202ced0d37`�
 
 ## 완료 판정
 
-이 문서는 계획 산출물이며 기능 완료를 뜻하지 않는다. C12.4를 체크하려면 구현 PR이 병합되고, pinned Chrome·WPT candidate·NodeId rank·GPU pixel·Android 실기기·iOS Simulator·실패 경계 근거를 모두 갖춰야 한다. 미지원 stacking effect나 미검증 platform은 상태 설명에 남긴다. 내부 계약·crate 숫자 버전은 계속 `0.1.0`이며 이 계획으로 올리지 않는다.
+이 문서와 Chrome 사전 비교는 계획·구현 전 근거이며 기능 완료를 뜻하지 않는다. C12.4를 체크하려면 구현 PR이 병합되고, pinned Chrome·관련 WPT 검증 또는 명시된 미실행 경계·NodeId rank·GPU pixel·Android 실기기·iOS Simulator·실패 경계 근거를 갖춰야 한다. 미지원 stacking effect나 미검증 platform은 상태 설명에 남긴다. 내부 계약·crate 숫자 버전은 계속 `0.1.0`이며 이 계획으로 올리지 않는다.
