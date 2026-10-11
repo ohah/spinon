@@ -2,7 +2,7 @@
 
 **문서 ID:** `0058` · **내부 계약 숫자 버전:** `0.1.0` 고정 · **상태:** 제안·미구현 · **공개 API:** 아님
 
-`0058`은 문서 ID다. 이 문서는 CSS stacking 전체를 지원한다고 선언하지 않는다. 기능 구현 전의 제한 runtime 계약 제안이며 [전용 계획](../../plan/c12-4-stacking-context.md), [계획 실패 관점 검토](evidence/c12-4-stacking-plan-review-2026-10-11.md)와 별도 evidence로 갱신한다.
+`0058`은 문서 ID다. 이 문서는 CSS stacking 전체를 지원한다고 선언하지 않는다. 기능 구현 전의 제한 runtime 계약 제안이며 [전용 계획](../../plan/c12-4-stacking-context.md), [계획 실패 관점 검토](evidence/c12-4-stacking-plan-review-2026-10-11.md), [고정 Chrome 사전 비교](evidence/c12-4-stacking-precomparison-2026-10-11.md)와 함께 갱신한다.
 
 ## 입력과 범위
 
@@ -17,8 +17,9 @@ Z-index는 문자열이 아닌 typed snapshot `Auto | Integer(i32-equivalent)`�
 - positioned relative/absolute integer 값은 자손을 원자적으로 paint하는 실제 stacking context다.
 - fixed box는 `z-index:auto`에서도 실제 stacking context를 만들며 integer 값은 그 context 안 stack level이다.
 - static Flex item의 `z-index`가 auto가 아니면 실제 stacking context를 만든다. static Block box의 z-index는 stack level 효과가 없다.
-- 각 실제 context는 제한된 box 유형에 대한 CSS paint phase와 stack level 순서를 따른다. Block-level box는 기존 Block paint 순서, in-flow Flex item은 해당 Flex container의 order-modified document order, positioned `auto` pseudo-context 및 0은 같은 context-local phase, 양수/음수는 level 오름차순으로 처리한다. Flex item의 non-auto `z-index`는 실제 context이며 non-context Flex item의 자손 context는 상위 context에 참여할 수 있다.
+- 각 실제 context는 제한된 box 유형에 대한 CSS paint phase와 stack level 순서를 따른다. Block-level box는 기존 Block paint 순서, in-flow Flex item의 computed `order`는 해당 Flex container 안에서만 적용하고, positioned `auto` pseudo-context 및 0은 같은 context-local phase, 양수/음수는 level 오름차순으로 처리한다. `row-reverse`/`column-reverse`의 computed `order`와 front-to-back pixel 순서를 같은 값으로 추론하지 않는다. static Flex item의 non-auto `z-index`는 실제 context이며 non-context Flex item의 자손 context는 상위 context에 참여할 수 있다.
 - absolute Flex child는 in-flow Flex item이 아니며 C10.3.5 `order:0`/source-tree 규칙을 따른다. fixed Flex child도 authored `order`로 Flex item처럼 재배치하지 않는다. 그 정확한 tie/phase는 구현 전 pinned Chrome overlap fixture에 저장한다.
+- pinned Chrome 154의 `row-reverse` 겹침 fixture에서는 source-first item의 screenshot pixel이 topmost다. 이는 해당 고정 Chrome의 empirical 기준이며 WPT 실행이나 다른 엔진 일치의 증거가 아니다. paint builder는 이 측정값을 다른 Flex case의 `order` 규칙으로 일반화하지 않는다.
 - child context는 한 atomic item으로 부모 순서에 합친다. context 바깥에서 z-index를 전역 정렬하지 않는다. HostDocument/DOM source order, NodeId, 수명·접근성 순서는 paint rank 때문에 변경되지 않는다. hit-test/event dispatch 의미는 별도 단계다. 나중에 scene 기반 hit-test가 `paint_order`를 사용할 때는 그 scene의 실제 topmost 결과를 따로 검증한다.
 
 ## RuntimeRenderSnapshot 및 backend

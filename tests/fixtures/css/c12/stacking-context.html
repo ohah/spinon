@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Spinon C12.4 stacking context reference fixture</title>
+    <style>
+      html {
+        width: 1000px;
+        height: 1400px;
+        overflow: hidden;
+        background: #112233;
+      }
+
+      body {
+        width: 1000px;
+        height: 1400px;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: transparent;
+      }
+
+      #spinon-c124-mount {
+        position: relative;
+        width: 1000px;
+        height: 1400px;
+      }
+
+      #spinon-c124-mount *,
+      #spinon-c124-mount *::before,
+      #spinon-c124-mount *::after {
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="spinon-c124-mount" aria-label="C12.4 reference cases"></main>
+  </body>
+</html>
