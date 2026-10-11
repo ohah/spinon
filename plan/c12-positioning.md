@@ -2,12 +2,12 @@
 
 **상위:** [공식 상태 대장](../spec/STATUS.md) · [코어 아키텍처](../docs/architecture.md)
 
-**현재 상태:** C12.1 PR #128, C12.2 PR #130, C10.3.5 교차 구현 PR #132, C12.3 PR #136 리베이스 병합 완료 · C12.3 구현·Chrome 비교·Android 실기기/iOS Simulator 확인 완료 · 다음 단계는 C12.4 paint-list 계약과 stacking 계획 수립 · C12 상위 구현은 미완료
+**현재 상태:** C12.1 PR #128, C12.2 PR #130, C10.3.5 교차 구현 PR #132, C12.3 PR #136 리베이스 병합 완료 · C12.4 전용 계획·제안 내부 계약 0058·20개 계획 실패 관점 검토 수립 · 다음은 고정 Chrome 사전 비교 · C12.4 기능 구현 전 · C12 상위 구현은 미완료
 **목표:** `position`, 물리 inset, containing block, out-of-flow geometry, 고정·sticky 위치, stacking과 `z-index`를 Chromium 기준으로 단계별 연결한다. 계획 초안이나 Taffy 기능 목록을 제품 지원 판정으로 쓰지 않는다.
 
 ## 로드맵 순서와 완료 경계
 
-C10.3.4는 PR #125, C12.2는 PR #130, C10.3.5는 PR #132로 병합했다. C12.3의 전용 계획·Chrome 비교 기준·구현 실패 관점 검토와 플랫폼 실행 근거는 [별도 계획](c12-3-fixed-positioning.md), PR #136 및 상태 대장에 연결했다. C12.4에 들어가기 전에 기존 `paint_order`가 보장하는 평면 순서와 아직 없는 stacking context 의미를 구분하고, renderer가 소비할 paint-list 계약 및 고정 Chrome 비교 모델을 C12.4 전용 계획으로 확정한다. C12 전체는 stacking·`z-index`와 sticky까지 단계별 완료 전까지 미완료다. C09.4의 absolute shrink-to-fit은 C12 외에도 C14·C15·C26 선행 구현 뒤 별도로 진행한다.
+C10.3.4는 PR #125, C12.2는 PR #130, C10.3.5는 PR #132로 병합했다. C12.3의 전용 계획·Chrome 비교 기준·구현 실패 관점 검토와 플랫폼 실행 근거는 [별도 계획](c12-3-fixed-positioning.md), PR #136 및 상태 대장에 연결했다. C12.4 전용 계획과 제안 계약 0058은 [계획](c12-4-stacking-context.md)에서 정했다. 기존 `paint_order`는 단일 평면 draw 순서이며 CSS stacking-context 의미는 아직 구현되지 않았다. C12.4는 전체 C22 painter를 선행조건으로 삼지 않고, 단색 box를 위한 최소 flat paint-list 계약을 정해 WGPU에 전달한다. border/gradient/shadow는 C22, opacity/transform/compositing은 C23 소유로 남긴다. 다음 단계는 고정 Chrome precomparison과 혼합 Block/Flex runtime profile 검증이며, C12.4 코드 구현은 이 기준이 준비된 뒤 시작한다. C12 전체는 stacking·`z-index`와 sticky까지 단계별 완료 전까지 미완료다. C09.4의 absolute shrink-to-fit은 C12 외에도 C14·C15·C26 선행 구현 뒤 별도로 진행한다.
 
 | 단계 | 소유 범위 | 선행 조건 | 완료 증거 |
 | --- | --- | --- | --- |
@@ -15,7 +15,7 @@ C10.3.4는 PR #125, C12.2는 PR #130, C10.3.5는 PR #132로 병합했다. C12.3�
 | C12.2 | Block formatting context의 `absolute`, nearest positioned ancestor, padding-edge containing block, percentage·auto inset과 positioned size 계산 | C12.1 · C09.1/C09.3 · C07.1/C07.2 | Chrome 기하·computed style 비교, 정적 경로와 실패 경계, 양 플랫폼 runtime fixture |
 | C10.3.5 | Flex absolute child의 line 제외, static-position rectangle/`align-self`, paint에서 `order: 0` 상호 순서 | C12.1–C12.2 · C10.3.1–C10.3.4 | [C10.3 계획](c10-3-flex-order-alignment.md)의 별도 구현 PR과 Flex 전용 Chrome·GPU 증거 |
 | C12.3 | 기본 fixed viewport containing block과 viewport resize 반영 | C12.1–C12.2 · C10.3.5 · 환경 revision 경로 | [Chrome 사전 비교](../spec/internal/evidence/c12-3-fixed-precomparison-2026-10-11.md), [20개 실패 관점 구현 검토](../spec/internal/evidence/c12-3-fixed-positioning-implementation-review-2026-10-11.md), [Android 실기기/iOS Simulator 실행 근거](../spec/internal/evidence/c12-3-fixed-positioning/README.md) · PR #136 |
-| C12.4 | paint order, positioned `z-index`, stacking context의 생성·중첩·격리 | C10.3.2/C10.3.5 · 평면 `paint_order`와 구분되는 renderer paint-list 소비 계약 · 고정 Chrome 비교 기준 | 중첩·겹침 색 pixel과 NodeId별 paint-list 순서, Android 실기기·iOS Simulator 비교; 별도 계획·내부 계약·실패 관점 검토 필요 |
+| C12.4 | paint order, positioned `z-index`, stacking context의 생성·중첩·격리 | C10.3.2/C10.3.5 · 혼합 Block/Flex 및 C12.3 값을 한 revision으로 내는 제한 profile · flat paint-list 계약 | [전용 계획](c12-4-stacking-context.md) · [제안 계약 0058](../spec/internal/0058-c12-4-stacking-context.md) · [20개 계획 실패 관점 검토](../spec/internal/evidence/c12-4-stacking-plan-review-2026-10-11.md) · 고정 Chrome 비교 필요 · 구현은 미착수 |
 | C12.5 | `sticky`와 nearest scrollport 제약 | C13 실제 scroll container·scroll offset·clip 계약 | 정지/경계/양방향 scroll 시 Chrome과 frame·clip 비교 |
 
 각 구현 단계는 독립 PR과 내부 계약·고정 비교 기준을 가진다. C12 상태를 완료로 바꾸려면 위 다섯 C12 단계와 C10.3.5 교차 계약이 모두 닫혀야 한다. C12.1–C12.2 및 C10.3.5의 유효한 비지원 조합은 기본 배치로 대체하지 않고 위치·속성·원인을 진단한다.
