@@ -6,7 +6,7 @@
 
 | # | 적대적 실패 관점 | 대조한 구현·근거 | 판정 |
 | --- | --- | --- | --- |
-| 1 | 다른 브랜치 또는 이전 기준 커밋의 결과를 PR로 잘못 올리는가 | PR base `main`, head `feat/c12-4-stacking-context-runtime`, head SHA `0289a16c`; 로컬 브랜치는 해당 원격 head와 일치하고 작업 트리는 깨끗했다. | 일치 |
+| 1 | 다른 브랜치 또는 이전 기준 커밋의 결과를 PR로 잘못 올리는가 | PR 검토 시작 시 base `main`, head `feat/c12-4-stacking-context-runtime`, head SHA `0289a16c`; 로컬 브랜치는 해당 원격 head와 일치하고 작업 트리는 깨끗했다. | 일치 |
 | 2 | 진단 계측 feature가 기본 제품 빌드에서 우연히 켜지는가 | Cargo feature와 Android/iOS build script의 기본값은 `0`; 켤 때 C04 runtime GPU fixture를 요구한다. | 기본 비활성 경로 확인 |
 | 3 | C ABI 헤더와 Rust export가 달라 모바일 링크에서만 실패하는가 | C12.4 eval 및 test-only surface/stack 함수의 이름·인자·feature 조건을 Rust export, C 헤더, 호출부에서 대조했다. | 대응 확인 |
 | 4 | Android JNI가 다른 worker의 stack 주소를 현재 CSS worker 주소로 잘못 표본화하는가 | JNI 구현은 호출 중인 `pthread_self()`의 속성을 얻고, worker probe는 CSS 계산 worker 안에서 실행한다. 테스트 전용 값은 JSON 근거와 함께 보존한다. | 현재 worker 귀속 경로 확인; 표본은 순간 관측 |
