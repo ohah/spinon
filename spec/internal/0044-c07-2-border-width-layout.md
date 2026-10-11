@@ -38,7 +38,7 @@ Stylo same-revision cascade → 승자 declaration과 computed custom property �
 
 Chrome `154.0.8037.98`, revision `@b859317bf11f6be47f9b7799ec690a0a42a1fb33`의 고정된 50-node fixture와 DPR 1·2 관찰이 box geometry 기준이다. 정수 경계 입력 `1.999px`, `1.9999px`, `2px`, `2.001px`은 별도 고정 probe에서 DPR 1·2·2.625·3으로 관찰한다. fixture 기준 파일의 HTML, inventory, 캡처기, helper, Chrome 실행 파일 SHA-256이 일치하지 않으면 비교를 무효화한다. 각 node의 계산값과 `x/y/width/height`를 대조한다. frame field 최대 절대 오차는 `0.5 CSS px` 이하여야 하며 결과 CSS px는 DPR에 독립적이어야 한다.
 
-계획 검토와 구현 검토는 별개다. 계획 검토와 구현 후 실패 경로 검토 결과는 각각 연결한 근거에 둔다. 이 계약은 제한 runtime profile의 내부 구현 경계이며 공개 API 지원 선언이 아니다. PR #103 병합에 따라 C07.2 상태를 공식 상태 대장과 Tailscale 미리보기에 동기화한다. C07 상위는 aspect ratio 등 잔여 범위 때문에 미완료다.
+계획 검토와 구현 검토는 별개다. 계획 검토와 구현 후 실패 경로 검토 결과는 각각 연결한 근거에 둔다. 이 계약은 제한 runtime profile의 내부 구현 경계이며 공개 API 지원 선언이 아니다. PR #103은 병합됐다. C07.2 Android 실기기 실행은 6-box runtime 제출 smoke만 보강하며 desktop 50-node geometry 기준을 확장하지 않는다. C07 상위는 제한 단계의 완료와 별개로 C07.3의 min/max+aspect-ratio 다섯 조합이 fail-closed여서 미완료다.
 
 ## 구현·실행 근거
 
