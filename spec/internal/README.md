@@ -165,6 +165,7 @@ C06.1~C06.6a 및 C07.1 누적 변경의 ABI·캐시·CSS 의미·Android/iOS run
 - [C12.4 · runtime 깊이 안전성 구현 검토](./evidence/c12-4-layout-depth-safety-implementation-review-2026-10-11.md) — 경계, stale/cache, malformed snapshot, 동일 worker 복구, FFI buffer와 simulator/실기기 범위를 코드·실행 근거에 대조.
 - [C12.4 · iOS 전체 runtime matrix 계획](../../plan/c12-4-ios-runtime-matrix.md) · [구현 검토와 비교 근거](./evidence/c12-4-ios-runtime-matrix-implementation-review-2026-10-11.md) — iPhone 17 Pro / iOS 26.2 Simulator에서 26 scene·77 node, 지원 node 64개 frame을 pinned Chromium 기준과 비교.
 - [C12.4 · 후속 검증 결과](./evidence/c12-4-follow-up-verification-2026-10-11/README.md) · [정합성 검토](./evidence/c12-4-verification-reconciliation-review-2026-10-11.md) — iOS Metal surface, reverse fixture, iOS matrix와 동시 session 관측을 새 run으로 재현하고 미완료 경계를 분리.
+- [C12.4 · 후속 검증 PR 통합 검토](./evidence/c12-4-follow-up-pr-integration-review-2026-10-11.md) — PR 본문·asset·라벨·상태 대장·지원 경계·미리보기와 실행 증거의 정합성을 대조.
 - [C12.4 · 후속 검증 결과와 남은 경계](./evidence/c12-4-follow-up-verification-2026-10-11/README.md) — iOS Metal surface, 동시 session memory, 전체 iOS runtime matrix 결과와 WPT·실기기·allocator 한계를 정리.
 - [C12.3 · viewport fixed 사전 비교](./evidence/c12-3-fixed-precomparison-2026-10-11.md) — pinned Chrome 154의 viewport/DPR frame, fixed/absolute owner와 resize 왕복 기준. Spinon 구현 근거가 아님.
 - [C12.3 · 사전 비교 실패 경로 검토](./evidence/c12-3-fixed-precomparison-review-2026-10-11.md) — viewport gutter, owner 좌표 독립 관찰, DPR/resize·fixed-CB 경계를 대조.
