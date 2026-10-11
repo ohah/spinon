@@ -24,6 +24,16 @@ require(spinonC04RuntimeGpuFailureFixtureValue == "0" ||
 require(spinonC04RuntimeGpuFailureFixtureValue != "1" || spinonC04RuntimeGpuValue == "1") {
     "draw 실패 fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다."
 }
+val spinonC124WorkerStackResidencyTest =
+    providers.environmentVariable("SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST").orElse("0")
+val spinonC124WorkerStackResidencyTestValue = spinonC124WorkerStackResidencyTest.get()
+require(spinonC124WorkerStackResidencyTestValue == "0" ||
+    spinonC124WorkerStackResidencyTestValue == "1") {
+    "SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST는 0 또는 1이어야 합니다."
+}
+require(spinonC124WorkerStackResidencyTestValue != "1" || spinonC04RuntimeGpuValue == "1") {
+    "C12.4 worker stack 검증은 C04.10 runtime GPU fixture와 함께 켜야 합니다."
+}
 val prepareSpinonBootstrap by tasks.registering(Exec::class) {
     workingDir = repoRoot
     environment("SPINON_ENABLE_S03_DOM_GC_FIXTURE", spinonS03DomGcFixture.get())
@@ -31,6 +41,10 @@ val prepareSpinonBootstrap by tasks.registering(Exec::class) {
     environment(
         "SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE",
         spinonC04RuntimeGpuFailureFixture.get(),
+    )
+    environment(
+        "SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST",
+        spinonC124WorkerStackResidencyTestValue,
     )
     commandLine("bash", "tools/build-android.sh")
 }
@@ -77,6 +91,11 @@ android {
             "boolean",
             "SPINON_C04_RUNTIME_GPU_FAILURE_FIXTURE",
             (spinonC04RuntimeGpuFailureFixtureValue == "1").toString(),
+        )
+        buildConfigField(
+            "boolean",
+            "SPINON_C124_WORKER_STACK_RESIDENCY_TEST",
+            (spinonC124WorkerStackResidencyTestValue == "1").toString(),
         )
     }
 

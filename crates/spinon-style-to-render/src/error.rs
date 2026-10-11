@@ -41,6 +41,9 @@ pub enum StyleRenderError {
         property: &'static str,
         value: String,
     },
+    AllocationFailed {
+        stage: &'static str,
+    },
     UnexpectedComputedStyle(NodeId),
     MissingBackgroundColor(NodeId),
     MissingLayoutFrame(NodeId),
@@ -58,9 +61,7 @@ impl fmt::Display for StyleRenderError {
                 formatter.write_str("S04FlexPaintV1 computed-style profile만 지원합니다")
             }
             Self::UnsupportedRuntimeProfile => {
-                formatter.write_str(
-                    "RuntimeFlexPaintV1 계열 또는 RuntimeBlockPaintV1 computed-style profile만 지원합니다",
-                )
+                formatter.write_str("현재 runtime computed-style profile을 지원하지 않습니다")
             }
             Self::SnapshotMismatch { field } => {
                 write!(
@@ -122,6 +123,9 @@ impl fmt::Display for StyleRenderError {
                 formatter,
                 "노드 {node}의 계산 속성 {property} 값 {value:?}를 runtime renderer가 지원하지 않습니다"
             ),
+            Self::AllocationFailed { stage } => {
+                write!(formatter, "{stage} 메모리 예약에 실패했습니다")
+            }
             Self::UnexpectedComputedStyle(node) => {
                 write!(
                     formatter,

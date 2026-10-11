@@ -89,6 +89,25 @@ pub(super) fn first_unsupported_runtime_registered_properties_author_feature(
     )
 }
 
+pub(super) fn first_unsupported_runtime_layered_registered_properties_author_feature(
+    registry: &StylesheetRegistry,
+    allowed_properties: &[&str],
+    allow_background_color: bool,
+) -> Option<(String, String)> {
+    first_unsupported_author_feature_with_rules(
+        registry,
+        allowed_properties,
+        AuthorFeaturePolicy {
+            allow_layers: true,
+            allow_media: false,
+            allow_custom_properties: true,
+            allow_background_color,
+            allow_property_registration: true,
+            allow_border_image_initial_resets: true,
+        },
+    )
+}
+
 fn first_unsupported_author_feature_with_layer_rules(
     registry: &StylesheetRegistry,
     allowed_properties: &[&str],

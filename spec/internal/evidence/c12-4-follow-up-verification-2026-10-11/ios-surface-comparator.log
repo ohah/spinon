@@ -1,0 +1,16 @@
+✔ 고정된 iOS Metal surface 8개 표본을 비교한다 (1.919708ms)
+✔ 누락 case를 거부한다 (0.632708ms)
+✔ 중복 case를 거부한다 (0.168459ms)
+✔ 잘못된 run ID를 거부한다 (0.427167ms)
+✔ pixel color mutation을 거부한다 (0.239834ms)
+✔ 좌표 뒤바꿈을 거부한다 (0.138208ms)
+✔ offscreen texture 결과를 거부한다 (0.142833ms)
+✔ 실패 상태 marker가 섞인 실행을 거부한다 (0.127917ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 45.098416

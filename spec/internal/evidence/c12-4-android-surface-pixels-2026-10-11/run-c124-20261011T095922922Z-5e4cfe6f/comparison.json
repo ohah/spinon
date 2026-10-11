@@ -1,0 +1,131 @@
+{
+  "schema": "spinon-c12-4-android-surface-pixels/v1",
+  "status": "mismatch",
+  "runId": "c124-20261011T095922922Z-5e4cfe6f",
+  "device": {
+    "serial": "emulator-5554",
+    "model": "sdk_gphone16k_arm64",
+    "sdk": 37,
+    "buildFingerprint": "google/sdk_gphone16k_arm64/emu64a16k:17/CP31.260623.012/16064790:userdebug/dev-keys",
+    "displaySize": {
+      "width": 1080,
+      "height": 2400
+    },
+    "densityDpi": 420,
+    "density": 2.625,
+    "egl": "emulation",
+    "surfaceFlingerGles": "GLES: Google (Google Inc. (Google)), Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)), OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))",
+    "classification": "Android AVD; simulator-only surface pixel result"
+  },
+  "inputs": {
+    "inventory": {
+      "path": "tests/fixtures/css/c12/stacking-context-inventory.json",
+      "sha256": "f7890fdab13afb896fa9678be192f1829aae43ef0eef197ca879aa78f8bdc6aa"
+    },
+    "reference": {
+      "path": "tests/fixtures/css/references/c12-4-stacking-context-v1.json",
+      "sha256": "0fd023da34b8488fd6da6330d720b3c2b5af0ece2fe4a0e670a9b140fb0b93ba",
+      "chromium": {
+        "version": "Chrome/154.0.8037.98",
+        "cliVersion": "Google Chrome 154.0.8037.98",
+        "revision": "@b859317bf11f6be47f9b7799ec690a0a42a1fb33",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "executable": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+        "binarySha256": "ccffd5c5fe77ba3212e07c2c69091f8048b73c396b4647ecaa150e1e01a04954",
+        "javascriptVersion": "15.4.80.20"
+      },
+      "screenshotDeviceScaleFactor": 1
+    },
+    "apk": {
+      "path": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+      "bytes": 108906272,
+      "sha256": "cfa3cd816938d2f12a612a41b49133dcf85fbc838208d4651fdbb3877c4fc12b"
+    }
+  },
+  "expected": {
+    "supportedCases": 21,
+    "supportedNodes": 64,
+    "samples": 22,
+    "rejectedCases": 5
+  },
+  "actual": {
+    "supportedCases": 1,
+    "samples": 2,
+    "maximumChannelError": 0
+  },
+  "captures": [
+    {
+      "caseId": "root-negative-flow",
+      "runId": "c124-20261011T095922922Z-5e4cfe6f_root-negative-flow",
+      "width": 840,
+      "height": 630,
+      "density": 2.625,
+      "attempts": 1,
+      "imageSha256": "043193116200891cc1a623cec3ab6c483dcb6d3ee9dbb2bbef4699684566fcf2",
+      "samples": [
+        {
+          "id": "negative-under-flow",
+          "x": 224,
+          "y": 145,
+          "actualRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "maxChannelError": 0
+        },
+        {
+          "id": "root-canvas-background",
+          "x": 40,
+          "y": 40,
+          "actualRgba": [
+            17,
+            34,
+            51,
+            255
+          ],
+          "expectedRgba": [
+            17,
+            34,
+            51,
+            255
+          ],
+          "maxChannelError": 0
+        }
+      ],
+      "maximumChannelError": 0,
+      "pngPath": "root-negative-flow.png",
+      "logPath": "root-negative-flow.log",
+      "renderer": "backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=840x630 selection=auto"
+    }
+  ],
+  "failures": [
+    "negative-level-tie: negative-level-tie/negative-order: DPR 1 Chrome 기준 좌표가 fixture와 다릅니다.\n\n330 !== 85\n",
+    "auto-zero-positive: auto-zero-positive/auto-zero-positive: DPR 1 Chrome 기준 좌표가 fixture와 다릅니다.\n\n575 !== 85\n",
+    "positive-level-tie: positive-level-tie/positive-tie: DPR 1 Chrome 기준 좌표가 fixture와 다릅니다.\n\n820 !== 85\n",
+    "integer-boundaries: integer-boundaries/integer-range: DPR 1 Chrome 기준 좌표가 fixture와 다릅니다.\n\n160 !== 55\n",
+    "nested-context-atomic: nested-context-atomic/atomic-child: DPR 1 Chrome 기준 좌표가 fixture와 다릅니다.\n\n330 !== 85\n",
+    "relative-auto-escape: relative-auto-escape/auto-pseudo-context: DPR 1 Chrome 기준 좌표가 fixture와 다릅니다.\n\n575 !== 85\n",
+    "relative-zero-isolation: relative-zero-isolation/zero-context-atomic: DPR 1 Chrome 기준 좌표가 fixture와 다릅니다.\n\n820 !== 85\n",
+    "fixed-auto-isolation: fixed-auto-isolation/fixed-auto-context: DPR 1 Chrome 기준 좌표가 fixture와 다릅니다.\n\n265 !== 55\n",
+    "static-block-z-ignored: static-block-z-ignored/static-block-no-effect: DPR 1 Chrome 기준 좌표가 fixture와 다릅니다.\n\n330 !== 85\n",
+    "static-flex-item-z-context: static-flex-item-z-context/static-flex-z-index: DPR 1 Chrome 기준 좌표가 fixture와 다릅니다.\n\n575 !== 85\n",
+    "flex-order-and-tie: flex-order-and-tie/order-tie: DPR 1 Chrome 기준 좌표가 fixture와 다릅니다.\n\n845 !== 110\n",
+    "flex-row-reverse-paint: flex-row-reverse-paint/row-reverse-chrome-front-to-back: DPR 1 Chrome 기준 좌표가 fixture와 다릅니다.\n\n355 !== 40\n",
+    "nested-flex-local-order: nested-flex-local-order/nested-owner-locality: DPR 1 Chrome 기준 좌표가 fixture와 다릅니다.\n\n330 !== 85\n",
+    "absolute-flex-order-ignored: absolute-flex-order-ignored/absolute-not-flex-item: DPR 1 Chrome 기준 좌표가 fixture와 다릅니다.\n\n575 !== 85\n",
+    "fixed-flex-order-ignored: fixed-flex-order-ignored/fixed-not-flex-item: DPR 1 Chrome 기준 좌표가 fixture와 다릅니다.\n\n820 !== 85\n",
+    "block-before-flex-tie: block-before-flex-tie/block-flex-source-order: DPR 1 Chrome 기준 좌표가 fixture와 다릅니다.\n\n475 !== 55\n",
+    "flex-before-block-tie: flex-before-block-tie/flex-block-source-order: DPR 1 Chrome 기준 좌표가 fixture와 다릅니다.\n\n330 !== 85\n",
+    "cascade-layer-and-inline: cascade-layer-and-inline/cascade-layer-order: DPR 1 Chrome 기준 좌표가 fixture와 다릅니다.\n\n575 !== 85\n",
+    "custom-property-z-index: custom-property-z-index/computed-var-z-index: DPR 1 Chrome 기준 좌표가 fixture와 다릅니다.\n\n820 !== 85\n",
+    "registered-property-z-index: registered-property-z-index/registered-z-index: DPR 1 Chrome 기준 좌표가 fixture와 다릅니다.\n\n580 !== 55\n"
+  ]
+}

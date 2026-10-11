@@ -3,6 +3,7 @@
 mod adapter;
 mod error;
 mod runtime;
+mod stacking;
 
 #[cfg(test)]
 mod tests;

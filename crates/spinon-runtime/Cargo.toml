@@ -4,6 +4,9 @@ version = "0.1.0"
 edition = "2024"
 publish = false
 
+[features]
+c12-4-worker-stack-residency-test = []
+
 [dependencies]
 spinon-core = { path = "../spinon-core" }
 spinon-layout = { path = "../spinon-layout" }

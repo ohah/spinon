@@ -12,6 +12,16 @@ use crate::geometry::{Vertex, build_vertices};
 
 mod backend;
 use backend::{android_auto_backend_order, backend_from_abi, choose_sdr_format, color_encoding};
+mod surface_readback;
+
+/// 내부 WGPU surface 진단에서 읽은 단일 색상 표본입니다.
+#[doc(hidden)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub struct SurfacePixelSample {
+    pub x: u32,
+    pub y: u32,
+    pub rgba: [u8; 4],
+}
 
 const SHADER: &str = include_str!("runtime.wgsl");
 
@@ -48,6 +58,9 @@ pub struct RuntimeRenderer {
     vertex_count: u32,
     last_surface_texture_size: (u32, u32),
     surface_configured: bool,
+    surface_copy_src_enabled: bool,
+    pending_surface_pixel_samples: Option<Vec<(u32, u32)>>,
+    last_surface_pixel_samples: Option<Vec<SurfacePixelSample>>,
     #[cfg(feature = "test-hooks")]
     draw_failure_injector: DrawFailureInjector,
 }
@@ -171,7 +184,7 @@ impl RuntimeRenderer {
         width: u32,
         height: u32,
     ) -> Result<(Self, String), RuntimeRendererError> {
-        Self::initialize_surface_with_configuration(pending, width, height, true)
+        Self::initialize_surface_with_configuration(pending, width, height, true, false)
     }
 
     /// UIKit surface를 준비하되 `CAMetalLayer`의 속성을 바꾸는 configure는 미룹니다.
@@ -182,7 +195,17 @@ impl RuntimeRenderer {
         width: u32,
         height: u32,
     ) -> Result<(Self, String), RuntimeRendererError> {
-        Self::initialize_surface_with_configuration(pending, width, height, false)
+        Self::initialize_surface_with_configuration(pending, width, height, false, false)
+    }
+
+    /// C12.4 iOS 검증에서 Metal surface texture를 직접 복사할 때만 사용합니다.
+    #[doc(hidden)]
+    pub fn initialize_uikit_surface_with_copy_src(
+        pending: PendingRuntimeSurface,
+        width: u32,
+        height: u32,
+    ) -> Result<(Self, String), RuntimeRendererError> {
+        Self::initialize_surface_with_configuration(pending, width, height, false, true)
     }
 
     fn initialize_surface_with_configuration(
@@ -190,6 +213,7 @@ impl RuntimeRenderer {
         width: u32,
         height: u32,
         configure_surface: bool,
+        copy_surface_to_buffer: bool,
     ) -> Result<(Self, String), RuntimeRendererError> {
         if width == 0 || height == 0 {
             return Err(RuntimeRendererError::InvalidArgument(
@@ -213,6 +237,15 @@ impl RuntimeRenderer {
                 )
             })?;
         let capabilities = surface.get_capabilities(&adapter);
+        if copy_surface_to_buffer && !capabilities.usages.contains(wgpu::TextureUsages::COPY_SRC) {
+            return Err(RuntimeRendererError::Initialization(
+                "iOS Metal surface가 직접 texture readback용 COPY_SRC를 지원하지 않습니다"
+                    .to_owned(),
+            ));
+        }
+        if copy_surface_to_buffer {
+            config.usage |= wgpu::TextureUsages::COPY_SRC;
+        }
         config.format = choose_sdr_format(&capabilities)?;
         config.color_space = wgpu::SurfaceColorSpace::Srgb;
         config.present_mode = wgpu::PresentMode::Fifo;
@@ -246,6 +279,9 @@ impl RuntimeRenderer {
                 vertex_count: 0,
                 last_surface_texture_size: (0, 0),
                 surface_configured: configure_surface,
+                surface_copy_src_enabled: copy_surface_to_buffer,
+                pending_surface_pixel_samples: None,
+                last_surface_pixel_samples: None,
                 #[cfg(feature = "test-hooks")]
                 draw_failure_injector: DrawFailureInjector::default(),
             },
@@ -280,6 +316,44 @@ impl RuntimeRenderer {
 
     pub fn last_surface_texture_size(&self) -> (u32, u32) {
         self.last_surface_texture_size
+    }
+
+    #[doc(hidden)]
+    pub fn request_surface_pixel_readback_for_test(
+        &mut self,
+        points: &[(u32, u32)],
+    ) -> Result<(), RuntimeRendererError> {
+        if !self.surface_copy_src_enabled {
+            return Err(RuntimeRendererError::InvalidArgument(
+                "직접 surface pixel readback이 준비된 renderer가 아닙니다",
+            ));
+        }
+        if points.len() != 1 {
+            return Err(RuntimeRendererError::InvalidArgument(
+                "C12.4 surface pixel 검증은 한 번에 표본 하나만 허용합니다",
+            ));
+        }
+        if points
+            .iter()
+            .any(|(x, y)| *x >= self.config.width || *y >= self.config.height)
+        {
+            return Err(RuntimeRendererError::InvalidArgument(
+                "surface pixel 표본이 drawable 범위를 벗어났습니다",
+            ));
+        }
+        if self.pending_surface_pixel_samples.is_some() {
+            return Err(RuntimeRendererError::InvalidArgument(
+                "이전 surface pixel 표본이 아직 제출되지 않았습니다",
+            ));
+        }
+        self.pending_surface_pixel_samples = Some(points.to_vec());
+        self.last_surface_pixel_samples = None;
+        Ok(())
+    }
+
+    #[doc(hidden)]
+    pub fn take_surface_pixel_samples_for_test(&mut self) -> Option<Vec<SurfacePixelSample>> {
+        self.last_surface_pixel_samples.take()
     }
 
     pub fn draw(
@@ -391,11 +465,36 @@ impl RuntimeRenderer {
         if !is_current() {
             return Ok(false);
         }
-        self.queue.submit([encoder.finish()]);
+        let readback = match self.pending_surface_pixel_samples.as_deref() {
+            Some(points) => Some(
+                surface_readback::append_copy(
+                    &self.device,
+                    &mut encoder,
+                    &frame.texture,
+                    self.config.format,
+                    self.config.width,
+                    self.config.height,
+                    points,
+                )
+                .map_err(RuntimeRendererError::Surface)?,
+            ),
+            None => None,
+        };
+        let submission = self.queue.submit([encoder.finish()]);
         if !is_current() {
+            if readback.is_some() {
+                self.pending_surface_pixel_samples = None;
+                self.last_surface_pixel_samples = None;
+            }
             return Ok(false);
         }
         self.queue.present(frame);
+        if let Some(readback) = readback {
+            let samples = surface_readback::map_samples(&self.device, &submission, readback)
+                .map_err(RuntimeRendererError::Surface)?;
+            self.pending_surface_pixel_samples = None;
+            self.last_surface_pixel_samples = Some(samples);
+        }
         Ok(true)
     }
 

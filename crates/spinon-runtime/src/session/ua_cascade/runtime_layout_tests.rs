@@ -1,5 +1,8 @@
 use super::*;
 
+#[path = "runtime_layout_tests/depth_tests.rs"]
+mod depth_tests;
+
 fn make_layout_snapshot(
     root_style: &str,
     child_styles_in_dom_order: &[&str],
@@ -195,6 +198,35 @@ fn runtime_gpu_profile_keeps_background_paint_out_of_the_legacy_layout_contract(
 }
 
 #[test]
+fn c124_profile_rejects_opacity_context_before_publishing_a_render_snapshot() {
+    let (snapshot, _, _) = make_layout_snapshot(
+        "display:block;position:relative;width:120px;height:100px",
+        &["position:static;width:0;height:0;margin:20px;opacity:0.5"],
+        false,
+        None,
+    );
+    let request = WorkRequest {
+        key: key_for(&snapshot, EnvironmentRevision::INITIAL),
+        snapshot,
+        viewport: CssViewport::C04_FIXTURE,
+        previous_snapshot: None,
+        force_full: true,
+        invalidation: None,
+        previous_styles: None,
+    };
+
+    let calculation = compute_request_for_block_flex_stacking(&request).unwrap();
+    assert_eq!(
+        calculation.layout.unwrap_err(),
+        layout_failure(
+            "unsupported_inline_property",
+            Some(2),
+            Some("opacity".to_owned())
+        )
+    );
+}
+
+#[test]
 fn unsupported_layout_style_does_not_fail_the_ua_cascade_snapshot() {
     let (snapshot, _, _) = make_layout_snapshot(
         "display:block;width:300px;height:140px;color:red",
@@ -300,6 +332,8 @@ fn stale_completion_cannot_replace_a_newer_requested_key() {
     let shared = Shared {
         state: Mutex::new(State::new()),
         wake: Condvar::new(),
+        #[cfg(feature = "c12-4-worker-stack-residency-test")]
+        worker_stack: Mutex::new(None),
     };
     let snapshot = make_snapshot(&["div"], None, None);
     let mut state = lock(&shared.state);
@@ -337,6 +371,7 @@ fn stale_completion_cannot_replace_a_newer_requested_key() {
         &stale_request,
         Ok(RuntimeCalculation {
             roots: Vec::new().into(),
+            cascade_error: None,
             cascade_duration_us: 1,
             cascade_recomputed_style_elements: 0,
             cascade_reused_style_elements: 0,

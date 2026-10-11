@@ -207,5 +207,6 @@ fn is_runtime_layout_profile(profile: ComputedStyleProfile) -> bool {
             | ComputedStyleProfile::RuntimeBlockPaintV1
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1
+            | ComputedStyleProfile::RuntimeBlockFlexStackingV1
     )
 }

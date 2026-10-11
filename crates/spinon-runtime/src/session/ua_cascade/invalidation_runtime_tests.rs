@@ -239,6 +239,8 @@ fn pending_requests_keep_the_earliest_contiguous_baseline_and_reject_gaps() {
     let shared = Shared {
         state: Mutex::new(State::new()),
         wake: Condvar::new(),
+        #[cfg(feature = "c12-4-worker-stack-residency-test")]
+        worker_stack: Mutex::new(None),
     };
     {
         let mut state = lock(&shared.state);

@@ -1,0 +1,29 @@
+Timestamp               Ty Process[PID:TID]
+2026-10-11 20:46:42.305 Df SpinonBootstrap[52362:6b40ce] [dev.spinon.bootstrap:c124-matrix] SPINON_C124_IOS_MATRIX_CASE index=0 id=root-negative-flow expected=ready actual=ready matched=true
+2026-10-11 20:46:42.307 Df SpinonBootstrap[52362:6b40ce] [dev.spinon.bootstrap:c124-matrix] SPINON_C124_IOS_MATRIX_CASE index=1 id=negative-level-tie expected=ready actual=ready matched=true
+2026-10-11 20:46:42.309 Df SpinonBootstrap[52362:6b40ce] [dev.spinon.bootstrap:c124-matrix] SPINON_C124_IOS_MATRIX_CASE index=2 id=auto-zero-positive expected=ready actual=ready matched=true
+2026-10-11 20:46:42.310 Df SpinonBootstrap[52362:6b40ce] [dev.spinon.bootstrap:c124-matrix] SPINON_C124_IOS_MATRIX_CASE index=3 id=positive-level-tie expected=ready actual=ready matched=true
+2026-10-11 20:46:42.312 Df SpinonBootstrap[52362:6b40ce] [dev.spinon.bootstrap:c124-matrix] SPINON_C124_IOS_MATRIX_CASE index=4 id=integer-boundaries expected=ready actual=ready matched=true
+2026-10-11 20:46:42.313 Df SpinonBootstrap[52362:6b40ce] [dev.spinon.bootstrap:c124-matrix] SPINON_C124_IOS_MATRIX_CASE index=5 id=nested-context-atomic expected=ready actual=ready matched=true
+2026-10-11 20:46:42.314 Df SpinonBootstrap[52362:6b40ce] [dev.spinon.bootstrap:c124-matrix] SPINON_C124_IOS_MATRIX_CASE index=6 id=relative-auto-escape expected=ready actual=ready matched=true
+2026-10-11 20:46:42.316 Df SpinonBootstrap[52362:6b40ce] [dev.spinon.bootstrap:c124-matrix] SPINON_C124_IOS_MATRIX_CASE index=7 id=relative-zero-isolation expected=ready actual=ready matched=true
+2026-10-11 20:46:42.318 Df SpinonBootstrap[52362:6b40ce] [dev.spinon.bootstrap:c124-matrix] SPINON_C124_IOS_MATRIX_CASE index=8 id=fixed-auto-isolation expected=ready actual=ready matched=true
+2026-10-11 20:46:42.319 Df SpinonBootstrap[52362:6b40ce] [dev.spinon.bootstrap:c124-matrix] SPINON_C124_IOS_MATRIX_CASE index=9 id=static-block-z-ignored expected=ready actual=ready matched=true
+2026-10-11 20:46:42.321 Df SpinonBootstrap[52362:6b40ce] [dev.spinon.bootstrap:c124-matrix] SPINON_C124_IOS_MATRIX_CASE index=10 id=static-flex-item-z-context expected=ready actual=ready matched=true
+2026-10-11 20:46:42.322 Df SpinonBootstrap[52362:6b40ce] [dev.spinon.bootstrap:c124-matrix] SPINON_C124_IOS_MATRIX_CASE index=11 id=flex-order-and-tie expected=ready actual=ready matched=true
+2026-10-11 20:46:42.324 Df SpinonBootstrap[52362:6b40ce] [dev.spinon.bootstrap:c124-matrix] SPINON_C124_IOS_MATRIX_CASE index=12 id=flex-row-reverse-paint expected=ready actual=ready matched=true
+2026-10-11 20:46:42.325 Df SpinonBootstrap[52362:6b40ce] [dev.spinon.bootstrap:c124-matrix] SPINON_C124_IOS_MATRIX_CASE index=13 id=nested-flex-local-order expected=ready actual=ready matched=true
+2026-10-11 20:46:42.326 Df SpinonBootstrap[52362:6b40ce] [dev.spinon.bootstrap:c124-matrix] SPINON_C124_IOS_MATRIX_CASE index=14 id=absolute-flex-order-ignored expected=ready actual=ready matched=true
+2026-10-11 20:46:42.328 Df SpinonBootstrap[52362:6b40ce] [dev.spinon.bootstrap:c124-matrix] SPINON_C124_IOS_MATRIX_CASE index=15 id=fixed-flex-order-ignored expected=ready actual=ready matched=true
+2026-10-11 20:46:42.329 Df SpinonBootstrap[52362:6b40ce] [dev.spinon.bootstrap:c124-matrix] SPINON_C124_IOS_MATRIX_CASE index=16 id=block-before-flex-tie expected=ready actual=ready matched=true
+2026-10-11 20:46:42.331 Df SpinonBootstrap[52362:6b40ce] [dev.spinon.bootstrap:c124-matrix] SPINON_C124_IOS_MATRIX_CASE index=17 id=flex-before-block-tie expected=ready actual=ready matched=true
+2026-10-11 20:46:42.333 Df SpinonBootstrap[52362:6b40ce] [dev.spinon.bootstrap:c124-matrix] SPINON_C124_IOS_MATRIX_CASE index=18 id=cascade-layer-and-inline expected=ready actual=ready matched=true
+2026-10-11 20:46:42.335 Df SpinonBootstrap[52362:6b40ce] [dev.spinon.bootstrap:c124-matrix] SPINON_C124_IOS_MATRIX_CASE index=19 id=custom-property-z-index expected=ready actual=ready matched=true
+2026-10-11 20:46:42.336 Df SpinonBootstrap[52362:6b40ce] [dev.spinon.bootstrap:c124-matrix] SPINON_C124_IOS_MATRIX_CASE index=20 id=registered-property-z-index expected=ready actual=ready matched=true
+2026-10-11 20:46:42.338 Df SpinonBootstrap[52362:6b40ce] [dev.spinon.bootstrap:c124-matrix] SPINON_C124_IOS_MATRIX_CASE index=21 id=display-none-visibility-hidden expected=reject actual=reject matched=true
+2026-10-11 20:46:42.339 Df SpinonBootstrap[52362:6b40ce] [dev.spinon.bootstrap:c124-matrix] SPINON_C124_IOS_MATRIX_CASE index=22 id=visibility-collapse-flex expected=reject actual=reject matched=true
+2026-10-11 20:46:42.340 Df SpinonBootstrap[52362:6b40ce] [dev.spinon.bootstrap:c124-matrix] SPINON_C124_IOS_MATRIX_CASE index=23 id=absolute-owner-vs-opacity-context expected=reject actual=reject matched=true
+2026-10-11 20:46:42.342 Df SpinonBootstrap[52362:6b40ce] [dev.spinon.bootstrap:c124-matrix] SPINON_C124_IOS_MATRIX_CASE index=24 id=top-layer-dialog expected=reject actual=reject matched=true
+2026-10-11 20:46:42.344 Df SpinonBootstrap[52362:6b40ce] [dev.spinon.bootstrap:c124-matrix] SPINON_C124_IOS_MATRIX_CASE index=25 id=pseudo-element-paint expected=reject actual=reject matched=true
+2026-10-11 20:46:42.346 Df SpinonBootstrap[52362:6b40ce] [dev.spinon.bootstrap:c124-matrix] SPINON_C124_IOS_MATRIX status=matched run_id=c124-ios-matrix-20261011T114619174Z-acb0aed3 cases=26 nodes=77 matched=26
+getpwuid_r did not find a match for uid 501

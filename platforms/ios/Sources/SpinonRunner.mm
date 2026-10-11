@@ -2,11 +2,74 @@
 
 #include <array>
 #include <cstdint>
+#include <cstring>
+#include <memory>
+#include <new>
 
 #include "spinon_ffi.h"
 #include "spinon_wgpu_r08.h"
 
 #import <os/log.h>
+
+#include <errno.h>
+#include <pthread.h>
+#include <sys/mman.h>
+#include <unistd.h>
+
+extern "C" int spinon_c124_capture_current_thread_stack(
+    uint64_t *thread_id, uintptr_t *start_address, size_t *stack_size,
+    size_t *guard_size, size_t *page_size, int *error_code) {
+  if (thread_id == nullptr || start_address == nullptr || stack_size == nullptr ||
+      guard_size == nullptr || page_size == nullptr || error_code == nullptr) {
+    return -1;
+  }
+  *error_code = 0;
+  const pthread_t thread = pthread_self();
+  uint64_t observed_thread_id = 0;
+  const int thread_status = pthread_threadid_np(thread, &observed_thread_id);
+  const uintptr_t stack_top = reinterpret_cast<uintptr_t>(pthread_get_stackaddr_np(thread));
+  const size_t observed_stack_size = pthread_get_stacksize_np(thread);
+  const long observed_page_size = sysconf(_SC_PAGESIZE);
+  if (thread_status != 0 || stack_top < observed_stack_size ||
+      observed_stack_size == 0 || observed_page_size <= 0) {
+    *error_code = thread_status != 0 ? thread_status :
+        (errno != 0 ? errno : EINVAL);
+    return -1;
+  }
+  *thread_id = observed_thread_id;
+  *start_address = stack_top - observed_stack_size;
+  *stack_size = observed_stack_size;
+  *guard_size = 0;
+  *page_size = static_cast<size_t>(observed_page_size);
+  return 0;
+}
+
+extern "C" int spinon_c124_sample_stack_residency(
+    uintptr_t start_address, size_t stack_size, uint8_t *page_flags,
+    size_t page_capacity, size_t *page_size, int *error_code) {
+  if (page_flags == nullptr || page_size == nullptr || error_code == nullptr) {
+    return -1;
+  }
+  *error_code = 0;
+  const long observed_page_size = sysconf(_SC_PAGESIZE);
+  if (observed_page_size <= 0) {
+    *error_code = errno != 0 ? errno : EINVAL;
+    return -1;
+  }
+  const size_t current_page_size = static_cast<size_t>(observed_page_size);
+  if (current_page_size == 0 || start_address % current_page_size != 0 ||
+      stack_size % current_page_size != 0 ||
+      stack_size / current_page_size != page_capacity) {
+    *error_code = EINVAL;
+    return -1;
+  }
+  *page_size = current_page_size;
+  errno = 0;
+  const int status = mincore(reinterpret_cast<void *>(start_address),
+                             stack_size, reinterpret_cast<char *>(page_flags));
+  if (status != 0) *error_code = errno;
+  return status;
+}
 
 namespace {
 
@@ -523,6 +586,64 @@ NSUInteger C10LogNodeFrames(NSString *report, const char *label) {
 #endif
 }
 
++ (uint64_t)createRuntimeGpuHostWithC12_4StackingFixture {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  std::array<char, 1024> output{};
+  SpinonRuntimeGpuHost *host = spinon_runtime_gpu_host_new_c12_4_stacking_fixture(
+      output.data(), output.size());
+  if (host == nullptr) {
+    os_log_error(OS_LOG_DEFAULT, "SPINON_C124_HOST_ERROR=%{public}s", output.data());
+    return 0;
+  }
+  os_log(OS_LOG_DEFAULT, "SPINON_C124_HOST=%{public}s", output.data());
+  return static_cast<uint64_t>(reinterpret_cast<uintptr_t>(host));
+#else
+  os_log_error(OS_LOG_DEFAULT,
+               "SPINON_C124_DISABLED rebuild with SPINON_ENABLE_C04_RUNTIME_GPU=1");
+  return 0;
+#endif
+}
+
++ (NSString *)runtimeGpuC12_4WorkerStackResidencySample:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST) && \
+    SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST
+  std::array<char, 1024> output{};
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(static_cast<uintptr_t>(handle));
+  const int32_t status = spinon_runtime_gpu_host_css_worker_stack_residency_for_test(
+      host, output.data(), output.size());
+  if (status != 0) {
+    return [NSString stringWithFormat:
+        @"{\"status\":\"error\",\"native_status\":%d,\"detail\":\"%s\"}",
+        status, output.data()];
+  }
+  return [NSString stringWithUTF8String:output.data()];
+#else
+  return @"{\"status\":\"error\",\"detail\":\"probe disabled\"}";
+#endif
+}
+
++ (uint64_t)createRuntimeGpuHostWithC12_4SurfaceReadbackFixture {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST) && \
+    SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST
+  std::array<char, 1024> output{};
+  SpinonRuntimeGpuHost *host =
+      spinon_runtime_gpu_host_new_c12_4_surface_readback_fixture(
+          output.data(), output.size());
+  if (host == nullptr) {
+    os_log_error(OS_LOG_DEFAULT, "SPINON_C124_METAL_HOST_ERROR=%{public}s", output.data());
+    return 0;
+  }
+  os_log(OS_LOG_DEFAULT, "SPINON_C124_METAL_HOST=%{public}s", output.data());
+  return static_cast<uint64_t>(reinterpret_cast<uintptr_t>(host));
+#else
+  os_log_error(OS_LOG_DEFAULT,
+               "SPINON_C124_METAL_DISABLED rebuild with SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST=1");
+  return 0;
+#endif
+}
+
 + (uint64_t)createRuntimeGpuHostWithC10_3_5PositionedFlexFixture {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
   std::array<char, 1024> output{};
@@ -932,6 +1053,48 @@ NSUInteger C10LogNodeFrames(NSString *report, const char *label) {
 #endif
 }
 
++ (NSString *)evalRuntimeGpuC12_4StackingFixture:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 32768> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_c12_4_stacking_fixture(
+      host, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C124_EVAL", report);
+  return report;
+#else
+  (void)handle;
+  return @"status=-90 feature-disabled";
+#endif
+}
+
++ (NSString *)evalRuntimeGpuC12_4Source:(uint64_t)handle source:(NSString *)source {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  const char *source_utf8 = source.UTF8String;
+  if (source_utf8 == nullptr) return @"status=-1 invalid-source";
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  constexpr std::size_t kOutputCapacity = 256 * 1024;
+  std::unique_ptr<char[]> output(new (std::nothrow) char[kOutputCapacity]{});
+  if (output == nullptr) return @"status=-3 C12.4 진단 보고서 버퍼 할당 실패";
+  const int32_t status = spinon_runtime_gpu_host_eval(
+      host, source_utf8, 60000, output.get(), kOutputCapacity);
+  NSString *detail = [NSString stringWithUTF8String:output.get()];
+  if (detail == nil) detail = @"C ABI 보고가 유효한 UTF-8이 아닙니다";
+  NSString *report = [NSString stringWithFormat:@"status=%d %@", status, detail];
+  NSString *summary = [NSString stringWithFormat:@"status=%d bytes=%lu", status,
+                                                   (unsigned long)strlen(output.get())];
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C124_SOURCE", summary);
+  return report;
+#else
+  (void)handle; (void)source;
+  return @"status=-90 feature-disabled";
+#endif
+}
+
 + (NSString *)evalRuntimeGpuC10_3_5PositionedFlexFixture:(uint64_t)handle {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
@@ -1246,6 +1409,26 @@ NSUInteger C10LogNodeFrames(NSString *report, const char *label) {
 #else
   (void)handle;
   return @"status=-90 feature-disabled";
+#endif
+}
+
++ (NSString *)requestRuntimeGpuSurfacePixelReadbackForTest:(uint64_t)handle
+                                                        x:(uint32_t)x y:(uint32_t)y {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST) && \
+    SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 1024> output{};
+  const int32_t status = spinon_runtime_gpu_host_request_c12_4_surface_pixel_for_test(
+      host, x, y, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C124_METAL_PIXEL_REQUEST", report);
+  return report;
+#else
+  (void)handle; (void)x; (void)y;
+  return @"status=-90 Metal surface readback fixture is not enabled";
 #endif
 }
 

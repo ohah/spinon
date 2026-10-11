@@ -15,7 +15,16 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -29,6 +38,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native long nativeCreateC121PositionHost();
     private static native long nativeCreateC122AbsoluteBlockHost();
     private static native long nativeCreateC123FixedHost();
+    private static native long nativeCreateC124StackingHost();
+    private static native byte[] nativeC124WorkerStackResidencySample(long host);
     private static native long nativeCreateC1035PositionedFlexHost();
     private static native long nativeBeginPresentationUpdate(long host);
     private static native byte[] nativeSetEnvironment(
@@ -53,6 +64,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native byte[] nativeEvalC121PositionFixture(long host);
     private static native byte[] nativeEvalC122AbsoluteBlockFixture(long host);
     private static native byte[] nativeEvalC123FixedFixture(long host);
+    private static native byte[] nativeEvalC124StackingFixture(long host);
+    private static native byte[] nativeEvalC124Source(long host, String source);
     private static native byte[] nativeEvalC1035PositionedFlexFixture(long host);
     private static native byte[] nativeEvalC121PositionState(long host, int state);
     private static native byte[] nativeEvalMarginCollapseFixture(long host);
@@ -70,6 +83,52 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native byte[] nativeInjectNextDrawFailure(long renderer);
     private static native void nativeDestroySurface(long renderer);
     private static native void nativeFreeHost(long host);
+
+    static void runC124SessionStackCostProbe(Activity activity) {
+        Thread probe = new Thread(() -> {
+            List<Long> hosts = new ArrayList<>();
+            boolean failed = false;
+            for (int target : new int[] {0, 1, 2, 4, 8}) {
+                while (hosts.size() < target) {
+                    long host = nativeCreateC124StackingHost();
+                    if (host == 0) {
+                        Log.e(TAG, "SPINON_C124_SESSION_STACK status=create_failed target="
+                                + target + " created=" + hosts.size());
+                        failed = true;
+                        break;
+                    }
+                    hosts.add(host);
+                }
+                if (failed) break;
+                long reservedBytes = (long) hosts.size() * 8L * 1024L * 1024L;
+                Log.i(TAG, "SPINON_C124_SESSION_STACK status=ready session_count="
+                        + hosts.size() + " css_stack_reserved_bytes=" + reservedBytes
+                        + " hold_seconds=8");
+                if (BuildConfig.SPINON_C124_WORKER_STACK_RESIDENCY_TEST) {
+                    for (int sample = 1; sample <= 3; sample++) {
+                        for (int index = 0; index < hosts.size(); index++) {
+                            String report = new String(
+                                    nativeC124WorkerStackResidencySample(hosts.get(index)),
+                                    StandardCharsets.UTF_8);
+                            Log.i(TAG, "SPINON_C124_WORKER_STACK_RESIDENCY stage="
+                                    + hosts.size() + " sample=" + sample
+                                    + " session_index=" + index + " report=" + report);
+                        }
+                        SystemClock.sleep(100);
+                    }
+                }
+                SystemClock.sleep(8_000);
+            }
+            for (int index = hosts.size() - 1; index >= 0; index--) {
+                nativeFreeHost(hosts.get(index));
+            }
+            Log.i(TAG, "SPINON_C124_SESSION_STACK status=freed session_count=0 released_handles="
+                    + hosts.size());
+            SystemClock.sleep(10_000);
+            Log.i(TAG, "SPINON_C124_SESSION_STACK status=finished failed=" + failed);
+        }, "spinon-c124-stack-cost");
+        probe.start();
+    }
 
     private final Activity activity;
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
@@ -103,6 +162,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean c121PositioningProbeRequested;
     private final boolean c122AbsoluteBlockProbeRequested;
     private final boolean c123FixedPositionProbeRequested;
+    private final boolean c124StackingProbeRequested;
+    private final boolean c124RuntimeMatrixProbeRequested;
+    private final boolean c124DepthSafetyProbeRequested;
+    private final boolean c124SurfaceCaptureProbeRequested;
+    private final String c124SurfaceCaseRequested;
+    private final String c124SurfaceRunId;
     private final boolean c1035PositionedFlexProbeRequested;
     private final boolean marginCollapseProbeRequested;
     private final boolean flowRootProbeRequested;
@@ -119,6 +184,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private volatile boolean darkMode;
     private volatile long hostHandle;
     private volatile long rendererHandle;
+    private int c124FixtureNodeCount;
     private volatile int surfaceWidth;
     private volatile int surfaceHeight;
     private int surfaceFormat = -1;
@@ -132,6 +198,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private boolean pendingDraw;
     private boolean failureProbeStarted;
     private boolean shutdownProbeStarted;
+    private boolean c124SurfaceCaptureStarted;
+    private List<C124SurfacePixelCapture.Sample> c124SurfaceSamples = List.of();
+    private int c124SurfaceOriginXCssPx;
+    private int c124SurfaceOriginYCssPx;
+    private String c124SurfaceInventorySha256 = "";
     private CountDownLatch surfaceDestroyBarrier;
 
     C0410RuntimeGpuDemo(
@@ -191,12 +262,26 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 .getBooleanExtra("spinon_c122_absolute_block", false);
         c123FixedPositionProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c123_fixed_position", false);
+        c124RuntimeMatrixProbeRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c124_stacking_matrix", false);
+        c124DepthSafetyProbeRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c124_depth_safety", false);
+        c124SurfaceCaseRequested = activity.getIntent()
+                .getStringExtra("spinon_c124_surface_case");
+        c124SurfaceRunId = activity.getIntent()
+                .getStringExtra("spinon_c124_surface_run_id");
+        c124SurfaceCaptureProbeRequested = c124SurfaceCaseRequested != null;
+        c124StackingProbeRequested = c124SurfaceCaptureProbeRequested
+                || c124RuntimeMatrixProbeRequested
+                || c124DepthSafetyProbeRequested || activity.getIntent()
+                .getBooleanExtra("spinon_c124_stacking_context", false);
         c1035PositionedFlexProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c1035_positioned_flex", false);
         blockFormattingProbeRequested = flowRootProbeRequested || marginCollapseProbeRequested
                 || activity.getIntent().getBooleanExtra("spinon_c091_block_formatting", false);
         fixedSizeCssFixtureRequested = c122AbsoluteBlockProbeRequested
                 || c123FixedPositionProbeRequested
+                || c124StackingProbeRequested
                 || blockFormattingProbeRequested || flexWrapProbeRequested
                 || flexDistributionProbeRequested || flexReverseProbeRequested
                 || flexOrderProbeRequested || flexAlignmentProbeRequested
@@ -233,6 +318,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "SPINON · C10.3.5 positioned Flex"
                 : c123FixedPositionProbeRequested
                 ? "SPINON · C12.3 viewport fixed"
+                : c124StackingProbeRequested
+                ? "SPINON · C12.4 stacking context"
                 : c122AbsoluteBlockProbeRequested
                 ? "SPINON · C12.2 Block absolute"
                 : c121PositioningProbeRequested
@@ -292,6 +379,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "V8 직접 Flex 자식·wrapper·paint 순서 → Stylo → Taffy → WGPU · 320×240 CSS px"
                 : c123FixedPositionProbeRequested
                 ? "V8 fixed viewport owner·inset·resize → Stylo → Taffy → WGPU · 360×800 CSS px"
+                : c124StackingProbeRequested
+                ? "V8 z-index·visibility·Flex order → Stylo → Taffy → WGPU · 320×240 CSS px"
                 : c122AbsoluteBlockProbeRequested
                 ? "V8 absolute·containing block·inset → Stylo → Taffy → WGPU · 360×800 CSS px"
                 : c121PositioningProbeRequested
@@ -361,6 +450,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "C10.3.5 positioned Flex 정렬·wrapper·paint 순서 WGPU 장면"
                 : c123FixedPositionProbeRequested
                 ? "C12.3 viewport fixed 배치 WGPU 장면"
+                : c124StackingProbeRequested
+                ? "C12.4 z-index 쌓임 맥락 WGPU 장면"
                 : flexBaselineProbeRequested
                 ? "C10.3.4 Flex first·last baseline WGPU 장면"
                 : flexAlignmentProbeRequested
@@ -488,7 +579,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 this::reconcileRenderState,
                 error -> reportLaneFailure("render", error));
         if (!c121PositioningProbeRequested && !c122AbsoluteBlockProbeRequested
-                && !c123FixedPositionProbeRequested) {
+                && !c123FixedPositionProbeRequested && !c124StackingProbeRequested) {
             enqueueRuntime(this::initializeRuntime);
         }
     }
@@ -523,7 +614,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private void initializeRuntime() {
-        long host = c123FixedPositionProbeRequested
+        long host = c124StackingProbeRequested
+                ? nativeCreateC124StackingHost()
+                : c123FixedPositionProbeRequested
                 ? nativeCreateC123FixedHost()
                 : c1035PositionedFlexProbeRequested
                 ? nativeCreateC1035PositionedFlexHost()
@@ -561,7 +654,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         Log.i(TAG, "SPINON_C0410_ENVIRONMENT viewport=" + widthCssPx + "x" + heightCssPx
                 + " scale=" + environmentScale + " dark=" + dark + " " + environment);
-        String result = c123FixedPositionProbeRequested
+        String result = c124SurfaceCaptureProbeRequested
+                ? evaluateC124SurfaceCase(host)
+                : c124StackingProbeRequested
+                ? decode(nativeEvalC124StackingFixture(host))
+                : c123FixedPositionProbeRequested
                 ? decode(nativeEvalC123FixedFixture(host))
                 : c1035PositionedFlexProbeRequested
                 ? decode(nativeEvalC1035PositionedFlexFixture(host))
@@ -619,6 +716,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             if (c122AbsoluteBlockProbeRequested) logC122FailureDetails(result);
             postStatus("실패 · " + result);
             return;
+        }
+        if (c124DepthSafetyProbeRequested) {
+            try {
+                c124FixtureNodeCount = Integer.parseInt(reportField(result, "document_nodes="));
+            } catch (NumberFormatException error) {
+                postStatus("실패 · C12.4 fixture 기본 노드 수를 읽지 못했습니다");
+                return;
+            }
         }
         Log.i(TAG, (c1035PositionedFlexProbeRequested
                 ? "SPINON_C1035_EVAL " : c123FixedPositionProbeRequested
@@ -727,11 +832,297 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         postStatus(runtimeStatusSummary(result));
         requestDraw();
         renderLane.request();
+        if (c124RuntimeMatrixProbeRequested) enqueueRuntime(this::runC124RuntimeMatrix);
+        if (c124DepthSafetyProbeRequested) enqueueRuntime(this::runC124DepthSafetyProbe);
+    }
+
+    private void runC124DepthSafetyProbe() {
+        final long host;
+        synchronized (stateLock) {
+            host = closing ? 0 : hostHandle;
+        }
+        if (host == 0) {
+            Log.e(TAG, "SPINON_C124_DEPTH_SUMMARY status=failed reason=host-unavailable");
+            postStatus("실패 · C12.4 깊이 검증 runtime host가 없습니다");
+            return;
+        }
+
+        long started = SystemClock.elapsedRealtime();
+        String maximum = decode(nativeEvalC124Source(host, c124DepthBuildSource(1024)));
+        long maximumMillis = SystemClock.elapsedRealtime() - started;
+        boolean maximumPassed = maximum.startsWith("status=0 ")
+                && "ready".equals(reportField(maximum, "layout="))
+                && String.valueOf(c124FixtureNodeCount + 1023)
+                        .equals(reportField(maximum, "boxes="))
+                && String.valueOf(c124FixtureNodeCount + 1023)
+                        .equals(reportField(maximum, "cascadeRecomputedStyleElements="));
+        Log.i(TAG, "SPINON_C124_DEPTH_STAGE stage=maximum expected=1024 passed="
+                + maximumPassed + " elapsed_ms=" + maximumMillis
+                + " report_length=" + maximum.length()
+                + (maximumPassed ? "" : " report=" + maximum));
+        if (!maximumPassed) {
+            Log.e(TAG, "SPINON_C124_DEPTH_SUMMARY status=failed stage=maximum");
+            postStatus("실패 · C12.4 최대 깊이 1024 계산을 확인하지 못했습니다");
+            return;
+        }
+
+        started = SystemClock.elapsedRealtime();
+        String overflow = decode(nativeEvalC124Source(host, c124DepthOverflowSource()));
+        long overflowMillis = SystemClock.elapsedRealtime() - started;
+        boolean overflowPassed = !overflow.startsWith("status=0 ")
+                && overflow.contains("tree_depth_exceeded")
+                && overflow.contains("1025") && overflow.contains("1024");
+        Log.i(TAG, "SPINON_C124_DEPTH_STAGE stage=overflow expected=reject-1025 passed="
+                + overflowPassed + " elapsed_ms=" + overflowMillis
+                + " report=" + overflow);
+        if (!overflowPassed) {
+            Log.e(TAG, "SPINON_C124_DEPTH_SUMMARY status=failed stage=overflow");
+            postStatus("실패 · C12.4 깊이 1025 거부 사유가 다릅니다");
+            return;
+        }
+
+        started = SystemClock.elapsedRealtime();
+        String recovery = decode(nativeEvalC124Source(host, c124DepthRecoverySource()));
+        long recoveryMillis = SystemClock.elapsedRealtime() - started;
+        boolean recoveryPassed = recovery.startsWith("status=0 ")
+                && "ready".equals(reportField(recovery, "layout="))
+                && String.valueOf(c124FixtureNodeCount)
+                        .equals(reportField(recovery, "boxes="));
+        Log.i(TAG, "SPINON_C124_DEPTH_STAGE stage=recovery expected=ready passed="
+                + recoveryPassed + " elapsed_ms=" + recoveryMillis
+                + " report_length=" + recovery.length()
+                + (recoveryPassed ? "" : " report=" + recovery));
+        boolean passed = maximumPassed && overflowPassed && recoveryPassed;
+        Log.i(TAG, "SPINON_C124_DEPTH_SUMMARY status=" + (passed ? "passed" : "failed")
+                + " maximum=1024 overflow=1025 recovery=" + recoveryPassed
+                + " platform=android-avd");
+        postStatus(passed ? "C12.4 깊이 검증 통과 · 1024 통과, 1025 거부, 복구 통과"
+                : "실패 · C12.4 깊이 초과 후 복구를 확인하지 못했습니다");
+        if (passed) requestDraw();
+    }
+
+    private static String c124DepthBuildSource(int maximumDepth) {
+        return "(() => { let parent = globalThis.spinonC124NodeRefs['c124-root']; "
+                + "let root = null; "
+                + "for (let index = 0; index < " + (maximumDepth - 1) + "; index += 1) { "
+                + "const node = document.createElement('div'); "
+                + "node.setAttribute('style', 'position:relative;z-index:0;width:1px;height:1px'); "
+                + "parent.appendChild(node); if (root === null) root = node; parent = node; } "
+                + "globalThis.__spinonC124DepthRoot = root; "
+                + "globalThis.__spinonC124DepthLeaf = parent; "
+                + "return 'SPINON_C124_DEPTH_MAX=" + maximumDepth + "'; })()";
+    }
+
+    private static String c124DepthOverflowSource() {
+        return "(() => { const node = document.createElement('div'); "
+                + "node.setAttribute('style', 'position:relative;z-index:0;width:1px;height:1px'); "
+                + "globalThis.__spinonC124DepthLeaf.appendChild(node); "
+                + "globalThis.__spinonC124DepthOverflow = node; "
+                + "return 'SPINON_C124_DEPTH_OVERFLOW=1025'; })()";
+    }
+
+    private static String c124DepthRecoverySource() {
+        return "(() => { globalThis.__spinonC124DepthLeaf.removeChild("
+                + "globalThis.__spinonC124DepthOverflow); "
+                + "globalThis.spinonC124NodeRefs['c124-root'].removeChild("
+                + "globalThis.__spinonC124DepthRoot); "
+                + "delete globalThis.__spinonC124DepthOverflow; "
+                + "delete globalThis.__spinonC124DepthRoot; "
+                + "delete globalThis.__spinonC124DepthLeaf; "
+                + "return 'SPINON_C124_DEPTH_RECOVERED'; })()";
+    }
+
+    private void runC124RuntimeMatrix() {
+        int caseCount = 0;
+        int expectedReady = 0;
+        int expectedRejected = 0;
+        int matched = 0;
+        try {
+            JSONObject matrix = new JSONObject(readAsset("c12-4-runtime-matrix.json"));
+            JSONArray cases = matrix.getJSONArray("cases");
+            for (int index = 0; index < cases.length(); index++) {
+                JSONObject fixtureCase = cases.getJSONObject(index);
+                String caseId = fixtureCase.getString("id");
+                JSONObject expected = fixtureCase.getJSONObject("expected");
+                boolean shouldBeSupported = "supported".equals(expected.getString("kind"));
+                if (shouldBeSupported) expectedReady++;
+                else expectedRejected++;
+
+                long host = nativeCreateC124StackingHost();
+                if (host == 0) {
+                    Log.e(TAG, "SPINON_C124_MATRIX_CASE id=" + caseId
+                            + " expected=" + (shouldBeSupported ? "ready" : "reject")
+                            + " actual=host-create-failed reason_matched=false matched=false");
+                    caseCount++;
+                    continue;
+                }
+                String report;
+                try {
+                    String environment = decode(nativeSetEnvironment(
+                            host, 320, 240, density, darkMode));
+                    report = environment.startsWith("status=0 ")
+                            ? decode(nativeEvalC124Source(host, fixtureCase.getString("source")))
+                            : environment;
+                } finally {
+                    nativeFreeHost(host);
+                }
+
+                boolean ready = report.startsWith("status=0 ")
+                        && report.contains("layout=ready");
+                boolean rejected = report.contains(" op=eval ")
+                        && !report.startsWith("status=0 ");
+                boolean reasonMatched = shouldBeSupported
+                        || matchesC124ExpectedDiagnostic(expected, report);
+                boolean caseMatched = shouldBeSupported ? ready : rejected && reasonMatched;
+                if (caseMatched) matched++;
+                String expectation = shouldBeSupported ? "ready" : "reject";
+                String actual = ready ? "ready" : rejected
+                        ? reasonMatched ? "reject" : "reject-wrong-diagnostic"
+                        : "invalid-layout";
+                Log.i(TAG, "SPINON_C124_MATRIX_CASE index=" + index + " id=" + caseId
+                        + " expected=" + expectation + " actual=" + actual
+                        + " reason_matched=" + reasonMatched + " matched=" + caseMatched
+                        + " " + report);
+                caseCount++;
+            }
+            boolean complete = caseCount == cases.length() && matched == caseCount;
+            Log.i(TAG, "SPINON_C124_MATRIX_SUMMARY status=" + (complete ? "matched" : "mismatch")
+                    + " cases=" + caseCount + " nodes=" + matrix.getJSONObject("summary").getInt("nodes")
+                    + " expected_ready=" + expectedReady
+                    + " expected_rejected=" + expectedRejected + " matched=" + matched);
+            postStatus("C12.4 행렬 " + matched + "/" + caseCount + " 장면 확인");
+        } catch (Exception error) {
+            Log.e(TAG, "SPINON_C124_MATRIX_SUMMARY status=error cases=" + caseCount
+                    + " matched=" + matched, error);
+            postStatus("실패 · C12.4 행렬 " + error.getMessage());
+        }
+    }
+
+    private boolean matchesC124ExpectedDiagnostic(JSONObject expected, String report) {
+        String kind = expected.optString("kind", "");
+        String property = expected.optString("property", "");
+        String api = expected.optString("api", "");
+        if (!property.isEmpty() && "pseudo-element".equals(property)) {
+            return report.contains("cascade_error=")
+                    && report.contains("지원하지 않는 CSS 선언 content");
+        }
+        if (!property.isEmpty()) {
+            String expectedProperty = "property=Some(\"" + property + "\")";
+            return report.contains("node=Some(") && report.contains(expectedProperty);
+        }
+        return "api-rejection".equals(kind)
+                && "showModal".equals(api)
+                && report.contains("TypeError:")
+                && report.contains("showModal is not a function");
+    }
+
+    private String readAsset(String name) throws IOException {
+        try (InputStream input = activity.getAssets().open(name);
+                ByteArrayOutputStream output = new ByteArrayOutputStream()) {
+            byte[] buffer = new byte[8192];
+            int count;
+            while ((count = input.read(buffer)) != -1) output.write(buffer, 0, count);
+            return output.toString(StandardCharsets.UTF_8.name());
+        }
+    }
+
+    private String evaluateC124SurfaceCase(long host) {
+        if (!c124SurfaceCaseRequested.matches("[a-z0-9-]{1,80}")
+                || c124SurfaceRunId == null
+                || !c124SurfaceRunId.matches("[A-Za-z0-9_-]{1,80}")) {
+            return "status=-70 C12.4 surface case/run ID가 올바르지 않습니다";
+        }
+        try {
+            JSONObject matrix = new JSONObject(readAsset("c12-4-runtime-matrix.json"));
+            JSONObject stage = matrix.getJSONObject("stage");
+            JSONArray cases = matrix.getJSONArray("cases");
+            for (int caseIndex = 0; caseIndex < cases.length(); caseIndex++) {
+                JSONObject fixtureCase = cases.getJSONObject(caseIndex);
+                if (!c124SurfaceCaseRequested.equals(fixtureCase.getString("id"))) continue;
+                if (!"supported".equals(fixtureCase.getJSONObject("expected").getString("kind"))) {
+                    return "status=-71 C12.4 surface case는 지원 장면이어야 합니다";
+                }
+                JSONArray sampleJson = fixtureCase.getJSONArray("samples");
+                List<C124SurfacePixelCapture.Sample> samples = new ArrayList<>(sampleJson.length());
+                for (int sampleIndex = 0; sampleIndex < sampleJson.length(); sampleIndex++) {
+                    JSONObject sample = sampleJson.getJSONObject(sampleIndex);
+                    samples.add(new C124SurfacePixelCapture.Sample(
+                            sample.getString("id"),
+                            sample.getDouble("xCssPx"),
+                            sample.getDouble("yCssPx")));
+                }
+                if (samples.isEmpty()) return "status=-72 C12.4 surface 표본이 없습니다";
+                c124SurfaceSamples = samples;
+                c124SurfaceOriginXCssPx = stage.getInt("x");
+                c124SurfaceOriginYCssPx = stage.getInt("y");
+                c124SurfaceInventorySha256 = matrix.getJSONObject("inventory").getString("sha256");
+                Log.i(TAG, "SPINON_C124_SURFACE_CASE status=selected id="
+                        + c124SurfaceCaseRequested + " run_id=" + c124SurfaceRunId
+                        + " sample_count=" + samples.size()
+                        + " inventory_sha256=" + c124SurfaceInventorySha256);
+                return decode(nativeEvalC124Source(host, fixtureCase.getString("source")));
+            }
+            return "status=-73 C12.4 surface case가 matrix에 없습니다";
+        } catch (Exception error) {
+            return "status=-74 C12.4 surface case asset 오류: "
+                    + error.getClass().getSimpleName();
+        }
+    }
+
+    private void requestC124SurfaceCapture(long renderer, long generation) {
+        final int width;
+        final int height;
+        synchronized (stateLock) {
+            if (closing || !c124SurfaceCaptureProbeRequested || c124SurfaceCaptureStarted
+                    || !surfaceAvailable || surfaceGeneration != generation
+                    || rendererHandle != renderer || rendererGeneration != generation) {
+                return;
+            }
+            c124SurfaceCaptureStarted = true;
+            width = surfaceWidth;
+            height = surfaceHeight;
+        }
+        File captureDirectory = new File(activity.getCacheDir(), "c124-surface-captures");
+        File output = new File(captureDirectory,
+                c124SurfaceCaseRequested + "-" + c124SurfaceRunId + ".png");
+        C124SurfacePixelCapture.request(surfaceView, width, height, density,
+                c124SurfaceOriginXCssPx, c124SurfaceOriginYCssPx,
+                c124SurfaceCaseRequested, c124SurfaceRunId, output,
+                c124SurfaceSamples, mainHandler, runtimeQueue,
+                () -> {
+                    synchronized (stateLock) {
+                        return !closing && surfaceAvailable && surfaceGeneration == generation
+                                && rendererHandle == renderer && rendererGeneration == generation
+                                && surfaceWidth == width && surfaceHeight == height;
+                    }
+                }, result -> {
+                    if (!result.error.isEmpty()) {
+                        Log.e(TAG, "SPINON_C124_SURFACE_CAPTURE status=error run_id="
+                                + c124SurfaceRunId + " case=" + c124SurfaceCaseRequested
+                                + " attempts=" + result.attempts + " reason=" + result.error);
+                        postStatus("실패 · C12.4 PixelCopy · " + result.error);
+                        return;
+                    }
+                    Log.i(TAG, "SPINON_C124_SURFACE_CAPTURE status=ok run_id="
+                            + c124SurfaceRunId + " case=" + c124SurfaceCaseRequested
+                            + " width=" + result.width + " height=" + result.height
+                            + " density=" + density + " attempts=" + result.attempts
+                            + " inventory_sha256=" + c124SurfaceInventorySha256
+                            + " sha256=" + result.sha256);
+                    for (C124SurfacePixelCapture.Pixel pixel : result.pixels) {
+                        Log.i(TAG, "SPINON_C124_SURFACE_PIXEL run_id=" + c124SurfaceRunId
+                                + " case=" + c124SurfaceCaseRequested
+                                + " sample=" + pixel.id + " x=" + pixel.x + " y=" + pixel.y
+                                + " rgba=" + pixel.red + "," + pixel.green + ","
+                                + pixel.blue + "," + pixel.alpha);
+                    }
+                    postStatus("C12.4 surface pixel " + result.pixels.size() + "개 캡처 완료");
+                });
     }
 
     private void schedulePositioningInitializationForReadySurface() {
         if (!c121PositioningProbeRequested && !c122AbsoluteBlockProbeRequested
-                && !c123FixedPositionProbeRequested) return;
+                && !c123FixedPositionProbeRequested && !c124StackingProbeRequested) return;
         synchronized (stateLock) {
             if (closing || hostHandle != 0 || runtimeInitializationQueued
                     || !surfaceAvailable || surfaceWidth <= 0 || surfaceHeight <= 0) {
@@ -1228,6 +1619,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (!result.startsWith("status=0 ")) {
             postStatus("실패 · " + result);
             return;
+        }
+        if (c124SurfaceCaptureProbeRequested) {
+            requestC124SurfaceCapture(renderer, generation);
         }
         if (failureProbeRequested && !failureProbeStarted) {
             failureProbeStarted = true;

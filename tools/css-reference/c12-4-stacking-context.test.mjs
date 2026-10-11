@@ -70,6 +70,100 @@ test('C12.4 fixture은 고정된 범위와 실행하지 않은 WPT source를 구
   }
 });
 
+test('C12.4 runtime 진입점이 iOS·Android에서 같은 Rust fixture를 호출한다', async () => {
+  const [appDelegateBytes, iosDemoBytes, androidActivityBytes, androidDemoBytes, runnerHeaderBytes, jniBytes] = await Promise.all([
+    load('platforms/ios/Sources/AppDelegate.swift'),
+    load('platforms/ios/Sources/C0410RuntimeGpuDemo.swift'),
+    load('platforms/android/app/src/main/java/dev/spinon/bootstrap/MainActivity.java'),
+    load('platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java'),
+    load('platforms/ios/Sources/SpinonRunner.h'),
+    load('platforms/android/app/src/main/cpp/spinon_jni.cc'),
+  ]);
+  const appDelegate = appDelegateBytes.toString('utf8');
+  const iosDemo = iosDemoBytes.toString('utf8');
+  const androidActivity = androidActivityBytes.toString('utf8');
+  const androidDemo = androidDemoBytes.toString('utf8');
+  const runnerHeader = runnerHeaderBytes.toString('utf8');
+  const jni = jniBytes.toString('utf8');
+
+  assert.match(appDelegate, /arguments\.contains\("--spinon-c124-stacking-context"\)/);
+  assert.match(iosDemo, /\.contains\("--spinon-c124-stacking-context"\)/);
+  assert.match(iosDemo, /createRuntimeGpuHostWithC12_4StackingFixture\(\)/);
+  assert.match(iosDemo, /evalRuntimeGpuC12_4StackingFixture\(handle\)/);
+  assert.match(iosDemo, /\? "SPINON_C124"/);
+  assert.match(androidActivity, /getBooleanExtra\("spinon_c124_stacking_context", false\)/);
+  assert.match(androidActivity, /getStringExtra\("spinon_c124_surface_case"\) != null/);
+  assert.match(androidDemo, /getBooleanExtra\("spinon_c124_stacking_context", false\)/);
+  assert.match(androidDemo, /getStringExtra\("spinon_c124_surface_case"\)/);
+  assert.match(androidDemo, /nativeCreateC124StackingHost\(\)/);
+  assert.match(androidDemo, /nativeEvalC124StackingFixture\(host\)/);
+  assert.match(androidDemo, /nativeEvalC124Source\(host, fixtureCase\.getString\("source"\)\)/);
+  assert.match(androidDemo, /C124SurfacePixelCapture\.request\(surfaceView/);
+  assert.match(androidDemo, /SPINON_C124_SURFACE_CAPTURE status=ok/);
+  const pixelCapture = (await load('platforms/android/app/src/main/java/dev/spinon/bootstrap/C124SurfacePixelCapture.java')).toString('utf8');
+  assert.match(pixelCapture, /PixelCopy\.request\(surfaceView/);
+  assert.match(pixelCapture, /originXCssPx \+ sample\.xCssPx \+ 0\.5/);
+  assert.match(pixelCapture, /BitmapFactory\.decodeFile/);
+  const readySurfaceInitialization = androidDemo.match(
+    /private void schedulePositioningInitializationForReadySurface\(\) \{([\s\S]*?)\n    \}/,
+  )?.[1];
+  assert.ok(readySurfaceInitialization, 'ready-surface 초기화 경계를 확인해야 함');
+  assert.match(readySurfaceInitialization, /!c124StackingProbeRequested/);
+  assert.match(runnerHeader, /createRuntimeGpuHostWithC12_4StackingFixture/);
+  assert.match(runnerHeader, /evalRuntimeGpuC12_4StackingFixture/);
+  assert.match(jni, /spinon_runtime_gpu_host_new_c12_4_stacking_fixture/);
+  assert.match(jni, /spinon_runtime_gpu_host_eval_c12_4_stacking_fixture/);
+});
+
+test('실기기 Android와 iOS Simulator가 같은 10개 frame·paint rank를 제출한다', async () => {
+  const evidence = 'spec/internal/evidence/c12-4-stacking-runtime-2026-10-11';
+  const [androidLogBytes, iosLogBytes, androidPng, iosPng] = await Promise.all([
+    load(`${evidence}/android-sm-s731n-android16-vulkan.log`),
+    load(`${evidence}/ios-simulator.log`),
+    load(`${evidence}/android-sm-s731n-android16-vulkan.png`),
+    load(`${evidence}/ios-26.2-iphone-17-pro-simulator.png`),
+  ]);
+  const androidLog = androidLogBytes.toString('utf8');
+  const iosLog = iosLogBytes.toString('utf8');
+  const expectedPaintOrder =
+    'paint_node_order=[0:1,1:2,2:8,3:4,4:5,5:6,6:9,7:3,8:7,9:10]';
+  const expectedFrames = [
+    '0:node=1,x=0,y=0,width=320,height=240',
+    '1:node=2,x=20,y=20,width=120,height=80',
+    '2:node=3,x=20,y=20,width=100,height=70',
+    '3:node=4,x=50,y=50,width=100,height=70',
+    '4:node=5,x=165,y=20,width=120,height=80',
+    '5:node=6,x=165,y=20,width=120,height=80',
+    '6:node=7,x=165,y=20,width=120,height=80',
+    '7:node=8,x=20,y=125,width=240,height=90',
+    '8:node=9,x=20,y=125,width=150,height=70',
+    '9:node=10,x=70,y=125,width=150,height=70',
+  ];
+
+  assert.match(androidLog, /SPINON_C124_EVAL status=0 .*document_nodes=10/);
+  assert.match(iosLog, /SPINON_C124_EVAL status=0 .*document_nodes=10/);
+  assert.match(androidLog, /SPINON_C0410_ENVIRONMENT viewport=320\.0x240\.0 scale=2\.8125 /);
+  assert.match(androidLog, /SPINON_C0410_EVAL status=0 .*layout=ready boxes=10/);
+  assert.match(iosLog, /SPINON_C0410_ENVIRONMENT viewport=320\.0x240\.0 scale=3\.0 .*layout=ready boxes=10/);
+  assert.match(androidLog, /SPINON_C0410_RENDERER=backend=Vulkan device=Samsung Xclipse 940/);
+  assert.match(iosLog, /SPINON_C0410_RENDERER status=0 backend=Metal device=Apple iOS simulator GPU/);
+  assert.match(androidLog, /SPINON_C0410_DRAW .*status=0 presented boxes=10/);
+  assert.match(iosLog, /SPINON_C0410_DRAW .*status=0 presented boxes=10/);
+  for (const log of [androidLog, iosLog]) {
+    assert.ok(log.includes(expectedPaintOrder), '두 플랫폼의 paint rank가 같아야 함');
+    for (const frame of expectedFrames) {
+      assert.ok(log.includes(frame), `플랫폼 frame 누락: ${frame}`);
+    }
+  }
+  for (const png of [androidPng, iosPng]) {
+    assert.equal(png.toString('ascii', 1, 4), 'PNG');
+  }
+  assert.equal(androidPng.readUInt32BE(16), 1080);
+  assert.equal(androidPng.readUInt32BE(20), 2340);
+  assert.equal(iosPng.readUInt32BE(16), 1206);
+  assert.equal(iosPng.readUInt32BE(20), 2622);
+});
+
 test('Chrome 154 reference와 PNG는 fixture·도구·환경 해시 및 픽셀을 고정한다', async () => {
   const [inventoryBytes, htmlBytes, captureBytes, helperBytes, referenceBytes] = await Promise.all([
     load(inventoryPath), load(htmlPath), load(capturePath), load(helperPath), load(referencePath),

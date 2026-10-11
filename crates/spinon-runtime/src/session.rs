@@ -84,6 +84,7 @@ enum RuntimeCssProfile {
     BlockPaintFixture,
     BlockFormattingFixture,
     BlockPositioningFixture,
+    BlockFlexStackingFixture,
 }
 
 enum Command {
@@ -268,6 +269,11 @@ impl RuntimeSession {
         Self::new_with_css_profile(RuntimeCssProfile::BlockPositioningFixture)
     }
 
+    /// C12.4 Block/Flex 쌓임 맥락 fixture 전용 runtime을 만듭니다.
+    pub fn new_runtime_gpu_block_flex_stacking_fixture() -> Result<(Self, String), String> {
+        Self::new_with_css_profile(RuntimeCssProfile::BlockFlexStackingFixture)
+    }
+
     fn new_with_css_profile(profile: RuntimeCssProfile) -> Result<(Self, String), String> {
         let startup_started = Instant::now();
         let ua_cascade = match profile {
@@ -284,6 +290,9 @@ impl RuntimeSession {
             }
             RuntimeCssProfile::BlockPositioningFixture => {
                 RuntimeUaCascadeCoordinator::new_runtime_gpu_block_positioning()?
+            }
+            RuntimeCssProfile::BlockFlexStackingFixture => {
+                RuntimeUaCascadeCoordinator::new_runtime_gpu_block_flex_stacking()?
             }
         };
         let css_worker_ready_us = ua_cascade.startup_duration_us();
@@ -420,6 +429,13 @@ impl RuntimeSession {
     /// 최신 UA cascade 상태를 한 번에 복사합니다. Stylo 계산 완료는 기다리지 않습니다.
     pub fn ua_cascade_snapshot(&self) -> RuntimeUaCascadeSnapshot {
         self.ua_cascade.handle().snapshot()
+    }
+
+    #[cfg(feature = "c12-4-worker-stack-residency-test")]
+    pub fn css_worker_stack_residency_sample_json_for_test(&self) -> Result<String, String> {
+        self.ua_cascade
+            .handle()
+            .worker_stack_residency_sample_json()
     }
 
     /// 최신 runtime layout 결과를 한 번에 복사합니다. 계산 완료는 기다리지 않습니다.

@@ -20,6 +20,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         let runPriorityProbe = arguments.contains("--spinon-priority-probe")
         let runShutdownProbe = arguments.contains("--spinon-shutdown-probe")
         let runUaCascadeProbe = arguments.contains("--spinon-c048-ua-cascade")
+        let runC124SessionStackCostProbe = arguments.contains("--spinon-c124-session-stack-cost")
+        let runC124RuntimeMatrixProbe = arguments.contains("--spinon-c124-runtime-matrix")
+        let c124RuntimeMatrixRunID = arguments.first {
+            $0.hasPrefix("--spinon-c124-run-id=")
+        }?.components(separatedBy: "=").last
         let runRuntimeGpu = arguments.contains("--spinon-c0410-runtime-gpu")
             || arguments.contains("--spinon-c0411-runtime-author-stylesheets")
             || arguments.contains("--spinon-c052-registered-properties")
@@ -48,8 +53,66 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             || arguments.contains("--spinon-c121-static-relative")
             || arguments.contains("--spinon-c122-absolute-block")
             || arguments.contains("--spinon-c123-fixed-position")
+            || arguments.contains("--spinon-c124-stacking-context")
+            || arguments.contains("--spinon-c124-depth-safety")
+            || arguments.contains(where: { $0.hasPrefix("--spinon-c124-metal-surface-readback=") })
         let runR05AttributionProbe = arguments.contains("--spinon-r05-attribution")
         let runLifecycleProbe = arguments.contains("--spinon-dom-gc-auto")
+        if runC124RuntimeMatrixProbe {
+            let window = UIWindow(frame: UIScreen.main.bounds)
+            window.rootViewController = UIViewController()
+            window.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
+            window.makeKeyAndVisible()
+            self.window = window
+            DispatchQueue.global(qos: .userInitiated).async {
+                C124RuntimeMatrixProbe.run(runID: c124RuntimeMatrixRunID ?? "")
+            }
+            return true
+        }
+        if runC124SessionStackCostProbe {
+            let window = UIWindow(frame: UIScreen.main.bounds)
+            window.rootViewController = UIViewController()
+            window.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
+            window.makeKeyAndVisible()
+            self.window = window
+            DispatchQueue.global(qos: .utility).async { [logger] in
+                let targets = [0, 1, 2, 4, 8]
+                var hosts: [UInt64] = []
+                var failed = false
+                for target in targets {
+                    while hosts.count < target {
+                        let handle = SpinonRunner.createRuntimeGpuHostWithC12_4StackingFixture()
+                        guard handle != 0 else {
+                            logger.error("SPINON_C124_SESSION_STACK status=create_failed target=\(target, privacy: .public) created=\(hosts.count, privacy: .public)")
+                            failed = true
+                            break
+                        }
+                        hosts.append(handle)
+                    }
+                    if failed { break }
+                    let reservedBytes = hosts.count * 8 * 1024 * 1024
+                    logger.notice("SPINON_C124_SESSION_STACK status=ready session_count=\(hosts.count, privacy: .public) css_stack_reserved_bytes=\(reservedBytes, privacy: .public) hold_seconds=8")
+                    #if SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST_1
+                    for sample in 1...3 {
+                        for (sessionIndex, handle) in hosts.enumerated() {
+                            let report = SpinonRunner.runtimeGpuC12_4WorkerStackResidencySample(handle)
+                                ?? "{\"status\":\"error\",\"detail\":\"empty native report\"}"
+                            logger.notice("SPINON_C124_WORKER_STACK_RESIDENCY stage=\(hosts.count, privacy: .public) sample=\(sample, privacy: .public) session_index=\(sessionIndex, privacy: .public) report=\(report, privacy: .public)")
+                        }
+                        Thread.sleep(forTimeInterval: 0.1)
+                    }
+                    #endif
+                    Thread.sleep(forTimeInterval: 8)
+                }
+                for handle in hosts.reversed() {
+                    SpinonRunner.freeRuntimeGpuHost(handle)
+                }
+                logger.notice("SPINON_C124_SESSION_STACK status=freed session_count=0 released_handles=\(hosts.count, privacy: .public) hold_seconds=10")
+                Thread.sleep(forTimeInterval: 10)
+                logger.notice("SPINON_C124_SESSION_STACK status=finished failed=\(failed ? 1 : 0, privacy: .public)")
+            }
+            return true
+        }
         if runLifecycleProbe && !spinonS03DomGcFixtureEnabled {
             logger.error("SPINON_DOM_GC_FIXTURE_DISABLED · 검증 전용 빌드로 다시 빌드하세요")
         }

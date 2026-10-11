@@ -1,0 +1,16 @@
+--------- beginning of main
+I/SpinonBootstrap(12299): SPINON_C124_SESSION_STACK status=ready session_count=0 css_stack_reserved_bytes=0 hold_seconds=8
+I/SpinonBootstrap(12299): SPINON_C124_HOST=session=ready owner_tid=12369 isolate_per_session=1 queue_capacity=64 queue_policy=strict-priority-fifo css_worker_per_session=1 css_worker_ready_us=201 session_startup_us=2391
+I/SpinonBootstrap(12299): SPINON_C124_SESSION_STACK status=ready session_count=1 css_stack_reserved_bytes=8388608 hold_seconds=8
+I/SpinonBootstrap(12299): SPINON_C124_HOST=session=ready owner_tid=12440 isolate_per_session=1 queue_capacity=64 queue_policy=strict-priority-fifo css_worker_per_session=1 css_worker_ready_us=426 session_startup_us=2396
+I/SpinonBootstrap(12299): SPINON_C124_SESSION_STACK status=ready session_count=2 css_stack_reserved_bytes=16777216 hold_seconds=8
+I/SpinonBootstrap(12299): SPINON_C124_HOST=session=ready owner_tid=12516 isolate_per_session=1 queue_capacity=64 queue_policy=strict-priority-fifo css_worker_per_session=1 css_worker_ready_us=229 session_startup_us=1641
+I/SpinonBootstrap(12299): SPINON_C124_HOST=session=ready owner_tid=12518 isolate_per_session=1 queue_capacity=64 queue_policy=strict-priority-fifo css_worker_per_session=1 css_worker_ready_us=229 session_startup_us=1346
+I/SpinonBootstrap(12299): SPINON_C124_SESSION_STACK status=ready session_count=4 css_stack_reserved_bytes=33554432 hold_seconds=8
+I/SpinonBootstrap(12299): SPINON_C124_HOST=session=ready owner_tid=12610 isolate_per_session=1 queue_capacity=64 queue_policy=strict-priority-fifo css_worker_per_session=1 css_worker_ready_us=200 session_startup_us=1715
+I/SpinonBootstrap(12299): SPINON_C124_HOST=session=ready owner_tid=12612 isolate_per_session=1 queue_capacity=64 queue_policy=strict-priority-fifo css_worker_per_session=1 css_worker_ready_us=216 session_startup_us=2208
+I/SpinonBootstrap(12299): SPINON_C124_HOST=session=ready owner_tid=12614 isolate_per_session=1 queue_capacity=64 queue_policy=strict-priority-fifo css_worker_per_session=1 css_worker_ready_us=234 session_startup_us=1514
+I/SpinonBootstrap(12299): SPINON_C124_HOST=session=ready owner_tid=12616 isolate_per_session=1 queue_capacity=64 queue_policy=strict-priority-fifo css_worker_per_session=1 css_worker_ready_us=317 session_startup_us=1468
+I/SpinonBootstrap(12299): SPINON_C124_SESSION_STACK status=ready session_count=8 css_stack_reserved_bytes=67108864 hold_seconds=8
+I/SpinonBootstrap(12299): SPINON_C124_SESSION_STACK status=freed session_count=0 released_handles=8
+I/SpinonBootstrap(12299): SPINON_C124_SESSION_STACK status=finished failed=false

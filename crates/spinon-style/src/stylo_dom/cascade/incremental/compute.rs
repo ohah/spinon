@@ -10,6 +10,7 @@ use super::super::{
     margin::FLEX_MARGIN_AUTHOR_PROPERTIES,
     runtime_layout::RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES,
     runtime_paint::RUNTIME_BLOCK_PAINT_AUTHOR_PROPERTIES,
+    runtime_stacking::runtime_block_flex_stacking_author_properties,
     s04,
 };
 use super::{
@@ -140,7 +141,8 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
             }
         }
     }
-    let allowed_author_properties = match profile {
+    let runtime_stacking_author_properties = runtime_block_flex_stacking_author_properties();
+    let allowed_author_properties: Option<&[&str]> = match profile {
         ComputedStyleProfile::BasicCascadeV1 => None,
         ComputedStyleProfile::SupportedElementsUaV1 => None,
         ComputedStyleProfile::FlexLayoutV1 => Some(FLEX_LAYOUT_AUTHOR_PROPERTIES),
@@ -165,6 +167,9 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         }
         ComputedStyleProfile::RuntimeBlockPositioningV1 => {
             Some(super::runtime_paint::RUNTIME_BLOCK_POSITIONING_AUTHOR_PROPERTIES)
+        }
+        ComputedStyleProfile::RuntimeBlockFlexStackingV1 => {
+            Some(runtime_stacking_author_properties.as_slice())
         }
         ComputedStyleProfile::RuntimeFlexPaintV1 => None,
     };
@@ -196,6 +201,13 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
                 registry.first_unsupported_runtime_author_feature(allowed, true, true, true)
             })
         }
+        ComputedStyleProfile::RuntimeBlockFlexStackingV1 => {
+            allowed_author_properties.and_then(|allowed| {
+                registry.first_unsupported_runtime_layered_registered_properties_author_feature(
+                    allowed, true,
+                )
+            })
+        }
         _ => allowed_author_properties
             .and_then(|allowed| registry.first_unsupported_author_feature(allowed)),
     };
@@ -222,6 +234,7 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         profile,
         ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
+            | ComputedStyleProfile::RuntimeBlockFlexStackingV1
     ) && let Some((stylesheet_id, diagnostic)) =
         registry.first_runtime_registered_property_author_diagnostic()
     {

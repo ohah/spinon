@@ -1,0 +1,29 @@
+{
+  "status": "matched",
+  "platform": "Android API 37.1 simulator (16 KB page size)",
+  "cases": 26,
+  "supportedCases": 21,
+  "rejectedCases": 5,
+  "comparedNodes": 64,
+  "comparedHitTestObservations": 21,
+  "maximumAbsoluteErrorCssPx": 0,
+  "toleranceCssPx": 0.5,
+  "worstField": null,
+  "auxiliaryPaintOrderDifferences": [
+    {
+      "case": "flex-row-reverse-paint",
+      "sample": "row-reverse-chrome-front-to-back",
+      "kind": "runtime-paint-rank-vs-Chromium-elementsFromPoint",
+      "runtimePaintOrderCandidateTopToBottom": [
+        "c124-row-reverse-source-second",
+        "c124-row-reverse-source-first"
+      ],
+      "chromiumHitTestTopToBottom": [
+        "c124-row-reverse-source-first",
+        "c124-row-reverse-source-second"
+      ],
+      "oracleLimit": "Chromium elementsFromPoint는 paint-order oracle이 아니며 Android scene별 pixel readback이 없습니다."
+    }
+  ],
+  "mismatches": []
+}

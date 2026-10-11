@@ -191,6 +191,21 @@ pub enum ComputedCssPosition {
     Sticky,
 }
 
+/// C12.4 runtime painter가 Stylo computed values에서 복사한 `z-index`입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum ComputedCssZIndex {
+    Auto,
+    Integer(i32),
+}
+
+/// C12.4 runtime painter가 Stylo computed values에서 복사한 `visibility`입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum ComputedCssVisibility {
+    Visible,
+    Hidden,
+    Collapse,
+}
+
 /// Fixed descendant의 viewport owner를 바꾸는 Chromium 고정 기준 effect입니다.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum FixedContainingBlockEffect {
@@ -280,6 +295,10 @@ pub struct ComputedElementStyle {
     pub properties: BTreeMap<String, String>,
     /// `properties`와 같은 cascade 결과에서 추출한 typed CSS position입니다.
     pub layout_position: ComputedCssPosition,
+    /// C12.4 profile에서만 설정하는 typed `z-index` 값입니다.
+    pub stacking_z_index: Option<ComputedCssZIndex>,
+    /// C12.4 profile에서만 설정하는 typed `visibility` 값입니다.
+    pub stacking_visibility: Option<ComputedCssVisibility>,
     /// 같은 Stylo computed values에서 추출한 fixed-CB effect입니다.
     pub fixed_containing_block_effects: Vec<FixedContainingBlockEffect>,
     /// 같은 cascade 결과의 물리 방향 inset 값입니다.
@@ -360,4 +379,6 @@ pub enum ComputedStyleProfile {
     RuntimeBlockFormattingV1,
     /// C12.2 Block absolute positioning과 기존 Block formatting 입력을 계산하는 runtime profile입니다.
     RuntimeBlockPositioningV1,
+    /// C12.4의 혼합 Block/Flex positioning·stacking·단색 paint runtime profile입니다.
+    RuntimeBlockFlexStackingV1,
 }

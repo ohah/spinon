@@ -1,0 +1,250 @@
+{
+  "cases" : 26,
+  "device" : "iPhone",
+  "expectedReady" : 21,
+  "expectedRejected" : 5,
+  "inventorySHA256" : "f7890fdab13afb896fa9678be192f1829aae43ef0eef197ca879aa78f8bdc6aa",
+  "matched" : 26,
+  "nodes" : 77,
+  "osVersion" : "26.2",
+  "platform" : "iOS Simulator",
+  "results" : [
+    {
+      "actual" : "ready",
+      "expected" : "ready",
+      "id" : "root-negative-flow",
+      "index" : 0,
+      "matched" : true,
+      "reasonMatched" : true,
+      "report" : "status=0 seq=1 trace_cookie=1 op=eval status=0 caller_tid=7053818 owner_tid=7053821 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=16 v8_call_us=3083 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=20 render_tree_revision=1 document_nodes=4 document_string_units=711 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=4 document_collection_live_handles=4 document_collection_empty_handles=0 document_collection_last_scan_start_ns=28730782805333 document_collection_last_scan_us=18 document_collection_wrapper_root_buffer_bytes=16 document_collection_reclaimed_node_buffer_bytes=16 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=5 ua_snapshot_submitted=true enqueue_total_us=13 response_wait_us=3099 submit_total_us=3113 response_report_append_us=0 layout=ready boxes=4 generation=1 document_revision=20 render_tree_revision=1 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=4 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=320x240 render_viewport_css_px=320x240 render_root_css_px=320x240 node_frames_css_px=[0:node=1,x=0,y=0,width=320,height=240;1:node=2,x=10,y=10,width=235,height=90;2:node=3,x=30,y=30,width=110,height=60;3:node=4,x=30,y=30,width=110,height=60] paint_node_order=[0:1,1:3,2:4,3:2]"
+    },
+    {
+      "actual" : "ready",
+      "expected" : "ready",
+      "id" : "negative-level-tie",
+      "index" : 1,
+      "matched" : true,
+      "reasonMatched" : true,
+      "report" : "status=0 seq=1 trace_cookie=2 op=eval status=0 caller_tid=7053818 owner_tid=7053838 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=6 v8_call_us=451 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=26 render_tree_revision=1 document_nodes=5 document_string_units=925 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=5 document_collection_live_handles=5 document_collection_empty_handles=0 document_collection_last_scan_start_ns=28730792513583 document_collection_last_scan_us=7 document_collection_wrapper_root_buffer_bytes=32 document_collection_reclaimed_node_buffer_bytes=20 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=2 ua_snapshot_submitted=true enqueue_total_us=2 response_wait_us=467 submit_total_us=470 response_report_append_us=0 layout=ready boxes=5 generation=2 document_revision=26 render_tree_revision=1 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=5 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=320x240 render_viewport_css_px=320x240 render_root_css_px=320x240 node_frames_css_px=[0:node=1,x=0,y=0,width=320,height=240;1:node=2,x=10,y=10,width=235,height=90;2:node=3,x=30,y=30,width=110,height=60;3:node=4,x=30,y=30,width=110,height=60;4:node=5,x=30,y=30,width=110,height=60] paint_node_order=[0:1,1:3,2:4,3:5,4:2]"
+    },
+    {
+      "actual" : "ready",
+      "expected" : "ready",
+      "id" : "auto-zero-positive",
+      "index" : 2,
+      "matched" : true,
+      "reasonMatched" : true,
+      "report" : "status=0 seq=1 trace_cookie=3 op=eval status=0 caller_tid=7053818 owner_tid=7053842 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=2 v8_call_us=360 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=26 render_tree_revision=1 document_nodes=5 document_string_units=903 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=5 document_collection_live_handles=5 document_collection_empty_handles=0 document_collection_last_scan_start_ns=28730794091666 document_collection_last_scan_us=4 document_collection_wrapper_root_buffer_bytes=32 document_collection_reclaimed_node_buffer_bytes=20 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=2 ua_snapshot_submitted=true enqueue_total_us=1 response_wait_us=369 submit_total_us=371 response_report_append_us=0 layout=ready boxes=5 generation=3 document_revision=26 render_tree_revision=1 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=5 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=320x240 render_viewport_css_px=320x240 render_root_css_px=320x240 node_frames_css_px=[0:node=1,x=0,y=0,width=320,height=240;1:node=2,x=10,y=10,width=235,height=90;2:node=3,x=30,y=30,width=110,height=60;3:node=4,x=30,y=30,width=110,height=60;4:node=5,x=30,y=30,width=110,height=60] paint_node_order=[0:1,1:2,2:3,3:4,4:5]"
+    },
+    {
+      "actual" : "ready",
+      "expected" : "ready",
+      "id" : "positive-level-tie",
+      "index" : 3,
+      "matched" : true,
+      "reasonMatched" : true,
+      "report" : "status=0 seq=1 trace_cookie=4 op=eval status=0 caller_tid=7053818 owner_tid=7053844 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=2 v8_call_us=294 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=26 render_tree_revision=1 document_nodes=5 document_string_units=927 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=5 document_collection_live_handles=5 document_collection_empty_handles=0 document_collection_last_scan_start_ns=28730795342958 document_collection_last_scan_us=3 document_collection_wrapper_root_buffer_bytes=32 document_collection_reclaimed_node_buffer_bytes=20 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=2 ua_snapshot_submitted=true enqueue_total_us=1 response_wait_us=302 submit_total_us=304 response_report_append_us=0 layout=ready boxes=5 generation=4 document_revision=26 render_tree_revision=1 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=5 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=320x240 render_viewport_css_px=320x240 render_root_css_px=320x240 node_frames_css_px=[0:node=1,x=0,y=0,width=320,height=240;1:node=2,x=10,y=10,width=235,height=90;2:node=3,x=30,y=30,width=110,height=60;3:node=4,x=30,y=30,width=110,height=60;4:node=5,x=30,y=30,width=110,height=60] paint_node_order=[0:1,1:2,2:3,3:4,4:5]"
+    },
+    {
+      "actual" : "ready",
+      "expected" : "ready",
+      "id" : "integer-boundaries",
+      "index" : 4,
+      "matched" : true,
+      "reasonMatched" : true,
+      "report" : "status=0 seq=1 trace_cookie=5 op=eval status=0 caller_tid=7053818 owner_tid=7053846 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=5 v8_call_us=384 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=26 render_tree_revision=1 document_nodes=5 document_string_units=945 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=5 document_collection_live_handles=5 document_collection_empty_handles=0 document_collection_last_scan_start_ns=28730796608083 document_collection_last_scan_us=4 document_collection_wrapper_root_buffer_bytes=32 document_collection_reclaimed_node_buffer_bytes=20 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=2 ua_snapshot_submitted=true enqueue_total_us=1 response_wait_us=397 submit_total_us=399 response_report_append_us=0 layout=ready boxes=5 generation=5 document_revision=26 render_tree_revision=1 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=5 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=320x240 render_viewport_css_px=320x240 render_root_css_px=320x240 node_frames_css_px=[0:node=1,x=0,y=0,width=320,height=240;1:node=2,x=10,y=10,width=235,height=90;2:node=3,x=30,y=30,width=110,height=60;3:node=4,x=30,y=30,width=110,height=60;4:node=5,x=30,y=30,width=110,height=60] paint_node_order=[0:1,1:3,2:2,3:4,4:5]"
+    },
+    {
+      "actual" : "ready",
+      "expected" : "ready",
+      "id" : "nested-context-atomic",
+      "index" : 5,
+      "matched" : true,
+      "reasonMatched" : true,
+      "report" : "status=0 seq=1 trace_cookie=6 op=eval status=0 caller_tid=7053818 owner_tid=7053848 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=5 v8_call_us=388 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=25 render_tree_revision=1 document_nodes=5 document_string_units=889 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=5 document_collection_live_handles=5 document_collection_empty_handles=0 document_collection_last_scan_start_ns=28730797999041 document_collection_last_scan_us=4 document_collection_wrapper_root_buffer_bytes=32 document_collection_reclaimed_node_buffer_bytes=20 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=2 ua_snapshot_submitted=true enqueue_total_us=3 response_wait_us=399 submit_total_us=402 response_report_append_us=0 layout=ready boxes=5 generation=6 document_revision=25 render_tree_revision=1 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=5 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=320x240 render_viewport_css_px=320x240 render_root_css_px=320x240 node_frames_css_px=[0:node=1,x=0,y=0,width=320,height=240;1:node=2,x=10,y=10,width=235,height=90;2:node=3,x=30,y=30,width=110,height=60;3:node=4,x=30,y=30,width=110,height=60;4:node=5,x=30,y=30,width=110,height=60] paint_node_order=[0:1,1:2,2:3,3:4,4:5]"
+    },
+    {
+      "actual" : "ready",
+      "expected" : "ready",
+      "id" : "relative-auto-escape",
+      "index" : 6,
+      "matched" : true,
+      "reasonMatched" : true,
+      "report" : "status=0 seq=1 trace_cookie=7 op=eval status=0 caller_tid=7053818 owner_tid=7053850 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=3 v8_call_us=292 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=25 render_tree_revision=1 document_nodes=5 document_string_units=879 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=5 document_collection_live_handles=5 document_collection_empty_handles=0 document_collection_last_scan_start_ns=28730799239333 document_collection_last_scan_us=3 document_collection_wrapper_root_buffer_bytes=32 document_collection_reclaimed_node_buffer_bytes=20 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=2 ua_snapshot_submitted=true enqueue_total_us=2 response_wait_us=302 submit_total_us=304 response_report_append_us=0 layout=ready boxes=5 generation=7 document_revision=25 render_tree_revision=1 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=5 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=320x240 render_viewport_css_px=320x240 render_root_css_px=320x240 node_frames_css_px=[0:node=1,x=0,y=0,width=320,height=240;1:node=2,x=10,y=10,width=235,height=90;2:node=3,x=30,y=30,width=110,height=60;3:node=4,x=30,y=30,width=110,height=60;4:node=5,x=30,y=30,width=110,height=60] paint_node_order=[0:1,1:2,2:3,3:5,4:4]"
+    },
+    {
+      "actual" : "ready",
+      "expected" : "ready",
+      "id" : "relative-zero-isolation",
+      "index" : 7,
+      "matched" : true,
+      "reasonMatched" : true,
+      "report" : "status=0 seq=1 trace_cookie=8 op=eval status=0 caller_tid=7053818 owner_tid=7053852 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=7 v8_call_us=441 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=25 render_tree_revision=1 document_nodes=5 document_string_units=898 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=5 document_collection_live_handles=5 document_collection_empty_handles=0 document_collection_last_scan_start_ns=28730800616208 document_collection_last_scan_us=5 document_collection_wrapper_root_buffer_bytes=32 document_collection_reclaimed_node_buffer_bytes=20 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=4 ua_snapshot_submitted=true enqueue_total_us=2 response_wait_us=460 submit_total_us=462 response_report_append_us=0 layout=ready boxes=5 generation=8 document_revision=25 render_tree_revision=1 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=5 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=320x240 render_viewport_css_px=320x240 render_root_css_px=320x240 node_frames_css_px=[0:node=1,x=0,y=0,width=320,height=240;1:node=2,x=10,y=10,width=235,height=90;2:node=3,x=30,y=30,width=110,height=60;3:node=4,x=30,y=30,width=110,height=60;4:node=5,x=30,y=30,width=110,height=60] paint_node_order=[0:1,1:2,2:3,3:4,4:5]"
+    },
+    {
+      "actual" : "ready",
+      "expected" : "ready",
+      "id" : "fixed-auto-isolation",
+      "index" : 8,
+      "matched" : true,
+      "reasonMatched" : true,
+      "report" : "status=0 seq=1 trace_cookie=9 op=eval status=0 caller_tid=7053818 owner_tid=7053854 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=3 v8_call_us=329 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=25 render_tree_revision=1 document_nodes=5 document_string_units=922 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=5 document_collection_live_handles=5 document_collection_empty_handles=0 document_collection_last_scan_start_ns=28730801966125 document_collection_last_scan_us=3 document_collection_wrapper_root_buffer_bytes=32 document_collection_reclaimed_node_buffer_bytes=20 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=3 ua_snapshot_submitted=true enqueue_total_us=1 response_wait_us=338 submit_total_us=340 response_report_append_us=0 layout=ready boxes=5 generation=9 document_revision=25 render_tree_revision=1 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=5 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=320x240 render_viewport_css_px=320x240 render_root_css_px=320x240 node_frames_css_px=[0:node=1,x=0,y=0,width=320,height=240;1:node=2,x=10,y=10,width=235,height=90;2:node=3,x=30,y=30,width=110,height=60;3:node=4,x=30,y=30,width=110,height=60;4:node=5,x=30,y=30,width=110,height=60] paint_node_order=[0:1,1:2,2:3,3:4,4:5]"
+    },
+    {
+      "actual" : "ready",
+      "expected" : "ready",
+      "id" : "static-block-z-ignored",
+      "index" : 9,
+      "matched" : true,
+      "reasonMatched" : true,
+      "report" : "status=0 seq=1 trace_cookie=10 op=eval status=0 caller_tid=7053818 owner_tid=7053856 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=4 v8_call_us=249 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=20 render_tree_revision=1 document_nodes=4 document_string_units=764 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=4 document_collection_live_handles=4 document_collection_empty_handles=0 document_collection_last_scan_start_ns=28730803819041 document_collection_last_scan_us=2 document_collection_wrapper_root_buffer_bytes=16 document_collection_reclaimed_node_buffer_bytes=16 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=2 ua_snapshot_submitted=true enqueue_total_us=2 response_wait_us=258 submit_total_us=260 response_report_append_us=0 layout=ready boxes=4 generation=10 document_revision=20 render_tree_revision=1 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=4 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=320x240 render_viewport_css_px=320x240 render_root_css_px=320x240 node_frames_css_px=[0:node=1,x=0,y=0,width=320,height=240;1:node=2,x=10,y=10,width=235,height=90;2:node=3,x=30,y=30,width=110,height=60;3:node=4,x=30,y=30,width=110,height=60] paint_node_order=[0:1,1:3,2:4,3:2]"
+    },
+    {
+      "actual" : "ready",
+      "expected" : "ready",
+      "id" : "static-flex-item-z-context",
+      "index" : 10,
+      "matched" : true,
+      "reasonMatched" : true,
+      "report" : "status=0 seq=1 trace_cookie=11 op=eval status=0 caller_tid=7053818 owner_tid=7053858 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=2 v8_call_us=261 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=25 render_tree_revision=1 document_nodes=5 document_string_units=872 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=5 document_collection_live_handles=5 document_collection_empty_handles=0 document_collection_last_scan_start_ns=28730804905041 document_collection_last_scan_us=2 document_collection_wrapper_root_buffer_bytes=32 document_collection_reclaimed_node_buffer_bytes=20 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=2 ua_snapshot_submitted=true enqueue_total_us=1 response_wait_us=270 submit_total_us=271 response_report_append_us=0 layout=ready boxes=5 generation=11 document_revision=25 render_tree_revision=1 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=5 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=320x240 render_viewport_css_px=320x240 render_root_css_px=320x240 node_frames_css_px=[0:node=1,x=0,y=0,width=320,height=240;1:node=2,x=10,y=10,width=235,height=90;2:node=3,x=10,y=10,width=150,height=60;3:node=4,x=10,y=10,width=110,height=60;4:node=5,x=50,y=10,width=110,height=60] paint_node_order=[0:1,1:2,2:3,3:4,4:5]"
+    },
+    {
+      "actual" : "ready",
+      "expected" : "ready",
+      "id" : "flex-order-and-tie",
+      "index" : 11,
+      "matched" : true,
+      "reasonMatched" : true,
+      "report" : "status=0 seq=1 trace_cookie=12 op=eval status=0 caller_tid=7053818 owner_tid=7053860 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=4 v8_call_us=473 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=37 render_tree_revision=1 document_nodes=7 document_string_units=1216 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=7 document_collection_live_handles=7 document_collection_empty_handles=0 document_collection_last_scan_start_ns=28730806263250 document_collection_last_scan_us=6 document_collection_wrapper_root_buffer_bytes=32 document_collection_reclaimed_node_buffer_bytes=28 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=3 ua_snapshot_submitted=true enqueue_total_us=1 response_wait_us=485 submit_total_us=487 response_report_append_us=0 layout=ready boxes=7 generation=12 document_revision=37 render_tree_revision=1 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=7 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=320x240 render_viewport_css_px=320x240 render_root_css_px=320x240 node_frames_css_px=[0:node=1,x=0,y=0,width=320,height=240;1:node=2,x=10,y=10,width=235,height=90;2:node=3,x=10,y=10,width=210,height=60;3:node=4,x=100,y=10,width=120,height=60;4:node=5,x=40,y=10,width=120,height=60;5:node=6,x=70,y=10,width=120,height=60;6:node=7,x=10,y=10,width=120,height=60] paint_node_order=[0:1,1:7,2:5,3:6,4:4,5:2,6:3]"
+    },
+    {
+      "actual" : "ready",
+      "expected" : "ready",
+      "id" : "flex-row-reverse-paint",
+      "index" : 12,
+      "matched" : true,
+      "reasonMatched" : true,
+      "report" : "status=0 seq=1 trace_cookie=13 op=eval status=0 caller_tid=7053818 owner_tid=7053862 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=4 v8_call_us=318 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=25 render_tree_revision=1 document_nodes=5 document_string_units=871 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=5 document_collection_live_handles=5 document_collection_empty_handles=0 document_collection_last_scan_start_ns=28730807621333 document_collection_last_scan_us=3 document_collection_wrapper_root_buffer_bytes=32 document_collection_reclaimed_node_buffer_bytes=20 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=2 ua_snapshot_submitted=true enqueue_total_us=1 response_wait_us=329 submit_total_us=331 response_report_append_us=0 layout=ready boxes=5 generation=13 document_revision=25 render_tree_revision=1 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=5 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=320x240 render_viewport_css_px=320x240 render_root_css_px=320x240 node_frames_css_px=[0:node=1,x=0,y=0,width=320,height=240;1:node=2,x=10,y=10,width=235,height=90;2:node=3,x=10,y=10,width=150,height=60;3:node=4,x=50,y=10,width=110,height=60;4:node=5,x=10,y=10,width=110,height=60] paint_node_order=[0:1,1:5,2:4,3:2,4:3]"
+    },
+    {
+      "actual" : "ready",
+      "expected" : "ready",
+      "id" : "nested-flex-local-order",
+      "index" : 13,
+      "matched" : true,
+      "reasonMatched" : true,
+      "report" : "status=0 seq=1 trace_cookie=14 op=eval status=0 caller_tid=7053818 owner_tid=7053864 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=3 v8_call_us=448 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=41 render_tree_revision=1 document_nodes=8 document_string_units=1223 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=8 document_collection_live_handles=8 document_collection_empty_handles=0 document_collection_last_scan_start_ns=28730809016125 document_collection_last_scan_us=4 document_collection_wrapper_root_buffer_bytes=32 document_collection_reclaimed_node_buffer_bytes=32 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=2 ua_snapshot_submit_us=2 ua_snapshot_submitted=true enqueue_total_us=1 response_wait_us=460 submit_total_us=462 response_report_append_us=0 layout=ready boxes=8 generation=14 document_revision=41 render_tree_revision=1 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=8 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=320x240 render_viewport_css_px=320x240 render_root_css_px=320x240 node_frames_css_px=[0:node=1,x=0,y=0,width=320,height=240;1:node=2,x=10,y=10,width=235,height=90;2:node=3,x=10,y=10,width=150,height=60;3:node=4,x=10,y=10,width=150,height=60;4:node=5,x=10,y=10,width=150,height=60;5:node=6,x=10,y=10,width=110,height=60;6:node=7,x=50,y=10,width=110,height=60;7:node=8,x=20,y=10,width=110,height=60] paint_node_order=[0:1,1:4,2:5,3:6,4:7,5:8,6:2,7:3]"
+    },
+    {
+      "actual" : "ready",
+      "expected" : "ready",
+      "id" : "absolute-flex-order-ignored",
+      "index" : 14,
+      "matched" : true,
+      "reasonMatched" : true,
+      "report" : "status=0 seq=1 trace_cookie=15 op=eval status=0 caller_tid=7053818 owner_tid=7053866 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=3 v8_call_us=316 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=25 render_tree_revision=1 document_nodes=5 document_string_units=913 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=5 document_collection_live_handles=5 document_collection_empty_handles=0 document_collection_last_scan_start_ns=28730810486958 document_collection_last_scan_us=3 document_collection_wrapper_root_buffer_bytes=32 document_collection_reclaimed_node_buffer_bytes=20 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=2 ua_snapshot_submitted=true enqueue_total_us=1 response_wait_us=326 submit_total_us=327 response_report_append_us=0 layout=ready boxes=5 generation=15 document_revision=25 render_tree_revision=1 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=5 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=320x240 render_viewport_css_px=320x240 render_root_css_px=320x240 node_frames_css_px=[0:node=1,x=0,y=0,width=320,height=240;1:node=2,x=10,y=10,width=235,height=90;2:node=3,x=10,y=10,width=150,height=60;3:node=4,x=30,y=30,width=110,height=60;4:node=5,x=30,y=30,width=110,height=60] paint_node_order=[0:1,1:2,2:3,3:4,4:5]"
+    },
+    {
+      "actual" : "ready",
+      "expected" : "ready",
+      "id" : "fixed-flex-order-ignored",
+      "index" : 15,
+      "matched" : true,
+      "reasonMatched" : true,
+      "report" : "status=0 seq=1 trace_cookie=16 op=eval status=0 caller_tid=7053818 owner_tid=7053868 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=6 v8_call_us=437 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=25 render_tree_revision=1 document_nodes=5 document_string_units=980 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=5 document_collection_live_handles=5 document_collection_empty_handles=0 document_collection_last_scan_start_ns=28730811945291 document_collection_last_scan_us=5 document_collection_wrapper_root_buffer_bytes=32 document_collection_reclaimed_node_buffer_bytes=20 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=4 ua_snapshot_submitted=true enqueue_total_us=3 response_wait_us=454 submit_total_us=458 response_report_append_us=0 layout=ready boxes=5 generation=16 document_revision=25 render_tree_revision=1 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=5 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=320x240 render_viewport_css_px=320x240 render_root_css_px=320x240 node_frames_css_px=[0:node=1,x=0,y=0,width=320,height=240;1:node=2,x=10,y=10,width=235,height=90;2:node=3,x=10,y=10,width=150,height=60;3:node=4,x=30,y=30,width=110,height=60;4:node=5,x=30,y=30,width=110,height=60] paint_node_order=[0:1,1:2,2:3,3:4,4:5]"
+    },
+    {
+      "actual" : "ready",
+      "expected" : "ready",
+      "id" : "block-before-flex-tie",
+      "index" : 16,
+      "matched" : true,
+      "reasonMatched" : true,
+      "report" : "status=0 seq=1 trace_cookie=17 op=eval status=0 caller_tid=7053818 owner_tid=7053870 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=4 v8_call_us=304 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=20 render_tree_revision=1 document_nodes=4 document_string_units=715 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=4 document_collection_live_handles=4 document_collection_empty_handles=0 document_collection_last_scan_start_ns=28730813194416 document_collection_last_scan_us=3 document_collection_wrapper_root_buffer_bytes=16 document_collection_reclaimed_node_buffer_bytes=16 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=2 ua_snapshot_submitted=true enqueue_total_us=2 response_wait_us=314 submit_total_us=317 response_report_append_us=0 layout=ready boxes=4 generation=17 document_revision=20 render_tree_revision=1 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=4 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=320x240 render_viewport_css_px=320x240 render_root_css_px=320x240 node_frames_css_px=[0:node=1,x=0,y=0,width=320,height=240;1:node=2,x=10,y=10,width=235,height=90;2:node=3,x=30,y=30,width=110,height=60;3:node=4,x=30,y=30,width=110,height=60] paint_node_order=[0:1,1:3,2:4,3:2]"
+    },
+    {
+      "actual" : "ready",
+      "expected" : "ready",
+      "id" : "flex-before-block-tie",
+      "index" : 17,
+      "matched" : true,
+      "reasonMatched" : true,
+      "report" : "status=0 seq=1 trace_cookie=18 op=eval status=0 caller_tid=7053818 owner_tid=7053872 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=5 v8_call_us=324 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=20 render_tree_revision=1 document_nodes=4 document_string_units=715 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=4 document_collection_live_handles=4 document_collection_empty_handles=0 document_collection_last_scan_start_ns=28730814336208 document_collection_last_scan_us=4 document_collection_wrapper_root_buffer_bytes=16 document_collection_reclaimed_node_buffer_bytes=16 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=2 ua_snapshot_submitted=true enqueue_total_us=1 response_wait_us=336 submit_total_us=338 response_report_append_us=0 layout=ready boxes=4 generation=18 document_revision=20 render_tree_revision=1 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=4 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=320x240 render_viewport_css_px=320x240 render_root_css_px=320x240 node_frames_css_px=[0:node=1,x=0,y=0,width=320,height=240;1:node=2,x=10,y=10,width=235,height=90;2:node=3,x=30,y=30,width=110,height=60;3:node=4,x=30,y=30,width=110,height=60] paint_node_order=[0:1,1:3,2:4,3:2]"
+    },
+    {
+      "actual" : "ready",
+      "expected" : "ready",
+      "id" : "cascade-layer-and-inline",
+      "index" : 18,
+      "matched" : true,
+      "reasonMatched" : true,
+      "report" : "status=0 seq=1 trace_cookie=19 op=eval status=0 caller_tid=7053818 owner_tid=7053874 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=5 v8_call_us=541 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=41 render_tree_revision=1 document_nodes=8 document_string_units=1695 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=8 document_collection_live_handles=8 document_collection_empty_handles=0 document_collection_last_scan_start_ns=28730815913708 document_collection_last_scan_us=6 document_collection_wrapper_root_buffer_bytes=32 document_collection_reclaimed_node_buffer_bytes=32 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=2 ua_snapshot_submit_us=3 ua_snapshot_submitted=true enqueue_total_us=2 response_wait_us=559 submit_total_us=562 response_report_append_us=0 layout=ready boxes=6 generation=19 document_revision=41 render_tree_revision=1 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=7 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=320x240 render_viewport_css_px=320x240 render_root_css_px=320x240 node_frames_css_px=[0:node=1,x=0,y=0,width=320,height=240;1:node=2,x=10,y=10,width=235,height=90;2:node=3,x=30,y=30,width=110,height=60;3:node=4,x=30,y=30,width=110,height=60;4:node=5,x=30,y=30,width=110,height=60;5:node=6,x=30,y=30,width=110,height=60;6:node=7,x=0,y=0,width=0,height=0] paint_node_order=[0:1,1:2,2:5,3:3,4:4,5:6]"
+    },
+    {
+      "actual" : "ready",
+      "expected" : "ready",
+      "id" : "custom-property-z-index",
+      "index" : 19,
+      "matched" : true,
+      "reasonMatched" : true,
+      "report" : "status=0 seq=1 trace_cookie=20 op=eval status=0 caller_tid=7053818 owner_tid=7053876 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=5 v8_call_us=424 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=31 render_tree_revision=1 document_nodes=7 document_string_units=935 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=7 document_collection_live_handles=7 document_collection_empty_handles=0 document_collection_last_scan_start_ns=28730817952791 document_collection_last_scan_us=5 document_collection_wrapper_root_buffer_bytes=32 document_collection_reclaimed_node_buffer_bytes=28 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=3 ua_snapshot_submitted=true enqueue_total_us=3 response_wait_us=440 submit_total_us=443 response_report_append_us=0 layout=ready boxes=5 generation=20 document_revision=31 render_tree_revision=1 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=6 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=320x240 render_viewport_css_px=320x240 render_root_css_px=320x240 node_frames_css_px=[0:node=1,x=0,y=0,width=320,height=240;1:node=2,x=10,y=10,width=235,height=90;2:node=3,x=10,y=10,width=140,height=70;3:node=4,x=30,y=30,width=110,height=60;4:node=5,x=30,y=30,width=110,height=60;5:node=6,x=0,y=0,width=0,height=0] paint_node_order=[0:1,1:3,2:2,3:5,4:4]"
+    },
+    {
+      "actual" : "ready",
+      "expected" : "ready",
+      "id" : "registered-property-z-index",
+      "index" : 20,
+      "matched" : true,
+      "reasonMatched" : true,
+      "report" : "status=0 seq=1 trace_cookie=21 op=eval status=0 caller_tid=7053818 owner_tid=7053878 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=4 v8_call_us=337 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=26 render_tree_revision=1 document_nodes=6 document_string_units=974 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=6 document_collection_live_handles=6 document_collection_empty_handles=0 document_collection_last_scan_start_ns=28730819289958 document_collection_last_scan_us=4 document_collection_wrapper_root_buffer_bytes=32 document_collection_reclaimed_node_buffer_bytes=24 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=2 ua_snapshot_submitted=true enqueue_total_us=2 response_wait_us=349 submit_total_us=352 response_report_append_us=0 layout=ready boxes=4 generation=21 document_revision=26 render_tree_revision=1 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=5 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=320x240 render_viewport_css_px=320x240 render_root_css_px=320x240 node_frames_css_px=[0:node=1,x=0,y=0,width=320,height=240;1:node=2,x=10,y=10,width=235,height=90;2:node=3,x=30,y=30,width=110,height=60;3:node=4,x=30,y=30,width=110,height=60;4:node=5,x=0,y=0,width=0,height=0] paint_node_order=[0:1,1:2,2:4,3:3]"
+    },
+    {
+      "actual" : "reject",
+      "expected" : "reject",
+      "id" : "display-none-visibility-hidden",
+      "index" : 21,
+      "matched" : true,
+      "reasonMatched" : true,
+      "report" : "status=-11 seq=1 trace_cookie=22 op=eval status=0 caller_tid=7053818 owner_tid=7053880 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=3 v8_call_us=332 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=26 render_tree_revision=1 document_nodes=5 document_string_units=961 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=5 document_collection_live_handles=5 document_collection_empty_handles=0 document_collection_last_scan_start_ns=28730820611791 document_collection_last_scan_us=3 document_collection_wrapper_root_buffer_bytes=32 document_collection_reclaimed_node_buffer_bytes=20 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=2 ua_snapshot_submitted=true enqueue_total_us=1 response_wait_us=342 submit_total_us=343 response_report_append_us=0 CSS runtime 장면 생성 실패: unsupported_computed_value node=Some(4) property=Some(\"visibility\")"
+    },
+    {
+      "actual" : "reject",
+      "expected" : "reject",
+      "id" : "visibility-collapse-flex",
+      "index" : 22,
+      "matched" : true,
+      "reasonMatched" : true,
+      "report" : "status=-11 seq=1 trace_cookie=23 op=eval status=0 caller_tid=7053818 owner_tid=7053882 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=3 v8_call_us=327 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=25 render_tree_revision=1 document_nodes=5 document_string_units=822 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=5 document_collection_live_handles=5 document_collection_empty_handles=0 document_collection_last_scan_start_ns=28730821914000 document_collection_last_scan_us=3 document_collection_wrapper_root_buffer_bytes=32 document_collection_reclaimed_node_buffer_bytes=20 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=2 ua_snapshot_submitted=true enqueue_total_us=1 response_wait_us=337 submit_total_us=338 response_report_append_us=0 CSS runtime 장면 생성 실패: unsupported_computed_value node=Some(5) property=Some(\"visibility\")"
+    },
+    {
+      "actual" : "reject",
+      "expected" : "reject",
+      "id" : "absolute-owner-vs-opacity-context",
+      "index" : 23,
+      "matched" : true,
+      "reasonMatched" : true,
+      "report" : "status=-11 seq=1 trace_cookie=24 op=eval status=0 caller_tid=7053818 owner_tid=7053884 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=4 v8_call_us=281 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=25 render_tree_revision=1 document_nodes=5 document_string_units=939 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=5 document_collection_live_handles=5 document_collection_empty_handles=0 document_collection_last_scan_start_ns=28730823079125 document_collection_last_scan_us=3 document_collection_wrapper_root_buffer_bytes=32 document_collection_reclaimed_node_buffer_bytes=20 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=2 ua_snapshot_submitted=true enqueue_total_us=2 response_wait_us=291 submit_total_us=293 response_report_append_us=0 CSS runtime 장면 생성 실패: unsupported_inline_property node=Some(3) property=Some(\"opacity\")"
+    },
+    {
+      "actual" : "reject",
+      "expected" : "reject",
+      "id" : "top-layer-dialog",
+      "index" : 24,
+      "matched" : true,
+      "reasonMatched" : true,
+      "report" : "status=-4 seq=1 trace_cookie=25 op=eval status=-4 caller_tid=7053818 owner_tid=7053886 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=3 v8_call_us=821 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=19 render_tree_revision=0 document_nodes=4 document_string_units=834 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=4 document_collection_live_handles=4 document_collection_empty_handles=0 document_collection_last_scan_start_ns=28730824752041 document_collection_last_scan_us=3 document_collection_wrapper_root_buffer_bytes=16 document_collection_reclaimed_node_buffer_bytes=16 document_collection_poisoned=0 document_collection_error=none error=TypeError: refs.c124-top-layer-dialog.showModal is not a function host_document_changed=true ua_snapshot_clone_us=2 ua_snapshot_submit_us=2 ua_snapshot_submitted=true enqueue_total_us=2 response_wait_us=831 submit_total_us=833 response_report_append_us=0 layout=empty boxes=0 generation=25 document_revision=19 render_tree_revision=0 style_revision=0 environment_revision=0 cacheHit=true cascadeRecomputedStyleElements=0 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 node_frames_css_px=[] paint_node_order=[]"
+    },
+    {
+      "actual" : "reject",
+      "expected" : "reject",
+      "id" : "pseudo-element-paint",
+      "index" : 25,
+      "matched" : true,
+      "reasonMatched" : true,
+      "report" : "status=-11 seq=1 trace_cookie=26 op=eval status=0 caller_tid=7053818 owner_tid=7053888 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=8 v8_call_us=455 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=26 render_tree_revision=1 document_nodes=6 document_string_units=913 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=6 document_collection_live_handles=6 document_collection_empty_handles=0 document_collection_last_scan_start_ns=28730826064916 document_collection_last_scan_us=5 document_collection_wrapper_root_buffer_bytes=32 document_collection_reclaimed_node_buffer_bytes=24 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=5 ua_snapshot_submitted=true enqueue_total_us=2 response_wait_us=476 submit_total_us=478 response_report_append_us=0 CSS runtime 장면 생성 실패: cascade_failed node=None property=None cascade_error=stylesheet host-style:26:5가 지원 CSS 입력 profile 밖 기능을 사용합니다: 지원하지 않는 CSS 선언 content"
+    }
+  ],
+  "runID" : "c124-ios-matrix-20261011T114910232Z-7f5abd20",
+  "schema" : "spinon-c124-ios-runtime-matrix\/v1",
+  "status" : "matched"
+}

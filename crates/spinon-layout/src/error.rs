@@ -27,6 +27,11 @@ pub enum LayoutError {
     DetachedNode(NodeId),
     Cycle(NodeId),
     UnreachableNode(NodeId),
+    TreeDepthExceeded {
+        node: NodeId,
+        depth: usize,
+        maximum: usize,
+    },
     RootSizeMismatch {
         axis: &'static str,
     },
@@ -116,6 +121,14 @@ impl fmt::Display for LayoutError {
             Self::UnreachableNode(id) => {
                 write!(formatter, "노드 {id}는 루트에서 도달할 수 없습니다")
             }
+            Self::TreeDepthExceeded {
+                node,
+                depth,
+                maximum,
+            } => write!(
+                formatter,
+                "레이아웃 트리 깊이 {depth}가 최대 {maximum}을 초과했습니다 (노드 {node})"
+            ),
             Self::RootSizeMismatch { axis } => {
                 write!(formatter, "루트의 {axis} 크기는 viewport와 같아야 합니다")
             }

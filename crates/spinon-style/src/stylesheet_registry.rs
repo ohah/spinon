@@ -286,6 +286,18 @@ impl StylesheetRegistry {
         )
     }
 
+    pub(crate) fn first_unsupported_runtime_layered_registered_properties_author_feature(
+        &self,
+        allowed_properties: &[&str],
+        allow_background_color: bool,
+    ) -> Option<(String, String)> {
+        css_profile::first_unsupported_runtime_layered_registered_properties_author_feature(
+            self,
+            allowed_properties,
+            allow_background_color,
+        )
+    }
+
     pub(crate) fn first_runtime_author_diagnostic(&self) -> Option<(String, CssParseDiagnostic)> {
         self.stylesheets
             .iter()

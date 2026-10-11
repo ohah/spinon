@@ -1,0 +1,207 @@
+{
+  "schema": "spinon-c12-4-ios-metal-surface-pixels/v1",
+  "runID": "c124-ios-20261011T105945959Z-ce5b401c",
+  "result": "passed",
+  "comparisonCount": 8,
+  "tolerancePerChannel": 0,
+  "claim": "iOS Simulator Metal surface subset comparison only; not Spinon WPT conformance or full CSS support",
+  "cases": [
+    {
+      "caseID": "flex-row-paint-order-0-0",
+      "direction": "row",
+      "blueOrder": 0,
+      "redOrder": 0,
+      "cssSample": [
+        70,
+        155
+      ],
+      "physicalPixel": [
+        211,
+        466
+      ],
+      "rgba": "#e5484dff",
+      "scale": 3,
+      "surface": [
+        960,
+        720
+      ],
+      "renderer": "metal-surface"
+    },
+    {
+      "caseID": "flex-row-paint-order-1-0",
+      "direction": "row",
+      "blueOrder": 1,
+      "redOrder": 0,
+      "cssSample": [
+        70,
+        155
+      ],
+      "physicalPixel": [
+        211,
+        466
+      ],
+      "rgba": "#2866f6ff",
+      "scale": 3,
+      "surface": [
+        960,
+        720
+      ],
+      "renderer": "metal-surface"
+    },
+    {
+      "caseID": "flex-row-reverse-paint-order-0-0",
+      "direction": "row-reverse",
+      "blueOrder": 0,
+      "redOrder": 0,
+      "cssSample": [
+        70,
+        155
+      ],
+      "physicalPixel": [
+        211,
+        466
+      ],
+      "rgba": "#2866f6ff",
+      "scale": 3,
+      "surface": [
+        960,
+        720
+      ],
+      "renderer": "metal-surface"
+    },
+    {
+      "caseID": "flex-row-reverse-paint-order-1-0",
+      "direction": "row-reverse",
+      "blueOrder": 1,
+      "redOrder": 0,
+      "cssSample": [
+        70,
+        155
+      ],
+      "physicalPixel": [
+        211,
+        466
+      ],
+      "rgba": "#e5484dff",
+      "scale": 3,
+      "surface": [
+        960,
+        720
+      ],
+      "renderer": "metal-surface"
+    },
+    {
+      "caseID": "flex-column-paint-order-0-0",
+      "direction": "column",
+      "blueOrder": 0,
+      "redOrder": 0,
+      "cssSample": [
+        70,
+        155
+      ],
+      "physicalPixel": [
+        211,
+        466
+      ],
+      "rgba": "#e5484dff",
+      "scale": 3,
+      "surface": [
+        960,
+        720
+      ],
+      "renderer": "metal-surface"
+    },
+    {
+      "caseID": "flex-column-paint-order-1-0",
+      "direction": "column",
+      "blueOrder": 1,
+      "redOrder": 0,
+      "cssSample": [
+        70,
+        155
+      ],
+      "physicalPixel": [
+        211,
+        466
+      ],
+      "rgba": "#2866f6ff",
+      "scale": 3,
+      "surface": [
+        960,
+        720
+      ],
+      "renderer": "metal-surface"
+    },
+    {
+      "caseID": "flex-column-reverse-paint-order-0-0",
+      "direction": "column-reverse",
+      "blueOrder": 0,
+      "redOrder": 0,
+      "cssSample": [
+        70,
+        175
+      ],
+      "physicalPixel": [
+        211,
+        526
+      ],
+      "rgba": "#2866f6ff",
+      "scale": 3,
+      "surface": [
+        960,
+        720
+      ],
+      "renderer": "metal-surface"
+    },
+    {
+      "caseID": "flex-column-reverse-paint-order-1-0",
+      "direction": "column-reverse",
+      "blueOrder": 1,
+      "redOrder": 0,
+      "cssSample": [
+        70,
+        175
+      ],
+      "physicalPixel": [
+        211,
+        526
+      ],
+      "rgba": "#e5484dff",
+      "scale": 3,
+      "surface": [
+        960,
+        720
+      ],
+      "renderer": "metal-surface"
+    }
+  ],
+  "batchID": "c124-ios-20261011T105945959Z-ce5b401c",
+  "simulator": {
+    "name": "iPhone 17 Pro",
+    "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+    "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro"
+  },
+  "xcode": "Xcode 26.2\nBuild version 17C52",
+  "renderer": "wgpu Metal CAMetalLayer surface texture COPY_SRC readback",
+  "fixtures": {
+    "referenceSha256": "0fd023da34b8488fd6da6330d720b3c2b5af0ece2fe4a0e670a9b140fb0b93ba",
+    "fixtureSha256": "0e28db166cc11208054aff9f44b57b999779d5bb64eee4de3ce4160498da4d22",
+    "chromeReferenceBrowserVersion": "154.0.8037.98"
+  },
+  "perCaseRunIDs": {
+    "flex-row-paint-order-0-0": "c124-ios-20261011T105945959Z-ce5b401c-flex-row-paint-order-0-0-a99fe0",
+    "flex-row-paint-order-1-0": "c124-ios-20261011T105945959Z-ce5b401c-flex-row-paint-order-1-0-66f72a",
+    "flex-row-reverse-paint-order-0-0": "c124-ios-20261011T105945959Z-ce5b401c-flex-row-reverse-paint-order-0-0-766705",
+    "flex-row-reverse-paint-order-1-0": "c124-ios-20261011T105945959Z-ce5b401c-flex-row-reverse-paint-order-1-0-721ec9",
+    "flex-column-paint-order-0-0": "c124-ios-20261011T105945959Z-ce5b401c-flex-column-paint-order-0-0-8a9c40",
+    "flex-column-paint-order-1-0": "c124-ios-20261011T105945959Z-ce5b401c-flex-column-paint-order-1-0-bfd2ae",
+    "flex-column-reverse-paint-order-0-0": "c124-ios-20261011T105945959Z-ce5b401c-flex-column-reverse-paint-order-0-0-06e7d7",
+    "flex-column-reverse-paint-order-1-0": "c124-ios-20261011T105945959Z-ce5b401c-flex-column-reverse-paint-order-1-0-cdd452"
+  },
+  "limitations": [
+    "iOS Simulator 결과이며 실제 iPhone GPU 결과가 아니다.",
+    "고정 Chromium 표본의 8개 C12.4 reverse Flex 조합만 비교했다.",
+    "WPT 적합성 판정, 전체 C12.4 scene, 전체 CSS 지원을 의미하지 않는다."
+  ]
+}

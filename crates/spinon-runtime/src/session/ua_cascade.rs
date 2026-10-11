@@ -5,6 +5,8 @@ use std::sync::{Arc, Condvar, Mutex, MutexGuard, PoisonError, mpsc};
 use std::thread::{self, JoinHandle};
 use std::time::{Duration, Instant};
 
+const CSS_CASCADE_WORKER_STACK_SIZE_BYTES: usize = 8 * 1024 * 1024;
+
 mod author_stylesheets;
 #[cfg(test)]
 mod author_stylesheets_edge_tests;
@@ -37,14 +39,17 @@ mod invalidation_tests;
 #[cfg(test)]
 mod registered_properties_tests;
 mod runtime_layout;
+#[cfg(feature = "c12-4-worker-stack-residency-test")]
+mod worker_stack_probe;
 use cache::RuntimeCalculationCacheEntry;
 #[cfg(test)]
 use cache::RuntimeCalculationCacheKey;
 use cache::RuntimeStyleCacheEntry;
 use calculation::{
-    RuntimeCalculation, compute_request, compute_request_for_block_formatting,
-    compute_request_for_block_paint, compute_request_for_block_positioning,
-    compute_request_for_registered_properties_gpu, compute_request_for_runtime_gpu,
+    RuntimeCalculation, compute_request, compute_request_for_block_flex_stacking,
+    compute_request_for_block_formatting, compute_request_for_block_paint,
+    compute_request_for_block_positioning, compute_request_for_registered_properties_gpu,
+    compute_request_for_runtime_gpu,
 };
 use environment::RuntimeCssEnvironment;
 use runtime_layout::layout_failure;
@@ -186,6 +191,8 @@ impl State {
 struct Shared {
     state: Mutex<State>,
     wake: Condvar,
+    #[cfg(feature = "c12-4-worker-stack-residency-test")]
+    worker_stack: Mutex<Option<Result<worker_stack_probe::WorkerStackBounds, String>>>,
 }
 
 #[derive(Clone)]
@@ -224,16 +231,23 @@ impl RuntimeUaCascadeCoordinator {
         Self::new_with_computer(Arc::new(compute_request_for_block_positioning))
     }
 
+    pub(super) fn new_runtime_gpu_block_flex_stacking() -> Result<Self, String> {
+        Self::new_with_computer(Arc::new(compute_request_for_block_flex_stacking))
+    }
+
     fn new_with_computer(compute: Arc<CascadeComputer>) -> Result<Self, String> {
         let startup_started = Instant::now();
         let shared = Arc::new(Shared {
             state: Mutex::new(State::new()),
             wake: Condvar::new(),
+            #[cfg(feature = "c12-4-worker-stack-residency-test")]
+            worker_stack: Mutex::new(None),
         });
         let worker_shared = Arc::clone(&shared);
         let (ready_sender, ready_receiver) = mpsc::sync_channel(1);
         let worker = thread::Builder::new()
             .name("spinon-css-cascade".to_owned())
+            .stack_size(CSS_CASCADE_WORKER_STACK_SIZE_BYTES)
             .spawn(move || worker_loop(worker_shared, ready_sender, compute))
             .map_err(|error| format!("CSS cascade worker 생성 실패: {error}"))?;
         if ready_receiver.recv().is_err() {
@@ -278,6 +292,14 @@ impl Drop for RuntimeUaCascadeCoordinator {
 }
 
 impl RuntimeUaCascadeHandle {
+    #[cfg(feature = "c12-4-worker-stack-residency-test")]
+    pub(super) fn worker_stack_residency_sample_json(&self) -> Result<String, String> {
+        let bounds = lock(&self.shared.worker_stack)
+            .clone()
+            .ok_or_else(|| "CSS worker stack 정보가 아직 준비되지 않았습니다".to_owned())??;
+        worker_stack_probe::sample_json(&bounds)
+    }
+
     pub(super) fn register_document_snapshot(
         &self,
         snapshot: Arc<HostDocumentSnapshot>,
@@ -423,6 +445,12 @@ fn key_for(
 }
 
 fn worker_loop(shared: Arc<Shared>, ready: mpsc::SyncSender<()>, compute: Arc<CascadeComputer>) {
+    #[cfg(feature = "c12-4-worker-stack-residency-test")]
+    {
+        *lock(&shared.worker_stack) = Some(worker_stack_probe::capture(
+            CSS_CASCADE_WORKER_STACK_SIZE_BYTES,
+        ));
+    }
     let _ = ready.send(());
     let mut cache: Option<RuntimeCalculationCacheEntry> = None;
     let mut style_cache: Option<RuntimeStyleCacheEntry> = None;
@@ -505,28 +533,41 @@ fn publish_result(
     }
     match computed {
         Ok(calculation) => {
-            if !cache_hit && calculation.layout.is_ok() {
+            let cascade_error = calculation.cascade_error.clone();
+            if cascade_error.is_some() {
+                *cache = None;
+                *style_cache = None;
+            } else if !cache_hit && calculation.layout.is_ok() {
                 *cache = Some(RuntimeCalculationCacheEntry::new(
                     request,
                     calculation.clone(),
                 ));
+                *style_cache = RuntimeStyleCacheEntry::new(request, &calculation);
+            } else {
+                *style_cache = RuntimeStyleCacheEntry::new(request, &calculation);
             }
-            *style_cache = RuntimeStyleCacheEntry::new(request, &calculation);
-            state.status = if calculation.roots.is_empty() {
+            state.status = if cascade_error.is_some() {
+                RuntimeUaCascadeState::Failed
+            } else if calculation.roots.is_empty() {
                 RuntimeUaCascadeState::Empty
             } else {
                 RuntimeUaCascadeState::Ready
             };
-            state.completed = Some(Arc::new(RuntimeUaCascadeCompleted {
-                key,
-                roots: Arc::clone(&calculation.roots),
-                computation_duration_us: calculation.cascade_duration_us,
-                cache_hit,
-                cascade_recomputed_style_elements: calculation.cascade_recomputed_style_elements,
-                cascade_reused_style_elements: calculation.cascade_reused_style_elements,
-                cascade_context_style_elements: calculation.cascade_context_style_elements,
-            }));
-            state.error = None;
+            state.completed = if cascade_error.is_some() {
+                None
+            } else {
+                Some(Arc::new(RuntimeUaCascadeCompleted {
+                    key,
+                    roots: Arc::clone(&calculation.roots),
+                    computation_duration_us: calculation.cascade_duration_us,
+                    cache_hit,
+                    cascade_recomputed_style_elements: calculation
+                        .cascade_recomputed_style_elements,
+                    cascade_reused_style_elements: calculation.cascade_reused_style_elements,
+                    cascade_context_style_elements: calculation.cascade_context_style_elements,
+                }))
+            };
+            state.error = cascade_error;
             state.layout_diagnostics = calculation.layout_diagnostics;
             match calculation.layout {
                 Ok(layout) => {

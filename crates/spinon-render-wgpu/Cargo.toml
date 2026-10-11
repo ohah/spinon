@@ -16,6 +16,9 @@ wgpu = { version = "30.0.1", default-features = false, features = ["std", "parki
 
 [dev-dependencies]
 spinon-core = { path = "../spinon-core" }
+spinon-style = { path = "../spinon-style" }
+spinon-style-to-layout = { path = "../spinon-style-to-layout" }
+spinon-style-to-render = { path = "../spinon-style-to-render" }
 
 [lints.rust]
 unsafe_op_in_unsafe_fn = "deny"

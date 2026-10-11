@@ -32,6 +32,9 @@
 + (uint64_t)createRuntimeGpuHostWithC12_1PositionFixture;
 + (uint64_t)createRuntimeGpuHostWithC12_2AbsoluteBlockFixture;
 + (uint64_t)createRuntimeGpuHostWithC12_3FixedFixture;
++ (uint64_t)createRuntimeGpuHostWithC12_4StackingFixture;
++ (NSString *)runtimeGpuC12_4WorkerStackResidencySample:(uint64_t)handle;
++ (uint64_t)createRuntimeGpuHostWithC12_4SurfaceReadbackFixture;
 + (uint64_t)createRuntimeGpuHostWithC10_3_5PositionedFlexFixture;
 + (uint64_t)beginRuntimeGpuPresentationUpdate:(uint64_t)handle;
 + (NSString *)setRuntimeGpuEnvironment:(uint64_t)handle width:(float)width
@@ -56,6 +59,8 @@
 + (NSString *)evalRuntimeGpuC12_1PositionFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuC12_2AbsoluteBlockFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuC12_3FixedFixture:(uint64_t)handle;
++ (NSString *)evalRuntimeGpuC12_4StackingFixture:(uint64_t)handle;
++ (NSString *)evalRuntimeGpuC12_4Source:(uint64_t)handle source:(NSString *)source;
 + (NSString *)evalRuntimeGpuC10_3_5PositionedFlexFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuC12_1PositionState:(uint64_t)handle state:(uint32_t)state;
 + (NSString *)evalRuntimeGpuMarginCollapseFixture:(uint64_t)handle;
@@ -74,6 +79,8 @@
 + (int32_t)resizeRuntimeGpuWgpu:(uint64_t)handle width:(uint32_t)width
                           height:(uint32_t)height;
 + (NSString *)drawRuntimeGpuWgpu:(uint64_t)handle;
++ (NSString *)requestRuntimeGpuSurfacePixelReadbackForTest:(uint64_t)handle
+                                                        x:(uint32_t)x y:(uint32_t)y;
 + (NSString *)injectNextRuntimeGpuDrawFailure:(uint64_t)handle;
 + (void)destroyRuntimeGpuRenderer:(uint64_t)handle;
 + (void)freeRuntimeGpuHost:(uint64_t)handle;

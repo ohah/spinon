@@ -1,0 +1,3 @@
+exit_status=255
+
+vmmap[10800]: [fatal] Failed to get DYLD info for task from parent for pid 10601 with error (os/kern) failure (5). Assuming it's a minimal corpse which can't be analyzed, which we sometimes see for processes which use a lot of memory.

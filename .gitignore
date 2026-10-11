@@ -11,6 +11,8 @@ node_modules/
 /spikes/style-layout/node_modules/
 /spikes/style-layout/target/
 /spikes/wgpu-backend/target/
+/spikes/blitz-stylo-layout/target/
+/spikes/stylo-style/target/
 /platforms/android/**/build/
 /platforms/ios/DerivedData/
 /platforms/ios/.build/
@@ -18,3 +20,17 @@ node_modules/
 **/.DS_Store
 /packages/docs/build/
 /spikes/css-bundler/.output/
+# 원시 stack 주소는 공개 Git과 Funnel 미리보기에 올리지 않고 로컬에만 보존합니다.
+/spec/internal/evidence/c12-4-worker-stack-residency-2026-10-11/c124-*/metadata.json
+/spec/internal/evidence/c12-4-worker-stack-residency-2026-10-11/c124-*/logcat.txt
+/spec/internal/evidence/c12-4-worker-stack-residency-2026-10-11/c124-*/unified.log
+/spec/internal/evidence/c12-4-worker-stack-residency-2026-10-11/c124-*/stage-*-samples.json
+/spec/internal/evidence/c12-4-worker-stack-residency-2026-10-11/c124-*/stage-*-tid-*-maps.txt
+/spec/internal/evidence/c12-4-worker-stack-residency-2026-10-11/c124-*/stage-*-tid-*-smaps.txt
+/spec/internal/evidence/c12-4-worker-stack-residency-2026-10-11/c124-*/released-worker-stack-maps-check.json
+/spec/internal/evidence/c12-4-concurrent-session-stack-cost-2026-10-11/c124-*/metadata.json
+/spec/internal/evidence/c12-4-concurrent-session-stack-cost-2026-10-11/c124-*/logcat.txt
+/spec/internal/evidence/c12-4-concurrent-session-stack-cost-2026-10-11/c124-*/unified.log
+/spec/internal/evidence/c12-4-concurrent-session-stack-cost-2026-10-11/c124-*/failure.txt
+/spec/internal/evidence/c12-4-worker-stack-residency-feasibility-2026-10-11/stage-*.json
+/spec/internal/evidence/c12-4-flex-reverse-paint-2026-10-11/ios-26.2-simulator.log

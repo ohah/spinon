@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <title>C12.4 런타임 실행 근거 · 스피논</title>
+    <style>
+      :root { color-scheme: dark; --bg:#0b1020; --panel:#121a2b; --line:#26344d; --text:#edf3ff; --muted:#a7b4c9; --blue:#70b7ff; --green:#55d6a0; --amber:#ffd27d; }
+      * { box-sizing:border-box; }
+      body { margin:0; background:radial-gradient(ellipse at 50% -10%,#172742 0,transparent 48%),var(--bg); color:var(--text); font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+      main { width:min(1120px,calc(100% - 36px)); margin:0 auto; padding:34px 0 72px; }
+      a { color:var(--blue); text-decoration:none; } a:hover { text-decoration:underline; }
+      .top { display:flex; gap:12px; align-items:center; color:var(--muted); font-size:13px; letter-spacing:.08em; text-transform:uppercase; }
+      .orb { width:11px; height:11px; border-radius:50%; background:var(--blue); box-shadow:0 0 18px #70b7ff99; }
+      h1 { margin:24px 0 8px; font-size:clamp(32px,5vw,54px); line-height:1.08; letter-spacing:-.04em; }
+      .lead { max-width:780px; color:var(--muted); font-size:18px; }
+      .state { display:inline-flex; align-items:center; border:1px solid #755d28; border-radius:999px; padding:4px 11px; color:var(--amber); font-size:13px; }
+      .facts { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin:28px 0 34px; }
+      .fact,.panel { background:linear-gradient(155deg,#151f32,#101727); border:1px solid var(--line); border-radius:16px; }
+      .fact { padding:16px 18px; } .fact strong { display:block; font-size:14px; color:var(--muted); } .fact span { display:block; margin-top:4px; font-size:18px; font-weight:650; }
+      h2 { margin:38px 0 14px; font-size:22px; letter-spacing:-.02em; }
+      .screens { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+      figure { margin:0; overflow:hidden; }
+      figure img { display:block; width:100%; height:auto; background:#0e1422; }
+      figcaption { padding:13px 16px 15px; color:var(--muted); border-top:1px solid var(--line); }
+      figcaption strong { display:block; color:var(--text); }
+      .columns { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+      .panel { padding:20px 22px; }
+      ul { margin:10px 0 0; padding-left:20px; color:var(--muted); }
+      li+li { margin-top:7px; }
+      code { color:#c3e0ff; font: .92em ui-monospace,SFMono-Regular,Menlo,monospace; }
+      nav { display:flex; flex-wrap:wrap; gap:10px 18px; margin-top:28px; padding-top:20px; border-top:1px solid var(--line); }
+      @media(max-width:980px) { .facts { grid-template-columns:repeat(2,minmax(0,1fr)); } .screens { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+      @media(max-width:760px) { main { width:min(100% - 24px,620px); padding-top:24px; } .facts,.screens,.columns { grid-template-columns:1fr; } .lead { font-size:16px; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="top"><span class="orb" aria-hidden="true"></span><span>Spinon · Runtime evidence · 2026-10-11</span></div>
+      <h1>C12.4 쌓임 맥락 런타임 확인</h1>
+      <p class="lead">Android API 37 AVD의 26-scene runtime matrix 26/26과 SurfaceView PixelCopy 21/21 scene·22/22 표본, iOS 26.2 Simulator의 실제 Metal surface 표본 8/8 exact pixel을 확인했습니다. 두 Simulator에서 0·1·2·4·8 동시 session 메모리도 관측했습니다. AVD는 ANGLE/SwiftShader 소프트웨어 경로입니다. 실기기 RSS·thread별 stack commit과 C12.4 전체 지원은 미완료입니다.</p>
+      <span class="state">부분 구현 · C12.4 미완료</span>
+
+      <section class="facts" aria-label="실행 환경 요약">
+        <div class="fact"><strong>Android 실기기</strong><span>SM-S731N · Android 16</span><span>Vulkan · Xclipse 940</span></div>
+        <div class="fact"><strong>Android Simulator matrix</strong><span>26 scene · 77 source node</span><span>21 ready · 5 expected rejection</span></div>
+        <div class="fact"><strong>Android AVD surface pixels</strong><span>21 scenes · 22 samples</span><span>PixelCopy · max channel error 0</span></div>
+        <div class="fact"><strong>iOS Metal surface pixel</strong><span>8개 reverse Flex 표본</span><span>8/8 · channel tolerance 0</span></div>
+        <div class="fact"><strong>동시 runtime session</strong><span>iOS Simulator · Android API 37 AVD</span><span>0 · 1 · 2 · 4 · 8</span></div>
+        <div class="fact"><strong>공통 scene 결과</strong><span>10 frame · 같은 paint rank</span><span>10개 box 제출</span></div>
+      </section>
+
+      <h2>화면 캡처</h2>
+      <div class="screens">
+        <figure class="panel">
+          <a href="/spinon/c12-4-android-sm-s731n-android16-vulkan.png"><img src="/spinon/c12-4-android-sm-s731n-android16-vulkan.png" alt="Android 실기기에서 겹치는 C12.4 단색 상자 장면"></a>
+          <figcaption><strong>Android 실기기 · Vulkan</strong>900×675 surface, 320×240 CSS px viewport. 화면 오른쪽 경계 안에 scene이 표시됩니다.</figcaption>
+        </figure>
+        <figure class="panel">
+          <a href="/spinon/c12-4-android-api37-emulator.png"><img src="/spinon/c12-4-android-api37-emulator.png" alt="Android API 37 Simulator에서 겹치는 C12.4 단색 상자 장면"></a>
+          <figcaption><strong>Android Simulator · ANGLE/SwiftShader</strong>840×630 surface. 소프트웨어 그래픽 경로이며 하드웨어 GPU 성능 근거가 아닙니다. <a href="/spinon/c12-4-android-api37-emulator-2026-10-11.log">원본 실행 로그</a></figcaption>
+        </figure>
+        <figure class="panel">
+          <a href="/spinon/c12-4-ios-iphone-17-pro-simulator.png"><img src="/spinon/c12-4-ios-iphone-17-pro-simulator.png" alt="iOS Simulator에서 겹치는 C12.4 단색 상자 장면"></a>
+          <figcaption><strong>iOS Simulator · Metal 화면 실행</strong>기본 C12.4 runtime 화면 제출 캡처입니다. Surface pixel 비교는 아래의 별도 8-case Metal readback 결과를 참조하세요. <a href="/spinon/c12-4-ios-simulator-rerun-2026-10-11.log">원본 실행 로그</a></figcaption>
+        </figure>
+        <figure class="panel">
+          <a href="/spinon/c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.png"><img src="/spinon/c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.png" alt="Android API 37 AVD에서 기본 장면과 26개 장면 matrix 완료 상태"></a>
+          <figcaption><strong>Android AVD · 26-scene matrix 재실행</strong>2026-10-11 17:15 KST. Android 17/API 37, 실기기 없이 실행했습니다. 화면은 기본 10-node scene과 26/26 matrix 상태를 보여줍니다. 각 matrix scene의 surface pixel 비교는 아닙니다. <a href="/spinon/c12-4-android-api37-matrix-2026-10-11.json">Chrome geometry 비교</a> · <a href="/spinon/c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.log">장면별 로그</a></figcaption>
+        </figure>
+        <figure class="panel">
+          <a href="/spinon/spec/internal/evidence/c12-4-android-surface-pixels-2026-10-11/run-c124-20261011T100934321Z-68d7a5c4/flex-row-reverse-paint.png"><img src="/spinon/spec/internal/evidence/c12-4-android-surface-pixels-2026-10-11/run-c124-20261011T100934321Z-68d7a5c4/flex-row-reverse-paint.png" alt="Android API 37 AVD SurfaceView PixelCopy로 캡처한 row-reverse 장면"></a>
+          <figcaption><strong>Android AVD · row-reverse SurfaceView PixelCopy</strong>Android 17/API 37, density 2.625, 840×630 pixel surface. 겹친 source-first box의 파란 pixel `[40,102,246,255]`가 pinned Chrome 표본과 일치합니다. <a href="/spinon/spec/internal/evidence/c12-4-android-surface-pixels-2026-10-11/run-c124-20261011T100934321Z-68d7a5c4/comparison.json">21 scene·22 sample 비교 JSON</a></figcaption>
+        </figure>
+        <figure class="panel">
+          <a href="/spinon/spec/internal/evidence/c12-4-ios-metal-surface-pixels-2026-10-11/run-c124-ios-20261011T105945959Z-ce5b401c/flex-row-reverse-paint-order-0-0.png"><img src="/spinon/spec/internal/evidence/c12-4-ios-metal-surface-pixels-2026-10-11/run-c124-ios-20261011T105945959Z-ce5b401c/flex-row-reverse-paint-order-0-0.png" alt="iOS Simulator의 Metal surface에서 읽은 row-reverse 표본 장면"></a>
+          <figcaption><strong>iOS Simulator · 실제 Metal surface 표본</strong>iPhone 17 Pro / iOS 26.2 Simulator. Metal drawable의 pixel을 직접 읽어 pinned Chrome 기대값과 맞췄습니다. <a href="/spinon/spec/internal/evidence/c12-4-ios-metal-surface-pixels-2026-10-11/run-c124-ios-20261011T105945959Z-ce5b401c/comparison.json">8-case 비교 JSON</a> · <a href="/spinon/plan/c12-4-ios-metal-surface-pixels.html">계획·한계</a></figcaption>
+        </figure>
+      </div>
+
+      <h2>실행 결과와 범위</h2>
+      <div class="columns">
+        <section class="panel">
+          <strong style="color:var(--green)">확인한 결과</strong>
+          <ul>
+            <li>기본 화면 실행은 Android 실기기·Android AVD·iOS Simulator에서 V8 평가, <code>layout=ready</code>, 10개 box 제출을 확인했습니다.</li>
+            <li>별도 Android AVD matrix는 26/26 outcome을 확인했습니다. 21개 지원 장면은 준비됐고 5개 미지원 경계는 기대한 진단과 함께 거부됐습니다.</li>
+            <li>지원 scene의 fixture node 64개 frame은 고정 Chrome reference와 최대 오차 0 CSS px였습니다. 허용치는 0.5 CSS px입니다.</li>
+            <li>Android API 37 AVD의 실제 <code>SurfaceView</code>를 <code>PixelCopy</code>로 읽었습니다. 21개 지원 scene과 22개 표본이 모두 일치했고 최대 channel error는 0이었습니다.</li>
+            <li>여덟 `row`·`row-reverse`·`column`·`column-reverse` 및 order 조합은 Rust paint-rank, macOS WGPU, iOS Metal surface pixel에서 pinned Chrome 표본과 일치했습니다. iOS 실험은 8/8, channel tolerance 0입니다.</li>
+            <li>iOS Simulator와 Android API 37 AVD에서 C12.4 runtime session 0·1·2·4·8개를 누적 생성·해제하고 단계별 memory를 세 번씩 수집했습니다. 8 MiB/session은 worker stack 요청값이며 process memory와 구분합니다. <a href="/spinon/spec/internal/evidence/c12-4-concurrent-session-stack-cost-2026-10-11.html">측정표와 원본 로그</a></li>
+            <li>reverse Flex paint는 Chrome 154의 관측을 따르는 제한 호환 예외입니다. W3C Flexbox Level 1 §4.3/§5.1 설명과 충돌하며 표준 적합성 주장이 아닙니다.</li>
+            <li>macOS headless WGPU readback 네 표본은 cyan, green, red, root background의 기대 RGBA와 정확히 일치합니다.</li>
+            <li>painter의 명시적 <code>Vec::try_reserve</code> capacity-growth 지점마다 실패를 주입해 stage별 오류를 확인했습니다. 실제 전역 allocator OOM을 재현한 실험은 아닙니다.</li>
+            <li>합성 paint-context graph 50,000단계 깊이와 50,000개 형제 폭을 flatten하고 모든 NodeId 순서를 확인했습니다.</li>
+            <li>실제 HostDocument→Stylo→Taffy→paint graph 128 nodes는 기본 test stack에서 통과하고 1,024 nodes는 32 MiB test stack에서 통과했습니다. 재현 조건은 <a href="/spinon/spec/internal/evidence/c12-4-document-graph-stress-2026-10-11.html">깊은 그래프 실행 근거</a>에 있습니다.</li>
+          </ul>
+        </section>
+        <section class="panel">
+          <strong style="color:var(--amber)">남은 검증</strong>
+          <ul>
+            <li>고정 WPT 자동 후보 4개는 Chrome 154 runner에서 통과했고, 수동 후보 1개는 Chrome 화면으로 확인했습니다. Spinon의 WPT 적합성 판정은 아닙니다. <a href="/spinon/c12-4-wpt-official-run-2026-10-11.log">실행 요약</a></li>
+            <li>측정은 Simulator/AVD에 한정합니다. iOS 실기기 memory, Android 실기기 RSS, worker thread별 stack commit은 미측정입니다.</li>
+            <li>Android AVD의 `VmSize`가 첫 runtime host 뒤 크게 증가하고 session 해제 후 일부 유지됐지만 `/proc/maps` 권한이 없어 mapping 원인을 특정하지 못했습니다. virtual size를 resident memory로 해석하지 않습니다.</li>
+            <li>기본 test stack의 깊이 256 layout overflow 관측은 유지합니다. Android/iOS worker 8 MiB stack에서 1,024 성공·1,025 거부를 확인했습니다.</li>
+            <li>Android AVD의 ANGLE/SwiftShader 결과는 하드웨어 GPU 증거가 아닙니다. `Vec::try_reserve` 오류 주입은 전역 allocator OOM 복구를 보장하지 않습니다.</li>
+            <li>고정 WPT 4개와 수동 후보 1개는 Chrome 154 기준 동작 확인이며 Spinon WPT 적합성 판정이 아닙니다.</li>
+            <li>이 근거로 C12.4 또는 전체 CSS 지원을 완료 처리하지 않습니다.</li>
+          </ul>
+        </section>
+      </div>
+
+      <nav aria-label="관련 문서">
+        <a href="/spinon/roadmap.html">구현 로드맵</a>
+        <a href="/spinon/plan/c12-4-stacking-context.html">C12.4 구현 계획</a>
+        <a href="/spinon/spec/internal/0058-c12-4-stacking-context.html">C12.4 내부 계약</a>
+        <a href="/spinon/plan/c12-4-android-surface-pixels.html">Android AVD pixel 검증 계획·결과</a>
+        <a href="/spinon/plan/c12-4-ios-metal-surface-pixels.html">iOS Metal surface pixel 계획·결과</a>
+        <a href="/spinon/plan/c12-4-concurrent-session-stack-cost.html">동시 session 비용 계획</a>
+        <a href="/spinon/spec/internal/evidence/c12-4-concurrent-session-stack-cost-2026-10-11.html">동시 session 측정표</a>
+        <a href="/spinon/spec/internal/evidence/c12-4-flex-reverse-paint-implementation-review-2026-10-11.html">reverse Flex 구현 근거</a>
+        <a href="/spinon/spec/internal/evidence/c12-4-stacking-implementation-review-2026-10-11.html">구현 실패 관점 검토</a>
+        <a href="/spinon/spec/internal/evidence/c12-4-android-runtime-matrix-implementation-review-2026-10-11.html">Android matrix 검토</a>
+        <a href="/spinon/spec/internal/evidence/c12-4-reservation-stress-review-2026-10-11.html">예약 실패·깊이 스트레스 검토</a>
+        <a href="/spinon/spec/internal/evidence/c12-4-document-graph-stress-2026-10-11.html">실제 문서 그래프 깊이 검토</a>
+      </nav>
+    </main>
+  </body>
+</html>

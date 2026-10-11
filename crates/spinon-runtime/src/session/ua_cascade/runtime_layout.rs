@@ -14,7 +14,9 @@ use spinon_style::{
     first_unsupported_runtime_custom_properties_paint_inline_property,
 };
 use spinon_style_to_layout::{StyleLayoutError, compute_runtime_style_layout};
-use spinon_style_to_render::{CurrentLayoutInputs, build_runtime_render_snapshot};
+use spinon_style_to_render::{
+    CurrentLayoutInputs, StyleRenderError, build_runtime_render_snapshot,
+};
 use std::sync::Arc;
 use std::time::{Duration, Instant};
 
@@ -174,6 +176,9 @@ pub(super) fn compute_runtime_layout(
         super::calculation::RuntimeCalculationProfile::BlockPositioning => {
             first_unsupported_runtime_block_positioning_inline_property(&view)
         }
+        super::calculation::RuntimeCalculationProfile::BlockFlexStacking => {
+            spinon_style::first_unsupported_runtime_block_flex_stacking_inline_property(&view)
+        }
         super::calculation::RuntimeCalculationProfile::FlexPaint
         | super::calculation::RuntimeCalculationProfile::RegisteredPropertiesPaint => {
             first_unsupported_runtime_custom_properties_paint_inline_property(&view)
@@ -205,7 +210,7 @@ pub(super) fn compute_runtime_layout(
         );
         Some(
             build_runtime_render_snapshot(&request.snapshot, root, &output, current)
-                .map_err(|_| layout_failure("render_snapshot_failed", None, None))?,
+                .map_err(layout_failure_from_render_error)?,
         )
     } else {
         None
@@ -329,6 +334,9 @@ fn layout_failure_from_error(error: StyleLayoutError) -> RuntimeLayoutFailure {
         StyleLayoutError::Layout(LayoutError::UnsupportedTextNode(node)) => {
             layout_failure("unsupported_text_node", Some(node.get()), None)
         }
+        StyleLayoutError::Layout(LayoutError::TreeDepthExceeded { node, .. }) => {
+            layout_failure("tree_depth_exceeded", Some(node.get()), None)
+        }
         StyleLayoutError::Layout(LayoutError::InvalidHostDocumentRoot(node)) => {
             layout_failure("invalid_root", Some(node.get()), None)
         }
@@ -336,6 +344,37 @@ fn layout_failure_from_error(error: StyleLayoutError) -> RuntimeLayoutFailure {
             layout_failure("snapshot_mismatch", None, None)
         }
         _ => layout_failure("layout_failed", None, None),
+    }
+}
+
+fn layout_failure_from_render_error(error: StyleRenderError) -> RuntimeLayoutFailure {
+    match error {
+        StyleRenderError::UnsupportedComputedValue { node, property, .. } => layout_failure(
+            "unsupported_computed_value",
+            Some(node.get()),
+            Some(property.to_owned()),
+        ),
+        StyleRenderError::MissingComputedProperty { node, property } => layout_failure(
+            "missing_computed_property",
+            Some(node.get()),
+            Some(property.to_owned()),
+        ),
+        StyleRenderError::UnsupportedTextNode(node) => {
+            layout_failure("unsupported_text_node", Some(node.get()), None)
+        }
+        StyleRenderError::MissingLayoutFrame(node) => {
+            layout_failure("missing_layout_frame", Some(node.get()), None)
+        }
+        StyleRenderError::InvalidFrame(node) => {
+            layout_failure("invalid_layout_frame", Some(node.get()), None)
+        }
+        StyleRenderError::SnapshotMismatch { field } => {
+            layout_failure("snapshot_mismatch", None, Some(field.to_owned()))
+        }
+        StyleRenderError::AllocationFailed { stage } => {
+            layout_failure("render_allocation_failed", None, Some(stage.to_owned()))
+        }
+        other => layout_failure("render_snapshot_failed", None, Some(other.to_string())),
     }
 }
 
@@ -353,8 +392,10 @@ pub(super) fn layout_failure(
 
 #[cfg(test)]
 mod tests {
-    use super::valid_frame;
+    use super::{layout_failure_from_render_error, valid_frame};
+    use spinon_core::NodeId;
     use spinon_layout::LayoutFrame;
+    use spinon_style_to_render::StyleRenderError;
 
     #[test]
     fn runtime_frames_reject_non_finite_coordinates_and_negative_sizes() {
@@ -388,5 +429,20 @@ mod tests {
             width: 1.0,
             height: -1.0,
         }));
+    }
+
+    #[test]
+    fn render_snapshot_failure_keeps_node_and_unsupported_property_diagnostic() {
+        let node = NodeId::new(42).unwrap();
+        let failure =
+            layout_failure_from_render_error(StyleRenderError::UnsupportedComputedValue {
+                node,
+                property: "visibility",
+                value: "collapse".to_owned(),
+            });
+
+        assert_eq!(failure.code, "unsupported_computed_value");
+        assert_eq!(failure.node_id, Some(42));
+        assert_eq!(failure.property.as_deref(), Some("visibility"));
     }
 }
