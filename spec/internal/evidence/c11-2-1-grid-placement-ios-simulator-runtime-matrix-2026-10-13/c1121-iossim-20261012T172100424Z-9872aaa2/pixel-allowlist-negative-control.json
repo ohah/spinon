@@ -1,0 +1,9 @@
+{
+  "status": "rejected",
+  "runID": "c1121-iossim-20261012T172100424Z-9872aaa2-pixel-allowlist-negative",
+  "processId": 59159,
+  "requestedScene": "deferred-implicit-track",
+  "expectedScene": "numeric-lines",
+  "argumentRejected": true,
+  "metalReadbackStarted": false
+}

@@ -1,0 +1,3 @@
+Error: Metal 표본 실행에서 오류 로그를 받았습니다: 2026-10-12 05:53:13.048 Df SpinonBootstrap[66624:dfcad4] (Foundation) SPINON_C111_METAL_PIXEL_ERROR run_id=c11-ios-metal-20261011T205242524Z-98f9b66a stage=revision detail=draw report에 문서·트리·환경 revision이 없습니다
+    at waitForRun (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-ios-metal-surface-pixels.mjs:65:24)
+    at async main (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-ios-metal-surface-pixels.mjs:116:21)

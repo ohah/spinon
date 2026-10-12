@@ -1,0 +1,65 @@
+{
+  "schema": "spinon-c11-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c1121-iossim-20261012T122614262Z-d05d416a-overlap-source-order",
+  "processId": 94841,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 20,
+    "renderTree": 4,
+    "environment": 0
+  },
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "drawable": [
+    960,
+    720
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 2,
+  "matchedSamples": 2,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "item-c1121-overlap-second",
+      "css": [
+        82,
+        42
+      ],
+      "drawable": [
+        247,
+        127
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "surface-c1121-overlap-grid",
+      "css": [
+        166,
+        42
+      ],
+      "drawable": [
+        499,
+        127
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}

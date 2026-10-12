@@ -1,0 +1,2170 @@
+{
+  "schema": "spinon-css-c11-2-1-grid-placement-precomparison/v1",
+  "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.98-b2801e708e4c-e9b080bbc659-4da07e3a6f1d",
+  "runId": "c1121-chrome-20261012T042323478Z-300993a2",
+  "fixture": {
+    "id": "C11-2-1-grid-placement-precomparison-v2",
+    "inventoryPath": "tests/fixtures/css/c11/grid-placement-inventory.json",
+    "inventorySha256": "b2801e708e4c1ad540e119dcdba04d7c215e4029d5ec5627683e15ede8ef368b",
+    "htmlPath": "tests/fixtures/css/c11/grid-placement.html",
+    "htmlSha256": "e9b080bbc65901b17f7dead60eb8071df8ecbefee2ea62f1318776848e75f78d"
+  },
+  "captureTool": {
+    "path": "tools/css-reference/capture-c11-grid-placement-precomparison.mjs",
+    "sha256": "4da07e3a6f1d3f08ada7a6152957577ebb8526037c537097b142f1c3236f56c1",
+    "dependencies": [
+      {
+        "path": "tools/css-reference/chromium-session.mjs",
+        "sha256": "b010ada41ed75dc2d67ee25abd4266b17930f1de95fc683eebc5cdab6ad2cdc1"
+      }
+    ]
+  },
+  "oracle": {
+    "name": "Google Chrome",
+    "product": "Chrome/154.0.8037.98",
+    "revision": "@b859317bf11f6be47f9b7799ec690a0a42a1fb33",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "executablePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "executableSha256": "ccffd5c5fe77ba3212e07c2c69091f8048b73c396b4647ecaa150e1e01a04954",
+    "host": {
+      "platform": "darwin",
+      "architecture": "arm64",
+      "release": "25.5.0",
+      "node": "v26.7.0"
+    },
+    "flags": [
+      "--headless=new",
+      "--no-first-run",
+      "--no-default-browser-check",
+      "--disable-background-networking",
+      "--lang=en-US",
+      "--remote-debugging-port=0",
+      "--user-data-dir=<temporary-profile>"
+    ]
+  },
+  "environment": {
+    "viewportCssPx": {
+      "width": 360,
+      "height": 800
+    },
+    "deviceScaleFactors": [
+      1,
+      2
+    ],
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "forcedColors": "none",
+    "pointer": "coarse",
+    "hover": "none",
+    "direction": "ltr",
+    "writingMode": "horizontal-tb"
+  },
+  "wpt": {
+    "revision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+    "candidates": [
+      {
+        "path": "css/css-grid/placement/grid-layout-placement-shorthands.html",
+        "sha256": "ab982c18feb208901fdff28be607ef4c63abadc1260eebed382856e0be59efb5",
+        "stage": "고정 WPT 원문 후보만 보존; auto end를 포함하므로 이번 Spinon 범위의 적합성 판정에 실행하지 않음"
+      },
+      {
+        "path": "css/css-grid/placement/grid-layout-grid-span.html",
+        "sha256": "1be809e54f1b7398112923acd60ef423735934b528ff42c1a8f3b326adbebef7",
+        "stage": "고정 WPT 원문 후보만 보존; auto-placement가 포함되어 이번 제한 profile의 적합성 판정에 실행하지 않음"
+      },
+      {
+        "path": "css/css-grid/placement/grid-negative-line-placement-001.html",
+        "sha256": "e5d17120d87170282d2522ec483d751c6f7db9ac23ec09d2a540cce305d81d31",
+        "stage": "고정 WPT 원문 후보만 보존; implicit track 및 auto-placement가 포함되어 이번 범위에 미실행"
+      },
+      {
+        "path": "css/css-grid/placement/grid-placement-using-named-grid-lines-001.html",
+        "sha256": "d31717c0e82d8030f0a99070a5e98333be71c2cc834e36950ae5b5d303fd180e",
+        "stage": "고정 WPT 원문 후보만 보존; named line은 이번 profile 미지원이므로 미실행"
+      }
+    ]
+  },
+  "comparison": {
+    "rectFields": [
+      "x",
+      "y",
+      "width",
+      "height"
+    ],
+    "maximumAbsoluteRectErrorCssPx": 0.5,
+    "computedProperties": [
+      "display",
+      "grid-template-columns",
+      "grid-template-rows",
+      "grid-row-start",
+      "grid-row-end",
+      "grid-column-start",
+      "grid-column-end"
+    ]
+  },
+  "screenshots": [
+    {
+      "caseId": "numeric-lines",
+      "path": "spec/internal/evidence/c11-2-1-explicit-grid-placement-precomparison-2026-10-12/c1121-chrome-20261012T042323478Z-300993a2/numeric-lines-dpr1.png",
+      "sha256": "8578e98913c343eb79ce2aa8dd7daf3549a5f54f4ef1cc01ebbbb87e2aca3b3c"
+    },
+    {
+      "caseId": "positive-spans",
+      "path": "spec/internal/evidence/c11-2-1-explicit-grid-placement-precomparison-2026-10-12/c1121-chrome-20261012T042323478Z-300993a2/positive-spans-dpr1.png",
+      "sha256": "e6d12290ef457634e3702efd2654108ee7b834acee17b65d0cc18b5a7aa5fade"
+    },
+    {
+      "caseId": "reversed-lines",
+      "path": "spec/internal/evidence/c11-2-1-explicit-grid-placement-precomparison-2026-10-12/c1121-chrome-20261012T042323478Z-300993a2/reversed-lines-dpr1.png",
+      "sha256": "31fd1f4483af490d0959c5ea9c93d91c2b50baaa955e9be0e2234f410f5b0398"
+    },
+    {
+      "caseId": "shorthand-cascade",
+      "path": "spec/internal/evidence/c11-2-1-explicit-grid-placement-precomparison-2026-10-12/c1121-chrome-20261012T042323478Z-300993a2/shorthand-cascade-dpr1.png",
+      "sha256": "2d91d956f8d4525024eca23447474c3ddee2af5ae894ebc21a739d52c302da12"
+    },
+    {
+      "caseId": "overlap-source-order",
+      "path": "spec/internal/evidence/c11-2-1-explicit-grid-placement-precomparison-2026-10-12/c1121-chrome-20261012T042323478Z-300993a2/overlap-source-order-dpr1.png",
+      "sha256": "3d712e3833ff70b9d9ee6b046bc9e751a6fc1c010fade33146e18850d0114ed3"
+    },
+    {
+      "caseId": "nested-placement-modes",
+      "path": "spec/internal/evidence/c11-2-1-explicit-grid-placement-precomparison-2026-10-12/c1121-chrome-20261012T042323478Z-300993a2/nested-placement-modes-dpr1.png",
+      "sha256": "763e402787a7a3fa896a035c27a35e914ada614a06c27b5848bf393b7f9175c2"
+    },
+    {
+      "caseId": "deferred-implicit-track",
+      "path": "spec/internal/evidence/c11-2-1-explicit-grid-placement-precomparison-2026-10-12/c1121-chrome-20261012T042323478Z-300993a2/deferred-implicit-track-dpr1.png",
+      "sha256": "cf54a1cb69c8f35bdc9d2fd092455e8f48fb1f18a07b805447637af047160ffa"
+    },
+    {
+      "caseId": "deferred-named-line",
+      "path": "spec/internal/evidence/c11-2-1-explicit-grid-placement-precomparison-2026-10-12/c1121-chrome-20261012T042323478Z-300993a2/deferred-named-line-dpr1.png",
+      "sha256": "e1f2b2e7a10b39ef30d030116d2ebb9f8029d1cdfc7a9a2612f087041966b194"
+    },
+    {
+      "caseId": "deferred-mixed-auto-explicit",
+      "path": "spec/internal/evidence/c11-2-1-explicit-grid-placement-precomparison-2026-10-12/c1121-chrome-20261012T042323478Z-300993a2/deferred-mixed-auto-explicit-dpr1.png",
+      "sha256": "d13db7062aa1bb69ca56e18d1d53b4cb3ae8ecc4e1254cf2c02ce79a6a7b529d"
+    },
+    {
+      "caseId": "deferred-equal-lines",
+      "path": "spec/internal/evidence/c11-2-1-explicit-grid-placement-precomparison-2026-10-12/c1121-chrome-20261012T042323478Z-300993a2/deferred-equal-lines-dpr1.png",
+      "sha256": "83629ac68f8953ae2cbe27cb00edefde72d42849bb4e1a1d6c6fa1c825dd8507"
+    }
+  ],
+  "observations": [
+    {
+      "deviceScaleFactor": 1,
+      "cases": [
+        {
+          "id": "numeric-lines",
+          "scope": "implementation-candidate",
+          "rootId": "c1121-numeric-grid",
+          "viewport": {
+            "width": 360,
+            "height": 800,
+            "deviceScaleFactor": 1
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 800
+          },
+          "nodes": [
+            {
+              "id": "c1121-numeric-grid",
+              "parentId": null,
+              "authoredStyle": "display:grid;width:250px;height:85px;grid-template-columns:80px 80px 80px;grid-template-rows:40px 40px;column-gap:5px;row-gap:5px",
+              "properties": {
+                "display": "grid",
+                "grid-template-columns": "80px 80px 80px",
+                "grid-template-rows": "40px 40px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 85
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 85
+              }
+            },
+            {
+              "id": "c1121-positive-lines",
+              "parentId": "c1121-numeric-grid",
+              "authoredStyle": "grid-column-start:1;grid-column-end:3;grid-row-start:1;grid-row-end:2",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "1",
+                "grid-row-end": "2",
+                "grid-column-start": "1",
+                "grid-column-end": "3"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 165,
+                "height": 40
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 165,
+                "height": 40
+              }
+            },
+            {
+              "id": "c1121-negative-lines",
+              "parentId": "c1121-numeric-grid",
+              "authoredStyle": "grid-column-start:-2;grid-column-end:-1;grid-row-start:-2;grid-row-end:-1",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "-2",
+                "grid-row-end": "-1",
+                "grid-column-start": "-2",
+                "grid-column-end": "-1"
+              },
+              "rect": {
+                "x": 170,
+                "y": 45,
+                "width": 80,
+                "height": 40
+              },
+              "documentRect": {
+                "x": 170,
+                "y": 45,
+                "width": 80,
+                "height": 40
+              }
+            }
+          ]
+        },
+        {
+          "id": "positive-spans",
+          "scope": "implementation-candidate",
+          "rootId": "c1121-span-grid",
+          "viewport": {
+            "width": 360,
+            "height": 800,
+            "deviceScaleFactor": 1
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 800
+          },
+          "nodes": [
+            {
+              "id": "c1121-span-grid",
+              "parentId": null,
+              "authoredStyle": "display:grid;width:250px;height:85px;grid-template-columns:80px 80px 80px;grid-template-rows:40px 40px;column-gap:5px;row-gap:5px",
+              "properties": {
+                "display": "grid",
+                "grid-template-columns": "80px 80px 80px",
+                "grid-template-rows": "40px 40px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 85
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 85
+              }
+            },
+            {
+              "id": "c1121-span-from-start",
+              "parentId": "c1121-span-grid",
+              "authoredStyle": "grid-column-start:1;grid-column-end:span 2;grid-row-start:1;grid-row-end:span 2",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "1",
+                "grid-row-end": "span 2",
+                "grid-column-start": "1",
+                "grid-column-end": "span 2"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 165,
+                "height": 85
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 165,
+                "height": 85
+              }
+            },
+            {
+              "id": "c1121-span-from-end",
+              "parentId": "c1121-span-grid",
+              "authoredStyle": "grid-column-start:span 2;grid-column-end:4;grid-row-start:span 1;grid-row-end:3",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "span 1",
+                "grid-row-end": "3",
+                "grid-column-start": "span 2",
+                "grid-column-end": "4"
+              },
+              "rect": {
+                "x": 85,
+                "y": 45,
+                "width": 165,
+                "height": 40
+              },
+              "documentRect": {
+                "x": 85,
+                "y": 45,
+                "width": 165,
+                "height": 40
+              }
+            }
+          ]
+        },
+        {
+          "id": "reversed-lines",
+          "scope": "implementation-candidate",
+          "rootId": "c1121-reverse-grid",
+          "viewport": {
+            "width": 360,
+            "height": 800,
+            "deviceScaleFactor": 1
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 800
+          },
+          "nodes": [
+            {
+              "id": "c1121-reverse-grid",
+              "parentId": null,
+              "authoredStyle": "display:grid;width:250px;height:85px;grid-template-columns:80px 80px 80px;grid-template-rows:40px 40px;column-gap:5px;row-gap:5px",
+              "properties": {
+                "display": "grid",
+                "grid-template-columns": "80px 80px 80px",
+                "grid-template-rows": "40px 40px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 85
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 85
+              }
+            },
+            {
+              "id": "c1121-reversed-item",
+              "parentId": "c1121-reverse-grid",
+              "authoredStyle": "grid-column-start:3;grid-column-end:1;grid-row-start:2;grid-row-end:1",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "2",
+                "grid-row-end": "1",
+                "grid-column-start": "3",
+                "grid-column-end": "1"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 165,
+                "height": 40
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 165,
+                "height": 40
+              }
+            }
+          ]
+        },
+        {
+          "id": "shorthand-cascade",
+          "scope": "implementation-candidate",
+          "rootId": "c1121-shorthand-grid",
+          "viewport": {
+            "width": 360,
+            "height": 800,
+            "deviceScaleFactor": 1
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 800
+          },
+          "nodes": [
+            {
+              "id": "c1121-shorthand-grid",
+              "parentId": null,
+              "authoredStyle": "display:grid;width:250px;height:85px;grid-template-columns:80px 80px 80px;grid-template-rows:40px 40px;column-gap:5px;row-gap:5px",
+              "properties": {
+                "display": "grid",
+                "grid-template-columns": "80px 80px 80px",
+                "grid-template-rows": "40px 40px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 85
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 85
+              }
+            },
+            {
+              "id": "c1121-grid-area-item",
+              "parentId": "c1121-shorthand-grid",
+              "authoredStyle": "grid-area:1 / 1 / 3 / 3",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "1",
+                "grid-row-end": "3",
+                "grid-column-start": "1",
+                "grid-column-end": "3"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 165,
+                "height": 85
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 165,
+                "height": 85
+              }
+            },
+            {
+              "id": "c1121-cascade-item",
+              "parentId": "c1121-shorthand-grid",
+              "authoredStyle": "grid-area:1 / 2 / 2 / 4;grid-column-start:1",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "1",
+                "grid-row-end": "2",
+                "grid-column-start": "1",
+                "grid-column-end": "4"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 40
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 40
+              }
+            }
+          ]
+        },
+        {
+          "id": "overlap-source-order",
+          "scope": "implementation-candidate",
+          "rootId": "c1121-overlap-grid",
+          "viewport": {
+            "width": 360,
+            "height": 800,
+            "deviceScaleFactor": 1
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 800
+          },
+          "nodes": [
+            {
+              "id": "c1121-overlap-grid",
+              "parentId": null,
+              "authoredStyle": "display:grid;width:250px;height:85px;grid-template-columns:80px 80px 80px;grid-template-rows:40px 40px;column-gap:5px;row-gap:5px",
+              "properties": {
+                "display": "grid",
+                "grid-template-columns": "80px 80px 80px",
+                "grid-template-rows": "40px 40px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 85
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 85
+              }
+            },
+            {
+              "id": "c1121-overlap-first",
+              "parentId": "c1121-overlap-grid",
+              "authoredStyle": "grid-column:1 / 3;grid-row:1 / 3",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "1",
+                "grid-row-end": "3",
+                "grid-column-start": "1",
+                "grid-column-end": "3"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 165,
+                "height": 85
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 165,
+                "height": 85
+              }
+            },
+            {
+              "id": "c1121-overlap-second",
+              "parentId": "c1121-overlap-grid",
+              "authoredStyle": "grid-column:1 / 3;grid-row:1 / 3",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "1",
+                "grid-row-end": "3",
+                "grid-column-start": "1",
+                "grid-column-end": "3"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 165,
+                "height": 85
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 165,
+                "height": 85
+              }
+            }
+          ]
+        },
+        {
+          "id": "nested-placement-modes",
+          "scope": "implementation-candidate",
+          "rootId": "c1121-nested-outer",
+          "viewport": {
+            "width": 360,
+            "height": 800,
+            "deviceScaleFactor": 1
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 800
+          },
+          "nodes": [
+            {
+              "id": "c1121-nested-outer",
+              "parentId": null,
+              "authoredStyle": "display:grid;width:250px;height:60px;grid-template-columns:120px 120px;grid-template-rows:60px;column-gap:10px",
+              "properties": {
+                "display": "grid",
+                "grid-template-columns": "120px 120px",
+                "grid-template-rows": "60px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 60
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 60
+              }
+            },
+            {
+              "id": "c1121-nested-auto-grid",
+              "parentId": "c1121-nested-outer",
+              "authoredStyle": "display:grid;width:120px;height:60px;grid-template-columns:55px 55px;grid-template-rows:60px;column-gap:10px;grid-column:1 / 2;grid-row:1 / 2",
+              "properties": {
+                "display": "grid",
+                "grid-template-columns": "55px 55px",
+                "grid-template-rows": "60px",
+                "grid-row-start": "1",
+                "grid-row-end": "2",
+                "grid-column-start": "1",
+                "grid-column-end": "2"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 120,
+                "height": 60
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 120,
+                "height": 60
+              }
+            },
+            {
+              "id": "c1121-nested-auto-a",
+              "parentId": "c1121-nested-auto-grid",
+              "authoredStyle": "width:20px;height:20px",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 20,
+                "height": 20
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "id": "c1121-nested-auto-b",
+              "parentId": "c1121-nested-auto-grid",
+              "authoredStyle": "width:20px;height:20px",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 65,
+                "y": 0,
+                "width": 20,
+                "height": 20
+              },
+              "documentRect": {
+                "x": 65,
+                "y": 0,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "id": "c1121-nested-explicit-grid",
+              "parentId": "c1121-nested-outer",
+              "authoredStyle": "display:grid;width:120px;height:60px;grid-template-columns:55px 55px;grid-template-rows:60px;column-gap:10px;grid-column:2 / 3;grid-row:1 / 2",
+              "properties": {
+                "display": "grid",
+                "grid-template-columns": "55px 55px",
+                "grid-template-rows": "60px",
+                "grid-row-start": "1",
+                "grid-row-end": "2",
+                "grid-column-start": "2",
+                "grid-column-end": "3"
+              },
+              "rect": {
+                "x": 130,
+                "y": 0,
+                "width": 120,
+                "height": 60
+              },
+              "documentRect": {
+                "x": 130,
+                "y": 0,
+                "width": 120,
+                "height": 60
+              }
+            },
+            {
+              "id": "c1121-nested-explicit-a",
+              "parentId": "c1121-nested-explicit-grid",
+              "authoredStyle": "grid-column:2 / 3;grid-row:1 / 2",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "1",
+                "grid-row-end": "2",
+                "grid-column-start": "2",
+                "grid-column-end": "3"
+              },
+              "rect": {
+                "x": 195,
+                "y": 0,
+                "width": 55,
+                "height": 60
+              },
+              "documentRect": {
+                "x": 195,
+                "y": 0,
+                "width": 55,
+                "height": 60
+              }
+            },
+            {
+              "id": "c1121-nested-explicit-b",
+              "parentId": "c1121-nested-explicit-grid",
+              "authoredStyle": "grid-column:1 / 2;grid-row:1 / 2",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "1",
+                "grid-row-end": "2",
+                "grid-column-start": "1",
+                "grid-column-end": "2"
+              },
+              "rect": {
+                "x": 130,
+                "y": 0,
+                "width": 55,
+                "height": 60
+              },
+              "documentRect": {
+                "x": 130,
+                "y": 0,
+                "width": 55,
+                "height": 60
+              }
+            }
+          ]
+        },
+        {
+          "id": "deferred-implicit-track",
+          "scope": "chromium-oracle-only",
+          "rootId": "c1121-implicit-grid",
+          "viewport": {
+            "width": 360,
+            "height": 800,
+            "deviceScaleFactor": 1
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 800
+          },
+          "nodes": [
+            {
+              "id": "c1121-implicit-grid",
+              "parentId": null,
+              "authoredStyle": "display:grid;width:160px;height:40px;grid-template-columns:80px 80px;grid-template-rows:40px",
+              "properties": {
+                "display": "grid",
+                "grid-template-columns": "80px 80px 0px 0px",
+                "grid-template-rows": "40px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 160,
+                "height": 40
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 160,
+                "height": 40
+              }
+            },
+            {
+              "id": "c1121-implicit-item",
+              "parentId": "c1121-implicit-grid",
+              "authoredStyle": "grid-column:4 / 5;grid-row:1 / 2",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "1",
+                "grid-row-end": "2",
+                "grid-column-start": "4",
+                "grid-column-end": "5"
+              },
+              "rect": {
+                "x": 160,
+                "y": 0,
+                "width": 0,
+                "height": 40
+              },
+              "documentRect": {
+                "x": 160,
+                "y": 0,
+                "width": 0,
+                "height": 40
+              }
+            }
+          ]
+        },
+        {
+          "id": "deferred-named-line",
+          "scope": "chromium-oracle-only",
+          "rootId": "c1121-named-grid",
+          "viewport": {
+            "width": 360,
+            "height": 800,
+            "deviceScaleFactor": 1
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 800
+          },
+          "nodes": [
+            {
+              "id": "c1121-named-grid",
+              "parentId": null,
+              "authoredStyle": "display:grid;width:160px;height:40px;grid-template-columns:[left] 80px [middle] 80px [right];grid-template-rows:40px",
+              "properties": {
+                "display": "grid",
+                "grid-template-columns": "[left] 80px [middle] 80px [right]",
+                "grid-template-rows": "40px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 160,
+                "height": 40
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 160,
+                "height": 40
+              }
+            },
+            {
+              "id": "c1121-named-item",
+              "parentId": "c1121-named-grid",
+              "authoredStyle": "grid-column:left / middle;grid-row:1 / 2",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "1",
+                "grid-row-end": "2",
+                "grid-column-start": "left",
+                "grid-column-end": "middle"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 80,
+                "height": 40
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 80,
+                "height": 40
+              }
+            }
+          ]
+        },
+        {
+          "id": "deferred-mixed-auto-explicit",
+          "scope": "chromium-oracle-only",
+          "rootId": "c1121-mixed-grid",
+          "viewport": {
+            "width": 360,
+            "height": 800,
+            "deviceScaleFactor": 1
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 800
+          },
+          "nodes": [
+            {
+              "id": "c1121-mixed-grid",
+              "parentId": null,
+              "authoredStyle": "display:grid;width:160px;height:80px;grid-template-columns:80px 80px;grid-template-rows:40px 40px",
+              "properties": {
+                "display": "grid",
+                "grid-template-columns": "80px 80px",
+                "grid-template-rows": "40px 40px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 160,
+                "height": 80
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 160,
+                "height": 80
+              }
+            },
+            {
+              "id": "c1121-mixed-definite",
+              "parentId": "c1121-mixed-grid",
+              "authoredStyle": "grid-column:2 / 3;grid-row:2 / 3",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "2",
+                "grid-row-end": "3",
+                "grid-column-start": "2",
+                "grid-column-end": "3"
+              },
+              "rect": {
+                "x": 80,
+                "y": 40,
+                "width": 80,
+                "height": 40
+              },
+              "documentRect": {
+                "x": 80,
+                "y": 40,
+                "width": 80,
+                "height": 40
+              }
+            },
+            {
+              "id": "c1121-mixed-auto",
+              "parentId": "c1121-mixed-grid",
+              "authoredStyle": "",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 80,
+                "height": 40
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 80,
+                "height": 40
+              }
+            }
+          ]
+        },
+        {
+          "id": "deferred-equal-lines",
+          "scope": "chromium-oracle-only",
+          "rootId": "c1121-equal-grid",
+          "viewport": {
+            "width": 360,
+            "height": 800,
+            "deviceScaleFactor": 1
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 800
+          },
+          "nodes": [
+            {
+              "id": "c1121-equal-grid",
+              "parentId": null,
+              "authoredStyle": "display:grid;width:160px;height:80px;grid-template-columns:80px 80px;grid-template-rows:40px 40px",
+              "properties": {
+                "display": "grid",
+                "grid-template-columns": "80px 80px",
+                "grid-template-rows": "40px 40px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 160,
+                "height": 80
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 160,
+                "height": 80
+              }
+            },
+            {
+              "id": "c1121-equal-item",
+              "parentId": "c1121-equal-grid",
+              "authoredStyle": "grid-column:2 / 2;grid-row:1 / 2",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "1",
+                "grid-row-end": "2",
+                "grid-column-start": "2",
+                "grid-column-end": "2"
+              },
+              "rect": {
+                "x": 80,
+                "y": 0,
+                "width": 80,
+                "height": 40
+              },
+              "documentRect": {
+                "x": 80,
+                "y": 0,
+                "width": 80,
+                "height": 40
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "deviceScaleFactor": 2,
+      "cases": [
+        {
+          "id": "numeric-lines",
+          "scope": "implementation-candidate",
+          "rootId": "c1121-numeric-grid",
+          "viewport": {
+            "width": 360,
+            "height": 800,
+            "deviceScaleFactor": 2
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 800
+          },
+          "nodes": [
+            {
+              "id": "c1121-numeric-grid",
+              "parentId": null,
+              "authoredStyle": "display:grid;width:250px;height:85px;grid-template-columns:80px 80px 80px;grid-template-rows:40px 40px;column-gap:5px;row-gap:5px",
+              "properties": {
+                "display": "grid",
+                "grid-template-columns": "80px 80px 80px",
+                "grid-template-rows": "40px 40px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 85
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 85
+              }
+            },
+            {
+              "id": "c1121-positive-lines",
+              "parentId": "c1121-numeric-grid",
+              "authoredStyle": "grid-column-start:1;grid-column-end:3;grid-row-start:1;grid-row-end:2",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "1",
+                "grid-row-end": "2",
+                "grid-column-start": "1",
+                "grid-column-end": "3"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 165,
+                "height": 40
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 165,
+                "height": 40
+              }
+            },
+            {
+              "id": "c1121-negative-lines",
+              "parentId": "c1121-numeric-grid",
+              "authoredStyle": "grid-column-start:-2;grid-column-end:-1;grid-row-start:-2;grid-row-end:-1",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "-2",
+                "grid-row-end": "-1",
+                "grid-column-start": "-2",
+                "grid-column-end": "-1"
+              },
+              "rect": {
+                "x": 170,
+                "y": 45,
+                "width": 80,
+                "height": 40
+              },
+              "documentRect": {
+                "x": 170,
+                "y": 45,
+                "width": 80,
+                "height": 40
+              }
+            }
+          ]
+        },
+        {
+          "id": "positive-spans",
+          "scope": "implementation-candidate",
+          "rootId": "c1121-span-grid",
+          "viewport": {
+            "width": 360,
+            "height": 800,
+            "deviceScaleFactor": 2
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 800
+          },
+          "nodes": [
+            {
+              "id": "c1121-span-grid",
+              "parentId": null,
+              "authoredStyle": "display:grid;width:250px;height:85px;grid-template-columns:80px 80px 80px;grid-template-rows:40px 40px;column-gap:5px;row-gap:5px",
+              "properties": {
+                "display": "grid",
+                "grid-template-columns": "80px 80px 80px",
+                "grid-template-rows": "40px 40px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 85
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 85
+              }
+            },
+            {
+              "id": "c1121-span-from-start",
+              "parentId": "c1121-span-grid",
+              "authoredStyle": "grid-column-start:1;grid-column-end:span 2;grid-row-start:1;grid-row-end:span 2",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "1",
+                "grid-row-end": "span 2",
+                "grid-column-start": "1",
+                "grid-column-end": "span 2"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 165,
+                "height": 85
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 165,
+                "height": 85
+              }
+            },
+            {
+              "id": "c1121-span-from-end",
+              "parentId": "c1121-span-grid",
+              "authoredStyle": "grid-column-start:span 2;grid-column-end:4;grid-row-start:span 1;grid-row-end:3",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "span 1",
+                "grid-row-end": "3",
+                "grid-column-start": "span 2",
+                "grid-column-end": "4"
+              },
+              "rect": {
+                "x": 85,
+                "y": 45,
+                "width": 165,
+                "height": 40
+              },
+              "documentRect": {
+                "x": 85,
+                "y": 45,
+                "width": 165,
+                "height": 40
+              }
+            }
+          ]
+        },
+        {
+          "id": "reversed-lines",
+          "scope": "implementation-candidate",
+          "rootId": "c1121-reverse-grid",
+          "viewport": {
+            "width": 360,
+            "height": 800,
+            "deviceScaleFactor": 2
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 800
+          },
+          "nodes": [
+            {
+              "id": "c1121-reverse-grid",
+              "parentId": null,
+              "authoredStyle": "display:grid;width:250px;height:85px;grid-template-columns:80px 80px 80px;grid-template-rows:40px 40px;column-gap:5px;row-gap:5px",
+              "properties": {
+                "display": "grid",
+                "grid-template-columns": "80px 80px 80px",
+                "grid-template-rows": "40px 40px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 85
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 85
+              }
+            },
+            {
+              "id": "c1121-reversed-item",
+              "parentId": "c1121-reverse-grid",
+              "authoredStyle": "grid-column-start:3;grid-column-end:1;grid-row-start:2;grid-row-end:1",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "2",
+                "grid-row-end": "1",
+                "grid-column-start": "3",
+                "grid-column-end": "1"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 165,
+                "height": 40
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 165,
+                "height": 40
+              }
+            }
+          ]
+        },
+        {
+          "id": "shorthand-cascade",
+          "scope": "implementation-candidate",
+          "rootId": "c1121-shorthand-grid",
+          "viewport": {
+            "width": 360,
+            "height": 800,
+            "deviceScaleFactor": 2
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 800
+          },
+          "nodes": [
+            {
+              "id": "c1121-shorthand-grid",
+              "parentId": null,
+              "authoredStyle": "display:grid;width:250px;height:85px;grid-template-columns:80px 80px 80px;grid-template-rows:40px 40px;column-gap:5px;row-gap:5px",
+              "properties": {
+                "display": "grid",
+                "grid-template-columns": "80px 80px 80px",
+                "grid-template-rows": "40px 40px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 85
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 85
+              }
+            },
+            {
+              "id": "c1121-grid-area-item",
+              "parentId": "c1121-shorthand-grid",
+              "authoredStyle": "grid-area:1 / 1 / 3 / 3",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "1",
+                "grid-row-end": "3",
+                "grid-column-start": "1",
+                "grid-column-end": "3"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 165,
+                "height": 85
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 165,
+                "height": 85
+              }
+            },
+            {
+              "id": "c1121-cascade-item",
+              "parentId": "c1121-shorthand-grid",
+              "authoredStyle": "grid-area:1 / 2 / 2 / 4;grid-column-start:1",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "1",
+                "grid-row-end": "2",
+                "grid-column-start": "1",
+                "grid-column-end": "4"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 40
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 40
+              }
+            }
+          ]
+        },
+        {
+          "id": "overlap-source-order",
+          "scope": "implementation-candidate",
+          "rootId": "c1121-overlap-grid",
+          "viewport": {
+            "width": 360,
+            "height": 800,
+            "deviceScaleFactor": 2
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 800
+          },
+          "nodes": [
+            {
+              "id": "c1121-overlap-grid",
+              "parentId": null,
+              "authoredStyle": "display:grid;width:250px;height:85px;grid-template-columns:80px 80px 80px;grid-template-rows:40px 40px;column-gap:5px;row-gap:5px",
+              "properties": {
+                "display": "grid",
+                "grid-template-columns": "80px 80px 80px",
+                "grid-template-rows": "40px 40px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 85
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 85
+              }
+            },
+            {
+              "id": "c1121-overlap-first",
+              "parentId": "c1121-overlap-grid",
+              "authoredStyle": "grid-column:1 / 3;grid-row:1 / 3",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "1",
+                "grid-row-end": "3",
+                "grid-column-start": "1",
+                "grid-column-end": "3"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 165,
+                "height": 85
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 165,
+                "height": 85
+              }
+            },
+            {
+              "id": "c1121-overlap-second",
+              "parentId": "c1121-overlap-grid",
+              "authoredStyle": "grid-column:1 / 3;grid-row:1 / 3",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "1",
+                "grid-row-end": "3",
+                "grid-column-start": "1",
+                "grid-column-end": "3"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 165,
+                "height": 85
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 165,
+                "height": 85
+              }
+            }
+          ]
+        },
+        {
+          "id": "nested-placement-modes",
+          "scope": "implementation-candidate",
+          "rootId": "c1121-nested-outer",
+          "viewport": {
+            "width": 360,
+            "height": 800,
+            "deviceScaleFactor": 2
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 800
+          },
+          "nodes": [
+            {
+              "id": "c1121-nested-outer",
+              "parentId": null,
+              "authoredStyle": "display:grid;width:250px;height:60px;grid-template-columns:120px 120px;grid-template-rows:60px;column-gap:10px",
+              "properties": {
+                "display": "grid",
+                "grid-template-columns": "120px 120px",
+                "grid-template-rows": "60px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 60
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 250,
+                "height": 60
+              }
+            },
+            {
+              "id": "c1121-nested-auto-grid",
+              "parentId": "c1121-nested-outer",
+              "authoredStyle": "display:grid;width:120px;height:60px;grid-template-columns:55px 55px;grid-template-rows:60px;column-gap:10px;grid-column:1 / 2;grid-row:1 / 2",
+              "properties": {
+                "display": "grid",
+                "grid-template-columns": "55px 55px",
+                "grid-template-rows": "60px",
+                "grid-row-start": "1",
+                "grid-row-end": "2",
+                "grid-column-start": "1",
+                "grid-column-end": "2"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 120,
+                "height": 60
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 120,
+                "height": 60
+              }
+            },
+            {
+              "id": "c1121-nested-auto-a",
+              "parentId": "c1121-nested-auto-grid",
+              "authoredStyle": "width:20px;height:20px",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 20,
+                "height": 20
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "id": "c1121-nested-auto-b",
+              "parentId": "c1121-nested-auto-grid",
+              "authoredStyle": "width:20px;height:20px",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 65,
+                "y": 0,
+                "width": 20,
+                "height": 20
+              },
+              "documentRect": {
+                "x": 65,
+                "y": 0,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "id": "c1121-nested-explicit-grid",
+              "parentId": "c1121-nested-outer",
+              "authoredStyle": "display:grid;width:120px;height:60px;grid-template-columns:55px 55px;grid-template-rows:60px;column-gap:10px;grid-column:2 / 3;grid-row:1 / 2",
+              "properties": {
+                "display": "grid",
+                "grid-template-columns": "55px 55px",
+                "grid-template-rows": "60px",
+                "grid-row-start": "1",
+                "grid-row-end": "2",
+                "grid-column-start": "2",
+                "grid-column-end": "3"
+              },
+              "rect": {
+                "x": 130,
+                "y": 0,
+                "width": 120,
+                "height": 60
+              },
+              "documentRect": {
+                "x": 130,
+                "y": 0,
+                "width": 120,
+                "height": 60
+              }
+            },
+            {
+              "id": "c1121-nested-explicit-a",
+              "parentId": "c1121-nested-explicit-grid",
+              "authoredStyle": "grid-column:2 / 3;grid-row:1 / 2",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "1",
+                "grid-row-end": "2",
+                "grid-column-start": "2",
+                "grid-column-end": "3"
+              },
+              "rect": {
+                "x": 195,
+                "y": 0,
+                "width": 55,
+                "height": 60
+              },
+              "documentRect": {
+                "x": 195,
+                "y": 0,
+                "width": 55,
+                "height": 60
+              }
+            },
+            {
+              "id": "c1121-nested-explicit-b",
+              "parentId": "c1121-nested-explicit-grid",
+              "authoredStyle": "grid-column:1 / 2;grid-row:1 / 2",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "1",
+                "grid-row-end": "2",
+                "grid-column-start": "1",
+                "grid-column-end": "2"
+              },
+              "rect": {
+                "x": 130,
+                "y": 0,
+                "width": 55,
+                "height": 60
+              },
+              "documentRect": {
+                "x": 130,
+                "y": 0,
+                "width": 55,
+                "height": 60
+              }
+            }
+          ]
+        },
+        {
+          "id": "deferred-implicit-track",
+          "scope": "chromium-oracle-only",
+          "rootId": "c1121-implicit-grid",
+          "viewport": {
+            "width": 360,
+            "height": 800,
+            "deviceScaleFactor": 2
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 800
+          },
+          "nodes": [
+            {
+              "id": "c1121-implicit-grid",
+              "parentId": null,
+              "authoredStyle": "display:grid;width:160px;height:40px;grid-template-columns:80px 80px;grid-template-rows:40px",
+              "properties": {
+                "display": "grid",
+                "grid-template-columns": "80px 80px 0px 0px",
+                "grid-template-rows": "40px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 160,
+                "height": 40
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 160,
+                "height": 40
+              }
+            },
+            {
+              "id": "c1121-implicit-item",
+              "parentId": "c1121-implicit-grid",
+              "authoredStyle": "grid-column:4 / 5;grid-row:1 / 2",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "1",
+                "grid-row-end": "2",
+                "grid-column-start": "4",
+                "grid-column-end": "5"
+              },
+              "rect": {
+                "x": 160,
+                "y": 0,
+                "width": 0,
+                "height": 40
+              },
+              "documentRect": {
+                "x": 160,
+                "y": 0,
+                "width": 0,
+                "height": 40
+              }
+            }
+          ]
+        },
+        {
+          "id": "deferred-named-line",
+          "scope": "chromium-oracle-only",
+          "rootId": "c1121-named-grid",
+          "viewport": {
+            "width": 360,
+            "height": 800,
+            "deviceScaleFactor": 2
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 800
+          },
+          "nodes": [
+            {
+              "id": "c1121-named-grid",
+              "parentId": null,
+              "authoredStyle": "display:grid;width:160px;height:40px;grid-template-columns:[left] 80px [middle] 80px [right];grid-template-rows:40px",
+              "properties": {
+                "display": "grid",
+                "grid-template-columns": "[left] 80px [middle] 80px [right]",
+                "grid-template-rows": "40px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 160,
+                "height": 40
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 160,
+                "height": 40
+              }
+            },
+            {
+              "id": "c1121-named-item",
+              "parentId": "c1121-named-grid",
+              "authoredStyle": "grid-column:left / middle;grid-row:1 / 2",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "1",
+                "grid-row-end": "2",
+                "grid-column-start": "left",
+                "grid-column-end": "middle"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 80,
+                "height": 40
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 80,
+                "height": 40
+              }
+            }
+          ]
+        },
+        {
+          "id": "deferred-mixed-auto-explicit",
+          "scope": "chromium-oracle-only",
+          "rootId": "c1121-mixed-grid",
+          "viewport": {
+            "width": 360,
+            "height": 800,
+            "deviceScaleFactor": 2
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 800
+          },
+          "nodes": [
+            {
+              "id": "c1121-mixed-grid",
+              "parentId": null,
+              "authoredStyle": "display:grid;width:160px;height:80px;grid-template-columns:80px 80px;grid-template-rows:40px 40px",
+              "properties": {
+                "display": "grid",
+                "grid-template-columns": "80px 80px",
+                "grid-template-rows": "40px 40px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 160,
+                "height": 80
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 160,
+                "height": 80
+              }
+            },
+            {
+              "id": "c1121-mixed-definite",
+              "parentId": "c1121-mixed-grid",
+              "authoredStyle": "grid-column:2 / 3;grid-row:2 / 3",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "2",
+                "grid-row-end": "3",
+                "grid-column-start": "2",
+                "grid-column-end": "3"
+              },
+              "rect": {
+                "x": 80,
+                "y": 40,
+                "width": 80,
+                "height": 40
+              },
+              "documentRect": {
+                "x": 80,
+                "y": 40,
+                "width": 80,
+                "height": 40
+              }
+            },
+            {
+              "id": "c1121-mixed-auto",
+              "parentId": "c1121-mixed-grid",
+              "authoredStyle": "",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 80,
+                "height": 40
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 80,
+                "height": 40
+              }
+            }
+          ]
+        },
+        {
+          "id": "deferred-equal-lines",
+          "scope": "chromium-oracle-only",
+          "rootId": "c1121-equal-grid",
+          "viewport": {
+            "width": 360,
+            "height": 800,
+            "deviceScaleFactor": 2
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 800
+          },
+          "nodes": [
+            {
+              "id": "c1121-equal-grid",
+              "parentId": null,
+              "authoredStyle": "display:grid;width:160px;height:80px;grid-template-columns:80px 80px;grid-template-rows:40px 40px",
+              "properties": {
+                "display": "grid",
+                "grid-template-columns": "80px 80px",
+                "grid-template-rows": "40px 40px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 160,
+                "height": 80
+              },
+              "documentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 160,
+                "height": 80
+              }
+            },
+            {
+              "id": "c1121-equal-item",
+              "parentId": "c1121-equal-grid",
+              "authoredStyle": "grid-column:2 / 2;grid-row:1 / 2",
+              "properties": {
+                "display": "block",
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-row-start": "1",
+                "grid-row-end": "2",
+                "grid-column-start": "2",
+                "grid-column-end": "2"
+              },
+              "rect": {
+                "x": 80,
+                "y": 0,
+                "width": 80,
+                "height": 40
+              },
+              "documentRect": {
+                "x": 80,
+                "y": 0,
+                "width": 80,
+                "height": 40
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

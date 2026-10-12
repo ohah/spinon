@@ -13,6 +13,10 @@ const STACKING_STYLE: &str =
     "position:relative;z-index:0;width:1px;height:1px;background-color:#336699";
 
 #[test]
+#[cfg_attr(
+    debug_assertions,
+    ignore = "1024-depth runtime-worker stack validation runs in the optimized profile"
+)]
 fn configured_runtime_worker_lays_out_the_maximum_supported_runtime_mount_depth() {
     let (snapshot, handles) = deep_snapshot(MAX_LAYOUT_TREE_DEPTH);
     let coordinator = RuntimeUaCascadeCoordinator::new_runtime_gpu_block_flex_stacking().unwrap();

@@ -1,0 +1,38 @@
+Error: mise exec -- env SPINON_ENABLE_C04_RUNTIME_GPU=1 bun run build:android 실패: $ bash tools/build-android-app.sh
+ANDROID_NDK_HOME/ROOT가 고정 버전과 달라 무시하고 SDK의 NDK 27.1.12297006 을 사용합니다.
+$ mkdir -p build/spinon/bootstrap && bun build examples/bootstrap/app.js --target=browser --outfile build/spinon/bootstrap/app.js
+   Compiling spinon-ffi v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-ffi)
+    Finished `release` profile [optimized] target(s) in 2.01s
+    Finished `release` profile [optimized] target(s) in 0.07s
+/Users/yoonhb/Documents/workspace/spinon/platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java:1516: error: pattern matching in instanceof is not supported in -source 8
+            if (!(xValue instanceof Number xNumber) || !(yValue instanceof Number yNumber)) {
+                                           ^
+  (use -source 16 or higher to enable pattern matching in instanceof)
+1 error
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:compileDebugJavaWithJavac'.
+> Compilation failed; see the compiler output below.
+  /Users/yoonhb/Documents/workspace/spinon/platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java:1516: error: pattern matching in instanceof is not supported in -source 8
+              if (!(xValue instanceof Number xNumber) || !(yValue instanceof Number yNumber)) {
+                                             ^
+    (use -source 16 or higher to enable pattern matching in instanceof)
+  1 error
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights.
+
+BUILD FAILED in 4s
+error: script "build:android" exited with code 1
+
+    at command (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-mobile-surface-pixel-matrix.mjs:42:11)
+    at build (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-mobile-surface-pixel-matrix.mjs:147:17)
+    at runAndroid (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-mobile-surface-pixel-matrix.mjs:157:3)
+    at main (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-mobile-surface-pixel-matrix.mjs:262:51)
+    at file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-mobile-surface-pixel-matrix.mjs:308:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)

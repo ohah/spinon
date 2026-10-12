@@ -1,0 +1,34 @@
+{
+  "runId": "c11-chrome-20261011T140538428Z-4bcb3b43",
+  "referencePath": "tests/fixtures/css/references/c11-grid-precomparison-v1.json",
+  "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.98-d9996da8123a-83fc71ce41b4-25ff0b5676cb",
+  "screenshotCount": 10,
+  "caseCount": 10,
+  "nodeCount": 40,
+  "dpr": [
+    1,
+    2
+  ],
+  "wptCandidatesHashedNotExecuted": [
+    {
+      "path": "css/css-grid/grid-definition/grid-layout-basic.html",
+      "sha256": "f3a6ad6b049aa62f9c63b17b779cff9b930b3161a0abfe6013670b98fcc9ad57",
+      "stage": "C11.1 candidate; Chrome oracle only; Spinon WPT not run"
+    },
+    {
+      "path": "css/css-grid/grid-definition/fr-unit.html",
+      "sha256": "5002f2cacc37bf549fd55df44e82a8da28606e601f51575a2d06dd41e35c5390",
+      "stage": "C11.1 candidate; Chrome oracle only; Spinon WPT not run"
+    },
+    {
+      "path": "css/css-grid/grid-definition/grid-support-grid-template-columns-rows-001.html",
+      "sha256": "5136529e97cc6512f7ff11bf38a3186dcad214cab65bb4b54e6651bbb1f67bbe",
+      "stage": "C11.1 candidate; Chrome oracle only; Spinon WPT not run"
+    },
+    {
+      "path": "css/css-grid/placement/grid-auto-placement-implicit-tracks-001.html",
+      "sha256": "785012f37a838995bdd6491bd9d27034d21e2441152a067f050bc82fd993ad53",
+      "stage": "C11.2 candidate; implicit track semantics exceed C11.1"
+    }
+  ]
+}

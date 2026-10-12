@@ -165,6 +165,49 @@ pub enum ComputedCssSpacingValue {
     Unsupported,
 }
 
+/// C11.1 layout profile이 Stylo computed value에서 복사한 고정 Grid track입니다.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum ComputedCssGridTrackSize {
+    LengthPx(f32),
+    Percentage(f32),
+    Fraction(f32),
+}
+
+/// Stylo computed `grid-auto-flow` 값입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum ComputedCssGridAutoFlow {
+    Row,
+    Column,
+    RowDense,
+    ColumnDense,
+}
+
+/// 단일 cascade revision에서 추출한 explicit Grid container 입력입니다.
+#[derive(Clone, Debug, PartialEq)]
+pub struct ComputedCssGridLayout {
+    pub columns: Vec<ComputedCssGridTrackSize>,
+    pub rows: Vec<ComputedCssGridTrackSize>,
+    pub auto_flow: ComputedCssGridAutoFlow,
+}
+
+/// Stylo가 계산한 하나의 CSS Grid item 배치 끝점입니다.
+#[derive(Clone, Debug, Eq, PartialEq)]
+pub enum ComputedCssGridPlacement {
+    Auto,
+    Line(i32),
+    Span(i32),
+    Unsupported(String),
+}
+
+/// 단일 computed-style revision의 Grid item 네 longhand 값입니다.
+#[derive(Clone, Debug, Eq, PartialEq)]
+pub struct ComputedCssGridItemPlacement {
+    pub row_start: ComputedCssGridPlacement,
+    pub row_end: ComputedCssGridPlacement,
+    pub column_start: ComputedCssGridPlacement,
+    pub column_end: ComputedCssGridPlacement,
+}
+
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct ComputedCssEdges {
     pub top: ComputedCssSpacingValue,
@@ -311,6 +354,10 @@ pub struct ComputedElementStyle {
     pub layout_aspect_ratio: Option<f32>,
     /// 같은 Stylo computed-style revision에서 추출한 margin·padding·gap 값입니다.
     pub layout_spacing: ComputedLayoutSpacing,
+    /// C11 runtime Grid profile에서만 설정하는 Stylo typed explicit tracks입니다.
+    pub grid_layout: Option<ComputedCssGridLayout>,
+    /// C11.2.1 profile에서만 설정하는 Stylo typed item placement입니다.
+    pub grid_item_placement: Option<ComputedCssGridItemPlacement>,
     /// 같은 cascade 결과에서 `none`·`hidden` gate를 적용한 면별 border 폭입니다.
     pub layout_border: ComputedLayoutBorder,
     /// Stylo가 reify한 layout 계산식입니다. 문자열이 아니라 Typed OM 트리에서 복사했습니다.
@@ -381,4 +428,8 @@ pub enum ComputedStyleProfile {
     RuntimeBlockPositioningV1,
     /// C12.4의 혼합 Block/Flex positioning·stacking·단색 paint runtime profile입니다.
     RuntimeBlockFlexStackingV1,
+    /// C11.1의 혼합 Block/Flex/Grid explicit-track runtime profile입니다.
+    RuntimeBlockFlexGridV1,
+    /// C11.2.1의 혼합 Block/Flex/Grid explicit-line runtime profile입니다.
+    RuntimeBlockFlexGridPlacementV1,
 }

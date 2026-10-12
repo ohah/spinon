@@ -1,0 +1,186 @@
+{
+  "schema": "spinon-c11-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c11-ios-metal-20261011T205411495Z-12938f8f",
+  "processId": 68146,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 36,
+    "renderTree": 6,
+    "environment": 0
+  },
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "drawable": [
+    960,
+    720
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 7,
+  "matchedSamples": 7,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "grid-background",
+      "css": [
+        300,
+        120
+      ],
+      "drawable": [
+        901,
+        361
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-blue",
+      "css": [
+        20,
+        10
+      ],
+      "drawable": [
+        61,
+        31
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-red",
+      "css": [
+        113,
+        12
+      ],
+      "drawable": [
+        340,
+        37
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-green",
+      "css": [
+        226,
+        13
+      ],
+      "drawable": [
+        679,
+        40
+      ],
+      "rgba": [
+        25,
+        169,
+        116,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-yellow",
+      "css": [
+        15,
+        65
+      ],
+      "drawable": [
+        46,
+        196
+      ],
+      "rgba": [
+        255,
+        200,
+        87,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "column-gap",
+      "css": [
+        84,
+        10
+      ],
+      "drawable": [
+        253,
+        31
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "row-gap",
+      "css": [
+        10,
+        53
+      ],
+      "drawable": [
+        31,
+        160
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ],
+  "simulator": {
+    "name": "iPhone 17 Pro",
+    "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+    "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro"
+  },
+  "xcode": "Xcode 26.2\nBuild version 17C52",
+  "renderer": "wgpu Metal CAMetalLayer drawable texture readback before compositor submission",
+  "oracle": {
+    "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.98-d9996da8123a-83fc71ce41b4-ca4062baab2b",
+    "screenshot": [
+      360,
+      800
+    ],
+    "sampleCount": 7,
+    "referencePath": "tests/fixtures/css/references/c11-grid-precomparison-v2.json",
+    "referenceSha256": "2983995fc946ddda3137566612915bd9fd38a9409ba39a4a99ba27220bfcbb3a",
+    "screenshotSha256": "80c961cb4f990d721c2a3e4d6b2004c83eba7cb9d09798aecdcd75e9401490da"
+  },
+  "appBinarySha256": "2937061044e8625b65ce8c5fe840280589ba71a8b338f6bc93d3dad2cbaf2ae8",
+  "fixtureSha256": "618be5c1be2ca06c2deb96dd0e666d4f253b63919afb001664bc7889d97f27bd",
+  "simulatorScreenshot": {
+    "path": "simulator-screen.png",
+    "sha256": "5d792e15a598a37a59c5440bd07ed605bf060736f8f873ad3370580c066a9b78"
+  },
+  "limitations": [
+    "고정 iPhone 17 Pro iOS 26.2 Simulator에서 실행했다. iPhone 실기기의 GPU 결과가 아니다.",
+    "Chrome reference 360x800과 Spinon 320x240 viewport의 공통 좌상단 Grid 영역에서 7개 표본만 비교했다.",
+    "WGPU drawable texture의 compositor 제출 전 RGBA이며 최종 화면 합성·색상 관리 뒤의 pixel과 같음을 보장하지 않는다.",
+    "다른 C11 scene의 픽셀, WPT 적합성, 전체 CSS 지원을 입증하지 않는다."
+  ]
+}

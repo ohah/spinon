@@ -1,0 +1,185 @@
+{
+  "schema": "spinon-c11-2-1-grid-placement-mobile-runtime-matrix/v1",
+  "status": "matched",
+  "platform": "iOS.26.2 Simulator (iPhone 17 Pro)",
+  "runID": "c1121-iossim-20261012T085128948Z-0f8801df",
+  "target": "iPhone 17 Pro · com.apple.CoreSimulator.SimRuntime.iOS-26-2 · ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+  "appSha256": "ff91c126f9888d37d48befdfd04189d4ce1a1e36a92724d4000d8aa17c261e17",
+  "inputs": {
+    "inventory": "b2801e708e4c1ad540e119dcdba04d7c215e4029d5ec5627683e15ede8ef368b",
+    "html": "e9b080bbc65901b17f7dead60eb8071df8ecbefee2ea62f1318776848e75f78d",
+    "reference": "5bbbd041e2e59fda32c684f7290f61bff41ab6dda9ab9f77ce2fb36f0e0ee034",
+    "matrix": "b5b20ce4ccf466a2abc6e1a049095d2eae21d56fee7dc39d19127be29f3b4eff"
+  },
+  "summary": {
+    "scenes": 10,
+    "successfulScenes": 6,
+    "rejectedScenes": 4,
+    "nodes": 21,
+    "maximumAbsoluteErrorCssPx": 0,
+    "geometryToleranceCssPx": 0.5,
+    "freshProcessPerScene": true,
+    "screenshotsArePixelParity": false
+  },
+  "observations": [
+    {
+      "sceneId": "numeric-lines",
+      "outcome": "matched",
+      "frameCount": 4,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 1,
+      "paintOrderNodeIds": null,
+      "screenshot": "numeric-lines-ios-simulator.png",
+      "screenshotSha256": "913266821539a125231dc60acd4984812af887825fe1369ea2b3495e0f150fe7",
+      "runID": "c1121-iossim-20261012T085128948Z-0f8801df-numeric-lines",
+      "processId": 97765
+    },
+    {
+      "sceneId": "positive-spans",
+      "outcome": "matched",
+      "frameCount": 4,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 1,
+      "paintOrderNodeIds": null,
+      "screenshot": "positive-spans-ios-simulator.png",
+      "screenshotSha256": "6725c5f618b71c46c0a4dca4319494cbdee50b7e366f98bbb0c6ab509ad7d448",
+      "runID": "c1121-iossim-20261012T085128948Z-0f8801df-positive-spans",
+      "processId": 231
+    },
+    {
+      "sceneId": "reversed-lines",
+      "outcome": "matched",
+      "frameCount": 3,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 1,
+      "paintOrderNodeIds": null,
+      "screenshot": "reversed-lines-ios-simulator.png",
+      "screenshotSha256": "32a050b107edc81c931d8fd6462e481f5ceb4740526585e8f51d97e4d3ed1e60",
+      "runID": "c1121-iossim-20261012T085128948Z-0f8801df-reversed-lines",
+      "processId": 1006
+    },
+    {
+      "sceneId": "shorthand-cascade",
+      "outcome": "matched",
+      "frameCount": 4,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 1,
+      "paintOrderNodeIds": null,
+      "screenshot": "shorthand-cascade-ios-simulator.png",
+      "screenshotSha256": "23c4692f977da06df38572bf36d294f9dd48a6b76fc8d45d7f7542ac04f9450a",
+      "runID": "c1121-iossim-20261012T085128948Z-0f8801df-shorthand-cascade",
+      "processId": 1703
+    },
+    {
+      "sceneId": "overlap-source-order",
+      "outcome": "matched",
+      "frameCount": 4,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 1,
+      "paintOrderNodeIds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "screenshot": "overlap-source-order-ios-simulator.png",
+      "screenshotSha256": "d68029d45a2b4e4ca9cd999c41b103aa00a7ebfe5a3ac7763c9a73568bdb4c17",
+      "runID": "c1121-iossim-20261012T085128948Z-0f8801df-overlap-source-order",
+      "processId": 2748
+    },
+    {
+      "sceneId": "nested-placement-modes",
+      "outcome": "matched",
+      "frameCount": 8,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 1,
+      "paintOrderNodeIds": null,
+      "screenshot": "nested-placement-modes-ios-simulator.png",
+      "screenshotSha256": "f9324d60af3bb4ccc6359172807e204b9c7e938872829c0690ab83304849dbe4",
+      "runID": "c1121-iossim-20261012T085128948Z-0f8801df-nested-placement-modes",
+      "processId": 3964
+    },
+    {
+      "sceneId": "deferred-implicit-track",
+      "outcome": "expected-rejection",
+      "status": -11,
+      "diagnostic": {
+        "code": "invalid_grid_placement",
+        "runtimeNodeId": 3,
+        "fixtureNodeId": "c1121-implicit-item",
+        "property": "grid-column-start",
+        "detail": null
+      },
+      "frameCount": 0,
+      "positiveDrawCount": 0,
+      "screenshot": "deferred-implicit-track-ios-simulator.png",
+      "screenshotSha256": "04c78024b4efdb3509450c74c631c2e8e6d2f7489f69a997e29374e42608cc3a",
+      "runID": "c1121-iossim-20261012T085128948Z-0f8801df-deferred-implicit-track",
+      "processId": 4942
+    },
+    {
+      "sceneId": "deferred-named-line",
+      "outcome": "expected-rejection",
+      "status": -11,
+      "diagnostic": {
+        "code": "cascade_failed",
+        "runtimeNodeId": null,
+        "fixtureNodeId": null,
+        "property": null,
+        "detail": "grid-template-columns"
+      },
+      "frameCount": 0,
+      "positiveDrawCount": 0,
+      "screenshot": "deferred-named-line-ios-simulator.png",
+      "screenshotSha256": "f3243822c8b8d213bdaf377f40cfa4d3f41b66cb2c47d30f793744e827ed2241",
+      "runID": "c1121-iossim-20261012T085128948Z-0f8801df-deferred-named-line",
+      "processId": 6194
+    },
+    {
+      "sceneId": "deferred-mixed-auto-explicit",
+      "outcome": "expected-rejection",
+      "status": -11,
+      "diagnostic": {
+        "code": "invalid_grid_placement",
+        "runtimeNodeId": 4,
+        "fixtureNodeId": "c1121-mixed-auto",
+        "property": "grid-row-start",
+        "detail": null
+      },
+      "frameCount": 0,
+      "positiveDrawCount": 0,
+      "screenshot": "deferred-mixed-auto-explicit-ios-simulator.png",
+      "screenshotSha256": "2cb8f5cfcfedaec951e68e027dba56d4991e40fa8047d6d3a9558eb1ed3ece42",
+      "runID": "c1121-iossim-20261012T085128948Z-0f8801df-deferred-mixed-auto-explicit",
+      "processId": 7609
+    },
+    {
+      "sceneId": "deferred-equal-lines",
+      "outcome": "expected-rejection",
+      "status": -11,
+      "diagnostic": {
+        "code": "invalid_grid_placement",
+        "runtimeNodeId": 3,
+        "fixtureNodeId": "c1121-equal-item",
+        "property": "grid-column-end",
+        "detail": null
+      },
+      "frameCount": 0,
+      "positiveDrawCount": 0,
+      "screenshot": "deferred-equal-lines-ios-simulator.png",
+      "screenshotSha256": "e161d87cfde830fc5f60cf5a04223cf765076d20584da10250cdf5365738a1e5",
+      "runID": "c1121-iossim-20261012T085128948Z-0f8801df-deferred-equal-lines",
+      "processId": 9110
+    }
+  ],
+  "limitations": [
+    "iOS 결과는 지정 Simulator이며 iOS 실기기를 대체하지 않는다.",
+    "Chrome frame·진단·WGPU 제출 비교다. 전체 surface pixel parity, Spinon WPT 적합성, 전체 CSS Grid 지원을 뜻하지 않는다."
+  ]
+}

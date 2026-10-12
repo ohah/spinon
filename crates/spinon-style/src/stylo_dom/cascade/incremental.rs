@@ -3,8 +3,8 @@ use style::properties::{ComputedValues, LonghandId};
 
 use super::{
     ComputedCssDimension, ComputedCssSpacingValue, ComputedStyleProfile, ComputedStyleSnapshot,
-    CssCascadeError, CssViewport, StyloDocumentView, UA_STYLESHEET_ID, runtime_layout,
-    runtime_paint,
+    CssCascadeError, CssViewport, StyloDocumentView, UA_STYLESHEET_ID, runtime_grid,
+    runtime_layout, runtime_paint,
 };
 use crate::StylesheetSource;
 
@@ -92,6 +92,8 @@ mod compute;
 mod dimensions;
 #[path = "incremental/element.rs"]
 mod element;
+#[path = "incremental/grid.rs"]
+mod grid;
 #[path = "incremental/reuse.rs"]
 mod reuse;
 #[path = "incremental/source_border.rs"]
@@ -163,6 +165,12 @@ fn runtime_properties_for_profile(
     if profile == ComputedStyleProfile::RuntimeBlockPositioningV1 {
         return Some(runtime_paint::runtime_block_positioning_properties());
     }
+    if profile == ComputedStyleProfile::RuntimeBlockFlexGridV1 {
+        return Some(runtime_grid::runtime_block_flex_grid_properties());
+    }
+    if profile == ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1 {
+        return Some(runtime_grid::runtime_block_flex_grid_placement_properties());
+    }
     let has_paint = matches!(
         profile,
         ComputedStyleProfile::RuntimeFlexPaintV1
@@ -208,5 +216,7 @@ fn is_runtime_layout_profile(profile: ComputedStyleProfile) -> bool {
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
     )
 }

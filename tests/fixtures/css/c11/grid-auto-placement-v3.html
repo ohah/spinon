@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spinon C11.2.2 행 우선 자동 배치 기준 장면</title>
+  <style>
+    html, body { margin: 0; padding: 0; }
+    body { direction: ltr; writing-mode: horizontal-tb; color-scheme: light; }
+    *, *::before, *::after { box-sizing: content-box; }
+    #stage { position: absolute; top: 0; left: 0; width: 360px; height: 800px; }
+    .scene { position: absolute; top: 0; left: 0; display: none; width: 360px; height: 800px; }
+    .scene.active { display: block; }
+    .scene-root { position: absolute; top: 0; left: 0; width: 360px; height: 800px; margin: 0; padding: 0; border: 0; direction: ltr; writing-mode: horizontal-tb; }
+    [data-node] { margin: 0; padding: 0; border: 0; box-sizing: content-box; }
+    .surface { background-color: #edf1f7; }
+    .blue { background-color: #2866f6; }
+    .red { background-color: #e5484d; }
+    .green { background-color: #19a974; }
+    .yellow { background-color: #ffc857; }
+    .purple { background-color: #8758ff; }
+    .cyan { background-color: #0ea5e9; }
+    .orange { background-color: #f97316; }
+    .pink { background-color: #ec4899; }
+  </style>
+</head>
+<body>
+  <div id="stage">
+    <section class="scene" data-scene="definite-first-mixed">
+      <div class="scene-root" id="c1122-definite-first-root">
+        <div id="c1122-definite-first-grid" data-node data-grid class="surface" style="position:absolute;left:20px;top:20px;display:grid;width:184px;height:88px;grid-template-columns:88px 88px;grid-template-rows:40px 40px;column-gap:8px;row-gap:8px">
+          <div id="c1122-definite-first-auto-a" data-node class="blue" style="width:30px;height:20px"></div>
+          <div id="c1122-definite-first-fixed" data-node class="red" style="width:30px;height:20px;grid-column:1 / 2;grid-row:1 / 2"></div>
+          <div id="c1122-definite-first-auto-b" data-node class="green" style="width:30px;height:20px"></div>
+        </div>
+      </div>
+    </section>
+    <section class="scene" data-scene="auto-only-fill">
+      <div class="scene-root" id="c1122-auto-only-root">
+        <div id="c1122-auto-only-grid" data-node data-grid class="surface" style="position:absolute;left:20px;top:20px;display:grid;width:184px;height:88px;grid-template-columns:88px 88px;grid-template-rows:40px 40px;column-gap:8px;row-gap:8px">
+          <div id="c1122-auto-only-a" data-node class="blue" style="width:30px;height:20px"></div>
+          <div id="c1122-auto-only-b" data-node class="red" style="width:30px;height:20px"></div>
+          <div id="c1122-auto-only-c" data-node class="green" style="width:30px;height:20px"></div>
+        </div>
+      </div>
+    </section>
+    <section class="scene" data-scene="positive-implicit-row">
+      <div class="scene-root" id="c1122-implicit-row-root">
+        <div id="c1122-implicit-row-grid" data-node data-grid class="surface" style="position:absolute;left:20px;top:20px;display:grid;width:184px;height:73px;grid-template-columns:88px 88px;grid-template-rows:40px;grid-auto-rows:25px;column-gap:8px;row-gap:8px">
+          <div id="c1122-implicit-row-a" data-node class="blue" style="width:30px;height:18px"></div>
+          <div id="c1122-implicit-row-b" data-node class="red" style="width:30px;height:18px"></div>
+          <div id="c1122-implicit-row-c" data-node class="green" style="width:30px;height:18px"></div>
+        </div>
+      </div>
+    </section>
+    <section class="scene" data-scene="row-locked-auto-column">
+      <div class="scene-root" id="c1122-row-locked-root">
+        <div id="c1122-row-locked-grid" data-node data-grid class="surface" style="position:absolute;left:20px;top:20px;display:grid;width:160px;height:40px;grid-template-columns:50px 50px 50px;grid-template-rows:40px;column-gap:5px">
+          <div id="c1122-row-locked-a" data-node class="blue" style="width:20px;height:20px;grid-row:1 / 2"></div>
+          <div id="c1122-row-locked-b" data-node class="red" style="width:20px;height:20px;grid-row:1 / 2"></div>
+        </div>
+      </div>
+    </section>
+    <section class="scene" data-scene="column-locked-auto-row">
+      <div class="scene-root" id="c1122-column-locked-root">
+        <div id="c1122-column-locked-grid" data-node data-grid class="surface" style="position:absolute;left:20px;top:20px;display:grid;width:84px;height:44px;grid-template-columns:40px 40px;grid-template-rows:20px 20px;column-gap:4px;row-gap:4px">
+          <div id="c1122-column-locked-a" data-node class="blue" style="width:20px;height:12px;grid-column:2 / 3"></div>
+          <div id="c1122-column-locked-b" data-node class="red" style="width:20px;height:12px;grid-column:2 / 3"></div>
+        </div>
+      </div>
+    </section>
+    <section class="scene" data-scene="auto-column-span">
+      <div class="scene-root" id="c1122-span-root">
+        <div id="c1122-span-grid" data-node data-grid class="surface" style="position:absolute;left:20px;top:20px;display:grid;width:128px;height:44px;grid-template-columns:40px 40px 40px;grid-template-rows:20px 20px;column-gap:4px;row-gap:4px">
+          <div id="c1122-span-a" data-node class="blue" style="width:84px;height:18px;grid-column-start:auto;grid-column-end:span 2"></div>
+          <div id="c1122-span-b" data-node class="red" style="width:40px;height:18px"></div>
+        </div>
+      </div>
+    </section>
+    <section class="scene" data-scene="sparse-hole-not-backfilled">
+      <div class="scene-root" id="c1122-sparse-root">
+        <div id="c1122-sparse-grid" data-node data-grid class="surface" style="position:absolute;left:20px;top:20px;display:grid;width:128px;height:49px;grid-template-columns:40px 40px 40px;grid-template-rows:20px;grid-auto-rows:25px;column-gap:4px;row-gap:4px">
+          <div id="c1122-sparse-auto-a" data-node class="blue" style="width:18px;height:18px"></div>
+          <div id="c1122-sparse-span" data-node class="purple" style="width:84px;height:18px;grid-column-start:auto;grid-column-end:span 2"></div>
+          <div id="c1122-sparse-fixed" data-node class="red" style="width:18px;height:18px;grid-column:2 / 3;grid-row:1 / 2"></div>
+          <div id="c1122-sparse-auto-b" data-node class="green" style="width:18px;height:18px"></div>
+        </div>
+      </div>
+    </section>
+    <section class="scene" data-scene="implicit-track-size-and-gap">
+      <div class="scene-root" id="c1122-gap-root">
+        <div id="c1122-gap-grid" data-node data-grid class="surface" style="position:absolute;left:20px;top:20px;display:grid;width:126px;height:49px;grid-template-columns:50px 70px;grid-template-rows:20px;grid-auto-rows:24px;column-gap:6px;row-gap:5px">
+          <div id="c1122-gap-a" data-node class="blue" style="width:30px;height:12px"></div>
+          <div id="c1122-gap-b" data-node class="red" style="width:30px;height:12px"></div>
+          <div id="c1122-gap-c" data-node class="green" style="width:30px;height:12px"></div>
+        </div>
+      </div>
+    </section>
+    <section class="scene" data-scene="hidden-child-excluded">
+      <div class="scene-root" id="c1122-hidden-root">
+        <div id="c1122-hidden-grid" data-node data-grid class="surface" style="position:absolute;left:20px;top:20px;display:grid;width:184px;height:40px;grid-template-columns:88px 88px;grid-template-rows:40px;column-gap:8px">
+          <div id="c1122-hidden-item" data-node class="yellow" style="display:none;width:30px;height:20px;grid-column:1 / 2;grid-row:1 / 2"></div>
+          <div id="c1122-hidden-visible-a" data-node class="blue" style="width:30px;height:20px"></div>
+          <div id="c1122-hidden-visible-b" data-node class="red" style="width:30px;height:20px"></div>
+        </div>
+      </div>
+    </section>
+    <section class="scene" data-scene="nested-independent-placement">
+      <div class="scene-root" id="c1122-nested-root">
+        <div id="c1122-nested-outer" data-node data-grid class="surface" style="position:absolute;left:20px;top:20px;display:grid;width:184px;height:48px;grid-template-columns:88px 88px;grid-template-rows:40px;column-gap:8px">
+          <div id="c1122-nested-explicit-grid" data-node data-grid class="blue" style="display:grid;width:88px;height:40px;grid-template-columns:40px 40px;grid-template-rows:40px;column-gap:8px;grid-column:1 / 2;grid-row:1 / 2">
+            <div id="c1122-nested-explicit-item" data-node class="yellow" style="width:20px;height:20px;grid-column:2 / 3;grid-row:1 / 2"></div>
+          </div>
+          <div id="c1122-nested-auto-grid" data-node data-grid class="red" style="display:grid;width:88px;height:40px;grid-template-columns:40px 40px;grid-template-rows:40px;column-gap:8px;grid-column:2 / 3;grid-row:1 / 2">
+            <div id="c1122-nested-auto-first" data-node class="green" style="width:20px;height:20px"></div>
+            <div id="c1122-nested-auto-fixed" data-node class="purple" style="width:20px;height:20px;grid-column:1 / 2;grid-row:1 / 2"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="scene" data-scene="reject-implicit-column">
+      <div class="scene-root" id="c1122-reject-column-root">
+        <div id="c1122-reject-column-grid" data-node data-grid class="surface" style="position:absolute;left:20px;top:20px;display:grid;width:84px;height:20px;grid-template-columns:40px 40px;grid-template-rows:20px;column-gap:4px">
+          <div id="c1122-reject-column-item" data-node class="orange" style="width:20px;height:18px;grid-column:4 / 5;grid-row:1 / 2"></div>
+        </div>
+      </div>
+    </section>
+    <section class="scene" data-scene="reject-auto-sized-implicit-row">
+      <div class="scene-root" id="c1122-reject-auto-row-root">
+        <div id="c1122-reject-auto-row-grid" data-node data-grid class="surface" style="position:absolute;left:20px;top:20px;display:grid;width:84px;height:44px;grid-template-columns:40px 40px;grid-template-rows:20px;column-gap:4px;row-gap:4px">
+          <div id="c1122-reject-auto-row-a" data-node class="blue" style="width:20px;height:12px"></div>
+          <div id="c1122-reject-auto-row-b" data-node class="red" style="width:20px;height:12px"></div>
+          <div id="c1122-reject-auto-row-c" data-node class="green" style="width:20px;height:12px"></div>
+        </div>
+      </div>
+    </section>
+    <section class="scene" data-scene="reject-repeated-auto-row-pattern">
+      <div class="scene-root" id="c1122-reject-pattern-root">
+        <div id="c1122-reject-pattern-grid" data-node data-grid class="surface" style="position:absolute;left:20px;top:20px;display:grid;width:84px;height:104px;grid-template-columns:40px 40px;grid-template-rows:20px;grid-auto-rows:16px 24px;column-gap:4px;row-gap:4px">
+          <div id="c1122-reject-pattern-a" data-node class="blue" style="width:20px;height:12px"></div>
+          <div id="c1122-reject-pattern-b" data-node class="red" style="width:20px;height:12px"></div>
+          <div id="c1122-reject-pattern-c" data-node class="green" style="width:20px;height:12px"></div>
+          <div id="c1122-reject-pattern-d" data-node class="yellow" style="width:20px;height:12px"></div>
+          <div id="c1122-reject-pattern-e" data-node class="purple" style="width:20px;height:12px"></div>
+          <div id="c1122-reject-pattern-f" data-node class="cyan" style="width:20px;height:12px"></div>
+          <div id="c1122-reject-pattern-g" data-node class="orange" style="width:20px;height:12px"></div>
+          <div id="c1122-reject-pattern-h" data-node class="pink" style="width:20px;height:12px"></div>
+        </div>
+      </div>
+    </section>
+    <section class="scene" data-scene="reject-dense-flow">
+      <div class="scene-root" id="c1122-reject-dense-root">
+        <div id="c1122-reject-dense-grid" data-node data-grid class="surface" style="position:absolute;left:20px;top:20px;display:grid;width:128px;height:44px;grid-template-columns:40px 40px 40px;grid-template-rows:20px 20px;grid-auto-rows:20px;column-gap:4px;row-gap:4px;grid-auto-flow:row dense">
+          <div id="c1122-reject-dense-auto-a" data-node class="blue" style="width:18px;height:18px"></div>
+          <div id="c1122-reject-dense-span" data-node class="purple" style="width:84px;height:18px;grid-column-start:auto;grid-column-end:span 2"></div>
+          <div id="c1122-reject-dense-fixed" data-node class="red" style="width:18px;height:18px;grid-column:2 / 3;grid-row:1 / 2"></div>
+          <div id="c1122-reject-dense-auto-b" data-node class="green" style="width:18px;height:18px"></div>
+        </div>
+      </div>
+    </section>
+    <section class="scene" data-scene="reject-column-flow">
+      <div class="scene-root" id="c1122-reject-column-flow-root">
+        <div id="c1122-reject-column-flow-grid" data-node data-grid class="surface" style="position:absolute;left:20px;top:20px;display:grid;width:84px;height:44px;grid-template-columns:40px 40px;grid-template-rows:20px 20px;grid-auto-columns:32px;column-gap:4px;row-gap:4px;grid-auto-flow:column">
+          <div id="c1122-reject-column-flow-a" data-node class="blue" style="width:18px;height:18px"></div>
+          <div id="c1122-reject-column-flow-b" data-node class="red" style="width:18px;height:18px"></div>
+          <div id="c1122-reject-column-flow-c" data-node class="green" style="width:18px;height:18px"></div>
+          <div id="c1122-reject-column-flow-d" data-node class="yellow" style="width:18px;height:18px"></div>
+          <div id="c1122-reject-column-flow-e" data-node class="purple" style="width:18px;height:18px"></div>
+        </div>
+      </div>
+    </section>
+    <section class="scene" data-scene="column-cursor-wrap">
+      <div class="scene-root" id="c1122-column-wrap-root">
+        <div id="c1122-column-wrap-grid" data-node data-grid class="surface" style="position:absolute;left:20px;top:20px;display:grid;width:128px;height:44px;grid-template-columns:40px 40px 40px;grid-template-rows:20px;grid-auto-rows:20px;column-gap:4px;row-gap:4px">
+          <div id="c1122-column-wrap-col-two" data-node class="blue" style="width:18px;height:18px;grid-column:2 / 3"></div>
+          <div id="c1122-column-wrap-col-one" data-node class="red" style="width:18px;height:18px;grid-column:1 / 2"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

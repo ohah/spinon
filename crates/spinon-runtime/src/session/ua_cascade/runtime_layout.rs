@@ -8,6 +8,7 @@ use spinon_style::{
     CascadeDiagnostic, ComputedStyleSnapshot, StylesheetSource, StyloDocumentView,
     first_unsupported_runtime_block_display_inline_value,
     first_unsupported_runtime_block_display_stylesheet_value,
+    first_unsupported_runtime_block_flex_grid_inline_property,
     first_unsupported_runtime_block_paint_inline_property,
     first_unsupported_runtime_block_positioning_inline_property,
     first_unsupported_runtime_custom_properties_inline_property,
@@ -179,6 +180,12 @@ pub(super) fn compute_runtime_layout(
         super::calculation::RuntimeCalculationProfile::BlockFlexStacking => {
             spinon_style::first_unsupported_runtime_block_flex_stacking_inline_property(&view)
         }
+        super::calculation::RuntimeCalculationProfile::BlockFlexGrid => {
+            first_unsupported_runtime_block_flex_grid_inline_property(&view)
+        }
+        super::calculation::RuntimeCalculationProfile::BlockFlexGridPlacement => {
+            spinon_style::first_unsupported_runtime_block_flex_grid_placement_inline_property(&view)
+        }
         super::calculation::RuntimeCalculationProfile::FlexPaint
         | super::calculation::RuntimeCalculationProfile::RegisteredPropertiesPaint => {
             first_unsupported_runtime_custom_properties_paint_inline_property(&view)
@@ -340,6 +347,15 @@ fn layout_failure_from_error(error: StyleLayoutError) -> RuntimeLayoutFailure {
         StyleLayoutError::Layout(LayoutError::InvalidHostDocumentRoot(node)) => {
             layout_failure("invalid_root", Some(node.get()), None)
         }
+        StyleLayoutError::Layout(LayoutError::InvalidGridPlacement {
+            node,
+            property,
+            reason,
+        }) => layout_failure(
+            "invalid_grid_placement",
+            Some(node.get()),
+            Some(format!("{property}: {reason}")),
+        ),
         StyleLayoutError::SnapshotMismatch { .. } => {
             layout_failure("snapshot_mismatch", None, None)
         }

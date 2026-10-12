@@ -26,6 +26,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.hasPrefix("--spinon-c124-run-id=")
         }?.components(separatedBy: "=").last
         let runRuntimeGpu = arguments.contains("--spinon-c0410-runtime-gpu")
+            || arguments.contains("--spinon-c1121-grid-placement")
+            || arguments.contains(where: { $0.hasPrefix("--spinon-c1121-grid-scene=") })
+            || arguments.contains("--spinon-c11-grid")
+            || arguments.contains(where: { $0.hasPrefix("--spinon-c11-grid-case=") })
             || arguments.contains("--spinon-c0411-runtime-author-stylesheets")
             || arguments.contains("--spinon-c052-registered-properties")
             || arguments.contains("--spinon-c053-runtime-result-cache")

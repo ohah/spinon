@@ -181,6 +181,8 @@ fn to_input(fixture: &Fixture) -> LayoutInput {
                 },
             })
             .collect(),
+        grid_containers: Default::default(),
+        grid_items: Default::default(),
     }
 }
 
@@ -320,6 +322,8 @@ fn fractional_dimensions_are_not_rounded_by_the_layout_engine() {
             },
             child_node,
         ],
+        grid_containers: Default::default(),
+        grid_items: Default::default(),
     };
 
     let output = TaffyLayoutEngine.compute(&input).unwrap();

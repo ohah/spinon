@@ -1,0 +1,69 @@
+{
+  "status": "matched",
+  "scene": "shorthand-cascade",
+  "runID": "c1121-android-20261012T133451214Z-bbb225b3-shorthand-cascade",
+  "processId": 26896,
+  "surfaceGeneration": 2,
+  "density": 2.625,
+  "surface": [
+    840,
+    630
+  ],
+  "expectedSamples": 3,
+  "matchedSamples": 3,
+  "maximumChannelError": 0,
+  "pngSha256": "ae4940e8ab130bce6a7ce988b6ebb4dfd0c52432e8ee55c172f3a235d6126f3c",
+  "samples": [
+    {
+      "id": "item-c1121-grid-area-item",
+      "css": [
+        82,
+        42
+      ],
+      "pixel": [
+        216,
+        111
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ]
+    },
+    {
+      "id": "item-c1121-cascade-item",
+      "css": [
+        124,
+        19
+      ],
+      "pixel": [
+        326,
+        51
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ]
+    },
+    {
+      "id": "surface-c1121-shorthand-grid",
+      "css": [
+        166,
+        42
+      ],
+      "pixel": [
+        437,
+        111
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    }
+  ]
+}

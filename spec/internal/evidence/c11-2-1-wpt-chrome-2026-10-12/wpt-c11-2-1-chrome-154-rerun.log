@@ -1,0 +1,18 @@
+/Users/yoonhb/Documents/workspace/spinon/build/wpt-c124-source/_venv3/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Warning: could not load product 'firefox_android' for argument registration: No module named 'mozrunner'
+Warning: could not load product 'firefox' for argument registration: No module named 'mozleak'
+Running 4 tests in web-platform-tests
+
+/Users/yoonhb/Documents/workspace/spinon/build/wpt-c124-source/_venv3/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+  /css/css-grid/placement/grid-layout-grid-span.html
+  /css/css-grid/placement/grid-layout-placement-shorthands.html
+  /css/css-grid/placement/grid-placement-using-named-grid-lines-001.html
+/Users/yoonhb/Documents/workspace/spinon/build/wpt-c124-source/_venv3/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+  /css/css-grid/placement/grid-negative-line-placement-001.html
+
+Ran 4 tests finished in 15.7 seconds.
+  • 4 ran as expected. 0 tests skipped.
+

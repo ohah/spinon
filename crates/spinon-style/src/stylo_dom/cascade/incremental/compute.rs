@@ -6,8 +6,12 @@ use super::super::{
     CascadeDiagnostic, ComputedStyleProfile, ComputedStyleSnapshot, CssCascadeError, CssViewport,
     FLEX_ALIGNMENT_AUTHOR_PROPERTIES, FLEX_LAYOUT_AUTHOR_PROPERTIES, UA_STYLESHEET_ID,
     UA_STYLESHEET_URL,
-    device::{LayoutThreadState, make_device},
+    device::{LayoutThreadState, initialize_stylo_preferences, make_device},
     margin::FLEX_MARGIN_AUTHOR_PROPERTIES,
+    runtime_grid::{
+        runtime_block_flex_grid_author_properties,
+        runtime_block_flex_grid_placement_author_properties,
+    },
     runtime_layout::RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES,
     runtime_paint::RUNTIME_BLOCK_PAINT_AUTHOR_PROPERTIES,
     runtime_stacking::runtime_block_flex_stacking_author_properties,
@@ -35,6 +39,7 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
     profile: ComputedStyleProfile,
     reuse: Option<(&ComputedStyleSnapshot, &[NodeId])>,
 ) -> Result<Option<(ComputedStyleSnapshot, RuntimeCascadeReuseStats)>, CssCascadeError> {
+    initialize_stylo_preferences();
     let reuse_plan = match reuse {
         Some((previous, dirty_roots)) => {
             let Some(plan) = make_reuse_plan(view, previous, dirty_roots) else {
@@ -142,6 +147,9 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         }
     }
     let runtime_stacking_author_properties = runtime_block_flex_stacking_author_properties();
+    let runtime_grid_author_properties = runtime_block_flex_grid_author_properties();
+    let runtime_grid_placement_author_properties =
+        runtime_block_flex_grid_placement_author_properties();
     let allowed_author_properties: Option<&[&str]> = match profile {
         ComputedStyleProfile::BasicCascadeV1 => None,
         ComputedStyleProfile::SupportedElementsUaV1 => None,
@@ -170,6 +178,12 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         }
         ComputedStyleProfile::RuntimeBlockFlexStackingV1 => {
             Some(runtime_stacking_author_properties.as_slice())
+        }
+        ComputedStyleProfile::RuntimeBlockFlexGridV1 => {
+            Some(runtime_grid_author_properties.as_slice())
+        }
+        ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1 => {
+            Some(runtime_grid_placement_author_properties.as_slice())
         }
         ComputedStyleProfile::RuntimeFlexPaintV1 => None,
     };
@@ -327,8 +341,9 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         validate_synthetic_document_box(&body_style, "body")?;
         mount_parent_style = Some(body_style);
     }
-    let mut pending = vec![(view.root_handle(), mount_parent_style)];
-    while let Some((handle, parent_style)) = pending.pop() {
+    let mut pending = vec![(view.root_handle(), mount_parent_style, false)];
+    while let Some((handle, parent_style, ancestor_hidden)) = pending.pop() {
+        let mut subtree_hidden = ancestor_hidden;
         let computed = if let Some(element) = view.element(handle) {
             for diagnostic in &element.data().inline_style_diagnostics {
                 diagnostics.push(CascadeDiagnostic {
@@ -368,35 +383,50 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
                     .as_ref()
                     .is_some_and(|plan| plan.context_nodes.contains(&node_id))
                 {
-                    elements.push(
-                        reuse_plan
-                            .as_ref()
-                            .and_then(|plan| plan.old_styles.get(&node_id))
-                            .expect("context ancestor style output must exist")
-                            .clone(),
-                    );
+                    let output = reuse_plan
+                        .as_ref()
+                        .and_then(|plan| plan.old_styles.get(&node_id))
+                        .expect("context ancestor style output must exist")
+                        .clone();
+                    subtree_hidden = ancestor_hidden
+                        || output
+                            .properties
+                            .get("display")
+                            .is_some_and(|value| value == "none");
+                    elements.push(output);
                     reuse_stats.reused_style_elements += 1;
                     reuse_stats.context_style_elements += 1;
                 } else {
-                    elements.push(computed_element_output(
+                    let output = computed_element_output(
                         properties,
                         profile,
                         &computed,
                         node_id,
+                        ancestor_hidden,
                         source_math,
                         source_border_widths,
-                    )?);
+                    )?;
+                    subtree_hidden = ancestor_hidden
+                        || output
+                            .properties
+                            .get("display")
+                            .is_some_and(|value| value == "none");
+                    elements.push(output);
                     reuse_stats.recomputed_style_elements += 1;
                 }
                 Some(computed)
             } else {
-                elements.push(
-                    reuse_plan
-                        .as_ref()
-                        .and_then(|plan| plan.old_styles.get(&node_id))
-                        .expect("reused style output must exist")
-                        .clone(),
-                );
+                let output = reuse_plan
+                    .as_ref()
+                    .and_then(|plan| plan.old_styles.get(&node_id))
+                    .expect("재사용 대상 요소의 computed style output이 있어야 합니다")
+                    .clone();
+                subtree_hidden = ancestor_hidden
+                    || output
+                        .properties
+                        .get("display")
+                        .is_some_and(|value| value == "none");
+                elements.push(output);
                 reuse_stats.reused_style_elements += 1;
                 None
             }
@@ -410,7 +440,7 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
                 children
                     .into_iter()
                     .rev()
-                    .map(|child| (child, computed.clone())),
+                    .map(|child| (child, computed.clone(), subtree_hidden)),
             );
         }
     }

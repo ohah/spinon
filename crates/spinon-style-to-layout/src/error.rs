@@ -16,6 +16,10 @@ pub enum StyleLayoutError {
         field: &'static str,
     },
     UnsupportedInlineStyle(NodeId),
+    UnsupportedInlineProperty {
+        node: NodeId,
+        property: String,
+    },
     UnsupportedBlockDisplay {
         node: NodeId,
         value: String,
@@ -68,6 +72,10 @@ impl fmt::Display for StyleLayoutError {
             Self::UnsupportedInlineStyle(node) => write!(
                 formatter,
                 "노드 {node}의 inline style 속성은 현재 layout 입력 profile에서 지원하지 않습니다"
+            ),
+            Self::UnsupportedInlineProperty { node, property } => write!(
+                formatter,
+                "노드 {node}의 inline CSS 속성 {property}는 현재 Grid profile에서 지원하지 않습니다"
             ),
             Self::UnsupportedBlockDisplay { node, value } => write!(
                 formatter,

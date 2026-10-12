@@ -1,0 +1,107 @@
+ 0:00.00 INFO Set tests_root to /Users/yoonhb/Documents/workspace/spinon/build/wpt-c124-source
+ 0:00.00 INFO Set metadata_root to /Users/yoonhb/Documents/workspace/spinon/build/wpt-c124-source
+ 0:00.00 INFO Set manifest_update to True
+ 0:00.00 INFO Set manifest_download to True
+ 0:00.01 INFO Interpreting channel 'nightly' as 'canary'
+ 0:00.48 INFO Mojo bindings already up to date
+ 0:00.48 INFO MojoJS enabled automatically (mojojs_path: _venv3/mojojs/gen)
+ 0:00.48 INFO Automatically turning on experimental features
+ 0:02.58 wptserve INFO Starting https server on https://127.0.0.1:8000
+ 0:02.62 wptserve INFO Starting https server on https://127.0.0.1:8002
+ 0:02.66 wptserve INFO Create socket on: (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('127.0.0.1', 8888))
+ 0:02.66 wptserve INFO Bind on: (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('127.0.0.1', 8888))
+ 0:02.66 wptserve INFO Listen on: (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('127.0.0.1', 8888))
+ 0:02.67 wptserve INFO Starting https server on https://127.0.0.1:8001
+ 0:02.71 wptserve INFO Starting https server on https://127.0.0.1:8003
+ 0:02.71 wptserve INFO Starting https server on https://127.0.0.1:8446
+ 0:02.71 wptserve INFO Create socket on: (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('127.0.0.1', 8889))
+ 0:02.71 wptserve INFO Bind on: (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('127.0.0.1', 8889))
+ 0:02.71 wptserve INFO Listen on: (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('127.0.0.1', 8889))
+ 0:02.72 wptserve INFO Starting https server on https://127.0.0.1:8443
+ 0:02.73 wptserve INFO Starting http2 server on https://127.0.0.1:9000
+ 0:02.74 wptserve INFO Starting https server on https://127.0.0.1:8444
+ 0:02.75 wptserve INFO Starting https server on https://127.0.0.1:8445
+ 0:02.82 wptserve INFO Starting WebTransport over HTTP/3 server on 127.0.0.1:11000
+ 0:03.13 SUITE_START: web-platform-test - running 4 tests
+ 0:03.13 INFO Using 1 child processes
+ 0:03.13 INFO Starting WebDriver: /Users/yoonhb/Documents/workspace/spinon/build/wpt-c124-tools/chrome/chromedriver --port=51484 --ignore-explicit-port --url-base=/ --enable-chrome-logs --disable-build-check
+ 0:03.17 INFO Got WebDriver port 51485
+ 0:03.25 pid:8769 Full command: /Users/yoonhb/Documents/workspace/spinon/build/wpt-c124-tools/chrome/chromedriver --port=51484 --ignore-explicit-port --url-base=/ --enable-chrome-logs --disable-build-check
+pid:8769 Starting ChromeDriver 154.0.8037.92 (334b65d254ccc35df4fca82706d1753227b01039-refs/branch-heads/8037@{#1589}) on port 0
+ 0:03.25 pid:8769 Only local connections are allowed.
+ 0:03.25 pid:8769 Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ 0:03.25 pid:8769 ChromeDriver was started successfully on port 51485.
+ 0:03.25 INFO Webdriver started successfully.
+ 0:03.25 INFO Starting runner
+ 0:03.99 pid:8769 [8845:27763116:1012/190128.184844:INFO:components/enterprise/browser/controller/chrome_browser_cloud_management_controller.cc:241] No machine level policy manager exists.
+ 0:04.16 pid:8769 Trying to load the allocator multiple times. This is *not* supported.
+ 0:04.20 pid:8769 [1791799288.399][WARNING]: You are using an unsupported command-line switch: --disable-build-check. Please don't report bugs that cannot be reproduced with this switch removed.
+ 0:04.21 pid:8769 [8900:27763283:1012/190128.400920:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:04.21 pid:8769 [8900:27763370:1012/190128.401155:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:04.21 pid:8769 [8900:27763283:1012/190128.401656:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:04.21 pid:8769 [8900:27763370:1012/190128.401701:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:04.21 pid:8769 [8900:27763283:1012/190128.402054:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:04.21 pid:8769 [8900:27763370:1012/190128.402101:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:04.21 pid:8769 [8900:27763283:1012/190128.402226:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:04.21 pid:8769 [8900:27763370:1012/190128.402269:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:04.21 pid:8769 [8900:27763283:1012/190128.402379:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:04.21 pid:8769 [8900:27763370:1012/190128.402420:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:04.28 TEST_START: /css/css-grid/placement/grid-layout-grid-span.html
+ 0:04.48 TEST_END: PASS
+ 0:04.48 TEST_START: /css/css-grid/placement/grid-layout-placement-shorthands.html
+ 0:04.57 TEST_END: PASS
+ 0:04.57 TEST_START: /css/css-grid/placement/grid-placement-using-named-grid-lines-001.html
+ 0:04.73 TEST_END: PASS
+ 0:04.73 INFO Restarting browser for new test group
+ 0:04.78 INFO Closing logging queue
+ 0:04.78 INFO queue closed
+ 0:04.83 INFO Starting WebDriver: /Users/yoonhb/Documents/workspace/spinon/build/wpt-c124-tools/chrome/chromedriver --port=51512 --ignore-explicit-port --url-base=/ --enable-chrome-logs --disable-build-check
+ 0:04.85 INFO Got WebDriver port 51513
+ 0:04.95 pid:9058 Full command: /Users/yoonhb/Documents/workspace/spinon/build/wpt-c124-tools/chrome/chromedriver --port=51512 --ignore-explicit-port --url-base=/ --enable-chrome-logs --disable-build-check
+pid:9058 Starting ChromeDriver 154.0.8037.92 (334b65d254ccc35df4fca82706d1753227b01039-refs/branch-heads/8037@{#1589}) on port 0
+ 0:04.95 pid:9058 Only local connections are allowed.
+ 0:04.95 pid:9058 Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ 0:04.95 pid:9058 ChromeDriver was started successfully on port 51513.
+ 0:04.95 INFO Webdriver started successfully.
+ 0:04.95 INFO Starting runner
+ 0:05.64 pid:9058 [9162:27763963:1012/190129.831555:INFO:components/enterprise/browser/controller/chrome_browser_cloud_management_controller.cc:241] No machine level policy manager exists.
+ 0:05.80 pid:9058 Trying to load the allocator multiple times. This is *not* supported.
+ 0:05.84 pid:9058 [1791799290.029][WARNING]: You are using an unsupported command-line switch: --disable-build-check. Please don't report bugs that cannot be reproduced with this switch removed.
+ 0:05.84 pid:9058 [9229:27764150:1012/190130.031378:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:05.84 pid:9058 [9229:27764285:1012/190130.031673:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:05.84 pid:9058 [9229:27764150:1012/190130.031998:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:05.84 pid:9058 [9229:27764285:1012/190130.032070:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:05.84 pid:9058 [9229:27764150:1012/190130.034779:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:05.84 pid:9058 [9229:27764285:1012/190130.034845:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:05.84 pid:9058 [9229:27764150:1012/190130.034996:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:05.85 pid:9058 [9229:27764285:1012/190130.035039:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:05.85 pid:9058 [9229:27764150:1012/190130.035150:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:05.85 pid:9058 [9229:27764285:1012/190130.035201:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:05.97 TEST_START: /css/css-grid/placement/grid-negative-line-placement-001.html
+ 0:18.75 TEST_END: Test OK. Subtests passed 7/7. Unexpected 0
+ 0:18.75 INFO No more tests
+ 0:18.81 INFO Closing logging queue
+ 0:18.82 INFO queue closed
+ 0:18.88 SUITE_END
+
+web-platform-test
+~~~~~~~~~~~~~~~~~
+Ran 11 checks (7 subtests, 4 tests)
+Expected results: 11
+Unexpected results: 0
+OK
+ 0:18.88 INFO Got 0 unexpected results, with 0 unexpected passes
+ 0:18.88 wptserve INFO Stopped http server on 127.0.0.1:8001
+ 0:18.88 wptserve INFO Stopped http server on 127.0.0.1:8000
+ 0:18.88 wptserve INFO Stopped http server on 127.0.0.1:8002
+ 0:18.88 wptserve INFO Stopped http server on 127.0.0.1:8003
+ 0:18.88 wptserve INFO Stopped http server on 127.0.0.1:8443
+ 0:18.88 wptserve INFO Stopped http server on 127.0.0.1:8444
+ 0:18.88 wptserve INFO Stopped http server on 127.0.0.1:8445
+ 0:18.89 wptserve INFO Stopped http server on 127.0.0.1:8446
+ 0:18.90 wptserve INFO Stopped http server on 127.0.0.1:9000
+ 0:18.90 wptserve INFO Stopped WebTransport over HTTP/3 server on 127.0.0.1:11000
+ 0:19.32 wptserve INFO Close on: (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('127.0.0.1', 8889))
+ 0:19.36 wptserve INFO Close on: (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('127.0.0.1', 8888))
+ 0:19.41 INFO Closing logging queue
+ 0:19.41 INFO queue closed

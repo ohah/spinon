@@ -1,0 +1,4 @@
+AssertionError [ERR_ASSERTION]: numeric-lines: layout ready marker가 없습니다.
+    at compareC1121GridPlacementScene (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/c11-2-1-grid-placement-runtime-compare.mjs:90:10)
+    at saveSceneEvidence (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/c11-2-1-grid-placement-runtime-support.mjs:85:18)
+    at main (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-2-1-grid-placement-android-runtime-matrix.mjs:99:26)

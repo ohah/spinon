@@ -1,0 +1,7 @@
+AssertionError [ERR_ASSERTION]: numeric-lines: success status
+
+'-12' !== '0'
+
+    at compareC1121GridPlacementScene (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/c11-2-1-grid-placement-runtime-compare.mjs:107:10)
+    at saveSceneEvidence (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/c11-2-1-grid-placement-runtime-support.mjs:95:18)
+    at async main (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-2-1-grid-placement-ios-runtime-matrix.mjs:99:20)

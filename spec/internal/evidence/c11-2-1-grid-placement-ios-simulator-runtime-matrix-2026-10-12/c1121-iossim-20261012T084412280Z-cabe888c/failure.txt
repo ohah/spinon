@@ -1,0 +1,8 @@
+AssertionError [ERR_ASSERTION]: numeric-lines: 동일 PID·run·scene SPINON_C1121_GRID_EVAL 로그가 하나여야 합니다.
+
+0 !== 1
+
+    at markerLine (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/c11-2-1-grid-placement-runtime-compare.mjs:12:10)
+    at compareC1121GridPlacementScene (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/c11-2-1-grid-placement-runtime-compare.mjs:62:22)
+    at saveSceneEvidence (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/c11-2-1-grid-placement-runtime-support.mjs:95:18)
+    at async main (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-2-1-grid-placement-ios-runtime-matrix.mjs:99:20)

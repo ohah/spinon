@@ -33,6 +33,8 @@
 + (uint64_t)createRuntimeGpuHostWithC12_2AbsoluteBlockFixture;
 + (uint64_t)createRuntimeGpuHostWithC12_3FixedFixture;
 + (uint64_t)createRuntimeGpuHostWithC12_4StackingFixture;
++ (uint64_t)createRuntimeGpuHostWithC11_1GridFixture;
++ (uint64_t)createRuntimeGpuHostWithC11_1GridSurfacePixelReadbackFixture;
 + (NSString *)runtimeGpuC12_4WorkerStackResidencySample:(uint64_t)handle;
 + (uint64_t)createRuntimeGpuHostWithC12_4SurfaceReadbackFixture;
 + (uint64_t)createRuntimeGpuHostWithC10_3_5PositionedFlexFixture;
@@ -60,6 +62,13 @@
 + (NSString *)evalRuntimeGpuC12_2AbsoluteBlockFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuC12_3FixedFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuC12_4StackingFixture:(uint64_t)handle;
++ (NSString *)evalRuntimeGpuC11_1GridFixture:(uint64_t)handle;
++ (NSString *)evalRuntimeGpuC11_1GridSceneFixture:(uint64_t)handle
+                                       sceneIndex:(uint32_t)sceneIndex;
++ (uint64_t)createRuntimeGpuHostWithC11_2_1GridPlacementFixture;
++ (NSString *)evalRuntimeGpuC11_2_1GridPlacementFixture:(uint64_t)handle
+                                                sceneID:(NSString *)sceneID
+                                                  runID:(NSString *)runID;
 + (NSString *)evalRuntimeGpuC12_4Source:(uint64_t)handle source:(NSString *)source;
 + (NSString *)evalRuntimeGpuC10_3_5PositionedFlexFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuC12_1PositionState:(uint64_t)handle state:(uint32_t)state;
@@ -81,6 +90,9 @@
 + (NSString *)drawRuntimeGpuWgpu:(uint64_t)handle;
 + (NSString *)requestRuntimeGpuSurfacePixelReadbackForTest:(uint64_t)handle
                                                         x:(uint32_t)x y:(uint32_t)y;
++ (NSString *)requestRuntimeGpuC11_1GridSurfacePixelsForTest:(uint64_t)handle
+                                                     sampleXY:(const uint32_t *)sampleXY
+                                                  sampleCount:(NSUInteger)sampleCount;
 + (NSString *)injectNextRuntimeGpuDrawFailure:(uint64_t)handle;
 + (void)destroyRuntimeGpuRenderer:(uint64_t)handle;
 + (void)freeRuntimeGpuHost:(uint64_t)handle;

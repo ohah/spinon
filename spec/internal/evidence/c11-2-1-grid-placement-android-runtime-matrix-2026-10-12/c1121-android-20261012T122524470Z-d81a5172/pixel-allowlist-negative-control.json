@@ -1,0 +1,9 @@
+{
+  "status": "rejected",
+  "runID": "c1121-android-20261012T122524470Z-d81a5172-pixel-allowlist-negative",
+  "processId": 23702,
+  "requestedScene": "deferred-implicit-track",
+  "expectedScene": "numeric-lines",
+  "argumentRejected": true,
+  "pixelCopyStarted": false
+}

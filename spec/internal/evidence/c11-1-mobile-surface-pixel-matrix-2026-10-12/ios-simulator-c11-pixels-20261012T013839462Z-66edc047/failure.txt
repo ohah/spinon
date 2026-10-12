@@ -1,0 +1,11 @@
+AssertionError [ERR_ASSERTION]: 같은 실행의 begin marker가 정확히 하나여야 합니다.
+
+2 !== 1
+
+    at compareC11IOSMetalPixelLogs (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/compare-c11-ios-metal-surface-pixels.mjs:80:10)
+    at runIOS (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-mobile-surface-pixel-matrix.mjs:237:26)
+    at main (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-mobile-surface-pixel-matrix.mjs:262:72)
+    at file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-mobile-surface-pixel-matrix.mjs:308:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)

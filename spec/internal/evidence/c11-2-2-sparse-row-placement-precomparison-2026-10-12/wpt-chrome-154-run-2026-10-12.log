@@ -1,0 +1,29 @@
+/Users/yoonhb/Documents/workspace/spinon/build/wpt-c124-source/_venv3/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Warning: could not load product 'firefox_android' for argument registration: No module named 'mozrunner'
+Warning: could not load product 'firefox' for argument registration: No module named 'mozleak'
+Running 2 tests in web-platform-tests
+
+/Users/yoonhb/Documents/workspace/spinon/build/wpt-c124-source/_venv3/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+  ▶ FAIL [expected PASS] /css/css-grid/placement/grid-layout-grid-span.html
+  └   → /css/css-grid/placement/grid-layout-grid-span.html ['98a8effa1b6b31a15097a86c6245807feedc7f57']
+/css/css-grid/reference/grid-layout-basic-ref.html ['1797ec0ac26a2ee692fff715d91c89bc0ed47c9b']
+
+/Users/yoonhb/Documents/workspace/spinon/build/wpt-c124-source/_venv3/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+  ▶ CRASH [expected OK] /css/css-grid/placement/grid-negative-line-placement-001.html
+
+
+Ran 2 tests finished in 50.7 seconds.
+  • 0 ran as expected. 0 tests skipped.
+  • 1 tests crashed unexpectedly
+  • 1 tests failed unexpectedly
+
+Tests with unexpected results:
+  ▶ FAIL [expected PASS] /css/css-grid/placement/grid-layout-grid-span.html
+  └   → /css/css-grid/placement/grid-layout-grid-span.html ['98a8effa1b6b31a15097a86c6245807feedc7f57']
+/css/css-grid/reference/grid-layout-basic-ref.html ['1797ec0ac26a2ee692fff715d91c89bc0ed47c9b']
+
+  ▶ CRASH [expected OK] /css/css-grid/placement/grid-negative-line-placement-001.html
+

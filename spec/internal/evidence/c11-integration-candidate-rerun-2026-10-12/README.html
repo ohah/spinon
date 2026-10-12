@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>C11 통합 후보 재실행 · 스피논</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0b1020;--panel:#121a2b;--line:#26344d;--text:#edf3ff;--muted:#a7b4c9;--blue:#70b7ff;--green:#55d6a0;--amber:#ffd580}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -10%,#172742 0,transparent 48%),var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    main{width:min(1120px,calc(100% - 32px));margin:auto;padding:28px 0 64px}a{color:var(--blue)}h1,h2{line-height:1.2;letter-spacing:-.025em}h1{font-size:clamp(30px,5vw,46px)}p,li,td{color:var(--muted)}.top{padding:14px 0;border-bottom:1px solid var(--line);color:var(--muted)}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:12px}.card,.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}.value{font-size:23px;font-weight:700;color:var(--green)}.small{font-size:13px;color:var(--muted)}
+    table{width:100%;border-collapse:collapse;display:block;overflow:auto}th,td{padding:10px 12px;border:1px solid var(--line);text-align:left;vertical-align:top}th{background:#172238}.note{padding:14px;border-left:3px solid var(--amber);background:#191d2b;border-radius:0 10px 10px 0}code{font:13px ui-monospace,SFMono-Regular,Menlo,monospace;overflow-wrap:anywhere;color:#c3e0ff}.links{display:flex;flex-wrap:wrap;gap:10px}.links a{padding:8px 11px;border:1px solid var(--line);border-radius:8px;text-decoration:none}
+    @media(max-width:600px){main{width:calc(100% - 24px)}}
+  </style>
+</head>
+<body><main>
+  <div class="top"><a href="/spinon/roadmap.html">스피논 · 구현 현황</a> / C11 통합 후보</div>
+  <h1>C11 통합 후보 모바일 재실행</h1>
+  <p>2026-10-12 · 임시 후보 tree <code>3638b7327ae0074d84d65d27908dc10093fe999b</code>를 기준으로 앱 빌드와 고정 scene 행렬을 다시 실행했습니다.</p>
+  <div class="cards">
+    <div class="card"><div class="value">10 / 40</div><div class="small">C11.1 iOS scene / data node</div></div>
+    <div class="card"><div class="value">36 / 36</div><div class="small">C11.1 표면 표본 · Android와 iOS exact</div></div>
+    <div class="card"><div class="value">6 + 4</div><div class="small">C11.2.1 지원 scene + 기대 거부</div></div>
+    <div class="card"><div class="value">20 / 20</div><div class="small">C11.2.1 플랫폼별 표면 표본 exact</div></div>
+  </div>
+  <h2>검증 범위</h2>
+  <table><thead><tr><th>단계</th><th>Android API 37 AVD</th><th>iPhone 17 Pro / iOS 26.2 Simulator</th></tr></thead><tbody>
+    <tr><td>C11.1 geometry</td><td>실기기만 받는 runtime 도구라 이번 AVD에서 미실행</td><td>10 scene · 40 node · Chrome 154 기준 ±0.5 CSS px 통과</td></tr>
+    <tr><td>C11.1 GPU 표면</td><td>10 scene · PixelCopy 36/36 exact</td><td>10 scene · Metal drawable 36/36 exact</td></tr>
+    <tr><td>C11.2.1 geometry</td><td>10 scene · 성공 6 · 기대 거부 4 · 최대 오차 0 CSS px</td><td>10 scene · 성공 6 · 기대 거부 4 · 최대 오차 0 CSS px</td></tr>
+    <tr><td>C11.2.1 GPU 표면</td><td>PixelCopy 20/20 exact</td><td>Metal drawable 20/20 exact</td></tr>
+  </tbody></table>
+  <h2>실행 자료</h2>
+  <div class="links">
+    <a href="../c11-grid-ios-simulator-2026-10-12/c11-grid-ios-matrix-20261012T134514150Z-2b1302b0/comparison.json">C11.1 iOS geometry JSON</a>
+    <a href="../c11-1-mobile-surface-pixel-matrix-2026-10-12/android-avd-c11-pixels-20261012T134717572Z-0c6669e1/comparison.json">C11.1 Android PixelCopy JSON</a>
+    <a href="../c11-1-mobile-surface-pixel-matrix-2026-10-12/ios-simulator-c11-pixels-20261012T134755249Z-21004660/comparison.json">C11.1 iOS Metal JSON</a>
+    <a href="../c11-2-1-grid-placement-android-runtime-matrix-2026-10-12/c1121-android-20261012T133451214Z-bbb225b3/comparison.json">C11.2.1 Android JSON</a>
+    <a href="../c11-2-1-grid-placement-ios-simulator-runtime-matrix-2026-10-12/c1121-iossim-20261012T133856335Z-0b6d2280/comparison.json">C11.2.1 iOS JSON</a>
+  </div>
+  <p>후보 전체 검사도 통과했습니다: JS 2, CSS reference 297, Android 도구 29, Rust 615·4 ignored, Release depth 1/1, rustfmt와 Clippy.</p>
+  <p class="note">Android는 ANGLE/Vulkan/SwiftShader AVD 소프트웨어 경로라 실기기나 하드웨어 GPU 근거가 아닙니다. Android 실기기 runtime 행렬과 Spinon WPT runner·적합성은 남아 있습니다. 이 결과로 C11 전체 또는 전체 CSS 지원을 완료 처리하지 않습니다.</p>
+</main></body></html>

@@ -11,6 +11,7 @@ mod device;
 mod incremental;
 mod margin;
 mod runtime_block_display;
+mod runtime_grid;
 mod runtime_layout;
 mod runtime_paint;
 mod runtime_stacking;
@@ -18,12 +19,20 @@ mod s04;
 mod snapshot;
 mod ua_baseline;
 
+pub(crate) use device::initialize_stylo_preferences;
+
 pub use incremental::{
     RuntimeCascadeReuseStats, compute_runtime_incremental_cascade_with_stylesheets,
 };
 pub use runtime_block_display::{
     first_unsupported_runtime_block_display_inline_value,
     first_unsupported_runtime_block_display_stylesheet_value,
+};
+pub use runtime_grid::{
+    compute_runtime_block_flex_grid_cascade_with_stylesheets,
+    compute_runtime_block_flex_grid_placement_cascade_with_stylesheets,
+    first_unsupported_runtime_block_flex_grid_inline_property,
+    first_unsupported_runtime_block_flex_grid_placement_inline_property,
 };
 pub use runtime_layout::{
     compute_runtime_flex_custom_properties_cascade,
@@ -65,6 +74,10 @@ mod ua_incremental_profile_tests;
 mod runtime_stacking_tests;
 
 #[cfg(test)]
+#[path = "cascade/runtime_grid_tests.rs"]
+mod runtime_grid_tests;
+
+#[cfg(test)]
 #[path = "cascade/font_relative_units_tests.rs"]
 mod font_relative_units_tests;
 
@@ -79,12 +92,13 @@ mod typed_css_math_tests;
 pub use margin::compute_flex_margin_cascade;
 pub use margin::compute_flex_media_environment_cascade;
 pub use snapshot::{
-    CascadeDiagnostic, ComputedCssDimension, ComputedCssEdges, ComputedCssMath, ComputedCssMaxSize,
-    ComputedCssPosition, ComputedCssSpacingValue, ComputedCssVisibility, ComputedCssZIndex,
-    ComputedElementStyle, ComputedLayoutBorder, ComputedLayoutDimensions, ComputedLayoutInsets,
-    ComputedLayoutSpacing, ComputedStyleProfile, ComputedStyleSnapshot, CssColorScheme,
-    CssMediaEnvironment, CssPointerCapabilities, CssPrimaryPointer, CssViewport,
-    FixedContainingBlockEffect,
+    CascadeDiagnostic, ComputedCssDimension, ComputedCssEdges, ComputedCssGridAutoFlow,
+    ComputedCssGridItemPlacement, ComputedCssGridLayout, ComputedCssGridPlacement,
+    ComputedCssGridTrackSize, ComputedCssMath, ComputedCssMaxSize, ComputedCssPosition,
+    ComputedCssSpacingValue, ComputedCssVisibility, ComputedCssZIndex, ComputedElementStyle,
+    ComputedLayoutBorder, ComputedLayoutDimensions, ComputedLayoutInsets, ComputedLayoutSpacing,
+    ComputedStyleProfile, ComputedStyleSnapshot, CssColorScheme, CssMediaEnvironment,
+    CssPointerCapabilities, CssPrimaryPointer, CssViewport, FixedContainingBlockEffect,
 };
 pub use ua_baseline::compute_supported_elements_ua_cascade;
 
@@ -219,6 +233,17 @@ pub enum CssCascadeError {
         node: NodeId,
         reason: String,
     },
+    /// C11.1 Grid 입력이 명시 track 제한으로 안전하게 표현되지 않습니다.
+    UnsupportedComputedGridValue {
+        node: NodeId,
+        property: &'static str,
+        value: String,
+    },
+    /// C11.1 computed Grid track 목록의 공간을 예약하지 못했습니다.
+    GridAllocationFailure {
+        node: NodeId,
+        property: &'static str,
+    },
     StylesheetRegistry(StylesheetRegistryError),
 }
 
@@ -301,6 +326,18 @@ impl fmt::Display for CssCascadeError {
             Self::UnsupportedComputedAspectRatio { node, reason } => write!(
                 formatter,
                 "노드 {node}의 computed aspect-ratio를 현재 layout 계약으로 표현할 수 없습니다: {reason}"
+            ),
+            Self::UnsupportedComputedGridValue {
+                node,
+                property,
+                value,
+            } => write!(
+                formatter,
+                "노드 {node}의 Grid 속성 {property} 값 {value:?}를 현재 explicit-track profile로 표현할 수 없습니다"
+            ),
+            Self::GridAllocationFailure { node, property } => write!(
+                formatter,
+                "노드 {node}의 Grid 속성 {property} track 공간을 예약하지 못했습니다"
             ),
             Self::StylesheetRegistry(error) => error.fmt(formatter),
         }

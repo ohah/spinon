@@ -1,0 +1,65 @@
+{
+  "schema": "spinon-c11-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c1121-iossim-20261012T194925776Z-70f51679-reversed-lines",
+  "processId": 69815,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 15,
+    "renderTree": 3,
+    "environment": 0
+  },
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "drawable": [
+    960,
+    720
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 2,
+  "matchedSamples": 2,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "item-c1121-reversed-item",
+      "css": [
+        82,
+        19
+      ],
+      "drawable": [
+        247,
+        58
+      ],
+      "rgba": [
+        135,
+        88,
+        255,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "surface-c1121-reverse-grid",
+      "css": [
+        124,
+        42
+      ],
+      "drawable": [
+        373,
+        127
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}

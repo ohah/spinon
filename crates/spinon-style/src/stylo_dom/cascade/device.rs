@@ -12,6 +12,11 @@ use style::{
 
 use super::{CssColorScheme, CssPrimaryPointer, CssViewport};
 
+/// Stylo preference는 프로세스 전역이므로 파서·cascade 진입마다 사용값을 다시 고정합니다.
+pub(crate) fn initialize_stylo_preferences() {
+    stylo_static_prefs::set_pref!("layout.grid.enabled", true);
+}
+
 pub(super) fn make_device(quirks_mode: QuirksMode, viewport: CssViewport) -> Device {
     let font_metrics = FixedFontMetricsProvider;
     let viewport_size = euclid::Size2D::new(viewport.width_css_px, viewport.height_css_px);

@@ -1,0 +1,3 @@
+AssertionError [ERR_ASSERTION]: begin: environment_revision가 없습니다.
+    at compareC11IOSMetalPixelLogs (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/compare-c11-ios-metal-surface-pixels.mjs:91:14)
+    at main (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-ios-metal-surface-pixels.mjs:118:24)

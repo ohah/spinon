@@ -1,0 +1,65 @@
+{
+  "schema": "spinon-css-c11-2-1-grid-placement-inventory/v1",
+  "fixtureId": "C11-2-1-grid-placement-precomparison-v2",
+  "viewport": { "width": 360, "height": 800, "deviceScaleFactors": [1, 2] },
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "forcedColors": "none",
+    "pointer": "coarse",
+    "hover": "none",
+    "direction": "ltr",
+    "writingMode": "horizontal-tb"
+  },
+  "comparison": {
+    "rectFields": ["x", "y", "width", "height"],
+    "maximumAbsoluteRectErrorCssPx": 0.5,
+    "computedProperties": [
+      "display",
+      "grid-template-columns",
+      "grid-template-rows",
+      "grid-row-start",
+      "grid-row-end",
+      "grid-column-start",
+      "grid-column-end"
+    ]
+  },
+  "wpt": {
+    "revision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+    "candidates": [
+      {
+        "path": "css/css-grid/placement/grid-layout-placement-shorthands.html",
+        "sha256": "ab982c18feb208901fdff28be607ef4c63abadc1260eebed382856e0be59efb5",
+        "stage": "고정 WPT 원문 후보만 보존; auto end를 포함하므로 이번 Spinon 범위의 적합성 판정에 실행하지 않음"
+      },
+      {
+        "path": "css/css-grid/placement/grid-layout-grid-span.html",
+        "sha256": "1be809e54f1b7398112923acd60ef423735934b528ff42c1a8f3b326adbebef7",
+        "stage": "고정 WPT 원문 후보만 보존; auto-placement가 포함되어 이번 제한 profile의 적합성 판정에 실행하지 않음"
+      },
+      {
+        "path": "css/css-grid/placement/grid-negative-line-placement-001.html",
+        "sha256": "e5d17120d87170282d2522ec483d751c6f7db9ac23ec09d2a540cce305d81d31",
+        "stage": "고정 WPT 원문 후보만 보존; implicit track 및 auto-placement가 포함되어 이번 범위에 미실행"
+      },
+      {
+        "path": "css/css-grid/placement/grid-placement-using-named-grid-lines-001.html",
+        "sha256": "d31717c0e82d8030f0a99070a5e98333be71c2cc834e36950ae5b5d303fd180e",
+        "stage": "고정 WPT 원문 후보만 보존; named line은 이번 profile 미지원이므로 미실행"
+      }
+    ]
+  },
+  "cases": [
+    { "id": "numeric-lines", "scope": "implementation-candidate", "rootId": "c1121-numeric-grid", "nodeIds": ["c1121-numeric-grid", "c1121-positive-lines", "c1121-negative-lines"] },
+    { "id": "positive-spans", "scope": "implementation-candidate", "rootId": "c1121-span-grid", "nodeIds": ["c1121-span-grid", "c1121-span-from-start", "c1121-span-from-end"] },
+    { "id": "reversed-lines", "scope": "implementation-candidate", "rootId": "c1121-reverse-grid", "nodeIds": ["c1121-reverse-grid", "c1121-reversed-item"] },
+    { "id": "shorthand-cascade", "scope": "implementation-candidate", "rootId": "c1121-shorthand-grid", "nodeIds": ["c1121-shorthand-grid", "c1121-grid-area-item", "c1121-cascade-item"] },
+    { "id": "overlap-source-order", "scope": "implementation-candidate", "rootId": "c1121-overlap-grid", "nodeIds": ["c1121-overlap-grid", "c1121-overlap-first", "c1121-overlap-second"] },
+    { "id": "nested-placement-modes", "scope": "implementation-candidate", "rootId": "c1121-nested-outer", "nodeIds": ["c1121-nested-outer", "c1121-nested-auto-grid", "c1121-nested-auto-a", "c1121-nested-auto-b", "c1121-nested-explicit-grid", "c1121-nested-explicit-a", "c1121-nested-explicit-b"] },
+    { "id": "deferred-implicit-track", "scope": "chromium-oracle-only", "rootId": "c1121-implicit-grid", "nodeIds": ["c1121-implicit-grid", "c1121-implicit-item"] },
+    { "id": "deferred-named-line", "scope": "chromium-oracle-only", "rootId": "c1121-named-grid", "nodeIds": ["c1121-named-grid", "c1121-named-item"] },
+    { "id": "deferred-mixed-auto-explicit", "scope": "chromium-oracle-only", "rootId": "c1121-mixed-grid", "nodeIds": ["c1121-mixed-grid", "c1121-mixed-definite", "c1121-mixed-auto"] },
+    { "id": "deferred-equal-lines", "scope": "chromium-oracle-only", "rootId": "c1121-equal-grid", "nodeIds": ["c1121-equal-grid", "c1121-equal-item"] }
+  ]
+}

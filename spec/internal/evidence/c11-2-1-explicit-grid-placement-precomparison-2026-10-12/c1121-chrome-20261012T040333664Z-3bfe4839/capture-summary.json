@@ -1,0 +1,48 @@
+{
+  "runId": "c1121-chrome-20261012T040333664Z-3bfe4839",
+  "referencePath": "tests/fixtures/css/references/c11-grid-placement-precomparison-v1.json",
+  "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.98-bfa58db8d988-8ddc90559152-3922b9120848",
+  "screenshotCount": 10,
+  "caseCount": 10,
+  "nodeCount": 30,
+  "implementationCandidateCases": [
+    "numeric-lines",
+    "positive-spans",
+    "reversed-lines",
+    "shorthand-cascade",
+    "overlap-source-order",
+    "nested-placement-modes"
+  ],
+  "oracleOnlyCases": [
+    "deferred-implicit-track",
+    "deferred-named-line",
+    "deferred-mixed-auto-explicit",
+    "deferred-equal-lines"
+  ],
+  "dpr": [
+    1,
+    2
+  ],
+  "wptCandidatesHashedNotExecuted": [
+    {
+      "path": "css/css-grid/placement/grid-layout-placement-shorthands.html",
+      "sha256": "ab982c18feb208901fdff28be607ef4c63abadc1260eebed382856e0be59efb5",
+      "stage": "고정 WPT 원문 후보만 보존; auto end를 포함하므로 이번 Spinon 범위의 적합성 판정에 실행하지 않음"
+    },
+    {
+      "path": "css/css-grid/placement/grid-layout-grid-span.html",
+      "sha256": "1be809e54f1b7398112923acd60ef423735934b528ff42c1a8f3b326adbebef7",
+      "stage": "고정 WPT 원문 후보만 보존; auto-placement가 포함되어 이번 제한 profile의 적합성 판정에 실행하지 않음"
+    },
+    {
+      "path": "css/css-grid/placement/grid-negative-line-placement-001.html",
+      "sha256": "e5d17120d87170282d2522ec483d751c6f7db9ac23ec09d2a540cce305d81d31",
+      "stage": "고정 WPT 원문 후보만 보존; implicit track 및 auto-placement가 포함되어 이번 범위에 미실행"
+    },
+    {
+      "path": "css/css-grid/placement/grid-placement-using-named-grid-lines-001.html",
+      "sha256": "d31717c0e82d8030f0a99070a5e98333be71c2cc834e36950ae5b5d303fd180e",
+      "stage": "고정 WPT 원문 후보만 보존; named line은 이번 profile 미지원이므로 미실행"
+    }
+  ]
+}

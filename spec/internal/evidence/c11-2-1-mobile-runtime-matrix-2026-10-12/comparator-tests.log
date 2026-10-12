@@ -1,0 +1,13 @@
+$ node --test tools/css-reference/c11-2-1-grid-placement-runtime-compare.test.mjs
+✔ 6개 success scene은 전체 frame, WGPU 제출 및 겹침 paint 순서를 확인한다 (1.65375ms)
+✔ 4개 profile 밖 scene은 정확한 code·NodeId·property와 미제출을 요구한다 (0.174458ms)
+✔ runner 오염·오류 진단 변경·frame 누락·geometry 변이·미제출·겹침 순서 오류는 실패한다 (0.909958ms)
+✔ 중복 frame은 내용이 같아야 하며 다른 중복 report는 실패한다 (0.324833ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 53.783584

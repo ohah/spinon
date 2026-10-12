@@ -1,0 +1,146 @@
+{
+  "schema": "spinon-c11-2-1-grid-placement-pixels-result/v1",
+  "status": "matched",
+  "runID": "c1121-pixels-20261012T054954356Z-a1434f59",
+  "target": "ios-simulator",
+  "fixture": {
+    "path": "tests/fixtures/css/c11/grid-placement-pixel-samples.json",
+    "sha256": "0b7f86661312e527fd620be9a8de8a553246f0d90ed7954837af69409ae2614f",
+    "sampleCount": 5
+  },
+  "oracle": {
+    "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.98-b2801e708e4c-e9b080bbc659-4da07e3a6f1d",
+    "referenceSha256": "5bbbd041e2e59fda32c684f7290f61bff41ab6dda9ab9f77ce2fb36f0e0ee034",
+    "screenshotSha256": "8578e98913c343eb79ce2aa8dd7daf3549a5f54f4ef1cc01ebbbb87e2aca3b3c",
+    "product": "Chrome/154.0.8037.98",
+    "scene": "numeric-lines",
+    "deviceScaleFactor": 1
+  },
+  "device": {
+    "name": "iPhone 17 Pro",
+    "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2"
+  },
+  "renderer": "WGPU Metal drawable texture before compositor submission",
+  "appBinarySha256": "07c9f427640d7d4cfea9549311f2954647249a2695e23fd85b500512925306e8",
+  "comparison": {
+    "schema": "spinon-c11-ios-metal-surface-pixels/v1",
+    "status": "matched",
+    "runID": "c1121-pixels-20261012T054954356Z-a1434f59",
+    "processId": 31202,
+    "surfaceGeneration": 1,
+    "revisions": {
+      "document": 19,
+      "renderTree": 4,
+      "environment": 0
+    },
+    "runtimeViewportCssPx": [
+      320,
+      240
+    ],
+    "drawable": [
+      960,
+      720
+    ],
+    "scale": [
+      3,
+      3
+    ],
+    "expectedSamples": 5,
+    "matchedSamples": 5,
+    "maximumChannelError": 0,
+    "samples": [
+      {
+        "id": "grid-background",
+        "css": [
+          240,
+          20
+        ],
+        "drawable": [
+          721,
+          61
+        ],
+        "rgba": [
+          237,
+          241,
+          247,
+          255
+        ],
+        "maximumChannelError": 0
+      },
+      {
+        "id": "positive-lines",
+        "css": [
+          20,
+          20
+        ],
+        "drawable": [
+          61,
+          61
+        ],
+        "rgba": [
+          40,
+          102,
+          246,
+          255
+        ],
+        "maximumChannelError": 0
+      },
+      {
+        "id": "negative-lines",
+        "css": [
+          185,
+          60
+        ],
+        "drawable": [
+          556,
+          181
+        ],
+        "rgba": [
+          229,
+          72,
+          77,
+          255
+        ],
+        "maximumChannelError": 0
+      },
+      {
+        "id": "column-gap",
+        "css": [
+          167,
+          10
+        ],
+        "drawable": [
+          502,
+          31
+        ],
+        "rgba": [
+          237,
+          241,
+          247,
+          255
+        ],
+        "maximumChannelError": 0
+      },
+      {
+        "id": "row-gap",
+        "css": [
+          10,
+          42
+        ],
+        "drawable": [
+          31,
+          127
+        ],
+        "rgba": [
+          237,
+          241,
+          247,
+          255
+        ],
+        "maximumChannelError": 0
+      }
+    ]
+  },
+  "screenshotSha256": "f7bac6d212867534fc2ba84096d45a8eb032c25ae8256e191ec601fba95231c5"
+}

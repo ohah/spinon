@@ -1,0 +1,473 @@
+{
+  "schema": "spinon-css-c11-2-1-mobile-surface-pixel-matrix/v1",
+  "fixtureId": "c11-2-1-grid-placement-mobile-surface-pixels",
+  "runtime": {
+    "viewportCssPx": {
+      "width": 320,
+      "height": 240
+    },
+    "surface": "Android SurfaceView PixelCopy 또는 iOS WGPU Metal drawable, compositor 제출 전",
+    "devicePixelFormula": "floor((cssPx + 0.5) * drawablePixels / runtimeViewportCssPx)",
+    "maximumChannelError": 0
+  },
+  "inputs": {
+    "inventory": {
+      "path": "tests/fixtures/css/c11/grid-placement-inventory.json",
+      "sha256": "b2801e708e4c1ad540e119dcdba04d7c215e4029d5ec5627683e15ede8ef368b"
+    },
+    "html": {
+      "path": "tests/fixtures/css/c11/grid-placement.html",
+      "sha256": "e9b080bbc65901b17f7dead60eb8071df8ecbefee2ea62f1318776848e75f78d"
+    },
+    "runtimeMatrix": {
+      "path": "tests/fixtures/css/c11/grid-placement-runtime-matrix.json",
+      "sha256": "b5b20ce4ccf466a2abc6e1a049095d2eae21d56fee7dc39d19127be29f3b4eff"
+    },
+    "generator": {
+      "path": "tools/css-reference/build-c11-2-1-grid-placement-pixel-matrix.mjs",
+      "sha256": "9d853182d8698ecc7a655bf930ae6e89729ea58a7b494a2ffc5727447f670803"
+    }
+  },
+  "oracle": {
+    "name": "Google Chrome",
+    "product": "Chrome/154.0.8037.98",
+    "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.98-b2801e708e4c-e9b080bbc659-4da07e3a6f1d",
+    "referencePath": "tests/fixtures/css/references/c11-grid-placement-precomparison-v2.json",
+    "referenceSha256": "5bbbd041e2e59fda32c684f7290f61bff41ab6dda9ab9f77ce2fb36f0e0ee034",
+    "viewportCssPx": {
+      "width": 360,
+      "height": 800
+    },
+    "deviceScaleFactor": 1
+  },
+  "summary": {
+    "sceneCount": 10,
+    "pixelSceneCount": 6,
+    "expectedRejectCount": 4,
+    "sampleCount": 20
+  },
+  "cases": [
+    {
+      "id": "numeric-lines",
+      "index": 0,
+      "sourceSha256": "197ae8ee01ebf3829c456ad3d0b8402e494da6a06fb50f659a88fb63f8d4f2c7",
+      "chromeScreenshot": {
+        "path": "spec/internal/evidence/c11-2-1-explicit-grid-placement-precomparison-2026-10-12/c1121-chrome-20261012T042323478Z-300993a2/numeric-lines-dpr1.png",
+        "sha256": "8578e98913c343eb79ce2aa8dd7daf3549a5f54f4ef1cc01ebbbb87e2aca3b3c"
+      },
+      "outcome": "surface-pixel-compare",
+      "nodeIds": [
+        "c1121-numeric-grid",
+        "c1121-positive-lines",
+        "c1121-negative-lines"
+      ],
+      "samples": [
+        {
+          "id": "item-c1121-positive-lines",
+          "nodeId": "c1121-positive-lines",
+          "xCssPx": 82,
+          "yCssPx": 19,
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        },
+        {
+          "id": "item-c1121-negative-lines",
+          "nodeId": "c1121-negative-lines",
+          "xCssPx": 209,
+          "yCssPx": 64,
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ]
+        },
+        {
+          "id": "surface-c1121-numeric-grid",
+          "nodeId": "c1121-numeric-grid",
+          "xCssPx": 124,
+          "yCssPx": 42,
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ]
+        }
+      ],
+      "occludedNodeIds": []
+    },
+    {
+      "id": "positive-spans",
+      "index": 1,
+      "sourceSha256": "7458e5e2cbfd1fd5acdea4108d1e5222039f12fbdcf1e7328943e020c499ad6c",
+      "chromeScreenshot": {
+        "path": "spec/internal/evidence/c11-2-1-explicit-grid-placement-precomparison-2026-10-12/c1121-chrome-20261012T042323478Z-300993a2/positive-spans-dpr1.png",
+        "sha256": "e6d12290ef457634e3702efd2654108ee7b834acee17b65d0cc18b5a7aa5fade"
+      },
+      "outcome": "surface-pixel-compare",
+      "nodeIds": [
+        "c1121-span-grid",
+        "c1121-span-from-start",
+        "c1121-span-from-end"
+      ],
+      "samples": [
+        {
+          "id": "item-c1121-span-from-start",
+          "nodeId": "c1121-span-from-start",
+          "xCssPx": 82,
+          "yCssPx": 42,
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        },
+        {
+          "id": "item-c1121-span-from-end",
+          "nodeId": "c1121-span-from-end",
+          "xCssPx": 167,
+          "yCssPx": 64,
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ]
+        },
+        {
+          "id": "surface-c1121-span-grid",
+          "nodeId": "c1121-span-grid",
+          "xCssPx": 166,
+          "yCssPx": 42,
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ]
+        }
+      ],
+      "occludedNodeIds": []
+    },
+    {
+      "id": "reversed-lines",
+      "index": 2,
+      "sourceSha256": "2a29580ae1f8ef7b7815f2bcfe1fde9de650bb61b0e5a309a27b321292451f1a",
+      "chromeScreenshot": {
+        "path": "spec/internal/evidence/c11-2-1-explicit-grid-placement-precomparison-2026-10-12/c1121-chrome-20261012T042323478Z-300993a2/reversed-lines-dpr1.png",
+        "sha256": "31fd1f4483af490d0959c5ea9c93d91c2b50baaa955e9be0e2234f410f5b0398"
+      },
+      "outcome": "surface-pixel-compare",
+      "nodeIds": [
+        "c1121-reverse-grid",
+        "c1121-reversed-item"
+      ],
+      "samples": [
+        {
+          "id": "item-c1121-reversed-item",
+          "nodeId": "c1121-reversed-item",
+          "xCssPx": 82,
+          "yCssPx": 19,
+          "rgba": [
+            135,
+            88,
+            255,
+            255
+          ]
+        },
+        {
+          "id": "surface-c1121-reverse-grid",
+          "nodeId": "c1121-reverse-grid",
+          "xCssPx": 124,
+          "yCssPx": 42,
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ]
+        }
+      ],
+      "occludedNodeIds": []
+    },
+    {
+      "id": "shorthand-cascade",
+      "index": 3,
+      "sourceSha256": "73cccda76a09be7311ed82e1527d6a300e4262d2bd2f2cd32af14f00164bd45b",
+      "chromeScreenshot": {
+        "path": "spec/internal/evidence/c11-2-1-explicit-grid-placement-precomparison-2026-10-12/c1121-chrome-20261012T042323478Z-300993a2/shorthand-cascade-dpr1.png",
+        "sha256": "2d91d956f8d4525024eca23447474c3ddee2af5ae894ebc21a739d52c302da12"
+      },
+      "outcome": "surface-pixel-compare",
+      "nodeIds": [
+        "c1121-shorthand-grid",
+        "c1121-grid-area-item",
+        "c1121-cascade-item"
+      ],
+      "samples": [
+        {
+          "id": "item-c1121-grid-area-item",
+          "nodeId": "c1121-grid-area-item",
+          "xCssPx": 82,
+          "yCssPx": 42,
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        },
+        {
+          "id": "item-c1121-cascade-item",
+          "nodeId": "c1121-cascade-item",
+          "xCssPx": 124,
+          "yCssPx": 19,
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ]
+        },
+        {
+          "id": "surface-c1121-shorthand-grid",
+          "nodeId": "c1121-shorthand-grid",
+          "xCssPx": 166,
+          "yCssPx": 42,
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ]
+        }
+      ],
+      "occludedNodeIds": []
+    },
+    {
+      "id": "overlap-source-order",
+      "index": 4,
+      "sourceSha256": "abb46c99dd384dd2abfe69bce39e9c9f468f8974c7d75d2ca5d01b24f35e9263",
+      "chromeScreenshot": {
+        "path": "spec/internal/evidence/c11-2-1-explicit-grid-placement-precomparison-2026-10-12/c1121-chrome-20261012T042323478Z-300993a2/overlap-source-order-dpr1.png",
+        "sha256": "3d712e3833ff70b9d9ee6b046bc9e751a6fc1c010fade33146e18850d0114ed3"
+      },
+      "outcome": "surface-pixel-compare",
+      "nodeIds": [
+        "c1121-overlap-grid",
+        "c1121-overlap-first",
+        "c1121-overlap-second"
+      ],
+      "samples": [
+        {
+          "id": "item-c1121-overlap-second",
+          "nodeId": "c1121-overlap-second",
+          "xCssPx": 82,
+          "yCssPx": 42,
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ]
+        },
+        {
+          "id": "surface-c1121-overlap-grid",
+          "nodeId": "c1121-overlap-grid",
+          "xCssPx": 166,
+          "yCssPx": 42,
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ]
+        }
+      ],
+      "occludedNodeIds": [
+        "c1121-overlap-first"
+      ]
+    },
+    {
+      "id": "nested-placement-modes",
+      "index": 5,
+      "sourceSha256": "b3bd611684404eacbbab6a9a9fca468b7b1f7781c71740b74f2541c1f95f76e4",
+      "chromeScreenshot": {
+        "path": "spec/internal/evidence/c11-2-1-explicit-grid-placement-precomparison-2026-10-12/c1121-chrome-20261012T042323478Z-300993a2/nested-placement-modes-dpr1.png",
+        "sha256": "763e402787a7a3fa896a035c27a35e914ada614a06c27b5848bf393b7f9175c2"
+      },
+      "outcome": "surface-pixel-compare",
+      "nodeIds": [
+        "c1121-nested-outer",
+        "c1121-nested-auto-grid",
+        "c1121-nested-auto-a",
+        "c1121-nested-auto-b",
+        "c1121-nested-explicit-grid",
+        "c1121-nested-explicit-a",
+        "c1121-nested-explicit-b"
+      ],
+      "samples": [
+        {
+          "id": "item-c1121-nested-auto-grid",
+          "nodeId": "c1121-nested-auto-grid",
+          "xCssPx": 59,
+          "yCssPx": 29,
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        },
+        {
+          "id": "item-c1121-nested-auto-a",
+          "nodeId": "c1121-nested-auto-a",
+          "xCssPx": 9,
+          "yCssPx": 9,
+          "rgba": [
+            25,
+            169,
+            116,
+            255
+          ]
+        },
+        {
+          "id": "item-c1121-nested-auto-b",
+          "nodeId": "c1121-nested-auto-b",
+          "xCssPx": 74,
+          "yCssPx": 9,
+          "rgba": [
+            255,
+            200,
+            87,
+            255
+          ]
+        },
+        {
+          "id": "item-c1121-nested-explicit-grid",
+          "nodeId": "c1121-nested-explicit-grid",
+          "xCssPx": 189,
+          "yCssPx": 29,
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ]
+        },
+        {
+          "id": "item-c1121-nested-explicit-a",
+          "nodeId": "c1121-nested-explicit-a",
+          "xCssPx": 222,
+          "yCssPx": 29,
+          "rgba": [
+            135,
+            88,
+            255,
+            255
+          ]
+        },
+        {
+          "id": "item-c1121-nested-explicit-b",
+          "nodeId": "c1121-nested-explicit-b",
+          "xCssPx": 157,
+          "yCssPx": 29,
+          "rgba": [
+            14,
+            165,
+            233,
+            255
+          ]
+        },
+        {
+          "id": "surface-c1121-nested-outer",
+          "nodeId": "c1121-nested-outer",
+          "xCssPx": 124,
+          "yCssPx": 29,
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ]
+        }
+      ],
+      "occludedNodeIds": []
+    },
+    {
+      "id": "deferred-implicit-track",
+      "index": 6,
+      "sourceSha256": "4faa0dbbc7ff86b5463890c64a4e01a3f47c870b200345b7b1a98cc66ecc4bb6",
+      "chromeScreenshot": {
+        "path": "spec/internal/evidence/c11-2-1-explicit-grid-placement-precomparison-2026-10-12/c1121-chrome-20261012T042323478Z-300993a2/deferred-implicit-track-dpr1.png",
+        "sha256": "cf54a1cb69c8f35bdc9d2fd092455e8f48fb1f18a07b805447637af047160ffa"
+      },
+      "outcome": "expected-rejection",
+      "expected": {
+        "outcome": "expected-rejection",
+        "code": "invalid_grid_placement",
+        "nodeId": "c1121-implicit-item",
+        "property": "grid-column-start",
+        "runtimeNodeId": 3
+      }
+    },
+    {
+      "id": "deferred-named-line",
+      "index": 7,
+      "sourceSha256": "7e52d17ccabb0638f016d13a7a289cfe7c92e6960bab71b60ed6c5f5a3aee8a9",
+      "chromeScreenshot": {
+        "path": "spec/internal/evidence/c11-2-1-explicit-grid-placement-precomparison-2026-10-12/c1121-chrome-20261012T042323478Z-300993a2/deferred-named-line-dpr1.png",
+        "sha256": "e1f2b2e7a10b39ef30d030116d2ebb9f8029d1cdfc7a9a2612f087041966b194"
+      },
+      "outcome": "expected-rejection",
+      "expected": {
+        "outcome": "expected-rejection",
+        "code": "cascade_failed",
+        "nodeId": null,
+        "property": null,
+        "diagnosticIncludes": "grid-template-columns",
+        "runtimeNodeId": null
+      }
+    },
+    {
+      "id": "deferred-mixed-auto-explicit",
+      "index": 8,
+      "sourceSha256": "9825bfaa5ea60746ec94eee07e972fc7cea6023f637f85db14bd417f899eaee5",
+      "chromeScreenshot": {
+        "path": "spec/internal/evidence/c11-2-1-explicit-grid-placement-precomparison-2026-10-12/c1121-chrome-20261012T042323478Z-300993a2/deferred-mixed-auto-explicit-dpr1.png",
+        "sha256": "d13db7062aa1bb69ca56e18d1d53b4cb3ae8ecc4e1254cf2c02ce79a6a7b529d"
+      },
+      "outcome": "expected-rejection",
+      "expected": {
+        "outcome": "expected-rejection",
+        "code": "invalid_grid_placement",
+        "nodeId": "c1121-mixed-auto",
+        "property": "grid-row-start",
+        "runtimeNodeId": 4
+      }
+    },
+    {
+      "id": "deferred-equal-lines",
+      "index": 9,
+      "sourceSha256": "542100f266c457d0ed8e77f10e9f9be4b620b2c50bb90de629904bdf2aa8a9a6",
+      "chromeScreenshot": {
+        "path": "spec/internal/evidence/c11-2-1-explicit-grid-placement-precomparison-2026-10-12/c1121-chrome-20261012T042323478Z-300993a2/deferred-equal-lines-dpr1.png",
+        "sha256": "83629ac68f8953ae2cbe27cb00edefde72d42849bb4e1a1d6c6fa1c825dd8507"
+      },
+      "outcome": "expected-rejection",
+      "expected": {
+        "outcome": "expected-rejection",
+        "code": "invalid_grid_placement",
+        "nodeId": "c1121-equal-item",
+        "property": "grid-column-end",
+        "runtimeNodeId": 3
+      }
+    }
+  ]
+}

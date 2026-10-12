@@ -54,6 +54,8 @@ fn percentage_dimensions_resolve_against_parent_content_box_without_clamping() {
             percentage_node(over, 1.25, 1.25),
             percentage_node(zero, 0.0, 0.0),
         ],
+        grid_containers: Default::default(),
+        grid_items: Default::default(),
     };
 
     let output = TaffyLayoutEngine.compute(&input).unwrap();
@@ -120,6 +122,8 @@ fn percentage_flex_basis_uses_the_container_main_axis() {
             flex_basis_node(column_half, 0.5, 80.0, 10.0),
             flex_basis_node(column_quarter, 0.25, 80.0, 10.0),
         ],
+        grid_containers: Default::default(),
+        grid_items: Default::default(),
     };
 
     let output = TaffyLayoutEngine.compute(&input).unwrap();
@@ -161,6 +165,8 @@ fn viewport_resolving_root_accepts_full_and_partial_percentage_dimensions() {
                 ..LayoutStyle::default()
             },
         }],
+        grid_containers: Default::default(),
+        grid_items: Default::default(),
     };
     let output = TaffyLayoutEngine.compute(&input).unwrap();
     assert_eq!(output.frames[&root].width, 320.0);
@@ -231,6 +237,8 @@ fn percentage_margin_and_padding_keep_the_containing_block_width_basis() {
                 style: child_style,
             },
         ],
+        grid_containers: Default::default(),
+        grid_items: Default::default(),
     };
 
     let output = TaffyLayoutEngine.compute(&input).unwrap();
@@ -311,6 +319,8 @@ fn percentage_gap_uses_the_definite_main_axis_content_size() {
                 },
             },
         ],
+        grid_containers: Default::default(),
+        grid_items: Default::default(),
     };
 
     let output = TaffyLayoutEngine.compute(&input).unwrap();
@@ -361,6 +371,8 @@ fn cyclic_column_gap_fails_with_node_property_and_axis() {
             },
             fixed_node_with_children(child, &[], 20.0, 10.0),
         ],
+        grid_containers: Default::default(),
+        grid_items: Default::default(),
     };
     assert_eq!(
         TaffyLayoutEngine.compute(&input),
@@ -470,5 +482,7 @@ fn simple_percent_input(value: f32) -> LayoutInput {
                 },
             },
         ],
+        grid_containers: Default::default(),
+        grid_items: Default::default(),
     }
 }

@@ -7,7 +7,9 @@ use spinon_core::{
     HostParent, OwnerId,
 };
 use spinon_render::StaticRenderSnapshot;
-use spinon_style::{CssOrigin, CssViewport, StylesheetSource, StyloDocumentView};
+use spinon_style::{
+    CssMediaEnvironment, CssOrigin, CssViewport, StylesheetSource, StyloDocumentView,
+};
 use spinon_style_to_layout::compute_s04_style_layout;
 use spinon_style_to_render::{
     build_s04_static_render_snapshot, FixtureNodeMapping, RenderFixtureProvenance,
@@ -103,6 +105,7 @@ fn build_snapshot_from(
             "viewport.deviceScaleFactor",
         )?,
         environment_revision: Default::default(),
+        media_environment: CssMediaEnvironment::DESKTOP,
     };
     let nodes = create_fixture_document(&preorder, &root_id)?;
     let root = *nodes

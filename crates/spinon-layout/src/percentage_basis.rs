@@ -9,15 +9,15 @@ use crate::{
 };
 
 #[derive(Clone, Copy, Debug, Default)]
-struct DefiniteAxes {
-    width: bool,
-    height: bool,
+pub(super) struct DefiniteAxes {
+    pub(super) width: bool,
+    pub(super) height: bool,
 }
 
 pub(super) fn validate_spacing_percentage_bases(
     input: &LayoutInput,
     index: &BTreeMap<NodeId, usize>,
-) -> Result<(), LayoutError> {
+) -> Result<BTreeMap<NodeId, DefiniteAxes>, LayoutError> {
     let calc_percentages = input
         .css_math
         .iter()
@@ -135,7 +135,7 @@ pub(super) fn validate_spacing_percentage_bases(
             }
         };
         if !is_hidden {
-            if id == input.root {
+            if id == input.root && node.style.display != LayoutDisplay::Grid {
                 validate_root_gap_percentage(node, &calc_percentages)?;
             }
             validate_edge_percentages(node, sizing_parent_axes, &calc_percentages)?;
@@ -157,7 +157,7 @@ pub(super) fn validate_spacing_percentage_bases(
         definite.insert(id, axes);
         pending.extend(node.children.iter().rev().copied());
     }
-    Ok(())
+    Ok(definite)
 }
 
 fn owner_axes(
@@ -304,7 +304,10 @@ fn root_axes(
                 LayoutDimension::Auto => {
                     matches!(
                         node.style.display,
-                        LayoutDisplay::Block | LayoutDisplay::FlowRoot | LayoutDisplay::Flex
+                        LayoutDisplay::Block
+                            | LayoutDisplay::FlowRoot
+                            | LayoutDisplay::Flex
+                            | LayoutDisplay::Grid
                     )
                 }
             },
@@ -330,7 +333,7 @@ fn is_axis_definite(
             let block_auto_width = matches!(axis, LayoutAxis::Width)
                 && matches!(
                     parent.style.display,
-                    LayoutDisplay::Block | LayoutDisplay::FlowRoot
+                    LayoutDisplay::Block | LayoutDisplay::FlowRoot | LayoutDisplay::Grid
                 )
                 && parent_axes.width;
             let stretched_cross_size = parent.style.display == LayoutDisplay::Flex
@@ -410,23 +413,28 @@ fn validate_main_axis_gap(
     definite: DefiniteAxes,
     calc_percentages: &BTreeMap<LayoutCalcId, bool>,
 ) -> Result<(), LayoutError> {
-    if node.style.display != LayoutDisplay::Flex {
-        return Ok(());
-    }
-    let (property, value, axis, is_definite) = match node.style.flex_direction {
-        FlexDirection::Row | FlexDirection::RowReverse => {
-            ("column-gap", node.style.gap.column, "width", definite.width)
-        }
-        FlexDirection::Column | FlexDirection::ColumnReverse => {
-            ("row-gap", node.style.gap.row, "height", definite.height)
-        }
+    let flex_row = [("column-gap", node.style.gap.column, "width", definite.width)];
+    let flex_column = [("row-gap", node.style.gap.row, "height", definite.height)];
+    let grid_gaps = [
+        ("column-gap", node.style.gap.column, "width", definite.width),
+        ("row-gap", node.style.gap.row, "height", definite.height),
+    ];
+    let gaps = match node.style.display {
+        LayoutDisplay::Flex => match node.style.flex_direction {
+            FlexDirection::Row | FlexDirection::RowReverse => flex_row.as_slice(),
+            FlexDirection::Column | FlexDirection::ColumnReverse => flex_column.as_slice(),
+        },
+        LayoutDisplay::Grid => grid_gaps.as_slice(),
+        LayoutDisplay::Block | LayoutDisplay::FlowRoot | LayoutDisplay::None => return Ok(()),
     };
-    if has_percentage(value, calc_percentages) && !is_definite {
-        return Err(LayoutError::IndefinitePercentageBasis {
-            node: node.id,
-            property,
-            axis,
-        });
+    for &(property, value, axis, is_definite) in gaps {
+        if has_percentage(value, calc_percentages) && !is_definite {
+            return Err(LayoutError::IndefinitePercentageBasis {
+                node: node.id,
+                property,
+                axis,
+            });
+        }
     }
     Ok(())
 }

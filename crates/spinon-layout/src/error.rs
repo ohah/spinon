@@ -77,6 +77,49 @@ pub enum LayoutError {
         property: &'static str,
         reason: &'static str,
     },
+    UnknownGridContainer(NodeId),
+    UnknownGridItem(NodeId),
+    UnexpectedGridContainer(NodeId),
+    UnexpectedGridItem(NodeId),
+    MissingGridContainer(NodeId),
+    InvalidGridTrackList {
+        node: NodeId,
+        property: &'static str,
+    },
+    InvalidGridTrack {
+        node: NodeId,
+        property: &'static str,
+    },
+    GridTrackLimitExceeded {
+        node: NodeId,
+        property: &'static str,
+        count: usize,
+        maximum: usize,
+    },
+    GridTrackExpansionOverflow(NodeId),
+    UnsupportedGridAutoFlow(NodeId),
+    UnsupportedGridPlacement(NodeId),
+    InvalidGridPlacement {
+        node: NodeId,
+        property: &'static str,
+        reason: &'static str,
+    },
+    UnsupportedGridOrder(NodeId),
+    UnsupportedGridPositionedItem(NodeId),
+    UnsupportedGridItemSize(NodeId),
+    UnsupportedGridItemConstraint {
+        node: NodeId,
+        property: &'static str,
+    },
+    GridImplicitTrackRequired(NodeId),
+    IndefiniteGridBasis {
+        node: NodeId,
+        axis: &'static str,
+    },
+    GridAllocationFailure {
+        node: NodeId,
+        property: &'static str,
+    },
     UnknownCssMathHandle,
     TooManyNodes,
     Taffy(String),
@@ -190,6 +233,117 @@ impl fmt::Display for LayoutError {
                 formatter,
                 "노드 {node}의 {property} CSS 계산식을 안전하게 평가할 수 없습니다: {reason}"
             ),
+            Self::UnknownGridContainer(id) => {
+                write!(formatter, "Grid container 입력의 노드 {id}가 없습니다")
+            }
+            Self::UnknownGridItem(id) => {
+                write!(formatter, "Grid item 입력의 노드 {id}가 없습니다")
+            }
+            Self::UnexpectedGridContainer(id) => {
+                write!(
+                    formatter,
+                    "Grid container 입력과 display:grid 노드 {id}가 맞지 않습니다"
+                )
+            }
+            Self::UnexpectedGridItem(id) => {
+                write!(
+                    formatter,
+                    "Grid item 입력의 노드 {id}가 Grid container의 직계 자식이 아닙니다"
+                )
+            }
+            Self::MissingGridContainer(id) => {
+                write!(
+                    formatter,
+                    "display:grid 노드 {id}의 computed track 입력이 없습니다"
+                )
+            }
+            Self::InvalidGridTrackList { node, property } => {
+                write!(
+                    formatter,
+                    "노드 {node}의 {property}에 명시 track이 없습니다"
+                )
+            }
+            Self::InvalidGridTrack { node, property } => {
+                write!(
+                    formatter,
+                    "노드 {node}의 {property} track 값이 유효하지 않습니다"
+                )
+            }
+            Self::GridTrackLimitExceeded {
+                node,
+                property,
+                count,
+                maximum,
+            } => write!(
+                formatter,
+                "노드 {node}의 {property} track 수 {count}가 Taffy 0.14.0 한계 {maximum}을 초과합니다"
+            ),
+            Self::GridTrackExpansionOverflow(id) => {
+                write!(
+                    formatter,
+                    "노드 {id}의 Grid cell 수 계산이 범위를 초과합니다"
+                )
+            }
+            Self::UnsupportedGridAutoFlow(id) => {
+                write!(
+                    formatter,
+                    "노드 {id}의 grid-auto-flow를 C11.1에서 지원하지 않습니다"
+                )
+            }
+            Self::UnsupportedGridPlacement(id) => {
+                write!(
+                    formatter,
+                    "Grid item {id}의 명시 line placement를 현재 profile에서 지원하지 않습니다"
+                )
+            }
+            Self::InvalidGridPlacement {
+                node,
+                property,
+                reason,
+            } => write!(
+                formatter,
+                "Grid item {node}의 {property} placement를 계산할 수 없습니다: {reason}"
+            ),
+            Self::UnsupportedGridOrder(id) => {
+                write!(
+                    formatter,
+                    "Grid item {id}의 0이 아닌 order를 C11.1에서 지원하지 않습니다"
+                )
+            }
+            Self::UnsupportedGridPositionedItem(id) => {
+                write!(
+                    formatter,
+                    "위치 지정 Grid item {id}를 C11.1에서 지원하지 않습니다"
+                )
+            }
+            Self::UnsupportedGridItemSize(id) => {
+                write!(
+                    formatter,
+                    "Grid item {id}는 C11.1에서 고정 width와 height가 필요합니다"
+                )
+            }
+            Self::UnsupportedGridItemConstraint { node, property } => write!(
+                formatter,
+                "Grid item {node}의 {property} 제약은 현재 Grid profile에서 지원하지 않습니다"
+            ),
+            Self::GridImplicitTrackRequired(id) => {
+                write!(
+                    formatter,
+                    "노드 {id}의 auto-placement가 implicit track을 요구합니다"
+                )
+            }
+            Self::IndefiniteGridBasis { node, axis } => {
+                write!(
+                    formatter,
+                    "노드 {node}의 Grid {axis} basis가 definite하지 않습니다"
+                )
+            }
+            Self::GridAllocationFailure { node, property } => {
+                write!(
+                    formatter,
+                    "노드 {node}의 {property} track 공간을 예약하지 못했습니다"
+                )
+            }
             Self::UnknownCssMathHandle => {
                 write!(
                     formatter,

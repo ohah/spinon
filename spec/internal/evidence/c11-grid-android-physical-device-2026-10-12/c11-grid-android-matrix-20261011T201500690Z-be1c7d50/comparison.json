@@ -1,0 +1,709 @@
+{
+  "schema": "spinon-c11-grid-android-runtime-matrix/v1",
+  "status": "matched",
+  "runID": "c11-grid-android-matrix-20261011T201500690Z-be1c7d50",
+  "device": {
+    "serial": "R5KYB06SMPE",
+    "manufacturer": "samsung",
+    "model": "SM-S731N",
+    "release": "16",
+    "apiLevel": 36,
+    "qemu": false,
+    "renderer": "GLES: Samsung Electronics Co., Ltd., ANGLE ((Samsung Xclipse 940) on Vulkan 1.3.279), OpenGL ES 3.2 Driver version: 24.1.307 git hash: 86f99cfe6317",
+    "apkSha256": "f1bef1b61acde8ae3a6a202bc453414fd19855d090ed7a7ed7b3646010964b35"
+  },
+  "matrixSha256": "8a18ff6afaa362c3963a866e80e81057403e2368a45f6a57ff2afeca840c875e",
+  "oracle": {
+    "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.98-d9996da8123a-83fc71ce41b4-ca4062baab2b",
+    "chrome": "Chrome/154.0.8037.98",
+    "referenceSha256": "2983995fc946ddda3137566612915bd9fd38a9409ba39a4a99ba27220bfcbb3a",
+    "toleranceCssPx": 0.5
+  },
+  "summary": {
+    "expectedScenes": 10,
+    "matchedScenes": 10,
+    "expectedNodes": 40,
+    "matchedNodes": 40,
+    "freshProcessPerScene": true,
+    "exactPixelCanaryScene": "fixed-tracks-gap"
+  },
+  "observations": [
+    {
+      "sceneId": "fixed-tracks-gap",
+      "processId": 20176,
+      "nodeCount": 5,
+      "wrapperFrame": {
+        "nodeId": 1,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        }
+      },
+      "frames": [
+        {
+          "nodeId": 2,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 130
+          }
+        },
+        {
+          "nodeId": 3,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 40,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 4,
+          "rect": {
+            "x": 88,
+            "y": 0,
+            "width": 50,
+            "height": 24
+          }
+        },
+        {
+          "nodeId": 5,
+          "rect": {
+            "x": 196,
+            "y": 0,
+            "width": 60,
+            "height": 26
+          }
+        },
+        {
+          "nodeId": 6,
+          "rect": {
+            "x": 0,
+            "y": 56,
+            "width": 30,
+            "height": 18
+          }
+        }
+      ],
+      "screenshot": "fixed-tracks-gap-device-screen.png",
+      "surfacePixelEvidence": {
+        "count": 7,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "grid-background",
+            "x": 845,
+            "y": 338,
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "expected": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "exact": true
+          },
+          {
+            "id": "item-blue",
+            "x": 57,
+            "y": 29,
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ],
+            "expected": [
+              40,
+              102,
+              246,
+              255
+            ],
+            "exact": true
+          },
+          {
+            "id": "item-red",
+            "x": 319,
+            "y": 35,
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "expected": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "exact": true
+          },
+          {
+            "id": "item-green",
+            "x": 637,
+            "y": 37,
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ],
+            "expected": [
+              25,
+              169,
+              116,
+              255
+            ],
+            "exact": true
+          },
+          {
+            "id": "item-yellow",
+            "x": 43,
+            "y": 184,
+            "rgba": [
+              255,
+              200,
+              87,
+              255
+            ],
+            "expected": [
+              255,
+              200,
+              87,
+              255
+            ],
+            "exact": true
+          },
+          {
+            "id": "column-gap",
+            "x": 237,
+            "y": 29,
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "expected": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "exact": true
+          },
+          {
+            "id": "row-gap",
+            "x": 29,
+            "y": 150,
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "expected": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "exact": true
+          }
+        ],
+        "png": "fixed-tracks-gap-surface-pixelcopy.png"
+      }
+    },
+    {
+      "sceneId": "percentage-tracks",
+      "processId": 20309,
+      "nodeCount": 3,
+      "wrapperFrame": {
+        "nodeId": 1,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        }
+      },
+      "frames": [
+        {
+          "nodeId": 2,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 90
+          }
+        },
+        {
+          "nodeId": 3,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 30,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 4,
+          "rect": {
+            "x": 80,
+            "y": 0,
+            "width": 30,
+            "height": 20
+          }
+        }
+      ],
+      "screenshot": "percentage-tracks-device-screen.png",
+      "surfacePixelEvidence": null
+    },
+    {
+      "sceneId": "fractional-tracks-gap",
+      "processId": 20421,
+      "nodeCount": 3,
+      "wrapperFrame": {
+        "nodeId": 1,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        }
+      },
+      "frames": [
+        {
+          "nodeId": 2,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 90
+          }
+        },
+        {
+          "nodeId": 3,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 30,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 4,
+          "rect": {
+            "x": 114.666664,
+            "y": 0,
+            "width": 30,
+            "height": 20
+          }
+        }
+      ],
+      "screenshot": "fractional-tracks-gap-device-screen.png",
+      "surfacePixelEvidence": null
+    },
+    {
+      "sceneId": "mixed-fixed-percent-fr",
+      "processId": 20528,
+      "nodeCount": 4,
+      "wrapperFrame": {
+        "nodeId": 1,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        }
+      },
+      "frames": [
+        {
+          "nodeId": 2,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 90
+          }
+        },
+        {
+          "nodeId": 3,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 30,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 4,
+          "rect": {
+            "x": 92,
+            "y": 0,
+            "width": 30,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 5,
+          "rect": {
+            "x": 194,
+            "y": 0,
+            "width": 30,
+            "height": 20
+          }
+        }
+      ],
+      "screenshot": "mixed-fixed-percent-fr-device-screen.png",
+      "surfacePixelEvidence": null
+    },
+    {
+      "sceneId": "row-auto-placement",
+      "processId": 20638,
+      "nodeCount": 6,
+      "wrapperFrame": {
+        "nodeId": 1,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        }
+      },
+      "frames": [
+        {
+          "nodeId": 2,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 210,
+            "height": 140
+          }
+        },
+        {
+          "nodeId": 3,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 4,
+          "rect": {
+            "x": 110,
+            "y": 0,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 5,
+          "rect": {
+            "x": 0,
+            "y": 50,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 6,
+          "rect": {
+            "x": 110,
+            "y": 50,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 7,
+          "rect": {
+            "x": 0,
+            "y": 100,
+            "width": 20,
+            "height": 20
+          }
+        }
+      ],
+      "screenshot": "row-auto-placement-device-screen.png",
+      "surfacePixelEvidence": null
+    },
+    {
+      "sceneId": "empty-grid",
+      "processId": 20755,
+      "nodeCount": 1,
+      "wrapperFrame": {
+        "nodeId": 1,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        }
+      },
+      "frames": [
+        {
+          "nodeId": 2,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 90
+          }
+        }
+      ],
+      "screenshot": "empty-grid-device-screen.png",
+      "surfacePixelEvidence": null
+    },
+    {
+      "sceneId": "single-item-grid",
+      "processId": 20869,
+      "nodeCount": 2,
+      "wrapperFrame": {
+        "nodeId": 1,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        }
+      },
+      "frames": [
+        {
+          "nodeId": 2,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 90
+          }
+        },
+        {
+          "nodeId": 3,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 30,
+            "height": 20
+          }
+        }
+      ],
+      "screenshot": "single-item-grid-device-screen.png",
+      "surfacePixelEvidence": null
+    },
+    {
+      "sceneId": "grid-under-block",
+      "processId": 20999,
+      "nodeCount": 4,
+      "wrapperFrame": {
+        "nodeId": 1,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        }
+      },
+      "frames": [
+        {
+          "nodeId": 2,
+          "rect": {
+            "x": 10,
+            "y": 10,
+            "width": 300,
+            "height": 100
+          }
+        },
+        {
+          "nodeId": 3,
+          "rect": {
+            "x": 25,
+            "y": 10,
+            "width": 200,
+            "height": 60
+          }
+        },
+        {
+          "nodeId": 4,
+          "rect": {
+            "x": 25,
+            "y": 10,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 5,
+          "rect": {
+            "x": 125,
+            "y": 10,
+            "width": 20,
+            "height": 20
+          }
+        }
+      ],
+      "screenshot": "grid-under-block-device-screen.png",
+      "surfacePixelEvidence": null
+    },
+    {
+      "sceneId": "grid-under-flex",
+      "processId": 21128,
+      "nodeCount": 7,
+      "wrapperFrame": {
+        "nodeId": 1,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        }
+      },
+      "frames": [
+        {
+          "nodeId": 2,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 80
+          }
+        },
+        {
+          "nodeId": 3,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 150,
+            "height": 60
+          }
+        },
+        {
+          "nodeId": 4,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 5,
+          "rect": {
+            "x": 80,
+            "y": 0,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 6,
+          "rect": {
+            "x": 160,
+            "y": 0,
+            "width": 150,
+            "height": 60
+          }
+        },
+        {
+          "nodeId": 7,
+          "rect": {
+            "x": 160,
+            "y": 0,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 8,
+          "rect": {
+            "x": 240,
+            "y": 0,
+            "width": 20,
+            "height": 20
+          }
+        }
+      ],
+      "screenshot": "grid-under-flex-device-screen.png",
+      "surfacePixelEvidence": null
+    },
+    {
+      "sceneId": "flex-under-grid",
+      "processId": 21256,
+      "nodeCount": 5,
+      "wrapperFrame": {
+        "nodeId": 1,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        }
+      },
+      "frames": [
+        {
+          "nodeId": 2,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 80
+          }
+        },
+        {
+          "nodeId": 3,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 60
+          }
+        },
+        {
+          "nodeId": 4,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 30,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 5,
+          "rect": {
+            "x": 40,
+            "y": 0,
+            "width": 40,
+            "height": 25
+          }
+        },
+        {
+          "nodeId": 6,
+          "rect": {
+            "x": 170,
+            "y": 0,
+            "width": 20,
+            "height": 20
+          }
+        }
+      ],
+      "screenshot": "flex-under-grid-device-screen.png",
+      "surfacePixelEvidence": null
+    }
+  ],
+  "limitations": [
+    "단일 Android 실기기의 고정 C11.1 fixture geometry 비교다.",
+    "PixelCopy exact 7/7은 fixed-tracks-gap 한 장면에만 적용된다. 다른 scene의 픽셀 전체를 비교하지 않았다.",
+    "이 결과는 iOS 실행, WPT 적합성, 다른 기기군, 공개 CSS 전체 지원을 입증하지 않는다."
+  ]
+}

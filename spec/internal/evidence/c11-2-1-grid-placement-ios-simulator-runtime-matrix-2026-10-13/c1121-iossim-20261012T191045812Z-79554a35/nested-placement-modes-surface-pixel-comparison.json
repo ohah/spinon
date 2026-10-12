@@ -1,0 +1,155 @@
+{
+  "schema": "spinon-c11-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c1121-iossim-20261012T191045812Z-79554a35-nested-placement-modes",
+  "processId": 33197,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 40,
+    "renderTree": 8,
+    "environment": 0
+  },
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "drawable": [
+    960,
+    720
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 7,
+  "matchedSamples": 7,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "item-c1121-nested-auto-grid",
+      "css": [
+        59,
+        29
+      ],
+      "drawable": [
+        178,
+        88
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-c1121-nested-auto-a",
+      "css": [
+        9,
+        9
+      ],
+      "drawable": [
+        28,
+        28
+      ],
+      "rgba": [
+        25,
+        169,
+        116,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-c1121-nested-auto-b",
+      "css": [
+        74,
+        9
+      ],
+      "drawable": [
+        223,
+        28
+      ],
+      "rgba": [
+        255,
+        200,
+        87,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-c1121-nested-explicit-grid",
+      "css": [
+        189,
+        29
+      ],
+      "drawable": [
+        568,
+        88
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-c1121-nested-explicit-a",
+      "css": [
+        222,
+        29
+      ],
+      "drawable": [
+        667,
+        88
+      ],
+      "rgba": [
+        135,
+        88,
+        255,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-c1121-nested-explicit-b",
+      "css": [
+        157,
+        29
+      ],
+      "drawable": [
+        472,
+        88
+      ],
+      "rgba": [
+        14,
+        165,
+        233,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "surface-c1121-nested-outer",
+      "css": [
+        124,
+        29
+      ],
+      "drawable": [
+        373,
+        88
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}

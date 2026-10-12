@@ -7,6 +7,9 @@ use std::sync::atomic::{AtomicU64, Ordering};
 use std::sync::{Arc, Mutex, MutexGuard, PoisonError};
 use std::time::Duration;
 
+mod c11;
+pub(crate) use c11::{c11_2_1_grid_placement_runtime_source, c11_grid_runtime_scene};
+
 const ERR_ARGUMENT: i32 = -1;
 const ERR_TIMEOUT: i32 = -10;
 const ERR_LAYOUT: i32 = -11;
@@ -158,7 +161,10 @@ struct RuntimeGpuHost {
     session: RuntimeSession,
     include_node_frame_report: bool,
     include_paint_order_report: bool,
-    #[cfg(feature = "c12-4-metal-surface-readback-test")]
+    #[cfg(any(
+        feature = "c12-4-metal-surface-readback-test",
+        feature = "c11-grid-metal-surface-pixels-test"
+    ))]
     surface_pixel_readback_test: bool,
     operation: Mutex<()>,
     presentation: PresentationScenes,
@@ -265,6 +271,23 @@ impl RuntimeGpuHost {
         Ok((host, report))
     }
 
+    fn new_c11_1_grid_fixture() -> Result<(Self, String), String> {
+        let (session, report) = RuntimeSession::new_runtime_gpu_block_flex_grid_fixture()?;
+        Ok((Self::from_session_with_frame_report(session), report))
+    }
+
+    fn new_c11_2_1_grid_placement_fixture() -> Result<(Self, String), String> {
+        let (session, report) =
+            RuntimeSession::new_runtime_gpu_block_flex_grid_placement_fixture()?;
+        let mut host = Self::from_session_with_frame_report(session);
+        host.include_paint_order_report = true;
+        #[cfg(feature = "c11-grid-metal-surface-pixels-test")]
+        {
+            host.surface_pixel_readback_test = true;
+        }
+        Ok((host, report))
+    }
+
     #[cfg(feature = "c12-4-worker-stack-residency-test")]
     fn css_worker_stack_residency_sample_json_for_test(&self) -> Result<String, String> {
         self.session
@@ -274,6 +297,13 @@ impl RuntimeGpuHost {
     #[cfg(feature = "c12-4-metal-surface-readback-test")]
     fn new_c12_4_surface_readback_fixture() -> Result<(Self, String), String> {
         let (mut host, report) = Self::new_c12_4_stacking_fixture()?;
+        host.surface_pixel_readback_test = true;
+        Ok((host, report))
+    }
+
+    #[cfg(feature = "c11-grid-metal-surface-pixels-test")]
+    fn new_c11_1_grid_surface_pixel_readback_fixture() -> Result<(Self, String), String> {
+        let (mut host, report) = Self::new_c11_1_grid_fixture()?;
         host.surface_pixel_readback_test = true;
         Ok((host, report))
     }
@@ -299,7 +329,10 @@ impl RuntimeGpuHost {
             session,
             include_node_frame_report,
             include_paint_order_report: false,
-            #[cfg(feature = "c12-4-metal-surface-readback-test")]
+            #[cfg(any(
+                feature = "c12-4-metal-surface-readback-test",
+                feature = "c11-grid-metal-surface-pixels-test"
+            ))]
             surface_pixel_readback_test: false,
             operation: Mutex::new(()),
             presentation: PresentationScenes::new(),
@@ -610,13 +643,19 @@ impl RuntimeGpuHost {
                 "UIKit surface가 메인 스레드에서 준비되지 않았습니다",
             ),
         )?;
-        #[cfg(feature = "c12-4-metal-surface-readback-test")]
+        #[cfg(any(
+            feature = "c12-4-metal-surface-readback-test",
+            feature = "c11-grid-metal-surface-pixels-test"
+        ))]
         let (renderer, report) = if self.surface_pixel_readback_test {
             RuntimeRenderer::initialize_uikit_surface_with_copy_src(pending, width, height)?
         } else {
             RuntimeRenderer::initialize_uikit_surface(pending, width, height)?
         };
-        #[cfg(not(feature = "c12-4-metal-surface-readback-test"))]
+        #[cfg(not(any(
+            feature = "c12-4-metal-surface-readback-test",
+            feature = "c11-grid-metal-surface-pixels-test"
+        )))]
         let (renderer, report) = RuntimeRenderer::initialize_uikit_surface(pending, width, height)?;
         *renderer_slot = Some(renderer);
         Ok(report)
@@ -677,9 +716,13 @@ impl RuntimeGpuHost {
                     format!(" root_css_px={}x{}", frame.width(), frame.height())
                 });
                 format!(
-                    "presented boxes={} environment_revision={} viewport_css_px={}x{} surface_texture={}x{}{}",
+                    "presented boxes={} environment_revision={} document_revision={} render_tree_revision={} style_revision={} generation={} viewport_css_px={}x{} surface_texture={}x{}{}",
                     scene.snapshot.boxes().len(),
                     scene.snapshot.key().environment_revision().get(),
+                    scene.snapshot.key().document_revision().get(),
+                    scene.snapshot.key().render_tree_revision().get(),
+                    scene.snapshot.key().style_revision().get(),
+                    scene.snapshot.key().generation().get(),
                     viewport.width(),
                     viewport.height(),
                     surface_texture_size.0,
@@ -690,7 +733,7 @@ impl RuntimeGpuHost {
             None => "presented empty scene while runtime calculation is pending".to_owned(),
         };
         if let Some(samples) = pixel_samples {
-            for sample in samples {
+            for sample in &samples {
                 report.push_str(&format!(
                     " surface_pixel_x={} surface_pixel_y={} surface_pixel_rgba=#{:02x}{:02x}{:02x}{:02x}",
                     sample.x,
@@ -701,12 +744,31 @@ impl RuntimeGpuHost {
                     sample.rgba[3],
                 ));
             }
+            let sample_values = samples
+                .iter()
+                .map(|sample| {
+                    serde_json::json!({
+                        "x": sample.x,
+                        "y": sample.y,
+                        "rgba": sample.rgba,
+                    })
+                })
+                .collect::<Vec<_>>();
+            let sample_json = serde_json::to_string(&sample_values)
+                .map_err(|error| (ERR_LAYOUT, format!("surface pixel JSON 변환 실패: {error}")))?;
+            report.push_str(&format!(" surface_pixel_samples_json={sample_json}"));
         }
         Ok(report)
     }
 
-    #[cfg(feature = "c12-4-metal-surface-readback-test")]
-    fn request_surface_pixel_readback_for_test(&self, x: u32, y: u32) -> Result<String, String> {
+    #[cfg(any(
+        feature = "c12-4-metal-surface-readback-test",
+        feature = "c11-grid-metal-surface-pixels-test"
+    ))]
+    fn request_surface_pixel_readback_for_test(
+        &self,
+        points: &[(u32, u32)],
+    ) -> Result<String, String> {
         if !self.surface_pixel_readback_test {
             return Err("Metal surface pixel readback 전용 host가 아닙니다".to_owned());
         }
@@ -715,9 +777,12 @@ impl RuntimeGpuHost {
             .as_mut()
             .ok_or_else(|| "runtime GPU renderer가 없습니다".to_owned())?;
         renderer
-            .request_surface_pixel_readback_for_test(&[(x, y)])
+            .request_surface_pixel_readback_for_test(points)
             .map_err(|error| error.to_string())?;
-        Ok(format!("Metal surface 표본을 요청했습니다 x={x} y={y}"))
+        Ok(format!(
+            "Metal surface 표본을 요청했습니다 count={}",
+            points.len()
+        ))
     }
 
     #[cfg(feature = "c04-runtime-gpu-test-hooks")]

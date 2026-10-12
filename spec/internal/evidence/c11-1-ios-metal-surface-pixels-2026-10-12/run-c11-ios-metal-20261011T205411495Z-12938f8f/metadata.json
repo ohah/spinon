@@ -1,0 +1,19 @@
+{
+  "runID": "c11-ios-metal-20261011T205411495Z-12938f8f",
+  "simulator": {
+    "name": "iPhone 17 Pro",
+    "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+    "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro"
+  },
+  "xcode": "Xcode 26.2\nBuild version 17C52",
+  "appBundleID": "dev.spinon.bootstrap",
+  "appBinarySha256": "2937061044e8625b65ce8c5fe840280589ba71a8b338f6bc93d3dad2cbaf2ae8",
+  "fixtureSha256": "618be5c1be2ca06c2deb96dd0e666d4f253b63919afb001664bc7889d97f27bd",
+  "chromeReferenceSha256": "2983995fc946ddda3137566612915bd9fd38a9409ba39a4a99ba27220bfcbb3a",
+  "chromeScreenshotSha256": "80c961cb4f990d721c2a3e4d6b2004c83eba7cb9d09798aecdcd75e9401490da",
+  "buildFlags": {
+    "SPINON_ENABLE_C04_RUNTIME_GPU": 1,
+    "SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST": 1
+  }
+}

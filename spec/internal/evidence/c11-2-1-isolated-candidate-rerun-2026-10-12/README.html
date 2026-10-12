@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>C11.2.1 분리 후보 재실행 · 스피논</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0b1020;--panel:#121a2b;--line:#26344d;--text:#edf3ff;--muted:#a7b4c9;--blue:#70b7ff;--green:#55d6a0;--amber:#ffd580}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -10%,#172742 0,transparent 48%),var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    main{width:min(1040px,calc(100% - 32px));margin:auto;padding:28px 0 64px}a{color:var(--blue)}h1,h2{line-height:1.2;letter-spacing:-.025em}h1{font-size:clamp(30px,5vw,46px)}p,li,td{color:var(--muted)}.top{padding:14px 0;border-bottom:1px solid var(--line);color:var(--muted)}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}.card,.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}.value{font-size:23px;font-weight:700;color:var(--green)}.small{font-size:13px;color:var(--muted)}
+    table{width:100%;border-collapse:collapse;display:block;overflow:auto}th,td{padding:10px 12px;border:1px solid var(--line);text-align:left;vertical-align:top}th{background:#172238}.note{padding:14px;border-left:3px solid var(--amber);background:#191d2b;border-radius:0 10px 10px 0}code{font:13px ui-monospace,SFMono-Regular,Menlo,monospace;overflow-wrap:anywhere;color:#c3e0ff}.links{display:flex;flex-wrap:wrap;gap:12px}.links a{padding:9px 12px;border:1px solid var(--line);border-radius:8px;text-decoration:none}
+    @media(max-width:600px){main{width:calc(100% - 24px)}}
+  </style>
+</head>
+<body><main>
+  <div class="top"><a href="/spinon/roadmap.html">스피논 · 구현 현황</a> / C11.2.1 분리 후보 재실행</div>
+  <h1>C11.2.1 통합 후보 모바일 재실행</h1>
+  <p>2026-10-12 · 임시 후보 tree <code>3638b7327ae0074d84d65d27908dc10093fe999b</code>를 기준으로 Android API 37 AVD와 iOS 26.2 Simulator에서 앱을 빌드하고 10-scene 행렬을 실행했습니다.</p>
+  <div class="cards">
+    <div class="card"><div class="value">10/10</div><div class="small">플랫폼별 scene</div></div>
+    <div class="card"><div class="value">6 + 4</div><div class="small">성공 scene + 기대 거부</div></div>
+    <div class="card"><div class="value">20/20</div><div class="small">플랫폼별 surface 표본 exact</div></div>
+    <div class="card"><div class="value">0 CSS px</div><div class="small">최대 geometry 오차</div></div>
+  </div>
+  <h2>플랫폼별 결과</h2>
+  <table><thead><tr><th>대상</th><th>행렬</th><th>표면 픽셀</th><th>앱 SHA-256</th></tr></thead><tbody>
+    <tr><td>Android 17 / API 37 AVD<br><span class="small">ANGLE / Vulkan / SwiftShader</span></td><td>10 scene · 성공 6 · 기대 거부 4 · 21 node<br>최대 geometry 오차 0 CSS px</td><td>PixelCopy 6 scene · 20/20 exact<br>최대 채널 오차 0</td><td><code>020c7cbccbe0fef0579e071f1227d113b1937f851d6c87d959b2867ce4c155b5</code></td></tr>
+    <tr><td>iPhone 17 Pro / iOS 26.2 Simulator<br><span class="small">Metal drawable readback</span></td><td>10 scene · 성공 6 · 기대 거부 4 · 21 node<br>최대 geometry 오차 0 CSS px</td><td>Metal drawable 6 scene · 20/20 exact<br>최대 채널 오차 0</td><td><code>9b55761d7e94527330956c5712114ea07dcaeab9e53f7e0be6373bfa4fe1dd39</code></td></tr>
+  </tbody></table>
+  <p>scene마다 새 앱 process와 HostDocument를 사용했습니다. 기대 거부 입력은 진단을 반환하고 partial frame 및 non-empty WGPU 제출을 만들지 않았습니다. 허용 목록 밖의 pixel capture 요청은 표면 readback 전에 거부했습니다.</p>
+  <div class="links">
+    <a href="../c11-2-1-grid-placement-android-runtime-matrix-2026-10-12/c1121-android-20261012T133451214Z-bbb225b3/comparison.json">Android 비교 JSON</a>
+    <a href="../c11-2-1-grid-placement-android-runtime-matrix-2026-10-12/c1121-android-20261012T133451214Z-bbb225b3/numeric-lines-android-avd.png">Android 캡처</a>
+    <a href="../c11-2-1-grid-placement-ios-simulator-runtime-matrix-2026-10-12/c1121-iossim-20261012T133856335Z-0b6d2280/comparison.json">iOS 비교 JSON</a>
+    <a href="../c11-2-1-grid-placement-ios-simulator-runtime-matrix-2026-10-12/c1121-iossim-20261012T133856335Z-0b6d2280/numeric-lines-ios-simulator.png">iOS 캡처</a>
+  </div>
+  <p class="note">이 결과는 임시 후보 tree의 제한된 C11.2.1 fixture 검증입니다. Android AVD는 하드웨어 GPU나 실기기 증거가 아닙니다. Android 실기기 전체 pixel 행렬, Spinon WPT runner·적합성, C11 전체와 C12.4 완료를 뜻하지 않습니다.</p>
+</main></body></html>

@@ -1,0 +1,12 @@
+$ node --test tools/css-reference/c11-2-1-grid-placement-runtime-matrix.test.mjs
+✔ runtime matrix preserves fixed scene classes, preorder, source hashes, and failure owners (6.793458ms)
+✔ HTML edits that are not represented by the pinned reference fail closed (1.344333ms)
+✔ generated source escapes literals and contains no caller-provided JavaScript (2.034125ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 54.793792

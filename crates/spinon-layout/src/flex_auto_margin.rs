@@ -237,6 +237,8 @@ mod tests {
                         },
                     },
                 ],
+                grid_containers: Default::default(),
+                grid_items: Default::default(),
             };
 
             let frame = TaffyLayoutEngine.compute(&input).unwrap().frames[&item];

@@ -1,0 +1,69 @@
+{
+  "status": "matched",
+  "scene": "numeric-lines",
+  "runID": "c1121-android-20261012T172006650Z-11559104-numeric-lines",
+  "processId": 3775,
+  "surfaceGeneration": 2,
+  "density": 2.8125,
+  "surface": [
+    900,
+    675
+  ],
+  "expectedSamples": 3,
+  "matchedSamples": 3,
+  "maximumChannelError": 0,
+  "pngSha256": "37d0c306a040fc730c72cfd8fa8a6ac404bb4e0843127f2aaa625591b0e0b911",
+  "samples": [
+    {
+      "id": "item-c1121-positive-lines",
+      "css": [
+        82,
+        19
+      ],
+      "pixel": [
+        232,
+        54
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ]
+    },
+    {
+      "id": "item-c1121-negative-lines",
+      "css": [
+        209,
+        64
+      ],
+      "pixel": [
+        589,
+        181
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ]
+    },
+    {
+      "id": "surface-c1121-numeric-grid",
+      "css": [
+        124,
+        42
+      ],
+      "pixel": [
+        350,
+        119
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    }
+  ]
+}

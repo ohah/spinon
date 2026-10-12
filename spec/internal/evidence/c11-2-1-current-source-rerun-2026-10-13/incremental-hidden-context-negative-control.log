@@ -1,0 +1,21 @@
+   Compiling spinon-style v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.40s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style-bbe83c0d80453aa3)
+
+running 1 test
+
+thread 'stylo_dom::cascade::runtime_grid_tests::incremental_restyle_preserves_hidden_context_for_unsupported_nested_grid' (721034) panicked at crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests.rs:259:5:
+assertion failed: updated.elements.iter().find(|style|
+                    style.node_id ==
+                        item.id()).unwrap().grid_item_placement.is_none()
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test stylo_dom::cascade::runtime_grid_tests::incremental_restyle_preserves_hidden_context_for_unsupported_nested_grid ... FAILED
+
+failures:
+
+failures:
+    stylo_dom::cascade::runtime_grid_tests::incremental_restyle_preserves_hidden_context_for_unsupported_nested_grid
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 115 filtered out; finished in 0.01s
+
+error: test failed, to rerun pass `-p spinon-style --lib`

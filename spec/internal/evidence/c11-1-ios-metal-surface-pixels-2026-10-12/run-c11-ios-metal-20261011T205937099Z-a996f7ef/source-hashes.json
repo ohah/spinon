@@ -1,0 +1,24 @@
+{
+  "gitHead": "975d3356c9e8837834d4dd633fb3699084fad71a",
+  "gitWorktreeClean": false,
+  "sha256ByPath": {
+    "crates/spinon-render-wgpu/src/renderer.rs": "fc0d7a9951aa24ab8209bcab4a4fb47613eab58c8eeea79bc42a41245beaed7f",
+    "crates/spinon-render-wgpu/src/renderer/surface_readback.rs": "1d8203ece5dc7e9b6ea9d09a3676e5bc5d1a07506ebec964498c7a600af98b50",
+    "crates/spinon-ffi/Cargo.toml": "cb37b71a5621e201e1316200eb933e870a1be46cf6684c392254a496d5f0d9c7",
+    "crates/spinon-ffi/include/spinon_ffi.h": "d6ddd36a7ac0ba91c8ad27ade62d7bf967a90f5d1e92b6b06b99fb3c63e0dd30",
+    "crates/spinon-ffi/src/runtime_gpu.rs": "4f08c82dd22c4a768d5d0417f0a0e1659e336c9fdedc038fb33421db7c6a9960",
+    "crates/spinon-ffi/src/runtime_gpu/ffi/c11.rs": "62b5c4f9cf0c6720a7b7fc634016ed9c7453f2831def6dd5b2d33da9ca30fa04",
+    "crates/spinon-ffi/src/runtime_gpu/ffi.rs": "bcc483a866526b60732e41c266e7ac3d8a0e91cb15a2717a85f3f8b59d55c8da",
+    "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "e0d56f5dfdf67b3b8497bdc673c174e37aa1aba2d91d5132b8924091097d7ac2",
+    "platforms/ios/Sources/SpinonRunner.h": "1797e9f86e99af76d862ab85b4fd4392ed5f5e5f684b08696eab53056cd5e050",
+    "platforms/ios/Sources/SpinonRunner.mm": "f15a29f8d3de234ee7b23b6d77115bb2888d2e3935ebf54d3eb689fc05670ebf",
+    "platforms/ios/SpinonBootstrap.xcodeproj/project.pbxproj": "d4ccd57873ea68f20529c6b9427261d65ed4f32ad0a4f7cfbfc04b578b225f16",
+    "package.json": "723af0af4951b94246790c7b9e0c0aef873c352bbd315686fa7d5b5ea0ad700c",
+    "tools/build-ios-sim.sh": "21a30ffd9fbfbc964c70fd2d690cf19320e5b1be268ad5e8e687a9f12824a698",
+    "tools/build-ios-native.sh": "909c47c8ac71189fe83ce59b6919de49ba76f181c2bf950b7cfe5859699f56bc",
+    "tools/css-reference/compare-c11-ios-metal-surface-pixels.mjs": "48d1c7c184dcc90d80170cfff2535eb2339bfbe1e157e87d98d48373a31f78ed",
+    "tools/css-reference/compare-c11-ios-metal-surface-pixels.test.mjs": "a042408a2f9ec2998d3b8c7437149aba9c80661598733c0cd8f89777521349cd",
+    "tools/css-reference/capture-c11-ios-metal-surface-pixels.mjs": "655fc5731a0454442449cf4ddc52a74b24c8241c2f0a0dbd3280174154904654",
+    "tests/fixtures/css/c11/metal-surface-pixel-samples.json": "618be5c1be2ca06c2deb96dd0e666d4f253b63919afb001664bc7889d97f27bd"
+  }
+}

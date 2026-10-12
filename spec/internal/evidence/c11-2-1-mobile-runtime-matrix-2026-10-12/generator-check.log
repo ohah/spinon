@@ -1,0 +1,2 @@
+$ node tools/css-reference/build-c11-2-1-grid-placement-runtime-matrix.mjs --check
+C11.2.1 runtime matrix: 10 scene · 6 success candidate · 4 expected reject · 30 node · 확인

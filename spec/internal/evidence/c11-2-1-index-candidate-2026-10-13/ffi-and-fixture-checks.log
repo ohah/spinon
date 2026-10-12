@@ -1,0 +1,9 @@
+$ mise exec -- cargo test --locked -p spinon-ffi --features c11-grid-metal-surface-pixels-test c11 -- --nocapture
+running 8 tests
+test result: ok. 8 passed; 0 failed; 0 ignored; 33 filtered out
+
+$ mise exec -- bun run css:check:c11-mobile-surface-pixel-matrix
+C11 mobile pixel fixture 확인: 10 scene · 36 sample
+
+$ mise exec -- bun run css:check:c11-2-1-grid-placement-pixel-matrix
+C11.2.1 pixel matrix 확인: 10 scene · 6 pixel scenes

@@ -1,0 +1,83 @@
+{
+  "schema": "spinon-c11-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c1121-iossim-20261012T172100424Z-9872aaa2-shorthand-cascade",
+  "processId": 54454,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 20,
+    "renderTree": 4,
+    "environment": 0
+  },
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "drawable": [
+    960,
+    720
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 3,
+  "matchedSamples": 3,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "item-c1121-grid-area-item",
+      "css": [
+        82,
+        42
+      ],
+      "drawable": [
+        247,
+        127
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-c1121-cascade-item",
+      "css": [
+        124,
+        19
+      ],
+      "drawable": [
+        373,
+        58
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "surface-c1121-shorthand-grid",
+      "css": [
+        166,
+        42
+      ],
+      "drawable": [
+        499,
+        127
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}

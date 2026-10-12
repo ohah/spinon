@@ -1,0 +1,69 @@
+{
+  "status": "matched",
+  "scene": "positive-spans",
+  "runID": "c1121-android-20261012T133451214Z-bbb225b3-positive-spans",
+  "processId": 26775,
+  "surfaceGeneration": 2,
+  "density": 2.625,
+  "surface": [
+    840,
+    630
+  ],
+  "expectedSamples": 3,
+  "matchedSamples": 3,
+  "maximumChannelError": 0,
+  "pngSha256": "827679959a27ae92e630e06650f1ce968064973c8cc93ba478a73219df68808c",
+  "samples": [
+    {
+      "id": "item-c1121-span-from-start",
+      "css": [
+        82,
+        42
+      ],
+      "pixel": [
+        216,
+        111
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ]
+    },
+    {
+      "id": "item-c1121-span-from-end",
+      "css": [
+        167,
+        64
+      ],
+      "pixel": [
+        439,
+        169
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ]
+    },
+    {
+      "id": "surface-c1121-span-grid",
+      "css": [
+        166,
+        42
+      ],
+      "pixel": [
+        437,
+        111
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    }
+  ]
+}

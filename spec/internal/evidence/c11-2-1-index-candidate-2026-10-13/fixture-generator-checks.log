@@ -1,0 +1,4 @@
+$ node tools/css-reference/build-c11-mobile-surface-pixel-matrix.mjs --check
+C11 mobile pixel fixture 확인: 10 scene · 36 sample
+$ node tools/css-reference/build-c11-2-1-grid-placement-pixel-matrix.mjs --check
+C11.2.1 pixel matrix 확인: 10 scene · 6 pixel scenes

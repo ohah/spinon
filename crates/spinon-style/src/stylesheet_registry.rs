@@ -22,6 +22,8 @@ use style::{
 };
 use url::Url;
 
+use crate::stylo_dom::initialize_stylo_preferences;
+
 /// Stylo에 전달하는 지원 CSS 출처입니다.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum CssOrigin {
@@ -175,6 +177,7 @@ impl StylesheetRegistry {
         &mut self,
         source: StylesheetSource,
     ) -> Result<&RegisteredStylesheet, StylesheetRegistryError> {
+        initialize_stylo_preferences();
         if source.id.trim().is_empty() {
             return Err(StylesheetRegistryError::EmptyId);
         }
@@ -353,6 +356,7 @@ pub(super) fn parse_inline_style_attribute(
     Arc<Locked<PropertyDeclarationBlock>>,
     Vec<CssParseDiagnostic>,
 ) {
+    initialize_stylo_preferences();
     let diagnostics = ParseDiagnostics::default();
     let parser_source =
         crate::c10_flex_baseline_css::invalidate_chrome_unsupported_last_baseline(source, false);

@@ -35,6 +35,7 @@ pub(super) fn computed_element_output(
     profile: ComputedStyleProfile,
     computed: &ComputedValues,
     node_id: NodeId,
+    ancestor_hidden: bool,
     source_math: BTreeMap<String, ComputedCssMath>,
     source_border_widths: BTreeMap<&'static str, f32>,
 ) -> Result<ComputedElementStyle, CssCascadeError> {
@@ -97,6 +98,32 @@ pub(super) fn computed_element_output(
             )
         })
         .collect::<BTreeMap<_, _>>();
+    let layout_suppressed = ancestor_hidden
+        || computed_properties
+            .get("display")
+            .is_some_and(|value| value == "none");
+    let grid_layout = if !layout_suppressed
+        && (profile == ComputedStyleProfile::RuntimeBlockFlexGridV1
+            || profile == ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1)
+    {
+        if computed_properties
+            .get("display")
+            .is_some_and(|value| value == "grid")
+        {
+            Some(super::grid::computed_grid_layout(
+                computed,
+                node_id,
+                &computed_properties,
+            )?)
+        } else {
+            None
+        }
+    } else {
+        None
+    };
+    let grid_item_placement = (profile == ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
+        && !layout_suppressed)
+        .then(|| super::grid::computed_grid_item_placement(computed, &computed_properties));
     for (name, width) in [
         ("border-top-width", layout_border.top),
         ("border-right-width", layout_border.right),
@@ -118,6 +145,8 @@ pub(super) fn computed_element_output(
         layout_dimensions: computed_layout_dimensions(computed),
         layout_aspect_ratio,
         layout_spacing: computed_layout_spacing(computed),
+        grid_layout,
+        grid_item_placement,
         layout_border,
         layout_math_values: computed_layout_math_values(computed, source_math),
         properties: computed_properties,

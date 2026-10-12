@@ -385,7 +385,14 @@ fn css_values_outside_the_flex_projection_fail_closed() {
     let fixture = DocumentFixture::new(false);
     let grid_result = fixture.compute(Some("#flex-parent { display: grid; }"));
     assert!(
-        matches!(&grid_result, Err(StyleLayoutError::CascadeDiagnostic(_))),
+        matches!(
+            &grid_result,
+            Err(StyleLayoutError::UnsupportedComputedValue {
+                property: "display",
+                value,
+                ..
+            }) if value == "grid"
+        ),
         "grid display must fail closed: {grid_result:?}"
     );
 

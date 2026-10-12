@@ -1,0 +1,1010 @@
+{
+  "schema": "spinon-c11-mobile-surface-pixel-matrix-result/v1",
+  "status": "matched",
+  "runID": "c11-pixels-20261012T014858759Z-38b0e689",
+  "target": "ios-simulator",
+  "gitHead": "975d3356c9e8837834d4dd633fb3699084fad71a",
+  "fixture": {
+    "path": "tests/fixtures/css/c11/mobile-surface-pixel-matrix.json",
+    "sha256": "8030c823ef4aeb64bdf7416ab3ba74ac24170d6e4fdf4fd01cc6e4664b8d5fd9",
+    "sceneCount": 10,
+    "sampleCount": 36
+  },
+  "oracle": {
+    "product": "Chrome/154.0.8037.98",
+    "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.98-d9996da8123a-83fc71ce41b4-ca4062baab2b",
+    "referenceSha256": "2983995fc946ddda3137566612915bd9fd38a9409ba39a4a99ba27220bfcbb3a",
+    "dpr": 1
+  },
+  "device": {
+    "name": "iPhone 17 Pro",
+    "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+    "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro"
+  },
+  "renderer": "wgpu Metal CAMetalLayer drawable texture readback before compositor submission",
+  "appBinarySha256": "08ecab0f18da4a8428ee02d4b026e2632bee5540a0ff594e550f10272c893123",
+  "summary": {
+    "expectedScenes": 10,
+    "matchedScenes": 10,
+    "expectedSamples": 36,
+    "matchedSamples": 36,
+    "maximumChannelError": 0,
+    "screenshotOrCompositorReadback": false
+  },
+  "observations": [
+    {
+      "schema": "spinon-c11-ios-metal-surface-pixels/v1",
+      "status": "matched",
+      "runID": "c11-pixels-20261012T014858759Z-38b0e689-0",
+      "processId": 36980,
+      "surfaceGeneration": 1,
+      "revisions": {
+        "document": 36,
+        "renderTree": 6,
+        "environment": 0
+      },
+      "runtimeViewportCssPx": [
+        320,
+        240
+      ],
+      "drawable": [
+        960,
+        720
+      ],
+      "scale": [
+        3,
+        3
+      ],
+      "expectedSamples": 5,
+      "matchedSamples": 5,
+      "maximumChannelError": 0,
+      "samples": [
+        {
+          "id": "item-c11-fixed-a",
+          "css": [
+            20,
+            10
+          ],
+          "drawable": [
+            61,
+            31
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "item-c11-fixed-b",
+          "css": [
+            113,
+            12
+          ],
+          "drawable": [
+            340,
+            37
+          ],
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "item-c11-fixed-c",
+          "css": [
+            226,
+            13
+          ],
+          "drawable": [
+            679,
+            40
+          ],
+          "rgba": [
+            25,
+            169,
+            116,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "item-c11-fixed-d",
+          "css": [
+            15,
+            65
+          ],
+          "drawable": [
+            46,
+            196
+          ],
+          "rgba": [
+            255,
+            200,
+            87,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "track-background",
+          "css": [
+            159,
+            64
+          ],
+          "drawable": [
+            478,
+            193
+          ],
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ],
+          "maximumChannelError": 0
+        }
+      ],
+      "scene": "fixed-tracks-gap",
+      "screenshot": "fixed-tracks-gap-simulator.png",
+      "screenshotSha256": "d239dbe604dfe37e44c613f357a32ec33d2469bb3db5d9a90f57b6ead7a354d8"
+    },
+    {
+      "schema": "spinon-c11-ios-metal-surface-pixels/v1",
+      "status": "matched",
+      "runID": "c11-pixels-20261012T014858759Z-38b0e689-1",
+      "processId": 37049,
+      "surfaceGeneration": 1,
+      "revisions": {
+        "document": 24,
+        "renderTree": 4,
+        "environment": 0
+      },
+      "runtimeViewportCssPx": [
+        320,
+        240
+      ],
+      "drawable": [
+        960,
+        720
+      ],
+      "scale": [
+        3,
+        3
+      ],
+      "expectedSamples": 3,
+      "matchedSamples": 3,
+      "maximumChannelError": 0,
+      "samples": [
+        {
+          "id": "item-c11-percent-a",
+          "css": [
+            15,
+            10
+          ],
+          "drawable": [
+            46,
+            31
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "item-c11-percent-b",
+          "css": [
+            95,
+            10
+          ],
+          "drawable": [
+            286,
+            31
+          ],
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "track-background",
+          "css": [
+            159,
+            44
+          ],
+          "drawable": [
+            478,
+            133
+          ],
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ],
+          "maximumChannelError": 0
+        }
+      ],
+      "scene": "percentage-tracks",
+      "screenshot": "percentage-tracks-simulator.png",
+      "screenshotSha256": "f052c69ee94256ef55ad2e89153d72fb3d0a2b1fdcb4e32944244eae3c679af6"
+    },
+    {
+      "schema": "spinon-c11-ios-metal-surface-pixels/v1",
+      "status": "matched",
+      "runID": "c11-pixels-20261012T014858759Z-38b0e689-2",
+      "processId": 37115,
+      "surfaceGeneration": 1,
+      "revisions": {
+        "document": 24,
+        "renderTree": 4,
+        "environment": 0
+      },
+      "runtimeViewportCssPx": [
+        320,
+        240
+      ],
+      "drawable": [
+        960,
+        720
+      ],
+      "scale": [
+        3,
+        3
+      ],
+      "expectedSamples": 3,
+      "matchedSamples": 3,
+      "maximumChannelError": 0,
+      "samples": [
+        {
+          "id": "item-c11-fr-a",
+          "css": [
+            15,
+            10
+          ],
+          "drawable": [
+            46,
+            31
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "item-c11-fr-b",
+          "css": [
+            129,
+            10
+          ],
+          "drawable": [
+            388,
+            31
+          ],
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "track-background",
+          "css": [
+            159,
+            44
+          ],
+          "drawable": [
+            478,
+            133
+          ],
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ],
+          "maximumChannelError": 0
+        }
+      ],
+      "scene": "fractional-tracks-gap",
+      "screenshot": "fractional-tracks-gap-simulator.png",
+      "screenshotSha256": "0e6c1c81ce201c499abe8012f15bc7cd129efcad84953d0b891c5e5a04056037"
+    },
+    {
+      "schema": "spinon-c11-ios-metal-surface-pixels/v1",
+      "status": "matched",
+      "runID": "c11-pixels-20261012T014858759Z-38b0e689-3",
+      "processId": 37175,
+      "surfaceGeneration": 1,
+      "revisions": {
+        "document": 30,
+        "renderTree": 5,
+        "environment": 0
+      },
+      "runtimeViewportCssPx": [
+        320,
+        240
+      ],
+      "drawable": [
+        960,
+        720
+      ],
+      "scale": [
+        3,
+        3
+      ],
+      "expectedSamples": 4,
+      "matchedSamples": 4,
+      "maximumChannelError": 0,
+      "samples": [
+        {
+          "id": "item-c11-mixed-a",
+          "css": [
+            15,
+            10
+          ],
+          "drawable": [
+            46,
+            31
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "item-c11-mixed-b",
+          "css": [
+            107,
+            10
+          ],
+          "drawable": [
+            322,
+            31
+          ],
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "item-c11-mixed-c",
+          "css": [
+            209,
+            10
+          ],
+          "drawable": [
+            628,
+            31
+          ],
+          "rgba": [
+            25,
+            169,
+            116,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "track-background",
+          "css": [
+            179,
+            44
+          ],
+          "drawable": [
+            538,
+            133
+          ],
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ],
+          "maximumChannelError": 0
+        }
+      ],
+      "scene": "mixed-fixed-percent-fr",
+      "screenshot": "mixed-fixed-percent-fr-simulator.png",
+      "screenshotSha256": "13647501d88fcf662f78537e99d147dd4bd515a897de392c02f7688f4baf409a"
+    },
+    {
+      "schema": "spinon-c11-ios-metal-surface-pixels/v1",
+      "status": "matched",
+      "runID": "c11-pixels-20261012T014858759Z-38b0e689-4",
+      "processId": 37242,
+      "surfaceGeneration": 1,
+      "revisions": {
+        "document": 42,
+        "renderTree": 7,
+        "environment": 0
+      },
+      "runtimeViewportCssPx": [
+        320,
+        240
+      ],
+      "drawable": [
+        960,
+        720
+      ],
+      "scale": [
+        3,
+        3
+      ],
+      "expectedSamples": 6,
+      "matchedSamples": 6,
+      "maximumChannelError": 0,
+      "samples": [
+        {
+          "id": "item-c11-auto-a",
+          "css": [
+            10,
+            10
+          ],
+          "drawable": [
+            31,
+            31
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "item-c11-auto-b",
+          "css": [
+            120,
+            10
+          ],
+          "drawable": [
+            361,
+            31
+          ],
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "item-c11-auto-c",
+          "css": [
+            10,
+            60
+          ],
+          "drawable": [
+            31,
+            181
+          ],
+          "rgba": [
+            25,
+            169,
+            116,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "item-c11-auto-d",
+          "css": [
+            120,
+            60
+          ],
+          "drawable": [
+            361,
+            181
+          ],
+          "rgba": [
+            255,
+            200,
+            87,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "item-c11-auto-e",
+          "css": [
+            10,
+            110
+          ],
+          "drawable": [
+            31,
+            331
+          ],
+          "rgba": [
+            135,
+            88,
+            255,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "track-background",
+          "css": [
+            104,
+            69
+          ],
+          "drawable": [
+            313,
+            208
+          ],
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ],
+          "maximumChannelError": 0
+        }
+      ],
+      "scene": "row-auto-placement",
+      "screenshot": "row-auto-placement-simulator.png",
+      "screenshotSha256": "4e201b3ccbcc16c824d02f76fbb854f1cec9d422add759afe062a23d91f7a76a"
+    },
+    {
+      "schema": "spinon-c11-ios-metal-surface-pixels/v1",
+      "status": "matched",
+      "runID": "c11-pixels-20261012T014858759Z-38b0e689-5",
+      "processId": 37306,
+      "surfaceGeneration": 1,
+      "revisions": {
+        "document": 12,
+        "renderTree": 2,
+        "environment": 0
+      },
+      "runtimeViewportCssPx": [
+        320,
+        240
+      ],
+      "drawable": [
+        960,
+        720
+      ],
+      "scale": [
+        3,
+        3
+      ],
+      "expectedSamples": 1,
+      "matchedSamples": 1,
+      "maximumChannelError": 0,
+      "samples": [
+        {
+          "id": "track-background",
+          "css": [
+            159,
+            44
+          ],
+          "drawable": [
+            478,
+            133
+          ],
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ],
+          "maximumChannelError": 0
+        }
+      ],
+      "scene": "empty-grid",
+      "screenshot": "empty-grid-simulator.png",
+      "screenshotSha256": "e0b1d27c8e590f79ff5e528ecf540b0d4e22d9b7ca09bf38ee8b5da81c502e3e"
+    },
+    {
+      "schema": "spinon-c11-ios-metal-surface-pixels/v1",
+      "status": "matched",
+      "runID": "c11-pixels-20261012T014858759Z-38b0e689-6",
+      "processId": 37357,
+      "surfaceGeneration": 1,
+      "revisions": {
+        "document": 18,
+        "renderTree": 3,
+        "environment": 0
+      },
+      "runtimeViewportCssPx": [
+        320,
+        240
+      ],
+      "drawable": [
+        960,
+        720
+      ],
+      "scale": [
+        3,
+        3
+      ],
+      "expectedSamples": 2,
+      "matchedSamples": 2,
+      "maximumChannelError": 0,
+      "samples": [
+        {
+          "id": "item-c11-single-item",
+          "css": [
+            15,
+            10
+          ],
+          "drawable": [
+            46,
+            31
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "track-background",
+          "css": [
+            159,
+            44
+          ],
+          "drawable": [
+            478,
+            133
+          ],
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ],
+          "maximumChannelError": 0
+        }
+      ],
+      "scene": "single-item-grid",
+      "screenshot": "single-item-grid-simulator.png",
+      "screenshotSha256": "816b586917e7b8872bbab0b1cb9c72a18184badff81412aeac2bcf7227f4f7ce"
+    },
+    {
+      "schema": "spinon-c11-ios-metal-surface-pixels/v1",
+      "status": "matched",
+      "runID": "c11-pixels-20261012T014858759Z-38b0e689-7",
+      "processId": 37404,
+      "surfaceGeneration": 1,
+      "revisions": {
+        "document": 29,
+        "renderTree": 5,
+        "environment": 0
+      },
+      "runtimeViewportCssPx": [
+        320,
+        240
+      ],
+      "drawable": [
+        960,
+        720
+      ],
+      "scale": [
+        3,
+        3
+      ],
+      "expectedSamples": 3,
+      "matchedSamples": 3,
+      "maximumChannelError": 0,
+      "samples": [
+        {
+          "id": "item-c11-block-a",
+          "css": [
+            35,
+            20
+          ],
+          "drawable": [
+            106,
+            61
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "item-c11-block-b",
+          "css": [
+            135,
+            20
+          ],
+          "drawable": [
+            406,
+            61
+          ],
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "track-background",
+          "css": [
+            159,
+            59
+          ],
+          "drawable": [
+            478,
+            178
+          ],
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ],
+          "maximumChannelError": 0
+        }
+      ],
+      "scene": "grid-under-block",
+      "screenshot": "grid-under-block-simulator.png",
+      "screenshotSha256": "dcff73637d42e2286fbf144ae2162dbab1ee29a32f77e0b0ef29b8d83fabea43"
+    },
+    {
+      "schema": "spinon-c11-ios-metal-surface-pixels/v1",
+      "status": "matched",
+      "runID": "c11-pixels-20261012T014858759Z-38b0e689-8",
+      "processId": 37450,
+      "surfaceGeneration": 1,
+      "revisions": {
+        "document": 47,
+        "renderTree": 8,
+        "environment": 0
+      },
+      "runtimeViewportCssPx": [
+        320,
+        240
+      ],
+      "drawable": [
+        960,
+        720
+      ],
+      "scale": [
+        3,
+        3
+      ],
+      "expectedSamples": 5,
+      "matchedSamples": 5,
+      "maximumChannelError": 0,
+      "samples": [
+        {
+          "id": "item-c11-flex-a1",
+          "css": [
+            10,
+            10
+          ],
+          "drawable": [
+            31,
+            31
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "item-c11-flex-a2",
+          "css": [
+            90,
+            10
+          ],
+          "drawable": [
+            271,
+            31
+          ],
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "item-c11-flex-b1",
+          "css": [
+            170,
+            10
+          ],
+          "drawable": [
+            511,
+            31
+          ],
+          "rgba": [
+            25,
+            169,
+            116,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "item-c11-flex-b2",
+          "css": [
+            250,
+            10
+          ],
+          "drawable": [
+            751,
+            31
+          ],
+          "rgba": [
+            255,
+            200,
+            87,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "track-background",
+          "css": [
+            74,
+            29
+          ],
+          "drawable": [
+            223,
+            88
+          ],
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ],
+          "maximumChannelError": 0
+        }
+      ],
+      "scene": "grid-under-flex",
+      "screenshot": "grid-under-flex-simulator.png",
+      "screenshotSha256": "383e693afc1ee5990425ac3cfa1fef70fc47b8df661da00f62523d89bf161b71"
+    },
+    {
+      "schema": "spinon-c11-ios-metal-surface-pixels/v1",
+      "status": "matched",
+      "runID": "c11-pixels-20261012T014858759Z-38b0e689-9",
+      "processId": 37492,
+      "surfaceGeneration": 1,
+      "revisions": {
+        "document": 35,
+        "renderTree": 6,
+        "environment": 0
+      },
+      "runtimeViewportCssPx": [
+        320,
+        240
+      ],
+      "drawable": [
+        960,
+        720
+      ],
+      "scale": [
+        3,
+        3
+      ],
+      "expectedSamples": 4,
+      "matchedSamples": 4,
+      "maximumChannelError": 0,
+      "samples": [
+        {
+          "id": "item-c11-grid-flex-a",
+          "css": [
+            15,
+            10
+          ],
+          "drawable": [
+            46,
+            31
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "item-c11-grid-flex-b",
+          "css": [
+            60,
+            12
+          ],
+          "drawable": [
+            181,
+            37
+          ],
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "item-c11-grid-block-child",
+          "css": [
+            180,
+            10
+          ],
+          "drawable": [
+            541,
+            31
+          ],
+          "rgba": [
+            25,
+            169,
+            116,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "track-background",
+          "css": [
+            159,
+            39
+          ],
+          "drawable": [
+            478,
+            118
+          ],
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ],
+          "maximumChannelError": 0
+        }
+      ],
+      "scene": "flex-under-grid",
+      "screenshot": "flex-under-grid-simulator.png",
+      "screenshotSha256": "55751658c92cc01c973b7580ce8e49ffb1d0f55b18e0a340a76bc89bf74a0cdd"
+    }
+  ],
+  "limitations": [
+    "iPhone 17 Pro iOS 26.2 Simulator에서 실행했다. iOS 실기기 GPU 결과가 아니다.",
+    "Metal drawable texture readback은 compositor 제출 전이다. 최종 display pixel과 같음을 보장하지 않는다.",
+    "이 고정 10-scene fixture는 WPT 적합성이나 전체 CSS 지원을 증명하지 않는다."
+  ]
+}
