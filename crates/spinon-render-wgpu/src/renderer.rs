@@ -328,19 +328,8 @@ impl RuntimeRenderer {
                 "직접 surface pixel readback이 준비된 renderer가 아닙니다",
             ));
         }
-        if points.len() != 1 {
-            return Err(RuntimeRendererError::InvalidArgument(
-                "C12.4 surface pixel 검증은 한 번에 표본 하나만 허용합니다",
-            ));
-        }
-        if points
-            .iter()
-            .any(|(x, y)| *x >= self.config.width || *y >= self.config.height)
-        {
-            return Err(RuntimeRendererError::InvalidArgument(
-                "surface pixel 표본이 drawable 범위를 벗어났습니다",
-            ));
-        }
+        surface_readback::validate_points(self.config.width, self.config.height, points)
+            .map_err(RuntimeRendererError::Surface)?;
         if self.pending_surface_pixel_samples.is_some() {
             return Err(RuntimeRendererError::InvalidArgument(
                 "이전 surface pixel 표본이 아직 제출되지 않았습니다",

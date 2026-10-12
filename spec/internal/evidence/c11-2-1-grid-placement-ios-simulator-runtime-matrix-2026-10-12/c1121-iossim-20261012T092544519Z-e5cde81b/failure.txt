@@ -1,0 +1,8 @@
+AssertionError [ERR_ASSERTION]: Simulator가 Booted 상태가 아닙니다: Shutdown
++ actual - expected
+
++ 'Shutdown'
+- 'Booted'
+
+    at bootedSimulator (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-2-1-grid-placement-ios-runtime-matrix.mjs:26:10)
+    at main (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-2-1-grid-placement-ios-runtime-matrix.mjs:68:18)

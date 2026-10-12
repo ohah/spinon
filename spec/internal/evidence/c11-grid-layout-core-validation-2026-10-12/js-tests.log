@@ -1,0 +1,11 @@
+$ cd examples/bootstrap && bun test
+bun test v1.4.2 (744846f84)
+
+app.test.ts:
+(pass) 예제 번들이 HostDocument 커밋·rollback·getter 재진입·이벤트를 확인한다 [48.71ms]
+(pass) DOM façade가 노드 ID 한도 오류를 QuotaExceededError로 전달한다 [0.91ms]
+
+ 2 pass
+ 0 fail
+ 13 expect() calls
+Ran 2 tests across 1 file. [77.00ms]

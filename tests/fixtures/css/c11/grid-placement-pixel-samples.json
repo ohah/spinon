@@ -1,0 +1,28 @@
+{
+  "schema": "spinon-css-c11-2-1-grid-placement-pixel-samples/v1",
+  "fixtureId": "c11-2-1-numeric-lines",
+  "sceneId": "numeric-lines",
+  "oracle": {
+    "referencePath": "tests/fixtures/css/references/c11-grid-placement-precomparison-v2.json",
+    "referenceSha256": "5bbbd041e2e59fda32c684f7290f61bff41ab6dda9ab9f77ce2fb36f0e0ee034",
+    "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.98-b2801e708e4c-e9b080bbc659-4da07e3a6f1d",
+    "screenshotPath": "spec/internal/evidence/c11-2-1-explicit-grid-placement-precomparison-2026-10-12/c1121-chrome-20261012T042323478Z-300993a2/numeric-lines-dpr1.png",
+    "screenshotSha256": "8578e98913c343eb79ce2aa8dd7daf3549a5f54f4ef1cc01ebbbb87e2aca3b3c",
+    "viewportCssPx": { "width": 360, "height": 800 },
+    "deviceScaleFactor": 1,
+    "product": "Chrome/154.0.8037.98"
+  },
+  "runtime": {
+    "viewportCssPx": { "width": 320, "height": 240 },
+    "surface": "Android SurfaceView PixelCopy or iOS WGPU Metal drawable before compositor submission",
+    "devicePixelFormula": "floor((cssPx + 0.5) * drawablePixels / runtimeViewportCssPx)",
+    "maximumChannelError": 0
+  },
+  "samples": [
+    { "id": "grid-background", "nodeId": "c1121-numeric-grid", "xCssPx": 240, "yCssPx": 20, "rgba": [237, 241, 247, 255] },
+    { "id": "positive-lines", "nodeId": "c1121-positive-lines", "xCssPx": 20, "yCssPx": 20, "rgba": [40, 102, 246, 255] },
+    { "id": "negative-lines", "nodeId": "c1121-negative-lines", "xCssPx": 185, "yCssPx": 60, "rgba": [229, 72, 77, 255] },
+    { "id": "column-gap", "nodeId": "c1121-numeric-grid", "xCssPx": 167, "yCssPx": 10, "rgba": [237, 241, 247, 255] },
+    { "id": "row-gap", "nodeId": "c1121-numeric-grid", "xCssPx": 10, "yCssPx": 42, "rgba": [237, 241, 247, 255] }
+  ]
+}

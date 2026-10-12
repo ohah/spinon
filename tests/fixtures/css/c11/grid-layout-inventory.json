@@ -1,0 +1,75 @@
+{
+  "schema": "spinon-css-c11-grid-inventory/v1",
+  "fixtureId": "C11-grid-precomparison-v1",
+  "viewport": {
+    "width": 360,
+    "height": 800,
+    "deviceScaleFactors": [1, 2]
+  },
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "forcedColors": "none",
+    "pointer": "coarse",
+    "hover": "none",
+    "direction": "ltr",
+    "writingMode": "horizontal-tb"
+  },
+  "comparison": {
+    "rectFields": ["x", "y", "width", "height"],
+    "maximumAbsoluteRectErrorCssPx": 0.5,
+    "computedProperties": [
+      "display",
+      "direction",
+      "writing-mode",
+      "box-sizing",
+      "width",
+      "height",
+      "grid-template-columns",
+      "grid-template-rows",
+      "grid-auto-flow",
+      "column-gap",
+      "row-gap",
+      "justify-items",
+      "align-items"
+    ]
+  },
+  "wpt": {
+    "revision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+    "candidates": [
+      {
+        "path": "css/css-grid/grid-definition/grid-layout-basic.html",
+        "sha256": "f3a6ad6b049aa62f9c63b17b779cff9b930b3161a0abfe6013670b98fcc9ad57",
+        "stage": "C11.1 candidate; Chrome oracle only; Spinon WPT not run"
+      },
+      {
+        "path": "css/css-grid/grid-definition/fr-unit.html",
+        "sha256": "5002f2cacc37bf549fd55df44e82a8da28606e601f51575a2d06dd41e35c5390",
+        "stage": "C11.1 candidate; Chrome oracle only; Spinon WPT not run"
+      },
+      {
+        "path": "css/css-grid/grid-definition/grid-support-grid-template-columns-rows-001.html",
+        "sha256": "5136529e97cc6512f7ff11bf38a3186dcad214cab65bb4b54e6651bbb1f67bbe",
+        "stage": "C11.1 candidate; Chrome oracle only; Spinon WPT not run"
+      },
+      {
+        "path": "css/css-grid/placement/grid-auto-placement-implicit-tracks-001.html",
+        "sha256": "785012f37a838995bdd6491bd9d27034d21e2441152a067f050bc82fd993ad53",
+        "stage": "C11.2 candidate; implicit track semantics exceed C11.1"
+      }
+    ]
+  },
+  "cases": [
+    { "id": "fixed-tracks-gap", "rootId": "c11-fixed-grid", "nodeIds": ["c11-fixed-grid", "c11-fixed-a", "c11-fixed-b", "c11-fixed-c", "c11-fixed-d"] },
+    { "id": "percentage-tracks", "rootId": "c11-percent-grid", "nodeIds": ["c11-percent-grid", "c11-percent-a", "c11-percent-b"] },
+    { "id": "fractional-tracks-gap", "rootId": "c11-fr-grid", "nodeIds": ["c11-fr-grid", "c11-fr-a", "c11-fr-b"] },
+    { "id": "mixed-fixed-percent-fr", "rootId": "c11-mixed-grid", "nodeIds": ["c11-mixed-grid", "c11-mixed-a", "c11-mixed-b", "c11-mixed-c"] },
+    { "id": "row-auto-placement", "rootId": "c11-auto-grid", "nodeIds": ["c11-auto-grid", "c11-auto-a", "c11-auto-b", "c11-auto-c", "c11-auto-d", "c11-auto-e"] },
+    { "id": "empty-grid", "rootId": "c11-empty-grid", "nodeIds": ["c11-empty-grid"] },
+    { "id": "single-item-grid", "rootId": "c11-single-grid", "nodeIds": ["c11-single-grid", "c11-single-item"] },
+    { "id": "grid-under-block", "rootId": "c11-block-parent", "nodeIds": ["c11-block-parent", "c11-block-grid", "c11-block-a", "c11-block-b"] },
+    { "id": "grid-under-flex", "rootId": "c11-flex-parent", "nodeIds": ["c11-flex-parent", "c11-flex-grid-a", "c11-flex-a1", "c11-flex-a2", "c11-flex-grid-b", "c11-flex-b1", "c11-flex-b2"] },
+    { "id": "flex-under-grid", "rootId": "c11-grid-flex-parent", "nodeIds": ["c11-grid-flex-parent", "c11-grid-flex-child", "c11-grid-flex-a", "c11-grid-flex-b", "c11-grid-block-child"] }
+  ]
+}

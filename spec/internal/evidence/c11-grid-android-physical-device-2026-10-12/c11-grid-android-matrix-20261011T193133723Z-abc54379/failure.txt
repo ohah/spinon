@@ -1,0 +1,7 @@
+Error: adb -s R5KYB06SMPE shell pidof dev.spinon.bootstrap 실패: 
+    at command (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-grid-android-runtime-matrix.mjs:33:11)
+    at adb (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-grid-android-runtime-matrix.mjs:38:32)
+    at processId (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-grid-android-runtime-matrix.mjs:67:10)
+    at file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-grid-android-runtime-matrix.mjs:135:19
+    at waitFor (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-grid-android-runtime-matrix.mjs:74:19)
+    at main (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-grid-android-runtime-matrix.mjs:135:5)

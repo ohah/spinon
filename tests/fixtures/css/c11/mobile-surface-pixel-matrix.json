@@ -1,0 +1,559 @@
+{
+  "schema": "spinon-css-c11-mobile-surface-pixel-matrix/v1",
+  "fixtureId": "C11-grid-precomparison-v1",
+  "viewportCssPx": {
+    "width": 320,
+    "height": 240
+  },
+  "oracle": {
+    "name": "Google Chrome",
+    "product": "Chrome/154.0.8037.98",
+    "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.98-d9996da8123a-83fc71ce41b4-ca4062baab2b",
+    "referencePath": "tests/fixtures/css/references/c11-grid-precomparison-v2.json",
+    "referenceSha256": "2983995fc946ddda3137566612915bd9fd38a9409ba39a4a99ba27220bfcbb3a",
+    "inventoryPath": "tests/fixtures/css/c11/grid-layout-inventory.json",
+    "inventorySha256": "d9996da8123ab405e3dd7b589f127d38f96d74b68d64392784119a38c6d86261",
+    "htmlPath": "tests/fixtures/css/c11/grid-layout.html",
+    "htmlSha256": "83fc71ce41b46bdbbe22c941a7147e20399876d99b4e1f36b24ae43c8d4a1d6a",
+    "captureRunId": "c11-chrome-20261011T141747906Z-c5bc3779",
+    "dpr": 1
+  },
+  "summary": {
+    "sceneCount": 10,
+    "sampleCount": 36
+  },
+  "scenes": [
+    {
+      "id": "fixed-tracks-gap",
+      "index": 0,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-grid-precomparison-2026-10-11/c11-chrome-20261011T141747906Z-c5bc3779/fixed-tracks-gap-dpr1.png",
+        "sha256": "80c961cb4f990d721c2a3e4d6b2004c83eba7cb9d09798aecdcd75e9401490da"
+      },
+      "samples": [
+        {
+          "id": "item-c11-fixed-a",
+          "nodeId": "c11-fixed-a",
+          "xCssPx": 20,
+          "yCssPx": 10,
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        },
+        {
+          "id": "item-c11-fixed-b",
+          "nodeId": "c11-fixed-b",
+          "xCssPx": 113,
+          "yCssPx": 12,
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ]
+        },
+        {
+          "id": "item-c11-fixed-c",
+          "nodeId": "c11-fixed-c",
+          "xCssPx": 226,
+          "yCssPx": 13,
+          "rgba": [
+            25,
+            169,
+            116,
+            255
+          ]
+        },
+        {
+          "id": "item-c11-fixed-d",
+          "nodeId": "c11-fixed-d",
+          "xCssPx": 15,
+          "yCssPx": 65,
+          "rgba": [
+            255,
+            200,
+            87,
+            255
+          ]
+        },
+        {
+          "id": "track-background",
+          "nodeId": "c11-fixed-grid",
+          "xCssPx": 159,
+          "yCssPx": 64,
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ]
+        }
+      ]
+    },
+    {
+      "id": "percentage-tracks",
+      "index": 1,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-grid-precomparison-2026-10-11/c11-chrome-20261011T141747906Z-c5bc3779/percentage-tracks-dpr1.png",
+        "sha256": "2eb51c4d8753c1f226180477d85149940f1a4a817a3b1968c6dfd868de7784e5"
+      },
+      "samples": [
+        {
+          "id": "item-c11-percent-a",
+          "nodeId": "c11-percent-a",
+          "xCssPx": 15,
+          "yCssPx": 10,
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        },
+        {
+          "id": "item-c11-percent-b",
+          "nodeId": "c11-percent-b",
+          "xCssPx": 95,
+          "yCssPx": 10,
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ]
+        },
+        {
+          "id": "track-background",
+          "nodeId": "c11-percent-grid",
+          "xCssPx": 159,
+          "yCssPx": 44,
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fractional-tracks-gap",
+      "index": 2,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-grid-precomparison-2026-10-11/c11-chrome-20261011T141747906Z-c5bc3779/fractional-tracks-gap-dpr1.png",
+        "sha256": "3f2f5ed2788bd6b52e09ff6abd7edb58572ae8e1c4a9cea62c32e44a44b3a23e"
+      },
+      "samples": [
+        {
+          "id": "item-c11-fr-a",
+          "nodeId": "c11-fr-a",
+          "xCssPx": 15,
+          "yCssPx": 10,
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        },
+        {
+          "id": "item-c11-fr-b",
+          "nodeId": "c11-fr-b",
+          "xCssPx": 129,
+          "yCssPx": 10,
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ]
+        },
+        {
+          "id": "track-background",
+          "nodeId": "c11-fr-grid",
+          "xCssPx": 159,
+          "yCssPx": 44,
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mixed-fixed-percent-fr",
+      "index": 3,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-grid-precomparison-2026-10-11/c11-chrome-20261011T141747906Z-c5bc3779/mixed-fixed-percent-fr-dpr1.png",
+        "sha256": "a4b069ecb2e9794e7620ffb954e65abcdd711d9d8084d250aab4dff1fac193c4"
+      },
+      "samples": [
+        {
+          "id": "item-c11-mixed-a",
+          "nodeId": "c11-mixed-a",
+          "xCssPx": 15,
+          "yCssPx": 10,
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        },
+        {
+          "id": "item-c11-mixed-b",
+          "nodeId": "c11-mixed-b",
+          "xCssPx": 107,
+          "yCssPx": 10,
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ]
+        },
+        {
+          "id": "item-c11-mixed-c",
+          "nodeId": "c11-mixed-c",
+          "xCssPx": 209,
+          "yCssPx": 10,
+          "rgba": [
+            25,
+            169,
+            116,
+            255
+          ]
+        },
+        {
+          "id": "track-background",
+          "nodeId": "c11-mixed-grid",
+          "xCssPx": 179,
+          "yCssPx": 44,
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ]
+        }
+      ]
+    },
+    {
+      "id": "row-auto-placement",
+      "index": 4,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-grid-precomparison-2026-10-11/c11-chrome-20261011T141747906Z-c5bc3779/row-auto-placement-dpr1.png",
+        "sha256": "d19b462c0c0390d93f04fd5b615153f066455016a9e07c4bba1b541ab01c9147"
+      },
+      "samples": [
+        {
+          "id": "item-c11-auto-a",
+          "nodeId": "c11-auto-a",
+          "xCssPx": 10,
+          "yCssPx": 10,
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        },
+        {
+          "id": "item-c11-auto-b",
+          "nodeId": "c11-auto-b",
+          "xCssPx": 120,
+          "yCssPx": 10,
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ]
+        },
+        {
+          "id": "item-c11-auto-c",
+          "nodeId": "c11-auto-c",
+          "xCssPx": 10,
+          "yCssPx": 60,
+          "rgba": [
+            25,
+            169,
+            116,
+            255
+          ]
+        },
+        {
+          "id": "item-c11-auto-d",
+          "nodeId": "c11-auto-d",
+          "xCssPx": 120,
+          "yCssPx": 60,
+          "rgba": [
+            255,
+            200,
+            87,
+            255
+          ]
+        },
+        {
+          "id": "item-c11-auto-e",
+          "nodeId": "c11-auto-e",
+          "xCssPx": 10,
+          "yCssPx": 110,
+          "rgba": [
+            135,
+            88,
+            255,
+            255
+          ]
+        },
+        {
+          "id": "track-background",
+          "nodeId": "c11-auto-grid",
+          "xCssPx": 104,
+          "yCssPx": 69,
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ]
+        }
+      ]
+    },
+    {
+      "id": "empty-grid",
+      "index": 5,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-grid-precomparison-2026-10-11/c11-chrome-20261011T141747906Z-c5bc3779/empty-grid-dpr1.png",
+        "sha256": "4810252daae9cde9d8161be590737795565a8e1352427575b4eec89ddb0a40d1"
+      },
+      "samples": [
+        {
+          "id": "track-background",
+          "nodeId": "c11-empty-grid",
+          "xCssPx": 159,
+          "yCssPx": 44,
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ]
+        }
+      ]
+    },
+    {
+      "id": "single-item-grid",
+      "index": 6,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-grid-precomparison-2026-10-11/c11-chrome-20261011T141747906Z-c5bc3779/single-item-grid-dpr1.png",
+        "sha256": "6126cb370f6e72a035bef99000a2b1b28441c760f0ba3811b29287d50ea53e31"
+      },
+      "samples": [
+        {
+          "id": "item-c11-single-item",
+          "nodeId": "c11-single-item",
+          "xCssPx": 15,
+          "yCssPx": 10,
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        },
+        {
+          "id": "track-background",
+          "nodeId": "c11-single-grid",
+          "xCssPx": 159,
+          "yCssPx": 44,
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ]
+        }
+      ]
+    },
+    {
+      "id": "grid-under-block",
+      "index": 7,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-grid-precomparison-2026-10-11/c11-chrome-20261011T141747906Z-c5bc3779/grid-under-block-dpr1.png",
+        "sha256": "904574b2d7e71fad688095dcf8272313327edc94112b80003f827b3989135474"
+      },
+      "samples": [
+        {
+          "id": "item-c11-block-a",
+          "nodeId": "c11-block-a",
+          "xCssPx": 35,
+          "yCssPx": 20,
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        },
+        {
+          "id": "item-c11-block-b",
+          "nodeId": "c11-block-b",
+          "xCssPx": 135,
+          "yCssPx": 20,
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ]
+        },
+        {
+          "id": "track-background",
+          "nodeId": "c11-block-parent",
+          "xCssPx": 159,
+          "yCssPx": 59,
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ]
+        }
+      ]
+    },
+    {
+      "id": "grid-under-flex",
+      "index": 8,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-grid-precomparison-2026-10-11/c11-chrome-20261011T141747906Z-c5bc3779/grid-under-flex-dpr1.png",
+        "sha256": "6f61e9136a2c2fe680c588d2be0557a98a95414af988b9f6dc4f7c34fdc16e3a"
+      },
+      "samples": [
+        {
+          "id": "item-c11-flex-a1",
+          "nodeId": "c11-flex-a1",
+          "xCssPx": 10,
+          "yCssPx": 10,
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        },
+        {
+          "id": "item-c11-flex-a2",
+          "nodeId": "c11-flex-a2",
+          "xCssPx": 90,
+          "yCssPx": 10,
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ]
+        },
+        {
+          "id": "item-c11-flex-b1",
+          "nodeId": "c11-flex-b1",
+          "xCssPx": 170,
+          "yCssPx": 10,
+          "rgba": [
+            25,
+            169,
+            116,
+            255
+          ]
+        },
+        {
+          "id": "item-c11-flex-b2",
+          "nodeId": "c11-flex-b2",
+          "xCssPx": 250,
+          "yCssPx": 10,
+          "rgba": [
+            255,
+            200,
+            87,
+            255
+          ]
+        },
+        {
+          "id": "track-background",
+          "nodeId": "c11-flex-grid-a",
+          "xCssPx": 74,
+          "yCssPx": 29,
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ]
+        }
+      ]
+    },
+    {
+      "id": "flex-under-grid",
+      "index": 9,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-grid-precomparison-2026-10-11/c11-chrome-20261011T141747906Z-c5bc3779/flex-under-grid-dpr1.png",
+        "sha256": "726f644304a5b2c81b7bcef01be334ae1cbd0966df368c0182d58d67d7851fb8"
+      },
+      "samples": [
+        {
+          "id": "item-c11-grid-flex-a",
+          "nodeId": "c11-grid-flex-a",
+          "xCssPx": 15,
+          "yCssPx": 10,
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        },
+        {
+          "id": "item-c11-grid-flex-b",
+          "nodeId": "c11-grid-flex-b",
+          "xCssPx": 60,
+          "yCssPx": 12,
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ]
+        },
+        {
+          "id": "item-c11-grid-block-child",
+          "nodeId": "c11-grid-block-child",
+          "xCssPx": 180,
+          "yCssPx": 10,
+          "rgba": [
+            25,
+            169,
+            116,
+            255
+          ]
+        },
+        {
+          "id": "track-background",
+          "nodeId": "c11-grid-flex-parent",
+          "xCssPx": 159,
+          "yCssPx": 39,
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ]
+        }
+      ]
+    }
+  ]
+}

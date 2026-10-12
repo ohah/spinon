@@ -12,8 +12,12 @@ use spinon_layout::{
 use spinon_style::{
     ComputedStyleProfile, ComputedStyleSnapshot, CssViewport, StylesheetSource, StyloDocumentView,
     compute_flex_alignment_cascade, compute_flex_alignment_layers_cascade,
-    compute_flex_layout_cascade, compute_flex_margin_cascade, compute_runtime_flex_paint_cascade,
-    compute_s04_flex_paint_cascade,
+    compute_flex_layout_cascade, compute_flex_margin_cascade,
+    compute_runtime_block_flex_grid_cascade_with_stylesheets,
+    compute_runtime_block_flex_grid_placement_cascade_with_stylesheets,
+    compute_runtime_flex_paint_cascade, compute_s04_flex_paint_cascade,
+    first_unsupported_runtime_block_flex_grid_inline_property,
+    first_unsupported_runtime_block_flex_grid_placement_inline_property,
 };
 
 use crate::StyleLayoutError;
@@ -27,6 +31,59 @@ mod validation;
 pub struct StyleLayoutOutput {
     pub computed_styles: ComputedStyleSnapshot,
     pub layout: LayoutOutput,
+}
+
+/// C11.1 inline CSS preflight, Stylo cascade, typed Grid projection과 Taffy layout을 연결합니다.
+pub fn compute_runtime_block_flex_grid_style_layout(
+    snapshot: &HostDocumentSnapshot,
+    view: &StyloDocumentView,
+    root: HostNodeHandle,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    assert_view_matches_snapshot(snapshot, view)?;
+    if view.mount_root_element().handle() != Some(root) {
+        return Err(StyleLayoutError::SnapshotMismatch { field: "root" });
+    }
+    if let Some((node, property)) = first_unsupported_runtime_block_flex_grid_inline_property(view)
+    {
+        return Err(StyleLayoutError::UnsupportedInlineProperty { node, property });
+    }
+    let computed_styles = compute_runtime_block_flex_grid_cascade_with_stylesheets(
+        view,
+        author_stylesheets,
+        viewport,
+        style_revision,
+    )?;
+    compute_runtime_style_layout(snapshot, root, computed_styles, viewport)
+}
+
+/// C11.2.1 numeric Grid placement profile을 cascade부터 Taffy까지 연결합니다.
+pub fn compute_runtime_block_flex_grid_placement_style_layout(
+    snapshot: &HostDocumentSnapshot,
+    view: &StyloDocumentView,
+    root: HostNodeHandle,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    assert_view_matches_snapshot(snapshot, view)?;
+    if view.mount_root_element().handle() != Some(root) {
+        return Err(StyleLayoutError::SnapshotMismatch { field: "root" });
+    }
+    if let Some((node, property)) =
+        first_unsupported_runtime_block_flex_grid_placement_inline_property(view)
+    {
+        return Err(StyleLayoutError::UnsupportedInlineProperty { node, property });
+    }
+    let computed_styles = compute_runtime_block_flex_grid_placement_cascade_with_stylesheets(
+        view,
+        author_stylesheets,
+        viewport,
+        style_revision,
+    )?;
+    compute_runtime_style_layout(snapshot, root, computed_styles, viewport)
 }
 
 /// C04.2 profile로 Stylo cascade를 계산하고 HostDocument subtree를 Taffy에 전달합니다.
@@ -140,6 +197,8 @@ pub fn compute_runtime_style_layout(
         computed_styles.profile,
         ComputedStyleProfile::RuntimeBlockPositioningV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
     );
     compute_layout_from_styles(
         snapshot,
@@ -199,7 +258,9 @@ fn compute_profile_layout(
         | ComputedStyleProfile::RuntimeBlockPaintV1
         | ComputedStyleProfile::RuntimeBlockFormattingV1
         | ComputedStyleProfile::RuntimeBlockPositioningV1
-        | ComputedStyleProfile::RuntimeBlockFlexStackingV1 => {
+        | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+        | ComputedStyleProfile::RuntimeBlockFlexGridV1
+        | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1 => {
             return Err(StyleLayoutError::UnsupportedProfile {
                 profile: format!("{profile:?}"),
             });
@@ -227,6 +288,8 @@ fn compute_layout_from_styles(
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
     ) {
         for element in computed_styles.elements.iter() {
             let display = element.properties.get("display").ok_or(
@@ -243,11 +306,23 @@ fn compute_layout_from_styles(
                 ComputedStyleProfile::RuntimeBlockFlexStackingV1 => {
                     matches!(display.as_str(), "block" | "flow-root" | "flex" | "none")
                 }
+                ComputedStyleProfile::RuntimeBlockFlexGridV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1 => {
+                    matches!(
+                        display.as_str(),
+                        "block" | "flow-root" | "flex" | "grid" | "none"
+                    )
+                }
                 _ => matches!(display.as_str(), "block" | "none"),
             };
             if !supported_display {
                 return Err(
-                    if computed_styles.profile == ComputedStyleProfile::RuntimeBlockFlexStackingV1 {
+                    if matches!(
+                        computed_styles.profile,
+                        ComputedStyleProfile::RuntimeBlockFlexStackingV1
+                            | ComputedStyleProfile::RuntimeBlockFlexGridV1
+                            | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
+                    ) {
                         StyleLayoutError::UnsupportedComputedValue {
                             node: element.node_id,
                             property: "display",
@@ -266,6 +341,8 @@ fn compute_layout_from_styles(
     let projected = project_styles(snapshot, root, &computed_styles)?;
     let styles = projected.styles;
     let positioning = projected.positioning;
+    let grid_containers = projected.grid_containers;
+    let grid_items = projected.grid_items;
     if matches!(
         computed_styles.profile,
         ComputedStyleProfile::FlexMarginV1
@@ -311,6 +388,8 @@ fn compute_layout_from_styles(
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
     ) {
         LayoutInput::from_host_document_with_viewport_containing_block(
             snapshot,
@@ -331,7 +410,8 @@ fn compute_layout_from_styles(
         )?
     }
     .with_css_math(projected.css_math)
-    .with_positioning(positioning);
+    .with_positioning(positioning)
+    .with_grid_layout(grid_containers, grid_items);
     let mut layout = TaffyLayoutEngine.compute(&input)?;
     if matches!(
         computed_styles.profile,
@@ -345,6 +425,8 @@ fn compute_layout_from_styles(
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
     ) {
         zero_display_none_frames(snapshot, root, &styles, &mut layout);
     }

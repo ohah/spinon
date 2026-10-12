@@ -1,9 +1,12 @@
 mod calc_tree;
+mod compact_taffy_style;
 mod compute;
 mod css_math;
 mod error;
 mod flex_auto_margin;
 mod flex_baseline;
+mod grid;
+mod grid_placement;
 mod host_document;
 mod percentage_basis;
 mod positioning;
@@ -23,6 +26,8 @@ pub const MAX_LAYOUT_TREE_DEPTH: usize = 1_024;
 
 pub use css_math::{LayoutCalcId, LayoutCssMath, LayoutCssMathProperty, LayoutCssMathValue};
 pub use error::LayoutError;
+pub use grid::{GridAutoFlow, GridContainerInput, GridTrackSize};
+pub use grid_placement::{GridItemInput, GridPlacementInput};
 pub use revision::{LayoutInputRevision, LayoutSourceRevision};
 pub use style::{
     AlignmentSafety, ContentAlignmentPosition, FlexDirection, FlexWrap, ItemAlignmentPosition,
@@ -50,6 +55,8 @@ pub struct LayoutInput {
     nodes: Vec<LayoutNode>,
     css_math: Vec<LayoutCssMathValue>,
     positioning: BTreeMap<NodeId, LayoutPositioning>,
+    grid_containers: BTreeMap<NodeId, GridContainerInput>,
+    grid_items: BTreeMap<NodeId, GridItemInput>,
 }
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -89,6 +96,17 @@ impl LayoutInput {
     /// Typed position과 inset 값을 일반 크기·Flex 스타일과 별도로 연결합니다.
     pub fn with_positioning(mut self, values: BTreeMap<NodeId, LayoutPositioning>) -> Self {
         self.positioning = values;
+        self
+    }
+
+    /// Stylo에서 계산한 Grid track과 item placement를 동일한 입력 revision에 연결합니다.
+    pub fn with_grid_layout(
+        mut self,
+        containers: BTreeMap<NodeId, GridContainerInput>,
+        items: BTreeMap<NodeId, GridItemInput>,
+    ) -> Self {
+        self.grid_containers = containers;
+        self.grid_items = items;
         self
     }
 }
@@ -136,7 +154,7 @@ pub trait LayoutEngine {
     fn compute(&self, input: &LayoutInput) -> Result<LayoutOutput, LayoutError>;
 }
 
-/// Taffy Flexbox 기반의 현재 내부 엔진입니다.
+/// Taffy Block·Flexbox·Grid 계산기를 연결하는 내부 엔진입니다.
 #[derive(Clone, Copy, Debug, Default)]
 pub struct TaffyLayoutEngine;
 
@@ -236,7 +254,8 @@ fn validate(input: &LayoutInput) -> Result<BTreeMap<NodeId, usize>, LayoutError>
 
     validate_positioning(input, &index)?;
     validate_css_math_bindings(input)?;
-    validate_spacing_percentage_bases(input, &index)?;
+    let definite_axes = validate_spacing_percentage_bases(input, &index)?;
+    grid::validate_grid_layout(input, &index, &definite_axes)?;
 
     Ok(index)
 }

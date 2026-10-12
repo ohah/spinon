@@ -24,7 +24,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -32,6 +34,21 @@ import java.util.concurrent.TimeUnit;
 
 final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Callback {
     private static final String TAG = "SpinonBootstrap";
+    private static final String[] C11_GRID_SCENE_IDS = {
+            "fixed-tracks-gap", "percentage-tracks", "fractional-tracks-gap",
+            "mixed-fixed-percent-fr", "row-auto-placement", "empty-grid",
+            "single-item-grid", "grid-under-block", "grid-under-flex", "flex-under-grid",
+    };
+    private static final String[] C1121_GRID_PIXEL_SCENE_IDS = {
+            "numeric-lines", "positive-spans", "reversed-lines",
+            "shorthand-cascade", "overlap-source-order", "nested-placement-modes",
+    };
+    private static boolean isC1121PixelScene(String sceneId) {
+        for (String candidate : C1121_GRID_PIXEL_SCENE_IDS) {
+            if (candidate.equals(sceneId)) return true;
+        }
+        return false;
+    }
     private static native long nativeCreateHost(boolean registeredPropertiesFixture);
     private static native long nativeCreateBlockPaintHost();
     private static native long nativeCreateBlockFormattingHost();
@@ -39,6 +56,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native long nativeCreateC122AbsoluteBlockHost();
     private static native long nativeCreateC123FixedHost();
     private static native long nativeCreateC124StackingHost();
+    private static native long nativeCreateC11GridHost();
+    private static native long nativeCreateC1121GridPlacementHost();
     private static native byte[] nativeC124WorkerStackResidencySample(long host);
     private static native long nativeCreateC1035PositionedFlexHost();
     private static native long nativeBeginPresentationUpdate(long host);
@@ -65,6 +84,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native byte[] nativeEvalC122AbsoluteBlockFixture(long host);
     private static native byte[] nativeEvalC123FixedFixture(long host);
     private static native byte[] nativeEvalC124StackingFixture(long host);
+    private static native byte[] nativeEvalC11GridFixture(long host);
+    private static native byte[] nativeEvalC11GridSceneFixture(long host, int sceneIndex);
+    private static native byte[] nativeEvalC1121GridPlacementFixture(
+            long host, String sceneId, String runId);
     private static native byte[] nativeEvalC124Source(long host, String source);
     private static native byte[] nativeEvalC1035PositionedFlexFixture(long host);
     private static native byte[] nativeEvalC121PositionState(long host, int state);
@@ -163,6 +186,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean c122AbsoluteBlockProbeRequested;
     private final boolean c123FixedPositionProbeRequested;
     private final boolean c124StackingProbeRequested;
+    private final boolean c11GridFixtureRequested;
+    private final boolean c1121GridPlacementRequested;
+    private final String c1121GridSceneId;
+    private final String c1121GridRunId;
+    private final int c11GridSceneIndex;
+    private final String c11GridPixelMatrixRunId;
+    private final String c11GridPixelMatrixSceneId;
+    private final List<SurfaceViewPixelCapture.Sample> c11GridPixelMatrixSamples;
+    private final String c11GridPixelMatrixConfigError;
     private final boolean c124RuntimeMatrixProbeRequested;
     private final boolean c124DepthSafetyProbeRequested;
     private final boolean c124SurfaceCaptureProbeRequested;
@@ -199,6 +231,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private boolean failureProbeStarted;
     private boolean shutdownProbeStarted;
     private boolean c124SurfaceCaptureStarted;
+    private boolean c1121GridRuntimeSummaryEmitted;
+    private boolean c11GridSurfaceCaptureStarted;
     private List<C124SurfacePixelCapture.Sample> c124SurfaceSamples = List.of();
     private int c124SurfaceOriginXCssPx;
     private int c124SurfaceOriginYCssPx;
@@ -209,13 +243,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             Activity activity,
             int backend,
             boolean failureProbeRequested,
-            boolean shutdownProbeRequested
+            boolean shutdownProbeRequested,
+            int c11GridSceneIndex
     ) {
         super(activity);
         this.activity = activity;
         this.backend = backend;
         this.failureProbeRequested = failureProbeRequested;
         this.shutdownProbeRequested = shutdownProbeRequested;
+        this.c11GridSceneIndex = c11GridSceneIndex;
         runtimeResultCacheProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c053_runtime_result_cache", false);
         incrementalRestyleProbeRequested = activity.getIntent()
@@ -275,17 +311,68 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || c124RuntimeMatrixProbeRequested
                 || c124DepthSafetyProbeRequested || activity.getIntent()
                 .getBooleanExtra("spinon_c124_stacking_context", false);
+        String c1121SceneId = activity.getIntent().getStringExtra("spinon_c1121_grid_scene");
+        c1121GridPlacementRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c1121_grid_placement", false) || c1121SceneId != null;
+        c1121GridSceneId = c1121SceneId == null ? "numeric-lines" : c1121SceneId;
+        String c1121RunId = activity.getIntent().getStringExtra("spinon_c1121_grid_run_id");
+        c1121GridRunId = c1121RunId == null ? "manual" : c1121RunId;
+        c11GridFixtureRequested = c1121GridPlacementRequested || activity.getIntent()
+                .getBooleanExtra("spinon_c11_grid_fixture", false)
+                || activity.getIntent().getStringExtra("spinon_c11_grid_case") != null;
+        String pixelMatrixRunId = activity.getIntent()
+                .getStringExtra("spinon_c11_grid_pixel_matrix_run_id");
+        String pixelMatrixSceneId = activity.getIntent().getStringExtra("spinon_c11_grid_case");
+        String pixelMatrixEncodedSamples = activity.getIntent()
+                .getStringExtra("spinon_c11_grid_pixel_matrix_samples");
+        boolean pixelMatrixRequested = pixelMatrixRunId != null || pixelMatrixEncodedSamples != null;
+        boolean pixelMatrixSceneMatches = c1121GridPlacementRequested
+                ? pixelMatrixSceneId != null && pixelMatrixSceneId.equals(c1121GridSceneId)
+                        && isC1121PixelScene(pixelMatrixSceneId)
+                : pixelMatrixSceneId != null && c11GridSceneIndex >= 0
+                        && c11GridSceneIndex < C11_GRID_SCENE_IDS.length
+                        && pixelMatrixSceneId.equals(C11_GRID_SCENE_IDS[c11GridSceneIndex]);
+        List<SurfaceViewPixelCapture.Sample> pixelMatrixSamples = List.of();
+        String pixelMatrixConfigError = "";
+        if (pixelMatrixRequested) {
+            if (pixelMatrixRunId == null || !pixelMatrixRunId.matches("[A-Za-z0-9_-]{8,80}")) {
+                pixelMatrixConfigError = "invalid-run-id";
+            } else if (!pixelMatrixSceneMatches) {
+                pixelMatrixConfigError = "scene-index-mismatch";
+            } else if (pixelMatrixEncodedSamples == null
+                    || pixelMatrixEncodedSamples.length() > 16_384) {
+                pixelMatrixConfigError = "invalid-sample-payload";
+            } else {
+                try {
+                    byte[] decoded = android.util.Base64.decode(pixelMatrixEncodedSamples,
+                            android.util.Base64.URL_SAFE | android.util.Base64.NO_WRAP);
+                    pixelMatrixSamples = parseC11GridPixelMatrixSamples(
+                            new String(decoded, StandardCharsets.UTF_8));
+                    if (pixelMatrixSamples.isEmpty()) pixelMatrixConfigError = "empty-samples";
+                } catch (Exception error) {
+                    pixelMatrixConfigError = "invalid-sample-payload";
+                }
+            }
+        }
+        c11GridPixelMatrixRunId = pixelMatrixRunId == null ? "" : pixelMatrixRunId;
+        c11GridPixelMatrixSceneId = pixelMatrixSceneId == null ? "" : pixelMatrixSceneId;
+        c11GridPixelMatrixSamples = pixelMatrixSamples;
+        c11GridPixelMatrixConfigError = pixelMatrixConfigError;
         c1035PositionedFlexProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c1035_positioned_flex", false);
         blockFormattingProbeRequested = flowRootProbeRequested || marginCollapseProbeRequested
                 || activity.getIntent().getBooleanExtra("spinon_c091_block_formatting", false);
         fixedSizeCssFixtureRequested = c122AbsoluteBlockProbeRequested
                 || c123FixedPositionProbeRequested
+                || c11GridFixtureRequested
                 || c124StackingProbeRequested
                 || blockFormattingProbeRequested || flexWrapProbeRequested
                 || flexDistributionProbeRequested || flexReverseProbeRequested
                 || flexOrderProbeRequested || flexAlignmentProbeRequested
                 || flexBaselineProbeRequested || c1035PositionedFlexProbeRequested;
+        if (c11GridSceneIndex < 0 || c11GridSceneIndex >= 10) {
+            throw new IllegalArgumentException("C11.1 scene index가 허용 범위 밖입니다");
+        }
         registeredPropertiesProbeRequested = runtimeResultCacheProbeRequested
                 || activity.getIntent().getBooleanExtra("spinon_c052_registered_properties", false);
         authorStylesheetsProbeRequested = activity.getIntent()
@@ -314,7 +401,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         setBackgroundColor(Color.rgb(14, 19, 31));
 
         TextView title = new TextView(activity);
-        title.setText(c1035PositionedFlexProbeRequested
+        title.setText(c1121GridPlacementRequested
+                ? "SPINON · C11.2.1 Grid"
+                : c11GridFixtureRequested
+                ? "SPINON · C11.1 CSS Grid"
+                : c1035PositionedFlexProbeRequested
                 ? "SPINON · C10.3.5 positioned Flex"
                 : c123FixedPositionProbeRequested
                 ? "SPINON · C12.3 viewport fixed"
@@ -375,7 +466,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         addView(title, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 
         TextView description = new TextView(activity);
-        description.setText(c1035PositionedFlexProbeRequested
+        description.setText(c1121GridPlacementRequested
+                ? "V8 numeric Grid line/span → Stylo → Taffy → WGPU · 320×240 CSS px"
+                : c11GridFixtureRequested
+                ? "V8 DOM display:grid → Stylo → Taffy → Rust 장면 → WGPU · 320×240 CSS px"
+                : c1035PositionedFlexProbeRequested
                 ? "V8 직접 Flex 자식·wrapper·paint 순서 → Stylo → Taffy → WGPU · 320×240 CSS px"
                 : c123FixedPositionProbeRequested
                 ? "V8 fixed viewport owner·inset·resize → Stylo → Taffy → WGPU · 360×800 CSS px"
@@ -446,7 +541,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
         surfaceView = new SurfaceView(activity);
         surfaceView.getHolder().addCallback(this);
-        surfaceView.setContentDescription(c1035PositionedFlexProbeRequested
+        surfaceView.setContentDescription(c1121GridPlacementRequested
+                ? "C11.2.1 numeric Grid line 배치 WGPU 장면"
+                : c11GridFixtureRequested
+                ? "C11.1 고정 CSS Grid 트랙·gap 배치 WGPU 장면"
+                : c1035PositionedFlexProbeRequested
                 ? "C10.3.5 positioned Flex 정렬·wrapper·paint 순서 WGPU 장면"
                 : c123FixedPositionProbeRequested
                 ? "C12.3 viewport fixed 배치 WGPU 장면"
@@ -614,7 +713,17 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private void initializeRuntime() {
-        long host = c124StackingProbeRequested
+        if (!c11GridPixelMatrixConfigError.isEmpty()) {
+            Log.e(TAG, "SPINON_C111_GRID_PIXEL_MATRIX status=error reason="
+                    + c11GridPixelMatrixConfigError);
+            postStatus("실패 · C11 Grid 표면 표본 인수가 올바르지 않습니다");
+            return;
+        }
+        long host = c1121GridPlacementRequested
+                ? nativeCreateC1121GridPlacementHost()
+                : c11GridFixtureRequested
+                ? nativeCreateC11GridHost()
+                : c124StackingProbeRequested
                 ? nativeCreateC124StackingHost()
                 : c123FixedPositionProbeRequested
                 ? nativeCreateC123FixedHost()
@@ -654,7 +763,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         Log.i(TAG, "SPINON_C0410_ENVIRONMENT viewport=" + widthCssPx + "x" + heightCssPx
                 + " scale=" + environmentScale + " dark=" + dark + " " + environment);
-        String result = c124SurfaceCaptureProbeRequested
+        String result = c1121GridPlacementRequested
+                ? decode(nativeEvalC1121GridPlacementFixture(
+                        host, c1121GridSceneId, c1121GridRunId))
+                : c11GridFixtureRequested
+                ? decode(nativeEvalC11GridSceneFixture(host, c11GridSceneIndex))
+                : c124SurfaceCaptureProbeRequested
                 ? evaluateC124SurfaceCase(host)
                 : c124StackingProbeRequested
                 ? decode(nativeEvalC124StackingFixture(host))
@@ -711,7 +825,31 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : authorStylesheetsProbeRequested
                         ? decode(nativeEvalAuthorStylesheetsFixture(host))
                         : decode(nativeEvalFixture(host));
+        if (c1121GridPlacementRequested) {
+            Log.i(TAG, "SPINON_C1121_GRID_EVAL_RUN run_id=" + c1121GridRunId
+                    + " scene_id=" + c1121GridSceneId + " " + runtimeStatusSummary(result));
+        }
         if (!result.startsWith("status=0 ")) {
+            if (c1121GridPlacementRequested) {
+                boolean superseded = result.startsWith("status=-12 ")
+                        && result.contains("op=eval status=0 ");
+                if (superseded) {
+                    Log.i(TAG, "SPINON_C1121_GRID_SUPERSEDED run_id=" + c1121GridRunId
+                            + " scene_id=" + c1121GridSceneId + " "
+                            + runtimeStatusSummary(result));
+                    return;
+                }
+                Log.e(TAG, "SPINON_C1121_GRID_SUMMARY run_id=" + c1121GridRunId
+                        + " scene_id=" + c1121GridSceneId + " " + result);
+                String failureMarker = "CSS runtime 장면 생성 실패:";
+                int failureStart = result.indexOf(failureMarker);
+                String diagnostic = failureStart >= 0
+                        ? result.substring(failureStart) : "diagnostic-marker-missing";
+                Log.e(TAG, "SPINON_C1121_GRID_DIAGNOSTIC run_id=" + c1121GridRunId
+                        + " scene_id=" + c1121GridSceneId + " "
+                        + (diagnostic.length() <= 768
+                                ? diagnostic : diagnostic.substring(0, 768) + " [truncated]"));
+            }
             if (c123FixedPositionProbeRequested) logC123FailureDetails(result);
             if (c122AbsoluteBlockProbeRequested) logC122FailureDetails(result);
             postStatus("실패 · " + result);
@@ -725,7 +863,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 return;
             }
         }
-        Log.i(TAG, (c1035PositionedFlexProbeRequested
+        Log.i(TAG, (c1121GridPlacementRequested
+                ? "SPINON_C1121_GRID_EVAL run_id=" + c1121GridRunId
+                        + " scene_id=" + c1121GridSceneId + " "
+                : c11GridFixtureRequested
+                ? "SPINON_C111_GRID_EVAL " : c1035PositionedFlexProbeRequested
                 ? "SPINON_C1035_EVAL " : c123FixedPositionProbeRequested
                 ? "SPINON_C123_EVAL " : c122AbsoluteBlockProbeRequested
                 ? "SPINON_C122_INITIAL " : c121PositioningProbeRequested
@@ -753,6 +895,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? runtimeResultCacheProbeRequested ? "SPINON_C053_INIT " : "SPINON_C052_EVAL "
                 : authorStylesheetsProbeRequested
                         ? "SPINON_C0411_EVAL " : "SPINON_C0410_EVAL ") + result);
+        if (c1121GridPlacementRequested) {
+            logC1121GridReadySummaryIfNeeded(result);
+        }
         if (c123FixedPositionProbeRequested) {
             Log.i(TAG, "SPINON_C123_SUMMARY state=matrix-360x800-dpr-1 "
                     + runtimeStatusSummary(result));
@@ -1120,6 +1265,201 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 });
     }
 
+    private static List<SurfaceViewPixelCapture.Sample> parseC11GridPixelMatrixSamples(
+            String json
+    ) throws Exception {
+        JSONArray records = new JSONArray(json);
+        if (records.length() < 1 || records.length() > 64) return List.of();
+        List<SurfaceViewPixelCapture.Sample> samples = new ArrayList<>(records.length());
+        Set<String> ids = new HashSet<>();
+        Set<String> coordinates = new HashSet<>();
+        for (int index = 0; index < records.length(); index++) {
+            JSONObject record = records.getJSONObject(index);
+            String id = record.getString("id");
+            Object xValue = record.get("xCssPx");
+            Object yValue = record.get("yCssPx");
+            if (!(xValue instanceof Number) || !(yValue instanceof Number)) {
+                return List.of();
+            }
+            Number xNumber = (Number) xValue;
+            Number yNumber = (Number) yValue;
+            double x = xNumber.doubleValue();
+            double y = yNumber.doubleValue();
+            if (!id.matches("[a-z0-9-]{1,80}") || !Double.isFinite(x) || !Double.isFinite(y)
+                    || x != Math.rint(x) || y != Math.rint(y)
+                    || x < 0 || x >= 320 || y < 0 || y >= 240
+                    || !ids.add(id) || !coordinates.add((int) x + "," + (int) y)) {
+                return List.of();
+            }
+            samples.add(new SurfaceViewPixelCapture.Sample(id, x, y));
+        }
+        return samples;
+    }
+
+    private void requestC11GridSurfaceCapture(long renderer, long generation) {
+        final int width;
+        final int height;
+        synchronized (stateLock) {
+            if (closing || c11GridSurfaceCaptureStarted || !surfaceAvailable
+                    || surfaceGeneration != generation || rendererHandle != renderer
+                    || rendererGeneration != generation) {
+                return;
+            }
+            c11GridSurfaceCaptureStarted = true;
+            width = surfaceWidth;
+            height = surfaceHeight;
+        }
+        List<SurfaceViewPixelCapture.Sample> samples = List.of(
+                new SurfaceViewPixelCapture.Sample("grid-background", 300, 120),
+                new SurfaceViewPixelCapture.Sample("item-blue", 20, 10),
+                new SurfaceViewPixelCapture.Sample("item-red", 113, 12),
+                new SurfaceViewPixelCapture.Sample("item-green", 226, 13),
+                new SurfaceViewPixelCapture.Sample("item-yellow", 15, 65),
+                new SurfaceViewPixelCapture.Sample("column-gap", 84, 10),
+                new SurfaceViewPixelCapture.Sample("row-gap", 10, 53));
+        String runId = Long.toHexString(SystemClock.elapsedRealtimeNanos());
+        File output = new File(
+                new File(activity.getCacheDir(), "c11-grid-surface-captures"),
+                "fixed-tracks-gap-" + runId + ".png");
+        SurfaceViewPixelCapture.request(surfaceView, width, height, density,
+                0, 0, "fixed-tracks-gap", runId, output, samples,
+                mainHandler, runtimeQueue,
+                () -> {
+                    synchronized (stateLock) {
+                        return !closing && surfaceAvailable && surfaceGeneration == generation
+                                && rendererHandle == renderer && rendererGeneration == generation
+                                && surfaceWidth == width && surfaceHeight == height;
+                    }
+                }, result -> {
+                    if (!result.error.isEmpty()) {
+                        Log.e(TAG, "SPINON_C111_GRID_SURFACE_CAPTURE status=error run_id="
+                                + runId + " reason=" + result.error);
+                        return;
+                    }
+                    Log.i(TAG, "SPINON_C111_GRID_SURFACE_CAPTURE status=ok run_id=" + runId
+                            + " width=" + result.width + " height=" + result.height
+                            + " density=" + density + " png=" + output.getAbsolutePath()
+                            + " sha256=" + result.sha256);
+                    int matchedSamples = 0;
+                    for (SurfaceViewPixelCapture.Pixel pixel : result.pixels) {
+                        int[] expected = c11GridExpectedRgb(pixel.id);
+                        boolean exact = pixel.red == expected[0] && pixel.green == expected[1]
+                                && pixel.blue == expected[2] && pixel.alpha == 255;
+                        if (exact) matchedSamples++;
+                        Log.i(TAG, "SPINON_C111_GRID_SURFACE_PIXEL run_id=" + runId
+                                + " sample=" + pixel.id + " x=" + pixel.x + " y=" + pixel.y
+                                + " rgba=" + pixel.red + "," + pixel.green + ","
+                                + pixel.blue + "," + pixel.alpha + " expected="
+                                + expected[0] + "," + expected[1] + "," + expected[2]
+                                + ",255 exact=" + exact);
+                    }
+                    boolean matched = result.pixels.size() == samples.size()
+                            && matchedSamples == samples.size();
+                    Log.i(TAG, "SPINON_C111_GRID_SURFACE_SUMMARY status="
+                            + (matched ? "matched" : "mismatch") + " run_id=" + runId
+                            + " expected_samples=" + samples.size()
+                            + " observed_samples=" + result.pixels.size()
+                            + " matched_samples=" + matchedSamples);
+                    if (!matched) {
+                        postStatus("실패 · C11 Grid surface pixel 표본 불일치");
+                    }
+                });
+    }
+
+    private void requestC11GridPixelMatrixCapture(long renderer, long generation) {
+        final int width;
+        final int height;
+        synchronized (stateLock) {
+            if (closing || c11GridSurfaceCaptureStarted || !surfaceAvailable
+                    || surfaceGeneration != generation || rendererHandle != renderer
+                    || rendererGeneration != generation) {
+                return;
+            }
+            c11GridSurfaceCaptureStarted = true;
+            width = surfaceWidth;
+            height = surfaceHeight;
+        }
+        if (!c11GridPixelMatrixConfigError.isEmpty() || c11GridPixelMatrixSamples.isEmpty()) {
+            Log.e(TAG, "SPINON_C111_GRID_PIXEL_MATRIX status=error run_id="
+                    + c11GridPixelMatrixRunId + " scene=" + c11GridPixelMatrixSceneId
+                    + " reason=invalid-sample-fixture");
+            return;
+        }
+        String runId = c11GridPixelMatrixRunId;
+        String sceneId = c11GridPixelMatrixSceneId;
+        List<SurfaceViewPixelCapture.Sample> samples = c11GridPixelMatrixSamples;
+        Log.i(TAG, "SPINON_C111_GRID_PIXEL_MATRIX_BEGIN run_id=" + runId
+                + " pid=" + android.os.Process.myPid() + " scene=" + sceneId
+                + " generation=" + generation + " width=" + width + " height=" + height
+                + " density=" + density + " samples=" + samples.size());
+        File output = new File(
+                new File(activity.getCacheDir(), "c11-grid-surface-pixel-matrix"),
+                sceneId + "-" + runId + ".png");
+        SurfaceViewPixelCapture.request(surfaceView, width, height, density,
+                0, 0, sceneId, runId, output, samples,
+                mainHandler, runtimeQueue,
+                () -> {
+                    synchronized (stateLock) {
+                        return !closing && surfaceAvailable && surfaceGeneration == generation
+                                && rendererHandle == renderer && rendererGeneration == generation
+                                && surfaceWidth == width && surfaceHeight == height;
+                    }
+                }, result -> {
+                    if (!result.error.isEmpty()) {
+                        Log.e(TAG, "SPINON_C111_GRID_PIXEL_MATRIX_CAPTURE status=error run_id="
+                                + runId + " scene=" + sceneId + " generation=" + generation
+                                + " attempts=" + result.attempts + " reason=" + result.error);
+                        postStatus("실패 · C11 Grid PixelCopy · " + result.error);
+                        return;
+                    }
+                    Log.i(TAG, "SPINON_C111_GRID_PIXEL_MATRIX_CAPTURE status=ok run_id="
+                            + runId + " scene=" + sceneId + " generation=" + generation
+                            + " width=" + result.width + " height=" + result.height
+                            + " density=" + density + " attempts=" + result.attempts
+                            + " png=" + output.getAbsolutePath() + " sha256=" + result.sha256);
+                    int observed = 0;
+                    for (SurfaceViewPixelCapture.Pixel pixel : result.pixels) {
+                        SurfaceViewPixelCapture.Sample sample = null;
+                        for (SurfaceViewPixelCapture.Sample candidate : samples) {
+                            if (candidate.id.equals(pixel.id)) {
+                                sample = candidate;
+                                break;
+                            }
+                        }
+                        if (sample == null) {
+                            Log.e(TAG, "SPINON_C111_GRID_PIXEL_MATRIX_SAMPLE status=error run_id="
+                                    + runId + " scene=" + sceneId + " sample=" + pixel.id
+                                    + " reason=unknown-sample");
+                            continue;
+                        }
+                        observed++;
+                        Log.i(TAG, "SPINON_C111_GRID_PIXEL_MATRIX_SAMPLE run_id=" + runId
+                                + " pid=" + android.os.Process.myPid() + " scene=" + sceneId
+                                + " generation=" + generation + " sample=" + pixel.id
+                                + " css_x=" + sample.xCssPx + " css_y=" + sample.yCssPx
+                                + " x=" + pixel.x + " y=" + pixel.y
+                                + " rgba=" + pixel.red + "," + pixel.green + ","
+                                + pixel.blue + "," + pixel.alpha);
+                    }
+                    boolean complete = observed == samples.size()
+                            && result.pixels.size() == samples.size();
+                    Log.i(TAG, "SPINON_C111_GRID_PIXEL_MATRIX_SUMMARY status="
+                            + (complete ? "captured" : "error") + " run_id=" + runId
+                            + " scene=" + sceneId + " generation=" + generation
+                            + " expected_samples=" + samples.size()
+                            + " observed_samples=" + result.pixels.size());
+                    if (!complete) postStatus("실패 · C11 Grid PixelCopy 표본 누락");
+                });
+    }
+
+    private static int[] c11GridExpectedRgb(String sampleId) {
+        if ("item-blue".equals(sampleId)) return new int[] {40, 102, 246};
+        if ("item-red".equals(sampleId)) return new int[] {229, 72, 77};
+        if ("item-green".equals(sampleId)) return new int[] {25, 169, 116};
+        if ("item-yellow".equals(sampleId)) return new int[] {255, 200, 87};
+        return new int[] {237, 241, 247};
+    }
+
     private void schedulePositioningInitializationForReadySurface() {
         if (!c121PositioningProbeRequested && !c122AbsoluteBlockProbeRequested
                 && !c123FixedPositionProbeRequested && !c124StackingProbeRequested) return;
@@ -1327,6 +1667,53 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         logNodeFrames("C121", state, report);
     }
 
+    private void logC1121GridNodeFrames(String report) {
+        String marker = "node_frames_css_px=[";
+        int start = report.indexOf(marker);
+        int end = start < 0 ? -1 : report.indexOf(']', start + marker.length());
+        if (start < 0 || end < 0) {
+            Log.e(TAG, "SPINON_C1121_GRID_FRAME_SUMMARY run_id=" + c1121GridRunId
+                    + " scene_id=" + c1121GridSceneId + " marker=missing");
+            return;
+        }
+        String[] frames = report.substring(start + marker.length(), end).split(";", -1);
+        int count = 0;
+        for (String frame : frames) {
+            if (frame.isEmpty()) continue;
+            Log.i(TAG, "SPINON_C1121_GRID_NODE_FRAME_RUN run_id=" + c1121GridRunId
+                    + " scene_id=" + c1121GridSceneId + " frame=" + frame);
+            count++;
+        }
+        Log.i(TAG, "SPINON_C1121_GRID_FRAME_SUMMARY run_id=" + c1121GridRunId
+                + " scene_id=" + c1121GridSceneId + " count=" + count + " marker=present");
+    }
+
+    private void logC1121GridPaintOrder(String report) {
+        String marker = "paint_node_order=[";
+        int start = report.indexOf(marker);
+        int end = start < 0 ? -1 : report.indexOf(']', start + marker.length());
+        if (start < 0 || end < 0 || end - start > 512) {
+            Log.e(TAG, "SPINON_C1121_GRID_PAINT_ORDER run_id=" + c1121GridRunId
+                    + " scene_id=" + c1121GridSceneId + " marker=missing-or-too-large");
+            return;
+        }
+        Log.i(TAG, "SPINON_C1121_GRID_PAINT_ORDER run_id=" + c1121GridRunId
+                + " scene_id=" + c1121GridSceneId + " "
+                + report.substring(start, end + 1));
+    }
+
+    private void logC1121GridReadySummaryIfNeeded(String report) {
+        if (!report.startsWith("status=0 ") || !report.contains(" layout=ready ")) return;
+        synchronized (stateLock) {
+            if (c1121GridRuntimeSummaryEmitted) return;
+            c1121GridRuntimeSummaryEmitted = true;
+        }
+        Log.i(TAG, "SPINON_C1121_GRID_SUMMARY run_id=" + c1121GridRunId
+                + " scene_id=" + c1121GridSceneId + " " + runtimeStatusSummary(report));
+        logC1121GridNodeFrames(report);
+        logC1121GridPaintOrder(report);
+    }
+
     private void logNodeFrames(String prefix, String state, String report) {
         String marker = "node_frames_css_px=[";
         int start = report.indexOf(marker);
@@ -1449,6 +1836,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 + " " + result);
         postStatus(runtimeStatusSummary(result));
         if (result.startsWith("status=0 ") && isCurrentPresentation(generation, sequence)) {
+            if (c1121GridPlacementRequested) {
+                logC1121GridReadySummaryIfNeeded(result);
+            }
             requestDraw();
         }
     }
@@ -1619,6 +2009,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (!result.startsWith("status=0 ")) {
             postStatus("실패 · " + result);
             return;
+        }
+        if (c11GridFixtureRequested && !c11GridPixelMatrixRunId.isEmpty()) {
+            requestC11GridPixelMatrixCapture(renderer, generation);
+        } else if (c11GridFixtureRequested && !c1121GridPlacementRequested
+                && c11GridSceneIndex == 0) {
+            requestC11GridSurfaceCapture(renderer, generation);
         }
         if (c124SurfaceCaptureProbeRequested) {
             requestC124SurfaceCapture(renderer, generation);

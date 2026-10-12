@@ -24,11 +24,13 @@ pub(super) fn parse_display(
     node: NodeId,
     value: &str,
     allow_flow_root: bool,
+    allow_grid: bool,
 ) -> Result<LayoutDisplay, StyleLayoutError> {
     match value {
         "flex" => Ok(LayoutDisplay::Flex),
         "block" => Ok(LayoutDisplay::Block),
         "flow-root" if allow_flow_root => Ok(LayoutDisplay::FlowRoot),
+        "grid" if allow_grid => Ok(LayoutDisplay::Grid),
         "none" => Ok(LayoutDisplay::None),
         value => unsupported(node, "display", value),
     }

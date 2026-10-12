@@ -1,0 +1,14 @@
+✔ mise 유무와 관계없이 iOS simulator 빌드 인자로 Grid pixel 기능을 전달한다 (890.166042ms)
+✔ Grid pixel 검증은 C04 GPU fixture 없이 빌드를 시작하지 않는다 (10.110625ms)
+✔ iOS simulator 스크립트는 누락된 Grid pixel flag를 기본 비활성화로 전달한다 (554.410625ms)
+✔ 두 iOS 빌드 스크립트는 잘못된 Grid pixel flag를 거부한다 (22.783833ms)
+✔ iOS native build도 C04 GPU fixture 없이 Grid pixel feature를 거부한다 (9.110458ms)
+✔ Grid pixel 빌드 설정을 iOS native Rust feature와 C++ define으로 연결한다 (3.456625ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1545.499708

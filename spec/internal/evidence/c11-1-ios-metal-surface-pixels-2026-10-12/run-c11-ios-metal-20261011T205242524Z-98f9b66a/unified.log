@@ -1,0 +1,6 @@
+getpwuid_r did not find a match for uid 501
+Filtering the log data using "process == "SpinonBootstrap" AND composedMessage CONTAINS[c] "SPINON_C111_METAL_PIXEL""
+Timestamp               Ty Process[PID:TID]
+2026-10-12 05:53:13.034 Df SpinonBootstrap[66624:dfcad4] (Foundation) SPINON_C111_METAL_PIXEL_REQUESTED run_id=c11-ios-metal-20261011T205242524Z-98f9b66a generation=1 drawable=960x720 scale_x=3.0 scale_y=3.0 samples=7
+2026-10-12 05:53:13.048 Df SpinonBootstrap[66624:dfcad4] (Foundation) SPINON_C111_METAL_PIXEL_ERROR run_id=c11-ios-metal-20261011T205242524Z-98f9b66a stage=revision detail=draw report에 문서·트리·환경 revision이 없습니다
+Child process terminated with signal 15: Terminated

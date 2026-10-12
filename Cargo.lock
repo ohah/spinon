@@ -1458,6 +1458,7 @@ dependencies = [
  "spinon-core",
  "stylo",
  "stylo_dom",
+ "stylo_static_prefs",
  "stylo_traits",
  "url",
 ]
@@ -1753,6 +1754,7 @@ dependencies = [
  "arrayvec",
  "serde",
  "slotmap",
+ "smallvec",
 ]
 
 [[package]]

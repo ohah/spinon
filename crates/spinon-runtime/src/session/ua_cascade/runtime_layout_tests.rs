@@ -1,5 +1,8 @@
 use super::*;
 
+#[path = "runtime_layout_tests/c11_grid_tests.rs"]
+mod c11_grid_tests;
+
 #[path = "runtime_layout_tests/depth_tests.rs"]
 mod depth_tests;
 

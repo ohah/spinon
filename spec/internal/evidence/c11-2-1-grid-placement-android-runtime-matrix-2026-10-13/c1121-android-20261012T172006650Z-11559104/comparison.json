@@ -1,0 +1,1117 @@
+{
+  "schema": "spinon-c11-2-1-grid-placement-mobile-runtime-matrix/v1",
+  "status": "matched",
+  "platform": "Android 16/API 36 physical device (SM-S731N)",
+  "runID": "c1121-android-20261012T172006650Z-11559104",
+  "target": "R5KYB06SMPE · qemu=0 · API 36",
+  "device": {
+    "qemu": "0",
+    "sdk": 36,
+    "model": "SM-S731N",
+    "release": "16",
+    "fingerprint": "samsung/r13sksx/r13s:16/BP4A.251205.006/S731NKSS9BZH2_OKR9BZH2:user/release-keys",
+    "density": "Physical density: 450",
+    "size": "Physical size: 1080x2340",
+    "renderer": "GLES: Samsung Electronics Co., Ltd., ANGLE ((Samsung Xclipse 940) on Vulkan 1.3.279), OpenGL ES 3.2 Driver version: 24.1.307 git hash: 86f99cfe6317",
+    "platform": "Android 16/API 36 physical device (SM-S731N)"
+  },
+  "renderer": "GLES: Samsung Electronics Co., Ltd., ANGLE ((Samsung Xclipse 940) on Vulkan 1.3.279), OpenGL ES 3.2 Driver version: 24.1.307 git hash: 86f99cfe6317",
+  "appSha256": "baa6b0b869d997af212f6169b8edc593b2e2487c0f737ee24a1745afe6d5327b",
+  "inputs": {
+    "inventory": "b2801e708e4c1ad540e119dcdba04d7c215e4029d5ec5627683e15ede8ef368b",
+    "html": "e9b080bbc65901b17f7dead60eb8071df8ecbefee2ea62f1318776848e75f78d",
+    "reference": "5bbbd041e2e59fda32c684f7290f61bff41ab6dda9ab9f77ce2fb36f0e0ee034",
+    "matrix": "b5b20ce4ccf466a2abc6e1a049095d2eae21d56fee7dc39d19127be29f3b4eff"
+  },
+  "summary": {
+    "scenes": 10,
+    "successfulScenes": 6,
+    "rejectedScenes": 4,
+    "nodes": 21,
+    "maximumAbsoluteErrorCssPx": 0,
+    "geometryToleranceCssPx": 0.5,
+    "freshProcessPerScene": true,
+    "screenshotsArePixelParity": false,
+    "surfacePixelMatrixStatus": "matched",
+    "surfacePixelScenes": 6,
+    "expectedSurfacePixelScenes": 6,
+    "surfacePixelSamples": 20,
+    "expectedSurfacePixelSamples": 20,
+    "maximumSurfacePixelChannelError": 0
+  },
+  "surfacePixelMatrix": {
+    "schema": "spinon-css-c11-2-1-mobile-surface-pixel-matrix/v1",
+    "fixtureId": "c11-2-1-grid-placement-mobile-surface-pixels",
+    "fixtureSha256": "0843e04cb605566a99149673027ac40870c21df393e9cab9a1de09b823a30be4",
+    "expectedRejectScenesWithoutPixelParity": 4,
+    "comparisons": [
+      {
+        "status": "matched",
+        "scene": "numeric-lines",
+        "runID": "c1121-android-20261012T172006650Z-11559104-numeric-lines",
+        "processId": 3775,
+        "surfaceGeneration": 2,
+        "density": 2.8125,
+        "surface": [
+          900,
+          675
+        ],
+        "expectedSamples": 3,
+        "matchedSamples": 3,
+        "maximumChannelError": 0,
+        "pngSha256": "37d0c306a040fc730c72cfd8fa8a6ac404bb4e0843127f2aaa625591b0e0b911",
+        "samples": [
+          {
+            "id": "item-c1121-positive-lines",
+            "css": [
+              82,
+              19
+            ],
+            "pixel": [
+              232,
+              54
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ]
+          },
+          {
+            "id": "item-c1121-negative-lines",
+            "css": [
+              209,
+              64
+            ],
+            "pixel": [
+              589,
+              181
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "surface-c1121-numeric-grid",
+            "css": [
+              124,
+              42
+            ],
+            "pixel": [
+              350,
+              119
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ]
+          }
+        ]
+      },
+      {
+        "status": "matched",
+        "scene": "positive-spans",
+        "runID": "c1121-android-20261012T172006650Z-11559104-positive-spans",
+        "processId": 3955,
+        "surfaceGeneration": 2,
+        "density": 2.8125,
+        "surface": [
+          900,
+          675
+        ],
+        "expectedSamples": 3,
+        "matchedSamples": 3,
+        "maximumChannelError": 0,
+        "pngSha256": "b8c7ab2a28d92e23b2d646a23e6d0e2f32d2683ce7e3e8d21c15b2a74dc4df43",
+        "samples": [
+          {
+            "id": "item-c1121-span-from-start",
+            "css": [
+              82,
+              42
+            ],
+            "pixel": [
+              232,
+              119
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ]
+          },
+          {
+            "id": "item-c1121-span-from-end",
+            "css": [
+              167,
+              64
+            ],
+            "pixel": [
+              471,
+              181
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "surface-c1121-span-grid",
+            "css": [
+              166,
+              42
+            ],
+            "pixel": [
+              468,
+              119
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ]
+          }
+        ]
+      },
+      {
+        "status": "matched",
+        "scene": "reversed-lines",
+        "runID": "c1121-android-20261012T172006650Z-11559104-reversed-lines",
+        "processId": 4070,
+        "surfaceGeneration": 2,
+        "density": 2.8125,
+        "surface": [
+          900,
+          675
+        ],
+        "expectedSamples": 2,
+        "matchedSamples": 2,
+        "maximumChannelError": 0,
+        "pngSha256": "21d61b1a4ead74e8c2cf9cbceb09e5eada183ee9ca58db1740e1452802ba1dca",
+        "samples": [
+          {
+            "id": "item-c1121-reversed-item",
+            "css": [
+              82,
+              19
+            ],
+            "pixel": [
+              232,
+              54
+            ],
+            "rgba": [
+              135,
+              88,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "surface-c1121-reverse-grid",
+            "css": [
+              124,
+              42
+            ],
+            "pixel": [
+              350,
+              119
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ]
+          }
+        ]
+      },
+      {
+        "status": "matched",
+        "scene": "shorthand-cascade",
+        "runID": "c1121-android-20261012T172006650Z-11559104-shorthand-cascade",
+        "processId": 4276,
+        "surfaceGeneration": 2,
+        "density": 2.8125,
+        "surface": [
+          900,
+          675
+        ],
+        "expectedSamples": 3,
+        "matchedSamples": 3,
+        "maximumChannelError": 0,
+        "pngSha256": "a4a1b7cc9d8f51f7903c5223bc131951198d55372c711ea76079d5c71d2921bf",
+        "samples": [
+          {
+            "id": "item-c1121-grid-area-item",
+            "css": [
+              82,
+              42
+            ],
+            "pixel": [
+              232,
+              119
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ]
+          },
+          {
+            "id": "item-c1121-cascade-item",
+            "css": [
+              124,
+              19
+            ],
+            "pixel": [
+              350,
+              54
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "surface-c1121-shorthand-grid",
+            "css": [
+              166,
+              42
+            ],
+            "pixel": [
+              468,
+              119
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ]
+          }
+        ]
+      },
+      {
+        "status": "matched",
+        "scene": "overlap-source-order",
+        "runID": "c1121-android-20261012T172006650Z-11559104-overlap-source-order",
+        "processId": 4454,
+        "surfaceGeneration": 2,
+        "density": 2.8125,
+        "surface": [
+          900,
+          675
+        ],
+        "expectedSamples": 2,
+        "matchedSamples": 2,
+        "maximumChannelError": 0,
+        "pngSha256": "e37476c6c62122ea1d22e954b9e4ca5178245a8307c6edde4494e7f9a1c756a6",
+        "samples": [
+          {
+            "id": "item-c1121-overlap-second",
+            "css": [
+              82,
+              42
+            ],
+            "pixel": [
+              232,
+              119
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "surface-c1121-overlap-grid",
+            "css": [
+              166,
+              42
+            ],
+            "pixel": [
+              468,
+              119
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ]
+          }
+        ]
+      },
+      {
+        "status": "matched",
+        "scene": "nested-placement-modes",
+        "runID": "c1121-android-20261012T172006650Z-11559104-nested-placement-modes",
+        "processId": 4620,
+        "surfaceGeneration": 2,
+        "density": 2.8125,
+        "surface": [
+          900,
+          675
+        ],
+        "expectedSamples": 7,
+        "matchedSamples": 7,
+        "maximumChannelError": 0,
+        "pngSha256": "d690e835c9a7d5377874f02defdb9f260134776eadb6a1c640d7d4d217d55768",
+        "samples": [
+          {
+            "id": "item-c1121-nested-auto-grid",
+            "css": [
+              59,
+              29
+            ],
+            "pixel": [
+              167,
+              82
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ]
+          },
+          {
+            "id": "item-c1121-nested-auto-a",
+            "css": [
+              9,
+              9
+            ],
+            "pixel": [
+              26,
+              26
+            ],
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ]
+          },
+          {
+            "id": "item-c1121-nested-auto-b",
+            "css": [
+              74,
+              9
+            ],
+            "pixel": [
+              209,
+              26
+            ],
+            "rgba": [
+              255,
+              200,
+              87,
+              255
+            ]
+          },
+          {
+            "id": "item-c1121-nested-explicit-grid",
+            "css": [
+              189,
+              29
+            ],
+            "pixel": [
+              532,
+              82
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "item-c1121-nested-explicit-a",
+            "css": [
+              222,
+              29
+            ],
+            "pixel": [
+              625,
+              82
+            ],
+            "rgba": [
+              135,
+              88,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "item-c1121-nested-explicit-b",
+            "css": [
+              157,
+              29
+            ],
+            "pixel": [
+              442,
+              82
+            ],
+            "rgba": [
+              14,
+              165,
+              233,
+              255
+            ]
+          },
+          {
+            "id": "surface-c1121-nested-outer",
+            "css": [
+              124,
+              29
+            ],
+            "pixel": [
+              350,
+              82
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "pixelIntentNegativeControl": {
+    "status": "rejected",
+    "runID": "c1121-android-20261012T172006650Z-11559104-pixel-allowlist-negative",
+    "processId": 5246,
+    "requestedScene": "deferred-implicit-track",
+    "expectedScene": "numeric-lines",
+    "argumentRejected": true,
+    "pixelCopyStarted": false
+  },
+  "observations": [
+    {
+      "sceneId": "numeric-lines",
+      "outcome": "matched",
+      "frameCount": 4,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 2,
+      "paintOrderNodeIds": null,
+      "screenshot": "numeric-lines-android-physical.png",
+      "screenshotSha256": "abd927cf19b691b218c98c669ec9627c1baa75c5a7631fc21f3144a06ad04a1d",
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "numeric-lines",
+        "runID": "c1121-android-20261012T172006650Z-11559104-numeric-lines",
+        "processId": 3775,
+        "surfaceGeneration": 2,
+        "density": 2.8125,
+        "surface": [
+          900,
+          675
+        ],
+        "expectedSamples": 3,
+        "matchedSamples": 3,
+        "maximumChannelError": 0,
+        "pngSha256": "37d0c306a040fc730c72cfd8fa8a6ac404bb4e0843127f2aaa625591b0e0b911",
+        "samples": [
+          {
+            "id": "item-c1121-positive-lines",
+            "css": [
+              82,
+              19
+            ],
+            "pixel": [
+              232,
+              54
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ]
+          },
+          {
+            "id": "item-c1121-negative-lines",
+            "css": [
+              209,
+              64
+            ],
+            "pixel": [
+              589,
+              181
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "surface-c1121-numeric-grid",
+            "css": [
+              124,
+              42
+            ],
+            "pixel": [
+              350,
+              119
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ]
+          }
+        ]
+      },
+      "runID": "c1121-android-20261012T172006650Z-11559104-numeric-lines",
+      "processId": 3775
+    },
+    {
+      "sceneId": "positive-spans",
+      "outcome": "matched",
+      "frameCount": 4,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 2,
+      "paintOrderNodeIds": null,
+      "screenshot": "positive-spans-android-physical.png",
+      "screenshotSha256": "02931adffb8580fdf03e004688cdefe1e0a1ec871772091765255e473e8d2cb0",
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "positive-spans",
+        "runID": "c1121-android-20261012T172006650Z-11559104-positive-spans",
+        "processId": 3955,
+        "surfaceGeneration": 2,
+        "density": 2.8125,
+        "surface": [
+          900,
+          675
+        ],
+        "expectedSamples": 3,
+        "matchedSamples": 3,
+        "maximumChannelError": 0,
+        "pngSha256": "b8c7ab2a28d92e23b2d646a23e6d0e2f32d2683ce7e3e8d21c15b2a74dc4df43",
+        "samples": [
+          {
+            "id": "item-c1121-span-from-start",
+            "css": [
+              82,
+              42
+            ],
+            "pixel": [
+              232,
+              119
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ]
+          },
+          {
+            "id": "item-c1121-span-from-end",
+            "css": [
+              167,
+              64
+            ],
+            "pixel": [
+              471,
+              181
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "surface-c1121-span-grid",
+            "css": [
+              166,
+              42
+            ],
+            "pixel": [
+              468,
+              119
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ]
+          }
+        ]
+      },
+      "runID": "c1121-android-20261012T172006650Z-11559104-positive-spans",
+      "processId": 3955
+    },
+    {
+      "sceneId": "reversed-lines",
+      "outcome": "matched",
+      "frameCount": 3,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 2,
+      "paintOrderNodeIds": null,
+      "screenshot": "reversed-lines-android-physical.png",
+      "screenshotSha256": "ed88cbff3fdf1970aa557bc0b7eaf85eb83e32087fe1126c0caf201cb629690c",
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "reversed-lines",
+        "runID": "c1121-android-20261012T172006650Z-11559104-reversed-lines",
+        "processId": 4070,
+        "surfaceGeneration": 2,
+        "density": 2.8125,
+        "surface": [
+          900,
+          675
+        ],
+        "expectedSamples": 2,
+        "matchedSamples": 2,
+        "maximumChannelError": 0,
+        "pngSha256": "21d61b1a4ead74e8c2cf9cbceb09e5eada183ee9ca58db1740e1452802ba1dca",
+        "samples": [
+          {
+            "id": "item-c1121-reversed-item",
+            "css": [
+              82,
+              19
+            ],
+            "pixel": [
+              232,
+              54
+            ],
+            "rgba": [
+              135,
+              88,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "surface-c1121-reverse-grid",
+            "css": [
+              124,
+              42
+            ],
+            "pixel": [
+              350,
+              119
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ]
+          }
+        ]
+      },
+      "runID": "c1121-android-20261012T172006650Z-11559104-reversed-lines",
+      "processId": 4070
+    },
+    {
+      "sceneId": "shorthand-cascade",
+      "outcome": "matched",
+      "frameCount": 4,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 2,
+      "paintOrderNodeIds": null,
+      "screenshot": "shorthand-cascade-android-physical.png",
+      "screenshotSha256": "29de4aed4251d954f6bec54622e2d04fe89af50113cc8d1bf660c7a055589058",
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "shorthand-cascade",
+        "runID": "c1121-android-20261012T172006650Z-11559104-shorthand-cascade",
+        "processId": 4276,
+        "surfaceGeneration": 2,
+        "density": 2.8125,
+        "surface": [
+          900,
+          675
+        ],
+        "expectedSamples": 3,
+        "matchedSamples": 3,
+        "maximumChannelError": 0,
+        "pngSha256": "a4a1b7cc9d8f51f7903c5223bc131951198d55372c711ea76079d5c71d2921bf",
+        "samples": [
+          {
+            "id": "item-c1121-grid-area-item",
+            "css": [
+              82,
+              42
+            ],
+            "pixel": [
+              232,
+              119
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ]
+          },
+          {
+            "id": "item-c1121-cascade-item",
+            "css": [
+              124,
+              19
+            ],
+            "pixel": [
+              350,
+              54
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "surface-c1121-shorthand-grid",
+            "css": [
+              166,
+              42
+            ],
+            "pixel": [
+              468,
+              119
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ]
+          }
+        ]
+      },
+      "runID": "c1121-android-20261012T172006650Z-11559104-shorthand-cascade",
+      "processId": 4276
+    },
+    {
+      "sceneId": "overlap-source-order",
+      "outcome": "matched",
+      "frameCount": 4,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 2,
+      "paintOrderNodeIds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "screenshot": "overlap-source-order-android-physical.png",
+      "screenshotSha256": "3ef9202f9afcddcadd1c78530d8c25e966bf43a58936a3231422ba15a7f13cd9",
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "overlap-source-order",
+        "runID": "c1121-android-20261012T172006650Z-11559104-overlap-source-order",
+        "processId": 4454,
+        "surfaceGeneration": 2,
+        "density": 2.8125,
+        "surface": [
+          900,
+          675
+        ],
+        "expectedSamples": 2,
+        "matchedSamples": 2,
+        "maximumChannelError": 0,
+        "pngSha256": "e37476c6c62122ea1d22e954b9e4ca5178245a8307c6edde4494e7f9a1c756a6",
+        "samples": [
+          {
+            "id": "item-c1121-overlap-second",
+            "css": [
+              82,
+              42
+            ],
+            "pixel": [
+              232,
+              119
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "surface-c1121-overlap-grid",
+            "css": [
+              166,
+              42
+            ],
+            "pixel": [
+              468,
+              119
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ]
+          }
+        ]
+      },
+      "runID": "c1121-android-20261012T172006650Z-11559104-overlap-source-order",
+      "processId": 4454
+    },
+    {
+      "sceneId": "nested-placement-modes",
+      "outcome": "matched",
+      "frameCount": 8,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 2,
+      "paintOrderNodeIds": null,
+      "screenshot": "nested-placement-modes-android-physical.png",
+      "screenshotSha256": "980fc33d605db04b913a9a8f17f4979e49737118fb08b0d41069335e76f90e4a",
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "nested-placement-modes",
+        "runID": "c1121-android-20261012T172006650Z-11559104-nested-placement-modes",
+        "processId": 4620,
+        "surfaceGeneration": 2,
+        "density": 2.8125,
+        "surface": [
+          900,
+          675
+        ],
+        "expectedSamples": 7,
+        "matchedSamples": 7,
+        "maximumChannelError": 0,
+        "pngSha256": "d690e835c9a7d5377874f02defdb9f260134776eadb6a1c640d7d4d217d55768",
+        "samples": [
+          {
+            "id": "item-c1121-nested-auto-grid",
+            "css": [
+              59,
+              29
+            ],
+            "pixel": [
+              167,
+              82
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ]
+          },
+          {
+            "id": "item-c1121-nested-auto-a",
+            "css": [
+              9,
+              9
+            ],
+            "pixel": [
+              26,
+              26
+            ],
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ]
+          },
+          {
+            "id": "item-c1121-nested-auto-b",
+            "css": [
+              74,
+              9
+            ],
+            "pixel": [
+              209,
+              26
+            ],
+            "rgba": [
+              255,
+              200,
+              87,
+              255
+            ]
+          },
+          {
+            "id": "item-c1121-nested-explicit-grid",
+            "css": [
+              189,
+              29
+            ],
+            "pixel": [
+              532,
+              82
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "item-c1121-nested-explicit-a",
+            "css": [
+              222,
+              29
+            ],
+            "pixel": [
+              625,
+              82
+            ],
+            "rgba": [
+              135,
+              88,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "item-c1121-nested-explicit-b",
+            "css": [
+              157,
+              29
+            ],
+            "pixel": [
+              442,
+              82
+            ],
+            "rgba": [
+              14,
+              165,
+              233,
+              255
+            ]
+          },
+          {
+            "id": "surface-c1121-nested-outer",
+            "css": [
+              124,
+              29
+            ],
+            "pixel": [
+              350,
+              82
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ]
+          }
+        ]
+      },
+      "runID": "c1121-android-20261012T172006650Z-11559104-nested-placement-modes",
+      "processId": 4620
+    },
+    {
+      "sceneId": "deferred-implicit-track",
+      "outcome": "expected-rejection",
+      "status": -11,
+      "diagnostic": {
+        "code": "invalid_grid_placement",
+        "runtimeNodeId": 3,
+        "fixtureNodeId": "c1121-implicit-item",
+        "property": "grid-column-start",
+        "detail": null
+      },
+      "frameCount": 0,
+      "positiveDrawCount": 0,
+      "screenshot": "deferred-implicit-track-android-physical.png",
+      "screenshotSha256": "3dc179bd498cbafb4d200a7b40b77fe097c244ed4c2de75ee5baf394aa3228df",
+      "runID": "c1121-android-20261012T172006650Z-11559104-deferred-implicit-track",
+      "processId": 4726
+    },
+    {
+      "sceneId": "deferred-named-line",
+      "outcome": "expected-rejection",
+      "status": -11,
+      "diagnostic": {
+        "code": "cascade_failed",
+        "runtimeNodeId": null,
+        "fixtureNodeId": null,
+        "property": null,
+        "detail": "grid-template-columns"
+      },
+      "frameCount": 0,
+      "positiveDrawCount": 0,
+      "screenshot": "deferred-named-line-android-physical.png",
+      "screenshotSha256": "4652cecaaa7143f310e307fe1ac4778bd0bfb7eb328c80b194ed0516d8e69b6b",
+      "runID": "c1121-android-20261012T172006650Z-11559104-deferred-named-line",
+      "processId": 4850
+    },
+    {
+      "sceneId": "deferred-mixed-auto-explicit",
+      "outcome": "expected-rejection",
+      "status": -11,
+      "diagnostic": {
+        "code": "invalid_grid_placement",
+        "runtimeNodeId": 4,
+        "fixtureNodeId": "c1121-mixed-auto",
+        "property": "grid-row-start",
+        "detail": null
+      },
+      "frameCount": 0,
+      "positiveDrawCount": 0,
+      "screenshot": "deferred-mixed-auto-explicit-android-physical.png",
+      "screenshotSha256": "c84e1e88b4f9b6205335dbe83fb58dc2741f056e672f63f177cd50f5f07f57d5",
+      "runID": "c1121-android-20261012T172006650Z-11559104-deferred-mixed-auto-explicit",
+      "processId": 4977
+    },
+    {
+      "sceneId": "deferred-equal-lines",
+      "outcome": "expected-rejection",
+      "status": -11,
+      "diagnostic": {
+        "code": "invalid_grid_placement",
+        "runtimeNodeId": 3,
+        "fixtureNodeId": "c1121-equal-item",
+        "property": "grid-column-end",
+        "detail": null
+      },
+      "frameCount": 0,
+      "positiveDrawCount": 0,
+      "screenshot": "deferred-equal-lines-android-physical.png",
+      "screenshotSha256": "b613555be06b0a4d07eecf91784b852951b56cc588081b01f50d53fe7ec71083",
+      "runID": "c1121-android-20261012T172006650Z-11559104-deferred-equal-lines",
+      "processId": 5126
+    }
+  ],
+  "limitations": [
+    "Android AVD 결과는 AVD software renderer이며 Android 실기기를 대체하지 않는다.",
+    "표면 픽셀 비교는 C11.2.1 제한 profile의 성공 후보 6 scene에 한정된다. 네 기대 거부 scene은 픽셀 parity 대상이 아니다.",
+    "고정 fixture 결과는 Spinon WPT 적합성이나 전체 CSS Grid 지원을 뜻하지 않는다."
+  ]
+}

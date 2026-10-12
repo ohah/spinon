@@ -1,0 +1,239 @@
+{
+  "schema": "spinon-c11-grid-android-physical/v1",
+  "status": "matched",
+  "runID": "c11-grid-android-20261011T182711821Z-ebf7f7a5",
+  "serial": "R5KYB06SMPE",
+  "model": "SM-S731N",
+  "release": "16",
+  "apiLevel": 36,
+  "apkSha256": "63d94864fd58d56e972f2e8dc96ff02b60970f02244bf96103037620e8d0a428",
+  "renderer": "WGPU Vulkan; Samsung Xclipse 940; SurfaceView PixelCopy",
+  "oracle": {
+    "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.98-d9996da8123a-83fc71ce41b4-ca4062baab2b",
+    "chrome": "Chrome/154.0.8037.98",
+    "referenceSha256": "2983995fc946ddda3137566612915bd9fd38a9409ba39a4a99ba27220bfcbb3a",
+    "scene": "fixed-tracks-gap"
+  },
+  "geometry": {
+    "expectedNodeCount": 5,
+    "actualFrames": [
+      {
+        "nodeId": 1,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 130
+        }
+      },
+      {
+        "nodeId": 2,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 40,
+          "height": 20
+        }
+      },
+      {
+        "nodeId": 3,
+        "rect": {
+          "x": 88,
+          "y": 0,
+          "width": 50,
+          "height": 24
+        }
+      },
+      {
+        "nodeId": 4,
+        "rect": {
+          "x": 196,
+          "y": 0,
+          "width": 60,
+          "height": 26
+        }
+      },
+      {
+        "nodeId": 5,
+        "rect": {
+          "x": 0,
+          "y": 56,
+          "width": 30,
+          "height": 18
+        }
+      }
+    ],
+    "expectedFrames": [
+      {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 130
+      },
+      {
+        "x": 0,
+        "y": 0,
+        "width": 40,
+        "height": 20
+      },
+      {
+        "x": 88,
+        "y": 0,
+        "width": 50,
+        "height": 24
+      },
+      {
+        "x": 196,
+        "y": 0,
+        "width": 60,
+        "height": 26
+      },
+      {
+        "x": 0,
+        "y": 56,
+        "width": 30,
+        "height": 18
+      }
+    ],
+    "toleranceCssPx": 0.5
+  },
+  "surfacePixels": {
+    "expectedCount": 7,
+    "actualCount": 7,
+    "maximumChannelError": 0,
+    "samples": [
+      {
+        "id": "grid-background",
+        "x": 845,
+        "y": 338,
+        "rgba": [
+          237,
+          241,
+          247,
+          255
+        ],
+        "expected": [
+          237,
+          241,
+          247,
+          255
+        ],
+        "exact": true
+      },
+      {
+        "id": "item-blue",
+        "x": 57,
+        "y": 29,
+        "rgba": [
+          40,
+          102,
+          246,
+          255
+        ],
+        "expected": [
+          40,
+          102,
+          246,
+          255
+        ],
+        "exact": true
+      },
+      {
+        "id": "item-red",
+        "x": 319,
+        "y": 35,
+        "rgba": [
+          229,
+          72,
+          77,
+          255
+        ],
+        "expected": [
+          229,
+          72,
+          77,
+          255
+        ],
+        "exact": true
+      },
+      {
+        "id": "item-green",
+        "x": 637,
+        "y": 37,
+        "rgba": [
+          25,
+          169,
+          116,
+          255
+        ],
+        "expected": [
+          25,
+          169,
+          116,
+          255
+        ],
+        "exact": true
+      },
+      {
+        "id": "item-yellow",
+        "x": 43,
+        "y": 184,
+        "rgba": [
+          255,
+          200,
+          87,
+          255
+        ],
+        "expected": [
+          255,
+          200,
+          87,
+          255
+        ],
+        "exact": true
+      },
+      {
+        "id": "column-gap",
+        "x": 237,
+        "y": 29,
+        "rgba": [
+          237,
+          241,
+          247,
+          255
+        ],
+        "expected": [
+          237,
+          241,
+          247,
+          255
+        ],
+        "exact": true
+      },
+      {
+        "id": "row-gap",
+        "x": 29,
+        "y": 150,
+        "rgba": [
+          237,
+          241,
+          247,
+          255
+        ],
+        "expected": [
+          237,
+          241,
+          247,
+          255
+        ],
+        "exact": true
+      }
+    ],
+    "png": "surface-pixelcopy.png"
+  },
+  "limitations": [
+    "고정 C11.1 fixed-tracks-gap scene 1개·5 node에 한정한다.",
+    "Android SM-S731N 한 대의 검증이며 다른 기기군 성능·호환성을 뜻하지 않는다.",
+    "C11.1 전체 완료·전체 CSS 지원·Spinon WPT 적합성을 뜻하지 않는다."
+  ]
+}

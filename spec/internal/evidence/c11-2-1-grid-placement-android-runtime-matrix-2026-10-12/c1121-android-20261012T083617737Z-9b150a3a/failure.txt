@@ -1,0 +1,4 @@
+AssertionError [ERR_ASSERTION]: deferred-named-line: 기대 오류 code가 없습니다.
+    at compareC1121GridPlacementScene (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/c11-2-1-grid-placement-runtime-compare.mjs:71:12)
+    at saveSceneEvidence (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/c11-2-1-grid-placement-runtime-support.mjs:95:18)
+    at async main (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-2-1-grid-placement-android-runtime-matrix.mjs:100:20)

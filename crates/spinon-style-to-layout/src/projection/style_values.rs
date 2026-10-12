@@ -2,8 +2,8 @@ use std::collections::{BTreeMap, BTreeSet};
 
 use spinon_core::{HostDocumentSnapshot, HostNodeHandle, NodeId};
 use spinon_layout::{
-    FlexDirection, LayoutBorder, LayoutEdges, LayoutGap, LayoutPositioning, LayoutStyle,
-    TextDirection,
+    FlexDirection, GridContainerInput, GridItemInput, LayoutBorder, LayoutEdges, LayoutGap,
+    LayoutPositioning, LayoutStyle, TextDirection,
 };
 use spinon_style::{
     ComputedCssDimension, ComputedCssMaxSize, ComputedElementStyle, ComputedStyleProfile,
@@ -11,6 +11,8 @@ use spinon_style::{
 };
 
 mod flex_values;
+mod grid_placement_values;
+mod grid_values;
 mod positioning_values;
 mod primitive_values;
 mod spacing_values;
@@ -23,6 +25,8 @@ use flex_values::{
     parse_justify_content, parse_number, parse_order, parse_runtime_align_content,
     parse_runtime_align_items, parse_runtime_align_self, parse_runtime_justify_content,
 };
+use grid_placement_values::project_grid_item_placement;
+use grid_values::project_grid_layout;
 use positioning_values::parse_positioning;
 use primitive_values::{
     max_size_as_dimension, parse_box_sizing, parse_dimension, parse_display, required,
@@ -33,6 +37,8 @@ use spacing_values::{parse_gap, parse_margin, parse_nonnegative_spacing};
 pub(super) struct ProjectedStyles {
     pub styles: BTreeMap<NodeId, LayoutStyle>,
     pub positioning: BTreeMap<NodeId, LayoutPositioning>,
+    pub grid_containers: BTreeMap<NodeId, GridContainerInput>,
+    pub grid_items: BTreeMap<NodeId, GridItemInput>,
     pub css_math: Vec<spinon_layout::LayoutCssMathValue>,
 }
 
@@ -44,7 +50,11 @@ pub(super) fn project_styles(
     validate_fixed_ancestor_effects(tree, root, snapshot)?;
     let mut output = BTreeMap::new();
     let mut positioning = BTreeMap::new();
+    let mut grid_containers = BTreeMap::new();
+    let mut grid_items = BTreeMap::new();
     let mut math = CssMathProjector::default();
+    let grid_nodes =
+        is_grid_profile(snapshot.profile).then(|| runtime_grid_nodes(tree, root, snapshot));
     let runtime_flex_items = if supports_runtime_flex(snapshot.profile) {
         runtime_flex_item_nodes(tree, root, snapshot)
     } else {
@@ -67,6 +77,8 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
                 | ComputedStyleProfile::RuntimeBlockPositioningV1
                 | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
         );
         let supports_border_layout = matches!(
             snapshot.profile,
@@ -80,6 +92,8 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
                 | ComputedStyleProfile::RuntimeBlockPositioningV1
                 | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
         );
         let supports_runtime_flex = supports_runtime_flex(snapshot.profile);
         let supports_auto_margin = runtime_flex_items.contains(&node)
@@ -88,6 +102,8 @@ pub(super) fn project_styles(
                 ComputedStyleProfile::RuntimeBlockFormattingV1
                     | ComputedStyleProfile::RuntimeBlockPositioningV1
                     | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+                    | ComputedStyleProfile::RuntimeBlockFlexGridV1
+                    | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
             );
         let flex_direction = parse_flex_direction(
             node,
@@ -112,7 +128,7 @@ pub(super) fn project_styles(
                 &format!("{value} with direction:rtl"),
             ));
         }
-        let style = LayoutStyle {
+        let mut style = LayoutStyle {
             display: parse_display(
                 node,
                 required(element, "display")?,
@@ -121,6 +137,13 @@ pub(super) fn project_styles(
                     ComputedStyleProfile::RuntimeBlockFormattingV1
                         | ComputedStyleProfile::RuntimeBlockPositioningV1
                         | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+                        | ComputedStyleProfile::RuntimeBlockFlexGridV1
+                        | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
+                ),
+                matches!(
+                    snapshot.profile,
+                    ComputedStyleProfile::RuntimeBlockFlexGridV1
+                        | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
                 ),
             )?,
             box_sizing: parse_box_sizing(node, required(element, "box-sizing")?)?,
@@ -220,7 +243,9 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
-                | ComputedStyleProfile::RuntimeBlockFlexStackingV1 => {
+                | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1 => {
                     parse_runtime_align_items(node, required(element, "align-items")?)?
                 }
                 ComputedStyleProfile::FlexAlignmentV1
@@ -259,7 +284,9 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
-                | ComputedStyleProfile::RuntimeBlockFlexStackingV1 => {
+                | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1 => {
                     parse_runtime_justify_content(node, required(element, "justify-content")?)?
                 }
                 _ => LayoutStyle::default().justify_content,
@@ -295,7 +322,9 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockPaintV1
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
                 | ComputedStyleProfile::RuntimeBlockPositioningV1
-                | ComputedStyleProfile::RuntimeBlockFlexStackingV1 => LayoutEdges {
+                | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1 => LayoutEdges {
                     top: parse_margin(
                         node,
                         "margin-top",
@@ -345,7 +374,9 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockPaintV1
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
                 | ComputedStyleProfile::RuntimeBlockPositioningV1
-                | ComputedStyleProfile::RuntimeBlockFlexStackingV1 => LayoutEdges {
+                | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1 => LayoutEdges {
                     top: parse_nonnegative_spacing(
                         node,
                         "padding-top",
@@ -392,6 +423,34 @@ pub(super) fn project_styles(
                 LayoutBorder::default()
             },
         };
+        if grid_nodes
+            .as_ref()
+            .is_some_and(|nodes| nodes.hidden.contains(&node))
+        {
+            style.display = spinon_layout::LayoutDisplay::None;
+        }
+        if let Some(nodes) = grid_nodes.as_ref() {
+            if nodes.grid_containers.contains(&node) {
+                reject_grid_alignment(element, true, false)?;
+            }
+            if nodes.grid_items.contains(&node) {
+                reject_grid_alignment(element, false, true)?;
+            }
+        }
+        if style.display == spinon_layout::LayoutDisplay::Grid {
+            let grid = element.grid_layout.as_ref().ok_or_else(|| {
+                crate::StyleLayoutError::UnsupportedComputedValue {
+                    node,
+                    property: "grid-template-columns",
+                    value: element
+                        .properties
+                        .get("grid-template-columns")
+                        .cloned()
+                        .unwrap_or_else(|| "<계산값 없음>".to_owned()),
+                }
+            })?;
+            grid_containers.insert(node, project_grid_layout(node, grid)?);
+        }
         if supports_positioning(snapshot.profile) {
             positioning.insert(
                 node,
@@ -400,9 +459,15 @@ pub(super) fn project_styles(
                     &mut math,
                     snapshot.profile == ComputedStyleProfile::RuntimeBlockPositioningV1
                         || snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexStackingV1
+                        || snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexGridV1
+                        || snapshot.profile
+                            == ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
                         || supports_runtime_flex,
                     snapshot.profile == ComputedStyleProfile::RuntimeBlockPositioningV1
-                        || snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexStackingV1,
+                        || snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexStackingV1
+                        || snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexGridV1
+                        || snapshot.profile
+                            == ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1,
                 )?,
             );
         }
@@ -410,11 +475,123 @@ pub(super) fn project_styles(
             return Err(StyleLayoutError::DuplicateComputedElement(node));
         }
     }
+    if snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1 {
+        let grid_item_nodes = grid_nodes
+            .as_ref()
+            .map(|nodes| &nodes.grid_items)
+            .expect("placement profile has a Grid tree context");
+        for element in snapshot
+            .elements
+            .iter()
+            .filter(|element| grid_item_nodes.contains(&element.node_id))
+        {
+            let placement = element.grid_item_placement.as_ref().ok_or(
+                crate::StyleLayoutError::MissingComputedProperty {
+                    node: element.node_id,
+                    property: "grid-row-start",
+                },
+            )?;
+            if let Some(placement) = project_grid_item_placement(element.node_id, placement)? {
+                grid_items.insert(element.node_id, placement);
+            }
+        }
+    }
     Ok(ProjectedStyles {
         styles: output,
         positioning,
+        grid_containers,
+        grid_items,
         css_math: math.into_values(),
     })
+}
+
+#[derive(Default)]
+struct RuntimeGridNodes {
+    hidden: BTreeSet<NodeId>,
+    grid_containers: BTreeSet<NodeId>,
+    grid_items: BTreeSet<NodeId>,
+}
+
+fn is_grid_profile(profile: ComputedStyleProfile) -> bool {
+    matches!(
+        profile,
+        ComputedStyleProfile::RuntimeBlockFlexGridV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
+    )
+}
+
+fn runtime_grid_nodes(
+    tree: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    snapshot: &ComputedStyleSnapshot,
+) -> RuntimeGridNodes {
+    let displays = snapshot
+        .elements
+        .iter()
+        .filter_map(|element| {
+            element
+                .properties
+                .get("display")
+                .map(|display| (element.node_id, display.as_str()))
+        })
+        .collect::<BTreeMap<_, _>>();
+    let mut nodes = RuntimeGridNodes::default();
+    let mut pending = vec![(root, false)];
+    while let Some((parent, ancestor_hidden)) = pending.pop() {
+        let display = displays.get(&parent.id()).copied().unwrap_or("block");
+        let hidden = ancestor_hidden || display == "none";
+        if hidden {
+            nodes.hidden.insert(parent.id());
+        } else if display == "grid" {
+            nodes.grid_containers.insert(parent.id());
+        }
+        let Some(children) = tree.children(parent) else {
+            continue;
+        };
+        for child in children {
+            if !hidden
+                && display == "grid"
+                && displays
+                    .get(&child.id())
+                    .is_none_or(|display| *display != "none")
+            {
+                nodes.grid_items.insert(child.id());
+            }
+            pending.push((child, hidden));
+        }
+    }
+    nodes
+}
+
+fn reject_grid_alignment(
+    element: &ComputedElementStyle,
+    is_grid_container: bool,
+    is_grid_item: bool,
+) -> Result<(), StyleLayoutError> {
+    let mut unsupported = Vec::new();
+    if is_grid_container {
+        unsupported.extend([
+            ("align-items", "normal"),
+            ("align-content", "normal"),
+            ("justify-content", "normal"),
+            ("justify-items", "normal"),
+        ]);
+    }
+    if is_grid_item {
+        unsupported.extend([("align-self", "auto"), ("justify-self", "auto")]);
+    }
+    for (property, initial) in unsupported {
+        if let Some(value) = element.properties.get(property)
+            && value != initial
+        {
+            return Err(StyleLayoutError::UnsupportedComputedValue {
+                node: element.node_id,
+                property,
+                value: value.clone(),
+            });
+        }
+    }
+    Ok(())
 }
 
 fn supports_positioning(profile: ComputedStyleProfile) -> bool {
@@ -430,6 +607,8 @@ fn supports_positioning(profile: ComputedStyleProfile) -> bool {
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
     )
 }
 
@@ -443,6 +622,8 @@ fn supports_runtime_flex(profile: ComputedStyleProfile) -> bool {
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
     )
 }
 

@@ -1,0 +1,3 @@
+AssertionError [ERR_ASSERTION]: C11.2.1 iOS V8 runtime 결과가 없습니다.
+    at runIOS (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-2-1-grid-placement-pixels.mjs:197:12)
+    at async main (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-2-1-grid-placement-pixels.mjs:218:47)

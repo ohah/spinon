@@ -1,0 +1,30 @@
+{
+  "schema": "spinon-css-c11-ios-metal-surface-pixel-samples/v1",
+  "fixtureId": "fixed-tracks-gap",
+  "oracle": {
+    "referencePath": "tests/fixtures/css/references/c11-grid-precomparison-v2.json",
+    "referenceSha256": "2983995fc946ddda3137566612915bd9fd38a9409ba39a4a99ba27220bfcbb3a",
+    "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.98-d9996da8123a-83fc71ce41b4-ca4062baab2b",
+    "screenshotPath": "spec/internal/evidence/c11-grid-precomparison-2026-10-11/c11-chrome-20261011T141747906Z-c5bc3779/fixed-tracks-gap-dpr1.png",
+    "screenshotSha256": "80c961cb4f990d721c2a3e4d6b2004c83eba7cb9d09798aecdcd75e9401490da",
+    "viewportCssPx": { "width": 360, "height": 800 },
+    "deviceScaleFactor": 1,
+    "product": "Chrome/154.0.8037.98"
+  },
+  "runtime": {
+    "viewportCssPx": { "width": 320, "height": 240 },
+    "surface": "iOS CAMetalLayer WGPU drawable texture before compositor submission",
+    "coordinateSpace": "fixed-tracks-gap scene-local CSS pixel origin (0,0); shared top-left Grid area",
+    "devicePixelFormula": "floor((cssPx + 0.5) * drawablePixels / runtimeViewportCssPx)",
+    "maximumChannelError": 0
+  },
+  "samples": [
+    { "id": "grid-background", "xCssPx": 300, "yCssPx": 120, "rgba": [237, 241, 247, 255] },
+    { "id": "item-blue", "xCssPx": 20, "yCssPx": 10, "rgba": [40, 102, 246, 255] },
+    { "id": "item-red", "xCssPx": 113, "yCssPx": 12, "rgba": [229, 72, 77, 255] },
+    { "id": "item-green", "xCssPx": 226, "yCssPx": 13, "rgba": [25, 169, 116, 255] },
+    { "id": "item-yellow", "xCssPx": 15, "yCssPx": 65, "rgba": [255, 200, 87, 255] },
+    { "id": "column-gap", "xCssPx": 84, "yCssPx": 10, "rgba": [237, 241, 247, 255] },
+    { "id": "row-gap", "xCssPx": 10, "yCssPx": 53, "rgba": [237, 241, 247, 255] }
+  ]
+}

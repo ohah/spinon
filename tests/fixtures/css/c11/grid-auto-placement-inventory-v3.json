@@ -1,0 +1,160 @@
+{
+  "schema": "spinon-css-c11-2-2-grid-auto-placement-inventory/v3",
+  "fixtureId": "C11-2-2-grid-auto-placement-precomparison-v3",
+  "viewport": {
+    "width": 360,
+    "height": 800,
+    "deviceScaleFactors": [1, 2]
+  },
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "forcedColors": "none",
+    "pointer": "coarse",
+    "hover": "none",
+    "direction": "ltr",
+    "writingMode": "horizontal-tb"
+  },
+  "comparison": {
+    "rectFields": ["x", "y", "width", "height"],
+    "maximumAbsoluteRectErrorCssPx": 0.5,
+    "computedProperties": [
+      "display",
+      "grid-template-columns",
+      "grid-template-rows",
+      "grid-auto-flow",
+      "grid-auto-columns",
+      "grid-auto-rows",
+      "grid-column-gap",
+      "grid-row-gap",
+      "grid-row-start",
+      "grid-row-end",
+      "grid-column-start",
+      "grid-column-end",
+      "order"
+    ]
+  },
+  "wpt": {
+    "revision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+    "candidates": [
+      {
+        "path": "css/css-grid/placement/grid-layout-grid-span.html",
+        "sha256": "1be809e54f1b7398112923acd60ef423735934b528ff42c1a8f3b326adbebef7",
+        "sourceUrl": "https://github.com/web-platform-tests/wpt/blob/c999c58338ee1d223df5ad62e48be1202ced0d37/css/css-grid/placement/grid-layout-grid-span.html",
+        "status": "source-hash-verified-not-run",
+        "coverage": "grid span 및 자동 배치 원문 범위가 이번 제한 profile보다 넓음"
+      },
+      {
+        "path": "css/css-grid/placement/grid-negative-line-placement-001.html",
+        "sha256": "e5d17120d87170282d2522ec483d751c6f7db9ac23ec09d2a540cce305d81d31",
+        "sourceUrl": "https://github.com/web-platform-tests/wpt/blob/c999c58338ee1d223df5ad62e48be1202ced0d37/css/css-grid/placement/grid-negative-line-placement-001.html",
+        "status": "source-hash-verified-not-run",
+        "coverage": "음수 line 및 implicit-grid 동작을 포함하며 Spinon 적합성 결과가 아님"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "id": "definite-first-mixed",
+      "scope": "implementation-candidate",
+      "rootId": "c1122-definite-first-grid",
+      "nodeIds": ["c1122-definite-first-grid", "c1122-definite-first-auto-a", "c1122-definite-first-fixed", "c1122-definite-first-auto-b"]
+    },
+    {
+      "id": "auto-only-fill",
+      "scope": "implementation-candidate",
+      "rootId": "c1122-auto-only-grid",
+      "nodeIds": ["c1122-auto-only-grid", "c1122-auto-only-a", "c1122-auto-only-b", "c1122-auto-only-c"]
+    },
+    {
+      "id": "positive-implicit-row",
+      "scope": "implementation-candidate",
+      "rootId": "c1122-implicit-row-grid",
+      "nodeIds": ["c1122-implicit-row-grid", "c1122-implicit-row-a", "c1122-implicit-row-b", "c1122-implicit-row-c"]
+    },
+    {
+      "id": "row-locked-auto-column",
+      "scope": "implementation-candidate",
+      "rootId": "c1122-row-locked-grid",
+      "nodeIds": ["c1122-row-locked-grid", "c1122-row-locked-a", "c1122-row-locked-b"]
+    },
+    {
+      "id": "column-locked-auto-row",
+      "scope": "implementation-candidate",
+      "rootId": "c1122-column-locked-grid",
+      "nodeIds": ["c1122-column-locked-grid", "c1122-column-locked-a", "c1122-column-locked-b"]
+    },
+    {
+      "id": "auto-column-span",
+      "scope": "implementation-candidate",
+      "rootId": "c1122-span-grid",
+      "nodeIds": ["c1122-span-grid", "c1122-span-a", "c1122-span-b"]
+    },
+    {
+      "id": "sparse-hole-not-backfilled",
+      "scope": "implementation-candidate",
+      "rootId": "c1122-sparse-grid",
+      "nodeIds": ["c1122-sparse-grid", "c1122-sparse-auto-a", "c1122-sparse-span", "c1122-sparse-fixed", "c1122-sparse-auto-b"]
+    },
+    {
+      "id": "implicit-track-size-and-gap",
+      "scope": "implementation-candidate",
+      "rootId": "c1122-gap-grid",
+      "nodeIds": ["c1122-gap-grid", "c1122-gap-a", "c1122-gap-b", "c1122-gap-c"]
+    },
+    {
+      "id": "hidden-child-excluded",
+      "scope": "implementation-candidate",
+      "rootId": "c1122-hidden-grid",
+      "nodeIds": ["c1122-hidden-grid", "c1122-hidden-item", "c1122-hidden-visible-a", "c1122-hidden-visible-b"]
+    },
+    {
+      "id": "nested-independent-placement",
+      "scope": "implementation-candidate",
+      "rootId": "c1122-nested-outer",
+      "nodeIds": ["c1122-nested-outer", "c1122-nested-explicit-grid", "c1122-nested-explicit-item", "c1122-nested-auto-grid", "c1122-nested-auto-first", "c1122-nested-auto-fixed"]
+    },
+    {
+      "id": "reject-implicit-column",
+      "scope": "chromium-oracle-only",
+      "rejectionReason": "명시 Grid 바깥의 양수 line 배치가 암시 열을 생성함",
+      "rootId": "c1122-reject-column-grid",
+      "nodeIds": ["c1122-reject-column-grid", "c1122-reject-column-item"]
+    },
+    {
+      "id": "reject-auto-sized-implicit-row",
+      "scope": "chromium-oracle-only",
+      "rejectionReason": "기본 grid-auto-rows:auto가 생성된 암시 행의 크기를 계산함",
+      "rootId": "c1122-reject-auto-row-grid",
+      "nodeIds": ["c1122-reject-auto-row-grid", "c1122-reject-auto-row-a", "c1122-reject-auto-row-b", "c1122-reject-auto-row-c"]
+    },
+    {
+      "id": "reject-repeated-auto-row-pattern",
+      "scope": "chromium-oracle-only",
+      "rejectionReason": "여러 grid-auto-rows 값이 지원하지 않는 반복 track pattern을 사용함",
+      "rootId": "c1122-reject-pattern-grid",
+      "nodeIds": ["c1122-reject-pattern-grid", "c1122-reject-pattern-a", "c1122-reject-pattern-b", "c1122-reject-pattern-c", "c1122-reject-pattern-d", "c1122-reject-pattern-e", "c1122-reject-pattern-f", "c1122-reject-pattern-g", "c1122-reject-pattern-h"]
+    },
+    {
+      "id": "reject-dense-flow",
+      "scope": "chromium-oracle-only",
+      "rejectionReason": "grid-auto-flow:row dense는 sparse 전용 profile 범위 밖임",
+      "rootId": "c1122-reject-dense-grid",
+      "nodeIds": ["c1122-reject-dense-grid", "c1122-reject-dense-auto-a", "c1122-reject-dense-span", "c1122-reject-dense-fixed", "c1122-reject-dense-auto-b"]
+    },
+    {
+      "id": "reject-column-flow",
+      "scope": "chromium-oracle-only",
+      "rejectionReason": "grid-auto-flow:column은 행 전용 profile 밖이며 암시 열을 생성할 수 있음",
+      "rootId": "c1122-reject-column-flow-grid",
+      "nodeIds": ["c1122-reject-column-flow-grid", "c1122-reject-column-flow-a", "c1122-reject-column-flow-b", "c1122-reject-column-flow-c", "c1122-reject-column-flow-d", "c1122-reject-column-flow-e"]
+    },
+    {
+      "id": "column-cursor-wrap",
+      "scope": "implementation-candidate",
+      "rootId": "c1122-column-wrap-grid",
+      "nodeIds": ["c1122-column-wrap-grid", "c1122-column-wrap-col-two", "c1122-column-wrap-col-one"]
+    }
+  ]
+}

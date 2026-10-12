@@ -1,0 +1,9 @@
+AssertionError [ERR_ASSERTION]: 예상하지 않은 Grid scene입니다.
++ actual - expected
+
++ 'numeric-lines'
+- 'c11-2-1-numeric-lines'
+
+    at compareC11IOSMetalPixelLogs (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/compare-c11-ios-metal-surface-pixels.mjs:100:10)
+    at runIOS (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-2-1-grid-placement-pixels.mjs:200:24)
+    at async main (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-2-1-grid-placement-pixels.mjs:219:47)

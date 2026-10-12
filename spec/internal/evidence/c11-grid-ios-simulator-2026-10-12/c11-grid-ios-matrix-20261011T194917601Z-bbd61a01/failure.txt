@@ -1,0 +1,12 @@
+Error: mise exec -- env SPINON_ENABLE_C04_RUNTIME_GPU=1 bun run build:ios-sim 실패: $ bash tools/build-ios-sim.sh
+** BUILD FAILED **
+
+
+The following build commands failed:
+	CompileC /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Intermediates.noindex/SpinonBootstrap.build/Debug-iphonesimulator/SpinonBootstrap.build/Objects-normal/arm64/SpinonRunner.o /Users/yoonhb/Documents/workspace/spinon/platforms/ios/Sources/SpinonRunner.mm normal arm64 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler (in target 'SpinonBootstrap' from project 'SpinonBootstrap')
+	Building project SpinonBootstrap with scheme SpinonBootstrap
+(2 failures)
+error: script "build:ios-sim" exited with code 65
+
+    at command (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-grid-ios-runtime-matrix.mjs:25:11)
+    at main (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-grid-ios-runtime-matrix.mjs:90:17)

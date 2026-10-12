@@ -1,0 +1,564 @@
+{
+  "schema": "spinon-c11-grid-ios-simulator-runtime-matrix/v1",
+  "status": "matched",
+  "runID": "c11-grid-ios-matrix-20261011T205619778Z-2032fc2e",
+  "simulator": {
+    "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "name": "iPhone 17 Pro",
+    "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2"
+  },
+  "appExecutableSha256": "a4c230d0872edb23adfbb084208a7fd953b1f2f032c3b1a8583b0ab3d326bb93",
+  "matrixSha256": "8a18ff6afaa362c3963a866e80e81057403e2368a45f6a57ff2afeca840c875e",
+  "oracle": {
+    "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.98-d9996da8123a-83fc71ce41b4-ca4062baab2b",
+    "chrome": "Chrome/154.0.8037.98",
+    "referenceSha256": "2983995fc946ddda3137566612915bd9fd38a9409ba39a4a99ba27220bfcbb3a",
+    "toleranceCssPx": 0.5
+  },
+  "summary": {
+    "expectedScenes": 10,
+    "matchedScenes": 10,
+    "expectedNodes": 40,
+    "matchedNodes": 40,
+    "freshProcessPerScene": true,
+    "surfacePixelReadback": false
+  },
+  "observations": [
+    {
+      "sceneId": "fixed-tracks-gap",
+      "processId": 74994,
+      "nodeCount": 5,
+      "wrapperFrame": {
+        "nodeId": 1,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        }
+      },
+      "frames": [
+        {
+          "nodeId": 2,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 130
+          }
+        },
+        {
+          "nodeId": 3,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 40,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 4,
+          "rect": {
+            "x": 88,
+            "y": 0,
+            "width": 50,
+            "height": 24
+          }
+        },
+        {
+          "nodeId": 5,
+          "rect": {
+            "x": 196,
+            "y": 0,
+            "width": 60,
+            "height": 26
+          }
+        },
+        {
+          "nodeId": 6,
+          "rect": {
+            "x": 0,
+            "y": 56,
+            "width": 30,
+            "height": 18
+          }
+        }
+      ],
+      "screenshot": "fixed-tracks-gap-simulator.png"
+    },
+    {
+      "sceneId": "percentage-tracks",
+      "processId": 75056,
+      "nodeCount": 3,
+      "wrapperFrame": {
+        "nodeId": 1,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        }
+      },
+      "frames": [
+        {
+          "nodeId": 2,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 90
+          }
+        },
+        {
+          "nodeId": 3,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 30,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 4,
+          "rect": {
+            "x": 80,
+            "y": 0,
+            "width": 30,
+            "height": 20
+          }
+        }
+      ],
+      "screenshot": "percentage-tracks-simulator.png"
+    },
+    {
+      "sceneId": "fractional-tracks-gap",
+      "processId": 75091,
+      "nodeCount": 3,
+      "wrapperFrame": {
+        "nodeId": 1,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        }
+      },
+      "frames": [
+        {
+          "nodeId": 2,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 90
+          }
+        },
+        {
+          "nodeId": 3,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 30,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 4,
+          "rect": {
+            "x": 114.666664,
+            "y": 0,
+            "width": 30,
+            "height": 20
+          }
+        }
+      ],
+      "screenshot": "fractional-tracks-gap-simulator.png"
+    },
+    {
+      "sceneId": "mixed-fixed-percent-fr",
+      "processId": 75124,
+      "nodeCount": 4,
+      "wrapperFrame": {
+        "nodeId": 1,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        }
+      },
+      "frames": [
+        {
+          "nodeId": 2,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 90
+          }
+        },
+        {
+          "nodeId": 3,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 30,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 4,
+          "rect": {
+            "x": 92,
+            "y": 0,
+            "width": 30,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 5,
+          "rect": {
+            "x": 194,
+            "y": 0,
+            "width": 30,
+            "height": 20
+          }
+        }
+      ],
+      "screenshot": "mixed-fixed-percent-fr-simulator.png"
+    },
+    {
+      "sceneId": "row-auto-placement",
+      "processId": 75157,
+      "nodeCount": 6,
+      "wrapperFrame": {
+        "nodeId": 1,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        }
+      },
+      "frames": [
+        {
+          "nodeId": 2,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 210,
+            "height": 140
+          }
+        },
+        {
+          "nodeId": 3,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 4,
+          "rect": {
+            "x": 110,
+            "y": 0,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 5,
+          "rect": {
+            "x": 0,
+            "y": 50,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 6,
+          "rect": {
+            "x": 110,
+            "y": 50,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 7,
+          "rect": {
+            "x": 0,
+            "y": 100,
+            "width": 20,
+            "height": 20
+          }
+        }
+      ],
+      "screenshot": "row-auto-placement-simulator.png"
+    },
+    {
+      "sceneId": "empty-grid",
+      "processId": 75214,
+      "nodeCount": 1,
+      "wrapperFrame": {
+        "nodeId": 1,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        }
+      },
+      "frames": [
+        {
+          "nodeId": 2,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 90
+          }
+        }
+      ],
+      "screenshot": "empty-grid-simulator.png"
+    },
+    {
+      "sceneId": "single-item-grid",
+      "processId": 75249,
+      "nodeCount": 2,
+      "wrapperFrame": {
+        "nodeId": 1,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        }
+      },
+      "frames": [
+        {
+          "nodeId": 2,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 90
+          }
+        },
+        {
+          "nodeId": 3,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 30,
+            "height": 20
+          }
+        }
+      ],
+      "screenshot": "single-item-grid-simulator.png"
+    },
+    {
+      "sceneId": "grid-under-block",
+      "processId": 75281,
+      "nodeCount": 4,
+      "wrapperFrame": {
+        "nodeId": 1,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        }
+      },
+      "frames": [
+        {
+          "nodeId": 2,
+          "rect": {
+            "x": 10,
+            "y": 10,
+            "width": 300,
+            "height": 100
+          }
+        },
+        {
+          "nodeId": 3,
+          "rect": {
+            "x": 25,
+            "y": 10,
+            "width": 200,
+            "height": 60
+          }
+        },
+        {
+          "nodeId": 4,
+          "rect": {
+            "x": 25,
+            "y": 10,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 5,
+          "rect": {
+            "x": 125,
+            "y": 10,
+            "width": 20,
+            "height": 20
+          }
+        }
+      ],
+      "screenshot": "grid-under-block-simulator.png"
+    },
+    {
+      "sceneId": "grid-under-flex",
+      "processId": 75313,
+      "nodeCount": 7,
+      "wrapperFrame": {
+        "nodeId": 1,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        }
+      },
+      "frames": [
+        {
+          "nodeId": 2,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 80
+          }
+        },
+        {
+          "nodeId": 3,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 150,
+            "height": 60
+          }
+        },
+        {
+          "nodeId": 4,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 5,
+          "rect": {
+            "x": 80,
+            "y": 0,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 6,
+          "rect": {
+            "x": 160,
+            "y": 0,
+            "width": 150,
+            "height": 60
+          }
+        },
+        {
+          "nodeId": 7,
+          "rect": {
+            "x": 160,
+            "y": 0,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 8,
+          "rect": {
+            "x": 240,
+            "y": 0,
+            "width": 20,
+            "height": 20
+          }
+        }
+      ],
+      "screenshot": "grid-under-flex-simulator.png"
+    },
+    {
+      "sceneId": "flex-under-grid",
+      "processId": 75350,
+      "nodeCount": 5,
+      "wrapperFrame": {
+        "nodeId": 1,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        }
+      },
+      "frames": [
+        {
+          "nodeId": 2,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 80
+          }
+        },
+        {
+          "nodeId": 3,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 60
+          }
+        },
+        {
+          "nodeId": 4,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 30,
+            "height": 20
+          }
+        },
+        {
+          "nodeId": 5,
+          "rect": {
+            "x": 40,
+            "y": 0,
+            "width": 40,
+            "height": 25
+          }
+        },
+        {
+          "nodeId": 6,
+          "rect": {
+            "x": 170,
+            "y": 0,
+            "width": 20,
+            "height": 20
+          }
+        }
+      ],
+      "screenshot": "flex-under-grid-simulator.png"
+    }
+  ],
+  "limitations": [
+    "iPhone 17 Pro iOS 26.2 Simulator 한 대의 고정 C11.1 fixture geometry 비교다.",
+    "Simulator screenshot은 보존했지만 Metal surface texture 직접 pixel readback은 하지 않았다.",
+    "Android 실기기 결과와 합산하지 않으며, WPT 적합성·전체 CSS 지원을 뜻하지 않는다."
+  ],
+  "xcodeVersion": "Xcode 26.2\nBuild version 17C52"
+}

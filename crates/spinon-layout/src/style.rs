@@ -72,6 +72,8 @@ pub enum FlexWrap {
 pub enum LayoutDisplay {
     Flex,
     Block,
+    /// Block-level CSS Grid container입니다.
+    Grid,
     /// Block layout을 사용하면서 자식에 독립적인 Block formatting context를 만듭니다.
     FlowRoot,
     None,

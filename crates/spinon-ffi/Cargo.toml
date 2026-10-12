@@ -12,6 +12,7 @@ r10-experiment = ["dep:spinon-style-layout-spike"]
 c04-runtime-gpu = ["dep:spinon-render-wgpu"]
 c04-runtime-gpu-test-hooks = ["c04-runtime-gpu", "spinon-render-wgpu/test-hooks"]
 c12-4-metal-surface-readback-test = ["c04-runtime-gpu"]
+c11-grid-metal-surface-pixels-test = ["c04-runtime-gpu"]
 c12-4-worker-stack-residency-test = ["c04-runtime-gpu", "spinon-runtime/c12-4-worker-stack-residency-test"]
 
 [dependencies]

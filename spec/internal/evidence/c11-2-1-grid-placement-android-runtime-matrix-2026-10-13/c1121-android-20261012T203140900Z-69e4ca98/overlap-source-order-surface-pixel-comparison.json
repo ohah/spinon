@@ -1,0 +1,52 @@
+{
+  "status": "matched",
+  "scene": "overlap-source-order",
+  "runID": "c1121-android-20261012T203140900Z-69e4ca98-overlap-source-order",
+  "processId": 29765,
+  "surfaceGeneration": 2,
+  "density": 2.8125,
+  "surface": [
+    900,
+    675
+  ],
+  "expectedSamples": 2,
+  "matchedSamples": 2,
+  "maximumChannelError": 0,
+  "pngSha256": "e37476c6c62122ea1d22e954b9e4ca5178245a8307c6edde4494e7f9a1c756a6",
+  "samples": [
+    {
+      "id": "item-c1121-overlap-second",
+      "css": [
+        82,
+        42
+      ],
+      "pixel": [
+        232,
+        119
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ]
+    },
+    {
+      "id": "surface-c1121-overlap-grid",
+      "css": [
+        166,
+        42
+      ],
+      "pixel": [
+        468,
+        119
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    }
+  ]
+}

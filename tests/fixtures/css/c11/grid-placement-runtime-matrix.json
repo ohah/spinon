@@ -1,0 +1,262 @@
+{
+  "schema": "spinon-css-c11-2-1-grid-placement-runtime-matrix/v1",
+  "inputs": {
+    "inventory": {
+      "path": "tests/fixtures/css/c11/grid-placement-inventory.json",
+      "sha256": "b2801e708e4c1ad540e119dcdba04d7c215e4029d5ec5627683e15ede8ef368b"
+    },
+    "html": {
+      "path": "tests/fixtures/css/c11/grid-placement.html",
+      "sha256": "e9b080bbc65901b17f7dead60eb8071df8ecbefee2ea62f1318776848e75f78d"
+    },
+    "chromiumReference": {
+      "path": "tests/fixtures/css/references/c11-grid-placement-precomparison-v2.json",
+      "sha256": "5bbbd041e2e59fda32c684f7290f61bff41ab6dda9ab9f77ce2fb36f0e0ee034",
+      "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.98-b2801e708e4c-e9b080bbc659-4da07e3a6f1d"
+    },
+    "generator": {
+      "path": "tools/css-reference/build-c11-2-1-grid-placement-runtime-matrix.mjs",
+      "sha256": "9be61d0c5d3eef63d5d416f6c4fcbc385bc4b3e79ac3dc070e9ed79dcc3bb49d"
+    }
+  },
+  "viewportCssPx": {
+    "width": 360,
+    "height": 800
+  },
+  "wrapperStyle": "display:flex;width:360px;height:800px",
+  "cases": [
+    {
+      "index": 0,
+      "id": "numeric-lines",
+      "scope": "implementation-candidate",
+      "rootId": "c1121-numeric-grid",
+      "nodeIds": [
+        "c1121-numeric-grid",
+        "c1121-positive-lines",
+        "c1121-negative-lines"
+      ],
+      "parentIds": [
+        null,
+        "c1121-numeric-grid",
+        "c1121-numeric-grid"
+      ],
+      "expected": {
+        "outcome": "success"
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1121-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1121-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1121-numeric-grid\");\nnode_0.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"display:grid;width:250px;height:85px;grid-template-columns:80px 80px 80px;grid-template-rows:40px 40px;column-gap:5px;row-gap:5px;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1121-numeric-grid\"] = node_0;\nnodeIds.push(\"c1121-numeric-grid\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1121-positive-lines\");\nnode_1.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"grid-column-start:1;grid-column-end:3;grid-row-start:1;grid-row-end:2;background-color:#2866f6\");\nrefs[\"c1121-numeric-grid\"].appendChild(node_1);\nrefs[\"c1121-positive-lines\"] = node_1;\nnodeIds.push(\"c1121-positive-lines\");\nconst node_2 = document.createElement(\"div\");\nnode_2.setAttribute(\"id\", \"c1121-negative-lines\");\nnode_2.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_2.setAttribute(\"style\", \"grid-column-start:-2;grid-column-end:-1;grid-row-start:-2;grid-row-end:-1;background-color:#e5484d\");\nrefs[\"c1121-numeric-grid\"].appendChild(node_2);\nrefs[\"c1121-negative-lines\"] = node_2;\nnodeIds.push(\"c1121-negative-lines\");\nreturn { sceneId:\"numeric-lines\", rootId:\"c1121-numeric-grid\", nodeIds };\n})()",
+      "sourceSha256": "197ae8ee01ebf3829c456ad3d0b8402e494da6a06fb50f659a88fb63f8d4f2c7"
+    },
+    {
+      "index": 1,
+      "id": "positive-spans",
+      "scope": "implementation-candidate",
+      "rootId": "c1121-span-grid",
+      "nodeIds": [
+        "c1121-span-grid",
+        "c1121-span-from-start",
+        "c1121-span-from-end"
+      ],
+      "parentIds": [
+        null,
+        "c1121-span-grid",
+        "c1121-span-grid"
+      ],
+      "expected": {
+        "outcome": "success"
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1121-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1121-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1121-span-grid\");\nnode_0.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"display:grid;width:250px;height:85px;grid-template-columns:80px 80px 80px;grid-template-rows:40px 40px;column-gap:5px;row-gap:5px;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1121-span-grid\"] = node_0;\nnodeIds.push(\"c1121-span-grid\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1121-span-from-start\");\nnode_1.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"grid-column-start:1;grid-column-end:span 2;grid-row-start:1;grid-row-end:span 2;background-color:#2866f6\");\nrefs[\"c1121-span-grid\"].appendChild(node_1);\nrefs[\"c1121-span-from-start\"] = node_1;\nnodeIds.push(\"c1121-span-from-start\");\nconst node_2 = document.createElement(\"div\");\nnode_2.setAttribute(\"id\", \"c1121-span-from-end\");\nnode_2.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_2.setAttribute(\"style\", \"grid-column-start:span 2;grid-column-end:4;grid-row-start:span 1;grid-row-end:3;background-color:#e5484d\");\nrefs[\"c1121-span-grid\"].appendChild(node_2);\nrefs[\"c1121-span-from-end\"] = node_2;\nnodeIds.push(\"c1121-span-from-end\");\nreturn { sceneId:\"positive-spans\", rootId:\"c1121-span-grid\", nodeIds };\n})()",
+      "sourceSha256": "7458e5e2cbfd1fd5acdea4108d1e5222039f12fbdcf1e7328943e020c499ad6c"
+    },
+    {
+      "index": 2,
+      "id": "reversed-lines",
+      "scope": "implementation-candidate",
+      "rootId": "c1121-reverse-grid",
+      "nodeIds": [
+        "c1121-reverse-grid",
+        "c1121-reversed-item"
+      ],
+      "parentIds": [
+        null,
+        "c1121-reverse-grid"
+      ],
+      "expected": {
+        "outcome": "success"
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1121-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1121-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1121-reverse-grid\");\nnode_0.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"display:grid;width:250px;height:85px;grid-template-columns:80px 80px 80px;grid-template-rows:40px 40px;column-gap:5px;row-gap:5px;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1121-reverse-grid\"] = node_0;\nnodeIds.push(\"c1121-reverse-grid\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1121-reversed-item\");\nnode_1.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"grid-column-start:3;grid-column-end:1;grid-row-start:2;grid-row-end:1;background-color:#8758ff\");\nrefs[\"c1121-reverse-grid\"].appendChild(node_1);\nrefs[\"c1121-reversed-item\"] = node_1;\nnodeIds.push(\"c1121-reversed-item\");\nreturn { sceneId:\"reversed-lines\", rootId:\"c1121-reverse-grid\", nodeIds };\n})()",
+      "sourceSha256": "2a29580ae1f8ef7b7815f2bcfe1fde9de650bb61b0e5a309a27b321292451f1a"
+    },
+    {
+      "index": 3,
+      "id": "shorthand-cascade",
+      "scope": "implementation-candidate",
+      "rootId": "c1121-shorthand-grid",
+      "nodeIds": [
+        "c1121-shorthand-grid",
+        "c1121-grid-area-item",
+        "c1121-cascade-item"
+      ],
+      "parentIds": [
+        null,
+        "c1121-shorthand-grid",
+        "c1121-shorthand-grid"
+      ],
+      "expected": {
+        "outcome": "success"
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1121-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1121-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1121-shorthand-grid\");\nnode_0.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"display:grid;width:250px;height:85px;grid-template-columns:80px 80px 80px;grid-template-rows:40px 40px;column-gap:5px;row-gap:5px;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1121-shorthand-grid\"] = node_0;\nnodeIds.push(\"c1121-shorthand-grid\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1121-grid-area-item\");\nnode_1.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"grid-area:1 / 1 / 3 / 3;background-color:#2866f6\");\nrefs[\"c1121-shorthand-grid\"].appendChild(node_1);\nrefs[\"c1121-grid-area-item\"] = node_1;\nnodeIds.push(\"c1121-grid-area-item\");\nconst node_2 = document.createElement(\"div\");\nnode_2.setAttribute(\"id\", \"c1121-cascade-item\");\nnode_2.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_2.setAttribute(\"style\", \"grid-area:1 / 2 / 2 / 4;grid-column-start:1;background-color:#e5484d\");\nrefs[\"c1121-shorthand-grid\"].appendChild(node_2);\nrefs[\"c1121-cascade-item\"] = node_2;\nnodeIds.push(\"c1121-cascade-item\");\nreturn { sceneId:\"shorthand-cascade\", rootId:\"c1121-shorthand-grid\", nodeIds };\n})()",
+      "sourceSha256": "73cccda76a09be7311ed82e1527d6a300e4262d2bd2f2cd32af14f00164bd45b"
+    },
+    {
+      "index": 4,
+      "id": "overlap-source-order",
+      "scope": "implementation-candidate",
+      "rootId": "c1121-overlap-grid",
+      "nodeIds": [
+        "c1121-overlap-grid",
+        "c1121-overlap-first",
+        "c1121-overlap-second"
+      ],
+      "parentIds": [
+        null,
+        "c1121-overlap-grid",
+        "c1121-overlap-grid"
+      ],
+      "expected": {
+        "outcome": "success"
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1121-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1121-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1121-overlap-grid\");\nnode_0.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"display:grid;width:250px;height:85px;grid-template-columns:80px 80px 80px;grid-template-rows:40px 40px;column-gap:5px;row-gap:5px;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1121-overlap-grid\"] = node_0;\nnodeIds.push(\"c1121-overlap-grid\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1121-overlap-first\");\nnode_1.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"grid-column:1 / 3;grid-row:1 / 3;background-color:#2866f6\");\nrefs[\"c1121-overlap-grid\"].appendChild(node_1);\nrefs[\"c1121-overlap-first\"] = node_1;\nnodeIds.push(\"c1121-overlap-first\");\nconst node_2 = document.createElement(\"div\");\nnode_2.setAttribute(\"id\", \"c1121-overlap-second\");\nnode_2.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_2.setAttribute(\"style\", \"grid-column:1 / 3;grid-row:1 / 3;background-color:#e5484d\");\nrefs[\"c1121-overlap-grid\"].appendChild(node_2);\nrefs[\"c1121-overlap-second\"] = node_2;\nnodeIds.push(\"c1121-overlap-second\");\nreturn { sceneId:\"overlap-source-order\", rootId:\"c1121-overlap-grid\", nodeIds };\n})()",
+      "sourceSha256": "abb46c99dd384dd2abfe69bce39e9c9f468f8974c7d75d2ca5d01b24f35e9263"
+    },
+    {
+      "index": 5,
+      "id": "nested-placement-modes",
+      "scope": "implementation-candidate",
+      "rootId": "c1121-nested-outer",
+      "nodeIds": [
+        "c1121-nested-outer",
+        "c1121-nested-auto-grid",
+        "c1121-nested-auto-a",
+        "c1121-nested-auto-b",
+        "c1121-nested-explicit-grid",
+        "c1121-nested-explicit-a",
+        "c1121-nested-explicit-b"
+      ],
+      "parentIds": [
+        null,
+        "c1121-nested-outer",
+        "c1121-nested-auto-grid",
+        "c1121-nested-auto-grid",
+        "c1121-nested-outer",
+        "c1121-nested-explicit-grid",
+        "c1121-nested-explicit-grid"
+      ],
+      "expected": {
+        "outcome": "success"
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1121-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1121-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1121-nested-outer\");\nnode_0.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"display:grid;width:250px;height:60px;grid-template-columns:120px 120px;grid-template-rows:60px;column-gap:10px;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1121-nested-outer\"] = node_0;\nnodeIds.push(\"c1121-nested-outer\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1121-nested-auto-grid\");\nnode_1.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"display:grid;width:120px;height:60px;grid-template-columns:55px 55px;grid-template-rows:60px;column-gap:10px;grid-column:1 / 2;grid-row:1 / 2;background-color:#2866f6\");\nrefs[\"c1121-nested-outer\"].appendChild(node_1);\nrefs[\"c1121-nested-auto-grid\"] = node_1;\nnodeIds.push(\"c1121-nested-auto-grid\");\nconst node_2 = document.createElement(\"div\");\nnode_2.setAttribute(\"id\", \"c1121-nested-auto-a\");\nnode_2.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_2.setAttribute(\"style\", \"width:20px;height:20px;background-color:#19a974\");\nrefs[\"c1121-nested-auto-grid\"].appendChild(node_2);\nrefs[\"c1121-nested-auto-a\"] = node_2;\nnodeIds.push(\"c1121-nested-auto-a\");\nconst node_3 = document.createElement(\"div\");\nnode_3.setAttribute(\"id\", \"c1121-nested-auto-b\");\nnode_3.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_3.setAttribute(\"style\", \"width:20px;height:20px;background-color:#ffc857\");\nrefs[\"c1121-nested-auto-grid\"].appendChild(node_3);\nrefs[\"c1121-nested-auto-b\"] = node_3;\nnodeIds.push(\"c1121-nested-auto-b\");\nconst node_4 = document.createElement(\"div\");\nnode_4.setAttribute(\"id\", \"c1121-nested-explicit-grid\");\nnode_4.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_4.setAttribute(\"style\", \"display:grid;width:120px;height:60px;grid-template-columns:55px 55px;grid-template-rows:60px;column-gap:10px;grid-column:2 / 3;grid-row:1 / 2;background-color:#e5484d\");\nrefs[\"c1121-nested-outer\"].appendChild(node_4);\nrefs[\"c1121-nested-explicit-grid\"] = node_4;\nnodeIds.push(\"c1121-nested-explicit-grid\");\nconst node_5 = document.createElement(\"div\");\nnode_5.setAttribute(\"id\", \"c1121-nested-explicit-a\");\nnode_5.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_5.setAttribute(\"style\", \"grid-column:2 / 3;grid-row:1 / 2;background-color:#8758ff\");\nrefs[\"c1121-nested-explicit-grid\"].appendChild(node_5);\nrefs[\"c1121-nested-explicit-a\"] = node_5;\nnodeIds.push(\"c1121-nested-explicit-a\");\nconst node_6 = document.createElement(\"div\");\nnode_6.setAttribute(\"id\", \"c1121-nested-explicit-b\");\nnode_6.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_6.setAttribute(\"style\", \"grid-column:1 / 2;grid-row:1 / 2;background-color:#0ea5e9\");\nrefs[\"c1121-nested-explicit-grid\"].appendChild(node_6);\nrefs[\"c1121-nested-explicit-b\"] = node_6;\nnodeIds.push(\"c1121-nested-explicit-b\");\nreturn { sceneId:\"nested-placement-modes\", rootId:\"c1121-nested-outer\", nodeIds };\n})()",
+      "sourceSha256": "b3bd611684404eacbbab6a9a9fca468b7b1f7781c71740b74f2541c1f95f76e4"
+    },
+    {
+      "index": 6,
+      "id": "deferred-implicit-track",
+      "scope": "chromium-oracle-only",
+      "rootId": "c1121-implicit-grid",
+      "nodeIds": [
+        "c1121-implicit-grid",
+        "c1121-implicit-item"
+      ],
+      "parentIds": [
+        null,
+        "c1121-implicit-grid"
+      ],
+      "expected": {
+        "outcome": "expected-rejection",
+        "code": "invalid_grid_placement",
+        "nodeId": "c1121-implicit-item",
+        "property": "grid-column-start",
+        "runtimeNodeId": 3
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1121-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1121-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1121-implicit-grid\");\nnode_0.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"display:grid;width:160px;height:40px;grid-template-columns:80px 80px;grid-template-rows:40px;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1121-implicit-grid\"] = node_0;\nnodeIds.push(\"c1121-implicit-grid\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1121-implicit-item\");\nnode_1.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"grid-column:4 / 5;grid-row:1 / 2;background-color:#f97316\");\nrefs[\"c1121-implicit-grid\"].appendChild(node_1);\nrefs[\"c1121-implicit-item\"] = node_1;\nnodeIds.push(\"c1121-implicit-item\");\nreturn { sceneId:\"deferred-implicit-track\", rootId:\"c1121-implicit-grid\", nodeIds };\n})()",
+      "sourceSha256": "4faa0dbbc7ff86b5463890c64a4e01a3f47c870b200345b7b1a98cc66ecc4bb6"
+    },
+    {
+      "index": 7,
+      "id": "deferred-named-line",
+      "scope": "chromium-oracle-only",
+      "rootId": "c1121-named-grid",
+      "nodeIds": [
+        "c1121-named-grid",
+        "c1121-named-item"
+      ],
+      "parentIds": [
+        null,
+        "c1121-named-grid"
+      ],
+      "expected": {
+        "outcome": "expected-rejection",
+        "code": "cascade_failed",
+        "nodeId": null,
+        "property": null,
+        "diagnosticIncludes": "grid-template-columns",
+        "runtimeNodeId": null
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1121-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1121-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1121-named-grid\");\nnode_0.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"display:grid;width:160px;height:40px;grid-template-columns:[left] 80px [middle] 80px [right];grid-template-rows:40px;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1121-named-grid\"] = node_0;\nnodeIds.push(\"c1121-named-grid\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1121-named-item\");\nnode_1.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"grid-column:left / middle;grid-row:1 / 2;background-color:#ec4899\");\nrefs[\"c1121-named-grid\"].appendChild(node_1);\nrefs[\"c1121-named-item\"] = node_1;\nnodeIds.push(\"c1121-named-item\");\nreturn { sceneId:\"deferred-named-line\", rootId:\"c1121-named-grid\", nodeIds };\n})()",
+      "sourceSha256": "7e52d17ccabb0638f016d13a7a289cfe7c92e6960bab71b60ed6c5f5a3aee8a9"
+    },
+    {
+      "index": 8,
+      "id": "deferred-mixed-auto-explicit",
+      "scope": "chromium-oracle-only",
+      "rootId": "c1121-mixed-grid",
+      "nodeIds": [
+        "c1121-mixed-grid",
+        "c1121-mixed-definite",
+        "c1121-mixed-auto"
+      ],
+      "parentIds": [
+        null,
+        "c1121-mixed-grid",
+        "c1121-mixed-grid"
+      ],
+      "expected": {
+        "outcome": "expected-rejection",
+        "code": "invalid_grid_placement",
+        "nodeId": "c1121-mixed-auto",
+        "property": "grid-row-start",
+        "runtimeNodeId": 4
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1121-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1121-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1121-mixed-grid\");\nnode_0.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"display:grid;width:160px;height:80px;grid-template-columns:80px 80px;grid-template-rows:40px 40px;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1121-mixed-grid\"] = node_0;\nnodeIds.push(\"c1121-mixed-grid\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1121-mixed-definite\");\nnode_1.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"grid-column:2 / 3;grid-row:2 / 3;background-color:#2866f6\");\nrefs[\"c1121-mixed-grid\"].appendChild(node_1);\nrefs[\"c1121-mixed-definite\"] = node_1;\nnodeIds.push(\"c1121-mixed-definite\");\nconst node_2 = document.createElement(\"div\");\nnode_2.setAttribute(\"id\", \"c1121-mixed-auto\");\nnode_2.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_2.setAttribute(\"style\", \"background-color:#e5484d\");\nrefs[\"c1121-mixed-grid\"].appendChild(node_2);\nrefs[\"c1121-mixed-auto\"] = node_2;\nnodeIds.push(\"c1121-mixed-auto\");\nreturn { sceneId:\"deferred-mixed-auto-explicit\", rootId:\"c1121-mixed-grid\", nodeIds };\n})()",
+      "sourceSha256": "9825bfaa5ea60746ec94eee07e972fc7cea6023f637f85db14bd417f899eaee5"
+    },
+    {
+      "index": 9,
+      "id": "deferred-equal-lines",
+      "scope": "chromium-oracle-only",
+      "rootId": "c1121-equal-grid",
+      "nodeIds": [
+        "c1121-equal-grid",
+        "c1121-equal-item"
+      ],
+      "parentIds": [
+        null,
+        "c1121-equal-grid"
+      ],
+      "expected": {
+        "outcome": "expected-rejection",
+        "code": "invalid_grid_placement",
+        "nodeId": "c1121-equal-item",
+        "property": "grid-column-end",
+        "runtimeNodeId": 3
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1121-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1121-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1121-equal-grid\");\nnode_0.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"display:grid;width:160px;height:80px;grid-template-columns:80px 80px;grid-template-rows:40px 40px;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1121-equal-grid\"] = node_0;\nnodeIds.push(\"c1121-equal-grid\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1121-equal-item\");\nnode_1.setAttribute(\"data-c1121-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"grid-column:2 / 2;grid-row:1 / 2;background-color:#ffc857\");\nrefs[\"c1121-equal-grid\"].appendChild(node_1);\nrefs[\"c1121-equal-item\"] = node_1;\nnodeIds.push(\"c1121-equal-item\");\nreturn { sceneId:\"deferred-equal-lines\", rootId:\"c1121-equal-grid\", nodeIds };\n})()",
+      "sourceSha256": "542100f266c457d0ed8e77f10e9f9be4b620b2c50bb90de629904bdf2aa8a9a6"
+    }
+  ],
+  "summary": {
+    "sceneCount": 10,
+    "candidateCount": 6,
+    "expectedRejectCount": 4,
+    "nodeCount": 30
+  }
+}

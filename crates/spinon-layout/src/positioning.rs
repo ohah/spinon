@@ -219,6 +219,8 @@ mod tests {
                     },
                 ),
             ]),
+            grid_containers: Default::default(),
+            grid_items: Default::default(),
         };
         let index = input
             .nodes

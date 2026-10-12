@@ -1,0 +1,4 @@
+getpwuid_r did not find a match for uid 501
+Filtering the log data using "process == "SpinonBootstrap" AND composedMessage CONTAINS[c] "SPINON_C111_METAL_PIXEL""
+Timestamp               Ty Process[PID:TID]
+

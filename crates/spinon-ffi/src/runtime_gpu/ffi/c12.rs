@@ -186,7 +186,7 @@ pub unsafe extern "C" fn spinon_runtime_gpu_host_request_c12_4_surface_pixel_for
     let Some(host) = raw_host(host) else {
         return ERR_ARGUMENT;
     };
-    match host.request_surface_pixel_readback_for_test(x, y) {
+    match host.request_surface_pixel_readback_for_test(&[(x, y)]) {
         Ok(report) => write_host_status(0, report, output, output_capacity),
         Err(error) => write_host_status(ERR_ARGUMENT, error, output, output_capacity),
     }

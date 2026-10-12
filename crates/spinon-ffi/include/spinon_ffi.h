@@ -141,6 +141,22 @@ SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c12_3_fixed_fixture(
 /* C12.4 쌓임 맥락 V8 GPU runtime fixture host입니다. */
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c12_4_stacking_fixture(
     char *output, size_t output_capacity);
+/* C11.1 고정 explicit Grid scene 전용 V8·Stylo·Taffy·WGPU 검증 host입니다.
+   일반 앱의 display:grid CSS 지원을 선언하지 않습니다. */
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c11_1_grid_fixture(
+    char *output, size_t output_capacity);
+/* C11.2.1 numeric explicit Grid placement fixture 전용 검증 host입니다. */
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c11_2_1_grid_placement_fixture(
+    char *output, size_t output_capacity);
+#if defined(SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST) && \
+    SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST
+/* C11.1 고정 Grid surface pixel 내부 검증 전용 host입니다. */
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c11_1_grid_surface_pixel_readback_fixture(
+    char *output, size_t output_capacity);
+int32_t spinon_runtime_gpu_host_request_c11_1_grid_surface_pixels_for_test(
+    SpinonRuntimeGpuHost *host, const uint32_t *sample_xy, size_t sample_count,
+    char *output, size_t output_capacity);
+#endif
 #if defined(SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST) && \
     SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST
 /* iOS 시뮬레이터 전용 Metal 표면 진단 host입니다. */
@@ -248,6 +264,21 @@ int32_t spinon_runtime_gpu_host_eval_c12_3_fixed_fixture(
 /* C12.4 제한 쌓임 맥락 CSS를 실제 V8·Stylo·Taffy 경로에서 평가합니다. */
 int32_t spinon_runtime_gpu_host_eval_c12_4_stacking_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
+/* C11.1 fixed-tracks-gap fixture를 V8 document 변경부터 GPU scene까지 평가합니다.
+   UI thread에서 부르지 마세요. layout timeout은 JS 실행을 취소하지 않고 결과 대기만 제한합니다. */
+int32_t spinon_runtime_gpu_host_eval_c11_1_grid_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
+/* C11.1 내부 검증용 고정 matrix scene 선택 API입니다. 유효 index는 0..9이며 JS 문자열은 받지 않습니다. */
+int32_t spinon_runtime_gpu_host_eval_c11_1_grid_scene_fixture(
+    SpinonRuntimeGpuHost *host, uint32_t scene_index,
+    uint64_t layout_timeout_millis, char *output, size_t output_capacity);
+/* 고정 C11.2.1 scene ID 하나를 실제 V8·Stylo·Taffy 경로에서 평가합니다.
+   허용되는 ID는 내장 matrix의 10개뿐이며 임의 JavaScript는 받지 않습니다. */
+int32_t spinon_runtime_gpu_host_eval_c11_2_1_grid_placement_fixture(
+    SpinonRuntimeGpuHost *host, const char *scene_id,
+    uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);
 /* C12.4 내부 테스트: 실제 CSS worker stack 범위와 순간 mincore 상주 페이지 표본입니다. */
 int32_t spinon_runtime_gpu_host_css_worker_stack_residency_for_test(

@@ -144,7 +144,7 @@ fn cascade_layers_allowlist_is_checked_recursively_and_old_profile_rejects_layer
     let diagnostic = author_stylesheet(
         "diagnostic",
         0,
-        "@layer app { #flex-parent { display: grid; }",
+        "@layer app { #flex-parent { display: definitely-not-a-display-value; } }",
     );
     assert!(
         matches!(

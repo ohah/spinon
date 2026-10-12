@@ -1,0 +1,5 @@
+AssertionError [ERR_ASSERTION]: Android 기기가 연결되지 않았습니다: --help
+
+0 !== 1
+
+    at main (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-grid-android-runtime-matrix.mjs:97:10)

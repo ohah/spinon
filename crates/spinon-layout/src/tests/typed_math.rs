@@ -169,6 +169,8 @@ fn unknown_taffy_handle_is_recorded_instead_of_dereferenced() {
         }],
         css_math: vec![],
         positioning: Default::default(),
+        grid_containers: Default::default(),
+        grid_items: Default::default(),
     };
     let index = BTreeMap::from([(root, 0)]);
     let mut tree = CalcLayoutTree::new(&input, &index, &[root]).unwrap();
@@ -254,5 +256,7 @@ fn input_with_child(
             },
         ],
         css_math,
+        grid_containers: Default::default(),
+        grid_items: Default::default(),
     }
 }

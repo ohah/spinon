@@ -1,0 +1,3 @@
+AssertionError [ERR_ASSERTION]: grid-under-block/c11-block-parent/x: actual=0 expected=10
+    at assertGeometry (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-grid-android-runtime-matrix.mjs:87:14)
+    at main (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-grid-android-runtime-matrix.mjs:160:5)

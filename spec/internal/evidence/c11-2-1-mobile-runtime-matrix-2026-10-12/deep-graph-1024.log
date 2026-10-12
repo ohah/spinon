@@ -1,0 +1,16 @@
+   Compiling spinon-style-to-render v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-render)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.50s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_render-ee14fa157b6d3950)
+
+running 1 test
+C12.4 deep graph phase=host-document nodes=1024 elapsed=124.524042ms
+C12.4 deep graph phase=snapshot elapsed=420.875µs
+C12.4 deep graph phase=stylo-view
+C12.4 deep graph phase=cascade elapsed=63.508041ms
+C12.4 deep graph phase=taffy-layout elapsed=38.830792ms
+C12.4 deep graph phase=paint-snapshot elapsed=6.746334ms
+C12.4 deep graph nodes=1024 document=124.524042ms snapshot=420.875µs cascade=63.508041ms layout=38.830792ms paint=6.746334ms total=255.166667ms
+test stacking::deep_graph_tests::host_document_to_paint_snapshot_handles_a_1024_node_stacking_graph ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 36 filtered out; finished in 0.26s
+

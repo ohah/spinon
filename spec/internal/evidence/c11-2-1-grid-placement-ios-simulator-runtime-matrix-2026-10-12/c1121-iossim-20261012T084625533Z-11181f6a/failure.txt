@@ -1,0 +1,4 @@
+Error: xcrun simctl launch --terminate-running-process ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D dev.spinon.bootstrap --spinon-c1121-grid-placement --spinon-c1121-grid-scene=deferred-mixed-auto-explicit --spinon-c1121-grid-run-id=c1121-iossim-20261012T084625533Z-11181f6a-deferred-mixed-auto-explicit 실패: spawnSync xcrun ETIMEDOUT
+    at command (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/c11-2-1-grid-placement-runtime-support.mjs:26:11)
+    at simctl (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-2-1-grid-placement-ios-runtime-matrix.mjs:14:35)
+    at main (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-2-1-grid-placement-ios-runtime-matrix.mjs:71:20)

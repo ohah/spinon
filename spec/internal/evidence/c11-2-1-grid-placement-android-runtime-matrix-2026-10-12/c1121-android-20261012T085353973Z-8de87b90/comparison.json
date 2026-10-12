@@ -1,0 +1,185 @@
+{
+  "schema": "spinon-c11-2-1-grid-placement-mobile-runtime-matrix/v1",
+  "status": "matched",
+  "platform": "Android 17/API 37 AVD (sdk_gphone16k_arm64)",
+  "runID": "c1121-android-20261012T085353973Z-8de87b90",
+  "target": "emulator-5554 · qemu=1 · API 37",
+  "appSha256": "3ee517b8c0f6328b1b4cedb92460a1f5f410e8f04a864cb4d55f4e68aa0f3bc4",
+  "inputs": {
+    "inventory": "b2801e708e4c1ad540e119dcdba04d7c215e4029d5ec5627683e15ede8ef368b",
+    "html": "e9b080bbc65901b17f7dead60eb8071df8ecbefee2ea62f1318776848e75f78d",
+    "reference": "5bbbd041e2e59fda32c684f7290f61bff41ab6dda9ab9f77ce2fb36f0e0ee034",
+    "matrix": "b5b20ce4ccf466a2abc6e1a049095d2eae21d56fee7dc39d19127be29f3b4eff"
+  },
+  "summary": {
+    "scenes": 10,
+    "successfulScenes": 6,
+    "rejectedScenes": 4,
+    "nodes": 21,
+    "maximumAbsoluteErrorCssPx": 0,
+    "geometryToleranceCssPx": 0.5,
+    "freshProcessPerScene": true,
+    "screenshotsArePixelParity": false
+  },
+  "observations": [
+    {
+      "sceneId": "numeric-lines",
+      "outcome": "matched",
+      "frameCount": 4,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 2,
+      "paintOrderNodeIds": null,
+      "screenshot": "numeric-lines-android-avd.png",
+      "screenshotSha256": "f5b43014980bd26500433514202f7029b23090f2229b40e47bbc3f7282b81041",
+      "runID": "c1121-android-20261012T085353973Z-8de87b90-numeric-lines",
+      "processId": 17380
+    },
+    {
+      "sceneId": "positive-spans",
+      "outcome": "matched",
+      "frameCount": 4,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 2,
+      "paintOrderNodeIds": null,
+      "screenshot": "positive-spans-android-avd.png",
+      "screenshotSha256": "85e8f86905ea167a4f92eceb9c7075bfd92487e31cb8e53fdb7f37015e4c1b34",
+      "runID": "c1121-android-20261012T085353973Z-8de87b90-positive-spans",
+      "processId": 17477
+    },
+    {
+      "sceneId": "reversed-lines",
+      "outcome": "matched",
+      "frameCount": 3,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 2,
+      "paintOrderNodeIds": null,
+      "screenshot": "reversed-lines-android-avd.png",
+      "screenshotSha256": "41aadd3aaa81324069f86c65244140396ccb565c178ae84ffabe4077f3860d36",
+      "runID": "c1121-android-20261012T085353973Z-8de87b90-reversed-lines",
+      "processId": 17540
+    },
+    {
+      "sceneId": "shorthand-cascade",
+      "outcome": "matched",
+      "frameCount": 4,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 2,
+      "paintOrderNodeIds": null,
+      "screenshot": "shorthand-cascade-android-avd.png",
+      "screenshotSha256": "021063ed56a7ea2c1675fb7cc42d35b589ddf887663ee503d7722d6712263563",
+      "runID": "c1121-android-20261012T085353973Z-8de87b90-shorthand-cascade",
+      "processId": 17598
+    },
+    {
+      "sceneId": "overlap-source-order",
+      "outcome": "matched",
+      "frameCount": 4,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 2,
+      "paintOrderNodeIds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "screenshot": "overlap-source-order-android-avd.png",
+      "screenshotSha256": "6d38fc6226d77ee6c683e3a46070eb7fd31e14ba9a4549235ebd54b945ff1558",
+      "runID": "c1121-android-20261012T085353973Z-8de87b90-overlap-source-order",
+      "processId": 17660
+    },
+    {
+      "sceneId": "nested-placement-modes",
+      "outcome": "matched",
+      "frameCount": 8,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 2,
+      "paintOrderNodeIds": null,
+      "screenshot": "nested-placement-modes-android-avd.png",
+      "screenshotSha256": "325e89884bbf18749be1c8beba219808a6d2a2720433f9102e17a0d66ef592a1",
+      "runID": "c1121-android-20261012T085353973Z-8de87b90-nested-placement-modes",
+      "processId": 17720
+    },
+    {
+      "sceneId": "deferred-implicit-track",
+      "outcome": "expected-rejection",
+      "status": -11,
+      "diagnostic": {
+        "code": "invalid_grid_placement",
+        "runtimeNodeId": 3,
+        "fixtureNodeId": "c1121-implicit-item",
+        "property": "grid-column-start",
+        "detail": null
+      },
+      "frameCount": 0,
+      "positiveDrawCount": 0,
+      "screenshot": "deferred-implicit-track-android-avd.png",
+      "screenshotSha256": "f81979ee04bf51b63af5daf1d1ddbe6a3f888b3d8af1a1740fbdb33d3ee56e0a",
+      "runID": "c1121-android-20261012T085353973Z-8de87b90-deferred-implicit-track",
+      "processId": 17778
+    },
+    {
+      "sceneId": "deferred-named-line",
+      "outcome": "expected-rejection",
+      "status": -11,
+      "diagnostic": {
+        "code": "cascade_failed",
+        "runtimeNodeId": null,
+        "fixtureNodeId": null,
+        "property": null,
+        "detail": "grid-template-columns"
+      },
+      "frameCount": 0,
+      "positiveDrawCount": 0,
+      "screenshot": "deferred-named-line-android-avd.png",
+      "screenshotSha256": "6bc63a405e9dba4be40397523a3abc4d4b79d90c136c5a7524be4605874fe471",
+      "runID": "c1121-android-20261012T085353973Z-8de87b90-deferred-named-line",
+      "processId": 17836
+    },
+    {
+      "sceneId": "deferred-mixed-auto-explicit",
+      "outcome": "expected-rejection",
+      "status": -11,
+      "diagnostic": {
+        "code": "invalid_grid_placement",
+        "runtimeNodeId": 4,
+        "fixtureNodeId": "c1121-mixed-auto",
+        "property": "grid-row-start",
+        "detail": null
+      },
+      "frameCount": 0,
+      "positiveDrawCount": 0,
+      "screenshot": "deferred-mixed-auto-explicit-android-avd.png",
+      "screenshotSha256": "a41f5e7014b37c95e08ed8aee29e7783d8e38466af220ef5961e8ffc67dec4a5",
+      "runID": "c1121-android-20261012T085353973Z-8de87b90-deferred-mixed-auto-explicit",
+      "processId": 17895
+    },
+    {
+      "sceneId": "deferred-equal-lines",
+      "outcome": "expected-rejection",
+      "status": -11,
+      "diagnostic": {
+        "code": "invalid_grid_placement",
+        "runtimeNodeId": 3,
+        "fixtureNodeId": "c1121-equal-item",
+        "property": "grid-column-end",
+        "detail": null
+      },
+      "frameCount": 0,
+      "positiveDrawCount": 0,
+      "screenshot": "deferred-equal-lines-android-avd.png",
+      "screenshotSha256": "411d0fe38224047ec5fe574a694415c910a50a741efa92802085a5c07d7f8f02",
+      "runID": "c1121-android-20261012T085353973Z-8de87b90-deferred-equal-lines",
+      "processId": 17950
+    }
+  ],
+  "limitations": [
+    "Android AVD 결과는 AVD software renderer이며 Android 실기기를 대체하지 않는다.",
+    "Chrome frame·진단·WGPU 제출 비교다. 전체 surface pixel parity, Spinon WPT 적합성, 전체 CSS Grid 지원을 뜻하지 않는다."
+  ]
+}

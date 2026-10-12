@@ -289,6 +289,8 @@ fn layout_input_for_root(
             nodes,
             css_math: vec![],
             positioning: Default::default(),
+            grid_containers: Default::default(),
+            grid_items: Default::default(),
         },
         ids,
     )

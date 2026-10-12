@@ -6,19 +6,24 @@ use std::{
 
 use spinon_core::NodeId as SpinonNodeId;
 use taffy::{
-    AvailableSpace, BlockContext, Cache, CacheTree, CoreStyle, Display, Layout,
-    LayoutBlockContainer, LayoutFlexboxContainer, LayoutInput as TaffyLayoutInput,
-    LayoutOutput as TaffyLayoutOutput, LayoutPartialTree, MaybeResolve, NodeId as TaffyNodeId,
-    RunMode, Size, Style, TraversePartialTree, compute_block_layout, compute_cached_layout,
-    compute_flexbox_layout, compute_hidden_layout, compute_leaf_layout, compute_root_layout,
+    AvailableSpace, BlockContext, Cache, CacheTree, Display, Layout, LayoutBlockContainer,
+    LayoutFlexboxContainer, LayoutInput as TaffyLayoutInput, LayoutOutput as TaffyLayoutOutput,
+    LayoutPartialTree, MaybeResolve, NodeId as TaffyNodeId, RunMode, Size, TraversePartialTree,
+    compute_block_layout, compute_cached_layout, compute_flexbox_layout, compute_grid_layout,
+    compute_hidden_layout, compute_leaf_layout, compute_root_layout,
 };
 
 use crate::{
     LayoutCalcId, LayoutCssMathValue, LayoutError, LayoutInput, LayoutPosition,
     PositionedContainingBlockOwner, RootSizingPolicy,
+    compact_taffy_style::CompactTaffyStyle,
+    grid_placement::normalize_grid_item_placements,
     positioning::collect_positioned_owners,
     taffy_style::{to_taffy_style, viewport_block_containing_style},
 };
+
+#[path = "calc_tree/grid.rs"]
+mod grid;
 
 /// Taffy stores calc handles in the low three tag bits, so every owner is eight-byte aligned.
 #[repr(align(8))]
@@ -26,13 +31,13 @@ struct CalcOwner(LayoutCssMathValue);
 
 struct Node {
     children: Vec<TaffyNodeId>,
-    style: Style,
+    style: CompactTaffyStyle,
     cache: Cache,
     layout: Layout,
 }
 
 impl Node {
-    fn new(children: Vec<TaffyNodeId>, style: Style, order: u32) -> Self {
+    fn new(children: Vec<TaffyNodeId>, style: CompactTaffyStyle, order: u32) -> Self {
         Self {
             children,
             style,
@@ -105,6 +110,7 @@ impl CalcLayoutTree {
             .iter()
             .map(|node| (node.id, node.children.clone()))
             .collect::<BTreeMap<_, _>>();
+        let normalized_grid_items = normalize_grid_item_placements(input, index)?;
         let mut viewport_children = Vec::new();
         if !flow_only {
             reparent_out_of_flow_children(
@@ -141,6 +147,8 @@ impl CalcLayoutTree {
                 positioning,
                 flow_only,
                 &calc_handles,
+                input.grid_containers.get(&external_id),
+                normalized_grid_items.get(&external_id).copied(),
             )?;
             let order = u32::try_from(position).map_err(|_| LayoutError::TooManyNodes)?;
             nodes.push(Node::new(children, style, order));
@@ -254,7 +262,7 @@ impl CalcLayoutTree {
         }
 
         compute_cached_layout(self, node_id, inputs, |tree, node_id, inputs| {
-            let display = tree.node(node_id).style.display;
+            let display = tree.node(node_id).style.display();
             let has_children = tree.child_count(node_id) > 0;
             match (display, has_children) {
                 (Display::None, _) => compute_hidden_layout(tree, node_id),
@@ -263,6 +271,7 @@ impl CalcLayoutTree {
                 }
                 (Display::FlowRoot, true) => compute_block_layout(tree, node_id, inputs, None),
                 (Display::Flex, true) => compute_flexbox_layout(tree, node_id, inputs),
+                (Display::Grid, true) => compute_grid_layout(tree, node_id, inputs),
                 (_, false) => {
                     let mut style = tree.node(node_id).style.clone();
                     let style_size = style
@@ -275,7 +284,7 @@ impl CalcLayoutTree {
                         // height even when both CSS sizes are definite. CSS leaves both sizes
                         // untouched in that case, so keep the leaf path but disable that
                         // incompatible post-measure adjustment.
-                        style.aspect_ratio = None;
+                        style.disable_aspect_ratio();
                     }
                     compute_leaf_layout(
                         inputs,
@@ -389,7 +398,7 @@ impl TraversePartialTree for CalcLayoutTree {
 }
 
 impl LayoutPartialTree for CalcLayoutTree {
-    type CoreContainerStyle<'a> = &'a Style;
+    type CoreContainerStyle<'a> = &'a CompactTaffyStyle;
     type CustomIdent = String;
 
     fn get_core_container_style(&self, node_id: TaffyNodeId) -> Self::CoreContainerStyle<'_> {
@@ -447,8 +456,8 @@ impl CacheTree for CalcLayoutTree {
 }
 
 impl LayoutFlexboxContainer for CalcLayoutTree {
-    type FlexboxContainerStyle<'a> = &'a Style;
-    type FlexboxItemStyle<'a> = &'a Style;
+    type FlexboxContainerStyle<'a> = &'a CompactTaffyStyle;
+    type FlexboxItemStyle<'a> = &'a CompactTaffyStyle;
 
     fn get_flexbox_container_style(&self, node_id: TaffyNodeId) -> Self::FlexboxContainerStyle<'_> {
         &self.node(node_id).style
@@ -460,8 +469,8 @@ impl LayoutFlexboxContainer for CalcLayoutTree {
 }
 
 impl LayoutBlockContainer for CalcLayoutTree {
-    type BlockContainerStyle<'a> = &'a Style;
-    type BlockItemStyle<'a> = &'a Style;
+    type BlockContainerStyle<'a> = &'a CompactTaffyStyle;
+    type BlockItemStyle<'a> = &'a CompactTaffyStyle;
 
     fn get_block_container_style(&self, node_id: TaffyNodeId) -> Self::BlockContainerStyle<'_> {
         &self.node(node_id).style

@@ -171,7 +171,9 @@ fn flex_alignment_rejects_unsupported_valid_values_and_properties() {
         );
     }
 
-    let diagnosed_result = fixture.compute_flex_alignment(Some("#flex-parent { display: grid; }"));
+    let diagnosed_result = fixture.compute_flex_alignment(Some(
+        "#flex-parent { display: definitely-not-a-display-value; }",
+    ));
     assert!(
         matches!(
             diagnosed_result,

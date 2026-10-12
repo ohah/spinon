@@ -41,6 +41,15 @@ public final class MainActivity extends Activity {
     private static final int RUNTIME_LOG_TRIM_TARGET_CHARS = 16_000;
     private static final String RUNTIME_LOG_TRUNCATION_MARKER = "… 이전 로그 생략 · 최근 기록만 표시 …\n\n";
     private static final String TAG = "SpinonBootstrap";
+    private static final String[] C1121_GRID_PIXEL_SCENE_IDS = {
+            "numeric-lines", "positive-spans", "reversed-lines",
+            "shorthand-cascade", "overlap-source-order", "nested-placement-modes",
+    };
+    private static final String[] C11_GRID_CASE_IDS = {
+            "fixed-tracks-gap", "percentage-tracks", "fractional-tracks-gap",
+            "mixed-fixed-percent-fr", "row-auto-placement", "empty-grid",
+            "single-item-grid", "grid-under-block", "grid-under-flex", "flex-under-grid",
+    };
     private static final int RUNTIME_QUEUE_CAPACITY = 64;
     private static final String LIFECYCLE_FIXTURE_ASSET = "s03-lifecycle-probe.js";
     private static final String LIFECYCLE_FIXTURE_GLOBAL = "__spinonS03LifecycleProbeV1";
@@ -190,6 +199,43 @@ public final class MainActivity extends Activity {
             C0410RuntimeGpuDemo.runC124SessionStackCostProbe(this);
             return;
         }
+        String c11GridCase = getIntent().getStringExtra("spinon_c11_grid_case");
+        int c11GridSceneIndex = 0;
+        boolean c1121GridPlacementRequested = getIntent()
+                .getBooleanExtra("spinon_c1121_grid_placement", false);
+        boolean c11GridFixtureRequested = getIntent()
+                .getBooleanExtra("spinon_c11_grid_fixture", false) || c11GridCase != null;
+        if (c11GridCase != null) {
+            c11GridSceneIndex = -1;
+            for (int index = 0; index < C11_GRID_CASE_IDS.length; index++) {
+                if (C11_GRID_CASE_IDS[index].equals(c11GridCase)) {
+                    c11GridSceneIndex = index;
+                    break;
+                }
+            }
+            if (c11GridSceneIndex < 0 && c1121GridPlacementRequested
+                    && "numeric-lines".equals(c11GridCase)) {
+                c11GridSceneIndex = 0;
+            }
+            if (c11GridSceneIndex < 0 && c1121GridPlacementRequested) {
+                String placementScene = getIntent().getStringExtra("spinon_c1121_grid_scene");
+                boolean allowedPlacementPixelScene = false;
+                for (String sceneId : C1121_GRID_PIXEL_SCENE_IDS) {
+                    allowedPlacementPixelScene |= sceneId.equals(c11GridCase)
+                            && sceneId.equals(placementScene);
+                }
+                if (allowedPlacementPixelScene) c11GridSceneIndex = 0;
+            }
+            if (c11GridSceneIndex < 0) {
+                TextView unavailable = new TextView(this);
+                unavailable.setText("알 수 없는 C11 Grid scene입니다.");
+                unavailable.setTextColor(Color.WHITE);
+                unavailable.setGravity(Gravity.CENTER);
+                setContentView(unavailable);
+                Log.e(TAG, "SPINON_C111_GRID_ARGUMENT_ERROR rejected=true");
+                return;
+            }
+        }
         if (getIntent().getBooleanExtra("spinon_c0410_runtime_gpu", false)
                 || getIntent().getBooleanExtra("spinon_c0411_author_stylesheets", false)
                 || getIntent().getBooleanExtra("spinon_c052_registered_properties", false)
@@ -221,6 +267,8 @@ public final class MainActivity extends Activity {
                 || getIntent().getBooleanExtra("spinon_c124_stacking_matrix", false)
                 || getIntent().getBooleanExtra("spinon_c124_depth_safety", false)
                 || getIntent().getStringExtra("spinon_c124_surface_case") != null
+                || getIntent().getBooleanExtra("spinon_c1121_grid_placement", false)
+                || c11GridFixtureRequested
                 || getIntent().getBooleanExtra("spinon_c121_static_relative", false)) {
             if (!BuildConfig.SPINON_C04_RUNTIME_GPU) {
                 TextView unavailable = new TextView(this);
@@ -258,7 +306,7 @@ public final class MainActivity extends Activity {
             }
             int backend = getIntent().getIntExtra("spinon_r08_backend", 0);
             runtimeGpuDemo = new C0410RuntimeGpuDemo(
-                    this, backend, failureProbe, shutdownProbe);
+                    this, backend, failureProbe, shutdownProbe, c11GridSceneIndex);
             setContentView(runtimeGpuDemo);
             return;
         }

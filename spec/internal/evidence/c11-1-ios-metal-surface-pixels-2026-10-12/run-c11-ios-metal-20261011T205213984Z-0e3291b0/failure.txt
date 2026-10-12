@@ -1,0 +1,6 @@
+Error: C11 Metal 표본 iOS Simulator build 실패. 로그: /Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/c11-1-ios-metal-surface-pixels-2026-10-12/run-c11-ios-metal-20261011T205213984Z-0e3291b0/ios-simulator-build.log
+    at main (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-ios-metal-surface-pixels.mjs:89:11)
+    at file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-ios-metal-surface-pixels.mjs:186:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)

@@ -1,0 +1,137 @@
+{
+  "status": "matched",
+  "scene": "nested-placement-modes",
+  "runID": "c1121-android-20261012T122524470Z-d81a5172-nested-placement-modes",
+  "processId": 23413,
+  "surfaceGeneration": 2,
+  "density": 2.625,
+  "surface": [
+    840,
+    630
+  ],
+  "expectedSamples": 7,
+  "matchedSamples": 7,
+  "maximumChannelError": 0,
+  "pngSha256": "5dcecd853d690f08e5ebce19e43002d205401368fb52df6626aed58dc27d2f79",
+  "samples": [
+    {
+      "id": "item-c1121-nested-auto-grid",
+      "css": [
+        59,
+        29
+      ],
+      "pixel": [
+        156,
+        77
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ]
+    },
+    {
+      "id": "item-c1121-nested-auto-a",
+      "css": [
+        9,
+        9
+      ],
+      "pixel": [
+        24,
+        24
+      ],
+      "rgba": [
+        25,
+        169,
+        116,
+        255
+      ]
+    },
+    {
+      "id": "item-c1121-nested-auto-b",
+      "css": [
+        74,
+        9
+      ],
+      "pixel": [
+        195,
+        24
+      ],
+      "rgba": [
+        255,
+        200,
+        87,
+        255
+      ]
+    },
+    {
+      "id": "item-c1121-nested-explicit-grid",
+      "css": [
+        189,
+        29
+      ],
+      "pixel": [
+        497,
+        77
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ]
+    },
+    {
+      "id": "item-c1121-nested-explicit-a",
+      "css": [
+        222,
+        29
+      ],
+      "pixel": [
+        584,
+        77
+      ],
+      "rgba": [
+        135,
+        88,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "item-c1121-nested-explicit-b",
+      "css": [
+        157,
+        29
+      ],
+      "pixel": [
+        413,
+        77
+      ],
+      "rgba": [
+        14,
+        165,
+        233,
+        255
+      ]
+    },
+    {
+      "id": "surface-c1121-nested-outer",
+      "css": [
+        124,
+        29
+      ],
+      "pixel": [
+        326,
+        77
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    }
+  ]
+}

@@ -4,6 +4,9 @@
   "workspaces": {
     "": {
       "name": "spinon-docs",
+      "devDependencies": {
+        "parse5": "7.3.0",
+      },
     },
     "packages/docs": {
       "name": "@spinon/docs",

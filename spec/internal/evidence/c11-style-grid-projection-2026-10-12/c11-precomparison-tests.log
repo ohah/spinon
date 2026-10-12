@@ -1,0 +1,13 @@
+$ node --test tools/css-reference/c11-grid-precomparison.test.mjs
+✔ 고정 Chrome 기준은 입력·도구·실행 파일 hash와 WPT 원문 hash에 묶여 있다 (4.958166ms)
+✔ 10개 scene·40개 node의 tree, CSS px geometry와 DPR 고정값이 보존된다 (0.872875ms)
+✔ 10개 Chrome 화면 캡처는 고유 scene·SHA-256·PNG 크기와 연결된다 (6.690792ms)
+✔ reference 검증은 빠진·중복 node와 DPR 불일치를 거부한다 (5.567208ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 110.448708

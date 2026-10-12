@@ -11,6 +11,8 @@ mod c08;
 mod c09;
 mod c10;
 mod c10_3_5;
+mod c11;
+mod c11_2_1;
 mod c12;
 mod surface;
 
@@ -206,6 +208,82 @@ pub unsafe extern "C" fn spinon_runtime_gpu_host_new_c12_4_stacking_fixture(
         return ptr::null_mut();
     }
     let (host, report) = match RuntimeGpuHost::new_c12_4_stacking_fixture() {
+        Ok(host) => host,
+        Err(error) => {
+            crate::write_report(output, output_capacity, &error);
+            return ptr::null_mut();
+        }
+    };
+    if !crate::write_report(output, output_capacity, &report) {
+        return ptr::null_mut();
+    }
+    Box::into_raw(Box::new(host)).cast::<SpinonRuntimeGpuHost>()
+}
+
+#[unsafe(no_mangle)]
+/// C11.1 `display:grid` fixture 전용 V8·Stylo·Taffy·WGPU runtime host를 생성합니다.
+///
+/// # Safety
+/// `output`은 `output_capacity` 바이트를 쓸 수 있어야 합니다.
+pub unsafe extern "C" fn spinon_runtime_gpu_host_new_c11_1_grid_fixture(
+    output: *mut c_char,
+    output_capacity: usize,
+) -> *mut SpinonRuntimeGpuHost {
+    if output.is_null() || output_capacity == 0 {
+        return ptr::null_mut();
+    }
+    let (host, report) = match RuntimeGpuHost::new_c11_1_grid_fixture() {
+        Ok(host) => host,
+        Err(error) => {
+            crate::write_report(output, output_capacity, &error);
+            return ptr::null_mut();
+        }
+    };
+    if !crate::write_report(output, output_capacity, &report) {
+        return ptr::null_mut();
+    }
+    Box::into_raw(Box::new(host)).cast::<SpinonRuntimeGpuHost>()
+}
+
+#[unsafe(no_mangle)]
+/// C11.2.1 numeric explicit Grid placement fixture 전용 V8·Stylo·Taffy·WGPU host입니다.
+///
+/// # Safety
+/// `output`은 `output_capacity` 바이트를 쓸 수 있어야 합니다.
+pub unsafe extern "C" fn spinon_runtime_gpu_host_new_c11_2_1_grid_placement_fixture(
+    output: *mut c_char,
+    output_capacity: usize,
+) -> *mut SpinonRuntimeGpuHost {
+    if output.is_null() || output_capacity == 0 {
+        return ptr::null_mut();
+    }
+    let (host, report) = match RuntimeGpuHost::new_c11_2_1_grid_placement_fixture() {
+        Ok(host) => host,
+        Err(error) => {
+            crate::write_report(output, output_capacity, &error);
+            return ptr::null_mut();
+        }
+    };
+    if !crate::write_report(output, output_capacity, &report) {
+        return ptr::null_mut();
+    }
+    Box::into_raw(Box::new(host)).cast::<SpinonRuntimeGpuHost>()
+}
+
+#[cfg(feature = "c11-grid-metal-surface-pixels-test")]
+#[unsafe(no_mangle)]
+/// C11.1 Grid surface pixel 검증 전용 test-hook host를 생성합니다.
+///
+/// # Safety
+/// `output`은 `output_capacity` 바이트를 쓸 수 있어야 합니다.
+pub unsafe extern "C" fn spinon_runtime_gpu_host_new_c11_1_grid_surface_pixel_readback_fixture(
+    output: *mut c_char,
+    output_capacity: usize,
+) -> *mut SpinonRuntimeGpuHost {
+    if output.is_null() || output_capacity == 0 {
+        return ptr::null_mut();
+    }
+    let (host, report) = match RuntimeGpuHost::new_c11_1_grid_surface_pixel_readback_fixture() {
         Ok(host) => host,
         Err(error) => {
             crate::write_report(output, output_capacity, &error);

@@ -51,6 +51,8 @@ impl LayoutInput {
             nodes,
             css_math: Vec::new(),
             positioning: Default::default(),
+            grid_containers: Default::default(),
+            grid_items: Default::default(),
         })
     }
 }

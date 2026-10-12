@@ -1,0 +1,52 @@
+{
+  "status": "matched",
+  "scene": "reversed-lines",
+  "runID": "c1121-android-20261012T161006179Z-4ffd28bc-reversed-lines",
+  "processId": 16289,
+  "surfaceGeneration": 2,
+  "density": 2.8125,
+  "surface": [
+    900,
+    675
+  ],
+  "expectedSamples": 2,
+  "matchedSamples": 2,
+  "maximumChannelError": 0,
+  "pngSha256": "21d61b1a4ead74e8c2cf9cbceb09e5eada183ee9ca58db1740e1452802ba1dca",
+  "samples": [
+    {
+      "id": "item-c1121-reversed-item",
+      "css": [
+        82,
+        19
+      ],
+      "pixel": [
+        232,
+        54
+      ],
+      "rgba": [
+        135,
+        88,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "surface-c1121-reverse-grid",
+      "css": [
+        124,
+        42
+      ],
+      "pixel": [
+        350,
+        119
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    }
+  ]
+}

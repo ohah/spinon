@@ -5,18 +5,24 @@ mod node;
 mod selectors;
 mod style;
 
+pub(crate) use cascade::initialize_stylo_preferences;
+
 #[cfg(test)]
 mod tests;
 
 pub use cascade::{
-    CascadeDiagnostic, ComputedCssDimension, ComputedCssEdges, ComputedCssMath, ComputedCssMaxSize,
-    ComputedCssPosition, ComputedCssSpacingValue, ComputedCssVisibility, ComputedCssZIndex,
-    ComputedElementStyle, ComputedLayoutBorder, ComputedLayoutDimensions, ComputedLayoutInsets,
-    ComputedLayoutSpacing, ComputedStyleProfile, ComputedStyleSnapshot, CssCascadeError,
-    CssColorScheme, CssMediaEnvironment, CssPointerCapabilities, CssPrimaryPointer, CssViewport,
+    CascadeDiagnostic, ComputedCssDimension, ComputedCssEdges, ComputedCssGridAutoFlow,
+    ComputedCssGridItemPlacement, ComputedCssGridLayout, ComputedCssGridPlacement,
+    ComputedCssGridTrackSize, ComputedCssMath, ComputedCssMaxSize, ComputedCssPosition,
+    ComputedCssSpacingValue, ComputedCssVisibility, ComputedCssZIndex, ComputedElementStyle,
+    ComputedLayoutBorder, ComputedLayoutDimensions, ComputedLayoutInsets, ComputedLayoutSpacing,
+    ComputedStyleProfile, ComputedStyleSnapshot, CssCascadeError, CssColorScheme,
+    CssMediaEnvironment, CssPointerCapabilities, CssPrimaryPointer, CssViewport,
     FixedContainingBlockEffect, RuntimeCascadeReuseStats, compute_flex_alignment_cascade,
     compute_flex_alignment_layers_cascade, compute_flex_layout_cascade,
     compute_flex_margin_cascade, compute_flex_media_environment_cascade,
+    compute_runtime_block_flex_grid_cascade_with_stylesheets,
+    compute_runtime_block_flex_grid_placement_cascade_with_stylesheets,
     compute_runtime_block_flex_stacking_cascade_with_stylesheets,
     compute_runtime_block_formatting_cascade_with_stylesheets, compute_runtime_block_paint_cascade,
     compute_runtime_block_paint_cascade_with_stylesheets,
@@ -31,6 +37,8 @@ pub use cascade::{
     compute_runtime_incremental_cascade_with_stylesheets, compute_s04_flex_paint_cascade,
     compute_supported_elements_ua_cascade, first_unsupported_runtime_block_display_inline_value,
     first_unsupported_runtime_block_display_stylesheet_value,
+    first_unsupported_runtime_block_flex_grid_inline_property,
+    first_unsupported_runtime_block_flex_grid_placement_inline_property,
     first_unsupported_runtime_block_flex_stacking_inline_property,
     first_unsupported_runtime_block_formatting_inline_property,
     first_unsupported_runtime_block_paint_inline_property,
