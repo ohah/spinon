@@ -574,7 +574,19 @@ pub(super) fn project_styles(
                     property: "grid-row-start",
                 },
             )?;
-            if let Some(placement) = project_grid_item_placement(element.node_id, placement)? {
+            let owner = grid_nodes
+                .as_ref()
+                .and_then(|nodes| nodes.grid_item_owners.get(&element.node_id))
+                .copied()
+                .ok_or(crate::StyleLayoutError::MissingComputedElement(
+                    element.node_id,
+                ))?;
+            let container = grid_containers
+                .get(&owner)
+                .ok_or(crate::StyleLayoutError::MissingComputedElement(owner))?;
+            if let Some(placement) =
+                project_grid_item_placement(element.node_id, placement, container)?
+            {
                 grid_items.insert(element.node_id, placement);
             }
         }
@@ -593,6 +605,7 @@ struct RuntimeGridNodes {
     hidden: BTreeSet<NodeId>,
     grid_containers: BTreeSet<NodeId>,
     grid_items: BTreeSet<NodeId>,
+    grid_item_owners: BTreeMap<NodeId, NodeId>,
 }
 
 fn is_grid_profile(profile: ComputedStyleProfile) -> bool {
@@ -642,6 +655,7 @@ fn runtime_grid_nodes(
                     .is_none_or(|display| *display != "none")
             {
                 nodes.grid_items.insert(child.id());
+                nodes.grid_item_owners.insert(child.id(), parent.id());
             }
             pending.push((child, hidden));
         }

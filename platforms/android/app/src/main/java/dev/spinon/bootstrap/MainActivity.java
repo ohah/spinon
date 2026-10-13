@@ -226,6 +226,10 @@ public final class MainActivity extends Activity {
                 .getBooleanExtra("spinon_c1131_grid_repeat", false)
                 || c1131GridScene != null;
         String c1131GridRunId = getIntent().getStringExtra("spinon_c1131_grid_repeat_run_id");
+        boolean c1132GridNamedLinesRequested = getIntent()
+                .getBooleanExtra("spinon_c1132_grid_named_lines", false);
+        String c1132GridRunId = getIntent()
+                .getStringExtra("spinon_c1132_grid_named_lines_run_id");
         if (c1131GridRepeatRequested
                 && ((c1131GridScene != null
                                 && !"multi-track-repeat".equals(c1131GridScene))
@@ -238,6 +242,19 @@ public final class MainActivity extends Activity {
             unavailable.setGravity(Gravity.CENTER);
             setContentView(unavailable);
             Log.e(TAG, "SPINON_C1131_GRID_ARGUMENT_ERROR rejected=true");
+            return;
+        }
+        if (c1132GridNamedLinesRequested
+                && ((c1132GridRunId != null
+                                && !c1132GridRunId.matches("[A-Za-z0-9_-]{1,80}"))
+                        || c1131GridRepeatRequested || c1121GridPlacementRequested
+                        || c1122GridAutoPlacementRequested)) {
+            TextView unavailable = new TextView(this);
+            unavailable.setText("C11.3.2 Grid fixture 또는 profile 선택이 올바르지 않습니다.");
+            unavailable.setTextColor(Color.WHITE);
+            unavailable.setGravity(Gravity.CENTER);
+            setContentView(unavailable);
+            Log.e(TAG, "SPINON_C1132_GRID_ARGUMENT_ERROR rejected=true");
             return;
         }
         if (c1122GridAutoPlacementRequested) {
@@ -256,7 +273,8 @@ public final class MainActivity extends Activity {
             }
         }
         boolean c11GridFixtureRequested = getIntent()
-                .getBooleanExtra("spinon_c11_grid_fixture", false) || c11GridCase != null;
+                .getBooleanExtra("spinon_c11_grid_fixture", false) || c11GridCase != null
+                || c1132GridNamedLinesRequested;
         if (c11GridCase != null) {
             c11GridSceneIndex = -1;
             for (int index = 0; index < C11_GRID_CASE_IDS.length; index++) {
@@ -290,6 +308,10 @@ public final class MainActivity extends Activity {
                     && "multi-track-repeat".equals(c11GridCase)
                     && c11GridCase.equals(c1131GridScene == null
                             ? "multi-track-repeat" : c1131GridScene)) {
+                c11GridSceneIndex = 0;
+            }
+            if (c11GridSceneIndex < 0 && c1132GridNamedLinesRequested
+                    && "positive-occurrence".equals(c11GridCase)) {
                 c11GridSceneIndex = 0;
             }
             if (c11GridSceneIndex < 0) {
@@ -336,6 +358,7 @@ public final class MainActivity extends Activity {
                 || getIntent().getBooleanExtra("spinon_c1121_grid_placement", false)
                 || c1122GridAutoPlacementRequested
                 || c1131GridRepeatRequested
+                || c1132GridNamedLinesRequested
                 || c11GridFixtureRequested
                 || getIntent().getBooleanExtra("spinon_c121_static_relative", false)) {
             if (!BuildConfig.SPINON_C04_RUNTIME_GPU) {

@@ -1,0 +1,102 @@
+{
+  "runId": "c1132-chrome-20261013T175533841Z-b14d1e22",
+  "referencePath": "tests/fixtures/css/references/c11-3-2-grid-named-lines-precomparison-v1.json",
+  "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.92-502bee2426ab-0ae4c219fca3-4f9e07531434",
+  "caseCount": 15,
+  "nodeCount": 30,
+  "deviceScaleFactors": [
+    1,
+    2
+  ],
+  "screenshots": [
+    {
+      "caseId": "positive-occurrence",
+      "path": "spec/internal/evidence/c11-3-2-named-lines-precomparison-2026-10-14/c1132-chrome-20261013T175533841Z-b14d1e22/positive-occurrence-dpr1.png",
+      "sha256": "0c618cfad84612156e65582fe0139f3ca68d52807f50dedddd77b57419bea86f"
+    },
+    {
+      "caseId": "negative-occurrence",
+      "path": "spec/internal/evidence/c11-3-2-named-lines-precomparison-2026-10-14/c1132-chrome-20261013T175533841Z-b14d1e22/negative-occurrence-dpr1.png",
+      "sha256": "3c8c1f29c9003331de415294ab1c6c3d63a1cad421d55b711db3e15d00415f87"
+    },
+    {
+      "caseId": "integer-before-name",
+      "path": "spec/internal/evidence/c11-3-2-named-lines-precomparison-2026-10-14/c1132-chrome-20261013T175533841Z-b14d1e22/integer-before-name-dpr1.png",
+      "sha256": "0c618cfad84612156e65582fe0139f3ca68d52807f50dedddd77b57419bea86f"
+    },
+    {
+      "caseId": "named-span-forward",
+      "path": "spec/internal/evidence/c11-3-2-named-lines-precomparison-2026-10-14/c1132-chrome-20261013T175533841Z-b14d1e22/named-span-forward-dpr1.png",
+      "sha256": "40b5bacb34a3724efbf0a688b75ebb31edc3d54fb336c1cb4bf0a3eb020a6408"
+    },
+    {
+      "caseId": "named-span-backward",
+      "path": "spec/internal/evidence/c11-3-2-named-lines-precomparison-2026-10-14/c1132-chrome-20261013T175533841Z-b14d1e22/named-span-backward-dpr1.png",
+      "sha256": "0c618cfad84612156e65582fe0139f3ca68d52807f50dedddd77b57419bea86f"
+    },
+    {
+      "caseId": "named-span-name-before-count",
+      "path": "spec/internal/evidence/c11-3-2-named-lines-precomparison-2026-10-14/c1132-chrome-20261013T175533841Z-b14d1e22/named-span-name-before-count-dpr1.png",
+      "sha256": "40b5bacb34a3724efbf0a688b75ebb31edc3d54fb336c1cb4bf0a3eb020a6408"
+    },
+    {
+      "caseId": "same-line-duplicate-name",
+      "path": "spec/internal/evidence/c11-3-2-named-lines-precomparison-2026-10-14/c1132-chrome-20261013T175533841Z-b14d1e22/same-line-duplicate-name-dpr1.png",
+      "sha256": "40b5bacb34a3724efbf0a688b75ebb31edc3d54fb336c1cb4bf0a3eb020a6408"
+    },
+    {
+      "caseId": "repeat-seam-name",
+      "path": "spec/internal/evidence/c11-3-2-named-lines-precomparison-2026-10-14/c1132-chrome-20261013T175533841Z-b14d1e22/repeat-seam-name-dpr1.png",
+      "sha256": "3c8c1f29c9003331de415294ab1c6c3d63a1cad421d55b711db3e15d00415f87"
+    },
+    {
+      "caseId": "row-axis-named-lines",
+      "path": "spec/internal/evidence/c11-3-2-named-lines-precomparison-2026-10-14/c1132-chrome-20261013T175533841Z-b14d1e22/row-axis-named-lines-dpr1.png",
+      "sha256": "293dbd7bfdb53c13082373da253f3b04b1c16bfd2c55a1dc069af70d7a3b612f"
+    },
+    {
+      "caseId": "reversed-line-conflict",
+      "path": "spec/internal/evidence/c11-3-2-named-lines-precomparison-2026-10-14/c1132-chrome-20261013T175533841Z-b14d1e22/reversed-line-conflict-dpr1.png",
+      "sha256": "8751c7920de2cf43f6ef66d3a4b37f1d97d2dc5db4264a3f4fe75377ce1f2628"
+    },
+    {
+      "caseId": "equal-line-conflict",
+      "path": "spec/internal/evidence/c11-3-2-named-lines-precomparison-2026-10-14/c1132-chrome-20261013T175533841Z-b14d1e22/equal-line-conflict-dpr1.png",
+      "sha256": "3c8c1f29c9003331de415294ab1c6c3d63a1cad421d55b711db3e15d00415f87"
+    },
+    {
+      "caseId": "missing-name-implicit-line",
+      "path": "spec/internal/evidence/c11-3-2-named-lines-precomparison-2026-10-14/c1132-chrome-20261013T175533841Z-b14d1e22/missing-name-implicit-line-dpr1.png",
+      "sha256": "86f36f87e7b5586c7bc80987048a094d0d6ee0206f5916ee061f12009f9f80df"
+    },
+    {
+      "caseId": "occurrence-shortage-implicit-line",
+      "path": "spec/internal/evidence/c11-3-2-named-lines-precomparison-2026-10-14/c1132-chrome-20261013T175533841Z-b14d1e22/occurrence-shortage-implicit-line-dpr1.png",
+      "sha256": "86f36f87e7b5586c7bc80987048a094d0d6ee0206f5916ee061f12009f9f80df"
+    },
+    {
+      "caseId": "named-span-shortage-implicit-line",
+      "path": "spec/internal/evidence/c11-3-2-named-lines-precomparison-2026-10-14/c1132-chrome-20261013T175533841Z-b14d1e22/named-span-shortage-implicit-line-dpr1.png",
+      "sha256": "8751c7920de2cf43f6ef66d3a4b37f1d97d2dc5db4264a3f4fe75377ce1f2628"
+    },
+    {
+      "caseId": "lone-named-span",
+      "path": "spec/internal/evidence/c11-3-2-named-lines-precomparison-2026-10-14/c1132-chrome-20261013T175533841Z-b14d1e22/lone-named-span-dpr1.png",
+      "sha256": "af0e9efd9f058067811fbafad5c35ffad3f1c810d6af6539b13b5eea09eb3c85"
+    }
+  ],
+  "wptCandidatesAreChromeOracleOnly": [
+    {
+      "path": "css/css-grid/placement/grid-placement-using-named-grid-lines-001.html",
+      "sha256": "d31717c0e82d8030f0a99070a5e98333be71c2cc834e36950ae5b5d303fd180e"
+    },
+    {
+      "path": "css/css-grid/placement/grid-placement-using-named-grid-lines-009.html",
+      "sha256": "beff24e4a4afdc8a78113df44c35b7f70c22c9067c935ae3340a4432f2b2e6eb"
+    },
+    {
+      "path": "css/css-grid/placement/grid-placement-unknown-named-grid-line-001.html",
+      "sha256": "27f9afb4ca2c856718ca81ef750b511242bce5be7386f80fa335c37329e9d049"
+    }
+  ]
+}

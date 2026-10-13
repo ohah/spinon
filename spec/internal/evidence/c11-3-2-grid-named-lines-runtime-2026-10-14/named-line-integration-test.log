@@ -1,0 +1,16 @@
+   Compiling spinon-style-to-layout v0.1.0 (/private/tmp/spinon-c11-3-2-work/crates/spinon-style-to-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.64s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-623c5503c181cff2)
+
+running 9 tests
+test c11_3_2_grid_named_line_tests::named_spans_search_from_the_opposite_definite_line_in_both_directions ... ok
+test c11_3_2_grid_named_line_tests::named_occurrence_counts_repeated_track_seam_as_one_physical_line ... ok
+test c11_3_2_grid_named_line_tests::named_line_metadata_is_resolved_from_the_immediate_nested_grid_owner ... ok
+test c11_3_2_grid_named_line_tests::reversed_identifier_integer_order_is_equivalent_after_stylo_cascade ... ok
+test c11_3_2_grid_named_line_tests::named_span_without_opposite_definite_edge_uses_one_track_and_ignores_name ... ok
+test c11_3_2_grid_named_line_tests::named_endpoint_reversal_and_equality_follow_grid_conflict_rules ... ok
+test c11_3_2_grid_named_line_tests::positive_and_negative_named_occurrences_match_chrome_grid_coordinates ... ok
+test c11_3_2_grid_named_line_tests::changed_grid_line_names_are_used_at_the_next_style_revision ... ok
+test c11_3_2_grid_named_line_tests::missing_case_mismatched_or_out_of_range_named_lines_fail_before_layout_output ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 141 filtered out; finished in 0.01s

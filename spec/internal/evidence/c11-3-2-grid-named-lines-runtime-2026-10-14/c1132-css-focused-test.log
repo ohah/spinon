@@ -1,0 +1,15 @@
+$ node --test tools/css-reference/c11-3-2-grid-named-lines.test.mjs
+✔ 기준 자료가 고정 fixture·도구·Chrome 실행 파일·WPT revision에 연결된다 (2.326042ms)
+✔ 15개 장면의 DOM 순서, 양쪽 DPR의 CSSOM·track 수·geometry가 보존된다 (0.581625ms)
+✔ named line occurrence, span 방향, repeat seam, row 축, conflict 처리가 Chrome 기준과 맞는다 (0.225459ms)
+✔ explicit grid 밖 named line 요청은 Chrome 결과와 지원 범위를 분리해 둔다 (0.104083ms)
+✔ DPR 1의 scene screenshot 경로와 hash가 실제 PNG 파일과 일치한다 (3.2335ms)
+✔ Android·iOS C11.3.2 진입과 거부 경로가 고정 scene 및 run ID를 검사한다 (1.509917ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 53.072709

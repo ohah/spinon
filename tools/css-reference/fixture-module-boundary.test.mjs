@@ -8,10 +8,12 @@ import { fileURLToPath } from 'node:url';
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const legacyFixtureSources = [
   'crates/spinon-ffi/src/runtime_gpu/c11_3_1.rs',
+  'crates/spinon-ffi/src/runtime_gpu/c11_3_2.rs',
   'crates/spinon-ffi/src/runtime_gpu/c11.rs',
   'crates/spinon-ffi/src/runtime_gpu/c11_2_2.rs',
   'crates/spinon-ffi/src/runtime_gpu/c11_2_3.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/c11_3_1.rs',
+  'crates/spinon-ffi/src/runtime_gpu/ffi/c11_3_2.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/c06.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/c07.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/c08.rs',
@@ -29,15 +31,16 @@ const legacyFixtureSources = [
 const canonicalFixtureSources = [
   'crates/spinon-ffi/src/runtime_gpu/fixtures.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_3_1.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_3_2.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11_3_1.rs',
+  'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11_3_2.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11.rs',
   'crates/spinon-ffi/src/runtime_ua_cascade/fixtures.rs',
   'crates/spinon-ffi/src/runtime_ua_cascade/fixtures/probe.rs',
   'crates/spinon-ffi/src/runtime_ua_cascade/fixtures/layout_probe.rs',
 ];
-
 test('fixture 이동 뒤 이전 경로에 Rust 사본이 남지 않는다', () => {
   for (const relativePath of legacyFixtureSources) {
     assert.equal(
@@ -67,4 +70,44 @@ test('이동한 fixture 구현은 정해진 fixtures 모듈 경로에 있다', (
       `정식 fixture 모듈 경로가 없습니다: ${relativePath}`,
     );
   }
+});
+
+test('작업별 FFI fixture 모듈은 runtime 소스 루트에 남지 않는다', async () => {
+  const misplaced = [];
+  const queue = [['crates/spinon-ffi/src', '']];
+  while (queue.length > 0) {
+    const [absoluteDirectory, relativeDirectory] = queue.pop();
+    const entries = await readdir(resolve(repositoryRoot, absoluteDirectory), { withFileTypes: true });
+    for (const entry of entries) {
+      const relativePath = relativeDirectory ? `${relativeDirectory}/${entry.name}` : entry.name;
+      if (entry.isDirectory()) {
+        queue.push([`${absoluteDirectory}/${entry.name}`, relativePath]);
+      } else if (
+        entry.isFile()
+        && /^c\d+(?:_\d+)*\.rs$/.test(entry.name)
+        && !relativePath.split('/').includes('fixtures')
+      ) {
+        misplaced.push(`${absoluteDirectory}/${entry.name}`);
+      }
+    }
+  }
+  assert.deepEqual(misplaced, [], `fixture 모듈을 fixtures/ 아래로 옮기세요: ${misplaced.join(', ')}`);
+});
+
+test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리된다', async () => {
+  const runtimeSource = await readFile(
+    resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu.rs'),
+    'utf8',
+  );
+  const ffiSource = await readFile(
+    resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/ffi.rs'),
+    'utf8',
+  );
+  const cargoManifest = await readFile(
+    resolve(repositoryRoot, 'crates/spinon-ffi/Cargo.toml'),
+    'utf8',
+  );
+  assert.match(runtimeSource, /#\[cfg\(feature = "c04-runtime-gpu-fixture-test"\)\]\s*mod fixtures;/);
+  assert.match(ffiSource, /#\[cfg\(feature = "c04-runtime-gpu-fixture-test"\)\]\s*mod fixtures;/);
+  assert.match(cargoManifest, /c04-runtime-gpu-fixture-test\s*=\s*\["c04-runtime-gpu"\]/);
 });

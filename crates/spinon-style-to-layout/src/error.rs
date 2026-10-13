@@ -45,6 +45,12 @@ pub enum StyleLayoutError {
         property: &'static str,
         value: String,
     },
+    UnsupportedNamedGridLine {
+        node: NodeId,
+        property: &'static str,
+        name: String,
+        reason: &'static str,
+    },
     Layout(LayoutError),
 }
 
@@ -120,6 +126,15 @@ impl fmt::Display for StyleLayoutError {
                     "노드 {node}의 {property} 값 {value:?}를 layout profile이 지원하지 않습니다"
                 )
             }
+            Self::UnsupportedNamedGridLine {
+                node,
+                property,
+                name,
+                reason,
+            } => write!(
+                formatter,
+                "노드 {node}의 {property} named line {name:?}을 계산할 수 없습니다: {reason}"
+            ),
             Self::Layout(error) => {
                 write!(formatter, "Taffy 입력 또는 계산에 실패했습니다: {error}")
             }

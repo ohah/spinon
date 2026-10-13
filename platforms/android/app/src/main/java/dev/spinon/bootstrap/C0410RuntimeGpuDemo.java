@@ -83,6 +83,31 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "auto-span-at-track-limit",
     };
     private static final String C1131_GRID_REPEAT_SCENE_ID = "multi-track-repeat";
+    private static final String C1132_GRID_NAMED_LINE_SCENE_ID = "positive-occurrence";
+    private static final String C1132_GRID_NAMED_LINE_REJECT_SCENE_ID =
+            "missing-name-implicit-line";
+    private static boolean isC1132GridNamedLinePixelSamples(
+            List<SurfaceViewPixelCapture.Sample> samples
+    ) {
+        if (samples.size() != 2) return false;
+        boolean background = false;
+        boolean blue = false;
+        for (SurfaceViewPixelCapture.Sample sample : samples) {
+            switch (sample.id) {
+                case "grid-background":
+                    background = sample.xCssPx == 20 && sample.yCssPx == 80;
+                    if (!background) return false;
+                    break;
+                case "item-blue":
+                    blue = sample.xCssPx == 100 && sample.yCssPx == 10;
+                    if (!blue) return false;
+                    break;
+                default:
+                    return false;
+            }
+        }
+        return background && blue;
+    }
     private static boolean isC1121PixelScene(String sceneId) {
         for (String candidate : C1121_GRID_PIXEL_SCENE_IDS) {
             if (candidate.equals(sceneId)) return true;
@@ -162,6 +187,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native long nativeCreateC1122GridAutoPlacementHost();
     private static native long nativeCreateC1123GridAutoPlacementHost();
     private static native long nativeCreateC1131GridRepeatHost();
+    private static native long nativeCreateC1132GridNamedLinesHost();
     private static native byte[] nativeC124WorkerStackResidencySample(long host);
     private static native long nativeCreateC1035PositionedFlexHost();
     private static native long nativeBeginPresentationUpdate(long host);
@@ -197,6 +223,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native byte[] nativeEvalC1123GridAutoPlacementFixture(
             long host, String sceneId, String runId);
     private static native byte[] nativeEvalC1131GridRepeatFixture(
+            long host, String sceneId, String runId);
+    private static native byte[] nativeEvalC1132GridNamedLinesFixture(
             long host, String sceneId, String runId);
     private static native byte[] nativeEvalC124Source(long host, String source);
     private static native byte[] nativeEvalC1035PositionedFlexFixture(long host);
@@ -302,6 +330,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean c1122GridAutoPlacementRequested;
     private final boolean c1123GridAutoPlacementRequested;
     private final boolean c1131GridRepeatRequested;
+    private final boolean c1132GridNamedLinesRequested;
     private final String c1121GridSceneId;
     private final String c1121GridRunId;
     private final String c1122GridSceneId;
@@ -309,6 +338,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final String c1123GridSceneId;
     private final String c1123GridRunId;
     private final String c1131GridRepeatRunId;
+    private final String c1132GridNamedLinesRunId;
     private final int c11GridSceneIndex;
     private final String c11GridPixelMatrixRunId;
     private final String c11GridPixelMatrixSceneId;
@@ -479,8 +509,20 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || c1121GridPlacementRequested)) {
             throw new IllegalArgumentException("C11.3.1 Grid scene 또는 profile 선택이 올바르지 않습니다");
         }
+        c1132GridNamedLinesRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c1132_grid_named_lines", false);
+        String c1132RunId = activity.getIntent()
+                .getStringExtra("spinon_c1132_grid_named_lines_run_id");
+        c1132GridNamedLinesRunId = c1132RunId == null ? "manual" : c1132RunId;
+        if (c1132GridNamedLinesRequested
+                && (!c1132GridNamedLinesRunId.matches("[A-Za-z0-9_-]{1,80}")
+                        || c1131GridRepeatRequested || c1123GridAutoPlacementRequested
+                        || c1122GridAutoPlacementRequested || c1121GridPlacementRequested)) {
+            throw new IllegalArgumentException("C11.3.2 Grid fixture 또는 profile 선택이 올바르지 않습니다");
+        }
         c11GridFixtureRequested = c1121GridPlacementRequested || c1122GridAutoPlacementRequested
                 || c1123GridAutoPlacementRequested || c1131GridRepeatRequested
+                || c1132GridNamedLinesRequested
                 || activity.getIntent()
                 .getBooleanExtra("spinon_c11_grid_fixture", false)
                 || activity.getIntent().getStringExtra("spinon_c11_grid_case") != null;
@@ -493,6 +535,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         boolean pixelMatrixSceneMatches = c1131GridRepeatRequested
                 ? pixelMatrixSceneId != null
                         && C1131_GRID_REPEAT_SCENE_ID.equals(pixelMatrixSceneId)
+                : c1132GridNamedLinesRequested
+                ? C1132_GRID_NAMED_LINE_SCENE_ID.equals(pixelMatrixSceneId)
                 : c1123GridAutoPlacementRequested
                 ? pixelMatrixSceneId != null && pixelMatrixSceneId.equals(c1123GridSceneId)
                         && isC1123GridPixelScene(pixelMatrixSceneId)
@@ -526,6 +570,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                             && !isC1131GridRepeatPixelSamples(pixelMatrixSamples)) {
                         pixelMatrixSamples = List.of();
                         pixelMatrixConfigError = "invalid-c1131-sample-fixture";
+                    } else if (c1132GridNamedLinesRequested
+                            && !isC1132GridNamedLinePixelSamples(pixelMatrixSamples)) {
+                        pixelMatrixSamples = List.of();
+                        pixelMatrixConfigError = "invalid-c1132-sample-fixture";
                     }
                 } catch (Exception error) {
                     pixelMatrixConfigError = "invalid-sample-payload";
@@ -538,6 +586,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         c11GridPixelMatrixConfigError = pixelMatrixConfigError;
         if (!c11GridPixelMatrixConfigError.isEmpty()) {
             String marker = c1131GridRepeatRequested ? "SPINON_C1131_GRID_PIXEL_MATRIX"
+                    : c1132GridNamedLinesRequested ? "SPINON_C1132_GRID_PIXEL_MATRIX"
                     : c1123GridAutoPlacementRequested ? "SPINON_C1123_GRID_PIXEL_MATRIX"
                     : c1122GridAutoPlacementRequested
                             ? "SPINON_C1122_GRID_PIXEL_MATRIX"
@@ -558,7 +607,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || flexDistributionProbeRequested || flexReverseProbeRequested
                 || flexOrderProbeRequested || flexAlignmentProbeRequested
                 || flexBaselineProbeRequested || c1035PositionedFlexProbeRequested;
-        if (!c1131GridRepeatRequested
+        if (!c1131GridRepeatRequested && !c1132GridNamedLinesRequested
                 && (c11GridSceneIndex < 0 || c11GridSceneIndex >= 10)) {
             throw new IllegalArgumentException("C11.1 scene index가 허용 범위 밖입니다");
         }
@@ -590,7 +639,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         setBackgroundColor(Color.rgb(14, 19, 31));
 
         TextView title = new TextView(activity);
-        title.setText(c1131GridRepeatRequested
+        title.setText(c1132GridNamedLinesRequested
+                ? "SPINON · C11.3.2 named Grid lines"
+                : c1131GridRepeatRequested
                 ? "SPINON · C11.3.1 Grid repeat()"
                 : c1123GridAutoPlacementRequested
                 ? "SPINON · C11.2.3 Grid"
@@ -661,7 +712,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         addView(title, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 
         TextView description = new TextView(activity);
-        description.setText(c1131GridRepeatRequested
+        description.setText(c1132GridNamedLinesRequested
+                ? "V8 named Grid line occurrence → Stylo → Taffy → WGPU · 320×240 CSS px"
+                : c1131GridRepeatRequested
                 ? "V8 정수 Grid repeat() → Stylo → Taffy → WGPU · 320×240 CSS px"
                 : c1123GridAutoPlacementRequested
                 ? "C11.2.3 dense·column Grid 자동 배치 → Stylo → Taffy → WGPU · 360×800 CSS px"
@@ -919,7 +972,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private void initializeRuntime() {
         if (!c11GridPixelMatrixConfigError.isEmpty()) {
-            Log.e(TAG, (c1131GridRepeatRequested ? "SPINON_C1131_GRID_PIXEL_MATRIX"
+            Log.e(TAG, (c1132GridNamedLinesRequested ? "SPINON_C1132_GRID_PIXEL_MATRIX"
+                    : c1131GridRepeatRequested ? "SPINON_C1131_GRID_PIXEL_MATRIX"
                     : c1123GridAutoPlacementRequested ? "SPINON_C1123_GRID_PIXEL_MATRIX"
                     : c1122GridAutoPlacementRequested
                             ? "SPINON_C1122_GRID_PIXEL_MATRIX"
@@ -928,7 +982,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             postStatus("실패 · C11 Grid 표면 표본 인수가 올바르지 않습니다");
             return;
         }
-        long host = c1131GridRepeatRequested
+        long host = c1132GridNamedLinesRequested
+                ? nativeCreateC1132GridNamedLinesHost()
+                : c1131GridRepeatRequested
                 ? nativeCreateC1131GridRepeatHost()
                 : c1123GridAutoPlacementRequested
                 ? nativeCreateC1123GridAutoPlacementHost()
@@ -963,17 +1019,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         final float heightCssPx;
         final boolean dark;
         synchronized (stateLock) {
-            widthCssPx = c1131GridRepeatRequested ? 320
+            widthCssPx = c1132GridNamedLinesRequested || c1131GridRepeatRequested ? 320
                     : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
                     || c1122GridAutoPlacementRequested || c1123GridAutoPlacementRequested
                     ? 360 : fixedSizeCssFixtureRequested ? 320 : cssViewportWidthLocked();
-            heightCssPx = c1131GridRepeatRequested ? 240
+            heightCssPx = c1132GridNamedLinesRequested || c1131GridRepeatRequested ? 240
                     : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
                     || c1122GridAutoPlacementRequested || c1123GridAutoPlacementRequested
                     ? 800 : fixedSizeCssFixtureRequested ? 240 : cssViewportHeightLocked();
             dark = darkMode;
         }
         float environmentScale = c123FixedPositionProbeRequested || c1131GridRepeatRequested
+                || c1132GridNamedLinesRequested
                 ? 1.0f : density;
         String environment = decode(nativeSetEnvironment(
                 host, widthCssPx, heightCssPx, environmentScale, dark));
@@ -983,7 +1040,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         Log.i(TAG, "SPINON_C0410_ENVIRONMENT viewport=" + widthCssPx + "x" + heightCssPx
                 + " scale=" + environmentScale + " dark=" + dark + " " + environment);
-        String result = c1131GridRepeatRequested
+        String result = c1132GridNamedLinesRequested
+                ? decode(nativeEvalC1132GridNamedLinesFixture(
+                        host, C1132_GRID_NAMED_LINE_SCENE_ID, c1132GridNamedLinesRunId))
+                : c1131GridRepeatRequested
                 ? decode(nativeEvalC1131GridRepeatFixture(
                         host, C1131_GRID_REPEAT_SCENE_ID, c1131GridRepeatRunId))
                 : c1123GridAutoPlacementRequested
@@ -1054,6 +1114,41 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : authorStylesheetsProbeRequested
                         ? decode(nativeEvalAuthorStylesheetsFixture(host))
                         : decode(nativeEvalFixture(host));
+        if (c1132GridNamedLinesRequested && result.startsWith("status=0 ")) {
+            long rejectionHost = nativeCreateC1132GridNamedLinesHost();
+            String rejection;
+            if (rejectionHost == 0) {
+                rejection = "status=-2 isolated rejection host creation failed";
+            } else {
+                try {
+                    String rejectionEnvironment = decode(nativeSetEnvironment(
+                            rejectionHost, 320.0f, 240.0f, 1.0f, dark));
+                    rejection = rejectionEnvironment.startsWith("status=0 ")
+                            ? decode(nativeEvalC1132GridNamedLinesFixture(
+                                    rejectionHost, C1132_GRID_NAMED_LINE_REJECT_SCENE_ID,
+                                    c1132GridNamedLinesRunId))
+                            : rejectionEnvironment;
+                } finally {
+                    nativeFreeHost(rejectionHost);
+                }
+            }
+            boolean expectedRejection = rejection.startsWith("status=-11 ")
+                    && rejection.contains("unsupported_named_grid_line")
+                    && rejection.contains("property=Some(\"grid-column-start\")")
+                    && !rejection.contains("node_frames_css_px=[");
+            Log.i(TAG, "SPINON_C1132_GRID_REJECTION run_id=" + c1132GridNamedLinesRunId
+                    + " scene_id=" + C1132_GRID_NAMED_LINE_REJECT_SCENE_ID
+                    + " expected=" + expectedRejection + " " + rejection);
+            if (!expectedRejection) {
+                postStatus("실패 · C11.3.2 implicit named line 거부 계약 불일치");
+                return;
+            }
+        }
+        if (c1132GridNamedLinesRequested) {
+            Log.i(TAG, "SPINON_C1132_GRID_EVAL_RUN run_id=" + c1132GridNamedLinesRunId
+                    + " scene_id=" + C1132_GRID_NAMED_LINE_SCENE_ID + " "
+                    + runtimeStatusSummary(result));
+        }
         if (c1122GridAutoPlacementRequested || c1123GridAutoPlacementRequested) {
             String marker = c1123GridAutoPlacementRequested ? "C1123" : "C1122";
             String runId = c1123GridAutoPlacementRequested ? c1123GridRunId : c1122GridRunId;
@@ -1112,7 +1207,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 return;
             }
         }
-        Log.i(TAG, (c1131GridRepeatRequested
+        Log.i(TAG, (c1132GridNamedLinesRequested
+                ? "SPINON_C1132_GRID_EVAL run_id=" + c1132GridNamedLinesRunId
+                        + " scene_id=" + C1132_GRID_NAMED_LINE_SCENE_ID + " "
+                : c1131GridRepeatRequested
                 ? "SPINON_C1131_GRID_EVAL run_id=" + c1131GridRepeatRunId
                         + " scene_id=" + C1131_GRID_REPEAT_SCENE_ID + " "
                 : (c1122GridAutoPlacementRequested || c1123GridAutoPlacementRequested)
@@ -1153,7 +1251,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? runtimeResultCacheProbeRequested ? "SPINON_C053_INIT " : "SPINON_C052_EVAL "
                 : authorStylesheetsProbeRequested
                         ? "SPINON_C0411_EVAL " : "SPINON_C0410_EVAL ") + result);
-        if (c1131GridRepeatRequested) {
+        if (c1132GridNamedLinesRequested) {
+            Log.i(TAG, "SPINON_C1132_GRID_SUMMARY run_id=" + c1132GridNamedLinesRunId
+                    + " scene_id=" + C1132_GRID_NAMED_LINE_SCENE_ID + " "
+                    + runtimeStatusSummary(result));
+            logNodeFrames("C1132", C1132_GRID_NAMED_LINE_SCENE_ID, result);
+        } else if (c1131GridRepeatRequested) {
             Log.i(TAG, "SPINON_C1131_GRID_SUMMARY run_id=" + c1131GridRepeatRunId
                     + " scene_id=" + C1131_GRID_REPEAT_SCENE_ID + " "
                     + runtimeStatusSummary(result));
@@ -1650,7 +1753,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         String runId = c11GridPixelMatrixRunId;
         String sceneId = c11GridPixelMatrixSceneId;
         List<SurfaceViewPixelCapture.Sample> samples = c11GridPixelMatrixSamples;
-        String marker = c1131GridRepeatRequested ? "SPINON_C1131_GRID_PIXEL_MATRIX"
+        String marker = c1132GridNamedLinesRequested ? "SPINON_C1132_GRID_PIXEL_MATRIX"
+                : c1131GridRepeatRequested ? "SPINON_C1131_GRID_PIXEL_MATRIX"
                 : c1123GridAutoPlacementRequested ? "SPINON_C1123_GRID_PIXEL_MATRIX"
                 : c1122GridAutoPlacementRequested
                 ? "SPINON_C1122_GRID_PIXEL_MATRIX" : "SPINON_C111_GRID_PIXEL_MATRIX";
@@ -1660,7 +1764,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     + " reason=invalid-sample-fixture");
             return;
         }
-        String cacheDirectory = c1131GridRepeatRequested
+        String cacheDirectory = c1132GridNamedLinesRequested
+                ? "c1132-grid-surface-pixel-matrix"
+                : c1131GridRepeatRequested
                 ? "c1131-grid-surface-pixel-matrix"
                 : c1123GridAutoPlacementRequested ? "c1123-grid-surface-pixel-matrix"
                 : c1122GridAutoPlacementRequested
@@ -1723,9 +1829,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                             continue;
                         }
                         observed++;
-                        int[] expected = c1131GridRepeatRequested
+                        boolean verifyExactColor = c1131GridRepeatRequested
+                                || c1132GridNamedLinesRequested;
+                        int[] expected = verifyExactColor
                                 ? c11GridExpectedRgb(pixel.id) : null;
-                        boolean exact = !c1131GridRepeatRequested
+                        boolean exact = !verifyExactColor
                                 || (pixel.red == expected[0] && pixel.green == expected[1]
                                         && pixel.blue == expected[2] && pixel.alpha == 255);
                         if (exact) matchedSamples++;
@@ -1736,7 +1844,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                                 + " x=" + pixel.x + " y=" + pixel.y
                                 + " rgba=" + pixel.red + "," + pixel.green + ","
                                 + pixel.blue + "," + pixel.alpha
-                                + (c1131GridRepeatRequested
+                                + (verifyExactColor
                                         ? " expected=" + expected[0] + "," + expected[1]
                                                 + "," + expected[2] + ",255 exact=" + exact
                                         : ""));
@@ -1744,18 +1852,21 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     boolean complete = observed == samples.size()
                             && result.pixels.size() == samples.size();
                     boolean matched = complete
-                            && (!c1131GridRepeatRequested || matchedSamples == samples.size());
+                            && (!(c1131GridRepeatRequested || c1132GridNamedLinesRequested)
+                                    || matchedSamples == samples.size());
                     String status = !complete ? "error"
-                            : c1131GridRepeatRequested
+                            : c1131GridRepeatRequested || c1132GridNamedLinesRequested
                             ? (matched ? "matched" : "mismatch") : "captured";
                     Log.i(TAG, marker + "_SUMMARY status="
                             + status + " run_id=" + runId
                             + " scene=" + sceneId + " generation=" + generation
                             + " expected_samples=" + samples.size()
                             + " observed_samples=" + result.pixels.size()
-                            + (c1131GridRepeatRequested
+                            + (c1131GridRepeatRequested || c1132GridNamedLinesRequested
                                     ? " matched_samples=" + matchedSamples : ""));
-                    if (!matched) postStatus(c1131GridRepeatRequested
+                    if (!matched) postStatus(c1132GridNamedLinesRequested
+                            ? "실패 · C11.3.2 Grid PixelCopy 표본 불일치"
+                            : c1131GridRepeatRequested
                             ? "실패 · C11.3.1 Grid PixelCopy 표본 불일치"
                             : "실패 · C11 Grid PixelCopy 표본 누락");
                 });

@@ -344,6 +344,11 @@ fn layout_failure_from_error(error: StyleLayoutError) -> RuntimeLayoutFailure {
             Some(node.get()),
             Some(property.to_owned()),
         ),
+        StyleLayoutError::UnsupportedNamedGridLine { node, property, .. } => layout_failure(
+            "unsupported_named_grid_line",
+            Some(node.get()),
+            Some(property.to_owned()),
+        ),
         StyleLayoutError::UnsupportedInlineProperty { node, property } => layout_failure(
             "unsupported_inline_property",
             Some(node.get()),
@@ -559,6 +564,16 @@ mod tests {
                 },
                 "unsupported_computed_value",
                 "grid-auto-rows",
+            ),
+            (
+                StyleLayoutError::UnsupportedNamedGridLine {
+                    node,
+                    property: "grid-column-start",
+                    name: "missing".to_owned(),
+                    reason: "explicit grid line is absent",
+                },
+                "unsupported_named_grid_line",
+                "grid-column-start",
             ),
         ];
 

@@ -217,7 +217,9 @@ pub struct ComputedCssGridLayout {
 pub enum ComputedCssGridPlacement {
     Auto,
     Line(i32),
+    NamedLine { name: String, occurrence: i32 },
     Span(i32),
+    SpanNamed { name: String, count: u32 },
     Unsupported(String),
 }
 
