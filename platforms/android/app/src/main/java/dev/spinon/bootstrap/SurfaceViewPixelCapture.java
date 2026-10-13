@@ -100,8 +100,57 @@ final class SurfaceViewPixelCapture {
             BooleanSupplier sourceIsCurrent,
             Consumer<Result> completion
     ) {
-        if (width <= 0 || height <= 0 || !Float.isFinite(density) || density <= 0.0f) {
-            completion.accept(Result.failure("잘못된 surface 크기 또는 density", 0));
+        requestInternal(surfaceView, width, height, density, 0, 0,
+                originXCssPx, originYCssPx, caseId, runId, outputFile, samples,
+                callbackHandler, worker, sourceIsCurrent, completion);
+    }
+
+    static void requestForCssViewport(
+            SurfaceView surfaceView,
+            int width,
+            int height,
+            int viewportWidthCssPx,
+            int viewportHeightCssPx,
+            int originXCssPx,
+            int originYCssPx,
+            String caseId,
+            String runId,
+            File outputFile,
+            List<Sample> samples,
+            Handler callbackHandler,
+            Executor worker,
+            BooleanSupplier sourceIsCurrent,
+            Consumer<Result> completion
+    ) {
+        requestInternal(surfaceView, width, height, 0.0f,
+                viewportWidthCssPx, viewportHeightCssPx,
+                originXCssPx, originYCssPx, caseId, runId, outputFile, samples,
+                callbackHandler, worker, sourceIsCurrent, completion);
+    }
+
+    private static void requestInternal(
+            SurfaceView surfaceView,
+            int width,
+            int height,
+            float density,
+            int viewportWidthCssPx,
+            int viewportHeightCssPx,
+            int originXCssPx,
+            int originYCssPx,
+            String caseId,
+            String runId,
+            File outputFile,
+            List<Sample> samples,
+            Handler callbackHandler,
+            Executor worker,
+            BooleanSupplier sourceIsCurrent,
+            Consumer<Result> completion
+    ) {
+        boolean usesCssViewport = viewportWidthCssPx > 0 && viewportHeightCssPx > 0;
+        boolean usesDensity = viewportWidthCssPx == 0 && viewportHeightCssPx == 0
+                && Float.isFinite(density) && density > 0.0f;
+        if (width <= 0 || height <= 0 || (!usesCssViewport && !usesDensity)) {
+            completion.accept(Result.failure("잘못된 surface 크기, viewport 또는 density", 0));
             return;
         }
         if (!caseId.matches("[a-z0-9-]{1,80}")
@@ -110,7 +159,8 @@ final class SurfaceViewPixelCapture {
             completion.accept(Result.failure("case/run ID 또는 표본 목록이 올바르지 않음", 0));
             return;
         }
-        requestAttempt(surfaceView, width, height, density, originXCssPx, originYCssPx,
+        requestAttempt(surfaceView, width, height, density,
+                viewportWidthCssPx, viewportHeightCssPx, originXCssPx, originYCssPx,
                 caseId, runId, outputFile, samples, callbackHandler, worker,
                 sourceIsCurrent, completion, 1);
     }
@@ -120,6 +170,8 @@ final class SurfaceViewPixelCapture {
             int width,
             int height,
             float density,
+            int viewportWidthCssPx,
+            int viewportHeightCssPx,
             int originXCssPx,
             int originYCssPx,
             String caseId,
@@ -144,7 +196,8 @@ final class SurfaceViewPixelCapture {
                     if (isRetryable(copyResult) && attempt < MAX_ATTEMPTS
                             && sourceIsCurrent.getAsBoolean()) {
                         surfaceView.postDelayed(() -> requestAttempt(surfaceView, width, height,
-                                density, originXCssPx, originYCssPx, caseId, runId,
+                                density, viewportWidthCssPx, viewportHeightCssPx,
+                                originXCssPx, originYCssPx, caseId, runId,
                                 outputFile, samples, callbackHandler, worker,
                                 sourceIsCurrent, completion, attempt + 1), 50);
                     } else {
@@ -160,7 +213,8 @@ final class SurfaceViewPixelCapture {
                 }
                 try {
                     worker.execute(() -> completion.accept(saveAndReadSamples(bitmap,
-                            width, height, density, originXCssPx, originYCssPx,
+                            width, height, density, viewportWidthCssPx, viewportHeightCssPx,
+                            originXCssPx, originYCssPx,
                             outputFile, samples, attempt)));
                 } catch (RuntimeException error) {
                     bitmap.recycle();
@@ -181,6 +235,8 @@ final class SurfaceViewPixelCapture {
             int expectedWidth,
             int expectedHeight,
             float density,
+            int viewportWidthCssPx,
+            int viewportHeightCssPx,
             int originXCssPx,
             int originYCssPx,
             File outputFile,
@@ -214,9 +270,13 @@ final class SurfaceViewPixelCapture {
                 return Result.failure("저장 PixelCopy PNG 재해석 또는 크기 검증 실패", attempts);
             }
             List<Pixel> pixels = new ArrayList<>(samples.size());
+            double scaleX = viewportWidthCssPx > 0
+                    ? expectedWidth / (double) viewportWidthCssPx : density;
+            double scaleY = viewportHeightCssPx > 0
+                    ? expectedHeight / (double) viewportHeightCssPx : density;
             for (Sample sample : samples) {
-                int x = (int) Math.floor((originXCssPx + sample.xCssPx + 0.5) * density);
-                int y = (int) Math.floor((originYCssPx + sample.yCssPx + 0.5) * density);
+                int x = (int) Math.floor((originXCssPx + sample.xCssPx + 0.5) * scaleX);
+                int y = (int) Math.floor((originYCssPx + sample.yCssPx + 0.5) * scaleY);
                 if (x < 0 || y < 0 || x >= decoded.getWidth() || y >= decoded.getHeight()) {
                     return Result.failure("고정 표본이 PixelCopy bitmap 범위를 벗어남: "
                             + sample.id, attempts);

@@ -34,6 +34,7 @@ pub fn build_runtime_render_snapshot(
             | ComputedStyleProfile::RuntimeBlockPositioningV1
             | ComputedStyleProfile::RuntimeBlockFlexGridV1
             | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
     ) {
         return Err(StyleRenderError::UnsupportedRuntimeProfile);
     }

@@ -148,12 +148,19 @@ SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c11_1_grid_fixture(
 /* C11.2.1 numeric explicit Grid placement fixture 전용 검증 host입니다. */
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c11_2_1_grid_placement_fixture(
     char *output, size_t output_capacity);
+/* C11.2.2 행 우선 sparse auto-placement와 양의 암시 행 전용 검증 host입니다. */
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c11_2_2_grid_auto_placement_fixture(
+    char *output, size_t output_capacity);
 #if defined(SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST) && \
     SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST
 /* C11.1 고정 Grid surface pixel 내부 검증 전용 host입니다. */
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c11_1_grid_surface_pixel_readback_fixture(
     char *output, size_t output_capacity);
 int32_t spinon_runtime_gpu_host_request_c11_1_grid_surface_pixels_for_test(
+    SpinonRuntimeGpuHost *host, const uint32_t *sample_xy, size_t sample_count,
+    char *output, size_t output_capacity);
+/* C11.2.2 행 우선 Grid fixture의 WGPU surface pixel 내부 검증 전용입니다. */
+int32_t spinon_runtime_gpu_host_request_c11_2_2_grid_surface_pixels_for_test(
     SpinonRuntimeGpuHost *host, const uint32_t *sample_xy, size_t sample_count,
     char *output, size_t output_capacity);
 #endif
@@ -277,6 +284,11 @@ int32_t spinon_runtime_gpu_host_eval_c11_1_grid_scene_fixture(
 /* 고정 C11.2.1 scene ID 하나를 실제 V8·Stylo·Taffy 경로에서 평가합니다.
    허용되는 ID는 내장 matrix의 10개뿐이며 임의 JavaScript는 받지 않습니다. */
 int32_t spinon_runtime_gpu_host_eval_c11_2_1_grid_placement_fixture(
+    SpinonRuntimeGpuHost *host, const char *scene_id,
+    uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
+/* 고정 C11.2.2 scene ID만 허용하며 arbitrary JavaScript는 받지 않습니다. */
+int32_t spinon_runtime_gpu_host_eval_c11_2_2_grid_auto_placement_fixture(
     SpinonRuntimeGpuHost *host, const char *scene_id,
     uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);

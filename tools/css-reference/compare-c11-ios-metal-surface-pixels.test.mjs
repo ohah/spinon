@@ -84,6 +84,38 @@ test('C11.2.1 runtime scene alias is distinct from its inventory fixture id', ()
   assert.equal(result.status, 'matched');
 });
 
+test('accepts the separately namespaced C11.2.2 Metal surface pixel markers', () => {
+  const c1122RunID = 'c1122-ios-metal-grid-20261013';
+  const sceneID = 'definite-first-mixed';
+  const c1122Fixture = { ...fixture, sceneId: sceneID };
+  const log = validLog().replaceAll(runID, c1122RunID)
+    .replaceAll('SPINON_C111_METAL_PIXEL', 'SPINON_C1122_METAL_PIXEL')
+    .replaceAll(`scene=${fixture.fixtureId}`, `scene=${sceneID}`);
+  const result = compareC11IOSMetalPixelLogs(log, {
+    fixture: c1122Fixture,
+    runID: c1122RunID,
+    markerPrefix: 'C1122',
+  });
+  assert.equal(result.status, 'matched');
+  assert.equal(result.schema, 'spinon-c11-2-2-ios-metal-surface-pixels/v1');
+});
+
+test('accepts the separately namespaced C11.2.3 Metal surface pixel markers', () => {
+  const c1123RunID = 'c1123-ios-metal-grid-20261013';
+  const sceneID = 'row-dense-hole-fill';
+  const c1123Fixture = { ...fixture, sceneId: sceneID };
+  const log = validLog().replaceAll(runID, c1123RunID)
+    .replaceAll('SPINON_C111_METAL_PIXEL', 'SPINON_C1123_METAL_PIXEL')
+    .replaceAll(`scene=${fixture.fixtureId}`, `scene=${sceneID}`);
+  const result = compareC11IOSMetalPixelLogs(log, {
+    fixture: c1123Fixture,
+    runID: c1123RunID,
+    markerPrefix: 'C1123',
+  });
+  assert.equal(result.status, 'matched');
+  assert.equal(result.schema, 'spinon-c11-2-3-ios-metal-surface-pixels/v1');
+});
+
 test('accepts the valid initial environment revision zero', () => {
   const log = validLog().replaceAll('environment_revision=1', 'environment_revision=0');
   assert.equal(compareC11IOSMetalPixelLogs(log, { fixture, runID }).status, 'matched');
@@ -115,6 +147,10 @@ test('rejects a different application process', () => mustReject(validLog().repl
 test('rejects sample from another surface generation', () => mustReject(validLog().replace('surface_generation=4 sample=item-blue', 'surface_generation=5 sample=item-blue')));
 test('rejects mismatched begin and summary revisions', () => mustReject(validLog().replace('document_revision=1 render_tree_revision=1', 'document_revision=2 render_tree_revision=1')));
 test('rejects nonpositive revision', () => mustReject(validLog().replace('render_tree_revision=1', 'render_tree_revision=0')));
+test('rejects fractional or unsafe process and revision counters', () => {
+  mustReject(validLog().replace('pid=50123', 'pid=50123.5'));
+  mustReject(validLog().replace('document_revision=1', 'document_revision=9007199254740992'));
+});
 test('rejects unexpected scene', () => mustReject(validLog().replace('scene=fixed-tracks-gap', 'scene=percentage-tracks')));
 test('rejects Chrome-sized runtime viewport in place of the app draw viewport', () => mustReject(validLog().replace('viewport=320x240', 'viewport=360x800')));
 test('rejects drawable aspect ratio mismatch', () => mustReject(validLog().replaceAll('960x720', '960x600')));

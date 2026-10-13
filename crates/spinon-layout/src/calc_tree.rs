@@ -17,7 +17,7 @@ use crate::{
     LayoutCalcId, LayoutCssMathValue, LayoutError, LayoutInput, LayoutPosition,
     PositionedContainingBlockOwner, RootSizingPolicy,
     compact_taffy_style::CompactTaffyStyle,
-    grid_placement::normalize_grid_item_placements,
+    grid_placement::normalize_grid_layout,
     positioning::collect_positioned_owners,
     taffy_style::{to_taffy_style, viewport_block_containing_style},
 };
@@ -110,7 +110,7 @@ impl CalcLayoutTree {
             .iter()
             .map(|node| (node.id, node.children.clone()))
             .collect::<BTreeMap<_, _>>();
-        let normalized_grid_items = normalize_grid_item_placements(input, index)?;
+        let normalized_grid = normalize_grid_layout(input, index)?;
         let mut viewport_children = Vec::new();
         if !flow_only {
             reparent_out_of_flow_children(
@@ -147,8 +147,18 @@ impl CalcLayoutTree {
                 positioning,
                 flow_only,
                 &calc_handles,
-                input.grid_containers.get(&external_id),
-                normalized_grid_items.get(&external_id).copied(),
+                crate::taffy_style::GridTaffyStyleInput {
+                    container: input.grid_containers.get(&external_id),
+                    expanded_rows: normalized_grid
+                        .expanded_rows
+                        .get(&external_id)
+                        .map(Vec::as_slice),
+                    expanded_columns: normalized_grid
+                        .expanded_columns
+                        .get(&external_id)
+                        .map(Vec::as_slice),
+                    item: normalized_grid.item_placements.get(&external_id).copied(),
+                },
             )?;
             let order = u32::try_from(position).map_err(|_| LayoutError::TooManyNodes)?;
             nodes.push(Node::new(children, style, order));

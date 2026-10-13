@@ -301,6 +301,23 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC1121GridPlacementHost
   return static_cast<jlong>(reinterpret_cast<uintptr_t>(host));
 }
 
+extern "C" JNIEXPORT jlong JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC1122GridAutoPlacementHost(
+    JNIEnv *, jclass) {
+  std::array<char, 1024> output{};
+  SpinonRuntimeGpuHost *host =
+      spinon_runtime_gpu_host_new_c11_2_2_grid_auto_placement_fixture(
+          output.data(), output.size());
+  if (host == nullptr) {
+    __android_log_print(ANDROID_LOG_ERROR, kTag,
+                        "SPINON_C1122_GRID_HOST_ERROR=%s", output.data());
+    return 0;
+  }
+  __android_log_print(ANDROID_LOG_INFO, kTag,
+                      "SPINON_C1122_GRID_HOST=%s", output.data());
+  return static_cast<jlong>(reinterpret_cast<uintptr_t>(host));
+}
+
 #if defined(SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST) && \
     SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST
 extern "C" JNIEXPORT jbyteArray JNICALL
@@ -745,6 +762,37 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC1121GridPlacementFixtur
 }
 
 extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC1122GridAutoPlacementFixture(
+    JNIEnv *env, jclass, jlong host_handle, jstring scene_id_value,
+    jstring run_id_value) {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+  const char *scene_id = scene_id_value == nullptr
+      ? nullptr : env->GetStringUTFChars(scene_id_value, nullptr);
+  const char *run_id = run_id_value == nullptr
+      ? nullptr : env->GetStringUTFChars(run_id_value, nullptr);
+  if (scene_id_value != nullptr && scene_id == nullptr) return nullptr;
+  if (run_id_value != nullptr && run_id == nullptr) {
+    if (scene_id != nullptr) env->ReleaseStringUTFChars(scene_id_value, scene_id);
+    return nullptr;
+  }
+  std::array<char, 32768> output{};
+  const int32_t status =
+      spinon_runtime_gpu_host_eval_c11_2_2_grid_auto_placement_fixture(
+          host, scene_id, 10000, output.data(), output.size());
+  const std::string report = "status=" + std::to_string(status) + " " + output.data();
+  const std::string log_report = "run_id=" + std::string(run_id == nullptr ? "missing" : run_id)
+      + " scene_id=" + std::string(scene_id == nullptr ? "missing" : scene_id)
+      + " " + report;
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
+                      kTag, "SPINON_C1122_GRID_EVAL %s", log_report.c_str());
+  if (status == 0) LogC10NodeFrames(report, "SPINON_C1122_GRID_NODE_FRAME");
+  if (scene_id != nullptr) env->ReleaseStringUTFChars(scene_id_value, scene_id);
+  if (run_id != nullptr) env->ReleaseStringUTFChars(run_id_value, run_id);
+  return ToByteArray(env, report);
+}
+
+extern "C" JNIEXPORT jbyteArray JNICALL
 Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC124Source(
     JNIEnv *env, jclass, jlong host_handle, jstring source_value) {
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
@@ -970,7 +1018,8 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeDrawSurface(
   auto *context = reinterpret_cast<C0410RuntimeGpuContext *>(
       static_cast<uintptr_t>(context_handle));
   if (context == nullptr) return ToByteArray(env, "status=-1 null renderer");
-  std::array<char, 1024> output{};
+  // 표면 픽셀 표본 JSON을 포함하는 draw 보고서가 1 KiB를 넘을 수 있습니다.
+  std::array<char, 16384> output{};
   const int32_t status = spinon_runtime_gpu_host_draw(
       context->host, output.data(), output.size());
   const std::string report =

@@ -182,12 +182,21 @@ pub enum ComputedCssGridAutoFlow {
     ColumnDense,
 }
 
+/// Stylo computed `grid-auto-rows` 값 중 제한 profile이 해석할 수 있는 형태입니다.
+#[derive(Clone, Debug, PartialEq)]
+pub enum ComputedCssGridAutoRows {
+    Auto,
+    LengthPx(f32),
+    Unsupported(String),
+}
+
 /// 단일 cascade revision에서 추출한 explicit Grid container 입력입니다.
 #[derive(Clone, Debug, PartialEq)]
 pub struct ComputedCssGridLayout {
     pub columns: Vec<ComputedCssGridTrackSize>,
     pub rows: Vec<ComputedCssGridTrackSize>,
     pub auto_flow: ComputedCssGridAutoFlow,
+    pub auto_rows: ComputedCssGridAutoRows,
 }
 
 /// Stylo가 계산한 하나의 CSS Grid item 배치 끝점입니다.
@@ -432,4 +441,6 @@ pub enum ComputedStyleProfile {
     RuntimeBlockFlexGridV1,
     /// C11.2.1의 혼합 Block/Flex/Grid explicit-line runtime profile입니다.
     RuntimeBlockFlexGridPlacementV1,
+    /// C11.2.2의 mixed placement와 sparse row implicit track runtime profile입니다.
+    RuntimeBlockFlexGridAutoPlacementV1,
 }

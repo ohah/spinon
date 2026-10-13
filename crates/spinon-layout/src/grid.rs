@@ -2,7 +2,7 @@ use std::collections::BTreeMap;
 
 use spinon_core::NodeId;
 
-use crate::grid_placement::normalize_grid_item_placements;
+use crate::grid_placement::normalize_grid_layout;
 use crate::{
     LayoutDisplay, LayoutError, LayoutInput, LayoutPosition, percentage_basis::DefiniteAxes,
 };
@@ -29,12 +29,39 @@ pub enum GridAutoFlow {
     ColumnDense,
 }
 
+/// Grid container가 사용하는 item placement 계약입니다.
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+pub enum GridPlacementMode {
+    /// C11.1의 all-auto 또는 기존 explicit-only 분류를 사용합니다.
+    #[default]
+    Existing,
+    /// C11.2.1의 모든 visible item이 definite placement여야 합니다.
+    ExplicitOnly,
+    /// C11.2.2의 row sparse auto-placement와 양의 implicit row를 계산합니다.
+    SparseRow,
+}
+
+/// 제한 profile에서 허용하는 implicit track sizing 입력입니다.
+#[derive(Clone, Copy, Debug, Default, PartialEq)]
+pub enum GridAutoTrackSize {
+    /// `auto`; 해당 축에서 implicit track이 필요하지 않을 때만 사용할 수 있습니다.
+    #[default]
+    Auto,
+    /// 모든 positive implicit track에 반복할 하나의 고정 CSS px track입니다.
+    LengthPx(f32),
+}
+
+/// 제한 profile에서 허용하는 implicit row sizing 입력입니다.
+pub type GridAutoRows = GridAutoTrackSize;
+
 /// 동일 revision의 계산된 Grid container 입력입니다.
 #[derive(Clone, Debug, Default, PartialEq)]
 pub struct GridContainerInput {
     pub columns: Vec<GridTrackSize>,
     pub rows: Vec<GridTrackSize>,
     pub auto_flow: GridAutoFlow,
+    pub auto_rows: GridAutoRows,
+    pub placement_mode: GridPlacementMode,
 }
 
 pub(super) fn validate_grid_layout(
@@ -56,7 +83,28 @@ pub(super) fn validate_grid_layout(
         }
     }
 
-    let normalized_items = normalize_grid_item_placements(input, index)?;
+    for (&id, container) in &input.grid_containers {
+        match (container.placement_mode, container.auto_rows) {
+            (GridPlacementMode::SparseRow, GridAutoRows::Auto | GridAutoRows::LengthPx(_))
+            | (_, GridAutoRows::Auto) => {}
+            (_, GridAutoRows::LengthPx(_)) => {
+                return Err(LayoutError::UnsupportedGridAutoRows {
+                    node: id,
+                    reason: "grid-auto-rows는 자동 배치 profile에서만 사용할 수 있습니다",
+                });
+            }
+        }
+        if let GridAutoRows::LengthPx(value) = container.auto_rows
+            && (!value.is_finite() || value < 0.0)
+        {
+            return Err(LayoutError::InvalidGridTrack {
+                node: id,
+                property: "grid-auto-rows",
+            });
+        }
+    }
+
+    let normalized_grid = normalize_grid_layout(input, index)?;
 
     let mut parent_by_child = BTreeMap::new();
     for node in &input.nodes {
@@ -97,7 +145,14 @@ pub(super) fn validate_grid_layout(
         };
         validate_tracks(node.id, "grid-template-columns", &container.columns)?;
         validate_tracks(node.id, "grid-template-rows", &container.rows)?;
-        if container.auto_flow != GridAutoFlow::Row {
+        if container.placement_mode == GridPlacementMode::SparseRow
+            && container.auto_flow != GridAutoFlow::Row
+        {
+            return Err(LayoutError::UnsupportedGridAutoFlow(node.id));
+        }
+        if !matches!(container.placement_mode, GridPlacementMode::SparseRow)
+            && container.auto_flow != GridAutoFlow::Row
+        {
             return Err(LayoutError::UnsupportedGridAutoFlow(node.id));
         }
 
@@ -117,7 +172,7 @@ pub(super) fn validate_grid_layout(
         let has_explicit_placement = node
             .children
             .iter()
-            .any(|child| normalized_items.contains_key(child));
+            .any(|child| normalized_grid.item_placements.contains_key(child));
         let mut item_count = 0usize;
         for &child_id in &node.children {
             let child = &input.nodes[index[&child_id]];
@@ -134,14 +189,21 @@ pub(super) fn validate_grid_layout(
             {
                 return Err(LayoutError::UnsupportedGridPositionedItem(child_id));
             }
-            let valid_item_size = |size| {
-                matches!(
-                    (has_explicit_placement, size),
-                    (
-                        true,
+            let valid_item_size = |size| match container.placement_mode {
+                GridPlacementMode::SparseRow
+                    if normalized_grid.auto_placed_items.contains(&child_id) =>
+                {
+                    matches!(size, crate::LayoutDimension::Fixed(_))
+                }
+                GridPlacementMode::Existing | GridPlacementMode::ExplicitOnly
+                    if has_explicit_placement =>
+                {
+                    matches!(
+                        size,
                         crate::LayoutDimension::Auto | crate::LayoutDimension::Fixed(_)
-                    ) | (false, crate::LayoutDimension::Fixed(_))
-                )
+                    )
+                }
+                _ => matches!(size, crate::LayoutDimension::Fixed(_)),
             };
             if !valid_item_size(child.style.width) || !valid_item_size(child.style.height) {
                 return Err(LayoutError::UnsupportedGridItemSize(child_id));
@@ -163,7 +225,10 @@ pub(super) fn validate_grid_layout(
                 .checked_add(1)
                 .ok_or(LayoutError::GridTrackExpansionOverflow(node.id))?;
         }
-        if !has_explicit_placement && item_count > cell_count {
+        if !matches!(container.placement_mode, GridPlacementMode::SparseRow)
+            && !has_explicit_placement
+            && item_count > cell_count
+        {
             return Err(LayoutError::GridImplicitTrackRequired(node.id));
         }
     }
@@ -202,3 +267,7 @@ fn validate_tracks(
 #[cfg(test)]
 #[path = "grid_tests.rs"]
 mod tests;
+
+#[cfg(test)]
+#[path = "grid_auto_placement_tests.rs"]
+mod auto_placement_tests;

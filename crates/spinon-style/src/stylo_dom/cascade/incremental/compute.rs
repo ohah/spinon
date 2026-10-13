@@ -10,6 +10,7 @@ use super::super::{
     margin::FLEX_MARGIN_AUTHOR_PROPERTIES,
     runtime_grid::{
         runtime_block_flex_grid_author_properties,
+        runtime_block_flex_grid_auto_placement_author_properties,
         runtime_block_flex_grid_placement_author_properties,
     },
     runtime_layout::RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES,
@@ -150,6 +151,8 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
     let runtime_grid_author_properties = runtime_block_flex_grid_author_properties();
     let runtime_grid_placement_author_properties =
         runtime_block_flex_grid_placement_author_properties();
+    let runtime_grid_auto_placement_author_properties =
+        runtime_block_flex_grid_auto_placement_author_properties();
     let allowed_author_properties: Option<&[&str]> = match profile {
         ComputedStyleProfile::BasicCascadeV1 => None,
         ComputedStyleProfile::SupportedElementsUaV1 => None,
@@ -184,6 +187,9 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         }
         ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1 => {
             Some(runtime_grid_placement_author_properties.as_slice())
+        }
+        ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1 => {
+            Some(runtime_grid_auto_placement_author_properties.as_slice())
         }
         ComputedStyleProfile::RuntimeFlexPaintV1 => None,
     };

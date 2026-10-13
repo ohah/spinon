@@ -6,11 +6,13 @@ use spinon_core::{
 };
 
 use super::{
-    ComputedCssGridAutoFlow, ComputedCssGridPlacement, ComputedCssGridTrackSize,
-    ComputedStyleProfile, CssMediaEnvironment, CssViewport, StyloDocumentView,
+    ComputedCssGridAutoFlow, ComputedCssGridAutoRows, ComputedCssGridPlacement,
+    ComputedCssGridTrackSize, ComputedStyleProfile, CssMediaEnvironment, CssViewport,
+    StyloDocumentView, compute_runtime_block_flex_grid_auto_placement_cascade_with_stylesheets,
     compute_runtime_block_flex_grid_cascade_with_stylesheets,
     compute_runtime_block_flex_grid_placement_cascade_with_stylesheets,
     compute_runtime_incremental_cascade_with_stylesheets,
+    first_unsupported_runtime_block_flex_grid_auto_placement_inline_property,
     first_unsupported_runtime_block_flex_grid_inline_property,
     first_unsupported_runtime_block_flex_grid_placement_inline_property,
 };
@@ -147,6 +149,8 @@ fn placement_fixture(
     (view, root_id, child_ids)
 }
 
+#[path = "runtime_grid_tests/auto_placement.rs"]
+mod auto_placement;
 #[path = "runtime_grid_tests/hidden_context.rs"]
 mod hidden_context;
 #[path = "runtime_grid_tests/placement.rs"]

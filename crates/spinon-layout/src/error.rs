@@ -98,6 +98,10 @@ pub enum LayoutError {
     },
     GridTrackExpansionOverflow(NodeId),
     UnsupportedGridAutoFlow(NodeId),
+    UnsupportedGridAutoRows {
+        node: NodeId,
+        reason: &'static str,
+    },
     UnsupportedGridPlacement(NodeId),
     InvalidGridPlacement {
         node: NodeId,
@@ -290,6 +294,10 @@ impl fmt::Display for LayoutError {
                     "노드 {id}의 grid-auto-flow를 C11.1에서 지원하지 않습니다"
                 )
             }
+            Self::UnsupportedGridAutoRows { node, reason } => write!(
+                formatter,
+                "노드 {node}의 grid-auto-rows를 현재 profile에서 계산할 수 없습니다: {reason}"
+            ),
             Self::UnsupportedGridPlacement(id) => {
                 write!(
                     formatter,

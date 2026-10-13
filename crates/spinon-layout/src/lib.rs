@@ -6,6 +6,7 @@ mod error;
 mod flex_auto_margin;
 mod flex_baseline;
 mod grid;
+mod grid_auto_placement;
 mod grid_placement;
 mod host_document;
 mod percentage_basis;
@@ -13,6 +14,8 @@ mod positioning;
 mod revision;
 mod style;
 mod taffy_style;
+#[cfg(test)]
+mod test_allocator;
 mod tree_input;
 
 use std::collections::{BTreeMap, BTreeSet};
@@ -26,7 +29,10 @@ pub const MAX_LAYOUT_TREE_DEPTH: usize = 1_024;
 
 pub use css_math::{LayoutCalcId, LayoutCssMath, LayoutCssMathProperty, LayoutCssMathValue};
 pub use error::LayoutError;
-pub use grid::{GridAutoFlow, GridContainerInput, GridTrackSize};
+pub use grid::{
+    GridAutoFlow, GridAutoRows, GridAutoTrackSize, GridContainerInput, GridPlacementMode,
+    GridTrackSize,
+};
 pub use grid_placement::{GridItemInput, GridPlacementInput};
 pub use revision::{LayoutInputRevision, LayoutSourceRevision};
 pub use style::{

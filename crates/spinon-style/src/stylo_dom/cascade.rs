@@ -29,8 +29,10 @@ pub use runtime_block_display::{
     first_unsupported_runtime_block_display_stylesheet_value,
 };
 pub use runtime_grid::{
+    compute_runtime_block_flex_grid_auto_placement_cascade_with_stylesheets,
     compute_runtime_block_flex_grid_cascade_with_stylesheets,
     compute_runtime_block_flex_grid_placement_cascade_with_stylesheets,
+    first_unsupported_runtime_block_flex_grid_auto_placement_inline_property,
     first_unsupported_runtime_block_flex_grid_inline_property,
     first_unsupported_runtime_block_flex_grid_placement_inline_property,
 };
@@ -93,12 +95,13 @@ pub use margin::compute_flex_margin_cascade;
 pub use margin::compute_flex_media_environment_cascade;
 pub use snapshot::{
     CascadeDiagnostic, ComputedCssDimension, ComputedCssEdges, ComputedCssGridAutoFlow,
-    ComputedCssGridItemPlacement, ComputedCssGridLayout, ComputedCssGridPlacement,
-    ComputedCssGridTrackSize, ComputedCssMath, ComputedCssMaxSize, ComputedCssPosition,
-    ComputedCssSpacingValue, ComputedCssVisibility, ComputedCssZIndex, ComputedElementStyle,
-    ComputedLayoutBorder, ComputedLayoutDimensions, ComputedLayoutInsets, ComputedLayoutSpacing,
-    ComputedStyleProfile, ComputedStyleSnapshot, CssColorScheme, CssMediaEnvironment,
-    CssPointerCapabilities, CssPrimaryPointer, CssViewport, FixedContainingBlockEffect,
+    ComputedCssGridAutoRows, ComputedCssGridItemPlacement, ComputedCssGridLayout,
+    ComputedCssGridPlacement, ComputedCssGridTrackSize, ComputedCssMath, ComputedCssMaxSize,
+    ComputedCssPosition, ComputedCssSpacingValue, ComputedCssVisibility, ComputedCssZIndex,
+    ComputedElementStyle, ComputedLayoutBorder, ComputedLayoutDimensions, ComputedLayoutInsets,
+    ComputedLayoutSpacing, ComputedStyleProfile, ComputedStyleSnapshot, CssColorScheme,
+    CssMediaEnvironment, CssPointerCapabilities, CssPrimaryPointer, CssViewport,
+    FixedContainingBlockEffect,
 };
 pub use ua_baseline::compute_supported_elements_ua_cascade;
 

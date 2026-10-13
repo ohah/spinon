@@ -1,12 +1,20 @@
 use spinon_core::NodeId;
-use spinon_layout::{GridAutoFlow, GridContainerInput, GridTrackSize};
-use spinon_style::{ComputedCssGridAutoFlow, ComputedCssGridLayout, ComputedCssGridTrackSize};
+use spinon_layout::{
+    GridAutoFlow, GridAutoRows, GridContainerInput, GridPlacementMode, GridTrackSize,
+};
+use spinon_style::{
+    ComputedCssGridAutoFlow, ComputedCssGridAutoRows, ComputedCssGridLayout,
+    ComputedCssGridTrackSize, ComputedStyleProfile,
+};
+
+use crate::StyleLayoutError;
 
 pub(super) fn project_grid_layout(
     node: NodeId,
     grid: &ComputedCssGridLayout,
-) -> Result<GridContainerInput, spinon_layout::LayoutError> {
-    project_grid_layout_with_reservation(node, grid, |tracks, count| {
+    profile: ComputedStyleProfile,
+) -> Result<GridContainerInput, StyleLayoutError> {
+    project_grid_layout_with_reservation(node, grid, profile, |tracks, count| {
         tracks.try_reserve_exact(count).map_err(|_| ())
     })
 }
@@ -14,10 +22,12 @@ pub(super) fn project_grid_layout(
 fn project_grid_layout_with_reservation(
     node: NodeId,
     grid: &ComputedCssGridLayout,
+    profile: ComputedStyleProfile,
     mut reserve: impl FnMut(&mut Vec<GridTrackSize>, usize) -> Result<(), ()>,
-) -> Result<GridContainerInput, spinon_layout::LayoutError> {
+) -> Result<GridContainerInput, StyleLayoutError> {
     let columns = project_tracks(&grid.columns, node, "grid-template-columns", &mut reserve)?;
     let rows = project_tracks(&grid.rows, node, "grid-template-rows", &mut reserve)?;
+    let sparse_row = profile == ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1;
     Ok(GridContainerInput {
         columns,
         rows,
@@ -27,7 +37,38 @@ fn project_grid_layout_with_reservation(
             ComputedCssGridAutoFlow::RowDense => GridAutoFlow::RowDense,
             ComputedCssGridAutoFlow::ColumnDense => GridAutoFlow::ColumnDense,
         },
+        auto_rows: if sparse_row {
+            project_auto_rows(node, &grid.auto_rows)?
+        } else {
+            GridAutoRows::Auto
+        },
+        placement_mode: match profile {
+            ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1 => {
+                GridPlacementMode::ExplicitOnly
+            }
+            ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1 => {
+                GridPlacementMode::SparseRow
+            }
+            _ => GridPlacementMode::Existing,
+        },
     })
+}
+
+fn project_auto_rows(
+    node: NodeId,
+    auto_rows: &ComputedCssGridAutoRows,
+) -> Result<GridAutoRows, StyleLayoutError> {
+    match auto_rows {
+        ComputedCssGridAutoRows::Auto => Ok(GridAutoRows::Auto),
+        ComputedCssGridAutoRows::LengthPx(value) => Ok(GridAutoRows::LengthPx(*value)),
+        ComputedCssGridAutoRows::Unsupported(value) => {
+            Err(StyleLayoutError::UnsupportedComputedValue {
+                node,
+                property: "grid-auto-rows",
+                value: value.clone(),
+            })
+        }
+    }
 }
 
 fn project_tracks(
@@ -35,15 +76,19 @@ fn project_tracks(
     node: NodeId,
     property: &'static str,
     reserve: &mut impl FnMut(&mut Vec<GridTrackSize>, usize) -> Result<(), ()>,
-) -> Result<Vec<GridTrackSize>, spinon_layout::LayoutError> {
+) -> Result<Vec<GridTrackSize>, StyleLayoutError> {
     let track = |value: &ComputedCssGridTrackSize| match value {
         ComputedCssGridTrackSize::LengthPx(value) => GridTrackSize::LengthPx(*value),
         ComputedCssGridTrackSize::Percentage(value) => GridTrackSize::Percentage(*value),
         ComputedCssGridTrackSize::Fraction(value) => GridTrackSize::Fraction(*value),
     };
     let mut tracks = Vec::new();
-    reserve(&mut tracks, source.len())
-        .map_err(|_| spinon_layout::LayoutError::GridAllocationFailure { node, property })?;
+    reserve(&mut tracks, source.len()).map_err(|_| {
+        StyleLayoutError::Layout(spinon_layout::LayoutError::GridAllocationFailure {
+            node,
+            property,
+        })
+    })?;
     tracks.extend(source.iter().map(track));
     Ok(tracks)
 }
@@ -53,7 +98,10 @@ mod tests {
     use super::project_grid_layout_with_reservation;
     use spinon_core::NodeId;
     use spinon_layout::LayoutError;
-    use spinon_style::{ComputedCssGridAutoFlow, ComputedCssGridLayout, ComputedCssGridTrackSize};
+    use spinon_style::{
+        ComputedCssGridAutoFlow, ComputedCssGridAutoRows, ComputedCssGridLayout,
+        ComputedCssGridTrackSize, ComputedStyleProfile,
+    };
 
     #[test]
     fn projection_reservation_failure_keeps_node_and_axis_context() {
@@ -62,20 +110,26 @@ mod tests {
             columns: vec![ComputedCssGridTrackSize::LengthPx(80.0)],
             rows: vec![ComputedCssGridTrackSize::LengthPx(40.0)],
             auto_flow: ComputedCssGridAutoFlow::Row,
+            auto_rows: ComputedCssGridAutoRows::Auto,
         };
         let mut calls = 0;
-        let error = project_grid_layout_with_reservation(node, &grid, |_, _| {
-            calls += 1;
-            if calls == 2 { Err(()) } else { Ok(()) }
-        })
+        let error = project_grid_layout_with_reservation(
+            node,
+            &grid,
+            ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1,
+            |_, _| {
+                calls += 1;
+                if calls == 2 { Err(()) } else { Ok(()) }
+            },
+        )
         .unwrap_err();
 
-        assert_eq!(
+        assert!(matches!(
             error,
-            LayoutError::GridAllocationFailure {
-                node,
-                property: "grid-template-rows"
-            }
-        );
+            crate::StyleLayoutError::Layout(LayoutError::GridAllocationFailure {
+                node: error_node,
+                property: "grid-template-rows",
+            }) if error_node == node
+        ));
     }
 }

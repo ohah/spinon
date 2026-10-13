@@ -3,10 +3,6 @@ import { createHash } from 'node:crypto';
 
 import { decodeRgbaPng } from './read-png-rgba.mjs';
 
-const BEGIN = 'SPINON_C111_METAL_PIXEL_BEGIN ';
-const SAMPLE = 'SPINON_C111_METAL_PIXEL_SAMPLE ';
-const SUMMARY = 'SPINON_C111_METAL_PIXEL_SUMMARY ';
-
 function sha256(bytes) {
   return createHash('sha256').update(bytes).digest('hex');
 }
@@ -26,6 +22,14 @@ function pixel(value) {
   assert.ok(components.every((component) => Number.isInteger(component) && component >= 0 && component <= 255),
     `RGBA 채널 범위가 잘못되었습니다: ${value}`);
   return components;
+}
+
+function exactInteger(value, label, minimum = 0) {
+  assert.match(value, /^(0|[1-9][0-9]*)$/, `${label} 정수가 잘못되었습니다: ${value}`);
+  const parsed = Number(value);
+  assert.ok(Number.isSafeInteger(parsed) && parsed >= minimum,
+    `${label} 정수가 범위를 벗어났습니다: ${value}`);
+  return parsed;
 }
 
 function expectedDevicePoint(sample, fixture, drawable) {
@@ -70,7 +74,12 @@ export function validateC11IOSChromeOracle({ fixture, referenceBytes, screenshot
   return { referenceId: reference.referenceId, screenshot: [image.width, image.height], sampleCount: fixture.samples.length };
 }
 
-export function compareC11IOSMetalPixelLogs(log, { fixture, runID }) {
+export function compareC11IOSMetalPixelLogs(log, { fixture, runID, markerPrefix = 'C111' }) {
+  assert.ok(['C111', 'C1122', 'C1123'].includes(markerPrefix), 'Metal pixel marker prefix가 잘못되었습니다.');
+  const marker = `SPINON_${markerPrefix}_METAL_PIXEL`;
+  const BEGIN = `${marker}_BEGIN `;
+  const SAMPLE = `${marker}_SAMPLE `;
+  const SUMMARY = `${marker}_SUMMARY `;
   assert.equal(typeof runID, 'string');
   assert.match(runID, /^[A-Za-z0-9_-]{8,128}$/, 'run ID 형식이 잘못되었습니다.');
   const lines = log.split(/\r?\n/);
@@ -87,12 +96,11 @@ export function compareC11IOSMetalPixelLogs(log, { fixture, runID }) {
   const summary = fieldsAfter(summaries[0], SUMMARY);
   for (const [name, record] of [['begin', begin], ['summary', summary]]) {
     assert.equal(record.run_id, runID, `${name}: run ID가 다릅니다.`);
-    assert.ok(Number(record.pid) > 0, `${name}: app PID가 없습니다.`);
-    assert.ok(Number(record.surface_generation) > 0, `${name}: surface generation이 없습니다.`);
-    assert.ok(Number(record.document_revision) > 0, `${name}: document_revision가 없습니다.`);
-    assert.ok(Number(record.render_tree_revision) > 0, `${name}: render_tree_revision가 없습니다.`);
-    assert.ok(Number.isInteger(Number(record.environment_revision))
-      && Number(record.environment_revision) >= 0, `${name}: environment_revision가 잘못되었습니다.`);
+    exactInteger(record.pid, `${name} app PID`, 1);
+    exactInteger(record.surface_generation, `${name} surface generation`, 1);
+    exactInteger(record.document_revision, `${name} document_revision`, 1);
+    exactInteger(record.render_tree_revision, `${name} render_tree_revision`, 1);
+    exactInteger(record.environment_revision, `${name} environment_revision`);
   }
   for (const field of ['pid', 'surface_generation', 'document_revision', 'render_tree_revision', 'environment_revision']) {
     assert.equal(summary[field], begin[field], `begin/summary ${field}가 바뀌었습니다.`);
@@ -101,18 +109,19 @@ export function compareC11IOSMetalPixelLogs(log, { fixture, runID }) {
   assert.equal(begin.viewport, `${fixture.runtime.viewportCssPx.width}x${fixture.runtime.viewportCssPx.height}`,
     'Spinon draw viewport가 다릅니다.');
 
-  const [drawableWidth, drawableHeight] = begin.drawable.split('x').map(Number);
-  assert.ok(Number.isInteger(drawableWidth) && drawableWidth > 0, 'drawable 너비가 잘못되었습니다.');
-  assert.ok(Number.isInteger(drawableHeight) && drawableHeight > 0, 'drawable 높이가 잘못되었습니다.');
+  const drawableDimensions = begin.drawable.split('x');
+  assert.equal(drawableDimensions.length, 2, 'drawable 크기 형식이 잘못되었습니다.');
+  const [drawableWidth, drawableHeight] = drawableDimensions.map((value, index) =>
+    exactInteger(value, `drawable ${index === 0 ? '너비' : '높이'}`, 1));
   assert.equal(summary.drawable, `${drawableWidth}x${drawableHeight}`, 'begin/summary drawable이 다릅니다.');
   const drawable = { width: drawableWidth, height: drawableHeight };
   const firstExpected = expectedDevicePoint(fixture.samples[0], fixture, drawable);
   assert.equal(Number(summary.scale_x), firstExpected.scaleX, 'drawable x scale이 잘못 기록되었습니다.');
   assert.equal(Number(summary.scale_y), firstExpected.scaleY, 'drawable y scale이 잘못 기록되었습니다.');
   assert.equal(summary.status, 'matched', 'Metal surface summary가 matched가 아닙니다.');
-  assert.equal(Number(summary.expected_samples), fixture.samples.length, 'summary 기대 표본 수가 다릅니다.');
-  assert.equal(Number(summary.observed_samples), fixture.samples.length, 'summary 관측 표본 수가 다릅니다.');
-  assert.equal(Number(summary.matched_samples), fixture.samples.length, 'summary 통과 표본 수가 다릅니다.');
+  assert.equal(exactInteger(summary.expected_samples, 'summary 기대 표본 수', 1), fixture.samples.length);
+  assert.equal(exactInteger(summary.observed_samples, 'summary 관측 표본 수', 1), fixture.samples.length);
+  assert.equal(exactInteger(summary.matched_samples, 'summary 통과 표본 수', 1), fixture.samples.length);
 
   const seen = new Map();
   const records = sampleLines.map((line) => fieldsAfter(line, SAMPLE));
@@ -146,7 +155,11 @@ export function compareC11IOSMetalPixelLogs(log, { fixture, runID }) {
   });
 
   return {
-    schema: 'spinon-c11-ios-metal-surface-pixels/v1',
+    schema: markerPrefix === 'C1123'
+      ? 'spinon-c11-2-3-ios-metal-surface-pixels/v1'
+      : markerPrefix === 'C1122'
+        ? 'spinon-c11-2-2-ios-metal-surface-pixels/v1'
+        : 'spinon-c11-ios-metal-surface-pixels/v1',
     status: 'matched',
     runID,
     processId: Number(begin.pid),

@@ -103,9 +103,12 @@ pub(super) fn computed_element_output(
             .get("display")
             .is_some_and(|value| value == "none");
     let grid_layout = if !layout_suppressed
-        && (profile == ComputedStyleProfile::RuntimeBlockFlexGridV1
-            || profile == ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1)
-    {
+        && matches!(
+            profile,
+            ComputedStyleProfile::RuntimeBlockFlexGridV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
+        ) {
         if computed_properties
             .get("display")
             .is_some_and(|value| value == "grid")
@@ -121,8 +124,11 @@ pub(super) fn computed_element_output(
     } else {
         None
     };
-    let grid_item_placement = (profile == ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
-        && !layout_suppressed)
+    let grid_item_placement = (matches!(
+        profile,
+        ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
+    ) && !layout_suppressed)
         .then(|| super::grid::computed_grid_item_placement(computed, &computed_properties));
     for (name, width) in [
         ("border-top-width", layout_border.top),
