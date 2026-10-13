@@ -111,15 +111,20 @@ int32_t spinon_runtime_session_copy_ua_cascade_json(
 int32_t spinon_runtime_session_copy_layout_json(
     SpinonRuntimeSession *session, char *output, size_t output_capacity,
     size_t *required_capacity);
+#if defined(SPINON_ENABLE_C04_UA_CASCADE_FIXTURE_PROBE) && \
+    SPINON_ENABLE_C04_UA_CASCADE_FIXTURE_PROBE
 /* Android emulator·iOS Simulator 내부 검증 fixture입니다. 실제 V8 DOM 변경 뒤 환경 setter,
    비동기 Stylo 결과와 JSON readback을 검증합니다. 성공 0, 인자 오류 -1, 생성 오류 -2,
    버퍼 부족 -3, cascade 검증 실패 -7을 반환합니다. 제품 렌더링 API가 아닙니다. */
 int32_t spinon_runtime_ua_cascade_probe(char *output, size_t output_capacity);
+#endif
 void spinon_runtime_session_free(SpinonRuntimeSession *session);
 
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new(char *output,
                                                   size_t output_capacity);
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
 /* C05.2 검증 fixture 전용 `@property` CSS profile로 V8 GPU host를 생성합니다. */
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_registered_properties_fixture(
     char *output, size_t output_capacity);
@@ -151,9 +156,13 @@ SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c11_2_1_grid_placement_fixture
 /* C11.2.2 행 우선 sparse auto-placement와 양의 암시 행 전용 검증 host입니다. */
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c11_2_2_grid_auto_placement_fixture(
     char *output, size_t output_capacity);
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST) && \
+    SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST
 /* C11.2.3 dense·column 자동 배치와 양의 암시 행·열 전용 검증 host입니다. */
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c11_2_3_grid_auto_placement_fixture(
     char *output, size_t output_capacity);
+#endif
 #if defined(SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST) && \
     SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST
 /* C11.1 고정 Grid surface pixel 내부 검증 전용 host입니다. */
@@ -166,10 +175,14 @@ int32_t spinon_runtime_gpu_host_request_c11_1_grid_surface_pixels_for_test(
 int32_t spinon_runtime_gpu_host_request_c11_2_2_grid_surface_pixels_for_test(
     SpinonRuntimeGpuHost *host, const uint32_t *sample_xy, size_t sample_count,
     char *output, size_t output_capacity);
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST) && \
+    SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST
 /* C11.2.3 dense·column Grid fixture의 WGPU surface pixel 내부 검증 전용입니다. */
 int32_t spinon_runtime_gpu_host_request_c11_2_3_grid_surface_pixels_for_test(
     SpinonRuntimeGpuHost *host, const uint32_t *sample_xy, size_t sample_count,
     char *output, size_t output_capacity);
+#endif
 #endif
 #if defined(SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST) && \
     SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST
@@ -180,6 +193,7 @@ SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c12_4_surface_readback_fixture
 /* C10.3.5 positioned Flex child V8 GPU runtime fixture host입니다. */
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c10_3_5_positioned_flex_fixture(
     char *output, size_t output_capacity);
+#endif
 /* UI event에서 viewport·색상 체계·surface 변경을 플랫폼 큐에 넣기 전에
    호출합니다. 잠금·대기를 하지 않으며 실패는 0입니다. 반환값은 내부 무효화 순번이며
    호출자가 다른 함수에 전달하지 않습니다. 성공 여부 확인 외 용도로 보관하지 마세요. */
@@ -196,6 +210,8 @@ int32_t spinon_runtime_gpu_host_eval(SpinonRuntimeGpuHost *host,
                                     const char *source,
                                     uint64_t layout_timeout_millis, char *output,
                                     size_t output_capacity);
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
 int32_t spinon_runtime_gpu_host_eval_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);
@@ -299,11 +315,15 @@ int32_t spinon_runtime_gpu_host_eval_c11_2_2_grid_auto_placement_fixture(
     SpinonRuntimeGpuHost *host, const char *scene_id,
     uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST) && \
+    SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST
 /* 고정 C11.2.3 scene ID만 허용하며 임의 JavaScript는 받지 않습니다. */
 int32_t spinon_runtime_gpu_host_eval_c11_2_3_grid_auto_placement_fixture(
     SpinonRuntimeGpuHost *host, const char *scene_id,
     uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);
+#endif
 /* C12.4 내부 테스트: 실제 CSS worker stack 범위와 순간 mincore 상주 페이지 표본입니다. */
 int32_t spinon_runtime_gpu_host_css_worker_stack_residency_for_test(
     SpinonRuntimeGpuHost *host, char *output, size_t output_capacity);
@@ -346,6 +366,7 @@ int32_t spinon_runtime_gpu_host_eval_flex_baseline_fixture(
 int32_t spinon_runtime_gpu_host_eval_c10_3_5_positioned_flex_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);
+#endif
 /* Android backend: 0=Vulkan 실패 뒤 GL 순차 재시도, 1=Vulkan 강제, 2=GL 강제. iOS는 3=Metal. */
 void *spinon_runtime_gpu_host_create_android(
     SpinonRuntimeGpuHost *host, void *native_window, uint32_t width,
@@ -368,13 +389,20 @@ int32_t spinon_runtime_gpu_host_resize(SpinonRuntimeGpuHost *host,
                                        char *output, size_t output_capacity);
 int32_t spinon_runtime_gpu_host_draw(SpinonRuntimeGpuHost *host,
                                      char *output, size_t output_capacity);
-#if defined(SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST) && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
+    defined(SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST) && \
     SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST
 int32_t spinon_runtime_gpu_host_request_c12_4_surface_pixel_for_test(
     SpinonRuntimeGpuHost *host, uint32_t x, uint32_t y, char *output,
     size_t output_capacity);
+int32_t spinon_runtime_gpu_host_request_c12_4_surface_pixels_for_test(
+    SpinonRuntimeGpuHost *host, const uint32_t *sample_xy, size_t sample_count,
+    char *output, size_t output_capacity);
 #endif
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE) && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
+    defined(SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE) && \
     SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE
 /* 내부 검증 빌드에서 다음 draw 오류를 한 번 주입합니다. */
 int32_t spinon_runtime_gpu_host_inject_next_draw_failure_for_test(

@@ -245,8 +245,8 @@ fn legacy_ua_properties(properties: &BTreeMap<String, String>) -> BTreeMap<Strin
         .collect()
 }
 
-#[path = "runtime_ua_cascade/probe.rs"]
-mod probe;
+#[cfg(feature = "c04-runtime-ua-cascade-fixture-test")]
+mod fixtures;
 
 #[cfg(test)]
 mod tests {
