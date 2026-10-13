@@ -7,9 +7,11 @@ import { fileURLToPath } from 'node:url';
 
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const legacyFixtureSources = [
+  'crates/spinon-ffi/src/runtime_gpu/c11_3_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/c11.rs',
   'crates/spinon-ffi/src/runtime_gpu/c11_2_2.rs',
   'crates/spinon-ffi/src/runtime_gpu/c11_2_3.rs',
+  'crates/spinon-ffi/src/runtime_gpu/ffi/c11_3_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/c06.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/c07.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/c08.rs',
@@ -26,8 +28,10 @@ const legacyFixtureSources = [
 ];
 const canonicalFixtureSources = [
   'crates/spinon-ffi/src/runtime_gpu/fixtures.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_3_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures.rs',
+  'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11_3_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11.rs',
   'crates/spinon-ffi/src/runtime_ua_cascade/fixtures.rs',
   'crates/spinon-ffi/src/runtime_ua_cascade/fixtures/probe.rs',

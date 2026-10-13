@@ -8,6 +8,7 @@ import {
 } from './compare-c11-ios-metal-surface-pixels.mjs';
 
 const fixture = JSON.parse(readFileSync('tests/fixtures/css/c11/metal-surface-pixel-samples.json', 'utf8'));
+const c1131Fixture = JSON.parse(readFileSync('tests/fixtures/css/c11/grid-template-repeat-c1131-pixel-samples-v1.json', 'utf8'));
 const referenceBytes = readFileSync(fixture.oracle.referencePath);
 const screenshotBytes = readFileSync(fixture.oracle.screenshotPath);
 const runID = 'c11-ios-metal-20261012-fixed';
@@ -114,6 +115,45 @@ test('accepts the separately namespaced C11.2.3 Metal surface pixel markers', ()
   });
   assert.equal(result.status, 'matched');
   assert.equal(result.schema, 'spinon-c11-2-3-ios-metal-surface-pixels/v1');
+});
+
+test('accepts the separately namespaced C11.3.1 Metal surface pixel markers', () => {
+  const c1131RunID = 'c1131-ios-metal-grid-20261013';
+  const begin = {
+    ...common,
+    run_id: c1131RunID,
+    scene: c1131Fixture.sceneId,
+    viewport: '320x240',
+    drawable: '960x720',
+  };
+  const samples = c1131Fixture.samples.map((sample) => {
+    const point = devicePoint(sample);
+    return `SPINON_C1131_METAL_PIXEL_SAMPLE run_id=${c1131RunID} pid=50123 surface_generation=4 sample=${sample.id} x=${point.x} y=${point.y} rgba=${rgba(sample.rgba)} expected=${rgba(sample.rgba)} exact=true`;
+  });
+  const summary = {
+    ...common,
+    run_id: c1131RunID,
+    drawable: '960x720',
+    scale_x: '3',
+    scale_y: '3',
+    status: 'matched',
+    expected_samples: String(c1131Fixture.samples.length),
+    observed_samples: String(c1131Fixture.samples.length),
+    matched_samples: String(c1131Fixture.samples.length),
+  };
+  const log = [
+    `SPINON_C1131_METAL_PIXEL_BEGIN ${Object.entries(begin).map(([key, value]) => `${key}=${value}`).join(' ')}`,
+    ...samples,
+    `SPINON_C1131_METAL_PIXEL_SUMMARY ${Object.entries(summary).map(([key, value]) => `${key}=${value}`).join(' ')}`,
+  ].join('\n');
+  const result = compareC11IOSMetalPixelLogs(log, {
+    fixture: c1131Fixture,
+    runID: c1131RunID,
+    markerPrefix: 'C1131',
+  });
+  assert.equal(result.status, 'matched');
+  assert.equal(result.matchedSamples, 5);
+  assert.equal(result.schema, 'spinon-c11-3-1-ios-metal-surface-pixels/v1');
 });
 
 test('accepts the valid initial environment revision zero', () => {

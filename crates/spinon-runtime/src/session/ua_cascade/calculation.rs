@@ -14,6 +14,7 @@ use spinon_style::{
     compute_runtime_block_flex_grid_cascade_with_stylesheets,
     compute_runtime_block_flex_grid_dense_auto_placement_cascade_with_stylesheets,
     compute_runtime_block_flex_grid_placement_cascade_with_stylesheets,
+    compute_runtime_block_flex_grid_template_cascade_with_stylesheets,
     compute_runtime_block_flex_stacking_cascade_with_stylesheets,
     compute_runtime_block_formatting_cascade_with_stylesheets,
     compute_runtime_block_paint_cascade_with_stylesheets,
@@ -39,6 +40,7 @@ pub(super) enum RuntimeCalculationProfile {
     BlockFlexGridPlacement,
     BlockFlexGridAutoPlacement,
     BlockFlexGridDenseAutoPlacement,
+    BlockFlexGridTemplate,
 }
 
 impl RuntimeCalculationProfile {
@@ -211,6 +213,12 @@ pub(super) fn compute_request_for_block_flex_grid_dense_auto_placement(
         request,
         RuntimeCalculationProfile::BlockFlexGridDenseAutoPlacement,
     )
+}
+
+pub(super) fn compute_request_for_block_flex_grid_template(
+    request: &WorkRequest,
+) -> Result<RuntimeCalculation, String> {
+    compute_request_with_profile(request, RuntimeCalculationProfile::BlockFlexGridTemplate)
 }
 
 fn compute_request_with_profile(
@@ -396,6 +404,9 @@ fn compute_root(
         RuntimeCalculationProfile::BlockFlexGridDenseAutoPlacement => {
             ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
         }
+        RuntimeCalculationProfile::BlockFlexGridTemplate => {
+            ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+        }
     };
     let previous_style_root = request
         .previous_styles
@@ -518,6 +529,14 @@ fn compute_root(
             }
             RuntimeCalculationProfile::BlockFlexGridDenseAutoPlacement => {
                 compute_runtime_block_flex_grid_dense_auto_placement_cascade_with_stylesheets(
+                    &view,
+                    author_stylesheets,
+                    request.viewport,
+                    StyleRevision::INITIAL,
+                )
+            }
+            RuntimeCalculationProfile::BlockFlexGridTemplate => {
+                compute_runtime_block_flex_grid_template_cascade_with_stylesheets(
                     &view,
                     author_stylesheets,
                     request.viewport,

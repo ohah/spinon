@@ -77,6 +77,10 @@
 + (NSString *)evalRuntimeGpuC11_2_3GridAutoPlacementFixture:(uint64_t)handle
                                                     sceneID:(NSString *)sceneID
                                                       runID:(NSString *)runID;
++ (uint64_t)createRuntimeGpuHostWithC11_3_1GridRepeatFixture;
++ (NSString *)evalRuntimeGpuC11_3_1GridRepeatFixture:(uint64_t)handle
+                                               sceneID:(NSString *)sceneID
+                                                 runID:(NSString *)runID;
 + (NSString *)evalRuntimeGpuC12_4Source:(uint64_t)handle source:(NSString *)source;
 + (NSString *)evalRuntimeGpuC10_3_5PositionedFlexFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuC12_1PositionState:(uint64_t)handle state:(uint32_t)state;
@@ -105,6 +109,9 @@
                                                        sampleXY:(const uint32_t *)sampleXY
                                                     sampleCount:(NSUInteger)sampleCount;
 + (NSString *)requestRuntimeGpuC11_2_3GridSurfacePixelsForTest:(uint64_t)handle
+                                                       sampleXY:(const uint32_t *)sampleXY
+                                                    sampleCount:(NSUInteger)sampleCount;
++ (NSString *)requestRuntimeGpuC11_3_1GridSurfacePixelsForTest:(uint64_t)handle
                                                        sampleXY:(const uint32_t *)sampleXY
                                                     sampleCount:(NSUInteger)sampleCount;
 + (NSString *)injectNextRuntimeGpuDrawFailure:(uint64_t)handle;

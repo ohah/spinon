@@ -1,0 +1,57 @@
+{
+  "schema": "spinon-css-c11-3-1-grid-repeat-pixel-samples/v1",
+  "fixtureId": "c11-3-1-multi-track-repeat",
+  "sceneId": "multi-track-repeat",
+  "runtime": {
+    "viewportCssPx": { "width": 320, "height": 240 },
+    "deviceScaleFactor": 1
+  },
+  "oracle": {
+    "name": "Google Chrome for Testing",
+    "product": "Chrome/154.0.8037.92",
+    "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.92-ebc4716049e7-0a109d053a3a-d5067aca4f98",
+    "referencePath": "tests/fixtures/css/references/c11-3-1-grid-repeat-precomparison-v1.json",
+    "referenceSha256": "3b98a994a0fd1ec52a838887c71a54b0afad62527d7a289557cc7ed728c24788",
+    "screenshotPath": "spec/internal/evidence/c11-3-1-repeat-precomparison-2026-10-13/c1131-chrome-20261013T035742923Z-f59a108e/multi-track-repeat-dpr1.png",
+    "screenshotSha256": "e14b03ff7f2302d2f245501d6888cf743b2495cd584b01f5774e1df69ca85f55",
+    "deviceScaleFactor": 1,
+    "viewportCssPx": { "width": 320, "height": 240 }
+  },
+  "samples": [
+    {
+      "id": "grid-background",
+      "nodeId": "c1131-multi-track-repeat-grid",
+      "xCssPx": 300,
+      "yCssPx": 120,
+      "rgba": [237, 241, 247, 255]
+    },
+    {
+      "id": "item-blue",
+      "nodeId": "c1131-multi-track-repeat-a",
+      "xCssPx": 10,
+      "yCssPx": 10,
+      "rgba": [40, 102, 246, 255]
+    },
+    {
+      "id": "item-red",
+      "nodeId": "c1131-multi-track-repeat-b",
+      "xCssPx": 40,
+      "yCssPx": 10,
+      "rgba": [229, 72, 77, 255]
+    },
+    {
+      "id": "column-gap",
+      "nodeId": "c1131-multi-track-repeat-grid",
+      "xCssPx": 112,
+      "yCssPx": 10,
+      "rgba": [237, 241, 247, 255]
+    },
+    {
+      "id": "row-gap",
+      "nodeId": "c1131-multi-track-repeat-grid",
+      "xCssPx": 10,
+      "yCssPx": 53,
+      "rgba": [237, 241, 247, 255]
+    }
+  ]
+}

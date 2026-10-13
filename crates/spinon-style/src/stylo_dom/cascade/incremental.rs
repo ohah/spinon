@@ -105,6 +105,8 @@ mod spacing;
 pub(super) use aspect_ratio::computed_layout_aspect_ratio;
 pub(super) use border::computed_layout_border;
 pub(super) use compute::compute_cascade_with_reuse;
+#[cfg(test)]
+pub(super) use grid::{IntegerRepeatReservationSite, inject_integer_repeat_reservation_failure};
 
 /// 안전한 runtime subtree 변경에서 이전 직렬화 스타일 출력을 재사용합니다.
 /// `None`은 입력이 지원 범위 밖이므로 호출자가 전체 cascade로 되돌려야 함을 뜻합니다.
@@ -177,6 +179,9 @@ fn runtime_properties_for_profile(
     if profile == ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1 {
         return Some(runtime_grid::runtime_block_flex_grid_dense_auto_placement_properties());
     }
+    if profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1 {
+        return Some(runtime_grid::runtime_block_flex_grid_template_properties());
+    }
     let has_paint = matches!(
         profile,
         ComputedStyleProfile::RuntimeFlexPaintV1
@@ -226,5 +231,6 @@ fn is_runtime_layout_profile(profile: ComputedStyleProfile) -> bool {
             | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
     )
 }

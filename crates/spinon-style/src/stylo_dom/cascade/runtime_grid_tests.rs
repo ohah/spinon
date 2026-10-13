@@ -11,6 +11,7 @@ use super::{
     StyloDocumentView, compute_runtime_block_flex_grid_auto_placement_cascade_with_stylesheets,
     compute_runtime_block_flex_grid_cascade_with_stylesheets,
     compute_runtime_block_flex_grid_placement_cascade_with_stylesheets,
+    compute_runtime_block_flex_grid_template_cascade_with_stylesheets,
     compute_runtime_incremental_cascade_with_stylesheets,
     first_unsupported_runtime_block_flex_grid_auto_placement_inline_property,
     first_unsupported_runtime_block_flex_grid_inline_property,
@@ -155,5 +156,7 @@ mod auto_placement;
 mod hidden_context;
 #[path = "runtime_grid_tests/placement.rs"]
 mod placement;
+#[path = "runtime_grid_tests/template_repeat.rs"]
+mod template_repeat;
 #[path = "runtime_grid_tests/tracks.rs"]
 mod tracks;

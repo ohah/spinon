@@ -64,6 +64,10 @@ pub type GridAutoColumns = GridAutoTrackSize;
 pub struct GridContainerInput {
     pub columns: Vec<GridTrackSize>,
     pub rows: Vec<GridTrackSize>,
+    /// CSS Grid의 explicit column 경계 이름입니다. 배열은 track 수보다 하나 큽니다.
+    pub columns_line_names: Vec<Vec<String>>,
+    /// CSS Grid의 explicit row 경계 이름입니다. 배열은 track 수보다 하나 큽니다.
+    pub rows_line_names: Vec<Vec<String>>,
     pub auto_flow: GridAutoFlow,
     pub auto_rows: GridAutoRows,
     pub auto_columns: GridAutoColumns,
@@ -175,6 +179,20 @@ pub(super) fn validate_grid_layout(
         };
         validate_tracks(node.id, "grid-template-columns", &container.columns)?;
         validate_tracks(node.id, "grid-template-rows", &container.rows)?;
+        if (!container.columns_line_names.is_empty()
+            && container.columns.len().checked_add(1) != Some(container.columns_line_names.len()))
+            || (!container.rows_line_names.is_empty()
+                && container.rows.len().checked_add(1) != Some(container.rows_line_names.len()))
+        {
+            return Err(LayoutError::InvalidGridTrackList {
+                node: node.id,
+                property: if container.columns_line_names.is_empty() {
+                    "grid-template-rows"
+                } else {
+                    "grid-template-columns"
+                },
+            });
+        }
         if container.placement_mode == GridPlacementMode::SparseRow
             && container.auto_flow != GridAutoFlow::Row
         {

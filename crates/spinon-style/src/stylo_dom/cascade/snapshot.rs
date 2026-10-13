@@ -203,6 +203,10 @@ pub enum ComputedCssGridAutoColumns {
 pub struct ComputedCssGridLayout {
     pub columns: Vec<ComputedCssGridTrackSize>,
     pub rows: Vec<ComputedCssGridTrackSize>,
+    /// 각 explicit column 경계의 authored line-name 목록입니다. C11.3부터 N+1개입니다.
+    pub columns_line_names: Vec<Vec<String>>,
+    /// 각 explicit row 경계의 authored line-name 목록입니다. C11.3부터 N+1개입니다.
+    pub rows_line_names: Vec<Vec<String>>,
     pub auto_flow: ComputedCssGridAutoFlow,
     pub auto_rows: ComputedCssGridAutoRows,
     pub auto_columns: ComputedCssGridAutoColumns,
@@ -454,4 +458,6 @@ pub enum ComputedStyleProfile {
     RuntimeBlockFlexGridAutoPlacementV1,
     /// C11.2.3의 dense/column placement와 positive implicit track runtime profile입니다.
     RuntimeBlockFlexGridAutoPlacementDenseV1,
+    /// C11.3.1의 정수 repeat 확장과 line-name metadata를 포함하는 누적 Grid profile입니다.
+    RuntimeBlockFlexGridTemplateV1,
 }

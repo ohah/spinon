@@ -1,0 +1,160 @@
+{
+  "schema": "spinon-c11-3-1-grid-repeat-pixels-result/v1",
+  "status": "matched",
+  "runID": "c1131-android-physical-20261013T164530543Z-b2aa6d9c",
+  "target": "android-physical",
+  "fixture": {
+    "path": "tests/fixtures/css/c11/grid-template-repeat-c1131-pixel-samples-v1.json",
+    "sha256": "2c39888babfff768f2f6c1588f446179052dc324f0b7483abd37588bcdb11d90",
+    "sampleCount": 5
+  },
+  "oracle": {
+    "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.92-ebc4716049e7-0a109d053a3a-d5067aca4f98",
+    "referenceSha256": "3b98a994a0fd1ec52a838887c71a54b0afad62527d7a289557cc7ed728c24788",
+    "screenshotSha256": "e14b03ff7f2302d2f245501d6888cf743b2495cd584b01f5774e1df69ca85f55",
+    "product": "Chrome/154.0.8037.92",
+    "scene": "multi-track-repeat",
+    "deviceScaleFactor": 1,
+    "chromeOracleValidation": {
+      "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.92-ebc4716049e7-0a109d053a3a-d5067aca4f98",
+      "screenshot": [
+        320,
+        240
+      ],
+      "sampleCount": 5
+    }
+  },
+  "platform": {
+    "device": {
+      "serial": "R5KYB06SMPE",
+      "qemu": false,
+      "apiLevel": 36,
+      "model": "SM-S731N",
+      "fingerprint": "samsung/r13sksx/r13s:16/BP4A.251205.006/S731NKSS9BZH2_OKR9BZH2:user/release-keys",
+      "renderer": "GLES: Samsung Electronics Co., Ltd., ANGLE ((Samsung Xclipse 940) on Vulkan 1.3.279), OpenGL ES 3.2 Driver version: 24.1.307 git hash: 86f99cfe6317"
+    },
+    "installArtifactPath": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+    "installArtifactSha256": "1dbe4b04b775203f8c43fb42e6294b56f4bde9262604edb7db0ebf17760642af",
+    "comparison": {
+      "status": "matched",
+      "scene": "multi-track-repeat",
+      "runID": "c1131-android-physical-20261013T164530543Z-b2aa6d9c",
+      "processId": 5576,
+      "markerPrefix": "C1131",
+      "surfaceGeneration": 2,
+      "density": 2.8125,
+      "surface": [
+        900,
+        675
+      ],
+      "runtimeViewportCssPx": [
+        320,
+        240
+      ],
+      "scale": [
+        2.8125,
+        2.8125
+      ],
+      "expectedSamples": 5,
+      "matchedSamples": 5,
+      "maximumChannelError": 0,
+      "pngSha256": "e85b4eda670423766360c30c9a12620c182eaef0412c341f583c3ea4e586cd60",
+      "samples": [
+        {
+          "id": "grid-background",
+          "css": [
+            300,
+            120
+          ],
+          "pixel": [
+            845,
+            338
+          ],
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ]
+        },
+        {
+          "id": "item-blue",
+          "css": [
+            10,
+            10
+          ],
+          "pixel": [
+            29,
+            29
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        },
+        {
+          "id": "item-red",
+          "css": [
+            40,
+            10
+          ],
+          "pixel": [
+            113,
+            29
+          ],
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ]
+        },
+        {
+          "id": "column-gap",
+          "css": [
+            112,
+            10
+          ],
+          "pixel": [
+            316,
+            29
+          ],
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ]
+        },
+        {
+          "id": "row-gap",
+          "css": [
+            10,
+            53
+          ],
+          "pixel": [
+            29,
+            150
+          ],
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ]
+        }
+      ]
+    },
+    "screenshotSha256": "7d92ec677aab3ef8b4af0b12d9ef13c0a2a29047717861c9b11246712f7c2066",
+    "sampleAllowlistNegativeControl": {
+      "status": "rejected",
+      "runID": "c1131-android-physical-20261013T164530543Z-b2aa6d9c-bad-samples",
+      "processId": 5941,
+      "invalidSample": "item-blue xCssPx + 1",
+      "pixelCopyStarted": false
+    }
+  },
+  "interpretation": "연결된 Android 실기기의 PixelCopy 결과입니다. 이 캡처만으로 다른 기기·GPU의 동등성을 주장하지 않습니다."
+}

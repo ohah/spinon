@@ -1,0 +1,25 @@
+{
+  "schema": "spinon-css-c11-3-1-grid-repeat-runtime-matrix/v1",
+  "profileId": "RuntimeBlockFlexGridTemplateV1",
+  "summary": {
+    "sceneCount": 1,
+    "nodeCount": 3,
+    "successCount": 1,
+    "expectedRejectCount": 0
+  },
+  "cases": [
+    {
+      "index": 0,
+      "id": "multi-track-repeat",
+      "expected": { "outcome": "success" },
+      "rootId": "c1131-multi-track-repeat-grid",
+      "nodeIds": [
+        "c1131-multi-track-repeat-grid",
+        "c1131-multi-track-repeat-a",
+        "c1131-multi-track-repeat-b"
+      ],
+      "parentIds": [null, "c1131-multi-track-repeat-grid", "c1131-multi-track-repeat-grid"],
+      "source": "(() => { const stage = document.createElement('div'); stage.setAttribute('id','c1131-stage'); stage.setAttribute('style','display:block;position:relative;width:320px;height:240px'); document.appendChild(stage); const grid = document.createElement('div'); grid.setAttribute('id','c1131-multi-track-repeat-grid'); grid.setAttribute('style','position:absolute;left:0;top:0;display:grid;box-sizing:border-box;width:320px;height:240px;grid-template-columns:20px 80px repeat(2,40px 1fr) 20px;grid-template-rows:repeat(2,50px);column-gap:8px;row-gap:6px;background-color:#edf1f7'); stage.appendChild(grid); const a = document.createElement('div'); a.setAttribute('id','c1131-multi-track-repeat-a'); a.setAttribute('style','width:30px;height:20px;background-color:#2866f6'); grid.appendChild(a); const b = document.createElement('div'); b.setAttribute('id','c1131-multi-track-repeat-b'); b.setAttribute('style','width:24px;height:22px;background-color:#e5484d'); grid.appendChild(b); return {sceneId:'multi-track-repeat',rootId:'c1131-multi-track-repeat-grid',nodeIds:['c1131-multi-track-repeat-grid','c1131-multi-track-repeat-a','c1131-multi-track-repeat-b']}; })()"
+    }
+  ]
+}

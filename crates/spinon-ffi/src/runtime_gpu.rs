@@ -18,6 +18,8 @@ pub(crate) use fixtures::c11_2_2::c11_2_2_grid_auto_placement_runtime_source;
 #[cfg(feature = "c11-2-3-grid-fixture-test")]
 pub(crate) use fixtures::c11_2_3::c11_2_3_grid_auto_placement_runtime_source;
 #[cfg(feature = "c04-runtime-gpu-fixture-test")]
+pub(crate) use fixtures::c11_3_1::c11_3_1_grid_repeat_runtime_source;
+#[cfg(feature = "c04-runtime-gpu-fixture-test")]
 pub(crate) use fixtures::data::*;
 
 const ERR_ARGUMENT: i32 = -1;

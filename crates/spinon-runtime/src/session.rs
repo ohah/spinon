@@ -89,6 +89,7 @@ enum RuntimeCssProfile {
     BlockFlexGridPlacementFixture,
     BlockFlexGridAutoPlacementFixture,
     BlockFlexGridDenseAutoPlacementFixture,
+    BlockFlexGridTemplateFixture,
 }
 
 enum Command {
@@ -300,6 +301,11 @@ impl RuntimeSession {
         Self::new_with_css_profile(RuntimeCssProfile::BlockFlexGridDenseAutoPlacementFixture)
     }
 
+    /// C11.3.1 정수 `repeat()` Grid fixture 전용 runtime을 만듭니다.
+    pub fn new_runtime_gpu_block_flex_grid_template_fixture() -> Result<(Self, String), String> {
+        Self::new_with_css_profile(RuntimeCssProfile::BlockFlexGridTemplateFixture)
+    }
+
     fn new_with_css_profile(profile: RuntimeCssProfile) -> Result<(Self, String), String> {
         let startup_started = Instant::now();
         let ua_cascade = match profile {
@@ -331,6 +337,9 @@ impl RuntimeSession {
             }
             RuntimeCssProfile::BlockFlexGridDenseAutoPlacementFixture => {
                 RuntimeUaCascadeCoordinator::new_runtime_gpu_block_flex_grid_dense_auto_placement()?
+            }
+            RuntimeCssProfile::BlockFlexGridTemplateFixture => {
+                RuntimeUaCascadeCoordinator::new_runtime_gpu_block_flex_grid_template()?
             }
         };
         let css_worker_ready_us = ua_cascade.startup_duration_us();

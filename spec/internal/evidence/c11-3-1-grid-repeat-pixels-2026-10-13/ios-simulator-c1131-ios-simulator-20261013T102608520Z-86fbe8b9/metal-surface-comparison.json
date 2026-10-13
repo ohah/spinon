@@ -1,0 +1,119 @@
+{
+  "schema": "spinon-c11-3-1-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c1131-ios-simulator-20261013T102608520Z-86fbe8b9",
+  "processId": 6817,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 16,
+    "renderTree": 4,
+    "environment": 0
+  },
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "drawable": [
+    960,
+    720
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 5,
+  "matchedSamples": 5,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "grid-background",
+      "css": [
+        300,
+        120
+      ],
+      "drawable": [
+        901,
+        361
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-blue",
+      "css": [
+        10,
+        10
+      ],
+      "drawable": [
+        31,
+        31
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-red",
+      "css": [
+        40,
+        10
+      ],
+      "drawable": [
+        121,
+        31
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "column-gap",
+      "css": [
+        112,
+        10
+      ],
+      "drawable": [
+        337,
+        31
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "row-gap",
+      "css": [
+        10,
+        53
+      ],
+      "drawable": [
+        31,
+        160
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}

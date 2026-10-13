@@ -1,0 +1,81 @@
+{
+  "schema": "spinon-css-c11-3-1-grid-repeat-inventory/v1",
+  "fixtureId": "C11.3.1-grid-repeat-precomparison-v1",
+  "viewport": {
+    "width": 320,
+    "height": 240,
+    "deviceScaleFactors": [1, 2]
+  },
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "forcedColors": "none",
+    "pointer": "coarse",
+    "hover": "none",
+    "direction": "ltr",
+    "writingMode": "horizontal-tb"
+  },
+  "comparison": {
+    "rectFields": ["x", "y", "width", "height"],
+    "maximumAbsoluteRectErrorCssPx": 0.5,
+    "computedProperties": [
+      "display",
+      "direction",
+      "writing-mode",
+      "width",
+      "height",
+      "grid-template-columns",
+      "grid-template-rows",
+      "grid-auto-flow",
+      "column-gap",
+      "row-gap",
+      "grid-column-start",
+      "grid-row-start"
+    ]
+  },
+  "wpt": {
+    "revision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+    "candidates": [
+      {
+        "path": "css/css-grid/grid-definition/grid-repeat-integer-001.html",
+        "sha256": "f48604bbd0316467f1b004052db9425d132c56632b034f99eb7aaf34b530ad1c",
+        "stage": "Chrome oracle only; WPT pass does not establish Spinon conformance"
+      },
+      {
+        "path": "css/css-grid/grid-definition/grid-repeat-integer-002.html",
+        "sha256": "27b78abd184512f3f5371dd13fe8bd49e7aee41dc0ae7a7cc1689d54ab571a10",
+        "stage": "Chrome oracle only; WPT pass does not establish Spinon conformance"
+      },
+      {
+        "path": "css/css-grid/grid-definition/grid-repeat-integer-003.html",
+        "sha256": "baba3dbdfc7476bd2937cdffd2cc7e8c8c2b73ed8c80849d15e9e846e40544ac",
+        "stage": "Chrome oracle only; WPT pass does not establish Spinon conformance"
+      },
+      {
+        "path": "css/css-grid/grid-definition/grid-repeat-integer-004.html",
+        "sha256": "d87c350e49934251cbbf346086fd89f6dd815b5ecde0dec31ed2ba843263a333",
+        "stage": "Chrome oracle only; WPT pass does not establish Spinon conformance"
+      },
+      {
+        "path": "css/css-grid/grid-definition/grid-repeat-integer-005.html",
+        "sha256": "34a7548251bb2ad1a0d45677d6a8bbf99684f71157d6aa5ef587d25b42c154d4",
+        "stage": "Chrome oracle only; WPT pass does not establish Spinon conformance"
+      }
+    ]
+  },
+  "cases": [
+    {"id":"repeat-one","rootId":"repeat-one-grid","expected":"support","expectedColumns":1,"nodeIds":["repeat-one-grid","repeat-one-item"]},
+    {"id":"no-repeat-control","rootId":"no-repeat-control-grid","expected":"support","expectedColumns":1,"nodeIds":["no-repeat-control-grid","no-repeat-control-item"]},
+    {"id":"multi-track-repeat","rootId":"multi-track-repeat-grid","expected":"support","expectedColumns":7,"nodeIds":["multi-track-repeat-grid","multi-track-repeat-a","multi-track-repeat-b"]},
+    {"id":"line-name-seam","rootId":"line-name-seam-grid","expected":"support","expectedColumns":6,"nodeIds":["line-name-seam-grid","line-name-seam-a","line-name-seam-b"]},
+    {"id":"duplicate-line-names","rootId":"duplicate-line-names-grid","expected":"support","expectedColumns":3,"nodeIds":["duplicate-line-names-grid","duplicate-line-names-a","duplicate-line-names-b"]},
+    {"id":"mixed-units-and-gaps","rootId":"mixed-units-and-gaps-grid","expected":"support","expectedColumns":5,"nodeIds":["mixed-units-and-gaps-grid","mixed-units-and-gaps-a","mixed-units-and-gaps-b","mixed-units-and-gaps-c"]},
+    {"id":"limit-10000","rootId":"limit-10000-grid","expected":"support","expectedColumns":10000,"nodeIds":["limit-10000-grid","limit-10000-item"]},
+    {"id":"limit-10001","rootId":"limit-10001-grid","expected":"reject","expectedColumns":10001,"nodeIds":["limit-10001-grid","limit-10001-item"]},
+    {"id":"auto-fill-outside-profile","rootId":"auto-fill-outside-profile-grid","expected":"reject","expectedColumns":8,"nodeIds":["auto-fill-outside-profile-grid","auto-fill-outside-profile-item"]},
+    {"id":"minmax-outside-profile","rootId":"minmax-outside-profile-grid","expected":"reject","expectedColumns":2,"nodeIds":["minmax-outside-profile-grid","minmax-outside-profile-item"]},
+    {"id":"nested-repeat-invalid","rootId":"nested-repeat-invalid-grid","expected":"reject","expectedColumns":1,"nodeIds":["nested-repeat-invalid-grid","nested-repeat-invalid-item"]},
+    {"id":"zero-repeat-invalid","rootId":"zero-repeat-invalid-grid","expected":"reject","expectedColumns":1,"nodeIds":["zero-repeat-invalid-grid","zero-repeat-invalid-item"]}
+  ]
+}

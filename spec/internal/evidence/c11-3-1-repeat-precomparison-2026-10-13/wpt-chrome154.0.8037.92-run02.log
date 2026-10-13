@@ -1,0 +1,77 @@
+ 0:00.00 INFO Set tests_root to /Users/yoonhb/Documents/workspace/spinon/build/wpt-c124-source
+ 0:00.00 INFO Set metadata_root to /Users/yoonhb/Documents/workspace/spinon/build/wpt-c124-source
+ 0:00.27 INFO Mojo bindings already up to date
+ 0:00.27 INFO MojoJS enabled automatically (mojojs_path: /Users/yoonhb/Documents/workspace/spinon/build/wpt-c124-source/_venv3/mojojs/gen)
+ 0:01.25 wptserve INFO Starting https server on https://127.0.0.1:8003
+ 0:01.27 wptserve INFO Starting https server on https://127.0.0.1:8000
+ 0:01.28 wptserve INFO Starting https server on https://127.0.0.1:8443
+ 0:01.29 wptserve INFO Starting https server on https://127.0.0.1:8444
+ 0:01.29 wptserve INFO Create socket on: (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('127.0.0.1', 8888))
+ 0:01.29 wptserve INFO Bind on: (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('127.0.0.1', 8888))
+ 0:01.29 wptserve INFO Listen on: (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('127.0.0.1', 8888))
+ 0:01.29 wptserve INFO Starting https server on https://127.0.0.1:8001
+ 0:01.30 wptserve INFO Starting https server on https://127.0.0.1:8002
+ 0:01.30 wptserve INFO Starting https server on https://127.0.0.1:8446
+ 0:01.32 wptserve INFO Create socket on: (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('127.0.0.1', 8889))
+ 0:01.32 wptserve INFO Bind on: (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('127.0.0.1', 8889))
+ 0:01.32 wptserve INFO Listen on: (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('127.0.0.1', 8889))
+ 0:01.33 wptserve INFO Starting https server on https://127.0.0.1:8445
+ 0:01.33 wptserve INFO Starting http2 server on https://127.0.0.1:9000
+ 0:01.42 wptserve INFO Starting WebTransport over HTTP/3 server on 127.0.0.1:11000
+ 0:01.68 SUITE_START: web-platform-test - running 5 tests
+ 0:01.68 INFO Using 1 child processes
+ 0:01.69 INFO Starting WebDriver: /Users/yoonhb/Documents/workspace/spinon/build/chrome-for-testing-154.0.8037.92/chromedriver-mac-arm64/chromedriver --port=57228 --ignore-explicit-port --url-base=/ --enable-chrome-logs
+ 0:01.71 INFO Got WebDriver port 57229
+ 0:01.80 pid:30783 Full command: /Users/yoonhb/Documents/workspace/spinon/build/chrome-for-testing-154.0.8037.92/chromedriver-mac-arm64/chromedriver --port=57228 --ignore-explicit-port --url-base=/ --enable-chrome-logs
+pid:30783 Starting ChromeDriver 154.0.8037.92 (334b65d254ccc35df4fca82706d1753227b01039-refs/branch-heads/8037@{#1589}) on port 0
+ 0:01.80 pid:30783 Only local connections are allowed.
+ 0:01.80 pid:30783 Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ 0:01.80 pid:30783 ChromeDriver was started successfully on port 57229.
+ 0:01.80 INFO Webdriver started successfully.
+ 0:01.80 INFO Starting runner
+ 0:02.90 pid:30783 [30878:12559681:1013/124525.121854:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:02.90 pid:30783 [30878:12559675:1013/124525.122095:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:02.90 pid:30783 [30878:12559681:1013/124525.122706:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:02.90 pid:30783 [30878:12559675:1013/124525.122768:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:02.90 pid:30783 [30878:12559681:1013/124525.122863:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:02.90 pid:30783 [30878:12559675:1013/124525.122901:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:02.90 pid:30783 [30878:12559681:1013/124525.122984:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:02.90 pid:30783 [30878:12559675:1013/124525.123019:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:02.90 pid:30783 [30878:12559681:1013/124525.123114:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:02.90 pid:30783 [30878:12559675:1013/124525.123154:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:02.98 TEST_START: /css/css-grid/grid-definition/grid-repeat-integer-001.html
+ 0:04.15 TEST_END: PASS
+ 0:04.15 TEST_START: /css/css-grid/grid-definition/grid-repeat-integer-002.html
+ 0:04.25 TEST_END: PASS
+ 0:04.25 TEST_START: /css/css-grid/grid-definition/grid-repeat-integer-003.html
+ 0:04.34 TEST_END: PASS
+ 0:04.34 TEST_START: /css/css-grid/grid-definition/grid-repeat-integer-004.html
+ 0:04.43 TEST_END: PASS
+ 0:04.43 TEST_START: /css/css-grid/grid-definition/grid-repeat-integer-005.html
+ 0:04.53 TEST_END: PASS
+ 0:04.53 INFO No more tests
+ 0:04.59 INFO Closing logging queue
+ 0:04.59 INFO queue closed
+ 0:04.64 SUITE_END
+
+web-platform-test
+~~~~~~~~~~~~~~~~~
+Ran 5 checks (5 tests)
+Expected results: 5
+Unexpected results: 0
+OK
+ 0:04.64 INFO Got 0 unexpected results, with 0 unexpected passes
+ 0:04.64 wptserve INFO Stopped http server on 127.0.0.1:8001
+ 0:04.64 wptserve INFO Stopped http server on 127.0.0.1:8000
+ 0:04.64 wptserve INFO Stopped http server on 127.0.0.1:8002
+ 0:04.64 wptserve INFO Stopped http server on 127.0.0.1:8003
+ 0:04.64 wptserve INFO Stopped http server on 127.0.0.1:8443
+ 0:04.65 wptserve INFO Stopped http server on 127.0.0.1:8444
+ 0:04.66 wptserve INFO Stopped http server on 127.0.0.1:8445
+ 0:04.67 wptserve INFO Stopped http server on 127.0.0.1:8446
+ 0:04.67 wptserve INFO Stopped http server on 127.0.0.1:9000
+ 0:04.68 wptserve INFO Stopped WebTransport over HTTP/3 server on 127.0.0.1:11000
+ 0:04.72 wptserve INFO Close on: (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('127.0.0.1', 8888))
+ 0:04.72 wptserve INFO Close on: (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('127.0.0.1', 8889))
+ 0:04.76 INFO Closing logging queue
+ 0:04.76 INFO queue closed

@@ -204,12 +204,24 @@ test('C04 GPU 핵심과 fixture 검증 feature를 분리하고 앱 검증 빌드
     repositoryRoot,
     'crates/spinon-ffi/src/runtime_gpu/fixtures/data.rs',
   ), 'utf8');
+  const runtimeGpuFixtures = await readFile(resolve(
+    repositoryRoot,
+    'crates/spinon-ffi/src/runtime_gpu/fixtures.rs',
+  ), 'utf8');
+  const ffiFixtures = await readFile(resolve(
+    repositoryRoot,
+    'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures.rs',
+  ), 'utf8');
   const ffiHeader = await readFile(resolve(
     repositoryRoot,
     'crates/spinon-ffi/include/spinon_ffi.h',
   ), 'utf8');
   assert.match(runtimeGpu, /#\[cfg\(feature = "c04-runtime-gpu-fixture-test"\)\]\s*mod fixtures;/);
   assert.match(runtimeGpuFfi, /#\[cfg\(feature = "c04-runtime-gpu-fixture-test"\)\]\s*mod fixtures;/);
+  assert.match(runtimeGpuFixtures, /mod c11_3_1;/);
+  assert.match(ffiFixtures, /mod c11_3_1;/);
+  assert.doesNotMatch(runtimeGpu, /mod c11_3_1;/);
+  assert.doesNotMatch(runtimeGpuFfi, /mod c11_3_1;/);
   assert.match(fixtureData, /include_str!\(/);
   assert.match(ffiHeader,
     /#if defined\(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST\)[\s\S]*?spinon_runtime_gpu_host_new_registered_properties_fixture/);
@@ -247,6 +259,55 @@ test('UA cascade fixture probe는 기본 off이고 명시한 경우에만 Rust�
   assert.match(result.stdout, /c04_ua_cascade_fixture_probe=1/);
 });
 
+test('C11 iOS pixel 캡처는 출력 플래그 순서와 무관하게 기능 값을 확인한다', async () => {
+  const capture = await readFile(resolve(
+    repositoryRoot,
+    'tools/css-reference/capture-c11-3-1-grid-repeat-pixels.mjs',
+  ), 'utf8');
+
+  assert.match(capture,
+    /const buildFlagLine = buildOutput\.match\(\/\^SPINON_IOS_SIM_BUILD_FLAGS/);
+  assert.match(capture,
+    /buildFlags\.c04_runtime_gpu, '1'/);
+  assert.match(capture,
+    /buildFlags\.c11_grid_metal_surface_pixels, '1'/);
+  assert.doesNotMatch(capture,
+    /SPINON_IOS_SIM_BUILD_FLAGS c04_runtime_gpu=1 c11_grid_metal_surface_pixels=1/);
+});
+
+test('Android와 iOS UA probe 호출은 opt-in feature gate 안에만 둔다', async () => {
+  const android = await readFile(resolve(
+    repositoryRoot,
+    'platforms/android/app/src/main/cpp/spinon_jni.cc',
+  ), 'utf8');
+  const ios = await readFile(resolve(
+    repositoryRoot,
+    'platforms/ios/Sources/SpinonRunner.mm',
+  ), 'utf8');
+  const androidMethod = android.match(
+    /Java_dev_spinon_bootstrap_MainActivity_nativeSessionUaCascadeProbe\([\s\S]*?\n}\n/,
+  )?.[0];
+  const iosMethod = ios.match(
+    /\+ \(NSString \*\)runUaCascadeProbe \{[\s\S]*?\n\}/,
+  )?.[0];
+
+  assert.ok(androidMethod, 'Android JNI UA probe wrapper exists');
+  assert.ok(iosMethod, 'iOS UA probe wrapper exists');
+  for (const [platform, method] of [
+    ['Android', androidMethod],
+    ['iOS', iosMethod],
+  ]) {
+    assert.match(method,
+      /#if defined\(SPINON_ENABLE_C04_UA_CASCADE_FIXTURE_PROBE\) && \\?\s*SPINON_ENABLE_C04_UA_CASCADE_FIXTURE_PROBE[\s\S]*?spinon_runtime_ua_cascade_probe[\s\S]*?#else[\s\S]*?ua_cascade_probe=DISABLED[\s\S]*?#endif/,
+      `${platform} keeps the optional symbol behind its opt-in macro`);
+    assert.equal(
+      (method.match(/spinon_runtime_ua_cascade_probe\(/g) ?? []).length,
+      1,
+      `${platform} contains one gated native probe call`,
+    );
+  }
+});
+
 test('C04 runtime core만으로는 fixture ABI를 노출하지 않는다', () => {
   const base = { SPINON_ENABLE_C04_RUNTIME_GPU: '1' };
   const fixtureFeatureOff = preprocessFfiHeader({
@@ -261,6 +322,8 @@ test('C04 runtime core만으로는 fixture ABI를 노출하지 않는다', () =>
   assert.doesNotMatch(fixtureFeatureOff.stdout,
     /spinon_runtime_gpu_host_(?:new|eval)_c11_2_3_grid_auto_placement_fixture/);
   assert.doesNotMatch(fixtureFeatureOff.stdout,
+    /spinon_runtime_gpu_host_(?:new|eval)_c11_3_1_grid_repeat_fixture/);
+  assert.doesNotMatch(fixtureFeatureOff.stdout,
     /spinon_runtime_gpu_host_request_c11_2_3_grid_surface_pixels_for_test/);
 
   const runtimeOff = preprocessFfiHeader({
@@ -271,6 +334,8 @@ test('C04 runtime core만으로는 fixture ABI를 노출하지 않는다', () =>
     /spinon_runtime_gpu_host_new_c11_2_3_grid_auto_placement_fixture/);
   assert.doesNotMatch(runtimeOff.stdout,
     /spinon_runtime_gpu_host_eval_c11_2_3_grid_auto_placement_fixture/);
+  assert.doesNotMatch(runtimeOff.stdout,
+    /spinon_runtime_gpu_host_(?:new|eval)_c11_3_1_grid_repeat_fixture/);
 
   const pixelFeatureOff = preprocessFfiHeader({
     ...base,
@@ -282,6 +347,10 @@ test('C04 runtime core만으로는 fixture ABI를 노출하지 않는다', () =>
     /spinon_runtime_gpu_host_new_c11_2_3_grid_auto_placement_fixture/);
   assert.match(pixelFeatureOff.stdout,
     /spinon_runtime_gpu_host_eval_c11_2_3_grid_auto_placement_fixture/);
+  assert.match(pixelFeatureOff.stdout,
+    /spinon_runtime_gpu_host_new_c11_3_1_grid_repeat_fixture/);
+  assert.match(pixelFeatureOff.stdout,
+    /spinon_runtime_gpu_host_eval_c11_3_1_grid_repeat_fixture/);
   assert.doesNotMatch(pixelFeatureOff.stdout,
     /spinon_runtime_gpu_host_request_c11_2_3_grid_surface_pixels_for_test/);
 
@@ -294,4 +363,6 @@ test('C04 runtime core만으로는 fixture ABI를 노출하지 않는다', () =>
   assert.equal(pixelFeatureOn.status, 0, pixelFeatureOn.stderr);
   assert.match(pixelFeatureOn.stdout,
     /spinon_runtime_gpu_host_request_c11_2_3_grid_surface_pixels_for_test/);
+  assert.match(pixelFeatureOn.stdout,
+    /spinon_runtime_gpu_host_request_c11_3_1_grid_surface_pixels_for_test/);
 });

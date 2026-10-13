@@ -109,6 +109,7 @@ pub(super) fn computed_element_output(
                 | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
         ) {
         if computed_properties
             .get("display")
@@ -118,6 +119,7 @@ pub(super) fn computed_element_output(
                 computed,
                 node_id,
                 &computed_properties,
+                profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1,
             )?)
         } else {
             None
@@ -130,6 +132,7 @@ pub(super) fn computed_element_output(
         ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
     ) && !layout_suppressed)
         .then(|| super::grid::computed_grid_item_placement(computed, &computed_properties));
     for (name, width) in [

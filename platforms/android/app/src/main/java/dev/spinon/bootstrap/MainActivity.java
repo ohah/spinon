@@ -221,6 +221,25 @@ public final class MainActivity extends Activity {
         boolean c1122GridAutoPlacementRequested = getIntent()
                 .getBooleanExtra("spinon_c1122_grid_auto_placement", false)
                 || c1122GridScene != null;
+        String c1131GridScene = getIntent().getStringExtra("spinon_c1131_grid_repeat_scene");
+        boolean c1131GridRepeatRequested = getIntent()
+                .getBooleanExtra("spinon_c1131_grid_repeat", false)
+                || c1131GridScene != null;
+        String c1131GridRunId = getIntent().getStringExtra("spinon_c1131_grid_repeat_run_id");
+        if (c1131GridRepeatRequested
+                && ((c1131GridScene != null
+                                && !"multi-track-repeat".equals(c1131GridScene))
+                        || (c1131GridRunId != null
+                                && !c1131GridRunId.matches("[A-Za-z0-9_-]{1,80}"))
+                        || c1121GridPlacementRequested || c1122GridAutoPlacementRequested)) {
+            TextView unavailable = new TextView(this);
+            unavailable.setText("C11.3.1 Grid scene 또는 profile 선택이 올바르지 않습니다.");
+            unavailable.setTextColor(Color.WHITE);
+            unavailable.setGravity(Gravity.CENTER);
+            setContentView(unavailable);
+            Log.e(TAG, "SPINON_C1131_GRID_ARGUMENT_ERROR rejected=true");
+            return;
+        }
         if (c1122GridAutoPlacementRequested) {
             boolean allowed = false;
             for (String sceneId : C1122_GRID_AUTO_PLACEMENT_SCENE_IDS) {
@@ -267,6 +286,12 @@ public final class MainActivity extends Activity {
                 }
                 if (allowedPlacementPixelScene) c11GridSceneIndex = 0;
             }
+            if (c11GridSceneIndex < 0 && c1131GridRepeatRequested
+                    && "multi-track-repeat".equals(c11GridCase)
+                    && c11GridCase.equals(c1131GridScene == null
+                            ? "multi-track-repeat" : c1131GridScene)) {
+                c11GridSceneIndex = 0;
+            }
             if (c11GridSceneIndex < 0) {
                 TextView unavailable = new TextView(this);
                 unavailable.setText("알 수 없는 C11 Grid scene입니다.");
@@ -310,6 +335,7 @@ public final class MainActivity extends Activity {
                 || getIntent().getStringExtra("spinon_c124_surface_case") != null
                 || getIntent().getBooleanExtra("spinon_c1121_grid_placement", false)
                 || c1122GridAutoPlacementRequested
+                || c1131GridRepeatRequested
                 || c11GridFixtureRequested
                 || getIntent().getBooleanExtra("spinon_c121_static_relative", false)) {
             if (!BuildConfig.SPINON_C04_RUNTIME_GPU) {

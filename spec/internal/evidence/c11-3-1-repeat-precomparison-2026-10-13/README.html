@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>C11.3.1 정수 repeat Chromium 사전 비교 · 스피논</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1020;--panel:#121a2b;--line:#26344d;--text:#edf3ff;--muted:#a7b4c9;--blue:#70b7ff;--green:#55d6a0}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -10%,#172742 0,transparent 48%),var(--bg);color:var(--text);font:16px/1.7 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main{width:min(1080px,calc(100% - 32px));margin:0 auto;padding:24px 0 64px;min-width:0}a{color:var(--blue);overflow-wrap:anywhere}h1,h2,h3{line-height:1.2;letter-spacing:-.025em}h1{font-size:clamp(30px,5vw,46px)}h2{margin-top:34px}p,li{color:var(--muted);overflow-wrap:anywhere}img{display:block;max-width:100%;height:auto;border-radius:10px;border:1px solid var(--line)}table{width:100%;max-width:100%;border-collapse:collapse;display:block;overflow:auto;margin:18px 0}td,th{padding:10px 12px;border:1px solid var(--line);text-align:left;vertical-align:top;overflow-wrap:anywhere;word-break:break-word}th{background:var(--panel)}code{color:#c3e0ff;background:#121a2b;padding:2px 5px;border-radius:4px;font:.92em ui-monospace,SFMono-Regular,Menlo,monospace;overflow-wrap:anywhere;word-break:break-word}pre{max-width:100%;overflow:auto;background:#101727;border:1px solid var(--line);border-radius:12px;padding:16px}pre code{padding:0;background:none;overflow-wrap:normal;word-break:normal}blockquote{border-left:3px solid var(--blue);padding-left:16px;color:var(--muted)}
+</style>
+</head>
+<body><main><p><a href="/spinon/roadmap.html">← 스피논 구현 현황</a></p><h1 id="c1131-정수-repeat-chromium-사전-비교">C11.3.1 정수 repeat Chromium 사전 비교</h1>
+<h2 id="고정-fixture와-실행-환경">고정 fixture와 실행 환경</h2>
+<ul>
+<li>Inventory: <a href="../../../../tests/fixtures/css/c11/grid-template-repeat-c1131-inventory.json"><code>grid-template-repeat-c1131-inventory.json</code></a> · SHA-256 <code>ebc4716049e775ec1116b7c487102ec97e3b54cd1a7f91980a1caa413cd63914</code></li>
+<li>HTML: <a href="../../../../tests/fixtures/css/c11/grid-template-repeat-c1131.html"><code>grid-template-repeat-c1131.html</code></a> · SHA-256 <code>0a109d053a3a7e80abb3a652451a3e1b3a1ec667a1b507d11d036d625601ee7b</code></li>
+<li>Chromium 기준 JSON: <a href="../../../../tests/fixtures/css/references/c11-3-1-grid-repeat-precomparison-v1.json"><code>c11-3-1-grid-repeat-precomparison-v1.json</code></a> · SHA-256 <code>3b98a994a0fd1ec52a838887c71a54b0afad62527d7a289557cc7ed728c24788</code></li>
+<li>캡처 도구: <a href="../../../../tools/css-reference/capture-c11-3-1-grid-repeat-precomparison.mjs"><code>capture-c11-3-1-grid-repeat-precomparison.mjs</code></a> · SHA-256 <code>d5067aca4f985539c9c66f8ca4d8055d022f75b4ea7dd8744e30b4f35ae793ed</code></li>
+<li>실행 ID: <code>c1131-chrome-20261013T035742923Z-f59a108e</code></li>
+<li>Chrome for Testing <code>154.0.8037.92</code>, CDP revision <code>@334b65d254ccc35df4fca82706d1753227b01039</code>, 실행 파일 SHA-256 <code>ce0c09ea98a7592e7799e54c1867797ccf99d4d6e821a11067c332e454732349</code></li>
+<li>macOS 26.5.1 arm64, Node <code>v24.3.0</code>, viewport <code>320×240 CSS px</code>, DPR 1·2, <code>en-US</code>, UTC, light, LTR, <code>horizontal-tb</code>, coarse pointer</li>
+</ul>
+<p>12개 scene·29개 node에서 CSSOM resolved value, line-name group, node별 geometry를 기록했다. 두 DPR의 geometry 기준과 CSSOM 값을 비교할 수 있도록 저장했으며 DPR 1 screenshot 12개를 보관했다. geometry 허용 오차는 각 축 <code>0.5 CSS px</code>다. <a href="c1131-chrome-20261013T035742923Z-f59a108e/capture-summary.json">fixture 캡처 요약</a>.</p>
+<h2 id="chrome-관측">Chrome 관측</h2>
+<table>
+<thead>
+<tr>
+<th>Scene</th>
+<th>Chrome 관측</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>multi-track-repeat</code></td>
+<td>7 tracks: <code>20px 80px 40px 36px 40px 36px 20px</code></td>
+</tr>
+<tr>
+<td><code>line-name-seam</code></td>
+<td>repeat 끝/시작 이름이 한 line group으로 합쳐짐. 순서: <code>outer-start</code>; <code>outer-end repeat-start item-start</code>; <code>seam</code>; <code>item-end item-start</code>; <code>seam</code>; <code>item-end trailing</code>; <code>outer-last</code></td>
+</tr>
+<tr>
+<td><code>duplicate-line-names</code></td>
+<td>동일 line의 중복 이름이 CSSOM group에 보존됨: <code>[same same]</code> 3개 line, 뒤에 <code>[end]</code></td>
+</tr>
+<tr>
+<td><code>mixed-units-and-gaps</code></td>
+<td>resolved columns: <code>50px 64px 55px 64px 55px</code></td>
+</tr>
+<tr>
+<td><code>limit-10000</code> / <code>limit-10001</code></td>
+<td>Chrome은 10,000과 10,001 explicit tracks를 모두 계산. Spinon 계획 상한 10,000은 별도 정책으로 유지하고 10,001은 거부한다.</td>
+</tr>
+<tr>
+<td><code>auto-fill-outside-profile</code> / <code>minmax-outside-profile</code></td>
+<td>Chrome 기준값은 각각 8 tracks / 2 tracks. 두 구문은 C11.3.1 지원 subset 밖이다.</td>
+</tr>
+<tr>
+<td><code>nested-repeat-invalid</code> / <code>zero-repeat-invalid</code></td>
+<td>잘못된 선언은 CSS cascade fallback 뒤 implicit auto track의 resolved 값 <code>320px</code>를 보임. 이는 repeat 지원 성공이나 Spinon runtime 오류 결과가 아니다.</td>
+</tr>
+</tbody>
+</table>
+<p><img src="c1131-chrome-20261013T035742923Z-f59a108e/line-name-seam-dpr1.png" alt="repeat seam의 Chrome 기준 화면"></p>
+<h2 id="고정-wpt-후보">고정 WPT 후보</h2>
+<p>WPT revision은 <code>c999c58338ee1d223df5ad62e48be1202ced0d37</code>다. Chrome 154 runner 실행은 5 tests, 5 PASS, unexpected 0이다. 상세 원문은 <a href="wpt-chrome154.0.8037.92-run02.log">runner 로그</a>와 <a href="wpt-chrome154.0.8037.92-run02.json">구조화 결과</a>다.</p>
+<table>
+<thead>
+<tr>
+<th>후보</th>
+<th>SHA-256</th>
+<th>Chrome 결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>grid-repeat-integer-001.html</code></td>
+<td><code>f48604bbd0316467f1b004052db9425d132c56632b034f99eb7aaf34b530ad1c</code></td>
+<td>PASS</td>
+</tr>
+<tr>
+<td><code>grid-repeat-integer-002.html</code></td>
+<td><code>27b78abd184512f3f5371dd13fe8bd49e7aee41dc0ae7a7cc1689d54ab571a10</code></td>
+<td>PASS</td>
+</tr>
+<tr>
+<td><code>grid-repeat-integer-003.html</code></td>
+<td><code>baba3dbdfc7476bd2937cdffd2cc7e8c8c2b73ed8c80849d15e9e846e40544ac</code></td>
+<td>PASS</td>
+</tr>
+<tr>
+<td><code>grid-repeat-integer-004.html</code></td>
+<td><code>d87c350e49934251cbbf346086fd89f6dd815b5ecde0dec31ed2ba843263a333</code></td>
+<td>PASS</td>
+</tr>
+<tr>
+<td><code>grid-repeat-integer-005.html</code></td>
+<td><code>34a7548251bb2ad1a0d45677d6a8bbf99684f71157d6aa5ef587d25b42c154d4</code></td>
+<td>PASS</td>
+</tr>
+</tbody>
+</table>
+<p>WPT JSON의 <code>run_info.headless</code>는 <code>false</code>로 기록되어 있다. runner의 실제 표시 모드는 이 결과만으로 확정하지 않는다. 별도 Chromium fixture 캡처 JSON은 <code>--headless=new</code> 인수와 <code>HeadlessChrome</code> user agent를 기록했다. 위 WPT 결과는 Chrome oracle 실행일 뿐 Spinon WPT 적합성 결과가 아니다.</p>
+<h2 id="완료-경계">완료 경계</h2>
+<ul>
+<li>완료: C11.3.1 고정 Chromium 입력·CSSOM·geometry·line-name 기준, WPT 후보 원문 hash 및 Chrome oracle 실행 기록.</li>
+<li>후속 구현: Rust cascade·typed projection·layout profile을 추가했고, Android 17/API 37 AVD와 iOS 26.2 Simulator에서 <code>multi-track-repeat</code> 단일 장면의 runtime geometry를 실행했다. 상세 로그와 화면은 <a href="../c11-3-1-grid-repeat-runtime-2026-10-13/README.html">runtime 근거</a>다.</li>
+<li>미완료: Android 실기기, Android PixelCopy 및 iOS Metal drawable pixel readback, 구현 실패 관점 검토, Spinon WPT 적합성.</li>
+<li>이 문서와 Chrome 관측은 구현 완료, 공개 CSS 지원 선언 또는 전체 CSS Grid 지원을 뜻하지 않는다.</li>
+</ul>
+<p>fixture 자체 검사: <code>bun test ./tools/css-reference/c11-3-1-grid-repeat-precomparison.test.mjs</code> — 5 pass, 0 fail.</p></main></body>
+</html>
