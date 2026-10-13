@@ -1,0 +1,95 @@
+{
+  "status": "matched",
+  "scene": "row-sparse-hole-control",
+  "runID": "c1123-a-mv5yld3e-4ded3cc6-row-sparse-hole-control",
+  "processId": 28320,
+  "markerPrefix": "C1123",
+  "surfaceGeneration": 2,
+  "density": 2.8125,
+  "surface": [
+    900,
+    675
+  ],
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "scale": [
+    2.8125,
+    2.8125
+  ],
+  "expectedSamples": 4,
+  "matchedSamples": 4,
+  "maximumChannelError": 0,
+  "pngSha256": "da71acfe3c93822643f5717f69860b8eefe5acd89b578408b7e95bcf60c20c93",
+  "samples": [
+    {
+      "id": "item-c1123-row-sparse-hole-control-span-a",
+      "css": [
+        61,
+        28
+      ],
+      "pixel": [
+        172,
+        80
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ]
+    },
+    {
+      "id": "item-c1123-row-sparse-hole-control-span-b",
+      "css": [
+        61,
+        52
+      ],
+      "pixel": [
+        172,
+        147
+      ],
+      "rgba": [
+        135,
+        88,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "item-c1123-row-sparse-hole-control-small-c",
+      "css": [
+        116,
+        52
+      ],
+      "pixel": [
+        327,
+        147
+      ],
+      "rgba": [
+        25,
+        169,
+        116,
+        255
+      ]
+    },
+    {
+      "id": "gap-row-c1123-row-sparse-hole-control-grid",
+      "css": [
+        39,
+        41
+      ],
+      "pixel": [
+        111,
+        116
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    }
+  ]
+}

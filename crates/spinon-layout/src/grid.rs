@@ -39,6 +39,8 @@ pub enum GridPlacementMode {
     ExplicitOnly,
     /// C11.2.2의 row sparse auto-placement와 양의 implicit row를 계산합니다.
     SparseRow,
+    /// C11.2.3의 row/column sparse·dense 자동 배치와 양의 implicit track을 계산합니다.
+    DenseAutoPlacement,
 }
 
 /// 제한 profile에서 허용하는 implicit track sizing 입력입니다.
@@ -54,6 +56,9 @@ pub enum GridAutoTrackSize {
 /// 제한 profile에서 허용하는 implicit row sizing 입력입니다.
 pub type GridAutoRows = GridAutoTrackSize;
 
+/// 제한 profile에서 허용하는 implicit column sizing 입력입니다.
+pub type GridAutoColumns = GridAutoTrackSize;
+
 /// 동일 revision의 계산된 Grid container 입력입니다.
 #[derive(Clone, Debug, Default, PartialEq)]
 pub struct GridContainerInput {
@@ -61,6 +66,7 @@ pub struct GridContainerInput {
     pub rows: Vec<GridTrackSize>,
     pub auto_flow: GridAutoFlow,
     pub auto_rows: GridAutoRows,
+    pub auto_columns: GridAutoColumns,
     pub placement_mode: GridPlacementMode,
 }
 
@@ -85,12 +91,28 @@ pub(super) fn validate_grid_layout(
 
     for (&id, container) in &input.grid_containers {
         match (container.placement_mode, container.auto_rows) {
-            (GridPlacementMode::SparseRow, GridAutoRows::Auto | GridAutoRows::LengthPx(_))
+            (
+                GridPlacementMode::SparseRow | GridPlacementMode::DenseAutoPlacement,
+                GridAutoRows::Auto | GridAutoRows::LengthPx(_),
+            )
             | (_, GridAutoRows::Auto) => {}
             (_, GridAutoRows::LengthPx(_)) => {
                 return Err(LayoutError::UnsupportedGridAutoRows {
                     node: id,
                     reason: "grid-auto-rows는 자동 배치 profile에서만 사용할 수 있습니다",
+                });
+            }
+        }
+        match (container.placement_mode, container.auto_columns) {
+            (
+                GridPlacementMode::DenseAutoPlacement,
+                GridAutoColumns::Auto | GridAutoColumns::LengthPx(_),
+            )
+            | (_, GridAutoColumns::Auto) => {}
+            (_, GridAutoColumns::LengthPx(_)) => {
+                return Err(LayoutError::UnsupportedGridAutoColumns {
+                    node: id,
+                    reason: "grid-auto-columns는 C11.2.3 profile에서만 사용할 수 있습니다",
                 });
             }
         }
@@ -100,6 +122,14 @@ pub(super) fn validate_grid_layout(
             return Err(LayoutError::InvalidGridTrack {
                 node: id,
                 property: "grid-auto-rows",
+            });
+        }
+        if let GridAutoColumns::LengthPx(value) = container.auto_columns
+            && (!value.is_finite() || value < 0.0)
+        {
+            return Err(LayoutError::InvalidGridTrack {
+                node: id,
+                property: "grid-auto-columns",
             });
         }
     }
@@ -150,8 +180,10 @@ pub(super) fn validate_grid_layout(
         {
             return Err(LayoutError::UnsupportedGridAutoFlow(node.id));
         }
-        if !matches!(container.placement_mode, GridPlacementMode::SparseRow)
-            && container.auto_flow != GridAutoFlow::Row
+        if !matches!(
+            container.placement_mode,
+            GridPlacementMode::SparseRow | GridPlacementMode::DenseAutoPlacement
+        ) && container.auto_flow != GridAutoFlow::Row
         {
             return Err(LayoutError::UnsupportedGridAutoFlow(node.id));
         }
@@ -190,7 +222,7 @@ pub(super) fn validate_grid_layout(
                 return Err(LayoutError::UnsupportedGridPositionedItem(child_id));
             }
             let valid_item_size = |size| match container.placement_mode {
-                GridPlacementMode::SparseRow
+                GridPlacementMode::SparseRow | GridPlacementMode::DenseAutoPlacement
                     if normalized_grid.auto_placed_items.contains(&child_id) =>
                 {
                     matches!(size, crate::LayoutDimension::Fixed(_))
@@ -225,8 +257,10 @@ pub(super) fn validate_grid_layout(
                 .checked_add(1)
                 .ok_or(LayoutError::GridTrackExpansionOverflow(node.id))?;
         }
-        if !matches!(container.placement_mode, GridPlacementMode::SparseRow)
-            && !has_explicit_placement
+        if !matches!(
+            container.placement_mode,
+            GridPlacementMode::SparseRow | GridPlacementMode::DenseAutoPlacement
+        ) && !has_explicit_placement
             && item_count > cell_count
         {
             return Err(LayoutError::GridImplicitTrackRequired(node.id));
@@ -271,3 +305,7 @@ mod tests;
 #[cfg(test)]
 #[path = "grid_auto_placement_tests.rs"]
 mod auto_placement_tests;
+
+#[cfg(test)]
+#[path = "grid_auto_placement/dense_column_tests.rs"]
+mod dense_column_tests;

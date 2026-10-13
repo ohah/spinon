@@ -1,0 +1,146 @@
+{
+  "status": "matched",
+  "scene": "row-dense-positive-implicit-row",
+  "runID": "c1123-a-mv5yld3e-4ded3cc6-row-dense-positive-implicit-row",
+  "processId": 28812,
+  "markerPrefix": "C1123",
+  "surfaceGeneration": 2,
+  "density": 2.8125,
+  "surface": [
+    900,
+    675
+  ],
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "scale": [
+    2.8125,
+    2.8125
+  ],
+  "expectedSamples": 7,
+  "matchedSamples": 7,
+  "maximumChannelError": 0,
+  "pngSha256": "7d5cf61e9006da058e4fc2718d896ca7a0ddbb3a38a2972d174e7650d19cc204",
+  "samples": [
+    {
+      "id": "item-c1123-row-dense-positive-implicit-row-item-a",
+      "css": [
+        28,
+        28
+      ],
+      "pixel": [
+        80,
+        80
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ]
+    },
+    {
+      "id": "item-c1123-row-dense-positive-implicit-row-item-b",
+      "css": [
+        76,
+        28
+      ],
+      "pixel": [
+        215,
+        80
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ]
+    },
+    {
+      "id": "item-c1123-row-dense-positive-implicit-row-item-c",
+      "css": [
+        28,
+        56
+      ],
+      "pixel": [
+        80,
+        158
+      ],
+      "rgba": [
+        25,
+        169,
+        116,
+        255
+      ]
+    },
+    {
+      "id": "item-c1123-row-dense-positive-implicit-row-item-d",
+      "css": [
+        76,
+        56
+      ],
+      "pixel": [
+        215,
+        158
+      ],
+      "rgba": [
+        135,
+        88,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "item-c1123-row-dense-positive-implicit-row-item-e",
+      "css": [
+        28,
+        89
+      ],
+      "pixel": [
+        80,
+        251
+      ],
+      "rgba": [
+        249,
+        115,
+        22,
+        255
+      ]
+    },
+    {
+      "id": "gap-column-c1123-row-dense-positive-implicit-row-grid",
+      "css": [
+        63,
+        29
+      ],
+      "pixel": [
+        178,
+        82
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    },
+    {
+      "id": "gap-row-c1123-row-dense-positive-implicit-row-grid",
+      "css": [
+        39,
+        43
+      ],
+      "pixel": [
+        111,
+        122
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    }
+  ]
+}

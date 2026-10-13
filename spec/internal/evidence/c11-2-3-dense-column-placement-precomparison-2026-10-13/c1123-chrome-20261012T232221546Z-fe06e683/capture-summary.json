@@ -1,0 +1,58 @@
+{
+  "runId": "c1123-chrome-20261012T232221546Z-fe06e683",
+  "referencePath": "tests/fixtures/css/references/c11-2-3-grid-auto-placement-precomparison-v7.json",
+  "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.98-47c845ca6c5a-3e252f64565d-0b43fa6b3732",
+  "screenshotCount": 25,
+  "caseCount": 25,
+  "nodeCount": 107,
+  "implementationCandidateCases": [
+    "row-sparse-baseline",
+    "row-dense-hole-fill",
+    "row-dense-span-collision",
+    "row-sparse-hole-control",
+    "row-dense-fixed-row",
+    "row-dense-fixed-column",
+    "row-dense-positive-implicit-row",
+    "column-sparse-explicit-fill",
+    "column-sparse-positive-implicit-column",
+    "column-sparse-fixed-row",
+    "column-sparse-fixed-column",
+    "column-dense-hole-fill",
+    "column-sparse-hole-control",
+    "column-dense-span-collision",
+    "column-dense-positive-implicit-column",
+    "definite-first-dense",
+    "hidden-item-excluded",
+    "nested-mixed-flow",
+    "auto-track-no-implicit",
+    "auto-span-at-track-limit",
+    "auto-span-over-track-limit"
+  ],
+  "oracleOnlyCases": [
+    "reject-repeated-auto-track",
+    "reject-negative-implicit-line",
+    "reject-nonzero-order",
+    "reject-indefinite-axis"
+  ],
+  "dpr": [
+    1,
+    2
+  ],
+  "wptSourcesHashedNotRun": [
+    {
+      "path": "css/css-grid/placement/grid-auto-flow-sparse-001.html",
+      "sha256": "9d30cb69227ab5bf80fda3f557b03eb89be7c9d5171de73ef7db8ecc5f80c0cf",
+      "status": "chrome-wpt-run-pass"
+    },
+    {
+      "path": "css/css-grid/placement/grid-auto-placement-fixed-row-column-001.html",
+      "sha256": "14c4a5c29bfd093473c7a5794637ea8d5aea44f4298c7a4f17df360d373762a2",
+      "status": "chrome-wpt-run-pass"
+    },
+    {
+      "path": "css/css-grid/placement/grid-auto-placement-implicit-tracks-001.html",
+      "sha256": "785012f37a838995bdd6491bd9d27034d21e2441152a067f050bc82fd993ad53",
+      "status": "chrome-wpt-run-pass"
+    }
+  ]
+}

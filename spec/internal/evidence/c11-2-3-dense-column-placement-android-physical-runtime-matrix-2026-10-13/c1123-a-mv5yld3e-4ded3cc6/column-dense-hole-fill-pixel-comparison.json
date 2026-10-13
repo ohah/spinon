@@ -1,0 +1,112 @@
+{
+  "status": "matched",
+  "scene": "column-dense-hole-fill",
+  "runID": "c1123-a-mv5yld3e-4ded3cc6-column-dense-hole-fill",
+  "processId": 29607,
+  "markerPrefix": "C1123",
+  "surfaceGeneration": 2,
+  "density": 2.8125,
+  "surface": [
+    900,
+    675
+  ],
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "scale": [
+    2.8125,
+    2.8125
+  ],
+  "expectedSamples": 5,
+  "matchedSamples": 5,
+  "maximumChannelError": 0,
+  "pngSha256": "e025379e42d6c511f80acda5436d785f9eac6fb087ef15b4da8b92548cac81e5",
+  "samples": [
+    {
+      "id": "item-c1123-column-dense-hole-fill-span-a",
+      "css": [
+        28,
+        41
+      ],
+      "pixel": [
+        80,
+        116
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ]
+    },
+    {
+      "id": "item-c1123-column-dense-hole-fill-span-b",
+      "css": [
+        76,
+        41
+      ],
+      "pixel": [
+        215,
+        116
+      ],
+      "rgba": [
+        135,
+        88,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "item-c1123-column-dense-hole-fill-small-c",
+      "css": [
+        28,
+        84
+      ],
+      "pixel": [
+        80,
+        237
+      ],
+      "rgba": [
+        25,
+        169,
+        116,
+        255
+      ]
+    },
+    {
+      "id": "gap-column-c1123-column-dense-hole-fill-grid",
+      "css": [
+        63,
+        29
+      ],
+      "pixel": [
+        178,
+        82
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    },
+    {
+      "id": "gap-row-c1123-column-dense-hole-fill-grid",
+      "css": [
+        39,
+        43
+      ],
+      "pixel": [
+        111,
+        122
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    }
+  ]
+}

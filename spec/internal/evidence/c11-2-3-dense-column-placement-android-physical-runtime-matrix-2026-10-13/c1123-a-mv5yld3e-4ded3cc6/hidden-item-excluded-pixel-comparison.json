@@ -1,0 +1,78 @@
+{
+  "status": "matched",
+  "scene": "hidden-item-excluded",
+  "runID": "c1123-a-mv5yld3e-4ded3cc6-hidden-item-excluded",
+  "processId": 30155,
+  "markerPrefix": "C1123",
+  "surfaceGeneration": 2,
+  "density": 2.8125,
+  "surface": [
+    900,
+    675
+  ],
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "scale": [
+    2.8125,
+    2.8125
+  ],
+  "expectedSamples": 3,
+  "matchedSamples": 3,
+  "maximumChannelError": 0,
+  "pngSha256": "02e21ba6e4d3b5de4dfa8348a31eb5835a2ba8f4b4df0f149bb957fac3ac8cfd",
+  "samples": [
+    {
+      "id": "item-c1123-hidden-item-excluded-visible-a",
+      "css": [
+        28,
+        28
+      ],
+      "pixel": [
+        80,
+        80
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ]
+    },
+    {
+      "id": "item-c1123-hidden-item-excluded-visible-b",
+      "css": [
+        76,
+        28
+      ],
+      "pixel": [
+        215,
+        80
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ]
+    },
+    {
+      "id": "gap-column-c1123-hidden-item-excluded-grid",
+      "css": [
+        63,
+        29
+      ],
+      "pixel": [
+        178,
+        82
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    }
+  ]
+}

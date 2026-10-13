@@ -1,0 +1,129 @@
+{
+  "status": "matched",
+  "scene": "definite-first-dense",
+  "runID": "c1123-a-mv5yld3e-4ded3cc6-definite-first-dense",
+  "processId": 30047,
+  "markerPrefix": "C1123",
+  "surfaceGeneration": 2,
+  "density": 2.8125,
+  "surface": [
+    900,
+    675
+  ],
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "scale": [
+    2.8125,
+    2.8125
+  ],
+  "expectedSamples": 6,
+  "matchedSamples": 6,
+  "maximumChannelError": 0,
+  "pngSha256": "060dbde98056b253d896bd931fa8f316a15ee617154c7a34807e22a9771f8754",
+  "samples": [
+    {
+      "id": "item-c1123-definite-first-dense-auto-a",
+      "css": [
+        72,
+        28
+      ],
+      "pixel": [
+        203,
+        80
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ]
+    },
+    {
+      "id": "item-c1123-definite-first-dense-fixed-late",
+      "css": [
+        28,
+        28
+      ],
+      "pixel": [
+        80,
+        80
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ]
+    },
+    {
+      "id": "item-c1123-definite-first-dense-span-b",
+      "css": [
+        61,
+        52
+      ],
+      "pixel": [
+        172,
+        147
+      ],
+      "rgba": [
+        135,
+        88,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "item-c1123-definite-first-dense-auto-c",
+      "css": [
+        116,
+        28
+      ],
+      "pixel": [
+        327,
+        80
+      ],
+      "rgba": [
+        25,
+        169,
+        116,
+        255
+      ]
+    },
+    {
+      "id": "gap-column-c1123-definite-first-dense-grid",
+      "css": [
+        61,
+        29
+      ],
+      "pixel": [
+        172,
+        82
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    },
+    {
+      "id": "gap-row-c1123-definite-first-dense-grid",
+      "css": [
+        39,
+        41
+      ],
+      "pixel": [
+        111,
+        116
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    }
+  ]
+}

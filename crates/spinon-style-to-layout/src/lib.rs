@@ -24,6 +24,8 @@ mod c11_2_1_grid_placement_tests;
 #[cfg(test)]
 mod c11_2_2_grid_auto_placement_tests;
 #[cfg(test)]
+mod c11_2_3_grid_auto_placement_tests;
+#[cfg(test)]
 mod c11_grid_tests;
 #[cfg(test)]
 mod c12_1_position_tests;
@@ -59,6 +61,7 @@ pub use projection::{
     StyleLayoutOutput, compute_flex_alignment_layers_style_layout,
     compute_flex_alignment_style_layout, compute_flex_margin_style_layout,
     compute_runtime_block_flex_grid_auto_placement_style_layout,
+    compute_runtime_block_flex_grid_dense_auto_placement_style_layout,
     compute_runtime_block_flex_grid_placement_style_layout,
     compute_runtime_block_flex_grid_style_layout, compute_runtime_style_layout,
     compute_s04_style_layout, compute_style_layout,

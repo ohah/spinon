@@ -29,7 +29,10 @@ pub(super) fn normalize_grid_layout(
         };
         if container_node.style.display != LayoutDisplay::Grid
             || hidden[&container_node.id]
-            || !matches!(container.placement_mode, GridPlacementMode::SparseRow)
+            || !matches!(
+                container.placement_mode,
+                GridPlacementMode::SparseRow | GridPlacementMode::DenseAutoPlacement
+            )
         {
             continue;
         }
@@ -45,6 +48,21 @@ pub(super) fn normalize_grid_layout(
                 output.expanded_rows.insert(container_node.id, rows);
             }
             output.auto_placed_items.extend(sparse.auto_placed_items);
+        } else {
+            let dense = super::grid_auto_placement::normalize_dense_grid_container(
+                input,
+                &hidden,
+                container_node,
+                container,
+            )?;
+            output.item_placements.extend(dense.item_placements);
+            if let Some(rows) = dense.expanded_rows {
+                output.expanded_rows.insert(container_node.id, rows);
+            }
+            if let Some(columns) = dense.expanded_columns {
+                output.expanded_columns.insert(container_node.id, columns);
+            }
+            output.auto_placed_items.extend(dense.auto_placed_items);
         }
     }
     Ok(output)
@@ -93,7 +111,10 @@ pub(super) fn normalize_grid_item_placements(
             .grid_containers
             .get(&container_node.id)
             .ok_or(LayoutError::MissingGridContainer(container_node.id))?;
-        if matches!(container.placement_mode, GridPlacementMode::SparseRow) {
+        if matches!(
+            container.placement_mode,
+            GridPlacementMode::SparseRow | GridPlacementMode::DenseAutoPlacement
+        ) {
             continue;
         }
         let visible_items = container_node

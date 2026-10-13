@@ -174,6 +174,9 @@ fn runtime_properties_for_profile(
     if profile == ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1 {
         return Some(runtime_grid::runtime_block_flex_grid_auto_placement_properties());
     }
+    if profile == ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1 {
+        return Some(runtime_grid::runtime_block_flex_grid_dense_auto_placement_properties());
+    }
     let has_paint = matches!(
         profile,
         ComputedStyleProfile::RuntimeFlexPaintV1
@@ -222,5 +225,6 @@ fn is_runtime_layout_profile(profile: ComputedStyleProfile) -> bool {
             | ComputedStyleProfile::RuntimeBlockFlexGridV1
             | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
     )
 }

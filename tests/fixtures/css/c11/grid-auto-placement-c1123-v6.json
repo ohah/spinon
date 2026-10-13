@@ -1,0 +1,408 @@
+{
+  "schema": "spinon-css-c11-2-3-grid-auto-placement-inventory/v6",
+  "fixtureId": "C11-2-3-grid-auto-placement-precomparison-v6",
+  "profileId": "RuntimeBlockFlexGridAutoPlacementDenseV1",
+  "viewport": {
+    "width": 360,
+    "height": 800,
+    "deviceScaleFactors": [
+      1,
+      2
+    ]
+  },
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "forcedColors": "none",
+    "pointer": "coarse",
+    "hover": "none",
+    "direction": "ltr",
+    "writingMode": "horizontal-tb"
+  },
+  "comparison": {
+    "rectFields": [
+      "x",
+      "y",
+      "width",
+      "height"
+    ],
+    "maximumAbsoluteRectErrorCssPx": 0.5,
+    "computedProperties": [
+      "display",
+      "grid-template-columns",
+      "grid-template-rows",
+      "grid-auto-flow",
+      "grid-auto-columns",
+      "grid-auto-rows",
+      "grid-column-gap",
+      "grid-row-gap",
+      "grid-row-start",
+      "grid-row-end",
+      "grid-column-start",
+      "grid-column-end",
+      "order"
+    ]
+  },
+  "wpt": {
+    "revision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+    "chrome": {
+      "product": "Chrome/154.0.8037.98",
+      "revision": "@b859317bf11f6be47f9b7799ec690a0a42a1fb33"
+    },
+    "supportCss": {
+      "path": "css/support/grid.css",
+      "sha256": "b2f35862e7b8fa9dcae8f4f8d25add78d93f3e7993e08a4337030a4dd2d4425e"
+    },
+    "candidates": [
+      {
+        "path": "css/css-grid/placement/grid-auto-flow-sparse-001.html",
+        "sha256": "9d30cb69227ab5bf80fda3f557b03eb89be7c9d5171de73ef7db8ecc5f80c0cf",
+        "coverage": "column sparse 자동 배치 포함",
+        "status": "chrome-wpt-run-pass",
+        "sourceUrl": "https://github.com/web-platform-tests/wpt/blob/c999c58338ee1d223df5ad62e48be1202ced0d37/css/css-grid/placement/grid-auto-flow-sparse-001.html"
+      },
+      {
+        "path": "css/css-grid/placement/grid-auto-placement-fixed-row-column-001.html",
+        "sha256": "14c4a5c29bfd093473c7a5794637ea8d5aea44f4298c7a4f17df360d373762a2",
+        "coverage": "고정 secondary 축에서 sparse/dense span 배치 포함",
+        "status": "chrome-wpt-run-pass",
+        "sourceUrl": "https://github.com/web-platform-tests/wpt/blob/c999c58338ee1d223df5ad62e48be1202ced0d37/css/css-grid/placement/grid-auto-placement-fixed-row-column-001.html"
+      },
+      {
+        "path": "css/css-grid/placement/grid-auto-placement-implicit-tracks-001.html",
+        "sha256": "785012f37a838995bdd6491bd9d27034d21e2441152a067f050bc82fd993ad53",
+        "coverage": "column 및 row/column dense와 implicit track 포함",
+        "status": "chrome-wpt-run-pass",
+        "sourceUrl": "https://github.com/web-platform-tests/wpt/blob/c999c58338ee1d223df5ad62e48be1202ced0d37/css/css-grid/placement/grid-auto-placement-implicit-tracks-001.html"
+      }
+    ],
+    "runnerResult": {
+      "path": "spec/internal/evidence/c11-2-3-dense-column-placement-precomparison-2026-10-13/wpt-chrome-154-rerun.log",
+      "summary": "3 ran as expected; 0 skipped"
+    }
+  },
+  "cases": [
+    {
+      "id": "row-sparse-baseline",
+      "title": "C11.2.2 sparse 회귀 기준",
+      "scope": "implementation-candidate",
+      "rootId": "c1123-row-sparse-baseline-grid",
+      "nodeIds": [
+        "c1123-row-sparse-baseline-grid",
+        "c1123-row-sparse-baseline-auto-a",
+        "c1123-row-sparse-baseline-span-two",
+        "c1123-row-sparse-baseline-fixed-cell",
+        "c1123-row-sparse-baseline-auto-b"
+      ]
+    },
+    {
+      "id": "row-dense-hole-fill",
+      "title": "row dense가 앞선 hole을 채움",
+      "scope": "implementation-candidate",
+      "rootId": "c1123-row-dense-hole-fill-grid",
+      "nodeIds": [
+        "c1123-row-dense-hole-fill-grid",
+        "c1123-row-dense-hole-fill-span-a",
+        "c1123-row-dense-hole-fill-span-b",
+        "c1123-row-dense-hole-fill-small-c"
+      ]
+    },
+    {
+      "id": "row-dense-span-collision",
+      "title": "row dense span 충돌과 definite 선점",
+      "scope": "implementation-candidate",
+      "rootId": "c1123-row-dense-span-collision-grid",
+      "nodeIds": [
+        "c1123-row-dense-span-collision-grid",
+        "c1123-row-dense-span-collision-span-a",
+        "c1123-row-dense-span-collision-fixed-c",
+        "c1123-row-dense-span-collision-span-b",
+        "c1123-row-dense-span-collision-small-d"
+      ]
+    },
+    {
+      "id": "row-sparse-hole-control",
+      "title": "동일 source order sparse 대조군",
+      "scope": "implementation-candidate",
+      "rootId": "c1123-row-sparse-hole-control-grid",
+      "nodeIds": [
+        "c1123-row-sparse-hole-control-grid",
+        "c1123-row-sparse-hole-control-span-a",
+        "c1123-row-sparse-hole-control-span-b",
+        "c1123-row-sparse-hole-control-small-c"
+      ]
+    },
+    {
+      "id": "row-dense-fixed-row",
+      "title": "row dense definite row 잠금",
+      "scope": "implementation-candidate",
+      "rootId": "c1123-row-dense-fixed-row-grid",
+      "nodeIds": [
+        "c1123-row-dense-fixed-row-grid",
+        "c1123-row-dense-fixed-row-locked-a",
+        "c1123-row-dense-fixed-row-locked-span",
+        "c1123-row-dense-fixed-row-locked-c"
+      ]
+    },
+    {
+      "id": "row-dense-fixed-column",
+      "title": "row dense definite column 잠금",
+      "scope": "implementation-candidate",
+      "rootId": "c1123-row-dense-fixed-column-grid",
+      "nodeIds": [
+        "c1123-row-dense-fixed-column-grid",
+        "c1123-row-dense-fixed-column-locked-a",
+        "c1123-row-dense-fixed-column-locked-b",
+        "c1123-row-dense-fixed-column-locked-c"
+      ]
+    },
+    {
+      "id": "row-dense-positive-implicit-row",
+      "title": "row dense 양의 implicit row와 고정 px",
+      "scope": "implementation-candidate",
+      "rootId": "c1123-row-dense-positive-implicit-row-grid",
+      "nodeIds": [
+        "c1123-row-dense-positive-implicit-row-grid",
+        "c1123-row-dense-positive-implicit-row-item-a",
+        "c1123-row-dense-positive-implicit-row-item-b",
+        "c1123-row-dense-positive-implicit-row-item-c",
+        "c1123-row-dense-positive-implicit-row-item-d",
+        "c1123-row-dense-positive-implicit-row-item-e"
+      ]
+    },
+    {
+      "id": "column-sparse-explicit-fill",
+      "title": "column sparse 명시 track 채우기",
+      "scope": "implementation-candidate",
+      "rootId": "c1123-column-sparse-explicit-fill-grid",
+      "nodeIds": [
+        "c1123-column-sparse-explicit-fill-grid",
+        "c1123-column-sparse-explicit-fill-item-a",
+        "c1123-column-sparse-explicit-fill-item-b",
+        "c1123-column-sparse-explicit-fill-item-c",
+        "c1123-column-sparse-explicit-fill-item-d"
+      ]
+    },
+    {
+      "id": "column-sparse-positive-implicit-column",
+      "title": "column sparse 양의 implicit column",
+      "scope": "implementation-candidate",
+      "rootId": "c1123-column-sparse-positive-implicit-column-grid",
+      "nodeIds": [
+        "c1123-column-sparse-positive-implicit-column-grid",
+        "c1123-column-sparse-positive-implicit-column-item-a",
+        "c1123-column-sparse-positive-implicit-column-item-b",
+        "c1123-column-sparse-positive-implicit-column-item-c",
+        "c1123-column-sparse-positive-implicit-column-item-d",
+        "c1123-column-sparse-positive-implicit-column-item-e"
+      ]
+    },
+    {
+      "id": "column-sparse-fixed-row",
+      "title": "column sparse definite row 잠금",
+      "scope": "implementation-candidate",
+      "rootId": "c1123-column-sparse-fixed-row-grid",
+      "nodeIds": [
+        "c1123-column-sparse-fixed-row-grid",
+        "c1123-column-sparse-fixed-row-locked-a",
+        "c1123-column-sparse-fixed-row-locked-b",
+        "c1123-column-sparse-fixed-row-locked-c"
+      ]
+    },
+    {
+      "id": "column-sparse-fixed-column",
+      "title": "column sparse definite column 잠금",
+      "scope": "implementation-candidate",
+      "rootId": "c1123-column-sparse-fixed-column-grid",
+      "nodeIds": [
+        "c1123-column-sparse-fixed-column-grid",
+        "c1123-column-sparse-fixed-column-locked-a",
+        "c1123-column-sparse-fixed-column-locked-b",
+        "c1123-column-sparse-fixed-column-locked-c"
+      ]
+    },
+    {
+      "id": "column-dense-hole-fill",
+      "title": "column dense가 앞선 hole을 채움",
+      "scope": "implementation-candidate",
+      "rootId": "c1123-column-dense-hole-fill-grid",
+      "nodeIds": [
+        "c1123-column-dense-hole-fill-grid",
+        "c1123-column-dense-hole-fill-span-a",
+        "c1123-column-dense-hole-fill-span-b",
+        "c1123-column-dense-hole-fill-small-c"
+      ]
+    },
+    {
+      "id": "column-sparse-hole-control",
+      "title": "동일 source order column sparse 대조군",
+      "scope": "implementation-candidate",
+      "rootId": "c1123-column-sparse-hole-control-grid",
+      "nodeIds": [
+        "c1123-column-sparse-hole-control-grid",
+        "c1123-column-sparse-hole-control-span-a",
+        "c1123-column-sparse-hole-control-span-b",
+        "c1123-column-sparse-hole-control-small-c"
+      ]
+    },
+    {
+      "id": "column-dense-span-collision",
+      "title": "column dense span과 definite 선점",
+      "scope": "implementation-candidate",
+      "rootId": "c1123-column-dense-span-collision-grid",
+      "nodeIds": [
+        "c1123-column-dense-span-collision-grid",
+        "c1123-column-dense-span-collision-span-a",
+        "c1123-column-dense-span-collision-fixed-c",
+        "c1123-column-dense-span-collision-span-b",
+        "c1123-column-dense-span-collision-small-d"
+      ]
+    },
+    {
+      "id": "column-dense-positive-implicit-column",
+      "title": "column dense 양의 implicit column",
+      "scope": "implementation-candidate",
+      "rootId": "c1123-column-dense-positive-implicit-column-grid",
+      "nodeIds": [
+        "c1123-column-dense-positive-implicit-column-grid",
+        "c1123-column-dense-positive-implicit-column-item-a",
+        "c1123-column-dense-positive-implicit-column-item-b",
+        "c1123-column-dense-positive-implicit-column-item-c",
+        "c1123-column-dense-positive-implicit-column-item-d",
+        "c1123-column-dense-positive-implicit-column-item-e"
+      ]
+    },
+    {
+      "id": "definite-first-dense",
+      "title": "DOM 뒤 definite item의 선점",
+      "scope": "implementation-candidate",
+      "rootId": "c1123-definite-first-dense-grid",
+      "nodeIds": [
+        "c1123-definite-first-dense-grid",
+        "c1123-definite-first-dense-auto-a",
+        "c1123-definite-first-dense-fixed-late",
+        "c1123-definite-first-dense-span-b",
+        "c1123-definite-first-dense-auto-c"
+      ]
+    },
+    {
+      "id": "hidden-item-excluded",
+      "title": "display none child 제외",
+      "scope": "implementation-candidate",
+      "rootId": "c1123-hidden-item-excluded-grid",
+      "nodeIds": [
+        "c1123-hidden-item-excluded-grid",
+        "c1123-hidden-item-excluded-hidden",
+        "c1123-hidden-item-excluded-visible-a",
+        "c1123-hidden-item-excluded-visible-b"
+      ]
+    },
+    {
+      "id": "nested-mixed-flow",
+      "title": "중첩 container 독립 flow",
+      "scope": "implementation-candidate",
+      "rootId": "c1123-nested-mixed-flow-grid",
+      "nodeIds": [
+        "c1123-nested-mixed-flow-grid",
+        "c1123-nested-mixed-flow-nested-row",
+        "c1123-nested-mixed-flow-inner-span-a",
+        "c1123-nested-mixed-flow-inner-span-b",
+        "c1123-nested-mixed-flow-inner-small",
+        "c1123-nested-mixed-flow-outer-item"
+      ]
+    },
+    {
+      "id": "auto-track-no-implicit",
+      "title": "implicit track 없이 auto sizing",
+      "scope": "implementation-candidate",
+      "rootId": "c1123-auto-track-no-implicit-grid",
+      "nodeIds": [
+        "c1123-auto-track-no-implicit-grid",
+        "c1123-auto-track-no-implicit-item-a",
+        "c1123-auto-track-no-implicit-item-b"
+      ]
+    },
+    {
+      "id": "reject-repeated-auto-track",
+      "title": "반복 auto track pattern oracle",
+      "scope": "chromium-oracle-only",
+      "rejectionReason": "반복 grid-auto-rows pattern은 현재 profile 지원 범위 밖입니다.",
+      "rootId": "c1123-reject-repeated-auto-track-grid",
+      "nodeIds": [
+        "c1123-reject-repeated-auto-track-grid",
+        "c1123-reject-repeated-auto-track-item-a",
+        "c1123-reject-repeated-auto-track-item-b",
+        "c1123-reject-repeated-auto-track-item-c",
+        "c1123-reject-repeated-auto-track-item-d",
+        "c1123-reject-repeated-auto-track-item-e",
+        "c1123-reject-repeated-auto-track-item-f"
+      ]
+    },
+    {
+      "id": "reject-negative-implicit-line",
+      "title": "음수 implicit line oracle",
+      "scope": "chromium-oracle-only",
+      "rejectionReason": "명시 Grid 앞의 음수 implicit column이 필요합니다.",
+      "rootId": "c1123-reject-negative-implicit-line-grid",
+      "nodeIds": [
+        "c1123-reject-negative-implicit-line-grid",
+        "c1123-reject-negative-implicit-line-negative-line"
+      ]
+    },
+    {
+      "id": "reject-nonzero-order",
+      "title": "nonzero order oracle",
+      "scope": "chromium-oracle-only",
+      "rejectionReason": "order가 0이 아니어서 현재 source-order placement profile에서 제외합니다.",
+      "rootId": "c1123-reject-nonzero-order-grid",
+      "nodeIds": [
+        "c1123-reject-nonzero-order-grid",
+        "c1123-reject-nonzero-order-order-two",
+        "c1123-reject-nonzero-order-order-zero"
+      ]
+    },
+    {
+      "id": "reject-indefinite-axis",
+      "title": "indefinite container axis oracle",
+      "scope": "chromium-oracle-only",
+      "rejectionReason": "indefinite block axis 기반 auto track sizing은 현재 profile 범위 밖입니다.",
+      "rootId": "c1123-reject-indefinite-axis-grid",
+      "nodeIds": [
+        "c1123-reject-indefinite-axis-grid",
+        "c1123-reject-indefinite-axis-item-a",
+        "c1123-reject-indefinite-axis-item-b"
+      ]
+    },
+    {
+      "id": "auto-span-at-track-limit",
+      "title": "자동 배치 10,000 implicit column 경계",
+      "scope": "implementation-candidate",
+      "expectedRuntimeResult": {
+        "status": "success",
+        "computedColumns": 10000,
+        "maximum": 10000
+      },
+      "rootId": "c1123-auto-span-at-track-limit-grid",
+      "nodeIds": [
+        "c1123-auto-span-at-track-limit-grid",
+        "c1123-auto-span-at-track-limit-span-at-maximum"
+      ]
+    },
+    {
+      "id": "auto-span-over-track-limit",
+      "title": "자동 배치 10,001 implicit column 초과",
+      "scope": "implementation-candidate",
+      "expectedRuntimeResult": {
+        "status": "reject",
+        "errorCode": "GridTrackExpansionOverflow",
+        "maximum": 10000
+      },
+      "rootId": "c1123-auto-span-over-track-limit-grid",
+      "nodeIds": [
+        "c1123-auto-span-over-track-limit-grid",
+        "c1123-auto-span-over-track-limit-span-over-maximum"
+      ]
+    }
+  ]
+}

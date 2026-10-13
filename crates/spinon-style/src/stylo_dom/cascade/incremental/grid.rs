@@ -11,8 +11,9 @@ use style::{
 };
 
 use super::super::{
-    ComputedCssGridAutoFlow, ComputedCssGridAutoRows, ComputedCssGridItemPlacement,
-    ComputedCssGridLayout, ComputedCssGridPlacement, ComputedCssGridTrackSize, CssCascadeError,
+    ComputedCssGridAutoColumns, ComputedCssGridAutoFlow, ComputedCssGridAutoRows,
+    ComputedCssGridItemPlacement, ComputedCssGridLayout, ComputedCssGridPlacement,
+    ComputedCssGridTrackSize, CssCascadeError,
 };
 
 const MAX_COMPUTED_GRID_TRACKS: usize = 10_000;
@@ -40,6 +41,10 @@ pub(super) fn computed_grid_layout(
         computed.clone_grid_auto_rows(),
         property_value(properties, "grid-auto-rows"),
     );
+    let auto_columns = computed_grid_auto_columns(
+        computed.clone_grid_auto_columns(),
+        property_value(properties, "grid-auto-columns"),
+    );
     let flow = computed.clone_grid_auto_flow();
     let auto_flow = match (
         flow.contains(GridAutoFlow::COLUMN),
@@ -56,7 +61,32 @@ pub(super) fn computed_grid_layout(
         rows,
         auto_flow,
         auto_rows,
+        auto_columns,
     })
+}
+
+fn computed_grid_auto_columns(
+    value: style::values::computed::ImplicitGridTracks,
+    serialized: &str,
+) -> ComputedCssGridAutoColumns {
+    if value.is_initial() {
+        return ComputedCssGridAutoColumns::Auto;
+    }
+    if value.0.len() != 1 {
+        return ComputedCssGridAutoColumns::Unsupported(serialized.to_owned());
+    }
+    let TrackSize::Breadth(TrackBreadth::Breadth(value)) = &value.0[0] else {
+        return ComputedCssGridAutoColumns::Unsupported(serialized.to_owned());
+    };
+    let LengthPercentageValue::Length(length) = value.unpack() else {
+        return ComputedCssGridAutoColumns::Unsupported(serialized.to_owned());
+    };
+    let pixels = length.px();
+    if pixels.is_finite() && pixels >= 0.0 {
+        ComputedCssGridAutoColumns::LengthPx(pixels)
+    } else {
+        ComputedCssGridAutoColumns::Unsupported(serialized.to_owned())
+    }
 }
 
 fn computed_grid_auto_rows(

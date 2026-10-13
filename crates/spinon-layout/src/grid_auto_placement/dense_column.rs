@@ -1,0 +1,450 @@
+use std::collections::{BTreeMap, BTreeSet};
+
+use spinon_core::NodeId;
+
+use crate::grid::GRID_MAX_TRACKS;
+use crate::grid_auto_placement::{
+    axis::{AxisPlacement, resolve_axis},
+    occupancy::Occupancy,
+    reservation::{GridReservationSite, reserve_exact},
+};
+use crate::{GridAutoFlow, GridContainerInput, GridTrackSize, LayoutError, LayoutInput};
+
+pub(crate) struct DenseGridPlacement {
+    pub(crate) item_placements: BTreeMap<NodeId, crate::GridItemInput>,
+    pub(crate) expanded_rows: Option<Vec<GridTrackSize>>,
+    pub(crate) expanded_columns: Option<Vec<GridTrackSize>>,
+    pub(crate) auto_placed_items: BTreeSet<NodeId>,
+}
+
+struct Item {
+    node: NodeId,
+    row: AxisPlacement,
+    column: AxisPlacement,
+}
+
+pub(crate) fn normalize_dense_grid_container(
+    input: &LayoutInput,
+    hidden: &BTreeMap<NodeId, bool>,
+    container_node: &crate::LayoutNode,
+    container: &GridContainerInput,
+) -> Result<DenseGridPlacement, LayoutError> {
+    let node = container_node.id;
+    validate_count(node, "grid-template-columns", container.columns.len())?;
+    validate_count(node, "grid-template-rows", container.rows.len())?;
+
+    let row_flow = matches!(
+        container.auto_flow,
+        GridAutoFlow::Row | GridAutoFlow::RowDense
+    );
+    let dense = matches!(
+        container.auto_flow,
+        GridAutoFlow::RowDense | GridAutoFlow::ColumnDense
+    );
+    let children = container_node
+        .children
+        .iter()
+        .copied()
+        .filter(|child| !hidden[child])
+        .collect::<Vec<_>>();
+    let mut items = Vec::new();
+    reserve_exact(
+        &mut items,
+        children.len(),
+        node,
+        "grid-placement-occupancy",
+        GridReservationSite::VisibleItemList,
+    )?;
+    let mut auto_placed_items = BTreeSet::new();
+    for child in children {
+        let placement = input.grid_items.get(&child).copied().unwrap_or_default();
+        let row = resolve_axis(
+            child,
+            "grid-row-start",
+            "grid-row-end",
+            placement.row_start,
+            placement.row_end,
+            container.rows.len(),
+        )?;
+        let column = resolve_axis(
+            child,
+            "grid-column-start",
+            "grid-column-end",
+            placement.column_start,
+            placement.column_end,
+            container.columns.len(),
+        )?;
+        if row.start.is_none() || column.start.is_none() {
+            auto_placed_items.insert(child);
+        }
+        items.push(Item {
+            node: child,
+            row,
+            column,
+        });
+    }
+
+    let mut row_count = container.rows.len();
+    let mut column_count = container.columns.len();
+    if row_flow {
+        column_count = items
+            .iter()
+            .filter(|item| item.column.start.is_none())
+            .map(|item| item.column.span)
+            .max()
+            .unwrap_or(0)
+            .max(column_count);
+        validate_count(node, "grid-template-columns", column_count)?;
+    } else {
+        row_count = items
+            .iter()
+            .filter(|item| item.row.start.is_none())
+            .map(|item| item.row.span)
+            .max()
+            .unwrap_or(0)
+            .max(row_count);
+        validate_count(node, "grid-template-rows", row_count)?;
+    }
+
+    let mut output = DenseGridPlacement {
+        item_placements: BTreeMap::new(),
+        expanded_rows: None,
+        expanded_columns: None,
+        auto_placed_items,
+    };
+    let mut occupancy = Occupancy::default();
+    let mut placed = BTreeSet::new();
+
+    // CSS Grid §8.5 step 1: definite row and column positions are occupied first.
+    for item in &items {
+        let (Some(row_start), Some(column_start)) = (item.row.start, item.column.start) else {
+            continue;
+        };
+        let row_end = track_end(node, "grid-template-rows", row_start, item.row.span)?;
+        let column_end = track_end(
+            node,
+            "grid-template-columns",
+            column_start,
+            item.column.span,
+        )?;
+        occupancy.occupy(item.node, row_start, row_end, column_start, column_end)?;
+        output.item_placements.insert(
+            item.node,
+            super::definite_item_lines(item.node, row_start, row_end, column_start, column_end)?,
+        );
+        placed.insert(item.node);
+    }
+
+    // Step 2: items locked to a row, or to a column for column flow.
+    let locked_count = if row_flow {
+        container.rows.len()
+    } else {
+        container.columns.len()
+    };
+    let mut locked_cursor = Vec::new();
+    reserve_exact(
+        &mut locked_cursor,
+        locked_count,
+        node,
+        "grid-placement-occupancy",
+        GridReservationSite::RowLockedCursor,
+    )?;
+    locked_cursor.resize(locked_count, 0usize);
+    for item in &items {
+        if placed.contains(&item.node) {
+            continue;
+        }
+        let locked_line = if row_flow {
+            item.row.start
+        } else {
+            item.column.start
+        };
+        let automatic_secondary = if row_flow {
+            item.column.start.is_none()
+        } else {
+            item.row.start.is_none()
+        };
+        let Some(locked_line) = locked_line.filter(|_| automatic_secondary) else {
+            continue;
+        };
+        let (fixed_start, fixed_span, moving_span) = if row_flow {
+            (locked_line, item.row.span, item.column.span)
+        } else {
+            (locked_line, item.column.span, item.row.span)
+        };
+        let fixed_end = track_end(
+            node,
+            if row_flow {
+                "grid-template-rows"
+            } else {
+                "grid-template-columns"
+            },
+            fixed_start,
+            fixed_span,
+        )?;
+        let mut moving_start = if dense { 0 } else { locked_cursor[locked_line] };
+        let (row_start, column_start, row_end, column_end) = loop {
+            let moving_end = track_end(
+                node,
+                if row_flow {
+                    "grid-template-columns"
+                } else {
+                    "grid-template-rows"
+                },
+                moving_start,
+                moving_span,
+            )?;
+            if row_flow {
+                if !occupancy.overlaps(locked_line, fixed_end, moving_start, moving_end) {
+                    break (locked_line, moving_start, fixed_end, moving_end);
+                }
+            } else if !occupancy.overlaps(moving_start, moving_end, locked_line, fixed_end) {
+                break (moving_start, locked_line, moving_end, fixed_end);
+            }
+            moving_start = moving_start
+                .checked_add(1)
+                .ok_or(LayoutError::GridTrackExpansionOverflow(node))?;
+        };
+        occupancy.occupy(item.node, row_start, row_end, column_start, column_end)?;
+        if row_flow {
+            column_count = column_count.max(column_end);
+            if !dense {
+                locked_cursor[locked_line] = column_end;
+            }
+        } else {
+            row_count = row_count.max(row_end);
+            if !dense {
+                locked_cursor[locked_line] = row_end;
+            }
+        }
+        output.item_placements.insert(
+            item.node,
+            super::definite_item_lines(item.node, row_start, row_end, column_start, column_end)?,
+        );
+        placed.insert(item.node);
+    }
+
+    // Step 3: the flow-secondary axis is fixed before remaining items are scanned.
+    if row_flow {
+        column_count = items
+            .iter()
+            .filter(|item| item.column.start.is_none())
+            .map(|item| item.column.span)
+            .max()
+            .unwrap_or(0)
+            .max(column_count);
+        validate_count(node, "grid-template-columns", column_count)?;
+    } else {
+        row_count = items
+            .iter()
+            .filter(|item| item.row.start.is_none())
+            .map(|item| item.row.span)
+            .max()
+            .unwrap_or(0)
+            .max(row_count);
+        validate_count(node, "grid-template-rows", row_count)?;
+    }
+
+    // Step 4: place the remaining items with a persistent sparse cursor or a dense reset.
+    let mut cursor_primary = 0usize;
+    let mut cursor_secondary = 0usize;
+    let mut cursor_initialized = false;
+    for item in &items {
+        if placed.contains(&item.node) {
+            continue;
+        }
+        let fixed_secondary = if row_flow {
+            item.column.start
+        } else {
+            item.row.start
+        };
+        let (row_start, column_start) = if let Some(fixed_secondary) = fixed_secondary {
+            if dense {
+                cursor_primary = 0;
+            } else if cursor_initialized && fixed_secondary < cursor_secondary {
+                cursor_primary = cursor_primary
+                    .checked_add(1)
+                    .ok_or(LayoutError::GridTrackExpansionOverflow(node))?;
+            }
+            loop {
+                let (row_start, column_start) = if row_flow {
+                    (cursor_primary, fixed_secondary)
+                } else {
+                    (fixed_secondary, cursor_primary)
+                };
+                let row_end = track_end(node, "grid-template-rows", row_start, item.row.span)?;
+                let column_end = track_end(
+                    node,
+                    "grid-template-columns",
+                    column_start,
+                    item.column.span,
+                )?;
+                if !occupancy.overlaps(row_start, row_end, column_start, column_end) {
+                    break (row_start, column_start);
+                }
+                cursor_primary = cursor_primary
+                    .checked_add(1)
+                    .ok_or(LayoutError::GridTrackExpansionOverflow(node))?;
+            }
+        } else {
+            if dense {
+                cursor_primary = 0;
+                cursor_secondary = 0;
+            } else if cursor_initialized {
+                cursor_secondary = cursor_secondary
+                    .checked_add(1)
+                    .ok_or(LayoutError::GridTrackExpansionOverflow(node))?;
+            }
+            loop {
+                let secondary_span = if row_flow {
+                    item.column.span
+                } else {
+                    item.row.span
+                };
+                let secondary_count = if row_flow { column_count } else { row_count };
+                let secondary_end = cursor_secondary
+                    .checked_add(secondary_span)
+                    .ok_or(LayoutError::GridTrackExpansionOverflow(node))?;
+                if secondary_end > secondary_count {
+                    cursor_primary = cursor_primary
+                        .checked_add(1)
+                        .ok_or(LayoutError::GridTrackExpansionOverflow(node))?;
+                    cursor_secondary = 0;
+                    continue;
+                }
+                let (row_start, column_start) = if row_flow {
+                    (cursor_primary, cursor_secondary)
+                } else {
+                    (cursor_secondary, cursor_primary)
+                };
+                let row_end = track_end(node, "grid-template-rows", row_start, item.row.span)?;
+                let column_end = track_end(
+                    node,
+                    "grid-template-columns",
+                    column_start,
+                    item.column.span,
+                )?;
+                if !occupancy.overlaps(row_start, row_end, column_start, column_end) {
+                    break (row_start, column_start);
+                }
+                cursor_secondary = cursor_secondary
+                    .checked_add(1)
+                    .ok_or(LayoutError::GridTrackExpansionOverflow(node))?;
+            }
+        };
+        let row_end = track_end(node, "grid-template-rows", row_start, item.row.span)?;
+        let column_end = track_end(
+            node,
+            "grid-template-columns",
+            column_start,
+            item.column.span,
+        )?;
+        occupancy.occupy(item.node, row_start, row_end, column_start, column_end)?;
+        row_count = row_count.max(row_end);
+        column_count = column_count.max(column_end);
+        validate_count(node, "grid-template-rows", row_count)?;
+        validate_count(node, "grid-template-columns", column_count)?;
+        output.item_placements.insert(
+            item.node,
+            super::definite_item_lines(item.node, row_start, row_end, column_start, column_end)?,
+        );
+        placed.insert(item.node);
+        cursor_primary = if row_flow { row_start } else { column_start };
+        cursor_secondary = if row_flow { column_start } else { row_start };
+        cursor_initialized = true;
+    }
+
+    output.expanded_rows = expand_tracks(
+        node,
+        "grid-template-rows",
+        &container.rows,
+        row_count,
+        container.auto_rows,
+        true,
+    )?;
+    output.expanded_columns = expand_tracks(
+        node,
+        "grid-template-columns",
+        &container.columns,
+        column_count,
+        container.auto_columns,
+        false,
+    )?;
+    Ok(output)
+}
+
+fn expand_tracks(
+    node: NodeId,
+    property: &'static str,
+    explicit: &[GridTrackSize],
+    count: usize,
+    auto_size: crate::GridAutoTrackSize,
+    rows: bool,
+) -> Result<Option<Vec<GridTrackSize>>, LayoutError> {
+    validate_count(node, property, count)?;
+    if count == explicit.len() {
+        return Ok(None);
+    }
+    let size = match auto_size {
+        crate::GridAutoTrackSize::Auto => {
+            return if rows {
+                Err(LayoutError::UnsupportedGridAutoRows {
+                    node,
+                    reason: "implicit row가 필요하지만 grid-auto-rows:auto의 content sizing은 미구현입니다",
+                })
+            } else {
+                Err(LayoutError::UnsupportedGridAutoColumns {
+                    node,
+                    reason: "implicit column이 필요하지만 grid-auto-columns:auto의 content sizing은 미구현입니다",
+                })
+            };
+        }
+        crate::GridAutoTrackSize::LengthPx(value) if value.is_finite() && value >= 0.0 => value,
+        crate::GridAutoTrackSize::LengthPx(_) => {
+            return Err(LayoutError::InvalidGridTrack { node, property });
+        }
+    };
+    let mut tracks = Vec::new();
+    reserve_exact(
+        &mut tracks,
+        count,
+        node,
+        property,
+        if rows {
+            GridReservationSite::ExpandedRows
+        } else {
+            GridReservationSite::ExpandedColumns
+        },
+    )?;
+    tracks.extend_from_slice(explicit);
+    tracks.extend(std::iter::repeat_n(
+        GridTrackSize::LengthPx(size),
+        count - explicit.len(),
+    ));
+    Ok(Some(tracks))
+}
+
+fn track_end(
+    node: NodeId,
+    property: &'static str,
+    start: usize,
+    span: usize,
+) -> Result<usize, LayoutError> {
+    let end = start
+        .checked_add(span)
+        .ok_or(LayoutError::GridTrackExpansionOverflow(node))?;
+    validate_count(node, property, end)?;
+    Ok(end)
+}
+
+fn validate_count(node: NodeId, property: &'static str, count: usize) -> Result<(), LayoutError> {
+    if count > GRID_MAX_TRACKS {
+        return Err(LayoutError::GridTrackLimitExceeded {
+            node,
+            property,
+            count,
+            maximum: GRID_MAX_TRACKS,
+        });
+    }
+    Ok(())
+}

@@ -1,0 +1,129 @@
+{
+  "status": "matched",
+  "scene": "column-dense-span-collision",
+  "runID": "c1123-a-mv5yld3e-4ded3cc6-column-dense-span-collision",
+  "processId": 29837,
+  "markerPrefix": "C1123",
+  "surfaceGeneration": 2,
+  "density": 2.8125,
+  "surface": [
+    900,
+    675
+  ],
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "scale": [
+    2.8125,
+    2.8125
+  ],
+  "expectedSamples": 6,
+  "matchedSamples": 6,
+  "maximumChannelError": 0,
+  "pngSha256": "ef94b98813bca58d08a22c7237e8fca50a1888c148b21b495f63cb43640b632c",
+  "samples": [
+    {
+      "id": "item-c1123-column-dense-span-collision-span-a",
+      "css": [
+        28,
+        41
+      ],
+      "pixel": [
+        80,
+        116
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ]
+    },
+    {
+      "id": "item-c1123-column-dense-span-collision-fixed-c",
+      "css": [
+        28,
+        84
+      ],
+      "pixel": [
+        80,
+        237
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ]
+    },
+    {
+      "id": "item-c1123-column-dense-span-collision-span-b",
+      "css": [
+        76,
+        41
+      ],
+      "pixel": [
+        215,
+        116
+      ],
+      "rgba": [
+        135,
+        88,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "item-c1123-column-dense-span-collision-small-d",
+      "css": [
+        76,
+        84
+      ],
+      "pixel": [
+        215,
+        237
+      ],
+      "rgba": [
+        25,
+        169,
+        116,
+        255
+      ]
+    },
+    {
+      "id": "gap-column-c1123-column-dense-span-collision-grid",
+      "css": [
+        63,
+        29
+      ],
+      "pixel": [
+        178,
+        82
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    },
+    {
+      "id": "gap-row-c1123-column-dense-span-collision-grid",
+      "css": [
+        39,
+        43
+      ],
+      "pixel": [
+        111,
+        122
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    }
+  ]
+}

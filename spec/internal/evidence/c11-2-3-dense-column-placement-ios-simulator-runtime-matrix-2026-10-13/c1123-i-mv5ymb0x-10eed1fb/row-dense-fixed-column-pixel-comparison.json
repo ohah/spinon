@@ -1,0 +1,119 @@
+{
+  "schema": "spinon-c11-2-3-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c1123-i-mv5ymb0x-10eed1fb-row-dense-fixed-column",
+  "processId": 52072,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 20,
+    "renderTree": 5,
+    "environment": 1
+  },
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "drawable": [
+    960,
+    720
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 5,
+  "matchedSamples": 5,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "item-c1123-row-dense-fixed-column-locked-a",
+      "css": [
+        72,
+        28
+      ],
+      "drawable": [
+        217,
+        85
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-c1123-row-dense-fixed-column-locked-b",
+      "css": [
+        72,
+        52
+      ],
+      "drawable": [
+        217,
+        157
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-c1123-row-dense-fixed-column-locked-c",
+      "css": [
+        72,
+        76
+      ],
+      "drawable": [
+        217,
+        229
+      ],
+      "rgba": [
+        25,
+        169,
+        116,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "gap-column-c1123-row-dense-fixed-column-grid",
+      "css": [
+        61,
+        29
+      ],
+      "drawable": [
+        184,
+        88
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "gap-row-c1123-row-dense-fixed-column-grid",
+      "css": [
+        39,
+        41
+      ],
+      "drawable": [
+        118,
+        124
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}

@@ -12,6 +12,7 @@ use spinon_style::{
     ComputedStyleProfile, CssCascadeError, RuntimeCascadeReuseStats, StyloDocumentView,
     compute_runtime_block_flex_grid_auto_placement_cascade_with_stylesheets,
     compute_runtime_block_flex_grid_cascade_with_stylesheets,
+    compute_runtime_block_flex_grid_dense_auto_placement_cascade_with_stylesheets,
     compute_runtime_block_flex_grid_placement_cascade_with_stylesheets,
     compute_runtime_block_flex_stacking_cascade_with_stylesheets,
     compute_runtime_block_formatting_cascade_with_stylesheets,
@@ -37,6 +38,7 @@ pub(super) enum RuntimeCalculationProfile {
     BlockFlexGrid,
     BlockFlexGridPlacement,
     BlockFlexGridAutoPlacement,
+    BlockFlexGridDenseAutoPlacement,
 }
 
 impl RuntimeCalculationProfile {
@@ -199,6 +201,15 @@ pub(super) fn compute_request_for_block_flex_grid_auto_placement(
     compute_request_with_profile(
         request,
         RuntimeCalculationProfile::BlockFlexGridAutoPlacement,
+    )
+}
+
+pub(super) fn compute_request_for_block_flex_grid_dense_auto_placement(
+    request: &WorkRequest,
+) -> Result<RuntimeCalculation, String> {
+    compute_request_with_profile(
+        request,
+        RuntimeCalculationProfile::BlockFlexGridDenseAutoPlacement,
     )
 }
 
@@ -382,6 +393,9 @@ fn compute_root(
         RuntimeCalculationProfile::BlockFlexGridAutoPlacement => {
             ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
         }
+        RuntimeCalculationProfile::BlockFlexGridDenseAutoPlacement => {
+            ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
+        }
     };
     let previous_style_root = request
         .previous_styles
@@ -496,6 +510,14 @@ fn compute_root(
             }
             RuntimeCalculationProfile::BlockFlexGridAutoPlacement => {
                 compute_runtime_block_flex_grid_auto_placement_cascade_with_stylesheets(
+                    &view,
+                    author_stylesheets,
+                    request.viewport,
+                    StyleRevision::INITIAL,
+                )
+            }
+            RuntimeCalculationProfile::BlockFlexGridDenseAutoPlacement => {
+                compute_runtime_block_flex_grid_dense_auto_placement_cascade_with_stylesheets(
                     &view,
                     author_stylesheets,
                     request.viewport,

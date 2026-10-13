@@ -1,0 +1,112 @@
+{
+  "status": "matched",
+  "scene": "column-sparse-fixed-row",
+  "runID": "c1123-a-mv5yld3e-4ded3cc6-column-sparse-fixed-row",
+  "processId": 29361,
+  "markerPrefix": "C1123",
+  "surfaceGeneration": 2,
+  "density": 2.8125,
+  "surface": [
+    900,
+    675
+  ],
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "scale": [
+    2.8125,
+    2.8125
+  ],
+  "expectedSamples": 5,
+  "matchedSamples": 5,
+  "maximumChannelError": 0,
+  "pngSha256": "bb373074a7af35d173e77ad98630936e3dbe05177f17a85037d17248167d1260",
+  "samples": [
+    {
+      "id": "item-c1123-column-sparse-fixed-row-locked-a",
+      "css": [
+        28,
+        56
+      ],
+      "pixel": [
+        80,
+        158
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ]
+    },
+    {
+      "id": "item-c1123-column-sparse-fixed-row-locked-b",
+      "css": [
+        76,
+        56
+      ],
+      "pixel": [
+        215,
+        158
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ]
+    },
+    {
+      "id": "item-c1123-column-sparse-fixed-row-locked-c",
+      "css": [
+        124,
+        56
+      ],
+      "pixel": [
+        350,
+        158
+      ],
+      "rgba": [
+        25,
+        169,
+        116,
+        255
+      ]
+    },
+    {
+      "id": "gap-column-c1123-column-sparse-fixed-row-grid",
+      "css": [
+        63,
+        29
+      ],
+      "pixel": [
+        178,
+        82
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    },
+    {
+      "id": "gap-row-c1123-column-sparse-fixed-row-grid",
+      "css": [
+        39,
+        43
+      ],
+      "pixel": [
+        111,
+        122
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    }
+  ]
+}
