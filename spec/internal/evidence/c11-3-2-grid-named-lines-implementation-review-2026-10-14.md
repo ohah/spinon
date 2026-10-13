@@ -59,3 +59,7 @@
 - 최신 source AVD 보완 run: [Android API 37.0 PixelCopy·negative control](./c11-3-2-grid-named-lines-runtime-2026-10-14/android-avd-c1132-android-avd-20261013T222607426Z-1b304023/README.md)
 
 검토 결과는 제한된 C11.3.2 구현 후보를 지지한다. C11.3.2 PR은 아직 Draft이며, 최신 source SM-S731N physical PixelCopy gate, implicit named line 생성, 전체 15-scene 모바일 행렬, iOS 실기기 및 compositor 이후 pixel, Spinon WPT 적합성, template areas/C11.3.3와 CSS Grid 전체 지원은 미완료다. 공개 제품 CSS 지원으로 표시하지 않는다.
+
+## PR 상태 갱신 · 2026-10-14
+
+실기기가 연결되지 않아 시뮬레이터를 사용하라는 사용자 지시에 따라, 기존 Android API 37 AVD와 iOS 26.2 Simulator 근거로 PR #151을 리뷰 가능한 상태로 전환한다. 위 30개 검토의 구현 판정과 물리 기기 미검증 범위는 바꾸지 않는다. 이 갱신은 리뷰 시작을 허용하며 실기기 gate, 전체 15-scene 모바일 행렬, iOS 실기기·compositor 이후 픽셀 또는 Spinon WPT 적합성을 완료 처리하지 않는다.
