@@ -1,0 +1,164 @@
+{
+  "schema": "spinon-c11-3-1-grid-repeat-pixels-result/v1",
+  "status": "matched",
+  "runID": "c1131-ios-simulator-20261013T144912595Z-43f20ba7",
+  "target": "ios-simulator",
+  "fixture": {
+    "path": "tests/fixtures/css/c11/grid-template-repeat-c1131-pixel-samples-v1.json",
+    "sha256": "2c39888babfff768f2f6c1588f446179052dc324f0b7483abd37588bcdb11d90",
+    "sampleCount": 5
+  },
+  "oracle": {
+    "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.92-ebc4716049e7-0a109d053a3a-d5067aca4f98",
+    "referenceSha256": "3b98a994a0fd1ec52a838887c71a54b0afad62527d7a289557cc7ed728c24788",
+    "screenshotSha256": "e14b03ff7f2302d2f245501d6888cf743b2495cd584b01f5774e1df69ca85f55",
+    "product": "Chrome/154.0.8037.92",
+    "scene": "multi-track-repeat",
+    "deviceScaleFactor": 1,
+    "chromeOracleValidation": {
+      "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.92-ebc4716049e7-0a109d053a3a-d5067aca4f98",
+      "screenshot": [
+        320,
+        240
+      ],
+      "sampleCount": 5
+    }
+  },
+  "platform": {
+    "device": {
+      "name": "iPhone 17 Pro",
+      "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2"
+    },
+    "installArtifactPath": "build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap",
+    "installArtifactSha256": "4fbcbc5d83f72c5dbebe5baa1c83ac2f666829a30f930b0d217b5fd4ce5b2f0b",
+    "comparison": {
+      "schema": "spinon-c11-3-1-ios-metal-surface-pixels/v1",
+      "status": "matched",
+      "runID": "c1131-ios-simulator-20261013T144912595Z-43f20ba7",
+      "processId": 69851,
+      "surfaceGeneration": 1,
+      "revisions": {
+        "document": 16,
+        "renderTree": 4,
+        "environment": 0
+      },
+      "runtimeViewportCssPx": [
+        320,
+        240
+      ],
+      "drawable": [
+        960,
+        720
+      ],
+      "scale": [
+        3,
+        3
+      ],
+      "expectedSamples": 5,
+      "matchedSamples": 5,
+      "maximumChannelError": 0,
+      "samples": [
+        {
+          "id": "grid-background",
+          "css": [
+            300,
+            120
+          ],
+          "drawable": [
+            901,
+            361
+          ],
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "item-blue",
+          "css": [
+            10,
+            10
+          ],
+          "drawable": [
+            31,
+            31
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "item-red",
+          "css": [
+            40,
+            10
+          ],
+          "drawable": [
+            121,
+            31
+          ],
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "column-gap",
+          "css": [
+            112,
+            10
+          ],
+          "drawable": [
+            337,
+            31
+          ],
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "row-gap",
+          "css": [
+            10,
+            53
+          ],
+          "drawable": [
+            31,
+            160
+          ],
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ],
+          "maximumChannelError": 0
+        }
+      ]
+    },
+    "screenshotSha256": "96730db4f528b8bce7c7892e3019c396872a6809628299fcf1f2861b627ca46a",
+    "sampleAllowlistNegativeControl": {
+      "status": "rejected",
+      "runID": "c1131-ios-simulator-20261013T144912595Z-43f20ba7-bad-samples",
+      "processId": 69980,
+      "invalidSample": "item-blue xCssPx + 1",
+      "metalReadbackStarted": false
+    }
+  },
+  "interpretation": "Metal drawable 표면의 compositor 제출 전 RGBA를 고정 Chrome 표본과 비교했습니다. 화면 캡처는 UI 상태 증거이며 픽셀 비교 입력이 아닙니다."
+}

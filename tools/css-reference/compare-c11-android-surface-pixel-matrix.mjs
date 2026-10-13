@@ -39,9 +39,9 @@ export function compareC11AndroidPixelCopyScene(log, {
   scene, runID, pngBytes, viewportCssPx,
   markerPrefix = 'C111', cacheDirectory = 'c11-grid-surface-pixel-matrix',
 }) {
-  assert.ok(['C111', 'C1122', 'C1123'].includes(markerPrefix), 'Android 표면 marker prefix가 잘못되었습니다.');
+  assert.ok(['C111', 'C1122', 'C1123', 'C1131'].includes(markerPrefix), 'Android 표면 marker prefix가 잘못되었습니다.');
   assert.ok(['c11-grid-surface-pixel-matrix', 'c1122-grid-surface-pixel-matrix',
-    'c1123-grid-surface-pixel-matrix']
+    'c1123-grid-surface-pixel-matrix', 'c1131-grid-surface-pixel-matrix']
     .includes(cacheDirectory), 'Android 표면 cache 경로가 허용되지 않습니다.');
   const marker = `SPINON_${markerPrefix}_GRID_PIXEL_MATRIX`;
   const BEGIN = `${marker}_BEGIN `;
@@ -101,9 +101,14 @@ export function compareC11AndroidPixelCopyScene(log, {
   assert.equal(exactInteger(capture.attempts, 'PixelCopy attempts', 1) <= 3, true,
     'PixelCopy retry 수가 제한을 넘었습니다.');
   assert.equal(exactInteger(summary.generation, 'summary generation', 1), generation);
-  assert.equal(summary.status, 'captured', 'PixelCopy summary 상태가 captured가 아닙니다.');
+  assert.equal(summary.status, markerPrefix === 'C1131' ? 'matched' : 'captured',
+    'PixelCopy summary 상태가 예상한 값이 아닙니다.');
   assert.equal(exactInteger(summary.expected_samples, 'expected sample count', 1), scene.samples.length);
   assert.equal(exactInteger(summary.observed_samples, 'observed sample count', 1), scene.samples.length);
+  if (markerPrefix === 'C1131') {
+    assert.equal(exactInteger(summary.matched_samples, 'matched sample count'), scene.samples.length,
+      'C11.3.1 runtime의 exact 표본 수가 fixture와 다릅니다.');
+  }
 
   const pngPath = capture.png;
   const escapedCacheDirectory = cacheDirectory.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -142,6 +147,12 @@ export function compareC11AndroidPixelCopyScene(log, {
     assert.ok(rgba.every((value) => value <= 255), `${expected.id}: RGBA 범위`);
     assert.deepEqual(rgba, expected.rgba, `${expected.id}: PixelCopy 결과가 pinned Chrome과 다릅니다.`);
     assert.deepEqual(image.getPixel(x, y), rgba, `${expected.id}: PNG와 로그 RGBA가 다릅니다.`);
+    if (markerPrefix === 'C1131') {
+      assert.deepEqual(actual.expected?.split(',').map((value) => exactInteger(value,
+        `${expected.id} expected RGBA`, 0)), expected.rgba,
+      `${expected.id}: runtime의 expected RGBA가 고정 fixture와 다릅니다.`);
+      assert.equal(actual.exact, 'true', `${expected.id}: runtime exact marker가 true가 아닙니다.`);
+    }
     return { id: expected.id, css: [cssX, cssY], pixel: [x, y], rgba };
   });
 

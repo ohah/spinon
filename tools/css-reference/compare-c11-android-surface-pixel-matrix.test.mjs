@@ -24,6 +24,19 @@ const pixels = scene.samples.map((sample) => ({
 const pngBytes = testPng(surface.width, surface.height, pixels);
 const runID = 'c11-android-matrix-run-001';
 const pngPath = `/data/user/0/dev.spinon.bootstrap/cache/c11-grid-surface-pixel-matrix/${scene.id}-${runID}.png`;
+const c1131Fixture = JSON.parse(readFileSync(resolve(repositoryRoot,
+  'tests/fixtures/css/c11/grid-template-repeat-c1131-pixel-samples-v1.json'), 'utf8'));
+const c1131Scene = { id: c1131Fixture.sceneId, samples: c1131Fixture.samples };
+const c1131ViewportCssPx = c1131Fixture.runtime.viewportCssPx;
+const c1131Surface = { width: 900, height: 675 };
+const c1131Pixels = c1131Scene.samples.map((sample) => ({
+  ...sample,
+  x: cssPixelCenterToSurfacePixel(sample.xCssPx, c1131Surface.width, c1131ViewportCssPx.width),
+  y: cssPixelCenterToSurfacePixel(sample.yCssPx, c1131Surface.height, c1131ViewportCssPx.height),
+}));
+const c1131PngBytes = testPng(c1131Surface.width, c1131Surface.height, c1131Pixels);
+const c1131RunID = 'c1131-android-avd-test-run-001';
+const c1131PngPath = `/data/user/0/dev.spinon.bootstrap/cache/c1131-grid-surface-pixel-matrix/${c1131Scene.id}-${c1131RunID}.png`;
 
 function crc32(bytes) {
   let crc = 0xffffffff;
@@ -91,6 +104,27 @@ function mustReject(log, overrides = {}) {
   assert.throws(() => compare(log, overrides));
 }
 
+function c1131ValidLog(summaryStatus = 'matched') {
+  const pngHash = createHash('sha256').update(c1131PngBytes).digest('hex');
+  return [
+    `SPINON_C1131_GRID_PIXEL_MATRIX_BEGIN run_id=${c1131RunID} pid=50124 scene=${c1131Scene.id} generation=6 width=${c1131Surface.width} height=${c1131Surface.height} viewport_width=${c1131ViewportCssPx.width} viewport_height=${c1131ViewportCssPx.height} scale_x=2.8125 scale_y=2.8125 density=1 samples=${c1131Scene.samples.length}`,
+    `SPINON_C1131_GRID_PIXEL_MATRIX_CAPTURE status=ok run_id=${c1131RunID} scene=${c1131Scene.id} generation=6 width=${c1131Surface.width} height=${c1131Surface.height} viewport_width=${c1131ViewportCssPx.width} viewport_height=${c1131ViewportCssPx.height} scale_x=2.8125 scale_y=2.8125 density=1 attempts=1 png=${c1131PngPath} sha256=${pngHash}`,
+    ...c1131Scene.samples.map((sample) => {
+      const mapped = c1131Pixels.find(({ id }) => id === sample.id);
+      return `SPINON_C1131_GRID_PIXEL_MATRIX_SAMPLE run_id=${c1131RunID} pid=50124 scene=${c1131Scene.id} generation=6 sample=${sample.id} css_x=${sample.xCssPx} css_y=${sample.yCssPx} x=${mapped.x} y=${mapped.y} rgba=${sample.rgba.join(',')} expected=${sample.rgba.join(',')} exact=true`;
+    }),
+    `SPINON_C1131_GRID_PIXEL_MATRIX_SUMMARY status=${summaryStatus} run_id=${c1131RunID} scene=${c1131Scene.id} generation=6 expected_samples=${c1131Scene.samples.length} observed_samples=${c1131Scene.samples.length} matched_samples=${summaryStatus === 'matched' ? c1131Scene.samples.length : c1131Scene.samples.length - 1}`,
+  ].join('\n');
+}
+
+function compareC1131(log = c1131ValidLog(), overrides = {}) {
+  return compareC11AndroidPixelCopyScene(log, {
+    scene: c1131Scene, runID: c1131RunID, pngBytes: c1131PngBytes,
+    viewportCssPx: c1131ViewportCssPx, markerPrefix: 'C1131',
+    cacheDirectory: 'c1131-grid-surface-pixel-matrix', ...overrides,
+  });
+}
+
 test('accepts one PixelCopy PNG and all exact pinned Chrome scene pixels', () => {
   const result = compare();
   assert.equal(result.status, 'matched');
@@ -146,6 +180,22 @@ test('supports the separately namespaced C11.2.3 PixelCopy marker and cache path
   });
   assert.equal(result.status, 'matched');
   assert.equal(result.markerPrefix, 'C1123');
+});
+
+test('C11.3.1 고정 repeat 표본을 전용 marker와 cache 경로로 검증한다', () => {
+  const result = compareC1131();
+  assert.equal(result.status, 'matched');
+  assert.equal(result.markerPrefix, 'C1131');
+  assert.equal(result.expectedSamples, 5);
+  assert.equal(result.matchedSamples, 5);
+});
+
+test('C11.3.1 runtime이 다섯 표본 exact를 보고하지 않으면 거부한다', () => {
+  assert.throws(() => compareC1131(c1131ValidLog('captured')));
+  assert.throws(() => compareC1131(c1131ValidLog().replace('matched_samples=5', 'matched_samples=4')));
+  assert.throws(() => compareC1131(c1131ValidLog().replace('exact=true', 'exact=false')));
+  assert.throws(() => compareC1131(c1131ValidLog().replace('expected=40,102,246,255',
+    'expected=41,102,246,255')));
 });
 
 test('isolates the requested run from unrelated app processes', () => {

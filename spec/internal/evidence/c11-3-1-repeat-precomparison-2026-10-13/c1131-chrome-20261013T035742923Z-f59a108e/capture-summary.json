@@ -1,0 +1,95 @@
+{
+  "runId": "c1131-chrome-20261013T035742923Z-f59a108e",
+  "referencePath": "tests/fixtures/css/references/c11-3-1-grid-repeat-precomparison-v1.json",
+  "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.92-ebc4716049e7-0a109d053a3a-d5067aca4f98",
+  "caseCount": 12,
+  "nodeCount": 29,
+  "deviceScaleFactors": [
+    1,
+    2
+  ],
+  "screenshots": [
+    {
+      "caseId": "repeat-one",
+      "path": "spec/internal/evidence/c11-3-1-repeat-precomparison-2026-10-13/c1131-chrome-20261013T035742923Z-f59a108e/repeat-one-dpr1.png",
+      "sha256": "22c84a0904dece5249ad8142575996fce15da75fcc59c3b871a3d557ae624a29"
+    },
+    {
+      "caseId": "no-repeat-control",
+      "path": "spec/internal/evidence/c11-3-1-repeat-precomparison-2026-10-13/c1131-chrome-20261013T035742923Z-f59a108e/no-repeat-control-dpr1.png",
+      "sha256": "22c84a0904dece5249ad8142575996fce15da75fcc59c3b871a3d557ae624a29"
+    },
+    {
+      "caseId": "multi-track-repeat",
+      "path": "spec/internal/evidence/c11-3-1-repeat-precomparison-2026-10-13/c1131-chrome-20261013T035742923Z-f59a108e/multi-track-repeat-dpr1.png",
+      "sha256": "e14b03ff7f2302d2f245501d6888cf743b2495cd584b01f5774e1df69ca85f55"
+    },
+    {
+      "caseId": "line-name-seam",
+      "path": "spec/internal/evidence/c11-3-1-repeat-precomparison-2026-10-13/c1131-chrome-20261013T035742923Z-f59a108e/line-name-seam-dpr1.png",
+      "sha256": "ec8ec53e1955d79baac072ac4e5c566259e107cd3303e6a7995a27f1e2c6120a"
+    },
+    {
+      "caseId": "duplicate-line-names",
+      "path": "spec/internal/evidence/c11-3-1-repeat-precomparison-2026-10-13/c1131-chrome-20261013T035742923Z-f59a108e/duplicate-line-names-dpr1.png",
+      "sha256": "dbf1e545e14b64ec132b055ab9a7edf3fcb504d0be4b8edbb6ba9edc231d1103"
+    },
+    {
+      "caseId": "mixed-units-and-gaps",
+      "path": "spec/internal/evidence/c11-3-1-repeat-precomparison-2026-10-13/c1131-chrome-20261013T035742923Z-f59a108e/mixed-units-and-gaps-dpr1.png",
+      "sha256": "9295bd750e0781c7bae3ebcbe7f810dd479ee1439e6d198b3d8f663b6d7b95a2"
+    },
+    {
+      "caseId": "limit-10000",
+      "path": "spec/internal/evidence/c11-3-1-repeat-precomparison-2026-10-13/c1131-chrome-20261013T035742923Z-f59a108e/limit-10000-dpr1.png",
+      "sha256": "f0140dc97bb55df684fbf0d88dcd079ddb759825f582f64b7faa9a4ae7cc8852"
+    },
+    {
+      "caseId": "limit-10001",
+      "path": "spec/internal/evidence/c11-3-1-repeat-precomparison-2026-10-13/c1131-chrome-20261013T035742923Z-f59a108e/limit-10001-dpr1.png",
+      "sha256": "f0140dc97bb55df684fbf0d88dcd079ddb759825f582f64b7faa9a4ae7cc8852"
+    },
+    {
+      "caseId": "auto-fill-outside-profile",
+      "path": "spec/internal/evidence/c11-3-1-repeat-precomparison-2026-10-13/c1131-chrome-20261013T035742923Z-f59a108e/auto-fill-outside-profile-dpr1.png",
+      "sha256": "d0a9f645d0f03f4e791c553b98335671ec0a87847a76d32958238778e1b0ae8b"
+    },
+    {
+      "caseId": "minmax-outside-profile",
+      "path": "spec/internal/evidence/c11-3-1-repeat-precomparison-2026-10-13/c1131-chrome-20261013T035742923Z-f59a108e/minmax-outside-profile-dpr1.png",
+      "sha256": "d0a9f645d0f03f4e791c553b98335671ec0a87847a76d32958238778e1b0ae8b"
+    },
+    {
+      "caseId": "nested-repeat-invalid",
+      "path": "spec/internal/evidence/c11-3-1-repeat-precomparison-2026-10-13/c1131-chrome-20261013T035742923Z-f59a108e/nested-repeat-invalid-dpr1.png",
+      "sha256": "d0a9f645d0f03f4e791c553b98335671ec0a87847a76d32958238778e1b0ae8b"
+    },
+    {
+      "caseId": "zero-repeat-invalid",
+      "path": "spec/internal/evidence/c11-3-1-repeat-precomparison-2026-10-13/c1131-chrome-20261013T035742923Z-f59a108e/zero-repeat-invalid-dpr1.png",
+      "sha256": "d0a9f645d0f03f4e791c553b98335671ec0a87847a76d32958238778e1b0ae8b"
+    }
+  ],
+  "wptCandidatesAreChromeOracleOnly": [
+    {
+      "path": "css/css-grid/grid-definition/grid-repeat-integer-001.html",
+      "sha256": "f48604bbd0316467f1b004052db9425d132c56632b034f99eb7aaf34b530ad1c"
+    },
+    {
+      "path": "css/css-grid/grid-definition/grid-repeat-integer-002.html",
+      "sha256": "27b78abd184512f3f5371dd13fe8bd49e7aee41dc0ae7a7cc1689d54ab571a10"
+    },
+    {
+      "path": "css/css-grid/grid-definition/grid-repeat-integer-003.html",
+      "sha256": "baba3dbdfc7476bd2937cdffd2cc7e8c8c2b73ed8c80849d15e9e846e40544ac"
+    },
+    {
+      "path": "css/css-grid/grid-definition/grid-repeat-integer-004.html",
+      "sha256": "d87c350e49934251cbbf346086fd89f6dd815b5ecde0dec31ed2ba843263a333"
+    },
+    {
+      "path": "css/css-grid/grid-definition/grid-repeat-integer-005.html",
+      "sha256": "34a7548251bb2ad1a0d45677d6a8bbf99684f71157d6aa5ef587d25b42c154d4"
+    }
+  ]
+}

@@ -176,7 +176,8 @@ pub(super) fn computed_background_for_profile(
         | ComputedStyleProfile::RuntimeBlockFlexGridV1
         | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
         | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
-        | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1 => {
+        | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
+        | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1 => {
             let paint = computed_runtime_background_paint(computed, node)?;
             let color = match paint {
                 ComputedBackgroundPaint::Transparent => None,

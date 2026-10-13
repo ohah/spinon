@@ -7,7 +7,7 @@ use style::{
         GridTemplateComponent, TrackBreadth, TrackSize,
         length_percentage::Unpacked as LengthPercentageValue, position::GridAutoFlow,
     },
-    values::generics::grid::TrackListValue,
+    values::generics::grid::{RepeatCount, TrackListValue},
 };
 
 use super::super::{
@@ -17,25 +17,72 @@ use super::super::{
 };
 
 const MAX_COMPUTED_GRID_TRACKS: usize = 10_000;
+const MAX_COMPUTED_GRID_LINE_METADATA_BYTES: usize = 1024 * 1024;
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub(in crate::stylo_dom::cascade) enum IntegerRepeatReservationSite {
+    Tracks,
+    LineGroups,
+    LineNames,
+    LineNameText,
+}
+
+#[cfg(test)]
+thread_local! {
+    static INTEGER_REPEAT_FAILURE_SITE: std::cell::Cell<Option<IntegerRepeatReservationSite>> = const { std::cell::Cell::new(None) };
+}
+
+#[cfg(test)]
+struct IntegerRepeatFailureGuard;
+
+#[cfg(test)]
+impl Drop for IntegerRepeatFailureGuard {
+    fn drop(&mut self) {
+        INTEGER_REPEAT_FAILURE_SITE.with(|site| site.set(None));
+    }
+}
+
+#[cfg(test)]
+pub(in crate::stylo_dom::cascade) fn inject_integer_repeat_reservation_failure(
+    site: IntegerRepeatReservationSite,
+) -> impl Drop {
+    let was_armed =
+        INTEGER_REPEAT_FAILURE_SITE.with(|current| current.replace(Some(site)).is_some());
+    assert!(
+        !was_armed,
+        "repeat reservation failpoint은 중첩할 수 없습니다"
+    );
+    IntegerRepeatFailureGuard
+}
 
 pub(super) fn computed_grid_layout(
     computed: &ComputedValues,
     node: NodeId,
     properties: &BTreeMap<String, String>,
+    allow_integer_repeat: bool,
 ) -> Result<ComputedCssGridLayout, CssCascadeError> {
+    if allow_integer_repeat && property_value(properties, "grid-template-areas") != "none" {
+        return Err(unsupported_grid_value(
+            node,
+            "grid-template-areas",
+            property_value(properties, "grid-template-areas"),
+        ));
+    }
     let columns_value = property_value(properties, "grid-template-columns");
     let rows_value = property_value(properties, "grid-template-rows");
-    let columns = computed_grid_tracks(
+    let (columns, columns_line_names) = computed_grid_tracks(
         computed.clone_grid_template_columns(),
         node,
         "grid-template-columns",
         columns_value,
+        allow_integer_repeat,
     )?;
-    let rows = computed_grid_tracks(
+    let (rows, rows_line_names) = computed_grid_tracks(
         computed.clone_grid_template_rows(),
         node,
         "grid-template-rows",
         rows_value,
+        allow_integer_repeat,
     )?;
     let auto_rows = computed_grid_auto_rows(
         computed.clone_grid_auto_rows(),
@@ -59,6 +106,8 @@ pub(super) fn computed_grid_layout(
     Ok(ComputedCssGridLayout {
         columns,
         rows,
+        columns_line_names,
+        rows_line_names,
         auto_flow,
         auto_rows,
         auto_columns,
@@ -157,35 +206,315 @@ fn computed_grid_tracks(
     node: NodeId,
     property: &'static str,
     serialized: &str,
-) -> Result<Vec<ComputedCssGridTrackSize>, CssCascadeError> {
+    allow_integer_repeat: bool,
+) -> Result<(Vec<ComputedCssGridTrackSize>, Vec<Vec<String>>), CssCascadeError> {
     let GridTemplateComponent::TrackList(list) = component else {
         return Err(unsupported_grid_value(node, property, serialized));
     };
-    if list.values.is_empty()
-        || list.values.len() > MAX_COMPUTED_GRID_TRACKS
-        || list.has_auto_repeat()
-        || list.line_names.iter().any(|names| !names.is_empty())
-    {
+    if list.values.is_empty() || list.has_auto_repeat() {
+        return Err(unsupported_grid_value(node, property, serialized));
+    }
+
+    if !allow_integer_repeat {
+        if list.values.len() > MAX_COMPUTED_GRID_TRACKS
+            || list.line_names.iter().any(|names| !names.is_empty())
+            || list
+                .values
+                .iter()
+                .any(|value| matches!(value, TrackListValue::TrackRepeat(_)))
+        {
+            return Err(unsupported_grid_value(node, property, serialized));
+        }
+        let mut tracks = Vec::new();
+        reserve_computed_tracks(
+            &mut tracks,
+            list.values.len(),
+            node,
+            property,
+            |tracks, count| tracks.try_reserve_exact(count).map_err(|_| ()),
+        )?;
+        for value in list.values.iter() {
+            let TrackListValue::TrackSize(size) = value else {
+                return Err(unsupported_grid_value(node, property, serialized));
+            };
+            tracks.push(
+                track_size(size)
+                    .ok_or_else(|| unsupported_grid_value(node, property, serialized))?,
+            );
+        }
+        return Ok((tracks, Vec::new()));
+    }
+
+    expand_integer_repeats(&list, node, property, serialized)
+}
+
+fn expand_integer_repeats(
+    list: &style::values::computed::TrackList,
+    node: NodeId,
+    property: &'static str,
+    serialized: &str,
+) -> Result<(Vec<ComputedCssGridTrackSize>, Vec<Vec<String>>), CssCascadeError> {
+    let outer_line_name_count = list
+        .values
+        .len()
+        .checked_add(1)
+        .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
+    if list.line_names.len() != outer_line_name_count {
+        return Err(unsupported_grid_value(node, property, serialized));
+    }
+
+    let mut expanded_count = 0_usize;
+    let mut expanded_name_count = 0_usize;
+    let mut expanded_name_bytes = 0_usize;
+    for names in list.line_names.iter() {
+        add_line_name_budget(
+            &mut expanded_name_count,
+            &mut expanded_name_bytes,
+            names,
+            1,
+            node,
+            property,
+            serialized,
+        )?;
+    }
+    for value in list.values.iter() {
+        let count = match value {
+            TrackListValue::TrackSize(_) => 1,
+            TrackListValue::TrackRepeat(repeat) => {
+                let RepeatCount::Number(count) = repeat.count else {
+                    return Err(unsupported_grid_value(node, property, serialized));
+                };
+                let count = usize::try_from(count)
+                    .ok()
+                    .filter(|count| *count > 0)
+                    .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
+                if repeat.track_sizes.is_empty()
+                    || repeat.track_sizes.len().checked_add(1) != Some(repeat.line_names.len())
+                    || repeat
+                        .track_sizes
+                        .iter()
+                        .any(|size| track_size(size).is_none())
+                {
+                    return Err(unsupported_grid_value(node, property, serialized));
+                }
+                for names in repeat.line_names.iter() {
+                    add_line_name_budget(
+                        &mut expanded_name_count,
+                        &mut expanded_name_bytes,
+                        names,
+                        count,
+                        node,
+                        property,
+                        serialized,
+                    )?;
+                }
+                repeat
+                    .track_sizes
+                    .len()
+                    .checked_mul(count)
+                    .ok_or_else(|| unsupported_grid_value(node, property, serialized))?
+            }
+        };
+        expanded_count = expanded_count
+            .checked_add(count)
+            .filter(|count| *count <= MAX_COMPUTED_GRID_TRACKS)
+            .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
+    }
+    let line_count = expanded_count
+        .checked_add(1)
+        .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
+    let estimated_metadata_bytes = line_count
+        .checked_mul(std::mem::size_of::<Vec<String>>())
+        .and_then(|bytes| {
+            expanded_name_count
+                .checked_mul(std::mem::size_of::<String>())
+                .and_then(|name_headers| bytes.checked_add(name_headers))
+        })
+        .and_then(|bytes| bytes.checked_add(expanded_name_bytes))
+        .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
+    if estimated_metadata_bytes > MAX_COMPUTED_GRID_LINE_METADATA_BYTES {
         return Err(unsupported_grid_value(node, property, serialized));
     }
 
     let mut tracks = Vec::new();
-    reserve_computed_tracks(
+    reserve_integer_repeat_vec(
         &mut tracks,
-        list.values.len(),
+        expanded_count,
+        IntegerRepeatReservationSite::Tracks,
         node,
         property,
-        |tracks, count| tracks.try_reserve_exact(count).map_err(|_| ()),
     )?;
-    for value in list.values.iter() {
-        let TrackListValue::TrackSize(size) = value else {
-            return Err(unsupported_grid_value(node, property, serialized));
-        };
-        tracks.push(
-            track_size(size).ok_or_else(|| unsupported_grid_value(node, property, serialized))?,
-        );
+    let mut line_names = Vec::new();
+    reserve_integer_repeat_vec(
+        &mut line_names,
+        line_count,
+        IntegerRepeatReservationSite::LineGroups,
+        node,
+        property,
+    )?;
+    line_names.push(Vec::new());
+
+    for (index, value) in list.values.iter().enumerate() {
+        append_line_names(&mut line_names, &list.line_names[index], node, property)?;
+        match value {
+            TrackListValue::TrackSize(size) => {
+                tracks.push(
+                    track_size(size)
+                        .ok_or_else(|| unsupported_grid_value(node, property, serialized))?,
+                );
+                line_names.push(Vec::new());
+            }
+            TrackListValue::TrackRepeat(repeat) => {
+                let RepeatCount::Number(count) = repeat.count else {
+                    return Err(unsupported_grid_value(node, property, serialized));
+                };
+                let count = usize::try_from(count)
+                    .ok()
+                    .filter(|count| *count > 0)
+                    .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
+                for _ in 0..count {
+                    for (track_index, size) in repeat.track_sizes.iter().enumerate() {
+                        append_line_names(
+                            &mut line_names,
+                            &repeat.line_names[track_index],
+                            node,
+                            property,
+                        )?;
+                        tracks.push(
+                            track_size(size).ok_or_else(|| {
+                                unsupported_grid_value(node, property, serialized)
+                            })?,
+                        );
+                        line_names.push(Vec::new());
+                    }
+                    append_line_names(
+                        &mut line_names,
+                        repeat.line_names.last().expect("validated N+1 line names"),
+                        node,
+                        property,
+                    )?;
+                }
+            }
+        }
     }
-    Ok(tracks)
+    append_line_names(
+        &mut line_names,
+        list.line_names.last().expect("validated N+1 line names"),
+        node,
+        property,
+    )?;
+    debug_assert_eq!(tracks.len(), expanded_count);
+    debug_assert_eq!(line_names.len(), line_count);
+    Ok((tracks, line_names))
+}
+
+fn append_line_names(
+    line_groups: &mut [Vec<String>],
+    names: &[style::values::CustomIdent],
+    node: NodeId,
+    property: &'static str,
+) -> Result<(), CssCascadeError> {
+    let group = line_groups
+        .last_mut()
+        .expect("the initial grid line group is always present");
+    reserve_integer_repeat_vec(
+        group,
+        names.len(),
+        IntegerRepeatReservationSite::LineNames,
+        node,
+        property,
+    )?;
+    for name in names {
+        let value = name.0.as_str();
+        let mut owned = String::new();
+        reserve_integer_repeat_string(&mut owned, value.len(), node, property)?;
+        owned.push_str(value);
+        group.push(owned);
+    }
+    Ok(())
+}
+
+fn add_line_name_budget(
+    name_count: &mut usize,
+    name_bytes: &mut usize,
+    names: &[style::values::CustomIdent],
+    repeat_count: usize,
+    node: NodeId,
+    property: &'static str,
+    serialized: &str,
+) -> Result<(), CssCascadeError> {
+    let mut group_count = 0_usize;
+    let mut group_bytes = 0_usize;
+    for name in names {
+        group_count = group_count
+            .checked_add(1)
+            .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
+        group_bytes = group_bytes
+            .checked_add(name.0.as_str().len())
+            .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
+    }
+    let repeated_count = group_count
+        .checked_mul(repeat_count)
+        .and_then(|count| name_count.checked_add(count))
+        .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
+    let repeated_bytes = group_bytes
+        .checked_mul(repeat_count)
+        .and_then(|bytes| name_bytes.checked_add(bytes))
+        .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
+    *name_count = repeated_count;
+    *name_bytes = repeated_bytes;
+    Ok(())
+}
+
+fn reserve_integer_repeat_vec<T>(
+    values: &mut Vec<T>,
+    count: usize,
+    site: IntegerRepeatReservationSite,
+    node: NodeId,
+    property: &'static str,
+) -> Result<(), CssCascadeError> {
+    fail_integer_repeat_reservation_if_requested(site)
+        .map_err(|_| CssCascadeError::GridAllocationFailure { node, property })?;
+    values
+        .try_reserve_exact(count)
+        .map_err(|_| CssCascadeError::GridAllocationFailure { node, property })
+}
+
+fn reserve_integer_repeat_string(
+    value: &mut String,
+    count: usize,
+    node: NodeId,
+    property: &'static str,
+) -> Result<(), CssCascadeError> {
+    fail_integer_repeat_reservation_if_requested(IntegerRepeatReservationSite::LineNameText)
+        .map_err(|_| CssCascadeError::GridAllocationFailure { node, property })?;
+    value
+        .try_reserve(count)
+        .map_err(|_| CssCascadeError::GridAllocationFailure { node, property })
+}
+
+#[cfg(test)]
+fn fail_integer_repeat_reservation_if_requested(
+    site: IntegerRepeatReservationSite,
+) -> Result<(), ()> {
+    let should_fail = INTEGER_REPEAT_FAILURE_SITE
+        .try_with(|current| {
+            if current.get() == Some(site) {
+                current.set(None);
+                true
+            } else {
+                false
+            }
+        })
+        .unwrap_or(false);
+    if should_fail { Err(()) } else { Ok(()) }
+}
+
+#[cfg(not(test))]
+fn fail_integer_repeat_reservation_if_requested(
+    _site: IntegerRepeatReservationSite,
+) -> Result<(), ()> {
+    Ok(())
 }
 
 fn reserve_computed_tracks(

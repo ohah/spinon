@@ -1,0 +1,4 @@
+10-13 23:52:12.626 27341 27341 E SpinonBootstrap: SPINON_C1131_GRID_PIXEL_MATRIX status=error run_id=c1131-android-physical-20261013T145150083Z-412c65a2-bad-samples scene=multi-track-repeat reason=invalid-c1131-sample-fixture
+10-13 23:52:12.632 27341 27365 E SpinonBootstrap: SPINON_C1131_GRID_PIXEL_MATRIX status=error reason=invalid-c1131-sample-fixture
+10-13 23:52:12.666 27341 27341 I SpinonBootstrap: SPINON_C0410_SURFACE_CREATED generation=1
+10-13 23:52:12.666 27341 27341 I SpinonBootstrap: SPINON_C0410_SURFACE_CHANGED generation=2 size=900x675 changed=true

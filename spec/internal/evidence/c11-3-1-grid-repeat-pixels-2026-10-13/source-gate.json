@@ -1,0 +1,29 @@
+{
+  "schema": "spinon-c11-3-1-source-gate/v1",
+  "status": "passed",
+  "candidateGitTree": "96f2c8c2a75bd2ce43be735a27b212271bd0c51a",
+  "candidateBaseTree": "e2a13c67db39091998fd2346aa336daf3fb9223c",
+  "baseCommit": "a40504d762cdfa19f6af3048336b563e6366bb9e",
+  "fixtureSha256": "2c39888babfff768f2f6c1588f446179052dc324f0b7483abd37588bcdb11d90",
+  "sourceBoundary": "C11.3.1 candidate plus its iOS host/eval/surface route and C1131 pixel comparator support; unrelated mixed C12.4 worktree changes are excluded",
+  "androidPhysical": {
+    "runID": "c1131-android-physical-20261013T145150083Z-412c65a2",
+    "device": "SM-S731N Android 16",
+    "surface": "PixelCopy",
+    "status": "matched",
+    "matchedSamples": 5,
+    "maximumChannelError": 0,
+    "negativeControl": "invalid sample rejected before PixelCopy",
+    "artifactSha256": "aa72e2e5185d45ba43e99818dbfaf48f3dfb94bbcca8d94bc0d93249c4f839ba"
+  },
+  "iosSimulator": {
+    "runID": "c1131-ios-simulator-20261013T144912595Z-43f20ba7",
+    "device": "iPhone 17 Pro, iOS 26.2 Simulator",
+    "surface": "Metal drawable before compositor submission",
+    "status": "matched",
+    "matchedSamples": 5,
+    "maximumChannelError": 0,
+    "negativeControl": "invalid sample rejected before Metal readback",
+    "artifactSha256": "4fbcbc5d83f72c5dbebe5baa1c83ac2f666829a30f930b0d217b5fd4ce5b2f0b"
+  }
+}

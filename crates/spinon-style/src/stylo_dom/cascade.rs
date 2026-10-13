@@ -33,10 +33,12 @@ pub use runtime_grid::{
     compute_runtime_block_flex_grid_cascade_with_stylesheets,
     compute_runtime_block_flex_grid_dense_auto_placement_cascade_with_stylesheets,
     compute_runtime_block_flex_grid_placement_cascade_with_stylesheets,
+    compute_runtime_block_flex_grid_template_cascade_with_stylesheets,
     first_unsupported_runtime_block_flex_grid_auto_placement_inline_property,
     first_unsupported_runtime_block_flex_grid_dense_auto_placement_inline_property,
     first_unsupported_runtime_block_flex_grid_inline_property,
     first_unsupported_runtime_block_flex_grid_placement_inline_property,
+    first_unsupported_runtime_block_flex_grid_template_inline_property,
 };
 pub use runtime_layout::{
     compute_runtime_flex_custom_properties_cascade,

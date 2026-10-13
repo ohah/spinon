@@ -11,6 +11,7 @@ mod c11_2_1;
 mod c11_2_2;
 #[cfg(feature = "c11-2-3-grid-fixture-test")]
 mod c11_2_3;
+mod c11_3_1;
 mod c12;
 #[cfg(feature = "c04-runtime-gpu-test-hooks")]
 mod surface;

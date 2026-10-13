@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spinon C11.3.1 Grid repeat comparison</title>
+  <style>
+    html, body { margin: 0; padding: 0; }
+    body { direction: ltr; writing-mode: horizontal-tb; color-scheme: light; }
+    *, *::before, *::after { box-sizing: border-box; }
+    #stage { position: relative; width: 320px; height: 240px; }
+    .scene { position: absolute; inset: 0; display: none; width: 320px; height: 240px; }
+    .scene.active { display: block; }
+    [data-node] { margin: 0; padding: 0; border: 0; }
+    .surface { background-color: #edf1f7; }
+    .blue { background-color: #2866f6; }
+    .red { background-color: #e5484d; }
+    .green { background-color: #19a974; }
+  </style>
+</head>
+<body>
+  <div id="stage">
+    <section class="scene" data-scene="repeat-one">
+      <div id="repeat-one-grid" data-node class="surface" style="display:grid;width:320px;height:240px;grid-template-columns:repeat(1,1fr);grid-template-rows:repeat(1,1fr)">
+        <div id="repeat-one-item" data-node class="blue" style="width:40px;height:30px"></div>
+      </div>
+    </section>
+    <section class="scene" data-scene="no-repeat-control">
+      <div id="no-repeat-control-grid" data-node class="surface" style="display:grid;width:320px;height:240px;grid-template-columns:1fr;grid-template-rows:1fr">
+        <div id="no-repeat-control-item" data-node class="blue" style="width:40px;height:30px"></div>
+      </div>
+    </section>
+    <section class="scene" data-scene="multi-track-repeat">
+      <div id="multi-track-repeat-grid" data-node class="surface" style="display:grid;width:320px;height:240px;grid-template-columns:20px 80px repeat(2,40px 1fr) 20px;grid-template-rows:repeat(2,50px);column-gap:8px;row-gap:6px">
+        <div id="multi-track-repeat-a" data-node class="blue" style="width:30px;height:20px"></div>
+        <div id="multi-track-repeat-b" data-node class="red" style="width:24px;height:22px"></div>
+      </div>
+    </section>
+    <section class="scene" data-scene="line-name-seam">
+      <div id="line-name-seam-grid" data-node class="surface" style="display:grid;width:320px;height:240px;grid-template-columns:[outer-start] 20px [outer-end repeat-start] repeat(2,[item-start] 30px [seam] 40px [item-end]) [trailing] 20px [outer-last];grid-template-rows:40px">
+        <div id="line-name-seam-a" data-node class="blue" style="width:20px;height:20px"></div>
+        <div id="line-name-seam-b" data-node class="red" style="width:20px;height:20px"></div>
+      </div>
+    </section>
+    <section class="scene" data-scene="duplicate-line-names">
+      <div id="duplicate-line-names-grid" data-node class="surface" style="display:grid;width:320px;height:240px;grid-template-columns:[same] repeat(2,[same] 30px [same]) [same] 30px [end];grid-template-rows:40px">
+        <div id="duplicate-line-names-a" data-node class="blue" style="width:20px;height:20px"></div>
+        <div id="duplicate-line-names-b" data-node class="red" style="width:20px;height:20px"></div>
+      </div>
+    </section>
+    <section class="scene" data-scene="mixed-units-and-gaps">
+      <div id="mixed-units-and-gaps-grid" data-node class="surface" style="display:grid;width:320px;height:240px;grid-template-columns:50px repeat(2,20% 1fr);grid-template-rows:repeat(2,40px);column-gap:8px;row-gap:6px">
+        <div id="mixed-units-and-gaps-a" data-node class="blue" style="width:25px;height:18px"></div>
+        <div id="mixed-units-and-gaps-b" data-node class="red" style="width:25px;height:18px"></div>
+        <div id="mixed-units-and-gaps-c" data-node class="green" style="width:25px;height:18px"></div>
+      </div>
+    </section>
+    <section class="scene" data-scene="limit-10000">
+      <div id="limit-10000-grid" data-node class="surface" style="display:grid;width:320px;height:240px;grid-template-columns:repeat(10000,1px);grid-template-rows:40px">
+        <div id="limit-10000-item" data-node class="blue" style="width:1px;height:20px"></div>
+      </div>
+    </section>
+    <section class="scene" data-scene="limit-10001">
+      <div id="limit-10001-grid" data-node class="surface" style="display:grid;width:320px;height:240px;grid-template-columns:repeat(10001,1px);grid-template-rows:40px">
+        <div id="limit-10001-item" data-node class="blue" style="width:1px;height:20px"></div>
+      </div>
+    </section>
+    <section class="scene" data-scene="auto-fill-outside-profile">
+      <div id="auto-fill-outside-profile-grid" data-node class="surface" style="display:grid;width:320px;height:240px;grid-template-columns:repeat(auto-fill,40px);grid-template-rows:40px">
+        <div id="auto-fill-outside-profile-item" data-node class="blue" style="width:20px;height:20px"></div>
+      </div>
+    </section>
+    <section class="scene" data-scene="minmax-outside-profile">
+      <div id="minmax-outside-profile-grid" data-node class="surface" style="display:grid;width:320px;height:240px;grid-template-columns:repeat(2,minmax(20px,1fr));grid-template-rows:40px">
+        <div id="minmax-outside-profile-item" data-node class="blue" style="width:20px;height:20px"></div>
+      </div>
+    </section>
+    <section class="scene" data-scene="nested-repeat-invalid">
+      <div id="nested-repeat-invalid-grid" data-node class="surface" style="display:grid;width:320px;height:240px;grid-template-columns:repeat(2,repeat(2,10px));grid-template-rows:40px">
+        <div id="nested-repeat-invalid-item" data-node class="blue" style="width:20px;height:20px"></div>
+      </div>
+    </section>
+    <section class="scene" data-scene="zero-repeat-invalid">
+      <div id="zero-repeat-invalid-grid" data-node class="surface" style="display:grid;width:320px;height:240px;grid-template-columns:repeat(0,10px);grid-template-rows:40px">
+        <div id="zero-repeat-invalid-item" data-node class="blue" style="width:20px;height:20px"></div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

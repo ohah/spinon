@@ -1,0 +1,160 @@
+{
+  "schema": "spinon-c11-3-1-grid-repeat-pixels-result/v1",
+  "status": "matched",
+  "runID": "c1131-android-avd-20261013T102344630Z-a7301ccd",
+  "target": "android-avd",
+  "fixture": {
+    "path": "tests/fixtures/css/c11/grid-template-repeat-c1131-pixel-samples-v1.json",
+    "sha256": "2c39888babfff768f2f6c1588f446179052dc324f0b7483abd37588bcdb11d90",
+    "sampleCount": 5
+  },
+  "oracle": {
+    "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.92-ebc4716049e7-0a109d053a3a-d5067aca4f98",
+    "referenceSha256": "3b98a994a0fd1ec52a838887c71a54b0afad62527d7a289557cc7ed728c24788",
+    "screenshotSha256": "e14b03ff7f2302d2f245501d6888cf743b2495cd584b01f5774e1df69ca85f55",
+    "product": "Chrome/154.0.8037.92",
+    "scene": "multi-track-repeat",
+    "deviceScaleFactor": 1,
+    "chromeOracleValidation": {
+      "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.92-ebc4716049e7-0a109d053a3a-d5067aca4f98",
+      "screenshot": [
+        320,
+        240
+      ],
+      "sampleCount": 5
+    }
+  },
+  "platform": {
+    "device": {
+      "serial": "emulator-5554",
+      "qemu": true,
+      "apiLevel": 37,
+      "model": "sdk_gphone64_arm64",
+      "fingerprint": "google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780:userdebug/dev-keys",
+      "renderer": "GLES: Google (Google Inc. (Google)), Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)), OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))"
+    },
+    "installArtifactPath": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+    "installArtifactSha256": "878e09405e1dcd75e95e9d6c2caac1716a216e0687cb9b691343fb86c711131b",
+    "comparison": {
+      "status": "matched",
+      "scene": "multi-track-repeat",
+      "runID": "c1131-android-avd-20261013T102344630Z-a7301ccd",
+      "processId": 11821,
+      "markerPrefix": "C1131",
+      "surfaceGeneration": 2,
+      "density": 2.625,
+      "surface": [
+        840,
+        630
+      ],
+      "runtimeViewportCssPx": [
+        320,
+        240
+      ],
+      "scale": [
+        2.625,
+        2.625
+      ],
+      "expectedSamples": 5,
+      "matchedSamples": 5,
+      "maximumChannelError": 0,
+      "pngSha256": "717ca8f02a748f171e1881203b271c29f361db6f2e7a5914292e2bb8b95130cd",
+      "samples": [
+        {
+          "id": "grid-background",
+          "css": [
+            300,
+            120
+          ],
+          "pixel": [
+            788,
+            316
+          ],
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ]
+        },
+        {
+          "id": "item-blue",
+          "css": [
+            10,
+            10
+          ],
+          "pixel": [
+            27,
+            27
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        },
+        {
+          "id": "item-red",
+          "css": [
+            40,
+            10
+          ],
+          "pixel": [
+            106,
+            27
+          ],
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ]
+        },
+        {
+          "id": "column-gap",
+          "css": [
+            112,
+            10
+          ],
+          "pixel": [
+            295,
+            27
+          ],
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ]
+        },
+        {
+          "id": "row-gap",
+          "css": [
+            10,
+            53
+          ],
+          "pixel": [
+            27,
+            140
+          ],
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ]
+        }
+      ]
+    },
+    "screenshotSha256": "af1207bc0d4988889062892510699c78029bda9441694299a0708996ec66de2f",
+    "sampleAllowlistNegativeControl": {
+      "status": "rejected",
+      "runID": "c1131-android-avd-20261013T102344630Z-a7301ccd-bad-samples",
+      "processId": 11894,
+      "invalidSample": "item-blue xCssPx + 1",
+      "pixelCopyStarted": false
+    }
+  },
+  "interpretation": "Android API 37 AVD의 PixelCopy 결과입니다. AVD가 보고한 renderer는 하드웨어 실기기 GPU 성능 증거가 아닙니다."
+}

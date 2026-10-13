@@ -13,6 +13,7 @@ use super::super::{
         runtime_block_flex_grid_auto_placement_author_properties,
         runtime_block_flex_grid_dense_auto_placement_author_properties,
         runtime_block_flex_grid_placement_author_properties,
+        runtime_block_flex_grid_template_author_properties,
     },
     runtime_layout::RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES,
     runtime_paint::RUNTIME_BLOCK_PAINT_AUTHOR_PROPERTIES,
@@ -156,6 +157,8 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         runtime_block_flex_grid_auto_placement_author_properties();
     let runtime_grid_dense_auto_placement_author_properties =
         runtime_block_flex_grid_dense_auto_placement_author_properties();
+    let runtime_grid_template_author_properties =
+        runtime_block_flex_grid_template_author_properties();
     let allowed_author_properties: Option<&[&str]> = match profile {
         ComputedStyleProfile::BasicCascadeV1 => None,
         ComputedStyleProfile::SupportedElementsUaV1 => None,
@@ -196,6 +199,9 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         }
         ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1 => {
             Some(runtime_grid_dense_auto_placement_author_properties.as_slice())
+        }
+        ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1 => {
+            Some(runtime_grid_template_author_properties.as_slice())
         }
         ComputedStyleProfile::RuntimeFlexPaintV1 => None,
     };
