@@ -16,6 +16,8 @@ const paths = {
   javaDemo: 'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java',
   iosDemo: 'platforms/ios/Sources/C0410RuntimeGpuDemo.swift',
   runtimeCore: 'crates/spinon-ffi/src/runtime_gpu.rs',
+  runtimeRenderer: 'crates/spinon-ffi/src/runtime_gpu/renderer.rs',
+  runtimeFixtureData: 'crates/spinon-ffi/src/runtime_gpu/fixtures/data.rs',
 };
 
 async function read(path) {
@@ -87,10 +89,10 @@ test('두 viewport Chromium reference가 고정 입력과 oracle에 묶여 있�
 });
 
 test('Android와 iOS runtime viewport가 고정 fixture 크기 대신 surface bounds를 사용한다', async () => {
-  const [inventoryBytes, htmlBytes, javascriptBytes, javaBytes, iosBytes, runtimeBytes] =
+  const [inventoryBytes, htmlBytes, javascriptBytes, javaBytes, iosBytes, runtimeBytes, rendererBytes, fixtureDataBytes] =
     await Promise.all([
       read(paths.inventory), read(paths.html), read(paths.javascript), read(paths.javaDemo),
-      read(paths.iosDemo), read(paths.runtimeCore),
+      read(paths.iosDemo), read(paths.runtimeCore), read(paths.runtimeRenderer), read(paths.runtimeFixtureData),
     ]);
   const inventory = JSON.parse(inventoryBytes.toString('utf8'));
   const html = htmlBytes.toString('utf8');
@@ -98,6 +100,8 @@ test('Android와 iOS runtime viewport가 고정 fixture 크기 대신 surface bo
   const java = javaBytes.toString('utf8');
   const ios = iosBytes.toString('utf8');
   const runtime = runtimeBytes.toString('utf8');
+  const renderer = rendererBytes.toString('utf8');
+  const fixtureData = fixtureDataBytes.toString('utf8');
   const javascriptStyles = [...javascript.matchAll(/setAttribute\('style','([^']+)'\)/g)]
     .map(([, style]) => style);
   const htmlStyles = [...html.matchAll(/\sstyle="([^"]+)"/g)].map(([, style]) => style);
@@ -105,7 +109,7 @@ test('Android와 iOS runtime viewport가 고정 fixture 크기 대신 surface bo
   assert.deepEqual(javascriptStyles, htmlStyles);
   assert.ok(javascriptStyles[0].includes('width:100vw;height:100vh'));
   assert.ok(inventory.nodes.some(({ id }) => id === 'root'));
-  assert.ok(runtime.includes('include_str!("../../../tests/fixtures/css/c04/runtime-css-to-gpu-resize.js")'));
+  assert.ok(fixtureData.includes('include_str!("../../../../../tests/fixtures/css/c04/runtime-css-to-gpu-resize.js")'));
 
   assert.match(java, /surfaceWidth\s*>\s*0\s*\?\s*\(float\)\s*surfaceWidth\s*\/\s*density/);
   assert.match(java, /surfaceHeight\s*>\s*0\s*\?\s*\(float\)\s*surfaceHeight\s*\/\s*density/);
@@ -135,6 +139,6 @@ test('Android와 iOS runtime viewport가 고정 fixture 크기 대신 surface bo
   assert.match(ios, /rendererSurfaceGeneration = nil/);
   assert.match(ios, /rendererSurfaceGeneration == surfaceGeneration/);
   assert.doesNotMatch(ios, /return\s*\(301,\s*100,\s*displayScale/);
-  assert.match(runtime, /surface_texture=\{\}x\{\}/);
+  assert.match(renderer, /surface_texture=\{\}x\{\}/);
   assert.match(runtime, /render_viewport_css_px=\{\}x\{\}/);
 });

@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { existsSync } from 'node:fs';
+import { readdir, readFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { test } from 'node:test';
 import { fileURLToPath } from 'node:url';
@@ -41,6 +42,17 @@ test('fixture 이동 뒤 이전 경로에 Rust 사본이 남지 않는다', () =
       `이전 fixture 경로에 소스가 남았습니다: ${relativePath}`,
     );
   }
+});
+
+test('CSS reference 도구가 삭제된 Rust fixture 경로를 참조하지 않는다', async () => {
+  const entries = await readdir(resolve(repositoryRoot, 'tools/css-reference'));
+  const sources = await Promise.all(entries
+    .filter((entry) => entry.endsWith('.mjs') && entry !== 'fixture-module-boundary.test.mjs')
+    .map((entry) => readFile(resolve(repositoryRoot, 'tools/css-reference', entry), 'utf8')));
+  const staleReferences = legacyFixtureSources.filter((legacyPath) =>
+    sources.some((source) => source.includes(legacyPath)));
+
+  assert.deepEqual(staleReferences, []);
 });
 
 test('이동한 fixture 구현은 정해진 fixtures 모듈 경로에 있다', () => {

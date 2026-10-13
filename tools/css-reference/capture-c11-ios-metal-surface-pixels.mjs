@@ -25,7 +25,7 @@ const sourcePaths = [
   'crates/spinon-ffi/Cargo.toml',
   'crates/spinon-ffi/include/spinon_ffi.h',
   'crates/spinon-ffi/src/runtime_gpu.rs',
-  'crates/spinon-ffi/src/runtime_gpu/ffi/c11.rs',
+  'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi.rs',
   'platforms/ios/Sources/C0410RuntimeGpuDemo.swift',
   'platforms/ios/Sources/SpinonRunner.h',

@@ -103,8 +103,8 @@ test('역방향 주축, 역방향 줄 쌓기, shorthand와 줄 경계의 기준 
 
 test('실제 runtime JS fixture가 Android·iOS의 C10.3.1 WGPU 경로에 연결된다', async () => {
   const sourcePaths = {
-    ffi: 'crates/spinon-ffi/src/runtime_gpu/ffi/c10.rs',
-    ffiSource: 'crates/spinon-ffi/src/runtime_gpu.rs',
+    ffi: 'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c10.rs',
+    ffiSource: 'crates/spinon-ffi/src/runtime_gpu/fixtures/data.rs',
     ffiHeader: 'crates/spinon-ffi/include/spinon_ffi.h',
     androidJni: 'platforms/android/app/src/main/cpp/spinon_jni.cc',
     androidDemo: 'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java',

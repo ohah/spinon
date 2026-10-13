@@ -203,8 +203,8 @@ test('캡처 도구는 고정 reference를 자동으로 덮어쓰지 않는다',
 test('C07.2 V8 fixture가 실제 Android·iOS WGPU 런타임 경로에 연결되어 있다', async () => {
   const paths = {
     fixture: 'tests/fixtures/css/c07/runtime-border-width.js',
-    ffi: 'crates/spinon-ffi/src/runtime_gpu/ffi/c07.rs',
-    ffiSource: 'crates/spinon-ffi/src/runtime_gpu.rs',
+    ffi: 'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c07.rs',
+    ffiSource: 'crates/spinon-ffi/src/runtime_gpu/fixtures/data.rs',
     ffiHeader: 'crates/spinon-ffi/include/spinon_ffi.h',
     androidJni: 'platforms/android/app/src/main/cpp/spinon_jni.cc',
     androidDemo: 'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java',

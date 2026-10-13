@@ -41,6 +41,8 @@ runtime GPU fixture scene adapter와 FFI 진입점이 일반 runtime 파일에 �
 
 PR #147 병합 뒤 파일 목록을 다시 확인해 이전 위치에 남아 있던 미참조 fixture 복사 파일 16개를 발견했다. Rust 모듈 선언에 연결되지 않아 현재 빌드 산출물에는 들어가지 않았지만, 같은 책임의 두 사본이 남아 편집 대상과 소유권을 혼동시킬 수 있었다. 이전 사본을 제거하고, 과거 경로와 정식 `fixtures/` 경로를 함께 검사하는 회귀 테스트를 추가했다. 앱 동작과 ABI는 바뀌지 않는다. 세부 근거는 [후속 정리 검토](../spec/internal/evidence/runtime-gpu-fixture-module-boundary-cleanup-2026-10-14.md)에 기록한다.
 
+PR #148 병합 뒤 전체 CSS reference suite를 다시 실행하면서 일부 검증 스크립트가 삭제된 이전 Rust 경로를 계속 읽는 문제를 찾았다. 활성 CSS 검증 테스트와 C11 캡처 입력 목록을 정식 `fixtures/` 경로로 갱신하고, CSS reference 도구에 오래된 Rust 경로가 다시 들어오면 실패하는 검사를 추가했다. 잠금 파일 기준 전체 372개 CSS reference 테스트가 통과했다. 이번 정리는 fixture 구현·제품 동작·ABI를 바꾸지 않으며 C11 CSS 기능 상태를 완료로 올리지 않는다. 상세 근거와 실패 경로 검토는 [경로 참조 후속 검증](../spec/internal/evidence/runtime-gpu-fixture-reference-paths-2026-10-14/README.md)에 기록한다.
+
 ## 완료 기준과 범위 밖
 
 - 기본/product feature artifact에 앱 검증용 FFI symbol 및 embedded fixture payload가 없어야 한다.

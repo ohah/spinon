@@ -189,8 +189,8 @@ test('실제 V8 runtime fixture의 mixed min·max freeze와 custom paint frame�
 
 test('실제 runtime fixture가 Android·iOS에서 C10.2 V8→Stylo→Taffy→WGPU 경로로 연결된다', async () => {
   const paths = {
-    ffi: 'crates/spinon-ffi/src/runtime_gpu/ffi/c10.rs',
-    ffiSource: 'crates/spinon-ffi/src/runtime_gpu.rs',
+    ffi: 'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c10.rs',
+    ffiSource: 'crates/spinon-ffi/src/runtime_gpu/fixtures/data.rs',
     ffiHeader: 'crates/spinon-ffi/include/spinon_ffi.h',
     androidJni: 'platforms/android/app/src/main/cpp/spinon_jni.cc',
     androidDemo: 'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java',
