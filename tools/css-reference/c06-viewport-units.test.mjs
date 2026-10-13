@@ -86,8 +86,8 @@ test('runtime viewport-unit fixture is connected through the Android and iOS hos
   const paths = {
     runtimeFixture: 'tests/fixtures/css/c06/runtime-viewport-units.js',
     ffiHeader: 'crates/spinon-ffi/include/spinon_ffi.h',
-    ffiRuntime: 'crates/spinon-ffi/src/runtime_gpu.rs',
-    ffiFunction: 'crates/spinon-ffi/src/runtime_gpu/ffi/c06.rs',
+    ffiRuntime: 'crates/spinon-ffi/src/runtime_gpu/fixtures/data.rs',
+    ffiFunction: 'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c06.rs',
     androidDemo: 'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java',
     androidJni: 'platforms/android/app/src/main/cpp/spinon_jni.cc',
     androidActivity: 'platforms/android/app/src/main/java/dev/spinon/bootstrap/MainActivity.java',

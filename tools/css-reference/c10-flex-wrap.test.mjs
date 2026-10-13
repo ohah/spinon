@@ -172,9 +172,9 @@ test('capture는 reference를 자동 갱신하지 않고 실행 시 고정된 Ch
 
 test('실제 runtime fixture가 Android·iOS에서 같은 V8→Stylo→Taffy→WGPU 경로를 쓴다', async () => {
   const paths = {
-    ffi: 'crates/spinon-ffi/src/runtime_gpu/ffi/c10.rs',
-    ffiModule: 'crates/spinon-ffi/src/runtime_gpu/ffi.rs',
-    ffiSource: 'crates/spinon-ffi/src/runtime_gpu.rs',
+    ffi: 'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c10.rs',
+    ffiModule: 'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures.rs',
+    ffiSource: 'crates/spinon-ffi/src/runtime_gpu/fixtures/data.rs',
     ffiHeader: 'crates/spinon-ffi/include/spinon_ffi.h',
     androidJni: 'platforms/android/app/src/main/cpp/spinon_jni.cc',
     androidDemo: 'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java',

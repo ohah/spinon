@@ -105,8 +105,8 @@ test('C07.1 실제 runtime fixture가 V8 문서와 author stylesheet를 사용�
 
 test('C07.1 runtime 연결이 Rust FFI부터 Android·iOS launch route까지 이어진다', async () => {
   const paths = {
-    ffi: 'crates/spinon-ffi/src/runtime_gpu/ffi/c07.rs',
-    ffiRegistry: 'crates/spinon-ffi/src/runtime_gpu/ffi.rs',
+    ffi: 'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c07.rs',
+    ffiRegistry: 'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures.rs',
     ffiHeader: 'crates/spinon-ffi/include/spinon_ffi.h',
     androidJni: 'platforms/android/app/src/main/cpp/spinon_jni.cc',
     androidDemo: 'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java',

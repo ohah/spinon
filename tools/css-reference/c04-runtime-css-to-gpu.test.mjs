@@ -17,7 +17,7 @@ const paths = {
   androidJni: 'platforms/android/app/src/main/cpp/spinon_jni.cc',
   iosDemo: 'platforms/ios/Sources/C0410RuntimeGpuDemo.swift',
   iosRunner: 'platforms/ios/Sources/SpinonRunner.mm',
-  runtimeCore: 'crates/spinon-ffi/src/runtime_gpu.rs',
+  runtimeCore: 'crates/spinon-ffi/src/runtime_gpu/fixtures/data.rs',
 };
 
 async function read(path) {
@@ -81,7 +81,7 @@ test('Android and iOS run the same checked-in JavaScript fixture through V8', as
   const runner = runnerBytes.toString('utf8');
   const runtimeCore = coreBytes.toString('utf8');
 
-  assert.ok(runtimeCore.includes('include_str!("../../../tests/fixtures/css/c04/runtime-css-to-gpu-resize.js")'));
+  assert.ok(runtimeCore.includes('include_str!("../../../../../tests/fixtures/css/c04/runtime-css-to-gpu-resize.js")'));
   assert.match(java, /nativeEvalFixture\(host\)/);
   assert.match(jni, /spinon_runtime_gpu_host_eval_fixture\(\s*host,/);
   assert.match(ios, /SpinonRunner\.evalRuntimeGpuFixture\(handle\)/);

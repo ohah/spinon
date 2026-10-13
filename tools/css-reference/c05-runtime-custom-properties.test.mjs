@@ -89,7 +89,7 @@ test('C05 custom-property Chromium oracle is tied to immutable fixture and captu
 test('C05 Android와 iOS fixture가 Chromium HTML과 같은 style·WGPU runtime 경로를 쓴다', async () => {
   const [htmlBytes, appScriptBytes, runtimeBytes, javaBytes, jniBytes, iosBytes, runnerBytes] =
     await Promise.all([
-      bytes(paths.html), bytes(paths.appScript), bytes('crates/spinon-ffi/src/runtime_gpu.rs'),
+      bytes(paths.html), bytes(paths.appScript), bytes('crates/spinon-ffi/src/runtime_gpu/fixtures/data.rs'),
       bytes('platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java'),
       bytes('platforms/android/app/src/main/cpp/spinon_jni.cc'),
       bytes('platforms/ios/Sources/C0410RuntimeGpuDemo.swift'),
@@ -109,7 +109,7 @@ test('C05 Android와 iOS fixture가 Chromium HTML과 같은 style·WGPU runtime 
   assert.deepEqual(appStyles.map(([, style]) => style), expectedHtmlStyles);
   assert.doesNotMatch(appScript, /createElement|appendChild/);
   assert.ok(runtimeBytes.toString('utf8').includes(
-    'include_str!("../../../tests/fixtures/css/c05/runtime-custom-properties-app.js")',
+    'include_str!("../../../../../tests/fixtures/css/c05/runtime-custom-properties-app.js")',
   ));
   const java = javaBytes.toString('utf8');
   const androidEval = java.slice(
