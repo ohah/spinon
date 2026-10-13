@@ -1,9 +1,8 @@
-$ node --test tools/css-reference/c11-3-2-grid-named-lines-pixel-samples.test.mjs
-✔ 고정 Chrome 표면·reference 해시와 두 색상 표본을 확인한다 (5.50625ms)
-✔ Android PixelCopy 표본 두 개를 Chrome 표면과 정확히 비교한다 (1.970875ms)
-✔ Android PixelCopy의 한 채널 오차를 통과시키지 않는다 (1.841833ms)
-✔ iOS Metal drawable 표본을 Chrome 표면과 정확히 비교한다 (0.541ms)
-✔ iOS Metal 표본의 색상 오차를 통과시키지 않는다 (0.218875ms)
+✔ 고정 Chrome 표면·reference 해시와 두 색상 표본을 확인한다 (5.129542ms)
+✔ Android PixelCopy 표본 두 개를 Chrome 표면과 정확히 비교한다 (1.867542ms)
+✔ Android PixelCopy의 한 채널 오차를 통과시키지 않는다 (1.667917ms)
+✔ iOS Metal drawable 표본을 Chrome 표면과 정확히 비교한다 (0.479ms)
+✔ iOS Metal 표본의 색상 오차를 통과시키지 않는다 (0.200542ms)
 ℹ tests 5
 ℹ suites 0
 ℹ pass 5
@@ -11,4 +10,4 @@ $ node --test tools/css-reference/c11-3-2-grid-named-lines-pixel-samples.test.mj
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 53.113375
+ℹ duration_ms 46.862875

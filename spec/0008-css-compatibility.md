@@ -58,7 +58,7 @@ P0~P3 항목은 먼저 세 플랫폼 수직 화면에서 필요한 부분을 구
 
 C11.3.1 정수 `repeat()`은 제한된 내부 runtime profile이다. 단독 후보 source gate에서 Android 16 SM-S731N PixelCopy와 iPhone 17 Pro/iOS 26.2 Simulator Metal drawable의 고정 표본 각 5개가 Chrome 154 RGBA와 정확히 일치했고 변조 좌표가 표면 readback 전에 거부됐다. 2026-10-14에는 PR #149 병합본 기준 CSS reference 387/387, Rust workspace 656 passed·4 ignored, 기본/fixture FFI positive·negative artifact 경계도 다시 확인했다. 최신 근거는 [실행·빌드 결과](internal/evidence/c11-3-1-grid-repeat-pixels-2026-10-14/README.md)와 [구현 실패 경계 검토](internal/evidence/c11-3-1-grid-repeat-implementation-review-2026-10-14.md)다. 이는 전체 Grid, 전체 CSS, Spinon WPT 적합성 또는 공개 제품 지원을 뜻하지 않는다. 기능별 완료 상태는 [공식 상태 대장](STATUS.md#css-구현-체크리스트)에 기록한다.
 
-C11.3.2 named line 조회는 현재 구현 후보 단계다. positive/negative occurrence와 named span을 explicit grid 안에서 제한적으로 해석하고, 지원 밖 implicit line 요구는 명시 오류로 거부한다. Android 실기기와 iOS Simulator의 한 성공·한 기대 거부 장면에서 고정 geometry와 색상 표본을 확인했지만, 전체 fixture 행렬·WPT 적합성·공개 CSS 지원을 의미하지 않는다. [내부 계약과 실행 근거](internal/0059-c11-grid-layout.md#c1132-named-line-제한-profile-후보).
+C11.3.2 named line 조회는 현재 구현 후보 단계다. positive/negative occurrence와 named span을 explicit grid 안에서 제한적으로 해석하고, 지원 밖 implicit line 요구는 명시 오류로 거부한다. Android 16 SM-S731N 실기기와 iPhone 17 Pro/iOS 26.2 Simulator에서 한 성공·한 기대 거부 장면을 확인했다. 최신 source Android API 37.0 ARM64 AVD PixelCopy도 2/2 exact이며 변조 좌표는 readback 전에 거부됐다. AVD는 최신 source 실기기 gate를 대체하지 않는다. 전체 fixture 행렬·WPT 적합성·공개 CSS 지원을 의미하지 않는다. [내부 계약과 실행 근거](internal/0059-c11-grid-layout.md#c1132-named-line-제한-profile-후보).
 
 ## 범위별 목표 목록
 

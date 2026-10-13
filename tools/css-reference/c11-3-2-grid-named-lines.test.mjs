@@ -180,3 +180,21 @@ test('Android·iOS C11.3.2 진입과 거부 경로가 고정 scene 및 run ID를
   assert.match(iosDemo.toString('utf8'),
     /logC1132GridNamedLineFrames\(result\)/);
 });
+
+test('Android API 37 AVD 캡처 모드를 실기기와 구분해 검증한다', async () => {
+  const [captureRunner, packageJson] = await Promise.all([
+    read('tools/css-reference/capture-c11-3-2-grid-named-lines-runtime.mjs'),
+    read('package.json'),
+  ]);
+  const source = captureRunner.toString('utf8');
+  const scripts = JSON.parse(packageJson.toString('utf8')).scripts;
+  assert.match(source, /\['android-avd', 'android-physical', 'ios-simulator'\]/);
+  assert.match(source, /assert\.equal\(qemu, target === 'android-avd'/);
+  assert.match(source, /assert\.equal\(sdk, 37/);
+  assert.match(source, /assert\.match\(renderer, \/SwiftShader\/i/);
+  assert.match(source, /assert\.equal\(model, 'SM-S731N'/);
+  assert.match(source, /assert\.equal\(sdk, 36/);
+  assert.match(source, /소프트웨어 렌더러.*물리 기기/s);
+  assert.equal(scripts['css:capture:c11-3-2-grid-named-lines:android-avd'],
+    'node tools/css-reference/capture-c11-3-2-grid-named-lines-runtime.mjs android-avd');
+});

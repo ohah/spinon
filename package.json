@@ -25,6 +25,7 @@
     "test:css-c11-3-2-grid-named-lines": "node --test tools/css-reference/c11-3-2-grid-named-lines.test.mjs",
     "test:css-c11-3-2-grid-named-lines-pixels": "node --test tools/css-reference/c11-3-2-grid-named-lines-pixel-samples.test.mjs",
     "css:capture:c11-3-2-grid-named-lines:android": "node tools/css-reference/capture-c11-3-2-grid-named-lines-runtime.mjs android-physical",
+    "css:capture:c11-3-2-grid-named-lines:android-avd": "node tools/css-reference/capture-c11-3-2-grid-named-lines-runtime.mjs android-avd",
     "css:capture:c11-3-2-grid-named-lines:ios": "node tools/css-reference/capture-c11-3-2-grid-named-lines-runtime.mjs ios-simulator",
     "test:css-c11-grid-runtime-matrix": "node --test tools/css-reference/c11-grid-runtime-matrix.test.mjs",
     "test:css-c11-grid-precomparison": "node --test tools/css-reference/c11-grid-precomparison.test.mjs",
