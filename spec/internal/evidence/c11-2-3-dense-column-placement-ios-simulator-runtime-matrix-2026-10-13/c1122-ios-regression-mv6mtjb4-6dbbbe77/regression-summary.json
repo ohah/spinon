@@ -1,0 +1,17 @@
+{
+  "schema": "spinon-c1122-ios-regression-summary/v1",
+  "status": "matched",
+  "runID": "c1122-i-mv6mtjb4-6dbbbe77",
+  "device": "iPhone 17 Pro Simulator / iOS 26.2",
+  "scenes": 16,
+  "successfulScenes": 11,
+  "expectedRejections": 5,
+  "nodes": 69,
+  "maximumGeometryErrorCssPx": 0,
+  "geometryToleranceCssPx": 0.5,
+  "freshProcessPerScene": true,
+  "surfacePixelScenes": 11,
+  "surfacePixelSamples": 51,
+  "maximumChannelError": 0,
+  "candidate": "C11.2.3 iOS source repair candidate; C11.2.2 route regression only"
+}

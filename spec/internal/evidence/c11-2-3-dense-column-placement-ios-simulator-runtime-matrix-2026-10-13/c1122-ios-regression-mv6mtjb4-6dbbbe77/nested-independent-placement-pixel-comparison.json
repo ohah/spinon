@@ -1,0 +1,173 @@
+{
+  "schema": "spinon-c11-2-2-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c1122-i-mv6mtjb4-6dbbbe77-nested-independent-placement",
+  "processId": 64289,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 35,
+    "renderTree": 7,
+    "environment": 1
+  },
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "drawable": [
+    960,
+    720
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 8,
+  "matchedSamples": 8,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "item-c1122-nested-explicit-grid",
+      "css": [
+        63,
+        39
+      ],
+      "drawable": [
+        190,
+        118
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-c1122-nested-explicit-item",
+      "css": [
+        77,
+        29
+      ],
+      "drawable": [
+        232,
+        88
+      ],
+      "rgba": [
+        255,
+        200,
+        87,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-c1122-nested-auto-grid",
+      "css": [
+        159,
+        39
+      ],
+      "drawable": [
+        478,
+        118
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-c1122-nested-auto-first",
+      "css": [
+        173,
+        29
+      ],
+      "drawable": [
+        520,
+        88
+      ],
+      "rgba": [
+        25,
+        169,
+        116,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-c1122-nested-auto-fixed",
+      "css": [
+        125,
+        29
+      ],
+      "drawable": [
+        376,
+        88
+      ],
+      "rgba": [
+        135,
+        88,
+        255,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "gap-column-c1122-nested-outer",
+      "css": [
+        111,
+        39
+      ],
+      "drawable": [
+        334,
+        118
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "gap-column-c1122-nested-explicit-grid",
+      "css": [
+        64,
+        39
+      ],
+      "drawable": [
+        193,
+        118
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "gap-column-c1122-nested-auto-grid",
+      "css": [
+        160,
+        39
+      ],
+      "drawable": [
+        481,
+        118
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}

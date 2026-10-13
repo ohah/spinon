@@ -1,0 +1,83 @@
+{
+  "schema": "spinon-c11-2-2-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c1122-i-mv6mtjb4-6dbbbe77-auto-column-span",
+  "processId": 63501,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 20,
+    "renderTree": 4,
+    "environment": 1
+  },
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "drawable": [
+    960,
+    720
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 3,
+  "matchedSamples": 3,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "item-c1122-span-a",
+      "css": [
+        61,
+        28
+      ],
+      "drawable": [
+        184,
+        85
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-c1122-span-b",
+      "css": [
+        127,
+        28
+      ],
+      "drawable": [
+        382,
+        85
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "gap-row-c1122-span-grid",
+      "css": [
+        39,
+        41
+      ],
+      "drawable": [
+        118,
+        124
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}
