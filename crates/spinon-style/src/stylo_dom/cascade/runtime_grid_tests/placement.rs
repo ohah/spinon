@@ -152,3 +152,77 @@ fn placement_profile_inline_allowlist_accepts_grid_shorthands_only() {
         Some((root, "grid-template-areas".to_owned()))
     );
 }
+
+#[test]
+fn template_profile_preserves_named_line_occurrences_and_both_span_token_orders() {
+    let child_styles = [
+        "display:block;box-sizing:border-box;width:auto;height:auto;margin:0;padding:0",
+        "display:block;box-sizing:border-box;width:auto;height:auto;margin:0;padding:0",
+        "display:block;box-sizing:border-box;width:auto;height:auto;margin:0;padding:0",
+        "display:block;box-sizing:border-box;width:auto;height:auto;margin:0;padding:0",
+    ];
+    let (view, _, children) = placement_fixture(&child_styles);
+    let stylesheet = StylesheetSource {
+        id: "grid-named-line-typed-values".to_owned(),
+        base_url: "https://spinon.invalid/c11/named-lines.css".to_owned(),
+        origin: CssOrigin::Author,
+        css: "#item-0 { grid-column-start: middle 2; grid-column-end: finish } \
+             #item-1 { grid-column-start: 2 middle; grid-column-end: finish } \
+             #item-2 { grid-column-end: span 2 middle } \
+             #item-3 { grid-column-end: span middle 2 }"
+            .to_owned(),
+    };
+    let snapshot = compute_runtime_block_flex_grid_template_cascade_with_stylesheets(
+        &view,
+        &[stylesheet],
+        viewport(),
+        Default::default(),
+    )
+    .unwrap();
+    let placement = |node| {
+        snapshot
+            .elements
+            .iter()
+            .find(|style| style.node_id == node)
+            .unwrap()
+            .grid_item_placement
+            .as_ref()
+            .unwrap()
+    };
+
+    assert_eq!(
+        placement(children[0]).column_start,
+        ComputedCssGridPlacement::NamedLine {
+            name: "middle".to_owned(),
+            occurrence: 2,
+        }
+    );
+    assert_eq!(
+        placement(children[1]).column_start,
+        ComputedCssGridPlacement::NamedLine {
+            name: "middle".to_owned(),
+            occurrence: 2,
+        }
+    );
+    assert_eq!(
+        placement(children[0]).column_end,
+        ComputedCssGridPlacement::NamedLine {
+            name: "finish".to_owned(),
+            occurrence: 1,
+        }
+    );
+    assert_eq!(
+        placement(children[2]).column_end,
+        ComputedCssGridPlacement::SpanNamed {
+            name: "middle".to_owned(),
+            count: 2,
+        }
+    );
+    assert_eq!(
+        placement(children[3]).column_end,
+        ComputedCssGridPlacement::SpanNamed {
+            name: "middle".to_owned(),
+            count: 2,
+        }
+    );
+}

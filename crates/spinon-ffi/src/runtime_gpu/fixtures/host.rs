@@ -98,6 +98,18 @@ impl RuntimeGpuHost {
         Ok((host, report))
     }
 
+    pub(in crate::runtime_gpu) fn new_c11_3_2_grid_named_lines_fixture()
+    -> Result<(Self, String), String> {
+        let (session, report) = RuntimeSession::new_runtime_gpu_block_flex_grid_template_fixture()?;
+        let mut host = Self::from_session_with_frame_report(session);
+        host.include_paint_order_report = true;
+        #[cfg(feature = "c11-grid-metal-surface-pixels-test")]
+        {
+            host.surface_pixel_readback_test = true;
+        }
+        Ok((host, report))
+    }
+
     #[cfg(feature = "c12-4-worker-stack-residency-test")]
     pub(in crate::runtime_gpu) fn css_worker_stack_residency_sample_json_for_test(
         &self,

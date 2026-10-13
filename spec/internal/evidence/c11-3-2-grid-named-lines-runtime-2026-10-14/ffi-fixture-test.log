@@ -1,0 +1,67 @@
+   Compiling spinon-ffi v0.1.0 (/private/tmp/spinon-c11-3-2-work/crates/spinon-ffi)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.78s
+     Running unittests src/lib.rs (target/debug/deps/spinon_ffi-72ce6a1da9d683d4)
+
+running 54 tests
+test runtime_gpu::ffi::fixtures::c11_2_1::tests::fixture_eval_rejects_null_host_and_invalid_output ... ok
+test runtime_gpu::ffi::fixtures::c11_2_3::tests::fixture_eval_rejects_null_host_and_invalid_output ... ok
+test runtime_gpu::ffi::fixtures::c11_2_2::tests::fixture_eval_rejects_null_host_and_invalid_output ... ok
+test runtime_gpu::ffi::fixtures::c11_3_1::tests::c11_3_1_surface_pixel_request_rejects_invalid_counts_and_pointers ... ok
+test runtime_gpu::ffi::fixtures::c11_3_1::tests::c11_3_1_surface_pixel_request_rejects_coordinate_count_overflow ... ok
+test runtime_gpu::ffi::fixtures::c11_2_3::surface_pixel_tests::request_rejects_null_coordinates_and_invalid_output ... ok
+test runtime_gpu::ffi::fixtures::c11_2_3::surface_pixel_tests::request_rejects_invalid_count_and_missing_host_before_readback ... ok
+test runtime_gpu::ffi::fixtures::c11::surface_pixel_tests::request_rejects_empty_oversized_overflow_and_null_coordinates ... ok
+test runtime_gpu::ffi::fixtures::c11_2_2::surface_pixel_tests::request_rejects_null_coordinates_and_invalid_output ... ok
+test runtime_gpu::ffi::fixtures::c11::surface_pixel_tests::request_checks_host_for_one_or_sixty_four_valid_pairs ... ok
+test runtime_gpu::ffi::fixtures::c11_2_2::surface_pixel_tests::request_rejects_invalid_count_and_missing_host_before_readback ... ok
+test runtime_gpu::ffi::fixtures::c11_3_2::tests::c11_3_2_surface_pixel_request_rejects_coordinate_count_overflow ... ok
+test runtime_gpu::ffi::fixtures::c11_3_2::tests::c11_3_2_surface_pixel_request_rejects_invalid_counts_and_pointers ... ok
+test runtime_gpu::ffi::fixtures::c12::tests::unsupported_state_is_rejected_without_a_script ... ok
+test runtime_gpu::ffi::fixtures::c11_3_1::tests::c11_3_1_eval_rejects_untrusted_scene_ids_and_bad_arguments ... ok
+test runtime_gpu::tests::c12_2_absolute_runtime_frames_match_the_pinned_chromium_geometry ... ignored, 호스트 V8 바인딩이 초기화되지 않는 환경에서는 Android·iOS fixture 실행으로 검증합니다
+test runtime_gpu::tests::c12_3_fixed_runtime_frames_match_chromium_across_dpr_and_resize ... ignored, C12.3 V8 runtime frame comparison runs on the Android device and iOS Simulator
+test runtime_gpu::ffi::fixtures::c10_3_5::tests::runtime_fixture_embeds_the_same_geometry_inventory_as_the_chrome_oracle ... ok
+test runtime_gpu::fixtures::c11_3_1::tests::fixed_runtime_matrix_exposes_only_the_pinned_repeat_scene ... ok
+test runtime_gpu::ffi::fixtures::c11_2_2::tests::fixture_eval_rejects_unknown_scene_without_running_javascript ... ok
+test runtime_gpu::ffi::fixtures::c11::tests::valid_scene_still_rejects_null_host ... ok
+test runtime_gpu::ffi::fixtures::c11::tests::scene_index_rejects_out_of_range_before_host_access ... ok
+test runtime_gpu::ffi::fixtures::c11_3_2::tests::c11_3_2_eval_rejects_untrusted_scene_ids_and_bad_arguments ... ok
+test runtime_layout::tests::layout_json_abi_rejects_invalid_pointers_and_capacity ... ok
+test runtime_gpu::fixtures::c11::tests::matrix_cases_are_fixed_unique_and_bounded ... ok
+test runtime_gpu::ffi::fixtures::c11_2_3::tests::fixture_eval_rejects_unknown_scene_without_running_javascript ... ok
+test runtime_gpu::fixtures::c11_3_2::tests::fixed_runtime_matrix_selects_only_the_success_and_expected_rejection_scenes ... ok
+test runtime_gpu::ffi::fixtures::c11_2_1::tests::fixture_eval_rejects_unknown_scene_without_running_javascript ... ok
+test runtime_gpu::ffi::fixtures::c12::tests::state_scripts_are_derived_from_the_pinned_inventory ... ok
+test runtime_gpu::fixtures::c11_2_2::tests::fixed_runtime_matrix_has_all_scenes_and_source_is_only_selected_by_id ... ok
+test runtime_session::tests::c_abi_memory_pressure_values_match_the_runtime_levels ... ok
+test runtime_session::tests::c_abi_priority_values_match_the_runtime_priorities ... ok
+test runtime_session::tests::report_copy_is_nul_terminated_and_rejects_short_buffers ... ok
+test runtime_gpu::tests::render_scene_must_match_the_complete_runtime_key ... ok
+test runtime_ua_cascade::tests::exact_capacity_copies_complete_json_and_terminator ... ok
+test runtime_gpu::fixtures::c11::tests::placement_matrix_is_fixed_bounded_and_rejects_unlisted_scene_ids ... ok
+test runtime_gpu::tests::new_presentation_sequence_hides_the_old_scene_and_accepts_only_current_publish ... ok
+test runtime_ua_cascade::tests::abi_environment_preserves_valid_media_capabilities ... ok
+test runtime_layout::tests::layout_json_reports_css_pixels_and_ordered_frames ... ok
+test runtime_ua_cascade::tests::null_abi_inputs_have_documented_argument_status ... ok
+test runtime_gpu::tests::invalidation_winning_a_publish_race_rejects_the_stale_scene ... ok
+test runtime_ua_cascade::tests::output_short_buffer_contract_uses_nul_guard_and_capacity_status ... ok
+test runtime_ua_cascade::tests::completed_json_reports_cache_hit_without_changing_the_schema_version ... ok
+test runtime_ua_cascade::tests::failed_state_json_has_an_error_and_never_exposes_partial_roots ... ok
+test runtime_ua_cascade::tests::state_json_always_has_stable_schema_and_no_implicit_request ... ok
+test runtime_layout::tests::layout_json_uses_separate_schema_and_stable_failure_fields ... ok
+test runtime_ua_cascade::tests::abi_environment_rejects_unknown_flags_and_non_boolean_values ... ok
+test tests::shutdown_probe_rejects_each_invalid_output_shape_before_starting_a_runtime ... ok
+test tests::taffy_experiment_is_excluded_from_default_builds ... ok
+test tests::embedded_ua_stylesheet_ffi_returns_stable_read_only_bytes ... ok
+test runtime_ua_cascade::tests::extended_runtime_profile_keeps_legacy_ua_property_shape ... ok
+test runtime_gpu::fixtures::c11_2_3::tests::fixed_runtime_matrix_has_all_scenes_and_only_selects_static_source_by_id ... ok
+test runtime_gpu::tests::c12_3_runtime_fixture_is_a_parent_closed_inventory_subset ... ok
+test runtime_gpu::tests::runtime_scene_readback_matches_the_fixed_chromium_color_samples ... ok
+
+test result: ok. 52 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out; finished in 0.12s
+
+   Doc-tests spinon_ffi
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

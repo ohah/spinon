@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spinon C11.3.2 named grid lines comparison</title>
+  <style>
+    html, body { margin: 0; padding: 0; }
+    body { direction: ltr; writing-mode: horizontal-tb; color-scheme: light; }
+    *, *::before, *::after { box-sizing: border-box; }
+    #stage { position: relative; width: 320px; height: 240px; }
+    .scene { position: absolute; inset: 0; display: none; width: 320px; height: 240px; }
+    .scene.active { display: block; }
+    [data-node] { margin: 0; padding: 0; border: 0; }
+    .surface { background-color: #edf1f7; }
+    .blue { background-color: #2866f6; }
+  </style>
+</head>
+<body>
+  <div id="stage">
+    <section class="scene" data-scene="positive-occurrence">
+      <div id="positive-occurrence-grid" data-node class="surface" style="display:grid;width:160px;height:120px;grid-template-columns:[start] 40px [mid] 40px [mid] 40px [finish] 40px [last];grid-template-rows:[row-start] 40px [row-end] 40px 40px">
+        <div id="positive-occurrence-item" data-node class="blue" style="width:80px;height:40px;grid-row:row-start / row-end;grid-column:mid 2 / last"></div>
+      </div>
+    </section>
+    <section class="scene" data-scene="negative-occurrence">
+      <div id="negative-occurrence-grid" data-node class="surface" style="display:grid;width:160px;height:120px;grid-template-columns:[start] 40px [mid] 40px [mid] 40px [finish] 40px [last];grid-template-rows:[row-start] 40px [row-end] 40px 40px">
+        <div id="negative-occurrence-item" data-node class="blue" style="width:40px;height:40px;grid-row:row-start / row-end;grid-column:mid -2 / 3"></div>
+      </div>
+    </section>
+    <section class="scene" data-scene="integer-before-name">
+      <div id="integer-before-name-grid" data-node class="surface" style="display:grid;width:160px;height:120px;grid-template-columns:[start] 40px [mid] 40px [mid] 40px [finish] 40px [last];grid-template-rows:[row-start] 40px [row-end] 40px 40px">
+        <div id="integer-before-name-item" data-node class="blue" style="width:80px;height:40px;grid-row:row-start / row-end;grid-column:2 mid / last"></div>
+      </div>
+    </section>
+    <section class="scene" data-scene="named-span-forward">
+      <div id="named-span-forward-grid" data-node class="surface" style="display:grid;width:160px;height:120px;grid-template-columns:[start] 40px [mid] 40px [mid] 40px [finish] 40px [last];grid-template-rows:[row-start] 40px [row-end] 40px 40px">
+        <div id="named-span-forward-item" data-node class="blue" style="width:80px;height:40px;grid-row:row-start / row-end;grid-column:start / span 2 mid"></div>
+      </div>
+    </section>
+    <section class="scene" data-scene="named-span-backward">
+      <div id="named-span-backward-grid" data-node class="surface" style="display:grid;width:160px;height:120px;grid-template-columns:[start] 40px [mid] 40px [mid] 40px [finish] 40px [last];grid-template-rows:[row-start] 40px [row-end] 40px 40px">
+        <div id="named-span-backward-item" data-node class="blue" style="width:80px;height:40px;grid-row:row-start / row-end;grid-column:span mid / last"></div>
+      </div>
+    </section>
+    <section class="scene" data-scene="named-span-name-before-count">
+      <div id="named-span-name-before-count-grid" data-node class="surface" style="display:grid;width:160px;height:120px;grid-template-columns:[start] 40px [mid] 40px [mid] 40px [finish] 40px [last];grid-template-rows:[row-start] 40px [row-end] 40px 40px">
+        <div id="named-span-name-before-count-item" data-node class="blue" style="width:80px;height:40px;grid-row:row-start / row-end;grid-column:start / span mid 2"></div>
+      </div>
+    </section>
+    <section class="scene" data-scene="same-line-duplicate-name">
+      <div id="same-line-duplicate-name-grid" data-node class="surface" style="display:grid;width:160px;height:120px;grid-template-columns:[start] 40px [mid mid] 40px [mid] 40px [finish] 40px [last];grid-template-rows:[row-start] 40px [row-end] 40px 40px">
+        <div id="same-line-duplicate-name-item" data-node class="blue" style="width:80px;height:40px;grid-row:row-start / row-end;grid-column:start / span 2 mid"></div>
+      </div>
+    </section>
+    <section class="scene" data-scene="repeat-seam-name">
+      <div id="repeat-seam-name-grid" data-node class="surface" style="display:grid;width:160px;height:120px;grid-template-columns:[start] repeat(2,[mid] 40px [mid]) [end];grid-template-rows:[row-start] 40px [row-end] 40px 40px">
+        <div id="repeat-seam-name-item" data-node class="blue" style="width:40px;height:40px;grid-row:row-start / row-end;grid-column:mid 2 / end"></div>
+      </div>
+    </section>
+    <section class="scene" data-scene="row-axis-named-lines">
+      <div id="row-axis-named-lines-grid" data-node class="surface" style="display:grid;width:160px;height:120px;grid-template-columns:40px 40px 40px 40px;grid-template-rows:[top] 40px [row] 40px [row] 40px [bottom]">
+        <div id="row-axis-named-lines-item" data-node class="blue" style="width:40px;height:40px;grid-column:1 / 2;grid-row:row 2 / bottom"></div>
+      </div>
+    </section>
+    <section class="scene" data-scene="reversed-line-conflict">
+      <div id="reversed-line-conflict-grid" data-node class="surface" style="display:grid;width:160px;height:120px;grid-template-columns:[start] 40px [mid] 40px [mid] 40px [finish] 40px [last];grid-template-rows:[row-start] 40px [row-end] 40px 40px">
+        <div id="reversed-line-conflict-item" data-node class="blue" style="width:160px;height:40px;grid-row:row-start / row-end;grid-column:last / start"></div>
+      </div>
+    </section>
+    <section class="scene" data-scene="equal-line-conflict">
+      <div id="equal-line-conflict-grid" data-node class="surface" style="display:grid;width:160px;height:120px;grid-template-columns:[start] 40px [mid] 40px [mid] 40px [finish] 40px [last];grid-template-rows:[row-start] 40px [row-end] 40px 40px">
+        <div id="equal-line-conflict-item" data-node class="blue" style="width:40px;height:40px;grid-row:row-start / row-end;grid-column:mid / mid"></div>
+      </div>
+    </section>
+    <section class="scene" data-scene="missing-name-implicit-line">
+      <div id="missing-name-implicit-line-grid" data-node class="surface" style="display:grid;width:160px;height:120px;grid-template-columns:[start] 40px [mid] 40px [mid] 40px [finish] 40px [last];grid-template-rows:[row-start] 40px [row-end] 40px 40px">
+        <div id="missing-name-implicit-line-item" data-node class="blue" style="width:40px;height:40px;grid-row:row-start / row-end;grid-column:absent / last"></div>
+      </div>
+    </section>
+    <section class="scene" data-scene="occurrence-shortage-implicit-line">
+      <div id="occurrence-shortage-implicit-line-grid" data-node class="surface" style="display:grid;width:160px;height:120px;grid-template-columns:[start] 40px [mid] 40px [mid] 40px [finish] 40px [last];grid-template-rows:[row-start] 40px [row-end] 40px 40px">
+        <div id="occurrence-shortage-implicit-line-item" data-node class="blue" style="width:40px;height:40px;grid-row:row-start / row-end;grid-column:mid 3 / last"></div>
+      </div>
+    </section>
+    <section class="scene" data-scene="named-span-shortage-implicit-line">
+      <div id="named-span-shortage-implicit-line-grid" data-node class="surface" style="display:grid;width:160px;height:120px;grid-template-columns:[start] 40px [mid] 40px [mid] 40px [finish] 40px [last];grid-template-rows:[row-start] 40px [row-end] 40px 40px">
+        <div id="named-span-shortage-implicit-line-item" data-node class="blue" style="width:160px;height:40px;grid-row:row-start / row-end;grid-column:start / span 3 mid"></div>
+      </div>
+    </section>
+    <section class="scene" data-scene="lone-named-span">
+      <div id="lone-named-span-grid" data-node class="surface" style="display:grid;width:160px;height:120px;grid-template-columns:[start] 40px [mid] 40px [mid] 40px [finish] 40px [last];grid-template-rows:[row-start] 40px [row-end] 40px 40px">
+        <div id="lone-named-span-item" data-node class="blue" style="width:40px;height:40px;grid-row:row-start / row-end;grid-column:span absent / auto"></div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

@@ -91,9 +91,25 @@ private struct C111MetalPixelRun {
         ("row-gap", "c1131-multi-track-repeat-grid", 10, 53, [237, 241, 247, 255]),
     ]
 
+    private static let c1132NamedLinePixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
+        ("grid-background", "c1132-positive-grid", 20, 80, [237, 241, 247, 255]),
+        ("item-blue", "c1132-positive-item", 100, 10, [40, 102, 246, 255]),
+    ]
+
     private static func hasFixedC1131RepeatSamples(_ samples: [C111MetalPixelSample]) -> Bool {
         guard samples.count == c1131RepeatPixelSamples.count else { return false }
         return c1131RepeatPixelSamples.allSatisfy { expected in
+            samples.contains { sample in
+                sample.id == expected.0 && sample.nodeId == expected.1
+                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3
+                    && sample.rgba == expected.4
+            }
+        }
+    }
+
+    private static func hasFixedC1132NamedLineSamples(_ samples: [C111MetalPixelSample]) -> Bool {
+        guard samples.count == c1132NamedLinePixelSamples.count else { return false }
+        return c1132NamedLinePixelSamples.allSatisfy { expected in
             samples.contains { sample in
                 sample.id == expected.0 && sample.nodeId == expected.1
                     && sample.xCssPx == expected.2 && sample.yCssPx == expected.3
@@ -126,6 +142,19 @@ private struct C111MetalPixelRun {
                   !arguments.contains(where: { $0.hasPrefix("--spinon-c1123-grid-scene=") }),
                   !arguments.contains(where: { $0.hasPrefix("--spinon-c1122-grid-scene=") }),
                   !arguments.contains(where: { $0.hasPrefix("--spinon-c1121-grid-scene=") }) else {
+                return nil
+            }
+        }
+        let isC1132NamedLine = arguments.contains("--spinon-c1132-grid-named-lines")
+        if isC1132NamedLine {
+            let c1132RunID = arguments.first(where: {
+                $0.hasPrefix("--spinon-c1132-grid-run-id=")
+            }).map { String($0.dropFirst("--spinon-c1132-grid-run-id=".count)) }
+            guard sceneID == "positive-occurrence", c1132RunID == runID,
+                  !isC1131Repeat,
+                  !arguments.contains("--spinon-c1123-grid-auto-placement"),
+                  !arguments.contains("--spinon-c1122-grid-auto-placement"),
+                  !arguments.contains("--spinon-c1121-grid-placement") else {
                 return nil
             }
         }
@@ -174,8 +203,10 @@ private struct C111MetalPixelRun {
                       && sample.rgba.count == 4 && sample.rgba.allSatisfy({ $0 <= 255 })
               }) else { return nil }
         if isC1131Repeat && !hasFixedC1131RepeatSamples(samples) { return nil }
+        if isC1132NamedLine && !hasFixedC1132NamedLineSamples(samples) { return nil }
         return C111MetalPixelRun(runID: runID, sceneID: sceneID,
-                                 markerPrefix: isC1131Repeat ? "C1131"
+                                 markerPrefix: isC1132NamedLine ? "C1132"
+                                     : isC1131Repeat ? "C1131"
                                      : isC1123Placement ? "C1123"
                                      : isC1122Placement ? "C1122" : "C111",
                                  samples: samples)
@@ -183,6 +214,9 @@ private struct C111MetalPixelRun {
 }
 
 private func c11GridMetalPixelSceneID(arguments: [String]) -> String? {
+    if arguments.contains("--spinon-c1132-grid-named-lines") {
+        return "positive-occurrence"
+    }
     let prefixes = [
         "--spinon-c1131-grid-repeat-scene=",
         "--spinon-c1123-grid-scene=",
@@ -350,8 +384,18 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             $0.hasPrefix("--spinon-c1131-grid-repeat-run-id=")
         }).map { String($0.dropFirst("--spinon-c1131-grid-repeat-run-id=".count)) } ?? "manual"
     }
+    private let c1132GridNamedLineSceneID = "positive-occurrence"
+    private let c1132GridNamedLineRejectSceneID = "missing-name-implicit-line"
+    private let c1132GridNamedLinesProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c1132-grid-named-lines")
+    private var c1132GridNamedLinesRunID: String {
+        ProcessInfo.processInfo.arguments.first(where: {
+            $0.hasPrefix("--spinon-c1132-grid-run-id=")
+        }).map { String($0.dropFirst("--spinon-c1132-grid-run-id=".count)) } ?? "manual"
+    }
     private var c11GridMetalPixelStatusName: String {
-        c1131GridRepeatProbeRequested ? "C11.3.1"
+        c1132GridNamedLinesProbeRequested ? "C11.3.2"
+            : c1131GridRepeatProbeRequested ? "C11.3.1"
             : c1123GridAutoPlacementProbeRequested ? "C11.2.3"
             : c1122GridAutoPlacementProbeRequested ? "C11.2.2"
             : c1121GridPlacementProbeRequested ? "C11.2.1" : "C11.1"
@@ -390,6 +434,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     private var c11GridFixtureRequested: Bool {
         c1121GridPlacementProbeRequested || c1122GridAutoPlacementProbeRequested
             || c1123GridAutoPlacementProbeRequested || c1131GridRepeatProbeRequested
+            || c1132GridNamedLinesProbeRequested
             || ProcessInfo.processInfo.arguments.contains("--spinon-c11-grid")
             || c11GridSceneArgument != nil || c111MetalPixelRun != nil
     }
@@ -454,7 +499,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
 
         let title = UILabel()
-        title.text = c1131GridRepeatProbeRequested
+        title.text = c1132GridNamedLinesProbeRequested
+            ? "SPINON · C11.3.2 named Grid lines"
+            : c1131GridRepeatProbeRequested
             ? "SPINON · C11.3.1 Grid repeat()"
             : c1123GridAutoPlacementProbeRequested
             ? "SPINON · C11.2.3 Grid"
@@ -526,7 +573,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.addSubview(title)
 
         let description = UILabel()
-        description.text = c1131GridRepeatProbeRequested
+        description.text = c1132GridNamedLinesProbeRequested
+            ? "named Grid line occurrence·span → Stylo → Taffy → WGPU · 320×240 CSS px"
+            : c1131GridRepeatProbeRequested
             ? "정수 Grid repeat() 확장·line-name metadata → Stylo → Taffy → WGPU · 320×240 CSS px"
             : c1123GridAutoPlacementProbeRequested
             ? "dense·column Grid 자동 배치 → Stylo → Taffy → WGPU Metal · 360×800 CSS px"
@@ -1053,6 +1102,19 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         log("SPINON_C1121_GRID_FRAME_SUMMARY run_id=\(c1121GridRunID) scene_id=\(c1121GridSceneID) count=\(frames.count) marker=present")
     }
 
+    private func logC1132GridNamedLineFrames(_ report: String) {
+        guard let marker = report.range(of: "node_frames_css_px=["),
+              let closing = report[marker.upperBound...].firstIndex(of: "]") else {
+            log("SPINON_C1132_GRID_FRAME_SUMMARY run_id=\(c1132GridNamedLinesRunID) marker=missing")
+            return
+        }
+        let frames = report[marker.upperBound..<closing].split(separator: ";")
+        for frame in frames {
+            log("SPINON_C1132_GRID_NODE_FRAME_RUN run_id=\(c1132GridNamedLinesRunID) scene_id=\(c1132GridNamedLineSceneID) frame=\(frame)")
+        }
+        log("SPINON_C1132_GRID_FRAME_SUMMARY run_id=\(c1132GridNamedLinesRunID) scene_id=\(c1132GridNamedLineSceneID) count=\(frames.count) marker=present")
+    }
+
     private func logGridAutoPlacementReadySummaryIfNeeded(
         _ report: String,
         profile: String,
@@ -1213,6 +1275,17 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             postStatus("실패 · 알 수 없거나 중복 선택된 C11.3.1 Grid scene")
             return
         }
+        if c1132GridNamedLinesProbeRequested
+            && (c1132GridNamedLinesRunID.range(
+                of: "^[A-Za-z0-9_-]{1,80}$", options: .regularExpression) == nil
+                || c1131GridRepeatProbeRequested
+                || c1123GridAutoPlacementProbeRequested
+                || c1122GridAutoPlacementProbeRequested
+                || c1121GridPlacementProbeRequested) {
+            log("SPINON_C1132_GRID_ARGUMENT_ERROR rejected=true")
+            postStatus("실패 · C11.3.2 Grid fixture 또는 profile 선택이 올바르지 않습니다")
+            return
+        }
         if c1123GridAutoPlacementProbeRequested
             && (!c1123GridAutoPlacementSceneIDs.contains(c1123GridSceneID)
                 || c1123GridRunID.range(
@@ -1232,17 +1305,21 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             && !c1122GridAutoPlacementProbeRequested
             && !c1123GridAutoPlacementProbeRequested
             && !c1131GridRepeatProbeRequested
+            && !c1132GridNamedLinesProbeRequested
             && c11GridSceneIndex == nil {
             log("SPINON_C111_GRID_ARGUMENT_ERROR rejected=true")
             postStatus("실패 · 알 수 없는 C11.1 Grid scene")
             return
         }
         if c111MetalPixelArgumentRequested && c111MetalPixelRun == nil {
-            let markerPrefix = c1131GridRepeatProbeRequested ? "SPINON_C1131"
+            let markerPrefix = c1132GridNamedLinesProbeRequested ? "SPINON_C1132"
+                : c1131GridRepeatProbeRequested ? "SPINON_C1131"
                 : c1123GridAutoPlacementProbeRequested ? "SPINON_C1123"
                 : c1122GridAutoPlacementProbeRequested ? "SPINON_C1122" : "SPINON_C111"
             let invalidSceneID = c1131GridRepeatProbeRequested
-                ? c1131GridRepeatSceneArgument : c11GridSceneArgument ?? "unknown"
+                ? c1131GridRepeatSceneArgument
+                : c1132GridNamedLinesProbeRequested ? c1132GridNamedLineSceneID
+                : c11GridSceneArgument ?? "unknown"
             log("\(markerPrefix)_METAL_PIXEL_ERROR run_id=\(c111MetalPixelArgumentRunID) scene_id=\(invalidSceneID) reason=invalid-run-scene-or-samples")
             postStatus("실패 · \(c11GridMetalPixelStatusName) Metal 표본 실행 인수·장면·표본이 올바르지 않습니다")
             return
@@ -1255,7 +1332,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             postStatus("실패 · C12.4 Metal 표본 case 인수가 올바르지 않습니다")
             return
         }
-        let handle = c1131GridRepeatProbeRequested
+        let handle = c1132GridNamedLinesProbeRequested
+            ? SpinonRunner.createRuntimeGpuHostWithC11_3_2GridNamedLinesFixture()
+            : c1131GridRepeatProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithC11_3_1GridRepeatFixture()
             : c1123GridAutoPlacementProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithC11_2_3GridAutoPlacementFixture()
@@ -1309,11 +1388,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             || c123FixedPositionProbeRequested
             || c1122GridAutoPlacementProbeRequested
             || c1123GridAutoPlacementProbeRequested
-            ? 800 : c1131GridRepeatProbeRequested || fixedSizeCssFixtureRequested ? 240 : environmentInputs.height
+            ? 800 : c1132GridNamedLinesProbeRequested || c1131GridRepeatProbeRequested
+                || fixedSizeCssFixtureRequested ? 240 : environmentInputs.height
         log("SPINON_C0410_ENVIRONMENT_REQUEST width=\(viewportWidth) height=\(viewportHeight)")
         let environment = SpinonRunner.setRuntimeGpuEnvironment(
             handle, width: viewportWidth, height: viewportHeight,
-            scale: c123FixedPositionProbeRequested ? 1 : environmentInputs.scale,
+            scale: c123FixedPositionProbeRequested || c1132GridNamedLinesProbeRequested
+                ? 1 : environmentInputs.scale,
             dark: environmentInputs.dark
         )
         guard environment?.hasPrefix("status=0 ") == true else {
@@ -1323,7 +1404,10 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         log("SPINON_C0410_ENVIRONMENT \(environment ?? "")")
 
         var result: String? = nil
-        if c1131GridRepeatProbeRequested {
+        if c1132GridNamedLinesProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuC11_3_2GridNamedLinesFixture(
+                handle, sceneID: c1132GridNamedLineSceneID, runID: c1132GridNamedLinesRunID)
+        } else if c1131GridRepeatProbeRequested {
             result = SpinonRunner.evalRuntimeGpuC11_3_1GridRepeatFixture(
                 handle, sceneID: c1131GridRepeatSceneArgument, runID: c1131GridRepeatRunID)
         } else if c1123GridAutoPlacementProbeRequested {
@@ -1395,7 +1479,49 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         } else {
             result = SpinonRunner.evalRuntimeGpuFixture(handle)
         }
-        if c1131GridRepeatProbeRequested {
+        if c1132GridNamedLinesProbeRequested, result?.hasPrefix("status=0 ") == true {
+            let rejectionHost = SpinonRunner.createRuntimeGpuHostWithC11_3_2GridNamedLinesFixture()
+            let rejection: String
+            if rejectionHost == 0 {
+                rejection = "status=-2 isolated rejection host creation failed"
+            } else {
+                let rejectionEnvironment = SpinonRunner.setRuntimeGpuEnvironment(
+                    rejectionHost, width: 320, height: 240, scale: 1,
+                    dark: environmentInputs.dark
+                ) ?? "status=-1 missing-environment-report"
+                rejection = rejectionEnvironment.hasPrefix("status=0 ")
+                    ? SpinonRunner.evalRuntimeGpuC11_3_2GridNamedLinesFixture(
+                        rejectionHost,
+                        sceneID: c1132GridNamedLineRejectSceneID,
+                        runID: c1132GridNamedLinesRunID
+                    ) ?? "status=-1 missing-report"
+                    : rejectionEnvironment
+                SpinonRunner.freeRuntimeGpuHost(rejectionHost)
+            }
+            let expectedRejection = rejection.hasPrefix("status=-11 ")
+                && rejection.contains("unsupported_named_grid_line")
+                && rejection.contains("property=Some(\"grid-column-start\")")
+                && !rejection.contains("node_frames_css_px=[")
+            log("SPINON_C1132_GRID_REJECTION run_id=\(c1132GridNamedLinesRunID) scene_id=\(c1132GridNamedLineRejectSceneID) expected=\(expectedRejection) \(rejection)")
+            let rejectionStatus = String(rejection.split(separator: " ", maxSplits: 1).first ?? "status=-1")
+            let rejectionCode = rejection.contains("unsupported_named_grid_line")
+                ? "unsupported_named_grid_line" : "missing"
+            let rejectionProperty = rejection.contains("property=Some(\"grid-column-start\")")
+                ? "grid-column-start" : "missing"
+            let rejectionFrames = rejection.contains("node_frames_css_px=[") ? "present" : "absent"
+            log("SPINON_C1132_GRID_REJECTION_SUMMARY run_id=\(c1132GridNamedLinesRunID) scene_id=\(c1132GridNamedLineRejectSceneID) expected=\(expectedRejection) \(rejectionStatus) code=\(rejectionCode) property=\(rejectionProperty) frames=\(rejectionFrames)")
+            guard expectedRejection else {
+                postStatus("실패 · C11.3.2 implicit named line 거부 계약 불일치")
+                return
+            }
+        }
+        if c1132GridNamedLinesProbeRequested {
+            log("SPINON_C1132_GRID_EVAL_RUN run_id=\(c1132GridNamedLinesRunID) scene_id=\(c1132GridNamedLineSceneID) \(runtimeStatusSummary(result ?? "status=-1 missing-report"))")
+            if let result, result.hasPrefix("status=0 ") {
+                log("SPINON_C1132_GRID_SUMMARY run_id=\(c1132GridNamedLinesRunID) scene_id=\(c1132GridNamedLineSceneID) \(runtimeStatusSummary(result))")
+                logC1132GridNamedLineFrames(result)
+            }
+        } else if c1131GridRepeatProbeRequested {
             log("SPINON_C1131_GRID_EVAL_RUN run_id=\(c1131GridRepeatRunID) scene_id=\(c1131GridRepeatSceneArgument) \(runtimeStatusSummary(result ?? "status=-1 missing-report"))")
         } else if c1123GridAutoPlacementProbeRequested || c1122GridAutoPlacementProbeRequested {
             let profile = c1123GridAutoPlacementProbeRequested ? "C1123" : "C1122"
@@ -1535,7 +1661,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             logC1035NodeFrames(result ?? "")
         }
         if sceneWasSupersededAfterCommit {
-            let scope = c1131GridRepeatProbeRequested
+            let scope = c1132GridNamedLinesProbeRequested
+                ? "SPINON_C1132_GRID"
+                : c1131GridRepeatProbeRequested
                 ? "SPINON_C1131_GRID"
                 : c1121GridPlacementProbeRequested
                 ? "SPINON_C1121_GRID"
@@ -1593,7 +1721,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             log("\(scope)_EVAL_SCENE_SUPERSEDED \(result ?? "")")
             postStatus("JavaScript 적용 완료 · 최신 CSS 장면 다시 계산 중")
         } else {
-            let scope = c1131GridRepeatProbeRequested
+            let scope = c1132GridNamedLinesProbeRequested
+                ? "SPINON_C1132_GRID"
+                : c1131GridRepeatProbeRequested
                 ? "SPINON_C1131_GRID"
                 : c1121GridPlacementProbeRequested
                 ? "SPINON_C1121_GRID"
@@ -2255,7 +2385,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 coordinates.append(UInt32(y))
             }
             let request = coordinates.withUnsafeBufferPointer { buffer in
-                if pixelRun.markerPrefix == "C1131" {
+                if pixelRun.markerPrefix == "C1132" {
+                    SpinonRunner.requestRuntimeGpuC11_3_2GridSurfacePixels(
+                        forTest: handle,
+                        sampleXY: buffer.baseAddress,
+                        sampleCount: UInt(coordinates.count / 2)
+                    )
+                } else if pixelRun.markerPrefix == "C1131" {
                     SpinonRunner.requestRuntimeGpuC11_3_1GridSurfacePixels(
                         forTest: handle,
                         sampleXY: buffer.baseAddress,

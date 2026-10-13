@@ -134,7 +134,13 @@ pub(super) fn computed_element_output(
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
             | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
     ) && !layout_suppressed)
-        .then(|| super::grid::computed_grid_item_placement(computed, &computed_properties));
+        .then(|| {
+            super::grid::computed_grid_item_placement(
+                computed,
+                &computed_properties,
+                profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1,
+            )
+        });
     for (name, width) in [
         ("border-top-width", layout_border.top),
         ("border-right-width", layout_border.right),

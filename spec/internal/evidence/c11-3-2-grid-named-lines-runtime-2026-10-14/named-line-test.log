@@ -1,0 +1,20 @@
+   Compiling spinon-style-to-layout v0.1.0 (/private/tmp/spinon-c11-3-2-work/crates/spinon-style-to-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.00s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-623c5503c181cff2)
+
+running 13 tests
+test projection::style_values::grid_placement_values::named_line::tests::conflicting_end_named_span_is_dropped_before_name_resolution ... ok
+test projection::style_values::grid_placement_values::named_line::tests::conflicting_named_spans_do_not_resolve_names_or_create_implicit_lines ... ok
+test projection::style_values::grid_placement_values::named_line::tests::line_names_are_case_sensitive ... ok
+test projection::style_values::grid_placement_values::named_line::tests::same_line_duplicate_name_is_one_span_occurrence ... ok
+test projection::style_values::grid_placement_values::named_line::tests::lone_named_span_uses_default_single_track_span ... ok
+test projection::style_values::grid_placement_values::named_line::tests::named_line_metadata_shape_and_zero_span_count_fail_closed ... ok
+test projection::style_values::grid_placement_values::named_line::tests::missing_name_and_occurrence_shortage_fail_closed ... ok
+test projection::style_values::grid_placement_values::named_line::tests::named_span_searches_forward_from_definite_start ... ok
+test projection::style_values::grid_placement_values::named_line::tests::named_span_searches_backward_from_definite_end ... ok
+test projection::style_values::grid_placement_values::named_line::tests::named_span_shortage_fails_instead_of_creating_implicit_lines ... ok
+test projection::style_values::grid_placement_values::named_line::tests::negative_occurrence_counts_from_last_explicit_line ... ok
+test projection::style_values::grid_placement_values::named_line::tests::positive_occurrence_uses_line_index_and_deduplicates_same_line_names ... ok
+test projection::style_values::grid_placement_values::named_line::tests::zero_and_extreme_negative_occurrences_fail_closed_without_overflow ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 136 filtered out; finished in 0.01s

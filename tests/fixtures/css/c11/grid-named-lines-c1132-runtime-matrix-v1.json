@@ -1,0 +1,35 @@
+{
+  "schema": "spinon-css-c11-3-2-grid-named-lines-runtime-matrix/v1",
+  "profileId": "RuntimeBlockFlexGridTemplateV1",
+  "summary": {
+    "sceneCount": 2,
+    "nodeCount": 4,
+    "successCount": 1,
+    "expectedRejectCount": 1
+  },
+  "cases": [
+    {
+      "index": 0,
+      "id": "positive-occurrence",
+      "expected": { "outcome": "success" },
+      "rootId": "c1132-positive-grid",
+      "nodeIds": ["c1132-positive-grid", "c1132-positive-item"],
+      "parentIds": [null, "c1132-positive-grid"],
+      "source": "(() => { const grid = document.createElement('div'); grid.setAttribute('id','c1132-positive-grid'); grid.setAttribute('style','position:relative;display:grid;box-sizing:border-box;width:160px;height:120px;grid-template-columns:[start] 40px [mid] 40px [mid] 40px [finish] 40px [last];grid-template-rows:[row-start] 40px [row-end] 40px 40px;background-color:#edf1f7'); document.appendChild(grid); const item = document.createElement('div'); item.setAttribute('id','c1132-positive-item'); item.setAttribute('style','box-sizing:border-box;width:80px;height:40px;grid-row:row-start / row-end;grid-column:mid 2 / last;background-color:#2866f6'); grid.appendChild(item); return {sceneId:'positive-occurrence',rootId:'c1132-positive-grid',nodeIds:['c1132-positive-grid','c1132-positive-item']}; })()"
+    },
+    {
+      "index": 1,
+      "id": "missing-name-implicit-line",
+      "expected": {
+        "outcome": "expected-rejection",
+        "code": "unsupported_named_grid_line",
+        "property": "grid-column-start",
+        "nodeId": "c1132-missing-name-item"
+      },
+      "rootId": "c1132-missing-name-grid",
+      "nodeIds": ["c1132-missing-name-grid", "c1132-missing-name-item"],
+      "parentIds": [null, "c1132-missing-name-grid"],
+      "source": "(() => { const grid = document.createElement('div'); grid.setAttribute('id','c1132-missing-name-grid'); grid.setAttribute('style','position:relative;display:grid;box-sizing:border-box;width:160px;height:120px;grid-template-columns:[start] 40px [mid] 40px [mid] 40px [finish] 40px [last];grid-template-rows:[row-start] 40px [row-end] 40px 40px;background-color:#edf1f7'); document.appendChild(grid); const item = document.createElement('div'); item.setAttribute('id','c1132-missing-name-item'); item.setAttribute('style','box-sizing:border-box;width:40px;height:40px;grid-row:row-start / row-end;grid-column:absent / last;background-color:#2866f6'); grid.appendChild(item); return {sceneId:'missing-name-implicit-line',rootId:'c1132-missing-name-grid',nodeIds:['c1132-missing-name-grid','c1132-missing-name-item']}; })()"
+    }
+  ]
+}

@@ -165,21 +165,32 @@ fn computed_grid_auto_rows(
 pub(super) fn computed_grid_item_placement(
     computed: &ComputedValues,
     properties: &BTreeMap<String, String>,
+    allow_named_lines: bool,
 ) -> ComputedCssGridItemPlacement {
     let row_start = computed.clone_grid_row_start();
     let row_end = computed.clone_grid_row_end();
     let column_start = computed.clone_grid_column_start();
     let column_end = computed.clone_grid_column_end();
     ComputedCssGridItemPlacement {
-        row_start: computed_grid_placement(row_start, property_value(properties, "grid-row-start")),
-        row_end: computed_grid_placement(row_end, property_value(properties, "grid-row-end")),
+        row_start: computed_grid_placement(
+            row_start,
+            property_value(properties, "grid-row-start"),
+            allow_named_lines,
+        ),
+        row_end: computed_grid_placement(
+            row_end,
+            property_value(properties, "grid-row-end"),
+            allow_named_lines,
+        ),
         column_start: computed_grid_placement(
             column_start,
             property_value(properties, "grid-column-start"),
+            allow_named_lines,
         ),
         column_end: computed_grid_placement(
             column_end,
             property_value(properties, "grid-column-end"),
+            allow_named_lines,
         ),
     }
 }
@@ -187,9 +198,34 @@ pub(super) fn computed_grid_item_placement(
 fn computed_grid_placement(
     value: style::values::computed::GridLine,
     serialized: &str,
+    allow_named_lines: bool,
 ) -> ComputedCssGridPlacement {
-    if !value.ident.0.as_str().is_empty() {
-        return ComputedCssGridPlacement::Unsupported(serialized.to_owned());
+    let name = value.ident.0.as_str();
+    if !name.is_empty() {
+        if !allow_named_lines {
+            return ComputedCssGridPlacement::Unsupported(serialized.to_owned());
+        }
+        if value.is_span {
+            let count = if value.line_num == 0 {
+                1
+            } else if let Ok(count) = u32::try_from(value.line_num) {
+                count
+            } else {
+                return ComputedCssGridPlacement::Unsupported(serialized.to_owned());
+            };
+            return ComputedCssGridPlacement::SpanNamed {
+                name: name.to_owned(),
+                count,
+            };
+        }
+        return ComputedCssGridPlacement::NamedLine {
+            name: name.to_owned(),
+            occurrence: if value.line_num == 0 {
+                1
+            } else {
+                value.line_num
+            },
+        };
     }
     if value.is_auto() {
         return ComputedCssGridPlacement::Auto;

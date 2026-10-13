@@ -1,0 +1,4 @@
+AssertionError [ERR_ASSERTION]: 없는 named line 거부가 기대 code·property로 기록되지 않았습니다.
+    at assertNamedLineGeometry (file:///private/tmp/spinon-c11-3-2-work/tools/css-reference/capture-c11-3-2-grid-named-lines-runtime.mjs:81:10)
+    at runIOS (file:///private/tmp/spinon-c11-3-2-work/tools/css-reference/capture-c11-3-2-grid-named-lines-runtime.mjs:257:20)
+    at async file:///private/tmp/spinon-c11-3-2-work/tools/css-reference/capture-c11-3-2-grid-named-lines-runtime.mjs:309:71

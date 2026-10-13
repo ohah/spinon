@@ -1,0 +1,23 @@
+C11.3.2 staticlib fixture inclusion gate
+Artifact scope: macOS debug-profile spinon-ffi static library only.
+Host symbol and fixture payload markers are searched in raw archive bytes; nm stdout confirms the positive control symbol.
+
+[default feature set build]
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.06s
+[default feature set]
+SHA256 b7c85e8327b3220a2a7950048852eb70d6412d5abc2f73b6b360c7bd46ed21d0  target/debug/libspinon_ffi.a
+C11.3.2 host symbol marker: absent
+fixture payload c1132-positive-grid: absent
+fixture payload c1132-positive-item: absent
+fixture payload missing-name-implicit-line: absent
+nm positive-control symbol: absent
+
+[positive control build: fixture feature set]
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.08s
+[fixture positive control]
+SHA256 7feb1a752f74ed1504f5fc971c4d0d8967bfa7e2df82bd18a71b16b9d6147971  target/debug/libspinon_ffi.a
+C11.3.2 host symbol marker: present
+fixture payload c1132-positive-grid: present
+fixture payload c1132-positive-item: present
+fixture payload missing-name-implicit-line: present
+nm positive-control symbol: present

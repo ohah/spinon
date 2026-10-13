@@ -1,0 +1,182 @@
+{
+  "schema": "spinon-css-c11-3-2-grid-named-lines-inventory/v1",
+  "fixtureId": "C11.3.2-grid-named-lines-precomparison-v1",
+  "sourcePolicy": "HTML fixture is a derived, fixed comparison input. WPT sources are hashed and executed in the pinned Chrome oracle only; the results do not establish Spinon WPT conformance.",
+  "viewport": {
+    "width": 320,
+    "height": 240,
+    "deviceScaleFactors": [1, 2]
+  },
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "forcedColors": "none",
+    "pointer": "coarse",
+    "hover": "none",
+    "direction": "ltr",
+    "writingMode": "horizontal-tb"
+  },
+  "comparison": {
+    "rectFields": ["x", "y", "width", "height"],
+    "maximumAbsoluteRectErrorCssPx": 0.5,
+    "computedProperties": [
+      "display",
+      "direction",
+      "writing-mode",
+      "width",
+      "height",
+      "grid-template-columns",
+      "grid-template-rows",
+      "grid-auto-flow",
+      "column-gap",
+      "row-gap",
+      "grid-column-start",
+      "grid-column-end",
+      "grid-row-start",
+      "grid-row-end"
+    ]
+  },
+  "wpt": {
+    "revision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+    "candidates": [
+      {
+        "path": "css/css-grid/placement/grid-placement-using-named-grid-lines-001.html",
+        "sha256": "d31717c0e82d8030f0a99070a5e98333be71c2cc834e36950ae5b5d303fd180e",
+        "classification": "Chrome oracle only; fixture does not reproduce the full WPT test; Chrome pass does not establish Spinon conformance"
+      },
+      {
+        "path": "css/css-grid/placement/grid-placement-using-named-grid-lines-009.html",
+        "sha256": "beff24e4a4afdc8a78113df44c35b7f70c22c9067c935ae3340a4432f2b2e6eb",
+        "classification": "Chrome oracle only; fixture does not reproduce the full WPT test; Chrome pass does not establish Spinon conformance"
+      },
+      {
+        "path": "css/css-grid/placement/grid-placement-unknown-named-grid-line-001.html",
+        "sha256": "27f9afb4ca2c856718ca81ef750b511242bce5be7386f80fa335c37329e9d049",
+        "classification": "Chrome oracle only; implicit-line behavior is outside this implementation; Chrome pass does not establish Spinon conformance"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "id": "positive-occurrence",
+      "rootId": "positive-occurrence-grid",
+      "nodeIds": ["positive-occurrence-grid", "positive-occurrence-item"],
+      "expectedColumns": 4,
+      "expectedRows": 3,
+      "expectedSpinonOutcome": "success"
+    },
+    {
+      "id": "negative-occurrence",
+      "rootId": "negative-occurrence-grid",
+      "nodeIds": ["negative-occurrence-grid", "negative-occurrence-item"],
+      "expectedColumns": 4,
+      "expectedRows": 3,
+      "expectedSpinonOutcome": "success"
+    },
+    {
+      "id": "integer-before-name",
+      "rootId": "integer-before-name-grid",
+      "nodeIds": ["integer-before-name-grid", "integer-before-name-item"],
+      "expectedColumns": 4,
+      "expectedRows": 3,
+      "expectedSpinonOutcome": "success"
+    },
+    {
+      "id": "named-span-forward",
+      "rootId": "named-span-forward-grid",
+      "nodeIds": ["named-span-forward-grid", "named-span-forward-item"],
+      "expectedColumns": 4,
+      "expectedRows": 3,
+      "expectedSpinonOutcome": "success"
+    },
+    {
+      "id": "named-span-backward",
+      "rootId": "named-span-backward-grid",
+      "nodeIds": ["named-span-backward-grid", "named-span-backward-item"],
+      "expectedColumns": 4,
+      "expectedRows": 3,
+      "expectedSpinonOutcome": "success"
+    },
+    {
+      "id": "named-span-name-before-count",
+      "rootId": "named-span-name-before-count-grid",
+      "nodeIds": ["named-span-name-before-count-grid", "named-span-name-before-count-item"],
+      "expectedColumns": 4,
+      "expectedRows": 3,
+      "expectedSpinonOutcome": "success"
+    },
+    {
+      "id": "same-line-duplicate-name",
+      "rootId": "same-line-duplicate-name-grid",
+      "nodeIds": ["same-line-duplicate-name-grid", "same-line-duplicate-name-item"],
+      "expectedColumns": 4,
+      "expectedRows": 3,
+      "expectedSpinonOutcome": "success"
+    },
+    {
+      "id": "repeat-seam-name",
+      "rootId": "repeat-seam-name-grid",
+      "nodeIds": ["repeat-seam-name-grid", "repeat-seam-name-item"],
+      "expectedColumns": 2,
+      "expectedRows": 3,
+      "expectedSpinonOutcome": "success"
+    },
+    {
+      "id": "row-axis-named-lines",
+      "rootId": "row-axis-named-lines-grid",
+      "nodeIds": ["row-axis-named-lines-grid", "row-axis-named-lines-item"],
+      "expectedColumns": 4,
+      "expectedRows": 3,
+      "expectedSpinonOutcome": "success"
+    },
+    {
+      "id": "reversed-line-conflict",
+      "rootId": "reversed-line-conflict-grid",
+      "nodeIds": ["reversed-line-conflict-grid", "reversed-line-conflict-item"],
+      "expectedColumns": 4,
+      "expectedRows": 3,
+      "expectedSpinonOutcome": "success"
+    },
+    {
+      "id": "equal-line-conflict",
+      "rootId": "equal-line-conflict-grid",
+      "nodeIds": ["equal-line-conflict-grid", "equal-line-conflict-item"],
+      "expectedColumns": 4,
+      "expectedRows": 3,
+      "expectedSpinonOutcome": "success"
+    },
+    {
+      "id": "missing-name-implicit-line",
+      "rootId": "missing-name-implicit-line-grid",
+      "nodeIds": ["missing-name-implicit-line-grid", "missing-name-implicit-line-item"],
+      "expectedColumns": 5,
+      "expectedRows": 3,
+      "expectedSpinonOutcome": "reject-unsupported-named-line"
+    },
+    {
+      "id": "occurrence-shortage-implicit-line",
+      "rootId": "occurrence-shortage-implicit-line-grid",
+      "nodeIds": ["occurrence-shortage-implicit-line-grid", "occurrence-shortage-implicit-line-item"],
+      "expectedColumns": 5,
+      "expectedRows": 3,
+      "expectedSpinonOutcome": "reject-unsupported-named-line"
+    },
+    {
+      "id": "named-span-shortage-implicit-line",
+      "rootId": "named-span-shortage-implicit-line-grid",
+      "nodeIds": ["named-span-shortage-implicit-line-grid", "named-span-shortage-implicit-line-item"],
+      "expectedColumns": 5,
+      "expectedRows": 3,
+      "expectedSpinonOutcome": "reject-unsupported-named-line"
+    },
+    {
+      "id": "lone-named-span",
+      "rootId": "lone-named-span-grid",
+      "nodeIds": ["lone-named-span-grid", "lone-named-span-item"],
+      "expectedColumns": 4,
+      "expectedRows": 3,
+      "expectedSpinonOutcome": "success"
+    }
+  ]
+}
