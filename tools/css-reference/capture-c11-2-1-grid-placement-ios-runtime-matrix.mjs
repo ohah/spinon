@@ -76,7 +76,7 @@ async function main() {
   await writeFile(resolve(evidenceDirectory, 'build.log'), `${build.stdout}${build.stderr}`);
   const buildOutput = `${build.stdout}${build.stderr}`;
   assert.match(buildOutput,
-    /SPINON_IOS_SIM_BUILD_FLAGS c04_runtime_gpu=1 c11_grid_metal_surface_pixels=1/,
+    /SPINON_IOS_SIM_BUILD_FLAGS c04_runtime_gpu=1 c04_runtime_gpu_fixture_test=1 c04_ua_cascade_fixture_probe=0 c11_2_3_grid_fixture=1 c11_grid_metal_surface_pixels=1/,
     'iOS simulator 빌드가 C11 Metal surface pixel flag를 받지 않았습니다.');
   assert.match(buildOutput,
     /SPINON_IOS_NATIVE_FEATURES ffi=[^\n]*c11-grid-metal-surface-pixels-test[^\n]*c11_grid_cpp=-DSPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST=1/,

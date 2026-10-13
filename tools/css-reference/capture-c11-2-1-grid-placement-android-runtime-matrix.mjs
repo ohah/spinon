@@ -145,6 +145,7 @@ async function main() {
       }).stdout;
       const surfacePixelComparison = compareC11AndroidPixelCopyScene(lines.join('\n'), {
         scene: { id: fixture.id, samples: pixelFixture.samples }, runID: sceneRunID, pngBytes: pixelPng,
+        viewportCssPx: pixelMatrix.runtime.viewportCssPx,
       });
       const pixelPngPath = resolve(evidenceDirectory, `${fixture.id}-pixelcopy.png`);
       await writeFile(pixelPngPath, pixelPng);

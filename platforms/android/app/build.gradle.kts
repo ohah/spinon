@@ -14,6 +14,13 @@ val spinonC04RuntimeGpuValue = spinonC04RuntimeGpu.get()
 require(spinonC04RuntimeGpuValue == "0" || spinonC04RuntimeGpuValue == "1") {
     "spinonC04RuntimeGpu는 0 또는 1이어야 합니다."
 }
+val spinonC04UaCascadeFixtureProbe =
+    providers.gradleProperty("spinonC04UaCascadeFixtureProbe").orElse("0")
+val spinonC04UaCascadeFixtureProbeValue = spinonC04UaCascadeFixtureProbe.get()
+require(spinonC04UaCascadeFixtureProbeValue == "0" ||
+    spinonC04UaCascadeFixtureProbeValue == "1") {
+    "spinonC04UaCascadeFixtureProbe는 0 또는 1이어야 합니다."
+}
 val spinonC04RuntimeGpuFailureFixture =
     providers.gradleProperty("spinonC04RuntimeGpuFailureFixture").orElse("0")
 val spinonC04RuntimeGpuFailureFixtureValue = spinonC04RuntimeGpuFailureFixture.get()
@@ -38,6 +45,10 @@ val prepareSpinonBootstrap by tasks.registering(Exec::class) {
     workingDir = repoRoot
     environment("SPINON_ENABLE_S03_DOM_GC_FIXTURE", spinonS03DomGcFixture.get())
     environment("SPINON_ENABLE_C04_RUNTIME_GPU", spinonC04RuntimeGpu.get())
+    environment(
+        "SPINON_ENABLE_C04_UA_CASCADE_FIXTURE_PROBE",
+        spinonC04UaCascadeFixtureProbe.get(),
+    )
     environment(
         "SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE",
         spinonC04RuntimeGpuFailureFixture.get(),

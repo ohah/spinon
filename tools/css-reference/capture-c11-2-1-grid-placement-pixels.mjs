@@ -145,6 +145,7 @@ async function runAndroid() {
     `cache/c11-grid-surface-pixel-matrix/${appPng.split('/').at(-1)}`], { encoding: null }).stdout;
   const comparison = compareC11AndroidPixelCopyScene(log, {
     scene: { id: fixture.sceneId, samples: fixture.samples }, runID, pngBytes,
+    viewportCssPx: fixture.runtime.viewportCssPx,
   });
   writeFileSync(resolve(evidenceDirectory, 'pixelcopy.png'), pngBytes);
   const screenshot = adb(['exec-out', 'screencap', '-p'], { encoding: null }).stdout;
