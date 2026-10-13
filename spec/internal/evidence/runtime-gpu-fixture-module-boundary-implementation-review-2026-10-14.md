@@ -59,3 +59,8 @@
 ## 판정 경계
 
 소스 경로만으로 binary exclusion을 주장하지 않는다. 이 검토는 Rust module, Cargo feature, C/C++ compile define, C header 및 host Debug static archive의 선택 marker 경계만 다룬다. CSS 동작 적합성, 전체 workspace 회귀, Android APK/iOS release artifact, 앱 bundle 크기, CSS 기능 완료는 판정하지 않는다.
+
+
+## 사후 경로 점검 정정
+
+PR #147 이후 전체 파일 목록을 다시 대조하면서 이전 위치에 남은 16개 미참조 사본을 찾았다. 기존 20번째 검토는 활성 Rust 모듈의 디렉터리 구조와 feature gate를 확인했지만, Rust가 자동으로 컴파일하지 않는 고아 소스 파일의 물리적 존재까지 검사하지 않았다. 따라서 당시 “fixture 경계가 온전히 정리됐다”는 해석은 파일 목록 기준으로 불완전했다. 후속 정리에서 이 사본을 삭제하고 `fixture-module-boundary.test.mjs`가 재발을 막는다. 활성 모듈·빌드 경계 및 앞서 기록한 artifact 검사 결과에는 변화가 없다.
