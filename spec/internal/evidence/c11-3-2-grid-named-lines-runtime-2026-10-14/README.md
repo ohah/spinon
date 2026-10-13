@@ -1,4 +1,4 @@
-# C11.3.2 named grid lines 후보 실행 근거 · 2026-10-14
+# C11.3.2 named grid lines 제한 profile 실행 근거 · 2026-10-14
 
 후보 branch `feat/c11-3-2-named-grid-lines`, base `ed089f8` (`origin/main`). 이 실행은 named-line 제한 profile의 재현 자료다. 공개 CSS 지원이나 Spinon WPT 적합성 선언이 아니다.
 
@@ -18,11 +18,12 @@
 - Chrome for Testing `154.0.8037.92`; reference는 15 scene·30 node, DPR 1·2다. [Chrome capture와 WPT oracle 기록](../c11-3-2-named-lines-precomparison-2026-10-14/README.md).
 - pinned WPT revision `c999c58338ee1d223df5ad62e48be1202ced0d37`의 named-line 후보는 Chrome에서 test 2개 PASS, unknown-line test의 17 subtests PASS, skip 0이다. 이는 Chrome oracle만 뜻한다.
 - Android 16/API 36 SM-S731N 실기기 PixelCopy는 성공/기대 거부 각 1 scene, 4 HostDocument node, 성공 geometry `160×120` grid와 `80×40 @ (80,0)` item, RGBA 표본 2/2 exact다. 이 실행은 resolver iterator 정리 전이다. [이전 실기기 실행](./android-physical-c1132-android-physical-20261013T182250660Z-6c98e33d/README.md).
-- 최신 PR source를 Android 37.0 ARM64 AVD `spinon_api37_0_applied_txn`에서 실행했다. positive/rejection 각 1 scene, geometry 일치, SwiftShader PixelCopy 2/2 exact, 변조 표본은 readback 전에 거부됐다. [AVD 실행](./android-avd-c1132-android-avd-20261013T222607426Z-1b304023/README.md). AVD 결과는 SM-S731N 실기기 gate를 대체하지 않는다.
+- 최신 PR source를 Android 37.0 ARM64 AVD `spinon_api37_0_applied_txn`에서 재실행했다. positive/rejection 각 1 scene, geometry 일치, SwiftShader PixelCopy 2/2 exact, 변조 표본은 readback 전에 거부됐다. [최신 AVD 실행](./android-avd-c1132-android-avd-20261013T231257017Z-496b3f85/README.md). 사용자가 이번 C11.3.2 완료 판단에 AVD를 허용했으므로 Android gate를 충족한다. 최신 source SM-S731N 실기기 PixelCopy와 hardware GPU 동작은 미검증이다.
 - iPhone 17 Pro/iOS 26.2 Simulator Metal drawable도 같은 scene/geometry 및 2/2 exact다. Pixel readback은 OS compositor 제출 전이다. 최신 source 재실행 [run](./ios-simulator-c1132-ios-simulator-20261013T214737423Z-a26930a7/README.md)과 이전 올바른 실행 [run](./ios-simulator-c1132-ios-simulator-20261013T183654060Z-61e173b6/README.md)을 보존했다.
 - 양쪽 플랫폼의 좌표 allowlist 변조 negative control은 surface readback 전에 거부됐다. 실패한 초기 실행 로그는 원인과 함께 보존했다. 이 결과를 전체 15-scene 모바일 실행, iOS 실기기, compositor 이후 픽셀로 확대하지 않는다.
 - iterator 기반 resolver 정리 뒤 iOS Simulator에서 현재 production source를 다시 빌드했다. 최신 run `c1132-ios-simulator-20261013T214737423Z-a26930a7`도 2/2 exact였고, 앱 SHA-256은 `6db1b7af7f2903c90b4097c8d6e09c4b250b9a5c5ef48210b6b5de0890eb77d9`다. [최신 iOS 실행](./ios-simulator-c1132-ios-simulator-20261013T214737423Z-a26930a7/README.md).
-- 최신 source 재검증 시점에 SM-S731N은 `adb devices -l`에 연결되어 있지 않았다. 따라서 위 API 37.0 AVD run은 simulator 보완 근거이며, SM-S731N 실기기 PixelCopy 최신 source gate는 미완료다.
+- 최신 source 재검증 시점에 SM-S731N은 `adb devices -l`에 연결되어 있지 않았다. 사용자가 C11.3.2 완료 판단에 AVD를 허용해 API 37.0 AVD run을 이 단계 gate로 채택했지만, SM-S731N 실기기 PixelCopy와 hardware GPU 동작 자체는 측정하지 않았다.
+- 별도 fresh-run 시도 한 건은 PR 전용 checkout에 고정 V8 source가 없어 앱 빌드 전에 멈췄다. `SPINON_V8_DIR`에 pinned revision `7b50b62cb18f28617959e8452e2cd18195b38bcf`의 clean V8 checkout을 지정해 다시 실행한 뒤 위 최신 AVD run이 통과했다. 실패 로그는 [별도 실행 자료](./android-avd-c1132-android-avd-20261013T231010001Z-96b3af51/README.md)에 보존했다. 코드 source는 두 시도 사이 바뀌지 않았다.
 
 ## Fixture 산출물 경계
 

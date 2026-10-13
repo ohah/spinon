@@ -1,11 +1,11 @@
 # C11.3 · `repeat()`, named grid lines, template areas
 
-**상태:** C11.3.1 병합 전용 검증 완료 · C11.3.2 구현 후보, Android API 37 AVD·iOS Simulator 및 Rust/Chrome 검증 완료(PR 리뷰 가능) · 최신 source SM-S731N 실기기 gate 미완료 · C11.3.3 미착수 · 내부 계약 `0059`와 crate 버전 `0.1.0` 유지
+**상태:** C11.3.1 병합 후 검증 완료 · C11.3.2 named-line 제한 profile 구현과 지정 검증 완료(사용자 승인에 따른 API 37 AVD 완료 판정) · 최신 source SM-S731N 실기기 검증 미실행 · C11.3.3 미착수 · C11 상위·전체 Grid 지원 미완료 · 내부 계약 `0059`와 crate 버전 `0.1.0` 유지
 **상위:** [C11 CSS Grid](c11-css-grid.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 **규범 기준:** [CSS Grid Layout Module Level 1 · 2025-03-26 CRD](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/) §7.2–7.3, §8.3
 **비교 기준:** Chrome for Testing `154.0.8037.92` (mac-arm64), CDP revision `@334b65d254ccc35df4fca82706d1753227b01039`, CfT stable revision `r1689415`; WPT revision `c999c58338ee1d223df5ad62e48be1202ced0d37`
 **계약 버전:** 내부 계약 `0059`와 crate 버전 `0.1.0` 유지
-**계획 검토:** [기능 계획 실패 관점 20개](../spec/internal/evidence/c11-3-template-repeat-named-lines-areas-plan-review-2026-10-13.md) · [Chromium 기준 교체 실패 관점 20개](../spec/internal/evidence/c11-3-chromium-baseline-review-2026-10-13.md)
+**계획 검토:** [기능 계획 실패 관점 20개](../spec/internal/evidence/c11-3-template-repeat-named-lines-areas-plan-review-2026-10-13.md) · [Chromium 기준 교체 실패 관점 20개](../spec/internal/evidence/c11-3-chromium-baseline-review-2026-10-13.md) · [C11.3.2 AVD 완료 판정 예외 검토 20개](../spec/internal/evidence/c11-3-2-avd-completion-plan-review-2026-10-14.md)
 **구현 검토:** [C11.3.1 구현·플랫폼 표면 픽셀 실패 경계](../spec/internal/evidence/c11-3-1-grid-repeat-implementation-review-2026-10-14.md) · [C11.3.2 구현 실패 경계 30개](../spec/internal/evidence/c11-3-2-grid-named-lines-implementation-review-2026-10-14.md) · [초기 C11.3.1 구현 검토](../spec/internal/evidence/c11-3-1-grid-repeat-pixels-implementation-review-2026-10-13.md)
 
 ### Chromium 기준 버전 고정
@@ -73,7 +73,7 @@ C11.3은 다음 세 단계로 분할한다. 각 단계는 독립된 기능 PR �
 - line name이 없거나 지정 occurrence가 explicit grid 밖 implicit line을 요구하면 `UnsupportedNamedGridLine` 계열 오류를 반환한다. implicit line materialization은 다음 계획 단계가 아니라 별도 C11 후속 범위다.
 - 같은 이름이 한 line group에 반복되어도 index는 그 line을 한 번 센다. 원본 name list는 metadata에서 보존하고, resolver만 line index를 중복 계산하지 않는다. repeat seam에서 같은 이름이 합쳐지는 사례를 Chrome fixture로 확인한다.
 
-2026-10-14 구현 후보는 Stylo typed snapshot의 named line/span 값을 owned Grid input으로 보존하고, 엔진 중립 resolver에서 explicit numeric line으로 바꾼 뒤 Taffy에 전달한다. Chrome 154 기준 15 scene·30 node를 DPR 1·2로 고정했고, WPT 후보 3개는 Chrome에서 PASS 2개와 17개 하위 검사가 통과한 OK 1개, skip 0이었다. Android 16 SM-S731N 실기기와 iPhone 17 Pro/iOS 26.2 Simulator에서는 성공 1개·기대 거부 1개(각 4 node)를 실행했으며 성공 장면의 두 표면 표본은 각각 RGBA 2/2 exact였다. 최신 PR source는 Android 37.0 ARM64 AVD `spinon_api37_0_applied_txn`에서도 성공·기대 거부 각 1 scene과 PixelCopy 2/2 exact를 확인했고, 변조 좌표는 readback 전에 거부했다. AVD는 SM-S731N 실기기 결과를 증명하지 않으며 최신 source 실기기 PixelCopy는 미완료로 남긴다. 사용자 지시에 따라 현재 연결된 물리 기기 없이 Android API 37 AVD와 iOS Simulator를 이 PR의 리뷰 근거로 사용한다. 이는 해당 실기기 측정 gate를 완료 처리하거나 실기기 GPU 동작을 주장하는 변경이 아니며, 이 선택은 이번 PR의 리뷰 진행에만 적용한다. 상세 결과와 남은 경계는 [실행 근거](../spec/internal/evidence/c11-3-2-grid-named-lines-runtime-2026-10-14/)와 [구현 실패 경계 검토 30개](../spec/internal/evidence/c11-3-2-grid-named-lines-implementation-review-2026-10-14.md)에 둔다. 이는 제한 profile의 구현 후보 근거이며 Spinon WPT 적합성, 전체 모바일 행렬, 공개 CSS 지원을 뜻하지 않는다.
+2026-10-14 C11.3.2 제한 profile은 Stylo typed snapshot의 named line/span 값을 owned Grid input으로 보존하고, 엔진 중립 resolver에서 explicit numeric line으로 바꾼 뒤 Taffy에 전달한다. Chrome 154 기준 15 scene·30 node를 DPR 1·2로 고정했고, WPT 후보 3개는 Chrome oracle에서 PASS 2개와 17개 하위 검사가 통과한 OK 1개, skip 0이었다. Android API 37.0 ARM64 AVD `spinon_api37_0_applied_txn`에서 성공·기대 거부 각 1 scene, geometry 일치, SwiftShader PixelCopy 2/2 exact와 변조 좌표의 readback 전 거부를 최신 source로 확인했다. iPhone 17 Pro/iOS 26.2 Simulator에서도 같은 두 scene과 2/2 exact를 확인했으며 Metal readback은 compositor 제출 전이다. 사용자는 이번 C11.3.2의 완료 판단에 AVD를 허용했다. 따라서 이 단계의 Android 완료 gate는 충족했지만, 최신 source SM-S731N PixelCopy와 hardware GPU 동작은 검증하지 않았다. 이전 SM-S731N 표본은 resolver iterator 정리 전 source이므로 최신 source 근거로 세지 않는다. 새 AVD 재실행은 PR 체크아웃에 V8 소스가 없어 빌드 전 중단됐고, 고정·clean V8 checkout을 지정한 뒤 성공했다. [최신 AVD 실행](../spec/internal/evidence/c11-3-2-grid-named-lines-runtime-2026-10-14/android-avd-c1132-android-avd-20261013T231257017Z-496b3f85/README.md) · [실패한 의존성 사전 조건 실행](../spec/internal/evidence/c11-3-2-grid-named-lines-runtime-2026-10-14/android-avd-c1132-android-avd-20261013T231010001Z-96b3af51/README.md) · [통합 근거](../spec/internal/evidence/c11-3-2-grid-named-lines-runtime-2026-10-14/README.md). 이 사용자 승인 예외는 C11.3.2에만 적용하며 다음 단계의 기기 관문이나 Spinon WPT 적합성·전체 모바일 행렬·공개 CSS 지원 범위를 바꾸지 않는다.
 
 ### C11.3.3 · template areas와 area 배치
 
@@ -136,7 +136,7 @@ CSS Grid `grid-template-rows/columns`의 `getComputedStyle()`은 resolved value�
 1. 계획 문서와 해당 계획 검토 20개 관점을 코드 변경 전에 고정한다. 구현 뒤에는 별개의 20개 구현 실패 관점 검토를 수행하고 발견한 문제를 수정한다.
 2. CSS reference fixture는 HTML input, 기대 JSON, Chromium raw source hash를 함께 고정한다. CSSOM 결과만 보거나 screenshot만 보는 것을 성공 기준으로 삼지 않는다.
 3. Rust: style projection, layout normalization, profile/runtime, failure atomicity, old C11.2.1–2.3 regression 및 workspace 검사 결과를 기록한다. allocation은 repeat/metadata의 실제 reserve 지점에 실패를 주입한다.
-4. Android: 연결된 SM-S731N에서 동일 fixture의 runtime geometry, error/no-partial-draw 및 surface PixelCopy를 측정한다. API 37 AVD는 고정 Chromium pixel 비교를 보완하지만 실기기 gate를 대신하지 않는다. 실기기 연결이 없으면 그 gate를 미완료로 남긴다.
+4. Android: 기본 관문은 연결된 SM-S731N에서 동일 fixture의 runtime geometry, error/no-partial-draw 및 surface PixelCopy를 측정하는 것이다. 단, 이번 C11.3.2에 한해 사용자가 AVD 완료 판단을 명시적으로 허용했으므로 최신 source API 37 ARM64 AVD의 positive·expected-rejection scene, geometry, 전체 지정 PixelCopy 표본, readback 전 변조 좌표 거부를 완료 gate로 인정한다. 이 예외는 이번 단계만 닫으며 SM-S731N 또는 hardware GPU 검증을 했다고 기록하지 않는다. 다른 C11 단계는 사용자 승인 없이 이 예외를 상속하지 않는다.
 5. iOS: iPhone 17 Pro/iOS 26.2 Simulator에서 같은 fixture를 실행하고 Metal drawable sample을 확인한다. 이 결과는 iOS 실기기나 OS compositor 이후 픽셀을 뜻하지 않는다.
 6. Profile 외 입력, track 상한, malformed/cascade fallback, duplicate names, missing names, row/column axis swap, nested container, stale revision, revision overflow, allocation failure 및 다음 정상 요청 복구를 검사한다.
 7. 변경 후 `spec/internal/0059-c11-grid-layout.md`, `spec/STATUS.md`, `spec/internal/README.md`, public compatibility support table과 `spec/public/roadmap.html`을 실제 결과에 맞춘다. Tailnet 미리보기도 동기화 후 HTTP status, 변경 SHA-256, 링크 및 모바일 layout을 확인한다. GitHub Pages는 배포하지 않는다.

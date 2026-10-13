@@ -1,0 +1,4 @@
+10-14 08:13:05.201  3736  3736 E SpinonBootstrap: SPINON_C1132_GRID_PIXEL_MATRIX status=error run_id=c1132-android-avd-20261013T231257017Z-496b3f85-bad-samples scene=positive-occurrence reason=invalid-c1132-sample-fixture
+10-14 08:13:05.207  3736  3755 E SpinonBootstrap: SPINON_C1132_GRID_PIXEL_MATRIX status=error reason=invalid-c1132-sample-fixture
+10-14 08:13:05.773  3736  3736 I SpinonBootstrap: SPINON_C0410_SURFACE_CREATED generation=1
+10-14 08:13:05.773  3736  3736 I SpinonBootstrap: SPINON_C0410_SURFACE_CHANGED generation=2 size=840x630 changed=true

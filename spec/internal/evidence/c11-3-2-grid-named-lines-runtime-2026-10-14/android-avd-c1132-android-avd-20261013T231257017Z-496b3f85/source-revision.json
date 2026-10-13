@@ -1,0 +1,14 @@
+{
+  "schema": "spinon-c11-3-2-source-revision/v1",
+  "captureRunID": "c1132-android-avd-20261013T231257017Z-496b3f85",
+  "branch": "feat/c11-3-2-named-grid-lines",
+  "checkoutHead": "7f79186dfff19afb07bd2eb859204f4ce37b7003",
+  "implementationCommit": "0814932f06a2a9fac1a6726163f4c5fb1b2b5ba4",
+  "trackedWorktreeChangesAtCapture": [],
+  "changesAfterImplementationCommit": [
+    "plan/c11-3-template-repeat-named-lines-areas.md",
+    "spec/internal/evidence/c11-3-2-grid-named-lines-implementation-review-2026-10-14.md"
+  ],
+  "implementationSourceUnchangedAfterImplementationCommit": true,
+  "appSha256": "886e14e746e7a5432cf60c55a6476ab5bbdc07db75ecf839065d5c1db27f27b9"
+}

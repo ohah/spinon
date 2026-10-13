@@ -58,8 +58,12 @@
 - 플랫폼 및 opt-in 산출물: [Android/iOS 실행·fixture artifact 경계](./c11-3-2-grid-named-lines-runtime-2026-10-14/README.md)
 - 최신 source AVD 보완 run: [Android API 37.0 PixelCopy·negative control](./c11-3-2-grid-named-lines-runtime-2026-10-14/android-avd-c1132-android-avd-20261013T222607426Z-1b304023/README.md)
 
-검토 결과는 제한된 C11.3.2 구현 후보를 지지한다. C11.3.2 PR은 아직 Draft이며, 최신 source SM-S731N physical PixelCopy gate, implicit named line 생성, 전체 15-scene 모바일 행렬, iOS 실기기 및 compositor 이후 pixel, Spinon WPT 적합성, template areas/C11.3.3와 CSS Grid 전체 지원은 미완료다. 공개 제품 CSS 지원으로 표시하지 않는다.
+검토 결과는 제한된 C11.3.2 구현과 지정 검증을 지지한다. 최신 source SM-S731N physical PixelCopy gate 자체는 실행하지 않았지만, 사용자가 이번 단계 완료 판단에 AVD를 허용해 Android API 37 AVD run을 gate로 채택했다. implicit named line 생성, 전체 15-scene 모바일 행렬, iOS 실기기 및 compositor 이후 pixel, Spinon WPT 적합성, template areas/C11.3.3와 CSS Grid 전체 지원은 미완료다. 공개 제품 CSS 지원으로 표시하지 않는다.
 
 ## PR 상태 갱신 · 2026-10-14
 
 실기기가 연결되지 않아 시뮬레이터를 사용하라는 사용자 지시에 따라, 기존 Android API 37 AVD와 iOS 26.2 Simulator 근거로 PR #151을 리뷰 가능한 상태로 전환한다. 위 30개 검토의 구현 판정과 물리 기기 미검증 범위는 바꾸지 않는다. 이 갱신은 리뷰 시작을 허용하며 실기기 gate, 전체 15-scene 모바일 행렬, iOS 실기기·compositor 이후 픽셀 또는 Spinon WPT 적합성을 완료 처리하지 않는다.
+
+## 완료 판정 갱신 · 2026-10-14
+
+사용자가 C11.3.2 완료 판단에 AVD를 허용했다. 고정·clean V8 checkout을 지정한 최신 source Android API 37 AVD 재실행 `c1132-android-avd-20261013T231257017Z-496b3f85`는 성공·기대 거부 각 1 scene, geometry 일치, SwiftShader PixelCopy 2/2 exact 및 readback 전 변조 좌표 거부를 통과했다. 이에 따라 계획의 C11.3.2 한정 AVD 예외를 적용하며, 이전의 물리 기기 gate 미충족 문구는 최신 source 실기기 관측이 없다는 한계로만 유지한다. 실기기나 hardware GPU를 통과했다고 주장하지 않는다. 계획 변경 자체의 별도 실패 관점 검토는 [20개 항목](./c11-3-2-avd-completion-plan-review-2026-10-14.md)이다.
