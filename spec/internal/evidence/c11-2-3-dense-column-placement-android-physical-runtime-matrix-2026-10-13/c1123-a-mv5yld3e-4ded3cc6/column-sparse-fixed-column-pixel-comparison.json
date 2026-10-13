@@ -1,0 +1,112 @@
+{
+  "status": "matched",
+  "scene": "column-sparse-fixed-column",
+  "runID": "c1123-a-mv5yld3e-4ded3cc6-column-sparse-fixed-column",
+  "processId": 29491,
+  "markerPrefix": "C1123",
+  "surfaceGeneration": 2,
+  "density": 2.8125,
+  "surface": [
+    900,
+    675
+  ],
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "scale": [
+    2.8125,
+    2.8125
+  ],
+  "expectedSamples": 5,
+  "matchedSamples": 5,
+  "maximumChannelError": 0,
+  "pngSha256": "7c6585abb3f7fad5fee59b7a211c29c3515386768a9d69b414bef957f2d4327a",
+  "samples": [
+    {
+      "id": "item-c1123-column-sparse-fixed-column-locked-a",
+      "css": [
+        28,
+        28
+      ],
+      "pixel": [
+        80,
+        80
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ]
+    },
+    {
+      "id": "item-c1123-column-sparse-fixed-column-locked-b",
+      "css": [
+        28,
+        56
+      ],
+      "pixel": [
+        80,
+        158
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ]
+    },
+    {
+      "id": "item-c1123-column-sparse-fixed-column-locked-c",
+      "css": [
+        28,
+        84
+      ],
+      "pixel": [
+        80,
+        237
+      ],
+      "rgba": [
+        25,
+        169,
+        116,
+        255
+      ]
+    },
+    {
+      "id": "gap-column-c1123-column-sparse-fixed-column-grid",
+      "css": [
+        63,
+        29
+      ],
+      "pixel": [
+        178,
+        82
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    },
+    {
+      "id": "gap-row-c1123-column-sparse-fixed-column-grid",
+      "css": [
+        39,
+        43
+      ],
+      "pixel": [
+        111,
+        122
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    }
+  ]
+}

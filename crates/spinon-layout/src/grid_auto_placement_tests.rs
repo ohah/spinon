@@ -63,6 +63,7 @@ fn sparse_grid(columns: usize, rows: usize, item_count: usize) -> LayoutInput {
                 rows: vec![GridTrackSize::LengthPx(20.0); rows],
                 auto_flow: GridAutoFlow::Row,
                 auto_rows: GridAutoRows::LengthPx(20.0),
+                auto_columns: crate::GridAutoColumns::Auto,
                 placement_mode: GridPlacementMode::SparseRow,
             },
         )]),

@@ -102,6 +102,10 @@ pub enum LayoutError {
         node: NodeId,
         reason: &'static str,
     },
+    UnsupportedGridAutoColumns {
+        node: NodeId,
+        reason: &'static str,
+    },
     UnsupportedGridPlacement(NodeId),
     InvalidGridPlacement {
         node: NodeId,
@@ -297,6 +301,10 @@ impl fmt::Display for LayoutError {
             Self::UnsupportedGridAutoRows { node, reason } => write!(
                 formatter,
                 "노드 {node}의 grid-auto-rows를 현재 profile에서 계산할 수 없습니다: {reason}"
+            ),
+            Self::UnsupportedGridAutoColumns { node, reason } => write!(
+                formatter,
+                "노드 {node}의 grid-auto-columns를 현재 profile에서 계산할 수 없습니다: {reason}"
             ),
             Self::UnsupportedGridPlacement(id) => {
                 write!(

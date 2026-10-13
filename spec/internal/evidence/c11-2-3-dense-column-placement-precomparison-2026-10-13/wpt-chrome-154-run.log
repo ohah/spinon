@@ -1,0 +1,571 @@
+/Users/yoonhb/Documents/workspace/spinon/build/wpt-c124-source/_venv3/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Warning: could not load product 'firefox_android' for argument registration: No module named 'mozrunner'
+Warning: could not load product 'firefox' for argument registration: No module named 'mozleak'
+Running 3 tests in web-platform-tests
+
+/Users/yoonhb/Documents/workspace/spinon/build/wpt-c124-source/_venv3/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+  ▶ Unexpected subtest result in /css/css-grid/placement/grid-auto-flow-sparse-001.html:
+  │ FAIL [expected PASS] .grid 1
+  │   → assert_equals: 
+<div class="grid">
+        <div class="sizedToGridArea firstRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumnSpanning2" data-offset-x="150" data-offset-y="0" data-expected-width="350" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea autoRowAutoColumnSpanning2" data-offset-x="50" data-offset-y="50" data-expected-width="250" data-expected-height="100"></div>
+        <div class="sizedToGridArea autoRowAutoColumnSpanning2" data-offset-x="0" data-offset-y="150" data-expected-width="150" data-expected-height="150"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="150" data-offset-y="150" data-expected-width="150" data-expected-height="150"></div>
+    </div>
+width expected 100 but got 740
+  │ FAIL [expected PASS] .grid 2
+  │   → assert_equals: 
+<div class="grid">
+        <div class="sizedToGridArea autoRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumnSpanning2" data-offset-x="150" data-offset-y="0" data-expected-width="350" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea autoRowThirdColumn" data-offset-x="150" data-offset-y="50" data-expected-width="150" data-expected-height="100"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="300" data-offset-y="50" data-expected-width="200" data-expected-height="100"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="150" data-expected-width="50" data-expected-height="150"></div>
+        <div class="sizedToGridArea autoRowSpanning2AutoColumnSpanning3" data-offset-x="50" data-offset-y="150" data-expected-width="450" data-expected-height="350"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="300" data-expected-width="50" data-expected-height="200"></div>
+    </div>
+width expected 100 but got 740
+  │ FAIL [expected PASS] .grid 3
+  │   → assert_equals: 
+<div class="grid">
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea secondRowAutoColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea autoRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="150" data-expected-width="50" data-expected-height="150"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="50" data-offset-y="150" data-expected-width="100" data-expected-height="150"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 4
+  │   → assert_equals: 
+<div class="grid">
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="150" data-expected-width="50" data-expected-height="150"></div>
+        <div class="sizedToGridArea firstRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea secondRowAutoColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="50" data-offset-y="150" data-expected-width="100" data-expected-height="150"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 5
+  │   → assert_equals: 
+<div class="grid gridAutoFlowColumnSparse">
+        <div class="sizedToGridArea secondRowFirstColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea autoRowSpanning2AutoColumn" data-offset-x="0" data-offset-y="150" data-expected-width="50" data-expected-height="350"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="50" data-offset-y="0" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowSpanning2AutoColumn" data-offset-x="50" data-offset-y="50" data-expected-width="100" data-expected-height="250"></div>
+        <div class="sizedToGridArea autoRowSpanning2AutoColumn" data-offset-x="150" data-offset-y="0" data-expected-width="150" data-expected-height="150"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="150" data-offset-y="150" data-expected-width="150" data-expected-height="150"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 6
+  │   → assert_equals: 
+<div class="grid gridAutoFlowColumnSparse">
+        <div class="sizedToGridArea secondRowAutoColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea autoRowSpanning2AutoColumn" data-offset-x="0" data-offset-y="150" data-expected-width="50" data-expected-height="350"></div>
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="50" data-offset-y="0" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea thirdRowAutoColumn" data-offset-x="50" data-offset-y="150" data-expected-width="100" data-expected-height="150"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="50" data-offset-y="300" data-expected-width="100" data-expected-height="200"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="150" data-offset-y="0" data-expected-width="150" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowSpanning3AutoColumnSpanning2" data-offset-x="150" data-offset-y="50" data-expected-width="350" data-expected-height="450"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="300" data-offset-y="0" data-expected-width="200" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 7
+  │   → assert_equals: 
+<div class="grid gridAutoFlowColumnSparse">
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea secondRowAutoColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="150" data-offset-y="0" data-expected-width="150" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="150" data-offset-y="50" data-expected-width="150" data-expected-height="100"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 8
+  │   → assert_equals: 
+<div class="grid gridAutoFlowColumnSparse">
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="150" data-offset-y="0" data-expected-width="150" data-expected-height="50"></div>
+        <div class="sizedToGridArea secondRowFirstColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea autoRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="150" data-offset-y="50" data-expected-width="150" data-expected-height="100"></div>
+    </div>
+width expected 150 but got 740
+  │ 
+  │     at assert_tolerance (http://web-platform.test:8000/resources/check-layout-th.js:24:9)
+  │     at checkExpectedValues (http://web-platform.test:8000/resources/check-layout-th.js:72:9)
+  │     at checkSubtreeExpectedValues (http://web-platform.test:8000/resources/check-layout-th.js:7:25)
+  │     at http://web-platform.test:8000/resources/check-layout-th.js:9:26
+  └     at NodeList.forEach (<anonymous>)
+
+/Users/yoonhb/Documents/workspace/spinon/build/wpt-c124-source/_venv3/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+  ▶ Unexpected subtest result in /css/css-grid/placement/grid-auto-placement-fixed-row-column-001.html:
+  │ FAIL [expected PASS] .grid 1
+  │   → assert_equals: 
+<div class="grid gridAutoFlowRowSparse">
+        <div class="sizedToGridArea firstRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowAutoColumnSpanning2" data-offset-x="100" data-offset-y="0" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="200" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 2
+  │   → assert_equals: 
+<div class="grid gridAutoFlowRowSparse">
+        <div class="sizedToGridArea firstRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowFourthColumn" data-offset-x="150" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowAutoColumnSpanning2" data-offset-x="200" data-offset-y="0" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="300" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="350" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 3
+  │   → assert_equals: 
+<div class="grid gridAutoFlowRowSparse">
+        <div class="sizedToGridArea firstRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea secondRowFirstColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowSpanning2AutoColumn" data-offset-x="100" data-offset-y="0" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="150" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea secondRowAutoColumn" data-offset-x="50" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 4
+  │   → assert_equals: 
+<div class="grid gridAutoFlowRowSparse">
+        <div class="sizedToGridArea secondRowFirstColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea thirdRowSecondColumn" data-offset-x="50" data-offset-y="100" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea secondRowSpanning2AutoColumn" data-offset-x="100" data-offset-y="50" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea firstRowSpanning2AutoColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="100" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea thirdRowAutoColumn" data-offset-x="0" data-offset-y="100" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 5
+  │   → assert_equals: 
+<div class="grid gridAutoFlowRowDense">
+        <div class="sizedToGridArea firstRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowAutoColumnSpanning2" data-offset-x="100" data-offset-y="0" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 6
+  │   → assert_equals: 
+<div class="grid gridAutoFlowRowDense">
+        <div class="sizedToGridArea firstRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowFourthColumn" data-offset-x="150" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowAutoColumnSpanning2" data-offset-x="200" data-offset-y="0" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="100" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 7
+  │   → assert_equals: 
+<div class="grid gridAutoFlowRowDense">
+        <div class="sizedToGridArea firstRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea secondRowFirstColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowSpanning2AutoColumn" data-offset-x="100" data-offset-y="0" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea secondRowAutoColumn" data-offset-x="50" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="100" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 8
+  │   → assert_equals: 
+<div class="grid gridAutoFlowRowDense">
+        <div class="sizedToGridArea secondRowFirstColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea thirdRowSecondColumn" data-offset-x="50" data-offset-y="100" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea secondRowSpanning2AutoColumn" data-offset-x="100" data-offset-y="50" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea firstRowSpanning2AutoColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea thirdRowAutoColumn" data-offset-x="0" data-offset-y="100" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="100" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 9
+  │   → assert_equals: 
+<div class="grid gridAutoFlowColumnSparse">
+        <div class="sizedToGridArea secondRowFirstColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowSpanning2FirstColumn" data-offset-x="0" data-offset-y="100" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="200" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 10
+  │   → assert_equals: 
+<div class="grid gridAutoFlowColumnSparse">
+        <div class="sizedToGridArea secondRowFirstColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea fourthRowFirstColumn" data-offset-x="0" data-offset-y="150" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowSpanning2FirstColumn" data-offset-x="0" data-offset-y="200" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="300" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="350" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 11
+  │   → assert_equals: 
+<div class="grid gridAutoFlowColumnSparse">
+        <div class="sizedToGridArea secondRowFirstColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowFirstColumnSpanning2" data-offset-x="0" data-offset-y="100" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="150" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowSecondColumn" data-offset-x="50" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 12
+  │   → assert_equals: 
+<div class="grid gridAutoFlowColumnSparse">
+        <div class="sizedToGridArea firstRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea secondRowThirdColumn" data-offset-x="100" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowSecondColumnSpanning2" data-offset-x="50" data-offset-y="100" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowFirstColumnSpanning2" data-offset-x="0" data-offset-y="50" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="100" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowThirdColumn" data-offset-x="100" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 13
+  │   → assert_equals: 
+<div class="grid gridAutoFlowColumnDense">
+        <div class="sizedToGridArea secondRowFirstColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowSpanning2FirstColumn" data-offset-x="0" data-offset-y="100" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 14
+  │   → assert_equals: 
+<div class="grid gridAutoFlowColumnDense">
+        <div class="sizedToGridArea secondRowFirstColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea fourthRowFirstColumn" data-offset-x="0" data-offset-y="150" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowSpanning2FirstColumn" data-offset-x="0" data-offset-y="200" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="100" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 15
+  │   → assert_equals: 
+<div class="grid gridAutoFlowColumnDense">
+        <div class="sizedToGridArea secondRowFirstColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowFirstColumnSpanning2" data-offset-x="0" data-offset-y="100" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowSecondColumn" data-offset-x="50" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="100" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 16
+  │   → assert_equals: 
+<div class="grid gridAutoFlowColumnDense">
+        <div class="sizedToGridArea firstRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea secondRowThirdColumn" data-offset-x="100" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowSecondColumnSpanning2" data-offset-x="50" data-offset-y="100" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowFirstColumnSpanning2" data-offset-x="0" data-offset-y="50" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowThirdColumn" data-offset-x="100" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="100" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ 
+  │     at assert_tolerance (http://web-platform.test:8000/resources/check-layout-th.js:24:9)
+  │     at checkExpectedValues (http://web-platform.test:8000/resources/check-layout-th.js:72:9)
+  │     at checkSubtreeExpectedValues (http://web-platform.test:8000/resources/check-layout-th.js:7:25)
+  │     at http://web-platform.test:8000/resources/check-layout-th.js:9:26
+  └     at NodeList.forEach (<anonymous>)
+
+/Users/yoonhb/Documents/workspace/spinon/build/wpt-c124-source/_venv3/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+  /css/css-grid/placement/grid-auto-placement-implicit-tracks-001.html
+
+Ran 3 tests finished in 3.1 seconds.
+  • 1 ran as expected. 0 tests skipped.
+  • 2 tests had unexpected subtest results
+
+Tests with unexpected results:
+  ▶ Unexpected subtest result in /css/css-grid/placement/grid-auto-flow-sparse-001.html:
+  │ FAIL [expected PASS] .grid 1
+  │   → assert_equals: 
+<div class="grid">
+        <div class="sizedToGridArea firstRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumnSpanning2" data-offset-x="150" data-offset-y="0" data-expected-width="350" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea autoRowAutoColumnSpanning2" data-offset-x="50" data-offset-y="50" data-expected-width="250" data-expected-height="100"></div>
+        <div class="sizedToGridArea autoRowAutoColumnSpanning2" data-offset-x="0" data-offset-y="150" data-expected-width="150" data-expected-height="150"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="150" data-offset-y="150" data-expected-width="150" data-expected-height="150"></div>
+    </div>
+width expected 100 but got 740
+  │ FAIL [expected PASS] .grid 2
+  │   → assert_equals: 
+<div class="grid">
+        <div class="sizedToGridArea autoRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumnSpanning2" data-offset-x="150" data-offset-y="0" data-expected-width="350" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea autoRowThirdColumn" data-offset-x="150" data-offset-y="50" data-expected-width="150" data-expected-height="100"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="300" data-offset-y="50" data-expected-width="200" data-expected-height="100"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="150" data-expected-width="50" data-expected-height="150"></div>
+        <div class="sizedToGridArea autoRowSpanning2AutoColumnSpanning3" data-offset-x="50" data-offset-y="150" data-expected-width="450" data-expected-height="350"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="300" data-expected-width="50" data-expected-height="200"></div>
+    </div>
+width expected 100 but got 740
+  │ FAIL [expected PASS] .grid 3
+  │   → assert_equals: 
+<div class="grid">
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea secondRowAutoColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea autoRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="150" data-expected-width="50" data-expected-height="150"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="50" data-offset-y="150" data-expected-width="100" data-expected-height="150"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 4
+  │   → assert_equals: 
+<div class="grid">
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="150" data-expected-width="50" data-expected-height="150"></div>
+        <div class="sizedToGridArea firstRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea secondRowAutoColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="50" data-offset-y="150" data-expected-width="100" data-expected-height="150"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 5
+  │   → assert_equals: 
+<div class="grid gridAutoFlowColumnSparse">
+        <div class="sizedToGridArea secondRowFirstColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea autoRowSpanning2AutoColumn" data-offset-x="0" data-offset-y="150" data-expected-width="50" data-expected-height="350"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="50" data-offset-y="0" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowSpanning2AutoColumn" data-offset-x="50" data-offset-y="50" data-expected-width="100" data-expected-height="250"></div>
+        <div class="sizedToGridArea autoRowSpanning2AutoColumn" data-offset-x="150" data-offset-y="0" data-expected-width="150" data-expected-height="150"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="150" data-offset-y="150" data-expected-width="150" data-expected-height="150"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 6
+  │   → assert_equals: 
+<div class="grid gridAutoFlowColumnSparse">
+        <div class="sizedToGridArea secondRowAutoColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea autoRowSpanning2AutoColumn" data-offset-x="0" data-offset-y="150" data-expected-width="50" data-expected-height="350"></div>
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="50" data-offset-y="0" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea thirdRowAutoColumn" data-offset-x="50" data-offset-y="150" data-expected-width="100" data-expected-height="150"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="50" data-offset-y="300" data-expected-width="100" data-expected-height="200"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="150" data-offset-y="0" data-expected-width="150" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowSpanning3AutoColumnSpanning2" data-offset-x="150" data-offset-y="50" data-expected-width="350" data-expected-height="450"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="300" data-offset-y="0" data-expected-width="200" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 7
+  │   → assert_equals: 
+<div class="grid gridAutoFlowColumnSparse">
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea secondRowAutoColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="150" data-offset-y="0" data-expected-width="150" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="150" data-offset-y="50" data-expected-width="150" data-expected-height="100"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 8
+  │   → assert_equals: 
+<div class="grid gridAutoFlowColumnSparse">
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="150" data-offset-y="0" data-expected-width="150" data-expected-height="50"></div>
+        <div class="sizedToGridArea secondRowFirstColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea autoRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="150" data-offset-y="50" data-expected-width="150" data-expected-height="100"></div>
+    </div>
+width expected 150 but got 740
+  │ 
+  │     at assert_tolerance (http://web-platform.test:8000/resources/check-layout-th.js:24:9)
+  │     at checkExpectedValues (http://web-platform.test:8000/resources/check-layout-th.js:72:9)
+  │     at checkSubtreeExpectedValues (http://web-platform.test:8000/resources/check-layout-th.js:7:25)
+  │     at http://web-platform.test:8000/resources/check-layout-th.js:9:26
+  └     at NodeList.forEach (<anonymous>)
+
+  ▶ Unexpected subtest result in /css/css-grid/placement/grid-auto-placement-fixed-row-column-001.html:
+  │ FAIL [expected PASS] .grid 1
+  │   → assert_equals: 
+<div class="grid gridAutoFlowRowSparse">
+        <div class="sizedToGridArea firstRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowAutoColumnSpanning2" data-offset-x="100" data-offset-y="0" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="200" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 2
+  │   → assert_equals: 
+<div class="grid gridAutoFlowRowSparse">
+        <div class="sizedToGridArea firstRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowFourthColumn" data-offset-x="150" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowAutoColumnSpanning2" data-offset-x="200" data-offset-y="0" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="300" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="350" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 3
+  │   → assert_equals: 
+<div class="grid gridAutoFlowRowSparse">
+        <div class="sizedToGridArea firstRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea secondRowFirstColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowSpanning2AutoColumn" data-offset-x="100" data-offset-y="0" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="150" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea secondRowAutoColumn" data-offset-x="50" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 4
+  │   → assert_equals: 
+<div class="grid gridAutoFlowRowSparse">
+        <div class="sizedToGridArea secondRowFirstColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea thirdRowSecondColumn" data-offset-x="50" data-offset-y="100" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea secondRowSpanning2AutoColumn" data-offset-x="100" data-offset-y="50" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea firstRowSpanning2AutoColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="100" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea thirdRowAutoColumn" data-offset-x="0" data-offset-y="100" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 5
+  │   → assert_equals: 
+<div class="grid gridAutoFlowRowDense">
+        <div class="sizedToGridArea firstRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowAutoColumnSpanning2" data-offset-x="100" data-offset-y="0" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 6
+  │   → assert_equals: 
+<div class="grid gridAutoFlowRowDense">
+        <div class="sizedToGridArea firstRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowFourthColumn" data-offset-x="150" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowAutoColumnSpanning2" data-offset-x="200" data-offset-y="0" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="100" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 7
+  │   → assert_equals: 
+<div class="grid gridAutoFlowRowDense">
+        <div class="sizedToGridArea firstRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea secondRowFirstColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowSpanning2AutoColumn" data-offset-x="100" data-offset-y="0" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea secondRowAutoColumn" data-offset-x="50" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="100" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 8
+  │   → assert_equals: 
+<div class="grid gridAutoFlowRowDense">
+        <div class="sizedToGridArea secondRowFirstColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea thirdRowSecondColumn" data-offset-x="50" data-offset-y="100" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea secondRowSpanning2AutoColumn" data-offset-x="100" data-offset-y="50" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea firstRowSpanning2AutoColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea firstRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea thirdRowAutoColumn" data-offset-x="0" data-offset-y="100" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="100" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 9
+  │   → assert_equals: 
+<div class="grid gridAutoFlowColumnSparse">
+        <div class="sizedToGridArea secondRowFirstColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowSpanning2FirstColumn" data-offset-x="0" data-offset-y="100" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="200" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 10
+  │   → assert_equals: 
+<div class="grid gridAutoFlowColumnSparse">
+        <div class="sizedToGridArea secondRowFirstColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea fourthRowFirstColumn" data-offset-x="0" data-offset-y="150" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowSpanning2FirstColumn" data-offset-x="0" data-offset-y="200" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="300" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="350" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 11
+  │   → assert_equals: 
+<div class="grid gridAutoFlowColumnSparse">
+        <div class="sizedToGridArea secondRowFirstColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowFirstColumnSpanning2" data-offset-x="0" data-offset-y="100" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="150" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowSecondColumn" data-offset-x="50" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 12
+  │   → assert_equals: 
+<div class="grid gridAutoFlowColumnSparse">
+        <div class="sizedToGridArea firstRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea secondRowThirdColumn" data-offset-x="100" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowSecondColumnSpanning2" data-offset-x="50" data-offset-y="100" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowFirstColumnSpanning2" data-offset-x="0" data-offset-y="50" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="100" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowThirdColumn" data-offset-x="100" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 13
+  │   → assert_equals: 
+<div class="grid gridAutoFlowColumnDense">
+        <div class="sizedToGridArea secondRowFirstColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowSpanning2FirstColumn" data-offset-x="0" data-offset-y="100" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 14
+  │   → assert_equals: 
+<div class="grid gridAutoFlowColumnDense">
+        <div class="sizedToGridArea secondRowFirstColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea fourthRowFirstColumn" data-offset-x="0" data-offset-y="150" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowSpanning2FirstColumn" data-offset-x="0" data-offset-y="200" data-expected-width="50" data-expected-height="100"></div>
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="100" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 15
+  │   → assert_equals: 
+<div class="grid gridAutoFlowColumnDense">
+        <div class="sizedToGridArea secondRowFirstColumn" data-offset-x="0" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea firstRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowFirstColumnSpanning2" data-offset-x="0" data-offset-y="100" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowSecondColumn" data-offset-x="50" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="100" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ FAIL [expected PASS] .grid 16
+  │   → assert_equals: 
+<div class="grid gridAutoFlowColumnDense">
+        <div class="sizedToGridArea firstRowSecondColumn" data-offset-x="50" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea secondRowThirdColumn" data-offset-x="100" data-offset-y="50" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowSecondColumnSpanning2" data-offset-x="50" data-offset-y="100" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowFirstColumnSpanning2" data-offset-x="0" data-offset-y="50" data-expected-width="100" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowFirstColumn" data-offset-x="0" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowThirdColumn" data-offset-x="100" data-offset-y="0" data-expected-width="50" data-expected-height="50"></div>
+        <div class="sizedToGridArea autoRowAutoColumn" data-offset-x="0" data-offset-y="100" data-expected-width="50" data-expected-height="50"></div>
+    </div>
+width expected 50 but got 740
+  │ 
+  │     at assert_tolerance (http://web-platform.test:8000/resources/check-layout-th.js:24:9)
+  │     at checkExpectedValues (http://web-platform.test:8000/resources/check-layout-th.js:72:9)
+  │     at checkSubtreeExpectedValues (http://web-platform.test:8000/resources/check-layout-th.js:7:25)
+  │     at http://web-platform.test:8000/resources/check-layout-th.js:9:26
+  └     at NodeList.forEach (<anonymous>)
+

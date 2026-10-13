@@ -48,6 +48,7 @@ use cache::RuntimeStyleCacheEntry;
 use calculation::{
     RuntimeCalculation, compute_request, compute_request_for_block_flex_grid,
     compute_request_for_block_flex_grid_auto_placement,
+    compute_request_for_block_flex_grid_dense_auto_placement,
     compute_request_for_block_flex_grid_placement, compute_request_for_block_flex_stacking,
     compute_request_for_block_formatting, compute_request_for_block_paint,
     compute_request_for_block_positioning, compute_request_for_registered_properties_gpu,
@@ -247,6 +248,12 @@ impl RuntimeUaCascadeCoordinator {
 
     pub(super) fn new_runtime_gpu_block_flex_grid_auto_placement() -> Result<Self, String> {
         Self::new_with_computer(Arc::new(compute_request_for_block_flex_grid_auto_placement))
+    }
+
+    pub(super) fn new_runtime_gpu_block_flex_grid_dense_auto_placement() -> Result<Self, String> {
+        Self::new_with_computer(Arc::new(
+            compute_request_for_block_flex_grid_dense_auto_placement,
+        ))
     }
 
     fn new_with_computer(compute: Arc<CascadeComputer>) -> Result<Self, String> {

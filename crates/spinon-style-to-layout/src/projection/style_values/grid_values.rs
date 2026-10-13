@@ -1,10 +1,11 @@
 use spinon_core::NodeId;
 use spinon_layout::{
-    GridAutoFlow, GridAutoRows, GridContainerInput, GridPlacementMode, GridTrackSize,
+    GridAutoColumns, GridAutoFlow, GridAutoRows, GridContainerInput, GridPlacementMode,
+    GridTrackSize,
 };
 use spinon_style::{
-    ComputedCssGridAutoFlow, ComputedCssGridAutoRows, ComputedCssGridLayout,
-    ComputedCssGridTrackSize, ComputedStyleProfile,
+    ComputedCssGridAutoColumns, ComputedCssGridAutoFlow, ComputedCssGridAutoRows,
+    ComputedCssGridLayout, ComputedCssGridTrackSize, ComputedStyleProfile,
 };
 
 use crate::StyleLayoutError;
@@ -28,6 +29,8 @@ fn project_grid_layout_with_reservation(
     let columns = project_tracks(&grid.columns, node, "grid-template-columns", &mut reserve)?;
     let rows = project_tracks(&grid.rows, node, "grid-template-rows", &mut reserve)?;
     let sparse_row = profile == ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1;
+    let dense_auto_placement =
+        profile == ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1;
     Ok(GridContainerInput {
         columns,
         rows,
@@ -37,10 +40,15 @@ fn project_grid_layout_with_reservation(
             ComputedCssGridAutoFlow::RowDense => GridAutoFlow::RowDense,
             ComputedCssGridAutoFlow::ColumnDense => GridAutoFlow::ColumnDense,
         },
-        auto_rows: if sparse_row {
+        auto_rows: if sparse_row || dense_auto_placement {
             project_auto_rows(node, &grid.auto_rows)?
         } else {
             GridAutoRows::Auto
+        },
+        auto_columns: if dense_auto_placement {
+            project_auto_columns(node, &grid.auto_columns)?
+        } else {
+            GridAutoColumns::Auto
         },
         placement_mode: match profile {
             ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1 => {
@@ -49,9 +57,29 @@ fn project_grid_layout_with_reservation(
             ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1 => {
                 GridPlacementMode::SparseRow
             }
+            ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1 => {
+                GridPlacementMode::DenseAutoPlacement
+            }
             _ => GridPlacementMode::Existing,
         },
     })
+}
+
+fn project_auto_columns(
+    node: NodeId,
+    auto_columns: &ComputedCssGridAutoColumns,
+) -> Result<GridAutoColumns, StyleLayoutError> {
+    match auto_columns {
+        ComputedCssGridAutoColumns::Auto => Ok(GridAutoColumns::Auto),
+        ComputedCssGridAutoColumns::LengthPx(value) => Ok(GridAutoColumns::LengthPx(*value)),
+        ComputedCssGridAutoColumns::Unsupported(value) => {
+            Err(StyleLayoutError::UnsupportedComputedValue {
+                node,
+                property: "grid-auto-columns",
+                value: value.clone(),
+            })
+        }
+    }
 }
 
 fn project_auto_rows(
@@ -111,6 +139,7 @@ mod tests {
             rows: vec![ComputedCssGridTrackSize::LengthPx(40.0)],
             auto_flow: ComputedCssGridAutoFlow::Row,
             auto_rows: ComputedCssGridAutoRows::Auto,
+            auto_columns: spinon_style::ComputedCssGridAutoColumns::Auto,
         };
         let mut calls = 0;
         let error = project_grid_layout_with_reservation(

@@ -662,6 +662,25 @@ NSUInteger C10LogNodeFrames(NSString *report, const char *label) {
 #endif
 }
 
++ (uint64_t)createRuntimeGpuHostWithC11_2_3GridAutoPlacementFixture {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  std::array<char, 1024> output{};
+  SpinonRuntimeGpuHost *host =
+      spinon_runtime_gpu_host_new_c11_2_3_grid_auto_placement_fixture(
+          output.data(), output.size());
+  if (host == nullptr) {
+    os_log_error(OS_LOG_DEFAULT, "SPINON_C1123_GRID_HOST_ERROR=%{public}s",
+                 output.data());
+    return 0;
+  }
+  os_log(OS_LOG_DEFAULT, "SPINON_C1123_GRID_HOST=%{public}s", output.data());
+  return static_cast<uint64_t>(reinterpret_cast<uintptr_t>(host));
+#else
+  os_log_error(OS_LOG_DEFAULT,
+               "SPINON_C1123_GRID_DISABLED rebuild with SPINON_ENABLE_C04_RUNTIME_GPU=1");
+  return 0;
+#endif
+}
 
 + (uint64_t)createRuntimeGpuHostWithC11_1GridSurfacePixelReadbackFixture {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
@@ -1240,6 +1259,32 @@ NSUInteger C10LogNodeFrames(NSString *report, const char *label) {
 #endif
 }
 
++ (NSString *)evalRuntimeGpuC11_2_3GridAutoPlacementFixture:(uint64_t)handle
+                                                    sceneID:(NSString *)sceneID
+                                                      runID:(NSString *)runID {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  const char *scene_id = sceneID.UTF8String;
+  if (scene_id == nullptr) return @"status=-1 invalid-scene-id";
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 32768> output{};
+  const int32_t status =
+      spinon_runtime_gpu_host_eval_c11_2_3_grid_auto_placement_fixture(
+          host, scene_id, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  NSString *runReport = [NSString stringWithFormat:@"run_id=%@ scene_id=%@ %@",
+                                                   runID ?: @"missing", sceneID, report];
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C1123_GRID_EVAL", runReport);
+  if (status == 0) C10LogNodeFrames(report, "SPINON_C1123_GRID_NODE_FRAME");
+  return report;
+#else
+  (void)handle;
+  (void)sceneID;
+  (void)runID;
+  return @"status=-90 feature-disabled";
+#endif
+}
 
 + (NSString *)evalRuntimeGpuC12_4Source:(uint64_t)handle source:(NSString *)source {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
@@ -1653,6 +1698,29 @@ NSUInteger C10LogNodeFrames(NSString *report, const char *label) {
 #endif
 }
 
++ (NSString *)requestRuntimeGpuC11_2_3GridSurfacePixelsForTest:(uint64_t)handle
+                                                       sampleXY:(const uint32_t *)sampleXY
+                                                    sampleCount:(NSUInteger)sampleCount {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST) && \
+    SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 16384> output{};
+  const int32_t status =
+      spinon_runtime_gpu_host_request_c11_2_3_grid_surface_pixels_for_test(
+          host, sampleXY, sampleCount, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C1123_METAL_PIXEL_REQUEST", report);
+  return report;
+#else
+  (void)handle;
+  (void)sampleXY;
+  (void)sampleCount;
+  return @"status=-90 C11.2.3 Metal surface pixel fixture is not enabled";
+#endif
+}
 
 + (NSString *)injectNextRuntimeGpuDrawFailure:(uint64_t)handle {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \

@@ -10,12 +10,15 @@ use crate::{
 
 #[path = "grid_auto_placement/axis.rs"]
 mod axis;
+#[path = "grid_auto_placement/dense_column.rs"]
+mod dense_column;
 #[path = "grid_auto_placement/occupancy.rs"]
 mod occupancy;
 #[path = "grid_auto_placement/reservation.rs"]
 mod reservation;
 
 use axis::{AxisPlacement, resolve_axis};
+pub(crate) use dense_column::normalize_dense_grid_container;
 use occupancy::Occupancy;
 use reservation::{GridReservationSite, reserve_exact};
 

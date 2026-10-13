@@ -9,8 +9,10 @@ use std::time::Duration;
 
 mod c11;
 mod c11_2_2;
+mod c11_2_3;
 pub(crate) use c11::{c11_2_1_grid_placement_runtime_source, c11_grid_runtime_scene};
 pub(crate) use c11_2_2::c11_2_2_grid_auto_placement_runtime_source;
+pub(crate) use c11_2_3::c11_2_3_grid_auto_placement_runtime_source;
 
 const ERR_ARGUMENT: i32 = -1;
 const ERR_TIMEOUT: i32 = -10;
@@ -293,6 +295,18 @@ impl RuntimeGpuHost {
     fn new_c11_2_2_grid_auto_placement_fixture() -> Result<(Self, String), String> {
         let (session, report) =
             RuntimeSession::new_runtime_gpu_block_flex_grid_auto_placement_fixture()?;
+        let mut host = Self::from_session_with_frame_report(session);
+        host.include_paint_order_report = true;
+        #[cfg(feature = "c11-grid-metal-surface-pixels-test")]
+        {
+            host.surface_pixel_readback_test = true;
+        }
+        Ok((host, report))
+    }
+
+    fn new_c11_2_3_grid_auto_placement_fixture() -> Result<(Self, String), String> {
+        let (session, report) =
+            RuntimeSession::new_runtime_gpu_block_flex_grid_dense_auto_placement_fixture()?;
         let mut host = Self::from_session_with_frame_report(session);
         host.include_paint_order_report = true;
         #[cfg(feature = "c11-grid-metal-surface-pixels-test")]

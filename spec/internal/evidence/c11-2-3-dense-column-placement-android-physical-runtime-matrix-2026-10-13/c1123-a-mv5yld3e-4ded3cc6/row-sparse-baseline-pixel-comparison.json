@@ -1,0 +1,112 @@
+{
+  "status": "matched",
+  "scene": "row-sparse-baseline",
+  "runID": "c1123-a-mv5yld3e-4ded3cc6-row-sparse-baseline",
+  "processId": 27662,
+  "markerPrefix": "C1123",
+  "surfaceGeneration": 2,
+  "density": 2.8125,
+  "surface": [
+    900,
+    675
+  ],
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "scale": [
+    2.8125,
+    2.8125
+  ],
+  "expectedSamples": 5,
+  "matchedSamples": 5,
+  "maximumChannelError": 0,
+  "pngSha256": "a77f2e9ef9fd7b5f14a54af7a0f140b966dc75ad7e175e9c47346132d76bd71a",
+  "samples": [
+    {
+      "id": "item-c1123-row-sparse-baseline-auto-a",
+      "css": [
+        28,
+        28
+      ],
+      "pixel": [
+        80,
+        80
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ]
+    },
+    {
+      "id": "item-c1123-row-sparse-baseline-span-two",
+      "css": [
+        61,
+        52
+      ],
+      "pixel": [
+        172,
+        147
+      ],
+      "rgba": [
+        135,
+        88,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "item-c1123-row-sparse-baseline-fixed-cell",
+      "css": [
+        72,
+        28
+      ],
+      "pixel": [
+        203,
+        80
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ]
+    },
+    {
+      "id": "item-c1123-row-sparse-baseline-auto-b",
+      "css": [
+        116,
+        52
+      ],
+      "pixel": [
+        327,
+        147
+      ],
+      "rgba": [
+        25,
+        169,
+        116,
+        255
+      ]
+    },
+    {
+      "id": "gap-column-c1123-row-sparse-baseline-grid",
+      "css": [
+        61,
+        29
+      ],
+      "pixel": [
+        172,
+        82
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    }
+  ]
+}

@@ -7,6 +7,7 @@ pub(crate) enum GridReservationSite {
     VisibleItemList,
     RowLockedCursor,
     ExpandedRows,
+    ExpandedColumns,
     OccupancyRows,
     OccupancyIntervals,
 }

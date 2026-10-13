@@ -1,0 +1,112 @@
+{
+  "status": "matched",
+  "scene": "column-sparse-hole-control",
+  "runID": "c1123-a-mv5yld3e-4ded3cc6-column-sparse-hole-control",
+  "processId": 29720,
+  "markerPrefix": "C1123",
+  "surfaceGeneration": 2,
+  "density": 2.8125,
+  "surface": [
+    900,
+    675
+  ],
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "scale": [
+    2.8125,
+    2.8125
+  ],
+  "expectedSamples": 5,
+  "matchedSamples": 5,
+  "maximumChannelError": 0,
+  "pngSha256": "d90d89655ebe1d6bc28ba8b7cbfb0596949ae12829ddfadaa123d1c3f0e20cc8",
+  "samples": [
+    {
+      "id": "item-c1123-column-sparse-hole-control-span-a",
+      "css": [
+        28,
+        41
+      ],
+      "pixel": [
+        80,
+        116
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ]
+    },
+    {
+      "id": "item-c1123-column-sparse-hole-control-span-b",
+      "css": [
+        76,
+        41
+      ],
+      "pixel": [
+        215,
+        116
+      ],
+      "rgba": [
+        135,
+        88,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "item-c1123-column-sparse-hole-control-small-c",
+      "css": [
+        76,
+        84
+      ],
+      "pixel": [
+        215,
+        237
+      ],
+      "rgba": [
+        25,
+        169,
+        116,
+        255
+      ]
+    },
+    {
+      "id": "gap-column-c1123-column-sparse-hole-control-grid",
+      "css": [
+        63,
+        29
+      ],
+      "pixel": [
+        178,
+        82
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    },
+    {
+      "id": "gap-row-c1123-column-sparse-hole-control-grid",
+      "css": [
+        39,
+        43
+      ],
+      "pixel": [
+        111,
+        122
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    }
+  ]
+}

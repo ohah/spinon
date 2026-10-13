@@ -9,6 +9,7 @@ use spinon_style::{
     first_unsupported_runtime_block_display_inline_value,
     first_unsupported_runtime_block_display_stylesheet_value,
     first_unsupported_runtime_block_flex_grid_auto_placement_inline_property,
+    first_unsupported_runtime_block_flex_grid_dense_auto_placement_inline_property,
     first_unsupported_runtime_block_flex_grid_inline_property,
     first_unsupported_runtime_block_paint_inline_property,
     first_unsupported_runtime_block_positioning_inline_property,
@@ -189,6 +190,9 @@ pub(super) fn compute_runtime_layout(
         }
         super::calculation::RuntimeCalculationProfile::BlockFlexGridAutoPlacement => {
             first_unsupported_runtime_block_flex_grid_auto_placement_inline_property(&view)
+        }
+        super::calculation::RuntimeCalculationProfile::BlockFlexGridDenseAutoPlacement => {
+            first_unsupported_runtime_block_flex_grid_dense_auto_placement_inline_property(&view)
         }
         super::calculation::RuntimeCalculationProfile::FlexPaint
         | super::calculation::RuntimeCalculationProfile::RegisteredPropertiesPaint => {
@@ -377,6 +381,13 @@ fn layout_failure_from_error(error: StyleLayoutError) -> RuntimeLayoutFailure {
                 Some("grid-auto-rows".to_owned()),
             )
         }
+        StyleLayoutError::Layout(LayoutError::UnsupportedGridAutoColumns { node, .. }) => {
+            layout_failure(
+                "unsupported_grid_auto_columns",
+                Some(node.get()),
+                Some("grid-auto-columns".to_owned()),
+            )
+        }
         StyleLayoutError::Layout(LayoutError::GridTrackLimitExceeded {
             node,
             property,
@@ -510,6 +521,14 @@ mod tests {
                 }),
                 "unsupported_grid_auto_rows",
                 "grid-auto-rows",
+            ),
+            (
+                StyleLayoutError::Layout(LayoutError::UnsupportedGridAutoColumns {
+                    node,
+                    reason: "암시 열에 auto sizing이 필요합니다",
+                }),
+                "unsupported_grid_auto_columns",
+                "grid-auto-columns",
             ),
             (
                 StyleLayoutError::Layout(LayoutError::GridTrackLimitExceeded {

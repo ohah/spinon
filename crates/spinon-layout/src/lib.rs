@@ -30,8 +30,8 @@ pub const MAX_LAYOUT_TREE_DEPTH: usize = 1_024;
 pub use css_math::{LayoutCalcId, LayoutCssMath, LayoutCssMathProperty, LayoutCssMathValue};
 pub use error::LayoutError;
 pub use grid::{
-    GridAutoFlow, GridAutoRows, GridAutoTrackSize, GridContainerInput, GridPlacementMode,
-    GridTrackSize,
+    GridAutoColumns, GridAutoFlow, GridAutoRows, GridAutoTrackSize, GridContainerInput,
+    GridPlacementMode, GridTrackSize,
 };
 pub use grid_placement::{GridItemInput, GridPlacementInput};
 pub use revision::{LayoutInputRevision, LayoutSourceRevision};

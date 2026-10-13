@@ -67,6 +67,7 @@ fn grid_input(
                 rows,
                 auto_flow: GridAutoFlow::Row,
                 auto_rows: GridAutoRows::Auto,
+                auto_columns: crate::GridAutoColumns::Auto,
                 placement_mode: GridPlacementMode::Existing,
             },
         )]),
@@ -160,6 +161,7 @@ fn nested_grid_containers_classify_auto_and_explicit_items_independently() {
             rows: vec![GridTrackSize::LengthPx(120.0)],
             auto_flow: GridAutoFlow::Row,
             auto_rows: GridAutoRows::Auto,
+            auto_columns: crate::GridAutoColumns::Auto,
             placement_mode: GridPlacementMode::Existing,
         },
     );

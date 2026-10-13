@@ -14,6 +14,7 @@ mod c10_3_5;
 mod c11;
 mod c11_2_1;
 mod c11_2_2;
+mod c11_2_3;
 mod c12;
 mod surface;
 
@@ -284,6 +285,31 @@ pub unsafe extern "C" fn spinon_runtime_gpu_host_new_c11_2_2_grid_auto_placement
         return ptr::null_mut();
     }
     let (host, report) = match RuntimeGpuHost::new_c11_2_2_grid_auto_placement_fixture() {
+        Ok(host) => host,
+        Err(error) => {
+            crate::write_report(output, output_capacity, &error);
+            return ptr::null_mut();
+        }
+    };
+    if !crate::write_report(output, output_capacity, &report) {
+        return ptr::null_mut();
+    }
+    Box::into_raw(Box::new(host)).cast::<SpinonRuntimeGpuHost>()
+}
+
+#[unsafe(no_mangle)]
+/// C11.2.3 dense·column Grid auto-placement fixture 전용 V8·Stylo·Taffy·WGPU host입니다.
+///
+/// # Safety
+/// `output`은 `output_capacity` 바이트를 쓸 수 있어야 합니다.
+pub unsafe extern "C" fn spinon_runtime_gpu_host_new_c11_2_3_grid_auto_placement_fixture(
+    output: *mut c_char,
+    output_capacity: usize,
+) -> *mut SpinonRuntimeGpuHost {
+    if output.is_null() || output_capacity == 0 {
+        return ptr::null_mut();
+    }
+    let (host, report) = match RuntimeGpuHost::new_c11_2_3_grid_auto_placement_fixture() {
         Ok(host) => host,
         Err(error) => {
             crate::write_report(output, output_capacity, &error);

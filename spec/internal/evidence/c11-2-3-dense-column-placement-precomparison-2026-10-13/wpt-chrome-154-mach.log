@@ -1,0 +1,79 @@
+ 0:00.00 INFO Set tests_root to /Users/yoonhb/Documents/workspace/spinon/build/wpt-c124-source
+ 0:00.00 INFO Set metadata_root to /Users/yoonhb/Documents/workspace/spinon/build/wpt-c124-source
+ 0:00.00 INFO Set manifest_update to True
+ 0:00.01 INFO Interpreting channel 'nightly' as 'canary'
+ 0:00.47 INFO Mojo bindings already up to date
+ 0:00.47 INFO MojoJS enabled automatically (mojojs_path: /Users/yoonhb/Documents/workspace/spinon/build/wpt-c124-source/_venv3/mojojs/gen)
+ 0:00.47 INFO Automatically turning on experimental features
+ 0:01.60 wptserve INFO Starting https server on https://127.0.0.1:8000
+ 0:01.60 wptserve INFO Starting https server on https://127.0.0.1:8002
+ 0:01.60 wptserve INFO Starting https server on https://127.0.0.1:8001
+ 0:01.60 wptserve INFO Create socket on: (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('127.0.0.1', 8888))
+ 0:01.60 wptserve INFO Bind on: (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('127.0.0.1', 8888))
+ 0:01.60 wptserve INFO Listen on: (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('127.0.0.1', 8888))
+ 0:01.60 wptserve INFO Starting https server on https://127.0.0.1:8443
+ 0:01.61 wptserve INFO Starting https server on https://127.0.0.1:8445
+ 0:01.61 wptserve INFO Create socket on: (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('127.0.0.1', 8889))
+ 0:01.61 wptserve INFO Starting https server on https://127.0.0.1:8003
+ 0:01.61 wptserve INFO Starting https server on https://127.0.0.1:8444
+ 0:01.61 wptserve INFO Bind on: (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('127.0.0.1', 8889))
+ 0:01.61 wptserve INFO Listen on: (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('127.0.0.1', 8889))
+ 0:01.61 wptserve INFO Starting http2 server on https://127.0.0.1:9000
+ 0:01.62 wptserve INFO Starting https server on https://127.0.0.1:8446
+ 0:01.66 wptserve INFO Starting WebTransport over HTTP/3 server on 127.0.0.1:11000
+ 0:02.13 SUITE_START: web-platform-test - running 3 tests
+ 0:02.13 INFO Using 1 child processes
+ 0:02.13 INFO Starting WebDriver: /Users/yoonhb/Documents/workspace/spinon/build/wpt-c124-tools/chrome/chromedriver --port=61282 --ignore-explicit-port --url-base=/ --enable-chrome-logs --disable-build-check
+ 0:02.16 INFO Got WebDriver port 61283
+ 0:02.24 pid:13748 Full command: /Users/yoonhb/Documents/workspace/spinon/build/wpt-c124-tools/chrome/chromedriver --port=61282 --ignore-explicit-port --url-base=/ --enable-chrome-logs --disable-build-check
+pid:13748 Starting ChromeDriver 154.0.8037.92 (334b65d254ccc35df4fca82706d1753227b01039-refs/branch-heads/8037@{#1589}) on port 0
+ 0:02.24 pid:13748 Only local connections are allowed.
+ 0:02.24 pid:13748 Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ 0:02.24 pid:13748 ChromeDriver was started successfully on port 61283.
+ 0:02.24 INFO Webdriver started successfully.
+ 0:02.24 INFO Starting runner
+ 0:02.62 pid:13748 [13752:7181031:1013/080845.782838:INFO:components/enterprise/browser/controller/chrome_browser_cloud_management_controller.cc:241] No machine level policy manager exists.
+ 0:02.76 pid:13748 Trying to load the allocator multiple times. This is *not* supported.
+ 0:02.81 pid:13748 [1791846525.957][WARNING]: You are using an unsupported command-line switch: --disable-build-check. Please don't report bugs that cannot be reproduced with this switch removed.
+ 0:02.81 pid:13748 [13765:7181147:1013/080845.958409:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:02.81 pid:13748 [13765:7181223:1013/080845.958632:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:02.81 pid:13748 [13765:7181147:1013/080845.959197:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:02.81 pid:13748 [13765:7181223:1013/080845.959259:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:02.81 pid:13748 [13765:7181147:1013/080845.959578:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:02.81 pid:13748 [13765:7181223:1013/080845.959632:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:02.81 pid:13748 [13765:7181147:1013/080845.959894:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:02.81 pid:13748 [13765:7181223:1013/080845.959961:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:02.81 pid:13748 [13765:7181147:1013/080845.960073:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:02.81 pid:13748 [13765:7181223:1013/080845.960113:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+ 0:02.87 TEST_START: /css/css-grid/placement/grid-auto-flow-sparse-001.html
+ 0:03.00 TEST_END: Test OK. Subtests passed 8/8. Unexpected 0
+ 0:03.00 TEST_START: /css/css-grid/placement/grid-auto-placement-fixed-row-column-001.html
+ 0:03.12 TEST_END: Test OK. Subtests passed 16/16. Unexpected 0
+ 0:03.12 TEST_START: /css/css-grid/placement/grid-auto-placement-implicit-tracks-001.html
+ 0:03.37 TEST_END: Test OK. Subtests passed 12/12. Unexpected 0
+ 0:03.37 INFO No more tests
+ 0:03.43 INFO Closing logging queue
+ 0:03.43 INFO queue closed
+ 0:03.48 SUITE_END
+
+web-platform-test
+~~~~~~~~~~~~~~~~~
+Ran 39 checks (36 subtests, 3 tests)
+Expected results: 39
+Unexpected results: 0
+OK
+ 0:03.48 INFO Got 0 unexpected results, with 0 unexpected passes
+ 0:03.48 wptserve INFO Stopped http server on 127.0.0.1:8000
+ 0:03.48 wptserve INFO Stopped http server on 127.0.0.1:8001
+ 0:03.48 wptserve INFO Stopped http server on 127.0.0.1:8002
+ 0:03.48 wptserve INFO Stopped http server on 127.0.0.1:8003
+ 0:03.48 wptserve INFO Stopped http server on 127.0.0.1:8443
+ 0:03.48 wptserve INFO Stopped http server on 127.0.0.1:8444
+ 0:03.48 wptserve INFO Stopped http server on 127.0.0.1:8446
+ 0:03.48 wptserve INFO Stopped http server on 127.0.0.1:8445
+ 0:03.48 wptserve INFO Stopped http server on 127.0.0.1:9000
+ 0:03.48 wptserve INFO Stopped WebTransport over HTTP/3 server on 127.0.0.1:11000
+ 0:03.65 wptserve INFO Close on: (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('127.0.0.1', 8889))
+ 0:03.65 wptserve INFO Close on: (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('127.0.0.1', 8888))
+ 0:03.67 INFO Closing logging queue
+ 0:03.67 INFO queue closed

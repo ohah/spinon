@@ -1,0 +1,173 @@
+{
+  "schema": "spinon-c11-2-3-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c1123-i-mv5ymb0x-10eed1fb-nested-mixed-flow",
+  "processId": 56727,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 28,
+    "renderTree": 7,
+    "environment": 1
+  },
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "drawable": [
+    960,
+    720
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 8,
+  "matchedSamples": 8,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "item-c1123-nested-mixed-flow-nested-row",
+      "css": [
+        63,
+        39
+      ],
+      "drawable": [
+        190,
+        118
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-c1123-nested-mixed-flow-inner-span-a",
+      "css": [
+        37,
+        28
+      ],
+      "drawable": [
+        112,
+        85
+      ],
+      "rgba": [
+        255,
+        200,
+        87,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-c1123-nested-mixed-flow-inner-span-b",
+      "css": [
+        37,
+        52
+      ],
+      "drawable": [
+        112,
+        157
+      ],
+      "rgba": [
+        249,
+        115,
+        22,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-c1123-nested-mixed-flow-inner-small",
+      "css": [
+        28,
+        74
+      ],
+      "drawable": [
+        85,
+        223
+      ],
+      "rgba": [
+        25,
+        169,
+        116,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-c1123-nested-mixed-flow-outer-item",
+      "css": [
+        159,
+        39
+      ],
+      "drawable": [
+        478,
+        118
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "gap-column-c1123-nested-mixed-flow-grid",
+      "css": [
+        111,
+        39
+      ],
+      "drawable": [
+        334,
+        118
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "gap-column-c1123-nested-mixed-flow-nested-row",
+      "css": [
+        61,
+        29
+      ],
+      "drawable": [
+        184,
+        88
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "gap-row-c1123-nested-mixed-flow-nested-row",
+      "css": [
+        39,
+        41
+      ],
+      "drawable": [
+        118,
+        124
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}

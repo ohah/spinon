@@ -1,0 +1,61 @@
+{
+  "status": "matched",
+  "scene": "auto-span-at-track-limit",
+  "runID": "c1123-a-mv5yld3e-4ded3cc6-auto-span-at-track-limit",
+  "processId": 30929,
+  "markerPrefix": "C1123",
+  "surfaceGeneration": 2,
+  "density": 2.8125,
+  "surface": [
+    900,
+    675
+  ],
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "scale": [
+    2.8125,
+    2.8125
+  ],
+  "expectedSamples": 2,
+  "matchedSamples": 2,
+  "maximumChannelError": 0,
+  "pngSha256": "21490309fe891d68b9c36891d32beb3de6b2f0022d26647f6ead5b3a0f58d5b1",
+  "samples": [
+    {
+      "id": "item-c1123-auto-span-at-track-limit-span-at-maximum",
+      "css": [
+        319,
+        20
+      ],
+      "pixel": [
+        898,
+        57
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ]
+    },
+    {
+      "id": "surface-c1123-auto-span-at-track-limit-grid",
+      "css": [
+        199,
+        29
+      ],
+      "pixel": [
+        561,
+        82
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    }
+  ]
+}
