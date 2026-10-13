@@ -1,0 +1,119 @@
+{
+  "schema": "spinon-c11-2-2-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c1122-i-mv6mtjb4-6dbbbe77-positive-implicit-row",
+  "processId": 62408,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 25,
+    "renderTree": 5,
+    "environment": 1
+  },
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "drawable": [
+    960,
+    720
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 5,
+  "matchedSamples": 5,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "item-c1122-implicit-row-a",
+      "css": [
+        34,
+        28
+      ],
+      "drawable": [
+        103,
+        85
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-c1122-implicit-row-b",
+      "css": [
+        130,
+        28
+      ],
+      "drawable": [
+        391,
+        85
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-c1122-implicit-row-c",
+      "css": [
+        34,
+        76
+      ],
+      "drawable": [
+        103,
+        229
+      ],
+      "rgba": [
+        25,
+        169,
+        116,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "gap-column-c1122-implicit-row-grid",
+      "css": [
+        111,
+        39
+      ],
+      "drawable": [
+        334,
+        118
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "gap-row-c1122-implicit-row-grid",
+      "css": [
+        63,
+        63
+      ],
+      "drawable": [
+        190,
+        190
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}

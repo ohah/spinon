@@ -1230,82 +1230,76 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
         log("SPINON_C0410_ENVIRONMENT \(environment ?? "")")
 
-        var result = c1123GridAutoPlacementProbeRequested
-            ? SpinonRunner.evalRuntimeGpuC11_2_3GridAutoPlacementFixture(
-                handle,
-                sceneID: c1123GridSceneID,
-                runID: c1123GridRunID
-            )
-            : c1122GridAutoPlacementProbeRequested
-            ? SpinonRunner.evalRuntimeGpuC11_2_2GridAutoPlacementFixture(
-                handle,
-                sceneID: c1122GridSceneID,
-                runID: c1122GridRunID
-            )
-            : c1121GridPlacementProbeRequested
-            ? SpinonRunner.evalRuntimeGpuC11_2_1GridPlacementFixture(
-                handle,
-                sceneID: c1121GridSceneID,
-                runID: c1121GridRunID
-            )
-            : c11GridFixtureRequested
-            ? SpinonRunner.evalRuntimeGpuC11_1GridSceneFixture(
+        var result: String? = nil
+        if c1123GridAutoPlacementProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuC11_2_3GridAutoPlacementFixture(
+                handle, sceneID: c1123GridSceneID, runID: c1123GridRunID)
+        } else if c1122GridAutoPlacementProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuC11_2_2GridAutoPlacementFixture(
+                handle, sceneID: c1122GridSceneID, runID: c1122GridRunID)
+        } else if c1121GridPlacementProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuC11_2_1GridPlacementFixture(
+                handle, sceneID: c1121GridSceneID, runID: c1121GridRunID)
+        } else if c11GridFixtureRequested {
+            result = SpinonRunner.evalRuntimeGpuC11_1GridSceneFixture(
                 handle, sceneIndex: UInt32(c11GridSceneIndex ?? 0))
-            : c1035PositionedFlexProbeRequested
-            ? SpinonRunner.evalRuntimeGpuC10_3_5PositionedFlexFixture(handle)
-            : c123FixedPositionProbeRequested
-            ? SpinonRunner.evalRuntimeGpuC12_3FixedFixture(handle)
-            : c124StackingProbeRequested || c124DepthSafetyProbeRequested
-            ? SpinonRunner.evalRuntimeGpuC12_4StackingFixture(handle)
-            : c122AbsoluteBlockProbeRequested
-            ? SpinonRunner.evalRuntimeGpuC12_2AbsoluteBlockFixture(handle)
-            : c121PositioningProbeRequested
-            ? SpinonRunner.evalRuntimeGpuC12_1PositionFixture(handle)
-            : flexBaselineProbeRequested
-            ? SpinonRunner.evalRuntimeGpuFlexBaselineFixture(handle)
-            : flexAlignmentProbeRequested
-            ? SpinonRunner.evalRuntimeGpuFlexAlignmentFixture(handle)
-            : flexOrderProbeRequested
-            ? SpinonRunner.evalRuntimeGpuFlexOrderFixture(handle)
-            : flexReverseProbeRequested
-            ? SpinonRunner.evalRuntimeGpuFlexReverseFixture(handle)
-            : flexDistributionProbeRequested
-            ? SpinonRunner.evalRuntimeGpuFlexDistributionFixture(handle)
-            : flexWrapProbeRequested
-            ? SpinonRunner.evalRuntimeGpuFlexWrapFixture(handle)
-            : flowRootProbeRequested
-            ? SpinonRunner.evalRuntimeGpuFlowRootFixture(handle)
-            : marginCollapseProbeRequested
-            ? SpinonRunner.evalRuntimeGpuMarginCollapseFixture(handle)
-            : viewportUnitsProbeRequested
-            ? SpinonRunner.evalRuntimeGpuViewportUnitsFixture(handle)
-            : blockFormattingProbeRequested
-            ? SpinonRunner.evalRuntimeGpuBlockFormattingFixture(handle)
-            : blockPaintProbeRequested
-            ? SpinonRunner.evalRuntimeGpuBlockPaintFixture(handle)
-            : aspectRatioProbeRequested
-            ? SpinonRunner.evalRuntimeGpuAspectRatioFixture(handle)
-            : borderWidthProbeRequested
-            ? SpinonRunner.evalRuntimeGpuBorderWidthFixture(handle)
-            : minMaxSizingProbeRequested
-            ? SpinonRunner.evalRuntimeGpuMinMaxSizingFixture(handle)
-            : typedCssMathProbeRequested
-            ? SpinonRunner.evalRuntimeGpuTypedCssMathFixture(handle)
-            : fontRelativeUnitsProbeRequested
-            ? SpinonRunner.evalRuntimeGpuFontRelativeUnitsFixture(handle)
-            : absoluteLengthsProbeRequested
-            ? SpinonRunner.evalRuntimeGpuAbsoluteLengthsFixture(handle)
-            : spacingPercentagesProbeRequested
-            ? SpinonRunner.evalRuntimeGpuSpacingPercentagesFixture(handle)
-            : percentageDimensionsProbeRequested
-            ? SpinonRunner.evalRuntimeGpuPercentageDimensionsFixture(handle)
-            : incrementalRestyleProbeRequested
-            ? SpinonRunner.evalRuntimeGpuIncrementalRestyleFixture(handle)
-            : registeredPropertiesProbeRequested
-            ? SpinonRunner.evalRuntimeGpuRegisteredPropertiesFixture(handle)
-            : authorStylesheetsProbeRequested
-                ? SpinonRunner.evalRuntimeGpuAuthorStylesheetsFixture(handle)
-                : SpinonRunner.evalRuntimeGpuFixture(handle)
+        } else if c1035PositionedFlexProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuC10_3_5PositionedFlexFixture(handle)
+        } else if c123FixedPositionProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuC12_3FixedFixture(handle)
+        } else if c124StackingProbeRequested || c124DepthSafetyProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuC12_4StackingFixture(handle)
+        } else if c122AbsoluteBlockProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuC12_2AbsoluteBlockFixture(handle)
+        } else if c121PositioningProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuC12_1PositionFixture(handle)
+        } else if flexBaselineProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuFlexBaselineFixture(handle)
+        } else if flexAlignmentProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuFlexAlignmentFixture(handle)
+        } else if flexOrderProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuFlexOrderFixture(handle)
+        } else if flexReverseProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuFlexReverseFixture(handle)
+        } else if flexDistributionProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuFlexDistributionFixture(handle)
+        } else if flexWrapProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuFlexWrapFixture(handle)
+        } else if flowRootProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuFlowRootFixture(handle)
+        } else if marginCollapseProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuMarginCollapseFixture(handle)
+        } else if viewportUnitsProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuViewportUnitsFixture(handle)
+        } else if blockFormattingProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuBlockFormattingFixture(handle)
+        } else if blockPaintProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuBlockPaintFixture(handle)
+        } else if aspectRatioProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuAspectRatioFixture(handle)
+        } else if borderWidthProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuBorderWidthFixture(handle)
+        } else if minMaxSizingProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuMinMaxSizingFixture(handle)
+        } else if typedCssMathProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuTypedCssMathFixture(handle)
+        } else if fontRelativeUnitsProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuFontRelativeUnitsFixture(handle)
+        } else if absoluteLengthsProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuAbsoluteLengthsFixture(handle)
+        } else if spacingPercentagesProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuSpacingPercentagesFixture(handle)
+        } else if percentageDimensionsProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuPercentageDimensionsFixture(handle)
+        } else if incrementalRestyleProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuIncrementalRestyleFixture(handle)
+        } else if registeredPropertiesProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuRegisteredPropertiesFixture(handle)
+        } else if authorStylesheetsProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuAuthorStylesheetsFixture(handle)
+        } else {
+            result = SpinonRunner.evalRuntimeGpuFixture(handle)
+        }
         if c1123GridAutoPlacementProbeRequested || c1122GridAutoPlacementProbeRequested {
             let profile = c1123GridAutoPlacementProbeRequested ? "C1123" : "C1122"
             let runID = c1123GridAutoPlacementProbeRequested ? c1123GridRunID : c1122GridRunID

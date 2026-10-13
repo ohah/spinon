@@ -1,0 +1,33 @@
+{
+  "schema": "spinon-c1123-ios-repair-matrix-summary/v1",
+  "status": "matched",
+  "runID": "c1123-i-mv6mhrrq-785dbe7a",
+  "baseCommit": "6aa39262a2097089fbe38ac2f406e5c2afeb50da",
+  "platform": "iPhone 17 Pro Simulator / iOS 26.2",
+  "matrix": {
+    "scenes": 25,
+    "successful": 19,
+    "expectedRejections": 6,
+    "nodes": 107,
+    "geometryMaximumErrorCssPx": 0,
+    "geometryToleranceCssPx": 0.5,
+    "freshProcessPerScene": true
+  },
+  "surfacePixels": {
+    "status": "matched",
+    "scenes": 19,
+    "samples": 99,
+    "maximumChannelError": 0
+  },
+  "limitations": [
+    "임시 후보 검증이며 origin/main에 수정은 아직 반영되지 않음",
+    "iOS 실기기와 compositor 이후 pixel 결과가 아님",
+    "Chrome oracle 비교이며 전체 WPT 적합성 판정이 아님"
+  ],
+  "candidateSourceSha256": {
+    "platforms/ios/Sources/AppDelegate.swift": "9c1af52a30e0f3db6ed6ea7b834917c3874e6557d6b5cb56511e5c104dac5c87",
+    "platforms/ios/Sources/SpinonRunner.h": "da0ee385849c64f3604a48473a667a20f4f3708f096002b1c65ed0a4c7cac403",
+    "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "d62b4976083872efc764bf897596f3e43e5c26f4ec6e270939d88cf804fdcb12"
+  },
+  "repairPatchSha256": "4b271fdce5a6a307737804a8b5d14d0bce23ab13667c4f81091829bb6b04a794"
+}

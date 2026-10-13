@@ -1,0 +1,83 @@
+{
+  "schema": "spinon-c11-2-2-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c1122-i-mv6mtjb4-6dbbbe77-hidden-child-excluded",
+  "processId": 63992,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 25,
+    "renderTree": 5,
+    "environment": 1
+  },
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "drawable": [
+    960,
+    720
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 3,
+  "matchedSamples": 3,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "item-c1122-hidden-visible-a",
+      "css": [
+        34,
+        29
+      ],
+      "drawable": [
+        103,
+        88
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-c1122-hidden-visible-b",
+      "css": [
+        130,
+        29
+      ],
+      "drawable": [
+        391,
+        88
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "gap-column-c1122-hidden-grid",
+      "css": [
+        111,
+        39
+      ],
+      "drawable": [
+        334,
+        118
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}
