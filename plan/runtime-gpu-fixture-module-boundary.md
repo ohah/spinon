@@ -37,6 +37,10 @@ runtime GPU fixture scene adapter와 FFI 진입점이 일반 runtime 파일에 �
 
 전체 workspace test·Clippy, iOS 실기기·OS compositor 이후 pixel 비교는 이 모듈·빌드 경계 변경에서 실행하거나 완료 판정하지 않았다. 플랫폼 앱 build-flag 계약은 검증했지만 final APK/IPA의 release stripping과 bundle 크기는 검사하지 않았다.
 
+## 후속 소스 경계 정리 완료
+
+PR #147 병합 뒤 파일 목록을 다시 확인해 이전 위치에 남아 있던 미참조 fixture 복사 파일 16개를 발견했다. Rust 모듈 선언에 연결되지 않아 현재 빌드 산출물에는 들어가지 않았지만, 같은 책임의 두 사본이 남아 편집 대상과 소유권을 혼동시킬 수 있었다. 이전 사본을 제거하고, 과거 경로와 정식 `fixtures/` 경로를 함께 검사하는 회귀 테스트를 추가했다. 앱 동작과 ABI는 바뀌지 않는다. 세부 근거는 [후속 정리 검토](../spec/internal/evidence/runtime-gpu-fixture-module-boundary-cleanup-2026-10-14.md)에 기록한다.
+
 ## 완료 기준과 범위 밖
 
 - 기본/product feature artifact에 앱 검증용 FFI symbol 및 embedded fixture payload가 없어야 한다.
