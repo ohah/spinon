@@ -1,12 +1,12 @@
 # C11.3 · `repeat()`, named grid lines, template areas
 
-**상태:** C11.3.1 병합 전용 검증 완료 · C11.3.2 구현 후보와 지정 검증 완료(PR 미병합) · C11.3.3 미착수 · 내부 계약 `0059`와 crate 버전 `0.1.0` 유지
+**상태:** C11.3.1 병합 전용 검증 완료 · C11.3.2 구현 후보, Android API 37 AVD·iOS Simulator 및 Rust/Chrome 검증 완료(PR Draft) · 최신 source SM-S731N 실기기 gate 미완료 · C11.3.3 미착수 · 내부 계약 `0059`와 crate 버전 `0.1.0` 유지
 **상위:** [C11 CSS Grid](c11-css-grid.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 **규범 기준:** [CSS Grid Layout Module Level 1 · 2025-03-26 CRD](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/) §7.2–7.3, §8.3
 **비교 기준:** Chrome for Testing `154.0.8037.92` (mac-arm64), CDP revision `@334b65d254ccc35df4fca82706d1753227b01039`, CfT stable revision `r1689415`; WPT revision `c999c58338ee1d223df5ad62e48be1202ced0d37`
 **계약 버전:** 내부 계약 `0059`와 crate 버전 `0.1.0` 유지
 **계획 검토:** [기능 계획 실패 관점 20개](../spec/internal/evidence/c11-3-template-repeat-named-lines-areas-plan-review-2026-10-13.md) · [Chromium 기준 교체 실패 관점 20개](../spec/internal/evidence/c11-3-chromium-baseline-review-2026-10-13.md)
-**구현 검토:** [C11.3.1 구현·플랫폼 표면 픽셀 실패 경계](../spec/internal/evidence/c11-3-1-grid-repeat-implementation-review-2026-10-14.md) · [C11.3.2 구현 실패 경계](../spec/internal/evidence/c11-3-2-grid-named-lines-implementation-review-2026-10-14.md) · [초기 C11.3.1 구현 검토](../spec/internal/evidence/c11-3-1-grid-repeat-pixels-implementation-review-2026-10-13.md)
+**구현 검토:** [C11.3.1 구현·플랫폼 표면 픽셀 실패 경계](../spec/internal/evidence/c11-3-1-grid-repeat-implementation-review-2026-10-14.md) · [C11.3.2 구현 실패 경계 30개](../spec/internal/evidence/c11-3-2-grid-named-lines-implementation-review-2026-10-14.md) · [초기 C11.3.1 구현 검토](../spec/internal/evidence/c11-3-1-grid-repeat-pixels-implementation-review-2026-10-13.md)
 
 ### Chromium 기준 버전 고정
 
@@ -73,7 +73,7 @@ C11.3은 다음 세 단계로 분할한다. 각 단계는 독립된 기능 PR �
 - line name이 없거나 지정 occurrence가 explicit grid 밖 implicit line을 요구하면 `UnsupportedNamedGridLine` 계열 오류를 반환한다. implicit line materialization은 다음 계획 단계가 아니라 별도 C11 후속 범위다.
 - 같은 이름이 한 line group에 반복되어도 index는 그 line을 한 번 센다. 원본 name list는 metadata에서 보존하고, resolver만 line index를 중복 계산하지 않는다. repeat seam에서 같은 이름이 합쳐지는 사례를 Chrome fixture로 확인한다.
 
-2026-10-14 구현 후보는 Stylo typed snapshot의 named line/span 값을 owned Grid input으로 보존하고, 엔진 중립 resolver에서 explicit numeric line으로 바꾼 뒤 Taffy에 전달한다. Chrome 154 기준 15 scene·30 node를 DPR 1·2로 고정했고, WPT 후보 3개는 Chrome에서 PASS 2개와 17개 하위 검사가 통과한 OK 1개, skip 0이었다. Android 16 SM-S731N 실기기와 iPhone 17 Pro/iOS 26.2 Simulator에서는 성공 1개·기대 거부 1개(각 4 node)를 실행했으며 성공 장면의 두 표면 표본은 각각 RGBA 2/2 exact였다. 이는 제한 profile의 구현 후보 근거이며 Spinon WPT 적합성, 전체 모바일 행렬, 공개 CSS 지원을 뜻하지 않는다. 상세 결과와 남은 경계는 [실행 근거](../spec/internal/evidence/c11-3-2-grid-named-lines-runtime-2026-10-14/)와 [구현 실패 경계 검토](../spec/internal/evidence/c11-3-2-grid-named-lines-implementation-review-2026-10-14.md)에 둔다.
+2026-10-14 구현 후보는 Stylo typed snapshot의 named line/span 값을 owned Grid input으로 보존하고, 엔진 중립 resolver에서 explicit numeric line으로 바꾼 뒤 Taffy에 전달한다. Chrome 154 기준 15 scene·30 node를 DPR 1·2로 고정했고, WPT 후보 3개는 Chrome에서 PASS 2개와 17개 하위 검사가 통과한 OK 1개, skip 0이었다. Android 16 SM-S731N 실기기와 iPhone 17 Pro/iOS 26.2 Simulator에서는 성공 1개·기대 거부 1개(각 4 node)를 실행했으며 성공 장면의 두 표면 표본은 각각 RGBA 2/2 exact였다. 최신 PR source는 Android 37.0 ARM64 AVD `spinon_api37_0_applied_txn`에서도 성공·기대 거부 각 1 scene과 PixelCopy 2/2 exact를 확인했고, 변조 좌표는 readback 전에 거부했다. AVD는 SM-S731N 실기기 gate의 대체가 아니며 최신 source 실기기 PixelCopy는 미완료로 남긴다. 상세 결과와 남은 경계는 [실행 근거](../spec/internal/evidence/c11-3-2-grid-named-lines-runtime-2026-10-14/)와 [구현 실패 경계 검토 30개](../spec/internal/evidence/c11-3-2-grid-named-lines-implementation-review-2026-10-14.md)에 둔다. 이는 제한 profile의 구현 후보 근거이며 Spinon WPT 적합성, 전체 모바일 행렬, 공개 CSS 지원을 뜻하지 않는다.
 
 ### C11.3.3 · template areas와 area 배치
 

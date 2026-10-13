@@ -1,0 +1,124 @@
+{
+  "schema": "spinon-c11-3-2-grid-named-lines-runtime-result/v1",
+  "status": "matched",
+  "runID": "c1132-android-avd-20261013T222607426Z-1b304023",
+  "target": "android-avd",
+  "fixture": {
+    "path": "tests/fixtures/css/c11/grid-named-lines-c1132-mobile-surface-pixel-matrix-v1.json",
+    "sha256": "460c02ebd31be8d654c05b5639dddbf023233ade27222ce565cd4d852311ea39"
+  },
+  "oracle": {
+    "product": "Chrome/154.0.8037.92",
+    "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.92-502bee2426ab-0ae4c219fca3-4f9e07531434",
+    "referenceSha256": "d55244aef4ceb06d8ae098d3f1d69f807d8e3e1bde00dbbbc2a87086843462fb",
+    "screenshotSha256": "0c618cfad84612156e65582fe0139f3ca68d52807f50dedddd77b57419bea86f",
+    "sampleCount": 2,
+    "maximumChannelError": 0,
+    "oracleComparison": {
+      "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.92-502bee2426ab-0ae4c219fca3-4f9e07531434",
+      "screenshot": [
+        320,
+        240
+      ],
+      "sampleCount": 2
+    }
+  },
+  "platform": {
+    "metadata": {
+      "serial": "emulator-5554",
+      "model": "sdk_gphone64_arm64",
+      "release": "17",
+      "sdk": 37,
+      "qemu": true,
+      "fingerprint": "google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780:userdebug/dev-keys",
+      "renderer": "GLES: Google (Google Inc. (Google)), Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)), OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))"
+    },
+    "appSha256": "886e14e746e7a5432cf60c55a6476ab5bbdc07db75ecf839065d5c1db27f27b9",
+    "frames": [
+      {
+        "index": 0,
+        "nodeId": 1,
+        "x": 0,
+        "y": 0,
+        "width": 160,
+        "height": 120
+      },
+      {
+        "index": 1,
+        "nodeId": 2,
+        "x": 80,
+        "y": 0,
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "pixelComparison": {
+      "status": "matched",
+      "scene": "positive-occurrence",
+      "runID": "c1132-android-avd-20261013T222607426Z-1b304023",
+      "processId": 3225,
+      "markerPrefix": "C1132",
+      "surfaceGeneration": 2,
+      "density": 2.625,
+      "surface": [
+        840,
+        630
+      ],
+      "runtimeViewportCssPx": [
+        320,
+        240
+      ],
+      "scale": [
+        2.625,
+        2.625
+      ],
+      "expectedSamples": 2,
+      "matchedSamples": 2,
+      "maximumChannelError": 0,
+      "pngSha256": "921a1cefbe761a45cf356e41aa685bad249dd51ab735a8b9328c9b6707fdc27a",
+      "samples": [
+        {
+          "id": "grid-background",
+          "css": [
+            20,
+            80
+          ],
+          "pixel": [
+            53,
+            211
+          ],
+          "rgba": [
+            237,
+            241,
+            247,
+            255
+          ]
+        },
+        {
+          "id": "item-blue",
+          "css": [
+            100,
+            10
+          ],
+          "pixel": [
+            263,
+            27
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        }
+      ]
+    },
+    "screenSha256": "85e1f51858391efad95900acea02ed1297acaf800030395cdc8d9894085d39fa",
+    "negative": {
+      "status": "rejected-before-readback",
+      "runID": "c1132-android-avd-20261013T222607426Z-1b304023-bad-samples",
+      "readbackStarted": false
+    }
+  },
+  "interpretation": "Android API 37 AVD SurfaceView의 PixelCopy를 고정 Chrome RGBA와 비교했다. 소프트웨어 렌더러를 쓰는 emulator 결과이며 실기기 GPU나 물리 기기 동작을 증명하지 않는다."
+}

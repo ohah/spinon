@@ -2,9 +2,9 @@
 
 ## 검토 범위
 
-기준 commit `ed089f8` 위의 `feat/c11-3-2-named-grid-lines` 후보를 검토했다. Stylo typed computed value, explicit N+1 line-name metadata, placement projection, Taffy 정규화, 오류 반환, 앱 전용 fixture FFI와 증거 경계를 포함한다. 계획 자체의 실패 관점은 [별도 C11.3 계획 검토](./c11-3-template-repeat-named-lines-areas-plan-review-2026-10-13.md)에서 다뤘다.
+기준 commit `ed089f8` 위의 `feat/c11-3-2-named-grid-lines` 후보와 PR #151의 후속 Android AVD capture 지원을 검토했다. Stylo typed computed value, explicit N+1 line-name metadata, placement projection, Taffy 정규화, 오류 반환, 앱 전용 fixture FFI, Android 실기기/AVD 분리와 증거 경계를 포함한다. 계획 자체의 실패 관점은 [별도 C11.3 계획 검토](./c11-3-template-repeat-named-lines-areas-plan-review-2026-10-13.md)에서 다뤘다.
 
-## 서로 다른 실패 관점 20개
+## 서로 다른 실패 관점 30개
 
 | # | 공격 관점 | 검사와 결과 |
 | --- | --- | --- |
@@ -28,6 +28,16 @@
 | 18 | row 이름을 column metadata에서 찾거나 부모 Grid 이름을 중첩 child에 사용 | 각 축이 자기 container의 row/column line names를 전달한다. nested Grid 안에서 부모와 다른 row/column 이름을 쓰는 layout 검사가 통과했다. |
 | 19 | N개 track인데 line group N개만 받거나 손상된 metadata를 신뢰 | projection은 checked `track_count + 1 == names.len()`를 먼저 요구한다. N+1 정상 형상과 잘못된 길이 fail-closed 단위 검사가 통과했다. |
 | 20 | named resolution 뒤 역전·동일 line conflict를 Taffy에 잘못 넘기거나 fixture가 기본 산출물에 포함 | numeric line의 역전 swap·동일 line span-1은 CSS geometry integration에서 통과했다. 기본 `spinon-ffi` static library에서는 C11.3.2 심벌/payload가 없고 opt-in positive control에는 있다. 이는 app release bundle 검증은 아니다. |
+| 21 | Android AVD 결과를 실기기 PixelCopy 근거로 잘못 분류 | runner의 `android-avd`/`android-physical` target과 실제 `ro.kernel.qemu` boolean을 대조한다. API 37 AVD 실행의 `device.json`은 `qemu=true`, `model=sdk_gphone64_arm64`로 남았다. |
+| 22 | API 35/36/38 AVD를 API 37 표본으로 기록 | AVD mode는 `ro.build.version.sdk == 37`을 강제한다. 현재 실행의 `device.json`은 SDK 37, Android 17 fingerprint를 기록했다. |
+| 23 | AVD가 host GPU를 사용하고도 SwiftShader pixel 근거라고 주장 | 실행에 `-gpu swiftshader_indirect`를 지정하고 runner가 SurfaceFlinger GLES의 `SwiftShader` 표기를 요구한다. 기록된 renderer는 ANGLE/Vulkan/SwiftShader다. 이는 하드웨어 GPU 근거가 아니다. |
+| 24 | 임의의 Android 기기를 SM-S731N 실기기 gate로 통과 | physical mode는 `qemu=false`, `model=SM-S731N`, API 36을 요구한다. runner 정적 검토로 조건을 확인했다. 이번에는 기기가 연결되지 않아 physical branch 실행은 하지 않았다. |
+| 25 | 여러 ADB 대상 중 첫 번째 장치에 설치·실행 | 모든 ADB 명령은 `adb -s <serial>`로 고정한다. Android 기본 serial은 `emulator-5554`; iOS UDID 기본값은 iOS target에서만 사용한다. |
+| 26 | Android AVD 부재를 무시하고 이전 앱 로그를 최신 실행 결과로 채택 | runner는 고정 serial의 `device` 상태를 먼저 요구하고, 앱 PID·run ID가 일치하는 프로세스 로그에서 runtime summary와 PixelCopy marker를 확인한다. 실제 실행 ID가 결과·로그에 일치한다. |
+| 27 | screen capture를 SurfaceView PixelCopy 결과로 혼동 | 비교기는 앱 cache에서 가져온 PixelCopy PNG와 표본 RGBA를 검사한다. `android-screen.png`는 UI 자료이고 비교 입력이 아니다. AVD 결과는 2/2 exact, 최대 channel error 0이다. |
+| 28 | density 배율 또는 표면 크기 불일치를 숨김 | 결과는 viewport 320×240 CSS px, density 2.625, surface 840×630 physical px와 scale 2.625를 기록한다. 두 표본의 pixel 좌표와 RGBA가 모두 기준과 일치했다. |
+| 29 | 변조된 좌표가 readback 시작 뒤 거부되어 surface 접근 발생 | AVD negative control에서 item 표본 x 좌표를 1 CSS px 변조했다. 결과는 `rejected-before-readback`, `readbackStarted=false`다. |
+| 30 | 빌드 실패 때 raw 원인이 사라져 후속 진단 불가 | Android build 예외는 `error.result` stdout/stderr를 `build.log`에 저장한 뒤 다시 throw한다. 성공 실행은 빌드 로그를 저장했지만 의도적 build-failure 주입은 하지 않았다. |
 
 ## 새로 발견해 고친 항목
 
@@ -36,6 +46,8 @@
 - line metadata 변경의 다음 style revision 반영을 직접 확인하는 회귀가 없었다. root/item style을 바꾸고 다음 `StyleRevision`에서 새 이름으로 배치하는 integration 테스트를 추가했다.
 - 새 회귀에서 `i32::MIN`, `u32::MAX`, negative numeric definite line과 named span 조합을 추가 확인했다.
 - repeat-seam integration의 첫 fixture는 공통 item helper가 기대하는 row line name 및 explicit line 범위와 맞지 않아 fail했다. helper 계약과 N+1 line 수에 맞춰 fixture를 바로잡았고 최종 검사에서 통과했다. 제품 경로 결함은 아니었다.
+- 기존 C11.3.2 capture runner는 Android physical과 iOS Simulator만 지원해 장치 미연결 시 Android API 37 AVD 근거를 만들 수 없었다. `android-avd` target을 추가하고 QEMU/API/SwiftShader를 검사했으며 physical target은 SM-S731N/API 36을 요구하도록 좁혔다.
+- Android 빌드 명령이 실패하면 `error.result`의 출력이 증거에 저장되지 않았다. 실패 stdout/stderr를 `build.log`로 남긴 뒤 원래 오류를 다시 반환하도록 수정했다.
 
 ## 증거와 판정
 
@@ -44,5 +56,6 @@
 - 전체 Rust workspace, CSS reference, 기본/fixture FFI, Clippy, rustfmt, diff: [통합 실행 요약](./c11-3-2-grid-named-lines-runtime-2026-10-14/README.md)
 - 고정 기준: [Chrome/WPT 사전 비교](./c11-3-2-named-lines-precomparison-2026-10-14/README.md)
 - 플랫폼 및 opt-in 산출물: [Android/iOS 실행·fixture artifact 경계](./c11-3-2-grid-named-lines-runtime-2026-10-14/README.md)
+- 최신 source AVD 보완 run: [Android API 37.0 PixelCopy·negative control](./c11-3-2-grid-named-lines-runtime-2026-10-14/android-avd-c1132-android-avd-20261013T222607426Z-1b304023/README.md)
 
-검토 결과는 제한된 C11.3.2 구현 후보를 지지한다. C11.3.2 PR은 아직 미병합이고, implicit named line 생성, 전체 15-scene 모바일 행렬, iOS 실기기 및 compositor 이후 pixel, Spinon WPT 적합성, template areas/C11.3.3와 CSS Grid 전체 지원은 미완료다. 공개 제품 CSS 지원으로 표시하지 않는다.
+검토 결과는 제한된 C11.3.2 구현 후보를 지지한다. C11.3.2 PR은 아직 Draft이며, 최신 source SM-S731N physical PixelCopy gate, implicit named line 생성, 전체 15-scene 모바일 행렬, iOS 실기기 및 compositor 이후 pixel, Spinon WPT 적합성, template areas/C11.3.3와 CSS Grid 전체 지원은 미완료다. 공개 제품 CSS 지원으로 표시하지 않는다.

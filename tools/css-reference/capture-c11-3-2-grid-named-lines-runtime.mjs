@@ -15,13 +15,14 @@ const repositoryRoot = resolve(fileURLToPath(new URL('../..', import.meta.url)))
 const fixturePath = 'tests/fixtures/css/c11/grid-named-lines-c1132-mobile-surface-pixel-matrix-v1.json';
 const fixture = JSON.parse(await readFile(resolve(repositoryRoot, fixturePath), 'utf8'));
 const target = process.argv[2];
-assert.ok(['android-physical', 'ios-simulator'].includes(target),
-  '사용법: node capture-c11-3-2-grid-named-lines-runtime.mjs android-physical [serial]|ios-simulator [Simulator UDID]');
+assert.ok(['android-avd', 'android-physical', 'ios-simulator'].includes(target),
+  '사용법: node capture-c11-3-2-grid-named-lines-runtime.mjs android-avd|android-physical [serial]|ios-simulator [Simulator UDID]');
 
 const packageName = 'dev.spinon.bootstrap';
 const androidComponent = `${packageName}/.MainActivity`;
 const defaultSimulatorUDID = 'ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D';
-const serialOrUDID = process.argv[3] ?? defaultSimulatorUDID;
+const serialOrUDID = process.argv[3]
+  ?? (target === 'ios-simulator' ? defaultSimulatorUDID : 'emulator-5554');
 const runID = `c1132-${target}-${new Date().toISOString().replaceAll(/[^0-9TZ]/g, '')}-${randomUUID().slice(0, 8)}`;
 const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date());
 const evidenceDirectory = resolve(repositoryRoot,
@@ -109,17 +110,27 @@ function androidDevice() {
     `Android 대상이 연결되지 않았습니다: ${serialOrUDID}`);
   const adb = (args, options) => command('adb', ['-s', serialOrUDID, ...args], options);
   const getprop = (name) => adb(['shell', 'getprop', name]).stdout.trim();
-  const qemu = getprop('ro.kernel.qemu');
-  assert.notEqual(qemu, '1', `Android 실기기 대상으로 AVD가 지정됐습니다: ${serialOrUDID}`);
+  const qemu = getprop('ro.kernel.qemu') === '1';
+  assert.equal(qemu, target === 'android-avd',
+    `요청한 Android 대상과 실제 장치 종류가 다릅니다: ${serialOrUDID}`);
   const release = getprop('ro.build.version.release');
   const sdk = Number(getprop('ro.build.version.sdk'));
+  const model = getprop('ro.product.model');
+  const renderer = adb(['shell', 'dumpsys', 'SurfaceFlinger']).stdout.split(/\r?\n/)
+    .find((line) => /^GLES:/i.test(line)) ?? 'SurfaceFlinger GLES 정보 없음';
+  if (target === 'android-avd') {
+    assert.equal(sdk, 37, `고정 Android API 37 AVD가 아닙니다: API ${sdk}`);
+    assert.match(renderer, /SwiftShader/i, `Android AVD가 고정 software renderer를 쓰지 않습니다: ${renderer}`);
+  } else {
+    assert.equal(model, 'SM-S731N', `고정 Android 실기기 모델이 아닙니다: ${model}`);
+    assert.equal(sdk, 36, `고정 Android 16/API 36 실기기가 아닙니다: API ${sdk}`);
+  }
   return {
     adb,
     metadata: {
-      serial: serialOrUDID, model: getprop('ro.product.model'), release, sdk,
-      fingerprint: getprop('ro.build.fingerprint'), qemu,
-      renderer: adb(['shell', 'dumpsys', 'SurfaceFlinger']).stdout.split(/\r?\n/)
-        .find((line) => /^GLES:/i.test(line)) ?? 'SurfaceFlinger GLES 정보 없음',
+      serial: serialOrUDID, model, release, sdk, qemu,
+      fingerprint: getprop('ro.build.fingerprint'),
+      renderer,
     },
   };
 }
@@ -166,9 +177,15 @@ function waitForAndroidPid(adb, description, timeout = 30_000) {
 async function runAndroid() {
   const { adb, metadata } = androidDevice();
   await writeFile(resolve(evidenceDirectory, 'device.json'), `${JSON.stringify(metadata, null, 2)}\n`);
-  const build = command('mise', ['exec', '--', 'env',
-    `SPINON_V8_DIR=${process.env.SPINON_V8_DIR ?? resolve(repositoryRoot, 'build/v8-source/v8')}`,
-    'SPINON_ENABLE_C04_RUNTIME_GPU=1', 'bun', 'run', 'build:android'], { timeout: 900_000 });
+  let build;
+  try {
+    build = command('mise', ['exec', '--', 'env',
+      `SPINON_V8_DIR=${process.env.SPINON_V8_DIR ?? resolve(repositoryRoot, 'build/v8-source/v8')}`,
+      'SPINON_ENABLE_C04_RUNTIME_GPU=1', 'bun', 'run', 'build:android'], { timeout: 900_000 });
+  } catch (error) {
+    if (error.result) await saveLog('build.log', error.result);
+    throw error;
+  }
   await saveLog('build.log', build);
   const apkBytes = await readFile(apkPath);
   const appSha256 = sha256(apkBytes);
@@ -312,7 +329,7 @@ const chromePngBytes = await readFile(resolve(repositoryRoot, fixture.oracle.scr
 const oracleComparison = validateC11IOSChromeOracle({
   fixture, referenceBytes, screenshotBytes: chromePngBytes,
 });
-const platform = target === 'android-physical' ? await runAndroid() : await runIOS();
+const platform = target === 'ios-simulator' ? await runIOS() : await runAndroid();
 const result = {
   schema: 'spinon-c11-3-2-grid-named-lines-runtime-result/v1',
   status: 'matched', runID, target,
@@ -325,7 +342,9 @@ const result = {
   platform,
   interpretation: target === 'ios-simulator'
     ? 'Metal drawable 표면을 OS compositor 제출 전에 읽어 고정 Chrome RGBA와 비교했다. 별도 화면 캡처는 UI 확인 자료다.'
-    : '연결된 Android 실기기 SurfaceView의 PixelCopy를 고정 Chrome RGBA와 비교했다. 결과는 이 기기와 빌드에 한정된다.',
+    : target === 'android-avd'
+      ? 'Android API 37 AVD SurfaceView의 PixelCopy를 고정 Chrome RGBA와 비교했다. 소프트웨어 렌더러를 쓰는 emulator 결과이며 실기기 GPU나 물리 기기 동작을 증명하지 않는다.'
+      : '연결된 Android 실기기 SurfaceView의 PixelCopy를 고정 Chrome RGBA와 비교했다. 결과는 이 기기와 빌드에 한정된다.',
 };
 await writeFile(resolve(evidenceDirectory, 'result.json'), `${JSON.stringify(result, null, 2)}\n`);
 await writeFile(resolve(evidenceDirectory, 'README.md'), [
@@ -338,7 +357,9 @@ await writeFile(resolve(evidenceDirectory, 'README.md'), [
   `- 좌표 allowlist negative control: ${platform.negative.status}`,
   target === 'ios-simulator'
     ? '- 표면 비교는 Metal drawable readback이며 OS compositor 이후 픽셀은 확인하지 않았다.'
-    : '- 표면 비교는 Android 실기기 SurfaceView PixelCopy다. 다른 기기·GPU로 일반화하지 않는다.',
+    : target === 'android-avd'
+      ? '- 표면 비교는 Android API 37 AVD의 SurfaceView PixelCopy다. 소프트웨어 렌더러 결과이며 실기기 검증을 대체하지 않는다.'
+      : '- 표면 비교는 Android 실기기 SurfaceView PixelCopy다. 다른 기기·GPU로 일반화하지 않는다.',
   '- 화면 PNG는 UI 상태 확인용이며 표면 픽셀 비교에는 사용하지 않았다.',
   '- 이는 고정 Chrome fixture의 제한된 runtime 결과이며 Spinon WPT 적합성이나 CSS Grid 전체 지원을 뜻하지 않는다.',
   '',
