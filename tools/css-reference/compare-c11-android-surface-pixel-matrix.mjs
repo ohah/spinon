@@ -3,11 +3,6 @@ import { createHash } from 'node:crypto';
 
 import { decodeRgbaPng } from './read-png-rgba.mjs';
 
-const BEGIN = 'SPINON_C111_GRID_PIXEL_MATRIX_BEGIN ';
-const CAPTURE = 'SPINON_C111_GRID_PIXEL_MATRIX_CAPTURE ';
-const SAMPLE = 'SPINON_C111_GRID_PIXEL_MATRIX_SAMPLE ';
-const SUMMARY = 'SPINON_C111_GRID_PIXEL_MATRIX_SUMMARY ';
-
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 
 function fieldsAfter(line, marker) {
@@ -30,12 +25,37 @@ function exactInteger(value, label, minimum = 0) {
   return parsed;
 }
 
-export function compareC11AndroidPixelCopyScene(log, { scene, runID, pngBytes }) {
+export function cssPixelCenterToSurfacePixel(cssPixel, surfaceSizePx, viewportSizeCssPx) {
+  assert.ok(Number.isSafeInteger(cssPixel) && cssPixel >= 0, 'CSS pixel 좌표가 잘못되었습니다.');
+  assert.ok(Number.isSafeInteger(surfaceSizePx) && surfaceSizePx > 0, 'surface 크기가 잘못되었습니다.');
+  assert.ok(Number.isSafeInteger(viewportSizeCssPx) && viewportSizeCssPx > 0,
+    'CSS viewport 크기가 잘못되었습니다.');
+  const pixel = Math.floor((cssPixel + 0.5) * (surfaceSizePx / viewportSizeCssPx));
+  assert.ok(pixel >= 0 && pixel < surfaceSizePx, '계산한 surface 표본이 범위를 벗어났습니다.');
+  return pixel;
+}
+
+export function compareC11AndroidPixelCopyScene(log, {
+  scene, runID, pngBytes, viewportCssPx,
+  markerPrefix = 'C111', cacheDirectory = 'c11-grid-surface-pixel-matrix',
+}) {
+  assert.ok(['C111', 'C1122', 'C1123'].includes(markerPrefix), 'Android 표면 marker prefix가 잘못되었습니다.');
+  assert.ok(['c11-grid-surface-pixel-matrix', 'c1122-grid-surface-pixel-matrix',
+    'c1123-grid-surface-pixel-matrix']
+    .includes(cacheDirectory), 'Android 표면 cache 경로가 허용되지 않습니다.');
+  const marker = `SPINON_${markerPrefix}_GRID_PIXEL_MATRIX`;
+  const BEGIN = `${marker}_BEGIN `;
+  const CAPTURE = `${marker}_CAPTURE `;
+  const SAMPLE = `${marker}_SAMPLE `;
+  const SUMMARY = `${marker}_SUMMARY `;
   assert.match(runID, /^[A-Za-z0-9_-]{8,128}$/, 'run ID 형식이 잘못되었습니다.');
   assert.ok(scene && /^[a-z0-9-]{1,80}$/.test(scene.id), 'scene ID가 잘못되었습니다.');
   assert.ok(Array.isArray(scene.samples) && scene.samples.length >= 1 && scene.samples.length <= 64,
     'fixture sample 수가 1–64 범위 밖입니다.');
   assert.ok(Buffer.isBuffer(pngBytes), 'PixelCopy PNG가 Buffer가 아닙니다.');
+  assert.ok(viewportCssPx && Number.isSafeInteger(viewportCssPx.width) && viewportCssPx.width > 0
+    && Number.isSafeInteger(viewportCssPx.height) && viewportCssPx.height > 0,
+  'C11 runtime CSS viewport가 잘못되었습니다.');
 
   const begins = markerLines(log, BEGIN, runID);
   const captures = markerLines(log, CAPTURE, runID);
@@ -59,12 +79,24 @@ export function compareC11AndroidPixelCopyScene(log, { scene, runID, pngBytes })
   const generation = exactInteger(begin.generation, 'surface generation', 1);
   const width = exactInteger(begin.width, 'begin width', 1);
   const height = exactInteger(begin.height, 'begin height', 1);
+  const viewportWidth = exactInteger(begin.viewport_width, 'begin CSS viewport width', 1);
+  const viewportHeight = exactInteger(begin.viewport_height, 'begin CSS viewport height', 1);
+  assert.deepEqual([viewportWidth, viewportHeight], [viewportCssPx.width, viewportCssPx.height],
+    'Android PixelCopy viewport가 고정 C11 runtime viewport와 다릅니다.');
+  const scaleX = width / viewportWidth;
+  const scaleY = height / viewportHeight;
+  assert.equal(Number(begin.scale_x), scaleX, 'begin surface x scale이 실제 크기에서 계산되지 않았습니다.');
+  assert.equal(Number(begin.scale_y), scaleY, 'begin surface y scale이 실제 크기에서 계산되지 않았습니다.');
   const density = Number(begin.density);
   assert.ok(Number.isFinite(density) && density > 0, 'Android density가 잘못되었습니다.');
   assert.equal(exactInteger(begin.samples, 'begin sample count', 1), scene.samples.length);
   assert.equal(exactInteger(capture.generation, 'capture generation', 1), generation);
   assert.equal(exactInteger(capture.width, 'capture width', 1), width);
   assert.equal(exactInteger(capture.height, 'capture height', 1), height);
+  assert.equal(exactInteger(capture.viewport_width, 'capture CSS viewport width', 1), viewportWidth);
+  assert.equal(exactInteger(capture.viewport_height, 'capture CSS viewport height', 1), viewportHeight);
+  assert.equal(Number(capture.scale_x), scaleX, 'capture surface x scale이 실제 크기에서 계산되지 않았습니다.');
+  assert.equal(Number(capture.scale_y), scaleY, 'capture surface y scale이 실제 크기에서 계산되지 않았습니다.');
   assert.equal(Number(capture.density), density, 'PixelCopy begin/capture density가 다릅니다.');
   assert.equal(exactInteger(capture.attempts, 'PixelCopy attempts', 1) <= 3, true,
     'PixelCopy retry 수가 제한을 넘었습니다.');
@@ -74,7 +106,8 @@ export function compareC11AndroidPixelCopyScene(log, { scene, runID, pngBytes })
   assert.equal(exactInteger(summary.observed_samples, 'observed sample count', 1), scene.samples.length);
 
   const pngPath = capture.png;
-  assert.match(pngPath ?? '', /^\/data\/user\/0\/dev\.spinon\.bootstrap\/cache\/c11-grid-surface-pixel-matrix\/[a-z0-9-]+-[A-Za-z0-9_-]+\.png$/,
+  const escapedCacheDirectory = cacheDirectory.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  assert.match(pngPath ?? '', new RegExp(`^/data/user/0/dev\\.spinon\\.bootstrap/cache/${escapedCacheDirectory}/[a-z0-9-]+-[A-Za-z0-9_-]+\\.png$`),
     'PixelCopy PNG 경로가 앱 cache 경로/run 규칙과 다릅니다.');
   const image = decodeRgbaPng(pngBytes);
   assert.deepEqual([image.width, image.height], [width, height], 'PixelCopy PNG 크기가 marker와 다릅니다.');
@@ -100,8 +133,8 @@ export function compareC11AndroidPixelCopyScene(log, { scene, runID, pngBytes })
     const cssX = exactInteger(actual.css_x, `${expected.id} CSS x`);
     const cssY = exactInteger(actual.css_y, `${expected.id} CSS y`);
     assert.deepEqual([cssX, cssY], [expected.xCssPx, expected.yCssPx], `${expected.id}: CSS 좌표`);
-    const x = Math.floor((cssX + 0.5) * density);
-    const y = Math.floor((cssY + 0.5) * density);
+    const x = cssPixelCenterToSurfacePixel(cssX, width, viewportWidth);
+    const y = cssPixelCenterToSurfacePixel(cssY, height, viewportHeight);
     assert.deepEqual([exactInteger(actual.x, `${expected.id} pixel x`),
       exactInteger(actual.y, `${expected.id} pixel y`)], [x, y], `${expected.id}: device pixel 좌표`);
     const rgba = actual.rgba.split(',').map((value) => exactInteger(value, `${expected.id} RGBA`, 0));
@@ -113,7 +146,9 @@ export function compareC11AndroidPixelCopyScene(log, { scene, runID, pngBytes })
   });
 
   return { status: 'matched', scene: scene.id, runID, processId: pid,
+    markerPrefix,
     surfaceGeneration: generation, density, surface: [width, height],
+    runtimeViewportCssPx: [viewportWidth, viewportHeight], scale: [scaleX, scaleY],
     expectedSamples: scene.samples.length, matchedSamples: checkedSamples.length,
     maximumChannelError: 0, pngSha256, samples: checkedSamples };
 }

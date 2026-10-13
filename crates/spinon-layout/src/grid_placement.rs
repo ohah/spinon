@@ -1,8 +1,54 @@
-use std::collections::BTreeMap;
+use std::collections::{BTreeMap, BTreeSet};
 
 use spinon_core::NodeId;
 
-use crate::{LayoutDisplay, LayoutError, LayoutInput};
+use crate::{GridPlacementMode, GridTrackSize, LayoutDisplay, LayoutError, LayoutInput};
+
+/// 한 번 계산하는 동안 정규화한 모든 Grid item과 container row입니다.
+#[derive(Default)]
+pub(crate) struct NormalizedGridLayout {
+    pub(crate) item_placements: BTreeMap<NodeId, GridItemInput>,
+    pub(crate) expanded_rows: BTreeMap<NodeId, Vec<GridTrackSize>>,
+    pub(crate) expanded_columns: BTreeMap<NodeId, Vec<GridTrackSize>>,
+    pub(crate) auto_placed_items: BTreeSet<NodeId>,
+}
+
+/// 기존 placement profile과 C11.2.2 sparse profile의 입력을 계산 가능한 line으로 변환합니다.
+pub(super) fn normalize_grid_layout(
+    input: &LayoutInput,
+    index: &BTreeMap<NodeId, usize>,
+) -> Result<NormalizedGridLayout, LayoutError> {
+    let mut output = NormalizedGridLayout {
+        item_placements: normalize_grid_item_placements(input, index)?,
+        ..NormalizedGridLayout::default()
+    };
+    let hidden = hidden_subtrees(input, index);
+    for container_node in &input.nodes {
+        let Some(container) = input.grid_containers.get(&container_node.id) else {
+            continue;
+        };
+        if container_node.style.display != LayoutDisplay::Grid
+            || hidden[&container_node.id]
+            || !matches!(container.placement_mode, GridPlacementMode::SparseRow)
+        {
+            continue;
+        }
+        if container.placement_mode == GridPlacementMode::SparseRow {
+            let sparse = super::grid_auto_placement::normalize_sparse_grid_container(
+                input,
+                &hidden,
+                container_node,
+                container,
+            )?;
+            output.item_placements.extend(sparse.item_placements);
+            if let Some(rows) = sparse.expanded_rows {
+                output.expanded_rows.insert(container_node.id, rows);
+            }
+            output.auto_placed_items.extend(sparse.auto_placed_items);
+        }
+    }
+    Ok(output)
+}
 
 /// CSS Grid item의 계산된 배치 끝점입니다.
 #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
@@ -47,6 +93,9 @@ pub(super) fn normalize_grid_item_placements(
             .grid_containers
             .get(&container_node.id)
             .ok_or(LayoutError::MissingGridContainer(container_node.id))?;
+        if matches!(container.placement_mode, GridPlacementMode::SparseRow) {
+            continue;
+        }
         let visible_items = container_node
             .children
             .iter()
@@ -104,7 +153,10 @@ pub(super) fn normalize_grid_item_placements(
     Ok(normalized)
 }
 
-fn hidden_subtrees(input: &LayoutInput, index: &BTreeMap<NodeId, usize>) -> BTreeMap<NodeId, bool> {
+pub(super) fn hidden_subtrees(
+    input: &LayoutInput,
+    index: &BTreeMap<NodeId, usize>,
+) -> BTreeMap<NodeId, bool> {
     let mut hidden = BTreeMap::new();
     let mut pending = vec![(input.root, false)];
     while let Some((id, parent_hidden)) = pending.pop() {
@@ -222,7 +274,7 @@ fn normalize_axis(
     ))
 }
 
-fn explicit_line(
+pub(super) fn explicit_line(
     node: NodeId,
     property: &'static str,
     value: i32,
@@ -248,7 +300,11 @@ fn explicit_line(
     Ok(normalized)
 }
 
-fn positive_span(node: NodeId, property: &'static str, span: u32) -> Result<u32, LayoutError> {
+pub(super) fn positive_span(
+    node: NodeId,
+    property: &'static str,
+    span: u32,
+) -> Result<u32, LayoutError> {
     if span == 0 {
         return Err(invalid_placement(
             node,
@@ -264,7 +320,11 @@ fn explicit_line_bounds(track_count: usize) -> (i64, i64) {
     (1, last_line)
 }
 
-fn invalid_placement(node: NodeId, property: &'static str, reason: &'static str) -> LayoutError {
+pub(super) fn invalid_placement(
+    node: NodeId,
+    property: &'static str,
+    reason: &'static str,
+) -> LayoutError {
     LayoutError::InvalidGridPlacement {
         node,
         property,

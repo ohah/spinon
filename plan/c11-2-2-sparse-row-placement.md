@@ -1,15 +1,15 @@
 # C11.2.2 · 행 우선 sparse 자동 배치와 암시 행
 
-**상태:** 계획 검토 완료 · Chrome 154 사전 비교 고정(16 scene·69 node, DPR 1·2) · 고정 WPT 후보 Chrome 기준 2/2 통과(Spinon 적합성 아님) · C11.2.1 통합 관문 대기 · runtime 구현 미시작  
-**상위:** [C11 CSS Grid](c11-css-grid.md) · [C11.2.1 명시 배치](c11-2-1-explicit-grid-placement.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)  
-**계획 실패 관점 검토:** [초기 계획 검토](../spec/internal/evidence/c11-2-2-sparse-row-placement-plan-review-2026-10-12.md) · [커서 되감기 장면 보강 후 재검토](../spec/internal/evidence/c11-2-2-sparse-row-placement-plan-review-2026-10-12-v2.md)  
-**사전 비교:** [초기 Chrome 154 기준 v3](../tests/fixtures/css/references/c11-grid-auto-placement-precomparison-v3.json) · [보강한 Chrome 154 기준 v4](../tests/fixtures/css/references/c11-grid-auto-placement-precomparison-v4.json) · [v4 장면·실행·캡처 근거](../spec/internal/evidence/c11-2-2-sparse-row-placement-precomparison-2026-10-12-v4/README.md) · [v4 도구·fixture 검토](../spec/internal/evidence/c11-2-2-sparse-row-placement-precomparison-implementation-review-2026-10-12-v2.md)  
-**표준 기준:** [CSS Grid Layout Module Level 1 · 2025-03-26 CRD §7.5–7.7, §8.3–8.5](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/)  
+**상태:** 제한 runtime profile과 다섯 명시적 Vec 예약 실패 검증 완료 · 현재 PR 후보 Android API 37 AVD·iOS 26.2 Simulator 각 16 scene 실행 · 플랫폼별 성공 11/11·기대 거부 5/5 · geometry 최대 오차 0 CSS px · 표면 51/51 sample exact · Spinon WPT 적합성·전체 Grid 지원은 미완료
+**상위:** [C11 CSS Grid](c11-css-grid.md) · [C11.2.1 명시 배치](c11-2-1-explicit-grid-placement.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
+**계획 실패 관점 검토:** [초기 계획 검토](../spec/internal/evidence/c11-2-2-sparse-row-placement-plan-review-2026-10-12.md) · [커서 되감기 장면 보강 후 재검토](../spec/internal/evidence/c11-2-2-sparse-row-placement-plan-review-2026-10-12-v2.md) · [allocator failure 주입 계획 검토](../spec/internal/evidence/c11-2-2-grid-allocation-failure-plan-review-2026-10-13.md)
+**사전 비교:** [초기 Chrome 154 기준 v3](../tests/fixtures/css/references/c11-grid-auto-placement-precomparison-v3.json) · [보강한 Chrome 154 기준 v4](../tests/fixtures/css/references/c11-grid-auto-placement-precomparison-v4.json) · [v4 장면·실행·캡처 근거](../spec/internal/evidence/c11-2-2-sparse-row-placement-precomparison-2026-10-12-v4/README.md) · [v4 도구·fixture 검토](../spec/internal/evidence/c11-2-2-sparse-row-placement-precomparison-implementation-review-2026-10-12-v2.md)
+**표준 기준:** [CSS Grid Layout Module Level 1 · 2025-03-26 CRD §7.5–7.7, §8.3–8.5](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/)
 **기준 엔진:** 기존 고정 Chromium 154 환경 · 현재 잠금된 Taffy `0.14.0`
 
 ## 선행 조건
 
-C11.2.2 runtime 코드는 C11.2.1 구현이 별도 변경으로 통합되고 Rust·Chrome fixture 검사가 통과한 뒤 시작한다. Android 실기기 10-scene PixelCopy 행렬은 2026-10-13 SM-S731N에서 통과했다. Spinon WPT runner·전체 적합성은 X16에서 별도 추적하며 C11.2.2 runtime 시작 조건으로 두지 않는다. 이 계획 문서와 기준 fixture 작성은 선행 통합 전에 준비할 수 있다.
+C11.2.1은 현재 `origin/main`의 `d489361`에 통합되어 있다. 이 단계의 Chrome fixture, Rust 검사와 모바일 행렬을 통과했다. Spinon WPT runner·전체 적합성은 X16에서 별도 추적하며 C11.2.2 runtime의 통과 근거로 간주하지 않는다.
 
 ## 목표
 
@@ -65,24 +65,34 @@ C11.2.1의 explicit-only placement 다음으로 한 Grid 안에서 definite item
 | Typed cascade | shorthand·longhand cascade와 computed placement 값이 Chrome fixture와 일치하고 값·node·property 진단을 보존한다. | 부정확한 변환이나 무관한 child의 값으로 container 전체를 잘못 거부하면 실패. |
 | 배치 알고리즘 | definite-first, row-locked, definite-column, fully-auto 순서와 sparse cursor가 reference의 cell occupancy·implicit row 수와 같다. | DOM order 재배열, hole backfill, overlap 오판, 암시 열 생성은 실패. |
 | Track/layout | 지원 `grid-auto-rows`와 row/column gap 및 fixed-size item의 모든 rect가 Chrome 허용 오차 안이다. | implicit auto sizing 또는 unsupported track을 Taffy 기본값으로 성공 처리하면 실패. |
-| 실패 원자성 | 잘못된 placement, line/span overflow, 10,000 track 초과, 예약 실패에서 새 revision 결과가 publish되지 않고 이전 scene이 잘못된 새 revision으로 보이지 않는다. 유효 후속 계산은 같은 worker에서 회복한다. | 부분 frame·stale snapshot·panic을 정상 결과로 분류하면 실패. |
+| 실패 원자성 | 잘못된 placement, line/span overflow, 10,000 track 초과에서 부분 frame·양수 draw가 없고 유효 후속 계산이 회복한다. 다섯 명시적 `Vec::try_reserve` 오류를 실제 allocator failure로 주입해 오류 변환과 동일 worker 후속 계산을 확인한다. | `BTreeMap`·`BTreeSet` 등 infallible allocation, 전역 OOM 복구와 플랫폼 allocator fault injection을 보장하지 않는다. |
 | Runtime | Android와 iOS에서 동일 고정 V8 fixture가 FFI→Rust→WGPU 경로를 통과하고 node ID·revision·frame·draw marker를 수집한다. | AVD/Simulator 결과와 실기기 결과를 합치지 않는다. draw marker를 pixel 검증으로 부르지 않는다. |
 | Surface | 지원 scene의 track/gap/item interior sample을 Android PixelCopy와 iOS Metal drawable에서 Chrome 색상과 node별 비교한다. | screenshot을 surface readback 대신 쓰지 않고, compositor 이후 색상이나 hardware 성능으로 과장하지 않는다. |
 | WPT | Chrome 공식 runner에서 고정한 자동 WPT 후보를 실행하고, Spinon 결과는 공식 runner 통합 전까지 자체 fixture 결과로만 보고한다. | Chrome 통과를 Spinon 적합성으로 표기하지 않는다. |
 
+### Vec 예약 오류 주입 계획
+
+- 실패 지점은 현재 Grid auto-placement의 명시적 예약 5곳으로 한정한다: 보이는 자식 배치 목록, row-locked cursor, 확장된 행 track, occupancy 행 목록, 행별 interval 목록.
+- 각 지점의 실제 `Vec::try_reserve` 또는 `try_reserve_exact` 호출 직전에만 해당 지점을 지정한 thread-local one-shot failpoint를 무장한다. `spinon-layout` unit-test binary의 test-only global allocator가 바로 그 할당 요청을 한 번 실패시키며, 실패 요청을 관측하지 못한 테스트는 통과시키지 않는다. 실패 주입은 반환 오류를 흉내 내는 가짜 seam이 아니라 실제 Vec 예약 요청에 대한 allocator 실패다.
+- 이 failpoint와 allocator는 `cfg(test)`에서만 컴파일한다. 다른 테스트 thread의 할당과 failpoint 비활성 상태의 할당은 `System` allocator로 전달한다. panic 경로에서도 thread-local 상태를 정리하는 guard를 둔다.
+- 각 지점마다 정확한 `GridAllocationFailure`의 node/property를 확인하고, 같은 테스트 thread에서 같은 `TaffyLayoutEngine` instance로 동일 입력을 재계산해 정상 frame을 얻는다. 다섯 지점 모두 실패한 호출은 `LayoutOutput`을 반환하지 않아야 한다.
+- 이 검사는 다섯 명시적 Vec 예약 오류 경로만 증명한다. `BTreeMap`·`BTreeSet` 등 infallible allocation, 전역 OOM 복구, 플랫폼별 allocator 동작, WPT 적합성은 증명하지 않는다.
+
 ## 구현 순서
 
 - [x] 초기 15-scene·66-node 기준을 보존하고, definite-column cursor가 뒤로 이동할 때 row를 증가시키는 누락 장면을 추가해 Chrome 154의 16-scene·69-node reference v4를 DPR 1·2로 고정했다. 16개 DPR 1 screenshot, 각 scene의 explicit/computed/implicit track 수, WPT source hash 및 negative inventory를 저장했다. 신규 장면에서 Grid 콘텐츠 기준 column 2 item은 `(44, 0)`, 뒤이어 column 1에 고정한 item은 cursor row-wrap으로 `(0, 24)`에 놓이고 explicit row 하나 뒤에 implicit row 하나가 생성됐다. 고정 WPT 후보 두 개는 기존 WPT runner에서 Chrome `154.0.8037.98` 기준 각각 PASS, negative-line 7/7 subtest PASS다. 이는 Chrome oracle 결과이며 Spinon 적합성이나 현재 profile 전체 통과를 뜻하지 않는다. [기준 v3](../tests/fixtures/css/references/c11-grid-auto-placement-precomparison-v3.json) · [기준 v4](../tests/fixtures/css/references/c11-grid-auto-placement-precomparison-v4.json) · [v4 실행 근거](../spec/internal/evidence/c11-2-2-sparse-row-placement-precomparison-2026-10-12-v4/README.md).
-- [ ] `GridPlacementInput` 분류·CSS conflict handling·범위 검증을 unit test-first로 확장한다.
-- [ ] typed `grid-auto-rows`/`grid-auto-flow` 투영과 새 runtime profile을 연결한다.
-- [ ] Taffy adapter의 sparse placement·양의 암시 행 sizing을 연결하고 track 상한·예약 실패·원자성 회귀를 추가한다.
-- [ ] Rust→FFI→V8 단위 장면을 먼저 확인한 뒤 Android AVD/실기기와 iOS Simulator에서 전체 지원·거부 scene을 실행한다. 연결되지 않은 기기는 별도 미완료로 남긴다.
-- [ ] 실제 surface PixelCopy/Metal readback을 수집하고 Chrome 표본과 비교한다.
-- [ ] 구현 diff와 로그를 사용한 별도 20개 실패 관점 검토를 끝낸다. 수정이 있으면 영향을 받는 검증을 다시 실행한다.
-- [ ] `plan/c11-css-grid.md`, `spec/STATUS.md`, `spec/internal/README.md`, public roadmap 및 Tailnet preview를 같은 근거로 동기화한다. GitHub Pages 배포는 하지 않는다.
+- [x] `GridPlacementInput` 분류·CSS conflict handling·범위 검증을 unit test-first로 확장했다. layout-core Grid 검사 23개와 Chrome 154 고정 scene 비교 2개가 통과했다.
+- [x] typed `grid-auto-rows`/`grid-auto-flow` 투영과 `RuntimeBlockFlexGridAutoPlacementV1` runtime profile·전용 FFI fixture를 연결했다. Stylo 검사 3개, runtime 오류 진단 1개, FFI 검사 5개가 통과했다.
+- [x] Taffy adapter의 sparse placement·양의 암시 행 sizing, track 상한, unsupported input 거부와 거부 후 유효 계산 회복을 연결했다. Android/iOS의 다섯 거부 장면에서 정확한 진단, frame 부재, 양수 draw 부재를 확인했다. 다섯 명시적 Vec 예약 실패 경로는 별도 allocator 주입 단계에서 검증했다.
+- [x] 현재 PR 후보의 Rust→FFI→V8→WGPU 경로를 Android API 37 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 16 scene 실행했다. 각 플랫폼은 성공 11개·기대 거부 5개, 69 node, 최대 geometry 오차 0 CSS px이며 scene마다 새 앱 process를 썼다. Android 실행은 AVD이며 실기기 GPU 결과가 아니다. [Android AVD PixelCopy 행렬](../spec/internal/evidence/c11-2-2-sparse-row-placement-android-runtime-matrix-2026-10-13/c1122-avd-mv61a1sd-32a80873/README.md) · [iOS Metal 행렬](../spec/internal/evidence/c11-2-2-sparse-row-placement-ios-simulator-runtime-matrix-2026-10-13/c1122-i-mv61i5ir-95971d40/README.md).
+- [x] Android `SurfaceView` PixelCopy와 iOS Metal drawable에서 11개 성공 장면·51개 표본을 Chrome 154 DPR 1과 비교했다. 양쪽 모두 최대 RGBA 채널 오차 0이다. Android renderer는 ANGLE/SwiftShader, iOS 표본은 compositor 제출 전 drawable이므로 하드웨어 GPU나 OS 최종 합성 출력의 parity·성능을 뜻하지 않는다.
+- [x] 구현 diff·fixture·runtime 로그·표면 비교를 실패 관점으로 검토하고, 첫 iOS draw 보고서가 1 KiB 경계에서 잘리던 문제를 발견해 Android/iOS native 출력 버퍼를 16 KiB로 늘린 뒤 두 행렬을 재실행했다. allocator 변경은 [allocator 구현 검토](../spec/internal/evidence/c11-2-2-grid-allocation-failure-implementation-review-2026-10-13.md), 격리한 최종 PR 후보는 [전용 PR 후보 구현 검토](../spec/internal/evidence/c11-2-2-pr-candidate-implementation-review-2026-10-13.md)에 기록했다. 기존 구현 검토 문서의 미주입 결과는 당시 시점 기록으로 유지한다.
+- [x] 다섯 `Vec` 예약 위치에 실제 allocator failure를 주입해 `GridAllocationFailure`의 node/property, 실패 호출의 output 부재, 같은 worker thread·engine instance의 후속 정상 계산을 검증했다. [결과·로그](../spec/internal/evidence/c11-2-2-grid-allocation-failure-2026-10-13/README.md) · [구현 공격 검토 20개 관점](../spec/internal/evidence/c11-2-2-grid-allocation-failure-implementation-review-2026-10-13.md).
+- [x] `cargo test --workspace`에서 640 passed·4 ignored·실패 0, `cargo clippy -p spinon-layout --all-targets -- -D warnings`, 변경 Rust 파일 rustfmt 검사와 `git diff --check`를 통과했다. 이 결과는 전역 OOM이나 모바일 OS allocator fault injection 검증이 아니다. [workspace 실행 로그](../spec/internal/evidence/c11-2-2-grid-allocation-failure-2026-10-13/workspace-test.log).
+- [x] `plan/c11-css-grid.md`, `spec/STATUS.md`, `spec/internal/README.md`, 내부 계약, public roadmap과 Tailnet preview를 실제 구현 근거에 맞췄다. 최신 근거와 링크 대상을 Tailnet 미리보기에 동기화했으며 GitHub Pages는 배포하지 않았다.
 
 ## 이번 단계에서 제외
 
-`grid-auto-flow:dense`, column flow, implicit columns, negative implicit rows, explicit line으로 implicit track 생성, 복수 `grid-auto-rows` 반복 pattern, `auto`·`%`·`fr`·`minmax()` implicit sizing, named lines/areas, `repeat()`·auto-repeat, `order`, text/replaced/intrinsic content, auto min-size, baseline/alignment 확장, absolute-positioned child, scroll/overflow, writing mode·RTL, subgrid, masonry, full WPT runner 및 성능 우위는 포함하지 않는다. dense/column/implicit column은 다음 C11.2.3 계획에서 별도 범위로 다룬다.
+`grid-auto-flow:dense`, column flow, implicit columns, negative implicit rows, explicit line으로 implicit track 생성, 복수 `grid-auto-rows` 반복 pattern, `auto`·`%`·`fr`·`minmax()` implicit sizing, named lines/areas, `repeat()`·auto-repeat, `order`, text/replaced/intrinsic content, auto min-size, baseline/alignment 확장, absolute-positioned child, scroll/overflow, writing mode·RTL, subgrid, masonry, full WPT runner 및 성능 우위는 포함하지 않는다. dense·column flow와 양의 implicit column은 별도 C11.2.3 기능 PR에서 다룬다.
 
 이 단계의 완료는 C11.2.1·C11.2·C11 상위 항목, 전체 CSS 지원 또는 웹/모바일 전체 동등성을 완료로 표시하지 않는다.

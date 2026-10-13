@@ -1,0 +1,130 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-6767c122241c7b83)
+
+running 109 tests
+test css_math::tests::invalid_math_dimensions_and_resource_limits_still_fail ... ok
+test absolute_position_tests::absolute_percentage_height_rejects_an_indefinite_owner_height ... ok
+test compact_taffy_style::tests::grid_style_projection_is_smaller_than_taffy_style ... ok
+test css_math::tests::css_non_finite_intermediates_are_censored_only_after_evaluation ... ok
+test absolute_position_tests::hidden_absolute_subtree_is_not_promoted_to_the_viewport ... ok
+test absolute_position_tests::positioned_owner_padding_edge_is_the_absolute_origin ... ok
+test absolute_position_tests::viewport_absolute_box_leaves_normal_flow_unchanged ... ok
+test absolute_position_tests::automatic_insets_retain_static_position_when_source_parent_differs_from_owner ... ok
+test absolute_position_tests::absolute_percentages_use_positioned_owner_instead_of_source_parent ... ok
+test css_math::tests::non_finite_percentage_is_still_classified_as_percentage ... ok
+test absolute_position_tests::absolute_ancestor_establishes_the_nested_containing_block ... ok
+test fixed_position_tests::fixed_static_position_and_fixed_root_fail_closed ... ok
+test fixed_position_tests::fixed_percentages_use_viewport_axes_instead_of_source_parent_size ... ok
+test fixed_position_tests::fixed_descendants_use_viewport_while_absolute_descendants_use_fixed_box ... ok
+test flex_auto_margin::tests::corrects_negative_column_cross_start_margin ... ok
+test fixed_position_tests::hidden_fixed_subtree_is_not_promoted_to_viewport_root ... ok
+test flex_auto_margin::tests::corrects_negative_row_cross_start_margin ... ok
+test flex_auto_margin::tests::does_not_correct_end_main_axis_or_nonnegative_margins ... ok
+test grid::auto_placement_tests::implicit_auto_sizing_and_explicit_column_overflow_fail_closed ... ok
+test grid::auto_placement_tests::auto_placed_intrinsic_item_size_is_rejected_and_next_layout_recovers ... ok
+test grid::auto_placement_tests::implicit_track_cap_is_checked_before_expanding_rows ... ok
+test grid::auto_placement_tests::implicit_rows_repeat_fixed_track_size_and_keep_row_gap ... ok
+test grid::auto_placement_tests::sparse_placement_normalizes_reversed_equal_and_negative_lines ... ok
+test grid::auto_placement_tests::column_locked_items_wrap_to_the_next_row_when_cursor_column_decreases ... ok
+test grid::auto_placement_tests::mixed_definite_and_auto_items_place_definite_items_first ... ok
+test grid::auto_placement_tests::actual_grid_vec_reservation_failures_return_errors_and_recover_on_the_same_worker ... ok
+test flex_auto_margin::tests::full_layout_corrects_overflowing_cross_axis_auto_margins ... ok
+test grid::tests::auto_flow_outside_c11_1_fails_closed_before_taffy ... ok
+test grid::tests::empty_grid_uses_explicit_tracks_without_creating_items ... ok
+test grid::tests::grid_track_count_above_taffy_limit_fails_instead_of_being_truncated ... ok
+test grid::tests::grid_layout_preserves_child_flex_dispatch ... ok
+test grid::tests::hidden_explicit_item_does_not_disable_implicit_track_rejection_for_visible_auto_items ... ok
+test grid::tests::nonzero_grid_item_order_fails_closed_before_taffy ... ok
+test grid::tests::hidden_grid_child_does_not_trigger_validation_for_unsupported_placement ... ok
+test grid_placement::tests::positive_and_negative_lines_resolve_from_explicit_grid_edges ... ok
+test grid::tests::definite_length_fraction_and_gap_tracks_auto_place_in_source_order ... ok
+test grid::tests::nested_grid_containers_classify_auto_and_explicit_items_independently ... ok
+test grid::auto_placement_tests::row_sparse_cursor_does_not_backfill_a_hole_and_respects_spans ... ok
+test positioning_tests::absolute_layout_root_fails_closed_before_a_partial_frame_map_exists ... ok
+test grid::tests::percentage_tracks_use_the_definite_grid_content_axes ... ok
+test grid_placement::tests::positive_spans_resolve_from_either_definite_endpoint ... ok
+test grid_placement::tests::reversed_lines_swap_and_equal_lines_fail_closed ... ok
+test grid_placement::tests::zero_negative_span_auto_mixture_and_overflowing_ranges_fail_closed ... ok
+test host_document::tests::host_document_input_preserves_distinct_document_and_render_revisions ... ok
+test host_document::tests::display_box_sizing_and_flex_shrink_reach_taffy ... ok
+test host_document::tests::host_document_input_rejects_missing_styles_text_and_non_root_elements ... ok
+test positioning::tests::nearest_relative_owner_is_inherited_and_hidden_boxes_have_no_owner ... ok
+test host_document::tests::host_document_projection_matches_legacy_tree_and_taffy_frames ... ok
+test positioning_tests::block_wrapper_absolute_child_keeps_explicit_insets_with_flex_owner ... ok
+test positioning_tests::malformed_position_inputs_fail_closed_before_frame_publication ... ok
+test positioning_tests::absolute_child_of_flex_source_parent_uses_explicit_insets_without_joining_flow ... ok
+test positioning_tests::relative_flex_item_moves_visually_without_moving_its_sibling ... ok
+test positioning_tests::relative_layout_root_uses_the_viewport_as_its_percentage_basis ... ok
+test positioning_tests::relative_percentage_insets_use_the_containing_block_axis ... ok
+test tests::aspect_ratio_preserves_two_definite_block_sizes ... ok
+test tests::border::border_width_is_included_in_content_and_border_box_geometry ... ok
+test tests::border::negative_and_nonfinite_border_widths_fail_before_taffy ... ok
+test positioning_tests::static_insets_are_ignored_and_nested_relative_offsets_propagate_once ... ok
+test tests::flex_baseline::first_baseline_content_alignment_rejects_auto_sized_items ... ok
+test tests::flex_baseline::ambiguous_negative_main_margin_fails_closed ... ok
+test tests::flex_baseline::display_none_baseline_container_does_not_reject_its_hidden_auto_sized_subtree ... ok
+test tests::duplicate_ids_and_invalid_styles_are_rejected ... ok
+test tests::flex_baseline::positive_main_gap_can_wrap_zero_size_items_at_the_same_main_coordinate ... ok
+test tests::flex_baseline::rtl_baseline_fails_closed_instead_of_reusing_ltr_geometry ... ok
+test tests::flex_baseline::zero_main_size_items_that_exactly_fit_share_one_baseline_line ... ok
+test tests::fractional_dimensions_are_not_rounded_by_the_layout_engine ... ok
+test tests::input_snapshot_reads_the_core_tree_and_keeps_child_order ... ok
+test tests::fractional_flex_distribution_matches_chromium_without_integer_rounding ... ok
+test tests::legacy_oracle::legacy_tree::tests::failed_event_can_restore_tree_snapshot ... ok
+test tests::flex_reverse::reference_covers_reverse_shorthand_override_and_wrap_boundaries ... ok
+test tests::legacy_oracle::legacy_tree::tests::invalid_ids_and_parents_leave_tree_unchanged ... ok
+test tests::invalid_inputs::invalid_viewport_root_and_graph_are_rejected_before_layout ... ok
+test tests::invalid_inputs::negative_and_non_finite_min_max_sizes_are_rejected_before_taffy ... ok
+test tests::invalid_inputs::nonpositive_and_nonfinite_aspect_ratios_are_rejected_before_taffy ... ok
+test tests::flex_reverse::reverse_geometry_keeps_source_child_vectors_unchanged ... ok
+test tests::legacy_oracle::legacy_tree::tests::nested_order_gap_and_flex_layout ... ok
+test tests::flex_reverse::flex_reverse_layout_matches_every_chromium_node_at_both_device_scale_factors ... ok
+test tests::legacy_oracle::legacy_tree::tests::overfull_and_extreme_dimensions_do_not_panic ... ok
+test tests::legacy_oracle::legacy_tree::tests::subtree_deletion_and_id_reuse ... ok
+test tests::percentage_spacing::childless_flow_root_uses_the_leaf_layout_path ... ok
+test tests::percentage_spacing::block_formatting_root_flow_root_uses_viewport_width_as_definite_basis ... ok
+test tests::percentage_spacing::finite_percentage_that_overflows_geometry_is_rejected_before_commit ... ok
+test tests::margin::negative_margin_reaches_taffy_and_non_finite_margin_is_rejected ... ok
+test tests::percentage_spacing::flow_root_containing_block_keeps_nested_auto_block_width_definite ... ok
+test tests::percentage_spacing::non_finite_spacing_and_negative_padding_or_gap_fail_with_the_property ... ok
+test tests::flex_order::order_modified_layout_matches_every_chromium_node_and_keeps_source_children ... ok
+test tests::percentage_spacing::root_gap_percentage_is_rejected_before_taffy_resolution ... ok
+test tests::percentage_spacing::percentage_edges_with_unprovable_containing_width_fail_closed ... ok
+test tests::percentages::cyclic_column_gap_fails_with_node_property_and_axis ... ok
+test tests::percentages::percentage_dimensions_reject_negative_and_non_finite_values_but_allow_overflow ... ok
+test tests::percentages::percentage_dimensions_resolve_against_parent_content_box_without_clamping ... ok
+test tests::percentages::percentage_flex_basis_uses_the_container_main_axis ... ok
+test tests::percentages::percentage_gap_uses_the_definite_main_axis_content_size ... ok
+test tests::percentages::percentage_margin_and_padding_keep_the_containing_block_width_basis ... ok
+test tests::percentages::viewport_resolving_root_accepts_full_and_partial_percentage_dimensions ... ok
+test tests::rtl_row_preserves_dom_child_order_while_starting_at_the_right ... ok
+test tests::taffy_matches_the_browser_reference_fixture ... ok
+test tests::typed_math::duplicate_math_ids_fail_before_taffy_callback ... ok
+test tests::typed_math::dimension_error_discards_the_entire_layout_result ... ok
+test tests::typed_math::mismatched_math_owner_and_property_fail_before_taffy_callback ... ok
+test tests::typed_math::every_min_max_math_dimension_requires_a_property_matched_binding ... ok
+test tests::typed_math::unknown_taffy_handle_is_recorded_instead_of_dereferenced ... ok
+test tests::typed_math::non_finite_css_math_intermediate_is_censored_before_a_frame_is_returned ... ok
+test tests::taffy_matches_the_preserved_small_engine_on_the_shared_fixture ... ok
+test tests::flex_distribution::taffy_matches_all_c102_chromium_flex_distribution_cases ... ok
+test tests::flex_distribution::invalid_flex_distribution_factors_fail_with_node_and_property_context ... ok
+test tests::legacy_oracle::legacy_tree::tests::one_thousand_nodes_can_be_laid_out_and_removed ... ok
+test depth_tests::depth_limit_does_not_reject_a_wide_tree_with_the_same_node_count ... ok
+test depth_tests::direct_layout_rejects_the_first_node_past_the_depth_limit_before_taffy ... ok
+
+test result: ok. 109 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.14s
+
+     Running tests/c124_global_allocator_failure.rs (target/debug/deps/c124_global_allocator_failure-4e8daedd62b59480)
+
+running 2 tests
+test global_allocator_failure_child ... ok
+SPINON_C124_ALLOCATOR_FAILPOINT
+test try_reserve_returns_error_and_infallible_layout_failure_stops_child ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+   Doc-tests spinon_layout
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

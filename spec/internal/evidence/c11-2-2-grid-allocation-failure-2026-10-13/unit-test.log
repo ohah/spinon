@@ -1,0 +1,19 @@
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.20s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-6767c122241c7b83)
+
+running 1 test
+GRID_RESERVATION_FAILURE site=VisibleItemList observed=true expected_node=1 expected_property=grid-placement-occupancy returned_error=true
+GRID_RESERVATION_FAILURE site=RowLockedCursor observed=true expected_node=1 expected_property=grid-placement-occupancy returned_error=true
+GRID_RESERVATION_FAILURE site=ExpandedRows observed=true expected_node=1 expected_property=grid-template-rows returned_error=true
+GRID_RESERVATION_FAILURE site=OccupancyRows observed=true expected_node=2 expected_property=grid-placement-occupancy returned_error=true
+GRID_RESERVATION_FAILURE site=OccupancyIntervals observed=true expected_node=2 expected_property=grid-placement-occupancy returned_error=true
+test grid::auto_placement_tests::actual_grid_vec_reservation_failures_return_errors_and_recover_on_the_same_worker ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 108 filtered out; finished in 0.00s
+
+     Running tests/c124_global_allocator_failure.rs (target/debug/deps/c124_global_allocator_failure-4e8daedd62b59480)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 2 filtered out; finished in 0.00s

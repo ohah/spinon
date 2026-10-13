@@ -1,8 +1,8 @@
 # 0059 · C11 Grid 레이아웃 내부 계약
 
-**문서 ID:** `0059` · **내부 숫자 버전:** `0.1.0` 고정 · **상태:** C11.1과 C11.2.1 제한 profile 구현; C11.2.1 PR 통합 전 · **Android:** SM-S731N 실기기에서 C11.1 geometry와 C11.2.1 10-scene PixelCopy matrix 실행 · **iOS:** iPhone 17 Pro/iOS 26.2 Simulator geometry·Metal drawable 실행 · **공개 API:** 아님 · **제품 CSS 지원:** 미선언
+**문서 ID:** `0059` · **내부 숫자 버전:** `0.1.0` 고정 · **상태:** C11.1·C11.2.1·C11.2.2 제한 profile 구현 및 지정 검증 완료 · **Android:** C11.2.2 Android 17/API 37 AVD matrix·PixelCopy 실행(ANGLE/SwiftShader) · **iOS:** iPhone 17 Pro/iOS 26.2 Simulator geometry·Metal drawable 실행 · **공개 API:** 아님 · **제품 CSS 지원:** 미선언
 
-이 계약은 Stylo의 computed Grid CSS를 `spinon-layout` 입력으로 변환하고 Taffy Grid 계산 후보에 전달하는 Rust 내부 경계를 정의한다. `compute_runtime_block_flex_grid_style_layout` 경로는 HostDocument snapshot, 같은 mount-root의 Stylo view, typed cascade, style projection과 Taffy layout을 연결한다. Android/iOS 앱의 C11.1 고정 fixture도 이 공통 Rust 경로를 V8 runtime host·FFI와 연결한다. C11.1 Android 실기기와 iOS Simulator geometry는 각각 10 scene·40 node에서 통과했고, Android 고정 장면 표본은 7/7 exact였다. C11.2.1의 정확한 구현 후보 tree `fb9411cb7cc7f767699447d29a202a8fadca1ece`는 Android 16/API 36 SM-S731N과 iPhone 17 Pro/iOS 26.2 Simulator의 10 scene을 각각 실행했다. 양쪽 모두 성공 6/6·기대 거부 4/4, 21-node frame, geometry 최대 오차 0 CSS px, 성공 scene surface 표본 20/20 exact였다. Android 값은 실기기 PixelCopy, iOS 값은 compositor 제출 전 Metal drawable readback이다. Android API 37 AVD의 별도 표면 행렬은 ANGLE/SwiftShader 소프트웨어 경로이며 실기기 GPU 결과가 아니다. C11.2.1 구현은 PR 통합 전이고 공식 Spinon WPT runner·적합성, iOS 실기기와 compositor 이후 pixel parity는 미완료다. 이 계약은 CSS parser, 전체 CSS Grid 지원 또는 공개 `@spinon/*` API를 제공하지 않는다. 제품 상태는 [공식 상태 대장](../STATUS.md), 작업 분해는 [C11 계획](../../plan/c11-css-grid.md)을 따른다.
+이 계약은 Stylo의 computed Grid CSS를 `spinon-layout` 입력으로 변환하고 Taffy Grid 계산 후보에 전달하는 Rust 내부 경계를 정의한다. `compute_runtime_block_flex_grid_style_layout` 경로는 HostDocument snapshot, 같은 mount-root의 Stylo view, typed cascade, style projection과 Taffy layout을 연결한다. Android/iOS 앱의 C11.1 고정 fixture도 이 공통 Rust 경로를 V8 runtime host·FFI와 연결한다. C11.1 Android 실기기와 iOS Simulator geometry는 각각 10 scene·40 node에서 통과했고, Android 고정 장면 표본은 7/7 exact였다. C11.2.1의 정확한 구현 후보 tree `fb9411cb7cc7f767699447d29a202a8fadca1ece`는 Android 16/API 36 SM-S731N과 iPhone 17 Pro/iOS 26.2 Simulator의 10 scene을 각각 실행했다. 양쪽 모두 성공 6/6·기대 거부 4/4, 21-node frame, geometry 최대 오차 0 CSS px, 성공 scene surface 표본 20/20 exact였다. Android 값은 실기기 PixelCopy, iOS 값은 compositor 제출 전 Metal drawable readback이다. Android API 37 AVD의 별도 표면 행렬은 ANGLE/SwiftShader 소프트웨어 경로이며 실기기 GPU 결과가 아니다. C11.2.1은 현재 main에 통합되어 있다. 공식 Spinon WPT runner·적합성, iOS 실기기와 compositor 이후 pixel parity는 미완료다. 이 계약은 CSS parser, 전체 CSS Grid 지원 또는 공개 `@spinon/*` API를 제공하지 않는다. 제품 상태는 [공식 상태 대장](../STATUS.md), 작업 분해는 [C11 계획](../../plan/c11-css-grid.md)을 따른다.
 
 ## 책임 경계
 
@@ -52,6 +52,14 @@ C11.1의 all-auto row placement와 구분되는 `RuntimeBlockFlexGridPlacementV1
 - 오류에는 해당 HostDocument `NodeId`, property, computed value와 실패 단계가 포함되어야 한다. parser diagnostic과 adapter/layout error는 서로 변환해 숨기지 않는다.
 - 내부 Rust enum·필드의 정확한 공개 형태는 C11.1 구현 전 비교 검토에서 확정한다. 계획 전용 타입을 API로 게시했다고 해석하지 않는다.
 - Stage 확장으로 named lines, repeat, explicit/implicit placement, intrinsic sizing, alignment, writing mode, positioned items가 추가될 때마다 별도 단계·fixture·review를 만든다. 미출시 숫자 버전은 사용자가 호환성 정책을 정하기 전까지 올리지 않는다.
+
+## C11.2.2 sparse row auto-placement 구현 상태
+
+C11.2.2는 `RuntimeBlockFlexGridAutoPlacementV1` 제한 profile로 CSS 기본 `grid-auto-flow: row` sparse 배치, definite·auto item 혼합, 양의 implicit row와 단일 px `grid-auto-rows`를 처리한다. C11.2.1 profile의 성공 의미를 바꾸지 않으며 dense/column flow, implicit column, 반복 auto-row sizing 및 전체 Grid 지원을 제공하지 않는다. 상세 허용·거부 입력은 [C11.2.2 계획](../../plan/c11-2-2-sparse-row-placement.md)에 고정한다.
+
+- 다섯 명시적 `Vec::try_reserve[_exact]` 실패 지점에서 실제 test allocator 실패, 정확한 `GridAllocationFailure` node/property, 결과 원자성, 같은 worker·engine instance의 복구를 검사했다. 이는 전역 OOM, `BTreeMap`·`BTreeSet` allocation 또는 OS allocator failure 처리를 뜻하지 않는다. [실행 근거](./evidence/c11-2-2-grid-allocation-failure-2026-10-13/README.md) · [allocator 구현 검토](./evidence/c11-2-2-grid-allocation-failure-implementation-review-2026-10-13.md).
+- 검증한 실행은 Android 17/API 37 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 16 scene·69 node, 11 성공·5 기대 거부, geometry 오차 0 CSS px로 통과했다. Android PixelCopy와 iOS Metal drawable에서 각 11 scene·51 sample exact다. AVD는 ANGLE/SwiftShader이며 iOS readback은 OS compositor 제출 전이다. [Android AVD 행렬](./evidence/c11-2-2-sparse-row-placement-android-runtime-matrix-2026-10-13/c1122-avd-mv61a1sd-32a80873/README.md) · [iOS Simulator 행렬](./evidence/c11-2-2-sparse-row-placement-ios-simulator-runtime-matrix-2026-10-13/c1122-i-mv61i5ir-95971d40/README.md).
+- Rust workspace, targeted CSS fixture tests, Android/iOS simulator builds와 scene 행렬이 통과했다. Chrome 154는 고정 subset의 oracle이다. [전용 범위 구현 검토](./evidence/c11-2-2-pr-candidate-implementation-review-2026-10-13.md)를 대조했다. Spinon WPT runner·적합성, 전체 CSS Grid, iOS 실기기와 compositor 이후 parity는 미완료다.
 
 ## 기준 자료
 

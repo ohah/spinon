@@ -146,7 +146,10 @@ async function runAndroid() {
     assert.ok(devicePngPath?.startsWith('/data/user/0/dev.spinon.bootstrap/cache/c11-grid-surface-pixel-matrix/'));
     const pngBytes = device.adb(['exec-out', 'run-as', packageName, 'cat',
       `cache/c11-grid-surface-pixel-matrix/${devicePngPath.split('/').at(-1)}`], { encoding: null }).stdout;
-    const comparison = compareC11AndroidPixelCopyScene(log, { scene, runID: sceneRunID, pngBytes });
+    const comparison = compareC11AndroidPixelCopyScene(log, {
+      scene, runID: sceneRunID, pngBytes,
+      viewportCssPx: matrix.runtime.viewportCssPx,
+    });
     const pngPath = `${scene.id}-pixelcopy.png`;
     writeFileSync(resolve(evidenceDirectory, pngPath), pngBytes);
     writeFileSync(resolve(evidenceDirectory, `${scene.id}-runtime.log`), log);

@@ -79,6 +79,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockFlexStackingV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
         );
         let supports_border_layout = matches!(
             snapshot.profile,
@@ -94,6 +95,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockFlexStackingV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
         );
         let supports_runtime_flex = supports_runtime_flex(snapshot.profile);
         let supports_auto_margin = runtime_flex_items.contains(&node)
@@ -104,6 +106,7 @@ pub(super) fn project_styles(
                     | ComputedStyleProfile::RuntimeBlockFlexStackingV1
                     | ComputedStyleProfile::RuntimeBlockFlexGridV1
                     | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
+                    | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
             );
         let flex_direction = parse_flex_direction(
             node,
@@ -139,11 +142,13 @@ pub(super) fn project_styles(
                         | ComputedStyleProfile::RuntimeBlockFlexStackingV1
                         | ComputedStyleProfile::RuntimeBlockFlexGridV1
                         | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
+                        | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
                 ),
                 matches!(
                     snapshot.profile,
                     ComputedStyleProfile::RuntimeBlockFlexGridV1
                         | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
+                        | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
                 ),
             )?,
             box_sizing: parse_box_sizing(node, required(element, "box-sizing")?)?,
@@ -245,7 +250,8 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeBlockFlexStackingV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridV1
-                | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1 => {
+                | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1 => {
                     parse_runtime_align_items(node, required(element, "align-items")?)?
                 }
                 ComputedStyleProfile::FlexAlignmentV1
@@ -286,7 +292,8 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeBlockFlexStackingV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridV1
-                | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1 => {
+                | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1 => {
                     parse_runtime_justify_content(node, required(element, "justify-content")?)?
                 }
                 _ => LayoutStyle::default().justify_content,
@@ -324,7 +331,8 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockPositioningV1
                 | ComputedStyleProfile::RuntimeBlockFlexStackingV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridV1
-                | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1 => LayoutEdges {
+                | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1 => LayoutEdges {
                     top: parse_margin(
                         node,
                         "margin-top",
@@ -376,7 +384,8 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockPositioningV1
                 | ComputedStyleProfile::RuntimeBlockFlexStackingV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridV1
-                | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1 => LayoutEdges {
+                | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1 => LayoutEdges {
                     top: parse_nonnegative_spacing(
                         node,
                         "padding-top",
@@ -449,7 +458,7 @@ pub(super) fn project_styles(
                         .unwrap_or_else(|| "<계산값 없음>".to_owned()),
                 }
             })?;
-            grid_containers.insert(node, project_grid_layout(node, grid)?);
+            grid_containers.insert(node, project_grid_layout(node, grid, snapshot.profile)?);
         }
         if supports_positioning(snapshot.profile) {
             positioning.insert(
@@ -462,12 +471,16 @@ pub(super) fn project_styles(
                         || snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexGridV1
                         || snapshot.profile
                             == ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
+                        || snapshot.profile
+                            == ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
                         || supports_runtime_flex,
                     snapshot.profile == ComputedStyleProfile::RuntimeBlockPositioningV1
                         || snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexStackingV1
                         || snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexGridV1
                         || snapshot.profile
-                            == ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1,
+                            == ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
+                        || snapshot.profile
+                            == ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1,
                 )?,
             );
         }
@@ -475,7 +488,11 @@ pub(super) fn project_styles(
             return Err(StyleLayoutError::DuplicateComputedElement(node));
         }
     }
-    if snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1 {
+    if matches!(
+        snapshot.profile,
+        ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
+    ) {
         let grid_item_nodes = grid_nodes
             .as_ref()
             .map(|nodes| &nodes.grid_items)
@@ -517,6 +534,7 @@ fn is_grid_profile(profile: ComputedStyleProfile) -> bool {
         profile,
         ComputedStyleProfile::RuntimeBlockFlexGridV1
             | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
     )
 }
 
@@ -609,6 +627,7 @@ fn supports_positioning(profile: ComputedStyleProfile) -> bool {
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1
             | ComputedStyleProfile::RuntimeBlockFlexGridV1
             | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
     )
 }
 
@@ -624,6 +643,7 @@ fn supports_runtime_flex(profile: ComputedStyleProfile) -> bool {
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1
             | ComputedStyleProfile::RuntimeBlockFlexGridV1
             | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
     )
 }
 

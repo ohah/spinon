@@ -66,6 +66,8 @@ fn grid_input(
                 columns,
                 rows,
                 auto_flow: GridAutoFlow::Row,
+                auto_rows: GridAutoRows::Auto,
+                placement_mode: GridPlacementMode::Existing,
             },
         )]),
         grid_items: BTreeMap::new(),
@@ -157,6 +159,8 @@ fn nested_grid_containers_classify_auto_and_explicit_items_independently() {
             columns: vec![GridTrackSize::LengthPx(160.0)],
             rows: vec![GridTrackSize::LengthPx(120.0)],
             auto_flow: GridAutoFlow::Row,
+            auto_rows: GridAutoRows::Auto,
+            placement_mode: GridPlacementMode::Existing,
         },
     );
     input.grid_items.insert(

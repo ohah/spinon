@@ -1,0 +1,3 @@
+대상: emulator-5554 (Android 17/API 37 AVD, ro.kernel.qemu=1)
+실행: node tools/css-reference/capture-c11-2-2-grid-auto-placement-android-avd-check.mjs emulator-5554
+수집기는 추적 가능한 임시 사본이었다. 저장된 patch는 실기기 전용 guard를 AVD 확인으로 바꾸고 run ID·플랫폼 표기와 제한 문구만 맞춘다. scene 목록, runtime assertion, geometry 비교, PixelCopy 비교와 빌드 입력은 공통 수집기와 같다.

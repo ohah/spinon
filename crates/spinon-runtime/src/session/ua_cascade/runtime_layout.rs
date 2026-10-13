@@ -8,6 +8,7 @@ use spinon_style::{
     CascadeDiagnostic, ComputedStyleSnapshot, StylesheetSource, StyloDocumentView,
     first_unsupported_runtime_block_display_inline_value,
     first_unsupported_runtime_block_display_stylesheet_value,
+    first_unsupported_runtime_block_flex_grid_auto_placement_inline_property,
     first_unsupported_runtime_block_flex_grid_inline_property,
     first_unsupported_runtime_block_paint_inline_property,
     first_unsupported_runtime_block_positioning_inline_property,
@@ -186,6 +187,9 @@ pub(super) fn compute_runtime_layout(
         super::calculation::RuntimeCalculationProfile::BlockFlexGridPlacement => {
             spinon_style::first_unsupported_runtime_block_flex_grid_placement_inline_property(&view)
         }
+        super::calculation::RuntimeCalculationProfile::BlockFlexGridAutoPlacement => {
+            first_unsupported_runtime_block_flex_grid_auto_placement_inline_property(&view)
+        }
         super::calculation::RuntimeCalculationProfile::FlexPaint
         | super::calculation::RuntimeCalculationProfile::RegisteredPropertiesPaint => {
             first_unsupported_runtime_custom_properties_paint_inline_property(&view)
@@ -333,6 +337,11 @@ fn layout_failure_from_error(error: StyleLayoutError) -> RuntimeLayoutFailure {
             Some(node.get()),
             Some(property.to_owned()),
         ),
+        StyleLayoutError::UnsupportedInlineProperty { node, property } => layout_failure(
+            "unsupported_inline_property",
+            Some(node.get()),
+            Some(property),
+        ),
         StyleLayoutError::UnsupportedRootMargin(node) => layout_failure(
             "unsupported_root_margin",
             Some(node.get()),
@@ -355,6 +364,28 @@ fn layout_failure_from_error(error: StyleLayoutError) -> RuntimeLayoutFailure {
             "invalid_grid_placement",
             Some(node.get()),
             Some(format!("{property}: {reason}")),
+        ),
+        StyleLayoutError::Layout(LayoutError::UnsupportedGridAutoFlow(node)) => layout_failure(
+            "unsupported_grid_auto_flow",
+            Some(node.get()),
+            Some("grid-auto-flow".to_owned()),
+        ),
+        StyleLayoutError::Layout(LayoutError::UnsupportedGridAutoRows { node, .. }) => {
+            layout_failure(
+                "unsupported_grid_auto_rows",
+                Some(node.get()),
+                Some("grid-auto-rows".to_owned()),
+            )
+        }
+        StyleLayoutError::Layout(LayoutError::GridTrackLimitExceeded {
+            node,
+            property,
+            count,
+            maximum,
+        }) => layout_failure(
+            "grid_track_limit_exceeded",
+            Some(node.get()),
+            Some(format!("{property}: {count} > {maximum}")),
         ),
         StyleLayoutError::SnapshotMismatch { .. } => {
             layout_failure("snapshot_mismatch", None, None)
@@ -408,9 +439,10 @@ pub(super) fn layout_failure(
 
 #[cfg(test)]
 mod tests {
-    use super::{layout_failure_from_render_error, valid_frame};
+    use super::{layout_failure_from_error, layout_failure_from_render_error, valid_frame};
     use spinon_core::NodeId;
-    use spinon_layout::LayoutFrame;
+    use spinon_layout::{LayoutError, LayoutFrame};
+    use spinon_style_to_layout::StyleLayoutError;
     use spinon_style_to_render::StyleRenderError;
 
     #[test]
@@ -460,5 +492,59 @@ mod tests {
         assert_eq!(failure.code, "unsupported_computed_value");
         assert_eq!(failure.node_id, Some(42));
         assert_eq!(failure.property.as_deref(), Some("visibility"));
+    }
+
+    #[test]
+    fn grid_auto_placement_rejections_keep_stable_codes_and_css_properties() {
+        let node = NodeId::new(42).unwrap();
+        let cases = [
+            (
+                StyleLayoutError::Layout(LayoutError::UnsupportedGridAutoFlow(node)),
+                "unsupported_grid_auto_flow",
+                "grid-auto-flow",
+            ),
+            (
+                StyleLayoutError::Layout(LayoutError::UnsupportedGridAutoRows {
+                    node,
+                    reason: "암시 행에 auto sizing이 필요합니다",
+                }),
+                "unsupported_grid_auto_rows",
+                "grid-auto-rows",
+            ),
+            (
+                StyleLayoutError::Layout(LayoutError::GridTrackLimitExceeded {
+                    node,
+                    property: "grid-template-columns",
+                    count: 10_001,
+                    maximum: 10_000,
+                }),
+                "grid_track_limit_exceeded",
+                "grid-template-columns: 10001 > 10000",
+            ),
+            (
+                StyleLayoutError::UnsupportedInlineProperty {
+                    node,
+                    property: "grid-auto-columns".to_owned(),
+                },
+                "unsupported_inline_property",
+                "grid-auto-columns",
+            ),
+            (
+                StyleLayoutError::UnsupportedComputedValue {
+                    node,
+                    property: "grid-auto-rows",
+                    value: "12px 18px".to_owned(),
+                },
+                "unsupported_computed_value",
+                "grid-auto-rows",
+            ),
+        ];
+
+        for (error, expected_code, expected_property) in cases {
+            let failure = layout_failure_from_error(error);
+            assert_eq!(failure.code, expected_code);
+            assert_eq!(failure.node_id, Some(42));
+            assert_eq!(failure.property.as_deref(), Some(expected_property));
+        }
     }
 }

@@ -45,6 +45,20 @@ public final class MainActivity extends Activity {
             "numeric-lines", "positive-spans", "reversed-lines",
             "shorthand-cascade", "overlap-source-order", "nested-placement-modes",
     };
+    private static final String[] C1122_GRID_AUTO_PLACEMENT_SCENE_IDS = {
+            "definite-first-mixed", "auto-only-fill", "positive-implicit-row",
+            "row-locked-auto-column", "column-locked-auto-row", "auto-column-span",
+            "sparse-hole-not-backfilled", "implicit-track-size-and-gap",
+            "hidden-child-excluded", "nested-independent-placement", "reject-implicit-column",
+            "reject-auto-sized-implicit-row", "reject-repeated-auto-row-pattern",
+            "reject-dense-flow", "reject-column-flow", "column-cursor-wrap",
+    };
+    private static final String[] C1122_GRID_PIXEL_SCENE_IDS = {
+            "definite-first-mixed", "auto-only-fill", "positive-implicit-row",
+            "row-locked-auto-column", "column-locked-auto-row", "auto-column-span",
+            "sparse-hole-not-backfilled", "implicit-track-size-and-gap",
+            "hidden-child-excluded", "nested-independent-placement", "column-cursor-wrap",
+    };
     private static final String[] C11_GRID_CASE_IDS = {
             "fixed-tracks-gap", "percentage-tracks", "fractional-tracks-gap",
             "mixed-fixed-percent-fr", "row-auto-placement", "empty-grid",
@@ -203,6 +217,25 @@ public final class MainActivity extends Activity {
         int c11GridSceneIndex = 0;
         boolean c1121GridPlacementRequested = getIntent()
                 .getBooleanExtra("spinon_c1121_grid_placement", false);
+        String c1122GridScene = getIntent().getStringExtra("spinon_c1122_grid_auto_placement_scene");
+        boolean c1122GridAutoPlacementRequested = getIntent()
+                .getBooleanExtra("spinon_c1122_grid_auto_placement", false)
+                || c1122GridScene != null;
+        if (c1122GridAutoPlacementRequested) {
+            boolean allowed = false;
+            for (String sceneId : C1122_GRID_AUTO_PLACEMENT_SCENE_IDS) {
+                allowed |= sceneId.equals(c1122GridScene);
+            }
+            if (!allowed) {
+                TextView unavailable = new TextView(this);
+                unavailable.setText("알 수 없는 C11.2.2 Grid scene입니다.");
+                unavailable.setTextColor(Color.WHITE);
+                unavailable.setGravity(Gravity.CENTER);
+                setContentView(unavailable);
+                Log.e(TAG, "SPINON_C1122_GRID_ARGUMENT_ERROR rejected=true");
+                return;
+            }
+        }
         boolean c11GridFixtureRequested = getIntent()
                 .getBooleanExtra("spinon_c11_grid_fixture", false) || c11GridCase != null;
         if (c11GridCase != null) {
@@ -223,6 +256,14 @@ public final class MainActivity extends Activity {
                 for (String sceneId : C1121_GRID_PIXEL_SCENE_IDS) {
                     allowedPlacementPixelScene |= sceneId.equals(c11GridCase)
                             && sceneId.equals(placementScene);
+                }
+                if (allowedPlacementPixelScene) c11GridSceneIndex = 0;
+            }
+            if (c11GridSceneIndex < 0 && c1122GridAutoPlacementRequested) {
+                boolean allowedPlacementPixelScene = false;
+                for (String sceneId : C1122_GRID_PIXEL_SCENE_IDS) {
+                    allowedPlacementPixelScene |= sceneId.equals(c11GridCase)
+                            && sceneId.equals(c1122GridScene);
                 }
                 if (allowedPlacementPixelScene) c11GridSceneIndex = 0;
             }
@@ -268,6 +309,7 @@ public final class MainActivity extends Activity {
                 || getIntent().getBooleanExtra("spinon_c124_depth_safety", false)
                 || getIntent().getStringExtra("spinon_c124_surface_case") != null
                 || getIntent().getBooleanExtra("spinon_c1121_grid_placement", false)
+                || c1122GridAutoPlacementRequested
                 || c11GridFixtureRequested
                 || getIntent().getBooleanExtra("spinon_c121_static_relative", false)) {
             if (!BuildConfig.SPINON_C04_RUNTIME_GPU) {

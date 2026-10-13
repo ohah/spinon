@@ -1,0 +1,433 @@
+{
+  "schema": "spinon-css-c11-2-2-grid-auto-placement-runtime-matrix/v1",
+  "inputs": {
+    "inventory": {
+      "path": "tests/fixtures/css/c11/grid-auto-placement-inventory-v3.json",
+      "sha256": "13ae10b3f2a82727c26279d099e0a8b2578791c1c589e6a18f5ef9b913d06f9a"
+    },
+    "html": {
+      "path": "tests/fixtures/css/c11/grid-auto-placement-v3.html",
+      "sha256": "e0d948f0f2874b5ca35092abf0efd89940fb8b6e854b46d1938507f40059b8cf"
+    },
+    "chromiumReference": {
+      "path": "tests/fixtures/css/references/c11-grid-auto-placement-precomparison-v4.json",
+      "sha256": "aa56820f4b80b87ff314547398ff4910e4eec93db65be85c73599c4455db32b8",
+      "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.98-13ae10b3f2a8-e0d948f0f287-b5056662794f"
+    },
+    "generator": {
+      "path": "tools/css-reference/build-c11-2-2-grid-auto-placement-runtime-matrix.mjs",
+      "sha256": "fc4bd8d3d45de4920cde42daa850aac57eda319ac5bfb9dfb7d39940862c731b"
+    }
+  },
+  "viewportCssPx": {
+    "width": 360,
+    "height": 800
+  },
+  "wrapperStyle": "display:flex;width:360px;height:800px",
+  "cases": [
+    {
+      "index": 0,
+      "id": "definite-first-mixed",
+      "scope": "implementation-candidate",
+      "rootId": "c1122-definite-first-grid",
+      "nodeIds": [
+        "c1122-definite-first-grid",
+        "c1122-definite-first-auto-a",
+        "c1122-definite-first-fixed",
+        "c1122-definite-first-auto-b"
+      ],
+      "parentIds": [
+        null,
+        "c1122-definite-first-grid",
+        "c1122-definite-first-grid",
+        "c1122-definite-first-grid"
+      ],
+      "expected": {
+        "outcome": "success"
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1122-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1122-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1122-definite-first-grid\");\nnode_0.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"position:absolute;left:20px;top:20px;display:grid;width:184px;height:88px;grid-template-columns:88px 88px;grid-template-rows:40px 40px;column-gap:8px;row-gap:8px;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1122-definite-first-grid\"] = node_0;\nnodeIds.push(\"c1122-definite-first-grid\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1122-definite-first-auto-a\");\nnode_1.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"width:30px;height:20px;background-color:#2866f6\");\nrefs[\"c1122-definite-first-grid\"].appendChild(node_1);\nrefs[\"c1122-definite-first-auto-a\"] = node_1;\nnodeIds.push(\"c1122-definite-first-auto-a\");\nconst node_2 = document.createElement(\"div\");\nnode_2.setAttribute(\"id\", \"c1122-definite-first-fixed\");\nnode_2.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_2.setAttribute(\"style\", \"width:30px;height:20px;grid-column:1 / 2;grid-row:1 / 2;background-color:#e5484d\");\nrefs[\"c1122-definite-first-grid\"].appendChild(node_2);\nrefs[\"c1122-definite-first-fixed\"] = node_2;\nnodeIds.push(\"c1122-definite-first-fixed\");\nconst node_3 = document.createElement(\"div\");\nnode_3.setAttribute(\"id\", \"c1122-definite-first-auto-b\");\nnode_3.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_3.setAttribute(\"style\", \"width:30px;height:20px;background-color:#19a974\");\nrefs[\"c1122-definite-first-grid\"].appendChild(node_3);\nrefs[\"c1122-definite-first-auto-b\"] = node_3;\nnodeIds.push(\"c1122-definite-first-auto-b\");\nreturn { sceneId:\"definite-first-mixed\", rootId:\"c1122-definite-first-grid\", nodeIds };\n})()",
+      "sourceSha256": "76ce1f2cf5835c501251a7733910e9f4877121330eb5ca1eaa33825efe591bdd"
+    },
+    {
+      "index": 1,
+      "id": "auto-only-fill",
+      "scope": "implementation-candidate",
+      "rootId": "c1122-auto-only-grid",
+      "nodeIds": [
+        "c1122-auto-only-grid",
+        "c1122-auto-only-a",
+        "c1122-auto-only-b",
+        "c1122-auto-only-c"
+      ],
+      "parentIds": [
+        null,
+        "c1122-auto-only-grid",
+        "c1122-auto-only-grid",
+        "c1122-auto-only-grid"
+      ],
+      "expected": {
+        "outcome": "success"
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1122-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1122-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1122-auto-only-grid\");\nnode_0.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"position:absolute;left:20px;top:20px;display:grid;width:184px;height:88px;grid-template-columns:88px 88px;grid-template-rows:40px 40px;column-gap:8px;row-gap:8px;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1122-auto-only-grid\"] = node_0;\nnodeIds.push(\"c1122-auto-only-grid\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1122-auto-only-a\");\nnode_1.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"width:30px;height:20px;background-color:#2866f6\");\nrefs[\"c1122-auto-only-grid\"].appendChild(node_1);\nrefs[\"c1122-auto-only-a\"] = node_1;\nnodeIds.push(\"c1122-auto-only-a\");\nconst node_2 = document.createElement(\"div\");\nnode_2.setAttribute(\"id\", \"c1122-auto-only-b\");\nnode_2.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_2.setAttribute(\"style\", \"width:30px;height:20px;background-color:#e5484d\");\nrefs[\"c1122-auto-only-grid\"].appendChild(node_2);\nrefs[\"c1122-auto-only-b\"] = node_2;\nnodeIds.push(\"c1122-auto-only-b\");\nconst node_3 = document.createElement(\"div\");\nnode_3.setAttribute(\"id\", \"c1122-auto-only-c\");\nnode_3.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_3.setAttribute(\"style\", \"width:30px;height:20px;background-color:#19a974\");\nrefs[\"c1122-auto-only-grid\"].appendChild(node_3);\nrefs[\"c1122-auto-only-c\"] = node_3;\nnodeIds.push(\"c1122-auto-only-c\");\nreturn { sceneId:\"auto-only-fill\", rootId:\"c1122-auto-only-grid\", nodeIds };\n})()",
+      "sourceSha256": "44bf19192c03a3598ead40b90272bb6cdeaaf0d3af52ff4c5560683938f51707"
+    },
+    {
+      "index": 2,
+      "id": "positive-implicit-row",
+      "scope": "implementation-candidate",
+      "rootId": "c1122-implicit-row-grid",
+      "nodeIds": [
+        "c1122-implicit-row-grid",
+        "c1122-implicit-row-a",
+        "c1122-implicit-row-b",
+        "c1122-implicit-row-c"
+      ],
+      "parentIds": [
+        null,
+        "c1122-implicit-row-grid",
+        "c1122-implicit-row-grid",
+        "c1122-implicit-row-grid"
+      ],
+      "expected": {
+        "outcome": "success"
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1122-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1122-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1122-implicit-row-grid\");\nnode_0.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"position:absolute;left:20px;top:20px;display:grid;width:184px;height:73px;grid-template-columns:88px 88px;grid-template-rows:40px;grid-auto-rows:25px;column-gap:8px;row-gap:8px;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1122-implicit-row-grid\"] = node_0;\nnodeIds.push(\"c1122-implicit-row-grid\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1122-implicit-row-a\");\nnode_1.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"width:30px;height:18px;background-color:#2866f6\");\nrefs[\"c1122-implicit-row-grid\"].appendChild(node_1);\nrefs[\"c1122-implicit-row-a\"] = node_1;\nnodeIds.push(\"c1122-implicit-row-a\");\nconst node_2 = document.createElement(\"div\");\nnode_2.setAttribute(\"id\", \"c1122-implicit-row-b\");\nnode_2.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_2.setAttribute(\"style\", \"width:30px;height:18px;background-color:#e5484d\");\nrefs[\"c1122-implicit-row-grid\"].appendChild(node_2);\nrefs[\"c1122-implicit-row-b\"] = node_2;\nnodeIds.push(\"c1122-implicit-row-b\");\nconst node_3 = document.createElement(\"div\");\nnode_3.setAttribute(\"id\", \"c1122-implicit-row-c\");\nnode_3.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_3.setAttribute(\"style\", \"width:30px;height:18px;background-color:#19a974\");\nrefs[\"c1122-implicit-row-grid\"].appendChild(node_3);\nrefs[\"c1122-implicit-row-c\"] = node_3;\nnodeIds.push(\"c1122-implicit-row-c\");\nreturn { sceneId:\"positive-implicit-row\", rootId:\"c1122-implicit-row-grid\", nodeIds };\n})()",
+      "sourceSha256": "4695d7361fe4b0d20542a02c888f29d754caa5c7da78fced74e4d2c1a57af018"
+    },
+    {
+      "index": 3,
+      "id": "row-locked-auto-column",
+      "scope": "implementation-candidate",
+      "rootId": "c1122-row-locked-grid",
+      "nodeIds": [
+        "c1122-row-locked-grid",
+        "c1122-row-locked-a",
+        "c1122-row-locked-b"
+      ],
+      "parentIds": [
+        null,
+        "c1122-row-locked-grid",
+        "c1122-row-locked-grid"
+      ],
+      "expected": {
+        "outcome": "success"
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1122-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1122-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1122-row-locked-grid\");\nnode_0.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"position:absolute;left:20px;top:20px;display:grid;width:160px;height:40px;grid-template-columns:50px 50px 50px;grid-template-rows:40px;column-gap:5px;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1122-row-locked-grid\"] = node_0;\nnodeIds.push(\"c1122-row-locked-grid\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1122-row-locked-a\");\nnode_1.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"width:20px;height:20px;grid-row:1 / 2;background-color:#2866f6\");\nrefs[\"c1122-row-locked-grid\"].appendChild(node_1);\nrefs[\"c1122-row-locked-a\"] = node_1;\nnodeIds.push(\"c1122-row-locked-a\");\nconst node_2 = document.createElement(\"div\");\nnode_2.setAttribute(\"id\", \"c1122-row-locked-b\");\nnode_2.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_2.setAttribute(\"style\", \"width:20px;height:20px;grid-row:1 / 2;background-color:#e5484d\");\nrefs[\"c1122-row-locked-grid\"].appendChild(node_2);\nrefs[\"c1122-row-locked-b\"] = node_2;\nnodeIds.push(\"c1122-row-locked-b\");\nreturn { sceneId:\"row-locked-auto-column\", rootId:\"c1122-row-locked-grid\", nodeIds };\n})()",
+      "sourceSha256": "3329ebda8d9d03696a3a3e1c1a416825a9fb14d40a45c51eae98a0d72b9d198d"
+    },
+    {
+      "index": 4,
+      "id": "column-locked-auto-row",
+      "scope": "implementation-candidate",
+      "rootId": "c1122-column-locked-grid",
+      "nodeIds": [
+        "c1122-column-locked-grid",
+        "c1122-column-locked-a",
+        "c1122-column-locked-b"
+      ],
+      "parentIds": [
+        null,
+        "c1122-column-locked-grid",
+        "c1122-column-locked-grid"
+      ],
+      "expected": {
+        "outcome": "success"
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1122-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1122-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1122-column-locked-grid\");\nnode_0.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"position:absolute;left:20px;top:20px;display:grid;width:84px;height:44px;grid-template-columns:40px 40px;grid-template-rows:20px 20px;column-gap:4px;row-gap:4px;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1122-column-locked-grid\"] = node_0;\nnodeIds.push(\"c1122-column-locked-grid\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1122-column-locked-a\");\nnode_1.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"width:20px;height:12px;grid-column:2 / 3;background-color:#2866f6\");\nrefs[\"c1122-column-locked-grid\"].appendChild(node_1);\nrefs[\"c1122-column-locked-a\"] = node_1;\nnodeIds.push(\"c1122-column-locked-a\");\nconst node_2 = document.createElement(\"div\");\nnode_2.setAttribute(\"id\", \"c1122-column-locked-b\");\nnode_2.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_2.setAttribute(\"style\", \"width:20px;height:12px;grid-column:2 / 3;background-color:#e5484d\");\nrefs[\"c1122-column-locked-grid\"].appendChild(node_2);\nrefs[\"c1122-column-locked-b\"] = node_2;\nnodeIds.push(\"c1122-column-locked-b\");\nreturn { sceneId:\"column-locked-auto-row\", rootId:\"c1122-column-locked-grid\", nodeIds };\n})()",
+      "sourceSha256": "aa1855e6f5245c0e27ade1ea8202afeccb7467cafb819c957b4f1be9bf9c2ab5"
+    },
+    {
+      "index": 5,
+      "id": "auto-column-span",
+      "scope": "implementation-candidate",
+      "rootId": "c1122-span-grid",
+      "nodeIds": [
+        "c1122-span-grid",
+        "c1122-span-a",
+        "c1122-span-b"
+      ],
+      "parentIds": [
+        null,
+        "c1122-span-grid",
+        "c1122-span-grid"
+      ],
+      "expected": {
+        "outcome": "success"
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1122-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1122-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1122-span-grid\");\nnode_0.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"position:absolute;left:20px;top:20px;display:grid;width:128px;height:44px;grid-template-columns:40px 40px 40px;grid-template-rows:20px 20px;column-gap:4px;row-gap:4px;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1122-span-grid\"] = node_0;\nnodeIds.push(\"c1122-span-grid\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1122-span-a\");\nnode_1.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"width:84px;height:18px;grid-column-start:auto;grid-column-end:span 2;background-color:#2866f6\");\nrefs[\"c1122-span-grid\"].appendChild(node_1);\nrefs[\"c1122-span-a\"] = node_1;\nnodeIds.push(\"c1122-span-a\");\nconst node_2 = document.createElement(\"div\");\nnode_2.setAttribute(\"id\", \"c1122-span-b\");\nnode_2.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_2.setAttribute(\"style\", \"width:40px;height:18px;background-color:#e5484d\");\nrefs[\"c1122-span-grid\"].appendChild(node_2);\nrefs[\"c1122-span-b\"] = node_2;\nnodeIds.push(\"c1122-span-b\");\nreturn { sceneId:\"auto-column-span\", rootId:\"c1122-span-grid\", nodeIds };\n})()",
+      "sourceSha256": "1a92325b01747e79a2264e5705f93e2ad5148e58a6c2ae0672e04412304725b9"
+    },
+    {
+      "index": 6,
+      "id": "sparse-hole-not-backfilled",
+      "scope": "implementation-candidate",
+      "rootId": "c1122-sparse-grid",
+      "nodeIds": [
+        "c1122-sparse-grid",
+        "c1122-sparse-auto-a",
+        "c1122-sparse-span",
+        "c1122-sparse-fixed",
+        "c1122-sparse-auto-b"
+      ],
+      "parentIds": [
+        null,
+        "c1122-sparse-grid",
+        "c1122-sparse-grid",
+        "c1122-sparse-grid",
+        "c1122-sparse-grid"
+      ],
+      "expected": {
+        "outcome": "success"
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1122-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1122-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1122-sparse-grid\");\nnode_0.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"position:absolute;left:20px;top:20px;display:grid;width:128px;height:49px;grid-template-columns:40px 40px 40px;grid-template-rows:20px;grid-auto-rows:25px;column-gap:4px;row-gap:4px;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1122-sparse-grid\"] = node_0;\nnodeIds.push(\"c1122-sparse-grid\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1122-sparse-auto-a\");\nnode_1.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"width:18px;height:18px;background-color:#2866f6\");\nrefs[\"c1122-sparse-grid\"].appendChild(node_1);\nrefs[\"c1122-sparse-auto-a\"] = node_1;\nnodeIds.push(\"c1122-sparse-auto-a\");\nconst node_2 = document.createElement(\"div\");\nnode_2.setAttribute(\"id\", \"c1122-sparse-span\");\nnode_2.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_2.setAttribute(\"style\", \"width:84px;height:18px;grid-column-start:auto;grid-column-end:span 2;background-color:#8758ff\");\nrefs[\"c1122-sparse-grid\"].appendChild(node_2);\nrefs[\"c1122-sparse-span\"] = node_2;\nnodeIds.push(\"c1122-sparse-span\");\nconst node_3 = document.createElement(\"div\");\nnode_3.setAttribute(\"id\", \"c1122-sparse-fixed\");\nnode_3.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_3.setAttribute(\"style\", \"width:18px;height:18px;grid-column:2 / 3;grid-row:1 / 2;background-color:#e5484d\");\nrefs[\"c1122-sparse-grid\"].appendChild(node_3);\nrefs[\"c1122-sparse-fixed\"] = node_3;\nnodeIds.push(\"c1122-sparse-fixed\");\nconst node_4 = document.createElement(\"div\");\nnode_4.setAttribute(\"id\", \"c1122-sparse-auto-b\");\nnode_4.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_4.setAttribute(\"style\", \"width:18px;height:18px;background-color:#19a974\");\nrefs[\"c1122-sparse-grid\"].appendChild(node_4);\nrefs[\"c1122-sparse-auto-b\"] = node_4;\nnodeIds.push(\"c1122-sparse-auto-b\");\nreturn { sceneId:\"sparse-hole-not-backfilled\", rootId:\"c1122-sparse-grid\", nodeIds };\n})()",
+      "sourceSha256": "c6e1bd41084525c62ab0716443438b67fe997084cf9af6d8c74eef0dd313e93e"
+    },
+    {
+      "index": 7,
+      "id": "implicit-track-size-and-gap",
+      "scope": "implementation-candidate",
+      "rootId": "c1122-gap-grid",
+      "nodeIds": [
+        "c1122-gap-grid",
+        "c1122-gap-a",
+        "c1122-gap-b",
+        "c1122-gap-c"
+      ],
+      "parentIds": [
+        null,
+        "c1122-gap-grid",
+        "c1122-gap-grid",
+        "c1122-gap-grid"
+      ],
+      "expected": {
+        "outcome": "success"
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1122-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1122-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1122-gap-grid\");\nnode_0.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"position:absolute;left:20px;top:20px;display:grid;width:126px;height:49px;grid-template-columns:50px 70px;grid-template-rows:20px;grid-auto-rows:24px;column-gap:6px;row-gap:5px;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1122-gap-grid\"] = node_0;\nnodeIds.push(\"c1122-gap-grid\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1122-gap-a\");\nnode_1.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"width:30px;height:12px;background-color:#2866f6\");\nrefs[\"c1122-gap-grid\"].appendChild(node_1);\nrefs[\"c1122-gap-a\"] = node_1;\nnodeIds.push(\"c1122-gap-a\");\nconst node_2 = document.createElement(\"div\");\nnode_2.setAttribute(\"id\", \"c1122-gap-b\");\nnode_2.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_2.setAttribute(\"style\", \"width:30px;height:12px;background-color:#e5484d\");\nrefs[\"c1122-gap-grid\"].appendChild(node_2);\nrefs[\"c1122-gap-b\"] = node_2;\nnodeIds.push(\"c1122-gap-b\");\nconst node_3 = document.createElement(\"div\");\nnode_3.setAttribute(\"id\", \"c1122-gap-c\");\nnode_3.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_3.setAttribute(\"style\", \"width:30px;height:12px;background-color:#19a974\");\nrefs[\"c1122-gap-grid\"].appendChild(node_3);\nrefs[\"c1122-gap-c\"] = node_3;\nnodeIds.push(\"c1122-gap-c\");\nreturn { sceneId:\"implicit-track-size-and-gap\", rootId:\"c1122-gap-grid\", nodeIds };\n})()",
+      "sourceSha256": "9ec18b4186606e4e1aec2a35fb6953ad01a81745a6d6a40ab0a6ec82c22a5c1d"
+    },
+    {
+      "index": 8,
+      "id": "hidden-child-excluded",
+      "scope": "implementation-candidate",
+      "rootId": "c1122-hidden-grid",
+      "nodeIds": [
+        "c1122-hidden-grid",
+        "c1122-hidden-item",
+        "c1122-hidden-visible-a",
+        "c1122-hidden-visible-b"
+      ],
+      "parentIds": [
+        null,
+        "c1122-hidden-grid",
+        "c1122-hidden-grid",
+        "c1122-hidden-grid"
+      ],
+      "expected": {
+        "outcome": "success"
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1122-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1122-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1122-hidden-grid\");\nnode_0.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"position:absolute;left:20px;top:20px;display:grid;width:184px;height:40px;grid-template-columns:88px 88px;grid-template-rows:40px;column-gap:8px;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1122-hidden-grid\"] = node_0;\nnodeIds.push(\"c1122-hidden-grid\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1122-hidden-item\");\nnode_1.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"display:none;width:30px;height:20px;grid-column:1 / 2;grid-row:1 / 2;background-color:#ffc857\");\nrefs[\"c1122-hidden-grid\"].appendChild(node_1);\nrefs[\"c1122-hidden-item\"] = node_1;\nnodeIds.push(\"c1122-hidden-item\");\nconst node_2 = document.createElement(\"div\");\nnode_2.setAttribute(\"id\", \"c1122-hidden-visible-a\");\nnode_2.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_2.setAttribute(\"style\", \"width:30px;height:20px;background-color:#2866f6\");\nrefs[\"c1122-hidden-grid\"].appendChild(node_2);\nrefs[\"c1122-hidden-visible-a\"] = node_2;\nnodeIds.push(\"c1122-hidden-visible-a\");\nconst node_3 = document.createElement(\"div\");\nnode_3.setAttribute(\"id\", \"c1122-hidden-visible-b\");\nnode_3.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_3.setAttribute(\"style\", \"width:30px;height:20px;background-color:#e5484d\");\nrefs[\"c1122-hidden-grid\"].appendChild(node_3);\nrefs[\"c1122-hidden-visible-b\"] = node_3;\nnodeIds.push(\"c1122-hidden-visible-b\");\nreturn { sceneId:\"hidden-child-excluded\", rootId:\"c1122-hidden-grid\", nodeIds };\n})()",
+      "sourceSha256": "8b4e7141d892821469baab0180c78f5519e8b1a18294bc54f8dbfe57e0fa0950"
+    },
+    {
+      "index": 9,
+      "id": "nested-independent-placement",
+      "scope": "implementation-candidate",
+      "rootId": "c1122-nested-outer",
+      "nodeIds": [
+        "c1122-nested-outer",
+        "c1122-nested-explicit-grid",
+        "c1122-nested-explicit-item",
+        "c1122-nested-auto-grid",
+        "c1122-nested-auto-first",
+        "c1122-nested-auto-fixed"
+      ],
+      "parentIds": [
+        null,
+        "c1122-nested-outer",
+        "c1122-nested-explicit-grid",
+        "c1122-nested-outer",
+        "c1122-nested-auto-grid",
+        "c1122-nested-auto-grid"
+      ],
+      "expected": {
+        "outcome": "success"
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1122-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1122-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1122-nested-outer\");\nnode_0.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"position:absolute;left:20px;top:20px;display:grid;width:184px;height:48px;grid-template-columns:88px 88px;grid-template-rows:40px;column-gap:8px;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1122-nested-outer\"] = node_0;\nnodeIds.push(\"c1122-nested-outer\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1122-nested-explicit-grid\");\nnode_1.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"display:grid;width:88px;height:40px;grid-template-columns:40px 40px;grid-template-rows:40px;column-gap:8px;grid-column:1 / 2;grid-row:1 / 2;background-color:#2866f6\");\nrefs[\"c1122-nested-outer\"].appendChild(node_1);\nrefs[\"c1122-nested-explicit-grid\"] = node_1;\nnodeIds.push(\"c1122-nested-explicit-grid\");\nconst node_2 = document.createElement(\"div\");\nnode_2.setAttribute(\"id\", \"c1122-nested-explicit-item\");\nnode_2.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_2.setAttribute(\"style\", \"width:20px;height:20px;grid-column:2 / 3;grid-row:1 / 2;background-color:#ffc857\");\nrefs[\"c1122-nested-explicit-grid\"].appendChild(node_2);\nrefs[\"c1122-nested-explicit-item\"] = node_2;\nnodeIds.push(\"c1122-nested-explicit-item\");\nconst node_3 = document.createElement(\"div\");\nnode_3.setAttribute(\"id\", \"c1122-nested-auto-grid\");\nnode_3.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_3.setAttribute(\"style\", \"display:grid;width:88px;height:40px;grid-template-columns:40px 40px;grid-template-rows:40px;column-gap:8px;grid-column:2 / 3;grid-row:1 / 2;background-color:#e5484d\");\nrefs[\"c1122-nested-outer\"].appendChild(node_3);\nrefs[\"c1122-nested-auto-grid\"] = node_3;\nnodeIds.push(\"c1122-nested-auto-grid\");\nconst node_4 = document.createElement(\"div\");\nnode_4.setAttribute(\"id\", \"c1122-nested-auto-first\");\nnode_4.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_4.setAttribute(\"style\", \"width:20px;height:20px;background-color:#19a974\");\nrefs[\"c1122-nested-auto-grid\"].appendChild(node_4);\nrefs[\"c1122-nested-auto-first\"] = node_4;\nnodeIds.push(\"c1122-nested-auto-first\");\nconst node_5 = document.createElement(\"div\");\nnode_5.setAttribute(\"id\", \"c1122-nested-auto-fixed\");\nnode_5.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_5.setAttribute(\"style\", \"width:20px;height:20px;grid-column:1 / 2;grid-row:1 / 2;background-color:#8758ff\");\nrefs[\"c1122-nested-auto-grid\"].appendChild(node_5);\nrefs[\"c1122-nested-auto-fixed\"] = node_5;\nnodeIds.push(\"c1122-nested-auto-fixed\");\nreturn { sceneId:\"nested-independent-placement\", rootId:\"c1122-nested-outer\", nodeIds };\n})()",
+      "sourceSha256": "286d83c1faf3fda93a5eba8804c651cc3a74e85f3bfa4faf4c98313c49c8f553"
+    },
+    {
+      "index": 10,
+      "id": "reject-implicit-column",
+      "scope": "chromium-oracle-only",
+      "rootId": "c1122-reject-column-grid",
+      "nodeIds": [
+        "c1122-reject-column-grid",
+        "c1122-reject-column-item"
+      ],
+      "parentIds": [
+        null,
+        "c1122-reject-column-grid"
+      ],
+      "expected": {
+        "outcome": "expected-rejection",
+        "code": "invalid_grid_placement",
+        "nodeId": "c1122-reject-column-item",
+        "property": "grid-column-start",
+        "runtimeNodeId": 3
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1122-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1122-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1122-reject-column-grid\");\nnode_0.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"position:absolute;left:20px;top:20px;display:grid;width:84px;height:20px;grid-template-columns:40px 40px;grid-template-rows:20px;column-gap:4px;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1122-reject-column-grid\"] = node_0;\nnodeIds.push(\"c1122-reject-column-grid\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1122-reject-column-item\");\nnode_1.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"width:20px;height:18px;grid-column:4 / 5;grid-row:1 / 2;background-color:#f97316\");\nrefs[\"c1122-reject-column-grid\"].appendChild(node_1);\nrefs[\"c1122-reject-column-item\"] = node_1;\nnodeIds.push(\"c1122-reject-column-item\");\nreturn { sceneId:\"reject-implicit-column\", rootId:\"c1122-reject-column-grid\", nodeIds };\n})()",
+      "sourceSha256": "f8f56b65e7d34bdffb5d5e6b6cf080cfb1749f97321ea60847554711257b7a38"
+    },
+    {
+      "index": 11,
+      "id": "reject-auto-sized-implicit-row",
+      "scope": "chromium-oracle-only",
+      "rootId": "c1122-reject-auto-row-grid",
+      "nodeIds": [
+        "c1122-reject-auto-row-grid",
+        "c1122-reject-auto-row-a",
+        "c1122-reject-auto-row-b",
+        "c1122-reject-auto-row-c"
+      ],
+      "parentIds": [
+        null,
+        "c1122-reject-auto-row-grid",
+        "c1122-reject-auto-row-grid",
+        "c1122-reject-auto-row-grid"
+      ],
+      "expected": {
+        "outcome": "expected-rejection",
+        "code": "unsupported_grid_auto_rows",
+        "nodeId": "c1122-reject-auto-row-grid",
+        "property": "grid-auto-rows",
+        "runtimeNodeId": 2
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1122-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1122-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1122-reject-auto-row-grid\");\nnode_0.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"position:absolute;left:20px;top:20px;display:grid;width:84px;height:44px;grid-template-columns:40px 40px;grid-template-rows:20px;column-gap:4px;row-gap:4px;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1122-reject-auto-row-grid\"] = node_0;\nnodeIds.push(\"c1122-reject-auto-row-grid\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1122-reject-auto-row-a\");\nnode_1.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"width:20px;height:12px;background-color:#2866f6\");\nrefs[\"c1122-reject-auto-row-grid\"].appendChild(node_1);\nrefs[\"c1122-reject-auto-row-a\"] = node_1;\nnodeIds.push(\"c1122-reject-auto-row-a\");\nconst node_2 = document.createElement(\"div\");\nnode_2.setAttribute(\"id\", \"c1122-reject-auto-row-b\");\nnode_2.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_2.setAttribute(\"style\", \"width:20px;height:12px;background-color:#e5484d\");\nrefs[\"c1122-reject-auto-row-grid\"].appendChild(node_2);\nrefs[\"c1122-reject-auto-row-b\"] = node_2;\nnodeIds.push(\"c1122-reject-auto-row-b\");\nconst node_3 = document.createElement(\"div\");\nnode_3.setAttribute(\"id\", \"c1122-reject-auto-row-c\");\nnode_3.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_3.setAttribute(\"style\", \"width:20px;height:12px;background-color:#19a974\");\nrefs[\"c1122-reject-auto-row-grid\"].appendChild(node_3);\nrefs[\"c1122-reject-auto-row-c\"] = node_3;\nnodeIds.push(\"c1122-reject-auto-row-c\");\nreturn { sceneId:\"reject-auto-sized-implicit-row\", rootId:\"c1122-reject-auto-row-grid\", nodeIds };\n})()",
+      "sourceSha256": "94601d4581602fd0f80bd80b4b1fbf10e84d633e99b21e6d68fd8f677d1a6886"
+    },
+    {
+      "index": 12,
+      "id": "reject-repeated-auto-row-pattern",
+      "scope": "chromium-oracle-only",
+      "rootId": "c1122-reject-pattern-grid",
+      "nodeIds": [
+        "c1122-reject-pattern-grid",
+        "c1122-reject-pattern-a",
+        "c1122-reject-pattern-b",
+        "c1122-reject-pattern-c",
+        "c1122-reject-pattern-d",
+        "c1122-reject-pattern-e",
+        "c1122-reject-pattern-f",
+        "c1122-reject-pattern-g",
+        "c1122-reject-pattern-h"
+      ],
+      "parentIds": [
+        null,
+        "c1122-reject-pattern-grid",
+        "c1122-reject-pattern-grid",
+        "c1122-reject-pattern-grid",
+        "c1122-reject-pattern-grid",
+        "c1122-reject-pattern-grid",
+        "c1122-reject-pattern-grid",
+        "c1122-reject-pattern-grid",
+        "c1122-reject-pattern-grid"
+      ],
+      "expected": {
+        "outcome": "expected-rejection",
+        "code": "unsupported_computed_value",
+        "nodeId": "c1122-reject-pattern-grid",
+        "property": "grid-auto-rows",
+        "runtimeNodeId": 2
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1122-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1122-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1122-reject-pattern-grid\");\nnode_0.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"position:absolute;left:20px;top:20px;display:grid;width:84px;height:104px;grid-template-columns:40px 40px;grid-template-rows:20px;grid-auto-rows:16px 24px;column-gap:4px;row-gap:4px;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1122-reject-pattern-grid\"] = node_0;\nnodeIds.push(\"c1122-reject-pattern-grid\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1122-reject-pattern-a\");\nnode_1.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"width:20px;height:12px;background-color:#2866f6\");\nrefs[\"c1122-reject-pattern-grid\"].appendChild(node_1);\nrefs[\"c1122-reject-pattern-a\"] = node_1;\nnodeIds.push(\"c1122-reject-pattern-a\");\nconst node_2 = document.createElement(\"div\");\nnode_2.setAttribute(\"id\", \"c1122-reject-pattern-b\");\nnode_2.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_2.setAttribute(\"style\", \"width:20px;height:12px;background-color:#e5484d\");\nrefs[\"c1122-reject-pattern-grid\"].appendChild(node_2);\nrefs[\"c1122-reject-pattern-b\"] = node_2;\nnodeIds.push(\"c1122-reject-pattern-b\");\nconst node_3 = document.createElement(\"div\");\nnode_3.setAttribute(\"id\", \"c1122-reject-pattern-c\");\nnode_3.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_3.setAttribute(\"style\", \"width:20px;height:12px;background-color:#19a974\");\nrefs[\"c1122-reject-pattern-grid\"].appendChild(node_3);\nrefs[\"c1122-reject-pattern-c\"] = node_3;\nnodeIds.push(\"c1122-reject-pattern-c\");\nconst node_4 = document.createElement(\"div\");\nnode_4.setAttribute(\"id\", \"c1122-reject-pattern-d\");\nnode_4.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_4.setAttribute(\"style\", \"width:20px;height:12px;background-color:#ffc857\");\nrefs[\"c1122-reject-pattern-grid\"].appendChild(node_4);\nrefs[\"c1122-reject-pattern-d\"] = node_4;\nnodeIds.push(\"c1122-reject-pattern-d\");\nconst node_5 = document.createElement(\"div\");\nnode_5.setAttribute(\"id\", \"c1122-reject-pattern-e\");\nnode_5.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_5.setAttribute(\"style\", \"width:20px;height:12px;background-color:#8758ff\");\nrefs[\"c1122-reject-pattern-grid\"].appendChild(node_5);\nrefs[\"c1122-reject-pattern-e\"] = node_5;\nnodeIds.push(\"c1122-reject-pattern-e\");\nconst node_6 = document.createElement(\"div\");\nnode_6.setAttribute(\"id\", \"c1122-reject-pattern-f\");\nnode_6.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_6.setAttribute(\"style\", \"width:20px;height:12px;background-color:#0ea5e9\");\nrefs[\"c1122-reject-pattern-grid\"].appendChild(node_6);\nrefs[\"c1122-reject-pattern-f\"] = node_6;\nnodeIds.push(\"c1122-reject-pattern-f\");\nconst node_7 = document.createElement(\"div\");\nnode_7.setAttribute(\"id\", \"c1122-reject-pattern-g\");\nnode_7.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_7.setAttribute(\"style\", \"width:20px;height:12px;background-color:#f97316\");\nrefs[\"c1122-reject-pattern-grid\"].appendChild(node_7);\nrefs[\"c1122-reject-pattern-g\"] = node_7;\nnodeIds.push(\"c1122-reject-pattern-g\");\nconst node_8 = document.createElement(\"div\");\nnode_8.setAttribute(\"id\", \"c1122-reject-pattern-h\");\nnode_8.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_8.setAttribute(\"style\", \"width:20px;height:12px;background-color:#ec4899\");\nrefs[\"c1122-reject-pattern-grid\"].appendChild(node_8);\nrefs[\"c1122-reject-pattern-h\"] = node_8;\nnodeIds.push(\"c1122-reject-pattern-h\");\nreturn { sceneId:\"reject-repeated-auto-row-pattern\", rootId:\"c1122-reject-pattern-grid\", nodeIds };\n})()",
+      "sourceSha256": "4a5571091731a97f466d8aa6a9dbc5612d0992a664bc53f9cb98ca36014ab7c3"
+    },
+    {
+      "index": 13,
+      "id": "reject-dense-flow",
+      "scope": "chromium-oracle-only",
+      "rootId": "c1122-reject-dense-grid",
+      "nodeIds": [
+        "c1122-reject-dense-grid",
+        "c1122-reject-dense-auto-a",
+        "c1122-reject-dense-span",
+        "c1122-reject-dense-fixed",
+        "c1122-reject-dense-auto-b"
+      ],
+      "parentIds": [
+        null,
+        "c1122-reject-dense-grid",
+        "c1122-reject-dense-grid",
+        "c1122-reject-dense-grid",
+        "c1122-reject-dense-grid"
+      ],
+      "expected": {
+        "outcome": "expected-rejection",
+        "code": "unsupported_grid_auto_flow",
+        "nodeId": "c1122-reject-dense-grid",
+        "property": "grid-auto-flow",
+        "runtimeNodeId": 2
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1122-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1122-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1122-reject-dense-grid\");\nnode_0.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"position:absolute;left:20px;top:20px;display:grid;width:128px;height:44px;grid-template-columns:40px 40px 40px;grid-template-rows:20px 20px;grid-auto-rows:20px;column-gap:4px;row-gap:4px;grid-auto-flow:row dense;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1122-reject-dense-grid\"] = node_0;\nnodeIds.push(\"c1122-reject-dense-grid\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1122-reject-dense-auto-a\");\nnode_1.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"width:18px;height:18px;background-color:#2866f6\");\nrefs[\"c1122-reject-dense-grid\"].appendChild(node_1);\nrefs[\"c1122-reject-dense-auto-a\"] = node_1;\nnodeIds.push(\"c1122-reject-dense-auto-a\");\nconst node_2 = document.createElement(\"div\");\nnode_2.setAttribute(\"id\", \"c1122-reject-dense-span\");\nnode_2.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_2.setAttribute(\"style\", \"width:84px;height:18px;grid-column-start:auto;grid-column-end:span 2;background-color:#8758ff\");\nrefs[\"c1122-reject-dense-grid\"].appendChild(node_2);\nrefs[\"c1122-reject-dense-span\"] = node_2;\nnodeIds.push(\"c1122-reject-dense-span\");\nconst node_3 = document.createElement(\"div\");\nnode_3.setAttribute(\"id\", \"c1122-reject-dense-fixed\");\nnode_3.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_3.setAttribute(\"style\", \"width:18px;height:18px;grid-column:2 / 3;grid-row:1 / 2;background-color:#e5484d\");\nrefs[\"c1122-reject-dense-grid\"].appendChild(node_3);\nrefs[\"c1122-reject-dense-fixed\"] = node_3;\nnodeIds.push(\"c1122-reject-dense-fixed\");\nconst node_4 = document.createElement(\"div\");\nnode_4.setAttribute(\"id\", \"c1122-reject-dense-auto-b\");\nnode_4.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_4.setAttribute(\"style\", \"width:18px;height:18px;background-color:#19a974\");\nrefs[\"c1122-reject-dense-grid\"].appendChild(node_4);\nrefs[\"c1122-reject-dense-auto-b\"] = node_4;\nnodeIds.push(\"c1122-reject-dense-auto-b\");\nreturn { sceneId:\"reject-dense-flow\", rootId:\"c1122-reject-dense-grid\", nodeIds };\n})()",
+      "sourceSha256": "4a55167fe60b527046323d8d8e0448f6f390c93557bcca7f06f143170c4f5c69"
+    },
+    {
+      "index": 14,
+      "id": "reject-column-flow",
+      "scope": "chromium-oracle-only",
+      "rootId": "c1122-reject-column-flow-grid",
+      "nodeIds": [
+        "c1122-reject-column-flow-grid",
+        "c1122-reject-column-flow-a",
+        "c1122-reject-column-flow-b",
+        "c1122-reject-column-flow-c",
+        "c1122-reject-column-flow-d",
+        "c1122-reject-column-flow-e"
+      ],
+      "parentIds": [
+        null,
+        "c1122-reject-column-flow-grid",
+        "c1122-reject-column-flow-grid",
+        "c1122-reject-column-flow-grid",
+        "c1122-reject-column-flow-grid",
+        "c1122-reject-column-flow-grid"
+      ],
+      "expected": {
+        "outcome": "expected-rejection",
+        "code": "unsupported_inline_property",
+        "nodeId": "c1122-reject-column-flow-grid",
+        "property": "grid-auto-columns",
+        "runtimeNodeId": 2
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1122-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1122-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1122-reject-column-flow-grid\");\nnode_0.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"position:absolute;left:20px;top:20px;display:grid;width:84px;height:44px;grid-template-columns:40px 40px;grid-template-rows:20px 20px;grid-auto-columns:32px;column-gap:4px;row-gap:4px;grid-auto-flow:column;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1122-reject-column-flow-grid\"] = node_0;\nnodeIds.push(\"c1122-reject-column-flow-grid\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1122-reject-column-flow-a\");\nnode_1.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"width:18px;height:18px;background-color:#2866f6\");\nrefs[\"c1122-reject-column-flow-grid\"].appendChild(node_1);\nrefs[\"c1122-reject-column-flow-a\"] = node_1;\nnodeIds.push(\"c1122-reject-column-flow-a\");\nconst node_2 = document.createElement(\"div\");\nnode_2.setAttribute(\"id\", \"c1122-reject-column-flow-b\");\nnode_2.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_2.setAttribute(\"style\", \"width:18px;height:18px;background-color:#e5484d\");\nrefs[\"c1122-reject-column-flow-grid\"].appendChild(node_2);\nrefs[\"c1122-reject-column-flow-b\"] = node_2;\nnodeIds.push(\"c1122-reject-column-flow-b\");\nconst node_3 = document.createElement(\"div\");\nnode_3.setAttribute(\"id\", \"c1122-reject-column-flow-c\");\nnode_3.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_3.setAttribute(\"style\", \"width:18px;height:18px;background-color:#19a974\");\nrefs[\"c1122-reject-column-flow-grid\"].appendChild(node_3);\nrefs[\"c1122-reject-column-flow-c\"] = node_3;\nnodeIds.push(\"c1122-reject-column-flow-c\");\nconst node_4 = document.createElement(\"div\");\nnode_4.setAttribute(\"id\", \"c1122-reject-column-flow-d\");\nnode_4.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_4.setAttribute(\"style\", \"width:18px;height:18px;background-color:#ffc857\");\nrefs[\"c1122-reject-column-flow-grid\"].appendChild(node_4);\nrefs[\"c1122-reject-column-flow-d\"] = node_4;\nnodeIds.push(\"c1122-reject-column-flow-d\");\nconst node_5 = document.createElement(\"div\");\nnode_5.setAttribute(\"id\", \"c1122-reject-column-flow-e\");\nnode_5.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_5.setAttribute(\"style\", \"width:18px;height:18px;background-color:#8758ff\");\nrefs[\"c1122-reject-column-flow-grid\"].appendChild(node_5);\nrefs[\"c1122-reject-column-flow-e\"] = node_5;\nnodeIds.push(\"c1122-reject-column-flow-e\");\nreturn { sceneId:\"reject-column-flow\", rootId:\"c1122-reject-column-flow-grid\", nodeIds };\n})()",
+      "sourceSha256": "9ef204d79b035d7791f1c2e63f537aa0d05c1e0e14eafb854433a24744ddd3d7"
+    },
+    {
+      "index": 15,
+      "id": "column-cursor-wrap",
+      "scope": "implementation-candidate",
+      "rootId": "c1122-column-wrap-grid",
+      "nodeIds": [
+        "c1122-column-wrap-grid",
+        "c1122-column-wrap-col-two",
+        "c1122-column-wrap-col-one"
+      ],
+      "parentIds": [
+        null,
+        "c1122-column-wrap-grid",
+        "c1122-column-wrap-grid"
+      ],
+      "expected": {
+        "outcome": "success"
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1122-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1122-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1122-column-wrap-grid\");\nnode_0.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"position:absolute;left:20px;top:20px;display:grid;width:128px;height:44px;grid-template-columns:40px 40px 40px;grid-template-rows:20px;grid-auto-rows:20px;column-gap:4px;row-gap:4px;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1122-column-wrap-grid\"] = node_0;\nnodeIds.push(\"c1122-column-wrap-grid\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1122-column-wrap-col-two\");\nnode_1.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"width:18px;height:18px;grid-column:2 / 3;background-color:#2866f6\");\nrefs[\"c1122-column-wrap-grid\"].appendChild(node_1);\nrefs[\"c1122-column-wrap-col-two\"] = node_1;\nnodeIds.push(\"c1122-column-wrap-col-two\");\nconst node_2 = document.createElement(\"div\");\nnode_2.setAttribute(\"id\", \"c1122-column-wrap-col-one\");\nnode_2.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_2.setAttribute(\"style\", \"width:18px;height:18px;grid-column:1 / 2;background-color:#e5484d\");\nrefs[\"c1122-column-wrap-grid\"].appendChild(node_2);\nrefs[\"c1122-column-wrap-col-one\"] = node_2;\nnodeIds.push(\"c1122-column-wrap-col-one\");\nreturn { sceneId:\"column-cursor-wrap\", rootId:\"c1122-column-wrap-grid\", nodeIds };\n})()",
+      "sourceSha256": "86b211dbac9c52d480e2e0353f47d90287953949fc5ae469e82f66e37c9f48d6"
+    }
+  ],
+  "summary": {
+    "sceneCount": 16,
+    "candidateCount": 11,
+    "expectedRejectCount": 5,
+    "nodeCount": 69
+  }
+}

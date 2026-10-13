@@ -10,6 +10,7 @@ use spinon_core::{HostNodeHandle, HostNodeKind, HostParent, NodeId, StyleRevisio
 use spinon_layout::MAX_LAYOUT_TREE_DEPTH;
 use spinon_style::{
     ComputedStyleProfile, CssCascadeError, RuntimeCascadeReuseStats, StyloDocumentView,
+    compute_runtime_block_flex_grid_auto_placement_cascade_with_stylesheets,
     compute_runtime_block_flex_grid_cascade_with_stylesheets,
     compute_runtime_block_flex_grid_placement_cascade_with_stylesheets,
     compute_runtime_block_flex_stacking_cascade_with_stylesheets,
@@ -35,6 +36,7 @@ pub(super) enum RuntimeCalculationProfile {
     BlockFlexStacking,
     BlockFlexGrid,
     BlockFlexGridPlacement,
+    BlockFlexGridAutoPlacement,
 }
 
 impl RuntimeCalculationProfile {
@@ -189,6 +191,15 @@ pub(super) fn compute_request_for_block_flex_grid_placement(
     request: &WorkRequest,
 ) -> Result<RuntimeCalculation, String> {
     compute_request_with_profile(request, RuntimeCalculationProfile::BlockFlexGridPlacement)
+}
+
+pub(super) fn compute_request_for_block_flex_grid_auto_placement(
+    request: &WorkRequest,
+) -> Result<RuntimeCalculation, String> {
+    compute_request_with_profile(
+        request,
+        RuntimeCalculationProfile::BlockFlexGridAutoPlacement,
+    )
 }
 
 fn compute_request_with_profile(
@@ -368,6 +379,9 @@ fn compute_root(
         RuntimeCalculationProfile::BlockFlexGridPlacement => {
             ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
         }
+        RuntimeCalculationProfile::BlockFlexGridAutoPlacement => {
+            ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
+        }
     };
     let previous_style_root = request
         .previous_styles
@@ -474,6 +488,14 @@ fn compute_root(
             }
             RuntimeCalculationProfile::BlockFlexGridPlacement => {
                 compute_runtime_block_flex_grid_placement_cascade_with_stylesheets(
+                    &view,
+                    author_stylesheets,
+                    request.viewport,
+                    StyleRevision::INITIAL,
+                )
+            }
+            RuntimeCalculationProfile::BlockFlexGridAutoPlacement => {
+                compute_runtime_block_flex_grid_auto_placement_cascade_with_stylesheets(
                     &view,
                     author_stylesheets,
                     request.viewport,

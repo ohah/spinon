@@ -14,15 +14,22 @@ use taffy::style::{
 
 use crate::{
     AlignmentSafety, ContentAlignmentPosition, FlexDirection, FlexWrap, GridContainerInput,
-    GridItemInput, ItemAlignmentPosition, JustifyContentPosition, LayoutAlignContent,
-    LayoutAlignItems, LayoutAlignSelf, LayoutBoxSizing, LayoutCalcId, LayoutCssMathProperty,
-    LayoutDimension, LayoutDisplay, LayoutEdges, LayoutError, LayoutJustifyContent,
-    LayoutLengthPercentage, LayoutPosition, LayoutPositioning, LayoutStyle, TextDirection,
-    compact_taffy_style::CompactTaffyStyle,
+    GridItemInput, GridTrackSize, ItemAlignmentPosition, JustifyContentPosition,
+    LayoutAlignContent, LayoutAlignItems, LayoutAlignSelf, LayoutBoxSizing, LayoutCalcId,
+    LayoutCssMathProperty, LayoutDimension, LayoutDisplay, LayoutEdges, LayoutError,
+    LayoutJustifyContent, LayoutLengthPercentage, LayoutPosition, LayoutPositioning, LayoutStyle,
+    TextDirection, compact_taffy_style::CompactTaffyStyle,
 };
 
 #[path = "taffy_style/grid.rs"]
 mod grid;
+
+pub(super) struct GridTaffyStyleInput<'a> {
+    pub(super) container: Option<&'a GridContainerInput>,
+    pub(super) expanded_rows: Option<&'a [GridTrackSize]>,
+    pub(super) expanded_columns: Option<&'a [GridTrackSize]>,
+    pub(super) item: Option<GridItemInput>,
+}
 
 pub(super) fn to_taffy_style(
     node: NodeId,
@@ -30,20 +37,29 @@ pub(super) fn to_taffy_style(
     positioning: LayoutPositioning,
     flow_only: bool,
     calc_handles: &BTreeMap<LayoutCalcId, *const ()>,
-    grid_container: Option<&GridContainerInput>,
-    grid_item: Option<GridItemInput>,
+    grid_input: GridTaffyStyleInput<'_>,
 ) -> Result<CompactTaffyStyle, LayoutError> {
-    let grid_columns = grid_container
-        .map(|container| {
-            grid::to_taffy_grid_tracks(node, "grid-template-columns", &container.columns)
-        })
-        .transpose()?
-        .unwrap_or_default();
-    let grid_rows = grid_container
-        .map(|container| grid::to_taffy_grid_tracks(node, "grid-template-rows", &container.rows))
-        .transpose()?
-        .unwrap_or_default();
-    let grid_auto_flow = grid::to_taffy_grid_auto_flow(grid_container);
+    let grid_columns = match grid_input.expanded_columns {
+        Some(columns) => grid::to_taffy_grid_tracks(node, "grid-template-columns", columns)?,
+        None => grid_input
+            .container
+            .map(|container| {
+                grid::to_taffy_grid_tracks(node, "grid-template-columns", &container.columns)
+            })
+            .transpose()?
+            .unwrap_or_default(),
+    };
+    let grid_rows = match grid_input.expanded_rows {
+        Some(rows) => grid::to_taffy_grid_tracks(node, "grid-template-rows", rows)?,
+        None => grid_input
+            .container
+            .map(|container| {
+                grid::to_taffy_grid_tracks(node, "grid-template-rows", &container.rows)
+            })
+            .transpose()?
+            .unwrap_or_default(),
+    };
+    let grid_auto_flow = grid::to_taffy_grid_auto_flow(grid_input.container);
     let inset = if !flow_only && positioning.position != LayoutPosition::Static {
         positioning.inset
     } else {
@@ -244,7 +260,7 @@ pub(super) fn to_taffy_style(
         ..Default::default()
     };
     let mut compact = CompactTaffyStyle::from(style);
-    if let Some(item) = grid_item {
+    if let Some(item) = grid_input.item {
         compact.set_grid_item_placement(
             grid::taffy_grid_placement_line(node, "grid-row-start", item.row_start)?,
             grid::taffy_grid_placement_line(node, "grid-row-end", item.row_end)?,

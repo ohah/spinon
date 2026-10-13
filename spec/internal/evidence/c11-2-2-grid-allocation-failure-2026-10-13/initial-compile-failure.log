@@ -1,0 +1,15 @@
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+error[E0502]: cannot borrow `self.rows` as immutable because it is also borrowed as mutable
+  --> crates/spinon-layout/src/grid_auto_placement/occupancy.rs:42:27
+   |
+40 |             reserve(
+   |             ------- mutable borrow later used by call
+41 |                 &mut self.rows,
+   |                 -------------- mutable borrow occurs here
+42 |                 row_end - self.rows.len(),
+   |                           ^^^^^^^^^ immutable borrow occurs here
+
+For more information about this error, try `rustc --explain E0502`.
+error: could not compile `spinon-layout` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `spinon-layout` (lib test) due to 1 previous error
