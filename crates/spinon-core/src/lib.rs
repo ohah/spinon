@@ -13,6 +13,9 @@ pub use document::{
     HostNodeKind, HostParent, OwnerId, RenderTreeRevision,
 };
 pub use error::{CommitError, CommitErrorKind};
-pub use id::{EnvironmentRevision, IntrinsicSizeRevision, NodeId, Revision, StyleRevision};
+pub use id::{
+    EnvironmentRevision, IntrinsicSizeRevision, NodeId, Revision, ScrollStateRevision,
+    StyleRevision,
+};
 pub use scheduler::{PriorityQueue, TaskPriority};
 pub use tree::{Node, Tree};

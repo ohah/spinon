@@ -24,6 +24,8 @@ use crate::CurrentLayoutInputs;
 mod c13_1_clip_matrix;
 #[path = "tests/c13_1_paint_hit_border.rs"]
 mod c13_1_paint_hit_border;
+#[path = "tests/c13_2_scroll_geometry.rs"]
+mod c13_2_scroll_geometry;
 
 const HTML: &str = "http://www.w3.org/1999/xhtml";
 const C13_OVERFLOW_CLIP_FIXTURE_JS: &str =
@@ -151,6 +153,43 @@ fn overflow_runtime_inputs_with_reordered_child(
     height_css_px: f32,
     reorder: Option<(usize, usize, usize)>,
 ) -> (RuntimeInputs, Vec<NodeId>) {
+    let tags = vec!["div"; styles.len()];
+    overflow_runtime_inputs_with_reordered_tags(
+        styles,
+        &tags,
+        parents,
+        width_css_px,
+        height_css_px,
+        reorder,
+    )
+}
+
+fn overflow_runtime_inputs_with_tags(
+    styles: &[&str],
+    tags: &[&str],
+    parents: &[Option<usize>],
+    width_css_px: f32,
+    height_css_px: f32,
+) -> (RuntimeInputs, Vec<NodeId>) {
+    overflow_runtime_inputs_with_reordered_tags(
+        styles,
+        tags,
+        parents,
+        width_css_px,
+        height_css_px,
+        None,
+    )
+}
+
+fn overflow_runtime_inputs_with_reordered_tags(
+    styles: &[&str],
+    tags: &[&str],
+    parents: &[Option<usize>],
+    width_css_px: f32,
+    height_css_px: f32,
+    reorder: Option<(usize, usize, usize)>,
+) -> (RuntimeInputs, Vec<NodeId>) {
+    assert_eq!(styles.len(), tags.len());
     assert_eq!(styles.len(), parents.len());
     let mut document = HostDocument::new().unwrap();
     let handles = styles
@@ -163,7 +202,7 @@ fn overflow_runtime_inputs_with_reordered_child(
         batch.push(DocumentOperation::CreateElement {
             node: *handle,
             namespace: HTML.to_owned(),
-            local_name: "div".to_owned(),
+            local_name: tags[index].to_owned(),
         });
         batch.push(DocumentOperation::SetAttribute {
             node: *handle,
@@ -254,6 +293,7 @@ fn each_fallible_reservation_failure_returns_its_exact_stage() {
             "paint traversal",
             "paint nodes",
             "render boxes",
+            "scroll render metadata",
         ]),
         "각 Vec 예약 오류 경로가 fixture에 포함되어야 합니다: {stages:?}"
     );

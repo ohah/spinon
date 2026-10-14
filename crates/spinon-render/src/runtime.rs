@@ -1,12 +1,17 @@
 use std::sync::Arc;
-use std::{collections::BTreeSet, error::Error, fmt};
+use std::{error::Error, fmt};
 
 use spinon_core::{
-    DocumentGeneration, DocumentRevision, EnvironmentRevision, HostDocumentSnapshot,
-    IntrinsicSizeRevision, NodeId, RenderTreeRevision, StyleRevision,
+    DocumentGeneration, DocumentRevision, EnvironmentRevision, IntrinsicSizeRevision, NodeId,
+    RenderTreeRevision, ScrollStateRevision, StyleRevision,
 };
 
 use super::{CssRect, CssSize, OpaqueCssSrgb};
+
+mod scroll;
+mod snapshot;
+
+pub use scroll::{RuntimeScrollClipLayer, RuntimeScrollContainer, RuntimeScrollRenderMetadata};
 
 /// 한 CSS 좌표축에서 허용되는 반열린 clipping interval입니다.
 #[derive(Clone, Copy, Debug, PartialEq)]
@@ -76,6 +81,35 @@ impl CssClip {
     pub fn contains(self, x: f32, y: f32) -> bool {
         self.x.is_none_or(|clip| clip.contains(x)) && self.y.is_none_or(|clip| clip.contains(y))
     }
+
+    pub fn intersect(self, other: Self) -> Self {
+        let x = match (self.x, other.x) {
+            (Some(left), Some(right)) => Some(left.intersect(right)),
+            (Some(clip), None) | (None, Some(clip)) => Some(clip),
+            (None, None) => None,
+        };
+        let y = match (self.y, other.y) {
+            (Some(left), Some(right)) => Some(left.intersect(right)),
+            (Some(clip), None) | (None, Some(clip)) => Some(clip),
+            (None, None) => None,
+        };
+        Self { x, y }
+    }
+
+    pub fn translated(self, x_css_px: f32, y_css_px: f32) -> Result<Self, RuntimeRenderError> {
+        if !x_css_px.is_finite() || !y_css_px.is_finite() {
+            return Err(RuntimeRenderError::InvalidScrollState);
+        }
+        let x = self
+            .x
+            .map(|clip| CssAxisClip::new(clip.min() + x_css_px, clip.max() + x_css_px))
+            .transpose()?;
+        let y = self
+            .y
+            .map(|clip| CssAxisClip::new(clip.min() + y_css_px, clip.max() + y_css_px))
+            .transpose()?;
+        Ok(Self { x, y })
+    }
 }
 
 /// 한 runtime 장면이 사용한 문서·스타일·환경 입력 revision입니다.
@@ -87,6 +121,7 @@ pub struct RuntimeRenderKey {
     style_revision: StyleRevision,
     environment_revision: EnvironmentRevision,
     intrinsic_size_revision: IntrinsicSizeRevision,
+    scroll_state_revision: ScrollStateRevision,
 }
 
 impl RuntimeRenderKey {
@@ -104,11 +139,17 @@ impl RuntimeRenderKey {
             style_revision,
             environment_revision,
             intrinsic_size_revision: IntrinsicSizeRevision::INITIAL,
+            scroll_state_revision: ScrollStateRevision::INITIAL,
         }
     }
 
     pub const fn with_intrinsic_size_revision(mut self, revision: IntrinsicSizeRevision) -> Self {
         self.intrinsic_size_revision = revision;
+        self
+    }
+
+    pub const fn with_scroll_state_revision(mut self, revision: ScrollStateRevision) -> Self {
+        self.scroll_state_revision = revision;
         self
     }
 
@@ -134,6 +175,10 @@ impl RuntimeRenderKey {
 
     pub const fn intrinsic_size_revision(self) -> IntrinsicSizeRevision {
         self.intrinsic_size_revision
+    }
+
+    pub const fn scroll_state_revision(self) -> ScrollStateRevision {
+        self.scroll_state_revision
     }
 }
 
@@ -282,6 +327,11 @@ impl RuntimeRenderBox {
         self
     }
 
+    pub const fn with_frame_css_px(mut self, frame_css_px: CssRect) -> Self {
+        self.frame_css_px = frame_css_px;
+        self
+    }
+
     pub const fn node_id(self) -> NodeId {
         self.node_id
     }
@@ -315,101 +365,16 @@ impl RuntimeRenderBox {
     }
 }
 
+/// 한 element scroll owner의 client scrollport, scrollable extent와 CSS px offset입니다.
 /// Fixture provenance를 요구하지 않는 동적 runtime 장면입니다.
 #[derive(Clone, Debug, PartialEq)]
 pub struct RuntimeRenderSnapshot {
     key: RuntimeRenderKey,
     viewport_css_px: CssSize,
     boxes: Arc<[RuntimeRenderBox]>,
-}
-
-impl RuntimeRenderSnapshot {
-    pub fn new(
-        key: RuntimeRenderKey,
-        viewport_css_px: CssSize,
-        boxes: Vec<RuntimeRenderBox>,
-    ) -> Result<Self, RuntimeRenderError> {
-        let mut node_ids = BTreeSet::new();
-        let mut hit_test_orders = BTreeSet::new();
-        for (index, render_box) in boxes.iter().enumerate() {
-            if !node_ids.insert(render_box.node_id) {
-                return Err(RuntimeRenderError::DuplicateNode(render_box.node_id));
-            }
-            if usize::try_from(render_box.paint_order).ok() != Some(index) {
-                return Err(RuntimeRenderError::InvalidPaintOrder);
-            }
-            if usize::try_from(render_box.hit_test_order)
-                .ok()
-                .is_none_or(|order| order >= boxes.len())
-                || !hit_test_orders.insert(render_box.hit_test_order)
-            {
-                return Err(RuntimeRenderError::InvalidHitTestOrder);
-            }
-        }
-        Ok(Self {
-            key,
-            viewport_css_px,
-            boxes: boxes.into(),
-        })
-    }
-
-    /// 같은 문서 세대와 연결 트리 revision의 snapshot에서 document revision을 다시 발행합니다.
-    pub fn with_document_snapshot_revision(&self, snapshot: &HostDocumentSnapshot) -> Option<Self> {
-        if self.key.generation != snapshot.generation()
-            || self.key.render_tree_revision != snapshot.render_tree_revision()
-        {
-            return None;
-        }
-        let key = RuntimeRenderKey::new(
-            self.key.generation,
-            snapshot.document_revision(),
-            self.key.render_tree_revision,
-            self.key.style_revision,
-            self.key.environment_revision,
-        )
-        .with_intrinsic_size_revision(self.key.intrinsic_size_revision);
-        Some(Self {
-            key,
-            viewport_css_px: self.viewport_css_px,
-            boxes: Arc::clone(&self.boxes),
-        })
-    }
-
-    pub const fn key(&self) -> RuntimeRenderKey {
-        self.key
-    }
-
-    pub const fn viewport_css_px(&self) -> CssSize {
-        self.viewport_css_px
-    }
-
-    pub fn boxes(&self) -> &[RuntimeRenderBox] {
-        &self.boxes
-    }
-
-    /// hit-test 순서, clip, viewport를 통과한 가장 앞의 CSS event target을 반환합니다.
-    pub fn hit_test_css_point(&self, x: f32, y: f32) -> Option<&RuntimeRenderBox> {
-        if !x.is_finite()
-            || !y.is_finite()
-            || x < 0.0
-            || x >= self.viewport_css_px.width()
-            || y < 0.0
-            || y >= self.viewport_css_px.height()
-        {
-            return None;
-        }
-        self.boxes
-            .iter()
-            .filter(|render_box| {
-                let frame = render_box.frame_css_px();
-                x >= frame.x()
-                    && x < frame.x() + frame.width()
-                    && y >= frame.y()
-                    && y < frame.y() + frame.height()
-                    && render_box.hit_test_clip_css_px().contains(x, y)
-            })
-            .max_by_key(|render_box| render_box.hit_test_order())
-    }
+    base_boxes: Arc<[RuntimeRenderBox]>,
+    scroll_containers: Arc<[RuntimeScrollContainer]>,
+    scroll_metadata: Arc<[RuntimeScrollRenderMetadata]>,
 }
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -419,6 +384,12 @@ pub enum RuntimeRenderError {
     InvalidHitTestOrder,
     InvalidClip,
     InvalidBorderWidth,
+    InvalidScrollState,
+    DuplicateScrollOwner(NodeId),
+    StaleScrollRevision,
+    DuplicateScrollRequest(NodeId),
+    InvalidScrollRequest(NodeId),
+    ScrollRevisionExhausted,
 }
 
 impl fmt::Display for RuntimeRenderError {
@@ -436,6 +407,30 @@ impl fmt::Display for RuntimeRenderError {
             }
             Self::InvalidBorderWidth => {
                 formatter.write_str("runtime border 폭은 유한한 0 이상의 CSS px여야 합니다")
+            }
+            Self::InvalidScrollState => {
+                formatter.write_str("runtime scroll range 또는 offset이 유효하지 않습니다")
+            }
+            Self::DuplicateScrollOwner(node) => {
+                write!(formatter, "runtime scroll owner {node}가 중복되었습니다")
+            }
+            Self::StaleScrollRevision => {
+                formatter.write_str("runtime scroll 요청의 state revision이 오래되었습니다")
+            }
+            Self::DuplicateScrollRequest(node) => {
+                write!(
+                    formatter,
+                    "runtime scroll 요청에서 owner {node}가 중복되었습니다"
+                )
+            }
+            Self::InvalidScrollRequest(node) => {
+                write!(
+                    formatter,
+                    "runtime scroll 요청의 owner {node} 또는 offset이 유효하지 않습니다"
+                )
+            }
+            Self::ScrollRevisionExhausted => {
+                formatter.write_str("runtime scroll state revision 번호를 더 증가시킬 수 없습니다")
             }
         }
     }

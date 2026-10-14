@@ -1,6 +1,6 @@
 # 0062 · C13.2 scroll state runtime 내부 계약
 
-- **계약:** `0.1.0-draft` · **상태:** 계약·oracle 확정, 구현 전
+- **계약:** `0.1.0-draft` · **상태:** 계약·oracle 확정, 제한 구현·Simulator 검증 진행 중
 - **제품 CSS 지원 선언:** 아님
 - **기준:** [C13.2 계획](../../plan/c13-2-scroll-container-state.md) · [Chrome 사전 비교](evidence/c13-2-scroll-container-precomparison-2026-10-15/README.md)
 
@@ -56,3 +56,9 @@ C13.2 runtime fixture route, FFI, payload는 별도 opt-in fixture-test feature�
 완료 근거는 고정 Chromium observation에 대한 runtime oracle 비교, range/offset/revision/error 복구 단위 검증, 기본/opt-in artifact negative/positive control, Android API 37 ARM64 AVD 및 지정 iOS Simulator에서 같은 실제 runtime fixture 실행, 실행 뒤 회귀 workspace/Clippy/rustfmt를 포함한다. 실기기는 요구하지 않는다. Chrome/WPT 결과, AVD software renderer, iOS Simulator 표시는 각각 다른 증거로 기록한다.
 
 이 계약의 통과는 C13.2 제한 fixture 범위만 가리킨다. C13.1 전체 완료, public CSSOM/events, gestures, scrollbar, scroll snap, RTL/vertical writing modes, WPT 또는 제품 전체 CSS 지원을 뜻하지 않는다.
+
+## 현재 검증 범위 · 2026-10-15
+
+Android API 37 ARM64 AVD와 iPhone 17 Pro / iOS 26.2 Simulator에서 26-frame·9-owner initial matrix 및 growth/shrink/detach/reparent lifecycle을 실행했다. 화면에서 visible child의 border escape가 보이며, 내부 snapshot은 parent 외부 frame과 child hit identity를 검사한다. 양쪽 Simulator 실행 결과와 screenshot SHA는 [실행 근거](evidence/c13-2-scroll-container-implementation-2026-10-15/README.md)에 있다. workspace/Clippy와 default/opt-in artifact isolation은 통과했다. Rust tests에는 root/body geometry, stale scroll revision rejection, reserve failure의 atomic recovery가 있다. 이 fixture는 픽셀별 표면 대조가 아니며, root/body·stale/failure app route와 ink-only scene, pixel readback은 아직 닫히지 않았다.
+
+구현 실패 경로 20개와 구현 PR 변경 관점 30개는 각각 [구현 검토 기록](evidence/c13-2-scroll-implementation-review-2026-10-15.md), [PR 변경 검토 기록](evidence/c13-2-scroll-implementation-pr-review-2026-10-15.md)에 있다. 리뷰 중 찾은 `display:none` subtree scroll owner 누락은 수정했고 전체 workspace와 두 Simulator를 다시 확인했다.

@@ -1,0 +1,21 @@
+toolchain=rustc 1.96.1 / LLVM 22.1.2; matching rustup llvm-nm; macOS strings
+archive=host debug spinon-ffi static archive
+llvm_nm=/Users/yoonhb/.rustup/toolchains/1.96.1-aarch64-apple-darwin/lib/rustlib/aarch64-apple-darwin/bin/llvm-nm
+
+[feature off]
+command=cargo build --locked -p spinon-ffi --lib
+archive_sha256=0249f990a7f03fa97681c419271b2638117d2de2675fd83f873e6fa7aae7956d
+spinon_runtime_gpu_host_new_c13_2_scroll_fixture=absent (llvm-nm -g)
+spinon_runtime_gpu_host_eval_c13_2_scroll_fixture=absent (llvm-nm -g)
+payload marker c132-root=absent (strings)
+
+[feature on]
+command=cargo build --locked -p spinon-ffi --lib --features c13-2-scroll-fixture-test
+archive_sha256=a5bd26054e2ee582fe060ad35708b24e2321958ff2bf9867d93c6da9a1417fa3
+spinon_runtime_gpu_host_new_c13_2_scroll_fixture=present
+spinon_runtime_gpu_host_eval_c13_2_scroll_fixture=present
+payload marker c132-root=present
+
+result=default fixture ABI and payload are absent; opt-in positive control contains both
+note=both archive hashes are from final source after scroll snapshot coordinator extraction and display-none scroll owner exclusion
+note=Apple llvm-nm could not read Rust LLVM 22 object attributes; matching Rust 1.96.1 llvm-nm completed both scans

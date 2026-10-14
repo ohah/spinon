@@ -529,6 +529,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c131-overflow-clip")
     private let c131BorderStripProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c131-overflow-clip-border")
+    private let c132ScrollFixtureRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c132-scroll")
     private let c122AbsoluteBlockProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c122-absolute-block")
     private let c123FixedPositionProbeRequested = ProcessInfo.processInfo.arguments
@@ -564,7 +566,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     }
     private var fixedSizeCssFixtureRequested: Bool {
         c131CompactSurfaceMatrixRouteRequested || c131OverflowClipProbeRequested
-            || c131BorderStripProbeRequested || c11GridFixtureRequested
+            || c131BorderStripProbeRequested || c132ScrollFixtureRequested || c11GridFixtureRequested
             || c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
             || c124StackingProbeRequested
             || c1035PositionedFlexProbeRequested
@@ -599,6 +601,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? "SPINON · C13.1 paint/hit border"
             : c131OverflowClipProbeRequested
             ? "SPINON · C13.1 overflow: clip"
+            : c132ScrollFixtureRequested
+            ? "SPINON · C13.2 scroll state"
             : c1133GridTemplateAreasProbeRequested
             ? "SPINON · C11.3.3 Grid template areas"
             : c1132GridNamedLinesProbeRequested
@@ -683,6 +687,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? "static/absolute clip border-strip hit oracle → WGPU Metal · 400×160 CSS px"
             : c131OverflowClipProbeRequested
             ? "V8 overflow: clip·clip margin·positioned escape → Stylo → Taffy → WGPU Metal · 320×240 CSS px"
+            : c132ScrollFixtureRequested
+            ? "V8 scroll owner·offset·paint/hit → Stylo → Taffy → WGPU Metal · 400×240 CSS px"
             : c1133GridTemplateAreasProbeRequested
             ? "Grid template area placement → Stylo → Taffy → WGPU Metal · 320×240 CSS px"
             : c1132GridNamedLinesProbeRequested
@@ -910,7 +916,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let canvasWidth = canvasView.widthAnchor.constraint(
             equalToConstant: c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
                 ? 360 : c131CompactSurfaceMatrixRouteRequested ? 300
-                : c131BorderStripProbeRequested ? 400 : fixedSizeCssFixtureRequested ? 320 : 301
+                : c131BorderStripProbeRequested || c132ScrollFixtureRequested
+                ? 400 : fixedSizeCssFixtureRequested ? 320 : 301
         )
         let canvasHeight = canvasView.heightAnchor.constraint(
             equalToConstant: c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
@@ -1662,10 +1669,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             c131CompactSurfaceMatrixProbeRequested,
             c131CompactHitIdentityGridProbeRequested,
             c131BorderStripProbeRequested,
+            c132ScrollFixtureRequested,
         ].filter { $0 }.count
         if selectedC131Routes > 1 {
-            log("SPINON_C131_ARGUMENT_ERROR conflicting=multiple-fixture-routes")
-            postStatus("실패 · C13.1 route를 하나만 선택해야 합니다")
+            log("SPINON_C13_ARGUMENT_ERROR conflicting=multiple-fixture-routes")
+            postStatus("실패 · C13 route를 하나만 선택해야 합니다")
             return
         }
         if selectedC131Routes == 1,
@@ -1676,10 +1684,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                    && $0 != "--spinon-c131-compact-hit-identity-grid"
                    && $0 != "--spinon-c131-compact-metal-pixel-centers"
                    && $0 != "--spinon-c131-overflow-clip-border"
+                   && $0 != "--spinon-c132-scroll"
                    && $0 != "--spinon-c0410-runtime-gpu"
            }) {
-            log("SPINON_C131_ARGUMENT_ERROR conflicting=\(conflictingArgument)")
-            postStatus("실패 · C13.1 전용 route와 다른 CSS fixture를 함께 선택했습니다")
+            log("SPINON_C13_ARGUMENT_ERROR conflicting=\(conflictingArgument)")
+            postStatus("실패 · C13 전용 route와 다른 CSS fixture를 함께 선택했습니다")
             return
         }
         if c1131GridRepeatProbeRequested
@@ -1774,6 +1783,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? SpinonRunner.createRuntimeGpuHostWithC13_1OverflowClipBorderFixture()
             : c131OverflowClipProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithC13_1OverflowClipFixture()
+            : c132ScrollFixtureRequested
+            ? SpinonRunner.createRuntimeGpuHostWithC13_2ScrollFixture()
             : c1133GridTemplateAreasProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithC11_3_3GridTemplateAreasFixture()
             : c1132GridNamedLinesProbeRequested
@@ -1838,7 +1849,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let environmentInputs = currentEnvironment()
         let viewportWidth: Float = c131CompactSurfaceMatrixRouteRequested
             ? 300 : c131BorderStripProbeRequested
-            ? 400 : c131OverflowClipProbeRequested
+            ? 400 : c132ScrollFixtureRequested ? 400 : c131OverflowClipProbeRequested
             ? 320 : c122AbsoluteBlockProbeRequested
             || c123FixedPositionProbeRequested
             || c1122GridAutoPlacementProbeRequested
@@ -1846,7 +1857,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? 360 : c1131GridRepeatProbeRequested || fixedSizeCssFixtureRequested ? 320 : environmentInputs.width
         let viewportHeight: Float = c131CompactSurfaceMatrixRouteRequested
             ? 100 : c131BorderStripProbeRequested
-            ? 160 : c131OverflowClipProbeRequested
+            ? 160 : c132ScrollFixtureRequested ? 240 : c131OverflowClipProbeRequested
             ? 240 : c122AbsoluteBlockProbeRequested
             || c123FixedPositionProbeRequested
             || c1122GridAutoPlacementProbeRequested
@@ -1858,7 +1869,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let environment = SpinonRunner.setRuntimeGpuEnvironment(
             handle, width: viewportWidth, height: viewportHeight,
             scale: c123FixedPositionProbeRequested || c1132GridNamedLinesProbeRequested
-                || c1133GridTemplateAreasProbeRequested
+                || c1133GridTemplateAreasProbeRequested || c132ScrollFixtureRequested
                 ? 1 : environmentInputs.scale,
             dark: environmentInputs.dark
         )
@@ -1875,6 +1886,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             result = SpinonRunner.evalRuntimeGpuC13_1OverflowClipBorderFixture(handle)
         } else if c131OverflowClipProbeRequested {
             result = SpinonRunner.evalRuntimeGpuC13_1OverflowClipFixture(handle)
+        } else if c132ScrollFixtureRequested {
+            result = SpinonRunner.evalRuntimeGpuC13_2ScrollFixture(handle)
         } else if c1133GridTemplateAreasProbeRequested {
             result = SpinonRunner.evalRuntimeGpuC11_3_3GridTemplateAreasFixture(
                 handle, sceneID: c1133GridTemplateAreasSceneID,
@@ -2028,7 +2041,25 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 return
             }
         }
-        if c131CompactSurfaceMatrixRouteRequested {
+        if c132ScrollFixtureRequested {
+            let report = result ?? "status=-1 missing-report"
+            log("SPINON_C132_SCROLL_EVAL_RUN \(runtimeStatusSummary(report))")
+            let c132ScrollPassed = report.hasPrefix("status=0 ")
+                && report.contains("c13_2_scroll_fixture=passed")
+                && report.contains("border_escape_outside_parent=true")
+                && report.contains("border_escape_hit=matched")
+                && report.contains("c13_2_lifecycle=passed")
+                && report.contains("growth_offset_retained=true")
+                && report.contains("shrink_clamped_to_zero=true")
+                && report.contains("detach_removed_owner=true")
+                && report.contains("reparent_reset_offset=true")
+            guard c132ScrollPassed else {
+                postStatus("실패 · C13.2 scroll·paint·hit·lifecycle 결과 불일치")
+                return
+            }
+            log("SPINON_C132_SCROLL_ASSERTIONS border_escape_outside_parent=true border_escape_hit=matched lifecycle=passed growth_offset_retained=true shrink_clamped_to_zero=true detach_removed_owner=true reparent_reset_offset=true")
+            log("SPINON_C132_SCROLL_SUMMARY status=passed \(runtimeStatusSummary(report))")
+        } else if c131CompactSurfaceMatrixRouteRequested {
             let report = result ?? "status=-1 missing-report"
             if c131CompactHitIdentityGridProbeRequested {
                 log("SPINON_C131_COMPACT_EVAL_RUN run_id=\(c131CompactSurfaceMatrixRunID) \(runtimeStatusSummary(report))")

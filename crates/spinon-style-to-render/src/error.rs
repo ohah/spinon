@@ -49,6 +49,10 @@ pub enum StyleRenderError {
     MissingLayoutFrame(NodeId),
     UnexpectedLayoutFrame(NodeId),
     InvalidFrame(NodeId),
+    StaleScrollState,
+    DuplicateScrollRequest(NodeId),
+    InvalidScrollRequest(NodeId),
+    ScrollStateRevisionExhausted,
     PaintOrderOverflow,
     RenderSnapshot(SnapshotError),
     RuntimeRender(RuntimeRenderError),
@@ -149,6 +153,24 @@ impl fmt::Display for StyleRenderError {
                     formatter,
                     "노드 {node}의 layout frame에 유한하지 않거나 음수인 크기가 있습니다"
                 )
+            }
+            Self::StaleScrollState => {
+                formatter.write_str("scroll 요청의 문서 세대 또는 scroll revision이 오래되었습니다")
+            }
+            Self::DuplicateScrollRequest(node) => {
+                write!(
+                    formatter,
+                    "scroll 요청에 owner 노드 {node}가 중복되었습니다"
+                )
+            }
+            Self::InvalidScrollRequest(node) => {
+                write!(
+                    formatter,
+                    "scroll 요청의 owner 노드 {node} 또는 CSS px offset이 유효하지 않습니다"
+                )
+            }
+            Self::ScrollStateRevisionExhausted => {
+                formatter.write_str("scroll state revision 번호를 더 증가시킬 수 없습니다")
             }
             Self::PaintOrderOverflow => formatter.write_str("paint 순서가 u32 범위를 초과합니다"),
             Self::RenderSnapshot(error) => write!(formatter, "렌더 snapshot 검증 실패: {error}"),

@@ -12,3 +12,7 @@ pub(crate) mod c11_3_3;
 pub(crate) mod c13_1;
 #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
 pub(crate) mod c13_1_compact_surface_matrix;
+#[cfg(feature = "c13-2-scroll-fixture-test")]
+pub(crate) mod c13_2_scroll;
+#[cfg(feature = "c13-2-scroll-fixture-test")]
+mod c13_2_scroll_host;

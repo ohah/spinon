@@ -61,6 +61,8 @@ struct RuntimeGpuHost {
         feature = "c13-1-overflow-clip-fixture-test"
     ))]
     surface_pixel_readback_test: bool,
+    #[cfg(feature = "c13-2-scroll-fixture-test")]
+    c13_2_scroll_state: Mutex<Option<RuntimeRenderSnapshot>>,
     operation: Mutex<()>,
     presentation: PresentationScenes,
     renderer: Mutex<Option<RuntimeRenderer>>,
@@ -102,6 +104,8 @@ impl RuntimeGpuHost {
                 feature = "c13-1-overflow-clip-fixture-test"
             ))]
             surface_pixel_readback_test: false,
+            #[cfg(feature = "c13-2-scroll-fixture-test")]
+            c13_2_scroll_state: Mutex::new(None),
             operation: Mutex::new(()),
             presentation: PresentationScenes::new(),
             renderer: Mutex::new(None),
@@ -188,6 +192,10 @@ impl RuntimeGpuHost {
                 "runtime GPU profile의 장면이 없습니다".to_owned(),
             ));
         };
+        #[cfg(feature = "c13-2-scroll-fixture-test")]
+        let scene = self
+            .reapply_c13_2_scroll_state(scene)
+            .map_err(|(status, error)| (status, error))?;
         if !scene_matches_layout_key(&scene, completed.key) {
             return Err((
                 ERR_STALE,
@@ -250,11 +258,18 @@ impl RuntimeGpuHost {
         };
         #[cfg(not(feature = "c13-1-overflow-clip-fixture-test"))]
         let hit_test_report = String::new();
-        if !self.presentation.publish(sequence, scene) {
+        if !self.presentation.publish(sequence, scene.clone()) {
             return Err((
                 ERR_STALE,
                 "새로운 화면 요청이 도착해 오래된 장면을 거부했습니다".to_owned(),
             ));
+        }
+        #[cfg(feature = "c13-2-scroll-fixture-test")]
+        {
+            let mut scroll_state = lock(&self.c13_2_scroll_state);
+            if scroll_state.is_some() {
+                *scroll_state = Some(scene);
+            }
         }
         let root_frame = completed
             .frames

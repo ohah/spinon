@@ -10,6 +10,7 @@ use crate::adapter::{
     indexed_styles, validate_layout_node_set, validate_revisions, validate_style_node_set,
     validate_viewport,
 };
+use crate::stacking::scroll::RuntimeScrollOffsetRequest;
 use crate::{CurrentLayoutInputs, StyleRenderError};
 use spinon_style_to_layout::StyleLayoutOutput;
 
@@ -117,6 +118,23 @@ pub fn build_runtime_render_snapshot(
     )
     .with_intrinsic_size_revision(current.revision.intrinsic_size());
     RuntimeRenderSnapshot::new(key, viewport_css_px, boxes).map_err(Into::into)
+}
+
+/// Rebuilds the C13.2 scene with an internal scroll request against a known prior snapshot.
+pub fn build_runtime_render_snapshot_with_scroll_requests(
+    document: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    output: &StyleLayoutOutput,
+    current: CurrentLayoutInputs,
+    previous: Option<&RuntimeRenderSnapshot>,
+    requests: &[RuntimeScrollOffsetRequest],
+) -> Result<RuntimeRenderSnapshot, StyleRenderError> {
+    if output.computed_styles.profile != ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1 {
+        return Err(StyleRenderError::UnsupportedRuntimeProfile);
+    }
+    super::stacking::build_runtime_render_snapshot_with_scroll_state(
+        document, root, output, current, previous, requests,
+    )
 }
 
 struct RuntimeDocumentOrder {

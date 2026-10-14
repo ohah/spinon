@@ -4,7 +4,7 @@ use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, HostParent
 use spinon_layout::LayoutSourceRevision;
 use spinon_render::{
     CssClip, CssRect, CssSize, OpaqueCssSrgb, RuntimeBorder, RuntimeBorderSide, RuntimePaint,
-    RuntimeRenderBox, RuntimeRenderKey, RuntimeRenderSnapshot,
+    RuntimeRenderBox, RuntimeRenderKey, RuntimeRenderSnapshot, RuntimeScrollRenderMetadata,
 };
 use spinon_style::{
     ComputedBackgroundPaint, ComputedCssPosition, ComputedCssVisibility, ComputedCssZIndex,
@@ -22,6 +22,7 @@ use crate::adapter::{
 mod deep_graph_tests;
 mod overflow_clip;
 mod reserve;
+pub(crate) mod scroll;
 #[cfg(test)]
 mod tests;
 
@@ -34,6 +35,10 @@ use ordering::{
 };
 use overflow_clip::{runtime_clips_for_node, validate_computed_overflow_values};
 use reserve::{FallibleReserve, SystemReserve};
+use scroll::{
+    RuntimeScrollGeometryContext, RuntimeScrollOffsetRequest, reconcile_scroll_state,
+    scroll_ancestors_for_node,
+};
 use tree::{child_handles, ordered_children, root_display_is_flex, validate_runtime_frame};
 use types::{PendingNode, StackingContext};
 
@@ -44,6 +49,25 @@ pub(super) fn build_runtime_render_snapshot(
     current: CurrentLayoutInputs,
 ) -> Result<RuntimeRenderSnapshot, StyleRenderError> {
     build_runtime_render_snapshot_with_reserve(document, root, output, current, &mut SystemReserve)
+}
+
+pub(super) fn build_runtime_render_snapshot_with_scroll_state(
+    document: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    output: &StyleLayoutOutput,
+    current: CurrentLayoutInputs,
+    previous: Option<&RuntimeRenderSnapshot>,
+    requests: &[RuntimeScrollOffsetRequest],
+) -> Result<RuntimeRenderSnapshot, StyleRenderError> {
+    build_runtime_render_snapshot_with_scroll_state_and_reserve(
+        document,
+        root,
+        output,
+        current,
+        previous,
+        requests,
+        &mut SystemReserve,
+    )
 }
 
 #[cfg(feature = "c13-1-overflow-clip-worker-test")]
@@ -64,6 +88,26 @@ fn build_runtime_render_snapshot_with_reserve<R: FallibleReserve>(
     root: HostNodeHandle,
     output: &StyleLayoutOutput,
     current: CurrentLayoutInputs,
+    reserve: &mut R,
+) -> Result<RuntimeRenderSnapshot, StyleRenderError> {
+    build_runtime_render_snapshot_with_scroll_state_and_reserve(
+        document,
+        root,
+        output,
+        current,
+        None,
+        &[],
+        reserve,
+    )
+}
+
+fn build_runtime_render_snapshot_with_scroll_state_and_reserve<R: FallibleReserve>(
+    document: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    output: &StyleLayoutOutput,
+    current: CurrentLayoutInputs,
+    previous_scroll_snapshot: Option<&RuntimeRenderSnapshot>,
+    scroll_requests: &[RuntimeScrollOffsetRequest],
     reserve: &mut R,
 ) -> Result<RuntimeRenderSnapshot, StyleRenderError> {
     let styles = &output.computed_styles;
@@ -276,8 +320,59 @@ fn build_runtime_render_snapshot_with_reserve<R: FallibleReserve>(
         };
     let viewport_css_px = CssSize::new(styles.viewport.width_css_px, styles.viewport.height_css_px)
         .map_err(|_| StyleRenderError::InvalidViewport)?;
+    let current_source = current.revision.source();
+    let (generation, document_revision, render_tree_revision) = match current_source {
+        LayoutSourceRevision::HostDocument {
+            generation,
+            document,
+            render_tree,
+        } => (generation, document, render_tree),
+        LayoutSourceRevision::Tree(_) => {
+            return Err(StyleRenderError::SnapshotMismatch {
+                field: "CurrentLayoutSourceRevision",
+            });
+        }
+    };
+    let scroll_context = if styles.profile == ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1 {
+        Some(RuntimeScrollGeometryContext {
+            document,
+            root,
+            document_nodes: &document_nodes,
+            parent_by_node: &parent_by_node,
+            styles: &styles_by_node,
+            output,
+            viewport: styles.viewport,
+        })
+    } else {
+        None
+    };
+    let scroll_state = reconcile_scroll_state(
+        scroll_context.as_ref(),
+        previous_scroll_snapshot,
+        scroll_requests,
+        generation,
+        reserve,
+    )?;
+    let scroll_containers = scroll_state.containers;
+    let scroll_state_revision = scroll_state.revision;
+    let scroll_offsets = scroll_state.offsets;
+    let key = RuntimeRenderKey::new(
+        generation,
+        document_revision,
+        render_tree_revision,
+        current.revision.style(),
+        current.revision.environment(),
+    )
+    .with_intrinsic_size_revision(current.revision.intrinsic_size())
+    .with_scroll_state_revision(scroll_state_revision);
     let mut boxes = Vec::new();
     reserve.reserve(&mut boxes, visible_node_count, "render boxes")?;
+    let mut scroll_metadata = Vec::new();
+    reserve.reserve(
+        &mut scroll_metadata,
+        visible_node_count,
+        "scroll render metadata",
+    )?;
     for node_id in paint_nodes {
         let frame = output
             .layout
@@ -332,12 +427,25 @@ fn build_runtime_render_snapshot_with_reserve<R: FallibleReserve>(
                 .ok_or(StyleRenderError::InvalidRoot)?,
             None => paint_order,
         };
-        let (paint_clip, hit_test_clip) =
+        let (paint_clip, hit_test_clip, clip_layers) =
             if styles.profile == ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1 {
-                runtime_clips_for_node(node_id, &parent_by_node, &styles_by_node, output, reserve)?
+                runtime_clips_for_node(
+                    node_id,
+                    &parent_by_node,
+                    &styles_by_node,
+                    output,
+                    &scroll_offsets,
+                    reserve,
+                )?
             } else {
-                (CssClip::unconstrained(), CssClip::unconstrained())
+                (
+                    CssClip::unconstrained(),
+                    CssClip::unconstrained(),
+                    Vec::new(),
+                )
             };
+        let scroll_ancestors =
+            scroll_ancestors_for_node(node_id, style, &parent_by_node, &scroll_offsets, reserve)?;
         boxes.push(
             RuntimeRenderBox::new(node_id, frame_css_px, paint, paint_order)
                 .with_border(border)
@@ -345,30 +453,21 @@ fn build_runtime_render_snapshot_with_reserve<R: FallibleReserve>(
                 .with_clip(paint_clip)
                 .with_hit_test_clip(hit_test_clip),
         );
+        scroll_metadata.push(RuntimeScrollRenderMetadata::new(
+            frame_css_px,
+            scroll_ancestors,
+            clip_layers,
+        ));
     }
 
-    let current_source = current.revision.source();
-    let (generation, document_revision, render_tree_revision) = match current_source {
-        LayoutSourceRevision::HostDocument {
-            generation,
-            document,
-            render_tree,
-        } => (generation, document, render_tree),
-        LayoutSourceRevision::Tree(_) => {
-            return Err(StyleRenderError::SnapshotMismatch {
-                field: "CurrentLayoutSourceRevision",
-            });
-        }
-    };
-    let key = RuntimeRenderKey::new(
-        generation,
-        document_revision,
-        render_tree_revision,
-        current.revision.style(),
-        current.revision.environment(),
+    RuntimeRenderSnapshot::new_with_scroll_metadata(
+        key,
+        viewport_css_px,
+        boxes,
+        scroll_containers,
+        scroll_metadata,
     )
-    .with_intrinsic_size_revision(current.revision.intrinsic_size());
-    RuntimeRenderSnapshot::new(key, viewport_css_px, boxes).map_err(Into::into)
+    .map_err(Into::into)
 }
 
 fn runtime_border_paint(paint: ComputedBackgroundPaint) -> RuntimePaint {

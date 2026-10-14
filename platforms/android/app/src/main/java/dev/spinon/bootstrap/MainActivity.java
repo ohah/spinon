@@ -422,6 +422,7 @@ public final class MainActivity extends Activity {
                 || getIntent().getBooleanExtra("spinon_c124_stacking_context", false)
                 || c131OverflowClipRequested || c131CompactSurfaceMatrixRequested
                 || c131OverflowClipBorderRequested
+                || getIntent().getBooleanExtra("spinon_c132_scroll_fixture", false)
                 || getIntent().getBooleanExtra("spinon_c124_stacking_matrix", false)
                 || getIntent().getBooleanExtra("spinon_c124_depth_safety", false)
                 || getIntent().getStringExtra("spinon_c124_surface_case") != null
@@ -451,6 +452,17 @@ public final class MainActivity extends Activity {
                 setContentView(unavailable);
                 Log.e(TAG, "SPINON_C131_DISABLED · "
                         + "SPINON_ENABLE_C13_1_OVERFLOW_CLIP_FIXTURE_TEST=1로 빌드하세요");
+                return;
+            }
+            if (getIntent().getBooleanExtra("spinon_c132_scroll_fixture", false)
+                    && !BuildConfig.SPINON_C132_SCROLL_FIXTURE_TEST) {
+                TextView unavailable = new TextView(this);
+                unavailable.setText("C13.2 scroll fixture-test 옵션을 켜서 빌드해야 합니다.");
+                unavailable.setTextColor(Color.WHITE);
+                unavailable.setGravity(Gravity.CENTER);
+                setContentView(unavailable);
+                Log.e(TAG, "SPINON_C132_DISABLED · "
+                        + "SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST=1로 빌드하세요");
                 return;
             }
             boolean failureProbe = getIntent().getBooleanExtra(

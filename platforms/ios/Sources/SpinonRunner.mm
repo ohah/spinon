@@ -771,6 +771,26 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 #endif
 }
 
++ (uint64_t)createRuntimeGpuHostWithC13_2ScrollFixture {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C132_SCROLL_FIXTURE_TEST) && \
+    SPINON_ENABLE_C132_SCROLL_FIXTURE_TEST
+  std::array<char, 1024> output{};
+  SpinonRuntimeGpuHost *host = spinon_runtime_gpu_host_new_c13_2_scroll_fixture(
+      output.data(), output.size());
+  if (host == nullptr) {
+    os_log_error(OS_LOG_DEFAULT, "SPINON_C132_HOST_ERROR=%{public}s", output.data());
+    return 0;
+  }
+  os_log(OS_LOG_DEFAULT, "SPINON_C132_HOST=%{public}s", output.data());
+  return static_cast<uint64_t>(reinterpret_cast<uintptr_t>(host));
+#else
+  os_log_error(OS_LOG_DEFAULT,
+               "SPINON_C132_DISABLED enable C04 runtime GPU and C13.2 fixture test");
+  return 0;
+#endif
+}
+
 + (uint64_t)createRuntimeGpuHostWithC11_1GridFixture {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
   std::array<char, 1024> output{};
@@ -1514,6 +1534,25 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
                        ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
                    "SPINON_C131_BORDER_FIXTURE_SUMMARY", summary);
   }
+  return report;
+#else
+  (void)handle;
+  return @"status=-90 feature-disabled";
+#endif
+}
+
++ (NSString *)evalRuntimeGpuC13_2ScrollFixture:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C132_SCROLL_FIXTURE_TEST) && \
+    SPINON_ENABLE_C132_SCROLL_FIXTURE_TEST
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 32768> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_c13_2_scroll_fixture(
+      host, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C132_EVAL", report);
   return report;
 #else
   (void)handle;
