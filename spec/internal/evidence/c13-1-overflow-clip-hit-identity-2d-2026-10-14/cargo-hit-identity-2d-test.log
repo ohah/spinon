@@ -1,0 +1,14 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_render-ee14fa157b6d3950)
+
+running 8 tests
+test stacking::tests::c13_1_clip_matrix::runtime_matrix::complex::static_clip_is_skipped_when_absolute_descendant_uses_outer_containing_block ... ok
+test stacking::tests::c13_1_clip_matrix::runtime_matrix::complex::positioned_clip_container_matches_chrome_for_contained_absolute_descendant ... ok
+test stacking::tests::c13_1_clip_matrix::border_box_clip_margin_matches_chrome_hit_ranges_on_both_axes ... ok
+test stacking::tests::c13_1_clip_matrix::y_only_clip_matches_chrome_without_restricting_x_hit_range ... ok
+test stacking::tests::c13_1_clip_matrix::hidden_ignores_clip_margin_and_matches_chrome_padding_clip_border_hit_ranges ... ok
+test stacking::tests::c13_1_clip_matrix::runtime_matrix::complex::nested_clip_axes_intersect_for_paint_and_hit_against_chrome ... ok
+test stacking::tests::c13_1_clip_matrix::runtime_matrix::complex::mixed_scrollable_axis_normalization_ignores_clip_margin_in_paint_and_hit ... ok
+test stacking::tests::c13_1_clip_matrix::runtime_matrix::axis_margin::visible_axis_and_clip_margin_edges_match_chrome_frame_and_full_hit_ranges ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 45 filtered out; finished in 0.06s

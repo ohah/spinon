@@ -10,7 +10,7 @@ The browser capture used agent-browser 0.31.1 with Google Chrome for Testing `15
 
 | 행 유형 | 수 | Rust 판정 | 남은 표면 검증 |
 | --- | ---: | --- | --- |
-| 유효 C13.1 geometry case | 13 | frame, 축별 target interval, target frame 안의 Chrome topmost NodeId를 비교한다. exact identity는 [별도 근거](../c13-1-overflow-clip-hit-identity-2026-10-14/README.md)에 있다. | 유효행 전체 PixelCopy/Metal surface, target frame 밖 전체 2D paint·hit·event 표본은 미완료다. |
+| 유효 C13.1 geometry case | 13 | frame, 축별 target interval, target frame 안의 Chrome topmost NodeId를 비교한다. 이전 exact identity는 [축별 근거](../c13-1-overflow-clip-hit-identity-2026-10-14/README.md), target frame의 모든 정수 `(x,y)` 표본은 [2D 후속 근거](../c13-1-overflow-clip-hit-identity-2d-2026-10-14/README.md)에 있다. | 유효행 전체 PixelCopy/Metal surface, target frame 밖 전체 viewport paint·hit·event 표본은 미완료다. |
 | 음수 `overflow-clip-margin` | 1 | cascade diagnostic 뒤 layout 전에 reject한다. [검증 로그](cargo-negative-margin-test.log)는 1 passed다. | Chrome의 paint/event 동작을 제품 의미로 채택하지 않았다. |
 | float/BFC 변형 | 3 | Chrome 비교 3행 모두를 [`c131_float_formatting_comparison_cases_fail_closed`](../../../../crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c13_1_float_boundary_tests.rs) 한 테스트가 순회해 `unsupported_inline_property`로 reject한다. [정정된 실행 로그](cargo-float-failclosed-test.log)는 1 passed다. | float geometry parity는 C26 소유 범위다. |
 
