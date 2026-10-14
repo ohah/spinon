@@ -1,10 +1,10 @@
 # C13.1 full viewport hit identity 계획 실패 관점 검토 · 2026-10-14
 
-계획 대상은 기존 13개 valid C13.1 fixture row의 integer hit identity를 target frame 전체에서 viewport 전체로 넓히는 host Rust verification slice다. 이 검토는 browser oracle capture와 implementation edits 전에 실행 모델·identity projection·negative controls를 확인했다.
+계획 대상은 기존 13개 valid C13.1 fixture row의 integer hit identity를 target frame에서 full page viewport로 넓히는 host Rust verification slice다. 초기 계획의 동일 viewport 13회 반복은 agent-browser daemon 응답 한계에 걸렸으며, oracle coverage를 유지한 single scan과 Chrome 위치의 combined Rust scene으로 수정했다. 이 검토는 browser oracle capture와 implementation edits 전에 실행 모델·identity projection·negative controls를 확인했다.
 
 | # | 공격 관점 | 판정과 근거 |
 |---:|---|---|
-| 1 | 전체 viewport 수가 viewport 한 줄이나 target bounds로 축소될 수 있다 | PASS — 좌표 범위는 `x=0..1279`, `y=0..1099`로 고정했고 행당 1,408,000점이다. |
+| 1 | 전체 viewport 수가 viewport 한 줄이나 target bounds로 축소될 수 있다 | PASS — 좌표 범위는 `x=0..1279`, `y=0..1099`로 고정했고 single page scan은 1,408,000점이다. |
 | 2 | 13개 fixture row 대신 invalid/float 행을 섞어 fail-closed 결과와 성공 scene을 혼동할 수 있다 | PASS — 성공 profile 13개를 명시하고 invalid margin/float 3행을 제외하며 원인은 별도 분류했다. |
 | 3 | Chrome scroll position이 0이 아니어서 좌표계가 Rust viewport와 어긋날 수 있다 | PASS — capture 전 `scrollTo(0,0)` 및 `scrollX/scrollY == 0`을 확인한다. |
 | 4 | DPR scaling이 CSS 좌표와 device pixel을 혼합할 수 있다 | PASS — DPR 1 고정 CSS integer query를 쓰고 device pixel sample은 제외한다. |
@@ -16,11 +16,11 @@
 | 10 | viewport 바깥 좌표를 섞어 기존 4점 viewport-null control을 중복 주장할 수 있다 | PASS — 이 계획은 0..width-1, 0..height-1 내부 grid만 scan하며 바깥 점은 다루지 않는다. |
 | 11 | 우측/하단 exclusive 경계를 inclusive로 처리하거나 viewport 내부 null을 root hit로 숨길 수 있다 | PASS — 마지막 정수 표본은 1279와 1099이며 바깥 경계 1280/1100은 제외한다. 내부 Chrome null은 별 identity로 Rust None과 비교한다. |
 | 12 | RLE row에 gap/overlap이 있어 표본 수만 맞을 수 있다 | PASS — validator와 Rust test가 첫 x, 연속 run, 마지막 x, y 연속성과 폭을 각각 검사한다. |
-| 13 | 13개 행 총합 계산이 틀려 일부 행을 빼먹을 수 있다 | PASS — expected count는 `1280 × 1100 × 13 = 18,304,000`으로 고정한다. |
+| 13 | 13개 행 총합 계산이 틀려 일부 행을 빼먹을 수 있다 | PASS — expected count는 `1280 × 1100 = 1,408,000`으로 고정한다. |
 | 14 | 큰 JSON 생성이 메모리/출력 한계를 넘어 부분 observation을 완전본으로 쓸 수 있다 | PASS — 픽셀별 JSON 대신 연속 identity를 행별 RLE로 저장하고 포인트 수와 case count를 검증한다. |
-| 15 | Rust scene root가 Chrome viewport보다 작아 fallback identity 비교가 무효가 될 수 있다 | PASS — 모든 비교 scene의 root element와 viewport height를 1280×1100으로 맞춘다. |
+| 15 | Rust combined scene 위치가 Chrome page case 위치와 달라 identity 비교가 무효가 될 수 있다 | PASS — root, 13 section, box/target/inner의 frame을 고정된 browser observation과 대조하고 full page에서 한 번 scan한다. |
 | 16 | 원래 target frame 안 187,320점을 새 full grid로 대체해 기존 검증이 회귀할 수 있다 | PASS — 이전 target-frame observation과 검사는 유지하고 전체 grid 관측을 추가한다. |
-| 17 | unrelated DOM/page element를 실제 node identity 지원으로 과장할 수 있다 | PASS — 이 slice는 현재 row owner identity에만 관심이 있고 다른 fixture element는 synthetic viewport root로 추상화함을 명시했다. |
+| 17 | invalid/float rows가 성공 scene에 포함되거나 page content가 runtime 지원으로 오해될 수 있다 | PASS — 13 valid rows만 combined scene에 넣고 invalid/float rows와 header content는 root fallback oracle bucket으로 명시한다. |
 | 18 | hit identity scan을 paint surface 또는 DOM event test로 과장할 수 있다 | PASS — 계획에서 host `hit_test_css_point`만 주장하며 PixelCopy/Metal, dispatch와 WPT를 제외했다. |
 | 19 | helper 설정 변경이 layout/clip geometry를 바꾸면서 hit scan 차이를 숨길 수 있다 | PASS — root height만 633에서 1100으로 맞추고 absolute child geometry와 CSS clip inputs를 고정한다. |
 | 20 | 큰 표본 수를 C13.1/C13 완료 근거로 과장할 수 있다 | PASS — STATUS와 계획은 C13.1 및 C13 미완료를 유지하고 나머지 surface/event/WPT gate를 명시한다. |
