@@ -1,0 +1,25 @@
+   Compiling spinon-image v0.1.0 (/private/tmp/spinon-u05-image-resource/crates/spinon-image)
+error[E0308]: mismatched types
+  --> crates/spinon-image/src/request_tests.rs:46:33
+   |
+46 |         AttributeName::new(Some("urn:example"), "src").unwrap(),
+   |                            ---- ^^^^^^^^^^^^^ expected `String`, found `&str`
+   |                            |
+   |                            arguments to this enum variant are incorrect
+   |
+help: the type constructed contains `&'static str` due to the type of the argument passed
+  --> crates/spinon-image/src/request_tests.rs:46:28
+   |
+46 |         AttributeName::new(Some("urn:example"), "src").unwrap(),
+   |                            ^^^^^-------------^
+   |                                 |
+   |                                 this argument influences the type of `Some`
+note: tuple variant defined here
+  --> /rustc/31fca3adb283cc9dfd56b49cdee9a96eb9c96ffd/library/core/src/option.rs:608:4
+help: try using a conversion method
+   |
+46 |         AttributeName::new(Some("urn:example".to_string()), "src").unwrap(),
+   |                                              ++++++++++++
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `spinon-image` (lib test) due to 1 previous error

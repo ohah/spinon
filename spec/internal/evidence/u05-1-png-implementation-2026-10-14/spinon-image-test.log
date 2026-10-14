@@ -1,0 +1,23 @@
+   Compiling spinon-image v0.1.0 (/private/tmp/spinon-u05-image-resource/crates/spinon-image)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.24s
+     Running unittests src/lib.rs (target/debug/deps/spinon_image-b59096fb26a89b89)
+
+running 10 tests
+test snapshot::snapshot_tests::snapshot_pixel_byte_limit_accepts_boundary_and_rejects_overflow ... ok
+test snapshot::snapshot_tests::snapshot_image_count_limit_accepts_boundary_and_rejects_next_entry ... ok
+test decode_tests::rejects_encoded_dimensions_and_decoded_pixel_limits_before_inflate ... ok
+test decode_tests::rejects_bad_signature_truncation_and_bad_chunk_checksum ... ok
+test decode_tests::decodes_basic_png_to_bounded_rgba8 ... ok
+test decode_tests::decodes_adam7_to_the_same_row_major_rgba8_pixels ... ok
+test decode_tests::expands_gray_rgb_palette_transparency_and_sixteen_bit_inputs ... ok
+test decode_tests::rejects_apng_density_exif_and_unmanaged_color_metadata ... ok
+test request_tests::image_request_requires_a_connected_html_img_with_a_nonempty_src ... ok
+test snapshot::snapshot_tests::snapshot_constructor_rejects_more_than_the_image_count_limit ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+
+   Doc-tests spinon_image
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

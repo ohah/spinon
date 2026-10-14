@@ -1,0 +1,24 @@
+{
+  "fixture": {
+    "id": "U05.1-png-natural-size-v1",
+    "png": "c14-1-png-basic.png",
+    "png_bytes": 97,
+    "png_sha256": "5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2"
+  },
+  "oracle": {
+    "product": "HeadlessChrome/155",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "device_pixel_ratio": 1
+  },
+  "observation": {
+    "complete": true,
+    "natural_width": 24,
+    "natural_height": 16,
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 24,
+      "height": 16
+    }
+  }
+}

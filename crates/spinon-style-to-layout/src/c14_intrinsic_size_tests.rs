@@ -56,7 +56,9 @@ fn document() -> (HostDocument, HostNodeHandle, HostNodeHandle) {
         .push(DocumentOperation::SetAttribute {
             node: image,
             name: AttributeName::new(None, "src").unwrap(),
-            value: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='16' viewBox='0 0 24 16'%3E%3C/svg%3E".to_owned().into(),
+            value: "https://spinon.invalid/c14-1-png-basic.png"
+                .to_owned()
+                .into(),
         })
         .push(DocumentOperation::InsertBefore {
             parent: HostParent::Root,

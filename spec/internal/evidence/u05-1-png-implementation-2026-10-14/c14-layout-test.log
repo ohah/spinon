@@ -1,0 +1,17 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.06s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c9b444e0e79365b7)
+
+running 11 tests
+test c14_png_resource_tests::resource_snapshot_rejects_a_different_document_generation ... ok
+test c14_png_resource_tests::resource_snapshot_preserves_host_document_source_and_measurement_revision ... ok
+test c14_png_resource_tests::resource_snapshot_rejects_duplicate_nodes_and_document_revisions ... ok
+test c14_png_resource_tests::image_request_completion_is_rejected_after_src_changes ... ok
+test c14_intrinsic_size_tests::stale_measurement_snapshot_is_rejected_before_sizing_preflight ... ok
+test c14_intrinsic_size_tests::legacy_runtime_projection_rejects_visible_auto_image_without_decoder_measurement ... ok
+test c14_png_resource_tests::decoded_png_flows_through_resource_and_c14_layout_snapshots ... ok
+test c14_intrinsic_size_tests::host_document_stylo_and_taffy_match_agent_browser_replaced_auto_size ... ok
+test c14_intrinsic_size_tests::cache_entries_for_non_images_or_nodes_outside_the_subtree_are_rejected ... ok
+test c14_intrinsic_size_tests::hidden_image_needs_no_measurement_and_fixed_size_ignores_cached_natural_size ... ok
+test c14_intrinsic_size_tests::partial_auto_and_aspect_ratio_image_sizing_are_rejected ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 161 filtered out; finished in 0.00s
