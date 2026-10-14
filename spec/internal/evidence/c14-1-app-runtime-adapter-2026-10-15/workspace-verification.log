@@ -1,0 +1,94 @@
+    Checking smallvec v1.16.2
+    Checking bitflags v2.13.2
+   Compiling num-traits v0.2.19
+    Checking foldhash v0.2.0
+    Checking spinon-core v0.1.0 (/private/tmp/spinon-c14-1-android-runtime-adapter/crates/spinon-core)
+   Compiling cfg_aliases v0.2.2
+   Compiling objc2 v0.6.4
+    Checking objc2-encode v4.1.0
+   Compiling thiserror v2.0.21
+   Compiling thiserror-impl v2.0.21
+   Compiling zerocopy v0.8.59
+   Compiling zerocopy-derive v0.8.59
+    Checking rustc-hash v1.1.0
+   Compiling bytemuck_derive v1.12.1
+    Checking unicode-width v0.2.2
+    Checking bit-vec v0.9.1
+    Checking hashbrown v0.17.1
+   Compiling naga v30.0.1
+    Checking parking_lot_core v0.9.12
+    Checking taffy v0.14.0
+    Checking cssparser v0.38.0
+    Checking icu_normalizer v2.3.0
+    Checking icu_segmenter v2.3.0
+    Checking parking_lot v0.12.5
+    Checking codespan-reporting v0.13.1
+    Checking string_cache v0.11.0
+    Checking idna_adapter v1.2.2
+    Checking stylo_atoms v0.22.0
+    Checking web_atoms v0.3.0
+    Checking indexmap v2.14.2
+    Checking idna v1.1.0
+    Checking bit-set v0.10.0
+    Checking spinon-render v0.1.0 (/private/tmp/spinon-c14-1-android-runtime-adapter/crates/spinon-render)
+    Checking once_cell v1.21.4
+    Checking url v2.5.8
+    Checking unicode-ident v1.0.26
+    Checking raw-window-handle v0.6.2
+   Compiling wgpu-hal v30.0.1
+    Checking libloading v0.8.9
+    Checking profiling v1.0.18
+   Compiling wgpu-core v30.0.1
+   Compiling litrs v1.0.0
+    Checking to_shmem v0.6.0
+   Compiling wgpu v30.0.1
+    Checking png v0.18.1
+    Checking selectors v0.41.0
+    Checking bytemuck v1.25.2
+    Checking pollster v0.4.0
+   Compiling document-features v0.2.12
+    Checking app_units v0.7.8
+    Checking euclid v0.22.14
+    Checking num-integer v0.1.47
+    Checking spinon-layout v0.1.0 (/private/tmp/spinon-c14-1-android-runtime-adapter/crates/spinon-layout)
+    Checking spinon-style-layout-spike v0.1.0 (/private/tmp/spinon-c14-1-android-runtime-adapter/spikes/style-layout)
+    Checking stylo_malloc_size_of v0.22.0
+    Checking stylo_dom v0.22.0
+    Checking stylo_traits v0.22.0
+    Checking objc2-core-foundation v0.3.2
+    Checking block2 v0.6.2
+    Checking stylo v0.22.0
+    Checking spinon-image v0.1.0 (/private/tmp/spinon-c14-1-android-runtime-adapter/crates/spinon-image)
+    Checking objc2-foundation v0.3.2
+    Checking objc2-core-graphics v0.3.2
+    Checking objc2-metal v0.3.2
+    Checking objc2-quartz-core v0.3.2
+    Checking raw-window-metal v1.1.0
+    Checking naga-types v30.0.1
+    Checking wgpu-types v30.0.1
+    Checking half v2.7.1
+    Checking wgpu-naga-bridge v30.0.1
+    Checking wgpu-core-deps-apple v30.0.1
+    Checking spinon-style v0.1.0 (/private/tmp/spinon-c14-1-android-runtime-adapter/crates/spinon-style)
+    Checking spinon-style-to-layout v0.1.0 (/private/tmp/spinon-c14-1-android-runtime-adapter/crates/spinon-style-to-layout)
+    Checking spinon-style-to-render v0.1.0 (/private/tmp/spinon-c14-1-android-runtime-adapter/crates/spinon-style-to-render)
+    Checking spinon-runtime v0.1.0 (/private/tmp/spinon-c14-1-android-runtime-adapter/crates/spinon-runtime)
+    Checking spinon-ffi v0.1.0 (/private/tmp/spinon-c14-1-android-runtime-adapter/crates/spinon-ffi)
+    Checking spinon-render-wgpu v0.1.0 (/private/tmp/spinon-c14-1-android-runtime-adapter/crates/spinon-render-wgpu)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 13.40s
+    Checking spinon-layout v0.1.0 (/private/tmp/spinon-c14-1-android-runtime-adapter/crates/spinon-layout)
+    Checking spinon-style v0.1.0 (/private/tmp/spinon-c14-1-android-runtime-adapter/crates/spinon-style)
+    Checking spinon-image v0.1.0 (/private/tmp/spinon-c14-1-android-runtime-adapter/crates/spinon-image)
+    Checking spinon-style-to-layout v0.1.0 (/private/tmp/spinon-c14-1-android-runtime-adapter/crates/spinon-style-to-layout)
+    Checking spinon-style-to-render v0.1.0 (/private/tmp/spinon-c14-1-android-runtime-adapter/crates/spinon-style-to-render)
+    Checking spinon-runtime v0.1.0 (/private/tmp/spinon-c14-1-android-runtime-adapter/crates/spinon-runtime)
+    Checking spinon-ffi v0.1.0 (/private/tmp/spinon-c14-1-android-runtime-adapter/crates/spinon-ffi)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.63s
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s
+     Running unittests src/lib.rs (target/debug/deps/spinon_ffi-47a8869700d4d46e)
+
+running 2 tests
+test fixtures::c14_1_app::tests::app_fixture_c_abi_rejects_a_short_output_buffer ... ok
+test fixtures::c14_1_app::tests::app_fixture_report_matches_the_chrome_reference ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 18 filtered out; finished in 0.00s

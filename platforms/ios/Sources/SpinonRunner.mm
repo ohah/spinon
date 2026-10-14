@@ -467,6 +467,28 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 #endif
 }
 
++ (NSString *)runC141IntrinsicSizeFixture {
+#if defined(SPINON_ENABLE_C14_1_APP_FIXTURE_TEST) && \
+    SPINON_ENABLE_C14_1_APP_FIXTURE_TEST
+  std::array<char, 4096> output{};
+  const int32_t status = spinon_c14_1_app_intrinsic_size_fixture(
+      output.data(), output.size());
+  NSString *message = [NSString stringWithUTF8String:output.data()];
+  if (status == 0) {
+    os_log(OS_LOG_DEFAULT, "SPINON_C141_APP_FIXTURE %{public}s",
+           message.UTF8String ?: "empty report");
+  } else {
+    os_log_error(OS_LOG_DEFAULT,
+                 "SPINON_C141_APP_FIXTURE_ERROR status=%{public}d report=%{public}s",
+                 status, message.UTF8String ?: "empty report");
+  }
+  return [NSString stringWithFormat:@"status=%d report=%@", status,
+                                    message ?: @"empty report"];
+#else
+  return @"status=-8 report={\"status\":\"disabled\",\"detail\":\"fixture feature is off\"}";
+#endif
+}
+
 + (NSString *)evalRuntimeSession:(uint64_t)handle source:(NSString *)source {
   const char *sourceUTF8 = source.UTF8String;
   if (handle == 0 || sourceUTF8 == nullptr) return @"status=-1 invalid session or source";

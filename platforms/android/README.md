@@ -19,6 +19,18 @@ S04 화면의 하단 상태 문구는 비동기 RGBA readback을 시작하면 �
 
 색상 띠를 탭하면 `MotionEvent`의 SurfaceView local physical pixel 좌표를 렌더와 같은 scale·letterbox 변환으로 역산해 고정 snapshot의 `NodeId`를 상태 문구와 `SPINON_S04_HIT_TEST` 로그에 표시합니다. 화면 상태를 확인하려면 `adb logcat -d | rg SPINON_S04_HIT_TEST`를 실행합니다. 이 opt-in 동작은 fixture hit-test이며 DOM 이벤트나 JavaScript callback을 실행하지 않고, `Queue::present`가 실제 표시된 frame을 식별하지도 않습니다. Android API 36 ARM64 emulator 결과와 캡처는 [S04.9 실행 근거](../../spec/internal/evidence/s04-hit-test-platforms-2026-10-07.md)에 있습니다.
 
+## C14.1 intrinsic size 앱 fixture
+
+C14.1 고정 PNG를 fixture-owned HostDocument에서 읽어 `ImageResourceSnapshot`과 CSS px intrinsic layout snapshot 경로로 전달하는 텍스트 report 전용 앱 fixture입니다. `SPINON_ENABLE_C14_1_APP_FIXTURE_TEST=1`로 opt-in 빌드한 다음 Android emulator에서 실행합니다.
+
+```sh
+mise exec -- env SPINON_ENABLE_C14_1_APP_FIXTURE_TEST=1 bun run build:android
+adb -s emulator-5554 shell am start -n dev.spinon.bootstrap/.MainActivity --ez spinon_c141_intrinsic_size true
+adb -s emulator-5554 logcat -d -s SpinonBootstrap | rg SPINON_C141_APP_FIXTURE
+```
+
+이 report는 Chrome 155와 고정 `(0,0) 24×16 CSS px` frame 및 revision을 비교합니다. 화면에는 이미지를 페인트하지 않으며 GPU 출력·overflow clip·제품 V8 resource 연결을 증명하지 않습니다. Android API 37 ARM64 AVD와 iOS Simulator의 실행 근거는 [C14.1 adapter evidence](../../spec/internal/evidence/c14-1-app-runtime-adapter-2026-10-15/README.md)에 기록합니다.
+
 기본 시작 smoke 로그는 `adb logcat -s SpinonBootstrap`에서 `SPINON_BOOTSTRAP_RESULT=nodes=2 last_node=8 tag=text text=이벤트:7`을 확인합니다. 기본 smoke 범위는 ARM64 단일 ABI이며 GPU·제품 입력·UI 트리·접근성·JIT 없는 기기 빌드는 포함하지 않습니다. 별도 R06 화면에서만 개발용 터치 버튼을 실행합니다. 구현 완료 표시는 [공식 상태 대장](../../spec/STATUS.md)과 [내부 V8 실행 인터페이스](../../spec/internal/0001-v8-bootstrap.md) 기준을 따릅니다.
 
 ## V8 실행 스레드 실험

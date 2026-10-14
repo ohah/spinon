@@ -32,6 +32,9 @@ pub(crate) mod runtime_layout;
 mod runtime_session;
 mod runtime_ua_cascade;
 
+#[cfg(feature = "c14-1-app-fixture-test")]
+mod fixtures;
+
 fn copy_report(report: &str, output: &mut [u8]) -> bool {
     let bytes = report.as_bytes();
     if output.len() <= bytes.len() {

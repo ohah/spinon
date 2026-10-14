@@ -21,6 +21,10 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -98,6 +102,7 @@ public final class MainActivity extends Activity {
     private static native byte[] nativeSessionPriorityFairnessProbe();
     private static native byte[] nativeSessionShutdownProbe();
     private static native byte[] nativeSessionUaCascadeProbe();
+    private static native byte[] nativeC141IntrinsicSizeFixture();
     private static native int nativeSessionCancel(long session);
     private static native int nativeSessionMemoryPressure(long session, int level);
     private static native void nativeSessionFree(long session);
@@ -193,6 +198,10 @@ public final class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getIntent().getBooleanExtra("spinon_c141_intrinsic_size", false)) {
+            showC141IntrinsicSizeFixture();
+            return;
+        }
         String frameBenchmarkMode = getIntent().getStringExtra(FrameAttributionActivity.EXTRA_MODE);
         if (frameBenchmarkMode != null) {
             startActivity(new Intent(this, FrameAttributionActivity.class)
@@ -578,6 +587,100 @@ public final class MainActivity extends Activity {
         } catch (RuntimeException error) {
             Log.e(TAG, "SPINON_BOOTSTRAP_RUNTIME_ERROR", error);
         }
+    }
+
+    private void showC141IntrinsicSizeFixture() {
+        TextView reportView = new TextView(this);
+        reportView.setTextColor(Color.WHITE);
+        reportView.setTextSize(16);
+        reportView.setTypeface(Typeface.MONOSPACE);
+        reportView.setGravity(Gravity.CENTER_VERTICAL);
+        reportView.setPadding(32, 48, 32, 48);
+        reportView.setBackgroundColor(Color.rgb(14, 19, 31));
+        setContentView(reportView);
+
+        if (hasConflictingC141FixtureRoute()) {
+            String detail = "C14.1 fixture route는 한 번에 하나만 선택해야 합니다.";
+            reportView.setText("C14.1 · 잘못된 실행 인자\n\n" + detail);
+            Log.e(TAG, "SPINON_C141_ARGUMENT_ERROR conflicting=fixture-route");
+            return;
+        }
+        if (!BuildConfig.SPINON_C141_APP_FIXTURE_TEST) {
+            reportView.setText("C14.1 · fixture-test 빌드가 꺼져 있습니다.");
+            Log.e(TAG, "SPINON_C141_DISABLED fixture-test feature is off");
+            return;
+        }
+
+        reportView.setText("C14.1 · CSS px intrinsic size 계산 중…");
+        try {
+            bootstrapExecutor.execute(() -> {
+                byte[] encoded = nativeC141IntrinsicSizeFixture();
+                String report = encoded == null
+                        ? "{\"status\":\"error\",\"detail\":\"empty JNI report\"}"
+                        : new String(encoded, StandardCharsets.UTF_8);
+                boolean passed = report.contains("\"status\":\"ok\"");
+                Log.println(passed ? Log.INFO : Log.ERROR, TAG,
+                        "SPINON_C141_APP_FIXTURE " + report);
+                runOnUiThread(() -> {
+                    if (!activityClosing) {
+                        reportView.setText(formatC141Report(report, passed));
+                    }
+                });
+            });
+        } catch (RejectedExecutionException rejected) {
+            reportView.setText("C14.1 · 계산 작업을 시작하지 못했습니다.");
+            Log.e(TAG, "SPINON_C141_EXECUTION_ERROR executor=rejected", rejected);
+        }
+    }
+
+    private String formatC141Report(String report, boolean passed) {
+        if (!passed) return "C14.1 · 앱 fixture 실패\n\n" + report;
+        try {
+            JSONObject result = new JSONObject(report);
+            JSONArray natural = result.optJSONArray("natural_size_css_px");
+            JSONArray frame = result.optJSONArray("frame_css_px");
+            String naturalSize = c141Pair(natural);
+            String frameSize = frame == null || frame.length() < 4
+                    ? "확인할 수 없음"
+                    : "x=" + c141Number(frame.optDouble(0))
+                            + ", y=" + c141Number(frame.optDouble(1))
+                            + "\nwidth=" + c141Number(frame.optDouble(2))
+                            + ", height=" + c141Number(frame.optDouble(3));
+            return "C14.1 · 앱 fixture report\n\n"
+                    + "PASS · Chrome 155 oracle 일치\n\n"
+                    + "PNG natural size\n" + naturalSize + " CSS px\n\n"
+                    + "img layout frame\n" + frameSize + " CSS px\n\n"
+                    + "HostDocument / intrinsic revision\n"
+                    + (result.optBoolean("intrinsic_source_matches")
+                            && result.optBoolean("intrinsic_revision_matches")
+                            ? "일치" : "불일치")
+                    + "\n\nViewport\n120 × 80 CSS px";
+        } catch (JSONException malformed) {
+            return "C14.1 · 앱 fixture report 해석 실패\n\n" + report;
+        }
+    }
+
+    private String c141Pair(JSONArray values) {
+        if (values == null || values.length() < 2) return "확인할 수 없음";
+        return c141Number(values.optDouble(0)) + " × " + c141Number(values.optDouble(1));
+    }
+
+    private String c141Number(double value) {
+        return value == Math.rint(value)
+                ? Long.toString(Math.round(value)) : Double.toString(value);
+    }
+
+    private boolean hasConflictingC141FixtureRoute() {
+        Bundle extras = getIntent().getExtras();
+        if (extras == null) return false;
+        for (String key : extras.keySet()) {
+            if (!key.startsWith("spinon_c") || "spinon_c141_intrinsic_size".equals(key)) {
+                continue;
+            }
+            Object value = extras.get(key);
+            if (!(value instanceof Boolean) || Boolean.TRUE.equals(value)) return true;
+        }
+        return false;
     }
 
     private void showPriorityProbe() {
