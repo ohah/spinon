@@ -41,6 +41,15 @@ impl RuntimeGpuHost {
         Ok((host, report))
     }
 
+    #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
+    pub(in crate::runtime_gpu) fn new_c13_1_overflow_clip_fixture() -> Result<(Self, String), String>
+    {
+        let (session, report) = RuntimeSession::new_runtime_gpu_block_flex_overflow_clip_fixture()?;
+        let mut host = Self::from_session_with_frame_report(session);
+        host.include_paint_order_report = true;
+        Ok((host, report))
+    }
+
     pub(in crate::runtime_gpu) fn new_c11_1_grid_fixture() -> Result<(Self, String), String> {
         let (session, report) = RuntimeSession::new_runtime_gpu_block_flex_grid_fixture()?;
         Ok((Self::from_session_with_frame_report(session), report))

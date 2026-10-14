@@ -4,7 +4,7 @@ use style::properties::{ComputedValues, LonghandId};
 use super::{
     ComputedCssDimension, ComputedCssSpacingValue, ComputedStyleProfile, ComputedStyleSnapshot,
     CssCascadeError, CssViewport, StyloDocumentView, UA_STYLESHEET_ID, runtime_grid,
-    runtime_layout, runtime_paint,
+    runtime_layout, runtime_overflow, runtime_paint,
 };
 use crate::StylesheetSource;
 
@@ -173,6 +173,9 @@ fn runtime_properties_for_profile(
     if profile == ComputedStyleProfile::RuntimeBlockPositioningV1 {
         return Some(runtime_paint::runtime_block_positioning_properties());
     }
+    if profile == ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1 {
+        return Some(runtime_overflow::runtime_block_flex_overflow_clip_properties());
+    }
     if profile == ComputedStyleProfile::RuntimeBlockFlexGridV1 {
         return Some(runtime_grid::runtime_block_flex_grid_properties());
     }
@@ -233,6 +236,7 @@ fn is_runtime_layout_profile(profile: ComputedStyleProfile) -> bool {
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+            | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
             | ComputedStyleProfile::RuntimeBlockFlexGridV1
             | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1

@@ -13,6 +13,7 @@ mod margin;
 mod runtime_block_display;
 mod runtime_grid;
 mod runtime_layout;
+mod runtime_overflow;
 mod runtime_paint;
 mod runtime_stacking;
 mod s04;
@@ -49,6 +50,10 @@ pub use runtime_layout::{
     first_unsupported_runtime_custom_properties_paint_inline_property,
     first_unsupported_runtime_layout_inline_property,
 };
+pub use runtime_overflow::{
+    compute_runtime_block_flex_overflow_clip_cascade_with_stylesheets,
+    first_unsupported_runtime_block_flex_overflow_clip_inline_property,
+};
 pub use runtime_paint::{
     compute_runtime_block_formatting_cascade_with_stylesheets, compute_runtime_block_paint_cascade,
     compute_runtime_block_paint_cascade_with_stylesheets,
@@ -80,6 +85,10 @@ mod ua_incremental_profile_tests;
 mod runtime_stacking_tests;
 
 #[cfg(test)]
+#[path = "cascade/runtime_overflow_tests.rs"]
+mod runtime_overflow_tests;
+
+#[cfg(test)]
 #[path = "cascade/runtime_grid_tests.rs"]
 mod runtime_grid_tests;
 
@@ -102,6 +111,7 @@ pub use snapshot::{
     ComputedCssGridAutoColumns, ComputedCssGridAutoFlow, ComputedCssGridAutoRows,
     ComputedCssGridItemPlacement, ComputedCssGridLayout, ComputedCssGridPlacement,
     ComputedCssGridTemplateAreas, ComputedCssGridTrackSize, ComputedCssMath, ComputedCssMaxSize,
+    ComputedCssOverflow, ComputedCssOverflowClipMargin, ComputedCssOverflowVisualBox,
     ComputedCssPosition, ComputedCssSpacingValue, ComputedCssVisibility, ComputedCssZIndex,
     ComputedElementStyle, ComputedLayoutBorder, ComputedLayoutDimensions, ComputedLayoutInsets,
     ComputedLayoutSpacing, ComputedStyleProfile, ComputedStyleSnapshot, CssColorScheme,

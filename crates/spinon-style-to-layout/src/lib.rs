@@ -40,6 +40,8 @@ mod c12_2_absolute_tests;
 #[cfg(test)]
 mod c12_3_fixed_tests;
 #[cfg(test)]
+mod c13_1_overflow_clip_tests;
+#[cfg(test)]
 mod c14_intrinsic_size_tests;
 #[cfg(test)]
 mod cascade_layers_tests;

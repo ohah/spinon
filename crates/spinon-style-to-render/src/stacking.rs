@@ -3,7 +3,7 @@ use std::collections::{BTreeMap, BTreeSet};
 use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, HostParent, NodeId};
 use spinon_layout::LayoutSourceRevision;
 use spinon_render::{
-    CssRect, CssSize, OpaqueCssSrgb, RuntimePaint, RuntimeRenderBox, RuntimeRenderKey,
+    CssClip, CssRect, CssSize, OpaqueCssSrgb, RuntimePaint, RuntimeRenderBox, RuntimeRenderKey,
     RuntimeRenderSnapshot,
 };
 use spinon_style::{
@@ -20,6 +20,7 @@ use crate::adapter::{
 
 #[cfg(test)]
 mod deep_graph_tests;
+mod overflow_clip;
 mod reserve;
 #[cfg(test)]
 mod tests;
@@ -29,6 +30,7 @@ mod tree;
 mod types;
 
 use ordering::{add_context, add_node, flatten_contexts};
+use overflow_clip::{runtime_clips_for_node, validate_computed_overflow_values};
 use reserve::{FallibleReserve, SystemReserve};
 use tree::{child_handles, ordered_children, root_display_is_flex, validate_runtime_frame};
 use types::{PendingNode, StackingContext};
@@ -50,7 +52,11 @@ fn build_runtime_render_snapshot_with_reserve<R: FallibleReserve>(
     reserve: &mut R,
 ) -> Result<RuntimeRenderSnapshot, StyleRenderError> {
     let styles = &output.computed_styles;
-    if styles.profile != ComputedStyleProfile::RuntimeBlockFlexStackingV1 {
+    if !matches!(
+        styles.profile,
+        ComputedStyleProfile::RuntimeBlockFlexStackingV1
+            | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+    ) {
         return Err(StyleRenderError::UnsupportedRuntimeProfile);
     }
     if !styles.diagnostics.is_empty() {
@@ -69,7 +75,11 @@ fn build_runtime_render_snapshot_with_reserve<R: FallibleReserve>(
 
     let styles_by_node = indexed_styles(styles)?;
     validate_computed_stacking_values(&styles_by_node)?;
+    if styles.profile == ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1 {
+        validate_computed_overflow_values(&styles_by_node)?;
+    }
     let mut document_nodes = Vec::new();
+    let mut parent_by_node = BTreeMap::new();
     let mut contexts = Vec::new();
     reserve.reserve(&mut contexts, 1, "root context")?;
     contexts.push(StackingContext {
@@ -105,6 +115,13 @@ fn build_runtime_render_snapshot_with_reserve<R: FallibleReserve>(
             .get(&node.id())
             .copied()
             .ok_or(StyleRenderError::MissingComputedStyle(node.id()))?;
+        if node.id() != root.id() {
+            let parent = match document.parent(work.handle) {
+                Some(HostParent::Node(parent)) => parent.id(),
+                Some(HostParent::Root) | None => return Err(StyleRenderError::InvalidRoot),
+            };
+            parent_by_node.insert(node.id(), parent);
+        }
         reserve.reserve(&mut document_nodes, 1, "document nodes")?;
         document_nodes.push(node.id());
         let hidden = work.ancestor_display_none
@@ -234,12 +251,17 @@ fn build_runtime_render_snapshot_with_reserve<R: FallibleReserve>(
         };
         let paint_order =
             u32::try_from(boxes.len()).map_err(|_| StyleRenderError::PaintOrderOverflow)?;
-        boxes.push(RuntimeRenderBox::new(
-            node_id,
-            frame_css_px,
-            paint,
-            paint_order,
-        ));
+        let (paint_clip, hit_test_clip) =
+            if styles.profile == ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1 {
+                runtime_clips_for_node(node_id, &parent_by_node, &styles_by_node, output, reserve)?
+            } else {
+                (CssClip::unconstrained(), CssClip::unconstrained())
+            };
+        boxes.push(
+            RuntimeRenderBox::new(node_id, frame_css_px, paint, paint_order)
+                .with_clip(paint_clip)
+                .with_hit_test_clip(hit_test_clip),
+        );
     }
 
     let current_source = current.revision.source();

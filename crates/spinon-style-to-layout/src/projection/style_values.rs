@@ -3,11 +3,11 @@ use std::collections::{BTreeMap, BTreeSet};
 use spinon_core::{HostDocumentSnapshot, HostNodeHandle, NodeId};
 use spinon_layout::{
     FlexDirection, GridContainerInput, GridItemInput, LayoutBorder, LayoutEdges, LayoutGap,
-    LayoutPositioning, LayoutStyle, TextDirection,
+    LayoutOverflow, LayoutPositioning, LayoutStyle, TextDirection,
 };
 use spinon_style::{
-    ComputedCssDimension, ComputedCssGridLayout, ComputedCssMaxSize, ComputedCssPosition,
-    ComputedElementStyle, ComputedStyleProfile, ComputedStyleSnapshot,
+    ComputedCssDimension, ComputedCssGridLayout, ComputedCssMaxSize, ComputedCssOverflow,
+    ComputedCssPosition, ComputedElementStyle, ComputedStyleProfile, ComputedStyleSnapshot,
 };
 
 mod flex_values;
@@ -118,6 +118,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
                 | ComputedStyleProfile::RuntimeBlockPositioningV1
                 | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+                | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
@@ -136,6 +137,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
                 | ComputedStyleProfile::RuntimeBlockPositioningV1
                 | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+                | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
@@ -149,6 +151,7 @@ pub(super) fn project_styles(
                 ComputedStyleProfile::RuntimeBlockFormattingV1
                     | ComputedStyleProfile::RuntimeBlockPositioningV1
                     | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+                    | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
                     | ComputedStyleProfile::RuntimeBlockFlexGridV1
                     | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
                     | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
@@ -187,6 +190,7 @@ pub(super) fn project_styles(
                     ComputedStyleProfile::RuntimeBlockFormattingV1
                         | ComputedStyleProfile::RuntimeBlockPositioningV1
                         | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+                        | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
                         | ComputedStyleProfile::RuntimeBlockFlexGridV1
                         | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
                         | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
@@ -202,6 +206,16 @@ pub(super) fn project_styles(
                         | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
                 ),
             )?,
+            overflow_x: if supports_overflow_clip(snapshot.profile) {
+                parse_overflow(node, "overflow-x", element.layout_overflow_x)?
+            } else {
+                LayoutOverflow::Visible
+            },
+            overflow_y: if supports_overflow_clip(snapshot.profile) {
+                parse_overflow(node, "overflow-y", element.layout_overflow_y)?
+            } else {
+                LayoutOverflow::Visible
+            },
             box_sizing: parse_box_sizing(node, required(element, "box-sizing")?)?,
             width: parse_dimension(
                 node,
@@ -300,6 +314,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+                | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
@@ -344,6 +359,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+                | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
@@ -385,6 +401,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
                 | ComputedStyleProfile::RuntimeBlockPositioningV1
                 | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+                | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
@@ -440,6 +457,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
                 | ComputedStyleProfile::RuntimeBlockPositioningV1
                 | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+                | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
@@ -528,6 +546,7 @@ pub(super) fn project_styles(
                     &mut math,
                     snapshot.profile == ComputedStyleProfile::RuntimeBlockPositioningV1
                         || snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexStackingV1
+                        || supports_overflow_clip(snapshot.profile)
                         || snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexGridV1
                         || snapshot.profile
                             == ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
@@ -539,6 +558,7 @@ pub(super) fn project_styles(
                         || supports_runtime_flex,
                     snapshot.profile == ComputedStyleProfile::RuntimeBlockPositioningV1
                         || snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexStackingV1
+                        || supports_overflow_clip(snapshot.profile)
                         || snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexGridV1
                         || snapshot.profile
                             == ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
@@ -715,12 +735,32 @@ fn supports_positioning(profile: ComputedStyleProfile) -> bool {
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+            | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
             | ComputedStyleProfile::RuntimeBlockFlexGridV1
             | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
             | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
     )
+}
+
+fn supports_overflow_clip(profile: ComputedStyleProfile) -> bool {
+    profile == ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+}
+
+fn parse_overflow(
+    node: NodeId,
+    property: &'static str,
+    value: Option<ComputedCssOverflow>,
+) -> Result<LayoutOverflow, StyleLayoutError> {
+    let value = value.ok_or(StyleLayoutError::MissingComputedProperty { node, property })?;
+    Ok(match value {
+        ComputedCssOverflow::Visible => LayoutOverflow::Visible,
+        ComputedCssOverflow::Clip => LayoutOverflow::Clip,
+        ComputedCssOverflow::Hidden | ComputedCssOverflow::Scroll | ComputedCssOverflow::Auto => {
+            LayoutOverflow::Hidden
+        }
+    })
 }
 
 fn supports_runtime_flex(profile: ComputedStyleProfile) -> bool {
@@ -733,6 +773,7 @@ fn supports_runtime_flex(profile: ComputedStyleProfile) -> bool {
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+            | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
             | ComputedStyleProfile::RuntimeBlockFlexGridV1
             | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1

@@ -60,6 +60,13 @@ case "${SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST:-0}" in
     exit 2
     ;;
 esac
+case "${SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST:-0}" in
+  0|1) ;;
+  *)
+    echo "SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST은 0 또는 1이어야 합니다." >&2
+    exit 2
+    ;;
+esac
 if [[ "${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}" == "1" \
       && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
   echo "draw 실패 fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다." >&2
@@ -70,6 +77,11 @@ if [[ "${SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST:-0}" == "1" \
   echo "C12.4 worker stack 검증은 C04.10 runtime GPU fixture와 함께 켜야 합니다." >&2
   exit 2
 fi
+if [[ "${SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST:-0}" == "1" \
+      && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
+  echo "C13.1 overflow clip fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다." >&2
+  exit 2
+fi
 s03_dom_gc_cpp_flag="-DSPINON_ENABLE_S03_DOM_GC_FIXTURE=${SPINON_ENABLE_S03_DOM_GC_FIXTURE:-0}"
 s04_runtime_gpu_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU=${SPINON_ENABLE_C04_RUNTIME_GPU:-0}"
 s04_runtime_gpu_fixture_test_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=${SPINON_ENABLE_C04_RUNTIME_GPU:-0}"
@@ -77,6 +89,7 @@ s04_c1123_grid_fixture_cpp_flag="-DSPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST=${SPI
 s04_ua_cascade_probe_cpp_flag="-DSPINON_ENABLE_C04_UA_CASCADE_FIXTURE_PROBE=${SPINON_ENABLE_C04_UA_CASCADE_FIXTURE_PROBE:-0}"
 s04_runtime_gpu_failure_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE=${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}"
 c124_worker_stack_cpp_flag="-DSPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST=${SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST:-0}"
+c131_overflow_clip_cpp_flag="-DSPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST=${SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST:-0}"
 s04_android_cpp_flags=()
 if [[ "${SPINON_ENABLE_S04_ANDROID_FIXTURE:-0}" == "1" ]]; then
   s04_android_cpp_flags=(-DSPINON_ENABLE_S04_ANDROID_FIXTURE=1)
@@ -96,6 +109,9 @@ if [[ "${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}" == "1" ]]; then
 fi
 if [[ "${SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST:-0}" == "1" ]]; then
   ffi_features+=(c12-4-worker-stack-residency-test)
+fi
+if [[ "${SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST:-0}" == "1" ]]; then
+  ffi_features+=(c13-1-overflow-clip-fixture-test)
 fi
 ffi_feature_csv=""
 if ((${#ffi_features[@]} > 0)); then
@@ -188,6 +204,7 @@ common=("$target" "$sysroot" -std=c++20 -O2 -fPIC
   "$s04_ua_cascade_probe_cpp_flag"
   "$s04_runtime_gpu_failure_cpp_flag"
   "$c124_worker_stack_cpp_flag"
+  "$c131_overflow_clip_cpp_flag"
   -D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_EXTENSIVE
   -I"$v8_dir/buildtools/third_party/libc++"
   -isystem "$v8_dir/third_party/libc++/src/include"

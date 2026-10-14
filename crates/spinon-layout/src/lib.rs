@@ -41,8 +41,8 @@ pub use style::{
     AlignmentSafety, ContentAlignmentPosition, FlexDirection, FlexWrap, ItemAlignmentPosition,
     JustifyContentPosition, LayoutAlignContent, LayoutAlignItems, LayoutAlignSelf, LayoutBorder,
     LayoutBoxSizing, LayoutDimension, LayoutDisplay, LayoutEdges, LayoutGap, LayoutJustifyContent,
-    LayoutLengthPercentage, LayoutPosition, LayoutPositioning, LayoutStyle, TextDirection,
-    Viewport,
+    LayoutLengthPercentage, LayoutOverflow, LayoutPosition, LayoutPositioning, LayoutStyle,
+    TextDirection, Viewport,
 };
 
 /// 부모와 자식 ID 순서 및 레이아웃 스타일을 묶은 입력 노드입니다.
@@ -134,12 +134,21 @@ pub struct LayoutOutput {
     pub revision: LayoutInputRevision,
     /// 조상·자기 상대 inset을 반영해 renderer에 게시할 최종 프레임입니다.
     pub frames: BTreeMap<NodeId, LayoutFrame>,
+    /// 각 box의 resolved padding과 border edge입니다. paint 단계의 clipping에 사용합니다.
+    pub used_box_edges: BTreeMap<NodeId, LayoutUsedBoxEdges>,
     /// 상대 inset을 모두 중립화한 normal-flow 기준 프레임입니다.
     pub flow_frames: BTreeMap<NodeId, LayoutFrame>,
     /// 각 box가 사용할 수 있는 가장 가까운 relative containing block입니다.
     pub positioned_owners: BTreeMap<NodeId, PositionedContainingBlockOwner>,
     /// CSS fixed box의 viewport owner를 absolute owner와 별도로 보존합니다.
     pub fixed_owners: BTreeMap<NodeId, FixedContainingBlockOwner>,
+}
+
+/// Taffy가 계산한 사용값 padding과 border 두께입니다.
+#[derive(Clone, Copy, Debug, Default, PartialEq)]
+pub struct LayoutUsedBoxEdges {
+    pub padding: LayoutBorder,
+    pub border: LayoutBorder,
 }
 
 /// 계산 트리 안에서 nearest positioned containing block이 되는 owner입니다.

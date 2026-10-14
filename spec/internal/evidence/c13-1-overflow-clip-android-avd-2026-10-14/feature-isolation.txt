@@ -1,0 +1,14 @@
+Toolchain: rustc LLVM 22.1.2; rustup llvm-nm from the same 1.96.1 toolchain.
+The Apple Xcode nm reader rejected LLVM 22 Mach-O bitcode, so matching llvm-nm was used.
+[fixture feature build] cargo build -p spinon-ffi --features c13-1-overflow-clip-fixture-test: success (run immediately before capture)
+[fixture] symbol spinon_runtime_gpu_host_new_c13_1_overflow_clip_fixture: present
+00000000000001c0 T _spinon_runtime_gpu_host_new_c13_1_overflow_clip_fixture
+[fixture] symbol spinon_runtime_gpu_host_eval_c13_1_overflow_clip_fixture: present
+0000000000000000 T _spinon_runtime_gpu_host_eval_c13_1_overflow_clip_fixture
+[fixture] payload c131-root: present
+'c131-root',
+[default build] cargo build -p spinon-ffi: exit_code=0
+Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.08s
+[default] symbol spinon_runtime_gpu_host_new_c13_1_overflow_clip_fixture: absent
+[default] symbol spinon_runtime_gpu_host_eval_c13_1_overflow_clip_fixture: absent
+[default] payload c131-root: absent

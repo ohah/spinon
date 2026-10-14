@@ -11,6 +11,7 @@ use spinon_style::{
     first_unsupported_runtime_block_flex_grid_auto_placement_inline_property,
     first_unsupported_runtime_block_flex_grid_dense_auto_placement_inline_property,
     first_unsupported_runtime_block_flex_grid_inline_property,
+    first_unsupported_runtime_block_flex_overflow_clip_inline_property,
     first_unsupported_runtime_block_paint_inline_property,
     first_unsupported_runtime_block_positioning_inline_property,
     first_unsupported_runtime_custom_properties_inline_property,
@@ -181,6 +182,9 @@ pub(super) fn compute_runtime_layout(
         }
         super::calculation::RuntimeCalculationProfile::BlockFlexStacking => {
             spinon_style::first_unsupported_runtime_block_flex_stacking_inline_property(&view)
+        }
+        super::calculation::RuntimeCalculationProfile::BlockFlexOverflowClip => {
+            first_unsupported_runtime_block_flex_overflow_clip_inline_property(&view)
         }
         super::calculation::RuntimeCalculationProfile::BlockFlexGrid => {
             first_unsupported_runtime_block_flex_grid_inline_property(&view)

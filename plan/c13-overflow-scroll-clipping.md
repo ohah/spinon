@@ -1,6 +1,6 @@
 # C13 · overflow·스크롤·클리핑
 
-**상태:** 계획 초안 · 구현 전 · C13 미완료
+**상태:** 계획 초안 · C13.1 제한 profile 구현 중 · C13 미완료
 **공식 상위 항목:** [구현 상태 대장](../spec/STATUS.md#css-구현-체크리스트)
 **전제:** C04 CSS cascade, C07 상자 geometry, C08/C12 paint 입력, C12.1–C12.4의 source/position/paint order
 **후속:** C12.5 sticky는 C13 scrollport·scroll offset·clip 기초 뒤 진행한다. C17 logical axis, C22 border radius, C23 transform/clip, C29 CSSOM, S05 입력·이벤트와의 교차 경계를 완료 게이트로 유지한다.
@@ -24,7 +24,7 @@ C13은 `overflow-x/y`와 `overflow`의 `visible`, `clip`, `hidden`, `scroll`, `a
 
 규범 원본은 초안/CR snapshot이며 상호 운용성 자체를 보증하지 않는다. 각 단계의 Chrome fixture와 Android/iOS 실행을 독립 비교 자료로 남기고, Chrome/WPT oracle 결과를 Spinon 적합성 통과로 바꾸어 보고하지 않는다.
 
-## 현재 코드에서 확인한 경계
+## 계획 작성 시점의 코드 기준선
 
 - `spinon-layout::LayoutStyle`에는 CSS overflow 값이 없다. `CompactTaffyStyle`은 Taffy `Overflow`와 `scrollbar_width`를 저장하지만 현재 계산에서 CSS overflow 의미의 source of truth로 쓰지 않는다. viewport용 내부 block style은 Taffy `hidden`을 사용한다.
 - `RuntimeRenderSnapshot`은 box의 사각 frame·단색 paint·paint order만 보존한다. ancestor clip과 scroll offset 자료형은 없다. WGPU geometry builder는 각 사각형을 독립 quad로 만든다.
@@ -45,6 +45,14 @@ C13은 `overflow-x/y`와 `overflow`의 `visible`, `clip`, `hidden`, `scroll`, `a
 | C13.4 | `scrollbar-gutter`, classic/overlay scrollbar의 layout 기여, 재계산, paint, thumb 이동, `scrollbar-width:auto/thin/none`, `scrollbar-color`와 root viewport 전파. `none`이어도 touch/keyboard/programmatic scroll 및 접근 가능한 대체 조작을 보존한다. | Chrome 및 각 Simulator의 scrollbar mode를 실행 환경으로 기록한다. scrollbar 유무 전후 content box·absolute child·background 위치·gutter geometry, stable/both-edges와 root/body 대조, overlay/classic geometry 분리, palette/width 및 키보드·접근성 대체 입력을 확인한다. OS가 숨긴 scrollbar와 측정 불가 geometry는 미측정으로 남긴다. |
 | C13.5 | `scroll-snap-type`, `scroll-snap-align`, `scroll-snap-stop`, `scroll-padding`, `scroll-margin`, `scroll-behavior`; user/programmatic scroll 완료 뒤 snap 결정과 layout/style/tree 변화 뒤 re-snap. mandatory/proximity, axis, oversized snap target을 포함한다. | Chrome offset과 선택된 snap target을 끝 상태에서 비교하고, 입력 시간/애니메이션 표본은 별도 기록한다. oversized content를 중간부터 모두 접근할 수 있는지, nested container가 가장 가까운 snap owner를 고르는지, DOM update 후 target 유지/삭제, mandatory와 proximity를 각각 negative/control fixture로 확인한다. |
 | C13.6 | C17의 writing-mode/direction 계약과 합쳐 `overflow-block/inline`, logical overscroll, snap logical axes 및 scroll origin/negative RTL offset을 통합한다. | C17 merge 뒤 horizontal-tb/LTR 외 vertical/RTL fixtures, DOM scroll APIs의 좌표 부호, platform gesture 방향·scrollbar inline edge와 Chrome 대조를 수행한다. 이 관문 전에는 C13 완료를 표시하지 않는다. |
+
+### 현재 C13.1 브랜치 진행 상태 · 2026-10-14
+
+- `feat/c13-1-overflow-clip`에서 내부 `RuntimeBlockFlexOverflowClipV1` profile과 별도 [계약 초안 0060](../spec/internal/0060-c13-1-overflow-clip.md)을 구현 중이다. 이는 제품 CSS 지원 선언이나 C13.1 완료가 아니다.
+- 고정 Chrome 155 fixture에서 13개 node geometry가 모두 일치했다. agent-browser screenshot에서 사전 등록한 11개 solid-color paint sample을 Android API 37 ARM64 AVD SurfaceView PixelCopy와 exact 비교했다. 원본 log·PNG·artifact hash는 [AVD 실행 근거](../spec/internal/evidence/c13-1-overflow-clip-android-avd-2026-10-14/README.md)에 있다.
+- C13.1 완료 관문 중 전체 사전 비교 matrix, clip 밖 draw와 실제 hit/event negative controls의 범위, clip ancestry 예약 실패 후 실제 runtime worker 복구, clip 대 hidden/flow-root float 대조, unsupported radius/transform 조합 fail-closed, iOS Simulator, WPT 후보 분류가 남아 있다. snapshot builder의 clip ancestry 예약 실패와 같은 reserve 재사용은 회귀 테스트를 통과했다. 구현 관점 20개와 PR 변경 관점 30개는 별도 검토 문서에 기록했고 PR 공개 후 실제 base/head·CI 상태를 보충한다.
+- 화면 표본은 paint 결과만 확인한다. `elementFromPoint()` 계열 hit-test 검증과 CSSOM 이벤트 전달은 분리되어 있고, 이 실행은 Android software renderer의 AVD 결과다.
+- [구현 실패 관점 검토 20개](../spec/internal/evidence/c13-1-overflow-clip-implementation-review-2026-10-14.md)와 [PR 변경 관점 검토 30개](../spec/internal/evidence/c13-1-overflow-clip-pr-review-2026-10-14.md)는 별도 기록으로 유지한다.
 
 `overflow-clip-margin`의 rounded edge, overflow와 border-radius, transformed descendant가 scrollable overflow에 미치는 효과는 각각 C22/C23에서 입력 계약이 제공된 뒤 교차 fixture를 추가한다. 현재 단계가 이를 지원하지 않으면 해당 조합은 진단과 함께 fail-closed하며 C13 완료 관문에 통합 실행을 남긴다.
 
