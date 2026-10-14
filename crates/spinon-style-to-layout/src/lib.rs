@@ -44,6 +44,8 @@ mod c13_1_overflow_clip_tests;
 #[cfg(test)]
 mod c14_intrinsic_size_tests;
 #[cfg(test)]
+mod c14_png_resource_tests;
+#[cfg(test)]
 mod cascade_layers_tests;
 #[cfg(test)]
 mod flex_alignment_tests;
