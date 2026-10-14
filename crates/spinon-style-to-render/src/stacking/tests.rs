@@ -7,6 +7,7 @@ use spinon_core::{
 use spinon_layout::LayoutFrame;
 use spinon_style::{
     CssMediaEnvironment, CssViewport, StyloDocumentView,
+    compute_runtime_block_flex_overflow_clip_cascade_with_stylesheets,
     compute_runtime_block_flex_stacking_cascade_with_stylesheets,
 };
 use spinon_style_to_layout::{StyleLayoutOutput, compute_runtime_style_layout};
@@ -114,6 +115,70 @@ fn runtime_inputs() -> RuntimeInputs {
     }
 }
 
+fn overflow_runtime_inputs(
+    styles: &[&str],
+    parents: &[Option<usize>],
+) -> (RuntimeInputs, Vec<NodeId>) {
+    assert_eq!(styles.len(), parents.len());
+    let mut document = HostDocument::new().unwrap();
+    let handles = styles
+        .iter()
+        .map(|_| document.reserve_node_handle().unwrap())
+        .collect::<Vec<_>>();
+    let mut batch =
+        DocumentChangeBatch::new(OwnerId::new(8131).unwrap(), document.document_revision());
+    for (index, (handle, style)) in handles.iter().zip(styles).enumerate() {
+        batch.push(DocumentOperation::CreateElement {
+            node: *handle,
+            namespace: HTML.to_owned(),
+            local_name: "div".to_owned(),
+        });
+        batch.push(DocumentOperation::SetAttribute {
+            node: *handle,
+            name: AttributeName::new(None, "style").unwrap(),
+            value: (*style).to_owned().into(),
+        });
+        batch.push(DocumentOperation::InsertBefore {
+            parent: parents[index]
+                .map(|parent| HostParent::Node(handles[parent]))
+                .unwrap_or(HostParent::Root),
+            node: *handle,
+            before: None,
+        });
+    }
+    document.commit(batch).unwrap();
+    let document = document.snapshot();
+    let root = handles[0];
+    let viewport = CssViewport {
+        width_css_px: 200.0,
+        height_css_px: 160.0,
+        device_scale_factor: 1.0,
+        environment_revision: Default::default(),
+        media_environment: CssMediaEnvironment::MOBILE,
+    };
+    let view = StyloDocumentView::new_html_fragment_child_shared(Arc::new(document.clone()), root)
+        .unwrap();
+    let styles = compute_runtime_block_flex_overflow_clip_cascade_with_stylesheets(
+        &view,
+        &[],
+        viewport,
+        StyleRevision::default(),
+    )
+    .unwrap();
+    let output = compute_runtime_style_layout(&document, root, styles, viewport).unwrap();
+    let current =
+        CurrentLayoutInputs::for_host_document(&document, StyleRevision::default(), viewport);
+    (
+        RuntimeInputs {
+            document,
+            root,
+            output,
+            current,
+        },
+        handles.iter().map(|handle| handle.id()).collect(),
+    )
+}
+
 #[test]
 fn each_fallible_reservation_failure_returns_its_exact_stage() {
     let input = runtime_inputs();
@@ -194,6 +259,193 @@ fn reservation_injection_skips_requests_that_cannot_grow_the_vector() {
         }
     ));
     assert_eq!(injected.attempts(), 1);
+}
+
+#[test]
+fn overflow_clip_ancestry_reservation_failure_returns_error_and_recovers_on_same_reserve() {
+    let (input, _) = overflow_runtime_inputs(
+        &[
+            "display:block;position:relative;width:200px;height:160px;background-color:#111111",
+            "position:relative;left:20px;top:10px;width:80px;height:60px;padding:8px;border:4px solid;overflow:clip;overflow-clip-margin:padding-box 8px;background-color:#333333",
+            "position:absolute;left:50px;top:40px;width:60px;height:40px;background-color:#ff0000",
+        ],
+        &[None, Some(0), Some(1)],
+    );
+    let mut baseline_reserve = SystemReserve;
+    let baseline = build_runtime_render_snapshot_with_reserve(
+        &input.document,
+        input.root,
+        &input.output,
+        input.current,
+        &mut baseline_reserve,
+    )
+    .unwrap();
+
+    let mut recording = FaultInjectingReserve::recording();
+    let recorded = build_runtime_render_snapshot_with_reserve(
+        &input.document,
+        input.root,
+        &input.output,
+        input.current,
+        &mut recording,
+    )
+    .unwrap();
+    assert_eq!(recorded, baseline);
+    let ancestry_fail_at = recording
+        .stages()
+        .iter()
+        .enumerate()
+        .filter_map(|(index, stage)| (*stage == "overflow clip ancestry").then_some(index + 1))
+        .nth(2)
+        .expect("target lineage must reserve for target, clip parent, and root");
+
+    let mut injected = FaultInjectingReserve::failing_at(ancestry_fail_at);
+    let error = build_runtime_render_snapshot_with_reserve(
+        &input.document,
+        input.root,
+        &input.output,
+        input.current,
+        &mut injected,
+    )
+    .expect_err("clip ancestry allocation failure must not publish a render snapshot");
+    assert!(matches!(
+        error,
+        crate::StyleRenderError::AllocationFailed {
+            stage: "overflow clip ancestry"
+        }
+    ));
+
+    let recovered = build_runtime_render_snapshot_with_reserve(
+        &input.document,
+        input.root,
+        &input.output,
+        input.current,
+        &mut injected,
+    )
+    .expect("the same reserve must build the next request after one injected failure");
+    assert_eq!(recovered, baseline);
+}
+
+#[test]
+fn overflow_clip_margin_uses_padding_edge_for_paint_and_hit_test() {
+    let (input, nodes) = overflow_runtime_inputs(
+        &[
+            "display:block;position:relative;width:200px;height:160px;background-color:#111111",
+            "position:relative;left:20px;top:10px;width:80px;height:60px;padding:8px;border:4px solid;overflow:clip;overflow-clip-margin:padding-box 8px;background-color:#333333",
+            "position:absolute;left:50px;top:40px;width:60px;height:40px;background-color:#ff0000",
+        ],
+        &[None, Some(0), Some(1)],
+    );
+    let scene = build_runtime_render_snapshot_with_reserve(
+        &input.document,
+        input.root,
+        &input.output,
+        input.current,
+        &mut SystemReserve,
+    )
+    .unwrap();
+    let target_id = nodes[2];
+    let target = scene
+        .boxes()
+        .iter()
+        .find(|render_box| render_box.node_id() == target_id)
+        .unwrap();
+    let x = target.clip_css_px().x().unwrap();
+    let y = target.clip_css_px().y().unwrap();
+    assert_eq!((x.min(), x.max()), (16.0, 128.0));
+    assert_eq!((y.min(), y.max()), (6.0, 98.0));
+    let hit_x = target.hit_test_clip_css_px().x().unwrap();
+    let hit_y = target.hit_test_clip_css_px().y().unwrap();
+    assert_eq!((hit_x.min(), hit_x.max()), (16.0, 128.0));
+    assert_eq!((hit_y.min(), hit_y.max()), (6.0, 98.0));
+    assert_eq!(
+        scene.hit_test_css_point(80.0, 60.0).unwrap().node_id(),
+        target_id
+    );
+    assert_ne!(
+        scene.hit_test_css_point(130.0, 60.0).unwrap().node_id(),
+        target_id
+    );
+}
+
+#[test]
+fn content_box_clip_margin_changes_paint_without_narrowing_chromium_hit_bounds() {
+    let (input, nodes) = overflow_runtime_inputs(
+        &[
+            "display:block;position:relative;width:200px;height:160px;background-color:#111111",
+            "position:relative;left:20px;top:10px;width:80px;height:60px;padding:8px;border:4px solid;overflow:clip;overflow-clip-margin:content-box 8px;background-color:#333333",
+            "position:absolute;left:50px;top:40px;width:60px;height:40px;background-color:#ff0000",
+        ],
+        &[None, Some(0), Some(1)],
+    );
+    let scene = build_runtime_render_snapshot_with_reserve(
+        &input.document,
+        input.root,
+        &input.output,
+        input.current,
+        &mut SystemReserve,
+    )
+    .unwrap();
+    let target_id = nodes[2];
+    let target = scene
+        .boxes()
+        .iter()
+        .find(|render_box| render_box.node_id() == target_id)
+        .unwrap();
+    let paint_x = target.clip_css_px().x().unwrap();
+    let paint_y = target.clip_css_px().y().unwrap();
+    assert_eq!((paint_x.min(), paint_x.max()), (24.0, 120.0));
+    assert_eq!((paint_y.min(), paint_y.max()), (14.0, 90.0));
+    let hit_x = target.hit_test_clip_css_px().x().unwrap();
+    let hit_y = target.hit_test_clip_css_px().y().unwrap();
+    assert_eq!((hit_x.min(), hit_x.max()), (20.0, 124.0));
+    assert_eq!((hit_y.min(), hit_y.max()), (10.0, 94.0));
+    assert_eq!(
+        scene.hit_test_css_point(122.0, 55.0).unwrap().node_id(),
+        target_id
+    );
+}
+
+#[test]
+fn absolute_descendant_escapes_static_clip_when_its_containing_block_is_outside() {
+    let (input, nodes) = overflow_runtime_inputs(
+        &[
+            "display:block;position:relative;width:200px;height:160px;background-color:#111111",
+            "position:relative;width:140px;height:120px;background-color:#222222",
+            "position:static;width:80px;height:60px;overflow:clip;background-color:#333333",
+            "position:absolute;left:100px;top:50px;width:40px;height:30px;background-color:#ff0000",
+        ],
+        &[None, Some(0), Some(1), Some(2)],
+    );
+    assert_eq!(
+        input.output.layout.positioned_owners[&nodes[3]],
+        spinon_layout::PositionedContainingBlockOwner::Node(nodes[1])
+    );
+    let scene = build_runtime_render_snapshot_with_reserve(
+        &input.document,
+        input.root,
+        &input.output,
+        input.current,
+        &mut SystemReserve,
+    )
+    .unwrap();
+    let target = scene
+        .boxes()
+        .iter()
+        .find(|render_box| render_box.node_id() == nodes[3])
+        .unwrap();
+    assert_eq!(
+        target.clip_css_px(),
+        spinon_render::CssClip::unconstrained()
+    );
+    assert_eq!(
+        target.hit_test_clip_css_px(),
+        spinon_render::CssClip::unconstrained()
+    );
+    assert_eq!(
+        scene.hit_test_css_point(110.0, 55.0).unwrap().node_id(),
+        nodes[3]
+    );
 }
 
 #[test]

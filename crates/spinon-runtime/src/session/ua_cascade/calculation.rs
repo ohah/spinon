@@ -15,6 +15,7 @@ use spinon_style::{
     compute_runtime_block_flex_grid_dense_auto_placement_cascade_with_stylesheets,
     compute_runtime_block_flex_grid_placement_cascade_with_stylesheets,
     compute_runtime_block_flex_grid_template_cascade_with_stylesheets,
+    compute_runtime_block_flex_overflow_clip_cascade_with_stylesheets,
     compute_runtime_block_flex_stacking_cascade_with_stylesheets,
     compute_runtime_block_formatting_cascade_with_stylesheets,
     compute_runtime_block_paint_cascade_with_stylesheets,
@@ -36,6 +37,7 @@ pub(super) enum RuntimeCalculationProfile {
     BlockFormatting,
     BlockPositioning,
     BlockFlexStacking,
+    BlockFlexOverflowClip,
     BlockFlexGrid,
     BlockFlexGridPlacement,
     BlockFlexGridAutoPlacement,
@@ -183,6 +185,12 @@ pub(super) fn compute_request_for_block_flex_stacking(
     request: &WorkRequest,
 ) -> Result<RuntimeCalculation, String> {
     compute_request_with_profile(request, RuntimeCalculationProfile::BlockFlexStacking)
+}
+
+pub(super) fn compute_request_for_block_flex_overflow_clip(
+    request: &WorkRequest,
+) -> Result<RuntimeCalculation, String> {
+    compute_request_with_profile(request, RuntimeCalculationProfile::BlockFlexOverflowClip)
 }
 
 pub(super) fn compute_request_for_block_flex_grid(
@@ -394,6 +402,9 @@ fn compute_root(
         RuntimeCalculationProfile::BlockFlexStacking => {
             ComputedStyleProfile::RuntimeBlockFlexStackingV1
         }
+        RuntimeCalculationProfile::BlockFlexOverflowClip => {
+            ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+        }
         RuntimeCalculationProfile::BlockFlexGrid => ComputedStyleProfile::RuntimeBlockFlexGridV1,
         RuntimeCalculationProfile::BlockFlexGridPlacement => {
             ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
@@ -497,6 +508,14 @@ fn compute_root(
             }
             RuntimeCalculationProfile::BlockFlexStacking => {
                 compute_runtime_block_flex_stacking_cascade_with_stylesheets(
+                    &view,
+                    author_stylesheets,
+                    request.viewport,
+                    StyleRevision::INITIAL,
+                )
+            }
+            RuntimeCalculationProfile::BlockFlexOverflowClip => {
+                compute_runtime_block_flex_overflow_clip_cascade_with_stylesheets(
                     &view,
                     author_stylesheets,
                     request.viewport,

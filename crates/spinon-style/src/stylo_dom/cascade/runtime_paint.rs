@@ -173,6 +173,7 @@ pub(super) fn computed_background_for_profile(
         | ComputedStyleProfile::RuntimeBlockFormattingV1
         | ComputedStyleProfile::RuntimeBlockPositioningV1
         | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+        | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
         | ComputedStyleProfile::RuntimeBlockFlexGridV1
         | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
         | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1

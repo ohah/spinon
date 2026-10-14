@@ -17,6 +17,7 @@ c04-runtime-gpu-test-hooks = ["c04-runtime-gpu-fixture-test", "spinon-render-wgp
 c12-4-metal-surface-readback-test = ["c04-runtime-gpu-fixture-test"]
 c11-grid-metal-surface-pixels-test = ["c04-runtime-gpu-fixture-test"]
 c12-4-worker-stack-residency-test = ["c04-runtime-gpu-fixture-test", "spinon-runtime/c12-4-worker-stack-residency-test"]
+c13-1-overflow-clip-fixture-test = ["c04-runtime-gpu-fixture-test"]
 
 [dependencies]
 spinon-style = { path = "../spinon-style" }

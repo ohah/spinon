@@ -15,5 +15,7 @@ mod c11_3_1;
 mod c11_3_2;
 mod c11_3_3;
 mod c12;
+#[cfg(feature = "c13-1-overflow-clip-fixture-test")]
+mod c13_1;
 #[cfg(feature = "c04-runtime-gpu-test-hooks")]
 mod surface;

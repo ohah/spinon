@@ -1,0 +1,5 @@
+ro.kernel.qemu=1
+ro.build.version.sdk=37
+ro.product.cpu.abi=arm64-v8a
+ro.boot.qemu.avd_name=spinon_api37_1_compat16k
+sys.boot_completed=1

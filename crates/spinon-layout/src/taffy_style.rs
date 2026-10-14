@@ -17,8 +17,8 @@ use crate::{
     GridItemInput, GridTrackSize, ItemAlignmentPosition, JustifyContentPosition,
     LayoutAlignContent, LayoutAlignItems, LayoutAlignSelf, LayoutBoxSizing, LayoutCalcId,
     LayoutCssMathProperty, LayoutDimension, LayoutDisplay, LayoutEdges, LayoutError,
-    LayoutJustifyContent, LayoutLengthPercentage, LayoutPosition, LayoutPositioning, LayoutStyle,
-    TextDirection, compact_taffy_style::CompactTaffyStyle,
+    LayoutJustifyContent, LayoutLengthPercentage, LayoutOverflow, LayoutPosition,
+    LayoutPositioning, LayoutStyle, TextDirection, compact_taffy_style::CompactTaffyStyle,
 };
 
 #[path = "taffy_style/grid.rs"]
@@ -82,6 +82,10 @@ pub(super) fn to_taffy_style(
         direction: match style.direction {
             TextDirection::Ltr => TaffyDirection::Ltr,
             TextDirection::Rtl => TaffyDirection::Rtl,
+        },
+        overflow: Point {
+            x: to_taffy_overflow(style.overflow_x),
+            y: to_taffy_overflow(style.overflow_y),
         },
         position: match (flow_only, positioning.position) {
             (false, LayoutPosition::Absolute | LayoutPosition::Fixed)
@@ -271,6 +275,14 @@ pub(super) fn to_taffy_style(
         );
     }
     Ok(compact)
+}
+
+fn to_taffy_overflow(value: LayoutOverflow) -> Overflow {
+    match value {
+        LayoutOverflow::Visible => Overflow::Visible,
+        LayoutOverflow::Clip => Overflow::Clip,
+        LayoutOverflow::Hidden => Overflow::Hidden,
+    }
 }
 
 fn to_taffy_alignment_safety(safety: Option<AlignmentSafety>) -> TaffyAlignmentSafety {

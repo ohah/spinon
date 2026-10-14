@@ -5,7 +5,7 @@ use taffy::prelude::{AvailableSpace, Size};
 
 use super::{
     LayoutEngine, LayoutError, LayoutFrame, LayoutInput, LayoutIntrinsicSize,
-    LayoutIntrinsicSizeSnapshot, LayoutOutput, TaffyLayoutEngine,
+    LayoutIntrinsicSizeSnapshot, LayoutOutput, LayoutUsedBoxEdges, TaffyLayoutEngine,
     calc_tree::CalcLayoutTree,
     flex_auto_margin::negative_cross_axis_auto_margin_offset_correction,
     flex_baseline,
@@ -213,6 +213,7 @@ fn collect_frames(
     adjustments: &BTreeMap<NodeId, (f32, f32)>,
 ) -> Result<LayoutOutput, LayoutError> {
     let mut frames = BTreeMap::new();
+    let mut used_box_edges = BTreeMap::new();
     let mut pending = tree
         .root_children(input.root)
         .into_iter()
@@ -252,6 +253,23 @@ fn collect_frames(
             return Err(LayoutError::NonFiniteFrame(external_id));
         }
         frames.insert(external_id, frame);
+        used_box_edges.insert(
+            external_id,
+            LayoutUsedBoxEdges {
+                padding: crate::LayoutBorder {
+                    top: layout.padding.top,
+                    right: layout.padding.right,
+                    bottom: layout.padding.bottom,
+                    left: layout.padding.left,
+                },
+                border: crate::LayoutBorder {
+                    top: layout.border.top,
+                    right: layout.border.right,
+                    bottom: layout.border.bottom,
+                    left: layout.border.left,
+                },
+            },
+        );
         for &child in tree.layout_children(external_id).iter().rev() {
             pending.push((child, frame.x, frame.y, Some(external_id)));
         }
@@ -259,6 +277,7 @@ fn collect_frames(
     Ok(LayoutOutput {
         revision: input.revision,
         flow_frames: frames.clone(),
+        used_box_edges,
         positioned_owners: BTreeMap::new(),
         fixed_owners: BTreeMap::new(),
         frames,

@@ -4,7 +4,10 @@ use spinon_core::{
 };
 use std::sync::Arc;
 
-use super::{CssRect, CssSize, OpaqueCssSrgb, RuntimePaint, RuntimeRenderBox, RuntimeRenderKey};
+use super::{
+    CssAxisClip, CssClip, CssRect, CssSize, OpaqueCssSrgb, RuntimePaint, RuntimeRenderBox,
+    RuntimeRenderKey,
+};
 
 fn key() -> RuntimeRenderKey {
     let snapshot = HostDocument::new().unwrap().snapshot();
@@ -89,6 +92,65 @@ fn runtime_scene_accepts_empty_and_rejects_duplicate_or_reordered_nodes() {
         ),
         Err(super::RuntimeRenderError::InvalidPaintOrder)
     ));
+}
+
+#[test]
+fn runtime_hit_test_applies_axis_clips_and_uses_half_open_edges() {
+    let node = NodeId::new(40).unwrap();
+    let snapshot = super::RuntimeRenderSnapshot::new(
+        key(),
+        CssSize::new(100.0, 100.0).unwrap(),
+        vec![
+            RuntimeRenderBox::new(
+                node,
+                CssRect::new(10.0, 10.0, 50.0, 50.0).unwrap(),
+                RuntimePaint::Opaque(OpaqueCssSrgb::new(20, 40, 60)),
+                0,
+            )
+            .with_clip(
+                CssClip::unconstrained()
+                    .with_x(CssAxisClip::new(20.0, 40.0).unwrap())
+                    .with_y(CssAxisClip::new(25.0, 45.0).unwrap()),
+            ),
+        ],
+    )
+    .unwrap();
+
+    assert_eq!(
+        snapshot.hit_test_css_point(20.0, 25.0).unwrap().node_id(),
+        node
+    );
+    assert!(snapshot.hit_test_css_point(40.0, 30.0).is_none());
+    assert!(snapshot.hit_test_css_point(30.0, 45.0).is_none());
+    assert!(snapshot.hit_test_css_point(19.0, 30.0).is_none());
+    assert!(snapshot.hit_test_css_point(-1.0, 30.0).is_none());
+}
+
+#[test]
+fn runtime_hit_test_uses_its_clip_independently_from_the_paint_clip() {
+    let node = NodeId::new(41).unwrap();
+    let render_box = RuntimeRenderBox::new(
+        node,
+        CssRect::new(10.0, 10.0, 50.0, 50.0).unwrap(),
+        RuntimePaint::Opaque(OpaqueCssSrgb::new(20, 40, 60)),
+        0,
+    )
+    .with_clip(CssClip::unconstrained().with_x(CssAxisClip::new(20.0, 40.0).unwrap()))
+    .with_hit_test_clip(CssClip::unconstrained().with_x(CssAxisClip::new(10.0, 50.0).unwrap()));
+    let snapshot = super::RuntimeRenderSnapshot::new(
+        key(),
+        CssSize::new(100.0, 100.0).unwrap(),
+        vec![render_box],
+    )
+    .unwrap();
+
+    assert!(!render_box.clip_css_px().contains(15.0, 30.0));
+    assert!(render_box.hit_test_clip_css_px().contains(15.0, 30.0));
+    assert_eq!(
+        snapshot.hit_test_css_point(15.0, 30.0).unwrap().node_id(),
+        node
+    );
+    assert!(snapshot.hit_test_css_point(50.0, 30.0).is_none());
 }
 
 #[test]

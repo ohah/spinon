@@ -1,0 +1,245 @@
+{
+  "schema": "spinon-c13-1-overflow-clip-runtime-observation/v1",
+  "browser": {
+    "automation": "agent-browser 0.31.1",
+    "product": "Google Chrome for Testing",
+    "version": "155.0.8059.40",
+    "revision": "cfaadc5a132d78e1828635aa8405a499f3e14864-refs/branch-heads/8059@{#936}",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "viewportCssPx": [
+      320,
+      120
+    ],
+    "devicePixelRatio": 1
+  },
+  "fixture": {
+    "html": "tests/fixtures/css/c13/runtime-overflow-clip.html",
+    "htmlSha256": "8f6d9c15b8830c58181371954042eea3f5e76e918f175960d74499574e455370",
+    "javascript": "tests/fixtures/css/c13/runtime-overflow-clip.js",
+    "javascriptSha256": "4a6872c1ba60529f5ad29955e72e4a10bcb11ca9fcda7720f64135ed025e3cf1"
+  },
+  "frames": [
+    {
+      "id": "c131-root",
+      "x": 0,
+      "y": 0,
+      "width": 300,
+      "height": 100
+    },
+    {
+      "id": "c131-visible",
+      "x": 10,
+      "y": 6,
+      "width": 90,
+      "height": 44
+    },
+    {
+      "id": "c131-visible-target",
+      "x": 19,
+      "y": 15,
+      "width": 130,
+      "height": 70
+    },
+    {
+      "id": "c131-clip",
+      "x": 105,
+      "y": 6,
+      "width": 90,
+      "height": 44
+    },
+    {
+      "id": "c131-clip-target",
+      "x": 114,
+      "y": 15,
+      "width": 130,
+      "height": 70
+    },
+    {
+      "id": "c131-margin",
+      "x": 200,
+      "y": 6,
+      "width": 90,
+      "height": 44
+    },
+    {
+      "id": "c131-margin-target",
+      "x": 209,
+      "y": 15,
+      "width": 130,
+      "height": 70
+    },
+    {
+      "id": "c131-nested-outer",
+      "x": 10,
+      "y": 62,
+      "width": 120,
+      "height": 34
+    },
+    {
+      "id": "c131-nested-inner",
+      "x": 37,
+      "y": 68,
+      "width": 50,
+      "height": 20
+    },
+    {
+      "id": "c131-nested-target",
+      "x": 40,
+      "y": 71,
+      "width": 90,
+      "height": 28
+    },
+    {
+      "id": "c131-escape-outer",
+      "x": 150,
+      "y": 62,
+      "width": 140,
+      "height": 34
+    },
+    {
+      "id": "c131-escape-static-clip",
+      "x": 156,
+      "y": 68,
+      "width": 45,
+      "height": 24
+    },
+    {
+      "id": "c131-escape-target",
+      "x": 222,
+      "y": 68,
+      "width": 50,
+      "height": 22
+    }
+  ],
+  "pixelSamples": [
+    {
+      "id": "visible-target",
+      "xCssPx": 102,
+      "yCssPx": 20,
+      "rgba": [
+        87,
+        166,
+        217,
+        255
+      ]
+    },
+    {
+      "id": "clip-inside",
+      "xCssPx": 180,
+      "yCssPx": 20,
+      "rgba": [
+        87,
+        166,
+        217,
+        255
+      ]
+    },
+    {
+      "id": "clip-outside",
+      "xCssPx": 198,
+      "yCssPx": 20,
+      "rgba": [
+        16,
+        24,
+        39,
+        255
+      ]
+    },
+    {
+      "id": "clip-margin-expanded",
+      "xCssPx": 291,
+      "yCssPx": 20,
+      "rgba": [
+        87,
+        166,
+        217,
+        255
+      ]
+    },
+    {
+      "id": "clip-margin-outside",
+      "xCssPx": 297,
+      "yCssPx": 20,
+      "rgba": [
+        16,
+        24,
+        39,
+        255
+      ]
+    },
+    {
+      "id": "nested-clip-inside",
+      "xCssPx": 84,
+      "yCssPx": 76,
+      "rgba": [
+        227,
+        84,
+        78,
+        255
+      ]
+    },
+    {
+      "id": "nested-clip-outside",
+      "xCssPx": 95,
+      "yCssPx": 76,
+      "rgba": [
+        52,
+        66,
+        86,
+        255
+      ]
+    },
+    {
+      "id": "nested-y-visible",
+      "xCssPx": 45,
+      "yCssPx": 92,
+      "rgba": [
+        227,
+        84,
+        78,
+        255
+      ]
+    },
+    {
+      "id": "nested-y-clip-outside",
+      "xCssPx": 45,
+      "yCssPx": 97,
+      "rgba": [
+        16,
+        24,
+        39,
+        255
+      ]
+    },
+    {
+      "id": "positioned-escape",
+      "xCssPx": 230,
+      "yCssPx": 76,
+      "rgba": [
+        227,
+        84,
+        78,
+        255
+      ]
+    },
+    {
+      "id": "outer-clip-outside",
+      "xCssPx": 295,
+      "yCssPx": 76,
+      "rgba": [
+        16,
+        24,
+        39,
+        255
+      ]
+    }
+  ],
+  "screenshot": {
+    "file": "chrome155-runtime-overflow-clip.png",
+    "sha256": "b055500798e34753eae2bb448d51eac3a48a6da173d012595bb133a0ef50b899",
+    "sizePx": [
+      320,
+      120
+    ]
+  }
+}

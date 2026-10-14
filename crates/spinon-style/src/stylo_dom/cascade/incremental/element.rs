@@ -17,7 +17,8 @@ use style::{
 };
 
 use super::super::{
-    ComputedCssMath, ComputedCssPosition, ComputedCssVisibility, ComputedCssZIndex,
+    ComputedCssMath, ComputedCssOverflow, ComputedCssOverflowClipMargin,
+    ComputedCssOverflowVisualBox, ComputedCssPosition, ComputedCssVisibility, ComputedCssZIndex,
     ComputedElementStyle, ComputedStyleProfile, CssCascadeError, CssViewport,
     FixedContainingBlockEffect, runtime_paint,
 };
@@ -51,29 +52,51 @@ pub(super) fn computed_element_output(
         style::values::computed::PositionProperty::Sticky => ComputedCssPosition::Sticky,
     };
     let fixed_containing_block_effects = fixed_containing_block_effects(computed);
-    let stacking_z_index =
-        (profile == ComputedStyleProfile::RuntimeBlockFlexStackingV1).then(|| {
-            match computed.clone_z_index() {
-                style::values::computed::ZIndex::Auto => ComputedCssZIndex::Auto,
-                style::values::computed::ZIndex::Integer(value) => {
-                    ComputedCssZIndex::Integer(value)
+    let stacking_z_index = matches!(
+        profile,
+        ComputedStyleProfile::RuntimeBlockFlexStackingV1
+            | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+    )
+    .then(|| match computed.clone_z_index() {
+        style::values::computed::ZIndex::Auto => ComputedCssZIndex::Auto,
+        style::values::computed::ZIndex::Integer(value) => ComputedCssZIndex::Integer(value),
+    });
+    let stacking_visibility = matches!(
+        profile,
+        ComputedStyleProfile::RuntimeBlockFlexStackingV1
+            | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+    )
+    .then(|| match computed.clone_visibility() {
+        style::properties::longhands::visibility::computed_value::T::Visible => {
+            ComputedCssVisibility::Visible
+        }
+        style::properties::longhands::visibility::computed_value::T::Hidden => {
+            ComputedCssVisibility::Hidden
+        }
+        style::properties::longhands::visibility::computed_value::T::Collapse => {
+            ComputedCssVisibility::Collapse
+        }
+    });
+    let has_overflow = profile == ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1;
+    let layout_overflow_x = has_overflow.then(|| computed_overflow(computed.clone_overflow_x()));
+    let layout_overflow_y = has_overflow.then(|| computed_overflow(computed.clone_overflow_y()));
+    let overflow_clip_margin = has_overflow.then(|| {
+        let value = computed.clone_overflow_clip_margin();
+        ComputedCssOverflowClipMargin {
+            visual_box: match value.visual_box {
+                style::values::generics::box_::OverflowClipMarginBox::ContentBox => {
+                    ComputedCssOverflowVisualBox::ContentBox
                 }
-            }
-        });
-    let stacking_visibility =
-        (profile == ComputedStyleProfile::RuntimeBlockFlexStackingV1).then(|| {
-            match computed.clone_visibility() {
-                style::properties::longhands::visibility::computed_value::T::Visible => {
-                    ComputedCssVisibility::Visible
+                style::values::generics::box_::OverflowClipMarginBox::PaddingBox => {
+                    ComputedCssOverflowVisualBox::PaddingBox
                 }
-                style::properties::longhands::visibility::computed_value::T::Hidden => {
-                    ComputedCssVisibility::Hidden
+                style::values::generics::box_::OverflowClipMarginBox::BorderBox => {
+                    ComputedCssOverflowVisualBox::BorderBox
                 }
-                style::properties::longhands::visibility::computed_value::T::Collapse => {
-                    ComputedCssVisibility::Collapse
-                }
-            }
-        });
+            },
+            offset_css_px: value.offset.px(),
+        }
+    });
     let layout_aspect_ratio = if matches!(
         profile,
         ComputedStyleProfile::RuntimeFlexLayoutV1
@@ -84,6 +107,7 @@ pub(super) fn computed_element_output(
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+            | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
     ) {
         computed_layout_aspect_ratio(computed, node_id)?
     } else {
@@ -156,6 +180,9 @@ pub(super) fn computed_element_output(
         layout_position,
         stacking_z_index,
         stacking_visibility,
+        layout_overflow_x,
+        layout_overflow_y,
+        overflow_clip_margin,
         fixed_containing_block_effects,
         layout_insets: computed_layout_insets(computed),
         font_size_css_px,
@@ -170,6 +197,16 @@ pub(super) fn computed_element_output(
         background_color,
         background_paint,
     })
+}
+
+fn computed_overflow(value: style::values::computed::Overflow) -> ComputedCssOverflow {
+    match value {
+        style::values::computed::Overflow::Visible => ComputedCssOverflow::Visible,
+        style::values::computed::Overflow::Clip => ComputedCssOverflow::Clip,
+        style::values::computed::Overflow::Hidden => ComputedCssOverflow::Hidden,
+        style::values::computed::Overflow::Scroll => ComputedCssOverflow::Scroll,
+        style::values::computed::Overflow::Auto => ComputedCssOverflow::Auto,
+    }
 }
 
 fn fixed_containing_block_effects(computed: &ComputedValues) -> Vec<FixedContainingBlockEffect> {

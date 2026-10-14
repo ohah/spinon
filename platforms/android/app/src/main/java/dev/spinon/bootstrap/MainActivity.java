@@ -236,6 +236,8 @@ public final class MainActivity extends Activity {
         int c11GridSceneIndex = 0;
         boolean c1121GridPlacementRequested = getIntent()
                 .getBooleanExtra("spinon_c1121_grid_placement", false);
+        boolean c131OverflowClipRequested = getIntent()
+                .getBooleanExtra("spinon_c131_overflow_clip", false);
         String c1122GridScene = getIntent().getStringExtra("spinon_c1122_grid_auto_placement_scene");
         boolean c1122GridAutoPlacementRequested = getIntent()
                 .getBooleanExtra("spinon_c1122_grid_auto_placement", false)
@@ -394,6 +396,7 @@ public final class MainActivity extends Activity {
                 || getIntent().getBooleanExtra("spinon_c122_absolute_block", false)
                 || getIntent().getBooleanExtra("spinon_c123_fixed_position", false)
                 || getIntent().getBooleanExtra("spinon_c124_stacking_context", false)
+                || c131OverflowClipRequested
                 || getIntent().getBooleanExtra("spinon_c124_stacking_matrix", false)
                 || getIntent().getBooleanExtra("spinon_c124_depth_safety", false)
                 || getIntent().getStringExtra("spinon_c124_surface_case") != null
@@ -411,6 +414,17 @@ public final class MainActivity extends Activity {
                 unavailable.setGravity(Gravity.CENTER);
                 setContentView(unavailable);
                 Log.e(TAG, "SPINON_C0410_DISABLED · SPINON_ENABLE_C04_RUNTIME_GPU=1로 빌드하세요");
+                return;
+            }
+            if (c131OverflowClipRequested
+                    && !BuildConfig.SPINON_C131_OVERFLOW_CLIP_FIXTURE_TEST) {
+                TextView unavailable = new TextView(this);
+                unavailable.setText("C13.1 overflow clip fixture-test 옵션을 켜서 빌드해야 합니다.");
+                unavailable.setTextColor(Color.WHITE);
+                unavailable.setGravity(Gravity.CENTER);
+                setContentView(unavailable);
+                Log.e(TAG, "SPINON_C131_DISABLED · "
+                        + "SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST=1로 빌드하세요");
                 return;
             }
             boolean failureProbe = getIntent().getBooleanExtra(

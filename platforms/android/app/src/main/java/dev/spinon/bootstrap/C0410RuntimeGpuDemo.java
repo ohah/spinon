@@ -224,6 +224,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native long nativeCreateC122AbsoluteBlockHost();
     private static native long nativeCreateC123FixedHost();
     private static native long nativeCreateC124StackingHost();
+    private static native long nativeCreateC131OverflowClipHost();
     private static native long nativeCreateC11GridHost();
     private static native long nativeCreateC1121GridPlacementHost();
     private static native long nativeCreateC1122GridAutoPlacementHost();
@@ -257,6 +258,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native byte[] nativeEvalC122AbsoluteBlockFixture(long host);
     private static native byte[] nativeEvalC123FixedFixture(long host);
     private static native byte[] nativeEvalC124StackingFixture(long host);
+    private static native byte[] nativeEvalC131OverflowClipFixture(long host);
     private static native byte[] nativeEvalC11GridFixture(long host);
     private static native byte[] nativeEvalC11GridSceneFixture(long host, int sceneIndex);
     private static native byte[] nativeEvalC1121GridPlacementFixture(
@@ -393,6 +395,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final List<SurfaceViewPixelCapture.Sample> c11GridPixelMatrixSamples;
     private final String c11GridPixelMatrixConfigError;
     private final boolean c124RuntimeMatrixProbeRequested;
+    private final boolean c131OverflowClipProbeRequested;
     private final boolean c124DepthSafetyProbeRequested;
     private final boolean c124SurfaceCaptureProbeRequested;
     private final String c124SurfaceCaseRequested;
@@ -429,6 +432,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private boolean shutdownProbeStarted;
     private boolean c1121GridRuntimeSummaryEmitted;
     private boolean c124SurfaceCaptureStarted;
+    private boolean c131OverflowClipSurfaceCaptureStarted;
     private boolean c11GridSurfaceCaptureStarted;
     private List<C124SurfacePixelCapture.Sample> c124SurfaceSamples = List.of();
     private int c124SurfaceOriginXCssPx;
@@ -497,6 +501,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 .getBooleanExtra("spinon_c123_fixed_position", false);
         c124RuntimeMatrixProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c124_stacking_matrix", false);
+        c131OverflowClipProbeRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c131_overflow_clip", false);
         c124DepthSafetyProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c124_depth_safety", false);
         c124SurfaceCaseRequested = activity.getIntent()
@@ -1074,6 +1080,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? nativeCreateC1121GridPlacementHost()
                 : c11GridFixtureRequested
                 ? nativeCreateC11GridHost()
+                : c131OverflowClipProbeRequested
+                ? nativeCreateC131OverflowClipHost()
                 : c124StackingProbeRequested
                 ? nativeCreateC124StackingHost()
                 : c123FixedPositionProbeRequested
@@ -1157,6 +1165,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         host, c1121GridSceneId, c1121GridRunId))
                 : c11GridFixtureRequested
                 ? decode(nativeEvalC11GridSceneFixture(host, c11GridSceneIndex))
+                : c131OverflowClipProbeRequested
+                ? decode(nativeEvalC131OverflowClipFixture(host))
                 : c124SurfaceCaptureProbeRequested
                 ? evaluateC124SurfaceCase(host)
                 : c124StackingProbeRequested
@@ -1827,6 +1837,103 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     }
                     postStatus("C12.4 surface pixel " + result.pixels.size() + "개 캡처 완료");
                 });
+    }
+
+    private void requestC131OverflowClipSurfaceCapture(long renderer, long generation) {
+        final int width;
+        final int height;
+        synchronized (stateLock) {
+            if (closing || c131OverflowClipSurfaceCaptureStarted || !surfaceAvailable
+                    || surfaceGeneration != generation || rendererHandle != renderer
+                    || rendererGeneration != generation) {
+                return;
+            }
+            c131OverflowClipSurfaceCaptureStarted = true;
+            width = surfaceWidth;
+            height = surfaceHeight;
+        }
+        String runId = Long.toHexString(SystemClock.elapsedRealtimeNanos());
+        List<SurfaceViewPixelCapture.Sample> samples = List.of(
+                new SurfaceViewPixelCapture.Sample("visible-target", 102, 20),
+                new SurfaceViewPixelCapture.Sample("clip-inside", 180, 20),
+                new SurfaceViewPixelCapture.Sample("clip-outside", 198, 20),
+                new SurfaceViewPixelCapture.Sample("clip-margin-expanded", 291, 20),
+                new SurfaceViewPixelCapture.Sample("clip-margin-outside", 297, 20),
+                new SurfaceViewPixelCapture.Sample("nested-clip-inside", 84, 76),
+                new SurfaceViewPixelCapture.Sample("nested-clip-outside", 95, 76),
+                new SurfaceViewPixelCapture.Sample("nested-y-visible", 45, 92),
+                new SurfaceViewPixelCapture.Sample("nested-y-clip-outside", 45, 97),
+                new SurfaceViewPixelCapture.Sample("positioned-escape", 230, 76),
+                new SurfaceViewPixelCapture.Sample("outer-clip-outside", 295, 76));
+        File output = new File(
+                new File(activity.getCacheDir(), "c131-overflow-clip-surface-captures"),
+                "runtime-overflow-clip-" + runId + ".png");
+        Log.i(TAG, "SPINON_C131_PIXELCOPY_BEGIN run_id=" + runId
+                + " pid=" + android.os.Process.myPid()
+                + " generation=" + generation + " width=" + width + " height=" + height
+                + " density=" + density + " samples=" + samples.size());
+        SurfaceViewPixelCapture.request(surfaceView, width, height, density,
+                0, 0, "runtime-overflow-clip", runId, output, samples,
+                mainHandler, runtimeQueue,
+                () -> {
+                    synchronized (stateLock) {
+                        return !closing && surfaceAvailable && surfaceGeneration == generation
+                                && rendererHandle == renderer && rendererGeneration == generation
+                                && surfaceWidth == width && surfaceHeight == height;
+                    }
+                }, result -> {
+                    if (!result.error.isEmpty()) {
+                        Log.e(TAG, "SPINON_C131_PIXELCOPY status=error run_id=" + runId
+                                + " generation=" + generation + " attempts=" + result.attempts
+                                + " reason=" + result.error);
+                        postStatus("실패 · C13.1 PixelCopy · " + result.error);
+                        return;
+                    }
+                    Log.i(TAG, "SPINON_C131_PIXELCOPY status=ok run_id=" + runId
+                            + " generation=" + generation + " width=" + result.width
+                            + " height=" + result.height + " density=" + density
+                            + " attempts=" + result.attempts + " png=" + output.getAbsolutePath()
+                            + " sha256=" + result.sha256);
+                    int matchedSamples = 0;
+                    for (SurfaceViewPixelCapture.Pixel pixel : result.pixels) {
+                        int[] expected = c131OverflowClipExpectedRgba(pixel.id);
+                        boolean exact = pixel.red == expected[0] && pixel.green == expected[1]
+                                && pixel.blue == expected[2] && pixel.alpha == expected[3];
+                        if (exact) matchedSamples++;
+                        Log.i(TAG, "SPINON_C131_PIXEL run_id=" + runId
+                                + " sample=" + pixel.id + " x=" + pixel.x + " y=" + pixel.y
+                                + " rgba=" + pixel.red + "," + pixel.green + ","
+                                + pixel.blue + "," + pixel.alpha
+                                + " expected=" + expected[0] + "," + expected[1] + ","
+                                + expected[2] + "," + expected[3] + " exact=" + exact);
+                    }
+                    boolean matched = result.pixels.size() == samples.size()
+                            && matchedSamples == samples.size();
+                    Log.i(TAG, "SPINON_C131_PIXELCOPY_SUMMARY status="
+                            + (matched ? "matched" : "mismatch") + " run_id=" + runId
+                            + " expected_samples=" + samples.size()
+                            + " observed_samples=" + result.pixels.size()
+                            + " matched_samples=" + matchedSamples);
+                    if (!matched) postStatus("실패 · C13.1 PixelCopy 표본 불일치");
+                });
+    }
+
+    private static int[] c131OverflowClipExpectedRgba(String sampleId) {
+        if ("visible-target".equals(sampleId) || "clip-inside".equals(sampleId)
+                || "clip-margin-expanded".equals(sampleId)) {
+            return new int[] {87, 166, 217, 255};
+        }
+        if ("nested-clip-inside".equals(sampleId) || "nested-y-visible".equals(sampleId)
+                || "positioned-escape".equals(sampleId)) {
+            return new int[] {227, 84, 78, 255};
+        }
+        if ("nested-y-clip-outside".equals(sampleId)) {
+            return new int[] {16, 24, 39, 255};
+        }
+        if ("nested-clip-outside".equals(sampleId)) {
+            return new int[] {52, 66, 86, 255};
+        }
+        return new int[] {16, 24, 39, 255};
     }
 
     private static List<SurfaceViewPixelCapture.Sample> parseC11GridPixelMatrixSamples(
@@ -2778,6 +2885,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         if (c124SurfaceCaptureProbeRequested) {
             requestC124SurfaceCapture(renderer, generation);
+        }
+        if (c131OverflowClipProbeRequested) {
+            requestC131OverflowClipSurfaceCapture(renderer, generation);
         }
         if (failureProbeRequested && !failureProbeStarted) {
             failureProbeStarted = true;

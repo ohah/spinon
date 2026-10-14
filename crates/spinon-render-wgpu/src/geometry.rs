@@ -34,13 +34,22 @@ pub(crate) fn build_vertices(
             continue;
         };
         let rect = render_box.frame_css_px();
-        if rect.width() == 0.0 || rect.height() == 0.0 {
+        let clip = render_box.clip_css_px();
+        let x0_css = clip.x().map_or(rect.x(), |axis| rect.x().max(axis.min()));
+        let x1_css = clip.x().map_or(rect.x() + rect.width(), |axis| {
+            (rect.x() + rect.width()).min(axis.max())
+        });
+        let y0_css = clip.y().map_or(rect.y(), |axis| rect.y().max(axis.min()));
+        let y1_css = clip.y().map_or(rect.y() + rect.height(), |axis| {
+            (rect.y() + rect.height()).min(axis.max())
+        });
+        if x1_css <= x0_css || y1_css <= y0_css {
             continue;
         }
-        let x0 = -1.0 + 2.0 * rect.x() / viewport.width();
-        let x1 = -1.0 + 2.0 * (rect.x() + rect.width()) / viewport.width();
-        let y0 = 1.0 - 2.0 * rect.y() / viewport.height();
-        let y1 = 1.0 - 2.0 * (rect.y() + rect.height()) / viewport.height();
+        let x0 = -1.0 + 2.0 * x0_css / viewport.width();
+        let x1 = -1.0 + 2.0 * x1_css / viewport.width();
+        let y0 = 1.0 - 2.0 * y0_css / viewport.height();
+        let y1 = 1.0 - 2.0 * y1_css / viewport.height();
         let encode = match color_encoding {
             ColorEncoding::Linear => srgb_to_linear,
             ColorEncoding::Srgb => srgb_encoded,
@@ -95,7 +104,9 @@ fn srgb_encoded(channel: u8) -> f32 {
 #[cfg(test)]
 mod tests {
     use spinon_core::{EnvironmentRevision, HostDocument, NodeId, StyleRevision};
-    use spinon_render::{CssRect, CssSize, RuntimePaint, RuntimeRenderBox, RuntimeRenderKey};
+    use spinon_render::{
+        CssAxisClip, CssClip, CssRect, CssSize, RuntimePaint, RuntimeRenderBox, RuntimeRenderKey,
+    };
 
     use super::{ColorEncoding, build_vertices};
 
@@ -127,6 +138,45 @@ mod tests {
             ],
         )
         .unwrap()
+    }
+
+    #[test]
+    fn clip_intersects_the_quad_before_gpu_vertex_generation() {
+        let document = HostDocument::new().unwrap();
+        let source = document.snapshot();
+        let scene = spinon_render::RuntimeRenderSnapshot::new(
+            RuntimeRenderKey::new(
+                source.generation(),
+                source.document_revision(),
+                source.render_tree_revision(),
+                StyleRevision::INITIAL,
+                EnvironmentRevision::INITIAL,
+            ),
+            CssSize::new(100.0, 100.0).unwrap(),
+            vec![
+                RuntimeRenderBox::new(
+                    NodeId::new(9).unwrap(),
+                    CssRect::new(0.0, 0.0, 100.0, 100.0).unwrap(),
+                    RuntimePaint::Opaque(spinon_render::OpaqueCssSrgb::new(255, 0, 0)),
+                    0,
+                )
+                .with_clip(
+                    CssClip::unconstrained()
+                        .with_x(CssAxisClip::new(20.0, 60.0).unwrap())
+                        .with_y(CssAxisClip::new(10.0, 40.0).unwrap()),
+                ),
+            ],
+        )
+        .unwrap();
+
+        let vertices = build_vertices(&scene, 100, 100, ColorEncoding::Srgb).unwrap();
+        assert_eq!(vertices.len(), 6);
+        for (actual, expected) in vertices[0].position.into_iter().zip([-0.6, 0.8]) {
+            assert!((actual - expected).abs() < 1.0e-6);
+        }
+        for (actual, expected) in vertices[5].position.into_iter().zip([0.2, 0.2]) {
+            assert!((actual - expected).abs() < 1.0e-6);
+        }
     }
 
     #[test]

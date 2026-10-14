@@ -32,10 +32,12 @@ const canonicalFixtureSources = [
   'crates/spinon-ffi/src/runtime_gpu/fixtures.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_3_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_3_2.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c13_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11_3_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11_3_2.rs',
+  'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c13_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11.rs',
   'crates/spinon-ffi/src/runtime_ua_cascade/fixtures.rs',
   'crates/spinon-ffi/src/runtime_ua_cascade/fixtures/probe.rs',
@@ -103,6 +105,14 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
     resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/ffi.rs'),
     'utf8',
   );
+  const runtimeFixtureSource = await readFile(
+    resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/fixtures.rs'),
+    'utf8',
+  );
+  const ffiFixtureSource = await readFile(
+    resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures.rs'),
+    'utf8',
+  );
   const cargoManifest = await readFile(
     resolve(repositoryRoot, 'crates/spinon-ffi/Cargo.toml'),
     'utf8',
@@ -110,4 +120,10 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
   assert.match(runtimeSource, /#\[cfg\(feature = "c04-runtime-gpu-fixture-test"\)\]\s*mod fixtures;/);
   assert.match(ffiSource, /#\[cfg\(feature = "c04-runtime-gpu-fixture-test"\)\]\s*mod fixtures;/);
   assert.match(cargoManifest, /c04-runtime-gpu-fixture-test\s*=\s*\["c04-runtime-gpu"\]/);
+  assert.match(runtimeFixtureSource,
+    /#\[cfg\(feature = "c13-1-overflow-clip-fixture-test"\)\]\s*pub\(crate\) mod c13_1;/);
+  assert.match(ffiFixtureSource,
+    /#\[cfg\(feature = "c13-1-overflow-clip-fixture-test"\)\]\s*mod c13_1;/);
+  assert.match(cargoManifest,
+    /c13-1-overflow-clip-fixture-test\s*=\s*\["c04-runtime-gpu-fixture-test"\]/);
 });

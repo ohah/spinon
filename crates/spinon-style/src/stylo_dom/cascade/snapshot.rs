@@ -285,6 +285,31 @@ pub enum ComputedCssPosition {
     Sticky,
 }
 
+/// Stylo가 계산한 CSS overflow longhand 값입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum ComputedCssOverflow {
+    Visible,
+    Clip,
+    Hidden,
+    Scroll,
+    Auto,
+}
+
+/// `overflow-clip-margin`의 시각 상자 기준입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum ComputedCssOverflowVisualBox {
+    ContentBox,
+    PaddingBox,
+    BorderBox,
+}
+
+/// Stylo computed value에서 복사한 `overflow-clip-margin`입니다.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct ComputedCssOverflowClipMargin {
+    pub visual_box: ComputedCssOverflowVisualBox,
+    pub offset_css_px: f32,
+}
+
 /// C12.4 runtime painter가 Stylo computed values에서 복사한 `z-index`입니다.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum ComputedCssZIndex {
@@ -393,6 +418,11 @@ pub struct ComputedElementStyle {
     pub stacking_z_index: Option<ComputedCssZIndex>,
     /// C12.4 profile에서만 설정하는 typed `visibility` 값입니다.
     pub stacking_visibility: Option<ComputedCssVisibility>,
+    /// C13.1 profile에서만 설정하는 typed overflow 축 값입니다.
+    pub layout_overflow_x: Option<ComputedCssOverflow>,
+    pub layout_overflow_y: Option<ComputedCssOverflow>,
+    /// C13.1 profile에서만 설정하는 typed `overflow-clip-margin` 값입니다.
+    pub overflow_clip_margin: Option<ComputedCssOverflowClipMargin>,
     /// 같은 Stylo computed values에서 추출한 fixed-CB effect입니다.
     pub fixed_containing_block_effects: Vec<FixedContainingBlockEffect>,
     /// 같은 cascade 결과의 물리 방향 inset 값입니다.
@@ -479,6 +509,8 @@ pub enum ComputedStyleProfile {
     RuntimeBlockPositioningV1,
     /// C12.4의 혼합 Block/Flex positioning·stacking·단색 paint runtime profile입니다.
     RuntimeBlockFlexStackingV1,
+    /// C13.1의 overflow 축과 clip margin을 포함하는 혼합 Block/Flex runtime profile입니다.
+    RuntimeBlockFlexOverflowClipV1,
     /// C11.1의 혼합 Block/Flex/Grid explicit-track runtime profile입니다.
     RuntimeBlockFlexGridV1,
     /// C11.2.1의 혼합 Block/Flex/Grid explicit-line runtime profile입니다.
