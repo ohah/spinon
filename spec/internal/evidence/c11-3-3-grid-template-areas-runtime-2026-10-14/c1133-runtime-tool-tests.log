@@ -1,0 +1,19 @@
+$ node --test tools/css-reference/c11-3-3-grid-template-areas.test.mjs
+✔ 기준 산출물이 고정 fixture, capture 도구, Chrome 실행 파일에 연결된다 (2.660166ms)
+✔ 26 scene의 CSSOM area matrix, track metadata와 DPR별 geometry가 보존된다 (1.0605ms)
+✔ area 직사각형, null cell과 shorthand 배치가 Chrome geometry 기준을 따른다 (0.128459ms)
+✔ bare area custom ident와 숫자+ident, 충돌 이름, implicit named area를 구분한다 (0.074791ms)
+✔ invalid area declaration은 cascade fallback을 남기고 dimensions·implicit track은 별도 거부 경계다 (0.122042ms)
+✔ nested container, hidden child와 DOM source order가 유지된다 (0.0785ms)
+✔ 고정 WPT 4개와 73개 하위 검사가 각각 분류되고 Chrome oracle 경계가 보존된다 (0.127833ms)
+✔ scene screenshot의 PNG hash가 기준 JSON과 실제 파일에 연결된다 (3.493125ms)
+✔ C11.3.3 앱 runtime matrix와 표면 pixel fixture가 Chrome 기준에 고정된다 (1.1765ms)
+✔ Android capture는 고정 실기기를 자동 선택하고 명시 대상·중복·AVD를 분리한다 (0.540375ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 53.304917

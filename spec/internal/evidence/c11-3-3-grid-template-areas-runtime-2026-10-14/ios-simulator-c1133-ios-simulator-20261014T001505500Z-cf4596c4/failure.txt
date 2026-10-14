@@ -1,0 +1,13 @@
+Error: mise exec -- env SPINON_V8_DIR=/private/tmp/spinon-c11-3-3-work/build/v8-source/v8 SPINON_ENABLE_C04_RUNTIME_GPU=1 SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST=1 bun run build:ios-sim 실패: $ bash tools/build-ios-sim.sh
+** BUILD FAILED **
+
+
+The following build commands failed:
+	PhaseScriptExecution Prepare\ Rust,\ V8\ and\ JavaScript /tmp/spinon-c11-3-3-work/build/spinon/DerivedData/Build/Intermediates.noindex/SpinonBootstrap.build/Debug-iphonesimulator/SpinonBootstrap.build/Script-500000000000000000000004.sh (in target 'SpinonBootstrap' from project 'SpinonBootstrap')
+	Building project SpinonBootstrap with scheme SpinonBootstrap
+(2 failures)
+error: script "build:ios-sim" exited with code 65
+
+    at command (file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime.mjs:42:19)
+    at runIOS (file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime.mjs:249:17)
+    at file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime.mjs:326:53

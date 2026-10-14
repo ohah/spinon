@@ -1,0 +1,5 @@
+Error: ADB에서 Android SM-S731N 실기기를 찾지 못했습니다. adb devices -l과 ANDROID_SERIAL을 확인하세요.
+    at selectAndroidPhysicalSerial (file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/c11-3-3-grid-template-areas-runtime-device.mjs:26:11)
+    at androidDevice (file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime.mjs:110:18)
+    at runAndroid (file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime.mjs:172:29)
+    at file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime.mjs:326:70

@@ -39,10 +39,10 @@ export function compareC11AndroidPixelCopyScene(log, {
   scene, runID, pngBytes, viewportCssPx,
   markerPrefix = 'C111', cacheDirectory = 'c11-grid-surface-pixel-matrix',
 }) {
-  assert.ok(['C111', 'C1122', 'C1123', 'C1131', 'C1132'].includes(markerPrefix), 'Android 표면 marker prefix가 잘못되었습니다.');
+  assert.ok(['C111', 'C1122', 'C1123', 'C1131', 'C1132', 'C1133'].includes(markerPrefix), 'Android 표면 marker prefix가 잘못되었습니다.');
   assert.ok(['c11-grid-surface-pixel-matrix', 'c1122-grid-surface-pixel-matrix',
     'c1123-grid-surface-pixel-matrix', 'c1131-grid-surface-pixel-matrix',
-    'c1132-grid-surface-pixel-matrix']
+    'c1132-grid-surface-pixel-matrix', 'c1133-grid-surface-pixel-matrix']
     .includes(cacheDirectory), 'Android 표면 cache 경로가 허용되지 않습니다.');
   const marker = `SPINON_${markerPrefix}_GRID_PIXEL_MATRIX`;
   const BEGIN = `${marker}_BEGIN `;
@@ -102,7 +102,8 @@ export function compareC11AndroidPixelCopyScene(log, {
   assert.equal(exactInteger(capture.attempts, 'PixelCopy attempts', 1) <= 3, true,
     'PixelCopy retry 수가 제한을 넘었습니다.');
   assert.equal(exactInteger(summary.generation, 'summary generation', 1), generation);
-  const exactPixelMode = markerPrefix === 'C1131' || markerPrefix === 'C1132';
+  const exactPixelMode = markerPrefix === 'C1131' || markerPrefix === 'C1132'
+    || markerPrefix === 'C1133';
   assert.equal(summary.status, exactPixelMode ? 'matched' : 'captured',
     'PixelCopy summary 상태가 예상한 값이 아닙니다.');
   assert.equal(exactInteger(summary.expected_samples, 'expected sample count', 1), scene.samples.length);

@@ -1,0 +1,4 @@
+AssertionError [ERR_ASSERTION]: unknown-area-implicit-tracks: 기대 rejection 계약 불일치: 10-14 11:03:03.061  7390  7416 I SpinonBootstrap: SPINON_C1133_GRID_REJECTION_SUMMARY run_id=c1133-matrix-20261014T020220550Z-45cff2c1-24-unknown-area-implicit-tracks scene_id=unknown-area-implicit-tracks expected=false status=-11 code=unsupported_named_grid_line property=missing node_id=2 frames=absent
+    at validateReject (file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime-matrix.mjs:151:10)
+    at captureMatrix (file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime-matrix.mjs:240:75)
+    at async file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime-matrix.mjs:324:20

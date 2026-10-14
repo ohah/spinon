@@ -10,7 +10,14 @@ fn names(entries: &[&[&str]]) -> Vec<Vec<String>> {
 fn named(name: &str, occurrence: i32) -> ComputedCssGridPlacement {
     ComputedCssGridPlacement::NamedLine {
         name: name.to_owned(),
-        occurrence,
+        occurrence: Some(occurrence),
+    }
+}
+
+fn bare_named(name: &str) -> ComputedCssGridPlacement {
+    ComputedCssGridPlacement::NamedLine {
+        name: name.to_owned(),
+        occurrence: None,
     }
 }
 
@@ -18,6 +25,22 @@ fn span_named(name: &str, count: u32) -> ComputedCssGridPlacement {
     ComputedCssGridPlacement::SpanNamed {
         name: name.to_owned(),
         count,
+    }
+}
+
+fn metadata<'a>(
+    names: &'a [Vec<String>],
+    opposite_names: &'a [Vec<String>],
+    areas: Option<&'a ComputedCssGridTemplateAreas>,
+    axis: GridAxis,
+    track_count: usize,
+) -> LineMetadata<'a> {
+    LineMetadata {
+        names,
+        opposite_names,
+        areas,
+        axis,
+        track_count,
     }
 }
 
@@ -319,4 +342,126 @@ fn conflicting_end_named_span_is_dropped_before_name_resolution() {
     .unwrap();
     assert_eq!(start, GridPlacementInput::Span(2));
     assert_eq!(end, GridPlacementInput::Auto);
+}
+
+#[test]
+fn bare_ident_uses_area_edge_while_explicit_one_uses_the_authored_name() {
+    let areas = ComputedCssGridTemplateAreas {
+        rows: 1,
+        columns: 3,
+        areas: vec![spinon_style::ComputedCssGridArea {
+            name: "hero".to_owned(),
+            row_start: 0,
+            row_end: 1,
+            column_start: 1,
+            column_end: 2,
+        }],
+    };
+    let column_names = names(&[&["hero-start"], &["hero"], &["hero-end"], &[]]);
+    let row_names = names(&[&[], &[]]);
+    let bare = project_axis_with_areas(
+        NodeId::new(16).unwrap(),
+        "grid-column-start",
+        "grid-column-end",
+        &bare_named("hero"),
+        &ComputedCssGridPlacement::Line(4),
+        metadata(
+            &column_names,
+            &row_names,
+            Some(&areas),
+            GridAxis::Columns,
+            3,
+        ),
+    )
+    .unwrap();
+    let explicit_one = project_axis_with_areas(
+        NodeId::new(17).unwrap(),
+        "grid-column-start",
+        "grid-column-end",
+        &named("hero", 1),
+        &ComputedCssGridPlacement::Line(4),
+        metadata(
+            &column_names,
+            &row_names,
+            Some(&areas),
+            GridAxis::Columns,
+            3,
+        ),
+    )
+    .unwrap();
+
+    assert_eq!(bare.0, GridPlacementInput::Line(1));
+    assert_eq!(explicit_one.0, GridPlacementInput::Line(2));
+}
+
+#[test]
+fn generated_area_aliases_resolve_as_named_lines_and_named_spans() {
+    let areas = ComputedCssGridTemplateAreas {
+        rows: 1,
+        columns: 3,
+        areas: vec![spinon_style::ComputedCssGridArea {
+            name: "main".to_owned(),
+            row_start: 0,
+            row_end: 1,
+            column_start: 1,
+            column_end: 3,
+        }],
+    };
+    let column_names = names(&[&[], &[], &[], &[]]);
+    let row_names = names(&[&[], &[]]);
+    let explicit_alias = project_axis_with_areas(
+        NodeId::new(18).unwrap(),
+        "grid-column-start",
+        "grid-column-end",
+        &named("main-start", 1),
+        &span_named("main-end", 1),
+        metadata(
+            &column_names,
+            &row_names,
+            Some(&areas),
+            GridAxis::Columns,
+            3,
+        ),
+    )
+    .unwrap();
+
+    assert_eq!(explicit_alias.0, GridPlacementInput::Line(2));
+    assert_eq!(explicit_alias.1, GridPlacementInput::Line(4));
+}
+
+#[test]
+fn line_only_implicit_area_requires_matching_edges_on_both_axes() {
+    let columns = names(&[&[], &["box-start"], &[], &["box-end"]]);
+    let rows = names(&[&[], &["box-start"], &["box-end"]]);
+    let implicit = project_axis_with_areas(
+        NodeId::new(19).unwrap(),
+        "grid-column-start",
+        "grid-column-end",
+        &bare_named("box"),
+        &bare_named("box"),
+        metadata(&columns, &rows, None, GridAxis::Columns, 3),
+    )
+    .unwrap();
+    let not_an_area = project_axis_with_areas(
+        NodeId::new(20).unwrap(),
+        "grid-column-start",
+        "grid-column-end",
+        &bare_named("box"),
+        &ComputedCssGridPlacement::Line(4),
+        metadata(
+            &columns,
+            &names(&[&[], &[], &[]]),
+            None,
+            GridAxis::Columns,
+            3,
+        ),
+    )
+    .unwrap_err();
+
+    assert_eq!(implicit.0, GridPlacementInput::Line(2));
+    assert_eq!(implicit.1, GridPlacementInput::Line(4));
+    assert!(matches!(
+        not_an_area,
+        StyleLayoutError::UnsupportedNamedGridLine { .. }
+    ));
 }

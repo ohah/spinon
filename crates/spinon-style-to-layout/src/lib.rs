@@ -30,6 +30,8 @@ mod c11_3_1_grid_repeat_tests;
 #[cfg(test)]
 mod c11_3_2_grid_named_line_tests;
 #[cfg(test)]
+mod c11_3_3_grid_template_areas_tests;
+#[cfg(test)]
 mod c11_grid_tests;
 #[cfg(test)]
 mod c12_1_position_tests;

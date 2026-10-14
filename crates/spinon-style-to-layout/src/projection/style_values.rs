@@ -6,8 +6,8 @@ use spinon_layout::{
     LayoutPositioning, LayoutStyle, TextDirection,
 };
 use spinon_style::{
-    ComputedCssDimension, ComputedCssMaxSize, ComputedCssPosition, ComputedElementStyle,
-    ComputedStyleProfile, ComputedStyleSnapshot,
+    ComputedCssDimension, ComputedCssGridLayout, ComputedCssMaxSize, ComputedCssPosition,
+    ComputedElementStyle, ComputedStyleProfile, ComputedStyleSnapshot,
 };
 
 mod flex_values;
@@ -51,6 +51,7 @@ pub(super) fn project_styles(
     let mut output = BTreeMap::new();
     let mut positioning = BTreeMap::new();
     let mut grid_containers = BTreeMap::new();
+    let mut grid_styles = BTreeMap::<NodeId, &ComputedCssGridLayout>::new();
     let mut grid_items = BTreeMap::new();
     let mut math = CssMathProjector::default();
     let grid_nodes =
@@ -516,6 +517,7 @@ pub(super) fn project_styles(
                         .unwrap_or_else(|| "<계산값 없음>".to_owned()),
                 }
             })?;
+            grid_styles.insert(node, grid);
             grid_containers.insert(node, project_grid_layout(node, grid, snapshot.profile)?);
         }
         if supports_positioning(snapshot.profile) {
@@ -584,9 +586,15 @@ pub(super) fn project_styles(
             let container = grid_containers
                 .get(&owner)
                 .ok_or(crate::StyleLayoutError::MissingComputedElement(owner))?;
-            if let Some(placement) =
-                project_grid_item_placement(element.node_id, placement, container)?
-            {
+            let grid_style = grid_styles
+                .get(&owner)
+                .ok_or(crate::StyleLayoutError::MissingComputedElement(owner))?;
+            if let Some(placement) = project_grid_item_placement(
+                element.node_id,
+                placement,
+                container,
+                grid_style.template_areas.as_ref(),
+            )? {
                 grid_items.insert(element.node_id, placement);
             }
         }

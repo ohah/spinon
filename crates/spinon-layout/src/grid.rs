@@ -41,6 +41,8 @@ pub enum GridPlacementMode {
     SparseRow,
     /// C11.2.3의 row/column sparse·dense 자동 배치와 양의 implicit track을 계산합니다.
     DenseAutoPlacement,
+    /// C11.3 template profile은 dense 배치를 유지하고 definite item의 auto 크기를 허용합니다.
+    TemplateGrid,
 }
 
 /// 제한 profile에서 허용하는 implicit track sizing 입력입니다.
@@ -96,7 +98,9 @@ pub(super) fn validate_grid_layout(
     for (&id, container) in &input.grid_containers {
         match (container.placement_mode, container.auto_rows) {
             (
-                GridPlacementMode::SparseRow | GridPlacementMode::DenseAutoPlacement,
+                GridPlacementMode::SparseRow
+                | GridPlacementMode::DenseAutoPlacement
+                | GridPlacementMode::TemplateGrid,
                 GridAutoRows::Auto | GridAutoRows::LengthPx(_),
             )
             | (_, GridAutoRows::Auto) => {}
@@ -109,7 +113,7 @@ pub(super) fn validate_grid_layout(
         }
         match (container.placement_mode, container.auto_columns) {
             (
-                GridPlacementMode::DenseAutoPlacement,
+                GridPlacementMode::DenseAutoPlacement | GridPlacementMode::TemplateGrid,
                 GridAutoColumns::Auto | GridAutoColumns::LengthPx(_),
             )
             | (_, GridAutoColumns::Auto) => {}
@@ -200,7 +204,9 @@ pub(super) fn validate_grid_layout(
         }
         if !matches!(
             container.placement_mode,
-            GridPlacementMode::SparseRow | GridPlacementMode::DenseAutoPlacement
+            GridPlacementMode::SparseRow
+                | GridPlacementMode::DenseAutoPlacement
+                | GridPlacementMode::TemplateGrid
         ) && container.auto_flow != GridAutoFlow::Row
         {
             return Err(LayoutError::UnsupportedGridAutoFlow(node.id));
@@ -240,13 +246,23 @@ pub(super) fn validate_grid_layout(
                 return Err(LayoutError::UnsupportedGridPositionedItem(child_id));
             }
             let valid_item_size = |size| match container.placement_mode {
-                GridPlacementMode::SparseRow | GridPlacementMode::DenseAutoPlacement
+                GridPlacementMode::SparseRow
+                | GridPlacementMode::DenseAutoPlacement
+                | GridPlacementMode::TemplateGrid
                     if normalized_grid.auto_placed_items.contains(&child_id) =>
                 {
                     matches!(size, crate::LayoutDimension::Fixed(_))
                 }
                 GridPlacementMode::Existing | GridPlacementMode::ExplicitOnly
                     if has_explicit_placement =>
+                {
+                    matches!(
+                        size,
+                        crate::LayoutDimension::Auto | crate::LayoutDimension::Fixed(_)
+                    )
+                }
+                GridPlacementMode::TemplateGrid
+                    if !normalized_grid.auto_placed_items.contains(&child_id) =>
                 {
                     matches!(
                         size,
@@ -264,7 +280,12 @@ pub(super) fn validate_grid_layout(
                 ("min-height", child.style.min_height),
                 ("max-height", child.style.max_height),
             ] {
-                if value != crate::LayoutDimension::Auto {
+                let zero_minimum_on_definite_area = container.placement_mode
+                    == GridPlacementMode::TemplateGrid
+                    && !normalized_grid.auto_placed_items.contains(&child_id)
+                    && matches!(property, "min-width" | "min-height")
+                    && value == crate::LayoutDimension::Fixed(0.0);
+                if value != crate::LayoutDimension::Auto && !zero_minimum_on_definite_area {
                     return Err(LayoutError::UnsupportedGridItemConstraint {
                         node: child_id,
                         property,
@@ -277,7 +298,9 @@ pub(super) fn validate_grid_layout(
         }
         if !matches!(
             container.placement_mode,
-            GridPlacementMode::SparseRow | GridPlacementMode::DenseAutoPlacement
+            GridPlacementMode::SparseRow
+                | GridPlacementMode::DenseAutoPlacement
+                | GridPlacementMode::TemplateGrid
         ) && !has_explicit_placement
             && item_count > cell_count
         {

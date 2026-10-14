@@ -1,0 +1,11 @@
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
+  {
+    'cascade-fallback': 5,
++   'expected-rejection': 0,
+-   'expected-rejection': 2,
+    success: 19
+  }
+
+    at file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime-matrix.mjs:340:10

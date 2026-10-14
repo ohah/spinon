@@ -31,7 +31,9 @@ pub(super) fn normalize_grid_layout(
             || hidden[&container_node.id]
             || !matches!(
                 container.placement_mode,
-                GridPlacementMode::SparseRow | GridPlacementMode::DenseAutoPlacement
+                GridPlacementMode::SparseRow
+                    | GridPlacementMode::DenseAutoPlacement
+                    | GridPlacementMode::TemplateGrid
             )
         {
             continue;
@@ -113,7 +115,9 @@ pub(super) fn normalize_grid_item_placements(
             .ok_or(LayoutError::MissingGridContainer(container_node.id))?;
         if matches!(
             container.placement_mode,
-            GridPlacementMode::SparseRow | GridPlacementMode::DenseAutoPlacement
+            GridPlacementMode::SparseRow
+                | GridPlacementMode::DenseAutoPlacement
+                | GridPlacementMode::TemplateGrid
         ) {
             continue;
         }

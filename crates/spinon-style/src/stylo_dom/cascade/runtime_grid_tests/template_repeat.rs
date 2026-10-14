@@ -92,7 +92,7 @@ fn repeat_count_one_and_repeat_free_control_have_identical_tracks() {
 }
 
 #[test]
-fn integer_repeat_accepts_track_shorthands_but_rejects_areas() {
+fn template_profile_accepts_repeat_shorthands_and_grid_template_areas() {
     for shorthand in ["grid-template", "grid"] {
         let fixture = fixture(&format!(
             "display:grid;box-sizing:border-box;width:300px;height:200px;{shorthand}:repeat(2,30px) / repeat(2,40px);margin:0;padding:0"
@@ -112,20 +112,18 @@ fn integer_repeat_accepts_track_shorthands_but_rejects_areas() {
     let fixture = fixture(
         "display:grid;box-sizing:border-box;width:300px;height:200px;grid-template-columns:repeat(2,40px);grid-template-rows:40px;grid-template-areas:\"area area\";margin:0;padding:0",
     );
-    let result = compute_runtime_block_flex_grid_template_cascade_with_stylesheets(
+    let snapshot = compute_runtime_block_flex_grid_template_cascade_with_stylesheets(
         &fixture.view,
         &[],
         viewport(),
         Default::default(),
-    );
-    match result {
-        Err(crate::CssCascadeError::UnsupportedComputedGridValue {
-            node,
-            property: "grid-template-areas",
-            ..
-        }) => assert_eq!(node, fixture.root),
-        other => panic!("area shorthand 결과: {other:?}"),
-    }
+    )
+    .unwrap();
+    let grid = snapshot.elements[0].grid_layout.as_ref().unwrap();
+    let areas = grid.template_areas.as_ref().unwrap();
+    assert_eq!((areas.rows, areas.columns), (1, 2));
+    assert_eq!(areas.areas.len(), 1);
+    assert_eq!(areas.areas[0].name, "area");
 }
 
 #[test]

@@ -1,0 +1,1315 @@
+$ bun run test:js && bun run test:css-reference && bun run test:benchmark:r05-physical-touch && cargo test --locked --workspace
+$ cd examples/bootstrap && bun test
+bun test v1.4.2 (744846f84)
+
+ 2 pass
+ 0 fail
+ 13 expect() calls
+Ran 2 tests across 1 file. [7.00ms]
+$ node --test tools/css-reference/*.test.mjs
+✔ C04 Cascade Layers reference matches its immutable input and capture sources (11.770459ms)
+✔ C04 Flex alignment Chromium reference matches its immutable input and capture sources (10.622125ms)
+✔ C04 margin Chromium reference matches its immutable input and capture sources (12.264375ms)
+✔ C04 logical margin shorthand Chromium reference matches its immutable input and capture sources (10.423958ms)
+✔ C04 media environment Chromium reference is tied to immutable fixture and capture sources (8.35825ms)
+✔ C04.11 Chromium reference is bound to the fixed author stylesheet fixture (13.316375ms)
+✔ 두 viewport Chromium reference가 고정 입력과 oracle에 묶여 있다 (7.117584ms)
+✔ Android와 iOS runtime viewport가 고정 fixture 크기 대신 surface bounds를 사용한다 (4.324458ms)
+✔ C04 runtime CSS to GPU reference is bound to the fixed Chromium inputs (5.707208ms)
+✔ Android and iOS run the same checked-in JavaScript fixture through V8 (5.875166ms)
+✔ C05 custom-property Chromium oracle is tied to immutable fixture and capture inputs (10.385166ms)
+✔ C05 Android와 iOS fixture가 Chromium HTML과 같은 style·WGPU runtime 경로를 쓴다 (3.676167ms)
+✔ C05.4 Chromium fixture pins input bytes and inherited restyle boundary (8.62575ms)
+✔ C05.2 Chromium reference is tied to immutable HTML and V8 runtime fixtures (8.250583ms)
+✔ C06.3 Chromium oracle는 고정 실행 파일·fixture·capture 입력에 묶여 있다 (9.21375ms)
+✔ 7개 절대 길이는 모든 runtime layout 경계에서 같은 CSS px로 계산된다 (0.194875ms)
+✔ negative absolute margin와 custom-property unit substitution은 px 의미를 보존한다 (0.054417ms)
+✔ reference의 모든 node는 유한하고 마지막 row까지 viewport 안에 있다 (0.092333ms)
+✔ C06.4 Chromium 기준은 고정 실행 파일·DPR 쌍·fixture 입력에 묶여 있다 (9.606ms)
+✔ em, rem, 상속, font-size percentage 및 root rem 특례가 Chromium 계산값과 일치한다 (0.182375ms)
+✔ em과 rem이 flex basis와 spacing에 CSS px로 반영되고 DPR과 독립적이다 (0.160834ms)
+✔ V8 runtime fixture는 Chromium HTML fixture와 동일한 author CSS와 노드 트리를 사용한다 (3.954ms)
+✔ C06.1 Chromium oracle is bound to immutable inputs and partial support scope (5.446333ms)
+✔ C06.2 Chromium reference는 고정 버전·입력 hash·inventory를 보존한다 (14.385042ms)
+✔ margin·padding 백분율은 containing block content width를 사용한다 (0.534292ms)
+✔ Flex gap은 대응 content-box 차원·cascade·invalid value를 보존한다 (0.211333ms)
+✔ computed-value invalidation과 cyclic·inline-flex oracle 경계가 서로 구분된다 (0.166458ms)
+✔ C06.5 Chromium oracle is pinned to exact executable, source files and DPR pair (3.775333ms)
+✔ Chromium resolves calc, min, max, clamp and var values against the correct width basis (0.132375ms)
+✔ Typed OM preserves mixed math nodes, while used CSS values preserve layout geometry (0.057291ms)
+✔ CSS bounds, margin sign and non-finite calculations match pinned Chromium observations (0.073375ms)
+✔ invalid dimensions use the prior valid declaration and Chromium round() is outside this slice (0.059ms)
+✔ CSS computed values and geometry are invariant across the captured device scale factors (0.133208ms)
+✔ C06.5 runtime fixture reaches both native simulator hosts (1.637833ms)
+✔ pinned Chromium viewport-unit fixture covers every viewport and DPR (0.602875ms)
+✔ default, small, large, and dynamic units resolve to the single native content viewport (0.241125ms)
+✔ viewport-unit CSS values and CSS geometry do not change when only DPR changes (0.222083ms)
+✔ runtime viewport-unit fixture is connected through the Android and iOS host boundaries (4.057583ms)
+✔ 고정 Chrome 기준의 원본 입력과 도구 digest가 일치한다 (5.479333ms)
+✔ 고 DPR 정수 경계와 원문 viewport 단위의 CSS px 결과를 고정한다 (2.256542ms)
+✔ 두 DPR 관찰은 고정 viewport·환경·50개 고유 node를 가진다 (0.9335ms)
+✔ shorthand side mapping과 longhand cascade 승자를 보존한다 (0.139834ms)
+✔ none·hidden과 모든 비-none 선 스타일의 geometry 기여를 구분한다 (0.101291ms)
+✔ content-box·border-box에서 padding·border·min/max가 서로 다르게 포함된다 (0.056792ms)
+✔ fractional 폭의 pinned Chrome snapping, zero 및 invalid 선언 fallback을 고정한다 (0.080292ms)
+✔ 현재 C06 length math, flex shrink 외곽 크기, outline 제외를 고정한다 (0.080041ms)
+✔ 캡처 도구는 고정 reference를 자동으로 덮어쓰지 않는다 (2.8875ms)
+✔ C07.2 V8 fixture가 실제 Android·iOS WGPU 런타임 경로에 연결되어 있다 (4.571667ms)
+✔ 고정 Chrome reference와 원본 입력 digest가 일치한다 (5.95425ms)
+✔ 두 DPR 관찰이 viewport·환경·35개 고유 node에서 일치한다 (0.755542ms)
+✔ computed ratio의 width/height 방향과 CSS number 계산을 고정한다 (0.105667ms)
+✔ box-sizing·padding·border·min/max 조합의 실제 outer rect를 고정한다 (0.064ms)
+✔ degenerate ratio, variable substitution, invalid fallback, inheritance와 auto 기본값을 고정한다 (0.097916ms)
+✔ Flex stretch와 start 정렬에서 ratio 적용 차이를 보존한다 (0.06525ms)
+✔ capture 도구의 node count와 고정 reference 덮어쓰기 방지를 유지한다 (1.213208ms)
+✔ C07.3 fixture가 Android·iOS의 실제 V8·WGPU runtime 경로에 연결되어 있다 (2.130583ms)
+✔ 고정 Chromium 기준은 fixture 입력·실행 파일·35개 노드를 고정한다 (0.368667ms)
+✔ 고정 기준은 최소·최대값과 box-sizing 경계를 관찰한다 (0.130958ms)
+✔ 고정 기준은 flex shrink·grow에서 각 최소·최대 제약을 적용한다 (0.329416ms)
+✔ 최소·최대 크기 computed 값과 CSS px geometry는 DPR에 따라 변하지 않는다 (0.274875ms)
+✔ C07.1 실제 runtime fixture가 V8 문서와 author stylesheet를 사용한다 (4.595375ms)
+✔ C07.1 runtime 연결이 Rust FFI부터 Android·iOS launch route까지 이어진다 (1.49525ms)
+✔ C08 고정 기준과 런타임 fixture의 해시·입력 계약을 검증한다 (9.726792ms)
+✔ C09 reference는 Chrome 154와 fixture·inventory·capture 입력 digest를 고정한다 (0.937417ms)
+✔ C09 inventory와 Chromium DOM preorder·부모 관계가 모두 일치한다 (0.747292ms)
+✔ fixture harness가 화면 원점에 있어 숨김 node의 영점 사각형도 안정적이다 (0.073334ms)
+✔ Block auto width·horizontal auto margin·overconstraint·negative margin geometry를 고정한다 (0.089208ms)
+✔ 양수·음수 margin strut과 parent·child·padding·used border 경계를 고정한다 (0.119792ms)
+✔ C09.2 부호 있는 margin fixture가 Android·iOS 실제 V8·WGPU 실행기에 연결되어 있다 (2.441625ms)
+✔ flow-root 내부 margin 차단과 외부 parent·sibling margin을 구분한다 (0.099208ms)
+✔ C09.3 flow-root fixture가 Android·iOS 실제 V8·WGPU 실행기에 연결되어 있다 (0.928042ms)
+✔ CSS px computed values와 used geometry는 DPR 1·2에서 변하지 않는다 (0.931959ms)
+✔ 고정 Chrome reference가 fixture와 실행 도구 digest를 보존한다 (1.51025ms)
+✔ 모든 Chromium 노드에서 computed CSS와 DPR별 CSS px 결과가 고정돼 있다 (0.584ms)
+✔ 역방향 주축, 역방향 줄 쌓기, shorthand와 줄 경계의 기준 좌표를 고정한다 (0.133667ms)
+✔ 실제 runtime JS fixture가 Android·iOS의 C10.3.1 WGPU 경로에 연결된다 (2.963125ms)
+✔ Android·iOS Simulator의 실제 V8 frame과 WGPU 제출이 Chromium runtime 기준에 맞는다 (1.840333ms)
+✔ 고정 Chrome reference가 C10.3.3 입력과 capture digest를 보존한다 (1.527125ms)
+✔ 두 DPR에서 모든 computed longhand, 원본 자식 순서와 CSS px frame이 같다 (0.895916ms)
+✔ normal, self positions, overflow safety와 cross-axis auto margin을 구분한다 (0.156792ms)
+✔ stretch eligibility, clamp, nowrap, wrap 단일 줄과 line distribution을 고정한다 (0.092292ms)
+✔ wrap-reverse, safe fallback, place shorthand와 justify-content 축 fallback을 고정한다 (0.15625ms)
+✔ 잘못된 선언은 앞선 유효 값을 유지하고 custom property와 Block 경계를 지킨다 (0.084709ms)
+✔ 고정 Chrome reference가 C10.3.4 입력·capture digest와 WPT 경계를 보존한다 (0.987416ms)
+✔ 두 DPR에서 DOM 순서, computed value와 CSS px geometry가 동일하다 (0.554042ms)
+✔ first·last sharing group은 각각 독립되고 단일 참여자는 반대쪽 fallback을 쓴다 (0.150708ms)
+✔ last baseline은 cross margin을 보존하고 합성 기준은 border edge다 (0.175667ms)
+✔ column·content alignment과 nested Flex baseline set은 서로 다른 경계다 (0.123458ms)
+✔ C10.3.5 inventory owns unique nodes and pinned, unexecuted WPT inputs (21.214292ms)
+✔ pinned Chrome observations match inputs, preserve flow geometry, and separate paint phases (10.338125ms)
+✔ mobile runtime subset reuses pinned case styles and preserves their source tree (1.966708ms)
+✔ 고정 Chrome 기준은 fixture와 capture 도구 digest를 보존한다 (0.933542ms)
+✔ 두 DPR에서 computed integer, 원본 자식 순서와 CSS px frame이 같다 (1.656083ms)
+✔ 기본 순서, tie, 줄 수집, grow와 중첩 컨테이너 경계를 고정한다 (0.152875ms)
+✔ invalid fractional declaration, calc rounding, custom properties와 int32 clamp를 고정한다 (0.06675ms)
+✔ 비-Flex 자식은 source order를 유지하고 overlap case의 order 그룹은 서로 덮친다 (0.08175ms)
+✔ 실제 V8 fixture가 Android·iOS의 C10.3.2 WGPU 실행 경로에 연결된다 (2.923583ms)
+✔ Android·iOS Simulator의 실제 9개 frame과 WGPU 제출 결과가 서로 일치한다 (3.482167ms)
+✔ 고정 Chrome reference가 fixture·capture 도구·실행 파일 digest를 보존한다 (0.945167ms)
+✔ 모든 관찰 node의 computed CSS와 geometry가 고정돼 있고 DPR 1·2 결과가 같다 (0.845041ms)
+✔ grow와 scaled shrink가 CSS factor와 basis를 함께 반영한다 (0.13875ms)
+✔ flex-basis 우선순위와 definite row·column의 auto·percentage 계산을 고정한다 (0.0605ms)
+✔ shorthand·author stylesheet·invalid 선언의 computed style과 cascade 결과를 고정한다 (0.0975ms)
+✔ min·max freeze 반복과 hypothetical main size 분기 결과를 고정한다 (0.080542ms)
+✔ gap·margin·wrap line·box sizing·소수 좌표·큰 factor frame을 고정한다 (0.081708ms)
+✔ 실제 V8 runtime fixture의 mixed min·max freeze와 custom paint frame을 고정한다 (0.074708ms)
+✔ 실제 runtime fixture가 Android·iOS에서 C10.2 V8→Stylo→Taffy→WGPU 경로로 연결된다 (4.600042ms)
+✔ Android·iOS Simulator의 실제 V8 frame과 WGPU box 제출이 Chromium과 일치한다 (1.521917ms)
+✔ capture는 고정 Chromium만 허용하고 reference 자동 덮어쓰기를 막는다 (0.147458ms)
+✔ 고정 Chrome reference가 fixture·capture 도구·실행 파일의 digest를 보존한다 (4.968125ms)
+✔ 각 case의 Chromium node 순서와 DPR 1·2 결과가 동일하다 (0.951958ms)
+✔ row wrap의 default·exact fit·1px 초과·여러 줄 gap 경계를 고정한다 (0.147291ms)
+✔ column wrap에서 row-gap은 주축, column-gap은 교차축 간격으로 동작한다 (0.061459ms)
+✔ 실제 Android·iOS 앱 fixture의 일곱 DOM frame을 고정한다 (0.078ms)
+✔ Android API 37·iOS 26.2 simulator의 실제 runtime frame이 Chromium과 일치한다 (0.4505ms)
+✔ empty·single·display:none·shorthand·Block·비상속 경계를 고정한다 (0.086209ms)
+✔ capture는 reference를 자동 갱신하지 않고 실행 시 고정된 Chrome만 받는다 (0.062125ms)
+✔ 실제 runtime fixture가 Android·iOS에서 같은 V8→Stylo→Taffy→WGPU 경로를 쓴다 (9.136791ms)
+✔ C11.2.1 pixel matrix generator reproduces the fixed fixture byte-for-byte (432.5325ms)
+✔ all ten fixed cases separate six pixel scenes from four intentional rejections (0.149333ms)
+✔ every expected RGBA sample is in the mobile viewport and on a 3x3 uniform Chrome region (23.240042ms)
+✔ 겹침 scene은 실제 위쪽 paint만 표본화하고 완전히 가려진 item을 기록한다 (0.183209ms)
+✔ fixture records immutable Chrome and runtime input hashes (0.901583ms)
+✔ inventory hash mismatch stops sample generation (0.555083ms)
+✔ changed Chrome PNG fails before a pixel fixture can be generated (2.668167ms)
+✔ unexpected runtime outcome cannot enter the mobile pixel matrix (5.648084ms)
+✔ HTML paint palette drift is rejected instead of silently changing expected RGBA (2.487208ms)
+✔ 6개 success scene은 전체 frame, WGPU 제출 및 겹침 paint 순서를 확인한다 (3.932166ms)
+✔ 4개 profile 밖 scene은 정확한 code·NodeId·property와 미제출을 요구한다 (0.178167ms)
+✔ 초기 장면이 환경 갱신에 밀리면 최종 ready summary가 있어야 통과한다 (0.806333ms)
+✔ runner 오염·오류 진단 변경·frame 누락·geometry 변이·미제출·겹침 순서 오류는 실패한다 (0.551417ms)
+✔ 중복 frame은 내용이 같아야 하며 다른 중복 report는 실패한다 (0.36525ms)
+✔ runtime matrix preserves fixed scene classes, preorder, source hashes, and failure owners (48.773459ms)
+✔ HTML edits that are not represented by the pinned reference fail closed (2.019208ms)
+✔ generated source escapes literals and contains no caller-provided JavaScript (3.4485ms)
+✔ pinned Chrome 154 screenshot에서 11개 성공 장면의 item/gap 표본을 만든다 (288.993041ms)
+✔ 실행 입력의 고정 hash와 11개 성공·5개 거부 장면이 표면 행렬에서 일치한다 (206.833209ms)
+✔ hidden item은 표면 표본으로 취급하지 않는다 (110.254292ms)
+✔ source inventory hash가 어긋나면 Pixel matrix 생성이 실패한다 (1.32025ms)
+✔ 고정 HTML hash가 어긋나면 Pixel matrix 생성이 실패한다 (2.741375ms)
+✔ Chrome oracle hash가 어긋나면 Pixel matrix 생성이 실패한다 (2.139833ms)
+✔ Chrome DPR 1 screenshot이 변경되면 source oracle 판정에서 거부한다 (2.3325ms)
+✔ reference에서 scene 순서가 빠지면 fixture 전체를 생성하지 않는다 (2.397708ms)
+✔ 생성된 sample RGBA는 고정 screenshot 실제 pixel과 일치한다 (147.194208ms)
+✔ 성공 scene은 모든 노드 geometry와 WGPU draw를 Chrome 기준에 비교한다 (1.346166ms)
+✔ 고정 거부 scene은 정확한 오류와 부분 출력 부재를 요구한다 (0.143542ms)
+✔ 이유 문자열이 없는 안정 오류에도 property 이름을 정확히 비교한다 (0.094166ms)
+✔ display:none DOM 노드는 0×0 frame으로 보존하되 paint와 draw에서 제외한다 (0.193625ms)
+✔ 적대 경로: 최종 summary 누락 (0.454ms)
+✔ 적대 경로: 동일 run의 summary 중복 (0.083459ms)
+✔ 적대 경로: 최초 eval 누락 (0.076583ms)
+✔ 적대 경로: 성공인데 eval 실패 (0.081333ms)
+✔ 적대 경로: 성공 node frame 누락 (0.100042ms)
+✔ 적대 경로: 중복 node frame (0.763459ms)
+✔ 적대 경로: frame NodeId 변경 (1.807125ms)
+✔ 적대 경로: geometry 허용 오차 초과 (0.161666ms)
+✔ 적대 경로: frame summary 누락 (0.09775ms)
+✔ 적대 경로: paint order 누락 (0.097083ms)
+✔ 적대 경로: source order 손실 (0.267291ms)
+✔ 적대 경로: 양수 draw 누락 (0.080459ms)
+✔ 적대 경로: 기대 거부 scene 성공 처리 (0.061792ms)
+✔ 적대 경로: eval과 최종 거부 코드 불일치 (0.060084ms)
+✔ 적대 경로: 거부 code 변조 (0.045208ms)
+✔ 적대 경로: 거부 NodeId 변조 (0.041875ms)
+✔ 적대 경로: 거부 CSS property 변조 (0.124084ms)
+✔ 적대 경로: 거부 진단 누락 (0.048292ms)
+✔ 적대 경로: 거부 뒤 부분 frame 출력 (0.04825ms)
+✔ 적대 경로: 거부 뒤 양수 draw (0.056333ms)
+✔ 기본 허용 오차와 다른 run의 무관한 기록은 구분한다 (0.0645ms)
+✔ 다른 fixture source order를 Chrome oracle과 합치지 않는다 (0.10875ms)
+✔ 잘못된 frame 로그 형식을 정상 geometry로 해석하지 않는다 (0.051667ms)
+✔ C11.2.2 runtime matrix pins all candidate and expected-rejection scenes (25.256334ms)
+✔ Chrome 154 고정 screenshot에서 C11.2.3 성공 19 scene의 표본 행렬을 결정적으로 만든다 (373.315166ms)
+✔ 거부 6 scene은 pixel sample을 만들지 않고 hidden child도 제외한다 (166.691ms)
+✔ track limit 장면의 1px 높이 item은 명시된 단일 pixel 예외로 기록한다 (163.847166ms)
+✔ 표본 RGBA가 모든 고정 Chrome PNG 픽셀과 일치한다 (211.433291ms)
+✔ inventory, HTML, Chrome reference, screenshot hash가 바뀌면 matrix 생성이 실패한다 (16.534375ms)
+✔ Chrome oracle에서 scene이 빠지거나 순서가 바뀌면 전체 matrix를 거부한다 (4.050208ms)
+✔ C11.2.3 fixture 생성 명령은 HTML과 inventory를 같은 입력으로 재현한다 (36.497833ms)
+✔ 25개 장면의 preorder·NodeId·부모가 inventory와 HTML에서 일치한다 (0.921791ms)
+✔ 고정 WPT revision과 Chrome runner 로그·세부 결과가 연결된다 (0.12375ms)
+✔ Chrome reference가 정확한 입력 hash·캡처 도구·DPR 관측과 25개 screenshot을 담는다 (42.748208ms)
+✔ Chrome가 row·column dense의 hole backfill과 양의 implicit track을 분리해 관찰한다 (0.3385ms)
+✔ runtime matrix 재생성이 고정 v6 inventory와 Chrome 154 v7 근거에 일치한다 (21.2265ms)
+✔ capture 입력은 runtime matrix, HTML, inventory, Chromium reference hash를 모두 묶는다 (70.342167ms)
+✔ 고정 행렬은 25개 scene의 19 성공과 6 기대 거부 계약을 보존한다 (6.973833ms)
+✔ runtime JavaScript는 고정된 scene node와 parent graph만 구성한다 (8.476917ms)
+✔ runtime paint 색상은 Chrome reference fixture HTML의 node별 palette를 그대로 따른다 (13.634708ms)
+✔ pins C11.3.1 sample colors to the Chrome 154 DPR 1 screenshot (18.325542ms)
+✔ compares Android PixelCopy samples against the fixed Chrome pixels (2.717917ms)
+✔ rejects Android pixel mismatch even when the capture is complete (1.857541ms)
+✔ compares iOS Metal drawable pixels with the same Chrome oracle (0.59225ms)
+✔ rejects a C11.3.1 Metal log with one changed sample (0.25225ms)
+✔ 기준은 고정한 fixture·도구·Chrome 실행 파일·WPT revision에 연결된다 (2.493792ms)
+✔ 12개 독립 장면의 tree·DPR·CSS px geometry·track 수가 보존된다 (3.2955ms)
+✔ repeat seam과 중복 line name의 Chrome resolved CSSOM 값이 명시된 순서를 유지한다 (0.099083ms)
+✔ Chrome의 10,000 경계·거부 후보·CSSOM fallback을 Spinon 결과와 혼동하지 않는다 (0.103375ms)
+✔ DPR 1 화면 캡처 경로와 해시가 실제 파일과 일치한다 (19.278ms)
+✔ 고정 Chrome 표면·reference 해시와 두 색상 표본을 확인한다 (5.760542ms)
+✔ Android PixelCopy 표본 두 개를 Chrome 표면과 정확히 비교한다 (2.05875ms)
+✔ Android PixelCopy의 한 채널 오차를 통과시키지 않는다 (1.738083ms)
+✔ iOS Metal drawable 표본을 Chrome 표면과 정확히 비교한다 (0.50425ms)
+✔ iOS Metal 표본의 색상 오차를 통과시키지 않는다 (0.21725ms)
+✔ 기준 자료가 고정 fixture·도구·Chrome 실행 파일·WPT revision에 연결된다 (5.805959ms)
+✔ 15개 장면의 DOM 순서, 양쪽 DPR의 CSSOM·track 수·geometry가 보존된다 (0.5765ms)
+✔ named line occurrence, span 방향, repeat seam, row 축, conflict 처리가 Chrome 기준과 맞는다 (0.14775ms)
+✔ explicit grid 밖 named line 요청은 Chrome 결과와 지원 범위를 분리해 둔다 (0.086125ms)
+✔ DPR 1의 scene screenshot 경로와 hash가 실제 PNG 파일과 일치한다 (25.034792ms)
+✔ Android·iOS C11.3.2 진입과 거부 경로가 고정 scene 및 run ID를 검사한다 (3.572625ms)
+✔ Android API 37 AVD 캡처 모드를 실기기와 구분해 검증한다 (0.579625ms)
+✔ 기준 산출물이 고정 fixture, capture 도구, Chrome 실행 파일에 연결된다 (6.065375ms)
+✔ 26 scene의 CSSOM area matrix, track metadata와 DPR별 geometry가 보존된다 (1.17275ms)
+✔ area 직사각형, null cell과 shorthand 배치가 Chrome geometry 기준을 따른다 (0.1415ms)
+✔ bare area custom ident와 숫자+ident, 충돌 이름, implicit named area를 구분한다 (0.073084ms)
+✔ invalid area declaration은 cascade fallback을 남기고 dimensions·implicit track은 별도 거부 경계다 (0.11775ms)
+✔ nested container, hidden child와 DOM source order가 유지된다 (0.073083ms)
+✔ 고정 WPT 4개와 73개 하위 검사가 각각 분류되고 Chrome oracle 경계가 보존된다 (0.320292ms)
+✔ scene screenshot의 PNG hash가 기준 JSON과 실제 파일에 연결된다 (11.064333ms)
+✔ C11.3.3 앱 runtime matrix와 표면 pixel fixture가 Chrome 기준에 고정된다 (9.570416ms)
+✔ Android capture는 고정 실기기를 자동 선택하고 명시 대상·중복·AVD를 분리한다 (0.516ms)
+✔ Android AVD capture는 emulator serial만 허용하고 실기기와 다중 대상을 거부한다 (0.193209ms)
+✔ C11.2.2 기준 fixture가 16개 장면과 pinned WPT 후보를 분리한다 (0.367458ms)
+✔ Chrome 기준은 fixture·도구 hash와 각 DPR 관측을 완전하게 연결한다 (9.816292ms)
+✔ 기준 scene이 definite-first, sparse cursor, gap, hidden, nested 동작을 명시한다 (0.266708ms)
+✔ 출력 경로와 screenshot 파일은 모두 고정되고 기존 기준 파일은 보호된다 (1.634958ms)
+✔ C11.2.2 기준 fixture가 15개 장면과 pinned WPT 후보를 분리한다 (0.400083ms)
+✔ Chrome 기준은 fixture·도구 hash와 각 DPR 관측을 완전하게 연결한다 (70.022792ms)
+✔ 기준 scene이 definite-first, sparse cursor, gap, hidden, nested 동작을 명시한다 (0.294458ms)
+✔ 출력 경로와 screenshot 파일은 모두 고정되고 기존 기준 파일은 보호된다 (11.59525ms)
+✔ iOS frame parser preserves preorder IDs and fractional CSS coordinates (0.753583ms)
+✔ draw detector accepts generation metadata before the success status (0.121583ms)
+✔ draw detector rejects failed, missing, and stale-sized presentations (0.051375ms)
+✔ C11.2.1 표본은 고정 Chrome reference와 screenshot에서 추출된다 (11.170083ms)
+✔ 표본 좌표는 파랑·빨강 item과 gap/background를 구별한다 (0.163125ms)
+✔ Android PixelCopy 완료 marker는 필드 순서가 달라도 같은 run만 인정한다 (0.130167ms)
+✔ iOS Metal pixel summary는 matched 상태가 run id 앞에 있어도 인식한다 (0.053125ms)
+✔ 기준 입력·Chrome 실행 파일·캡처 도구와 WPT 원문 후보가 hash로 고정된다 (2.870917ms)
+✔ 10개 scene·30개 node의 분류, DOM preorder, parent identity와 DPR이 고정된다 (0.603292ms)
+✔ 양·음수 line, span, 역순 및 shorthand cascade의 Chrome computed 값과 rect가 보존된다 (0.132208ms)
+✔ 겹침·중첩별 배치 모드와 profile 밖의 Chrome 관찰값을 분리한다 (0.096416ms)
+✔ Chrome 캡처 PNG는 scene·SHA-256·화면 크기와 연결된다 (11.381375ms)
+✔ oracle 검증은 누락·중복 node, 비유한 frame 및 profile 오분류를 거부한다 (3.7545ms)
+✔ 고정 Chrome 기준은 입력·도구·실행 파일 hash와 WPT 원문 hash에 묶여 있다 (3.472417ms)
+✔ 10개 scene·40개 node의 tree, CSS px geometry와 DPR 고정값이 보존된다 (0.857292ms)
+✔ 10개 Chrome 화면 캡처는 고유 scene·SHA-256·PNG 크기와 연결된다 (4.935209ms)
+✔ reference 검증은 빠진·중복 node와 DPR 불일치를 거부한다 (5.510917ms)
+✔ 정적 runtime matrix는 기준 입력 hash와 10 scene·40 node source를 고정한다 (77.25ms)
+✔ 원본 hash가 어긋난 HTML은 matrix source 생성 전에 거부한다 (1.222583ms)
+✔ parse5 복구가 필요한 malformed HTML은 거부한다 (2.421625ms)
+▶ fixture subset 밖 tag·attribute·CSS·style·class 변경은 거부한다
+  ✔ unknown tag (2.379083ms)
+  ✔ unknown attribute (1.236875ms)
+  ✔ unknown reset rule (3.285667ms)
+  ✔ unknown inline property (1.1245ms)
+  ✔ unknown palette class (2.114334ms)
+✔ fixture subset 밖 tag·attribute·CSS·style·class 변경은 거부한다 (10.606416ms)
+▶ 중복 NodeId와 Chromium reference tree drift를 거부한다
+  ✔ duplicate id (1.073417ms)
+  ✔ reference node drift (1.578417ms)
+✔ 중복 NodeId와 Chromium reference tree drift를 거부한다 (2.847459ms)
+✔ mise 유무와 관계없이 iOS simulator 빌드 인자로 Grid pixel 기능을 전달한다 (346.144542ms)
+✔ Grid pixel 검증은 C04 GPU fixture 없이 빌드를 시작하지 않는다 (7.220125ms)
+✔ iOS simulator 스크립트는 누락된 Grid pixel flag를 기본 비활성화로 전달한다 (151.953416ms)
+✔ 두 iOS 빌드 스크립트는 잘못된 Grid pixel flag를 거부한다 (13.059792ms)
+✔ iOS native build도 C04 GPU fixture 없이 Grid pixel feature를 거부한다 (6.686208ms)
+✔ Grid pixel 빌드 설정을 iOS native Rust feature와 C++ define으로 연결한다 (0.934083ms)
+✔ C04 GPU 핵심과 fixture 검증 feature를 분리하고 앱 검증 빌드에서만 둘 다 켠다 (2.057417ms)
+✔ UA cascade fixture probe는 기본 off이고 명시한 경우에만 Rust와 네이티브 경계를 켠다 (157.599333ms)
+✔ C11 iOS pixel 캡처는 출력 플래그 순서와 무관하게 기능 값을 확인한다 (0.331042ms)
+✔ Android와 iOS UA probe 호출은 opt-in feature gate 안에만 둔다 (0.698959ms)
+✔ C04 runtime core만으로는 fixture ABI를 노출하지 않는다 (77.46925ms)
+✔ pinned Chromium samples cover 10 C11 scenes and 36 visible pixels (191.369791ms)
+✔ generator rejects screenshot hash drift and node inventory drift (109.848875ms)
+✔ C12.1 기준은 fixture·캡처 도구·Chromium·WPT revision에 고정된다 (4.192333ms)
+✔ 각 관찰 상태에 inventory의 node와 source-order 관계가 정확히 보존된다 (2.722792ms)
+✔ static은 inset을 무시하고 relative는 흐름 frame과 뒤 형제를 유지한다 (0.315833ms)
+✔ 반대 방향·음수·auto·초과 제약 inset이 LTR 물리 축 규칙과 일치한다 (0.155167ms)
+✔ percentage와 calc inset이 containing block 축 및 custom property fallback을 따른다 (0.155ms)
+✔ inset shorthand·longhand·cascade layer·important의 계산값이 보존된다 (0.888417ms)
+✔ 중첩 relative box가 가장 가까운 positioned owner를 보고하고 흐름 형제를 유지한다 (0.109459ms)
+✔ display:none은 positioned subtree 상자를 제거하고 뒤 형제는 흐름에 남긴다 (0.077125ms)
+✔ runtime position 변경은 흐름을 보존하고 visual offset과 descendant owner를 갱신한다 (0.084125ms)
+✔ DPR만 바뀔 때 computed CSSOM 값과 geometry는 달라지지 않는다 (0.355833ms)
+✔ Android 실기기와 iOS Simulator의 V8 runtime frame이 고정 Chromium geometry와 일치한다 (2.762167ms)
+✔ 기준 재수집은 명시적 교체 없이는 기존 파일을 보존한다 (35.046792ms)
+✔ C12.2 Chromium 기준은 고정 버전·fixture·표준·WPT revision에 묶인다 (4.51325ms)
+✔ 23개 case와 82개 노드의 DOM 부모·case·position·containing-block owner가 보존된다 (0.44275ms)
+✔ DPR 변경은 CSS px 좌표와 computed inset 값을 바꾸지 않는다 (0.320875ms)
+✔ padding edge, static ancestor skip, nested positioned owner, viewport fallback이 분리된다 (0.11725ms)
+✔ out-of-flow 자식은 auto 부모 크기와 normal-flow 형제 좌표에 참여하지 않는다 (0.084125ms)
+✔ 축별 percentage·calc·right/bottom·auto size와 over-constrained LTR 기준을 고정한다 (0.076667ms)
+✔ 자동 margin, min/max, box-sizing, ratio와 negative inset을 별도 결과로 고정한다 (0.057542ms)
+✔ auto inset static position, inline blockification, BFC, 숨김 subtree와 nested absolute를 구분한다 (0.112ms)
+✔ shorthand cascade와 한쪽 auto inset의 used geometry가 computed style과 함께 유지된다 (0.075917ms)
+✔ Android physical device의 최종 표시 장면과 82개 runtime node가 Chrome 기하와 일치한다 (39.810917ms)
+✔ iOS Simulator의 최종 표시 장면과 82개 runtime node가 Chrome 기하와 일치한다 (34.871875ms)
+✔ C12.3 기준은 고정 Chrome, fixture 해시, viewport/DPR 행렬과 WPT subset에 묶인다 (6.856958ms)
+✔ 지원·거부 owner, source parent, 표시 여부와 유한 frame이 모든 관찰에서 보존된다 (2.608875ms)
+✔ DPR만 바꾸면 CSS geometry와 computed style이 그대로이고 resize 왕복/no-op도 결정적이다 (2.489792ms)
+✔ viewport inset·percentage·calc·stretch와 box-owner 경계를 대표값으로 고정한다 (0.152666ms)
+✔ fixed containing block 효과는 거부 경계로 분리되고 will-change opacity는 viewport 대조군이다 (0.133625ms)
+✔ C12.3 Android 실기기 V8 runtime의 전체 viewport/DPR/resize frame이 Chrome 기준과 일치한다 (3.172208ms)
+✔ C12.3 iOS Simulator V8 runtime의 전체 viewport/DPR/resize frame이 Chrome 기준과 일치한다 (1.309792ms)
+✔ C12.3 comparator는 frame 누락·잘못된 revision·이전 실패 로그를 통과시키지 않는다 (3.907833ms)
+✔ Android pixel reader decodes fixed Chrome PNG RGBA samples (36.800167ms)
+✔ Android surface comparator accepts the exact scene and all fixed samples (9.702792ms)
+✔ Android surface comparator rejects stale, incomplete, incorrect, and mismatched PNG evidence (51.917125ms)
+✔ 고정된 iOS Metal surface 8개 표본을 비교한다 (3.083959ms)
+✔ 누락 case를 거부한다 (1.285292ms)
+✔ 중복 case를 거부한다 (1.086375ms)
+✔ 잘못된 run ID를 거부한다 (0.590209ms)
+✔ pixel color mutation을 거부한다 (0.272834ms)
+✔ 좌표 뒤바꿈을 거부한다 (0.174208ms)
+✔ offscreen texture 결과를 거부한다 (0.158042ms)
+✔ 실패 상태 marker가 섞인 실행을 거부한다 (0.128542ms)
+✔ 공통 비교기는 정상 iOS matrix에서 모든 Chromium frame을 확인한다 (54.145667ms)
+✔ 공통 비교기는 잘못된 inventory hash를 거부한다 (42.868ms)
+✔ 공통 비교기는 중복 case와 허용치를 넘는 개별 frame 오차를 거부한다 (77.941583ms)
+✔ 공통 비교기는 기대 속성과 다른 거부 진단을 통과시키지 않는다 (35.671334ms)
+✔ C12.4 Android matrix derives all pinned cases and nodes from the inventory (3.882708ms)
+✔ C12.4 Android matrix keeps unsupported boundaries explicit and emits per-scene V8 sources (6.871208ms)
+✔ C12.4 fixture은 고정된 범위와 실행하지 않은 WPT source를 구분한다 (5.112542ms)
+✔ C12.4 runtime 진입점이 iOS·Android에서 같은 Rust fixture를 호출한다 (3.394875ms)
+✔ 실기기 Android와 iOS Simulator가 같은 10개 frame·paint rank를 제출한다 (0.973208ms)
+✔ Chrome 154 reference와 PNG는 fixture·도구·환경 해시 및 픽셀을 고정한다 (7.876125ms)
+✔ Chrome screenshot은 row-reverse의 관측 pixel과 top-layer 표본을 분리해 고정한다 (2.549292ms)
+✔ 유효한 0개 및 다중 worker 단계를 받아들인다 (0.84025ms)
+✔ 누락·중복 표본과 session 간 TID 재사용을 거부한다 (2.207959ms)
+✔ pthread guard, reported length, OS range, page span 불일치를 거부한다 (0.225042ms)
+✔ 세 표본 사이 bounds 변경과 resident page 초과를 거부한다 (2.506041ms)
+✔ DevTools WebSocket 열림·오류·조기 종료·시간 초과를 구분한다 (2.191417ms)
+✔ Chromium 종료 전에 group 멤버 모두가 이 캡처의 임시 profile을 가리켜야 한다 (0.277708ms)
+✔ accepts one PixelCopy PNG and all exact pinned Chrome scene pixels (16.534584ms)
+✔ maps CSS centers by actual PixelCopy dimensions even when density is deliberately wrong (8.028458ms)
+✔ rejects coordinates produced from density instead of actual surface scale (8.243709ms)
+✔ supports the separately namespaced C11.2.2 PixelCopy marker and cache path (9.784833ms)
+✔ supports the separately namespaced C11.2.3 PixelCopy marker and cache path (7.61875ms)
+✔ C11.3.1 고정 repeat 표본을 전용 marker와 cache 경로로 검증한다 (7.699291ms)
+✔ C11.3.1 runtime이 다섯 표본 exact를 보고하지 않으면 거부한다 (16.106583ms)
+✔ isolates the requested run from unrelated app processes (8.981167ms)
+✔ rejects stale run ID (0.209ms)
+✔ rejects missing begin marker (0.200625ms)
+✔ rejects duplicate begin marker (0.130458ms)
+✔ rejects missing successful capture marker (0.109375ms)
+✔ rejects capture error status (0.119959ms)
+✔ rejects missing summary marker (0.097292ms)
+✔ rejects incomplete expected sample count (0.109833ms)
+✔ rejects duplicate sample ID (0.092666ms)
+✔ rejects missing sample (0.0895ms)
+✔ rejects unknown sample ID (9.38125ms)
+✔ rejects mismatched scene (0.169084ms)
+✔ rejects process ID changes between begin and sample (8.0455ms)
+✔ rejects surface generation changes between begin and sample (8.187541ms)
+✔ rejects begin/capture dimensions mismatch (0.145125ms)
+✔ rejects invalid density (0.091417ms)
+✔ rejects viewport metadata inconsistent with the fixed C11 runtime (0.107167ms)
+✔ rejects scales that are not derived from the captured bitmap dimensions (0.078291ms)
+✔ rejects off-by-one CSS coordinate (7.242333ms)
+✔ rejects off-by-one device pixel coordinate (7.357917ms)
+✔ rejects PixelCopy RGBA mismatch (8.223625ms)
+✔ rejects PNG hash mismatch (7.518792ms)
+✔ rejects altered PixelCopy PNG bytes (0.152125ms)
+✔ fixture pins the exact Chrome 154 DPR 1 reference screenshot and seven extracted pixels (12.840583ms)
+✔ accepts one current-process drawable run with all exact sample colors (0.749458ms)
+✔ C11.2.1 runtime scene alias is distinct from its inventory fixture id (0.219958ms)
+✔ accepts the separately namespaced C11.2.2 Metal surface pixel markers (0.179708ms)
+✔ accepts the separately namespaced C11.2.3 Metal surface pixel markers (0.163791ms)
+✔ accepts the separately namespaced C11.3.1 Metal surface pixel markers (0.198917ms)
+✔ accepts the valid initial environment revision zero (0.143584ms)
+✔ isolates one run when the unified log contains other process runs (0.522958ms)
+✔ rejects wrong run id (0.48725ms)
+✔ rejects missing begin marker (0.194833ms)
+✔ rejects duplicate begin marker (0.117ms)
+✔ rejects missing summary marker (0.107625ms)
+✔ rejects duplicate summary marker (0.085417ms)
+✔ rejects missing sample (0.088083ms)
+✔ rejects duplicate sample ID (0.081791ms)
+✔ rejects unknown sample ID (0.318958ms)
+✔ rejects a different application process (0.129792ms)
+✔ rejects sample from another surface generation (0.106458ms)
+✔ rejects mismatched begin and summary revisions (0.084875ms)
+✔ rejects nonpositive revision (0.097709ms)
+✔ rejects fractional or unsafe process and revision counters (0.249958ms)
+✔ rejects unexpected scene (0.162583ms)
+✔ rejects Chrome-sized runtime viewport in place of the app draw viewport (1.681708ms)
+✔ rejects drawable aspect ratio mismatch (0.143708ms)
+✔ rejects wrong horizontal pixel scale (0.1035ms)
+✔ rejects wrong vertical pixel scale (0.086667ms)
+✔ rejects off-by-one pixel coordinate (0.102625ms)
+✔ rejects changed Metal surface color (0.142958ms)
+✔ rejects changed expected color in runtime log (0.126625ms)
+✔ rejects non-exact sample marker (0.089834ms)
+✔ rejects mismatch summary status (0.086917ms)
+✔ rejects inconsistent summary sample counts (0.081875ms)
+✔ rejects malformed RGBA channels (0.083791ms)
+✔ rejects altered Chrome reference bytes (0.076708ms)
+✔ rejects altered Chrome screenshot bytes (0.089959ms)
+✔ fixture 이동 뒤 이전 경로에 Rust 사본이 남지 않는다 (0.475083ms)
+✔ CSS reference 도구가 삭제된 Rust fixture 경로를 참조하지 않는다 (23.977958ms)
+✔ 이동한 fixture 구현은 정해진 fixtures 모듈 경로에 있다 (0.168333ms)
+✔ 작업별 FFI fixture 모듈은 runtime 소스 루트에 남지 않는다 (1.857875ms)
+✔ 앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리된다 (1.554917ms)
+✔ C01 inventory v1의 입력 hash·정체성·부분 범위를 고정한다 (4.237ms)
+✔ 안정 selector, node ID, feature ID를 검증한다 (0.437125ms)
+✔ 부분 인벤토리를 전체 지원 목록으로 오인할 수 없게 거부한다 (0.106ms)
+✔ CSSOM 속성 이름을 원문·종류별로 보존하고 결정적으로 정렬한다 (0.8535ms)
+✔ CSSOM 속성 목록이 비었거나 중복·잘못된 이름이면 거부한다 (0.235459ms)
+✔ 고정 환경·부분 범위·정렬된 이름 digest가 있는 snapshot을 받는다 (2.500083ms)
+✔ ID·분류·정렬·목록 수·digest가 달라진 snapshot을 거부한다 (0.744291ms)
+✔ 외부 환경 문자열이 reference 디렉터리 경로 구분자나 상위 경로가 되지 않는다 (0.149083ms)
+✔ 부분 inventory를 전체 CSS 지원으로 승격하거나 비교 경계를 흐리면 거부한다 (0.1705ms)
+✔ 외부 resource나 author stylesheet가 기준 fixture에 들어오면 거부한다 (0.099959ms)
+✔ Chromium·환경·fixture provenance가 빠지거나 달라지면 거부한다 (0.317417ms)
+✔ 고정 Chromium reference가 현재 fixture·캡처 코드와 일치하고 부분 property surface로 남는다 (5.750291ms)
+ℹ tests 412
+ℹ suites 0
+ℹ pass 412
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1127.036584
+$ node --test tools/benchmark/capture-android-physical-touch.test.mjs tools/benchmark/analyze-android-physical-touch-join.test.mjs
+✔ first limit contacts are scored; later drain contacts remain outside the scoring set (1.803834ms)
+✔ two simultaneous pointer slots remain two failed attempts and are not collapsed into taps (0.911375ms)
+✔ equal raw timestamps retain kernel line order when selecting the first scoring contact (0.181583ms)
+✔ duplicate ACTION_UP timestamps are ambiguous rather than joined by sequence order (0.154125ms)
+✔ stale surface generation and unusable fence do not count as completed joins (0.209042ms)
+✔ raw parser count mismatch is rejected before any result is emitted (0.218208ms)
+✔ different touchscreen source, host PID, or surviving collector blocks analysis (0.185334ms)
+✔ regressing raw clock is rejected instead of silently sorting corrupted events (0.1035ms)
+✔ clock bracket disagreement keeps the touch/fence join but withholds latency candidate (0.179292ms)
+✔ excluded app events are not falsely attributed to raw contacts without event timestamps (0.12875ms)
+✔ capture timestamps must be ordered and fit the fixed collection deadlines (0.095083ms)
+✔ request IDs are unique across stage logs and target frame sentinels agree (0.326959ms)
+✔ duplicate key-value fields and duplicate input device paths reject analysis (0.123541ms)
+✔ malformed process identity or timing policy is rejected before joining (0.110834ms)
+✔ getevent timestamp를 표현 해상도 그대로 nanosecond 정수로 바꾼다 (0.532375ms)
+✔ tracking ID down/up은 SYN_REPORT 뒤에만 완결 접촉으로 센다 (0.333708ms)
+✔ 슬롯별 멀티포인터와 겹침을 보존하고 잘못된 release를 숨기지 않는다 (0.0915ms)
+✔ 첫 raw contact가 오기 전 timeout과 접촉 후 timeout을 따로 계산한다 (0.061208ms)
+✔ 성공 capture gate는 정상 종료·접촉 수·완결 frame·오류 부재를 모두 요구한다 (0.062291ms)
+✔ 수집기 인자는 필수 provenance와 화면 확인을 요구한다 (0.486375ms)
+✔ ADB 기기 목록에 지정된 online 기기 하나만 허용한다 (0.136ms)
+✔ 입력 노드 경로·이름·direct 속성과 MT tracking capability를 모두 확인한다 (0.189833ms)
+✔ process 시작 시각은 괄호 안 command name의 공백을 보존해 계산한다 (0.086916ms)
+✔ 원격 getevent 잔존 검사는 절대 경로와 단독 명령을 찾고 비슷한 이름은 무시한다 (0.160125ms)
+✔ host collector는 identity가 그대로인 자체 PID에만 SIGINT→TERM→KILL을 보낸다 (0.130791ms)
+✔ host PID 재사용 의심 identity 변경이면 signal을 보내지 않는다 (0.1465ms)
+✔ SIGKILL 뒤 bounded wait가 끝나도 살아 있는 collector를 성공 처리하지 않는다 (0.149208ms)
+✔ 이미 종료한 child에는 불필요한 signal을 보내지 않는다 (0.072083ms)
+수집 시작 · GO 2026-10-14T02:37:59.617Z · 첫 raw 접촉 3초 대기 · 이후 3초 · 2개 접촉에서 자동 종료
+collector 종료 · 이유=contact_limit · raw contact groups=2
+수집 시작 · GO 2026-10-14T02:38:00.735Z · 첫 raw 접촉 1초 대기 · 이후 1초 · 2개 접촉에서 자동 종료
+✔ 가짜 ADB에서 두 stream 동시 수집, 접촉 제한 자동종료, manifest와 checksum을 확인한다 (3175.943584ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3216.051042
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s
+     Running unittests src/lib.rs (target/debug/deps/spinon_core-f5688794bbfb14df)
+
+running 37 tests
+test document::collection_tests::stale_plan_after_document_change_cannot_remove_any_node ... ok
+test document::reservation_tests::reserved_handle_is_not_a_node_until_creation_commits ... ok
+test document::collection_tests::invalid_roots_reject_the_whole_plan_without_mutating_the_document ... ok
+test document::reservation_tests::canceled_reservation_is_not_reused_or_created ... ok
+test document::collection_tests::cross_owner_edges_and_non_element_parents_fail_closed ... ok
+test document::tests::node_id_allocator_uses_the_last_nonzero_id_then_stops ... ok
+test document::tests::connected_attribute_and_state_changes_advance_render_revision_once ... ok
+test document::collection_tests::malformed_parent_child_root_and_cycle_graphs_fail_closed ... ok
+test document::tests::batches_preserve_mixed_owner_siblings_without_crossing_ownership ... ok
+test document::tests::no_op_and_empty_batches_do_not_advance_revisions ... ok
+test document::tests::owner_conflict_and_cycles_reject_the_whole_batch ... ok
+test document::collection_tests::host_root_keeps_its_tree_and_empty_root_set_reclaims_detached_subtrees ... ok
+test document::tests::direct_document_queries_match_the_immutable_snapshot ... ok
+test document::tests::insert_before_uses_final_order_and_invalid_references_are_atomic ... ok
+test document::tests::detached_changes_and_connected_changes_advance_separate_revisions ... ok
+test document::tests::revision_exhaustion_never_publishes_a_partial_candidate ... ok
+test document::tests::stale_generation_and_stale_revision_are_rejected ... ok
+test document::tests::utf16_surrogate_units_survive_text_and_text_content_reads ... ok
+test id::revision_tests::owner_revisions_increment_independently_and_fail_closed_at_capacity ... ok
+test document::tests::mixed_nodes_attributes_state_and_sibling_order_are_preserved ... ok
+test document::collection_tests::plan_is_read_only_and_commit_reclaims_only_unrooted_components ... ok
+test scheduler::tests::selects_highest_priority_and_preserves_fifo_within_each_priority ... ok
+test tree::tests::a_tree_cannot_commit_a_second_root ... ok
+test tree::tests::commits_ordered_tree_changes_as_one_revision ... ok
+test tree::tests::cyclic_move_fails_without_partial_changes ... ok
+test tree::tests::detached_nodes_are_rejected_at_the_final_validation_boundary ... ok
+test tree::tests::empty_batch_does_not_advance_revision ... ok
+test tree::tests::failed_batch_preserves_tree_revision_and_uncommitted_ids_can_be_retried ... ok
+test tree::tests::inserting_a_subtree_under_its_descendant_is_rejected_atomically ... ok
+test tree::tests::invalid_tag_fails_at_the_operation_that_created_it ... ok
+test tree::tests::move_uses_final_index_after_removing_the_node_from_its_old_position ... ok
+test tree::tests::node_id_cannot_be_recreated_after_removal_in_the_same_batch ... ok
+test tree::tests::removed_node_ids_cannot_be_reused_in_the_same_tree_lifetime ... ok
+test tree::tests::revision_overflow_rejects_the_whole_batch ... ok
+test tree::tests::removing_a_node_reports_and_removes_its_subtree_in_preorder ... ok
+test tree::tests::stale_revision_is_rejected_without_mutating_the_tree ... ok
+test tree::tests::zero_is_not_a_valid_node_id ... ok
+
+test result: ok. 37 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (target/debug/deps/spinon_ffi-a8258bb66a834db4)
+
+running 18 tests
+test runtime_layout::tests::layout_json_abi_rejects_invalid_pointers_and_capacity ... ok
+test runtime_session::tests::c_abi_memory_pressure_values_match_the_runtime_levels ... ok
+test runtime_session::tests::c_abi_priority_values_match_the_runtime_priorities ... ok
+test runtime_session::tests::report_copy_is_nul_terminated_and_rejects_short_buffers ... ok
+test runtime_ua_cascade::tests::abi_environment_preserves_valid_media_capabilities ... ok
+test runtime_ua_cascade::tests::abi_environment_rejects_unknown_flags_and_non_boolean_values ... ok
+test runtime_layout::tests::layout_json_uses_separate_schema_and_stable_failure_fields ... ok
+test runtime_layout::tests::layout_json_reports_css_pixels_and_ordered_frames ... ok
+test runtime_ua_cascade::tests::exact_capacity_copies_complete_json_and_terminator ... ok
+test runtime_ua_cascade::tests::completed_json_reports_cache_hit_without_changing_the_schema_version ... ok
+test runtime_ua_cascade::tests::failed_state_json_has_an_error_and_never_exposes_partial_roots ... ok
+test runtime_ua_cascade::tests::null_abi_inputs_have_documented_argument_status ... ok
+test runtime_ua_cascade::tests::output_short_buffer_contract_uses_nul_guard_and_capacity_status ... ok
+test runtime_ua_cascade::tests::state_json_always_has_stable_schema_and_no_implicit_request ... ok
+test runtime_ua_cascade::tests::extended_runtime_profile_keeps_legacy_ua_property_shape ... ok
+test tests::embedded_ua_stylesheet_ffi_returns_stable_read_only_bytes ... ok
+test tests::shutdown_probe_rejects_each_invalid_output_shape_before_starting_a_runtime ... ok
+test tests::taffy_experiment_is_excluded_from_default_builds ... ok
+
+test result: ok. 18 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-0fb2ccf156689044)
+
+running 117 tests
+test compact_taffy_style::tests::grid_style_projection_is_smaller_than_taffy_style ... ok
+test css_math::tests::css_non_finite_intermediates_are_censored_only_after_evaluation ... ok
+test css_math::tests::non_finite_percentage_is_still_classified_as_percentage ... ok
+test css_math::tests::invalid_math_dimensions_and_resource_limits_still_fail ... ok
+test absolute_position_tests::absolute_percentage_height_rejects_an_indefinite_owner_height ... ok
+test fixed_position_tests::fixed_static_position_and_fixed_root_fail_closed ... ok
+test flex_auto_margin::tests::corrects_negative_column_cross_start_margin ... ok
+test flex_auto_margin::tests::corrects_negative_row_cross_start_margin ... ok
+test fixed_position_tests::fixed_percentages_use_viewport_axes_instead_of_source_parent_size ... ok
+test flex_auto_margin::tests::does_not_correct_end_main_axis_or_nonnegative_margins ... ok
+test absolute_position_tests::positioned_owner_padding_edge_is_the_absolute_origin ... ok
+test absolute_position_tests::hidden_absolute_subtree_is_not_promoted_to_the_viewport ... ok
+test absolute_position_tests::absolute_ancestor_establishes_the_nested_containing_block ... ok
+test absolute_position_tests::automatic_insets_retain_static_position_when_source_parent_differs_from_owner ... ok
+test fixed_position_tests::hidden_fixed_subtree_is_not_promoted_to_viewport_root ... ok
+test absolute_position_tests::absolute_percentages_use_positioned_owner_instead_of_source_parent ... ok
+test absolute_position_tests::viewport_absolute_box_leaves_normal_flow_unchanged ... ok
+test fixed_position_tests::fixed_descendants_use_viewport_while_absolute_descendants_use_fixed_box ... ok
+test grid::auto_placement_tests::implicit_track_cap_is_checked_before_expanding_rows ... ok
+test flex_auto_margin::tests::full_layout_corrects_overflowing_cross_axis_auto_margins ... ok
+test grid::auto_placement_tests::implicit_rows_repeat_fixed_track_size_and_keep_row_gap ... ok
+test grid::auto_placement_tests::auto_placed_intrinsic_item_size_is_rejected_and_next_layout_recovers ... ok
+test grid::auto_placement_tests::implicit_auto_sizing_and_explicit_column_overflow_fail_closed ... ok
+test grid::auto_placement_tests::column_locked_items_wrap_to_the_next_row_when_cursor_column_decreases ... ok
+test grid::dense_column_tests::column_flow_expands_positive_implicit_columns_with_fixed_auto_size ... ok
+test grid::auto_placement_tests::sparse_placement_normalizes_reversed_equal_and_negative_lines ... ok
+test grid::dense_column_tests::grid_auto_columns_auto_rejects_when_an_implicit_column_is_needed ... ok
+test grid::tests::auto_flow_outside_c11_1_fails_closed_before_taffy ... ok
+test grid::dense_column_tests::row_flow_expands_positive_implicit_rows_with_fixed_auto_size ... ok
+test grid::dense_column_tests::row_dense_fills_previous_hole_while_sparse_keeps_cursor_order ... ok
+test grid::tests::definite_length_fraction_and_gap_tracks_auto_place_in_source_order ... ok
+test grid::tests::empty_grid_uses_explicit_tracks_without_creating_items ... ok
+test grid::tests::grid_layout_preserves_child_flex_dispatch ... ok
+test grid::tests::hidden_explicit_item_does_not_disable_implicit_track_rejection_for_visible_auto_items ... ok
+test grid::dense_column_tests::column_dense_fills_previous_hole_and_column_sparse_keeps_cursor_order ... ok
+test grid::tests::hidden_grid_child_does_not_trigger_validation_for_unsupported_placement ... ok
+test grid::dense_column_tests::dense_column_expanded_column_reservation_failure_returns_error_and_recovers_on_same_worker ... ok
+test grid::tests::nonzero_grid_item_order_fails_closed_before_taffy ... ok
+test grid::tests::grid_track_count_above_taffy_limit_fails_instead_of_being_truncated ... ok
+test grid::tests::nested_grid_containers_classify_auto_and_explicit_items_independently ... ok
+test grid::auto_placement_tests::actual_grid_vec_reservation_failures_return_errors_and_recover_on_the_same_worker ... ok
+test grid::tests::percentage_tracks_use_the_definite_grid_content_axes ... ok
+test grid_placement::tests::positive_and_negative_lines_resolve_from_explicit_grid_edges ... ok
+test grid_placement::tests::positive_spans_resolve_from_either_definite_endpoint ... ok
+test grid_placement::tests::reversed_lines_swap_and_equal_lines_fail_closed ... ok
+test grid_placement::tests::zero_negative_span_auto_mixture_and_overflowing_ranges_fail_closed ... ok
+test grid::tests::template_area_mode_stretches_definite_auto_sized_items_without_widening_dense_mode ... ok
+test grid::auto_placement_tests::row_sparse_cursor_does_not_backfill_a_hole_and_respects_spans ... ok
+test host_document::tests::host_document_input_preserves_distinct_document_and_render_revisions ... ok
+test positioning::tests::nearest_relative_owner_is_inherited_and_hidden_boxes_have_no_owner ... ok
+test host_document::tests::host_document_input_rejects_missing_styles_text_and_non_root_elements ... ok
+test positioning_tests::absolute_layout_root_fails_closed_before_a_partial_frame_map_exists ... ok
+test host_document::tests::host_document_projection_matches_legacy_tree_and_taffy_frames ... ok
+test positioning_tests::malformed_position_inputs_fail_closed_before_frame_publication ... ok
+test positioning_tests::block_wrapper_absolute_child_keeps_explicit_insets_with_flex_owner ... ok
+test positioning_tests::relative_layout_root_uses_the_viewport_as_its_percentage_basis ... ok
+test host_document::tests::display_box_sizing_and_flex_shrink_reach_taffy ... ok
+test positioning_tests::absolute_child_of_flex_source_parent_uses_explicit_insets_without_joining_flow ... ok
+test grid::auto_placement_tests::mixed_definite_and_auto_items_place_definite_items_first ... ok
+test positioning_tests::relative_percentage_insets_use_the_containing_block_axis ... ok
+test tests::aspect_ratio_preserves_two_definite_block_sizes ... ok
+test tests::border::negative_and_nonfinite_border_widths_fail_before_taffy ... ok
+test tests::border::border_width_is_included_in_content_and_border_box_geometry ... ok
+test positioning_tests::relative_flex_item_moves_visually_without_moving_its_sibling ... ok
+test positioning_tests::static_insets_are_ignored_and_nested_relative_offsets_propagate_once ... ok
+test tests::duplicate_ids_and_invalid_styles_are_rejected ... ok
+test tests::flex_baseline::ambiguous_negative_main_margin_fails_closed ... ok
+test tests::flex_baseline::display_none_baseline_container_does_not_reject_its_hidden_auto_sized_subtree ... ok
+test tests::flex_baseline::rtl_baseline_fails_closed_instead_of_reusing_ltr_geometry ... ok
+test tests::flex_baseline::zero_main_size_items_that_exactly_fit_share_one_baseline_line ... ok
+test tests::flex_baseline::first_baseline_content_alignment_rejects_auto_sized_items ... ok
+test tests::flex_baseline::positive_main_gap_can_wrap_zero_size_items_at_the_same_main_coordinate ... ok
+test tests::fractional_dimensions_are_not_rounded_by_the_layout_engine ... ok
+test tests::fractional_flex_distribution_matches_chromium_without_integer_rounding ... ok
+test tests::input_snapshot_reads_the_core_tree_and_keeps_child_order ... ok
+test tests::invalid_inputs::negative_and_non_finite_min_max_sizes_are_rejected_before_taffy ... ok
+test tests::invalid_inputs::invalid_viewport_root_and_graph_are_rejected_before_layout ... ok
+test tests::legacy_oracle::legacy_tree::tests::failed_event_can_restore_tree_snapshot ... ok
+test tests::invalid_inputs::nonpositive_and_nonfinite_aspect_ratios_are_rejected_before_taffy ... ok
+test tests::legacy_oracle::legacy_tree::tests::invalid_ids_and_parents_leave_tree_unchanged ... ok
+test tests::legacy_oracle::legacy_tree::tests::nested_order_gap_and_flex_layout ... ok
+test tests::legacy_oracle::legacy_tree::tests::overfull_and_extreme_dimensions_do_not_panic ... ok
+test tests::legacy_oracle::legacy_tree::tests::subtree_deletion_and_id_reuse ... ok
+test tests::margin::negative_margin_reaches_taffy_and_non_finite_margin_is_rejected ... ok
+test tests::percentage_spacing::block_formatting_root_flow_root_uses_viewport_width_as_definite_basis ... ok
+test grid::dense_column_tests::automatic_column_span_at_10000_tracks_succeeds_and_10001_fails_closed ... ok
+test tests::percentage_spacing::childless_flow_root_uses_the_leaf_layout_path ... ok
+test tests::percentage_spacing::finite_percentage_that_overflows_geometry_is_rejected_before_commit ... ok
+test tests::percentage_spacing::flow_root_containing_block_keeps_nested_auto_block_width_definite ... ok
+test tests::percentage_spacing::percentage_edges_with_unprovable_containing_width_fail_closed ... ok
+test tests::percentage_spacing::non_finite_spacing_and_negative_padding_or_gap_fail_with_the_property ... ok
+test tests::percentage_spacing::root_gap_percentage_is_rejected_before_taffy_resolution ... ok
+test tests::percentages::cyclic_column_gap_fails_with_node_property_and_axis ... ok
+test tests::flex_reverse::reference_covers_reverse_shorthand_override_and_wrap_boundaries ... ok
+test tests::percentages::percentage_dimensions_reject_negative_and_non_finite_values_but_allow_overflow ... ok
+test tests::percentages::percentage_dimensions_resolve_against_parent_content_box_without_clamping ... ok
+test tests::percentages::percentage_gap_uses_the_definite_main_axis_content_size ... ok
+test tests::percentages::viewport_resolving_root_accepts_full_and_partial_percentage_dimensions ... ok
+test tests::percentages::percentage_margin_and_padding_keep_the_containing_block_width_basis ... ok
+test tests::percentages::percentage_flex_basis_uses_the_container_main_axis ... ok
+test tests::rtl_row_preserves_dom_child_order_while_starting_at_the_right ... ok
+test tests::typed_math::dimension_error_discards_the_entire_layout_result ... ok
+test tests::taffy_matches_the_preserved_small_engine_on_the_shared_fixture ... ok
+test tests::taffy_matches_the_browser_reference_fixture ... ok
+test tests::typed_math::duplicate_math_ids_fail_before_taffy_callback ... ok
+test tests::typed_math::every_min_max_math_dimension_requires_a_property_matched_binding ... ok
+test tests::typed_math::mismatched_math_owner_and_property_fail_before_taffy_callback ... ok
+test tests::typed_math::non_finite_css_math_intermediate_is_censored_before_a_frame_is_returned ... ok
+test tests::typed_math::unknown_taffy_handle_is_recorded_instead_of_dereferenced ... ok
+test tests::flex_order::order_modified_layout_matches_every_chromium_node_and_keeps_source_children ... ok
+test tests::flex_reverse::flex_reverse_layout_matches_every_chromium_node_at_both_device_scale_factors ... ok
+test tests::flex_reverse::reverse_geometry_keeps_source_child_vectors_unchanged ... ok
+test tests::flex_distribution::invalid_flex_distribution_factors_fail_with_node_and_property_context ... ok
+test tests::flex_distribution::taffy_matches_all_c102_chromium_flex_distribution_cases ... ok
+test tests::legacy_oracle::legacy_tree::tests::one_thousand_nodes_can_be_laid_out_and_removed ... ok
+test depth_tests::depth_limit_does_not_reject_a_wide_tree_with_the_same_node_count ... ok
+test depth_tests::direct_layout_rejects_the_first_node_past_the_depth_limit_before_taffy ... ok
+
+test result: ok. 117 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s
+
+     Running unittests src/lib.rs (target/debug/deps/spinon_render-2ebea6caa01801d2)
+
+running 9 tests
+test tests::css_sizes_and_frames_reject_non_finite_or_negative_dimensions ... ok
+test tests::hit_test_rejects_non_finite_points ... ok
+test runtime::tests::runtime_scene_keeps_complete_key_dom_order_and_transparent_nodes ... ok
+test tests::hit_test_uses_last_painted_box_and_half_open_edges ... ok
+test runtime::tests::runtime_scene_accepts_empty_and_rejects_duplicate_or_reordered_nodes ... ok
+test tests::static_snapshot_requires_unique_nodes_and_contiguous_paint_order ... ok
+test tests::static_snapshot_rejects_an_empty_scene ... ok
+test runtime::tests::document_revision_rebinding_preserves_shared_box_storage ... ok
+test runtime::tests::document_revision_rebinding_rejects_other_generations_and_connected_trees ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (target/debug/deps/spinon_render_wgpu-2f3a495084903da9)
+
+running 15 tests
+test renderer::surface_readback::tests::accepts_only_eight_bit_rgba_and_bgra_formats ... ok
+test renderer::surface_readback::tests::decodes_rgba_and_bgra_without_changing_alpha ... ok
+test geometry::tests::geometry_preserves_css_edges_and_skips_transparent_paint ... ok
+test geometry::tests::geometry_keeps_srgb_encoded_values_for_unorm_surface_formats ... ok
+test renderer::surface_readback::tests::validates_sample_batch_boundaries_and_drawable_coordinates ... ok
+test geometry::tests::geometry_rejects_zero_sized_surface ... ok
+test renderer::tests::color_transfer_matches_surface_texture_format ... ok
+test renderer::tests::backend_override_rejects_unknown_values ... ok
+test renderer::tests::android_auto_backend_tries_vulkan_then_gles_sequentially ... ok
+test renderer::tests::surface_falls_back_to_unorm_when_it_supports_srgb_color_space ... ok
+test renderer::tests::surface_prefers_rgba_srgb_when_both_supported ... ok
+test renderer::tests::surface_prefers_srgb_texture_format_before_unorm_fallback ... ok
+test renderer::tests::surface_rejects_unorm_format_without_srgb_color_space ... ok
+test renderer::tests::surface_uses_bgra_srgb_as_fallback ... ok
+test renderer::tests::surface_uses_rgba_unorm_as_android_style_fallback ... ok
+
+test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/runtime_stacking.rs (target/debug/deps/runtime_stacking-b0a2478e9337ed11)
+
+running 3 tests
+test macos::stacking_context_order_matches_gpu_overlap_pixels ... ok
+test macos::wpt_derived_stacking_cases_match_offscreen_pixels ... ok
+test macos::reverse_flex_paint_matches_all_pinned_chrome_overlap_pixels ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.22s
+
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-7d22150afdb46e2d)
+
+running 142 tests
+test host::document::callback_tests::ffi_error_message_truncation_keeps_utf8_and_nul_termination ... ok
+test host::document::callback_tests::namespace_and_attribute_names_reject_unpaired_utf16_before_commit ... ok
+test host::document::callback_tests::ffi_rejects_nonzero_string_length_with_a_null_pointer ... ok
+test host::document::collection_tests::batch_cannot_issue_a_lower_facade_id_after_a_higher_one ... ok
+test host::document::callback_tests::ffi_callback_decodes_utf16_and_writes_a_complete_receipt ... ok
+test host::document::callback_tests::operation_kinds_without_values_do_not_require_non_null_utf16_pointers ... ok
+test host::document::collection_tests::exhausted_facade_id_space_stays_closed_after_collection ... ok
+test host::document::collection_tests::collection_rejects_broken_reverse_indexes_before_removing_core_nodes ... ok
+test host::document::collection_tests::ffi_collection_callback_reports_capacity_before_rejecting_null_output ... ok
+test host::document::collection_tests::ffi_collection_callback_rejects_invalid_pointers_without_mutating_document ... ok
+test host::document::collection_tests::collection_rejects_bad_roots_and_broken_bridge_accounting_before_mutation ... ok
+test host::document::collection_tests::ffi_collection_callback_fails_closed_then_returns_reclaimed_facade_ids ... ok
+test host::document::lifecycle_contract_tests::s032_resource_budgets_match_the_s033_contract_fixture ... ok
+test host::document::collection_tests::failed_creation_burns_reserved_id_and_pending_reservation_is_bounded ... ok
+test host::document::collection_tests::stale_handle_after_collection_fails_closed_and_facade_ids_keep_advancing ... ok
+test host::document::collection_tests::product_collector_matches_fixed_lifecycle_fixture_and_frees_string_accounting ... ok
+test host::document::limit_tests::oversized_batches_fail_before_allocating_handles ... ok
+test host::document::limit_tests::exact_name_limit_is_accepted ... ok
+test host::document::query::tests::committed_document_queries_return_utf16_and_stable_external_ids ... ok
+test host::document::query::tests::invalid_query_does_not_read_or_write_unchecked_buffers ... ok
+test host::document::query::tests::next_id_query_reserves_ids_and_enforces_pending_limit ... ok
+test host::document::tests::failed_core_commit_cancels_every_new_reservation ... ok
+test host::document::tests::detached_nodes_keep_their_identity_and_can_be_reinserted ... ok
+test host::document::tests::independent_bridges_keep_identical_external_ids_isolated ... ok
+test host::document::tests::insert_move_remove_and_attribute_operations_keep_final_tree_order ... ok
+test host::document::tests::invalid_external_ids_and_forward_references_leave_every_document_unchanged ... ok
+test host::document::tests::no_op_and_empty_batches_do_not_advance_revisions ... ok
+test host::document::limit_tests::exact_operation_limit_is_accepted ... ok
+test host::document::tests::rejected_last_operation_rolls_back_nodes_handles_and_revisions ... ok
+test host::document::tests::successful_batch_matches_direct_host_document_commit ... ok
+test host::document::tests::utf16_text_values_preserve_unpaired_surrogates ... ok
+test session::priority_probe::stream::tests::accepts_new_high_priority_work_before_older_background_work ... ok
+test session::priority_probe::stream::tests::rejects_a_zero_owner_thread_id ... ok
+test session::priority_probe::stream::tests::rejects_background_work_that_runs_before_later_high_priority_work ... ok
+test session::priority_probe::stream::tests::rejects_callback_execution_on_a_different_owner_thread ... ok
+test session::priority_probe::stream::tests::rejects_gaps_in_high_priority_execution_order ... ok
+test session::priority_probe::stream::tests::rejects_high_priority_fifo_inversion ... ok
+test session::priority_probe::stream::tests::rejects_missing_high_priority_work ... ok
+test session::priority_probe::stream::tests::rejects_unexpected_first_execution_order ... ok
+test session::tests::bounded_scheduler_selects_priority_then_fifo_and_drains_on_stop ... ok
+test session::shutdown::tests::worker_panic_rejects_pending_commands_and_clears_stale_runtime_state ... ok
+test session::shutdown::tests::idle_shutdown_releases_the_runtime_and_rejects_later_calls ... ok
+test session::tests::report_exposes_caller_owner_callback_threads_and_timings ... ok
+test session::tests::memory_pressure_levels_reach_the_runtime_and_closed_sessions_reject_them ... ok
+test session::tests::persistent_session_keeps_owner_and_callbacks_on_one_worker ... ok
+test host::document::callback_tests::ffi_aggregate_utf16_limit_rejects_before_document_commit ... ok
+test host::document::limit_tests::aggregate_utf16_limit_rejects_before_reserving_any_node ... ok
+test host::document::tests::per_field_string_limits_fail_before_node_reservation ... ok
+test session::ua_cascade::author_stylesheets_edge_tests::stylesheet_text_uses_connected_descendant_order_without_added_separators ... ok
+test session::ua_cascade::author_stylesheets_edge_tests::import_diagnostic_fails_layout_and_gpu_profiles_without_fetching ... ok
+test host::document::limit_tests::exact_utf16_value_limit_is_accepted ... ok
+test session::ua_cascade::author_stylesheets_tests::collector_keeps_connected_dom_order_and_ignores_non_css_style_data_blocks ... ok
+test session::ua_cascade::author_stylesheets_tests::collector_rejects_unpaired_utf16_in_css_text ... ok
+test session::shutdown::tests::shutdown_cancels_active_eval_rejects_queued_work_and_joins_owner ... ok
+test session::ua_cascade::author_stylesheets_tests::collector_rejects_unsupported_media_svg_style_and_external_stylesheet_links ... ok
+test session::ua_cascade::author_stylesheets_edge_tests::author_style_in_one_host_root_is_available_to_every_root_cascade ... ok
+test session::ua_cascade::block_formatting_flow_root_tests::c093_flow_root_is_accepted_from_author_stylesheet ... ok
+test session::tests::cancel_interrupts_active_call_and_session_accepts_next_call ... ok
+test session::ua_cascade::author_stylesheets_tests::runtime_author_css_matches_pinned_chromium_values_geometry_and_paint ... ok
+test session::ua_cascade::author_stylesheets_edge_tests::author_rule_revealing_style_text_remains_a_layout_error ... ok
+test session::ua_cascade::author_stylesheets_tests::runtime_rejects_author_stylesheet_parse_diagnostics_before_layout_or_paint ... ok
+test session::shutdown::tests::submit_and_multiple_close_race_never_leaves_a_caller_waiting ... ok
+test session::ua_cascade::block_formatting_tests::c091_root_auto_margins_are_resolved_inside_the_viewport_containing_block ... ok
+test session::ua_cascade::block_formatting_flow_root_tests::flow_root_still_rejects_unimplemented_display_values ... ok
+test session::ua_cascade::author_stylesheets_tests::runtime_omits_style_text_but_still_rejects_visible_text ... ok
+test session::ua_cascade::block_paint_tests::block_profile_cascades_supported_author_stylesheet_rules_into_the_scene ... ok
+test session::ua_cascade::author_stylesheets_tests::stylesheet_text_move_detach_and_reinsert_use_the_current_document_order ... ok
+test session::ua_cascade::block_paint_tests::block_profile_accepts_hidden_root_and_omits_its_scene ... ok
+test session::ua_cascade::block_paint_tests::block_profile_does_not_publish_a_scene_after_stylesheet_parse_diagnostics ... ok
+test session::ua_cascade::block_paint_tests::block_profile_matches_chromium_flow_frames_and_paint_order ... ok
+test host::document::limit_tests::ffi_quota_failure_keeps_the_dom_exception_status_and_document_unchanged ... ok
+test host::document::collection_tests::reclaimed_node_and_string_quota_can_be_used_again ... ok
+test session::ua_cascade::block_paint_tests::block_profile_omits_zero_area_boxes_without_turning_layout_into_an_error ... ok
+test session::tests::bounded_queue_rejects_overflow_and_drains_after_cancellation ... ok
+test session::ua_cascade::cache_benchmark::c05_runtime_result_cache_release_benchmark ... ignored, release-only C05.3 worker latency benchmark
+test session::ua_cascade::block_paint_tests::block_profile_preserves_inherited_foreground_and_font_values ... ok
+test session::ua_cascade::block_paint_tests::block_profile_rejects_unsupported_author_stylesheet_properties ... ok
+test session::ua_cascade::block_paint_tests::block_profile_rejects_partial_alpha_without_publishing_a_scene ... ok
+test session::ua_cascade::block_paint_tests::block_profile_rejects_a_stale_requested_style_revision ... ok
+test session::ua_cascade::cache_tests::cache_key_tests::cache_key_uses_exact_viewport_bits_and_all_media_inputs ... ok
+test session::ua_cascade::block_paint_tests::block_profile_rejects_visible_text_and_omits_hidden_text ... ok
+test session::ua_cascade::block_paint_tests::block_profile_rejects_flex_display_and_unsupported_inline_properties ... ok
+test session::ua_cascade::incremental_benchmark::c05_runtime_incremental_restyle_release_benchmark ... ignored, release-only C05.4 full-vs-incremental runtime benchmark
+test session::tests::session_executes_pending_commands_by_priority_and_fifo ... ok
+test session::ua_cascade::invalidation_runtime_tests::pending_requests_keep_the_earliest_contiguous_baseline_and_reject_gaps ... ok
+test host::document::limit_tests::replacement_reclaims_old_text_usage_and_document_budget_rolls_back ... ok
+test session::ua_cascade::invalidation_runtime_tests::connected_author_stylesheet_forces_full_cascade_after_inline_style_change ... ok
+test session::ua_cascade::invalidation_runtime_tests::runtime_calculation_reuses_only_the_changed_inline_style_subtree ... ok
+test session::ua_cascade::invalidation_tests::a_text_mutation_and_an_unavailable_baseline_force_full_recalculation ... ok
+test session::ua_cascade::invalidation_tests::a_style_change_dirties_only_the_changed_element_subtree ... ok
+test session::ua_cascade::cache_tests::an_empty_connected_scene_can_reuse_after_detached_document_mutation ... ok
+test session::ua_cascade::invalidation_tests::changing_tree_order_forces_a_full_recalculation ... ok
+test session::ua_cascade::invalidation_tests::ambiguous_html_style_attributes_force_a_full_recalculation ... ok
+test session::ua_cascade::invalidation_tests::detached_mutation_does_not_dirty_the_connected_style_tree ... ok
+test session::ua_cascade::invalidation_tests::html_style_name_case_change_with_same_value_is_unstyled_equivalent ... ok
+test session::ua_cascade::invalidation_tests::detached_revision_changes_can_be_composed_without_retaining_the_first_snapshot ... ok
+test session::ua_cascade::invalidation_tests::non_style_attribute_change_forces_a_full_recalculation ... ok
+test session::ua_cascade::invalidation_runtime_tests::removing_inline_style_reuses_only_the_changed_subtree_and_matches_full_cascade ... ok
+test session::ua_cascade::invalidation_tests::overlapping_style_changes_keep_only_the_outer_dirty_root ... ok
+test session::ua_cascade::invalidation_tests::separate_changed_branches_keep_separate_dirty_roots ... ok
+test session::ua_cascade::registered_properties_tests::c0410_runtime_gpu_profile_rejects_registered_properties ... ok
+test session::ua_cascade::cache_tests::an_error_result_does_not_become_a_reusable_cache_entry ... ok
+test session::ua_cascade::cache_tests::failed_layout_is_never_cached ... ok
+test session::ua_cascade::runtime_layout::tests::grid_auto_placement_rejections_keep_stable_codes_and_css_properties ... ok
+test session::ua_cascade::runtime_layout::tests::render_snapshot_failure_keeps_node_and_unsupported_property_diagnostic ... ok
+test session::ua_cascade::runtime_layout::tests::runtime_frames_reject_non_finite_coordinates_and_negative_sizes ... ok
+test session::ua_cascade::tests::elapsed_microseconds_rounds_sub_microsecond_durations_up ... ok
+test session::ua_cascade::registered_properties_tests::host_document_styles_feed_registered_properties_into_taffy_and_wgpu ... ok
+test session::ua_cascade::tests::all_host_root_elements_are_computed_as_independent_roots ... ok
+test session::ua_cascade::block_formatting_tests::c091_profile_rejects_other_formatting_models_and_unimplemented_positioning ... ok
+test session::ua_cascade::cache_tests::viewport_media_generation_and_float_bits_are_part_of_the_cache_key ... ok
+test session::ua_cascade::cache_tests::a_stale_in_flight_result_does_not_seed_the_cache ... ok
+test session::ua_cascade::registered_properties_tests::registered_property_in_one_host_root_applies_to_every_root_cascade ... ok
+test session::ua_cascade::invalidation_runtime_tests::worker_publishes_subtree_metrics_only_for_latest_style_revision ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::c1121_explicit_grid_placement_publishes_line_and_span_frames ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::c1121_overlapping_items_keep_dom_order_in_paint_snapshot ... ok
+test session::ua_cascade::tests::runtime_layout_tests::depth_tests::configured_runtime_worker_lays_out_the_maximum_supported_runtime_mount_depth ... ignored, 1024-depth runtime-worker stack validation runs in the optimized profile
+test session::ua_cascade::tests::inline_style_attribute_overrides_ua_and_preserves_parser_diagnostics ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::c1121_runtime_profile_rejects_mixed_auto_placement ... ok
+test session::ua_cascade::tests::identical_environment_keeps_revision_and_does_not_clear_completed_result ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::c11_grid_profile_publishes_taffy_frames_and_ordered_paint_boxes ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c124_profile_rejects_opacity_context_before_publishing_a_render_snapshot ... ok
+test session::ua_cascade::tests::runtime_layout_tests::stale_completion_cannot_replace_a_newer_requested_key ... ok
+test session::ua_cascade::tests::invalid_environment_preserves_the_last_valid_revision_and_result ... ok
+test session::ua_cascade::tests::no_environment_means_no_implicit_desktop_calculation ... ok
+test session::ua_cascade::tests::runtime_layout_tests::direct_text_root_fails_the_whole_request_instead_of_returning_partial_roots ... ok
+test session::ua_cascade::tests::runtime_layout_tests::recoverable_inline_parse_diagnostics_do_not_discard_layout ... ok
+test session::ua_cascade::tests::runtime_layout_tests::text_inside_element_fails_layout_without_discarding_computed_style ... ok
+test session::ua_cascade::tests::worker_failure_is_terminal_for_environment_updates_but_not_session_state ... ok
+test session::ua_cascade::tests::runtime_layout_tests::runtime_layout_frames_follow_dom_order_not_node_id_order ... ok
+test session::ua_cascade::tests::runtime_layout_tests::runtime_gpu_profile_keeps_background_paint_out_of_the_legacy_layout_contract ... ok
+test session::ua_cascade::cache_tests::detached_only_changes_reuse_and_rekey_the_immutable_runtime_result ... ok
+test session::ua_cascade::tests::worker_panic_is_caught_and_transitions_the_latest_request_to_failed ... ok
+test session::ua_cascade::tests::runtime_layout_tests::unsupported_layout_style_does_not_fail_the_ua_cascade_snapshot ... ok
+test session::ua_cascade::block_formatting_flow_root_tests::c093_flow_root_matches_pinned_chromium_for_all_cases_and_dpr_values ... ok
+test session::ua_cascade::tests::custom_properties_tests::runtime_recalculates_custom_property_inheritance_after_update_move_detach_and_reinsert ... ok
+test session::ua_cascade::registered_properties_tests::registration_rebuilds_after_style_text_update_move_and_detach ... ok
+test session::ua_cascade::block_formatting_tests::c091_block_flow_and_containing_block_match_pinned_chromium_for_all_cases ... ok
+test session::ua_cascade::block_formatting_tests::c092_margin_collapse_matches_pinned_chromium_for_all_cases ... ok
+test session::ua_cascade::tests::runtime_layout_tests::depth_tests::over_limit_runtime_tree_fails_before_cascade_and_worker_recovers_on_shallow_revision ... ok
+test host::document::limit_tests::runtime_document_grows_past_the_former_node_limit_and_collects_all ... ok
+test host::document::collection_tests::ffi_collection_callback_accepts_more_than_the_former_root_limit_and_retries_output ... ok
+
+test result: ok. 139 passed; 0 failed; 3 ignored; 0 measured; 0 filtered out; finished in 0.48s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-6d1f3621e46522e8)
+
+running 3 tests
+test weighted_round_robin_skips_empty_classes_and_keeps_its_cycle_position ... ok
+test aging_with_an_interval_longer_than_the_horizon_is_a_starvation_negative_control ... ok
+test compares_starvation_and_service_shares_under_identical_sustained_arrivals ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-315e2f5c0060083a)
+
+running 16 tests
+test external_root_token_exhaustion_does_not_wrap_or_reuse_a_token ... ok
+test exhausted_facade_id_space_stays_closed_after_its_last_node_is_swept ... ok
+test detached_nodes_and_strings_remain_resident_until_successful_scan_and_sweep ... ok
+test facade_ids_are_monotonic_even_when_a_reserved_creation_fails ... ok
+test failed_sweep_preserves_nodes_weak_registry_roots_and_accounting ... ok
+test failed_node_or_wrapper_preparation_publishes_no_partial_create ... ok
+test live_weak_wrapper_keeps_its_canonical_identity_and_component ... ok
+test external_root_keeps_component_after_wrapper_reset_until_lease_release ... ok
+test s032_resource_budgets_match_the_contract_fixture ... ok
+test reset_handle_can_be_replaced_before_the_next_safe_point ... ok
+test owner_mismatch_non_safe_point_and_scan_failure_preserve_state ... ok
+test invalid_external_root_defers_the_entire_collection ... ok
+test malformed_parent_graphs_and_registry_entries_defer_without_mutation ... ok
+test tree_fixture_expectations_match_the_contract_oracle ... ok
+test external_root_capacity_applies_backpressure_without_reusing_tokens ... ok
+test external_root_limit_defers_before_marking ... ok
+
+test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running unittests src/lib.rs (target/debug/deps/spinon_style-0ec0d3b1f81e267c)
+
+running 133 tests
+test c10_flex_baseline_css::tests::escaped_identifiers_are_invalidated_without_changing_source_offsets ... ok
+test c10_flex_baseline_css::tests::stylesheet_filter_walks_grouping_rules_without_touching_strings_or_comments ... ok
+test c10_flex_baseline_css::tests::inline_invalid_values_keep_the_previous_declaration_and_important_priority ... ok
+test c10_flex_baseline_css::tests::unrelated_properties_and_values_are_byte_for_byte_stable ... ok
+test container_relative_units::tests::ignores_comments_strings_and_unit_like_identifiers ... ok
+test font_relative_units::tests::ignores_non_metric_lengths_comments_and_strings ... ok
+test c10_flex_baseline_css::tests::excessive_nesting_does_not_partially_rewrite_the_source ... ok
+test container_relative_units::tests::malformed_token_stream_fails_closed ... ok
+test opaque_css_srgb::tests::encoded_srgb_bytes_are_preserved ... ok
+test font_relative_units::tests::finds_metric_units_in_declarations_custom_properties_and_nested_blocks ... ok
+test opaque_css_srgb::tests::transparency_is_rejected ... ok
+test font_relative_units::tests::malformed_token_stream_fails_closed ... ok
+test container_relative_units::tests::finds_container_units_in_declarations_and_nested_custom_properties ... ok
+test s04_color_syntax::tests::ignores_comments_and_non_color_values_while_scanning ... ok
+test s04_color_syntax::tests::permits_only_opaque_six_digit_hex_background_colors ... ok
+test stylesheet_registry::tests::invalid_or_duplicate_registration_does_not_mutate_registry ... ok
+test stylesheet_registry::tests::import_without_a_loader_is_diagnosed_instead_of_requested ... ok
+test stylesheet_registry::tests::parser_errors_keep_source_location_and_valid_sheets_are_registered ... ok
+test stylesheet_registry::tests::append_preserves_source_order_and_stylo_origin ... ok
+test stylesheet_registry::raw_style::tests::declaration_sources_track_nested_rules_and_utf16_locations ... ok
+test stylo_dom::cascade::custom_properties_tests::runtime_custom_property_allowlist_does_not_allow_unrelated_css_properties ... ok
+test stylo_dom::cascade::container_relative_units_tests::container_units_in_inline_custom_properties_and_fallbacks_fail_closed ... ok
+test stylo_dom::cascade::custom_properties_tests::runtime_custom_properties_feed_existing_shorthand_and_paint_profiles ... ok
+test stylo_dom::cascade::custom_properties_tests::runtime_custom_properties_follow_cycle_empty_invalid_and_important_rules ... ok
+test stylo_dom::cascade::container_relative_units_tests::every_container_relative_unit_fails_closed_in_stylesheets ... ok
+test stylo_dom::cascade::font_relative_units_tests::metric_unit_scanning_is_limited_to_runtime_layout_profiles ... ok
+test stylo_dom::cascade::font_relative_units_tests::metric_units_fail_closed_in_inline_and_stylesheet_custom_property_fallbacks ... ok
+test stylo_dom::cascade::incremental::border::tests::none_and_hidden_suppress_only_their_used_border_width ... ok
+test stylo_dom::cascade::incremental::dimensions::tests::preserves_computed_size_percentages_as_fractions ... ok
+test stylo_dom::cascade::incremental::dimensions::tests::preserves_lengths_and_rejects_calc_for_the_c06_1_bridge ... ok
+test stylo_dom::cascade::incremental::grid::tests::track_reservation_failure_keeps_node_and_property_context ... ok
+test stylo_dom::cascade::incremental::spacing::tests::keeps_padding_and_gap_typed_values_and_normal_keyword ... ok
+test stylo_dom::cascade::font_relative_units_tests::synthetic_document_root_drives_rem_and_body_inheritance_drives_em ... ok
+test stylo_dom::cascade::font_relative_units_tests::synthetic_body_inherits_direction_and_custom_properties_into_the_mount ... ok
+test stylo_dom::cascade::incremental::spacing::tests::keeps_signed_margin_percentages_without_clamping ... ok
+test stylo_dom::cascade::container_relative_units_tests::container_unit_lookalikes_in_comments_and_strings_do_not_fail_closed ... ok
+test stylo_dom::cascade::font_relative_units_tests::zero_document_root_font_size_is_preserved_for_rem_and_em ... ok
+test stylo_dom::cascade::custom_properties_tests::runtime_custom_properties_inherit_use_nested_fallbacks_and_preserve_name_case ... ok
+test stylo_dom::cascade::font_relative_units_tests::synthetic_document_background_paint_fails_instead_of_disappearing ... ok
+test stylo_dom::cascade::c10_flex_distribution_tests::author_stylesheet_custom_property_reaches_layout_and_paint_profiles ... ok
+test stylo_dom::cascade::media_environment_tests::contradictory_pointer_environment_fails_closed_before_stylesheet_work ... ok
+test stylo_dom::cascade::media_environment_tests::invalid_viewport_error_precedes_invalid_media_environment ... ok
+test stylo_dom::cascade::c10_flex_distribution_tests::inline_flex_factor_full_and_incremental_cascade_match_after_change ... ok
+test stylo_dom::cascade::c10_flex_distribution_tests::registered_shorthand_author_stylesheet_reaches_full_cascade ... ok
+test stylo_dom::cascade::media_environment_tests::unrelated_recoverable_property_diagnostic_is_preserved_not_misclassified_as_media ... ok
+test stylo_dom::cascade::custom_properties_tests::runtime_custom_property_values_match_pinned_chromium_reference ... ok
+test stylo_dom::cascade::runtime_block_display::tests::finds_unsupported_inline_values_without_matching_comments_or_strings ... ok
+test stylo_dom::cascade::runtime_block_display::tests::nested_preludes_and_non_rule_at_rule_bodies_are_not_declarations ... ok
+test stylo_dom::cascade::runtime_block_display::tests::finds_unsupported_values_in_nested_style_rules_and_bounds_rule_depth ... ok
+test stylo_dom::cascade::runtime_block_display::tests::finds_unsupported_values_in_stylesheet_declaration_blocks_only ... ok
+test stylo_dom::cascade::runtime_block_display::tests::finds_unsupported_values_inside_nested_grouping_at_rules ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_placement::auto_placement_inline_gate_allows_grid_auto_rows_and_rejects_auto_columns ... ok
+test stylo_dom::cascade::incremental_tests::inline_style_subtree_reuse_matches_full_cascade_and_keeps_sibling_output ... ok
+test stylo_dom::cascade::c10_flex_distribution_tests::all_six_runtime_flex_profiles_keep_the_same_typed_distribution_inputs ... ok
+test stylo_dom::cascade::registered_properties_tests::registered_property_paint_profile_resolves_typed_color_initial_and_override ... ok
+test stylo_dom::cascade::font_relative_units_tests::synthetic_html_and_body_layout_changes_fail_instead_of_being_discarded ... ok
+test stylo_dom::cascade::registered_properties_tests::registered_property_profile_keeps_legacy_and_general_css_boundaries ... ok
+test stylo_dom::cascade::runtime_grid_tests::placement::placement_profile_applies_grid_area_then_longhand_cascade_precedence ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_placement::auto_placement_profile_preserves_unsupported_auto_row_pattern_for_layout_rejection ... ok
+test stylo_dom::cascade::media_environment_tests::media_type_conjunction_negation_and_comma_lists_are_evaluated ... ok
+test stylo_dom::cascade::media_environment_tests::computed_media_probes_match_pinned_chromium_reference ... ok
+test stylo_dom::cascade::runtime_grid_tests::placement::placement_profile_copies_numeric_negative_and_span_values_from_stylo_types ... ok
+test stylo_dom::cascade::registered_properties_tests::registered_properties_follow_syntax_initial_inheritance_and_source_order ... ok
+test stylo_dom::cascade::runtime_grid_tests::placement::placement_profile_inline_allowlist_accepts_grid_shorthands_only ... ok
+test stylo_dom::cascade::runtime_grid_tests::hidden_context::incremental_restyle_preserves_hidden_context_for_unsupported_nested_grid ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_placement::auto_placement_profile_preserves_typed_implicit_row_sizing ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_areas::all_null_template_areas_keep_dimensions_without_dense_cells ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_areas::invalid_later_area_declaration_keeps_the_earlier_valid_template ... ok
+test stylo_dom::cascade::runtime_grid_tests::placement::placement_profile_preserves_named_values_as_unsupported_typed_data ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_areas::template_profile_copies_sparse_area_rectangles_and_dimensions ... ok
+test stylo_dom::cascade::runtime_grid_tests::placement::template_profile_preserves_named_line_occurrences_and_both_span_token_orders ... ok
+test stylo_dom::cascade::media_environment_tests::mixed_and_absent_pointer_mappings_follow_stylo_022_media_features ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::integer_repeat_accepts_exact_track_limit ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::integer_repeat_rejects_expanded_line_metadata_over_budget ... ok
+test stylo_dom::cascade::runtime_grid_tests::tracks::grid_profile_computes_author_stylesheets_with_typed_tracks ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::integer_repeat_accepts_author_stylesheet_declarations ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::integer_repeat_expands_tracks_and_preserves_n_plus_one_line_names ... ok
+test stylo_dom::cascade::runtime_grid_tests::tracks::inline_grid_placement_and_aspect_ratio_are_outside_the_c11_1_profile ... ok
+test stylo_dom::cascade::runtime_grid_tests::tracks::grid_profile_copies_explicit_px_percentage_fraction_and_flow_as_typed_values ... ok
+test stylo_dom::cascade::runtime_grid_tests::tracks::grid_profile_preserves_dense_column_flow_for_layout_to_reject_explicitly ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::repeat_count_one_and_repeat_free_control_have_identical_tracks ... ok
+test stylo_dom::cascade::media_environment_tests::unsupported_media_features_and_at_rules_are_rejected_by_the_new_profile ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::integer_repeat_retains_duplicate_names_on_a_single_line ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::integer_repeat_allocation_failures_are_contextual_and_recoverable ... ok
+test stylo_dom::cascade::runtime_layout_tests::c10_flex_alignment::c1033_new_alignment_longhands_stay_out_of_runtime_block_profiles ... ok
+test stylo_dom::cascade::runtime_layout_tests::c12_absolute::block_positioning_author_profile_accepts_layers_vars_and_border_resets_only ... ok
+test stylo_dom::cascade::runtime_layout_tests::c12_absolute::block_positioning_profile_keeps_absolute_and_blockified_inline_values_typed ... ok
+test stylo_dom::cascade::runtime_layout_tests::c10_flex_wrap::c101_author_stylesheet_wrap_reaches_custom_and_registered_paint_profiles ... ok
+test stylo_dom::cascade::runtime_layout_tests::c12_fixed::block_positioning_inline_allowlist_includes_the_ratio_already_in_its_cascade_profile ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::template_profile_accepts_repeat_shorthands_and_grid_template_areas ... ok
+test stylo_dom::cascade::runtime_grid_tests::tracks::unsupported_track_syntax_fails_during_typed_cascade_extraction ... ok
+test stylo_dom::cascade::runtime_layout_tests::c10_flex_wrap::c101_flex_wrap_is_limited_to_runtime_flex_layout_and_paint_profiles ... ok
+test stylo_dom::cascade::runtime_layout_tests::c12_fixed::block_positioning_profile_preserves_fixed_position_and_empty_effects ... ok
+test stylo_dom::cascade::runtime_layout_tests::runtime_inline_allowlist_accepts_supported_shorthand_expansions ... ok
+test stylo_dom::cascade::runtime_layout_tests::runtime_inline_allowlist_rejects_noninitial_border_image_values ... ok
+test stylo_dom::cascade::runtime_layout_tests::runtime_inline_allowlist_rejects_unknown_custom_properties ... ok
+test stylo_dom::cascade::runtime_layout_tests::runtime_paint_profile_accepts_only_background_color_beyond_layout_properties ... ok
+test stylo_dom::cascade::runtime_layout_tests::runtime_inline_allowlist_reports_valid_unsupported_properties_without_values ... ok
+test stylo_dom::cascade::font_relative_units_tests::every_font_metric_unit_fails_closed_across_runtime_style_inputs ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_areas::area_allocation_failures_keep_node_and_property_context_and_recover ... ok
+test stylo_dom::cascade::runtime_layout_tests::runtime_inline_allowlist_accepts_physical_min_max_size_longhands ... ok
+test stylo_dom::cascade::runtime_layout_tests::runtime_inline_allowlist_ignores_invalid_declarations_after_css_recovery ... ok
+test stylo_dom::cascade::runtime_layout_tests::runtime_paint_profile_preserves_opaque_and_transparent_computed_paint ... ok
+test stylo_dom::cascade::runtime_layout_tests::runtime_paint_profile_rejects_partial_alpha_and_keeps_layout_profile_strict ... ok
+test stylo_dom::cascade::runtime_stacking_tests::stacking_profile_cascades_layer_registered_z_index_and_visibility_as_typed_values ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::integer_repeat_rejects_auto_minmax_and_over_limit_without_partial_tracks ... ok
+test stylo_dom::cascade::runtime_stacking_tests::stacking_profile_accepts_only_declared_inline_values_and_rejects_other_at_rules ... ok
+test stylo_dom::cascade::runtime_stacking_tests::stacking_profile_preserves_inherited_hidden_visibility_for_renderer_gate ... ok
+test stylo_dom::cascade::tests::invalid_viewport_and_non_author_inputs_fail_before_computation ... ok
+test stylo_dom::cascade::tests::fixed_fixture_computes_origin_specificity_order_inline_and_inheritance ... ok
+test stylo_dom::cascade::runtime_layout_tests::c12_fixed::fixed_containing_block_effects_are_rejected_in_stylesheets_and_inline_style ... ok
+test stylo_dom::cascade::runtime_layout_tests::c07_border::c07_border_floor_does_not_drop_a_winning_declaration_after_many_earlier_values ... ok
+test stylo_dom::cascade::runtime_layout_tests::c12_fixed::stylo_unsupported_fixed_containing_block_properties_remain_diagnostics ... ok
+test stylo_dom::cascade::ua_baseline_tests::html_ua_selectors_do_not_match_a_foreign_namespace_element ... ok
+test stylo_dom::cascade::tests::every_observed_property_matches_the_pinned_chromium_reference ... ok
+test stylo_dom::cascade::ua_baseline_tests::inline_style_overrides_embedded_ua_rules_after_author_stylesheets ... ok
+test stylo_dom::cascade::ua_baseline_tests::unsupported_author_origin_and_invalid_viewport_fail_closed ... ok
+test stylo_dom::cascade::typed_css_math_tests::copies_supported_typed_calculations_into_owned_layout_values ... ok
+test stylo_dom::cascade::ua_incremental_profile_tests::incremental_ua_profile_uses_only_the_pinned_type_selectors ... ok
+test stylo_dom::tests::document_and_mixed_node_traversal_expose_only_the_selected_root_subtree ... ok
+test stylo_dom::cascade::ua_baseline_tests::author_rules_override_embedded_ua_rules_in_the_same_snapshot ... ok
+test stylo_dom::cascade::ua_baseline_tests::supported_elements_ua_profile_matches_all_c01_computed_values ... ok
+test stylo_dom::cascade::ua_baseline_tests::stylesheet_parse_diagnostics_are_returned_without_loading_remote_imports ... ok
+test stylo_dom::tests::html_like_local_name_in_a_foreign_namespace_is_not_an_html_element ... ok
+test stylo_dom::tests::html_attribute_aliases_are_rejected_and_quirks_mode_is_forwarded ... ok
+test stylo_dom::tests::fragment_root_is_not_a_css_root_but_keeps_ordinary_element_matching ... ok
+test stylo_dom::tests::invalid_roots_and_foreign_generations_are_rejected_or_hidden ... ok
+test stylo_dom::tests::malformed_utf16_is_lossy_at_the_stylo_attribute_boundary ... ok
+test stylo_dom::tests::snapshot_updates_are_visible_only_in_a_new_view ... ok
+test stylo_dom::tests::stylo_selector_parser_matches_attributes_states_structure_and_ancestors ... ok
+test stylo_dom::cascade::runtime_layout_tests::c07_border::c07_border_floor_keeps_values_just_below_an_integer_at_high_dpr ... ok
+test stylo_dom::cascade::runtime_layout_tests::c07_border::c07_border_floor_recovers_author_stylesheet_shorthands ... ok
+test stylo_dom::cascade::runtime_layout_tests::c07_border::c07_border_floor_preserves_a_small_border_declaration_in_a_large_style_source ... ok
+
+test result: ok. 133 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.32s
+
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_layout_spike-577e09833eeee116)
+
+running 5 tests
+test r10::tests::viewport_and_pixel_scale_must_be_positive_and_finite ... ok
+test r10::tests::text_measurement_callback_wraps_a_leaf_under_finite_width ... ok
+test r10::tests::external_node_ids_stay_mapped_through_incremental_layout ... ok
+test r10::tests::rtl_reverses_the_start_edge_of_a_flex_row ... ok
+test r10::tests::report_identifies_synthetic_text_metrics_and_layout_costs ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+
+     Running unittests src/main.rs (target/debug/deps/spinon_style_layout_spike-740695172bc6600e)
+
+running 3 tests
+test tests::reject_invalid_gap_from_json ... ok
+test tests::reject_unsupported_style_key ... ok
+test tests::reject_negative_width_from_json ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-4c2fd9a1dd9e7aa7)
+
+running 160 tests
+test c07_2_border_layout_tests::authored_noninitial_border_image_is_rejected_by_the_layout_profile ... ok
+test c07_3_aspect_ratio_tests::failures::auto_ratio_combination_fails_closed_instead_of_becoming_a_bare_ratio ... ok
+test c10_3_5_positioned_tests::direct_flex_absolute_child_uses_single_item_static_position_without_changing_flow ... ok
+test absolute_length_tests::stylo_resolved_absolute_css_math_reaches_the_same_px_value ... ok
+test c07_3_aspect_ratio_tests::revision::changing_only_ratio_uses_the_new_style_revision_and_frame ... ok
+test c10_3_5_positioned_tests::direct_absolute_flex_child_is_supported_by_all_six_runtime_flex_profiles ... ok
+test c07_3_aspect_ratio_tests::failures::finite_css_ratio_operands_that_overflow_or_underflow_fail_closed ... ok
+test absolute_length_tests::invalid_unknown_unit_does_not_replace_a_valid_css_length ... ok
+test c10_3_5_positioned_tests::owner_tests::block_wrapper_keeps_block_static_position_and_mixed_insets_keep_c12_owner_math ... ok
+test c10_3_5_positioned_tests::unsupported_flex_static_position_sizes_and_baselines_fail_without_a_partial_output ... ok
+test c10_flex_alignment_tests::cascade::stylesheet_custom_property_alignment_value_reaches_taffy ... ok
+test c10_flex_alignment_tests::cascade::stylesheet_custom_property_and_inline_cascade_drive_alignment_used_values ... ok
+test c10_3_5_positioned_tests::owner_tests::flex_source_parent_and_absolute_containing_block_can_differ ... ok
+test c10_flex_alignment_tests::cascade::parent_alignment_change_recomputes_auto_child_layout_incrementally ... ok
+test c10_flex_alignment_tests::cascade::registered_custom_property_keyword_is_projected_from_author_stylesheet ... ok
+test absolute_length_tests::absolute_css_lengths_do_not_scale_with_device_pixel_ratio ... ok
+test c07_3_aspect_ratio_tests::failures::min_max_constraints_with_aspect_ratio_fail_closed_for_each_axis ... ok
+test c10_3_5_positioned_tests::reversed_and_column_flex_axes_use_their_own_static_alignment_axes ... ok
+test c10_flex_alignment_tests::failures::unsupported_adapter_values_fail_with_node_and_property_context ... ok
+test absolute_length_tests::absolute_length_values_and_geometry_match_chromium ... ok
+test c07_3_aspect_ratio_tests::comparison::aspect_ratio_computed_values_and_frames_match_pinned_chromium_at_both_dprs ... ok
+test absolute_length_tests::mixed_unit_css_math_reaches_the_layout_projection ... ok
+test c10_flex_order_tests::changing_only_order_recomputes_layout_without_changing_document_child_order ... ok
+test c10_flex_baseline_tests::failures::invalid_last_baseline_declarations_preserve_stylesheet_cascade_fallback ... ok
+test c10_flex_order_tests::stylo_integer_rounding_clamping_invalid_declarations_and_author_stylesheets_reach_taffy ... ok
+test c10_flex_order_tests::custom_property_order_is_cascaded_and_invalid_adapter_values_fail_closed ... ok
+test c10_flex_wrap_tests::layout::exact_fit_and_one_css_pixel_over_match_the_chromium_line_break ... ok
+test c10_flex_baseline_tests::failures::baseline_values_do_not_leak_into_the_legacy_flex_profile ... ok
+test c10_flex_wrap_tests::layout::empty_single_and_display_none_items_do_not_create_extra_lines ... ok
+test c10_flex_wrap_tests::layout::flex_wrap_column_uses_row_gap_on_main_axis_and_column_gap_between_columns ... ok
+test c10_flex_order_tests::all_six_runtime_flex_profiles_project_order_and_reorder_only_layout_items ... ok
+test c10_flex_wrap_tests::layout::block_declaration_is_computed_without_changing_block_flow_and_wrap_is_not_inherited ... ok
+test c10_flex_wrap_tests::layout::runtime_three_lines_gap_fixture_matches_chromium_node_frames ... ok
+test c10_flex_wrap_tests::profiles::reverse_direction_fails_closed_when_text_direction_is_rtl ... ok
+test c10_flex_wrap_tests::layout::shorthand_longhand_override_and_default_nowrap_match_chromium ... ok
+test c10_flex_wrap_tests::layout::flex_wrap_row_collects_three_lines_and_applies_row_and_column_gaps ... ok
+test c11_2_1_grid_placement_tests::hidden::hidden_grid_item_ignores_unsupported_constraints_and_alignment ... ok
+test c11_2_1_grid_placement_tests::hidden::grid_item_min_max_constraints_remain_outside_the_explicit_placement_profile ... ok
+test c11_2_1_grid_placement_tests::hidden::hidden_nested_grid_ignores_unsupported_tracks_and_item_placement_end_to_end ... ok
+test c07_2_border_layout_tests::changing_only_border_color_keeps_used_width_and_layout_frame ... ok
+test c11_2_1_grid_placement_tests::hidden::hidden_grid_item_with_unsupported_named_line_is_ignored_end_to_end ... ok
+test c10_flex_wrap_tests::profiles::reverse_direction_fails_closed_outside_runtime_flex_profiles ... ok
+test c10_flex_wrap_tests::profiles::all_runtime_flex_profiles_project_reverse_direction_and_wrap_into_taffy ... ok
+test c11_2_1_grid_placement_tests::supported::numeric_positive_and_negative_lines_match_pinned_chrome_frames ... ok
+test c07_2_border_layout_tests::border_used_widths_and_frames_match_pinned_chromium_at_both_device_scales ... ok
+test c11_2_1_grid_placement_tests::supported::overlapping_explicit_items_match_pinned_chrome_geometry ... ok
+test c11_2_1_grid_placement_tests::supported::spans_from_start_and_end_match_pinned_chrome_frames ... ok
+test c11_2_1_grid_placement_tests::supported::grid_area_and_longhand_override_match_pinned_chrome_frames ... ok
+test c11_2_1_grid_placement_tests::supported::reversed_line_pairs_are_swapped_and_match_pinned_chrome_frames ... ok
+test c11_2_1_grid_placement_tests::unsupported::invalid_second_item_does_not_publish_a_partial_layout ... ok
+test c11_2_1_grid_placement_tests::unsupported::stylo_item_placement_values_reach_layout_without_string_reparsing ... ok
+test c11_2_1_grid_placement_tests::unsupported::css_line_zero_is_rejected_before_taffy_can_treat_it_as_auto ... ok
+test c11_3_1_grid_repeat_tests::repeated_tracks_reach_taffy_and_match_pinned_chrome_frames ... ok
+test c11_2_1_grid_placement_tests::hidden::grid_item_alignment_remains_outside_the_explicit_placement_profile ... ok
+test c10_flex_alignment_tests::runtime::runtime_v8_alignment_fixture_matches_pinned_chromium ... ok
+test c11_3_2_grid_named_line_tests::changed_grid_line_names_are_used_at_the_next_style_revision ... ok
+test c11_2_1_grid_placement_tests::unsupported::implicit_named_equal_and_mixed_auto_placement_fail_closed ... ok
+test c11_3_1_grid_repeat_tests::unsupported_repeat_templates_fail_before_any_layout_output ... ok
+test c11_3_2_grid_named_line_tests::named_span_without_opposite_definite_edge_uses_one_track_and_ignores_name ... ok
+test c11_3_2_grid_named_line_tests::named_line_metadata_is_resolved_from_the_immediate_nested_grid_owner ... ok
+test c11_2_1_grid_placement_tests::hidden::grid_container_alignment_and_place_shorthands_remain_outside_the_profile ... ok
+test c11_2_2_grid_auto_placement_tests::chromium_only_scenes_are_rejected_by_the_documented_subset ... ok
+test c11_3_2_grid_named_line_tests::named_endpoint_reversal_and_equality_follow_grid_conflict_rules ... ok
+test c10_3_5_positioned_tests::c10_3_5_all_fixture_frames_and_owners_match_pinned_chromium ... ok
+test c11_3_2_grid_named_line_tests::positive_and_negative_named_occurrences_match_chrome_grid_coordinates ... ok
+test c11_3_2_grid_named_line_tests::reversed_identifier_integer_order_is_equivalent_after_stylo_cascade ... ok
+test c11_3_2_grid_named_line_tests::named_spans_search_from_the_opposite_definite_line_in_both_directions ... ok
+test c11_3_3_grid_template_areas_tests::bare_area_name_uses_first_area_alias_while_numeric_ident_uses_named_line ... ok
+test c11_3_3_grid_template_areas_tests::explicit_line_pairs_form_implicit_areas_on_both_axes ... ok
+test c11_3_3_grid_template_areas_tests::auto_sized_area_item_stretches_to_its_named_area ... ok
+test c11_3_2_grid_named_line_tests::missing_case_mismatched_or_out_of_range_named_lines_fail_before_layout_output ... ok
+test c11_grid_tests::hidden_grid_subtree_does_not_require_explicit_track_values ... ok
+test c11_grid_tests::grid_layout_keeps_document_style_and_environment_revisions_together ... ok
+test c11_grid_tests::style_layout_rejects_a_root_different_from_the_stylo_mount_root ... ok
+test c11_3_2_grid_named_line_tests::named_occurrence_counts_repeated_track_seam_as_one_physical_line ... ok
+test c11_3_3_grid_template_areas_tests::explicit_areas_place_items_at_their_sparse_rectangles ... ok
+test c11_grid_tests::indefinite_grid_axis_fails_with_specific_basis ... ok
+test c11_grid_tests::insufficient_explicit_cells_fail_instead_of_creating_an_implicit_track ... ok
+test c11_grid_tests::fixed_tracks_gap_scene_matches_pinned_chromium_154_geometry ... ok
+test c11_grid_tests::unsupported_inline_grid_placement_fails_before_auto_placement ... ok
+test c12_1_position_tests::relative_inset_shorthand_and_percentage_reach_typed_layout_input ... ok
+test c12_1_position_tests::runtime_author_layer_cascade_selects_position_and_inset_before_layout ... ok
+test c12_1_position_tests::stylo_relative_inset_reaches_layout_without_changing_flow_or_flex_sibling ... ok
+test c11_grid_tests::unsupported_auto_flow_is_not_silently_projected_as_row_flow ... ok
+test c12_3_fixed_tests::fixed_auto_height_uses_the_c07_3_aspect_ratio_in_the_viewport_profile ... ok
+test c12_3_fixed_tests::fixed_layout_uses_viewport_and_keeps_absolute_and_fixed_owners_separate ... ok
+test c11_grid_tests::stylo_tracks_reach_grid_layout_and_preserve_source_child_order ... ok
+test c12_1_position_tests::relative_inset_calc_resolves_custom_properties_into_the_layout_result ... ok
+test c12_3_fixed_tests::fixed_ancestor_effect_snapshot_fails_closed_after_author_preflight_boundary ... ok
+test c12_2_absolute_tests::block_absolute_layout_uses_nearest_positioned_owner_and_preserves_flow_siblings ... ok
+test c11_3_3_grid_template_areas_tests::mismatched_area_dimensions_are_rejected_before_layout_output ... ok
+test c11_2_2_grid_auto_placement_tests::all_supported_scene_frames_match_pinned_chrome_154 ... ok
+test flex_alignment_tests::flex_alignment_profile_keeps_c042_and_inline_style_boundaries ... ok
+test flex_alignment_tests::flex_alignment_profile_preserves_current_revisions_and_rejects_foreign_generation ... ok
+test c12_1_position_tests::static_position_ignores_computed_insets_and_absolute_layout_root_is_rejected ... ok
+test cascade_layers_tests::cascade_layers_profile_preserves_revision_tuple_and_rejects_foreign_generation ... ok
+test cascade_layers_tests::cascade_layers_allowlist_is_checked_recursively_and_old_profile_rejects_layers ... ok
+test margin_tests::logical_margin_shorthands_match_chromium_values_and_frames ... ok
+test font_relative_units_tests::runtime_em_rem_computed_values_and_taffy_frames_match_chromium ... ok
+test percentage_tests::calc_dimension_keeps_typed_basis_until_taffy_resolution ... ok
+test margin_tests::unsupported_margin_values_and_other_properties_fail_closed ... ok
+test margin_tests::new_profile_preserves_revisions_inline_style_rejection_and_old_profile_boundary ... ok
+test c11_2_3_grid_auto_placement_tests::unsupported_oracle_cases_and_track_limit_fail_closed ... ok
+test flex_alignment_tests::flex_alignment_rejects_unsupported_valid_values_and_properties ... ok
+test projection::style_values::grid_placement_values::named_line::tests::bare_ident_uses_area_edge_while_explicit_one_uses_the_authored_name ... ok
+test percentage_tests::unsupported_spacing_still_fails_closed ... ok
+test projection::style_values::grid_placement_values::named_line::tests::conflicting_named_spans_do_not_resolve_names_or_create_implicit_lines ... ok
+test projection::style_values::grid_placement_values::named_line::tests::conflicting_end_named_span_is_dropped_before_name_resolution ... ok
+test projection::style_values::grid_placement_values::named_line::tests::generated_area_aliases_resolve_as_named_lines_and_named_spans ... ok
+test projection::style_values::grid_placement_values::named_line::tests::line_names_are_case_sensitive ... ok
+test projection::style_values::grid_placement_values::named_line::tests::line_only_implicit_area_requires_matching_edges_on_both_axes ... ok
+test c12_3_fixed_tests::stylo_unknown_fixed_effect_diagnostics_fail_before_layout ... ok
+test projection::style_values::grid_placement_values::named_line::tests::lone_named_span_uses_default_single_track_span ... ok
+test projection::style_values::grid_placement_values::named_line::tests::missing_name_and_occurrence_shortage_fail_closed ... ok
+test projection::style_values::grid_placement_values::named_line::tests::named_line_metadata_shape_and_zero_span_count_fail_closed ... ok
+test projection::style_values::grid_placement_values::named_line::tests::named_span_searches_backward_from_definite_end ... ok
+test projection::style_values::grid_placement_values::named_line::tests::named_span_searches_forward_from_definite_start ... ok
+test percentage_tests::percentage_margin_padding_and_gap_are_preserved_when_basis_is_definite ... ok
+test projection::style_values::grid_placement_values::named_line::tests::named_span_shortage_fails_instead_of_creating_implicit_lines ... ok
+test projection::style_values::grid_placement_values::named_line::tests::negative_occurrence_counts_from_last_explicit_line ... ok
+test projection::style_values::grid_placement_values::named_line::tests::positive_occurrence_uses_line_index_and_deduplicates_same_line_names ... ok
+test percentage_tests::mixed_unit_spacing_resolves_after_definite_basis_is_known ... ok
+test projection::style_values::grid_placement_values::named_line::tests::same_line_duplicate_name_is_one_span_occurrence ... ok
+test projection::style_values::grid_placement_values::named_line::tests::zero_and_extreme_negative_occurrences_fail_closed_without_overflow ... ok
+test projection::style_values::grid_values::tests::paired_area_edge_aliases_on_both_axes_select_template_grid_sizing_mode ... ok
+test projection::style_values::grid_values::tests::projection_reservation_failure_keeps_node_and_axis_context ... ok
+test projection::style_values::grid_values::tests::template_area_profile_selects_template_grid_sizing_mode ... ok
+test margin_tests::flex_margin_profile_matches_chromium_values_and_frames ... ok
+test projection::style_values::grid_values::tests::template_profile_line_name_allocation_failures_keep_context_and_recover ... ok
+test projection::style_values::grid_values::tests::template_profile_projects_n_plus_one_line_names_and_dense_grid_contract ... ok
+test projection::style_values::grid_values::tests::template_profile_rejects_line_name_groups_that_do_not_match_track_count ... ok
+test projection::ua_profile_boundary_tests::ua_snapshot_profile_is_rejected_by_the_flex_layout_adapter ... ok
+test percentage_tests::typed_percentages_match_chromium_geometry_for_supported_runtime_nodes ... ok
+test runtime_layout_tests::runtime_flex_shorthand_preserves_percentage_basis_for_taffy ... ok
+test spacing_percentage_tests::cases::block_auto_width_and_flex_stretch_prove_definite_gap_bases ... ok
+test min_max_sizing_tests::min_max_values_and_layout_frames_match_pinned_chromium_for_each_node_and_dpr ... ok
+test spacing_percentage_tests::cases::custom_property_spacing_keeps_the_typed_percentage_value ... ok
+test runtime_layout_tests::runtime_viewport_units_recompute_to_each_frozen_chromium_resize_size ... ok
+test runtime_layout_tests::runtime_flex_shorthand_matches_frozen_chromium_longhand_values_and_geometry ... ok
+test runtime_layout_tests::runtime_profile_matches_frozen_chromium_styles_and_geometry ... ok
+test tests::host_document_contracts::a_snapshot_from_another_document_generation_is_rejected_before_cascade ... ok
+test tests::host_document_contracts::inline_style_attributes_are_rejected_before_layout_projection ... ok
+test tests::host_document_contracts::stale_document_revision_is_rejected_before_cascade_or_layout ... ok
+test tests::c04_computed_flex_style_projects_to_chromium_fractional_taffy_frames ... ok
+test flex_alignment_tests::flex_alignment_profile_matches_pinned_chromium_values_and_frames ... ok
+test spacing_percentage_tests::cases::runtime_spacing_percentages_match_pinned_chromium_local_geometry ... ok
+test min_max_sizing_tests::unsupported_intrinsic_min_max_keywords_fail_closed_with_property_context ... ok
+test tests::css_values_outside_the_flex_projection_fail_closed ... ok
+test tests::host_document_contracts::projection_errors_keep_the_css_node_and_property_context ... ok
+test tests::host_document_contracts::layout_rejects_text_in_a_host_document_subtree ... ok
+test cascade_layers_tests::flex_alignment_cascade_layers_profile_matches_chromium_values_and_frames ... ok
+test tests::style_and_environment_revisions_survive_the_cascade_to_layout_projection ... ok
+test typed_css_math_tests::typed_css_math_matches_chromium_computed_geometry ... ok
+test spacing_percentage_tests::cases::full_chromium_fixture_matches_every_supported_runtime_node ... ok
+test viewport_units_tests::viewport_environment_resize_changes_all_unit_families_without_dpr_scaling ... ok
+test spacing_percentage_tests::cases::cyclic_gap_root_spacing_and_unsupported_margin_fail_with_context ... ok
+test viewport_units_tests::viewport_units_match_chromium_after_cascade_projection_and_taffy_layout ... ok
+test c11_2_3_grid_auto_placement_tests::supported_dense_column_and_sparse_cases_match_pinned_chrome_154 ... ok
+test c10_flex_baseline_tests::failures::baseline_frames_match_all_six_runtime_flex_profiles_and_both_dprs ... ok
+test c10_flex_alignment_tests::cases::all_chromium_flex_alignment_cases_match_all_six_runtime_profiles ... ok
+
+test result: ok. 160 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.31s
+
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_render-a3c68db3b3218071)
+
+running 37 tests
+test stacking::deep_graph_tests::host_document_to_paint_snapshot_handles_a_1024_node_stacking_graph ... ignored, 대형 스택 스트레스는 RUST_MIN_STACK=33554432로 별도 실행
+test stacking::tests::reservation_injection_skips_requests_that_cannot_grow_the_vector ... ok
+test tests::render_snapshot::c04_flex_path_stays_separate_from_the_s04_profile ... ok
+test tests::render_snapshot::fixed_s04_fixture_matches_chromium_and_builds_a_complete_static_snapshot ... ok
+test tests::failures::mapping_and_node_sets_reject_missing_extra_and_duplicate_entries ... ok
+test tests::failures::rgb_color_syntax_and_text_nodes_are_rejected ... ok
+test tests::failures::invalid_profile_diagnostics_root_and_viewport_are_rejected ... ok
+test tests::revision_gate::nonzero_style_and_environment_revisions_survive_snapshot_admission ... ok
+test tests::failures::duplicate_nodes_bad_mapping_and_non_finite_frames_fail_closed ... ok
+test tests::failures::revision_mismatch_and_incomplete_node_sets_fail_atomically ... ok
+test stacking::tests::each_fallible_reservation_failure_returns_its_exact_stage ... ok
+test tests::runtime::runtime_scene_matches_chromium_dom_order_geometry_and_paint ... ok
+test tests::runtime::positioned_flex::runtime_scene_emits_nested_positioned_nodes_once_in_source_preorder ... ok
+test tests::revision_gate::current_revision_tuple_is_admitted_and_every_stale_fixture_is_rejected ... ok
+test tests::runtime::runtime_scene_rejects_missing_or_invalid_flex_item_order ... ok
+test tests::runtime::runtime_scene_ignores_order_for_non_flex_siblings ... ok
+test tests::runtime::runtime_scene_accepts_custom_properties_paint_profile ... ok
+test tests::runtime::runtime_scene_uses_typed_stylo_paint_not_css_string_reparsing ... ok
+test tests::runtime::runtime_scene_rejects_stale_document_style_or_environment_revisions ... ok
+test tests::runtime::runtime_scene_omits_hidden_nodes_and_allows_an_empty_scene ... ok
+test tests::runtime_stacking::positioned_auto_does_not_trap_descendant_integer_contexts ... ok
+test tests::runtime_stacking::fixed_auto_is_a_real_context_and_static_flex_items_honor_z_index ... ok
+test tests::runtime_stacking::display_none_subtrees_are_omitted_and_nonvisible_visibility_fails_closed ... ok
+test tests::runtime::runtime_scene_sorts_flex_paint_order_per_parent_and_keeps_nested_subtrees ... ok
+test tests::runtime_stacking::zero_context_subtree_is_atomic_before_a_positive_sibling ... ok
+test tests::runtime_stacking_wpt::wpt_css2_z_index_abspos_003_paints_negative_child_after_context_background ... ok
+test tests::runtime_stacking::nested_positive_context_cannot_escape_its_parent_context ... ok
+test tests::runtime_stacking::negative_zero_and_positive_contexts_follow_css_paint_phases ... ok
+test tests::runtime_stacking_wpt::wpt_css2_z_index_stack_001_orders_distinct_positive_levels ... ok
+test tests::runtime_stacking::flex_order_sets_stable_paint_ties_but_not_absolute_child_order ... ok
+test tests::runtime_stacking_wpt::wpt_flexbox_paint_ordering_002_uses_order_for_equal_z_index_ties ... ok
+test tests::runtime_stacking_wpt::wpt_flexbox_items_as_stacking_contexts_keeps_descendant_inside_item ... ok
+test tests::runtime::positioned_flex::runtime_scene_paints_absolute_flex_children_after_in_flow_order_without_using_authored_order ... ok
+test tests::runtime_stacking::flex_reverse_paint_order_matches_the_pinned_chrome_overlap_matrix ... ok
+test stacking::deep_graph_tests::host_document_to_paint_snapshot_handles_a_deep_stacking_graph ... ok
+test stacking::tests::deeply_nested_context_flattening_uses_bounded_call_stack ... ok
+test stacking::tests::wide_context_fanout_fits_the_document_sized_action_reservation ... ok
+
+test result: ok. 36 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.07s
+
+   Doc-tests spinon_core
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests spinon_ffi
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests spinon_layout
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests spinon_render
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests spinon_render_wgpu
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests spinon_runtime
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests spinon_style
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests spinon_style_layout_spike
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests spinon_style_to_layout
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests spinon_style_to_render
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

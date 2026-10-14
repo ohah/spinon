@@ -61,13 +61,15 @@ pub(super) fn computed_grid_layout(
     properties: &BTreeMap<String, String>,
     allow_integer_repeat: bool,
 ) -> Result<ComputedCssGridLayout, CssCascadeError> {
-    if allow_integer_repeat && property_value(properties, "grid-template-areas") != "none" {
-        return Err(unsupported_grid_value(
+    let template_areas = if allow_integer_repeat {
+        super::grid_areas::computed_grid_template_areas(
+            computed.clone_grid_template_areas(),
             node,
-            "grid-template-areas",
             property_value(properties, "grid-template-areas"),
-        ));
-    }
+        )?
+    } else {
+        None
+    };
     let columns_value = property_value(properties, "grid-template-columns");
     let rows_value = property_value(properties, "grid-template-rows");
     let (columns, columns_line_names) = computed_grid_tracks(
@@ -108,6 +110,7 @@ pub(super) fn computed_grid_layout(
         rows,
         columns_line_names,
         rows_line_names,
+        template_areas,
         auto_flow,
         auto_rows,
         auto_columns,
@@ -220,11 +223,7 @@ fn computed_grid_placement(
         }
         return ComputedCssGridPlacement::NamedLine {
             name: name.to_owned(),
-            occurrence: if value.line_num == 0 {
-                1
-            } else {
-                value.line_num
-            },
+            occurrence: (value.line_num != 0).then_some(value.line_num),
         };
     }
     if value.is_auto() {

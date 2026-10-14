@@ -94,6 +94,12 @@ mod dimensions;
 mod element;
 #[path = "incremental/grid.rs"]
 mod grid;
+#[path = "incremental/grid_areas.rs"]
+mod grid_areas;
+#[cfg(test)]
+pub(in crate::stylo_dom::cascade) use grid_areas::{
+    GridTemplateAreasReservationSite, inject_grid_template_areas_reservation_failure,
+};
 #[path = "incremental/reuse.rs"]
 mod reuse;
 #[path = "incremental/source_border.rs"]
