@@ -18,6 +18,17 @@ fn key() -> RuntimeRenderKey {
 }
 
 #[test]
+fn runtime_render_key_distinguishes_intrinsic_size_revisions() {
+    let initial = key();
+    let next_revision = spinon_core::IntrinsicSizeRevision::INITIAL
+        .checked_next()
+        .unwrap();
+    let next = initial.with_intrinsic_size_revision(next_revision);
+    assert_ne!(initial, next);
+    assert_eq!(next.intrinsic_size_revision(), next_revision);
+}
+
+#[test]
 fn runtime_scene_keeps_complete_key_dom_order_and_transparent_nodes() {
     let first = NodeId::new(1).unwrap();
     let second = NodeId::new(2).unwrap();
@@ -113,6 +124,9 @@ fn document_revision_rebinding_preserves_shared_box_storage() {
     });
     document.commit(batch).unwrap();
     let new_document_snapshot = document.snapshot();
+    let intrinsic_revision = spinon_core::IntrinsicSizeRevision::INITIAL
+        .checked_next()
+        .unwrap();
     let original = super::RuntimeRenderSnapshot::new(
         RuntimeRenderKey::new(
             original_snapshot.generation(),
@@ -120,7 +134,8 @@ fn document_revision_rebinding_preserves_shared_box_storage() {
             original_snapshot.render_tree_revision(),
             StyleRevision::INITIAL,
             EnvironmentRevision::INITIAL,
-        ),
+        )
+        .with_intrinsic_size_revision(intrinsic_revision),
         CssSize::new(320.0, 640.0).unwrap(),
         vec![RuntimeRenderBox::new(
             root.id(),
@@ -144,6 +159,7 @@ fn document_revision_rebinding_preserves_shared_box_storage() {
         rebound.key().render_tree_revision(),
         original.key().render_tree_revision()
     );
+    assert_eq!(rebound.key().intrinsic_size_revision(), intrinsic_revision);
     assert!(Arc::ptr_eq(&original.boxes, &rebound.boxes));
 }
 

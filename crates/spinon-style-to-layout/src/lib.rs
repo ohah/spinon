@@ -40,6 +40,8 @@ mod c12_2_absolute_tests;
 #[cfg(test)]
 mod c12_3_fixed_tests;
 #[cfg(test)]
+mod c14_intrinsic_size_tests;
+#[cfg(test)]
 mod cascade_layers_tests;
 #[cfg(test)]
 mod flex_alignment_tests;
@@ -71,5 +73,6 @@ pub use projection::{
     compute_runtime_block_flex_grid_placement_style_layout,
     compute_runtime_block_flex_grid_style_layout,
     compute_runtime_block_flex_grid_template_style_layout, compute_runtime_style_layout,
-    compute_s04_style_layout, compute_style_layout,
+    compute_runtime_style_layout_with_intrinsic_size_snapshot, compute_s04_style_layout,
+    compute_style_layout,
 };

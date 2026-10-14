@@ -137,6 +137,7 @@ pub struct StaticRenderSource {
     pub render_tree_revision: RenderTreeRevision,
     pub style_revision: StyleRevision,
     pub environment_revision: EnvironmentRevision,
+    pub intrinsic_size_revision: spinon_core::IntrinsicSizeRevision,
     pub computed_style_profile: ComputedStyleProfileId,
     pub layout_projection: LayoutProjectionId,
     pub paint_profile: PaintProfileId,

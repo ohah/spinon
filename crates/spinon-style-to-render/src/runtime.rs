@@ -110,7 +110,8 @@ pub fn build_runtime_render_snapshot(
         render_tree_revision,
         current.revision.style(),
         current.revision.environment(),
-    );
+    )
+    .with_intrinsic_size_revision(current.revision.intrinsic_size());
     RuntimeRenderSnapshot::new(key, viewport_css_px, boxes).map_err(Into::into)
 }
 

@@ -14,6 +14,8 @@
 
 레이아웃 좌표 단위는 CSS px이다. `CssViewport.width_css_px`와 `height_css_px`를 Taffy viewport로 전달하며 device scale factor를 좌표에 곱하지 않는다. 선택한 subtree에 텍스트 노드가 있으면 `spinon-layout`의 `UnsupportedTextNode` 오류로 전체 요청을 거부한다. fixture 입력 소유자는 현재 초기값 `StyleRevision(0)`과 `EnvironmentRevision(0)`을 전달한다. 제품 stylesheet/environment revision 관리자와 OTA 갱신 연결은 아직 없다.
 
+C14.1에서 이 adapter에 별도 `LayoutIntrinsicSizeSnapshot` overload가 추가됐다. 같은 HostDocument source의 HTML `img` auto/auto leaf에만 양의 natural CSS px를 전달하고 측정 revision을 layout output에 기록한다. 기존 호출은 보이는 auto/auto image에 snapshot이 없으면 오류를 반환한다. decoder owner와 앱 runtime 공급 경로는 아직 연결되지 않았으므로 이 추가 경계는 C04.2나 제품 이미지 지원의 완료를 뜻하지 않는다. 세부 실패·범위는 [C14 계획](../../plan/c14-intrinsic-sizing.md)과 [레이아웃 입력 계약](0009-layout-engine.md)에 둔다.
+
 ## computed-style projection profile
 
 | CSS property | 허용 값과 mapping |

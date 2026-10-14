@@ -10,6 +10,22 @@ pub enum LayoutError {
     EmptyTree,
     InvalidHostDocumentRoot(NodeId),
     UnsupportedTextNode(NodeId),
+    IntrinsicSizeSourceMismatch {
+        expected: crate::LayoutSourceRevision,
+        actual: crate::LayoutSourceRevision,
+    },
+    DuplicateIntrinsicSizeNode(NodeId),
+    UnknownIntrinsicSizeNode(NodeId),
+    UnexpectedIntrinsicSizeNode(NodeId),
+    MissingIntrinsicSize(NodeId),
+    InvalidIntrinsicSize {
+        node: NodeId,
+        axis: &'static str,
+    },
+    UnsupportedIntrinsicSizing {
+        node: NodeId,
+        reason: &'static str,
+    },
     MissingRoot(NodeId),
     MissingStyle(NodeId),
     UnknownStyleNode(NodeId),
@@ -151,6 +167,35 @@ impl fmt::Display for LayoutError {
                 formatter,
                 "텍스트 노드 {id}는 intrinsic measurement를 지원하지 않습니다"
             ),
+            Self::IntrinsicSizeSourceMismatch { expected, actual } => write!(
+                formatter,
+                "intrinsic size source가 현재 layout source와 다릅니다: 기대 {expected:?}, 입력 {actual:?}"
+            ),
+            Self::DuplicateIntrinsicSizeNode(id) => {
+                write!(formatter, "intrinsic size 입력에서 노드 {id}가 중복됩니다")
+            }
+            Self::UnknownIntrinsicSizeNode(id) => {
+                write!(formatter, "intrinsic size 입력의 노드 {id}가 없습니다")
+            }
+            Self::UnexpectedIntrinsicSizeNode(id) => {
+                write!(formatter, "노드 {id}는 HTML img 측정 대상이 아닙니다")
+            }
+            Self::MissingIntrinsicSize(id) => {
+                write!(
+                    formatter,
+                    "노드 {id}의 auto 크기에 필요한 intrinsic size가 없습니다"
+                )
+            }
+            Self::InvalidIntrinsicSize { node, axis } => write!(
+                formatter,
+                "노드 {node}의 intrinsic {axis}는 양의 유한 CSS px 값이어야 합니다"
+            ),
+            Self::UnsupportedIntrinsicSizing { node, reason } => {
+                write!(
+                    formatter,
+                    "노드 {node}의 intrinsic sizing을 지원하지 않습니다: {reason}"
+                )
+            }
             Self::MissingRoot(id) => write!(formatter, "루트 노드 {id}를 찾을 수 없습니다"),
             Self::MissingStyle(id) => write!(formatter, "노드 {id}의 계산된 스타일이 없습니다"),
             Self::UnknownStyleNode(id) => {

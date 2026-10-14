@@ -15,6 +15,7 @@ fn source() -> StaticRenderSource {
         render_tree_revision: snapshot.render_tree_revision(),
         style_revision: StyleRevision::default(),
         environment_revision: EnvironmentRevision::default(),
+        intrinsic_size_revision: spinon_core::IntrinsicSizeRevision::INITIAL,
         computed_style_profile: ComputedStyleProfileId::S04FlexPaintV1,
         layout_projection: LayoutProjectionId::TaffyFlexSubsetV1,
         paint_profile: PaintProfileId::OpaqueBackgroundColorV1,

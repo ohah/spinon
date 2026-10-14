@@ -34,6 +34,7 @@ pub(super) struct GridTaffyStyleInput<'a> {
 pub(super) fn to_taffy_style(
     node: NodeId,
     style: LayoutStyle,
+    item_is_replaced: bool,
     positioning: LayoutPositioning,
     flow_only: bool,
     calc_handles: &BTreeMap<LayoutCalcId, *const ()>,
@@ -73,6 +74,7 @@ pub(super) fn to_taffy_style(
             LayoutDisplay::FlowRoot => Display::FlowRoot,
             LayoutDisplay::None => Display::None,
         },
+        item_is_replaced,
         box_sizing: match style.box_sizing {
             LayoutBoxSizing::BorderBox => BoxSizing::BorderBox,
             LayoutBoxSizing::ContentBox => BoxSizing::ContentBox,

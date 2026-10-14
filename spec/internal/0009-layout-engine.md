@@ -11,7 +11,7 @@
 - 모든 트리 노드에 스타일이 하나씩 있어야 합니다. 누락 스타일과 트리에 없는 노드의 추가 스타일은 `from_tree`가 오류로 반환합니다. 길이 값·루트 크기·수동 구성 입력의 그래프는 `LayoutEngine::compute`에서 검증합니다.
 - `LayoutInput::from_host_document`는 `HostDocumentSnapshot`에서 지정한 HostRoot 직속 요소 하위 트리와 호출자가 제공한 계산 스타일 맵을 읽어 같은 입력 노드 형식으로 투영합니다. 요소의 자식 순서를 보존하며 코어 문서를 복제하거나 다시 만들지 않습니다.
 - HostDocument 입력의 선택 하위 트리에 텍스트 노드가 있으면 입력 전체를 `UnsupportedTextNode`로 거부합니다. 텍스트를 무시하거나 요소의 자식 순서를 바꾸지 않습니다. 스타일 누락과 선택한 하위 트리 밖 스타일은 각각 `MissingStyle`, `UnknownStyleNode`로 반환합니다.
-- `LayoutInputRevision`은 입력 출처를 구분합니다. `Tree` 입력은 구조 `Revision`을, HostDocument 입력은 `DocumentGeneration`·`DocumentRevision`·`RenderTreeRevision`을 보존하고 여기에 `StyleRevision`·`EnvironmentRevision`을 덧붙입니다. `LayoutOutput`은 입력 stamp 전체를 그대로 돌려줍니다.
+- `LayoutInputRevision`은 입력 출처를 구분합니다. `Tree` 입력은 구조 `Revision`을, HostDocument 입력은 `DocumentGeneration`·`DocumentRevision`·`RenderTreeRevision`을 보존하고 여기에 `StyleRevision`·`EnvironmentRevision`을 덧붙입니다. Replaced-element measurement를 사용하는 계산은 별도의 `IntrinsicSizeRevision`도 출력 stamp에 보존합니다.
 - 문서 구조·속성·상태는 `spinon-core::HostDocument`의 문서/표시 revision 소유입니다. stylesheet 목록·순서·내용, UA/style profile 같은 DOM 문서 바깥 스타일 입력은 스타일 입력 소유자가 `StyleRevision`으로 식별합니다. 한 문서의 모든 surface는 하나의 스타일 입력 sequence를 공유하며 surface별 다른 viewport 효과는 environment 입력으로 구분합니다. DOM 안의 변경은 문서 revision으로 추적하고 같은 원인을 `StyleRevision`에 중복 반영하지 않습니다. 현재 코어는 이 소유권 경계만 제공하며 stylesheet 내용과 revision이 일치하는지 자동 검증하지 않으므로 입력 소유자가 유효 입력이 바뀔 때 반드시 revision을 올려야 합니다.
 - viewport와 레이아웃 계산에 전달하는 플랫폼 환경 snapshot은 플랫폼 환경 소유자가 `EnvironmentRevision`으로 식별합니다. 현재 연결된 `CssViewport` 값은 CSS px 너비·높이와 device scale factor뿐입니다. 이후 환경 값이 실제 계산 입력이 되면 같은 불변 snapshot과 revision에 포함합니다. 런타임 소유자가 아직 없어 값을 자동으로 묶거나 비교하지 않으며, revision을 넘기는 호출부가 내용 변경을 정확히 반영해야 합니다.
 - `spinon-layout`은 revision 번호를 발급하거나 증가시키지 않습니다. 각 입력 소유자는 최초 상태 0에서 시작하고 입력 상태가 바뀔 때만 `checked_next()` 결과를 공개합니다. `u64`가 소진되면 증가·공개를 실패 처리하며 wrap이나 번호 재사용을 허용하지 않습니다. 비교는 같은 `DocumentGeneration` 안에서만 의미가 있습니다. 한 문서의 여러 surface가 동시에 존재할 수 있으므로 환경 revision은 surface별 별도 카운터가 아니라 문서 세대 전체의 단일 단조 증가 sequence입니다. surface 재생성만으로 revision을 초기화하지 않습니다. Surface 식별·수명은 별도 `SurfaceGeneration` 계약이 연결될 때 추가합니다.
@@ -29,6 +29,22 @@ let input = LayoutInput::from_tree(
 let output = TaffyLayoutEngine.compute(&input)?;
 assert_eq!(output.revision, input.revision());
 ```
+
+HTML image intrinsic measurement는 generic `LayoutInput`에 DOM 태그나 resource state를 추가하지 않고 별도의 immutable snapshot 인자로 전달합니다. 중복 노드 ID를 잃지 않도록 snapshot constructor는 iterator를 받아 중복을 오류로 돌려줍니다. `source`는 같은 `LayoutInput` source여야 하고, 자연 너비·높이는 양의 유한 CSS px입니다.
+
+```rust
+let measurements = LayoutIntrinsicSizeSnapshot::new(
+    input.source_revision(),
+    intrinsic_size_revision,
+    [(image_id, LayoutIntrinsicSize::new(24.0, 16.0))],
+)?;
+let output = TaffyLayoutEngine.compute_with_intrinsic_size_snapshot(&input, &measurements)?;
+assert_eq!(output.revision.intrinsic_size(), measurements.revision());
+```
+
+`spinon-style-to-layout`의 snapshot overload는 선택 HostDocument 하위 트리에서 HTML namespace `img`만 허용하고 보이는 auto/auto 이미지의 누락 측정, partial-auto, `aspect-ratio`, 비-image·하위 트리 밖 map entry를 거부합니다. 고정 크기 이미지는 자연 크기 entry가 있어도 그 entry를 사용하지 않습니다. `display:none` 또는 숨겨진 조상 아래에 있는 이미지는 측정을 요구하지 않습니다. layout leaf에는 Taffy `item_is_replaced`와 CSS px measure를 함께 전달해 일반 Block 자식의 auto 폭 stretch가 natural width를 덮지 않게 합니다.
+
+현재 이 API에 값을 전달하는 decoder/resource owner는 없고 테스트가 측정 map을 직접 만듭니다. 이미지 decode, cache 교체, 재계산 scheduling, 앱 runtime integration은 완료되지 않았습니다.
 
 HostDocument 입력은 `HostDocumentSnapshot`, 해당 snapshot에 속한 HostRoot 직속 요소 handle, 같은 요소 하위 트리의 스타일 맵을 받습니다. HostDocument 원본의 generation·node ID·자식 순서·revision은 그대로 유지합니다. 이 변환은 CSS cascade 결과를 만들지 않으며 `LayoutStyle`은 여전히 호출자가 전달합니다.
 
@@ -50,7 +66,7 @@ assert_eq!(output.revision, input.revision());
 
 ## 입력 계약 `0.1.0`
 
-한 계산 입력은 루트 ID, 양수·유한 viewport, `LayoutInputRevision`, 모든 요소 노드의 스타일을 포함합니다. revision은 source·style·environment 세 축을 각각 보존합니다. 루트의 고정 너비·높이는 viewport와 정확히 같아야 합니다. viewport와 스타일 값은 같은 좌표 단위를 사용합니다. 이 계약은 CSS px을 Android dp나 iOS point로 변환하지 않습니다.
+한 계산 입력은 루트 ID, 양수·유한 viewport, `LayoutInputRevision`, 모든 요소 노드의 스타일을 포함합니다. revision은 source·style·environment와 measurement revision을 보존하며, measurement revision의 기본값은 초기값입니다. intrinsic snapshot overload는 별도 snapshot revision으로 output stamp를 갱신합니다. 루트의 고정 너비·높이는 viewport와 정확히 같아야 합니다. viewport와 스타일 값은 같은 좌표 단위를 사용합니다. 이 계약은 CSS px을 Android dp나 iOS point로 변환하지 않습니다.
 
 현재 표현 가능한 스타일은 다음과 같습니다.
 
@@ -85,6 +101,9 @@ assert_eq!(output.revision, input.revision());
 | 스타일 맵에 코어 트리 외 노드가 있음 | `UnknownStyleNode` |
 | HostDocument root가 현재 snapshot의 HostRoot 직속 요소가 아님 | `InvalidHostDocumentRoot` |
 | 선택한 HostDocument 하위 트리에 텍스트 노드가 있음 | `UnsupportedTextNode` |
+| measurement snapshot source가 현재 layout source와 다름 | `IntrinsicSizeSourceMismatch` |
+| 측정 map 안에 중복·unknown·non-leaf node가 있거나 길이가 0·음수·NaN·무한대 | `DuplicateIntrinsicSizeNode`, `UnknownIntrinsicSizeNode`, `UnsupportedIntrinsicSizing`, `InvalidIntrinsicSize` |
+| 보이는 auto/auto HTML image에 측정값이 없거나 현재 미지원 sizing 조합을 사용 | `MissingIntrinsicSize`, `UnsupportedIntrinsicSizing` |
 | 입력 ID·연결 그래프가 잘못됨 | 해당 `MissingRoot`, `DuplicateNode`, `MissingChild`, `DuplicateChild`, `RootHasParent`, `MultipleParents`, `DetachedNode`, `Cycle`, `UnreachableNode` |
 | 루트 크기가 viewport와 다름 | `RootSizeMismatch` |
 | 유한하지 않은 길이·간격·grow 또는 음수 padding·gap·grow·shrink | `InvalidStyle` |
@@ -99,11 +118,11 @@ assert_eq!(output.revision, input.revision());
 
 현재 S04 fixture admission API인 `spinon-style-to-render::build_s04_static_render_snapshot`은 호출자가 전달한 `CurrentLayoutInputs`와 계산 결과의 스타일 revision·environment revision·viewport를 비교합니다. 불일치하면 `SnapshotMismatch`를 반환하고 `StaticRenderSnapshot`을 만들지 않습니다. HostDocument generation/document/render revision과 layout의 전체 입력 stamp도 별도로 검증합니다. 값이 유한하지 않으면 revision 비교 전에 viewport 오류로 거부합니다.
 
-이 admission 검사는 계산 결과가 완성된 뒤 fixture snapshot으로 들어가는 동기 경계입니다. 아직 제품용 현재 입력 소유자, 여러 소유자의 원자적 snapshot 수집, 런타임 계산 취소·재예약, GPU frame queue에서의 최종 재검증은 구현하지 않았습니다. 따라서 이 검사를 제품 비동기 경합 또는 화면 표시 stale 폐기 완료로 해석하면 안 됩니다. [고정 비교 기준](evidence/s02-layout-revision-precomparison-2026-10-04.md)과 [실행 근거](evidence/s02-layout-revision-gate-2026-10-04.md)를 따릅니다.
+이 admission 검사는 계산 결과가 완성된 뒤 fixture snapshot으로 들어가는 동기 경계입니다. `CurrentLayoutInputs::with_intrinsic_size_revision`과 runtime render key는 이 measurement revision을 비교할 수 있지만, 아직 제품용 현재 decoder 입력 소유자, 여러 소유자의 원자적 snapshot 수집, 런타임 계산 취소·재예약, GPU frame queue에서의 최종 재검증은 구현하지 않았습니다. 따라서 이 검사를 제품 비동기 경합 또는 화면 표시 stale 폐기 완료로 해석하면 안 됩니다. [고정 비교 기준](evidence/s02-layout-revision-precomparison-2026-10-04.md)과 [실행 근거](evidence/s02-layout-revision-gate-2026-10-04.md)를 따릅니다.
 
 ## 현재 미지원
 
-이 인터페이스는 CSS parser/cascade 결과를 직접 받거나 변환하지 않습니다. CSS parser/cascade, selector, 상속, CSS 변수·단위 변환, percentage margin, border, min/max constraints, flex wrapping, 일반 정렬, position, overflow·scroll, Grid, 완전한 Block formatting, 글꼴 shaping, 텍스트/이미지 intrinsic measurement를 제공하지 않습니다. HostDocument의 텍스트 노드를 레이아웃 입력으로 받지 않으며 `Auto` leaf의 콘텐츠 기반 측정도 없습니다. 그러므로 일반 웹 Flexbox 동등성, 완성된 CSS 엔진 또는 사용자 UI 지원으로 해석하면 안 됩니다. 제한 CSS px margin 투영은 [C04.6 내부 계약](0027-c04-flex-margin-layout.md)에 둡니다.
+이 인터페이스는 CSS parser/cascade 결과를 직접 받거나 변환하지 않습니다. CSS parser/cascade, selector, 상속, CSS 변수·단위 변환, percentage margin, flex wrapping, 일반 정렬, position, overflow·scroll, Grid, 완전한 Block formatting, 글꼴 shaping 및 텍스트 intrinsic measurement를 제공하지 않습니다. image measurement는 별도 snapshot을 받은 내부 overload에 한하며 HTML image의 auto/auto 자연 크기만 포함합니다. intrinsic ratio, partial-auto, sizing keyword, 버튼·폼·video·SVG image, decode와 앱 연결은 미지원입니다. HostDocument의 텍스트 노드를 레이아웃 입력으로 받지 않습니다. 그러므로 일반 웹/CSS 동등성이나 사용자 UI 지원으로 해석하면 안 됩니다. 제한 CSS px margin 투영은 [C04.6 내부 계약](0027-c04-flex-margin-layout.md)에 둡니다.
 
 ## 의존성과 비교 기준
 

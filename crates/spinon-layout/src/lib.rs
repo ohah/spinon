@@ -9,6 +9,7 @@ mod grid;
 mod grid_auto_placement;
 mod grid_placement;
 mod host_document;
+mod intrinsic_size;
 mod percentage_basis;
 mod positioning;
 mod revision;
@@ -34,6 +35,7 @@ pub use grid::{
     GridPlacementMode, GridTrackSize,
 };
 pub use grid_placement::{GridItemInput, GridPlacementInput};
+pub use intrinsic_size::{LayoutIntrinsicSize, LayoutIntrinsicSizeSnapshot};
 pub use revision::{LayoutInputRevision, LayoutSourceRevision};
 pub use style::{
     AlignmentSafety, ContentAlignmentPosition, FlexDirection, FlexWrap, ItemAlignmentPosition,
@@ -465,6 +467,9 @@ mod absolute_position_tests;
 mod depth_tests;
 #[cfg(test)]
 mod fixed_position_tests;
+#[cfg(test)]
+#[path = "intrinsic_size_tests.rs"]
+mod intrinsic_size_tests;
 #[cfg(test)]
 mod positioning_tests;
 #[cfg(test)]

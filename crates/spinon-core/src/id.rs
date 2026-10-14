@@ -103,9 +103,36 @@ impl Default for EnvironmentRevision {
     }
 }
 
+/// 문서 세대 안에서 대체 요소 natural-size snapshot을 식별합니다.
+///
+/// 같은 문서의 모든 표면에서 공유하며, 증가 시 `checked_next()`를 사용합니다.
+#[derive(Clone, Copy, Debug, Eq, Hash, Ord, PartialEq, PartialOrd)]
+pub struct IntrinsicSizeRevision(u64);
+
+impl IntrinsicSizeRevision {
+    pub const INITIAL: Self = Self(0);
+
+    pub const fn checked_next(self) -> Option<Self> {
+        match self.0.checked_add(1) {
+            Some(next) => Some(Self(next)),
+            None => None,
+        }
+    }
+
+    pub const fn get(self) -> u64 {
+        self.0
+    }
+}
+
+impl Default for IntrinsicSizeRevision {
+    fn default() -> Self {
+        Self::INITIAL
+    }
+}
+
 #[cfg(test)]
 mod revision_tests {
-    use super::{EnvironmentRevision, StyleRevision};
+    use super::{EnvironmentRevision, IntrinsicSizeRevision, StyleRevision};
 
     #[test]
     fn owner_revisions_increment_independently_and_fail_closed_at_capacity() {
@@ -115,7 +142,13 @@ mod revision_tests {
         assert_eq!(environment.get(), 0);
         assert_eq!(style.checked_next().unwrap().get(), 1);
         assert_eq!(environment.checked_next().unwrap().get(), 1);
+        assert_eq!(IntrinsicSizeRevision::INITIAL.get(), 0);
+        assert_eq!(
+            IntrinsicSizeRevision::INITIAL.checked_next().unwrap().get(),
+            1
+        );
         assert_eq!(StyleRevision(u64::MAX).checked_next(), None);
         assert_eq!(EnvironmentRevision(u64::MAX).checked_next(), None);
+        assert_eq!(IntrinsicSizeRevision(u64::MAX).checked_next(), None);
     }
 }

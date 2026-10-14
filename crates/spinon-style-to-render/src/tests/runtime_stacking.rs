@@ -1,7 +1,8 @@
 use std::sync::Arc;
 
 use spinon_core::{
-    AttributeName, DocumentChangeBatch, DocumentOperation, HostDocument, HostParent, OwnerId,
+    AttributeName, DocumentChangeBatch, DocumentOperation, HostDocument, HostParent,
+    IntrinsicSizeRevision, OwnerId,
 };
 use spinon_style::{
     CssMediaEnvironment, CssViewport, StyloDocumentView,
@@ -16,6 +17,14 @@ const HTML: &str = "http://www.w3.org/1999/xhtml";
 pub(super) fn fixture(
     styles: &[&str],
     parents: &[Option<usize>],
+) -> Result<spinon_render::RuntimeRenderSnapshot, StyleRenderError> {
+    fixture_with_intrinsic_size_revision(styles, parents, IntrinsicSizeRevision::INITIAL)
+}
+
+fn fixture_with_intrinsic_size_revision(
+    styles: &[&str],
+    parents: &[Option<usize>],
+    intrinsic_size_revision: IntrinsicSizeRevision,
 ) -> Result<spinon_render::RuntimeRenderSnapshot, StyleRenderError> {
     assert_eq!(styles.len(), parents.len());
     assert!(!styles.is_empty() && parents[0].is_none());
@@ -68,8 +77,13 @@ pub(super) fn fixture(
         Default::default(),
     )
     .unwrap();
-    let output = compute_runtime_style_layout(&snapshot, handles[0], styles, viewport).unwrap();
-    let current = CurrentLayoutInputs::for_host_document(&snapshot, Default::default(), viewport);
+    let mut output = compute_runtime_style_layout(&snapshot, handles[0], styles, viewport).unwrap();
+    output.layout.revision = output
+        .layout
+        .revision
+        .with_intrinsic_size_revision(intrinsic_size_revision);
+    let current = CurrentLayoutInputs::for_host_document(&snapshot, Default::default(), viewport)
+        .with_intrinsic_size_revision(intrinsic_size_revision);
     build_runtime_render_snapshot(&snapshot, handles[0], &output, current)
 }
 
@@ -96,6 +110,18 @@ fn negative_zero_and_positive_contexts_follow_css_paint_phases() {
     .unwrap();
 
     assert_eq!(ids(&scene), [1, 3, 4, 5, 2]);
+}
+
+#[test]
+fn stacking_runtime_key_preserves_intrinsic_size_revision() {
+    let revision = IntrinsicSizeRevision::INITIAL.checked_next().unwrap();
+    let scene = fixture_with_intrinsic_size_revision(
+        &["display:block;width:120px;height:100px;background-color:#111111"],
+        &[None],
+        revision,
+    )
+    .unwrap();
+    assert_eq!(scene.key().intrinsic_size_revision(), revision);
 }
 
 #[test]

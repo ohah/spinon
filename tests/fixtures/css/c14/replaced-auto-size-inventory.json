@@ -1,0 +1,16 @@
+{
+  "schema": "spinon-css-c14-replaced-auto-size-inventory/v1",
+  "fixtureId": "C14.1-replaced-auto-size-v1",
+  "viewport": { "width": 120, "height": 80, "deviceScaleFactors": [1] },
+  "nodes": [
+    { "id": "image", "naturalWidth": 24, "naturalHeight": 16, "width": "auto", "height": "auto" },
+    { "id": "sized-width", "naturalWidth": 24, "naturalHeight": 16, "width": "48px", "height": "auto" },
+    { "id": "sized-height", "naturalWidth": 24, "naturalHeight": 16, "width": "auto", "height": "24px" }
+  ],
+  "comparison": {
+    "oracle": "Chrome DOM naturalWidth/naturalHeight and getBoundingClientRect; observations only",
+    "layoutSlice": "only both CSS dimensions auto with both natural dimensions present",
+    "toleranceCssPx": 0.5,
+    "dprInvariant": false
+  }
+}

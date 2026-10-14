@@ -1,7 +1,8 @@
 use std::collections::{BTreeMap, BTreeSet};
 
 use spinon_core::{
-    HostDocumentSnapshot, HostNodeHandle, HostNodeKind, HostParent, NodeId, StyleRevision,
+    HostDocumentSnapshot, HostNodeHandle, HostNodeKind, HostParent, IntrinsicSizeRevision, NodeId,
+    StyleRevision,
 };
 use spinon_layout::{LayoutInputRevision, LayoutSourceRevision};
 use spinon_render::{
@@ -62,6 +63,12 @@ impl CurrentLayoutInputs {
             ),
             viewport,
         }
+    }
+
+    /// 현재 image 측정 snapshot revision을 layout admission 기대값에 추가합니다.
+    pub const fn with_intrinsic_size_revision(mut self, revision: IntrinsicSizeRevision) -> Self {
+        self.revision = self.revision.with_intrinsic_size_revision(revision);
+        self
     }
 }
 
@@ -124,6 +131,7 @@ pub fn build_s04_static_render_snapshot(
         render_tree_revision: styles.render_tree_revision,
         style_revision: styles.style_revision,
         environment_revision: styles.viewport.environment_revision,
+        intrinsic_size_revision: output.layout.revision.intrinsic_size(),
         computed_style_profile: ComputedStyleProfileId::S04FlexPaintV1,
         layout_projection: LayoutProjectionId::TaffyFlexSubsetV1,
         paint_profile: PaintProfileId::OpaqueBackgroundColorV1,
@@ -207,6 +215,11 @@ pub(super) fn validate_revisions(
     if layout_revision.environment() != current.revision.environment() {
         return Err(StyleRenderError::SnapshotMismatch {
             field: "LayoutEnvironmentRevision",
+        });
+    }
+    if layout_revision.intrinsic_size() != current.revision.intrinsic_size() {
+        return Err(StyleRenderError::SnapshotMismatch {
+            field: "LayoutIntrinsicSizeRevision",
         });
     }
     Ok(())
