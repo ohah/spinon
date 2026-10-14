@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>C13.1 overflow clip oracle</title>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; font: 14px/1.4 sans-serif; }
+      body { padding: 20px; color: #15202b; background: #fff; }
+      h1 { margin: 0 0 16px; font-size: 20px; }
+      #cases { display: grid; grid-template-columns: repeat(3, 180px); gap: 18px; }
+      .case { position: relative; width: 180px; height: 150px; padding-top: 20px; }
+      .case h2 { position: absolute; top: 0; left: 0; margin: 0; font-size: 12px; }
+      .box {
+        position: absolute;
+        top: 20px;
+        left: 0;
+        width: 120px;
+        height: 96px;
+        padding: 10px;
+        border: 4px solid #15202b;
+        background: #e7edf2;
+      }
+      .target { width: 140px; height: 120px; background: #57a6d9; }
+      [data-case="visible"] .box { overflow: visible; }
+      [data-case="clip-x"] .box { overflow-x: clip; overflow-y: visible; }
+      [data-case="clip-y"] .box { overflow-x: visible; overflow-y: clip; }
+      [data-case="clip-both"] .box { overflow: clip; }
+      [data-case="clip-margin-padding"] .box {
+        overflow: clip;
+        overflow-clip-margin: padding-box 8px;
+      }
+      [data-case="clip-margin-content"] .box {
+        overflow: clip;
+        overflow-clip-margin: content-box 8px;
+      }
+      [data-case="clip-margin-border"] .box {
+        overflow: clip;
+        overflow-clip-margin: border-box 8px;
+      }
+      [data-case="clip-margin-invalid"] .box {
+        overflow: clip;
+        overflow-clip-margin: -1px;
+      }
+      [data-case="mixed-visible-hidden"] .box {
+        overflow-x: visible;
+        overflow-y: hidden;
+      }
+      [data-case="mixed-clip-auto"] .box {
+        overflow-x: clip;
+        overflow-y: auto;
+        overflow-clip-margin: border-box 8px;
+      }
+      [data-case="clip-margin-hidden"] .box {
+        overflow: hidden;
+        overflow-clip-margin: border-box 8px;
+      }
+      [data-case="hidden-float"] .box,
+      [data-case="clip-float"] .box,
+      [data-case="clip-flow-root-float"] .box {
+        top: 20px;
+        height: auto;
+        min-height: 0;
+      }
+      [data-case="hidden-float"] .box { overflow: hidden; }
+      [data-case="clip-float"] .box { overflow: clip; }
+      [data-case="clip-flow-root-float"] .box {
+        display: flow-root;
+        overflow: clip;
+      }
+      .float { float: left; width: 48px; height: 36px; background: #f2a541; }
+      .float-case .box { position: relative; top: 20px; left: 0; }
+      .abs-case .box { position: relative; overflow: clip; }
+      .abs-target {
+        position: absolute;
+        left: 84px;
+        top: 42px;
+        width: 42px;
+        height: 30px;
+        background: #e3544e;
+      }
+      [data-case="nested-clip"] .box { overflow: clip; }
+      .nested-inner {
+        position: absolute;
+        top: 26px;
+        left: 24px;
+        width: 78px;
+        height: 68px;
+        padding: 4px;
+        border: 3px solid #8a45ad;
+        background: #f4ecf7;
+        overflow-x: clip;
+        overflow-y: visible;
+      }
+      .escape-ancestor { position: relative; }
+      .escape-ancestor .box { position: static; }
+      .escape-ancestor .abs-target { left: 94px; top: 64px; }
+    </style>
+  </head>
+  <body>
+    <h1>C13.1 overflow clip oracle</h1>
+    <main id="cases">
+      <section class="case" data-case="visible">
+        <h2>visible control</h2><div class="box"><div class="target" id="visible-target"></div></div>
+      </section>
+      <section class="case" data-case="clip-x">
+        <h2>clip x only</h2><div class="box"><div class="target" id="clip-x-target"></div></div>
+      </section>
+      <section class="case" data-case="clip-y">
+        <h2>clip y only</h2><div class="box"><div class="target" id="clip-y-target"></div></div>
+      </section>
+      <section class="case" data-case="clip-both">
+        <h2>clip both axes</h2><div class="box"><div class="target" id="clip-both-target"></div></div>
+      </section>
+      <section class="case" data-case="clip-margin-padding">
+        <h2>padding-box + 8px</h2><div class="box"><div class="target" id="clip-margin-padding-target"></div></div>
+      </section>
+      <section class="case" data-case="clip-margin-content">
+        <h2>content-box + 8px</h2><div class="box"><div class="target" id="clip-margin-content-target"></div></div>
+      </section>
+      <section class="case" data-case="clip-margin-border">
+        <h2>border-box + 8px</h2><div class="box"><div class="target" id="clip-margin-border-target"></div></div>
+      </section>
+      <section class="case" data-case="clip-margin-invalid">
+        <h2>negative margin compatibility</h2><div class="box"><div class="target" id="clip-margin-invalid-target"></div></div>
+      </section>
+      <section class="case" data-case="clip-margin-hidden">
+        <h2>hidden ignores clip margin</h2><div class="box"><div class="target" id="clip-margin-hidden-target"></div></div>
+      </section>
+      <section class="case" data-case="mixed-visible-hidden">
+        <h2>visible + hidden normalization</h2><div class="box"><div class="target" id="mixed-visible-hidden-target"></div></div>
+      </section>
+      <section class="case" data-case="mixed-clip-auto">
+        <h2>clip + auto normalization</h2><div class="box"><div class="target" id="mixed-clip-auto-target"></div></div>
+      </section>
+      <section class="case float-case" data-case="hidden-float">
+        <h2>hidden contains float</h2><div class="box"><div class="float"></div></div>
+      </section>
+      <section class="case float-case" data-case="clip-float">
+        <h2>clip does not contain float</h2><div class="box"><div class="float"></div></div>
+      </section>
+      <section class="case float-case" data-case="clip-flow-root-float">
+        <h2>clip + flow-root contains float</h2><div class="box"><div class="float"></div></div>
+      </section>
+      <section class="case abs-case" data-case="positioned-contained">
+        <h2>positioned clip ancestor</h2><div class="box"><div class="abs-target" id="positioned-contained-target"></div></div>
+      </section>
+      <section class="case abs-case escape-ancestor" data-case="positioned-escape">
+        <h2>static clip ancestor / outer CB</h2><div class="box"><div class="abs-target" id="positioned-escape-target"></div></div>
+      </section>
+      <section class="case" data-case="nested-clip">
+        <h2>nested intersecting clip chain</h2><div class="box"><div class="nested-inner"><div class="target" id="nested-clip-target"></div></div></div>
+      </section>
+    </main>
+    <script>
+      window.collectC131ClipOracle = () => {
+        const cases = [];
+        for (const section of document.querySelectorAll('[data-case]')) {
+          const box = section.querySelector('.box');
+          const target = box.querySelector('.target, .abs-target');
+          const style = getComputedStyle(box);
+          const scrollBefore = { top: box.scrollTop, left: box.scrollLeft };
+          box.scrollTop = 20;
+          box.scrollLeft = 20;
+          const scrollAfterRequest = { top: box.scrollTop, left: box.scrollLeft };
+          box.scrollTop = scrollBefore.top;
+          box.scrollLeft = scrollBefore.left;
+          const rect = (element) => {
+            const { x, y, width, height, right, bottom } = element.getBoundingClientRect();
+            return { x, y, width, height, right, bottom };
+          };
+          const item = {
+            id: section.dataset.case,
+            overflowX: style.overflowX,
+            overflowY: style.overflowY,
+            overflowClipMargin: style.overflowClipMargin,
+            borderRightWidth: style.borderRightWidth,
+            paddingRight: style.paddingRight,
+            scrollBefore,
+            scrollAfterRequest,
+            box: rect(box),
+            target: target ? rect(target) : null,
+            scrollTopAfterReset: box.scrollTop,
+            scrollLeftAfterReset: box.scrollLeft,
+          };
+          if (item.id === 'hidden-float' || item.id === 'clip-float' || item.id === 'clip-flow-root-float') {
+            item.floatHeight = rect(box.firstElementChild).height;
+          }
+          if (target) {
+            const targetRect = target.getBoundingClientRect();
+            item.clipAncestors = [];
+            const clipAncestorElements = [];
+            for (let ancestor = target.parentElement; ancestor && ancestor !== document.body; ancestor = ancestor.parentElement) {
+              const ancestorStyle = getComputedStyle(ancestor);
+              if (ancestorStyle.overflowX !== 'visible' || ancestorStyle.overflowY !== 'visible') {
+                clipAncestorElements.push({ element: ancestor, style: ancestorStyle });
+                item.clipAncestors.push({
+                  tagName: ancestor.tagName,
+                  className: ancestor.className,
+                  overflowX: ancestorStyle.overflowX,
+                  overflowY: ancestorStyle.overflowY,
+                  overflowClipMargin: ancestorStyle.overflowClipMargin,
+                  rect: rect(ancestor),
+                });
+              }
+            }
+            const isHit = (x, y) => {
+              const top = document.elementFromPoint(x, y);
+              return Boolean(top && (top === target || target.contains(top)));
+            };
+            const fixedPosition = (varyingAxis) => {
+              const fixedAxis = varyingAxis === 'x' ? 'y' : 'x';
+              let min = fixedAxis === 'x' ? targetRect.left : targetRect.top;
+              let max = fixedAxis === 'x' ? targetRect.right : targetRect.bottom;
+              for (const { element, style: ancestorStyle } of clipAncestorElements) {
+                const overflow = fixedAxis === 'x' ? ancestorStyle.overflowX : ancestorStyle.overflowY;
+                if (overflow === 'visible') continue;
+                const ancestorRect = element.getBoundingClientRect();
+                min = Math.max(min, fixedAxis === 'x' ? ancestorRect.left : ancestorRect.top);
+                max = Math.min(max, fixedAxis === 'x' ? ancestorRect.right : ancestorRect.bottom);
+              }
+              return min <= max ? (min + max) / 2 : null;
+            };
+            const hitRange = (axis) => {
+              const horizontal = axis === 'x';
+              const start = Math.floor(horizontal ? targetRect.left : targetRect.top);
+              const end = Math.ceil(horizontal ? targetRect.right : targetRect.bottom) - 1;
+              const fixed = fixedPosition(axis);
+              if (fixed === null) return { fixedAt: null, ranges: [] };
+              const ranges = [];
+              let rangeStart = null;
+              let previous = null;
+              for (let position = start; position <= end; position += 1) {
+                const hit = horizontal
+                  ? isHit(position, fixed)
+                  : isHit(fixed, position);
+                if (hit && rangeStart === null) rangeStart = position;
+                if (!hit && rangeStart !== null) {
+                  ranges.push([rangeStart, previous]);
+                  rangeStart = null;
+                }
+                previous = position;
+              }
+              if (rangeStart !== null) ranges.push([rangeStart, previous]);
+              return { fixedAt: fixed, ranges };
+            };
+            item.hitRanges = { x: hitRange('x'), y: hitRange('y') };
+          }
+          cases.push(item);
+        }
+        return {
+          viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio },
+          userAgent: navigator.userAgent,
+          negativeClipMarginSupported: CSS.supports('overflow-clip-margin', '-1px'),
+          cases,
+        };
+      };
+    </script>
+  </body>
+</html>
