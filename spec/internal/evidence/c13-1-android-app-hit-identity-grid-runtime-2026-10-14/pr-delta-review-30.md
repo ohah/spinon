@@ -1,4 +1,4 @@
-# C13.1 Android 앱 hit identity grid PR 변경 관점 검토 30개 · 2026-10-14
+# C13.1 Android 앱 hit identity grid PR 변경 관점 검토 30개 · 2026-10-15
 
 PR에 올릴 코드·상태·근거·이미지·플랫폼 설명을 계획 검토 및 구현 검토와 분리해 확인했다. 각 항목은 제출 delta의 독립적인 오해·누락·회귀 경계를 다룬다.
 
@@ -33,6 +33,6 @@ PR에 올릴 코드·상태·근거·이미지·플랫폼 설명을 계획 검�
 | 27 | test log 수치가 현재 tree와 무관한 이전 run이다 | Rust tree 변경 뒤 workspace tests 779/0/4, workspace Clippy, feature FFI tests/Clippy와 Node validator 5/5를 기록했다. Java 변경 뒤 app build/AVD를 다시 실행했다. **통과.** |
 | 28 | PR screenshot URL은 raw GitHub에서 표시되지 않는다 | PR #164 페이지를 agent-browser session `c13-1-apphit`으로 열어 두 raw PNG가 모두 `complete=true`인지 확인했다. natural sizes는 앱 화면 1080×2400, PixelCopy 788×263이다. **통과.** |
 | 29 | PR template·labels·evidence links가 빠진다 | 본문은 상태 ID, 계약 0060, 실행 근거, 두 inline image, 남은 범위를 채웠다. GitHub에서 `enhancement`, `area: android`, `area: ffi` labels도 확인했다. **통과.** |
-| 30 | 오래된 mergeability/check 상태를 보고 병합한다 | PR #164 head `3972c3d`는 `MERGEABLE`, status check rollup/checks는 비어 있었다. main protection은 required checks 없음, required approvals 0, linear history 및 admin enforcement enabled다. 다음 문서-only commit을 push한 뒤 현재 head를 재조회하고 Rebase and merge로 처리한다. **현재 head 확인 통과; 최종 head 재조회 필요.** |
+| 30 | 오래된 mergeability/check 상태를 보고 병합한다 | PR #164는 `MERGEABLE`, status check rollup/checks는 비어 있었다. main protection은 required checks 없음, required approvals 0, linear history 및 admin enforcement enabled다. 추가 push 뒤에는 현재 head를 다시 조회하고 Rebase and merge로 처리한다. **이 검토 시점 통과; 병합 직전 재조회 필요.** |
 
 최종 evidence-link review commit 뒤에는 PR head·checks·mergeability를 다시 확인한다. PR #164는 repository 규칙대로 Rebase and merge 대상이다.
