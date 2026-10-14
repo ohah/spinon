@@ -40,7 +40,7 @@ Fetch 요청 → NetworkHost → 네트워크 전송 계층 → Android / iOS �
 | GPU 렌더러 | 그리기 명령, 텍스트·이미지·클리핑·합성, 프레임 제출 | 컴포넌트 상태와 JS 객체 |
 | 플랫폼 호스트 | GPU 표면·입력·IME·접근성 연결, 폰트/이미지 자원과 표시 완료 신호 | 프레임워크의 컴포넌트 상태 |
 
-`spinon-image`는 포맷 decoder와 revision-bound metadata adapter이며 resource loader가 아니다. 플랫폼 host가 만든 요청에 decoded bytes를 연결하는 caller 역할은 아직 runtime에 구현되지 않았다. 현재 Android/iOS 앱이 이 crate를 불러 이미지를 그리거나 표시하지 않는다. 이 계약과 한계는 [내부 인터페이스 0060](../spec/internal/0060-u05-png-image-decode.md)을 따른다.
+`spinon-image`는 포맷 decoder와 revision-bound metadata adapter이며 resource loader가 아니다. 플랫폼 host가 만든 요청에 decoded bytes를 연결하는 caller 역할은 아직 runtime에 구현되지 않았다. 현재 Android/iOS 앱이 이 crate를 불러 이미지를 그리거나 표시하지 않는다. 이 계약과 한계는 [내부 인터페이스 0061](../spec/internal/0061-u05-png-image-decode.md)을 따른다.
 
 이벤트는 플랫폼 입력 → GPU 장면의 노드 히트 테스트 → 노드 ID·이벤트 유형 → V8 호스트 바인딩 → 프레임워크 또는 DOM 이벤트 리스너 순서로 전달한다. 화면 변경은 어댑터나 DOM façade가 공통 트리에 작업을 제출하고 Rust가 논리 변경을 확정한 뒤 GPU 렌더러가 프레임으로 표시한다. DOM 호환 API를 지원할 때 논리 트리 조회는 성공한 변경을 같은 JS 실행 흐름에서 관찰해야 한다. 화면 표시와 레이아웃 측정은 별도 시점·계약으로 둔다. 플랫폼 호스트는 화면 표면과 IME·접근성 연결을 맡는다. 앱 JS와 일반 이벤트는 UI·GPU 프레임 처리와 분리된 백그라운드 경로가 기본이며, UI 실행 스크립트는 명시적이고 제한된 후속 기능으로만 검토한다. 세부 동작은 [UI 트리·이벤트 명세](../spec/0002-ui-tree-events.md)를 따른다.
 
