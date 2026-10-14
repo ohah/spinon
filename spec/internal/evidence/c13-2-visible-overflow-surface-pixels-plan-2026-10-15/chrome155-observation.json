@@ -1,0 +1,144 @@
+{
+  "schema": "spinon-c13-2-visible-border-pixel-probe/v1",
+  "browser": {
+    "name": "agent-browser / HeadlessChrome",
+    "version": "155.0.8059.40",
+    "platform": "macOS",
+    "platform_version": "26.5.1",
+    "revision": "cfaadc5a132d78e1828635aa8405a499f3e14864",
+    "agent_browser_version": "0.31.1"
+  },
+  "viewport": {
+    "width_css_px": 400,
+    "height_css_px": 240,
+    "device_pixel_ratio": 1
+  },
+  "fixture": "tests/fixtures/css/c13/c13-2-visible-border-pixel-probe.html",
+  "source_fixture": "tests/fixtures/css/c13/runtime-scroll-container-c13-2.js",
+  "screenshot": {
+    "file": "chrome155-c13-2-visible-border-400x240.png",
+    "width": 400,
+    "height": 240,
+    "sha256": "9a0be14fab0e3a75ee4f223f1fae2a16ccb242c5f3ba499684bd5c016f0c81b6"
+  },
+  "geometry_css_px": {
+    "root": {
+      "x": 0,
+      "y": 0,
+      "width": 380,
+      "height": 180
+    },
+    "visible_parent_border_box": {
+      "x": 10,
+      "y": 10,
+      "width": 120,
+      "height": 82,
+      "right": 130
+    },
+    "escaped_child_border_box": {
+      "x": 143,
+      "y": 21,
+      "width": 30,
+      "height": 24,
+      "right": 173,
+      "bottom": 45
+    }
+  },
+  "samples": [
+    {
+      "id": "visible-escape-outside-parent",
+      "css_cell": [
+        150,
+        30
+      ],
+      "css_pixel_center": [
+        150.5,
+        30.5
+      ],
+      "expected_rgba": [
+        227,
+        84,
+        78,
+        255
+      ],
+      "element": "c132-visible-escape",
+      "outside_parent_right": true
+    },
+    {
+      "id": "outside-parent-gap",
+      "css_cell": [
+        136,
+        30
+      ],
+      "css_pixel_center": [
+        136.5,
+        30.5
+      ],
+      "expected_rgba": [
+        16,
+        24,
+        39,
+        255
+      ],
+      "element": "c132-root",
+      "outside_parent_right": true
+    },
+    {
+      "id": "parent-interior",
+      "css_cell": [
+        20,
+        20
+      ],
+      "css_pixel_center": [
+        20.5,
+        20.5
+      ],
+      "expected_rgba": [
+        52,
+        66,
+        86,
+        255
+      ],
+      "element": "c132-visible-port"
+    },
+    {
+      "id": "parent-border-strip",
+      "css_cell": [
+        11,
+        11
+      ],
+      "css_pixel_center": [
+        11.5,
+        11.5
+      ],
+      "expected_rgba": [
+        240,
+        198,
+        116,
+        255
+      ],
+      "element": "c132-visible-port"
+    },
+    {
+      "id": "root-background",
+      "css_cell": [
+        50,
+        110
+      ],
+      "css_pixel_center": [
+        50.5,
+        110.5
+      ],
+      "expected_rgba": [
+        16,
+        24,
+        39,
+        255
+      ],
+      "element": "c132-root"
+    }
+  ],
+  "source_revision": "5eab85543bd941744b0818dab5663289b64aa645",
+  "fixture_sha256": "0acb40afe6ceebed85f4d1833b9679c5cb1f1d52e6f794bb95dbd7d9e52c177e",
+  "source_fixture_sha256": "c3de5d45578b6eabd79ee2d94403fd8a3df4e913e9e7d3f133235c851bf71afc"
+}

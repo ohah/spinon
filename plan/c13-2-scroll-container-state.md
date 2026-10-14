@@ -3,6 +3,7 @@
 - **상태:** Chrome 155 사전 기준·내부 계약 고정 · 구현 및 시뮬레이터 검증 진행 중 (2026-10-15)
 - **기준 커밋:** `e2f346f3dda6d56f68fd6ef2d0255610a282d0f3` (C13.1 surface pixel-center gate 통합 뒤)
 - **내부 계약:** [`0062-c13-2-scroll-state`](../spec/internal/0062-c13-2-scroll-state.md), 숫자 버전 `0.1.0-draft` 유지
+- **visible overflow 표면 픽셀 후속 계획:** [고정 Chrome 표본과 검증 계획](./c13-2-visible-overflow-surface-pixels.md) · Android PixelCopy와 iOS Metal drawable 검증 전
 - **구현 전 비교:** [C13.2 Chrome/agent-browser oracle](../spec/internal/evidence/c13-2-scroll-container-precomparison-2026-10-15/README.md)
 - **계획 실패 관점 20개:** [검토 기록](../spec/internal/evidence/c13-2-scroll-container-plan-review-2026-10-15.md)
 - **계획 PR 변경 관점 30개:** [검토 기록](../spec/internal/evidence/c13-2-scroll-container-pr-review-2026-10-15.md)
