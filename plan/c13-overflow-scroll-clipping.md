@@ -49,9 +49,9 @@ C13은 `overflow-x/y`와 `overflow`의 `visible`, `clip`, `hidden`, `scroll`, `a
 ### 현재 C13.1 브랜치 진행 상태 · 2026-10-14
 
 - `feat/c13-1-overflow-clip`에서 내부 `RuntimeBlockFlexOverflowClipV1` profile과 별도 [계약 초안 0060](../spec/internal/0060-c13-1-overflow-clip.md)을 구현 중이다. 이는 제품 CSS 지원 선언이나 C13.1 완료가 아니다.
-- 고정 Chrome 155 fixture에서 13개 node geometry가 모두 일치했다. agent-browser screenshot에서 사전 등록한 11개 solid-color paint sample을 Android API 37 ARM64 AVD SurfaceView PixelCopy와 exact 비교했다. 원본 log·PNG·artifact hash는 [AVD 실행 근거](../spec/internal/evidence/c13-1-overflow-clip-android-avd-2026-10-14/README.md)에 있다.
+- 고정 Chrome 155 fixture에서 13개 node geometry가 모두 일치했다. agent-browser screenshot에서 사전 등록한 11개 solid-color paint sample을 Android API 37 ARM64 AVD SurfaceView PixelCopy와 exact 비교했고, agent-browser DOM `elementFromPoint()` 11점과 runtime box hit query 결과도 모두 일치했다. 원본 log·PNG·hit-test 좌표는 [AVD 실행 근거](../spec/internal/evidence/c13-1-overflow-clip-android-avd-2026-10-14/README.md)에 있다.
 - C13.1 완료 관문 중 전체 사전 비교 matrix, clip 밖 draw와 실제 hit/event negative controls의 범위, clip ancestry 예약 실패 후 실제 runtime worker 복구, clip 대 hidden/flow-root float 대조, unsupported radius/transform 조합 fail-closed, iOS Simulator, WPT 후보 분류가 남아 있다. snapshot builder의 clip ancestry 예약 실패와 같은 reserve 재사용은 회귀 테스트를 통과했다. 구현 관점 20개와 PR 변경 관점 30개는 각각 [구현 검토](../spec/internal/evidence/c13-1-overflow-clip-implementation-review-2026-10-14.md), [PR 변경 검토](../spec/internal/evidence/c13-1-overflow-clip-pr-review-2026-10-14.md)에 기록했다. [PR #158](https://github.com/ohah/spinon/pull/158)은 계획 PR #157 branch 기반 draft이고 현재 GitHub status checks는 보고되지 않았다.
-- 화면 표본은 paint 결과만 확인한다. `elementFromPoint()` 계열 hit-test 검증과 CSSOM 이벤트 전달은 분리되어 있고, 이 실행은 Android software renderer의 AVD 결과다.
+- PixelCopy 표본은 paint 결과만 확인한다. `elementFromPoint()` 대조는 고정 좌표의 box hit query이며 DOM/CSSOM 이벤트 전달과 전체 hit-test matrix는 미검증이다. 이 실행은 Android software renderer의 AVD 결과다.
 - [구현 실패 관점 검토 20개](../spec/internal/evidence/c13-1-overflow-clip-implementation-review-2026-10-14.md)와 [PR 변경 관점 검토 30개](../spec/internal/evidence/c13-1-overflow-clip-pr-review-2026-10-14.md)는 별도 기록으로 유지한다.
 
 `overflow-clip-margin`의 rounded edge, overflow와 border-radius, transformed descendant가 scrollable overflow에 미치는 효과는 각각 C22/C23에서 입력 계약이 제공된 뒤 교차 fixture를 추가한다. 현재 단계가 이를 지원하지 않으면 해당 조합은 진단과 함께 fail-closed하며 C13 완료 관문에 통합 실행을 남긴다.

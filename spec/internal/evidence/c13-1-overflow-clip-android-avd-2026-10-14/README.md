@@ -1,6 +1,6 @@
 # C13.1 overflow clip · Chrome/Android AVD runtime 비교 · 2026-10-14
 
-이 자료는 fixture 전용 C13.1 제한 profile의 paint/layout 확인이다. C13.1 전체 완료, DOM hit-test event 전달, WPT 적합성 또는 제품 CSS 지원을 선언하지 않는다.
+이 자료는 fixture 전용 C13.1 제한 profile의 layout·paint 확인과 고정 point hit-test query 비교다. C13.1 전체 완료, DOM hit-test event 전달, WPT 적합성 또는 제품 CSS 지원을 선언하지 않는다.
 
 ## 입력과 환경
 
@@ -32,10 +32,11 @@ adb -s emulator-5554 shell am start -S -n dev.spinon.bootstrap/.MainActivity \
 
 - V8·Stylo·Taffy·WGPU fixture가 `status=0`, `layout=ready`, `boxes=13`으로 평가됐다. run `a101139308e`의 [Android 원본 log](android-api37-arm64.log)에서 C13 node frame 13개는 Chrome의 [고정 geometry](chrome155-runtime-observation.json)와 모두 일치했다. CSS px 최대 오차는 `0`이다.
 - Android `SurfaceViewPixelCapture`가 PNG를 저장한 뒤 다시 읽고 11개 고정 CSS 좌표를 표본화했다. clip 안/밖, visible overflow, padding-box `overflow-clip-margin`, 중첩 x/y 축, positioned child escape 대조가 Chrome screenshot의 같은 좌표 RGBA와 11/11 exact였다. 표본별 observed/expected RGBA와 `status=matched`는 log에 보존했다.
+- agent-browser로 같은 Chrome 155 fixture에서 `document.elementFromPoint()`를 11개 사전 고정 좌표에 호출했다. runtime의 `scene.hit_test_css_point()` 회귀 테스트가 visible overflow, clip 안/밖, clip margin 확장, nested x/y 축, positioned escape와 root/ancestor fallback의 반환 node를 11/11 일치시켰다. 브라우저 결과는 [Chrome observation JSON](chrome155-runtime-observation.json)의 `hitTestSamples`에, runtime 비교는 `runtime_hit_test_matches_agent_browser_chrome_155_element_from_point_samples`에 있다.
 - [Android PixelCopy PNG](android-api37-arm64-pixelcopy.png)는 앱의 SurfaceView producer buffer다. scanout/compositor 뒤 실제 화면, GPU hardware 또는 실기기 결과로 확대하지 않는다.
 - [feature isolation](feature-isolation.txt)은 rustc와 같은 LLVM 22 `llvm-nm`으로 default `spinon-ffi` static library에서 C13.1 FFI 심볼 2개가 없는지, feature artifact에는 있는지 확인했고, `strings`로 `c131-root` fixture payload의 부재/존재도 각각 확인했다. 이는 해당 정적 라이브러리만 검사한 것이며 최종 앱 artifact 크기나 제품 빌드 적합성 측정이 아니다.
 - 변경된 8개 Rust package 전체 test target을 `c13-1-overflow-clip-fixture-test` feature on으로 실행해 통과했다([로그](changed-packages-cargo-test.log)). clip ancestry 예약 실패를 한 번 주입한 뒤 같은 reserve로 snapshot 빌드를 재시도하는 회귀 테스트도 포함한다. `cargo test --locked --workspace`, `cargo clippy --locked --workspace --all-targets -- -D warnings`, `cargo fmt --all -- --check`, `git diff --check`, fixture module boundary test 5/5도 현재 변경에서 통과했다([workspace test](workspace-cargo-test.log), [Clippy](workspace-clippy.log)). 같은 앱 runtime worker의 오류 뒤 재요청 복구는 별도 관문으로 남아 있다.
 
 ## 남은 판정
 
-이 실행에는 iOS Simulator, WPT, browser와 runtime 사이 hit-test query 대조, 전체 C13.1 oracle matrix, clip ancestry allocation failure 후 동일 runtime worker 복구, `clip`과 `hidden`/`flow-root` float 비교가 없다. snapshot builder 경계의 단일 예약 실패와 같은 reserve 재사용은 단위 테스트로 확인했다. overflow scrolling, scroll state/CSSOM, gesture, scrollbar, radius/transform, 공개 CSS 지원은 범위 밖이다.
+전체 C13.1 oracle matrix, clip 바깥 draw 및 hit/event negative-control breadth, clip ancestry allocation failure 후 동일 runtime worker 복구, `clip`과 `hidden`/`flow-root` float 비교, unsupported radius/transform 재검증, iOS Simulator 통합, WPT 후보 분류는 남았다. 여기서 검증한 query는 고정 좌표의 runtime box hit 결과이며 DOM event dispatch를 호출하거나 입증하지 않는다. snapshot builder 경계의 단일 예약 실패와 같은 reserve 재사용은 단위 테스트로 확인했다. overflow scrolling, scroll state/CSSOM, gesture, scrollbar, radius/transform, 공개 CSS 지원은 범위 밖이다.
