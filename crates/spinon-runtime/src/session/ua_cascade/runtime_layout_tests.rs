@@ -6,6 +6,10 @@ mod c11_grid_tests;
 #[path = "runtime_layout_tests/depth_tests.rs"]
 mod depth_tests;
 
+#[cfg(feature = "c13-1-overflow-clip-worker-test")]
+#[path = "runtime_layout_tests/c13_1_overflow_clip_worker_tests.rs"]
+mod c13_1_overflow_clip_worker_tests;
+
 fn make_layout_snapshot(
     root_style: &str,
     child_styles_in_dom_order: &[&str],

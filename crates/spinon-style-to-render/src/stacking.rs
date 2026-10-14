@@ -44,6 +44,19 @@ pub(super) fn build_runtime_render_snapshot(
     build_runtime_render_snapshot_with_reserve(document, root, output, current, &mut SystemReserve)
 }
 
+#[cfg(feature = "c13-1-overflow-clip-worker-test")]
+#[doc(hidden)]
+pub fn build_runtime_render_snapshot_with_overflow_clip_ancestry_allocation_failure(
+    document: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    output: &StyleLayoutOutput,
+    current: CurrentLayoutInputs,
+) -> Result<RuntimeRenderSnapshot, StyleRenderError> {
+    let mut reserve =
+        reserve::FaultInjectingReserve::failing_at_stage_occurrence("overflow clip ancestry", 3);
+    build_runtime_render_snapshot_with_reserve(document, root, output, current, &mut reserve)
+}
+
 fn build_runtime_render_snapshot_with_reserve<R: FallibleReserve>(
     document: &HostDocumentSnapshot,
     root: HostNodeHandle,

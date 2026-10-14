@@ -305,15 +305,18 @@ fn overflow_clip_ancestry_reservation_failure_returns_error_and_recovers_on_same
     )
     .unwrap();
     assert_eq!(recorded, baseline);
-    let ancestry_fail_at = recording
+    let ancestry_stage_count = recording
         .stages()
         .iter()
-        .enumerate()
-        .filter_map(|(index, stage)| (*stage == "overflow clip ancestry").then_some(index + 1))
-        .nth(2)
-        .expect("target lineage must reserve for target, clip parent, and root");
+        .filter(|stage| **stage == "overflow clip ancestry")
+        .count();
+    assert!(
+        ancestry_stage_count >= 3,
+        "target lineage must reserve for target, clip parent, and root"
+    );
 
-    let mut injected = FaultInjectingReserve::failing_at(ancestry_fail_at);
+    let mut injected =
+        FaultInjectingReserve::failing_at_stage_occurrence("overflow clip ancestry", 3);
     let error = build_runtime_render_snapshot_with_reserve(
         &input.document,
         input.root,
