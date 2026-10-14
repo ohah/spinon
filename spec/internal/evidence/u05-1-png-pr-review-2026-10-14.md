@@ -14,7 +14,7 @@
 | 4 | pixel count 또는 RGBA 길이 산술이 overflow한다 | `usize` 변환과 곱셈·4배 산술에 checked 연산을 사용하고 실패 폐쇄한다. |
 | 5 | RGBA 결과 크기가 전역 byte cap을 넘는다 | pixel cap에 더해 `MAX_RGBA_BYTES` 및 decoder output size를 각각 확인한다. |
 | 6 | 메모리 압박에서 infallible Vec 성장이 발생한다 | decoder 및 RGBA buffer를 `try_reserve_exact`로 예약하고 allocation 오류를 반환한다. |
-| 7 | `png::Limits`가 전체 프로세스 메모리를 강제한다고 오해한다 | 계약 0060은 decoder limit이 best-effort이며 caller-owned 입력/output을 별도 검사한다고 구분한다. |
+| 7 | `png::Limits`가 전체 프로세스 메모리를 강제한다고 오해한다 | 계약 0061은 decoder limit이 best-effort이며 caller-owned 입력/output을 별도 검사한다고 구분한다. |
 | 8 | interlaced PNG에서 패스 순서가 최종 이미지 행으로 노출된다 | Adam7 fixture의 전체 row-major RGBA가 비interlaced fixture와 byte 단위로 일치한다. |
 | 9 | grayscale·alpha·RGB 입력이 잘못된 channel 수나 alpha로 변환된다 | grayscale/RGB의 opaque alpha와 grayscale-alpha/RGBA의 alpha를 각각 fixture로 확인한다. |
 | 10 | indexed palette와 `tRNS` 투명도가 소실된다 | palette 및 투명도 fixture에서 두 pixel의 RGBA sample을 확인한다. |

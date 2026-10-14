@@ -48,5 +48,5 @@ U05의 첫 구현 단위로 정적 PNG 바이트를 제한된 RGBA8 이미지로
 5. 동일 24×16 바이트를 HostDocument→request→decode→resource snapshot→C14.1 layout까지 통과시켜 Chrome 관찰값과 대조한다.
 6. formatter, crate test, 관련 layout/style test, Android ARM64 target compile을 기록한다. 허용된 API 37 AVD에서 `spinon-image` Rust test executable을 직접 실행해 순수 디코더/요청 시험만 확인하며 이를 APK/runtime 통합 근거로 확대하지 않는다.
 7. 구현 결과를 새 20개 실패 관점으로 검토하고 결함을 고친 뒤 영향 관점을 다시 확인한다.
-8. 내부 계약 `0060`, 아키텍처, U05/C14 상태와 증거 인덱스를 같은 작업에 갱신한다. 전체 U05/C14를 완료로 체크하지 않는다.
+8. 내부 계약 `0061`, 아키텍처, U05/C14 상태와 증거 인덱스를 같은 작업에 갱신한다. 전체 U05/C14를 완료로 체크하지 않는다.
 9. PR은 프로젝트 PR 기준에 따라 독립 실패 관점으로 검토하고, 필수 CI·mergeability를 현재 GitHub 상태에서 확인한다.
