@@ -6,6 +6,9 @@ use spinon_render::RuntimeRenderSnapshot;
 const CHROME_RUNTIME_MATRIX_OBSERVATION: &str = include_str!(
     "../../../../../../spec/internal/evidence/c13-1-overflow-clip-runtime-matrix-2026-10-14/chrome155-runtime-matrix-observation.json"
 );
+const CHROME_HIT_IDENTITY_OBSERVATION: &str = include_str!(
+    "../../../../../../spec/internal/evidence/c13-1-overflow-clip-hit-identity-2026-10-14/chrome155-element-hit-identity.json"
+);
 
 fn assert_clip_bounds(
     scene: &RuntimeRenderSnapshot,
@@ -266,6 +269,131 @@ pub(super) fn assert_hit_ranges_match_observation(
                 "Chrome {case_id} {axis_name} elementFromPoint at {coordinate}"
             );
         }
+    }
+}
+
+pub(super) fn assert_hit_identities_match_chrome(
+    scene: &RuntimeRenderSnapshot,
+    target_node: NodeId,
+    root_node: NodeId,
+    clip_node: NodeId,
+    nested_inner_node: Option<NodeId>,
+    case_id: &str,
+) {
+    let observation: Value = serde_json::from_str(CHROME_HIT_IDENTITY_OBSERVATION)
+        .expect("agent-browser Chrome 155 element hit identity observation JSON");
+    assert_eq!(
+        observation["browser"]["version"].as_str(),
+        Some("155.0.8059.40")
+    );
+    assert_eq!(
+        observation["browser"]["revision"].as_str(),
+        Some("cfaadc5a132d78e1828635aa8405a499f3e14864-refs/branch-heads/8059@{#936}")
+    );
+    assert_eq!(
+        observation["browser"]["userAgent"].as_str(),
+        Some(EXPECTED_USER_AGENT)
+    );
+    assert_eq!(
+        observation["browser"]["viewport"]["width"].as_u64(),
+        Some(1280)
+    );
+    assert_eq!(
+        observation["browser"]["viewport"]["height"].as_u64(),
+        Some(1100)
+    );
+    assert_eq!(
+        observation["browser"]["viewport"]["dpr"].as_f64(),
+        Some(1.0)
+    );
+    assert_eq!(
+        observation["fixture"]["sha256"].as_str(),
+        Some("b7acd7e63f79355b28cd480511b9be82e0f2bef478f1aadf685eb3b0bf4ef16a")
+    );
+    assert_eq!(
+        observation["fixture"]["sourceObservationSha256"].as_str(),
+        Some("fd6d9e66825bc453609245950635f4fc56054ae9011b14d2f8901d490ecde4b5")
+    );
+    let case = observation["cases"]
+        .as_array()
+        .expect("fixed Chrome hit identity cases")
+        .iter()
+        .find(|case| case["id"].as_str() == Some(case_id))
+        .unwrap_or_else(|| panic!("missing Chrome hit identity case {case_id}"));
+    assert_eq!(
+        case["targetId"].as_str(),
+        Some(format!("{case_id}-target").as_str()),
+        "Chrome fixture target identity for {case_id}"
+    );
+
+    let render_box = target(scene, target_node);
+    let frame = render_box.frame_css_px();
+    for (field, actual) in [
+        ("x", frame.x()),
+        ("y", frame.y()),
+        ("width", frame.width()),
+        ("height", frame.height()),
+    ] {
+        let expected = case["target"][field]
+            .as_f64()
+            .unwrap_or_else(|| panic!("Chrome {case_id} target {field}"))
+            as f32;
+        assert!(
+            (actual - expected).abs() <= 0.5,
+            "Chrome {case_id} target frame {field}: runtime={actual}, oracle={expected}"
+        );
+    }
+
+    for axis in ["x", "y"] {
+        let horizontal = axis == "x";
+        let start = case["target"][if horizontal { "x" } else { "y" }]
+            .as_f64()
+            .unwrap()
+            .floor() as i32;
+        let edge = case["target"][if horizontal { "right" } else { "bottom" }]
+            .as_f64()
+            .unwrap()
+            .ceil() as i32;
+        let fixed = case["axes"][axis]["fixedAt"]
+            .as_f64()
+            .unwrap_or_else(|| panic!("Chrome {case_id} hit identity {axis} fixed point"))
+            as f32;
+        let runs = case["axes"][axis]["runs"]
+            .as_array()
+            .unwrap_or_else(|| panic!("Chrome {case_id} hit identity {axis} runs"));
+        let mut next = start;
+        for run in runs {
+            let from = run["from"].as_i64().unwrap() as i32;
+            let to = run["to"].as_i64().unwrap() as i32;
+            assert_eq!(from, next, "Chrome {case_id} {axis} identity run gap");
+            assert!(to >= from, "Chrome {case_id} {axis} inverted identity run");
+            let expected_node = match run["hit"].as_str().unwrap() {
+                "target" => Some(target_node),
+                "box" => Some(clip_node),
+                "inner" => Some(nested_inner_node.unwrap_or_else(|| {
+                    panic!("Chrome {case_id} reported an unmodeled nested inner hit")
+                })),
+                "root" | "main" | "body" | "html" => Some(root_node),
+                other => panic!("unmodeled Chrome {case_id} hit identity {other}"),
+            };
+            for coordinate in from..=to {
+                let actual_node = if horizontal {
+                    scene.hit_test_css_point(coordinate as f32, fixed)
+                } else {
+                    scene.hit_test_css_point(fixed, coordinate as f32)
+                }
+                .map(|hit| hit.node_id());
+                assert_eq!(
+                    actual_node, expected_node,
+                    "Chrome {case_id} {axis}={coordinate} at {axis} fixed point {fixed}"
+                );
+            }
+            next = to + 1;
+        }
+        assert_eq!(
+            next, edge,
+            "Chrome {case_id} {axis} identity runs end early"
+        );
     }
 }
 

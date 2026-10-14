@@ -6,6 +6,16 @@ The browser capture used agent-browser 0.31.1 with Google Chrome for Testing `15
 
 [`chrome155-runtime-matrix-observation.json`](chrome155-runtime-matrix-observation.json) records ten live Chrome rows. The prior three selected rows (`clip-y`, `clip-margin-border`, `clip-margin-hidden`) remain in [the earlier observation](../c13-1-overflow-clip-matrix-2026-10-14/chrome155-selected-observation.json). Together, the Rust module checks 13 target cases. For each case it compares frame edges and each integer CSS-pixel target hit interval on both axes; this is not a two-dimensional sweep of the whole viewport.
 
+## 17행 런타임 판정 범위
+
+| 행 유형 | 수 | Rust 판정 | 남은 표면 검증 |
+| --- | ---: | --- | --- |
+| 유효 C13.1 geometry case | 13 | frame, 축별 target interval, target frame 안의 Chrome topmost NodeId를 비교한다. exact identity는 [별도 근거](../c13-1-overflow-clip-hit-identity-2026-10-14/README.md)에 있다. | 유효행 전체 PixelCopy/Metal surface, target frame 밖 전체 2D paint·hit·event 표본은 미완료다. |
+| 음수 `overflow-clip-margin` | 1 | cascade diagnostic 뒤 layout 전에 reject한다. [검증 로그](cargo-negative-margin-test.log)는 1 passed다. | Chrome의 paint/event 동작을 제품 의미로 채택하지 않았다. |
+| float/BFC 변형 | 3 | Chrome 비교 3행 모두를 [`c131_float_formatting_comparison_cases_fail_closed`](../../../../crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c13_1_float_boundary_tests.rs) 한 테스트가 순회해 `unsupported_inline_property`로 reject한다. [정정된 실행 로그](cargo-float-failclosed-test.log)는 1 passed다. | float geometry parity는 C26 소유 범위다. |
+
+따라서 17행의 런타임 disposition은 확인했지만 17행 surface matrix나 C13.1 완료를 뜻하지 않는다. 처음 추가한 float 실행 로그는 잘못된 package/filter로 테스트 0개를 선택했으며 [`기록`](cargo-float-filter-no-match.log)은 그대로 보존했다. 올바른 package와 filter의 실행 결과는 위 정정 로그를 따른다.
+
 | New Chrome row | Overflow / margin | target frame (x, y, w, h) | target hit x / y, inclusive integer CSS px |
 | --- | --- | --- | --- |
 | `visible` | visible / 0px | 34, 98, 140, 120 | 34–173 / 98–217 |

@@ -1,7 +1,7 @@
 use super::super::{axis_bounds, scene_for_viewport, target};
 use super::{
-    assert_frame_matches_observation, assert_hit_ranges_match_observation,
-    runtime_matrix_chrome_case,
+    assert_frame_matches_observation, assert_hit_identities_match_chrome,
+    assert_hit_ranges_match_observation, runtime_matrix_chrome_case,
 };
 #[test]
 fn visible_axis_and_clip_margin_edges_match_chrome_frame_and_full_hit_ranges() {
@@ -82,5 +82,6 @@ fn visible_axis_and_clip_margin_edges_match_chrome_frame_and_full_hit_ranges() {
         let oracle = runtime_matrix_chrome_case(case_id);
         assert_frame_matches_observation(&scene, nodes[2], case_id, &oracle);
         assert_hit_ranges_match_observation(&scene, nodes[2], case_id, &oracle);
+        assert_hit_identities_match_chrome(&scene, nodes[2], nodes[0], nodes[1], None, case_id);
     }
 }

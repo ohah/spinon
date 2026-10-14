@@ -485,6 +485,16 @@ fn content_box_clip_margin_limits_positioned_descendant_hits_to_chrome_visual_ed
         observation["case"]["hitRanges"]["y"]["ranges"],
         serde_json::json!([[54, 89]])
     );
+    assert_eq!(
+        observation["case"]["fallbackHits"],
+        serde_json::json!([
+            {"x":119,"y":55,"elementId":"target"},
+            {"x":120,"y":55,"elementId":"clip"},
+            {"x":122,"y":55,"elementId":"clip"},
+            {"x":123,"y":55,"elementId":"clip"},
+            {"x":124,"y":55,"elementId":"root"}
+        ])
+    );
 
     let (input, nodes) = overflow_runtime_inputs(
         &[
@@ -520,12 +530,17 @@ fn content_box_clip_margin_limits_positioned_descendant_hits_to_chrome_visual_ed
         scene.hit_test_css_point(119.0, 55.0).unwrap().node_id(),
         target_id
     );
-    assert_ne!(
-        scene
-            .hit_test_css_point(122.0, 55.0)
-            .map(|render_box| render_box.node_id()),
-        Some(target_id),
-        "positioned descendant must not receive the border-strip hit outside Chrome's content-box clip margin"
+    for x in [120.0, 122.0, 123.0] {
+        assert_eq!(
+            scene.hit_test_css_point(x, 55.0).unwrap().node_id(),
+            nodes[1],
+            "Chrome's clip parent remains the fallback target at x={x}"
+        );
+    }
+    assert_eq!(
+        scene.hit_test_css_point(124.0, 55.0).unwrap().node_id(),
+        nodes[0],
+        "the clip parent's border box ends at its right edge"
     );
 }
 

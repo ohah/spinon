@@ -51,11 +51,38 @@
       "width": 60,
       "x": 74,
       "y": 54
-    }
+    },
+    "fallbackHits": [
+      {
+        "x": 119,
+        "y": 55,
+        "elementId": "target"
+      },
+      {
+        "x": 120,
+        "y": 55,
+        "elementId": "clip"
+      },
+      {
+        "x": 122,
+        "y": 55,
+        "elementId": "clip"
+      },
+      {
+        "x": 123,
+        "y": 55,
+        "elementId": "clip"
+      },
+      {
+        "x": 124,
+        "y": 55,
+        "elementId": "root"
+      }
+    ]
   },
   "fixture": {
     "path": "spec/internal/evidence/c13-1-overflow-clip-runtime-matrix-2026-10-14/content-box-positioned-hit-control.html",
     "sha256": "cf635425b6717a565da37f29649bc04723ab3358fa8f2bf8783bd4721697217f"
   },
-  "scope": "Controlled Chrome observation for an absolute child inside a positioned clip ancestor with content-box 8px margin. Captures computed overflow, frame and target elementFromPoint range."
+  "scope": "Controlled Chrome observation for an absolute child inside a positioned clip ancestor with content-box 8px margin. Captures computed overflow, frame, target hit range, and exact target/clip/root fallback identities."
 }

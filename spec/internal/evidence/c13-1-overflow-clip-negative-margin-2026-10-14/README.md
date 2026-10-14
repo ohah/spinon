@@ -39,7 +39,7 @@
 - `cargo test --locked -p spinon-style-to-render c13_1_clip_matrix`: 3 passed, 0 failed.
 - 이 증거 slice에서는 ADB, Android AVD 앱 실행, 실기기, iOS Simulator, GPU surface, WPT를 실행하지 않았다. Chrome 관찰은 agent-browser로 얻었다.
 
-이 결과는 invalid CSS 값의 parser diagnostic 및 layout fail-closed 경계만 검증한다. Chrome이 파싱한 음수 값의 전체 paint·event 의미를 명세상 정답으로 선언하지 않으며, C13.1 17-row runtime/surface matrix와 C13 완료 조건은 남아 있다.
+이 결과는 invalid CSS 값의 parser diagnostic 및 layout fail-closed 경계만 검증한다. Chrome이 파싱한 음수 값의 전체 paint·event 의미를 명세상 정답으로 선언하지 않는다. 후속 [17행 runtime decision ledger](../c13-1-overflow-clip-runtime-matrix-2026-10-14/README.md)는 13개 유효행, 이 invalid margin 행, float 3변형의 런타임 판정을 분리한다. 전체 유효행 surface matrix와 C13 완료 조건은 남아 있다.
 
 ## 적대 검토
 

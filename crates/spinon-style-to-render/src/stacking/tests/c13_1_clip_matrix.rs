@@ -161,6 +161,9 @@ fn y_only_clip_matches_chrome_without_restricting_x_hit_range() {
     );
     assert_frame_matches_chrome(&scene, nodes[2], "clip-y");
     assert_hit_ranges_match_chrome(&scene, nodes[2], "clip-y");
+    runtime_matrix::assert_hit_identities_match_chrome(
+        &scene, nodes[2], nodes[0], nodes[1], None, "clip-y",
+    );
 }
 
 #[test]
@@ -193,6 +196,14 @@ fn border_box_clip_margin_matches_chrome_hit_ranges_on_both_axes() {
     );
     assert_frame_matches_chrome(&scene, nodes[2], "clip-margin-border");
     assert_hit_ranges_match_chrome(&scene, nodes[2], "clip-margin-border");
+    runtime_matrix::assert_hit_identities_match_chrome(
+        &scene,
+        nodes[2],
+        nodes[0],
+        nodes[1],
+        None,
+        "clip-margin-border",
+    );
 }
 
 #[test]
@@ -225,6 +236,14 @@ fn hidden_ignores_clip_margin_and_matches_chrome_padding_clip_border_hit_ranges(
     );
     assert_frame_matches_chrome(&scene, nodes[2], "clip-margin-hidden");
     assert_hit_ranges_match_chrome(&scene, nodes[2], "clip-margin-hidden");
+    runtime_matrix::assert_hit_identities_match_chrome(
+        &scene,
+        nodes[2],
+        nodes[0],
+        nodes[1],
+        None,
+        "clip-margin-hidden",
+    );
 }
 
 #[path = "c13_1_clip_matrix/runtime_matrix.rs"]
