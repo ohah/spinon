@@ -49,6 +49,8 @@ SHA-256 manifest는 [Chrome 기준, 수정 전·후 캡처와 비교 JSON](artif
 
 ![iPhone 17 Pro Simulator에서 실행한 C13.1 compact fixture](ios-26-2-simulator-screen.png)
 
+세 실행 이미지는 [PR #162](https://github.com/ohah/spinon/pull/162) 본문에도 첨부했다. 게시 뒤 agent-browser로 PR 페이지를 열어 세 이미지가 모두 완전히 로드되고 각각 `1080×2400`, `788×263`, `1206×2622`로 표시되는 것을 확인했다.
+
 ## 테스트와 빌드
 
 - `node --test tools/css-reference/*.test.mjs`: 426 passed, 0 failed. Node 의존성은 기존 checkout의 설치본을 읽기 전용으로 잠시 연결해 사용했고, 테스트 뒤 isolated worktree symlink를 제거했다. 로그: [css-reference-tests.log](css-reference-tests.log).

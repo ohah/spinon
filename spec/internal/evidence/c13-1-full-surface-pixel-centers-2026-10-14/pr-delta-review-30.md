@@ -22,7 +22,7 @@
 | 16 | 출력 JSON은 success만 남겨 mismatch 원인을 잃는다 | 전체 mismatch별 CSS/PixelCopy 좌표와 expected/actual RGBA, 범위, scale, hashes를 저장한다. **통과.** |
 | 17 | 기존 고정 52점 비교를 전체 surface 30,000점으로 오인한다 | README, plan, STATUS가 52점과 CSS center grid의 범위를 따로 기록한다. **통과.** |
 | 18 | before/after 이미지가 같은 파일 또는 잘못된 캡처다 | 수정 전·후 각각 PixelCopy와 화면 PNG의 SHA 및 실제 dimensions를 manifest에 고정했다. **통과.** |
-| 19 | PR 화면 이미지 링크가 비공개/만료 경로다 | PR 본문은 공개 PR commit SHA 기반 raw GitHub 경로를 사용하고 agent-browser에서 실제 로딩을 확인한다. **게시 후 확인 예정.** |
+| 19 | PR 화면 이미지 링크가 비공개/만료 경로다 | PR #162 본문은 공개 commit SHA 기반 raw GitHub 경로를 쓴다. agent-browser에서 세 이미지가 `complete=true`이고 원본 크기 1080×2400, 788×263, 1206×2622임을 확인했다. **통과.** |
 | 20 | 첨부 화면이 실행 앱 대신 crop된 표면만 보여준다 | Android 전체 앱 화면과 원본 PixelCopy surface를 별도 이미지로 제공하고 iOS Simulator 화면도 별도 표기한다. **통과.** |
 | 21 | AVD 캡처가 실기기 GPU 증거로 표현된다 | API 37 ARM64 AVD, `ro.kernel.qemu=1`, ANGLE/Vulkan/SwiftShader와 `PixelCopy` 범위를 명시한다. **통과.** |
 | 22 | APK 실행이 빌드된 앱과 연결되지 않는다 | 설치 APK와 산출물 SHA-256 일치값 `1b5212…3406a` 및 runtime run ID/PID를 로그에 보존했다. **통과.** |
@@ -32,7 +32,7 @@
 | 26 | WPT/scroll/event/CSSOM 결과가 존재하는 것처럼 상태를 쓴다 | WPT 미실행과 scroll/CSSOM 및 event dispatch 미검증을 README·STATUS의 남은 범위로 유지했다. **통과.** |
 | 27 | 빌드 로그에 개발자 로컬 경로 또는 사용자 정보가 유출된다 | 제출 대상 `*.log`에서 작업자 home, worktree 절대경로, username 패턴이 없는지 재검색했다. **통과.** |
 | 28 | 증거 PNG/비교 JSON이 PR 중간에 교체돼 문서의 수치와 달라진다 | SHA-256 manifest와 비교 JSON이 각 artifact bytes를 연결한다. **통과.** |
-| 29 | PR 설명이 필수 template의 status/spec/evidence/limits를 빠뜨린다 | `.github/pull_request_template.md`의 각 항목을 PR 본문에서 채우고 type/area label을 확인한다. **게시 전 확인 대상.** |
-| 30 | CI/mergeability가 바뀐 뒤 이전 상태만 보고 병합한다 | push 후 PR checks, mergeability와 protection을 다시 조회하고 전부 만족할 때만 Rebase and merge한다. **병합 직전 확인 대상.** |
+| 29 | PR 설명이 필수 template의 status/spec/evidence/limits를 빠뜨린다 | PR #162 본문에 C13.1 상태, 계약 0060, 동작 근거, 남은 범위를 채웠다. `bug`, `area: renderer`, `area: testing`, `area: android`, `area: ios` 라벨도 실제 PR에서 확인했다. **통과.** |
+| 30 | CI/mergeability가 바뀐 뒤 이전 상태만 보고 병합한다 | PR #162의 초기 head `6b23dfa`는 mergeable이었다. branch protection은 required checks 없음·승인 0개였고 `gh pr checks`는 checks 없음으로 응답했다. **초기 확인 통과; 최종 push 뒤 다시 조회하고 merge한다.** |
 
-게시 후 확인 예정 항목은 PR URL과 실제 GitHub 화면에서 결과를 갱신한다. branch SHA와 required checks가 확정되기 전에는 PR 게시물의 이미지/병합 조건을 통과로 세지 않는다.
+PR 본문과 실제 GitHub 화면에서 이미지, template 항목, 라벨을 확인했다. 보호 설정에 요구된 CI/승인은 없지만, 병합 전 최신 head의 mergeability와 check 상태를 다시 조회한다.
