@@ -24,16 +24,15 @@ Bundled 1 module in 3ms
 
   app.js  17.59 KB  (entry point)
 
-   Compiling spinon-ffi v0.1.0 (/private/tmp/spinon-c14-1-android-runtime-adapter/crates/spinon-ffi)
-    Finished `release` profile [optimized] target(s) in 0.65s
-    Finished `release` profile [optimized] target(s) in 0.07s
+    Finished `release` profile [optimized] target(s) in 0.10s
+    Finished `release` profile [optimized] target(s) in 0.06s
 Android ARM64 unwind runtime: /Users/yoonhb/Library/Android/sdk/ndk/27.1.12297006/toolchains/llvm/prebuilt/darwin-x86_64/lib/clang/18/lib/linux/aarch64/libunwind.a
 Android ARM64 V8 smoke 라이브러리 준비 완료: /private/tmp/spinon-c14-1-android-runtime-adapter/build/spinon/android/jniLibs/arm64-v8a/libspinon_bootstrap.so
 
 > Task :app:preBuild
 > Task :app:preDebugBuild
 > Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
-> Task :app:generateDebugBuildConfig
+> Task :app:generateDebugBuildConfig FROM-CACHE
 > Task :app:javaPreCompileDebug UP-TO-DATE
 > Task :app:checkDebugAarMetadata UP-TO-DATE
 > Task :app:processDebugNavigationResources UP-TO-DATE
@@ -81,4 +80,4 @@ Note: Recompile with -Xlint:deprecation for details.
 [Incubating] Problems report is available at: file:///private/tmp/spinon-c14-1-android-runtime-adapter/platforms/android/build/reports/problems/problems-report.html
 
 BUILD SUCCESSFUL in 3s
-37 actionable tasks: 9 executed, 28 up-to-date
+37 actionable tasks: 8 executed, 1 from cache, 28 up-to-date

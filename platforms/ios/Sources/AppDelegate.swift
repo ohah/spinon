@@ -80,8 +80,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         let runLifecycleProbe = arguments.contains("--spinon-dom-gc-auto")
         let runC141IntrinsicSizeFixture = arguments.contains("--spinon-c141-intrinsic-size")
         if runC141IntrinsicSizeFixture {
+            // This route returns before all other experiments; reject their launch flags here.
             let conflictingFixtureArguments = arguments.filter {
-                $0.hasPrefix("--spinon-c") && $0 != "--spinon-c141-intrinsic-size"
+                $0.hasPrefix("--spinon-") && $0 != "--spinon-c141-intrinsic-size"
             }
             let window = UIWindow(frame: UIScreen.main.bounds)
             let controller = C141IntrinsicSizeFixtureViewController()
