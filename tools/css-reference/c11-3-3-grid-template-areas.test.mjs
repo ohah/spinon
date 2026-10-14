@@ -221,15 +221,17 @@ test('C11.3.3 앱 runtime matrix와 표면 pixel fixture가 Chrome 기준에 고
   const builderPath = 'tools/css-reference/build-c11-3-3-grid-template-areas-runtime-matrix.mjs';
   const capturePath = 'tools/css-reference/capture-c11-3-3-grid-template-areas-runtime.mjs';
   const matrixCapturePath = 'tools/css-reference/capture-c11-3-3-grid-template-areas-runtime-matrix.mjs';
+  const revisionReuseCapturePath = 'tools/css-reference/capture-c11-3-3-grid-template-areas-revision-reuse.mjs';
   const deviceHelperPath = 'tools/css-reference/c11-3-3-grid-template-areas-runtime-device.mjs';
   const appDelegatePath = 'platforms/ios/Sources/AppDelegate.swift';
   const iosDemoPath = 'platforms/ios/Sources/C0410RuntimeGpuDemo.swift';
   const androidMainActivityPath = 'platforms/android/app/src/main/java/dev/spinon/bootstrap/MainActivity.java';
   const androidDemoPath = 'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java';
-  const [runtimeBytes, mobileBytes, builderBytes, captureBytes, matrixCaptureBytes,
+  const [runtimeBytes, mobileBytes, builderBytes, captureBytes, matrixCaptureBytes, revisionReuseCaptureBytes,
     deviceHelperBytes, appDelegateBytes, iosDemoBytes, androidMainActivityBytes, androidDemoBytes,
     inventoryBytes, htmlBytes] = await Promise.all([
     read(runtimePath), read(mobilePath), read(builderPath), read(capturePath), read(matrixCapturePath),
+    read(revisionReuseCapturePath),
     read(deviceHelperPath), read(appDelegatePath), read(iosDemoPath), read(androidMainActivityPath),
     read(androidDemoPath), read(paths.inventory), read(paths.html),
   ]);
@@ -312,6 +314,8 @@ test('C11.3.3 앱 runtime matrix와 표면 pixel fixture가 Chrome 기준에 고
     'node tools/css-reference/capture-c11-3-3-grid-template-areas-runtime-matrix.mjs android-avd');
   assert.equal(scripts['css:capture:c11-3-3-grid-template-areas:android-avd:single'],
     'node tools/css-reference/capture-c11-3-3-grid-template-areas-runtime.mjs android-avd');
+  assert.equal(scripts['css:capture:c11-3-3-grid-template-areas:android-avd:revision-reuse'],
+    'node tools/css-reference/capture-c11-3-3-grid-template-areas-revision-reuse.mjs android-avd');
   const matrixCapture = matrixCaptureBytes.toString('utf8');
   assert.ok(matrixCapture.includes('assert.equal(target, \'android-avd\''));
   assert.ok(matrixCapture.includes('observation.cases.find(({ id }) => id === scene.id)'));
@@ -321,6 +325,11 @@ test('C11.3.3 앱 runtime matrix와 표면 pixel fixture가 Chrome 기준에 고
   assert.ok(matrixCapture.includes("outcome: 'expected-rejection', rejection:"));
   assert.ok(matrixCapture.includes('compareC11AndroidPixelCopyScene'));
   assert.ok(matrixCapture.includes("'SPINON_ENABLE_C04_RUNTIME_GPU=1'"));
+  const revisionReuseCapture = revisionReuseCaptureBytes.toString('utf8');
+  assert.ok(revisionReuseCapture.includes("assert.equal(target, 'android-avd'"));
+  assert.ok(revisionReuseCapture.includes('same_host=true first_status=0 second_status=0'));
+  assert.ok(revisionReuseCapture.includes('second_document_revision'));
+  assert.ok(revisionReuseCapture.includes('second_render_tree_revision'));
   assert.ok(capture.includes('--spinon-c1133-grid-template-areas'));
   assert.ok(appDelegateBytes.toString('utf8')
     .includes('arguments.contains("--spinon-c1133-grid-template-areas")'));
@@ -374,4 +383,16 @@ test('Android AVD capture는 emulator serial만 허용하고 실기기와 다중
   assert.throws(() => selectAndroidAVDSerial('List of devices attached'), /AVD를 찾지 못했습니다/);
   assert.throws(() => selectAndroidAVDSerial([devices, 'emulator-5556 device product:sdk_gphone64_arm64'].join('\n')),
     /여러 대 연결/);
+});
+
+test('area가 없는 bare ident 기준은 pinned Chrome 154 첫 named line에 고정된다', async () => {
+  const capture = (await read('tools/css-reference/capture-c11-3-3-bare-ident-no-area-precomparison.mjs'))
+    .toString('utf8');
+  assert.ok(capture.includes("assert.equal(browserVersion.product, 'Chrome/154.0.8037.92')"));
+  assert.ok(capture.includes("assert.equal(browserVersion.revision, '@334b65d254ccc35df4fca82706d1753227b01039')"));
+  assert.ok(capture.includes("assert.equal(captureResult.result.computed.gridTemplateAreas, 'none')"));
+  assert.ok(capture.includes("{ x: 40, y: 30, width: 20, height: 20 }"));
+  const scripts = JSON.parse((await read('package.json')).toString('utf8')).scripts;
+  assert.equal(scripts['css:reference:c11-3-3-bare-ident-no-area'],
+    'node tools/css-reference/capture-c11-3-3-bare-ident-no-area-precomparison.mjs');
 });

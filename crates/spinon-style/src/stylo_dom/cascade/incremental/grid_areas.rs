@@ -5,6 +5,10 @@ use super::super::{ComputedCssGridArea, ComputedCssGridTemplateAreas, CssCascade
 
 const PROPERTY: &str = "grid-template-areas";
 
+#[cfg(test)]
+#[path = "grid_areas/tests.rs"]
+mod tests;
+
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub(in crate::stylo_dom::cascade) enum GridTemplateAreasReservationSite {
     Areas,

@@ -1,0 +1,8 @@
+   Compiling spinon-ffi v0.1.0 (/private/tmp/spinon-c11-3-3-work/crates/spinon-ffi)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.70s
+     Running unittests src/lib.rs (target/debug/deps/spinon_ffi-74dc181e9e7ebb73)
+
+running 1 test
+test runtime_gpu::fixtures::c11_3_3::tests::revision_reuse_source_mutates_the_area_on_a_reused_runtime_host ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 43 filtered out; finished in 0.00s

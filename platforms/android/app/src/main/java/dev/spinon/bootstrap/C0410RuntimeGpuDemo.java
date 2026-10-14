@@ -126,7 +126,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         for (String candidate : C1133_GRID_TEMPLATE_AREAS_SCENE_IDS) {
             if (candidate.equals(sceneId)) return true;
         }
-        return false;
+        return "revision-reuse".equals(sceneId);
     }
     private static boolean isC1133GridTemplateAreasPixelSamples(
             List<SurfaceViewPixelCapture.Sample> samples
@@ -1122,7 +1122,21 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         Log.i(TAG, "SPINON_C0410_ENVIRONMENT viewport=" + widthCssPx + "x" + heightCssPx
                 + " scale=" + environmentScale + " dark=" + dark + " " + environment);
-        String result = c1133GridTemplateAreasRequested
+        String result;
+        if (c1133GridTemplateAreasRequested
+                && "revision-reuse".equals(c1133GridTemplateAreasSceneId)) {
+            String firstRevisionResult = decode(nativeEvalC1133GridTemplateAreasFixture(
+                    host, c1133GridTemplateAreasSceneId, c1133GridTemplateAreasRunId));
+            String secondRevisionResult = decode(nativeEvalC1133GridTemplateAreasFixture(
+                    host, c1133GridTemplateAreasSceneId, c1133GridTemplateAreasRunId));
+            boolean revisionReusePassed = c1133GridRevisionReusePassed(
+                    host, c1133GridTemplateAreasRunId, firstRevisionResult, secondRevisionResult);
+            result = revisionReusePassed ? secondRevisionResult
+                    : !firstRevisionResult.startsWith("status=0 ") ? firstRevisionResult
+                    : !secondRevisionResult.startsWith("status=0 ") ? secondRevisionResult
+                    : "status=-11 C11.3.3 same-host revision reuse assertion failed";
+        } else {
+            result = c1133GridTemplateAreasRequested
                 ? decode(nativeEvalC1133GridTemplateAreasFixture(
                         host, c1133GridTemplateAreasSceneId,
                         c1133GridTemplateAreasRunId))
@@ -1200,6 +1214,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : authorStylesheetsProbeRequested
                         ? decode(nativeEvalAuthorStylesheetsFixture(host))
                         : decode(nativeEvalFixture(host));
+        }
         if (c1133GridTemplateAreasRequested
                 && C1133_GRID_TEMPLATE_AREAS_DEFAULT_SCENE_ID.equals(c1133GridTemplateAreasSceneId)
                 && result.startsWith("status=0 ")) {
@@ -2278,6 +2293,91 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     + " environment_revision=" + reportField(report, "environment_revision=");
         }
         return report.length() <= 180 ? report : report.substring(0, 180) + "…";
+    }
+
+    private static boolean c1133GridRevisionReusePassed(
+            long host, String runId, String first, String second
+    ) {
+        String[] firstFrames = c1133GridNodeFrames(first);
+        String[] secondFrames = c1133GridNodeFrames(second);
+        boolean expected = false;
+        long firstDocumentRevision = -1;
+        long secondDocumentRevision = -1;
+        long firstRenderRevision = -1;
+        long secondRenderRevision = -1;
+        long firstItemNode = -1;
+        long secondItemNode = -1;
+        String firstItemFrame = firstFrames.length > 1 ? firstFrames[1] : "missing";
+        String secondItemFrame = secondFrames.length > 1 ? secondFrames[1] : "missing";
+        try {
+            firstDocumentRevision = Long.parseLong(reportField(first, "document_revision="));
+            secondDocumentRevision = Long.parseLong(reportField(second, "document_revision="));
+            firstRenderRevision = Long.parseLong(reportField(first, "render_tree_revision="));
+            secondRenderRevision = Long.parseLong(reportField(second, "render_tree_revision="));
+            boolean bothLayoutsReady = first.startsWith("status=0 ")
+                    && first.contains(" layout=ready ")
+                    && second.startsWith("status=0 ")
+                    && second.contains(" layout=ready ");
+            if (bothLayoutsReady && firstFrames.length == 2 && secondFrames.length == 2) {
+                firstItemNode = c1133FrameNodeId(firstItemFrame);
+                secondItemNode = c1133FrameNodeId(secondItemFrame);
+                expected = firstFrames.length == 2 && secondFrames.length == 2
+                    && secondDocumentRevision > firstDocumentRevision
+                    && secondRenderRevision > firstRenderRevision
+                    && firstItemNode == secondItemNode
+                    && c1133FrameValue(firstItemFrame, "x") == 0.0f
+                    && c1133FrameValue(firstItemFrame, "y") == 0.0f
+                    && c1133FrameValue(firstItemFrame, "width") == 80.0f
+                    && c1133FrameValue(firstItemFrame, "height") == 40.0f
+                    && c1133FrameValue(secondItemFrame, "x") == 80.0f
+                    && c1133FrameValue(secondItemFrame, "y") == 0.0f
+                    && c1133FrameValue(secondItemFrame, "width") == 80.0f
+                    && c1133FrameValue(secondItemFrame, "height") == 40.0f;
+            }
+        } catch (RuntimeException error) {
+            Log.e(TAG, "SPINON_C1133_GRID_REVISION_PARSE_ERROR run_id=" + runId, error);
+        }
+        Log.i(TAG, "SPINON_C1133_GRID_REVISION_NODE_FRAME run_id=" + runId
+                + " phase=before frame=" + firstItemFrame);
+        Log.i(TAG, "SPINON_C1133_GRID_REVISION_NODE_FRAME run_id=" + runId
+                + " phase=after frame=" + secondItemFrame);
+        Log.i(TAG, "SPINON_C1133_GRID_REVISION_SUMMARY run_id=" + runId
+                + " scene_id=revision-reuse host_id=" + Long.toHexString(host)
+                + " same_host=true first_status=" + reportField(first, "status=")
+                + " second_status=" + reportField(second, "status=")
+                + " first_document_revision=" + firstDocumentRevision
+                + " second_document_revision=" + secondDocumentRevision
+                + " first_render_tree_revision=" + firstRenderRevision
+                + " second_render_tree_revision=" + secondRenderRevision
+                + " first_item_node=" + firstItemNode + " second_item_node=" + secondItemNode
+                + " expected=" + expected);
+        return expected;
+    }
+
+    private static String[] c1133GridNodeFrames(String report) {
+        String marker = "node_frames_css_px=[";
+        int start = report.indexOf(marker);
+        int end = start < 0 ? -1 : report.indexOf(']', start + marker.length());
+        if (start < 0 || end < 0) return new String[0];
+        String value = report.substring(start + marker.length(), end);
+        return value.isEmpty() ? new String[0] : value.split(";", -1);
+    }
+
+    private static long c1133FrameNodeId(String frame) {
+        String marker = "node=";
+        int start = frame.indexOf(marker);
+        int end = frame.indexOf(',', start + marker.length());
+        if (start < 0 || end < 0) throw new IllegalArgumentException("node frame ID가 없습니다");
+        return Long.parseLong(frame.substring(start + marker.length(), end));
+    }
+
+    private static float c1133FrameValue(String frame, String field) {
+        String marker = field + "=";
+        int start = frame.indexOf(marker);
+        int end = frame.indexOf(',', start + marker.length());
+        if (start < 0) throw new IllegalArgumentException("node frame field가 없습니다: " + field);
+        if (end < 0) end = frame.length();
+        return Float.parseFloat(frame.substring(start + marker.length(), end));
     }
 
     private void logC121NodeFrames(String state, String report) {

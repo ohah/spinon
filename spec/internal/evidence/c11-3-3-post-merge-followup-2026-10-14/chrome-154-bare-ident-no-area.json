@@ -1,0 +1,56 @@
+{
+  "schema": "spinon-css-c11-3-3-bare-ident-no-area-precomparison/v1",
+  "runId": "c1133-bare-ident-chrome154-20261014T031909078Z-af567fbf",
+  "captureTool": {
+    "path": "tools/css-reference/capture-c11-3-3-bare-ident-no-area-precomparison.mjs",
+    "sha256": "4e8b0edabe553d3ca41ebe8fdff468837cf0a5033a3bc109a6173eba86c85490"
+  },
+  "fixture": {
+    "html": "<!doctype html><meta charset=\"utf-8\"><style>*{box-sizing:border-box}body{margin:0}.grid{display:grid;width:120px;height:90px;grid-template-columns:40px [panel] 40px [panel] 40px;grid-template-rows:30px [panel] 30px [panel] 30px;gap:0}.item{width:20px;height:20px;grid-area:panel}</style><div class=\"grid\"><div id=\"panel-item\" class=\"item\"></div></div>",
+    "htmlSha256": "aa01d97db667432ffa5b05477ce035875d2408500850ca72ae9575c52f9df289"
+  },
+  "oracle": {
+    "product": "Chrome/154.0.8037.92",
+    "revision": "@334b65d254ccc35df4fca82706d1753227b01039",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "executableSha256": "ce0c09ea98a7592e7799e54c1867797ccf99d4d6e821a11067c332e454732349"
+  },
+  "browserFlags": [
+    "--headless=new",
+    "--no-first-run",
+    "--no-default-browser-check",
+    "--disable-background-networking",
+    "--lang=en-US",
+    "--remote-debugging-port=0",
+    "--user-data-dir=<temporary-profile>"
+  ],
+  "viewport": {
+    "width": 320,
+    "height": 240,
+    "deviceScaleFactor": 1
+  },
+  "observation": {
+    "computed": {
+      "gridTemplateAreas": "none",
+      "gridTemplateColumns": "40px [panel] 40px [panel] 40px",
+      "gridTemplateRows": "30px [panel] 30px [panel] 30px",
+      "gridArea": "panel"
+    },
+    "grid": {
+      "x": 0,
+      "y": 0,
+      "width": 120,
+      "height": 90
+    },
+    "item": {
+      "x": 40,
+      "y": 30,
+      "width": 20,
+      "height": 20
+    }
+  },
+  "limits": [
+    "single pinned Chrome case",
+    "not a WPT conformance result"
+  ]
+}

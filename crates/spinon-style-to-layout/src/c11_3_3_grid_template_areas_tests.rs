@@ -166,6 +166,24 @@ fn bare_area_name_uses_first_area_alias_while_numeric_ident_uses_named_line() {
 }
 
 #[test]
+fn bare_ident_without_template_area_falls_back_to_first_named_line() {
+    let fixture = Fixture::new(
+        "display:grid;box-sizing:border-box;width:120px;height:90px;grid-template-columns:40px [panel] 40px [panel] 40px;grid-template-rows:30px [panel] 30px [panel] 30px;column-gap:0;row-gap:0;margin:0;padding:0;border:0",
+        &[(
+            "panel-item",
+            "box-sizing:border-box;width:20px;height:20px;grid-area:panel;margin:0;padding:0;border:0",
+        )],
+    );
+    let output = fixture.compute().unwrap();
+    let frame = output.layout.frames[&fixture.nodes["panel-item"].id()];
+
+    assert_eq!(
+        (frame.x, frame.y, frame.width, frame.height),
+        (40.0, 30.0, 20.0, 20.0)
+    );
+}
+
+#[test]
 fn explicit_line_pairs_form_implicit_areas_on_both_axes() {
     let fixture = Fixture::new(
         "display:grid;box-sizing:border-box;width:160px;height:80px;grid-template-columns:[box-start] 40px [box-end] 120px;grid-template-rows:[box-start] 30px [box-end] 50px;column-gap:0;row-gap:0;margin:0;padding:0;border:0",

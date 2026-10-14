@@ -1,0 +1,45 @@
+{
+  "schema": "spinon-c1133-grid-template-areas-revision-reuse-run/v1",
+  "runId": "c1133-revision-20261014T032109347Z-0ee50c0d",
+  "target": "android-avd",
+  "device": {
+    "serial": "emulator-5554",
+    "model": "sdk_gphone64_arm64",
+    "release": "17",
+    "sdk": 37,
+    "qemu": true,
+    "fingerprint": "google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780:userdebug/dev-keys",
+    "renderer": "GLES: Google (Google Inc. (Google)), Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)), OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))"
+  },
+  "appSha256": "a1133e2555ee60f6ce660f922015270120da1d6edd70eb231495388fcc8fc9f1",
+  "sameHost": true,
+  "first": {
+    "status": 0,
+    "documentRevision": 10,
+    "renderTreeRevision": 2,
+    "itemFrame": {
+      "nodeId": 2,
+      "x": 0,
+      "y": 0,
+      "width": 80,
+      "height": 40
+    }
+  },
+  "second": {
+    "status": 0,
+    "documentRevision": 11,
+    "renderTreeRevision": 3,
+    "itemFrame": {
+      "nodeId": 2,
+      "x": 80,
+      "y": 0,
+      "width": 80,
+      "height": 40
+    }
+  },
+  "finalDrawPresentedTwoBoxes": true,
+  "limitations": [
+    "Android API 37 AVD software renderer only",
+    "physical device and hardware GPU not verified"
+  ]
+}
