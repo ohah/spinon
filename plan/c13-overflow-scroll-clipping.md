@@ -48,6 +48,8 @@ C13은 `overflow-x/y`와 `overflow`의 `visible`, `clip`, `hidden`, `scroll`, `a
 
 ### 현재 C13.1 브랜치 진행 상태 · 2026-10-15
 
+- Android API 37 ARM64 AVD의 compact 13-case surface는 PR #162에서 30,000 CSS pixel center exact를 확인했다. iOS Simulator는 geometry/hit identity·화면만 확인했고 Metal drawable readback은 없다. 같은 고정 viewport의 iOS 표면 비교는 별도 [계획](c13-1-ios-full-surface-pixel-centers.md)에서 다룬다. 그 실행이 끝나기 전 iOS pixel parity를 확인했다고 주장하지 않는다.
+
 - 후속 target-frame 2D hit scan은 13개 유효행의 모든 Chrome 정수 `(x,y)` 187,320점을 Rust exact `NodeId`와 비교했다([근거와 범위](../spec/internal/evidence/c13-1-overflow-clip-hit-identity-2d-2026-10-14/README.md)). 이는 target frame 밖 전체 viewport나 paint surface, DOM event dispatch 검증이 아니며 C13.1 완료 gate를 닫지 않는다.
 - 후속 [전체 viewport hit identity PR #160](https://github.com/ohah/spinon/pull/160)은 2026-10-14 rebase 방식으로 main에 병합됐다(merge SHA `c29b0b80aa10829797e798c1ecc0dbdaf16029fb`). 같은 13행의 1280×1100 전체 정수 viewport 1,408,000점을 Rust exact `NodeId`와 비교하고 네 방향 viewport 밖 Chrome `null`/Rust `None` controls를 추가했다([실행 근거](../spec/internal/evidence/c13-1-overflow-clip-full-viewport-hit-identity-2026-10-14/README.md)). 이는 host renderer query 검증이며 surface/event/WPT gate는 닫지 않는다.
 
