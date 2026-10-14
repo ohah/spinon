@@ -33,8 +33,8 @@
 | 27 | 캡처가 저장 전 bitmap만 검사하거나 hash가 다른 파일을 가리킴 | SurfaceView capture는 PNG 저장 후 재열어 표본을 읽고 SHA-256을 기록한다. 저장된 PNG를 별도 추출해 log sample과 다시 확인했다. |
 | 28 | Chrome oracle가 시스템 또는 terminal browser에서 바뀜 | 고정 agent-browser 0.31.1/Chrome 155 revision을 사용했다. terminal-browser와 실기기는 사용하지 않았다. |
 | 29 | 성공 검증이 한 패키지 테스트만 포함 | feature-on 변경 8개 package, locked workspace suite, workspace Clippy, rustfmt, diff check, fixture module boundary 5/5, Android build와 AVD evidence를 보존했다. iOS/WPT는 실행하지 않았고 남은 범위에 썼다. |
-| 30 | PR 게시·required check·merge 상태를 혼동 | 이 변경은 계획 PR #157을 base로 한 draft PR로 공개한 뒤 URL, base/head, CI 상태를 보충한다. mergeable/green CI 전에는 merge나 auto-merge를 설정하지 않는다. |
+| 30 | PR 게시·required check·merge 상태를 혼동 | [PR #158](https://github.com/ohah/spinon/pull/158)은 base `docs/c13-overflow-scroll-clipping-plan`, head `feat/c13-1-overflow-clip`인 draft OPEN 상태다. GitHub는 `MERGEABLE`을 반환했지만 review decision과 status checks는 비어 있다. 그래서 merge/auto-merge 없이 draft를 유지한다. |
 
 ## PR 공개 후 상태
 
-PR 번호와 URL, 실제 base/head, review decision, required check 결과는 PR을 생성한 뒤 이 절에 기록한다. 해당 상태는 이 파일을 갱신하는 시점의 관찰이며, C13.1 완료 판정과 별도다.
+[PR #158](https://github.com/ohah/spinon/pull/158)은 2026-10-14 관찰 시 OPEN draft이며 base `docs/c13-overflow-scroll-clipping-plan`, head `feat/c13-1-overflow-clip`이다. mergeability 값은 `MERGEABLE`, `reviewDecision`은 비어 있고 `gh pr checks`는 “no checks reported”를 반환했다. required CI가 확인되지 않았으므로 merge와 auto-merge는 설정하지 않았다. GitHub 상태는 변할 수 있으며 이 기록은 C13.1 완료 판정과 별도다.
