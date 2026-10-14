@@ -18,11 +18,14 @@
 
 장치·도구 버전은 [Android 환경](android-environment.txt), [iOS 환경](ios-environment.txt)에 고정했다. 원본 앱 결과는 [Android log](android-api37-avd-runtime.log), [iOS log](ios-26-2-simulator-runtime.log), 빌드 출력은 [Android](android-build.log)와 [iOS](ios-build.log)에 있다.
 
+격리 worktree에는 V8 source checkout이 없어 빌드 때마다 `SPINON_V8_DIR`에 별도 workspace의 V8 checkout을 지정했다. 그 checkout의 `HEAD`는 저장소가 고정한 revision `7b50b62cb18f28617959e8452e2cd18195b38bcf`와 일치했다. 지정 없이 한 첫 Android 빌드 시도는 V8 revision guard에서 ADB를 호출하기 전에 중단됐다([실패 로그](android-missing-v8-path-negative.log)). 같은 checkout을 지정한 Android/iOS feature-on·feature-off 빌드는 모두 성공했고, ADB install/launch도 통과했다.
+
 Xcode verbose build log는 원문 출력을 보존하면서 끝 공백만 제거했다. Xcode가 escaped-space로 출력한 세 행은 `<escaped-space-trimmed>`로 표시하고, 공백뿐인 행은 비웠다.
 
 ## 실패 경로와 feature 경계
 
-- 두 Simulator의 성공 route와 별도로, 서로 다른 fixture route를 동시에 준 경우 양쪽 앱이 `SPINON_C141_ARGUMENT_ERROR`로 실행을 거부했다: [Android](android-route-conflict-negative.log), [iOS](ios-route-conflict-negative.log).
+- 두 Simulator의 성공 route와 별도로, C fixture와 R10 route를 각각 함께 준 경우 양쪽 앱이 `SPINON_C141_ARGUMENT_ERROR`로 실행을 거부했다: [Android C route](android-route-conflict-negative.log), [iOS C route](ios-route-conflict-negative.log), [Android R10 route](android-route-conflict-non-css-negative.log), [iOS R10 route](ios-route-conflict-non-css-negative.log).
+- Cross-family 충돌에 쓴 route는 Android `--ez spinon_r10 true`와 iOS `--spinon-r10`이며, C-family control은 각 플랫폼의 `spinon_c131_overflow_clip` / `--spinon-c131-overflow-clip`이다. 각 호출에는 C14.1 route도 함께 전달했다.
 - feature-off 앱은 두 플랫폼에서 C14.1 route를 disabled로 표시했고 native report를 성공 처리하지 않았다: [Android](android-feature-off-route.log), [iOS](ios-feature-off-route.log). 화면 캡처는 [Android](android-feature-off.png), [iOS](ios-feature-off.png).
 - Android와 iOS build script는 flag 값 `2`를 거부했다: [Android](android-invalid-flag-negative.log), [iOS](ios-invalid-flag-negative.log).
 - 기본 정적 archive에는 C14.1 FFI symbol과 PNG fixture payload가 없고, opt-in positive control에는 둘 다 있다: [Android](android-feature-boundary.log), [iOS](ios-feature-boundary.log). 이는 정적 라이브러리 경계 근거이며 최종 앱 bundle 크기 검사는 아니다.

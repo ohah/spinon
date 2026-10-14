@@ -671,14 +671,19 @@ public final class MainActivity extends Activity {
     }
 
     private boolean hasConflictingC141FixtureRoute() {
+        // C14.1 runs before other experiment routes, so reject every active spinon selector.
         Bundle extras = getIntent().getExtras();
         if (extras == null) return false;
         for (String key : extras.keySet()) {
-            if (!key.startsWith("spinon_c") || "spinon_c141_intrinsic_size".equals(key)) {
+            if (!key.startsWith("spinon_") || "spinon_c141_intrinsic_size".equals(key)) {
                 continue;
             }
             Object value = extras.get(key);
-            if (!(value instanceof Boolean) || Boolean.TRUE.equals(value)) return true;
+            if (value instanceof Boolean) {
+                if (Boolean.TRUE.equals(value)) return true;
+            } else if (value != null) {
+                return true;
+            }
         }
         return false;
     }

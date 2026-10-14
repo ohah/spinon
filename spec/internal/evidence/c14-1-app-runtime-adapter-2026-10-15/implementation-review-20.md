@@ -19,8 +19,8 @@
 | 13 | NaN/무한 frame이 비교에서 우연히 통과한다. | frame oracle 비교에서 actual component의 `is_finite()`를 먼저 요구한다. invalid frame은 일치 결과를 만들지 못한다. |
 | 14 | null/zero-capacity 또는 짧은 C output buffer에서 호출자가 성공으로 오해한다. | C ABI null/zero 입력은 `-1`, 짧은 buffer는 `-3`을 반환한다. focused C ABI buffer test가 workspace verification에 기록돼 있다. |
 | 15 | Android native 계산이 UI thread를 막거나 화면이 Activity 종료 뒤 갱신된다. | fixture는 `bootstrapExecutor`에서 계산하고 main thread에서 화면을 변경하며 `activityClosing`을 검사한다. 실제 AVD에서 즉시 report 화면과 log를 확인했다. |
-| 16 | iOS native 계산이 main queue를 막거나 controller 해제 뒤 callback을 호출한다. | C ABI는 global user-initiated queue에서 실행하고 UI 변경은 main queue에서 weak self를 확인한다. iOS Simulator에서 두 번 새 실행해 report/log를 확인했다. |
-| 17 | 둘 이상의 fixture route가 전달됐을 때 플랫폼에 따라 route 선택이 달라진다. | Android intent extra와 iOS launch argument가 각각 충돌을 거부한다. 양쪽 negative control이 `SPINON_C141_ARGUMENT_ERROR`를 남겼다. |
+| 16 | iOS native 계산이 main queue를 막거나 controller 해제 뒤 callback을 호출한다. | C ABI는 global user-initiated queue에서 실행하고 UI 변경은 main queue에서 weak self를 확인한다. iOS Simulator에서 성공 report, log와 화면 갱신을 확인했다. |
+| 17 | C 외 실행군(R10 등)을 함께 전달했을 때 충돌 검사가 놓친다. | 첫 검토에서 C-prefixed route만 검사하는 경계를 발견했다. Android는 다른 `spinon_*` intent extra, iOS는 다른 `--spinon-*` argument를 거부하도록 수정했다. 양쪽 Simulator에서 C fixture와 R10을 각각 조합한 뒤 모두 `SPINON_C141_ARGUMENT_ERROR`를 남겼다. |
 | 18 | feature-off 앱에서 fixture route가 enabled처럼 보이거나 성공 report를 만든다. | Android BuildConfig와 iOS compile condition이 disabled 화면/log로 분기한다. 양쪽 feature-off 설치 실행이 `SPINON_C141_DISABLED`를 남겼다. |
 | 19 | 화면 요약 parser가 report 오류를 PASS로 표시하거나 실제 수치를 숨긴다. | 두 화면은 native status와 JSON status를 함께 확인하고 실패·parse 오류를 별도로 표시한다. feature-on 화면은 PASS, 24×16, frame, revision, viewport를 캡처했다. |
 | 20 | 앱 화면 PASS를 image paint, overflow, 실기기 또는 Metal pixel parity로 확대한다. | 이 adapter는 결과 report만 표시한다. README와 STATUS는 paint/overflow/실기기/Metal readback을 별도 미검증으로 기록하고 C13.1 overflow evidence와 연결했다. |
