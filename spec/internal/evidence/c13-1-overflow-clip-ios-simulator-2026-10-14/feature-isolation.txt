@@ -1,0 +1,21 @@
+Toolchain: rustc 1.96.1 LLVM 22.1.2; matching rustup llvm-nm.
+
+[Cargo defaults, no features] archive=build/spinon/ios-default-cargo-target/aarch64-apple-ios-sim/release/libspinon_ffi.a
+C13.1 FFI symbols:
+absent
+C13.1 fixture payload strings:
+absent
+
+[iOS opt-in feature on] archive=build/spinon/iphonesimulator/libspinon_ffi.a
+C13.1 FFI symbols:
+0000000000001d10 T _spinon_runtime_gpu_host_eval_c13_1_overflow_clip_fixture
+0000000000002a5c T _spinon_runtime_gpu_host_new_c13_1_overflow_clip_fixture
+C13.1 fixture payload strings:
+"javascript": "tests/fixtures/css/c13/runtime-overflow-clip.js",
+"id": "c131-root",
+"elementId": "c131-root"
+"elementId": "c131-root"
+"elementId": "c131-root"
+"elementId": "c131-root"
+hit_test_samples_json=
+'c131-root',

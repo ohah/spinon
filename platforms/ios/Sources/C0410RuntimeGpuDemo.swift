@@ -506,6 +506,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             || ProcessInfo.processInfo.arguments.contains("--spinon-c11-grid")
             || c11GridSceneArgument != nil || c111MetalPixelRun != nil
     }
+    private let c131OverflowClipProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c131-overflow-clip")
     private let c122AbsoluteBlockProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c122-absolute-block")
     private let c123FixedPositionProbeRequested = ProcessInfo.processInfo.arguments
@@ -540,7 +542,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             && ProcessInfo.processInfo.arguments.contains("--spinon-c051-custom-properties")
     }
     private var fixedSizeCssFixtureRequested: Bool {
-        c11GridFixtureRequested
+        c131OverflowClipProbeRequested || c11GridFixtureRequested
             || c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
             || c124StackingProbeRequested
             || c1035PositionedFlexProbeRequested
@@ -567,7 +569,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
 
         let title = UILabel()
-        title.text = c1133GridTemplateAreasProbeRequested
+        title.text = c131OverflowClipProbeRequested
+            ? "SPINON · C13.1 overflow: clip"
+            : c1133GridTemplateAreasProbeRequested
             ? "SPINON · C11.3.3 Grid template areas"
             : c1132GridNamedLinesProbeRequested
             ? "SPINON · C11.3.2 named Grid lines"
@@ -643,7 +647,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.addSubview(title)
 
         let description = UILabel()
-        description.text = c1133GridTemplateAreasProbeRequested
+        description.text = c131OverflowClipProbeRequested
+            ? "V8 overflow: clip·clip margin·positioned escape → Stylo → Taffy → WGPU Metal · 320×240 CSS px"
+            : c1133GridTemplateAreasProbeRequested
             ? "Grid template area placement → Stylo → Taffy → WGPU Metal · 320×240 CSS px"
             : c1132GridNamedLinesProbeRequested
             ? "named Grid line occurrence·span → Stylo → Taffy → WGPU · 320×240 CSS px"
@@ -721,7 +727,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         canvasView.translatesAutoresizingMaskIntoConstraints = false
         canvasView.isAccessibilityElement = true
-        canvasView.accessibilityLabel = c1123GridAutoPlacementProbeRequested
+        canvasView.accessibilityLabel = c131OverflowClipProbeRequested
+            ? "C13.1 overflow clip과 positioned escape WGPU Metal 장면"
+            : c1123GridAutoPlacementProbeRequested
             ? "C11.2.3 dense·column Grid 자동 배치 WGPU 장면"
             : c1122GridAutoPlacementProbeRequested
             ? "C11.2.2 행 우선 Grid 자동 배치 WGPU 장면"
@@ -1029,6 +1037,57 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             "document_revision=\(reportField(report, "document_revision="))",
             "environment_revision=\(reportField(report, "environment_revision="))"
         ].joined(separator: " ")
+    }
+
+    private func logC131FixtureReport(_ report: String) -> Bool {
+        let expectedHitIDs = [
+            "visible-target", "clip-inside", "clip-outside", "clip-margin-expanded",
+            "clip-margin-outside", "nested-clip-inside", "nested-clip-outside",
+            "nested-y-visible", "nested-y-clip-outside", "positioned-escape",
+            "outer-clip-outside", "viewport-left-outside", "viewport-top-outside",
+            "viewport-right-outside", "viewport-bottom-outside",
+        ]
+        guard report.hasPrefix("status=0 "),
+              report.contains(" layout=ready "),
+              reportField(report, "boxes=") == "13",
+              let frameMarker = report.range(of: "node_frames_css_px=["),
+              let frameEnd = report[frameMarker.upperBound...].firstIndex(of: "]") else {
+            log("SPINON_C131_FIXTURE_SUMMARY status=error stage=runtime-report \(runtimeStatusSummary(report))")
+            return false
+        }
+        let frames = report[frameMarker.upperBound..<frameEnd].split(separator: ";")
+        for frame in frames {
+            log("SPINON_C131_NODE_FRAME \(frame)")
+        }
+        log("SPINON_C131_NODE_FRAME_COUNT count=\(frames.count)")
+
+        guard let sampleMarker = report.range(of: "hit_test_samples_json="),
+              let sampleStart = report[sampleMarker.upperBound...].firstIndex(of: "["),
+              let sampleEnd = report[report.index(after: sampleStart)...].firstIndex(of: "]") else {
+            log("SPINON_C131_FIXTURE_SUMMARY status=error stage=hit-test-report")
+            return false
+        }
+        let sampleJSON = String(report[sampleStart...sampleEnd])
+        guard let sampleData = sampleJSON.data(using: .utf8),
+              let samples = try? JSONSerialization.jsonObject(with: sampleData) as? [[String: Any]] else {
+            log("SPINON_C131_FIXTURE_SUMMARY status=error stage=hit-test-json")
+            return false
+        }
+        let sampleIDs = samples.compactMap { $0["id"] as? String }
+        let matched = samples.filter { $0["status"] as? String == "matched" }
+        for sample in samples {
+            let id = sample["id"] as? String ?? "missing"
+            let element = sample["elementId"] as? String ?? "null"
+            let x = sample["xCssPx"] ?? "missing"
+            let y = sample["yCssPx"] ?? "missing"
+            let status = sample["status"] as? String ?? "missing"
+            log("SPINON_C131_HIT_TEST id=\(id) x=\(x) y=\(y) element=\(element) status=\(status)")
+        }
+        let passed = frames.count == 13 && samples.count == 15
+            && matched.count == 15 && sampleIDs == expectedHitIDs
+        log("SPINON_C131_HIT_TEST_SUMMARY status=\(passed ? "ok" : "error") matched=\(matched.count) total=\(samples.count) ids=\(sampleIDs == expectedHitIDs ? "fixed" : "unexpected")")
+        log("SPINON_C131_FIXTURE_SUMMARY status=\(passed ? "ok" : "error") boxes=13 frames=\(frames.count) hit_samples=\(samples.count) hit_matches=\(matched.count)")
+        return passed
     }
 
     private func logC1031NodeFrames(_ report: String) {
@@ -1349,6 +1408,16 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
     private func initializeRuntime() {
         guard !isClosing else { return }
+        if c131OverflowClipProbeRequested,
+           let conflictingArgument = ProcessInfo.processInfo.arguments.first(where: {
+               $0.hasPrefix("--spinon-c")
+                   && $0 != "--spinon-c131-overflow-clip"
+                   && $0 != "--spinon-c0410-runtime-gpu"
+           }) {
+            log("SPINON_C131_ARGUMENT_ERROR conflicting=\(conflictingArgument)")
+            postStatus("실패 · C13.1 전용 route와 다른 CSS fixture를 함께 선택했습니다")
+            return
+        }
         if c1131GridRepeatProbeRequested
             && (c1131GridRepeatSceneArgument != c1131GridRepeatSceneID
                 || c1131GridRepeatRunID.range(
@@ -1433,7 +1502,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             postStatus("실패 · C12.4 Metal 표본 case 인수가 올바르지 않습니다")
             return
         }
-        let handle = c1133GridTemplateAreasProbeRequested
+        let handle = c131OverflowClipProbeRequested
+            ? SpinonRunner.createRuntimeGpuHostWithC13_1OverflowClipFixture()
+            : c1133GridTemplateAreasProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithC11_3_3GridTemplateAreasFixture()
             : c1132GridNamedLinesProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithC11_3_2GridNamedLinesFixture()
@@ -1482,12 +1553,14 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         guard shouldContinue else { return }
 
         let environmentInputs = currentEnvironment()
-        let viewportWidth: Float = c122AbsoluteBlockProbeRequested
+        let viewportWidth: Float = c131OverflowClipProbeRequested
+            ? 320 : c122AbsoluteBlockProbeRequested
             || c123FixedPositionProbeRequested
             || c1122GridAutoPlacementProbeRequested
             || c1123GridAutoPlacementProbeRequested
             ? 360 : c1131GridRepeatProbeRequested || fixedSizeCssFixtureRequested ? 320 : environmentInputs.width
-        let viewportHeight: Float = c122AbsoluteBlockProbeRequested
+        let viewportHeight: Float = c131OverflowClipProbeRequested
+            ? 240 : c122AbsoluteBlockProbeRequested
             || c123FixedPositionProbeRequested
             || c1122GridAutoPlacementProbeRequested
             || c1123GridAutoPlacementProbeRequested
@@ -1509,7 +1582,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         log("SPINON_C0410_ENVIRONMENT \(environment ?? "")")
 
         var result: String? = nil
-        if c1133GridTemplateAreasProbeRequested {
+        if c131OverflowClipProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuC13_1OverflowClipFixture(handle)
+        } else if c1133GridTemplateAreasProbeRequested {
             result = SpinonRunner.evalRuntimeGpuC11_3_3GridTemplateAreasFixture(
                 handle, sceneID: c1133GridTemplateAreasSceneID,
                 runID: c1133GridTemplateAreasRunID)
@@ -1662,7 +1737,14 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 return
             }
         }
-        if c1133GridTemplateAreasProbeRequested {
+        if c131OverflowClipProbeRequested {
+            let report = result ?? "status=-1 missing-report"
+            log("SPINON_C131_EVAL_RUN \(runtimeStatusSummary(report))")
+            guard logC131FixtureReport(report) else {
+                postStatus("실패 · C13.1 frame·hit-test 검증 결과 불일치")
+                return
+            }
+        } else if c1133GridTemplateAreasProbeRequested {
             log("SPINON_C1133_GRID_EVAL_RUN run_id=\(c1133GridTemplateAreasRunID) scene_id=\(c1133GridTemplateAreasSceneID) \(runtimeStatusSummary(result ?? "status=-1 missing-report"))")
             if let result, result.hasPrefix("status=0 ") {
                 log("SPINON_C1133_GRID_SUMMARY run_id=\(c1133GridTemplateAreasRunID) scene_id=\(c1133GridTemplateAreasSceneID) \(runtimeStatusSummary(result))")

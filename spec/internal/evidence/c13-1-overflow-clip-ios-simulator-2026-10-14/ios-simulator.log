@@ -1,0 +1,37 @@
+Timestamp               Ty Process[PID:TID]
+2026-10-14 17:59:58.583 Df SpinonBootstrap[80841:2074190] SPINON_C131_HOST=session=ready owner_tid=34030003 isolate_per_session=1 queue_capacity=64 queue_policy=strict-priority-fifo css_worker_per_session=1 css_worker_ready_us=46 session_startup_us=1686
+2026-10-14 17:59:58.583 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C0410_ENVIRONMENT_REQUEST width=320.0 height=240.0
+2026-10-14 17:59:58.586 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_EVAL_RUN status=0 layout=ready boxes=13 generation=1 document_revision=65 environment_revision=0
+2026-10-14 17:59:58.586 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_NODE_FRAME 0:node=1,x=0,y=0,width=300,height=100
+2026-10-14 17:59:58.586 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_NODE_FRAME 1:node=2,x=10,y=6,width=90,height=44
+2026-10-14 17:59:58.586 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_NODE_FRAME 2:node=3,x=19,y=15,width=130,height=70
+2026-10-14 17:59:58.586 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_NODE_FRAME 3:node=4,x=105,y=6,width=90,height=44
+2026-10-14 17:59:58.586 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_NODE_FRAME 4:node=5,x=114,y=15,width=130,height=70
+2026-10-14 17:59:58.586 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_NODE_FRAME 5:node=6,x=200,y=6,width=90,height=44
+2026-10-14 17:59:58.586 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_NODE_FRAME 6:node=7,x=209,y=15,width=130,height=70
+2026-10-14 17:59:58.587 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_NODE_FRAME 7:node=8,x=10,y=62,width=120,height=34
+2026-10-14 17:59:58.587 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_NODE_FRAME 8:node=9,x=37,y=68,width=50,height=20
+2026-10-14 17:59:58.587 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_NODE_FRAME 9:node=10,x=40,y=71,width=90,height=28
+2026-10-14 17:59:58.587 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_NODE_FRAME 10:node=11,x=150,y=62,width=140,height=34
+2026-10-14 17:59:58.587 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_NODE_FRAME 11:node=12,x=156,y=68,width=45,height=24
+2026-10-14 17:59:58.587 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_NODE_FRAME 12:node=13,x=222,y=68,width=50,height=22
+2026-10-14 17:59:58.587 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_NODE_FRAME_COUNT count=13
+2026-10-14 17:59:58.588 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_HIT_TEST id=visible-target x=102 y=20 element=c131-visible-target status=matched
+2026-10-14 17:59:58.588 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_HIT_TEST id=clip-inside x=180 y=20 element=c131-clip-target status=matched
+2026-10-14 17:59:58.588 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_HIT_TEST id=clip-outside x=198 y=20 element=c131-root status=matched
+2026-10-14 17:59:58.588 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_HIT_TEST id=clip-margin-expanded x=291 y=20 element=c131-margin-target status=matched
+2026-10-14 17:59:58.588 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_HIT_TEST id=clip-margin-outside x=297 y=20 element=c131-root status=matched
+2026-10-14 17:59:58.588 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_HIT_TEST id=nested-clip-inside x=84 y=76 element=c131-nested-target status=matched
+2026-10-14 17:59:58.588 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_HIT_TEST id=nested-clip-outside x=95 y=76 element=c131-nested-outer status=matched
+2026-10-14 17:59:58.588 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_HIT_TEST id=nested-y-visible x=45 y=92 element=c131-nested-target status=matched
+2026-10-14 17:59:58.588 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_HIT_TEST id=nested-y-clip-outside x=45 y=97 element=c131-root status=matched
+2026-10-14 17:59:58.588 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_HIT_TEST id=positioned-escape x=230 y=76 element=c131-escape-target status=matched
+2026-10-14 17:59:58.589 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_HIT_TEST id=outer-clip-outside x=295 y=76 element=c131-root status=matched
+2026-10-14 17:59:58.589 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_HIT_TEST id=viewport-left-outside x=-1 y=20 element=null status=matched
+2026-10-14 17:59:58.589 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_HIT_TEST id=viewport-top-outside x=100 y=-1 element=null status=matched
+2026-10-14 17:59:58.589 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_HIT_TEST id=viewport-right-outside x=320 y=20 element=null status=matched
+2026-10-14 17:59:58.589 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_HIT_TEST id=viewport-bottom-outside x=100 y=120 element=null status=matched
+2026-10-14 17:59:58.589 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_HIT_TEST_SUMMARY status=ok matched=15 total=15 ids=fixed
+2026-10-14 17:59:58.589 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C131_FIXTURE_SUMMARY status=ok boxes=13 frames=13 hit_samples=15 hit_matches=15
+2026-10-14 17:59:58.596 Df SpinonBootstrap[80841:2074190] (Foundation) SPINON_C0410_RENDERER status=0 backend=Metal device=Apple iOS simulator GPU format=Bgra8UnormSrgb size=960x720
+2026-10-14 17:59:58.602 Df SpinonBootstrap[80841:207418f] (Foundation) SPINON_C0410_DRAW generation=1 status=0 presented boxes=13 environment_revision=0 document_revision=65 render_tree_revision=13 style_revision=0 generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=300x100

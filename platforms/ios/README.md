@@ -36,6 +36,20 @@ iPhone 17 Pro / iOS 26.2 시뮬레이터에서 Metal surface generation 1의 `ac
 
 색상 띠를 탭하면 `UITouch`의 local point에 현재 drawable density를 곱해 같은 표면 mapping으로 역산하고 고정 snapshot의 `NodeId`를 화면과 unified log에 표시합니다. 이 hit-test는 submitted frame sequence와 surface generation을 기록하지만 actual display completion, DOM event, JavaScript callback을 확인하지 않습니다. iOS Simulator 터치 결과와 캡처는 [S04.9 실행 근거](../../spec/internal/evidence/s04-hit-test-platforms-2026-10-07.md)에 있습니다.
 
+## C13.1 overflow clip runtime fixture
+
+고정 C13.1 scene을 실제 V8→Stylo→Taffy runtime과 iOS Metal surface에서 관찰하는 내부 fixture입니다. 기본 빌드에서는 C13.1 Rust host와 fixture source payload를 포함하지 않습니다. iOS Simulator 검증용으로 C04.10과 fixture flag를 함께 켭니다.
+
+```sh
+SPINON_ENABLE_C04_RUNTIME_GPU=1 \
+SPINON_ENABLE_C13_1_OVERFLOW_CLIP_FIXTURE_TEST=1 \
+mise exec -- bun run build:ios-sim
+xcrun simctl install booted build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app
+xcrun simctl launch --terminate-running-process booted dev.spinon.bootstrap --spinon-c131-overflow-clip
+```
+
+Unified log의 `SPINON_C131_FIXTURE_SUMMARY`는 13개 frame과 15개 고정 hit-test 표본을 기록합니다. 이 검증은 Simulator의 Metal surface에 fixture를 제출하고 화면을 캡처하지만, drawable readback이나 최종 compositor scanout 확인으로 해석하지 않습니다. Chrome oracle, log, 캡처와 범위는 [iOS Simulator 근거](../../spec/internal/evidence/c13-1-overflow-clip-ios-simulator-2026-10-14/README.md)에 기록합니다.
+
 R06 개발 화면은 아래 실행 인자를 받습니다.
 
 ```sh
