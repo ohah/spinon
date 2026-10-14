@@ -30,10 +30,14 @@
 | --- | --- | --- | --- |
 | `visible` | 해당 축 제한 없음 | 사용하지 않음 | 해당 축 제한 없음 |
 | `clip`, static parent | 선택 visual box edge에서 offset만큼 바깥으로 확장한 사각 interval | 적용 | paint interval |
-| `clip`, positioned parent | 선택 visual box edge에서 offset만큼 바깥으로 확장한 사각 interval | 적용 | paint interval과 border-box의 합집합 interval |
+| `clip`, positioned parent의 in-flow descendant | 선택 visual box edge에서 offset만큼 바깥으로 확장한 사각 interval | 적용 | paint interval과 border-box의 합집합 interval |
+| `clip`, positioned parent의 containing block에 속한 absolute descendant | 선택 visual box edge에서 offset만큼 바깥으로 확장한 사각 interval | 적용 | paint interval |
+| `clip`, absolute descendant의 containing block이 해당 ancestor 바깥 | 해당 ancestor에서 clip하지 않음 | 해당 descendant 경로에 효과 없음 | 해당 ancestor에서 clip하지 않음 |
 | `hidden`, `scroll`, `auto` | padding-box edge | 적용 효과 없음 | border-box interval |
 
 이 표의 hit-test 행은 고정 Chromium 155 fixture 관찰을 이 내부 profile이 표현하는 방법이다. static/absolute border-strip 차이는 [controlled six-point fixture](evidence/c13-1-overflow-clip-paint-hit-border-2026-10-14/README.md)에서 확인했다. 해당 Chrome fixture에서는 positioned clip parent 배경이 단순 정적 in-flow descendant보다 먼저 paint되고 hit target은 별도 계산됐다. runtime은 auto `z-index` absolute/fixed clip parent의 descendant 전체가 static인 경우에 한해 부모를 그 subtree 앞에 배치한다. positioned 또는 z-index 후손이 있는 조합에는 이 재배치를 적용하지 않으며 별도 대조가 남아 있다. 이 제한 동작은 CSS painting 표준이나 전체 hit-test 표준 적합성을 뜻하지 않는다. `hidden`·`scroll`·`auto`는 이 단계에서 scroll container, scroll range, offset, scrollbar 또는 사용자 입력을 제공하지 않는다. 이 값의 clip paint 부분만 계산한다.
+
+추가 Chrome 관찰에서는 positioned `clip` ancestor의 in-flow descendant가 border strip hit 범위를 유지했지만, 같은 ancestor가 containing block인 absolute descendant는 visual clip edge까지만 hit됐다. 따라서 규칙은 sibling 존재 여부가 아니라 현재 target의 ancestor lineage에 포함된 positioned containing block으로 선택한다. outer containing block을 쓰는 absolute descendant는 그 ancestor clip에서 제외한다. [10개 추가 matrix 행과 별도 content-box control](evidence/c13-1-overflow-clip-runtime-matrix-2026-10-14/README.md)은 범위가 다른 이전 matrix 세 행과 함께 Rust에서 축별 target hit interval까지 대조한다.
 
 축별 interval은 반열린 `[min, max)`이며, ancestor interval은 교집합으로 누적한다. `max < min`, 비유한 좌표, 누락된 frame/edge/style, 누락된 typed overflow 값은 partial snapshot 대신 구체 `StyleRenderError`로 거부한다. `overflow-clip-margin` offset은 유한한 0 이상 CSS px만 허용한다.
 

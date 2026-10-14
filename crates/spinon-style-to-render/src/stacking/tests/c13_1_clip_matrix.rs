@@ -12,7 +12,16 @@ const CHROME_MATRIX_OBSERVATION: &str = include_str!(
 const EXPECTED_USER_AGENT: &str = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36";
 
 fn scene_for(styles: &[&str], parents: &[Option<usize>]) -> (RuntimeRenderSnapshot, Vec<NodeId>) {
-    let (input, nodes) = overflow_runtime_inputs_with_viewport(styles, parents, 1280.0, 633.0);
+    scene_for_viewport(styles, parents, 633.0)
+}
+
+fn scene_for_viewport(
+    styles: &[&str],
+    parents: &[Option<usize>],
+    height_css_px: f32,
+) -> (RuntimeRenderSnapshot, Vec<NodeId>) {
+    let (input, nodes) =
+        overflow_runtime_inputs_with_viewport(styles, parents, 1280.0, height_css_px);
     let scene = build_runtime_render_snapshot_with_reserve(
         &input.document,
         input.root,
@@ -109,22 +118,7 @@ fn chrome_case(case_id: &str) -> Value {
 
 fn assert_frame_matches_chrome(scene: &RuntimeRenderSnapshot, node: NodeId, case_id: &str) {
     let case = chrome_case(case_id);
-    let frame = target(scene, node).frame_css_px();
-    for (field, actual) in [
-        ("x", frame.x()),
-        ("y", frame.y()),
-        ("width", frame.width()),
-        ("height", frame.height()),
-    ] {
-        let expected = case["target"][field]
-            .as_f64()
-            .unwrap_or_else(|| panic!("Chrome {case_id} target {field}"))
-            as f32;
-        assert!(
-            (actual - expected).abs() <= 0.5,
-            "Chrome {case_id} target {field}: runtime={actual}, oracle={expected}"
-        );
-    }
+    runtime_matrix::assert_frame_matches_observation(scene, node, case_id, &case);
 }
 
 fn chrome_range_contains(ranges: &Value, coordinate: i32) -> bool {
@@ -137,47 +131,7 @@ fn chrome_range_contains(ranges: &Value, coordinate: i32) -> bool {
 
 fn assert_hit_ranges_match_chrome(scene: &RuntimeRenderSnapshot, node: NodeId, case_id: &str) {
     let case = chrome_case(case_id);
-    let frame = target(scene, node).frame_css_px();
-    for (axis_name, start, end, expected_start, expected_end) in [
-        (
-            "x",
-            frame.x(),
-            frame.x() + frame.width(),
-            case["target"]["x"].as_f64().unwrap() as f32,
-            case["target"]["right"].as_f64().unwrap() as f32,
-        ),
-        (
-            "y",
-            frame.y(),
-            frame.y() + frame.height(),
-            case["target"]["y"].as_f64().unwrap() as f32,
-            case["target"]["bottom"].as_f64().unwrap() as f32,
-        ),
-    ] {
-        assert!(
-            (start - expected_start).abs() <= 0.5,
-            "Chrome {case_id} {axis_name} start"
-        );
-        assert!(
-            (end - expected_end).abs() <= 0.5,
-            "Chrome {case_id} {axis_name} end"
-        );
-        let fixed = case["hitRanges"][axis_name]["fixedAt"].as_f64().unwrap() as f32;
-        let ranges = &case["hitRanges"][axis_name]["ranges"];
-        for coordinate in (start.floor() as i32)..=(end.ceil() as i32 - 1) {
-            let actual = if axis_name == "x" {
-                scene.hit_test_css_point(coordinate as f32, fixed)
-            } else {
-                scene.hit_test_css_point(fixed, coordinate as f32)
-            }
-            .is_some_and(|hit| hit.node_id() == node);
-            assert_eq!(
-                actual,
-                chrome_range_contains(ranges, coordinate),
-                "Chrome {case_id} {axis_name} elementFromPoint at {coordinate}"
-            );
-        }
-    }
+    runtime_matrix::assert_hit_ranges_match_observation(scene, node, case_id, &case);
 }
 
 #[test]
@@ -272,3 +226,6 @@ fn hidden_ignores_clip_margin_and_matches_chrome_padding_clip_border_hit_ranges(
     assert_frame_matches_chrome(&scene, nodes[2], "clip-margin-hidden");
     assert_hit_ranges_match_chrome(&scene, nodes[2], "clip-margin-hidden");
 }
+
+#[path = "c13_1_clip_matrix/runtime_matrix.rs"]
+mod runtime_matrix;
