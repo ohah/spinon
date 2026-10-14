@@ -1,0 +1,20 @@
+toolchain=rustc 1.96.1 / LLVM 22.1.2; matching Rust llvm-nm; macOS strings
+artifact=host debug spinon-ffi static archive, target/debug/libspinon_ffi.a
+llvm_nm=/Users/yoonhb/.rustup/toolchains/1.96.1-aarch64-apple-darwin/lib/rustlib/aarch64-apple-darwin/bin/llvm-nm
+
+[feature off]
+command=cargo build --locked -p spinon-ffi --lib
+archive_sha256=9a95ae63e9d1fb2f95870ea12254151ac653cd5518b1797349a55dc26fe7ce2a
+spinon_runtime_gpu_host_new_c13_2_scroll_fixture=absent
+spinon_runtime_gpu_host_eval_c13_2_scroll_fixture=absent
+payload marker c132-root=absent
+
+[feature on]
+command=cargo build --locked -p spinon-ffi --lib --features c13-2-scroll-fixture-test
+archive_sha256=c92d5d7f197b15980090e3430a1831e68284b474d91523c3cb7fca189ff19b13
+spinon_runtime_gpu_host_new_c13_2_scroll_fixture=present
+spinon_runtime_gpu_host_eval_c13_2_scroll_fixture=present
+payload markers c132-root and c132-root-body=present
+
+result=default fixture ABI/payload absent; opt-in positive control contains both
+scope=host debug archive only; not a release app bundle size claim

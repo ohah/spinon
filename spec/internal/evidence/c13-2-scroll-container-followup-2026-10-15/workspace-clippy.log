@@ -1,0 +1,20 @@
+    Checking spinon-core v0.1.0 (/private/tmp/spinon-c13-2-followup-20261015/crates/spinon-core)
+    Checking simd-adler32 v0.3.10
+    Checking adler2 v2.0.1
+    Checking spinon-style-layout-spike v0.1.0 (/private/tmp/spinon-c13-2-followup-20261015/spikes/style-layout)
+    Checking crc32fast v1.5.2
+    Checking miniz_oxide v0.9.1
+    Checking fdeflate v0.3.7
+    Checking miniz_oxide v0.8.9
+    Checking flate2 v1.1.10
+    Checking spinon-layout v0.1.0 (/private/tmp/spinon-c13-2-followup-20261015/crates/spinon-layout)
+    Checking spinon-style v0.1.0 (/private/tmp/spinon-c13-2-followup-20261015/crates/spinon-style)
+    Checking spinon-render v0.1.0 (/private/tmp/spinon-c13-2-followup-20261015/crates/spinon-render)
+    Checking png v0.18.1
+    Checking spinon-render-wgpu v0.1.0 (/private/tmp/spinon-c13-2-followup-20261015/crates/spinon-render-wgpu)
+    Checking spinon-image v0.1.0 (/private/tmp/spinon-c13-2-followup-20261015/crates/spinon-image)
+    Checking spinon-style-to-layout v0.1.0 (/private/tmp/spinon-c13-2-followup-20261015/crates/spinon-style-to-layout)
+    Checking spinon-style-to-render v0.1.0 (/private/tmp/spinon-c13-2-followup-20261015/crates/spinon-style-to-render)
+    Checking spinon-runtime v0.1.0 (/private/tmp/spinon-c13-2-followup-20261015/crates/spinon-runtime)
+    Checking spinon-ffi v0.1.0 (/private/tmp/spinon-c13-2-followup-20261015/crates/spinon-ffi)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.57s

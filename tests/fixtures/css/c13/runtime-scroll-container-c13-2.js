@@ -1,5 +1,13 @@
 const nodes = Object.create(null);
 
+// C13.2 app verification first runs a real html/body owner fixture. Replace that
+// single-root scene in the same DOM transaction before constructing this matrix.
+if (globalThis.spinonC132RootBodyNodes) {
+  const oldHtml = globalThis.spinonC132RootBodyNodes.html;
+  if (oldHtml && oldHtml.parentNode) oldHtml.parentNode.removeChild(oldHtml);
+  delete globalThis.spinonC132RootBodyNodes;
+}
+
 function c132Node(parent, id, declarations) {
   if (nodes[id]) throw new Error('C13.2 node ID가 중복되었습니다: ' + id);
   const element = document.createElement('div');

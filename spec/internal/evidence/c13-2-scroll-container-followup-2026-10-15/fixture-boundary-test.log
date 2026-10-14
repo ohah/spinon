@@ -1,0 +1,13 @@
+✔ fixture 이동 뒤 이전 경로에 Rust 사본이 남지 않는다 (1.04875ms)
+✔ CSS reference 도구가 삭제된 Rust fixture 경로를 참조하지 않는다 (26.148166ms)
+✔ 이동한 fixture 구현은 정해진 fixtures 모듈 경로에 있다 (0.163417ms)
+✔ 작업별 FFI fixture 모듈은 runtime 소스 루트에 남지 않는다 (0.924042ms)
+✔ 앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리된다 (3.188042ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 80.898666

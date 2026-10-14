@@ -2048,6 +2048,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 && report.contains("c13_2_scroll_fixture=passed")
                 && report.contains("border_escape_outside_parent=true")
                 && report.contains("border_escape_hit=matched")
+                && report.contains("c13_2_root_body_propagation=passed")
+                && report.contains("c13_2_root_body_hidden=passed")
                 && report.contains("c13_2_lifecycle=passed")
                 && report.contains("growth_offset_retained=true")
                 && report.contains("shrink_clamped_to_zero=true")
@@ -2057,7 +2059,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 postStatus("실패 · C13.2 scroll·paint·hit·lifecycle 결과 불일치")
                 return
             }
-            log("SPINON_C132_SCROLL_ASSERTIONS border_escape_outside_parent=true border_escape_hit=matched lifecycle=passed growth_offset_retained=true shrink_clamped_to_zero=true detach_removed_owner=true reparent_reset_offset=true")
+            log("SPINON_C132_SCROLL_ASSERTIONS root_body_propagation=passed root_body_hidden=passed border_escape_outside_parent=true border_escape_hit=matched lifecycle=passed growth_offset_retained=true shrink_clamped_to_zero=true detach_removed_owner=true reparent_reset_offset=true")
             log("SPINON_C132_SCROLL_SUMMARY status=passed \(runtimeStatusSummary(report))")
         } else if c131CompactSurfaceMatrixRouteRequested {
             let report = result ?? "status=-1 missing-report"
