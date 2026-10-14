@@ -20,6 +20,8 @@ use super::{
 };
 use crate::CurrentLayoutInputs;
 
+#[path = "tests/c13_1_clip_matrix.rs"]
+mod c13_1_clip_matrix;
 #[path = "tests/c13_1_paint_hit_border.rs"]
 mod c13_1_paint_hit_border;
 
