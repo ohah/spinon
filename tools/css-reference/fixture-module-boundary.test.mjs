@@ -113,6 +113,18 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
     resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures.rs'),
     'utf8',
   );
+  const c13FixtureSource = await readFile(
+    resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/fixtures/c13_1.rs'),
+    'utf8',
+  );
+  const c13FfiFixtureSource = await readFile(
+    resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c13_1.rs'),
+    'utf8',
+  );
+  const c13BorderRuntimeFixture = await readFile(
+    resolve(repositoryRoot, 'tests/fixtures/css/c13/runtime-overflow-clip-hit-border-c13-1.js'),
+    'utf8',
+  );
   const cargoManifest = await readFile(
     resolve(repositoryRoot, 'crates/spinon-ffi/Cargo.toml'),
     'utf8',
@@ -126,4 +138,12 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
     /#\[cfg\(feature = "c13-1-overflow-clip-fixture-test"\)\]\s*mod c13_1;/);
   assert.match(cargoManifest,
     /c13-1-overflow-clip-fixture-test\s*=\s*\["c04-runtime-gpu-fixture-test"\]/);
+  assert.match(c13FixtureSource,
+    /RUNTIME_CSS_C13_1_BORDER_FIXTURE_SOURCE[\s\S]*runtime-overflow-clip-hit-border-c13-1\.js/);
+  assert.match(c13FfiFixtureSource,
+    /spinon_runtime_gpu_host_new_c13_1_overflow_clip_border_fixture/);
+  assert.match(c13FfiFixtureSource,
+    /spinon_runtime_gpu_host_eval_c13_1_overflow_clip_border_fixture/);
+  assert.match(c13BorderRuntimeFixture,
+    /data-c131-border-node/);
 });

@@ -1,0 +1,6 @@
+getpwuid_r did not find a match for uid 501
+Timestamp               Ty Process[PID:TID]
+2026-10-14 19:02:39.192 Df SpinonBootstrap[57832:21c744a] SPINON_C131_HOST=session=ready owner_tid=35419248 isolate_per_session=1 queue_capacity=64 queue_policy=strict-priority-fifo css_worker_per_session=1 css_worker_ready_us=41 session_startup_us=1329
+2026-10-14 19:02:39.194 Df SpinonBootstrap[57832:21c744a] (Foundation) SPINON_C131_EVAL_RUN status=0 layout=ready boxes=13 generation=1 document_revision=65 environment_revision=0
+2026-10-14 19:02:39.196 Df SpinonBootstrap[57832:21c744a] (Foundation) SPINON_C131_HIT_TEST_SUMMARY status=ok matched=15 total=15 ids=fixed
+2026-10-14 19:02:39.196 Df SpinonBootstrap[57832:21c744a] (Foundation) SPINON_C131_FIXTURE_SUMMARY status=ok boxes=13 frames=13 hit_samples=15 hit_matches=15

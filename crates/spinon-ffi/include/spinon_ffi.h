@@ -154,6 +154,11 @@ SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c13_1_overflow_clip_fixture(
 int32_t spinon_runtime_gpu_host_eval_c13_1_overflow_clip_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c13_1_overflow_clip_border_fixture(
+    char *output, size_t output_capacity);
+int32_t spinon_runtime_gpu_host_eval_c13_1_overflow_clip_border_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
 #endif
 /* C11.1 고정 explicit Grid scene 전용 V8·Stylo·Taffy·WGPU 검증 host입니다.
    일반 앱의 display:grid CSS 지원을 선언하지 않습니다. */
