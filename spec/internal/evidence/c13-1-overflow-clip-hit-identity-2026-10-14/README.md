@@ -38,7 +38,7 @@ agent-browser `0.31.1`로 원본 [`overflow-clip-c13-1.html`](../../../../tests/
 - [`cargo-render-test.log`](cargo-render-test.log): render crate 전체 52 passed, 0 failed, 1 ignored.
 - [`cargo-clippy.log`](cargo-clippy.log), [`cargo-fmt.log`](cargo-fmt.log), [`git-diff-check.log`](git-diff-check.log): Clippy, rustfmt, diff check 통과.
 
-[구현 실패 관점 20개](implementation-review-20.md)와 [PR 변경 관점 30개](pr-delta-review-30.md)는 이 exact fallback identity delta를 각각 별도로 검토했다.
+[구현 실패 관점 20개](implementation-review-20.md)와 [PR 변경 관점 30개](pr-delta-review-30.md)는 이 exact fallback identity delta를 각각 별도로 검토했다. 이어진 target-frame 2D sweep은 [별도 관찰·구현 근거](../c13-1-overflow-clip-hit-identity-2d-2026-10-14/README.md)에 기록하며 이 축별 sweep을 대체하지 않는다.
 
 ## 남은 한계
 

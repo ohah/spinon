@@ -395,9 +395,19 @@ pub(super) fn assert_hit_identities_match_chrome(
             "Chrome {case_id} {axis} identity runs end early"
         );
     }
+    hit_identity_2d::assert_matches_chrome(
+        scene,
+        target_node,
+        root_node,
+        clip_node,
+        nested_inner_node,
+        case_id,
+    );
 }
 
 #[path = "runtime_matrix/axis_margin.rs"]
 mod axis_margin;
 #[path = "runtime_matrix/complex.rs"]
 mod complex;
+#[path = "runtime_matrix/hit_identity_2d.rs"]
+mod hit_identity_2d;
