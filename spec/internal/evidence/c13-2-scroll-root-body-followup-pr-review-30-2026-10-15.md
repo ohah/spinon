@@ -27,17 +27,17 @@
 | 18 | app status label의 `boxes=5`를 final scroll matrix frame count로 오인한다. | README는 status label이 첫 root/body 평가 값을 보여줄 수 있음을 밝히고 final scene 판정은 draw log의 27 boxes/scroll offsets 및 FFI assertions로 분리했다. **PASS** |
 | 19 | 구현 상태 대장이나 계획이 root/body app 검증을 계속 미실행으로 표시하거나 C13.2 완료로 과장한다. | STATUS/plan은 root/body 두 app route 완료, pixel readback·stale/fault·ink-only 미완료, 상위 C13 미완료로 맞췄다. **PASS** |
 | 20 | PR reviewer가 실행 가능한 상세 근거 없이 simulator success만 본다. | 이 후속 PR에만 적용한 root/body 구현 review 20개와 PR delta review를 독립 문서로 기록하고 screenshots/logs/hashes에 연결한다. **PASS** |
-| 21 | PR 본문에서 Android와 iOS screenshot 링크가 서로 뒤바뀐다. | 두 캡처의 파일명·기기 정보·본문 alt text를 게시 후 에이전트 브라우저에서 대조한다. PR 본문 작성 후 확인 필요. **PENDING** |
-| 22 | screenshot의 raw URL이 현재 branch 이름을 가리켜 rebase/merge 뒤 사라진다. | 본문 작성 시 head commit SHA를 URL에 고정하고, rebase-and-merge 완료 후 merge SHA로 다시 고정한다. 두 URL 모두 실제 브라우저에서 열어야 한다. **PENDING** |
-| 23 | URL은 열리지만 파일 경로나 artifact가 틀려 다른 이미지 또는 404가 표시된다. | PR 페이지의 DOM `img.currentSrc`, `complete`, `naturalWidth/Height`와 실제 rendered screenshot을 확인한다. 새 PR은 아직 만들지 않았다. **PENDING** |
-| 24 | 본문 링크가 markdown anchor로만 보여 이미지를 inline으로 렌더링하지 못한다. | 게시 후 GitHub PR conversation을 에이전트 브라우저에서 열어 inline 렌더링을 확인한다. 기존 PR #171의 렌더링은 이번 PR 증거를 대신하지 않는다. **PENDING** |
-| 25 | evidence README의 상대 링크가 PR diff 위치에서 잘못된 상위 디렉터리를 가리킨다. | `README.md` 기준 상대경로를 로컬에서 확인하고, PR 페이지에서 Android/iOS screenshot과 실행 log 링크를 직접 열어 확인한다. 웹 확인은 PR 생성 뒤 필요하다. **PENDING** |
-| 26 | 이미지 설명이 visual inspection을 pixel-exact readback 또는 hardware GPU proof로 오해시킨다. | README와 PR 본문에 Android는 SwiftShader AVD, iOS는 Simulator Metal이며 pixel readback 미실행이라고 명시했다. PR 본문에서 같은 범위를 확인한다. **PARTIAL** |
-| 27 | workflow가 앱/FFI 경로를 선택하지 않아 green CI가 새 변경을 빌드하지 않는다. | PR 생성 후 실행된 workflow 목록·job command와 정확한 head SHA를 대조한다. 현재 PR CI는 아직 시작되지 않았다. **PENDING** |
-| 28 | 체크가 green이어도 branch protection의 required check 또는 mergeability가 충족되지 않는다. | 병합 직전 GitHub의 required checks, review/mergeability, conflict 상태를 현재 PR head에서 다시 조회한다. **PENDING** |
-| 29 | PR에 작업 유형 또는 핵심 영역 label이 빠져 저장소 분류 규칙을 위반한다. | 생성 시 기존 `enhancement`, `area: runtime`, `area: ffi`, `area: android`, `area: ios`, `area: testing` 중 맞는 유형/영역을 지정하고 PR 화면에서 확인한다. **PENDING** |
+| 21 | PR 본문에서 Android와 iOS screenshot 링크가 서로 뒤바뀐다. | PR #173의 두 `img` alt와 raw 경로가 각각 Android API 37 AVD·iPhone 17 Pro Simulator 파일과 일치하는지 에이전트 브라우저로 확인했다. **PASS** |
+| 22 | screenshot의 raw URL이 현재 branch 이름을 가리켜 rebase/merge 뒤 사라진다. | PR #173 본문은 head branch가 아닌 commit `107718749d3733645e84624196ef9fa4a1dc7f59`에 URL을 고정했고 이미지가 로드됐다. rebase-and-merge 뒤 merge SHA로 다시 고정하는 후속 확인은 남아 있다. **PARTIAL — post-merge 확인** |
+| 23 | URL은 열리지만 파일 경로나 artifact가 틀려 다른 이미지 또는 404가 표시된다. | PR DOM의 두 `img.currentSrc`가 지정된 Android/iOS PNG를 가리키고 `complete=true`; intrinsic size가 각각 1080×2400, 1206×2622였다. **PASS** |
+| 24 | 본문 링크가 markdown anchor로만 보여 이미지를 inline으로 렌더링하지 못한다. | PR #173 conversation을 에이전트 브라우저와 rendered screenshot으로 확인했다. 두 inline 이미지는 body 안에서 표시되고 PR #171 결과를 대신 쓰지 않는다. **PASS** |
+| 25 | evidence README의 상대 링크가 PR diff 위치에서 잘못된 상위 디렉터리를 가리킨다. | 고정 SHA의 evidence README를 에이전트 브라우저로 열고 Chrome JSON, 두 simulator screenshot/runtime log 및 회귀 로그 상대 링크가 같은 evidence 경로로 해석됨을 확인했다. **PASS** |
+| 26 | 이미지 설명이 visual inspection을 pixel-exact readback 또는 hardware GPU proof로 오해시킨다. | PR #173 alt와 본문은 SwiftShader AVD·Simulator Metal 및 pixel readback 미실행을 명시한다. README도 동일한 한계를 기록한다. **PASS** |
+| 27 | workflow가 앱/FFI 경로를 선택하지 않아 green CI가 새 변경을 빌드하지 않는다. | `.github/workflows`에 PR 실행 workflow가 없고 `docs-pages.yml`은 수동 `workflow_dispatch`만 제공한다. `gh pr checks 173`에는 체크가 없으며 CI 통과로 주장하지 않았다. **PASS — CI 미구성 기록** |
+| 28 | 체크가 green이어도 branch protection의 required check 또는 mergeability가 충족되지 않는다. | main 보호 설정에서 필수 approval 0, required status checks 미설정, linear history 필수다. PR #173은 `MERGEABLE/CLEAN`이다. 병합 직전 재조회한다. **PARTIAL — merge 직전 재확인** |
+| 29 | PR에 작업 유형 또는 핵심 영역 label이 빠져 저장소 분류 규칙을 위반한다. | PR #173에 기존 `enhancement`, `area: runtime`, `area: ffi`, `area: android`, `area: ios`, `area: testing` label을 붙였고 GitHub 화면에서도 확인했다. **PASS** |
 | 30 | rebase-and-merge 뒤 PR 본문의 screenshot 및 evidence URL이 재작성된 SHA를 가리켜 깨진다. | 병합된 tree의 새 merge SHA로 URL을 갱신하고 에이전트 브라우저에서 이미지와 README 링크를 다시 열어야 한다. 병합 뒤에만 판정 가능하다. **PENDING** |
 
 ## PR gate
 
-이 표는 로컬 변경 검토와 게시/병합 뒤에 확인할 PR 통합 관문을 함께 기록한다. 21–30번은 PR 생성 이후 확인 전까지 미통과 상태다. 이를 해결한 뒤 CI, branch protection, mergeability와 충돌 여부를 확인한다. C13.2 전체 완료 문구는 사용하지 않으며, PR에는 두 Simulator screenshot을 inline으로 포함하되 pixel readback과 미실행 negative controls를 명시한다.
+이 표는 로컬 변경 검토와 게시/병합 뒤에 확인할 PR 통합 관문을 함께 기록한다. PR #173에서 21, 23–27, 29번은 확인했다. 22번 raw image permalink 갱신과 28번 보호 설정 재조회, 30번 merge SHA permalink 검증은 병합 때 마무리한다. `Rebase and merge`만 사용하고 C13.2 전체 완료를 주장하지 않는다.
