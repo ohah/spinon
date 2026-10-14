@@ -14,7 +14,7 @@ C13.1 구현의 새 CSS 지원, Android/iOS 앱 통합, surface paint 비교, DO
 - Fixture: `tests/fixtures/css/c13/overflow-clip-c13-1.html`, SHA-256 `b7acd7e63f79355b28cd480511b9be82e0f2bef478f1aadf685eb3b0bf4ef16a`.
 - 유효 행: `visible`, `clip-x`, `clip-y`, `clip-both`, `clip-margin-padding`, `clip-margin-content`, `clip-margin-border`, `clip-margin-hidden`, `mixed-visible-hidden`, `mixed-clip-auto`, `positioned-contained`, `positioned-escape`, `nested-clip`.
 - invalid margin 행은 runtime reject이고 float 세 행은 현재 의도적으로 fail-closed이므로 성공 scene의 exact identity matrix에서 제외한다.
-- 각 유효 행은 동일한 전체 viewport root를 가진 별도 Rust scene과 대응한다. 브라우저에서 현재 행의 target/descendant는 `target`, 현재 행의 nested inner는 `inner`, 현재 행의 box와 비-target descendant는 `box`, 그 외 fixture/page element는 runtime viewport root `root`로 추상화한다.
+- 각 유효 행은 동일한 전체 viewport root를 가진 별도 Rust scene과 대응한다. 브라우저에서 현재 행의 target/descendant는 `target`, 현재 행의 nested inner는 `inner`, 현재 행의 box와 비-target descendant는 `box`, 그 외 fixture/page element는 runtime viewport root `root`로 추상화한다. Chrome이 실제로 `null`을 반환하면 별도 `null` identity로 보존해 Rust `None`과 비교하고 root로 접지 않는다.
 
 ## 합격 기준
 
@@ -22,7 +22,7 @@ C13.1 구현의 새 CSS 지원, Android/iOS 앱 통합, surface paint 비교, DO
 2. Chrome browser, fixture hash, DPR, viewport, scroll offset과 유효 ID 13개를 capture 전후 확인한다.
 3. 각 행에서 `(x,y)` 모든 정수 좌표 `x=0..1279`, `y=0..1099`를 조회한다. 기대 총 표본은 `1280 × 1100 × 13 = 18,304,000`점이다.
 4. 각 y 행은 RLE x-run으로 저장한다. 모든 run과 y 행에 빈틈·겹침이 없고 각 행 총 폭은 1280, viewport 총점은 1,408,000이어야 한다.
-5. Rust test는 이전 target frame/기존 187,320점 검사를 유지하면서 전체 viewport 각 점의 Chrome identity를 `target`, clip `box`, nested `inner`, viewport `root`의 exact `NodeId`로 비교한다.
+5. Rust test는 이전 target frame/기존 187,320점 검사를 유지하면서 전체 viewport 각 점의 Chrome identity를 `target`, clip `box`, nested `inner`, viewport `root`의 exact `NodeId`로 비교한다. Chrome `null`은 `None`으로 exact 비교한다.
 6. 좌상/우상/좌하/우하 viewport 경계, target 밖 clip box·page fallback, visible overflow와 clip에서 달라지는 target reach를 negative/control 행으로 포함한다.
 7. unresolved identity, 누락 행/run, 잘못된 frame 또는 표본 수는 validator와 Rust test에서 즉시 실패한다.
 8. Chrome screenshot은 PR 본문에 inline으로 첨부하고 실제 표시를 agent-browser로 확인한다. Capture는 browser oracle이며 앱 화면이나 GPU surface 근거로 해석하지 않는다.
