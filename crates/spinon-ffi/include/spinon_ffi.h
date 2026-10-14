@@ -190,6 +190,13 @@ SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c13_2_scroll_fixture(
 int32_t spinon_runtime_gpu_host_eval_c13_2_scroll_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);
+/* C13.2 scroll 표면 표본 검증용 Metal drawable readback host입니다. */
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c13_2_scroll_surface_pixel_readback_fixture(
+    char *output, size_t output_capacity);
+/* 다음 C13.2 draw report에 포함할 고정 5개 Metal surface 표본을 예약합니다. */
+int32_t spinon_runtime_gpu_host_request_c13_2_surface_pixels_for_test(
+    SpinonRuntimeGpuHost *host, const uint32_t *sample_xy, size_t sample_count,
+    char *output, size_t output_capacity);
 #endif
 /* C11.1 고정 explicit Grid scene 전용 V8·Stylo·Taffy·WGPU 검증 host입니다.
    일반 앱의 display:grid CSS 지원을 선언하지 않습니다. */

@@ -791,6 +791,28 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 #endif
 }
 
++ (uint64_t)createRuntimeGpuHostWithC13_2SurfacePixelReadbackFixture {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C132_SCROLL_FIXTURE_TEST) && \
+    SPINON_ENABLE_C132_SCROLL_FIXTURE_TEST
+  std::array<char, 1024> output{};
+  SpinonRuntimeGpuHost *host =
+      spinon_runtime_gpu_host_new_c13_2_scroll_surface_pixel_readback_fixture(
+          output.data(), output.size());
+  if (host == nullptr) {
+    os_log_error(OS_LOG_DEFAULT, "SPINON_C132_METAL_PIXEL_HOST_ERROR=%{public}s",
+                 output.data());
+    return 0;
+  }
+  os_log(OS_LOG_DEFAULT, "SPINON_C132_METAL_PIXEL_HOST=%{public}s", output.data());
+  return static_cast<uint64_t>(reinterpret_cast<uintptr_t>(host));
+#else
+  os_log_error(OS_LOG_DEFAULT,
+               "SPINON_C132_METAL_PIXEL_DISABLED enable C04 runtime GPU and C13.2 fixture test");
+  return 0;
+#endif
+}
+
 + (uint64_t)createRuntimeGpuHostWithC11_1GridFixture {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
   std::array<char, 1024> output{};
@@ -1556,6 +1578,29 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
   return report;
 #else
   (void)handle;
+  return @"status=-90 feature-disabled";
+#endif
+}
+
++ (NSString *)requestRuntimeGpuC13_2SurfacePixels:(uint64_t)handle
+                                             sampleXY:(const uint32_t *)sampleXY
+                                          sampleCount:(NSUInteger)sampleCount {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C132_SCROLL_FIXTURE_TEST) && \
+    SPINON_ENABLE_C132_SCROLL_FIXTURE_TEST
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 1024> output{};
+  const int32_t status = spinon_runtime_gpu_host_request_c13_2_surface_pixels_for_test(
+      host, sampleXY, sampleCount, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C132_METAL_PIXEL_REQUEST", report);
+  return report;
+#else
+  (void)handle;
+  (void)sampleXY;
+  (void)sampleCount;
   return @"status=-90 feature-disabled";
 #endif
 }

@@ -1,8 +1,8 @@
 #[cfg(feature = "test-hooks")]
 use super::DrawFailureInjector;
 use super::{
-    RuntimeRendererError, android_auto_backend_order, backend_from_abi, choose_sdr_format,
-    color_encoding,
+    RuntimeRendererError, SurfacePixelSample, android_auto_backend_order, backend_from_abi,
+    choose_sdr_format, color_encoding, discard_surface_pixel_samples,
 };
 
 #[cfg(feature = "test-hooks")]
@@ -12,6 +12,21 @@ fn draw_failure_hook_is_consumed_once() {
     hook.arm();
     assert!(hook.take());
     assert!(!hook.take());
+}
+
+#[test]
+fn stale_draw_discards_pending_and_completed_pixel_samples() {
+    let mut pending = Some(vec![(12, 34), (56, 78)]);
+    let mut completed = Some(vec![SurfacePixelSample {
+        x: 12,
+        y: 34,
+        rgba: [1, 2, 3, 255],
+    }]);
+
+    discard_surface_pixel_samples(&mut pending, &mut completed);
+
+    assert!(pending.is_none());
+    assert!(completed.is_none());
 }
 
 #[test]

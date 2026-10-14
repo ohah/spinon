@@ -215,7 +215,7 @@ final class SurfaceViewPixelCapture {
                     worker.execute(() -> completion.accept(saveAndReadSamples(bitmap,
                             width, height, density, viewportWidthCssPx, viewportHeightCssPx,
                             originXCssPx, originYCssPx,
-                            outputFile, samples, attempt)));
+                            outputFile, samples, sourceIsCurrent, attempt)));
                 } catch (RuntimeException error) {
                     bitmap.recycle();
                     completion.accept(Result.failure(
@@ -241,26 +241,36 @@ final class SurfaceViewPixelCapture {
             int originYCssPx,
             File outputFile,
             List<Sample> samples,
+            BooleanSupplier sourceIsCurrent,
             int attempts
     ) {
         Bitmap decoded = null;
+        boolean createdOutput = false;
+        boolean keepOutput = false;
         try {
             if (bitmap.getWidth() != expectedWidth || bitmap.getHeight() != expectedHeight) {
                 return Result.failure("PixelCopy bitmap 크기가 surface와 다름", attempts);
+            }
+            if (!sourceIsCurrent.getAsBoolean()) {
+                return Result.failure("PNG 저장 전 surface 세대가 바뀜", attempts);
             }
             File parent = outputFile.getParentFile();
             if (parent == null || (!parent.isDirectory() && !parent.mkdirs())) {
                 return Result.failure("PixelCopy evidence directory 생성 실패", attempts);
             }
-            if (outputFile.exists()) {
+            if (!outputFile.createNewFile()) {
                 return Result.failure("동일 run ID의 기존 PixelCopy PNG가 있음", attempts);
             }
+            createdOutput = true;
             try (FileOutputStream output = new FileOutputStream(outputFile)) {
                 if (!bitmap.compress(Bitmap.CompressFormat.PNG, 100, output)) {
                     return Result.failure("PixelCopy PNG 인코딩 실패", attempts);
                 }
                 output.flush();
                 output.getFD().sync();
+            }
+            if (!sourceIsCurrent.getAsBoolean()) {
+                return Result.failure("PNG 저장 중 surface 세대가 바뀜", attempts);
             }
             byte[] pngBytes = java.nio.file.Files.readAllBytes(outputFile.toPath());
             String sha256 = sha256(pngBytes);
@@ -283,6 +293,10 @@ final class SurfaceViewPixelCapture {
                 }
                 pixels.add(new Pixel(sample.id, x, y, decoded.getPixel(x, y)));
             }
+            if (!sourceIsCurrent.getAsBoolean()) {
+                return Result.failure("표본 처리 중 surface 세대가 바뀜", attempts);
+            }
+            keepOutput = true;
             return new Result("", sha256, decoded.getWidth(), decoded.getHeight(), attempts, pixels);
         } catch (IOException | NoSuchAlgorithmException | RuntimeException error) {
             return Result.failure("PixelCopy evidence 처리 실패: "
@@ -290,6 +304,7 @@ final class SurfaceViewPixelCapture {
         } finally {
             if (decoded != null) decoded.recycle();
             if (!bitmap.isRecycled()) bitmap.recycle();
+            if (createdOutput && !keepOutput) outputFile.delete();
         }
     }
 

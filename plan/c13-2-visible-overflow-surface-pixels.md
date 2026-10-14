@@ -1,11 +1,14 @@
 # C13.2 후속 · visible overflow surface pixel 검증
 
-- **상태:** 고정 Chrome oracle·pass 기준 확정 · Android/iOS 앱 표면 검증 전
+- **상태:** 고정 Chrome oracle 확정 · 최신 source run5 Android/iOS Simulator 표면 표본 5/5 통과 · comparator negative controls 및 feature 경계 통과 · 구현 20개/PR 변경 30개 적대 검토 완료 · PR CI와 merge 대기
 - **상위 계획:** [C13.2 scroll container와 revision 분리](./c13-2-scroll-container-state.md)
 - **내부 계약:** [0062 C13.2 scroll state](../spec/internal/0062-c13-2-scroll-state.md), `0.1.0-draft` 유지
 - **구현 전 기준과 화면:** [Chrome 155 표본·geometry·PNG hash](../spec/internal/evidence/c13-2-visible-overflow-surface-pixels-plan-2026-10-15/README.md)
+- **Simulator 실행 증거:** [Android PixelCopy·iOS Metal 표본과 화면](../spec/internal/evidence/c13-2-visible-overflow-surface-pixels-2026-10-15/README.md)
 - **계획 실패 관점 20개:** [검토 기록](../spec/internal/evidence/c13-2-visible-overflow-surface-pixels-plan-review-20-2026-10-15.md)
 - **계획 PR 변경 관점 30개:** [검토 기록](../spec/internal/evidence/c13-2-visible-overflow-surface-pixels-pr-review-30-2026-10-15.md)
+- **구현 실패 관점 20개:** [검토 기록](../spec/internal/evidence/c13-2-visible-overflow-surface-pixels-implementation-review-20-2026-10-15.md)
+- **PR 변경 적대 관점 30개:** [검토 기록](../spec/internal/evidence/c13-2-visible-overflow-surface-pixels-pr-review-30-2026-10-15.md)
 
 ## 목적과 범위
 
