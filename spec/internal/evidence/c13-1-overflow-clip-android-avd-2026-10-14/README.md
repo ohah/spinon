@@ -38,6 +38,12 @@ adb -s emulator-5554 shell am start -S -n dev.spinon.bootstrap/.MainActivity \
 - [feature isolation](feature-isolation.txt)은 rustc와 같은 LLVM 22 `llvm-nm`으로 default `spinon-ffi` static library에서 C13.1 FFI 심볼 2개가 없는지, feature artifact에는 있는지 확인했고, `strings`로 `c131-root` fixture payload의 부재/존재도 각각 확인했다. 이는 해당 정적 라이브러리만 검사한 것이며 최종 앱 artifact 크기나 제품 빌드 적합성 측정이 아니다.
 - 변경된 8개 Rust package 전체 test target을 `c13-1-overflow-clip-fixture-test` feature on으로 실행해 통과했다([로그](changed-packages-cargo-test.log)). clip ancestry 예약 실패를 한 번 주입한 뒤 같은 reserve로 snapshot 빌드를 재시도하는 회귀 테스트도 포함한다. `cargo test --locked --workspace`, `cargo clippy --locked --workspace --all-targets -- -D warnings`, `cargo fmt --all -- --check`, `git diff --check`, fixture module boundary test 5/5도 현재 변경에서 통과했다([workspace test](workspace-cargo-test.log), [Clippy](workspace-clippy.log)). 같은 앱 runtime worker의 오류 뒤 재요청 복구는 별도 관문으로 남아 있다.
 
-## 남은 판정
+## 실행 시점의 남은 판정
 
 전체 C13.1 oracle matrix, clip 바깥 draw 및 hit/event negative-control breadth, clip ancestry allocation failure 후 동일 runtime worker 복구, `clip`과 `hidden`/`flow-root` float 비교, unsupported radius/transform 재검증, iOS Simulator 통합, WPT 후보 분류는 남았다. browser query는 고정 좌표의 runtime box hit 결과이며 DOM event dispatch를 호출하거나 입증하지 않는다. snapshot builder 경계의 단일 예약 실패와 같은 reserve 재사용은 단위 테스트로 확인했다. overflow scrolling, scroll state/CSSOM, gesture, scrollbar, radius/transform, 공개 CSS 지원은 범위 밖이다.
+
+## 후속 진행 상태 · 2026-10-14
+
+이 실행 뒤 별도 evidence에서 동일 runtime worker recovery, float fail-closed 경계, unsupported radius/transform 거부, iOS Simulator 통합, Android border-strip PixelCopy 및 WPT source triage를 추가로 기록했다. WPT triage는 고정 source 58개를 13/17/28로 분류했으며 테스트 실행은 하지 않았다([WPT 근거](../c13-1-overflow-clip-wpt-classification-2026-10-14/README.md)).
+
+또한 Chrome 고정 matrix 중 `clip-y`, border-box clip margin, hidden margin-ignore 세 행의 Rust clip geometry와 전체 정수 hit range를 비교했다([선택 matrix 근거](../c13-1-overflow-clip-matrix-2026-10-14/README.md)). 이는 surface pixel 대조를 포함하지 않는다. 전체 17행의 runtime/surface matrix와 더 넓은 clip 밖 draw/hit/event negative-control gate는 계속 남아 있으며 C13.1 및 C13 미완료 상태다.
