@@ -46,6 +46,8 @@ C13은 `overflow-x/y`와 `overflow`의 `visible`, `clip`, `hidden`, `scroll`, `a
 | C13.5 | `scroll-snap-type`, `scroll-snap-align`, `scroll-snap-stop`, `scroll-padding`, `scroll-margin`, `scroll-behavior`; user/programmatic scroll 완료 뒤 snap 결정과 layout/style/tree 변화 뒤 re-snap. mandatory/proximity, axis, oversized snap target을 포함한다. | Chrome offset과 선택된 snap target을 끝 상태에서 비교하고, 입력 시간/애니메이션 표본은 별도 기록한다. oversized content를 중간부터 모두 접근할 수 있는지, nested container가 가장 가까운 snap owner를 고르는지, DOM update 후 target 유지/삭제, mandatory와 proximity를 각각 negative/control fixture로 확인한다. |
 | C13.6 | C17의 writing-mode/direction 계약과 합쳐 `overflow-block/inline`, logical overscroll, snap logical axes 및 scroll origin/negative RTL offset을 통합한다. | C17 merge 뒤 horizontal-tb/LTR 외 vertical/RTL fixtures, DOM scroll APIs의 좌표 부호, platform gesture 방향·scrollbar inline edge와 Chrome 대조를 수행한다. 이 관문 전에는 C13 완료를 표시하지 않는다. |
 
+**다음 단계 상세 계획:** [C13.2 scroll container와 revision 분리](c13-2-scroll-container-state.md) · [Chrome 사전 기준](../spec/internal/evidence/c13-2-scroll-container-precomparison-2026-10-15/README.md) · [내부 계약 0062](../spec/internal/0062-c13-2-scroll-state.md) · [계획 실패 관점 20개](../spec/internal/evidence/c13-2-scroll-container-plan-review-2026-10-15.md) · [PR 변경 관점 30개](../spec/internal/evidence/c13-2-scroll-container-pr-review-2026-10-15.md). 현재는 oracle/계약/계획/PR 검토를 완료했으며 C13.2 구현은 시작 전.
+
 ### 현재 C13.1 브랜치 진행 상태 · 2026-10-15
 
 - Android API 37 ARM64 AVD의 compact 13-case surface는 PR #162에서 30,000 CSS pixel center exact를 확인했다. iOS Simulator는 geometry/hit identity·화면만 확인했고 Metal drawable readback은 없다. 같은 고정 viewport의 iOS 표면 비교는 별도 [계획](c13-1-ios-full-surface-pixel-centers.md)에서 다룬다. 그 실행이 끝나기 전 iOS pixel parity를 확인했다고 주장하지 않는다.

@@ -149,7 +149,7 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
   assert.match(ffiFixtureSource,
     /#\[cfg\(feature = "c13-1-overflow-clip-fixture-test"\)\]\s*mod c13_1;/);
   assert.match(cargoManifest,
-    /c13-1-overflow-clip-fixture-test\s*=\s*\["c04-runtime-gpu-fixture-test"\]/);
+    /c13-1-overflow-clip-fixture-test\s*=\s*\["c04-runtime-gpu-fixture-test",\s*"dep:sha2"\]/);
   assert.match(c13FixtureSource,
     /RUNTIME_CSS_C13_1_BORDER_FIXTURE_SOURCE[\s\S]*runtime-overflow-clip-hit-border-c13-1\.js/);
   assert.match(c13FfiFixtureSource,

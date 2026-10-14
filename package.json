@@ -14,6 +14,8 @@
     "test:css-reference": "node --test tools/css-reference/*.test.mjs",
     "test:css-c13-1-surface-pixel-centers": "node --test tools/css-reference/compare-c13-1-surface-pixel-centers.test.mjs",
     "test:css-c13-1-ios-metal-pixel-centers": "node --test tools/css-reference/compare-c13-1-ios-metal-pixel-centers.test.mjs",
+    "css:reference:c13-2-scroll-precomparison": "node tools/css-reference/capture-c13-2-scroll-precomparison.mjs",
+    "test:css-c13-2-scroll-precomparison": "node --test tools/css-reference/c13-2-scroll-precomparison.test.mjs",
     "css:compare:c13-1-surface-pixel-centers": "node tools/css-reference/compare-c13-1-surface-pixel-centers.mjs",
     "css:verify:c13-1-android-avd-full-surface": "node tools/css-reference/capture-c13-1-android-avd-full-surface.mjs",
     "css:verify:c13-1-ios-metal-pixel-centers": "node tools/css-reference/capture-c13-1-ios-metal-pixel-centers.mjs",

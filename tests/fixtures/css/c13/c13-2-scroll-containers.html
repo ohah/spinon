@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>C13.2 scroll container precomparison</title>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { width: 640px; height: 480px; margin: 0; overflow: hidden; font: 13px/1.35 sans-serif; }
+      body { position: relative; color: #15202b; background: #fff; }
+      h1 { position: absolute; left: 12px; top: 8px; margin: 0; font-size: 18px; }
+      .case { position: absolute; border: 1px solid #8995a0; padding: 6px; background: #f7f9fb; }
+      .label { margin: 0 0 4px; }
+      .scrollport { position: relative; width: 120px; height: 82px; border: 3px solid #15202b; overflow: auto; background: #fff; }
+      .fill { width: 200px; height: 150px; background: #57a6d9; }
+      .one-axis-x .scrollport { overflow-x: auto; overflow-y: hidden; }
+      .one-axis-x .fill { width: 200px; height: 36px; }
+      .one-axis-y .scrollport { overflow-x: hidden; overflow-y: auto; }
+      .one-axis-y .fill { width: 36px; height: 150px; }
+      .hidden .scrollport { overflow: hidden; }
+      .clip .scrollport { overflow: clip; }
+      .no-overflow .scrollport { overflow: auto; }
+      .no-overflow .fill { width: 80px; height: 45px; }
+      .forced-scroll .scrollport { overflow: scroll; }
+      .forced-scroll .fill { width: 80px; height: 45px; }
+      .visible-overflow .scrollport { overflow: visible; }
+      .visible-overflow .fill { width: 160px; height: 60px; }
+      .ink .scrollport { overflow: auto; }
+      .ink .fill { width: 80px; height: 45px; box-shadow: 0 0 24px 12px #ed8b36; }
+      .absolute .scrollport { overflow: auto; }
+      .absolute .fill { width: 48px; height: 40px; }
+      .absolute .escaped { position: absolute; left: 150px; top: 8px; width: 28px; height: 24px; background: #ed8b36; }
+      .nested .outer { width: 150px; height: 104px; overflow: auto; border: 3px solid #15202b; background: #fff; }
+      .nested .inner { width: 232px; height: 176px; padding: 6px; }
+      .nested .inner-scrollport { width: 126px; height: 88px; overflow: auto; border: 2px solid #b23c46; }
+      .nested .inner-fill { width: 188px; height: 138px; background: #57a6d9; }
+      .clamp .fill { width: 220px; height: 180px; }
+      .clamp .content-reparent-target { display: contents; }
+      .move .scrollport { width: 120px; height: 82px; overflow: auto; }
+      #no-overflow { left: 12px; top: 42px; }
+      #one-axis-x { left: 178px; top: 42px; }
+      #one-axis-y { left: 344px; top: 42px; }
+      #hidden { left: 510px; top: 42px; }
+      #clip { left: 12px; top: 190px; }
+      #ink { left: 178px; top: 190px; }
+      #absolute { left: 344px; top: 190px; }
+      #nested { left: 510px; top: 190px; }
+      #clamp { left: 12px; top: 338px; }
+      #move { left: 178px; top: 338px; }
+      #visible-overflow { left: 344px; top: 338px; }
+      #forced-scroll { left: 510px; top: 338px; }
+      #move-target { position: absolute; left: 800px; top: 362px; width: 126px; height: 88px; border: 3px solid #15202b; overflow: auto; background: #fff; }
+    </style>
+  </head>
+  <body>
+    <h1>C13.2 scroll container oracle</h1>
+    <section id="no-overflow" class="case no-overflow"><p class="label">auto: no overflow</p><div class="scrollport"><div class="fill"></div></div></section>
+    <section id="one-axis-x" class="case one-axis-x"><p class="label">auto x only</p><div class="scrollport"><div class="fill"></div></div></section>
+    <section id="one-axis-y" class="case one-axis-y"><p class="label">auto y only</p><div class="scrollport"><div class="fill"></div></div></section>
+    <section id="hidden" class="case hidden"><p class="label">hidden: scripted scroll</p><div class="scrollport"><div class="fill"></div></div></section>
+    <section id="clip" class="case clip"><p class="label">clip: no scroll state</p><div class="scrollport"><div class="fill"></div></div></section>
+    <section id="ink" class="case ink"><p class="label">ink overflow only</p><div class="scrollport"><div class="fill"></div></div></section>
+    <section id="absolute" class="case absolute"><p class="label">out-of-flow descendant</p><div class="scrollport"><div class="fill"></div><div class="escaped"></div></div></section>
+    <section id="nested" class="case nested"><p class="label">nested scrollports</p><div class="outer"><div class="inner"><div class="inner-scrollport"><div class="inner-fill"></div></div></div></div></section>
+    <section id="clamp" class="case clamp"><p class="label">offset clamp after shrink</p><div class="scrollport"><div class="fill"></div><div class="content-reparent-target"></div></div></section>
+    <section id="move" class="case move"><p class="label">same node moved between roots</p><div class="scrollport"><div class="fill" id="move-fill" style="width: 220px; height: 180px"></div></div></section>
+    <section id="visible-overflow" class="case visible-overflow"><p class="label">visible child beyond border</p><div class="scrollport"><div class="fill"></div></div></section>
+    <section id="forced-scroll" class="case forced-scroll"><p class="label">scroll: no overflow</p><div class="scrollport"><div class="fill"></div></div></section>
+    <div id="move-target"></div>
+  </body>
+</html>
