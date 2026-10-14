@@ -1,0 +1,33 @@
+{
+  "schema": "spinon-css-c14-2-replaced-ratio-sizing-flex-inventory/v1",
+  "fixture": "replaced-ratio-sizing-flex-precomparison.html",
+  "parentStyle": {
+    "display": "flex",
+    "flexDirection": "row",
+    "alignItems": "flex-start",
+    "widthCssPx": 120
+  },
+  "browser": "Chrome Headless 155.0.8059.40",
+  "devicePixelRatio": 1,
+  "viewportCssPx": { "width": 1280, "height": 633 },
+  "resource": {
+    "path": "../../resources/c14-1-png-basic.png",
+    "sha256": "5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2",
+    "naturalSizeCssPx": { "width": 24, "height": 16 },
+    "ratio": 1.5
+  },
+  "cases": [
+    { "id": "flex-width-max-auto-cross", "kind": "specified_main_axis_max_auto_cross", "parentAlignItems": "flex-start", "parentHeightCssPx": null, "expectedCssPx": [48, 20] },
+    { "id": "flex-height-max-auto-main", "kind": "specified_cross_axis_max_auto_main", "parentAlignItems": "flex-start", "parentHeightCssPx": null, "expectedCssPx": [30, 24] },
+    { "id": "flex-min-cross", "kind": "specified_main_axis_min_auto_cross", "parentAlignItems": "flex-start", "parentHeightCssPx": null, "expectedCssPx": [48, 32] },
+    { "id": "flex-auto-basis", "kind": "automatic_flex_basis_natural_size", "parentAlignItems": "flex-start", "parentHeightCssPx": null, "expectedCssPx": [24, 16] },
+    { "id": "fixed-cross-stretch-auto-auto", "kind": "definite_cross_stretch_ratio_transfers_to_auto_main", "parentAlignItems": "stretch", "parentHeightCssPx": 40, "expectedCssPx": [60, 40] },
+    { "id": "fixed-cross-stretch-max-height", "kind": "definite_cross_stretch_with_maximum", "parentAlignItems": "stretch", "parentHeightCssPx": 40, "expectedCssPx": [30, 20] },
+    { "id": "fixed-cross-start-auto-auto", "kind": "definite_cross_without_stretch", "parentAlignItems": "flex-start", "parentHeightCssPx": 40, "expectedCssPx": [24, 16] },
+    { "id": "fixed-cross-stretch-specified-height", "kind": "definite_css_cross_size_keeps_ratio_transferred_main", "parentAlignItems": "stretch", "parentHeightCssPx": 40, "expectedCssPx": [36, 24] }
+  ],
+  "comparison": {
+    "fields": ["naturalWidth", "naturalHeight", "frame.width", "frame.height"],
+    "toleranceCssPx": 0.05
+  }
+}

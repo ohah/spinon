@@ -1,0 +1,47 @@
+{
+  "schema": "spinon-css-c14-2-replaced-ratio-sizing-inventory/v1",
+  "fixture": "replaced-ratio-sizing-precomparison.html",
+  "browser": "Chrome Headless 155.0.8059.40",
+  "devicePixelRatio": 1,
+  "viewportCssPx": { "width": 1280, "height": 633 },
+  "resource": {
+    "path": "../../resources/c14-1-png-basic.png",
+    "sha256": "5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2",
+    "naturalSizeCssPx": { "width": 24, "height": 16 },
+    "ratio": 1.5
+  },
+  "cases": [
+    { "id": "natural-auto-auto", "kind": "natural_size", "expectedCssPx": [24, 16] },
+    { "id": "width-definite-height-auto", "kind": "ratio_transfer", "expectedCssPx": [48, 32] },
+    { "id": "width-auto-height-definite", "kind": "ratio_transfer", "expectedCssPx": [36, 24] },
+    { "id": "min-width-only", "kind": "single_min_constraint", "expectedCssPx": [48, 32] },
+    { "id": "min-height-only", "kind": "single_min_constraint", "expectedCssPx": [48, 32] },
+    { "id": "max-width-only", "kind": "single_max_constraint", "expectedCssPx": [19.984375, 13.328125], "toleranceCssPx": 0.05 },
+    { "id": "max-height-only", "kind": "single_max_constraint", "expectedCssPx": [15, 10] },
+    { "id": "both-max-contain", "kind": "two_max_constraints", "expectedCssPx": [15, 10] },
+    { "id": "both-max-width-limiting", "kind": "css22-both-above-max-width-branch", "expectedCssPx": [19.984375, 13.328125], "toleranceCssPx": 0.05 },
+    { "id": "both-max-height-limiting", "kind": "css22-both-above-max-height-branch", "expectedCssPx": [18, 12] },
+    { "id": "both-min-height-limiting", "kind": "css22-both-below-min-height-branch", "expectedCssPx": [33, 22] },
+    { "id": "both-min-width-limiting", "kind": "css22-both-below-min-width-branch", "expectedCssPx": [36, 24] },
+    { "id": "cross-min-width-max-height", "kind": "css22-width-below-min-height-above-max", "expectedCssPx": [30, 10] },
+    { "id": "cross-max-width-min-height", "kind": "css22-width-above-max-height-below-min", "expectedCssPx": [20, 20] },
+    { "id": "min-max-conflict", "kind": "min_max_cross_axis_conflict", "expectedCssPx": [48, 24] },
+    { "id": "min-over-max", "kind": "same_axis_min_wins", "expectedCssPx": [48, 32] },
+    { "id": "partial-auto-max-opposite", "kind": "definite_axis_with_auto_axis_constraint", "expectedCssPx": [48, 20] },
+    { "id": "partial-auto-max-auto-axis", "kind": "auto_axis_max_constraint", "expectedCssPx": [30, 24] },
+    { "id": "content-box-edges", "kind": "border_box_edges", "expectedCssPx": [48, 34] },
+    { "id": "aspect-ratio-override", "kind": "authored_ratio_overrides_natural", "expectedCssPx": [48, 48] },
+    { "id": "aspect-ratio-border-box", "kind": "authored_ratio_uses_border_box", "expectedCssPx": [48, 32] },
+    { "id": "aspect-ratio-auto-override", "kind": "auto_ratio_uses_natural", "expectedCssPx": [48, 32] },
+    { "id": "svg-ratio-only-square", "kind": "ratio_only_height_definite_observation", "expectedCssPx": [30, 30], "layoutStage": "not_in_png_adapter_scope" },
+    { "id": "svg-ratio-only-wide", "kind": "ratio_only_width_definite_observation", "expectedCssPx": [40, 20], "layoutStage": "not_in_png_adapter_scope" },
+    { "id": "svg-no-natural-dimensions", "kind": "user_agent_default_size_observation", "expectedCssPx": [300, 150], "layoutStage": "synthetic_metadata_test_required" },
+    { "id": "missing-source", "kind": "unloaded_resource_negative_control", "expectedCssPx": [0, 0], "layoutStage": "must_not_become_empty_metadata" },
+    { "id": "broken-source", "kind": "decode_failure_negative_control", "expectedCssPx": [1280, 0], "layoutStage": "must_not_become_empty_metadata" }
+  ],
+  "comparison": {
+    "fields": ["naturalWidth", "naturalHeight", "frame.width", "frame.height"],
+    "toleranceCssPx": 0.05,
+    "firstDraftWithZeroNaturalDimensions": "discarded; corrected fixture references the shared PNG file"
+  }
+}

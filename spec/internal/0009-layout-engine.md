@@ -30,7 +30,7 @@ let output = TaffyLayoutEngine.compute(&input)?;
 assert_eq!(output.revision, input.revision());
 ```
 
-HTML image intrinsic measurement는 generic `LayoutInput`에 DOM 태그나 resource state를 추가하지 않고 별도의 immutable snapshot 인자로 전달합니다. 중복 노드 ID를 잃지 않도록 snapshot constructor는 iterator를 받아 중복을 오류로 돌려줍니다. `source`는 같은 `LayoutInput` source여야 하고, 자연 너비·높이는 양의 유한 CSS px입니다.
+HTML image intrinsic metadata는 generic `LayoutInput`에 DOM 태그나 resource state를 추가하지 않고 별도의 immutable snapshot 인자로 전달합니다. 중복 노드 ID를 잃지 않도록 snapshot constructor는 iterator를 받아 중복을 오류로 돌려줍니다. `source`는 같은 `LayoutInput` source여야 합니다. 자연 너비·높이·ratio는 각각 선택할 수 있으며, 존재하는 값은 양수·유한이어야 합니다. 두 natural axis와 별도 ratio가 함께 있으면 ratio는 너비/높이와 일치해야 합니다. 성공했지만 세 metadata가 모두 없는 entry는 아직 로드되지 않았거나 실패해 entry가 없는 상태와 다릅니다.
 
 ```rust
 let measurements = LayoutIntrinsicSizeSnapshot::new(
@@ -42,7 +42,7 @@ let output = TaffyLayoutEngine.compute_with_intrinsic_size_snapshot(&input, &mea
 assert_eq!(output.revision.intrinsic_size(), measurements.revision());
 ```
 
-`spinon-style-to-layout`의 snapshot overload는 선택 HostDocument 하위 트리에서 HTML namespace `img`만 허용하고 보이는 auto/auto 이미지의 누락 측정, partial-auto, `aspect-ratio`, 비-image·하위 트리 밖 map entry를 거부합니다. 고정 크기 이미지는 자연 크기 entry가 있어도 그 entry를 사용하지 않습니다. `display:none` 또는 숨겨진 조상 아래에 있는 이미지는 측정을 요구하지 않습니다. layout leaf에는 Taffy `item_is_replaced`와 CSS px measure를 함께 전달해 일반 Block 자식의 auto 폭 stretch가 natural width를 덮지 않게 합니다.
+`spinon-style-to-layout`의 snapshot overload는 선택 HostDocument 하위 트리에서 HTML namespace `img`만 허용하고 보이는 이미지의 auto 축에 metadata entry를 요구합니다. 부분 auto 축은 natural/preferred ratio와 min/max로 계산하고, 성공 metadata가 비어 있으면 `300×150` 기본 객체 크기를 사용합니다. natural ratio min/max는 CSS 2.2의 10개 constraint violation 조합으로 계산하며 numeric `aspect-ratio`는 `box-sizing` 기준 상자에 ratio를 적용합니다. Flex의 자식 측정 경계에도 지정 축, ratio transfer, min/max 결과를 전달해 natural auto-axis 크기가 최종 used size로 오인되지 않게 합니다. ratio만 있는 auto/auto intrinsic contribution, `aspect-ratio:auto <ratio>`, authored `aspect-ratio`와 min/max 조합, percentage/calc width·height·min/max·padding은 거부합니다. 고정 크기 이미지는 자연 metadata가 있어도 크기 결과에 사용하지 않습니다. `display:none` 또는 숨겨진 조상 아래에 있는 이미지는 측정을 요구하지 않습니다. layout leaf에는 Taffy `item_is_replaced`와 custom used-size 결과를 함께 전달해 Taffy의 상이한 ratio 보정이 계산 결과를 덮지 않게 합니다.
 
 현재 이 API에 값을 전달하는 decoder/resource owner는 없고 테스트가 측정 map을 직접 만듭니다. 이미지 decode, cache 교체, 재계산 scheduling, 앱 runtime integration은 완료되지 않았습니다.
 
@@ -102,8 +102,8 @@ assert_eq!(output.revision, input.revision());
 | HostDocument root가 현재 snapshot의 HostRoot 직속 요소가 아님 | `InvalidHostDocumentRoot` |
 | 선택한 HostDocument 하위 트리에 텍스트 노드가 있음 | `UnsupportedTextNode` |
 | measurement snapshot source가 현재 layout source와 다름 | `IntrinsicSizeSourceMismatch` |
-| 측정 map 안에 중복·unknown·non-leaf node가 있거나 길이가 0·음수·NaN·무한대 | `DuplicateIntrinsicSizeNode`, `UnknownIntrinsicSizeNode`, `UnsupportedIntrinsicSizing`, `InvalidIntrinsicSize` |
-| 보이는 auto/auto HTML image에 측정값이 없거나 현재 미지원 sizing 조합을 사용 | `MissingIntrinsicSize`, `UnsupportedIntrinsicSizing` |
+| 측정 map 안에 중복·unknown·non-leaf node가 있거나 제공된 자연 치수·ratio가 0·음수·NaN·무한대 또는 서로 불일치 | `DuplicateIntrinsicSizeNode`, `UnknownIntrinsicSizeNode`, `UnsupportedIntrinsicSizing`, `InvalidIntrinsicSize` |
+| 보이는 auto 축 HTML image에 metadata entry가 없거나 현재 미지원 sizing 조합을 사용 | `MissingIntrinsicSize`, `UnsupportedIntrinsicSizing` |
 | 입력 ID·연결 그래프가 잘못됨 | 해당 `MissingRoot`, `DuplicateNode`, `MissingChild`, `DuplicateChild`, `RootHasParent`, `MultipleParents`, `DetachedNode`, `Cycle`, `UnreachableNode` |
 | 루트 크기가 viewport와 다름 | `RootSizeMismatch` |
 | 유한하지 않은 길이·간격·grow 또는 음수 padding·gap·grow·shrink | `InvalidStyle` |

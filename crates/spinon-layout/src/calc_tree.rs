@@ -8,11 +8,12 @@ use spinon_core::NodeId as SpinonNodeId;
 use taffy::{
     AvailableSpace, BlockContext, Cache, CacheTree, Display, Layout, LayoutBlockContainer,
     LayoutFlexboxContainer, LayoutInput as TaffyLayoutInput, LayoutOutput as TaffyLayoutOutput,
-    LayoutPartialTree, MaybeResolve, NodeId as TaffyNodeId, RunMode, Size, TraversePartialTree,
-    compute_block_layout, compute_cached_layout, compute_flexbox_layout, compute_grid_layout,
-    compute_hidden_layout, compute_leaf_layout, compute_root_layout,
+    LayoutPartialTree, MaybeResolve, NodeId as TaffyNodeId, RunMode, Size, SizingMode,
+    TraversePartialTree, compute_block_layout, compute_cached_layout, compute_flexbox_layout,
+    compute_grid_layout, compute_hidden_layout, compute_leaf_layout, compute_root_layout,
 };
 
+use self::replaced_sizing::{ReplacedSizingInput, resolve_used_size};
 use crate::{
     LayoutCalcId, LayoutCssMathValue, LayoutError, LayoutInput, LayoutIntrinsicSize,
     LayoutPosition, PositionedContainingBlockOwner, RootSizingPolicy,
@@ -24,6 +25,8 @@ use crate::{
 
 #[path = "calc_tree/grid.rs"]
 mod grid;
+#[path = "calc_tree/replaced_sizing.rs"]
+mod replaced_sizing;
 
 /// Taffy stores calc handles in the low three tag bits, so every owner is eight-byte aligned.
 #[repr(align(8))]
@@ -32,7 +35,7 @@ struct CalcOwner(LayoutCssMathValue);
 struct Node {
     children: Vec<TaffyNodeId>,
     style: CompactTaffyStyle,
-    intrinsic_size: Option<LayoutIntrinsicSize>,
+    replaced_sizing: Option<ReplacedSizingInput>,
     cache: Cache,
     layout: Layout,
 }
@@ -41,13 +44,13 @@ impl Node {
     fn new(
         children: Vec<TaffyNodeId>,
         style: CompactTaffyStyle,
-        intrinsic_size: Option<LayoutIntrinsicSize>,
+        replaced_sizing: Option<ReplacedSizingInput>,
         order: u32,
     ) -> Self {
         Self {
             children,
             style,
-            intrinsic_size,
+            replaced_sizing,
             cache: Cache::new(),
             layout: Layout::with_order(order),
         }
@@ -151,17 +154,17 @@ impl CalcLayoutTree {
                 .get(&external_id)
                 .copied()
                 .unwrap_or_default();
-            let intrinsic_size = intrinsic_sizes
+            let replaced_sizing = intrinsic_sizes
                 .and_then(|sizes| sizes.get(&external_id).copied())
-                .filter(|_| {
-                    source.style.width == crate::LayoutDimension::Auto
-                        && source.style.height == crate::LayoutDimension::Auto
-                        && source.style.aspect_ratio.is_none()
+                .map(|natural| ReplacedSizingInput {
+                    node: external_id,
+                    style: source.style,
+                    natural,
                 });
             let style = to_taffy_style(
                 external_id,
                 source.style,
-                intrinsic_size.is_some(),
+                replaced_sizing.is_some(),
                 positioning,
                 flow_only,
                 &calc_handles,
@@ -179,7 +182,7 @@ impl CalcLayoutTree {
                 },
             )?;
             let order = u32::try_from(position).map_err(|_| LayoutError::TooManyNodes)?;
-            nodes.push(Node::new(children, style, intrinsic_size, order));
+            nodes.push(Node::new(children, style, replaced_sizing, order));
         }
 
         let needs_viewport_containing_block = input.root_sizing
@@ -302,8 +305,40 @@ impl CalcLayoutTree {
                 (Display::Flex, true) => compute_flexbox_layout(tree, node_id, inputs),
                 (Display::Grid, true) => compute_grid_layout(tree, node_id, inputs),
                 (_, false) => {
+                    let mut inputs = inputs;
                     let mut style = tree.node(node_id).style.clone();
-                    let intrinsic_size = tree.node(node_id).intrinsic_size;
+                    let replaced_sizing = tree.node(node_id).replaced_sizing;
+                    let inherent_size = inputs.sizing_mode == SizingMode::InherentSize;
+                    let used_replaced_size = if inherent_size {
+                        replaced_sizing.map(|input| {
+                            match resolve_used_size(
+                                input.node,
+                                input,
+                                inputs.known_dimensions,
+                                true,
+                            ) {
+                                Ok(size) => size,
+                                Err(error) => {
+                                    tree.record_error(error);
+                                    replaced_sizing::UsedReplacedSize {
+                                        content_width: 0.0,
+                                        content_height: 0.0,
+                                        width: 0.0,
+                                        height: 0.0,
+                                    }
+                                }
+                            }
+                        })
+                    } else {
+                        None
+                    };
+                    if let Some(size) = used_replaced_size {
+                        style.set_used_replaced_border_box_size(size.width, size.height);
+                        inputs.known_dimensions = Size {
+                            width: Some(size.width),
+                            height: Some(size.height),
+                        };
+                    }
                     let style_size = style
                         .size()
                         .maybe_resolve(inputs.parent_size, |value, basis| {
@@ -320,10 +355,23 @@ impl CalcLayoutTree {
                         inputs,
                         &style,
                         |value, basis| tree.resolve_calc_value(value, basis),
-                        |_, _| {
-                            intrinsic_size.map_or(Size::ZERO, |size| Size {
-                                width: size.width,
-                                height: size.height,
+                        |known_dimensions, _| {
+                            replaced_sizing.map_or(Size::ZERO, |input| {
+                                match resolve_used_size(
+                                    input.node,
+                                    input,
+                                    known_dimensions,
+                                    inherent_size,
+                                ) {
+                                    Ok(size) => Size {
+                                        width: size.content_width,
+                                        height: size.content_height,
+                                    },
+                                    Err(error) => {
+                                        tree.record_error(error);
+                                        Size::ZERO
+                                    }
+                                }
                             })
                         },
                     )

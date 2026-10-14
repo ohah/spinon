@@ -1,0 +1,36 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C14.2 replaced image ratio sizing precomparison</title>
+<style>
+  html, body { margin: 0; padding: 0; }
+  img { display: block; margin: 0; padding: 0; border: 0; }
+</style>
+<main id="cases">
+  <img id="natural-auto-auto" src="../../resources/c14-1-png-basic.png">
+  <img id="width-definite-height-auto" src="../../resources/c14-1-png-basic.png" style="width:48px;height:auto">
+  <img id="width-auto-height-definite" src="../../resources/c14-1-png-basic.png" style="width:auto;height:24px">
+  <img id="min-width-only" src="../../resources/c14-1-png-basic.png" style="min-width:48px">
+  <img id="min-height-only" src="../../resources/c14-1-png-basic.png" style="min-height:32px">
+  <img id="max-width-only" src="../../resources/c14-1-png-basic.png" style="max-width:20px">
+  <img id="max-height-only" src="../../resources/c14-1-png-basic.png" style="max-height:10px">
+  <img id="both-max-contain" src="../../resources/c14-1-png-basic.png" style="max-width:18px;max-height:10px">
+  <img id="both-max-width-limiting" src="../../resources/c14-1-png-basic.png" style="max-width:20px;max-height:14px">
+  <img id="both-max-height-limiting" src="../../resources/c14-1-png-basic.png" style="max-width:22px;max-height:12px">
+  <img id="both-min-height-limiting" src="../../resources/c14-1-png-basic.png" style="min-width:30px;min-height:22px">
+  <img id="both-min-width-limiting" src="../../resources/c14-1-png-basic.png" style="min-width:36px;min-height:20px">
+  <img id="cross-min-width-max-height" src="../../resources/c14-1-png-basic.png" style="min-width:30px;max-height:10px">
+  <img id="cross-max-width-min-height" src="../../resources/c14-1-png-basic.png" style="max-width:20px;min-height:20px">
+  <img id="min-max-conflict" src="../../resources/c14-1-png-basic.png" style="min-width:48px;max-height:24px">
+  <img id="min-over-max" src="../../resources/c14-1-png-basic.png" style="min-width:48px;max-width:30px">
+  <img id="partial-auto-max-opposite" src="../../resources/c14-1-png-basic.png" style="width:48px;height:auto;max-height:20px">
+  <img id="partial-auto-max-auto-axis" src="../../resources/c14-1-png-basic.png" style="width:auto;height:24px;max-width:30px">
+  <img id="content-box-edges" src="../../resources/c14-1-png-basic.png" style="box-sizing:border-box;width:48px;height:auto;padding:2px;border:1px solid black">
+  <img id="aspect-ratio-override" src="../../resources/c14-1-png-basic.png" style="width:48px;height:auto;aspect-ratio:1/1">
+  <img id="aspect-ratio-border-box" src="../../resources/c14-1-png-basic.png" style="box-sizing:border-box;width:48px;height:auto;padding:2px;border:1px solid black;aspect-ratio:3/2">
+  <img id="aspect-ratio-auto-override" src="../../resources/c14-1-png-basic.png" style="width:48px;height:auto;aspect-ratio:auto 1/1">
+  <img id="svg-ratio-only-square" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Crect width='10' height='10'/%3E%3C/svg%3E" style="height:30px;width:auto">
+  <img id="svg-ratio-only-wide" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2 1'%3E%3Crect width='2' height='1'/%3E%3C/svg%3E" style="width:40px;height:auto">
+  <img id="svg-no-natural-dimensions" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='10' height='10'/%3E%3C/svg%3E">
+  <img id="missing-source" alt="">
+  <img id="broken-source" src="data:image/png;base64,AA==" alt="">
+</main>

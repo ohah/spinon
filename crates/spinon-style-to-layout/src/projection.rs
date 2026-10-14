@@ -638,22 +638,8 @@ fn validate_intrinsic_image_inputs(
                     style.width == spinon_layout::LayoutDimension::Auto,
                     style.height == spinon_layout::LayoutDimension::Auto,
                 ) {
-                    (true, true) => {
-                        if style.aspect_ratio.is_some() {
-                            return Err(LayoutError::UnsupportedIntrinsicSizing {
-                                node: node.id(),
-                                reason: "aspect-ratio와 자연 크기의 조합은 C14.1 범위 밖입니다",
-                            }
-                            .into());
-                        }
+                    (true, true) | (true, false) | (false, true) => {
                         required_images.insert(node.id());
-                    }
-                    (true, false) | (false, true) => {
-                        return Err(LayoutError::UnsupportedIntrinsicSizing {
-                            node: node.id(),
-                            reason: "width 또는 height 한 축만 auto인 이미지 크기는 지원하지 않습니다",
-                        }
-                        .into());
                     }
                     (false, false) => {}
                 }
