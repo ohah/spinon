@@ -14,8 +14,8 @@ use taffy::{
 };
 
 use crate::{
-    LayoutCalcId, LayoutCssMathValue, LayoutError, LayoutInput, LayoutPosition,
-    PositionedContainingBlockOwner, RootSizingPolicy,
+    LayoutCalcId, LayoutCssMathValue, LayoutError, LayoutInput, LayoutIntrinsicSize,
+    LayoutPosition, PositionedContainingBlockOwner, RootSizingPolicy,
     compact_taffy_style::CompactTaffyStyle,
     grid_placement::normalize_grid_layout,
     positioning::collect_positioned_owners,
@@ -32,15 +32,22 @@ struct CalcOwner(LayoutCssMathValue);
 struct Node {
     children: Vec<TaffyNodeId>,
     style: CompactTaffyStyle,
+    intrinsic_size: Option<LayoutIntrinsicSize>,
     cache: Cache,
     layout: Layout,
 }
 
 impl Node {
-    fn new(children: Vec<TaffyNodeId>, style: CompactTaffyStyle, order: u32) -> Self {
+    fn new(
+        children: Vec<TaffyNodeId>,
+        style: CompactTaffyStyle,
+        intrinsic_size: Option<LayoutIntrinsicSize>,
+        order: u32,
+    ) -> Self {
         Self {
             children,
             style,
+            intrinsic_size,
             cache: Cache::new(),
             layout: Layout::with_order(order),
         }
@@ -64,22 +71,25 @@ impl CalcLayoutTree {
         input: &LayoutInput,
         index: &BTreeMap<SpinonNodeId, usize>,
         postorder: &[SpinonNodeId],
+        intrinsic_sizes: Option<&BTreeMap<SpinonNodeId, LayoutIntrinsicSize>>,
     ) -> Result<Self, LayoutError> {
-        Self::new_with_inset_mode(input, index, postorder, false)
+        Self::new_with_inset_mode(input, index, postorder, intrinsic_sizes, false)
     }
 
     pub(super) fn new_flow_only(
         input: &LayoutInput,
         index: &BTreeMap<SpinonNodeId, usize>,
         postorder: &[SpinonNodeId],
+        intrinsic_sizes: Option<&BTreeMap<SpinonNodeId, LayoutIntrinsicSize>>,
     ) -> Result<Self, LayoutError> {
-        Self::new_with_inset_mode(input, index, postorder, true)
+        Self::new_with_inset_mode(input, index, postorder, intrinsic_sizes, true)
     }
 
     fn new_with_inset_mode(
         input: &LayoutInput,
         index: &BTreeMap<SpinonNodeId, usize>,
         postorder: &[SpinonNodeId],
+        intrinsic_sizes: Option<&BTreeMap<SpinonNodeId, LayoutIntrinsicSize>>,
         flow_only: bool,
     ) -> Result<Self, LayoutError> {
         let mut calc_owners = BTreeMap::<LayoutCalcId, Arc<CalcOwner>>::new();
@@ -141,9 +151,17 @@ impl CalcLayoutTree {
                 .get(&external_id)
                 .copied()
                 .unwrap_or_default();
+            let intrinsic_size = intrinsic_sizes
+                .and_then(|sizes| sizes.get(&external_id).copied())
+                .filter(|_| {
+                    source.style.width == crate::LayoutDimension::Auto
+                        && source.style.height == crate::LayoutDimension::Auto
+                        && source.style.aspect_ratio.is_none()
+                });
             let style = to_taffy_style(
                 external_id,
                 source.style,
+                intrinsic_size.is_some(),
                 positioning,
                 flow_only,
                 &calc_handles,
@@ -161,7 +179,7 @@ impl CalcLayoutTree {
                 },
             )?;
             let order = u32::try_from(position).map_err(|_| LayoutError::TooManyNodes)?;
-            nodes.push(Node::new(children, style, order));
+            nodes.push(Node::new(children, style, intrinsic_size, order));
         }
 
         let needs_viewport_containing_block = input.root_sizing
@@ -185,6 +203,7 @@ impl CalcLayoutTree {
             nodes.push(Node::new(
                 root_children,
                 viewport_block_containing_style(input.viewport),
+                None,
                 order,
             ));
             Some(engine_id)
@@ -284,6 +303,7 @@ impl CalcLayoutTree {
                 (Display::Grid, true) => compute_grid_layout(tree, node_id, inputs),
                 (_, false) => {
                     let mut style = tree.node(node_id).style.clone();
+                    let intrinsic_size = tree.node(node_id).intrinsic_size;
                     let style_size = style
                         .size()
                         .maybe_resolve(inputs.parent_size, |value, basis| {
@@ -300,7 +320,12 @@ impl CalcLayoutTree {
                         inputs,
                         &style,
                         |value, basis| tree.resolve_calc_value(value, basis),
-                        |_, _| Size::ZERO,
+                        |_, _| {
+                            intrinsic_size.map_or(Size::ZERO, |size| Size {
+                                width: size.width,
+                                height: size.height,
+                            })
+                        },
                     )
                 }
             }

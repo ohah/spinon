@@ -2,8 +2,8 @@ use std::sync::Arc;
 use std::{collections::BTreeSet, error::Error, fmt};
 
 use spinon_core::{
-    DocumentGeneration, DocumentRevision, EnvironmentRevision, HostDocumentSnapshot, NodeId,
-    RenderTreeRevision, StyleRevision,
+    DocumentGeneration, DocumentRevision, EnvironmentRevision, HostDocumentSnapshot,
+    IntrinsicSizeRevision, NodeId, RenderTreeRevision, StyleRevision,
 };
 
 use super::{CssRect, CssSize, OpaqueCssSrgb};
@@ -16,6 +16,7 @@ pub struct RuntimeRenderKey {
     render_tree_revision: RenderTreeRevision,
     style_revision: StyleRevision,
     environment_revision: EnvironmentRevision,
+    intrinsic_size_revision: IntrinsicSizeRevision,
 }
 
 impl RuntimeRenderKey {
@@ -32,7 +33,13 @@ impl RuntimeRenderKey {
             render_tree_revision,
             style_revision,
             environment_revision,
+            intrinsic_size_revision: IntrinsicSizeRevision::INITIAL,
         }
+    }
+
+    pub const fn with_intrinsic_size_revision(mut self, revision: IntrinsicSizeRevision) -> Self {
+        self.intrinsic_size_revision = revision;
+        self
     }
 
     pub const fn generation(self) -> DocumentGeneration {
@@ -53,6 +60,10 @@ impl RuntimeRenderKey {
 
     pub const fn environment_revision(self) -> EnvironmentRevision {
         self.environment_revision
+    }
+
+    pub const fn intrinsic_size_revision(self) -> IntrinsicSizeRevision {
+        self.intrinsic_size_revision
     }
 }
 
@@ -147,7 +158,8 @@ impl RuntimeRenderSnapshot {
             self.key.render_tree_revision,
             self.key.style_revision,
             self.key.environment_revision,
-        );
+        )
+        .with_intrinsic_size_revision(self.key.intrinsic_size_revision);
         Some(Self {
             key,
             viewport_css_px: self.viewport_css_px,

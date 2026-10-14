@@ -4,7 +4,8 @@ use spinon_core::NodeId;
 use taffy::prelude::{AvailableSpace, Size};
 
 use super::{
-    LayoutEngine, LayoutError, LayoutFrame, LayoutInput, LayoutOutput, TaffyLayoutEngine,
+    LayoutEngine, LayoutError, LayoutFrame, LayoutInput, LayoutIntrinsicSize,
+    LayoutIntrinsicSizeSnapshot, LayoutOutput, TaffyLayoutEngine,
     calc_tree::CalcLayoutTree,
     flex_auto_margin::negative_cross_axis_auto_margin_offset_correction,
     flex_baseline,
@@ -13,17 +14,32 @@ use super::{
 
 mod positioned_flex;
 
-impl LayoutEngine for TaffyLayoutEngine {
-    fn compute(&self, input: &LayoutInput) -> Result<LayoutOutput, LayoutError> {
+impl TaffyLayoutEngine {
+    /// Decoder 측정 snapshot을 별도 계산 입력으로 사용합니다.
+    pub fn compute_with_intrinsic_size_snapshot(
+        &self,
+        input: &LayoutInput,
+        snapshot: &LayoutIntrinsicSizeSnapshot,
+    ) -> Result<LayoutOutput, LayoutError> {
+        self.compute_with_measurements(input, Some(snapshot))
+    }
+
+    fn compute_with_measurements(
+        &self,
+        input: &LayoutInput,
+        snapshot: Option<&LayoutIntrinsicSizeSnapshot>,
+    ) -> Result<LayoutOutput, LayoutError> {
         let index = super::validate(input)?;
+        validate_intrinsic_sizes(input, &index, snapshot)?;
         let postorder = postorder(input, &index)?;
+        let intrinsic_sizes = snapshot.map(LayoutIntrinsicSizeSnapshot::sizes);
         let flow_frames = if needs_flow_pass(input) {
-            let flow_tree = compute_tree(input, &index, &postorder, true)?;
+            let flow_tree = compute_tree(input, &index, &postorder, intrinsic_sizes, true)?;
             Some(collect_frames(input, &index, &flow_tree, &BTreeMap::new())?.frames)
         } else {
             None
         };
-        let visual_tree = compute_tree(input, &index, &postorder, false)?;
+        let visual_tree = compute_tree(input, &index, &postorder, intrinsic_sizes, false)?;
         let raw_output = collect_frames(input, &index, &visual_tree, &BTreeMap::new())?;
         let adjustments = flow_frames
             .as_ref()
@@ -49,20 +65,95 @@ impl LayoutEngine for TaffyLayoutEngine {
         } else {
             output.flow_frames.clone_from(&output.frames);
         }
+        if let Some(snapshot) = snapshot {
+            output.revision = output
+                .revision
+                .with_intrinsic_size_revision(snapshot.revision());
+        }
         Ok(output)
     }
+}
+
+impl LayoutEngine for TaffyLayoutEngine {
+    fn compute(&self, input: &LayoutInput) -> Result<LayoutOutput, LayoutError> {
+        self.compute_with_measurements(input, None)
+    }
+}
+
+fn validate_intrinsic_sizes(
+    input: &LayoutInput,
+    index: &BTreeMap<NodeId, usize>,
+    snapshot: Option<&LayoutIntrinsicSizeSnapshot>,
+) -> Result<(), LayoutError> {
+    let Some(snapshot) = snapshot else {
+        return Ok(());
+    };
+    if snapshot.source() != input.source_revision() {
+        return Err(LayoutError::IntrinsicSizeSourceMismatch {
+            expected: input.source_revision(),
+            actual: snapshot.source(),
+        });
+    }
+    let mut hidden = BTreeSet::new();
+    let mut pending = vec![(input.root(), false)];
+    while let Some((id, ancestor_hidden)) = pending.pop() {
+        let node = &input.nodes()[index[&id]];
+        let is_hidden = ancestor_hidden || node.style.display == crate::LayoutDisplay::None;
+        if is_hidden {
+            hidden.insert(id);
+        }
+        pending.extend(node.children.iter().map(|&child| (child, is_hidden)));
+    }
+    for (&id, size) in snapshot.sizes() {
+        let Some(&position) = index.get(&id) else {
+            return Err(LayoutError::UnknownIntrinsicSizeNode(id));
+        };
+        let node = &input.nodes()[position];
+        if !node.children.is_empty() {
+            return Err(LayoutError::UnsupportedIntrinsicSizing {
+                node: id,
+                reason: "측정 leaf에 layout 자식이 있습니다",
+            });
+        }
+        for (axis, value) in [("width", size.width), ("height", size.height)] {
+            if !value.is_finite() || value <= 0.0 {
+                return Err(LayoutError::InvalidIntrinsicSize { node: id, axis });
+            }
+        }
+        if !hidden.contains(&id) {
+            let width_auto = node.style.width == crate::LayoutDimension::Auto;
+            let height_auto = node.style.height == crate::LayoutDimension::Auto;
+            match (width_auto, height_auto, node.style.aspect_ratio.is_some()) {
+                (true, true, false) | (false, false, _) => {}
+                (true, true, true) => {
+                    return Err(LayoutError::UnsupportedIntrinsicSizing {
+                        node: id,
+                        reason: "aspect-ratio와 자연 크기의 조합은 지원되지 않습니다",
+                    });
+                }
+                _ => {
+                    return Err(LayoutError::UnsupportedIntrinsicSizing {
+                        node: id,
+                        reason: "width 또는 height 한 축만 auto인 크기는 지원되지 않습니다",
+                    });
+                }
+            }
+        }
+    }
+    Ok(())
 }
 
 fn compute_tree(
     input: &LayoutInput,
     index: &BTreeMap<NodeId, usize>,
     postorder: &[NodeId],
+    intrinsic_sizes: Option<&BTreeMap<NodeId, LayoutIntrinsicSize>>,
     flow_only: bool,
 ) -> Result<CalcLayoutTree, LayoutError> {
     let mut tree = if flow_only {
-        CalcLayoutTree::new_flow_only(input, index, postorder)?
+        CalcLayoutTree::new_flow_only(input, index, postorder, intrinsic_sizes)?
     } else {
-        CalcLayoutTree::new(input, index, postorder)?
+        CalcLayoutTree::new(input, index, postorder, intrinsic_sizes)?
     };
     let compute_result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         tree.compute_layout(

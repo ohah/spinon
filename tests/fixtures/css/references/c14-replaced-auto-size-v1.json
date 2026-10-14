@@ -1,0 +1,62 @@
+{
+  "schema": "spinon-css-c14-replaced-auto-size-reference/v1",
+  "referenceId": "agent-browser-darwin-arm64-Chrome-155.0.8059.40-446f893dd5b7-3973f7fead21",
+  "fixture": {
+    "id": "C14.1-replaced-auto-size-v1",
+    "inventoryPath": "tests/fixtures/css/c14/replaced-auto-size-inventory.json",
+    "inventorySha256": "446f893dd5b77cd74175067338d4d9618d2a8b5ebf267256e656ba5232f39333",
+    "htmlPath": "tests/fixtures/css/c14/replaced-auto-size.html",
+    "htmlSha256": "3973f7fead21afc567e7460c2ef6988a7ab05af25a07096b4a4d9a0e28f68318"
+  },
+  "oracle": {
+    "name": "Google Chrome controlled through agent-browser",
+    "product": "Chrome/155.0.8059.40",
+    "agentBrowserCli": "0.31.1",
+    "executablePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "executableSha256": "428dccc1a45819d23c5db4fb37388883f8d9ba64611cbd6c42395eac4a18b6a4",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "host": { "platform": "darwin", "architecture": "arm64" },
+    "flags": ["headless agent-browser session", "local file URL"]
+  },
+  "environment": {
+    "viewportCssPx": { "width": 120, "height": 80 },
+    "deviceScaleFactor": 1,
+    "locale": "unspecified",
+    "timeZone": "unspecified",
+    "network": "no network; inline SVG data URLs"
+  },
+  "comparison": {
+    "fields": ["x", "y", "width", "height"],
+    "toleranceCssPx": 0.5,
+    "dprInvariant": false
+  },
+  "screenshots": [
+    {
+      "path": "spec/internal/evidence/c14-1-replaced-intrinsic-inputs/chrome155.png",
+      "sha256": "ef425bf612e828834be7dab4625c2d2b091552fb7f8aff18f8a5120c1f7ce3b8"
+    }
+  ],
+  "observations": [
+    {
+      "id": "image",
+      "complete": true,
+      "naturalWidth": 24,
+      "naturalHeight": 16,
+      "rect": { "x": 0, "y": 0, "width": 24, "height": 16 }
+    },
+    {
+      "id": "sized-width",
+      "complete": true,
+      "naturalWidth": 24,
+      "naturalHeight": 16,
+      "rect": { "x": 0, "y": 16, "width": 48, "height": 32 }
+    },
+    {
+      "id": "sized-height",
+      "complete": true,
+      "naturalWidth": 24,
+      "naturalHeight": 16,
+      "rect": { "x": 0, "y": 48, "width": 36, "height": 24 }
+    }
+  ]
+}

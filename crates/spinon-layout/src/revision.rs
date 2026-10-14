@@ -1,6 +1,6 @@
 use spinon_core::{
-    DocumentGeneration, DocumentRevision, EnvironmentRevision, RenderTreeRevision, Revision,
-    StyleRevision,
+    DocumentGeneration, DocumentRevision, EnvironmentRevision, IntrinsicSizeRevision,
+    RenderTreeRevision, Revision, StyleRevision,
 };
 
 /// 레이아웃 입력을 만든 코어 snapshot의 revision 출처입니다.
@@ -22,16 +22,17 @@ impl Default for LayoutSourceRevision {
     }
 }
 
-/// 한 계산 결과가 사용한 문서·스타일·플랫폼 환경 입력의 출처입니다.
+/// 한 계산 결과가 사용한 문서·스타일·플랫폼 환경·intrinsic measurement 입력의 revision입니다.
 #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
 pub struct LayoutInputRevision {
     source: LayoutSourceRevision,
     style: StyleRevision,
     environment: EnvironmentRevision,
+    intrinsic_size: IntrinsicSizeRevision,
 }
 
 impl LayoutInputRevision {
-    /// 세 입력 출처를 함께 묶습니다.
+    /// source, style, environment revision을 묶고 measurement revision은 초기값으로 둡니다.
     pub const fn new(
         source: LayoutSourceRevision,
         style: StyleRevision,
@@ -41,7 +42,17 @@ impl LayoutInputRevision {
             source,
             style,
             environment,
+            intrinsic_size: IntrinsicSizeRevision::INITIAL,
         }
+    }
+
+    /// Replaced-element ölçüm owner'ının revision'ını aynı layout stamp'e ekler.
+    pub const fn with_intrinsic_size_revision(
+        mut self,
+        intrinsic_size: IntrinsicSizeRevision,
+    ) -> Self {
+        self.intrinsic_size = intrinsic_size;
+        self
     }
 
     /// 코어 트리 또는 HostDocument snapshot의 revision입니다.
@@ -57,5 +68,10 @@ impl LayoutInputRevision {
     /// 플랫폼 환경 snapshot 소유자가 제공한 revision입니다.
     pub const fn environment(self) -> EnvironmentRevision {
         self.environment
+    }
+
+    /// Replaced-element intrinsic measurement snapshot revision'ıdır.
+    pub const fn intrinsic_size(self) -> IntrinsicSizeRevision {
+        self.intrinsic_size
     }
 }

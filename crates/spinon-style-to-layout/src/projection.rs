@@ -1,12 +1,13 @@
-use std::collections::BTreeMap;
+use std::collections::{BTreeMap, BTreeSet};
 
 mod style_values;
 mod typed_math;
 use style_values::project_styles;
 
-use spinon_core::{HostDocumentSnapshot, HostNodeHandle, NodeId, StyleRevision};
+use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, NodeId, StyleRevision};
 use spinon_layout::{
-    LayoutDisplay, LayoutEdges, LayoutEngine, LayoutFrame, LayoutInput, LayoutOutput, LayoutStyle,
+    LayoutDisplay, LayoutEdges, LayoutEngine, LayoutError, LayoutFrame, LayoutInput,
+    LayoutIntrinsicSizeSnapshot, LayoutOutput, LayoutSourceRevision, LayoutStyle,
     TaffyLayoutEngine, Viewport,
 };
 use spinon_style::{
@@ -28,6 +29,8 @@ use spinon_style::{
 
 use crate::StyleLayoutError;
 use validation::{assert_matching_revision, assert_no_inline_style, assert_view_matches_snapshot};
+
+const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
 
 mod fixed_containing_block;
 mod validation;
@@ -297,6 +300,35 @@ pub fn compute_runtime_style_layout(
         computed_styles,
         viewport,
         reject_cascade_diagnostics,
+        None,
+    )
+}
+
+/// revision-stamped HTML image natural size를 runtime style/layout 계산에 연결합니다.
+pub fn compute_runtime_style_layout_with_intrinsic_size_snapshot(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    computed_styles: ComputedStyleSnapshot,
+    viewport: CssViewport,
+    intrinsic_sizes: LayoutIntrinsicSizeSnapshot,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    let reject_cascade_diagnostics = matches!(
+        computed_styles.profile,
+        ComputedStyleProfile::RuntimeBlockPositioningV1
+            | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+    );
+    compute_layout_from_styles(
+        snapshot,
+        root,
+        computed_styles,
+        viewport,
+        reject_cascade_diagnostics,
+        Some(intrinsic_sizes),
     )
 }
 
@@ -360,7 +392,7 @@ fn compute_profile_layout(
             });
         }
     };
-    compute_layout_from_styles(snapshot, root, computed_styles, viewport, true)
+    compute_layout_from_styles(snapshot, root, computed_styles, viewport, true, None)
 }
 
 fn compute_layout_from_styles(
@@ -369,6 +401,7 @@ fn compute_layout_from_styles(
     computed_styles: ComputedStyleSnapshot,
     viewport: CssViewport,
     reject_cascade_diagnostics: bool,
+    intrinsic_sizes: Option<LayoutIntrinsicSizeSnapshot>,
 ) -> Result<StyleLayoutOutput, StyleLayoutError> {
     assert_matching_revision(snapshot, &computed_styles, computed_styles.profile)?;
     if reject_cascade_diagnostics
@@ -442,6 +475,7 @@ fn compute_layout_from_styles(
         }
     }
     let projected = project_styles(snapshot, root, &computed_styles)?;
+    validate_intrinsic_image_inputs(snapshot, root, &projected.styles, intrinsic_sizes.as_ref())?;
     let styles = projected.styles;
     let positioning = projected.positioning;
     let grid_containers = projected.grid_containers;
@@ -518,7 +552,11 @@ fn compute_layout_from_styles(
     .with_css_math(projected.css_math)
     .with_positioning(positioning)
     .with_grid_layout(grid_containers, grid_items);
-    let mut layout = TaffyLayoutEngine.compute(&input)?;
+    let mut layout = if let Some(intrinsic_sizes) = intrinsic_sizes {
+        TaffyLayoutEngine.compute_with_intrinsic_size_snapshot(&input, &intrinsic_sizes)?
+    } else {
+        TaffyLayoutEngine.compute(&input)?
+    };
     if matches!(
         computed_styles.profile,
         ComputedStyleProfile::RuntimeFlexLayoutV1
@@ -543,6 +581,100 @@ fn compute_layout_from_styles(
         computed_styles,
         layout,
     })
+}
+
+fn validate_intrinsic_image_inputs(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    styles: &BTreeMap<NodeId, LayoutStyle>,
+    intrinsic_sizes: Option<&LayoutIntrinsicSizeSnapshot>,
+) -> Result<(), StyleLayoutError> {
+    let expected_source = LayoutSourceRevision::HostDocument {
+        generation: snapshot.generation(),
+        document: snapshot.document_revision(),
+        render_tree: snapshot.render_tree_revision(),
+    };
+    if let Some(intrinsic_sizes) = intrinsic_sizes
+        && intrinsic_sizes.source() != expected_source
+    {
+        return Err(spinon_layout::LayoutError::IntrinsicSizeSourceMismatch {
+            expected: expected_source,
+            actual: intrinsic_sizes.source(),
+        }
+        .into());
+    }
+    let mut layout_nodes = BTreeSet::new();
+    let mut images = BTreeSet::new();
+    let mut required_images = BTreeSet::new();
+    let mut pending = vec![(root, false)];
+    while let Some((handle, ancestor_hidden)) = pending.pop() {
+        let node = snapshot
+            .node(handle)
+            .ok_or(StyleLayoutError::SnapshotMismatch { field: "HostNode" })?;
+        if matches!(node.kind(), HostNodeKind::Text(_)) {
+            continue;
+        }
+        layout_nodes.insert(node.id());
+        let Some(style) = styles.get(&node.id()) else {
+            return Err(LayoutError::MissingStyle(node.id()).into());
+        };
+        let hidden = ancestor_hidden || style.display == LayoutDisplay::None;
+        if matches!(node.kind(), HostNodeKind::Element(element)
+            if element.namespace() == HTML_NAMESPACE && element.local_name() == "img")
+        {
+            images.insert(node.id());
+            if !hidden {
+                match (
+                    style.width == spinon_layout::LayoutDimension::Auto,
+                    style.height == spinon_layout::LayoutDimension::Auto,
+                ) {
+                    (true, true) => {
+                        if style.aspect_ratio.is_some() {
+                            return Err(LayoutError::UnsupportedIntrinsicSizing {
+                                node: node.id(),
+                                reason: "aspect-ratio와 자연 크기의 조합은 C14.1 범위 밖입니다",
+                            }
+                            .into());
+                        }
+                        required_images.insert(node.id());
+                    }
+                    (true, false) | (false, true) => {
+                        return Err(LayoutError::UnsupportedIntrinsicSizing {
+                            node: node.id(),
+                            reason: "width 또는 height 한 축만 auto인 이미지 크기는 지원하지 않습니다",
+                        }
+                        .into());
+                    }
+                    (false, false) => {}
+                }
+            }
+        }
+        if let Some(children) = snapshot.children(handle) {
+            pending.extend(
+                children
+                    .collect::<Vec<_>>()
+                    .into_iter()
+                    .rev()
+                    .map(|child| (child, hidden)),
+            );
+        }
+    }
+    if let Some(intrinsic_sizes) = intrinsic_sizes {
+        for node in intrinsic_sizes.sizes().keys() {
+            if !layout_nodes.contains(node) {
+                return Err(LayoutError::UnknownIntrinsicSizeNode(*node).into());
+            }
+            if !images.contains(node) {
+                return Err(LayoutError::UnexpectedIntrinsicSizeNode(*node).into());
+            }
+        }
+    }
+    for node in required_images {
+        if !intrinsic_sizes.is_some_and(|input| input.sizes().contains_key(&node)) {
+            return Err(LayoutError::MissingIntrinsicSize(node).into());
+        }
+    }
+    Ok(())
 }
 
 fn zero_display_none_frames(

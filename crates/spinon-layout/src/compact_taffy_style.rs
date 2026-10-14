@@ -56,6 +56,7 @@ impl<'a> TemplateLineNames<'a, String> for EmptyTemplateLineNames<'a> {
 #[derive(Clone)]
 pub(super) struct CompactTaffyStyle {
     pub(super) display: Display,
+    item_is_replaced: bool,
     box_sizing: BoxSizing,
     direction: Direction,
     overflow: Point<Overflow>,
@@ -125,6 +126,7 @@ impl From<taffy::Style> for CompactTaffyStyle {
     fn from(style: taffy::Style) -> Self {
         Self {
             display: style.display,
+            item_is_replaced: style.item_is_replaced,
             box_sizing: style.box_sizing,
             direction: style.direction,
             overflow: style.overflow,
@@ -180,6 +182,10 @@ impl CoreStyle for CompactTaffyStyle {
 
     fn is_block(&self) -> bool {
         self.display == Display::Block
+    }
+
+    fn is_compressible_replaced(&self) -> bool {
+        self.item_is_replaced
     }
 
     fn box_sizing(&self) -> BoxSizing {

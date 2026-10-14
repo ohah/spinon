@@ -2,7 +2,7 @@ use std::sync::Arc;
 
 use spinon_core::{
     AttributeName, DocumentChangeBatch, DocumentOperation, HostDocument, HostNodeHandle,
-    HostParent, OwnerId,
+    HostParent, IntrinsicSizeRevision, OwnerId,
 };
 use spinon_layout::{LayoutInputRevision, LayoutSourceRevision};
 use spinon_style::{
@@ -182,6 +182,15 @@ fn runtime_scene_rejects_stale_document_style_or_environment_revisions() {
         build_runtime_render_snapshot(&snapshot, root, &output, stale_environment),
         Err(StyleRenderError::SnapshotMismatch {
             field: "EnvironmentRevision"
+        })
+    ));
+
+    let stale_intrinsic_size = current
+        .with_intrinsic_size_revision(IntrinsicSizeRevision::INITIAL.checked_next().unwrap());
+    assert!(matches!(
+        build_runtime_render_snapshot(&snapshot, root, &output, stale_intrinsic_size),
+        Err(StyleRenderError::SnapshotMismatch {
+            field: "LayoutIntrinsicSizeRevision"
         })
     ));
 }

@@ -173,7 +173,7 @@ fn unknown_taffy_handle_is_recorded_instead_of_dereferenced() {
         grid_items: Default::default(),
     };
     let index = BTreeMap::from([(root, 0)]);
-    let mut tree = CalcLayoutTree::new(&input, &index, &[root]).unwrap();
+    let mut tree = CalcLayoutTree::new(&input, &index, &[root], None).unwrap();
 
     assert_eq!(
         <CalcLayoutTree as taffy::LayoutPartialTree>::resolve_calc_value(
