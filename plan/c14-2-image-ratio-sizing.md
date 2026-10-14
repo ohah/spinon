@@ -8,7 +8,7 @@ C14.1의 revision-stamped image snapshot을 확장해, HTML `img`의 자연 크�
 
 ## 현재 구현 상태
 
-2026-10-14 기준 구현 후보 [PR #156](https://github.com/ohah/spinon/pull/156)은 부모 [PR #155](https://github.com/ohah/spinon/pull/155)가 main에 병합된 뒤 최신 main 위로 재기반했다. 재기반 뒤 workspace 773 passed·4 ignored, Clippy, rustfmt, diff check를 확인하고 PR 본문에 agent-browser Chrome 155 비교 화면을 첨부했다. 별도 구현 실패 20개, PR 변경 20개, 재기반 20개 검토를 남겼다. PR 병합 여부는 GitHub 갱신 후의 mergeability와 필수 gate로 판단한다. C14.2와 상위 C14는 계속 미완료다.
+2026-10-14 기준 구현 후보 [PR #156](https://github.com/ohah/spinon/pull/156)은 부모 [PR #155](https://github.com/ohah/spinon/pull/155)가 main에 병합된 뒤 최신 main 위로 재기반했다. 재기반 뒤 workspace 773 passed·4 ignored, Clippy, rustfmt, diff check를 확인하고 PR 본문에 agent-browser Chrome 155 비교 화면을 첨부했다. 별도 구현 실패 20개, PR 변경 20개, 재기반 20개 검토를 남겼다. PR #156은 2026-10-14 rebase 방식으로 main에 병합됐다(merge SHA `18d3ff13b15ce42a4824167b2febdb9727995091`). C14.2와 상위 C14는 계속 미완료다.
 
 ## 기준 명세
 

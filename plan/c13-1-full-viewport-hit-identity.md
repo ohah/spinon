@@ -14,7 +14,7 @@ C13.1 구현의 새 CSS 지원, Android/iOS 앱 통합, surface paint 비교, DO
 - Fixture: `tests/fixtures/css/c13/overflow-clip-c13-1.html`, SHA-256 `b7acd7e63f79355b28cd480511b9be82e0f2bef478f1aadf685eb3b0bf4ef16a`.
 - 유효 행: `visible`, `clip-x`, `clip-y`, `clip-both`, `clip-margin-padding`, `clip-margin-content`, `clip-margin-border`, `clip-margin-hidden`, `mixed-visible-hidden`, `mixed-clip-auto`, `positioned-contained`, `positioned-escape`, `nested-clip`.
 - invalid margin 행은 runtime reject이고 float 세 행은 현재 의도적으로 fail-closed이므로 성공 scene의 exact identity matrix에서 제외한다.
-- 13개 유효 행을 Chrome과 같은 page 위치에 담은 단일 Rust scene을 만든다. 브라우저에서 각 행의 target/descendant는 `<case>:target`, nested inner는 `<case>:inner`, clip box는 `<case>:box`, section의 다른 영역은 `<case>:case`로 분리한다. invalid/float rows와 page 바깥 영역은 viewport root `root`로 접는다. Chrome `null`은 별도 `null` identity로 보존해 Rust `None`과 비교한다.
+- 13개 유효 행을 Chrome과 같은 page 위치에 담은 단일 Rust scene을 만든다. 브라우저에서 각 행의 target/descendant는 `<case>:target`, nested inner는 `<case>:inner`, clip box는 `<case>:box`, section의 다른 영역은 `<case>:case`로 분리한다. invalid/float rows와 page 바깥 영역은 viewport root `root`로 접는다. viewport 내부 full grid와 별도로 네 방향 바깥 좌표의 Chrome `null`을 보존해 Rust `None`과 비교한다.
 
 ## 합격 기준
 
@@ -22,8 +22,8 @@ C13.1 구현의 새 CSS 지원, Android/iOS 앱 통합, surface paint 비교, DO
 2. Chrome browser, fixture hash, DPR, viewport, scroll offset과 유효 ID 13개를 capture 전후 확인한다.
 3. 각 행에서 `(x,y)` 모든 정수 좌표 `x=0..1279`, `y=0..1099`를 조회한다. 기대 표본은 단일 full-page scan `1280 × 1100 = 1,408,000`점이다. 같은 화면을 13 scene으로 중복 scan하지 않는다.
 4. 각 y 행은 RLE x-run으로 저장한다. 모든 run과 y 행에 빈틈·겹침이 없고 각 행 총 폭은 1280, viewport 행 수와 총점은 각각 1100과 1,408,000이어야 한다.
-5. Rust test는 이전 target frame/기존 187,320점 검사를 유지하면서 전체 viewport 각 점의 Chrome identity를 13개 case별 `case`, clip `box`, `target`, nested `inner`, viewport `root`의 exact `NodeId`로 비교한다. Chrome `null`은 `None`으로 exact 비교한다.
-6. 좌상/우상/좌하/우하 viewport 경계, target 밖 clip box·page fallback, visible overflow와 clip에서 달라지는 target reach를 negative/control 행으로 포함한다.
+5. Rust test는 이전 target frame/기존 187,320점 검사를 유지하면서 전체 viewport 각 점의 Chrome identity를 13개 case별 `case`, clip `box`, `target`, nested `inner`, viewport `root`의 exact `NodeId`로 비교한다. 별도 네 방향 viewport 밖 Chrome `null` controls는 Rust `None`으로 exact 비교한다.
+6. viewport 내부의 target 밖 clip box·page fallback과 visible overflow/clip 차이를 full grid로 확인하고, 네 방향 viewport 밖 좌표 `(-1,20)`, `(100,-1)`, `(1280,20)`, `(100,1100)`은 Chrome `null` 및 Rust `None`으로 별도 비교한다.
 7. unresolved identity, 누락 행/run, 잘못된 frame 또는 표본 수는 validator와 Rust test에서 즉시 실패한다.
 8. Chrome screenshot은 PR 본문에 inline으로 첨부하고 실제 표시를 agent-browser로 확인한다. Capture는 browser oracle이며 앱 화면이나 GPU surface 근거로 해석하지 않는다.
 9. 한 batch에서 13개 scene의 viewport grid를 반환하려던 첫 capture는 agent-browser daemon의 `Resource temporarily unavailable` 응답 한계에 걸렸다([초기 시도 결과](../spec/internal/evidence/c13-1-overflow-clip-full-viewport-hit-identity-2026-10-14/capture-initial-batch-error.json)). oracle 범위는 줄이지 않고 단일 page/combined scene scan으로 바꾸어 재수집한다. 구현 실패 관점 20개와 PR 변경 관점 검토를 각각 수행한다. 코드 문제가 없더라도 검증 수치만으로 C13.1 완료를 주장하지 않는다.

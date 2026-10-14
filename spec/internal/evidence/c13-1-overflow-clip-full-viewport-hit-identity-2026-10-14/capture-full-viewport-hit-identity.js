@@ -85,6 +85,25 @@
       },
     };
   });
+  const offViewportNullControls = [
+    ["viewport-left-outside", -1, 20],
+    ["viewport-top-outside", 100, -1],
+    ["viewport-right-outside", width, 20],
+    ["viewport-bottom-outside", 100, height],
+  ].map(([id, x, y]) => {
+    const element = document.elementFromPoint(x, y);
+    return {
+      id,
+      xCssPx: x,
+      yCssPx: y,
+      identity: label(element),
+      elementId: element?.id ?? null,
+      tagName: element?.tagName ?? null,
+    };
+  });
+  if (offViewportNullControls.some((sample) => sample.identity !== "null")) {
+    throw new Error("one or more viewport-exterior Chrome controls unexpectedly hit an element");
+  }
   return {
     browser: {
       product: "Chrome for Testing",
@@ -103,11 +122,12 @@
       mode: "full-viewport-integer-grid-2d-combined-c131-page",
       caseCount: cases.length,
       pointCount,
-      identityProjection: "each valid case section, box, target and nested inner keeps its case id; invalid/float rows and other page elements map to runtime viewport root; null is preserved",
+      identityProjection: "each valid case section, box, target and nested inner keeps its case id; invalid/float rows and other page elements map to runtime viewport root; viewport-exterior null controls are preserved separately",
       uniqueIdentities: [...identities].sort(),
       identityCounts,
     },
     cases,
+    offViewportNullControls,
     rows,
   };
 })()

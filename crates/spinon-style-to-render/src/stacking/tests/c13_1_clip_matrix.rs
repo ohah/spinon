@@ -248,3 +248,6 @@ fn hidden_ignores_clip_margin_and_matches_chrome_padding_clip_border_hit_ranges(
 
 #[path = "c13_1_clip_matrix/runtime_matrix.rs"]
 mod runtime_matrix;
+
+#[path = "c13_1_clip_matrix/full_viewport_hit.rs"]
+mod full_viewport_hit;
