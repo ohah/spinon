@@ -1,0 +1,13 @@
+✔ full CSS integer grid pins the source, viewport, identities and 52-sample subset (2.408583ms)
+✔ rejects a different viewport or coordinate convention (1.163791ms)
+✔ rejects gaps, overlaps and empty rows in run-length data (1.398666ms)
+✔ rejects unknown nodes, duplicate IDs and changed expanded-grid digest (1.88675ms)
+✔ rejects changes to source files, browser provenance and fixed sample identities (1.88925ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 50.899125

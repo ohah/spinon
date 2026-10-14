@@ -1,0 +1,18 @@
+{
+  "status": "valid",
+  "viewportCssPx": [
+    300,
+    100
+  ],
+  "pointCount": 30000,
+  "rowCount": 100,
+  "nodeCount": 41,
+  "runCount": 870,
+  "fixedSampleSubsetCount": 52,
+  "pixelGridIdentitySha256": "93cccd042e82d8cd30cb7a8ab34a5154073d4a9eccbc4038294d3ca5b9dfce87",
+  "sources": {
+    "html": "431f4b4452969adcae80c4e5f89e5e45b1e8756fc3c4d8995b7a5eccfbc6f355",
+    "script": "d36bc1f7d3c791cdc91f6d878c3961e067efc2f88ca1486db8a065c5fd69c760",
+    "chromeObservation": "515fc95f811399fda9e336a13e7583f2d22555fce4727f1fe7f734981abd0299"
+  }
+}
