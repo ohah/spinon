@@ -6,7 +6,7 @@
 
 이 폴더에는 앱 작성자에게 공개하지 않는 Rust·C++·플랫폼 사이 호출 계약을 둡니다. 내부 ABI라도 호출자, 입력·출력, 소유권, 오류와 현재 한계를 기록합니다. 이 문서는 제품 API 지원 완료로 연결하지 않으며 상태 표시는 [공식 대장](../STATUS.md)을 따릅니다.
 
-C13 구현 전 계획과 Chrome oracle 기준: [계획](../../plan/c13-overflow-scroll-clipping.md) · [별도 계획 실패 관점 20개 검토](./evidence/c13-overflow-scroll-clipping-plan-review-2026-10-14.md) · [agent-browser 사전 관찰](./evidence/c13-overflow-precomparison-2026-10-14/README.md). C13 runtime·내부 계약은 아직 구현하지 않았다.
+C13 구현 전 계획 [PR #157](https://github.com/ohah/spinon/pull/157)과 Chrome oracle 기준: [계획](../../plan/c13-overflow-scroll-clipping.md) · [별도 계획 실패 관점 20개 검토](./evidence/c13-overflow-scroll-clipping-plan-review-2026-10-14.md) · [PR 변경 검토 30개](./evidence/c13-overflow-scroll-clipping-pr-review-2026-10-14.md) · [agent-browser 사전 관찰](./evidence/c13-overflow-precomparison-2026-10-14/README.md). C13 runtime·내부 계약은 아직 구현하지 않았다.
 
 Runtime GPU 픽스처 모듈·제품 빌드 경계: [작업 계획](../../plan/runtime-gpu-fixture-module-boundary.md) · [실패 경로 검토와 검증](./evidence/runtime-gpu-fixture-module-boundary-implementation-review-2026-10-14.md) · [fixture 경로 참조 후속 검증](./evidence/runtime-gpu-fixture-reference-paths-2026-10-14/README.md).
 
