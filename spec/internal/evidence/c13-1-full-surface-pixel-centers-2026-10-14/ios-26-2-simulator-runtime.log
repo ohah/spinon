@@ -1,0 +1,99 @@
+Timestamp               Ty Process[PID:TID]
+2026-10-14 23:04:31.941 Df SpinonBootstrap[22923:25da441] SPINON_C131_COMPACT_HOST=session=ready owner_tid=39691341 isolate_per_session=1 queue_capacity=64 queue_policy=strict-priority-fifo css_worker_per_session=1 css_worker_ready_us=782 session_startup_us=21224
+2026-10-14 23:04:31.962 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_EVAL_RUN status=0 layout=ready boxes=41 generation=1 document_revision=205 environment_revision=0
+2026-10-14 23:04:31.962 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 0:node=1,x=0,y=0,width=300,height=100
+2026-10-14 23:04:31.962 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 1:node=2,x=0,y=0,width=96,height=18
+2026-10-14 23:04:31.962 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 2:node=3,x=0,y=1,width=64,height=14
+2026-10-14 23:04:31.962 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 3:node=4,x=3,y=4,width=88,height=16
+2026-10-14 23:04:31.962 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 4:node=5,x=100,y=0,width=96,height=18
+2026-10-14 23:04:31.962 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 5:node=6,x=100,y=1,width=64,height=14
+2026-10-14 23:04:31.962 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 6:node=7,x=103,y=4,width=88,height=16
+2026-10-14 23:04:31.962 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 7:node=8,x=200,y=0,width=96,height=18
+2026-10-14 23:04:31.962 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 8:node=9,x=200,y=1,width=64,height=14
+2026-10-14 23:04:31.962 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 9:node=10,x=203,y=4,width=88,height=16
+2026-10-14 23:04:31.962 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 10:node=11,x=0,y=20,width=96,height=18
+2026-10-14 23:04:31.962 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 11:node=12,x=0,y=21,width=64,height=14
+2026-10-14 23:04:31.962 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 12:node=13,x=3,y=24,width=88,height=16
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 13:node=14,x=100,y=20,width=96,height=18
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 14:node=15,x=100,y=21,width=64,height=14
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 15:node=16,x=103,y=24,width=88,height=16
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 16:node=17,x=200,y=20,width=96,height=18
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 17:node=18,x=200,y=21,width=64,height=14
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 18:node=19,x=203,y=24,width=88,height=16
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 19:node=20,x=0,y=40,width=96,height=18
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 20:node=21,x=0,y=41,width=64,height=14
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 21:node=22,x=3,y=44,width=88,height=16
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 22:node=23,x=100,y=40,width=96,height=18
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 23:node=24,x=100,y=41,width=64,height=14
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 24:node=25,x=103,y=44,width=88,height=16
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 25:node=26,x=200,y=40,width=96,height=18
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 26:node=27,x=200,y=41,width=64,height=14
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 27:node=28,x=203,y=44,width=88,height=16
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 28:node=29,x=0,y=60,width=96,height=18
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 29:node=30,x=0,y=61,width=64,height=14
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 30:node=31,x=3,y=64,width=88,height=16
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 31:node=32,x=100,y=60,width=96,height=18
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 32:node=33,x=100,y=61,width=64,height=14
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 33:node=34,x=159,y=69,width=14,height=6
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 34:node=35,x=200,y=60,width=96,height=18
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 35:node=36,x=200,y=60,width=64,height=14
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 36:node=37,x=258,y=68,width=30,height=12
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 37:node=38,x=0,y=80,width=96,height=18
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 38:node=39,x=0,y=81,width=64,height=14
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 39:node=40,x=21,y=85,width=34,height=10
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_NODE_FRAME 40:node=41,x=23,y=87,width=56,height=12
+2026-10-14 23:04:31.963 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_GEOMETRY_SUMMARY status=ok frames=41 viewport=300x100
+2026-10-14 23:04:31.964 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=visible:paint x=5.0 y=6.0 element=c131-surface-target-visible node_index=3 rgba=87,166,217,255 status=matched
+2026-10-14 23:04:31.964 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=visible:target-beyond-frame x=70.0 y=6.0 element=c131-surface-target-visible node_index=3 rgba=87,166,217,255 status=matched
+2026-10-14 23:04:31.964 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=visible:x-overflow x=66.0 y=6.0 element=c131-surface-target-visible node_index=3 rgba=87,166,217,255 status=matched
+2026-10-14 23:04:31.964 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=visible:y-overflow x=5.0 y=15.0 element=c131-surface-target-visible node_index=3 rgba=87,166,217,255 status=matched
+2026-10-14 23:04:31.964 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-x:paint x=105.0 y=6.0 element=c131-surface-target-clip-x node_index=6 rgba=87,166,217,255 status=matched
+2026-10-14 23:04:31.964 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-x:target-beyond-frame x=170.0 y=6.0 element=c131-surface-case-clip-x node_index=4 rgba=16,24,39,255 status=matched
+2026-10-14 23:04:31.964 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-x:x-overflow x=166.0 y=6.0 element=c131-surface-case-clip-x node_index=4 rgba=16,24,39,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-x:y-overflow x=105.0 y=15.0 element=c131-surface-target-clip-x node_index=6 rgba=87,166,217,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-y:paint x=205.0 y=6.0 element=c131-surface-target-clip-y node_index=9 rgba=87,166,217,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-y:target-beyond-frame x=270.0 y=6.0 element=c131-surface-target-clip-y node_index=9 rgba=87,166,217,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-y:x-overflow x=266.0 y=6.0 element=c131-surface-target-clip-y node_index=9 rgba=87,166,217,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-y:y-overflow x=205.0 y=15.0 element=c131-surface-case-clip-y node_index=7 rgba=16,24,39,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-both:paint x=5.0 y=26.0 element=c131-surface-target-clip-both node_index=12 rgba=87,166,217,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-both:target-beyond-frame x=70.0 y=26.0 element=c131-surface-case-clip-both node_index=10 rgba=16,24,39,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-both:x-overflow x=66.0 y=26.0 element=c131-surface-case-clip-both node_index=10 rgba=16,24,39,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-both:y-overflow x=5.0 y=35.0 element=c131-surface-case-clip-both node_index=10 rgba=16,24,39,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-margin-padding:paint x=105.0 y=26.0 element=c131-surface-target-clip-margin-padding node_index=15 rgba=87,166,217,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-margin-padding:target-beyond-frame x=170.0 y=26.0 element=c131-surface-case-clip-margin-padding node_index=13 rgba=16,24,39,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-margin-padding:x-overflow x=166.0 y=26.0 element=c131-surface-target-clip-margin-padding node_index=15 rgba=87,166,217,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-margin-padding:y-overflow x=105.0 y=35.0 element=c131-surface-target-clip-margin-padding node_index=15 rgba=87,166,217,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-margin-content:paint x=205.0 y=26.0 element=c131-surface-target-clip-margin-content node_index=18 rgba=87,166,217,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-margin-content:target-beyond-frame x=270.0 y=26.0 element=c131-surface-case-clip-margin-content node_index=16 rgba=16,24,39,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-margin-content:x-overflow x=266.0 y=26.0 element=c131-surface-case-clip-margin-content node_index=16 rgba=16,24,39,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-margin-content:y-overflow x=205.0 y=35.0 element=c131-surface-target-clip-margin-content node_index=18 rgba=87,166,217,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-margin-border:paint x=5.0 y=46.0 element=c131-surface-target-clip-margin-border node_index=21 rgba=87,166,217,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-margin-border:target-beyond-frame x=70.0 y=46.0 element=c131-surface-case-clip-margin-border node_index=19 rgba=16,24,39,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-margin-border:x-overflow x=66.0 y=46.0 element=c131-surface-target-clip-margin-border node_index=21 rgba=87,166,217,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-margin-border:y-overflow x=5.0 y=55.0 element=c131-surface-target-clip-margin-border node_index=21 rgba=87,166,217,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-margin-hidden:paint x=105.0 y=46.0 element=c131-surface-target-clip-margin-hidden node_index=24 rgba=87,166,217,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-margin-hidden:target-beyond-frame x=170.0 y=46.0 element=c131-surface-case-clip-margin-hidden node_index=22 rgba=16,24,39,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-margin-hidden:x-overflow x=166.0 y=46.0 element=c131-surface-case-clip-margin-hidden node_index=22 rgba=16,24,39,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=clip-margin-hidden:y-overflow x=105.0 y=55.0 element=c131-surface-case-clip-margin-hidden node_index=22 rgba=16,24,39,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=mixed-visible-hidden:paint x=205.0 y=46.0 element=c131-surface-target-mixed-visible-hidden node_index=27 rgba=87,166,217,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=mixed-visible-hidden:target-beyond-frame x=270.0 y=46.0 element=c131-surface-case-mixed-visible-hidden node_index=25 rgba=16,24,39,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=mixed-visible-hidden:x-overflow x=266.0 y=46.0 element=c131-surface-case-mixed-visible-hidden node_index=25 rgba=16,24,39,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=mixed-visible-hidden:y-overflow x=205.0 y=55.0 element=c131-surface-case-mixed-visible-hidden node_index=25 rgba=16,24,39,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=mixed-clip-auto:paint x=5.0 y=66.0 element=c131-surface-target-mixed-clip-auto node_index=30 rgba=87,166,217,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=mixed-clip-auto:target-beyond-frame x=70.0 y=66.0 element=c131-surface-case-mixed-clip-auto node_index=28 rgba=16,24,39,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=mixed-clip-auto:x-overflow x=66.0 y=66.0 element=c131-surface-case-mixed-clip-auto node_index=28 rgba=16,24,39,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=mixed-clip-auto:y-overflow x=5.0 y=75.0 element=c131-surface-case-mixed-clip-auto node_index=28 rgba=16,24,39,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=positioned-contained:paint x=161.0 y=72.0 element=c131-surface-target-positioned-contained node_index=33 rgba=227,84,78,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=positioned-contained:target-beyond-frame x=170.0 y=72.0 element=c131-surface-case-positioned-contained node_index=31 rgba=16,24,39,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=positioned-contained:x-overflow x=166.0 y=72.0 element=c131-surface-case-positioned-contained node_index=31 rgba=16,24,39,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=positioned-contained:y-overflow x=161.0 y=75.0 element=c131-surface-case-positioned-contained node_index=31 rgba=16,24,39,255 status=matched
+2026-10-14 23:04:31.965 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=positioned-escape:paint x=261.0 y=72.0 element=c131-surface-target-positioned-escape node_index=36 rgba=227,84,78,255 status=matched
+2026-10-14 23:04:31.966 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=positioned-escape:target-beyond-frame x=270.0 y=72.0 element=c131-surface-target-positioned-escape node_index=36 rgba=227,84,78,255 status=matched
+2026-10-14 23:04:31.966 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=positioned-escape:x-overflow x=266.0 y=72.0 element=c131-surface-target-positioned-escape node_index=36 rgba=227,84,78,255 status=matched
+2026-10-14 23:04:31.966 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=positioned-escape:y-overflow x=261.0 y=76.0 element=c131-surface-target-positioned-escape node_index=36 rgba=227,84,78,255 status=matched
+2026-10-14 23:04:31.966 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=nested-clip:paint x=25.0 y=90.0 element=c131-surface-target-nested-clip node_index=40 rgba=87,166,217,255 status=matched
+2026-10-14 23:04:31.966 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=nested-clip:target-beyond-frame x=60.0 y=90.0 element=c131-surface-box-nested-clip node_index=38 rgba=52,66,86,255 status=matched
+2026-10-14 23:04:31.966 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=nested-clip:x-overflow x=52.0 y=90.0 element=c131-surface-target-nested-clip node_index=40 rgba=87,166,217,255 status=matched
+2026-10-14 23:04:31.966 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST id=nested-clip:y-overflow x=25.0 y=96.0 element=c131-surface-target-nested-clip node_index=40 rgba=87,166,217,255 status=matched
+2026-10-14 23:04:31.966 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_HIT_TEST_SUMMARY status=ok matched=52 total=52 ids=fixed
+2026-10-14 23:04:31.966 Df SpinonBootstrap[22923:25da441] (Foundation) SPINON_C131_COMPACT_FIXTURE_SUMMARY status=ok boxes=41 frames=41 hit_samples=52 hit_matches=52

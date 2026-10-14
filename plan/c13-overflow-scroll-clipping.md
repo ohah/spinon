@@ -113,3 +113,8 @@ agent-browser로 만든 Chrome 155 사전 비교 fixture는 [원본 HTML](../tes
 
 - Chrome 155의 compact 13-case fixture를 Android API 37 ARM64 AVD에 연결했다. ADB transport는 정상이었다. 최초 실패는 `SPINON_ENABLE_C13_1_OVERFLOW_CLIP_FIXTURE_TEST`와 Gradle/native path가 읽던 legacy flag 이름 불일치였다. 호환 alias와 충돌 거부를 추가한 뒤, body 없는 host document, Android surface environment가 compact viewport를 덮는 문제, auto positioned parent 배경의 paint 순서 문제를 차례로 재현·수정했다.
 - 수정 후 Android에서 41/41 frame, 52/52 hit identity와 PixelCopy 52/52 RGBA가 일치했다. iPhone 17 Pro / iOS 26.2 Simulator에서 41/41 frame, 52/52 hit identity 및 Metal surface 화면을 확인했으며 drawable readback은 하지 않았다. [실행 근거와 실패 원인](../spec/internal/evidence/c13-1-compact-surface-matrix-2026-10-14/runtime-execution.md). 이 결과는 고정 52-point sample 범위이며 full surface byte equality, broad frame-outside draw/hit/event, DOM event/CSSOM, WPT 및 C13.1 완료 판정을 충족하지 않는다.
+
+### C13.1 전체 CSS pixel-center 후속 · 2026-10-14
+
+- Chrome 155의 13-case compact surface를 Android API 37 ARM64 AVD의 PixelCopy와 비교했다. 수정 전 30,000 CSS pixel center 중 860점이 positioned-escape box의 배경/테두리 paint 순서 때문에 달랐다. `relative; z-index:auto` parent도 같은 in-flow descendant 순서 결함을 별도 renderer test에서 재현해 보정했다. 전체 보정 뒤 30,000점과 RGBA 120,000채널이 모두 exact 일치했다. [수정 전/후 비교·화면·실행 근거](../spec/internal/evidence/c13-1-full-surface-pixel-centers-2026-10-14/README.md).
+- iPhone 17 Pro / iOS 26.2 Simulator에서 41/41 frame·52/52 hit query를 다시 확인했다. Metal drawable readback은 하지 않았다. 788×263 전체 physical-pixel byte equality, 다른 density/orientation, 실기기/hardware GPU, DOM event/CSSOM scroll, WPT 및 C13.1 완료 관문은 미완료다.

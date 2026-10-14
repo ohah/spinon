@@ -1,0 +1,35 @@
+{
+  "status": "matched",
+  "referenceCssSize": [
+    300,
+    100
+  ],
+  "pixelCopySize": [
+    788,
+    263
+  ],
+  "scale": [
+    2.6266666666666665,
+    2.63
+  ],
+  "comparedPixels": 30000,
+  "comparedChannels": 120000,
+  "mismatchedPixels": 0,
+  "maximumChannelError": 0,
+  "mismatchBounds": null,
+  "mismatches": [],
+  "oracle": {
+    "browser": "Google Chrome 155.0.8059.40",
+    "revision": "cfaadc5a132d78e1828635aa8405a499f3e14864-refs/branch-heads/8059@{#936}",
+    "viewportCssPx": [
+      300,
+      100
+    ],
+    "screenshotSha256": "b682308e3604ad599becff2c8d8c801c80a2a5b8547f3ac3316f133d47232601",
+    "observationPath": "spec/internal/evidence/c13-1-compact-surface-matrix-2026-10-14/chrome155-observation.json"
+  },
+  "pixelCopy": {
+    "file": "spec/internal/evidence/c13-1-full-surface-pixel-centers-2026-10-14/android-api37-avd-pixelcopy.png",
+    "sha256": "09ab4348074597011fa6f62cd3419ad641a95211a42d94edee441fee678ab3ab"
+  }
+}
