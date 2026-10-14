@@ -1,0 +1,17 @@
+ba5acac213838dcf42a2f907acd3402ec29aa7e574a908c22613a40a396b0914  platforms/android/app/build/outputs/apk/debug/app-debug.apk
+3d8c68ed6fc4b0f21a28d8f83d5e67f9ea04ac06adb9a87e03ea5cccfcc5f94b  build/spinon/android/jniLibs/arm64-v8a/libspinon_bootstrap.so
+89ab2813488e32855d364816e020e05f850c4f710a4815295e6314cacbffd643  spec/internal/evidence/c13-1-overflow-clip-android-avd-2026-10-14/chrome155-runtime-observation.json
+dbcade6e93c48c3a53d4bb4fc65c1a6fa8e84ac6facf40fcea7795085dac99bf  spec/internal/evidence/c13-1-overflow-clip-hit-test-negative-controls-android-avd-2026-10-14/agent-browser-negative-controls.json
+abca12c592d1bf675a7e784cdd593ad2dac00832c62654dd846545b4b2d6b86b  spec/internal/evidence/c13-1-overflow-clip-hit-test-negative-controls-android-avd-2026-10-14/adb-devices.txt
+a0cd25171e688347522fe1bd116262ce276ccf01f774883bf8335e5c7bf8385b  spec/internal/evidence/c13-1-overflow-clip-hit-test-negative-controls-android-avd-2026-10-14/avd-properties.txt
+2e2ad5e6ae842fa89015a05b44642e92c34a778915ef6c382dbb40a360ab7585  spec/internal/evidence/c13-1-overflow-clip-hit-test-negative-controls-android-avd-2026-10-14/android-api37-arm64-pixelcopy.png
+43cffa291a6d582eb3121270aae157e50ad73859e2684ce5c4a2d9db3e91ecd1  spec/internal/evidence/c13-1-overflow-clip-hit-test-negative-controls-android-avd-2026-10-14/android-api37-arm64-hit-test-final.log
+a658b7825381db4afeab79568ac0e90451a81997da1d24410f60bbbb15c3cb8e  spec/internal/evidence/c13-1-overflow-clip-hit-test-negative-controls-android-avd-2026-10-14/android-build-final.log
+cd7d36cd63f4d88065c7dca04b7ba318d6aa25fbcddc3de717d8184ae7ff813c  spec/internal/evidence/c13-1-overflow-clip-hit-test-negative-controls-android-avd-2026-10-14/runtime-hit-test-negative-control-comparison.json
+b25d3128b5390fe7b94925137520e7a1f293d96eb07848bef103249f11a0225a  spec/internal/evidence/c13-1-overflow-clip-hit-test-negative-controls-android-avd-2026-10-14/feature-isolation.txt
+fecede7c2157efe2f16c8c8b9dce94b0fb4dd384dca8207046c8bf7636eb0ffe  spec/internal/evidence/c13-1-overflow-clip-hit-test-negative-controls-android-avd-2026-10-14/feature-on-build.log
+a5f4c585ee974ca44916ac30a98bbc189e067a7e0a6bc6d2e8d6bc525be724af  spec/internal/evidence/c13-1-overflow-clip-hit-test-negative-controls-android-avd-2026-10-14/default-build.log
+bf1b623afd7cf0e1cdc53b6007a94182e86e22e4b5d48184c6e11cf2d628b1bc  spec/internal/evidence/c13-1-overflow-clip-hit-test-negative-controls-android-avd-2026-10-14/workspace-cargo-test.log
+ff443dde1e2bdde17f20da3ccdfddc08725f2bfe19cb7bc6225dbe212f5f8384  spec/internal/evidence/c13-1-overflow-clip-hit-test-negative-controls-android-avd-2026-10-14/c13-feature-ffi-cargo-test.log
+4cf86278c1e6d659943a46a3d7e3da429ac15be90f0f17742e24ef85228e7d3e  spec/internal/evidence/c13-1-overflow-clip-hit-test-negative-controls-android-avd-2026-10-14/workspace-clippy.log
+59639588a6f1826f129cbcd121edc07279dab94786f5fa5bde6b3439b2e845cc  spec/internal/evidence/c13-1-overflow-clip-hit-test-negative-controls-android-avd-2026-10-14/c13-feature-ffi-clippy.log

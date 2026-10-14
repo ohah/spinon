@@ -12,12 +12,12 @@
 ## 결과
 
 - 앱 초기 환경 갱신은 JS fixture 평가 전 빈 scene `layout=empty`, `boxes=0`으로 정상 통과한다. C13.1 hit query는 이 경로에서 건너뛰며 fixture eval 결과가 성공한 뒤에만 실행한다. 최초 통합 구현에서 환경 갱신에도 query를 실행해 빈 scene의 `visible-target` query가 실패하는 것을 재현했고, query를 fixture eval 경계로 옮겨 수정했다.
-- 최종 `SPINON_C0410_EVAL` report는 C13.1 eval `status=0`, `layout=ready`, `boxes=13`이다. 앱이 게시할 runtime snapshot에 11개 Chrome oracle 좌표를 적용했고 `SPINON_C131_HIT_TEST` 로그가 모두 `status=matched`로 남았다. [비교 JSON](runtime-hit-test-comparison.json)은 Chrome observation의 표본 id·좌표·target frame index와 Android runtime 결과를 재검산해 hit query 11/11 일치를 기록한다. 전체 log는 [android-api37-arm64-hit-test-final.log](android-api37-arm64-hit-test-final.log)다.
+- 최종 `SPINON_C0410_EVAL` report는 C13.1 eval `status=0`, `layout=ready`, `boxes=13`이다. 이 당시에는 앱이 게시할 runtime snapshot에 원래 11개 Chrome oracle 좌표를 적용했고 `SPINON_C131_HIT_TEST` 로그가 모두 `status=matched`로 남았다. [비교 JSON](runtime-hit-test-comparison.json)은 Chrome observation의 표본 id·좌표·target frame index와 Android runtime 결과를 재검산해 hit query 11/11 일치를 기록한다. 전체 log는 [android-api37-arm64-hit-test-final.log](android-api37-arm64-hit-test-final.log)다.
 - 같은 실행의 SurfaceView PixelCopy는 11개 RGBA 표본 모두 고정 Chrome screenshot과 exact 일치했다. log의 `SPINON_C131_PIXELCOPY_SUMMARY`는 `expected_samples=11`, `observed_samples=11`, `matched_samples=11`이다. 저장한 [PixelCopy PNG](android-api37-arm64-pixelcopy.png)는 790×263이며 SHA-256은 [artifact hashes](artifact-sha256.txt)에 있다.
 - 긴 FFI report의 Android log truncation 때문에 JNI가 각 JSON hit sample을 별도 짧은 log row로 기록하도록 했다. [feature isolation](feature-isolation.txt)은 host static archive의 C13 심볼과 Chrome oracle payload가 feature-on artifact에 있고 default artifact에는 없는 것을 확인한다. 기본 app 경로에서는 C13.1 Cargo feature와 C define이 모두 꺼져 있어 이 logger/helper가 포함되지 않는다.
 
 ## 검증 범위
 
-Android 앱의 C13.1 fixture eval이 runtime `RuntimeRenderSnapshot::hit_test_css_point()` query 결과를 Chrome 155 `document.elementFromPoint()`와 대조하고 다르면 fixture eval을 실패시킨다. 고정 11점만 확인했다. DOM 이벤트 전달, 사용자 터치, WPT, 다른 viewport·DPR, 하드웨어 GPU, scanout 후 compositor 표면, 실기기는 검증하지 않았다. iOS Simulator 통합과 전체 C13.1 oracle matrix도 남아 있다.
+Android 앱의 C13.1 fixture eval이 runtime `RuntimeRenderSnapshot::hit_test_css_point()` query 결과를 Chrome 155 `document.elementFromPoint()`와 대조하고 다르면 fixture eval을 실패시킨다. 고정 11점만 확인한 과거 실행이다. 이후 15점과 viewport null controls 4/4를 확인한 [후속 실행](../c13-1-overflow-clip-hit-test-negative-controls-android-avd-2026-10-14/README.md)이 있다. DOM 이벤트 전달, 사용자 터치, WPT, 다른 viewport·DPR, 하드웨어 GPU, scanout 후 compositor 표면, 실기기는 검증하지 않았다. iOS Simulator 통합과 전체 C13.1 oracle matrix도 남아 있다.
 
 Rust workspace tests, feature-on `spinon-ffi` tests, workspace Clippy, C13 feature-on FFI Clippy, rustfmt, `git diff --check` 및 fixture module boundary test 5/5를 실행했다. 실행 artifact SHA-256은 [artifact hashes](artifact-sha256.txt)에 있다.

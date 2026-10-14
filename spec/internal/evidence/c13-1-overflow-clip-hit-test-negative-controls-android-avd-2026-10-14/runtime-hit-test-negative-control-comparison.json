@@ -1,0 +1,180 @@
+{
+  "schema": "spinon-c13-1-overflow-clip-android-hit-test-negative-controls/v1",
+  "serial": "emulator-5554",
+  "appPid": 6777,
+  "runId": "c2952496a76",
+  "browser": "Google Chrome for Testing 155.0.8059.40",
+  "browserViewportCssPx": [
+    320,
+    120
+  ],
+  "androidSurfacePx": [
+    790,
+    263
+  ],
+  "androidDensity": 2.625,
+  "androidRuntimeViewportCssPx": [
+    300.95238095238096,
+    100.19047619047619
+  ],
+  "hitTestSamplesCompared": 15,
+  "hitTestSamplesMatched": 15,
+  "outsideViewportNullControlsCompared": 4,
+  "outsideViewportNullControlsMatched": 4,
+  "pixelSamplesCompared": 11,
+  "pixelSamplesMatched": 11,
+  "pixelCopyPngSha256": "2e2ad5e6ae842fa89015a05b44642e92c34a778915ef6c382dbb40a360ab7585",
+  "renderer": "SPINON_C0410_RENDERER=backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=790x263 selection=auto",
+  "hitTests": [
+    {
+      "id": "visible-target",
+      "xCssPx": 102,
+      "yCssPx": 20,
+      "expectedElementId": "c131-visible-target",
+      "actualElementId": "c131-visible-target",
+      "expectedNodeIndex": 2,
+      "actualNodeIndex": 2,
+      "status": "matched"
+    },
+    {
+      "id": "clip-inside",
+      "xCssPx": 180,
+      "yCssPx": 20,
+      "expectedElementId": "c131-clip-target",
+      "actualElementId": "c131-clip-target",
+      "expectedNodeIndex": 4,
+      "actualNodeIndex": 4,
+      "status": "matched"
+    },
+    {
+      "id": "clip-outside",
+      "xCssPx": 198,
+      "yCssPx": 20,
+      "expectedElementId": "c131-root",
+      "actualElementId": "c131-root",
+      "expectedNodeIndex": 0,
+      "actualNodeIndex": 0,
+      "status": "matched"
+    },
+    {
+      "id": "clip-margin-expanded",
+      "xCssPx": 291,
+      "yCssPx": 20,
+      "expectedElementId": "c131-margin-target",
+      "actualElementId": "c131-margin-target",
+      "expectedNodeIndex": 6,
+      "actualNodeIndex": 6,
+      "status": "matched"
+    },
+    {
+      "id": "clip-margin-outside",
+      "xCssPx": 297,
+      "yCssPx": 20,
+      "expectedElementId": "c131-root",
+      "actualElementId": "c131-root",
+      "expectedNodeIndex": 0,
+      "actualNodeIndex": 0,
+      "status": "matched"
+    },
+    {
+      "id": "nested-clip-inside",
+      "xCssPx": 84,
+      "yCssPx": 76,
+      "expectedElementId": "c131-nested-target",
+      "actualElementId": "c131-nested-target",
+      "expectedNodeIndex": 9,
+      "actualNodeIndex": 9,
+      "status": "matched"
+    },
+    {
+      "id": "nested-clip-outside",
+      "xCssPx": 95,
+      "yCssPx": 76,
+      "expectedElementId": "c131-nested-outer",
+      "actualElementId": "c131-nested-outer",
+      "expectedNodeIndex": 7,
+      "actualNodeIndex": 7,
+      "status": "matched"
+    },
+    {
+      "id": "nested-y-visible",
+      "xCssPx": 45,
+      "yCssPx": 92,
+      "expectedElementId": "c131-nested-target",
+      "actualElementId": "c131-nested-target",
+      "expectedNodeIndex": 9,
+      "actualNodeIndex": 9,
+      "status": "matched"
+    },
+    {
+      "id": "nested-y-clip-outside",
+      "xCssPx": 45,
+      "yCssPx": 97,
+      "expectedElementId": "c131-root",
+      "actualElementId": "c131-root",
+      "expectedNodeIndex": 0,
+      "actualNodeIndex": 0,
+      "status": "matched"
+    },
+    {
+      "id": "positioned-escape",
+      "xCssPx": 230,
+      "yCssPx": 76,
+      "expectedElementId": "c131-escape-target",
+      "actualElementId": "c131-escape-target",
+      "expectedNodeIndex": 12,
+      "actualNodeIndex": 12,
+      "status": "matched"
+    },
+    {
+      "id": "outer-clip-outside",
+      "xCssPx": 295,
+      "yCssPx": 76,
+      "expectedElementId": "c131-root",
+      "actualElementId": "c131-root",
+      "expectedNodeIndex": 0,
+      "actualNodeIndex": 0,
+      "status": "matched"
+    },
+    {
+      "id": "viewport-left-outside",
+      "xCssPx": -1,
+      "yCssPx": 20,
+      "expectedElementId": null,
+      "actualElementId": null,
+      "expectedNodeIndex": null,
+      "actualNodeIndex": null,
+      "status": "matched"
+    },
+    {
+      "id": "viewport-top-outside",
+      "xCssPx": 100,
+      "yCssPx": -1,
+      "expectedElementId": null,
+      "actualElementId": null,
+      "expectedNodeIndex": null,
+      "actualNodeIndex": null,
+      "status": "matched"
+    },
+    {
+      "id": "viewport-right-outside",
+      "xCssPx": 320,
+      "yCssPx": 20,
+      "expectedElementId": null,
+      "actualElementId": null,
+      "expectedNodeIndex": null,
+      "actualNodeIndex": null,
+      "status": "matched"
+    },
+    {
+      "id": "viewport-bottom-outside",
+      "xCssPx": 100,
+      "yCssPx": 120,
+      "expectedElementId": null,
+      "actualElementId": null,
+      "expectedNodeIndex": null,
+      "actualNodeIndex": null,
+      "status": "matched"
+    }
+  ]
+}

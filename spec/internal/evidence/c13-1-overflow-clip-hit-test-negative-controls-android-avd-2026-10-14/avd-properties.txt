@@ -1,0 +1,6 @@
+serial=emulator-5554
+ro.kernel.qemu=1
+sys.boot_completed=1
+ro.build.version.sdk=37
+ro.build.version.release=17
+ro.product.cpu.abi=arm64-v8a

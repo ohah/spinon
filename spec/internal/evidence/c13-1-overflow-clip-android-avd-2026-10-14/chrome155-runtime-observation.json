@@ -309,6 +309,30 @@
       "xCssPx": 295,
       "yCssPx": 76,
       "elementId": "c131-root"
+    },
+    {
+      "id": "viewport-left-outside",
+      "xCssPx": -1,
+      "yCssPx": 20,
+      "elementId": null
+    },
+    {
+      "id": "viewport-top-outside",
+      "xCssPx": 100,
+      "yCssPx": -1,
+      "elementId": null
+    },
+    {
+      "id": "viewport-right-outside",
+      "xCssPx": 320,
+      "yCssPx": 20,
+      "elementId": null
+    },
+    {
+      "id": "viewport-bottom-outside",
+      "xCssPx": 100,
+      "yCssPx": 120,
+      "elementId": null
     }
   ]
 }

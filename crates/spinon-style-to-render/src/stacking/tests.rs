@@ -576,22 +576,32 @@ fn runtime_hit_test_matches_agent_browser_chrome_155_element_from_point_samples(
     let samples = observation["hitTestSamples"]
         .as_array()
         .expect("pinned Chrome hit-test samples");
-    assert_eq!(samples.len(), 11);
+    assert_eq!(samples.len(), 15);
 
     for sample in samples {
         let sample_id = sample["id"].as_str().expect("hit-test sample ID");
         let x = sample["xCssPx"].as_f64().expect("sample CSS x") as f32;
         let y = sample["yCssPx"].as_f64().expect("sample CSS y") as f32;
+        let actual_hit = scene.hit_test_css_point(x, y);
+        if sample["elementId"].is_null() {
+            assert!(
+                actual_hit.is_none(),
+                "Chrome 155 elementFromPoint sample {sample_id} at ({x}, {y}) is null"
+            );
+            continue;
+        }
         let expected_element_id = sample["elementId"]
             .as_str()
-            .expect("Chrome elementFromPoint result");
+            .expect("Chrome elementFromPoint result must be string or null");
         let expected_node_index = frames
             .iter()
             .position(|frame| frame["id"].as_str() == Some(expected_element_id))
             .expect("Chrome hit target exists in pinned frame inventory");
         assert_eq!(ids[expected_node_index], expected_element_id);
         assert_eq!(
-            scene.hit_test_css_point(x, y).unwrap().node_id(),
+            actual_hit
+                .expect("Chrome target must have a runtime hit")
+                .node_id(),
             nodes[expected_node_index],
             "Chrome 155 elementFromPoint sample {sample_id} at ({x}, {y})"
         );
