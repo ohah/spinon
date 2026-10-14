@@ -8,7 +8,7 @@
 
 ## 검증
 
-- `cargo test --locked --workspace`: 742 passed, 4 ignored, 0 failed. 전체 원본은 [workspace-test.log](workspace-test.log)다.
+- 초기 C14.2 변경 branch에서 수행한 `cargo test --locked --workspace`: 742 passed, 4 ignored, 0 failed. 재기반 전 결과의 원본은 [workspace-test.log](workspace-test.log)이며, 최신 main 재기반 뒤 실행한 전체 결과는 [rebase-workspace-test.log](rebase-workspace-test.log)다.
 - `cargo clippy --locked --workspace --all-targets -- -D warnings`: 통과. 원본은 [clippy.log](clippy.log)다.
 - `cargo fmt --all -- --check`, `git diff --check`: 통과.
 - Chrome Headless 155 agent-browser의 일반 fixture 21개 PNG sizing case와 Flex fixture 8개를 CSS px tolerance `0.05`로 HostDocument→Stylo→Taffy 비교했다. 조건·fixture/inventory/observation hashes는 [사전 비교 근거](../c14-2-image-ratio-precomparison-2026-10-14/README.md)에 있다.
