@@ -384,8 +384,8 @@ fn c13_1_hit_test_samples_json(
         .ok_or_else(|| "C13.1 hit-test oracle frame inventory가 없습니다".to_owned())?;
     let expected_samples = oracle["hitTestSamples"]
         .as_array()
-        .filter(|samples| samples.len() == 11)
-        .ok_or_else(|| "C13.1 hit-test oracle은 고정 표본 11개여야 합니다".to_owned())?;
+        .filter(|samples| samples.len() == 15)
+        .ok_or_else(|| "C13.1 hit-test oracle은 고정 표본 15개여야 합니다".to_owned())?;
     let mut observations = Vec::with_capacity(expected_samples.len());
     for sample in expected_samples {
         let sample_id = sample["id"]
@@ -399,35 +399,47 @@ fn c13_1_hit_test_samples_json(
             .as_f64()
             .ok_or_else(|| format!("C13.1 hit-test sample {sample_id} y가 없습니다"))?
             as f32;
-        let expected_element_id = sample["elementId"]
-            .as_str()
-            .ok_or_else(|| format!("C13.1 hit-test sample {sample_id} target가 없습니다"))?;
-        let expected_node_index = oracle_frames
-            .iter()
-            .position(|frame| frame["id"].as_str() == Some(expected_element_id))
-            .ok_or_else(|| {
-                format!(
-                    "C13.1 hit-test sample {sample_id} target {expected_element_id} has no oracle frame"
-                )
-            })?;
-        let hit = scene.hit_test_css_point(x, y).ok_or_else(|| {
-            format!("C13.1 hit-test sample {sample_id} at ({x}, {y}) returned no node")
-        })?;
-        let actual_node_index = frames
-            .iter()
-            .position(|frame| frame.node_id == hit.node_id().get())
-            .ok_or_else(|| {
-                format!("C13.1 hit-test sample {sample_id} returned a node without frame")
-            })?;
+        let expected_element_id = sample["elementId"].as_str();
+        let expected_node_index = match expected_element_id {
+            Some(element_id) => Some(
+                oracle_frames
+                    .iter()
+                    .position(|frame| frame["id"].as_str() == Some(element_id))
+                    .ok_or_else(|| {
+                        format!(
+                            "C13.1 hit-test sample {sample_id} target {element_id} has no oracle frame"
+                        )
+                    })?,
+            ),
+            None if sample["elementId"].is_null() => None,
+            None => {
+                return Err(format!(
+                    "C13.1 hit-test sample {sample_id} target must be a string or null"
+                ));
+            }
+        };
+        let hit = scene.hit_test_css_point(x, y);
+        let actual_node_index = match hit {
+            Some(hit) => Some(
+                frames
+                    .iter()
+                    .position(|frame| frame.node_id == hit.node_id().get())
+                    .ok_or_else(|| {
+                        format!("C13.1 hit-test sample {sample_id} returned a node without frame")
+                    })?,
+            ),
+            None => None,
+        };
         if actual_node_index != expected_node_index {
             return Err(format!(
-                "C13.1 hit-test sample {sample_id} returned node index {actual_node_index}, expected {expected_node_index}"
+                "C13.1 hit-test sample {sample_id} returned node index {actual_node_index:?}, expected {expected_node_index:?}"
             ));
         }
         observations.push(serde_json::json!({
             "id": sample_id,
             "xCssPx": x,
             "yCssPx": y,
+            "elementId": expected_element_id,
             "nodeIndex": actual_node_index,
             "status": "matched",
         }));

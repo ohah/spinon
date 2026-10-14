@@ -1,0 +1,41 @@
+{
+  "automation": "agent-browser 0.31.1",
+  "browserUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+  "devicePixelRatio": 1,
+  "query": "document.elementFromPoint(x, y)",
+  "samples": [
+    {
+      "elementId": null,
+      "id": "viewport-left-outside",
+      "tagName": null,
+      "xCssPx": -1,
+      "yCssPx": 20
+    },
+    {
+      "elementId": null,
+      "id": "viewport-top-outside",
+      "tagName": null,
+      "xCssPx": 100,
+      "yCssPx": -1
+    },
+    {
+      "elementId": null,
+      "id": "viewport-right-outside",
+      "tagName": null,
+      "xCssPx": 320,
+      "yCssPx": 20
+    },
+    {
+      "elementId": null,
+      "id": "viewport-bottom-outside",
+      "tagName": null,
+      "xCssPx": 100,
+      "yCssPx": 120
+    }
+  ],
+  "url": "file:///tmp/spinon-c13-1-overflow-clip/tests/fixtures/css/c13/runtime-overflow-clip.html",
+  "viewportCssPx": [
+    320,
+    120
+  ]
+}

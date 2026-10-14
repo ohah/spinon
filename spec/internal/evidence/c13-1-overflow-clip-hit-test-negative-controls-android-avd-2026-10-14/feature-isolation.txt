@@ -1,0 +1,15 @@
+Toolchain: rustc 1.96.1, LLVM 22.1.2.
+Matching symbol tool: /Users/yoonhb/.rustup/toolchains/1.96.1-aarch64-apple-darwin/lib/rustlib/aarch64-apple-darwin/bin/llvm-nm
+Archive path: target/debug/libspinon_ffi.a
+
+Feature-on build:
+cargo build --locked -p spinon-ffi --features c13-1-overflow-clip-fixture-test
+Result: success. Both C13.1 fixture FFI symbols were present. strings -a found the newly added viewport-left-outside oracle payload.
+Build log: feature-on-build.log
+
+Default build:
+cargo build --locked -p spinon-ffi
+Result: success. Both C13.1 fixture FFI symbols were absent. strings -a found none of viewport-left-outside, hitTestSamples, or c131-root.
+Build log: default-build.log
+
+This is a host static-library feature-isolation check. It does not claim final APK size or release artifact behavior.

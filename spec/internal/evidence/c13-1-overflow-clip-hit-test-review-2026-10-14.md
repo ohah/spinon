@@ -9,7 +9,7 @@
 | 3 | root node 순서가 바뀌어 NodeId index가 틀림 | 13개 fixture ID를 순서대로 만들고 각 sample의 기대 index를 비교한다. |
 | 4 | parent 관계가 browser fixture와 다르게 하드코딩 | Rust parent index를 JS 변수명으로 바꾸어 각 fixture call의 parent와 대조한다. |
 | 5 | declaration이 바뀌었는데 Rust 복사본이 통과 | 각 ID·parent·전체 inline declaration tuple이 공유 JS source에 들어 있는지 확인한다. |
-| 6 | body/document 아래 root wrapping 차이가 좌표를 이동 | root는 fixture와 같이 host root에 직접 배치하며 11 query의 기대 NodeId를 검사한다. |
+| 6 | body/document 아래 root wrapping 차이가 좌표를 이동 | root는 fixture와 같이 host root에 직접 배치하며 15 query의 기대 NodeId 또는 viewport 밖 None을 검사한다. |
 | 7 | root 자체의 크기가 줄어 fallback hit가 달라짐 | source guard가 `300×100` border-box root 선언을 고정하고 (295,76) fallback을 확인한다. |
 | 8 | visible overflow가 paint clip으로 잘림 | (102,20)은 visible child overflow의 leaf `visible-target`을 반환한다. |
 | 9 | clip 안쪽의 양성 hit가 모두 거부 | (180,20)은 `clip-target`을 반환한다. |
@@ -22,7 +22,7 @@
 | 16 | nested outer y clip 바깥에서도 leaf를 반환 | (45,97)은 root로 fallback한다. |
 | 17 | static clip이 positioned containing block처럼 absolute child를 자름 | (230,76)은 outer clip 바깥 positioned `escape-target`을 반환한다. |
 | 18 | outer clip 바깥으로 나온 absolute child가 잘못 노출 | (295,76)은 escape child가 아니라 root를 반환해 ancestor paint/hit boundary를 보존한다. |
-| 19 | Chrome에서 저장한 좌표나 target ID가 현재 관찰과 드리프트 | agent-browser로 동일 fixture를 다시 열어 320×120 viewport에서 11개 `elementFromPoint()` 결과를 재확인했고 JSON과 일치했다. |
+| 19 | Chrome에서 저장한 좌표나 target ID가 현재 관찰과 드리프트 | agent-browser로 동일 fixture를 320×120 viewport에서 확인했다. 이 검토의 원래 11개 in-viewport 결과는 JSON과 일치했고, viewport 밖 null 네 점은 별도 negative-control 검토에서 추가했다. |
 | 20 | box query 통과를 DOM event 전달 성공으로 과장 | 테스트는 runtime query 반환 NodeId만 비교한다. DOM dispatch, listener 호출, 앱 입력 경로는 검증 범위 밖이라고 문서에 분리했다. |
 
-검증 실행: `cargo test --locked -p spinon-style-to-render runtime_hit_test_matches_agent_browser_chrome_155_element_from_point_samples` 통과(1/1), `cargo fmt --all -- --check` 통과. `document.elementFromPoint()` 관찰은 agent-browser로 수행했고 terminal-browser와 실기기는 사용하지 않았다. host Rust query 11/11 뒤 실제 Android API 37 ARM64 AVD app snapshot도 [후속 실행 근거](c13-1-overflow-clip-hit-test-android-avd-2026-10-14/README.md)에서 11/11 일치했다.
+검증 실행: `cargo test --locked -p spinon-style-to-render runtime_hit_test_matches_agent_browser_chrome_155_element_from_point_samples` 통과(1/1), `cargo fmt --all -- --check` 통과. `document.elementFromPoint()` 관찰은 agent-browser로 수행했고 terminal-browser와 실기기는 사용하지 않았다. host Rust query는 확장 oracle 15/15를 통과했다. Android 앱의 기존 11 query는 [기존 실행 근거](c13-1-overflow-clip-hit-test-android-avd-2026-10-14/README.md)에, viewport null 4점을 포함한 15/15 결과는 [negative-control 실행 근거](c13-1-overflow-clip-hit-test-negative-controls-android-avd-2026-10-14/README.md)에 있다.
