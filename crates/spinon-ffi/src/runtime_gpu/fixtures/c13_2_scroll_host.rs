@@ -1,7 +1,8 @@
-use super::super::{ERR_LAYOUT, ERR_STALE, RuntimeGpuHost, lock};
+use super::super::{ERR_LAYOUT, ERR_STALE, RuntimeGpuHost, lock, scene_matches_layout_key};
 use spinon_core::NodeId;
 use spinon_render::{RuntimeRenderBox, RuntimeRenderSnapshot, RuntimeScrollContainer};
 use std::sync::Arc;
+use std::sync::atomic::Ordering;
 
 mod root_body;
 
@@ -20,6 +21,18 @@ impl RuntimeGpuHost {
         let mut geometry_changed =
             previous.scroll_containers().len() != scene.scroll_containers().len();
         let mut requests = Vec::new();
+        if self
+            .c13_2_fail_next_scroll_reserve
+            .swap(false, Ordering::AcqRel)
+        {
+            self.c13_2_reserve_failure_observed
+                .store(true, Ordering::Release);
+            return Err((
+                ERR_LAYOUT,
+                "c13_2_injected_reserve_failure: C13.2 offset 복구 예약을 주입 실패시켰습니다"
+                    .to_owned(),
+            ));
+        }
         requests
             .try_reserve_exact(previous.scroll_containers().len())
             .map_err(|_| {
@@ -57,7 +70,7 @@ impl RuntimeGpuHost {
                 .scroll_containers()
                 .iter()
                 .find(|current| current.owner() == old.owner())
-                .map_or(true, |current| {
+                .is_none_or(|current| {
                     current.offset_x_css_px() != old.offset_x_css_px()
                         || current.offset_y_css_px() != old.offset_y_css_px()
                 })
@@ -107,16 +120,27 @@ impl RuntimeGpuHost {
             ));
         }
 
-        let completed = self
-            .session
-            .layout_snapshot()
+        let layout_snapshot = self.session.layout_snapshot();
+        let completed_key = layout_snapshot
             .completed
-            .filter(|completed| completed.render_snapshot.as_ref() == Some(initial.as_ref()))
-            .ok_or((
-                ERR_STALE,
-                "C13.2 layout frame과 initial render snapshot이 같은 revision이 아닙니다"
-                    .to_owned(),
-            ))?;
+            .as_ref()
+            .map(|completed| completed.key);
+        let completed = layout_snapshot
+            .completed
+            .filter(|completed| {
+                completed.render_snapshot.is_some()
+                    && scene_matches_layout_key(initial.as_ref(), completed.key)
+            })
+            .ok_or_else(|| {
+                (
+                    ERR_STALE,
+                    format!(
+                        "C13.2 layout frame과 initial render snapshot의 layout revision이 다릅니다: scene={:?} completed={completed_key:?} requested={:?}",
+                        initial.key(),
+                        layout_snapshot.requested,
+                    ),
+                )
+            })?;
         let frames = &completed.frames;
         if frames.len() != 26 {
             return Err((
@@ -435,6 +459,149 @@ impl RuntimeGpuHost {
     pub(in crate::runtime_gpu) fn reset_c13_2_scroll_state_for_fixture_transition(&self) {
         lock(&self.c13_2_scroll_state).take();
     }
+
+    pub(in crate::runtime_gpu) fn verify_c13_2_failure_controls(
+        &self,
+        layout_timeout_millis: u64,
+    ) -> Result<String, (i32, String)> {
+        let initial = self.c13_2_scroll_state_snapshot()?;
+        if initial.scroll_containers().len() != 9 {
+            return Err((
+                ERR_LAYOUT,
+                format!(
+                    "C13.2 negative control 시작 owner 수가 다릅니다: {} != 9",
+                    initial.scroll_containers().len()
+                ),
+            ));
+        }
+
+        self.c13_2_reserve_failure_observed
+            .store(false, Ordering::Release);
+        self.c13_2_fail_next_scroll_reserve
+            .store(true, Ordering::Release);
+        let reserve_failure = self.eval(
+            super::c13_2_scroll::RUNTIME_CSS_C13_2_SCROLL_FIXTURE_SOURCE,
+            layout_timeout_millis,
+        );
+        self.c13_2_fail_next_scroll_reserve
+            .store(false, Ordering::Release);
+        let reserve_failure_observed = self
+            .c13_2_reserve_failure_observed
+            .swap(false, Ordering::AcqRel);
+        match reserve_failure {
+            Err((ERR_LAYOUT, report))
+                if reserve_failure_observed
+                    && report.contains("c13_2_injected_reserve_failure") => {}
+            Err((status, report)) => {
+                return Err((
+                    status,
+                    format!(
+                        "C13.2 reserve failpoint 결과가 기대와 다릅니다: status={status} observed={reserve_failure_observed} injected_marker={} tail={}",
+                        report.contains("c13_2_injected_reserve_failure"),
+                        c13_2_report_tail(&report)
+                    ),
+                ));
+            }
+            Ok(report) => {
+                return Err((
+                    ERR_LAYOUT,
+                    format!(
+                        "C13.2 reserve failpoint이 실패를 만들지 않았습니다: observed={reserve_failure_observed} tail={}",
+                        c13_2_report_tail(&report)
+                    ),
+                ));
+            }
+        }
+        if self.c13_2_scroll_state_snapshot()? != initial {
+            return Err((
+                ERR_LAYOUT,
+                "C13.2 reserve failpoint 뒤 이전 scroll-state snapshot이 바뀌었습니다".to_owned(),
+            ));
+        }
+
+        let recovered = self
+            .eval(
+                super::c13_2_scroll::RUNTIME_CSS_C13_2_SCROLL_FIXTURE_SOURCE,
+                layout_timeout_millis,
+            )
+            .map_err(|(status, report)| {
+                (
+                    status,
+                    format!("C13.2 reserve failure 뒤 같은 host recovery 실패: {report}"),
+                )
+            })?;
+        if !recovered.contains("layout=ready") {
+            return Err((
+                ERR_LAYOUT,
+                format!("C13.2 reserve failure 뒤 layout이 준비되지 않았습니다: {recovered}"),
+            ));
+        }
+        let before_stale = self.c13_2_scroll_state_snapshot()?;
+        let stale_sequence = self.presentation_sequence();
+        self.invalidate_scene()
+            .map_err(|error| (ERR_STALE, error))?;
+        if self
+            .presentation
+            .publish(stale_sequence, before_stale.clone())
+        {
+            return Err((
+                ERR_STALE,
+                "C13.2 이전 presentation sequence의 publish가 거부되지 않았습니다".to_owned(),
+            ));
+        }
+        if self.c13_2_scroll_state_snapshot()? != before_stale {
+            return Err((
+                ERR_STALE,
+                "C13.2 stale publish 거부 뒤 scroll-state snapshot이 바뀌었습니다".to_owned(),
+            ));
+        }
+
+        let recovery = self
+            .eval(
+                super::c13_2_scroll::RUNTIME_CSS_C13_2_SCROLL_FIXTURE_SOURCE,
+                layout_timeout_millis,
+            )
+            .map_err(|(status, report)| {
+                (
+                    status,
+                    format!("C13.2 stale publish 거부 뒤 같은 host recovery 실패: {report}"),
+                )
+            })?;
+        if !recovery.contains("layout=ready") {
+            return Err((
+                ERR_LAYOUT,
+                format!("C13.2 stale recovery layout가 준비되지 않았습니다: {recovery}"),
+            ));
+        }
+        let offset_report = self.apply_c13_2_scroll_fixture_offset()?;
+        let final_state = self.c13_2_scroll_state_snapshot()?;
+        let (sequence, published) = self.presentation.lock_current();
+        let published = published.as_ref().ok_or((
+            ERR_STALE,
+            "C13.2 negative control recovery 뒤 presentation이 없습니다".to_owned(),
+        ))?;
+        if published.sequence != sequence || *published.snapshot != final_state {
+            return Err((
+                ERR_STALE,
+                "C13.2 negative control recovery snapshot이 presentation과 다릅니다".to_owned(),
+            ));
+        }
+        Ok(format!(
+            "c13_2_failure_controls=passed reserve_failure=atomic reserve_failure_marker=matched stale_publish=rejected recovery=same_host final_presentation={sequence} {offset_report}"
+        ))
+    }
+
+    fn c13_2_scroll_state_snapshot(&self) -> Result<RuntimeRenderSnapshot, (i32, String)> {
+        lock(&self.c13_2_scroll_state).clone().ok_or((
+            ERR_LAYOUT,
+            "C13.2 scroll-state snapshot이 없습니다".to_owned(),
+        ))
+    }
+}
+
+fn c13_2_report_tail(report: &str) -> String {
+    let tail = report.chars().rev().take(240).collect::<Vec<_>>();
+    tail.into_iter().rev().collect()
 }
 
 fn same_scroll_geometry(
@@ -461,10 +628,7 @@ fn node_id_at(
         ))
 }
 
-fn frame_by_id<'a>(
-    scene: &'a RuntimeRenderSnapshot,
-    node_id: NodeId,
-) -> Option<&'a RuntimeRenderBox> {
+fn frame_by_id(scene: &RuntimeRenderSnapshot, node_id: NodeId) -> Option<&RuntimeRenderBox> {
     scene
         .boxes()
         .iter()

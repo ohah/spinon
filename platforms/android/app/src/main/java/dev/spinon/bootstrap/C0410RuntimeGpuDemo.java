@@ -1526,6 +1526,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     && result.contains("c13_2_root_body_propagation=passed")
                     && result.contains("c13_2_root_body_hidden=passed")
                     && result.contains("c13_2_lifecycle=passed")
+                    && result.contains("c13_2_failure_controls=passed")
+                    && result.contains("reserve_failure=atomic")
+                    && result.contains("reserve_failure_marker=matched")
+                    && result.contains("stale_publish=rejected")
+                    && result.contains("recovery=same_host")
                     && result.contains("growth_offset_retained=true")
                     && result.contains("shrink_clamped_to_zero=true")
                     && result.contains("detach_removed_owner=true")
@@ -1538,7 +1543,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     + " root_body_hidden=passed border_escape_outside_parent=true"
                     + " border_escape_hit=matched lifecycle=passed"
                     + " growth_offset_retained=true shrink_clamped_to_zero=true"
-                    + " detach_removed_owner=true reparent_reset_offset=true");
+                    + " detach_removed_owner=true reparent_reset_offset=true"
+                    + " reserve_failure=atomic reserve_failure_marker=matched"
+                    + " stale_publish=rejected recovery=same_host");
         }
         if (c131CompactSurfaceMatrixProbeRequested
                 && !logC131CompactSurfaceMatrixFixtureReport(result)) {

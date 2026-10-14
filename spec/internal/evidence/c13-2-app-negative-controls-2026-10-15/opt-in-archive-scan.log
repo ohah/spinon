@@ -1,0 +1,5 @@
+profile=c13-2-scroll-fixture-test opt-in control
+archive_bytes=534007336
+archive_sha256=65902f08ced5eec836ca5e445022a1d6bd56437bb45350973cfd16f3115f429c
+c13_2_symbols_or_payload_found=['c132-root', 'c13_2_injected_reserve_failure', 'spinon_runtime_gpu_host_eval_c13_2_scroll_fixture', 'spinon_runtime_gpu_host_new_c13_2_scroll_fixture']
+strings_returncode=0

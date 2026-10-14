@@ -1,0 +1,13 @@
+✔ pins the C13.2 Chrome 155 agent-browser oracle and its fixture images (3.392667ms)
+✔ separates visible paint, out-of-flow scrollable overflow, and ink-only overflow (0.113417ms)
+✔ checks axis ranges, hidden programmatic scrolling, and clip no-offset behavior (0.131416ms)
+✔ keeps nested offsets independent and preserves or clamps them after layout changes (0.08725ms)
+✔ distinguishes viewport, propagated body overflow, and an independent body scroller (0.121166ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 67.655334

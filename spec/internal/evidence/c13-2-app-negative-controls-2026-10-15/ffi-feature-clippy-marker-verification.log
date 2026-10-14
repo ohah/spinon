@@ -1,0 +1,57 @@
+    Checking spinon-ffi v0.1.0 (/private/tmp/spinon-c13-2-followup-20261015/crates/spinon-ffi)
+error: this `map_or` can be simplified
+  --> crates/spinon-ffi/src/runtime_gpu/fixtures/c13_2_scroll_host.rs:69:13
+   |
+69 | /             restored
+70 | |                 .scroll_containers()
+71 | |                 .iter()
+72 | |                 .find(|current| current.owner() == old.owner())
+...  |
+75 | |                         || current.offset_y_css_px() != old.offset_y_css_px()
+76 | |                 })
+   | |__________________^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#unnecessary_map_or
+   = note: `-D clippy::unnecessary-map-or` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::unnecessary_map_or)]`
+help: use `is_none_or` instead
+   |
+73 -                 .map_or(true, |current| {
+73 +                 .is_none_or(|current| {
+   |
+
+error: the following explicit lifetimes could be elided: 'a
+   --> crates/spinon-ffi/src/runtime_gpu/fixtures/c13_2_scroll_host.rs:631:16
+    |
+631 | fn frame_by_id<'a>(
+    |                ^^
+632 |     scene: &'a RuntimeRenderSnapshot,
+    |             ^^
+633 |     node_id: NodeId,
+634 | ) -> Option<&'a RuntimeRenderBox> {
+    |              ^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#needless_lifetimes
+    = note: `-D clippy::needless-lifetimes` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::needless_lifetimes)]`
+help: elide the lifetimes
+    |
+631 ~ fn frame_by_id(
+632 ~     scene: &RuntimeRenderSnapshot,
+633 |     node_id: NodeId,
+634 ~ ) -> Option<&RuntimeRenderBox> {
+    |
+
+error: unnecessary map of the identity function
+   --> crates/spinon-ffi/src/runtime_gpu.rs:207:47
+    |
+207 |               .reapply_c13_2_scroll_state(scene)
+    |  _______________________________________________^
+208 | |             .map_err(|(status, error)| (status, error))?;
+    | |_______________________________________________________^ help: remove the call to `map_err`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#map_identity
+    = note: `-D clippy::map-identity` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::map_identity)]`
+
+error: could not compile `spinon-ffi` (lib) due to 3 previous errors

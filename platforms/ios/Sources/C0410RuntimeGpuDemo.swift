@@ -2051,6 +2051,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 && report.contains("c13_2_root_body_propagation=passed")
                 && report.contains("c13_2_root_body_hidden=passed")
                 && report.contains("c13_2_lifecycle=passed")
+                && report.contains("c13_2_failure_controls=passed")
+                && report.contains("reserve_failure=atomic")
+                && report.contains("reserve_failure_marker=matched")
+                && report.contains("stale_publish=rejected")
+                && report.contains("recovery=same_host")
                 && report.contains("growth_offset_retained=true")
                 && report.contains("shrink_clamped_to_zero=true")
                 && report.contains("detach_removed_owner=true")
@@ -2059,7 +2064,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 postStatus("실패 · C13.2 scroll·paint·hit·lifecycle 결과 불일치")
                 return
             }
-            log("SPINON_C132_SCROLL_ASSERTIONS root_body_propagation=passed root_body_hidden=passed border_escape_outside_parent=true border_escape_hit=matched lifecycle=passed growth_offset_retained=true shrink_clamped_to_zero=true detach_removed_owner=true reparent_reset_offset=true")
+            log("SPINON_C132_SCROLL_ASSERTIONS root_body_propagation=passed root_body_hidden=passed border_escape_outside_parent=true border_escape_hit=matched lifecycle=passed growth_offset_retained=true shrink_clamped_to_zero=true detach_removed_owner=true reparent_reset_offset=true reserve_failure=atomic reserve_failure_marker=matched stale_publish=rejected recovery=same_host")
             log("SPINON_C132_SCROLL_SUMMARY status=passed \(runtimeStatusSummary(report))")
         } else if c131CompactSurfaceMatrixRouteRequested {
             let report = result ?? "status=-1 missing-report"

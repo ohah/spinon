@@ -42,3 +42,7 @@
 - 기본 `spinon-ffi` archive에는 C13.2 FFI symbol과 `c132-root` payload가 없고, `c13-2-scroll-fixture-test` opt-in positive control에는 둘 다 들어 있다. display-none range fix 뒤 다시 빌드해 검사했다. [정적 archive symbol/string 검사](feature-isolation.txt).
 - Rust geometry tests에는 root/body, stale scroll revision rejection, reserve failure 뒤 원자성·복구 negative cases가 있다. root/body scene과 stale/failure negative control은 양 플랫폼 app matrix에 없다. `box-shadow`는 현재 app runtime이 cascade/layout 단계에서 지원하지 않아 fail-closed되므로 ink-only overflow는 simulator pass로 세지 않았다.
 - C13.2의 public CSSOM `scrollTop/scrollLeft`, gesture/event, scrollbar, snap, RTL/vertical writing, WPT, physical-device/GPU 동작은 이 실행의 범위가 아니다. app root/body, ink-only, simulator pixel readback, FFI-level stale/failure negative controls와 구현 관점 20개 및 PR delta 관점 30개 review는 별도 경계로 기록한다.
+
+## 후속 앱 실패 경로 검증
+
+이 실행에서는 app root/body 및 FFI stale/failure negative controls가 아직 없었다. 이후 API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 deterministic reserve failpoint, 정확한 error marker, scroll-state snapshot equality, stale presentation sequence rejection과 same-host recovery를 [별도 근거](../c13-2-app-negative-controls-2026-10-15/README.md)로 검증했다. 이후 검증도 OS OOM이나 simulator pixel readback을 주장하지 않는다.
