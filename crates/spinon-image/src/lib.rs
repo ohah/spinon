@@ -11,5 +11,5 @@ mod snapshot;
 pub use decode::{
     DecodedImage, ImageDecodeError, ImageDimensions, PngDecoder, UnsupportedImageMetadata,
 };
-pub use request::{ImageRequest, ImageRequestError};
+pub use request::{ImageRequest, ImageRequestError, ImageResourceCompletion};
 pub use snapshot::{ImageResourceSnapshot, ImageSnapshotError};

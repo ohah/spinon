@@ -9,7 +9,7 @@ use super::{
     ImageResourceSnapshot, ImageSnapshotError, MAX_SNAPSHOT_IMAGE_BYTES, MAX_SNAPSHOT_IMAGES,
     next_snapshot_budget,
 };
-use crate::{ImageRequest, PngDecoder};
+use crate::{ImageRequest, ImageResourceCompletion, PngDecoder};
 
 const HTML: &str = "http://www.w3.org/1999/xhtml";
 const PNG: &[u8] = include_bytes!("../../../../tests/fixtures/resources/c14-1-png-basic.png");
@@ -58,7 +58,7 @@ fn snapshot_constructor_rejects_more_than_the_image_count_limit() {
     let snapshot = document.snapshot();
     let decoded = Arc::new(PngDecoder.decode(PNG).unwrap());
     let entries = images.into_iter().map(|image| {
-        (
+        ImageResourceCompletion::from_parts(
             ImageRequest::from_document(&snapshot, image).unwrap(),
             decoded.clone(),
         )

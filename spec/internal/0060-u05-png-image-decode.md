@@ -15,9 +15,9 @@ HostDocumentSnapshot + connected HTML img handle
                 │
                 ├─ ImageRequest::from_document ── exact src + source stamp
                 │
-caller-owned PNG bytes ─ PngDecoder::decode ─ DecodedImage
-                │
-                └─ ImageResourceSnapshot::new(request, decoded)
+caller-owned PNG bytes ─ request.decode ─ ImageResourceCompletion
+                │                               │
+                └─ ImageResourceSnapshot::new(completion)
                          │
                          └─ to_layout_intrinsic_size_snapshot()
                                   │
@@ -62,7 +62,9 @@ pixel/byte 크기 산술은 checked 연산으로 계산한다. decoder output과
 
 요청은 generation, document revision, render-tree revision, exact element handle 및 UTF-16 `src`를 보존한다. `src`를 URL로 parse·resolve·normalize하지 않는다.
 
-`ImageResourceSnapshot::new(document, revision, entries)`는 각 완료 요청의 세대·node·src를 다시 검사한다. 현재 `src`를 재복제하지 않고 비교한다. 다른 source stamp, src 변경, 제거·분리·종류 변경, 중복 NodeId는 실패한다. 최대 4096 entry와 entry별 RGBA byte 합 64 MiB를 허용하며, Arc로 같은 이미지를 공유해도 entry별 `byte_len()`을 합산한다. 초과와 checked addition overflow는 실패한다. 동일 snapshot의 성공 디코드 결과만 포함한다. 완료되지 않았거나 실패한 이미지는 entry에서 생략한다. 이후 C14.1 adapter가 보이는 auto/auto image 누락과 CSS 경계를 판단한다.
+`ImageRequest::decode(bytes)`는 request와 `Arc<DecodedImage>`를 `ImageResourceCompletion`으로 결합한다. `ImageResourceSnapshot::new`는 이 completion만 받으므로 별도 request와 decoded value를 같은 자리에 직접 조합할 수 없다. 호출자는 전달한 bytes가 request의 src에서 로드된 값인지 보장해야 한다. 이 계약은 URL resolver·network/file loader를 구현하지 않아 바이트 provenance를 직접 확인하지 않는다.
+
+`ImageResourceSnapshot::new(document, revision, entries)`는 각 완료의 request 세대·node·src를 다시 검사한다. 현재 `src`를 재복제하지 않고 비교한다. 다른 source stamp, src 변경, 제거·분리·종류 변경, 중복 NodeId는 실패한다. 최대 4096 entry와 entry별 RGBA byte 합 64 MiB를 허용하며, Arc로 같은 이미지를 공유해도 entry별 `byte_len()`을 합산한다. 초과와 checked addition overflow는 실패한다. 동일 snapshot의 성공 디코드 결과만 포함한다. 완료되지 않았거나 실패한 이미지는 entry에서 생략한다. 이후 C14.1 adapter가 보이는 auto/auto image 누락과 CSS 경계를 판단한다.
 
 `to_layout_intrinsic_size_snapshot()`은 동일 source와 `IntrinsicSizeRevision`을 유지하며 각 decoded image의 픽셀 크기를 `LayoutIntrinsicSize` CSS px로 변환한다. C14.1 레이아웃 adapter는 일반적인 layout source/node/style/dimension 검사를 계속 수행한다.
 
@@ -72,6 +74,7 @@ pixel/byte 크기 산술은 checked 연산으로 계산한다. decoder output과
 |---|---|---|
 | `PngDecoder::decode` | `ImageDecodeError` | byte·dimension·pixel cap, allocation, malformed PNG/checksum, unsupported metadata/output |
 | `ImageRequest::from_document` | `ImageRequestError` | stale/unknown handle, detached node, non-HTML-image, missing/empty/oversized src |
+| `ImageRequest::decode` | `ImageDecodeError` | PNG decode 실패; 성공하면 같은 request를 보존한 `ImageResourceCompletion` 반환 |
 | `ImageResourceSnapshot::new` | `ImageSnapshotError` | stale source, stale generation, changed src, invalid node, duplicate node, entry/byte cap |
 | resource → layout 변환 | `spinon_layout::LayoutError` | layout snapshot 내부 입력 구성 실패 |
 

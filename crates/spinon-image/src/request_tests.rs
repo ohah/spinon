@@ -7,6 +7,7 @@ use crate::{ImageRequest, ImageRequestError};
 
 const HTML: &str = "http://www.w3.org/1999/xhtml";
 const SVG: &str = "http://www.w3.org/2000/svg";
+const PNG: &[u8] = include_bytes!("../../../tests/fixtures/resources/c14-1-png-basic.png");
 
 #[test]
 fn image_request_requires_a_connected_html_img_with_a_nonempty_src() {
@@ -24,6 +25,10 @@ fn image_request_requires_a_connected_html_img_with_a_nonempty_src() {
         request.src().to_string_lossy(),
         "https://example.invalid/a.png"
     );
+    let completion = request.clone().decode(PNG).unwrap();
+    assert_eq!(completion.request(), &request);
+    assert_eq!(completion.image().dimensions().width(), 24);
+    assert_eq!(completion.image().dimensions().height(), 16);
 
     let (document, image) =
         image_document(HTML, "img", Some("https://example.invalid/a.png"), false);
