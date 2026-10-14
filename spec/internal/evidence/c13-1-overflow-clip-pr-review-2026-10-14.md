@@ -23,7 +23,7 @@
 | 17 | absolute containing block escape가 global skip으로 확대 | skip 조건은 해당 absolute descendant의 owner가 현재 clip lineage에 없을 때만 적용한다. 전용 unit test가 있다. |
 | 18 | fixed viewport 전제가 transform 지원과 충돌 | transform 등 ancestor containing-block 입력은 허용되지 않는다. 현재 C12 fixed viewport 가정으로 제한하고 문서에 남은 교차 검증을 기록한다. |
 | 19 | hit-test와 GPU paint 구현이 하나의 clip을 공유 | render box에 paint/hit clip을 각각 보존한다. WGPU geometry는 paint clip만 사용한다. |
-| 20 | runtime hit-test를 DOM event 전달 완료로 표현 | method는 box query만 제공한다. 고정 Chrome 155 `elementFromPoint()` 11점과 runtime query 결과는 별도 delta test에서 11/11 일치한다. S05 event dispatch와 전체 hit-test matrix는 미완료로 분리했다. |
+| 20 | runtime hit-test를 DOM event 전달 완료로 표현 | method는 box query만 제공한다. 고정 Chrome 155 `elementFromPoint()` 11점과 host 및 Android app runtime query 결과가 각각 11/11 일치한다. S05 event dispatch와 전체 hit-test matrix는 미완료로 분리했다. |
 | 21 | clip ancestry 할당 실패가 panic 또는 partial publish | fallible reserve 오류 stage와 같은 reserve 재사용 테스트가 있다. 실제 worker queue/retry는 PR 완료 조건으로 주장하지 않는다. |
 | 22 | Android fixture ABI가 기본 FFI에 유입 | default와 opt-in static library의 C13 symbol 및 `c131-root` string positive/negative control을 matching Rust LLVM `llvm-nm`과 `strings`로 확인했다. |
 | 23 | Cargo/Gradle/C/C++/JNI/Java feature flag가 서로 다름 | Cargo feature, shell environment, BuildConfig, C define/header, JNI route가 같은 opt-in 이름을 사용하고 API 37 AVD runtime 실행으로 연결했다. |
@@ -32,7 +32,7 @@
 | 26 | 캡처 표본의 물리 pixel 변환이 CSS 기준과 다름 | API 37 AVD density `2.625`; log의 physical sample 좌표에서 PNG 값과 Chrome CSS 좌표 sample을 대조해 11/11 exact. |
 | 27 | 캡처가 저장 전 bitmap만 검사하거나 hash가 다른 파일을 가리킴 | SurfaceView capture는 PNG 저장 후 재열어 표본을 읽고 SHA-256을 기록한다. 저장된 PNG를 별도 추출해 log sample과 다시 확인했다. |
 | 28 | Chrome oracle가 시스템 또는 terminal browser에서 바뀜 | 고정 agent-browser 0.31.1/Chrome 155 revision을 사용했다. terminal-browser와 실기기는 사용하지 않았다. |
-| 29 | 성공 검증이 한 패키지 테스트만 포함 | feature-on 변경 8개 package, locked workspace suite, workspace Clippy, rustfmt, diff check, fixture module boundary 5/5, Android build와 AVD evidence를 보존했다. iOS/WPT는 실행하지 않았고 남은 범위에 썼다. |
+| 29 | 성공 검증이 한 패키지 테스트만 포함 | feature-on 변경 8개 package, locked workspace suite, workspace 및 C13 feature-on FFI Clippy, rustfmt, diff check, fixture module boundary 5/5, Android build와 AVD paint/hit-query evidence를 보존했다. iOS/WPT는 실행하지 않았고 남은 범위에 썼다. |
 | 30 | PR 게시·required check·merge 상태를 혼동 | [PR #158](https://github.com/ohah/spinon/pull/158)은 base `docs/c13-overflow-scroll-clipping-plan`, head `feat/c13-1-overflow-clip`인 draft OPEN 상태다. GitHub는 `MERGEABLE`을 반환했지만 review decision과 status checks는 비어 있다. 그래서 merge/auto-merge 없이 draft를 유지한다. |
 
 ## PR 공개 후 상태
@@ -41,4 +41,4 @@
 
 ## Hit-test delta 재검토
 
-후속 delta는 browser query 좌표/target, Rust fixture tree 동기화, visible·clip·margin·nested axis·positioned escape fallback을 대상으로 별도 실패 관점 20개로 확인했다. 결과는 [hit-test delta 구현 검토](c13-1-overflow-clip-hit-test-review-2026-10-14.md)에 기록했다. 변경은 테스트와 근거 문서뿐이며 제품 runtime 구현 동작을 확장하지 않는다.
+후속 delta는 browser query 좌표/target, Rust fixture tree 동기화, visible·clip·margin·nested axis·positioned escape fallback 및 실제 Android app snapshot query를 대상으로 각각 별도 실패 관점 20개로 확인했다. 결과는 [host query delta 구현 검토](c13-1-overflow-clip-hit-test-review-2026-10-14.md)와 [Android app query delta 구현 검토](c13-1-overflow-clip-app-hit-test-review-2026-10-14.md)에 기록했다. hit query는 opt-in fixture-test 경로에만 추가했다.

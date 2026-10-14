@@ -1,0 +1,148 @@
+--------- beginning of main
+10-14 16:41:43.000 I/libprocessgroup( 6671): Created cgroup /sys/fs/cgroup/apps/uid_10229/pid_6671
+10-14 16:41:43.002 I/Zygote  ( 6671): Process 6671 created for dev.spinon.bootstrap
+10-14 16:41:43.002 I/pinon.bootstrap( 6671): Late-enabling -Xcheck:jni
+10-14 16:41:43.007 I/pinon.bootstrap( 6671): Using generational CollectorTypeCMC GC.
+10-14 16:41:43.018 D/nativeloader( 6671): Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+10-14 16:41:43.065 D/nativeloader( 6671): Configuring clns-9 for other apk /data/app/~~DhhCu7gHpeakVhLs2emzww==/dev.spinon.bootstrap-CzHRcIbBzN9Rj8Zb72EsrQ==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~DhhCu7gHpeakVhLs2emzww==/dev.spinon.bootstrap-CzHRcIbBzN9Rj8Zb72EsrQ==/lib/arm64:/data/app/~~DhhCu7gHpeakVhLs2emzww==/dev.spinon.bootstrap-CzHRcIbBzN9Rj8Zb72EsrQ==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/dev.spinon.bootstrap
+--------- beginning of system
+10-14 16:41:43.084 D/ActivityThread( 6671): Set OS env TMPDIR to /data/user/0/dev.spinon.bootstrap/cache
+10-14 16:41:43.086 V/GraphicsEnvironment( 6671): Currently set values for:
+10-14 16:41:43.086 V/GraphicsEnvironment( 6671):   angle_gl_driver_selection_pkgs=[]
+10-14 16:41:43.086 V/GraphicsEnvironment( 6671):   angle_gl_driver_selection_values=[]
+10-14 16:41:43.086 V/GraphicsEnvironment( 6671): dev.spinon.bootstrap is not listed in per-application setting
+10-14 16:41:43.087 V/GraphicsEnvironment( 6671): No special selections for ANGLE, returning default driver choice
+10-14 16:41:43.092 V/GraphicsEnvironment( 6671): Neither updatable production driver nor prerelease driver is supported.
+10-14 16:41:43.125 I/DisplayManager( 6671): Choreographer implicitly registered for the refresh rate.
+10-14 16:41:43.144 D/nativeloader( 6671): Load /data/app/~~DhhCu7gHpeakVhLs2emzww==/dev.spinon.bootstrap-CzHRcIbBzN9Rj8Zb72EsrQ==/base.apk!/lib/arm64-v8a/libspinon_bootstrap.so using class loader ns clns-9 (caller=/data/app/~~DhhCu7gHpeakVhLs2emzww==/dev.spinon.bootstrap-CzHRcIbBzN9Rj8Zb72EsrQ==/base.apk!classes2.dex): ok
+10-14 16:41:43.158 I/GFXSTREAM( 6671): [eglDisplay.cpp(297)] Opening libGLESv1_CM_emulation.so
+10-14 16:41:43.158 I/GFXSTREAM( 6671): [eglDisplay.cpp(297)] Opening libGLESv2_emulation.so
+10-14 16:41:43.159 W/libc    ( 6671): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-14 16:41:43.165 D/CompatChangeReporter( 6671): Compat change id reported: 376561342; UID 10229; state: ENABLED
+10-14 16:41:43.167 W/HWUI    ( 6671): Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+10-14 16:41:43.167 W/HWUI    ( 6671): Failed to initialize 101010-2 format, error = EGL_SUCCESS
+10-14 16:41:43.183 D/CompatChangeReporter( 6671): Compat change id reported: 377864165; UID 10229; state: ENABLED
+10-14 16:41:43.191 I/SpinonBootstrap( 6671): SPINON_C131_HOST=session=ready owner_tid=6691 isolate_per_session=1 queue_capacity=64 queue_policy=strict-priority-fifo css_worker_per_session=1 css_worker_ready_us=2525 session_startup_us=6839
+10-14 16:41:43.193 I/SpinonBootstrap( 6671): SPINON_C0410_ENVIRONMENT status=0 environment_revision=0 layout=empty boxes=0 generation=1 document_revision=0 render_tree_revision=0 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=0 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 node_frames_css_px=[] paint_node_order=[]
+10-14 16:41:43.193 I/SpinonBootstrap( 6671): SPINON_C0410_ENVIRONMENT viewport=301.0x100.0 scale=2.625 dark=false status=0 environment_revision=0 layout=empty boxes=0 generation=1 document_revision=0 render_tree_revision=0 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=0 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 node_frames_css_px=[] paint_node_order=[]
+10-14 16:41:43.246 W/HWUI    ( 6671): Unknown dataspace 0
+10-14 16:41:43.255 W/libc    ( 6671): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-14 16:41:43.257 I/SpinonBootstrap( 6671): SPINON_C131_EVAL status=0 seq=1 trace_cookie=1 op=eval status=0 caller_tid=6689 owner_tid=6691 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=6 v8_call_us=52807 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=65 render_tree_revision=13 document_nodes=13 document_string_units=2457 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=13 document_collection_live_handles=13 document_collection_empty_handles=0 document_collection_last_scan_start_ns=12741854313117 document_collection_last_scan_us=26 document_collection_wrapper_root_buffer_bytes=64 document_collection_reclaimed_node_buffer_bytes=52 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=10 ua_snapshot_submit_us=26 ua_snapshot_submitted=true enqueue_total_us=5 response_wait_us=58551 submit_total_us=58557 response_report_append_us=2 layout=ready
+10-14 16:41:43.258 I/SpinonBootstrap( 6671): SPINON_C131_NODE_FRAME 0:node=1,x=0,y=0,width=300,height=100
+10-14 16:41:43.259 I/SpinonBootstrap( 6671): SPINON_C131_NODE_FRAME 1:node=2,x=10,y=6,width=90,height=44
+10-14 16:41:43.259 I/SpinonBootstrap( 6671): SPINON_C131_NODE_FRAME 2:node=3,x=19,y=15,width=130,height=70
+10-14 16:41:43.260 I/SpinonBootstrap( 6671): SPINON_C131_NODE_FRAME 3:node=4,x=105,y=6,width=90,height=44
+10-14 16:41:43.260 I/SpinonBootstrap( 6671): SPINON_C131_NODE_FRAME 4:node=5,x=114,y=15,width=130,height=70
+10-14 16:41:43.260 I/SpinonBootstrap( 6671): SPINON_C131_NODE_FRAME 5:node=6,x=200,y=6,width=90,height=44
+10-14 16:41:43.260 I/SpinonBootstrap( 6671): SPINON_C131_NODE_FRAME 6:node=7,x=209,y=15,width=130,height=70
+10-14 16:41:43.260 I/SpinonBootstrap( 6671): SPINON_C131_NODE_FRAME 7:node=8,x=10,y=62,width=120,height=34
+10-14 16:41:43.260 I/SpinonBootstrap( 6671): SPINON_C131_NODE_FRAME 8:node=9,x=37,y=68,width=50,height=20
+10-14 16:41:43.260 I/SpinonBootstrap( 6671): SPINON_C131_NODE_FRAME 9:node=10,x=40,y=71,width=90,height=28
+10-14 16:41:43.260 I/SpinonBootstrap( 6671): SPINON_C131_NODE_FRAME 10:node=11,x=150,y=62,width=140,height=34
+10-14 16:41:43.260 I/SpinonBootstrap( 6671): SPINON_C131_NODE_FRAME 11:node=12,x=156,y=68,width=45,height=24
+10-14 16:41:43.261 I/SpinonBootstrap( 6671): SPINON_C131_NODE_FRAME 12:node=13,x=222,y=68,width=50,height=22
+10-14 16:41:43.261 I/SpinonBootstrap( 6671): SPINON_C131_HIT_TEST {"id":"visible-target","nodeIndex":2,"status":"matched","xCssPx":102.0,"yCssPx":20.0}
+10-14 16:41:43.261 I/SpinonBootstrap( 6671): SPINON_C131_HIT_TEST {"id":"clip-inside","nodeIndex":4,"status":"matched","xCssPx":180.0,"yCssPx":20.0}
+10-14 16:41:43.261 I/SpinonBootstrap( 6671): SPINON_C131_HIT_TEST {"id":"clip-outside","nodeIndex":0,"status":"matched","xCssPx":198.0,"yCssPx":20.0}
+10-14 16:41:43.261 I/SpinonBootstrap( 6671): SPINON_C131_HIT_TEST {"id":"clip-margin-expanded","nodeIndex":6,"status":"matched","xCssPx":291.0,"yCssPx":20.0}
+10-14 16:41:43.261 I/SpinonBootstrap( 6671): SPINON_C131_HIT_TEST {"id":"clip-margin-outside","nodeIndex":0,"status":"matched","xCssPx":297.0,"yCssPx":20.0}
+10-14 16:41:43.261 I/SpinonBootstrap( 6671): SPINON_C131_HIT_TEST {"id":"nested-clip-inside","nodeIndex":9,"status":"matched","xCssPx":84.0,"yCssPx":76.0}
+10-14 16:41:43.261 I/SpinonBootstrap( 6671): SPINON_C131_HIT_TEST {"id":"nested-clip-outside","nodeIndex":7,"status":"matched","xCssPx":95.0,"yCssPx":76.0}
+10-14 16:41:43.261 I/SpinonBootstrap( 6671): SPINON_C131_HIT_TEST {"id":"nested-y-visible","nodeIndex":9,"status":"matched","xCssPx":45.0,"yCssPx":92.0}
+10-14 16:41:43.263 I/SpinonBootstrap( 6671): SPINON_C131_HIT_TEST {"id":"nested-y-clip-outside","nodeIndex":0,"status":"matched","xCssPx":45.0,"yCssPx":97.0}
+10-14 16:41:43.263 I/SpinonBootstrap( 6671): SPINON_C131_HIT_TEST {"id":"positioned-escape","nodeIndex":12,"status":"matched","xCssPx":230.0,"yCssPx":76.0}
+10-14 16:41:43.263 I/SpinonBootstrap( 6671): SPINON_C131_HIT_TEST {"id":"outer-clip-outside","nodeIndex":0,"status":"matched","xCssPx":295.0,"yCssPx":76.0}
+10-14 16:41:43.263 I/SpinonBootstrap( 6671): SPINON_C0410_EVAL status=0 seq=1 trace_cookie=1 op=eval status=0 caller_tid=6689 owner_tid=6691 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=6 v8_call_us=52807 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=65 render_tree_revision=13 document_nodes=13 document_string_units=2457 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=13 document_collection_live_handles=13 document_collection_empty_handles=0 document_collection_last_scan_start_ns=12741854313117 document_collection_last_scan_us=26 document_collection_wrapper_root_buffer_bytes=64 document_collection_reclaimed_node_buffer_bytes=52 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=10 ua_snapshot_submit_us=26 ua_snapshot_submitted=true enqueue_total_us=5 response_wait_us=58551 submit_total_us=58557 response_report_append_us=2 layout=ready boxes=13 generation=1 document_revision=65 render_tree_revision=13 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=13 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=300x100 render_viewport_css_px=301x100 render_root_css_px=300x100 node_frames_css_px=[0:node=1,x=0,y=0,width=300,height=100;1:node=2,x=10,y=6,width=90,height=44;2:node=3,x=19,y=15,width=130,height=70;3:node=4,x=105,y=6,width=90,height=44;4:node=5,x=114,y=15,width=130,height=70;5:node=6,x=200,y=6,width=90,height=44;6:node=7,x=209,y=15,width=130,height=70;7:node=8,x=10,y=62,width=120,height=34;8:node=9,x=37,y=68,width=50,height=20;9:node=10,x=40,y=71,width=90,height=28;10:node=11,x=150,y=62,width=140,height=34;11:node=12,x=156,y=68,width=45,height=24;12:node=13,x=222,y=68,width=50,height=22] paint_node_order=[0:1,1:2,2:3,3:4,4:5,5:6,6:7,7:8,8:9,9:10,10:11,11:12,12:13] hit_test_samples_json=[{"id":"visible-target","nodeIndex":2,"status":"matched","xCssPx":102.0,"yCssPx":20.0},{"id":"clip-inside","nodeIndex":4,"status":"matched","xCssPx":180.0,"yCssPx":20.0},{"id":"clip-outside","nodeIndex":0,"status":"matched","xCssPx":198.0,"yCssPx":20.0},{"id":"clip-margin-expanded","nodeIndex":6,"status":"matched","xCssPx":291.0,"yCssPx":20.0},{"id":"clip-margin-outside","nodeIndex":0,"status":"matched","xCssPx":297.0,"yCssPx":20.0},{"id":"nested-clip-inside","nodeIndex":9,"status":"matched","xCssPx":84.0,"yCssPx":76.0},{"id":"nested-clip-outside","nodeIndex":7,"status":"matched","xCssPx":95.0,"yCssPx":76.0},{"id":"nested-y-visible","nodeIndex":9,"status":"matched","xCssPx":45.0,"yCssPx":92.0},{"id":"nested-y-clip-outside","nodeIndex":0,"status":"matched","xCssPx":45.0,"yCssPx":97.0},{"id":"positioned-escape","nodeIndex":12,"status":"matched","xCssPx":230.0,"yCssPx":76.0},{"id":"outer-clip-outside","nodeIndex":0,"status":"matched","xCssPx":295.0,"yCssPx":76.0}]
+10-14 16:41:43.267 I/SpinonBootstrap( 6671): SPINON_C0410_SURFACE_RELEASED generation=0
+10-14 16:41:43.314 D/WindowOnBackDispatcher( 6671): setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@9952d71
+10-14 16:41:43.316 D/VRI[MainActivity]( 6671): WindowInsets changed: 1080x2400 statusBars:[0,128,0,0] navigationBars:[0,0,0,63] mandatorySystemGestures:[0,160,0,84]
+10-14 16:41:43.317 I/HWUI    ( 6671): Using FreeType backend (prop=Auto)
+10-14 16:41:43.318 D/WindowOnBackDispatcher( 6671): setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@9952d71
+10-14 16:41:43.324 I/Surface ( 6671): Creating surface for consumer unnamed-6671-0 with slotExpansion=1 for 64 slots
+10-14 16:41:43.325 I/Surface ( 6671): Creating surface for consumer VRI[MainActivity]#0(BLAST Consumer)0 with slotExpansion=1 for 64 slots
+10-14 16:41:43.327 I/Surface ( 6671): Creating surface for consumer unnamed-6671-1 with slotExpansion=1 for 64 slots
+10-14 16:41:43.327 I/Surface ( 6671): Creating surface for consumer 2e3b3d7 SurfaceView[dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity]#1(BLAST Consumer)1 with slotExpansion=1 for 64 slots
+10-14 16:41:43.327 I/SpinonBootstrap( 6671): SPINON_C0410_SURFACE_CREATED generation=1
+10-14 16:41:43.327 I/SpinonBootstrap( 6671): SPINON_C0410_SURFACE_CHANGED generation=2 size=790x263 changed=true
+10-14 16:41:43.330 W/libc    ( 6671): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-14 16:41:43.330 W/libc    ( 6671): Access denied finding property "vendor.mesa.log"
+10-14 16:41:43.330 W/libc    ( 6671): Access denied finding property "vendor.mesa.log.level"
+10-14 16:41:43.330 W/libc    ( 6671): Access denied finding property "vendor.mesa.log.prefix"
+10-14 16:41:43.330 W/libc    ( 6671): Access denied finding property "vendor.mesa.gallium.print.options"
+10-14 16:41:43.330 W/libc    ( 6671): Access denied finding property "vendor.mesa.log.file.auto"
+10-14 16:41:43.330 W/libc    ( 6671): Access denied finding property "vendor.mesa.log.file"
+10-14 16:41:43.330 E/MESA    ( 6671): Failed to open rendernode: No such file or directory
+10-14 16:41:43.331 W/libc    ( 6671): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-14 16:41:43.331 E/MESA    ( 6671): Failed to open rendernode: No such file or directory
+10-14 16:41:43.331 W/libc    ( 6671): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-14 16:41:43.332 I/SpinonBootstrap( 6671): SPINON_C0410_ENVIRONMENT status=0 environment_revision=1 layout=ready boxes=13 generation=1 document_revision=65 render_tree_revision=13 style_revision=0 environment_revision=1 cacheHit=false cascadeRecomputedStyleElements=13 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=300x100 render_viewport_css_px=300.9524x100.190475 render_root_css_px=300x100 node_frames_css_px=[0:node=1,x=0,y=0,width=300,height=100;1:node=2,x=10,y=6,width=90,height=44;2:node=3,x=19,y=15,width=130,height=70;3:node=4,x=105,y=6,width=90,height=44;4:node=5,x=114,y=15,width=130,height=70;5:node=6,x=200,y=6,width=90,height=44;6:node=7,x=209,y=15,width=130,height=70;7:node=8,x=10,y=62,width=120,height=34;8:node=9,x=37,y=68,width=50,height=20;9:node=10,x=40,y=71,width=90,height=28;10:node=11,x=150,y=62,width=140,height=34;11:node=12,x=156,y=68,width=45,height=24;12:node=13,x=222,y=68,width=50,height=22] paint_node_order=[0:1,1:2,2:3,3:4,4:5,5:6,6:7,7:8,8:9,9:10,10:11,11:12,12:13]
+10-14 16:41:43.332 I/SpinonBootstrap( 6671): SPINON_C0410_ENVIRONMENT viewport=300.9524x100.190475 scale=2.625 dark=false sequence=4 status=0 environment_revision=1 layout=ready boxes=13 generation=1 document_revision=65 render_tree_revision=13 style_revision=0 environment_revision=1 cacheHit=false cascadeRecomputedStyleElements=13 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=300x100 render_viewport_css_px=300.9524x100.190475 render_root_css_px=300x100 node_frames_css_px=[0:node=1,x=0,y=0,width=300,height=100;1:node=2,x=10,y=6,width=90,height=44;2:node=3,x=19,y=15,width=130,height=70;3:node=4,x=105,y=6,width=90,height=44;4:node=5,x=114,y=15,width=130,height=70;5:node=6,x=200,y=6,width=90,height=44;6:node=7,x=209,y=15,width=130,height=70;7:node=8,x=10,y=62,width=120,height=34;8:node=9,x=37,y=68,width=50,height=20;9:node=10,x=40,y=71,width=90,height=28;10:node=11,x=150,y=62,width=140,height=34;11:node=12,x=156,y=68,width=45,height=24;12:node=13,x=222,y=68,width=50,height=22] paint_node_order=[0:1,1:2,2:3,3:4,4:5,5:6,6:7,7:8,8:9,9:10,10:11,11:12,12:13]
+10-14 16:41:43.333 W/libc    ( 6671): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-14 16:41:43.333 E/MESA    ( 6671): Failed to open rendernode: No such file or directory
+10-14 16:41:43.335 D/vulkan  ( 6671): searching for layers in '/data/app/~~DhhCu7gHpeakVhLs2emzww==/dev.spinon.bootstrap-CzHRcIbBzN9Rj8Zb72EsrQ==/lib/arm64'
+10-14 16:41:43.335 D/vulkan  ( 6671): searching for layers in '/data/app/~~DhhCu7gHpeakVhLs2emzww==/dev.spinon.bootstrap-CzHRcIbBzN9Rj8Zb72EsrQ==/base.apk!/lib/arm64-v8a'
+10-14 16:41:43.336 W/libc    ( 6671): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-14 16:41:43.336 E/MESA    ( 6671): Failed to open rendernode: No such file or directory
+10-14 16:41:43.336 W/libc    ( 6671): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-14 16:41:43.336 E/MESA    ( 6671): Failed to open rendernode: No such file or directory
+10-14 16:41:43.341 W/libc    ( 6671): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-14 16:41:43.341 E/MESA    ( 6671): Failed to open rendernode: No such file or directory
+10-14 16:41:43.341 W/libc    ( 6671): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-14 16:41:43.341 E/MESA    ( 6671): Failed to open rendernode: No such file or directory
+10-14 16:41:43.341 W/libc    ( 6671): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-14 16:41:43.341 E/MESA    ( 6671): Failed to open rendernode: No such file or directory
+10-14 16:41:43.341 W/libc    ( 6671): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-14 16:41:43.341 E/MESA    ( 6671): Failed to open rendernode: No such file or directory
+10-14 16:41:43.345 W/libc    ( 6671): Access denied finding property "vendor.mesa.vk.trace"
+10-14 16:41:43.345 W/libc    ( 6671): Access denied finding property "vendor.mesa.vk.trace.per.submit"
+10-14 16:41:43.345 W/libc    ( 6671): Access denied finding property "vendor.mesa.vk.trace.frame"
+10-14 16:41:43.345 W/libc    ( 6671): Access denied finding property "vendor.mesa.vk.trace.trigger"
+10-14 16:41:43.360 W/libc    ( 6671): Access denied finding property "vendor.mesa.vk.wsi.debug"
+10-14 16:41:43.360 W/libc    ( 6671): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-14 16:41:43.360 E/MESA    ( 6671): Failed to open rendernode: No such file or directory
+10-14 16:41:43.361 W/libc    ( 6671): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-14 16:41:43.361 E/MESA    ( 6671): Failed to open rendernode: No such file or directory
+10-14 16:41:43.364 W/libc    ( 6671): Access denied finding property "vendor.mesa.vk.wsi.present.mode"
+10-14 16:41:43.364 W/libc    ( 6671): Access denied finding property "vendor.mesa.vk.wsi.headless.swapchain"
+10-14 16:41:43.364 W/libc    ( 6671): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-14 16:41:43.365 E/MESA    ( 6671): Failed to open rendernode: No such file or directory
+10-14 16:41:43.365 W/libc    ( 6671): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-14 16:41:43.366 E/MESA    ( 6671): Failed to open rendernode: No such file or directory
+10-14 16:41:43.366 W/libc    ( 6671): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-14 16:41:43.367 E/MESA    ( 6671): Failed to open rendernode: No such file or directory
+10-14 16:41:43.367 W/libc    ( 6671): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-14 16:41:43.368 E/MESA    ( 6671): Failed to open rendernode: No such file or directory
+10-14 16:41:43.369 W/libc    ( 6671): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-14 16:41:43.369 E/MESA    ( 6671): Failed to open rendernode: No such file or directory
+10-14 16:41:43.377 W/libc    ( 6671): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-14 16:41:43.377 E/MESA    ( 6671): Failed to open rendernode: No such file or directory
+10-14 16:41:43.377 W/libc    ( 6671): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-14 16:41:43.378 E/MESA    ( 6671): Failed to open rendernode: No such file or directory
+10-14 16:41:43.378 W/libc    ( 6671): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-14 16:41:43.378 E/MESA    ( 6671): Failed to open rendernode: No such file or directory
+10-14 16:41:43.378 W/libc    ( 6671): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-14 16:41:43.379 E/MESA    ( 6671): Failed to open rendernode: No such file or directory
+10-14 16:41:43.379 W/libc    ( 6671): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-14 16:41:43.379 E/MESA    ( 6671): Failed to open rendernode: No such file or directory
+10-14 16:41:43.383 W/libc    ( 6671): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-14 16:41:43.517 D/InsetsController( 6671): hide(ime())
+10-14 16:41:43.517 I/ImeTracker( 6671): dev.spinon.bootstrap:7aaec103: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+10-14 16:41:43.717 I/SpinonBootstrap( 6671): SPINON_C0410_RENDERER=backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=790x263 selection=auto
+10-14 16:41:43.717 I/SpinonBootstrap( 6671): SPINON_C0410_RENDERER generation=2 size=790x263
+10-14 16:41:43.770 I/SpinonBootstrap( 6671): SPINON_C0410_DRAW status=0 presented boxes=13 environment_revision=1 document_revision=65 render_tree_revision=13 style_revision=0 generation=1 viewport_css_px=300.9524x100.190475 surface_texture=790x263 root_css_px=300x100
+10-14 16:41:43.770 I/SpinonBootstrap( 6671): SPINON_C0410_DRAW generation=2 status=0 presented boxes=13 environment_revision=1 document_revision=65 render_tree_revision=13 style_revision=0 generation=1 viewport_css_px=300.9524x100.190475 surface_texture=790x263 root_css_px=300x100
+10-14 16:41:43.770 I/SpinonBootstrap( 6671): SPINON_C131_PIXELCOPY_BEGIN run_id=b96d0f0b00f pid=6671 generation=2 width=790 height=263 density=2.625 samples=11
+10-14 16:41:43.835 I/SpinonBootstrap( 6671): SPINON_C131_PIXELCOPY status=ok run_id=b96d0f0b00f generation=2 width=790 height=263 density=2.625 attempts=1 png=/data/user/0/dev.spinon.bootstrap/cache/c131-overflow-clip-surface-captures/runtime-overflow-clip-b96d0f0b00f.png sha256=2e2ad5e6ae842fa89015a05b44642e92c34a778915ef6c382dbb40a360ab7585
+10-14 16:41:43.835 I/SpinonBootstrap( 6671): SPINON_C131_PIXEL run_id=b96d0f0b00f sample=visible-target x=269 y=53 rgba=87,166,217,255 expected=87,166,217,255 exact=true
+10-14 16:41:43.835 I/SpinonBootstrap( 6671): SPINON_C131_PIXEL run_id=b96d0f0b00f sample=clip-inside x=473 y=53 rgba=87,166,217,255 expected=87,166,217,255 exact=true
+10-14 16:41:43.835 I/SpinonBootstrap( 6671): SPINON_C131_PIXEL run_id=b96d0f0b00f sample=clip-outside x=521 y=53 rgba=16,24,39,255 expected=16,24,39,255 exact=true
+10-14 16:41:43.835 I/SpinonBootstrap( 6671): SPINON_C131_PIXEL run_id=b96d0f0b00f sample=clip-margin-expanded x=765 y=53 rgba=87,166,217,255 expected=87,166,217,255 exact=true
+10-14 16:41:43.835 I/SpinonBootstrap( 6671): SPINON_C131_PIXEL run_id=b96d0f0b00f sample=clip-margin-outside x=780 y=53 rgba=16,24,39,255 expected=16,24,39,255 exact=true
+10-14 16:41:43.835 I/SpinonBootstrap( 6671): SPINON_C131_PIXEL run_id=b96d0f0b00f sample=nested-clip-inside x=221 y=200 rgba=227,84,78,255 expected=227,84,78,255 exact=true
+10-14 16:41:43.835 I/SpinonBootstrap( 6671): SPINON_C131_PIXEL run_id=b96d0f0b00f sample=nested-clip-outside x=250 y=200 rgba=52,66,86,255 expected=52,66,86,255 exact=true
+10-14 16:41:43.835 I/SpinonBootstrap( 6671): SPINON_C131_PIXEL run_id=b96d0f0b00f sample=nested-y-visible x=119 y=242 rgba=227,84,78,255 expected=227,84,78,255 exact=true
+10-14 16:41:43.835 I/SpinonBootstrap( 6671): SPINON_C131_PIXEL run_id=b96d0f0b00f sample=nested-y-clip-outside x=119 y=255 rgba=16,24,39,255 expected=16,24,39,255 exact=true
+10-14 16:41:43.835 I/SpinonBootstrap( 6671): SPINON_C131_PIXEL run_id=b96d0f0b00f sample=positioned-escape x=605 y=200 rgba=227,84,78,255 expected=227,84,78,255 exact=true
+10-14 16:41:43.835 I/SpinonBootstrap( 6671): SPINON_C131_PIXEL run_id=b96d0f0b00f sample=outer-clip-outside x=775 y=200 rgba=16,24,39,255 expected=16,24,39,255 exact=true
+10-14 16:41:43.835 I/SpinonBootstrap( 6671): SPINON_C131_PIXELCOPY_SUMMARY status=matched run_id=b96d0f0b00f expected_samples=11 observed_samples=11 matched_samples=11
+10-14 16:41:44.006 I/pinon.bootstrap( 6671): Compiler allocated 5599KB to compile void android.view.ViewRootImpl.performTraversals(long)

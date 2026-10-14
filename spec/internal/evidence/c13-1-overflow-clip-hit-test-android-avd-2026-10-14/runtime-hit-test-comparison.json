@@ -1,0 +1,272 @@
+{
+  "schema": "spinon-c13-1-overflow-clip-android-hit-test-comparison/v1",
+  "serial": "emulator-5554",
+  "appPid": 6671,
+  "runId": "b96d0f0b00f",
+  "browser": "Google Chrome for Testing 155.0.8059.40",
+  "viewportCssPx": [
+    320,
+    120
+  ],
+  "hitTestSamplesCompared": 11,
+  "hitTestSamplesMatched": 11,
+  "pixelSamplesCompared": 11,
+  "pixelSamplesMatched": 11,
+  "hitTests": [
+    {
+      "id": "visible-target",
+      "nodeIndex": 2,
+      "status": "matched",
+      "xCssPx": 102,
+      "yCssPx": 20
+    },
+    {
+      "id": "clip-inside",
+      "nodeIndex": 4,
+      "status": "matched",
+      "xCssPx": 180,
+      "yCssPx": 20
+    },
+    {
+      "id": "clip-outside",
+      "nodeIndex": 0,
+      "status": "matched",
+      "xCssPx": 198,
+      "yCssPx": 20
+    },
+    {
+      "id": "clip-margin-expanded",
+      "nodeIndex": 6,
+      "status": "matched",
+      "xCssPx": 291,
+      "yCssPx": 20
+    },
+    {
+      "id": "clip-margin-outside",
+      "nodeIndex": 0,
+      "status": "matched",
+      "xCssPx": 297,
+      "yCssPx": 20
+    },
+    {
+      "id": "nested-clip-inside",
+      "nodeIndex": 9,
+      "status": "matched",
+      "xCssPx": 84,
+      "yCssPx": 76
+    },
+    {
+      "id": "nested-clip-outside",
+      "nodeIndex": 7,
+      "status": "matched",
+      "xCssPx": 95,
+      "yCssPx": 76
+    },
+    {
+      "id": "nested-y-visible",
+      "nodeIndex": 9,
+      "status": "matched",
+      "xCssPx": 45,
+      "yCssPx": 92
+    },
+    {
+      "id": "nested-y-clip-outside",
+      "nodeIndex": 0,
+      "status": "matched",
+      "xCssPx": 45,
+      "yCssPx": 97
+    },
+    {
+      "id": "positioned-escape",
+      "nodeIndex": 12,
+      "status": "matched",
+      "xCssPx": 230,
+      "yCssPx": 76
+    },
+    {
+      "id": "outer-clip-outside",
+      "nodeIndex": 0,
+      "status": "matched",
+      "xCssPx": 295,
+      "yCssPx": 76
+    }
+  ],
+  "pixels": [
+    {
+      "id": "visible-target",
+      "rgba": [
+        87,
+        166,
+        217,
+        255
+      ],
+      "expectedRgba": [
+        87,
+        166,
+        217,
+        255
+      ],
+      "exact": true
+    },
+    {
+      "id": "clip-inside",
+      "rgba": [
+        87,
+        166,
+        217,
+        255
+      ],
+      "expectedRgba": [
+        87,
+        166,
+        217,
+        255
+      ],
+      "exact": true
+    },
+    {
+      "id": "clip-outside",
+      "rgba": [
+        16,
+        24,
+        39,
+        255
+      ],
+      "expectedRgba": [
+        16,
+        24,
+        39,
+        255
+      ],
+      "exact": true
+    },
+    {
+      "id": "clip-margin-expanded",
+      "rgba": [
+        87,
+        166,
+        217,
+        255
+      ],
+      "expectedRgba": [
+        87,
+        166,
+        217,
+        255
+      ],
+      "exact": true
+    },
+    {
+      "id": "clip-margin-outside",
+      "rgba": [
+        16,
+        24,
+        39,
+        255
+      ],
+      "expectedRgba": [
+        16,
+        24,
+        39,
+        255
+      ],
+      "exact": true
+    },
+    {
+      "id": "nested-clip-inside",
+      "rgba": [
+        227,
+        84,
+        78,
+        255
+      ],
+      "expectedRgba": [
+        227,
+        84,
+        78,
+        255
+      ],
+      "exact": true
+    },
+    {
+      "id": "nested-clip-outside",
+      "rgba": [
+        52,
+        66,
+        86,
+        255
+      ],
+      "expectedRgba": [
+        52,
+        66,
+        86,
+        255
+      ],
+      "exact": true
+    },
+    {
+      "id": "nested-y-visible",
+      "rgba": [
+        227,
+        84,
+        78,
+        255
+      ],
+      "expectedRgba": [
+        227,
+        84,
+        78,
+        255
+      ],
+      "exact": true
+    },
+    {
+      "id": "nested-y-clip-outside",
+      "rgba": [
+        16,
+        24,
+        39,
+        255
+      ],
+      "expectedRgba": [
+        16,
+        24,
+        39,
+        255
+      ],
+      "exact": true
+    },
+    {
+      "id": "positioned-escape",
+      "rgba": [
+        227,
+        84,
+        78,
+        255
+      ],
+      "expectedRgba": [
+        227,
+        84,
+        78,
+        255
+      ],
+      "exact": true
+    },
+    {
+      "id": "outer-clip-outside",
+      "rgba": [
+        16,
+        24,
+        39,
+        255
+      ],
+      "expectedRgba": [
+        16,
+        24,
+        39,
+        255
+      ],
+      "exact": true
+    }
+  ]
+}

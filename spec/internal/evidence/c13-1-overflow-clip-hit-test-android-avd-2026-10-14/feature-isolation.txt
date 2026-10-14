@@ -1,0 +1,12 @@
+Toolchain: rustc 1.96.1 LLVM 22.1.2; rustup llvm-nm from the same toolchain.
+Archive under inspection: target/debug/libspinon_ffi.a
+
+[fixture feature build] cargo build --locked -p spinon-ffi --features c13-1-overflow-clip-fixture-test: success
+[fixture] symbols spinon_runtime_gpu_host_new_c13_1_overflow_clip_fixture and spinon_runtime_gpu_host_eval_c13_1_overflow_clip_fixture: present
+[fixture] hit-test helper symbol and Chrome oracle payload strings hitTestSamples, nested-y-clip-outside, c131-root: present
+
+[default build] cargo build --locked -p spinon-ffi: success
+[default] both C13 fixture FFI symbols: absent
+[default] C13 helper and Chrome oracle payload strings hit_test_samples_json, hitTestSamples, nested-y-clip-outside, c131-root: absent
+
+This compares host static libraries for feature isolation. It does not claim final Android release APK size or release-artifact behavior.

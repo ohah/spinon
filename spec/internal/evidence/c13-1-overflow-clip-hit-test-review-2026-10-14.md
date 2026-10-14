@@ -25,4 +25,4 @@
 | 19 | Chrome에서 저장한 좌표나 target ID가 현재 관찰과 드리프트 | agent-browser로 동일 fixture를 다시 열어 320×120 viewport에서 11개 `elementFromPoint()` 결과를 재확인했고 JSON과 일치했다. |
 | 20 | box query 통과를 DOM event 전달 성공으로 과장 | 테스트는 runtime query 반환 NodeId만 비교한다. DOM dispatch, listener 호출, 앱 입력 경로는 검증 범위 밖이라고 문서에 분리했다. |
 
-검증 실행: `cargo test --locked -p spinon-style-to-render runtime_hit_test_matches_agent_browser_chrome_155_element_from_point_samples` 통과(1/1), `cargo fmt --all -- --check` 통과. `document.elementFromPoint()` 관찰은 agent-browser로 수행했고 terminal-browser와 실기기는 사용하지 않았다. Android API 37 ARM64 AVD는 기존 paint/layout 실행 근거에만 포함되며 이 unit test는 host Rust에서 실행했다.
+검증 실행: `cargo test --locked -p spinon-style-to-render runtime_hit_test_matches_agent_browser_chrome_155_element_from_point_samples` 통과(1/1), `cargo fmt --all -- --check` 통과. `document.elementFromPoint()` 관찰은 agent-browser로 수행했고 terminal-browser와 실기기는 사용하지 않았다. host Rust query 11/11 뒤 실제 Android API 37 ARM64 AVD app snapshot도 [후속 실행 근거](c13-1-overflow-clip-hit-test-android-avd-2026-10-14/README.md)에서 11/11 일치했다.
