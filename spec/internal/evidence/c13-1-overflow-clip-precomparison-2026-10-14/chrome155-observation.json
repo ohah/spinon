@@ -1,0 +1,1088 @@
+{
+  "cases": [
+    {
+      "borderRightWidth": "4px",
+      "box": {
+        "bottom": 180,
+        "height": 96,
+        "right": 140,
+        "width": 120,
+        "x": 20,
+        "y": 84
+      },
+      "clipAncestors": [],
+      "hitRanges": {
+        "x": {
+          "fixedAt": 158,
+          "ranges": [
+            [
+              34,
+              173
+            ]
+          ]
+        },
+        "y": {
+          "fixedAt": 104,
+          "ranges": [
+            [
+              98,
+              217
+            ]
+          ]
+        }
+      },
+      "id": "visible",
+      "overflowClipMargin": "0px",
+      "overflowX": "visible",
+      "overflowY": "visible",
+      "paddingRight": "10px",
+      "scrollAfterRequest": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollBefore": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollLeftAfterReset": 0,
+      "scrollTopAfterReset": 0,
+      "target": {
+        "bottom": 218,
+        "height": 120,
+        "right": 174,
+        "width": 140,
+        "x": 34,
+        "y": 98
+      }
+    },
+    {
+      "borderRightWidth": "4px",
+      "box": {
+        "bottom": 180,
+        "height": 96,
+        "right": 338,
+        "width": 120,
+        "x": 218,
+        "y": 84
+      },
+      "clipAncestors": [
+        {
+          "className": "box",
+          "overflowClipMargin": "0px",
+          "overflowX": "clip",
+          "overflowY": "visible",
+          "rect": {
+            "bottom": 180,
+            "height": 96,
+            "right": 338,
+            "width": 120,
+            "x": 218,
+            "y": 84
+          },
+          "tagName": "DIV"
+        }
+      ],
+      "hitRanges": {
+        "x": {
+          "fixedAt": 158,
+          "ranges": [
+            [
+              232,
+              337
+            ]
+          ]
+        },
+        "y": {
+          "fixedAt": 285,
+          "ranges": [
+            [
+              98,
+              217
+            ]
+          ]
+        }
+      },
+      "id": "clip-x",
+      "overflowClipMargin": "0px",
+      "overflowX": "clip",
+      "overflowY": "visible",
+      "paddingRight": "10px",
+      "scrollAfterRequest": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollBefore": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollLeftAfterReset": 0,
+      "scrollTopAfterReset": 0,
+      "target": {
+        "bottom": 218,
+        "height": 120,
+        "right": 372,
+        "width": 140,
+        "x": 232,
+        "y": 98
+      }
+    },
+    {
+      "borderRightWidth": "4px",
+      "box": {
+        "bottom": 180,
+        "height": 96,
+        "right": 536,
+        "width": 120,
+        "x": 416,
+        "y": 84
+      },
+      "clipAncestors": [
+        {
+          "className": "box",
+          "overflowClipMargin": "0px",
+          "overflowX": "visible",
+          "overflowY": "clip",
+          "rect": {
+            "bottom": 180,
+            "height": 96,
+            "right": 536,
+            "width": 120,
+            "x": 416,
+            "y": 84
+          },
+          "tagName": "DIV"
+        }
+      ],
+      "hitRanges": {
+        "x": {
+          "fixedAt": 139,
+          "ranges": [
+            [
+              430,
+              569
+            ]
+          ]
+        },
+        "y": {
+          "fixedAt": 500,
+          "ranges": [
+            [
+              98,
+              179
+            ]
+          ]
+        }
+      },
+      "id": "clip-y",
+      "overflowClipMargin": "0px",
+      "overflowX": "visible",
+      "overflowY": "clip",
+      "paddingRight": "10px",
+      "scrollAfterRequest": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollBefore": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollLeftAfterReset": 0,
+      "scrollTopAfterReset": 0,
+      "target": {
+        "bottom": 218,
+        "height": 120,
+        "right": 570,
+        "width": 140,
+        "x": 430,
+        "y": 98
+      }
+    },
+    {
+      "borderRightWidth": "4px",
+      "box": {
+        "bottom": 348,
+        "height": 96,
+        "right": 140,
+        "width": 120,
+        "x": 20,
+        "y": 252
+      },
+      "clipAncestors": [
+        {
+          "className": "box",
+          "overflowClipMargin": "0px",
+          "overflowX": "clip",
+          "overflowY": "clip",
+          "rect": {
+            "bottom": 348,
+            "height": 96,
+            "right": 140,
+            "width": 120,
+            "x": 20,
+            "y": 252
+          },
+          "tagName": "DIV"
+        }
+      ],
+      "hitRanges": {
+        "x": {
+          "fixedAt": 307,
+          "ranges": [
+            [
+              34,
+              139
+            ]
+          ]
+        },
+        "y": {
+          "fixedAt": 87,
+          "ranges": [
+            [
+              266,
+              347
+            ]
+          ]
+        }
+      },
+      "id": "clip-both",
+      "overflowClipMargin": "0px",
+      "overflowX": "clip",
+      "overflowY": "clip",
+      "paddingRight": "10px",
+      "scrollAfterRequest": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollBefore": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollLeftAfterReset": 0,
+      "scrollTopAfterReset": 0,
+      "target": {
+        "bottom": 386,
+        "height": 120,
+        "right": 174,
+        "width": 140,
+        "x": 34,
+        "y": 266
+      }
+    },
+    {
+      "borderRightWidth": "4px",
+      "box": {
+        "bottom": 348,
+        "height": 96,
+        "right": 338,
+        "width": 120,
+        "x": 218,
+        "y": 252
+      },
+      "clipAncestors": [
+        {
+          "className": "box",
+          "overflowClipMargin": "8px",
+          "overflowX": "clip",
+          "overflowY": "clip",
+          "rect": {
+            "bottom": 348,
+            "height": 96,
+            "right": 338,
+            "width": 120,
+            "x": 218,
+            "y": 252
+          },
+          "tagName": "DIV"
+        }
+      ],
+      "hitRanges": {
+        "x": {
+          "fixedAt": 307,
+          "ranges": [
+            [
+              232,
+              341
+            ]
+          ]
+        },
+        "y": {
+          "fixedAt": 285,
+          "ranges": [
+            [
+              266,
+              351
+            ]
+          ]
+        }
+      },
+      "id": "clip-margin-padding",
+      "overflowClipMargin": "8px",
+      "overflowX": "clip",
+      "overflowY": "clip",
+      "paddingRight": "10px",
+      "scrollAfterRequest": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollBefore": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollLeftAfterReset": 0,
+      "scrollTopAfterReset": 0,
+      "target": {
+        "bottom": 386,
+        "height": 120,
+        "right": 372,
+        "width": 140,
+        "x": 232,
+        "y": 266
+      }
+    },
+    {
+      "borderRightWidth": "4px",
+      "box": {
+        "bottom": 348,
+        "height": 96,
+        "right": 536,
+        "width": 120,
+        "x": 416,
+        "y": 252
+      },
+      "clipAncestors": [
+        {
+          "className": "box",
+          "overflowClipMargin": "content-box 8px",
+          "overflowX": "clip",
+          "overflowY": "clip",
+          "rect": {
+            "bottom": 348,
+            "height": 96,
+            "right": 536,
+            "width": 120,
+            "x": 416,
+            "y": 252
+          },
+          "tagName": "DIV"
+        }
+      ],
+      "hitRanges": {
+        "x": {
+          "fixedAt": 307,
+          "ranges": [
+            [
+              430,
+              535
+            ]
+          ]
+        },
+        "y": {
+          "fixedAt": 483,
+          "ranges": [
+            [
+              266,
+              347
+            ]
+          ]
+        }
+      },
+      "id": "clip-margin-content",
+      "overflowClipMargin": "content-box 8px",
+      "overflowX": "clip",
+      "overflowY": "clip",
+      "paddingRight": "10px",
+      "scrollAfterRequest": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollBefore": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollLeftAfterReset": 0,
+      "scrollTopAfterReset": 0,
+      "target": {
+        "bottom": 386,
+        "height": 120,
+        "right": 570,
+        "width": 140,
+        "x": 430,
+        "y": 266
+      }
+    },
+    {
+      "borderRightWidth": "4px",
+      "box": {
+        "bottom": 516,
+        "height": 96,
+        "right": 140,
+        "width": 120,
+        "x": 20,
+        "y": 420
+      },
+      "clipAncestors": [
+        {
+          "className": "box",
+          "overflowClipMargin": "border-box 8px",
+          "overflowX": "clip",
+          "overflowY": "clip",
+          "rect": {
+            "bottom": 516,
+            "height": 96,
+            "right": 140,
+            "width": 120,
+            "x": 20,
+            "y": 420
+          },
+          "tagName": "DIV"
+        }
+      ],
+      "hitRanges": {
+        "x": {
+          "fixedAt": 475,
+          "ranges": [
+            [
+              34,
+              147
+            ]
+          ]
+        },
+        "y": {
+          "fixedAt": 87,
+          "ranges": [
+            [
+              434,
+              523
+            ]
+          ]
+        }
+      },
+      "id": "clip-margin-border",
+      "overflowClipMargin": "border-box 8px",
+      "overflowX": "clip",
+      "overflowY": "clip",
+      "paddingRight": "10px",
+      "scrollAfterRequest": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollBefore": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollLeftAfterReset": 0,
+      "scrollTopAfterReset": 0,
+      "target": {
+        "bottom": 554,
+        "height": 120,
+        "right": 174,
+        "width": 140,
+        "x": 34,
+        "y": 434
+      }
+    },
+    {
+      "borderRightWidth": "4px",
+      "box": {
+        "bottom": 516,
+        "height": 96,
+        "right": 338,
+        "width": 120,
+        "x": 218,
+        "y": 420
+      },
+      "clipAncestors": [
+        {
+          "className": "box",
+          "overflowClipMargin": "-1px",
+          "overflowX": "clip",
+          "overflowY": "clip",
+          "rect": {
+            "bottom": 516,
+            "height": 96,
+            "right": 338,
+            "width": 120,
+            "x": 218,
+            "y": 420
+          },
+          "tagName": "DIV"
+        }
+      ],
+      "hitRanges": {
+        "x": {
+          "fixedAt": 475,
+          "ranges": [
+            [
+              232,
+              337
+            ]
+          ]
+        },
+        "y": {
+          "fixedAt": 285,
+          "ranges": [
+            [
+              434,
+              515
+            ]
+          ]
+        }
+      },
+      "id": "clip-margin-invalid",
+      "overflowClipMargin": "-1px",
+      "overflowX": "clip",
+      "overflowY": "clip",
+      "paddingRight": "10px",
+      "scrollAfterRequest": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollBefore": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollLeftAfterReset": 0,
+      "scrollTopAfterReset": 0,
+      "target": {
+        "bottom": 554,
+        "height": 120,
+        "right": 372,
+        "width": 140,
+        "x": 232,
+        "y": 434
+      }
+    },
+    {
+      "borderRightWidth": "4px",
+      "box": {
+        "bottom": 516,
+        "height": 96,
+        "right": 536,
+        "width": 120,
+        "x": 416,
+        "y": 420
+      },
+      "clipAncestors": [
+        {
+          "className": "box",
+          "overflowClipMargin": "border-box 8px",
+          "overflowX": "hidden",
+          "overflowY": "hidden",
+          "rect": {
+            "bottom": 516,
+            "height": 96,
+            "right": 536,
+            "width": 120,
+            "x": 416,
+            "y": 420
+          },
+          "tagName": "DIV"
+        }
+      ],
+      "hitRanges": {
+        "x": {
+          "fixedAt": 475,
+          "ranges": [
+            [
+              430,
+              535
+            ]
+          ]
+        },
+        "y": {
+          "fixedAt": 483,
+          "ranges": [
+            [
+              434,
+              515
+            ]
+          ]
+        }
+      },
+      "id": "clip-margin-hidden",
+      "overflowClipMargin": "border-box 8px",
+      "overflowX": "hidden",
+      "overflowY": "hidden",
+      "paddingRight": "10px",
+      "scrollAfterRequest": {
+        "left": 20,
+        "top": 20
+      },
+      "scrollBefore": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollLeftAfterReset": 0,
+      "scrollTopAfterReset": 0,
+      "target": {
+        "bottom": 554,
+        "height": 120,
+        "right": 570,
+        "width": 140,
+        "x": 430,
+        "y": 434
+      }
+    },
+    {
+      "borderRightWidth": "4px",
+      "box": {
+        "bottom": 684,
+        "height": 96,
+        "right": 140,
+        "width": 120,
+        "x": 20,
+        "y": 588
+      },
+      "clipAncestors": [
+        {
+          "className": "box",
+          "overflowClipMargin": "0px",
+          "overflowX": "auto",
+          "overflowY": "hidden",
+          "rect": {
+            "bottom": 684,
+            "height": 96,
+            "right": 140,
+            "width": 120,
+            "x": 20,
+            "y": 588
+          },
+          "tagName": "DIV"
+        }
+      ],
+      "hitRanges": {
+        "x": {
+          "fixedAt": 643,
+          "ranges": [
+            [
+              34,
+              139
+            ]
+          ]
+        },
+        "y": {
+          "fixedAt": 87,
+          "ranges": [
+            [
+              602,
+              683
+            ]
+          ]
+        }
+      },
+      "id": "mixed-visible-hidden",
+      "overflowClipMargin": "0px",
+      "overflowX": "auto",
+      "overflowY": "hidden",
+      "paddingRight": "10px",
+      "scrollAfterRequest": {
+        "left": 20,
+        "top": 20
+      },
+      "scrollBefore": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollLeftAfterReset": 0,
+      "scrollTopAfterReset": 0,
+      "target": {
+        "bottom": 722,
+        "height": 120,
+        "right": 174,
+        "width": 140,
+        "x": 34,
+        "y": 602
+      }
+    },
+    {
+      "borderRightWidth": "4px",
+      "box": {
+        "bottom": 684,
+        "height": 96,
+        "right": 338,
+        "width": 120,
+        "x": 218,
+        "y": 588
+      },
+      "clipAncestors": [
+        {
+          "className": "box",
+          "overflowClipMargin": "border-box 8px",
+          "overflowX": "hidden",
+          "overflowY": "auto",
+          "rect": {
+            "bottom": 684,
+            "height": 96,
+            "right": 338,
+            "width": 120,
+            "x": 218,
+            "y": 588
+          },
+          "tagName": "DIV"
+        }
+      ],
+      "hitRanges": {
+        "x": {
+          "fixedAt": 643,
+          "ranges": [
+            [
+              232,
+              337
+            ]
+          ]
+        },
+        "y": {
+          "fixedAt": 285,
+          "ranges": [
+            [
+              602,
+              683
+            ]
+          ]
+        }
+      },
+      "id": "mixed-clip-auto",
+      "overflowClipMargin": "border-box 8px",
+      "overflowX": "hidden",
+      "overflowY": "auto",
+      "paddingRight": "10px",
+      "scrollAfterRequest": {
+        "left": 20,
+        "top": 20
+      },
+      "scrollBefore": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollLeftAfterReset": 0,
+      "scrollTopAfterReset": 0,
+      "target": {
+        "bottom": 722,
+        "height": 120,
+        "right": 372,
+        "width": 140,
+        "x": 232,
+        "y": 602
+      }
+    },
+    {
+      "borderRightWidth": "4px",
+      "box": {
+        "bottom": 672,
+        "height": 64,
+        "right": 536,
+        "width": 120,
+        "x": 416,
+        "y": 608
+      },
+      "floatHeight": 36,
+      "id": "hidden-float",
+      "overflowClipMargin": "0px",
+      "overflowX": "hidden",
+      "overflowY": "hidden",
+      "paddingRight": "10px",
+      "scrollAfterRequest": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollBefore": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollLeftAfterReset": 0,
+      "scrollTopAfterReset": 0,
+      "target": null
+    },
+    {
+      "borderRightWidth": "4px",
+      "box": {
+        "bottom": 804,
+        "height": 28,
+        "right": 140,
+        "width": 120,
+        "x": 20,
+        "y": 776
+      },
+      "floatHeight": 36,
+      "id": "clip-float",
+      "overflowClipMargin": "0px",
+      "overflowX": "clip",
+      "overflowY": "clip",
+      "paddingRight": "10px",
+      "scrollAfterRequest": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollBefore": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollLeftAfterReset": 0,
+      "scrollTopAfterReset": 0,
+      "target": null
+    },
+    {
+      "borderRightWidth": "4px",
+      "box": {
+        "bottom": 840,
+        "height": 64,
+        "right": 338,
+        "width": 120,
+        "x": 218,
+        "y": 776
+      },
+      "floatHeight": 36,
+      "id": "clip-flow-root-float",
+      "overflowClipMargin": "0px",
+      "overflowX": "clip",
+      "overflowY": "clip",
+      "paddingRight": "10px",
+      "scrollAfterRequest": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollBefore": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollLeftAfterReset": 0,
+      "scrollTopAfterReset": 0,
+      "target": null
+    },
+    {
+      "borderRightWidth": "4px",
+      "box": {
+        "bottom": 872,
+        "height": 96,
+        "right": 536,
+        "width": 120,
+        "x": 416,
+        "y": 776
+      },
+      "clipAncestors": [
+        {
+          "className": "box",
+          "overflowClipMargin": "0px",
+          "overflowX": "clip",
+          "overflowY": "clip",
+          "rect": {
+            "bottom": 872,
+            "height": 96,
+            "right": 536,
+            "width": 120,
+            "x": 416,
+            "y": 776
+          },
+          "tagName": "DIV"
+        }
+      ],
+      "hitRanges": {
+        "x": {
+          "fixedAt": 837,
+          "ranges": [
+            [
+              504,
+              531
+            ]
+          ]
+        },
+        "y": {
+          "fixedAt": 520,
+          "ranges": [
+            [
+              822,
+              851
+            ]
+          ]
+        }
+      },
+      "id": "positioned-contained",
+      "overflowClipMargin": "0px",
+      "overflowX": "clip",
+      "overflowY": "clip",
+      "paddingRight": "10px",
+      "scrollAfterRequest": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollBefore": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollLeftAfterReset": 0,
+      "scrollTopAfterReset": 0,
+      "target": {
+        "bottom": 852,
+        "height": 30,
+        "right": 546,
+        "width": 42,
+        "x": 504,
+        "y": 822
+      }
+    },
+    {
+      "borderRightWidth": "4px",
+      "box": {
+        "bottom": 1020,
+        "height": 96,
+        "right": 140,
+        "width": 120,
+        "x": 20,
+        "y": 924
+      },
+      "clipAncestors": [
+        {
+          "className": "box",
+          "overflowClipMargin": "0px",
+          "overflowX": "clip",
+          "overflowY": "clip",
+          "rect": {
+            "bottom": 1020,
+            "height": 96,
+            "right": 140,
+            "width": 120,
+            "x": 20,
+            "y": 924
+          },
+          "tagName": "DIV"
+        }
+      ],
+      "hitRanges": {
+        "x": {
+          "fixedAt": 983,
+          "ranges": [
+            [
+              114,
+              155
+            ]
+          ]
+        },
+        "y": {
+          "fixedAt": 127,
+          "ranges": [
+            [
+              968,
+              997
+            ]
+          ]
+        }
+      },
+      "id": "positioned-escape",
+      "overflowClipMargin": "0px",
+      "overflowX": "clip",
+      "overflowY": "clip",
+      "paddingRight": "10px",
+      "scrollAfterRequest": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollBefore": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollLeftAfterReset": 0,
+      "scrollTopAfterReset": 0,
+      "target": {
+        "bottom": 998,
+        "height": 30,
+        "right": 156,
+        "width": 42,
+        "x": 114,
+        "y": 968
+      }
+    },
+    {
+      "borderRightWidth": "4px",
+      "box": {
+        "bottom": 1020,
+        "height": 96,
+        "right": 338,
+        "width": 120,
+        "x": 218,
+        "y": 924
+      },
+      "clipAncestors": [
+        {
+          "className": "nested-inner",
+          "overflowClipMargin": "0px",
+          "overflowX": "clip",
+          "overflowY": "visible",
+          "rect": {
+            "bottom": 1022,
+            "height": 68,
+            "right": 324,
+            "width": 78,
+            "x": 246,
+            "y": 954
+          },
+          "tagName": "DIV"
+        },
+        {
+          "className": "box",
+          "overflowClipMargin": "0px",
+          "overflowX": "clip",
+          "overflowY": "clip",
+          "rect": {
+            "bottom": 1020,
+            "height": 96,
+            "right": 338,
+            "width": 120,
+            "x": 218,
+            "y": 924
+          },
+          "tagName": "DIV"
+        }
+      ],
+      "hitRanges": {
+        "x": {
+          "fixedAt": 990.5,
+          "ranges": [
+            [
+              253,
+              323
+            ]
+          ]
+        },
+        "y": {
+          "fixedAt": 288.5,
+          "ranges": [
+            [
+              961,
+              1015
+            ]
+          ]
+        }
+      },
+      "id": "nested-clip",
+      "overflowClipMargin": "0px",
+      "overflowX": "clip",
+      "overflowY": "clip",
+      "paddingRight": "10px",
+      "scrollAfterRequest": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollBefore": {
+        "left": 0,
+        "top": 0
+      },
+      "scrollLeftAfterReset": 0,
+      "scrollTopAfterReset": 0,
+      "target": {
+        "bottom": 1081,
+        "height": 120,
+        "right": 393,
+        "width": 140,
+        "x": 253,
+        "y": 961
+      }
+    }
+  ],
+  "negativeClipMarginSupported": true,
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+  "viewport": {
+    "dpr": 1,
+    "height": 1100,
+    "width": 1440
+  }
+}
