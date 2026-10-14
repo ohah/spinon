@@ -26,7 +26,7 @@ function node(parent, id, style) {
 }
 
 const root = node(
-  document.body,
+  document.body || document,
   'c131-surface-root',
   'display:block;position:relative;box-sizing:border-box;width:300px;height:100px;background-color:#101827',
 );

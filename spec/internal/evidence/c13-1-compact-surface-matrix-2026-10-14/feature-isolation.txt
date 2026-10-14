@@ -1,0 +1,17 @@
+toolchain=rustc 1.96.1 / LLVM 22.1.2; matching rustup llvm-nm
+target=host debug spinon-ffi static archive
+
+[feature off]
+archive_sha256=1e181a792f5a8c32e8bc992113967eaf07d9e6ccd19e619d40f695515d7d4f42
+spinon_runtime_gpu_host_new_c13_1_compact_surface_matrix_fixture=absent
+spinon_runtime_gpu_host_eval_c13_1_compact_surface_matrix_fixture=absent
+compact fixture payload strings=absent
+
+[feature on]
+archive_sha256=05277588767f43b942424ba595edc862cb3de1995a0eb305cb0b306fe9d2c6e2
+spinon_runtime_gpu_host_new_c13_1_compact_surface_matrix_fixture=present
+spinon_runtime_gpu_host_eval_c13_1_compact_surface_matrix_fixture=present
+compact fixture payload strings=present (c131-surface-target-visible)
+
+result=default fixture source, ABI and payload excluded; opt-in positive control includes all three
+method=full llvm-nm and strings output were captured before matching, avoiding early pipe termination

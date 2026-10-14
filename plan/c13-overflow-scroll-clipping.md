@@ -108,3 +108,8 @@ agent-browser로 만든 Chrome 155 사전 비교 fixture는 [원본 HTML](../tes
 - runtime fixture module·FFI·payload는 전용 opt-in `*-fixture-test` feature에 격리한다. 기본/제품 artifact와 fixture-test artifact를 각각 검사해 FFI symbol/string/payload의 부재·존재 negative/positive control을 남긴다.
 - 기능 PR에서는 `cargo fmt`, 해당 unit/integration/reference tests, workspace test, Clippy, Android/iOS simulator build/run을 변경 책임에 맞춰 실행한다. 실행하지 않은 WPT·플랫폼·실기기는 미실행으로 기록한다.
 - C13 계획/구현 PR을 squash/merge commit으로 병합하지 않는다. main merge 전 required CI, 리뷰, mergeability를 다시 확인한다. Pages workflow는 실행하지 않는다.
+
+### C13.1 compact surface matrix 후속 · 2026-10-14
+
+- Chrome 155의 compact 13-case fixture를 Android API 37 ARM64 AVD에 연결했다. ADB transport는 정상이었다. 최초 실패는 `SPINON_ENABLE_C13_1_OVERFLOW_CLIP_FIXTURE_TEST`와 Gradle/native path가 읽던 legacy flag 이름 불일치였다. 호환 alias와 충돌 거부를 추가한 뒤, body 없는 host document, Android surface environment가 compact viewport를 덮는 문제, auto positioned parent 배경의 paint 순서 문제를 차례로 재현·수정했다.
+- 수정 후 Android에서 41/41 frame, 52/52 hit identity와 PixelCopy 52/52 RGBA가 일치했다. iPhone 17 Pro / iOS 26.2 Simulator에서 41/41 frame, 52/52 hit identity 및 Metal surface 화면을 확인했으며 drawable readback은 하지 않았다. [실행 근거와 실패 원인](../spec/internal/evidence/c13-1-compact-surface-matrix-2026-10-14/runtime-execution.md). 이 결과는 고정 52-point sample 범위이며 full surface byte equality, broad frame-outside draw/hit/event, DOM event/CSSOM, WPT 및 C13.1 완료 판정을 충족하지 않는다.

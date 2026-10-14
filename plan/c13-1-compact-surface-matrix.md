@@ -27,6 +27,14 @@ C13.1의 13개 유효 overflow/clip 행을 Android AVD의 실제 300×100 CSS-px
 8. focused/workspace tests, fixture feature boundary, Clippy, rustfmt, iOS/Android build·runtime, `git diff --check` 로그를 evidence에 저장하고, 구현 이후 새 20관점 리뷰와 PR 변경 30관점 리뷰를 분리한다.
 9. [상태 대장](../spec/STATUS.md)와 [C13 계획](c13-overflow-scroll-clipping.md)에 측정된 matrix만 추가한다. full surface rendering, DOM event/CSSOM, WPT와 C13.1/C13 완료는 확인 전까지 미완료로 유지한다.
 
+## 실행 결과 · 2026-10-14
+
+- Android API 37 ARM64 AVD (`ro.kernel.qemu=1`, ANGLE/Vulkan/SwiftShader): 41/41 node frame, 52/52 fixed hit identity, 52/52 PixelCopy RGBA exact. `PixelCopy` PNG는 788×263 px이고 SHA-256은 `d585f3c4b06558e292c7d2553edd18636bf75da64edcf9c1971ee665a7ca59d9`다.
+- iPhone 17 Pro / iOS 26.2 Simulator: 41/41 frame, 52/52 hit identity. Metal surface 화면을 보존했지만 drawable readback은 수행하지 않았다.
+- ADB transport는 정상으로 확인했다. 실패는 fixture build flag 이름 불일치, body-less host document, compact viewport override, parent/child paint order에서 발생했고 모두 수정했다. [실행·로그·화면·feature isolation 근거](../spec/internal/evidence/c13-1-compact-surface-matrix-2026-10-14/runtime-execution.md).
+- 전체 workspace test와 Clippy, rustfmt, Android/iOS Simulator build가 통과했다. Android의 중복 C13.1 route 거부와 conflicting build-flag 거부 negative control을 확인했다. 구현 failure review 20개와 PR delta review 30개는 별도 파일로 추가한다.
+- 이 결과는 고정 52-point sample, AVD software backend, iOS Simulator 화면 범위다. 전체 surface byte equality, broad frame-outside controls, DOM event/CSSOM, WPT, 실기기/hardware GPU 또는 C13.1 완료를 증명하지 않는다.
+
 ## 제외와 후속 경계
 
 - 1280×1100 full viewport host hit identity는 PR #160의 1,408,000-point scan이 이미 다룬다. 이 compact AVD fixture는 전체 300×100 RGBA surface byte scan이 아니라 52개 사전 고정 PixelCopy sample과 PNG다.

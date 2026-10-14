@@ -53,6 +53,8 @@ struct RuntimeGpuHost {
     include_c13_1_hit_test_report: bool,
     #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
     include_c13_1_border_hit_test_report: bool,
+    #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
+    include_c13_1_compact_surface_matrix_hit_test_report: bool,
     #[cfg(any(
         feature = "c12-4-metal-surface-readback-test",
         feature = "c11-grid-metal-surface-pixels-test"
@@ -91,6 +93,8 @@ impl RuntimeGpuHost {
             include_c13_1_hit_test_report: false,
             #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
             include_c13_1_border_hit_test_report: false,
+            #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
+            include_c13_1_compact_surface_matrix_hit_test_report: false,
             #[cfg(any(
                 feature = "c12-4-metal-surface-readback-test",
                 feature = "c11-grid-metal-surface-pixels-test"
@@ -119,6 +123,7 @@ impl RuntimeGpuHost {
         include_node_frame_report: bool,
         _include_c13_1_hit_test_report: bool,
         _include_c13_1_border_hit_test_report: bool,
+        _include_c13_1_compact_surface_matrix_hit_test_report: bool,
     ) -> Result<String, (i32, String)> {
         let snapshot = self
             .session
@@ -215,7 +220,14 @@ impl RuntimeGpuHost {
             String::new()
         };
         #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
-        let hit_test_report = if _include_c13_1_hit_test_report {
+        let hit_test_report = if _include_c13_1_compact_surface_matrix_hit_test_report {
+            let samples = fixtures::c13_1_compact_surface_matrix::hit_test_samples_json(
+                &scene,
+                &completed.frames,
+            )
+            .map_err(|error| (ERR_LAYOUT, error))?;
+            format!(" hit_test_samples_json={samples}")
+        } else if _include_c13_1_hit_test_report {
             let samples = c13_1_hit_test_samples_json(&scene, &completed.frames)
                 .map_err(|error| (ERR_LAYOUT, error))?;
             format!(" hit_test_samples_json={samples}")
@@ -323,6 +335,7 @@ impl RuntimeGpuHost {
             self.include_node_frame_report,
             false,
             false,
+            false,
         )?;
         Ok(format!("environment_revision={} {ready}", revision.get()))
     }
@@ -356,16 +369,22 @@ impl RuntimeGpuHost {
         let include_c13_1_hit_test_report = self.include_c13_1_hit_test_report;
         #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
         let include_c13_1_border_hit_test_report = self.include_c13_1_border_hit_test_report;
+        #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
+        let include_c13_1_compact_surface_matrix_hit_test_report =
+            self.include_c13_1_compact_surface_matrix_hit_test_report;
         #[cfg(not(feature = "c13-1-overflow-clip-fixture-test"))]
         let include_c13_1_hit_test_report = false;
         #[cfg(not(feature = "c13-1-overflow-clip-fixture-test"))]
         let include_c13_1_border_hit_test_report = false;
+        #[cfg(not(feature = "c13-1-overflow-clip-fixture-test"))]
+        let include_c13_1_compact_surface_matrix_hit_test_report = false;
         let ready = self.wait_and_publish(
             sequence,
             layout_timeout_millis,
             include_node_frame_report,
             include_c13_1_hit_test_report,
             include_c13_1_border_hit_test_report,
+            include_c13_1_compact_surface_matrix_hit_test_report,
         );
         match (response.status, ready) {
             (0, Ok(ready)) => Ok(format!("{} {ready}", response.report)),

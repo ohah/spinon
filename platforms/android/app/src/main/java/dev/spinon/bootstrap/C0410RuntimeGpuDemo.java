@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Debug;
 import android.os.Handler;
 import android.os.Looper;
@@ -26,8 +27,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -100,6 +104,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     };
     private static final String C1133_GRID_TEMPLATE_AREAS_REJECT_SCENE_ID =
             "area-track-count-mismatch";
+    private static final String[] C131_COMPACT_SURFACE_CASE_IDS = {
+            "visible", "clip-x", "clip-y", "clip-both", "clip-margin-padding",
+            "clip-margin-content", "clip-margin-border", "clip-margin-hidden",
+            "mixed-visible-hidden", "mixed-clip-auto", "positioned-contained",
+            "positioned-escape", "nested-clip",
+    };
+    private static final String[] C131_COMPACT_SURFACE_SAMPLE_ROLES = {
+            "paint", "target-beyond-frame", "x-overflow", "y-overflow",
+    };
     private static boolean isC1132GridNamedLinePixelSamples(
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
@@ -225,6 +238,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native long nativeCreateC123FixedHost();
     private static native long nativeCreateC124StackingHost();
     private static native long nativeCreateC131OverflowClipHost();
+    private static native long nativeCreateC131CompactSurfaceMatrixHost();
     private static native long nativeCreateC131OverflowClipBorderHost();
     private static native long nativeCreateC11GridHost();
     private static native long nativeCreateC1121GridPlacementHost();
@@ -260,6 +274,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native byte[] nativeEvalC123FixedFixture(long host);
     private static native byte[] nativeEvalC124StackingFixture(long host);
     private static native byte[] nativeEvalC131OverflowClipFixture(long host);
+    private static native byte[] nativeEvalC131CompactSurfaceMatrixFixture(long host);
     private static native byte[] nativeEvalC131OverflowClipBorderFixture(long host);
     private static native byte[] nativeEvalC11GridFixture(long host);
     private static native byte[] nativeEvalC11GridSceneFixture(long host, int sceneIndex);
@@ -398,6 +413,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final String c11GridPixelMatrixConfigError;
     private final boolean c124RuntimeMatrixProbeRequested;
     private final boolean c131OverflowClipProbeRequested;
+    private final boolean c131CompactSurfaceMatrixProbeRequested;
     private final boolean c131BorderStripProbeRequested;
     private final boolean c124DepthSafetyProbeRequested;
     private final boolean c124SurfaceCaptureProbeRequested;
@@ -436,12 +452,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private boolean c1121GridRuntimeSummaryEmitted;
     private boolean c124SurfaceCaptureStarted;
     private boolean c131OverflowClipSurfaceCaptureStarted;
+    private boolean c131CompactSurfaceMatrixCaptureStarted;
     private boolean c131BorderStripSurfaceCaptureStarted;
     private boolean c11GridSurfaceCaptureStarted;
     private List<C124SurfacePixelCapture.Sample> c124SurfaceSamples = List.of();
     private int c124SurfaceOriginXCssPx;
     private int c124SurfaceOriginYCssPx;
     private String c124SurfaceInventorySha256 = "";
+    private volatile List<SurfaceViewPixelCapture.Sample> c131CompactSurfaceSamples = List.of();
+    private volatile Map<String, String> c131CompactSurfaceExpectedRgba = Collections.emptyMap();
     private CountDownLatch surfaceDestroyBarrier;
 
     C0410RuntimeGpuDemo(
@@ -507,6 +526,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 .getBooleanExtra("spinon_c124_stacking_matrix", false);
         c131OverflowClipProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c131_overflow_clip", false);
+        c131CompactSurfaceMatrixProbeRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c131_compact_surface_matrix", false);
         c131BorderStripProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c131_overflow_clip_border", false);
         c124DepthSafetyProbeRequested = activity.getIntent()
@@ -683,6 +704,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         blockFormattingProbeRequested = flowRootProbeRequested || marginCollapseProbeRequested
                 || activity.getIntent().getBooleanExtra("spinon_c091_block_formatting", false);
         fixedSizeCssFixtureRequested = c122AbsoluteBlockProbeRequested
+                || c131CompactSurfaceMatrixProbeRequested
                 || c131BorderStripProbeRequested
                 || c123FixedPositionProbeRequested
                 || c11GridFixtureRequested
@@ -742,6 +764,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "SPINON · C13.1 overflow clip"
                 : c11GridFixtureRequested
                 ? "SPINON · C11.1 CSS Grid"
+                : c131CompactSurfaceMatrixProbeRequested
+                ? "SPINON · C13.1 compact surface"
                 : c1035PositionedFlexProbeRequested
                 ? "SPINON · C10.3.5 positioned Flex"
                 : c123FixedPositionProbeRequested
@@ -803,7 +827,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         addView(title, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 
         TextView description = new TextView(activity);
-        description.setText(c131BorderStripProbeRequested
+        description.setText(c131CompactSurfaceMatrixProbeRequested
+                ? "13개 overflow clip case · 52 hit/PixelCopy 표본 → WGPU · 300×100 CSS px"
+                : c131BorderStripProbeRequested
                 ? "static/absolute clip border-strip oracle → WGPU · 400×160 CSS px"
                 : c131OverflowClipProbeRequested
                 ? "overflow clip·clip margin·positioned escape → WGPU"
@@ -892,7 +918,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
         surfaceView = new SurfaceView(activity);
         surfaceView.getHolder().addCallback(this);
-        surfaceView.setContentDescription(c131BorderStripProbeRequested
+        surfaceView.setContentDescription(c131CompactSurfaceMatrixProbeRequested
+                ? "C13.1 compact 13-case overflow Chrome oracle WGPU surface"
+                : c131BorderStripProbeRequested
                 ? "C13.1 paint/hit border-strip Chrome oracle WGPU 장면"
                 : c1123GridAutoPlacementRequested
                 ? "C11.2.3 dense·column Grid 자동 배치 결과"
@@ -955,10 +983,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : authorStylesheetsProbeRequested
                         ? "C04.11 Chromium stylesheet fixture의 WGPU 장면"
                 : "C04.10 Chromium fixture의 WGPU 장면");
-        int initialSurfaceWidth = c131BorderStripProbeRequested
-                ? 400 : fixedSizeCssFixtureRequested ? 320 : 301;
-        int initialSurfaceHeight = c131BorderStripProbeRequested
-                ? 160 : fixedSizeCssFixtureRequested ? 240 : 100;
+        int initialSurfaceWidth = c131CompactSurfaceMatrixProbeRequested ? 300
+                : c131BorderStripProbeRequested ? 400 : fixedSizeCssFixtureRequested ? 320 : 301;
+        int initialSurfaceHeight = c131CompactSurfaceMatrixProbeRequested ? 100
+                : c131BorderStripProbeRequested ? 160 : fixedSizeCssFixtureRequested ? 240 : 100;
         LayoutParams surfaceParams = new LayoutParams(
                 dp(initialSurfaceWidth, density), dp(initialSurfaceHeight, density));
         stage.addView(surfaceView, surfaceParams);
@@ -1072,10 +1100,39 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (interrupted) Thread.currentThread().interrupt();
     }
 
+    private boolean validateC131FixtureRoute() {
+        int selectedRoutes = (c131OverflowClipProbeRequested ? 1 : 0)
+                + (c131CompactSurfaceMatrixProbeRequested ? 1 : 0)
+                + (c131BorderStripProbeRequested ? 1 : 0);
+        if (selectedRoutes > 1) {
+            Log.e(TAG, "SPINON_C131_ARGUMENT_ERROR conflicting=multiple-fixture-routes");
+            postStatus("실패 · C13.1 route를 하나만 선택해야 합니다");
+            return false;
+        }
+        if (selectedRoutes == 0) return true;
+
+        String selectedExtra = c131CompactSurfaceMatrixProbeRequested
+                ? "spinon_c131_compact_surface_matrix"
+                : c131BorderStripProbeRequested
+                ? "spinon_c131_overflow_clip_border" : "spinon_c131_overflow_clip";
+        Bundle extras = activity.getIntent().getExtras();
+        if (extras == null) return true;
+        for (String key : extras.keySet()) {
+            if (!key.startsWith("spinon_c") || key.equals(selectedExtra)
+                    || key.equals("spinon_c0410_runtime_gpu")) {
+                continue;
+            }
+            Object value = extras.get(key);
+            if (Boolean.FALSE.equals(value)) continue;
+            Log.e(TAG, "SPINON_C131_ARGUMENT_ERROR conflicting=" + key);
+            postStatus("실패 · C13.1 전용 route와 다른 CSS fixture를 함께 선택했습니다");
+            return false;
+        }
+        return true;
+    }
+
     private void initializeRuntime() {
-        if (c131OverflowClipProbeRequested && c131BorderStripProbeRequested) {
-            Log.e(TAG, "SPINON_C131_ARGUMENT_ERROR conflicting=both-overflow-fixture-routes");
-            postStatus("실패 · C13.1 route는 하나만 선택해야 합니다");
+        if (!validateC131FixtureRoute()) {
             return;
         }
         if (!c11GridPixelMatrixConfigError.isEmpty()) {
@@ -1104,6 +1161,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? nativeCreateC1121GridPlacementHost()
                 : c11GridFixtureRequested
                 ? nativeCreateC11GridHost()
+                : c131CompactSurfaceMatrixProbeRequested
+                ? nativeCreateC131CompactSurfaceMatrixHost()
                 : c131BorderStripProbeRequested
                 ? nativeCreateC131OverflowClipBorderHost()
                 : c131OverflowClipProbeRequested
@@ -1133,13 +1192,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         final float heightCssPx;
         final boolean dark;
         synchronized (stateLock) {
-            widthCssPx = c131BorderStripProbeRequested ? 400
+            widthCssPx = c131CompactSurfaceMatrixProbeRequested ? 300
+                    : c131BorderStripProbeRequested ? 400
                     : c1133GridTemplateAreasRequested
                     || c1132GridNamedLinesRequested || c1131GridRepeatRequested ? 320
                     : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
                     || c1122GridAutoPlacementRequested || c1123GridAutoPlacementRequested
                     ? 360 : fixedSizeCssFixtureRequested ? 320 : cssViewportWidthLocked();
-            heightCssPx = c131BorderStripProbeRequested ? 160
+            heightCssPx = c131CompactSurfaceMatrixProbeRequested ? 100
+                    : c131BorderStripProbeRequested ? 160
                     : c1133GridTemplateAreasRequested
                     || c1132GridNamedLinesRequested || c1131GridRepeatRequested ? 240
                     : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
@@ -1193,6 +1254,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         host, c1121GridSceneId, c1121GridRunId))
                 : c11GridFixtureRequested
                 ? decode(nativeEvalC11GridSceneFixture(host, c11GridSceneIndex))
+                : c131CompactSurfaceMatrixProbeRequested
+                ? decode(nativeEvalC131CompactSurfaceMatrixFixture(host))
                 : c131BorderStripProbeRequested
                 ? decode(nativeEvalC131OverflowClipBorderFixture(host))
                 : c131OverflowClipProbeRequested
@@ -1424,6 +1487,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             postStatus("실패 · " + result);
             return;
         }
+        if (c131CompactSurfaceMatrixProbeRequested
+                && !logC131CompactSurfaceMatrixFixtureReport(result)) {
+            postStatus("실패 · C13.1 compact frame·hit-test 결과 불일치");
+            return;
+        }
         if (c131BorderStripProbeRequested && !logC131BorderFixtureReport(result)) {
             postStatus("실패 · C13.1 border-strip frame·hit-test 결과 불일치");
             return;
@@ -1436,7 +1504,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 return;
             }
         }
-        Log.i(TAG, (c131BorderStripProbeRequested
+        Log.i(TAG, (c131CompactSurfaceMatrixProbeRequested
+                ? "SPINON_C131_COMPACT_EVAL_RUN " : c131BorderStripProbeRequested
                 ? "SPINON_C131_BORDER_EVAL_RUN " : c131OverflowClipProbeRequested
                 ? "SPINON_C131_EVAL_RUN " : c1133GridTemplateAreasRequested
                 ? "SPINON_C1133_GRID_EVAL run_id=" + c1133GridTemplateAreasRunId
@@ -1875,6 +1944,117 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 });
     }
 
+    private boolean logC131CompactSurfaceMatrixFixtureReport(String report) {
+        if (!report.startsWith("status=0 ") || !report.contains(" layout=ready ")
+                || !"41".equals(reportField(report, "boxes="))
+                || !"300x100".equals(reportField(report, "render_viewport_css_px="))) {
+            Log.e(TAG, "SPINON_C131_COMPACT_FIXTURE_SUMMARY status=error stage=runtime-report "
+                    + runtimeStatusSummary(report));
+            return false;
+        }
+        int frameMarker = report.indexOf("node_frames_css_px=[");
+        int frameStart = frameMarker < 0 ? -1 : report.indexOf('[', frameMarker);
+        int frameEnd = frameStart < 0 ? -1 : report.indexOf(']', frameStart + 1);
+        if (frameStart < 0 || frameEnd < 0) {
+            Log.e(TAG, "SPINON_C131_COMPACT_FIXTURE_SUMMARY status=error stage=frame-report");
+            return false;
+        }
+        String[] frames = report.substring(frameStart + 1, frameEnd).split(";");
+        if (frames.length != 41) {
+            Log.e(TAG, "SPINON_C131_COMPACT_GEOMETRY_SUMMARY status=error frames="
+                    + frames.length + " expected=41");
+            return false;
+        }
+        for (String frame : frames) Log.i(TAG, "SPINON_C131_COMPACT_NODE_FRAME " + frame);
+        Log.i(TAG, "SPINON_C131_COMPACT_GEOMETRY_SUMMARY status=ok frames=41 viewport=300x100");
+
+        int sampleMarker = report.indexOf("hit_test_samples_json=");
+        int sampleStart = sampleMarker < 0 ? -1 : report.indexOf('[', sampleMarker);
+        int sampleEnd = sampleStart < 0 ? -1 : report.indexOf(']', sampleStart + 1);
+        if (sampleStart < 0 || sampleEnd < 0) {
+            Log.e(TAG, "SPINON_C131_COMPACT_FIXTURE_SUMMARY status=error stage=hit-report");
+            return false;
+        }
+        final JSONArray observations;
+        try {
+            observations = new JSONArray(report.substring(sampleStart, sampleEnd + 1));
+        } catch (Exception error) {
+            Log.e(TAG, "SPINON_C131_COMPACT_FIXTURE_SUMMARY status=error stage=hit-json");
+            return false;
+        }
+        List<SurfaceViewPixelCapture.Sample> samples = new ArrayList<>(52);
+        Map<String, String> expectedRgba = new HashMap<>(52);
+        Set<String> uniqueIds = new HashSet<>(52);
+        Set<String> uniqueCoordinates = new HashSet<>(52);
+        int matched = 0;
+        boolean valid = observations.length() == 52;
+        for (int index = 0; index < observations.length(); index++) {
+            JSONObject observation = observations.optJSONObject(index);
+            if (observation == null) {
+                valid = false;
+                continue;
+            }
+            int caseIndex = index / C131_COMPACT_SURFACE_SAMPLE_ROLES.length;
+            int roleIndex = index % C131_COMPACT_SURFACE_SAMPLE_ROLES.length;
+            String caseId = caseIndex < C131_COMPACT_SURFACE_CASE_IDS.length
+                    ? C131_COMPACT_SURFACE_CASE_IDS[caseIndex] : "unexpected";
+            String role = C131_COMPACT_SURFACE_SAMPLE_ROLES[roleIndex];
+            String id = caseId + ":" + role;
+            String actualId = observation.optString("id", "missing");
+            String actualCaseId = observation.optString("caseId", "missing");
+            String actualRole = observation.optString("role", "missing");
+            String status = observation.optString("status", "missing");
+            String elementId = observation.optString("elementId", "");
+            int nodeIndex = observation.optInt("nodeIndex", -1);
+            double x = observation.optDouble("xCssPx", Double.NaN);
+            double y = observation.optDouble("yCssPx", Double.NaN);
+            String rgba = observation.optString("rgba", "");
+            String[] channels = rgba.split(",", -1);
+            boolean validRgba = channels.length == 4;
+            for (String channel : channels) {
+                try {
+                    int value = Integer.parseInt(channel);
+                    if (value < 0 || value > 255) validRgba = false;
+                } catch (NumberFormatException error) {
+                    validRgba = false;
+                }
+            }
+            boolean validCoordinate = Double.isFinite(x) && Double.isFinite(y)
+                    && x == Math.rint(x) && y == Math.rint(y)
+                    && x >= 0 && x < 300 && y >= 0 && y < 100;
+            String coordinate = x + "," + y;
+            boolean sampleMatches = id.equals(actualId) && caseId.equals(actualCaseId)
+                    && role.equals(actualRole) && "matched".equals(status)
+                    && !elementId.isEmpty() && nodeIndex >= 0 && validCoordinate && validRgba
+                    && uniqueIds.add(actualId) && uniqueCoordinates.add(coordinate);
+            if ("matched".equals(status)) matched++;
+            if (!sampleMatches) valid = false;
+            if (validCoordinate && validRgba) {
+                samples.add(new SurfaceViewPixelCapture.Sample(actualId, x, y));
+                expectedRgba.put(actualId, rgba);
+            }
+            Log.i(TAG, "SPINON_C131_COMPACT_HIT_TEST id=" + actualId + " x=" + x
+                    + " y=" + y + " element=" + elementId + " node_index=" + nodeIndex
+                    + " rgba=" + rgba + " status=" + status);
+        }
+        valid &= samples.size() == 52 && expectedRgba.size() == 52
+                && uniqueIds.size() == 52 && uniqueCoordinates.size() == 52 && matched == 52;
+        Log.i(TAG, "SPINON_C131_COMPACT_HIT_TEST_SUMMARY status="
+                + (valid ? "ok" : "error") + " matched=" + matched
+                + " total=" + observations.length() + " ids="
+                + (uniqueIds.size() == 52 ? "fixed" : "unexpected"));
+        if (!valid) {
+            Log.e(TAG, "SPINON_C131_COMPACT_FIXTURE_SUMMARY status=error boxes=41 "
+                    + "frames=" + frames.length + " hit_samples=" + observations.length());
+            return false;
+        }
+        c131CompactSurfaceSamples = Collections.unmodifiableList(samples);
+        c131CompactSurfaceExpectedRgba = Collections.unmodifiableMap(expectedRgba);
+        Log.i(TAG, "SPINON_C131_COMPACT_FIXTURE_SUMMARY status=ok boxes=41 frames=41 "
+                + "hit_samples=52 hit_matches=52");
+        return true;
+    }
+
     private boolean logC131BorderFixtureReport(String report) {
         String[] expectedSampleIds = {
                 "static-inside-clip", "static-border-strip", "static-outside-border",
@@ -2067,6 +2247,106 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             return new int[] {240, 198, 116, 255};
         }
         return new int[] {16, 24, 39, 255};
+    }
+
+    private void requestC131CompactSurfaceMatrixCapture(long renderer, long generation) {
+        final int width;
+        final int height;
+        synchronized (stateLock) {
+            if (closing || c131CompactSurfaceMatrixCaptureStarted || !surfaceAvailable
+                    || surfaceGeneration != generation || rendererHandle != renderer
+                    || rendererGeneration != generation) {
+                return;
+            }
+            if (c131CompactSurfaceSamples.size() != 52
+                    || c131CompactSurfaceExpectedRgba.size() != 52) {
+                Log.e(TAG, "SPINON_C131_COMPACT_PIXELCOPY status=error stage=sample-state");
+                postStatus("실패 · C13.1 compact 표본이 준비되지 않았습니다");
+                return;
+            }
+            c131CompactSurfaceMatrixCaptureStarted = true;
+            width = surfaceWidth;
+            height = surfaceHeight;
+        }
+        double scaleX = width / 300.0;
+        double scaleY = height / 100.0;
+        if (width <= 0 || height <= 0 || Math.abs(scaleX - scaleY) > 0.01) {
+            Log.e(TAG, "SPINON_C131_COMPACT_PIXELCOPY status=error width=" + width
+                    + " height=" + height + " scale_x=" + scaleX + " scale_y=" + scaleY);
+            postStatus("실패 · C13.1 compact 표면 비율이 300×100과 다릅니다");
+            return;
+        }
+        String runId = Long.toHexString(SystemClock.elapsedRealtimeNanos());
+        List<SurfaceViewPixelCapture.Sample> samples = c131CompactSurfaceSamples;
+        Map<String, String> expectedRgba = c131CompactSurfaceExpectedRgba;
+        File output = new File(
+                new File(activity.getCacheDir(), "c131-compact-surface-matrix-captures"),
+                "runtime-compact-matrix-" + runId + ".png");
+        Log.i(TAG, "SPINON_C131_COMPACT_PIXELCOPY_BEGIN run_id=" + runId
+                + " pid=" + android.os.Process.myPid() + " generation=" + generation
+                + " width=" + width + " height=" + height + " css_width=300 css_height=100"
+                + " scale_x=" + scaleX + " scale_y=" + scaleY + " samples=" + samples.size());
+        SurfaceViewPixelCapture.requestForCssViewport(surfaceView, width, height, 300, 100,
+                0, 0, "runtime-c13-1-compact-surface", runId, output, samples,
+                mainHandler, runtimeQueue,
+                () -> {
+                    synchronized (stateLock) {
+                        return !closing && surfaceAvailable && surfaceGeneration == generation
+                                && rendererHandle == renderer && rendererGeneration == generation
+                                && surfaceWidth == width && surfaceHeight == height;
+                    }
+                }, result -> {
+                    if (!result.error.isEmpty()) {
+                        Log.e(TAG, "SPINON_C131_COMPACT_PIXELCOPY status=error run_id=" + runId
+                                + " generation=" + generation + " attempts=" + result.attempts
+                                + " reason=" + result.error);
+                        postStatus("실패 · C13.1 compact PixelCopy · " + result.error);
+                        return;
+                    }
+                    int matched = 0;
+                    for (SurfaceViewPixelCapture.Pixel pixel : result.pixels) {
+                        String expectedText = expectedRgba.get(pixel.id);
+                        int[] expected = parseC131CompactRgba(expectedText);
+                        boolean exact = expected != null && pixel.red == expected[0]
+                                && pixel.green == expected[1] && pixel.blue == expected[2]
+                                && pixel.alpha == expected[3];
+                        if (exact) matched++;
+                        Log.i(TAG, "SPINON_C131_COMPACT_PIXEL run_id=" + runId
+                                + " sample=" + pixel.id + " x_px=" + pixel.x + " y_px=" + pixel.y
+                                + " rgba=" + pixel.red + "," + pixel.green + ","
+                                + pixel.blue + "," + pixel.alpha + " expected="
+                                + (expectedText == null ? "missing" : expectedText)
+                                + " exact=" + exact);
+                    }
+                    boolean passed = result.width / 300.0 / (result.height / 100.0) > 0.99
+                            && result.width / 300.0 / (result.height / 100.0) < 1.01
+                            && result.pixels.size() == 52 && matched == 52;
+                    Log.i(TAG, "SPINON_C131_COMPACT_PIXELCOPY_SUMMARY status="
+                            + (passed ? "matched" : "mismatch") + " run_id=" + runId
+                            + " width=" + result.width + " height=" + result.height
+                            + " scale_x=" + result.width / 300.0
+                            + " scale_y=" + result.height / 100.0
+                            + " expected_samples=52 observed_samples=" + result.pixels.size()
+                            + " matched_samples=" + matched + " attempts=" + result.attempts
+                            + " sha256=" + result.sha256 + " png=" + output.getAbsolutePath());
+                    if (!passed) postStatus("실패 · C13.1 compact PixelCopy 표본 불일치");
+                });
+    }
+
+    private static int[] parseC131CompactRgba(String rgba) {
+        if (rgba == null) return null;
+        String[] channels = rgba.split(",", -1);
+        if (channels.length != 4) return null;
+        int[] values = new int[4];
+        try {
+            for (int index = 0; index < values.length; index++) {
+                values[index] = Integer.parseInt(channels[index]);
+                if (values[index] < 0 || values[index] > 255) return null;
+            }
+        } catch (NumberFormatException error) {
+            return null;
+        }
+        return values;
     }
 
     private void requestC131OverflowClipSurfaceCapture(long renderer, long generation) {
@@ -2938,12 +3218,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private float cssViewportWidthLocked() {
+        if (c131CompactSurfaceMatrixProbeRequested) return 300.0f;
         if (c131BorderStripProbeRequested) return 400.0f;
         if (fixedSizeCssFixtureRequested) return 320.0f;
         return surfaceWidth > 0 ? (float) surfaceWidth / density : 301.0f;
     }
 
     private float cssViewportHeightLocked() {
+        if (c131CompactSurfaceMatrixProbeRequested) return 100.0f;
         if (c131BorderStripProbeRequested) return 160.0f;
         if (fixedSizeCssFixtureRequested) return 240.0f;
         return surfaceHeight > 0 ? (float) surfaceHeight / density : 100.0f;
@@ -3118,7 +3400,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (c124SurfaceCaptureProbeRequested) {
             requestC124SurfaceCapture(renderer, generation);
         }
-        if (c131BorderStripProbeRequested) {
+        if (c131CompactSurfaceMatrixProbeRequested) {
+            requestC131CompactSurfaceMatrixCapture(renderer, generation);
+        } else if (c131BorderStripProbeRequested) {
             requestC131BorderStripSurfaceCapture(renderer, generation);
         } else if (c131OverflowClipProbeRequested) {
             requestC131OverflowClipSurfaceCapture(renderer, generation);
