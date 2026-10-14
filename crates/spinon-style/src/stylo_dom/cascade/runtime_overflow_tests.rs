@@ -165,6 +165,45 @@ fn overflow_profile_records_mixed_axis_computed_normalization() {
 }
 
 #[test]
+fn overflow_profile_rejects_border_paint_outside_solid_opaque_scope() {
+    let dashed = fixture(
+        "display:block;width:240px;height:120px;overflow:clip;border:4px dashed #f0c674",
+        "",
+    );
+    assert!(matches!(
+        compute_runtime_block_flex_overflow_clip_cascade_with_stylesheets(
+            &dashed.view,
+            &[],
+            viewport(),
+            Default::default(),
+        ),
+        Err(super::CssCascadeError::UnsupportedComputedBorderStyle {
+            node,
+            property: "border-top-style",
+            ..
+        }) if node == dashed.root
+    ));
+
+    let translucent = fixture(
+        "display:block;width:240px;height:120px;overflow:clip;border:4px solid rgb(240 198 116 / 50%)",
+        "",
+    );
+    assert!(matches!(
+        compute_runtime_block_flex_overflow_clip_cascade_with_stylesheets(
+            &translucent.view,
+            &[],
+            viewport(),
+            Default::default(),
+        ),
+        Err(super::CssCascadeError::UnsupportedComputedBorderColor {
+            node,
+            property: "border-top-color",
+            ..
+        }) if node == translucent.root
+    ));
+}
+
+#[test]
 fn overflow_profile_limits_inline_css_and_author_stylesheet_features() {
     let supported = fixture(
         "display:block;overflow:clip;overflow-clip-margin:padding-box 4px;--theme:#123456",

@@ -144,12 +144,97 @@ pub enum RuntimePaint {
     Opaque(OpaqueCssSrgb),
 }
 
+/// 단색으로 그릴 한 물리 방향 border 변입니다.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct RuntimeBorderSide {
+    width_css_px: f32,
+    paint: RuntimePaint,
+}
+
+impl RuntimeBorderSide {
+    pub fn new(width_css_px: f32, paint: RuntimePaint) -> Result<Self, RuntimeRenderError> {
+        if !width_css_px.is_finite() || width_css_px < 0.0 {
+            return Err(RuntimeRenderError::InvalidBorderWidth);
+        }
+        Ok(Self {
+            width_css_px,
+            paint,
+        })
+    }
+
+    pub const fn none() -> Self {
+        Self {
+            width_css_px: 0.0,
+            paint: RuntimePaint::None,
+        }
+    }
+
+    pub const fn width_css_px(self) -> f32 {
+        self.width_css_px
+    }
+
+    pub const fn paint(self) -> RuntimePaint {
+        self.paint
+    }
+}
+
+/// 네 면의 단색 CSS border geometry와 paint입니다.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct RuntimeBorder {
+    top: RuntimeBorderSide,
+    right: RuntimeBorderSide,
+    bottom: RuntimeBorderSide,
+    left: RuntimeBorderSide,
+}
+
+impl RuntimeBorder {
+    pub const fn none() -> Self {
+        Self {
+            top: RuntimeBorderSide::none(),
+            right: RuntimeBorderSide::none(),
+            bottom: RuntimeBorderSide::none(),
+            left: RuntimeBorderSide::none(),
+        }
+    }
+
+    pub const fn new(
+        top: RuntimeBorderSide,
+        right: RuntimeBorderSide,
+        bottom: RuntimeBorderSide,
+        left: RuntimeBorderSide,
+    ) -> Self {
+        Self {
+            top,
+            right,
+            bottom,
+            left,
+        }
+    }
+
+    pub const fn top(self) -> RuntimeBorderSide {
+        self.top
+    }
+
+    pub const fn right(self) -> RuntimeBorderSide {
+        self.right
+    }
+
+    pub const fn bottom(self) -> RuntimeBorderSide {
+        self.bottom
+    }
+
+    pub const fn left(self) -> RuntimeBorderSide {
+        self.left
+    }
+}
+
 /// 렌더할 수 있는 DOM 요소 하나의 불변 geometry와 paint입니다.
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct RuntimeRenderBox {
     node_id: NodeId,
     frame_css_px: CssRect,
     paint: RuntimePaint,
+    border: RuntimeBorder,
     paint_order: u32,
     hit_test_order: u32,
     paint_clip_css_px: CssClip,
@@ -167,6 +252,7 @@ impl RuntimeRenderBox {
             node_id,
             frame_css_px,
             paint,
+            border: RuntimeBorder::none(),
             paint_order,
             hit_test_order: paint_order,
             paint_clip_css_px: CssClip::unconstrained(),
@@ -177,6 +263,11 @@ impl RuntimeRenderBox {
     /// Paint 순서와 독립된 CSS hit-test 우선순위를 지정합니다.
     pub const fn with_hit_test_order(mut self, order: u32) -> Self {
         self.hit_test_order = order;
+        self
+    }
+
+    pub const fn with_border(mut self, border: RuntimeBorder) -> Self {
+        self.border = border;
         self
     }
 
@@ -201,6 +292,10 @@ impl RuntimeRenderBox {
 
     pub const fn paint(self) -> RuntimePaint {
         self.paint
+    }
+
+    pub const fn border(self) -> RuntimeBorder {
+        self.border
     }
 
     pub const fn paint_order(self) -> u32 {
@@ -323,6 +418,7 @@ pub enum RuntimeRenderError {
     InvalidPaintOrder,
     InvalidHitTestOrder,
     InvalidClip,
+    InvalidBorderWidth,
 }
 
 impl fmt::Display for RuntimeRenderError {
@@ -337,6 +433,9 @@ impl fmt::Display for RuntimeRenderError {
             }
             Self::InvalidClip => {
                 formatter.write_str("runtime clip은 유한하고 순서가 맞는 경계여야 합니다")
+            }
+            Self::InvalidBorderWidth => {
+                formatter.write_str("runtime border 폭은 유한한 0 이상의 CSS px여야 합니다")
             }
         }
     }

@@ -129,6 +129,18 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
     resolve(repositoryRoot, 'crates/spinon-ffi/Cargo.toml'),
     'utf8',
   );
+  const androidJniSource = await readFile(
+    resolve(repositoryRoot, 'platforms/android/app/src/main/cpp/spinon_jni.cc'),
+    'utf8',
+  );
+  const androidActivitySource = await readFile(
+    resolve(repositoryRoot, 'platforms/android/app/src/main/java/dev/spinon/bootstrap/MainActivity.java'),
+    'utf8',
+  );
+  const androidGpuDemoSource = await readFile(
+    resolve(repositoryRoot, 'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java'),
+    'utf8',
+  );
   assert.match(runtimeSource, /#\[cfg\(feature = "c04-runtime-gpu-fixture-test"\)\]\s*mod fixtures;/);
   assert.match(ffiSource, /#\[cfg\(feature = "c04-runtime-gpu-fixture-test"\)\]\s*mod fixtures;/);
   assert.match(cargoManifest, /c04-runtime-gpu-fixture-test\s*=\s*\["c04-runtime-gpu"\]/);
@@ -146,4 +158,14 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
     /spinon_runtime_gpu_host_eval_c13_1_overflow_clip_border_fixture/);
   assert.match(c13BorderRuntimeFixture,
     /data-c131-border-node/);
+  assert.match(androidGpuDemoSource,
+    /nativeCreateC131OverflowClipBorderHost\(\)/);
+  assert.match(androidGpuDemoSource,
+    /nativeEvalC131OverflowClipBorderFixture\(long host\)/);
+  assert.match(androidJniSource,
+    /Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC131OverflowClipBorderHost/);
+  assert.match(androidJniSource,
+    /Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC131OverflowClipBorderFixture/);
+  assert.match(androidActivitySource,
+    /spinon_c131_overflow_clip_border/);
 });

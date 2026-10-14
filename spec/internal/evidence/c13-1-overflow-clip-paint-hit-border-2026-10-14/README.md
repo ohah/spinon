@@ -68,6 +68,6 @@ agent-browser로 새 [controlled fixture](../../../../tests/fixtures/css/c13/ove
 - [FFI feature isolation](border-feature-isolation.txt)은 matching LLVM 22 `llvm-nm` 및 `strings`로 기본 archive에 신규 border symbol 두 개와 payload 문자열이 없고, opt-in archive에는 둘 다 있음을 확인한다. 이 static archive control은 최종 app 크기나 제품 build 동작을 입증하지 않는다.
 - [기존 앱 route regression](ios-existing-c13-route-regression.log)은 같은 앱 binary의 기존 route에서 13 frames와 15 query를 다시 확인한다. [route conflict negative control](ios-border-route-conflict.log)은 border route와 기존 C13 route를 함께 지정했을 때 FFI host를 만들기 전에 앱이 거부함을 기록한다.
 
-이 결과는 새 여섯 좌표의 iOS Simulator 내부 hit query까지 검증한다. Android app의 새 border coordinates, drawable readback, event dispatch, scanout, 전체 C13.1 gate는 남아 있다.
+이 결과는 새 여섯 좌표의 iOS Simulator 내부 hit query까지 검증한다. 이 시점에 남아 있던 Android border paint gate는 뒤이어 [Android AVD 검증](../c13-1-overflow-clip-border-android-avd-2026-10-14/README.md)에서 고정 Chrome 색상 6/6으로 확인했다. event dispatch, scanout, 실제 GPU/실기기, 전체 C13.1 gate는 여전히 확인하지 않았다.
 
 물리 기기는 사용하지 않았다. 이 app boundary 결과를 기능 완료나 Android/iOS 전체 parity로 확대하지 않는다.

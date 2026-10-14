@@ -1,7 +1,7 @@
 use spinon_core::{NodeId, StyleRevision};
-use style::properties::{ComputedValues, LonghandId};
+use style::properties::{ComputedValues, LonghandId, PropertyDeclarationId};
 
-use crate::{ComputedBackgroundPaint, OpaqueCssSrgb, StylesheetSource};
+use crate::{ComputedBackgroundPaint, ComputedBorderPaint, OpaqueCssSrgb, StylesheetSource};
 
 use super::{
     ComputedStyleProfile, CssCascadeError, CssViewport, StyloDocumentView, compute_cascade,
@@ -341,6 +341,81 @@ pub(super) fn computed_runtime_background_paint(
             reason: "Stylo 계산값이 절대 색상이 아닙니다".to_owned(),
         }),
     }
+}
+
+pub(super) fn computed_runtime_border_paint(
+    computed: &ComputedValues,
+    node: NodeId,
+    border: super::ComputedLayoutBorder,
+) -> Result<ComputedBorderPaint, CssCascadeError> {
+    let side = |width: f32,
+                style_property: LonghandId,
+                color_property: &'static str,
+                style_name: &'static str,
+                color: style::values::computed::Color|
+     -> Result<ComputedBackgroundPaint, CssCascadeError> {
+        if width <= 0.0 {
+            return Ok(ComputedBackgroundPaint::Transparent);
+        }
+        let style =
+            computed.computed_value_to_string(PropertyDeclarationId::Longhand(style_property));
+        if style != "solid" {
+            return Err(CssCascadeError::UnsupportedComputedBorderStyle {
+                node,
+                property: style_name,
+                value: style,
+            });
+        }
+        let color = match color {
+            style::values::computed::Color::Absolute(color) => color,
+            style::values::computed::Color::CurrentColor => computed.clone_color(),
+            _ => {
+                return Err(CssCascadeError::UnsupportedComputedBorderColor {
+                    node,
+                    property: color_property,
+                    reason: "Stylo 계산값이 절대 색상이 아닙니다".to_owned(),
+                });
+            }
+        };
+        OpaqueCssSrgb::runtime_paint_from_absolute_color(color).map_err(|reason| {
+            CssCascadeError::UnsupportedComputedBorderColor {
+                node,
+                property: color_property,
+                reason: reason.to_owned(),
+            }
+        })
+    };
+
+    Ok(ComputedBorderPaint {
+        top: side(
+            border.top,
+            LonghandId::BorderTopStyle,
+            "border-top-color",
+            "border-top-style",
+            computed.clone_border_top_color(),
+        )?,
+        right: side(
+            border.right,
+            LonghandId::BorderRightStyle,
+            "border-right-color",
+            "border-right-style",
+            computed.clone_border_right_color(),
+        )?,
+        bottom: side(
+            border.bottom,
+            LonghandId::BorderBottomStyle,
+            "border-bottom-color",
+            "border-bottom-style",
+            computed.clone_border_bottom_color(),
+        )?,
+        left: side(
+            border.left,
+            LonghandId::BorderLeftStyle,
+            "border-left-color",
+            "border-left-style",
+            computed.clone_border_left_color(),
+        )?,
+    })
 }
 
 pub fn first_unsupported_runtime_flex_paint_inline_property(

@@ -44,6 +44,9 @@ pub(super) fn computed_element_output(
         runtime_paint::computed_background_for_profile(profile, computed, node_id)?;
     let font_size_css_px = computed.get_font().clone_font_size().computed_size().px();
     let layout_border = computed_layout_border(computed, &source_border_widths);
+    let layout_border_paint = (profile == ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1)
+        .then(|| runtime_paint::computed_runtime_border_paint(computed, node_id, layout_border))
+        .transpose()?;
     let layout_position = match computed.clone_position() {
         style::values::computed::PositionProperty::Static => ComputedCssPosition::Static,
         style::values::computed::PositionProperty::Relative => ComputedCssPosition::Relative,
@@ -192,6 +195,7 @@ pub(super) fn computed_element_output(
         grid_layout,
         grid_item_placement,
         layout_border,
+        layout_border_paint,
         layout_math_values: computed_layout_math_values(computed, source_math),
         properties: computed_properties,
         background_color,
