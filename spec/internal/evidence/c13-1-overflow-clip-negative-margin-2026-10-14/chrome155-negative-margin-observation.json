@@ -1,0 +1,93 @@
+{
+  "browser": {
+    "automation": "agent-browser 0.31.1",
+    "product": "Google Chrome for Testing",
+    "version": "155.0.8059.40",
+    "revision": "cfaadc5a132d78e1828635aa8405a499f3e14864-refs/branch-heads/8059@{#936}",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "viewportCssPx": {
+      "width": 1280,
+      "height": 633
+    },
+    "devicePixelRatio": 1
+  },
+  "fixture": {
+    "path": "tests/fixtures/css/c13/overflow-clip-c13-1.html",
+    "sha256": "b7acd7e63f79355b28cd480511b9be82e0f2bef478f1aadf685eb3b0bf4ef16a",
+    "baselineObservation": "spec/internal/evidence/c13-1-overflow-clip-precomparison-2026-10-14/chrome155-observation.json",
+    "baselineObservationSha256": "fd6d9e66825bc453609245950635f4fc56054ae9011b14d2f8901d490ecde4b5"
+  },
+  "negativeClipMarginSupported": true,
+  "cssOverflowWd": "https://www.w3.org/TR/2025/WD-css-overflow-3-20251007/#overflow-clip-margin",
+  "case": {
+    "id": "clip-margin-invalid",
+    "overflowX": "clip",
+    "overflowY": "clip",
+    "overflowClipMargin": "-1px",
+    "borderRightWidth": "4px",
+    "paddingRight": "10px",
+    "scrollBefore": {
+      "top": 0,
+      "left": 0
+    },
+    "scrollAfterRequest": {
+      "top": 0,
+      "left": 0
+    },
+    "box": {
+      "x": 218,
+      "y": 420,
+      "width": 120,
+      "height": 96,
+      "right": 338,
+      "bottom": 516
+    },
+    "target": {
+      "x": 232,
+      "y": 434,
+      "width": 140,
+      "height": 120,
+      "right": 372,
+      "bottom": 554
+    },
+    "scrollTopAfterReset": 0,
+    "scrollLeftAfterReset": 0,
+    "clipAncestors": [
+      {
+        "tagName": "DIV",
+        "className": "box",
+        "overflowX": "clip",
+        "overflowY": "clip",
+        "overflowClipMargin": "-1px",
+        "rect": {
+          "x": 218,
+          "y": 420,
+          "width": 120,
+          "height": 96,
+          "right": 338,
+          "bottom": 516
+        }
+      }
+    ],
+    "hitRanges": {
+      "x": {
+        "fixedAt": 475,
+        "ranges": [
+          [
+            232,
+            337
+          ]
+        ]
+      },
+      "y": {
+        "fixedAt": 285,
+        "ranges": [
+          [
+            434,
+            515
+          ]
+        ]
+      }
+    }
+  }
+}
