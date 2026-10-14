@@ -17,7 +17,7 @@ c04-runtime-gpu-test-hooks = ["c04-runtime-gpu-fixture-test", "spinon-render-wgp
 c12-4-metal-surface-readback-test = ["c04-runtime-gpu-fixture-test"]
 c11-grid-metal-surface-pixels-test = ["c04-runtime-gpu-fixture-test"]
 c12-4-worker-stack-residency-test = ["c04-runtime-gpu-fixture-test", "spinon-runtime/c12-4-worker-stack-residency-test"]
-c13-1-overflow-clip-fixture-test = ["c04-runtime-gpu-fixture-test"]
+c13-1-overflow-clip-fixture-test = ["c04-runtime-gpu-fixture-test", "dep:sha2"]
 
 [dependencies]
 spinon-style = { path = "../spinon-style" }
@@ -26,6 +26,7 @@ spinon-render = { path = "../spinon-render" }
 spinon-render-wgpu = { path = "../spinon-render-wgpu", optional = true }
 spinon-style-layout-spike = { path = "../../spikes/style-layout", optional = true }
 serde_json = "1.0.151"
+sha2 = { version = "0.11.1", optional = true }
 
 [dev-dependencies]
 spinon-core = { path = "../spinon-core" }

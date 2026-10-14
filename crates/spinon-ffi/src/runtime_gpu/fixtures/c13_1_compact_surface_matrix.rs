@@ -3,6 +3,8 @@ use spinon_render::RuntimeRenderSnapshot;
 use spinon_runtime::RuntimeLayoutFrame;
 use std::collections::{HashMap, HashSet};
 
+mod hit_identity_grid;
+
 const CHROME_ORACLE: &str = include_str!(
     "../../../../../spec/internal/evidence/c13-1-compact-surface-matrix-2026-10-14/chrome155-observation.json"
 );
@@ -122,7 +124,7 @@ pub(crate) fn hit_test_samples_json(
             }
             let x = required_number(sample, "x", &id)?;
             let y = required_number(sample, "y", &id)?;
-            if x < 0.0 || x >= 300.0 || y < 0.0 || y >= 100.0 {
+            if !(0.0..300.0).contains(&x) || !(0.0..100.0).contains(&y) {
                 return Err(format!(
                     "compact C13.1 sample {id}가 viewport 밖입니다: ({x}, {y})"
                 ));
@@ -174,6 +176,13 @@ pub(crate) fn hit_test_samples_json(
     }
     serde_json::to_string(&observations)
         .map_err(|error| format!("compact C13.1 hit sample JSON 변환 실패: {error}"))
+}
+
+pub(crate) fn hit_identity_grid_summary_json(
+    scene: &RuntimeRenderSnapshot,
+    frames: &[RuntimeLayoutFrame],
+) -> Result<String, String> {
+    hit_identity_grid::summary_json(scene, frames)
 }
 
 fn validate_oracle_metadata(oracle: &Value) -> Result<(), String> {

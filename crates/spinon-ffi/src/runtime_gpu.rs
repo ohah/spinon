@@ -226,7 +226,15 @@ impl RuntimeGpuHost {
                 &completed.frames,
             )
             .map_err(|error| (ERR_LAYOUT, error))?;
-            format!(" hit_test_samples_json={samples}")
+            let hit_identity_grid =
+                fixtures::c13_1_compact_surface_matrix::hit_identity_grid_summary_json(
+                    &scene,
+                    &completed.frames,
+                )
+                .map_err(|error| (ERR_LAYOUT, error))?;
+            format!(
+                " hit_test_samples_json={samples} hit_identity_grid_summary_json={hit_identity_grid}"
+            )
         } else if _include_c13_1_hit_test_report {
             let samples = c13_1_hit_test_samples_json(&scene, &completed.frames)
                 .map_err(|error| (ERR_LAYOUT, error))?;

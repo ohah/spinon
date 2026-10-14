@@ -113,6 +113,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static final String[] C131_COMPACT_SURFACE_SAMPLE_ROLES = {
             "paint", "target-beyond-frame", "x-overflow", "y-overflow",
     };
+    private static final String C131_COMPACT_HIT_IDENTITY_SHA256 =
+            "93cccd042e82d8cd30cb7a8ab34a5154073d4a9eccbc4038294d3ca5b9dfce87";
+    private static final String C131_COMPACT_GRID_ORACLE_SHA256 =
+            "35e88e57edc16e526e389317b0d18ef227e35d1356a2353b92476c75ef6414f6";
+    private static final String C131_COMPACT_CHROME_OBSERVATION_SHA256 =
+            "515fc95f811399fda9e336a13e7583f2d22555fce4727f1fe7f734981abd0299";
     private static boolean isC1132GridNamedLinePixelSamples(
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
@@ -414,6 +420,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean c124RuntimeMatrixProbeRequested;
     private final boolean c131OverflowClipProbeRequested;
     private final boolean c131CompactSurfaceMatrixProbeRequested;
+    private final String c131CompactSurfaceMatrixRunId;
     private final boolean c131BorderStripProbeRequested;
     private final boolean c124DepthSafetyProbeRequested;
     private final boolean c124SurfaceCaptureProbeRequested;
@@ -528,6 +535,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 .getBooleanExtra("spinon_c131_overflow_clip", false);
         c131CompactSurfaceMatrixProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c131_compact_surface_matrix", false);
+        c131CompactSurfaceMatrixRunId = c131CompactSurfaceMatrixProbeRequested
+                ? Long.toHexString(SystemClock.elapsedRealtimeNanos()) : "";
         c131BorderStripProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c131_overflow_clip_border", false);
         c124DepthSafetyProbeRequested = activity.getIntent()
@@ -828,7 +837,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
         TextView description = new TextView(activity);
         description.setText(c131CompactSurfaceMatrixProbeRequested
-                ? "13개 overflow clip case · 52 hit/PixelCopy 표본 → WGPU · 300×100 CSS px"
+                ? "13개 overflow clip case · 30,000 hit identity + 52 PixelCopy 표본 · WGPU · 300×100 CSS px"
                 : c131BorderStripProbeRequested
                 ? "static/absolute clip border-strip oracle → WGPU · 400×160 CSS px"
                 : c131OverflowClipProbeRequested
@@ -1505,7 +1514,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             }
         }
         Log.i(TAG, (c131CompactSurfaceMatrixProbeRequested
-                ? "SPINON_C131_COMPACT_EVAL_RUN " : c131BorderStripProbeRequested
+                ? "SPINON_C131_COMPACT_EVAL_RUN run_id=" + c131CompactSurfaceMatrixRunId + " "
+                : c131BorderStripProbeRequested
                 ? "SPINON_C131_BORDER_EVAL_RUN " : c131OverflowClipProbeRequested
                 ? "SPINON_C131_EVAL_RUN " : c1133GridTemplateAreasRequested
                 ? "SPINON_C1133_GRID_EVAL run_id=" + c1133GridTemplateAreasRunId
@@ -2048,11 +2058,121 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     + "frames=" + frames.length + " hit_samples=" + observations.length());
             return false;
         }
+        if (!logC131CompactHitIdentityGridReport(report)) {
+            Log.e(TAG, "SPINON_C131_COMPACT_FIXTURE_SUMMARY status=error boxes=41 "
+                    + "frames=41 hit_grid=failed");
+            return false;
+        }
         c131CompactSurfaceSamples = Collections.unmodifiableList(samples);
         c131CompactSurfaceExpectedRgba = Collections.unmodifiableMap(expectedRgba);
         Log.i(TAG, "SPINON_C131_COMPACT_FIXTURE_SUMMARY status=ok boxes=41 frames=41 "
-                + "hit_samples=52 hit_matches=52");
+                + "hit_samples=52 hit_matches=52 hit_grid_points=30000 hit_grid_matches=30000");
         return true;
+    }
+
+    private boolean logC131CompactHitIdentityGridReport(String report) {
+        String marker = "hit_identity_grid_summary_json=";
+        int markerIndex = report.indexOf(marker);
+        int objectStart = markerIndex < 0 ? -1 : report.indexOf('{', markerIndex + marker.length());
+        int objectEnd = objectStart < 0 ? -1 : findJsonObjectEnd(report, objectStart);
+        if (objectStart < 0 || objectEnd < 0) {
+            Log.e(TAG, "SPINON_C131_COMPACT_HIT_IDENTITY_GRID_SUMMARY status=error stage=missing-json");
+            return false;
+        }
+        final JSONObject summary;
+        try {
+            summary = new JSONObject(report.substring(objectStart, objectEnd));
+        } catch (Exception error) {
+            Log.e(TAG, "SPINON_C131_COMPACT_HIT_IDENTITY_GRID_SUMMARY status=error stage=json");
+            return false;
+        }
+        String status = summary.optString("status", "missing");
+        int pointCount = summary.optInt("point_count", -1);
+        int matchedCount = summary.optInt("matched_count", -1);
+        int mismatchCount = summary.optInt("mismatch_count", -1);
+        int previewLimit = summary.optInt("mismatch_preview_limit", -1);
+        String expectedSha = summary.optString("expected_identity_sha256", "");
+        String actualSha = summary.optString("actual_identity_sha256", "");
+        String gridOracleSha = summary.optString("grid_oracle_sha256", "");
+        String chromeObservationSha = summary.optString("chrome_observation_sha256", "");
+        JSONArray previews = summary.optJSONArray("mismatch_preview");
+        int previewCount = previews == null ? -1 : previews.length();
+        boolean countsValid = pointCount == 30000 && matchedCount >= 0
+                && matchedCount <= pointCount && mismatchCount >= 0
+                && mismatchCount <= pointCount && matchedCount + mismatchCount == pointCount;
+        boolean previewEntriesValid = previews != null;
+        if (previewEntriesValid) {
+            for (int index = 0; index < previews.length(); index++) {
+                JSONObject mismatch = previews.optJSONObject(index);
+                Object expectedNodeId = mismatch == null ? null : mismatch.opt("expectedNodeId");
+                Object actualNodeId = mismatch == null ? null : mismatch.opt("actualNodeId");
+                int x = mismatch == null ? -1 : mismatch.optInt("xCssPx", -1);
+                int y = mismatch == null ? -1 : mismatch.optInt("yCssPx", -1);
+                if (mismatch == null || x < 0 || x >= 300 || y < 0 || y >= 100
+                        || !(expectedNodeId instanceof String)
+                        || ((String) expectedNodeId).isEmpty()
+                        || !(actualNodeId == JSONObject.NULL || actualNodeId instanceof String)) {
+                    previewEntriesValid = false;
+                    break;
+                }
+            }
+        }
+        boolean previewValid = previewLimit == 16 && previewCount >= 0
+                && previewCount == Math.min(mismatchCount, previewLimit) && previewEntriesValid;
+        boolean statusValid = (mismatchCount == 0 && "matched".equals(status))
+                || (mismatchCount > 0 && "mismatch".equals(status));
+        boolean identityValid = C131_COMPACT_HIT_IDENTITY_SHA256.equals(expectedSha)
+                && (mismatchCount == 0
+                        ? C131_COMPACT_HIT_IDENTITY_SHA256.equals(actualSha)
+                        : !C131_COMPACT_HIT_IDENTITY_SHA256.equals(actualSha))
+                && C131_COMPACT_GRID_ORACLE_SHA256.equals(gridOracleSha)
+                && C131_COMPACT_CHROME_OBSERVATION_SHA256.equals(chromeObservationSha);
+        boolean valid = countsValid && previewValid && statusValid && identityValid;
+        String generation = reportField(report, "generation=");
+        String markerLine = "SPINON_C131_COMPACT_HIT_IDENTITY_GRID_SUMMARY status="
+                + (valid && mismatchCount == 0 ? "matched" : "mismatch")
+                + " run_id=" + c131CompactSurfaceMatrixRunId
+                + " runtime_generation=" + generation + " points=" + pointCount
+                + " matched=" + matchedCount + " mismatches=" + mismatchCount
+                + " preview=" + Math.max(0, previewCount)
+                + " identity_sha256=" + actualSha
+                + " oracle_sha256=" + gridOracleSha;
+        if (valid && mismatchCount == 0) Log.i(TAG, markerLine);
+        else Log.e(TAG, markerLine);
+        if (previews != null) {
+            for (int index = 0; index < Math.min(previews.length(), 16); index++) {
+                JSONObject mismatch = previews.optJSONObject(index);
+                if (mismatch == null) {
+                    valid = false;
+                    continue;
+                }
+                Log.e(TAG, "SPINON_C131_COMPACT_HIT_IDENTITY_GRID_MISMATCH index=" + index
+                        + " x=" + mismatch.optInt("xCssPx", -1)
+                        + " y=" + mismatch.optInt("yCssPx", -1)
+                        + " expected=" + mismatch.optString("expectedNodeId", "missing")
+                        + " actual=" + mismatch.optString("actualNodeId", "null"));
+            }
+        }
+        return valid && mismatchCount == 0;
+    }
+
+    private static int findJsonObjectEnd(String text, int start) {
+        int depth = 0;
+        boolean inString = false;
+        boolean escaped = false;
+        for (int index = start; index < text.length(); index++) {
+            char current = text.charAt(index);
+            if (inString) {
+                if (escaped) escaped = false;
+                else if (current == '\\') escaped = true;
+                else if (current == '"') inString = false;
+                continue;
+            }
+            if (current == '"') inString = true;
+            else if (current == '{') depth++;
+            else if (current == '}' && --depth == 0) return index + 1;
+        }
+        return -1;
     }
 
     private boolean logC131BorderFixtureReport(String report) {
@@ -2276,7 +2396,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             postStatus("실패 · C13.1 compact 표면 비율이 300×100과 다릅니다");
             return;
         }
-        String runId = Long.toHexString(SystemClock.elapsedRealtimeNanos());
+        String runId = c131CompactSurfaceMatrixRunId;
         List<SurfaceViewPixelCapture.Sample> samples = c131CompactSurfaceSamples;
         Map<String, String> expectedRgba = c131CompactSurfaceExpectedRgba;
         File output = new File(
