@@ -527,7 +527,10 @@ async function runCapture(options, directory, manifest) {
         label: index === 0 ? 'getevent' : 'logcat',
         result: result.status === 'fulfilled' ? result.value : { error: String(result.reason) },
       }));
-      if (results.some((result) => result.status === 'rejected')) captureError ??= 'host collector bounded shutdown failed';
+      const shutdownErrors = results.flatMap((result, index) => result.status === 'rejected'
+        ? [`${index === 0 ? 'getevent' : 'logcat'}: ${String(result.reason?.message || result.reason)}`]
+        : []);
+      if (shutdownErrors.length) captureError ??= `host collector bounded shutdown failed (${shutdownErrors.join('; ')})`;
       if (results.some((result) => result.status === 'fulfilled' && result.value.exitedBeforeSignal)) {
         captureError ??= 'host collector exited before the requested shutdown';
       }
