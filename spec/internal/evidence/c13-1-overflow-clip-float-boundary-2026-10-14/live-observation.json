@@ -1,0 +1,87 @@
+{
+  "capturedAt": "2026-10-14",
+  "tool": "agent-browser",
+  "agentBrowserVersion": "0.31.1",
+  "browser": {
+    "name": "Chrome for Testing",
+    "version": "155.0.8059.40",
+    "revision": "cfaadc5a132d78e1828635aa8405a499f3e14864-refs/branch-heads/8059@{#936}",
+    "v8": "15.5.35.20",
+    "binarySha256": "428dccc1a45819d23c5db4fb37388883f8d9ba64611cbd6c42395eac4a18b6a4",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "platform": "macOS",
+    "platformVersion": "26.5.1 (build 25F80)",
+    "architecture": "arm"
+  },
+  "fixture": {
+    "path": "tests/fixtures/css/c13/overflow-clip-c13-1.html",
+    "sha256": "b7acd7e63f79355b28cd480511b9be82e0f2bef478f1aadf685eb3b0bf4ef16a"
+  },
+  "viewport": {
+    "width": 1280,
+    "height": 633,
+    "deviceScaleFactor": 1
+  },
+  "cases": [
+    {
+      "id": "hidden-float",
+      "display": "block",
+      "overflowX": "hidden",
+      "overflowY": "hidden",
+      "box": {
+        "x": 416,
+        "y": 608,
+        "width": 120,
+        "height": 64,
+        "clientHeight": 56,
+        "scrollHeight": 56
+      },
+      "float": {
+        "x": 430,
+        "y": 622,
+        "width": 48,
+        "height": 36
+      }
+    },
+    {
+      "id": "clip-float",
+      "display": "block",
+      "overflowX": "clip",
+      "overflowY": "clip",
+      "box": {
+        "x": 20,
+        "y": 776,
+        "width": 120,
+        "height": 28,
+        "clientHeight": 20,
+        "scrollHeight": 46
+      },
+      "float": {
+        "x": 34,
+        "y": 790,
+        "width": 48,
+        "height": 36
+      }
+    },
+    {
+      "id": "clip-flow-root-float",
+      "display": "flow-root",
+      "overflowX": "clip",
+      "overflowY": "clip",
+      "box": {
+        "x": 218,
+        "y": 776,
+        "width": 120,
+        "height": 64,
+        "clientHeight": 56,
+        "scrollHeight": 56
+      },
+      "float": {
+        "x": 232,
+        "y": 790,
+        "width": 48,
+        "height": 36
+      }
+    }
+  ]
+}
