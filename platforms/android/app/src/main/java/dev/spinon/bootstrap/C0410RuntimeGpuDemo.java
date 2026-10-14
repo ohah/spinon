@@ -425,6 +425,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final String c131CompactSurfaceMatrixRunId;
     private final boolean c131BorderStripProbeRequested;
     private final boolean c132ScrollFixtureRequested;
+    private final String c132SurfacePixelRunId;
     private final boolean c124DepthSafetyProbeRequested;
     private final boolean c124SurfaceCaptureProbeRequested;
     private final String c124SurfaceCaseRequested;
@@ -464,6 +465,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private boolean c131OverflowClipSurfaceCaptureStarted;
     private boolean c131CompactSurfaceMatrixCaptureStarted;
     private boolean c131BorderStripSurfaceCaptureStarted;
+    private boolean c132SurfacePixelCaptureStarted;
+    private volatile boolean c132ScrollAssertionsPassed;
     private boolean c11GridSurfaceCaptureStarted;
     private List<C124SurfacePixelCapture.Sample> c124SurfaceSamples = List.of();
     private int c124SurfaceOriginXCssPx;
@@ -544,6 +547,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 .getBooleanExtra("spinon_c131_overflow_clip_border", false);
         c132ScrollFixtureRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c132_scroll_fixture", false);
+        String requestedC132RunId = activity.getIntent()
+                .getStringExtra("spinon_c132_surface_pixel_run_id");
+        c132SurfacePixelRunId = c132ScrollFixtureRequested
+                ? requestedC132RunId == null || requestedC132RunId.isBlank()
+                    ? Long.toHexString(SystemClock.elapsedRealtimeNanos())
+                    : requestedC132RunId
+                : "";
         c124DepthSafetyProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c124_depth_safety", false);
         c124SurfaceCaseRequested = activity.getIntent()
@@ -847,7 +857,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         description.setText(c131CompactSurfaceMatrixProbeRequested
                 ? "13개 overflow clip case · 30,000 hit identity + 52 PixelCopy 표본 · WGPU · 300×100 CSS px"
                 : c132ScrollFixtureRequested
-                ? "V8 scroll owner·offset·paint/hit → Stylo → Taffy → WGPU · 400×240 CSS px"
+                ? "V8 scroll owner·offset·paint/hit → WGPU · 5 PixelCopy 표본 · 400×240 CSS px"
                 : c131BorderStripProbeRequested
                 ? "static/absolute clip border-strip oracle → WGPU · 400×160 CSS px"
                 : c131OverflowClipProbeRequested
@@ -1141,11 +1151,19 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "spinon_c131_compact_surface_matrix"
                 : c131BorderStripProbeRequested
                 ? "spinon_c131_overflow_clip_border" : "spinon_c131_overflow_clip";
+        if (c132ScrollFixtureRequested
+                && !c132SurfacePixelRunId.matches("[A-Za-z0-9_-]{8,80}")) {
+            Log.e(TAG, "SPINON_C132_ARGUMENT_ERROR rejected=true reason=invalid-run-id");
+            postStatus("실패 · C13.2 surface pixel run ID가 올바르지 않습니다");
+            return false;
+        }
         Bundle extras = activity.getIntent().getExtras();
         if (extras == null) return true;
         for (String key : extras.keySet()) {
             if (!key.startsWith("spinon_c") || key.equals(selectedExtra)
-                    || key.equals("spinon_c0410_runtime_gpu")) {
+                    || key.equals("spinon_c0410_runtime_gpu")
+                    || (c132ScrollFixtureRequested
+                            && key.equals("spinon_c132_surface_pixel_run_id"))) {
                 continue;
             }
             Object value = extras.get(key);
@@ -1546,6 +1564,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     + " detach_removed_owner=true reparent_reset_offset=true"
                     + " reserve_failure=atomic reserve_failure_marker=matched"
                     + " stale_publish=rejected recovery=same_host");
+            c132ScrollAssertionsPassed = true;
         }
         if (c131CompactSurfaceMatrixProbeRequested
                 && !logC131CompactSurfaceMatrixFixtureReport(result)) {
@@ -2519,6 +2538,199 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             return null;
         }
         return values;
+    }
+
+    private void requestC132VisibleOverflowSurfaceCapture(
+            long renderer,
+            long generation,
+            String drawReport
+    ) {
+        final int width;
+        final int height;
+        final long presentationSequence;
+        synchronized (stateLock) {
+            if (closing || !c132ScrollAssertionsPassed || c132SurfacePixelCaptureStarted
+                    || !surfaceAvailable || surfaceGeneration != generation
+                    || rendererHandle != renderer || rendererGeneration != generation) {
+                return;
+            }
+            c132SurfacePixelCaptureStarted = true;
+            width = surfaceWidth;
+            height = surfaceHeight;
+            presentationSequence = hostPresentationSequence;
+        }
+        String drawGeneration = reportField(drawReport, "generation=");
+        String documentRevision = reportField(drawReport, "document_revision=");
+        String renderTreeRevision = reportField(drawReport, "render_tree_revision=");
+        String styleRevision = reportField(drawReport, "style_revision=");
+        String environmentRevision = reportField(drawReport, "environment_revision=");
+        String scrollRevision = reportField(drawReport, "scroll_state_revision=");
+        String reportedSurface = reportField(drawReport, "surface_texture=");
+        double scaleX = width / 400.0;
+        double scaleY = height / 240.0;
+        if (!"26".equals(reportField(drawReport, "boxes="))
+                || !"400x240".equals(reportField(drawReport, "viewport_css_px="))
+                || !reportedSurface.equals(width + "x" + height)
+                || !isUnsignedInteger(drawGeneration)
+                || !isUnsignedInteger(documentRevision)
+                || !isUnsignedInteger(renderTreeRevision)
+                || !isUnsignedInteger(styleRevision)
+                || !isUnsignedInteger(environmentRevision)
+                || !isUnsignedInteger(scrollRevision)
+                || width <= 0 || height <= 0 || Math.abs(scaleX - scaleY) > 0.01) {
+            Log.e(TAG, "SPINON_C132_PIXELCOPY status=error run_id=" + c132SurfacePixelRunId
+                    + " stage=draw-identity boxes=" + reportField(drawReport, "boxes=")
+                    + " surface=" + reportedSurface + " expected_surface=" + width + "x" + height
+                    + " viewport=400x240");
+            postStatus("실패 · C13.2 PixelCopy draw identity/표면 크기 불일치");
+            return;
+        }
+        List<SurfaceViewPixelCapture.Sample> samples = List.of(
+                new SurfaceViewPixelCapture.Sample("visible-escape", 150, 30),
+                new SurfaceViewPixelCapture.Sample("parent-gap", 136, 30),
+                new SurfaceViewPixelCapture.Sample("parent-interior", 20, 20),
+                new SurfaceViewPixelCapture.Sample("parent-border", 11, 11),
+                new SurfaceViewPixelCapture.Sample("root-background", 50, 110));
+        File output = new File(
+                new File(activity.getCacheDir(), "c132-visible-overflow-surface-pixels"),
+                "surface-" + c132SurfacePixelRunId + ".png");
+        int processId = android.os.Process.myPid();
+        Log.i(TAG, "SPINON_C132_PIXELCOPY_BEGIN run_id=" + c132SurfacePixelRunId
+                + " pid=" + processId + " surface_generation=" + generation
+                + " presentation_sequence=" + presentationSequence
+                + " draw_generation=" + drawGeneration + " boxes=26"
+                + " document_revision=" + documentRevision
+                + " render_tree_revision=" + renderTreeRevision
+                + " style_revision=" + styleRevision
+                + " environment_revision=" + environmentRevision
+                + " scroll_state_revision=" + scrollRevision
+                + " viewport=400x240 surface=" + width + "x" + height
+                + " scale_x=" + scaleX + " scale_y=" + scaleY + " samples=" + samples.size());
+        SurfaceViewPixelCapture.requestForCssViewport(surfaceView, width, height, 400, 240,
+                0, 0, "runtime-c13-2-visible-overflow", c132SurfacePixelRunId, output,
+                samples, mainHandler, runtimeQueue,
+                () -> {
+                    synchronized (stateLock) {
+                        return !closing && surfaceAvailable && surfaceGeneration == generation
+                                && rendererHandle == renderer && rendererGeneration == generation
+                                && surfaceWidth == width && surfaceHeight == height
+                                && hostPresentationSequence == presentationSequence;
+                    }
+                }, result -> {
+                    synchronized (stateLock) {
+                        if (closing || !surfaceAvailable || surfaceGeneration != generation
+                                || rendererHandle != renderer || rendererGeneration != generation
+                                || surfaceWidth != width || surfaceHeight != height
+                                || hostPresentationSequence != presentationSequence) {
+                            boolean artifactDeleted = result.error.isEmpty() && output.delete();
+                            Log.e(TAG, "SPINON_C132_PIXELCOPY status=error run_id="
+                                    + c132SurfacePixelRunId + " stage=stale-callback"
+                                    + " surface_generation=" + generation
+                                    + " artifact_deleted=" + artifactDeleted);
+                            return;
+                        }
+                    }
+                    if (!result.error.isEmpty()) {
+                        Log.e(TAG, "SPINON_C132_PIXELCOPY status=error run_id="
+                                + c132SurfacePixelRunId + " pid=" + processId
+                                + " surface_generation=" + generation
+                                + " attempts=" + result.attempts + " reason=" + result.error);
+                        postStatus("실패 · C13.2 PixelCopy · " + result.error);
+                        return;
+                    }
+                    int matched = 0;
+                    boolean escapeOutsideParent = false;
+                    for (SurfaceViewPixelCapture.Pixel pixel : result.pixels) {
+                        int[] expected = c132SurfacePixelExpectedRgba(pixel.id);
+                        boolean coordinateExact = pixel.x == (int) Math.floor(
+                                (c132SurfacePixelCssX(pixel.id) + 0.5) * scaleX)
+                                && pixel.y == (int) Math.floor(
+                                        (c132SurfacePixelCssY(pixel.id) + 0.5) * scaleY);
+                        boolean exact = expected != null && coordinateExact
+                                && pixel.red == expected[0] && pixel.green == expected[1]
+                                && pixel.blue == expected[2] && pixel.alpha == expected[3];
+                        if (exact) matched++;
+                        if ("visible-escape".equals(pixel.id)) {
+                            escapeOutsideParent = pixel.x + 0.5 > 130.0 * scaleX;
+                        }
+                        Log.i(TAG, "SPINON_C132_PIXEL run_id=" + c132SurfacePixelRunId
+                                + " pid=" + processId + " surface_generation=" + generation
+                                + " sample=" + pixel.id + " x_px=" + pixel.x
+                                + " y_px=" + pixel.y + " rgba=" + pixel.red + ","
+                                + pixel.green + "," + pixel.blue + "," + pixel.alpha
+                                + " expected=" + rgbaText(expected)
+                                + " coordinate_exact=" + coordinateExact + " exact=" + exact);
+                    }
+                    boolean passed = result.width == width && result.height == height
+                            && result.pixels.size() == samples.size()
+                            && matched == samples.size() && escapeOutsideParent;
+                    Log.i(TAG, "SPINON_C132_PIXELCOPY_SUMMARY status="
+                            + (passed ? "matched" : "mismatch") + " run_id="
+                            + c132SurfacePixelRunId + " pid=" + processId
+                            + " surface_generation=" + generation
+                            + " presentation_sequence=" + presentationSequence
+                            + " draw_generation="
+                            + drawGeneration + " boxes=26 document_revision=" + documentRevision
+                            + " render_tree_revision=" + renderTreeRevision + " style_revision="
+                            + styleRevision + " environment_revision=" + environmentRevision
+                            + " scroll_state_revision=" + scrollRevision + " viewport=400x240"
+                            + " surface=" + result.width + "x" + result.height
+                            + " scale_x=" + scaleX + " scale_y=" + scaleY
+                            + " expected_samples=" + samples.size()
+                            + " observed_samples=" + result.pixels.size()
+                            + " matched_samples=" + matched
+                            + " escape_outside_parent=" + escapeOutsideParent
+                            + " attempts=" + result.attempts + " sha256=" + result.sha256
+                            + " png=" + output.getAbsolutePath());
+                    if (passed) postStatus("C13.2 PixelCopy 표면 표본 통과 · 5/5");
+                    else postStatus("실패 · C13.2 PixelCopy 표면 표본 불일치");
+                });
+    }
+
+    private static int c132SurfacePixelCssX(String id) {
+        switch (id) {
+            case "visible-escape": return 150;
+            case "parent-gap": return 136;
+            case "parent-interior": return 20;
+            case "parent-border": return 11;
+            case "root-background": return 50;
+            default: return -1;
+        }
+    }
+
+    private static int c132SurfacePixelCssY(String id) {
+        switch (id) {
+            case "visible-escape":
+            case "parent-gap": return 30;
+            case "parent-interior": return 20;
+            case "parent-border": return 11;
+            case "root-background": return 110;
+            default: return -1;
+        }
+    }
+
+    private static int[] c132SurfacePixelExpectedRgba(String id) {
+        switch (id) {
+            case "visible-escape": return new int[] {227, 84, 78, 255};
+            case "parent-gap":
+            case "root-background": return new int[] {16, 24, 39, 255};
+            case "parent-interior": return new int[] {52, 66, 86, 255};
+            case "parent-border": return new int[] {240, 198, 116, 255};
+            default: return null;
+        }
+    }
+
+    private static boolean isUnsignedInteger(String value) {
+        if (value.isEmpty()) return false;
+        for (int index = 0; index < value.length(); index++) {
+            if (!Character.isDigit(value.charAt(index))) return false;
+        }
+        return true;
+    }
+
+    private static String rgbaText(int[] rgba) {
+        return rgba == null ? "missing"
+                : rgba[0] + "," + rgba[1] + "," + rgba[2] + "," + rgba[3];
     }
 
     private void requestC131OverflowClipSurfaceCapture(long renderer, long generation) {
@@ -3579,6 +3791,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             requestC131BorderStripSurfaceCapture(renderer, generation);
         } else if (c131OverflowClipProbeRequested) {
             requestC131OverflowClipSurfaceCapture(renderer, generation);
+        } else if (c132ScrollFixtureRequested) {
+            requestC132VisibleOverflowSurfaceCapture(renderer, generation, result);
         }
         if (failureProbeRequested && !failureProbeStarted) {
             failureProbeStarted = true;

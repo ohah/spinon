@@ -202,7 +202,7 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
   assert.match(androidGpuDemoSource,
     /c132ScrollFixtureRequested\s*\?\s*"SPINON · C13\.2 scroll state"/);
   assert.match(androidGpuDemoSource,
-    /c132ScrollFixtureRequested\s*\?\s*"V8 scroll owner·offset·paint\/hit → Stylo → Taffy → WGPU · 400×240 CSS px"/);
+    /c132ScrollFixtureRequested\s*\?\s*"V8 scroll owner·offset·paint\/hit → WGPU · 5 PixelCopy 표본 · 400×240 CSS px"/);
   assert.match(androidGpuDemoSource,
     /c132ScrollFixtureRequested\s*\?\s*"C13\.2 scroll owner·offset·paint\/hit WGPU 장면"/);
   assert.match(androidGpuDemoSource,

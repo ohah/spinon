@@ -60,7 +60,8 @@ struct RuntimeGpuHost {
     #[cfg(any(
         feature = "c12-4-metal-surface-readback-test",
         feature = "c11-grid-metal-surface-pixels-test",
-        feature = "c13-1-overflow-clip-fixture-test"
+        feature = "c13-1-overflow-clip-fixture-test",
+        feature = "c13-2-scroll-fixture-test"
     ))]
     surface_pixel_readback_test: bool,
     #[cfg(feature = "c13-2-scroll-fixture-test")]
@@ -107,7 +108,8 @@ impl RuntimeGpuHost {
             #[cfg(any(
                 feature = "c12-4-metal-surface-readback-test",
                 feature = "c11-grid-metal-surface-pixels-test",
-                feature = "c13-1-overflow-clip-fixture-test"
+                feature = "c13-1-overflow-clip-fixture-test",
+                feature = "c13-2-scroll-fixture-test"
             ))]
             surface_pixel_readback_test: false,
             #[cfg(feature = "c13-2-scroll-fixture-test")]

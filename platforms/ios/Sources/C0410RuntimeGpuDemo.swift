@@ -68,6 +68,42 @@ private struct C111MetalPixelSample: Decodable {
     let rgba: [UInt32]
 }
 
+private struct C132MetalPixelSample {
+    let id: String
+    let xCssPx: UInt32
+    let yCssPx: UInt32
+    let rgba: [UInt32]
+}
+
+private struct C132MetalPixelRun {
+    let runID: String
+    let samples: [C132MetalPixelSample]
+
+    static let fixedSamples = [
+        C132MetalPixelSample(id: "visible-escape", xCssPx: 150, yCssPx: 30,
+                             rgba: [227, 84, 78, 255]),
+        C132MetalPixelSample(id: "parent-gap", xCssPx: 136, yCssPx: 30,
+                             rgba: [16, 24, 39, 255]),
+        C132MetalPixelSample(id: "parent-interior", xCssPx: 20, yCssPx: 20,
+                             rgba: [52, 66, 86, 255]),
+        C132MetalPixelSample(id: "parent-border", xCssPx: 11, yCssPx: 11,
+                             rgba: [240, 198, 116, 255]),
+        C132MetalPixelSample(id: "root-background", xCssPx: 50, yCssPx: 110,
+                             rgba: [16, 24, 39, 255]),
+    ]
+
+    static func parse(arguments: [String]) -> C132MetalPixelRun? {
+        let prefix = "--spinon-c132-metal-surface-pixels="
+        let values = arguments.filter { $0.hasPrefix(prefix) }
+        guard values.count == 1 else { return nil }
+        let runID = String(values[0].dropFirst(prefix.count))
+        guard (8...80).contains(runID.count),
+              runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") })
+        else { return nil }
+        return C132MetalPixelRun(runID: runID, samples: fixedSamples)
+    }
+}
+
 private struct C111MetalPixelRun {
     let runID: String
     let sceneID: String
@@ -531,6 +567,21 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c131-overflow-clip-border")
     private let c132ScrollFixtureRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c132-scroll")
+    private let c132MetalPixelRun = C132MetalPixelRun.parse(
+        arguments: ProcessInfo.processInfo.arguments
+    )
+    private var c132MetalPixelArgumentRequested: Bool {
+        ProcessInfo.processInfo.arguments.contains(where: {
+            $0.hasPrefix("--spinon-c132-metal-surface-pixels=")
+        })
+    }
+    private var c132ScrollAssertionsPassed = false
+    private var c132MetalPixelRequestIssued = false
+    private var c132MetalPixelReadbackFinished = false
+    private var c132MetalPixelRequestGeneration: UInt64?
+    private var c132MetalPixelRequestPresentationSequence: UInt64?
+    private var c132MetalPixelRequestDrawableSize = CGSize.zero
+    private var c132MetalPixelRequestFormat = ""
     private let c122AbsoluteBlockProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c122-absolute-block")
     private let c123FixedPositionProbeRequested = ProcessInfo.processInfo.arguments
@@ -1686,6 +1737,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                    && $0 != "--spinon-c131-overflow-clip-border"
                    && $0 != "--spinon-c132-scroll"
                    && $0 != "--spinon-c0410-runtime-gpu"
+                   && !(c132ScrollFixtureRequested
+                       && $0.hasPrefix("--spinon-c132-metal-surface-pixels="))
            }) {
             log("SPINON_C13_ARGUMENT_ERROR conflicting=\(conflictingArgument)")
             postStatus("실패 · C13 전용 route와 다른 CSS fixture를 함께 선택했습니다")
@@ -1767,6 +1820,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             postStatus("실패 · \(c11GridMetalPixelStatusName) Metal 표본 실행 인수·장면·표본이 올바르지 않습니다")
             return
         }
+        if c132MetalPixelArgumentRequested
+            && (c132MetalPixelRun == nil || !c132ScrollFixtureRequested
+                || c131CompactSurfaceMatrixRouteRequested || c131BorderStripProbeRequested
+                || c131OverflowClipProbeRequested || c111MetalPixelArgumentRequested
+                || c124MetalPixelCase != nil) {
+            log("SPINON_C132_METAL_PIXEL_ERROR rejected=true reason=invalid-run-or-fixture-selection")
+            postStatus("실패 · C13.2 Metal 표면 표본 실행 인수 또는 fixture route가 올바르지 않습니다")
+            return
+        }
         if c124StackingProbeRequested && c124MetalPixelCase == nil
             && ProcessInfo.processInfo.arguments.contains(where: {
                 $0.hasPrefix("--spinon-c124-metal-surface-readback=")
@@ -1783,6 +1845,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? SpinonRunner.createRuntimeGpuHostWithC13_1OverflowClipBorderFixture()
             : c131OverflowClipProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithC13_1OverflowClipFixture()
+            : c132MetalPixelRun != nil
+            ? SpinonRunner.createRuntimeGpuHostWithC13_2SurfacePixelReadbackFixture()
             : c132ScrollFixtureRequested
             ? SpinonRunner.createRuntimeGpuHostWithC13_2ScrollFixture()
             : c1133GridTemplateAreasProbeRequested
@@ -2066,6 +2130,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             }
             log("SPINON_C132_SCROLL_ASSERTIONS root_body_propagation=passed root_body_hidden=passed border_escape_outside_parent=true border_escape_hit=matched lifecycle=passed growth_offset_retained=true shrink_clamped_to_zero=true detach_removed_owner=true reparent_reset_offset=true reserve_failure=atomic reserve_failure_marker=matched stale_publish=rejected recovery=same_host")
             log("SPINON_C132_SCROLL_SUMMARY status=passed \(runtimeStatusSummary(report))")
+            if let pixelRun = c132MetalPixelRun {
+                stateLock.lock()
+                c132ScrollAssertionsPassed = true
+                stateLock.unlock()
+                log("SPINON_C132_METAL_PIXEL_RUNTIME_READY run_id=\(pixelRun.runID) \(runtimeStatusSummary(report))")
+            }
         } else if c131CompactSurfaceMatrixRouteRequested {
             let report = result ?? "status=-1 missing-report"
             if c131CompactHitIdentityGridProbeRequested {
@@ -2981,6 +3051,17 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         return .operationFailed("C13.1 Metal pixel capture \(stage): \(reason)")
     }
 
+    private func failC132MetalPixelReadback(
+        stage: String,
+        detail: String
+    ) -> C0410LatestTaskLaneError {
+        c132MetalPixelReadbackFinished = true
+        let runID = c132MetalPixelRun?.runID ?? "missing"
+        log("SPINON_C132_METAL_PIXEL_ERROR run_id=\(runID) stage=\(stage) detail=\(detail)")
+        postStatus("실패 · C13.2 Metal surface 표본 \(stage)")
+        return .operationFailed("C13.2 Metal surface readback \(stage): \(detail)")
+    }
+
     private func drawLatestIfReady() throws {
         stateLock.lock()
         guard !closing, rendererReady, rendererSurfaceGeneration == surfaceGeneration,
@@ -3150,6 +3231,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             }
             log("SPINON_C124_METAL_PIXEL_REQUESTED run_id=\(pixelCase.runID) case=\(pixelCase.caseID) css_x=\(pixelCase.cssSample.x) css_y=\(pixelCase.cssSample.y) scale=\(scale) pixel_x=\(pixelX) pixel_y=\(pixelY)")
         }
+        if let pixelRun = c132MetalPixelRun,
+           !c132MetalPixelRequestIssued,
+           !c132MetalPixelReadbackFinished {
+            try requestC132MetalPixelReadback(
+                run: pixelRun,
+                handle: handle,
+                surfaceGeneration: generation
+            )
+        }
         let result = SpinonRunner.drawRuntimeGpuWgpu(handle)
         if c131MetalPixelCapture != nil {
             log("SPINON_C0410_DRAW generation=\(generation) status=\(result?.hasPrefix("status=0 ") == true ? "0" : "error") boxes=\(reportField(result ?? "", "boxes=")) surface_texture=\(reportField(result ?? "", "surface_texture="))")
@@ -3157,6 +3247,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             log("SPINON_C0410_DRAW generation=\(generation) \(result ?? "")")
         }
         if result?.hasPrefix("status=-12 ") == true {
+            if c132MetalPixelRequestIssued && !c132MetalPixelReadbackFinished {
+                throw failC132MetalPixelReadback(
+                    stage: "draw-superseded",
+                    detail: "표본 요청 뒤 draw report가 새 presentation에 의해 폐기됐습니다"
+                )
+            }
             if c131MetalPixelCapture != nil,
                c131MetalPixelBatchRequested,
                !c131MetalPixelCaptureComplete,
@@ -3172,6 +3268,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
         if result?.hasPrefix("status=0 ") != true {
             postStatus("실패 · \(result ?? "WGPU draw 보고 없음")")
+            if c132MetalPixelRequestIssued && !c132MetalPixelReadbackFinished {
+                throw failC132MetalPixelReadback(
+                    stage: "draw",
+                    detail: result ?? "WGPU draw 보고 없음"
+                )
+            }
             if c131MetalPixelCapture != nil,
                !c131MetalPixelCaptureComplete,
                !c131MetalPixelCaptureFailed {
@@ -3233,6 +3335,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 throw failC131MetalPixelCapture(stage: "sample-validation", error: error)
             }
         }
+        if let pixelRun = c132MetalPixelRun,
+           c132MetalPixelRequestIssued,
+           !c132MetalPixelReadbackFinished {
+            try verifyC132MetalPixelReadback(
+                result: result ?? "",
+                run: pixelRun,
+                surfaceGeneration: generation
+            )
+        }
         if let pixelRun = c111MetalPixelRun, !c111MetalPixelReadbackFinished {
             try verifyC111MetalPixelReadback(
                 result: result ?? "",
@@ -3271,6 +3382,158 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             failureProbeStarted = true
             runFailureRecoveryProbe(handle: handle, baseline: result ?? "")
         }
+    }
+
+    private func requestC132MetalPixelReadback(
+        run: C132MetalPixelRun,
+        handle: UInt64,
+        surfaceGeneration: UInt64
+    ) throws {
+        stateLock.lock()
+        let assertionsPassed = c132ScrollAssertionsPassed
+        let sequence = presentationSequence
+        let viewportWidth = viewportWidthCssPx
+        let viewportHeight = viewportHeightCssPx
+        let drawableSize = c111MetalDrawableSize
+        let format = rendererSurfaceFormat ?? ""
+        stateLock.unlock()
+        guard assertionsPassed else { return }
+        guard isCurrentPresentation(generation: surfaceGeneration, sequence: sequence),
+              viewportWidth == 400, viewportHeight == 240,
+              drawableSize.width > 0, drawableSize.height > 0,
+              let width = UInt32(exactly: drawableSize.width),
+              let height = UInt32(exactly: drawableSize.height),
+              !format.isEmpty else {
+            throw failC132MetalPixelReadback(
+                stage: "surface-identity",
+                detail: "C13.2 viewport·drawable·format·presentation이 준비되지 않았습니다"
+            )
+        }
+        let scaleX = Float(width) / Float(viewportWidth)
+        let scaleY = Float(height) / Float(viewportHeight)
+        guard scaleX.isFinite, scaleY.isFinite, scaleX > 0,
+              abs(scaleX - scaleY) < 0.000001 else {
+            throw failC132MetalPixelReadback(
+                stage: "surface-scale",
+                detail: "Metal drawable의 가로·세로 scale이 일치하지 않습니다"
+            )
+        }
+        var coordinates: [UInt32] = []
+        coordinates.reserveCapacity(run.samples.count * 2)
+        for sample in run.samples {
+            let x = floor((Float(sample.xCssPx) + 0.5) * scaleX)
+            let y = floor((Float(sample.yCssPx) + 0.5) * scaleY)
+            guard x >= 0, y >= 0, x < Float(width), y < Float(height) else {
+                throw failC132MetalPixelReadback(
+                    stage: "sample-bounds",
+                    detail: "고정 표본이 Metal drawable 밖입니다: \(sample.id)"
+                )
+            }
+            coordinates.append(UInt32(x))
+            coordinates.append(UInt32(y))
+        }
+        let request = coordinates.withUnsafeBufferPointer { buffer in
+            SpinonRunner.requestRuntimeGpuC13_2SurfacePixels(
+                handle,
+                sampleXY: buffer.baseAddress,
+                sampleCount: UInt(run.samples.count)
+            )
+        } ?? "status=-1 missing-request-report"
+        guard request.hasPrefix("status=0 ") else {
+            throw failC132MetalPixelReadback(
+                stage: "request",
+                detail: request
+            )
+        }
+        c132MetalPixelRequestIssued = true
+        c132MetalPixelRequestGeneration = surfaceGeneration
+        c132MetalPixelRequestPresentationSequence = sequence
+        c132MetalPixelRequestDrawableSize = drawableSize
+        c132MetalPixelRequestFormat = format
+        log("SPINON_C132_METAL_PIXEL_REQUESTED run_id=\(run.runID) pid=\(ProcessInfo.processInfo.processIdentifier) surface_generation=\(surfaceGeneration) presentation_sequence=\(sequence) viewport=400x240 drawable=\(width)x\(height) format=\(format) scale_x=\(scaleX) scale_y=\(scaleY) samples=\(run.samples.count)")
+    }
+
+    private func verifyC132MetalPixelReadback(
+        result: String,
+        run: C132MetalPixelRun,
+        surfaceGeneration: UInt64
+    ) throws {
+        let pid = ProcessInfo.processInfo.processIdentifier
+        func failure(_ stage: String, _ detail: String) -> C0410LatestTaskLaneError {
+            failC132MetalPixelReadback(stage: stage, detail: detail)
+        }
+
+        guard c132MetalPixelRequestGeneration == surfaceGeneration,
+              let sequence = c132MetalPixelRequestPresentationSequence,
+              isCurrentPresentation(generation: surfaceGeneration, sequence: sequence) else {
+            throw failure("stale-presentation", "표면 세대 또는 presentation sequence가 바뀌었습니다")
+        }
+        let surface = reportField(result, "surface_texture=")
+            .split(separator: "x").compactMap { UInt32($0) }
+        stateLock.lock()
+        let currentFormat = rendererSurfaceFormat ?? ""
+        stateLock.unlock()
+        guard let requestedWidth = Int(exactly: c132MetalPixelRequestDrawableSize.width),
+              let requestedHeight = Int(exactly: c132MetalPixelRequestDrawableSize.height),
+              surface.count == 2, surface[0] > 0, surface[1] > 0,
+              surface[0] == UInt32(requestedWidth),
+              surface[1] == UInt32(requestedHeight),
+              c132MetalPixelRequestFormat == currentFormat,
+              reportField(result, "boxes=") == "26",
+              reportField(result, "viewport_css_px=") == "400x240" else {
+            throw failure("surface-metadata", "Metal draw report의 boxes·viewport·drawable·format이 달라졌습니다")
+        }
+        let layoutGeneration = reportField(result, "generation=")
+        let documentRevision = reportField(result, "document_revision=")
+        let renderTreeRevision = reportField(result, "render_tree_revision=")
+        let styleRevision = reportField(result, "style_revision=")
+        let environmentRevision = reportField(result, "environment_revision=")
+        let scrollRevision = reportField(result, "scroll_state_revision=")
+        guard UInt64(layoutGeneration) != nil, UInt64(documentRevision) != nil,
+              UInt64(renderTreeRevision) != nil, UInt64(styleRevision) != nil,
+              UInt64(environmentRevision) != nil, UInt64(scrollRevision) != nil else {
+            throw failure("revision", "draw report에 C13.2 layout·document·tree·style·environment·scroll revision이 없습니다")
+        }
+        guard let encoded = reportField(result, "surface_pixel_samples_json=").data(using: .utf8),
+              let values = try? JSONSerialization.jsonObject(with: encoded) as? [[String: Any]],
+              values.count == run.samples.count else {
+            throw failure("sample-count", "draw report의 Metal 표본 수가 5개가 아닙니다")
+        }
+        let width = Float(surface[0])
+        let height = Float(surface[1])
+        let scaleX = width / 400.0
+        let scaleY = height / 240.0
+        let drawableText = "\(surface[0])x\(surface[1])"
+        log("SPINON_C132_METAL_PIXEL_BEGIN run_id=\(run.runID) pid=\(pid) surface_generation=\(surfaceGeneration) presentation_sequence=\(sequence) layout_generation=\(layoutGeneration) document_revision=\(documentRevision) render_tree_revision=\(renderTreeRevision) style_revision=\(styleRevision) environment_revision=\(environmentRevision) scroll_state_revision=\(scrollRevision) boxes=26 viewport=400x240 drawable=\(drawableText) format=\(c132MetalPixelRequestFormat)")
+
+        var matched = 0
+        var escapeOutsideParent = false
+        for (index, sample) in run.samples.enumerated() {
+            guard let value = values[index] as? [String: Any],
+                  let xNumber = value["x"] as? NSNumber,
+                  let yNumber = value["y"] as? NSNumber,
+                  let channels = value["rgba"] as? [NSNumber], channels.count == 4 else {
+                throw failure("sample-shape", "Metal 표본 JSON 형태가 올바르지 않습니다: \(sample.id)")
+            }
+            let x = xNumber.uint32Value
+            let y = yNumber.uint32Value
+            let rgba = channels.map(\.uint32Value)
+            let expectedX = UInt32(floor((Float(sample.xCssPx) + 0.5) * scaleX))
+            let expectedY = UInt32(floor((Float(sample.yCssPx) + 0.5) * scaleY))
+            let exact = x == expectedX && y == expectedY && rgba == sample.rgba
+            if exact { matched += 1 }
+            if sample.id == "visible-escape" {
+                escapeOutsideParent = Float(x) + 0.5 > 130.0 * scaleX
+            }
+            log("SPINON_C132_METAL_PIXEL_SAMPLE run_id=\(run.runID) pid=\(pid) surface_generation=\(surfaceGeneration) sample=\(sample.id) x=\(x) y=\(y) rgba=\(rgba.map(String.init).joined(separator: ",")) expected=\(sample.rgba.map(String.init).joined(separator: ",")) exact=\(exact)")
+        }
+        c132MetalPixelReadbackFinished = true
+        let passed = matched == run.samples.count && escapeOutsideParent
+        log("SPINON_C132_METAL_PIXEL_SUMMARY status=\(passed ? "matched" : "mismatch") run_id=\(run.runID) pid=\(pid) surface_generation=\(surfaceGeneration) presentation_sequence=\(sequence) layout_generation=\(layoutGeneration) document_revision=\(documentRevision) render_tree_revision=\(renderTreeRevision) style_revision=\(styleRevision) environment_revision=\(environmentRevision) scroll_state_revision=\(scrollRevision) boxes=26 viewport=400x240 drawable=\(drawableText) format=\(c132MetalPixelRequestFormat) scale_x=\(scaleX) scale_y=\(scaleY) expected_samples=\(run.samples.count) observed_samples=\(values.count) matched_samples=\(matched) escape_outside_parent=\(escapeOutsideParent) renderer=metal-drawable-before-compositor")
+        guard passed else {
+            throw failure("pixel-mismatch", "실제 Metal drawable 표본이 고정 Chrome RGBA와 다릅니다")
+        }
+        postStatus("C13.2 Metal surface 표본 통과 · 5/5")
     }
 
     private func verifyC111MetalPixelReadback(
@@ -3479,7 +3742,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         defer { presentationUpdateLock.unlock() }
         stateLock.lock()
         guard !closing, hostHandle != 0,
-              !c131CompactSurfaceMatrixRouteRequested || runtimeInitializationComplete else {
+              !(c131CompactSurfaceMatrixRouteRequested || c132ScrollFixtureRequested)
+                  || runtimeInitializationComplete else {
             stateLock.unlock()
             return 0
         }

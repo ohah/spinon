@@ -1,0 +1,244 @@
+{
+  "status": "matched",
+  "runId": "c132-surface-20261015-run5",
+  "oracle": {
+    "browser": "155.0.8059.40",
+    "viewport": [
+      400,
+      240
+    ],
+    "fixtureSha256": "0acb40afe6ceebed85f4d1833b9679c5cb1f1d52e6f794bb95dbd7d9e52c177e",
+    "sourceFixtureSha256": "c3de5d45578b6eabd79ee2d94403fd8a3df4e913e9e7d3f133235c851bf71afc",
+    "screenshotSha256": "9a0be14fab0e3a75ee4f223f1fae2a16ccb242c5f3ba499684bd5c016f0c81b6"
+  },
+  "platforms": {
+    "android": {
+      "platform": "android",
+      "runId": "c132-surface-20261015-run5",
+      "pid": 3081,
+      "surfaceGeneration": 2,
+      "presentationSequence": 0,
+      "layoutGeneration": 1,
+      "revisions": {
+        "document": 583,
+        "renderTree": 124,
+        "style": 0,
+        "environment": 0,
+        "scroll": 8
+      },
+      "drawable": [
+        1050,
+        630
+      ],
+      "scale": [
+        2.625,
+        2.625
+      ],
+      "samples": [
+        {
+          "id": "visible-escape",
+          "css": [
+            150,
+            30
+          ],
+          "pixel": [
+            395,
+            80
+          ],
+          "rgba": [
+            227,
+            84,
+            78,
+            255
+          ]
+        },
+        {
+          "id": "parent-gap",
+          "css": [
+            136,
+            30
+          ],
+          "pixel": [
+            358,
+            80
+          ],
+          "rgba": [
+            16,
+            24,
+            39,
+            255
+          ]
+        },
+        {
+          "id": "parent-interior",
+          "css": [
+            20,
+            20
+          ],
+          "pixel": [
+            53,
+            53
+          ],
+          "rgba": [
+            52,
+            66,
+            86,
+            255
+          ]
+        },
+        {
+          "id": "parent-border",
+          "css": [
+            11,
+            11
+          ],
+          "pixel": [
+            30,
+            30
+          ],
+          "rgba": [
+            240,
+            198,
+            116,
+            255
+          ]
+        },
+        {
+          "id": "root-background",
+          "css": [
+            50,
+            110
+          ],
+          "pixel": [
+            132,
+            290
+          ],
+          "rgba": [
+            16,
+            24,
+            39,
+            255
+          ]
+        }
+      ],
+      "escapeOutsideParent": true,
+      "png": {
+        "width": 1050,
+        "height": 630,
+        "sha256": "e7f61a4433f02374e62154bf442aa4c6382aff8456bea51412673589e2b88192"
+      }
+    },
+    "ios": {
+      "platform": "ios",
+      "runId": "c132-surface-20261015-run5",
+      "pid": 57858,
+      "surfaceGeneration": 1,
+      "presentationSequence": 19,
+      "layoutGeneration": 1,
+      "revisions": {
+        "document": 583,
+        "renderTree": 124,
+        "style": 0,
+        "environment": 1,
+        "scroll": 8
+      },
+      "drawable": [
+        1200,
+        720
+      ],
+      "scale": [
+        3,
+        3
+      ],
+      "samples": [
+        {
+          "id": "visible-escape",
+          "css": [
+            150,
+            30
+          ],
+          "pixel": [
+            451,
+            91
+          ],
+          "rgba": [
+            227,
+            84,
+            78,
+            255
+          ]
+        },
+        {
+          "id": "parent-gap",
+          "css": [
+            136,
+            30
+          ],
+          "pixel": [
+            409,
+            91
+          ],
+          "rgba": [
+            16,
+            24,
+            39,
+            255
+          ]
+        },
+        {
+          "id": "parent-interior",
+          "css": [
+            20,
+            20
+          ],
+          "pixel": [
+            61,
+            61
+          ],
+          "rgba": [
+            52,
+            66,
+            86,
+            255
+          ]
+        },
+        {
+          "id": "parent-border",
+          "css": [
+            11,
+            11
+          ],
+          "pixel": [
+            34,
+            34
+          ],
+          "rgba": [
+            240,
+            198,
+            116,
+            255
+          ]
+        },
+        {
+          "id": "root-background",
+          "css": [
+            50,
+            110
+          ],
+          "pixel": [
+            151,
+            331
+          ],
+          "rgba": [
+            16,
+            24,
+            39,
+            255
+          ]
+        }
+      ],
+      "escapeOutsideParent": true,
+      "renderer": "metal-drawable-before-compositor"
+    }
+  }
+}

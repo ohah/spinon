@@ -1,0 +1,4 @@
+--------- beginning of main
+10-15 08:04:53.863  3755  3755 I SpinonBootstrap: SPINON_C0410_SURFACE_CREATED generation=1
+10-15 08:04:53.864  3755  3755 I SpinonBootstrap: SPINON_C0410_SURFACE_CHANGED generation=2 size=1050x630 changed=true
+10-15 08:04:53.864  3755  3776 E SpinonBootstrap: SPINON_C132_ARGUMENT_ERROR rejected=true reason=invalid-run-id

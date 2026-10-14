@@ -23,6 +23,14 @@ pub struct SurfacePixelSample {
     pub rgba: [u8; 4],
 }
 
+fn discard_surface_pixel_samples(
+    pending: &mut Option<Vec<(u32, u32)>>,
+    completed: &mut Option<Vec<SurfacePixelSample>>,
+) {
+    *pending = None;
+    *completed = None;
+}
+
 const SHADER: &str = include_str!("runtime.wgsl");
 
 #[derive(Debug)]
@@ -452,35 +460,55 @@ impl RuntimeRenderer {
             }
         }
         if !is_current() {
+            discard_surface_pixel_samples(
+                &mut self.pending_surface_pixel_samples,
+                &mut self.last_surface_pixel_samples,
+            );
             return Ok(false);
         }
         let readback = match self.pending_surface_pixel_samples.as_deref() {
-            Some(points) => Some(
-                surface_readback::append_copy(
-                    &self.device,
-                    &mut encoder,
-                    &frame.texture,
-                    self.config.format,
-                    self.config.width,
-                    self.config.height,
-                    points,
-                )
-                .map_err(RuntimeRendererError::Surface)?,
-            ),
+            Some(points) => match surface_readback::append_copy(
+                &self.device,
+                &mut encoder,
+                &frame.texture,
+                self.config.format,
+                self.config.width,
+                self.config.height,
+                points,
+            ) {
+                Ok(readback) => Some(readback),
+                Err(error) => {
+                    discard_surface_pixel_samples(
+                        &mut self.pending_surface_pixel_samples,
+                        &mut self.last_surface_pixel_samples,
+                    );
+                    return Err(RuntimeRendererError::Surface(error));
+                }
+            },
             None => None,
         };
         let submission = self.queue.submit([encoder.finish()]);
         if !is_current() {
             if readback.is_some() {
-                self.pending_surface_pixel_samples = None;
-                self.last_surface_pixel_samples = None;
+                discard_surface_pixel_samples(
+                    &mut self.pending_surface_pixel_samples,
+                    &mut self.last_surface_pixel_samples,
+                );
             }
             return Ok(false);
         }
         self.queue.present(frame);
         if let Some(readback) = readback {
-            let samples = surface_readback::map_samples(&self.device, &submission, readback)
-                .map_err(RuntimeRendererError::Surface)?;
+            let samples = match surface_readback::map_samples(&self.device, &submission, readback) {
+                Ok(samples) => samples,
+                Err(error) => {
+                    discard_surface_pixel_samples(
+                        &mut self.pending_surface_pixel_samples,
+                        &mut self.last_surface_pixel_samples,
+                    );
+                    return Err(RuntimeRendererError::Surface(error));
+                }
+            };
             self.pending_surface_pixel_samples = None;
             self.last_surface_pixel_samples = Some(samples);
         }
