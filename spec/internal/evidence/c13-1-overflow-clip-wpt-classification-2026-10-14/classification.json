@@ -1,0 +1,373 @@
+{
+  "source": {
+    "repository": "web-platform-tests/wpt",
+    "commit": "a73e14cfbaeba97744ff40cbc34d1ca96e5a92c7",
+    "commitDateUtc": "2026-10-14T10:07:55Z",
+    "directory": "css/css-overflow",
+    "inventoryFilter": "HTML test files whose names begin clip-, overflow-clip, or single-axis-overflow-clip; exclude -ref files",
+    "retrievedWith": "agent-browser from the GitHub API directory listing and pinned raw source files",
+    "inventorySha256": "de618ed3e3d8bc67afc86528c33950bd7a31a6d7c9981ebf9ddc599c5365ff4a",
+    "classificationSha256": "b271e4e1fb7330d3ff9aa7c1f9b7cfa24f7a49364b04c3d257b1b1722ed641f0",
+    "commitUrl": "https://github.com/web-platform-tests/wpt/tree/a73e14cfbaeba97744ff40cbc34d1ca96e5a92c7",
+    "directoryUrl": "https://github.com/web-platform-tests/wpt/tree/a73e14cfbaeba97744ff40cbc34d1ca96e5a92c7/css/css-overflow"
+  },
+  "scope": "C13.1 first rectangle-only horizontal-tb/LTR profile; categories are candidate triage, not WPT execution or support claims",
+  "wptExecution": "not-run",
+  "counts": {
+    "spinon_fixture_candidate": 13,
+    "chrome_oracle_only": 17,
+    "unsupported": 28
+  },
+  "classifications": [
+    {
+      "path": "css/css-overflow/clip-001.html",
+      "category": "chrome_oracle_only",
+      "reason": "outer overflow:auto의 scrollable overflow와 inner clip을 함께 요구한다. C13.1 paint oracle로만 보존한다."
+    },
+    {
+      "path": "css/css-overflow/clip-002.html",
+      "category": "chrome_oracle_only",
+      "reason": "per-axis clip/visible 결과에 opacity 0.5 compositing이 섞여 현재 불투명 runtime paint profile로 직접 실행할 수 없다."
+    },
+    {
+      "path": "css/css-overflow/clip-003.html",
+      "category": "chrome_oracle_only",
+      "reason": "auto scroll container, outline, 반투명 paint의 결과가 결합되어 전체 파일은 runtime fixture가 아니다."
+    },
+    {
+      "path": "css/css-overflow/clip-004.html",
+      "category": "chrome_oracle_only",
+      "reason": "per-axis clip/visible 시각 기준에 opacity compositing이 포함된다."
+    },
+    {
+      "path": "css/css-overflow/clip-005.html",
+      "category": "chrome_oracle_only",
+      "reason": "overflow clip과 자기 outline paint를 함께 검증하며 outline renderer가 현 profile 밖이다."
+    },
+    {
+      "path": "css/css-overflow/clip-006.html",
+      "category": "chrome_oracle_only",
+      "reason": "overflow:auto 부모의 scrollable overflow와 overflow-x clip을 함께 검증한다."
+    },
+    {
+      "path": "css/css-overflow/clip-007.html",
+      "category": "chrome_oracle_only",
+      "reason": "overflow:auto 부모의 scrollable overflow와 overflow-y clip을 함께 검증한다."
+    },
+    {
+      "path": "css/css-overflow/clip-008.html",
+      "category": "unsupported",
+      "reason": "border-radius로 clip corner shape를 검사하며 C22 교차 단계가 필요하다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-001-crash.html",
+      "category": "unsupported",
+      "reason": "선택/레이아웃 crash 회귀용 browser-specific case이며 안정된 CSS 동작 fixture가 아니다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-002-crash.html",
+      "category": "unsupported",
+      "reason": "background-attachment와 border style을 결합한 browser-specific crash 회귀다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-cant-scroll.html",
+      "category": "unsupported",
+      "reason": "scrollLeft/scrollTop 명령과 offset 상태는 C13.2/C29 소유다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-clamps-and-ignores-scroll-offsets-vertical-rl.html",
+      "category": "unsupported",
+      "reason": "scroll offset와 vertical-rl logical axis를 요구해 C13.2/C17/C29 선행이 필요하다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-content-visual-overflow.html",
+      "category": "chrome_oracle_only",
+      "reason": "box-shadow와 will-change:transform을 써 ink/compositing 기준을 보존한다. 현재 runtime은 해당 ink effect를 그리지 않는다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-hit-testing.html",
+      "category": "spinon_fixture_candidate",
+      "reason": "C13.1의 축별 clip 뒤에서 겹치는 자식에 대한 elementFromPoint 결과다. 고정 host box query fixture로 옮길 수 있지만 DOM event dispatch 결과는 포함하지 않는다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-001.html",
+      "category": "spinon_fixture_candidate",
+      "reason": "불투명 clip과 양수 margin의 paint 확장을 현 profile의 Block/Flex box와 고정 좌표로 비교할 후보다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-002.html",
+      "category": "unsupported",
+      "reason": "scrollable overflow layout effect와 scrollbar를 확인하므로 C13.2/C13.4에 속한다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-003.html",
+      "category": "chrome_oracle_only",
+      "reason": "clip margin이 box-shadow paint effect를 자르지 않는 Chrome 기준이다. box-shadow가 현재 runtime에 없다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-004.html",
+      "category": "unsupported",
+      "reason": "contain:paint와 clip margin 교차는 현재 C13.1 profile의 containing/paint contract 밖이다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-005.html",
+      "category": "unsupported",
+      "reason": "scrollable layout 및 paint containment가 결합되어 C13.2와 containment 지원을 요구한다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-006.html",
+      "category": "chrome_oracle_only",
+      "reason": "paint containment와 box-shadow를 포함해 현재 runtime effect 범위를 넘지만 C13.1의 ink 분리 oracle로 남긴다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-007.html",
+      "category": "unsupported",
+      "reason": "content-visibility:auto와 document scroll을 요구하며 C13.1 profile 밖이다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-008.html",
+      "category": "unsupported",
+      "reason": "overflow:scroll과 paint containment의 상호작용은 C13.2/paint containment 범위다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-009.html",
+      "category": "spinon_fixture_candidate",
+      "reason": "inherited 선언의 computed overflow-clip-margin typed 값을 별도 child box fixture로 비교할 후보라 cascade 범위에 맞는다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-010.html",
+      "category": "unsupported",
+      "reason": "border-radius와 opacity가 corner/compositing 동작을 요구해 C22 및 color/opacity 단계로 미룬다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-011.html",
+      "category": "spinon_fixture_candidate",
+      "reason": "큰 clip margin과 ancestor clip 교차를 고정 사각 box·paint/hit query로 축약해 비교할 후보다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-012.html",
+      "category": "unsupported",
+      "reason": "content-visibility:auto와 root scroll을 요구하므로 현재 C13.1 profile 밖이다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-013.html",
+      "category": "spinon_fixture_candidate",
+      "reason": "border-box visual edge 선택의 사각 paint 대조 후보."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-014.html",
+      "category": "spinon_fixture_candidate",
+      "reason": "content-box visual edge 선택의 사각 paint 대조 후보."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-015.html",
+      "category": "spinon_fixture_candidate",
+      "reason": "padding-box와 양수 길이 조합의 사각 paint 대조 후보."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-016.html",
+      "category": "chrome_oracle_only",
+      "reason": "Chrome은 negative offset을 computed 값으로 유지하지만 고정 CSS Overflow WD는 음수 길이를 invalid로 정한다. 이 차이를 구현 후보로 승격하지 않는다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-017.html",
+      "category": "chrome_oracle_only",
+      "reason": "Chrome의 음수 길이 관찰과 고정 CSS Overflow WD의 invalid 규칙이 다르므로 oracle 전용이다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-018.html",
+      "category": "spinon_fixture_candidate",
+      "reason": "overflow:hidden의 padding-edge paint clip에서 overflow-clip-margin이 무시되는 사각 reftest다. scroll offset·scrollWidth를 쓰지 않아 C13.1 paint fixture로 축약할 수 있다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-019.html",
+      "category": "chrome_oracle_only",
+      "reason": "negative overflow-clip-margin 값을 hidden scroller에서 비교한다. Chrome 155는 이를 computed value에 남기지만 고정 CSS Overflow WD는 음수 길이를 invalid로 정의해 현재 runtime profile과 표준 입력 경계가 다르다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-020.html",
+      "category": "chrome_oracle_only",
+      "reason": "negative overflow-clip-margin 값을 hidden scroller에서 비교한다. Chrome 155는 이를 computed value에 남기지만 고정 CSS Overflow WD는 음수 길이를 invalid로 정의해 현재 runtime profile과 표준 입력 경계가 다르다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-021.html",
+      "category": "spinon_fixture_candidate",
+      "reason": "overflow:hidden의 padding-edge paint clip에서 overflow-clip-margin이 무시되는 사각 reftest다. scroll offset·scrollWidth를 쓰지 않아 C13.1 paint fixture로 축약할 수 있다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-022.html",
+      "category": "chrome_oracle_only",
+      "reason": "negative overflow-clip-margin 값을 hidden scroller에서 비교한다. Chrome 155는 이를 computed value에 남기지만 고정 CSS Overflow WD는 음수 길이를 invalid로 정의해 현재 runtime profile과 표준 입력 경계가 다르다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-border-radius-002.html",
+      "category": "unsupported",
+      "reason": "border-radius와 clip margin 조합은 C22 교차 단계다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-border-radius.html",
+      "category": "unsupported",
+      "reason": "border-radius와 ink effect가 함께 있어 C22 및 paint effect 구현을 요구한다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-content-box-dynamic.html",
+      "category": "chrome_oracle_only",
+      "reason": "padding 변경 뒤 clip 재계산을 확인한다. 동적 style revision과 snapshot invalidation 연결 전까지 Chrome oracle이다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-hit-testing.html",
+      "category": "spinon_fixture_candidate",
+      "reason": "margin 확장 안팎의 elementFromPoint query를 box hit-test fixture로 옮길 후보며 event dispatch는 아니다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-intersection-observer.html",
+      "category": "unsupported",
+      "reason": "IntersectionObserver API owner가 이 C13.1 내부 profile 범위에 없다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-invalidation.html",
+      "category": "chrome_oracle_only",
+      "reason": "class 토글 뒤 clip margin paint invalidation을 확인한다. 현재 fixture-test는 초기 snapshot 경로만 검증한다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-mul-column-border-box.html",
+      "category": "unsupported",
+      "reason": "multi-column fragmentation과 clip margin 조합은 현 Block/Flex profile 밖이다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-mul-column-content-box.html",
+      "category": "unsupported",
+      "reason": "multi-column fragmentation과 content-box clip margin 조합은 현 profile 밖이다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-mul-column-padding-box.html",
+      "category": "unsupported",
+      "reason": "multi-column fragmentation과 padding-box clip margin 조합은 현 profile 밖이다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-svg.html",
+      "category": "unsupported",
+      "reason": "SVG overflow viewport와 resource geometry는 현재 HTML box profile 밖이다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-visual-box-and-value-with-border-radius.html",
+      "category": "unsupported",
+      "reason": "border-radius corner shaping이 필요해 C22 교차 단계로 미룬다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-visual-box-and-value.html",
+      "category": "spinon_fixture_candidate",
+      "reason": "radius 없는 세 visual-box와 양수 offset의 사각 paint 대조 후보."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-margin-visual-box.html",
+      "category": "spinon_fixture_candidate",
+      "reason": "radius 없는 세 visual-box의 기본 offset paint 대조 후보."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-no-off-axis-scrollbar.html",
+      "category": "unsupported",
+      "reason": "실제 scrollbar thickness와 layout 기여를 요구하는 C13.4 관문이다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-preserves-dom-content.html",
+      "category": "spinon_fixture_candidate",
+      "reason": "clip 계산이 HostDocument 자식·text node를 삭제하지 않는 불변조건을 검사할 후보."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-rounded-table.html",
+      "category": "unsupported",
+      "reason": "table layout 및 rounded clipping을 요구해 C07/C22 선행이 필요하다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-scroll-size.html",
+      "category": "unsupported",
+      "reason": "scrollWidth/scrollHeight 및 margin의 scroll range 효과는 C13.2/C29 소유다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-transform-001.html",
+      "category": "unsupported",
+      "reason": "transformed descendant의 clip projection은 C23 소유다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-x-visible-y-svg.html",
+      "category": "unsupported",
+      "reason": "SVG의 mixed-axis overflow clip 동작은 현재 HTML box profile 밖이다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clip-y-visible-x-svg.html",
+      "category": "unsupported",
+      "reason": "SVG의 mixed-axis overflow clip 동작은 현재 HTML box profile 밖이다."
+    },
+    {
+      "path": "css/css-overflow/overflow-clipped-transparent-border-clip.html",
+      "category": "unsupported",
+      "reason": "투명 border와 clipping paint 합성은 현재 profile이 fail-closed하는 partial-alpha border 범위다."
+    },
+    {
+      "path": "css/css-overflow/single-axis-overflow-clip-rtl.html",
+      "category": "unsupported",
+      "reason": "RTL scroll origin과 logical axis는 C17/C13.6 교차 단계다."
+    }
+  ],
+  "sourceInventory": [
+    "css/css-overflow/clip-001.html",
+    "css/css-overflow/clip-002.html",
+    "css/css-overflow/clip-003.html",
+    "css/css-overflow/clip-004.html",
+    "css/css-overflow/clip-005.html",
+    "css/css-overflow/clip-006.html",
+    "css/css-overflow/clip-007.html",
+    "css/css-overflow/clip-008.html",
+    "css/css-overflow/overflow-clip-001-crash.html",
+    "css/css-overflow/overflow-clip-002-crash.html",
+    "css/css-overflow/overflow-clip-cant-scroll.html",
+    "css/css-overflow/overflow-clip-clamps-and-ignores-scroll-offsets-vertical-rl.html",
+    "css/css-overflow/overflow-clip-content-visual-overflow.html",
+    "css/css-overflow/overflow-clip-hit-testing.html",
+    "css/css-overflow/overflow-clip-margin-001.html",
+    "css/css-overflow/overflow-clip-margin-002.html",
+    "css/css-overflow/overflow-clip-margin-003.html",
+    "css/css-overflow/overflow-clip-margin-004.html",
+    "css/css-overflow/overflow-clip-margin-005.html",
+    "css/css-overflow/overflow-clip-margin-006.html",
+    "css/css-overflow/overflow-clip-margin-007.html",
+    "css/css-overflow/overflow-clip-margin-008.html",
+    "css/css-overflow/overflow-clip-margin-009.html",
+    "css/css-overflow/overflow-clip-margin-010.html",
+    "css/css-overflow/overflow-clip-margin-011.html",
+    "css/css-overflow/overflow-clip-margin-012.html",
+    "css/css-overflow/overflow-clip-margin-013.html",
+    "css/css-overflow/overflow-clip-margin-014.html",
+    "css/css-overflow/overflow-clip-margin-015.html",
+    "css/css-overflow/overflow-clip-margin-016.html",
+    "css/css-overflow/overflow-clip-margin-017.html",
+    "css/css-overflow/overflow-clip-margin-018.html",
+    "css/css-overflow/overflow-clip-margin-019.html",
+    "css/css-overflow/overflow-clip-margin-020.html",
+    "css/css-overflow/overflow-clip-margin-021.html",
+    "css/css-overflow/overflow-clip-margin-022.html",
+    "css/css-overflow/overflow-clip-margin-border-radius-002.html",
+    "css/css-overflow/overflow-clip-margin-border-radius.html",
+    "css/css-overflow/overflow-clip-margin-content-box-dynamic.html",
+    "css/css-overflow/overflow-clip-margin-hit-testing.html",
+    "css/css-overflow/overflow-clip-margin-intersection-observer.html",
+    "css/css-overflow/overflow-clip-margin-invalidation.html",
+    "css/css-overflow/overflow-clip-margin-mul-column-border-box.html",
+    "css/css-overflow/overflow-clip-margin-mul-column-content-box.html",
+    "css/css-overflow/overflow-clip-margin-mul-column-padding-box.html",
+    "css/css-overflow/overflow-clip-margin-svg.html",
+    "css/css-overflow/overflow-clip-margin-visual-box-and-value-with-border-radius.html",
+    "css/css-overflow/overflow-clip-margin-visual-box-and-value.html",
+    "css/css-overflow/overflow-clip-margin-visual-box.html",
+    "css/css-overflow/overflow-clip-no-off-axis-scrollbar.html",
+    "css/css-overflow/overflow-clip-preserves-dom-content.html",
+    "css/css-overflow/overflow-clip-rounded-table.html",
+    "css/css-overflow/overflow-clip-scroll-size.html",
+    "css/css-overflow/overflow-clip-transform-001.html",
+    "css/css-overflow/overflow-clip-x-visible-y-svg.html",
+    "css/css-overflow/overflow-clip-y-visible-x-svg.html",
+    "css/css-overflow/overflow-clipped-transparent-border-clip.html",
+    "css/css-overflow/single-axis-overflow-clip-rtl.html"
+  ]
+}
