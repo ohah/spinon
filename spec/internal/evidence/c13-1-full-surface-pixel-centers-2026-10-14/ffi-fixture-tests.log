@@ -1,0 +1,9 @@
+   Compiling spinon-ffi v0.1.0 ($WORKTREE/crates/spinon-ffi)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.75s
+     Running unittests src/lib.rs (target/debug/deps/spinon_ffi-ef16aad0bd08a71d)
+
+running 2 tests
+test runtime_gpu::fixtures::c13_1_compact_surface_matrix::tests::oracle_metadata_rejects_viewport_and_chrome_revision_mutations ... ok
+test runtime_gpu::fixtures::c13_1_compact_surface_matrix::tests::pinned_oracle_has_41_ordered_frames_and_52_unique_hit_samples ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 45 filtered out; finished in 0.00s

@@ -194,7 +194,8 @@ pub(super) fn flatten_hit_test_order(
     Ok(hit_order)
 }
 
-/// Auto positioned 상자의 단순 in-flow 자손을 상자 배경 뒤에 그립니다.
+/// Auto positioned 상자의 static in-flow descendant를 부모 배경 뒤에 배치합니다.
+/// Positioned descendant와 별도 stacking context는 각자의 paint phase에 남깁니다.
 /// Clip 영역은 별도의 clip 경계에서 계속 적용하며, 이 순서는 overflow 값과 독립적입니다.
 pub(super) fn paint_auto_positioned_subtrees(
     document_nodes: &[NodeId],
@@ -204,10 +205,14 @@ pub(super) fn paint_auto_positioned_subtrees(
     reserve: &mut impl FallibleReserve,
 ) -> Result<(), StyleRenderError> {
     let mut children_by_parent = BTreeMap::<NodeId, Vec<NodeId>>::new();
-    for (child, parent) in parent_by_node {
-        let children = children_by_parent.entry(*parent).or_default();
+    for child in document_nodes.iter().copied().skip(1) {
+        let parent = parent_by_node
+            .get(&child)
+            .copied()
+            .ok_or(StyleRenderError::InvalidRoot)?;
+        let children = children_by_parent.entry(parent).or_default();
         reserve.reserve(children, 1, "paint child map")?;
-        children.push(*child);
+        children.push(child);
     }
 
     for candidate in document_nodes {
@@ -217,7 +222,9 @@ pub(super) fn paint_auto_positioned_subtrees(
             .ok_or(StyleRenderError::MissingComputedStyle(*candidate))?;
         if !matches!(
             style.layout_position,
-            ComputedCssPosition::Absolute | ComputedCssPosition::Fixed
+            ComputedCssPosition::Relative
+                | ComputedCssPosition::Absolute
+                | ComputedCssPosition::Fixed
         ) || style.stacking_z_index != Some(ComputedCssZIndex::Auto)
         {
             continue;
@@ -233,7 +240,6 @@ pub(super) fn paint_auto_positioned_subtrees(
             )?;
             pending.extend(children.iter().rev().copied());
         }
-        let mut simple_in_flow_subtree = true;
         while let Some(node) = pending.pop() {
             let descendant_style = styles
                 .get(&node)
@@ -250,8 +256,8 @@ pub(super) fn paint_auto_positioned_subtrees(
             if descendant_style.layout_position != ComputedCssPosition::Static
                 || descendant_style.stacking_z_index != Some(ComputedCssZIndex::Auto)
             {
-                simple_in_flow_subtree = false;
-                break;
+                // Positioned descendants and their subtrees remain in their own paint phase.
+                continue;
             }
             reserve.reserve(&mut descendants, 1, "positioned subtree descendants")?;
             descendants.push(node);
@@ -264,18 +270,11 @@ pub(super) fn paint_auto_positioned_subtrees(
                 pending.extend(children.iter().rev().copied());
             }
         }
-        if !simple_in_flow_subtree || descendants.is_empty() {
+        if descendants.is_empty() {
             continue;
         }
         descendants.sort_unstable();
-        let Some(parent_rank) = paint_nodes.iter().position(|node| node == candidate) else {
-            continue;
-        };
-        if !paint_nodes
-            .iter()
-            .enumerate()
-            .any(|(rank, node)| rank < parent_rank && descendants.binary_search(node).is_ok())
-        {
+        if !paint_nodes.iter().any(|node| node == candidate) {
             continue;
         }
 

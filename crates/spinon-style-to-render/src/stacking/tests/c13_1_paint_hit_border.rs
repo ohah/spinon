@@ -1,6 +1,6 @@
 use super::{
     SystemReserve, build_runtime_render_snapshot_with_reserve,
-    overflow_runtime_inputs_with_viewport,
+    overflow_runtime_inputs_with_reordered_child, overflow_runtime_inputs_with_viewport,
 };
 use serde_json::Value;
 use spinon_core::NodeId;
@@ -173,4 +173,177 @@ fn positioned_auto_background_precedes_simple_in_flow_children_for_each_overflow
             "{case_id}: descendant hit testing must remain above its parent"
         );
     }
+}
+
+#[test]
+fn positioned_auto_parent_keeps_static_box_before_its_positioned_escape_sibling() {
+    let styles = [
+        "position:relative;display:block;width:300px;height:100px;background-color:#101827",
+        "position:absolute;left:200px;top:60px;width:96px;height:18px;background-color:#101827",
+        "position:static;box-sizing:border-box;width:64px;height:14px;padding:2px;border:1px solid #f0c674;overflow:clip;background-color:#344256",
+        "position:absolute;left:58px;top:8px;box-sizing:border-box;width:30px;height:12px;background-color:#e3544e",
+    ];
+    let parents = [None, Some(0), Some(1), Some(1)];
+    let (input, node_ids) = overflow_runtime_inputs_with_viewport(&styles, &parents, 300.0, 100.0);
+    let scene = build_runtime_render_snapshot_with_reserve(
+        &input.document,
+        input.root,
+        &input.output,
+        input.current,
+        &mut SystemReserve,
+    )
+    .unwrap();
+    let section = scene
+        .boxes()
+        .iter()
+        .find(|render_box| render_box.node_id() == node_ids[1])
+        .unwrap();
+    let static_box = scene
+        .boxes()
+        .iter()
+        .find(|render_box| render_box.node_id() == node_ids[2])
+        .unwrap();
+    let escape_target = scene
+        .boxes()
+        .iter()
+        .find(|render_box| render_box.node_id() == node_ids[3])
+        .unwrap();
+
+    assert!(
+        section.paint_order() < static_box.paint_order(),
+        "positioned parent background must precede its in-flow static box"
+    );
+    assert!(
+        static_box.paint_order() < escape_target.paint_order(),
+        "the positioned sibling must retain its later auto-positioned paint phase"
+    );
+    assert!(
+        escape_target.hit_test_order() > static_box.hit_test_order(),
+        "paint grouping must not change topmost hit-test order"
+    );
+}
+
+#[test]
+fn positioned_escape_subtrees_keep_their_own_static_paint_groups() {
+    let styles = [
+        "position:relative;display:block;width:300px;height:100px;background-color:#101827",
+        "position:absolute;left:0;top:0;width:96px;height:40px;overflow:visible;background-color:#101827",
+        "position:static;width:20px;height:10px;overflow:clip;background-color:#344256",
+        "position:absolute;left:30px;top:0;width:24px;height:20px;background-color:#e3544e",
+        "position:static;width:12px;height:8px;background-color:#57a6d9",
+        "position:absolute;z-index:1;left:60px;top:0;width:24px;height:20px;background-color:#8a45ad",
+        "position:static;width:12px;height:8px;background-color:#f0c674",
+    ];
+    let parents = [None, Some(0), Some(1), Some(1), Some(3), Some(1), Some(5)];
+    let (input, node_ids) = overflow_runtime_inputs_with_viewport(&styles, &parents, 300.0, 100.0);
+    let scene = build_runtime_render_snapshot_with_reserve(
+        &input.document,
+        input.root,
+        &input.output,
+        input.current,
+        &mut SystemReserve,
+    )
+    .unwrap();
+    let render_box = |node| {
+        scene
+            .boxes()
+            .iter()
+            .find(|render_box| render_box.node_id() == node_ids[node])
+            .unwrap()
+    };
+    let outer = render_box(1);
+    let in_flow = render_box(2);
+    let escaped = render_box(3);
+    let escaped_child = render_box(4);
+    let stacking_context = render_box(5);
+    let context_child = render_box(6);
+
+    assert!(outer.paint_order() < in_flow.paint_order());
+    assert!(in_flow.paint_order() < escaped.paint_order());
+    assert!(escaped.paint_order() < escaped_child.paint_order());
+    assert!(escaped_child.paint_order() < stacking_context.paint_order());
+    assert!(stacking_context.paint_order() < context_child.paint_order());
+    assert!(escaped.hit_test_order() < escaped_child.hit_test_order());
+    assert!(stacking_context.hit_test_order() < context_child.hit_test_order());
+    assert!(
+        escaped.clip_css_px().x().is_none(),
+        "a static sibling's overflow clip must not attach to a positioned escape sibling"
+    );
+    assert!(
+        stacking_context.paint_order() > in_flow.paint_order(),
+        "a non-auto stacking context must remain in its separate paint phase"
+    );
+}
+
+#[test]
+fn moving_static_descendants_before_a_positioned_sibling_preserves_tree_order() {
+    let styles = [
+        "position:relative;display:block;width:300px;height:100px;background-color:#101827",
+        "position:absolute;left:0;top:0;width:96px;height:40px;background-color:#101827",
+        "position:static;width:12px;height:8px;background-color:#344256",
+        "position:static;width:12px;height:8px;background-color:#57a6d9",
+        "position:absolute;left:30px;top:0;width:24px;height:20px;background-color:#e3544e",
+    ];
+    let parents = [None, Some(0), Some(1), Some(1), Some(1)];
+    let (input, node_ids) = overflow_runtime_inputs_with_reordered_child(
+        &styles,
+        &parents,
+        300.0,
+        100.0,
+        Some((1, 3, 2)),
+    );
+    let scene = build_runtime_render_snapshot_with_reserve(
+        &input.document,
+        input.root,
+        &input.output,
+        input.current,
+        &mut SystemReserve,
+    )
+    .unwrap();
+    let paint_order = |node| {
+        scene
+            .boxes()
+            .iter()
+            .find(|render_box| render_box.node_id() == node_ids[node])
+            .unwrap()
+            .paint_order()
+    };
+
+    assert!(paint_order(1) < paint_order(3));
+    assert!(paint_order(3) < paint_order(2));
+    assert!(paint_order(2) < paint_order(4));
+}
+
+#[test]
+fn positioned_relative_auto_parent_paints_its_static_child_after_its_background() {
+    let styles = [
+        "position:relative;display:block;width:300px;height:100px;background-color:#101827",
+        "position:relative;width:96px;height:40px;background-color:#344256",
+        "position:static;width:64px;height:20px;background-color:#57a6d9",
+    ];
+    let parents = [None, Some(0), Some(1)];
+    let (input, node_ids) = overflow_runtime_inputs_with_viewport(&styles, &parents, 300.0, 100.0);
+    let scene = build_runtime_render_snapshot_with_reserve(
+        &input.document,
+        input.root,
+        &input.output,
+        input.current,
+        &mut SystemReserve,
+    )
+    .unwrap();
+    let parent = scene
+        .boxes()
+        .iter()
+        .find(|render_box| render_box.node_id() == node_ids[1])
+        .unwrap();
+    let child = scene
+        .boxes()
+        .iter()
+        .find(|render_box| render_box.node_id() == node_ids[2])
+        .unwrap();
+
+    assert!(
+        parent.paint_order() < child.paint_order(),
+        "relative z-index:auto parent background must precede its in-flow child"
+    );
 }

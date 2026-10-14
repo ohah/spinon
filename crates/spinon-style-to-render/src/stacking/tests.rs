@@ -141,6 +141,16 @@ fn overflow_runtime_inputs_with_viewport(
     width_css_px: f32,
     height_css_px: f32,
 ) -> (RuntimeInputs, Vec<NodeId>) {
+    overflow_runtime_inputs_with_reordered_child(styles, parents, width_css_px, height_css_px, None)
+}
+
+fn overflow_runtime_inputs_with_reordered_child(
+    styles: &[&str],
+    parents: &[Option<usize>],
+    width_css_px: f32,
+    height_css_px: f32,
+    reorder: Option<(usize, usize, usize)>,
+) -> (RuntimeInputs, Vec<NodeId>) {
     assert_eq!(styles.len(), parents.len());
     let mut document = HostDocument::new().unwrap();
     let handles = styles
@@ -169,6 +179,16 @@ fn overflow_runtime_inputs_with_viewport(
         });
     }
     document.commit(batch).unwrap();
+    if let Some((parent_index, node_index, before_index)) = reorder {
+        let mut batch =
+            DocumentChangeBatch::new(OwnerId::new(8131).unwrap(), document.document_revision());
+        batch.push(DocumentOperation::InsertBefore {
+            parent: HostParent::Node(handles[parent_index]),
+            node: handles[node_index],
+            before: Some(handles[before_index]),
+        });
+        document.commit(batch).unwrap();
+    }
     let document = document.snapshot();
     let root = handles[0];
     let viewport = CssViewport {
