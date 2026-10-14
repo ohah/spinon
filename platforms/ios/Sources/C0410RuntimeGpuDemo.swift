@@ -302,11 +302,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     private var surfaceConfigurationPending = false
     private var surfaceGeneration: UInt64 = 0
     private var rendererSurfaceGeneration: UInt64?
+    private var rendererSurfaceFormat: String?
     private var lastDrawableSize = CGSize.zero
     private var c111MetalDrawableSize = CGSize.zero
     private var viewportWidthCssPx: Float = 301
     private var viewportHeightCssPx: Float = 100
     private var presentationSequence: UInt64 = 0
+    private var runtimeInitializationComplete = false
     private var expandedSurface = false
     private var automaticResizeScheduled = false
     private let failureProbeRequested = ProcessInfo.processInfo.arguments
@@ -510,12 +512,19 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c131-compact-surface-matrix")
     private let c131CompactHitIdentityGridProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c131-compact-hit-identity-grid")
+    private let c131CompactMetalPixelCentersRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c131-compact-metal-pixel-centers")
     private var c131CompactSurfaceMatrixRouteRequested: Bool {
         c131CompactSurfaceMatrixProbeRequested || c131CompactHitIdentityGridProbeRequested
     }
     private let c131CompactSurfaceMatrixRunID = UUID().uuidString
         .replacingOccurrences(of: "-", with: "").lowercased()
     private var c131CompactHitIdentityGridStatusMessage: String?
+    private var c131MetalPixelCapture: C131MetalSurfacePixelCapture?
+    private var c131MetalCaptureBaselineDrawReady = false
+    private var c131MetalPixelBatchRequested = false
+    private var c131MetalPixelCaptureComplete = false
+    private var c131MetalPixelCaptureFailed = false
     private let c131OverflowClipProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c131-overflow-clip")
     private let c131BorderStripProbeRequested = ProcessInfo.processInfo.arguments
@@ -1642,6 +1651,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
     private func initializeRuntime() {
         guard !isClosing else { return }
+        if c131CompactMetalPixelCentersRequested
+            && !c131CompactHitIdentityGridProbeRequested {
+            log("SPINON_C131_METAL_PIXEL_ARGUMENT_ERROR reason=requires-compact-hit-identity-grid")
+            postStatus("실패 · Metal pixel route에는 C13.1 compact hit identity route가 필요합니다")
+            return
+        }
         let selectedC131Routes = [
             c131OverflowClipProbeRequested,
             c131CompactSurfaceMatrixProbeRequested,
@@ -1659,6 +1674,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                    && $0 != "--spinon-c131-overflow-clip"
                    && $0 != "--spinon-c131-compact-surface-matrix"
                    && $0 != "--spinon-c131-compact-hit-identity-grid"
+                   && $0 != "--spinon-c131-compact-metal-pixel-centers"
                    && $0 != "--spinon-c131-overflow-clip-border"
                    && $0 != "--spinon-c0410-runtime-gpu"
            }) {
@@ -1750,7 +1766,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             postStatus("실패 · C12.4 Metal 표본 case 인수가 올바르지 않습니다")
             return
         }
-        let handle = c131CompactSurfaceMatrixRouteRequested
+        let handle = c131CompactMetalPixelCentersRequested
+            ? SpinonRunner.createRuntimeGpuHostWithC13_1CompactSurfacePixelReadbackFixture()
+            : c131CompactSurfaceMatrixRouteRequested
             ? SpinonRunner.createRuntimeGpuHostWithC13_1CompactSurfaceMatrixFixture()
             : c131BorderStripProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithC13_1OverflowClipBorderFixture()
@@ -1794,6 +1812,19 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         guard handle != 0 else {
             postStatus("실패 · V8 runtime host를 만들지 못했습니다")
             return
+        }
+        if c131CompactMetalPixelCentersRequested {
+            do {
+                c131MetalPixelCapture = try C131MetalSurfacePixelCapture(
+                    runID: c131CompactSurfaceMatrixRunID
+                )
+                log("SPINON_C131_METAL_PIXEL_CAPTURE_BEGIN run_id=\(c131CompactSurfaceMatrixRunID) viewport=300x100 samples=30000 batch_size=64 batch_count=\(C131MetalSurfacePixelCapture.totalBatchCount)")
+            } catch {
+                SpinonRunner.freeRuntimeGpuHost(handle)
+                log("SPINON_C131_METAL_PIXEL_CAPTURE_ERROR run_id=\(c131CompactSurfaceMatrixRunID) stage=artifact-init reason=\(error)")
+                postStatus("실패 · C13.1 Metal pixel artifact를 준비하지 못했습니다")
+                return
+            }
         }
         log("SPINON_C0410_HOST_RETURNED handle=\(handle)")
         stateLock.lock()
@@ -2371,6 +2402,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         if c124DepthSafetyProbeRequested {
             postStatus("C12.4 깊이 검증 통과 · 1024 통과, 1025 거부, 얕은 revision 복구")
         }
+        stateLock.lock()
+        runtimeInitializationComplete = !closing
+        stateLock.unlock()
         DispatchQueue.main.async { [weak self] in
             guard let self else { return }
             let size = self.lastDrawableSize
@@ -2728,10 +2762,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let configureThread = Thread.isMainThread ? "main" : "other"
         log("SPINON_C0410_SURFACE_CONFIGURE thread=\(configureThread) \(configureReport ?? "")")
         let ready = configureReport?.hasPrefix("status=0 ") == true
+        let surfaceFormat = reportField(rendererReport, "format=")
         stateLock.lock()
         let stale = closing || surfaceGeneration != generation
         rendererReady = ready && !stale
         rendererSurfaceGeneration = ready && !stale ? generation : nil
+        rendererSurfaceFormat = ready && !stale && !surfaceFormat.isEmpty ? surfaceFormat : nil
         if ready && !stale { rendererCreationPending = false }
         stateLock.unlock()
         if ready && stale {
@@ -2894,6 +2930,19 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
     }
 
+    private func failC131MetalPixelCapture(
+        stage: String,
+        error: Error
+    ) -> C0410LatestTaskLaneError {
+        c131MetalPixelCapture?.abort()
+        c131MetalPixelBatchRequested = false
+        c131MetalPixelCaptureFailed = true
+        let reason = String(describing: error)
+        log("SPINON_C131_METAL_PIXEL_CAPTURE_ERROR run_id=\(c131CompactSurfaceMatrixRunID) stage=\(stage) reason=\(reason)")
+        postStatus("실패 · C13.1 Metal pixel 표면 대조 \(stage)")
+        return .operationFailed("C13.1 Metal pixel capture \(stage): \(reason)")
+    }
+
     private func drawLatestIfReady() throws {
         stateLock.lock()
         guard !closing, rendererReady, rendererSurfaceGeneration == surfaceGeneration,
@@ -2908,6 +2957,59 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             runShutdownProbeGate()
         }
         guard canUseSurfaceGeneration(generation) else { return }
+        if let capture = c131MetalPixelCapture,
+           !c131MetalPixelCaptureComplete,
+           !c131MetalPixelCaptureFailed,
+           c131MetalCaptureBaselineDrawReady,
+           c131CompactHitIdentityGridStatusMessage?.hasPrefix("완료") == true,
+           !c131MetalPixelBatchRequested {
+            stateLock.lock()
+            let drawableSize = c111MetalDrawableSize
+            let viewportWidth = viewportWidthCssPx
+            let viewportHeight = viewportHeightCssPx
+            let format = rendererSurfaceFormat ?? ""
+            stateLock.unlock()
+            do {
+                guard viewportWidth == 300, viewportHeight == 100,
+                      drawableSize.width > 0, drawableSize.height > 0,
+                      let width = Int(exactly: drawableSize.width),
+                      let height = Int(exactly: drawableSize.height) else {
+                    throw C131MetalSurfacePixelCapture.CaptureError.invalidSurfaceSize
+                }
+                guard let batch = try capture.nextBatch(
+                    drawableWidth: width,
+                    drawableHeight: height,
+                    generation: generation,
+                    format: format
+                ), !batch.isEmpty else {
+                    throw C131MetalSurfacePixelCapture.CaptureError.batchMissing
+                }
+                var sampleXY: [UInt32] = []
+                sampleXY.reserveCapacity(batch.count * 2)
+                for sample in batch {
+                    guard let x = UInt32(exactly: sample.drawableX),
+                          let y = UInt32(exactly: sample.drawableY) else {
+                        throw C131MetalSurfacePixelCapture.CaptureError.invalidSurfaceSize
+                    }
+                    sampleXY.append(x)
+                    sampleXY.append(y)
+                }
+                let request = sampleXY.withUnsafeBufferPointer { buffer in
+                    SpinonRunner.requestRuntimeGpuC13_1SurfacePixels(
+                        forTest: handle,
+                        sampleXY: buffer.baseAddress,
+                        sampleCount: UInt(sampleXY.count / 2)
+                    )
+                } ?? "status=-1 missing-request-report"
+                guard request.hasPrefix("status=0 ") else {
+                    throw C0410LatestTaskLaneError.operationFailed(request)
+                }
+                c131MetalPixelBatchRequested = true
+                log("SPINON_C131_METAL_PIXEL_BATCH_REQUESTED run_id=\(c131CompactSurfaceMatrixRunID) batch=\(batch[0].index / C131MetalSurfacePixelCapture.batchSize) count=\(batch.count) generation=\(generation) drawable=\(width)x\(height)")
+            } catch {
+                throw failC131MetalPixelCapture(stage: "request", error: error)
+            }
+        }
         if let pixelRun = c111MetalPixelRun, !c111MetalPixelRequestIssued {
             let pixelMarker = "SPINON_\(pixelRun.markerPrefix)_METAL_PIXEL"
             stateLock.lock()
@@ -3011,15 +3113,87 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             log("SPINON_C124_METAL_PIXEL_REQUESTED run_id=\(pixelCase.runID) case=\(pixelCase.caseID) css_x=\(pixelCase.cssSample.x) css_y=\(pixelCase.cssSample.y) scale=\(scale) pixel_x=\(pixelX) pixel_y=\(pixelY)")
         }
         let result = SpinonRunner.drawRuntimeGpuWgpu(handle)
-        log("SPINON_C0410_DRAW generation=\(generation) \(result ?? "")")
+        if c131MetalPixelCapture != nil {
+            log("SPINON_C0410_DRAW generation=\(generation) status=\(result?.hasPrefix("status=0 ") == true ? "0" : "error") boxes=\(reportField(result ?? "", "boxes=")) surface_texture=\(reportField(result ?? "", "surface_texture="))")
+        } else {
+            log("SPINON_C0410_DRAW generation=\(generation) \(result ?? "")")
+        }
         if result?.hasPrefix("status=-12 ") == true {
+            if c131MetalPixelCapture != nil,
+               c131MetalPixelBatchRequested,
+               !c131MetalPixelCaptureComplete,
+               !c131MetalPixelCaptureFailed {
+                throw failC131MetalPixelCapture(
+                    stage: "draw-superseded",
+                    error: C0410LatestTaskLaneError.operationFailed("draw report가 새 presentation에 의해 폐기됐습니다")
+                )
+            }
             log("SPINON_C0410_DRAW_SUPERSEDED generation=\(generation)")
             requestDraw()
             return
         }
         if result?.hasPrefix("status=0 ") != true {
-                postStatus("실패 · \(result ?? "WGPU draw 보고 없음")")
+            postStatus("실패 · \(result ?? "WGPU draw 보고 없음")")
+            if c131MetalPixelCapture != nil,
+               !c131MetalPixelCaptureComplete,
+               !c131MetalPixelCaptureFailed {
+                throw failC131MetalPixelCapture(
+                    stage: "draw",
+                    error: C0410LatestTaskLaneError.operationFailed(result ?? "WGPU draw 보고 없음")
+                )
+            }
             throw C0410LatestTaskLaneError.operationFailed(result ?? "WGPU draw 실패 보고 없음")
+        }
+        if c131MetalPixelCapture != nil,
+           !c131MetalCaptureBaselineDrawReady,
+           !c131MetalPixelCaptureComplete,
+           !c131MetalPixelCaptureFailed,
+           c131CompactHitIdentityGridStatusMessage?.hasPrefix("완료") == true {
+            c131MetalCaptureBaselineDrawReady = true
+            log("SPINON_C131_METAL_PIXEL_BASELINE_DRAW_READY run_id=\(c131CompactSurfaceMatrixRunID) generation=\(generation) boxes=\(reportField(result ?? "", "boxes=")) surface_texture=\(reportField(result ?? "", "surface_texture="))")
+            requestDraw()
+        }
+        if let capture = c131MetalPixelCapture,
+           c131MetalPixelBatchRequested,
+           !c131MetalPixelCaptureComplete,
+           !c131MetalPixelCaptureFailed {
+            guard isCurrentSurfaceGeneration(generation) else {
+                throw failC131MetalPixelCapture(
+                    stage: "surface-generation",
+                    error: C131MetalSurfacePixelCapture.CaptureError.generationChanged
+                )
+            }
+            stateLock.lock()
+            let drawableSize = c111MetalDrawableSize
+            let format = rendererSurfaceFormat ?? ""
+            stateLock.unlock()
+            guard let width = Int(exactly: drawableSize.width),
+                  let height = Int(exactly: drawableSize.height) else {
+                throw failC131MetalPixelCapture(
+                    stage: "surface-size",
+                    error: C131MetalSurfacePixelCapture.CaptureError.invalidSurfaceSize
+                )
+            }
+            do {
+                let progress = try capture.acceptDrawReport(
+                    result ?? "",
+                    generation: generation,
+                    drawableWidth: width,
+                    drawableHeight: height,
+                    format: format
+                )
+                c131MetalPixelBatchRequested = false
+                if progress.complete {
+                    c131MetalPixelCaptureComplete = true
+                    log("SPINON_C131_METAL_PIXEL_CAPTURE_COMPLETE run_id=\(c131CompactSurfaceMatrixRunID) generation=\(generation) samples=\(progress.capturedSamples) batches=\(progress.capturedBatches) sample_file=\(progress.sampleFileName ?? "missing") manifest_file=\(progress.manifestFileName ?? "missing")")
+                    postStatus("완료 · C13.1 iOS Metal pixel 30,000/30,000")
+                } else {
+                    log("SPINON_C131_METAL_PIXEL_BATCH_COMPLETE run_id=\(c131CompactSurfaceMatrixRunID) generation=\(generation) samples=\(progress.capturedSamples)/\(progress.totalSamples) batches=\(progress.capturedBatches)/\(progress.totalBatches)")
+                    requestDraw()
+                }
+            } catch {
+                throw failC131MetalPixelCapture(stage: "sample-validation", error: error)
+            }
         }
         if let pixelRun = c111MetalPixelRun, !c111MetalPixelReadbackFinished {
             try verifyC111MetalPixelReadback(
@@ -3266,7 +3440,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         presentationUpdateLock.lock()
         defer { presentationUpdateLock.unlock() }
         stateLock.lock()
-        guard !closing, hostHandle != 0 else {
+        guard !closing, hostHandle != 0,
+              !c131CompactSurfaceMatrixRouteRequested || runtimeInitializationComplete else {
             stateLock.unlock()
             return 0
         }

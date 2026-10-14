@@ -1,0 +1,198 @@
+{
+  "status": "matched",
+  "runId": "4198962154734bbc8b5757c6e9f7daa6",
+  "generation": 1,
+  "processID": 77216,
+  "viewportCssPx": [
+    300,
+    100
+  ],
+  "drawablePixelSize": [
+    900,
+    300
+  ],
+  "surfaceFormat": "Bgra8UnormSrgb",
+  "rgbaOrder": "RGBA8",
+  "scale": [
+    3,
+    3
+  ],
+  "sampleCount": 30000,
+  "comparedChannels": 120000,
+  "mismatchedPixels": 0,
+  "maximumChannelError": 0,
+  "sampleSha256": "94a29b7444cf56942dedeb8f6dbf8e48b97523ab0a828a3c11a5809eb490edbf",
+  "outsideBorderSamples": [
+    {
+      "caseId": "visible",
+      "css": [
+        70,
+        6
+      ],
+      "expectedRgba": [
+        87,
+        166,
+        217,
+        255
+      ]
+    },
+    {
+      "caseId": "clip-x",
+      "css": [
+        170,
+        6
+      ],
+      "expectedRgba": [
+        16,
+        24,
+        39,
+        255
+      ]
+    },
+    {
+      "caseId": "clip-y",
+      "css": [
+        270,
+        6
+      ],
+      "expectedRgba": [
+        87,
+        166,
+        217,
+        255
+      ]
+    },
+    {
+      "caseId": "clip-both",
+      "css": [
+        70,
+        26
+      ],
+      "expectedRgba": [
+        16,
+        24,
+        39,
+        255
+      ]
+    },
+    {
+      "caseId": "clip-margin-padding",
+      "css": [
+        170,
+        26
+      ],
+      "expectedRgba": [
+        16,
+        24,
+        39,
+        255
+      ]
+    },
+    {
+      "caseId": "clip-margin-content",
+      "css": [
+        270,
+        26
+      ],
+      "expectedRgba": [
+        16,
+        24,
+        39,
+        255
+      ]
+    },
+    {
+      "caseId": "clip-margin-border",
+      "css": [
+        70,
+        46
+      ],
+      "expectedRgba": [
+        16,
+        24,
+        39,
+        255
+      ]
+    },
+    {
+      "caseId": "clip-margin-hidden",
+      "css": [
+        170,
+        46
+      ],
+      "expectedRgba": [
+        16,
+        24,
+        39,
+        255
+      ]
+    },
+    {
+      "caseId": "mixed-visible-hidden",
+      "css": [
+        270,
+        46
+      ],
+      "expectedRgba": [
+        16,
+        24,
+        39,
+        255
+      ]
+    },
+    {
+      "caseId": "mixed-clip-auto",
+      "css": [
+        70,
+        66
+      ],
+      "expectedRgba": [
+        16,
+        24,
+        39,
+        255
+      ]
+    },
+    {
+      "caseId": "positioned-contained",
+      "css": [
+        170,
+        72
+      ],
+      "expectedRgba": [
+        16,
+        24,
+        39,
+        255
+      ]
+    },
+    {
+      "caseId": "positioned-escape",
+      "css": [
+        270,
+        72
+      ],
+      "expectedRgba": [
+        227,
+        84,
+        78,
+        255
+      ]
+    }
+  ],
+  "mismatches": [],
+  "oracle": {
+    "browser": "Google Chrome 155.0.8059.40",
+    "revision": "cfaadc5a132d78e1828635aa8405a499f3e14864-refs/branch-heads/8059@{#936}",
+    "observationSha256": "515fc95f811399fda9e336a13e7583f2d22555fce4727f1fe7f734981abd0299",
+    "screenshotSha256": "b682308e3604ad599becff2c8d8c801c80a2a5b8547f3ac3316f133d47232601",
+    "observationFile": "spec/internal/evidence/c13-1-compact-surface-matrix-2026-10-14/chrome155-observation.json",
+    "screenshotFile": "spec/internal/evidence/c13-1-compact-surface-matrix-2026-10-14/chrome155-surface.png"
+  },
+  "artifact": {
+    "manifestFile": "spec/internal/evidence/c13-1-ios-metal-pixel-centers-2026-10-15/c13-1-ios-metal-20261014T171601787Z-572c6b6a/c131-metal-pixel-centers-4198962154734bbc8b5757c6e9f7daa6.manifest.json",
+    "manifestSha256": "3b5ca77f9eef99969fd0eba365732dced2741ac4f4afc35c7bc3cca672f545dc",
+    "sampleFile": "spec/internal/evidence/c13-1-ios-metal-pixel-centers-2026-10-15/c13-1-ios-metal-20261014T171601787Z-572c6b6a/c131-metal-pixel-centers-4198962154734bbc8b5757c6e9f7daa6.jsonl",
+    "sampleSha256": "94a29b7444cf56942dedeb8f6dbf8e48b97523ab0a828a3c11a5809eb490edbf"
+  }
+}
