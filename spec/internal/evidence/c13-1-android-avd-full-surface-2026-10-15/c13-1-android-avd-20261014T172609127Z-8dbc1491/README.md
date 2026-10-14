@@ -7,6 +7,7 @@
 - Chrome target이 overflow container border 바깥까지 paint하는 `(270,72)`를 전체 좌표 scan에 포함했다.
 - API 37 ARM64 AVD의 ANGLE/Vulkan/SwiftShader만 검증한다. 실기기·hardware GPU·전체 physical pixel byte, DOM event dispatch, WPT 및 C13.1 완료를 뜻하지 않는다.
 - [실행 요약](./summary.json) · build/install/launch/runtime 로그, PixelCopy와 앱 화면을 함께 보존했다.
+- 실행 요약은 APK 앱 소스 revision과 해시를 고정하고, AVD capture 도구의 SHA-256은 [artifact 해시 목록](./artifacts.sha256)에 함께 고정한다.
 
 ## ADB runner 진단
 
