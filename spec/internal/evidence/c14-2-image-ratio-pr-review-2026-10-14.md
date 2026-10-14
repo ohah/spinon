@@ -1,6 +1,6 @@
-# C14.2 stacked PR 적대 검토 · 2026-10-14
+# C14.2 PR 변경 적대 검토 · 2026-10-14
 
-대상은 [PR #156](https://github.com/ohah/spinon/pull/156), head `feat/c14-2-image-ratio-sizing`, base `feat/u05-image-resource`다. 부모 [PR #155](https://github.com/ohah/spinon/pull/155)는 검토 당시 open 상태였고, PR #156도 `CLEAN` merge state지만 두 branch에 보고된 CI check가 없었다. 계획 검토와 구현 검토에서 사용한 sizing 실패 관점을 반복하지 않고, PR diff·stack 관계·계약·증거·검토 경계에 대해 별도 20개를 확인했다.
+이 20개 항목은 PR #156이 PR #155 위에 쌓여 있던 최초 검토 시점의 PR 구조와 변경 내용을 기록한 역사적 snapshot이다. 부모 PR은 이후 main에 병합됐으며, 재기반 뒤의 PR base·diff·화면 첨부·merge gate는 별도의 [재기반 적대 검토](c14-2-image-ratio-rebase-review-2026-10-14.md)에서 다시 확인했다. 최초 검토 시점에 계획 및 구현 검토와 다른 PR 경계 관점 20개를 확인했다.
 
 | # | 공격 관점 | 판정과 근거 |
 |---:|---|---|
