@@ -10,9 +10,9 @@ PR에 올릴 코드·상태·근거·이미지·플랫폼 설명을 계획 검�
 | 4 | PR #163 계획이 implementation PR 전에 검토·병합되지 않았다 | #163은 merge SHA `9529b108476bb22e090d9ec3e6f1db5b70371f77`로 main에 병합됐다. **통과.** |
 | 5 | Chrome oracle 파일이 다른 browser revision으로 바뀐다 | observation/grid file SHA와 Chrome 155 revision·UA가 고정돼 있다. validator 5/5가 provenance mutation을 거부한다. **통과.** |
 | 6 | screenshots나 PR 그림이 oracle reference를 대신한다 | 앱 화면은 실행 표시, PixelCopy는 paint capture, Chrome JSON은 hit identity oracle로 각각 설명한다. **통과.** |
-| 7 | 실제 앱 화면을 PR 본문에서 볼 수 없다 | PR body는 commit-pinned raw GitHub PNG를 inline embed하고 agent-browser에서 실제 image load를 확인한다. **PR 생성 뒤 확인 예정.** |
+| 7 | 실제 앱 화면을 PR 본문에서 볼 수 없다 | PR #164 본문에 앱 screenshot을 inline embed했고 agent-browser에서 `complete=true`, natural size 1080×2400을 확인했다. **통과.** |
 | 8 | PixelCopy surface crop을 앱 전체 화면으로 표시한다 | 1080×2400 앱 screenshot과 788×263 PixelCopy를 각각 저장하고 별도 alt text로 제공한다. **통과.** |
-| 9 | raw image URL이 branch 이동이나 만료에 따라 달라진다 | PR 이미지 링크는 head commit SHA와 저장소 경로를 고정한다. **PR 생성 뒤 확인 예정.** |
+| 9 | raw image URL이 branch 이동이나 만료에 따라 달라진다 | 두 raw GitHub URL 모두 commit `3972c3d9e30a5106da725cde7f136076b5ecc5ad`와 저장소 경로를 고정했다. **통과.** |
 | 10 | 52 fixed sample을 30,000 full integer point 비교로 잘못 부른다 | README/PR은 52 hit sample, 30,000 hit query, 52 PixelCopy sample을 분리해 쓴다. **통과.** |
 | 11 | 30,000 CSS query를 full physical surface pixel parity라 설명한다 | 표본은 CSS 정수 좌표의 `elementFromPoint` 대 runtime hit identity 비교다. PixelCopy 전체 RGBA 대조가 아님을 명시한다. **통과.** |
 | 12 | 화면의 `status=0`만으로 grid pass를 주장한다 | Logcat에 30,000/30,000, mismatch 0, identity/oracle SHA가 별도 남는다. **통과.** |
@@ -31,8 +31,8 @@ PR에 올릴 코드·상태·근거·이미지·플랫폼 설명을 계획 검�
 | 25 | app screenshot의 확대·상태 표시가 잘못된 route를 숨긴다 | 화면에 13개 case, 30,000 hit identity + 52 PixelCopy와 `boxes=41`, `layout=ready`가 보인다. **통과.** |
 | 26 | 성공한 좁은 route를 WPT/event/C13.1 완료로 확대한다 | WPT, DOM event/CSSOM, frame 밖 negative controls, full physical-pixel parity와 C13.1 완료를 남은 범위로 명시한다. **통과.** |
 | 27 | test log 수치가 현재 tree와 무관한 이전 run이다 | Rust tree 변경 뒤 workspace tests 779/0/4, workspace Clippy, feature FFI tests/Clippy와 Node validator 5/5를 기록했다. Java 변경 뒤 app build/AVD를 다시 실행했다. **통과.** |
-| 28 | PR screenshot URL은 raw GitHub에서 표시되지 않는다 | PR 페이지의 `document.images`로 complete/natural dimensions를 agent-browser에서 확인한다. **PR 생성 뒤 확인 예정.** |
-| 29 | PR template·labels·evidence links가 빠진다 | body는 상태 ID, contract 0060, 실행 근거, inline screenshots, 남은 범위를 채우고 기존 type/Android 영역 label을 사용한다. **PR 생성 뒤 확인 예정.** |
-| 30 | 오래된 mergeability/check 상태를 보고 병합한다 | 최신 PR head의 checks·mergeability 및 branch protection을 다시 읽고, repository 규칙대로 Rebase and merge 후 merge SHA를 검증한다. **병합 전 확인 예정.** |
+| 28 | PR screenshot URL은 raw GitHub에서 표시되지 않는다 | PR #164 페이지를 agent-browser session `c13-1-apphit`으로 열어 두 raw PNG가 모두 `complete=true`인지 확인했다. natural sizes는 앱 화면 1080×2400, PixelCopy 788×263이다. **통과.** |
+| 29 | PR template·labels·evidence links가 빠진다 | 본문은 상태 ID, 계약 0060, 실행 근거, 두 inline image, 남은 범위를 채웠다. GitHub에서 `enhancement`, `area: android`, `area: ffi` labels도 확인했다. **통과.** |
+| 30 | 오래된 mergeability/check 상태를 보고 병합한다 | PR #164 head `3972c3d`는 `MERGEABLE`, status check rollup/checks는 비어 있었다. main protection은 required checks 없음, required approvals 0, linear history 및 admin enforcement enabled다. 다음 문서-only commit을 push한 뒤 현재 head를 재조회하고 Rebase and merge로 처리한다. **현재 head 확인 통과; 최종 head 재조회 필요.** |
 
-PR을 열고 이미지 표시를 확인한 뒤 항목 7·9·28·29·30의 보류 판정을 갱신한다. 병합 시 최신 상태까지 확인하고 결과를 이 문서에 기록한다.
+최종 evidence-link review commit 뒤에는 PR head·checks·mergeability를 다시 확인한다. PR #164는 repository 규칙대로 Rebase and merge 대상이다.
