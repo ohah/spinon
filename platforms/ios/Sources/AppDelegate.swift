@@ -26,6 +26,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.hasPrefix("--spinon-c124-run-id=")
         }?.components(separatedBy: "=").last
         let runRuntimeGpu = arguments.contains("--spinon-c0410-runtime-gpu")
+            || arguments.contains("--spinon-c131-overflow-clip")
             || arguments.contains("--spinon-c1121-grid-placement")
             || arguments.contains(where: { $0.hasPrefix("--spinon-c1121-grid-scene=") })
             || arguments.contains("--spinon-c1122-grid-auto-placement")

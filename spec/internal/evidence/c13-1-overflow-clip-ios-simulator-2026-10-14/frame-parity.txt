@@ -1,0 +1,18 @@
+PASS: iPhone 17 Pro Simulator; Chrome 155.0.8059.40 oracle
+Runtime: status=0 layout=ready boxes=13
+Geometry: 13/13 frames; max absolute error=0.000 CSS px (limit 0.500)
+Hit testing: 15/15 fixed samples match IDs, coordinates, and elements
+Negative controls: viewport left/top/right/bottom outside points return null
+frame 00 c131-root: x=0 y=0 w=300 h=100
+frame 01 c131-visible: x=10 y=6 w=90 h=44
+frame 02 c131-visible-target: x=19 y=15 w=130 h=70
+frame 03 c131-clip: x=105 y=6 w=90 h=44
+frame 04 c131-clip-target: x=114 y=15 w=130 h=70
+frame 05 c131-margin: x=200 y=6 w=90 h=44
+frame 06 c131-margin-target: x=209 y=15 w=130 h=70
+frame 07 c131-nested-outer: x=10 y=62 w=120 h=34
+frame 08 c131-nested-inner: x=37 y=68 w=50 h=20
+frame 09 c131-nested-target: x=40 y=71 w=90 h=28
+frame 10 c131-escape-outer: x=150 y=62 w=140 h=34
+frame 11 c131-escape-static-clip: x=156 y=68 w=45 h=24
+frame 12 c131-escape-target: x=222 y=68 w=50 h=22

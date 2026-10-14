@@ -97,7 +97,7 @@ NSUInteger C10LogNodeFrames(NSString *report, const char *label) {
   }
   NSUInteger framesStart = NSMaxRange(markerRange);
   NSRange closingRange = [report rangeOfString:@"]"
-                                            options:NSBackwardsSearch
+                                            options:0
                                               range:NSMakeRange(framesStart,
                                                                 report.length - framesStart)];
   if (closingRange.location == NSNotFound) {
@@ -120,6 +120,59 @@ NSUInteger C10LogNodeFrames(NSString *report, const char *label) {
   C0410LogReport(OS_LOG_TYPE_INFO, "SPINON_C10_NODE_FRAME_COUNT", detail);
   return count;
 }
+
+#if defined(SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST) && \
+    SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST
+NSUInteger C131LogHitTestSamples(NSString *report) {
+  NSString *marker = @" hit_test_samples_json=[";
+  NSRange markerRange = [report rangeOfString:marker];
+  if (markerRange.location == NSNotFound) {
+    C0410LogReport(OS_LOG_TYPE_ERROR, "SPINON_C131_HIT_TEST_ERROR",
+                   @"marker=missing");
+    return 0;
+  }
+  NSUInteger cursor = NSMaxRange(markerRange);
+  NSRange closingRange = [report rangeOfString:@"]"
+                                            options:NSBackwardsSearch
+                                              range:NSMakeRange(cursor,
+                                                                report.length - cursor)];
+  if (closingRange.location == NSNotFound) {
+    C0410LogReport(OS_LOG_TYPE_ERROR, "SPINON_C131_HIT_TEST_ERROR",
+                   @"closing bracket is missing");
+    return 0;
+  }
+
+  NSUInteger count = 0;
+  NSUInteger matched = 0;
+  while (cursor < closingRange.location) {
+    NSRange objectStart = [report rangeOfString:@"{"
+                                        options:0
+                                          range:NSMakeRange(cursor,
+                                                            closingRange.location - cursor)];
+    if (objectStart.location == NSNotFound) break;
+    NSRange objectEnd = [report rangeOfString:@"}"
+                                      options:0
+                                        range:NSMakeRange(NSMaxRange(objectStart),
+                                                          closingRange.location - NSMaxRange(objectStart))];
+    if (objectEnd.location == NSNotFound) {
+      C0410LogReport(OS_LOG_TYPE_ERROR, "SPINON_C131_HIT_TEST_ERROR",
+                     @"sample object is incomplete");
+      return count;
+    }
+    NSString *sample = [report substringWithRange:
+        NSMakeRange(objectStart.location, NSMaxRange(objectEnd) - objectStart.location)];
+    C0410LogReport(OS_LOG_TYPE_INFO, "SPINON_C131_HIT_TEST", sample);
+    count += 1;
+    if ([sample containsString:@"\"status\":\"matched\""]) matched += 1;
+    cursor = NSMaxRange(objectEnd);
+  }
+  NSString *summary = [NSString stringWithFormat:
+      @"status=%@ matched=%lu total=%lu", matched == 15 && count == 15 ? @"ok" : @"error",
+      (unsigned long)matched, (unsigned long)count];
+  C0410LogReport(OS_LOG_TYPE_INFO, "SPINON_C131_HIT_TEST_SUMMARY", summary);
+  return count;
+}
+#endif
 
 }  // namespace
 
@@ -605,6 +658,27 @@ NSUInteger C10LogNodeFrames(NSString *report, const char *label) {
 #else
   os_log_error(OS_LOG_DEFAULT,
                "SPINON_C124_DISABLED rebuild with SPINON_ENABLE_C04_RUNTIME_GPU=1");
+  return 0;
+#endif
+}
+
++ (uint64_t)createRuntimeGpuHostWithC13_1OverflowClipFixture {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST) && \
+    SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST
+  std::array<char, 1024> output{};
+  SpinonRuntimeGpuHost *host =
+      spinon_runtime_gpu_host_new_c13_1_overflow_clip_fixture(
+          output.data(), output.size());
+  if (host == nullptr) {
+    os_log_error(OS_LOG_DEFAULT, "SPINON_C131_HOST_ERROR=%{public}s", output.data());
+    return 0;
+  }
+  os_log(OS_LOG_DEFAULT, "SPINON_C131_HOST=%{public}s", output.data());
+  return static_cast<uint64_t>(reinterpret_cast<uintptr_t>(host));
+#else
+  os_log_error(OS_LOG_DEFAULT,
+               "SPINON_C131_DISABLED enable C04 runtime GPU and C13.1 fixture test");
   return 0;
 #endif
 }
@@ -1233,6 +1307,36 @@ NSUInteger C10LogNodeFrames(NSString *report, const char *label) {
   NSString *report = C0410Report(status, output);
   C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
                  "SPINON_C124_EVAL", report);
+  return report;
+#else
+  (void)handle;
+  return @"status=-90 feature-disabled";
+#endif
+}
+
++ (NSString *)evalRuntimeGpuC13_1OverflowClipFixture:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST) && \
+    SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 32768> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_c13_1_overflow_clip_fixture(
+      host, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C131_EVAL", report);
+  if (status == 0) {
+    const NSUInteger frameCount = C10LogNodeFrames(report, "SPINON_C131_NODE_FRAME");
+    const NSUInteger hitCount = C131LogHitTestSamples(report);
+    NSString *summary = [NSString stringWithFormat:
+        @"status=%@ boxes=%lu hit_samples=%lu",
+        frameCount == 13 && hitCount == 15 ? @"ok" : @"error",
+        (unsigned long)frameCount, (unsigned long)hitCount];
+    C0410LogReport(frameCount == 13 && hitCount == 15
+                       ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                   "SPINON_C131_FIXTURE_SUMMARY", summary);
+  }
   return report;
 #else
   (void)handle;
