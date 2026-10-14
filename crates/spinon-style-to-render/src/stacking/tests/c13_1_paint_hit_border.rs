@@ -124,3 +124,53 @@ fn static_and_positioned_clip_border_strips_match_chrome_without_changing_paint_
         );
     }
 }
+
+#[test]
+fn positioned_auto_background_precedes_simple_in_flow_children_for_each_overflow_mode() {
+    for (case_id, overflow) in [
+        ("visible", "overflow:visible;"),
+        ("clip", "overflow:clip;"),
+        ("hidden", "overflow:hidden;"),
+        ("mixed-clip-auto", "overflow-x:clip;overflow-y:auto;"),
+    ] {
+        let positioned_style = format!(
+            "position:absolute;left:0;top:1px;width:64px;height:14px;background-color:#344256;{overflow}"
+        );
+        let styles = [
+            "position:relative;display:block;width:300px;height:100px;background-color:#101827",
+            "position:absolute;left:0;top:0;width:96px;height:18px;background-color:#101827",
+            positioned_style.as_str(),
+            "width:88px;height:16px;background-color:#57a6d9",
+        ];
+        let parents = [None, Some(0), Some(1), Some(2)];
+        let (input, node_ids) =
+            overflow_runtime_inputs_with_viewport(&styles, &parents, 300.0, 100.0);
+        let scene = build_runtime_render_snapshot_with_reserve(
+            &input.document,
+            input.root,
+            &input.output,
+            input.current,
+            &mut SystemReserve,
+        )
+        .unwrap();
+        let positioned_box = scene
+            .boxes()
+            .iter()
+            .find(|render_box| render_box.node_id() == node_ids[2])
+            .unwrap();
+        let static_target = scene
+            .boxes()
+            .iter()
+            .find(|render_box| render_box.node_id() == node_ids[3])
+            .unwrap();
+
+        assert!(
+            positioned_box.paint_order() < static_target.paint_order(),
+            "{case_id}: positioned background must precede its in-flow child"
+        );
+        assert!(
+            static_target.hit_test_order() > positioned_box.hit_test_order(),
+            "{case_id}: descendant hit testing must remain above its parent"
+        );
+    }
+}

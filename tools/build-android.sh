@@ -60,10 +60,18 @@ case "${SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST:-0}" in
     exit 2
     ;;
 esac
-case "${SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST:-0}" in
+canonical_c131_fixture_flag="${SPINON_ENABLE_C13_1_OVERFLOW_CLIP_FIXTURE_TEST:-}"
+legacy_c131_fixture_flag="${SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST:-}"
+if [[ -n "$canonical_c131_fixture_flag" && -n "$legacy_c131_fixture_flag" \
+      && "$canonical_c131_fixture_flag" != "$legacy_c131_fixture_flag" ]]; then
+  echo "C13.1 fixture flag 이름에 서로 다른 값이 설정됐습니다." >&2
+  exit 2
+fi
+c131_fixture_flag="${canonical_c131_fixture_flag:-${legacy_c131_fixture_flag:-0}}"
+case "$c131_fixture_flag" in
   0|1) ;;
   *)
-    echo "SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST은 0 또는 1이어야 합니다." >&2
+    echo "SPINON_ENABLE_C13_1_OVERFLOW_CLIP_FIXTURE_TEST은 0 또는 1이어야 합니다." >&2
     exit 2
     ;;
 esac
@@ -77,7 +85,7 @@ if [[ "${SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST:-0}" == "1" \
   echo "C12.4 worker stack 검증은 C04.10 runtime GPU fixture와 함께 켜야 합니다." >&2
   exit 2
 fi
-if [[ "${SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST:-0}" == "1" \
+if [[ "$c131_fixture_flag" == "1" \
       && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
   echo "C13.1 overflow clip fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다." >&2
   exit 2
@@ -89,7 +97,7 @@ s04_c1123_grid_fixture_cpp_flag="-DSPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST=${SPI
 s04_ua_cascade_probe_cpp_flag="-DSPINON_ENABLE_C04_UA_CASCADE_FIXTURE_PROBE=${SPINON_ENABLE_C04_UA_CASCADE_FIXTURE_PROBE:-0}"
 s04_runtime_gpu_failure_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE=${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}"
 c124_worker_stack_cpp_flag="-DSPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST=${SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST:-0}"
-c131_overflow_clip_cpp_flag="-DSPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST=${SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST:-0}"
+c131_overflow_clip_cpp_flag="-DSPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST=$c131_fixture_flag"
 s04_android_cpp_flags=()
 if [[ "${SPINON_ENABLE_S04_ANDROID_FIXTURE:-0}" == "1" ]]; then
   s04_android_cpp_flags=(-DSPINON_ENABLE_S04_ANDROID_FIXTURE=1)
@@ -110,13 +118,14 @@ fi
 if [[ "${SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST:-0}" == "1" ]]; then
   ffi_features+=(c12-4-worker-stack-residency-test)
 fi
-if [[ "${SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST:-0}" == "1" ]]; then
+if [[ "$c131_fixture_flag" == "1" ]]; then
   ffi_features+=(c13-1-overflow-clip-fixture-test)
 fi
 ffi_feature_csv=""
 if ((${#ffi_features[@]} > 0)); then
   ffi_feature_csv="$(IFS=,; printf '%s' "${ffi_features[*]}")"
 fi
+echo "SPINON_ANDROID_BUILD_FLAGS c04_runtime_gpu=${SPINON_ENABLE_C04_RUNTIME_GPU:-0} c13_1_overflow_clip_fixture_test=$c131_fixture_flag"
 
 build_spinon_ffi() {
   if [[ -n "$ffi_feature_csv" ]]; then

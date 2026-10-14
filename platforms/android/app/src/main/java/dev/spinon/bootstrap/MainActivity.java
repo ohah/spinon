@@ -238,15 +238,19 @@ public final class MainActivity extends Activity {
                 .getBooleanExtra("spinon_c1121_grid_placement", false);
         boolean c131OverflowClipRequested = getIntent()
                 .getBooleanExtra("spinon_c131_overflow_clip", false);
+        boolean c131CompactSurfaceMatrixRequested = getIntent()
+                .getBooleanExtra("spinon_c131_compact_surface_matrix", false);
         boolean c131OverflowClipBorderRequested = getIntent()
                 .getBooleanExtra("spinon_c131_overflow_clip_border", false);
-        if (c131OverflowClipRequested && c131OverflowClipBorderRequested) {
+        if ((c131OverflowClipRequested ? 1 : 0)
+                + (c131CompactSurfaceMatrixRequested ? 1 : 0)
+                + (c131OverflowClipBorderRequested ? 1 : 0) > 1) {
             TextView unavailable = new TextView(this);
             unavailable.setText("C13.1 앱 fixture route는 한 번에 하나만 선택해야 합니다.");
             unavailable.setTextColor(Color.WHITE);
             unavailable.setGravity(Gravity.CENTER);
             setContentView(unavailable);
-            Log.e(TAG, "SPINON_C131_ARGUMENT_ERROR conflicting=both-overflow-fixture-routes");
+            Log.e(TAG, "SPINON_C131_ARGUMENT_ERROR conflicting=multiple-fixture-routes");
             return;
         }
         String c1122GridScene = getIntent().getStringExtra("spinon_c1122_grid_auto_placement_scene");
@@ -407,7 +411,8 @@ public final class MainActivity extends Activity {
                 || getIntent().getBooleanExtra("spinon_c122_absolute_block", false)
                 || getIntent().getBooleanExtra("spinon_c123_fixed_position", false)
                 || getIntent().getBooleanExtra("spinon_c124_stacking_context", false)
-                || c131OverflowClipRequested || c131OverflowClipBorderRequested
+                || c131OverflowClipRequested || c131CompactSurfaceMatrixRequested
+                || c131OverflowClipBorderRequested
                 || getIntent().getBooleanExtra("spinon_c124_stacking_matrix", false)
                 || getIntent().getBooleanExtra("spinon_c124_depth_safety", false)
                 || getIntent().getStringExtra("spinon_c124_surface_case") != null
@@ -427,7 +432,8 @@ public final class MainActivity extends Activity {
                 Log.e(TAG, "SPINON_C0410_DISABLED · SPINON_ENABLE_C04_RUNTIME_GPU=1로 빌드하세요");
                 return;
             }
-            if ((c131OverflowClipRequested || c131OverflowClipBorderRequested)
+            if ((c131OverflowClipRequested || c131CompactSurfaceMatrixRequested
+                    || c131OverflowClipBorderRequested)
                     && !BuildConfig.SPINON_C131_OVERFLOW_CLIP_FIXTURE_TEST) {
                 TextView unavailable = new TextView(this);
                 unavailable.setText("C13.1 overflow clip fixture-test 옵션을 켜서 빌드해야 합니다.");
@@ -435,7 +441,7 @@ public final class MainActivity extends Activity {
                 unavailable.setGravity(Gravity.CENTER);
                 setContentView(unavailable);
                 Log.e(TAG, "SPINON_C131_DISABLED · "
-                        + "SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST=1로 빌드하세요");
+                        + "SPINON_ENABLE_C13_1_OVERFLOW_CLIP_FIXTURE_TEST=1로 빌드하세요");
                 return;
             }
             boolean failureProbe = getIntent().getBooleanExtra(

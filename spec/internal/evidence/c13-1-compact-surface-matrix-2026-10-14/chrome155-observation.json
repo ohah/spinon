@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "capturedAt": "2026-10-14T12:51:53.066Z",
-  "sourceUrl": "http://127.0.0.1:49816/tests/fixtures/css/c13/c13-1-compact-surface-matrix.html",
+  "capturedAt": "2026-10-14T13:11:39.372Z",
+  "sourceUrl": "http://127.0.0.1:51700/tests/fixtures/css/c13/c13-1-compact-surface-matrix.html",
   "sources": {
     "html": "tests/fixtures/css/c13/c13-1-compact-surface-matrix.html",
     "htmlSha256": "431f4b4452969adcae80c4e5f89e5e45b1e8756fc3c4d8995b7a5eccfbc6f355",
     "fixture": "tests/fixtures/css/c13/c13-1-compact-surface-matrix.js",
-    "fixtureSha256": "ddd0e52c1867ec2ab7f0820e2e1441c903cf5f876b4457a14719b35faf0f181e",
+    "fixtureSha256": "d36bc1f7d3c791cdc91f6d878c3961e067efc2f88ca1486db8a065c5fd69c760",
     "agentEval": "tools/css-reference/c13-1-compact-surface-matrix-agent-eval.js",
     "agentEvalSha256": "5622623ce7d0f7c29452382b873ed1e12cc5ee2dc159e07c7ff61f48ee42b45b",
     "captureScript": "tools/css-reference/capture-c13-1-compact-surface-matrix.mjs",

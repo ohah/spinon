@@ -154,6 +154,12 @@ SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c13_1_overflow_clip_fixture(
 int32_t spinon_runtime_gpu_host_eval_c13_1_overflow_clip_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);
+/* C13.1 compact 13-case surface matrix 전용 fixture-test host입니다. */
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c13_1_compact_surface_matrix_fixture(
+    char *output, size_t output_capacity);
+int32_t spinon_runtime_gpu_host_eval_c13_1_compact_surface_matrix_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c13_1_overflow_clip_border_fixture(
     char *output, size_t output_capacity);
 int32_t spinon_runtime_gpu_host_eval_c13_1_overflow_clip_border_fixture(

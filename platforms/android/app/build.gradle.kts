@@ -41,12 +41,19 @@ require(spinonC124WorkerStackResidencyTestValue == "0" ||
 require(spinonC124WorkerStackResidencyTestValue != "1" || spinonC04RuntimeGpuValue == "1") {
     "C12.4 worker stack 검증은 C04.10 runtime GPU fixture와 함께 켜야 합니다."
 }
-val spinonC131OverflowClipFixtureTest =
-    providers.environmentVariable("SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST").orElse("0")
-val spinonC131OverflowClipFixtureTestValue = spinonC131OverflowClipFixtureTest.get()
+val canonicalC131OverflowClipFixtureTest =
+    providers.environmentVariable("SPINON_ENABLE_C13_1_OVERFLOW_CLIP_FIXTURE_TEST").orNull
+val legacyC131OverflowClipFixtureTest =
+    providers.environmentVariable("SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST").orNull
+require(canonicalC131OverflowClipFixtureTest == null || legacyC131OverflowClipFixtureTest == null ||
+    canonicalC131OverflowClipFixtureTest == legacyC131OverflowClipFixtureTest) {
+    "C13.1 fixture flag 이름에 서로 다른 값이 설정됐습니다."
+}
+val spinonC131OverflowClipFixtureTestValue =
+    canonicalC131OverflowClipFixtureTest ?: legacyC131OverflowClipFixtureTest ?: "0"
 require(spinonC131OverflowClipFixtureTestValue == "0" ||
     spinonC131OverflowClipFixtureTestValue == "1") {
-    "SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST는 0 또는 1이어야 합니다."
+    "SPINON_ENABLE_C13_1_OVERFLOW_CLIP_FIXTURE_TEST는 0 또는 1이어야 합니다."
 }
 require(spinonC131OverflowClipFixtureTestValue != "1" || spinonC04RuntimeGpuValue == "1") {
     "C13.1 overflow clip fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다."
@@ -68,7 +75,7 @@ val prepareSpinonBootstrap by tasks.registering(Exec::class) {
         spinonC124WorkerStackResidencyTestValue,
     )
     environment(
-        "SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST",
+        "SPINON_ENABLE_C13_1_OVERFLOW_CLIP_FIXTURE_TEST",
         spinonC131OverflowClipFixtureTestValue,
     )
     commandLine("bash", "tools/build-android.sh")

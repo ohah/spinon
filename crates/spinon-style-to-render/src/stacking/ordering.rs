@@ -1,9 +1,7 @@
 use std::collections::BTreeMap;
 
 use spinon_core::NodeId;
-use spinon_style::{
-    ComputedCssOverflow, ComputedCssPosition, ComputedCssZIndex, ComputedElementStyle,
-};
+use spinon_style::{ComputedCssPosition, ComputedCssZIndex, ComputedElementStyle};
 use spinon_style_to_layout::StyleLayoutOutput;
 
 use super::reserve::FallibleReserve;
@@ -196,8 +194,9 @@ pub(super) fn flatten_hit_test_order(
     Ok(hit_order)
 }
 
-/// C13.1 overflow clip에서 auto positioned clip 상자의 단순 in-flow subtree를 부모 배경 뒤로 둡니다.
-pub(super) fn paint_auto_positioned_clip_subtrees(
+/// Auto positioned 상자의 단순 in-flow 자손을 상자 배경 뒤에 그립니다.
+/// Clip 영역은 별도의 clip 경계에서 계속 적용하며, 이 순서는 overflow 값과 독립적입니다.
+pub(super) fn paint_auto_positioned_subtrees(
     document_nodes: &[NodeId],
     parent_by_node: &BTreeMap<NodeId, NodeId>,
     paint_nodes: &mut Vec<NodeId>,
@@ -220,8 +219,6 @@ pub(super) fn paint_auto_positioned_clip_subtrees(
             style.layout_position,
             ComputedCssPosition::Absolute | ComputedCssPosition::Fixed
         ) || style.stacking_z_index != Some(ComputedCssZIndex::Auto)
-            || !matches!(style.layout_overflow_x, Some(ComputedCssOverflow::Clip))
-                && !matches!(style.layout_overflow_y, Some(ComputedCssOverflow::Clip))
         {
             continue;
         }
@@ -229,7 +226,11 @@ pub(super) fn paint_auto_positioned_clip_subtrees(
         let mut descendants = Vec::new();
         let mut pending = Vec::new();
         if let Some(children) = children_by_parent.get(candidate) {
-            reserve.reserve(&mut pending, children.len(), "clip subtree paint traversal")?;
+            reserve.reserve(
+                &mut pending,
+                children.len(),
+                "positioned subtree paint traversal",
+            )?;
             pending.extend(children.iter().rev().copied());
         }
         let mut simple_in_flow_subtree = true;
@@ -252,10 +253,14 @@ pub(super) fn paint_auto_positioned_clip_subtrees(
                 simple_in_flow_subtree = false;
                 break;
             }
-            reserve.reserve(&mut descendants, 1, "clip subtree descendants")?;
+            reserve.reserve(&mut descendants, 1, "positioned subtree descendants")?;
             descendants.push(node);
             if let Some(children) = children_by_parent.get(&node) {
-                reserve.reserve(&mut pending, children.len(), "clip subtree paint traversal")?;
+                reserve.reserve(
+                    &mut pending,
+                    children.len(),
+                    "positioned subtree paint traversal",
+                )?;
                 pending.extend(children.iter().rev().copied());
             }
         }
@@ -275,7 +280,11 @@ pub(super) fn paint_auto_positioned_clip_subtrees(
         }
 
         let mut moved = Vec::new();
-        reserve.reserve(&mut moved, descendants.len(), "clip subtree paint order")?;
+        reserve.reserve(
+            &mut moved,
+            descendants.len(),
+            "positioned subtree paint order",
+        )?;
         moved.extend(
             paint_nodes
                 .iter()

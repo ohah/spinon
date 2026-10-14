@@ -30,8 +30,7 @@ mod tree;
 mod types;
 
 use ordering::{
-    add_context, add_node, flatten_contexts, flatten_hit_test_order,
-    paint_auto_positioned_clip_subtrees,
+    add_context, add_node, flatten_contexts, flatten_hit_test_order, paint_auto_positioned_subtrees,
 };
 use overflow_clip::{runtime_clips_for_node, validate_computed_overflow_values};
 use reserve::{FallibleReserve, SystemReserve};
@@ -238,7 +237,7 @@ fn build_runtime_render_snapshot_with_reserve<R: FallibleReserve>(
         reserve,
     )?;
     if styles.profile == ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1 {
-        paint_auto_positioned_clip_subtrees(
+        paint_auto_positioned_subtrees(
             &document_nodes,
             &parent_by_node,
             &mut paint_nodes,
