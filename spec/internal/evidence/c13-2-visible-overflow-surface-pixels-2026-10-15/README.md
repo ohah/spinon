@@ -2,7 +2,7 @@
 
 ## 판정
 
-고정 Chrome 155 oracle의 다섯 색상 표본이 Android API 37 ARM64 AVD의 SurfaceView PixelCopy와 iPhone 17 Pro / iOS 26.2 Simulator의 Metal drawable에서 각각 5/5 정확히 일치했다. stale draw에서 미제출 pixel 요청이 다음 draw로 넘어가지 않도록 renderer를 수정한 뒤 최신 소스로 run5를 다시 실행했다. Android/iOS sample log, Chrome PNG·fixture hash와 Android 저장 PNG를 독립 비교기로 다시 대조했고 지정한 변조 입력도 거부했다. 구현 20개와 PR delta 30개의 별도 적대 검토를 마쳤으나 GitHub CI와 merge는 남아 있으므로 이 결과만으로 C13.2 전체를 완료 처리하지 않는다.
+고정 Chrome 155 oracle의 다섯 색상 표본이 Android API 37 ARM64 AVD의 SurfaceView PixelCopy와 iPhone 17 Pro / iOS 26.2 Simulator의 Metal drawable에서 각각 5/5 정확히 일치했다. stale draw에서 미제출 pixel 요청이 다음 draw로 넘어가지 않도록 renderer를 수정한 뒤 최신 소스로 run5를 다시 실행했다. Android/iOS sample log, Chrome PNG·fixture hash와 Android 저장 PNG를 독립 비교기로 다시 대조했고 지정한 변조 입력도 거부했다. [구현 PR #176](https://github.com/ohah/spinon/pull/176)의 본문은 두 run5 앱 캡처를 첫 화면에 보여 주며 실제 raw image 링크가 agent-browser에서 로드되는 것도 확인했다. 이 실행만으로 C13.2 전체를 완료 처리하지 않는다.
 
 기준 observation과 fixture hash는 [구현 전 Chrome evidence](../c13-2-visible-overflow-surface-pixels-plan-2026-10-15/README.md)에 있다. 최신 run ID는 `c132-surface-20261015-run5`다. 이전 run3/run4의 세부 로그·화면은 같은 디렉터리에 보존했다.
 

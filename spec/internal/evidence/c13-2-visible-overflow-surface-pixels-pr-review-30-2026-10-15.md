@@ -1,9 +1,9 @@
 # C13.2 visible overflow 표면 픽셀 PR 변경 적대 검토 30개
 
 - **대상:** `origin/main` 대비 C13.2 visible overflow surface-pixel 구현, comparator, simulator evidence와 문서 변경.
-- **검토 시점:** run5 재실행과 최신 source diff 확인 뒤, PR 생성 전.
+- **검토 시점:** run5 재실행, PR #176 본문 게시, GitHub 이미지 렌더링 확인 뒤.
 - **검토 방법:** 제품 코드 경계, feature packaging, oracle·adapter·비교기 연결, 증거·문서의 사실 범위를 서로 다른 위험 관점으로 대조했다.
-- **판정:** 30개 변경 관점에서 코드·증거의 모순을 확인하지 못했다. PR body의 이미지 URL과 실제 GitHub 렌더링은 아직 생성되지 않아 해당 두 항목은 PR 게시 뒤 최종 확인한다.
+- **판정:** 30개 변경 관점의 코드·증거를 대조했고, 발견한 stale 표본 경로는 수정했다. PR #176의 run5 이미지 링크도 agent-browser로 실제 로드와 dimensions를 확인했다.
 
 | # | PR 변경이 잘못 전달될 실패 관점 | 변경 대조와 판정 |
 |---|---|---|
@@ -29,8 +29,8 @@
 | 20 | 같은 process 안에서 surface 재생성 뒤 예전 결과를 새 화면에 귀속한다. | surface generation을 begin·summary·각 Android/iOS sample에서 비교하고 positive run5에서 Android 2, iOS 1을 일치시켰다. **PASS** |
 | 21 | layout/document/tree/style/environment/scroll revision이 달라진 sample을 같은 장면으로 설명한다. | 플랫폼 내부 draw-to-summary revision을 모두 비교하며 Android/iOS 공통 document/tree/style/scroll과 layout generation을 교차 비교한다. environment revision 차이 `0/1`은 의도된 platform-local 값으로 명시했다. **PASS** |
 | 22 | screenshot이 존재해도 어떤 run/device에서 얻었는지 추적할 수 없다. | run5 Android/iOS screen dimensions·SHA-256, Android APK SHA, device/API/OS와 해당 log/PixelCopy 링크를 README에 기록했다. **PASS** |
-| 23 | PR 본문 첫 이미지가 Chrome oracle인데 앱 실행 화면인 것처럼 보인다. | #171에서는 첫 이미지가 oracle이고 앱 캡처가 아래에 있어 혼동할 수 있음을 agent-browser로 확인했다. 새 PR 본문은 run5 Android/iOS 앱 화면을 첫 블록에 두도록 작성할 예정이다. **PENDING — 게시된 본문 렌더 확인 필요** |
-| 24 | PR 이미지 URL이 존재하지 않거나 다른 파일을 가리킨다. | #171의 기존 raw URL 3개는 agent-browser DOM에서 `complete=true`와 실제 dimensions를 확인했다. 새 PR의 push된 run5 PNG URL은 게시 전이므로 agent-browser loaded state를 아직 확인하지 않았다. **PENDING — 새 PR 게시 후 URL·dimensions 확인 필요** |
+| 23 | PR 본문 첫 이미지가 Chrome oracle인데 앱 실행 화면인 것처럼 보인다. | #171은 Chrome oracle 이미지가 먼저 나오고 이전 #173 앱 화면은 본문 아래라 혼동할 수 있었다. PR #176은 Android/iOS run5 앱 캡처를 `동작 화면` 첫 블록에 배치했다. agent-browser 화면에서도 첫 이미지가 앱 화면임을 확인했다. **PASS** |
+| 24 | PR 이미지 URL이 존재하지 않거나 다른 파일을 가리킨다. | PR #176 raw URL 두 개의 commit/path가 run5 파일과 일치한다. agent-browser DOM에서 모두 `complete=true`, Android `1080×2400`, iOS `1206×2622`, `visible=true`를 확인했다. **PASS** |
 | 25 | run4 screenshot과 run5 log를 섞어 이미지가 다른 화면을 보여준다. | README, comparator, log, PNG를 run5로 통일했다. run5는 최신 renderer 수정이 포함된 APK/app에서 다시 실행했고 두 화면을 직접 열어 overflow square와 5/5 status를 확인했다. **PASS** |
 | 26 | comparator가 우연히 success marker 한 줄만 찾아 오류·중복 로그를 통과시킨다. | begin/summary/assertion marker는 각각 한 줄이어야 하고 fixed sample count/order, final draw identity와 exact RGBA를 요구한다. **PASS** |
 | 27 | positive comparison만 있어 좌표·색상·파일 drift를 걸러내지 못한다. | 6개 집중 test에서 positive match 외에 색상, parent 안 좌표, 누락/중복, stale run/generation, PNG 크기/hash, Chrome fixture/screenshot 변조를 거부했다. **PASS** |
@@ -38,4 +38,4 @@
 | 29 | stale draw/copy 실패 때 표본이 남는 renderer 결함이 성공 증거 뒤에도 숨는다. | review에서 발견한 제출 전 stale 요청 잔류를 정리했고 focused Rust 회귀 검사, workspace Clippy, opt-in Clippy와 run5 양 플랫폼 실행을 다시 확인했다. **PASS — 수정 후** |
 | 30 | 원래 dirty checkout의 사용자 변경이 PR diff에 섞이거나 문서·format 상태가 검증되지 않는다. | 원본 dirty checkout 대신 `origin/main`에서 분리한 worktree를 사용했다. 새 변경 목록은 C13.2 구현/evidence/doc으로 한정하고 `cargo fmt --check`, `git diff --check`를 확인했다. **PASS** |
 
-전체 `test:css-reference` 442/442는 run4 comparator 기준에서 통과했으며, run5 전환 뒤 변경된 comparator 집중 test는 6/6 통과했다. merge 전에는 GitHub required checks와 최신 mergeability를 다시 확인한다.
+전체 `test:css-reference` 442/442는 run5 comparator 기준으로 통과했고, PR #176은 `MERGEABLE`/`CLEAN`이다. `gh pr checks`에는 보고된 check가 없었으며, main branch protection은 required status check와 approving review를 요구하지 않는다. rebase merge 직전에도 PR 상태와 protection을 다시 조회한다.
