@@ -1,0 +1,22 @@
+IOS SIMULATOR DEFAULT FEATURE-OFF
+    Finished `release` profile [optimized] target(s) in 0.09s
+target/aarch64-apple-ios-sim/release/libspinon_ffi.a:cfg_if-8624e9649c4832da.cfg_if.3089c8aeebd391f1-cgu.0.rcgu.o: no symbols
+target/aarch64-apple-ios-sim/release/libspinon_ffi.a:rustc_std_workspace_alloc-1a0a5417e69d5751.rustc_std_workspace_alloc.8ab2a24088a2824d-cgu.0.rcgu.o: no symbols
+target/aarch64-apple-ios-sim/release/libspinon_ffi.a:unwind-8ee5095c144668f8.unwind.ab984ae24c2afa7d-cgu.0.rcgu.o: no symbols
+target/aarch64-apple-ios-sim/release/libspinon_ffi.a:rustc_std_workspace_core-c5b6a7fbc45d1926.rustc_std_workspace_core.cf50839f640921a4-cgu.0.rcgu.o: no symbols
+target/aarch64-apple-ios-sim/release/libspinon_ffi.a:compiler_builtins-195daed8f6d69f6d.compiler_builtins.69597c3069912ac6-cgu.227.rcgu.o: no symbols
+target/aarch64-apple-ios-sim/release/libspinon_ffi.a:compiler_builtins-195daed8f6d69f6d.compiler_builtins.69597c3069912ac6-cgu.229.rcgu.o: no symbols
+target/aarch64-apple-ios-sim/release/libspinon_ffi.a:compiler_builtins-195daed8f6d69f6d.compiler_builtins.69597c3069912ac6-cgu.230.rcgu.o: no symbols
+PASS: default archive has no C14.1 symbol or fixture payload
+IOS SIMULATOR OPT-IN FEATURE POSITIVE CONTROL
+    Finished `release` profile [optimized] target(s) in 0.07s
+target/aarch64-apple-ios-sim/release/libspinon_ffi.a:cfg_if-8624e9649c4832da.cfg_if.3089c8aeebd391f1-cgu.0.rcgu.o: no symbols
+target/aarch64-apple-ios-sim/release/libspinon_ffi.a:rustc_std_workspace_alloc-1a0a5417e69d5751.rustc_std_workspace_alloc.8ab2a24088a2824d-cgu.0.rcgu.o: no symbols
+target/aarch64-apple-ios-sim/release/libspinon_ffi.a:unwind-8ee5095c144668f8.unwind.ab984ae24c2afa7d-cgu.0.rcgu.o: no symbols
+target/aarch64-apple-ios-sim/release/libspinon_ffi.a:rustc_std_workspace_core-c5b6a7fbc45d1926.rustc_std_workspace_core.cf50839f640921a4-cgu.0.rcgu.o: no symbols
+target/aarch64-apple-ios-sim/release/libspinon_ffi.a:compiler_builtins-195daed8f6d69f6d.compiler_builtins.69597c3069912ac6-cgu.227.rcgu.o: no symbols
+target/aarch64-apple-ios-sim/release/libspinon_ffi.a:compiler_builtins-195daed8f6d69f6d.compiler_builtins.69597c3069912ac6-cgu.229.rcgu.o: no symbols
+target/aarch64-apple-ios-sim/release/libspinon_ffi.a:compiler_builtins-195daed8f6d69f6d.compiler_builtins.69597c3069912ac6-cgu.230.rcgu.o: no symbols
+_spinon_c14_1_app_intrinsic_size_fixture
+    "png": "c14-1-png-basic.png",
+PASS: opt-in archive contains C14.1 symbol and fixture payload

@@ -50,6 +50,18 @@ xcrun simctl launch --terminate-running-process booted dev.spinon.bootstrap --sp
 
 Unified log의 `SPINON_C131_FIXTURE_SUMMARY`는 13개 frame과 15개 고정 hit-test 표본을 기록합니다. 이 검증은 Simulator의 Metal surface에 fixture를 제출하고 화면을 캡처하지만, drawable readback이나 최종 compositor scanout 확인으로 해석하지 않습니다. Chrome oracle, log, 캡처와 범위는 [iOS Simulator 근거](../../spec/internal/evidence/c13-1-overflow-clip-ios-simulator-2026-10-14/README.md)에 기록합니다.
 
+## C14.1 intrinsic size 앱 fixture
+
+C14.1 고정 PNG를 fixture-owned HostDocument에서 읽어 `ImageResourceSnapshot`과 CSS px intrinsic layout snapshot 경로에 전달하는 텍스트 report 전용 fixture입니다. iOS Simulator 빌드 flag는 기본 0이며 다음처럼 opt-in 합니다.
+
+```sh
+SPINON_ENABLE_C14_1_APP_FIXTURE_TEST=1 mise exec -- bun run build:ios-sim
+xcrun simctl install booted build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app
+xcrun simctl launch --terminate-running-process booted dev.spinon.bootstrap --spinon-c141-intrinsic-size
+```
+
+화면과 unified log는 Chrome 155 oracle의 `(0,0) 24×16 CSS px` frame 및 revision 비교 결과를 표시합니다. 이미지를 그리지 않으므로 Metal image paint·pixel parity나 overflow clipping을 증명하지 않습니다. C13.1의 border/overflow 결과는 위의 별도 근거를 참고하세요. 양쪽 Simulator 앱 실행·화면 캡처는 [C14.1 adapter evidence](../../spec/internal/evidence/c14-1-app-runtime-adapter-2026-10-15/README.md)에 기록합니다.
+
 R06 개발 화면은 아래 실행 인자를 받습니다.
 
 ```sh

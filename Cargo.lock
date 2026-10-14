@@ -1533,11 +1533,14 @@ dependencies = [
  "serde_json",
  "sha2",
  "spinon-core",
+ "spinon-image",
+ "spinon-layout",
  "spinon-render",
  "spinon-render-wgpu",
  "spinon-runtime",
  "spinon-style",
  "spinon-style-layout-spike",
+ "spinon-style-to-layout",
 ]
 
 [[package]]

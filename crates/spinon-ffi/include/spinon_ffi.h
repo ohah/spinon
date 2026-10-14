@@ -23,6 +23,14 @@ size_t spinon_embedded_ua_stylesheet_len(void);
    버퍼 부족 -3, JavaScript 평가·이벤트 오류 -4를 반환합니다. */
 int32_t spinon_app_run(const char *source, char *output, size_t output_capacity);
 
+#if defined(SPINON_ENABLE_C14_1_APP_FIXTURE_TEST) && \
+    SPINON_ENABLE_C14_1_APP_FIXTURE_TEST
+/* C14.1 고정 PNG 입력을 CSS px intrinsic size/layout snapshot으로 검증합니다.
+   성공 0, 인자 오류 -1, fixture 오류 -2, 버퍼 부족 -3, oracle mismatch -4입니다. */
+int32_t spinon_c14_1_app_intrinsic_size_fixture(char *output,
+                                               size_t output_capacity);
+#endif
+
 /* 개발용 시뮬레이터 진단: 실제 V8 우선순위 선택과 FIFO 순서를 검증합니다. */
 int32_t spinon_runtime_priority_probe(char *output, size_t output_capacity);
 
