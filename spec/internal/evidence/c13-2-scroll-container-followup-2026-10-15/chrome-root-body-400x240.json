@@ -1,0 +1,52 @@
+{
+  "browser": {
+    "name": "agent-browser / HeadlessChrome",
+    "version": "155.0.0.0",
+    "platform": "macOS arm64"
+  },
+  "viewport": {
+    "width_css_px": 400,
+    "height_css_px": 240,
+    "device_pixel_ratio": 1
+  },
+  "scenes": [
+    {
+      "id": "root-visible-body-auto",
+      "fixture": "tests/fixtures/css/c13/c13-2-root-body-400x240-visible.html",
+      "scrolling_element": "HTML",
+      "computed_overflow": {
+        "html": ["visible", "visible"],
+        "body": ["auto", "auto"]
+      },
+      "after_scroll": {
+        "request_owner": "window",
+        "request_css_px": [64, 84],
+        "window_offset_css_px": [64, 84],
+        "html_offset_css_px": [64, 84],
+        "body_offset_css_px": [0, 0],
+        "html_client_and_scroll_css_px": [400, 240, 464, 324],
+        "body_client_and_scroll_css_px": [400, 240, 464, 324],
+        "fixed_rect_css_px": [340, 204, 52, 28]
+      }
+    },
+    {
+      "id": "root-hidden-body-auto",
+      "fixture": "tests/fixtures/css/c13/c13-2-root-body-400x240-hidden.html",
+      "scrolling_element": "HTML",
+      "computed_overflow": {
+        "html": ["hidden", "hidden"],
+        "body": ["auto", "auto"]
+      },
+      "after_scroll": {
+        "request_owner": "body",
+        "request_css_px": [64, 84],
+        "window_offset_css_px": [0, 0],
+        "html_offset_css_px": [0, 0],
+        "body_offset_css_px": [64, 84],
+        "html_client_and_scroll_css_px": [400, 240, 400, 240],
+        "body_client_and_scroll_css_px": [400, 240, 464, 324],
+        "fixed_rect_css_px": [340, 204, 52, 28]
+      }
+    }
+  ]
+}

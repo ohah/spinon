@@ -3,6 +3,8 @@ use spinon_core::NodeId;
 use spinon_render::{RuntimeRenderBox, RuntimeRenderSnapshot, RuntimeScrollContainer};
 use std::sync::Arc;
 
+mod root_body;
+
 impl RuntimeGpuHost {
     pub(in crate::runtime_gpu) fn reapply_c13_2_scroll_state(
         &self,
@@ -301,16 +303,7 @@ impl RuntimeGpuHost {
             ));
         }
 
-        let sequence = self
-            .invalidate_scene()
-            .map_err(|error| (ERR_STALE, error))?;
-        if !self.presentation.publish(sequence, moved.clone()) {
-            return Err((
-                ERR_STALE,
-                "C13.2 scroll snapshot publish 중 새 scene 요청이 도착했습니다".to_owned(),
-            ));
-        }
-        *lock(&self.c13_2_scroll_state) = Some(moved.clone());
+        self.publish_c13_2_scroll_snapshot(moved.clone())?;
         Ok(format!(
             "c13_2_scroll_fixture=passed owners=9 matrix=no-overflow:0,0 x-only:86,0 y-only:0,74 hidden:86,74 clip:none absolute:64,0 nested:88,78+66,54 forced-scroll:0,0 offset=40,20 revision={} border_escape_outside_parent=true border_escape_hit=matched marker_hit_after_scroll=matched old_marker_no_hit=true scrollport_clip_stationary=true fixed_control_stationary=true",
             moved.key().scroll_state_revision().get(),
@@ -420,6 +413,27 @@ impl RuntimeGpuHost {
                 ERR_LAYOUT,
                 "C13.2 current render snapshot이 없습니다".to_owned(),
             ))
+    }
+
+    pub(in crate::runtime_gpu) fn publish_c13_2_scroll_snapshot(
+        &self,
+        snapshot: RuntimeRenderSnapshot,
+    ) -> Result<(), (i32, String)> {
+        let sequence = self
+            .invalidate_scene()
+            .map_err(|error| (ERR_STALE, error))?;
+        if !self.presentation.publish(sequence, snapshot.clone()) {
+            return Err((
+                ERR_STALE,
+                "C13.2 scroll snapshot publish 중 새 scene 요청이 도착했습니다".to_owned(),
+            ));
+        }
+        *lock(&self.c13_2_scroll_state) = Some(snapshot);
+        Ok(())
+    }
+
+    pub(in crate::runtime_gpu) fn reset_c13_2_scroll_state_for_fixture_transition(&self) {
+        lock(&self.c13_2_scroll_state).take();
     }
 }
 

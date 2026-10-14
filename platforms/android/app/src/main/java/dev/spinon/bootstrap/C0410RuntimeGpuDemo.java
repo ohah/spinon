@@ -1523,6 +1523,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             boolean c132ScrollPassed = result.contains("c13_2_scroll_fixture=passed")
                     && result.contains("border_escape_outside_parent=true")
                     && result.contains("border_escape_hit=matched")
+                    && result.contains("c13_2_root_body_propagation=passed")
+                    && result.contains("c13_2_root_body_hidden=passed")
                     && result.contains("c13_2_lifecycle=passed")
                     && result.contains("growth_offset_retained=true")
                     && result.contains("shrink_clamped_to_zero=true")
@@ -1532,7 +1534,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 postStatus("실패 · C13.2 scroll·paint·hit·lifecycle 결과 불일치");
                 return;
             }
-            Log.i(TAG, "SPINON_C132_SCROLL_ASSERTIONS border_escape_outside_parent=true"
+            Log.i(TAG, "SPINON_C132_SCROLL_ASSERTIONS root_body_propagation=passed"
+                    + " root_body_hidden=passed border_escape_outside_parent=true"
                     + " border_escape_hit=matched lifecycle=passed"
                     + " growth_offset_retained=true shrink_clamped_to_zero=true"
                     + " detach_removed_owner=true reparent_reset_offset=true");

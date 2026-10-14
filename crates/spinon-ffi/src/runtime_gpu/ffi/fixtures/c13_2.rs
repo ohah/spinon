@@ -1,6 +1,9 @@
 use super::super::super::{RuntimeGpuHost, SpinonRuntimeGpuHost, raw_host};
 use super::super::{ERR_ARGUMENT, write_host_status};
-use crate::runtime_gpu::fixtures::c13_2_scroll::RUNTIME_CSS_C13_2_SCROLL_FIXTURE_SOURCE;
+use crate::runtime_gpu::fixtures::c13_2_scroll::{
+    RUNTIME_CSS_C13_2_ROOT_BODY_HIDDEN_SOURCE, RUNTIME_CSS_C13_2_ROOT_BODY_SOURCE,
+    RUNTIME_CSS_C13_2_SCROLL_FIXTURE_SOURCE,
+};
 use std::ffi::c_char;
 use std::ptr;
 
@@ -52,11 +55,55 @@ pub unsafe extern "C" fn spinon_runtime_gpu_host_eval_c13_2_scroll_fixture(
             output_capacity,
         );
     };
-    match host.eval(
-        RUNTIME_CSS_C13_2_SCROLL_FIXTURE_SOURCE,
-        layout_timeout_millis,
-    ) {
-        Ok(initial_report) => {
+    match host.eval(RUNTIME_CSS_C13_2_ROOT_BODY_SOURCE, layout_timeout_millis) {
+        Ok(root_report) if root_report.contains("layout=ready") => {
+            let root_scroll = match host.apply_c13_2_root_body_propagation_offset() {
+                Ok(report) => report,
+                Err((status, report)) => {
+                    return write_host_status(status, report, output, output_capacity);
+                }
+            };
+            let hidden_report = match host.eval(
+                RUNTIME_CSS_C13_2_ROOT_BODY_HIDDEN_SOURCE,
+                layout_timeout_millis,
+            ) {
+                Ok(report) if report.contains("layout=ready") => report,
+                Ok(report) => {
+                    return write_host_status(
+                        -10,
+                        format!("C13.2 hidden root/body layout가 준비되지 않았습니다: {report}"),
+                        output,
+                        output_capacity,
+                    );
+                }
+                Err((status, report)) => {
+                    return write_host_status(status, report, output, output_capacity);
+                }
+            };
+            let hidden_scroll = match host.apply_c13_2_root_body_hidden_body_offset() {
+                Ok(report) => report,
+                Err((status, report)) => {
+                    return write_host_status(status, report, output, output_capacity);
+                }
+            };
+            host.reset_c13_2_scroll_state_for_fixture_transition();
+            let initial_report = match host.eval(
+                RUNTIME_CSS_C13_2_SCROLL_FIXTURE_SOURCE,
+                layout_timeout_millis,
+            ) {
+                Ok(report) if report.contains("layout=ready") => report,
+                Ok(report) => {
+                    return write_host_status(
+                        -10,
+                        format!("C13.2 scroll matrix layout가 준비되지 않았습니다: {report}"),
+                        output,
+                        output_capacity,
+                    );
+                }
+                Err((status, report)) => {
+                    return write_host_status(status, report, output, output_capacity);
+                }
+            };
             let scroll_report = match host.apply_c13_2_scroll_fixture_offset() {
                 Ok(report) => report,
                 Err((status, report)) => {
@@ -71,11 +118,19 @@ pub unsafe extern "C" fn spinon_runtime_gpu_host_eval_c13_2_scroll_fixture(
             };
             write_host_status(
                 0,
-                format!("{initial_report} {scroll_report} {lifecycle_report}"),
+                format!(
+                    "{root_report} {root_scroll} {hidden_report} {hidden_scroll} {initial_report} {scroll_report} {lifecycle_report}"
+                ),
                 output,
                 output_capacity,
             )
         }
+        Ok(report) => write_host_status(
+            -10,
+            format!("C13.2 visible root/body layout가 준비되지 않았습니다: {report}"),
+            output,
+            output_capacity,
+        ),
         Err((status, report)) => write_host_status(status, report, output, output_capacity),
     }
 }

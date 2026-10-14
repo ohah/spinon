@@ -1,0 +1,22 @@
+[feature on]
+c92d5d7f197b15980090e3430a1831e68284b474d91523c3cb7fca189ff19b13  target/debug/libspinon_ffi.a
+target/debug/libspinon_ffi.a:cfg_if-0d9d6d77ae9bd193.cfg_if.edf119ddab75db36-cgu.0.rcgu.o: no symbols
+target/debug/libspinon_ffi.a:rustc_std_workspace_alloc-d7644d33b12481aa.rustc_std_workspace_alloc.4a6bf8cf9327e754-cgu.0.rcgu.o: no symbols
+target/debug/libspinon_ffi.a:unwind-b439bd6b39ed89d9.unwind.eac6c18a66b71f98-cgu.0.rcgu.o: no symbols
+target/debug/libspinon_ffi.a:rustc_std_workspace_core-01875f5d21777e25.rustc_std_workspace_core.fb1b1b87ab2f5ef-cgu.0.rcgu.o: no symbols
+target/debug/libspinon_ffi.a:compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.227.rcgu.o: no symbols
+target/debug/libspinon_ffi.a:compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.229.rcgu.o: no symbols
+target/debug/libspinon_ffi.a:compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.230.rcgu.o: no symbols
+0000000000000000 T _spinon_runtime_gpu_host_eval_c13_2_scroll_fixture
+0000000000000da4 T _spinon_runtime_gpu_host_new_c13_2_scroll_fixture
+    const root = nodes['c132-root'];
+  element.setAttribute('data-c132-root-body-node', '');
+  'c132-root-content',
+  rootBodyNodes['c132-root-content'],
+  'c132-root-marker',
+  'c132-root-fixed',
+  element.setAttribute('data-c132-root-body-node', '');
+  'c132-root-content-hidden',
+  'c132-root-marker-hidden',
+  'c132-root-fixed-hidden',
+  'c132-root',
