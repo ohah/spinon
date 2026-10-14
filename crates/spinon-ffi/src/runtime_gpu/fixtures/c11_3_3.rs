@@ -4,6 +4,29 @@ use std::sync::OnceLock;
 const C11_3_3_GRID_TEMPLATE_AREAS_RUNTIME_MATRIX: &str = include_str!(
     "../../../../../tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v1.json"
 );
+const C11_3_3_GRID_TEMPLATE_AREAS_REVISION_REUSE_SOURCE: &str = r#"(() => {
+const key = '__spinonC1133RevisionReuseV1';
+let state = globalThis[key];
+const baseStyle = 'box-sizing:border-box;display:grid;width:160px;height:80px;margin:0;padding:0;border:0;gap:0;grid-template-columns:80px 80px;grid-template-rows:40px 40px;background-color:#101820;';
+if (!state) {
+  const root = document.createElement('div');
+  root.setAttribute('id', 'revision-grid');
+  root.setAttribute('data-node', '');
+  root.setAttribute('style', baseStyle + "grid-template-areas:'item .' '. .'");
+  document.appendChild(root);
+  const item = document.createElement('div');
+  item.setAttribute('id', 'revision-item');
+  item.setAttribute('data-node', '');
+  item.setAttribute('style', 'box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#3e63dd;grid-area:item');
+  root.appendChild(item);
+  state = { root, phase: 1 };
+  globalThis[key] = state;
+} else {
+  state.root.setAttribute('style', baseStyle + "grid-template-areas:'. item' '. .'");
+  state.phase += 1;
+}
+return { sceneId:'revision-reuse', rootId:'revision-grid', nodeIds:['revision-grid', 'revision-item'], phase:state.phase };
+})()"#;
 const C11_3_3_GRID_TEMPLATE_AREAS_SCENE_IDS: [&str; 26] = [
     "basic-rectangles",
     "null-cell-dot-runs",
@@ -36,6 +59,9 @@ const C11_3_3_GRID_TEMPLATE_AREAS_SCENE_IDS: [&str; 26] = [
 pub(crate) fn c11_3_3_grid_template_areas_runtime_source(
     scene_id: &str,
 ) -> Result<&'static str, String> {
+    if scene_id == "revision-reuse" {
+        return Ok(C11_3_3_GRID_TEMPLATE_AREAS_REVISION_REUSE_SOURCE);
+    }
     static MATRIX: OnceLock<Result<Value, String>> = OnceLock::new();
     let matrix = MATRIX
         .get_or_init(|| {
@@ -206,5 +232,14 @@ mod tests {
         assert!(C11_3_3_GRID_TEMPLATE_AREAS_RUNTIME_MATRIX.contains("\"sceneCount\": 26"));
         assert!(C11_3_3_GRID_TEMPLATE_AREAS_RUNTIME_MATRIX.contains("\"nodeCount\": 65"));
         assert!(c11_3_3_grid_template_areas_runtime_source("unknown-area-implicit-tracks").is_ok());
+    }
+
+    #[test]
+    fn revision_reuse_source_mutates_the_area_on_a_reused_runtime_host() {
+        let source = c11_3_3_grid_template_areas_runtime_source("revision-reuse").unwrap();
+        assert!(source.contains("globalThis[key]"));
+        assert!(source.contains("grid-template-areas:'item .' '. .'"));
+        assert!(source.contains("grid-template-areas:'. item' '. .'"));
+        assert!(source.contains("revision-item"));
     }
 }
