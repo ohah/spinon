@@ -1,0 +1,30 @@
+== cargo fmt and diff check ==
+== C13.1 FFI fixture tests ==
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s
+     Running unittests src/lib.rs (target/debug/deps/spinon_ffi-65c17cb0113d8679)
+
+running 2 tests
+test runtime_gpu::ffi::fixtures::c13_1::tests::c13_1_ffi_rejects_null_host_and_invalid_output_before_runtime_access ... ok
+test runtime_gpu::ffi::fixtures::c13_1::tests::c13_1_surface_pixel_request_rejects_invalid_batch_before_host_access ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 54 filtered out; finished in 0.00s
+
+== pixel-center reference tests ==
+✔ matches all 30,000 iOS drawable sample centers and the overflow outside its container border (77.68525ms)
+✔ rejects one-byte changes to every RGBA channel outside the container border (252.651458ms)
+✔ rejects missing, duplicated, and reordered rows before color comparison (40.036333ms)
+✔ rejects stale run IDs, mixed generations, physical coordinate drift, bad formats, and altered hashes (49.292917ms)
+✔ compares every CSS pixel center using independent physical x and y scales (0.789583ms)
+✔ detects one changed RGBA channel at its CSS and PixelCopy coordinates (0.16575ms)
+✔ treats one-byte red, green, blue, and alpha changes as mismatches (0.116875ms)
+✔ rejects a PixelCopy image too small for unique logical pixel centers (0.418875ms)
+✔ rejects undersized physical dimensions before attempting duplicate pixel mappings (0.08575ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 486.820125
+== capture script syntax ==

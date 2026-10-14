@@ -57,7 +57,8 @@ struct RuntimeGpuHost {
     include_c13_1_compact_surface_matrix_hit_test_report: bool,
     #[cfg(any(
         feature = "c12-4-metal-surface-readback-test",
-        feature = "c11-grid-metal-surface-pixels-test"
+        feature = "c11-grid-metal-surface-pixels-test",
+        feature = "c13-1-overflow-clip-fixture-test"
     ))]
     surface_pixel_readback_test: bool,
     operation: Mutex<()>,
@@ -97,7 +98,8 @@ impl RuntimeGpuHost {
             include_c13_1_compact_surface_matrix_hit_test_report: false,
             #[cfg(any(
                 feature = "c12-4-metal-surface-readback-test",
-                feature = "c11-grid-metal-surface-pixels-test"
+                feature = "c11-grid-metal-surface-pixels-test",
+                feature = "c13-1-overflow-clip-fixture-test"
             ))]
             surface_pixel_readback_test: false,
             operation: Mutex::new(()),

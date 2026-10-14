@@ -1,0 +1,30 @@
+== LLVM tool ==
+llvm-nm, compatible with GNU nm
+LLVM (http://llvm.org/):
+  LLVM version 22.1.2-rust-1.96.1-stable
+  Optimized build.
+== default feature-off archive ==
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.06s
+target/debug/libspinon_ffi.a:cfg_if-0d9d6d77ae9bd193.cfg_if.edf119ddab75db36-cgu.0.rcgu.o: no symbols
+target/debug/libspinon_ffi.a:rustc_std_workspace_alloc-d7644d33b12481aa.rustc_std_workspace_alloc.4a6bf8cf9327e754-cgu.0.rcgu.o: no symbols
+target/debug/libspinon_ffi.a:unwind-b439bd6b39ed89d9.unwind.eac6c18a66b71f98-cgu.0.rcgu.o: no symbols
+target/debug/libspinon_ffi.a:rustc_std_workspace_core-01875f5d21777e25.rustc_std_workspace_core.fb1b1b87ab2f5ef-cgu.0.rcgu.o: no symbols
+target/debug/libspinon_ffi.a:compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.227.rcgu.o: no symbols
+target/debug/libspinon_ffi.a:compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.229.rcgu.o: no symbols
+target/debug/libspinon_ffi.a:compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.230.rcgu.o: no symbols
+PASS: both C13.1 pixel readback symbols are absent
+== fixture feature positive control ==
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.09s
+target/debug/libspinon_ffi.a:cfg_if-0d9d6d77ae9bd193.cfg_if.edf119ddab75db36-cgu.0.rcgu.o: no symbols
+target/debug/libspinon_ffi.a:rustc_std_workspace_alloc-d7644d33b12481aa.rustc_std_workspace_alloc.4a6bf8cf9327e754-cgu.0.rcgu.o: no symbols
+target/debug/libspinon_ffi.a:unwind-b439bd6b39ed89d9.unwind.eac6c18a66b71f98-cgu.0.rcgu.o: no symbols
+target/debug/libspinon_ffi.a:rustc_std_workspace_core-01875f5d21777e25.rustc_std_workspace_core.fb1b1b87ab2f5ef-cgu.0.rcgu.o: no symbols
+target/debug/libspinon_ffi.a:compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.227.rcgu.o: no symbols
+target/debug/libspinon_ffi.a:compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.229.rcgu.o: no symbols
+target/debug/libspinon_ffi.a:compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.230.rcgu.o: no symbols
+0000000000000000 T __ZN10spinon_ffi11runtime_gpu3ffi8fixtures5c13_161spinon_runtime_gpu_host_request_c13_1_surface_pixels_for_test28_$u7b$$u7b$closure$u7d$$u7d$17h9a983081ca58094bE
+0000000000001a10 T __ZN4core3ptr333drop_in_place$LT$alloc..vec..Vec$LT$$LP$u32$C$u32$RP$$GT$..extend_trusted$LT$core..iter..adapters..map..Map$LT$core..slice..iter..ChunksExact$LT$u32$GT$$C$spinon_ffi..runtime_gpu..ffi..fixtures..c13_1..spinon_runtime_gpu_host_request_c13_1_surface_pixels_for_test..$u7b$$u7b$closure$u7d$$u7d$$GT$$GT$..$u7b$$u7b$closure$u7d$$u7d$$GT$17hed9db32253a485e4E
+0000000000001c88 T __ZN4core3ptr444drop_in_place$LT$core..iter..traits..iterator..Iterator..for_each..call$LT$$LP$u32$C$u32$RP$$C$alloc..vec..Vec$LT$$LP$u32$C$u32$RP$$GT$..extend_trusted$LT$core..iter..adapters..map..Map$LT$core..slice..iter..ChunksExact$LT$u32$GT$$C$spinon_ffi..runtime_gpu..ffi..fixtures..c13_1..spinon_runtime_gpu_host_request_c13_1_surface_pixels_for_test..$u7b$$u7b$closure$u7d$$u7d$$GT$$GT$..$u7b$$u7b$closure$u7d$$u7d$$GT$..$u7b$$u7b$closure$u7d$$u7d$$GT$17h6f636cebcaad4b75E
+000000000000201c T __ZN4core3ptr707drop_in_place$LT$core..iter..adapters..map..map_fold$LT$$RF$$u5b$u32$u5d$$C$$LP$u32$C$u32$RP$$C$$LP$$RP$$C$spinon_ffi..runtime_gpu..ffi..fixtures..c13_1..spinon_runtime_gpu_host_request_c13_1_surface_pixels_for_test..$u7b$$u7b$closure$u7d$$u7d$$C$core..iter..traits..iterator..Iterator..for_each..call$LT$$LP$u32$C$u32$RP$$C$alloc..vec..Vec$LT$$LP$u32$C$u32$RP$$GT$..extend_trusted$LT$core..iter..adapters..map..Map$LT$core..slice..iter..ChunksExact$LT$u32$GT$$C$spinon_ffi..runtime_gpu..ffi..fixtures..c13_1..spinon_runtime_gpu_host_request_c13_1_surface_pixels_for_test..$u7b$$u7b$closure$u7d$$u7d$$GT$$GT$..$u7b$$u7b$closure$u7d$$u7d$$GT$..$u7b$$u7b$closure$u7d$$u7d$$GT$..$u7b$$u7b$closure$u7d$$u7d$$GT$17h9ad7ba69993462ebE
+000000000000082c T _spinon_runtime_gpu_host_new_c13_1_compact_surface_pixel_readback_fixture
+00000000000010f0 T _spinon_runtime_gpu_host_request_c13_1_surface_pixels_for_test
