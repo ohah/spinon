@@ -1,0 +1,94 @@
+{
+  "schema": "spinon-c13-1-ios-app-hit-identity-grid/v1",
+  "status": "matched",
+  "runID": "c13-1-ios-hit-grid-20261014T154338634Z-f1835c60",
+  "simulator": {
+    "name": "iPhone 17 Pro",
+    "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2"
+  },
+  "v8": {
+    "revision": "7b50b62cb18f28617959e8452e2cd18195b38bcf",
+    "archive": "/Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8/out/boson-ios-sim/obj/libv8_monolith.a"
+  },
+  "appExecutableSha256": "099468e5b30e8aadf5321bfa3130646d8afd09be564b59b40b100d0f58059008",
+  "chromeOracle": {
+    "product": "Chrome for Testing 155.0.8059.40",
+    "identitySha256": "93cccd042e82d8cd30cb7a8ab34a5154073d4a9eccbc4038294d3ca5b9dfce87",
+    "gridOracleSha256": "35e88e57edc16e526e389317b0d18ef227e35d1356a2353b92476c75ef6414f6",
+    "chromeObservationSha256": "515fc95f811399fda9e336a13e7583f2d22555fce4727f1fe7f734981abd0299"
+  },
+  "expected": {
+    "nodeFrames": 41,
+    "fixedHitSamples": 52,
+    "gridPoints": 30000
+  },
+  "runs": [
+    {
+      "name": "run-1",
+      "pid": 99336,
+      "runID": "72893d66781e444aa0fca8771b54a2ec",
+      "runtimeGeneration": 1,
+      "points": 30000,
+      "matched": 30000,
+      "mismatches": 0,
+      "fixedHitSamples": 52,
+      "nodeFrames": 41,
+      "correlatedFrameLogs": 41,
+      "correlatedHitSampleLogs": 52,
+      "identitySha256": "93cccd042e82d8cd30cb7a8ab34a5154073d4a9eccbc4038294d3ca5b9dfce87",
+      "gridOracleSha256": "35e88e57edc16e526e389317b0d18ef227e35d1356a2353b92476c75ef6414f6",
+      "chromeObservationSha256": "515fc95f811399fda9e336a13e7583f2d22555fce4727f1fe7f734981abd0299",
+      "screenshot": "run-1-ios-simulator.png",
+      "screenshotSha256": "5871de07f24012ba58cf7f6eb9f91d29a805635e29a5cb0d525e323cfe3f676e",
+      "runtimeLog": "run-1-runtime.log"
+    },
+    {
+      "name": "run-2",
+      "pid": 99627,
+      "runID": "6e8ca02b16244ed18b6e9ecbed264316",
+      "runtimeGeneration": 1,
+      "points": 30000,
+      "matched": 30000,
+      "mismatches": 0,
+      "fixedHitSamples": 52,
+      "nodeFrames": 41,
+      "correlatedFrameLogs": 41,
+      "correlatedHitSampleLogs": 52,
+      "identitySha256": "93cccd042e82d8cd30cb7a8ab34a5154073d4a9eccbc4038294d3ca5b9dfce87",
+      "gridOracleSha256": "35e88e57edc16e526e389317b0d18ef227e35d1356a2353b92476c75ef6414f6",
+      "chromeObservationSha256": "515fc95f811399fda9e336a13e7583f2d22555fce4727f1fe7f734981abd0299",
+      "screenshot": "run-2-ios-simulator.png",
+      "screenshotSha256": "5871de07f24012ba58cf7f6eb9f91d29a805635e29a5cb0d525e323cfe3f676e",
+      "runtimeLog": "run-2-runtime.log"
+    },
+    {
+      "name": "run-3",
+      "pid": 99846,
+      "runID": "1f3c1749a27f4871af5a1ca850cbe040",
+      "runtimeGeneration": 1,
+      "points": 30000,
+      "matched": 30000,
+      "mismatches": 0,
+      "fixedHitSamples": 52,
+      "nodeFrames": 41,
+      "correlatedFrameLogs": 41,
+      "correlatedHitSampleLogs": 52,
+      "identitySha256": "93cccd042e82d8cd30cb7a8ab34a5154073d4a9eccbc4038294d3ca5b9dfce87",
+      "gridOracleSha256": "35e88e57edc16e526e389317b0d18ef227e35d1356a2353b92476c75ef6414f6",
+      "chromeObservationSha256": "515fc95f811399fda9e336a13e7583f2d22555fce4727f1fe7f734981abd0299",
+      "screenshot": "run-3-ios-simulator.png",
+      "screenshotSha256": "5871de07f24012ba58cf7f6eb9f91d29a805635e29a5cb0d525e323cfe3f676e",
+      "runtimeLog": "run-3-runtime.log"
+    }
+  ],
+  "negativeControl": {
+    "status": "rejected-before-host-init",
+    "pid": 303,
+    "conflictingRoutes": 2,
+    "hostCreated": false,
+    "evalStarted": false
+  },
+  "xcodeVersion": "Xcode 26.2\nBuild version 17C52",
+  "scope": "iOS 26.2 iPhone 17 Pro Simulator app route; no physical device or drawable pixel readback."
+}

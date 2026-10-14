@@ -508,6 +508,14 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     }
     private let c131CompactSurfaceMatrixProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c131-compact-surface-matrix")
+    private let c131CompactHitIdentityGridProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c131-compact-hit-identity-grid")
+    private var c131CompactSurfaceMatrixRouteRequested: Bool {
+        c131CompactSurfaceMatrixProbeRequested || c131CompactHitIdentityGridProbeRequested
+    }
+    private let c131CompactSurfaceMatrixRunID = UUID().uuidString
+        .replacingOccurrences(of: "-", with: "").lowercased()
+    private var c131CompactHitIdentityGridStatusMessage: String?
     private let c131OverflowClipProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c131-overflow-clip")
     private let c131BorderStripProbeRequested = ProcessInfo.processInfo.arguments
@@ -546,7 +554,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             && ProcessInfo.processInfo.arguments.contains("--spinon-c051-custom-properties")
     }
     private var fixedSizeCssFixtureRequested: Bool {
-        c131CompactSurfaceMatrixProbeRequested || c131OverflowClipProbeRequested
+        c131CompactSurfaceMatrixRouteRequested || c131OverflowClipProbeRequested
             || c131BorderStripProbeRequested || c11GridFixtureRequested
             || c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
             || c124StackingProbeRequested
@@ -574,7 +582,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
 
         let title = UILabel()
-        title.text = c131CompactSurfaceMatrixProbeRequested
+        title.text = c131CompactHitIdentityGridProbeRequested
+            ? "SPINON · C13.1 iOS hit identity grid"
+            : c131CompactSurfaceMatrixProbeRequested
             ? "SPINON · C13.1 compact surface"
             : c131BorderStripProbeRequested
             ? "SPINON · C13.1 paint/hit border"
@@ -656,7 +666,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.addSubview(title)
 
         let description = UILabel()
-        description.text = c131CompactSurfaceMatrixProbeRequested
+        description.text = c131CompactHitIdentityGridProbeRequested
+            ? "Chrome 155 integer hit identity 30,000점 · 52 sample · 300×100 CSS px"
+            : c131CompactSurfaceMatrixProbeRequested
             ? "13개 overflow clip case · 52 hit sample → WGPU Metal · 300×100 CSS px"
             : c131BorderStripProbeRequested
             ? "static/absolute clip border-strip hit oracle → WGPU Metal · 400×160 CSS px"
@@ -740,7 +752,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         canvasView.translatesAutoresizingMaskIntoConstraints = false
         canvasView.isAccessibilityElement = true
-        canvasView.accessibilityLabel = c131CompactSurfaceMatrixProbeRequested
+        canvasView.accessibilityLabel = c131CompactHitIdentityGridProbeRequested
+            ? "C13.1 iOS Simulator full 30,000-point hit identity grid WGPU Metal surface"
+            : c131CompactSurfaceMatrixProbeRequested
             ? "C13.1 compact 13-case overflow Chrome oracle WGPU Metal surface"
             : c131BorderStripProbeRequested
             ? "C13.1 paint/hit border-strip Chrome 경계 WGPU Metal 장면"
@@ -886,12 +900,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         let canvasWidth = canvasView.widthAnchor.constraint(
             equalToConstant: c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
-                ? 360 : c131CompactSurfaceMatrixProbeRequested ? 300
+                ? 360 : c131CompactSurfaceMatrixRouteRequested ? 300
                 : c131BorderStripProbeRequested ? 400 : fixedSizeCssFixtureRequested ? 320 : 301
         )
         let canvasHeight = canvasView.heightAnchor.constraint(
             equalToConstant: c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
-                ? 800 : c131CompactSurfaceMatrixProbeRequested ? 100
+                ? 800 : c131CompactSurfaceMatrixRouteRequested ? 100
                 : c131BorderStripProbeRequested ? 160 : fixedSizeCssFixtureRequested ? 240 : 100
         )
         canvasWidthConstraint = canvasWidth
@@ -1109,7 +1123,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         return passed
     }
 
-    private func logC131CompactSurfaceMatrixFixtureReport(_ report: String) -> Bool {
+    private func logC131CompactSurfaceMatrixFixtureReport(_ report: String, runID: String? = nil) -> Bool {
         let expectedCaseIDs = [
             "visible", "clip-x", "clip-y", "clip-both", "clip-margin-padding",
             "clip-margin-content", "clip-margin-border", "clip-margin-hidden",
@@ -1128,15 +1142,19 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             log("SPINON_C131_COMPACT_FIXTURE_SUMMARY status=error stage=runtime-report \(runtimeStatusSummary(report))")
             return false
         }
+        let runtimeGeneration = reportField(report, "generation=")
+        let runContext = runID.map {
+            " run_id=\($0) runtime_generation=\(runtimeGeneration.isEmpty ? "missing" : runtimeGeneration)"
+        } ?? ""
         let frames = report[frameMarker.upperBound..<frameEnd].split(separator: ";")
         guard frames.count == 41 else {
             log("SPINON_C131_COMPACT_GEOMETRY_SUMMARY status=error frames=\(frames.count) expected=41")
             return false
         }
         for frame in frames {
-            log("SPINON_C131_COMPACT_NODE_FRAME \(frame)")
+            log("SPINON_C131_COMPACT_NODE_FRAME \(frame)\(runContext)")
         }
-        log("SPINON_C131_COMPACT_GEOMETRY_SUMMARY status=ok frames=41 viewport=300x100")
+        log("SPINON_C131_COMPACT_GEOMETRY_SUMMARY status=ok frames=41 viewport=300x100\(runContext)")
 
         guard let sampleMarker = report.range(of: "hit_test_samples_json="),
               let sampleStart = report[sampleMarker.upperBound...].firstIndex(of: "["),
@@ -1180,12 +1198,45 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 && seenIDs.insert(actualID).inserted && seenCoordinates.insert(coordinate).inserted
             if status == "matched" { matched += 1 }
             if !sampleMatches { valid = false }
-            log("SPINON_C131_COMPACT_HIT_TEST id=\(actualID) x=\(x) y=\(y) element=\(elementID) node_index=\(nodeIndex) rgba=\(rgbaText) status=\(status)")
+            log("SPINON_C131_COMPACT_HIT_TEST id=\(actualID) x=\(x) y=\(y) element=\(elementID) node_index=\(nodeIndex) rgba=\(rgbaText) status=\(status)\(runContext)")
         }
         valid = valid && seenIDs.count == 52 && seenCoordinates.count == 52 && matched == 52
-        log("SPINON_C131_COMPACT_HIT_TEST_SUMMARY status=\(valid ? "ok" : "error") matched=\(matched) total=\(samples.count) ids=\(seenIDs.count == 52 ? "fixed" : "unexpected")")
-        log("SPINON_C131_COMPACT_FIXTURE_SUMMARY status=\(valid ? "ok" : "error") boxes=41 frames=\(frames.count) hit_samples=\(samples.count) hit_matches=\(matched)")
+        log("SPINON_C131_COMPACT_HIT_TEST_SUMMARY status=\(valid ? "ok" : "error") matched=\(matched) total=\(samples.count) ids=\(seenIDs.count == 52 ? "fixed" : "unexpected")\(runContext)")
+        log("SPINON_C131_COMPACT_FIXTURE_SUMMARY status=\(valid ? "ok" : "error") boxes=41 frames=\(frames.count) hit_samples=\(samples.count) hit_matches=\(matched)\(runContext)")
         return valid
+    }
+
+    private func logC131CompactHitIdentityGridSummary(_ report: String) -> Bool {
+        do {
+            let summary = try C131HitIdentityGridSummaryValidator.parse(report)
+            let generation = reportField(report, "generation=")
+            guard !generation.isEmpty else {
+                c131CompactHitIdentityGridStatusMessage = "실패 · C13.1 Chrome hit identity 30,000점 검증 불일치"
+                log("SPINON_C131_COMPACT_HIT_IDENTITY_GRID_SUMMARY status=error stage=missing-generation run_id=\(c131CompactSurfaceMatrixRunID)")
+                return false
+            }
+
+            let status = summary.isMatched ? "matched" : "mismatch"
+            log("SPINON_C131_COMPACT_HIT_IDENTITY_GRID_SUMMARY status=\(status) run_id=\(c131CompactSurfaceMatrixRunID) runtime_generation=\(generation) points=\(summary.pointCount) matched=\(summary.matchedCount) mismatches=\(summary.mismatchCount) preview=\(summary.mismatchPreview.count) expected_identity_sha256=\(summary.expectedIdentitySha256) identity_sha256=\(summary.actualIdentitySha256) oracle_sha256=\(summary.gridOracleSha256) observation_sha256=\(summary.chromeObservationSha256)")
+            for (index, mismatch) in summary.mismatchPreview.enumerated() {
+                log("SPINON_C131_COMPACT_HIT_IDENTITY_GRID_MISMATCH index=\(index) x=\(mismatch.xCssPx) y=\(mismatch.yCssPx) expected=\(mismatch.expectedNodeId) actual=\(mismatch.actualNodeId ?? "null")")
+            }
+            if summary.isMatched {
+                c131CompactHitIdentityGridStatusMessage = "완료 · C13.1 Chrome hit identity 30,000/30,000 · 52/52"
+                postStatus(c131CompactHitIdentityGridStatusMessage ?? "C13.1 hit identity 검증 완료")
+            } else {
+                c131CompactHitIdentityGridStatusMessage = "실패 · C13.1 Chrome hit identity 30,000점 불일치"
+            }
+            return summary.isMatched
+        } catch let error as C131HitIdentityGridSummaryValidator.ValidationError {
+            c131CompactHitIdentityGridStatusMessage = "실패 · C13.1 Chrome hit identity 30,000점 검증 불일치"
+            log("SPINON_C131_COMPACT_HIT_IDENTITY_GRID_SUMMARY status=error run_id=\(c131CompactSurfaceMatrixRunID) stage=parser code=\(error)")
+            return false
+        } catch {
+            c131CompactHitIdentityGridStatusMessage = "실패 · C13.1 Chrome hit identity 30,000점 검증 불일치"
+            log("SPINON_C131_COMPACT_HIT_IDENTITY_GRID_SUMMARY status=error run_id=\(c131CompactSurfaceMatrixRunID) stage=parser code=unknown")
+            return false
+        }
     }
 
     private func logC131BorderFixtureReport(_ report: String) -> Bool {
@@ -1594,6 +1645,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let selectedC131Routes = [
             c131OverflowClipProbeRequested,
             c131CompactSurfaceMatrixProbeRequested,
+            c131CompactHitIdentityGridProbeRequested,
             c131BorderStripProbeRequested,
         ].filter { $0 }.count
         if selectedC131Routes > 1 {
@@ -1606,6 +1658,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                $0.hasPrefix("--spinon-c")
                    && $0 != "--spinon-c131-overflow-clip"
                    && $0 != "--spinon-c131-compact-surface-matrix"
+                   && $0 != "--spinon-c131-compact-hit-identity-grid"
                    && $0 != "--spinon-c131-overflow-clip-border"
                    && $0 != "--spinon-c0410-runtime-gpu"
            }) {
@@ -1697,7 +1750,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             postStatus("실패 · C12.4 Metal 표본 case 인수가 올바르지 않습니다")
             return
         }
-        let handle = c131CompactSurfaceMatrixProbeRequested
+        let handle = c131CompactSurfaceMatrixRouteRequested
             ? SpinonRunner.createRuntimeGpuHostWithC13_1CompactSurfaceMatrixFixture()
             : c131BorderStripProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithC13_1OverflowClipBorderFixture()
@@ -1752,7 +1805,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         guard shouldContinue else { return }
 
         let environmentInputs = currentEnvironment()
-        let viewportWidth: Float = c131CompactSurfaceMatrixProbeRequested
+        let viewportWidth: Float = c131CompactSurfaceMatrixRouteRequested
             ? 300 : c131BorderStripProbeRequested
             ? 400 : c131OverflowClipProbeRequested
             ? 320 : c122AbsoluteBlockProbeRequested
@@ -1760,7 +1813,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             || c1122GridAutoPlacementProbeRequested
             || c1123GridAutoPlacementProbeRequested
             ? 360 : c1131GridRepeatProbeRequested || fixedSizeCssFixtureRequested ? 320 : environmentInputs.width
-        let viewportHeight: Float = c131CompactSurfaceMatrixProbeRequested
+        let viewportHeight: Float = c131CompactSurfaceMatrixRouteRequested
             ? 100 : c131BorderStripProbeRequested
             ? 160 : c131OverflowClipProbeRequested
             ? 240 : c122AbsoluteBlockProbeRequested
@@ -1785,7 +1838,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         log("SPINON_C0410_ENVIRONMENT \(environment ?? "")")
 
         var result: String? = nil
-        if c131CompactSurfaceMatrixProbeRequested {
+        if c131CompactSurfaceMatrixRouteRequested {
             result = SpinonRunner.evalRuntimeGpuC13_1CompactSurfaceMatrixFixture(handle)
         } else if c131BorderStripProbeRequested {
             result = SpinonRunner.evalRuntimeGpuC13_1OverflowClipBorderFixture(handle)
@@ -1944,11 +1997,24 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 return
             }
         }
-        if c131CompactSurfaceMatrixProbeRequested {
+        if c131CompactSurfaceMatrixRouteRequested {
             let report = result ?? "status=-1 missing-report"
-            log("SPINON_C131_COMPACT_EVAL_RUN \(runtimeStatusSummary(report))")
-            guard logC131CompactSurfaceMatrixFixtureReport(report) else {
+            if c131CompactHitIdentityGridProbeRequested {
+                log("SPINON_C131_COMPACT_EVAL_RUN run_id=\(c131CompactSurfaceMatrixRunID) \(runtimeStatusSummary(report))")
+            } else {
+                log("SPINON_C131_COMPACT_EVAL_RUN \(runtimeStatusSummary(report))")
+            }
+            let runID = c131CompactHitIdentityGridProbeRequested ? c131CompactSurfaceMatrixRunID : nil
+            guard logC131CompactSurfaceMatrixFixtureReport(report, runID: runID) else {
+                if c131CompactHitIdentityGridProbeRequested {
+                    c131CompactHitIdentityGridStatusMessage = "실패 · C13.1 compact frame·hit-test 검증 결과 불일치"
+                }
                 postStatus("실패 · C13.1 compact frame·hit-test 검증 결과 불일치")
+                return
+            }
+            if c131CompactHitIdentityGridProbeRequested,
+               !logC131CompactHitIdentityGridSummary(report) {
+                postStatus("실패 · C13.1 Chrome hit identity 30,000점 검증 불일치")
                 return
             }
         } else if c131BorderStripProbeRequested {
@@ -2264,7 +2330,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 ? runtimeResultCacheProbeRequested ? "SPINON_C053" : "SPINON_C052"
                 : authorStylesheetsProbeRequested ? "SPINON_C0411" : "SPINON_C0410"
             log("\(scope)_EVAL \(result ?? "")")
-            postStatus(runtimeStatusSummary(result ?? "runtime scene 준비 완료"))
+            if c131CompactHitIdentityGridProbeRequested {
+                postStatus(c131CompactHitIdentityGridStatusMessage
+                    ?? "완료 · C13.1 Chrome hit identity 30,000/30,000 · 52/52")
+            } else {
+                postStatus(runtimeStatusSummary(result ?? "runtime scene 준비 완료"))
+            }
             if c121PositioningProbeRequested {
                 log("SPINON_C121_SUMMARY state=initial \(runtimeStatusSummary(result ?? ""))")
             } else if aspectRatioProbeRequested {
@@ -2794,7 +2865,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         } else if c1121GridPlacementProbeRequested, let report {
             logC1121GridReadySummaryIfNeeded(report)
         }
-        postStatus(runtimeStatusSummary(report ?? "환경 보고 없음"))
+        if c131CompactHitIdentityGridProbeRequested,
+           report?.hasPrefix("status=0 ") == true,
+           let statusMessage = c131CompactHitIdentityGridStatusMessage {
+            postStatus(statusMessage)
+        } else {
+            postStatus(runtimeStatusSummary(report ?? "환경 보고 없음"))
+        }
         guard report?.hasPrefix("status=0 ") == true else {
             throw C0410LatestTaskLaneError.operationFailed(report ?? "환경 갱신 보고 없음")
         }
