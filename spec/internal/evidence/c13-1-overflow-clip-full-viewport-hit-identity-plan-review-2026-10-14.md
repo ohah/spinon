@@ -22,7 +22,7 @@
 | 16 | 원래 target frame 안 187,320점을 새 full grid로 대체해 기존 검증이 회귀할 수 있다 | PASS — 이전 target-frame observation과 검사는 유지하고 전체 grid 관측을 추가한다. |
 | 17 | invalid/float rows가 성공 scene에 포함되거나 page content가 runtime 지원으로 오해될 수 있다 | PASS — 13 valid rows만 combined scene에 넣고 invalid/float rows와 header content는 root fallback oracle bucket으로 명시한다. |
 | 18 | hit identity scan을 paint surface 또는 DOM event test로 과장할 수 있다 | PASS — 계획에서 host `hit_test_css_point`만 주장하며 PixelCopy/Metal, dispatch와 WPT를 제외했다. |
-| 19 | helper 설정 변경이 layout/clip geometry를 바꾸면서 hit scan 차이를 숨길 수 있다 | PASS — root height만 633에서 1100으로 맞추고 absolute child geometry와 CSS clip inputs를 고정한다. |
+| 19 | combined scene의 case 위치/중첩 관계가 Chrome fixture geometry와 달라 hit 차이를 숨길 수 있다 | PASS — 13 section 및 box/target/inner frame을 observation과 비교하고 frame mismatch면 hit scan을 실패시킨다. |
 | 20 | 큰 표본 수를 C13.1/C13 완료 근거로 과장할 수 있다 | PASS — STATUS와 계획은 C13.1 및 C13 미완료를 유지하고 나머지 surface/event/WPT gate를 명시한다. |
 
 20개 계획 실패 관점을 검토했다. 명시적 수정은 필요하지 않았고 unresolved implementation issues는 아직 capture/runtime test를 수행하지 않아 판단 대상으로 삼지 않았다. browser oracle capture와 구현 검토는 다음 단계다.

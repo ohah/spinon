@@ -26,7 +26,7 @@ C13.1 구현의 새 CSS 지원, Android/iOS 앱 통합, surface paint 비교, DO
 6. 좌상/우상/좌하/우하 viewport 경계, target 밖 clip box·page fallback, visible overflow와 clip에서 달라지는 target reach를 negative/control 행으로 포함한다.
 7. unresolved identity, 누락 행/run, 잘못된 frame 또는 표본 수는 validator와 Rust test에서 즉시 실패한다.
 8. Chrome screenshot은 PR 본문에 inline으로 첨부하고 실제 표시를 agent-browser로 확인한다. Capture는 browser oracle이며 앱 화면이나 GPU surface 근거로 해석하지 않는다.
-9. 한 batch에서 13개 viewport를 반환하려던 첫 capture는 agent-browser daemon의 `Resource temporarily unavailable` 응답 한계에 걸렸다([초기 시도 결과](../spec/internal/evidence/c13-1-overflow-clip-full-viewport-hit-identity-2026-10-14/capture-initial-batch-error.json)). oracle 범위는 줄이지 않고 단일 page/combined scene scan으로 바꾸어 재수집한다. 구현 실패 관점 20개와 PR 변경 관점 검토를 각각 수행한다. 코드 문제가 없더라도 검증 수치만으로 C13.1 완료를 주장하지 않는다.
+9. 한 batch에서 13개 scene의 viewport grid를 반환하려던 첫 capture는 agent-browser daemon의 `Resource temporarily unavailable` 응답 한계에 걸렸다([초기 시도 결과](../spec/internal/evidence/c13-1-overflow-clip-full-viewport-hit-identity-2026-10-14/capture-initial-batch-error.json)). oracle 범위는 줄이지 않고 단일 page/combined scene scan으로 바꾸어 재수집한다. 구현 실패 관점 20개와 PR 변경 관점 검토를 각각 수행한다. 코드 문제가 없더라도 검증 수치만으로 C13.1 완료를 주장하지 않는다.
 
 ## 제외와 후속 경계
 
@@ -35,7 +35,7 @@ C13.1 구현의 새 CSS 지원, Android/iOS 앱 통합, surface paint 비교, DO
 ## 구현 순서
 
 1. [계획 실패 관점 20개 검토](../spec/internal/evidence/c13-1-overflow-clip-full-viewport-hit-identity-plan-review-2026-10-14.md)를 기록하고 기준/제외 범위를 고정한다.
-2. agent-browser Chrome capture를 만들고 JSON integrity validator로 metadata·ID·RLE 연속성·18,304,000점 합계를 확인한다.
+2. agent-browser Chrome capture를 만들고 JSON integrity validator로 metadata·ID·RLE 연속성·1,408,000점 합계를 확인한다.
 3. 기존 Chrome 13 row 위치를 그대로 재현하는 combined runtime scene builder를 추가한다. root는 1280×1100 CSS px, 각 section/box/target/inner frame은 Chrome 사전 관찰과 대조한다.
 4. C13.1 Rust render test 하나에서 combined scene의 full viewport exact identity를 비교하고 capture negative controls를 검증한다. 기존 187,320 target-frame query는 유지한다.
 5. 기존 target-frame 검증, renderer tests, Clippy, rustfmt, workspace gate와 artifact boundary를 실행해 근거를 저장한다.
