@@ -1,0 +1,21 @@
+{
+  "schema": "spinon-c13-2-app-negative-controls-source-revision/v1",
+  "baseCommit": "430634f8a1e1581a9373c549871aa601879d2bb7",
+  "sourcePatchSha256": "a216e67caf7cfcdf66d44eab7237788f06bce9ebf1db81aae053679797ed106f",
+  "v8Revision": "7b50b62cb18f28617959e8452e2cd18195b38bcf",
+  "android": {
+    "avd": "spinon_api37_0_applied_txn",
+    "serial": "emulator-5556",
+    "api": 37,
+    "abi": "arm64-v8a",
+    "apkSha256": "1431910eb44085839580e3ce77354474255b6f48d7ece690edf85a1fea72ba11",
+    "screenshotSha256": "36e5bf9d3eccd0e277592967170ca0ba6c1daa1ee7cd5f045eba25b16793e780"
+  },
+  "ios": {
+    "device": "iPhone 17 Pro",
+    "os": "iOS 26.2 Simulator",
+    "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "executableSha256": "c571129c15bc0c87e9aca18d34ce06dd7e90daf1ff1fb9f0d4634dd32d19f83c",
+    "screenshotSha256": "db053cd700cc677fa12aa1e6a729c23d3b351bc48e894507e5490bde75d283ce"
+  }
+}

@@ -28,16 +28,16 @@
 | 19 | 구현 상태 대장이나 계획이 root/body app 검증을 계속 미실행으로 표시하거나 C13.2 완료로 과장한다. | STATUS/plan은 root/body 두 app route 완료, pixel readback·stale/fault·ink-only 미완료, 상위 C13 미완료로 맞췄다. **PASS** |
 | 20 | PR reviewer가 실행 가능한 상세 근거 없이 simulator success만 본다. | 이 후속 PR에만 적용한 root/body 구현 review 20개와 PR delta review를 독립 문서로 기록하고 screenshots/logs/hashes에 연결한다. **PASS** |
 | 21 | PR 본문에서 Android와 iOS screenshot 링크가 서로 뒤바뀐다. | PR #173의 두 `img` alt와 raw 경로가 각각 Android API 37 AVD·iPhone 17 Pro Simulator 파일과 일치하는지 에이전트 브라우저로 확인했다. **PASS** |
-| 22 | screenshot의 raw URL이 현재 branch 이름을 가리켜 rebase/merge 뒤 사라진다. | PR #173 본문은 head branch가 아닌 commit `107718749d3733645e84624196ef9fa4a1dc7f59`에 URL을 고정했고 이미지가 로드됐다. rebase-and-merge 뒤 merge SHA로 다시 고정하는 후속 확인은 남아 있다. **PARTIAL — post-merge 확인** |
+| 22 | screenshot의 raw URL이 현재 branch 이름을 가리켜 rebase/merge 뒤 사라진다. | rebase-and-merge 뒤 본문 image/doc 링크를 merge SHA `430634f8a1e1581a9373c549871aa601879d2bb7`로 고쳤다. 두 PNG와 README를 에이전트 브라우저에서 다시 열어 확인했다. **PASS** |
 | 23 | URL은 열리지만 파일 경로나 artifact가 틀려 다른 이미지 또는 404가 표시된다. | PR DOM의 두 `img.currentSrc`가 지정된 Android/iOS PNG를 가리키고 `complete=true`; intrinsic size가 각각 1080×2400, 1206×2622였다. **PASS** |
 | 24 | 본문 링크가 markdown anchor로만 보여 이미지를 inline으로 렌더링하지 못한다. | PR #173 conversation을 에이전트 브라우저와 rendered screenshot으로 확인했다. 두 inline 이미지는 body 안에서 표시되고 PR #171 결과를 대신 쓰지 않는다. **PASS** |
 | 25 | evidence README의 상대 링크가 PR diff 위치에서 잘못된 상위 디렉터리를 가리킨다. | 고정 SHA의 evidence README를 에이전트 브라우저로 열고 Chrome JSON, 두 simulator screenshot/runtime log 및 회귀 로그 상대 링크가 같은 evidence 경로로 해석됨을 확인했다. **PASS** |
 | 26 | 이미지 설명이 visual inspection을 pixel-exact readback 또는 hardware GPU proof로 오해시킨다. | PR #173 alt와 본문은 SwiftShader AVD·Simulator Metal 및 pixel readback 미실행을 명시한다. README도 동일한 한계를 기록한다. **PASS** |
 | 27 | workflow가 앱/FFI 경로를 선택하지 않아 green CI가 새 변경을 빌드하지 않는다. | `.github/workflows`에 PR 실행 workflow가 없고 `docs-pages.yml`은 수동 `workflow_dispatch`만 제공한다. `gh pr checks 173`에는 체크가 없으며 CI 통과로 주장하지 않았다. **PASS — CI 미구성 기록** |
-| 28 | 체크가 green이어도 branch protection의 required check 또는 mergeability가 충족되지 않는다. | main 보호 설정에서 필수 approval 0, required status checks 미설정, linear history 필수다. PR #173은 `MERGEABLE/CLEAN`이다. 병합 직전 재조회한다. **PARTIAL — merge 직전 재확인** |
+| 28 | 체크가 green이어도 branch protection의 required check 또는 mergeability가 충족되지 않는다. | 병합 직전 PR #173 head `4e8b7d3e`가 `MERGEABLE/CLEAN`이고 checks가 없음을 확인했다. main 보호 설정은 필수 approval 0, required status checks 미설정, linear history 필수였다. **PASS** |
 | 29 | PR에 작업 유형 또는 핵심 영역 label이 빠져 저장소 분류 규칙을 위반한다. | PR #173에 기존 `enhancement`, `area: runtime`, `area: ffi`, `area: android`, `area: ios`, `area: testing` label을 붙였고 GitHub 화면에서도 확인했다. **PASS** |
-| 30 | rebase-and-merge 뒤 PR 본문의 screenshot 및 evidence URL이 재작성된 SHA를 가리켜 깨진다. | 병합된 tree의 새 merge SHA로 URL을 갱신하고 에이전트 브라우저에서 이미지와 README 링크를 다시 열어야 한다. 병합 뒤에만 판정 가능하다. **PENDING** |
+| 30 | rebase-and-merge 뒤 PR 본문의 screenshot 및 evidence URL이 재작성된 SHA를 가리켜 깨진다. | PR #173 본문을 merge SHA `430634f8a1e1581a9373c549871aa601879d2bb7`로 다시 고쳤다. 에이전트 브라우저에서 Android 1080×2400, iOS 1206×2622 이미지와 merge SHA README artifact 링크를 확인했다. **PASS** |
 
 ## PR gate
 
-이 표는 로컬 변경 검토와 게시/병합 뒤에 확인할 PR 통합 관문을 함께 기록한다. PR #173에서 21, 23–27, 29번은 확인했다. 22번 raw image permalink 갱신과 28번 보호 설정 재조회, 30번 merge SHA permalink 검증은 병합 때 마무리한다. `Rebase and merge`만 사용하고 C13.2 전체 완료를 주장하지 않는다.
+이 표는 로컬 변경 검토와 게시/병합 뒤에 확인할 PR 통합 관문을 함께 기록한다. PR #173에서 30개 항목을 모두 확인했고 rebase-and-merge 후 permalink도 검증했다. C13.2 전체 완료를 주장하지 않는다.

@@ -1,0 +1,24 @@
+profile=c13-2-scroll-fixture-test opt-in control
+archive_bytes= 534005544
+b049ed4647d0dbd3a27b333e6ebb10155ccc19f38083cbc677d2119156e9fcfc  target/debug/libspinon_ffi.a
+2348:_spinon_runtime_gpu_host_eval_c13_2_scroll_fixture
+2349:_spinon_runtime_gpu_host_new_c13_2_scroll_fixture
+202484:c13_2_injected_reserve_failure: C13.2 offset
+202491:  const previousRoot = previousNodes && previousNodes['c132-root'];
+202514:    'c132-root',
+202588:c13_2_injected_reserve_failurelayout=readyC13.2 negative control recovery
+202590:c13_2_failure_controls=passed reserve_failure=atomic reserve_failure_marker=matched stale_publish=rejected recovery=same_host final_presentation=
+202617:    const root = nodes['c132-root'];
+295070:  element.setAttribute('data-c132-root-body-node', '');
+295089:  'c132-root-content',
+295093:  rootBodyNodes['c132-root-content'],
+295094:  'c132-root-marker',
+295099:  'c132-root-fixed',
+295113:  element.setAttribute('data-c132-root-body-node', '');
+295132:  'c132-root-content-hidden',
+295137:  'c132-root-marker-hidden',
+295142:  'c132-root-fixed-hidden',
+295151:  const previousRoot = previousNodes && previousNodes['c132-root'];
+295174:    'c132-root',
+295661:spinon_runtime_gpu_host_eval_c13_2_scroll_fixture
+299131:spinon_runtime_gpu_host_new_c13_2_scroll_fixture

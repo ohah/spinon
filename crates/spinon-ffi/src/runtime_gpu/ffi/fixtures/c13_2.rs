@@ -116,10 +116,17 @@ pub unsafe extern "C" fn spinon_runtime_gpu_host_eval_c13_2_scroll_fixture(
                     return write_host_status(status, report, output, output_capacity);
                 }
             };
+            let failure_control_report =
+                match host.verify_c13_2_failure_controls(layout_timeout_millis) {
+                    Ok(report) => report,
+                    Err((status, report)) => {
+                        return write_host_status(status, report, output, output_capacity);
+                    }
+                };
             write_host_status(
                 0,
                 format!(
-                    "{root_report} {root_scroll} {hidden_report} {hidden_scroll} {initial_report} {scroll_report} {lifecycle_report}"
+                    "{root_report} {root_scroll} {hidden_report} {hidden_scroll} {initial_report} {scroll_report} {lifecycle_report} {failure_control_report}"
                 ),
                 output,
                 output_capacity,

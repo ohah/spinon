@@ -4,7 +4,7 @@
 
 PR #172 뒤에 빠져 있던 root/body 실제 앱 장면을 Android API 37 ARM64 AVD와 iPhone 17 Pro / iOS 26.2 Simulator에서 실행했다. visible root/body viewport 전파와 `html { overflow:hidden }` 아래 body의 독립 scroll owner가 Chrome 155 값과 일치했다. 두 simulator route는 이 두 장면 다음에 기존 C13.2 26-frame·9-owner 장면과 lifecycle을 실행한다.
 
-이 근거는 C13.2 완료 판정이 아니다. Android `PixelCopy`와 iOS Metal drawable pixel readback은 연결하지 않았다. 스크린샷은 육안 확인용이며, border 밖 빨간 자식은 frame assertion과 escaped position의 hit-test identity assertion으로 확인했다. ink-only overflow와 app route의 stale/failure injection도 미실행 상태다.
+이 근거는 C13.2 완료 판정이 아니다. Android `PixelCopy`와 iOS Metal drawable pixel readback은 연결하지 않았다. 스크린샷은 육안 확인용이며, border 밖 빨간 자식은 frame assertion과 escaped position의 hit-test identity assertion으로 확인했다. ink-only overflow와 app route의 stale/failure injection도 미실행 상태였다. 이 문단은 이 root/body 실행 당시의 범위를 기록한다. 이후 deterministic reservation failure, stale presentation rejection과 same-host recovery는 [별도 앱 오류 원자성 후속 근거](../c13-2-app-negative-controls-2026-10-15/README.md)에서 Android/iOS Simulator로 확인했다. OS OOM, concurrent scheduler race, ink-only overflow와 simulator pixel readback은 여전히 남아 있다.
 
 ## Chrome 155 기준
 

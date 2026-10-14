@@ -4,6 +4,8 @@ use spinon_render_wgpu::{PendingRuntimeSurface, RuntimeRenderer, RuntimeRenderer
 use spinon_runtime::RuntimeLayoutFrame;
 use spinon_runtime::{RuntimeLayoutState, RuntimeSession, TaskPriority};
 use spinon_style::{CssColorScheme, CssMediaEnvironment};
+#[cfg(feature = "c13-2-scroll-fixture-test")]
+use std::sync::atomic::AtomicBool;
 use std::sync::{Mutex, MutexGuard, PoisonError};
 use std::time::Duration;
 
@@ -63,6 +65,10 @@ struct RuntimeGpuHost {
     surface_pixel_readback_test: bool,
     #[cfg(feature = "c13-2-scroll-fixture-test")]
     c13_2_scroll_state: Mutex<Option<RuntimeRenderSnapshot>>,
+    #[cfg(feature = "c13-2-scroll-fixture-test")]
+    c13_2_fail_next_scroll_reserve: AtomicBool,
+    #[cfg(feature = "c13-2-scroll-fixture-test")]
+    c13_2_reserve_failure_observed: AtomicBool,
     operation: Mutex<()>,
     presentation: PresentationScenes,
     renderer: Mutex<Option<RuntimeRenderer>>,
@@ -106,6 +112,10 @@ impl RuntimeGpuHost {
             surface_pixel_readback_test: false,
             #[cfg(feature = "c13-2-scroll-fixture-test")]
             c13_2_scroll_state: Mutex::new(None),
+            #[cfg(feature = "c13-2-scroll-fixture-test")]
+            c13_2_fail_next_scroll_reserve: AtomicBool::new(false),
+            #[cfg(feature = "c13-2-scroll-fixture-test")]
+            c13_2_reserve_failure_observed: AtomicBool::new(false),
             operation: Mutex::new(()),
             presentation: PresentationScenes::new(),
             renderer: Mutex::new(None),
@@ -193,9 +203,7 @@ impl RuntimeGpuHost {
             ));
         };
         #[cfg(feature = "c13-2-scroll-fixture-test")]
-        let scene = self
-            .reapply_c13_2_scroll_state(scene)
-            .map_err(|(status, error)| (status, error))?;
+        let scene = self.reapply_c13_2_scroll_state(scene)?;
         if !scene_matches_layout_key(&scene, completed.key) {
             return Err((
                 ERR_STALE,

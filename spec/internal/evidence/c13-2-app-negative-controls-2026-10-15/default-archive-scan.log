@@ -1,0 +1,6 @@
+profile=c04-runtime-gpu product core without fixture-test
+archive_bytes=524889688
+archive_sha256=51b1efb047fc20ef3747a037dc9b27310f0aa6f1e00a47f43e04d14a6a0bb36e
+c13_2_symbols_or_payload_found=[]
+symbol_source=archive strings scan; Apple nm cannot read unrelated Rust LLVM 22 compiler_builtins attributes
+strings_returncode=0
