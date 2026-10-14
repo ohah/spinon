@@ -1,0 +1,75 @@
+{
+  "browser": {
+    "devicePixelRatio": 1,
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "viewport": {
+      "height": 633,
+      "width": 1280
+    }
+  },
+  "samples": [
+    {
+      "elementId": "c131-clip-target",
+      "x": 190,
+      "y": 28
+    },
+    {
+      "elementId": "c131-clip-target",
+      "x": 191,
+      "y": 28
+    },
+    {
+      "elementId": "c131-clip",
+      "x": 192,
+      "y": 28
+    },
+    {
+      "elementId": "c131-clip",
+      "x": 193,
+      "y": 28
+    },
+    {
+      "elementId": "c131-clip",
+      "x": 194,
+      "y": 28
+    },
+    {
+      "elementId": "c131-root",
+      "x": 195,
+      "y": 28
+    },
+    {
+      "elementId": "c131-root",
+      "x": 196,
+      "y": 28
+    }
+  ],
+  "scene": {
+    "clip": {
+      "borderRight": "3px",
+      "id": "c131-clip",
+      "overflowX": "clip",
+      "overflowY": "clip",
+      "paddingRight": "6px",
+      "rect": {
+        "bottom": 50,
+        "height": 44,
+        "right": 195,
+        "width": 90,
+        "x": 105,
+        "y": 6
+      }
+    },
+    "target": {
+      "id": "c131-clip-target",
+      "rect": {
+        "bottom": 85,
+        "height": 70,
+        "right": 244,
+        "width": 130,
+        "x": 114,
+        "y": 15
+      }
+    }
+  }
+}

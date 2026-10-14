@@ -179,6 +179,7 @@ pub(super) fn runtime_clips_for_node<R: FallibleReserve>(
             );
             let (hit_min, hit_max) = hit_test_clip_axis_bounds(
                 overflow_x,
+                clip_style.layout_position,
                 border_box[0],
                 border_box[2],
                 paint_min,
@@ -200,6 +201,7 @@ pub(super) fn runtime_clips_for_node<R: FallibleReserve>(
             );
             let (hit_min, hit_max) = hit_test_clip_axis_bounds(
                 overflow_y,
+                clip_style.layout_position,
                 border_box[1],
                 border_box[3],
                 paint_min,
@@ -238,15 +240,22 @@ fn clip_axis_bounds(
 
 fn hit_test_clip_axis_bounds(
     overflow: ComputedCssOverflow,
+    position: ComputedCssPosition,
     border_min: f32,
     border_max: f32,
     paint_min: f32,
     paint_max: f32,
 ) -> (f32, f32) {
     if overflow == ComputedCssOverflow::Clip {
-        // Chromium hit testing retains the border box and extends it when the
-        // clip margin reaches farther out; paint still uses the visual clip edge.
-        (border_min.min(paint_min), border_max.max(paint_max))
+        if position == ComputedCssPosition::Static {
+            // Chrome clips static descendants at the visual edge while the
+            // clip element's own border remains independently hit-testable.
+            (paint_min, paint_max)
+        } else {
+            // Positioned clip elements retain the border box for descendant
+            // hit testing and extend it when overflow-clip-margin reaches out.
+            (border_min.min(paint_min), border_max.max(paint_max))
+        }
     } else {
         (border_min, border_max)
     }

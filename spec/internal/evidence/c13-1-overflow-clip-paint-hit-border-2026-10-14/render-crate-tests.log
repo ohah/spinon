@@ -1,0 +1,26 @@
+   Compiling spinon-render v0.1.0 (/private/tmp/spinon-c13-1-overflow-clip/crates/spinon-render)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.37s
+     Running unittests src/lib.rs (target/debug/deps/spinon_render-2ebea6caa01801d2)
+
+running 13 tests
+test runtime::tests::runtime_render_key_distinguishes_intrinsic_size_revisions ... ok
+test tests::css_sizes_and_frames_reject_non_finite_or_negative_dimensions ... ok
+test runtime::tests::runtime_scene_keeps_complete_key_dom_order_and_transparent_nodes ... ok
+test runtime::tests::runtime_hit_test_can_order_targets_independently_from_paint ... ok
+test runtime::tests::document_revision_rebinding_preserves_shared_box_storage ... ok
+test tests::static_snapshot_rejects_an_empty_scene ... ok
+test runtime::tests::document_revision_rebinding_rejects_other_generations_and_connected_trees ... ok
+test tests::hit_test_rejects_non_finite_points ... ok
+test tests::hit_test_uses_last_painted_box_and_half_open_edges ... ok
+test runtime::tests::runtime_hit_test_uses_its_clip_independently_from_the_paint_clip ... ok
+test runtime::tests::runtime_hit_test_applies_axis_clips_and_uses_half_open_edges ... ok
+test tests::static_snapshot_requires_unique_nodes_and_contiguous_paint_order ... ok
+test runtime::tests::runtime_scene_accepts_empty_and_rejects_duplicate_or_reordered_nodes ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests spinon_render
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

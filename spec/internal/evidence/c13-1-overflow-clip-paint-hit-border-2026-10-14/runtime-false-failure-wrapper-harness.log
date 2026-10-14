@@ -1,0 +1,24 @@
+   Compiling spinon-style-to-render v0.1.0 (/private/tmp/spinon-c13-1-overflow-clip/crates/spinon-style-to-render)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.98s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_render-ee14fa157b6d3950)
+
+running 1 test
+test stacking::tests::c13_1_paint_hit_border::static_and_positioned_clip_border_strips_match_chrome_without_changing_paint_clips ... FAILED
+
+failures:
+
+---- stacking::tests::c13_1_paint_hit_border::static_and_positioned_clip_border_strips_match_chrome_without_changing_paint_clips stdout ----
+
+thread 'stacking::tests::c13_1_paint_hit_border::static_and_positioned_clip_border_strips_match_chrome_without_changing_paint_clips' (34552275) panicked at crates/spinon-style-to-render/src/stacking/tests/c13_1_paint_hit_border.rs:98:9:
+assertion `left == right` failed: Chrome 155 sample static-inside-clip at (125,40) should hit static-target
+  left: Some(NodeId(2))
+ right: Some(NodeId(4))
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    stacking::tests::c13_1_paint_hit_border::static_and_positioned_clip_border_strips_match_chrome_without_changing_paint_clips
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 43 filtered out; finished in 0.01s
+
+error: test failed, to rerun pass `-p spinon-style-to-render --lib`

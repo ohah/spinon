@@ -1,0 +1,76 @@
+Google LLC
+
+Copyright 2026 Google LLC. All rights reserved.
+
+Google Chrome
+
+155.0.8059.40
+(공식 빌드)
+
+(arm64)
+
+개정
+
+cfaadc5a132d78e1828635aa8405a499f3e14864-refs/branch-heads/8059@{#936}
+
+OS
+
+macOS 버전 26.5.1(빌드 25F80)
+
+JavaScript
+
+V8
+15.5.35.20
+
+사용자 에이전트
+Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36
+
+명령줄
+/Applications/Google Chrome.app/Contents/MacOS/Google Chrome --remote-debugging-port=0 --no-first-run --no-default-browser-check --disable-background-networking --disable-backgrounding-occluded-windows --disable-component-update --disable-default-apps --disable-hang-monitor --disable-popup-blocking --disable-prompt-on-repost --disable-sync --disable-features=Translate --enable-features=NetworkService,NetworkServiceInProcess --metrics-recording-only --password-store=basic --use-mock-keychain --headless=new --hide-scrollbars --enable-unsafe-swiftshader --user-data-dir=/var/folders/51/mr5cjhg13v324f1vgg9m237c0000gn/T/agent-browser-chrome-bdf2b2e7-547d-4835-95e6-22039c6876b8 --window-size=1280,720 --noerrdialogs --flag-switches-begin --flag-switches-end --enable-unsafe-swiftshader
+
+실행 가능 경로
+/Applications/Google Chrome.app/Contents/MacOS/Google Chrome
+
+프로필 경로
+/private/var/folders/51/mr5cjhg13v324f1vgg9m237c0000gn/T/agent-browser-chrome-bdf2b2e7-547d-4835-95e6-22039c6876b8/Default
+
+Linker
+lld
+
+변형 소스
+command line or about flags
+
+버전 시드 유형
+
+명령줄 변형
+eyJkaXNhYmxlLWZlYXR1cmVzIjoiUGFpbnRIb2xkaW5nLFRyYW5zbGF0ZSIs...
+
+활성 버전
+b6f29041-9af5ba90
+b357b792-dcf2ae30
+f4f00e05-ca7d8d80
+9481ce98-3d47f4f4
+2a426c03-3d47f4f4
+70678518-dee66fa8
+be338734-dee66fa8
+5f9907a9-dee66fa8
+8eeccb9a-dee66fa8
+2b465683-dee66fa8
+52fc7926-ee3d6169
+bc9b361d-dee66fa8
+a41a7188-dee66fa8
+ff71bfdc-dee66fa8
+2159dd0c-dee66fa8
+e7cc79d5-dee66fa8
+4b935545-3d47f4f4
+9a38bae3-6046c8a7
+2d1e43a3-3d47f4f4
+370ace14-3f4a17df
+386dc267-3d47f4f4
+d69d967d-9cce7190
+3c8f75a1-dcfbe471
+a4406b35-1657e2d6
+408da146-1657e2d6
+a983f698-3dc07a40
+
+Sanitizer
