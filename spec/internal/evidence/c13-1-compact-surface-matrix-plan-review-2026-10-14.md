@@ -26,3 +26,7 @@
 | 20 | sample matrix를 전체 300×100 surface·event/WPT·C13.1 완료로 과장한다 | 52 point sample과 PNG 범위를 분리하고 DOM event/WPT/C13.1 gate를 명시적으로 미완료로 둔다. |
 
 계획 검토는 oracle capture/구현 전에 마쳤다. 표본 좌표의 실재성·tile 겹침·Chrome 범위는 다음 단계에서 capture로 확인하며, 발견된 mismatch가 있으면 구현 전에 이 계획과 review 근거를 갱신한다.
+
+## Chrome precomparison addendum
+
+구현 전 Chrome capture에서 13개 ID의 41 node, frame 13/13, 비중복 sample 52/52와 screenshot 픽셀을 확인했다. 샘플 script는 positioned-escape의 static box가 `top:1px`를 무시하고 tile top에 놓이는 실측 frame을 pin한다. Nested case는 outer clip을 visible로 바꿔 inner `clip/visible` 축과 target의 visible y overflow가 표본에 남도록 했다. 이 geometry/좌표 변경을 계획과 oracle에 반영했고, 변경 이후 capture validator와 네 가지 mutation rejection을 통과한 뒤에만 runtime 구현을 시작한다. 자세한 버전, frame, RGBA, hashes는 [Chrome precomparison](c13-1-compact-surface-matrix-2026-10-14/README.md)에 고정했다.
