@@ -757,9 +757,9 @@ fn parse_overflow(
     Ok(match value {
         ComputedCssOverflow::Visible => LayoutOverflow::Visible,
         ComputedCssOverflow::Clip => LayoutOverflow::Clip,
-        ComputedCssOverflow::Hidden | ComputedCssOverflow::Scroll | ComputedCssOverflow::Auto => {
-            LayoutOverflow::Hidden
-        }
+        ComputedCssOverflow::Hidden => LayoutOverflow::Hidden,
+        ComputedCssOverflow::Scroll => LayoutOverflow::Scroll,
+        ComputedCssOverflow::Auto => LayoutOverflow::Auto,
     })
 }
 
@@ -829,5 +829,30 @@ fn unsupported_aspect_ratio_constraint(element: &ComputedElementStyle) -> Option
         Some("max-height")
     } else {
         None
+    }
+}
+
+#[cfg(test)]
+mod c13_2_tests {
+    use super::parse_overflow;
+    use spinon_core::NodeId;
+    use spinon_layout::LayoutOverflow;
+    use spinon_style::ComputedCssOverflow;
+
+    #[test]
+    fn scrollable_overflow_keywords_remain_distinct_in_layout_projection() {
+        let node = NodeId::new(62).unwrap();
+        for (computed, projected) in [
+            (ComputedCssOverflow::Visible, LayoutOverflow::Visible),
+            (ComputedCssOverflow::Clip, LayoutOverflow::Clip),
+            (ComputedCssOverflow::Hidden, LayoutOverflow::Hidden),
+            (ComputedCssOverflow::Scroll, LayoutOverflow::Scroll),
+            (ComputedCssOverflow::Auto, LayoutOverflow::Auto),
+        ] {
+            assert_eq!(
+                parse_overflow(node, "overflow-x", Some(computed)).unwrap(),
+                projected
+            );
+        }
     }
 }

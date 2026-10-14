@@ -32,6 +32,20 @@ fn runtime_render_key_distinguishes_intrinsic_size_revisions() {
 }
 
 #[test]
+fn runtime_render_key_distinguishes_scroll_state_revision_independently() {
+    let initial = key();
+    let next_revision = spinon_core::ScrollStateRevision::INITIAL
+        .checked_next()
+        .unwrap();
+    let next = initial.with_scroll_state_revision(next_revision);
+    assert_ne!(initial, next);
+    assert_eq!(next.document_revision(), initial.document_revision());
+    assert_eq!(next.style_revision(), initial.style_revision());
+    assert_eq!(next.environment_revision(), initial.environment_revision());
+    assert_eq!(next.scroll_state_revision(), next_revision);
+}
+
+#[test]
 fn runtime_scene_keeps_complete_key_dom_order_and_transparent_nodes() {
     let first = NodeId::new(1).unwrap();
     let second = NodeId::new(2).unwrap();
@@ -119,6 +133,177 @@ fn runtime_scene_accepts_empty_and_rejects_duplicate_or_reordered_nodes() {
         ),
         Err(super::RuntimeRenderError::InvalidHitTestOrder)
     ));
+}
+
+#[test]
+fn runtime_scroll_container_validates_positive_range_and_keeps_offsets_in_range() {
+    let owner = NodeId::new(62).unwrap();
+    let scrollport = CssRect::new(12.0, 18.0, 114.0, 76.0).unwrap();
+    let state =
+        super::RuntimeScrollContainer::new(owner, scrollport, 178.0, 76.0, 64.0, 0.0).unwrap();
+    assert_eq!(state.owner(), owner);
+    assert_eq!(state.scrollport_css_px(), scrollport);
+    assert_eq!(state.max_offset_x_css_px(), 64.0);
+    assert_eq!(state.max_offset_y_css_px(), 0.0);
+    assert_eq!(state.offset_x_css_px(), 64.0);
+
+    for (scrollable_width, offset_x, offset_y) in [
+        (f32::NAN, 0.0, 0.0),
+        (113.0, 0.0, 0.0),
+        (178.0, -0.01, 0.0),
+        (178.0, 64.01, 0.0),
+        (178.0, 0.0, f32::INFINITY),
+    ] {
+        assert!(matches!(
+            super::RuntimeScrollContainer::new(
+                owner,
+                scrollport,
+                scrollable_width,
+                76.0,
+                offset_x,
+                offset_y
+            ),
+            Err(super::RuntimeRenderError::InvalidScrollState)
+        ));
+    }
+}
+
+#[test]
+fn runtime_snapshot_rejects_duplicate_scroll_owners() {
+    let owner = NodeId::new(62).unwrap();
+    let container = super::RuntimeScrollContainer::new(
+        owner,
+        CssRect::new(0.0, 0.0, 10.0, 10.0).unwrap(),
+        10.0,
+        10.0,
+        0.0,
+        0.0,
+    )
+    .unwrap();
+    assert!(matches!(
+        super::RuntimeRenderSnapshot::new_with_scroll_containers(
+            key(),
+            CssSize::new(20.0, 20.0).unwrap(),
+            Vec::new(),
+            vec![container, container]
+        ),
+        Err(super::RuntimeRenderError::DuplicateScrollOwner(id)) if id == owner
+    ));
+}
+
+#[test]
+fn runtime_scroll_offset_rebuilds_frames_and_keeps_the_owner_clip_stationary() {
+    let owner = NodeId::new(62).unwrap();
+    let target = NodeId::new(63).unwrap();
+    let scrollport = CssRect::new(0.0, 0.0, 100.0, 100.0).unwrap();
+    let container =
+        super::RuntimeScrollContainer::new(owner, scrollport, 200.0, 100.0, 0.0, 0.0).unwrap();
+    let paint_clip = CssClip::unconstrained().with_x(CssAxisClip::new(0.0, 100.0).unwrap());
+    let metadata = super::RuntimeScrollRenderMetadata::new(
+        CssRect::new(120.0, 10.0, 20.0, 20.0).unwrap(),
+        vec![owner],
+        vec![super::RuntimeScrollClipLayer::new(
+            paint_clip,
+            paint_clip,
+            Vec::new(),
+        )],
+    );
+    let initial = super::RuntimeRenderSnapshot::new_with_scroll_metadata(
+        key(),
+        CssSize::new(200.0, 80.0).unwrap(),
+        vec![RuntimeRenderBox::new(
+            target,
+            metadata.base_frame_css_px(),
+            RuntimePaint::None,
+            0,
+        )],
+        vec![container],
+        vec![metadata],
+    )
+    .unwrap();
+    let moved = initial
+        .with_scroll_offsets(initial.key().scroll_state_revision(), &[(owner, 40.0, 0.0)])
+        .unwrap();
+    let render_box = &moved.boxes()[0];
+
+    assert_eq!(render_box.frame_css_px().x(), 80.0);
+    assert_eq!(
+        render_box
+            .clip_css_px()
+            .x()
+            .map(|clip| (clip.min(), clip.max())),
+        Some((0.0, 100.0))
+    );
+    assert_eq!(moved.key().scroll_state_revision().get(), 1);
+    assert_eq!(
+        moved
+            .hit_test_css_point(85.0, 15.0)
+            .map(|hit| hit.node_id()),
+        Some(target)
+    );
+    assert!(matches!(
+        moved.with_scroll_offsets(initial.key().scroll_state_revision(), &[(owner, 0.0, 0.0)]),
+        Err(super::RuntimeRenderError::StaleScrollRevision)
+    ));
+}
+
+#[test]
+fn runtime_nested_scroll_offsets_move_inner_clip_with_outer_scroll_only() {
+    let outer = NodeId::new(62).unwrap();
+    let inner = NodeId::new(63).unwrap();
+    let target = NodeId::new(64).unwrap();
+    let outer_state = super::RuntimeScrollContainer::new(
+        outer,
+        CssRect::new(0.0, 0.0, 100.0, 100.0).unwrap(),
+        200.0,
+        100.0,
+        10.0,
+        0.0,
+    )
+    .unwrap();
+    let inner_state = super::RuntimeScrollContainer::new(
+        inner,
+        CssRect::new(20.0, 0.0, 60.0, 60.0).unwrap(),
+        100.0,
+        60.0,
+        20.0,
+        0.0,
+    )
+    .unwrap()
+    .with_parent(Some(outer));
+    let outer_clip = CssClip::unconstrained().with_x(CssAxisClip::new(0.0, 100.0).unwrap());
+    let inner_clip = CssClip::unconstrained().with_x(CssAxisClip::new(20.0, 80.0).unwrap());
+    let metadata = super::RuntimeScrollRenderMetadata::new(
+        CssRect::new(80.0, 10.0, 20.0, 20.0).unwrap(),
+        vec![outer, inner],
+        vec![
+            super::RuntimeScrollClipLayer::new(outer_clip, outer_clip, Vec::new()),
+            super::RuntimeScrollClipLayer::new(inner_clip, inner_clip, vec![outer]),
+        ],
+    );
+    let snapshot = super::RuntimeRenderSnapshot::new_with_scroll_metadata(
+        key(),
+        CssSize::new(200.0, 80.0).unwrap(),
+        vec![RuntimeRenderBox::new(
+            target,
+            metadata.base_frame_css_px(),
+            RuntimePaint::None,
+            0,
+        )],
+        vec![outer_state, inner_state],
+        vec![metadata],
+    )
+    .unwrap();
+    let render_box = &snapshot.boxes()[0];
+
+    assert_eq!(render_box.frame_css_px().x(), 50.0);
+    assert_eq!(
+        render_box
+            .clip_css_px()
+            .x()
+            .map(|clip| (clip.min(), clip.max())),
+        Some((10.0, 70.0))
+    );
 }
 
 #[test]
@@ -284,6 +469,10 @@ fn document_revision_rebinding_preserves_shared_box_storage() {
         original.key().render_tree_revision()
     );
     assert_eq!(rebound.key().intrinsic_size_revision(), intrinsic_revision);
+    assert_eq!(
+        rebound.key().scroll_state_revision(),
+        original.key().scroll_state_revision()
+    );
     assert!(Arc::ptr_eq(&original.boxes, &rebound.boxes));
 }
 

@@ -32,11 +32,14 @@ const canonicalFixtureSources = [
   'crates/spinon-ffi/src/runtime_gpu/fixtures.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_3_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_3_2.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c13_2_scroll.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c13_2_scroll_host.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c13_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11_3_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11_3_2.rs',
+  'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c13_2.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c13_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11.rs',
   'crates/spinon-ffi/src/runtime_ua_cascade/fixtures.rs',
@@ -125,6 +128,18 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
     resolve(repositoryRoot, 'tests/fixtures/css/c13/runtime-overflow-clip-hit-border-c13-1.js'),
     'utf8',
   );
+  const c13ScrollHostFixture = await readFile(
+    resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/fixtures/c13_2_scroll_host.rs'),
+    'utf8',
+  );
+  const c13ScrollFfiFixture = await readFile(
+    resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c13_2.rs'),
+    'utf8',
+  );
+  const c13ScrollRuntimeFixture = await readFile(
+    resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/fixtures/c13_2_scroll.rs'),
+    'utf8',
+  );
   const cargoManifest = await readFile(
     resolve(repositoryRoot, 'crates/spinon-ffi/Cargo.toml'),
     'utf8',
@@ -168,4 +183,30 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
     /Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC131OverflowClipBorderFixture/);
   assert.match(androidActivitySource,
     /spinon_c131_overflow_clip_border/);
+  assert.match(runtimeFixtureSource,
+    /#\[cfg\(feature = "c13-2-scroll-fixture-test"\)\]\s*pub\(crate\) mod c13_2_scroll;/);
+  assert.match(runtimeFixtureSource,
+    /#\[cfg\(feature = "c13-2-scroll-fixture-test"\)\]\s*mod c13_2_scroll_host;/);
+  assert.match(ffiFixtureSource,
+    /#\[cfg\(feature = "c13-2-scroll-fixture-test"\)\]\s*mod c13_2;/);
+  assert.match(cargoManifest,
+    /c13-2-scroll-fixture-test\s*=\s*\["c04-runtime-gpu-fixture-test",\s*"dep:spinon-core"\]/);
+  assert.match(c13ScrollRuntimeFixture,
+    /runtime-scroll-container-c13-2\.js/);
+  assert.match(c13ScrollHostFixture,
+    /border_escape_outside_parent=true[\s\S]*border_escape_hit=matched/);
+  assert.match(c13ScrollFfiFixture,
+    /spinon_runtime_gpu_host_new_c13_2_scroll_fixture/);
+  assert.match(c13ScrollFfiFixture,
+    /spinon_runtime_gpu_host_eval_c13_2_scroll_fixture/);
+  assert.match(androidGpuDemoSource,
+    /c132ScrollFixtureRequested\s*\?\s*"SPINON · C13\.2 scroll state"/);
+  assert.match(androidGpuDemoSource,
+    /c132ScrollFixtureRequested\s*\?\s*"V8 scroll owner·offset·paint\/hit → Stylo → Taffy → WGPU · 400×240 CSS px"/);
+  assert.match(androidGpuDemoSource,
+    /c132ScrollFixtureRequested\s*\?\s*"C13\.2 scroll owner·offset·paint\/hit WGPU 장면"/);
+  assert.match(androidGpuDemoSource,
+    /c132ScrollFixtureRequested\s*\?\s*400\s*:\s*fixedSizeCssFixtureRequested\s*\?\s*320/);
+  assert.match(androidGpuDemoSource,
+    /if \(c132ScrollFixtureRequested\) return 400\.0f;/);
 });

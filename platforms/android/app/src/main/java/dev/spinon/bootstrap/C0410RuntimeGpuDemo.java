@@ -246,6 +246,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native long nativeCreateC131OverflowClipHost();
     private static native long nativeCreateC131CompactSurfaceMatrixHost();
     private static native long nativeCreateC131OverflowClipBorderHost();
+    private static native long nativeCreateC132ScrollHost();
     private static native long nativeCreateC11GridHost();
     private static native long nativeCreateC1121GridPlacementHost();
     private static native long nativeCreateC1122GridAutoPlacementHost();
@@ -282,6 +283,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native byte[] nativeEvalC131OverflowClipFixture(long host);
     private static native byte[] nativeEvalC131CompactSurfaceMatrixFixture(long host);
     private static native byte[] nativeEvalC131OverflowClipBorderFixture(long host);
+    private static native byte[] nativeEvalC132ScrollFixture(long host);
     private static native byte[] nativeEvalC11GridFixture(long host);
     private static native byte[] nativeEvalC11GridSceneFixture(long host, int sceneIndex);
     private static native byte[] nativeEvalC1121GridPlacementFixture(
@@ -422,6 +424,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean c131CompactSurfaceMatrixProbeRequested;
     private final String c131CompactSurfaceMatrixRunId;
     private final boolean c131BorderStripProbeRequested;
+    private final boolean c132ScrollFixtureRequested;
     private final boolean c124DepthSafetyProbeRequested;
     private final boolean c124SurfaceCaptureProbeRequested;
     private final String c124SurfaceCaseRequested;
@@ -539,6 +542,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? Long.toHexString(SystemClock.elapsedRealtimeNanos()) : "";
         c131BorderStripProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c131_overflow_clip_border", false);
+        c132ScrollFixtureRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c132_scroll_fixture", false);
         c124DepthSafetyProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c124_depth_safety", false);
         c124SurfaceCaseRequested = activity.getIntent()
@@ -715,6 +720,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         fixedSizeCssFixtureRequested = c122AbsoluteBlockProbeRequested
                 || c131CompactSurfaceMatrixProbeRequested
                 || c131BorderStripProbeRequested
+                || c132ScrollFixtureRequested
                 || c123FixedPositionProbeRequested
                 || c11GridFixtureRequested
                 || c124StackingProbeRequested
@@ -767,6 +773,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "SPINON · C11.2.2 Grid"
                 : c1121GridPlacementRequested
                 ? "SPINON · C11.2.1 Grid"
+                : c132ScrollFixtureRequested
+                ? "SPINON · C13.2 scroll state"
                 : c131BorderStripProbeRequested
                 ? "SPINON · C13.1 paint/hit border"
                 : c131OverflowClipProbeRequested
@@ -838,6 +846,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         TextView description = new TextView(activity);
         description.setText(c131CompactSurfaceMatrixProbeRequested
                 ? "13개 overflow clip case · 30,000 hit identity + 52 PixelCopy 표본 · WGPU · 300×100 CSS px"
+                : c132ScrollFixtureRequested
+                ? "V8 scroll owner·offset·paint/hit → Stylo → Taffy → WGPU · 400×240 CSS px"
                 : c131BorderStripProbeRequested
                 ? "static/absolute clip border-strip oracle → WGPU · 400×160 CSS px"
                 : c131OverflowClipProbeRequested
@@ -931,6 +941,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "C13.1 compact 13-case overflow Chrome oracle WGPU surface"
                 : c131BorderStripProbeRequested
                 ? "C13.1 paint/hit border-strip Chrome oracle WGPU 장면"
+                : c132ScrollFixtureRequested
+                ? "C13.2 scroll owner·offset·paint/hit WGPU 장면"
                 : c1123GridAutoPlacementRequested
                 ? "C11.2.3 dense·column Grid 자동 배치 결과"
                 : c1122GridAutoPlacementRequested
@@ -993,7 +1005,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         ? "C04.11 Chromium stylesheet fixture의 WGPU 장면"
                 : "C04.10 Chromium fixture의 WGPU 장면");
         int initialSurfaceWidth = c131CompactSurfaceMatrixProbeRequested ? 300
-                : c131BorderStripProbeRequested ? 400 : fixedSizeCssFixtureRequested ? 320 : 301;
+                : c131BorderStripProbeRequested ? 400
+                : c132ScrollFixtureRequested ? 400
+                : fixedSizeCssFixtureRequested ? 320 : 301;
         int initialSurfaceHeight = c131CompactSurfaceMatrixProbeRequested ? 100
                 : c131BorderStripProbeRequested ? 160 : fixedSizeCssFixtureRequested ? 240 : 100;
         LayoutParams surfaceParams = new LayoutParams(
@@ -1075,7 +1089,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 error -> reportLaneFailure("render", error));
         if (!c121PositioningProbeRequested && !c122AbsoluteBlockProbeRequested
                 && !c123FixedPositionProbeRequested && !c124StackingProbeRequested
-                && !c1133GridTemplateAreasRequested) {
+                && !c1133GridTemplateAreasRequested && !c132ScrollFixtureRequested) {
             enqueueRuntime(this::initializeRuntime);
         }
     }
@@ -1112,15 +1126,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private boolean validateC131FixtureRoute() {
         int selectedRoutes = (c131OverflowClipProbeRequested ? 1 : 0)
                 + (c131CompactSurfaceMatrixProbeRequested ? 1 : 0)
-                + (c131BorderStripProbeRequested ? 1 : 0);
+                + (c131BorderStripProbeRequested ? 1 : 0)
+                + (c132ScrollFixtureRequested ? 1 : 0);
         if (selectedRoutes > 1) {
-            Log.e(TAG, "SPINON_C131_ARGUMENT_ERROR conflicting=multiple-fixture-routes");
-            postStatus("실패 · C13.1 route를 하나만 선택해야 합니다");
+            Log.e(TAG, "SPINON_C13_ARGUMENT_ERROR conflicting=multiple-fixture-routes");
+            postStatus("실패 · C13 route를 하나만 선택해야 합니다");
             return false;
         }
         if (selectedRoutes == 0) return true;
 
-        String selectedExtra = c131CompactSurfaceMatrixProbeRequested
+        String selectedExtra = c132ScrollFixtureRequested
+                ? "spinon_c132_scroll_fixture"
+                : c131CompactSurfaceMatrixProbeRequested
                 ? "spinon_c131_compact_surface_matrix"
                 : c131BorderStripProbeRequested
                 ? "spinon_c131_overflow_clip_border" : "spinon_c131_overflow_clip";
@@ -1133,8 +1150,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             }
             Object value = extras.get(key);
             if (Boolean.FALSE.equals(value)) continue;
-            Log.e(TAG, "SPINON_C131_ARGUMENT_ERROR conflicting=" + key);
-            postStatus("실패 · C13.1 전용 route와 다른 CSS fixture를 함께 선택했습니다");
+            Log.e(TAG, "SPINON_C13_ARGUMENT_ERROR conflicting=" + key);
+            postStatus("실패 · C13 전용 route와 다른 CSS fixture를 함께 선택했습니다");
             return false;
         }
         return true;
@@ -1170,6 +1187,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? nativeCreateC1121GridPlacementHost()
                 : c11GridFixtureRequested
                 ? nativeCreateC11GridHost()
+                : c132ScrollFixtureRequested
+                ? nativeCreateC132ScrollHost()
                 : c131CompactSurfaceMatrixProbeRequested
                 ? nativeCreateC131CompactSurfaceMatrixHost()
                 : c131BorderStripProbeRequested
@@ -1203,6 +1222,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         synchronized (stateLock) {
             widthCssPx = c131CompactSurfaceMatrixProbeRequested ? 300
                     : c131BorderStripProbeRequested ? 400
+                    : c132ScrollFixtureRequested ? 400
                     : c1133GridTemplateAreasRequested
                     || c1132GridNamedLinesRequested || c1131GridRepeatRequested ? 320
                     : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
@@ -1210,6 +1230,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     ? 360 : fixedSizeCssFixtureRequested ? 320 : cssViewportWidthLocked();
             heightCssPx = c131CompactSurfaceMatrixProbeRequested ? 100
                     : c131BorderStripProbeRequested ? 160
+                    : c132ScrollFixtureRequested ? 240
                     : c1133GridTemplateAreasRequested
                     || c1132GridNamedLinesRequested || c1131GridRepeatRequested ? 240
                     : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
@@ -1263,6 +1284,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         host, c1121GridSceneId, c1121GridRunId))
                 : c11GridFixtureRequested
                 ? decode(nativeEvalC11GridSceneFixture(host, c11GridSceneIndex))
+                : c132ScrollFixtureRequested
+                ? decode(nativeEvalC132ScrollFixture(host))
                 : c131CompactSurfaceMatrixProbeRequested
                 ? decode(nativeEvalC131CompactSurfaceMatrixFixture(host))
                 : c131BorderStripProbeRequested
@@ -1496,6 +1519,24 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             postStatus("실패 · " + result);
             return;
         }
+        if (c132ScrollFixtureRequested) {
+            boolean c132ScrollPassed = result.contains("c13_2_scroll_fixture=passed")
+                    && result.contains("border_escape_outside_parent=true")
+                    && result.contains("border_escape_hit=matched")
+                    && result.contains("c13_2_lifecycle=passed")
+                    && result.contains("growth_offset_retained=true")
+                    && result.contains("shrink_clamped_to_zero=true")
+                    && result.contains("detach_removed_owner=true")
+                    && result.contains("reparent_reset_offset=true");
+            if (!c132ScrollPassed) {
+                postStatus("실패 · C13.2 scroll·paint·hit·lifecycle 결과 불일치");
+                return;
+            }
+            Log.i(TAG, "SPINON_C132_SCROLL_ASSERTIONS border_escape_outside_parent=true"
+                    + " border_escape_hit=matched lifecycle=passed"
+                    + " growth_offset_retained=true shrink_clamped_to_zero=true"
+                    + " detach_removed_owner=true reparent_reset_offset=true");
+        }
         if (c131CompactSurfaceMatrixProbeRequested
                 && !logC131CompactSurfaceMatrixFixtureReport(result)) {
             postStatus("실패 · C13.1 compact frame·hit-test 결과 불일치");
@@ -1513,7 +1554,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 return;
             }
         }
-        Log.i(TAG, (c131CompactSurfaceMatrixProbeRequested
+        Log.i(TAG, (c132ScrollFixtureRequested
+                ? "SPINON_C132_SCROLL_EVAL " : c131CompactSurfaceMatrixProbeRequested
                 ? "SPINON_C131_COMPACT_EVAL_RUN run_id=" + c131CompactSurfaceMatrixRunId + " "
                 : c131BorderStripProbeRequested
                 ? "SPINON_C131_BORDER_EVAL_RUN " : c131OverflowClipProbeRequested
@@ -2831,7 +2873,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private void scheduleRuntimeInitializationForReadySurface() {
         if (!c121PositioningProbeRequested && !c122AbsoluteBlockProbeRequested
                 && !c123FixedPositionProbeRequested && !c124StackingProbeRequested
-                && !c1133GridTemplateAreasRequested) return;
+                && !c1133GridTemplateAreasRequested && !c132ScrollFixtureRequested) return;
         synchronized (stateLock) {
             if (closing || hostHandle != 0 || runtimeInitializationQueued
                     || !surfaceAvailable || surfaceWidth <= 0 || surfaceHeight <= 0) {
@@ -3340,6 +3382,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private float cssViewportWidthLocked() {
         if (c131CompactSurfaceMatrixProbeRequested) return 300.0f;
         if (c131BorderStripProbeRequested) return 400.0f;
+        if (c132ScrollFixtureRequested) return 400.0f;
         if (fixedSizeCssFixtureRequested) return 320.0f;
         return surfaceWidth > 0 ? (float) surfaceWidth / density : 301.0f;
     }

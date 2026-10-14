@@ -1,0 +1,50 @@
+    Checking spinon-core v0.1.0 (/private/tmp/spinon-c13-2-scroll-impl/crates/spinon-core)
+    Checking simd-adler32 v0.3.10
+    Checking adler2 v2.0.1
+    Checking spinon-style-layout-spike v0.1.0 (/private/tmp/spinon-c13-2-scroll-impl/spikes/style-layout)
+    Checking crc32fast v1.5.2
+    Checking miniz_oxide v0.9.1
+    Checking miniz_oxide v0.8.9
+    Checking fdeflate v0.3.7
+    Checking flate2 v1.1.10
+    Checking spinon-layout v0.1.0 (/private/tmp/spinon-c13-2-scroll-impl/crates/spinon-layout)
+    Checking spinon-style v0.1.0 (/private/tmp/spinon-c13-2-scroll-impl/crates/spinon-style)
+    Checking spinon-render v0.1.0 (/private/tmp/spinon-c13-2-scroll-impl/crates/spinon-render)
+    Checking png v0.18.1
+    Checking spinon-render-wgpu v0.1.0 (/private/tmp/spinon-c13-2-scroll-impl/crates/spinon-render-wgpu)
+    Checking spinon-image v0.1.0 (/private/tmp/spinon-c13-2-scroll-impl/crates/spinon-image)
+    Checking spinon-style-to-layout v0.1.0 (/private/tmp/spinon-c13-2-scroll-impl/crates/spinon-style-to-layout)
+    Checking spinon-style-to-render v0.1.0 (/private/tmp/spinon-c13-2-scroll-impl/crates/spinon-style-to-render)
+error: this function has too many arguments (8/7)
+   --> crates/spinon-style-to-render/src/stacking/scroll.rs:199:1
+    |
+199 | / pub(super) fn runtime_scroll_containers<R: FallibleReserve>(
+200 | |     document: &HostDocumentSnapshot,
+201 | |     root: HostNodeHandle,
+202 | |     document_nodes: &[NodeId],
+...   |
+207 | |     reserve: &mut R,
+208 | | ) -> Result<Vec<RuntimeScrollContainer>, StyleRenderError> {
+    | |__________________________________________________________^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#too_many_arguments
+    = note: `-D clippy::too-many-arguments` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::too_many_arguments)]`
+
+error: this function has too many arguments (8/7)
+   --> crates/spinon-style-to-render/src/stacking/scroll.rs:375:1
+    |
+375 | / fn scrollable_extent<R: FallibleReserve>(
+376 | |     owner: NodeId,
+377 | |     document_nodes: &[NodeId],
+378 | |     parent_by_node: &BTreeMap<NodeId, NodeId>,
+...   |
+383 | |     reserve: &mut R,
+384 | | ) -> Result<(f32, f32), StyleRenderError> {
+    | |_________________________________________^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#too_many_arguments
+
+error: could not compile `spinon-style-to-render` (lib) due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `spinon-style-to-render` (lib test) due to 2 previous errors

@@ -38,6 +38,7 @@
 + (uint64_t)createRuntimeGpuHostWithC13_1CompactSurfaceMatrixFixture;
 + (uint64_t)createRuntimeGpuHostWithC13_1CompactSurfacePixelReadbackFixture;
 + (uint64_t)createRuntimeGpuHostWithC13_1OverflowClipBorderFixture;
++ (uint64_t)createRuntimeGpuHostWithC13_2ScrollFixture;
 + (uint64_t)createRuntimeGpuHostWithC11_1GridFixture;
 + (uint64_t)createRuntimeGpuHostWithC11_1GridSurfacePixelReadbackFixture;
 + (NSString *)runtimeGpuC12_4WorkerStackResidencySample:(uint64_t)handle;
@@ -73,6 +74,7 @@
                                                    sampleXY:(const uint32_t *)sampleXY
                                                 sampleCount:(NSUInteger)sampleCount;
 + (NSString *)evalRuntimeGpuC13_1OverflowClipBorderFixture:(uint64_t)handle;
++ (NSString *)evalRuntimeGpuC13_2ScrollFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuC11_1GridFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuC11_1GridSceneFixture:(uint64_t)handle
                                        sceneIndex:(uint32_t)sceneIndex;

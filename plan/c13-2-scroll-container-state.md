@@ -1,11 +1,13 @@
 # C13.2 · Scroll container와 revision 분리
 
-- **상태:** Chrome 155 사전 기준·내부 계약 고정 · 구현 시작 전
+- **상태:** Chrome 155 사전 기준·내부 계약 고정 · 구현 및 시뮬레이터 검증 진행 중 (2026-10-15)
 - **기준 커밋:** `e2f346f3dda6d56f68fd6ef2d0255610a282d0f3` (C13.1 surface pixel-center gate 통합 뒤)
 - **내부 계약:** [`0062-c13-2-scroll-state`](../spec/internal/0062-c13-2-scroll-state.md), 숫자 버전 `0.1.0-draft` 유지
 - **구현 전 비교:** [C13.2 Chrome/agent-browser oracle](../spec/internal/evidence/c13-2-scroll-container-precomparison-2026-10-15/README.md)
 - **계획 실패 관점 20개:** [검토 기록](../spec/internal/evidence/c13-2-scroll-container-plan-review-2026-10-15.md)
 - **계획 PR 변경 관점 30개:** [검토 기록](../spec/internal/evidence/c13-2-scroll-container-pr-review-2026-10-15.md)
+- **구현 실패 관점 20개:** [검토 기록](../spec/internal/evidence/c13-2-scroll-implementation-review-2026-10-15.md)
+- **구현 PR 변경 관점 30개:** [검토 기록](../spec/internal/evidence/c13-2-scroll-implementation-pr-review-2026-10-15.md)
 
 ## 목표
 
@@ -55,6 +57,14 @@ Chrome Headless DOM setter는 fractional `scrollLeft/scrollTop` 요청을 정수
 - **플랫폼 실행:** Chrome reference와 함께 API 37 ARM64 Android AVD 및 지정 iOS Simulator에서 실제 runtime → layout → render → paint/hit fixture를 실행한다. 각 실행은 device/simulator, app/source hash, viewport, surface evidence, runtime revision, failure/negative controls를 기록한다. 실기기는 요청되지 않았고 pass 조건으로 넣지 않는다.
 - **회귀:** `cargo fmt --check`, 관련 Rust/reference tests, `cargo test --locked --workspace`, workspace Clippy, Android/iOS simulator build 및 지정 fixture run을 수행한다. 비교하지 않은 WPT·제품 CSSOM·gesture·scrollbar·snap은 미실행 경계로 남긴다.
 
+## 현재 구현 및 검증 상태 · 2026-10-15
+
+- scroll range/owner, immutable snapshot의 paint·hit offset, 독립 scroll revision, range 변경 때의 offset 보존·clamp, owner detach/reparent reset을 구현했다. Rust geometry와 render snapshot tests를 추가했다.
+- Android API 37 ARM64 AVD (`emulator-5554`)와 iPhone 17 Pro / iOS 26.2 Simulator에서 같은 26-frame·9-owner fixture와 lifecycle 네 단계를 실행했다. 두 앱 로그가 `border_escape_outside_parent=true`, `border_escape_hit=matched`, `c13_2_lifecycle=passed`를 보고했다. simulator 화면에도 border 오른쪽으로 나온 red target과 이동한 marker, 고정 control이 보인다. 이 확인은 화면 육안 확인과 snapshot/hit assertion이며 Metal/PixelCopy 픽셀별 자동 비교는 아니다.
+- 첫 Android 실행은 surface 초기화 중 새 presentation 요청이 겹쳐 stale `-12`를 냈다. AVD 로그로 surface callback 전에 fixture가 시작한 순서를 확인해 C13.2 Android route를 positive-size `surfaceChanged` 뒤 초기화하도록 바꿨다. 수정 뒤 Android run 두 번 연속 lifecycle pass다.
+- [시뮬레이터 실행·화면·로그·artifact hash](../spec/internal/evidence/c13-2-scroll-container-implementation-2026-10-15/README.md)를 참조한다.
+- 아직 전체 pass는 아니다. root/body, stale-revision 및 reserve-failure negative paths는 Rust tests에 있고 전체 workspace·Clippy 및 default/opt-in artifact 격리도 통과했다. 다만 root/body scene과 stale/failure negative control은 두 app route에서 실행하지 않았다. ink-only `box-shadow`는 runtime이 property를 지원하지 않아 fail-closed되고 simulator pass가 아니다. C13.2 simulator pixel readback도 연결되지 않았다. 구현 관점 20개와 PR delta 관점 30개 review가 남아 있다. 아래 완료 문구를 사용하지 않는다.
+
 ## 미포함 항목과 완료 문구
 
 - `scrollTop/scrollLeft`, `scroll()`, `scrollTo()`, `scrollBy()`, `scrollIntoView()`, scroll event 공개 계약: C29/S05.
@@ -69,4 +79,4 @@ Chrome Headless DOM setter는 fractional `scrollLeft/scrollTop` 요청을 정수
 
 ## 검토 순서
 
-이 구현 계획은 코드 전 20개 별도 실패 관점으로 검토한다. 계획 PR을 포함한 PR 변경은 프로젝트 규칙에 따라 기존 계획 리뷰와 독립적인 30개 관점으로 병합 전에 확인한다. 구현 PR에서는 이 계획 리뷰를 재사용하지 않고 새 구현 실패 관점 20개와 PR 변경 관점 30개를 각각 남긴다. 결함이 발견되면 계획·fixture·실행 결과를 갱신하고 영향을 받은 관점을 다시 확인한다.
+이 구현 계획은 코드 전 20개 별도 실패 관점으로 검토했다. 계획 PR과 구현 PR 변경은 각각 프로젝트 규칙에 따라 서로 독립적인 30개 관점으로 확인한다. 구현 PR에서도 계획 리뷰와 별도로 새 구현 실패 관점 20개를 남긴다. 구현 검토 중 재현한 `display:none` scroll owner 결함은 수정하고 회귀 테스트를 추가했다. 결함을 발견하면 계획·fixture·실행 결과를 갱신하고 영향을 받은 관점을 다시 확인한다.

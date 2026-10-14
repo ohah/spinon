@@ -79,14 +79,18 @@ pub enum LayoutDisplay {
     None,
 }
 
-/// CSS overflow 축 값 중 현재 Taffy 레이아웃 의미를 바꾸는 값입니다.
+/// 제한 runtime profile에서 보존하는 CSS overflow 축 값입니다.
 #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
 pub enum LayoutOverflow {
     #[default]
     Visible,
     Clip,
-    /// `hidden`, `scroll`, `auto`의 현재 no-scroll-state 레이아웃 의미입니다.
+    /// 사용자가 직접 이동하지 않더라도 programmatic scroll state를 가질 수 있습니다.
     Hidden,
+    /// scrollbar gutter는 현재 profile에서 예약하지 않지만 scroll container 의미를 보존합니다.
+    Scroll,
+    /// 현재 range가 0이어도 scroll container 의미를 보존합니다.
+    Auto,
 }
 
 /// CSS 상자의 너비·높이를 해석하는 기준입니다.

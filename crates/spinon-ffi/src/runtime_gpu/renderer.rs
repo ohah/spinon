@@ -141,17 +141,26 @@ impl RuntimeGpuHost {
         let mut report = match scene.as_ref() {
             Some(scene) => {
                 let viewport = scene.snapshot.viewport_css_px();
+                let scroll_offsets = scene
+                    .snapshot
+                    .scroll_containers()
+                    .iter()
+                    .map(|owner| format!("{},{}", owner.offset_x_css_px(), owner.offset_y_css_px()))
+                    .collect::<Vec<_>>()
+                    .join(";");
                 let root = scene.snapshot.boxes().first().map(|render_box| {
                     let frame = render_box.frame_css_px();
                     format!(" root_css_px={}x{}", frame.width(), frame.height())
                 });
                 format!(
-                    "presented boxes={} environment_revision={} document_revision={} render_tree_revision={} style_revision={} generation={} viewport_css_px={}x{} surface_texture={}x{}{}",
+                    "presented boxes={} environment_revision={} document_revision={} render_tree_revision={} style_revision={} scroll_state_revision={} scroll_offsets=[{}] generation={} viewport_css_px={}x{} surface_texture={}x{}{}",
                     scene.snapshot.boxes().len(),
                     scene.snapshot.key().environment_revision().get(),
                     scene.snapshot.key().document_revision().get(),
                     scene.snapshot.key().render_tree_revision().get(),
                     scene.snapshot.key().style_revision().get(),
+                    scene.snapshot.key().scroll_state_revision().get(),
+                    scroll_offsets,
                     scene.snapshot.key().generation().get(),
                     viewport.width(),
                     viewport.height(),

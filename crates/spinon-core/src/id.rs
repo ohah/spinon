@@ -130,9 +130,34 @@ impl Default for IntrinsicSizeRevision {
     }
 }
 
+/// 문서 세대 안에서 내부 scroll owner/range/offset 상태를 식별합니다.
+#[derive(Clone, Copy, Debug, Eq, Hash, Ord, PartialEq, PartialOrd)]
+pub struct ScrollStateRevision(u64);
+
+impl ScrollStateRevision {
+    pub const INITIAL: Self = Self(0);
+
+    pub const fn checked_next(self) -> Option<Self> {
+        match self.0.checked_add(1) {
+            Some(next) => Some(Self(next)),
+            None => None,
+        }
+    }
+
+    pub const fn get(self) -> u64 {
+        self.0
+    }
+}
+
+impl Default for ScrollStateRevision {
+    fn default() -> Self {
+        Self::INITIAL
+    }
+}
+
 #[cfg(test)]
 mod revision_tests {
-    use super::{EnvironmentRevision, IntrinsicSizeRevision, StyleRevision};
+    use super::{EnvironmentRevision, IntrinsicSizeRevision, ScrollStateRevision, StyleRevision};
 
     #[test]
     fn owner_revisions_increment_independently_and_fail_closed_at_capacity() {
@@ -150,5 +175,11 @@ mod revision_tests {
         assert_eq!(StyleRevision(u64::MAX).checked_next(), None);
         assert_eq!(EnvironmentRevision(u64::MAX).checked_next(), None);
         assert_eq!(IntrinsicSizeRevision(u64::MAX).checked_next(), None);
+        assert_eq!(ScrollStateRevision::INITIAL.get(), 0);
+        assert_eq!(
+            ScrollStateRevision::INITIAL.checked_next().unwrap().get(),
+            1
+        );
+        assert_eq!(ScrollStateRevision(u64::MAX).checked_next(), None);
     }
 }

@@ -2,7 +2,7 @@ use std::collections::BTreeMap;
 
 use spinon_core::NodeId;
 use spinon_layout::PositionedContainingBlockOwner;
-use spinon_render::{CssAxisClip, CssClip};
+use spinon_render::{CssAxisClip, CssClip, RuntimeScrollClipLayer};
 use spinon_style::{
     ComputedCssOverflow, ComputedCssOverflowClipMargin, ComputedCssOverflowVisualBox,
     ComputedCssPosition,
@@ -51,8 +51,9 @@ pub(super) fn runtime_clips_for_node<R: FallibleReserve>(
     parent_by_node: &BTreeMap<NodeId, NodeId>,
     styles: &BTreeMap<NodeId, &spinon_style::ComputedElementStyle>,
     output: &StyleLayoutOutput,
+    scroll_offsets: &BTreeMap<NodeId, (f32, f32)>,
     reserve: &mut R,
-) -> Result<(CssClip, CssClip), StyleRenderError> {
+) -> Result<(CssClip, CssClip, Vec<RuntimeScrollClipLayer>), StyleRenderError> {
     let mut lineage = Vec::new();
     let mut cursor = Some(node);
     while let Some(current) = cursor {
@@ -63,6 +64,7 @@ pub(super) fn runtime_clips_for_node<R: FallibleReserve>(
 
     let mut paint_clip = CssClip::unconstrained();
     let mut hit_test_clip = CssClip::unconstrained();
+    let mut clip_layers = Vec::new();
     for (clip_index, clip_node) in lineage.iter().copied().enumerate().skip(1) {
         let mut excluded_by_positioned_descendant = false;
         let mut has_contained_absolute_descendant = false;
@@ -105,6 +107,15 @@ pub(super) fn runtime_clips_for_node<R: FallibleReserve>(
             .get(&clip_node)
             .copied()
             .ok_or(StyleRenderError::MissingComputedStyle(clip_node))?;
+        let (ancestor_scroll_x, ancestor_scroll_y) = lineage[clip_index + 1..]
+            .iter()
+            .filter_map(|ancestor| scroll_offsets.get(ancestor).copied())
+            .fold((0.0_f32, 0.0_f32), |(x, y), (scroll_x, scroll_y)| {
+                (x + scroll_x, y + scroll_y)
+            });
+        if !ancestor_scroll_x.is_finite() || !ancestor_scroll_y.is_finite() {
+            return Err(StyleRenderError::InvalidFrame(clip_node));
+        }
         let overflow_x =
             clip_style
                 .layout_overflow_x
@@ -168,6 +179,8 @@ pub(super) fn runtime_clips_for_node<R: FallibleReserve>(
                 return Err(StyleRenderError::InvalidFrame(clip_node));
             }
         }
+        let mut layer_paint_clip = CssClip::unconstrained();
+        let mut layer_hit_test_clip = CssClip::unconstrained();
         if overflow_x != ComputedCssOverflow::Visible {
             let (paint_min, paint_max) = clip_axis_bounds(
                 overflow_x,
@@ -188,8 +201,16 @@ pub(super) fn runtime_clips_for_node<R: FallibleReserve>(
                 paint_min,
                 paint_max,
             );
-            paint_clip = paint_clip.with_x(CssAxisClip::new(paint_min, paint_max)?);
-            hit_test_clip = hit_test_clip.with_x(CssAxisClip::new(hit_min, hit_max)?);
+            paint_clip = paint_clip.with_x(CssAxisClip::new(
+                paint_min - ancestor_scroll_x,
+                paint_max - ancestor_scroll_x,
+            )?);
+            hit_test_clip = hit_test_clip.with_x(CssAxisClip::new(
+                hit_min - ancestor_scroll_x,
+                hit_max - ancestor_scroll_x,
+            )?);
+            layer_paint_clip = layer_paint_clip.with_x(CssAxisClip::new(paint_min, paint_max)?);
+            layer_hit_test_clip = layer_hit_test_clip.with_x(CssAxisClip::new(hit_min, hit_max)?);
         }
         if overflow_y != ComputedCssOverflow::Visible {
             let (paint_min, paint_max) = clip_axis_bounds(
@@ -211,15 +232,41 @@ pub(super) fn runtime_clips_for_node<R: FallibleReserve>(
                 paint_min,
                 paint_max,
             );
-            paint_clip = paint_clip.with_y(CssAxisClip::new(paint_min, paint_max)?);
-            hit_test_clip = hit_test_clip.with_y(CssAxisClip::new(hit_min, hit_max)?);
+            paint_clip = paint_clip.with_y(CssAxisClip::new(
+                paint_min - ancestor_scroll_y,
+                paint_max - ancestor_scroll_y,
+            )?);
+            hit_test_clip = hit_test_clip.with_y(CssAxisClip::new(
+                hit_min - ancestor_scroll_y,
+                hit_max - ancestor_scroll_y,
+            )?);
+            layer_paint_clip = layer_paint_clip.with_y(CssAxisClip::new(paint_min, paint_max)?);
+            layer_hit_test_clip = layer_hit_test_clip.with_y(CssAxisClip::new(hit_min, hit_max)?);
         }
+        let mut scroll_ancestors = Vec::new();
+        reserve.reserve(
+            &mut scroll_ancestors,
+            lineage.len().saturating_sub(clip_index + 1),
+            "scroll clip ancestry",
+        )?;
+        scroll_ancestors.extend(
+            lineage[clip_index + 1..]
+                .iter()
+                .copied()
+                .filter(|ancestor| scroll_offsets.contains_key(ancestor)),
+        );
+        reserve.reserve(&mut clip_layers, 1, "scroll clip layers")?;
+        clip_layers.push(RuntimeScrollClipLayer::new(
+            layer_paint_clip,
+            layer_hit_test_clip,
+            scroll_ancestors,
+        ));
     }
-    Ok((paint_clip, hit_test_clip))
+    Ok((paint_clip, hit_test_clip, clip_layers))
 }
 
 #[allow(clippy::too_many_arguments)]
-fn clip_axis_bounds(
+pub(super) fn clip_axis_bounds(
     overflow: ComputedCssOverflow,
     margin: ComputedCssOverflowClipMargin,
     border_min: f32,

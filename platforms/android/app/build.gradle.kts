@@ -58,6 +58,15 @@ require(spinonC131OverflowClipFixtureTestValue == "0" ||
 require(spinonC131OverflowClipFixtureTestValue != "1" || spinonC04RuntimeGpuValue == "1") {
     "C13.1 overflow clip fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다."
 }
+val spinonC132ScrollFixtureTest =
+    providers.environmentVariable("SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST").orElse("0")
+val spinonC132ScrollFixtureTestValue = spinonC132ScrollFixtureTest.get()
+require(spinonC132ScrollFixtureTestValue == "0" || spinonC132ScrollFixtureTestValue == "1") {
+    "SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST는 0 또는 1이어야 합니다."
+}
+require(spinonC132ScrollFixtureTestValue != "1" || spinonC04RuntimeGpuValue == "1") {
+    "C13.2 scroll fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다."
+}
 val spinonC141AppFixtureTest =
     providers.environmentVariable("SPINON_ENABLE_C14_1_APP_FIXTURE_TEST").orElse("0")
 val spinonC141AppFixtureTestValue = spinonC141AppFixtureTest.get()
@@ -84,6 +93,7 @@ val prepareSpinonBootstrap by tasks.registering(Exec::class) {
         "SPINON_ENABLE_C13_1_OVERFLOW_CLIP_FIXTURE_TEST",
         spinonC131OverflowClipFixtureTestValue,
     )
+    environment("SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST", spinonC132ScrollFixtureTestValue)
     environment("SPINON_ENABLE_C14_1_APP_FIXTURE_TEST", spinonC141AppFixtureTestValue)
     commandLine("bash", "tools/build-android.sh")
 }
@@ -140,6 +150,11 @@ android {
             "boolean",
             "SPINON_C131_OVERFLOW_CLIP_FIXTURE_TEST",
             (spinonC131OverflowClipFixtureTestValue == "1").toString(),
+        )
+        buildConfigField(
+            "boolean",
+            "SPINON_C132_SCROLL_FIXTURE_TEST",
+            (spinonC132ScrollFixtureTestValue == "1").toString(),
         )
         buildConfigField(
             "boolean",

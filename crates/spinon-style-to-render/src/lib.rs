@@ -13,6 +13,9 @@ pub use adapter::{
     build_s04_static_render_snapshot,
 };
 pub use error::StyleRenderError;
-pub use runtime::build_runtime_render_snapshot;
+pub use runtime::{
+    build_runtime_render_snapshot, build_runtime_render_snapshot_with_scroll_requests,
+};
 #[cfg(feature = "c13-1-overflow-clip-worker-test")]
 pub use stacking::build_runtime_render_snapshot_with_overflow_clip_ancestry_allocation_failure;
+pub use stacking::scroll::RuntimeScrollOffsetRequest;

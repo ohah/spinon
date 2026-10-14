@@ -282,6 +282,10 @@ fn to_taffy_overflow(value: LayoutOverflow) -> Overflow {
         LayoutOverflow::Visible => Overflow::Visible,
         LayoutOverflow::Clip => Overflow::Clip,
         LayoutOverflow::Hidden => Overflow::Hidden,
+        // C13.4가 gutter geometry를 정할 때까지 Taffy의 scrollbar width는 0으로 둡니다.
+        LayoutOverflow::Scroll => Overflow::Scroll,
+        // `auto`는 현재 layout profile에서 hidden과 같은 automatic minimum size를 사용합니다.
+        LayoutOverflow::Auto => Overflow::Hidden,
     }
 }
 
