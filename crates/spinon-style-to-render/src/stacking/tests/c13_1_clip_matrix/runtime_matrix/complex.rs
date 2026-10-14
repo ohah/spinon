@@ -1,7 +1,7 @@
 use super::super::scene_for_viewport;
 use super::{
-    assert_clip_bounds, assert_frame_matches_observation, assert_hit_ranges_match_observation,
-    runtime_matrix_chrome_case,
+    assert_clip_bounds, assert_frame_matches_observation, assert_hit_identities_match_chrome,
+    assert_hit_ranges_match_observation, runtime_matrix_chrome_case,
 };
 #[test]
 fn mixed_scrollable_axis_normalization_ignores_clip_margin_in_paint_and_hit() {
@@ -38,6 +38,7 @@ fn mixed_scrollable_axis_normalization_ignores_clip_margin_in_paint_and_hit() {
         let oracle = runtime_matrix_chrome_case(case_id);
         assert_frame_matches_observation(&scene, nodes[2], case_id, &oracle);
         assert_hit_ranges_match_observation(&scene, nodes[2], case_id, &oracle);
+        assert_hit_identities_match_chrome(&scene, nodes[2], nodes[0], nodes[1], None, case_id);
     }
 }
 
@@ -65,6 +66,14 @@ fn positioned_clip_container_matches_chrome_for_contained_absolute_descendant() 
     let oracle = runtime_matrix_chrome_case("positioned-contained");
     assert_frame_matches_observation(&scene, target_node, "positioned-contained", &oracle);
     assert_hit_ranges_match_observation(&scene, target_node, "positioned-contained", &oracle);
+    assert_hit_identities_match_chrome(
+        &scene,
+        target_node,
+        nodes[0],
+        nodes[1],
+        None,
+        "positioned-contained",
+    );
 }
 
 #[test]
@@ -92,6 +101,14 @@ fn static_clip_is_skipped_when_absolute_descendant_uses_outer_containing_block()
     let oracle = runtime_matrix_chrome_case("positioned-escape");
     assert_frame_matches_observation(&scene, target_node, "positioned-escape", &oracle);
     assert_hit_ranges_match_observation(&scene, target_node, "positioned-escape", &oracle);
+    assert_hit_identities_match_chrome(
+        &scene,
+        target_node,
+        nodes[0],
+        nodes[2],
+        None,
+        "positioned-escape",
+    );
 }
 
 #[test]
@@ -119,4 +136,12 @@ fn nested_clip_axes_intersect_for_paint_and_hit_against_chrome() {
     let oracle = runtime_matrix_chrome_case("nested-clip");
     assert_frame_matches_observation(&scene, target_node, "nested-clip", &oracle);
     assert_hit_ranges_match_observation(&scene, target_node, "nested-clip", &oracle);
+    assert_hit_identities_match_chrome(
+        &scene,
+        target_node,
+        nodes[0],
+        nodes[1],
+        Some(nodes[2]),
+        "nested-clip",
+    );
 }

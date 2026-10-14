@@ -27,9 +27,9 @@
 
 `cargo test --locked -p spinon-style-to-render c13_1_clip_matrix`는 3/3, 같은 크레이트 전체는 47 passed·0 failed·1 ignored로 통과했다. 크레이트 Clippy(`-D warnings`), `cargo fmt --all -- --check`, `git diff --check`도 통과했다. 각 행에서 runtime target frame을 Chrome observation과 대조하고, x/y 방향으로 전체 정수 query를 순회해 대상 node의 hit 여부를 비교한다. test는 고정 Chrome 값·fixture hash·UA도 확인한다.
 
-이는 Rust `RuntimeRenderSnapshot`의 clip geometry와 내부 hit query 검사다. 이번 변경에서 Android/iOS 앱, WGPU surface sample, screenshot pixel, DOM event dispatch 또는 WPT를 실행하지 않았다. hit-range scan은 대상 node가 맞는지를 확인하며, 대상이 아닌 좌표에서 다른 node의 정확한 fallback ID까지 검사하지 않는다.
+이는 Rust `RuntimeRenderSnapshot`의 clip geometry와 내부 hit query 검사다. 이번 변경에서 Android/iOS 앱, WGPU surface sample, screenshot pixel, DOM event dispatch 또는 WPT를 실행하지 않았다. 그 당시 hit-range scan은 대상 node가 맞는지를 확인하며, 대상이 아닌 좌표에서 다른 node의 정확한 fallback ID까지 검사하지 않았다. 이후 [hit identity delta](../c13-1-overflow-clip-hit-identity-2026-10-14/README.md)에서 13개 유효행의 exact topmost NodeId를 추가로 대조했다.
 
-전체 C13.1 17-case runtime/surface matrix와 clip 밖 draw/hit/event negative-control breadth는 계속 남아 있다. WPT source triage는 별도 [분류 근거](../c13-1-overflow-clip-wpt-classification-2026-10-14/README.md)에 기록했고 WPT 테스트 자체는 실행하지 않았다. C13.1 및 상위 C13은 미완료다.
+17행 런타임 판정은 후속 [matrix ledger](../c13-1-overflow-clip-runtime-matrix-2026-10-14/README.md)에서 13개 성공 geometry/hit identity와 4개 expected reject/fail-closed로 구분했다. 전체 유효행 surface matrix와 clip frame 밖 draw/hit/event negative-control breadth는 계속 남아 있다. WPT source triage는 별도 [분류 근거](../c13-1-overflow-clip-wpt-classification-2026-10-14/README.md)에 기록했고 WPT 테스트 자체는 실행하지 않았다. C13.1 및 상위 C13은 미완료다.
 
 ## 적대 검토
 

@@ -1,0 +1,65 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.06s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_render-ee14fa157b6d3950)
+
+running 53 tests
+test stacking::deep_graph_tests::host_document_to_paint_snapshot_handles_a_1024_node_stacking_graph ... ignored, 대형 스택 스트레스는 RUST_MIN_STACK=33554432로 별도 실행
+test stacking::tests::content_box_clip_margin_limits_positioned_descendant_hits_to_chrome_visual_edge ... ok
+test stacking::tests::overflow_clip_ancestry_reservation_failure_returns_error_and_recovers_on_same_reserve ... ok
+test stacking::tests::c13_1_clip_matrix::runtime_matrix::complex::positioned_clip_container_matches_chrome_for_contained_absolute_descendant ... ok
+test stacking::tests::absolute_descendant_escapes_static_clip_when_its_containing_block_is_outside ... ok
+test stacking::tests::c131_hit_test_order_reservation_failures_return_their_exact_stage ... ok
+test stacking::tests::c13_1_clip_matrix::border_box_clip_margin_matches_chrome_hit_ranges_on_both_axes ... ok
+test stacking::tests::c13_1_clip_matrix::runtime_matrix::complex::static_clip_is_skipped_when_absolute_descendant_uses_outer_containing_block ... ok
+test stacking::tests::c13_1_clip_matrix::runtime_matrix::complex::nested_clip_axes_intersect_for_paint_and_hit_against_chrome ... ok
+test stacking::tests::reservation_injection_skips_requests_that_cannot_grow_the_vector ... ok
+test stacking::tests::c13_1_clip_matrix::hidden_ignores_clip_margin_and_matches_chrome_padding_clip_border_hit_ranges ... ok
+test stacking::tests::c13_1_paint_hit_border::static_and_positioned_clip_border_strips_match_chrome_without_changing_paint_clips ... ok
+test stacking::tests::c13_1_clip_matrix::runtime_matrix::complex::mixed_scrollable_axis_normalization_ignores_clip_margin_in_paint_and_hit ... ok
+test stacking::tests::c13_1_clip_matrix::y_only_clip_matches_chrome_without_restricting_x_hit_range ... ok
+test stacking::tests::overflow_clip_margin_uses_padding_edge_for_paint_and_hit_test ... ok
+test tests::render_snapshot::c04_flex_path_stays_separate_from_the_s04_profile ... ok
+test tests::failures::mapping_and_node_sets_reject_missing_extra_and_duplicate_entries ... ok
+test tests::failures::rgb_color_syntax_and_text_nodes_are_rejected ... ok
+test stacking::tests::runtime_hit_test_matches_agent_browser_chrome_155_element_from_point_samples ... ok
+test tests::failures::duplicate_nodes_bad_mapping_and_non_finite_frames_fail_closed ... ok
+test tests::revision_gate::current_revision_tuple_is_admitted_and_every_stale_fixture_is_rejected ... ok
+test stacking::tests::each_fallible_reservation_failure_returns_its_exact_stage ... ok
+test tests::failures::revision_mismatch_and_incomplete_node_sets_fail_atomically ... ok
+test tests::revision_gate::nonzero_style_and_environment_revisions_survive_snapshot_admission ... ok
+test tests::render_snapshot::fixed_s04_fixture_matches_chromium_and_builds_a_complete_static_snapshot ... ok
+test tests::failures::invalid_profile_diagnostics_root_and_viewport_are_rejected ... ok
+test tests::runtime::runtime_scene_omits_hidden_nodes_and_allows_an_empty_scene ... ok
+test tests::runtime::runtime_scene_ignores_order_for_non_flex_siblings ... ok
+test tests::runtime::runtime_scene_rejects_stale_document_style_or_environment_revisions ... ok
+test tests::runtime::positioned_flex::runtime_scene_emits_nested_positioned_nodes_once_in_source_preorder ... ok
+test tests::runtime::runtime_scene_accepts_custom_properties_paint_profile ... ok
+test tests::runtime::runtime_scene_rejects_missing_or_invalid_flex_item_order ... ok
+test tests::runtime::runtime_scene_sorts_flex_paint_order_per_parent_and_keeps_nested_subtrees ... ok
+test tests::runtime::runtime_scene_matches_chromium_dom_order_geometry_and_paint ... ok
+test stacking::tests::c13_1_clip_matrix::runtime_matrix::axis_margin::visible_axis_and_clip_margin_edges_match_chrome_frame_and_full_hit_ranges ... ok
+test tests::runtime::runtime_scene_uses_typed_stylo_paint_not_css_string_reparsing ... ok
+test stacking::deep_graph_tests::host_document_to_paint_snapshot_handles_a_deep_stacking_graph ... ok
+test tests::runtime_stacking::display_none_subtrees_are_omitted_and_nonvisible_visibility_fails_closed ... ok
+test tests::runtime_stacking::fixed_auto_is_a_real_context_and_static_flex_items_honor_z_index ... ok
+test tests::runtime_stacking::flex_order_sets_stable_paint_ties_but_not_absolute_child_order ... ok
+test tests::runtime_stacking::positioned_auto_does_not_trap_descendant_integer_contexts ... ok
+test tests::runtime_stacking_wpt::wpt_css2_z_index_stack_001_orders_distinct_positive_levels ... ok
+test tests::runtime::positioned_flex::runtime_scene_paints_absolute_flex_children_after_in_flow_order_without_using_authored_order ... ok
+test tests::runtime_stacking_wpt::wpt_flexbox_items_as_stacking_contexts_keeps_descendant_inside_item ... ok
+test tests::runtime_stacking::negative_zero_and_positive_contexts_follow_css_paint_phases ... ok
+test tests::runtime_stacking::nested_positive_context_cannot_escape_its_parent_context ... ok
+test tests::runtime_stacking::stacking_runtime_key_preserves_intrinsic_size_revision ... ok
+test tests::runtime_stacking_wpt::wpt_flexbox_paint_ordering_002_uses_order_for_equal_z_index_ties ... ok
+test tests::runtime_stacking::zero_context_subtree_is_atomic_before_a_positive_sibling ... ok
+test tests::runtime_stacking_wpt::wpt_css2_z_index_abspos_003_paints_negative_child_after_context_background ... ok
+test tests::runtime_stacking::flex_reverse_paint_order_matches_the_pinned_chrome_overlap_matrix ... ok
+test stacking::tests::deeply_nested_context_flattening_uses_bounded_call_stack ... ok
+test stacking::tests::wide_context_fanout_fits_the_document_sized_action_reservation ... ok
+
+test result: ok. 52 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.07s
+
+   Doc-tests spinon_style_to_render
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

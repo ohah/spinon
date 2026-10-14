@@ -1,0 +1,673 @@
+{
+  "browser": {
+    "version": "155.0.8059.40",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "viewport": {
+      "width": 1280,
+      "height": 1100,
+      "dpr": 1
+    },
+    "automation": "agent-browser 0.31.1",
+    "product": "Google Chrome for Testing",
+    "revision": "cfaadc5a132d78e1828635aa8405a499f3e14864-refs/branch-heads/8059@{#936}"
+  },
+  "cases": [
+    {
+      "id": "visible",
+      "targetId": "visible-target",
+      "target": {
+        "x": 34,
+        "y": 98,
+        "width": 140,
+        "height": 120,
+        "right": 174,
+        "bottom": 218
+      },
+      "axes": {
+        "x": {
+          "fixedAt": 158,
+          "runs": [
+            {
+              "from": 34,
+              "to": 173,
+              "hit": "target"
+            }
+          ]
+        },
+        "y": {
+          "fixedAt": 104,
+          "runs": [
+            {
+              "from": 98,
+              "to": 217,
+              "hit": "target"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "clip-x",
+      "targetId": "clip-x-target",
+      "target": {
+        "x": 232,
+        "y": 98,
+        "width": 140,
+        "height": 120,
+        "right": 372,
+        "bottom": 218
+      },
+      "axes": {
+        "x": {
+          "fixedAt": 158,
+          "runs": [
+            {
+              "from": 232,
+              "to": 337,
+              "hit": "target"
+            },
+            {
+              "from": 338,
+              "to": 371,
+              "hit": "root"
+            }
+          ]
+        },
+        "y": {
+          "fixedAt": 285,
+          "runs": [
+            {
+              "from": 98,
+              "to": 217,
+              "hit": "target"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "clip-y",
+      "targetId": "clip-y-target",
+      "target": {
+        "x": 430,
+        "y": 98,
+        "width": 140,
+        "height": 120,
+        "right": 570,
+        "bottom": 218
+      },
+      "axes": {
+        "x": {
+          "fixedAt": 139,
+          "runs": [
+            {
+              "from": 430,
+              "to": 569,
+              "hit": "target"
+            }
+          ]
+        },
+        "y": {
+          "fixedAt": 500,
+          "runs": [
+            {
+              "from": 98,
+              "to": 179,
+              "hit": "target"
+            },
+            {
+              "from": 180,
+              "to": 213,
+              "hit": "root"
+            },
+            {
+              "from": 214,
+              "to": 217,
+              "hit": "main"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "clip-both",
+      "targetId": "clip-both-target",
+      "target": {
+        "x": 34,
+        "y": 266,
+        "width": 140,
+        "height": 120,
+        "right": 174,
+        "bottom": 386
+      },
+      "axes": {
+        "x": {
+          "fixedAt": 307,
+          "runs": [
+            {
+              "from": 34,
+              "to": 139,
+              "hit": "target"
+            },
+            {
+              "from": 140,
+              "to": 173,
+              "hit": "root"
+            }
+          ]
+        },
+        "y": {
+          "fixedAt": 87,
+          "runs": [
+            {
+              "from": 266,
+              "to": 347,
+              "hit": "target"
+            },
+            {
+              "from": 348,
+              "to": 381,
+              "hit": "root"
+            },
+            {
+              "from": 382,
+              "to": 385,
+              "hit": "main"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "clip-margin-padding",
+      "targetId": "clip-margin-padding-target",
+      "target": {
+        "x": 232,
+        "y": 266,
+        "width": 140,
+        "height": 120,
+        "right": 372,
+        "bottom": 386
+      },
+      "axes": {
+        "x": {
+          "fixedAt": 307,
+          "runs": [
+            {
+              "from": 232,
+              "to": 341,
+              "hit": "target"
+            },
+            {
+              "from": 342,
+              "to": 371,
+              "hit": "root"
+            }
+          ]
+        },
+        "y": {
+          "fixedAt": 285,
+          "runs": [
+            {
+              "from": 266,
+              "to": 351,
+              "hit": "target"
+            },
+            {
+              "from": 352,
+              "to": 381,
+              "hit": "root"
+            },
+            {
+              "from": 382,
+              "to": 385,
+              "hit": "main"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "clip-margin-content",
+      "targetId": "clip-margin-content-target",
+      "target": {
+        "x": 430,
+        "y": 266,
+        "width": 140,
+        "height": 120,
+        "right": 570,
+        "bottom": 386
+      },
+      "axes": {
+        "x": {
+          "fixedAt": 307,
+          "runs": [
+            {
+              "from": 430,
+              "to": 535,
+              "hit": "target"
+            },
+            {
+              "from": 536,
+              "to": 569,
+              "hit": "root"
+            }
+          ]
+        },
+        "y": {
+          "fixedAt": 483,
+          "runs": [
+            {
+              "from": 266,
+              "to": 347,
+              "hit": "target"
+            },
+            {
+              "from": 348,
+              "to": 381,
+              "hit": "root"
+            },
+            {
+              "from": 382,
+              "to": 385,
+              "hit": "main"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "clip-margin-border",
+      "targetId": "clip-margin-border-target",
+      "target": {
+        "x": 34,
+        "y": 434,
+        "width": 140,
+        "height": 120,
+        "right": 174,
+        "bottom": 554
+      },
+      "axes": {
+        "x": {
+          "fixedAt": 475,
+          "runs": [
+            {
+              "from": 34,
+              "to": 147,
+              "hit": "target"
+            },
+            {
+              "from": 148,
+              "to": 173,
+              "hit": "root"
+            }
+          ]
+        },
+        "y": {
+          "fixedAt": 87,
+          "runs": [
+            {
+              "from": 434,
+              "to": 523,
+              "hit": "target"
+            },
+            {
+              "from": 524,
+              "to": 549,
+              "hit": "root"
+            },
+            {
+              "from": 550,
+              "to": 553,
+              "hit": "main"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "clip-margin-invalid",
+      "targetId": "clip-margin-invalid-target",
+      "target": {
+        "x": 232,
+        "y": 434,
+        "width": 140,
+        "height": 120,
+        "right": 372,
+        "bottom": 554
+      },
+      "axes": {
+        "x": {
+          "fixedAt": 475,
+          "runs": [
+            {
+              "from": 232,
+              "to": 337,
+              "hit": "target"
+            },
+            {
+              "from": 338,
+              "to": 371,
+              "hit": "root"
+            }
+          ]
+        },
+        "y": {
+          "fixedAt": 285,
+          "runs": [
+            {
+              "from": 434,
+              "to": 515,
+              "hit": "target"
+            },
+            {
+              "from": 516,
+              "to": 549,
+              "hit": "root"
+            },
+            {
+              "from": 550,
+              "to": 553,
+              "hit": "main"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "clip-margin-hidden",
+      "targetId": "clip-margin-hidden-target",
+      "target": {
+        "x": 430,
+        "y": 434,
+        "width": 140,
+        "height": 120,
+        "right": 570,
+        "bottom": 554
+      },
+      "axes": {
+        "x": {
+          "fixedAt": 475,
+          "runs": [
+            {
+              "from": 430,
+              "to": 535,
+              "hit": "target"
+            },
+            {
+              "from": 536,
+              "to": 569,
+              "hit": "root"
+            }
+          ]
+        },
+        "y": {
+          "fixedAt": 483,
+          "runs": [
+            {
+              "from": 434,
+              "to": 515,
+              "hit": "target"
+            },
+            {
+              "from": 516,
+              "to": 549,
+              "hit": "root"
+            },
+            {
+              "from": 550,
+              "to": 553,
+              "hit": "main"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "mixed-visible-hidden",
+      "targetId": "mixed-visible-hidden-target",
+      "target": {
+        "x": 34,
+        "y": 602,
+        "width": 140,
+        "height": 120,
+        "right": 174,
+        "bottom": 722
+      },
+      "axes": {
+        "x": {
+          "fixedAt": 643,
+          "runs": [
+            {
+              "from": 34,
+              "to": 139,
+              "hit": "target"
+            },
+            {
+              "from": 140,
+              "to": 173,
+              "hit": "root"
+            }
+          ]
+        },
+        "y": {
+          "fixedAt": 87,
+          "runs": [
+            {
+              "from": 602,
+              "to": 683,
+              "hit": "target"
+            },
+            {
+              "from": 684,
+              "to": 717,
+              "hit": "root"
+            },
+            {
+              "from": 718,
+              "to": 721,
+              "hit": "main"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "mixed-clip-auto",
+      "targetId": "mixed-clip-auto-target",
+      "target": {
+        "x": 232,
+        "y": 602,
+        "width": 140,
+        "height": 120,
+        "right": 372,
+        "bottom": 722
+      },
+      "axes": {
+        "x": {
+          "fixedAt": 643,
+          "runs": [
+            {
+              "from": 232,
+              "to": 337,
+              "hit": "target"
+            },
+            {
+              "from": 338,
+              "to": 371,
+              "hit": "root"
+            }
+          ]
+        },
+        "y": {
+          "fixedAt": 285,
+          "runs": [
+            {
+              "from": 602,
+              "to": 683,
+              "hit": "target"
+            },
+            {
+              "from": 684,
+              "to": 717,
+              "hit": "root"
+            },
+            {
+              "from": 718,
+              "to": 721,
+              "hit": "main"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "positioned-contained",
+      "targetId": "positioned-contained-target",
+      "target": {
+        "x": 504,
+        "y": 822,
+        "width": 42,
+        "height": 30,
+        "right": 546,
+        "bottom": 852
+      },
+      "axes": {
+        "x": {
+          "fixedAt": 837,
+          "runs": [
+            {
+              "from": 504,
+              "to": 531,
+              "hit": "target"
+            },
+            {
+              "from": 532,
+              "to": 535,
+              "hit": "box"
+            },
+            {
+              "from": 536,
+              "to": 545,
+              "hit": "root"
+            }
+          ]
+        },
+        "y": {
+          "fixedAt": 520,
+          "runs": [
+            {
+              "from": 822,
+              "to": 851,
+              "hit": "target"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "positioned-escape",
+      "targetId": "positioned-escape-target",
+      "target": {
+        "x": 114,
+        "y": 968,
+        "width": 42,
+        "height": 30,
+        "right": 156,
+        "bottom": 998
+      },
+      "axes": {
+        "x": {
+          "fixedAt": 983,
+          "runs": [
+            {
+              "from": 114,
+              "to": 155,
+              "hit": "target"
+            }
+          ]
+        },
+        "y": {
+          "fixedAt": 127,
+          "runs": [
+            {
+              "from": 968,
+              "to": 997,
+              "hit": "target"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "nested-clip",
+      "targetId": "nested-clip-target",
+      "target": {
+        "x": 253,
+        "y": 961,
+        "width": 140,
+        "height": 120,
+        "right": 393,
+        "bottom": 1081
+      },
+      "axes": {
+        "x": {
+          "fixedAt": 990.5,
+          "runs": [
+            {
+              "from": 253,
+              "to": 323,
+              "hit": "target"
+            },
+            {
+              "from": 324,
+              "to": 337,
+              "hit": "box"
+            },
+            {
+              "from": 338,
+              "to": 392,
+              "hit": "root"
+            }
+          ]
+        },
+        "y": {
+          "fixedAt": 288.5,
+          "runs": [
+            {
+              "from": 961,
+              "to": 1015,
+              "hit": "target"
+            },
+            {
+              "from": 1016,
+              "to": 1019,
+              "hit": "box"
+            },
+            {
+              "from": 1020,
+              "to": 1053,
+              "hit": "root"
+            },
+            {
+              "from": 1054,
+              "to": 1073,
+              "hit": "body"
+            },
+            {
+              "from": 1074,
+              "to": 1080,
+              "hit": "html"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "fixture": {
+    "path": "tests/fixtures/css/c13/overflow-clip-c13-1.html",
+    "sha256": "b7acd7e63f79355b28cd480511b9be82e0f2bef478f1aadf685eb3b0bf4ef16a",
+    "sourceObservationSha256": "fd6d9e66825bc453609245950635f4fc56054ae9011b14d2f8901d490ecde4b5"
+  },
+  "scope": "Direct Chrome elementFromPoint identity runs over every integer CSS px coordinate in each target frame, sampled at the established orthogonal coordinate. No two-dimensional surface sweep."
+}

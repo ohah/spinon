@@ -1,0 +1,7 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.06s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_render-ee14fa157b6d3950)
+
+running 1 test
+test stacking::tests::content_box_clip_margin_limits_positioned_descendant_hits_to_chrome_visual_edge ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 52 filtered out; finished in 0.00s
