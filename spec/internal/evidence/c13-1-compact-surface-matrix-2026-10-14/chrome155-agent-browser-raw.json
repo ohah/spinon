@@ -1,0 +1,903 @@
+{
+  "success": true,
+  "data": {
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 6847324482101410000
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    },
+    "origin": "http://127.0.0.1:49816/tests/fixtures/css/c13/c13-1-compact-surface-matrix.html",
+    "result": {
+      "cases": [
+        {
+          "frame": {
+            "box": {
+              "height": 14,
+              "width": 64,
+              "x": 0,
+              "y": 1
+            },
+            "boxBackground": "rgb(52, 66, 86)",
+            "inner": null,
+            "innerOverflowClipMargin": null,
+            "innerOverflowX": null,
+            "innerOverflowY": null,
+            "overflowClipMargin": "0px",
+            "overflowX": "visible",
+            "overflowY": "visible",
+            "position": "absolute",
+            "section": {
+              "height": 18,
+              "width": 96,
+              "x": 0,
+              "y": 0
+            },
+            "target": {
+              "height": 16,
+              "width": 88,
+              "x": 3,
+              "y": 4
+            }
+          },
+          "id": "visible",
+          "samples": [
+            {
+              "computedBackground": "rgb(87, 166, 217)",
+              "hitId": "c131-surface-target-visible",
+              "hitNode": "fixture-node",
+              "role": "paint",
+              "x": 5,
+              "y": 6
+            },
+            {
+              "computedBackground": "rgb(87, 166, 217)",
+              "hitId": "c131-surface-target-visible",
+              "hitNode": "fixture-node",
+              "role": "target-beyond-frame",
+              "x": 70,
+              "y": 6
+            },
+            {
+              "computedBackground": "rgb(87, 166, 217)",
+              "hitId": "c131-surface-target-visible",
+              "hitNode": "fixture-node",
+              "role": "x-overflow",
+              "x": 66,
+              "y": 6
+            },
+            {
+              "computedBackground": "rgb(87, 166, 217)",
+              "hitId": "c131-surface-target-visible",
+              "hitNode": "fixture-node",
+              "role": "y-overflow",
+              "x": 5,
+              "y": 15
+            }
+          ]
+        },
+        {
+          "frame": {
+            "box": {
+              "height": 14,
+              "width": 64,
+              "x": 100,
+              "y": 1
+            },
+            "boxBackground": "rgb(52, 66, 86)",
+            "inner": null,
+            "innerOverflowClipMargin": null,
+            "innerOverflowX": null,
+            "innerOverflowY": null,
+            "overflowClipMargin": "0px",
+            "overflowX": "clip",
+            "overflowY": "visible",
+            "position": "absolute",
+            "section": {
+              "height": 18,
+              "width": 96,
+              "x": 100,
+              "y": 0
+            },
+            "target": {
+              "height": 16,
+              "width": 88,
+              "x": 103,
+              "y": 4
+            }
+          },
+          "id": "clip-x",
+          "samples": [
+            {
+              "computedBackground": "rgb(87, 166, 217)",
+              "hitId": "c131-surface-target-clip-x",
+              "hitNode": "fixture-node",
+              "role": "paint",
+              "x": 105,
+              "y": 6
+            },
+            {
+              "computedBackground": "rgb(16, 24, 39)",
+              "hitId": "c131-surface-case-clip-x",
+              "hitNode": "fixture-node",
+              "role": "target-beyond-frame",
+              "x": 170,
+              "y": 6
+            },
+            {
+              "computedBackground": "rgb(16, 24, 39)",
+              "hitId": "c131-surface-case-clip-x",
+              "hitNode": "fixture-node",
+              "role": "x-overflow",
+              "x": 166,
+              "y": 6
+            },
+            {
+              "computedBackground": "rgb(87, 166, 217)",
+              "hitId": "c131-surface-target-clip-x",
+              "hitNode": "fixture-node",
+              "role": "y-overflow",
+              "x": 105,
+              "y": 15
+            }
+          ]
+        },
+        {
+          "frame": {
+            "box": {
+              "height": 14,
+              "width": 64,
+              "x": 200,
+              "y": 1
+            },
+            "boxBackground": "rgb(52, 66, 86)",
+            "inner": null,
+            "innerOverflowClipMargin": null,
+            "innerOverflowX": null,
+            "innerOverflowY": null,
+            "overflowClipMargin": "0px",
+            "overflowX": "visible",
+            "overflowY": "clip",
+            "position": "absolute",
+            "section": {
+              "height": 18,
+              "width": 96,
+              "x": 200,
+              "y": 0
+            },
+            "target": {
+              "height": 16,
+              "width": 88,
+              "x": 203,
+              "y": 4
+            }
+          },
+          "id": "clip-y",
+          "samples": [
+            {
+              "computedBackground": "rgb(87, 166, 217)",
+              "hitId": "c131-surface-target-clip-y",
+              "hitNode": "fixture-node",
+              "role": "paint",
+              "x": 205,
+              "y": 6
+            },
+            {
+              "computedBackground": "rgb(87, 166, 217)",
+              "hitId": "c131-surface-target-clip-y",
+              "hitNode": "fixture-node",
+              "role": "target-beyond-frame",
+              "x": 270,
+              "y": 6
+            },
+            {
+              "computedBackground": "rgb(87, 166, 217)",
+              "hitId": "c131-surface-target-clip-y",
+              "hitNode": "fixture-node",
+              "role": "x-overflow",
+              "x": 266,
+              "y": 6
+            },
+            {
+              "computedBackground": "rgb(16, 24, 39)",
+              "hitId": "c131-surface-case-clip-y",
+              "hitNode": "fixture-node",
+              "role": "y-overflow",
+              "x": 205,
+              "y": 15
+            }
+          ]
+        },
+        {
+          "frame": {
+            "box": {
+              "height": 14,
+              "width": 64,
+              "x": 0,
+              "y": 21
+            },
+            "boxBackground": "rgb(52, 66, 86)",
+            "inner": null,
+            "innerOverflowClipMargin": null,
+            "innerOverflowX": null,
+            "innerOverflowY": null,
+            "overflowClipMargin": "0px",
+            "overflowX": "clip",
+            "overflowY": "clip",
+            "position": "absolute",
+            "section": {
+              "height": 18,
+              "width": 96,
+              "x": 0,
+              "y": 20
+            },
+            "target": {
+              "height": 16,
+              "width": 88,
+              "x": 3,
+              "y": 24
+            }
+          },
+          "id": "clip-both",
+          "samples": [
+            {
+              "computedBackground": "rgb(87, 166, 217)",
+              "hitId": "c131-surface-target-clip-both",
+              "hitNode": "fixture-node",
+              "role": "paint",
+              "x": 5,
+              "y": 26
+            },
+            {
+              "computedBackground": "rgb(16, 24, 39)",
+              "hitId": "c131-surface-case-clip-both",
+              "hitNode": "fixture-node",
+              "role": "target-beyond-frame",
+              "x": 70,
+              "y": 26
+            },
+            {
+              "computedBackground": "rgb(16, 24, 39)",
+              "hitId": "c131-surface-case-clip-both",
+              "hitNode": "fixture-node",
+              "role": "x-overflow",
+              "x": 66,
+              "y": 26
+            },
+            {
+              "computedBackground": "rgb(16, 24, 39)",
+              "hitId": "c131-surface-case-clip-both",
+              "hitNode": "fixture-node",
+              "role": "y-overflow",
+              "x": 5,
+              "y": 35
+            }
+          ]
+        },
+        {
+          "frame": {
+            "box": {
+              "height": 14,
+              "width": 64,
+              "x": 100,
+              "y": 21
+            },
+            "boxBackground": "rgb(52, 66, 86)",
+            "inner": null,
+            "innerOverflowClipMargin": null,
+            "innerOverflowX": null,
+            "innerOverflowY": null,
+            "overflowClipMargin": "4px",
+            "overflowX": "clip",
+            "overflowY": "clip",
+            "position": "absolute",
+            "section": {
+              "height": 18,
+              "width": 96,
+              "x": 100,
+              "y": 20
+            },
+            "target": {
+              "height": 16,
+              "width": 88,
+              "x": 103,
+              "y": 24
+            }
+          },
+          "id": "clip-margin-padding",
+          "samples": [
+            {
+              "computedBackground": "rgb(87, 166, 217)",
+              "hitId": "c131-surface-target-clip-margin-padding",
+              "hitNode": "fixture-node",
+              "role": "paint",
+              "x": 105,
+              "y": 26
+            },
+            {
+              "computedBackground": "rgb(16, 24, 39)",
+              "hitId": "c131-surface-case-clip-margin-padding",
+              "hitNode": "fixture-node",
+              "role": "target-beyond-frame",
+              "x": 170,
+              "y": 26
+            },
+            {
+              "computedBackground": "rgb(87, 166, 217)",
+              "hitId": "c131-surface-target-clip-margin-padding",
+              "hitNode": "fixture-node",
+              "role": "x-overflow",
+              "x": 166,
+              "y": 26
+            },
+            {
+              "computedBackground": "rgb(87, 166, 217)",
+              "hitId": "c131-surface-target-clip-margin-padding",
+              "hitNode": "fixture-node",
+              "role": "y-overflow",
+              "x": 105,
+              "y": 35
+            }
+          ]
+        },
+        {
+          "frame": {
+            "box": {
+              "height": 14,
+              "width": 64,
+              "x": 200,
+              "y": 21
+            },
+            "boxBackground": "rgb(52, 66, 86)",
+            "inner": null,
+            "innerOverflowClipMargin": null,
+            "innerOverflowX": null,
+            "innerOverflowY": null,
+            "overflowClipMargin": "content-box 4px",
+            "overflowX": "clip",
+            "overflowY": "clip",
+            "position": "absolute",
+            "section": {
+              "height": 18,
+              "width": 96,
+              "x": 200,
+              "y": 20
+            },
+            "target": {
+              "height": 16,
+              "width": 88,
+              "x": 203,
+              "y": 24
+            }
+          },
+          "id": "clip-margin-content",
+          "samples": [
+            {
+              "computedBackground": "rgb(87, 166, 217)",
+              "hitId": "c131-surface-target-clip-margin-content",
+              "hitNode": "fixture-node",
+              "role": "paint",
+              "x": 205,
+              "y": 26
+            },
+            {
+              "computedBackground": "rgb(16, 24, 39)",
+              "hitId": "c131-surface-case-clip-margin-content",
+              "hitNode": "fixture-node",
+              "role": "target-beyond-frame",
+              "x": 270,
+              "y": 26
+            },
+            {
+              "computedBackground": "rgb(16, 24, 39)",
+              "hitId": "c131-surface-case-clip-margin-content",
+              "hitNode": "fixture-node",
+              "role": "x-overflow",
+              "x": 266,
+              "y": 26
+            },
+            {
+              "computedBackground": "rgb(87, 166, 217)",
+              "hitId": "c131-surface-target-clip-margin-content",
+              "hitNode": "fixture-node",
+              "role": "y-overflow",
+              "x": 205,
+              "y": 35
+            }
+          ]
+        },
+        {
+          "frame": {
+            "box": {
+              "height": 14,
+              "width": 64,
+              "x": 0,
+              "y": 41
+            },
+            "boxBackground": "rgb(52, 66, 86)",
+            "inner": null,
+            "innerOverflowClipMargin": null,
+            "innerOverflowX": null,
+            "innerOverflowY": null,
+            "overflowClipMargin": "border-box 4px",
+            "overflowX": "clip",
+            "overflowY": "clip",
+            "position": "absolute",
+            "section": {
+              "height": 18,
+              "width": 96,
+              "x": 0,
+              "y": 40
+            },
+            "target": {
+              "height": 16,
+              "width": 88,
+              "x": 3,
+              "y": 44
+            }
+          },
+          "id": "clip-margin-border",
+          "samples": [
+            {
+              "computedBackground": "rgb(87, 166, 217)",
+              "hitId": "c131-surface-target-clip-margin-border",
+              "hitNode": "fixture-node",
+              "role": "paint",
+              "x": 5,
+              "y": 46
+            },
+            {
+              "computedBackground": "rgb(16, 24, 39)",
+              "hitId": "c131-surface-case-clip-margin-border",
+              "hitNode": "fixture-node",
+              "role": "target-beyond-frame",
+              "x": 70,
+              "y": 46
+            },
+            {
+              "computedBackground": "rgb(87, 166, 217)",
+              "hitId": "c131-surface-target-clip-margin-border",
+              "hitNode": "fixture-node",
+              "role": "x-overflow",
+              "x": 66,
+              "y": 46
+            },
+            {
+              "computedBackground": "rgb(87, 166, 217)",
+              "hitId": "c131-surface-target-clip-margin-border",
+              "hitNode": "fixture-node",
+              "role": "y-overflow",
+              "x": 5,
+              "y": 55
+            }
+          ]
+        },
+        {
+          "frame": {
+            "box": {
+              "height": 14,
+              "width": 64,
+              "x": 100,
+              "y": 41
+            },
+            "boxBackground": "rgb(52, 66, 86)",
+            "inner": null,
+            "innerOverflowClipMargin": null,
+            "innerOverflowX": null,
+            "innerOverflowY": null,
+            "overflowClipMargin": "border-box 4px",
+            "overflowX": "hidden",
+            "overflowY": "hidden",
+            "position": "absolute",
+            "section": {
+              "height": 18,
+              "width": 96,
+              "x": 100,
+              "y": 40
+            },
+            "target": {
+              "height": 16,
+              "width": 88,
+              "x": 103,
+              "y": 44
+            }
+          },
+          "id": "clip-margin-hidden",
+          "samples": [
+            {
+              "computedBackground": "rgb(87, 166, 217)",
+              "hitId": "c131-surface-target-clip-margin-hidden",
+              "hitNode": "fixture-node",
+              "role": "paint",
+              "x": 105,
+              "y": 46
+            },
+            {
+              "computedBackground": "rgb(16, 24, 39)",
+              "hitId": "c131-surface-case-clip-margin-hidden",
+              "hitNode": "fixture-node",
+              "role": "target-beyond-frame",
+              "x": 170,
+              "y": 46
+            },
+            {
+              "computedBackground": "rgb(16, 24, 39)",
+              "hitId": "c131-surface-case-clip-margin-hidden",
+              "hitNode": "fixture-node",
+              "role": "x-overflow",
+              "x": 166,
+              "y": 46
+            },
+            {
+              "computedBackground": "rgb(16, 24, 39)",
+              "hitId": "c131-surface-case-clip-margin-hidden",
+              "hitNode": "fixture-node",
+              "role": "y-overflow",
+              "x": 105,
+              "y": 55
+            }
+          ]
+        },
+        {
+          "frame": {
+            "box": {
+              "height": 14,
+              "width": 64,
+              "x": 200,
+              "y": 41
+            },
+            "boxBackground": "rgb(52, 66, 86)",
+            "inner": null,
+            "innerOverflowClipMargin": null,
+            "innerOverflowX": null,
+            "innerOverflowY": null,
+            "overflowClipMargin": "0px",
+            "overflowX": "auto",
+            "overflowY": "hidden",
+            "position": "absolute",
+            "section": {
+              "height": 18,
+              "width": 96,
+              "x": 200,
+              "y": 40
+            },
+            "target": {
+              "height": 16,
+              "width": 88,
+              "x": 203,
+              "y": 44
+            }
+          },
+          "id": "mixed-visible-hidden",
+          "samples": [
+            {
+              "computedBackground": "rgb(87, 166, 217)",
+              "hitId": "c131-surface-target-mixed-visible-hidden",
+              "hitNode": "fixture-node",
+              "role": "paint",
+              "x": 205,
+              "y": 46
+            },
+            {
+              "computedBackground": "rgb(16, 24, 39)",
+              "hitId": "c131-surface-case-mixed-visible-hidden",
+              "hitNode": "fixture-node",
+              "role": "target-beyond-frame",
+              "x": 270,
+              "y": 46
+            },
+            {
+              "computedBackground": "rgb(16, 24, 39)",
+              "hitId": "c131-surface-case-mixed-visible-hidden",
+              "hitNode": "fixture-node",
+              "role": "x-overflow",
+              "x": 266,
+              "y": 46
+            },
+            {
+              "computedBackground": "rgb(16, 24, 39)",
+              "hitId": "c131-surface-case-mixed-visible-hidden",
+              "hitNode": "fixture-node",
+              "role": "y-overflow",
+              "x": 205,
+              "y": 55
+            }
+          ]
+        },
+        {
+          "frame": {
+            "box": {
+              "height": 14,
+              "width": 64,
+              "x": 0,
+              "y": 61
+            },
+            "boxBackground": "rgb(52, 66, 86)",
+            "inner": null,
+            "innerOverflowClipMargin": null,
+            "innerOverflowX": null,
+            "innerOverflowY": null,
+            "overflowClipMargin": "border-box 4px",
+            "overflowX": "hidden",
+            "overflowY": "auto",
+            "position": "absolute",
+            "section": {
+              "height": 18,
+              "width": 96,
+              "x": 0,
+              "y": 60
+            },
+            "target": {
+              "height": 16,
+              "width": 88,
+              "x": 3,
+              "y": 64
+            }
+          },
+          "id": "mixed-clip-auto",
+          "samples": [
+            {
+              "computedBackground": "rgb(87, 166, 217)",
+              "hitId": "c131-surface-target-mixed-clip-auto",
+              "hitNode": "fixture-node",
+              "role": "paint",
+              "x": 5,
+              "y": 66
+            },
+            {
+              "computedBackground": "rgb(16, 24, 39)",
+              "hitId": "c131-surface-case-mixed-clip-auto",
+              "hitNode": "fixture-node",
+              "role": "target-beyond-frame",
+              "x": 70,
+              "y": 66
+            },
+            {
+              "computedBackground": "rgb(16, 24, 39)",
+              "hitId": "c131-surface-case-mixed-clip-auto",
+              "hitNode": "fixture-node",
+              "role": "x-overflow",
+              "x": 66,
+              "y": 66
+            },
+            {
+              "computedBackground": "rgb(16, 24, 39)",
+              "hitId": "c131-surface-case-mixed-clip-auto",
+              "hitNode": "fixture-node",
+              "role": "y-overflow",
+              "x": 5,
+              "y": 75
+            }
+          ]
+        },
+        {
+          "frame": {
+            "box": {
+              "height": 14,
+              "width": 64,
+              "x": 100,
+              "y": 61
+            },
+            "boxBackground": "rgb(52, 66, 86)",
+            "inner": null,
+            "innerOverflowClipMargin": null,
+            "innerOverflowX": null,
+            "innerOverflowY": null,
+            "overflowClipMargin": "0px",
+            "overflowX": "clip",
+            "overflowY": "clip",
+            "position": "relative",
+            "section": {
+              "height": 18,
+              "width": 96,
+              "x": 100,
+              "y": 60
+            },
+            "target": {
+              "height": 6,
+              "width": 14,
+              "x": 159,
+              "y": 69
+            }
+          },
+          "id": "positioned-contained",
+          "samples": [
+            {
+              "computedBackground": "rgb(227, 84, 78)",
+              "hitId": "c131-surface-target-positioned-contained",
+              "hitNode": "fixture-node",
+              "role": "paint",
+              "x": 161,
+              "y": 72
+            },
+            {
+              "computedBackground": "rgb(16, 24, 39)",
+              "hitId": "c131-surface-case-positioned-contained",
+              "hitNode": "fixture-node",
+              "role": "target-beyond-frame",
+              "x": 170,
+              "y": 72
+            },
+            {
+              "computedBackground": "rgb(16, 24, 39)",
+              "hitId": "c131-surface-case-positioned-contained",
+              "hitNode": "fixture-node",
+              "role": "x-overflow",
+              "x": 166,
+              "y": 72
+            },
+            {
+              "computedBackground": "rgb(16, 24, 39)",
+              "hitId": "c131-surface-case-positioned-contained",
+              "hitNode": "fixture-node",
+              "role": "y-overflow",
+              "x": 161,
+              "y": 75
+            }
+          ]
+        },
+        {
+          "frame": {
+            "box": {
+              "height": 14,
+              "width": 64,
+              "x": 200,
+              "y": 60
+            },
+            "boxBackground": "rgb(52, 66, 86)",
+            "inner": null,
+            "innerOverflowClipMargin": null,
+            "innerOverflowX": null,
+            "innerOverflowY": null,
+            "overflowClipMargin": "0px",
+            "overflowX": "clip",
+            "overflowY": "clip",
+            "position": "static",
+            "section": {
+              "height": 18,
+              "width": 96,
+              "x": 200,
+              "y": 60
+            },
+            "target": {
+              "height": 12,
+              "width": 30,
+              "x": 258,
+              "y": 68
+            }
+          },
+          "id": "positioned-escape",
+          "samples": [
+            {
+              "computedBackground": "rgb(227, 84, 78)",
+              "hitId": "c131-surface-target-positioned-escape",
+              "hitNode": "fixture-node",
+              "role": "paint",
+              "x": 261,
+              "y": 72
+            },
+            {
+              "computedBackground": "rgb(227, 84, 78)",
+              "hitId": "c131-surface-target-positioned-escape",
+              "hitNode": "fixture-node",
+              "role": "target-beyond-frame",
+              "x": 270,
+              "y": 72
+            },
+            {
+              "computedBackground": "rgb(227, 84, 78)",
+              "hitId": "c131-surface-target-positioned-escape",
+              "hitNode": "fixture-node",
+              "role": "x-overflow",
+              "x": 266,
+              "y": 72
+            },
+            {
+              "computedBackground": "rgb(227, 84, 78)",
+              "hitId": "c131-surface-target-positioned-escape",
+              "hitNode": "fixture-node",
+              "role": "y-overflow",
+              "x": 261,
+              "y": 76
+            }
+          ]
+        },
+        {
+          "frame": {
+            "box": {
+              "height": 14,
+              "width": 64,
+              "x": 0,
+              "y": 81
+            },
+            "boxBackground": "rgb(52, 66, 86)",
+            "inner": {
+              "height": 10,
+              "width": 34,
+              "x": 21,
+              "y": 85
+            },
+            "innerOverflowClipMargin": "0px",
+            "innerOverflowX": "clip",
+            "innerOverflowY": "visible",
+            "overflowClipMargin": "0px",
+            "overflowX": "visible",
+            "overflowY": "visible",
+            "position": "absolute",
+            "section": {
+              "height": 18,
+              "width": 96,
+              "x": 0,
+              "y": 80
+            },
+            "target": {
+              "height": 12,
+              "width": 56,
+              "x": 23,
+              "y": 87
+            }
+          },
+          "id": "nested-clip",
+          "samples": [
+            {
+              "computedBackground": "rgb(87, 166, 217)",
+              "hitId": "c131-surface-target-nested-clip",
+              "hitNode": "fixture-node",
+              "role": "paint",
+              "x": 25,
+              "y": 90
+            },
+            {
+              "computedBackground": "rgb(52, 66, 86)",
+              "hitId": "c131-surface-box-nested-clip",
+              "hitNode": "fixture-node",
+              "role": "target-beyond-frame",
+              "x": 60,
+              "y": 90
+            },
+            {
+              "computedBackground": "rgb(87, 166, 217)",
+              "hitId": "c131-surface-target-nested-clip",
+              "hitNode": "fixture-node",
+              "role": "x-overflow",
+              "x": 52,
+              "y": 90
+            },
+            {
+              "computedBackground": "rgb(87, 166, 217)",
+              "hitId": "c131-surface-target-nested-clip",
+              "hitNode": "fixture-node",
+              "role": "y-overflow",
+              "x": 25,
+              "y": 96
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "devicePixelRatio": 1,
+        "href": "http://127.0.0.1:49816/tests/fixtures/css/c13/c13-1-compact-surface-matrix.html",
+        "innerHeight": 100,
+        "innerWidth": 300,
+        "nodeCount": 41,
+        "root": {
+          "height": 100,
+          "width": 300,
+          "x": 0,
+          "y": 0
+        },
+        "scrollX": 0,
+        "scrollY": 0,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36"
+      }
+    }
+  },
+  "error": null
+}
