@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>C13.1 overflow and clipping baseline</title>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; min-width: 960px; font: 14px/1.4 sans-serif; }
+      body { padding: 16px; color: #15202b; background: #fff; }
+      h1 { margin: 0 0 12px; font-size: 20px; }
+      #cases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+      .case { min-height: 168px; border: 1px solid #9aa4ad; padding: 8px; }
+      .case h2 { margin: 0 0 8px; font-size: 13px; }
+      .box {
+        width: 128px;
+        height: 108px;
+        padding: 10px;
+        border: 4px solid #15202b;
+        background: #e7edf2;
+      }
+      .content { width: 160px; height: 140px; background: #57a6d9; }
+      [data-case="visible"] .box { overflow: visible; }
+      [data-case="hidden"] .box { overflow: hidden; }
+      [data-case="clip"] .box { overflow: clip; }
+      [data-case="scroll"] .box { overflow: scroll; }
+      [data-case="auto"] .box { overflow: auto; }
+      [data-case="axis-visible-hidden"] .box { overflow-x: visible; overflow-y: hidden; }
+      [data-case="axis-clip-auto"] .box { overflow-x: clip; overflow-y: auto; }
+      [data-case="clip-margin"] .box {
+        overflow: clip;
+        overflow-clip-margin: 8px;
+        border-radius: 16px;
+      }
+      [data-case="hidden-radius"] .box { overflow: hidden; border-radius: 16px; }
+      [data-case="hidden-float"] .box { overflow: hidden; height: auto; min-height: 0; }
+      [data-case="clip-float"] .box { overflow: clip; height: auto; min-height: 0; }
+      [data-case="clip-flow-root-float"] .box {
+        display: flow-root;
+        overflow: clip;
+        height: auto;
+        min-height: 0;
+      }
+      .float { float: left; width: 48px; height: 36px; background: #f2a541; }
+      .float-content { width: 160px; height: 140px; background: #57a6d9; }
+      .scroll-flag { height: 24px; color: #15202b; }
+    </style>
+  </head>
+  <body>
+    <h1>C13.1 overflow baseline</h1>
+    <main id="cases">
+      <section class="case" data-case="visible">
+        <h2>visible</h2><div class="box"><div class="content"></div></div>
+      </section>
+      <section class="case" data-case="hidden">
+        <h2>hidden</h2><div class="box"><div class="content"></div></div>
+      </section>
+      <section class="case" data-case="clip">
+        <h2>clip</h2><div class="box"><div class="content"></div></div>
+      </section>
+      <section class="case" data-case="scroll">
+        <h2>scroll</h2><div class="box"><div class="content"></div></div>
+      </section>
+      <section class="case" data-case="auto">
+        <h2>auto</h2><div class="box"><div class="content"></div></div>
+      </section>
+      <section class="case" data-case="axis-visible-hidden">
+        <h2>overflow-x:visible; overflow-y:hidden</h2><div class="box"><div class="content"></div></div>
+      </section>
+      <section class="case" data-case="axis-clip-auto">
+        <h2>overflow-x:clip; overflow-y:auto</h2><div class="box"><div class="content"></div></div>
+      </section>
+      <section class="case" data-case="clip-margin">
+        <h2>clip + overflow-clip-margin:8px</h2><div class="box"><div class="content"></div></div>
+      </section>
+      <section class="case" data-case="hidden-radius">
+        <h2>hidden + border-radius</h2><div class="box"><div class="content"></div></div>
+      </section>
+      <section class="case" data-case="hidden-float">
+        <h2>hidden contains float</h2><div class="box"><div class="float"></div></div>
+      </section>
+      <section class="case" data-case="clip-float">
+        <h2>clip does not contain float</h2><div class="box"><div class="float"></div></div>
+      </section>
+      <section class="case" data-case="clip-flow-root-float">
+        <h2>clip + flow-root contains float</h2><div class="box"><div class="float"></div></div>
+      </section>
+    </main>
+    <script>
+      window.collectC13Baseline = () => Array.from(document.querySelectorAll('[data-case]'), (section) => {
+        const box = section.querySelector('.box');
+        const content = box.firstElementChild;
+        const before = {
+          overflowX: getComputedStyle(box).overflowX,
+          overflowY: getComputedStyle(box).overflowY,
+          overflowClipMargin: getComputedStyle(box).overflowClipMargin,
+          clientWidth: box.clientWidth,
+          clientHeight: box.clientHeight,
+          scrollWidth: box.scrollWidth,
+          scrollHeight: box.scrollHeight,
+          boxHeight: box.getBoundingClientRect().height,
+          contentTop: content.getBoundingClientRect().top,
+          contentLeft: content.getBoundingClientRect().left,
+          scrollTopBefore: box.scrollTop,
+        };
+        box.scrollTop = 20;
+        box.scrollLeft = 20;
+        return {
+          id: section.dataset.case,
+          ...before,
+          scrollTopAfter: box.scrollTop,
+          scrollLeftAfter: box.scrollLeft,
+        };
+      });
+    </script>
+  </body>
+</html>
