@@ -8,7 +8,7 @@ C14.1의 revision-stamped image snapshot을 확장해, HTML `img`의 자연 크�
 
 ## 현재 구현 상태
 
-2026-10-14 기준 구현 후보는 [stacked PR #156](https://github.com/ohah/spinon/pull/156)로 열려 있으며 base는 부모 [PR #155](https://github.com/ohah/spinon/pull/155)다. 구현 실패 관점 20개와 별도 PR 적대 관점 20개를 기록했다. 두 PR 모두 open이고 branch check는 보고되지 않아 병합하지 않았다. C14.2와 상위 C14는 계속 미완료다.
+2026-10-14 기준 구현 후보 [PR #156](https://github.com/ohah/spinon/pull/156)은 부모 [PR #155](https://github.com/ohah/spinon/pull/155)가 main에 병합된 뒤 최신 main 위로 재기반했다. 재기반 뒤 workspace 773 passed·4 ignored, Clippy, rustfmt, diff check를 확인하고 PR 본문에 agent-browser Chrome 155 비교 화면을 첨부했다. 별도 구현 실패 20개, PR 변경 20개, 재기반 20개 검토를 남겼다. PR 병합 여부는 GitHub 갱신 후의 mergeability와 필수 gate로 판단한다. C14.2와 상위 C14는 계속 미완료다.
 
 ## 기준 명세
 
@@ -67,7 +67,7 @@ ratio만 있는 이미지의 두 CSS 축 auto intrinsic contribution은 C14.3에
 8. 계획에서 사용하지 않은 새로운 20개 관점으로 구현·실패 경로를 검토하고, 결함 수정 뒤 영향 검토를 반복한다.
 9. 계약 0009, C14 parent plan, internal index, STATUS를 갱신한다. C14.1/C14.2 상위, U05, S02 제품 runtime owner, C15, X16 완료는 주장하지 않는다.
 10. Rust workspace 검증과 가능한 Android API 37 AVD Rust test executable 검증을 수행한다. AVD 실행은 앱/V8/runtime integration이 아니라 OS/ABI에서 Rust 경계가 실행된 근거로만 보고한다. 실기기는 요구하지 않는다.
-11. stacked PR 본문에 parent PR #155 base, 근거, 미검증 경계를 연결하고 별도 20개의 PR 적대 검토 후 업데이트한다. PR을 자동 병합하거나 직접 병합하지 않는다.
+11. 부모 PR #155 병합 뒤 PR #156을 최신 main에 재기반하고, 본문에 비교 화면·근거·미검증 경계를 연결한다. 별도 PR 변경 및 재기반 적대 검토를 기록하고 GitHub의 현재 필수 gate와 mergeability가 허용하는 경우 리베이스 병합한다.
 
 ## 완료 판정
 

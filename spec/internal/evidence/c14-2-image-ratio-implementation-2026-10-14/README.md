@@ -21,4 +21,4 @@
 - 앞서 ADB discovery 실패를 만든 원인은 ADB daemon이 아니라 존재하지 않는 `spinon_api37_2.avd` 경로를 가리키며 지원하지 않는 `arm` architecture를 선언한 사용자 AVD 설정이었다. 이번에는 정상 `spinon_api37_1_compat16k` AVD와 명시적인 `-s emulator-5554`를 사용했다. 사용자 AVD 파일은 수정하지 않았다. 상세 재현은 [C14.1 AVD 복구 기록](../c14-1-android-avd-bootstrap-2026-10-14/README.md)에 있다.
 - Android 결과는 Rust unit-test executable의 ABI 실행이다. APK, V8, 앱 runtime, Android UI, GPU pixels, 성능 또는 실기기 검증은 아니다.
 
-이 변경은 C14.2 구현 후보이며 아직 stacked PR 검토·병합 전이다. C14.1/C14.2와 상위 C14 완료를 의미하지 않는다.
+부모 PR #155가 main에 병합된 뒤 C14.2 두 commit을 최신 main에 재기반했다. 재기반 후 전체 workspace 테스트는 773 passed·0 failed·4 ignored였고, Clippy, rustfmt, `git diff --check`도 통과했다. 실행 원본은 [재기반 workspace log](rebase-workspace-test.log), [Clippy](rebase-clippy.log), [rustfmt](rebase-fmt.log)다. AVD나 실기기 실행은 이번 재기반 검증에서 다시 하지 않았다. PR 변경 적대 검토와 별도의 재기반 검토는 각각 [PR 검토](../c14-2-image-ratio-pr-review-2026-10-14.md), [재기반 검토](../c14-2-image-ratio-rebase-review-2026-10-14.md)에 기록한다. C14.1/C14.2와 상위 C14 완료를 의미하지 않는다.
