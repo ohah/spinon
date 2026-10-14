@@ -3,7 +3,7 @@ use std::{collections::BTreeMap, fmt, sync::Arc};
 use spinon_core::{HostDocumentSnapshot, IntrinsicSizeRevision, NodeId};
 use spinon_layout::{LayoutIntrinsicSize, LayoutIntrinsicSizeSnapshot, LayoutSourceRevision};
 
-use crate::{DecodedImage, ImageRequest};
+use crate::{DecodedImage, ImageResourceCompletion};
 
 const MAX_SNAPSHOT_IMAGES: usize = 4096;
 const MAX_SNAPSHOT_IMAGE_BYTES: usize = 64 * 1024 * 1024;
@@ -17,11 +17,11 @@ pub struct ImageResourceSnapshot {
 }
 
 impl ImageResourceSnapshot {
-    /// 현재 문서에서 나온 요청과 디코드 결과를 불변 snapshot으로 묶습니다.
+    /// 현재 문서에서 나온 요청별 decode 완료를 불변 snapshot으로 묶습니다.
     pub fn new(
         document: &HostDocumentSnapshot,
         revision: IntrinsicSizeRevision,
-        entries: impl IntoIterator<Item = (ImageRequest, Arc<DecodedImage>)>,
+        entries: impl IntoIterator<Item = ImageResourceCompletion>,
     ) -> Result<Self, ImageSnapshotError> {
         let source = LayoutSourceRevision::HostDocument {
             generation: document.generation(),
@@ -30,7 +30,9 @@ impl ImageResourceSnapshot {
         };
         let mut images = BTreeMap::new();
         let mut total_image_bytes = 0;
-        for (request, image) in entries {
+        for completion in entries {
+            let request = completion.request;
+            let image = completion.image;
             if request.element().generation() != document.generation() {
                 return Err(ImageSnapshotError::StaleRequest(request.element().id()));
             }

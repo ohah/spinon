@@ -22,9 +22,9 @@
 | 16 | `DecodedImage::clone()`이 32 MiB pixel buffer를 호출자 의사 없이 복사한다 | `Clone` derive를 제거했다. 공유가 필요한 C14 fixture는 `Arc<DecodedImage>`를 사용한다. |
 | 17 | 너무 긴 DOM src를 검사 전에 복제하거나 UTF-8 byte 길이로 잘못 센다 | `DomString` UTF-16 길이를 clone 전에 제한한다. non-BMP 문자 524,288개(정확히 1,048,576 code unit)는 허용하고 524,289개(1,048,578 code unit)는 거부하는 boundary control을 추가했다. |
 | 18 | unknown/detached/SVG/non-img 또는 namespaced `src`를 HTML 이미지 요청으로 채택한다 | node 존재 여부를 연결성보다 먼저 확인하며 HTML namespace·`img`·unqualified nonempty `src`를 요구한다. 각 negative control을 확인했다. |
-| 19 | 늦은 완료가 바뀐 src·다른 generation/document·중복 NodeId를 덮는다 | 현재 src는 복제 없이 다시 비교하고 generation·전체 source stamp·중복 키를 검증한다. 변경 src, revision, generation, duplicate fixture가 거부된다. |
+| 19 | 늦은 완료가 바뀐 src·다른 generation/document·중복 NodeId를 덮거나 다른 decoded image와 잘못 결합된다 | 최초 API는 request와 decoded image tuple을 받아 payload misassociation을 막지 못했다. `ImageRequest::decode`가 request-bound completion을 만들고 snapshot은 그 타입만 받도록 바꿨다. 현재 src는 복제 없이 다시 비교하며 generation·전체 source stamp·중복 키도 검증한다. URI loader byte provenance는 loader 범위로 명시했다. |
 | 20 | 많은 작은 이미지나 큰 RGBA entry 합계가 resource snapshot 메모리를 무제한 늘린다 | 최초 구현에는 snapshot 전체 상한이 없었다. 최대 4096 entry·64 MiB 합계를 checked 검증하고, 공개 생성 경로의 4097번째 entry 거부와 byte-budget 경계/overflow helper 시험을 추가했다. |
 
 ## 수정 뒤 판정
 
-20개 관점을 확인했다. 네 구현 발견(Clone 복사, snapshot 총량 미제한, sRGB 혼합 gamma 허용, 현재 src 재복제)을 고치고 관련 관점을 다시 확인했다. 추가 요청 검사에서 unknown node가 detached로 분류되던 순서를 바로잡았다. 이 결과는 PNG fixture와 HostDocument/C14.1 Rust 경계의 구현 근거다. 앱 runtime image loader, 비동기 취소·cache, GPU texture/pixel, Android 앱 화면 및 iOS 동작을 증명하지 않는다.
+20개 관점을 확인했다. 구현 발견(Clone 복사, snapshot 총량 미제한, sRGB 혼합 gamma 허용, 현재 src 재복제, request/payload misassociation)을 고치고 관련 관점을 다시 확인했다. 추가 요청 검사에서 unknown node가 detached로 분류되던 순서를 바로잡았다. 이 결과는 PNG fixture와 HostDocument/C14.1 Rust 경계의 구현 근거다. 앱 runtime image loader, 비동기 취소·cache, GPU texture/pixel, Android 앱 화면 및 iOS 동작을 증명하지 않는다.

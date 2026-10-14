@@ -28,8 +28,9 @@ U05의 첫 구현 단위로 정적 PNG 바이트를 제한된 RGBA8 이미지로
 ### 문서 결합과 측정 snapshot
 
 - `ImageRequest::from_document`는 동일 세대의 연결된 HTML namespace `img`와 비어 있지 않은 unqualified `src`를 받아 request를 만든다. `src`는 해석·정규화하지 않은 DOM UTF-16 값 그대로 저장한다. detached subtree의 결과는 layout resource snapshot에 들어가지 않는다.
+- `ImageRequest::decode(bytes)`는 요청 객체를 디코드 결과와 함께 소유하는 `ImageResourceCompletion`을 만든다. snapshot API는 별도 request와 decoded image tuple을 받지 않아 호출자가 request와 image 값을 서로 바꿔 끼우는 실수를 줄인다. loader가 `bytes`를 해당 src에서 가져왔는지는 URI/network loader를 소유하는 caller 책임이며 이 slice에서 독립 검증하지 않는다.
 - 요청의 `src`는 UTF-16 code unit 1,048,576개 이하로 제한해 DOM 값을 복제할 때의 할당을 제한한다. 한도를 넘으면 request 생성이 실패한다.
-- `ImageResourceSnapshot::new`는 request source의 generation/document/render-tree revision, node handle, 현재 요소 종류와 정확한 `src`를 입력 `HostDocumentSnapshot`과 대조한다. 검증은 현재 `src`를 다시 복제하지 않고 비교한다. 하나라도 다르면 stale/invalid request 오류를 반환한다. 같은 `NodeId` 중복 완료를 거부한다.
+- `ImageResourceSnapshot::new`는 각 `ImageResourceCompletion`의 request source generation/document/render-tree revision, node handle, 현재 요소 종류와 정확한 `src`를 입력 `HostDocumentSnapshot`과 대조한다. 검증은 현재 `src`를 다시 복제하지 않고 비교한다. 하나라도 다르면 stale/invalid request 오류를 반환한다. 같은 `NodeId` 중복 완료를 거부한다.
 - 한 resource snapshot은 최대 4096개 entry, entry별 `DecodedImage::byte_len()`의 합 64 MiB 이하로 제한한다. Arc를 공유해도 각 entry 크기를 보수적으로 합산한다. count와 byte 합산은 checked 연산으로 실패 폐쇄한다.
 - resource snapshot은 `IntrinsicSizeRevision`과 문서 `LayoutSourceRevision`을 보존한다. 변환한 `LayoutIntrinsicSizeSnapshot`에는 디코드 완료된 항목만 들어가며 C14.1 adapter가 CSS 적용 상태와 누락 auto/auto image를 계속 판정한다.
 - 이미지 크기는 `<img>`의 HTML width/height 반영 전 자연 CSS px 크기다. C14.2의 intrinsic ratio sizing, 한 축만 지정된 크기, `srcset`/`picture`, density correction은 이번 범위가 아니다.

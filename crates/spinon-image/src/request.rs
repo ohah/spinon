@@ -1,5 +1,6 @@
-use std::fmt;
+use std::{fmt, sync::Arc};
 
+use crate::decode::{DecodedImage, ImageDecodeError, PngDecoder};
 use spinon_core::{AttributeName, DomString, HostDocumentSnapshot, HostNodeHandle, HostNodeKind};
 use spinon_layout::LayoutSourceRevision;
 
@@ -38,6 +39,14 @@ impl ImageRequest {
         document: &HostDocumentSnapshot,
     ) -> Result<bool, ImageRequestError> {
         Ok(document_src(document, self.element)? == &self.src)
+    }
+
+    /// 이 요청에 전달된 PNG bytes를 디코드한 완료 결과를 만듭니다.
+    ///
+    /// `encoded`는 호출자가 이 요청의 src에 대해 읽은 bytes여야 합니다.
+    pub fn decode(self, encoded: &[u8]) -> Result<ImageResourceCompletion, ImageDecodeError> {
+        let image = PngDecoder.decode(encoded)?;
+        Ok(ImageResourceCompletion::from_parts(self, Arc::new(image)))
     }
 
     pub const fn element(&self) -> HostNodeHandle {
@@ -113,3 +122,24 @@ impl fmt::Display for ImageRequestError {
 }
 
 impl std::error::Error for ImageRequestError {}
+
+/// 한 이미지 요청과 그 요청에 전달한 bytes의 decode 결과를 함께 소유합니다.
+#[derive(Debug)]
+pub struct ImageResourceCompletion {
+    pub(crate) request: ImageRequest,
+    pub(crate) image: Arc<DecodedImage>,
+}
+
+impl ImageResourceCompletion {
+    pub(crate) fn from_parts(request: ImageRequest, image: Arc<DecodedImage>) -> Self {
+        Self { request, image }
+    }
+
+    pub fn request(&self) -> &ImageRequest {
+        &self.request
+    }
+
+    pub fn image(&self) -> &DecodedImage {
+        &self.image
+    }
+}

@@ -4,7 +4,7 @@ use spinon_core::{
     AttributeName, DocumentChangeBatch, DocumentOperation, EnvironmentRevision, HostDocument,
     HostNodeHandle, HostParent, IntrinsicSizeRevision, OwnerId, StyleRevision,
 };
-use spinon_image::{ImageRequest, ImageResourceSnapshot, PngDecoder};
+use spinon_image::{ImageRequest, ImageResourceSnapshot};
 use spinon_layout::{LayoutIntrinsicSize, LayoutSourceRevision};
 use spinon_style::{
     CssMediaEnvironment, CssOrigin, CssViewport, StylesheetSource, StyloDocumentView,
@@ -97,10 +97,6 @@ fn viewport() -> CssViewport {
     }
 }
 
-fn decoded_image() -> Arc<spinon_image::DecodedImage> {
-    Arc::new(PngDecoder.decode(PNG).unwrap())
-}
-
 fn resource_snapshot(
     document: &spinon_core::HostDocumentSnapshot,
     image: HostNodeHandle,
@@ -109,7 +105,7 @@ fn resource_snapshot(
     ImageResourceSnapshot::new(
         document,
         IntrinsicSizeRevision::INITIAL.checked_next().unwrap(),
-        [(request, decoded_image())],
+        [request.decode(PNG).unwrap()],
     )
     .unwrap()
 }
@@ -182,7 +178,7 @@ fn image_request_completion_is_rejected_after_src_changes() {
     let result = ImageResourceSnapshot::new(
         &document.snapshot(),
         IntrinsicSizeRevision::INITIAL.checked_next().unwrap(),
-        [(old_request, decoded_image())],
+        [old_request.decode(PNG).unwrap()],
     );
     assert!(matches!(
         result,
@@ -195,13 +191,12 @@ fn resource_snapshot_rejects_duplicate_nodes_and_document_revisions() {
     let (mut document, _root, image) = document();
     let old_snapshot = document.snapshot();
     let request = ImageRequest::from_document(&old_snapshot, image).unwrap();
-    let decoded = decoded_image();
     let duplicate = ImageResourceSnapshot::new(
         &old_snapshot,
         IntrinsicSizeRevision::INITIAL,
         [
-            (request.clone(), decoded.clone()),
-            (request.clone(), decoded.clone()),
+            request.clone().decode(PNG).unwrap(),
+            request.clone().decode(PNG).unwrap(),
         ],
     );
     assert!(matches!(
@@ -220,7 +215,7 @@ fn resource_snapshot_rejects_duplicate_nodes_and_document_revisions() {
     let stale = ImageResourceSnapshot::new(
         &document.snapshot(),
         IntrinsicSizeRevision::INITIAL.checked_next().unwrap(),
-        [(request, decoded)],
+        [request.decode(PNG).unwrap()],
     );
     assert!(matches!(
         stale,
@@ -238,7 +233,7 @@ fn resource_snapshot_rejects_a_different_document_generation() {
     let stale = ImageResourceSnapshot::new(
         &second_document.snapshot(),
         IntrinsicSizeRevision::INITIAL.checked_next().unwrap(),
-        [(request, decoded_image())],
+        [request.decode(PNG).unwrap()],
     );
     assert!(matches!(
         stale,

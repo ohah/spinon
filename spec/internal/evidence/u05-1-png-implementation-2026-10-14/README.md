@@ -1,6 +1,6 @@
 # U05.1 PNG 구현과 현재 소스 회귀 · 2026-10-14
 
-이 근거는 `feat/u05-image-resource`의 현재 U05.1 변경에서 수집했다. 범위는 정적 PNG decode, connected HTML `img src` identity, revision-stamped resource snapshot과 C14.1 HostDocument→Stylo→Taffy fixture다.
+이 근거는 `feat/u05-image-resource`의 현재 U05.1 변경에서 수집했다. 범위는 정적 PNG decode, connected HTML `img src`-bound decode completion, revision-stamped resource snapshot과 C14.1 HostDocument→Stylo→Taffy fixture다.
 
 ## 결과
 
