@@ -60,6 +60,7 @@ fn runtime_scene_keeps_complete_key_dom_order_and_transparent_nodes() {
     assert_eq!(snapshot.boxes()[1].node_id(), second);
     assert_eq!(snapshot.boxes()[1].paint(), RuntimePaint::None);
     assert_eq!(snapshot.boxes()[1].paint_order(), 1);
+    assert_eq!(snapshot.boxes()[1].hit_test_order(), 1);
     assert_eq!(snapshot.viewport_css_px().width(), 301.0);
     assert_eq!(snapshot.key(), expected_key);
 }
@@ -91,6 +92,32 @@ fn runtime_scene_accepts_empty_and_rejects_duplicate_or_reordered_nodes() {
             )]
         ),
         Err(super::RuntimeRenderError::InvalidPaintOrder)
+    ));
+
+    let second = NodeId::new(2).unwrap();
+    assert!(matches!(
+        super::RuntimeRenderSnapshot::new(
+            key(),
+            viewport,
+            vec![
+                RuntimeRenderBox::new(node, render_box.frame_css_px(), RuntimePaint::None, 0,),
+                RuntimeRenderBox::new(second, render_box.frame_css_px(), RuntimePaint::None, 1,)
+                    .with_hit_test_order(0),
+            ]
+        ),
+        Err(super::RuntimeRenderError::InvalidHitTestOrder)
+    ));
+    assert!(matches!(
+        super::RuntimeRenderSnapshot::new(
+            key(),
+            viewport,
+            vec![
+                RuntimeRenderBox::new(node, render_box.frame_css_px(), RuntimePaint::None, 0,),
+                RuntimeRenderBox::new(second, render_box.frame_css_px(), RuntimePaint::None, 1,)
+                    .with_hit_test_order(2),
+            ]
+        ),
+        Err(super::RuntimeRenderError::InvalidHitTestOrder)
     ));
 }
 
@@ -124,6 +151,41 @@ fn runtime_hit_test_applies_axis_clips_and_uses_half_open_edges() {
     assert!(snapshot.hit_test_css_point(30.0, 45.0).is_none());
     assert!(snapshot.hit_test_css_point(19.0, 30.0).is_none());
     assert!(snapshot.hit_test_css_point(-1.0, 30.0).is_none());
+}
+
+#[test]
+fn runtime_hit_test_can_order_targets_independently_from_paint() {
+    let target = NodeId::new(41).unwrap();
+    let painted_parent = NodeId::new(42).unwrap();
+    let frame = CssRect::new(10.0, 10.0, 40.0, 30.0).unwrap();
+    let snapshot = super::RuntimeRenderSnapshot::new(
+        key(),
+        CssSize::new(100.0, 80.0).unwrap(),
+        vec![
+            RuntimeRenderBox::new(
+                target,
+                frame,
+                RuntimePaint::Opaque(OpaqueCssSrgb::new(20, 40, 60)),
+                0,
+            )
+            .with_hit_test_order(1),
+            RuntimeRenderBox::new(
+                painted_parent,
+                frame,
+                RuntimePaint::Opaque(OpaqueCssSrgb::new(60, 40, 20)),
+                1,
+            )
+            .with_hit_test_order(0),
+        ],
+    )
+    .unwrap();
+
+    assert_eq!(snapshot.boxes()[0].paint_order(), 0);
+    assert_eq!(snapshot.boxes()[1].paint_order(), 1);
+    assert_eq!(
+        snapshot.hit_test_css_point(20.0, 20.0).unwrap().node_id(),
+        target
+    );
 }
 
 #[test]

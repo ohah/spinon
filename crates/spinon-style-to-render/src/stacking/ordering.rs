@@ -1,3 +1,5 @@
+use std::collections::BTreeMap;
+
 use spinon_core::NodeId;
 use spinon_style::ComputedCssPosition;
 use spinon_style_to_layout::StyleLayoutOutput;
@@ -123,6 +125,73 @@ pub(super) fn flatten_contexts(
         }
     }
     Ok(nodes)
+}
+
+pub(super) fn flatten_hit_test_order(
+    document_nodes: &[NodeId],
+    parent_by_node: &BTreeMap<NodeId, NodeId>,
+    render_nodes: &[NodeId],
+    reserve: &mut impl FallibleReserve,
+) -> Result<BTreeMap<NodeId, u32>, StyleRenderError> {
+    let Some(root) = document_nodes.first().copied() else {
+        return Err(StyleRenderError::InvalidRoot);
+    };
+
+    let mut render_rank = BTreeMap::new();
+    for (rank, node) in render_nodes.iter().copied().enumerate() {
+        render_rank.insert(node, rank);
+    }
+    let mut subtree_first_rank = BTreeMap::new();
+    for (node, rank) in &render_rank {
+        subtree_first_rank.insert(*node, *rank);
+    }
+
+    let mut children_by_parent = BTreeMap::<NodeId, Vec<NodeId>>::new();
+    for node in document_nodes.iter().copied().skip(1) {
+        let parent = parent_by_node
+            .get(&node)
+            .copied()
+            .ok_or(StyleRenderError::InvalidRoot)?;
+        let children = children_by_parent.entry(parent).or_default();
+        reserve.reserve(children, 1, "hit-test children")?;
+        children.push(node);
+    }
+
+    for node in document_nodes.iter().rev() {
+        let Some(parent) = parent_by_node.get(node).copied() else {
+            continue;
+        };
+        let Some(rank) = subtree_first_rank.get(node).copied() else {
+            continue;
+        };
+        subtree_first_rank
+            .entry(parent)
+            .and_modify(|parent_rank| *parent_rank = (*parent_rank).min(rank))
+            .or_insert(rank);
+    }
+    for children in children_by_parent.values_mut() {
+        children.sort_by_key(|child| subtree_first_rank.get(child).copied().unwrap_or(usize::MAX));
+    }
+
+    let mut pending = Vec::new();
+    reserve.reserve(&mut pending, 1, "hit-test traversal")?;
+    pending.push(root);
+    let mut hit_order = BTreeMap::new();
+    while let Some(node) = pending.pop() {
+        if render_rank.contains_key(&node) {
+            let rank =
+                u32::try_from(hit_order.len()).map_err(|_| StyleRenderError::PaintOrderOverflow)?;
+            hit_order.insert(node, rank);
+        }
+        if let Some(children) = children_by_parent.get(&node) {
+            reserve.reserve(&mut pending, children.len(), "hit-test traversal")?;
+            pending.extend(children.iter().rev().copied());
+        }
+    }
+    if hit_order.len() != render_nodes.len() {
+        return Err(StyleRenderError::InvalidRoot);
+    }
+    Ok(hit_order)
 }
 
 fn paint_item_tree_order(item: &OrderedPaintItem) -> u64 {

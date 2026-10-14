@@ -151,6 +151,7 @@ pub struct RuntimeRenderBox {
     frame_css_px: CssRect,
     paint: RuntimePaint,
     paint_order: u32,
+    hit_test_order: u32,
     paint_clip_css_px: CssClip,
     hit_test_clip_css_px: CssClip,
 }
@@ -167,9 +168,16 @@ impl RuntimeRenderBox {
             frame_css_px,
             paint,
             paint_order,
+            hit_test_order: paint_order,
             paint_clip_css_px: CssClip::unconstrained(),
             hit_test_clip_css_px: CssClip::unconstrained(),
         }
+    }
+
+    /// Paint 순서와 독립된 CSS hit-test 우선순위를 지정합니다.
+    pub const fn with_hit_test_order(mut self, order: u32) -> Self {
+        self.hit_test_order = order;
+        self
     }
 
     pub const fn with_clip(mut self, clip_css_px: CssClip) -> Self {
@@ -199,6 +207,10 @@ impl RuntimeRenderBox {
         self.paint_order
     }
 
+    pub const fn hit_test_order(self) -> u32 {
+        self.hit_test_order
+    }
+
     pub const fn clip_css_px(self) -> CssClip {
         self.paint_clip_css_px
     }
@@ -223,12 +235,20 @@ impl RuntimeRenderSnapshot {
         boxes: Vec<RuntimeRenderBox>,
     ) -> Result<Self, RuntimeRenderError> {
         let mut node_ids = BTreeSet::new();
+        let mut hit_test_orders = BTreeSet::new();
         for (index, render_box) in boxes.iter().enumerate() {
             if !node_ids.insert(render_box.node_id) {
                 return Err(RuntimeRenderError::DuplicateNode(render_box.node_id));
             }
             if usize::try_from(render_box.paint_order).ok() != Some(index) {
                 return Err(RuntimeRenderError::InvalidPaintOrder);
+            }
+            if usize::try_from(render_box.hit_test_order)
+                .ok()
+                .is_none_or(|order| order >= boxes.len())
+                || !hit_test_orders.insert(render_box.hit_test_order)
+            {
+                return Err(RuntimeRenderError::InvalidHitTestOrder);
             }
         }
         Ok(Self {
@@ -272,7 +292,7 @@ impl RuntimeRenderSnapshot {
         &self.boxes
     }
 
-    /// clip과 viewport를 통과한 painted box 중 가장 앞의 CSS event target을 반환합니다.
+    /// hit-test 순서, clip, viewport를 통과한 가장 앞의 CSS event target을 반환합니다.
     pub fn hit_test_css_point(&self, x: f32, y: f32) -> Option<&RuntimeRenderBox> {
         if !x.is_finite()
             || !y.is_finite()
@@ -283,14 +303,17 @@ impl RuntimeRenderSnapshot {
         {
             return None;
         }
-        self.boxes.iter().rev().find(|render_box| {
-            let frame = render_box.frame_css_px();
-            x >= frame.x()
-                && x < frame.x() + frame.width()
-                && y >= frame.y()
-                && y < frame.y() + frame.height()
-                && render_box.hit_test_clip_css_px().contains(x, y)
-        })
+        self.boxes
+            .iter()
+            .filter(|render_box| {
+                let frame = render_box.frame_css_px();
+                x >= frame.x()
+                    && x < frame.x() + frame.width()
+                    && y >= frame.y()
+                    && y < frame.y() + frame.height()
+                    && render_box.hit_test_clip_css_px().contains(x, y)
+            })
+            .max_by_key(|render_box| render_box.hit_test_order())
     }
 }
 
@@ -298,6 +321,7 @@ impl RuntimeRenderSnapshot {
 pub enum RuntimeRenderError {
     DuplicateNode(NodeId),
     InvalidPaintOrder,
+    InvalidHitTestOrder,
     InvalidClip,
 }
 
@@ -307,6 +331,9 @@ impl fmt::Display for RuntimeRenderError {
             Self::DuplicateNode(node) => write!(formatter, "runtime 렌더 노드 {node}가 중복됩니다"),
             Self::InvalidPaintOrder => {
                 formatter.write_str("runtime paint_order가 장면 순서의 0부터 연속값이 아닙니다")
+            }
+            Self::InvalidHitTestOrder => {
+                formatter.write_str("runtime hit_test_order가 중복되거나 장면 범위를 벗어났습니다")
             }
             Self::InvalidClip => {
                 formatter.write_str("runtime clip은 유한하고 순서가 맞는 경계여야 합니다")

@@ -20,6 +20,9 @@ use super::{
 };
 use crate::CurrentLayoutInputs;
 
+#[path = "tests/c13_1_paint_hit_border.rs"]
+mod c13_1_paint_hit_border;
+
 const HTML: &str = "http://www.w3.org/1999/xhtml";
 const C13_OVERFLOW_CLIP_FIXTURE_JS: &str =
     include_str!("../../../../tests/fixtures/css/c13/runtime-overflow-clip.js");
@@ -246,6 +249,38 @@ fn each_fallible_reservation_failure_returns_its_exact_stage() {
             index + 1
         );
         assert_eq!(injected.attempts(), index + 1);
+    }
+}
+
+#[test]
+fn c131_hit_test_order_reservation_failures_return_their_exact_stage() {
+    let (input, _) = overflow_runtime_inputs(
+        &[
+            "position:relative;display:flow-root;width:100px;height:80px;background-color:#111111",
+            "position:static;width:60px;height:40px;overflow:clip;background-color:#222222",
+            "width:80px;height:50px;background-color:#333333",
+        ],
+        &[None, Some(0), Some(1)],
+    );
+
+    for stage in [
+        "hit-test render nodes",
+        "hit-test children",
+        "hit-test traversal",
+    ] {
+        let mut injected = FaultInjectingReserve::failing_at_stage_occurrence(stage, 1);
+        let error = build_runtime_render_snapshot_with_reserve(
+            &input.document,
+            input.root,
+            &input.output,
+            input.current,
+            &mut injected,
+        )
+        .expect_err("hit-test order reservation failure must reject the snapshot");
+        assert!(
+            matches!(error, crate::StyleRenderError::AllocationFailed { stage: actual } if actual == stage),
+            "{stage} reservation failure returned {error}"
+        );
     }
 }
 

@@ -29,7 +29,7 @@ mod ordering;
 mod tree;
 mod types;
 
-use ordering::{add_context, add_node, flatten_contexts};
+use ordering::{add_context, add_node, flatten_contexts, flatten_hit_test_order};
 use overflow_clip::{runtime_clips_for_node, validate_computed_overflow_values};
 use reserve::{FallibleReserve, SystemReserve};
 use tree::{child_handles, ordered_children, root_display_is_flex, validate_runtime_frame};
@@ -234,6 +234,35 @@ fn build_runtime_render_snapshot_with_reserve<R: FallibleReserve>(
         output,
         reserve,
     )?;
+    let hit_test_order_by_node =
+        if styles.profile == ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1 {
+            let mut hit_render_nodes = Vec::new();
+            reserve.reserve(
+                &mut hit_render_nodes,
+                paint_nodes.len(),
+                "hit-test render nodes",
+            )?;
+            for node_id in &paint_nodes {
+                let frame = output
+                    .layout
+                    .frames
+                    .get(node_id)
+                    .copied()
+                    .ok_or(StyleRenderError::MissingLayoutFrame(*node_id))?;
+                validate_runtime_frame(*node_id, frame)?;
+                if frame.width != 0.0 && frame.height != 0.0 {
+                    hit_render_nodes.push(*node_id);
+                }
+            }
+            Some(flatten_hit_test_order(
+                &document_nodes,
+                &parent_by_node,
+                &hit_render_nodes,
+                reserve,
+            )?)
+        } else {
+            None
+        };
     let viewport_css_px = CssSize::new(styles.viewport.width_css_px, styles.viewport.height_css_px)
         .map_err(|_| StyleRenderError::InvalidViewport)?;
     let mut boxes = Vec::new();
@@ -264,6 +293,13 @@ fn build_runtime_render_snapshot_with_reserve<R: FallibleReserve>(
         };
         let paint_order =
             u32::try_from(boxes.len()).map_err(|_| StyleRenderError::PaintOrderOverflow)?;
+        let hit_test_order = match &hit_test_order_by_node {
+            Some(order_by_node) => order_by_node
+                .get(&node_id)
+                .copied()
+                .ok_or(StyleRenderError::InvalidRoot)?,
+            None => paint_order,
+        };
         let (paint_clip, hit_test_clip) =
             if styles.profile == ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1 {
                 runtime_clips_for_node(node_id, &parent_by_node, &styles_by_node, output, reserve)?
@@ -272,6 +308,7 @@ fn build_runtime_render_snapshot_with_reserve<R: FallibleReserve>(
             };
         boxes.push(
             RuntimeRenderBox::new(node_id, frame_css_px, paint, paint_order)
+                .with_hit_test_order(hit_test_order)
                 .with_clip(paint_clip)
                 .with_hit_test_clip(hit_test_clip),
         );

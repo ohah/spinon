@@ -110,6 +110,12 @@ fn negative_zero_and_positive_contexts_follow_css_paint_phases() {
     .unwrap();
 
     assert_eq!(ids(&scene), [1, 3, 4, 5, 2]);
+    assert!(
+        scene
+            .boxes()
+            .iter()
+            .all(|render_box| render_box.hit_test_order() == render_box.paint_order())
+    );
 }
 
 #[test]

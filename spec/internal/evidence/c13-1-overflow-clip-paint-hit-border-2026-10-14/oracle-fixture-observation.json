@@ -1,0 +1,106 @@
+{
+  "browser": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "viewportCssPx": {
+      "width": 1280,
+      "height": 633
+    },
+    "devicePixelRatio": 1
+  },
+  "cases": [
+    {
+      "id": "static",
+      "clip": {
+        "x": 10,
+        "y": 10,
+        "width": 120,
+        "height": 96,
+        "right": 130,
+        "bottom": 106
+      },
+      "target": {
+        "x": 24,
+        "y": 24,
+        "width": 140,
+        "height": 120,
+        "right": 164,
+        "bottom": 144
+      }
+    },
+    {
+      "id": "positioned",
+      "clip": {
+        "x": 200,
+        "y": 10,
+        "width": 120,
+        "height": 96,
+        "right": 320,
+        "bottom": 106
+      },
+      "target": {
+        "x": 214,
+        "y": 24,
+        "width": 140,
+        "height": 120,
+        "right": 354,
+        "bottom": 144
+      }
+    }
+  ],
+  "samples": [
+    {
+      "id": "static-inside-clip",
+      "xCssPx": 125,
+      "yCssPx": 40,
+      "hit": "static-target",
+      "actualElementId": "static-target",
+      "expectedElementId": "static-target",
+      "hitMatches": true
+    },
+    {
+      "id": "static-border-strip",
+      "xCssPx": 128,
+      "yCssPx": 40,
+      "hit": "static-clip",
+      "actualElementId": "static-clip",
+      "expectedElementId": "static-clip",
+      "hitMatches": true
+    },
+    {
+      "id": "static-outside-border",
+      "xCssPx": 131,
+      "yCssPx": 40,
+      "hit": "root",
+      "actualElementId": "root",
+      "expectedElementId": "root",
+      "hitMatches": true
+    },
+    {
+      "id": "positioned-inside-clip",
+      "xCssPx": 315,
+      "yCssPx": 40,
+      "hit": "positioned-target",
+      "actualElementId": "positioned-target",
+      "expectedElementId": "positioned-target",
+      "hitMatches": true
+    },
+    {
+      "id": "positioned-border-strip",
+      "xCssPx": 318,
+      "yCssPx": 40,
+      "hit": "positioned-target",
+      "actualElementId": "positioned-target",
+      "expectedElementId": "positioned-target",
+      "hitMatches": true
+    },
+    {
+      "id": "positioned-outside-border",
+      "xCssPx": 321,
+      "yCssPx": 40,
+      "hit": "root",
+      "actualElementId": "root",
+      "expectedElementId": "root",
+      "hitMatches": true
+    }
+  ]
+}

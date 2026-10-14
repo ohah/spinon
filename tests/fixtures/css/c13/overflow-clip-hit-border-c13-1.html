@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>C13.1 overflow clip border-strip hit oracle</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        background: #101827;
+      }
+
+      #root {
+        display: flow-root;
+        position: relative;
+        width: 380px;
+        height: 120px;
+      }
+
+      .clip-parent {
+        box-sizing: border-box;
+        width: 120px;
+        height: 96px;
+        padding: 10px;
+        border: 4px solid #f0c674;
+        overflow-x: clip;
+        overflow-y: visible;
+        background: #344256;
+      }
+
+      .clip-target {
+        width: 140px;
+        height: 120px;
+        background: #57a6d9;
+      }
+
+      #static-clip {
+        position: static;
+        margin-left: 10px;
+        margin-top: 10px;
+      }
+
+      #positioned-clip {
+        position: absolute;
+        left: 200px;
+        top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="root">
+      <div class="clip-parent" id="static-clip">
+        <div class="clip-target" id="static-target"></div>
+      </div>
+      <div class="clip-parent" id="positioned-clip">
+        <div class="clip-target" id="positioned-target"></div>
+      </div>
+    </main>
+    <script>
+      window.collectC131HitBorderOracle = () => {
+        const rect = (element) => {
+          const { x, y, width, height, right, bottom } = element.getBoundingClientRect();
+          return { x, y, width, height, right, bottom };
+        };
+        const samples = [
+          { id: "static-inside-clip", xCssPx: 125, yCssPx: 40, hit: "static-target" },
+          { id: "static-border-strip", xCssPx: 128, yCssPx: 40, hit: "static-clip" },
+          { id: "static-outside-border", xCssPx: 131, yCssPx: 40, hit: "root" },
+          { id: "positioned-inside-clip", xCssPx: 315, yCssPx: 40, hit: "positioned-target" },
+          { id: "positioned-border-strip", xCssPx: 318, yCssPx: 40, hit: "positioned-target" },
+          { id: "positioned-outside-border", xCssPx: 321, yCssPx: 40, hit: "root" },
+        ].map((sample) => {
+          const element = document.elementFromPoint(sample.xCssPx, sample.yCssPx);
+          return {
+            ...sample,
+            actualElementId: element?.id || null,
+            expectedElementId: sample.hit,
+            hitMatches: element?.id === sample.hit,
+          };
+        });
+        return {
+          browser: {
+            userAgent: navigator.userAgent,
+            viewportCssPx: { width: innerWidth, height: innerHeight },
+            devicePixelRatio,
+          },
+          cases: [
+            {
+              id: "static",
+              clip: rect(document.querySelector("#static-clip")),
+              target: rect(document.querySelector("#static-target")),
+            },
+            {
+              id: "positioned",
+              clip: rect(document.querySelector("#positioned-clip")),
+              target: rect(document.querySelector("#positioned-target")),
+            },
+          ],
+          samples,
+        };
+      };
+    </script>
+  </body>
+</html>
