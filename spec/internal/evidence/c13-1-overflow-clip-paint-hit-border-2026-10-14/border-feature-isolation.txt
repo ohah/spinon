@@ -1,0 +1,18 @@
+toolchain=rustc 1.96.1 / LLVM 22.1.2; matching rustup llvm-nm
+target=aarch64-apple-ios-sim release spinon-ffi static archive
+
+[feature off]
+build=SPINON_V8_DIR=... cargo build --locked -p spinon-ffi --target aarch64-apple-ios-sim --release; exit 0
+archive_sha256=ae8e66b570a08e5b1af9814157046685af9cd6acfc33f5046c9e943aaf763794
+spinon_runtime_gpu_host_new_c13_1_overflow_clip_border_fixture=absent
+spinon_runtime_gpu_host_eval_c13_1_overflow_clip_border_fixture=absent
+border_fixture_payload_strings=absent
+
+[feature on]
+build=SPINON_V8_DIR=... cargo build --locked -p spinon-ffi --target aarch64-apple-ios-sim --release --features c13-1-overflow-clip-fixture-test; exit 0
+archive_sha256=fe0be6c88a5080394a57f51d6355179e0f5ca1f9d517f41edd5e8621a71c5c1c
+spinon_runtime_gpu_host_new_c13_1_overflow_clip_border_fixture=present
+spinon_runtime_gpu_host_eval_c13_1_overflow_clip_border_fixture=present
+border_fixture_payload_strings=present (data-c131-border-node, static-inside-clip, positioned-border-strip)
+
+The controls inspect the matching iOS simulator static archive only. They do not measure final app size, default product behavior, or any device binary.

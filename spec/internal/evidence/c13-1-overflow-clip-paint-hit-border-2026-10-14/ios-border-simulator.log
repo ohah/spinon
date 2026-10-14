@@ -1,0 +1,18 @@
+getpwuid_r did not find a match for uid 501
+Timestamp               Ty Process[PID:TID]
+2026-10-14 18:56:20.025 Df SpinonBootstrap[20788:21a4beb] SPINON_C131_BORDER_HOST=session=ready owner_tid=35277816 isolate_per_session=1 queue_capacity=64 queue_policy=strict-priority-fifo css_worker_per_session=1 css_worker_ready_us=731 session_startup_us=21640
+2026-10-14 18:56:20.040 Df SpinonBootstrap[20788:21a4beb] (Foundation) SPINON_C131_BORDER_EVAL_RUN status=0 layout=ready boxes=5 generation=1 document_revision=25 environment_revision=0
+2026-10-14 18:56:20.040 Df SpinonBootstrap[20788:21a4beb] (Foundation) SPINON_C131_BORDER_NODE_FRAME 0:node=1,x=0,y=0,width=380,height=120
+2026-10-14 18:56:20.040 Df SpinonBootstrap[20788:21a4beb] (Foundation) SPINON_C131_BORDER_NODE_FRAME 1:node=2,x=10,y=10,width=120,height=96
+2026-10-14 18:56:20.040 Df SpinonBootstrap[20788:21a4beb] (Foundation) SPINON_C131_BORDER_NODE_FRAME 2:node=3,x=24,y=24,width=140,height=120
+2026-10-14 18:56:20.040 Df SpinonBootstrap[20788:21a4beb] (Foundation) SPINON_C131_BORDER_NODE_FRAME 3:node=4,x=200,y=10,width=120,height=96
+2026-10-14 18:56:20.040 Df SpinonBootstrap[20788:21a4beb] (Foundation) SPINON_C131_BORDER_NODE_FRAME 4:node=5,x=214,y=24,width=140,height=120
+2026-10-14 18:56:20.040 Df SpinonBootstrap[20788:21a4beb] (Foundation) SPINON_C131_BORDER_GEOMETRY_SUMMARY status=ok frames=5
+2026-10-14 18:56:20.041 Df SpinonBootstrap[20788:21a4beb] (Foundation) SPINON_C131_BORDER_HIT_TEST id=static-inside-clip x=125 y=40 element=static-target status=matched
+2026-10-14 18:56:20.041 Df SpinonBootstrap[20788:21a4beb] (Foundation) SPINON_C131_BORDER_HIT_TEST id=static-border-strip x=128 y=40 element=static-clip status=matched
+2026-10-14 18:56:20.042 Df SpinonBootstrap[20788:21a4beb] (Foundation) SPINON_C131_BORDER_HIT_TEST id=static-outside-border x=131 y=40 element=root status=matched
+2026-10-14 18:56:20.042 Df SpinonBootstrap[20788:21a4beb] (Foundation) SPINON_C131_BORDER_HIT_TEST id=positioned-inside-clip x=315 y=40 element=positioned-target status=matched
+2026-10-14 18:56:20.042 Df SpinonBootstrap[20788:21a4beb] (Foundation) SPINON_C131_BORDER_HIT_TEST id=positioned-border-strip x=318 y=40 element=positioned-target status=matched
+2026-10-14 18:56:20.042 Df SpinonBootstrap[20788:21a4beb] (Foundation) SPINON_C131_BORDER_HIT_TEST id=positioned-outside-border x=321 y=40 element=root status=matched
+2026-10-14 18:56:20.042 Df SpinonBootstrap[20788:21a4beb] (Foundation) SPINON_C131_BORDER_HIT_TEST_SUMMARY status=ok matched=6 total=6 ids=fixed
+2026-10-14 18:56:20.042 Df SpinonBootstrap[20788:21a4beb] (Foundation) SPINON_C131_BORDER_FIXTURE_SUMMARY status=ok boxes=5 frames=5 hit_samples=6 hit_matches=6

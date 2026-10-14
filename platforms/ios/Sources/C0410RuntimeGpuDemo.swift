@@ -508,6 +508,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     }
     private let c131OverflowClipProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c131-overflow-clip")
+    private let c131BorderStripProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c131-overflow-clip-border")
     private let c122AbsoluteBlockProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c122-absolute-block")
     private let c123FixedPositionProbeRequested = ProcessInfo.processInfo.arguments
@@ -542,7 +544,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             && ProcessInfo.processInfo.arguments.contains("--spinon-c051-custom-properties")
     }
     private var fixedSizeCssFixtureRequested: Bool {
-        c131OverflowClipProbeRequested || c11GridFixtureRequested
+        c131OverflowClipProbeRequested || c131BorderStripProbeRequested || c11GridFixtureRequested
             || c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
             || c124StackingProbeRequested
             || c1035PositionedFlexProbeRequested
@@ -569,7 +571,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
 
         let title = UILabel()
-        title.text = c131OverflowClipProbeRequested
+        title.text = c131BorderStripProbeRequested
+            ? "SPINON · C13.1 paint/hit border"
+            : c131OverflowClipProbeRequested
             ? "SPINON · C13.1 overflow: clip"
             : c1133GridTemplateAreasProbeRequested
             ? "SPINON · C11.3.3 Grid template areas"
@@ -647,7 +651,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.addSubview(title)
 
         let description = UILabel()
-        description.text = c131OverflowClipProbeRequested
+        description.text = c131BorderStripProbeRequested
+            ? "static/absolute clip border-strip hit oracle → WGPU Metal · 400×160 CSS px"
+            : c131OverflowClipProbeRequested
             ? "V8 overflow: clip·clip margin·positioned escape → Stylo → Taffy → WGPU Metal · 320×240 CSS px"
             : c1133GridTemplateAreasProbeRequested
             ? "Grid template area placement → Stylo → Taffy → WGPU Metal · 320×240 CSS px"
@@ -727,7 +733,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         canvasView.translatesAutoresizingMaskIntoConstraints = false
         canvasView.isAccessibilityElement = true
-        canvasView.accessibilityLabel = c131OverflowClipProbeRequested
+        canvasView.accessibilityLabel = c131BorderStripProbeRequested
+            ? "C13.1 paint/hit border-strip Chrome 경계 WGPU Metal 장면"
+            : c131OverflowClipProbeRequested
             ? "C13.1 overflow clip과 positioned escape WGPU Metal 장면"
             : c1123GridAutoPlacementProbeRequested
             ? "C11.2.3 dense·column Grid 자동 배치 WGPU 장면"
@@ -869,11 +877,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         let canvasWidth = canvasView.widthAnchor.constraint(
             equalToConstant: c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
-                ? 360 : fixedSizeCssFixtureRequested ? 320 : 301
+                ? 360 : c131BorderStripProbeRequested ? 400 : fixedSizeCssFixtureRequested ? 320 : 301
         )
         let canvasHeight = canvasView.heightAnchor.constraint(
             equalToConstant: c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
-                ? 800 : fixedSizeCssFixtureRequested ? 240 : 100
+                ? 800 : c131BorderStripProbeRequested ? 160 : fixedSizeCssFixtureRequested ? 240 : 100
         )
         canvasWidthConstraint = canvasWidth
         canvasHeightConstraint = canvasHeight
@@ -1087,6 +1095,91 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             && matched.count == 15 && sampleIDs == expectedHitIDs
         log("SPINON_C131_HIT_TEST_SUMMARY status=\(passed ? "ok" : "error") matched=\(matched.count) total=\(samples.count) ids=\(sampleIDs == expectedHitIDs ? "fixed" : "unexpected")")
         log("SPINON_C131_FIXTURE_SUMMARY status=\(passed ? "ok" : "error") boxes=13 frames=\(frames.count) hit_samples=\(samples.count) hit_matches=\(matched.count)")
+        return passed
+    }
+
+    private func logC131BorderFixtureReport(_ report: String) -> Bool {
+        let expectedSampleIDs = [
+            "static-inside-clip", "static-border-strip", "static-outside-border",
+            "positioned-inside-clip", "positioned-border-strip", "positioned-outside-border",
+        ]
+        let expectedTargets = [
+            "static-target", "static-clip", "root", "positioned-target",
+            "positioned-target", "root",
+        ]
+        let expectedPoints: [(Double, Double)] = [
+            (125, 40), (128, 40), (131, 40), (315, 40), (318, 40), (321, 40),
+        ]
+        let expectedFrames: [(Double, Double, Double, Double)] = [
+            (0, 0, 380, 120), (10, 10, 120, 96), (24, 24, 140, 120),
+            (200, 10, 120, 96), (214, 24, 140, 120),
+        ]
+        guard report.hasPrefix("status=0 "),
+              report.contains(" layout=ready "),
+              reportField(report, "boxes=") == "5",
+              let frameMarker = report.range(of: "node_frames_css_px=["),
+              let frameEnd = report[frameMarker.upperBound...].firstIndex(of: "]") else {
+            log("SPINON_C131_BORDER_FIXTURE_SUMMARY status=error stage=runtime-report \(runtimeStatusSummary(report))")
+            return false
+        }
+        let frames = report[frameMarker.upperBound..<frameEnd].split(separator: ";")
+        for frame in frames {
+            log("SPINON_C131_BORDER_NODE_FRAME \(frame)")
+        }
+        let geometryMatches = frames.count == expectedFrames.count
+            && frames.enumerated().allSatisfy { index, frame in
+                var coordinates: [String: Double] = [:]
+                for field in frame.split(separator: ",") {
+                    let pair = field.split(separator: "=", maxSplits: 1)
+                    guard pair.count == 2,
+                          let value = Double(pair[1]),
+                          ["x", "y", "width", "height"].contains(String(pair[0])) else {
+                        continue
+                    }
+                    coordinates[String(pair[0])] = value
+                }
+                let expected = expectedFrames[index]
+                return coordinates["x"] == expected.0
+                    && coordinates["y"] == expected.1
+                    && coordinates["width"] == expected.2
+                    && coordinates["height"] == expected.3
+            }
+        log("SPINON_C131_BORDER_GEOMETRY_SUMMARY status=\(geometryMatches ? "ok" : "error") frames=\(frames.count)")
+
+        guard let sampleMarker = report.range(of: "hit_test_samples_json="),
+              let sampleStart = report[sampleMarker.upperBound...].firstIndex(of: "["),
+              let sampleEnd = report[report.index(after: sampleStart)...].firstIndex(of: "]") else {
+            log("SPINON_C131_BORDER_FIXTURE_SUMMARY status=error stage=hit-test-report")
+            return false
+        }
+        let sampleJSON = String(report[sampleStart...sampleEnd])
+        guard let sampleData = sampleJSON.data(using: .utf8),
+              let samples = try? JSONSerialization.jsonObject(with: sampleData) as? [[String: Any]] else {
+            log("SPINON_C131_BORDER_FIXTURE_SUMMARY status=error stage=hit-test-json")
+            return false
+        }
+        let sampleIDs = samples.compactMap { $0["id"] as? String }
+        let matched = samples.filter { $0["status"] as? String == "matched" }
+        let samplesAgree = samples.count == expectedSampleIDs.count
+            && samples.enumerated().allSatisfy { index, sample in
+                (sample["id"] as? String) == expectedSampleIDs[index]
+                    && (sample["elementId"] as? String) == expectedTargets[index]
+                    && (sample["xCssPx"] as? Double) == expectedPoints[index].0
+                    && (sample["yCssPx"] as? Double) == expectedPoints[index].1
+                    && (sample["status"] as? String) == "matched"
+            }
+        for sample in samples {
+            let id = sample["id"] as? String ?? "missing"
+            let element = sample["elementId"] as? String ?? "null"
+            let x = sample["xCssPx"] ?? "missing"
+            let y = sample["yCssPx"] ?? "missing"
+            let status = sample["status"] as? String ?? "missing"
+            log("SPINON_C131_BORDER_HIT_TEST id=\(id) x=\(x) y=\(y) element=\(element) status=\(status)")
+        }
+        let passed = frames.count == 5 && geometryMatches && samplesAgree && matched.count == 6
+            && sampleIDs == expectedSampleIDs
+        log("SPINON_C131_BORDER_HIT_TEST_SUMMARY status=\(passed ? "ok" : "error") matched=\(matched.count) total=\(samples.count) ids=\(sampleIDs == expectedSampleIDs ? "fixed" : "unexpected")")
+        log("SPINON_C131_BORDER_FIXTURE_SUMMARY status=\(passed ? "ok" : "error") boxes=5 frames=\(frames.count) hit_samples=\(samples.count) hit_matches=\(matched.count)")
         return passed
     }
 
@@ -1408,10 +1501,16 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
     private func initializeRuntime() {
         guard !isClosing else { return }
-        if c131OverflowClipProbeRequested,
+        if c131OverflowClipProbeRequested && c131BorderStripProbeRequested {
+            log("SPINON_C131_ARGUMENT_ERROR conflicting=both-overflow-fixture-routes")
+            postStatus("실패 · C13.1 route를 하나만 선택해야 합니다")
+            return
+        }
+        if c131OverflowClipProbeRequested || c131BorderStripProbeRequested,
            let conflictingArgument = ProcessInfo.processInfo.arguments.first(where: {
                $0.hasPrefix("--spinon-c")
                    && $0 != "--spinon-c131-overflow-clip"
+                   && $0 != "--spinon-c131-overflow-clip-border"
                    && $0 != "--spinon-c0410-runtime-gpu"
            }) {
             log("SPINON_C131_ARGUMENT_ERROR conflicting=\(conflictingArgument)")
@@ -1502,7 +1601,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             postStatus("실패 · C12.4 Metal 표본 case 인수가 올바르지 않습니다")
             return
         }
-        let handle = c131OverflowClipProbeRequested
+        let handle = c131BorderStripProbeRequested
+            ? SpinonRunner.createRuntimeGpuHostWithC13_1OverflowClipBorderFixture()
+            : c131OverflowClipProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithC13_1OverflowClipFixture()
             : c1133GridTemplateAreasProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithC11_3_3GridTemplateAreasFixture()
@@ -1553,13 +1654,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         guard shouldContinue else { return }
 
         let environmentInputs = currentEnvironment()
-        let viewportWidth: Float = c131OverflowClipProbeRequested
+        let viewportWidth: Float = c131BorderStripProbeRequested
+            ? 400 : c131OverflowClipProbeRequested
             ? 320 : c122AbsoluteBlockProbeRequested
             || c123FixedPositionProbeRequested
             || c1122GridAutoPlacementProbeRequested
             || c1123GridAutoPlacementProbeRequested
             ? 360 : c1131GridRepeatProbeRequested || fixedSizeCssFixtureRequested ? 320 : environmentInputs.width
-        let viewportHeight: Float = c131OverflowClipProbeRequested
+        let viewportHeight: Float = c131BorderStripProbeRequested
+            ? 160 : c131OverflowClipProbeRequested
             ? 240 : c122AbsoluteBlockProbeRequested
             || c123FixedPositionProbeRequested
             || c1122GridAutoPlacementProbeRequested
@@ -1582,7 +1685,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         log("SPINON_C0410_ENVIRONMENT \(environment ?? "")")
 
         var result: String? = nil
-        if c131OverflowClipProbeRequested {
+        if c131BorderStripProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuC13_1OverflowClipBorderFixture(handle)
+        } else if c131OverflowClipProbeRequested {
             result = SpinonRunner.evalRuntimeGpuC13_1OverflowClipFixture(handle)
         } else if c1133GridTemplateAreasProbeRequested {
             result = SpinonRunner.evalRuntimeGpuC11_3_3GridTemplateAreasFixture(
@@ -1737,7 +1842,14 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 return
             }
         }
-        if c131OverflowClipProbeRequested {
+        if c131BorderStripProbeRequested {
+            let report = result ?? "status=-1 missing-report"
+            log("SPINON_C131_BORDER_EVAL_RUN \(runtimeStatusSummary(report))")
+            guard logC131BorderFixtureReport(report) else {
+                postStatus("실패 · C13.1 border-strip frame·hit-test 검증 결과 불일치")
+                return
+            }
+        } else if c131OverflowClipProbeRequested {
             let report = result ?? "status=-1 missing-report"
             log("SPINON_C131_EVAL_RUN \(runtimeStatusSummary(report))")
             guard logC131FixtureReport(report) else {

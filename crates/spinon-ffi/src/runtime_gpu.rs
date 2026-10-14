@@ -36,6 +36,10 @@ const ERR_STALE: i32 = -12;
 const C13_CHROME_HIT_TEST_ORACLE: &str = include_str!(
     "../../../spec/internal/evidence/c13-1-overflow-clip-android-avd-2026-10-14/chrome155-runtime-observation.json"
 );
+#[cfg(feature = "c13-1-overflow-clip-fixture-test")]
+const C13_BORDER_HIT_TEST_ORACLE: &str = include_str!(
+    "../../../spec/internal/evidence/c13-1-overflow-clip-paint-hit-border-2026-10-14/oracle-fixture-observation.json"
+);
 #[repr(C)]
 pub struct SpinonRuntimeGpuHost {
     _private: [u8; 0],
@@ -47,6 +51,8 @@ struct RuntimeGpuHost {
     include_paint_order_report: bool,
     #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
     include_c13_1_hit_test_report: bool,
+    #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
+    include_c13_1_border_hit_test_report: bool,
     #[cfg(any(
         feature = "c12-4-metal-surface-readback-test",
         feature = "c11-grid-metal-surface-pixels-test"
@@ -83,6 +89,8 @@ impl RuntimeGpuHost {
             include_paint_order_report: false,
             #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
             include_c13_1_hit_test_report: false,
+            #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
+            include_c13_1_border_hit_test_report: false,
             #[cfg(any(
                 feature = "c12-4-metal-surface-readback-test",
                 feature = "c11-grid-metal-surface-pixels-test"
@@ -110,6 +118,7 @@ impl RuntimeGpuHost {
         layout_timeout_millis: u64,
         include_node_frame_report: bool,
         _include_c13_1_hit_test_report: bool,
+        _include_c13_1_border_hit_test_report: bool,
     ) -> Result<String, (i32, String)> {
         let snapshot = self
             .session
@@ -208,6 +217,10 @@ impl RuntimeGpuHost {
         #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
         let hit_test_report = if _include_c13_1_hit_test_report {
             let samples = c13_1_hit_test_samples_json(&scene, &completed.frames)
+                .map_err(|error| (ERR_LAYOUT, error))?;
+            format!(" hit_test_samples_json={samples}")
+        } else if _include_c13_1_border_hit_test_report {
+            let samples = c13_1_border_hit_test_samples_json(&scene, &completed.frames)
                 .map_err(|error| (ERR_LAYOUT, error))?;
             format!(" hit_test_samples_json={samples}")
         } else {
@@ -309,6 +322,7 @@ impl RuntimeGpuHost {
             layout_timeout_millis,
             self.include_node_frame_report,
             false,
+            false,
         )?;
         Ok(format!("environment_revision={} {ready}", revision.get()))
     }
@@ -340,13 +354,18 @@ impl RuntimeGpuHost {
         let response = self.session.eval(source, TaskPriority::UserVisible);
         #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
         let include_c13_1_hit_test_report = self.include_c13_1_hit_test_report;
+        #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
+        let include_c13_1_border_hit_test_report = self.include_c13_1_border_hit_test_report;
         #[cfg(not(feature = "c13-1-overflow-clip-fixture-test"))]
         let include_c13_1_hit_test_report = false;
+        #[cfg(not(feature = "c13-1-overflow-clip-fixture-test"))]
+        let include_c13_1_border_hit_test_report = false;
         let ready = self.wait_and_publish(
             sequence,
             layout_timeout_millis,
             include_node_frame_report,
             include_c13_1_hit_test_report,
+            include_c13_1_border_hit_test_report,
         );
         match (response.status, ready) {
             (0, Ok(ready)) => Ok(format!("{} {ready}", response.report)),
@@ -446,6 +465,86 @@ fn c13_1_hit_test_samples_json(
     }
     serde_json::to_string(&observations)
         .map_err(|error| format!("C13.1 hit-test sample JSON 변환 실패: {error}"))
+}
+
+#[cfg(feature = "c13-1-overflow-clip-fixture-test")]
+fn c13_1_border_hit_test_samples_json(
+    scene: &RuntimeRenderSnapshot,
+    frames: &[RuntimeLayoutFrame],
+) -> Result<String, String> {
+    const EXPECTED_FRAME_IDS: [&str; 5] = [
+        "root",
+        "static-clip",
+        "static-target",
+        "positioned-clip",
+        "positioned-target",
+    ];
+
+    let oracle: serde_json::Value = serde_json::from_str(C13_BORDER_HIT_TEST_ORACLE)
+        .map_err(|error| format!("C13.1 border Chrome oracle JSON 읽기 실패: {error}"))?;
+    if !oracle["browser"]["userAgent"]
+        .as_str()
+        .is_some_and(|user_agent| user_agent.contains("HeadlessChrome/155.0.0.0"))
+    {
+        return Err("C13.1 border oracle Chrome version이 고정값과 다릅니다".to_owned());
+    }
+    if frames.len() != EXPECTED_FRAME_IDS.len() || scene.boxes().len() != EXPECTED_FRAME_IDS.len() {
+        return Err(format!(
+            "C13.1 border fixture frame 수가 다릅니다: frames={} boxes={}",
+            frames.len(),
+            scene.boxes().len()
+        ));
+    }
+    let expected_samples = oracle["samples"]
+        .as_array()
+        .filter(|samples| samples.len() == 6)
+        .ok_or_else(|| "C13.1 border oracle는 고정 표본 6개여야 합니다".to_owned())?;
+    let mut observations = Vec::with_capacity(expected_samples.len());
+    for sample in expected_samples {
+        let sample_id = sample["id"]
+            .as_str()
+            .ok_or_else(|| "C13.1 border sample ID가 없습니다".to_owned())?;
+        let x = sample["xCssPx"]
+            .as_f64()
+            .ok_or_else(|| format!("C13.1 border sample {sample_id} x가 없습니다"))?
+            as f32;
+        let y = sample["yCssPx"]
+            .as_f64()
+            .ok_or_else(|| format!("C13.1 border sample {sample_id} y가 없습니다"))?
+            as f32;
+        let expected_element_id = sample["expectedElementId"]
+            .as_str()
+            .ok_or_else(|| format!("C13.1 border sample {sample_id} target가 없습니다"))?;
+        if sample["hitMatches"] != true || sample["actualElementId"] != expected_element_id {
+            return Err(format!(
+                "C13.1 border Chrome oracle sample {sample_id} 자체가 일치하지 않습니다"
+            ));
+        }
+        let expected_node_index = EXPECTED_FRAME_IDS
+            .iter()
+            .position(|id| *id == expected_element_id)
+            .ok_or_else(|| format!("C13.1 border sample {sample_id} target ID가 알 수 없습니다"))?;
+        let actual_node_index = scene.hit_test_css_point(x, y).and_then(|hit| {
+            frames
+                .iter()
+                .position(|frame| frame.node_id == hit.node_id().get())
+        });
+        if actual_node_index != Some(expected_node_index) {
+            return Err(format!(
+                "C13.1 border sample {sample_id} returned node index {actual_node_index:?}, expected {expected_node_index}"
+            ));
+        }
+        observations.push(serde_json::json!({
+            "id": sample_id,
+            "xCssPx": x,
+            "yCssPx": y,
+            "elementId": expected_element_id,
+            "nodeIndex": actual_node_index,
+            "status": "matched",
+        }));
+    }
+    serde_json::to_string(&observations)
+        .map_err(|error| format!("C13.1 border sample JSON 변환 실패: {error}"))
 }
 
 fn lock<T>(mutex: &Mutex<T>) -> MutexGuard<'_, T> {

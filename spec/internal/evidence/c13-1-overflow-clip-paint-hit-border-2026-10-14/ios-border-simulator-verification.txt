@@ -1,0 +1,24 @@
+environment=Apple iPhone 17 Pro Simulator / iOS 26.2 / UDID ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D
+route=--spinon-c131-overflow-clip-border
+build=BUILD SUCCEEDED; c04_runtime_gpu=1; c13_1_overflow_clip_fixture=1
+launch=dev.spinon.bootstrap PID 20788
+runtime=status=0 layout=ready boxes=5 generation=1 document_revision=25 environment_revision=0
+frame[0]=node=1,x=0,y=0,width=380,height=120
+frame[1]=node=2,x=10,y=10,width=120,height=96
+frame[2]=node=3,x=24,y=24,width=140,height=120
+frame[3]=node=4,x=200,y=10,width=120,height=96
+frame[4]=node=5,x=214,y=24,width=140,height=120
+geometry=status=ok frames=5
+hit[0]=static-inside-clip (125,40) => static-target / matched
+hit[1]=static-border-strip (128,40) => static-clip / matched
+hit[2]=static-outside-border (131,40) => root / matched
+hit[3]=positioned-inside-clip (315,40) => positioned-target / matched
+hit[4]=positioned-border-strip (318,40) => positioned-target / matched
+hit[5]=positioned-outside-border (321,40) => root / matched
+hit-summary=status=ok matched=6 total=6 ids=fixed
+fixture-summary=status=ok boxes=5 frames=5 hit_samples=6 hit_matches=6
+existing-route-regression=status=ok boxes=13 frames=13 hit_samples=15 hit_matches=15
+route-conflict-negative-control=border+existing-route rejected before host creation
+screen=ios-border-simulator.png; 1206x2622; sha256=9888f12ab5cd6ae4a7ad189a1241a378a00120fc6b32c277fdbe45ae87f43379
+cleanup=app process terminated; Simulator remains booted; no physical device connected
+limit=Metal surface submission/simulator screen only; no drawable readback, compositor/scanout, Android app route, or DOM event dispatch
