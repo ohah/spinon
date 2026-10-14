@@ -4,6 +4,8 @@
 
 이 디렉터리는 구현 전 Chrome 155 oracle와 표면 검증 계획만 담는다. Android PixelCopy와 iOS Metal drawable 표본은 아직 실행하지 않았다. 이 계획은 C13.2 내부 fixture evidence를 보강하며 제품 CSS 지원 완료를 뜻하지 않는다.
 
+계획 PR [#175](https://github.com/ohah/spinon/pull/175)의 Chrome oracle image embed는 게시 후 agent-browser에서 400×240으로 로드·표시됨을 확인했다.
+
 ## Chrome oracle
 
 - Chrome for Testing 155.0.8059.40, revision `cfaadc5a132d78e1828635aa8405a499f3e14864`; agent-browser 0.31.1, macOS 26.5.1.

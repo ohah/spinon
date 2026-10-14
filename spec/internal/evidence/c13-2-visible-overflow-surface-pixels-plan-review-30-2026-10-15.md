@@ -35,7 +35,7 @@
 | 27 | comparator accepts the red color at an in-border coordinate. | a coordinate mutation into parent is explicitly a negative control; border containment is rechecked. **PASS** |
 | 28 | expected mismatch is made to fail by another unrelated assertion. | expected-channel mutation must report the exact escaped sample mismatch before summary failure. **PASS** |
 | 29 | docs site introduces new local binary links while existing build has dead-link findings. | plan README names evidence files inline; it adds no Markdown link to PNG/log/JSON. **PASS** |
-| 30 | PR review accepts broken screenshot embed or treats Chrome oracle as app screenshot. | PR body must label and embed the Chrome reference as oracle, state it is not a simulator result, then verify rendered image after PR creation. **PENDING POST-PUBLISH** |
+| 30 | PR review accepts broken screenshot embed or treats Chrome oracle as app screenshot. | PR #175 embeds the Chrome reference as a labeled oracle and states it is not an app screen. agent-browser loaded the published PR page; the image is visible with `naturalWidth=400`, `naturalHeight=240`, `complete=true`, and its `currentSrc` uses commit `b23a4089eff04ffd164265e3d1b9526bb2954e8b`. **PASS** |
 
 ## 통합 경계
 
