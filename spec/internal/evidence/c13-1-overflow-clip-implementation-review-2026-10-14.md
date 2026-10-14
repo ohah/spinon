@@ -21,7 +21,7 @@
 | 13 | absolute child가 containing block 바깥 clip에 잘림 | `positioned_owners`가 현재 clip ancestor 안에 있는지 판정한다. `absolute_descendant_escapes_static_clip_when_its_containing_block_is_outside`와 PixelCopy `positioned-escape`가 통과했다. |
 | 14 | fixed child가 element clip에 잘못 묶임 | 현재 C12 fixed profile은 viewport containing block만 만들므로 element clip lineage에서 제외한다. transform/contain이 containing block을 만드는 경우는 author allowlist가 거부하며 별도 교차 검증은 남아 있다. |
 | 15 | paint clip과 hit-test clip이 같은 경계로 강제됨 | `RuntimeRenderBox`에 두 clip을 분리 저장하고 `.with_hit_test_clip()`으로 차이를 표현한다. 두 경계가 다른 runtime box 테스트가 통과했다. |
-| 16 | hit-test 경계점, 음수점, viewport 밖 좌표가 target을 반환 | half-open `[min,max)` 좌표, frame, viewport를 모두 확인한다. x/y 경계와 음수 point 회귀 테스트가 통과했다. DOM `elementFromPoint()`와 runtime query의 전체 matrix 비교는 남아 있다. |
+| 16 | hit-test 경계점, 음수점, viewport 밖 좌표가 target을 반환 | half-open `[min,max)` 좌표, frame, viewport를 모두 확인한다. x/y 경계와 음수 point 회귀 테스트가 통과했다. agent-browser Chrome 155 `elementFromPoint()` 11개 고정 좌표와 runtime query 반환 node를 비교해 11/11 일치했다. 전체 matrix와 DOM event dispatch는 남아 있다. 스타일 원본과 다른 fixture drift도 실패하도록 Rust 회귀가 공유 JS source의 node·parent·declaration을 대조한다. |
 | 17 | WGPU가 hit clip을 paint에 쓰거나 빈 quad를 그려 냄 | vertex 생성은 paint clip만 frame에 교차하고 폭/높이가 0 이하인 결과를 건너뛴다. clip 교차 vertex 테스트와 PixelCopy paint controls가 통과했다. |
 | 18 | clip lineage 예약 실패 뒤 partial snapshot을 반환하거나 재시도 상태가 오염됨 | `overflow_clip_ancestry_reservation_failure_returns_error_and_recovers_on_same_reserve`가 예약 실패의 stage를 확인하고 같은 reserve의 다음 snapshot 생성이 baseline과 같음을 확인했다. 실제 앱 worker에서 실패 후 새 요청 복구는 아직 입증하지 않았다. |
 | 19 | stale revision 또는 잘못된 node set이 clip 계산을 우회함 | 기존 document/style/environment revision 및 node-set admission을 clip 생성보다 앞에서 수행하고 snapshot을 마지막에 만든다. 관련 기존 stale/missing-node 실패 테스트와 workspace suite 통과. |
@@ -31,4 +31,4 @@
 
 PixelCopy의 첫 y축 바깥 표본은 `y=95`에서 border 장식 색을 기대해 현재 background-only renderer 범위를 벗어났다. 표본을 clip 바깥의 root 배경인 `y=97`로 옮겨 장식 미구현과 clip 누수를 구분했고 최종 11/11 exact를 다시 저장했다. 내부 계약의 “공개 API 아님” 표현은 Rust crate 간 공개 타입 전달과 혼동될 수 있어 “제품 CSS 지원 선언 아님”으로 바꿨다.
 
-전체 C13.1 matrix, runtime worker의 같은 세션 복구, browser/runtime hit-test 대조, `clip` 대 `hidden`/`flow-root` float, iOS Simulator, WPT 분류, border radius/transform 교차 사례는 여전히 미완료다. AVD는 ANGLE/SwiftShader software renderer이며 이 결과는 실기기 또는 compositor scanout 근거가 아니다.
+전체 C13.1 matrix, runtime worker의 같은 세션 복구, clip 밖 draw와 hit/event negative-control breadth, `clip` 대 `hidden`/`flow-root` float, iOS Simulator, WPT 분류, border radius/transform 교차 사례는 여전히 미완료다. AVD는 ANGLE/SwiftShader software renderer이며 이 결과는 실기기 또는 compositor scanout 근거가 아니다.

@@ -21,6 +21,8 @@ use super::{
 use crate::CurrentLayoutInputs;
 
 const HTML: &str = "http://www.w3.org/1999/xhtml";
+const C13_OVERFLOW_CLIP_FIXTURE_JS: &str =
+    include_str!("../../../../tests/fixtures/css/c13/runtime-overflow-clip.js");
 
 struct RuntimeInputs {
     document: HostDocumentSnapshot,
@@ -119,6 +121,15 @@ fn overflow_runtime_inputs(
     styles: &[&str],
     parents: &[Option<usize>],
 ) -> (RuntimeInputs, Vec<NodeId>) {
+    overflow_runtime_inputs_with_viewport(styles, parents, 200.0, 160.0)
+}
+
+fn overflow_runtime_inputs_with_viewport(
+    styles: &[&str],
+    parents: &[Option<usize>],
+    width_css_px: f32,
+    height_css_px: f32,
+) -> (RuntimeInputs, Vec<NodeId>) {
     assert_eq!(styles.len(), parents.len());
     let mut document = HostDocument::new().unwrap();
     let handles = styles
@@ -150,8 +161,8 @@ fn overflow_runtime_inputs(
     let document = document.snapshot();
     let root = handles[0];
     let viewport = CssViewport {
-        width_css_px: 200.0,
-        height_css_px: 160.0,
+        width_css_px,
+        height_css_px,
         device_scale_factor: 1.0,
         environment_revision: Default::default(),
         media_environment: CssMediaEnvironment::MOBILE,
@@ -446,6 +457,131 @@ fn absolute_descendant_escapes_static_clip_when_its_containing_block_is_outside(
         scene.hit_test_css_point(110.0, 55.0).unwrap().node_id(),
         nodes[3]
     );
+}
+
+#[test]
+fn runtime_hit_test_matches_agent_browser_chrome_155_element_from_point_samples() {
+    let ids = [
+        "c131-root",
+        "c131-visible",
+        "c131-visible-target",
+        "c131-clip",
+        "c131-clip-target",
+        "c131-margin",
+        "c131-margin-target",
+        "c131-nested-outer",
+        "c131-nested-inner",
+        "c131-nested-target",
+        "c131-escape-outer",
+        "c131-escape-static-clip",
+        "c131-escape-target",
+    ];
+    let fixture_variables = [
+        "root",
+        "visible",
+        "visibleTarget",
+        "clipped",
+        "clipTarget",
+        "margin",
+        "marginTarget",
+        "nested",
+        "inner",
+        "nestedTarget",
+        "escape",
+        "staticClip",
+        "escapeTarget",
+    ];
+    let styles = [
+        "display:flow-root;position:relative;box-sizing:border-box;width:300px;height:100px;background-color:#101827",
+        "display:block;margin-left:10px;margin-top:6px;box-sizing:border-box;width:90px;height:44px;padding:6px;border:3px solid #f0c674;background-color:#344256",
+        "width:130px;height:70px;background-color:#57a6d9",
+        "display:block;margin-left:105px;margin-top:-44px;box-sizing:border-box;width:90px;height:44px;padding:6px;border:3px solid #f0c674;overflow:clip;background-color:#344256",
+        "width:130px;height:70px;background-color:#57a6d9",
+        "display:block;margin-left:200px;margin-top:-44px;box-sizing:border-box;width:90px;height:44px;padding:6px;border:3px solid #f0c674;overflow:clip;overflow-clip-margin:padding-box 8px;background-color:#344256",
+        "width:130px;height:70px;background-color:#57a6d9",
+        "display:block;margin-left:10px;margin-top:12px;box-sizing:border-box;width:120px;height:34px;padding:4px;border:2px solid #f0c674;overflow:clip;background-color:#344256",
+        "display:block;margin-left:21px;box-sizing:border-box;width:50px;height:20px;padding:2px;border:1px solid #8a45ad;overflow-x:clip;overflow-y:visible;background-color:#f4ecf7",
+        "width:90px;height:28px;background-color:#e3544e",
+        "display:block;margin-left:150px;margin-top:-34px;box-sizing:border-box;width:140px;height:34px;padding:4px;border:2px solid #f0c674;overflow:clip;background-color:#344256",
+        "position:static;box-sizing:border-box;width:45px;height:24px;padding:2px;border:1px solid #8a45ad;overflow-x:clip;overflow-y:visible;background-color:#f4ecf7",
+        "position:absolute;left:222px;top:68px;width:50px;height:22px;background-color:#e3544e",
+    ];
+    let parents = [
+        None,
+        Some(0),
+        Some(1),
+        Some(0),
+        Some(3),
+        Some(0),
+        Some(5),
+        Some(0),
+        Some(7),
+        Some(8),
+        Some(0),
+        Some(10),
+        Some(11),
+    ];
+    let fixture_parents = [
+        "document.body || document",
+        "root",
+        "visible",
+        "root",
+        "clipped",
+        "root",
+        "margin",
+        "root",
+        "nested",
+        "inner",
+        "root",
+        "escape",
+        "staticClip",
+    ];
+    for (index, ((id, style), fixture_parent)) in
+        ids.iter().zip(styles).zip(fixture_parents).enumerate()
+    {
+        let runtime_parent = parents[index]
+            .map(|parent| fixture_variables[parent])
+            .unwrap_or("document.body || document");
+        assert_eq!(
+            runtime_parent, fixture_parent,
+            "runtime parent for {id} must match the shared fixture"
+        );
+        let fixture_call = format!("c131Node(\n  {fixture_parent},\n  '{id}',\n  '{style}',");
+        assert!(
+            C13_OVERFLOW_CLIP_FIXTURE_JS.contains(&fixture_call),
+            "runtime CSS and parent for {id} must match the shared JS fixture"
+        );
+    }
+    let (input, nodes) = overflow_runtime_inputs_with_viewport(&styles, &parents, 320.0, 120.0);
+    let scene = build_runtime_render_snapshot_with_reserve(
+        &input.document,
+        input.root,
+        &input.output,
+        input.current,
+        &mut SystemReserve,
+    )
+    .unwrap();
+    let samples = [
+        ("visible-target", 102.0, 20.0, 2),
+        ("clip-inside", 180.0, 20.0, 4),
+        ("clip-outside", 198.0, 20.0, 0),
+        ("clip-margin-expanded", 291.0, 20.0, 6),
+        ("clip-margin-outside", 297.0, 20.0, 0),
+        ("nested-clip-inside", 84.0, 76.0, 9),
+        ("nested-clip-outside", 95.0, 76.0, 7),
+        ("nested-y-visible", 45.0, 92.0, 9),
+        ("nested-y-clip-outside", 45.0, 97.0, 0),
+        ("positioned-escape", 230.0, 76.0, 12),
+        ("outer-clip-outside", 295.0, 76.0, 0),
+    ];
+
+    for (sample, x, y, expected_node_index) in samples {
+        assert_eq!(
+            scene.hit_test_css_point(x, y).unwrap().node_id(),
+            nodes[expected_node_index],
+            "Chrome 155 elementFromPoint sample {sample} at ({x}, {y})"
+        );
+    }
 }
 
 #[test]
