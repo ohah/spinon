@@ -11,3 +11,9 @@
 - iOS Simulator 증거만 포함한다. 실기기, Metal drawable pixel readback, DOM event dispatch, WPT 및 전체 C13.1 지원을 뜻하지 않는다.
 
 ![iPhone 17 Pro iOS 26.2 Simulator에서 C13.1 full hit identity grid를 실행한 화면](./run-1-ios-simulator.png)
+
+## PR 병합 결과 · 2026-10-15
+
+- 구현 PR [#166](https://github.com/ohah/spinon/pull/166)은 Rebase and merge로 병합됐다. GitHub mergeCommit OID와 원격 main HEAD는 894d01089b2f1c0f8a880855d1ce69b7f74912bf다.
+- merge 후 agent-browser에서 PR 본문 screenshot을 다시 열어 complete=true와 1206×2622 natural dimensions를 확인했다.
+- [병합 상태 동기화 PR의 30개 검토](./merge-status-review-30.md)는 상태 대장, 내부 인덱스, 원래 PR review 시점, image 지속성 및 완료 범위를 대조한다.

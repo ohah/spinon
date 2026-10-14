@@ -42,3 +42,7 @@
 - agent-browser 결과: PR 본문 image complete=true, natural dimensions 1206×2622
 - 검토 당시 GitHub 상태: PR 열림, MERGEABLE, merge state CLEAN. branch main 보호 응답에 required status checks 항목이 없고 gh pr checks는 “no checks reported”를 반환했다.
 - 프로젝트 규칙에 맞춰 Rebase and merge를 사용한다. 최종 병합 commit은 GitHub PR metadata와 상태 대장에서 확인한다.
+
+## 병합 후 확인
+
+PR #166은 2026-10-15 Rebase and merge로 병합됐다. GitHub mergeCommit OID와 origin/main HEAD는 894d01089b2f1c0f8a880855d1ce69b7f74912bf다. PR 본문 screenshot은 merge 후 agent-browser에서도 로드되고 1206×2622 natural dimensions를 유지한다. 상태 대장 및 내부 인덱스 반영에 대한 별도 30개 검토는 [병합 상태 동기화 검토](./merge-status-review-30.md)에 있다.

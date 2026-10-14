@@ -58,3 +58,8 @@ Android app 재검증, iOS Metal drawable pixel readback, Android 788×263 전�
 4. iOS Simulator에서 세 번 새 실행을 수행하고 screenshot/log/build 근거를 저장한다.
 5. 계획 검토와 겹치지 않는 신규 구현 실패 관점 20개와 PR 변경 관점 30개를 별도로 수행한다.
 6. 최신 `main`, required CI, mergeability를 확인한 뒤 Rebase and merge한다.
+
+## PR 병합 결과 · 2026-10-15
+
+- 구현 PR [#166](https://github.com/ohah/spinon/pull/166)은 Rebase and merge로 main에 병합됐다. GitHub mergeCommit OID와 origin/main은 894d01089b2f1c0f8a880855d1ce69b7f74912bf다.
+- [병합 상태 동기화 검토 30개](../spec/internal/evidence/c13-1-ios-app-hit-identity-grid-2026-10-15/c13-1-ios-hit-grid-20261014T154338634Z-f1835c60/merge-status-review-30.md)에서 PR 상태, 선형 이력, 화면 링크, 상태 대장과 미완료 범위를 대조했다.
