@@ -1,0 +1,16 @@
+$ adb devices -l
+emulator-5554 device product:sdk_gphone16k_arm64 model:sdk_gphone16k_arm64 device:emu64a16k
+
+$ adb -s emulator-5554 shell getprop ro.build.version.sdk
+37
+
+$ adb -s emulator-5554 shell getprop ro.product.cpu.abi
+arm64-v8a
+
+$ adb -s emulator-5554 shell getprop ro.kernel.qemu
+1
+
+$ adb -s emulator-5554 shell getprop sys.boot_completed
+1
+
+최종 검증 뒤 dev.spinon.bootstrap 프로세스는 종료되어 pidof 결과가 비어 있다.

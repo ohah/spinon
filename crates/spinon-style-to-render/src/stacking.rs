@@ -3,8 +3,8 @@ use std::collections::{BTreeMap, BTreeSet};
 use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, HostParent, NodeId};
 use spinon_layout::LayoutSourceRevision;
 use spinon_render::{
-    CssClip, CssRect, CssSize, OpaqueCssSrgb, RuntimePaint, RuntimeRenderBox, RuntimeRenderKey,
-    RuntimeRenderSnapshot,
+    CssClip, CssRect, CssSize, OpaqueCssSrgb, RuntimeBorder, RuntimeBorderSide, RuntimePaint,
+    RuntimeRenderBox, RuntimeRenderKey, RuntimeRenderSnapshot,
 };
 use spinon_style::{
     ComputedBackgroundPaint, ComputedCssPosition, ComputedCssVisibility, ComputedCssZIndex,
@@ -29,7 +29,10 @@ mod ordering;
 mod tree;
 mod types;
 
-use ordering::{add_context, add_node, flatten_contexts, flatten_hit_test_order};
+use ordering::{
+    add_context, add_node, flatten_contexts, flatten_hit_test_order,
+    paint_auto_positioned_clip_subtrees,
+};
 use overflow_clip::{runtime_clips_for_node, validate_computed_overflow_values};
 use reserve::{FallibleReserve, SystemReserve};
 use tree::{child_handles, ordered_children, root_display_is_flex, validate_runtime_frame};
@@ -227,13 +230,22 @@ fn build_runtime_render_snapshot_with_reserve<R: FallibleReserve>(
 
     validate_style_node_set(&document_nodes, &styles_by_node)?;
     validate_layout_node_set(&document_nodes, &output.layout.frames)?;
-    let paint_nodes = flatten_contexts(
+    let mut paint_nodes = flatten_contexts(
         document_nodes.len(),
         visible_node_count,
         &mut contexts,
         output,
         reserve,
     )?;
+    if styles.profile == ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1 {
+        paint_auto_positioned_clip_subtrees(
+            &document_nodes,
+            &parent_by_node,
+            &mut paint_nodes,
+            &styles_by_node,
+            reserve,
+        )?;
+    }
     let hit_test_order_by_node =
         if styles.profile == ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1 {
             let mut hit_render_nodes = Vec::new();
@@ -291,6 +303,27 @@ fn build_runtime_render_snapshot_with_reserve<R: FallibleReserve>(
             }
             None => return Err(StyleRenderError::MissingBackgroundColor(node_id)),
         };
+        let border = match style.layout_border_paint {
+            Some(border_paint) => RuntimeBorder::new(
+                RuntimeBorderSide::new(
+                    style.layout_border.top,
+                    runtime_border_paint(border_paint.top),
+                )?,
+                RuntimeBorderSide::new(
+                    style.layout_border.right,
+                    runtime_border_paint(border_paint.right),
+                )?,
+                RuntimeBorderSide::new(
+                    style.layout_border.bottom,
+                    runtime_border_paint(border_paint.bottom),
+                )?,
+                RuntimeBorderSide::new(
+                    style.layout_border.left,
+                    runtime_border_paint(border_paint.left),
+                )?,
+            ),
+            None => RuntimeBorder::none(),
+        };
         let paint_order =
             u32::try_from(boxes.len()).map_err(|_| StyleRenderError::PaintOrderOverflow)?;
         let hit_test_order = match &hit_test_order_by_node {
@@ -308,6 +341,7 @@ fn build_runtime_render_snapshot_with_reserve<R: FallibleReserve>(
             };
         boxes.push(
             RuntimeRenderBox::new(node_id, frame_css_px, paint, paint_order)
+                .with_border(border)
                 .with_hit_test_order(hit_test_order)
                 .with_clip(paint_clip)
                 .with_hit_test_clip(hit_test_clip),
@@ -336,6 +370,15 @@ fn build_runtime_render_snapshot_with_reserve<R: FallibleReserve>(
     )
     .with_intrinsic_size_revision(current.revision.intrinsic_size());
     RuntimeRenderSnapshot::new(key, viewport_css_px, boxes).map_err(Into::into)
+}
+
+fn runtime_border_paint(paint: ComputedBackgroundPaint) -> RuntimePaint {
+    match paint {
+        ComputedBackgroundPaint::Transparent => RuntimePaint::None,
+        ComputedBackgroundPaint::Opaque(color) => {
+            RuntimePaint::Opaque(OpaqueCssSrgb::new(color.red, color.green, color.blue))
+        }
+    }
 }
 
 fn validate_computed_stacking_values(

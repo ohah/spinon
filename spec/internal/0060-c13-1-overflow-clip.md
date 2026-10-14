@@ -7,7 +7,7 @@
 
 이 계약은 `RuntimeBlockFlexOverflowClipV1` 계산 profile에서 Stylo computed overflow 값을 layout adapter, immutable runtime render snapshot, WGPU 사각 geometry와 hit-test clip 입력으로 전달하는 내부 경계를 정한다. `CssClip` 같은 Rust 전달 타입이 crate 사이에서 공개되어 있어도 제품 CSS 지원 선언이나 C13 상위 기능을 뜻하지 않는다.
 
-첫 fixture는 HTML block·flow-root·position subset, 물리 horizontal-tb/LTR, 불투명 배경, 사각 clip만 포함한다. runtime scene에는 13개 요소가 있고 다음 관찰을 분리한다.
+기존 13-node fixture는 HTML block·flow-root·position subset, 물리 horizontal-tb/LTR, 불투명 배경, 사각 clip만 포함한다. 별도 5-node fixture는 같은 제한 profile에서 불투명 단색 `solid` border-strip paint를 대조한다. 두 fixture는 다음 관찰을 분리한다.
 
 - `overflow-x`와 `overflow-y`의 typed computed 값 및 mixed-axis 정규화
 - `visible`의 자식 paint 연장과 `clip`의 축별 padding edge
@@ -15,13 +15,14 @@
 - 중첩 ancestor clip의 축별 교집합
 - positioned containing block이 clip ancestor 바깥인 absolute 자식의 ancestor 예외
 - paint clip과 hit-test clip의 서로 다른 결과
+- static/absolute clip의 border-strip 색상과 paint/hit target 차이
 
 ## 내부 자료 흐름
 
 1. `RuntimeBlockFlexOverflowClipV1` cascade는 Stylo의 `Overflow` 축과 `overflow-clip-margin`을 typed 값으로 snapshot에 복사한다. profile 밖의 CSS 문법은 이 입력 계약에 포함하지 않으며, 지원하지 않는 author declaration이나 stylesheet 진단은 runtime scene 생성 전에 실패한다.
 2. `StyleLayoutOutput.layout.used_box_edges`는 Taffy가 계산한 네 면 padding/border used edge를 frame에 연결한다. clip edge는 이 used edge와 CSS px frame으로 구한다.
 3. 각 render box의 DOM lineage를 자식부터 root까지 순회한다. ancestor clip ancestry는 bounded `try_reserve` 경계를 통과해야 한다. absolute descendant는 그 positioned containing block이 해당 clip ancestor 바깥이면 그 ancestor clip에서 빠진다. 현재 C12 profile의 fixed node도 element clip 대상이 아니다.
-4. `RuntimeRenderBox`는 `paint_order`와 `hit_test_order`, `paint_clip_css_px`와 `hit_test_clip_css_px`를 각각 별도로 보존한다. C13.1 overflow profile만 DOM parent/child target 순서를 계산하며 다른 profile은 `hit_test_order == paint_order`를 유지한다. 기존 `.with_clip()`은 두 clip을 함께 설정하며 `.with_hit_test_clip()`은 hit-test 전용 값을 덮어쓴다. WGPU 사각형 clipping은 paint 순서·clip을 사용하고 runtime hit query는 hit-test 순서·clip을 사용한다. `RuntimeRenderSnapshot`은 두 순서가 각각 유효한 순열인지 확인한다.
+4. `RuntimeRenderBox`는 `paint_order`와 `hit_test_order`, `paint_clip_css_px`와 `hit_test_clip_css_px`를 각각 별도로 보존한다. C13.1 overflow profile만 DOM parent/child target 순서를 계산하며 다른 profile은 `hit_test_order == paint_order`를 유지한다. 기존 `.with_clip()`은 두 clip을 함께 설정하며 `.with_hit_test_clip()`은 hit-test 전용 값을 덮어쓴다. WGPU 배경 및 제한 border side quad는 paint 순서·clip을 사용하고 runtime hit query는 hit-test 순서·clip을 사용한다. `RuntimeRenderSnapshot`은 두 순서가 각각 유효한 순열인지 확인한다. 별도 border fixture는 opaque solid border만 표현하며 비단색 style과 부분 alpha 색은 거부한다.
 
 ## clip 계산
 
@@ -32,7 +33,7 @@
 | `clip`, positioned parent | 선택 visual box edge에서 offset만큼 바깥으로 확장한 사각 interval | 적용 | paint interval과 border-box의 합집합 interval |
 | `hidden`, `scroll`, `auto` | padding-box edge | 적용 효과 없음 | border-box interval |
 
-이 표의 hit-test 행은 고정 Chromium 155 fixture 관찰을 이 내부 profile이 표현하는 방법이다. static/absolute border-strip 차이는 [controlled six-point fixture](evidence/c13-1-overflow-clip-paint-hit-border-2026-10-14/README.md)에서 확인했다. positioned clip parent의 paint 순서는 유지하면서 target hit 우선순위를 분리한다. 이는 CSS painting 표준 요구나 전체 hit-test 표준 적합성을 뜻하지 않는다. `hidden`·`scroll`·`auto`는 이 단계에서 scroll container, scroll range, offset, scrollbar 또는 사용자 입력을 제공하지 않는다. 이 값의 clip paint 부분만 계산한다.
+이 표의 hit-test 행은 고정 Chromium 155 fixture 관찰을 이 내부 profile이 표현하는 방법이다. static/absolute border-strip 차이는 [controlled six-point fixture](evidence/c13-1-overflow-clip-paint-hit-border-2026-10-14/README.md)에서 확인했다. 해당 Chrome fixture에서는 positioned clip parent 배경이 단순 정적 in-flow descendant보다 먼저 paint되고 hit target은 별도 계산됐다. runtime은 auto `z-index` absolute/fixed clip parent의 descendant 전체가 static인 경우에 한해 부모를 그 subtree 앞에 배치한다. positioned 또는 z-index 후손이 있는 조합에는 이 재배치를 적용하지 않으며 별도 대조가 남아 있다. 이 제한 동작은 CSS painting 표준이나 전체 hit-test 표준 적합성을 뜻하지 않는다. `hidden`·`scroll`·`auto`는 이 단계에서 scroll container, scroll range, offset, scrollbar 또는 사용자 입력을 제공하지 않는다. 이 값의 clip paint 부분만 계산한다.
 
 축별 interval은 반열린 `[min, max)`이며, ancestor interval은 교집합으로 누적한다. `max < min`, 비유한 좌표, 누락된 frame/edge/style, 누락된 typed overflow 값은 partial snapshot 대신 구체 `StyleRenderError`로 거부한다. `overflow-clip-margin` offset은 유한한 0 이상 CSS px만 허용한다.
 
@@ -50,4 +51,4 @@ Chrome oracle은 agent-browser를 사용한다. 고정 15개 좌표의 document.
 
 float boundary 단계의 새 [구현 실패 관점 20개](evidence/c13-1-overflow-clip-float-boundary-implementation-review-2026-10-14.md)와 [PR 변경 관점 30개](evidence/c13-1-overflow-clip-float-boundary-pr-review-2026-10-14.md)는 기존 검토와 별도로 기록했다.
 
-border-strip app 확장의 신규 [구현 실패 관점 20개](evidence/c13-1-overflow-clip-border-simulator-implementation-review-2026-10-14.md)와 [PR 변경 관점 30개](evidence/c13-1-overflow-clip-border-simulator-pr-review-2026-10-14.md)는 전용 iOS Simulator route, 기존 route regression, feature-on/off archive controls를 대상으로 별도로 기록했다. Android app border 좌표, drawable readback, event dispatch와 WPT matrix는 남아 있다.
+border-strip app 확장의 iOS [구현 실패 관점 20개](evidence/c13-1-overflow-clip-border-simulator-implementation-review-2026-10-14.md)와 [PR 변경 관점 30개](evidence/c13-1-overflow-clip-border-simulator-pr-review-2026-10-14.md)는 iOS Simulator route 및 archive controls를 대상으로 기록했다. 뒤이어 [Android AVD border paint 근거](evidence/c13-1-overflow-clip-border-android-avd-2026-10-14/README.md)는 별도 route에서 5/5 frame, 6/6 hit query와 6/6 PixelCopy 색을 고정 Chrome과 대조했다. Android 실행은 API 37 ARM64 AVD의 ANGLE/SwiftShader software renderer로 제한하며 실기기나 hardware GPU 결과로 확대하지 않는다. 해당 Android delta의 신규 [구현 실패 관점 20개](evidence/c13-1-overflow-clip-border-android-avd-2026-10-14/implementation-review-20.md)와 [PR 변경 관점 30개](evidence/c13-1-overflow-clip-border-android-avd-2026-10-14/pr-delta-review-30.md)를 별도로 기록했다. event dispatch, 복합 stacking descendants, radius/다른 면 색 corner join, 전체 C13.1 사전 비교 matrix와 WPT 후보 분류는 남아 있다.

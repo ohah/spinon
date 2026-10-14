@@ -83,8 +83,13 @@ fn static_and_positioned_clip_border_strips_match_chrome_without_changing_paint_
         "positioned clip paint edge remains the padding box"
     );
     assert!(
-        positioned_target.paint_order() < positioned_clip.paint_order(),
-        "paint order keeps the parent border over the target"
+        positioned_clip.paint_order() < positioned_target.paint_order(),
+        "positioned parent background is painted before its in-flow child"
+    );
+    assert_eq!(positioned_clip.border().right().width_css_px(), 4.0);
+    assert_eq!(
+        positioned_clip.border().right().paint(),
+        spinon_render::RuntimePaint::Opaque(spinon_render::OpaqueCssSrgb::new(240, 198, 116))
     );
     assert!(
         positioned_target.hit_test_order() > positioned_clip.hit_test_order(),

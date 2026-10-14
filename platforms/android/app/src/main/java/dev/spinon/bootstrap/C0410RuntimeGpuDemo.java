@@ -225,6 +225,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native long nativeCreateC123FixedHost();
     private static native long nativeCreateC124StackingHost();
     private static native long nativeCreateC131OverflowClipHost();
+    private static native long nativeCreateC131OverflowClipBorderHost();
     private static native long nativeCreateC11GridHost();
     private static native long nativeCreateC1121GridPlacementHost();
     private static native long nativeCreateC1122GridAutoPlacementHost();
@@ -259,6 +260,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native byte[] nativeEvalC123FixedFixture(long host);
     private static native byte[] nativeEvalC124StackingFixture(long host);
     private static native byte[] nativeEvalC131OverflowClipFixture(long host);
+    private static native byte[] nativeEvalC131OverflowClipBorderFixture(long host);
     private static native byte[] nativeEvalC11GridFixture(long host);
     private static native byte[] nativeEvalC11GridSceneFixture(long host, int sceneIndex);
     private static native byte[] nativeEvalC1121GridPlacementFixture(
@@ -396,6 +398,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final String c11GridPixelMatrixConfigError;
     private final boolean c124RuntimeMatrixProbeRequested;
     private final boolean c131OverflowClipProbeRequested;
+    private final boolean c131BorderStripProbeRequested;
     private final boolean c124DepthSafetyProbeRequested;
     private final boolean c124SurfaceCaptureProbeRequested;
     private final String c124SurfaceCaseRequested;
@@ -433,6 +436,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private boolean c1121GridRuntimeSummaryEmitted;
     private boolean c124SurfaceCaptureStarted;
     private boolean c131OverflowClipSurfaceCaptureStarted;
+    private boolean c131BorderStripSurfaceCaptureStarted;
     private boolean c11GridSurfaceCaptureStarted;
     private List<C124SurfacePixelCapture.Sample> c124SurfaceSamples = List.of();
     private int c124SurfaceOriginXCssPx;
@@ -503,6 +507,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 .getBooleanExtra("spinon_c124_stacking_matrix", false);
         c131OverflowClipProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c131_overflow_clip", false);
+        c131BorderStripProbeRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c131_overflow_clip_border", false);
         c124DepthSafetyProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c124_depth_safety", false);
         c124SurfaceCaseRequested = activity.getIntent()
@@ -677,6 +683,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         blockFormattingProbeRequested = flowRootProbeRequested || marginCollapseProbeRequested
                 || activity.getIntent().getBooleanExtra("spinon_c091_block_formatting", false);
         fixedSizeCssFixtureRequested = c122AbsoluteBlockProbeRequested
+                || c131BorderStripProbeRequested
                 || c123FixedPositionProbeRequested
                 || c11GridFixtureRequested
                 || c124StackingProbeRequested
@@ -729,6 +736,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "SPINON · C11.2.2 Grid"
                 : c1121GridPlacementRequested
                 ? "SPINON · C11.2.1 Grid"
+                : c131BorderStripProbeRequested
+                ? "SPINON · C13.1 paint/hit border"
+                : c131OverflowClipProbeRequested
+                ? "SPINON · C13.1 overflow clip"
                 : c11GridFixtureRequested
                 ? "SPINON · C11.1 CSS Grid"
                 : c1035PositionedFlexProbeRequested
@@ -792,7 +803,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         addView(title, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 
         TextView description = new TextView(activity);
-        description.setText(c1133GridTemplateAreasRequested
+        description.setText(c131BorderStripProbeRequested
+                ? "static/absolute clip border-strip oracle → WGPU · 400×160 CSS px"
+                : c131OverflowClipProbeRequested
+                ? "overflow clip·clip margin·positioned escape → WGPU"
+                : c1133GridTemplateAreasRequested
                 ? "V8 Grid template area placement → Stylo → Taffy → WGPU · 320×240 CSS px"
                 : c1132GridNamedLinesRequested
                 ? "V8 named Grid line occurrence → Stylo → Taffy → WGPU · 320×240 CSS px"
@@ -877,7 +892,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
         surfaceView = new SurfaceView(activity);
         surfaceView.getHolder().addCallback(this);
-        surfaceView.setContentDescription(c1123GridAutoPlacementRequested
+        surfaceView.setContentDescription(c131BorderStripProbeRequested
+                ? "C13.1 paint/hit border-strip Chrome oracle WGPU 장면"
+                : c1123GridAutoPlacementRequested
                 ? "C11.2.3 dense·column Grid 자동 배치 결과"
                 : c1122GridAutoPlacementRequested
                 ? "C11.2.2 행 우선 Grid 자동 배치 결과"
@@ -938,8 +955,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : authorStylesheetsProbeRequested
                         ? "C04.11 Chromium stylesheet fixture의 WGPU 장면"
                 : "C04.10 Chromium fixture의 WGPU 장면");
-        int initialSurfaceWidth = fixedSizeCssFixtureRequested ? 320 : 301;
-        int initialSurfaceHeight = fixedSizeCssFixtureRequested ? 240 : 100;
+        int initialSurfaceWidth = c131BorderStripProbeRequested
+                ? 400 : fixedSizeCssFixtureRequested ? 320 : 301;
+        int initialSurfaceHeight = c131BorderStripProbeRequested
+                ? 160 : fixedSizeCssFixtureRequested ? 240 : 100;
         LayoutParams surfaceParams = new LayoutParams(
                 dp(initialSurfaceWidth, density), dp(initialSurfaceHeight, density));
         stage.addView(surfaceView, surfaceParams);
@@ -1054,6 +1073,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private void initializeRuntime() {
+        if (c131OverflowClipProbeRequested && c131BorderStripProbeRequested) {
+            Log.e(TAG, "SPINON_C131_ARGUMENT_ERROR conflicting=both-overflow-fixture-routes");
+            postStatus("실패 · C13.1 route는 하나만 선택해야 합니다");
+            return;
+        }
         if (!c11GridPixelMatrixConfigError.isEmpty()) {
             Log.e(TAG, (c1133GridTemplateAreasRequested ? "SPINON_C1133_GRID_PIXEL_MATRIX"
                     : c1132GridNamedLinesRequested ? "SPINON_C1132_GRID_PIXEL_MATRIX"
@@ -1080,6 +1104,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? nativeCreateC1121GridPlacementHost()
                 : c11GridFixtureRequested
                 ? nativeCreateC11GridHost()
+                : c131BorderStripProbeRequested
+                ? nativeCreateC131OverflowClipBorderHost()
                 : c131OverflowClipProbeRequested
                 ? nativeCreateC131OverflowClipHost()
                 : c124StackingProbeRequested
@@ -1107,12 +1133,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         final float heightCssPx;
         final boolean dark;
         synchronized (stateLock) {
-            widthCssPx = c1133GridTemplateAreasRequested
+            widthCssPx = c131BorderStripProbeRequested ? 400
+                    : c1133GridTemplateAreasRequested
                     || c1132GridNamedLinesRequested || c1131GridRepeatRequested ? 320
                     : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
                     || c1122GridAutoPlacementRequested || c1123GridAutoPlacementRequested
                     ? 360 : fixedSizeCssFixtureRequested ? 320 : cssViewportWidthLocked();
-            heightCssPx = c1133GridTemplateAreasRequested
+            heightCssPx = c131BorderStripProbeRequested ? 160
+                    : c1133GridTemplateAreasRequested
                     || c1132GridNamedLinesRequested || c1131GridRepeatRequested ? 240
                     : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
                     || c1122GridAutoPlacementRequested || c1123GridAutoPlacementRequested
@@ -1165,6 +1193,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         host, c1121GridSceneId, c1121GridRunId))
                 : c11GridFixtureRequested
                 ? decode(nativeEvalC11GridSceneFixture(host, c11GridSceneIndex))
+                : c131BorderStripProbeRequested
+                ? decode(nativeEvalC131OverflowClipBorderFixture(host))
                 : c131OverflowClipProbeRequested
                 ? decode(nativeEvalC131OverflowClipFixture(host))
                 : c124SurfaceCaptureProbeRequested
@@ -1394,6 +1424,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             postStatus("실패 · " + result);
             return;
         }
+        if (c131BorderStripProbeRequested && !logC131BorderFixtureReport(result)) {
+            postStatus("실패 · C13.1 border-strip frame·hit-test 결과 불일치");
+            return;
+        }
         if (c124DepthSafetyProbeRequested) {
             try {
                 c124FixtureNodeCount = Integer.parseInt(reportField(result, "document_nodes="));
@@ -1402,7 +1436,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 return;
             }
         }
-        Log.i(TAG, (c1133GridTemplateAreasRequested
+        Log.i(TAG, (c131BorderStripProbeRequested
+                ? "SPINON_C131_BORDER_EVAL_RUN " : c131OverflowClipProbeRequested
+                ? "SPINON_C131_EVAL_RUN " : c1133GridTemplateAreasRequested
                 ? "SPINON_C1133_GRID_EVAL run_id=" + c1133GridTemplateAreasRunId
                         + " scene_id=" + c1133GridTemplateAreasSceneId + " "
                 : c1132GridNamedLinesRequested
@@ -1837,6 +1873,200 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     }
                     postStatus("C12.4 surface pixel " + result.pixels.size() + "개 캡처 완료");
                 });
+    }
+
+    private boolean logC131BorderFixtureReport(String report) {
+        String[] expectedSampleIds = {
+                "static-inside-clip", "static-border-strip", "static-outside-border",
+                "positioned-inside-clip", "positioned-border-strip", "positioned-outside-border",
+        };
+        String[] expectedTargets = {
+                "static-target", "static-clip", "root", "positioned-target",
+                "positioned-target", "root",
+        };
+        int[] expectedX = {125, 128, 131, 315, 318, 321};
+        int[] expectedY = {40, 40, 40, 40, 40, 40};
+        int[] expectedNodeIndices = {2, 1, 0, 4, 4, 0};
+        double[][] expectedFrames = {
+                {0, 0, 380, 120}, {10, 10, 120, 96}, {24, 24, 140, 120},
+                {200, 10, 120, 96}, {214, 24, 140, 120},
+        };
+        if (!report.startsWith("status=0 ") || !report.contains(" layout=ready ")
+                || !"5".equals(reportField(report, "boxes="))) {
+            Log.e(TAG, "SPINON_C131_BORDER_FIXTURE_SUMMARY status=error stage=runtime-report "
+                    + runtimeStatusSummary(report));
+            return false;
+        }
+        int frameMarker = report.indexOf("node_frames_css_px=[");
+        int frameStart = frameMarker < 0 ? -1 : report.indexOf('[', frameMarker);
+        int frameEnd = frameStart < 0 ? -1 : report.indexOf(']', frameStart + 1);
+        if (frameStart < 0 || frameEnd < 0) {
+            Log.e(TAG, "SPINON_C131_BORDER_FIXTURE_SUMMARY status=error stage=frame-report");
+            return false;
+        }
+        String[] frames = report.substring(frameStart + 1, frameEnd).split(";");
+        boolean geometryMatches = frames.length == expectedFrames.length;
+        if (geometryMatches) {
+            for (int index = 0; index < frames.length; index++) {
+                double[] actual = new double[4];
+                boolean[] found = new boolean[4];
+                for (String field : frames[index].split(",")) {
+                    String[] pair = field.split("=", 2);
+                    if (pair.length != 2) continue;
+                    int coordinateIndex = "x".equals(pair[0]) ? 0
+                            : "y".equals(pair[0]) ? 1
+                            : "width".equals(pair[0]) ? 2
+                            : "height".equals(pair[0]) ? 3 : -1;
+                    if (coordinateIndex < 0) continue;
+                    try {
+                        actual[coordinateIndex] = Double.parseDouble(pair[1]);
+                        found[coordinateIndex] = Double.isFinite(actual[coordinateIndex]);
+                    } catch (NumberFormatException error) {
+                        found[coordinateIndex] = false;
+                    }
+                }
+                for (int coordinate = 0; coordinate < actual.length; coordinate++) {
+                    if (!found[coordinate]
+                            || actual[coordinate] != expectedFrames[index][coordinate]) {
+                        geometryMatches = false;
+                    }
+                }
+                Log.i(TAG, "SPINON_C131_BORDER_NODE_FRAME " + frames[index]);
+            }
+        }
+        Log.i(TAG, "SPINON_C131_BORDER_GEOMETRY_SUMMARY status="
+                + (geometryMatches ? "ok" : "error") + " frames=" + frames.length);
+
+        int sampleMarker = report.indexOf("hit_test_samples_json=");
+        int sampleStart = sampleMarker < 0 ? -1 : report.indexOf('[', sampleMarker);
+        int sampleEnd = sampleStart < 0 ? -1 : report.indexOf(']', sampleStart + 1);
+        if (sampleStart < 0 || sampleEnd < 0) {
+            Log.e(TAG, "SPINON_C131_BORDER_FIXTURE_SUMMARY status=error stage=hit-report");
+            return false;
+        }
+        final JSONArray samples;
+        try {
+            samples = new JSONArray(report.substring(sampleStart, sampleEnd + 1));
+        } catch (Exception error) {
+            Log.e(TAG, "SPINON_C131_BORDER_FIXTURE_SUMMARY status=error stage=hit-json");
+            return false;
+        }
+        boolean samplesAgree = samples.length() == expectedSampleIds.length;
+        int matched = 0;
+        for (int index = 0; index < samples.length(); index++) {
+            JSONObject sample = samples.optJSONObject(index);
+            if (sample == null) {
+                samplesAgree = false;
+                continue;
+            }
+            String id = sample.optString("id", "missing");
+            String target = sample.optString("elementId", "missing");
+            double x = sample.optDouble("xCssPx", Double.NaN);
+            double y = sample.optDouble("yCssPx", Double.NaN);
+            int nodeIndex = sample.optInt("nodeIndex", -1);
+            String status = sample.optString("status", "missing");
+            boolean sampleMatches = index < expectedSampleIds.length
+                    && expectedSampleIds[index].equals(id)
+                    && expectedTargets[index].equals(target)
+                    && x == expectedX[index] && y == expectedY[index]
+                    && nodeIndex == expectedNodeIndices[index]
+                    && "matched".equals(status);
+            if ("matched".equals(status)) matched++;
+            if (!sampleMatches) samplesAgree = false;
+            Log.i(TAG, "SPINON_C131_BORDER_HIT_TEST id=" + id + " x=" + x + " y=" + y
+                    + " element=" + target + " node_index=" + nodeIndex + " status=" + status);
+        }
+        boolean passed = geometryMatches && samplesAgree && matched == expectedSampleIds.length;
+        Log.i(TAG, "SPINON_C131_BORDER_HIT_TEST_SUMMARY status="
+                + (passed ? "ok" : "error") + " matched=" + matched
+                + " total=" + samples.length() + " ids="
+                + (samplesAgree ? "fixed" : "unexpected"));
+        Log.i(TAG, "SPINON_C131_BORDER_FIXTURE_SUMMARY status="
+                + (passed ? "ok" : "error") + " boxes=5 frames=" + frames.length
+                + " hit_samples=" + samples.length() + " hit_matches=" + matched);
+        return passed;
+    }
+
+    private void requestC131BorderStripSurfaceCapture(long renderer, long generation) {
+        final int width;
+        final int height;
+        synchronized (stateLock) {
+            if (closing || c131BorderStripSurfaceCaptureStarted || !surfaceAvailable
+                    || surfaceGeneration != generation || rendererHandle != renderer
+                    || rendererGeneration != generation) {
+                return;
+            }
+            c131BorderStripSurfaceCaptureStarted = true;
+            width = surfaceWidth;
+            height = surfaceHeight;
+        }
+        String runId = Long.toHexString(SystemClock.elapsedRealtimeNanos());
+        List<SurfaceViewPixelCapture.Sample> samples = List.of(
+                new SurfaceViewPixelCapture.Sample("static-inside-clip", 125, 40),
+                new SurfaceViewPixelCapture.Sample("static-border-strip", 128, 40),
+                new SurfaceViewPixelCapture.Sample("static-outside-border", 131, 40),
+                new SurfaceViewPixelCapture.Sample("positioned-inside-clip", 315, 40),
+                new SurfaceViewPixelCapture.Sample("positioned-border-strip", 318, 40),
+                new SurfaceViewPixelCapture.Sample("positioned-outside-border", 321, 40));
+        File output = new File(
+                new File(activity.getCacheDir(), "c131-overflow-clip-border-surface-captures"),
+                "runtime-overflow-clip-border-" + runId + ".png");
+        Log.i(TAG, "SPINON_C131_BORDER_PIXELCOPY_BEGIN run_id=" + runId
+                + " pid=" + android.os.Process.myPid() + " generation=" + generation
+                + " width=" + width + " height=" + height + " density=" + density
+                + " viewport_width=400 viewport_height=160 samples=" + samples.size());
+        SurfaceViewPixelCapture.requestForCssViewport(surfaceView, width, height,
+                400, 160, 0, 0, "runtime-overflow-clip-border", runId, output, samples,
+                mainHandler, runtimeQueue,
+                () -> {
+                    synchronized (stateLock) {
+                        return !closing && surfaceAvailable && surfaceGeneration == generation
+                                && rendererHandle == renderer && rendererGeneration == generation
+                                && surfaceWidth == width && surfaceHeight == height;
+                    }
+                }, result -> {
+                    if (!result.error.isEmpty()) {
+                        Log.e(TAG, "SPINON_C131_BORDER_PIXELCOPY status=error run_id=" + runId
+                                + " generation=" + generation + " attempts=" + result.attempts
+                                + " reason=" + result.error);
+                        postStatus("실패 · C13.1 border PixelCopy · " + result.error);
+                        return;
+                    }
+                    int matched = 0;
+                    for (SurfaceViewPixelCapture.Pixel pixel : result.pixels) {
+                        int[] expected = c131BorderStripExpectedRgba(pixel.id);
+                        boolean exact = pixel.red == expected[0] && pixel.green == expected[1]
+                                && pixel.blue == expected[2] && pixel.alpha == expected[3];
+                        if (exact) matched++;
+                        Log.i(TAG, "SPINON_C131_BORDER_PIXEL run_id=" + runId
+                                + " sample=" + pixel.id + " x=" + pixel.x + " y=" + pixel.y
+                                + " rgba=" + pixel.red + "," + pixel.green + ","
+                                + pixel.blue + "," + pixel.alpha + " expected="
+                                + expected[0] + "," + expected[1] + "," + expected[2]
+                                + "," + expected[3] + " exact=" + exact);
+                    }
+                    boolean passed = result.pixels.size() == samples.size()
+                            && matched == samples.size();
+                    Log.i(TAG, "SPINON_C131_BORDER_PIXELCOPY_SUMMARY status="
+                            + (passed ? "matched" : "mismatch") + " run_id=" + runId
+                            + " expected_samples=" + samples.size()
+                            + " observed_samples=" + result.pixels.size()
+                            + " matched_samples=" + matched + " sha256=" + result.sha256
+                            + " png=" + output.getAbsolutePath());
+                    if (!passed) postStatus("실패 · C13.1 border PixelCopy 표본 불일치");
+                });
+    }
+
+    private static int[] c131BorderStripExpectedRgba(String sampleId) {
+        if ("static-inside-clip".equals(sampleId)
+                || "positioned-inside-clip".equals(sampleId)) {
+            return new int[] {87, 166, 217, 255};
+        }
+        if ("static-border-strip".equals(sampleId)
+                || "positioned-border-strip".equals(sampleId)) {
+            return new int[] {240, 198, 116, 255};
+        }
+        return new int[] {16, 24, 39, 255};
     }
 
     private void requestC131OverflowClipSurfaceCapture(long renderer, long generation) {
@@ -2708,11 +2938,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private float cssViewportWidthLocked() {
+        if (c131BorderStripProbeRequested) return 400.0f;
         if (fixedSizeCssFixtureRequested) return 320.0f;
         return surfaceWidth > 0 ? (float) surfaceWidth / density : 301.0f;
     }
 
     private float cssViewportHeightLocked() {
+        if (c131BorderStripProbeRequested) return 160.0f;
         if (fixedSizeCssFixtureRequested) return 240.0f;
         return surfaceHeight > 0 ? (float) surfaceHeight / density : 100.0f;
     }
@@ -2886,7 +3118,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (c124SurfaceCaptureProbeRequested) {
             requestC124SurfaceCapture(renderer, generation);
         }
-        if (c131OverflowClipProbeRequested) {
+        if (c131BorderStripProbeRequested) {
+            requestC131BorderStripSurfaceCapture(renderer, generation);
+        } else if (c131OverflowClipProbeRequested) {
             requestC131OverflowClipSurfaceCapture(renderer, generation);
         }
         if (failureProbeRequested && !failureProbeStarted) {

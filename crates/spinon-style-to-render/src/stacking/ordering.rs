@@ -1,7 +1,9 @@
 use std::collections::BTreeMap;
 
 use spinon_core::NodeId;
-use spinon_style::ComputedCssPosition;
+use spinon_style::{
+    ComputedCssOverflow, ComputedCssPosition, ComputedCssZIndex, ComputedElementStyle,
+};
 use spinon_style_to_layout::StyleLayoutOutput;
 
 use super::reserve::FallibleReserve;
@@ -192,6 +194,102 @@ pub(super) fn flatten_hit_test_order(
         return Err(StyleRenderError::InvalidRoot);
     }
     Ok(hit_order)
+}
+
+/// C13.1 overflow clip에서 auto positioned clip 상자의 단순 in-flow subtree를 부모 배경 뒤로 둡니다.
+pub(super) fn paint_auto_positioned_clip_subtrees(
+    document_nodes: &[NodeId],
+    parent_by_node: &BTreeMap<NodeId, NodeId>,
+    paint_nodes: &mut Vec<NodeId>,
+    styles: &BTreeMap<NodeId, &ComputedElementStyle>,
+    reserve: &mut impl FallibleReserve,
+) -> Result<(), StyleRenderError> {
+    let mut children_by_parent = BTreeMap::<NodeId, Vec<NodeId>>::new();
+    for (child, parent) in parent_by_node {
+        let children = children_by_parent.entry(*parent).or_default();
+        reserve.reserve(children, 1, "paint child map")?;
+        children.push(*child);
+    }
+
+    for candidate in document_nodes {
+        let style = styles
+            .get(candidate)
+            .copied()
+            .ok_or(StyleRenderError::MissingComputedStyle(*candidate))?;
+        if !matches!(
+            style.layout_position,
+            ComputedCssPosition::Absolute | ComputedCssPosition::Fixed
+        ) || style.stacking_z_index != Some(ComputedCssZIndex::Auto)
+            || !matches!(style.layout_overflow_x, Some(ComputedCssOverflow::Clip))
+                && !matches!(style.layout_overflow_y, Some(ComputedCssOverflow::Clip))
+        {
+            continue;
+        }
+
+        let mut descendants = Vec::new();
+        let mut pending = Vec::new();
+        if let Some(children) = children_by_parent.get(candidate) {
+            reserve.reserve(&mut pending, children.len(), "clip subtree paint traversal")?;
+            pending.extend(children.iter().rev().copied());
+        }
+        let mut simple_in_flow_subtree = true;
+        while let Some(node) = pending.pop() {
+            let descendant_style = styles
+                .get(&node)
+                .copied()
+                .ok_or(StyleRenderError::MissingComputedStyle(node))?;
+            if descendant_style
+                .properties
+                .get("display")
+                .map(String::as_str)
+                == Some("none")
+            {
+                continue;
+            }
+            if descendant_style.layout_position != ComputedCssPosition::Static
+                || descendant_style.stacking_z_index != Some(ComputedCssZIndex::Auto)
+            {
+                simple_in_flow_subtree = false;
+                break;
+            }
+            reserve.reserve(&mut descendants, 1, "clip subtree descendants")?;
+            descendants.push(node);
+            if let Some(children) = children_by_parent.get(&node) {
+                reserve.reserve(&mut pending, children.len(), "clip subtree paint traversal")?;
+                pending.extend(children.iter().rev().copied());
+            }
+        }
+        if !simple_in_flow_subtree || descendants.is_empty() {
+            continue;
+        }
+        descendants.sort_unstable();
+        let Some(parent_rank) = paint_nodes.iter().position(|node| node == candidate) else {
+            continue;
+        };
+        if !paint_nodes
+            .iter()
+            .enumerate()
+            .any(|(rank, node)| rank < parent_rank && descendants.binary_search(node).is_ok())
+        {
+            continue;
+        }
+
+        let mut moved = Vec::new();
+        reserve.reserve(&mut moved, descendants.len(), "clip subtree paint order")?;
+        moved.extend(
+            paint_nodes
+                .iter()
+                .copied()
+                .filter(|node| descendants.binary_search(node).is_ok()),
+        );
+        paint_nodes.retain(|node| descendants.binary_search(node).is_err());
+        let parent_rank = paint_nodes
+            .iter()
+            .position(|node| node == candidate)
+            .ok_or(StyleRenderError::InvalidRoot)?;
+        paint_nodes.splice(parent_rank + 1..parent_rank + 1, moved);
+    }
+    Ok(())
 }
 
 fn paint_item_tree_order(item: &OrderedPaintItem) -> u64 {

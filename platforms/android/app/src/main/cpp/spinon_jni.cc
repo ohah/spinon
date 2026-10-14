@@ -145,7 +145,8 @@ void LogC10NodeFrames(const std::string &report, const char *label) {
 
 #if defined(SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST) && \
     SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST
-void LogC131HitTestSamples(const std::string &report) {
+void LogC131HitTestSamples(const std::string &report, std::size_t expected_count,
+                           const char *sample_label, const char *summary_label) {
   constexpr char kMarker[] = " hit_test_samples_json=";
   const auto marker = report.find(kMarker);
   if (marker == std::string::npos) return;
@@ -155,16 +156,25 @@ void LogC131HitTestSamples(const std::string &report) {
   if (array_end == std::string::npos) return;
 
   std::size_t sample_start = array_start + 1;
+  std::size_t count = 0;
+  std::size_t matched = 0;
   while (sample_start < array_end) {
     sample_start = report.find('{', sample_start);
     if (sample_start == std::string::npos || sample_start >= array_end) return;
     const auto sample_end = report.find('}', sample_start + 1);
     if (sample_end == std::string::npos || sample_end >= array_end) return;
     const auto sample = report.substr(sample_start, sample_end - sample_start + 1);
-    __android_log_print(ANDROID_LOG_INFO, kTag, "SPINON_C131_HIT_TEST %s",
+    __android_log_print(ANDROID_LOG_INFO, kTag, "%s %s", sample_label,
                         sample.c_str());
+    if (sample.find("\"status\":\"matched\"") != std::string::npos) ++matched;
+    ++count;
     sample_start = sample_end + 1;
   }
+  __android_log_print(ANDROID_LOG_INFO, kTag,
+                      "%s status=%s matched=%zu total=%zu expected=%zu",
+                      summary_label,
+                      count == expected_count && matched == expected_count ? "ok" : "error",
+                      matched, count, expected_count);
 }
 #endif
 
@@ -313,6 +323,30 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC131OverflowClipHost(
 #else
   __android_log_print(ANDROID_LOG_ERROR, kTag,
                       "SPINON_C131_DISABLED fixture-test feature is off");
+  return 0;
+#endif
+}
+
+extern "C" JNIEXPORT jlong JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC131OverflowClipBorderHost(
+    JNIEnv *, jclass) {
+#if defined(SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST) && \
+    SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST
+  std::array<char, 1024> output{};
+  SpinonRuntimeGpuHost *host =
+      spinon_runtime_gpu_host_new_c13_1_overflow_clip_border_fixture(
+          output.data(), output.size());
+  if (host == nullptr) {
+    __android_log_print(ANDROID_LOG_ERROR, kTag,
+                        "SPINON_C131_BORDER_HOST_ERROR=%s", output.data());
+    return 0;
+  }
+  __android_log_print(ANDROID_LOG_INFO, kTag,
+                      "SPINON_C131_BORDER_HOST=%s", output.data());
+  return static_cast<jlong>(reinterpret_cast<uintptr_t>(host));
+#else
+  __android_log_print(ANDROID_LOG_ERROR, kTag,
+                      "SPINON_C131_BORDER_DISABLED fixture-test feature is off");
   return 0;
 #endif
 }
@@ -845,7 +879,32 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC131OverflowClipFixture(
                       kTag, "SPINON_C131_EVAL %s", report.c_str());
   if (status == 0) {
     LogC10NodeFrames(report, "SPINON_C131_NODE_FRAME");
-    LogC131HitTestSamples(report);
+    LogC131HitTestSamples(report, 15, "SPINON_C131_HIT_TEST",
+                          "SPINON_C131_HIT_TEST_SUMMARY");
+  }
+  return ToByteArray(env, report);
+#else
+  return ToByteArray(env, "status=-1 C13.1 fixture-test feature is off");
+#endif
+}
+
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC131OverflowClipBorderFixture(
+    JNIEnv *env, jclass, jlong host_handle) {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+#if defined(SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST) && \
+    SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST
+  std::array<char, 32768> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_c13_1_overflow_clip_border_fixture(
+      host, 10000, output.data(), output.size());
+  const std::string report = "status=" + std::to_string(status) + " " + output.data();
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
+                      kTag, "SPINON_C131_BORDER_EVAL %s", report.c_str());
+  if (status == 0) {
+    LogC10NodeFrames(report, "SPINON_C131_BORDER_NODE_FRAME");
+    LogC131HitTestSamples(report, 6, "SPINON_C131_BORDER_HIT_TEST",
+                          "SPINON_C131_BORDER_HIT_TEST_SUMMARY");
   }
   return ToByteArray(env, report);
 #else

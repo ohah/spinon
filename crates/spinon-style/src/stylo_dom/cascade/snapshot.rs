@@ -389,6 +389,15 @@ pub struct ComputedLayoutBorder {
     pub left: f32,
 }
 
+/// C13.1 overflow-clip profile의 면별 단색 solid border paint입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub struct ComputedBorderPaint {
+    pub top: ComputedBackgroundPaint,
+    pub right: ComputedBackgroundPaint,
+    pub bottom: ComputedBackgroundPaint,
+    pub left: ComputedBackgroundPaint,
+}
+
 /// Stylo Typed OM에서 소유형식으로 복사한 `<length-percentage>` 계산식입니다.
 #[derive(Clone, Debug, PartialEq)]
 pub enum ComputedCssMath {
@@ -441,6 +450,8 @@ pub struct ComputedElementStyle {
     pub grid_item_placement: Option<ComputedCssGridItemPlacement>,
     /// 같은 cascade 결과에서 `none`·`hidden` gate를 적용한 면별 border 폭입니다.
     pub layout_border: ComputedLayoutBorder,
+    /// C13.1 overflow-clip runtime profile의 면별 solid border paint입니다.
+    pub layout_border_paint: Option<ComputedBorderPaint>,
     /// Stylo가 reify한 layout 계산식입니다. 문자열이 아니라 Typed OM 트리에서 복사했습니다.
     pub layout_math_values: BTreeMap<String, ComputedCssMath>,
     /// S04 paint profile에서만 설정하는 Stylo 계산 배경색입니다.

@@ -107,16 +107,16 @@ mod typed_css_math_tests;
 pub use margin::compute_flex_margin_cascade;
 pub use margin::compute_flex_media_environment_cascade;
 pub use snapshot::{
-    CascadeDiagnostic, ComputedCssDimension, ComputedCssEdges, ComputedCssGridArea,
-    ComputedCssGridAutoColumns, ComputedCssGridAutoFlow, ComputedCssGridAutoRows,
-    ComputedCssGridItemPlacement, ComputedCssGridLayout, ComputedCssGridPlacement,
-    ComputedCssGridTemplateAreas, ComputedCssGridTrackSize, ComputedCssMath, ComputedCssMaxSize,
-    ComputedCssOverflow, ComputedCssOverflowClipMargin, ComputedCssOverflowVisualBox,
-    ComputedCssPosition, ComputedCssSpacingValue, ComputedCssVisibility, ComputedCssZIndex,
-    ComputedElementStyle, ComputedLayoutBorder, ComputedLayoutDimensions, ComputedLayoutInsets,
-    ComputedLayoutSpacing, ComputedStyleProfile, ComputedStyleSnapshot, CssColorScheme,
-    CssMediaEnvironment, CssPointerCapabilities, CssPrimaryPointer, CssViewport,
-    FixedContainingBlockEffect,
+    CascadeDiagnostic, ComputedBorderPaint, ComputedCssDimension, ComputedCssEdges,
+    ComputedCssGridArea, ComputedCssGridAutoColumns, ComputedCssGridAutoFlow,
+    ComputedCssGridAutoRows, ComputedCssGridItemPlacement, ComputedCssGridLayout,
+    ComputedCssGridPlacement, ComputedCssGridTemplateAreas, ComputedCssGridTrackSize,
+    ComputedCssMath, ComputedCssMaxSize, ComputedCssOverflow, ComputedCssOverflowClipMargin,
+    ComputedCssOverflowVisualBox, ComputedCssPosition, ComputedCssSpacingValue,
+    ComputedCssVisibility, ComputedCssZIndex, ComputedElementStyle, ComputedLayoutBorder,
+    ComputedLayoutDimensions, ComputedLayoutInsets, ComputedLayoutSpacing, ComputedStyleProfile,
+    ComputedStyleSnapshot, CssColorScheme, CssMediaEnvironment, CssPointerCapabilities,
+    CssPrimaryPointer, CssViewport, FixedContainingBlockEffect,
 };
 pub use ua_baseline::compute_supported_elements_ua_cascade;
 
@@ -246,6 +246,16 @@ pub enum CssCascadeError {
         node: NodeId,
         reason: String,
     },
+    UnsupportedComputedBorderColor {
+        node: NodeId,
+        property: &'static str,
+        reason: String,
+    },
+    UnsupportedComputedBorderStyle {
+        node: NodeId,
+        property: &'static str,
+        value: String,
+    },
     /// 현재 layout bridge가 의미를 보존할 수 없는 computed `aspect-ratio`입니다.
     UnsupportedComputedAspectRatio {
         node: NodeId,
@@ -340,6 +350,22 @@ impl fmt::Display for CssCascadeError {
             Self::UnsupportedComputedBackgroundColor { node, reason } => write!(
                 formatter,
                 "노드 {node}의 계산 background-color를 S04 불투명 sRGB로 변환할 수 없습니다: {reason}"
+            ),
+            Self::UnsupportedComputedBorderColor {
+                node,
+                property,
+                reason,
+            } => write!(
+                formatter,
+                "노드 {node}의 계산 {property}를 solid runtime border paint로 변환할 수 없습니다: {reason}"
+            ),
+            Self::UnsupportedComputedBorderStyle {
+                node,
+                property,
+                value,
+            } => write!(
+                formatter,
+                "노드 {node}의 border 속성 {property} 값 {value:?}는 현재 solid runtime paint에서 지원하지 않습니다"
             ),
             Self::UnsupportedComputedAspectRatio { node, reason } => write!(
                 formatter,
