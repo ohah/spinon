@@ -1,0 +1,61 @@
+{
+  "browser": {
+    "automation": "agent-browser 0.31.1",
+    "product": "Google Chrome for Testing",
+    "revision": "cfaadc5a132d78e1828635aa8405a499f3e14864-refs/branch-heads/8059@{#936}",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "version": "155.0.8059.40",
+    "viewportCssPx": {
+      "dpr": 1,
+      "height": 160,
+      "width": 200
+    }
+  },
+  "case": {
+    "clip": {
+      "bottom": 94,
+      "height": 84,
+      "right": 124,
+      "width": 104,
+      "x": 20,
+      "y": 10
+    },
+    "hitRanges": {
+      "x": {
+        "fixedAt": 74,
+        "ranges": [
+          [
+            74,
+            119
+          ]
+        ]
+      },
+      "y": {
+        "fixedAt": 104,
+        "ranges": [
+          [
+            54,
+            89
+          ]
+        ]
+      }
+    },
+    "id": "content-box-positioned-hit",
+    "overflowClipMargin": "content-box 8px",
+    "overflowX": "clip",
+    "overflowY": "clip",
+    "target": {
+      "bottom": 94,
+      "height": 40,
+      "right": 134,
+      "width": 60,
+      "x": 74,
+      "y": 54
+    }
+  },
+  "fixture": {
+    "path": "spec/internal/evidence/c13-1-overflow-clip-runtime-matrix-2026-10-14/content-box-positioned-hit-control.html",
+    "sha256": "cf635425b6717a565da37f29649bc04723ab3358fa8f2bf8783bd4721697217f"
+  },
+  "scope": "Controlled Chrome observation for an absolute child inside a positioned clip ancestor with content-box 8px margin. Captures computed overflow, frame and target elementFromPoint range."
+}

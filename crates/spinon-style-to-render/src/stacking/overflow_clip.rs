@@ -65,6 +65,7 @@ pub(super) fn runtime_clips_for_node<R: FallibleReserve>(
     let mut hit_test_clip = CssClip::unconstrained();
     for (clip_index, clip_node) in lineage.iter().copied().enumerate().skip(1) {
         let mut excluded_by_positioned_descendant = false;
+        let mut has_contained_absolute_descendant = false;
         for descendant in lineage[..clip_index].iter().copied() {
             let style = styles
                 .get(&descendant)
@@ -87,6 +88,7 @@ pub(super) fn runtime_clips_for_node<R: FallibleReserve>(
                         excluded_by_positioned_descendant = true;
                         break;
                     }
+                    has_contained_absolute_descendant = true;
                 }
                 ComputedCssPosition::Fixed => {
                     // C12 fixed containing blocks are viewport-only, so no element clip owns it.
@@ -180,6 +182,7 @@ pub(super) fn runtime_clips_for_node<R: FallibleReserve>(
             let (hit_min, hit_max) = hit_test_clip_axis_bounds(
                 overflow_x,
                 clip_style.layout_position,
+                has_contained_absolute_descendant,
                 border_box[0],
                 border_box[2],
                 paint_min,
@@ -202,6 +205,7 @@ pub(super) fn runtime_clips_for_node<R: FallibleReserve>(
             let (hit_min, hit_max) = hit_test_clip_axis_bounds(
                 overflow_y,
                 clip_style.layout_position,
+                has_contained_absolute_descendant,
                 border_box[1],
                 border_box[3],
                 paint_min,
@@ -241,19 +245,21 @@ fn clip_axis_bounds(
 fn hit_test_clip_axis_bounds(
     overflow: ComputedCssOverflow,
     position: ComputedCssPosition,
+    has_contained_absolute_descendant: bool,
     border_min: f32,
     border_max: f32,
     paint_min: f32,
     paint_max: f32,
 ) -> (f32, f32) {
     if overflow == ComputedCssOverflow::Clip {
-        if position == ComputedCssPosition::Static {
-            // Chrome clips static descendants at the visual edge while the
-            // clip element's own border remains independently hit-testable.
+        if position == ComputedCssPosition::Static || has_contained_absolute_descendant {
+            // Chrome uses the visual clip edge for static descendants and for
+            // contained absolute descendants. The clip element's own border
+            // remains independently hit-testable in the runtime hit order.
             (paint_min, paint_max)
         } else {
-            // Positioned clip elements retain the border box for descendant
-            // hit testing and extend it when overflow-clip-margin reaches out.
+            // A positioned clip with only in-flow descendants also admits the
+            // border strip, extending it when overflow-clip-margin reaches out.
             (border_min.min(paint_min), border_max.max(paint_max))
         }
     } else {

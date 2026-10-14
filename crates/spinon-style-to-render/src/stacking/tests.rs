@@ -31,6 +31,9 @@ const C13_OVERFLOW_CLIP_FIXTURE_JS: &str =
 const C13_CHROME_OVERFLOW_CLIP_OBSERVATION: &str = include_str!(
     "../../../../spec/internal/evidence/c13-1-overflow-clip-android-avd-2026-10-14/chrome155-runtime-observation.json"
 );
+const C13_CONTENT_BOX_POSITIONED_HIT_OBSERVATION: &str = include_str!(
+    "../../../../spec/internal/evidence/c13-1-overflow-clip-runtime-matrix-2026-10-14/chrome155-content-box-positioned-hit-observation.json"
+);
 
 struct RuntimeInputs {
     document: HostDocumentSnapshot,
@@ -423,7 +426,66 @@ fn overflow_clip_margin_uses_padding_edge_for_paint_and_hit_test() {
 }
 
 #[test]
-fn content_box_clip_margin_changes_paint_without_narrowing_chromium_hit_bounds() {
+fn content_box_clip_margin_limits_positioned_descendant_hits_to_chrome_visual_edge() {
+    let observation: serde_json::Value =
+        serde_json::from_str(C13_CONTENT_BOX_POSITIONED_HIT_OBSERVATION)
+            .expect("pinned Chrome content-box positioned hit observation");
+    assert_eq!(
+        observation["browser"]["version"].as_str(),
+        Some("155.0.8059.40")
+    );
+    assert_eq!(
+        observation["browser"]["revision"].as_str(),
+        Some("cfaadc5a132d78e1828635aa8405a499f3e14864-refs/branch-heads/8059@{#936}")
+    );
+    assert_eq!(
+        observation["browser"]["userAgent"].as_str(),
+        Some(
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36"
+        )
+    );
+    assert_eq!(
+        observation["browser"]["viewportCssPx"]["width"].as_u64(),
+        Some(200)
+    );
+    assert_eq!(
+        observation["browser"]["viewportCssPx"]["height"].as_u64(),
+        Some(160)
+    );
+    assert_eq!(
+        observation["browser"]["viewportCssPx"]["dpr"].as_f64(),
+        Some(1.0)
+    );
+    assert_eq!(
+        observation["fixture"]["sha256"].as_str(),
+        Some("cf635425b6717a565da37f29649bc04723ab3358fa8f2bf8783bd4721697217f")
+    );
+    assert_eq!(
+        observation["case"]["id"].as_str(),
+        Some("content-box-positioned-hit")
+    );
+    assert_eq!(observation["case"]["overflowX"].as_str(), Some("clip"));
+    assert_eq!(observation["case"]["overflowY"].as_str(), Some("clip"));
+    assert_eq!(
+        observation["case"]["overflowClipMargin"].as_str(),
+        Some("content-box 8px")
+    );
+    assert_eq!(
+        observation["case"]["target"],
+        serde_json::json!({
+            "x": 74, "y": 54, "width": 60, "height": 40,
+            "right": 134, "bottom": 94
+        })
+    );
+    assert_eq!(
+        observation["case"]["hitRanges"]["x"]["ranges"],
+        serde_json::json!([[74, 119]])
+    );
+    assert_eq!(
+        observation["case"]["hitRanges"]["y"]["ranges"],
+        serde_json::json!([[54, 89]])
+    );
+
     let (input, nodes) = overflow_runtime_inputs(
         &[
             "display:block;position:relative;width:200px;height:160px;background-color:#111111",
@@ -452,11 +514,18 @@ fn content_box_clip_margin_changes_paint_without_narrowing_chromium_hit_bounds()
     assert_eq!((paint_y.min(), paint_y.max()), (14.0, 90.0));
     let hit_x = target.hit_test_clip_css_px().x().unwrap();
     let hit_y = target.hit_test_clip_css_px().y().unwrap();
-    assert_eq!((hit_x.min(), hit_x.max()), (20.0, 124.0));
-    assert_eq!((hit_y.min(), hit_y.max()), (10.0, 94.0));
+    assert_eq!((hit_x.min(), hit_x.max()), (24.0, 120.0));
+    assert_eq!((hit_y.min(), hit_y.max()), (14.0, 90.0));
     assert_eq!(
-        scene.hit_test_css_point(122.0, 55.0).unwrap().node_id(),
+        scene.hit_test_css_point(119.0, 55.0).unwrap().node_id(),
         target_id
+    );
+    assert_ne!(
+        scene
+            .hit_test_css_point(122.0, 55.0)
+            .map(|render_box| render_box.node_id()),
+        Some(target_id),
+        "positioned descendant must not receive the border-strip hit outside Chrome's content-box clip margin"
     );
 }
 
