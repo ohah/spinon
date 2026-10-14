@@ -6,6 +6,7 @@ publish = false
 
 [features]
 c12-4-worker-stack-residency-test = []
+c13-1-overflow-clip-worker-test = ["spinon-style-to-render/c13-1-overflow-clip-worker-test"]
 
 [dependencies]
 spinon-core = { path = "../spinon-core" }

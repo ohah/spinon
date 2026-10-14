@@ -14,3 +14,5 @@ pub use adapter::{
 };
 pub use error::StyleRenderError;
 pub use runtime::build_runtime_render_snapshot;
+#[cfg(feature = "c13-1-overflow-clip-worker-test")]
+pub use stacking::build_runtime_render_snapshot_with_overflow_clip_ancestry_allocation_failure;

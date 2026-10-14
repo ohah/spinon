@@ -25,6 +25,7 @@ use spinon_style::{
     compute_runtime_flex_registered_properties_paint_cascade_with_stylesheets,
     compute_runtime_incremental_cascade_with_stylesheets,
 };
+use spinon_style_to_render::build_runtime_render_snapshot;
 use std::sync::Arc;
 use std::time::Instant;
 
@@ -233,6 +234,26 @@ fn compute_request_with_profile(
     request: &WorkRequest,
     profile: RuntimeCalculationProfile,
 ) -> Result<RuntimeCalculation, String> {
+    let mut render_snapshot_builder = build_runtime_render_snapshot;
+    compute_request_with_profile_and_render_builder(request, profile, &mut render_snapshot_builder)
+}
+
+pub(super) fn compute_request_with_profile_and_render_builder<F>(
+    request: &WorkRequest,
+    profile: RuntimeCalculationProfile,
+    render_snapshot_builder: &mut F,
+) -> Result<RuntimeCalculation, String>
+where
+    F: FnMut(
+        &spinon_core::HostDocumentSnapshot,
+        HostNodeHandle,
+        &spinon_style_to_layout::StyleLayoutOutput,
+        spinon_style_to_render::CurrentLayoutInputs,
+    ) -> Result<
+        spinon_render::RuntimeRenderSnapshot,
+        spinon_style_to_render::StyleRenderError,
+    >,
+{
     if let Some((node, depth)) = first_node_past_layout_depth_limit(&request.snapshot)? {
         return Ok(tree_depth_failure(node, depth));
     }
@@ -293,6 +314,7 @@ fn compute_request_with_profile(
         &author_stylesheets,
         profile.has_paint(),
         profile,
+        render_snapshot_builder,
     );
 
     Ok(RuntimeCalculation {

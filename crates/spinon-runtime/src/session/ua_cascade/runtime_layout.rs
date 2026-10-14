@@ -1,7 +1,7 @@
 use super::{
     RuntimeUaCascadeHandle, RuntimeUaCascadeKey, State, WorkRequest, elapsed_microseconds, lock,
 };
-use spinon_core::HostNodeHandle;
+use spinon_core::{HostDocumentSnapshot, HostNodeHandle};
 use spinon_layout::{LayoutError, LayoutFrame, LayoutOutput};
 use spinon_render::RuntimeRenderSnapshot;
 use spinon_style::{
@@ -17,10 +17,8 @@ use spinon_style::{
     first_unsupported_runtime_custom_properties_inline_property,
     first_unsupported_runtime_custom_properties_paint_inline_property,
 };
-use spinon_style_to_layout::{StyleLayoutError, compute_runtime_style_layout};
-use spinon_style_to_render::{
-    CurrentLayoutInputs, StyleRenderError, build_runtime_render_snapshot,
-};
+use spinon_style_to_layout::{StyleLayoutError, StyleLayoutOutput, compute_runtime_style_layout};
+use spinon_style_to_render::{CurrentLayoutInputs, StyleRenderError};
 use std::sync::Arc;
 use std::time::{Duration, Instant};
 
@@ -122,14 +120,23 @@ fn layout_snapshot_from_state(state: &State) -> RuntimeLayoutSnapshot {
 
 pub(super) type RuntimeLayoutContext = (HostNodeHandle, StyloDocumentView, ComputedStyleSnapshot);
 
-pub(super) fn compute_runtime_layout(
+pub(super) fn compute_runtime_layout<F>(
     request: &WorkRequest,
     root_count: usize,
     layout_context: Option<RuntimeLayoutContext>,
     author_stylesheets: &[StylesheetSource],
     runtime_paint_enabled: bool,
     profile: super::calculation::RuntimeCalculationProfile,
-) -> Result<RuntimeLayoutCompleted, RuntimeLayoutFailure> {
+    render_snapshot_builder: &mut F,
+) -> Result<RuntimeLayoutCompleted, RuntimeLayoutFailure>
+where
+    F: FnMut(
+        &HostDocumentSnapshot,
+        HostNodeHandle,
+        &StyleLayoutOutput,
+        CurrentLayoutInputs,
+    ) -> Result<RuntimeRenderSnapshot, StyleRenderError>,
+{
     if root_count == 0 {
         let render_snapshot = if runtime_paint_enabled {
             Some(empty_runtime_render_snapshot(request)?)
@@ -241,7 +248,7 @@ pub(super) fn compute_runtime_layout(
             request.viewport,
         );
         Some(
-            build_runtime_render_snapshot(&request.snapshot, root, &output, current)
+            render_snapshot_builder(&request.snapshot, root, &output, current)
                 .map_err(layout_failure_from_render_error)?,
         )
     } else {

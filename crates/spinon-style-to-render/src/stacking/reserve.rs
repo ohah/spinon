@@ -26,42 +26,71 @@ impl FallibleReserve for SystemReserve {
     }
 }
 
-#[cfg(test)]
+#[cfg(any(test, feature = "c13-1-overflow-clip-worker-test"))]
 pub(super) struct FaultInjectingReserve {
-    fail_at: Option<usize>,
+    fail_at: Option<FailureTarget>,
+    #[cfg(test)]
     attempts: usize,
     stages: Vec<&'static str>,
 }
 
-#[cfg(test)]
+#[cfg(any(test, feature = "c13-1-overflow-clip-worker-test"))]
+#[derive(Clone, Copy)]
+enum FailureTarget {
+    #[cfg(test)]
+    Attempt(usize),
+    StageOccurrence {
+        stage: &'static str,
+        occurrence: usize,
+    },
+}
+
+#[cfg(any(test, feature = "c13-1-overflow-clip-worker-test"))]
 impl FaultInjectingReserve {
+    #[cfg(test)]
     pub(super) fn recording() -> Self {
         Self {
             fail_at: None,
+            #[cfg(test)]
             attempts: 0,
             stages: Vec::new(),
         }
     }
 
+    #[cfg(test)]
     pub(super) fn failing_at(index: usize) -> Self {
         assert!(index > 0, "예약 실패 인덱스는 1부터 시작합니다");
         Self {
-            fail_at: Some(index),
+            fail_at: Some(FailureTarget::Attempt(index)),
+            #[cfg(test)]
             attempts: 0,
             stages: Vec::new(),
         }
     }
 
+    #[cfg(any(test, feature = "c13-1-overflow-clip-worker-test"))]
+    pub(super) fn failing_at_stage_occurrence(stage: &'static str, occurrence: usize) -> Self {
+        assert!(occurrence > 0, "예약 stage occurrence는 1부터 시작합니다");
+        Self {
+            fail_at: Some(FailureTarget::StageOccurrence { stage, occurrence }),
+            #[cfg(test)]
+            attempts: 0,
+            stages: Vec::new(),
+        }
+    }
+
+    #[cfg(test)]
     pub(super) fn stages(&self) -> &[&'static str] {
         &self.stages
     }
 
+    #[cfg(test)]
     pub(super) fn attempts(&self) -> usize {
         self.attempts
     }
 }
 
-#[cfg(test)]
+#[cfg(any(test, feature = "c13-1-overflow-clip-worker-test"))]
 impl FallibleReserve for FaultInjectingReserve {
     fn reserve<T>(
         &mut self,
@@ -70,9 +99,29 @@ impl FallibleReserve for FaultInjectingReserve {
         stage: &'static str,
     ) -> Result<(), StyleRenderError> {
         if additional > values.capacity().saturating_sub(values.len()) {
-            self.attempts += 1;
+            #[cfg(test)]
+            {
+                self.attempts += 1;
+            }
             self.stages.push(stage);
-            if self.fail_at == Some(self.attempts) {
+            let should_fail = match self.fail_at {
+                #[cfg(test)]
+                Some(FailureTarget::Attempt(attempt)) => attempt == self.attempts,
+                Some(FailureTarget::StageOccurrence {
+                    stage: failure_stage,
+                    occurrence,
+                }) => {
+                    stage == failure_stage
+                        && self
+                            .stages
+                            .iter()
+                            .filter(|seen| **seen == failure_stage)
+                            .count()
+                            == occurrence
+                }
+                None => false,
+            };
+            if should_fail {
                 return Err(StyleRenderError::AllocationFailed { stage });
             }
         }
