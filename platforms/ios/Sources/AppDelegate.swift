@@ -33,6 +33,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             || arguments.contains("--spinon-c1123-grid-auto-placement")
             || arguments.contains(where: { $0.hasPrefix("--spinon-c1123-grid-scene=") })
             || arguments.contains("--spinon-c1132-grid-named-lines")
+            || arguments.contains("--spinon-c1133-grid-template-areas")
             || arguments.contains("--spinon-c11-grid")
             || arguments.contains(where: { $0.hasPrefix("--spinon-c11-grid-case=") })
             || arguments.contains("--spinon-c0411-runtime-author-stylesheets")

@@ -1,0 +1,4 @@
+AssertionError [ERR_ASSERTION]: template area success summary가 없거나 기대 node 수가 아닙니다.
+    at assertTemplateAreaGeometry (file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime.mjs:67:10)
+    at runIOS (file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime.mjs:316:20)
+    at async file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime.mjs:368:47

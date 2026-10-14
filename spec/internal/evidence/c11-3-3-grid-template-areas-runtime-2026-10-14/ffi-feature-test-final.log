@@ -1,0 +1,12 @@
+   Compiling spinon-ffi v0.1.0 (/private/tmp/spinon-c11-3-3-work/crates/spinon-ffi)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.46s
+     Running unittests src/lib.rs (target/debug/deps/spinon_ffi-3e46ab183a7e58ce)
+
+running 4 tests
+test runtime_gpu::ffi::fixtures::c11_3_3::tests::c11_3_3_surface_pixel_request_rejects_coordinate_count_overflow ... ok
+test runtime_gpu::ffi::fixtures::c11_3_3::tests::c11_3_3_surface_pixel_request_rejects_invalid_counts_and_pointers ... ok
+test runtime_gpu::ffi::fixtures::c11_3_3::tests::c11_3_3_eval_rejects_untrusted_scene_ids_and_bad_arguments ... ok
+test runtime_gpu::fixtures::c11_3_3::tests::fixed_runtime_matrix_selects_every_scene_and_rejection_boundary ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 49 filtered out; finished in 0.00s
+

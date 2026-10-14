@@ -1,0 +1,50 @@
+{
+  "schema": "spinon-c11-3-3-ffi-artifact-boundary/v1",
+  "toolchain": {
+    "rustc": "1.96.1",
+    "llvm": "22.1.2",
+    "symbolTool": "toolchain llvm-nm 22.1.2-rust-1.96.1-stable"
+  },
+  "default": {
+    "command": "cargo build --locked --release -p spinon-ffi --no-default-features",
+    "artifact": "target/release/libspinon_ffi.a",
+    "sha256": "237388aaee524bd2729839a63f311b8721552fba3dc1fc82fdf50d3a0401ab0c",
+    "c1133SymbolsPresent": false,
+    "runtimeMatrixPayloadPresent": false
+  },
+  "optIn": {
+    "command": "cargo build --locked --release -p spinon-ffi --no-default-features --features c11-grid-metal-surface-pixels-test",
+    "artifact": "target/release/libspinon_ffi.a",
+    "sha256": "64abc56e6670fdf9f85d413473c778d48bac457c7587cd3ba4f063e6273f97bf",
+    "symbols": [
+      "spinon_runtime_gpu_host_new_c11_3_3_grid_template_areas_fixture",
+      "spinon_runtime_gpu_host_eval_c11_3_3_grid_template_areas_fixture",
+      "spinon_runtime_gpu_host_request_c11_3_3_grid_surface_pixels_for_test"
+    ],
+    "runtimeMatrixPayloadPresent": true,
+    "sceneIdsPresent": ["basic-rectangles", "area-track-count-mismatch"]
+  },
+  "androidDebugApk": {
+    "sha256": "999effb932899c7b1b99e5457ac10d8b72ee5c15f5fcd8be89da0ee908b00691",
+    "runtimeRunID": "c1133-matrix-20261014T023829118Z-d027504f",
+    "device": {
+      "model": "sdk_gphone64_arm64",
+      "release": "17",
+      "sdk": 37,
+      "qemu": true,
+      "renderer": "ANGLE/Vulkan/SwiftShader"
+    },
+    "nativeLibrary": "lib/arm64-v8a/libspinon_bootstrap.so",
+    "evalSymbolPresent": true,
+    "runtimeMatrixPayloadPresent": true,
+    "runtimeExecuted": true,
+    "runtimeMatrix": {
+      "scenes": 26,
+      "nodes": 65,
+      "visibleFrames": 61,
+      "maximumGeometryErrorCssPx": 0,
+      "pixelCopyMatchedSamples": 2
+    }
+  },
+  "interpretation": "현재 source에서 다시 만든 기본 FFI artifact에는 C11.3.3 fixture symbol/payload가 없고 opt-in fixture-test artifact와 Android API 37 AVD test APK에는 있다. 해당 APK는 AVD 전체 runtime matrix에서 실행됐다. 이 결과는 실기기·hardware GPU·release app bundle 크기를 검증하지 않는다."
+}

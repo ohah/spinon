@@ -13,6 +13,7 @@ mod c11_2_2;
 mod c11_2_3;
 mod c11_3_1;
 mod c11_3_2;
+mod c11_3_3;
 mod c12;
 #[cfg(feature = "c04-runtime-gpu-test-hooks")]
 mod surface;

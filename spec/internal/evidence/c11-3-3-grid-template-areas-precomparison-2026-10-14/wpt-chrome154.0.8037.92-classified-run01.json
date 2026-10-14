@@ -1,0 +1,572 @@
+{
+  "schema": "spinon-css-c11-3-3-wpt-chrome-classification/v1",
+  "classifier": {
+    "path": "tools/css-reference/classify-c11-3-3-grid-template-areas-wpt-report.mjs",
+    "sha256": "e3d69b47356f87b45f5a2be864a7edc842f53bc47a88718d27821931ccff2de0"
+  },
+  "inventorySha256": "bace2c635c7685b25291c023dd880736e6cdcb17c4034c517902c23cf13b3cd2",
+  "reportEvidence": "spec/internal/evidence/c11-3-3-grid-template-areas-precomparison-2026-10-14/wpt-chrome154.0.8037.92-run01.json",
+  "reportSha256": "368c2244afb1e95f1353ed2a3d311d405de7e03ce8b445fe39134ab4fde94c83",
+  "runner": {
+    "revision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+    "product": "chrome",
+    "browserVersion": "154.0.8037.92",
+    "browserChannel": "canary",
+    "headlessReportedByRunner": false,
+    "os": "mac",
+    "osVersion": "OS X 26.5.1",
+    "processor": "arm"
+  },
+  "outcome": {
+    "tests": 4,
+    "testSubtests": 73,
+    "skipped": 0,
+    "failures": 0,
+    "meaning": "고정 Chrome에서 실행한 WPT oracle 결과이며 Spinon runner 또는 Spinon WPT 적합성 결과가 아닙니다."
+  },
+  "tests": [
+    {
+      "path": "css/css-grid/grid-definition/grid-support-grid-template-areas-001.html",
+      "sourceSha256": "fdc219b1887a5aaf7e81c4db2cea39e7fb9878274736b06a629adabf06e77b4a",
+      "status": "OK",
+      "classification": "Spinon fixture candidates: typed area tokenization, equal row widths, rectangle validity, null-cell serialization, and invalid declaration cascade. Full WPT test remains Chrome oracle only.",
+      "subtests": [
+        {
+          "index": 1,
+          "name": "'grid' with: grid-template-areas: none;",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 2,
+          "name": "'grid' with: grid-template-areas: \"a\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 3,
+          "name": "'grid' with: grid-template-areas: \".\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 4,
+          "name": "'grid' with: grid-template-areas: \"lower UPPER 10 -minus _low 1-st ©copy_right line¶\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 5,
+          "name": "'grid' with: grid-template-areas: \"a b\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 6,
+          "name": "'grid' with: grid-template-areas: \"a b\" \"c d\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 7,
+          "name": "'grid' with: grid-template-areas: \"a   b\"   \"c   d\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 8,
+          "name": "'grid' with: grid-template-areas: \"a b\"\"c d\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 9,
+          "name": "'grid' with: grid-template-areas: \"a b\"\t\"c d\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 10,
+          "name": "'grid' with: grid-template-areas: \"a b\"\n\"c d\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 11,
+          "name": "'grid' with: grid-template-areas: \"a b\" \"a b\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 12,
+          "name": "'grid' with: grid-template-areas: \"a a\" \"b b\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 13,
+          "name": "'grid' with: grid-template-areas: \". a .\" \"b a c\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 14,
+          "name": "'grid' with: grid-template-areas: \".. a ...\" \"b a c\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 15,
+          "name": "'grid' with: grid-template-areas: \".a...\" \"b a c\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 16,
+          "name": "'grid' with: grid-template-areas: \"head head\" \"nav main\" \"foot .\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 17,
+          "name": "'grid' with: grid-template-areas: \"head head\" \"nav main\" \"foot ....\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 18,
+          "name": "'grid' with: grid-template-areas: \"head head\" \"nav main\" \"foot.\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 19,
+          "name": "'grid' with: grid-template-areas: \". header header .\" \"nav main main main\" \"nav footer footer .\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 20,
+          "name": "'grid' with: grid-template-areas: \"... header header ....\" \"nav main main main\" \"nav footer footer ....\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 21,
+          "name": "'grid' with: grid-template-areas: \"...header header....\" \"nav main main main\" \"nav footer footer....\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 22,
+          "name": "'grid' with: grid-template-areas: \"title stats\" \"score stats\" \"board board\" \"ctrls ctrls\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 23,
+          "name": "'grid' with: grid-template-areas: \"title board\" \"stats board\" \"score ctrls\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 24,
+          "name": "'grid' with: grid-template-areas: \". a\" \"b a\" \". a\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 25,
+          "name": "'grid' with: grid-template-areas: \".. a\" \"b a\" \"... a\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 26,
+          "name": "'grid' with: grid-template-areas: \"..a\" \"b a\" \".a\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 27,
+          "name": "'grid' with: grid-template-areas: \"a a a\" \"b b b\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 28,
+          "name": "'grid' with: grid-template-areas: \". .\" \"a a\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 29,
+          "name": "'grid' with: grid-template-areas: \"... ....\" \"a a\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 30,
+          "name": "'grid' with: grid-template-areas: a;",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 31,
+          "name": "'grid' with: grid-template-areas: \"a\" \"b c\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 32,
+          "name": "'grid' with: grid-template-areas: \"a b\" \"c\" \"d e\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 33,
+          "name": "'grid' with: grid-template-areas: \"a b c\" \"d e\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 34,
+          "name": "'grid' with: grid-template-areas: \"a b\"-\"c d\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 35,
+          "name": "'grid' with: grid-template-areas: \"a b\" - \"c d\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 36,
+          "name": "'grid' with: grid-template-areas: \"a b\" . \"c d\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 37,
+          "name": "'grid' with: grid-template-areas: \"a b a\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 38,
+          "name": "'grid' with: grid-template-areas: \"a\" \"b\" \"a\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 39,
+          "name": "'grid' with: grid-template-areas: \"a b\" \"b b\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 40,
+          "name": "'grid' with: grid-template-areas: \"b a\" \"b b\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 41,
+          "name": "'grid' with: grid-template-areas: \"a b\" \"b a\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 42,
+          "name": "'grid' with: grid-template-areas: \"a .\" \". a\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 43,
+          "name": "'grid' with: grid-template-areas: \",\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 44,
+          "name": "'grid' with: grid-template-areas: \"10%\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        },
+        {
+          "index": 45,
+          "name": "'grid' with: grid-template-areas: \"USD$\";",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+        }
+      ]
+    },
+    {
+      "path": "css/css-grid/placement/grid-placement-named-grid-area-resolution-001.html",
+      "sourceSha256": "573b98353618c00c3eefc27ccc56c176dc269fe12ece7bbcd8dd6375dcce6ae7",
+      "status": "OK",
+      "classification": "Spinon fixture candidates: area rectangle placement, grid-area/grid-row/grid-column shorthand expansion, named spans and explicit named-line interaction. Full WPT layout remains Chrome oracle only.",
+      "subtests": [
+        {
+          "index": 1,
+          "name": ".grid 1",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS subtest is a Spinon fixture candidate mapped to the named-area and shorthand geometry cases; original test is only run by Chrome."
+        },
+        {
+          "index": 2,
+          "name": ".grid 2",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS subtest is a Spinon fixture candidate mapped to the named-area and shorthand geometry cases; original test is only run by Chrome."
+        }
+      ]
+    },
+    {
+      "path": "css/css-grid/placement/grid-placement-named-lines-and-areas-001.html",
+      "sourceSha256": "6e55fadc66203e6d570c61009c5d6a42d2f2db7eb77c7864aced34f86219aaa9",
+      "status": "OK",
+      "classification": "Spinon fixture candidates: generated area edges, authored/generated name precedence, areas ending in -start/-end, repeated names, and explicit-line implicit named areas. Full WPT layout remains Chrome oracle only.",
+      "subtests": [
+        {
+          "index": 1,
+          "name": ".grid 1",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS subtest is a Spinon fixture candidate unless it requires automatic implicit tracks; WPT fixture geometry is not copied wholesale."
+        },
+        {
+          "index": 2,
+          "name": ".grid 2",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS subtest is a Spinon fixture candidate unless it requires automatic implicit tracks; WPT fixture geometry is not copied wholesale."
+        },
+        {
+          "index": 3,
+          "name": ".grid 3",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS subtest is a Spinon fixture candidate unless it requires automatic implicit tracks; WPT fixture geometry is not copied wholesale."
+        },
+        {
+          "index": 4,
+          "name": ".grid 4",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS subtest is a Spinon fixture candidate unless it requires automatic implicit tracks; WPT fixture geometry is not copied wholesale."
+        },
+        {
+          "index": 5,
+          "name": ".grid 5",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS subtest is a Spinon fixture candidate unless it requires automatic implicit tracks; WPT fixture geometry is not copied wholesale."
+        },
+        {
+          "index": 6,
+          "name": ".grid 6",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS subtest is a Spinon fixture candidate unless it requires automatic implicit tracks; WPT fixture geometry is not copied wholesale."
+        },
+        {
+          "index": 7,
+          "name": ".grid 7",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS subtest is a Spinon fixture candidate unless it requires automatic implicit tracks; WPT fixture geometry is not copied wholesale."
+        },
+        {
+          "index": 8,
+          "name": ".grid 8",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS subtest is a Spinon fixture candidate unless it requires automatic implicit tracks; WPT fixture geometry is not copied wholesale."
+        },
+        {
+          "index": 9,
+          "name": ".grid 9",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS subtest is a Spinon fixture candidate unless it requires automatic implicit tracks; WPT fixture geometry is not copied wholesale."
+        },
+        {
+          "index": 10,
+          "name": ".grid 10",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS subtest is a Spinon fixture candidate unless it requires automatic implicit tracks; WPT fixture geometry is not copied wholesale."
+        },
+        {
+          "index": 11,
+          "name": ".grid 11",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS subtest is a Spinon fixture candidate unless it requires automatic implicit tracks; WPT fixture geometry is not copied wholesale."
+        },
+        {
+          "index": 12,
+          "name": ".grid 12",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS subtest is a Spinon fixture candidate unless it requires automatic implicit tracks; WPT fixture geometry is not copied wholesale."
+        },
+        {
+          "index": 13,
+          "name": ".grid 13",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS subtest is a Spinon fixture candidate unless it requires automatic implicit tracks; WPT fixture geometry is not copied wholesale."
+        },
+        {
+          "index": 14,
+          "name": ".grid 14",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS subtest is a Spinon fixture candidate unless it requires automatic implicit tracks; WPT fixture geometry is not copied wholesale."
+        },
+        {
+          "index": 15,
+          "name": ".grid 15",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS subtest is a Spinon fixture candidate unless it requires automatic implicit tracks; WPT fixture geometry is not copied wholesale."
+        },
+        {
+          "index": 16,
+          "name": ".grid 16",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS subtest is a Spinon fixture candidate unless it requires automatic implicit tracks; WPT fixture geometry is not copied wholesale."
+        },
+        {
+          "index": 17,
+          "name": ".grid 17",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS subtest is a Spinon fixture candidate unless it requires automatic implicit tracks; WPT fixture geometry is not copied wholesale."
+        },
+        {
+          "index": 18,
+          "name": ".grid 18",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS subtest is a Spinon fixture candidate unless it requires automatic implicit tracks; WPT fixture geometry is not copied wholesale."
+        },
+        {
+          "index": 19,
+          "name": ".grid 19",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS subtest is a Spinon fixture candidate unless it requires automatic implicit tracks; WPT fixture geometry is not copied wholesale."
+        },
+        {
+          "index": 20,
+          "name": ".grid 20",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS subtest is a Spinon fixture candidate unless it requires automatic implicit tracks; WPT fixture geometry is not copied wholesale."
+        },
+        {
+          "index": 21,
+          "name": ".grid 21",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS subtest is a Spinon fixture candidate unless it requires automatic implicit tracks; WPT fixture geometry is not copied wholesale."
+        },
+        {
+          "index": 22,
+          "name": ".grid 22",
+          "status": "PASS",
+          "classification": "spinon-fixture-candidate",
+          "reason": "Each PASS subtest is a Spinon fixture candidate unless it requires automatic implicit tracks; WPT fixture geometry is not copied wholesale."
+        }
+      ]
+    },
+    {
+      "path": "css/css-grid/placement/grid-placement-unknown-named-area-001.html",
+      "sourceSha256": "7fa795ad262e74399487fa817da1e99a75bbcce2e46b5f4547d55959e2e9ebd4",
+      "status": "OK",
+      "classification": "Currently unsupported: unknown area creates implicit named lines/tracks outside C11.3.3. Chrome oracle only.",
+      "subtests": [
+        {
+          "index": 1,
+          "name": ".grid 1",
+          "status": "PASS",
+          "classification": "currently-unsupported",
+          "reason": "Each PASS subtest is currently unsupported because it requires implicit track generation; no Spinon fixture claims support."
+        },
+        {
+          "index": 2,
+          "name": ".grid 2",
+          "status": "PASS",
+          "classification": "currently-unsupported",
+          "reason": "Each PASS subtest is currently unsupported because it requires implicit track generation; no Spinon fixture claims support."
+        },
+        {
+          "index": 3,
+          "name": ".grid 3",
+          "status": "PASS",
+          "classification": "currently-unsupported",
+          "reason": "Each PASS subtest is currently unsupported because it requires implicit track generation; no Spinon fixture claims support."
+        },
+        {
+          "index": 4,
+          "name": ".grid 4",
+          "status": "PASS",
+          "classification": "currently-unsupported",
+          "reason": "Each PASS subtest is currently unsupported because it requires implicit track generation; no Spinon fixture claims support."
+        }
+      ]
+    }
+  ]
+}

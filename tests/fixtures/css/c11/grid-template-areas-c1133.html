@@ -1,0 +1,213 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Spinon C11.3.3 grid template areas Chromium reference</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 320px; height: 240px; overflow: hidden; }
+  body { font: 10px/1 sans-serif; direction: ltr; writing-mode: horizontal-tb; }
+  .scene { display: none; }
+  .scene.active { display: block; }
+  .grid {
+    display: grid;
+    width: 160px;
+    height: 120px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    gap: 0;
+    grid-auto-flow: row;
+    align-content: start;
+    justify-content: start;
+    background: #101820;
+  }
+  [data-node] { min-width: 0; min-height: 0; margin: 0; padding: 0; border: 0; }
+  .item { background: #e5484d; }
+  .item.alt { background: #3e63dd; }
+  .item.green { background: #30a46c; }
+  .hidden { display: none; }
+  .invalid-l-grid,
+  .invalid-disconnected-grid,
+  .invalid-row-width-grid,
+  .invalid-trash-grid,
+  .invalid-empty-grid {
+    grid-template-columns: 40px 60px 60px;
+    grid-template-rows: 40px 40px 40px;
+    grid-template-areas: "fallback fallback ." "left right right" "foot foot foot";
+  }
+  .invalid-l-grid { grid-template-areas: "broken broken ." "broken . ." "foot foot foot"; }
+  .invalid-disconnected-grid { grid-template-areas: "broken . broken" "left middle right" "foot foot foot"; }
+  .invalid-row-width-grid { grid-template-areas: "a b" "c d e" "foot foot foot"; }
+  .invalid-trash-grid { grid-template-areas: "a b" - "c d"; }
+  .invalid-empty-grid { grid-template-areas: ""; }
+</style>
+<body>
+  <div class="scene" data-scene="basic-rectangles">
+    <div class="grid" data-node id="basic-grid" style="grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:'head head .' 'nav main main' 'foot foot foot'">
+      <div class="item" data-node id="basic-head" style="grid-area:head"></div>
+      <div class="item alt" data-node id="basic-main" style="grid-area:main"></div>
+      <div class="item green" data-node id="basic-foot" style="grid-area:foot"></div>
+    </div>
+  </div>
+
+  <div class="scene" data-scene="null-cell-dot-runs">
+    <div class="grid" data-node id="null-grid" style="grid-template-columns:40px 60px 60px;grid-template-rows:60px 60px;grid-template-areas:'.... hero ....' 'left hero right'">
+      <div class="item" data-node id="null-hero" style="grid-area:hero"></div>
+      <div class="item alt" data-node id="null-left" style="grid-area:left"></div>
+      <div class="item green" data-node id="null-right" style="grid-area:right"></div>
+    </div>
+  </div>
+
+  <div class="scene" data-scene="all-null-cells">
+    <div class="grid" data-node id="empty-grid" style="grid-template-columns:80px 80px;grid-template-rows:60px 60px;grid-template-areas:'. ....' '... .'">
+    </div>
+  </div>
+
+  <div class="scene" data-scene="single-cell-area">
+    <div class="grid" data-node id="single-grid" style="width:160px;height:120px;grid-template-columns:160px;grid-template-rows:120px;grid-template-areas:'solo'">
+      <div class="item" data-node id="single-item" style="grid-area:solo"></div>
+    </div>
+  </div>
+
+  <div class="scene" data-scene="bare-area-edge-aliases">
+    <div class="grid" data-node id="alias-grid" style="grid-template-columns:40px 60px 60px;grid-template-rows:40px 80px;grid-template-areas:'foo foo .' 'bar baz baz'">
+      <div class="item" data-node id="alias-area" style="grid-column:foo-start / foo-end;grid-row:foo-start / foo-end"></div>
+    </div>
+  </div>
+
+  <div class="scene" data-scene="grid-area-one-value">
+    <div class="grid" data-node id="area-one-grid" style="grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:'head head .' 'nav main main' 'foot foot foot'">
+      <div class="item" data-node id="area-one-item" style="grid-area:main"></div>
+    </div>
+  </div>
+
+  <div class="scene" data-scene="grid-area-two-values">
+    <div class="grid" data-node id="area-two-grid" style="grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:'a a .' 'b c c' 'd d d'">
+      <div class="item" data-node id="area-two-item" style="grid-area:1 / 2"></div>
+    </div>
+  </div>
+
+  <div class="scene" data-scene="grid-area-three-values">
+    <div class="grid" data-node id="area-three-grid" style="grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:'a a .' 'b c c' 'd d d'">
+      <div class="item" data-node id="area-three-item" style="grid-area:2 / 2 / 4"></div>
+    </div>
+  </div>
+
+  <div class="scene" data-scene="grid-area-four-values">
+    <div class="grid" data-node id="area-four-grid" style="grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:'a a .' 'b c c' 'd d d'">
+      <div class="item" data-node id="area-four-item" style="grid-area:1 / 1 / span 2 / span 2"></div>
+    </div>
+  </div>
+
+  <div class="scene" data-scene="row-column-longhands-area">
+    <div class="grid" data-node id="longhand-grid" style="grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px;grid-template-areas:'top top .' 'left body body'">
+      <div class="item" data-node id="longhand-item" style="grid-column:body;grid-row:body"></div>
+    </div>
+  </div>
+
+  <div class="scene" data-scene="grid-template-shorthand">
+    <div class="grid" data-node id="template-grid" style="grid-template:'head head .' 40px 'left main main' 80px / 40px 60px 60px">
+      <div class="item" data-node id="template-item" style="grid-area:main"></div>
+    </div>
+  </div>
+
+  <div class="scene" data-scene="grid-shorthand">
+    <div class="grid" data-node id="grid-shorthand-grid" style="grid:'head head .' 40px 'left main main' 80px / 40px 60px 60px">
+      <div class="item" data-node id="grid-shorthand-item" style="grid-area:main"></div>
+    </div>
+  </div>
+
+  <div class="scene" data-scene="bare-area-vs-explicit-one-name">
+    <div class="grid" data-node id="bare-vs-number-grid" style="grid-template-columns:[foo] 40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:'. foo foo' 'bar foo foo' 'foot foot foot'">
+      <div class="item" data-node id="bare-area-name" style="grid-column:foo;grid-row:1"></div>
+      <div class="item alt" data-node id="explicit-one-name" style="grid-column:1 foo;grid-row:2"></div>
+    </div>
+  </div>
+
+  <div class="scene" data-scene="explicit-line-before-area">
+    <div class="grid" data-node id="line-before-grid" style="grid-template-columns:[a-start c-start] 40px [d-start] 60px 60px;grid-template-rows:[c-start] 40px [d-start] 40px 40px;grid-template-areas:'. a a' 'c a a' '. . d'">
+      <div class="item" data-node id="line-before-area" style="grid-column:a;grid-row:1"></div>
+      <div class="item alt" data-node id="line-before-name" style="grid-column:a-start;grid-row:2"></div>
+      <div class="item green" data-node id="line-before-grid-area" style="grid-column:d;grid-row:d"></div>
+    </div>
+  </div>
+
+  <div class="scene" data-scene="explicit-line-after-area">
+    <div class="grid" data-node id="line-after-grid" style="grid-template-columns:40px 60px [a-start] 60px;grid-template-rows:40px 40px [c-start] 40px;grid-template-areas:'. a a' 'c a a' '. . d'">
+      <div class="item" data-node id="line-after-area" style="grid-column:a;grid-row:1"></div>
+      <div class="item alt" data-node id="line-after-name" style="grid-column:a-start;grid-row:2"></div>
+    </div>
+  </div>
+
+  <div class="scene" data-scene="area-names-ending-start-or-end">
+    <div class="grid" data-node id="suffix-grid" style="grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:'. a-start a-start' 'c a-end a-end' '. . d'">
+      <div class="item" data-node id="suffix-area-name" style="grid-column:a-start;grid-row:1"></div>
+      <div class="item alt" data-node id="suffix-area-end-name" style="grid-column:a-end;grid-row:2"></div>
+    </div>
+  </div>
+
+  <div class="scene" data-scene="implicit-area-from-explicit-lines">
+    <div class="grid" data-node id="implicit-area-grid" style="grid-template-columns:[box-start] 40px 60px [box-end];grid-template-rows:[box-start] 40px 40px [box-end];grid-template-areas:none">
+      <div class="item" data-node id="implicit-area-item" style="grid-area:box"></div>
+    </div>
+  </div>
+
+  <div class="scene" data-scene="escaped-and-unicode-identifiers">
+    <div class="grid" data-node id="unicode-grid" style="grid-template-columns:40px 60px 60px;grid-template-rows:120px;grid-template-areas:'caf\E9 . 田'">
+      <div class="item" data-node id="unicode-escaped-item" style="grid-area:café"></div>
+      <div class="item alt" data-node id="unicode-asian-item" style="grid-area:田"></div>
+    </div>
+  </div>
+
+  <div class="scene" data-scene="invalid-l-shape-fallback">
+    <div class="grid invalid-l-grid" data-node id="invalid-l-grid">
+      <div class="item" data-node id="invalid-l-fallback" style="grid-area:fallback"></div>
+    </div>
+  </div>
+
+  <div class="scene" data-scene="invalid-disconnected-area-fallback">
+    <div class="grid invalid-disconnected-grid" data-node id="invalid-disconnected-grid">
+      <div class="item" data-node id="invalid-disconnected-fallback" style="grid-area:fallback"></div>
+    </div>
+  </div>
+
+  <div class="scene" data-scene="invalid-row-width-fallback">
+    <div class="grid invalid-row-width-grid" data-node id="invalid-row-width-grid">
+      <div class="item" data-node id="invalid-row-width-fallback" style="grid-area:fallback"></div>
+    </div>
+  </div>
+
+  <div class="scene" data-scene="invalid-trash-token-fallback">
+    <div class="grid invalid-trash-grid" data-node id="invalid-trash-grid">
+      <div class="item" data-node id="invalid-trash-fallback" style="grid-area:fallback"></div>
+    </div>
+  </div>
+
+  <div class="scene" data-scene="empty-string-fallback">
+    <div class="grid invalid-empty-grid" data-node id="invalid-empty-grid">
+      <div class="item" data-node id="invalid-empty-fallback" style="grid-area:fallback"></div>
+    </div>
+  </div>
+
+  <div class="scene" data-scene="area-track-count-mismatch">
+    <div class="grid" data-node id="mismatch-grid" style="grid-template-columns:40px 120px;grid-template-rows:60px 60px;grid-template-areas:'a b c' 'd e f'">
+      <div class="item" data-node id="mismatch-last-cell" style="grid-area:c"></div>
+    </div>
+  </div>
+
+  <div class="scene" data-scene="unknown-area-implicit-tracks">
+    <div class="grid" data-node id="unknown-area-grid" style="grid-template-columns:80px 80px;grid-template-rows:60px 60px;grid-template-areas:'known .' '. .'">
+      <div class="item" data-node id="unknown-area-item" style="grid-area:not-authored"></div>
+    </div>
+  </div>
+
+  <div class="scene" data-scene="nested-hidden-source-order">
+    <div class="grid" data-node id="nested-outer-grid" style="grid-template-columns:40px 60px 60px;grid-template-rows:40px 80px;grid-template-areas:'outer outer .' 'left nested nested'">
+      <div class="item" data-node id="nested-outer-item" style="grid-area:outer"></div>
+      <div class="grid" data-node id="nested-inner-grid" style="width:120px;height:80px;grid-area:nested;grid-template-columns:60px 60px;grid-template-rows:40px 40px;grid-template-areas:'inner inner' 'bottom bottom'">
+        <div class="item alt" data-node id="nested-inner-item" style="grid-area:inner"></div>
+        <div class="item green" data-node id="nested-bottom-item" style="grid-area:bottom"></div>
+        <div class="item hidden" data-node id="nested-hidden-item" style="grid-area:left"></div>
+      </div>
+    </div>
+  </div>
+</body>

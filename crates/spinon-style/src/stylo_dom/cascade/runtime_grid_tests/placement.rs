@@ -194,21 +194,21 @@ fn template_profile_preserves_named_line_occurrences_and_both_span_token_orders(
         placement(children[0]).column_start,
         ComputedCssGridPlacement::NamedLine {
             name: "middle".to_owned(),
-            occurrence: 2,
+            occurrence: Some(2),
         }
     );
     assert_eq!(
         placement(children[1]).column_start,
         ComputedCssGridPlacement::NamedLine {
             name: "middle".to_owned(),
-            occurrence: 2,
+            occurrence: Some(2),
         }
     );
     assert_eq!(
         placement(children[0]).column_end,
         ComputedCssGridPlacement::NamedLine {
             name: "finish".to_owned(),
-            occurrence: 1,
+            occurrence: None,
         }
     );
     assert_eq!(

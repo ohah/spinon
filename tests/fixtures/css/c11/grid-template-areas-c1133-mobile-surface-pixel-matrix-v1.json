@@ -1,0 +1,62 @@
+{
+  "schema": "spinon-css-c11-3-3-grid-template-areas-mobile-surface-pixel-matrix/v1",
+  "fixtureId": "c11-3-3-basic-rectangles",
+  "sceneId": "basic-rectangles",
+  "inputs": {
+    "runtimeMatrix": {
+      "path": "tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v1.json",
+      "sha256": "da0c3a09bbf2b2794dd46a57594d384c3fa02b4c046c8e5df47c40632c32306e"
+    },
+    "reference": {
+      "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+      "sha256": "e92cb8fc33c9c55a20871d4455f4d67f6179aae239b94d0ac12afdfc337e3913"
+    }
+  },
+  "runtime": {
+    "viewportCssPx": {
+      "width": 320,
+      "height": 240
+    },
+    "deviceScaleFactor": 1
+  },
+  "oracle": {
+    "name": "Google Chrome for Testing",
+    "product": "Chrome/154.0.8037.92",
+    "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.92-bace2c635c76-953bb95b881a-6efbd2b256d1",
+    "referencePath": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+    "referenceSha256": "e92cb8fc33c9c55a20871d4455f4d67f6179aae239b94d0ac12afdfc337e3913",
+    "screenshotPath": "spec/internal/evidence/c11-3-3-grid-template-areas-precomparison-2026-10-14/c1133-chrome-20261013T235323413Z-1bb2b0db/basic-rectangles-dpr1.png",
+    "screenshotSha256": "8c356468650e194e008cdb0973811baac1c781fd827303b4a6e7e77b0e87d814",
+    "deviceScaleFactor": 1,
+    "viewportCssPx": {
+      "width": 320,
+      "height": 240
+    }
+  },
+  "samples": [
+    {
+      "id": "grid-background",
+      "nodeId": "c1133-main-grid",
+      "xCssPx": 150,
+      "yCssPx": 10,
+      "rgba": [
+        16,
+        24,
+        32,
+        255
+      ]
+    },
+    {
+      "id": "item-blue",
+      "nodeId": "c1133-main-item",
+      "xCssPx": 100,
+      "yCssPx": 50,
+      "rgba": [
+        62,
+        99,
+        221,
+        255
+      ]
+    }
+  ]
+}

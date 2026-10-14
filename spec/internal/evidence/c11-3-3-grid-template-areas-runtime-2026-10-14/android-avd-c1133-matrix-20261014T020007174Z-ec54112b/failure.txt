@@ -1,0 +1,3 @@
+AssertionError [ERR_ASSERTION]: basic-rectangles: runtime 평가가 성공하지 않았습니다: 10-14 11:00:18.087  5029  5050 I SpinonBootstrap: SPINON_C1133_GRID_EVAL_RUN run_id=c1133-matrix-20261014T020007174Z-ec54112b-00-basic-rectangles scene_id=basic-rectangles status=-11 seq=1 trace_cookie=1 op=eval status=0 caller_tid=5050 owner_tid=5068 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_resid…
+    at captureMatrix (file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime-matrix.mjs:227:14)
+    at async file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime-matrix.mjs:324:20

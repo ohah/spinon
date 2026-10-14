@@ -207,9 +207,29 @@ pub struct ComputedCssGridLayout {
     pub columns_line_names: Vec<Vec<String>>,
     /// 각 explicit row 경계의 authored line-name 목록입니다. C11.3부터 N+1개입니다.
     pub rows_line_names: Vec<Vec<String>>,
+    /// C11.3.3 named area는 셀 행렬 대신 크기와 직사각형 목록으로 보존합니다.
+    pub template_areas: Option<ComputedCssGridTemplateAreas>,
     pub auto_flow: ComputedCssGridAutoFlow,
     pub auto_rows: ComputedCssGridAutoRows,
     pub auto_columns: ComputedCssGridAutoColumns,
+}
+
+/// computed `grid-template-areas`의 행·열 크기와 비어 있지 않은 영역만 보존합니다.
+#[derive(Clone, Debug, Eq, PartialEq)]
+pub struct ComputedCssGridTemplateAreas {
+    pub rows: usize,
+    pub columns: usize,
+    pub areas: Vec<ComputedCssGridArea>,
+}
+
+/// 0-based, 끝을 포함하지 않는 named area 셀 범위입니다.
+#[derive(Clone, Debug, Eq, PartialEq)]
+pub struct ComputedCssGridArea {
+    pub name: String,
+    pub row_start: usize,
+    pub row_end: usize,
+    pub column_start: usize,
+    pub column_end: usize,
 }
 
 /// Stylo가 계산한 하나의 CSS Grid item 배치 끝점입니다.
@@ -217,9 +237,16 @@ pub struct ComputedCssGridLayout {
 pub enum ComputedCssGridPlacement {
     Auto,
     Line(i32),
-    NamedLine { name: String, occurrence: i32 },
+    /// `None`은 bare `<custom-ident>`, `Some(n)`은 명시 occurrence입니다.
+    NamedLine {
+        name: String,
+        occurrence: Option<i32>,
+    },
     Span(i32),
-    SpanNamed { name: String, count: u32 },
+    SpanNamed {
+        name: String,
+        count: u32,
+    },
     Unsupported(String),
 }
 

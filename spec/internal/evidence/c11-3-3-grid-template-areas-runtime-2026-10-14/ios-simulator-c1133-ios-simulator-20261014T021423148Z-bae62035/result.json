@@ -1,0 +1,140 @@
+{
+  "schema": "spinon-c11-3-3-grid-template-areas-runtime-result/v1",
+  "status": "matched",
+  "runID": "c1133-ios-simulator-20261014T021423148Z-bae62035",
+  "target": "ios-simulator",
+  "fixture": {
+    "path": "tests/fixtures/css/c11/grid-template-areas-c1133-mobile-surface-pixel-matrix-v1.json",
+    "sha256": "ef481979ad30a6b929147b151fcec6100c0479d08b0a0495f88cc212ace0d343"
+  },
+  "oracle": {
+    "product": "Chrome/154.0.8037.92",
+    "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.92-bace2c635c76-953bb95b881a-6efbd2b256d1",
+    "referenceSha256": "e92cb8fc33c9c55a20871d4455f4d67f6179aae239b94d0ac12afdfc337e3913",
+    "screenshotSha256": "8c356468650e194e008cdb0973811baac1c781fd827303b4a6e7e77b0e87d814",
+    "sampleCount": 2,
+    "maximumChannelError": 0,
+    "oracleComparison": {
+      "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.92-bace2c635c76-953bb95b881a-6efbd2b256d1",
+      "screenshot": [
+        320,
+        240
+      ],
+      "sampleCount": 2
+    }
+  },
+  "platform": {
+    "metadata": {
+      "name": "iPhone 17 Pro",
+      "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2"
+    },
+    "appSha256": "a5a5564c425e096722842bb502a1a11a12c0bda3593cbd5ddb26eb6ed039d6bf",
+    "frames": [
+      {
+        "index": 0,
+        "nodeId": 1,
+        "x": 0,
+        "y": 0,
+        "width": 160,
+        "height": 120
+      },
+      {
+        "index": 1,
+        "nodeId": 2,
+        "x": 0,
+        "y": 0,
+        "width": 100,
+        "height": 40
+      },
+      {
+        "index": 2,
+        "nodeId": 3,
+        "x": 40,
+        "y": 40,
+        "width": 120,
+        "height": 40
+      },
+      {
+        "index": 3,
+        "nodeId": 4,
+        "x": 0,
+        "y": 80,
+        "width": 160,
+        "height": 40
+      }
+    ],
+    "pixelComparison": {
+      "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+      "status": "matched",
+      "runID": "c1133-ios-simulator-20261014T021423148Z-bae62035",
+      "processId": 1734,
+      "surfaceGeneration": 1,
+      "revisions": {
+        "document": 20,
+        "renderTree": 4,
+        "environment": 1
+      },
+      "runtimeViewportCssPx": [
+        320,
+        240
+      ],
+      "drawable": [
+        960,
+        720
+      ],
+      "scale": [
+        3,
+        3
+      ],
+      "expectedSamples": 2,
+      "matchedSamples": 2,
+      "maximumChannelError": 0,
+      "samples": [
+        {
+          "id": "grid-background",
+          "css": [
+            150,
+            10
+          ],
+          "drawable": [
+            451,
+            31
+          ],
+          "rgba": [
+            16,
+            24,
+            32,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "item-blue",
+          "css": [
+            100,
+            50
+          ],
+          "drawable": [
+            301,
+            151
+          ],
+          "rgba": [
+            62,
+            99,
+            221,
+            255
+          ],
+          "maximumChannelError": 0
+        }
+      ]
+    },
+    "screenSha256": "3cfb3130e369f3f20ae1d5b5eee610dfe4f63f0d4ec0fd046a39d7b7c041901d",
+    "negative": {
+      "status": "rejected-before-readback",
+      "runID": "c1133-ios-simulator-20261014T021423148Z-bae62035-bad-samples",
+      "readbackStarted": false
+    }
+  },
+  "interpretation": "Metal drawable 표면을 OS compositor 제출 전에 읽어 고정 Chrome RGBA와 비교했다. 별도 화면 캡처는 UI 확인 자료다."
+}

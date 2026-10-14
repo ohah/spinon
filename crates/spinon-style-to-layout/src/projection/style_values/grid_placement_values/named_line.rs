@@ -1,6 +1,9 @@
+#[path = "named_line/area.rs"]
+mod area;
+
 use spinon_core::NodeId;
 use spinon_layout::GridPlacementInput;
-use spinon_style::ComputedCssGridPlacement;
+use spinon_style::{ComputedCssGridPlacement, ComputedCssGridTemplateAreas};
 
 use crate::StyleLayoutError;
 
@@ -8,16 +11,32 @@ use crate::StyleLayoutError;
 enum Placement<'a> {
     Auto,
     Line(i32),
-    NamedLine { name: &'a str, occurrence: i32 },
+    NamedLine {
+        name: &'a str,
+        occurrence: Option<i32>,
+    },
     Span(u32),
-    SpanNamed { name: &'a str, count: u32 },
+    SpanNamed {
+        name: &'a str,
+        count: u32,
+    },
 }
 
-struct LineMetadata<'a> {
-    names: &'a [Vec<String>],
-    track_count: usize,
+pub(super) struct LineMetadata<'a> {
+    pub(super) names: &'a [Vec<String>],
+    pub(super) opposite_names: &'a [Vec<String>],
+    pub(super) areas: Option<&'a ComputedCssGridTemplateAreas>,
+    pub(super) axis: GridAxis,
+    pub(super) track_count: usize,
 }
 
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub(super) enum GridAxis {
+    Rows,
+    Columns,
+}
+
+#[cfg(test)]
 pub(super) fn project_axis(
     node: NodeId,
     start_property: &'static str,
@@ -27,12 +46,32 @@ pub(super) fn project_axis(
     line_names: &[Vec<String>],
     track_count: usize,
 ) -> Result<(GridPlacementInput, GridPlacementInput), StyleLayoutError> {
+    project_axis_with_areas(
+        node,
+        start_property,
+        end_property,
+        start,
+        end,
+        LineMetadata {
+            names: line_names,
+            opposite_names: &[],
+            areas: None,
+            axis: GridAxis::Rows,
+            track_count,
+        },
+    )
+}
+
+pub(super) fn project_axis_with_areas(
+    node: NodeId,
+    start_property: &'static str,
+    end_property: &'static str,
+    start: &ComputedCssGridPlacement,
+    end: &ComputedCssGridPlacement,
+    line_metadata: LineMetadata<'_>,
+) -> Result<(GridPlacementInput, GridPlacementInput), StyleLayoutError> {
     let start = decode(node, start_property, start)?;
     let end = decode(node, end_property, end)?;
-    let line_metadata = LineMetadata {
-        names: line_names,
-        track_count,
-    };
     let (start, end) = resolve_named_placements(
         node,
         start_property,
@@ -91,10 +130,10 @@ fn resolve_named_placements<'a>(
     line_metadata: &LineMetadata<'_>,
 ) -> Result<(Placement<'a>, Placement<'a>), StyleLayoutError> {
     if matches!(start, Placement::NamedLine { .. }) {
-        start = resolve_named_endpoint(node, start_property, start, line_metadata)?;
+        start = resolve_named_endpoint(node, start_property, start, true, line_metadata)?;
     }
     if matches!(end, Placement::NamedLine { .. }) {
-        end = resolve_named_endpoint(node, end_property, end, line_metadata)?;
+        end = resolve_named_endpoint(node, end_property, end, false, line_metadata)?;
     }
 
     match (start, end) {
@@ -170,12 +209,17 @@ fn resolve_named_endpoint<'a>(
     node: NodeId,
     property: &'static str,
     placement: Placement<'a>,
+    is_start: bool,
     line_metadata: &LineMetadata<'_>,
 ) -> Result<Placement<'a>, StyleLayoutError> {
     let Placement::NamedLine { name, occurrence } = placement else {
         return Ok(placement);
     };
-    let line = find_named_occurrence(node, property, name, occurrence, line_metadata)?;
+    let line = if let Some(occurrence) = occurrence {
+        find_named_occurrence(node, property, name, occurrence, line_metadata)?
+    } else {
+        area::resolve_bare_custom_ident(node, property, name, is_start, line_metadata)?
+    };
     Ok(Placement::Line(line))
 }
 
@@ -209,13 +253,8 @@ fn resolve_named_span_line(
     let mut found = None;
     match direction {
         SearchDirection::Forward => {
-            for (index, names) in line_metadata
-                .names
-                .iter()
-                .enumerate()
-                .skip(opposite_index + 1)
-            {
-                if names.iter().any(|candidate| candidate == name) {
+            for index in (opposite_index + 1)..line_metadata.names.len() {
+                if area::line_has_name(line_metadata, index, name) {
                     remaining -= 1;
                     if remaining == 0 {
                         found = Some(index);
@@ -225,14 +264,8 @@ fn resolve_named_span_line(
             }
         }
         SearchDirection::Backward => {
-            for (index, names) in line_metadata
-                .names
-                .iter()
-                .enumerate()
-                .take(opposite_index)
-                .rev()
-            {
-                if names.iter().any(|candidate| candidate == name) {
+            for index in (0..opposite_index).rev() {
+                if area::line_has_name(line_metadata, index, name) {
                     remaining -= 1;
                     if remaining == 0 {
                         found = Some(index);
@@ -280,7 +313,7 @@ fn find_named_occurrence(
         .names
         .iter()
         .enumerate()
-        .filter(|(_, names)| names.iter().any(|candidate| candidate == name));
+        .filter(|(index, _)| area::line_has_name(line_metadata, *index, name));
     let selected = if occurrence > 0 {
         let ordinal = usize::try_from(occurrence - 1).map_err(|_| {
             unsupported_named_line(

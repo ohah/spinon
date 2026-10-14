@@ -1,0 +1,506 @@
+{
+  "schema": "spinon-css-c11-3-3-grid-template-areas-runtime-matrix/v1",
+  "profileId": "RuntimeBlockFlexGridTemplateV1",
+  "inputs": {
+    "inventory": {
+      "path": "tests/fixtures/css/c11/grid-template-areas-c1133-inventory.json",
+      "sha256": "bace2c635c7685b25291c023dd880736e6cdcb17c4034c517902c23cf13b3cd2"
+    },
+    "html": {
+      "path": "tests/fixtures/css/c11/grid-template-areas-c1133.html",
+      "sha256": "953bb95b881ae4cd41a31f7424fc0bb6db16fe75d498429268005a43f26c4bac"
+    },
+    "reference": {
+      "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+      "sha256": "e92cb8fc33c9c55a20871d4455f4d67f6179aae239b94d0ac12afdfc337e3913"
+    }
+  },
+  "summary": {
+    "sceneCount": 26,
+    "nodeCount": 65,
+    "successCount": 19,
+    "cascadeFallbackCount": 5,
+    "expectedRejectCount": 2
+  },
+  "cases": [
+    {
+      "index": 0,
+      "id": "basic-rectangles",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "basic-grid",
+      "nodeIds": [
+        "basic-grid",
+        "basic-head",
+        "basic-main",
+        "basic-foot"
+      ],
+      "parentIds": [
+        null,
+        "basic-grid",
+        "basic-grid",
+        "basic-grid"
+      ],
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"basic-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:'head head .' 'nav main main' 'foot foot foot'\");\ndocument.appendChild(node_0);\nrefs[\"basic-grid\"] = node_0;\nnodeIds.push(\"basic-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"basic-head\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:head\");\nrefs[\"basic-grid\"].appendChild(node_1);\nrefs[\"basic-head\"] = node_1;\nnodeIds.push(\"basic-head\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"basic-main\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;background-color:#3e63dd;grid-area:main\");\nrefs[\"basic-grid\"].appendChild(node_2);\nrefs[\"basic-main\"] = node_2;\nnodeIds.push(\"basic-main\");\nconst node_3 = document.createElement('div');\nnode_3.setAttribute('id', \"basic-foot\");\nnode_3.setAttribute('data-node', '');\nnode_3.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;background-color:#30a46c;grid-area:foot\");\nrefs[\"basic-grid\"].appendChild(node_3);\nrefs[\"basic-foot\"] = node_3;\nnodeIds.push(\"basic-foot\");\nreturn { sceneId:'basic-rectangles', rootId:\"basic-grid\", nodeIds };\n})()"
+    },
+    {
+      "index": 1,
+      "id": "null-cell-dot-runs",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "null-grid",
+      "nodeIds": [
+        "null-grid",
+        "null-hero",
+        "null-left",
+        "null-right"
+      ],
+      "parentIds": [
+        null,
+        "null-grid",
+        "null-grid",
+        "null-grid"
+      ],
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"null-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:60px 60px;grid-template-areas:'.... hero ....' 'left hero right'\");\ndocument.appendChild(node_0);\nrefs[\"null-grid\"] = node_0;\nnodeIds.push(\"null-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"null-hero\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:hero\");\nrefs[\"null-grid\"].appendChild(node_1);\nrefs[\"null-hero\"] = node_1;\nnodeIds.push(\"null-hero\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"null-left\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;background-color:#3e63dd;grid-area:left\");\nrefs[\"null-grid\"].appendChild(node_2);\nrefs[\"null-left\"] = node_2;\nnodeIds.push(\"null-left\");\nconst node_3 = document.createElement('div');\nnode_3.setAttribute('id', \"null-right\");\nnode_3.setAttribute('data-node', '');\nnode_3.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;background-color:#30a46c;grid-area:right\");\nrefs[\"null-grid\"].appendChild(node_3);\nrefs[\"null-right\"] = node_3;\nnodeIds.push(\"null-right\");\nreturn { sceneId:'null-cell-dot-runs', rootId:\"null-grid\", nodeIds };\n})()"
+    },
+    {
+      "index": 2,
+      "id": "all-null-cells",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "empty-grid",
+      "nodeIds": [
+        "empty-grid"
+      ],
+      "parentIds": [
+        null
+      ],
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"empty-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:80px 80px;grid-template-rows:60px 60px;grid-template-areas:'. ....' '... .'\");\ndocument.appendChild(node_0);\nrefs[\"empty-grid\"] = node_0;\nnodeIds.push(\"empty-grid\");\nreturn { sceneId:'all-null-cells', rootId:\"empty-grid\", nodeIds };\n})()"
+    },
+    {
+      "index": 3,
+      "id": "single-cell-area",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "single-grid",
+      "nodeIds": [
+        "single-grid",
+        "single-item"
+      ],
+      "parentIds": [
+        null,
+        "single-grid"
+      ],
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"single-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;width:160px;height:120px;grid-template-columns:160px;grid-template-rows:120px;grid-template-areas:'solo'\");\ndocument.appendChild(node_0);\nrefs[\"single-grid\"] = node_0;\nnodeIds.push(\"single-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"single-item\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:solo\");\nrefs[\"single-grid\"].appendChild(node_1);\nrefs[\"single-item\"] = node_1;\nnodeIds.push(\"single-item\");\nreturn { sceneId:'single-cell-area', rootId:\"single-grid\", nodeIds };\n})()"
+    },
+    {
+      "index": 4,
+      "id": "bare-area-edge-aliases",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "alias-grid",
+      "nodeIds": [
+        "alias-grid",
+        "alias-area"
+      ],
+      "parentIds": [
+        null,
+        "alias-grid"
+      ],
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"alias-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 80px;grid-template-areas:'foo foo .' 'bar baz baz'\");\ndocument.appendChild(node_0);\nrefs[\"alias-grid\"] = node_0;\nnodeIds.push(\"alias-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"alias-area\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-column:foo-start / foo-end;grid-row:foo-start / foo-end\");\nrefs[\"alias-grid\"].appendChild(node_1);\nrefs[\"alias-area\"] = node_1;\nnodeIds.push(\"alias-area\");\nreturn { sceneId:'bare-area-edge-aliases', rootId:\"alias-grid\", nodeIds };\n})()"
+    },
+    {
+      "index": 5,
+      "id": "grid-area-one-value",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "area-one-grid",
+      "nodeIds": [
+        "area-one-grid",
+        "area-one-item"
+      ],
+      "parentIds": [
+        null,
+        "area-one-grid"
+      ],
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"area-one-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:'head head .' 'nav main main' 'foot foot foot'\");\ndocument.appendChild(node_0);\nrefs[\"area-one-grid\"] = node_0;\nnodeIds.push(\"area-one-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"area-one-item\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:main\");\nrefs[\"area-one-grid\"].appendChild(node_1);\nrefs[\"area-one-item\"] = node_1;\nnodeIds.push(\"area-one-item\");\nreturn { sceneId:'grid-area-one-value', rootId:\"area-one-grid\", nodeIds };\n})()"
+    },
+    {
+      "index": 6,
+      "id": "grid-area-two-values",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "area-two-grid",
+      "nodeIds": [
+        "area-two-grid",
+        "area-two-item"
+      ],
+      "parentIds": [
+        null,
+        "area-two-grid"
+      ],
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"area-two-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:'a a .' 'b c c' 'd d d'\");\ndocument.appendChild(node_0);\nrefs[\"area-two-grid\"] = node_0;\nnodeIds.push(\"area-two-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"area-two-item\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:1 / 2\");\nrefs[\"area-two-grid\"].appendChild(node_1);\nrefs[\"area-two-item\"] = node_1;\nnodeIds.push(\"area-two-item\");\nreturn { sceneId:'grid-area-two-values', rootId:\"area-two-grid\", nodeIds };\n})()"
+    },
+    {
+      "index": 7,
+      "id": "grid-area-three-values",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "area-three-grid",
+      "nodeIds": [
+        "area-three-grid",
+        "area-three-item"
+      ],
+      "parentIds": [
+        null,
+        "area-three-grid"
+      ],
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"area-three-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:'a a .' 'b c c' 'd d d'\");\ndocument.appendChild(node_0);\nrefs[\"area-three-grid\"] = node_0;\nnodeIds.push(\"area-three-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"area-three-item\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:2 / 2 / 4\");\nrefs[\"area-three-grid\"].appendChild(node_1);\nrefs[\"area-three-item\"] = node_1;\nnodeIds.push(\"area-three-item\");\nreturn { sceneId:'grid-area-three-values', rootId:\"area-three-grid\", nodeIds };\n})()"
+    },
+    {
+      "index": 8,
+      "id": "grid-area-four-values",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "area-four-grid",
+      "nodeIds": [
+        "area-four-grid",
+        "area-four-item"
+      ],
+      "parentIds": [
+        null,
+        "area-four-grid"
+      ],
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"area-four-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:'a a .' 'b c c' 'd d d'\");\ndocument.appendChild(node_0);\nrefs[\"area-four-grid\"] = node_0;\nnodeIds.push(\"area-four-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"area-four-item\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:1 / 1 / span 2 / span 2\");\nrefs[\"area-four-grid\"].appendChild(node_1);\nrefs[\"area-four-item\"] = node_1;\nnodeIds.push(\"area-four-item\");\nreturn { sceneId:'grid-area-four-values', rootId:\"area-four-grid\", nodeIds };\n})()"
+    },
+    {
+      "index": 9,
+      "id": "row-column-longhands-area",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "longhand-grid",
+      "nodeIds": [
+        "longhand-grid",
+        "longhand-item"
+      ],
+      "parentIds": [
+        null,
+        "longhand-grid"
+      ],
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"longhand-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px;grid-template-areas:'top top .' 'left body body'\");\ndocument.appendChild(node_0);\nrefs[\"longhand-grid\"] = node_0;\nnodeIds.push(\"longhand-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"longhand-item\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-column:body;grid-row:body\");\nrefs[\"longhand-grid\"].appendChild(node_1);\nrefs[\"longhand-item\"] = node_1;\nnodeIds.push(\"longhand-item\");\nreturn { sceneId:'row-column-longhands-area', rootId:\"longhand-grid\", nodeIds };\n})()"
+    },
+    {
+      "index": 10,
+      "id": "grid-template-shorthand",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "template-grid",
+      "nodeIds": [
+        "template-grid",
+        "template-item"
+      ],
+      "parentIds": [
+        null,
+        "template-grid"
+      ],
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"template-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template:'head head .' 40px 'left main main' 80px / 40px 60px 60px\");\ndocument.appendChild(node_0);\nrefs[\"template-grid\"] = node_0;\nnodeIds.push(\"template-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"template-item\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:main\");\nrefs[\"template-grid\"].appendChild(node_1);\nrefs[\"template-item\"] = node_1;\nnodeIds.push(\"template-item\");\nreturn { sceneId:'grid-template-shorthand', rootId:\"template-grid\", nodeIds };\n})()"
+    },
+    {
+      "index": 11,
+      "id": "grid-shorthand",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "grid-shorthand-grid",
+      "nodeIds": [
+        "grid-shorthand-grid",
+        "grid-shorthand-item"
+      ],
+      "parentIds": [
+        null,
+        "grid-shorthand-grid"
+      ],
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"grid-shorthand-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid:'head head .' 40px 'left main main' 80px / 40px 60px 60px\");\ndocument.appendChild(node_0);\nrefs[\"grid-shorthand-grid\"] = node_0;\nnodeIds.push(\"grid-shorthand-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"grid-shorthand-item\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:main\");\nrefs[\"grid-shorthand-grid\"].appendChild(node_1);\nrefs[\"grid-shorthand-item\"] = node_1;\nnodeIds.push(\"grid-shorthand-item\");\nreturn { sceneId:'grid-shorthand', rootId:\"grid-shorthand-grid\", nodeIds };\n})()"
+    },
+    {
+      "index": 12,
+      "id": "bare-area-vs-explicit-one-name",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "bare-vs-number-grid",
+      "nodeIds": [
+        "bare-vs-number-grid",
+        "bare-area-name",
+        "explicit-one-name"
+      ],
+      "parentIds": [
+        null,
+        "bare-vs-number-grid",
+        "bare-vs-number-grid"
+      ],
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"bare-vs-number-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:[foo] 40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:'. foo foo' 'bar foo foo' 'foot foot foot'\");\ndocument.appendChild(node_0);\nrefs[\"bare-vs-number-grid\"] = node_0;\nnodeIds.push(\"bare-vs-number-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"bare-area-name\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-column:foo;grid-row:1\");\nrefs[\"bare-vs-number-grid\"].appendChild(node_1);\nrefs[\"bare-area-name\"] = node_1;\nnodeIds.push(\"bare-area-name\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"explicit-one-name\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;background-color:#3e63dd;grid-column:1 foo;grid-row:2\");\nrefs[\"bare-vs-number-grid\"].appendChild(node_2);\nrefs[\"explicit-one-name\"] = node_2;\nnodeIds.push(\"explicit-one-name\");\nreturn { sceneId:'bare-area-vs-explicit-one-name', rootId:\"bare-vs-number-grid\", nodeIds };\n})()"
+    },
+    {
+      "index": 13,
+      "id": "explicit-line-before-area",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "line-before-grid",
+      "nodeIds": [
+        "line-before-grid",
+        "line-before-area",
+        "line-before-name",
+        "line-before-grid-area"
+      ],
+      "parentIds": [
+        null,
+        "line-before-grid",
+        "line-before-grid",
+        "line-before-grid"
+      ],
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"line-before-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:[a-start c-start] 40px [d-start] 60px 60px;grid-template-rows:[c-start] 40px [d-start] 40px 40px;grid-template-areas:'. a a' 'c a a' '. . d'\");\ndocument.appendChild(node_0);\nrefs[\"line-before-grid\"] = node_0;\nnodeIds.push(\"line-before-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"line-before-area\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-column:a;grid-row:1\");\nrefs[\"line-before-grid\"].appendChild(node_1);\nrefs[\"line-before-area\"] = node_1;\nnodeIds.push(\"line-before-area\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"line-before-name\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;background-color:#3e63dd;grid-column:a-start;grid-row:2\");\nrefs[\"line-before-grid\"].appendChild(node_2);\nrefs[\"line-before-name\"] = node_2;\nnodeIds.push(\"line-before-name\");\nconst node_3 = document.createElement('div');\nnode_3.setAttribute('id', \"line-before-grid-area\");\nnode_3.setAttribute('data-node', '');\nnode_3.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;background-color:#30a46c;grid-column:d;grid-row:d\");\nrefs[\"line-before-grid\"].appendChild(node_3);\nrefs[\"line-before-grid-area\"] = node_3;\nnodeIds.push(\"line-before-grid-area\");\nreturn { sceneId:'explicit-line-before-area', rootId:\"line-before-grid\", nodeIds };\n})()"
+    },
+    {
+      "index": 14,
+      "id": "explicit-line-after-area",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "line-after-grid",
+      "nodeIds": [
+        "line-after-grid",
+        "line-after-area",
+        "line-after-name"
+      ],
+      "parentIds": [
+        null,
+        "line-after-grid",
+        "line-after-grid"
+      ],
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"line-after-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px [a-start] 60px;grid-template-rows:40px 40px [c-start] 40px;grid-template-areas:'. a a' 'c a a' '. . d'\");\ndocument.appendChild(node_0);\nrefs[\"line-after-grid\"] = node_0;\nnodeIds.push(\"line-after-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"line-after-area\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-column:a;grid-row:1\");\nrefs[\"line-after-grid\"].appendChild(node_1);\nrefs[\"line-after-area\"] = node_1;\nnodeIds.push(\"line-after-area\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"line-after-name\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;background-color:#3e63dd;grid-column:a-start;grid-row:2\");\nrefs[\"line-after-grid\"].appendChild(node_2);\nrefs[\"line-after-name\"] = node_2;\nnodeIds.push(\"line-after-name\");\nreturn { sceneId:'explicit-line-after-area', rootId:\"line-after-grid\", nodeIds };\n})()"
+    },
+    {
+      "index": 15,
+      "id": "area-names-ending-start-or-end",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "suffix-grid",
+      "nodeIds": [
+        "suffix-grid",
+        "suffix-area-name",
+        "suffix-area-end-name"
+      ],
+      "parentIds": [
+        null,
+        "suffix-grid",
+        "suffix-grid"
+      ],
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"suffix-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:'. a-start a-start' 'c a-end a-end' '. . d'\");\ndocument.appendChild(node_0);\nrefs[\"suffix-grid\"] = node_0;\nnodeIds.push(\"suffix-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"suffix-area-name\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-column:a-start;grid-row:1\");\nrefs[\"suffix-grid\"].appendChild(node_1);\nrefs[\"suffix-area-name\"] = node_1;\nnodeIds.push(\"suffix-area-name\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"suffix-area-end-name\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;background-color:#3e63dd;grid-column:a-end;grid-row:2\");\nrefs[\"suffix-grid\"].appendChild(node_2);\nrefs[\"suffix-area-end-name\"] = node_2;\nnodeIds.push(\"suffix-area-end-name\");\nreturn { sceneId:'area-names-ending-start-or-end', rootId:\"suffix-grid\", nodeIds };\n})()"
+    },
+    {
+      "index": 16,
+      "id": "implicit-area-from-explicit-lines",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "implicit-area-grid",
+      "nodeIds": [
+        "implicit-area-grid",
+        "implicit-area-item"
+      ],
+      "parentIds": [
+        null,
+        "implicit-area-grid"
+      ],
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"implicit-area-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:[box-start] 40px 60px [box-end];grid-template-rows:[box-start] 40px 40px [box-end];grid-template-areas:none\");\ndocument.appendChild(node_0);\nrefs[\"implicit-area-grid\"] = node_0;\nnodeIds.push(\"implicit-area-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"implicit-area-item\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:box\");\nrefs[\"implicit-area-grid\"].appendChild(node_1);\nrefs[\"implicit-area-item\"] = node_1;\nnodeIds.push(\"implicit-area-item\");\nreturn { sceneId:'implicit-area-from-explicit-lines', rootId:\"implicit-area-grid\", nodeIds };\n})()"
+    },
+    {
+      "index": 17,
+      "id": "escaped-and-unicode-identifiers",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "unicode-grid",
+      "nodeIds": [
+        "unicode-grid",
+        "unicode-escaped-item",
+        "unicode-asian-item"
+      ],
+      "parentIds": [
+        null,
+        "unicode-grid",
+        "unicode-grid"
+      ],
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"unicode-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:120px;grid-template-areas:'caf\\\\E9 . 田'\");\ndocument.appendChild(node_0);\nrefs[\"unicode-grid\"] = node_0;\nnodeIds.push(\"unicode-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"unicode-escaped-item\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:café\");\nrefs[\"unicode-grid\"].appendChild(node_1);\nrefs[\"unicode-escaped-item\"] = node_1;\nnodeIds.push(\"unicode-escaped-item\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"unicode-asian-item\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;background-color:#3e63dd;grid-area:田\");\nrefs[\"unicode-grid\"].appendChild(node_2);\nrefs[\"unicode-asian-item\"] = node_2;\nnodeIds.push(\"unicode-asian-item\");\nreturn { sceneId:'escaped-and-unicode-identifiers', rootId:\"unicode-grid\", nodeIds };\n})()"
+    },
+    {
+      "index": 18,
+      "id": "invalid-l-shape-fallback",
+      "expected": {
+        "outcome": "cascade-fallback",
+        "runtimeOutcome": "success"
+      },
+      "rootId": "invalid-l-grid",
+      "nodeIds": [
+        "invalid-l-grid",
+        "invalid-l-fallback"
+      ],
+      "parentIds": [
+        null,
+        "invalid-l-grid"
+      ],
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"invalid-l-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:\\\"fallback fallback .\\\" \\\"left right right\\\" \\\"foot foot foot\\\";grid-template-areas:\\\"broken broken .\\\" \\\"broken . .\\\" \\\"foot foot foot\\\"\");\ndocument.appendChild(node_0);\nrefs[\"invalid-l-grid\"] = node_0;\nnodeIds.push(\"invalid-l-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"invalid-l-fallback\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:fallback\");\nrefs[\"invalid-l-grid\"].appendChild(node_1);\nrefs[\"invalid-l-fallback\"] = node_1;\nnodeIds.push(\"invalid-l-fallback\");\nreturn { sceneId:'invalid-l-shape-fallback', rootId:\"invalid-l-grid\", nodeIds };\n})()"
+    },
+    {
+      "index": 19,
+      "id": "invalid-disconnected-area-fallback",
+      "expected": {
+        "outcome": "cascade-fallback",
+        "runtimeOutcome": "success"
+      },
+      "rootId": "invalid-disconnected-grid",
+      "nodeIds": [
+        "invalid-disconnected-grid",
+        "invalid-disconnected-fallback"
+      ],
+      "parentIds": [
+        null,
+        "invalid-disconnected-grid"
+      ],
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"invalid-disconnected-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:\\\"fallback fallback .\\\" \\\"left right right\\\" \\\"foot foot foot\\\";grid-template-areas:\\\"broken . broken\\\" \\\"left middle right\\\" \\\"foot foot foot\\\"\");\ndocument.appendChild(node_0);\nrefs[\"invalid-disconnected-grid\"] = node_0;\nnodeIds.push(\"invalid-disconnected-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"invalid-disconnected-fallback\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:fallback\");\nrefs[\"invalid-disconnected-grid\"].appendChild(node_1);\nrefs[\"invalid-disconnected-fallback\"] = node_1;\nnodeIds.push(\"invalid-disconnected-fallback\");\nreturn { sceneId:'invalid-disconnected-area-fallback', rootId:\"invalid-disconnected-grid\", nodeIds };\n})()"
+    },
+    {
+      "index": 20,
+      "id": "invalid-row-width-fallback",
+      "expected": {
+        "outcome": "cascade-fallback",
+        "runtimeOutcome": "success"
+      },
+      "rootId": "invalid-row-width-grid",
+      "nodeIds": [
+        "invalid-row-width-grid",
+        "invalid-row-width-fallback"
+      ],
+      "parentIds": [
+        null,
+        "invalid-row-width-grid"
+      ],
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"invalid-row-width-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:\\\"fallback fallback .\\\" \\\"left right right\\\" \\\"foot foot foot\\\";grid-template-areas:\\\"a b\\\" \\\"c d e\\\" \\\"foot foot foot\\\"\");\ndocument.appendChild(node_0);\nrefs[\"invalid-row-width-grid\"] = node_0;\nnodeIds.push(\"invalid-row-width-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"invalid-row-width-fallback\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:fallback\");\nrefs[\"invalid-row-width-grid\"].appendChild(node_1);\nrefs[\"invalid-row-width-fallback\"] = node_1;\nnodeIds.push(\"invalid-row-width-fallback\");\nreturn { sceneId:'invalid-row-width-fallback', rootId:\"invalid-row-width-grid\", nodeIds };\n})()"
+    },
+    {
+      "index": 21,
+      "id": "invalid-trash-token-fallback",
+      "expected": {
+        "outcome": "cascade-fallback",
+        "runtimeOutcome": "success"
+      },
+      "rootId": "invalid-trash-grid",
+      "nodeIds": [
+        "invalid-trash-grid",
+        "invalid-trash-fallback"
+      ],
+      "parentIds": [
+        null,
+        "invalid-trash-grid"
+      ],
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"invalid-trash-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:\\\"fallback fallback .\\\" \\\"left right right\\\" \\\"foot foot foot\\\";grid-template-areas:\\\"a b\\\" - \\\"c d\\\"\");\ndocument.appendChild(node_0);\nrefs[\"invalid-trash-grid\"] = node_0;\nnodeIds.push(\"invalid-trash-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"invalid-trash-fallback\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:fallback\");\nrefs[\"invalid-trash-grid\"].appendChild(node_1);\nrefs[\"invalid-trash-fallback\"] = node_1;\nnodeIds.push(\"invalid-trash-fallback\");\nreturn { sceneId:'invalid-trash-token-fallback', rootId:\"invalid-trash-grid\", nodeIds };\n})()"
+    },
+    {
+      "index": 22,
+      "id": "empty-string-fallback",
+      "expected": {
+        "outcome": "cascade-fallback",
+        "runtimeOutcome": "success"
+      },
+      "rootId": "invalid-empty-grid",
+      "nodeIds": [
+        "invalid-empty-grid",
+        "invalid-empty-fallback"
+      ],
+      "parentIds": [
+        null,
+        "invalid-empty-grid"
+      ],
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"invalid-empty-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:\\\"fallback fallback .\\\" \\\"left right right\\\" \\\"foot foot foot\\\";grid-template-areas:\\\"\\\"\");\ndocument.appendChild(node_0);\nrefs[\"invalid-empty-grid\"] = node_0;\nnodeIds.push(\"invalid-empty-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"invalid-empty-fallback\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:fallback\");\nrefs[\"invalid-empty-grid\"].appendChild(node_1);\nrefs[\"invalid-empty-fallback\"] = node_1;\nnodeIds.push(\"invalid-empty-fallback\");\nreturn { sceneId:'empty-string-fallback', rootId:\"invalid-empty-grid\", nodeIds };\n})()"
+    },
+    {
+      "index": 23,
+      "id": "area-track-count-mismatch",
+      "expected": {
+        "outcome": "expected-rejection",
+        "code": "unsupported_computed_value",
+        "property": "grid-template-areas",
+        "nodeId": "mismatch-grid"
+      },
+      "rootId": "mismatch-grid",
+      "nodeIds": [
+        "mismatch-grid",
+        "mismatch-last-cell"
+      ],
+      "parentIds": [
+        null,
+        "mismatch-grid"
+      ],
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"mismatch-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 120px;grid-template-rows:60px 60px;grid-template-areas:'a b c' 'd e f'\");\ndocument.appendChild(node_0);\nrefs[\"mismatch-grid\"] = node_0;\nnodeIds.push(\"mismatch-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"mismatch-last-cell\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:c\");\nrefs[\"mismatch-grid\"].appendChild(node_1);\nrefs[\"mismatch-last-cell\"] = node_1;\nnodeIds.push(\"mismatch-last-cell\");\nreturn { sceneId:'area-track-count-mismatch', rootId:\"mismatch-grid\", nodeIds };\n})()"
+    },
+    {
+      "index": 24,
+      "id": "unknown-area-implicit-tracks",
+      "expected": {
+        "outcome": "expected-rejection",
+        "code": "unsupported_named_grid_line",
+        "property": "grid-row-start",
+        "nodeId": "unknown-area-item"
+      },
+      "rootId": "unknown-area-grid",
+      "nodeIds": [
+        "unknown-area-grid",
+        "unknown-area-item"
+      ],
+      "parentIds": [
+        null,
+        "unknown-area-grid"
+      ],
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"unknown-area-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:80px 80px;grid-template-rows:60px 60px;grid-template-areas:'known .' '. .'\");\ndocument.appendChild(node_0);\nrefs[\"unknown-area-grid\"] = node_0;\nnodeIds.push(\"unknown-area-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"unknown-area-item\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:not-authored\");\nrefs[\"unknown-area-grid\"].appendChild(node_1);\nrefs[\"unknown-area-item\"] = node_1;\nnodeIds.push(\"unknown-area-item\");\nreturn { sceneId:'unknown-area-implicit-tracks', rootId:\"unknown-area-grid\", nodeIds };\n})()"
+    },
+    {
+      "index": 25,
+      "id": "nested-hidden-source-order",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "nested-outer-grid",
+      "nodeIds": [
+        "nested-outer-grid",
+        "nested-outer-item",
+        "nested-inner-grid",
+        "nested-inner-item",
+        "nested-bottom-item",
+        "nested-hidden-item"
+      ],
+      "parentIds": [
+        null,
+        "nested-outer-grid",
+        "nested-outer-grid",
+        "nested-inner-grid",
+        "nested-inner-grid",
+        "nested-inner-grid"
+      ],
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"nested-outer-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 80px;grid-template-areas:'outer outer .' 'left nested nested'\");\ndocument.appendChild(node_0);\nrefs[\"nested-outer-grid\"] = node_0;\nnodeIds.push(\"nested-outer-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"nested-outer-item\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:outer\");\nrefs[\"nested-outer-grid\"].appendChild(node_1);\nrefs[\"nested-outer-item\"] = node_1;\nnodeIds.push(\"nested-outer-item\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"nested-inner-grid\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;width:120px;height:80px;grid-area:nested;grid-template-columns:60px 60px;grid-template-rows:40px 40px;grid-template-areas:'inner inner' 'bottom bottom'\");\nrefs[\"nested-outer-grid\"].appendChild(node_2);\nrefs[\"nested-inner-grid\"] = node_2;\nnodeIds.push(\"nested-inner-grid\");\nconst node_3 = document.createElement('div');\nnode_3.setAttribute('id', \"nested-inner-item\");\nnode_3.setAttribute('data-node', '');\nnode_3.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;background-color:#3e63dd;grid-area:inner\");\nrefs[\"nested-inner-grid\"].appendChild(node_3);\nrefs[\"nested-inner-item\"] = node_3;\nnodeIds.push(\"nested-inner-item\");\nconst node_4 = document.createElement('div');\nnode_4.setAttribute('id', \"nested-bottom-item\");\nnode_4.setAttribute('data-node', '');\nnode_4.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;background-color:#30a46c;grid-area:bottom\");\nrefs[\"nested-inner-grid\"].appendChild(node_4);\nrefs[\"nested-bottom-item\"] = node_4;\nnodeIds.push(\"nested-bottom-item\");\nconst node_5 = document.createElement('div');\nnode_5.setAttribute('id', \"nested-hidden-item\");\nnode_5.setAttribute('data-node', '');\nnode_5.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;display:none;grid-area:left\");\nrefs[\"nested-inner-grid\"].appendChild(node_5);\nrefs[\"nested-hidden-item\"] = node_5;\nnodeIds.push(\"nested-hidden-item\");\nreturn { sceneId:'nested-hidden-source-order', rootId:\"nested-outer-grid\", nodeIds };\n})()"
+    }
+  ]
+}

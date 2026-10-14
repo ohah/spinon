@@ -64,6 +64,17 @@ public final class MainActivity extends Activity {
             "mixed-fixed-percent-fr", "row-auto-placement", "empty-grid",
             "single-item-grid", "grid-under-block", "grid-under-flex", "flex-under-grid",
     };
+    private static final String[] C1133_GRID_TEMPLATE_AREAS_SCENE_IDS = {
+            "basic-rectangles", "null-cell-dot-runs", "all-null-cells", "single-cell-area",
+            "bare-area-edge-aliases", "grid-area-one-value", "grid-area-two-values",
+            "grid-area-three-values", "grid-area-four-values", "row-column-longhands-area",
+            "grid-template-shorthand", "grid-shorthand", "bare-area-vs-explicit-one-name",
+            "explicit-line-before-area", "explicit-line-after-area", "area-names-ending-start-or-end",
+            "implicit-area-from-explicit-lines", "escaped-and-unicode-identifiers",
+            "invalid-l-shape-fallback", "invalid-disconnected-area-fallback",
+            "invalid-row-width-fallback", "invalid-trash-token-fallback", "empty-string-fallback",
+            "area-track-count-mismatch", "unknown-area-implicit-tracks", "nested-hidden-source-order",
+    };
     private static final int RUNTIME_QUEUE_CAPACITY = 64;
     private static final String LIFECYCLE_FIXTURE_ASSET = "s03-lifecycle-probe.js";
     private static final String LIFECYCLE_FIXTURE_GLOBAL = "__spinonS03LifecycleProbeV1";
@@ -90,6 +101,14 @@ public final class MainActivity extends Activity {
     private static native int nativeSessionCancel(long session);
     private static native int nativeSessionMemoryPressure(long session, int level);
     private static native void nativeSessionFree(long session);
+
+    private static boolean isC1133GridTemplateAreasScene(String sceneId) {
+        if (sceneId == null) return false;
+        for (String candidate : C1133_GRID_TEMPLATE_AREAS_SCENE_IDS) {
+            if (candidate.equals(sceneId)) return true;
+        }
+        return false;
+    }
 
     private final ThreadPoolExecutor runtimeCalls = new ThreadPoolExecutor(
             4, 4, 0L, TimeUnit.MILLISECONDS,
@@ -230,6 +249,10 @@ public final class MainActivity extends Activity {
                 .getBooleanExtra("spinon_c1132_grid_named_lines", false);
         String c1132GridRunId = getIntent()
                 .getStringExtra("spinon_c1132_grid_named_lines_run_id");
+        boolean c1133GridTemplateAreasRequested = getIntent()
+                .getBooleanExtra("spinon_c1133_grid_template_areas", false);
+        String c1133GridRunId = getIntent()
+                .getStringExtra("spinon_c1133_grid_template_areas_run_id");
         if (c1131GridRepeatRequested
                 && ((c1131GridScene != null
                                 && !"multi-track-repeat".equals(c1131GridScene))
@@ -257,6 +280,21 @@ public final class MainActivity extends Activity {
             Log.e(TAG, "SPINON_C1132_GRID_ARGUMENT_ERROR rejected=true");
             return;
         }
+        if (c1133GridTemplateAreasRequested
+                && ((c1133GridRunId != null
+                                && !c1133GridRunId.matches("[A-Za-z0-9_-]{1,80}"))
+                        || (c11GridCase != null
+                                && !isC1133GridTemplateAreasScene(c11GridCase))
+                        || c1131GridRepeatRequested || c1132GridNamedLinesRequested
+                        || c1121GridPlacementRequested || c1122GridAutoPlacementRequested)) {
+            TextView unavailable = new TextView(this);
+            unavailable.setText("C11.3.3 Grid fixture 또는 profile 선택이 올바르지 않습니다.");
+            unavailable.setTextColor(Color.WHITE);
+            unavailable.setGravity(Gravity.CENTER);
+            setContentView(unavailable);
+            Log.e(TAG, "SPINON_C1133_GRID_ARGUMENT_ERROR rejected=true");
+            return;
+        }
         if (c1122GridAutoPlacementRequested) {
             boolean allowed = false;
             for (String sceneId : C1122_GRID_AUTO_PLACEMENT_SCENE_IDS) {
@@ -274,7 +312,7 @@ public final class MainActivity extends Activity {
         }
         boolean c11GridFixtureRequested = getIntent()
                 .getBooleanExtra("spinon_c11_grid_fixture", false) || c11GridCase != null
-                || c1132GridNamedLinesRequested;
+                || c1132GridNamedLinesRequested || c1133GridTemplateAreasRequested;
         if (c11GridCase != null) {
             c11GridSceneIndex = -1;
             for (int index = 0; index < C11_GRID_CASE_IDS.length; index++) {
@@ -312,6 +350,10 @@ public final class MainActivity extends Activity {
             }
             if (c11GridSceneIndex < 0 && c1132GridNamedLinesRequested
                     && "positive-occurrence".equals(c11GridCase)) {
+                c11GridSceneIndex = 0;
+            }
+            if (c11GridSceneIndex < 0 && c1133GridTemplateAreasRequested
+                    && isC1133GridTemplateAreasScene(c11GridCase)) {
                 c11GridSceneIndex = 0;
             }
             if (c11GridSceneIndex < 0) {
@@ -359,6 +401,7 @@ public final class MainActivity extends Activity {
                 || c1122GridAutoPlacementRequested
                 || c1131GridRepeatRequested
                 || c1132GridNamedLinesRequested
+                || c1133GridTemplateAreasRequested
                 || c11GridFixtureRequested
                 || getIntent().getBooleanExtra("spinon_c121_static_relative", false)) {
             if (!BuildConfig.SPINON_C04_RUNTIME_GPU) {

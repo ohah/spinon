@@ -1,0 +1,7 @@
+AssertionError [ERR_ASSERTION]: nested-hidden-source-order: summary boxes와 frame 수가 다릅니다.
+
+5 !== 6
+
+    at compareGeometry (file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime-matrix.mjs:136:10)
+    at captureMatrix (file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime-matrix.mjs:243:22)
+    at async file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime-matrix.mjs:324:20

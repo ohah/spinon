@@ -98,13 +98,14 @@ mod typed_css_math_tests;
 pub use margin::compute_flex_margin_cascade;
 pub use margin::compute_flex_media_environment_cascade;
 pub use snapshot::{
-    CascadeDiagnostic, ComputedCssDimension, ComputedCssEdges, ComputedCssGridAutoColumns,
-    ComputedCssGridAutoFlow, ComputedCssGridAutoRows, ComputedCssGridItemPlacement,
-    ComputedCssGridLayout, ComputedCssGridPlacement, ComputedCssGridTrackSize, ComputedCssMath,
-    ComputedCssMaxSize, ComputedCssPosition, ComputedCssSpacingValue, ComputedCssVisibility,
-    ComputedCssZIndex, ComputedElementStyle, ComputedLayoutBorder, ComputedLayoutDimensions,
-    ComputedLayoutInsets, ComputedLayoutSpacing, ComputedStyleProfile, ComputedStyleSnapshot,
-    CssColorScheme, CssMediaEnvironment, CssPointerCapabilities, CssPrimaryPointer, CssViewport,
+    CascadeDiagnostic, ComputedCssDimension, ComputedCssEdges, ComputedCssGridArea,
+    ComputedCssGridAutoColumns, ComputedCssGridAutoFlow, ComputedCssGridAutoRows,
+    ComputedCssGridItemPlacement, ComputedCssGridLayout, ComputedCssGridPlacement,
+    ComputedCssGridTemplateAreas, ComputedCssGridTrackSize, ComputedCssMath, ComputedCssMaxSize,
+    ComputedCssPosition, ComputedCssSpacingValue, ComputedCssVisibility, ComputedCssZIndex,
+    ComputedElementStyle, ComputedLayoutBorder, ComputedLayoutDimensions, ComputedLayoutInsets,
+    ComputedLayoutSpacing, ComputedStyleProfile, ComputedStyleSnapshot, CssColorScheme,
+    CssMediaEnvironment, CssPointerCapabilities, CssPrimaryPointer, CssViewport,
     FixedContainingBlockEffect,
 };
 pub use ua_baseline::compute_supported_elements_ua_cascade;
@@ -246,7 +247,7 @@ pub enum CssCascadeError {
         property: &'static str,
         value: String,
     },
-    /// C11.1 computed Grid track 목록의 공간을 예약하지 못했습니다.
+    /// computed Grid track·line-name·area 목록의 저장 공간을 예약하지 못했습니다.
     GridAllocationFailure {
         node: NodeId,
         property: &'static str,
@@ -344,7 +345,7 @@ impl fmt::Display for CssCascadeError {
             ),
             Self::GridAllocationFailure { node, property } => write!(
                 formatter,
-                "노드 {node}의 Grid 속성 {property} track 공간을 예약하지 못했습니다"
+                "노드 {node}의 Grid 속성 {property} 저장 공간을 예약하지 못했습니다"
             ),
             Self::StylesheetRegistry(error) => error.fmt(formatter),
         }

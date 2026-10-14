@@ -1,0 +1,4 @@
+AssertionError [ERR_ASSERTION]: Android 대상이 연결되지 않았습니다: emulator-5554
+    at androidDevice (file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime.mjs:109:10)
+    at runAndroid (file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime.mjs:172:29)
+    at file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime.mjs:326:70

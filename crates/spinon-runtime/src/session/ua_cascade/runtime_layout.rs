@@ -213,8 +213,18 @@ pub(super) fn compute_runtime_layout(
         ));
     }
     let projection_started = Instant::now();
-    if runtime_paint_enabled && !styles.diagnostics.is_empty() {
-        return Err(layout_failure("cascade_diagnostics", None, None));
+    if runtime_paint_enabled && let Some(diagnostic) = styles.diagnostics.first() {
+        return Err(layout_failure(
+            "cascade_diagnostics",
+            diagnostic.node_id.map(|node| node.get()),
+            Some(format!(
+                "{}:{}:{} {}",
+                diagnostic.source_id,
+                diagnostic.diagnostic.line,
+                diagnostic.diagnostic.column,
+                diagnostic.diagnostic.message
+            )),
+        ));
     }
     let output =
         compute_runtime_style_layout(&request.snapshot, root, styles.clone(), request.viewport)
@@ -409,7 +419,7 @@ fn layout_failure_from_error(error: StyleLayoutError) -> RuntimeLayoutFailure {
         StyleLayoutError::SnapshotMismatch { .. } => {
             layout_failure("snapshot_mismatch", None, None)
         }
-        _ => layout_failure("layout_failed", None, None),
+        other => layout_failure("layout_failed", None, Some(other.to_string())),
     }
 }
 

@@ -1,0 +1,5 @@
+Error: Android C11.3.3 runtime/pixel 결과 대기 시간 초과
+10-14 10:12:43.924  3329  3329 E SpinonBootstrap: SPINON_C111_GRID_ARGUMENT_ERROR rejected=true
+    at waitForLog (file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime.mjs:169:9)
+    at runAndroid (file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime.mjs:207:15)
+    at async file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime.mjs:338:64

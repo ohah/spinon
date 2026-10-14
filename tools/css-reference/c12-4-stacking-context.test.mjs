@@ -105,10 +105,11 @@ test('C12.4 runtime 진입점이 iOS·Android에서 같은 Rust fixture를 호�
   assert.match(pixelCapture, /originXCssPx \+ sample\.xCssPx \+ 0\.5/);
   assert.match(pixelCapture, /BitmapFactory\.decodeFile/);
   const readySurfaceInitialization = androidDemo.match(
-    /private void schedulePositioningInitializationForReadySurface\(\) \{([\s\S]*?)\n    \}/,
+    /private void scheduleRuntimeInitializationForReadySurface\(\) \{([\s\S]*?)\n    \}/,
   )?.[1];
   assert.ok(readySurfaceInitialization, 'ready-surface 초기화 경계를 확인해야 함');
   assert.match(readySurfaceInitialization, /!c124StackingProbeRequested/);
+  assert.match(readySurfaceInitialization, /!c1133GridTemplateAreasRequested/);
   assert.match(runnerHeader, /createRuntimeGpuHostWithC12_4StackingFixture/);
   assert.match(runnerHeader, /evalRuntimeGpuC12_4StackingFixture/);
   assert.match(jni, /spinon_runtime_gpu_host_new_c12_4_stacking_fixture/);

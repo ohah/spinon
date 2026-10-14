@@ -124,6 +124,100 @@ fn empty_grid_uses_explicit_tracks_without_creating_items() {
 }
 
 #[test]
+fn template_area_mode_stretches_definite_auto_sized_items_without_widening_dense_mode() {
+    let mut input = grid_input(
+        vec![GridTrackSize::LengthPx(40.0), GridTrackSize::LengthPx(80.0)],
+        vec![GridTrackSize::LengthPx(40.0)],
+        1,
+        LayoutGap::default(),
+    );
+    input.nodes[0].style.width = LayoutDimension::Fixed(120.0);
+    input.nodes[0].style.height = LayoutDimension::Fixed(40.0);
+    input.viewport = Viewport {
+        width: 120.0,
+        height: 40.0,
+    };
+    input.nodes[1].style.width = LayoutDimension::Auto;
+    input.nodes[1].style.height = LayoutDimension::Auto;
+    input.nodes[1].style.min_width = LayoutDimension::Fixed(0.0);
+    input.nodes[1].style.min_height = LayoutDimension::Fixed(0.0);
+    input
+        .grid_containers
+        .get_mut(&id(1))
+        .unwrap()
+        .placement_mode = GridPlacementMode::TemplateGrid;
+    input.grid_items.insert(
+        id(2),
+        GridItemInput {
+            row_start: GridPlacementInput::Line(1),
+            row_end: GridPlacementInput::Line(2),
+            column_start: GridPlacementInput::Line(2),
+            column_end: GridPlacementInput::Line(3),
+        },
+    );
+
+    let output = TaffyLayoutEngine.compute(&input).unwrap();
+    let frame = output.frames[&id(2)];
+    assert_eq!(
+        (frame.x, frame.y, frame.width, frame.height),
+        (40.0, 0.0, 80.0, 40.0)
+    );
+
+    let mut dense = input.clone();
+    dense
+        .grid_containers
+        .get_mut(&id(1))
+        .unwrap()
+        .placement_mode = GridPlacementMode::DenseAutoPlacement;
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&dense),
+        Err(LayoutError::UnsupportedGridItemSize(node)) if node == id(2)
+    ));
+
+    let mut dense_zero_minimum = input.clone();
+    dense_zero_minimum.nodes[1].style.width = LayoutDimension::Fixed(40.0);
+    dense_zero_minimum.nodes[1].style.height = LayoutDimension::Fixed(40.0);
+    dense_zero_minimum
+        .grid_containers
+        .get_mut(&id(1))
+        .unwrap()
+        .placement_mode = GridPlacementMode::DenseAutoPlacement;
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&dense_zero_minimum),
+        Err(LayoutError::UnsupportedGridItemConstraint {
+            node,
+            property: "min-width",
+        }) if node == id(2)
+    ));
+
+    for property in ["min-width", "min-height", "max-width", "max-height"] {
+        let mut constrained_area_item = input.clone();
+        let style = &mut constrained_area_item.nodes[1].style;
+        match property {
+            "min-width" => style.min_width = LayoutDimension::Fixed(1.0),
+            "min-height" => style.min_height = LayoutDimension::Fixed(1.0),
+            "max-width" => style.max_width = LayoutDimension::Fixed(1.0),
+            "max-height" => style.max_height = LayoutDimension::Fixed(1.0),
+            _ => unreachable!(),
+        }
+        assert!(matches!(
+            TaffyLayoutEngine.compute(&constrained_area_item),
+            Err(LayoutError::UnsupportedGridItemConstraint {
+                node,
+                property: actual,
+            }) if node == id(2) && actual == property
+        ));
+    }
+
+    let mut auto_placed = input;
+    auto_placed.grid_items.clear();
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&auto_placed),
+        Err(LayoutError::UnsupportedGridItemSize(node)) if node == id(2)
+    ));
+}
+
+#[test]
 fn nested_grid_containers_classify_auto_and_explicit_items_independently() {
     let mut input = grid_input(
         vec![

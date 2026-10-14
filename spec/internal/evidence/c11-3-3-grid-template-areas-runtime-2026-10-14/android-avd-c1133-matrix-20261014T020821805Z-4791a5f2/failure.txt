@@ -1,0 +1,4 @@
+AssertionError [ERR_ASSERTION]: basic-rectangles: paint node order가 없습니다.
+    at compareGeometry (file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime-matrix.mjs:139:10)
+    at captureMatrix (file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime-matrix.mjs:254:22)
+    at async file:///private/tmp/spinon-c11-3-3-work/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime-matrix.mjs:335:20

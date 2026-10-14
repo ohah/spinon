@@ -156,6 +156,8 @@ mod auto_placement;
 mod hidden_context;
 #[path = "runtime_grid_tests/placement.rs"]
 mod placement;
+#[path = "runtime_grid_tests/template_areas.rs"]
+mod template_areas;
 #[path = "runtime_grid_tests/template_repeat.rs"]
 mod template_repeat;
 #[path = "runtime_grid_tests/tracks.rs"]
