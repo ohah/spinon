@@ -13,7 +13,7 @@
 - expected identity SHA-256은 `93cccd042e82d8cd30cb7a8ab34a5154073d4a9eccbc4038294d3ca5b9dfce87`, grid JSON SHA-256은 `35e88e57edc16e526e389317b0d18ef227e35d1356a2353b92476c75ef6414f6`, Chrome observation SHA-256은 `515fc95f811399fda9e336a13e7583f2d22555fce4727f1fe7f734981abd0299`이다.
 - 입력 원본·RLE validator·기존 Android 앱 결과는 [Chrome grid 기준과 검증 자료](../spec/internal/evidence/c13-1-android-app-hit-identity-grid-2026-10-14/README.md) 및 [Android 앱 실행 근거](../spec/internal/evidence/c13-1-android-app-hit-identity-grid-runtime-2026-10-14/README.md)에 있다. 이번 단계에서 oracle을 다시 캡처하거나 expected 값을 구현 결과로 만들지 않는다.
 
-## 현재 경계
+## 계획 수립 시점의 경계
 
 - `spinon_runtime_gpu_host_eval_c13_1_compact_surface_matrix_fixture`는 고정 oracle과 실제 runtime snapshot을 비교한 전체 grid 요약을 report에 넣는다. Android app은 해당 요약의 count·digest·preview를 검사하고 한 줄 summary와 최대 16개 mismatch를 기록한다.
 - iOS `evalRuntimeGpuC13_1CompactSurfaceMatrixFixture`는 현재 frame과 52 sample을 검사하지만 전체 grid 요약은 앱 수준에서 검사하지 않는다. 요약 필드가 빠져도 현재 iOS app route가 30,000점 검증을 통과한 것으로 보일 수 있다.
@@ -37,6 +37,15 @@
 - iOS 앱 screenshot은 기능 화면 증거로 PR 본문에 inline 표시한다. PR 본문의 image URL은 PR head commit artifact를 가리키고 agent-browser에서 URL, 표시 상태, natural pixel dimensions를 확인한다.
 - 관련 Swift/Objective-C++ compile, parser tests, Chrome oracle validator, Rust focused tests, `cargo fmt --all -- --check`, workspace tests/Clippy, iOS Simulator feature-on build 및 앱 runtime을 기록한다. Android 실기기·iOS 실기기 연결은 사용하지 않는다.
 
+## 실행 결과 · 2026-10-15
+
+- `--spinon-c131-compact-hit-identity-grid`를 앱 진입점과 C13.1 compact fixture host에 연결했다. 앱 파서는 FFI report의 고정 summary JSON을 fail-closed로 확인하며 frame, 52 hit sample, full-grid 결과에 같은 app run ID와 runtime generation을 기록한다.
+- iPhone 17 Pro / iOS 26.2 Simulator에서 새 PID 3개로 실행했다. 각 실행의 41 frame, 52/52 fixed sample, 30,000/30,000 full-grid identity가 일치했고 identity·grid·Chrome observation digest가 pinned 값과 같았다. 세 실행 모두 WGPU Metal surface에 41 box를 제출했다.
+- route 중복 negative control은 runtime host 생성과 eval 전에 거부됐다. 화면에는 `완료 · C13.1 Chrome hit identity 30,000/30,000 · 52/52`가 표시된다.
+- 초기 재현에서 `AppDelegate`가 새 route flag를 runtime GPU demo로 넘기지 않아 앱이 흰 기본 화면에 남았고, 고친 뒤에는 environment update lane이 완료 상태를 일반 layout 상태로 덮었다. route 분기와 성공 상태 보존을 수정한 뒤 세 번 모두 화면과 로그를 다시 캡처했다.
+- [실행 증거](../spec/internal/evidence/c13-1-ios-app-hit-identity-grid-2026-10-15/c13-1-ios-hit-grid-20261014T154338634Z-f1835c60/README.md)는 build/runtime logs, 실행별 screenshot, 고정 digest, device metadata, frame/sample별 run ID·generation 상관관계, parser 23개 negative controls, FFI tests 8/8, workspace tests·Clippy와 rustfmt 결과를 보존한다.
+- 성공 화면·full-grid parser는 iOS 26.2 Simulator와 fixture-test build에 한정된다. 실기기, Metal drawable readback, DOM event dispatch, WPT, physical pixel parity와 C13.1 전체 완료를 증명하지 않는다.
+
 ## 제외
 
 Android app 재검증, iOS Metal drawable pixel readback, Android 788×263 전체 physical-pixel byte parity, fractional/subpixel hit query, DOM event/CSSOM scroll, WPT, 실기기·hardware GPU, C13.1 전체 완료와 공개 CSS support 선언은 이 작업 범위가 아니다. PR #164 AVD 결과는 기존 Android baseline으로 인용하며 iOS 결과와 합산해 동일 플랫폼 행렬이라고 부르지 않는다.
@@ -47,5 +56,5 @@ Android app 재검증, iOS Metal drawable pixel readback, Android 788×263 전�
 2. 고정된 Chrome RLE oracle validator와 source hash를 재검증한다.
 3. fixture-only iOS app route, bounded fail-closed parser, parser mutation tests를 구현한다.
 4. iOS Simulator에서 세 번 새 실행을 수행하고 screenshot/log/build 근거를 저장한다.
-5. 계획 검토와 겹치지 않는 신규 구현 실패 관점 20개와 PR 변경 관점 20개를 별도로 수행한다.
+5. 계획 검토와 겹치지 않는 신규 구현 실패 관점 20개와 PR 변경 관점 30개를 별도로 수행한다.
 6. 최신 `main`, required CI, mergeability를 확인한 뒤 Rebase and merge한다.
