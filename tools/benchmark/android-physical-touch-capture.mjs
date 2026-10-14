@@ -106,6 +106,12 @@ function sameIdentity(expected, actual) {
     && expected.command === actual.command;
 }
 
+function identityDifferences(expected, actual) {
+  if (actual === null) return ['missing'];
+  return ['pid', 'parentPid', 'startedAt', 'command']
+    .filter((key) => expected[key] !== actual[key]);
+}
+
 export async function stopChildBounded(child, expectedIdentity, {
   readIdentity,
   sendSignal = (signal) => child.kill(signal),
@@ -124,7 +130,7 @@ export async function stopChildBounded(child, expectedIdentity, {
 
     const actualIdentity = await readIdentity(expectedIdentity.pid);
     if (!sameIdentity(expectedIdentity, actualIdentity)) {
-      throw new Error(`collector process identity changed; refusing ${signal}`);
+      throw new Error(`collector process identity changed (${identityDifferences(expectedIdentity, actualIdentity).join(', ')}); refusing ${signal}`);
     }
 
     sendSignal(signal);

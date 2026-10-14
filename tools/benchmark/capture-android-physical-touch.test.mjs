@@ -180,7 +180,8 @@ test('가짜 ADB에서 두 stream 동시 수집, 접촉 제한 자동종료, man
   const fakeAdbPath = join(directory, 'adb');
   const outputPath = join(directory, 'capture');
   const apkHash = 'a'.repeat(64);
-  const fakeAdb = `#!/usr/bin/env node
+  // Use Node directly: /usr/bin/env can change ps's command identity after spawn.
+  const fakeAdb = `#!${process.execPath}
 const args = process.argv.slice(2);
 const command = args[0] === '-s' ? args.slice(2) : args;
 process.on('SIGINT', () => process.exit(130));
