@@ -3,6 +3,10 @@
   "status": "matched",
   "runID": "2b7c7c8490c9",
   "sourceRevision": "075287ad332674454b94066d48eadffe25b6a15d",
+  "captureTool": {
+    "path": "tools/css-reference/capture-c13-1-android-avd-full-surface.mjs",
+    "sha256": "a64d22dd8b2a063323dad3f5db183fcbc6df9c60f58c5fe15abbee158b88e546"
+  },
   "device": {
     "serial": "emulator-5554",
     "model": "sdk_gphone16k_arm64",

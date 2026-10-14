@@ -17,6 +17,8 @@ Android ADB transport와 앱 실행은 정상이었다. 실행기는 `am start`�
 
 ![Android API 37 AVD PixelCopy surface](../c13-1-android-avd-full-surface-2026-10-15/c13-1-android-avd-20261014T172609127Z-8dbc1491/android-api37-avd-pixelcopy.png)
 
+PR 변경 검토: [구현 실패 경로 검토](../c13-1-ios-metal-pixel-centers-2026-10-15/implementation-review-20.md) · [PR 변경 실패 경로 검토](../c13-1-ios-metal-pixel-centers-2026-10-15/pr-delta-review-30.md)
+
 ## 판정 경계
 
 Metal readback은 compositor submission 이전의 WGPU surface 표본이다. 이 결과는 30,000개 CSS pixel center만 증명한다. 전체 물리 drawable byte, compositor/scanout, 실기기·hardware GPU, 다른 해상도·orientation, DOM event·CSSOM, WPT 또는 C13.1 전체 제품 지원을 증명하지 않는다. 공식 구현 상태는 계속 미완료다.
