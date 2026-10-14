@@ -6,6 +6,10 @@ C14.1의 revision-stamped image snapshot을 확장해, HTML `img`의 자연 크�
 
 이 계획은 공개 CSS 지원 선언이 아니다. C14.1, C14.2, U05, S02 제품 runtime owner, C15 텍스트 측정과 X16 적합성은 각각 별도 경계를 유지한다. 내부 숫자 버전은 `0.1.0`을 유지한다.
 
+## 현재 구현 상태
+
+2026-10-14 기준 구현 후보는 [stacked PR #156](https://github.com/ohah/spinon/pull/156)로 열려 있으며 base는 부모 [PR #155](https://github.com/ohah/spinon/pull/155)다. 구현 실패 관점 20개와 별도 PR 적대 관점 20개를 기록했다. 두 PR 모두 open이고 branch check는 보고되지 않아 병합하지 않았다. C14.2와 상위 C14는 계속 미완료다.
+
 ## 기준 명세
 
 - [CSS 2.2 §10.3.2](https://www.w3.org/TR/CSS22/visudet.html#inline-replaced-width)와 [§10.4](https://www.w3.org/TR/CSS22/visudet.html#min-max-widths): replaced width와 min/max width 조합.
