@@ -1,0 +1,10 @@
+{
+  "status": "unexpected-hit-target",
+  "undefinedCells": 399,
+  "lastColumnNulls": 100,
+  "lastRowNulls": 300,
+  "intersection": 399,
+  "rowsWithNullLastColumn": 100,
+  "rowsWithBottomRowNull": true,
+  "totalHistogram": 29601
+}

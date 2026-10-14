@@ -1,0 +1,166 @@
+{
+  "horizontalSamples": [
+    {
+      "hitId": "c131-surface-root",
+      "x": 298,
+      "y": 0
+    },
+    {
+      "hitId": "c131-surface-root",
+      "x": 298.5,
+      "y": 0
+    },
+    {
+      "hitId": "c131-surface-root",
+      "x": 299,
+      "y": 0
+    },
+    {
+      "hitId": null,
+      "x": 299.5,
+      "y": 0
+    },
+    {
+      "hitId": null,
+      "x": 299.999,
+      "y": 0
+    },
+    {
+      "hitId": "c131-surface-root",
+      "x": 298,
+      "y": 50
+    },
+    {
+      "hitId": "c131-surface-root",
+      "x": 298.5,
+      "y": 50
+    },
+    {
+      "hitId": "c131-surface-root",
+      "x": 299,
+      "y": 50
+    },
+    {
+      "hitId": null,
+      "x": 299.5,
+      "y": 50
+    },
+    {
+      "hitId": null,
+      "x": 299.999,
+      "y": 50
+    },
+    {
+      "hitId": "c131-surface-root",
+      "x": 298,
+      "y": 99
+    },
+    {
+      "hitId": "c131-surface-root",
+      "x": 298.5,
+      "y": 99
+    },
+    {
+      "hitId": "c131-surface-root",
+      "x": 299,
+      "y": 99
+    },
+    {
+      "hitId": null,
+      "x": 299.5,
+      "y": 99
+    },
+    {
+      "hitId": null,
+      "x": 299.999,
+      "y": 99
+    }
+  ],
+  "note": "W3C CSSOM View describes null for coordinates outside the viewport; this probe preserves observed Chromium integer and fractional right/bottom edge behavior without changing the planned integer query grid.",
+  "verticalSamples": [
+    {
+      "hitId": "c131-surface-root",
+      "x": 0,
+      "y": 98
+    },
+    {
+      "hitId": "c131-surface-root",
+      "x": 0,
+      "y": 98.5
+    },
+    {
+      "hitId": "c131-surface-root",
+      "x": 0,
+      "y": 99
+    },
+    {
+      "hitId": null,
+      "x": 0,
+      "y": 99.5
+    },
+    {
+      "hitId": null,
+      "x": 0,
+      "y": 99.999
+    },
+    {
+      "hitId": "c131-surface-target-nested-clip",
+      "x": 50,
+      "y": 98
+    },
+    {
+      "hitId": "c131-surface-target-nested-clip",
+      "x": 50,
+      "y": 98.5
+    },
+    {
+      "hitId": "c131-surface-root",
+      "x": 50,
+      "y": 99
+    },
+    {
+      "hitId": null,
+      "x": 50,
+      "y": 99.5
+    },
+    {
+      "hitId": null,
+      "x": 50,
+      "y": 99.999
+    },
+    {
+      "hitId": "c131-surface-root",
+      "x": 299,
+      "y": 98
+    },
+    {
+      "hitId": "c131-surface-root",
+      "x": 299,
+      "y": 98.5
+    },
+    {
+      "hitId": "c131-surface-root",
+      "x": 299,
+      "y": 99
+    },
+    {
+      "hitId": null,
+      "x": 299,
+      "y": 99.5
+    },
+    {
+      "hitId": null,
+      "x": 299,
+      "y": 99.999
+    }
+  ],
+  "viewport": {
+    "clientHeight": 100,
+    "clientWidth": 300,
+    "devicePixelRatio": 1,
+    "innerHeight": 100,
+    "innerWidth": 300,
+    "scrollX": 0,
+    "scrollY": 0
+  }
+}
