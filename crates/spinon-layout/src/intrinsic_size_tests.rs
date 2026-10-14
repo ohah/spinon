@@ -8,7 +8,8 @@ use spinon_core::{
 use crate::{
     FlexDirection, LayoutAlignItems, LayoutBorder, LayoutDimension, LayoutDisplay, LayoutEdges,
     LayoutEngine, LayoutError, LayoutInput, LayoutIntrinsicSize, LayoutIntrinsicSizeSnapshot,
-    LayoutLengthPercentage, LayoutSourceRevision, LayoutStyle, TaffyLayoutEngine, Viewport,
+    LayoutLengthPercentage, LayoutPosition, LayoutPositioning, LayoutSourceRevision, LayoutStyle,
+    TaffyLayoutEngine, Viewport,
 };
 
 const HTML: &str = "http://www.w3.org/1999/xhtml";
@@ -146,18 +147,225 @@ fn hidden_leaf_does_not_require_measurement() {
 }
 
 #[test]
-fn partial_auto_leaf_is_rejected_when_measurement_is_supplied() {
+fn partial_auto_dimensions_transfer_ratio_and_clamp_the_auto_axis() {
     let (document, root, image) = document();
-    let image_style = LayoutStyle {
+    let snapshot = image_snapshot(&document, image, LayoutIntrinsicSize::new(24.0, 16.0));
+    for (style, expected) in [
+        (
+            LayoutStyle {
+                width: LayoutDimension::Fixed(48.0),
+                ..image_style()
+            },
+            (48.0, 32.0),
+        ),
+        (
+            LayoutStyle {
+                height: LayoutDimension::Fixed(24.0),
+                ..image_style()
+            },
+            (36.0, 24.0),
+        ),
+        (
+            LayoutStyle {
+                width: LayoutDimension::Fixed(48.0),
+                max_height: LayoutDimension::Fixed(20.0),
+                ..image_style()
+            },
+            (48.0, 20.0),
+        ),
+        (
+            LayoutStyle {
+                height: LayoutDimension::Fixed(24.0),
+                max_width: LayoutDimension::Fixed(30.0),
+                ..image_style()
+            },
+            (30.0, 24.0),
+        ),
+    ] {
+        let input = layout_input(&document, root, image, root_style(), style);
+        let output = TaffyLayoutEngine
+            .compute_with_intrinsic_size_snapshot(&input, &snapshot)
+            .unwrap();
+        let frame = output.frames[&image.id()];
+        assert_eq!((frame.width, frame.height), expected);
+    }
+}
+
+#[test]
+fn successful_empty_and_partial_natural_metadata_use_default_object_axes() {
+    let (document, root, image) = document();
+    for (natural, expected) in [
+        (LayoutIntrinsicSize::no_natural_dimensions(), (300.0, 150.0)),
+        (
+            LayoutIntrinsicSize::from_natural_parts(Some(30.0), None, None),
+            (30.0, 150.0),
+        ),
+        (
+            LayoutIntrinsicSize::from_natural_parts(None, Some(30.0), None),
+            (300.0, 30.0),
+        ),
+        (
+            LayoutIntrinsicSize::from_natural_parts(Some(40.0), None, Some(2.0)),
+            (40.0, 20.0),
+        ),
+    ] {
+        let input = layout_input(&document, root, image, root_style(), image_style());
+        let snapshot = image_snapshot(&document, image, natural);
+        let output = TaffyLayoutEngine
+            .compute_with_intrinsic_size_snapshot(&input, &snapshot)
+            .unwrap();
+        let frame = output.frames[&image.id()];
+        assert_eq!((frame.width, frame.height), expected);
+    }
+}
+
+#[test]
+fn ratio_only_auto_auto_is_rejected_but_an_explicit_axis_can_use_its_ratio() {
+    let (document, root, image) = document();
+    let ratio_only = LayoutIntrinsicSize::from_natural_parts(None, None, Some(1.5));
+    let snapshot = image_snapshot(&document, image, ratio_only);
+    let auto_input = layout_input(&document, root, image, root_style(), image_style());
+    assert!(matches!(
+        TaffyLayoutEngine.compute_with_intrinsic_size_snapshot(&auto_input, &snapshot),
+        Err(LayoutError::UnsupportedIntrinsicSizing { node, .. }) if node == image.id()
+    ));
+
+    let explicit_width = LayoutStyle {
         width: LayoutDimension::Fixed(48.0),
         ..image_style()
     };
-    let input = layout_input(&document, root, image, root_style(), image_style);
+    let explicit_input = layout_input(&document, root, image, root_style(), explicit_width);
+    let output = TaffyLayoutEngine
+        .compute_with_intrinsic_size_snapshot(&explicit_input, &snapshot)
+        .unwrap();
+    let frame = output.frames[&image.id()];
+    assert_eq!((frame.width, frame.height), (48.0, 32.0));
+}
+
+#[test]
+fn authored_ratio_overrides_natural_ratio_and_border_box_edges_apply_once() {
+    let (document, root, image) = document();
     let snapshot = image_snapshot(&document, image, LayoutIntrinsicSize::new(24.0, 16.0));
+    let ratio_style = LayoutStyle {
+        width: LayoutDimension::Fixed(48.0),
+        aspect_ratio: Some(1.0),
+        ..image_style()
+    };
+    let input = layout_input(&document, root, image, root_style(), ratio_style);
+    let output = TaffyLayoutEngine
+        .compute_with_intrinsic_size_snapshot(&input, &snapshot)
+        .unwrap();
+    let frame = output.frames[&image.id()];
+    assert_eq!((frame.width, frame.height), (48.0, 48.0));
+
+    let border_box_ratio_style = LayoutStyle {
+        box_sizing: crate::LayoutBoxSizing::BorderBox,
+        width: LayoutDimension::Fixed(48.0),
+        aspect_ratio: Some(1.5),
+        padding: LayoutEdges {
+            top: LayoutLengthPercentage::length(2.0),
+            right: LayoutLengthPercentage::length(2.0),
+            bottom: LayoutLengthPercentage::length(2.0),
+            left: LayoutLengthPercentage::length(2.0),
+        },
+        border: LayoutBorder {
+            top: 1.0,
+            right: 1.0,
+            bottom: 1.0,
+            left: 1.0,
+        },
+        ..image_style()
+    };
+    let input = layout_input(&document, root, image, root_style(), border_box_ratio_style);
+    let output = TaffyLayoutEngine
+        .compute_with_intrinsic_size_snapshot(&input, &snapshot)
+        .unwrap();
+    let frame = output.frames[&image.id()];
+    assert_eq!((frame.width, frame.height), (48.0, 32.0));
+
+    let border_box_style = LayoutStyle {
+        box_sizing: crate::LayoutBoxSizing::BorderBox,
+        width: LayoutDimension::Fixed(48.0),
+        padding: LayoutEdges {
+            top: LayoutLengthPercentage::length(2.0),
+            right: LayoutLengthPercentage::length(2.0),
+            bottom: LayoutLengthPercentage::length(2.0),
+            left: LayoutLengthPercentage::length(2.0),
+        },
+        border: LayoutBorder {
+            top: 1.0,
+            right: 1.0,
+            bottom: 1.0,
+            left: 1.0,
+        },
+        ..image_style()
+    };
+    let input = layout_input(&document, root, image, root_style(), border_box_style);
+    let output = TaffyLayoutEngine
+        .compute_with_intrinsic_size_snapshot(&input, &snapshot)
+        .unwrap();
+    let frame = output.frames[&image.id()];
+    assert_eq!((frame.width, frame.height), (48.0, 34.0));
+}
+
+#[test]
+fn explicit_natural_ratio_must_match_both_natural_dimensions() {
+    let (document, root, image) = document();
+    let input = layout_input(&document, root, image, root_style(), image_style());
+    let snapshot = image_snapshot(
+        &document,
+        image,
+        LayoutIntrinsicSize::from_natural_parts(Some(24.0), Some(16.0), Some(2.0)),
+    );
     assert!(matches!(
         TaffyLayoutEngine.compute_with_intrinsic_size_snapshot(&input, &snapshot),
-        Err(LayoutError::UnsupportedIntrinsicSizing { node, .. }) if node == image.id()
+        Err(LayoutError::InvalidIntrinsicSize { node, axis: "aspect ratio" })
+            if node == image.id()
     ));
+}
+
+#[test]
+fn percentages_ratio_overflow_and_authored_ratio_constraints_fail_closed() {
+    let (document, root, image) = document();
+    let snapshot = image_snapshot(&document, image, LayoutIntrinsicSize::new(24.0, 16.0));
+    for style in [
+        LayoutStyle {
+            width: LayoutDimension::Percent(0.5),
+            ..image_style()
+        },
+        LayoutStyle {
+            padding: LayoutEdges {
+                top: LayoutLengthPercentage::percent(0.1),
+                ..LayoutEdges::default()
+            },
+            ..image_style()
+        },
+        LayoutStyle {
+            aspect_ratio: Some(1.0),
+            max_height: LayoutDimension::Fixed(20.0),
+            ..image_style()
+        },
+    ] {
+        let input = layout_input(&document, root, image, root_style(), style);
+        assert!(matches!(
+            TaffyLayoutEngine.compute_with_intrinsic_size_snapshot(&input, &snapshot),
+            Err(LayoutError::UnsupportedIntrinsicSizing { node, .. }) if node == image.id()
+        ));
+    }
+
+    for invalid in [
+        LayoutIntrinsicSize::from_natural_parts(None, None, Some(0.0)),
+        LayoutIntrinsicSize::from_natural_parts(None, None, Some(f32::NAN)),
+        LayoutIntrinsicSize::from_natural_parts(None, None, Some(f32::INFINITY)),
+        LayoutIntrinsicSize::from_natural_parts(Some(f32::MAX), Some(f32::MIN_POSITIVE), None),
+    ] {
+        let input = layout_input(&document, root, image, root_style(), image_style());
+        let snapshot = image_snapshot(&document, image, invalid);
+        assert!(matches!(
+            TaffyLayoutEngine.compute_with_intrinsic_size_snapshot(&input, &snapshot),
+            Err(LayoutError::InvalidIntrinsicSize { node, .. }) if node == image.id()
+        ));
+    }
 }
 
 #[test]
@@ -220,6 +428,84 @@ fn flex_auto_basis_uses_intrinsic_measurement() {
         .unwrap();
     let frame = output.frames[&image.id()];
     assert_eq!((frame.width, frame.height), (24.0, 16.0));
+}
+
+#[test]
+fn flex_used_size_keeps_auto_axis_min_max_result_after_parent_layout() {
+    let (document, root, image) = document();
+    let root_style = LayoutStyle {
+        display: LayoutDisplay::Flex,
+        flex_direction: FlexDirection::Row,
+        align_items: LayoutAlignItems::FlexStart,
+        ..root_style()
+    };
+    let image_style = LayoutStyle {
+        width: LayoutDimension::Fixed(48.0),
+        max_height: LayoutDimension::Fixed(20.0),
+        flex_shrink: 0.0,
+        ..image_style()
+    };
+    let input = layout_input(&document, root, image, root_style, image_style);
+    let snapshot = image_snapshot(&document, image, LayoutIntrinsicSize::new(24.0, 16.0));
+    let output = TaffyLayoutEngine
+        .compute_with_intrinsic_size_snapshot(&input, &snapshot)
+        .unwrap();
+    let frame = output.frames[&image.id()];
+    assert_eq!((frame.width, frame.height), (48.0, 20.0));
+}
+
+#[test]
+fn flex_known_cross_axis_resolves_auto_main_axis_with_ratio_and_maximum() {
+    let (document, root, image) = document();
+    let root_style = LayoutStyle {
+        display: LayoutDisplay::Flex,
+        flex_direction: FlexDirection::Row,
+        align_items: LayoutAlignItems::FlexStart,
+        ..root_style()
+    };
+    let image_style = LayoutStyle {
+        height: LayoutDimension::Fixed(24.0),
+        max_width: LayoutDimension::Fixed(30.0),
+        flex_shrink: 0.0,
+        ..image_style()
+    };
+    let input = layout_input(&document, root, image, root_style, image_style);
+    let snapshot = image_snapshot(&document, image, LayoutIntrinsicSize::new(24.0, 16.0));
+    let output = TaffyLayoutEngine
+        .compute_with_intrinsic_size_snapshot(&input, &snapshot)
+        .unwrap();
+    let frame = output.frames[&image.id()];
+    assert_eq!((frame.width, frame.height), (30.0, 24.0));
+}
+
+#[test]
+fn positioned_image_uses_the_same_replaced_size_in_flow_and_visual_passes() {
+    let (document, root, image) = document();
+    let input = layout_input(
+        &document,
+        root,
+        image,
+        root_style(),
+        LayoutStyle {
+            width: LayoutDimension::Fixed(48.0),
+            ..image_style()
+        },
+    )
+    .with_positioning(BTreeMap::from([(
+        image.id(),
+        LayoutPositioning {
+            position: LayoutPosition::Absolute,
+            inset: LayoutEdges::auto(),
+        },
+    )]));
+    let snapshot = image_snapshot(&document, image, LayoutIntrinsicSize::new(24.0, 16.0));
+    let output = TaffyLayoutEngine
+        .compute_with_intrinsic_size_snapshot(&input, &snapshot)
+        .unwrap();
+    let visual = output.frames[&image.id()];
+    let flow = output.flow_frames[&image.id()];
+    assert_eq!((visual.width, visual.height), (48.0, 32.0));
+    assert_eq!((flow.width, flow.height), (48.0, 32.0));
 }
 
 #[test]

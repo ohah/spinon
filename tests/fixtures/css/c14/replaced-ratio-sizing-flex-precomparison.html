@@ -1,0 +1,35 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C14.2 replaced image sizing in flex precomparison</title>
+<style>
+  html, body { margin: 0; padding: 0; }
+  .case { display: flex; flex-direction: row; align-items: flex-start; width: 120px; }
+  .fixed-cross { height: 40px; align-items: stretch; }
+  img { display: block; margin: 0; padding: 0; border: 0; flex-shrink: 0; }
+</style>
+<main>
+  <div class="case" id="flex-width-max-auto-cross">
+    <img src="../../resources/c14-1-png-basic.png" style="width:48px;height:auto;max-height:20px">
+  </div>
+  <div class="case" id="flex-height-max-auto-main">
+    <img src="../../resources/c14-1-png-basic.png" style="width:auto;height:24px;max-width:30px">
+  </div>
+  <div class="case" id="flex-min-cross">
+    <img src="../../resources/c14-1-png-basic.png" style="width:48px;height:auto;min-height:20px">
+  </div>
+  <div class="case" id="flex-auto-basis">
+    <img src="../../resources/c14-1-png-basic.png" style="width:auto;height:auto">
+  </div>
+  <div class="case fixed-cross" id="fixed-cross-stretch-auto-auto">
+    <img src="../../resources/c14-1-png-basic.png" style="width:auto;height:auto">
+  </div>
+  <div class="case fixed-cross" id="fixed-cross-stretch-max-height">
+    <img src="../../resources/c14-1-png-basic.png" style="width:auto;height:auto;max-height:20px">
+  </div>
+  <div class="case" id="fixed-cross-start-auto-auto" style="height:40px">
+    <img src="../../resources/c14-1-png-basic.png" style="width:auto;height:auto">
+  </div>
+  <div class="case fixed-cross" id="fixed-cross-stretch-specified-height">
+    <img src="../../resources/c14-1-png-basic.png" style="width:auto;height:24px">
+  </div>
+</main>

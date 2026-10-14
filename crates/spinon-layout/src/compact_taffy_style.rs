@@ -104,6 +104,20 @@ impl CompactTaffyStyle {
         self.aspect_ratio = None;
     }
 
+    pub(super) fn set_used_replaced_border_box_size(&mut self, width: f32, height: f32) {
+        self.box_sizing = BoxSizing::BorderBox;
+        self.size = Size {
+            width: Dimension::length(width),
+            height: Dimension::length(height),
+        };
+        self.min_size = Size {
+            width: LengthPercentageAuto::auto(),
+            height: LengthPercentageAuto::auto(),
+        };
+        self.max_size = self.min_size;
+        self.aspect_ratio = None;
+    }
+
     pub(super) fn set_grid_item_placement(
         &mut self,
         row_start: GridPlacement<String>,

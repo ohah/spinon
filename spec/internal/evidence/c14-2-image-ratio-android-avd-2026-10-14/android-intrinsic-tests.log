@@ -1,0 +1,22 @@
+
+running 18 tests
+test intrinsic_size_tests::duplicate_measurement_node_is_rejected_during_snapshot_creation ... ok
+test intrinsic_size_tests::explicit_natural_ratio_must_match_both_natural_dimensions ... ok
+test intrinsic_size_tests::authored_ratio_overrides_natural_ratio_and_border_box_edges_apply_once ... ok
+test intrinsic_size_tests::flex_auto_basis_uses_intrinsic_measurement ... ok
+test intrinsic_size_tests::flex_used_size_keeps_auto_axis_min_max_result_after_parent_layout ... ok
+test intrinsic_size_tests::flex_known_cross_axis_resolves_auto_main_axis_with_ratio_and_maximum ... ok
+test intrinsic_size_tests::fully_definite_leaf_size_ignores_cached_natural_size ... ok
+test intrinsic_size_tests::hidden_leaf_does_not_require_measurement ... ok
+test intrinsic_size_tests::measurement_on_non_leaf_and_invalid_dimensions_are_rejected ... ok
+test intrinsic_size_tests::measured_leaf_uses_css_pixel_snapshot_and_stamps_its_revision ... ok
+test intrinsic_size_tests::measurement_snapshot_must_match_source_and_reference_known_nodes ... ok
+test intrinsic_size_tests::padding_and_border_are_added_once_to_intrinsic_content_size ... ok
+test intrinsic_size_tests::positioned_image_uses_the_same_replaced_size_in_flow_and_visual_passes ... ok
+test intrinsic_size_tests::ratio_only_auto_auto_is_rejected_but_an_explicit_axis_can_use_its_ratio ... ok
+test intrinsic_size_tests::partial_auto_dimensions_transfer_ratio_and_clamp_the_auto_axis ... ok
+test intrinsic_size_tests::min_max_constraints_clamp_measured_leaf_size ... ok
+test intrinsic_size_tests::successful_empty_and_partial_natural_metadata_use_default_object_axes ... ok
+test intrinsic_size_tests::percentages_ratio_overflow_and_authored_ratio_constraints_fail_closed ... ok
+
+test result: ok. 18 passed; 0 failed; 0 ignored; 0 measured; 119 filtered out; finished in 0.00s

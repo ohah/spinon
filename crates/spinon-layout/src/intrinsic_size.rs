@@ -4,20 +4,51 @@ use spinon_core::{IntrinsicSizeRevision, NodeId};
 
 use crate::{LayoutError, LayoutSourceRevision};
 
-/// HTML replaced leaf에 decoder가 제공한 자연 콘텐츠 크기(CSS px)입니다.
+/// HTML replaced leaf에 완료된 리소스가 제공한 자연 크기 metadata입니다.
+/// 자연 너비·높이·비율은 각각 없을 수 있습니다. 세 값이 모두 `None`인 entry는
+/// 성공적으로 조사했지만 자연 sizing 정보가 없는 리소스이며, snapshot entry 자체가
+/// 없다는 상태(아직 로드되지 않았거나 실패한 리소스)와 다릅니다.
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct LayoutIntrinsicSize {
-    pub width: f32,
-    pub height: f32,
+    pub width: Option<f32>,
+    pub height: Option<f32>,
+    pub aspect_ratio: Option<f32>,
 }
 
 impl LayoutIntrinsicSize {
     pub const fn new(width: f32, height: f32) -> Self {
-        Self { width, height }
+        Self {
+            width: Some(width),
+            height: Some(height),
+            aspect_ratio: None,
+        }
+    }
+
+    pub const fn from_natural_parts(
+        width: Option<f32>,
+        height: Option<f32>,
+        aspect_ratio: Option<f32>,
+    ) -> Self {
+        Self {
+            width,
+            height,
+            aspect_ratio,
+        }
+    }
+
+    pub const fn no_natural_dimensions() -> Self {
+        Self::from_natural_parts(None, None, None)
+    }
+
+    pub fn natural_aspect_ratio(self) -> Option<f32> {
+        match (self.width, self.height) {
+            (Some(width), Some(height)) => Some(width / height),
+            _ => self.aspect_ratio,
+        }
     }
 }
 
-/// 같은 layout source의 HTML image 자연 크기와 revision을 묶은 immutable 입력입니다.
+/// 같은 layout source의 replaced-resource natural metadata와 revision을 묶은 immutable 입력입니다.
 #[derive(Clone, Debug, PartialEq)]
 pub struct LayoutIntrinsicSizeSnapshot {
     source: LayoutSourceRevision,

@@ -116,27 +116,71 @@ fn validate_intrinsic_sizes(
             });
         }
         for (axis, value) in [("width", size.width), ("height", size.height)] {
-            if !value.is_finite() || value <= 0.0 {
+            if value.is_some_and(|value| !value.is_finite() || value <= 0.0) {
                 return Err(LayoutError::InvalidIntrinsicSize { node: id, axis });
+            }
+        }
+        if size
+            .aspect_ratio
+            .is_some_and(|ratio| !ratio.is_finite() || ratio <= 0.0)
+        {
+            return Err(LayoutError::InvalidIntrinsicSize {
+                node: id,
+                axis: "aspect ratio",
+            });
+        }
+        if let (Some(width), Some(height), Some(ratio)) =
+            (size.width, size.height, size.aspect_ratio)
+        {
+            let dimensions_ratio = width / height;
+            if !dimensions_ratio.is_finite()
+                || dimensions_ratio <= 0.0
+                || (dimensions_ratio - ratio).abs()
+                    > 0.0001 * dimensions_ratio.abs().max(ratio.abs()).max(1.0)
+            {
+                return Err(LayoutError::InvalidIntrinsicSize {
+                    node: id,
+                    axis: "aspect ratio",
+                });
+            }
+        }
+        if let (Some(width), Some(height)) = (size.width, size.height) {
+            let ratio = width / height;
+            if !ratio.is_finite() || ratio <= 0.0 {
+                return Err(LayoutError::InvalidIntrinsicSize {
+                    node: id,
+                    axis: "aspect ratio",
+                });
             }
         }
         if !hidden.contains(&id) {
             let width_auto = node.style.width == crate::LayoutDimension::Auto;
             let height_auto = node.style.height == crate::LayoutDimension::Auto;
-            match (width_auto, height_auto, node.style.aspect_ratio.is_some()) {
-                (true, true, false) | (false, false, _) => {}
-                (true, true, true) => {
-                    return Err(LayoutError::UnsupportedIntrinsicSizing {
-                        node: id,
-                        reason: "aspect-ratio와 자연 크기의 조합은 지원되지 않습니다",
-                    });
-                }
-                _ => {
-                    return Err(LayoutError::UnsupportedIntrinsicSizing {
-                        node: id,
-                        reason: "width 또는 height 한 축만 auto인 크기는 지원되지 않습니다",
-                    });
-                }
+            if width_auto
+                && height_auto
+                && size.width.is_none()
+                && size.height.is_none()
+                && size.aspect_ratio.is_some()
+            {
+                return Err(LayoutError::UnsupportedIntrinsicSizing {
+                    node: id,
+                    reason: "ratio만 있는 auto/auto intrinsic contribution은 지원하지 않습니다",
+                });
+            }
+            if node.style.aspect_ratio.is_some()
+                && [
+                    node.style.min_width,
+                    node.style.max_width,
+                    node.style.min_height,
+                    node.style.max_height,
+                ]
+                .into_iter()
+                .any(|dimension| dimension != crate::LayoutDimension::Auto)
+            {
+                return Err(LayoutError::UnsupportedIntrinsicSizing {
+                    node: id,
+                    reason: "aspect-ratio와 authored min/max 조합은 지원하지 않습니다",
+                });
             }
         }
     }
