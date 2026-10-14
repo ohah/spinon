@@ -143,6 +143,31 @@ void LogC10NodeFrames(const std::string &report, const char *label) {
   }
 }
 
+#if defined(SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST) && \
+    SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST
+void LogC131HitTestSamples(const std::string &report) {
+  constexpr char kMarker[] = " hit_test_samples_json=";
+  const auto marker = report.find(kMarker);
+  if (marker == std::string::npos) return;
+  const auto array_start = report.find('[', marker + sizeof(kMarker) - 1);
+  if (array_start == std::string::npos) return;
+  const auto array_end = report.find(']', array_start + 1);
+  if (array_end == std::string::npos) return;
+
+  std::size_t sample_start = array_start + 1;
+  while (sample_start < array_end) {
+    sample_start = report.find('{', sample_start);
+    if (sample_start == std::string::npos || sample_start >= array_end) return;
+    const auto sample_end = report.find('}', sample_start + 1);
+    if (sample_end == std::string::npos || sample_end >= array_end) return;
+    const auto sample = report.substr(sample_start, sample_end - sample_start + 1);
+    __android_log_print(ANDROID_LOG_INFO, kTag, "SPINON_C131_HIT_TEST %s",
+                        sample.c_str());
+    sample_start = sample_end + 1;
+  }
+}
+#endif
+
 SpinonRuntimeSession *SessionFromHandle(jlong handle) {
   return reinterpret_cast<SpinonRuntimeSession *>(static_cast<uintptr_t>(handle));
 }
@@ -818,7 +843,10 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC131OverflowClipFixture(
   const std::string report = "status=" + std::to_string(status) + " " + output.data();
   __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
                       kTag, "SPINON_C131_EVAL %s", report.c_str());
-  if (status == 0) LogC10NodeFrames(report, "SPINON_C131_NODE_FRAME");
+  if (status == 0) {
+    LogC10NodeFrames(report, "SPINON_C131_NODE_FRAME");
+    LogC131HitTestSamples(report);
+  }
   return ToByteArray(env, report);
 #else
   return ToByteArray(env, "status=-1 C13.1 fixture-test feature is off");

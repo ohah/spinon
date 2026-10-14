@@ -1,0 +1,4 @@
+AVD run_id=b96d0f0b00f app_pid=6671
+APK platforms/android/app/build/outputs/apk/debug/app-debug.apk e78cf993ca3f12947eacdb8c4138a34264dbab66b9240520e79d19e34cdd8d67
+ARM64 library build/spinon/android/jniLibs/arm64-v8a/libspinon_bootstrap.so d0616e466004d278c56b0b3e26fa457437ae5aec8d866d243daddaf529087bcf
+PixelCopy android-api37-arm64-pixelcopy.png 2e2ad5e6ae842fa89015a05b44642e92c34a778915ef6c382dbb40a360ab7585

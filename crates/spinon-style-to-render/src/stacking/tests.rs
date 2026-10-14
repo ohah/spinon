@@ -23,6 +23,9 @@ use crate::CurrentLayoutInputs;
 const HTML: &str = "http://www.w3.org/1999/xhtml";
 const C13_OVERFLOW_CLIP_FIXTURE_JS: &str =
     include_str!("../../../../tests/fixtures/css/c13/runtime-overflow-clip.js");
+const C13_CHROME_OVERFLOW_CLIP_OBSERVATION: &str = include_str!(
+    "../../../../spec/internal/evidence/c13-1-overflow-clip-android-avd-2026-10-14/chrome155-runtime-observation.json"
+);
 
 struct RuntimeInputs {
     document: HostDocumentSnapshot,
@@ -561,25 +564,36 @@ fn runtime_hit_test_matches_agent_browser_chrome_155_element_from_point_samples(
         &mut SystemReserve,
     )
     .unwrap();
-    let samples = [
-        ("visible-target", 102.0, 20.0, 2),
-        ("clip-inside", 180.0, 20.0, 4),
-        ("clip-outside", 198.0, 20.0, 0),
-        ("clip-margin-expanded", 291.0, 20.0, 6),
-        ("clip-margin-outside", 297.0, 20.0, 0),
-        ("nested-clip-inside", 84.0, 76.0, 9),
-        ("nested-clip-outside", 95.0, 76.0, 7),
-        ("nested-y-visible", 45.0, 92.0, 9),
-        ("nested-y-clip-outside", 45.0, 97.0, 0),
-        ("positioned-escape", 230.0, 76.0, 12),
-        ("outer-clip-outside", 295.0, 76.0, 0),
-    ];
+    let observation: serde_json::Value = serde_json::from_str(C13_CHROME_OVERFLOW_CLIP_OBSERVATION)
+        .expect("pinned Chrome hit-test observation JSON");
+    assert_eq!(
+        observation["browser"]["version"].as_str(),
+        Some("155.0.8059.40")
+    );
+    let frames = observation["frames"]
+        .as_array()
+        .expect("pinned Chrome frame inventory");
+    let samples = observation["hitTestSamples"]
+        .as_array()
+        .expect("pinned Chrome hit-test samples");
+    assert_eq!(samples.len(), 11);
 
-    for (sample, x, y, expected_node_index) in samples {
+    for sample in samples {
+        let sample_id = sample["id"].as_str().expect("hit-test sample ID");
+        let x = sample["xCssPx"].as_f64().expect("sample CSS x") as f32;
+        let y = sample["yCssPx"].as_f64().expect("sample CSS y") as f32;
+        let expected_element_id = sample["elementId"]
+            .as_str()
+            .expect("Chrome elementFromPoint result");
+        let expected_node_index = frames
+            .iter()
+            .position(|frame| frame["id"].as_str() == Some(expected_element_id))
+            .expect("Chrome hit target exists in pinned frame inventory");
+        assert_eq!(ids[expected_node_index], expected_element_id);
         assert_eq!(
             scene.hit_test_css_point(x, y).unwrap().node_id(),
             nodes[expected_node_index],
-            "Chrome 155 elementFromPoint sample {sample} at ({x}, {y})"
+            "Chrome 155 elementFromPoint sample {sample_id} at ({x}, {y})"
         );
     }
 }

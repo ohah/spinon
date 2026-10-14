@@ -1,0 +1,6 @@
+[ro.build.version.release]: [17]
+[ro.build.version.sdk]: [37]
+[ro.kernel.qemu]: [1]
+[ro.product.cpu.abi]: [arm64-v8a]
+[ro.product.model]: [sdk_gphone16k_arm64]
+[sys.boot_completed]: [1]

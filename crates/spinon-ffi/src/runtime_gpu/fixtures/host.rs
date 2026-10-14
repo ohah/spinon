@@ -47,6 +47,7 @@ impl RuntimeGpuHost {
         let (session, report) = RuntimeSession::new_runtime_gpu_block_flex_overflow_clip_fixture()?;
         let mut host = Self::from_session_with_frame_report(session);
         host.include_paint_order_report = true;
+        host.include_c13_1_hit_test_report = true;
         Ok((host, report))
     }
 

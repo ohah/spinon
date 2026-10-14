@@ -1,5 +1,7 @@
 use spinon_render::RuntimeRenderSnapshot;
 use spinon_render_wgpu::{PendingRuntimeSurface, RuntimeRenderer, RuntimeRendererError};
+#[cfg(feature = "c13-1-overflow-clip-fixture-test")]
+use spinon_runtime::RuntimeLayoutFrame;
 use spinon_runtime::{RuntimeLayoutState, RuntimeSession, TaskPriority};
 use spinon_style::{CssColorScheme, CssMediaEnvironment};
 use std::sync::{Mutex, MutexGuard, PoisonError};
@@ -30,6 +32,10 @@ const ERR_ARGUMENT: i32 = -1;
 const ERR_TIMEOUT: i32 = -10;
 const ERR_LAYOUT: i32 = -11;
 const ERR_STALE: i32 = -12;
+#[cfg(feature = "c13-1-overflow-clip-fixture-test")]
+const C13_CHROME_HIT_TEST_ORACLE: &str = include_str!(
+    "../../../spec/internal/evidence/c13-1-overflow-clip-android-avd-2026-10-14/chrome155-runtime-observation.json"
+);
 #[repr(C)]
 pub struct SpinonRuntimeGpuHost {
     _private: [u8; 0],
@@ -39,6 +45,8 @@ struct RuntimeGpuHost {
     session: RuntimeSession,
     include_node_frame_report: bool,
     include_paint_order_report: bool,
+    #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
+    include_c13_1_hit_test_report: bool,
     #[cfg(any(
         feature = "c12-4-metal-surface-readback-test",
         feature = "c11-grid-metal-surface-pixels-test"
@@ -73,6 +81,8 @@ impl RuntimeGpuHost {
             session,
             include_node_frame_report,
             include_paint_order_report: false,
+            #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
+            include_c13_1_hit_test_report: false,
             #[cfg(any(
                 feature = "c12-4-metal-surface-readback-test",
                 feature = "c11-grid-metal-surface-pixels-test"
@@ -99,6 +109,7 @@ impl RuntimeGpuHost {
         sequence: u64,
         layout_timeout_millis: u64,
         include_node_frame_report: bool,
+        _include_c13_1_hit_test_report: bool,
     ) -> Result<String, (i32, String)> {
         let snapshot = self
             .session
@@ -194,6 +205,16 @@ impl RuntimeGpuHost {
         } else {
             String::new()
         };
+        #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
+        let hit_test_report = if _include_c13_1_hit_test_report {
+            let samples = c13_1_hit_test_samples_json(&scene, &completed.frames)
+                .map_err(|error| (ERR_LAYOUT, error))?;
+            format!(" hit_test_samples_json={samples}")
+        } else {
+            String::new()
+        };
+        #[cfg(not(feature = "c13-1-overflow-clip-fixture-test"))]
+        let hit_test_report = String::new();
         if !self.presentation.publish(sequence, scene) {
             return Err((
                 ERR_STALE,
@@ -223,7 +244,7 @@ impl RuntimeGpuHost {
             String::new()
         };
         Ok(format!(
-            "layout={} boxes={} generation={} document_revision={} render_tree_revision={} style_revision={} environment_revision={} cacheHit={} cascadeRecomputedStyleElements={} cascadeReusedStyleElements={} cascadeContextStyleElements={}{}{}{}{}",
+            "layout={} boxes={} generation={} document_revision={} render_tree_revision={} style_revision={} environment_revision={} cacheHit={} cascadeRecomputedStyleElements={} cascadeReusedStyleElements={} cascadeContextStyleElements={}{}{}{}{}{}",
             snapshot.state.as_str(),
             box_count,
             completed.key.generation,
@@ -239,6 +260,7 @@ impl RuntimeGpuHost {
             render_root,
             node_frame_report,
             paint_order_report,
+            hit_test_report,
         ))
     }
 
@@ -286,6 +308,7 @@ impl RuntimeGpuHost {
             sequence,
             layout_timeout_millis,
             self.include_node_frame_report,
+            false,
         )?;
         Ok(format!("environment_revision={} {ready}", revision.get()))
     }
@@ -315,8 +338,16 @@ impl RuntimeGpuHost {
             .invalidate_scene()
             .map_err(|error| (ERR_STALE, error))?;
         let response = self.session.eval(source, TaskPriority::UserVisible);
-        let ready =
-            self.wait_and_publish(sequence, layout_timeout_millis, include_node_frame_report);
+        #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
+        let include_c13_1_hit_test_report = self.include_c13_1_hit_test_report;
+        #[cfg(not(feature = "c13-1-overflow-clip-fixture-test"))]
+        let include_c13_1_hit_test_report = false;
+        let ready = self.wait_and_publish(
+            sequence,
+            layout_timeout_millis,
+            include_node_frame_report,
+            include_c13_1_hit_test_report,
+        );
         match (response.status, ready) {
             (0, Ok(ready)) => Ok(format!("{} {ready}", response.report)),
             (0, Err((status, error))) => Err((status, format!("{} {error}", response.report))),
@@ -336,6 +367,73 @@ fn scene_matches_layout_key(
         && scene_key.render_tree_revision().get() == key.render_tree_revision
         && scene_key.style_revision().get() == key.style_revision
         && scene_key.environment_revision().get() == key.environment_revision
+}
+
+#[cfg(feature = "c13-1-overflow-clip-fixture-test")]
+fn c13_1_hit_test_samples_json(
+    scene: &RuntimeRenderSnapshot,
+    frames: &[RuntimeLayoutFrame],
+) -> Result<String, String> {
+    let oracle: serde_json::Value = serde_json::from_str(C13_CHROME_HIT_TEST_ORACLE)
+        .map_err(|error| format!("pinned C13.1 Chrome oracle JSON 읽기 실패: {error}"))?;
+    if oracle["browser"]["version"].as_str() != Some("155.0.8059.40") {
+        return Err("C13.1 hit-test oracle Chrome version이 고정값과 다릅니다".to_owned());
+    }
+    let oracle_frames = oracle["frames"]
+        .as_array()
+        .ok_or_else(|| "C13.1 hit-test oracle frame inventory가 없습니다".to_owned())?;
+    let expected_samples = oracle["hitTestSamples"]
+        .as_array()
+        .filter(|samples| samples.len() == 11)
+        .ok_or_else(|| "C13.1 hit-test oracle은 고정 표본 11개여야 합니다".to_owned())?;
+    let mut observations = Vec::with_capacity(expected_samples.len());
+    for sample in expected_samples {
+        let sample_id = sample["id"]
+            .as_str()
+            .ok_or_else(|| "C13.1 hit-test oracle sample ID가 없습니다".to_owned())?;
+        let x = sample["xCssPx"]
+            .as_f64()
+            .ok_or_else(|| format!("C13.1 hit-test sample {sample_id} x가 없습니다"))?
+            as f32;
+        let y = sample["yCssPx"]
+            .as_f64()
+            .ok_or_else(|| format!("C13.1 hit-test sample {sample_id} y가 없습니다"))?
+            as f32;
+        let expected_element_id = sample["elementId"]
+            .as_str()
+            .ok_or_else(|| format!("C13.1 hit-test sample {sample_id} target가 없습니다"))?;
+        let expected_node_index = oracle_frames
+            .iter()
+            .position(|frame| frame["id"].as_str() == Some(expected_element_id))
+            .ok_or_else(|| {
+                format!(
+                    "C13.1 hit-test sample {sample_id} target {expected_element_id} has no oracle frame"
+                )
+            })?;
+        let hit = scene.hit_test_css_point(x, y).ok_or_else(|| {
+            format!("C13.1 hit-test sample {sample_id} at ({x}, {y}) returned no node")
+        })?;
+        let actual_node_index = frames
+            .iter()
+            .position(|frame| frame.node_id == hit.node_id().get())
+            .ok_or_else(|| {
+                format!("C13.1 hit-test sample {sample_id} returned a node without frame")
+            })?;
+        if actual_node_index != expected_node_index {
+            return Err(format!(
+                "C13.1 hit-test sample {sample_id} returned node index {actual_node_index}, expected {expected_node_index}"
+            ));
+        }
+        observations.push(serde_json::json!({
+            "id": sample_id,
+            "xCssPx": x,
+            "yCssPx": y,
+            "nodeIndex": actual_node_index,
+            "status": "matched",
+        }));
+    }
+    serde_json::to_string(&observations)
+        .map_err(|error| format!("C13.1 hit-test sample JSON 변환 실패: {error}"))
 }
 
 fn lock<T>(mutex: &Mutex<T>) -> MutexGuard<'_, T> {
