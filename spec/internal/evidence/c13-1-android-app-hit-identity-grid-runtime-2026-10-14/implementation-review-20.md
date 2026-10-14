@@ -1,4 +1,4 @@
-# C13.1 Android 앱 hit identity grid 구현 실패 관점 검토 20개 · 2026-10-14
+# C13.1 Android 앱 hit identity grid 구현 실패 관점 검토 20개 · 2026-10-15
 
 계획 PR #163 검토와 분리해 Rust grid validator/comparator, JNI report 연결, Java 앱 route 및 API 37 AVD 동작을 확인했다. 이는 compact 300×100 CSS integer grid와 fixed PixelCopy 표본만 다루며 C13.1 완료 판정이 아니다.
 

@@ -46,7 +46,7 @@ C13은 `overflow-x/y`와 `overflow`의 `visible`, `clip`, `hidden`, `scroll`, `a
 | C13.5 | `scroll-snap-type`, `scroll-snap-align`, `scroll-snap-stop`, `scroll-padding`, `scroll-margin`, `scroll-behavior`; user/programmatic scroll 완료 뒤 snap 결정과 layout/style/tree 변화 뒤 re-snap. mandatory/proximity, axis, oversized snap target을 포함한다. | Chrome offset과 선택된 snap target을 끝 상태에서 비교하고, 입력 시간/애니메이션 표본은 별도 기록한다. oversized content를 중간부터 모두 접근할 수 있는지, nested container가 가장 가까운 snap owner를 고르는지, DOM update 후 target 유지/삭제, mandatory와 proximity를 각각 negative/control fixture로 확인한다. |
 | C13.6 | C17의 writing-mode/direction 계약과 합쳐 `overflow-block/inline`, logical overscroll, snap logical axes 및 scroll origin/negative RTL offset을 통합한다. | C17 merge 뒤 horizontal-tb/LTR 외 vertical/RTL fixtures, DOM scroll APIs의 좌표 부호, platform gesture 방향·scrollbar inline edge와 Chrome 대조를 수행한다. 이 관문 전에는 C13 완료를 표시하지 않는다. |
 
-### 현재 C13.1 브랜치 진행 상태 · 2026-10-14
+### 현재 C13.1 브랜치 진행 상태 · 2026-10-15
 
 - 후속 target-frame 2D hit scan은 13개 유효행의 모든 Chrome 정수 `(x,y)` 187,320점을 Rust exact `NodeId`와 비교했다([근거와 범위](../spec/internal/evidence/c13-1-overflow-clip-hit-identity-2d-2026-10-14/README.md)). 이는 target frame 밖 전체 viewport나 paint surface, DOM event dispatch 검증이 아니며 C13.1 완료 gate를 닫지 않는다.
 - 후속 [전체 viewport hit identity PR #160](https://github.com/ohah/spinon/pull/160)은 2026-10-14 rebase 방식으로 main에 병합됐다(merge SHA `c29b0b80aa10829797e798c1ecc0dbdaf16029fb`). 같은 13행의 1280×1100 전체 정수 viewport 1,408,000점을 Rust exact `NodeId`와 비교하고 네 방향 viewport 밖 Chrome `null`/Rust `None` controls를 추가했다([실행 근거](../spec/internal/evidence/c13-1-overflow-clip-full-viewport-hit-identity-2026-10-14/README.md)). 이는 host renderer query 검증이며 surface/event/WPT gate는 닫지 않는다.
