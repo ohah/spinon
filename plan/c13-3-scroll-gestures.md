@@ -1,6 +1,6 @@
 # C13.3 · 스크롤 제스처와 축별 chaining
 
-**상태:** 계획 확정 · snapshot delta-router와 typed style extraction 구현 조각 진행 중 · C13.3 전체 미완료
+**상태:** 계획 확정 · snapshot delta-router, typed style extraction, pure Rust gesture session 구현 조각 진행 중 · C13.3 전체 미완료
 **공식 상위 항목:** [구현 상태 대장](../spec/STATUS.md#css-구현-체크리스트)
 **선행:** C13.1 clip/hit-test와 C13.2 scroll owner, range, immutable snapshot·`ScrollStateRevision`
 **교차 경계:** S04.10 displayed-frame 입력 연결은 미완료다. S05.2 React host adapter와 공개 DOM event도 미완료다. 이 계획의 앱 route는 opt-in fixture 검증으로만 다루며 제품 event/presentation 지원으로 표시하지 않는다.
@@ -8,7 +8,7 @@
 **계획 PR 변경 검토:** [30개 관점 기록](../spec/internal/evidence/c13-3-scroll-gesture-plan-pr-review-30-2026-10-15.md)
 **구현 전 비교:** [고정 Chrome 155 관찰·fixture·화면](../spec/internal/evidence/c13-3-scroll-gesture-precomparison-2026-10-15/README.md) · [JSON](../tests/fixtures/css/references/c13-3-scroll-gesture-precomparison-v1.json)
 
-현재 구현 조각은 `RuntimeRenderSnapshot`에 대한 정책 입력형 per-axis delta routing primitive와 C13.3 제한 computed-style profile이다. `overscroll-behavior`의 물리 축 shorthand/longhand와 `touch-action` typed 값을 cascade하고 기존 overflow layout projection까지 보존한다. Stylo가 계산값을 보존하는 제한 집합 밖의 유효 `touch-action`은 `Unsupported`로 남긴다. 고정 Stylo가 조용히 버리는 유효 방향 pan 토큰(`pan-left/right/up/down`)과 동적 `var()` 값은 cascade 전에 profile 오류로 거부해 `auto`로 변하지 않게 한다. style profile은 runtime renderer, gesture session/queue, Android/iOS adapter 및 fixture route에 아직 연결되지 않았으므로 native gesture 동작이나 C13.3 완료를 뜻하지 않는다. [router 근거](../spec/internal/evidence/c13-3-scroll-gesture-runtime-core-2026-10-15/README.md) · [typed style projection 근거](../spec/internal/evidence/c13-3-scroll-style-projection-2026-10-15/README.md)
+현재 구현 조각은 `RuntimeRenderSnapshot` 정책 입력형 per-axis delta router, C13.3 제한 computed-style profile, 단일 pointer pure Rust `RuntimeScrollGestureSession`이다. session은 clip-aware 시작 target/owner chain과 시작 touch-action 축을 고정하고 cumulative translation, revision/geometry 취소, terminal 및 두 번째 pointer 억제를 처리한다. `overscroll-behavior`의 물리 축 shorthand/longhand와 `touch-action` typed 값을 cascade하고 기존 overflow layout projection까지 보존한다. Stylo가 계산값을 보존하는 제한 집합 밖의 유효 `touch-action`은 `Unsupported`로 남긴다. 고정 Stylo가 조용히 버리는 유효 방향 pan 토큰(`pan-left/right/up/down`)과 동적 `var()` 값은 cascade 전에 profile 오류로 거부해 `auto`로 변하지 않게 한다. style profile은 session이나 router에 연결되지 않았고, session은 native queue, Android/iOS adapter, fixture route 및 displayed-frame target 연결이 없다. 따라서 native gesture 동작이나 C13.3 완료를 뜻하지 않는다. [router 근거](../spec/internal/evidence/c13-3-scroll-gesture-runtime-core-2026-10-15/README.md) · [typed style projection 근거](../spec/internal/evidence/c13-3-scroll-style-projection-2026-10-15/README.md) · [core session 근거](../spec/internal/evidence/c13-3-scroll-gesture-session-2026-10-15/README.md)
 
 ## 목표와 범위
 

@@ -10,6 +10,7 @@ use super::{CssRect, CssSize, OpaqueCssSrgb};
 
 mod scroll;
 mod scroll_gesture;
+mod scroll_gesture_session;
 mod snapshot;
 
 pub use scroll::{
@@ -17,6 +18,16 @@ pub use scroll::{
     RuntimeScrollInputPolicy, RuntimeScrollRenderMetadata,
 };
 pub use scroll_gesture::{RuntimeScrollDeltaChange, RuntimeScrollDeltaOutcome};
+pub use scroll_gesture_session::{
+    RuntimeGestureAxes, RuntimeScrollGestureBegin, RuntimeScrollGestureCancelReason,
+    RuntimeScrollGestureError, RuntimeScrollGestureOutcome, RuntimeScrollGesturePanSample,
+    RuntimeScrollGestureSession, RuntimeScrollGestureState, RuntimeScrollGestureTerminal,
+    RuntimeTouchAction,
+};
+
+#[cfg(test)]
+#[path = "runtime/scroll_gesture_session_tests.rs"]
+mod scroll_gesture_session_tests;
 
 /// 한 CSS 좌표축에서 허용되는 반열린 clipping interval입니다.
 #[derive(Clone, Copy, Debug, PartialEq)]

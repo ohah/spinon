@@ -1,11 +1,11 @@
 # 0063 · C13.3 scroll gesture runtime 내부 계약
 
-- **계약:** `0.1.0-draft` · **상태:** per-axis snapshot router와 typed style projection 조각 구현 · 전체 gesture runtime 미완료
+- **계약:** `0.1.0-draft` · **상태:** per-axis snapshot router, typed style projection, 단일 pointer pure Rust session 조각 구현 · 전체 gesture runtime 미완료
 - **제품 CSS 지원 선언:** 아님
 - **기준:** [C13.3 계획](../../plan/c13-3-scroll-gestures.md) · [Chrome 155 precomparison](evidence/c13-3-scroll-gesture-precomparison-2026-10-15/README.md)
 - **기존 기반:** [0062 C13.2 scroll state](0062-c13-2-scroll-state.md)의 immutable snapshot·owner chain·`ScrollStateRevision`
 
-현재 후보에는 policy 입력형 순수 Rust delta router와 `RuntimeBlockFlexScrollGestureV1` computed-style profile이 있다. profile은 `overscroll-behavior` 물리 축 shorthand/longhand와 `touch-action`을 typed output으로 보존하고 기존 C13.1 overflow layout projection을 유지한다. 제한 지원 집합 밖의 유효 `touch-action` 값은 `Unsupported`로 보존한다. 이 style profile은 아직 renderer scroll policy, gesture session/queue, Android/iOS callback 또는 fixture FFI에 연결되지 않았다. 두 조각의 통과를 제품 제스처나 C13.3 완료로 해석하지 않는다. [router 실행 근거](evidence/c13-3-scroll-gesture-runtime-core-2026-10-15/README.md) · [typed style 실행 근거](evidence/c13-3-scroll-style-projection-2026-10-15/README.md)
+현재 후보에는 policy 입력형 순수 Rust delta router, `RuntimeBlockFlexScrollGestureV1` computed-style profile, 단일 pointer `RuntimeScrollGestureSession`이 있다. profile은 `overscroll-behavior` 물리 축 shorthand/longhand와 `touch-action`을 typed output으로 보존하고 기존 C13.1 overflow layout projection을 유지한다. 제한 지원 집합 밖의 유효 `touch-action` 값은 `Unsupported`로 보존한다. style profile은 renderer scroll policy 및 session에 연결되지 않았고 session은 native queue, Android/iOS callback 또는 fixture FFI에 연결되지 않았다. 세 조각의 통과를 제품 제스처나 C13.3 완료로 해석하지 않는다. [router 실행 근거](evidence/c13-3-scroll-gesture-runtime-core-2026-10-15/README.md) · [typed style 실행 근거](evidence/c13-3-scroll-style-projection-2026-10-15/README.md) · [core session 실행 근거](evidence/c13-3-scroll-gesture-session-2026-10-15/README.md)
 
 ## 범위와 소유자
 
@@ -47,6 +47,20 @@ Platform callback은 worker completion을 기다리지 않는다. gesture sessio
 Native adapter의 bounded input queue는 모든 accepted input에 단조 증가 sequence를 부여한다. `Begin`은 active state를 게시하기 전에 해당 gesture가 사용할 terminal control slot 하나를 예약한다. `Begin` 실패 또는 terminal 처리 시 slot은 정확히 한 번 반환한다. End는 앞서 수락된 Move 뒤에, Cancel은 명시된 cancel boundary 뒤에 처리한다. 같은 gesture/pointer/generation과 동일 snapshot/style/policy epoch의 인접 `Move`만 마지막 point 또는 누적 delta로 coalesce할 수 있고 coalesced sample 수를 기록한다. `Begin`/`End`/`Cancel`과 style/snapshot/lifecycle barrier를 넘어 합치지 않는다. Move를 저장·coalesce할 수 없으면 예약 terminal slot으로 gesture를 cancel하고 마지막 게시 offset을 유지한다. WheelDelta는 같은 hit point/target/owner/revision/policy에서만 coalesce하며 capacity가 없으면 sample 전체를 reject하고 진단 카운터를 남긴다. UI thread는 Rust/render worker 완료를 동기 대기하지 않는다.
 
 `GestureGeometryKey`는 runtime/document/tree/environment generation, surface generation, 시작 hit `NodeId`, root/body effective viewport owner, ordered scroll owner chain, ancestor hit/paint clip, scrollport rect 및 각 owner max range를 포함한다. 현재 offset, `ScrollStateRevision`, `touch-action`/`overscroll-behavior` 값, paint color는 key 자체에는 넣지 않는다. offset/style revision은 각 queued input에 별도로 stamp하고 처리 시 현재 snapshot과 대조한다. policy를 바꾼 input이 queue에 대기 중이면 이전 epoch delta를 먼저 처리하거나 입력을 거부해야 한다. touch action/overscroll property가 아닌 geometry-key constituent가 달라지면 active gesture를 취소한다.
+
+## 현재 구현된 Rust 단일 pointer session slice
+
+`spinon-render`는 공개 Rust 타입 `RuntimeScrollGestureSession`, `RuntimeScrollGestureBegin`, `RuntimeScrollGesturePanSample`, `RuntimeScrollGestureTerminal`과 결과·오류 타입을 제공한다. 이 API는 내부 `0.1.0-draft` 계약 조각이며 웹 Pointer/Wheel/scroll 이벤트 API가 아니다.
+
+- Begin은 현재 `RuntimeRenderKey`, surface generation, 증가 input sequence, gesture/pointer ID, CSS viewport point, coordinate scale 및 cascade가 이미 계산한 제한 `RuntimeTouchAction`을 받는다. key가 snapshot과 다르거나 좌표/scale/action/hit/geometry 검증에 실패하면 active session을 만들지 않는다. owner chain은 target 자신이 owner일 때 포함하고 nearest-to-outer 순서를 유지한다.
+- Pan sample도 현재 snapshot key, surface generation, sequence, gesture/pointer ID, scale과 cumulative CSS px translation을 받는다. host가 native slop 또는 recognizer `.began`을 판정한 뒤 첫 `pan_began`을 보낸다. 이 session은 native slop 값/source를 계산하거나 기록하지 않는다.
+- 첫 pan은 시작 action과 translation의 dominant axis 교집합을 고정한다. 크기가 같은 대각선은 허용된 두 축을 유지한다. 허용 축이 없으면 `PanRejected`가 되며 같은 gesture에서 다시 축을 고르지 않는다. 후속 `pan_moved`는 직전 accepted cumulative 값과의 차이만 delta router에 넘긴다.
+- 각 accepted pan은 기존 immutable snapshot delta router를 호출하고 결과 snapshot의 `ScrollStateRevision`을 session baseline으로 삼는다. no-op translation은 revision을 올리지 않는다. renderer worker나 플랫폼 표면으로 snapshot을 게시하는 queue는 포함하지 않는다.
+- geometry key는 document generation/document/tree/environment/intrinsic revisions, surface generation, viewport, target frame/hit clip/order, ordered owner chain, owner parent/scrollport/range, clip layers를 비교한다. style revision·scroll revision·offset·touch-action·overscroll policy 값 자체는 key에서 제외한다. 따라서 geometry가 같은 style-only snapshot 교체는 시작 action을 유지하고 새 snapshot의 overscroll policy를 다음 accepted sample에 쓴다.
+- document/tree/environment/surface/geometry 또는 외부 scroll revision이 달라진 pan sample은 현재 offset을 바꾸지 않고 active pointer를 suppressed set에 넣는다. 두 번째 pointer도 active pan을 취소하고 모든 contact terminal 전까지 새 pan을 막는다. sequence·gesture/pointer identity가 맞지 않는 terminal은 상태를 바꾸지 않는다.
+- coordinate scale은 CSS px 변환에 사용하지 않는다. adapter가 이미 CSS px로 정규화한 좌표에 scale identity를 함께 전달하며, active gesture 중 scale이 bitwise 달라지면 surface barrier로 취소한다.
+
+이 slice에는 native input queue/coalescing/terminal reservation, wheel adapter, touch-action ancestor cascade 연결, Android/iOS callback, FFI fixture route, S04.10 displayed-frame hit target, 앱 화면이 없다. Android AVD와 iOS Simulator 검증을 수행하지 않았다. focused Rust unit tests는 위 state/session 경계만 확인하며 Chrome oracle나 화면 적합성 근거가 아니다.
 
 ## 축별 delta 소비와 snapshot 게시
 
