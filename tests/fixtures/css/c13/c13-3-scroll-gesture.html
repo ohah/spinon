@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C13.3 nested scroll gesture oracle</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 400px; height: 240px; overflow: hidden; }
+    body { color: #f5f7fb; background: #101827; font: 12px/1.3 system-ui, sans-serif; }
+    #scene { position: absolute; inset: 0; overflow: hidden; background: #101827; }
+    #root { position: absolute; left: 16px; top: 16px; width: 368px; height: 208px; overflow: auto; border: 3px solid #f0c674; background: #344256; overscroll-behavior: auto; }
+    #root-content { position: relative; width: 520px; height: 440px; padding: 10px; background: #344256; }
+    #outer { position: absolute; left: 30px; top: 30px; width: 220px; height: 140px; overflow: auto; border: 3px solid #61c8a5; background: #1b3441; overscroll-behavior: auto; }
+    #outer-content { position: relative; width: 320px; height: 320px; background: #1b3441; }
+    #inner { position: absolute; left: 20px; top: 20px; width: 120px; height: 80px; overflow: auto; border: 3px solid #63a9ed; background: #17253a; overscroll-behavior: auto; touch-action: auto; }
+    html[data-c13-touch-action="none"] #inner { touch-action: none; }
+    html[data-c13-touch-action="pan-x"] #inner { touch-action: pan-x; }
+    html[data-c13-touch-action="pan-y"] #inner { touch-action: pan-y; }
+    html[data-c13-overflow="hidden"] #inner { overflow: hidden; }
+    html[data-c13-overflow="clip"] #inner { overflow: clip; }
+    html[data-c13-overflow="visible"] #inner { overflow: visible; }
+    #inner-content { position: relative; width: 200px; height: 180px; background: #17253a; }
+    .marker { position: absolute; width: 24px; height: 24px; background: #e3544e; }
+    #inner-marker { left: 148px; top: 128px; }
+    #outer-marker { left: 270px; top: 270px; background: #ed8d3f; }
+    #root-marker { left: 470px; top: 390px; background: #b184e3; }
+    #status { position: absolute; left: 16px; right: 16px; bottom: 4px; color: #63a9ed; white-space: pre; font: 9px/1.2 ui-monospace, monospace; pointer-events: none; }
+  </style>
+</head>
+<body>
+  <script>
+    const touchAction = new URLSearchParams(location.search).get('touch-action');
+    const overflow = new URLSearchParams(location.search).get('overflow');
+    if (['none', 'pan-x', 'pan-y'].includes(touchAction)) {
+      document.documentElement.dataset.c13TouchAction = touchAction;
+    }
+    if (['hidden', 'clip', 'visible'].includes(overflow)) {
+      document.documentElement.dataset.c13Overflow = overflow;
+    }
+  </script>
+  <main id="scene" aria-label="C13.3 nested scroll gesture oracle">
+    <div id="root" data-scroll-owner="root" tabindex="0">
+      <div id="root-content">
+        <div id="outer" data-scroll-owner="outer" tabindex="0">
+          <div id="outer-content">
+            <div id="inner" data-scroll-owner="inner" tabindex="0">
+              <div id="inner-content"><div id="inner-marker" class="marker"></div></div>
+            </div>
+            <div id="outer-marker" class="marker"></div>
+          </div>
+        </div>
+        <div id="root-marker" class="marker"></div>
+      </div>
+    </div>
+    <output id="status"></output>
+  </main>
+  <script>
+    (() => {
+      const ids = ['inner', 'outer', 'root'];
+      const elements = Object.fromEntries(ids.map((id) => [id, document.getElementById(id)]));
+      const eventLog = [];
+      const wheelLog = [];
+      const pointerLog = [];
+      for (const id of ids) {
+        elements[id].addEventListener('scroll', () => {
+          eventLog.push({ id, x: elements[id].scrollLeft, y: elements[id].scrollTop });
+        }, { passive: true });
+        elements[id].addEventListener('wheel', (event) => {
+          wheelLog.push({ listener: id, target: event.target.id, deltaX: event.deltaX, deltaY: event.deltaY, deltaMode: event.deltaMode, defaultPrevented: event.defaultPrevented });
+        }, { passive: true });
+      }
+      for (const type of ['pointerdown', 'pointermove', 'pointerup', 'pointercancel']) {
+        document.addEventListener(type, (event) => {
+          pointerLog.push({ type, id: event.pointerId, pointerType: event.pointerType, target: event.target.id, x: event.clientX, y: event.clientY, buttons: event.buttons, primary: event.isPrimary });
+        }, true);
+      }
+      const metrics = (id) => {
+        const element = elements[id];
+        return {
+          offset: [element.scrollLeft, element.scrollTop],
+          range: [element.scrollWidth - element.clientWidth, element.scrollHeight - element.clientHeight],
+          client: [element.clientWidth, element.clientHeight],
+          overscroll: [getComputedStyle(element).overscrollBehaviorX, getComputedStyle(element).overscrollBehaviorY],
+        };
+      };
+      window.c133 = {
+        reset(mode = 'auto', inner = [0, 0], outer = [0, 0], root = [0, 0]) {
+          for (const id of ids) {
+            elements[id].style.overscrollBehavior = mode;
+            elements[id].scrollLeft = 0;
+            elements[id].scrollTop = 0;
+          }
+          if (!document.documentElement.dataset.c13TouchAction) {
+            elements.inner.style.touchAction = 'auto';
+          }
+          elements.inner.scrollLeft = inner[0];
+          elements.inner.scrollTop = inner[1];
+          elements.outer.scrollLeft = outer[0];
+          elements.outer.scrollTop = outer[1];
+          elements.root.scrollLeft = root[0];
+          elements.root.scrollTop = root[1];
+          this.clearEvents();
+          return this.snapshot();
+        },
+        setBehavior(id, x, y) {
+          elements[id].style.overscrollBehaviorX = x;
+          elements[id].style.overscrollBehaviorY = y;
+          return metrics(id);
+        },
+        setTouchAction(id, value) {
+          const element = document.getElementById(id);
+          if (!element) throw new Error('unknown touch-action fixture node: ' + id);
+          element.style.touchAction = value;
+          return getComputedStyle(element).touchAction;
+        },
+        focus(id) { elements[id].focus(); return document.activeElement.id; },
+        snapshot() {
+          return { viewport: [innerWidth, innerHeight, devicePixelRatio], owners: Object.fromEntries(ids.map((id) => [id, metrics(id)])), events: eventLog.slice(), wheelEvents: wheelLog.slice(), pointerEvents: pointerLog.slice() };
+        },
+        clearEvents() { eventLog.length = 0; wheelLog.length = 0; pointerLog.length = 0; },
+        async settle() {
+          await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+          await new Promise((resolve) => setTimeout(resolve, 80));
+          return this.snapshot();
+        },
+        async prepare(mode = 'auto', inner = [0, 0], outer = [0, 0], root = [0, 0]) {
+          this.reset(mode, inner, outer, root);
+          await this.settle();
+          this.clearEvents();
+          return this.snapshot();
+        },
+      };
+      document.getElementById('status').textContent = 'C13.3 gesture · touch ' + (document.documentElement.dataset.c13TouchAction || 'auto') + ' · overflow ' + (document.documentElement.dataset.c13Overflow || 'auto');
+    })();
+  </script>
+</body>
+</html>
