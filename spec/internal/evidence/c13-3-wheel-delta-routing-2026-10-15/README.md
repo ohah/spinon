@@ -58,29 +58,29 @@ Xcode build transcript의 줄 끝 공백과 마지막 빈 줄은 저장소 white
 
 ### Android API 37 ARM64 AVD
 
-![Android 시나리오 1 auto boundary](android-scenario-1-screen.png)
+![Android 시나리오 1 auto boundary](./android-scenario-1-screen.png)
 
 전후 비교 기준: `android-scenario-1-before-screen.png`.
 
-![Android 시나리오 2 contain X and auto Y](android-scenario-2-screen.png)
+![Android 시나리오 2 contain X and auto Y](./android-scenario-2-screen.png)
 
 전후 비교 기준: `android-scenario-2-before-screen.png`.
 
-![Android 시나리오 3 touch-action none](android-scenario-3-screen.png)
+![Android 시나리오 3 touch-action none](./android-scenario-3-screen.png)
 
 전후 비교 기준: `android-scenario-3-before-screen.png`.
 
 ### iPhone 17 Pro iOS 26.2 Simulator
 
-![iOS 시나리오 1 auto boundary](ios-scenario-1-screen.png)
+![iOS 시나리오 1 auto boundary](./ios-scenario-1-screen.png)
 
 전후 비교 기준: `ios-scenario-1-before-screen.png`.
 
-![iOS 시나리오 2 contain X and auto Y](ios-scenario-2-screen.png)
+![iOS 시나리오 2 contain X and auto Y](./ios-scenario-2-screen.png)
 
 전후 비교 기준: `ios-scenario-2-before-screen.png`.
 
-![iOS 시나리오 3 touch-action none](ios-scenario-3-screen.png)
+![iOS 시나리오 3 touch-action none](./ios-scenario-3-screen.png)
 
 전후 비교 기준: `ios-scenario-3-before-screen.png`.
 
@@ -106,4 +106,4 @@ Xcode build transcript의 줄 끝 공백과 마지막 빈 줄은 저장소 white
 - Pixel boundary: [`pixel-boundary-analysis.json`](pixel-boundary-analysis.json).
 - Build·artifact: `android-opt-in-*`, `android-feature-off-*`, `ios-opt-in-*`, `ios-feature-off-*` 파일.
 - 계획과 기대값: [`wheel delta routing plan`](../../../../plan/c13-3-wheel-delta-routing.md).
-- 검토: [`구현 실패 관점 20개`](implementation-review-20.md)와 PR 작성 후 별도 추가할 변경 검토.
+- 검토: [`구현 실패 관점 20개`](implementation-review-20.md)와 [`PR 변경 검토 30개`](pr-delta-review-30.md).
