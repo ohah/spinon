@@ -129,6 +129,8 @@ CSS Overscroll 초안은 `contain`과 `none`이 ancestor chaining을 막고, `no
 
 touch pan, host가 scroll 의도로 분류한 normalized wheel/trackpad delta와 기록된 momentum phase, cancel, multi-pointer cancellation만 범위다. Spinon이 touch release 뒤 inertia/fling을 생성하지 않는다. host magnify/zoom input, keyboard focus/default scroll, pinch zoom, scroll snap, scrollbar, RTL/logical axis, public Pointer/Wheel/scroll event는 별도 owner에 남긴다.
 
+Android native wheel adapter는 현재 `MotionEvent`의 source와 pointer tool을 기준으로 분류한다. `SOURCE_TOUCHPAD` event는 `TrackpadScroll`, `SOURCE_MOUSE` event는 pointer 0의 tool type이 `TOOL_TYPE_FINGER`일 때 `TrackpadScroll`, `TOOL_TYPE_MOUSE`일 때 `MouseWheel`이다. source/tool 조합을 알 수 없으면 queue에 넣지 않는다. `InputDevice.getSources()`는 장치의 지원 source 합집합이어서 event 종류를 나타내지 않으므로 분류에 사용하지 않는다. 진단에는 event source bits, pointer tool, device-supported source bits를 함께 보존한다. 이 adapter 규칙은 Android API 문서에 따른 host 분류이며, 시뮬레이터 negative control은 실제 복합 입력장치 검증으로 간주하지 않는다. [C13.3 Android source 분류 수정·AVD 근거](evidence/c13-3-native-wheel-source-classification-2026-10-16/README.md).
+
 ## UIKit 첫 translation이 0인 경우
 
 `UIPanGestureRecognizer`의 `.began`은 OS pan recognition 경계지만, 그 callback의 누적 translation은 `(0,0)`일 수 있다. iOS adapter는 이 sample에서 `Begin`만 queue에 넣고 pan 축을 고정하지 않는다. translation이 계속 0인 `.changed` callback은 queue에 넣지 않으며, 첫 nonzero `.changed`는 `PanBegan`으로 enqueue한다. 그 이후 `.changed`만 `Move`가 된다. 첫 nonzero sample 전에 끝나거나 취소되면 Tracking 상태를 terminal 처리하고 offset/revision은 유지한다. Android는 native touch slop을 넘은 실제 누적 translation을 `PanBegan`으로 enqueue한다. 순수 Rust session에 zero `PanBegan`이 직접 전달돼도 no-op으로 받아들이고 다음 nonzero `PanBegan`에서 축을 고정한다. fixed CSS px slop/각도 기준은 두지 않는다. [Simulator matrix evidence](evidence/c13-3-touch-action-simulator-matrix-2026-10-15/README.md).

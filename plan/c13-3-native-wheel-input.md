@@ -11,6 +11,8 @@
 **Control-wheel PR 변경 적대 검토 20개:** [기록](../spec/internal/evidence/c13-3-android-control-wheel-runtime-2026-10-16/pr-delta-review-20.md)
 **구현 실패 관점 검토 20개:** [기록](../spec/internal/evidence/c13-3-native-wheel-input-implementation-review-20-2026-10-16.md)
 **PR #198 변경 관점 검토 30개:** [기록](../spec/internal/evidence/c13-3-native-wheel-input-pr-delta-review-30-2026-10-16.md)
+**source 분류 수정 계획 검토 20개:** [기록](../spec/internal/evidence/c13-3-native-wheel-source-classification-plan-review-20-2026-10-16.md)
+**source 분류 수정 구현·실행 검토 20개:** [기록](../spec/internal/evidence/c13-3-native-wheel-source-classification-implementation-review-20-2026-10-16.md)
 **구현 전 비교 기준:** [사전 비교와 정규화 oracle](../spec/internal/evidence/c13-3-native-wheel-input-precomparison-2026-10-16/README.md) · [기계 판독 기준](../spec/internal/evidence/c13-3-native-wheel-input-precomparison-2026-10-16/normalization-oracle.json)
 
 ## 목표와 범위
@@ -19,7 +21,7 @@ Android와 iOS host가 OS input pipeline에서 전달받은 mouse wheel 및 trac
 
 지원 입력 경로:
 
-- Android API 29 이상: `ACTION_SCROLL`의 `AXIS_HSCROLL`/`AXIS_VSCROLL`. `SOURCE_MOUSE`와 OS가 mouse-equivalent scroll로 전달한 `SOURCE_TOUCHPAD`를 구별한다. Android `View` 문서는 touchpad 두 손가락 scroll도 이 action과 축으로 보고하도록 설명한다. API 34 classified-move gesture-distance axes는 이번 slice에서 지원하지 않는다.
+- Android API 29 이상: `ACTION_SCROLL`의 `AXIS_HSCROLL`/`AXIS_VSCROLL`. 이벤트 자체의 `MotionEvent.getSource()`와 `getToolType(0)`로 mouse와 trackpad를 구별한다. 명시적 `SOURCE_TOUCHPAD`는 trackpad이고, `SOURCE_MOUSE`는 pointer tool이 finger면 trackpad, mouse면 mouse다. 미확인 조합은 거부한다. `InputDevice.getSources()`는 장치가 지원하는 source 합집합이므로 현재 이벤트 분류에 사용하지 않고 진단에만 남긴다. Android `View` 문서는 touchpad 두 손가락 scroll도 이 action과 축으로 보고하도록 설명한다. API 34 classified-move gesture-distance axes는 이번 slice에서 지원하지 않는다.
 - iPadOS Simulator: UIKit `UIPanGestureRecognizer.allowedScrollTypesMask`를 discrete(mouse)와 continuous(trackpad) recognizer로 분리한다. scroll recognizer의 `allowedTouchTypes`는 비워 기존 finger pan과 중복 처리하지 않는다.
 - host가 scroll로 판정한 입력만 받는다. Android Ctrl-wheel과 pinch classification, iOS `UIGestureRecognizer.modifierFlags`의 Control-wheel, pinch classification, unknown source/action은 queue에 넣지 않는다. iOS는 scroll recognizer만 연결하고 pinch recognizer는 추가하지 않는다.
 - OS API가 momentum phase를 제공하지 않으면 `RuntimeScrollMomentumPhase::None`으로 기록한다. recognizer의 ended 상태를 momentum ended로 추정하지 않는다.
@@ -37,6 +39,7 @@ Android와 iOS host가 OS input pipeline에서 전달받은 mouse wheel 및 trac
 - Control-wheel 거부 행렬은 left/right Ctrl × horizontal/vertical 4 case를 각각 fresh fixture launch로 검사하고, no-Control `ACTION_SCROLL`을 positive control로 실행해 modifier 0과 queue→draw revision 2를 확인한다.
 - iPadOS Simulator에서 mouse wheel/discrete와 trackpad/continuous scroll을 주입한다. UIKit callback/source mask가 관찰되지 않으면 FFI direct enqueue로 대체하지 않고 미검증으로 남긴다.
 - 2026-10-16 Android API 37 ARM64 AVD에서는 mouse `ACTION_SCROLL`을 native callback→queue→draw까지 연결했다. ±H/V와 네 대각 조합 8/8에서 factor `168 px`, scale `2.625 px/CSS px`, axis magnitude `64 CSS px`, target `7`, revision 2와 각 owner offset이 고정 oracle과 일치했다. SurfaceView 밖 점, 위치 없는 ADB touchpad sample, 영 축은 3/3 거부됐고 revision/offset은 시작값을 유지했다. [native Android wheel 실행·pixel·artifact 근거](../spec/internal/evidence/c13-3-native-wheel-input-2026-10-16/README.md).
+- 같은 AVD 재검증에서 `InputDevice.getSources()` 지원 source 합집합으로 분류하던 문제를 수정했다. 복합 장치의 mouse event가 touchpad로 오분류되는 경우를 JVM legacy negative control로 재현했고, 실제 AVD mouse/touchpad event source와 pointer tool 진단을 확인했다. AVD에는 두 source를 함께 지원하는 실제 복합 장치가 없으므로 하드웨어 재현으로 확대하지 않는다. [source 분류기 수정·AVD 재검증 근거](../spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/README.md).
 - 별도 ADB keyboard/mouse 명령은 modifier를 연결하지 못했지만, 같은 API 37 ARM64 AVD의 virtual uinput device는 left/right Ctrl과 H/V wheel을 Android `ACTION_SCROLL` callback까지 전달했다. 4/4 거부에서 `modifiers=2`, queue/process 0건, revision 1, 초기 offsets와 SurfaceView crop 0 changed pixels를 확인했다. 모든 case 뒤 가상 device가 제거됐고 입력 meta state는 0이었다. 일반 wheel positive control은 modifier 0, target 7, revision 2와 기대 offsets를 만들었다. [재현 도구와 Control-wheel AVD 근거](../spec/internal/evidence/c13-3-android-control-wheel-runtime-2026-10-16/README.md).
 - 같은 날 iPad Pro 13-inch (M5)/iOS 26.2 Simulator 앱은 ready였지만 호스트 `loginwindow`가 Simulator GUI를 가려 CGEvent가 앱 callback까지 도달하지 않았다. UIKit sign은 미관찰로 남기고 iOS adapter 구현 gate를 유지한다.
 - `normalization-oracle.json`은 Android adapter 결과와 iOS 미관찰 상태를 함께 기록한다. Android mouse slice는 통과했지만 iOS는 native sign gate를 통과할 때까지 adapter 구현을 보류한다.
@@ -44,7 +47,7 @@ Android와 iOS host가 OS input pipeline에서 전달받은 mouse wheel 및 trac
 ## 구현 절차
 
 1. 기존 fixture lifecycle과 opt-in boundary를 확인하고 opt-in build에서만 native listeners/recognizers를 추가한다.
-2. **완료 · Android API 37 AVD:** generic-motion callback에서 `ACTION_SCROLL`과 허용 source만 선택한다. factor와 surface scale이 finite·positive인지 검증한다. Ctrl-wheel, zero axes, invalid point와 source/action은 queue 전에 reject한다. Android `MotionEvent` route에 pinch recognizer를 추가하지 않는다.
+2. **완료 · Android API 37 AVD:** generic-motion callback에서 `ACTION_SCROLL`과 허용 event source/tool 조합만 선택한다. `InputDevice.getSources()`는 분류 입력으로 쓰지 않는다. factor와 surface scale이 finite·positive인지 검증한다. Ctrl-wheel, zero axes, invalid point와 source/action/tool은 queue 전에 reject한다. Android `MotionEvent` route에 pinch recognizer를 추가하지 않는다.
 3. iOS discrete/continuous scroll recognizer를 각각 구성해 `MouseWheel`/`TrackpadScroll` source를 구분한다. recognizer별 translation baseline을 유지하고 직전 관찰값과의 차분만 enqueue한다. `modifierFlags`를 읽어 Control-wheel을 reject하고 finger input이 중복되지 않는지 확인한다.
 4. 양 플랫폼은 raw delta, native unit, units-per-CSS scale, modifiers, source, phase, CSS point/delta, surface generation, render key, target, admission/result를 기록한다. callback에서 worker 완료를 동기 대기하지 않는다.
 5. API에 명시적인 momentum phase가 없으면 `None`을 보낸다. UIKit began/changed/ended를 momentum lifecycle로 오해하지 않는다.
@@ -59,6 +62,7 @@ Android와 iOS host가 OS input pipeline에서 전달받은 mouse wheel 및 trac
 - Android 결과는 ViewConfiguration factors와 surface px/CSS px 변환식, iOS 결과는 translation 차분·point scale 및 preflight에서 확정한 부호식과 0.01 CSS px 이내 일치한다.
 - 양/음 H/V와 대각 입력은 CSS right-handed sign 및 고정 Chrome geometry oracle에 맞는다. normalized delta는 scroll owner 간 보존되고 화면 변화는 기대 surface 안에 제한된다.
 - source/unit/scale/phase/modifier/target이 queue report까지 유지된다. 같은 iOS cumulative translation을 두 번 처리해도 두 번째 delta는 0이며 scroll revision이 증가하지 않는다.
+- Android 분류 oracle은 `SOURCE_TOUCHPAD → TrackpadScroll`, `SOURCE_MOUSE + finger → TrackpadScroll`, `SOURCE_MOUSE + mouse → MouseWheel`, unknown 조합 거부다. 장치 지원 source union을 바꾸어도 현재 event 판정은 달라지지 않는다.
 - feature-off Android/iOS app artifact에 fixture marker, FFI symbol/string이 없고 opt-in positive control에 존재한다. public API와 C13.3 completion 체크는 바뀌지 않는다.
 
 ### 거부·복구 조건
