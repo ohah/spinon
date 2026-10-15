@@ -1,0 +1,84 @@
+{
+  "schema": "spinon-r07-framework-adapter-oracle@1",
+  "contract": "spec/internal/0003-shared-host-contract.md@0.1.0-draft",
+  "steps": [
+    {
+      "name": "mount",
+      "tree": {
+        "type": "root",
+        "children": [
+          {
+            "type": "element",
+            "name": "main",
+            "attributes": {},
+            "children": [
+              {
+                "type": "element",
+                "name": "button",
+                "attributes": { "aria-label": "count" },
+                "children": [{ "type": "text", "value": "count: 0" }]
+              }
+            ]
+          }
+        ]
+      },
+      "clickCount": 0
+    },
+    {
+      "name": "one-click",
+      "tree": {
+        "type": "root",
+        "children": [
+          {
+            "type": "element",
+            "name": "main",
+            "attributes": {},
+            "children": [
+              {
+                "type": "element",
+                "name": "button",
+                "attributes": { "aria-label": "count" },
+                "children": [{ "type": "text", "value": "count: 1" }]
+              }
+            ]
+          }
+        ]
+      },
+      "clickCount": 1
+    },
+    {
+      "name": "two-clicks",
+      "tree": {
+        "type": "root",
+        "children": [
+          {
+            "type": "element",
+            "name": "main",
+            "attributes": {},
+            "children": [
+              {
+                "type": "element",
+                "name": "button",
+                "attributes": { "aria-label": "count" },
+                "children": [{ "type": "text", "value": "count: 2" }]
+              }
+            ]
+          }
+        ]
+      },
+      "clickCount": 2
+    },
+    {
+      "name": "unmount",
+      "tree": { "type": "root", "children": [] },
+      "clickCount": 2
+    }
+  ],
+  "non_goals": [
+    "Rust FFI integration",
+    "production Vue or Svelte adapter support",
+    "framework callback closure reclamation after detached nodes become unreachable",
+    "public DOM or accessibility conformance",
+    "CSS layout or GPU surface validation"
+  ]
+}

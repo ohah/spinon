@@ -1,0 +1,466 @@
+{
+  "schema": "spinon-r07-framework-adapter-observation@1",
+  "environment": {
+    "node": "v26.7.0",
+    "platform": "darwin",
+    "architecture": "arm64"
+  },
+  "dependencies": {
+    "@vue/runtime-core": "3.5.44",
+    "parse5": "8.0.1",
+    "svelte": "5.57.2"
+  },
+  "adapters": [
+    {
+      "name": "Vue",
+      "ownerId": "vue-root",
+      "snapshots": {
+        "mount": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "name": "main",
+              "attributes": {},
+              "children": [
+                {
+                  "type": "element",
+                  "name": "button",
+                  "attributes": {
+                    "aria-label": "count"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "count: 0"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "click": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "name": "main",
+              "attributes": {},
+              "children": [
+                {
+                  "type": "element",
+                  "name": "button",
+                  "attributes": {
+                    "aria-label": "count"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "count: 1"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "twoClicks": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "name": "main",
+              "attributes": {},
+              "children": [
+                {
+                  "type": "element",
+                  "name": "button",
+                  "attributes": {
+                    "aria-label": "count"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "count: 2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "unmount": {
+          "type": "root",
+          "children": []
+        }
+      },
+      "clicks": {
+        "mount": 0,
+        "click": 1,
+        "twoClicks": 2,
+        "unmount": 2
+      },
+      "detachedClickErrorCode": "DetachedTarget",
+      "rootClickListeners": 0,
+      "documentClickListeners": null,
+      "operations": [
+        {
+          "sequence": 1,
+          "ownerId": "vue-root",
+          "operation": "CreateElement",
+          "node": "n1",
+          "name": "main"
+        },
+        {
+          "sequence": 2,
+          "ownerId": "vue-root",
+          "operation": "CreateElement",
+          "node": "n2",
+          "name": "button"
+        },
+        {
+          "sequence": 3,
+          "ownerId": "vue-root",
+          "operation": "CreateText",
+          "node": "n3",
+          "data": "count: 0"
+        },
+        {
+          "sequence": 4,
+          "ownerId": "vue-root",
+          "operation": "InsertBefore",
+          "parent": "n2",
+          "node": "n3",
+          "before": null
+        },
+        {
+          "sequence": 5,
+          "ownerId": "vue-root",
+          "operation": "SetAttribute",
+          "node": "n2",
+          "name": "aria-label",
+          "previous": null,
+          "value": "count"
+        },
+        {
+          "sequence": 6,
+          "ownerId": "vue-root",
+          "operation": "AdapterListenerAdd",
+          "target": "n2",
+          "type": "click"
+        },
+        {
+          "sequence": 7,
+          "ownerId": "vue-root",
+          "operation": "InsertBefore",
+          "parent": "n1",
+          "node": "n2",
+          "before": null
+        },
+        {
+          "sequence": 8,
+          "ownerId": "vue-root",
+          "operation": "InsertBefore",
+          "parent": "root",
+          "node": "n1",
+          "before": null
+        },
+        {
+          "sequence": 9,
+          "ownerId": "vue-root",
+          "operation": "HarnessClickDispatch",
+          "node": "n2",
+          "type": "click"
+        },
+        {
+          "sequence": 10,
+          "ownerId": "vue-root",
+          "operation": "SetTextData",
+          "node": "n3",
+          "previous": "count: 0",
+          "data": "count: 1"
+        },
+        {
+          "sequence": 11,
+          "ownerId": "vue-root",
+          "operation": "AdapterListenerRemove",
+          "target": "n2",
+          "type": "click"
+        },
+        {
+          "sequence": 12,
+          "ownerId": "vue-root",
+          "operation": "AdapterListenerAdd",
+          "target": "n2",
+          "type": "click"
+        },
+        {
+          "sequence": 13,
+          "ownerId": "vue-root",
+          "operation": "HarnessClickDispatch",
+          "node": "n2",
+          "type": "click"
+        },
+        {
+          "sequence": 14,
+          "ownerId": "vue-root",
+          "operation": "SetTextData",
+          "node": "n3",
+          "previous": "count: 1",
+          "data": "count: 2"
+        },
+        {
+          "sequence": 15,
+          "ownerId": "vue-root",
+          "operation": "AdapterListenerRemove",
+          "target": "n2",
+          "type": "click"
+        },
+        {
+          "sequence": 16,
+          "ownerId": "vue-root",
+          "operation": "AdapterListenerAdd",
+          "target": "n2",
+          "type": "click"
+        },
+        {
+          "sequence": 17,
+          "ownerId": "vue-root",
+          "operation": "RemoveChild",
+          "parent": "root",
+          "node": "n1"
+        }
+      ],
+      "compileMetadata": null
+    },
+    {
+      "name": "Svelte",
+      "ownerId": "svelte-root",
+      "snapshots": {
+        "mount": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "name": "main",
+              "attributes": {},
+              "children": [
+                {
+                  "type": "element",
+                  "name": "button",
+                  "attributes": {
+                    "aria-label": "count"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "count: 0"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "click": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "name": "main",
+              "attributes": {},
+              "children": [
+                {
+                  "type": "element",
+                  "name": "button",
+                  "attributes": {
+                    "aria-label": "count"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "count: 1"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "twoClicks": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "name": "main",
+              "attributes": {},
+              "children": [
+                {
+                  "type": "element",
+                  "name": "button",
+                  "attributes": {
+                    "aria-label": "count"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "count: 2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "unmount": {
+          "type": "root",
+          "children": []
+        }
+      },
+      "clicks": {
+        "mount": 0,
+        "click": 1,
+        "twoClicks": 2,
+        "unmount": 2
+      },
+      "detachedClickErrorCode": "DetachedTarget",
+      "rootClickListeners": 0,
+      "documentClickListeners": 0,
+      "operations": [
+        {
+          "sequence": 1,
+          "ownerId": "svelte-root",
+          "operation": "CreateElement",
+          "node": "n1",
+          "name": "main"
+        },
+        {
+          "sequence": 2,
+          "ownerId": "svelte-root",
+          "operation": "CreateElement",
+          "node": "n2",
+          "name": "button"
+        },
+        {
+          "sequence": 3,
+          "ownerId": "svelte-root",
+          "operation": "SetAttribute",
+          "node": "n2",
+          "name": "aria-label",
+          "previous": null,
+          "value": "count"
+        },
+        {
+          "sequence": 4,
+          "ownerId": "svelte-root",
+          "operation": "CreateText",
+          "node": "n3",
+          "data": " "
+        },
+        {
+          "sequence": 5,
+          "ownerId": "svelte-root",
+          "operation": "InsertBefore",
+          "parent": "n2",
+          "node": "n3",
+          "before": null
+        },
+        {
+          "sequence": 6,
+          "ownerId": "svelte-root",
+          "operation": "InsertBefore",
+          "parent": "n1",
+          "node": "n2",
+          "before": null
+        },
+        {
+          "sequence": 7,
+          "ownerId": "svelte-root",
+          "operation": "SetTextData",
+          "node": "n3",
+          "previous": " ",
+          "data": "count: 0"
+        },
+        {
+          "sequence": 8,
+          "ownerId": "svelte-root",
+          "operation": "InsertBefore",
+          "parent": "root",
+          "node": "n1",
+          "before": null
+        },
+        {
+          "sequence": 9,
+          "ownerId": "svelte-root",
+          "operation": "AdapterListenerAdd",
+          "target": "root",
+          "type": "click"
+        },
+        {
+          "sequence": 10,
+          "ownerId": "svelte-root",
+          "operation": "AdapterListenerAdd",
+          "target": "document",
+          "type": "click"
+        },
+        {
+          "sequence": 11,
+          "ownerId": "svelte-root",
+          "operation": "HarnessClickDispatch",
+          "node": "n2",
+          "type": "click"
+        },
+        {
+          "sequence": 12,
+          "ownerId": "svelte-root",
+          "operation": "SetTextData",
+          "node": "n3",
+          "previous": "count: 0",
+          "data": "count: 1"
+        },
+        {
+          "sequence": 13,
+          "ownerId": "svelte-root",
+          "operation": "HarnessClickDispatch",
+          "node": "n2",
+          "type": "click"
+        },
+        {
+          "sequence": 14,
+          "ownerId": "svelte-root",
+          "operation": "SetTextData",
+          "node": "n3",
+          "previous": "count: 1",
+          "data": "count: 2"
+        },
+        {
+          "sequence": 15,
+          "ownerId": "svelte-root",
+          "operation": "RemoveChild",
+          "parent": "root",
+          "node": "n1"
+        },
+        {
+          "sequence": 16,
+          "ownerId": "svelte-root",
+          "operation": "AdapterListenerRemove",
+          "target": "root",
+          "type": "click"
+        },
+        {
+          "sequence": 17,
+          "ownerId": "svelte-root",
+          "operation": "AdapterListenerRemove",
+          "target": "document",
+          "type": "click"
+        }
+      ],
+      "compileMetadata": {
+        "runes": true,
+        "warningCodes": [],
+        "generatedBytes": 852
+      }
+    }
+  ]
+}
