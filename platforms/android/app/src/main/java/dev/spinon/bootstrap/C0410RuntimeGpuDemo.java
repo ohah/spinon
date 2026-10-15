@@ -296,6 +296,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             long host, int action, long surfaceGeneration, long gestureId, long pointerId,
             float xOrCumulativeXCssPx, float yOrCumulativeYCssPx,
             float coordinateScale, int reason);
+    private static native byte[] nativeEnqueueC133Wheel(
+            long host, int intent, long surfaceGeneration,
+            float pointXCssPx, float pointYCssPx,
+            float deltaXCssPx, float deltaYCssPx,
+            float rawDeltaX, float rawDeltaY,
+            int sourceUnit, float coordinateScale, int source,
+            int momentumPhase, int modifierFlags);
     private static native byte[] nativeProcessC133GestureQueue(long host);
     private static native byte[] nativeEvalC11GridFixture(long host);
     private static native byte[] nativeEvalC11GridSceneFixture(long host, int sceneIndex);
@@ -441,6 +448,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final String c132SurfacePixelRunId;
     private final boolean c133GestureFixtureRequested;
     private final boolean c133TapProbeRequested;
+    private final boolean c133WheelProbeRequested;
     private final int c133GesturePolicyScenarioID;
     private final int c133WorkerDelayMillis;
     private final boolean c133SyntheticSecondPointerProbeRequested;
@@ -487,6 +495,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private volatile boolean c132ScrollAssertionsPassed;
     private volatile boolean c133GestureFixtureReady;
     private volatile boolean c133GestureInitialDrawReady;
+    private volatile boolean c133WheelProbeStarted;
+    private volatile boolean c133WheelProbeEnqueued;
+    private volatile boolean c133WheelProbeProcessed;
+    private volatile boolean c133WheelProbeCompleted;
+    private volatile boolean c133WheelProbeFailed;
     private final AtomicBoolean c133DrainScheduled = new AtomicBoolean();
     private final AtomicBoolean c133DrainAgain = new AtomicBoolean();
     private final int c133TouchSlopPx;
@@ -606,6 +619,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 .getBooleanExtra("spinon_c133_gesture_fixture", false);
         c133TapProbeRequested = BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST
                 && activity.getIntent().getBooleanExtra("spinon_c133_tap_probe", false);
+        c133WheelProbeRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c133_wheel_probe", false);
         int requestedC133PolicyScenarioID = 0;
         if (BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST
                 && c133GestureFixtureRequested
@@ -854,6 +869,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "SPINON · C11.2.1 Grid"
                 : c132ScrollFixtureRequested
                 ? "SPINON · C13.2 scroll state"
+                : c133WheelProbeRequested
+                ? "SPINON · C13.3 wheel fixture"
                 : c133GestureFixtureRequested
                 ? "SPINON · C13.3 Android touch adapter"
                 : c131BorderStripProbeRequested
@@ -929,6 +946,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "13개 overflow clip case · 30,000 hit identity + 52 PixelCopy 표본 · WGPU · 300×100 CSS px"
                 : c132ScrollFixtureRequested
                 ? "V8 scroll owner·offset·paint/hit → WGPU · 5 PixelCopy 표본 · 400×240 CSS px"
+                : c133WheelProbeRequested
+                ? "Synthetic CSS px delta → Rust queue → scroll router → WGPU · 400×240 CSS px"
                 : c133GestureFixtureRequested
                 ? "MotionEvent · native touch slop · bounded Rust queue/session → WGPU · 400×240 CSS px"
                 : c131BorderStripProbeRequested
@@ -1225,12 +1244,26 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             postStatus("실패 · C13.3 tap probe에는 gesture fixture route가 필요합니다");
             return false;
         }
+        if (c133WheelProbeRequested && !c133GestureFixtureRequested) {
+            Log.e(TAG, "SPINON_C133_ARGUMENT_ERROR rejected=true reason=wheel-probe-requires-fixture-route");
+            postStatus("실패 · C13.3 wheel probe에는 gesture fixture route가 필요합니다");
+            return false;
+        }
         if (c133TapProbeRequested
                 && (!activity.getIntent().hasExtra("spinon_c133_policy_scenario_id")
                         || (c133GesturePolicyScenarioID != 3
                                 && c133GesturePolicyScenarioID != 4))) {
             Log.e(TAG, "SPINON_C133_ARGUMENT_ERROR rejected=true reason=tap-probe-requires-scenario-3-or-4");
             postStatus("실패 · C13.3 tap probe는 policy scenario 3 또는 4가 필요합니다");
+            return false;
+        }
+        if (c133WheelProbeRequested
+                && (!activity.getIntent().hasExtra("spinon_c133_policy_scenario_id")
+                        || (c133GesturePolicyScenarioID != 1
+                                && c133GesturePolicyScenarioID != 2
+                                && c133GesturePolicyScenarioID != 3))) {
+            Log.e(TAG, "SPINON_C133_ARGUMENT_ERROR rejected=true reason=wheel-probe-requires-scenario-1-2-or-3");
+            postStatus("실패 · C13.3 wheel probe는 policy scenario 1, 2 또는 3이 필요합니다");
             return false;
         }
         if (BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST
@@ -1289,7 +1322,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                             && (key.equals("spinon_c133_worker_delay_ms")
                                     || key.equals("spinon_c133_synthetic_second_pointer")
                                     || key.equals("spinon_c133_policy_scenario_id")
-                                    || key.equals("spinon_c133_tap_probe")))) {
+                                    || key.equals("spinon_c133_tap_probe")
+                                    || key.equals("spinon_c133_wheel_probe")))) {
                 continue;
             }
             Object value = extras.get(key);
@@ -3984,7 +4018,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             c133GestureInitialDrawReady = true;
             Log.i(TAG, "SPINON_C133_READY input=MotionEvent " + result);
             postStatus("준비 · 경계 상태에서 실제 Android swipe 입력을 확인하세요");
+            if (c133WheelProbeRequested) {
+                surfaceView.post(this::runC133WheelProbe);
+            }
         }
+        if (c133WheelProbeRequested) verifyC133WheelDraw(result);
         if (c11GridFixtureRequested && !c11GridPixelMatrixRunId.isEmpty()) {
             requestC11GridPixelMatrixCapture(renderer, generation);
         } else if (c11GridFixtureRequested && !c1121GridPlacementRequested
@@ -4422,6 +4460,90 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 xOrCumulativeX, yOrCumulativeY, c133CoordinateScale, reason));
     }
 
+    private void runC133WheelProbe() {
+        final long host;
+        final long generation;
+        synchronized (stateLock) {
+            if (!c133WheelProbeRequested || c133WheelProbeStarted
+                    || !c133GestureFixtureReady || closing || hostHandle == 0) return;
+            c133WheelProbeStarted = true;
+            host = hostHandle;
+            generation = surfaceGeneration;
+        }
+        float deltaX = c133GesturePolicyScenarioID == 3 ? 0.0f : 40.0f;
+        float deltaY = 40.0f;
+        String report = decode(nativeEnqueueC133Wheel(host, 0, generation,
+                132.0f, 112.0f, deltaX, deltaY, deltaX, deltaY,
+                0, 1.0f, 1, 2, 0));
+        if (!report.startsWith("status=0 ") || !report.contains("admitted=true")) {
+            c133WheelProbeFailed = true;
+            Log.e(TAG, "SPINON_C133_WHEEL_PROBE failed=true stage=enqueue " + report);
+            postStatus("실패 · C13.3 normalized wheel fixture enqueue · " + report);
+            return;
+        }
+        c133WheelProbeEnqueued = true;
+        Log.i(TAG, "SPINON_C133_WHEEL_PROBE_BEGIN synthetic_normalized_fixture_input=true"
+                + " scenario=" + c133GesturePolicyScenarioID
+                + " point_css_px=132,112 delta_css_px=" + deltaX + "," + deltaY
+                + " source=TrackpadScroll unit=CssPixels phase=Change scale=1 " + report);
+        scheduleC133Drain();
+    }
+
+    private String c133WheelProbeExpectedRuntimeOffsets() {
+        switch (c133GesturePolicyScenarioID) {
+            case 1: return "offsets=root:0,0;outer:40,40;inner:86,106";
+            case 2: return "offsets=root:0,0;outer:0,40;inner:86,106";
+            case 3: return "offsets=root:0,0;outer:0,0;inner:0,40";
+            default: return "offsets=invalid";
+        }
+    }
+
+    private String c133WheelProbeExpectedDrawOffsets() {
+        switch (c133GesturePolicyScenarioID) {
+            case 1: return "scroll_offsets=[0,0;40,40;86,106]";
+            case 2: return "scroll_offsets=[0,0;0,40;86,106]";
+            case 3: return "scroll_offsets=[0,0;0,0;0,40]";
+            default: return "scroll_offsets=invalid";
+        }
+    }
+
+    private void verifyC133WheelProcessReport(String report) {
+        if (!c133WheelProbeRequested || !c133WheelProbeEnqueued || c133WheelProbeProcessed
+                || c133WheelProbeFailed || !report.contains("event=wheel")) return;
+        String expected = c133WheelProbeExpectedRuntimeOffsets();
+        if (report.contains(expected)) {
+            c133WheelProbeProcessed = true;
+            Log.i(TAG, "SPINON_C133_WHEEL_PROBE_PROCESSED"
+                    + " synthetic_normalized_fixture_input=true expected=" + expected
+                    + " report=" + report);
+        } else {
+            c133WheelProbeFailed = true;
+            Log.e(TAG, "SPINON_C133_WHEEL_PROBE failed=true stage=queue"
+                    + " expected=" + expected + " report=" + report);
+            postStatus("실패 · C13.3 wheel queue 결과가 oracle과 다릅니다");
+        }
+    }
+
+    private void verifyC133WheelDraw(String report) {
+        if (!c133WheelProbeRequested || !c133WheelProbeProcessed || c133WheelProbeCompleted
+                || c133WheelProbeFailed) return;
+        String expectedOffsets = c133WheelProbeExpectedDrawOffsets();
+        String expectedRevision = c133GesturePolicyScenarioID == 3
+                ? "scroll_state_revision=1" : "scroll_state_revision=2";
+        if (!report.contains(expectedOffsets) || !report.contains(expectedRevision)) {
+            c133WheelProbeFailed = true;
+            Log.e(TAG, "SPINON_C133_WHEEL_PROBE failed=true stage=draw expected="
+                    + expectedOffsets + " " + expectedRevision + " report=" + report);
+            postStatus("실패 · C13.3 wheel 뒤 Android draw가 기대 offset과 다릅니다");
+            return;
+        }
+        c133WheelProbeCompleted = true;
+        Log.i(TAG, "SPINON_C133_WHEEL_PROBE_COMPLETE"
+                + " synthetic_normalized_fixture_input=true expected=" + expectedOffsets
+                + " " + expectedRevision + " report=" + report);
+        postStatus("완료 · synthetic normalized wheel fixture 결과를 Android draw에서 확인했습니다");
+    }
+
     private boolean c133StyleInvalidationScenario() {
         return c133GesturePolicyScenarioID >= 8 && c133GesturePolicyScenarioID <= 10;
     }
@@ -4630,6 +4752,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                             Log.e(TAG, "SPINON_C133_INPUT_BATCH_ERROR " + report);
                             continue;
                         }
+                        verifyC133WheelProcessReport(report);
                         if (c133StyleInvalidationScenario() && !c133StyleMutationApplied
                                 && report.contains("result=pan_started")) {
                             String styleReport = decode(nativeApplyC133StyleInvalidation(host));

@@ -1,14 +1,16 @@
 use super::super::super::lock;
-use super::super::c13_3_scroll_gesture::RUNTIME_CSS_C13_3_STYLE_INVALIDATION_SOURCE;
 use spinon_core::NodeId;
 use spinon_render::{
-    RuntimeOverscrollBehavior, RuntimeRenderSnapshot, RuntimeScrollGestureBegin,
-    RuntimeScrollGestureCancelReason, RuntimeScrollGestureInputQueue,
-    RuntimeScrollGesturePanSample, RuntimeScrollGestureSession, RuntimeScrollGestureTerminal,
-    RuntimeTouchAction,
+    RuntimeRenderSnapshot, RuntimeScrollGestureBegin, RuntimeScrollGestureCancelReason,
+    RuntimeScrollGestureInputQueue, RuntimeScrollGesturePanSample, RuntimeScrollGestureSession,
+    RuntimeScrollGestureTerminal, RuntimeTouchAction,
 };
-use std::sync::Mutex;
 use std::sync::atomic::{AtomicU64, Ordering};
+use std::sync::{Mutex, MutexGuard};
+
+pub(super) mod wheel;
+use super::scenario::C13_3GestureFixtureScenario;
+use wheel::C13_3WheelState;
 
 #[derive(Clone, Copy)]
 pub(super) struct C13_3GestureOwners {
@@ -28,214 +30,13 @@ struct C13_3GestureMotion {
     cumulative_y_css_px: f32,
 }
 
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
-pub(super) enum C13_3GestureFixtureScenario {
-    AutoZero,
-    AutoBoundary,
-    ContainXAutoYBoundary,
-    TouchActionNone,
-    TouchActionPanX,
-    TouchActionPanY,
-    TouchActionTargetPanX,
-    TouchActionIntersectionNone,
-    StylePolicyInvalidation,
-    GeometryInvalidation,
-    PaintInvalidation,
-}
-
-impl TryFrom<i32> for C13_3GestureFixtureScenario {
-    type Error = String;
-
-    fn try_from(value: i32) -> Result<Self, Self::Error> {
-        match value {
-            0 => Ok(Self::AutoZero),
-            1 => Ok(Self::AutoBoundary),
-            2 => Ok(Self::ContainXAutoYBoundary),
-            3 => Ok(Self::TouchActionNone),
-            4 => Ok(Self::TouchActionPanX),
-            5 => Ok(Self::TouchActionPanY),
-            6 => Ok(Self::TouchActionTargetPanX),
-            7 => Ok(Self::TouchActionIntersectionNone),
-            8 => Ok(Self::StylePolicyInvalidation),
-            9 => Ok(Self::GeometryInvalidation),
-            10 => Ok(Self::PaintInvalidation),
-            _ => Err(format!("알 수 없는 C13.3 gesture scenario id={value}")),
-        }
-    }
-}
-
-impl C13_3GestureFixtureScenario {
-    pub(super) const fn script_prelude(self) -> &'static str {
-        match self {
-            Self::AutoZero => "globalThis.__spinonC133GesturePolicyScenario = 0;\n",
-            Self::AutoBoundary => "globalThis.__spinonC133GesturePolicyScenario = 1;\n",
-            Self::ContainXAutoYBoundary => "globalThis.__spinonC133GesturePolicyScenario = 2;\n",
-            Self::TouchActionNone => "globalThis.__spinonC133GesturePolicyScenario = 3;\n",
-            Self::TouchActionPanX => "globalThis.__spinonC133GesturePolicyScenario = 4;\n",
-            Self::TouchActionPanY => "globalThis.__spinonC133GesturePolicyScenario = 5;\n",
-            Self::TouchActionTargetPanX => "globalThis.__spinonC133GesturePolicyScenario = 6;\n",
-            Self::TouchActionIntersectionNone => {
-                "globalThis.__spinonC133GesturePolicyScenario = 7;\n"
-            }
-            Self::StylePolicyInvalidation => {
-                "globalThis.__spinonC133GesturePolicyScenario = 4; globalThis.__spinonC133StyleMode = 8;\n"
-            }
-            Self::GeometryInvalidation => {
-                "globalThis.__spinonC133GesturePolicyScenario = 0; globalThis.__spinonC133StyleMode = 9;\n"
-            }
-            Self::PaintInvalidation => {
-                "globalThis.__spinonC133GesturePolicyScenario = 0; globalThis.__spinonC133StyleMode = 10;\n"
-            }
-        }
-    }
-
-    pub(super) const fn label(self) -> &'static str {
-        match self {
-            Self::AutoZero => "auto-zero",
-            Self::AutoBoundary => "auto-boundary",
-            Self::ContainXAutoYBoundary => "contain-x-auto-y-boundary",
-            Self::TouchActionNone => "touch-action-none",
-            Self::TouchActionPanX => "touch-action-pan-x",
-            Self::TouchActionPanY => "touch-action-pan-y",
-            Self::TouchActionTargetPanX => "touch-action-target-pan-x",
-            Self::TouchActionIntersectionNone => "touch-action-intersection-none",
-            Self::StylePolicyInvalidation => "style-policy-invalidation",
-            Self::GeometryInvalidation => "geometry-invalidation",
-            Self::PaintInvalidation => "paint-invalidation",
-        }
-    }
-
-    pub(super) const fn policy_label(self) -> &'static str {
-        match self {
-            Self::AutoZero
-            | Self::AutoBoundary
-            | Self::TouchActionNone
-            | Self::TouchActionPanX
-            | Self::TouchActionPanY
-            | Self::TouchActionTargetPanX
-            | Self::TouchActionIntersectionNone
-            | Self::StylePolicyInvalidation
-            | Self::GeometryInvalidation
-            | Self::PaintInvalidation => "auto/auto",
-            Self::ContainXAutoYBoundary => "contain/auto",
-        }
-    }
-
-    pub(super) const fn seed_inner_boundary(self) -> bool {
-        matches!(
-            self,
-            Self::AutoBoundary
-                | Self::ContainXAutoYBoundary
-                | Self::StylePolicyInvalidation
-                | Self::GeometryInvalidation
-        )
-    }
-
-    pub(super) const fn inner_overscroll(
-        self,
-    ) -> (RuntimeOverscrollBehavior, RuntimeOverscrollBehavior) {
-        match self {
-            Self::AutoZero | Self::AutoBoundary => (
-                RuntimeOverscrollBehavior::Auto,
-                RuntimeOverscrollBehavior::Auto,
-            ),
-            Self::ContainXAutoYBoundary => (
-                RuntimeOverscrollBehavior::Contain,
-                RuntimeOverscrollBehavior::Auto,
-            ),
-            Self::TouchActionNone
-            | Self::TouchActionPanX
-            | Self::TouchActionPanY
-            | Self::TouchActionTargetPanX
-            | Self::TouchActionIntersectionNone
-            | Self::StylePolicyInvalidation
-            | Self::GeometryInvalidation
-            | Self::PaintInvalidation => (
-                RuntimeOverscrollBehavior::Auto,
-                RuntimeOverscrollBehavior::Auto,
-            ),
-        }
-    }
-
-    pub(super) const fn inner_touch_action(self) -> &'static str {
-        match self {
-            Self::TouchActionNone => "none",
-            Self::TouchActionPanX => "pan-x",
-            Self::TouchActionIntersectionNone => "pan-y",
-            Self::StylePolicyInvalidation => "pan-x",
-            Self::TouchActionPanY => "pan-y",
-            Self::AutoZero
-            | Self::AutoBoundary
-            | Self::ContainXAutoYBoundary
-            | Self::TouchActionTargetPanX
-            | Self::GeometryInvalidation
-            | Self::PaintInvalidation => "auto",
-        }
-    }
-
-    pub(super) const fn inner_content_touch_action(self) -> &'static str {
-        match self {
-            Self::TouchActionTargetPanX | Self::TouchActionIntersectionNone => "pan-x",
-            Self::AutoZero
-            | Self::AutoBoundary
-            | Self::ContainXAutoYBoundary
-            | Self::TouchActionNone
-            | Self::TouchActionPanX
-            | Self::TouchActionPanY
-            | Self::StylePolicyInvalidation
-            | Self::GeometryInvalidation
-            | Self::PaintInvalidation => "auto",
-        }
-    }
-
-    pub(super) const fn expected_touch_action(self) -> RuntimeTouchAction {
-        match self {
-            Self::TouchActionNone | Self::TouchActionIntersectionNone => RuntimeTouchAction::None,
-            Self::TouchActionPanX => RuntimeTouchAction::PanX,
-            Self::TouchActionPanY => RuntimeTouchAction::PanY,
-            Self::TouchActionTargetPanX => RuntimeTouchAction::PanX,
-            Self::StylePolicyInvalidation => RuntimeTouchAction::PanX,
-            Self::AutoZero | Self::AutoBoundary | Self::ContainXAutoYBoundary => {
-                RuntimeTouchAction::Auto
-            }
-            Self::GeometryInvalidation | Self::PaintInvalidation => RuntimeTouchAction::Auto,
-        }
-    }
-
-    pub(super) const fn expected_touch_action_label(self) -> &'static str {
-        match self.expected_touch_action() {
-            RuntimeTouchAction::Auto => "auto",
-            RuntimeTouchAction::None => "none",
-            RuntimeTouchAction::PanX => "pan-x",
-            RuntimeTouchAction::PanY => "pan-y",
-            RuntimeTouchAction::Unsupported => "unsupported",
-        }
-    }
-
-    pub(super) const fn style_invalidation_source(self) -> Option<&'static str> {
-        match self {
-            Self::StylePolicyInvalidation
-            | Self::GeometryInvalidation
-            | Self::PaintInvalidation => Some(RUNTIME_CSS_C13_3_STYLE_INVALIDATION_SOURCE),
-            _ => None,
-        }
-    }
-
-    pub(super) const fn style_invalidation_mode(self) -> Option<u8> {
-        match self {
-            Self::StylePolicyInvalidation => Some(8),
-            Self::GeometryInvalidation => Some(9),
-            Self::PaintInvalidation => Some(10),
-            _ => None,
-        }
-    }
-}
-
 pub(in crate::runtime_gpu) struct C13_3GestureState {
     pub(super) queue: Mutex<RuntimeScrollGestureInputQueue>,
     pub(super) session: Mutex<RuntimeScrollGestureSession>,
     pub(super) snapshot: Mutex<Option<RuntimeRenderSnapshot>>,
     pub(super) owners: Mutex<Option<C13_3GestureOwners>>,
+    wheel: Mutex<C13_3WheelState>,
+    surface_update: Mutex<()>,
     next_input_sequence: AtomicU64,
     pub(super) scenario: C13_3GestureFixtureScenario,
 }
@@ -249,6 +50,8 @@ impl C13_3GestureState {
             session: Mutex::new(RuntimeScrollGestureSession::default()),
             snapshot: Mutex::new(None),
             owners: Mutex::new(None),
+            wheel: Mutex::new(C13_3WheelState::default()),
+            surface_update: Mutex::new(()),
             next_input_sequence: AtomicU64::new(0),
             scenario,
         })
@@ -286,6 +89,7 @@ impl C13_3GestureState {
         y_css_px: f32,
         coordinate_scale: f32,
     ) -> Result<String, String> {
+        self.note_surface_generation(surface_generation);
         let snapshot = self.current_snapshot()?;
         let sequence = self.next_sequence()?;
         let resolved_touch_action = snapshot
@@ -352,6 +156,7 @@ impl C13_3GestureState {
     }
 
     fn enqueue_motion(&self, motion: C13_3GestureMotion) -> Result<String, String> {
+        self.note_surface_generation(motion.surface_generation);
         let snapshot = self.current_snapshot()?;
         let sequence = self.next_sequence()?;
         let sample = RuntimeScrollGesturePanSample::new(
@@ -384,6 +189,7 @@ impl C13_3GestureState {
         pointer_id: u64,
         reason: RuntimeScrollGestureCancelReason,
     ) -> Result<String, String> {
+        self.note_surface_generation(surface_generation);
         let sequence = self.next_sequence()?;
         let terminal =
             RuntimeScrollGestureTerminal::new(sequence, gesture_id, pointer_id, surface_generation);
@@ -400,7 +206,13 @@ impl C13_3GestureState {
     }
 
     pub(in crate::runtime_gpu) fn publish_snapshot(&self, snapshot: RuntimeRenderSnapshot) {
+        let _surface_update = self.lock_surface_update();
+        self.reset_wheel_lineage();
         *lock(&self.snapshot) = Some(snapshot);
+    }
+
+    pub(in crate::runtime_gpu) fn lock_surface_update(&self) -> MutexGuard<'_, ()> {
+        lock(&self.surface_update)
     }
 
     pub(super) fn owners(&self) -> Result<C13_3GestureOwners, String> {

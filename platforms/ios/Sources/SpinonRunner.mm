@@ -1681,6 +1681,54 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 #endif
 }
 
++ (NSString *)enqueueRuntimeGpuC13_3Wheel:(uint64_t)handle
+                                    intent:(int32_t)intent
+                         surfaceGeneration:(uint64_t)surfaceGeneration
+                              pointXCssPx:(float)pointXCssPx
+                              pointYCssPx:(float)pointYCssPx
+                              deltaXCssPx:(float)deltaXCssPx
+                              deltaYCssPx:(float)deltaYCssPx
+                                rawDeltaX:(float)rawDeltaX
+                                rawDeltaY:(float)rawDeltaY
+                               sourceUnit:(int32_t)sourceUnit
+                          coordinateScale:(float)coordinateScale
+                                   source:(int32_t)source
+                            momentumPhase:(int32_t)momentumPhase
+                            modifierFlags:(uint32_t)modifierFlags {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && \
+    SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 2048> output{};
+  const int32_t status = spinon_runtime_gpu_host_enqueue_c13_3_wheel(
+      host, intent, surfaceGeneration, pointXCssPx, pointYCssPx,
+      deltaXCssPx, deltaYCssPx, rawDeltaX, rawDeltaY, sourceUnit,
+      coordinateScale, source, momentumPhase, modifierFlags,
+      output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C133_WHEEL_ENQUEUE", report);
+  return report;
+#else
+  (void)handle;
+  (void)intent;
+  (void)surfaceGeneration;
+  (void)pointXCssPx;
+  (void)pointYCssPx;
+  (void)deltaXCssPx;
+  (void)deltaYCssPx;
+  (void)rawDeltaX;
+  (void)rawDeltaY;
+  (void)sourceUnit;
+  (void)coordinateScale;
+  (void)source;
+  (void)momentumPhase;
+  (void)modifierFlags;
+  return @"status=-90 feature-disabled";
+#endif
+}
+
 + (NSString *)processRuntimeGpuC13_3GestureQueue:(uint64_t)handle {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
     defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && \
