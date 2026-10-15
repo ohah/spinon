@@ -10,6 +10,8 @@ Android API 37 ARM64 AVD `emulator-5554`에서 가상 uinput pointer의 Control-
 
 ![Control-wheel 거부 후 Android API 37 AVD 화면](./android-control-left-horizontal-after.png)
 
+PR [#199](https://github.com/ohah/spinon/pull/199) 본문에 after 화면을 넣었다. Agent Browser는 본문 이미지가 정상 로드됨과 원본 1080×2400 크기를 확인했다. [브라우저 검증 JSON](./pr-199-agent-browser-image-verification.json) · [PR 화면 캡처](./pr-199-agent-browser-image.png).
+
 일반 wheel positive control은 modifier 0, target 7 queue admission, revision 2와 offsets `[0,0;64,0;86,106]`을 만들었다. 전체 raw logs는 `android-control-*.log`와 `ordinary-wheel-positive-control.log`, machine record는 `android-control-wheel-runtime.json`에 있다.
 
 이전 ADB 시도에서 `input keyevent`와 별도 `input mouse scroll` 명령은 Control meta를 공유하지 않아 callback에 modifier가 0으로 들어왔다. 이 helper는 한 Linux uinput device에서 Control key-down, wheel event, key-up을 순서대로 보내 같은 Android InputReader device의 modifier state를 사용한다. 16 KB AVD를 위해 ELF LOAD alignment 16 KB를 적용한다. 실패 시 helper는 `UI_DEV_DESTROY`와 close로 device를 정리한다.

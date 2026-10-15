@@ -1,0 +1,14 @@
+{
+  "capturedAt": "2026-10-15T17:07:32Z",
+  "tool": "agent-browser",
+  "pr": "https://github.com/ohah/spinon/pull/199",
+  "image": {
+    "alt": "Control-wheel 거부 뒤 Android API 37 AVD 화면",
+    "src": "https://raw.githubusercontent.com/ohah/spinon/feat/c13-3-android-control-wheel-runtime-20261016/spec/internal/evidence/c13-3-android-control-wheel-runtime-2026-10-16/android-control-left-horizontal-after.png",
+    "complete": true,
+    "naturalWidth": 1080,
+    "naturalHeight": 2400
+  },
+  "browserScreenshot": "pr-199-agent-browser-image.png",
+  "terminalBrowserUsed": false
+}
