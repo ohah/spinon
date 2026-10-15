@@ -1,0 +1,8 @@
+Screenshot dimensions: 1206 x 2622 PNG.
+Accessibility canvas frame: origin (1,317), size 400 x 240 iOS points.
+Compared crop: x=3..1202, y=951..1670, 1200 x 720 physical pixels (scale 3).
+
+ios-fixture-initial.png vs ios-before-second-touch.png: 0 changed RGB pixels.
+ios-before-second-touch.png vs ios-after-second-touch.png: 1,944 changed RGB pixels; this span includes accepted pan moves before the second touch was inserted.
+ios-after-second-touch.png vs ios-after-all-touches-up.png: 0 changed RGB pixels; no canvas offset drift after cancellation while the first touch remained and after all contacts ended.
+ios-after-all-touches-up.png vs ios-after-recovery.png: 1,080 changed RGB pixels in bbox (435,405)-(507,420); a fresh pan after all contacts ended moved the red marker.

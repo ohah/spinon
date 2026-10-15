@@ -1,0 +1,50 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -project /tmp/spinon-c13-multitouch-xctest.x7oach/ios-layer-smoke/R05LayerSmoke.xcodeproj -scheme R05LayerSmoke -destination "platform=iOS Simulator,id=ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D" -derivedDataPath /tmp/spinon-c13-multitouch-xctest.x7oach/derived -resultBundlePath /tmp/spinon-c13-multitouch-xctest.x7oach/result-final.xcresult CODE_SIGNING_ALLOWED=NO
+
+Build settings from command line:
+    CODE_SIGNING_ALLOWED = NO
+
+Writing result bundle at path:
+	/tmp/spinon-c13-multitouch-xctest.x7oach/result-final.xcresult
+
+2026-10-15 21:08:55.413201+0900 R05LayerSmokeUITests-Runner[4046:57647838] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'All tests' started at 2026-10-15 21:08:55.895.
+Test Suite 'R05LayerSmokeUITests.xctest' started at 2026-10-15 21:08:55.895.
+Test Suite 'R05LayerSmokeUITests' started at 2026-10-15 21:08:55.895.
+Test Case '-[R05LayerSmokeUITests.R05LayerSmokeUITests testSecondTouchWhileSpinonAppIsRunning]' started.
+    t =     0.00s Start Test at 2026-10-15 21:08:55.896
+    t =     0.01s Set Up
+    t =     0.02s Open dev.spinon.bootstrap
+    t =     0.02s     Activate dev.spinon.bootstrap
+    t =     0.02s         Wait for dev.spinon.bootstrap to idle
+    t =     0.04s Wait for dev.spinon.bootstrap to become Running Foreground
+2026-10-15 21:08:55.933687+0900 R05LayerSmokeUITests-Runner[4046:57647838] SPINON_XCUITEST_READY_FOR_SECOND_TOUCH
+    t =     8.04s Tap Application 'dev.spinon.bootstrap'[0.37, 0.49]
+    t =     8.04s     Wait for dev.spinon.bootstrap to idle
+    t =     8.05s     Find the Application 'dev.spinon.bootstrap'
+    t =     8.06s     Check for interrupting elements affecting "SpinonBootstrap" Application
+    t =     8.06s     Synthesize event
+    t =     8.07s         Find the Application 'dev.spinon.bootstrap'
+    t =     8.07s         Find the Application 'dev.spinon.bootstrap'
+    t =     8.07s         Find the Application 'dev.spinon.bootstrap'
+    t =    13.36s     Wait for dev.spinon.bootstrap to idle
+2026-10-15 21:09:09.263385+0900 R05LayerSmokeUITests-Runner[4046:57647838] SPINON_XCUITEST_SECOND_TOUCH_SENT
+    t =    13.37s Tear Down
+Test Case '-[R05LayerSmokeUITests.R05LayerSmokeUITests testSecondTouchWhileSpinonAppIsRunning]' passed (13.382 seconds).
+Test Suite 'R05LayerSmokeUITests' passed at 2026-10-15 21:09:09.278.
+	 Executed 1 test, with 0 failures (0 unexpected) in 13.382 (13.383) seconds
+Test Suite 'R05LayerSmokeUITests.xctest' passed at 2026-10-15 21:09:09.278.
+	 Executed 1 test, with 0 failures (0 unexpected) in 13.382 (13.383) seconds
+Test Suite 'All tests' passed at 2026-10-15 21:09:09.279.
+	 Executed 1 test, with 0 failures (0 unexpected) in 13.382 (13.384) seconds
+2026-10-15 21:09:09.552 xcodebuild[3979:57647399] [MT] IDETestOperationsObserverDebug: 15.066 elapsed -- Testing started completed.
+2026-10-15 21:09:09.552 xcodebuild[3979:57647399] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-15 21:09:09.552 xcodebuild[3979:57647399] [MT] IDETestOperationsObserverDebug: 15.066 sec, +15.066 sec -- end
+
+Test session results, code coverage, and logs:
+	/tmp/spinon-c13-multitouch-xctest.x7oach/result-final.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started
