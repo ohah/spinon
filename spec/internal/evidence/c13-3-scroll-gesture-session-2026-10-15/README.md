@@ -39,3 +39,9 @@
 - PR 변경 관점 30개 검토: [pr-delta-review-30.md](pr-delta-review-30.md)
 
 검증은 순수 Rust session 경계에 한정된다. Chrome oracle는 동작 화면 증거가 아니며, 이번 slice에는 앱 route가 없어 Android/iOS Simulator 실행이나 Spinon 앱 화면 캡처를 만들지 않았다. Native queue/coalescing/terminal reservation, style profile 연결, Android/iOS adapter, FFI fixture와 S04.10 displayed-frame target은 남아 있으므로 C13.3은 미완료다.
+
+## 병합 기록
+
+구현 [PR #180](https://github.com/ohah/spinon/pull/180)은 2026-10-15 `Rebase and merge`로 `main`에 병합됐다. merge commit은 `2d9f406815768e8026f7b506e4b112811cd2a66a`다. C13.3의 플랫폼/fixture/displayed-frame gate는 남아 있어 상태를 완료로 올리지 않았다.
+
+병합 상태 문서 delta 검토: [30개 PR 검토](pr-merge-record-review-30.md).
