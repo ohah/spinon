@@ -21,6 +21,8 @@ positive control surface 비교는 root scrollport 바깥 134,064 pixels에서 c
 InputReader/getevent 장치 진단, 원본 callback·draw log, pixel manifest와 모든 source hash는 이 디렉터리에 저장했다.
 사람이 읽는 `.log`와 program-header text 파일은 줄 끝 공백만 정리한다. JSON에는 InputReader/getevent 원문 문자열과 compiler program-header 원문·SHA-256을 보존한다.
 
+[구현 실패 관점 검토 20개](./implementation-review-20.md) · [PR 변경 적대 검토 20개](./pr-delta-review-20.md) · [PR #202 본문 이미지 Agent Browser 확인](./pr-body-image-verification.json)
+
 재현:
 
 ```sh

@@ -1,0 +1,26 @@
+{
+  "schema": "spinon-c13-3-pr-body-image-verification-v1",
+  "pullRequest": 202,
+  "url": "https://github.com/ohah/spinon/pull/202",
+  "checkedAt": "2026-10-15T19:31:32Z",
+  "checkedWith": "Agent Browser",
+  "images": [
+    {
+      "alt": "API 37 AVD composite mouse wheel positive control",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/441f7847cd7eebc615148c955a73fe6bb836d99f/spec/internal/evidence/c13-3-native-wheel-composite-avd-2026-10-16/composite-admitted-after.png",
+      "complete": true,
+      "naturalWidth": 1080,
+      "naturalHeight": 2400
+    },
+    {
+      "alt": "API 37 AVD out-of-surface rejection control",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/441f7847cd7eebc615148c955a73fe6bb836d99f/spec/internal/evidence/c13-3-native-wheel-composite-avd-2026-10-16/composite-outside-surface-after.png",
+      "complete": true,
+      "naturalWidth": 1080,
+      "naturalHeight": 2400
+    }
+  ],
+  "loadedImageCount": 2,
+  "expectedImageCount": 2,
+  "result": "PASS"
+}
