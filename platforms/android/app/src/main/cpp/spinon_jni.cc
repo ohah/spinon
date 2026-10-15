@@ -1046,6 +1046,24 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC133GestureFixture(
 }
 
 extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeApplyC133StyleInvalidation(
+    JNIEnv *env, jclass, jlong host_handle) {
+#if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && \
+    SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+  std::array<char, 32768> output{};
+  const int32_t status = spinon_runtime_gpu_host_apply_c13_3_style_invalidation(
+      host, 10000, output.data(), output.size());
+  const std::string report = "status=" + std::to_string(status) + " " + output.data();
+  return ToByteArray(env, report);
+#else
+  (void)host_handle;
+  return ToByteArray(env, "status=-1 C13.3 fixture-test feature is off");
+#endif
+}
+
+extern "C" JNIEXPORT jbyteArray JNICALL
 Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEnqueueC133Gesture(
     JNIEnv *env, jclass, jlong host_handle, jint action,
     jlong surface_generation, jlong gesture_id, jlong pointer_id,

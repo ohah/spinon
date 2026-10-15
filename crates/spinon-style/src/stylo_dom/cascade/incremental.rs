@@ -134,7 +134,8 @@ pub fn compute_runtime_incremental_cascade_with_stylesheets(
         || previous.generation != view.snapshot().generation()
         || previous.document_revision >= view.document_revision()
         || previous.render_tree_revision > view.render_tree_revision()
-        || previous.style_revision != style_revision
+        || (previous.style_revision != style_revision
+            && previous.style_revision.checked_next() != Some(style_revision))
         || UA_STYLESHEET_ID != "spinon-ua-supported-elements-v0"
     {
         return Ok(None);

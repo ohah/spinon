@@ -1,0 +1,32 @@
+C13.3 style invalidation artifact scan · 2026-10-15
+
+Default iOS Simulator executable
+SHA-256: abb09ba12b15560dc55c963d768d964ca14e4a647e1fb3186238ccfcc4ff9561
+Build flag: SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST=0
+nm exact FFI symbol: no match
+strings exact FFI symbol, style payload, style marker: no match
+
+Default Android debug APK
+APK SHA-256: 0dda9e80ab97cb4b4ea35667afb853edf067068e5adcc82ac22732c209088eab
+Extracted classes2.dex SHA-256: b3eee9bb45d3253df16ebdb221a12a7f50505199e85a6d02cdb1186adb5b2037
+Extracted libspinon_bootstrap.so SHA-256: b5ae1df268536484b59eef751420e6e90f59071db0cc123fe669a5bb651b7906
+Build flag: SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST=0
+APK/classes2.dex/native library exact FFI symbol: no match
+APK/classes2.dex/native library exact style payload: no match
+APK/classes2.dex exact SPINON_C133_STYLE_UPDATE marker: no match
+llvm-nm dynamic exported FFI symbol: no match
+
+Opt-in Android positive control
+APK SHA-256: 52c708792a8fafeabf3849fc19d28f07f1f9e70356426315997f458d21410737
+Extracted native library SHA-256: 37c636731f7cc447b48e6a7db9014fd4d0d7bec51973b97519e7bf20f4e00be3
+Native library exact FFI symbol: present
+Native library style payload prefix: present
+llvm-nm dynamic exported FFI symbol: present
+Runtime log style marker and successful payload: present in all 3 iOS and 3 Android scenarios
+
+Opt-in iOS positive control
+Installed Simulator executable SHA-256: 549a8802e6e3dc573b56e9690800b78404dd5f47cb91a6bfd14cb3ae4315565d
+nm exact FFI symbol: present
+strings exact style payload and marker: present
+
+No match means the exact query returned no symbol/string in the named artifact. The Android Java marker is assembled from source fragments; the opt-in runtime logs prove it is emitted, while the default APK scan proves the complete literal and payload are absent.

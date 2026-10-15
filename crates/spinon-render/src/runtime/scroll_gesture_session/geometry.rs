@@ -1,17 +1,12 @@
 use std::collections::BTreeSet;
 
-use spinon_core::{
-    DocumentGeneration, DocumentRevision, EnvironmentRevision, IntrinsicSizeRevision, NodeId,
-    RenderTreeRevision,
-};
+use spinon_core::{DocumentGeneration, EnvironmentRevision, IntrinsicSizeRevision, NodeId};
 
 use super::super::{CssClip, CssRect, CssSize, RuntimeRenderSnapshot};
 
 #[derive(Clone, Debug, PartialEq)]
 pub(super) struct RuntimeScrollGestureGeometryKey {
     pub(super) generation: DocumentGeneration,
-    pub(super) document_revision: DocumentRevision,
-    pub(super) render_tree_revision: RenderTreeRevision,
     pub(super) environment_revision: EnvironmentRevision,
     intrinsic_size_revision: IntrinsicSizeRevision,
     surface_generation: u64,
@@ -94,8 +89,6 @@ impl RuntimeRenderSnapshot {
         let key = self.key();
         Some(RuntimeScrollGestureGeometryKey {
             generation: key.generation(),
-            document_revision: key.document_revision(),
-            render_tree_revision: key.render_tree_revision(),
             environment_revision: key.environment_revision(),
             intrinsic_size_revision: key.intrinsic_size_revision(),
             surface_generation,

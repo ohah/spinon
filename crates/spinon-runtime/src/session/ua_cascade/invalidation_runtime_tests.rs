@@ -188,6 +188,10 @@ fn worker_publishes_subtree_metrics_only_for_latest_style_revision() {
         .register_document_snapshot(Arc::clone(&previous))
         .unwrap();
     let initial = wait_for_revision(&handle, previous.document_revision().get());
+    assert_eq!(
+        initial.key.style_revision,
+        spinon_core::StyleRevision::INITIAL
+    );
     assert_eq!(initial.cascade_recomputed_style_elements, 5);
     assert_eq!(initial.cascade_reused_style_elements, 0);
 
@@ -198,6 +202,10 @@ fn worker_publishes_subtree_metrics_only_for_latest_style_revision() {
         .unwrap();
     let partial = wait_for_revision(&handle, current.document_revision().get());
 
+    assert_eq!(
+        partial.key.style_revision,
+        spinon_core::StyleRevision::INITIAL.checked_next().unwrap()
+    );
     assert_eq!(partial.cascade_recomputed_style_elements, 2);
     assert_eq!(partial.cascade_reused_style_elements, 3);
     assert_eq!(partial.cascade_context_style_elements, 1);

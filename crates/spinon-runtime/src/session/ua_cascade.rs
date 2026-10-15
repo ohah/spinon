@@ -117,7 +117,7 @@ pub struct RuntimeUaCascadeKey {
     pub generation: u64,
     pub document_revision: u64,
     pub render_tree_revision: u64,
-    pub style_revision: u64,
+    pub style_revision: StyleRevision,
     pub environment_revision: u64,
 }
 
@@ -163,6 +163,7 @@ struct State {
     worker_available: bool,
     environment: Option<RuntimeCssEnvironment>,
     document: Option<Arc<HostDocumentSnapshot>>,
+    style_revision: StyleRevision,
     requested: Option<RuntimeUaCascadeKey>,
     pending: Option<WorkRequest>,
     status: RuntimeUaCascadeState,
@@ -181,6 +182,7 @@ impl State {
             worker_available: true,
             environment: None,
             document: None,
+            style_revision: StyleRevision::INITIAL,
             requested: None,
             pending: None,
             status: RuntimeUaCascadeState::NotConfigured,
@@ -345,7 +347,25 @@ impl RuntimeUaCascadeHandle {
         if state.closing {
             return Err(RuntimeUaCascadeError::Closed);
         }
+        let next_style_revision = if state
+            .document
+            .as_ref()
+            .is_some_and(|previous| previous.generation() != snapshot.generation())
+        {
+            StyleRevision::INITIAL
+        } else if matches!(
+            invalidation::classify_style_invalidation(state.document.as_deref(), &snapshot),
+            invalidation::RuntimeStyleInvalidation::Subtrees { .. }
+        ) {
+            state
+                .style_revision
+                .checked_next()
+                .ok_or(RuntimeUaCascadeError::RevisionExhausted)?
+        } else {
+            state.style_revision
+        };
         let previous = state.document.replace(Arc::clone(&snapshot));
+        state.style_revision = next_style_revision;
         request_latest(&self.shared, &mut state, previous, false);
         Ok(())
     }
@@ -425,7 +445,7 @@ fn request_latest(
         state.layout_error = None;
         return;
     };
-    let key = key_for(snapshot, environment.revision);
+    let key = key_for_with_style_revision(snapshot, environment.revision, state.style_revision);
     state.requested = Some(key);
     state.completed = None;
     state.error = None;
@@ -468,15 +488,24 @@ fn request_latest(
     shared.wake.notify_all();
 }
 
+#[cfg(test)]
 fn key_for(
     snapshot: &HostDocumentSnapshot,
     environment_revision: EnvironmentRevision,
+) -> RuntimeUaCascadeKey {
+    key_for_with_style_revision(snapshot, environment_revision, StyleRevision::INITIAL)
+}
+
+fn key_for_with_style_revision(
+    snapshot: &HostDocumentSnapshot,
+    environment_revision: EnvironmentRevision,
+    style_revision: StyleRevision,
 ) -> RuntimeUaCascadeKey {
     RuntimeUaCascadeKey {
         generation: snapshot.generation().get(),
         document_revision: snapshot.document_revision().get(),
         render_tree_revision: snapshot.render_tree_revision().get(),
-        style_revision: StyleRevision::INITIAL.get(),
+        style_revision,
         environment_revision: environment_revision.get(),
     }
 }

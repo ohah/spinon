@@ -1,0 +1,372 @@
+{
+  "schema": "spinon-c13-3-style-invalidation-simulator-matrix/v1",
+  "capturedAt": "2026-10-15T10:57:36.048Z",
+  "runID": "20261015T105708670Z-3d8cfa68",
+  "sourceCommit": "288d1dd467754a8d320b98e03b2e859ec86370cd",
+  "worktreeDiffSha256": "a5ee52bb4075628042ff743d7a7969a18dc337a9dd329a955f17bd136b07a6e5",
+  "v8Revision": "7b50b62cb18f28617959e8452e2cd18195b38bcf",
+  "results": [
+    {
+      "platform": "ios-simulator",
+      "scenario": "style-policy-invalidation",
+      "pid": 73301,
+      "styleUpdate": "2026-10-15 19:57:43.662 Df SpinonBootstrap[73301:3663070] (Foundation) SPINON_C133_STYLE_UPDATE status=0 c13_3_style_invalidation=applied mode=8 document_revision=55→56 render_tree_revision=11→12 style_revision=0→1 scroll_state_revision=2→2 geometry_unchanged=true inner_offset=86,106 inner_range=86,106 eval=[seq=2 trace_cookie=2 op=eval status=0 caller_tid=57028720 owner_tid=57028735 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=11 v8_call_us=246 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=56 render_tree_revision=12 document_nodes=11 document_string_units=2266 document_collection_scans=2 document_collection_deferred=0 document_collection_scanned_handles=11 document_collection_live_handles=11 document_collection_empty_handles=0 document_collection_last_scan_start_ns=192859790198541 document_collection_last_scan_us=8 document_collection_wrapper_root_buffer_bytes=64 document_collection_reclaimed_node_buffer_bytes=44 document_collection_poisoned=0 document_coll<…>",
+      "duplicateStyleUpdateReports": 0,
+      "batches": 57,
+      "terminalEnds": 2,
+      "pixels": null,
+      "screenshot": "ios-style-policy-invalidation-after.png",
+      "log": "ios-style-policy-invalidation.log"
+    },
+    {
+      "platform": "ios-simulator",
+      "scenario": "geometry-invalidation",
+      "pid": 74480,
+      "styleUpdate": "2026-10-15 19:57:55.916 Df SpinonBootstrap[74480:3664325] (Foundation) SPINON_C133_STYLE_UPDATE status=0 c13_3_style_invalidation=applied mode=9 document_revision=55→56 render_tree_revision=11→12 style_revision=0→1 scroll_state_revision=2→3 geometry_unchanged=false inner_offset=66,106 inner_range=66,106 eval=[seq=2 trace_cookie=2 op=eval status=0 caller_tid=57033509 owner_tid=57033519 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=13 v8_call_us=273 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=56 render_tree_revision=12 document_nodes=11 document_string_units=2263 document_collection_scans=2 document_collection_deferred=0 document_collection_scanned_handles=11 document_collection_live_handles=11 document_collection_empty_handles=0 document_collection_last_scan_start_ns=192872042990750 document_collection_last_scan_us=10 document_collection_wrapper_root_buffer_bytes=64 document_collection_reclaimed_node_buffer_bytes=44 document_collection_poisoned=0 document_co<…>",
+      "duplicateStyleUpdateReports": 0,
+      "batches": 58,
+      "terminalEnds": 2,
+      "pixels": null,
+      "screenshot": "ios-geometry-invalidation-after.png",
+      "log": "ios-geometry-invalidation.log"
+    },
+    {
+      "platform": "ios-simulator",
+      "scenario": "paint-invalidation",
+      "pid": 75664,
+      "styleUpdate": "2026-10-15 19:58:07.813 Df SpinonBootstrap[75664:36658ca] (Foundation) SPINON_C133_STYLE_UPDATE status=0 c13_3_style_invalidation=applied mode=10 document_revision=55→56 render_tree_revision=11→12 style_revision=0→1 scroll_state_revision=1→1 geometry_unchanged=true inner_offset=1.3333334,0 inner_range=86,106 eval=[seq=2 trace_cookie=2 op=eval status=0 caller_tid=57039050 owner_tid=57039065 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=17 v8_call_us=414 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=56 render_tree_revision=12 document_nodes=11 document_string_units=2263 document_collection_scans=2 document_collection_deferred=0 document_collection_scanned_handles=11 document_collection_live_handles=11 document_collection_empty_handles=0 document_collection_last_scan_start_ns=192883940501250 document_collection_last_scan_us=14 document_collection_wrapper_root_buffer_bytes=64 document_collection_reclaimed_node_buffer_bytes=44 document_collection_poisoned=0 docume<…>",
+      "duplicateStyleUpdateReports": 0,
+      "batches": 29,
+      "terminalEnds": 1,
+      "pixels": {
+        "screenshot": [
+          1206,
+          2622
+        ],
+        "sceneOrigin": {
+          "x": 3,
+          "y": 951
+        },
+        "samples": {
+          "beforeInnerContent": {
+            "css": [
+              85,
+              90
+            ],
+            "rgba": [
+              23,
+              37,
+              58,
+              255
+            ]
+          },
+          "afterInnerContent": {
+            "css": [
+              85,
+              90
+            ],
+            "rgba": [
+              14,
+              86,
+              80,
+              255
+            ]
+          },
+          "outsideInnerScrollport": {
+            "css": [
+              200,
+              100
+            ],
+            "rgba": [
+              27,
+              52,
+              65,
+              255
+            ]
+          }
+        }
+      },
+      "screenshot": "ios-paint-invalidation-after.png",
+      "log": "ios-paint-invalidation.log"
+    },
+    {
+      "platform": "android-emulator",
+      "scenario": "style-policy-invalidation",
+      "pid": 18377,
+      "styleUpdate": "I/SpinonBootstrap(18377): SPINON_C133_STYLE_UPDATE status=0 c13_3_style_invalidation=applied mode=8 document_revision=55→56 render_tree_revision=11→12 style_revision=0→1 scroll_state_revision=2→2 geometry_unchanged=true inner_offset=86,106 inner_range=86,106 eval=[seq=2 trace_cookie=2 op=eval status=0 caller_tid=18429 owner_tid=18431 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=91 v8_call_us=243 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=56 render_tree_revision=12 document_nodes=11 document_string_units=2266 document_collection_scans=2 document_collection_deferred=0 document_collection_scanned_handles=11 document_collection_live_handles=11 document_collection_empty_handles=0 document_collection_last_scan_start_ns=31332803236939 document_collection_last_scan_us=7 document_collection_wrapper_root_buffer_bytes=64 document_collection_reclaimed_node_buffer_bytes=44 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=2 ua_snapshot_submit_us=19 ua_snapshot_submitted=true enqueue_total_us=17 response_wait_us=433 submit_total_us=450 response_report_append_us=0 layout=ready boxes=11 generation=1 document_revision=56 render_tree_revision=12 style_revision=1 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=11 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=400x240 render_viewport_css_px=400x240 render_root_css_px=400x240 node_frames_css_px=[0:node=1,x=0,y=0,width=400,height=240;1:node=2,x=16,y=16,width=368,height=208;2:node=3,x=19,y=19,width=520,height=440;3:node=4,x=49,y=49,width=220,height=140;4:node=5,x=52,y=52,width=320,height=320;5:node=6,x=72,y=72,width=120,height=80;6:node=7,x=75,y=75,width=200,height=180;7:node=8,x=215,y=100,width=24,height=24;8:node=9,x=145,y=180,width=24,height=24;9:node=10,x=322,y=322,width=24,height=24;10:node=11,x=489,y=409,width=24,height=24]]",
+      "duplicateStyleUpdateReports": 1,
+      "batches": 55,
+      "terminalEnds": 2,
+      "pixels": null,
+      "screenshot": "android-style-policy-invalidation-after.png",
+      "log": "android-style-policy-invalidation.log"
+    },
+    {
+      "platform": "android-emulator",
+      "scenario": "geometry-invalidation",
+      "pid": 18504,
+      "styleUpdate": "I/SpinonBootstrap(18504): SPINON_C133_STYLE_UPDATE status=0 c13_3_style_invalidation=applied mode=9 document_revision=55→56 render_tree_revision=11→12 style_revision=0→1 scroll_state_revision=2→3 geometry_unchanged=false inner_offset=66,106 inner_range=66,106 eval=[seq=2 trace_cookie=2 op=eval status=0 caller_tid=18526 owner_tid=18528 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=55 v8_call_us=226 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=56 render_tree_revision=12 document_nodes=11 document_string_units=2263 document_collection_scans=2 document_collection_deferred=0 document_collection_scanned_handles=11 document_collection_live_handles=11 document_collection_empty_handles=0 document_collection_last_scan_start_ns=31337137164108 document_collection_last_scan_us=7 document_collection_wrapper_root_buffer_bytes=64 document_collection_reclaimed_node_buffer_bytes=44 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=2 ua_snapshot_submit_us=84 ua_snapshot_submitted=true enqueue_total_us=31 response_wait_us=468 submit_total_us=499 response_report_append_us=0 layout=ready boxes=11 generation=1 document_revision=56 render_tree_revision=12 style_revision=1 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=11 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=400x240 render_viewport_css_px=400x240 render_root_css_px=400x240 node_frames_css_px=[0:node=1,x=0,y=0,width=400,height=240;1:node=2,x=16,y=16,width=368,height=208;2:node=3,x=19,y=19,width=520,height=440;3:node=4,x=49,y=49,width=220,height=140;4:node=5,x=52,y=52,width=320,height=320;5:node=6,x=72,y=72,width=140,height=80;6:node=7,x=75,y=75,width=200,height=180;7:node=8,x=215,y=100,width=24,height=24;8:node=9,x=145,y=180,width=24,height=24;9:node=10,x=322,y=322,width=24,height=24;10:node=11,x=489,y=409,width=24,height=24]]",
+      "duplicateStyleUpdateReports": 1,
+      "batches": 55,
+      "terminalEnds": 2,
+      "pixels": null,
+      "screenshot": "android-geometry-invalidation-after.png",
+      "log": "android-geometry-invalidation.log"
+    },
+    {
+      "platform": "android-emulator",
+      "scenario": "paint-invalidation",
+      "pid": 18597,
+      "styleUpdate": "I/SpinonBootstrap(18597): SPINON_C133_STYLE_UPDATE status=0 c13_3_style_invalidation=applied mode=10 document_revision=55→56 render_tree_revision=11→12 style_revision=0→1 scroll_state_revision=1→1 geometry_unchanged=true inner_offset=9.126488,0 inner_range=86,106 eval=[seq=2 trace_cookie=2 op=eval status=0 caller_tid=18621 owner_tid=18624 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=107 v8_call_us=239 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=56 render_tree_revision=12 document_nodes=11 document_string_units=2263 document_collection_scans=2 document_collection_deferred=0 document_collection_scanned_handles=11 document_collection_live_handles=11 document_collection_empty_handles=0 document_collection_last_scan_start_ns=31341955853360 document_collection_last_scan_us=7 document_collection_wrapper_root_buffer_bytes=64 document_collection_reclaimed_node_buffer_bytes=44 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=2 ua_snapshot_submit_us=25 ua_snapshot_submitted=true enqueue_total_us=49 response_wait_us=507 submit_total_us=556 response_report_append_us=0 layout=ready boxes=11 generation=1 document_revision=56 render_tree_revision=12 style_revision=1 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=11 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=400x240 render_viewport_css_px=400x240 render_root_css_px=400x240 node_frames_css_px=[0:node=1,x=0,y=0,width=400,height=240;1:node=2,x=16,y=16,width=368,height=208;2:node=3,x=19,y=19,width=520,height=440;3:node=4,x=49,y=49,width=220,height=140;4:node=5,x=52,y=52,width=320,height=320;5:node=6,x=72,y=72,width=120,height=80;6:node=7,x=75,y=75,width=200,height=180;7:node=8,x=215,y=100,width=24,height=24;8:node=9,x=145,y=180,width=24,height=24;9:node=10,x=322,y=322,width=24,height=24;10:node=11,x=489,y=409,width=24,height=24]]",
+      "duplicateStyleUpdateReports": 1,
+      "batches": 28,
+      "terminalEnds": 1,
+      "pixels": {
+        "screenshot": [
+          1080,
+          2400
+        ],
+        "sceneOrigin": {
+          "x": 16,
+          "y": 1026
+        },
+        "samples": {
+          "beforeInnerContent": {
+            "css": [
+              85,
+              90
+            ],
+            "rgba": [
+              23,
+              37,
+              58,
+              255
+            ]
+          },
+          "afterInnerContent": {
+            "css": [
+              85,
+              90
+            ],
+            "rgba": [
+              14,
+              86,
+              80,
+              255
+            ]
+          },
+          "outsideInnerScrollport": {
+            "css": [
+              200,
+              100
+            ],
+            "rgba": [
+              27,
+              52,
+              65,
+              255
+            ]
+          }
+        }
+      },
+      "screenshot": "android-paint-invalidation-after.png",
+      "log": "android-paint-invalidation.log"
+    }
+  ],
+  "ios": {
+    "device": {
+      "lastBootedAt": "2026-10-13T09:05:09Z",
+      "dataPath": "/Users/yoonhb/Library/Developer/CoreSimulator/Devices/ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D/data",
+      "dataPathSize": 7418114048,
+      "logPath": "/Users/yoonhb/Library/Logs/CoreSimulator/ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+      "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+      "isAvailable": true,
+      "logPathSize": 1683456,
+      "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+      "state": "Booted",
+      "name": "iPhone 17 Pro",
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2"
+    },
+    "records": [
+      {
+        "platform": "ios-simulator",
+        "scenario": "style-policy-invalidation",
+        "pid": 73301,
+        "styleUpdate": "2026-10-15 19:57:43.662 Df SpinonBootstrap[73301:3663070] (Foundation) SPINON_C133_STYLE_UPDATE status=0 c13_3_style_invalidation=applied mode=8 document_revision=55→56 render_tree_revision=11→12 style_revision=0→1 scroll_state_revision=2→2 geometry_unchanged=true inner_offset=86,106 inner_range=86,106 eval=[seq=2 trace_cookie=2 op=eval status=0 caller_tid=57028720 owner_tid=57028735 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=11 v8_call_us=246 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=56 render_tree_revision=12 document_nodes=11 document_string_units=2266 document_collection_scans=2 document_collection_deferred=0 document_collection_scanned_handles=11 document_collection_live_handles=11 document_collection_empty_handles=0 document_collection_last_scan_start_ns=192859790198541 document_collection_last_scan_us=8 document_collection_wrapper_root_buffer_bytes=64 document_collection_reclaimed_node_buffer_bytes=44 document_collection_poisoned=0 document_coll<…>",
+        "duplicateStyleUpdateReports": 0,
+        "batches": 57,
+        "terminalEnds": 2,
+        "pixels": null,
+        "screenshot": "ios-style-policy-invalidation-after.png",
+        "log": "ios-style-policy-invalidation.log"
+      },
+      {
+        "platform": "ios-simulator",
+        "scenario": "geometry-invalidation",
+        "pid": 74480,
+        "styleUpdate": "2026-10-15 19:57:55.916 Df SpinonBootstrap[74480:3664325] (Foundation) SPINON_C133_STYLE_UPDATE status=0 c13_3_style_invalidation=applied mode=9 document_revision=55→56 render_tree_revision=11→12 style_revision=0→1 scroll_state_revision=2→3 geometry_unchanged=false inner_offset=66,106 inner_range=66,106 eval=[seq=2 trace_cookie=2 op=eval status=0 caller_tid=57033509 owner_tid=57033519 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=13 v8_call_us=273 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=56 render_tree_revision=12 document_nodes=11 document_string_units=2263 document_collection_scans=2 document_collection_deferred=0 document_collection_scanned_handles=11 document_collection_live_handles=11 document_collection_empty_handles=0 document_collection_last_scan_start_ns=192872042990750 document_collection_last_scan_us=10 document_collection_wrapper_root_buffer_bytes=64 document_collection_reclaimed_node_buffer_bytes=44 document_collection_poisoned=0 document_co<…>",
+        "duplicateStyleUpdateReports": 0,
+        "batches": 58,
+        "terminalEnds": 2,
+        "pixels": null,
+        "screenshot": "ios-geometry-invalidation-after.png",
+        "log": "ios-geometry-invalidation.log"
+      },
+      {
+        "platform": "ios-simulator",
+        "scenario": "paint-invalidation",
+        "pid": 75664,
+        "styleUpdate": "2026-10-15 19:58:07.813 Df SpinonBootstrap[75664:36658ca] (Foundation) SPINON_C133_STYLE_UPDATE status=0 c13_3_style_invalidation=applied mode=10 document_revision=55→56 render_tree_revision=11→12 style_revision=0→1 scroll_state_revision=1→1 geometry_unchanged=true inner_offset=1.3333334,0 inner_range=86,106 eval=[seq=2 trace_cookie=2 op=eval status=0 caller_tid=57039050 owner_tid=57039065 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=17 v8_call_us=414 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=56 render_tree_revision=12 document_nodes=11 document_string_units=2263 document_collection_scans=2 document_collection_deferred=0 document_collection_scanned_handles=11 document_collection_live_handles=11 document_collection_empty_handles=0 document_collection_last_scan_start_ns=192883940501250 document_collection_last_scan_us=14 document_collection_wrapper_root_buffer_bytes=64 document_collection_reclaimed_node_buffer_bytes=44 document_collection_poisoned=0 docume<…>",
+        "duplicateStyleUpdateReports": 0,
+        "batches": 29,
+        "terminalEnds": 1,
+        "pixels": {
+          "screenshot": [
+            1206,
+            2622
+          ],
+          "sceneOrigin": {
+            "x": 3,
+            "y": 951
+          },
+          "samples": {
+            "beforeInnerContent": {
+              "css": [
+                85,
+                90
+              ],
+              "rgba": [
+                23,
+                37,
+                58,
+                255
+              ]
+            },
+            "afterInnerContent": {
+              "css": [
+                85,
+                90
+              ],
+              "rgba": [
+                14,
+                86,
+                80,
+                255
+              ]
+            },
+            "outsideInnerScrollport": {
+              "css": [
+                200,
+                100
+              ],
+              "rgba": [
+                27,
+                52,
+                65,
+                255
+              ]
+            }
+          }
+        },
+        "screenshot": "ios-paint-invalidation-after.png",
+        "log": "ios-paint-invalidation.log"
+      }
+    ]
+  },
+  "iosAppPath": "build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app",
+  "android": {
+    "device": {
+      "serial": "emulator-5554",
+      "model": "sdk_gphone16k_arm64",
+      "api": 37,
+      "screen": "Physical size: 1080x2400",
+      "density": "Physical density: 420"
+    },
+    "records": [
+      {
+        "platform": "android-emulator",
+        "scenario": "style-policy-invalidation",
+        "pid": 18377,
+        "styleUpdate": "I/SpinonBootstrap(18377): SPINON_C133_STYLE_UPDATE status=0 c13_3_style_invalidation=applied mode=8 document_revision=55→56 render_tree_revision=11→12 style_revision=0→1 scroll_state_revision=2→2 geometry_unchanged=true inner_offset=86,106 inner_range=86,106 eval=[seq=2 trace_cookie=2 op=eval status=0 caller_tid=18429 owner_tid=18431 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=91 v8_call_us=243 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=56 render_tree_revision=12 document_nodes=11 document_string_units=2266 document_collection_scans=2 document_collection_deferred=0 document_collection_scanned_handles=11 document_collection_live_handles=11 document_collection_empty_handles=0 document_collection_last_scan_start_ns=31332803236939 document_collection_last_scan_us=7 document_collection_wrapper_root_buffer_bytes=64 document_collection_reclaimed_node_buffer_bytes=44 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=2 ua_snapshot_submit_us=19 ua_snapshot_submitted=true enqueue_total_us=17 response_wait_us=433 submit_total_us=450 response_report_append_us=0 layout=ready boxes=11 generation=1 document_revision=56 render_tree_revision=12 style_revision=1 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=11 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=400x240 render_viewport_css_px=400x240 render_root_css_px=400x240 node_frames_css_px=[0:node=1,x=0,y=0,width=400,height=240;1:node=2,x=16,y=16,width=368,height=208;2:node=3,x=19,y=19,width=520,height=440;3:node=4,x=49,y=49,width=220,height=140;4:node=5,x=52,y=52,width=320,height=320;5:node=6,x=72,y=72,width=120,height=80;6:node=7,x=75,y=75,width=200,height=180;7:node=8,x=215,y=100,width=24,height=24;8:node=9,x=145,y=180,width=24,height=24;9:node=10,x=322,y=322,width=24,height=24;10:node=11,x=489,y=409,width=24,height=24]]",
+        "duplicateStyleUpdateReports": 1,
+        "batches": 55,
+        "terminalEnds": 2,
+        "pixels": null,
+        "screenshot": "android-style-policy-invalidation-after.png",
+        "log": "android-style-policy-invalidation.log"
+      },
+      {
+        "platform": "android-emulator",
+        "scenario": "geometry-invalidation",
+        "pid": 18504,
+        "styleUpdate": "I/SpinonBootstrap(18504): SPINON_C133_STYLE_UPDATE status=0 c13_3_style_invalidation=applied mode=9 document_revision=55→56 render_tree_revision=11→12 style_revision=0→1 scroll_state_revision=2→3 geometry_unchanged=false inner_offset=66,106 inner_range=66,106 eval=[seq=2 trace_cookie=2 op=eval status=0 caller_tid=18526 owner_tid=18528 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=55 v8_call_us=226 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=56 render_tree_revision=12 document_nodes=11 document_string_units=2263 document_collection_scans=2 document_collection_deferred=0 document_collection_scanned_handles=11 document_collection_live_handles=11 document_collection_empty_handles=0 document_collection_last_scan_start_ns=31337137164108 document_collection_last_scan_us=7 document_collection_wrapper_root_buffer_bytes=64 document_collection_reclaimed_node_buffer_bytes=44 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=2 ua_snapshot_submit_us=84 ua_snapshot_submitted=true enqueue_total_us=31 response_wait_us=468 submit_total_us=499 response_report_append_us=0 layout=ready boxes=11 generation=1 document_revision=56 render_tree_revision=12 style_revision=1 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=11 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=400x240 render_viewport_css_px=400x240 render_root_css_px=400x240 node_frames_css_px=[0:node=1,x=0,y=0,width=400,height=240;1:node=2,x=16,y=16,width=368,height=208;2:node=3,x=19,y=19,width=520,height=440;3:node=4,x=49,y=49,width=220,height=140;4:node=5,x=52,y=52,width=320,height=320;5:node=6,x=72,y=72,width=140,height=80;6:node=7,x=75,y=75,width=200,height=180;7:node=8,x=215,y=100,width=24,height=24;8:node=9,x=145,y=180,width=24,height=24;9:node=10,x=322,y=322,width=24,height=24;10:node=11,x=489,y=409,width=24,height=24]]",
+        "duplicateStyleUpdateReports": 1,
+        "batches": 55,
+        "terminalEnds": 2,
+        "pixels": null,
+        "screenshot": "android-geometry-invalidation-after.png",
+        "log": "android-geometry-invalidation.log"
+      },
+      {
+        "platform": "android-emulator",
+        "scenario": "paint-invalidation",
+        "pid": 18597,
+        "styleUpdate": "I/SpinonBootstrap(18597): SPINON_C133_STYLE_UPDATE status=0 c13_3_style_invalidation=applied mode=10 document_revision=55→56 render_tree_revision=11→12 style_revision=0→1 scroll_state_revision=1→1 geometry_unchanged=true inner_offset=9.126488,0 inner_range=86,106 eval=[seq=2 trace_cookie=2 op=eval status=0 caller_tid=18621 owner_tid=18624 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=107 v8_call_us=239 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=56 render_tree_revision=12 document_nodes=11 document_string_units=2263 document_collection_scans=2 document_collection_deferred=0 document_collection_scanned_handles=11 document_collection_live_handles=11 document_collection_empty_handles=0 document_collection_last_scan_start_ns=31341955853360 document_collection_last_scan_us=7 document_collection_wrapper_root_buffer_bytes=64 document_collection_reclaimed_node_buffer_bytes=44 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=2 ua_snapshot_submit_us=25 ua_snapshot_submitted=true enqueue_total_us=49 response_wait_us=507 submit_total_us=556 response_report_append_us=0 layout=ready boxes=11 generation=1 document_revision=56 render_tree_revision=12 style_revision=1 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=11 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=400x240 render_viewport_css_px=400x240 render_root_css_px=400x240 node_frames_css_px=[0:node=1,x=0,y=0,width=400,height=240;1:node=2,x=16,y=16,width=368,height=208;2:node=3,x=19,y=19,width=520,height=440;3:node=4,x=49,y=49,width=220,height=140;4:node=5,x=52,y=52,width=320,height=320;5:node=6,x=72,y=72,width=120,height=80;6:node=7,x=75,y=75,width=200,height=180;7:node=8,x=215,y=100,width=24,height=24;8:node=9,x=145,y=180,width=24,height=24;9:node=10,x=322,y=322,width=24,height=24;10:node=11,x=489,y=409,width=24,height=24]]",
+        "duplicateStyleUpdateReports": 1,
+        "batches": 28,
+        "terminalEnds": 1,
+        "pixels": {
+          "screenshot": [
+            1080,
+            2400
+          ],
+          "sceneOrigin": {
+            "x": 16,
+            "y": 1026
+          },
+          "samples": {
+            "beforeInnerContent": {
+              "css": [
+                85,
+                90
+              ],
+              "rgba": [
+                23,
+                37,
+                58,
+                255
+              ]
+            },
+            "afterInnerContent": {
+              "css": [
+                85,
+                90
+              ],
+              "rgba": [
+                14,
+                86,
+                80,
+                255
+              ]
+            },
+            "outsideInnerScrollport": {
+              "css": [
+                200,
+                100
+              ],
+              "rgba": [
+                27,
+                52,
+                65,
+                255
+              ]
+            }
+          }
+        },
+        "screenshot": "android-paint-invalidation-after.png",
+        "log": "android-paint-invalidation.log"
+      }
+    ]
+  },
+  "androidApkPath": "platforms/android/app/build/outputs/apk/debug/app-debug.apk"
+}

@@ -181,6 +181,7 @@ fn measure(
     fixture.toggle_branch_style();
     let snapshot = fixture.snapshot();
     let handle = coordinator.handle();
+    let previous_style_revision = handle.snapshot().requested.unwrap().style_revision;
     let started = Instant::now();
     handle
         .register_document_snapshot(Arc::clone(&snapshot))
@@ -189,7 +190,7 @@ fn measure(
         generation: snapshot.generation().get(),
         document_revision: snapshot.document_revision().get(),
         render_tree_revision: snapshot.render_tree_revision().get(),
-        style_revision: StyleRevision::INITIAL.get(),
+        style_revision: previous_style_revision.checked_next().unwrap(),
         environment_revision: EnvironmentRevision::INITIAL.get(),
     };
     let (cascade, layout) = wait_for_result(&handle, key);

@@ -1,4 +1,5 @@
 mod state;
+mod style_invalidation;
 
 use super::super::{
     ERR_ARGUMENT, ERR_LAYOUT, ERR_STALE, RuntimeGpuHost, lock, scene_matches_layout_key,
@@ -97,6 +98,7 @@ impl RuntimeGpuHost {
             root: node_id_at(frames, 1)?,
             outer: node_id_at(frames, 3)?,
             inner: node_id_at(frames, 5)?,
+            inner_content: node_id_at(frames, 6)?,
         };
         let scene = node_id_at(frames, 0)?;
         let root_content = node_id_at(frames, 2)?;
@@ -344,6 +346,24 @@ impl RuntimeGpuHost {
                     policy_epoch,
                     coalesced_samples,
                 } => {
+                    if policy_epoch != sample.expected_key().style_revision().get() {
+                        traces.push(format!(
+                            "event=move sequence={sequence} gesture={} pointer={} rejected=sample-policy-epoch-mismatch event_epoch={policy_epoch} sample_epoch={}",
+                            sample.gesture_id(),
+                            sample.pointer_id(),
+                            sample.expected_key().style_revision().get()
+                        ));
+                        continue;
+                    }
+                    if policy_epoch != snapshot.key().style_revision().get() {
+                        traces.push(format!(
+                            "event=move sequence={sequence} gesture={} pointer={} discarded=stale-policy-epoch sample_epoch={policy_epoch} current_epoch={}",
+                            sample.gesture_id(),
+                            sample.pointer_id(),
+                            snapshot.key().style_revision().get()
+                        ));
+                        continue;
+                    }
                     let rebased = RuntimeScrollGesturePanSample::new(
                         snapshot.key(),
                         sample.surface_generation(),

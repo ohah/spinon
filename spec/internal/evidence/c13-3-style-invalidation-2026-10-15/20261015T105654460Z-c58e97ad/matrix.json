@@ -1,0 +1,46 @@
+{
+  "schema": "spinon-c13-3-style-invalidation-simulator-matrix/v1",
+  "capturedAt": "2026-10-15T10:56:54.462Z",
+  "runID": "20261015T105654460Z-c58e97ad",
+  "sourceCommit": "288d1dd467754a8d320b98e03b2e859ec86370cd",
+  "worktreeDiffSha256": "a5ee52bb4075628042ff743d7a7969a18dc337a9dd329a955f17bd136b07a6e5",
+  "v8Revision": "7b50b62cb18f28617959e8452e2cd18195b38bcf",
+  "results": [
+    {
+      "platform": "android-emulator",
+      "scenario": "style-policy-invalidation",
+      "pid": 18199,
+      "styleUpdate": "I/SpinonBootstrap(18199): SPINON_C133_STYLE_UPDATE status=0 c13_3_style_invalidation=applied mode=8 document_revision=55→56 render_tree_revision=11→12 style_revision=0→1 scroll_state_revision=2→2 geometry_unchanged=true inner_offset=86,106 inner_range=86,106 eval=[seq=2 trace_cookie=2 op=eval status=0 caller_tid=18238 owner_tid=18243 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=253 v8_call_us=228 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=56 render_tree_revision=12 document_nodes=11 document_string_units=2266 document_collection_scans=2 document_collection_deferred=0 document_collection_scanned_handles=11 document_collection_live_handles=11 document_collection_empty_handles=0 document_collection_last_scan_start_ns=31255126063444 document_collection_last_scan_us=7 document_collection_wrapper_root_buffer_bytes=64 document_collection_reclaimed_node_buffer_bytes=44 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=2 ua_snapshot_submit_us=33 ua_snapshot_submitted=true enqueue_total_us=195 response_wait_us=418 submit_total_us=614 response_report_append_us=0 layout=ready boxes=11 generation=1 document_revision=56 render_tree_revision=12 style_revision=1 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=11 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=400x240 render_viewport_css_px=400x240 render_root_css_px=400x240 node_frames_css_px=[0:node=1,x=0,y=0,width=400,height=240;1:node=2,x=16,y=16,width=368,height=208;2:node=3,x=19,y=19,width=520,height=440;3:node=4,x=49,y=49,width=220,height=140;4:node=5,x=52,y=52,width=320,height=320;5:node=6,x=72,y=72,width=120,height=80;6:node=7,x=75,y=75,width=200,height=180;7:node=8,x=215,y=100,width=24,height=24;8:node=9,x=145,y=180,width=24,height=24;9:node=10,x=322,y=322,width=24,height=24;10:node=11,x=489,y=409,width=24,height=24]]",
+      "duplicateStyleUpdateReports": 1,
+      "batches": 55,
+      "terminalEnds": 2,
+      "pixels": null,
+      "screenshot": "android-style-policy-invalidation-after.png",
+      "log": "android-style-policy-invalidation.log"
+    }
+  ],
+  "android": {
+    "device": {
+      "serial": "emulator-5554",
+      "model": "sdk_gphone16k_arm64",
+      "api": 37,
+      "screen": "Physical size: 1080x2400",
+      "density": "Physical density: 420"
+    },
+    "records": [
+      {
+        "platform": "android-emulator",
+        "scenario": "style-policy-invalidation",
+        "pid": 18199,
+        "styleUpdate": "I/SpinonBootstrap(18199): SPINON_C133_STYLE_UPDATE status=0 c13_3_style_invalidation=applied mode=8 document_revision=55→56 render_tree_revision=11→12 style_revision=0→1 scroll_state_revision=2→2 geometry_unchanged=true inner_offset=86,106 inner_range=86,106 eval=[seq=2 trace_cookie=2 op=eval status=0 caller_tid=18238 owner_tid=18243 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=253 v8_call_us=228 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=56 render_tree_revision=12 document_nodes=11 document_string_units=2266 document_collection_scans=2 document_collection_deferred=0 document_collection_scanned_handles=11 document_collection_live_handles=11 document_collection_empty_handles=0 document_collection_last_scan_start_ns=31255126063444 document_collection_last_scan_us=7 document_collection_wrapper_root_buffer_bytes=64 document_collection_reclaimed_node_buffer_bytes=44 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=2 ua_snapshot_submit_us=33 ua_snapshot_submitted=true enqueue_total_us=195 response_wait_us=418 submit_total_us=614 response_report_append_us=0 layout=ready boxes=11 generation=1 document_revision=56 render_tree_revision=12 style_revision=1 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=11 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=400x240 render_viewport_css_px=400x240 render_root_css_px=400x240 node_frames_css_px=[0:node=1,x=0,y=0,width=400,height=240;1:node=2,x=16,y=16,width=368,height=208;2:node=3,x=19,y=19,width=520,height=440;3:node=4,x=49,y=49,width=220,height=140;4:node=5,x=52,y=52,width=320,height=320;5:node=6,x=72,y=72,width=120,height=80;6:node=7,x=75,y=75,width=200,height=180;7:node=8,x=215,y=100,width=24,height=24;8:node=9,x=145,y=180,width=24,height=24;9:node=10,x=322,y=322,width=24,height=24;10:node=11,x=489,y=409,width=24,height=24]]",
+        "duplicateStyleUpdateReports": 1,
+        "batches": 55,
+        "terminalEnds": 2,
+        "pixels": null,
+        "screenshot": "android-style-policy-invalidation-after.png",
+        "log": "android-style-policy-invalidation.log"
+      }
+    ]
+  },
+  "androidApkPath": "platforms/android/app/build/outputs/apk/debug/app-debug.apk"
+}

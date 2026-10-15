@@ -228,6 +228,8 @@ impl RuntimeGpuHost {
         };
         #[cfg(feature = "c13-2-scroll-fixture-test")]
         let scene = self.reapply_c13_2_scroll_state(scene)?;
+        #[cfg(feature = "c13-3-gesture-fixture-test")]
+        let scene = self.reapply_c13_3_scroll_state(scene)?;
         if !scene_matches_layout_key(&scene, completed.key) {
             return Err((
                 ERR_STALE,
@@ -296,6 +298,12 @@ impl RuntimeGpuHost {
                 "새로운 화면 요청이 도착해 오래된 장면을 거부했습니다".to_owned(),
             ));
         }
+        #[cfg(feature = "c13-3-gesture-fixture-test")]
+        if let Some(state) = &self.c13_3_gesture_state
+            && state.ready_snapshot().is_some()
+        {
+            state.publish_snapshot(scene.clone());
+        }
         #[cfg(feature = "c13-2-scroll-fixture-test")]
         {
             let mut scroll_state = lock(&self.c13_2_scroll_state);
@@ -332,7 +340,7 @@ impl RuntimeGpuHost {
             completed.key.generation,
             completed.key.document_revision,
             completed.key.render_tree_revision,
-            completed.key.style_revision,
+            completed.key.style_revision.get(),
             completed.key.environment_revision,
             completed.cache_hit,
             cascade_completed.cascade_recomputed_style_elements,
@@ -460,7 +468,7 @@ fn scene_matches_layout_key(
     scene_key.generation().get() == key.generation
         && scene_key.document_revision().get() == key.document_revision
         && scene_key.render_tree_revision().get() == key.render_tree_revision
-        && scene_key.style_revision().get() == key.style_revision
+        && scene_key.style_revision() == key.style_revision
         && scene_key.environment_revision().get() == key.environment_revision
 }
 

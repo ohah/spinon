@@ -1,4 +1,5 @@
 use super::super::super::lock;
+use super::super::c13_3_scroll_gesture::RUNTIME_CSS_C13_3_STYLE_INVALIDATION_SOURCE;
 use spinon_core::NodeId;
 use spinon_render::{
     RuntimeOverscrollBehavior, RuntimeRenderSnapshot, RuntimeScrollGestureBegin,
@@ -14,6 +15,7 @@ pub(super) struct C13_3GestureOwners {
     pub(in crate::runtime_gpu) root: NodeId,
     pub(in crate::runtime_gpu) outer: NodeId,
     pub(in crate::runtime_gpu) inner: NodeId,
+    pub(in crate::runtime_gpu) inner_content: NodeId,
 }
 
 struct C13_3GestureMotion {
@@ -36,6 +38,9 @@ pub(super) enum C13_3GestureFixtureScenario {
     TouchActionPanY,
     TouchActionTargetPanX,
     TouchActionIntersectionNone,
+    StylePolicyInvalidation,
+    GeometryInvalidation,
+    PaintInvalidation,
 }
 
 impl TryFrom<i32> for C13_3GestureFixtureScenario {
@@ -51,6 +56,9 @@ impl TryFrom<i32> for C13_3GestureFixtureScenario {
             5 => Ok(Self::TouchActionPanY),
             6 => Ok(Self::TouchActionTargetPanX),
             7 => Ok(Self::TouchActionIntersectionNone),
+            8 => Ok(Self::StylePolicyInvalidation),
+            9 => Ok(Self::GeometryInvalidation),
+            10 => Ok(Self::PaintInvalidation),
             _ => Err(format!("알 수 없는 C13.3 gesture scenario id={value}")),
         }
     }
@@ -69,6 +77,15 @@ impl C13_3GestureFixtureScenario {
             Self::TouchActionIntersectionNone => {
                 "globalThis.__spinonC133GesturePolicyScenario = 7;\n"
             }
+            Self::StylePolicyInvalidation => {
+                "globalThis.__spinonC133GesturePolicyScenario = 4; globalThis.__spinonC133StyleMode = 8;\n"
+            }
+            Self::GeometryInvalidation => {
+                "globalThis.__spinonC133GesturePolicyScenario = 0; globalThis.__spinonC133StyleMode = 9;\n"
+            }
+            Self::PaintInvalidation => {
+                "globalThis.__spinonC133GesturePolicyScenario = 0; globalThis.__spinonC133StyleMode = 10;\n"
+            }
         }
     }
 
@@ -82,6 +99,9 @@ impl C13_3GestureFixtureScenario {
             Self::TouchActionPanY => "touch-action-pan-y",
             Self::TouchActionTargetPanX => "touch-action-target-pan-x",
             Self::TouchActionIntersectionNone => "touch-action-intersection-none",
+            Self::StylePolicyInvalidation => "style-policy-invalidation",
+            Self::GeometryInvalidation => "geometry-invalidation",
+            Self::PaintInvalidation => "paint-invalidation",
         }
     }
 
@@ -93,13 +113,22 @@ impl C13_3GestureFixtureScenario {
             | Self::TouchActionPanX
             | Self::TouchActionPanY
             | Self::TouchActionTargetPanX
-            | Self::TouchActionIntersectionNone => "auto/auto",
+            | Self::TouchActionIntersectionNone
+            | Self::StylePolicyInvalidation
+            | Self::GeometryInvalidation
+            | Self::PaintInvalidation => "auto/auto",
             Self::ContainXAutoYBoundary => "contain/auto",
         }
     }
 
     pub(super) const fn seed_inner_boundary(self) -> bool {
-        matches!(self, Self::AutoBoundary | Self::ContainXAutoYBoundary)
+        matches!(
+            self,
+            Self::AutoBoundary
+                | Self::ContainXAutoYBoundary
+                | Self::StylePolicyInvalidation
+                | Self::GeometryInvalidation
+        )
     }
 
     pub(super) const fn inner_overscroll(
@@ -118,7 +147,10 @@ impl C13_3GestureFixtureScenario {
             | Self::TouchActionPanX
             | Self::TouchActionPanY
             | Self::TouchActionTargetPanX
-            | Self::TouchActionIntersectionNone => (
+            | Self::TouchActionIntersectionNone
+            | Self::StylePolicyInvalidation
+            | Self::GeometryInvalidation
+            | Self::PaintInvalidation => (
                 RuntimeOverscrollBehavior::Auto,
                 RuntimeOverscrollBehavior::Auto,
             ),
@@ -130,11 +162,14 @@ impl C13_3GestureFixtureScenario {
             Self::TouchActionNone => "none",
             Self::TouchActionPanX => "pan-x",
             Self::TouchActionIntersectionNone => "pan-y",
+            Self::StylePolicyInvalidation => "pan-x",
             Self::TouchActionPanY => "pan-y",
             Self::AutoZero
             | Self::AutoBoundary
             | Self::ContainXAutoYBoundary
-            | Self::TouchActionTargetPanX => "auto",
+            | Self::TouchActionTargetPanX
+            | Self::GeometryInvalidation
+            | Self::PaintInvalidation => "auto",
         }
     }
 
@@ -146,7 +181,10 @@ impl C13_3GestureFixtureScenario {
             | Self::ContainXAutoYBoundary
             | Self::TouchActionNone
             | Self::TouchActionPanX
-            | Self::TouchActionPanY => "auto",
+            | Self::TouchActionPanY
+            | Self::StylePolicyInvalidation
+            | Self::GeometryInvalidation
+            | Self::PaintInvalidation => "auto",
         }
     }
 
@@ -156,9 +194,11 @@ impl C13_3GestureFixtureScenario {
             Self::TouchActionPanX => RuntimeTouchAction::PanX,
             Self::TouchActionPanY => RuntimeTouchAction::PanY,
             Self::TouchActionTargetPanX => RuntimeTouchAction::PanX,
+            Self::StylePolicyInvalidation => RuntimeTouchAction::PanX,
             Self::AutoZero | Self::AutoBoundary | Self::ContainXAutoYBoundary => {
                 RuntimeTouchAction::Auto
             }
+            Self::GeometryInvalidation | Self::PaintInvalidation => RuntimeTouchAction::Auto,
         }
     }
 
@@ -169,6 +209,24 @@ impl C13_3GestureFixtureScenario {
             RuntimeTouchAction::PanX => "pan-x",
             RuntimeTouchAction::PanY => "pan-y",
             RuntimeTouchAction::Unsupported => "unsupported",
+        }
+    }
+
+    pub(super) const fn style_invalidation_source(self) -> Option<&'static str> {
+        match self {
+            Self::StylePolicyInvalidation
+            | Self::GeometryInvalidation
+            | Self::PaintInvalidation => Some(RUNTIME_CSS_C13_3_STYLE_INVALIDATION_SOURCE),
+            _ => None,
+        }
+    }
+
+    pub(super) const fn style_invalidation_mode(self) -> Option<u8> {
+        match self {
+            Self::StylePolicyInvalidation => Some(8),
+            Self::GeometryInvalidation => Some(9),
+            Self::PaintInvalidation => Some(10),
+            _ => None,
         }
     }
 }
@@ -210,6 +268,13 @@ impl C13_3GestureState {
             .as_ref()
             .cloned()
             .ok_or_else(|| "C13.3 fixture snapshot이 아직 준비되지 않았습니다".to_owned())
+    }
+
+    pub(in crate::runtime_gpu) fn ready_snapshot(&self) -> Option<RuntimeRenderSnapshot> {
+        if lock(&self.owners).is_none() {
+            return None;
+        }
+        lock(&self.snapshot).clone()
     }
 
     pub(in crate::runtime_gpu) fn enqueue_begin(
@@ -334,7 +399,7 @@ impl C13_3GestureState {
         ))
     }
 
-    pub(super) fn publish_snapshot(&self, snapshot: RuntimeRenderSnapshot) {
+    pub(in crate::runtime_gpu) fn publish_snapshot(&self, snapshot: RuntimeRenderSnapshot) {
         *lock(&self.snapshot) = Some(snapshot);
     }
 
@@ -466,5 +531,26 @@ mod tests {
         }
         assert!(Scenario::try_from(99).is_err());
         assert!(Scenario::try_from(-1).is_err());
+    }
+
+    #[test]
+    fn style_invalidation_scenarios_have_fixed_modes_and_start_policies() {
+        let cases = [
+            (8, "style-policy-invalidation", Some(8), true, "pan-x"),
+            (9, "geometry-invalidation", Some(9), true, "auto"),
+            (10, "paint-invalidation", Some(10), false, "auto"),
+        ];
+        for (id, label, mode, seeded, touch_action) in cases {
+            let scenario = Scenario::try_from(id).expect("known style scenario");
+            assert_eq!(scenario.label(), label);
+            assert_eq!(scenario.style_invalidation_mode(), mode);
+            assert_eq!(
+                scenario.style_invalidation_source().is_some(),
+                mode.is_some()
+            );
+            assert_eq!(scenario.seed_inner_boundary(), seeded);
+            assert_eq!(scenario.expected_touch_action_label(), touch_action);
+            assert!(scenario.script_prelude().contains("__spinonC133StyleMode"));
+        }
     }
 }

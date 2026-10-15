@@ -1,3 +1,4 @@
+use spinon_core::{AttributeName, DocumentChangeBatch, DocumentOperation, HostParent, OwnerId};
 use spinon_core::{EnvironmentRevision, HostDocument, NodeId, StyleRevision};
 
 use super::super::{
@@ -23,16 +24,61 @@ pub(super) fn key() -> RuntimeRenderKey {
     )
 }
 
-pub(super) fn with_style(key: RuntimeRenderKey, style: StyleRevision) -> RuntimeRenderKey {
-    RuntimeRenderKey::new(
-        key.generation(),
-        key.document_revision(),
-        key.render_tree_revision(),
-        style,
-        key.environment_revision(),
+pub(super) fn document_style_revision_pair() -> (RuntimeRenderKey, RuntimeRenderKey) {
+    const HTML: &str = "http://www.w3.org/1999/xhtml";
+    let mut document = HostDocument::new().unwrap();
+    let owner = OwnerId::new(61_301).unwrap();
+    let node = document.reserve_node_handle().unwrap();
+    let mut create = DocumentChangeBatch::new(owner, document.document_revision());
+    create.push(DocumentOperation::CreateElement {
+        node,
+        namespace: HTML.to_owned(),
+        local_name: "div".to_owned(),
+    });
+    create.push(DocumentOperation::SetAttribute {
+        node,
+        name: AttributeName::new(None, "style").unwrap(),
+        value: "width:120px;height:80px;touch-action:pan-x"
+            .to_owned()
+            .into(),
+    });
+    create.push(DocumentOperation::InsertBefore {
+        parent: HostParent::Root,
+        node,
+        before: None,
+    });
+    document.commit(create).unwrap();
+    let before = document.snapshot();
+    let mut update = DocumentChangeBatch::new(owner, document.document_revision());
+    update.push(DocumentOperation::SetAttribute {
+        node,
+        name: AttributeName::new(None, "style").unwrap(),
+        value: "width:120px;height:80px;touch-action:none;overscroll-behavior-x:contain"
+            .to_owned()
+            .into(),
+    });
+    document.commit(update).unwrap();
+    let after = document.snapshot();
+    assert_ne!(before.render_tree_revision(), after.render_tree_revision());
+    assert_ne!(before.document_revision(), after.document_revision());
+    let initial_style = StyleRevision::INITIAL;
+    let updated_style = initial_style.checked_next().unwrap();
+    (
+        RuntimeRenderKey::new(
+            before.generation(),
+            before.document_revision(),
+            before.render_tree_revision(),
+            initial_style,
+            EnvironmentRevision::INITIAL,
+        ),
+        RuntimeRenderKey::new(
+            after.generation(),
+            after.document_revision(),
+            after.render_tree_revision(),
+            updated_style,
+            EnvironmentRevision::INITIAL,
+        ),
     )
-    .with_intrinsic_size_revision(key.intrinsic_size_revision())
-    .with_scroll_state_revision(key.scroll_state_revision())
 }
 
 pub(super) fn with_environment(

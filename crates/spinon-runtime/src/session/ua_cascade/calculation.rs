@@ -4,9 +4,9 @@ use super::runtime_layout::{
 };
 use super::{
     CascadeDiagnostic, RuntimeLayoutCompleted, RuntimeUaCascadeRoot, WorkRequest,
-    elapsed_microseconds, key_for,
+    elapsed_microseconds, key_for_with_style_revision,
 };
-use spinon_core::{HostNodeHandle, HostNodeKind, HostParent, NodeId, StyleRevision};
+use spinon_core::{HostNodeHandle, HostNodeKind, HostParent, NodeId};
 use spinon_layout::MAX_LAYOUT_TREE_DEPTH;
 #[cfg(feature = "c13-3-gesture-fixture-test")]
 use spinon_style::compute_runtime_block_flex_scroll_gesture_cascade_with_stylesheets;
@@ -79,7 +79,7 @@ impl RuntimeCalculation {
             styles.generation.get() == key.generation
                 && styles.document_revision.get() == key.document_revision
                 && styles.render_tree_revision.get() == key.render_tree_revision
-                && styles.style_revision.get() == key.style_revision
+                && styles.style_revision == key.style_revision
                 && styles.viewport.width_css_px.to_bits() == viewport.width_css_px.to_bits()
                 && styles.viewport.height_css_px.to_bits() == viewport.height_css_px.to_bits()
                 && styles.viewport.device_scale_factor.to_bits()
@@ -96,7 +96,7 @@ impl RuntimeCalculation {
                 render_key.generation().get() == key.generation
                     && render_key.document_revision().get() == key.document_revision
                     && render_key.render_tree_revision().get() == key.render_tree_revision
-                    && render_key.style_revision().get() == key.style_revision
+                    && render_key.style_revision() == key.style_revision
                     && render_key.environment_revision().get() == key.environment_revision
                     && scene_viewport.width().to_bits() == viewport.width_css_px.to_bits()
                     && scene_viewport.height().to_bits() == viewport.height_css_px.to_bits()
@@ -479,7 +479,7 @@ fn compute_root(
                 &view,
                 author_stylesheets,
                 request.viewport,
-                StyleRevision::INITIAL,
+                request.key.style_revision,
                 profile,
                 &previous.styles,
                 &dirty_root_ids,
@@ -500,7 +500,7 @@ fn compute_root(
                     &view,
                     author_stylesheets,
                     request.viewport,
-                    StyleRevision::INITIAL,
+                    request.key.style_revision,
                 )
             }
             RuntimeCalculationProfile::FlexPaint => {
@@ -508,7 +508,7 @@ fn compute_root(
                     &view,
                     author_stylesheets,
                     request.viewport,
-                    StyleRevision::INITIAL,
+                    request.key.style_revision,
                 )
             }
             RuntimeCalculationProfile::RegisteredPropertiesPaint => {
@@ -516,7 +516,7 @@ fn compute_root(
                     &view,
                     author_stylesheets,
                     request.viewport,
-                    StyleRevision::INITIAL,
+                    request.key.style_revision,
                 )
             }
             RuntimeCalculationProfile::BlockPaint => {
@@ -524,7 +524,7 @@ fn compute_root(
                     &view,
                     author_stylesheets,
                     request.viewport,
-                    StyleRevision::INITIAL,
+                    request.key.style_revision,
                 )
             }
             RuntimeCalculationProfile::BlockFormatting => {
@@ -532,7 +532,7 @@ fn compute_root(
                     &view,
                     author_stylesheets,
                     request.viewport,
-                    StyleRevision::INITIAL,
+                    request.key.style_revision,
                 )
             }
             RuntimeCalculationProfile::BlockPositioning => {
@@ -540,7 +540,7 @@ fn compute_root(
                     &view,
                     author_stylesheets,
                     request.viewport,
-                    StyleRevision::INITIAL,
+                    request.key.style_revision,
                 )
             }
             RuntimeCalculationProfile::BlockFlexStacking => {
@@ -548,7 +548,7 @@ fn compute_root(
                     &view,
                     author_stylesheets,
                     request.viewport,
-                    StyleRevision::INITIAL,
+                    request.key.style_revision,
                 )
             }
             RuntimeCalculationProfile::BlockFlexOverflowClip => {
@@ -556,7 +556,7 @@ fn compute_root(
                     &view,
                     author_stylesheets,
                     request.viewport,
-                    StyleRevision::INITIAL,
+                    request.key.style_revision,
                 )
             }
             #[cfg(feature = "c13-3-gesture-fixture-test")]
@@ -565,7 +565,7 @@ fn compute_root(
                     &view,
                     author_stylesheets,
                     request.viewport,
-                    StyleRevision::INITIAL,
+                    request.key.style_revision,
                 )
             }
             RuntimeCalculationProfile::BlockFlexGrid => {
@@ -573,7 +573,7 @@ fn compute_root(
                     &view,
                     author_stylesheets,
                     request.viewport,
-                    StyleRevision::INITIAL,
+                    request.key.style_revision,
                 )
             }
             RuntimeCalculationProfile::BlockFlexGridPlacement => {
@@ -581,7 +581,7 @@ fn compute_root(
                     &view,
                     author_stylesheets,
                     request.viewport,
-                    StyleRevision::INITIAL,
+                    request.key.style_revision,
                 )
             }
             RuntimeCalculationProfile::BlockFlexGridAutoPlacement => {
@@ -589,7 +589,7 @@ fn compute_root(
                     &view,
                     author_stylesheets,
                     request.viewport,
-                    StyleRevision::INITIAL,
+                    request.key.style_revision,
                 )
             }
             RuntimeCalculationProfile::BlockFlexGridDenseAutoPlacement => {
@@ -597,7 +597,7 @@ fn compute_root(
                     &view,
                     author_stylesheets,
                     request.viewport,
-                    StyleRevision::INITIAL,
+                    request.key.style_revision,
                 )
             }
             RuntimeCalculationProfile::BlockFlexGridTemplate => {
@@ -605,7 +605,7 @@ fn compute_root(
                     &view,
                     author_stylesheets,
                     request.viewport,
-                    StyleRevision::INITIAL,
+                    request.key.style_revision,
                 )
             }
         }
@@ -620,11 +620,15 @@ fn compute_root(
             },
         )
     };
-    if key_for(&request.snapshot, request.viewport.environment_revision) != request.key
+    if key_for_with_style_revision(
+        &request.snapshot,
+        request.viewport.environment_revision,
+        request.key.style_revision,
+    ) != request.key
         || styles.generation.get() != request.key.generation
         || styles.document_revision.get() != request.key.document_revision
         || styles.render_tree_revision.get() != request.key.render_tree_revision
-        || styles.style_revision.get() != request.key.style_revision
+        || styles.style_revision != request.key.style_revision
     {
         return Err("Stylo 결과 revision이 요청 key와 다릅니다".to_owned());
     }

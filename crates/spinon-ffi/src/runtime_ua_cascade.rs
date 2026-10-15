@@ -184,7 +184,7 @@ fn key_json(key: RuntimeUaCascadeKey) -> Value {
         "generation": key.generation,
         "documentRevision": key.document_revision,
         "renderTreeRevision": key.render_tree_revision,
-        "styleRevision": key.style_revision,
+        "styleRevision": key.style_revision.get(),
         "environmentRevision": key.environment_revision,
     })
 }
@@ -305,7 +305,7 @@ mod tests {
                 generation: 1,
                 document_revision: 3,
                 render_tree_revision: 2,
-                style_revision: 0,
+                style_revision: spinon_core::StyleRevision::INITIAL,
                 environment_revision: 1,
             },
             roots: Vec::new().into(),
@@ -328,7 +328,7 @@ mod tests {
                 generation: 1,
                 document_revision: 2,
                 render_tree_revision: 2,
-                style_revision: 0,
+                style_revision: spinon_core::StyleRevision::INITIAL,
                 environment_revision: 0,
             }),
             completed: None,

@@ -2,6 +2,97 @@ use super::super::*;
 use super::fixture::*;
 
 #[test]
+fn document_revision_without_style_revision_cancels_active_gesture() {
+    let (initial_key, styled_key) = document_style_revision_pair();
+    let changed_document_key = RuntimeRenderKey::new(
+        styled_key.generation(),
+        styled_key.document_revision(),
+        styled_key.render_tree_revision(),
+        initial_key.style_revision(),
+        styled_key.environment_revision(),
+    );
+    let initial = scene(
+        initial_key,
+        120.0,
+        policy(
+            RuntimeOverscrollBehavior::Auto,
+            RuntimeOverscrollBehavior::Auto,
+        ),
+        None,
+    );
+    let changed_document = scene(
+        changed_document_key,
+        120.0,
+        policy(
+            RuntimeOverscrollBehavior::Auto,
+            RuntimeOverscrollBehavior::Auto,
+        ),
+        None,
+    );
+    let mut session = RuntimeScrollGestureSession::default();
+    session
+        .begin(
+            &initial,
+            begin(&initial, 1, 1, 2, 1, RuntimeTouchAction::Auto),
+        )
+        .unwrap();
+    assert_eq!(
+        session
+            .pan_began(
+                &changed_document,
+                pan(&changed_document, 2, 1, 2, 1, 0.0, -12.0),
+            )
+            .unwrap(),
+        RuntimeScrollGestureOutcome::Cancelled(
+            RuntimeScrollGestureCancelReason::DocumentOrTreeChanged
+        )
+    );
+}
+
+#[test]
+fn geometry_change_precedes_scroll_revision_change_after_style_update() {
+    let (initial_key, styled_key) = document_style_revision_pair();
+    let initial = scene(
+        initial_key,
+        120.0,
+        policy(
+            RuntimeOverscrollBehavior::Auto,
+            RuntimeOverscrollBehavior::Auto,
+        ),
+        None,
+    );
+    let geometry_changed = scene(
+        styled_key.with_scroll_state_revision(ScrollStateRevision::INITIAL.checked_next().unwrap()),
+        140.0,
+        policy(
+            RuntimeOverscrollBehavior::Auto,
+            RuntimeOverscrollBehavior::Auto,
+        ),
+        None,
+    );
+    let mut session = RuntimeScrollGestureSession::default();
+    session
+        .begin(
+            &initial,
+            begin(&initial, 1, 1, 2, 1, RuntimeTouchAction::Auto),
+        )
+        .unwrap();
+    assert_eq!(
+        session
+            .pan_began(
+                &geometry_changed,
+                pan(&geometry_changed, 2, 1, 2, 1, 0.0, -12.0),
+            )
+            .unwrap(),
+        RuntimeScrollGestureOutcome::Cancelled(RuntimeScrollGestureCancelReason::GeometryChanged)
+    );
+    assert_eq!(
+        geometry_changed.key().scroll_state_revision(),
+        ScrollStateRevision::INITIAL.checked_next().unwrap()
+    );
+}
+
+#[test]
 fn geometry_change_cancels_and_blocks_pointer_until_its_terminal() {
     let initial = scene(
         key(),

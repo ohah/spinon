@@ -293,7 +293,16 @@ fn zero_pan_began_accepts_first_nonzero_sample_on_allowed_pan_y_axis() {
 
 #[test]
 fn style_only_revision_keeps_start_action_and_uses_next_sample_policy() {
-    let initial_key = key();
+    let (initial_key, styled_key) = document_style_revision_pair();
+    assert_ne!(
+        initial_key.document_revision(),
+        styled_key.document_revision()
+    );
+    assert_ne!(
+        initial_key.render_tree_revision(),
+        styled_key.render_tree_revision()
+    );
+    assert_ne!(initial_key.style_revision(), styled_key.style_revision());
     let initial = scene(
         initial_key,
         120.0,
@@ -311,9 +320,8 @@ fn style_only_revision_keeps_start_action_and_uses_next_sample_policy() {
         )
         .unwrap();
 
-    let next_style = initial_key.style_revision().checked_next().unwrap();
     let styled = scene(
-        with_style(initial_key, next_style),
+        styled_key,
         120.0,
         policy(
             RuntimeOverscrollBehavior::Contain,
@@ -338,6 +346,19 @@ fn style_only_revision_keeps_start_action_and_uses_next_sample_policy() {
         0.0
     );
     assert_eq!(delta.remaining_x_css_px(), 50.0);
+
+    let moved = session
+        .pan_moved(
+            delta.snapshot(),
+            pan(delta.snapshot(), 3, 1, 2, 1, -105.0, 0.0),
+        )
+        .unwrap();
+    assert!(matches!(moved, RuntimeScrollGestureOutcome::Moved { .. }));
+    assert_eq!(session.state(), RuntimeScrollGestureState::Panning(axes));
+    assert_eq!(
+        delta.snapshot().scroll_containers()[0].offset_x_css_px(),
+        0.0
+    );
 }
 
 #[test]
