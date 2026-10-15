@@ -4,6 +4,8 @@ use super::{
 use spinon_core::{HostDocumentSnapshot, HostNodeHandle};
 use spinon_layout::{LayoutError, LayoutFrame, LayoutOutput};
 use spinon_render::RuntimeRenderSnapshot;
+#[cfg(feature = "c13-3-gesture-fixture-test")]
+use spinon_style::first_unsupported_runtime_block_flex_scroll_gesture_inline_property;
 use spinon_style::{
     CascadeDiagnostic, ComputedStyleSnapshot, StylesheetSource, StyloDocumentView,
     first_unsupported_runtime_block_display_inline_value,
@@ -192,6 +194,10 @@ where
         }
         super::calculation::RuntimeCalculationProfile::BlockFlexOverflowClip => {
             first_unsupported_runtime_block_flex_overflow_clip_inline_property(&view)
+        }
+        #[cfg(feature = "c13-3-gesture-fixture-test")]
+        super::calculation::RuntimeCalculationProfile::BlockFlexScrollGesture => {
+            first_unsupported_runtime_block_flex_scroll_gesture_inline_property(&view)
         }
         super::calculation::RuntimeCalculationProfile::BlockFlexGrid => {
             first_unsupported_runtime_block_flex_grid_inline_property(&view)

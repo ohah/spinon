@@ -86,6 +86,8 @@ enum RuntimeCssProfile {
     BlockPositioningFixture,
     BlockFlexStackingFixture,
     BlockFlexOverflowClipFixture,
+    #[cfg(feature = "c13-3-gesture-fixture-test")]
+    BlockFlexScrollGestureFixture,
     BlockFlexGridFixture,
     BlockFlexGridPlacementFixture,
     BlockFlexGridAutoPlacementFixture,
@@ -285,6 +287,12 @@ impl RuntimeSession {
         Self::new_with_css_profile(RuntimeCssProfile::BlockFlexOverflowClipFixture)
     }
 
+    /// C13.3 style와 scroll input policy를 연결하는 내부 fixture runtime을 만듭니다.
+    #[cfg(feature = "c13-3-gesture-fixture-test")]
+    pub fn new_runtime_gpu_block_flex_scroll_gesture_fixture() -> Result<(Self, String), String> {
+        Self::new_with_css_profile(RuntimeCssProfile::BlockFlexScrollGestureFixture)
+    }
+
     /// C11.1 Grid runtime fixture 전용 CSS profile로 V8 세션을 만듭니다.
     pub fn new_runtime_gpu_block_flex_grid_fixture() -> Result<(Self, String), String> {
         Self::new_with_css_profile(RuntimeCssProfile::BlockFlexGridFixture)
@@ -334,6 +342,10 @@ impl RuntimeSession {
             }
             RuntimeCssProfile::BlockFlexOverflowClipFixture => {
                 RuntimeUaCascadeCoordinator::new_runtime_gpu_block_flex_overflow_clip()?
+            }
+            #[cfg(feature = "c13-3-gesture-fixture-test")]
+            RuntimeCssProfile::BlockFlexScrollGestureFixture => {
+                RuntimeUaCascadeCoordinator::new_runtime_gpu_block_flex_scroll_gesture()?
             }
             RuntimeCssProfile::BlockFlexGridFixture => {
                 RuntimeUaCascadeCoordinator::new_runtime_gpu_block_flex_grid()?

@@ -8,6 +8,8 @@ use super::{
 };
 use spinon_core::{HostNodeHandle, HostNodeKind, HostParent, NodeId, StyleRevision};
 use spinon_layout::MAX_LAYOUT_TREE_DEPTH;
+#[cfg(feature = "c13-3-gesture-fixture-test")]
+use spinon_style::compute_runtime_block_flex_scroll_gesture_cascade_with_stylesheets;
 use spinon_style::{
     ComputedStyleProfile, CssCascadeError, RuntimeCascadeReuseStats, StyloDocumentView,
     compute_runtime_block_flex_grid_auto_placement_cascade_with_stylesheets,
@@ -39,6 +41,8 @@ pub(super) enum RuntimeCalculationProfile {
     BlockPositioning,
     BlockFlexStacking,
     BlockFlexOverflowClip,
+    #[cfg(feature = "c13-3-gesture-fixture-test")]
+    BlockFlexScrollGesture,
     BlockFlexGrid,
     BlockFlexGridPlacement,
     BlockFlexGridAutoPlacement,
@@ -192,6 +196,13 @@ pub(super) fn compute_request_for_block_flex_overflow_clip(
     request: &WorkRequest,
 ) -> Result<RuntimeCalculation, String> {
     compute_request_with_profile(request, RuntimeCalculationProfile::BlockFlexOverflowClip)
+}
+
+#[cfg(feature = "c13-3-gesture-fixture-test")]
+pub(super) fn compute_request_for_block_flex_scroll_gesture(
+    request: &WorkRequest,
+) -> Result<RuntimeCalculation, String> {
+    compute_request_with_profile(request, RuntimeCalculationProfile::BlockFlexScrollGesture)
 }
 
 pub(super) fn compute_request_for_block_flex_grid(
@@ -427,6 +438,10 @@ fn compute_root(
         RuntimeCalculationProfile::BlockFlexOverflowClip => {
             ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
         }
+        #[cfg(feature = "c13-3-gesture-fixture-test")]
+        RuntimeCalculationProfile::BlockFlexScrollGesture => {
+            ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
+        }
         RuntimeCalculationProfile::BlockFlexGrid => ComputedStyleProfile::RuntimeBlockFlexGridV1,
         RuntimeCalculationProfile::BlockFlexGridPlacement => {
             ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
@@ -538,6 +553,15 @@ fn compute_root(
             }
             RuntimeCalculationProfile::BlockFlexOverflowClip => {
                 compute_runtime_block_flex_overflow_clip_cascade_with_stylesheets(
+                    &view,
+                    author_stylesheets,
+                    request.viewport,
+                    StyleRevision::INITIAL,
+                )
+            }
+            #[cfg(feature = "c13-3-gesture-fixture-test")]
+            RuntimeCalculationProfile::BlockFlexScrollGesture => {
+                compute_runtime_block_flex_scroll_gesture_cascade_with_stylesheets(
                     &view,
                     author_stylesheets,
                     request.viewport,

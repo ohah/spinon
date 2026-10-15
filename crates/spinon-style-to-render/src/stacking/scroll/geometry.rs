@@ -3,7 +3,11 @@ use std::collections::BTreeMap;
 use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, NodeId};
 use spinon_layout::PositionedContainingBlockOwner;
 use spinon_render::{CssRect, RuntimeScrollContainer};
+#[cfg(feature = "c13-3-gesture-fixture-test")]
+use spinon_render::{RuntimeOverscrollBehavior, RuntimeScrollInputPolicy};
 use spinon_style::{ComputedCssOverflow, ComputedCssPosition, ComputedElementStyle};
+#[cfg(feature = "c13-3-gesture-fixture-test")]
+use spinon_style::{ComputedCssOverscrollBehavior, ComputedStyleProfile};
 use spinon_style_to_layout::StyleLayoutOutput;
 
 use super::super::overflow_clip::clip_axis_bounds;
@@ -87,17 +91,29 @@ pub(in crate::stacking) fn runtime_scroll_containers<R: FallibleReserve>(
                 } else {
                     viewport.height_css_px
                 };
-            containers.push(
-                RuntimeScrollContainer::new(
+            let container = RuntimeScrollContainer::new(
+                owner,
+                scrollport,
+                scrollable_width,
+                scrollable_height,
+                0.0,
+                0.0,
+            )?
+            .with_parent(None);
+            #[cfg(feature = "c13-3-gesture-fixture-test")]
+            let container = {
+                let root_style = styles
+                    .get(&root.id())
+                    .copied()
+                    .ok_or(StyleRenderError::MissingComputedStyle(root.id()))?;
+                apply_scroll_input_policy(
+                    container,
                     owner,
-                    scrollport,
-                    scrollable_width,
-                    scrollable_height,
-                    0.0,
-                    0.0,
+                    root_style,
+                    context.output.computed_styles.profile,
                 )?
-                .with_parent(None),
-            );
+            };
+            containers.push(container);
             continue;
         }
         if !is_scroll_container(overflow_x) && !is_scroll_container(overflow_y) {
@@ -130,19 +146,76 @@ pub(in crate::stacking) fn runtime_scroll_containers<R: FallibleReserve>(
 
         let scrollable_width = (scrollable_right - scrollport_x).max(client_width);
         let scrollable_height = (scrollable_bottom - scrollport_y).max(client_height);
-        containers.push(
-            RuntimeScrollContainer::new(
-                owner,
-                scrollport,
-                scrollable_width,
-                scrollable_height,
-                0.0,
-                0.0,
-            )?
-            .with_parent(parent_by_node.get(&owner).copied()),
-        );
+        let container = RuntimeScrollContainer::new(
+            owner,
+            scrollport,
+            scrollable_width,
+            scrollable_height,
+            0.0,
+            0.0,
+        )?
+        .with_parent(parent_by_node.get(&owner).copied());
+        #[cfg(feature = "c13-3-gesture-fixture-test")]
+        let container = apply_scroll_input_policy(
+            container,
+            owner,
+            owner_style,
+            context.output.computed_styles.profile,
+        )?;
+        containers.push(container);
     }
     Ok(containers)
+}
+
+#[cfg(feature = "c13-3-gesture-fixture-test")]
+fn apply_scroll_input_policy(
+    container: RuntimeScrollContainer,
+    owner: NodeId,
+    style: &ComputedElementStyle,
+    profile: ComputedStyleProfile,
+) -> Result<RuntimeScrollContainer, StyleRenderError> {
+    if profile != ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1 {
+        return Ok(container);
+    }
+    let overscroll_x =
+        style
+            .input_overscroll_behavior_x
+            .ok_or(StyleRenderError::MissingComputedProperty {
+                node: owner,
+                property: "computed overscroll-behavior-x",
+            })?;
+    let overscroll_y =
+        style
+            .input_overscroll_behavior_y
+            .ok_or(StyleRenderError::MissingComputedProperty {
+                node: owner,
+                property: "computed overscroll-behavior-y",
+            })?;
+    let overflow_x = overflow_pair(owner, style)?.0;
+    let overflow_y = overflow_pair(owner, style)?.1;
+    let direct_scroll_x = matches!(
+        overflow_x,
+        ComputedCssOverflow::Auto | ComputedCssOverflow::Scroll
+    ) && container.max_offset_x_css_px() > 0.0;
+    let direct_scroll_y = matches!(
+        overflow_y,
+        ComputedCssOverflow::Auto | ComputedCssOverflow::Scroll
+    ) && container.max_offset_y_css_px() > 0.0;
+    Ok(container.with_input_policy(RuntimeScrollInputPolicy::new(
+        direct_scroll_x,
+        direct_scroll_y,
+        runtime_overscroll_behavior(overscroll_x),
+        runtime_overscroll_behavior(overscroll_y),
+    )))
+}
+
+#[cfg(feature = "c13-3-gesture-fixture-test")]
+fn runtime_overscroll_behavior(value: ComputedCssOverscrollBehavior) -> RuntimeOverscrollBehavior {
+    match value {
+        ComputedCssOverscrollBehavior::Auto => RuntimeOverscrollBehavior::Auto,
+        ComputedCssOverscrollBehavior::Contain => RuntimeOverscrollBehavior::Contain,
+        ComputedCssOverscrollBehavior::None => RuntimeOverscrollBehavior::None,
+    }
 }
 
 fn html_body_for_root(document: &HostDocumentSnapshot, root: HostNodeHandle) -> Option<NodeId> {

@@ -23,6 +23,7 @@ c13-3-gesture-fixture-test = [
     "c04-runtime-gpu-fixture-test",
     "dep:spinon-core",
     "spinon-render/c13-3-gesture-fixture-test",
+    "spinon-runtime/c13-3-gesture-fixture-test",
 ]
 c14-1-app-fixture-test = [
     "dep:spinon-core",

@@ -1,0 +1,9 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.15s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_render-c5a1a36c30241c90)
+
+running 3 tests
+test stacking::tests::c13_3_scroll_policy::touch_action_intersects_target_to_nearest_owner_and_freezes_pan_axes ... ok
+test stacking::tests::c13_3_scroll_policy::computed_overscroll_policies_reach_the_router_per_axis ... ok
+test stacking::tests::c13_3_scroll_policy::touch_action_intersects_intermediate_nodes_but_stops_at_nearest_scroll_owner ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 71 filtered out; finished in 0.04s

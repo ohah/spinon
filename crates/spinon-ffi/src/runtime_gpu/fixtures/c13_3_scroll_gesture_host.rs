@@ -4,11 +4,10 @@ use super::super::{
 use super::c13_3_scroll_gesture::RUNTIME_CSS_C13_3_SCROLL_GESTURE_SOURCE;
 use spinon_core::NodeId;
 use spinon_render::{
-    RuntimeOverscrollBehavior, RuntimeRenderSnapshot, RuntimeScrollGestureBegin,
-    RuntimeScrollGestureBeginDisposition, RuntimeScrollGestureCancelReason,
-    RuntimeScrollGestureInputQueue, RuntimeScrollGestureOutcome, RuntimeScrollGesturePanSample,
-    RuntimeScrollGestureSession, RuntimeScrollGestureTerminal, RuntimeScrollGestureTerminalKind,
-    RuntimeScrollInputPolicy, RuntimeScrollInputQueueEvent, RuntimeTouchAction,
+    RuntimeRenderSnapshot, RuntimeScrollGestureBegin, RuntimeScrollGestureBeginDisposition,
+    RuntimeScrollGestureCancelReason, RuntimeScrollGestureInputQueue, RuntimeScrollGestureOutcome,
+    RuntimeScrollGesturePanSample, RuntimeScrollGestureSession, RuntimeScrollGestureTerminal,
+    RuntimeScrollGestureTerminalKind, RuntimeScrollInputQueueEvent, RuntimeTouchAction,
 };
 use spinon_runtime::RuntimeSession;
 use std::sync::atomic::{AtomicU64, Ordering};
@@ -69,6 +68,9 @@ impl C13_3GestureState {
     ) -> Result<String, String> {
         let snapshot = self.current_snapshot()?;
         let sequence = self.next_sequence()?;
+        let resolved_touch_action = snapshot
+            .touch_action_at_css_point(x_css_px, y_css_px)
+            .unwrap_or(RuntimeTouchAction::Unsupported);
         let input = RuntimeScrollGestureBegin::new(
             snapshot.key(),
             surface_generation,
@@ -78,7 +80,7 @@ impl C13_3GestureState {
             x_css_px,
             y_css_px,
             coordinate_scale,
-            RuntimeTouchAction::Auto,
+            resolved_touch_action,
         );
         let admission = lock(&self.queue)
             .enqueue_begin(input)
@@ -201,7 +203,8 @@ impl C13_3GestureState {
 impl RuntimeGpuHost {
     pub(in crate::runtime_gpu) fn new_c13_3_scroll_gesture_fixture()
     -> Result<(Self, String), String> {
-        let (session, report) = RuntimeSession::new_runtime_gpu_block_flex_overflow_clip_fixture()?;
+        let (session, report) =
+            RuntimeSession::new_runtime_gpu_block_flex_scroll_gesture_fixture()?;
         let mut host = Self::from_session_with_frame_report(session);
         host.c13_3_gesture_state = Some(Arc::new(C13_3GestureState::new()?));
         Ok((host, report))
@@ -295,23 +298,28 @@ impl RuntimeGpuHost {
                 ));
             }
         }
-        let policies = expected
-            .iter()
-            .map(|(owner, _, _, _)| {
-                (
-                    *owner,
-                    RuntimeScrollInputPolicy::new(
-                        true,
-                        true,
-                        RuntimeOverscrollBehavior::Auto,
-                        RuntimeOverscrollBehavior::Auto,
+        let interactive = (*initial).clone();
+        for (owner_id, _, _, _) in expected {
+            let owner = interactive
+                .scroll_containers()
+                .iter()
+                .find(|owner| owner.owner() == owner_id)
+                .ok_or((
+                    ERR_LAYOUT,
+                    format!("C13.3 입력 owner {owner_id}가 없습니다"),
+                ))?;
+            if !owner.input_policy().user_scrollable_x()
+                || !owner.input_policy().user_scrollable_y()
+            {
+                return Err((
+                    ERR_LAYOUT,
+                    format!(
+                        "C13.3 computed direct-scroll policy 불일치 owner={owner_id} policy={:?}",
+                        owner.input_policy()
                     ),
-                )
-            })
-            .collect::<Vec<_>>();
-        let interactive = initial
-            .with_scroll_input_policies(&policies)
-            .map_err(|error| (ERR_LAYOUT, format!("C13.3 입력 policy 연결 실패: {error}")))?;
+                ));
+            }
+        }
         let published_sequence = self
             .invalidate_scene()
             .map_err(|error| (ERR_STALE, error))?;
@@ -327,7 +335,7 @@ impl RuntimeGpuHost {
         *lock(&state.owners) = Some(owners);
         state.publish_snapshot(interactive.clone());
         Ok(format!(
-            "c13_3_gesture_fixture=ready viewport_css_px=400x240 owners=root:{},outer:{},inner:{} ranges=root:158,238;outer:106,186;inner:86,106 touch_action=fixture_auto overscroll=fixture_auto scroll_state_revision={} input_queue_capacity=64 terminal_capacity=8",
+            "c13_3_gesture_fixture=ready viewport_css_px=400x240 owners=root:{},outer:{},inner:{} ranges=root:158,238;outer:106,186;inner:86,106 touch_action=style_projected overscroll=style_projected scroll_state_revision={} input_queue_capacity=64 terminal_capacity=8",
             owners.root,
             owners.outer,
             owners.inner,

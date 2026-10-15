@@ -2,6 +2,8 @@ use std::collections::{BTreeMap, BTreeSet};
 
 use spinon_core::{NodeId, ScrollStateRevision};
 
+#[cfg(feature = "c13-3-gesture-fixture-test")]
+use super::RuntimeTouchAction;
 use super::{RuntimeOverscrollBehavior, RuntimeRenderError, RuntimeRenderSnapshot};
 
 /// 한 owner가 한 sample에서 소비한 축 delta와 최종 offset입니다.
@@ -73,6 +75,44 @@ impl RuntimeScrollDeltaOutcome {
 }
 
 impl RuntimeRenderSnapshot {
+    /// Hit target에서 가장 가까운 scroll owner까지 computed `touch-action` 교집합을 구합니다.
+    #[cfg(feature = "c13-3-gesture-fixture-test")]
+    pub fn touch_action_at_css_point(
+        &self,
+        x_css_px: f32,
+        y_css_px: f32,
+    ) -> Option<RuntimeTouchAction> {
+        let target = self.hit_test_css_point(x_css_px, y_css_px)?.node_id();
+        let index = self
+            .base_boxes
+            .iter()
+            .position(|render_box| render_box.node_id() == target)?;
+        let chain = self.scroll_metadata.get(index)?.touch_action_chain();
+        if chain.is_empty() {
+            return Some(RuntimeTouchAction::Auto);
+        }
+
+        let mut allow_x = true;
+        let mut allow_y = true;
+        for action in chain {
+            let (action_x, action_y) = match action {
+                RuntimeTouchAction::Auto => (true, true),
+                RuntimeTouchAction::None => (false, false),
+                RuntimeTouchAction::PanX => (true, false),
+                RuntimeTouchAction::PanY => (false, true),
+                RuntimeTouchAction::Unsupported => return Some(RuntimeTouchAction::Unsupported),
+            };
+            allow_x &= action_x;
+            allow_y &= action_y;
+        }
+        Some(match (allow_x, allow_y) {
+            (true, true) => RuntimeTouchAction::Auto,
+            (true, false) => RuntimeTouchAction::PanX,
+            (false, true) => RuntimeTouchAction::PanY,
+            (false, false) => RuntimeTouchAction::None,
+        })
+    }
+
     /// 현재 clip-aware hit target에서 시작해 inner-to-outer로 scroll delta를 한 번에 계산합니다.
     ///
     /// Delta는 finger movement가 아니라 scroll 방향의 CSS px입니다. `None`은 hit miss이며,

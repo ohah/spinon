@@ -2,6 +2,8 @@ use std::collections::{BTreeMap, BTreeSet};
 
 use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, HostParent, NodeId};
 use spinon_layout::LayoutSourceRevision;
+#[cfg(feature = "c13-3-gesture-fixture-test")]
+use spinon_render::RuntimeTouchAction;
 use spinon_render::{
     CssClip, CssRect, CssSize, OpaqueCssSrgb, RuntimeBorder, RuntimeBorderSide, RuntimePaint,
     RuntimeRenderBox, RuntimeRenderKey, RuntimeRenderSnapshot, RuntimeScrollRenderMetadata,
@@ -111,11 +113,7 @@ fn build_runtime_render_snapshot_with_scroll_state_and_reserve<R: FallibleReserv
     reserve: &mut R,
 ) -> Result<RuntimeRenderSnapshot, StyleRenderError> {
     let styles = &output.computed_styles;
-    if !matches!(
-        styles.profile,
-        ComputedStyleProfile::RuntimeBlockFlexStackingV1
-            | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
-    ) {
+    if !is_runtime_stacking_profile(styles.profile) {
         return Err(StyleRenderError::UnsupportedRuntimeProfile);
     }
     if !styles.diagnostics.is_empty() {
@@ -134,7 +132,7 @@ fn build_runtime_render_snapshot_with_scroll_state_and_reserve<R: FallibleReserv
 
     let styles_by_node = indexed_styles(styles)?;
     validate_computed_stacking_values(&styles_by_node)?;
-    if styles.profile == ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1 {
+    if uses_overflow_clip_profile(styles.profile) {
         validate_computed_overflow_values(&styles_by_node)?;
     }
     let mut document_nodes = Vec::new();
@@ -280,7 +278,7 @@ fn build_runtime_render_snapshot_with_scroll_state_and_reserve<R: FallibleReserv
         output,
         reserve,
     )?;
-    if styles.profile == ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1 {
+    if uses_overflow_clip_profile(styles.profile) {
         paint_auto_positioned_subtrees(
             &document_nodes,
             &parent_by_node,
@@ -289,35 +287,34 @@ fn build_runtime_render_snapshot_with_scroll_state_and_reserve<R: FallibleReserv
             reserve,
         )?;
     }
-    let hit_test_order_by_node =
-        if styles.profile == ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1 {
-            let mut hit_render_nodes = Vec::new();
-            reserve.reserve(
-                &mut hit_render_nodes,
-                paint_nodes.len(),
-                "hit-test render nodes",
-            )?;
-            for node_id in &paint_nodes {
-                let frame = output
-                    .layout
-                    .frames
-                    .get(node_id)
-                    .copied()
-                    .ok_or(StyleRenderError::MissingLayoutFrame(*node_id))?;
-                validate_runtime_frame(*node_id, frame)?;
-                if frame.width != 0.0 && frame.height != 0.0 {
-                    hit_render_nodes.push(*node_id);
-                }
+    let hit_test_order_by_node = if uses_overflow_clip_profile(styles.profile) {
+        let mut hit_render_nodes = Vec::new();
+        reserve.reserve(
+            &mut hit_render_nodes,
+            paint_nodes.len(),
+            "hit-test render nodes",
+        )?;
+        for node_id in &paint_nodes {
+            let frame = output
+                .layout
+                .frames
+                .get(node_id)
+                .copied()
+                .ok_or(StyleRenderError::MissingLayoutFrame(*node_id))?;
+            validate_runtime_frame(*node_id, frame)?;
+            if frame.width != 0.0 && frame.height != 0.0 {
+                hit_render_nodes.push(*node_id);
             }
-            Some(flatten_hit_test_order(
-                &document_nodes,
-                &parent_by_node,
-                &hit_render_nodes,
-                reserve,
-            )?)
-        } else {
-            None
-        };
+        }
+        Some(flatten_hit_test_order(
+            &document_nodes,
+            &parent_by_node,
+            &hit_render_nodes,
+            reserve,
+        )?)
+    } else {
+        None
+    };
     let viewport_css_px = CssSize::new(styles.viewport.width_css_px, styles.viewport.height_css_px)
         .map_err(|_| StyleRenderError::InvalidViewport)?;
     let current_source = current.revision.source();
@@ -333,7 +330,7 @@ fn build_runtime_render_snapshot_with_scroll_state_and_reserve<R: FallibleReserv
             });
         }
     };
-    let scroll_context = if styles.profile == ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1 {
+    let scroll_context = if uses_overflow_clip_profile(styles.profile) {
         Some(RuntimeScrollGeometryContext {
             document,
             root,
@@ -427,23 +424,23 @@ fn build_runtime_render_snapshot_with_scroll_state_and_reserve<R: FallibleReserv
                 .ok_or(StyleRenderError::InvalidRoot)?,
             None => paint_order,
         };
-        let (paint_clip, hit_test_clip, clip_layers) =
-            if styles.profile == ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1 {
-                runtime_clips_for_node(
-                    node_id,
-                    &parent_by_node,
-                    &styles_by_node,
-                    output,
-                    &scroll_offsets,
-                    reserve,
-                )?
-            } else {
-                (
-                    CssClip::unconstrained(),
-                    CssClip::unconstrained(),
-                    Vec::new(),
-                )
-            };
+        let (paint_clip, hit_test_clip, clip_layers) = if uses_overflow_clip_profile(styles.profile)
+        {
+            runtime_clips_for_node(
+                node_id,
+                &parent_by_node,
+                &styles_by_node,
+                output,
+                &scroll_offsets,
+                reserve,
+            )?
+        } else {
+            (
+                CssClip::unconstrained(),
+                CssClip::unconstrained(),
+                Vec::new(),
+            )
+        };
         let scroll_ancestors =
             scroll_ancestors_for_node(node_id, style, &parent_by_node, &scroll_offsets, reserve)?;
         boxes.push(
@@ -453,11 +450,21 @@ fn build_runtime_render_snapshot_with_scroll_state_and_reserve<R: FallibleReserv
                 .with_clip(paint_clip)
                 .with_hit_test_clip(hit_test_clip),
         );
-        scroll_metadata.push(RuntimeScrollRenderMetadata::new(
-            frame_css_px,
-            scroll_ancestors,
-            clip_layers,
-        ));
+        let metadata =
+            RuntimeScrollRenderMetadata::new(frame_css_px, scroll_ancestors, clip_layers);
+        #[cfg(feature = "c13-3-gesture-fixture-test")]
+        let metadata = if styles.profile == ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1 {
+            metadata.with_touch_action_chain(touch_action_chain_for_node(
+                node_id,
+                &parent_by_node,
+                &styles_by_node,
+                &scroll_offsets,
+                reserve,
+            )?)
+        } else {
+            metadata
+        };
+        scroll_metadata.push(metadata);
     }
 
     RuntimeRenderSnapshot::new_with_scroll_metadata(
@@ -468,6 +475,69 @@ fn build_runtime_render_snapshot_with_scroll_state_and_reserve<R: FallibleReserv
         scroll_metadata,
     )
     .map_err(Into::into)
+}
+
+fn uses_overflow_clip_profile(profile: ComputedStyleProfile) -> bool {
+    match profile {
+        ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1 => true,
+        #[cfg(feature = "c13-3-gesture-fixture-test")]
+        ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1 => true,
+        _ => false,
+    }
+}
+
+#[cfg(feature = "c13-3-gesture-fixture-test")]
+fn touch_action_chain_for_node<R: FallibleReserve>(
+    node: NodeId,
+    parent_by_node: &BTreeMap<NodeId, NodeId>,
+    styles: &BTreeMap<NodeId, &spinon_style::ComputedElementStyle>,
+    scroll_owners: &BTreeMap<NodeId, (f32, f32)>,
+    reserve: &mut R,
+) -> Result<Vec<RuntimeTouchAction>, StyleRenderError> {
+    let mut actions = Vec::new();
+    let mut cursor = Some(node);
+    let mut visited = 0_usize;
+    while let Some(current) = cursor {
+        visited = visited
+            .checked_add(1)
+            .ok_or(StyleRenderError::InvalidRoot)?;
+        if visited > parent_by_node.len().saturating_add(1) {
+            return Err(StyleRenderError::InvalidRoot);
+        }
+        reserve.reserve(&mut actions, 1, "touch-action style ancestry")?;
+        let style = styles
+            .get(&current)
+            .copied()
+            .ok_or(StyleRenderError::MissingComputedStyle(current))?;
+        let action = style
+            .input_touch_action
+            .ok_or(StyleRenderError::MissingComputedProperty {
+                node: current,
+                property: "computed touch-action",
+            })?;
+        actions.push(match action {
+            spinon_style::ComputedCssTouchAction::Auto => RuntimeTouchAction::Auto,
+            spinon_style::ComputedCssTouchAction::None => RuntimeTouchAction::None,
+            spinon_style::ComputedCssTouchAction::PanX => RuntimeTouchAction::PanX,
+            spinon_style::ComputedCssTouchAction::PanY => RuntimeTouchAction::PanY,
+            spinon_style::ComputedCssTouchAction::Unsupported => RuntimeTouchAction::Unsupported,
+        });
+        if scroll_owners.contains_key(&current) {
+            break;
+        }
+        cursor = parent_by_node.get(&current).copied();
+    }
+    Ok(actions)
+}
+
+fn is_runtime_stacking_profile(profile: ComputedStyleProfile) -> bool {
+    match profile {
+        ComputedStyleProfile::RuntimeBlockFlexStackingV1
+        | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1 => true,
+        #[cfg(feature = "c13-3-gesture-fixture-test")]
+        ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1 => true,
+        _ => false,
+    }
 }
 
 fn runtime_border_paint(paint: ComputedBackgroundPaint) -> RuntimePaint {

@@ -992,7 +992,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
         surfaceView = new SurfaceView(activity);
         surfaceView.getHolder().addCallback(this);
-        if (c133GestureFixtureRequested) {
+        if (BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST && c133GestureFixtureRequested) {
             surfaceView.setClickable(true);
             surfaceView.setOnTouchListener((view, event) -> handleC133GestureTouch(event));
         }
@@ -1634,7 +1634,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     + " stale_publish=rejected recovery=same_host");
             c132ScrollAssertionsPassed = true;
         }
-        if (c133GestureFixtureRequested) {
+        if (BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST && c133GestureFixtureRequested) {
             c133GestureFixtureReady = result.contains("c13_3_gesture_fixture=ready")
                     && result.contains("viewport_css_px=400x240")
                     && result.contains("owners=root:")
