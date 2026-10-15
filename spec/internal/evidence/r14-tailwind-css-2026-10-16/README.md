@@ -49,7 +49,7 @@ Agent Browser viewport 1680×1200에서 generated CSS가 로드되고 utility �
 
 ![Tailwind CSS 4.3.3 390px Chromium reference, not Spinon runtime](./tailwind-chromium-mobile-reference.png)
 
-별도 20개 구현·실행 실패 관점 검토: [implementation-review-20.md](implementation-review-20.md).
+별도 구현·실행 검토: [implementation-review-20.md](implementation-review-20.md). PR 변경 검토: [pr-delta-review-20.md](pr-delta-review-20.md).
 
 전체 `mise exec -- bun run docs:build`는 exit 1이다. Rspress가 기존 다른 문서에서 dead-link 432건을 보고했으며, 최종 실행 로그에서 R14 문서·이미지 경로 오류는 없었다.
 
