@@ -1,0 +1,37 @@
+{
+  "schema": "spinon-c13-3-scroll-policy-source-revision-v1",
+  "source_revision": "31ad1ace7079a900ca4e72b69c7840407f0451bd",
+  "base_revision": "7e5a0c4cbece52d8b4b4b22e8a4d0325db6f33e7",
+  "branch": "feat/c13-3-scroll-policy-20261015",
+  "simulators": {
+    "android": "Android API 37 ARM64 AVD, emulator-5554",
+    "ios": "iPhone 17 Pro, iOS 26.2 Simulator, ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "physical_device_used": false
+  },
+  "artifacts": {
+    "host_ffi_staticlib": {
+      "default_sha256": "6b0d24f2092a2cdac553068a01129f590dabf4e69619262fec3536d93f4c37af",
+      "opt_in_sha256": "4bc5a6cac3a855c18c3759f9d97949d55a05ebb31746991e19a59d9ae3e66535"
+    },
+    "android_apk": {
+      "default_sha256": "3fe1c1e0bcdd4f051861797f29946033ed20d7f7f1f5544387126fc80c2afe6d",
+      "opt_in_sha256": "6c73e9e73a2564450b0762ba964fa086b33ec2b9339a24ca9a4c822d4aa213ab"
+    },
+    "ios_simulator": {
+      "default_ffi_archive_sha256": "4a77134f9ac63f5b4e3276d0dcf50e4fa09826bb73a8968f54f6219c5fabf56b",
+      "default_app_executable_sha256": "9cfbf8dc8f21b827c57abb6b2c860d285f9739f58624ddc4123808613b55b83e",
+      "opt_in_ffi_archive_sha256": "a3b9436433659ed6a93941ba91325374fc8cd36815ec661a21b08ebfc6edcc03",
+      "opt_in_app_executable_sha256": "dc59209a82cf0c3d0dbf332c32358e36a86bb95a55a9d8792850190b5e7e17c1"
+    }
+  },
+  "run_evidence_sha256": {
+    "android-api37-avd-ready.png": "f32e92cdb1a0a91cf9c81e72f404180c333b2d61ecff953b563d3595bc915e81",
+    "android-api37-avd-after-swipe.png": "d26d65276b90c61304c4d5d5343e7f5fa9f6b21ef2c9e90f6703234094dcdde9",
+    "android-api37-avd-run.log": "a1e85ccdfe05a545a80a3e91777064200845021cdb0ca4218051483cb626c18e",
+    "ios-iphone17pro-ready.png": "af84839ad6184d3c63417fa2bd1351c6f41c040d46011094e3c542969db18823",
+    "ios-iphone17pro-after-swipe.png": "e11baa1a3ad2c83d463a97584ebe8f0066dce538e97789beebfbea0526ae2536",
+    "ios-iphone17pro-run.log": "5f860bf5bce754066b93b929dd8e70c25256fc5fb046cc0e6151d76403dde6e1"
+  },
+  "artifact_tree_matches_source_revision": true,
+  "commit_created_after_build": true
+}

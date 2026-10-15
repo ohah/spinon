@@ -66,6 +66,8 @@
 
 [feature-boundary.md](./feature-boundary.md)에 기본/opt-in Android·iOS 산출물의 SHA-256과 marker/symbol 양성·음성 결과를 기록했다. 기본 Android APK와 기본 iOS executable에서 C13.3 fixture ABI·ready payload가 없고, opt-in artifact에는 양성 대조 문자열이 있다.
 
+빌드 source revision, simulator ID와 전체 app/artifact·화면 hash 연결은 `source-revision.json`에 기록했다.
+
 ## 남은 검증 범위
 
 - Android/iOS app scene은 여전히 default `auto/auto` style을 사용한다. non-default `contain`/`pan-x`는 Rust focused tests 결과이며 simulator의 CSS style matrix 결과가 아니다.
