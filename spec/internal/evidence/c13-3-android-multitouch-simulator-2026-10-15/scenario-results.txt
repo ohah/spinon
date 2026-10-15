@@ -1,0 +1,10 @@
+PASS: Android opt-in APK build completed.
+PASS: first ACTION_DOWN and PanBegan were accepted before the second contact.
+PASS: AVD InputReader reported two contact slots, then one remaining contact.
+PASS: app received MotionEvent action 5 (ACTION_POINTER_DOWN) and canceled with SecondPointer.
+PASS: exactly 3 remaining-contact MOVE callbacks were rejected.
+PASS: cancel kept inner offset 38.058037 CSS px and ScrollStateRevision 1.
+PASS: all contacts up kept the SurfaceView crop unchanged; fresh pan advanced revision 2 and inner offset 76.11607 CSS px.
+PASS: screenshot pixel deltas are 1134 / 0 / 0 / 5103 for the documented states.
+PASS: no synthetic second-pointer probe was invoked.
+PASS: final Linux InputReader active pointer count is 0 after cleanup.

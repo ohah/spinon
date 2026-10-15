@@ -1,0 +1,11 @@
+device=virtio_input_multi_touch_1 mode=DIRECT
+displayId=0 deviceSize=1080x2400
+Last Raw Touch:
+Raw pointer data:
+2 pointers:
+[0]: id=0, x=10922, y=16876, pressure=100, touchMajor=10, touchMinor=0, toolMajor=0, toolMinor=0, orientation=0, tiltX=0, tiltY=0, distance=0, toolType=FINGER, isHovering=0
+[1]: id=1, x=12743, y=18240, pressure=100, touchMajor=10, touchMinor=0, toolMajor=0, toolMinor=0, orientation=0, tiltX=0, tiltY=0, distance=0, toolType=FINGER, isHovering=0
+ID bits: hovering = 0x00000000, touching = 0xc0000000, canceled = 0x00000000
+Last Cooked Touch: pointerCount=2
+[0]: id=0, x=359.978, y=1236.035, dx=0.000, dy=0.000, pressure=0.098, touchMajor=0.531, touchMinor=0.000, toolMajor=0.531, toolMinor=0.000, orientation=0.000, tilt=0.000, distance=0.000, toolType=FINGER, isHovering=false
+[1]: id=1, x=419.996, y=1335.938, dx=0.000, dy=0.000, pressure=0.098, touchMajor=0.531, touchMinor=0.000, toolMajor=0.531, toolMinor=0.000, orientation=0.000, tilt=0.000, distance=0.000, toolType=FINGER, isHovering=false

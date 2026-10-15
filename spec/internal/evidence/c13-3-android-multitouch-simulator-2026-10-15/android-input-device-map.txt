@@ -1,0 +1,5 @@
+AVD Android InputReader device mapping; source: android-input-device-map.log.gz
+/dev/input/event1: virtio_input_multi_touch_1; mode=DIRECT; associatedDisplay=
+  viewportDisplayId=0 size=1080x2400 active=0
+/dev/input/event11: virtio_input_multi_touch_11; mode=DISABLED; associatedDisplay=virtual:com.android.emulator.multidisplay:1234571
+  viewportDisplayId=-1 size=0x0 active=0
