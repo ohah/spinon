@@ -1,6 +1,6 @@
 # C13.3 · computed overscroll policy Simulator matrix
 
-**상태:** simulator 행렬·현재 소스 smoke 검증 완료 · PR 검토/병합 대기 · 상위 C13.3 미완료
+**상태:** simulator 행렬·현재 소스 smoke 검증 완료 · 구현 [PR #185](https://github.com/ohah/spinon/pull/185) · 상위 C13.3 미완료
 **선행:** [C13.3 스크롤 제스처 계획](c13-3-scroll-gestures.md), PR #184에서 병합한 computed scroll-policy snapshot 연결
 **계획 실패 관점 검토:** [20개 관점](../spec/internal/evidence/c13-3-policy-simulator-matrix-plan-review-20-2026-10-15.md)
 
