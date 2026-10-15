@@ -5,7 +5,7 @@ mod node;
 mod selectors;
 mod style;
 
-pub(crate) use cascade::initialize_stylo_preferences;
+pub(crate) use cascade::{acquire_standard_stylo_preferences, initialize_stylo_preferences};
 
 #[cfg(test)]
 mod tests;
@@ -16,12 +16,12 @@ pub use cascade::{
     ComputedCssGridAutoRows, ComputedCssGridItemPlacement, ComputedCssGridLayout,
     ComputedCssGridPlacement, ComputedCssGridTemplateAreas, ComputedCssGridTrackSize,
     ComputedCssMath, ComputedCssMaxSize, ComputedCssOverflow, ComputedCssOverflowClipMargin,
-    ComputedCssOverflowVisualBox, ComputedCssPosition, ComputedCssSpacingValue,
-    ComputedCssVisibility, ComputedCssZIndex, ComputedElementStyle, ComputedLayoutBorder,
-    ComputedLayoutDimensions, ComputedLayoutInsets, ComputedLayoutSpacing, ComputedStyleProfile,
-    ComputedStyleSnapshot, CssCascadeError, CssColorScheme, CssMediaEnvironment,
-    CssPointerCapabilities, CssPrimaryPointer, CssViewport, FixedContainingBlockEffect,
-    RuntimeCascadeReuseStats, compute_flex_alignment_cascade,
+    ComputedCssOverflowVisualBox, ComputedCssOverscrollBehavior, ComputedCssPosition,
+    ComputedCssSpacingValue, ComputedCssTouchAction, ComputedCssVisibility, ComputedCssZIndex,
+    ComputedElementStyle, ComputedLayoutBorder, ComputedLayoutDimensions, ComputedLayoutInsets,
+    ComputedLayoutSpacing, ComputedStyleProfile, ComputedStyleSnapshot, CssCascadeError,
+    CssColorScheme, CssMediaEnvironment, CssPointerCapabilities, CssPrimaryPointer, CssViewport,
+    FixedContainingBlockEffect, RuntimeCascadeReuseStats, compute_flex_alignment_cascade,
     compute_flex_alignment_layers_cascade, compute_flex_layout_cascade,
     compute_flex_margin_cascade, compute_flex_media_environment_cascade,
     compute_runtime_block_flex_grid_auto_placement_cascade_with_stylesheets,
@@ -30,6 +30,7 @@ pub use cascade::{
     compute_runtime_block_flex_grid_placement_cascade_with_stylesheets,
     compute_runtime_block_flex_grid_template_cascade_with_stylesheets,
     compute_runtime_block_flex_overflow_clip_cascade_with_stylesheets,
+    compute_runtime_block_flex_scroll_gesture_cascade_with_stylesheets,
     compute_runtime_block_flex_stacking_cascade_with_stylesheets,
     compute_runtime_block_formatting_cascade_with_stylesheets, compute_runtime_block_paint_cascade,
     compute_runtime_block_paint_cascade_with_stylesheets,
@@ -50,6 +51,7 @@ pub use cascade::{
     first_unsupported_runtime_block_flex_grid_placement_inline_property,
     first_unsupported_runtime_block_flex_grid_template_inline_property,
     first_unsupported_runtime_block_flex_overflow_clip_inline_property,
+    first_unsupported_runtime_block_flex_scroll_gesture_inline_property,
     first_unsupported_runtime_block_flex_stacking_inline_property,
     first_unsupported_runtime_block_formatting_inline_property,
     first_unsupported_runtime_block_paint_inline_property,

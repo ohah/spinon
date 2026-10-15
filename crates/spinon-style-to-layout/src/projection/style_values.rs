@@ -119,6 +119,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockPositioningV1
                 | ComputedStyleProfile::RuntimeBlockFlexStackingV1
                 | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+                | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
@@ -138,6 +139,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockPositioningV1
                 | ComputedStyleProfile::RuntimeBlockFlexStackingV1
                 | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+                | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
@@ -152,6 +154,7 @@ pub(super) fn project_styles(
                     | ComputedStyleProfile::RuntimeBlockPositioningV1
                     | ComputedStyleProfile::RuntimeBlockFlexStackingV1
                     | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+                    | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
                     | ComputedStyleProfile::RuntimeBlockFlexGridV1
                     | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
                     | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
@@ -191,6 +194,7 @@ pub(super) fn project_styles(
                         | ComputedStyleProfile::RuntimeBlockPositioningV1
                         | ComputedStyleProfile::RuntimeBlockFlexStackingV1
                         | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+                        | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
                         | ComputedStyleProfile::RuntimeBlockFlexGridV1
                         | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
                         | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
@@ -315,6 +319,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeBlockFlexStackingV1
                 | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+                | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
@@ -360,6 +365,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeBlockFlexStackingV1
                 | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+                | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
@@ -402,6 +408,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockPositioningV1
                 | ComputedStyleProfile::RuntimeBlockFlexStackingV1
                 | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+                | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
@@ -458,6 +465,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockPositioningV1
                 | ComputedStyleProfile::RuntimeBlockFlexStackingV1
                 | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+                | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
@@ -736,6 +744,7 @@ fn supports_positioning(profile: ComputedStyleProfile) -> bool {
             | ComputedStyleProfile::RuntimeBlockPositioningV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1
             | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+            | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
             | ComputedStyleProfile::RuntimeBlockFlexGridV1
             | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
@@ -745,7 +754,11 @@ fn supports_positioning(profile: ComputedStyleProfile) -> bool {
 }
 
 fn supports_overflow_clip(profile: ComputedStyleProfile) -> bool {
-    profile == ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+    matches!(
+        profile,
+        ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+            | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
+    )
 }
 
 fn parse_overflow(
@@ -774,6 +787,7 @@ fn supports_runtime_flex(profile: ComputedStyleProfile) -> bool {
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1
             | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+            | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
             | ComputedStyleProfile::RuntimeBlockFlexGridV1
             | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1

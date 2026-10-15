@@ -15,12 +15,13 @@ mod runtime_grid;
 mod runtime_layout;
 mod runtime_overflow;
 mod runtime_paint;
+mod runtime_scroll_gesture;
 mod runtime_stacking;
 mod s04;
 mod snapshot;
 mod ua_baseline;
 
-pub(crate) use device::initialize_stylo_preferences;
+pub(crate) use device::{acquire_standard_stylo_preferences, initialize_stylo_preferences};
 
 pub use incremental::{
     RuntimeCascadeReuseStats, compute_runtime_incremental_cascade_with_stylesheets,
@@ -67,6 +68,10 @@ pub use runtime_paint::{
     first_unsupported_runtime_block_positioning_inline_property,
     first_unsupported_runtime_flex_paint_inline_property,
 };
+pub use runtime_scroll_gesture::{
+    compute_runtime_block_flex_scroll_gesture_cascade_with_stylesheets,
+    first_unsupported_runtime_block_flex_scroll_gesture_inline_property,
+};
 pub use runtime_stacking::{
     compute_runtime_block_flex_stacking_cascade_with_stylesheets,
     first_unsupported_runtime_block_flex_stacking_inline_property,
@@ -87,6 +92,10 @@ mod runtime_stacking_tests;
 #[cfg(test)]
 #[path = "cascade/runtime_overflow_tests.rs"]
 mod runtime_overflow_tests;
+
+#[cfg(test)]
+#[path = "cascade/runtime_scroll_gesture_tests.rs"]
+mod runtime_scroll_gesture_tests;
 
 #[cfg(test)]
 #[path = "cascade/runtime_grid_tests.rs"]
@@ -112,11 +121,12 @@ pub use snapshot::{
     ComputedCssGridAutoRows, ComputedCssGridItemPlacement, ComputedCssGridLayout,
     ComputedCssGridPlacement, ComputedCssGridTemplateAreas, ComputedCssGridTrackSize,
     ComputedCssMath, ComputedCssMaxSize, ComputedCssOverflow, ComputedCssOverflowClipMargin,
-    ComputedCssOverflowVisualBox, ComputedCssPosition, ComputedCssSpacingValue,
-    ComputedCssVisibility, ComputedCssZIndex, ComputedElementStyle, ComputedLayoutBorder,
-    ComputedLayoutDimensions, ComputedLayoutInsets, ComputedLayoutSpacing, ComputedStyleProfile,
-    ComputedStyleSnapshot, CssColorScheme, CssMediaEnvironment, CssPointerCapabilities,
-    CssPrimaryPointer, CssViewport, FixedContainingBlockEffect,
+    ComputedCssOverflowVisualBox, ComputedCssOverscrollBehavior, ComputedCssPosition,
+    ComputedCssSpacingValue, ComputedCssTouchAction, ComputedCssVisibility, ComputedCssZIndex,
+    ComputedElementStyle, ComputedLayoutBorder, ComputedLayoutDimensions, ComputedLayoutInsets,
+    ComputedLayoutSpacing, ComputedStyleProfile, ComputedStyleSnapshot, CssColorScheme,
+    CssMediaEnvironment, CssPointerCapabilities, CssPrimaryPointer, CssViewport,
+    FixedContainingBlockEffect,
 };
 pub use ua_baseline::compute_supported_elements_ua_cascade;
 
@@ -231,9 +241,15 @@ pub enum CssCascadeError {
     InvalidStylesheetOrigin {
         id: String,
     },
+    StyloViewRebuild(crate::stylo_dom::StyloDomError),
     UnsupportedAuthorCss {
         stylesheet_id: String,
         feature: String,
+    },
+    UnsupportedTouchActionValue {
+        source_id: String,
+        node: Option<NodeId>,
+        value: String,
     },
     IncrementalReuseUnavailable,
     AuthorStylesheetDiagnostic {
@@ -328,12 +344,26 @@ impl fmt::Display for CssCascadeError {
                     "author stylesheet의 origin이 잘못되었습니다: {id}"
                 )
             }
+            Self::StyloViewRebuild(error) => {
+                write!(
+                    formatter,
+                    "C13.3 profile용 Stylo view를 다시 만들 수 없습니다: {error}"
+                )
+            }
             Self::UnsupportedAuthorCss {
                 stylesheet_id,
                 feature,
             } => write!(
                 formatter,
                 "stylesheet {stylesheet_id}가 지원 CSS 입력 profile 밖 기능을 사용합니다: {feature}"
+            ),
+            Self::UnsupportedTouchActionValue {
+                source_id,
+                node,
+                value,
+            } => write!(
+                formatter,
+                "{source_id}의 touch-action 값 {value}은 현재 Stylo profile에서 안전하게 보존할 수 없습니다: {node:?}"
             ),
             Self::IncrementalReuseUnavailable => {
                 formatter.write_str("증분 cascade 재사용 조건이 맞지 않습니다")

@@ -1,6 +1,6 @@
 # C13.3 · 스크롤 제스처와 축별 chaining
 
-**상태:** 계획 확정 · snapshot delta-router 구현 조각 진행 중 · C13.3 전체 미완료
+**상태:** 계획 확정 · snapshot delta-router와 typed style extraction 구현 조각 진행 중 · C13.3 전체 미완료
 **공식 상위 항목:** [구현 상태 대장](../spec/STATUS.md#css-구현-체크리스트)
 **선행:** C13.1 clip/hit-test와 C13.2 scroll owner, range, immutable snapshot·`ScrollStateRevision`
 **교차 경계:** S04.10 displayed-frame 입력 연결은 미완료다. S05.2 React host adapter와 공개 DOM event도 미완료다. 이 계획의 앱 route는 opt-in fixture 검증으로만 다루며 제품 event/presentation 지원으로 표시하지 않는다.
@@ -8,13 +8,13 @@
 **계획 PR 변경 검토:** [30개 관점 기록](../spec/internal/evidence/c13-3-scroll-gesture-plan-pr-review-30-2026-10-15.md)
 **구현 전 비교:** [고정 Chrome 155 관찰·fixture·화면](../spec/internal/evidence/c13-3-scroll-gesture-precomparison-2026-10-15/README.md) · [JSON](../tests/fixtures/css/references/c13-3-scroll-gesture-precomparison-v1.json)
 
-현재 구현 조각은 `RuntimeRenderSnapshot`에 대한 정책 입력형 per-axis delta routing primitive다. CSS computed-style projection, touch-action freeze, gesture session/queue, Android/iOS adapter와 fixture route는 아직 연결하지 않았으며 이 조각만으로 native gesture 동작이나 C13.3 완료를 주장하지 않는다. [구현 실행·검토 근거](../spec/internal/evidence/c13-3-scroll-gesture-runtime-core-2026-10-15/README.md)
+현재 구현 조각은 `RuntimeRenderSnapshot`에 대한 정책 입력형 per-axis delta routing primitive와 C13.3 제한 computed-style profile이다. `overscroll-behavior`의 물리 축 shorthand/longhand와 `touch-action` typed 값을 cascade하고 기존 overflow layout projection까지 보존한다. Stylo가 계산값을 보존하는 제한 집합 밖의 유효 `touch-action`은 `Unsupported`로 남긴다. 고정 Stylo가 조용히 버리는 유효 방향 pan 토큰(`pan-left/right/up/down`)과 동적 `var()` 값은 cascade 전에 profile 오류로 거부해 `auto`로 변하지 않게 한다. style profile은 runtime renderer, gesture session/queue, Android/iOS adapter 및 fixture route에 아직 연결되지 않았으므로 native gesture 동작이나 C13.3 완료를 뜻하지 않는다. [router 근거](../spec/internal/evidence/c13-3-scroll-gesture-runtime-core-2026-10-15/README.md) · [typed style projection 근거](../spec/internal/evidence/c13-3-scroll-style-projection-2026-10-15/README.md)
 
 ## 목표와 범위
 
 C13.3은 C13.2가 소유하는 scroll container와 immutable render snapshot에 touch pan 및 host가 CSS px로 정규화한 wheel/trackpad delta를 연결한다. touch는 시작점의 clip-aware hit target과 scroll owner chain을 gesture 동안 고정한다. wheel/trackpad는 각 sample의 CSS viewport 위치에서 현재 snapshot의 hit target/chain을 구한다. 각 축은 scroll range에 따라 안쪽 owner부터 소비한다. 남은 delta, `overscroll-behavior`, gesture 수명·취소·surface generation은 한 원자적 scroll-state 갱신으로 처리한다. C13.2의 현재 입력 규칙대로 `overflow:hidden` offset은 직접 gesture로 움직이지 않고 항상 경계로 취급한다. `auto`면 남은 delta를 ancestor로 넘기고, `contain`/`none`이면 해당 축 chain을 막는다. `visible`/`clip`은 자체 offset/policy owner 없이 가장 가까운 scroll ancestor로 넘긴다.
 
-이번 제한 profile은 현 C13.1/C13.2가 지원하는 연결 box와 `horizontal-tb`·LTR 물리 축이다. `overscroll-behavior`, `touch-action`은 typed runtime style input으로 추가한다. `touch-action` 값은 `auto`, `none`, `pan-x`, `pan-y`로 한정하며 다른 유효 값이나 조합은 `auto`로 조용히 바꾸지 않고 unsupported로 기록한다. 키보드 기본 스크롤은 S05/S07, 공개 `PointerEvent`/`WheelEvent`/`scroll` dispatch는 S05 및 C29 owner다.
+이번 제한 profile은 현 C13.1/C13.2가 지원하는 연결 box와 `horizontal-tb`·LTR 물리 축이다. `overscroll-behavior`, `touch-action`은 typed runtime style input으로 추가한다. `touch-action` 값은 `auto`, `none`, `pan-x`, `pan-y`로 한정하며 다른 유효 값이나 조합은 `auto`로 조용히 바꾸지 않고 unsupported로 기록한다. Stylo가 유효한 `pan-left/right/up/down` 또는 `var()` 계산 전 값을 기본 `auto`로 떨어뜨리는 경우에는 손실된 값을 `Unsupported`로 가장하지 않고 입력 profile 전체를 오류로 거부한다. 키보드 기본 스크롤은 S05/S07, 공개 `PointerEvent`/`WheelEvent`/`scroll` dispatch는 S05 및 C29 owner다.
 
 직접 조작 gesture는 platform input adapter가 전달한 정규화된 좌표로 시작한다. touch release 뒤 Spinon은 fling/inertial continuation을 만들지 않는다. host가 별도 momentum phase로 전달한 trackpad sample은 input source/phase를 기록하고 정규화된 delta sample로 처리한다. pinch zoom, pointer capture API, scroll snap, native scrollbar, overscroll bounce/glow는 없다. `touch-action`은 pan 허용 축에만 적용하며 tap/click activation은 보존한다. 두 번째 active pointer가 들어오면 진행 중인 단일 pointer pan을 cancel하고 마지막 pointer까지 끝날 때까지 해당 touch stream의 추가 scroll을 받지 않는다. 이미 적용된 offset은 유지한다. 해당 선택은 이 내부 fixture profile의 명시적 동작이며 public Pointer Events 구현을 뜻하지 않는다.
 

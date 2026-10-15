@@ -1,3 +1,5 @@
+use std::sync::{RwLock, RwLockReadGuard, RwLockWriteGuard};
+
 use style::{
     context::QuirksMode,
     device::{Device, servo::FontMetricsProvider},
@@ -11,6 +13,61 @@ use style::{
 };
 
 use super::{CssColorScheme, CssPrimaryPointer, CssViewport};
+
+static STYLO_PREFERENCE_LOCK: RwLock<()> = RwLock::new(());
+
+pub(crate) enum StyloPreferenceGuard {
+    Standard {
+        _guard: RwLockReadGuard<'static, ()>,
+    },
+    ScrollGesture {
+        _guard: ScrollGesturePreferenceGuard,
+    },
+}
+
+pub(crate) struct ScrollGesturePreferenceGuard {
+    _guard: RwLockWriteGuard<'static, ()>,
+}
+
+impl ScrollGesturePreferenceGuard {
+    fn enter() -> Self {
+        let guard = STYLO_PREFERENCE_LOCK
+            .write()
+            .unwrap_or_else(std::sync::PoisonError::into_inner);
+        stylo_static_prefs::set_pref!("layout.unimplemented", true);
+        Self { _guard: guard }
+    }
+}
+
+impl Drop for ScrollGesturePreferenceGuard {
+    fn drop(&mut self) {
+        stylo_static_prefs::set_pref!("layout.unimplemented", false);
+    }
+}
+
+pub(super) fn acquire_stylo_preferences(
+    profile: super::ComputedStyleProfile,
+) -> StyloPreferenceGuard {
+    if profile == super::ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1 {
+        StyloPreferenceGuard::ScrollGesture {
+            _guard: ScrollGesturePreferenceGuard::enter(),
+        }
+    } else {
+        acquire_standard_stylo_preferences()
+    }
+}
+
+pub(crate) fn acquire_standard_stylo_preferences() -> StyloPreferenceGuard {
+    StyloPreferenceGuard::Standard {
+        _guard: STYLO_PREFERENCE_LOCK
+            .read()
+            .unwrap_or_else(std::sync::PoisonError::into_inner),
+    }
+}
+
+pub(super) fn enable_scroll_gesture_preferences() -> ScrollGesturePreferenceGuard {
+    ScrollGesturePreferenceGuard::enter()
+}
 
 /// Stylo preference는 프로세스 전역이므로 파서·cascade 진입마다 사용값을 다시 고정합니다.
 pub(crate) fn initialize_stylo_preferences() {
