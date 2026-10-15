@@ -1,11 +1,11 @@
 # 0063 · C13.3 scroll gesture runtime 내부 계약
 
-- **계약:** `0.1.0-draft` · **상태:** per-axis snapshot router, typed style projection, 단일 pointer pure Rust session 조각 구현 · 전체 gesture runtime 미완료
+- **계약:** `0.1.0-draft` · **상태:** per-axis snapshot router, typed style projection, 단일 pointer pure Rust session과 bounded input queue 모델 조각 구현 · 전체 gesture runtime 미완료
 - **제품 CSS 지원 선언:** 아님
 - **기준:** [C13.3 계획](../../plan/c13-3-scroll-gestures.md) · [Chrome 155 precomparison](evidence/c13-3-scroll-gesture-precomparison-2026-10-15/README.md)
 - **기존 기반:** [0062 C13.2 scroll state](0062-c13-2-scroll-state.md)의 immutable snapshot·owner chain·`ScrollStateRevision`
 
-현재 후보에는 policy 입력형 순수 Rust delta router, `RuntimeBlockFlexScrollGestureV1` computed-style profile, 단일 pointer `RuntimeScrollGestureSession`이 있다. profile은 `overscroll-behavior` 물리 축 shorthand/longhand와 `touch-action`을 typed output으로 보존하고 기존 C13.1 overflow layout projection을 유지한다. 제한 지원 집합 밖의 유효 `touch-action` 값은 `Unsupported`로 보존한다. style profile은 renderer scroll policy 및 session에 연결되지 않았고 session은 native queue, Android/iOS callback 또는 fixture FFI에 연결되지 않았다. 세 조각의 통과를 제품 제스처나 C13.3 완료로 해석하지 않는다. [router 실행 근거](evidence/c13-3-scroll-gesture-runtime-core-2026-10-15/README.md) · [typed style 실행 근거](evidence/c13-3-scroll-style-projection-2026-10-15/README.md) · [core session 실행 근거](evidence/c13-3-scroll-gesture-session-2026-10-15/README.md)
+현재 후보에는 policy 입력형 순수 Rust delta router, `RuntimeBlockFlexScrollGestureV1` computed-style profile, 단일 pointer `RuntimeScrollGestureSession`, 별도 `RuntimeScrollGestureInputQueue` 모델이 있다. profile은 `overscroll-behavior` 물리 축 shorthand/longhand와 `touch-action`을 typed output으로 보존하고 기존 C13.1 overflow layout projection을 유지한다. 제한 지원 집합 밖의 유효 `touch-action` 값은 `Unsupported`로 보존한다. queue 모델은 bounded regular capacity, Begin 결과 gate, terminal slot reservation, sequence 순 dequeue, same-epoch 인접 Move/WheelDelta coalescing과 queue-pressure diagnostics를 구현했다. style profile은 renderer scroll policy 및 session에 연결되지 않았고 queue 모델도 session, Android/iOS callback 또는 fixture FFI에 연결되지 않았다. 이 Rust 조각의 통과를 native gesture 동작이나 C13.3 완료로 해석하지 않는다. [router 실행 근거](evidence/c13-3-scroll-gesture-runtime-core-2026-10-15/README.md) · [typed style 실행 근거](evidence/c13-3-scroll-style-projection-2026-10-15/README.md) · [core session 실행 근거](evidence/c13-3-scroll-gesture-session-2026-10-15/README.md) · [bounded queue 실행 근거](evidence/c13-3-input-queue-2026-10-15/README.md)
 
 ## 범위와 소유자
 
@@ -60,7 +60,20 @@ Native adapter의 bounded input queue는 모든 accepted input에 단조 증가 
 - document/tree/environment/surface/geometry 또는 외부 scroll revision이 달라진 pan sample은 현재 offset을 바꾸지 않고 active pointer를 suppressed set에 넣는다. 두 번째 pointer도 active pan을 취소하고 모든 contact terminal 전까지 새 pan을 막는다. sequence·gesture/pointer identity가 맞지 않는 terminal은 상태를 바꾸지 않는다.
 - coordinate scale은 CSS px 변환에 사용하지 않는다. adapter가 이미 CSS px로 정규화한 좌표에 scale identity를 함께 전달하며, active gesture 중 scale이 bitwise 달라지면 surface barrier로 취소한다.
 
-이 slice에는 native input queue/coalescing/terminal reservation, wheel adapter, touch-action ancestor cascade 연결, Android/iOS callback, FFI fixture route, S04.10 displayed-frame hit target, 앱 화면이 없다. Android AVD와 iOS Simulator 검증을 수행하지 않았다. focused Rust unit tests는 위 state/session 경계만 확인하며 Chrome oracle나 화면 적합성 근거가 아니다.
+이 session slice에는 wheel adapter, touch-action ancestor cascade 연결, Android/iOS callback, FFI fixture route, S04.10 displayed-frame hit target, 앱 화면이 없다. Android AVD와 iOS Simulator 검증을 수행하지 않았다. focused Rust unit tests는 위 state/session 경계만 확인하며 Chrome oracle나 화면 적합성 근거가 아니다.
+
+## 현재 구현된 bounded queue model
+
+`RuntimeScrollGestureInputQueue`는 `spinon-render`의 고정 용량 single-owner queue다. regular event 수와 terminal reservation 수를 생성 시 고정하며, queue entry는 고정 크기 Rust 값으로 구성한다. Queue는 `Mutex`나 worker 호출을 소유하지 않는다. Native adapter는 queue 접근을 짧게 동기화하고 event를 꺼낸 뒤 session/render 처리를 동기화 경계 밖에서 해야 한다.
+
+- `Begin`은 regular slot과 terminal reservation을 모두 얻은 뒤 들어간다. dequeue 뒤 caller는 session이 active 또는 suppressed contact를 보유하는지 `complete_begin`으로 확정한다. 거부면 그 identity의 pending event와 reservation을 없앤다.
+- `PanBegan`은 gesture당 한 번만 queue하며, `Move`는 그 뒤에만 받는다. Begin 결과가 확정되기 전에는 다음 event dequeue를 막는다.
+- Move coalescing은 regular tail이 같은 gesture/pointer/surface, `RuntimeRenderKey`, policy epoch이고 직전 accepted input sequence와 연결될 때만 수행한다. 따라서 terminal slot에 든 다른 gesture의 End/Cancel, 다른 regular event, style/snapshot barrier 또는 queue가 accept한 event를 넘어 재정렬하지 않는다. rejected wheel sample은 queue에 없으므로 accepted Move 간 병합을 끊지 않는다. 마지막 cumulative translation과 마지막 sequence를 보존한다.
+- regular capacity가 찬 상태에서 병합할 수 없는 PanBegan/Move는 미리 예약한 terminal slot에 `InputQueueSaturated` Cancel을 넣고 해당 motion sample은 queue에 넣지 않는다. 그 전에 accepted된 regular event는 순서대로 소비한다.
+- Wheel sample은 CSS point, target, full snapshot key, basis `ScrollStateRevision`, policy epoch, source/unit/scale/momentum phase와 modifier flags가 같은 tail sample과만 합친다. CSS 및 원본 delta 합산이 finite `f32` 범위를 넘으면 빈 regular capacity에서는 원본 두 sample을 보존하고, full이면 새 sample 전체를 거부한다. capacity 거부 카운터는 saturated `u64`로 누적한다.
+- terminal event는 자신의 reserved slot에서 regular event와 sequence 순으로 꺼낸다. dequeue 시 reservation을 반환한다. terminal이 대기하는 동안 같은 identity의 후속 motion/terminal은 거부된다.
+
+이 model의 24개 focused test와 `spinon-render` Clippy는 queue 내부 불변식만 검증한다. session consumer 연결, native callback의 lock 경합·worker completion 대기 여부, Android/iOS Simulator, runtime snapshot 게시와 실제 화면은 검증하지 않았다. 상세 실행·구현 review 범위는 [queue evidence](evidence/c13-3-input-queue-2026-10-15/README.md)에 있다.
 
 ## 축별 delta 소비와 snapshot 게시
 
