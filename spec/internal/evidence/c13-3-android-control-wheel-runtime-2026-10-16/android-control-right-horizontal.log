@@ -1,0 +1,24 @@
+platform=Android API 37 ARM64 AVD sdk_gphone16k_arm64 (17)
+serial=emulator-5554 qemu=1 page_size=16384 display=Physical size: 1080x2400 density=Physical density: 420
+helper_sha256=c0f011c3321bd9441df0519eda938efa47b3561679870a18e49f13094040348e
+control=KEY_RIGHTCTRL axis=REL_HWHEEL value=1
+target_css_px=132,112 screen_px=362,1285 scale_px_per_css_px=2.625
+expected_rejection=control-wheel hscroll=1 vscroll=0
+helper=device-created control=right axis=horizontal screen=362,1285
+device-destroyed control-released=true
+fixture_ready=
+I/SpinonBootstrap( 7647): SPINON_C133_EVAL_READY input=MotionEvent native_slop_px=21 worker_delay_ms=0 status=0 c13_3_gesture_fixture=ready scenario=auto-boundary policy_inner=auto/auto fixture_seed=inner-max viewport_css_px=400x240 owners=root:2,outer:4,inner:6 ranges=root:158,238;outer:106,186;inner:86,106 touch_action_effective=auto touch_action_inner=auto touch_action_inner_content=auto overscroll=style_projected presentation_sequence=3 scroll_state_revision=1 input_queue_capacity=64 terminal_capacity=8 scroll_state_revision=1 offsets=root:0,0;outer:0,0;inner:86,106
+I/SpinonBootstrap( 7647): SPINON_C133_READY input=MotionEvent status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=1 scroll_offsets=[0,0;0,0;86,106] generation=1 viewport_css_px=400x240 surface_texture=1050x630 root_css_px=400x240
+observed_logs=
+I/SpinonBootstrap( 7647): SPINON_C133_HOST=session=ready owner_tid=7672 isolate_per_session=1 queue_capacity=64 queue_policy=strict-priority-fifo css_worker_per_session=1 css_worker_ready_us=1487 session_startup_us=3072 scenario=auto-boundary
+I/SpinonBootstrap( 7647): SPINON_C133_EVAL status=0 c13_3_gesture_fixture=ready scenario=auto-boundary policy_inner=auto/auto fixture_seed=inner-max viewport_css_px=400x240 owners=root:2,outer:4,inner:6 ranges=root:158,238;outer:106,186;inner:86,106 touch_action_effective=auto touch_action_inner=auto touch_action_inner_content=auto overscroll=style_projected presentation_sequence=3 scroll_state_revision=1 input_queue_capacity=64 terminal_capacity=8 scroll_state_revision=1 offsets=root:0,0;outer:0,0;inner:86,106
+I/SpinonBootstrap( 7647): SPINON_C133_EVAL_READY input=MotionEvent native_slop_px=21 worker_delay_ms=0 status=0 c13_3_gesture_fixture=ready scenario=auto-boundary policy_inner=auto/auto fixture_seed=inner-max viewport_css_px=400x240 owners=root:2,outer:4,inner:6 ranges=root:158,238;outer:106,186;inner:86,106 touch_action_effective=auto touch_action_inner=auto touch_action_inner_content=auto overscroll=style_projected presentation_sequence=3 scroll_state_revision=1 input_queue_capacity=64 terminal_capacity=8 scroll_state_revision=1 offsets=root:0,0;outer:0,0;inner:86,106
+I/SpinonBootstrap( 7647): SPINON_C133_EVAL status=0 c13_3_gesture_fixture=ready scenario=auto-boundary policy_inner=auto/auto fixture_seed=inner-max viewport_css_px=400x240 owners=root:2,outer:4,inner:6 ranges=root:158,238;outer:106,186;inner:86,106 touch_action_effective=auto touch_action_inner=auto touch_action_inner_content=auto overscroll=style_projected presentation_sequence=3 scroll_state_revision=1 input_queue_capacity=64 terminal_capacity=8 scroll_state_revision=1 offsets=root:0,0;outer:0,0;inner:86,106
+I/SpinonBootstrap( 7647): SPINON_C0410_DRAW status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=1 scroll_offsets=[0,0;0,0;86,106] generation=1 viewport_css_px=400x240 surface_texture=1050x630 root_css_px=400x240
+I/SpinonBootstrap( 7647): SPINON_C0410_DRAW generation=2 status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=1 scroll_offsets=[0,0;0,0;86,106] generation=1 viewport_css_px=400x240 surface_texture=1050x630 root_css_px=400x240
+I/SpinonBootstrap( 7647): SPINON_C133_READY input=MotionEvent status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=1 scroll_offsets=[0,0;0,0;86,106] generation=1 viewport_css_px=400x240 surface_texture=1050x630 root_css_px=400x240
+I/SpinonBootstrap( 7647): SPINON_C133_SURFACE_BOUNDS phase=ready screen_px=15,991 size_px=1050x630
+I/SpinonBootstrap( 7647): SPINON_C133_NATIVE_WHEEL_REJECT reason=control-wheel source=MouseWheel hscroll=1.0 vscroll=0.0 meta=20480 modifiers=2
+
+pixel_comparison={"width":1050,"height":630,"comparedPixels":661500,"changedPixels":0}
+post_input_state={"virtualDeviceRemoved":true,"keyDowns":"0","metaState":"0x0"}

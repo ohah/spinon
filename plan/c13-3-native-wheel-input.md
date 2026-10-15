@@ -1,11 +1,14 @@
 # C13.3 · 네이티브 wheel·trackpad 입력 수집과 정규화
 
-**상태:** Android API 37 AVD native mouse wheel adapter 구현·방향 행렬 8/8 및 거부 경로 3/3 통과 · iPadOS Simulator callback은 host `loginwindow` 상태에서 관찰되지 않아 iOS sign/adapter는 보류
+**상태:** Android API 37 AVD native mouse wheel adapter 방향 행렬 8/8, 기존 거부 경로 3/3, Control-wheel 좌우 Ctrl·수평/수직 거부 4/4 통과 · iPadOS Simulator callback은 host `loginwindow` 상태에서 관찰되지 않아 iOS sign/adapter는 보류
 **공식 상위 항목:** [구현 상태 대장](../spec/STATUS.md#css-구현-체크리스트)
 **선행:** [C13.3 scroll gesture 계획](./c13-3-scroll-gestures.md), [normalized wheel router](./c13-3-wheel-delta-routing.md)
 **계약:** [내부 계약 0063](../spec/internal/0063-c13-3-scroll-gestures.md) · 공개 `WheelEvent`나 DOM `scroll` API 변경 없음
 **계획 실패 검토 20개:** [기록](../spec/internal/evidence/c13-3-native-wheel-input-plan-review-20-2026-10-16.md)
 **계획 PR 변경 검토 20개:** [기록](../spec/internal/evidence/c13-3-native-wheel-input-pr-review-20-2026-10-16.md)
+**Control-wheel 재현 계획 변경 적대 검토 20개:** [기록](../spec/internal/evidence/c13-3-android-control-wheel-runtime-2026-10-16/plan-review-20.md)
+**Control-wheel 구현·실행 적대 검토 20개:** [기록](../spec/internal/evidence/c13-3-android-control-wheel-runtime-2026-10-16/implementation-review-20.md)
+**Control-wheel PR 변경 적대 검토 20개:** [기록](../spec/internal/evidence/c13-3-android-control-wheel-runtime-2026-10-16/pr-delta-review-20.md)
 **구현 실패 관점 검토 20개:** [기록](../spec/internal/evidence/c13-3-native-wheel-input-implementation-review-20-2026-10-16.md)
 **PR #198 변경 관점 검토 30개:** [기록](../spec/internal/evidence/c13-3-native-wheel-input-pr-delta-review-30-2026-10-16.md)
 **구현 전 비교 기준:** [사전 비교와 정규화 oracle](../spec/internal/evidence/c13-3-native-wheel-input-precomparison-2026-10-16/README.md) · [기계 판독 기준](../spec/internal/evidence/c13-3-native-wheel-input-precomparison-2026-10-16/normalization-oracle.json)
@@ -30,8 +33,11 @@ Android와 iOS host가 OS input pipeline에서 전달받은 mouse wheel 및 trac
 - Android: `ViewConfiguration` horizontal/vertical scroll factor가 axis value를 physical px로 바꾼다. `deltaX_css = HSCROLL × horizontalFactorPx / surfacePxPerCssPx`; `deltaY_css = -(VSCROLL × verticalFactorPx) / surfacePxPerCssPx`. 부호는 Android viewport 방향과 UI Events CSS 방향을 대조한다. 원본 axis, factor, physical raw delta, surface scale, CSS delta를 기록한다. normalized modifier bit는 `SHIFT=1`, `CONTROL=2`, `ALT=4`, `META=8`이며 Control-wheel은 queue 전 거부한다.
 - iOS: `translation(in:)`은 gesture 시작부터 누적값이므로 callback 간 차분만 보낸다. 후보식은 `delta_css = -translationDelta_points / pointsPerCssPx`다. Apple은 translation 누적 의미를 보장하지만 CSS wheel sign을 규정하지 않으므로 iPadOS Simulator의 ±X/±Y 관찰로 구현 전에 부호를 확정한다. 반대 방향이면 계획 oracle부터 갱신한다.
 - AVD에서는 API 37 ARM64 emulator의 Android input shell에서 mouse와 touchpad scroll source를 주입하고 앱 `onGenericMotionEvent`의 action/source/axis/factor를 확인한다. ADB-created input/device id는 물리 입력장치 증거가 아니다.
+- ADB `input keyevent`와 별도 `input mouse scroll` 명령은 Android callback에 Control meta를 전달하지 못했다. API 37 ARM64 AVD의 `/dev/uinput`에서 가상 mouse device 하나가 `EV_KEY KEY_LEFTCTRL/KEY_RIGHTCTRL`을 누른 채 `EV_REL REL_HWHEEL/REL_WHEEL`을 보낸 뒤 key-up과 `UI_DEV_DESTROY`를 수행한다. 앱 callback에서 left Control `meta=12288`, right Control `meta=20480`, 양쪽 모두 normalized `modifiers=2`와 `reason=control-wheel`을 관찰하고, queue/process 부재, revision 1, 초기 offsets, SurfaceView 픽셀 무변경, device 제거와 meta state 0을 확인한다. 이 입력은 Android AVD InputReader 경로의 가상 장치 근거이며 실기기나 외장 장치 근거가 아니다.
+- Control-wheel 거부 행렬은 left/right Ctrl × horizontal/vertical 4 case를 각각 fresh fixture launch로 검사하고, no-Control `ACTION_SCROLL`을 positive control로 실행해 modifier 0과 queue→draw revision 2를 확인한다.
 - iPadOS Simulator에서 mouse wheel/discrete와 trackpad/continuous scroll을 주입한다. UIKit callback/source mask가 관찰되지 않으면 FFI direct enqueue로 대체하지 않고 미검증으로 남긴다.
 - 2026-10-16 Android API 37 ARM64 AVD에서는 mouse `ACTION_SCROLL`을 native callback→queue→draw까지 연결했다. ±H/V와 네 대각 조합 8/8에서 factor `168 px`, scale `2.625 px/CSS px`, axis magnitude `64 CSS px`, target `7`, revision 2와 각 owner offset이 고정 oracle과 일치했다. SurfaceView 밖 점, 위치 없는 ADB touchpad sample, 영 축은 3/3 거부됐고 revision/offset은 시작값을 유지했다. [native Android wheel 실행·pixel·artifact 근거](../spec/internal/evidence/c13-3-native-wheel-input-2026-10-16/README.md).
+- 별도 ADB keyboard/mouse 명령은 modifier를 연결하지 못했지만, 같은 API 37 ARM64 AVD의 virtual uinput device는 left/right Ctrl과 H/V wheel을 Android `ACTION_SCROLL` callback까지 전달했다. 4/4 거부에서 `modifiers=2`, queue/process 0건, revision 1, 초기 offsets와 SurfaceView crop 0 changed pixels를 확인했다. 모든 case 뒤 가상 device가 제거됐고 입력 meta state는 0이었다. 일반 wheel positive control은 modifier 0, target 7, revision 2와 기대 offsets를 만들었다. [재현 도구와 Control-wheel AVD 근거](../spec/internal/evidence/c13-3-android-control-wheel-runtime-2026-10-16/README.md).
 - 같은 날 iPad Pro 13-inch (M5)/iOS 26.2 Simulator 앱은 ready였지만 호스트 `loginwindow`가 Simulator GUI를 가려 CGEvent가 앱 callback까지 도달하지 않았다. UIKit sign은 미관찰로 남기고 iOS adapter 구현 gate를 유지한다.
 - `normalization-oracle.json`은 Android adapter 결과와 iOS 미관찰 상태를 함께 기록한다. Android mouse slice는 통과했지만 iOS는 native sign gate를 통과할 때까지 adapter 구현을 보류한다.
 
@@ -49,6 +55,7 @@ Android와 iOS host가 OS input pipeline에서 전달받은 mouse wheel 및 trac
 ### 성공 조건
 
 - Android API 37 AVD mouse callback의 source/raw 값과 queue/draw 결과가 주입 manifest와 일치한다. iPadOS 26.2 Simulator callback은 아직 관찰되지 않아 iOS gate는 미통과다.
+- Ctrl-left/right × horizontal/vertical은 callback에서 Control modifier로 판정돼 queue 전에 거부되고, ordinary wheel positive control은 queue와 draw까지 진행한다.
 - Android 결과는 ViewConfiguration factors와 surface px/CSS px 변환식, iOS 결과는 translation 차분·point scale 및 preflight에서 확정한 부호식과 0.01 CSS px 이내 일치한다.
 - 양/음 H/V와 대각 입력은 CSS right-handed sign 및 고정 Chrome geometry oracle에 맞는다. normalized delta는 scroll owner 간 보존되고 화면 변화는 기대 surface 안에 제한된다.
 - source/unit/scale/phase/modifier/target이 queue report까지 유지된다. 같은 iOS cumulative translation을 두 번 처리해도 두 번째 delta는 0이며 scroll revision이 증가하지 않는다.
@@ -66,4 +73,4 @@ Android와 iOS host가 OS input pipeline에서 전달받은 mouse wheel 및 trac
 
 Android API 37 ARM64 AVD와 iPadOS 26.2 Simulator에서 opt-in fixture를 실행한다. Android 실행은 [방향·거부 행렬과 화면 근거](../spec/internal/evidence/c13-3-native-wheel-input-2026-10-16/README.md)에, iOS 미관찰은 [preflight 근거](../spec/internal/evidence/c13-3-native-wheel-input-preflight-2026-10-16/README.md)에 기록했다. run마다 simulator/device ID와 OS, build flag, app/library hash, source/action, raw input, factor/scale, expected CSS delta, queue sequence/admission, before/after render key·revision·owner offsets, screenshot과 boundary pixel 비교를 보존한다. PR 본문에는 검증된 Android Simulator 화면을 올리고 Agent Browser로 이미지 표시를 확인한다. iOS 화면은 실제 native callback이 관찰되기 전까지 성공 화면으로 표시하지 않는다. 터미널 브라우저와 물리 기기는 사용하지 않는다.
 
-검증을 통과해도 fixture input adapter에 한정한다. public DOM event dispatch, default-prevention, Android API 28 이하, 물리 장치, OS momentum/fling, WPT, S04.10, S05.2, 전체 CSS profile과 C13.3 완료는 별도 gate다.
+검증을 통과해도 fixture input adapter에 한정한다. public DOM event dispatch, default-prevention, Android API 28 이하, 물리 장치, 실제 외장 trackpad, OS momentum/fling, iOS callback/sign/adapter, WPT, S04.10, S05.2, 전체 CSS profile과 C13.3 완료는 별도 gate다.
