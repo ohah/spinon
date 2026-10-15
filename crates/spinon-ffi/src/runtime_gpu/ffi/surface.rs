@@ -190,6 +190,8 @@ pub unsafe extern "C" fn spinon_runtime_gpu_host_destroy_renderer(
 /// 호출이 실행 중이지 않아야 합니다.
 pub unsafe extern "C" fn spinon_runtime_gpu_host_free(host: *mut SpinonRuntimeGpuHost) {
     if !host.is_null() {
+        #[cfg(feature = "c13-3-gesture-fixture-test")]
+        super::fixtures::c13_3::unregister_host(host as usize);
         drop(unsafe { Box::from_raw(host.cast::<RuntimeGpuHost>()) });
     }
 }

@@ -40,6 +40,9 @@
 + (uint64_t)createRuntimeGpuHostWithC13_1OverflowClipBorderFixture;
 + (uint64_t)createRuntimeGpuHostWithC13_2ScrollFixture;
 + (uint64_t)createRuntimeGpuHostWithC13_2SurfacePixelReadbackFixture;
+#if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
++ (uint64_t)createRuntimeGpuHostWithC13_3GestureFixture;
+#endif
 + (uint64_t)createRuntimeGpuHostWithC11_1GridFixture;
 + (uint64_t)createRuntimeGpuHostWithC11_1GridSurfacePixelReadbackFixture;
 + (NSString *)runtimeGpuC12_4WorkerStackResidencySample:(uint64_t)handle;
@@ -76,6 +79,19 @@
                                                 sampleCount:(NSUInteger)sampleCount;
 + (NSString *)evalRuntimeGpuC13_1OverflowClipBorderFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuC13_2ScrollFixture:(uint64_t)handle;
+#if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
++ (NSString *)evalRuntimeGpuC13_3GestureFixture:(uint64_t)handle;
++ (NSString *)enqueueRuntimeGpuC13_3Gesture:(uint64_t)handle
+                                      action:(int32_t)action
+                           surfaceGeneration:(uint64_t)surfaceGeneration
+                                   gestureID:(uint64_t)gestureID
+                                    pointerID:(uint64_t)pointerID
+                                  pointXCssPx:(float)pointXCssPx
+                                  pointYCssPx:(float)pointYCssPx
+                             coordinateScale:(float)coordinateScale
+                                       reason:(int32_t)reason;
++ (NSString *)processRuntimeGpuC13_3GestureQueue:(uint64_t)handle;
+#endif
 + (NSString *)requestRuntimeGpuC13_2SurfacePixels:(uint64_t)handle
                                              sampleXY:(const uint32_t *)sampleXY
                                           sampleCount:(NSUInteger)sampleCount;

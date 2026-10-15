@@ -1,0 +1,9 @@
+SPINON_IOS_SIM_BUILD_FLAGS c04_runtime_gpu=1 c04_runtime_gpu_fixture_test=1 c04_ua_cascade_fixture_probe=0 c11_2_3_grid_fixture=1 c11_grid_metal_surface_pixels=0 c13_1_overflow_clip_fixture=0 c13_2_scroll_fixture=0 c13_3_gesture_fixture=0 c14_1_app_fixture_test=0
+** BUILD SUCCEEDED **
+e68eff4bb60dc39df25a76586fa05369db760180ca602b1f3d6235a629c7b7a7  build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap
+C13.3 FFI symbols:
+none
+C13.3 fixture callback/payload strings:
+SPINON_C133_DISABLED rebuild with SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST=1
+Expected default-disabled route marker:
+SPINON_C133_DISABLED rebuild with SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST=1

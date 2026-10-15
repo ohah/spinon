@@ -198,6 +198,26 @@ int32_t spinon_runtime_gpu_host_request_c13_2_surface_pixels_for_test(
     SpinonRuntimeGpuHost *host, const uint32_t *sample_xy, size_t sample_count,
     char *output, size_t output_capacity);
 #endif
+
+#if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && \
+    SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
+/* C13.3 Android 입력 어댑터 전용 opt-in gesture fixture host입니다. */
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c13_3_gesture_fixture(
+    char *output, size_t output_capacity);
+int32_t spinon_runtime_gpu_host_eval_c13_3_gesture_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
+/* UI callback에서 worker를 기다리지 않고 bounded gesture queue에 입력을 추가합니다. */
+int32_t spinon_runtime_gpu_host_enqueue_c13_3_gesture(
+    SpinonRuntimeGpuHost *host, int32_t action, uint64_t surface_generation,
+    uint64_t gesture_id, uint64_t pointer_id, float x_or_cumulative_x_css_px,
+    float y_or_cumulative_y_css_px, float coordinate_scale, int32_t reason,
+    char *output, size_t output_capacity);
+/* 단일 background consumer가 ordered queue를 session에 적용하고 snapshot을 게시합니다. */
+int32_t spinon_runtime_gpu_host_process_c13_3_gesture_queue(
+    SpinonRuntimeGpuHost *host, size_t max_events,
+    char *output, size_t output_capacity);
+#endif
 /* C11.1 고정 explicit Grid scene 전용 V8·Stylo·Taffy·WGPU 검증 host입니다.
    일반 앱의 display:grid CSS 지원을 선언하지 않습니다. */
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c11_1_grid_fixture(

@@ -567,6 +567,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c131-overflow-clip-border")
     private let c132ScrollFixtureRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c132-scroll")
+    private let c133GestureFixtureRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c133-scroll-gesture")
     private let c132MetalPixelRun = C132MetalPixelRun.parse(
         arguments: ProcessInfo.processInfo.arguments
     )
@@ -582,6 +584,23 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     private var c132MetalPixelRequestPresentationSequence: UInt64?
     private var c132MetalPixelRequestDrawableSize = CGSize.zero
     private var c132MetalPixelRequestFormat = ""
+#if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
+    private var c133PanRecognizer: UIPanGestureRecognizer?
+    private var c133ActiveTouchIDs = Set<ObjectIdentifier>()
+    private var c133BackgroundObserver: NSObjectProtocol?
+    private var c133DrainScheduled = false
+    private var c133DrainAgain = false
+    private var c133GestureFixtureReady = false
+    private var c133TouchActive = false
+    private var c133TerminalQueued = false
+    private var c133SuppressUntilAllPointersUp = false
+    private var c133NextGestureID: UInt64 = 0
+    private var c133GestureID: UInt64 = 0
+    private var c133PointerID: UInt64 = 0
+    private var c133GestureSurfaceGeneration: UInt64 = 0
+    private var c133CoordinateScale: Float = 1
+    private var c133LastCumulativeCss = CGPoint.zero
+#endif
     private let c122AbsoluteBlockProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c122-absolute-block")
     private let c123FixedPositionProbeRequested = ProcessInfo.processInfo.arguments
@@ -617,7 +636,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     }
     private var fixedSizeCssFixtureRequested: Bool {
         c131CompactSurfaceMatrixRouteRequested || c131OverflowClipProbeRequested
-            || c131BorderStripProbeRequested || c132ScrollFixtureRequested || c11GridFixtureRequested
+            || c131BorderStripProbeRequested || c132ScrollFixtureRequested
+            || c133GestureFixtureRequested || c11GridFixtureRequested
             || c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
             || c124StackingProbeRequested
             || c1035PositionedFlexProbeRequested
@@ -654,6 +674,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? "SPINON · C13.1 overflow: clip"
             : c132ScrollFixtureRequested
             ? "SPINON · C13.2 scroll state"
+            : c133GestureFixtureRequested
+            ? "SPINON · C13.3 iOS touch adapter"
             : c1133GridTemplateAreasProbeRequested
             ? "SPINON · C11.3.3 Grid template areas"
             : c1132GridNamedLinesProbeRequested
@@ -740,6 +762,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? "V8 overflow: clip·clip margin·positioned escape → Stylo → Taffy → WGPU Metal · 320×240 CSS px"
             : c132ScrollFixtureRequested
             ? "V8 scroll owner·offset·paint/hit → Stylo → Taffy → WGPU Metal · 400×240 CSS px"
+            : c133GestureFixtureRequested
+            ? "UIPanGestureRecognizer · bounded Rust queue/session → WGPU Metal · 400×240 CSS px"
             : c1133GridTemplateAreasProbeRequested
             ? "Grid template area placement → Stylo → Taffy → WGPU Metal · 320×240 CSS px"
             : c1132GridNamedLinesProbeRequested
@@ -826,6 +850,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? "C13.1 paint/hit border-strip Chrome 경계 WGPU Metal 장면"
             : c131OverflowClipProbeRequested
             ? "C13.1 overflow clip과 positioned escape WGPU Metal 장면"
+            : c133GestureFixtureRequested
+            ? "C13.3 iOS UIPanGestureRecognizer nested scroll gesture WGPU Metal 장면"
             : c1123GridAutoPlacementProbeRequested
             ? "C11.2.3 dense·column Grid 자동 배치 WGPU 장면"
             : c1122GridAutoPlacementProbeRequested
@@ -892,6 +918,31 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 ? "C04.11 Chromium stylesheet fixture의 WGPU 장면"
             : "C04.10 Chromium fixture의 WGPU 장면"
         view.addSubview(canvasView)
+#if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
+        if c133GestureFixtureRequested {
+            canvasView.isMultipleTouchEnabled = true
+            canvasView.onActiveTouchCountChanged = { [weak self] count in
+                self?.handleC133ActiveTouchCountChanged(count)
+            }
+            let recognizer = UIPanGestureRecognizer(
+                target: self,
+                action: #selector(handleC133Pan(_:))
+            )
+            recognizer.minimumNumberOfTouches = 1
+            recognizer.maximumNumberOfTouches = 1
+            recognizer.cancelsTouchesInView = false
+            recognizer.delaysTouchesBegan = false
+            canvasView.addGestureRecognizer(recognizer)
+            c133PanRecognizer = recognizer
+            c133BackgroundObserver = NotificationCenter.default.addObserver(
+                forName: UIApplication.didEnterBackgroundNotification,
+                object: nil,
+                queue: .main
+            ) { [weak self] _ in
+                self?.handleC133ApplicationDidEnterBackground()
+            }
+        }
+#endif
 
         resizeButton.setTitle("표면 크기 전환 · 301×100 CSS px", for: .normal)
         resizeButton.addTarget(self, action: #selector(toggleSurfaceSize), for: .touchUpInside)
@@ -968,6 +1019,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             equalToConstant: c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
                 ? 360 : c131CompactSurfaceMatrixRouteRequested ? 300
                 : c131BorderStripProbeRequested || c132ScrollFixtureRequested
+                    || c133GestureFixtureRequested
                 ? 400 : fixedSizeCssFixtureRequested ? 320 : 301
         )
         let canvasHeight = canvasView.heightAnchor.constraint(
@@ -1074,6 +1126,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
         if scaleChanged || sizeChanged {
             if sizeChanged {
+#if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
+                if c133GestureFixtureRequested {
+                    cancelC133Gesture(reason: 3, source: "surface-generation-change")
+                }
+#endif
                 stateLock.lock()
                 surfaceGeneration &+= 1
                 let generation = surfaceGeneration
@@ -1709,6 +1766,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
     private func initializeRuntime() {
         guard !isClosing else { return }
+#if !SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
+        if c133GestureFixtureRequested {
+            log("SPINON_C133_DISABLED rebuild with SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST=1")
+            postStatus("C13.3 gesture fixture-test 옵션을 켜서 빌드해야 합니다.")
+            return
+        }
+#endif
         if c131CompactMetalPixelCentersRequested
             && !c131CompactHitIdentityGridProbeRequested {
             log("SPINON_C131_METAL_PIXEL_ARGUMENT_ERROR reason=requires-compact-hit-identity-grid")
@@ -1721,6 +1785,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             c131CompactHitIdentityGridProbeRequested,
             c131BorderStripProbeRequested,
             c132ScrollFixtureRequested,
+            c133GestureFixtureRequested,
         ].filter { $0 }.count
         if selectedC131Routes > 1 {
             log("SPINON_C13_ARGUMENT_ERROR conflicting=multiple-fixture-routes")
@@ -1736,6 +1801,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                    && $0 != "--spinon-c131-compact-metal-pixel-centers"
                    && $0 != "--spinon-c131-overflow-clip-border"
                    && $0 != "--spinon-c132-scroll"
+                   && $0 != "--spinon-c133-scroll-gesture"
                    && $0 != "--spinon-c0410-runtime-gpu"
                    && !(c132ScrollFixtureRequested
                        && $0.hasPrefix("--spinon-c132-metal-surface-pixels="))
@@ -1837,6 +1903,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             postStatus("실패 · C12.4 Metal 표본 case 인수가 올바르지 않습니다")
             return
         }
+#if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
+        let c133GestureHostHandle = c133GestureFixtureRequested
+            ? SpinonRunner.createRuntimeGpuHostWithC13_3GestureFixture() : 0
+#else
+        let c133GestureHostHandle: UInt64 = 0
+#endif
         let handle = c131CompactMetalPixelCentersRequested
             ? SpinonRunner.createRuntimeGpuHostWithC13_1CompactSurfacePixelReadbackFixture()
             : c131CompactSurfaceMatrixRouteRequested
@@ -1847,6 +1919,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? SpinonRunner.createRuntimeGpuHostWithC13_1OverflowClipFixture()
             : c132MetalPixelRun != nil
             ? SpinonRunner.createRuntimeGpuHostWithC13_2SurfacePixelReadbackFixture()
+            : c133GestureFixtureRequested
+            ? c133GestureHostHandle
             : c132ScrollFixtureRequested
             ? SpinonRunner.createRuntimeGpuHostWithC13_2ScrollFixture()
             : c1133GridTemplateAreasProbeRequested
@@ -1913,7 +1987,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let environmentInputs = currentEnvironment()
         let viewportWidth: Float = c131CompactSurfaceMatrixRouteRequested
             ? 300 : c131BorderStripProbeRequested
-            ? 400 : c132ScrollFixtureRequested ? 400 : c131OverflowClipProbeRequested
+            ? 400 : c132ScrollFixtureRequested || c133GestureFixtureRequested ? 400 : c131OverflowClipProbeRequested
             ? 320 : c122AbsoluteBlockProbeRequested
             || c123FixedPositionProbeRequested
             || c1122GridAutoPlacementProbeRequested
@@ -1921,7 +1995,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? 360 : c1131GridRepeatProbeRequested || fixedSizeCssFixtureRequested ? 320 : environmentInputs.width
         let viewportHeight: Float = c131CompactSurfaceMatrixRouteRequested
             ? 100 : c131BorderStripProbeRequested
-            ? 160 : c132ScrollFixtureRequested ? 240 : c131OverflowClipProbeRequested
+            ? 160 : c132ScrollFixtureRequested || c133GestureFixtureRequested ? 240 : c131OverflowClipProbeRequested
             ? 240 : c122AbsoluteBlockProbeRequested
             || c123FixedPositionProbeRequested
             || c1122GridAutoPlacementProbeRequested
@@ -1934,6 +2008,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             handle, width: viewportWidth, height: viewportHeight,
             scale: c123FixedPositionProbeRequested || c1132GridNamedLinesProbeRequested
                 || c1133GridTemplateAreasProbeRequested || c132ScrollFixtureRequested
+                || c133GestureFixtureRequested
                 ? 1 : environmentInputs.scale,
             dark: environmentInputs.dark
         )
@@ -1952,6 +2027,10 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             result = SpinonRunner.evalRuntimeGpuC13_1OverflowClipFixture(handle)
         } else if c132ScrollFixtureRequested {
             result = SpinonRunner.evalRuntimeGpuC13_2ScrollFixture(handle)
+        } else if c133GestureFixtureRequested {
+#if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
+            result = SpinonRunner.evalRuntimeGpuC13_3GestureFixture(handle)
+#endif
         } else if c1133GridTemplateAreasProbeRequested {
             result = SpinonRunner.evalRuntimeGpuC11_3_3GridTemplateAreasFixture(
                 handle, sceneID: c1133GridTemplateAreasSceneID,
@@ -2136,6 +2215,20 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 stateLock.unlock()
                 log("SPINON_C132_METAL_PIXEL_RUNTIME_READY run_id=\(pixelRun.runID) \(runtimeStatusSummary(report))")
             }
+        } else if c133GestureFixtureRequested {
+#if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
+            let report = result ?? "status=-1 missing-report"
+            guard report.hasPrefix("status=0 ")
+                    && report.contains("c13_3_gesture_fixture=ready") else {
+                postStatus("실패 · C13.3 gesture fixture 초기 상태가 준비되지 않았습니다")
+                return
+            }
+            stateLock.lock()
+            c133GestureFixtureReady = true
+            stateLock.unlock()
+            log("SPINON_C133_READY input=UIPanGestureRecognizer native_slop=system \(runtimeStatusSummary(report))")
+            postStatus("준비 · 화면을 위로 밀어 iOS nested scroll gesture를 확인하세요")
+#endif
         } else if c131CompactSurfaceMatrixRouteRequested {
             let report = result ?? "status=-1 missing-report"
             if c131CompactHitIdentityGridProbeRequested {
@@ -3038,6 +3131,271 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
     }
 
+#if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
+    @objc private func handleC133Pan(_ recognizer: UIPanGestureRecognizer) {
+        guard c133GestureFixtureRequested else { return }
+        let started = DispatchTime.now().uptimeNanoseconds
+        switch recognizer.state {
+        case .began:
+            beginC133Pan(recognizer, started: started)
+        case .changed:
+            moveC133Pan(recognizer, started: started)
+        case .ended:
+            endC133Pan(recognizer, started: started)
+        case .cancelled, .failed:
+            cancelC133Gesture(reason: 4, source: "native-recognizer")
+            if c133ActiveTouchIDs.isEmpty {
+                resetC133GestureState(clearSuppression: true)
+            }
+        default:
+            break
+        }
+    }
+
+    private func beginC133Pan(_ recognizer: UIPanGestureRecognizer, started: UInt64) {
+        if c133SuppressUntilAllPointersUp { return }
+        stateLock.lock()
+        let ready = c133GestureFixtureReady && !closing && hostHandle != 0
+        let generation = surfaceGeneration
+        let widthCss = viewportWidthCssPx
+        let heightCss = viewportHeightCssPx
+        let drawable = c111MetalDrawableSize
+        stateLock.unlock()
+        guard ready, canvasView.bounds.width > 0, canvasView.bounds.height > 0,
+              widthCss > 0, heightCss > 0, drawable.width > 0, drawable.height > 0 else {
+            log("SPINON_C133_TOUCH_REJECT reason=surface-not-ready")
+            return
+        }
+
+        let cssPerPointX = CGFloat(widthCss) / canvasView.bounds.width
+        let cssPerPointY = CGFloat(heightCss) / canvasView.bounds.height
+        let scaleX = Float(drawable.width / CGFloat(widthCss))
+        let scaleY = Float(drawable.height / CGFloat(heightCss))
+        guard scaleX.isFinite, scaleY.isFinite, scaleX > 0, scaleY > 0,
+              abs(scaleX - scaleY) <= 0.01,
+              abs(cssPerPointX - cssPerPointY) <= 0.01 else {
+            log("SPINON_C133_TOUCH_REJECT reason=nonuniform-surface-scale scale_x=\(scaleX) scale_y=\(scaleY)")
+            return
+        }
+
+        let current = recognizer.location(in: canvasView)
+        let translation = recognizer.translation(in: canvasView)
+        let origin = CGPoint(x: current.x - translation.x, y: current.y - translation.y)
+        let originCss = CGPoint(x: origin.x * cssPerPointX, y: origin.y * cssPerPointY)
+        let cumulativeCss = CGPoint(
+            x: translation.x * cssPerPointX,
+            y: translation.y * cssPerPointY
+        )
+        c133NextGestureID &+= 1
+        if c133NextGestureID == 0 { c133NextGestureID = 1 }
+        c133GestureID = c133NextGestureID
+        c133PointerID = c133GestureID
+        c133GestureSurfaceGeneration = generation
+        c133CoordinateScale = scaleX
+        c133LastCumulativeCss = .zero
+        c133TerminalQueued = false
+
+        let beginReport = enqueueC133Gesture(
+            action: 0,
+            x: Float(originCss.x),
+            y: Float(originCss.y),
+            reason: 0
+        )
+        guard beginReport.hasPrefix("status=0 ") else {
+            log("SPINON_C133_TOUCH_BEGIN_REJECTED \(beginReport)")
+            return
+        }
+        c133TouchActive = true
+        let panReport = enqueueC133Gesture(
+            action: 1,
+            x: Float(cumulativeCss.x),
+            y: Float(cumulativeCss.y),
+            reason: 0
+        )
+        if !panReport.hasPrefix("status=0 ") {
+            log("SPINON_C133_TOUCH_PAN_BEGIN_REJECTED \(panReport)")
+            cancelC133Gesture(reason: 2, source: "pan-begin-rejected")
+            return
+        }
+        c133LastCumulativeCss = cumulativeCss
+        if panReport.contains("GestureCancelledForCapacity") {
+            c133TerminalQueued = true
+            c133SuppressUntilAllPointersUp = true
+        }
+        scheduleC133Drain()
+        logC133Callback(
+            "pan-began",
+            recognizer: recognizer,
+            cumulative: cumulativeCss,
+            report: "begin={\(beginReport)} pan={\(panReport)}",
+            started: started
+        )
+    }
+
+    private func moveC133Pan(_ recognizer: UIPanGestureRecognizer, started: UInt64) {
+        if c133SuppressUntilAllPointersUp {
+            logC133Callback("suppressed-move", recognizer: recognizer,
+                            cumulative: .zero, report: "accepted=false", started: started)
+            return
+        }
+        guard c133TouchActive, !c133TerminalQueued else { return }
+        let translation = recognizer.translation(in: canvasView)
+        let widthCss = CGFloat(viewportWidthCssPx)
+        let heightCss = CGFloat(viewportHeightCssPx)
+        guard canvasView.bounds.width > 0, canvasView.bounds.height > 0 else {
+            cancelC133Gesture(reason: 3, source: "empty-surface")
+            return
+        }
+        let cumulative = CGPoint(
+            x: translation.x * widthCss / canvasView.bounds.width,
+            y: translation.y * heightCss / canvasView.bounds.height
+        )
+        let report = enqueueC133Gesture(
+            action: 2,
+            x: Float(cumulative.x),
+            y: Float(cumulative.y),
+            reason: 0
+        )
+        if report.hasPrefix("status=0 ") {
+            c133LastCumulativeCss = cumulative
+            if report.contains("GestureCancelledForCapacity") {
+                c133TerminalQueued = true
+                c133SuppressUntilAllPointersUp = true
+            }
+            scheduleC133Drain()
+        } else {
+            cancelC133Gesture(reason: 2, source: "move-rejected")
+        }
+        logC133Callback("move", recognizer: recognizer,
+                        cumulative: cumulative, report: report, started: started)
+    }
+
+    private func endC133Pan(_ recognizer: UIPanGestureRecognizer, started: UInt64) {
+        guard c133TouchActive, !c133TerminalQueued else {
+            if c133ActiveTouchIDs.isEmpty {
+                resetC133GestureState(clearSuppression: true)
+            }
+            return
+        }
+        let report = enqueueC133Gesture(action: 3, x: 0, y: 0, reason: 0)
+        c133TerminalQueued = report.hasPrefix("status=0 ")
+        if c133TerminalQueued { scheduleC133Drain() }
+        logC133Callback("up", recognizer: recognizer,
+                        cumulative: c133LastCumulativeCss, report: report, started: started)
+        c133TouchActive = false
+        if c133ActiveTouchIDs.isEmpty {
+            resetC133GestureState(clearSuppression: true)
+        }
+    }
+
+    private func handleC133ActiveTouchCountChanged(_ count: Int) {
+        guard c133GestureFixtureRequested else { return }
+        if count > 1 {
+            c133SuppressUntilAllPointersUp = true
+            cancelC133Gesture(reason: 1, source: "second-pointer")
+            log("SPINON_C133_TOUCH second-pointer active_contacts=\(count) suppressed=true")
+        } else if count == 0, c133SuppressUntilAllPointersUp {
+            resetC133GestureState(clearSuppression: true)
+        }
+    }
+
+    private func handleC133ApplicationDidEnterBackground() {
+        cancelC133Gesture(reason: 3, source: "application-background")
+        c133ActiveTouchIDs.removeAll()
+        resetC133GestureState(clearSuppression: true)
+    }
+
+    private func cancelC133Gesture(reason: Int, source: String) {
+        guard c133TouchActive, !c133TerminalQueued else { return }
+        let report = enqueueC133Gesture(action: 4, x: 0, y: 0, reason: reason)
+        c133TerminalQueued = report.hasPrefix("status=0 ")
+        if c133TerminalQueued { scheduleC133Drain() }
+        log("SPINON_C133_TOUCH_CANCEL source=\(source) generation=\(c133GestureSurfaceGeneration) \(report)")
+    }
+
+    private func resetC133GestureState(clearSuppression: Bool) {
+        c133TouchActive = false
+        c133TerminalQueued = false
+        c133GestureID = 0
+        c133PointerID = 0
+        c133LastCumulativeCss = .zero
+        if clearSuppression { c133SuppressUntilAllPointersUp = false }
+    }
+
+    private func enqueueC133Gesture(action: Int, x: Float, y: Float, reason: Int) -> String {
+        let handle = hostLifetime.load()
+        guard handle != 0 else { return "status=-1 C13.3 host is closing" }
+        return SpinonRunner.enqueueRuntimeGpuC13_3Gesture(
+            handle,
+            action: Int32(action),
+            surfaceGeneration: c133GestureSurfaceGeneration,
+            gestureID: c133GestureID,
+            pointerID: c133PointerID,
+            pointXCssPx: x,
+            pointYCssPx: y,
+            coordinateScale: c133CoordinateScale,
+            reason: Int32(reason)
+        ) ?? "status=-1 empty enqueue report"
+    }
+
+    private func scheduleC133Drain() {
+        stateLock.lock()
+        guard !closing, hostHandle != 0 else {
+            stateLock.unlock()
+            return
+        }
+        c133DrainAgain = true
+        guard !c133DrainScheduled else {
+            stateLock.unlock()
+            return
+        }
+        c133DrainScheduled = true
+        stateLock.unlock()
+
+        runtimeQueue.async { [weak self] in
+            guard let self else { return }
+            while true {
+                self.stateLock.lock()
+                guard !self.closing, self.hostHandle != 0 else {
+                    self.c133DrainScheduled = false
+                    self.stateLock.unlock()
+                    return
+                }
+                self.c133DrainAgain = false
+                let handle = self.hostHandle
+                self.stateLock.unlock()
+
+                let report = SpinonRunner.processRuntimeGpuC13_3GestureQueue(handle)
+                    ?? "status=-1 empty queue report"
+                self.log("SPINON_C133_PROCESS \(report)")
+                if report.hasPrefix("status=0 ") {
+                    self.requestDraw()
+                } else {
+                    self.postStatus("실패 · C13.3 gesture queue · \(report)")
+                }
+
+                self.stateLock.lock()
+                let shouldDrainAgain = self.c133DrainAgain
+                if !shouldDrainAgain { self.c133DrainScheduled = false }
+                self.stateLock.unlock()
+                if !shouldDrainAgain { return }
+            }
+        }
+    }
+
+    private func logC133Callback(
+        _ action: String,
+        recognizer: UIPanGestureRecognizer,
+        cumulative: CGPoint,
+        report: String,
+        started: UInt64
+    ) {
+        let elapsed = (DispatchTime.now().uptimeNanoseconds - started) / 1_000
+        let location = recognizer.location(in: canvasView)
+        log("SPINON_C133_TOUCH source=UIPanGestureRecognizer action=\(action) pointer_id=\(c133PointerID) point=\(location.x),\(location.y) cumulative_css_px=\(cumulative.x),\(cumulative.y) coordinate_scale=\(c133CoordinateScale) native_slop=system callback_us=\(elapsed) waits_for_worker=false \(report)")
+    }
+#endif
+
     private func failC131MetalPixelCapture(
         stage: String,
         error: Error
@@ -3742,7 +4100,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         defer { presentationUpdateLock.unlock() }
         stateLock.lock()
         guard !closing, hostHandle != 0,
-              !(c131CompactSurfaceMatrixRouteRequested || c132ScrollFixtureRequested)
+            !(c131CompactSurfaceMatrixRouteRequested || c132ScrollFixtureRequested
+                || c133GestureFixtureRequested)
                   || runtimeInitializationComplete else {
             stateLock.unlock()
             return 0
@@ -3780,6 +4139,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     }
 
     private func beginShutdown() {
+#if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
+        cancelC133Gesture(reason: 3, source: "view-disappear")
+        if let observer = c133BackgroundObserver {
+            NotificationCenter.default.removeObserver(observer)
+            c133BackgroundObserver = nil
+        }
+#endif
         stateLock.lock()
         guard !closing else {
             stateLock.unlock()
@@ -3858,5 +4224,30 @@ private final class C0410RuntimeGpuHostLifetime {
 }
 
 private final class C0410RuntimeGpuCanvasView: UIView {
+#if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
+    var onActiveTouchCountChanged: ((Int) -> Void)?
+    private var activeTouchIDs = Set<ObjectIdentifier>()
+#endif
+
     override class var layerClass: AnyClass { CAMetalLayer.self }
+
+#if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        for touch in touches { activeTouchIDs.insert(ObjectIdentifier(touch)) }
+        onActiveTouchCountChanged?(activeTouchIDs.count)
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        for touch in touches { activeTouchIDs.remove(ObjectIdentifier(touch)) }
+        onActiveTouchCountChanged?(activeTouchIDs.count)
+    }
+
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+        for touch in touches { activeTouchIDs.remove(ObjectIdentifier(touch)) }
+        onActiveTouchCountChanged?(activeTouchIDs.count)
+    }
+#endif
 }

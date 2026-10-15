@@ -11,9 +11,13 @@ import android.os.Looper;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.InputDevice;
+import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
+import android.view.ViewConfiguration;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -37,6 +41,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Callback {
     private static final String TAG = "SpinonBootstrap";
@@ -247,6 +252,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native long nativeCreateC131CompactSurfaceMatrixHost();
     private static native long nativeCreateC131OverflowClipBorderHost();
     private static native long nativeCreateC132ScrollHost();
+    private static native long nativeCreateC133GestureHost();
     private static native long nativeCreateC11GridHost();
     private static native long nativeCreateC1121GridPlacementHost();
     private static native long nativeCreateC1122GridAutoPlacementHost();
@@ -284,6 +290,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native byte[] nativeEvalC131CompactSurfaceMatrixFixture(long host);
     private static native byte[] nativeEvalC131OverflowClipBorderFixture(long host);
     private static native byte[] nativeEvalC132ScrollFixture(long host);
+    private static native byte[] nativeEvalC133GestureFixture(long host);
+    private static native byte[] nativeEnqueueC133Gesture(
+            long host, int action, long surfaceGeneration, long gestureId, long pointerId,
+            float xOrCumulativeXCssPx, float yOrCumulativeYCssPx,
+            float coordinateScale, int reason);
+    private static native byte[] nativeProcessC133GestureQueue(long host);
     private static native byte[] nativeEvalC11GridFixture(long host);
     private static native byte[] nativeEvalC11GridSceneFixture(long host, int sceneIndex);
     private static native byte[] nativeEvalC1121GridPlacementFixture(
@@ -426,6 +438,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean c131BorderStripProbeRequested;
     private final boolean c132ScrollFixtureRequested;
     private final String c132SurfacePixelRunId;
+    private final boolean c133GestureFixtureRequested;
+    private final int c133WorkerDelayMillis;
+    private final boolean c133SyntheticSecondPointerProbeRequested;
     private final boolean c124DepthSafetyProbeRequested;
     private final boolean c124SurfaceCaptureProbeRequested;
     private final String c124SurfaceCaseRequested;
@@ -467,6 +482,24 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private boolean c131BorderStripSurfaceCaptureStarted;
     private boolean c132SurfacePixelCaptureStarted;
     private volatile boolean c132ScrollAssertionsPassed;
+    private volatile boolean c133GestureFixtureReady;
+    private final AtomicBoolean c133DrainScheduled = new AtomicBoolean();
+    private final AtomicBoolean c133DrainAgain = new AtomicBoolean();
+    private final int c133TouchSlopPx;
+    private long c133NextGestureId;
+    private long c133GestureId;
+    private long c133GestureSurfaceGeneration;
+    private int c133ActivePointerId = MotionEvent.INVALID_POINTER_ID;
+    private float c133DownXPhysicalPx;
+    private float c133DownYPhysicalPx;
+    private float c133CoordinateScale;
+    private float c133LastCumulativeXCssPx;
+    private float c133LastCumulativeYCssPx;
+    private boolean c133TouchActive;
+    private boolean c133PanStarted;
+    private boolean c133TerminalQueued;
+    private boolean c133SuppressUntilAllPointersUp;
+    private boolean c133WorkerDelayUsed;
     private boolean c11GridSurfaceCaptureStarted;
     private List<C124SurfacePixelCapture.Sample> c124SurfaceSamples = List.of();
     private int c124SurfaceOriginXCssPx;
@@ -554,6 +587,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     ? Long.toHexString(SystemClock.elapsedRealtimeNanos())
                     : requestedC132RunId
                 : "";
+        c133GestureFixtureRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c133_gesture_fixture", false);
+        c133WorkerDelayMillis = activity.getIntent()
+                .getIntExtra("spinon_c133_worker_delay_ms", 0);
+        c133SyntheticSecondPointerProbeRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c133_synthetic_second_pointer", false);
+        c133TouchSlopPx = ViewConfiguration.get(activity).getScaledTouchSlop();
         c124DepthSafetyProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c124_depth_safety", false);
         c124SurfaceCaseRequested = activity.getIntent()
@@ -731,6 +771,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || c131CompactSurfaceMatrixProbeRequested
                 || c131BorderStripProbeRequested
                 || c132ScrollFixtureRequested
+                || c133GestureFixtureRequested
                 || c123FixedPositionProbeRequested
                 || c11GridFixtureRequested
                 || c124StackingProbeRequested
@@ -785,6 +826,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "SPINON · C11.2.1 Grid"
                 : c132ScrollFixtureRequested
                 ? "SPINON · C13.2 scroll state"
+                : c133GestureFixtureRequested
+                ? "SPINON · C13.3 Android touch adapter"
                 : c131BorderStripProbeRequested
                 ? "SPINON · C13.1 paint/hit border"
                 : c131OverflowClipProbeRequested
@@ -858,6 +901,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "13개 overflow clip case · 30,000 hit identity + 52 PixelCopy 표본 · WGPU · 300×100 CSS px"
                 : c132ScrollFixtureRequested
                 ? "V8 scroll owner·offset·paint/hit → WGPU · 5 PixelCopy 표본 · 400×240 CSS px"
+                : c133GestureFixtureRequested
+                ? "MotionEvent · native touch slop · bounded Rust queue/session → WGPU · 400×240 CSS px"
                 : c131BorderStripProbeRequested
                 ? "static/absolute clip border-strip oracle → WGPU · 400×160 CSS px"
                 : c131OverflowClipProbeRequested
@@ -947,12 +992,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
         surfaceView = new SurfaceView(activity);
         surfaceView.getHolder().addCallback(this);
+        if (c133GestureFixtureRequested) {
+            surfaceView.setClickable(true);
+            surfaceView.setOnTouchListener((view, event) -> handleC133GestureTouch(event));
+        }
         surfaceView.setContentDescription(c131CompactSurfaceMatrixProbeRequested
                 ? "C13.1 compact 13-case overflow Chrome oracle WGPU surface"
                 : c131BorderStripProbeRequested
                 ? "C13.1 paint/hit border-strip Chrome oracle WGPU 장면"
                 : c132ScrollFixtureRequested
                 ? "C13.2 scroll owner·offset·paint/hit WGPU 장면"
+                : c133GestureFixtureRequested
+                ? "C13.3 실제 Android MotionEvent nested scroll gesture fixture"
                 : c1123GridAutoPlacementRequested
                 ? "C11.2.3 dense·column Grid 자동 배치 결과"
                 : c1122GridAutoPlacementRequested
@@ -1017,6 +1068,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         int initialSurfaceWidth = c131CompactSurfaceMatrixProbeRequested ? 300
                 : c131BorderStripProbeRequested ? 400
                 : c132ScrollFixtureRequested ? 400
+                : c133GestureFixtureRequested ? 400
                 : fixedSizeCssFixtureRequested ? 320 : 301;
         int initialSurfaceHeight = c131CompactSurfaceMatrixProbeRequested ? 100
                 : c131BorderStripProbeRequested ? 160 : fixedSizeCssFixtureRequested ? 240 : 100;
@@ -1099,7 +1151,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 error -> reportLaneFailure("render", error));
         if (!c121PositioningProbeRequested && !c122AbsoluteBlockProbeRequested
                 && !c123FixedPositionProbeRequested && !c124StackingProbeRequested
-                && !c1133GridTemplateAreasRequested && !c132ScrollFixtureRequested) {
+                && !c1133GridTemplateAreasRequested && !c132ScrollFixtureRequested
+                && !c133GestureFixtureRequested) {
             enqueueRuntime(this::initializeRuntime);
         }
     }
@@ -1137,7 +1190,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         int selectedRoutes = (c131OverflowClipProbeRequested ? 1 : 0)
                 + (c131CompactSurfaceMatrixProbeRequested ? 1 : 0)
                 + (c131BorderStripProbeRequested ? 1 : 0)
-                + (c132ScrollFixtureRequested ? 1 : 0);
+                + (c132ScrollFixtureRequested ? 1 : 0)
+                + (c133GestureFixtureRequested ? 1 : 0);
         if (selectedRoutes > 1) {
             Log.e(TAG, "SPINON_C13_ARGUMENT_ERROR conflicting=multiple-fixture-routes");
             postStatus("실패 · C13 route를 하나만 선택해야 합니다");
@@ -1145,7 +1199,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         if (selectedRoutes == 0) return true;
 
-        String selectedExtra = c132ScrollFixtureRequested
+        String selectedExtra = c133GestureFixtureRequested
+                ? "spinon_c133_gesture_fixture"
+                : c132ScrollFixtureRequested
                 ? "spinon_c132_scroll_fixture"
                 : c131CompactSurfaceMatrixProbeRequested
                 ? "spinon_c131_compact_surface_matrix"
@@ -1157,13 +1213,21 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             postStatus("실패 · C13.2 surface pixel run ID가 올바르지 않습니다");
             return false;
         }
+        if (c133WorkerDelayMillis < 0 || c133WorkerDelayMillis > 3000) {
+            Log.e(TAG, "SPINON_C133_ARGUMENT_ERROR rejected=true reason=invalid-worker-delay");
+            postStatus("실패 · C13.3 worker 지연 값은 0~3000ms여야 합니다");
+            return false;
+        }
         Bundle extras = activity.getIntent().getExtras();
         if (extras == null) return true;
         for (String key : extras.keySet()) {
             if (!key.startsWith("spinon_c") || key.equals(selectedExtra)
                     || key.equals("spinon_c0410_runtime_gpu")
                     || (c132ScrollFixtureRequested
-                            && key.equals("spinon_c132_surface_pixel_run_id"))) {
+                            && key.equals("spinon_c132_surface_pixel_run_id"))
+                    || (c133GestureFixtureRequested
+                            && (key.equals("spinon_c133_worker_delay_ms")
+                                    || key.equals("spinon_c133_synthetic_second_pointer")))) {
                 continue;
             }
             Object value = extras.get(key);
@@ -1205,6 +1269,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? nativeCreateC1121GridPlacementHost()
                 : c11GridFixtureRequested
                 ? nativeCreateC11GridHost()
+                : c133GestureFixtureRequested
+                ? nativeCreateC133GestureHost()
                 : c132ScrollFixtureRequested
                 ? nativeCreateC132ScrollHost()
                 : c131CompactSurfaceMatrixProbeRequested
@@ -1240,7 +1306,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         synchronized (stateLock) {
             widthCssPx = c131CompactSurfaceMatrixProbeRequested ? 300
                     : c131BorderStripProbeRequested ? 400
-                    : c132ScrollFixtureRequested ? 400
+                    : c132ScrollFixtureRequested || c133GestureFixtureRequested ? 400
                     : c1133GridTemplateAreasRequested
                     || c1132GridNamedLinesRequested || c1131GridRepeatRequested ? 320
                     : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
@@ -1248,7 +1314,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     ? 360 : fixedSizeCssFixtureRequested ? 320 : cssViewportWidthLocked();
             heightCssPx = c131CompactSurfaceMatrixProbeRequested ? 100
                     : c131BorderStripProbeRequested ? 160
-                    : c132ScrollFixtureRequested ? 240
+                    : c132ScrollFixtureRequested || c133GestureFixtureRequested ? 240
                     : c1133GridTemplateAreasRequested
                     || c1132GridNamedLinesRequested || c1131GridRepeatRequested ? 240
                     : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
@@ -1302,6 +1368,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         host, c1121GridSceneId, c1121GridRunId))
                 : c11GridFixtureRequested
                 ? decode(nativeEvalC11GridSceneFixture(host, c11GridSceneIndex))
+                : c133GestureFixtureRequested
+                ? decode(nativeEvalC133GestureFixture(host))
                 : c132ScrollFixtureRequested
                 ? decode(nativeEvalC132ScrollFixture(host))
                 : c131CompactSurfaceMatrixProbeRequested
@@ -1566,6 +1634,24 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     + " stale_publish=rejected recovery=same_host");
             c132ScrollAssertionsPassed = true;
         }
+        if (c133GestureFixtureRequested) {
+            c133GestureFixtureReady = result.contains("c13_3_gesture_fixture=ready")
+                    && result.contains("viewport_css_px=400x240")
+                    && result.contains("owners=root:")
+                    && result.contains("input_queue_capacity=64");
+            if (!c133GestureFixtureReady) {
+                postStatus("실패 · C13.3 입력 장면·owner 초기화 결과가 불일치합니다");
+                Log.e(TAG, "SPINON_C133_READY_ASSERTIONS failed=true " + result);
+                return;
+            }
+            postStatus("준비 · 화면을 위로 밀어 C13.3 실제 Android 입력을 확인하세요");
+            Log.i(TAG, "SPINON_C133_READY input=MotionEvent native_slop_px="
+                    + c133TouchSlopPx + " worker_delay_ms=" + c133WorkerDelayMillis
+                    + " " + result);
+            if (c133SyntheticSecondPointerProbeRequested) {
+                surfaceView.post(this::runC133SyntheticSecondPointerProbe);
+            }
+        }
         if (c131CompactSurfaceMatrixProbeRequested
                 && !logC131CompactSurfaceMatrixFixtureReport(result)) {
             postStatus("실패 · C13.1 compact frame·hit-test 결과 불일치");
@@ -1583,7 +1669,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 return;
             }
         }
-        Log.i(TAG, (c132ScrollFixtureRequested
+        Log.i(TAG, (c133GestureFixtureRequested
+                ? "SPINON_C133_EVAL " : c132ScrollFixtureRequested
                 ? "SPINON_C132_SCROLL_EVAL " : c131CompactSurfaceMatrixProbeRequested
                 ? "SPINON_C131_COMPACT_EVAL_RUN run_id=" + c131CompactSurfaceMatrixRunId + " "
                 : c131BorderStripProbeRequested
@@ -3095,7 +3182,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private void scheduleRuntimeInitializationForReadySurface() {
         if (!c121PositioningProbeRequested && !c122AbsoluteBlockProbeRequested
                 && !c123FixedPositionProbeRequested && !c124StackingProbeRequested
-                && !c1133GridTemplateAreasRequested && !c132ScrollFixtureRequested) return;
+                && !c1133GridTemplateAreasRequested && !c132ScrollFixtureRequested
+                && !c133GestureFixtureRequested) return;
         synchronized (stateLock) {
             if (closing || hostHandle != 0 || runtimeInitializationQueued
                     || !surfaceAvailable || surfaceWidth <= 0 || surfaceHeight <= 0) {
@@ -3604,7 +3692,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private float cssViewportWidthLocked() {
         if (c131CompactSurfaceMatrixProbeRequested) return 300.0f;
         if (c131BorderStripProbeRequested) return 400.0f;
-        if (c132ScrollFixtureRequested) return 400.0f;
+        if (c132ScrollFixtureRequested || c133GestureFixtureRequested) return 400.0f;
         if (fixedSizeCssFixtureRequested) return 320.0f;
         return surfaceWidth > 0 ? (float) surfaceWidth / density : 301.0f;
     }
@@ -3612,6 +3700,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private float cssViewportHeightLocked() {
         if (c131CompactSurfaceMatrixProbeRequested) return 100.0f;
         if (c131BorderStripProbeRequested) return 160.0f;
+        if (c132ScrollFixtureRequested || c133GestureFixtureRequested) return 240.0f;
         if (fixedSizeCssFixtureRequested) return 240.0f;
         return surfaceHeight > 0 ? (float) surfaceHeight / density : 100.0f;
     }
@@ -3888,6 +3977,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         synchronized (stateLock) {
             if (closing) return;
         }
+        if (c133GestureFixtureRequested) {
+            cancelC133Gesture(3, "activity-destroy");
+            resetC133TouchState(true);
+        }
         beginPresentationUpdate();
         synchronized (stateLock) {
             if (closing) return;
@@ -3951,6 +4044,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             Log.w(TAG, "SPINON_C0410_SURFACE_CHANGED_IGNORED size=" + width + "x" + height);
             return;
         }
+        if (c133GestureFixtureRequested) {
+            cancelC133Gesture(3, "surface-generation-change");
+            resetC133TouchState(true);
+        }
         final long generation;
         final boolean changed;
         synchronized (stateLock) {
@@ -3976,6 +4073,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
+        if (c133GestureFixtureRequested) {
+            cancelC133Gesture(3, "surface-destroy");
+            resetC133TouchState(true);
+        }
         final long generation;
         final CountDownLatch renderQueueDrained = new CountDownLatch(1);
         synchronized (stateLock) {
@@ -4001,6 +4102,285 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 SystemClock.elapsedRealtimeNanos() - waitStarted);
         Log.i(TAG, "SPINON_C0410_SURFACE_DESTROYED_DRAINED generation=" + generation
                 + " wait_ms=" + waitMillis);
+    }
+
+    void onHostPaused() {
+        if (c133GestureFixtureRequested) {
+            cancelC133Gesture(3, "activity-background");
+            resetC133TouchState(true);
+        }
+    }
+
+    private boolean handleC133GestureTouch(MotionEvent event) {
+        if (!c133GestureFixtureRequested) return false;
+        if (event.getPointerCount() > 0
+                && event.getToolType(0) != MotionEvent.TOOL_TYPE_FINGER) return false;
+        long callbackStarted = SystemClock.elapsedRealtimeNanos();
+        int action = event.getActionMasked();
+        switch (action) {
+            case MotionEvent.ACTION_DOWN: {
+                if (!c133GestureFixtureReady || c133SuppressUntilAllPointersUp) return true;
+                synchronized (stateLock) {
+                    if (closing || hostHandle == 0 || surfaceWidth <= 0 || surfaceHeight <= 0) {
+                        return false;
+                    }
+                    c133GestureSurfaceGeneration = surfaceGeneration;
+                    c133CoordinateScale = (float) surfaceWidth / 400.0f;
+                    float scaleY = (float) surfaceHeight / 240.0f;
+                    if (!Float.isFinite(c133CoordinateScale) || c133CoordinateScale <= 0.0f
+                            || Math.abs(c133CoordinateScale - scaleY) > 0.01f) {
+                        Log.e(TAG, "SPINON_C133_TOUCH_REJECT reason=nonuniform-surface-scale"
+                                + " scale_x=" + c133CoordinateScale + " scale_y=" + scaleY);
+                        return false;
+                    }
+                }
+                c133GestureId = ++c133NextGestureId;
+                if (c133GestureId == 0) c133GestureId = ++c133NextGestureId;
+                c133ActivePointerId = event.getPointerId(0);
+                c133DownXPhysicalPx = event.getX(0);
+                c133DownYPhysicalPx = event.getY(0);
+                c133LastCumulativeXCssPx = 0.0f;
+                c133LastCumulativeYCssPx = 0.0f;
+                c133PanStarted = false;
+                c133TerminalQueued = false;
+                String result = enqueueC133Gesture(0,
+                        c133DownXPhysicalPx / c133CoordinateScale,
+                        c133DownYPhysicalPx / c133CoordinateScale, 0);
+                c133TouchActive = result.startsWith("status=0 ");
+                if (!c133TouchActive) {
+                    Log.e(TAG, "SPINON_C133_TOUCH_BEGIN_REJECTED " + result);
+                    return true;
+                }
+                scheduleC133Drain();
+                logC133Callback("down", event, 0.0f, 0.0f, 0.0f, 0.0f,
+                        result, callbackStarted);
+                return true;
+            }
+            case MotionEvent.ACTION_POINTER_DOWN:
+                if (c133TouchActive && !c133TerminalQueued) {
+                    cancelC133Gesture(1, "second-pointer");
+                    c133SuppressUntilAllPointersUp = true;
+                }
+                logC133Callback("second-pointer", event, 0.0f, 0.0f, 0.0f, 0.0f,
+                        "cancelled=true", callbackStarted);
+                return true;
+            case MotionEvent.ACTION_MOVE: {
+                if (c133SuppressUntilAllPointersUp) {
+                    logC133Callback("suppressed-move", event, 0.0f, 0.0f, 0.0f, 0.0f,
+                            "accepted=false", callbackStarted);
+                    return true;
+                }
+                if (!c133TouchActive || c133TerminalQueued) return true;
+                int pointerIndex = event.findPointerIndex(c133ActivePointerId);
+                if (pointerIndex < 0) {
+                    cancelC133Gesture(4, "active-pointer-missing");
+                    c133SuppressUntilAllPointersUp = true;
+                    return true;
+                }
+                float rawX = event.getX(pointerIndex) - c133DownXPhysicalPx;
+                float rawY = event.getY(pointerIndex) - c133DownYPhysicalPx;
+                float cumulativeX = rawX / c133CoordinateScale;
+                float cumulativeY = rawY / c133CoordinateScale;
+                float deltaX = cumulativeX - c133LastCumulativeXCssPx;
+                float deltaY = cumulativeY - c133LastCumulativeYCssPx;
+                if (!c133PanStarted && Math.hypot(rawX, rawY) < c133TouchSlopPx) {
+                    logC133Callback("below-slop", event, cumulativeX, cumulativeY,
+                            deltaX, deltaY, "accepted=false", callbackStarted);
+                    return true;
+                }
+                boolean began = !c133PanStarted;
+                String result = enqueueC133Gesture(began ? 1 : 2,
+                        cumulativeX, cumulativeY, 0);
+                if (result.startsWith("status=0 ")) {
+                    c133PanStarted = true;
+                    c133LastCumulativeXCssPx = cumulativeX;
+                    c133LastCumulativeYCssPx = cumulativeY;
+                    if (result.contains("GestureCancelledForCapacity")) {
+                        c133TerminalQueued = true;
+                        c133SuppressUntilAllPointersUp = true;
+                    }
+                    scheduleC133Drain();
+                } else {
+                    Log.e(TAG, "SPINON_C133_TOUCH_MOTION_REJECTED " + result);
+                }
+                logC133Callback(began ? "pan-began" : "move", event,
+                        cumulativeX, cumulativeY, deltaX, deltaY, result, callbackStarted);
+                return true;
+            }
+            case MotionEvent.ACTION_POINTER_UP:
+                if (c133SuppressUntilAllPointersUp) return true;
+                return c133TouchActive;
+            case MotionEvent.ACTION_UP:
+                if (c133TouchActive && !c133TerminalQueued) {
+                    String result = enqueueC133Gesture(3, 0.0f, 0.0f, 0);
+                    c133TerminalQueued = result.startsWith("status=0 ");
+                    if (c133TerminalQueued) scheduleC133Drain();
+                    logC133Callback("up", event, c133LastCumulativeXCssPx,
+                            c133LastCumulativeYCssPx, 0.0f, 0.0f, result, callbackStarted);
+                }
+                resetC133TouchState(true);
+                return true;
+            case MotionEvent.ACTION_CANCEL:
+                cancelC133Gesture(0, "motion-event-cancel");
+                resetC133TouchState(true);
+                return true;
+            default:
+                return c133TouchActive || c133SuppressUntilAllPointersUp;
+        }
+    }
+
+    private String enqueueC133Gesture(int action, float xOrCumulativeX,
+            float yOrCumulativeY, int reason) {
+        final long host;
+        synchronized (stateLock) {
+            if (closing || hostHandle == 0) return "status=-1 C13.3 host is closing";
+            host = hostHandle;
+        }
+        return decode(nativeEnqueueC133Gesture(host, action, c133GestureSurfaceGeneration,
+                c133GestureId, Integer.toUnsignedLong(c133ActivePointerId),
+                xOrCumulativeX, yOrCumulativeY, c133CoordinateScale, reason));
+    }
+
+    private void cancelC133Gesture(int reason, String source) {
+        if (!c133TouchActive || c133TerminalQueued) return;
+        String result = enqueueC133Gesture(4, 0.0f, 0.0f, reason);
+        c133TerminalQueued = result.startsWith("status=0 ");
+        if (c133TerminalQueued) scheduleC133Drain();
+        Log.i(TAG, "SPINON_C133_TOUCH_CANCEL source=" + source
+                + " generation=" + c133GestureSurfaceGeneration + " " + result);
+    }
+
+    private void resetC133TouchState(boolean clearSuppression) {
+        c133TouchActive = false;
+        c133PanStarted = false;
+        c133TerminalQueued = false;
+        c133ActivePointerId = MotionEvent.INVALID_POINTER_ID;
+        if (clearSuppression) c133SuppressUntilAllPointersUp = false;
+    }
+
+    private void logC133Callback(String action, MotionEvent event, float cumulativeX,
+            float cumulativeY, float deltaX, float deltaY, String result, long started) {
+        long callbackMicros = (SystemClock.elapsedRealtimeNanos() - started) / 1000;
+        Log.i(TAG, "SPINON_C133_TOUCH source=MotionEvent action=" + action
+                + " event_action=" + event.getActionMasked()
+                + " pointer_id=" + c133ActivePointerId
+                + " raw_physical_px=" + event.getX() + "," + event.getY()
+                + " cumulative_css_px=" + cumulativeX + "," + cumulativeY
+                + " delta_css_px=" + deltaX + "," + deltaY
+                + " scale=" + c133CoordinateScale
+                + " slop_source=ViewConfiguration.scaledTouchSlop slop_px=" + c133TouchSlopPx
+                + " generation=" + c133GestureSurfaceGeneration
+                + " callback_us=" + callbackMicros + " waits_for_worker=false " + result);
+    }
+
+    private void runC133SyntheticSecondPointerProbe() {
+        if (!c133GestureFixtureReady || closing) return;
+        final float scale;
+        synchronized (stateLock) {
+            if (surfaceWidth <= 0 || surfaceHeight <= 0) return;
+            scale = (float) surfaceWidth / 400.0f;
+        }
+        float x = 148.0f * scale;
+        float y = 132.0f * scale;
+        long downTime = SystemClock.uptimeMillis();
+        dispatchC133SyntheticSingle(downTime, MotionEvent.ACTION_DOWN, x, y);
+        dispatchC133SyntheticSingle(downTime, MotionEvent.ACTION_MOVE, x, y - 30.0f);
+
+        MotionEvent.PointerProperties first = new MotionEvent.PointerProperties();
+        first.id = 0;
+        first.toolType = MotionEvent.TOOL_TYPE_FINGER;
+        MotionEvent.PointerProperties second = new MotionEvent.PointerProperties();
+        second.id = 1;
+        second.toolType = MotionEvent.TOOL_TYPE_FINGER;
+        MotionEvent.PointerCoords firstCoords = c133SyntheticPointerCoords(x, y - 30.0f);
+        MotionEvent.PointerCoords secondCoords = c133SyntheticPointerCoords(x + 24.0f, y - 30.0f);
+        MotionEvent.PointerProperties[] properties = {first, second};
+        MotionEvent.PointerCoords[] coordinates = {firstCoords, secondCoords};
+        int pointerAction = MotionEvent.ACTION_POINTER_DOWN
+                | (1 << MotionEvent.ACTION_POINTER_INDEX_SHIFT);
+        dispatchC133SyntheticMulti(downTime, pointerAction, properties, coordinates);
+        MotionEvent.PointerCoords[] movedCoordinates = {
+                c133SyntheticPointerCoords(x, y - 54.0f),
+                c133SyntheticPointerCoords(x + 24.0f, y - 54.0f),
+        };
+        dispatchC133SyntheticMulti(downTime, MotionEvent.ACTION_MOVE,
+                properties, movedCoordinates);
+        dispatchC133SyntheticMulti(downTime,
+                MotionEvent.ACTION_POINTER_UP | (1 << MotionEvent.ACTION_POINTER_INDEX_SHIFT),
+                properties, movedCoordinates);
+        dispatchC133SyntheticSingle(downTime, MotionEvent.ACTION_UP, x, y - 54.0f);
+        Log.i(TAG, "SPINON_C133_SECOND_POINTER_PROBE synthetic_motion_event=true dispatched=true");
+    }
+
+    private void dispatchC133SyntheticSingle(long downTime, int action, float x, float y) {
+        MotionEvent.PointerProperties pointer = new MotionEvent.PointerProperties();
+        pointer.id = 0;
+        pointer.toolType = MotionEvent.TOOL_TYPE_FINGER;
+        dispatchC133SyntheticMulti(downTime, action,
+                new MotionEvent.PointerProperties[] {pointer},
+                new MotionEvent.PointerCoords[] {c133SyntheticPointerCoords(x, y)});
+    }
+
+    private void dispatchC133SyntheticMulti(long downTime, int action,
+            MotionEvent.PointerProperties[] properties, MotionEvent.PointerCoords[] coordinates) {
+        MotionEvent event = MotionEvent.obtain(
+                downTime, SystemClock.uptimeMillis(), action, properties.length,
+                properties, coordinates, 0, 0, 1.0f, 1.0f, 0, 0,
+                InputDevice.SOURCE_TOUCHSCREEN, 0);
+        try {
+            surfaceView.dispatchTouchEvent(event);
+        } finally {
+            event.recycle();
+        }
+    }
+
+    private static MotionEvent.PointerCoords c133SyntheticPointerCoords(float x, float y) {
+        MotionEvent.PointerCoords coordinates = new MotionEvent.PointerCoords();
+        coordinates.x = x;
+        coordinates.y = y;
+        coordinates.pressure = 1.0f;
+        coordinates.size = 1.0f;
+        return coordinates;
+    }
+
+    private void scheduleC133Drain() {
+        c133DrainAgain.set(true);
+        if (!c133DrainScheduled.compareAndSet(false, true)) return;
+        synchronized (stateLock) {
+            if (closing || hostHandle == 0) {
+                c133DrainScheduled.set(false);
+                return;
+            }
+            runtimeQueue.execute(() -> {
+                try {
+                    while (c133DrainAgain.getAndSet(false)) {
+                        final long host;
+                        synchronized (stateLock) {
+                            host = hostHandle;
+                        }
+                        if (host == 0) break;
+                        if (c133WorkerDelayMillis > 0 && !c133WorkerDelayUsed) {
+                            c133WorkerDelayUsed = true;
+                            Log.i(TAG, "SPINON_C133_WORKER_DELAY_BEGIN millis="
+                                    + c133WorkerDelayMillis);
+                            SystemClock.sleep(c133WorkerDelayMillis);
+                            Log.i(TAG, "SPINON_C133_WORKER_DELAY_END millis="
+                                    + c133WorkerDelayMillis);
+                        }
+                        String report = decode(nativeProcessC133GestureQueue(host));
+                        Log.i(TAG, "SPINON_C133_INPUT_BATCH " + report);
+                        if (!report.startsWith("status=0 ")) {
+                            Log.e(TAG, "SPINON_C133_INPUT_BATCH_ERROR " + report);
+                            continue;
+                        }
+                        requestDraw();
+                    }
+                } finally {
+                    c133DrainScheduled.set(false);
+                    if (c133DrainAgain.get()) scheduleC133Drain();
+                }
+            });
+        }
     }
 
     private long beginPresentationUpdate() {

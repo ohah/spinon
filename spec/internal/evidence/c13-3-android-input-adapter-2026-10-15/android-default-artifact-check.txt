@@ -1,0 +1,8 @@
+SPINON_ANDROID_BUILD_FLAGS c04_runtime_gpu=1 c13_1_overflow_clip_fixture_test=0 c13_2_scroll_fixture_test=0 c13_3_gesture_fixture_test=0 c14_1_app_fixture_test=0
+BUILD SUCCESSFUL in 5s
+65d2bda2e6d54b41c32324d1f62aac6256b996fe32fb8207df88b211fbcecb3f  platforms/android/app/build/intermediates/merged_native_libs/debug/mergeDebugNativeLibs/out/lib/arm64-v8a/libspinon_bootstrap.so
+4e205b0b5878201b3882be84e3d43620454f50b947b9999a74c89f716aff2af8  platforms/android/app/build/outputs/apk/debug/app-debug.apk
+C13.3 FFI symbols:
+none
+C13.3 fixed scene payload:
+none

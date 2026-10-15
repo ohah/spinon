@@ -423,6 +423,7 @@ public final class MainActivity extends Activity {
                 || c131OverflowClipRequested || c131CompactSurfaceMatrixRequested
                 || c131OverflowClipBorderRequested
                 || getIntent().getBooleanExtra("spinon_c132_scroll_fixture", false)
+                || getIntent().getBooleanExtra("spinon_c133_gesture_fixture", false)
                 || getIntent().getBooleanExtra("spinon_c124_stacking_matrix", false)
                 || getIntent().getBooleanExtra("spinon_c124_depth_safety", false)
                 || getIntent().getStringExtra("spinon_c124_surface_case") != null
@@ -463,6 +464,17 @@ public final class MainActivity extends Activity {
                 setContentView(unavailable);
                 Log.e(TAG, "SPINON_C132_DISABLED · "
                         + "SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST=1로 빌드하세요");
+                return;
+            }
+            if (getIntent().getBooleanExtra("spinon_c133_gesture_fixture", false)
+                    && !BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST) {
+                TextView unavailable = new TextView(this);
+                unavailable.setText("C13.3 gesture fixture-test 옵션을 켜서 빌드해야 합니다.");
+                unavailable.setTextColor(Color.BLACK);
+                unavailable.setGravity(Gravity.CENTER);
+                setContentView(unavailable);
+                Log.e(TAG, "SPINON_C133_DISABLED · "
+                        + "SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST=1로 빌드하세요");
                 return;
             }
             boolean failureProbe = getIntent().getBooleanExtra(
@@ -1815,6 +1827,7 @@ public final class MainActivity extends Activity {
 
     @Override
     protected void onPause() {
+        if (runtimeGpuDemo != null) runtimeGpuDemo.onHostPaused();
         if (hostGlesSurface != null) hostGlesSurface.onHostPaused();
         if (hostGpuSurface != null) {
             hostGpuSurface.onHostPaused();

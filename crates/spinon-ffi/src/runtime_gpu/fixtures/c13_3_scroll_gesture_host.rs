@@ -1,0 +1,555 @@
+use super::super::{
+    ERR_ARGUMENT, ERR_LAYOUT, ERR_STALE, RuntimeGpuHost, lock, scene_matches_layout_key,
+};
+use super::c13_3_scroll_gesture::RUNTIME_CSS_C13_3_SCROLL_GESTURE_SOURCE;
+use spinon_core::NodeId;
+use spinon_render::{
+    RuntimeOverscrollBehavior, RuntimeRenderSnapshot, RuntimeScrollGestureBegin,
+    RuntimeScrollGestureBeginDisposition, RuntimeScrollGestureCancelReason,
+    RuntimeScrollGestureInputQueue, RuntimeScrollGestureOutcome, RuntimeScrollGesturePanSample,
+    RuntimeScrollGestureSession, RuntimeScrollGestureTerminal, RuntimeScrollGestureTerminalKind,
+    RuntimeScrollInputPolicy, RuntimeScrollInputQueueEvent, RuntimeTouchAction,
+};
+use spinon_runtime::RuntimeSession;
+use std::sync::atomic::{AtomicU64, Ordering};
+use std::sync::{Arc, Mutex};
+
+#[derive(Clone, Copy)]
+pub(in crate::runtime_gpu) struct C13_3GestureOwners {
+    pub(in crate::runtime_gpu) root: NodeId,
+    pub(in crate::runtime_gpu) outer: NodeId,
+    pub(in crate::runtime_gpu) inner: NodeId,
+}
+
+pub(in crate::runtime_gpu) struct C13_3GestureState {
+    queue: Mutex<RuntimeScrollGestureInputQueue>,
+    session: Mutex<RuntimeScrollGestureSession>,
+    snapshot: Mutex<Option<RuntimeRenderSnapshot>>,
+    owners: Mutex<Option<C13_3GestureOwners>>,
+    next_input_sequence: AtomicU64,
+}
+
+impl C13_3GestureState {
+    pub(in crate::runtime_gpu) fn new() -> Result<Self, String> {
+        let queue = RuntimeScrollGestureInputQueue::new(64, 8)
+            .map_err(|error| format!("C13.3 input queue 생성 실패: {error}"))?;
+        Ok(Self {
+            queue: Mutex::new(queue),
+            session: Mutex::new(RuntimeScrollGestureSession::default()),
+            snapshot: Mutex::new(None),
+            owners: Mutex::new(None),
+            next_input_sequence: AtomicU64::new(0),
+        })
+    }
+
+    fn next_sequence(&self) -> Result<u64, String> {
+        self.next_input_sequence
+            .fetch_update(Ordering::AcqRel, Ordering::Acquire, |value| {
+                value.checked_add(1)
+            })
+            .map(|previous| previous + 1)
+            .map_err(|_| "C13.3 input sequence가 소진됐습니다".to_owned())
+    }
+
+    fn current_snapshot(&self) -> Result<RuntimeRenderSnapshot, String> {
+        lock(&self.snapshot)
+            .as_ref()
+            .cloned()
+            .ok_or_else(|| "C13.3 fixture snapshot이 아직 준비되지 않았습니다".to_owned())
+    }
+
+    pub(in crate::runtime_gpu) fn enqueue_begin(
+        &self,
+        surface_generation: u64,
+        gesture_id: u64,
+        pointer_id: u64,
+        x_css_px: f32,
+        y_css_px: f32,
+        coordinate_scale: f32,
+    ) -> Result<String, String> {
+        let snapshot = self.current_snapshot()?;
+        let sequence = self.next_sequence()?;
+        let input = RuntimeScrollGestureBegin::new(
+            snapshot.key(),
+            surface_generation,
+            sequence,
+            gesture_id,
+            pointer_id,
+            x_css_px,
+            y_css_px,
+            coordinate_scale,
+            RuntimeTouchAction::Auto,
+        );
+        let admission = lock(&self.queue)
+            .enqueue_begin(input)
+            .map_err(|error| format!("C13.3 Begin 거부: {error}"))?;
+        Ok(format!(
+            "sequence={sequence} admission={admission:?} key={:?}",
+            snapshot.key()
+        ))
+    }
+
+    pub(in crate::runtime_gpu) fn enqueue_pan_began(
+        &self,
+        surface_generation: u64,
+        gesture_id: u64,
+        pointer_id: u64,
+        coordinate_scale: f32,
+        cumulative_x_css_px: f32,
+        cumulative_y_css_px: f32,
+    ) -> Result<String, String> {
+        self.enqueue_motion(
+            true,
+            surface_generation,
+            gesture_id,
+            pointer_id,
+            coordinate_scale,
+            cumulative_x_css_px,
+            cumulative_y_css_px,
+        )
+    }
+
+    pub(in crate::runtime_gpu) fn enqueue_move(
+        &self,
+        surface_generation: u64,
+        gesture_id: u64,
+        pointer_id: u64,
+        coordinate_scale: f32,
+        cumulative_x_css_px: f32,
+        cumulative_y_css_px: f32,
+    ) -> Result<String, String> {
+        self.enqueue_motion(
+            false,
+            surface_generation,
+            gesture_id,
+            pointer_id,
+            coordinate_scale,
+            cumulative_x_css_px,
+            cumulative_y_css_px,
+        )
+    }
+
+    fn enqueue_motion(
+        &self,
+        pan_began: bool,
+        surface_generation: u64,
+        gesture_id: u64,
+        pointer_id: u64,
+        coordinate_scale: f32,
+        cumulative_x_css_px: f32,
+        cumulative_y_css_px: f32,
+    ) -> Result<String, String> {
+        let snapshot = self.current_snapshot()?;
+        let sequence = self.next_sequence()?;
+        let sample = RuntimeScrollGesturePanSample::new(
+            snapshot.key(),
+            surface_generation,
+            sequence,
+            gesture_id,
+            pointer_id,
+            coordinate_scale,
+            cumulative_x_css_px,
+            cumulative_y_css_px,
+        );
+        let policy_epoch = snapshot.key().style_revision().get();
+        let admission = if pan_began {
+            lock(&self.queue).enqueue_pan_began(sample, policy_epoch)
+        } else {
+            lock(&self.queue).enqueue_move(sample, policy_epoch)
+        }
+        .map_err(|error| format!("C13.3 motion 거부: {error}"))?;
+        Ok(format!(
+            "sequence={sequence} admission={admission:?} policy_epoch={policy_epoch}"
+        ))
+    }
+
+    pub(in crate::runtime_gpu) fn enqueue_terminal(
+        &self,
+        end: bool,
+        surface_generation: u64,
+        gesture_id: u64,
+        pointer_id: u64,
+        reason: RuntimeScrollGestureCancelReason,
+    ) -> Result<String, String> {
+        let sequence = self.next_sequence()?;
+        let terminal =
+            RuntimeScrollGestureTerminal::new(sequence, gesture_id, pointer_id, surface_generation);
+        let admission = if end {
+            lock(&self.queue).enqueue_end(terminal)
+        } else {
+            lock(&self.queue).enqueue_cancel(terminal, reason)
+        }
+        .map_err(|error| format!("C13.3 terminal 거부: {error}"))?;
+        Ok(format!(
+            "sequence={sequence} kind={} admission={admission:?} reason={reason:?}",
+            if end { "end" } else { "cancel" }
+        ))
+    }
+
+    fn publish_snapshot(&self, snapshot: RuntimeRenderSnapshot) {
+        *lock(&self.snapshot) = Some(snapshot);
+    }
+
+    fn owners(&self) -> Result<C13_3GestureOwners, String> {
+        lock(&self.owners)
+            .as_ref()
+            .copied()
+            .ok_or_else(|| "C13.3 owner identity가 준비되지 않았습니다".to_owned())
+    }
+}
+
+impl RuntimeGpuHost {
+    pub(in crate::runtime_gpu) fn new_c13_3_scroll_gesture_fixture()
+    -> Result<(Self, String), String> {
+        let (session, report) = RuntimeSession::new_runtime_gpu_block_flex_overflow_clip_fixture()?;
+        let mut host = Self::from_session_with_frame_report(session);
+        host.c13_3_gesture_state = Some(Arc::new(C13_3GestureState::new()?));
+        Ok((host, report))
+    }
+
+    pub(in crate::runtime_gpu) fn c13_3_gesture_state(&self) -> Option<Arc<C13_3GestureState>> {
+        self.c13_3_gesture_state.as_ref().map(Arc::clone)
+    }
+
+    pub(in crate::runtime_gpu) fn eval_c13_3_scroll_gesture_fixture(
+        &self,
+        layout_timeout_millis: u64,
+    ) -> Result<String, (i32, String)> {
+        let report = self.eval(
+            RUNTIME_CSS_C13_3_SCROLL_GESTURE_SOURCE,
+            layout_timeout_millis,
+        )?;
+        if !report.contains("layout=ready") {
+            return Err((
+                ERR_LAYOUT,
+                format!("C13.3 gesture fixture layout가 준비되지 않았습니다: {report}"),
+            ));
+        }
+        let state = self.c13_3_gesture_state.as_ref().ok_or((
+            ERR_ARGUMENT,
+            "C13.3 gesture fixture host가 아닙니다".to_owned(),
+        ))?;
+        let _operation = lock(&self.operation);
+        let (sequence, current) = self.presentation.lock_current();
+        let initial = current
+            .as_ref()
+            .map(|published| Arc::clone(&published.snapshot))
+            .ok_or((ERR_LAYOUT, "C13.3 render snapshot이 없습니다".to_owned()))?;
+        drop(current);
+        if self.presentation_sequence() != sequence {
+            return Err((ERR_STALE, "C13.3 scene이 평가 중 무효화됐습니다".to_owned()));
+        }
+        let layout = self.session.layout_snapshot();
+        let completed = layout
+            .completed
+            .filter(|completed| {
+                completed.render_snapshot.is_some()
+                    && scene_matches_layout_key(initial.as_ref(), completed.key)
+            })
+            .ok_or((ERR_STALE, "C13.3 layout과 render key가 다릅니다".to_owned()))?;
+        let frames = &completed.frames;
+        if frames.len() != 10 || initial.scroll_containers().len() != 3 {
+            return Err((
+                ERR_LAYOUT,
+                format!(
+                    "C13.3 fixed scene 크기가 다릅니다: frames={} owners={}",
+                    frames.len(),
+                    initial.scroll_containers().len()
+                ),
+            ));
+        }
+        let owners = C13_3GestureOwners {
+            root: node_id_at(frames, 1)?,
+            outer: node_id_at(frames, 3)?,
+            inner: node_id_at(frames, 5)?,
+        };
+        let scene = node_id_at(frames, 0)?;
+        let root_content = node_id_at(frames, 2)?;
+        let outer_content = node_id_at(frames, 4)?;
+        let expected = [
+            (owners.root, Some(scene), 158.0, 238.0),
+            (owners.outer, Some(root_content), 106.0, 186.0),
+            (owners.inner, Some(outer_content), 86.0, 106.0),
+        ];
+        for (owner_id, parent, max_x, max_y) in expected {
+            let owner = initial
+                .scroll_containers()
+                .iter()
+                .find(|owner| owner.owner() == owner_id)
+                .ok_or((
+                    ERR_LAYOUT,
+                    format!("C13.3 scroll owner {owner_id}가 없습니다"),
+                ))?;
+            if owner.parent() != parent
+                || owner.max_offset_x_css_px() != max_x
+                || owner.max_offset_y_css_px() != max_y
+            {
+                return Err((
+                    ERR_LAYOUT,
+                    format!(
+                        "C13.3 owner geometry 불일치 owner={owner_id} parent={:?} range=({}, {})",
+                        owner.parent(),
+                        owner.max_offset_x_css_px(),
+                        owner.max_offset_y_css_px()
+                    ),
+                ));
+            }
+        }
+        let policies = expected
+            .iter()
+            .map(|(owner, _, _, _)| {
+                (
+                    *owner,
+                    RuntimeScrollInputPolicy::new(
+                        true,
+                        true,
+                        RuntimeOverscrollBehavior::Auto,
+                        RuntimeOverscrollBehavior::Auto,
+                    ),
+                )
+            })
+            .collect::<Vec<_>>();
+        let interactive = initial
+            .with_scroll_input_policies(&policies)
+            .map_err(|error| (ERR_LAYOUT, format!("C13.3 입력 policy 연결 실패: {error}")))?;
+        let published_sequence = self
+            .invalidate_scene()
+            .map_err(|error| (ERR_STALE, error))?;
+        if !self
+            .presentation
+            .publish(published_sequence, interactive.clone())
+        {
+            return Err((
+                ERR_STALE,
+                "C13.3 initial snapshot publish가 stale입니다".to_owned(),
+            ));
+        }
+        *lock(&state.owners) = Some(owners);
+        state.publish_snapshot(interactive.clone());
+        Ok(format!(
+            "c13_3_gesture_fixture=ready viewport_css_px=400x240 owners=root:{},outer:{},inner:{} ranges=root:158,238;outer:106,186;inner:86,106 touch_action=fixture_auto overscroll=fixture_auto scroll_state_revision={} input_queue_capacity=64 terminal_capacity=8",
+            owners.root,
+            owners.outer,
+            owners.inner,
+            interactive.key().scroll_state_revision().get()
+        ))
+    }
+
+    pub(in crate::runtime_gpu) fn process_c13_3_scroll_gesture_queue(
+        &self,
+        max_events: usize,
+    ) -> Result<String, (i32, String)> {
+        let _operation = lock(&self.operation);
+        let state = self.c13_3_gesture_state.as_ref().ok_or((
+            ERR_ARGUMENT,
+            "C13.3 gesture fixture host가 아닙니다".to_owned(),
+        ))?;
+        let mut traces = Vec::new();
+        let mut processed = 0usize;
+        for _ in 0..max_events {
+            let event = lock(&state.queue)
+                .pop_next()
+                .map_err(|error| (ERR_LAYOUT, format!("C13.3 queue dequeue 실패: {error}")))?;
+            let Some(event) = event else { break };
+            processed += 1;
+            let snapshot = state
+                .current_snapshot()
+                .map_err(|error| (ERR_LAYOUT, error))?;
+            let sequence = event.sequence();
+            match event {
+                RuntimeScrollInputQueueEvent::GestureBegin(input) => {
+                    let identity = input.into();
+                    let outcome = lock(&state.session).begin(&snapshot, input);
+                    let disposition = match &outcome {
+                        Ok(RuntimeScrollGestureOutcome::Began { .. }) => {
+                            RuntimeScrollGestureBeginDisposition::Tracking
+                        }
+                        Ok(_) => RuntimeScrollGestureBeginDisposition::Suppressed,
+                        Err(_) => RuntimeScrollGestureBeginDisposition::Rejected,
+                    };
+                    lock(&state.queue)
+                        .complete_begin(identity, disposition)
+                        .map_err(|error| {
+                            (ERR_LAYOUT, format!("C13.3 Begin gate 확정 실패: {error}"))
+                        })?;
+                    traces.push(format!(
+                        "event=begin sequence={sequence} gesture={} pointer={} result={}",
+                        input.gesture_id(),
+                        input.pointer_id(),
+                        c13_3_outcome_summary(&outcome)
+                    ));
+                }
+                RuntimeScrollInputQueueEvent::PanBegan {
+                    sample,
+                    policy_epoch,
+                } => {
+                    let outcome = lock(&state.session).pan_began(&snapshot, sample);
+                    let mut published = false;
+                    if let Ok(RuntimeScrollGestureOutcome::PanStarted { delta, .. }) = &outcome {
+                        published = self.publish_c13_3_delta(state, delta, &snapshot)?;
+                    }
+                    traces.push(format!(
+                        "event=pan_began sequence={sequence} gesture={} pointer={} cumulative_css_px={},{} policy_epoch={} result={} published={published}",
+                        sample.gesture_id(), sample.pointer_id(),
+                        sample.cumulative_x_css_px(), sample.cumulative_y_css_px(), policy_epoch,
+                        c13_3_outcome_summary(&outcome)
+                    ));
+                }
+                RuntimeScrollInputQueueEvent::Move {
+                    sample,
+                    policy_epoch,
+                    coalesced_samples,
+                } => {
+                    let rebased = RuntimeScrollGesturePanSample::new(
+                        snapshot.key(),
+                        sample.surface_generation(),
+                        sample.sequence(),
+                        sample.gesture_id(),
+                        sample.pointer_id(),
+                        sample.coordinate_scale(),
+                        sample.cumulative_x_css_px(),
+                        sample.cumulative_y_css_px(),
+                    );
+                    let outcome = lock(&state.session).pan_moved(&snapshot, rebased);
+                    let mut published = false;
+                    if let Ok(RuntimeScrollGestureOutcome::Moved { delta: Some(delta) }) = &outcome
+                    {
+                        published = self.publish_c13_3_delta(state, delta, &snapshot)?;
+                    }
+                    traces.push(format!(
+                        "event=move sequence={sequence} gesture={} pointer={} cumulative_css_px={},{} policy_epoch={} coalesced_samples={} result={} published={published}",
+                        sample.gesture_id(), sample.pointer_id(),
+                        sample.cumulative_x_css_px(), sample.cumulative_y_css_px(),
+                        policy_epoch, coalesced_samples, c13_3_outcome_summary(&outcome)
+                    ));
+                }
+                RuntimeScrollInputQueueEvent::GestureTerminal { terminal, kind } => {
+                    let outcome = match kind {
+                        RuntimeScrollGestureTerminalKind::End => lock(&state.session).end(terminal),
+                        RuntimeScrollGestureTerminalKind::Cancel(reason) => {
+                            lock(&state.session).cancel(terminal, reason)
+                        }
+                    };
+                    traces.push(format!(
+                        "event=terminal sequence={sequence} gesture={} pointer={} kind={kind:?} result={}",
+                        terminal.gesture_id(), terminal.pointer_id(),
+                        c13_3_outcome_summary(&outcome)
+                    ));
+                }
+                RuntimeScrollInputQueueEvent::WheelDelta { sample, .. } => {
+                    traces.push(format!(
+                        "event=wheel sequence={sequence} rejected=fixture_adapter_not_enabled target={}",
+                        sample.target()
+                    ));
+                }
+            }
+        }
+        let snapshot = state
+            .current_snapshot()
+            .map_err(|error| (ERR_LAYOUT, error))?;
+        let owners = state.owners().map_err(|error| (ERR_LAYOUT, error))?;
+        let queue_len = lock(&state.queue).regular_len();
+        Ok(format!(
+            "c13_3_input_batch=processed processed_count={processed} pending_regular={queue_len} {} traces=[{}]",
+            c13_3_offsets(&snapshot, owners),
+            traces.join(";")
+        ))
+    }
+
+    fn publish_c13_3_delta(
+        &self,
+        state: &C13_3GestureState,
+        delta: &spinon_render::RuntimeScrollDeltaOutcome,
+        before: &RuntimeRenderSnapshot,
+    ) -> Result<bool, (i32, String)> {
+        let updated = delta.snapshot();
+        if updated.key().scroll_state_revision() == before.key().scroll_state_revision() {
+            return Ok(false);
+        }
+        let sequence = self
+            .invalidate_scene()
+            .map_err(|error| (ERR_STALE, error))?;
+        if !self.presentation.publish(sequence, updated.clone()) {
+            return Err((
+                ERR_STALE,
+                "C13.3 gesture snapshot publish가 stale입니다".to_owned(),
+            ));
+        }
+        state.publish_snapshot(updated.clone());
+        Ok(true)
+    }
+}
+
+fn node_id_at(
+    frames: &[spinon_runtime::RuntimeLayoutFrame],
+    index: usize,
+) -> Result<NodeId, (i32, String)> {
+    frames
+        .get(index)
+        .and_then(|frame| NodeId::new(frame.node_id))
+        .ok_or((
+            ERR_LAYOUT,
+            format!("C13.3 fixture frame {index}가 없습니다"),
+        ))
+}
+
+fn c13_3_offsets(snapshot: &RuntimeRenderSnapshot, owners: C13_3GestureOwners) -> String {
+    let offset = |node| {
+        snapshot
+            .scroll_containers()
+            .iter()
+            .find(|owner| owner.owner() == node)
+            .map(|owner| format!("{},{}", owner.offset_x_css_px(), owner.offset_y_css_px()))
+            .unwrap_or_else(|| "missing".to_owned())
+    };
+    format!(
+        "scroll_state_revision={} offsets=root:{};outer:{};inner:{}",
+        snapshot.key().scroll_state_revision().get(),
+        offset(owners.root),
+        offset(owners.outer),
+        offset(owners.inner)
+    )
+}
+
+fn c13_3_outcome_summary<T: std::fmt::Debug>(
+    outcome: &Result<RuntimeScrollGestureOutcome, T>,
+) -> String {
+    let outcome = match outcome {
+        Ok(outcome) => outcome,
+        Err(error) => return format!("error={error:?}"),
+    };
+    match outcome {
+        RuntimeScrollGestureOutcome::Began {
+            target,
+            owner_chain,
+            allowed_axes,
+        } => format!(
+            "began target={} owner_chain={owner_chain:?} allowed_axes={allowed_axes:?}",
+            target.get()
+        ),
+        RuntimeScrollGestureOutcome::PanStarted { axes, delta } => {
+            format!("pan_started axes={axes:?} {}", c13_3_delta_summary(delta))
+        }
+        RuntimeScrollGestureOutcome::PanRejected => "pan_rejected".to_owned(),
+        RuntimeScrollGestureOutcome::Moved { delta: Some(delta) } => {
+            format!("moved {}", c13_3_delta_summary(delta))
+        }
+        RuntimeScrollGestureOutcome::Moved { delta: None } => "moved no_delta".to_owned(),
+        RuntimeScrollGestureOutcome::Cancelled(reason) => format!("cancelled {reason:?}"),
+        RuntimeScrollGestureOutcome::Ended => "ended".to_owned(),
+        RuntimeScrollGestureOutcome::SuppressedPointerEnded {
+            blocked_contacts_remaining,
+        } => format!("suppressed_pointer_ended remaining={blocked_contacts_remaining}"),
+    }
+}
+
+fn c13_3_delta_summary(delta: &spinon_render::RuntimeScrollDeltaOutcome) -> String {
+    format!(
+        "target={} revision={} changes={} remainder_css_px={:.2},{:.2}",
+        delta.target().get(),
+        delta.snapshot().key().scroll_state_revision().get(),
+        delta.changes().len(),
+        delta.remaining_x_css_px(),
+        delta.remaining_y_css_px()
+    )
+}

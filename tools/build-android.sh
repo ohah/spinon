@@ -89,6 +89,13 @@ case "${SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST:-0}" in
     exit 2
     ;;
 esac
+case "${SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST:-0}" in
+  0|1) ;;
+  *)
+    echo "SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST는 0 또는 1이어야 합니다." >&2
+    exit 2
+    ;;
+esac
 if [[ "${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}" == "1" \
       && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
   echo "draw 실패 fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다." >&2
@@ -109,6 +116,11 @@ if [[ "${SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST:-0}" == "1" \
   echo "C13.2 scroll fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다." >&2
   exit 2
 fi
+if [[ "${SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST:-0}" == "1" \
+      && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
+  echo "C13.3 gesture fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다." >&2
+  exit 2
+fi
 s03_dom_gc_cpp_flag="-DSPINON_ENABLE_S03_DOM_GC_FIXTURE=${SPINON_ENABLE_S03_DOM_GC_FIXTURE:-0}"
 s04_runtime_gpu_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU=${SPINON_ENABLE_C04_RUNTIME_GPU:-0}"
 s04_runtime_gpu_fixture_test_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=${SPINON_ENABLE_C04_RUNTIME_GPU:-0}"
@@ -118,6 +130,7 @@ s04_runtime_gpu_failure_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTUR
 c124_worker_stack_cpp_flag="-DSPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST=${SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST:-0}"
 c131_overflow_clip_cpp_flag="-DSPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST=$c131_fixture_flag"
 c132_scroll_fixture_cpp_flag="-DSPINON_ENABLE_C132_SCROLL_FIXTURE_TEST=${SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST:-0}"
+c133_gesture_fixture_cpp_flag="-DSPINON_ENABLE_C133_GESTURE_FIXTURE_TEST=${SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST:-0}"
 c141_app_fixture_cpp_flag="-DSPINON_ENABLE_C14_1_APP_FIXTURE_TEST=${SPINON_ENABLE_C14_1_APP_FIXTURE_TEST:-0}"
 s04_android_cpp_flags=()
 if [[ "${SPINON_ENABLE_S04_ANDROID_FIXTURE:-0}" == "1" ]]; then
@@ -145,6 +158,9 @@ fi
 if [[ "${SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST:-0}" == "1" ]]; then
   ffi_features+=(c13-2-scroll-fixture-test)
 fi
+if [[ "${SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST:-0}" == "1" ]]; then
+  ffi_features+=(c13-3-gesture-fixture-test)
+fi
 if [[ "${SPINON_ENABLE_C14_1_APP_FIXTURE_TEST:-0}" == "1" ]]; then
   ffi_features+=(c14-1-app-fixture-test)
 fi
@@ -152,7 +168,7 @@ ffi_feature_csv=""
 if ((${#ffi_features[@]} > 0)); then
   ffi_feature_csv="$(IFS=,; printf '%s' "${ffi_features[*]}")"
 fi
-echo "SPINON_ANDROID_BUILD_FLAGS c04_runtime_gpu=${SPINON_ENABLE_C04_RUNTIME_GPU:-0} c13_1_overflow_clip_fixture_test=$c131_fixture_flag c13_2_scroll_fixture_test=${SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST:-0} c14_1_app_fixture_test=${SPINON_ENABLE_C14_1_APP_FIXTURE_TEST:-0}"
+echo "SPINON_ANDROID_BUILD_FLAGS c04_runtime_gpu=${SPINON_ENABLE_C04_RUNTIME_GPU:-0} c13_1_overflow_clip_fixture_test=$c131_fixture_flag c13_2_scroll_fixture_test=${SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST:-0} c13_3_gesture_fixture_test=${SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST:-0} c14_1_app_fixture_test=${SPINON_ENABLE_C14_1_APP_FIXTURE_TEST:-0}"
 
 build_spinon_ffi() {
   if [[ -n "$ffi_feature_csv" ]]; then
@@ -242,6 +258,7 @@ common=("$target" "$sysroot" -std=c++20 -O2 -fPIC
   "$c124_worker_stack_cpp_flag"
   "$c131_overflow_clip_cpp_flag"
   "$c132_scroll_fixture_cpp_flag"
+  "$c133_gesture_fixture_cpp_flag"
   "$c141_app_fixture_cpp_flag"
   -D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_EXTENSIVE
   -I"$v8_dir/buildtools/third_party/libc++"

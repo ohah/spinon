@@ -129,6 +129,49 @@ fn scroll_scene_with_inner_width(
     (snapshot, outer, inner, target)
 }
 
+#[cfg(feature = "c13-3-gesture-fixture-test")]
+#[test]
+fn fixture_input_policies_preserve_offsets_geometry_and_revision() {
+    let auto = policy(
+        true,
+        RuntimeOverscrollBehavior::Auto,
+        RuntimeOverscrollBehavior::Auto,
+    );
+    let (snapshot, outer, inner, _) = scroll_scene(auto);
+    let before = snapshot.scroll_containers()[1];
+    let updated = snapshot
+        .with_scroll_input_policies(&[(
+            inner,
+            policy(
+                true,
+                RuntimeOverscrollBehavior::Contain,
+                RuntimeOverscrollBehavior::Auto,
+            ),
+        )])
+        .unwrap();
+
+    assert_eq!(updated.key(), snapshot.key());
+    assert_eq!(
+        updated.scroll_containers()[0],
+        snapshot.scroll_containers()[0]
+    );
+    assert_eq!(updated.scroll_containers()[1].owner(), before.owner());
+    assert_eq!(
+        updated.scroll_containers()[1].offset_x_css_px(),
+        before.offset_x_css_px()
+    );
+    assert_eq!(
+        updated.scroll_containers()[1].offset_y_css_px(),
+        before.offset_y_css_px()
+    );
+    assert_eq!(updated.scroll_containers()[1].parent(), Some(outer));
+    assert_eq!(
+        updated.scroll_containers()[1].input_policy().overscroll_x(),
+        RuntimeOverscrollBehavior::Contain
+    );
+    assert_eq!(updated.boxes(), snapshot.boxes());
+}
+
 #[test]
 fn routes_inner_remainder_to_outer_and_publishes_one_revision() {
     let auto = policy(

@@ -399,6 +399,29 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC132ScrollHost(
 }
 
 extern "C" JNIEXPORT jlong JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC133GestureHost(
+    JNIEnv *, jclass) {
+#if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && \
+    SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
+  std::array<char, 1024> output{};
+  SpinonRuntimeGpuHost *host = spinon_runtime_gpu_host_new_c13_3_gesture_fixture(
+      output.data(), output.size());
+  if (host == nullptr) {
+    __android_log_print(ANDROID_LOG_ERROR, kTag,
+                        "SPINON_C133_HOST_ERROR=%s", output.data());
+    return 0;
+  }
+  __android_log_print(ANDROID_LOG_INFO, kTag,
+                      "SPINON_C133_HOST=%s", output.data());
+  return static_cast<jlong>(reinterpret_cast<uintptr_t>(host));
+#else
+  __android_log_print(ANDROID_LOG_ERROR, kTag,
+                      "SPINON_C133_DISABLED fixture-test feature is off");
+  return 0;
+#endif
+}
+
+extern "C" JNIEXPORT jlong JNICALL
 Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC11GridHost(
     JNIEnv *, jclass) {
   std::array<char, 1024> output{};
@@ -1000,6 +1023,78 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC132ScrollFixture(
   return ToByteArray(env, report);
 #else
   return ToByteArray(env, "status=-1 C13.2 fixture-test feature is off");
+#endif
+}
+
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC133GestureFixture(
+    JNIEnv *env, jclass, jlong host_handle) {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+#if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && \
+    SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
+  std::array<char, 32768> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_c13_3_gesture_fixture(
+      host, 10000, output.data(), output.size());
+  const std::string report = "status=" + std::to_string(status) + " " + output.data();
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
+                      kTag, "SPINON_C133_EVAL %s", report.c_str());
+  return ToByteArray(env, report);
+#else
+  return ToByteArray(env, "status=-1 C13.3 fixture-test feature is off");
+#endif
+}
+
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEnqueueC133Gesture(
+    JNIEnv *env, jclass, jlong host_handle, jint action,
+    jlong surface_generation, jlong gesture_id, jlong pointer_id,
+    jfloat x_or_cumulative_x_css_px, jfloat y_or_cumulative_y_css_px,
+    jfloat coordinate_scale, jint reason) {
+#if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && \
+    SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+  std::array<char, 1024> output{};
+  const int32_t status = spinon_runtime_gpu_host_enqueue_c13_3_gesture(
+      host, action, static_cast<uint64_t>(surface_generation),
+      static_cast<uint64_t>(gesture_id), static_cast<uint64_t>(pointer_id),
+      x_or_cumulative_x_css_px, y_or_cumulative_y_css_px, coordinate_scale,
+      reason, output.data(), output.size());
+  const std::string report = "status=" + std::to_string(status) + " " + output.data();
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_WARN,
+                      kTag, "SPINON_C133_ENQUEUE %s", report.c_str());
+  return ToByteArray(env, report);
+#else
+  (void)host_handle;
+  (void)action;
+  (void)surface_generation;
+  (void)gesture_id;
+  (void)pointer_id;
+  (void)x_or_cumulative_x_css_px;
+  (void)y_or_cumulative_y_css_px;
+  (void)coordinate_scale;
+  (void)reason;
+  return ToByteArray(env, "status=-1 C13.3 fixture-test feature is off");
+#endif
+}
+
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeProcessC133GestureQueue(
+    JNIEnv *env, jclass, jlong host_handle) {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+#if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && \
+    SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
+  std::array<char, 32768> output{};
+  const int32_t status = spinon_runtime_gpu_host_process_c13_3_gesture_queue(
+      host, 64 + 8, output.data(), output.size());
+  const std::string report = "status=" + std::to_string(status) + " " + output.data();
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
+                      kTag, "SPINON_C133_PROCESS %s", report.c_str());
+  return ToByteArray(env, report);
+#else
+  return ToByteArray(env, "status=-1 C13.3 fixture-test feature is off");
 #endif
 }
 
