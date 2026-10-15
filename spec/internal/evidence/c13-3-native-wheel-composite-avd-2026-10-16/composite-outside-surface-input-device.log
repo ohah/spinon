@@ -1,0 +1,31 @@
+    51: Spinon C13.3 composite mouse touchpad probe
+      Classes: TOUCH | CURSOR | TOUCH_MT | TOUCHPAD
+      Path: /dev/input/event12
+      Enabled: true
+      Descriptor: 0d3bd83946968b90d06ee257e8ed5bd5f9a40bcc
+      Location:
+      ControllerNumber: 0
+      UniqueId:
+      Identifier: bus=0x0006, vendor=0x5350, product=0xc134, version=0x0001, bluetoothAddress=<not set>
+      KeyLayoutFile:
+      KeyCharacterMapFile:
+      ConfigurationFile: <none>
+      VideoDevice: <none>
+      SysfsDevicePath: /sys/devices/virtual
+      KernelWakeupEventCountPath: /sys/devices/virtual/wakeup/wakeup38/event_count
+      KeyState (pressed): <none>
+      AbsState: ABS_X=0, ABS_Y=0, ABS_MT_SLOT=0, ABS_MT_TOUCH_MAJOR=0, ABS_MT_TOUCH_MINOR=0, ABS_MT_POSITION_X=0, ABS_MT_POSITION_Y=0, ABS_MT_TOOL_TYPE=0, ABS_MT_TRACKING_ID=0
+    -1: Virtual
+      Classes: KEYBOARD | ALPHAKEY | DPAD | VIRTUAL
+      Path: <virtual>
+      Enabled: true
+      Descriptor: a718a782d34bc767f4689c232d64d527998ea7fd
+      Location:
+      ControllerNumber: 0
+      UniqueId: <virtual>
+      Identifier: bus=0x0000, vendor=0x0000, product=0x0000, version=0x0000, bluetoothAddress=<not set>
+      KeyLayoutFile: /system/usr/keylayout/Generic.kl
+      KeyCharacterMapFile: /system/usr/keychars/Virtual.kcm
+      ConfigurationFile: <none>
+      VideoDevice: <none>
+      SysfsDevicePath: <none>

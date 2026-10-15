@@ -1,0 +1,180 @@
+{
+  "schema": "spinon-c13-3-native-wheel-composite-avd-v1",
+  "capturedAt": "2026-10-15T19:29:25.384Z",
+  "sourceRevision": "270b0d14c9839e64e4f128811580d56610241c4a",
+  "android": {
+    "serial": "emulator-5554",
+    "model": "sdk_gphone16k_arm64",
+    "qemu": "1",
+    "api": "37",
+    "release": "17",
+    "size": "Physical size: 1080x2400",
+    "density": "Physical density: 420"
+  },
+  "build": {
+    "apkSha256": "0ea4955a417c1bc50d6e8d849a18b76c797126500ae2dfa67d623523e918169e",
+    "helperSourceSha256": "3558ae9a703d1f45970b942af75bf3ef976bd17cc6487d79beb344eb5f4d943c",
+    "helperSha256": "7d2d54ee4e2fc936738591b002fa9deef9f228f2809ea4450192f9ad6034d901",
+    "helperLoadAlignments": [
+      16384,
+      16384,
+      16384,
+      16384
+    ],
+    "helperProgramHeadersSha256": "6d07078a2f3a009271ffb6af1a0f8faf688517d75d4698a0ff65bf24b4a775d0",
+    "helperProgramHeaders": "\nElf file type is DYN (Shared object file)\nEntry point 0x4d40\nThere are 11 program headers, starting at offset 64\n\nProgram Headers:\n  Type           Offset   VirtAddr           PhysAddr           FileSiz  MemSiz   Flg Align\n  PHDR           0x000040 0x0000000000000040 0x0000000000000040 0x000268 0x000268 R   0x8\n  INTERP         0x0002a8 0x00000000000002a8 0x00000000000002a8 0x000015 0x000015 R   0x1\n      [Requesting program interpreter: /system/bin/linker64]\n  LOAD           0x000000 0x0000000000000000 0x0000000000000000 0x000d40 0x000d40 R   0x4000\n  LOAD           0x000d40 0x0000000000004d40 0x0000000000004d40 0x000bf0 0x000bf0 R E 0x4000\n  LOAD           0x001930 0x0000000000009930 0x0000000000009930 0x000240 0x0006d0 RW  0x4000\n  LOAD           0x001b70 0x000000000000db70 0x000000000000db70 0x00001c 0x000029 RW  0x4000\n  DYNAMIC        0x001930 0x0000000000009930 0x0000000000009930 0x000170 0x000170 RW  0x8\n  GNU_RELRO      0x001930 0x0000000000009930 0x0000000000009930 0x000240 0x0006d0 R   0x1\n  GNU_EH_FRAME   0x000bcc 0x0000000000000bcc 0x0000000000000bcc 0x000044 0x000044 R   0x4\n  GNU_STACK      0x000000 0x0000000000000000 0x0000000000000000 0x000000 0x000000 RW  0x0\n  NOTE           0x0002c0 0x00000000000002c0 0x00000000000002c0 0x000098 0x000098 R   0x4\n\n Section to Segment mapping:\n  Segment Sections...\n   00     \n   01     .interp \n   02     .interp .note.android.ident .dynsym .gnu.version .gnu.version_r .gnu.hash .hash .dynstr .rela.dyn .rela.plt .rodata .eh_frame_hdr .eh_frame \n   03     .text .plt \n   04     .dynamic .got .got.plt .relro_padding \n   05     .data .bss \n   06     .dynamic \n   07     .dynamic .got .got.plt .relro_padding \n   08     .eh_frame_hdr \n   09     \n   10     .note.android.ident \n   None   .comment .symtab .shstrtab .strtab \n",
+    "ndk": "27.1.12297006",
+    "ndkHost": "darwin-x86_64",
+    "optInFlags": [
+      "SPINON_ENABLE_C04_RUNTIME_GPU=1",
+      "SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST=1"
+    ],
+    "sourceFileSha256": {
+      "plan/c13-3-native-wheel-input.md": "ffdb51d5677dd3368e5c4e3b1d38af5cbf904cd705f7df5ad6254a66b5759b86",
+      "spec/STATUS.md": "1e88fbeba33012b3884ff16bd98fa27dee56d50299b0d6e2a0157e5b613b7bdf",
+      "spec/internal/0063-c13-3-scroll-gestures.md": "45abb53a7343a9025ae6e1781bd9306ddbbafd458bb25e19211671c453138d37",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "cdde643384060b955a99dd35b5a86cba833e44fdea00c326f2d3f16e987c67b6",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/WheelSourceClassifier.java": "bca40039968fa54d4e35fced98dad335f6347bf1b3c762feb7a56cd1766695fb",
+      "tools/css-reference/capture-c13-3-native-wheel-composite-android.mjs": "e782ef89fba4913b6b7e488702b59d158e95417df32dc9e9fed0dba264437ed9",
+      "tools/css-reference/fixtures/c13_3_android_composite_wheel_uinput.c": "3558ae9a703d1f45970b942af75bf3ef976bd17cc6487d79beb344eb5f4d943c"
+    }
+  },
+  "fixture": {
+    "scenario": "auto-boundary",
+    "viewportCssPx": [
+      400,
+      240
+    ],
+    "targetCssPx": [
+      132,
+      112
+    ],
+    "surfacePxPerCssPx": 2.625,
+    "syntheticDeviceCapabilities": [
+      "mouse cursor",
+      "touchpad",
+      "multitouch axes"
+    ]
+  },
+  "cases": [
+    {
+      "id": "mouse-event-on-composite-device",
+      "helper": {
+        "stdout": "device-created name=Spinon C13.3 composite mouse touchpad probe cursor_delta=135,479 axis=h delay=4\ndevice-destroyed=true",
+        "stderr": "",
+        "inputDevice": "    50: Spinon C13.3 composite mouse touchpad probe\n      Classes: TOUCH | CURSOR | TOUCH_MT | TOUCHPAD\n      Path: /dev/input/event12\n      Enabled: true\n      Descriptor: 0d3bd83946968b90d06ee257e8ed5bd5f9a40bcc\n      Location: \n      ControllerNumber: 0\n      UniqueId: \n      Identifier: bus=0x0006, vendor=0x5350, product=0xc134, version=0x0001, bluetoothAddress=<not set>\n      KeyLayoutFile: \n      KeyCharacterMapFile: \n      ConfigurationFile: <none>\n      VideoDevice: <none>\n      SysfsDevicePath: /sys/devices/virtual\n      KernelWakeupEventCountPath: /sys/devices/virtual/wakeup/wakeup38/event_count\n      KeyState (pressed): <none>\n      AbsState: ABS_X=0, ABS_Y=0, ABS_MT_SLOT=0, ABS_MT_TOUCH_MAJOR=0, ABS_MT_TOUCH_MINOR=0, ABS_MT_POSITION_X=0, ABS_MT_POSITION_Y=0, ABS_MT_TOOL_TYPE=0, ABS_MT_TRACKING_ID=0",
+        "geteventDevice": "add device 1: /dev/input/event12\n  name:     \"Spinon C13.3 composite mouse touchpad probe\"\n  events:\n    KEY (0001): BTN_MOUSE             BTN_TOOL_FINGER       BTN_TOUCH            \n    REL (0002): REL_X                 REL_Y                 REL_HWHEEL            REL_WHEEL            \n    ABS (0003): ABS_X                 : value 0, min 0, max 32767, fuzz 0, flat 0, resolution 0\n                ABS_Y                 : value 0, min 0, max 32767, fuzz 0, flat 0, resolution 0\n                ABS_MT_SLOT           : value 0, min 0, max 0, fuzz 0, flat 0, resolution 0\n                ABS_MT_TOUCH_MAJOR    : value 0, min 0, max 255, fuzz 0, flat 0, resolution 0\n                ABS_MT_TOUCH_MINOR    : value 0, min 0, max 255, fuzz 0, flat 0, resolution 0\n                ABS_MT_POSITION_X     : value 0, min 0, max 32767, fuzz 0, flat 0, resolution 0\n                ABS_MT_POSITION_Y     : value 0, min 0, max 32767, fuzz 0, flat 0, resolution 0\n                ABS_MT_TOOL_TYPE      : value 0, min 0, max 15, fuzz 0, flat 0, resolution 0\n                ABS_MT_TRACKING_ID    : value 0, min 0, max 65535, fuzz 0, flat 0, resolution 0\n  input props:\n    INPUT_PROP_POINTER\n    INPUT_PROP_BUTTONPAD"
+      },
+      "validation": {
+        "eventLine": "I/SpinonBootstrap(18325): SPINON_C133_NATIVE_WHEEL source=MouseWheel action=8 source_bits=0x2002 event_source_bits=0x2002 pointer_count=1 pointer_tool=mouse pointer_tool_type=3 device_supported_source_bits=0x10200a device=51 hscroll=1.0 vscroll=0.0 hfactor_px=168.0 vfactor_px=168.0 raw_delta_physical_px=168.0,-0.0 scale_px_per_css_px=2.625 point_screen_px=361.7461,1283.5283 surface_origin_screen_px=15,991 point_css_px=132.09375,111.43936 delta_css_px=64.0,-0.0 unit=AndroidPhysicalPixels phase=None modifiers=0 generation=2 callback_us=1164 waits_for_worker=false status=0 C13.3 wheel sequence=1 admitted=true admission=Queued target=7 point_css_px=132.09375,111.43936 delta_css_px=64,-0 raw_delta=168,-0 unit=AndroidPhysicalPixels source=MouseWheel scale=2.625 phase=None modifiers=0 key=RuntimeRenderKey { generation: DocumentGeneration(1), document_revision: DocumentRevision(55), render_tree_revision: RenderTreeRevision(11), style_revision: StyleRevision(0), environment_revision: EnvironmentRevision(0), intrinsic_size_revision: IntrinsicSizeRevision(0), scroll_state_revision: ScrollStateRevision(1) } basis_revision=1",
+        "pointCss": [
+          132.09375,
+          111.43936
+        ],
+        "sourceUnionHex": "10200a",
+        "process": "I/SpinonBootstrap(18325): SPINON_C133_PROCESS status=0 c13_3_input_batch=processed processed_count=1 pending_regular=0 scroll_state_revision=2 offsets=root:0,0;outer:64,0;inner:86,106 traces=[event=wheel sequence=1 target=7 point_css_px=132.09,111.44 delta_css_px=64.00,-0.00 raw_delta=168.00,-0.00 unit=AndroidPhysicalPixels source=MouseWheel scale=2.625 momentum=None modifiers=0 policy_epoch=0 coalesced_samples=1 published=true scroll_state_revision=2 offsets=root:0,0;outer:64,0;inner:86,106 result=[target=7 revision=2 changes=[4:consumed=64.00,0.00:offset=64.00,0.00] remainder_css_px=0.00,0.00]]",
+        "draw": "I/SpinonBootstrap(18325): SPINON_C0410_DRAW generation=2 status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=2 scroll_offsets=[0,0;64,0;86,106] generation=1 viewport_css_px=400x240 surface_texture=1050x630 root_css_px=400x240"
+      },
+      "pixelComparison": {
+        "outsideCompared": 134064,
+        "outsideChanged": 0,
+        "insideChanged": 50774,
+        "surfaceCropPx": [
+          1050,
+          630
+        ],
+        "rootScrollportCssPx": {
+          "left": 16,
+          "top": 16,
+          "right": 384,
+          "bottom": 224
+        },
+        "rootScrollportPx": {
+          "left": 42,
+          "top": 42,
+          "right": 1008,
+          "bottom": 588
+        },
+        "alignedBounds": {
+          "before": {
+            "left": 15,
+            "top": 991,
+            "right": 1065,
+            "bottom": 1621,
+            "line": "I/SpinonBootstrap(18325): SPINON_C133_SURFACE_BOUNDS phase=ready screen_px=15,991 size_px=1050x630"
+          },
+          "after": {
+            "left": 15,
+            "top": 996,
+            "right": 1065,
+            "bottom": 1626,
+            "line": "I/SpinonBootstrap(18325): SPINON_C133_SURFACE_BOUNDS phase=wheel screen_px=15,996 size_px=1050x630"
+          }
+        }
+      },
+      "beforeSha256": "51b1f8e8e5f995aa928e4bbb39377049be6c4636778a3dc469f6ee095603489a",
+      "afterSha256": "a68d6486e4b03d3acabb4b2b529637058ce2a241c2ec71d2e97a7ad3ca7965d4",
+      "deviceRemoved": true
+    },
+    {
+      "id": "mouse-event-outside-surface-on-composite-device",
+      "helper": {
+        "stdout": "device-created name=Spinon C13.3 composite mouse touchpad probe cursor_delta=362,1285 axis=h delay=4\ndevice-destroyed=true",
+        "stderr": "",
+        "inputDevice": "    51: Spinon C13.3 composite mouse touchpad probe\n      Classes: TOUCH | CURSOR | TOUCH_MT | TOUCHPAD\n      Path: /dev/input/event12\n      Enabled: true\n      Descriptor: 0d3bd83946968b90d06ee257e8ed5bd5f9a40bcc\n      Location: \n      ControllerNumber: 0\n      UniqueId: \n      Identifier: bus=0x0006, vendor=0x5350, product=0xc134, version=0x0001, bluetoothAddress=<not set>\n      KeyLayoutFile: \n      KeyCharacterMapFile: \n      ConfigurationFile: <none>\n      VideoDevice: <none>\n      SysfsDevicePath: /sys/devices/virtual\n      KernelWakeupEventCountPath: /sys/devices/virtual/wakeup/wakeup38/event_count\n      KeyState (pressed): <none>\n      AbsState: ABS_X=0, ABS_Y=0, ABS_MT_SLOT=0, ABS_MT_TOUCH_MAJOR=0, ABS_MT_TOUCH_MINOR=0, ABS_MT_POSITION_X=0, ABS_MT_POSITION_Y=0, ABS_MT_TOOL_TYPE=0, ABS_MT_TRACKING_ID=0\n    -1: Virtual\n      Classes: KEYBOARD | ALPHAKEY | DPAD | VIRTUAL\n      Path: <virtual>\n      Enabled: true\n      Descriptor: a718a782d34bc767f4689c232d64d527998ea7fd\n      Location: \n      ControllerNumber: 0\n      UniqueId: <virtual>\n      Identifier: bus=0x0000, vendor=0x0000, product=0x0000, version=0x0000, bluetoothAddress=<not set>\n      KeyLayoutFile: /system/usr/keylayout/Generic.kl\n      KeyCharacterMapFile: /system/usr/keychars/Virtual.kcm\n      ConfigurationFile: <none>\n      VideoDevice: <none>\n      SysfsDevicePath: <none>",
+        "geteventDevice": "add device 1: /dev/input/event12\n  name:     \"Spinon C13.3 composite mouse touchpad probe\"\n  events:\n    KEY (0001): BTN_MOUSE             BTN_TOOL_FINGER       BTN_TOUCH            \n    REL (0002): REL_X                 REL_Y                 REL_HWHEEL            REL_WHEEL            \n    ABS (0003): ABS_X                 : value 0, min 0, max 32767, fuzz 0, flat 0, resolution 0\n                ABS_Y                 : value 0, min 0, max 32767, fuzz 0, flat 0, resolution 0\n                ABS_MT_SLOT           : value 0, min 0, max 0, fuzz 0, flat 0, resolution 0\n                ABS_MT_TOUCH_MAJOR    : value 0, min 0, max 255, fuzz 0, flat 0, resolution 0\n                ABS_MT_TOUCH_MINOR    : value 0, min 0, max 255, fuzz 0, flat 0, resolution 0\n                ABS_MT_POSITION_X     : value 0, min 0, max 32767, fuzz 0, flat 0, resolution 0\n                ABS_MT_POSITION_Y     : value 0, min 0, max 32767, fuzz 0, flat 0, resolution 0\n                ABS_MT_TOOL_TYPE      : value 0, min 0, max 15, fuzz 0, flat 0, resolution 0\n                ABS_MT_TRACKING_ID    : value 0, min 0, max 65535, fuzz 0, flat 0, resolution 0\n  input props:\n    INPUT_PROP_POINTER\n    INPUT_PROP_BUTTONPAD"
+      },
+      "validation": {
+        "eventLine": "I/SpinonBootstrap(18437): SPINON_C133_NATIVE_WHEEL_REJECT reason=point-outside-surface source=MouseWheel point_screen_px=970.0156,2399.0 surface_origin_screen_px=15,991 point_surface_px=955.0156,1408.0 surface_view_px=1050x630 event_source_bits=0x2002 pointer_count=1 pointer_tool=mouse pointer_tool_type=3 device_supported_source_bits=0x10200a device=52",
+        "sourceUnionHex": "10200a",
+        "draw": "I/SpinonBootstrap(18437): SPINON_C0410_DRAW generation=2 status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=1 scroll_offsets=[0,0;0,0;86,106] generation=1 viewport_css_px=400x240 surface_texture=1050x630 root_css_px=400x240"
+      },
+      "pixelComparison": {
+        "outsideCompared": 134064,
+        "outsideChanged": 0,
+        "insideChanged": 0,
+        "surfaceCropPx": [
+          1050,
+          630
+        ],
+        "rootScrollportCssPx": {
+          "left": 16,
+          "top": 16,
+          "right": 384,
+          "bottom": 224
+        },
+        "rootScrollportPx": {
+          "left": 42,
+          "top": 42,
+          "right": 1008,
+          "bottom": 588
+        },
+        "alignedBounds": {
+          "before": {
+            "left": 15,
+            "top": 991,
+            "right": 1065,
+            "bottom": 1621,
+            "line": "I/SpinonBootstrap(18437): SPINON_C133_SURFACE_BOUNDS phase=ready screen_px=15,991 size_px=1050x630"
+          },
+          "after": {
+            "left": 15,
+            "top": 991,
+            "right": 1065,
+            "bottom": 1621,
+            "line": "I/SpinonBootstrap(18437): SPINON_C133_SURFACE_BOUNDS phase=ready screen_px=15,991 size_px=1050x630"
+          }
+        }
+      },
+      "beforeSha256": "5e264cb3639eb545bc54b31498cc7c1184a225870de61ad9ee90435e1b69bf02",
+      "afterSha256": "51b1f8e8e5f995aa928e4bbb39377049be6c4636778a3dc469f6ee095603489a",
+      "deviceRemoved": true
+    }
+  ],
+  "limits": [
+    "The composite input device is virtual uinput on an Android API 37 ARM64 AVD, not physical hardware.",
+    "This proves event-source classification and the opt-in Android fixture route only.",
+    "Targetable physical trackpad, iOS native callback/sign/adapter, public DOM events, and compositor scanout remain unverified.",
+    "C13.3 remains incomplete."
+  ]
+}

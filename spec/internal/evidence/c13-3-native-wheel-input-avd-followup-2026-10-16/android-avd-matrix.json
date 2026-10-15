@@ -1,0 +1,661 @@
+{
+  "schema": "spinon-c13-3-native-wheel-android-avd-v2",
+  "capturedAt": "2026-10-15T19:10:04.952Z",
+  "sourceRevision": "f1c3d17ad1e7485d5f4566d6996026364d8f1999",
+  "sourceDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "android": {
+    "serial": "emulator-5554",
+    "model": "sdk_gphone16k_arm64",
+    "qemu": "1",
+    "api": "37",
+    "release": "17",
+    "size": "Physical size: 1080x2400",
+    "density": "Physical density: 420"
+  },
+  "build": {
+    "artifact": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+    "sha256": "0ea4955a417c1bc50d6e8d849a18b76c797126500ae2dfa67d623523e918169e",
+    "optInFlags": [
+      "SPINON_ENABLE_C04_RUNTIME_GPU=1",
+      "SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST=1"
+    ]
+  },
+  "sourceFileSha256": {
+    "plan/c13-3-native-wheel-input.md": "9b7139533459493245a9c2eab2d9d3e6840872a297327c912ba7289d313e2561",
+    "spec/STATUS.md": "b0d70ec6ebc4eb365dc0087e22a7cda21cbb41c26a8724d9b9c9e1aad85c1477",
+    "spec/internal/0063-c13-3-scroll-gestures.md": "45abb53a7343a9025ae6e1781bd9306ddbbafd458bb25e19211671c453138d37",
+    "spec/internal/README.md": "313774d52eb005cdabaefd938ac82eb3e6925f5efbbc59cbae79d2fa0a9f9596",
+    "spec/public/roadmap.html": "6cb0c0f422e75f19eefe64ddcd74c99b1d8713909787a285bd6f93ef7208e3f3",
+    "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "cdde643384060b955a99dd35b5a86cba833e44fdea00c326f2d3f16e987c67b6",
+    "platforms/android/app/src/main/java/dev/spinon/bootstrap/WheelSourceClassifier.java": "bca40039968fa54d4e35fced98dad335f6347bf1b3c762feb7a56cd1766695fb",
+    "tools/css-reference/capture-c13-3-native-wheel-input-android.mjs": "7392c750719ede4cd532a3062fac46b04bc4ccddcd4126ae645fab42022d1e83",
+    "tools/css-reference/c13-3-native-wheel-source-classifier.test.mjs": "f926b599ccfb87faed3f1e8a1053adc8d37b525634637098190827023feaea50",
+    "tools/css-reference/fixtures/WheelSourceClassifierJvmTest.java": "6e8e275beb7ace8fe57fc502c2ae2030fb907795fbf4804bfcd22fa1b8c74f64"
+  },
+  "fixture": {
+    "scenario": "auto-boundary",
+    "viewportCssPx": [
+      400,
+      240
+    ],
+    "surfacePxPerCssPx": 2.625,
+    "scrollportCssPx": {
+      "left": 16,
+      "top": 16,
+      "right": 384,
+      "bottom": 224
+    },
+    "targetCssPx": [
+      132,
+      112
+    ],
+    "screenPoint": "surface screen origin + rounded CSS point * surface scale"
+  },
+  "successes": [
+    {
+      "name": "h-positive",
+      "input": {
+        "source": "SOURCE_MOUSE",
+        "action": "ACTION_SCROLL",
+        "hscroll": 1,
+        "vscroll": 0,
+        "screenPx": [
+          362,
+          1285
+        ],
+        "targetCssPx": [
+          132,
+          112
+        ]
+      },
+      "expected": {
+        "deltaCssPx": [
+          64,
+          0
+        ],
+        "offsets": {
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            64,
+            0
+          ],
+          "inner": [
+            86,
+            106
+          ]
+        },
+        "revision": 2
+      },
+      "observations": {
+        "wheelLine": "I/SpinonBootstrap(16443): SPINON_C133_NATIVE_WHEEL source=MouseWheel action=8 source_bits=0x2002 event_source_bits=0x2002 pointer_count=1 pointer_tool=mouse pointer_tool_type=3 device_supported_source_bits=0x301 device=-1 hscroll=1.0 vscroll=0.0 hfactor_px=168.0 vfactor_px=168.0 raw_delta_physical_px=168.0,-0.0 scale_px_per_css_px=2.625 point_screen_px=362.0,1285.0 surface_origin_screen_px=15,991 point_css_px=132.19048,112.0 delta_css_px=64.0,-0.0 unit=AndroidPhysicalPixels phase=None modifiers=0 generation=2 callback_us=1196 waits_for_worker=false status=0 C13.3 wheel sequence=1 admitted=true admission=Queued target=7 point_css_px=132.19048,112 delta_css_px=64,-0 raw_delta=168,-0 unit=AndroidPhysicalPixels source=MouseWheel scale=2.625 phase=None modifiers=0 key=RuntimeRenderKey { generation: DocumentGeneration(1), document_revision: DocumentRevision(55), render_tree_revision: RenderTreeRevision(11), style_revision: StyleRevision(0), environment_revision: EnvironmentRevision(0), intrinsic_size_revision: IntrinsicSizeRevision(0), scroll_state_revision: ScrollStateRevision(1) } basis_revision=1",
+        "processLine": "I/SpinonBootstrap(16443): SPINON_C133_PROCESS status=0 c13_3_input_batch=processed processed_count=1 pending_regular=0 scroll_state_revision=2 offsets=root:0,0;outer:64,0;inner:86,106 traces=[event=wheel sequence=1 target=7 point_css_px=132.19,112.00 delta_css_px=64.00,-0.00 raw_delta=168.00,-0.00 unit=AndroidPhysicalPixels source=MouseWheel scale=2.625 momentum=None modifiers=0 policy_epoch=0 coalesced_samples=1 published=true scroll_state_revision=2 offsets=root:0,0;outer:64,0;inner:86,106 result=[target=7 revision=2 changes=[4:consumed=64.00,0.00:offset=64.00,0.00] remainder_css_px=0.00,0.00]]",
+        "drawLine": "I/SpinonBootstrap(16443): SPINON_C0410_DRAW generation=2 status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=2 scroll_offsets=[0,0;64,0;86,106] generation=1 viewport_css_px=400x240 surface_texture=1050x630 root_css_px=400x240",
+        "offsets": {
+          "revision": 2,
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            64,
+            0
+          ],
+          "inner": [
+            86,
+            106
+          ]
+        },
+        "pointCssPx": [
+          132.19048,
+          112
+        ]
+      },
+      "surfaceOriginAtWheelEventPx": {
+        "x": 15,
+        "y": 991
+      },
+      "screenshots": []
+    },
+    {
+      "name": "h-negative",
+      "input": {
+        "source": "SOURCE_MOUSE",
+        "action": "ACTION_SCROLL",
+        "hscroll": -1,
+        "vscroll": 0,
+        "screenPx": [
+          362,
+          1285
+        ],
+        "targetCssPx": [
+          132,
+          112
+        ]
+      },
+      "expected": {
+        "deltaCssPx": [
+          -64,
+          0
+        ],
+        "offsets": {
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "inner": [
+            22,
+            106
+          ]
+        },
+        "revision": 2
+      },
+      "observations": {
+        "wheelLine": "I/SpinonBootstrap(16535): SPINON_C133_NATIVE_WHEEL source=MouseWheel action=8 source_bits=0x2002 event_source_bits=0x2002 pointer_count=1 pointer_tool=mouse pointer_tool_type=3 device_supported_source_bits=0x301 device=-1 hscroll=-1.0 vscroll=0.0 hfactor_px=168.0 vfactor_px=168.0 raw_delta_physical_px=-168.0,-0.0 scale_px_per_css_px=2.625 point_screen_px=362.0,1285.0 surface_origin_screen_px=15,991 point_css_px=132.19048,112.0 delta_css_px=-64.0,-0.0 unit=AndroidPhysicalPixels phase=None modifiers=0 generation=2 callback_us=1452 waits_for_worker=false status=0 C13.3 wheel sequence=1 admitted=true admission=Queued target=7 point_css_px=132.19048,112 delta_css_px=-64,-0 raw_delta=-168,-0 unit=AndroidPhysicalPixels source=MouseWheel scale=2.625 phase=None modifiers=0 key=RuntimeRenderKey { generation: DocumentGeneration(1), document_revision: DocumentRevision(55), render_tree_revision: RenderTreeRevision(11), style_revision: StyleRevision(0), environment_revision: EnvironmentRevision(0), intrinsic_size_revision: IntrinsicSizeRevision(0), scroll_state_revision: ScrollStateRevision(1) } basis_revision=1",
+        "processLine": "I/SpinonBootstrap(16535): SPINON_C133_PROCESS status=0 c13_3_input_batch=processed processed_count=1 pending_regular=0 scroll_state_revision=2 offsets=root:0,0;outer:0,0;inner:22,106 traces=[event=wheel sequence=1 target=7 point_css_px=132.19,112.00 delta_css_px=-64.00,-0.00 raw_delta=-168.00,-0.00 unit=AndroidPhysicalPixels source=MouseWheel scale=2.625 momentum=None modifiers=0 policy_epoch=0 coalesced_samples=1 published=true scroll_state_revision=2 offsets=root:0,0;outer:0,0;inner:22,106 result=[target=7 revision=2 changes=[6:consumed=-64.00,0.00:offset=22.00,106.00] remainder_css_px=0.00,0.00]]",
+        "drawLine": "I/SpinonBootstrap(16535): SPINON_C0410_DRAW generation=2 status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=2 scroll_offsets=[0,0;0,0;22,106] generation=1 viewport_css_px=400x240 surface_texture=1050x630 root_css_px=400x240",
+        "offsets": {
+          "revision": 2,
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "inner": [
+            22,
+            106
+          ]
+        },
+        "pointCssPx": [
+          132.19048,
+          112
+        ]
+      },
+      "surfaceOriginAtWheelEventPx": {
+        "x": 15,
+        "y": 991
+      },
+      "screenshots": []
+    },
+    {
+      "name": "v-positive",
+      "input": {
+        "source": "SOURCE_MOUSE",
+        "action": "ACTION_SCROLL",
+        "hscroll": 0,
+        "vscroll": 1,
+        "screenPx": [
+          362,
+          1285
+        ],
+        "targetCssPx": [
+          132,
+          112
+        ]
+      },
+      "expected": {
+        "deltaCssPx": [
+          0,
+          -64
+        ],
+        "offsets": {
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "inner": [
+            86,
+            42
+          ]
+        },
+        "revision": 2
+      },
+      "observations": {
+        "wheelLine": "I/SpinonBootstrap(16604): SPINON_C133_NATIVE_WHEEL source=MouseWheel action=8 source_bits=0x2002 event_source_bits=0x2002 pointer_count=1 pointer_tool=mouse pointer_tool_type=3 device_supported_source_bits=0x301 device=-1 hscroll=0.0 vscroll=1.0 hfactor_px=168.0 vfactor_px=168.0 raw_delta_physical_px=0.0,-168.0 scale_px_per_css_px=2.625 point_screen_px=362.0,1285.0 surface_origin_screen_px=15,991 point_css_px=132.19048,112.0 delta_css_px=0.0,-64.0 unit=AndroidPhysicalPixels phase=None modifiers=0 generation=2 callback_us=1144 waits_for_worker=false status=0 C13.3 wheel sequence=1 admitted=true admission=Queued target=7 point_css_px=132.19048,112 delta_css_px=0,-64 raw_delta=0,-168 unit=AndroidPhysicalPixels source=MouseWheel scale=2.625 phase=None modifiers=0 key=RuntimeRenderKey { generation: DocumentGeneration(1), document_revision: DocumentRevision(55), render_tree_revision: RenderTreeRevision(11), style_revision: StyleRevision(0), environment_revision: EnvironmentRevision(0), intrinsic_size_revision: IntrinsicSizeRevision(0), scroll_state_revision: ScrollStateRevision(1) } basis_revision=1",
+        "processLine": "I/SpinonBootstrap(16604): SPINON_C133_PROCESS status=0 c13_3_input_batch=processed processed_count=1 pending_regular=0 scroll_state_revision=2 offsets=root:0,0;outer:0,0;inner:86,42 traces=[event=wheel sequence=1 target=7 point_css_px=132.19,112.00 delta_css_px=0.00,-64.00 raw_delta=0.00,-168.00 unit=AndroidPhysicalPixels source=MouseWheel scale=2.625 momentum=None modifiers=0 policy_epoch=0 coalesced_samples=1 published=true scroll_state_revision=2 offsets=root:0,0;outer:0,0;inner:86,42 result=[target=7 revision=2 changes=[6:consumed=0.00,-64.00:offset=86.00,42.00] remainder_css_px=0.00,0.00]]",
+        "drawLine": "I/SpinonBootstrap(16604): SPINON_C0410_DRAW generation=2 status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=2 scroll_offsets=[0,0;0,0;86,42] generation=1 viewport_css_px=400x240 surface_texture=1050x630 root_css_px=400x240",
+        "offsets": {
+          "revision": 2,
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "inner": [
+            86,
+            42
+          ]
+        },
+        "pointCssPx": [
+          132.19048,
+          112
+        ]
+      },
+      "surfaceOriginAtWheelEventPx": {
+        "x": 15,
+        "y": 991
+      },
+      "screenshots": []
+    },
+    {
+      "name": "v-negative",
+      "input": {
+        "source": "SOURCE_MOUSE",
+        "action": "ACTION_SCROLL",
+        "hscroll": 0,
+        "vscroll": -1,
+        "screenPx": [
+          362,
+          1285
+        ],
+        "targetCssPx": [
+          132,
+          112
+        ]
+      },
+      "expected": {
+        "deltaCssPx": [
+          0,
+          64
+        ],
+        "offsets": {
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            64
+          ],
+          "inner": [
+            86,
+            106
+          ]
+        },
+        "revision": 2
+      },
+      "observations": {
+        "wheelLine": "I/SpinonBootstrap(16675): SPINON_C133_NATIVE_WHEEL source=MouseWheel action=8 source_bits=0x2002 event_source_bits=0x2002 pointer_count=1 pointer_tool=mouse pointer_tool_type=3 device_supported_source_bits=0x301 device=-1 hscroll=0.0 vscroll=-1.0 hfactor_px=168.0 vfactor_px=168.0 raw_delta_physical_px=0.0,168.0 scale_px_per_css_px=2.625 point_screen_px=362.0,1285.0 surface_origin_screen_px=15,991 point_css_px=132.19048,112.0 delta_css_px=0.0,64.0 unit=AndroidPhysicalPixels phase=None modifiers=0 generation=2 callback_us=1076 waits_for_worker=false status=0 C13.3 wheel sequence=1 admitted=true admission=Queued target=7 point_css_px=132.19048,112 delta_css_px=0,64 raw_delta=0,168 unit=AndroidPhysicalPixels source=MouseWheel scale=2.625 phase=None modifiers=0 key=RuntimeRenderKey { generation: DocumentGeneration(1), document_revision: DocumentRevision(55), render_tree_revision: RenderTreeRevision(11), style_revision: StyleRevision(0), environment_revision: EnvironmentRevision(0), intrinsic_size_revision: IntrinsicSizeRevision(0), scroll_state_revision: ScrollStateRevision(1) } basis_revision=1",
+        "processLine": "I/SpinonBootstrap(16675): SPINON_C133_PROCESS status=0 c13_3_input_batch=processed processed_count=1 pending_regular=0 scroll_state_revision=2 offsets=root:0,0;outer:0,64;inner:86,106 traces=[event=wheel sequence=1 target=7 point_css_px=132.19,112.00 delta_css_px=0.00,64.00 raw_delta=0.00,168.00 unit=AndroidPhysicalPixels source=MouseWheel scale=2.625 momentum=None modifiers=0 policy_epoch=0 coalesced_samples=1 published=true scroll_state_revision=2 offsets=root:0,0;outer:0,64;inner:86,106 result=[target=7 revision=2 changes=[4:consumed=0.00,64.00:offset=0.00,64.00] remainder_css_px=0.00,0.00]]",
+        "drawLine": "I/SpinonBootstrap(16675): SPINON_C0410_DRAW generation=2 status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=2 scroll_offsets=[0,0;0,64;86,106] generation=1 viewport_css_px=400x240 surface_texture=1050x630 root_css_px=400x240",
+        "offsets": {
+          "revision": 2,
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            64
+          ],
+          "inner": [
+            86,
+            106
+          ]
+        },
+        "pointCssPx": [
+          132.19048,
+          112
+        ]
+      },
+      "surfaceOriginAtWheelEventPx": {
+        "x": 15,
+        "y": 991
+      },
+      "screenshots": []
+    },
+    {
+      "name": "diagonal-positive-positive",
+      "input": {
+        "source": "SOURCE_MOUSE",
+        "action": "ACTION_SCROLL",
+        "hscroll": 1,
+        "vscroll": 1,
+        "screenPx": [
+          362,
+          1285
+        ],
+        "targetCssPx": [
+          132,
+          112
+        ]
+      },
+      "expected": {
+        "deltaCssPx": [
+          64,
+          -64
+        ],
+        "offsets": {
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            64,
+            0
+          ],
+          "inner": [
+            86,
+            42
+          ]
+        },
+        "revision": 2
+      },
+      "observations": {
+        "wheelLine": "I/SpinonBootstrap(16742): SPINON_C133_NATIVE_WHEEL source=MouseWheel action=8 source_bits=0x2002 event_source_bits=0x2002 pointer_count=1 pointer_tool=mouse pointer_tool_type=3 device_supported_source_bits=0x301 device=-1 hscroll=1.0 vscroll=1.0 hfactor_px=168.0 vfactor_px=168.0 raw_delta_physical_px=168.0,-168.0 scale_px_per_css_px=2.625 point_screen_px=362.0,1285.0 surface_origin_screen_px=15,991 point_css_px=132.19048,112.0 delta_css_px=64.0,-64.0 unit=AndroidPhysicalPixels phase=None modifiers=0 generation=2 callback_us=1258 waits_for_worker=false status=0 C13.3 wheel sequence=1 admitted=true admission=Queued target=7 point_css_px=132.19048,112 delta_css_px=64,-64 raw_delta=168,-168 unit=AndroidPhysicalPixels source=MouseWheel scale=2.625 phase=None modifiers=0 key=RuntimeRenderKey { generation: DocumentGeneration(1), document_revision: DocumentRevision(55), render_tree_revision: RenderTreeRevision(11), style_revision: StyleRevision(0), environment_revision: EnvironmentRevision(0), intrinsic_size_revision: IntrinsicSizeRevision(0), scroll_state_revision: ScrollStateRevision(1) } basis_revision=1",
+        "processLine": "I/SpinonBootstrap(16742): SPINON_C133_PROCESS status=0 c13_3_input_batch=processed processed_count=1 pending_regular=0 scroll_state_revision=2 offsets=root:0,0;outer:64,0;inner:86,42 traces=[event=wheel sequence=1 target=7 point_css_px=132.19,112.00 delta_css_px=64.00,-64.00 raw_delta=168.00,-168.00 unit=AndroidPhysicalPixels source=MouseWheel scale=2.625 momentum=None modifiers=0 policy_epoch=0 coalesced_samples=1 published=true scroll_state_revision=2 offsets=root:0,0;outer:64,0;inner:86,42 result=[target=7 revision=2 changes=[6:consumed=0.00,-64.00:offset=86.00,42.00|4:consumed=64.00,0.00:offset=64.00,0.00] remainder_css_px=0.00,0.00]]",
+        "drawLine": "I/SpinonBootstrap(16742): SPINON_C0410_DRAW generation=2 status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=2 scroll_offsets=[0,0;64,0;86,42] generation=1 viewport_css_px=400x240 surface_texture=1050x630 root_css_px=400x240",
+        "offsets": {
+          "revision": 2,
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            64,
+            0
+          ],
+          "inner": [
+            86,
+            42
+          ]
+        },
+        "pointCssPx": [
+          132.19048,
+          112
+        ]
+      },
+      "pixelComparison": {
+        "outsideCompared": 134064,
+        "outsideChanged": 0,
+        "insideChanged": 50684,
+        "alignedSurfaceBounds": {
+          "before": {
+            "left": 15,
+            "top": 991,
+            "right": 1065,
+            "bottom": 1621
+          },
+          "after": {
+            "left": 15,
+            "top": 996,
+            "right": 1065,
+            "bottom": 1626
+          }
+        },
+        "rootBorderCssPx": {
+          "left": 16,
+          "top": 16,
+          "right": 384,
+          "bottom": 224
+        }
+      },
+      "surfaceOriginAtWheelEventPx": {
+        "x": 15,
+        "y": 991
+      },
+      "surfaceBoundsBefore": {
+        "left": 15,
+        "top": 991,
+        "right": 1065,
+        "bottom": 1621
+      },
+      "surfaceBoundsAfter": {
+        "left": 15,
+        "top": 996,
+        "right": 1065,
+        "bottom": 1626
+      },
+      "screenshots": [
+        "android-diagonal-positive-positive-before.png",
+        "android-diagonal-positive-positive-after.png"
+      ]
+    },
+    {
+      "name": "diagonal-negative-negative",
+      "input": {
+        "source": "SOURCE_MOUSE",
+        "action": "ACTION_SCROLL",
+        "hscroll": -1,
+        "vscroll": -1,
+        "screenPx": [
+          362,
+          1285
+        ],
+        "targetCssPx": [
+          132,
+          112
+        ]
+      },
+      "expected": {
+        "deltaCssPx": [
+          -64,
+          64
+        ],
+        "offsets": {
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            64
+          ],
+          "inner": [
+            22,
+            106
+          ]
+        },
+        "revision": 2
+      },
+      "observations": {
+        "wheelLine": "I/SpinonBootstrap(16817): SPINON_C133_NATIVE_WHEEL source=MouseWheel action=8 source_bits=0x2002 event_source_bits=0x2002 pointer_count=1 pointer_tool=mouse pointer_tool_type=3 device_supported_source_bits=0x301 device=-1 hscroll=-1.0 vscroll=-1.0 hfactor_px=168.0 vfactor_px=168.0 raw_delta_physical_px=-168.0,168.0 scale_px_per_css_px=2.625 point_screen_px=362.0,1285.0 surface_origin_screen_px=15,991 point_css_px=132.19048,112.0 delta_css_px=-64.0,64.0 unit=AndroidPhysicalPixels phase=None modifiers=0 generation=2 callback_us=1199 waits_for_worker=false status=0 C13.3 wheel sequence=1 admitted=true admission=Queued target=7 point_css_px=132.19048,112 delta_css_px=-64,64 raw_delta=-168,168 unit=AndroidPhysicalPixels source=MouseWheel scale=2.625 phase=None modifiers=0 key=RuntimeRenderKey { generation: DocumentGeneration(1), document_revision: DocumentRevision(55), render_tree_revision: RenderTreeRevision(11), style_revision: StyleRevision(0), environment_revision: EnvironmentRevision(0), intrinsic_size_revision: IntrinsicSizeRevision(0), scroll_state_revision: ScrollStateRevision(1) } basis_revision=1",
+        "processLine": "I/SpinonBootstrap(16817): SPINON_C133_PROCESS status=0 c13_3_input_batch=processed processed_count=1 pending_regular=0 scroll_state_revision=2 offsets=root:0,0;outer:0,64;inner:22,106 traces=[event=wheel sequence=1 target=7 point_css_px=132.19,112.00 delta_css_px=-64.00,64.00 raw_delta=-168.00,168.00 unit=AndroidPhysicalPixels source=MouseWheel scale=2.625 momentum=None modifiers=0 policy_epoch=0 coalesced_samples=1 published=true scroll_state_revision=2 offsets=root:0,0;outer:0,64;inner:22,106 result=[target=7 revision=2 changes=[6:consumed=-64.00,0.00:offset=22.00,106.00|4:consumed=0.00,64.00:offset=0.00,64.00] remainder_css_px=0.00,0.00]]",
+        "drawLine": "I/SpinonBootstrap(16817): SPINON_C0410_DRAW generation=2 status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=2 scroll_offsets=[0,0;0,64;22,106] generation=1 viewport_css_px=400x240 surface_texture=1050x630 root_css_px=400x240",
+        "offsets": {
+          "revision": 2,
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            64
+          ],
+          "inner": [
+            22,
+            106
+          ]
+        },
+        "pointCssPx": [
+          132.19048,
+          112
+        ]
+      },
+      "surfaceOriginAtWheelEventPx": {
+        "x": 15,
+        "y": 991
+      },
+      "screenshots": []
+    },
+    {
+      "name": "diagonal-positive-negative",
+      "input": {
+        "source": "SOURCE_MOUSE",
+        "action": "ACTION_SCROLL",
+        "hscroll": 1,
+        "vscroll": -1,
+        "screenPx": [
+          362,
+          1285
+        ],
+        "targetCssPx": [
+          132,
+          112
+        ]
+      },
+      "expected": {
+        "deltaCssPx": [
+          64,
+          64
+        ],
+        "offsets": {
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            64,
+            64
+          ],
+          "inner": [
+            86,
+            106
+          ]
+        },
+        "revision": 2
+      },
+      "observations": {
+        "wheelLine": "I/SpinonBootstrap(16884): SPINON_C133_NATIVE_WHEEL source=MouseWheel action=8 source_bits=0x2002 event_source_bits=0x2002 pointer_count=1 pointer_tool=mouse pointer_tool_type=3 device_supported_source_bits=0x301 device=-1 hscroll=1.0 vscroll=-1.0 hfactor_px=168.0 vfactor_px=168.0 raw_delta_physical_px=168.0,168.0 scale_px_per_css_px=2.625 point_screen_px=362.0,1285.0 surface_origin_screen_px=15,991 point_css_px=132.19048,112.0 delta_css_px=64.0,64.0 unit=AndroidPhysicalPixels phase=None modifiers=0 generation=2 callback_us=1446 waits_for_worker=false status=0 C13.3 wheel sequence=1 admitted=true admission=Queued target=7 point_css_px=132.19048,112 delta_css_px=64,64 raw_delta=168,168 unit=AndroidPhysicalPixels source=MouseWheel scale=2.625 phase=None modifiers=0 key=RuntimeRenderKey { generation: DocumentGeneration(1), document_revision: DocumentRevision(55), render_tree_revision: RenderTreeRevision(11), style_revision: StyleRevision(0), environment_revision: EnvironmentRevision(0), intrinsic_size_revision: IntrinsicSizeRevision(0), scroll_state_revision: ScrollStateRevision(1) } basis_revision=1",
+        "processLine": "I/SpinonBootstrap(16884): SPINON_C133_PROCESS status=0 c13_3_input_batch=processed processed_count=1 pending_regular=0 scroll_state_revision=2 offsets=root:0,0;outer:64,64;inner:86,106 traces=[event=wheel sequence=1 target=7 point_css_px=132.19,112.00 delta_css_px=64.00,64.00 raw_delta=168.00,168.00 unit=AndroidPhysicalPixels source=MouseWheel scale=2.625 momentum=None modifiers=0 policy_epoch=0 coalesced_samples=1 published=true scroll_state_revision=2 offsets=root:0,0;outer:64,64;inner:86,106 result=[target=7 revision=2 changes=[4:consumed=64.00,64.00:offset=64.00,64.00] remainder_css_px=0.00,0.00]]",
+        "drawLine": "I/SpinonBootstrap(16884): SPINON_C0410_DRAW generation=2 status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=2 scroll_offsets=[0,0;64,64;86,106] generation=1 viewport_css_px=400x240 surface_texture=1050x630 root_css_px=400x240",
+        "offsets": {
+          "revision": 2,
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            64,
+            64
+          ],
+          "inner": [
+            86,
+            106
+          ]
+        },
+        "pointCssPx": [
+          132.19048,
+          112
+        ]
+      },
+      "surfaceOriginAtWheelEventPx": {
+        "x": 15,
+        "y": 991
+      },
+      "screenshots": []
+    },
+    {
+      "name": "diagonal-negative-positive",
+      "input": {
+        "source": "SOURCE_MOUSE",
+        "action": "ACTION_SCROLL",
+        "hscroll": -1,
+        "vscroll": 1,
+        "screenPx": [
+          362,
+          1285
+        ],
+        "targetCssPx": [
+          132,
+          112
+        ]
+      },
+      "expected": {
+        "deltaCssPx": [
+          -64,
+          -64
+        ],
+        "offsets": {
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "inner": [
+            22,
+            42
+          ]
+        },
+        "revision": 2
+      },
+      "observations": {
+        "wheelLine": "I/SpinonBootstrap(16952): SPINON_C133_NATIVE_WHEEL source=MouseWheel action=8 source_bits=0x2002 event_source_bits=0x2002 pointer_count=1 pointer_tool=mouse pointer_tool_type=3 device_supported_source_bits=0x301 device=-1 hscroll=-1.0 vscroll=1.0 hfactor_px=168.0 vfactor_px=168.0 raw_delta_physical_px=-168.0,-168.0 scale_px_per_css_px=2.625 point_screen_px=362.0,1285.0 surface_origin_screen_px=15,991 point_css_px=132.19048,112.0 delta_css_px=-64.0,-64.0 unit=AndroidPhysicalPixels phase=None modifiers=0 generation=2 callback_us=1272 waits_for_worker=false status=0 C13.3 wheel sequence=1 admitted=true admission=Queued target=7 point_css_px=132.19048,112 delta_css_px=-64,-64 raw_delta=-168,-168 unit=AndroidPhysicalPixels source=MouseWheel scale=2.625 phase=None modifiers=0 key=RuntimeRenderKey { generation: DocumentGeneration(1), document_revision: DocumentRevision(55), render_tree_revision: RenderTreeRevision(11), style_revision: StyleRevision(0), environment_revision: EnvironmentRevision(0), intrinsic_size_revision: IntrinsicSizeRevision(0), scroll_state_revision: ScrollStateRevision(1) } basis_revision=1",
+        "processLine": "I/SpinonBootstrap(16952): SPINON_C133_PROCESS status=0 c13_3_input_batch=processed processed_count=1 pending_regular=0 scroll_state_revision=2 offsets=root:0,0;outer:0,0;inner:22,42 traces=[event=wheel sequence=1 target=7 point_css_px=132.19,112.00 delta_css_px=-64.00,-64.00 raw_delta=-168.00,-168.00 unit=AndroidPhysicalPixels source=MouseWheel scale=2.625 momentum=None modifiers=0 policy_epoch=0 coalesced_samples=1 published=true scroll_state_revision=2 offsets=root:0,0;outer:0,0;inner:22,42 result=[target=7 revision=2 changes=[6:consumed=-64.00,-64.00:offset=22.00,42.00] remainder_css_px=0.00,0.00]]",
+        "drawLine": "I/SpinonBootstrap(16952): SPINON_C0410_DRAW generation=2 status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=2 scroll_offsets=[0,0;0,0;22,42] generation=1 viewport_css_px=400x240 surface_texture=1050x630 root_css_px=400x240",
+        "offsets": {
+          "revision": 2,
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "inner": [
+            22,
+            42
+          ]
+        },
+        "pointCssPx": [
+          132.19048,
+          112
+        ]
+      },
+      "surfaceOriginAtWheelEventPx": {
+        "x": 15,
+        "y": 991
+      },
+      "screenshots": []
+    }
+  ],
+  "negativeControls": [
+    {
+      "name": "outside-surface",
+      "inputCommand": "input mouse scroll 360 990 --axis HSCROLL,1 --axis VSCROLL,0",
+      "expectedRejection": "point-outside-surface",
+      "observedRejection": "I/SpinonBootstrap(17018): SPINON_C133_NATIVE_WHEEL_REJECT reason=point-outside-surface source=MouseWheel point_screen_px=360.0,990.0 surface_origin_screen_px=15,991 point_surface_px=345.0,-1.0 surface_view_px=1050x630 event_source_bits=0x2002 pointer_count=1 pointer_tool=mouse pointer_tool_type=3 device_supported_source_bits=0x301 device=-1",
+      "drawLine": "I/SpinonBootstrap(17018): SPINON_C0410_DRAW generation=2 status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=1 scroll_offsets=[0,0;0,0;86,106] generation=1 viewport_css_px=400x240 surface_texture=1050x630 root_css_px=400x240"
+    },
+    {
+      "name": "touchpad-missing-position",
+      "inputCommand": "input touchpad scroll --axis HSCROLL,1 --axis VSCROLL,0",
+      "expectedRejection": "point-outside-surface",
+      "observedRejection": "I/SpinonBootstrap(17082): SPINON_C133_NATIVE_WHEEL_REJECT reason=point-outside-surface source=TrackpadScroll point_screen_px=0.0,0.0 surface_origin_screen_px=15,991 point_surface_px=-15.0,-991.0 surface_view_px=1050x630 event_source_bits=0x100008 pointer_count=1 pointer_tool=finger pointer_tool_type=1 device_supported_source_bits=0x301 device=-1",
+      "drawLine": "I/SpinonBootstrap(17082): SPINON_C0410_DRAW generation=2 status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=1 scroll_offsets=[0,0;0,0;86,106] generation=1 viewport_css_px=400x240 surface_texture=1050x630 root_css_px=400x240"
+    },
+    {
+      "name": "zero-axes",
+      "inputCommand": "input mouse scroll 360 1300 --axis HSCROLL,0 --axis VSCROLL,0",
+      "expectedRejection": "zero-or-nonfinite-axis",
+      "observedRejection": "I/SpinonBootstrap(17147): SPINON_C133_NATIVE_WHEEL_REJECT reason=zero-or-nonfinite-axis source=MouseWheel hscroll=0.0 vscroll=0.0 event_source_bits=0x2002 pointer_count=1 pointer_tool=mouse pointer_tool_type=3 device_supported_source_bits=0x301 device=-1",
+      "drawLine": "I/SpinonBootstrap(17147): SPINON_C0410_DRAW generation=2 status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=1 scroll_offsets=[0,0;0,0;86,106] generation=1 viewport_css_px=400x240 surface_texture=1050x630 root_css_px=400x240"
+    }
+  ],
+  "limits": [
+    "Android API 37 ARM64 AVD만 확인했으며 실기기·hardware GPU 근거가 아니다.",
+    "ADB touchpad source에는 pointer 좌표가 없어 거부됐다. target 가능한 실제 touchpad 입력은 미검증이다.",
+    "iOS native callback/sign은 관찰되지 않아 별도 gate가 남아 있다.",
+    "ADB virtual keyboard Control meta state가 mouse event에 전달되지 않았다. 코드 guard는 있으나 Control-wheel runtime pass로 표시하지 않는다."
+  ]
+}

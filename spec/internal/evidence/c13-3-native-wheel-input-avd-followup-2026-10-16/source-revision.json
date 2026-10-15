@@ -1,0 +1,16 @@
+{
+  "sourceRevision": "f1c3d17ad1e7485d5f4566d6996026364d8f1999",
+  "sourceDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "sourceFileSha256": {
+    "plan/c13-3-native-wheel-input.md": "9b7139533459493245a9c2eab2d9d3e6840872a297327c912ba7289d313e2561",
+    "spec/STATUS.md": "b0d70ec6ebc4eb365dc0087e22a7cda21cbb41c26a8724d9b9c9e1aad85c1477",
+    "spec/internal/0063-c13-3-scroll-gestures.md": "45abb53a7343a9025ae6e1781bd9306ddbbafd458bb25e19211671c453138d37",
+    "spec/internal/README.md": "313774d52eb005cdabaefd938ac82eb3e6925f5efbbc59cbae79d2fa0a9f9596",
+    "spec/public/roadmap.html": "6cb0c0f422e75f19eefe64ddcd74c99b1d8713909787a285bd6f93ef7208e3f3",
+    "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "cdde643384060b955a99dd35b5a86cba833e44fdea00c326f2d3f16e987c67b6",
+    "platforms/android/app/src/main/java/dev/spinon/bootstrap/WheelSourceClassifier.java": "bca40039968fa54d4e35fced98dad335f6347bf1b3c762feb7a56cd1766695fb",
+    "tools/css-reference/capture-c13-3-native-wheel-input-android.mjs": "7392c750719ede4cd532a3062fac46b04bc4ccddcd4126ae645fab42022d1e83",
+    "tools/css-reference/c13-3-native-wheel-source-classifier.test.mjs": "f926b599ccfb87faed3f1e8a1053adc8d37b525634637098190827023feaea50",
+    "tools/css-reference/fixtures/WheelSourceClassifierJvmTest.java": "6e8e275beb7ace8fe57fc502c2ae2030fb907795fbf4804bfcd22fa1b8c74f64"
+  }
+}
