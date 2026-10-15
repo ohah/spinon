@@ -5,6 +5,8 @@ use spinon_core::{
     HostNodeHandle, HostParent, NodeId, OwnerId, StyleRevision,
 };
 use spinon_layout::LayoutFrame;
+#[cfg(feature = "c13-3-gesture-fixture-test")]
+use spinon_style::compute_runtime_block_flex_scroll_gesture_cascade_with_stylesheets;
 use spinon_style::{
     CssMediaEnvironment, CssViewport, StyloDocumentView,
     compute_runtime_block_flex_overflow_clip_cascade_with_stylesheets,
@@ -26,6 +28,9 @@ mod c13_1_clip_matrix;
 mod c13_1_paint_hit_border;
 #[path = "tests/c13_2_scroll_geometry.rs"]
 mod c13_2_scroll_geometry;
+#[cfg(feature = "c13-3-gesture-fixture-test")]
+#[path = "tests/c13_3_scroll_policy.rs"]
+mod c13_3_scroll_policy;
 
 const HTML: &str = "http://www.w3.org/1999/xhtml";
 const C13_OVERFLOW_CLIP_FIXTURE_JS: &str =
@@ -189,6 +194,45 @@ fn overflow_runtime_inputs_with_reordered_tags(
     height_css_px: f32,
     reorder: Option<(usize, usize, usize)>,
 ) -> (RuntimeInputs, Vec<NodeId>) {
+    runtime_inputs_with_reordered_tags_and_scroll_profile(
+        styles,
+        tags,
+        parents,
+        width_css_px,
+        height_css_px,
+        reorder,
+        false,
+    )
+}
+
+#[cfg(feature = "c13-3-gesture-fixture-test")]
+fn scroll_gesture_runtime_inputs_with_viewport(
+    styles: &[&str],
+    parents: &[Option<usize>],
+    width_css_px: f32,
+    height_css_px: f32,
+) -> (RuntimeInputs, Vec<NodeId>) {
+    let tags = vec!["div"; styles.len()];
+    runtime_inputs_with_reordered_tags_and_scroll_profile(
+        styles,
+        &tags,
+        parents,
+        width_css_px,
+        height_css_px,
+        None,
+        true,
+    )
+}
+
+fn runtime_inputs_with_reordered_tags_and_scroll_profile(
+    styles: &[&str],
+    tags: &[&str],
+    parents: &[Option<usize>],
+    width_css_px: f32,
+    height_css_px: f32,
+    reorder: Option<(usize, usize, usize)>,
+    scroll_gesture_profile: bool,
+) -> (RuntimeInputs, Vec<NodeId>) {
     assert_eq!(styles.len(), tags.len());
     assert_eq!(styles.len(), parents.len());
     let mut document = HostDocument::new().unwrap();
@@ -239,12 +283,28 @@ fn overflow_runtime_inputs_with_reordered_tags(
     };
     let view = StyloDocumentView::new_html_fragment_child_shared(Arc::new(document.clone()), root)
         .unwrap();
-    let styles = compute_runtime_block_flex_overflow_clip_cascade_with_stylesheets(
-        &view,
-        &[],
-        viewport,
-        StyleRevision::default(),
-    )
+    let styles = if scroll_gesture_profile {
+        #[cfg(feature = "c13-3-gesture-fixture-test")]
+        {
+            compute_runtime_block_flex_scroll_gesture_cascade_with_stylesheets(
+                &view,
+                &[],
+                viewport,
+                StyleRevision::default(),
+            )
+        }
+        #[cfg(not(feature = "c13-3-gesture-fixture-test"))]
+        {
+            unreachable!("C13.3 fixture profile is disabled")
+        }
+    } else {
+        compute_runtime_block_flex_overflow_clip_cascade_with_stylesheets(
+            &view,
+            &[],
+            viewport,
+            StyleRevision::default(),
+        )
+    }
     .unwrap();
     let output = compute_runtime_style_layout(&document, root, styles, viewport).unwrap();
     let current =

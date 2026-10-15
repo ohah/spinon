@@ -2,6 +2,8 @@ use std::sync::Arc;
 
 use spinon_core::NodeId;
 
+#[cfg(feature = "c13-3-gesture-fixture-test")]
+use super::RuntimeTouchAction;
 use super::{CssClip, CssRect, RuntimeRenderBox, RuntimeRenderError};
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct RuntimeScrollContainer {
@@ -114,6 +116,8 @@ pub struct RuntimeScrollRenderMetadata {
     base_frame_css_px: CssRect,
     scroll_ancestors: Arc<[NodeId]>,
     clip_layers: Arc<[RuntimeScrollClipLayer]>,
+    #[cfg(feature = "c13-3-gesture-fixture-test")]
+    touch_action_chain: Arc<[RuntimeTouchAction]>,
 }
 
 impl RuntimeScrollRenderMetadata {
@@ -126,7 +130,16 @@ impl RuntimeScrollRenderMetadata {
             base_frame_css_px,
             scroll_ancestors: scroll_ancestors.into(),
             clip_layers: clip_layers.into(),
+            #[cfg(feature = "c13-3-gesture-fixture-test")]
+            touch_action_chain: Arc::from([]),
         }
+    }
+
+    /// C13.3 hit target부터 가장 가까운 scroll owner까지의 computed touch-action입니다.
+    #[cfg(feature = "c13-3-gesture-fixture-test")]
+    pub fn with_touch_action_chain(mut self, touch_action_chain: Vec<RuntimeTouchAction>) -> Self {
+        self.touch_action_chain = touch_action_chain.into();
+        self
     }
 
     pub const fn base_frame_css_px(&self) -> CssRect {
@@ -139,6 +152,11 @@ impl RuntimeScrollRenderMetadata {
 
     pub fn clip_layers(&self) -> &[RuntimeScrollClipLayer] {
         &self.clip_layers
+    }
+
+    #[cfg(feature = "c13-3-gesture-fixture-test")]
+    pub fn touch_action_chain(&self) -> &[RuntimeTouchAction] {
+        &self.touch_action_chain
     }
 }
 

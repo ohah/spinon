@@ -22,11 +22,7 @@ pub fn build_runtime_render_snapshot(
     current: CurrentLayoutInputs,
 ) -> Result<RuntimeRenderSnapshot, StyleRenderError> {
     let styles = &output.computed_styles;
-    if matches!(
-        styles.profile,
-        ComputedStyleProfile::RuntimeBlockFlexStackingV1
-            | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
-    ) {
+    if is_runtime_stacking_profile(styles.profile) {
         return super::stacking::build_runtime_render_snapshot(document, root, output, current);
     }
     if !matches!(
@@ -118,6 +114,16 @@ pub fn build_runtime_render_snapshot(
     )
     .with_intrinsic_size_revision(current.revision.intrinsic_size());
     RuntimeRenderSnapshot::new(key, viewport_css_px, boxes).map_err(Into::into)
+}
+
+fn is_runtime_stacking_profile(profile: ComputedStyleProfile) -> bool {
+    match profile {
+        ComputedStyleProfile::RuntimeBlockFlexStackingV1
+        | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1 => true,
+        #[cfg(feature = "c13-3-gesture-fixture-test")]
+        ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1 => true,
+        _ => false,
+    }
 }
 
 /// Rebuilds the C13.2 scene with an internal scroll request against a known prior snapshot.

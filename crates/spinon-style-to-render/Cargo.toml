@@ -6,6 +6,7 @@ publish = false
 
 [features]
 c13-1-overflow-clip-worker-test = []
+c13-3-gesture-fixture-test = ["spinon-render/c13-3-gesture-fixture-test"]
 
 [dependencies]
 spinon-core = { path = "../spinon-core" }
