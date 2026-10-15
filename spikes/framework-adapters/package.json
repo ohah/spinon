@@ -1,0 +1,14 @@
+{
+  "name": "@spinon/r07-framework-adapter-spike",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --conditions=browser --test",
+    "capture": "node --conditions=browser src/capture.mjs"
+  },
+  "dependencies": {
+    "@vue/runtime-core": "3.5.44",
+    "parse5": "8.0.1",
+    "svelte": "5.57.2"
+  }
+}
