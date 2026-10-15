@@ -1,5 +1,7 @@
 # C13.3 style invalidation · 실행 근거
 
+구현 PR: [#189](https://github.com/ohah/spinon/pull/189)
+
 ## 최신 Simulator 행렬
 
 최종 run [`20261015T112615633Z-3abc0b5e`](20261015T112615633Z-3abc0b5e/README.md)은 현재 수정본으로 다시 빌드한 iOS·Android 앱, 여섯 시나리오 log, 명령 기록, screenshot, pixel 표본, matrix 및 SHA-256 manifest를 담는다. 앞선 성공 run [`20261015T111411692Z-d846f2a9`](20261015T111411692Z-d846f2a9/README.md)와 진단 run은 원본 실행 흐름 보존을 위해 그대로 둔다.

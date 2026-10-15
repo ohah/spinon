@@ -1,6 +1,7 @@
 # C13.3 · 활성 gesture의 style invalidation 연결
 
 **상태:** style invalidation 구현 및 iOS/Android Simulator fixture 검증 완료 · C13.3 전체 미완료
+**구현 PR:** [#189](https://github.com/ohah/spinon/pull/189)
 **상위 계획:** [스크롤 gesture와 축별 chaining](./c13-3-scroll-gestures.md)
 **내부 계약:** [0063 C13.3 scroll gestures](../spec/internal/0063-c13-3-scroll-gestures.md)
 **구현 전 Chrome 비교:** [관찰·fixture·정확한 trace](../spec/internal/evidence/c13-3-style-invalidation-precomparison-2026-10-15/README.md) · [JSON](../tests/fixtures/css/references/c13-3-style-invalidation-precomparison-v1.json)
