@@ -1,6 +1,7 @@
 # C13.3 · 네이티브 wheel·trackpad 입력 수집과 정규화
 
-**상태:** Android API 37 AVD native mouse wheel adapter 방향 행렬 8/8, 기존 거부 경로 3/3, Control-wheel 좌우 Ctrl·수평/수직 거부 4/4, uinput 복합 source 대조 2/2 통과 · iPadOS Simulator callback은 host `loginwindow` 상태에서 관찰되지 않아 iOS sign/adapter는 보류
+**상태:** Android API 37 AVD native mouse wheel 행렬 8/8, 기존 거부 3/3, Control-wheel 4/4, 복합 source 2/2와 ADB touchpad ACTION_SCROLL fixture route 1/1 통과. 기본 surface는 point-outside-surface로 거부되고 opt-in test harness의 surface 이동에서 target 7·revision 2까지 처리했다. 실제 trackpad hardware와 iPadOS callback은 미검증이며 iOS adapter는 보류.
+**ADB touchpad follow-up:** [실행·화면·artifact](../spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/README.md) · [구현 검토 20개](../spec/internal/evidence/c13-3-android-avd-touchpad-point-implementation-review-20-2026-10-16.md) · [PR 변경 검토 30개](../spec/internal/evidence/c13-3-android-avd-touchpad-point-pr-delta-review-30-2026-10-16.md)
 **공식 상위 항목:** [구현 상태 대장](../spec/STATUS.md#css-구현-체크리스트)
 **선행:** [C13.3 scroll gesture 계획](./c13-3-scroll-gestures.md), [normalized wheel router](./c13-3-wheel-delta-routing.md)
 **계약:** [내부 계약 0063](../spec/internal/0063-c13-3-scroll-gestures.md) · 공개 `WheelEvent`나 DOM `scroll` API 변경 없음
@@ -73,6 +74,12 @@ Android와 iOS host가 OS input pipeline에서 전달받은 mouse wheel 및 trac
 - surface generation 변경·scene replacement·background 뒤 이전 point/scale/baseline을 재사용하지 않는다. stale target은 새 위치에서 재-hit-test하지 않고 reject한다.
 - queue capacity rejection/coalescing은 기존 queue identity와 epoch 계약을 유지한다. 거부된 delta가 다음 iOS cumulative translation 차분에 다시 포함되지 않는다.
 - pan/wheel interleaving, background/close callback, ended/cancelled 중복, iOS recognizer 경합, zero/repeated/subpixel delta, axis boundary, root exhaustion, malformed enum, feature-off invocation을 별도 negative control로 둔다.
+
+## 2026-10-16 ADB touchpad raw-origin follow-up
+
+input touchpad scroll은 API 37 AVD에서 ACTION_SCROLL, source 0x100008, raw point (0,0)으로 callback에 도달했다. 기본 SurfaceView origin (15,991)에서는 이 점이 표면 밖이라 queue 전에 거부된다. 위치 정보가 빠진 입력을 이전 cursor 위치로 보완하지 않는다.
+
+fixture-test build와 spinon_c133_touchpad_origin_target intent가 함께 켜진 경우에만 SurfaceView를 이동해 raw (0,0)을 Chrome fixture target (132,112) CSS px에 대응시킨다. AVD 실행에서 계산점 (132.19048,112.0), queue sequence 1, target 7, draw revision 2와 outer owner X offset 64 CSS px를 확인했다. 기본 surface 거부 대조는 revision/offset을 유지했고 두 screenshot hash가 같았다. AVD 입력 shell과 test-only view 배치는 물리 trackpad 검증이 아니다. [실행·화면·로그·artifact 근거](../spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/README.md).
 
 ## 실행·증거 경계
 

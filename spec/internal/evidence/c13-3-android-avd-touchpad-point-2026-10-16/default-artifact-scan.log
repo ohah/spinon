@@ -1,0 +1,5 @@
+apk=platforms/android/app/build/outputs/apk/debug/app-debug.apk
+sha256=b872134de55d6ec0cf95301c15a1946e8c20310811e4acc1f83b6b2f06f43e1d
+build_config_fixture_flag=false
+dex_files=classes.dex,classes2.dex
+marker_scan=PASS: no new C13.3 touchpad-origin or MotionEvent diagnostic markers

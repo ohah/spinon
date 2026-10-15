@@ -1,0 +1,17 @@
+Android app artifact boundary · C13.3 touchpad origin helper
+
+Default build
+- BuildConfig SPINON_C133_GESTURE_FIXTURE_TEST=false.
+- APK SHA-256: b872134de55d6ec0cf95301c15a1946e8c20310811e4acc1f83b6b2f06f43e1d.
+- classes.dex/classes2.dex scan for spinon_c133_touchpad_origin_target, SPINON_C133_TOUCHPAD_ORIGIN_TARGET, C133TouchpadOriginTargetFixture, event_source_bits=0x, pointer_count=, pointer_tool_type=, and device_supported_source_bits=0x: no matches.
+- The opt-in helper source directory is not added when the build flag is 0.
+
+Opt-in positive control
+- BuildConfig SPINON_C133_GESTURE_FIXTURE_TEST=true.
+- APK SHA-256: ade03d16bc8e5df272560b3016c790e3a467745b2d6a0cfbad846ee8fa62328c.
+- DEX contains C133TouchpadOriginTargetFixture, the touchpad origin intent key, and all four origin-target and MotionEvent diagnostic markers.
+- The opt-in source directory is added only when the build flag is 1.
+
+Build outputs are linked from README.md. The default artifact was inspected before rebuilding the opt-in positive control. The earlier inline-lambda artifact leak was corrected by moving the layout listener into the conditional source set.
+
+Scan outputs: default-artifact-scan.log and opt-in-artifact-scan.log.

@@ -185,5 +185,8 @@ android {
     sourceSets["main"].apply {
         assets.srcDir(repoRoot.resolve("build/spinon/bootstrap"))
         jniLibs.srcDir(repoRoot.resolve("build/spinon/android/jniLibs"))
+        if (spinonC133GestureFixtureTestValue == "1") {
+            java.srcDir("src/c13_3_gesture_fixture_test/java")
+        }
     }
 }
