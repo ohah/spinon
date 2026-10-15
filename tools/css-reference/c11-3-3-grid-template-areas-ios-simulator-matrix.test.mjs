@@ -71,8 +71,12 @@ test('paint node 순서·ordinal 변조를 통과시키지 않는다', () => {
     'paint_node_order=[0:1,1:3,2:2,3:4]');
   const reorderedOrdinals = valid.replace('paint_node_order=[0:1,1:2,2:3,3:4]',
     'paint_node_order=[1:1,0:2,2:3,3:4]');
+  const drawLine = valid.match(/^SPINON_C0410_DRAW.*$/m)[0];
+  const paintLine = valid.match(/^SPINON_C1133_GRID_PAINT_ORDER_RUN.*$/m)[0];
+  const drawBeforePaint = valid.replace(drawLine, '').replace(paintLine, drawLine + '\n' + paintLine);
   assert.throws(() => compareC1133IOSSceneGeometry(scene, reorderedNodes, chromeCase, 'ios-run'));
   assert.throws(() => compareC1133IOSSceneGeometry(scene, reorderedOrdinals, chromeCase, 'ios-run'));
+  assert.throws(() => compareC1133IOSSceneGeometry(scene, drawBeforePaint, chromeCase, 'ios-run'));
 });
 
 test('node frame에서 0.5 CSS px를 넘는 오차를 감지한다', () => {

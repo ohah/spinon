@@ -107,10 +107,19 @@ function launchedPID(launch, description) {
   return pid;
 }
 
+function c1133SuccessfulDrawAfterPaint(log, sceneID, sceneRunID) {
+  const lines = log.split(/\r?\n/);
+  const paintMarker = 'SPINON_C1133_GRID_PAINT_ORDER_RUN run_id=' + sceneRunID
+    + ' scene_id=' + sceneID + ' ';
+  const paintIndex = lines.findIndex((line) => line.includes(paintMarker));
+  return paintIndex >= 0 && lines.some((line, index) => index > paintIndex
+    && line.includes('SPINON_C0410_DRAW')
+    && /\bstatus=0(?: presented)? boxes=\d+\b/.test(line));
+}
+
 function c1133SuccessLogsComplete(log, sceneID, sceneRunID, requireMetalResult) {
   const scoped = (marker) => log.includes(marker + ' run_id=' + sceneRunID + ' scene_id=' + sceneID + ' ');
-  const successfulDraw = log.split(/\r?\n/).some((line) => line.includes('SPINON_C0410_DRAW')
-    && /\bstatus=0(?: presented)? boxes=\d+\b/.test(line));
+  const successfulDraw = c1133SuccessfulDrawAfterPaint(log, sceneID, sceneRunID);
   const metalDone = !requireMetalResult || log.split(/\r?\n/).some((line) =>
     line.includes('SPINON_C1133_METAL_PIXEL_SUMMARY status=matched run_id=' + sceneRunID)
       || line.includes('SPINON_C1133_METAL_PIXEL_SUMMARY status=mismatch run_id=' + sceneRunID)
@@ -122,8 +131,7 @@ function c1133SuccessLogsComplete(log, sceneID, sceneRunID, requireMetalResult) 
 }
 
 function c1133SupersededAttemptComplete(log, sceneID, sceneRunID, requireMetalResult) {
-  const successfulDraw = log.split(/\r?\n/).some((line) => line.includes('SPINON_C0410_DRAW')
-    && /\bstatus=0(?: presented)? boxes=\d+\b/.test(line));
+  const successfulDraw = c1133SuccessfulDrawAfterPaint(log, sceneID, sceneRunID);
   const metalDone = !requireMetalResult || log.split(/\r?\n/).some((line) =>
     line.includes('SPINON_C1133_METAL_PIXEL_SUMMARY status=matched run_id=' + sceneRunID)
       || line.includes('SPINON_C1133_METAL_PIXEL_SUMMARY status=mismatch run_id=' + sceneRunID)

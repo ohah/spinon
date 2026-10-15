@@ -104,8 +104,10 @@ export function compareC1133IOSSceneGeometry(scene, log, chromeCase, runID) {
       scene.id + ': 등록되지 않은 runtime node ID ' + frame.nodeId);
   }
 
-  const paintReport = log.split(/\r?\n/).find((line) => line.includes(
-    'SPINON_C1133_GRID_PAINT_ORDER_RUN run_id=' + runID + ' scene_id=' + scene.id + ' '));
+  const lines = log.split(/\r?\n/);
+  const paintMarker = 'SPINON_C1133_GRID_PAINT_ORDER_RUN run_id=' + runID + ' scene_id=' + scene.id + ' ';
+  const paintReport = lines.find((line) => line.includes(paintMarker));
+  const paintReportIndex = lines.findIndex((line) => line.includes(paintMarker));
   const paintOrder = paintReport?.match(/\bpaint_node_order=\[([^\]]*)\]/)?.[1];
   assert.notEqual(paintOrder, undefined, scene.id + ': paint node order가 없습니다.');
   const paintEntries = [...paintOrder.matchAll(/(?:^|,)(\d+):(\d+)/g)]
@@ -129,8 +131,9 @@ export function compareC1133IOSSceneGeometry(scene, log, chromeCase, runID) {
     expectedPaintNodeIds.map((_, index) => index), scene.id + ': paint order index가 연속적이지 않습니다.');
   assert.deepEqual(paintedNodeIds, expectedPaintNodeIds,
     scene.id + ': visible DOM source order와 paint node order가 다릅니다.');
-  const successfulDraw = log.split(/\r?\n/).some((line) => line.includes('SPINON_C0410_DRAW')
-    && /\bstatus=0(?: presented)? boxes=(\d+)\b/.exec(line)?.[1] === String(boxes));
+  const successfulDraw = paintReportIndex >= 0 && lines.some((line, index) =>
+    index > paintReportIndex && line.includes('SPINON_C0410_DRAW')
+      && /\bstatus=0(?: presented)? boxes=(\d+)\b/.exec(line)?.[1] === String(boxes));
   assert.ok(successfulDraw, scene.id + ': WGPU draw 결과가 없거나 box 수가 다릅니다.');
 
   return { frames, comparisons, boxes, paintOrder: paintEntries };
