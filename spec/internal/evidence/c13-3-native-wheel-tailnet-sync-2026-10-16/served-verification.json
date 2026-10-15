@@ -1,0 +1,309 @@
+{
+  "failed": [],
+  "file_count": 42,
+  "files": [
+    {
+      "expected_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "match": true,
+      "path": "icon.svg",
+      "served_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "status": 200
+    },
+    {
+      "expected_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "match": true,
+      "path": "logo.svg",
+      "served_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "status": 200
+    },
+    {
+      "expected_sha256": "523cab29540c74b9102cf677bc79bc27b74deddbfa8af43ac08b094ceb1eeee7",
+      "match": true,
+      "path": "plan/c13-3-native-wheel-input.html",
+      "served_sha256": "523cab29540c74b9102cf677bc79bc27b74deddbfa8af43ac08b094ceb1eeee7",
+      "status": 200
+    },
+    {
+      "expected_sha256": "d9e740fbaff5891ce1d7649e1e648f931cc12977f0f22167b615123b7ffcb2da",
+      "match": true,
+      "path": "plan/c13-3-native-wheel-input.md",
+      "served_sha256": "d9e740fbaff5891ce1d7649e1e648f931cc12977f0f22167b615123b7ffcb2da",
+      "status": 200
+    },
+    {
+      "expected_sha256": "8fd35b13e2a922e451f29e99f3f092c9bac12df6033d585edb10b26ab7b4e195",
+      "match": true,
+      "path": "plan/c13-3-scroll-gestures.html",
+      "served_sha256": "8fd35b13e2a922e451f29e99f3f092c9bac12df6033d585edb10b26ab7b4e195",
+      "status": 200
+    },
+    {
+      "expected_sha256": "683f93e9213f3f02faeb15c248056a6db229aee86cc8f68d467119b1c2171c43",
+      "match": true,
+      "path": "plan/c13-3-scroll-gestures.md",
+      "served_sha256": "683f93e9213f3f02faeb15c248056a6db229aee86cc8f68d467119b1c2171c43",
+      "status": 200
+    },
+    {
+      "expected_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "match": true,
+      "path": "public/icon.svg",
+      "served_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "status": 200
+    },
+    {
+      "expected_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "match": true,
+      "path": "public/logo.svg",
+      "served_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "status": 200
+    },
+    {
+      "expected_sha256": "b60b60447b28ba7eb18af8e35b086de9304ebd27ca8f28f8508b75e003906616",
+      "match": true,
+      "path": "public/roadmap.html",
+      "served_sha256": "b60b60447b28ba7eb18af8e35b086de9304ebd27ca8f28f8508b75e003906616",
+      "status": 200
+    },
+    {
+      "expected_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "match": true,
+      "path": "public/roadmap.svg",
+      "served_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "status": 200
+    },
+    {
+      "expected_sha256": "b60b60447b28ba7eb18af8e35b086de9304ebd27ca8f28f8508b75e003906616",
+      "match": true,
+      "path": "roadmap.html",
+      "served_sha256": "b60b60447b28ba7eb18af8e35b086de9304ebd27ca8f28f8508b75e003906616",
+      "status": 200
+    },
+    {
+      "expected_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "match": true,
+      "path": "roadmap.svg",
+      "served_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "status": 200
+    },
+    {
+      "expected_sha256": "3c114d08efd54b575706ae5a33a860afc57478b13a16cf816ef4a602c521d9cd",
+      "match": true,
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-plan-review-20-2026-10-16.html",
+      "served_sha256": "3c114d08efd54b575706ae5a33a860afc57478b13a16cf816ef4a602c521d9cd",
+      "status": 200
+    },
+    {
+      "expected_sha256": "c67cb951127eccd53733762a85074b2824c43ce8e757f618f75f454fbd631b4e",
+      "match": true,
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-plan-review-20-2026-10-16.md",
+      "served_sha256": "c67cb951127eccd53733762a85074b2824c43ce8e757f618f75f454fbd631b4e",
+      "status": 200
+    },
+    {
+      "expected_sha256": "2503409cd5b600fd310f359effb98222f28f75515ededfdd31b7482bdae249ac",
+      "match": true,
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-pr-review-20-2026-10-16.html",
+      "served_sha256": "2503409cd5b600fd310f359effb98222f28f75515ededfdd31b7482bdae249ac",
+      "status": 200
+    },
+    {
+      "expected_sha256": "f137d4e2a115af9a879e9b5227951319a16fe224e0e5955235b110bc1a10834f",
+      "match": true,
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-pr-review-20-2026-10-16.md",
+      "served_sha256": "f137d4e2a115af9a879e9b5227951319a16fe224e0e5955235b110bc1a10834f",
+      "status": 200
+    },
+    {
+      "expected_sha256": "9850b3f0c629d6bbbb92ed6d16125107cc8ad289a81cab507ccbb4269426301d",
+      "match": true,
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-precomparison-2026-10-16/normalization-oracle.json",
+      "served_sha256": "9850b3f0c629d6bbbb92ed6d16125107cc8ad289a81cab507ccbb4269426301d",
+      "status": 200
+    },
+    {
+      "expected_sha256": "3a995be8ea2690432101ef59567a702d4fef4cb00995c08b8f425f9b5defee88",
+      "match": true,
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-precomparison-2026-10-16/README.html",
+      "served_sha256": "3a995be8ea2690432101ef59567a702d4fef4cb00995c08b8f425f9b5defee88",
+      "status": 200
+    },
+    {
+      "expected_sha256": "517873af5aa09adb26eed693dd6c218220c35c0f94cbd0bc90606d5441d048ec",
+      "match": true,
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-precomparison-2026-10-16/README.md",
+      "served_sha256": "517873af5aa09adb26eed693dd6c218220c35c0f94cbd0bc90606d5441d048ec",
+      "status": 200
+    },
+    {
+      "expected_sha256": "5c7e7566d545ff96a649aec997e129d625534aa2d81527ed4b6c0c7fd26f971f",
+      "match": true,
+      "path": "spec/internal/evidence/c13-3-scroll-gesture-precomparison-2026-10-15/chrome155-c13-3-scroll-gesture-400x240.png",
+      "served_sha256": "5c7e7566d545ff96a649aec997e129d625534aa2d81527ed4b6c0c7fd26f971f",
+      "status": 200
+    },
+    {
+      "expected_sha256": "f1568d1c53beffed792e29216c2897f02841c75b8c215a18c48a89ddbf56df56",
+      "match": true,
+      "path": "spec/internal/README.html",
+      "served_sha256": "f1568d1c53beffed792e29216c2897f02841c75b8c215a18c48a89ddbf56df56",
+      "status": 200
+    },
+    {
+      "expected_sha256": "dbdf3d1e5d7aa31d185996088cb83f84cfed54f45236c74e13fead44d98d0793",
+      "match": true,
+      "path": "spec/internal/README.md",
+      "served_sha256": "dbdf3d1e5d7aa31d185996088cb83f84cfed54f45236c74e13fead44d98d0793",
+      "status": 200
+    },
+    {
+      "expected_sha256": "349846cb5992da39a4e9c5699637ee07852729ebd7d0d8394bf5dd0192318576",
+      "match": true,
+      "path": "spec/STATUS.html",
+      "served_sha256": "349846cb5992da39a4e9c5699637ee07852729ebd7d0d8394bf5dd0192318576",
+      "status": 200
+    },
+    {
+      "expected_sha256": "dc25ca97bc2efd6e97758b67a134fd8930e74249ade645ac16a3e39f9492ddd4",
+      "match": true,
+      "path": "spec/STATUS.md",
+      "served_sha256": "dc25ca97bc2efd6e97758b67a134fd8930e74249ade645ac16a3e39f9492ddd4",
+      "status": 200
+    },
+    {
+      "expected_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "match": true,
+      "path": "static/css/styles.8d918fd78e.css",
+      "served_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "status": 200
+    },
+    {
+      "expected_sha256": "08cdb82927a9513b1b850a747fc23b1b824b4a6832ba59479dbd8598d0576a07",
+      "match": true,
+      "path": "static/js/3.35d6e2b47a.js",
+      "served_sha256": "08cdb82927a9513b1b850a747fc23b1b824b4a6832ba59479dbd8598d0576a07",
+      "status": 200
+    },
+    {
+      "expected_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "match": true,
+      "path": "static/js/3.35d6e2b47a.js.LICENSE.txt",
+      "served_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "status": 200
+    },
+    {
+      "expected_sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "match": true,
+      "path": "static/js/async/l.76b60f2b87.js",
+      "served_sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "status": 200
+    },
+    {
+      "expected_sha256": "d4f8aedb02e7428a31a04ff3f4185757073fe7da74b982b9f114c9c107e668b1",
+      "match": true,
+      "path": "static/js/async/route-2b13b396562a.c86077438f.js",
+      "served_sha256": "d4f8aedb02e7428a31a04ff3f4185757073fe7da74b982b9f114c9c107e668b1",
+      "status": 200
+    },
+    {
+      "expected_sha256": "baa6d9c75085ceabe7e6223cba723ee1235651db82d5899d88517b37edd3f949",
+      "match": true,
+      "path": "static/js/async/route-3c7ae46a686f.10e2919947.js",
+      "served_sha256": "baa6d9c75085ceabe7e6223cba723ee1235651db82d5899d88517b37edd3f949",
+      "status": 200
+    },
+    {
+      "expected_sha256": "8c5bb9ca4bf345b3593a1d13e55a6665e912540d703b3b2d8f8f2334c547b51e",
+      "match": true,
+      "path": "static/js/async/route-7ce2535ac56d.91e6549273.js",
+      "served_sha256": "8c5bb9ca4bf345b3593a1d13e55a6665e912540d703b3b2d8f8f2334c547b51e",
+      "status": 200
+    },
+    {
+      "expected_sha256": "685bbb7261598d035b1c936033685f5b90e419317afccb6d301207dbb3d4390c",
+      "match": true,
+      "path": "static/js/async/route-a991d6de67ad.116ab55f80.js",
+      "served_sha256": "685bbb7261598d035b1c936033685f5b90e419317afccb6d301207dbb3d4390c",
+      "status": 200
+    },
+    {
+      "expected_sha256": "197e240668072d4d842ec6f3d71c38cb36e2bb11a3681a29fac50824092d50de",
+      "match": true,
+      "path": "static/js/async/route-abeecded38c6.ed1d171993.js",
+      "served_sha256": "197e240668072d4d842ec6f3d71c38cb36e2bb11a3681a29fac50824092d50de",
+      "status": 200
+    },
+    {
+      "expected_sha256": "a1fb1180635efaf1434c20b87bb30da7bbacbf420ed1ef9962d0b16688b93e77",
+      "match": true,
+      "path": "static/js/async/route-cb2b871d39c1.eca05f90b0.js",
+      "served_sha256": "a1fb1180635efaf1434c20b87bb30da7bbacbf420ed1ef9962d0b16688b93e77",
+      "status": 200
+    },
+    {
+      "expected_sha256": "6e63c790075f93fb540e8a9c6800efc3a788347931b967e613ddd8080b57dc78",
+      "match": true,
+      "path": "static/js/async/route-d138c5df840a.3adf151fac.js",
+      "served_sha256": "6e63c790075f93fb540e8a9c6800efc3a788347931b967e613ddd8080b57dc78",
+      "status": 200
+    },
+    {
+      "expected_sha256": "f6b75767303d1d102f332a0550f303d357727caf2c6882ab0718fe8fb77c3b4b",
+      "match": true,
+      "path": "static/js/index.188e6af567.js",
+      "served_sha256": "f6b75767303d1d102f332a0550f303d357727caf2c6882ab0718fe8fb77c3b4b",
+      "status": 200
+    },
+    {
+      "expected_sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "match": true,
+      "path": "static/js/lib-react.801d719c4f.js",
+      "served_sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "status": 200
+    },
+    {
+      "expected_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "match": true,
+      "path": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "served_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "status": 200
+    },
+    {
+      "expected_sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "match": true,
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "served_sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "status": 200
+    },
+    {
+      "expected_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "match": true,
+      "path": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "served_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "status": 200
+    },
+    {
+      "expected_sha256": "98e813a0920ce1c113f2a314c05f7f6fc793e807593127c1662b7557d10e26e5",
+      "match": true,
+      "path": "static/js/styles.aba03c5c90.js",
+      "served_sha256": "98e813a0920ce1c113f2a314c05f7f6fc793e807593127c1662b7557d10e26e5",
+      "status": 200
+    },
+    {
+      "expected_sha256": "fbe2e1666b36af6257b355082cc1335b4c8981cba3977b8b67d5e8d163b9500a",
+      "match": true,
+      "path": "static/search_index.ko.fbe2e166.json",
+      "served_sha256": "fbe2e1666b36af6257b355082cc1335b4c8981cba3977b8b67d5e8d163b9500a",
+      "status": 200
+    }
+  ],
+  "manifest": {
+    "expected_sha256": "6ba06425f366bf2f487dc1366862f8457d36fe07b34d5d8c69550b20f9d77d4a",
+    "match": true,
+    "served_sha256": "6ba06425f366bf2f487dc1366862f8457d36fe07b34d5d8c69550b20f9d77d4a",
+    "status": 200,
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/sync-manifest-c13-3-native-wheel-2026-10-16.json"
+  },
+  "passed": 42,
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c13-3-native-wheel-input.html"
+}
