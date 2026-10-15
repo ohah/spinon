@@ -1,0 +1,834 @@
+{
+  "generated_at": "2026-10-15T19:40:28.577Z",
+  "preview_root": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "copy_only": true,
+  "deletions": [],
+  "files": [
+    {
+      "path": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "previous_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "previous_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "plan/c13-3-native-wheel-input.html",
+      "bytes": 40443,
+      "sha256": "3da4f222317bc59ccd321e4877607aad1ead49c616f10f792926f5136c7ed73a",
+      "previous_sha256": "53970868f8dc935d7a37228e76dd1e6d73a7dc6bf0a3dd66003d4b0e0d0484ee",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-tailnet-c13-3-roadmap-composite-sync-20261016/backup/plan/c13-3-native-wheel-input.html"
+    },
+    {
+      "path": "plan/c13-3-native-wheel-input.md",
+      "bytes": 16450,
+      "sha256": "ffdb51d5677dd3368e5c4e3b1d38af5cbf904cd705f7df5ad6254a66b5759b86",
+      "previous_sha256": "9b7139533459493245a9c2eab2d9d3e6840872a297327c912ba7289d313e2561",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-tailnet-c13-3-roadmap-composite-sync-20261016/backup/plan/c13-3-native-wheel-input.md"
+    },
+    {
+      "path": "plan/c13-3-scroll-gestures.html",
+      "bytes": 78878,
+      "sha256": "7cf8c59c9880cdbb8a8523bb7c780e17d24b8ef16d9a78ff57683ca957087e7c",
+      "previous_sha256": "832e034d0a2bbddff6d732696fddbd4577beb437ae9849f2ed7317b3c7ebc2a4",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-tailnet-c13-3-roadmap-composite-sync-20261016/backup/plan/c13-3-scroll-gestures.html"
+    },
+    {
+      "path": "plan/c13-3-scroll-gestures.md",
+      "bytes": 41333,
+      "sha256": "683f93e9213f3f02faeb15c248056a6db229aee86cc8f68d467119b1c2171c43",
+      "previous_sha256": "683f93e9213f3f02faeb15c248056a6db229aee86cc8f68d467119b1c2171c43",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "previous_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "previous_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "public/roadmap.html",
+      "bytes": 111597,
+      "sha256": "9612f115a6c1b4fa78c704d9f2d80b1a8c6c6f1f5daa95fae12750c3033791bd",
+      "previous_sha256": "6cb0c0f422e75f19eefe64ddcd74c99b1d8713909787a285bd6f93ef7208e3f3",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-tailnet-c13-3-roadmap-composite-sync-20261016/backup/public/roadmap.html"
+    },
+    {
+      "path": "roadmap.html",
+      "bytes": 111597,
+      "sha256": "9612f115a6c1b4fa78c704d9f2d80b1a8c6c6f1f5daa95fae12750c3033791bd",
+      "previous_sha256": "6cb0c0f422e75f19eefe64ddcd74c99b1d8713909787a285bd6f93ef7208e3f3",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-tailnet-c13-3-roadmap-composite-sync-20261016/backup/roadmap.html"
+    },
+    {
+      "path": "spec/internal/0063-c13-3-scroll-gestures.html",
+      "bytes": 71994,
+      "sha256": "0f096ccbd364ce95634ffa23324dbb35fc8682cc08954aef55673304be8c4a33",
+      "previous_sha256": "2fd4280bb704126cb7977d85d369ced2e8125cb648a516eb9bca12ed62a3e599",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-tailnet-c13-3-roadmap-composite-sync-20261016/backup/spec/internal/0063-c13-3-scroll-gestures.html"
+    },
+    {
+      "path": "spec/internal/0063-c13-3-scroll-gestures.md",
+      "bytes": 37769,
+      "sha256": "45abb53a7343a9025ae6e1781bd9306ddbbafd458bb25e19211671c453138d37",
+      "previous_sha256": "45abb53a7343a9025ae6e1781bd9306ddbbafd458bb25e19211671c453138d37",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-composite-avd-2026-10-16/composite-admitted-after.png",
+      "bytes": 70399,
+      "sha256": "a68d6486e4b03d3acabb4b2b529637058ce2a241c2ec71d2e97a7ad3ca7965d4",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-composite-avd-2026-10-16/composite-admitted-before.png",
+      "bytes": 74932,
+      "sha256": "51b1f8e8e5f995aa928e4bbb39377049be6c4636778a3dc469f6ee095603489a",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-composite-avd-2026-10-16/composite-admitted-callback.log",
+      "bytes": 8568,
+      "sha256": "56175867dd359bac985641d7260e52622a320143a73da7cf34450a018fde9658",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-composite-avd-2026-10-16/composite-admitted-getevent-device.log",
+      "bytes": 1178,
+      "sha256": "5e3d30b4f423cd0efed2c519b08eccfb77ab207134c58fcf06b8f36db8830f8d",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-composite-avd-2026-10-16/composite-admitted-input-device.log",
+      "bytes": 817,
+      "sha256": "8fb7309ce09587520fdacd84ee0f36645bc3b3a7a3b2aedbd3591d45c45f8985",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-composite-avd-2026-10-16/composite-admitted-uinput.log",
+      "bytes": 122,
+      "sha256": "7e0a5011e0eb0e7aa0466307f6cf03cb468dbc64c45965a30b1926434af40365",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-composite-avd-2026-10-16/composite-outside-surface-after.png",
+      "bytes": 74932,
+      "sha256": "51b1f8e8e5f995aa928e4bbb39377049be6c4636778a3dc469f6ee095603489a",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-composite-avd-2026-10-16/composite-outside-surface-before.png",
+      "bytes": 74949,
+      "sha256": "5e264cb3639eb545bc54b31498cc7c1184a225870de61ad9ee90435e1b69bf02",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-composite-avd-2026-10-16/composite-outside-surface-callback.log",
+      "bytes": 5258,
+      "sha256": "88a8e5b56517afeaa03af96f76ee936e11743bdc99b7fb294264c3f3fbca2a87",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-composite-avd-2026-10-16/composite-outside-surface-getevent-device.log",
+      "bytes": 1178,
+      "sha256": "5e3d30b4f423cd0efed2c519b08eccfb77ab207134c58fcf06b8f36db8830f8d",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-composite-avd-2026-10-16/composite-outside-surface-input-device.log",
+      "bytes": 1360,
+      "sha256": "5d3ef50ee363dcd5e5e98d53e0eefd514537c663e1a2f618748920bd07570633",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-composite-avd-2026-10-16/composite-outside-surface-uinput.log",
+      "bytes": 123,
+      "sha256": "3e174d53e27fe6c4487442473cc079e9687c9199872aa524bee3e3f8596c6093",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-composite-avd-2026-10-16/composite-wheel-avd.json",
+      "bytes": 15338,
+      "sha256": "b46a96d94afd468320185bf27ba18d4006ef0fb7f5a3611d4a1274b619f91aae",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-composite-avd-2026-10-16/helper-program-headers.txt",
+      "bytes": 1775,
+      "sha256": "7bc51c2fe64971b1876a5ab1eda4f2ea17ded156d5b7fa72fe91aa624cd63c5e",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-composite-avd-2026-10-16/implementation-review-20.html",
+      "bytes": 25917,
+      "sha256": "f27372fce98eebcbd5d44693f8fac0df9911660ecad7a408323f577565e6e9ab",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-composite-avd-2026-10-16/implementation-review-20.md",
+      "bytes": 6001,
+      "sha256": "21706236212ec34fcedb8d7c6345c68d8552f58dd0c78c0aac03c3dab507820f",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-composite-avd-2026-10-16/pr-body-image-verification.json",
+      "bytes": 1015,
+      "sha256": "a88135e400783032266e1e346c77e4cec0d2d94c07d2611e33d6ebbf1a37b4e3",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-composite-avd-2026-10-16/pr-delta-review-20.html",
+      "bytes": 25370,
+      "sha256": "590cb20172dc08f23bd973187cf0cdb02068cc8d5d51da27be55743ec05a6a6f",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-composite-avd-2026-10-16/pr-delta-review-20.md",
+      "bytes": 5689,
+      "sha256": "3c2ab5f315f06c50c890bf233eb923020946c5bd6418f1eb042064a74802e5cf",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-composite-avd-2026-10-16/README.html",
+      "bytes": 29009,
+      "sha256": "c59d3e1f08a0c4dfacc32fa125fa07d5980ca48eb68eb7358f198d73e75a898c",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-composite-avd-2026-10-16/README.md",
+      "bytes": 2918,
+      "sha256": "739fad69b3efb6f7aa788abc2e36e717551919bfa9004657baa57b3015379003",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/adb-failure-root-cause.html",
+      "bytes": 21711,
+      "sha256": "1f43702c30e1f17af809f0c20e963e83f68515ed3becbc877b2a17e828173270",
+      "previous_sha256": "a1848de4c775cb39f54947211443afb8b5a7a2ef8ac856a587f08021543f5cf5",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-tailnet-c13-3-roadmap-composite-sync-20261016/backup/spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/adb-failure-root-cause.html"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/adb-failure-root-cause.md",
+      "bytes": 2146,
+      "sha256": "5bec14f7a7bbf54b82622430771d9227303c090c00e5967e4d01002aaca26ada",
+      "previous_sha256": "5bec14f7a7bbf54b82622430771d9227303c090c00e5967e4d01002aaca26ada",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/android-artifact-boundary.html",
+      "bytes": 21453,
+      "sha256": "cb01e757dcfc722a9b423d436fcf781acbb944a4b2611ee6201e5fa2b22dcc0b",
+      "previous_sha256": "42d7157a4403d059af9f1ff87cbe2e675ce24d9f008a76dffd7cc02d98b0f244",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-tailnet-c13-3-roadmap-composite-sync-20261016/backup/spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/android-artifact-boundary.html"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/android-artifact-boundary.md",
+      "bytes": 2184,
+      "sha256": "f698c30f6409d13150339578221e08be92e94dddc9a401e38c7ed3164f5f757f",
+      "previous_sha256": "f698c30f6409d13150339578221e08be92e94dddc9a401e38c7ed3164f5f757f",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/android-artifact-inspection.log",
+      "bytes": 894,
+      "sha256": "9c2674ddb40cde2c6f2dee17c2f9d4223bd876813c916a33b036acee90ba3cc2",
+      "previous_sha256": "9c2674ddb40cde2c6f2dee17c2f9d4223bd876813c916a33b036acee90ba3cc2",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/android-avd-matrix.json",
+      "bytes": 32249,
+      "sha256": "d46d3578ace6f9d897e68722a769909ae47ecde755d57b7790656ab507433abb",
+      "previous_sha256": "d46d3578ace6f9d897e68722a769909ae47ecde755d57b7790656ab507433abb",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/android-diagonal-negative-negative.log",
+      "bytes": 8002,
+      "sha256": "314ed1d2d18649959ec8a56b3f19e6b35794135d3fdefc49e2091442878f1010",
+      "previous_sha256": "314ed1d2d18649959ec8a56b3f19e6b35794135d3fdefc49e2091442878f1010",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/android-diagonal-negative-positive.log",
+      "bytes": 7918,
+      "sha256": "3e95aeed87109d221ddb6f1132a3d34e66a63934cd2f6d3d6ba502aa82447088",
+      "previous_sha256": "3e95aeed87109d221ddb6f1132a3d34e66a63934cd2f6d3d6ba502aa82447088",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/android-diagonal-positive-negative.log",
+      "bytes": 7912,
+      "sha256": "4586218d58549cbe5ad2846ec53e49c16d24460a098e0df0825ef8d7ddd24d13",
+      "previous_sha256": "4586218d58549cbe5ad2846ec53e49c16d24460a098e0df0825ef8d7ddd24d13",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/android-diagonal-positive-positive-after.png",
+      "bytes": 70181,
+      "sha256": "3fed4b8668138dae553b3391eebc0cf4f84d203de1eac42ee64076551f1a3f24",
+      "previous_sha256": "3fed4b8668138dae553b3391eebc0cf4f84d203de1eac42ee64076551f1a3f24",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/android-diagonal-positive-positive-before.png",
+      "bytes": 74542,
+      "sha256": "87424bf1ed7070b19a7fa7c069ba519058ebd49f100ad3f56e8c455d80a303e3",
+      "previous_sha256": "87424bf1ed7070b19a7fa7c069ba519058ebd49f100ad3f56e8c455d80a303e3",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/android-diagonal-positive-positive.log",
+      "bytes": 8251,
+      "sha256": "392d5a301a5655e6ac81e493ba5e06c8dcf4535920721cc9f61d94e5f4f63d10",
+      "previous_sha256": "392d5a301a5655e6ac81e493ba5e06c8dcf4535920721cc9f61d94e5f4f63d10",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/android-feature-off-symbol-build.log",
+      "bytes": 5277,
+      "sha256": "956f4f4021ca2fd5ff93b4a7298df42c24d9e532bb659552bb4290062fb0d944",
+      "previous_sha256": "956f4f4021ca2fd5ff93b4a7298df42c24d9e532bb659552bb4290062fb0d944",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/android-feature-opt-in-build.log",
+      "bytes": 4854,
+      "sha256": "a4509c39378aaae8aa974d8829b021eae743552a0ca31af4d08482d52b080595",
+      "previous_sha256": "a4509c39378aaae8aa974d8829b021eae743552a0ca31af4d08482d52b080595",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/android-h-negative.log",
+      "bytes": 7908,
+      "sha256": "6f5c9fede98083f50cb43e4e1a1065be23dc9453c0df0390eb87b4d3dc1c619f",
+      "previous_sha256": "6f5c9fede98083f50cb43e4e1a1065be23dc9453c0df0390eb87b4d3dc1c619f",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/android-h-positive.log",
+      "bytes": 7894,
+      "sha256": "344eedea51a0477a4235b04e6971b1164cd05f93ee77d3e1370fbacabb4573fd",
+      "previous_sha256": "344eedea51a0477a4235b04e6971b1164cd05f93ee77d3e1370fbacabb4573fd",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/android-outside-surface.log",
+      "bytes": 4477,
+      "sha256": "bb93410d68b7744262dd2b30820189ffa0930e5b06b3a50a0b8b7708a355da0b",
+      "previous_sha256": "bb93410d68b7744262dd2b30820189ffa0930e5b06b3a50a0b8b7708a355da0b",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/android-touchpad-missing-position.log",
+      "bytes": 4485,
+      "sha256": "5d1f390ca4fc5c351d0ef75d2ae44e19c34048be1f4e2f2040d3a791f351d580",
+      "previous_sha256": "5d1f390ca4fc5c351d0ef75d2ae44e19c34048be1f4e2f2040d3a791f351d580",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/android-v-negative.log",
+      "bytes": 7886,
+      "sha256": "fc40a66225d80b87dc41854f2bc9434def7677b2b186c6ae3df5ab8af47f51e8",
+      "previous_sha256": "fc40a66225d80b87dc41854f2bc9434def7677b2b186c6ae3df5ab8af47f51e8",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/android-v-positive.log",
+      "bytes": 7885,
+      "sha256": "048305cddc8eba529fb17613199f47d4987cda972f2fb4fd04f44ec151633fd8",
+      "previous_sha256": "048305cddc8eba529fb17613199f47d4987cda972f2fb4fd04f44ec151633fd8",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/android-zero-axes.log",
+      "bytes": 4384,
+      "sha256": "d397fa5fa1e279132e588aacfb1f2459769c1dfdc5ce62d08a7dc1f13feeba6d",
+      "previous_sha256": "d397fa5fa1e279132e588aacfb1f2459769c1dfdc5ce62d08a7dc1f13feeba6d",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/classifier-jvm-output.log",
+      "bytes": 424,
+      "sha256": "67bf72dee2450d32453ba84bd46872f9f05df0194ed87c818dce35c867ca74b9",
+      "previous_sha256": "67bf72dee2450d32453ba84bd46872f9f05df0194ed87c818dce35c867ca74b9",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/classifier-test.log",
+      "bytes": 206,
+      "sha256": "aafd3d2b75cfde81cdf9b45864372e52b308200a970114e3c745886a50cd2c9a",
+      "previous_sha256": "aafd3d2b75cfde81cdf9b45864372e52b308200a970114e3c745886a50cd2c9a",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/output-path-escape-negative-control.log",
+      "bytes": 1102,
+      "sha256": "f67d5765f96fba63ef5a6c206e1539eefdf7fdfd3520bab3e5238011c8906c25",
+      "previous_sha256": "f67d5765f96fba63ef5a6c206e1539eefdf7fdfd3520bab3e5238011c8906c25",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/pr-body-image-verification.json",
+      "bytes": 1105,
+      "sha256": "71339a21827b9e406952e9dbf3b0a3068c556c18c55281fbf52a8cdd67e60b12",
+      "previous_sha256": "71339a21827b9e406952e9dbf3b0a3068c556c18c55281fbf52a8cdd67e60b12",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/pr-body-rendered-agent-browser-full.png",
+      "bytes": 394010,
+      "sha256": "d1af428718832d73974bedb8f4ca7c96e56c737d9835de4eaa522da8dc4a606b",
+      "previous_sha256": "d1af428718832d73974bedb8f4ca7c96e56c737d9835de4eaa522da8dc4a606b",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/pr-delta-review-30.html",
+      "bytes": 29195,
+      "sha256": "9d4fedbf817c9f6ac3f99f23515bee2ca8f93560b535e617d2cbc1bb6bc66b27",
+      "previous_sha256": "0ed65edb7207029bb53eb9f3479046d2b114d00e8bee157f3d1ab44c3ca5cb2c",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-tailnet-c13-3-roadmap-composite-sync-20261016/backup/spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/pr-delta-review-30.html"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/pr-delta-review-30.md",
+      "bytes": 7405,
+      "sha256": "5fd8da226740982017c51c7105e671f303db98b2034b7be710ed2e5dfb50f6be",
+      "previous_sha256": "5fd8da226740982017c51c7105e671f303db98b2034b7be710ed2e5dfb50f6be",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/README.html",
+      "bytes": 28025,
+      "sha256": "c050d0517c983b078850f451c77857e13b9476fe775eea9945676d0decad8118",
+      "previous_sha256": "c815e755250bc1f4a582d8e3306d1d6b0cb157d5eb6d3f4ffca956e6de73cd8c",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-tailnet-c13-3-roadmap-composite-sync-20261016/backup/spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/README.html"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/README.md",
+      "bytes": 3428,
+      "sha256": "e05f98eff828ac9cbaf4581c660c9ed29a348d121d61f257dd9d6bfb60e73bd0",
+      "previous_sha256": "e05f98eff828ac9cbaf4581c660c9ed29a348d121d61f257dd9d6bfb60e73bd0",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/source-revision.json",
+      "bytes": 1436,
+      "sha256": "056a9b69586f45f191713907185d37b8b989867f8823f901ab0be85ecbd5acd2",
+      "previous_sha256": "056a9b69586f45f191713907185d37b8b989867f8823f901ab0be85ecbd5acd2",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/README.html",
+      "bytes": 130454,
+      "sha256": "2641be2bc5d7434d8ec2be9fc5d303fa9a9b8bff9c1d67ae7fb0c19bd6de1737",
+      "previous_sha256": "15129a9e8473e0fe70513f5674f3d61e184f554ee0de998bbe3c3f5e4facec5c",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-tailnet-c13-3-roadmap-composite-sync-20261016/backup/spec/internal/README.html"
+    },
+    {
+      "path": "spec/internal/README.md",
+      "bytes": 92203,
+      "sha256": "9472c4a4fea91f23c7056cef1024c339c6cb8b0f304fd9d68320406c73beef8e",
+      "previous_sha256": "313774d52eb005cdabaefd938ac82eb3e6925f5efbbc59cbae79d2fa0a9f9596",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-tailnet-c13-3-roadmap-composite-sync-20261016/backup/spec/internal/README.md"
+    },
+    {
+      "path": "spec/public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "previous_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "previous_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "bytes": 111597,
+      "sha256": "9612f115a6c1b4fa78c704d9f2d80b1a8c6c6f1f5daa95fae12750c3033791bd",
+      "previous_sha256": "433c58e60d0f78f26ee69f70167caef050f6a342dca63ec4e9e9d33b5f175904",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-tailnet-c13-3-roadmap-composite-sync-20261016/backup/spec/public/roadmap.html"
+    },
+    {
+      "path": "spec/README.html",
+      "bytes": 25282,
+      "sha256": "39170ac93d4117d12dd62259d672911e76a4094be2182cd819634fd2d7b56ac2",
+      "previous_sha256": "3ab91fb2d2300a8a6478f45af448277cc1d3c9315ae83bcb53eee84b4582cf02",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-tailnet-c13-3-roadmap-composite-sync-20261016/backup/spec/README.html"
+    },
+    {
+      "path": "spec/README.md",
+      "bytes": 3563,
+      "sha256": "90cad85c1bd1c979522119b83fca946988a105dcaa99762f62950a0ea9873f0f",
+      "previous_sha256": "90cad85c1bd1c979522119b83fca946988a105dcaa99762f62950a0ea9873f0f",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/STATUS.html",
+      "bytes": 307597,
+      "sha256": "c2577d614cac540a0a805a6ab536eadcf5033fc0362dc10f10269dc3650b8038",
+      "previous_sha256": "cbd98a7fbd770986b0a158192198bfef1cb99023a4cd7acf9c3bffc7f0b18765",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-tailnet-c13-3-roadmap-composite-sync-20261016/backup/spec/STATUS.html"
+    },
+    {
+      "path": "spec/STATUS.md",
+      "bytes": 232960,
+      "sha256": "1e88fbeba33012b3884ff16bd98fa27dee56d50299b0d6e2a0157e5b613b7bdf",
+      "previous_sha256": "b0d70ec6ebc4eb365dc0087e22a7cda21cbb41c26a8724d9b9c9e1aad85c1477",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-tailnet-c13-3-roadmap-composite-sync-20261016/backup/spec/STATUS.md"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "previous_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/android-diagonal-positive-positive-after.777672ac09.png",
+      "bytes": 70181,
+      "sha256": "3fed4b8668138dae553b3391eebc0cf4f84d203de1eac42ee64076551f1a3f24",
+      "previous_sha256": "3fed4b8668138dae553b3391eebc0cf4f84d203de1eac42ee64076551f1a3f24",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/android-diagonal-positive-positive-before.607f830aac.png",
+      "bytes": 74542,
+      "sha256": "87424bf1ed7070b19a7fa7c069ba519058ebd49f100ad3f56e8c455d80a303e3",
+      "previous_sha256": "87424bf1ed7070b19a7fa7c069ba519058ebd49f100ad3f56e8c455d80a303e3",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/composite-admitted-after.65cef3aff1.png",
+      "bytes": 70399,
+      "sha256": "a68d6486e4b03d3acabb4b2b529637058ce2a241c2ec71d2e97a7ad3ca7965d4",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/composite-admitted-before.7c970bd6ec.png",
+      "bytes": 74932,
+      "sha256": "51b1f8e8e5f995aa928e4bbb39377049be6c4636778a3dc469f6ee095603489a",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/composite-outside-surface-after.7c970bd6ec.png",
+      "bytes": 74932,
+      "sha256": "51b1f8e8e5f995aa928e4bbb39377049be6c4636778a3dc469f6ee095603489a",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/composite-outside-surface-before.df2876ac69.png",
+      "bytes": 74949,
+      "sha256": "5e264cb3639eb545bc54b31498cc7c1184a225870de61ad9ee90435e1b69bf02",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/a.416be267cb.js",
+      "bytes": 217097,
+      "sha256": "f7a8b9c1759ef0ff19acf025f788104dbae370f5c79b530911996d3183a1f9c5",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/a.416be267cb.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "previous_sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-1d42b6197819.6bb0f78cc1.js",
+      "bytes": 5897,
+      "sha256": "eaf060e189de583715e5eb6468a4cd007613a31dc45b67c49d95e44cf1b33c6a",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-4a5c2f67987b.2fea6c37af.js",
+      "bytes": 7631,
+      "sha256": "9064395691ba8bbcce5cb5997c414294d3c1b61dfa76cbec545052c6c5e1f361",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-5cee168c0948.3814905536.js",
+      "bytes": 55349,
+      "sha256": "a618bbb05026f344f7353295fe4f9d70b3db85737d6fc334bbd749a9b433b5ee",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-6dc9d12e9bad.18798d542d.js",
+      "bytes": 16014,
+      "sha256": "29593ca943c38d8180f1cc14d4b10c22a73bba4babcc33898bc4e995140d5390",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.c52d100cc4.js",
+      "bytes": 323809,
+      "sha256": "f6b7491bb3d7554476780b6a78c92f3e61381001a5ce411744e4b4ed7259559b",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-841d5b2f1ee9.12ce52ee9f.js",
+      "bytes": 4695,
+      "sha256": "cb0e658a60d8a12a3a45a88107f6c4aad0088e923e2e552e8808d66729641767",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-9c2b7eea6392.76471430ba.js",
+      "bytes": 5729,
+      "sha256": "da519a2e6b50dff302abd16ce201bf21fdc244d8e2cf31dd0b46ca2f69864fc0",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-a32aa9aa263a.fcfbaadec5.js",
+      "bytes": 10223,
+      "sha256": "140052d24fb0850c3fe259fa4935639793bf99faf6db7acdaf7f105366a66adb",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-a991d6de67ad.38737da44d.js",
+      "bytes": 136285,
+      "sha256": "69963476e9c25a092f7004a9e3107c7d4c337994293917b9eff9b865d24e9ad9",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-abeecded38c6.126f40e9e5.js",
+      "bytes": 24506,
+      "sha256": "3c2bcab083488b3b794022986c79b78660ea643c7361ea973518d7071ff34b18",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-d138c5df840a.6122690ecb.js",
+      "bytes": 59873,
+      "sha256": "3a921488a3f17f73731b4263e428c15e5260fc15ddbfda869e14b80301675613",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-e2adfb4e96e3.b539a82883.js",
+      "bytes": 7100,
+      "sha256": "5ebfa21650da7eaa05dd1d94cd83cbcb78fa6e570367b00f9e8de5b56b8c024e",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-f48731a1e6b7.08ef38fa63.js",
+      "bytes": 10924,
+      "sha256": "d24d8eb6791deadbaadd49acb6e5625fd4cc0fc9e688eb315531d3f7a85cb105",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/index.bcdc3ada56.js",
+      "bytes": 40140,
+      "sha256": "a778520f2117f82b0859db0ab7d09c5ddaf04d7243709e94adf5b3ed8b2c416e",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "previous_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "previous_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "previous_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "previous_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/styles.d2a6dfa6a0.js",
+      "bytes": 473,
+      "sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "previous_sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/search_index.ko.25ede2e3.json",
+      "bytes": 388382,
+      "sha256": "25ede2e3fb82132f8f4226063002bb9e2f6f0e5a34c8c8ad48a0fc14c967dda2",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    }
+  ],
+  "backup_root": "/private/tmp/spinon-tailnet-c13-3-roadmap-composite-sync-20261016/backup",
+  "applied_at": "2026-10-15T19:40:37.203Z"
+}
