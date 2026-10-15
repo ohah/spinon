@@ -12,6 +12,66 @@ pub struct RuntimeScrollContainer {
     scrollable_height_css_px: f32,
     offset_x_css_px: f32,
     offset_y_css_px: f32,
+    input_policy: RuntimeScrollInputPolicy,
+}
+
+/// 한 축에서 scroll remainder를 처리하는 제한된 overscroll 정책입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum RuntimeOverscrollBehavior {
+    Auto,
+    Contain,
+    None,
+}
+
+/// 한 scroll owner의 직접 입력 가능 여부와 두 물리 축 정책입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub struct RuntimeScrollInputPolicy {
+    user_scrollable_x: bool,
+    user_scrollable_y: bool,
+    overscroll_x: RuntimeOverscrollBehavior,
+    overscroll_y: RuntimeOverscrollBehavior,
+}
+
+impl RuntimeScrollInputPolicy {
+    pub const fn new(
+        user_scrollable_x: bool,
+        user_scrollable_y: bool,
+        overscroll_x: RuntimeOverscrollBehavior,
+        overscroll_y: RuntimeOverscrollBehavior,
+    ) -> Self {
+        Self {
+            user_scrollable_x,
+            user_scrollable_y,
+            overscroll_x,
+            overscroll_y,
+        }
+    }
+
+    /// C13.2 장면은 명시적으로 C13.3 입력 정책을 연결할 때까지 직접 scroll하지 않습니다.
+    pub const fn disabled() -> Self {
+        Self::new(
+            false,
+            false,
+            RuntimeOverscrollBehavior::Auto,
+            RuntimeOverscrollBehavior::Auto,
+        )
+    }
+
+    pub const fn user_scrollable_x(self) -> bool {
+        self.user_scrollable_x
+    }
+
+    pub const fn user_scrollable_y(self) -> bool {
+        self.user_scrollable_y
+    }
+
+    pub const fn overscroll_x(self) -> RuntimeOverscrollBehavior {
+        self.overscroll_x
+    }
+
+    pub const fn overscroll_y(self) -> RuntimeOverscrollBehavior {
+        self.overscroll_y
+    }
 }
 
 /// 한 ancestor clip과 그 clip을 움직이는 조상 scroll owner 목록입니다.
@@ -116,6 +176,7 @@ impl RuntimeScrollContainer {
             scrollable_height_css_px,
             offset_x_css_px,
             offset_y_css_px,
+            input_policy: RuntimeScrollInputPolicy::disabled(),
         })
     }
 
@@ -152,6 +213,15 @@ impl RuntimeScrollContainer {
         self.offset_y_css_px
     }
 
+    pub const fn input_policy(self) -> RuntimeScrollInputPolicy {
+        self.input_policy
+    }
+
+    pub const fn with_input_policy(mut self, input_policy: RuntimeScrollInputPolicy) -> Self {
+        self.input_policy = input_policy;
+        self
+    }
+
     pub fn with_offsets(
         self,
         offset_x_css_px: f32,
@@ -166,6 +236,7 @@ impl RuntimeScrollContainer {
             offset_y_css_px,
         )?;
         updated.parent = self.parent;
+        updated.input_policy = self.input_policy;
         Ok(updated)
     }
 

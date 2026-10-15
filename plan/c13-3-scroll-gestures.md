@@ -1,12 +1,14 @@
 # C13.3 · 스크롤 제스처와 축별 chaining
 
-**상태:** 계획 초안 · 구현 미시작
+**상태:** 계획 확정 · snapshot delta-router 구현 조각 진행 중 · C13.3 전체 미완료
 **공식 상위 항목:** [구현 상태 대장](../spec/STATUS.md#css-구현-체크리스트)
 **선행:** C13.1 clip/hit-test와 C13.2 scroll owner, range, immutable snapshot·`ScrollStateRevision`
 **교차 경계:** S04.10 displayed-frame 입력 연결은 미완료다. S05.2 React host adapter와 공개 DOM event도 미완료다. 이 계획의 앱 route는 opt-in fixture 검증으로만 다루며 제품 event/presentation 지원으로 표시하지 않는다.
 **계획 실패 검토:** [20개 관점 기록](../spec/internal/evidence/c13-3-scroll-gesture-plan-review-20-2026-10-15.md)
 **계획 PR 변경 검토:** [30개 관점 기록](../spec/internal/evidence/c13-3-scroll-gesture-plan-pr-review-30-2026-10-15.md)
 **구현 전 비교:** [고정 Chrome 155 관찰·fixture·화면](../spec/internal/evidence/c13-3-scroll-gesture-precomparison-2026-10-15/README.md) · [JSON](../tests/fixtures/css/references/c13-3-scroll-gesture-precomparison-v1.json)
+
+현재 구현 조각은 `RuntimeRenderSnapshot`에 대한 정책 입력형 per-axis delta routing primitive다. CSS computed-style projection, touch-action freeze, gesture session/queue, Android/iOS adapter와 fixture route는 아직 연결하지 않았으며 이 조각만으로 native gesture 동작이나 C13.3 완료를 주장하지 않는다. [구현 실행·검토 근거](../spec/internal/evidence/c13-3-scroll-gesture-runtime-core-2026-10-15/README.md)
 
 ## 목표와 범위
 
@@ -63,7 +65,7 @@ Chrome for Testing `155.0.8059.40`, revision `cfaadc5a132d78e1828635aa8405a499f3
 
 1. **Style projection:** `touch-action` 제한 profile 및 `overscroll-behavior` shorthand/longhands typed extraction·computed default·revision invalidation을 추가한다. unsupported 값은 진단과 함께 gesture를 fail-closed한다. touch-action 값 변경이 새로운 gesture에 반영되며 active state를 소급 변경하지 않는지 확인한다.
 2. **Core gesture session:** pointer begin/move/end/cancel state, pointer identity, surface/document/tree/style/current scroll revision key, frozen owner chain/action/axis를 구현한다. 모든 상태 전이는 검증 뒤 publish하며 중복 종료/늦은 input은 거부한다.
-3. **Per-axis router:** immutable scroll snapshot에서 inner→outer 각 축의 consumed/unconsumed delta를 따로 계산한다. owner 변경, no-range axis, `auto`/`contain`/`none`, diagonal remainder, `ScrollStateRevision`, 내부 event record를 한 candidate transaction으로 게시한다.
+3. **Per-axis router:** immutable scroll snapshot에서 inner→outer 각 축의 consumed/unconsumed delta를 따로 계산한다. 첫 구현 조각은 정책 입력형 core primitive, no-range axis, `auto`/`contain`/`none`, diagonal remainder와 단일 `ScrollStateRevision` transaction까지다. typed style 연결, 내부 event record allocation, gesture/session queue 연동은 후속 관문이다.
 4. **Platform adapters:** Android API 37 ARM64 AVD의 `MotionEvent`와 iPhone 17 Pro/iOS 26.2 Simulator의 pan recognizer trace를 같은 400×240 CSS fixture에 연결한다. CSS viewport point, surface scale/회전, app background/lifecycle 취소를 기록한다. Move coalescing은 revision/policy barrier 안에서만 입력 합계를 보존하고 Begin 시 예약한 terminal slot으로 순서 있는 saturation cancel을 전달한다. host callback은 OS UI thread에서 core 계산을 기다리지 않고 기존 render queue 규칙으로 요청한다.
 5. **Fixture route 및 격리:** `c13-3-scroll-gesture-fixture-test` 전용 feature와 Android/iOS flag, C header, JNI/Swift entry를 추가한다. 일반 artifact에서 전용 symbol/string/payload 부재, opt-in positive control에서 존재를 확인한다. 고정 scene은 실제 runtime snapshot·draw와 연결하되 S04.10 미완료 상태에서 displayed-frame hit-test를 주장하지 않는다.
 6. **회귀·실행:** focused Rust/CSS oracle, workspace/Clippy/rustfmt, feature isolation, 동일 trace의 Android/iOS Simulator 실행을 수행한다. 실행 결과에는 app/source hash, viewport/surface scale, generation, 모든 revision, per-step owner/delta/offset/event order, 화면 캡처를 연결한다. 실제 기기, hardware GPU, OS OOM, compositor 이후 scanout은 gate가 아니다.

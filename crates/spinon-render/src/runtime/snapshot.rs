@@ -148,6 +148,16 @@ impl RuntimeRenderSnapshot {
         &self.scroll_containers
     }
 
+    /// 한 hit target의 scroll owner ancestor 목록을 nearest-to-outer 순서로 반환합니다.
+    /// target 자체가 owner인 경우 이 목록에는 포함되지 않으며 입력 라우터가 별도로 처리합니다.
+    pub fn scroll_ancestors_for_node(&self, node: NodeId) -> Option<&[NodeId]> {
+        let index = self
+            .base_boxes
+            .iter()
+            .position(|render_box| render_box.node_id() == node)?;
+        Some(self.scroll_metadata.get(index)?.scroll_ancestors())
+    }
+
     /// Creates a new immutable render and hit-test snapshot from validated internal offsets.
     pub fn with_scroll_offsets(
         &self,

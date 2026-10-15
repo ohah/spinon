@@ -1,0 +1,44 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.05s
+     Running unittests src/lib.rs (target/debug/deps/spinon_render-2ebea6caa01801d2)
+
+running 32 tests
+test runtime::scroll_gesture_tests::hit_test_clip_miss_does_not_select_a_scroll_target ... ok
+test runtime::scroll_gesture_tests::policy::hidden_boundary_can_stop_chaining_without_consuming ... ok
+test runtime::scroll_gesture_tests::policy::axis_without_user_scroll_range_forwards_delta_to_parent ... ok
+test runtime::scroll_gesture_tests::fractional_and_reverse_deltas_keep_css_px_precision_and_clamp_at_zero ... ok
+test runtime::scroll_gesture_tests::policy::user_scrollability_is_independent_per_axis ... ok
+test runtime::scroll_gesture_tests::scroll_container_construction_disables_user_input_by_default ... ok
+test runtime::scroll_gesture_tests::routes_inner_remainder_to_outer_and_publishes_one_revision ... ok
+test runtime::scroll_gesture_tests::saturated_inner_and_outer_boundaries_keep_revision_and_report_remainder ... ok
+test runtime::scroll_gesture_tests::stale_or_non_finite_samples_fail_without_changing_the_source_snapshot ... ok
+test runtime::scroll_gesture_tests::policy::hidden_boundary_does_not_consume_but_auto_forwards_remainder ... ok
+test runtime::scroll_gesture_tests::policy::overscroll_contain_stops_only_its_axis ... ok
+test runtime::scroll_gesture_tests::viewport_hit_miss_and_noop_do_not_advance_scroll_revision ... ok
+test runtime::scroll_gesture_tests::target_scroll_owner_is_inclusive_and_its_policy_is_preserved_by_offsets ... ok
+test runtime::tests::document_revision_rebinding_preserves_shared_box_storage ... ok
+test runtime::scroll_gesture_tests::policy::overscroll_none_and_contain_both_stop_only_the_configured_axis ... ok
+test runtime::tests::runtime_hit_test_applies_axis_clips_and_uses_half_open_edges ... ok
+test runtime::tests::document_revision_rebinding_rejects_other_generations_and_connected_trees ... ok
+test runtime::tests::runtime_hit_test_can_order_targets_independently_from_paint ... ok
+test runtime::tests::runtime_hit_test_uses_its_clip_independently_from_the_paint_clip ... ok
+test runtime::tests::runtime_nested_scroll_offsets_move_inner_clip_with_outer_scroll_only ... ok
+test runtime::tests::runtime_render_key_distinguishes_intrinsic_size_revisions ... ok
+test runtime::tests::runtime_render_key_distinguishes_scroll_state_revision_independently ... ok
+test runtime::tests::runtime_scene_accepts_empty_and_rejects_duplicate_or_reordered_nodes ... ok
+test runtime::tests::runtime_scene_keeps_complete_key_dom_order_and_transparent_nodes ... ok
+test runtime::tests::runtime_scroll_container_validates_positive_range_and_keeps_offsets_in_range ... ok
+test runtime::tests::runtime_scroll_offset_rebuilds_frames_and_keeps_the_owner_clip_stationary ... ok
+test runtime::tests::runtime_snapshot_rejects_duplicate_scroll_owners ... ok
+test tests::css_sizes_and_frames_reject_non_finite_or_negative_dimensions ... ok
+test tests::hit_test_rejects_non_finite_points ... ok
+test tests::hit_test_uses_last_painted_box_and_half_open_edges ... ok
+test tests::static_snapshot_rejects_an_empty_scene ... ok
+test tests::static_snapshot_requires_unique_nodes_and_contiguous_paint_order ... ok
+
+test result: ok. 32 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests spinon_render
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
