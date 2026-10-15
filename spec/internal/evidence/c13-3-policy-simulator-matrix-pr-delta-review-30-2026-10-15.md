@@ -1,6 +1,6 @@
 # C13.3 computed overscroll simulator matrix PR 변경 검토 30개
 
-대상 PR: 현재 branch diff 전체. 병합 전에 실제 PR 번호와 최종 head SHA를 이 문서에 연결한다. 구현 검토 20개 및 계획 검토 20개와 별도의 변경 범위 검토다.
+대상 PR: [#185](https://github.com/ohah/spinon/pull/185), 초기 검토 head `1f57290879f012b95d497560831047b87ae755d6`. 구현 검토 20개 및 계획 검토 20개와 별도의 변경 범위 검토다.
 
 1. **PR 제목/범위** — computed overscroll simulator matrix만 제목과 상태 ID에 남기고 C13.3 전체 완료처럼 표시하지 않는다.
 2. **공식 상태 대장** — `spec/STATUS.md` 결과와 남은 gate가 계획·증거와 일치하는지 확인한다.
@@ -35,4 +35,4 @@
 
 ## 결과
 
-30개 관점에서 수정이 필요한 미해결 PR blocker를 찾지 못했다. PR 생성 뒤 실제 GitHub diff, required checks, 이미지 렌더링을 대조하고 이 문서의 PR 번호/head SHA를 기록한 다음 merge 판단을 갱신한다.
+30개 관점에서 수정이 필요한 미해결 PR blocker를 찾지 못했다. GitHub PR body를 Agent Browser로 열어 Android 1080×2400 및 iOS 1206×2622 PNG가 실제 로드되는 것을 확인했다. 2026-10-15 조회 시 PR check는 게시되지 않았고 `main` required-status-check endpoint는 미설정(HTTP 404), branch rules는 빈 배열이었다. Rebase and merge 조건과 repository state를 확인했다. PR 링크·체크 구성 메모를 더한 후속 문서 변경도 현재 PR diff에서 다시 확인한다.
