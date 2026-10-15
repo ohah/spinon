@@ -39,6 +39,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             || arguments.contains("--spinon-c131-overflow-clip-border")
             || arguments.contains("--spinon-c132-scroll")
             || arguments.contains("--spinon-c133-scroll-gesture")
+            || arguments.contains("--spinon-c133-tap-probe")
             || arguments.contains("--spinon-c1121-grid-placement")
             || arguments.contains(where: { $0.hasPrefix("--spinon-c1121-grid-scene=") })
             || arguments.contains("--spinon-c1122-grid-auto-placement")

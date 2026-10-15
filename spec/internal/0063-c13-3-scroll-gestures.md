@@ -1,6 +1,6 @@
 # 0063 · C13.3 scroll gesture runtime 내부 계약
 
-- **계약:** 0.1.0-draft · **상태:** per-axis snapshot router, typed style projection, computed scroll policy의 immutable snapshot 연결, pure Rust session/queue와 opt-in Android/iOS fixed-fixture adapters 구현 · 전체 gesture runtime 미완료
+- **계약:** 0.1.0-draft · **상태:** per-axis snapshot router, typed style projection, computed scroll policy의 immutable snapshot 연결, pure Rust session/queue와 opt-in Android/iOS fixed-fixture adapters 및 `none`/`pan-x` native tap arbitration 구현 · 전체 gesture runtime 미완료
 - **제품 CSS 지원 선언:** 아님
 - **기준:** [C13.3 계획](../../plan/c13-3-scroll-gestures.md) · [Chrome 155 precomparison](evidence/c13-3-scroll-gesture-precomparison-2026-10-15/README.md)
 - **기존 기반:** [0062 C13.2 scroll state](0062-c13-2-scroll-state.md)의 immutable snapshot·owner chain·`ScrollStateRevision`
@@ -16,6 +16,11 @@
 ### Fixture scenario selector
 
 `c13-3-gesture-fixture-test` 전용 C FFI `spinon_runtime_gpu_host_new_c13_3_gesture_fixture(scenario_id, ...)`와 모바일 host argument는 고정된 simulator fixture만 선택한다. scenario ID `0`은 `auto-zero`(초기 offset 0), `1`은 `auto-boundary`(inner `(86,106)` max seed, inner `auto/auto`), `2`는 `contain-x-auto-y-boundary`(같은 seed, inner `contain/auto`)다. Android Intent extra는 `spinon_c133_policy_scenario_id`, iOS argument는 `--spinon-c133-policy-scenario-id=N`이다. selector는 fixture route에서만 허용하고, 중복·잘못된 형식·알 수 없는 ID는 거부한다. 알 수 없는 ID는 기본 시나리오로 대체하지 않는다. 첫 native draw가 scenario seed의 `scroll_state_revision`과 owner offsets에 일치하기 전에는 swipe input을 허용하지 않는다. 이 selector와 장면은 제품 API/CSS 지원 범위가 아니다.
+`c13-3-gesture-fixture-test` 전용 C FFI `spinon_runtime_gpu_host_new_c13_3_gesture_fixture(scenario_id, ...)`와 모바일 host argument는 고정된 simulator fixture만 선택한다. scenario ID `0`은 `auto-zero`(초기 offset 0), `1`은 `auto-boundary`(inner `(86,106)` max seed, inner `auto/auto`), `2`는 `contain-x-auto-y-boundary`(같은 seed, inner `contain/auto`)다. Android Intent extra는 `spinon_c133_policy_scenario_id`, iOS argument는 `--spinon-c133-policy-scenario-id=N`이다. tap arbitration 전용 ID `3`은 `touch-action:none`, `4`는 `touch-action:pan-x`이며 Android `spinon_c133_tap_probe` / iOS `--spinon-c133-tap-probe`가 있을 때만 받는다. tap probe는 ID 3/4 외의 policy scenario를 거부한다. selector는 fixture route에서만 허용하고, 중복·잘못된 형식·알 수 없는 ID는 거부한다. 알 수 없는 ID는 기본 시나리오로 대체하지 않는다. 첫 native draw가 scenario seed의 `scroll_state_revision`과 owner offsets에 일치하기 전에는 input을 허용하지 않는다. 이 selector와 장면은 제품 API/CSS 지원 범위가 아니다.
+
+### Native slop 전 tap fixture slice · 2026-10-15
+
+tap probe는 기존 gesture fixture route와 별도 opt-in flag가 모두 활성화된 경우에만 동작한다. Android는 clickable `SurfaceView`의 실제 `OnClickListener` invocation을, iOS는 `UITapGestureRecognizer`의 `.recognized`를 activation으로 센다. 이는 native arbitration 관찰이며 DOM `click` dispatch를 구현하지 않는다. 두 플랫폼의 scenario 3/4 tap은 각각 activation 1회와 revision/offset 불변을 요구한다. iOS tap recognizer는 pan recognizer 실패를 기다리고, computed `none`일 때 pan recognizer를 첫 입력 전에 비활성화한다. pan-x의 뒤이은 수평 swipe는 native slop을 넘어 inner X만 움직이고 추가 tap activation을 만들지 않아야 한다. [Android/iOS 실행·화면·log·hash·artifact 경계](evidence/c13-3-touch-action-tap-arbitration-2026-10-15/README.md) · [구현 실패 관점 20개](evidence/c13-3-touch-action-tap-arbitration-2026-10-15/implementation-review-20.md) · [PR 변경 관점 30개](evidence/c13-3-touch-action-tap-arbitration-2026-10-15/pr-delta-review-30.md).
 
 ## Typed input style profile
 

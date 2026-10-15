@@ -1,0 +1,7 @@
+SPINON_IOS_SIM_BUILD_FLAGS c04_runtime_gpu=0 c04_runtime_gpu_fixture_test=0 c04_ua_cascade_fixture_probe=0 c11_2_3_grid_fixture=0 c11_grid_metal_surface_pixels=0 c13_1_overflow_clip_fixture=0 c13_2_scroll_fixture=0 c13_3_gesture_fixture=0 c14_1_app_fixture_test=0
+** BUILD SUCCEEDED **
+Default app tree SHA-256: bdbf7da2beda087083a88e74e2f5e42deaa930c7445aac0765bc23e5fbfeae09
+0d8d277e3af8dc8f40c546d5ac003909715555be3520064a67d9570a1dcc9829  build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap
+C13.3 FFI exports: absent
+C13.3 fixture payload marker: absent
+Default-disabled route diagnostic: present

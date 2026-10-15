@@ -1,0 +1,6 @@
+appId: dev.spinon.bootstrap
+---
+- swipe:
+    start: 149, 449
+    end: 89, 449
+    duration: 500

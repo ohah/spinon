@@ -1,0 +1,44 @@
+$ RSPRESS_PERSISTENT_CACHE=false rspress build --config "/private/tmp/spinon-c13-3-rspress-isolated.config.mjs"
+🔥 Rspress v2.0.22
+
+info    build started...
+info    Rendering pages...
+success Pages rendered in 56 ms.
+ready   built in 0.52s (node)
+ready   built in 0.52s (web)
+
+File (web)                                                                            Size        Gzip
+build/site-preview-c13-3-20261015/static/js/async/i.25208e7c92.js                     0.10 kB     0.09 kB
+build/site-preview-c13-3-20261015/static/js/styles.d2a6dfa6a0.js                      0.47 kB     0.23 kB
+build/site-preview-c13-3-20261015/icon.svg                                            0.64 kB     0.42 kB
+build/site-preview-c13-3-20261015/static/js/async/route-f687a5a3e108.c20b542ee8.js    9.6 kB      3.4 kB
+build/site-preview-c13-3-20261015/static/js/async/route-33d70eeb7762.f15f07667f.js    10.7 kB     3.8 kB
+build/site-preview-c13-3-20261015/static/js/async/route-1a6e6171d181.e11339a8e1.js    15.7 kB     4.6 kB
+build/site-preview-c13-3-20261015/static/js/async/route-31e84e52e6ad.4e2aa719ec.js    15.9 kB     4.8 kB
+build/site-preview-c13-3-20261015/static/image/android-pan-x-preview.7027fb93ca.png   16.8 kB
+build/site-preview-c13-3-20261015/static/image/ios-pan-x-preview.2ea9a37d94.png       21.3 kB
+build/site-preview-c13-3-20261015/static/js/index.32ce15383a.js                       26.2 kB     10.0 kB
+build/site-preview-c13-3-20261015/static/js/lib-router.1e14e568cb.js                  35.4 kB     12.7 kB
+build/site-preview-c13-3-20261015/static/js/async/route-5cee168c0948.bd1547c9fc.js    47.3 kB     13.3 kB
+build/site-preview-c13-3-20261015/static/js/async/route-d138c5df840a.16638dbc15.js    49.2 kB     14.4 kB
+build/site-preview-c13-3-20261015/static/css/styles.8d918fd78e.css                    74.0 kB     14.2 kB
+build/site-preview-c13-3-20261015/static/js/async/route-a991d6de67ad.4d8453d9a3.js    134.7 kB    29.4 kB
+build/site-preview-c13-3-20261015/static/js/a.ebcc9896fa.js                           217.1 kB    72.0 kB
+build/site-preview-c13-3-20261015/static/js/lib-react.9cdf8f49ce.js                   218.4 kB    68.8 kB
+build/site-preview-c13-3-20261015/static/js/async/route-7ce2535ac56d.894a62c2cf.js    309.7 kB    73.4 kB
+build/site-preview-c13-3-20261015/static/search_index.ko.7a39726e.json                336.8 kB    108.7 kB
+
+                                                                             Total:   1540.2 kB   472.3 kB
+
+File (node)                                                                                                                            Size       Gzip
+build/site-preview-c13-3-20261015/404.html                                                                                             8.5 kB     2.6 kB
+build/site-preview-c13-3-20261015/spec/internal/evidence/c13-3-touch-action-tap-arbitration-2026-10-15/implementation-review-20.html   25.0 kB    6.5 kB
+build/site-preview-c13-3-20261015/spec/internal/evidence/c13-3-touch-action-tap-arbitration-plan-review-20-2026-10-15.html             25.7 kB    6.9 kB
+build/site-preview-c13-3-20261015/spec/internal/evidence/c13-3-touch-action-tap-arbitration-2026-10-15/pr-delta-review-30.html         29.4 kB    7.9 kB
+build/site-preview-c13-3-20261015/spec/internal/evidence/c13-3-touch-action-tap-arbitration-2026-10-15/README.html                     32.1 kB    8.0 kB
+build/site-preview-c13-3-20261015/spec/internal/0063-c13-3-scroll-gestures.html                                                        62.7 kB    16.7 kB
+build/site-preview-c13-3-20261015/plan/c13-3-scroll-gestures.html                                                                      65.7 kB    17.7 kB
+build/site-preview-c13-3-20261015/spec/internal/README.html                                                                            128.8 kB   32.0 kB
+build/site-preview-c13-3-20261015/spec/STATUS.html                                                                                     294.9 kB   75.5 kB
+
+                                                                                                                              Total:   672.7 kB   173.7 kB

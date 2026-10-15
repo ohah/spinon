@@ -1,0 +1,7 @@
+APK
+1937ef9b0c2ba147f4635f9036f918635865057a94a200382f8521b1e00a003f  platforms/android/app/build/outputs/apk/debug/app-debug.apk
+Extracted ARM64 native library
+ffed4b7fa3d09ab187d3852ccb1a7636d426f40ea62eaecd4ee231c72b58a68a  /tmp/spinon-c133-default-final-20261015.so
+C13.3 fixture ABI/payload scan
+PASS: C13.3 fixture exports absent from current fixture-off APK
+PASS: C13.3 fixture payload strings absent from current fixture-off APK

@@ -424,6 +424,7 @@ public final class MainActivity extends Activity {
                 || c131OverflowClipBorderRequested
                 || getIntent().getBooleanExtra("spinon_c132_scroll_fixture", false)
                 || getIntent().getBooleanExtra("spinon_c133_gesture_fixture", false)
+                || getIntent().getBooleanExtra("spinon_c133_tap_probe", false)
                 || getIntent().getBooleanExtra("spinon_c124_stacking_matrix", false)
                 || getIntent().getBooleanExtra("spinon_c124_depth_safety", false)
                 || getIntent().getStringExtra("spinon_c124_surface_case") != null
@@ -475,6 +476,17 @@ public final class MainActivity extends Activity {
                 setContentView(unavailable);
                 Log.e(TAG, "SPINON_C133_DISABLED · "
                         + "SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST=1로 빌드하세요");
+                return;
+            }
+            if (getIntent().getBooleanExtra("spinon_c133_tap_probe", false)
+                    && (!BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST
+                            || !getIntent().getBooleanExtra("spinon_c133_gesture_fixture", false))) {
+                TextView unavailable = new TextView(this);
+                unavailable.setText("C13.3 tap probe에는 opt-in gesture fixture route가 필요합니다.");
+                unavailable.setTextColor(Color.BLACK);
+                unavailable.setGravity(Gravity.CENTER);
+                setContentView(unavailable);
+                Log.e(TAG, "SPINON_C133_ARGUMENT_ERROR rejected=true reason=tap-probe-requires-opt-in-route");
                 return;
             }
             boolean failureProbe = getIntent().getBooleanExtra(

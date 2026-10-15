@@ -1,0 +1,13 @@
+APK
+d4e0332e0a3a94d73d79f808eb5c6c084b496c097a61a055a0edf9cfab9d63de  platforms/android/app/build/outputs/apk/debug/app-debug.apk
+Extracted ARM64 native library
+d00629afe154292d1982ae03cf1caf571132e9222d75b1893fe83e34b7413c37  /tmp/spinon-c133-final-opt-in-apk-arm64.so
+0000000001c375d8 T spinon_runtime_gpu_host_enqueue_c13_3_gesture
+0000000001c37dec T spinon_runtime_gpu_host_eval_c13_3_gesture_fixture
+0000000001c38a6c T spinon_runtime_gpu_host_new_c13_3_gesture_fixture
+0000000001c38f50 T spinon_runtime_gpu_host_process_c13_3_gesture_queue
+PASS: C13.3 fixture exports are present in final fixture-on APK
+4100:spinon_runtime_gpu_host_new_c13_3_gesture_fixture
+4173:spinon_runtime_gpu_host_eval_c13_3_gesture_fixture
+90231:%c13_3_gesture_fixture=ready scenario=
+PASS: C13.3 fixture payload is present in final fixture-on APK

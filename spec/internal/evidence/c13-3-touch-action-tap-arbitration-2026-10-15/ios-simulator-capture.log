@@ -1,0 +1,76 @@
+{
+  "evidence": "spec/internal/evidence/c13-3-touch-action-tap-arbitration-2026-10-15/run.json",
+  "sha256": "2f523bbddc25751b5330103c5684ea99ee92c37d8858c5aceb592f90beace090",
+  "results": [
+    {
+      "platform": "ios-simulator",
+      "scenario": 3,
+      "name": "none",
+      "postTapState": {
+        "revision": 0,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          0,
+          0
+        ]
+      },
+      "finalState": {
+        "revision": 0,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "platform": "ios-simulator",
+      "scenario": 4,
+      "name": "pan-x",
+      "postTapState": {
+        "revision": 0,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          0,
+          0
+        ]
+      },
+      "finalState": {
+        "revision": 29,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          49,
+          0
+        ]
+      }
+    }
+  ]
+}
