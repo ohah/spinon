@@ -10,7 +10,9 @@ use style::context::QuirksMode;
 use style::shared_lock::SharedRwLock;
 use url::Url;
 
-use crate::stylo_dom::{element::StyloElementData, node::StyloNode};
+use crate::stylo_dom::{
+    acquire_standard_stylo_preferences, element::StyloElementData, node::StyloNode,
+};
 
 use super::{StyloElement, element::StyloElementRef};
 
@@ -125,6 +127,7 @@ impl StyloDocumentView {
         quirks_mode: QuirksMode,
         document_base_url: &str,
     ) -> Result<Self, StyloDomError> {
+        let _preferences = acquire_standard_stylo_preferences();
         Self::build_shared_with_base_url(
             snapshot,
             root,
@@ -144,6 +147,7 @@ impl StyloDocumentView {
         snapshot: Arc<HostDocumentSnapshot>,
         root: HostNodeHandle,
     ) -> Result<Self, StyloDomError> {
+        let _preferences = acquire_standard_stylo_preferences();
         Self::build_shared_with_base_url(
             snapshot,
             root,
@@ -163,6 +167,7 @@ impl StyloDocumentView {
         snapshot: Arc<HostDocumentSnapshot>,
         root: HostNodeHandle,
     ) -> Result<Self, StyloDomError> {
+        let _preferences = acquire_standard_stylo_preferences();
         Self::build_shared_with_base_url(
             snapshot,
             root,
@@ -171,6 +176,19 @@ impl StyloDocumentView {
             "https://spinon.invalid/document.html",
             false,
             true,
+        )
+    }
+
+    /// 호출자가 preference guard를 보유한 구간에서 inline CSS를 다시 파싱합니다.
+    pub(super) fn rebuilt_with_current_stylo_preferences(&self) -> Result<Self, StyloDomError> {
+        Self::build_shared_with_base_url(
+            Arc::clone(&self.snapshot),
+            self.root,
+            self.is_html_document,
+            self.quirks_mode,
+            self.document_base_url.as_str(),
+            self.root_matches_root_pseudo,
+            self.synthetic_html.is_some(),
         )
     }
 

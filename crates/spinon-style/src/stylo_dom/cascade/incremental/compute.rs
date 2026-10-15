@@ -6,7 +6,9 @@ use super::super::{
     CascadeDiagnostic, ComputedStyleProfile, ComputedStyleSnapshot, CssCascadeError, CssViewport,
     FLEX_ALIGNMENT_AUTHOR_PROPERTIES, FLEX_LAYOUT_AUTHOR_PROPERTIES, UA_STYLESHEET_ID,
     UA_STYLESHEET_URL,
-    device::{LayoutThreadState, initialize_stylo_preferences, make_device},
+    device::{
+        LayoutThreadState, acquire_stylo_preferences, initialize_stylo_preferences, make_device,
+    },
     margin::FLEX_MARGIN_AUTHOR_PROPERTIES,
     runtime_grid::{
         runtime_block_flex_grid_author_properties,
@@ -18,6 +20,7 @@ use super::super::{
     runtime_layout::RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES,
     runtime_overflow::runtime_block_flex_overflow_clip_author_properties,
     runtime_paint::RUNTIME_BLOCK_PAINT_AUTHOR_PROPERTIES,
+    runtime_scroll_gesture::runtime_block_flex_scroll_gesture_author_properties,
     runtime_stacking::runtime_block_flex_stacking_author_properties,
     s04,
 };
@@ -43,6 +46,7 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
     profile: ComputedStyleProfile,
     reuse: Option<(&ComputedStyleSnapshot, &[NodeId])>,
 ) -> Result<Option<(ComputedStyleSnapshot, RuntimeCascadeReuseStats)>, CssCascadeError> {
+    let _preferences = acquire_stylo_preferences(profile);
     initialize_stylo_preferences();
     let reuse_plan = match reuse {
         Some((previous, dirty_roots)) => {
@@ -61,7 +65,7 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
     }
 
     let mut registry = StylesheetRegistry::with_shared_lock(view.shared_lock().clone());
-    registry.append(StylesheetSource {
+    registry.append_with_stylo_preferences_held(StylesheetSource {
         id: UA_STYLESHEET_ID.to_owned(),
         base_url: Url::parse(UA_STYLESHEET_URL)
             .expect("내장 UA stylesheet URL은 절대 URL이어야 합니다")
@@ -75,7 +79,7 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
                 id: source.id.clone(),
             });
         }
-        registry.append(source.clone())?;
+        registry.append_with_stylo_preferences_held(source.clone())?;
     }
     let stylesheet_border_sources = registry.raw_style_declaration_sources();
     if is_runtime_layout_profile(profile) {
@@ -153,6 +157,8 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
     let runtime_stacking_author_properties = runtime_block_flex_stacking_author_properties();
     let runtime_overflow_clip_author_properties =
         runtime_block_flex_overflow_clip_author_properties();
+    let runtime_scroll_gesture_author_properties =
+        runtime_block_flex_scroll_gesture_author_properties();
     let runtime_grid_author_properties = runtime_block_flex_grid_author_properties();
     let runtime_grid_placement_author_properties =
         runtime_block_flex_grid_placement_author_properties();
@@ -193,6 +199,9 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         }
         ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1 => {
             Some(runtime_overflow_clip_author_properties.as_slice())
+        }
+        ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1 => {
+            Some(runtime_scroll_gesture_author_properties.as_slice())
         }
         ComputedStyleProfile::RuntimeBlockFlexGridV1 => {
             Some(runtime_grid_author_properties.as_slice())
@@ -246,13 +255,13 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
                 )
             })
         }
-        ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1 => {
-            allowed_author_properties.and_then(|allowed| {
+        ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+        | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1 => allowed_author_properties
+            .and_then(|allowed| {
                 registry.first_unsupported_runtime_layered_registered_properties_author_feature(
                     allowed, true,
                 )
-            })
-        }
+            }),
         _ => allowed_author_properties
             .and_then(|allowed| registry.first_unsupported_author_feature(allowed)),
     };
@@ -281,6 +290,7 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1
             | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+            | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
     ) && let Some((stylesheet_id, diagnostic)) =
         registry.first_runtime_registered_property_author_diagnostic()
     {

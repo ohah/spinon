@@ -295,6 +295,25 @@ pub enum ComputedCssOverflow {
     Auto,
 }
 
+/// Stylo에서 추출한 C13.3 물리 축 `overscroll-behavior` 값입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum ComputedCssOverscrollBehavior {
+    Auto,
+    Contain,
+    None,
+}
+
+/// C13.3 제한 profile에서 direct pan에 사용할 수 있는 `touch-action`입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum ComputedCssTouchAction {
+    Auto,
+    None,
+    PanX,
+    PanY,
+    /// Stylo가 계산한 유효 값이 C13.3의 제한 지원 집합 밖입니다.
+    Unsupported,
+}
+
 /// `overflow-clip-margin`의 시각 상자 기준입니다.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum ComputedCssOverflowVisualBox {
@@ -432,6 +451,11 @@ pub struct ComputedElementStyle {
     pub layout_overflow_y: Option<ComputedCssOverflow>,
     /// C13.1 profile에서만 설정하는 typed `overflow-clip-margin` 값입니다.
     pub overflow_clip_margin: Option<ComputedCssOverflowClipMargin>,
+    /// C13.3 style profile에서만 설정하는 물리 축 overscroll 정책입니다.
+    pub input_overscroll_behavior_x: Option<ComputedCssOverscrollBehavior>,
+    pub input_overscroll_behavior_y: Option<ComputedCssOverscrollBehavior>,
+    /// C13.3 style profile에서만 설정하는 제한 direct-pan 정책입니다.
+    pub input_touch_action: Option<ComputedCssTouchAction>,
     /// 같은 Stylo computed values에서 추출한 fixed-CB effect입니다.
     pub fixed_containing_block_effects: Vec<FixedContainingBlockEffect>,
     /// 같은 cascade 결과의 물리 방향 inset 값입니다.
@@ -522,6 +546,8 @@ pub enum ComputedStyleProfile {
     RuntimeBlockFlexStackingV1,
     /// C13.1의 overflow 축과 clip margin을 포함하는 혼합 Block/Flex runtime profile입니다.
     RuntimeBlockFlexOverflowClipV1,
+    /// C13.3의 overflow·overscroll·touch-action 입력을 포함하는 혼합 Block/Flex profile입니다.
+    RuntimeBlockFlexScrollGestureV1,
     /// C11.1의 혼합 Block/Flex/Grid explicit-track runtime profile입니다.
     RuntimeBlockFlexGridV1,
     /// C11.2.1의 혼합 Block/Flex/Grid explicit-line runtime profile입니다.

@@ -1,11 +1,11 @@
 # 0063 · C13.3 scroll gesture runtime 내부 계약
 
-- **계약:** `0.1.0-draft` · **상태:** per-axis snapshot router 조각 구현 후보 · 전체 gesture runtime 미완료
+- **계약:** `0.1.0-draft` · **상태:** per-axis snapshot router와 typed style projection 조각 구현 · 전체 gesture runtime 미완료
 - **제품 CSS 지원 선언:** 아님
 - **기준:** [C13.3 계획](../../plan/c13-3-scroll-gestures.md) · [Chrome 155 precomparison](evidence/c13-3-scroll-gesture-precomparison-2026-10-15/README.md)
 - **기존 기반:** [0062 C13.2 scroll state](0062-c13-2-scroll-state.md)의 immutable snapshot·owner chain·`ScrollStateRevision`
 
-현재 후보는 policy 입력형 순수 Rust delta router다. 기본 C13.2 scroll container는 입력을 비활성화하며, 아직 CSS computed style·touch-action freeze·native gesture session/queue·Android/iOS callback·fixture FFI로 연결하지 않았다. 이 후보의 통과를 제품 제스처나 C13.3 완료로 해석하지 않는다. [실행·제한·검토 근거](evidence/c13-3-scroll-gesture-runtime-core-2026-10-15/README.md)
+현재 후보에는 policy 입력형 순수 Rust delta router와 `RuntimeBlockFlexScrollGestureV1` computed-style profile이 있다. profile은 `overscroll-behavior` 물리 축 shorthand/longhand와 `touch-action`을 typed output으로 보존하고 기존 C13.1 overflow layout projection을 유지한다. 제한 지원 집합 밖의 유효 `touch-action` 값은 `Unsupported`로 보존한다. 이 style profile은 아직 renderer scroll policy, gesture session/queue, Android/iOS callback 또는 fixture FFI에 연결되지 않았다. 두 조각의 통과를 제품 제스처나 C13.3 완료로 해석하지 않는다. [router 실행 근거](evidence/c13-3-scroll-gesture-runtime-core-2026-10-15/README.md) · [typed style 실행 근거](evidence/c13-3-scroll-style-projection-2026-10-15/README.md)
 
 ## 범위와 소유자
 
@@ -16,7 +16,7 @@
 ## Typed input style profile
 
 - `overscroll-behavior`, `overscroll-behavior-x`, `overscroll-behavior-y`: `auto`, `contain`, `none`만 지원한다. shorthand는 CSS 규칙에 따라 두 물리 축에 매핑하며 initial은 `auto/auto`, non-inherited다.
-- `touch-action`: 이번 profile은 `auto`, `none`, `pan-x`, `pan-y`만 지원한다. initial은 `auto`, non-inherited다. 방향 조합, `pan-left/right/up/down`, `manipulation` 및 다른 합법 값은 이 제한 profile에서 unsupported이며 `auto`로 대체하지 않는다.
+- `touch-action`: 이번 profile은 `auto`, `none`, `pan-x`, `pan-y`만 지원한다. initial은 `auto`, non-inherited다. Stylo가 계산값을 보존하는 유효 방향 조합, `manipulation` 및 다른 합법 값은 `Unsupported`로 남기며 `auto`로 대체하지 않는다. pinned Stylo 0.22가 기본값으로 조용히 버리는 유효 `pan-left/right/up/down`과 동적 `var()` 선언은 원래 계산값을 잃기 전에 profile 오류로 거부한다.
 - `touch-action` direct-pan allowed axes는 hit target에서 nearest inclusive scroll container까지의 supported value 교집합으로 결정한다. `none`은 빈 집합이다. 값과 축 결정은 gesture 시작에서 동결하며 active gesture 중 새 computed value는 current gesture에 적용하지 않는다. 해당 policy-only style 변경은 current gesture를 cancel하지 않는다.
 - `overscroll-behavior`는 delta sample을 처리할 때 현재 committed style에서 읽는다. active gesture 중 policy 변경은 다음 delta sample부터 적용한다. geometry/owner/range 변경은 별도 geometry-key 비교로 취소한다.
 - `touch-action`은 wheel/trackpad, keyboard, text selection, tap/click activation을 제한하지 않는다. keyboard 기본 scroll은 S05/S07 경계다.

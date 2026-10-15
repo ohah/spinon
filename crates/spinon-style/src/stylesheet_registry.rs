@@ -22,7 +22,7 @@ use style::{
 };
 use url::Url;
 
-use crate::stylo_dom::initialize_stylo_preferences;
+use crate::stylo_dom::{acquire_standard_stylo_preferences, initialize_stylo_preferences};
 
 /// Stylo에 전달하는 지원 CSS 출처입니다.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -174,6 +174,15 @@ impl StylesheetRegistry {
     /// 문법 오류는 CSS 오류 복구 규칙에 따라 Stylo가 처리하고 진단을 보존합니다.
     /// `@import`는 외부 로더 없이 파싱하지 않으며 Stylo 진단으로 기록됩니다.
     pub fn append(
+        &mut self,
+        source: StylesheetSource,
+    ) -> Result<&RegisteredStylesheet, StylesheetRegistryError> {
+        let _preferences = acquire_standard_stylo_preferences();
+        self.append_with_stylo_preferences_held(source)
+    }
+
+    /// 이미 process-wide Stylo preference guard를 소유한 cascade 내부에서 호출합니다.
+    pub(crate) fn append_with_stylo_preferences_held(
         &mut self,
         source: StylesheetSource,
     ) -> Result<&RegisteredStylesheet, StylesheetRegistryError> {

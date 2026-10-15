@@ -42,6 +42,8 @@ mod c12_3_fixed_tests;
 #[cfg(test)]
 mod c13_1_overflow_clip_tests;
 #[cfg(test)]
+mod c13_3_scroll_gesture_style_layout_tests;
+#[cfg(test)]
 mod c14_intrinsic_size_tests;
 #[cfg(test)]
 mod c14_png_resource_tests;

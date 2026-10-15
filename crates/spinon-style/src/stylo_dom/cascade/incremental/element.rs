@@ -18,9 +18,9 @@ use style::{
 
 use super::super::{
     ComputedCssMath, ComputedCssOverflow, ComputedCssOverflowClipMargin,
-    ComputedCssOverflowVisualBox, ComputedCssPosition, ComputedCssVisibility, ComputedCssZIndex,
-    ComputedElementStyle, ComputedStyleProfile, CssCascadeError, CssViewport,
-    FixedContainingBlockEffect, runtime_paint,
+    ComputedCssOverflowVisualBox, ComputedCssOverscrollBehavior, ComputedCssPosition,
+    ComputedCssTouchAction, ComputedCssVisibility, ComputedCssZIndex, ComputedElementStyle,
+    ComputedStyleProfile, CssCascadeError, CssViewport, FixedContainingBlockEffect, runtime_paint,
 };
 use super::dimensions::{computed_layout_dimensions, computed_layout_math_values};
 use super::source_border::{
@@ -44,7 +44,12 @@ pub(super) fn computed_element_output(
         runtime_paint::computed_background_for_profile(profile, computed, node_id)?;
     let font_size_css_px = computed.get_font().clone_font_size().computed_size().px();
     let layout_border = computed_layout_border(computed, &source_border_widths);
-    let layout_border_paint = (profile == ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1)
+    let has_overflow = matches!(
+        profile,
+        ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+            | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
+    );
+    let layout_border_paint = has_overflow
         .then(|| runtime_paint::computed_runtime_border_paint(computed, node_id, layout_border))
         .transpose()?;
     let layout_position = match computed.clone_position() {
@@ -59,6 +64,7 @@ pub(super) fn computed_element_output(
         profile,
         ComputedStyleProfile::RuntimeBlockFlexStackingV1
             | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+            | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
     )
     .then(|| match computed.clone_z_index() {
         style::values::computed::ZIndex::Auto => ComputedCssZIndex::Auto,
@@ -68,6 +74,7 @@ pub(super) fn computed_element_output(
         profile,
         ComputedStyleProfile::RuntimeBlockFlexStackingV1
             | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+            | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
     )
     .then(|| match computed.clone_visibility() {
         style::properties::longhands::visibility::computed_value::T::Visible => {
@@ -80,7 +87,6 @@ pub(super) fn computed_element_output(
             ComputedCssVisibility::Collapse
         }
     });
-    let has_overflow = profile == ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1;
     let layout_overflow_x = has_overflow.then(|| computed_overflow(computed.clone_overflow_x()));
     let layout_overflow_y = has_overflow.then(|| computed_overflow(computed.clone_overflow_y()));
     let overflow_clip_margin = has_overflow.then(|| {
@@ -100,6 +106,13 @@ pub(super) fn computed_element_output(
             offset_css_px: value.offset.px(),
         }
     });
+    let has_scroll_gesture = profile == ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1;
+    let input_overscroll_behavior_x = has_scroll_gesture
+        .then(|| computed_overscroll_behavior(computed.clone_overscroll_behavior_x()));
+    let input_overscroll_behavior_y = has_scroll_gesture
+        .then(|| computed_overscroll_behavior(computed.clone_overscroll_behavior_y()));
+    let input_touch_action =
+        has_scroll_gesture.then(|| computed_touch_action(computed.clone_touch_action()));
     let layout_aspect_ratio = if matches!(
         profile,
         ComputedStyleProfile::RuntimeFlexLayoutV1
@@ -111,6 +124,7 @@ pub(super) fn computed_element_output(
             | ComputedStyleProfile::RuntimeBlockPositioningV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1
             | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+            | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
     ) {
         computed_layout_aspect_ratio(computed, node_id)?
     } else {
@@ -186,6 +200,9 @@ pub(super) fn computed_element_output(
         layout_overflow_x,
         layout_overflow_y,
         overflow_clip_margin,
+        input_overscroll_behavior_x,
+        input_overscroll_behavior_y,
+        input_touch_action,
         fixed_containing_block_effects,
         layout_insets: computed_layout_insets(computed),
         font_size_css_px,
@@ -210,6 +227,34 @@ fn computed_overflow(value: style::values::computed::Overflow) -> ComputedCssOve
         style::values::computed::Overflow::Hidden => ComputedCssOverflow::Hidden,
         style::values::computed::Overflow::Scroll => ComputedCssOverflow::Scroll,
         style::values::computed::Overflow::Auto => ComputedCssOverflow::Auto,
+    }
+}
+
+fn computed_overscroll_behavior(
+    value: style::values::computed::OverscrollBehavior,
+) -> ComputedCssOverscrollBehavior {
+    match value {
+        style::values::computed::OverscrollBehavior::Auto => ComputedCssOverscrollBehavior::Auto,
+        style::values::computed::OverscrollBehavior::Contain => {
+            ComputedCssOverscrollBehavior::Contain
+        }
+        style::values::computed::OverscrollBehavior::None => ComputedCssOverscrollBehavior::None,
+    }
+}
+
+fn computed_touch_action(value: style::values::computed::TouchAction) -> ComputedCssTouchAction {
+    use style::values::computed::TouchAction;
+
+    if value == TouchAction::AUTO {
+        ComputedCssTouchAction::Auto
+    } else if value == TouchAction::NONE {
+        ComputedCssTouchAction::None
+    } else if value == TouchAction::PAN_X {
+        ComputedCssTouchAction::PanX
+    } else if value == TouchAction::PAN_Y {
+        ComputedCssTouchAction::PanY
+    } else {
+        ComputedCssTouchAction::Unsupported
     }
 }
 

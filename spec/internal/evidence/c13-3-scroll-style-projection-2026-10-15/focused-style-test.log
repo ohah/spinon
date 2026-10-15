@@ -1,0 +1,15 @@
+   Compiling spinon-style v0.1.0 (/private/tmp/spinon-c13-3-scroll-style-20261015/crates/spinon-style)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.66s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style-bbe83c0d80453aa3)
+
+running 8 tests
+test stylo_dom::cascade::runtime_scroll_gesture_tests::scroll_gesture_author_stylesheets_can_set_shorthand_and_longhands ... ok
+test stylo_dom::cascade::runtime_scroll_gesture_tests::scroll_gesture_values_use_css_non_inherited_initial_values ... ok
+test stylo_dom::cascade::runtime_scroll_gesture_tests::scroll_gesture_profile_marks_valid_but_unsupported_touch_action_values ... ok
+test stylo_dom::cascade::runtime_scroll_gesture_tests::scroll_gesture_profile_extracts_typed_physical_axes_and_existing_overflow ... ok
+test stylo_dom::cascade::runtime_scroll_gesture_tests::scroll_gesture_profile_applies_single_value_shorthand_then_axis_override ... ok
+test stylo_dom::cascade::runtime_scroll_gesture_tests::scroll_gesture_profile_rejects_directional_touch_action_that_stylo_drops ... ok
+test stylo_dom::cascade::runtime_scroll_gesture_tests::scroll_gesture_profile_stays_physical_and_c131_allowlist_stays_unchanged ... ok
+test stylo_dom::cascade::runtime_scroll_gesture_tests::scroll_gesture_preference_is_isolated_from_concurrent_legacy_style_parsing ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 138 filtered out; finished in 0.02s
