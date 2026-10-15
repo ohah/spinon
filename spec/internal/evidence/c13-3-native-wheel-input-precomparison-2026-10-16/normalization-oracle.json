@@ -1,0 +1,40 @@
+{
+  "schema": "spinon-c13-3-native-wheel-normalization-precomparison-v1",
+  "status": "plan-only; native observations required before implementation",
+  "reference": {
+    "chrome": "155.0.8059.40",
+    "fixture": "tests/fixtures/css/c13/c13-3-scroll-gesture.html",
+    "viewport_css_px": [400, 240],
+    "existing_normalized_cases": [
+      {"id":"wheelAutoDiagonal","delta_css_px":[40,40],"expected_owner_offsets":{"inner":[86,106],"outer":[40,40],"root":[0,0]}},
+      {"id":"wheelXContainYAutoDiagonal","delta_css_px":[40,40],"expected_owner_offsets":{"inner":[86,106],"outer":[0,40],"root":[0,0]},"chrome_axis_policy_discrepancy":"Chrome observed [0,0] remainder; C13.3 per-axis contract expects outer Y 40"},
+      {"id":"wheelTouchActionNone","delta_css_px":[0,40],"expected_owner_offsets":{"inner":[0,40],"outer":[0,0],"root":[0,0]}}
+    ]
+  },
+  "normalized_direction": {
+    "positive_x": "document scroll viewport right",
+    "positive_y": "document scroll viewport down",
+    "reference": "https://www.w3.org/TR/uievents/#wheelevent"
+  },
+  "android": {
+    "minimum_api": 29,
+    "accepted_action": "ACTION_SCROLL",
+    "accepted_sources": ["SOURCE_MOUSE","SOURCE_TOUCHPAD when delivered as mouse-equivalent ACTION_SCROLL"],
+    "native_units": "Android physical pixels after multiplying AXIS_HSCROLL/AXIS_VSCROLL by ViewConfiguration factor",
+    "native_units_per_css_px": "surface physical pixels / fixture CSS pixels",
+    "formula": {"delta_x_css_px":"axis_hscroll * horizontal_factor_px / surface_px_per_css_px","delta_y_css_px":"-axis_vscroll * vertical_factor_px / surface_px_per_css_px"},
+    "not_supported_in_this_slice": ["API 34 CLASSIFICATION_TWO_FINGER_SWIPE dispatched as ACTION_MOVE with AXIS_GESTURE_SCROLL_*_DISTANCE","pinch classification or magnification","SOURCE_MOUSE_RELATIVE pointer-capture mode"]
+  },
+  "ios": {
+    "minimum": "iPadOS Simulator 26.2",
+    "source_detection": {"mouse":"UIPanGestureRecognizer.allowedScrollTypesMask = UIScrollTypeMask.discrete","trackpad":"UIPanGestureRecognizer.allowedScrollTypesMask = UIScrollTypeMask.continuous","touch_duplication_guard":"allowedTouchTypes = []"},
+    "native_units": "UIKit points",
+    "native_units_per_css_px": "canvas bounds points / fixture viewport CSS px",
+    "cumulative_translation": true,
+    "proposed_formula": {"delta_x_css_px":"-(translation_now_x - translation_previous_x) / points_per_css_px","delta_y_css_px":"-(translation_now_y - translation_previous_y) / points_per_css_px"},
+    "formula_confirmation_required_before_implementation": true,
+    "momentum_phase": "None unless an explicit native signal is provided"
+  },
+  "negative_controls": ["zero delta does not publish a new scroll revision","unsupported source/action does not enqueue","Android Ctrl-wheel, iOS Control-wheel, pinch, and magnification do not enter the scroll queue","repeat iOS cumulative translation produces zero second delta","non-finite or non-positive scale/factor is rejected","surface generation change clears the iOS translation baseline"],
+  "evidence_limit": "Android API 37 ARM64 AVD and iPadOS 26.2 Simulator only; no physical-device or public DOM event claim"
+}
