@@ -1,0 +1,57 @@
+{
+  "captured_at": "2026-10-16 Asia/Seoul",
+  "browser": "agent-browser 0.31.1",
+  "roadmap_url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "roadmap_title": "스피논 구현 로드맵",
+  "official_counter": "197개 표시 · 공식 완료 61/197",
+  "composite_summary_visible": true,
+  "composite_link": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c13-3-native-wheel-composite-avd-2026-10-16/README.html",
+  "evidence_title": "C13.3 Android AVD 복합 wheel source 분류 · 2026-10-16 - 스피논 문서",
+  "evidence_text_contains": [
+    "0x10200a",
+    "0x2002"
+  ],
+  "rendered_images": [
+    {
+      "alt": "복합 wheel positive control 전",
+      "natural_width": 1080,
+      "natural_height": 2400
+    },
+    {
+      "alt": "복합 wheel positive control 후",
+      "natural_width": 1080,
+      "natural_height": 2400
+    },
+    {
+      "alt": "화면 밖 복합 wheel 입력 거부 전",
+      "natural_width": 1080,
+      "natural_height": 2400
+    },
+    {
+      "alt": "화면 밖 복합 wheel 입력 거부 후",
+      "natural_width": 1080,
+      "natural_height": 2400
+    }
+  ],
+  "broken_images": [],
+  "screenshots": [
+    {
+      "path": "roadmap-agent-browser.png",
+      "sha256": "2d3b2a4d190258c1c645a878195ca77f64754cb39ec4b216445301bcb0debc55"
+    },
+    {
+      "path": "composite-evidence-agent-browser.png",
+      "sha256": "8e457fc825a35dce6a490730e201d8f30d08dd3dfe9d1862cae40dbff314d58d"
+    },
+    {
+      "path": "roadmap-count-agent-browser.png",
+      "sha256": "63fd056a221c5541f601e6d9d93f9bfa564278c162c88acb10b301289bdceda4"
+    }
+  ],
+  "sync_counts": {
+    "unchanged": 45,
+    "replaced": 16,
+    "created": 42
+  },
+  "sync_deletions": []
+}
