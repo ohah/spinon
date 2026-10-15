@@ -1,3 +1,4 @@
+$ bash tools/build-android-app.sh
 WARNING: We recommend using a newer Android Gradle plugin to use compile SDK version 37.2
 
 This Android Gradle plugin (8.13.2) was tested up to compile SDK version 36.1.
@@ -23,7 +24,7 @@ Bundled 1 module in 3ms
 
   app.js  17.59 KB  (entry point)
 
-    Finished `release` profile [optimized] target(s) in 0.07s
+    Finished `release` profile [optimized] target(s) in 0.08s
     Finished `release` profile [optimized] target(s) in 0.04s
 C12.4 Android runtime matrix: 26 cases, 77 nodes, 21 expected ready, 5 expected rejection
 Android ARM64 unwind runtime: /Users/yoonhb/Library/Android/sdk/ndk/27.1.12297006/toolchains/llvm/prebuilt/darwin-x86_64/lib/clang/18/lib/linux/aarch64/libunwind.a

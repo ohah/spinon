@@ -24,7 +24,7 @@ test('Android wheel source classification rejects device-union misclassification
       '-cp', outputDirectory,
       'dev.spinon.bootstrap.WheelSourceClassifierJvmTest',
     ], { encoding: 'utf8', stdio: 'pipe' });
-    assert.match(output, /assertions=8 status=passed/);
+    assert.match(output, /assertions=9 status=passed/);
     assert.match(output, /case=composite-device-mouse-negative-control result=0/);
     assert.match(output, /case=legacy-device-source-union result=1 expected_mismatch=true/);
     assert.equal(readFileSync(classifier, 'utf8').includes('getSources'), false);

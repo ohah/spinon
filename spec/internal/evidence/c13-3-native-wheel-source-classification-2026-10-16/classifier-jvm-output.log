@@ -1,0 +1,10 @@
+case=touchpad-source-no-pointer result=-1
+case=explicit-touchpad-source result=1
+case=mouse-source-finger-tool result=1
+case=mouse-source-mouse-tool result=0
+case=mouse-source-unknown-tool result=-1
+case=unknown-source-mouse-tool result=-1
+case=mouse-source-no-pointer result=-1
+case=composite-device-mouse-negative-control result=0
+case=legacy-device-source-union result=1 expected_mismatch=true
+assertions=9 status=passed

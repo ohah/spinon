@@ -14,6 +14,8 @@ final class WheelSourceClassifierJvmTest {
     }
 
     public static void main(String[] args) {
+        expect("touchpad-source-no-pointer", WheelSourceClassifier.classify(
+                true, false, false, false, false), WheelSourceClassifier.UNKNOWN);
         expect("explicit-touchpad-source", WheelSourceClassifier.classify(
                 true, false, true, false, false), WheelSourceClassifier.TRACKPAD);
         expect("mouse-source-finger-tool", WheelSourceClassifier.classify(

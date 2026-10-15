@@ -11,7 +11,7 @@
 | 5 | 실제 mouse tool | `SOURCE_MOUSE + TOOL_TYPE_MOUSE`만 mouse wheel로 분류한다. **계획 반영** |
 | 6 | 알 수 없는 source | 다른 source는 mouse/trackpad 어느 쪽으로도 추정하지 않고 queue 전에 거부한다. **계획 반영** |
 | 7 | 알 수 없는 tool | mouse source라도 finger/mouse가 아니면 fail-closed한다. **계획 반영** |
-| 8 | pointer 부재·index 오류 | pointer 0 접근 전에 pointer count를 확인한다. API 문서상 count는 1 이상이지만 방어적 경계를 둔다. **계획 반영** |
+| 8 | pointer 부재·index 오류 | pointer 0 접근 전에 pointer count를 확인하고, count가 0이면 명시 `SOURCE_TOUCHPAD`여도 classifier가 unknown으로 거부한다. API 문서상 count는 1 이상이지만 방어적 경계를 둔다. **계획 반영** |
 | 9 | SDK 호환성 | `getSource`/`isFromSource`와 `getToolType`는 minSdk 29보다 오래된 API다. 신규 런타임 API level gate가 필요하지 않다. **확인** |
 | 10 | 복합 장치 | mouse와 touchpad 기능을 함께 광고하는 장치의 mouse event가 legacy union 경로에서 오분류될 수 있다. 해당 조합을 negative control로 고정한다. **계획 반영** |
 | 11 | AVD의 한계 | 현재 AVD에는 composite hardware가 없다. JVM negative control과 실제 AVD 입력을 분리해 보고하고 하드웨어 재현이라고 부르지 않는다. **한계 명시** |

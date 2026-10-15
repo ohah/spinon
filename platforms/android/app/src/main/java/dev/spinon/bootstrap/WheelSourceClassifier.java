@@ -10,8 +10,9 @@ final class WheelSourceClassifier {
 
     static int classify(boolean eventFromTouchpad, boolean eventFromMouse,
             boolean hasPointer, boolean pointerIsFinger, boolean pointerIsMouse) {
+        if (!hasPointer) return UNKNOWN;
         if (eventFromTouchpad) return TRACKPAD;
-        if (!eventFromMouse || !hasPointer) return UNKNOWN;
+        if (!eventFromMouse) return UNKNOWN;
         if (pointerIsFinger) return TRACKPAD;
         if (pointerIsMouse) return MOUSE;
         return UNKNOWN;

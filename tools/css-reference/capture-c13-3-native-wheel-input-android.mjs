@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { mkdir, readFile, realpath, writeFile } from 'node:fs/promises';
+import { lstat, mkdir, readFile, realpath, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { decodeRgbaPng } from './read-png-rgba.mjs';
@@ -334,17 +334,37 @@ function androidSimulator(serial) {
   return properties;
 }
 
+async function ensureEvidenceDirectory() {
+  const realEvidenceRoot = await realpath(evidenceRoot);
+  const relativeDirectory = path.relative(evidenceRoot, evidenceDirectory);
+  assert.ok(relativeDirectory && relativeDirectory !== '..'
+    && !relativeDirectory.startsWith(`..${path.sep}`),
+  'SPINON_C133_ANDROID_EVIDENCE_DIR must be a child of spec/internal/evidence');
+
+  let currentDirectory = evidenceRoot;
+  for (const segment of relativeDirectory.split(path.sep)) {
+    currentDirectory = path.join(currentDirectory, segment);
+    try {
+      await lstat(currentDirectory);
+    } catch (error) {
+      if (error.code !== 'ENOENT') throw error;
+      await mkdir(currentDirectory);
+    }
+
+    const stat = await lstat(currentDirectory);
+    assert.ok(stat.isDirectory() && !stat.isSymbolicLink(),
+      `evidence output path contains a non-directory or symlink: ${currentDirectory}`);
+    const resolvedDirectory = await realpath(currentDirectory);
+    assert.ok(resolvedDirectory.startsWith(`${realEvidenceRoot}${path.sep}`),
+      'SPINON_C133_ANDROID_EVIDENCE_DIR resolves outside spec/internal/evidence');
+  }
+}
+
 async function main() {
   const serialIndex = process.argv.indexOf('--android-serial');
   const serial = serialIndex >= 0 ? process.argv[serialIndex + 1] : null;
   assert.ok(serial, 'pass --android-serial emulator-N');
-  await mkdir(evidenceDirectory, { recursive: true });
-  const [realEvidenceRoot, realEvidenceDirectory] = await Promise.all([
-    realpath(evidenceRoot),
-    realpath(evidenceDirectory),
-  ]);
-  assert.ok(realEvidenceDirectory.startsWith(`${realEvidenceRoot}${path.sep}`),
-    'SPINON_C133_ANDROID_EVIDENCE_DIR resolves outside spec/internal/evidence');
+  await ensureEvidenceDirectory();
   const device = androidSimulator(serial);
   const classifierCommand = ['node', '--test', 'tools/css-reference/c13-3-native-wheel-source-classifier.test.mjs'];
   const classifierTestOutput = command(classifierCommand[0], classifierCommand.slice(1));
@@ -400,7 +420,9 @@ async function main() {
     schema: 'spinon-c13-3-native-wheel-android-avd-v2',
     capturedAt: new Date().toISOString(),
     sourceRevision: command('git', ['rev-parse', 'HEAD']).trim(),
-    sourceDiffSha256: sha256(command('git', ['diff', '--binary'], { encoding: 'buffer' })),
+    sourceDiffSha256: sha256(command('git', [
+      'diff', '--binary', 'HEAD', '--', ...sourceFiles,
+    ], { encoding: 'buffer' })),
     android: { serial, ...device },
     build: {
       artifact: path.relative(root, apkPath),

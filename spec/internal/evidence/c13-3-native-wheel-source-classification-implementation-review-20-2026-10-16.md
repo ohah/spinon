@@ -9,7 +9,7 @@
 | 3 | mouse source + mouse | 실제 API 37 AVD 성공 8건 모두 `event_source_bits=0x2002`, `pointer_tool=mouse`이며 `MouseWheel`이다. **통과** |
 | 4 | unknown source | JVM test에서 mouse tool만 있고 허용 source가 없을 때 `UNKNOWN`이며 enqueue하지 않는 분기다. **통과** |
 | 5 | unknown tool | JVM test에서 mouse source와 미확인 tool 조합이 `UNKNOWN`이다. **통과** |
-| 6 | pointer count 0 방어 | handler는 pointer 0 접근 전 count를 확인하고 없으면 `TOOL_TYPE_UNKNOWN`으로 분류한다. **통과** |
+| 6 | pointer count 0 방어 | handler는 pointer 0 접근 전 count를 확인한다. classifier는 `SOURCE_TOUCHPAD`를 포함해 pointer가 없으면 unknown을 반환하고 JVM harness가 그 조합을 확인한다. **통과** |
 | 7 | composite device legacy negative control | harness는 장치 union에 touchpad capability가 있고 현재 event는 mouse+mouse인 입력에서 legacy 결과 `TRACKPAD`와 새 결과 `MOUSE`가 달라짐을 고정한다. **결함 재현·수정 확인** |
 | 8 | source decision의 입력 경계 | 분류 helper에는 event source 상태와 pointer tool만 전달된다. helper와 caller의 판정값 계산은 device union을 참조하지 않는다. **통과** |
 | 9 | union의 용도 제한 | `getSources()` 결과는 `device_supported_source_bits` 문자열에만 기록되고 source enum 선택에는 들어가지 않는다. **통과** |
@@ -20,7 +20,7 @@
 | 14 | 방향 회귀 | 기존 horizontal/vertical과 diagonal native wheel matrix는 queue→draw, target/offset/revision oracle을 만족했다. **통과 8/8** |
 | 15 | 표시 경계 | aligned SurfaceView crop에서 root scrollport 바깥 134,064 pixel은 changed 0, 안쪽은 50,684 pixel 변경이다. **통과** |
 | 16 | 순수 Java oracle와 실제 SDK compile | `javac`/`java` harness 8 assertions 및 Android Gradle Java compile이 통과했다. harness는 platform MotionEvent adapter 자체를 대체하지 않는다. **경계 명시** |
-| 17 | 출력 경로 탈출 | 잘못된 evidence 디렉터리 입력은 ADB 접근 전 assertion으로 거부됐다. 코드상 canonical `realpath`도 evidence root 아래인지 검사한다. **통과** |
+| 17 | 출력 경로 탈출 | lexical 경로와 각 directory component의 symlink를 검사한다. negative control은 evidence root 밖에 하위 디렉터리를 만들지 않고 ADB 접촉 전 거부됨을 확인한다. **통과** |
 | 18 | 소스 재현성 | capture JSON은 untracked helper/test/harness와 plan/status/contract/roadmap을 포함한 source file SHA-256을 기록한다. **통과** |
 | 19 | artifact 분리 | off APK BuildConfig false 및 native wheel symbol 부재, on APK BuildConfig true 및 symbol 존재를 확인했다. source diagnostics는 opt-in DEX에만 있고 helper는 양쪽 DEX에 있다. **통과** |
 | 20 | 증거 범위·미완료 경계 | 실행 serial은 `emulator-5554`, qemu=1/API 37; ADB에 연결된 실기기는 대상으로 사용하지 않았다. AVD composite device, 물리 trackpad, iOS callback, release/scanout 증거는 없고 C13.3은 미완료다. **한계 유지** |

@@ -1,3 +1,4 @@
+$ bash tools/build-android-app.sh
 WARNING: We recommend using a newer Android Gradle plugin to use compile SDK version 37.2
 
 This Android Gradle plugin (8.13.2) was tested up to compile SDK version 36.1.
@@ -19,7 +20,7 @@ to this project's gradle.properties.
 ANDROID_NDK_HOME/ROOT가 고정 버전과 달라 무시하고 SDK의 NDK 27.1.12297006 을 사용합니다.
 SPINON_ANDROID_BUILD_FLAGS c04_runtime_gpu=1 c13_1_overflow_clip_fixture_test=0 c13_2_scroll_fixture_test=0 c13_3_gesture_fixture_test=0 c14_1_app_fixture_test=0
 $ mkdir -p build/spinon/bootstrap && bun build examples/bootstrap/app.js --target=browser --outfile build/spinon/bootstrap/app.js
-Bundled 1 module in 15ms
+Bundled 1 module in 16ms
 
   app.js  17.59 KB  (entry point)
 
@@ -32,8 +33,8 @@ warning: unused variable: `sequence`
     = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
 
 warning: `spinon-ffi` (lib) generated 1 warning (run `cargo fix --lib -p spinon-ffi` to apply 1 suggestion)
-    Finished `release` profile [optimized] target(s) in 0.26s
-    Finished `release` profile [optimized] target(s) in 0.06s
+    Finished `release` profile [optimized] target(s) in 0.15s
+    Finished `release` profile [optimized] target(s) in 0.04s
 C12.4 Android runtime matrix: 26 cases, 77 nodes, 21 expected ready, 5 expected rejection
 Android ARM64 unwind runtime: /Users/yoonhb/Library/Android/sdk/ndk/27.1.12297006/toolchains/llvm/prebuilt/darwin-x86_64/lib/clang/18/lib/linux/aarch64/libunwind.a
 Android ARM64 V8 smoke 라이브러리 준비 완료: /private/tmp/spinon-c13-3-android-wheel-source-classification-20261016/build/spinon/android/jniLibs/arm64-v8a/libspinon_bootstrap.so
@@ -41,7 +42,7 @@ Android ARM64 V8 smoke 라이브러리 준비 완료: /private/tmp/spinon-c13-3-
 > Task :app:preBuild
 > Task :app:preDebugBuild
 > Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
-> Task :app:generateDebugBuildConfig UP-TO-DATE
+> Task :app:generateDebugBuildConfig FROM-CACHE
 > Task :app:javaPreCompileDebug UP-TO-DATE
 > Task :app:checkDebugAarMetadata UP-TO-DATE
 > Task :app:processDebugNavigationResources UP-TO-DATE
@@ -77,8 +78,8 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :app:mergeDebugShaders UP-TO-DATE
 > Task :app:compileDebugShaders NO-SOURCE
 > Task :app:generateDebugAssets UP-TO-DATE
-> Task :app:mergeDebugAssets UP-TO-DATE
-> Task :app:compressDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets
+> Task :app:compressDebugAssets FROM-CACHE
 > Task :app:processDebugJavaRes NO-SOURCE
 > Task :app:mergeDebugJavaResource UP-TO-DATE
 > Task :app:checkDebugDuplicateClasses UP-TO-DATE
@@ -87,12 +88,12 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :app:mergeLibDexDebug UP-TO-DATE
 > Task :app:dexBuilderDebug
 > Task :app:mergeProjectDexDebug
-> Task :app:mergeDebugJniLibFolders UP-TO-DATE
-> Task :app:mergeDebugNativeLibs UP-TO-DATE
-> Task :app:stripDebugDebugSymbols UP-TO-DATE
+> Task :app:mergeDebugJniLibFolders
 > Task :app:validateSigningDebug UP-TO-DATE
 > Task :app:writeDebugAppMetadata UP-TO-DATE
 > Task :app:writeDebugSigningConfigVersions UP-TO-DATE
+> Task :app:mergeDebugNativeLibs
+> Task :app:stripDebugDebugSymbols
 > Task :app:packageDebug
 > Task :app:createDebugApkListingFileRedirect UP-TO-DATE
 > Task :app:assembleDebug
@@ -100,4 +101,4 @@ Note: Recompile with -Xlint:deprecation for details.
 [Incubating] Problems report is available at: file:///private/tmp/spinon-c13-3-android-wheel-source-classification-20261016/platforms/android/build/reports/problems/problems-report.html
 
 BUILD SUCCESSFUL in 3s
-37 actionable tasks: 5 executed, 32 up-to-date
+37 actionable tasks: 9 executed, 2 from cache, 26 up-to-date
