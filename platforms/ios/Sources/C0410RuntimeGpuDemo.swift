@@ -582,6 +582,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     private let c133WheelProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c133-wheel-probe")
 #if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
+    private let c133NativeWheelPreflightRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c133-native-wheel-preflight")
     private let c133GesturePolicyScenarioArguments = ProcessInfo.processInfo.arguments.filter {
         $0.hasPrefix("--spinon-c133-policy-scenario-id=")
     }
@@ -613,6 +615,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 #if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
     private var c133PanRecognizer: UIPanGestureRecognizer?
     private var c133TapRecognizer: UITapGestureRecognizer?
+    private var c133NativeWheelDiscretePreflightRecognizer: UIPanGestureRecognizer?
+    private var c133NativeWheelContinuousPreflightRecognizer: UIPanGestureRecognizer?
+    private var c133NativeWheelPreflightTranslations: [ObjectIdentifier: CGPoint] = [:]
     private var c133ActiveTouchIDs = Set<ObjectIdentifier>()
     private var c133BackgroundObserver: NSObjectProtocol?
     private var c133DrainScheduled = false
@@ -976,10 +981,34 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             )
             recognizer.minimumNumberOfTouches = 1
             recognizer.maximumNumberOfTouches = 1
+            recognizer.allowedScrollTypesMask = []
             recognizer.cancelsTouchesInView = false
             recognizer.delaysTouchesBegan = false
             canvasView.addGestureRecognizer(recognizer)
             c133PanRecognizer = recognizer
+            if c133NativeWheelPreflightRequested {
+                let discreteRecognizer = UIPanGestureRecognizer(
+                    target: self,
+                    action: #selector(handleC133NativeWheelPreflight(_:))
+                )
+                discreteRecognizer.allowedScrollTypesMask = .discrete
+                discreteRecognizer.allowedTouchTypes = []
+                discreteRecognizer.cancelsTouchesInView = false
+                discreteRecognizer.delaysTouchesBegan = false
+                canvasView.addGestureRecognizer(discreteRecognizer)
+                c133NativeWheelDiscretePreflightRecognizer = discreteRecognizer
+
+                let continuousRecognizer = UIPanGestureRecognizer(
+                    target: self,
+                    action: #selector(handleC133NativeWheelPreflight(_:))
+                )
+                continuousRecognizer.allowedScrollTypesMask = .continuous
+                continuousRecognizer.allowedTouchTypes = []
+                continuousRecognizer.cancelsTouchesInView = false
+                continuousRecognizer.delaysTouchesBegan = false
+                canvasView.addGestureRecognizer(continuousRecognizer)
+                c133NativeWheelContinuousPreflightRecognizer = continuousRecognizer
+            }
             if c133TapProbeRequested {
                 let tapRecognizer = UITapGestureRecognizer(
                     target: self,
@@ -1825,6 +1854,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
     private func initializeRuntime() {
         guard !isClosing else { return }
+#if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
+        if c133NativeWheelPreflightRequested && !c133GestureFixtureRequested {
+            log("SPINON_C133_ARGUMENT_ERROR rejected=true reason=native-wheel-preflight-requires-fixture-route")
+            postStatus("실패 · C13.3 native wheel preflight에는 gesture fixture route가 필요합니다")
+            return
+        }
+#endif
         if (c133TapProbeRequested || c133WheelProbeRequested)
             && !c133GestureFixtureRequested {
             log("SPINON_C133_ARGUMENT_ERROR rejected=true reason=probe-requires-fixture-route")
@@ -1891,6 +1927,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                    && $0 != "--spinon-c133-scroll-gesture"
                    && !(c133GestureFixtureRequested && $0 == "--spinon-c133-tap-probe")
                    && !(c133GestureFixtureRequested && $0 == "--spinon-c133-wheel-probe")
+                   && !(c133GestureFixtureRequested
+                       && $0 == "--spinon-c133-native-wheel-preflight")
                    && !(c133GestureFixtureRequested
                        && $0.hasPrefix("--spinon-c133-policy-scenario-id="))
                    && $0 != "--spinon-c0410-runtime-gpu"
@@ -3381,6 +3419,27 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             }
         default:
             break
+        }
+    }
+
+    @objc private func handleC133NativeWheelPreflight(_ recognizer: UIPanGestureRecognizer) {
+        guard c133NativeWheelPreflightRequested else { return }
+        let identifier = ObjectIdentifier(recognizer)
+        let translation = recognizer.translation(in: canvasView)
+        let previous = c133NativeWheelPreflightTranslations[identifier] ?? .zero
+        let delta = CGPoint(
+            x: translation.x - previous.x,
+            y: translation.y - previous.y
+        )
+        c133NativeWheelPreflightTranslations[identifier] = translation
+        let kind = recognizer === c133NativeWheelDiscretePreflightRecognizer
+            ? "discrete-mouse" : "continuous-trackpad"
+        let location = recognizer.location(in: canvasView)
+        let modifiers = recognizer.modifierFlags
+        log("SPINON_C133_NATIVE_WHEEL_PREFLIGHT source=\(kind) state=\(recognizer.state.rawValue) translation_points=\(translation.x),\(translation.y) delta_points=\(delta.x),\(delta.y) location_points=\(location.x),\(location.y) modifiers=\(modifiers.rawValue) control=\(modifiers.contains(.control)) touch_types=empty")
+        if recognizer.state == .ended || recognizer.state == .cancelled
+            || recognizer.state == .failed {
+            c133NativeWheelPreflightTranslations.removeValue(forKey: identifier)
         }
     }
 
