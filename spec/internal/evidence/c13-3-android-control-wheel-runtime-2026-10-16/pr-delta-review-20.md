@@ -23,6 +23,6 @@
 | 17 | 과거 근거와 새 근거 모순 | 기존 방향 행렬 설명을 당시 ADB 실패로 한정하고 후속 Control runtime 결과를 연결했다. | 통과. 이전 실행의 raw history는 유지하고 현재 follow-up과 구분한다. |
 | 18 | 재현 절차가 빌드 조건을 생략 | README의 pinned V8/NDK 준비, opt-in APK build, emulator-only runner를 검토했다. | 통과. 명령과 필수 build flags가 문서에 있다. |
 | 19 | 실행 결과의 플랫폼 범위 확대 | Android AVD, external trackpad, iOS callback, public DOM event, scanout 제한을 확인했다. | 통과. 미검증 경계가 README와 STATUS에 남는다. |
-| 20 | PR 화면 링크 오류 | merged main 경로로 이어질 PNG를 본문에 넣고 Agent Browser에서 렌더링을 확인할 절차를 대조했다. | 브라우저 확인은 PR 생성 후 실행 예정이며 통과 판정은 링크 확인 뒤 갱신한다. |
+| 20 | PR 화면 링크 오류 | PR #199 본문 image의 raw branch URL을 Agent Browser에서 열고 rendered DOM의 `complete`, `naturalWidth`, `naturalHeight`를 검사했다. | 통과. 이미지가 1080×2400으로 로드됐고 화면 캡처와 JSON을 보존했다. 병합 뒤 main 안정 경로로 바꾸고 다시 확인한다. |
 
-현재 결과: 코드·실행·상태 문서에서 미해결 의미 모순을 찾지 못했다. 20번의 화면 렌더링은 PR 생성 후 Agent Browser 검증으로 닫는다. 계획 review와 구현 review는 별도 기록이다.
+현재 결과: 코드·실행·상태 문서와 PR 화면에서 미해결 의미 모순을 찾지 못했다. 계획 review와 구현 review는 별도 기록이다.
