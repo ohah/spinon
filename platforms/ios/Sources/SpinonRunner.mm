@@ -813,6 +813,28 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 #endif
 }
 
+#if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
++ (uint64_t)createRuntimeGpuHostWithC13_3GestureFixture {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && \
+    SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
+  std::array<char, 1024> output{};
+  SpinonRuntimeGpuHost *host =
+      spinon_runtime_gpu_host_new_c13_3_gesture_fixture(output.data(), output.size());
+  if (host == nullptr) {
+    os_log_error(OS_LOG_DEFAULT, "SPINON_C133_HOST_ERROR=%{public}s", output.data());
+    return 0;
+  }
+  os_log(OS_LOG_DEFAULT, "SPINON_C133_HOST=%{public}s", output.data());
+  return static_cast<uint64_t>(reinterpret_cast<uintptr_t>(host));
+#else
+  os_log_error(OS_LOG_DEFAULT,
+               "SPINON_C133_DISABLED enable C04 runtime GPU and C13.3 gesture fixture test");
+  return 0;
+#endif
+}
+#endif
+
 + (uint64_t)createRuntimeGpuHostWithC11_1GridFixture {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
   std::array<char, 1024> output{};
@@ -1581,6 +1603,83 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
   return @"status=-90 feature-disabled";
 #endif
 }
+
+#if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
++ (NSString *)evalRuntimeGpuC13_3GestureFixture:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && \
+    SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 32768> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_c13_3_gesture_fixture(
+      host, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C133_EVAL", report);
+  return report;
+#else
+  (void)handle;
+  return @"status=-90 feature-disabled";
+#endif
+}
+
++ (NSString *)enqueueRuntimeGpuC13_3Gesture:(uint64_t)handle
+                                      action:(int32_t)action
+                           surfaceGeneration:(uint64_t)surfaceGeneration
+                                   gestureID:(uint64_t)gestureID
+                                    pointerID:(uint64_t)pointerID
+                                  pointXCssPx:(float)pointXCssPx
+                                  pointYCssPx:(float)pointYCssPx
+                             coordinateScale:(float)coordinateScale
+                                       reason:(int32_t)reason {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && \
+    SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 2048> output{};
+  const int32_t status = spinon_runtime_gpu_host_enqueue_c13_3_gesture(
+      host, action, surfaceGeneration, gestureID, pointerID,
+      pointXCssPx, pointYCssPx, coordinateScale, reason,
+      output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C133_ENQUEUE", report);
+  return report;
+#else
+  (void)handle;
+  (void)action;
+  (void)surfaceGeneration;
+  (void)gestureID;
+  (void)pointerID;
+  (void)pointXCssPx;
+  (void)pointYCssPx;
+  (void)coordinateScale;
+  (void)reason;
+  return @"status=-90 feature-disabled";
+#endif
+}
+
++ (NSString *)processRuntimeGpuC13_3GestureQueue:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && \
+    SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 32768> output{};
+  const int32_t status = spinon_runtime_gpu_host_process_c13_3_gesture_queue(
+      host, 64 + 8, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C133_INPUT_BATCH", report);
+  return report;
+#else
+  (void)handle;
+  return @"status=-90 feature-disabled";
+#endif
+}
+#endif
 
 + (NSString *)requestRuntimeGpuC13_2SurfacePixels:(uint64_t)handle
                                              sampleXY:(const uint32_t *)sampleXY

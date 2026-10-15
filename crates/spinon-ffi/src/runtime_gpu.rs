@@ -1,9 +1,13 @@
+#[cfg(feature = "c13-3-gesture-fixture-test")]
+use fixtures::c13_3_scroll_gesture_host::C13_3GestureState;
 use spinon_render::RuntimeRenderSnapshot;
 use spinon_render_wgpu::{PendingRuntimeSurface, RuntimeRenderer, RuntimeRendererError};
 #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
 use spinon_runtime::RuntimeLayoutFrame;
 use spinon_runtime::{RuntimeLayoutState, RuntimeSession, TaskPriority};
 use spinon_style::{CssColorScheme, CssMediaEnvironment};
+#[cfg(feature = "c13-3-gesture-fixture-test")]
+use std::sync::Arc;
 #[cfg(feature = "c13-2-scroll-fixture-test")]
 use std::sync::atomic::AtomicBool;
 use std::sync::{Mutex, MutexGuard, PoisonError};
@@ -70,6 +74,8 @@ struct RuntimeGpuHost {
     c13_2_fail_next_scroll_reserve: AtomicBool,
     #[cfg(feature = "c13-2-scroll-fixture-test")]
     c13_2_reserve_failure_observed: AtomicBool,
+    #[cfg(feature = "c13-3-gesture-fixture-test")]
+    c13_3_gesture_state: Option<Arc<C13_3GestureState>>,
     operation: Mutex<()>,
     presentation: PresentationScenes,
     renderer: Mutex<Option<RuntimeRenderer>>,
@@ -118,6 +124,8 @@ impl RuntimeGpuHost {
             c13_2_fail_next_scroll_reserve: AtomicBool::new(false),
             #[cfg(feature = "c13-2-scroll-fixture-test")]
             c13_2_reserve_failure_observed: AtomicBool::new(false),
+            #[cfg(feature = "c13-3-gesture-fixture-test")]
+            c13_3_gesture_state: None,
             operation: Mutex::new(()),
             presentation: PresentationScenes::new(),
             renderer: Mutex::new(None),

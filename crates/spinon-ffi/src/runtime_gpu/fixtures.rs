@@ -16,3 +16,7 @@ pub(crate) mod c13_1_compact_surface_matrix;
 pub(crate) mod c13_2_scroll;
 #[cfg(feature = "c13-2-scroll-fixture-test")]
 mod c13_2_scroll_host;
+#[cfg(feature = "c13-3-gesture-fixture-test")]
+pub(crate) mod c13_3_scroll_gesture;
+#[cfg(feature = "c13-3-gesture-fixture-test")]
+pub(super) mod c13_3_scroll_gesture_host;

@@ -1,0 +1,12 @@
+SPINON_IOS_SIM_BUILD_FLAGS c04_runtime_gpu=1 c04_runtime_gpu_fixture_test=1 c04_ua_cascade_fixture_probe=0 c11_2_3_grid_fixture=1 c11_grid_metal_surface_pixels=0 c13_1_overflow_clip_fixture=0 c13_2_scroll_fixture=0 c13_3_gesture_fixture=1 c14_1_app_fixture_test=0
+** BUILD SUCCEEDED **
+7b864459ec530171a0bf00610c0420e39e394274539cdb8002c1603fbb35b14d  build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap
+00000001000abca8 T _spinon_runtime_gpu_host_enqueue_c13_3_gesture
+00000001000ac4e4 T _spinon_runtime_gpu_host_eval_c13_3_gesture_fixture
+00000001000ad530 T _spinon_runtime_gpu_host_new_c13_3_gesture_fixture
+00000001000ad9d8 T _spinon_runtime_gpu_host_process_c13_3_gesture_queue
+--spinon-c133-scroll-gesture
+@c13_3_gesture_fixture=ready viewport_css_px=400x240 owners=root:
+SPINON_C133_EVAL
+SPINON_C133_READY input=UIPanGestureRecognizer native_slop=system
+c13_3_gesture_fixture=ready

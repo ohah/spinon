@@ -1,0 +1,23 @@
+C13.3 root-max screenshot bounds check · 2026-10-15
+
+Method
+- Compare each platform's saved chained-scroll capture and root-max capture as decoded RGB pixels.
+- Pixel coordinates are half-open, with origin at the top-left of the full-screen capture.
+- These are simulator screen captures. They do not claim compositor scanout or hardware-GPU behavior.
+
+Android API 37 ARM64 AVD · emulator-5554 · 1080x2400
+- Chained screenshot: android-api37-avd-chained-scroll-final.png; root offset 91.314 CSS px, revision 173.
+- Root-max screenshot: android-api37-avd-root-max.png; root offset 238 CSS px, outer 186, inner 106, revision 252.
+- Yellow root border bounds: [58,1022) x [1014,1560).
+- RGB pixel changes: 119449 total; 118862 within the root border bounds; 587 in the system status-bar time region; 0 in the title region; 0 in the bottom status-label region.
+- Yellow root-border pixels changed: 0.
+- Conclusion: content changed inside the root scrollport. No content pixel crossed the yellow root border. The 587 external pixels are the status-bar clock advancing between captures.
+- Capture SHA-256: chained 8c78ad60a0c621114a37a9cc81c6c003c27a072ee4de838bd629bbcf274ff586; root-max de2c9ff21b297e398d61d893361bd1fde15413e14a6f55bfe956e8ab7c58aa86.
+
+iPhone 17 Pro · iOS 26.2 Simulator · 1206x2622
+- Chained screenshot: ios-iphone17pro-chained-scroll.png.
+- Root-max screenshot: ios-iphone17pro-root-chain.png; root offset 238 CSS px, outer 186, inner 106, revision 106.
+- Metal canvas bounds from the accessibility frame (x=1pt, y=317pt, width=400pt, height=240pt) at scale 3: [3,1203) x [951,1671).
+- RGB pixel changes: 277200 total, bbox [150,810) x [1098,1518), entirely within the Metal canvas; 0 pixels changed outside it.
+- Conclusion: root and nested-scroll scene updates stayed inside the bounded canvas. The flat root background at root max is expected scrollport paint, not a viewport clip escape.
+- Capture SHA-256: chained 90e4d119f370b3f388e7d69c0acc6c5d55616ccb635db11b2c94cdba3bb3e3d7; root-max f5558f20c871fec61ed3e9fad52de6c812dd955c29f74edc2ee9b4d847c030ec.

@@ -2,6 +2,8 @@ use std::{collections::BTreeSet, sync::Arc};
 
 use spinon_core::{HostDocumentSnapshot, NodeId, ScrollStateRevision};
 
+#[cfg(feature = "c13-3-gesture-fixture-test")]
+use super::scroll::RuntimeScrollInputPolicy;
 use super::scroll::{
     RuntimeScrollClipLayer, RuntimeScrollContainer, RuntimeScrollRenderMetadata, apply_scroll_state,
 };
@@ -146,6 +148,35 @@ impl RuntimeRenderSnapshot {
 
     pub fn scroll_containers(&self) -> &[RuntimeScrollContainer] {
         &self.scroll_containers
+    }
+
+    /// Fixture에서 계산된 입력 정책을 immutable snapshot에 붙입니다.
+    #[cfg(feature = "c13-3-gesture-fixture-test")]
+    pub fn with_scroll_input_policies(
+        &self,
+        policies: &[(NodeId, RuntimeScrollInputPolicy)],
+    ) -> Result<Self, RuntimeRenderError> {
+        let mut seen = BTreeSet::new();
+        let mut containers = self.scroll_containers.to_vec();
+        for (owner, policy) in policies.iter().copied() {
+            if !seen.insert(owner) {
+                return Err(RuntimeRenderError::DuplicateScrollRequest(owner));
+            }
+            let Some(container) = containers
+                .iter_mut()
+                .find(|container| container.owner() == owner)
+            else {
+                return Err(RuntimeRenderError::InvalidScrollRequest(owner));
+            };
+            *container = container.with_input_policy(policy);
+        }
+        Self::new_with_scroll_metadata(
+            self.key,
+            self.viewport_css_px,
+            self.base_boxes.to_vec(),
+            containers,
+            self.scroll_metadata.to_vec(),
+        )
     }
 
     /// 한 hit target의 scroll owner ancestor 목록을 nearest-to-outer 순서로 반환합니다.

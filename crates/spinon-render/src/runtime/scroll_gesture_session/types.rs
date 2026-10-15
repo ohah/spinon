@@ -167,6 +167,10 @@ impl RuntimeScrollGesturePanSample {
         self.pointer_id
     }
 
+    pub const fn coordinate_scale(self) -> f32 {
+        self.coordinate_scale
+    }
+
     pub const fn cumulative_x_css_px(self) -> f32 {
         self.cumulative_x_css_px
     }
