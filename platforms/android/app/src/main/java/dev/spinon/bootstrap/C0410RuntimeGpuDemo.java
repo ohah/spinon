@@ -4491,34 +4491,47 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
         long callbackStarted = SystemClock.elapsedRealtimeNanos();
         InputDevice device = event.getDevice();
-        boolean touchpadSource = event.isFromSource(InputDevice.SOURCE_TOUCHPAD)
-                || (device != null
-                        && (device.getSources() & InputDevice.SOURCE_TOUCHPAD)
-                                == InputDevice.SOURCE_TOUCHPAD);
-        boolean mouseSource = event.isFromSource(InputDevice.SOURCE_MOUSE);
-        int source = touchpadSource ? C133_WHEEL_SOURCE_TRACKPAD
-                : mouseSource ? C133_WHEEL_SOURCE_MOUSE : -1;
+        int pointerCount = event.getPointerCount();
+        int pointerToolType = pointerCount > 0
+                ? event.getToolType(0) : MotionEvent.TOOL_TYPE_UNKNOWN;
+        boolean eventTouchpadSource = event.isFromSource(InputDevice.SOURCE_TOUCHPAD);
+        boolean eventMouseSource = event.isFromSource(InputDevice.SOURCE_MOUSE);
+        int source = WheelSourceClassifier.classify(eventTouchpadSource, eventMouseSource,
+                pointerCount > 0, pointerToolType == MotionEvent.TOOL_TYPE_FINGER,
+                pointerToolType == MotionEvent.TOOL_TYPE_MOUSE);
         String sourceName = source == C133_WHEEL_SOURCE_TRACKPAD ? "TrackpadScroll"
                 : source == C133_WHEEL_SOURCE_MOUSE ? "MouseWheel" : "Unknown";
+        // Supported sources are diagnostic only; classify the event from its own source and tool.
+        int deviceSupportedSourceBits = device == null ? 0 : device.getSources();
+        String sourceDiagnostics = " event_source_bits=0x"
+                + Integer.toHexString(event.getSource())
+                + " pointer_count=" + pointerCount
+                + " pointer_tool=" + c133WheelPointerToolName(pointerToolType)
+                + " pointer_tool_type=" + pointerToolType
+                + " device_supported_source_bits=0x"
+                + Integer.toHexString(deviceSupportedSourceBits)
+                + " device=" + event.getDeviceId();
         int modifiers = normalizedC133Modifiers(event.getMetaState());
         float hscroll = event.getAxisValue(MotionEvent.AXIS_HSCROLL);
         float vscroll = event.getAxisValue(MotionEvent.AXIS_VSCROLL);
         if (source < 0) {
             Log.i(TAG, "SPINON_C133_NATIVE_WHEEL_REJECT reason=unknown-source action="
                     + event.getActionMasked() + " source_bits=0x"
-                    + Integer.toHexString(event.getSource()) + " device=" + event.getDeviceId());
+                    + Integer.toHexString(event.getSource()) + sourceDiagnostics);
             return true;
         }
         if ((modifiers & C133_MODIFIER_CONTROL) != 0) {
             Log.i(TAG, "SPINON_C133_NATIVE_WHEEL_REJECT reason=control-wheel source="
                     + sourceName + " hscroll=" + hscroll + " vscroll=" + vscroll
-                    + " meta=" + event.getMetaState() + " modifiers=" + modifiers);
+                    + " meta=" + event.getMetaState() + " modifiers=" + modifiers
+                    + sourceDiagnostics);
             return true;
         }
         if (!Float.isFinite(hscroll) || !Float.isFinite(vscroll)
                 || (hscroll == 0.0f && vscroll == 0.0f)) {
             Log.i(TAG, "SPINON_C133_NATIVE_WHEEL_REJECT reason=zero-or-nonfinite-axis source="
-                    + sourceName + " hscroll=" + hscroll + " vscroll=" + vscroll);
+                    + sourceName + " hscroll=" + hscroll + " vscroll=" + vscroll
+                    + sourceDiagnostics);
             return true;
         }
 
@@ -4533,7 +4546,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 Log.i(TAG, "SPINON_C133_NATIVE_WHEEL_REJECT reason=surface-or-runtime-not-ready"
                         + " source=" + sourceName + " closing=" + closing
                         + " surface_available=" + surfaceAvailable
-                        + " generation=" + surfaceGeneration);
+                        + " generation=" + surfaceGeneration + sourceDiagnostics);
                 return true;
             }
             host = hostHandle;
@@ -4549,7 +4562,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || Math.abs(scaleX - scaleY) > 0.01f) {
             Log.e(TAG, "SPINON_C133_NATIVE_WHEEL_REJECT reason=invalid-surface-scale"
                     + " scale_x=" + scaleX + " scale_y=" + scaleY
-                    + " surface_px=" + width + "x" + height);
+                    + " surface_px=" + width + "x" + height + sourceDiagnostics);
             return true;
         }
 
@@ -4559,7 +4572,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (!Float.isFinite(horizontalFactorPx) || !Float.isFinite(verticalFactorPx)
                 || horizontalFactorPx <= 0.0f || verticalFactorPx <= 0.0f) {
             Log.e(TAG, "SPINON_C133_NATIVE_WHEEL_REJECT reason=invalid-scroll-factor"
-                    + " hfactor_px=" + horizontalFactorPx + " vfactor_px=" + verticalFactorPx);
+                    + " hfactor_px=" + horizontalFactorPx + " vfactor_px=" + verticalFactorPx
+                    + sourceDiagnostics);
             return true;
         }
 
@@ -4572,7 +4586,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             Log.i(TAG, "SPINON_C133_NATIVE_WHEEL_REJECT reason=nonfinite-normalized-delta"
                     + " source=" + sourceName + " hscroll=" + hscroll + " vscroll=" + vscroll
                     + " hfactor_px=" + horizontalFactorPx + " vfactor_px=" + verticalFactorPx
-                    + " scale_x=" + scaleX + " scale_y=" + scaleY);
+                    + " scale_x=" + scaleX + " scale_y=" + scaleY + sourceDiagnostics);
             return true;
         }
 
@@ -4591,14 +4605,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     + event.getRawY() + " surface_origin_screen_px=" + surfaceOriginOnScreen[0]
                     + "," + surfaceOriginOnScreen[1] + " point_surface_px=" + pointSurfaceX
                     + "," + pointSurfaceY + " surface_view_px=" + viewWidth + "x" + viewHeight
-                    + " device=" + event.getDeviceId());
+                    + sourceDiagnostics);
             return true;
         }
         float pointXCssPx = pointSurfaceX / scaleX;
         float pointYCssPx = pointSurfaceY / scaleY;
         if (!Float.isFinite(pointXCssPx) || !Float.isFinite(pointYCssPx)) {
             Log.i(TAG, "SPINON_C133_NATIVE_WHEEL_REJECT reason=nonfinite-point source="
-                    + sourceName + " point_surface_px=" + pointSurfaceX + "," + pointSurfaceY);
+                    + sourceName + " point_surface_px=" + pointSurfaceX + "," + pointSurfaceY
+                    + sourceDiagnostics);
             return true;
         }
 
@@ -4610,7 +4625,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         long callbackMicros = (SystemClock.elapsedRealtimeNanos() - callbackStarted) / 1000;
         Log.i(TAG, "SPINON_C133_NATIVE_WHEEL source=" + sourceName
                 + " action=" + event.getActionMasked() + " source_bits=0x"
-                + Integer.toHexString(event.getSource()) + " device=" + event.getDeviceId()
+                + Integer.toHexString(event.getSource()) + sourceDiagnostics
                 + " hscroll=" + hscroll + " vscroll=" + vscroll
                 + " hfactor_px=" + horizontalFactorPx + " vfactor_px=" + verticalFactorPx
                 + " raw_delta_physical_px=" + rawDeltaXPhysicalPx + ","
@@ -4629,6 +4644,21 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             scheduleC133Drain();
         }
         return true;
+    }
+
+    private static String c133WheelPointerToolName(int pointerToolType) {
+        switch (pointerToolType) {
+            case MotionEvent.TOOL_TYPE_FINGER:
+                return "finger";
+            case MotionEvent.TOOL_TYPE_MOUSE:
+                return "mouse";
+            case MotionEvent.TOOL_TYPE_STYLUS:
+                return "stylus";
+            case MotionEvent.TOOL_TYPE_ERASER:
+                return "eraser";
+            default:
+                return "unknown";
+        }
     }
 
     private static int normalizedC133Modifiers(int metaState) {

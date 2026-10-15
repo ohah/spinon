@@ -1,16 +1,23 @@
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, realpath, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { decodeRgbaPng } from './read-png-rgba.mjs';
 
 const root = fileURLToPath(new URL('../..', import.meta.url));
-const evidenceDirectory = path.join(
+const defaultEvidenceDirectory = path.join(
   root,
   'spec/internal/evidence/c13-3-native-wheel-input-2026-10-16',
 );
+const evidenceRoot = path.resolve(root, 'spec/internal/evidence');
+const evidenceDirectory = path.resolve(
+  root,
+  process.env.SPINON_C133_ANDROID_EVIDENCE_DIR || defaultEvidenceDirectory,
+);
+assert.ok(evidenceDirectory.startsWith(`${evidenceRoot}${path.sep}`),
+  'SPINON_C133_ANDROID_EVIDENCE_DIR must stay under spec/internal/evidence');
 const apkPath = path.join(root, 'platforms/android/app/build/outputs/apk/debug/app-debug.apk');
 const bundleID = 'dev.spinon.bootstrap';
 const activity = 'dev.spinon.bootstrap/.MainActivity';
@@ -158,6 +165,12 @@ function validateSuccessfulInput(lines, direction, targetCssPx) {
   const processLine = lines.find((line) => line.includes('SPINON_C133_PROCESS') && line.includes('event=wheel'));
   assert.ok(wheelLine, `${direction.name}: native ACTION_SCROLL callback was not logged`);
   assert.ok(processLine, `${direction.name}: wheel queue result was not processed`);
+  assert.ok(wheelLine.includes('source_bits=0x2002 event_source_bits=0x2002'),
+    `${direction.name}: event source bits were not logged: ${wheelLine}`);
+  assert.ok(wheelLine.includes('pointer_tool=mouse'),
+    `${direction.name}: pointer tool was not classified as mouse: ${wheelLine}`);
+  assert.match(wheelLine, /device_supported_source_bits=0x[0-9a-f]+/,
+    `${direction.name}: device-supported source union was not diagnostic-only: ${wheelLine}`);
   assert.ok(wheelLine.includes(`hscroll=${direction.h}.0`), `${direction.name}: horizontal axis mismatch: ${wheelLine}`);
   assert.ok(wheelLine.includes(`vscroll=${direction.v}.0`), `${direction.name}: vertical axis mismatch: ${wheelLine}`);
   assert.ok(wheelLine.includes('hfactor_px=168.0 vfactor_px=168.0'));
@@ -271,6 +284,10 @@ async function captureNegative(serial, device, definition) {
   const rejection = lines.find((line) => line.includes('SPINON_C133_NATIVE_WHEEL_REJECT'));
   assert.ok(rejection, `${definition.name}: native wheel rejection was not logged`);
   assert.ok(rejection.includes(`reason=${definition.reason}`), `${definition.name}: wrong rejection: ${rejection}`);
+  for (const diagnostic of definition.expectedDiagnostics || []) {
+    assert.ok(rejection.includes(diagnostic),
+      `${definition.name}: rejection omitted ${diagnostic}: ${rejection}`);
+  }
   assert.ok(!lines.some((line) => line.includes('SPINON_C133_NATIVE_WHEEL source=')),
     `${definition.name}: rejected input reached native enqueue`);
   assert.ok(!lines.some((line) => line.includes('SPINON_C133_PROCESS') && line.includes('event=wheel')),
@@ -322,7 +339,16 @@ async function main() {
   const serial = serialIndex >= 0 ? process.argv[serialIndex + 1] : null;
   assert.ok(serial, 'pass --android-serial emulator-N');
   await mkdir(evidenceDirectory, { recursive: true });
+  const [realEvidenceRoot, realEvidenceDirectory] = await Promise.all([
+    realpath(evidenceRoot),
+    realpath(evidenceDirectory),
+  ]);
+  assert.ok(realEvidenceDirectory.startsWith(`${realEvidenceRoot}${path.sep}`),
+    'SPINON_C133_ANDROID_EVIDENCE_DIR resolves outside spec/internal/evidence');
   const device = androidSimulator(serial);
+  const classifierCommand = ['node', '--test', 'tools/css-reference/c13-3-native-wheel-source-classifier.test.mjs'];
+  const classifierTestOutput = command(classifierCommand[0], classifierCommand.slice(1));
+  await writeFile(path.join(evidenceDirectory, 'classifier-test.log'), classifierTestOutput);
   command('adb', ['-s', serial, 'install', '-r', apkPath], { timeout: 120_000 });
   const successRecords = [];
   for (const direction of directions) successRecords.push(await captureDirection(serial, device, direction));
@@ -330,6 +356,7 @@ async function main() {
     {
       name: 'outside-surface',
       reason: 'point-outside-surface',
+      expectedDiagnostics: ['event_source_bits=0x2002', 'pointer_tool=mouse'],
       command: (bounds) => [
         'input', 'mouse', 'scroll', String(bounds.left + 345), String(bounds.top - 1),
         '--axis', 'HSCROLL,1', '--axis', 'VSCROLL,0',
@@ -338,11 +365,13 @@ async function main() {
     {
       name: 'touchpad-missing-position',
       reason: 'point-outside-surface',
+      expectedDiagnostics: ['event_source_bits=0x100008', 'pointer_tool=finger'],
       command: ['input', 'touchpad', 'scroll', '--axis', 'HSCROLL,1', '--axis', 'VSCROLL,0'],
     },
     {
       name: 'zero-axes',
       reason: 'zero-or-nonfinite-axis',
+      expectedDiagnostics: ['event_source_bits=0x2002', 'pointer_tool=mouse'],
       command: ['input', 'mouse', 'scroll', '360', '1300', '--axis', 'HSCROLL,0', '--axis', 'VSCROLL,0'],
     },
   ];
@@ -351,8 +380,24 @@ async function main() {
     negativeRecords.push(await captureNegative(serial, device, definition));
   }
   const apk = await readFile(apkPath);
+  const sourceFiles = [
+    'plan/c13-3-native-wheel-input.md',
+    'spec/STATUS.md',
+    'spec/internal/0063-c13-3-scroll-gestures.md',
+    'spec/internal/README.md',
+    'spec/public/roadmap.html',
+    'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java',
+    'platforms/android/app/src/main/java/dev/spinon/bootstrap/WheelSourceClassifier.java',
+    'tools/css-reference/capture-c13-3-native-wheel-input-android.mjs',
+    'tools/css-reference/c13-3-native-wheel-source-classifier.test.mjs',
+    'tools/css-reference/fixtures/WheelSourceClassifierJvmTest.java',
+  ];
+  const sourceFileSha256 = Object.fromEntries(await Promise.all(sourceFiles.map(async (file) => [
+    file,
+    sha256(await readFile(path.join(root, file))),
+  ])));
   const summary = {
-    schema: 'spinon-c13-3-native-wheel-android-avd-v1',
+    schema: 'spinon-c13-3-native-wheel-android-avd-v2',
     capturedAt: new Date().toISOString(),
     sourceRevision: command('git', ['rev-parse', 'HEAD']).trim(),
     sourceDiffSha256: sha256(command('git', ['diff', '--binary'], { encoding: 'buffer' })),
@@ -362,6 +407,7 @@ async function main() {
       sha256: sha256(apk),
       optInFlags: ['SPINON_ENABLE_C04_RUNTIME_GPU=1', 'SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST=1'],
     },
+    sourceFileSha256,
     fixture: {
       scenario: 'auto-boundary',
       viewportCssPx: [cssWidth, cssHeight],
@@ -379,6 +425,11 @@ async function main() {
       'ADB virtual keyboard Control meta state가 mouse event에 전달되지 않았다. 코드 guard는 있으나 Control-wheel runtime pass로 표시하지 않는다.',
     ],
   };
+  await writeFile(path.join(evidenceDirectory, 'source-revision.json'), `${JSON.stringify({
+    sourceRevision: summary.sourceRevision,
+    sourceDiffSha256: summary.sourceDiffSha256,
+    sourceFileSha256: summary.sourceFileSha256,
+  }, null, 2)}\n`);
   await writeFile(path.join(evidenceDirectory, 'android-avd-matrix.json'), `${JSON.stringify(summary, null, 2)}\n`);
   await writeFile(path.join(evidenceDirectory, 'README.md'), [
     '# C13.3 Android native wheel AVD 실행 근거 · 2026-10-16',
@@ -390,6 +441,8 @@ async function main() {
     `ViewConfiguration factor ${surfaceScale * 64} px, surface scale ${surfaceScale} px/CSS px에서 각 native axis 1은 64 CSS px다. 성공 8/8은 입력 axis, normalized delta, sequence 1 admission, target 7, revision 2, owner offsets와 presented draw를 검사했다.`,
     '',
     `거부 경로 ${negativeRecords.length}/${negativeRecords.length}: SurfaceView 밖 좌표, 좌표가 없는 ADB touchpad sample, 영 축 입력은 각각 기대 reason으로 거부됐고 revision 1 / 시작 offsets \`root:0,0;outer:0,0;inner:86,106\`를 유지했다.`,
+    '',
+    'Android 분류는 event source와 pointer tool type을 사용하며 `InputDevice.getSources()`는 진단용으로만 기록한다. JVM classifier harness는 mouse+finger, mouse+mouse, unknown tool/source 및 복합 장치의 legacy source-union negative control을 검사한다. AVD 입력별 `event_source_bits`, `pointer_tool`, `device_supported_source_bits`는 각 로그에 보존한다.',
     '',
     `스크린샷 \`android-diagonal-positive-positive-before.png\`와 \`android-diagonal-positive-positive-after.png\`의 SurfaceView 안쪽 ${successRecords.find((record) => record.name === 'diagonal-positive-positive').pixelComparison.outsideCompared.toLocaleString()}개 픽셀 중 scrollport border 바깥은 변경 ${successRecords.find((record) => record.name === 'diagonal-positive-positive').pixelComparison.outsideChanged}개, 안쪽 변경은 ${successRecords.find((record) => record.name === 'diagonal-positive-positive').pixelComparison.insideChanged.toLocaleString()}개였다. 비교 범위는 고정 fixture의 root scrollport \`left=16, top=16, right=384, bottom=224 CSS px\` 바깥 영역이다.`,
     '',
@@ -403,7 +456,7 @@ async function main() {
     '',
     'PR 본문의 Android 화면 표시 확인은 [Agent Browser 검증 기록](pr-body-image-verification.json)에 있다.',
     '',
-    '이 근거는 Android API 37 AVD의 opt-in fixture 경로만 확인한다. 물리 장치, hardware GPU, targetable trackpad, Control-wheel runtime, iOS, public DOM events, compositor 이후 scanout 또는 C13.3 전체 완료를 증명하지 않는다.',
+    '이 근거는 Android API 37 AVD의 opt-in fixture 경로만 확인한다. AVD에 mouse와 touchpad를 함께 지원하는 복합 입력 장치는 없어 classifier negative control은 JVM에서 수행했다. 물리 장치, hardware GPU, targetable trackpad, Control-wheel runtime, iOS, public DOM events, compositor 이후 scanout 또는 C13.3 전체 완료를 증명하지 않는다.',
     '',
     '재현: `bun tools/css-reference/capture-c13-3-native-wheel-input-android.mjs --android-serial emulator-5554` (먼저 opt-in Android debug APK를 빌드한다).',
     '',
@@ -414,6 +467,7 @@ async function main() {
     apkSha256: summary.build.sha256,
     successCount: successRecords.length,
     negativeControlCount: negativeRecords.length,
+    classifierTest: 'tools/css-reference/c13-3-native-wheel-source-classifier.test.mjs',
     pixelComparison: successRecords.find((record) => record.name === 'diagonal-positive-positive').pixelComparison,
   }, null, 2)}\n`);
 }
