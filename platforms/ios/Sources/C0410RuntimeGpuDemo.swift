@@ -577,6 +577,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c132-scroll")
     private let c133GestureFixtureRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c133-scroll-gesture")
+    private let c133TapProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c133-tap-probe")
 #if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
     private let c133GesturePolicyScenarioArguments = ProcessInfo.processInfo.arguments.filter {
         $0.hasPrefix("--spinon-c133-policy-scenario-id=")
@@ -608,6 +610,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     private var c132MetalPixelRequestFormat = ""
 #if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
     private var c133PanRecognizer: UIPanGestureRecognizer?
+    private var c133TapRecognizer: UITapGestureRecognizer?
     private var c133ActiveTouchIDs = Set<ObjectIdentifier>()
     private var c133BackgroundObserver: NSObjectProtocol?
     private var c133DrainScheduled = false
@@ -625,6 +628,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     private var c133CoordinateScale: Float = 1
     private var c133LastCumulativeCss = CGPoint.zero
     private var c133PanBegan = false
+    private var c133ResolvedTouchAction = "unresolved"
+    private var c133TapActivationCount = 0
 #endif
     private let c122AbsoluteBlockProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c122-absolute-block")
@@ -959,6 +964,19 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             recognizer.delaysTouchesBegan = false
             canvasView.addGestureRecognizer(recognizer)
             c133PanRecognizer = recognizer
+            if c133TapProbeRequested {
+                let tapRecognizer = UITapGestureRecognizer(
+                    target: self,
+                    action: #selector(handleC133Tap(_:))
+                )
+                tapRecognizer.numberOfTapsRequired = 1
+                tapRecognizer.numberOfTouchesRequired = 1
+                tapRecognizer.cancelsTouchesInView = false
+                tapRecognizer.delaysTouchesBegan = false
+                tapRecognizer.require(toFail: recognizer)
+                canvasView.addGestureRecognizer(tapRecognizer)
+                c133TapRecognizer = tapRecognizer
+            }
             c133BackgroundObserver = NotificationCenter.default.addObserver(
                 forName: UIApplication.didEnterBackgroundNotification,
                 object: nil,
@@ -1791,8 +1809,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
     private func initializeRuntime() {
         guard !isClosing else { return }
+        if c133TapProbeRequested && !c133GestureFixtureRequested {
+            log("SPINON_C133_ARGUMENT_ERROR rejected=true reason=tap-probe-requires-fixture-route")
+            postStatus("실패 · C13.3 tap probe에는 gesture fixture route가 필요합니다")
+            return
+        }
 #if !SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
-        if c133GestureFixtureRequested {
+        if c133GestureFixtureRequested || c133TapProbeRequested {
             log("SPINON_C133_DISABLED rebuild with SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST=1")
             postStatus("C13.3 gesture fixture-test 옵션을 켜서 빌드해야 합니다.")
             return
@@ -1805,6 +1828,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             return
         }
 #if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
+        if c133TapProbeRequested
+            && (c133GesturePolicyScenarioArguments.count != 1
+                || ![3, 4].contains(c133GesturePolicyScenarioID)) {
+            log("SPINON_C133_ARGUMENT_ERROR rejected=true reason=tap-probe-requires-scenario-3-or-4")
+            postStatus("실패 · C13.3 tap probe는 policy scenario 3 또는 4가 필요합니다")
+            return
+        }
         if (!c133GesturePolicyScenarioArguments.isEmpty && !c133GestureFixtureRequested)
             || (c133GestureFixtureRequested && c133GesturePolicyScenarioID < 0) {
             log("SPINON_C133_POLICY_SCENARIO_ARGUMENT_ERROR rejected=true")
@@ -1835,6 +1865,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                    && $0 != "--spinon-c131-overflow-clip-border"
                    && $0 != "--spinon-c132-scroll"
                    && $0 != "--spinon-c133-scroll-gesture"
+                   && !(c133GestureFixtureRequested && $0 == "--spinon-c133-tap-probe")
                    && !(c133GestureFixtureRequested
                        && $0.hasPrefix("--spinon-c133-policy-scenario-id="))
                    && $0 != "--spinon-c0410-runtime-gpu"
@@ -2317,10 +2348,21 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             let actualTouchAction = reportField(report, "touch_action_effective=")
             let actualInnerTouchAction = reportField(report, "touch_action_inner=")
             let actualInnerContentTouchAction = reportField(report, "touch_action_inner_content=")
+            c133ResolvedTouchAction = actualTouchAction
             let touchActionSummary = "touch_action_effective=\(actualTouchAction) touch_action_inner=\(actualInnerTouchAction) touch_action_inner_content=\(actualInnerContentTouchAction)"
             log("SPINON_C133_EVAL_READY input=UIPanGestureRecognizer native_slop=system scenario=\(scenario) \(touchActionSummary) \(runtimeStatusSummary(report))")
             postStatus("준비 중 · C13.3 boundary snapshot의 첫 Metal draw를 확인합니다")
-            requestDraw()
+            if c133TapProbeRequested {
+                DispatchQueue.main.async { [weak self] in
+                    guard let self else { return }
+                    let panEnabled = actualTouchAction != "none"
+                    self.c133PanRecognizer?.isEnabled = panEnabled
+                    self.log("SPINON_C133_TAP_IOS arbitration_ready=true effective=\(actualTouchAction) native_pan_enabled=\(panEnabled) tap_requires_pan_failure=true")
+                    self.requestDraw()
+                }
+            } else {
+                requestDraw()
+            }
 #endif
         } else if c131CompactSurfaceMatrixRouteRequested {
             let report = result ?? "status=-1 missing-report"
@@ -3262,6 +3304,35 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     }
 
 #if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
+    @objc private func handleC133Tap(_ recognizer: UITapGestureRecognizer) {
+        guard c133TapProbeRequested else { return }
+        let point = recognizer.location(in: canvasView)
+        guard recognizer.state == .recognized else {
+            if recognizer.state == .failed {
+                log("SPINON_C133_TAP_IOS activation=false reason=recognizer-failed count=\(c133TapActivationCount)")
+            }
+            return
+        }
+        stateLock.lock()
+        let ready = c133GestureFixtureReady && !closing && hostHandle != 0
+        let widthCss = viewportWidthCssPx
+        let heightCss = viewportHeightCssPx
+        let drawable = c111MetalDrawableSize
+        stateLock.unlock()
+        guard ready, canvasView.bounds.width > 0, canvasView.bounds.height > 0,
+              widthCss > 0, heightCss > 0,
+              c133ResolvedTouchAction == "none" || c133ResolvedTouchAction == "pan-x" else {
+            log("SPINON_C133_TAP_IOS activation_rejected=true reason=fixture-not-ready-or-action-unresolved")
+            return
+        }
+        let xCss = point.x * CGFloat(widthCss) / canvasView.bounds.width
+        let yCss = point.y * CGFloat(heightCss) / canvasView.bounds.height
+        let surfaceScale = drawable.width / CGFloat(widthCss)
+        c133TapActivationCount += 1
+        log("SPINON_C133_TAP_IOS activation=true count=\(c133TapActivationCount) scenario=\(c133GesturePolicyScenarioID) effective=\(c133ResolvedTouchAction) point_css_px=\(xCss),\(yCss) point_ui_points=\(point.x),\(point.y) surface_scale=\(surfaceScale) pan_state=\(c133PanRecognizer?.state.rawValue ?? -1) pan_enabled=\(c133PanRecognizer?.isEnabled ?? false)")
+        requestDraw()
+    }
+
     @objc private func handleC133Pan(_ recognizer: UIPanGestureRecognizer) {
         guard c133GestureFixtureRequested else { return }
         let started = DispatchTime.now().uptimeNanoseconds
@@ -3744,6 +3815,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             )
         }
         let result = SpinonRunner.drawRuntimeGpuWgpu(handle)
+        if c133TapProbeRequested {
+            log("SPINON_C133_TAP_IOS_DRAW \(result ?? "missing-report")")
+        }
         if c131MetalPixelCapture != nil {
             log("SPINON_C0410_DRAW generation=\(generation) status=\(result?.hasPrefix("status=0 ") == true ? "0" : "error") boxes=\(reportField(result ?? "", "boxes=")) surface_texture=\(reportField(result ?? "", "surface_texture="))")
         } else {
@@ -3815,7 +3889,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             stateLock.lock()
             c133GestureFixtureReady = true
             stateLock.unlock()
-            log("SPINON_C133_READY input=UIPanGestureRecognizer native_slop=system \(result ?? "")")
+            let canvasOrigin = canvasView.convert(CGPoint.zero, to: nil)
+            let screen = canvasView.window?.windowScene?.screen
+            let screenBounds = screen?.bounds ?? CGRect.zero
+            let screenScale = screen?.scale ?? 1
+            log("SPINON_C133_READY input=UIPanGestureRecognizer native_slop=system canvas_origin_ui_points=\(canvasOrigin.x),\(canvasOrigin.y) canvas_bounds=\(canvasView.bounds.width)x\(canvasView.bounds.height) screen_bounds_ui_points=\(screenBounds.width)x\(screenBounds.height) screen_scale=\(screenScale) \(result ?? "")")
             let scenario = scenarioID == 0 ? "auto-zero"
                 : scenarioID == 1 ? "auto-boundary"
                 : scenarioID == 2 ? "contain-x-auto-y-boundary"

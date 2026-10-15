@@ -1,0 +1,17 @@
+ANDROID_NDK_HOME/ROOT가 고정 버전과 달라 무시하고 SDK의 NDK 27.1.12297006 을 사용합니다.
+SPINON_ANDROID_BUILD_FLAGS c04_runtime_gpu=1 c13_1_overflow_clip_fixture_test=0 c13_2_scroll_fixture_test=0 c13_3_gesture_fixture_test=1 c14_1_app_fixture_test=0
+$ mkdir -p build/spinon/bootstrap && bun build examples/bootstrap/app.js --target=browser --outfile build/spinon/bootstrap/app.js
+Bundled 1 module in 3ms
+
+  app.js  17.59 KB  (entry point)
+
+   Compiling spinon-render v0.1.0 (/private/tmp/spinon-c13-3-touch-action-tap-20261015/crates/spinon-render)
+   Compiling spinon-style-to-render v0.1.0 (/private/tmp/spinon-c13-3-touch-action-tap-20261015/crates/spinon-style-to-render)
+   Compiling spinon-render-wgpu v0.1.0 (/private/tmp/spinon-c13-3-touch-action-tap-20261015/crates/spinon-render-wgpu)
+   Compiling spinon-runtime v0.1.0 (/private/tmp/spinon-c13-3-touch-action-tap-20261015/crates/spinon-runtime)
+   Compiling spinon-ffi v0.1.0 (/private/tmp/spinon-c13-3-touch-action-tap-20261015/crates/spinon-ffi)
+    Finished `release` profile [optimized] target(s) in 2.55s
+    Finished `release` profile [optimized] target(s) in 0.05s
+C12.4 Android runtime matrix: 26 cases, 77 nodes, 21 expected ready, 5 expected rejection
+Android ARM64 unwind runtime: /Users/yoonhb/Library/Android/sdk/ndk/27.1.12297006/toolchains/llvm/prebuilt/darwin-x86_64/lib/clang/18/lib/linux/aarch64/libunwind.a
+Android ARM64 V8 smoke 라이브러리 준비 완료: /private/tmp/spinon-c13-3-touch-action-tap-20261015/build/spinon/android/jniLibs/arm64-v8a/libspinon_bootstrap.so

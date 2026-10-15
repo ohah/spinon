@@ -1,0 +1,281 @@
+{
+  "schema": "spinon-c13-3-touch-action-tap-arbitration/v1",
+  "capturedAt": "2026-10-15T09:00:35.907Z",
+  "sourceCommit": "a65b5bf3136b9240df716ebd010e24e602cd9850",
+  "worktreeDiffSha256": "c4f58e53fd0e33c531746e23acf5cf83c5335a8a7fb346163a9eb8b1b59807cc",
+  "sourceSha256": {
+    "androidGestureDemo": "17aebb35142b9014d4d469429aab9fa7c5366905f8281287d49a6e710524dc36",
+    "androidActivity": "fd7922f04bd4f77694f8c949a732aa11dccfc263da1e5b0f68fe74c29d2f8f0d",
+    "iosGestureDemo": "e5f47dec7ca4fa3114b0341fe4b92df989abda49a33f1277e20de7097a5498e4",
+    "iosAppDelegate": "3c43f49560413b8bb07a7b6948581294c770a362456691b5f72ec3d505c83684"
+  },
+  "results": [
+    {
+      "platform": "ios-simulator",
+      "scenario": 3,
+      "name": "none",
+      "tapPoint": {
+        "uiX": 149,
+        "uiY": 449,
+        "xPercent": "37.06",
+        "yPercent": "51.37",
+        "screenX": 149,
+        "screenY": 449,
+        "canvasOrigin": [
+          1,
+          317
+        ],
+        "canvasSize": [
+          400,
+          240
+        ],
+        "screenSize": [
+          402,
+          874
+        ],
+        "screenScale": 3
+      },
+      "postTapState": {
+        "revision": 0,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          0,
+          0
+        ]
+      },
+      "finalState": {
+        "revision": 0,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "platform": "ios-simulator",
+      "scenario": 4,
+      "name": "pan-x",
+      "tapPoint": {
+        "uiX": 149,
+        "uiY": 449,
+        "xPercent": "37.06",
+        "yPercent": "51.37",
+        "screenX": 149,
+        "screenY": 449,
+        "canvasOrigin": [
+          1,
+          317
+        ],
+        "canvasSize": [
+          400,
+          240
+        ],
+        "screenSize": [
+          402,
+          874
+        ],
+        "screenScale": 3
+      },
+      "postTapState": {
+        "revision": 0,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          0,
+          0
+        ]
+      },
+      "finalState": {
+        "revision": 29,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          49,
+          0
+        ]
+      }
+    },
+    {
+      "platform": "android-emulator",
+      "scenario": 3,
+      "name": "none",
+      "tapPoint": {
+        "bounds": {
+          "left": 58,
+          "top": 1026,
+          "right": 1022,
+          "bottom": 1656
+        },
+        "origin": {
+          "x": 15,
+          "y": 1026
+        },
+        "viewSize": {
+          "width": 1050,
+          "height": 630
+        },
+        "scale": 2.625,
+        "x": 404,
+        "y": 1373
+      },
+      "swipeCoordinates": null,
+      "postTapState": {
+        "revision": 0,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          0,
+          0
+        ]
+      },
+      "finalState": {
+        "revision": 0,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "platform": "android-emulator",
+      "scenario": 4,
+      "name": "pan-x",
+      "tapPoint": {
+        "bounds": {
+          "left": 58,
+          "top": 1026,
+          "right": 1022,
+          "bottom": 1656
+        },
+        "origin": {
+          "x": 15,
+          "y": 1026
+        },
+        "viewSize": {
+          "width": 1050,
+          "height": 630
+        },
+        "scale": 2.625,
+        "x": 404,
+        "y": 1373
+      },
+      "swipeCoordinates": {
+        "from": [
+          404,
+          1373
+        ],
+        "to": [
+          246,
+          1373
+        ],
+        "scale": 2.625,
+        "bounds": {
+          "left": 58,
+          "top": 1026,
+          "right": 1022,
+          "bottom": 1656
+        }
+      },
+      "postTapState": {
+        "revision": 0,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          0,
+          0
+        ]
+      },
+      "finalState": {
+        "revision": 26,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          59.468376,
+          0
+        ]
+      }
+    }
+  ],
+  "builds": {
+    "iosAppTreeSha256": "525482676337bb7cf9e6116304eb64d1fd1ab7f7c15eb6b3eb8595dc5f591825",
+    "androidApkSha256": "d4e0332e0a3a94d73d79f808eb5c6c084b496c097a61a055a0edf9cfab9d63de"
+  },
+  "devices": {
+    "iosSimulator": {
+      "lastBootedAt": "2026-10-13T09:05:09Z",
+      "dataPath": "/Users/yoonhb/Library/Developer/CoreSimulator/Devices/ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D/data",
+      "dataPathSize": 7406686208,
+      "logPath": "/Users/yoonhb/Library/Logs/CoreSimulator/ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+      "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+      "isAvailable": true,
+      "logPathSize": 1429504,
+      "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+      "state": "Booted",
+      "name": "iPhone 17 Pro",
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2"
+    },
+    "androidEmulator": {
+      "model": "sdk_gphone16k_arm64",
+      "qemu": "1",
+      "api": "37",
+      "release": "17",
+      "abi": "arm64-v8a",
+      "avd": "spinon_api37_1_compat16k",
+      "screen": "Physical size: 1080x2400",
+      "density": "Physical density: 420"
+    }
+  }
+}

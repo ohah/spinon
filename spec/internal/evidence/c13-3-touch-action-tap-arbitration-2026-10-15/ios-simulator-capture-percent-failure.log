@@ -1,0 +1,6 @@
+Error: Command failed: mise exec -- maestro test --udid ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D --test-output-dir /private/tmp/spinon-c13-3-touch-action-tap-20261015/spec/internal/evidence/c13-3-touch-action-tap-arbitration-2026-10-15 /private/tmp/spinon-c13-3-touch-action-tap-20261015/spec/internal/evidence/c13-3-touch-action-tap-arbitration-2026-10-15/ios-none-tap.yaml
+    at genericNodeError (node:child_process:1081:22)
+    at checkExecSyncError (node:child_process:503:27)
+    at execFileSync (node:child_process:300:31)
+    at runIOS (/private/tmp/spinon-c13-3-touch-action-tap-20261015/tools/css-reference/capture-c13-3-touch-action-tap-arbitration.mjs:236:23)
+    at async main (/private/tmp/spinon-c13-3-touch-action-tap-20261015/tools/css-reference/capture-c13-3-touch-action-tap-arbitration.mjs:444:23)

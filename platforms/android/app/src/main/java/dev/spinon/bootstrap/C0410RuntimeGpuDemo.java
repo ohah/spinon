@@ -439,6 +439,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean c132ScrollFixtureRequested;
     private final String c132SurfacePixelRunId;
     private final boolean c133GestureFixtureRequested;
+    private final boolean c133TapProbeRequested;
     private final int c133GesturePolicyScenarioID;
     private final int c133WorkerDelayMillis;
     private final boolean c133SyntheticSecondPointerProbeRequested;
@@ -501,6 +502,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private boolean c133PanStarted;
     private boolean c133TerminalQueued;
     private boolean c133SuppressUntilAllPointersUp;
+    private boolean c133TapDownAccepted;
+    private boolean c133TapForwardingGesture;
+    private boolean c133TapClickCandidate;
+    private int c133TapActivationCount;
     private boolean c133WorkerDelayUsed;
     private boolean c11GridSurfaceCaptureStarted;
     private List<C124SurfacePixelCapture.Sample> c124SurfaceSamples = List.of();
@@ -591,6 +596,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : "";
         c133GestureFixtureRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c133_gesture_fixture", false);
+        c133TapProbeRequested = BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST
+                && activity.getIntent().getBooleanExtra("spinon_c133_tap_probe", false);
         int requestedC133PolicyScenarioID = 0;
         if (BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST
                 && c133GestureFixtureRequested
@@ -1008,6 +1015,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST && c133GestureFixtureRequested) {
             surfaceView.setClickable(true);
             surfaceView.setOnTouchListener((view, event) -> handleC133GestureTouch(event));
+            if (c133TapProbeRequested) {
+                surfaceView.setOnClickListener(view -> onC133TapProbeClick());
+            }
         }
         surfaceView.setContentDescription(c131CompactSurfaceMatrixProbeRequested
                 ? "C13.1 compact 13-case overflow Chrome oracle WGPU surface"
@@ -1201,6 +1211,21 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private boolean validateC131FixtureRoute() {
         if (BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST
+                && activity.getIntent().getBooleanExtra("spinon_c133_tap_probe", false)
+                && !c133GestureFixtureRequested) {
+            Log.e(TAG, "SPINON_C133_ARGUMENT_ERROR rejected=true reason=tap-probe-requires-fixture-route");
+            postStatus("실패 · C13.3 tap probe에는 gesture fixture route가 필요합니다");
+            return false;
+        }
+        if (c133TapProbeRequested
+                && (!activity.getIntent().hasExtra("spinon_c133_policy_scenario_id")
+                        || (c133GesturePolicyScenarioID != 3
+                                && c133GesturePolicyScenarioID != 4))) {
+            Log.e(TAG, "SPINON_C133_ARGUMENT_ERROR rejected=true reason=tap-probe-requires-scenario-3-or-4");
+            postStatus("실패 · C13.3 tap probe는 policy scenario 3 또는 4가 필요합니다");
+            return false;
+        }
+        if (BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST
                 && !c133GestureFixtureRequested
                 && activity.getIntent().hasExtra("spinon_c133_policy_scenario_id")) {
             Log.e(TAG, "SPINON_C133_ARGUMENT_ERROR rejected=true reason=scenario-requires-fixture-route");
@@ -1255,7 +1280,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     || (c133GestureFixtureRequested
                             && (key.equals("spinon_c133_worker_delay_ms")
                                     || key.equals("spinon_c133_synthetic_second_pointer")
-                                    || key.equals("spinon_c133_policy_scenario_id")))) {
+                                    || key.equals("spinon_c133_policy_scenario_id")
+                                    || key.equals("spinon_c133_tap_probe")))) {
                 continue;
             }
             Object value = extras.get(key);
@@ -4193,6 +4219,25 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private boolean handleC133GestureTouch(MotionEvent event) {
+        boolean wasForwardingTapGesture = c133TapForwardingGesture;
+        boolean panWasStarted = c133PanStarted;
+        boolean handled = handleC133GestureTouchInternal(event);
+        int action = event.getActionMasked();
+        if (action == MotionEvent.ACTION_DOWN) {
+            c133TapForwardingGesture = c133TapProbeRequested && c133TapDownAccepted;
+        } else if (action == MotionEvent.ACTION_MOVE
+                && wasForwardingTapGesture && !panWasStarted && c133PanStarted) {
+            surfaceView.setPressed(false);
+            surfaceView.cancelLongPress();
+            c133TapForwardingGesture = false;
+            return true;
+        } else if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL) {
+            c133TapForwardingGesture = false;
+        }
+        return wasForwardingTapGesture || c133TapForwardingGesture ? false : handled;
+    }
+
+    private boolean handleC133GestureTouchInternal(MotionEvent event) {
         if (!c133GestureFixtureRequested) return false;
         if (event.getPointerCount() > 0
                 && event.getToolType(0) != MotionEvent.TOOL_TYPE_FINGER) return false;
@@ -4200,6 +4245,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         int action = event.getActionMasked();
         switch (action) {
             case MotionEvent.ACTION_DOWN: {
+                c133TapDownAccepted = false;
+                c133TapClickCandidate = false;
                 if (!c133GestureFixtureReady || !c133GestureInitialDrawReady
                         || c133SuppressUntilAllPointersUp) return true;
                 synchronized (stateLock) {
@@ -4229,6 +4276,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         c133DownXPhysicalPx / c133CoordinateScale,
                         c133DownYPhysicalPx / c133CoordinateScale, 0);
                 c133TouchActive = result.startsWith("status=0 ");
+                c133TapDownAccepted = c133TouchActive;
                 if (!c133TouchActive) {
                     Log.e(TAG, "SPINON_C133_TOUCH_BEGIN_REJECTED " + result);
                     return true;
@@ -4293,14 +4341,25 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 if (c133SuppressUntilAllPointersUp) return true;
                 return c133TouchActive;
             case MotionEvent.ACTION_UP:
+                boolean tapCandidate = c133TapProbeRequested && c133TapDownAccepted
+                        && c133TouchActive && !c133PanStarted && !c133TerminalQueued
+                        && !c133SuppressUntilAllPointersUp;
+                boolean tapEndAccepted = false;
                 if (c133TouchActive && !c133TerminalQueued) {
                     String result = enqueueC133Gesture(3, 0.0f, 0.0f, 0);
                     c133TerminalQueued = result.startsWith("status=0 ");
+                    tapEndAccepted = c133TerminalQueued;
                     if (c133TerminalQueued) scheduleC133Drain();
                     logC133Callback("up", event, c133LastCumulativeXCssPx,
                             c133LastCumulativeYCssPx, 0.0f, 0.0f, result, callbackStarted);
                 }
                 resetC133TouchState(true);
+                c133TapClickCandidate = tapCandidate && tapEndAccepted;
+                if (c133TapProbeRequested) {
+                    Log.i(TAG, "SPINON_C133_TAP_ANDROID up_candidate=" + c133TapClickCandidate
+                            + " activation_count=" + c133TapActivationCount
+                            + " gesture_id=" + c133GestureId);
+                }
                 return true;
             case MotionEvent.ACTION_CANCEL:
                 cancelC133Gesture(0, "motion-event-cancel");
@@ -4337,16 +4396,42 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         c133PanStarted = false;
         c133TerminalQueued = false;
         c133ActivePointerId = MotionEvent.INVALID_POINTER_ID;
+        c133TapDownAccepted = false;
+        c133TapForwardingGesture = false;
+        c133TapClickCandidate = false;
         if (clearSuppression) c133SuppressUntilAllPointersUp = false;
+    }
+
+    private void onC133TapProbeClick() {
+        if (!c133TapClickCandidate) {
+            Log.e(TAG, "SPINON_C133_TAP_ANDROID unexpected_click=true activation_count="
+                    + c133TapActivationCount + " gesture_id=" + c133GestureId);
+            return;
+        }
+        c133TapClickCandidate = false;
+        c133TapActivationCount++;
+        Log.i(TAG, "SPINON_C133_TAP_ANDROID activation=true count="
+                + c133TapActivationCount + " gesture_id=" + c133GestureId
+                + " tap_css_px=" + c133DownXPhysicalPx / c133CoordinateScale + ","
+                + c133DownYPhysicalPx / c133CoordinateScale
+                + " tap_physical_px=" + c133DownXPhysicalPx + "," + c133DownYPhysicalPx
+                + " scale=" + c133CoordinateScale);
     }
 
     private void logC133Callback(String action, MotionEvent event, float cumulativeX,
             float cumulativeY, float deltaX, float deltaY, String result, long started) {
         long callbackMicros = (SystemClock.elapsedRealtimeNanos() - started) / 1000;
+        int[] surfaceOriginOnScreen = new int[2];
+        surfaceView.getLocationOnScreen(surfaceOriginOnScreen);
         Log.i(TAG, "SPINON_C133_TOUCH source=MotionEvent action=" + action
                 + " event_action=" + event.getActionMasked()
                 + " pointer_id=" + c133ActivePointerId
-                + " raw_physical_px=" + event.getX() + "," + event.getY()
+                + " surface_local_physical_px=" + event.getX() + "," + event.getY()
+                + " screen_physical_px=" + event.getRawX() + "," + event.getRawY()
+                + " surface_origin_screen_px=" + surfaceOriginOnScreen[0] + ","
+                + surfaceOriginOnScreen[1]
+                + " surface_view_size_px=" + surfaceView.getWidth() + "x"
+                + surfaceView.getHeight()
                 + " cumulative_css_px=" + cumulativeX + "," + cumulativeY
                 + " delta_css_px=" + deltaX + "," + deltaY
                 + " scale=" + c133CoordinateScale

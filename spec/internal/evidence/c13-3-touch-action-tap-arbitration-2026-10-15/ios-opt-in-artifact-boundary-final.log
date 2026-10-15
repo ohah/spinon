@@ -1,0 +1,10 @@
+Opt-in app tree SHA-256: 525482676337bb7cf9e6116304eb64d1fd1ab7f7c15eb6b3eb8595dc5f591825
+3d8fb8f432bc19f4695f1b60181f8214f28ad6fba4f1591a7cc7e0a286dca6a3  /tmp/spinon-c13-3-opt-in-app-20261015.app/SpinonBootstrap
+C13.3 FFI exports:
+00000001000aa080 T _spinon_runtime_gpu_host_enqueue_c13_3_gesture
+00000001000aaa54 T _spinon_runtime_gpu_host_eval_c13_3_gesture_fixture
+00000001000ab90c T _spinon_runtime_gpu_host_new_c13_3_gesture_fixture
+00000001000abbd0 T _spinon_runtime_gpu_host_process_c13_3_gesture_queue
+C13.3 fixture payload marker:
+c13_3_gesture_fixture=ready
+%c13_3_gesture_fixture=ready scenario=
