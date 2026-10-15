@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-16T03:39:11+0900",
+  "pullRequest": "https://github.com/ohah/spinon/pull/201",
+  "pullRequestHead": "ed4b6a72e9d6b6a4d08beae8e48359c805907067",
+  "browser": "Agent Browser",
+  "session": "spinon-pr201-render-20261016",
+  "bodyChecks": {
+    "pointerlessTouchpadFailClosedText": true,
+    "nineClassifierAssertionsText": true,
+    "pathEscapeNegativeControlText": true,
+    "officialCompletionCountText": "61/197"
+  },
+  "image": {
+    "alt": "Android API 37 AVD 동작 캡처",
+    "src": "https://raw.githubusercontent.com/ohah/spinon/fix/c13-3-android-wheel-source-classification-20261016/spec/internal/evidence/c13-3-native-wheel-source-classification-2026-10-16/android-diagonal-positive-positive-after.png",
+    "complete": true,
+    "naturalWidth": 1080,
+    "naturalHeight": 2400,
+    "visible": true,
+    "sha256": "3fed4b8668138dae553b3391eebc0cf4f84d203de1eac42ee64076551f1a3f24"
+  },
+  "pageCapture": {
+    "path": "pr-body-rendered-agent-browser-full.png",
+    "sha256": "d1af428718832d73974bedb8f4ca7c96e56c737d9835de4eaa522da8dc4a606b"
+  }
+}
