@@ -1,0 +1,5697 @@
+{
+  "schema": "spinon-css-c13-3-scroll-gesture-precomparison/v1",
+  "capturedAt": "2026-10-15T00:19:13.532Z",
+  "scope": "Chrome oracle observation only; not Spinon runtime or app verification.",
+  "oracle": {
+    "browser": "Chrome/155.0.8059.40",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "webkitVersion": "537.36 (@cfaadc5a132d78e1828635aa8405a499f3e14864)",
+    "agentBrowserVersion": "agent-browser 0.31.1",
+    "hostPlatform": "darwin-arm64",
+    "hostOsVersion": "26.5.1",
+    "viewport": {
+      "width": 400,
+      "height": 240,
+      "deviceScaleFactor": 1
+    },
+    "touchEmulation": {
+      "enabled": true,
+      "maxTouchPoints": 2
+    }
+  },
+  "fixture": {
+    "path": "tests/fixtures/css/c13/c13-3-scroll-gesture.html",
+    "sha256": "a4eff62477a8a5d01f58f8033472fd3dcd6e8bc7638723d3386f7060d5787c09"
+  },
+  "screenshot": {
+    "path": "spec/internal/evidence/c13-3-scroll-gesture-precomparison-2026-10-15/chrome155-c13-3-scroll-gesture-400x240.png",
+    "dimensions": [
+      400,
+      240
+    ],
+    "sha256": "5c7e7566d545ff96a649aec997e129d625534aa2d81527ed4b6c0c7fd26f971f"
+  },
+  "interpretations": {
+    "autoTouchMidGestureBoundary": "The target inner owner reaches its maximum; Chrome does not hand the remaining direct-touch movement to outer in this trace.",
+    "autoTouchAtBoundaryStart": "When the gesture starts at the inner y boundary, auto routes the movement to outer.",
+    "overflowValues": "In this fixture, hidden does not consume direct touch and auto passes to outer; clip and visible have no inner scroll offset and also leave outer at y=45.",
+    "touchAction": "A pre-gesture none value suppresses scrolling; changing auto to none after touchstart does not stop the active gesture. pan-x and pan-y restrict the axis.",
+    "axisDirectionChange": "Chrome retains the first horizontal axis when the same auto gesture later turns vertical; this is an observed UA heuristic, not a CSS Overscroll requirement.",
+    "multiPointer": "The two CDP touch contacts start together before pan recognition. This records the browser two-contact/cancel behavior and does not model adding a second contact after an active app pan.",
+    "postCancelInput": "The browser-side CDP endpoint rejects a touchMove after touchCancel because its touch stream has ended; this harness rejection is not evidence that Spinon ignored a late queued Move.",
+    "mixedAxisOverscroll": "The W3C Overscroll Behavior draft says axes should be considered independently. In this Chrome trace, a diagonal delta with inner x=contain and y=auto is blocked on both axes even though x-only/y-only traces are independent. Preserve this as an oracle discrepancy; implementation acceptance follows the per-axis contract in the C13.3 plan.",
+    "boundaryAffordance": "The headless oracle records offsets and events only. It does not establish Android glow, iOS bounce, or any local boundary visual.",
+    "publicEvents": "DOM PointerEvent, WheelEvent, and scroll-event logs belong to the Chrome oracle fixture, not Spinon public event support."
+  },
+  "cases": {
+    "touchVertical60": {
+      "id": "touch-vertical-60",
+      "input": {
+        "type": "direct-touch",
+        "configuredTouchAction": "auto",
+        "overflow": "auto",
+        "targetSelector": "#inner",
+        "innerTop": 20,
+        "initialOffsets": {
+          "inner": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": null,
+        "touchActions": null,
+        "moveDeltas": [
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ]
+        ],
+        "moveWaitMs": [
+          50,
+          50,
+          50,
+          50
+        ],
+        "touchActionChangedAfterStart": false,
+        "touchActionChangedAfterPanBegan": false
+      },
+      "touchAction": "auto",
+      "touchActionPath": {
+        "inner-content": "auto",
+        "inner": "auto",
+        "outer": "auto",
+        "root": "auto"
+      },
+      "start": {
+        "x": 132,
+        "y": 112
+      },
+      "initialOwners": {
+        "inner": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            86,
+            106
+          ],
+          "client": [
+            114,
+            74
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "outer": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            106,
+            186
+          ],
+          "client": [
+            214,
+            134
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "root": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            158,
+            238
+          ],
+          "client": [
+            362,
+            202
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        }
+      },
+      "finalOverscroll": [
+        "auto",
+        "auto"
+      ],
+      "finalOffsets": {
+        "inner": [
+          0,
+          45
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [
+        {
+          "owner": "inner",
+          "offset": [
+            0,
+            15
+          ]
+        },
+        {
+          "owner": "inner",
+          "offset": [
+            0,
+            30
+          ]
+        },
+        {
+          "owner": "inner",
+          "offset": [
+            0,
+            45
+          ]
+        }
+      ],
+      "pointerEvents": [
+        {
+          "type": "pointerdown",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 97,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 82,
+          "primary": true
+        },
+        {
+          "type": "pointercancel",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 0,
+          "y": 0,
+          "primary": true
+        }
+      ]
+    },
+    "touchHorizontal60": {
+      "id": "touch-horizontal-60",
+      "input": {
+        "type": "direct-touch",
+        "configuredTouchAction": "auto",
+        "overflow": "auto",
+        "targetSelector": "#inner",
+        "innerTop": 20,
+        "initialOffsets": {
+          "inner": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": null,
+        "touchActions": null,
+        "moveDeltas": [
+          [
+            -15,
+            0
+          ],
+          [
+            -15,
+            0
+          ],
+          [
+            -15,
+            0
+          ],
+          [
+            -15,
+            0
+          ]
+        ],
+        "moveWaitMs": [
+          50,
+          50,
+          50,
+          50
+        ],
+        "touchActionChangedAfterStart": false,
+        "touchActionChangedAfterPanBegan": false
+      },
+      "touchAction": "auto",
+      "touchActionPath": {
+        "inner-content": "auto",
+        "inner": "auto",
+        "outer": "auto",
+        "root": "auto"
+      },
+      "start": {
+        "x": 132,
+        "y": 112
+      },
+      "initialOwners": {
+        "inner": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            86,
+            106
+          ],
+          "client": [
+            114,
+            74
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "outer": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            106,
+            186
+          ],
+          "client": [
+            214,
+            134
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "root": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            158,
+            238
+          ],
+          "client": [
+            362,
+            202
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        }
+      },
+      "finalOverscroll": [
+        "auto",
+        "auto"
+      ],
+      "finalOffsets": {
+        "inner": [
+          45,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [
+        {
+          "owner": "inner",
+          "offset": [
+            15,
+            0
+          ]
+        },
+        {
+          "owner": "inner",
+          "offset": [
+            30,
+            0
+          ]
+        },
+        {
+          "owner": "inner",
+          "offset": [
+            45,
+            0
+          ]
+        }
+      ],
+      "pointerEvents": [
+        {
+          "type": "pointerdown",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 117,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 102,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointercancel",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 0,
+          "y": 0,
+          "primary": true
+        }
+      ]
+    },
+    "touchDiagonal60": {
+      "id": "touch-diagonal-60-per-axis",
+      "input": {
+        "type": "direct-touch",
+        "configuredTouchAction": "auto",
+        "overflow": "auto",
+        "targetSelector": "#inner",
+        "innerTop": 20,
+        "initialOffsets": {
+          "inner": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": null,
+        "touchActions": null,
+        "moveDeltas": [
+          [
+            -15,
+            -15
+          ],
+          [
+            -15,
+            -15
+          ],
+          [
+            -15,
+            -15
+          ],
+          [
+            -15,
+            -15
+          ]
+        ],
+        "moveWaitMs": [
+          50,
+          50,
+          50,
+          50
+        ],
+        "touchActionChangedAfterStart": false,
+        "touchActionChangedAfterPanBegan": false
+      },
+      "touchAction": "auto",
+      "touchActionPath": {
+        "inner-content": "auto",
+        "inner": "auto",
+        "outer": "auto",
+        "root": "auto"
+      },
+      "start": {
+        "x": 132,
+        "y": 112
+      },
+      "initialOwners": {
+        "inner": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            86,
+            106
+          ],
+          "client": [
+            114,
+            74
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "outer": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            106,
+            186
+          ],
+          "client": [
+            214,
+            134
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "root": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            158,
+            238
+          ],
+          "client": [
+            362,
+            202
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        }
+      },
+      "finalOverscroll": [
+        "auto",
+        "auto"
+      ],
+      "finalOffsets": {
+        "inner": [
+          49,
+          49
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [
+        {
+          "owner": "inner",
+          "offset": [
+            4,
+            4
+          ]
+        },
+        {
+          "owner": "inner",
+          "offset": [
+            19,
+            19
+          ]
+        },
+        {
+          "owner": "inner",
+          "offset": [
+            34,
+            34
+          ]
+        },
+        {
+          "owner": "inner",
+          "offset": [
+            49,
+            49
+          ]
+        }
+      ],
+      "pointerEvents": [
+        {
+          "type": "pointerdown",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 117,
+          "y": 97,
+          "primary": true
+        },
+        {
+          "type": "pointercancel",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 0,
+          "y": 0,
+          "primary": true
+        }
+      ]
+    },
+    "touchReachBoundary": {
+      "id": "touch-reaches-inner-boundary-mid-gesture",
+      "input": {
+        "type": "direct-touch",
+        "configuredTouchAction": "auto",
+        "overflow": "auto",
+        "targetSelector": "#inner",
+        "innerTop": 20,
+        "initialOffsets": {
+          "inner": [
+            0,
+            86
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": null,
+        "touchActions": null,
+        "moveDeltas": [
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ]
+        ],
+        "moveWaitMs": [
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35
+        ],
+        "touchActionChangedAfterStart": false,
+        "touchActionChangedAfterPanBegan": false
+      },
+      "touchAction": "auto",
+      "touchActionPath": {
+        "inner-content": "auto",
+        "inner": "auto",
+        "outer": "auto",
+        "root": "auto"
+      },
+      "start": {
+        "x": 132,
+        "y": 112
+      },
+      "initialOwners": {
+        "inner": {
+          "offset": [
+            0,
+            86
+          ],
+          "range": [
+            86,
+            106
+          ],
+          "client": [
+            114,
+            74
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "outer": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            106,
+            186
+          ],
+          "client": [
+            214,
+            134
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "root": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            158,
+            238
+          ],
+          "client": [
+            362,
+            202
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        }
+      },
+      "finalOverscroll": [
+        "auto",
+        "auto"
+      ],
+      "finalOffsets": {
+        "inner": [
+          0,
+          106
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [
+        {
+          "owner": "inner",
+          "offset": [
+            0,
+            101
+          ]
+        },
+        {
+          "owner": "inner",
+          "offset": [
+            0,
+            106
+          ]
+        }
+      ],
+      "pointerEvents": [
+        {
+          "type": "pointerdown",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 97,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 82,
+          "primary": true
+        },
+        {
+          "type": "pointercancel",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 0,
+          "y": 0,
+          "primary": true
+        }
+      ]
+    },
+    "touchBoundaryAuto": {
+      "id": "touch-starts-at-inner-y-boundary-auto",
+      "input": {
+        "type": "direct-touch",
+        "configuredTouchAction": "auto",
+        "overflow": "auto",
+        "targetSelector": "#inner",
+        "innerTop": 20,
+        "initialOffsets": {
+          "inner": [
+            0,
+            106
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": null,
+        "touchActions": null,
+        "moveDeltas": [
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ]
+        ],
+        "moveWaitMs": [
+          50,
+          50,
+          50,
+          50
+        ],
+        "touchActionChangedAfterStart": false,
+        "touchActionChangedAfterPanBegan": false
+      },
+      "touchAction": "auto",
+      "touchActionPath": {
+        "inner-content": "auto",
+        "inner": "auto",
+        "outer": "auto",
+        "root": "auto"
+      },
+      "start": {
+        "x": 132,
+        "y": 112
+      },
+      "initialOwners": {
+        "inner": {
+          "offset": [
+            0,
+            106
+          ],
+          "range": [
+            86,
+            106
+          ],
+          "client": [
+            114,
+            74
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "outer": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            106,
+            186
+          ],
+          "client": [
+            214,
+            134
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "root": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            158,
+            238
+          ],
+          "client": [
+            362,
+            202
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        }
+      },
+      "finalOverscroll": [
+        "auto",
+        "auto"
+      ],
+      "finalOffsets": {
+        "inner": [
+          0,
+          106
+        ],
+        "outer": [
+          0,
+          45
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [
+        {
+          "owner": "outer",
+          "offset": [
+            0,
+            15
+          ]
+        },
+        {
+          "owner": "outer",
+          "offset": [
+            0,
+            30
+          ]
+        },
+        {
+          "owner": "outer",
+          "offset": [
+            0,
+            45
+          ]
+        }
+      ],
+      "pointerEvents": [
+        {
+          "type": "pointerdown",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 97,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 82,
+          "primary": true
+        },
+        {
+          "type": "pointercancel",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 0,
+          "y": 0,
+          "primary": true
+        }
+      ]
+    },
+    "touchBoundaryContain": {
+      "id": "touch-starts-at-inner-y-boundary-contain",
+      "input": {
+        "type": "direct-touch",
+        "configuredTouchAction": "auto",
+        "overflow": "auto",
+        "targetSelector": "#inner",
+        "innerTop": 20,
+        "initialOffsets": {
+          "inner": [
+            0,
+            106
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": [
+          "contain",
+          "contain"
+        ],
+        "touchActions": null,
+        "moveDeltas": [
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ]
+        ],
+        "moveWaitMs": [
+          50,
+          50,
+          50,
+          50
+        ],
+        "touchActionChangedAfterStart": false,
+        "touchActionChangedAfterPanBegan": false
+      },
+      "touchAction": "auto",
+      "touchActionPath": {
+        "inner-content": "auto",
+        "inner": "auto",
+        "outer": "auto",
+        "root": "auto"
+      },
+      "start": {
+        "x": 132,
+        "y": 112
+      },
+      "initialOwners": {
+        "inner": {
+          "offset": [
+            0,
+            106
+          ],
+          "range": [
+            86,
+            106
+          ],
+          "client": [
+            114,
+            74
+          ],
+          "overscroll": [
+            "contain",
+            "contain"
+          ]
+        },
+        "outer": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            106,
+            186
+          ],
+          "client": [
+            214,
+            134
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "root": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            158,
+            238
+          ],
+          "client": [
+            362,
+            202
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        }
+      },
+      "finalOverscroll": [
+        "contain",
+        "contain"
+      ],
+      "finalOffsets": {
+        "inner": [
+          0,
+          106
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [],
+      "pointerEvents": [
+        {
+          "type": "pointerdown",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 97,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 82,
+          "primary": true
+        },
+        {
+          "type": "pointercancel",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 0,
+          "y": 0,
+          "primary": true
+        }
+      ]
+    },
+    "touchBoundaryNone": {
+      "id": "touch-starts-at-inner-y-boundary-none",
+      "input": {
+        "type": "direct-touch",
+        "configuredTouchAction": "auto",
+        "overflow": "auto",
+        "targetSelector": "#inner",
+        "innerTop": 20,
+        "initialOffsets": {
+          "inner": [
+            0,
+            106
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": [
+          "none",
+          "none"
+        ],
+        "touchActions": null,
+        "moveDeltas": [
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ]
+        ],
+        "moveWaitMs": [
+          50,
+          50,
+          50,
+          50
+        ],
+        "touchActionChangedAfterStart": false,
+        "touchActionChangedAfterPanBegan": false
+      },
+      "touchAction": "auto",
+      "touchActionPath": {
+        "inner-content": "auto",
+        "inner": "auto",
+        "outer": "auto",
+        "root": "auto"
+      },
+      "start": {
+        "x": 132,
+        "y": 112
+      },
+      "initialOwners": {
+        "inner": {
+          "offset": [
+            0,
+            106
+          ],
+          "range": [
+            86,
+            106
+          ],
+          "client": [
+            114,
+            74
+          ],
+          "overscroll": [
+            "none",
+            "none"
+          ]
+        },
+        "outer": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            106,
+            186
+          ],
+          "client": [
+            214,
+            134
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "root": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            158,
+            238
+          ],
+          "client": [
+            362,
+            202
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        }
+      },
+      "finalOverscroll": [
+        "none",
+        "none"
+      ],
+      "finalOffsets": {
+        "inner": [
+          0,
+          106
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [],
+      "pointerEvents": [
+        {
+          "type": "pointerdown",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 97,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 82,
+          "primary": true
+        },
+        {
+          "type": "pointercancel",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 0,
+          "y": 0,
+          "primary": true
+        }
+      ]
+    },
+    "touchOverflowHidden": {
+      "id": "touch-overflow-hidden",
+      "input": {
+        "type": "direct-touch",
+        "configuredTouchAction": "auto",
+        "overflow": "hidden",
+        "targetSelector": "#inner",
+        "innerTop": 20,
+        "initialOffsets": {
+          "inner": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": null,
+        "touchActions": null,
+        "moveDeltas": [
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ]
+        ],
+        "moveWaitMs": [
+          50,
+          50,
+          50,
+          50
+        ],
+        "touchActionChangedAfterStart": false,
+        "touchActionChangedAfterPanBegan": false
+      },
+      "touchAction": "auto",
+      "touchActionPath": {
+        "inner-content": "auto",
+        "inner": "auto",
+        "outer": "auto",
+        "root": "auto"
+      },
+      "start": {
+        "x": 132,
+        "y": 112
+      },
+      "initialOwners": {
+        "inner": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            86,
+            106
+          ],
+          "client": [
+            114,
+            74
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "outer": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            106,
+            186
+          ],
+          "client": [
+            214,
+            134
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "root": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            158,
+            238
+          ],
+          "client": [
+            362,
+            202
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        }
+      },
+      "finalOverscroll": [
+        "auto",
+        "auto"
+      ],
+      "finalOffsets": {
+        "inner": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          45
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [
+        {
+          "owner": "outer",
+          "offset": [
+            0,
+            15
+          ]
+        },
+        {
+          "owner": "outer",
+          "offset": [
+            0,
+            30
+          ]
+        },
+        {
+          "owner": "outer",
+          "offset": [
+            0,
+            45
+          ]
+        }
+      ],
+      "pointerEvents": [
+        {
+          "type": "pointerdown",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 97,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 82,
+          "primary": true
+        },
+        {
+          "type": "pointercancel",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 0,
+          "y": 0,
+          "primary": true
+        }
+      ]
+    },
+    "touchOverflowClip": {
+      "id": "touch-overflow-clip",
+      "input": {
+        "type": "direct-touch",
+        "configuredTouchAction": "auto",
+        "overflow": "clip",
+        "targetSelector": "#inner",
+        "innerTop": 20,
+        "initialOffsets": {
+          "inner": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": null,
+        "touchActions": null,
+        "moveDeltas": [
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ]
+        ],
+        "moveWaitMs": [
+          50,
+          50,
+          50,
+          50
+        ],
+        "touchActionChangedAfterStart": false,
+        "touchActionChangedAfterPanBegan": false
+      },
+      "touchAction": "auto",
+      "touchActionPath": {
+        "inner-content": "auto",
+        "inner": "auto",
+        "outer": "auto",
+        "root": "auto"
+      },
+      "start": {
+        "x": 132,
+        "y": 112
+      },
+      "initialOwners": {
+        "inner": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            86,
+            106
+          ],
+          "client": [
+            114,
+            74
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "outer": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            106,
+            186
+          ],
+          "client": [
+            214,
+            134
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "root": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            158,
+            238
+          ],
+          "client": [
+            362,
+            202
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        }
+      },
+      "finalOverscroll": [
+        "auto",
+        "auto"
+      ],
+      "finalOffsets": {
+        "inner": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          45
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [
+        {
+          "owner": "outer",
+          "offset": [
+            0,
+            15
+          ]
+        },
+        {
+          "owner": "outer",
+          "offset": [
+            0,
+            30
+          ]
+        },
+        {
+          "owner": "outer",
+          "offset": [
+            0,
+            45
+          ]
+        }
+      ],
+      "pointerEvents": [
+        {
+          "type": "pointerdown",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 97,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 82,
+          "primary": true
+        },
+        {
+          "type": "pointercancel",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 0,
+          "y": 0,
+          "primary": true
+        }
+      ]
+    },
+    "touchOverflowVisible": {
+      "id": "touch-overflow-visible",
+      "input": {
+        "type": "direct-touch",
+        "configuredTouchAction": "auto",
+        "overflow": "visible",
+        "targetSelector": "#inner",
+        "innerTop": 20,
+        "initialOffsets": {
+          "inner": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": null,
+        "touchActions": null,
+        "moveDeltas": [
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ]
+        ],
+        "moveWaitMs": [
+          50,
+          50,
+          50,
+          50
+        ],
+        "touchActionChangedAfterStart": false,
+        "touchActionChangedAfterPanBegan": false
+      },
+      "touchAction": "auto",
+      "touchActionPath": {
+        "inner-content": "auto",
+        "inner": "auto",
+        "outer": "auto",
+        "root": "auto"
+      },
+      "start": {
+        "x": 132,
+        "y": 112
+      },
+      "initialOwners": {
+        "inner": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            86,
+            106
+          ],
+          "client": [
+            114,
+            74
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "outer": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            106,
+            186
+          ],
+          "client": [
+            214,
+            134
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "root": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            158,
+            238
+          ],
+          "client": [
+            362,
+            202
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        }
+      },
+      "finalOverscroll": [
+        "auto",
+        "auto"
+      ],
+      "finalOffsets": {
+        "inner": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          45
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [
+        {
+          "owner": "outer",
+          "offset": [
+            0,
+            15
+          ]
+        },
+        {
+          "owner": "outer",
+          "offset": [
+            0,
+            30
+          ]
+        },
+        {
+          "owner": "outer",
+          "offset": [
+            0,
+            45
+          ]
+        }
+      ],
+      "pointerEvents": [
+        {
+          "type": "pointerdown",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 97,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 82,
+          "primary": true
+        },
+        {
+          "type": "pointercancel",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 0,
+          "y": 0,
+          "primary": true
+        }
+      ]
+    },
+    "touchActionNone": {
+      "id": "touch-action-none-before-gesture",
+      "input": {
+        "type": "direct-touch",
+        "configuredTouchAction": "none",
+        "overflow": "auto",
+        "targetSelector": "#inner",
+        "innerTop": 20,
+        "initialOffsets": {
+          "inner": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": null,
+        "touchActions": null,
+        "moveDeltas": [
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ]
+        ],
+        "moveWaitMs": [
+          50,
+          50,
+          50,
+          50
+        ],
+        "touchActionChangedAfterStart": false,
+        "touchActionChangedAfterPanBegan": false
+      },
+      "touchAction": "none",
+      "touchActionPath": {
+        "inner-content": "auto",
+        "inner": "none",
+        "outer": "auto",
+        "root": "auto"
+      },
+      "start": {
+        "x": 132,
+        "y": 112
+      },
+      "initialOwners": {
+        "inner": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            86,
+            106
+          ],
+          "client": [
+            114,
+            74
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "outer": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            106,
+            186
+          ],
+          "client": [
+            214,
+            134
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "root": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            158,
+            238
+          ],
+          "client": [
+            362,
+            202
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        }
+      },
+      "finalOverscroll": [
+        "auto",
+        "auto"
+      ],
+      "finalOffsets": {
+        "inner": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [],
+      "pointerEvents": [
+        {
+          "type": "pointerdown",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 97,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 82,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 67,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 52,
+          "primary": true
+        },
+        {
+          "type": "pointerup",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 52,
+          "primary": true
+        }
+      ]
+    },
+    "touchActionAfterStart": {
+      "id": "touch-action-changes-to-none-after-start",
+      "input": {
+        "type": "direct-touch",
+        "configuredTouchAction": "auto",
+        "overflow": "auto",
+        "targetSelector": "#inner",
+        "innerTop": 20,
+        "initialOffsets": {
+          "inner": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": null,
+        "touchActions": null,
+        "moveDeltas": [
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ]
+        ],
+        "moveWaitMs": [
+          50,
+          50,
+          50,
+          50
+        ],
+        "touchActionChangedAfterStart": true,
+        "touchActionChangedAfterPanBegan": false
+      },
+      "touchAction": "none",
+      "touchActionPath": {
+        "inner-content": "auto",
+        "inner": "none",
+        "outer": "auto",
+        "root": "auto"
+      },
+      "start": {
+        "x": 132,
+        "y": 112
+      },
+      "initialOwners": {
+        "inner": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            86,
+            106
+          ],
+          "client": [
+            114,
+            74
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "outer": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            106,
+            186
+          ],
+          "client": [
+            214,
+            134
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "root": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            158,
+            238
+          ],
+          "client": [
+            362,
+            202
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        }
+      },
+      "finalOverscroll": [
+        "auto",
+        "auto"
+      ],
+      "finalOffsets": {
+        "inner": [
+          0,
+          45
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [
+        {
+          "owner": "inner",
+          "offset": [
+            0,
+            15
+          ]
+        },
+        {
+          "owner": "inner",
+          "offset": [
+            0,
+            30
+          ]
+        },
+        {
+          "owner": "inner",
+          "offset": [
+            0,
+            45
+          ]
+        }
+      ],
+      "pointerEvents": [
+        {
+          "type": "pointerdown",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 97,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 82,
+          "primary": true
+        },
+        {
+          "type": "pointercancel",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 0,
+          "y": 0,
+          "primary": true
+        }
+      ]
+    },
+    "touchActionAfterPanBegan": {
+      "id": "touch-action-changes-after-pan-began",
+      "input": {
+        "type": "direct-touch",
+        "configuredTouchAction": "auto",
+        "overflow": "auto",
+        "targetSelector": "#inner",
+        "innerTop": 20,
+        "initialOffsets": {
+          "inner": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": null,
+        "touchActions": null,
+        "moveDeltas": [
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ]
+        ],
+        "moveWaitMs": [
+          50,
+          50,
+          50,
+          50
+        ],
+        "touchActionChangedAfterStart": false,
+        "touchActionChangedAfterPanBegan": true
+      },
+      "touchAction": "none",
+      "touchActionPath": {
+        "inner-content": "auto",
+        "inner": "none",
+        "outer": "auto",
+        "root": "auto"
+      },
+      "start": {
+        "x": 132,
+        "y": 112
+      },
+      "initialOwners": {
+        "inner": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            86,
+            106
+          ],
+          "client": [
+            114,
+            74
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "outer": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            106,
+            186
+          ],
+          "client": [
+            214,
+            134
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "root": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            158,
+            238
+          ],
+          "client": [
+            362,
+            202
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        }
+      },
+      "finalOverscroll": [
+        "auto",
+        "auto"
+      ],
+      "finalOffsets": {
+        "inner": [
+          0,
+          45
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [
+        {
+          "owner": "inner",
+          "offset": [
+            0,
+            15
+          ]
+        },
+        {
+          "owner": "inner",
+          "offset": [
+            0,
+            30
+          ]
+        },
+        {
+          "owner": "inner",
+          "offset": [
+            0,
+            45
+          ]
+        }
+      ],
+      "pointerEvents": [
+        {
+          "type": "pointerdown",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 97,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 82,
+          "primary": true
+        },
+        {
+          "type": "pointercancel",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 0,
+          "y": 0,
+          "primary": true
+        }
+      ]
+    },
+    "parentTouchActionPanXVertical": {
+      "id": "outer-pan-x-restricts-inner-vertical-pan",
+      "input": {
+        "type": "direct-touch",
+        "configuredTouchAction": "auto",
+        "overflow": "auto",
+        "targetSelector": "#inner",
+        "innerTop": 20,
+        "initialOffsets": {
+          "inner": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": null,
+        "touchActions": {
+          "inner-content": "pan-x"
+        },
+        "moveDeltas": [
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ]
+        ],
+        "moveWaitMs": [
+          50,
+          50,
+          50,
+          50
+        ],
+        "touchActionChangedAfterStart": false,
+        "touchActionChangedAfterPanBegan": false
+      },
+      "touchAction": "auto",
+      "touchActionPath": {
+        "inner-content": "pan-x",
+        "inner": "auto",
+        "outer": "auto",
+        "root": "auto"
+      },
+      "start": {
+        "x": 132,
+        "y": 112
+      },
+      "initialOwners": {
+        "inner": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            86,
+            106
+          ],
+          "client": [
+            114,
+            74
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "outer": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            106,
+            186
+          ],
+          "client": [
+            214,
+            134
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "root": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            158,
+            238
+          ],
+          "client": [
+            362,
+            202
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        }
+      },
+      "finalOverscroll": [
+        "auto",
+        "auto"
+      ],
+      "finalOffsets": {
+        "inner": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [],
+      "pointerEvents": [
+        {
+          "type": "pointerdown",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 97,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 82,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 67,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 52,
+          "primary": true
+        },
+        {
+          "type": "pointerup",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 52,
+          "primary": true
+        }
+      ]
+    },
+    "parentTouchActionPanXHorizontal": {
+      "id": "outer-pan-x-allows-inner-horizontal-pan",
+      "input": {
+        "type": "direct-touch",
+        "configuredTouchAction": "auto",
+        "overflow": "auto",
+        "targetSelector": "#inner",
+        "innerTop": 20,
+        "initialOffsets": {
+          "inner": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": null,
+        "touchActions": {
+          "inner-content": "pan-x"
+        },
+        "moveDeltas": [
+          [
+            -15,
+            0
+          ],
+          [
+            -15,
+            0
+          ],
+          [
+            -15,
+            0
+          ],
+          [
+            -15,
+            0
+          ]
+        ],
+        "moveWaitMs": [
+          50,
+          50,
+          50,
+          50
+        ],
+        "touchActionChangedAfterStart": false,
+        "touchActionChangedAfterPanBegan": false
+      },
+      "touchAction": "auto",
+      "touchActionPath": {
+        "inner-content": "pan-x",
+        "inner": "auto",
+        "outer": "auto",
+        "root": "auto"
+      },
+      "start": {
+        "x": 132,
+        "y": 112
+      },
+      "initialOwners": {
+        "inner": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            86,
+            106
+          ],
+          "client": [
+            114,
+            74
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "outer": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            106,
+            186
+          ],
+          "client": [
+            214,
+            134
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "root": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            158,
+            238
+          ],
+          "client": [
+            362,
+            202
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        }
+      },
+      "finalOverscroll": [
+        "auto",
+        "auto"
+      ],
+      "finalOffsets": {
+        "inner": [
+          45,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [
+        {
+          "owner": "inner",
+          "offset": [
+            15,
+            0
+          ]
+        },
+        {
+          "owner": "inner",
+          "offset": [
+            30,
+            0
+          ]
+        },
+        {
+          "owner": "inner",
+          "offset": [
+            45,
+            0
+          ]
+        }
+      ],
+      "pointerEvents": [
+        {
+          "type": "pointerdown",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 117,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 102,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointercancel",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 0,
+          "y": 0,
+          "primary": true
+        }
+      ]
+    },
+    "touchActionPanXHorizontal": {
+      "id": "touch-action-pan-x-horizontal",
+      "input": {
+        "type": "direct-touch",
+        "configuredTouchAction": "pan-x",
+        "overflow": "auto",
+        "targetSelector": "#inner",
+        "innerTop": 20,
+        "initialOffsets": {
+          "inner": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": null,
+        "touchActions": null,
+        "moveDeltas": [
+          [
+            -15,
+            0
+          ],
+          [
+            -15,
+            0
+          ],
+          [
+            -15,
+            0
+          ],
+          [
+            -15,
+            0
+          ]
+        ],
+        "moveWaitMs": [
+          50,
+          50,
+          50,
+          50
+        ],
+        "touchActionChangedAfterStart": false,
+        "touchActionChangedAfterPanBegan": false
+      },
+      "touchAction": "pan-x",
+      "touchActionPath": {
+        "inner-content": "auto",
+        "inner": "pan-x",
+        "outer": "auto",
+        "root": "auto"
+      },
+      "start": {
+        "x": 132,
+        "y": 112
+      },
+      "initialOwners": {
+        "inner": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            86,
+            106
+          ],
+          "client": [
+            114,
+            74
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "outer": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            106,
+            186
+          ],
+          "client": [
+            214,
+            134
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "root": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            158,
+            238
+          ],
+          "client": [
+            362,
+            202
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        }
+      },
+      "finalOverscroll": [
+        "auto",
+        "auto"
+      ],
+      "finalOffsets": {
+        "inner": [
+          45,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [
+        {
+          "owner": "inner",
+          "offset": [
+            15,
+            0
+          ]
+        },
+        {
+          "owner": "inner",
+          "offset": [
+            30,
+            0
+          ]
+        },
+        {
+          "owner": "inner",
+          "offset": [
+            45,
+            0
+          ]
+        }
+      ],
+      "pointerEvents": [
+        {
+          "type": "pointerdown",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 117,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 102,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointercancel",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 0,
+          "y": 0,
+          "primary": true
+        }
+      ]
+    },
+    "touchActionPanXVertical": {
+      "id": "touch-action-pan-x-vertical",
+      "input": {
+        "type": "direct-touch",
+        "configuredTouchAction": "pan-x",
+        "overflow": "auto",
+        "targetSelector": "#inner",
+        "innerTop": 20,
+        "initialOffsets": {
+          "inner": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": null,
+        "touchActions": null,
+        "moveDeltas": [
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ]
+        ],
+        "moveWaitMs": [
+          50,
+          50,
+          50,
+          50
+        ],
+        "touchActionChangedAfterStart": false,
+        "touchActionChangedAfterPanBegan": false
+      },
+      "touchAction": "pan-x",
+      "touchActionPath": {
+        "inner-content": "auto",
+        "inner": "pan-x",
+        "outer": "auto",
+        "root": "auto"
+      },
+      "start": {
+        "x": 132,
+        "y": 112
+      },
+      "initialOwners": {
+        "inner": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            86,
+            106
+          ],
+          "client": [
+            114,
+            74
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "outer": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            106,
+            186
+          ],
+          "client": [
+            214,
+            134
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "root": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            158,
+            238
+          ],
+          "client": [
+            362,
+            202
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        }
+      },
+      "finalOverscroll": [
+        "auto",
+        "auto"
+      ],
+      "finalOffsets": {
+        "inner": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [],
+      "pointerEvents": [
+        {
+          "type": "pointerdown",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 97,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 82,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 67,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 52,
+          "primary": true
+        },
+        {
+          "type": "pointerup",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 52,
+          "primary": true
+        }
+      ]
+    },
+    "touchActionPanYVertical": {
+      "id": "touch-action-pan-y-vertical",
+      "input": {
+        "type": "direct-touch",
+        "configuredTouchAction": "pan-y",
+        "overflow": "auto",
+        "targetSelector": "#inner",
+        "innerTop": 20,
+        "initialOffsets": {
+          "inner": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": null,
+        "touchActions": null,
+        "moveDeltas": [
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ]
+        ],
+        "moveWaitMs": [
+          50,
+          50,
+          50,
+          50
+        ],
+        "touchActionChangedAfterStart": false,
+        "touchActionChangedAfterPanBegan": false
+      },
+      "touchAction": "pan-y",
+      "touchActionPath": {
+        "inner-content": "auto",
+        "inner": "pan-y",
+        "outer": "auto",
+        "root": "auto"
+      },
+      "start": {
+        "x": 132,
+        "y": 112
+      },
+      "initialOwners": {
+        "inner": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            86,
+            106
+          ],
+          "client": [
+            114,
+            74
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "outer": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            106,
+            186
+          ],
+          "client": [
+            214,
+            134
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "root": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            158,
+            238
+          ],
+          "client": [
+            362,
+            202
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        }
+      },
+      "finalOverscroll": [
+        "auto",
+        "auto"
+      ],
+      "finalOffsets": {
+        "inner": [
+          0,
+          45
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [
+        {
+          "owner": "inner",
+          "offset": [
+            0,
+            15
+          ]
+        },
+        {
+          "owner": "inner",
+          "offset": [
+            0,
+            30
+          ]
+        },
+        {
+          "owner": "inner",
+          "offset": [
+            0,
+            45
+          ]
+        }
+      ],
+      "pointerEvents": [
+        {
+          "type": "pointerdown",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 97,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 82,
+          "primary": true
+        },
+        {
+          "type": "pointercancel",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 0,
+          "y": 0,
+          "primary": true
+        }
+      ]
+    },
+    "touchActionPanYHorizontal": {
+      "id": "touch-action-pan-y-horizontal",
+      "input": {
+        "type": "direct-touch",
+        "configuredTouchAction": "pan-y",
+        "overflow": "auto",
+        "targetSelector": "#inner",
+        "innerTop": 20,
+        "initialOffsets": {
+          "inner": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": null,
+        "touchActions": null,
+        "moveDeltas": [
+          [
+            -15,
+            0
+          ],
+          [
+            -15,
+            0
+          ],
+          [
+            -15,
+            0
+          ],
+          [
+            -15,
+            0
+          ]
+        ],
+        "moveWaitMs": [
+          50,
+          50,
+          50,
+          50
+        ],
+        "touchActionChangedAfterStart": false,
+        "touchActionChangedAfterPanBegan": false
+      },
+      "touchAction": "pan-y",
+      "touchActionPath": {
+        "inner-content": "auto",
+        "inner": "pan-y",
+        "outer": "auto",
+        "root": "auto"
+      },
+      "start": {
+        "x": 132,
+        "y": 112
+      },
+      "initialOwners": {
+        "inner": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            86,
+            106
+          ],
+          "client": [
+            114,
+            74
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "outer": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            106,
+            186
+          ],
+          "client": [
+            214,
+            134
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "root": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            158,
+            238
+          ],
+          "client": [
+            362,
+            202
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        }
+      },
+      "finalOverscroll": [
+        "auto",
+        "auto"
+      ],
+      "finalOffsets": {
+        "inner": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [],
+      "pointerEvents": [
+        {
+          "type": "pointerdown",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 117,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 102,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 87,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 72,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointerup",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 72,
+          "y": 112,
+          "primary": true
+        }
+      ]
+    },
+    "touchAxisDirectionChange": {
+      "id": "touch-axis-horizontal-then-vertical",
+      "input": {
+        "type": "direct-touch",
+        "configuredTouchAction": "auto",
+        "overflow": "auto",
+        "targetSelector": "#inner",
+        "innerTop": 20,
+        "initialOffsets": {
+          "inner": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": null,
+        "touchActions": null,
+        "moveDeltas": [
+          [
+            -15,
+            -2
+          ],
+          [
+            -15,
+            -2
+          ],
+          [
+            -15,
+            -2
+          ],
+          [
+            -15,
+            -2
+          ],
+          [
+            -2,
+            -15
+          ],
+          [
+            -2,
+            -15
+          ],
+          [
+            -2,
+            -15
+          ],
+          [
+            -2,
+            -15
+          ]
+        ],
+        "moveWaitMs": [
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50
+        ],
+        "touchActionChangedAfterStart": false,
+        "touchActionChangedAfterPanBegan": false
+      },
+      "touchAction": "auto",
+      "touchActionPath": {
+        "inner-content": "auto",
+        "inner": "auto",
+        "outer": "auto",
+        "root": "auto"
+      },
+      "start": {
+        "x": 132,
+        "y": 112
+      },
+      "initialOwners": {
+        "inner": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            86,
+            106
+          ],
+          "client": [
+            114,
+            74
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "outer": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            106,
+            186
+          ],
+          "client": [
+            214,
+            134
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "root": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            158,
+            238
+          ],
+          "client": [
+            362,
+            202
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        }
+      },
+      "finalOverscroll": [
+        "auto",
+        "auto"
+      ],
+      "finalOffsets": {
+        "inner": [
+          53,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [
+        {
+          "owner": "inner",
+          "offset": [
+            15,
+            0
+          ]
+        },
+        {
+          "owner": "inner",
+          "offset": [
+            30,
+            0
+          ]
+        },
+        {
+          "owner": "inner",
+          "offset": [
+            45,
+            0
+          ]
+        },
+        {
+          "owner": "inner",
+          "offset": [
+            47,
+            0
+          ]
+        },
+        {
+          "owner": "inner",
+          "offset": [
+            49,
+            0
+          ]
+        },
+        {
+          "owner": "inner",
+          "offset": [
+            51,
+            0
+          ]
+        },
+        {
+          "owner": "inner",
+          "offset": [
+            53,
+            0
+          ]
+        }
+      ],
+      "pointerEvents": [
+        {
+          "type": "pointerdown",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 117,
+          "y": 110,
+          "primary": true
+        },
+        {
+          "type": "pointercancel",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 0,
+          "y": 0,
+          "primary": true
+        }
+      ]
+    },
+    "touchCancel": {
+      "id": "touch-cancel-late-move",
+      "lateMoveDispatch": {
+        "accepted": false,
+        "error": "Input.dispatchTouchEvent {\"type\":\"touchMove\",\"touchPoints\":[{\"x\":132,\"y\":52,\"id\":1}]}: Must send a TouchStart first to start a new touch."
+      },
+      "touchAction": "auto",
+      "start": {
+        "x": 132,
+        "y": 112
+      },
+      "initialOffsets": {
+        "inner": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "beforeLateMove": {
+        "offsets": {
+          "inner": [
+            0,
+            15
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "scrollEvents": [
+          {
+            "owner": "inner",
+            "offset": [
+              0,
+              15
+            ]
+          }
+        ],
+        "pointerEvents": [
+          {
+            "type": "pointerdown",
+            "id": 2,
+            "pointerType": "touch",
+            "target": "inner-content",
+            "x": 132,
+            "y": 112,
+            "primary": true
+          },
+          {
+            "type": "pointermove",
+            "id": 2,
+            "pointerType": "touch",
+            "target": "inner-content",
+            "x": 132,
+            "y": 97,
+            "primary": true
+          },
+          {
+            "type": "pointermove",
+            "id": 2,
+            "pointerType": "touch",
+            "target": "inner-content",
+            "x": 132,
+            "y": 82,
+            "primary": true
+          },
+          {
+            "type": "pointercancel",
+            "id": 2,
+            "pointerType": "touch",
+            "target": "inner-content",
+            "x": 0,
+            "y": 0,
+            "primary": true
+          }
+        ]
+      },
+      "afterLateMove": {
+        "offsets": {
+          "inner": [
+            0,
+            15
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "scrollEvents": [
+          {
+            "owner": "inner",
+            "offset": [
+              0,
+              15
+            ]
+          }
+        ],
+        "pointerEvents": [
+          {
+            "type": "pointerdown",
+            "id": 2,
+            "pointerType": "touch",
+            "target": "inner-content",
+            "x": 132,
+            "y": 112,
+            "primary": true
+          },
+          {
+            "type": "pointermove",
+            "id": 2,
+            "pointerType": "touch",
+            "target": "inner-content",
+            "x": 132,
+            "y": 97,
+            "primary": true
+          },
+          {
+            "type": "pointermove",
+            "id": 2,
+            "pointerType": "touch",
+            "target": "inner-content",
+            "x": 132,
+            "y": 82,
+            "primary": true
+          },
+          {
+            "type": "pointercancel",
+            "id": 2,
+            "pointerType": "touch",
+            "target": "inner-content",
+            "x": 0,
+            "y": 0,
+            "primary": true
+          }
+        ]
+      }
+    },
+    "touchAxisContainXAutoYHorizontal": {
+      "id": "touch-x-contain-y-auto-horizontal-at-boundary",
+      "input": {
+        "type": "direct-touch",
+        "configuredTouchAction": "auto",
+        "overflow": "auto",
+        "targetSelector": "#inner",
+        "innerTop": 20,
+        "initialOffsets": {
+          "inner": [
+            86,
+            106
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": [
+          "contain",
+          "auto"
+        ],
+        "touchActions": null,
+        "moveDeltas": [
+          [
+            -15,
+            0
+          ],
+          [
+            -15,
+            0
+          ],
+          [
+            -15,
+            0
+          ],
+          [
+            -15,
+            0
+          ]
+        ],
+        "moveWaitMs": [
+          50,
+          50,
+          50,
+          50
+        ],
+        "touchActionChangedAfterStart": false,
+        "touchActionChangedAfterPanBegan": false
+      },
+      "touchAction": "auto",
+      "touchActionPath": {
+        "inner-content": "auto",
+        "inner": "auto",
+        "outer": "auto",
+        "root": "auto"
+      },
+      "start": {
+        "x": 132,
+        "y": 112
+      },
+      "initialOwners": {
+        "inner": {
+          "offset": [
+            86,
+            106
+          ],
+          "range": [
+            86,
+            106
+          ],
+          "client": [
+            114,
+            74
+          ],
+          "overscroll": [
+            "contain",
+            "auto"
+          ]
+        },
+        "outer": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            106,
+            186
+          ],
+          "client": [
+            214,
+            134
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "root": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            158,
+            238
+          ],
+          "client": [
+            362,
+            202
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        }
+      },
+      "finalOverscroll": [
+        "contain",
+        "auto"
+      ],
+      "finalOffsets": {
+        "inner": [
+          86,
+          106
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [],
+      "pointerEvents": [
+        {
+          "type": "pointerdown",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 117,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 102,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointercancel",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 0,
+          "y": 0,
+          "primary": true
+        }
+      ]
+    },
+    "touchAxisContainXAutoYVertical": {
+      "id": "touch-x-contain-y-auto-vertical-at-boundary",
+      "input": {
+        "type": "direct-touch",
+        "configuredTouchAction": "auto",
+        "overflow": "auto",
+        "targetSelector": "#inner",
+        "innerTop": 20,
+        "initialOffsets": {
+          "inner": [
+            86,
+            106
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": [
+          "contain",
+          "auto"
+        ],
+        "touchActions": null,
+        "moveDeltas": [
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ]
+        ],
+        "moveWaitMs": [
+          50,
+          50,
+          50,
+          50
+        ],
+        "touchActionChangedAfterStart": false,
+        "touchActionChangedAfterPanBegan": false
+      },
+      "touchAction": "auto",
+      "touchActionPath": {
+        "inner-content": "auto",
+        "inner": "auto",
+        "outer": "auto",
+        "root": "auto"
+      },
+      "start": {
+        "x": 132,
+        "y": 112
+      },
+      "initialOwners": {
+        "inner": {
+          "offset": [
+            86,
+            106
+          ],
+          "range": [
+            86,
+            106
+          ],
+          "client": [
+            114,
+            74
+          ],
+          "overscroll": [
+            "contain",
+            "auto"
+          ]
+        },
+        "outer": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            106,
+            186
+          ],
+          "client": [
+            214,
+            134
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "root": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            158,
+            238
+          ],
+          "client": [
+            362,
+            202
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        }
+      },
+      "finalOverscroll": [
+        "contain",
+        "auto"
+      ],
+      "finalOffsets": {
+        "inner": [
+          86,
+          106
+        ],
+        "outer": [
+          0,
+          45
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [
+        {
+          "owner": "outer",
+          "offset": [
+            0,
+            15
+          ]
+        },
+        {
+          "owner": "outer",
+          "offset": [
+            0,
+            30
+          ]
+        },
+        {
+          "owner": "outer",
+          "offset": [
+            0,
+            45
+          ]
+        }
+      ],
+      "pointerEvents": [
+        {
+          "type": "pointerdown",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 97,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 82,
+          "primary": true
+        },
+        {
+          "type": "pointercancel",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 0,
+          "y": 0,
+          "primary": true
+        }
+      ]
+    },
+    "touchAxisContainXAutoYDiagonal": {
+      "id": "touch-x-contain-y-auto-diagonal-at-boundary",
+      "input": {
+        "type": "direct-touch",
+        "configuredTouchAction": "auto",
+        "overflow": "auto",
+        "targetSelector": "#inner",
+        "innerTop": 20,
+        "initialOffsets": {
+          "inner": [
+            86,
+            106
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": [
+          "contain",
+          "auto"
+        ],
+        "touchActions": null,
+        "moveDeltas": [
+          [
+            -15,
+            -15
+          ],
+          [
+            -15,
+            -15
+          ],
+          [
+            -15,
+            -15
+          ],
+          [
+            -15,
+            -15
+          ]
+        ],
+        "moveWaitMs": [
+          50,
+          50,
+          50,
+          50
+        ],
+        "touchActionChangedAfterStart": false,
+        "touchActionChangedAfterPanBegan": false
+      },
+      "touchAction": "auto",
+      "touchActionPath": {
+        "inner-content": "auto",
+        "inner": "auto",
+        "outer": "auto",
+        "root": "auto"
+      },
+      "start": {
+        "x": 132,
+        "y": 112
+      },
+      "initialOwners": {
+        "inner": {
+          "offset": [
+            86,
+            106
+          ],
+          "range": [
+            86,
+            106
+          ],
+          "client": [
+            114,
+            74
+          ],
+          "overscroll": [
+            "contain",
+            "auto"
+          ]
+        },
+        "outer": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            106,
+            186
+          ],
+          "client": [
+            214,
+            134
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "root": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            158,
+            238
+          ],
+          "client": [
+            362,
+            202
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        }
+      },
+      "finalOverscroll": [
+        "contain",
+        "auto"
+      ],
+      "finalOffsets": {
+        "inner": [
+          86,
+          106
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [],
+      "pointerEvents": [
+        {
+          "type": "pointerdown",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 112,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 117,
+          "y": 97,
+          "primary": true
+        },
+        {
+          "type": "pointercancel",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 0,
+          "y": 0,
+          "primary": true
+        }
+      ]
+    },
+    "touchInnerOuterBoundaryRootAuto": {
+      "id": "touch-inner-and-outer-y-boundary-chains-to-root",
+      "input": {
+        "type": "direct-touch",
+        "configuredTouchAction": "auto",
+        "overflow": "auto",
+        "targetSelector": "#inner",
+        "innerTop": 230,
+        "initialOffsets": {
+          "inner": [
+            0,
+            106
+          ],
+          "outer": [
+            0,
+            186
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": null,
+        "touchActions": null,
+        "moveDeltas": [
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ]
+        ],
+        "moveWaitMs": [
+          50,
+          50,
+          50,
+          50
+        ],
+        "touchActionChangedAfterStart": false,
+        "touchActionChangedAfterPanBegan": false
+      },
+      "touchAction": "auto",
+      "touchActionPath": {
+        "inner-content": "auto",
+        "inner": "auto",
+        "outer": "auto",
+        "root": "auto"
+      },
+      "start": {
+        "x": 132,
+        "y": 136
+      },
+      "initialOwners": {
+        "inner": {
+          "offset": [
+            0,
+            106
+          ],
+          "range": [
+            86,
+            106
+          ],
+          "client": [
+            114,
+            74
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "outer": {
+          "offset": [
+            0,
+            186
+          ],
+          "range": [
+            106,
+            186
+          ],
+          "client": [
+            214,
+            134
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        },
+        "root": {
+          "offset": [
+            0,
+            0
+          ],
+          "range": [
+            158,
+            238
+          ],
+          "client": [
+            362,
+            202
+          ],
+          "overscroll": [
+            "auto",
+            "auto"
+          ]
+        }
+      },
+      "finalOverscroll": [
+        "auto",
+        "auto"
+      ],
+      "finalOffsets": {
+        "inner": [
+          0,
+          106
+        ],
+        "outer": [
+          0,
+          186
+        ],
+        "root": [
+          0,
+          45
+        ]
+      },
+      "scrollEvents": [
+        {
+          "owner": "root",
+          "offset": [
+            0,
+            15
+          ]
+        },
+        {
+          "owner": "root",
+          "offset": [
+            0,
+            30
+          ]
+        },
+        {
+          "owner": "root",
+          "offset": [
+            0,
+            45
+          ]
+        }
+      ],
+      "pointerEvents": [
+        {
+          "type": "pointerdown",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 136,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 121,
+          "primary": true
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 132,
+          "y": 106,
+          "primary": true
+        },
+        {
+          "type": "pointercancel",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content",
+          "x": 0,
+          "y": 0,
+          "primary": true
+        }
+      ]
+    },
+    "wheelXContainYAutoX": {
+      "id": "wheel-x-contain-y-auto-x-only",
+      "input": {
+        "type": "wheel",
+        "targetSelector": "#inner",
+        "point": {
+          "x": 132,
+          "y": 112
+        },
+        "initialOffsets": {
+          "inner": [
+            86,
+            106
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": [
+          "contain",
+          "auto"
+        ],
+        "touchAction": "auto",
+        "delta": [
+          40,
+          0
+        ]
+      },
+      "point": {
+        "x": 132,
+        "y": 112
+      },
+      "delta": [
+        40,
+        0
+      ],
+      "behavior": [
+        "contain",
+        "auto"
+      ],
+      "initialOffsets": {
+        "inner": [
+          86,
+          106
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "finalOffsets": {
+        "inner": [
+          86,
+          106
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [],
+      "wheelEvents": [
+        {
+          "listener": "inner",
+          "target": "inner-content",
+          "deltaX": 40,
+          "deltaY": 0,
+          "deltaMode": 0
+        },
+        {
+          "listener": "outer",
+          "target": "inner-content",
+          "deltaX": 40,
+          "deltaY": 0,
+          "deltaMode": 0
+        },
+        {
+          "listener": "root",
+          "target": "inner-content",
+          "deltaX": 40,
+          "deltaY": 0,
+          "deltaMode": 0
+        }
+      ]
+    },
+    "wheelXContainYAutoY": {
+      "id": "wheel-x-contain-y-auto-y-only",
+      "input": {
+        "type": "wheel",
+        "targetSelector": "#inner",
+        "point": {
+          "x": 132,
+          "y": 112
+        },
+        "initialOffsets": {
+          "inner": [
+            86,
+            106
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": [
+          "contain",
+          "auto"
+        ],
+        "touchAction": "auto",
+        "delta": [
+          0,
+          40
+        ]
+      },
+      "point": {
+        "x": 132,
+        "y": 112
+      },
+      "delta": [
+        0,
+        40
+      ],
+      "behavior": [
+        "contain",
+        "auto"
+      ],
+      "initialOffsets": {
+        "inner": [
+          86,
+          106
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "finalOffsets": {
+        "inner": [
+          86,
+          106
+        ],
+        "outer": [
+          0,
+          40
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [
+        {
+          "owner": "outer",
+          "offset": [
+            0,
+            40
+          ]
+        }
+      ],
+      "wheelEvents": [
+        {
+          "listener": "outer",
+          "target": "outer-content",
+          "deltaX": 0,
+          "deltaY": 40,
+          "deltaMode": 0
+        },
+        {
+          "listener": "root",
+          "target": "outer-content",
+          "deltaX": 0,
+          "deltaY": 40,
+          "deltaMode": 0
+        }
+      ]
+    },
+    "wheelXContainYAutoDiagonal": {
+      "id": "wheel-x-contain-y-auto-diagonal",
+      "input": {
+        "type": "wheel",
+        "targetSelector": "#inner",
+        "point": {
+          "x": 132,
+          "y": 112
+        },
+        "initialOffsets": {
+          "inner": [
+            86,
+            106
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": [
+          "contain",
+          "auto"
+        ],
+        "touchAction": "auto",
+        "delta": [
+          40,
+          40
+        ]
+      },
+      "point": {
+        "x": 132,
+        "y": 112
+      },
+      "delta": [
+        40,
+        40
+      ],
+      "behavior": [
+        "contain",
+        "auto"
+      ],
+      "initialOffsets": {
+        "inner": [
+          86,
+          106
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "finalOffsets": {
+        "inner": [
+          86,
+          106
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [],
+      "wheelEvents": [
+        {
+          "listener": "inner",
+          "target": "inner-content",
+          "deltaX": 40,
+          "deltaY": 40,
+          "deltaMode": 0
+        },
+        {
+          "listener": "outer",
+          "target": "inner-content",
+          "deltaX": 40,
+          "deltaY": 40,
+          "deltaMode": 0
+        },
+        {
+          "listener": "root",
+          "target": "inner-content",
+          "deltaX": 40,
+          "deltaY": 40,
+          "deltaMode": 0
+        }
+      ]
+    },
+    "wheelAutoDiagonal": {
+      "id": "wheel-auto-auto-diagonal",
+      "input": {
+        "type": "wheel",
+        "targetSelector": "#inner",
+        "point": {
+          "x": 132,
+          "y": 112
+        },
+        "initialOffsets": {
+          "inner": [
+            86,
+            106
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": [
+          "auto",
+          "auto"
+        ],
+        "touchAction": "auto",
+        "delta": [
+          40,
+          40
+        ]
+      },
+      "point": {
+        "x": 132,
+        "y": 112
+      },
+      "delta": [
+        40,
+        40
+      ],
+      "behavior": [
+        "auto",
+        "auto"
+      ],
+      "initialOffsets": {
+        "inner": [
+          86,
+          106
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "finalOffsets": {
+        "inner": [
+          86,
+          106
+        ],
+        "outer": [
+          40,
+          40
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [
+        {
+          "owner": "outer",
+          "offset": [
+            40,
+            40
+          ]
+        }
+      ],
+      "wheelEvents": [
+        {
+          "listener": "outer",
+          "target": "outer-content",
+          "deltaX": 40,
+          "deltaY": 40,
+          "deltaMode": 0
+        },
+        {
+          "listener": "root",
+          "target": "outer-content",
+          "deltaX": 40,
+          "deltaY": 40,
+          "deltaMode": 0
+        }
+      ]
+    },
+    "wheelTouchActionNone": {
+      "id": "wheel-is-not-restricted-by-touch-action-none",
+      "input": {
+        "type": "wheel",
+        "targetSelector": "#inner",
+        "point": {
+          "x": 132,
+          "y": 112
+        },
+        "initialOffsets": {
+          "inner": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "defaultOverscrollBehavior": "auto",
+        "innerOverscrollBehavior": null,
+        "touchAction": "none",
+        "delta": [
+          0,
+          40
+        ]
+      },
+      "point": {
+        "x": 132,
+        "y": 112
+      },
+      "delta": [
+        0,
+        40
+      ],
+      "behavior": [
+        "auto",
+        "auto"
+      ],
+      "initialOffsets": {
+        "inner": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "finalOffsets": {
+        "inner": [
+          0,
+          40
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [
+        {
+          "owner": "inner",
+          "offset": [
+            0,
+            40
+          ]
+        }
+      ],
+      "wheelEvents": [
+        {
+          "listener": "inner",
+          "target": "inner-content",
+          "deltaX": 0,
+          "deltaY": 40,
+          "deltaMode": 0
+        },
+        {
+          "listener": "outer",
+          "target": "inner-content",
+          "deltaX": 0,
+          "deltaY": 40,
+          "deltaMode": 0
+        },
+        {
+          "listener": "root",
+          "target": "inner-content",
+          "deltaX": 0,
+          "deltaY": 40,
+          "deltaMode": 0
+        }
+      ]
+    },
+    "multiPointer": {
+      "id": "two-pointers-cancel-then-single-pointer-recovery",
+      "input": {
+        "type": "direct-touch",
+        "simultaneousStart": true,
+        "contacts": [
+          {
+            "id": 51,
+            "start": {
+              "x": 132,
+              "y": 112
+            },
+            "move": [
+              -8,
+              -8
+            ]
+          },
+          {
+            "id": 52,
+            "start": {
+              "x": 162,
+              "y": 112
+            },
+            "move": [
+              8,
+              8
+            ]
+          }
+        ],
+        "terminal": "touchCancel",
+        "freshGestureMoves": [
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ],
+          [
+            0,
+            -15
+          ]
+        ]
+      },
+      "visualViewportScale": 1,
+      "during": {
+        "offsets": {
+          "inner": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "pointerEvents": [
+          {
+            "type": "pointerdown",
+            "id": 2,
+            "pointerType": "touch",
+            "target": "inner-content",
+            "x": 132,
+            "y": 112,
+            "primary": true
+          },
+          {
+            "type": "pointerdown",
+            "id": 3,
+            "pointerType": "touch",
+            "target": "inner-content",
+            "x": 162,
+            "y": 112,
+            "primary": false
+          },
+          {
+            "type": "pointermove",
+            "id": 3,
+            "pointerType": "touch",
+            "target": "inner-content",
+            "x": 170,
+            "y": 120,
+            "primary": false
+          },
+          {
+            "type": "pointermove",
+            "id": 2,
+            "pointerType": "touch",
+            "target": "inner-content",
+            "x": 124,
+            "y": 104,
+            "primary": true
+          }
+        ]
+      },
+      "afterCancel": {
+        "offsets": {
+          "inner": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "pointerEvents": [
+          {
+            "type": "pointerdown",
+            "id": 2,
+            "pointerType": "touch",
+            "target": "inner-content",
+            "x": 132,
+            "y": 112,
+            "primary": true
+          },
+          {
+            "type": "pointerdown",
+            "id": 3,
+            "pointerType": "touch",
+            "target": "inner-content",
+            "x": 162,
+            "y": 112,
+            "primary": false
+          },
+          {
+            "type": "pointermove",
+            "id": 3,
+            "pointerType": "touch",
+            "target": "inner-content",
+            "x": 170,
+            "y": 120,
+            "primary": false
+          },
+          {
+            "type": "pointermove",
+            "id": 2,
+            "pointerType": "touch",
+            "target": "inner-content",
+            "x": 124,
+            "y": 104,
+            "primary": true
+          },
+          {
+            "type": "pointercancel",
+            "id": 2,
+            "pointerType": "touch",
+            "target": "inner-content",
+            "x": 124,
+            "y": 104,
+            "primary": true
+          },
+          {
+            "type": "pointercancel",
+            "id": 3,
+            "pointerType": "touch",
+            "target": "inner-content",
+            "x": 170,
+            "y": 120,
+            "primary": false
+          }
+        ]
+      },
+      "freshGesture": {
+        "offsets": {
+          "inner": [
+            0,
+            30
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ]
+        },
+        "scrollEvents": [
+          {
+            "owner": "inner",
+            "offset": [
+              0,
+              15
+            ]
+          },
+          {
+            "owner": "inner",
+            "offset": [
+              0,
+              30
+            ]
+          }
+        ],
+        "pointerEvents": [
+          {
+            "type": "pointerdown",
+            "id": 4,
+            "pointerType": "touch",
+            "target": "inner-content",
+            "x": 132,
+            "y": 112,
+            "primary": true
+          },
+          {
+            "type": "pointermove",
+            "id": 4,
+            "pointerType": "touch",
+            "target": "inner-content",
+            "x": 132,
+            "y": 97,
+            "primary": true
+          },
+          {
+            "type": "pointermove",
+            "id": 4,
+            "pointerType": "touch",
+            "target": "inner-content",
+            "x": 132,
+            "y": 82,
+            "primary": true
+          },
+          {
+            "type": "pointercancel",
+            "id": 4,
+            "pointerType": "touch",
+            "target": "inner-content",
+            "x": 0,
+            "y": 0,
+            "primary": true
+          }
+        ]
+      }
+    }
+  }
+}

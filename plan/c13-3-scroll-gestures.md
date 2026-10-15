@@ -1,0 +1,84 @@
+# C13.3 · 스크롤 제스처와 축별 chaining
+
+**상태:** 계획 초안 · 구현 미시작
+**공식 상위 항목:** [구현 상태 대장](../spec/STATUS.md#css-구현-체크리스트)
+**선행:** C13.1 clip/hit-test와 C13.2 scroll owner, range, immutable snapshot·`ScrollStateRevision`
+**교차 경계:** S04.10 displayed-frame 입력 연결은 미완료다. S05.2 React host adapter와 공개 DOM event도 미완료다. 이 계획의 앱 route는 opt-in fixture 검증으로만 다루며 제품 event/presentation 지원으로 표시하지 않는다.
+**계획 실패 검토:** [20개 관점 기록](../spec/internal/evidence/c13-3-scroll-gesture-plan-review-20-2026-10-15.md)
+**계획 PR 변경 검토:** [30개 관점 기록](../spec/internal/evidence/c13-3-scroll-gesture-plan-pr-review-30-2026-10-15.md)
+**구현 전 비교:** [고정 Chrome 155 관찰·fixture·화면](../spec/internal/evidence/c13-3-scroll-gesture-precomparison-2026-10-15/README.md) · [JSON](../tests/fixtures/css/references/c13-3-scroll-gesture-precomparison-v1.json)
+
+## 목표와 범위
+
+C13.3은 C13.2가 소유하는 scroll container와 immutable render snapshot에 touch pan 및 host가 CSS px로 정규화한 wheel/trackpad delta를 연결한다. touch는 시작점의 clip-aware hit target과 scroll owner chain을 gesture 동안 고정한다. wheel/trackpad는 각 sample의 CSS viewport 위치에서 현재 snapshot의 hit target/chain을 구한다. 각 축은 scroll range에 따라 안쪽 owner부터 소비한다. 남은 delta, `overscroll-behavior`, gesture 수명·취소·surface generation은 한 원자적 scroll-state 갱신으로 처리한다. C13.2의 현재 입력 규칙대로 `overflow:hidden` offset은 직접 gesture로 움직이지 않고 항상 경계로 취급한다. `auto`면 남은 delta를 ancestor로 넘기고, `contain`/`none`이면 해당 축 chain을 막는다. `visible`/`clip`은 자체 offset/policy owner 없이 가장 가까운 scroll ancestor로 넘긴다.
+
+이번 제한 profile은 현 C13.1/C13.2가 지원하는 연결 box와 `horizontal-tb`·LTR 물리 축이다. `overscroll-behavior`, `touch-action`은 typed runtime style input으로 추가한다. `touch-action` 값은 `auto`, `none`, `pan-x`, `pan-y`로 한정하며 다른 유효 값이나 조합은 `auto`로 조용히 바꾸지 않고 unsupported로 기록한다. 키보드 기본 스크롤은 S05/S07, 공개 `PointerEvent`/`WheelEvent`/`scroll` dispatch는 S05 및 C29 owner다.
+
+직접 조작 gesture는 platform input adapter가 전달한 정규화된 좌표로 시작한다. touch release 뒤 Spinon은 fling/inertial continuation을 만들지 않는다. host가 별도 momentum phase로 전달한 trackpad sample은 input source/phase를 기록하고 정규화된 delta sample로 처리한다. pinch zoom, pointer capture API, scroll snap, native scrollbar, overscroll bounce/glow는 없다. `touch-action`은 pan 허용 축에만 적용하며 tap/click activation은 보존한다. 두 번째 active pointer가 들어오면 진행 중인 단일 pointer pan을 cancel하고 마지막 pointer까지 끝날 때까지 해당 touch stream의 추가 scroll을 받지 않는다. 이미 적용된 offset은 유지한다. 해당 선택은 이 내부 fixture profile의 명시적 동작이며 public Pointer Events 구현을 뜻하지 않는다.
+
+## 규범·플랫폼 입력
+
+| 원본 | 이 계획에서 적용하는 범위 |
+| --- | --- |
+| [CSS Overscroll Behavior Level 1](https://www.w3.org/TR/css-overscroll-1/) · 2019 FPWD | `auto`는 통상 경계 동작을 허용한다. `contain`은 ancestor chain 같은 non-local boundary action을 막고 local affordance는 허용한다. `none`은 두 종류를 모두 막는다. 두 축의 동작은 독립적으로 고려한다. 이 문서는 draft이며 chaining이나 affordance가 반드시 구현돼야 한다고 요구하지 않는다. |
+| [Pointer Events · `touch-action`](https://www.w3.org/TR/pointerevents/#the-touch-action-css-property) | 직접 조작의 pan 허용은 hit target부터 가장 가까운 scroll container까지 관련 computed value의 교집합으로 정한다. 시작 시 값을 고정하고 active gesture 도중의 style 변경은 다음 gesture부터 적용한다. `pan-x`/`pan-y`로 제한된 방향은 진행 중 반대 축으로 확장하지 않는다. |
+| [Android `NestedScrollingParent3`](https://developer.android.com/reference/androidx/core/view/NestedScrollingParent3), [`ViewConfiguration.getScaledTouchSlop()`](https://developer.android.com/reference/android/view/ViewConfiguration#getScaledTouchSlop()) | nested scroll의 consumed/unconsumed 모델만 참고하며 앱의 단일 GPU surface를 Android `View` scroll container로 바꾸지 않는다. Android direct touch는 visual context의 scaled touch slop을 platform 시작 경계로 기록한다. |
+| Apple [`UIPanGestureRecognizer`](https://developer.apple.com/documentation/uikit/uipangesturerecognizer) · [`translation(in:)`](https://developer.apple.com/documentation/uikit/uipangesturerecognizer/translation%28in%3A%29) | recognizer의 `.began`이 native pan 시작 경계다. translation은 누적값이므로 adapter가 직전 accepted translation을 빼서 per-sample delta를 만든다. iOS host는 pan recognizer와 별도로 active `UITouch` 수를 감시해 두 번째 contact를 놓치지 않는다. UIKit point는 CSS px로 간주하지 않고 surface scale을 기록한다. `UIScrollView`의 bounce는 현재 app surface에 연결하지 않는다. |
+
+CSS Overscroll 초안은 동시에 입력된 두 축의 경계 동작을 독립 고려하도록 권고한다. 고정 Chrome 관찰에서 `overscroll-behavior-x:contain; overscroll-behavior-y:auto`는 X-only 입력을 막고 Y-only 입력을 부모로 전달했지만, 두 축을 한 번에 보낸 wheel/touch 입력은 Y도 전달하지 않았다. 이는 Chrome 관찰값이지 C13.3 기대 동작으로 승격하지 않는다. 구현 oracle pass는 per-axis 규칙을 따른다. 두 축의 결과는 Android/iOS 앱 trace와 core fixture에서 각각 확인한다.
+
+## 고정 Chrome 관찰
+
+Chrome for Testing `155.0.8059.40`, revision `cfaadc5a132d78e1828635aa8405a499f3e14864`, macOS arm64, agent-browser `0.31.1`, viewport `400×240` CSS px, DPR 1, CDP touch emulation 최대 2 pointer를 사용했다. 각 입력 전 fixture가 offset과 비동기 scroll/pointer/wheel log를 비우고 안정화한다. screenshot과 fixture bytes의 SHA-256을 저장한다. 이 자료는 Chrome oracle이며 Spinon 동작 근거가 아니다.
+
+| Trace | 관찰 결과 | 계획의 해석 |
+| --- | --- | --- |
+| 안쪽에서 60 CSS px 상·좌 swipe, 4 move | inner offset은 각각 `y=45`, `x=45`; 대각 60/60은 `(49,49)` | Chrome input slop/recognition을 포함한 관찰값이다. offset 상수는 앱의 expected value로 복사하지 않는다. |
+| inner y=`86`에서 180 px 상 swipe | inner y=`106`에서 clamp, 같은 gesture의 남은 delta로 outer는 움직이지 않음 | mid-gesture handoff를 놓치지 않는 negative oracle다. 계획상 core는 남은 축 delta를 chain으로 전달한다. 차이는 별도 기록한다. |
+| inner y max에서 swipe 시작 | `auto`는 outer y=`45`; `contain`과 `none`은 outer `0` | 경계에서 시작한 입력의 ancestor 선택과 policy blocking을 분리한다. |
+| inner overflow를 `hidden`/`clip`/`visible`로 변경 | 세 경우 모두 inner offset `0`, auto chain을 따라 outer y=`45` | `hidden`의 programmatic-only offset, `clip`/`visible`의 owner 부재를 사용자 입력에서 구분한다. |
+| touch action | 사전 `none`은 scroll을 막음. `touchstart` 뒤 `none` 변경은 active scroll을 중단하지 않음. `pan-x`/`pan-y`는 반대 축만의 입력을 막음 | action은 gesture 시작에서 resolve/freeze한다. |
+| X 방향으로 시작한 뒤 Y로 방향 변경 (`auto`) | Chrome trace는 inner x만 이동하고 y는 `0` | Chrome의 axis-lock 관찰이다. 구현은 OS slop을 넘은 첫 active pan의 축을 결정하고 gesture 끝까지 고정한다. slop 절대값은 platform 제공값이며 앱이 임의 숫자로 고정하지 않는다. |
+| touch cancel / 두 pointer | cancel까지 반영된 offset은 유지된다. CDP는 끝난 touch stream 뒤의 `touchMove` 요청을 `TouchStart first` 오류로 거부하므로, 늦은 move를 Chrome이 무시했다고 해석하지 않는다. simultaneous two-pointer trace는 offset/visual scale을 바꾸지 않고 pointercancel 둘을 기록하며, 새 단일 pointer gesture는 다시 동작한다. | CDP 거부는 harness 제약이다. 늦게 도착한 queued move의 stale 거부와 active pan 중 두 번째 pointer는 core/Simulator gate에서 별도로 검사한다. 이 앱 profile은 pinch zoom을 지원하지 않는다. |
+| inner X=`contain`, Y=`auto` | touch/wheel을 X-only, Y-only, diagonal로 분리했다. X-only는 부모 X를 막고 Y-only는 부모 Y=`45`/`40`으로 이동한다. Chrome의 diagonal은 부모 `(0,0)` | spec의 축 독립성에 대한 명시적 oracle 차이다. 구현은 `outer.y>0`, `outer.x=0`이어야 한다. |
+| inner `auto/auto`, diagonal wheel `(40,40)` | outer `(40,40)` | 대각 delta의 두 축 보존 control이다. |
+
+실제 offset·event·pointer log 전체는 JSON에 고정돼 있다. headless screenshot은 boundary visual을 입증하지 않으므로 Android glow나 iOS bounce를 주장하지 않는다. `contain`/`none` 차이는 local affordance가 없는 현재 runtime에서 둘 다 ancestor chaining을 차단하는 값으로 관찰한다. `none`이 화면효과 차이를 만드는지에 대한 test는 native affordance를 실제로 구현할 때만 추가한다.
+
+## 내부 입력·상태 계약
+
+세부 자료형과 오류는 [내부 계약 0063](../spec/internal/0063-c13-3-scroll-gestures.md)에 둔다. 핵심 invariants는 다음과 같다.
+
+1. `Begin`은 단조 증가 input sequence, `surfaceGeneration`, runtime/document/tree/environment/style revision tuple, 현재 `ScrollStateRevision`, pointer ID, CSS viewport point와 coordinate scale을 받는다. finite point와 현재 clip-aware hit target을 확인하고 hit target·root/body effective viewport owner·scroll owner chain·scrollport/clip/range를 묶은 geometry key를 보존한다. touch-action은 해당 style revision에서 계산해 frozen policy로 들고 간다. slop 이전 tap/click 경로는 host에서 보존한다.
+2. `touch-action`은 hit target에서 nearest scroll owner까지의 supported `auto`/`none`/`pan-x`/`pan-y`를 교집합해 시작 시 고정한다. 허용 집합이 비거나 gesture 시작 방향이 제한되면 pan을 시작하지 않는다. 이후 이 값이 바뀌어도 현재 gesture는 취소하지 않고 시작 때 계산한 action을 유지한다. 새 gesture는 새 값을 쓴다.
+3. Android는 `ViewConfiguration.scaledTouchSlop`, iOS는 `UIPanGestureRecognizer`의 `.began`을 native pan 시작 경계로 쓴다. 시작 sample에서 touch-action이 허용한 축 중 절대 translation이 큰 축을 고르고, 두 축의 크기가 같으면 둘 다 유지한다. 선택 축은 gesture 끝까지 고정한다. UIKit의 누적 translation은 직전 accepted translation을 빼서 한번만 소비한다. log에는 native slop source/value 또는 recognizer state, raw/cumulative 및 delta translation, active axes를 남기며 fixed CSS px slop/각도 상수는 두지 않는다.
+4. 손가락 delta `(dx,dy)`는 scroll delta `(-dx,-dy)`로 변환한다. wheel/trackpad sample은 CSS viewport point와 source/phase를 포함하고, 해당 point의 revision 일치 snapshot에서 clip-aware hit target/owner chain을 구한다. Android physical px와 UIKit point는 host viewport/surface transform으로 CSS px에 변환하고 원본 단위와 scale을 기록한다. 각 축에서 현재 owner의 새 offset을 `[0,max]`로 clamp하고 소비량을 뺀 남은 delta만 다음 ancestor에 전달한다. `auto`는 계속 전달하고, `contain`/`none`은 해당 축 chain을 끊는다. X/Y 계산은 별도로 실행한다. range가 0인 축은 경계로 취급한다.
+5. 한 platform sample로 여러 scroll owner가 움직이면 후보 offset과 owner별 내부 change record 용량을 함께 예약·검증한 뒤 한 번에 snapshot을 게시한다. 실제 offset이 바뀔 때만 scroll revision을 한 번 올리고 각 record는 같은 최종 revision 및 input sequence에 연결한다. record allocation/revision exhaustion은 offset/event 어느 쪽도 게시하지 않는다. no-op input은 revision을 올리지 않는다.
+6. 활성 gesture는 document/tree/environment revision, surface generation 및 시작 hit target·root/body viewport owner·scroll owner/clip/range geometry key를 고정한다. geometry key가 바뀌는 style/layout/owner 변화, tree/document 변경, surface generation 변경, 외부 scroll update, window/app background, cancel 또는 두 번째 pointer는 gesture를 종료한다. geometry가 같은 style revision 변경은 취소 사유가 아니다. `touch-action`은 시작 정책을 유지하고 `overscroll-behavior`는 queue-order상 그 sample에 stamp된 현재 계산값을 쓴다. gesture session이 accepted Move의 `ScrollStateRevision`을 소유·전진시키므로 UI callback은 worker 응답을 기다리지 않는다. 이미 commit된 offset은 유지하고 invalidation 뒤 늦은 move/end는 거부한다.
+7. `wheel`/trackpad adapter는 단조 input sequence, CSS viewport point, enqueue 시 snapshot revision tuple과 basis `ScrollStateRevision`, axis별 CSS px delta, 원본 단위/scale/source/momentum phase를 전달한다. 동일 input queue의 선행 scroll commit은 revision lineage로 반영하지만 unrelated scroll/style/tree/surface barrier 뒤 stale sample은 target을 다른 위치/owner로 재해석하지 않고 거부한다. touch slop/axis-lock은 적용하지 않고 각 sample의 두 축을 독립 처리한다. 공개 `WheelEvent` deltaMode/CSSOM과 keyboard scroll default는 C29/S05/S07 범위다.
+8. 내부 event record는 owner, consumed/unconsumed axis delta, resulting offset, final scroll revision, gesture/pointer identity와 surface generation을 포함한다. 이는 JS callback이나 public `scroll` event가 아니다. public dispatch는 S05.2/S04.10이 연결된 뒤 검증한다.
+9. Platform input queue는 bounded이고 accepted input은 단조 sequence로 처리한다. `Begin` 전에 해당 gesture가 소유할 terminal control slot 하나를 예약하고 Begin 실패 또는 terminal 소비 뒤 정확히 한 번 반환한다. End는 앞서 수락한 Move 뒤에, Cancel은 명시된 cancel boundary 뒤에 처리한다. 동일 gesture/pointer/generation과 snapshot/style/policy epoch의 인접 Move만 total delta를 보존하도록 coalesce한다. End/Cancel이나 style/snapshot/lifecycle barrier를 넘어 합치지 않는다. Move saturation은 예약 slot으로 gesture를 cancel하고 마지막 published offset을 유지한다. WheelDelta는 같은 hit point/target/owner/revision/policy 조건에서만 coalesce하고 capacity가 없으면 sample 전체를 reject해 진단 카운터를 남긴다. Begin도 slot/queue 확보에 실패하면 active state를 만들지 않는다. UI thread는 Rust/render completion을 기다리지 않는다.
+
+## 구현 순서와 작업 경계
+
+1. **Style projection:** `touch-action` 제한 profile 및 `overscroll-behavior` shorthand/longhands typed extraction·computed default·revision invalidation을 추가한다. unsupported 값은 진단과 함께 gesture를 fail-closed한다. touch-action 값 변경이 새로운 gesture에 반영되며 active state를 소급 변경하지 않는지 확인한다.
+2. **Core gesture session:** pointer begin/move/end/cancel state, pointer identity, surface/document/tree/style/current scroll revision key, frozen owner chain/action/axis를 구현한다. 모든 상태 전이는 검증 뒤 publish하며 중복 종료/늦은 input은 거부한다.
+3. **Per-axis router:** immutable scroll snapshot에서 inner→outer 각 축의 consumed/unconsumed delta를 따로 계산한다. owner 변경, no-range axis, `auto`/`contain`/`none`, diagonal remainder, `ScrollStateRevision`, 내부 event record를 한 candidate transaction으로 게시한다.
+4. **Platform adapters:** Android API 37 ARM64 AVD의 `MotionEvent`와 iPhone 17 Pro/iOS 26.2 Simulator의 pan recognizer trace를 같은 400×240 CSS fixture에 연결한다. CSS viewport point, surface scale/회전, app background/lifecycle 취소를 기록한다. Move coalescing은 revision/policy barrier 안에서만 입력 합계를 보존하고 Begin 시 예약한 terminal slot으로 순서 있는 saturation cancel을 전달한다. host callback은 OS UI thread에서 core 계산을 기다리지 않고 기존 render queue 규칙으로 요청한다.
+5. **Fixture route 및 격리:** `c13-3-scroll-gesture-fixture-test` 전용 feature와 Android/iOS flag, C header, JNI/Swift entry를 추가한다. 일반 artifact에서 전용 symbol/string/payload 부재, opt-in positive control에서 존재를 확인한다. 고정 scene은 실제 runtime snapshot·draw와 연결하되 S04.10 미완료 상태에서 displayed-frame hit-test를 주장하지 않는다.
+6. **회귀·실행:** focused Rust/CSS oracle, workspace/Clippy/rustfmt, feature isolation, 동일 trace의 Android/iOS Simulator 실행을 수행한다. 실행 결과에는 app/source hash, viewport/surface scale, generation, 모든 revision, per-step owner/delta/offset/event order, 화면 캡처를 연결한다. 실제 기기, hardware GPU, OS OOM, compositor 이후 scanout은 gate가 아니다.
+
+## Pass/fail 기준
+
+- **Geometry/target:** inner/outer/root의 x/y range와 시작 offset을 Chrome fixture 및 C13.2 snapshot에서 확인한다. clipped/hit miss point, border, overlay, non-scrollable `visible/clip`, stale NodeId는 scroll owner를 만들거나 움직이면 안 된다.
+- **Delta math:** 양/음·fractional·0·max/min 경계·range 0·각 축 개별/대각 입력을 test한다. UIKit cumulative translation을 같은 값으로 반복 전달해도 한 번만 소비되는지 확인한다. 단일 sample에서 inner와 outer가 함께 움직일 때 소비 합계가 입력 delta와 같고, 부동소수점/overflow/비유한 값은 부분 update 없이 거부된다.
+- **Chaining:** 안쪽 mid-range, 안쪽 boundary 시작, 같은 gesture 중 boundary 도달, 두 단계 ancestor, root boundary를 나눠 확인한다. `auto` remainder는 축별로 계속 전달하고, `contain`/`none`은 설정된 축만 막는다. `hidden` direct-input boundary, `clip`/`visible`의 owner skip, no-scroll-axis, `touch-action` 시작 값, 축 변경, cancel/multipointer, stale generation/revision과 layout 변경 controls를 확인한다. Chrome mid-gesture direct-touch 결과와 차이나는 경우 internal delta-router 기준을 pass oracle로 쓰고 차이를 evidence에 유지한다.
+- **touch-action:** auto/none/pan-x/pan-y, 조상 중간 값의 교집합, 제한된 방향으로 시작, 반대 축으로 변경, native slop 전 tap/click 보존(`none` 포함), pan 시작 뒤 `touch-action` 변경에도 기존 policy 유지, geometry-neutral paint/policy style change, geometry-affecting style change에 대한 cancel, unsupported value의 fail-closed를 확인한다. iOS recognizer arbitration이 pan 시작 전의 기존 tap 경로를 삼키지 않는지 확인한다. `overscroll-behavior` 변경은 revision stamp가 있는 다음 delta sample부터 반영한다. 두 번째 pointer는 한 손가락 pan 도중 넣어 cancel, offset 보존, 하나만 남은 상태의 추가 movement 차단, 전체 contact 종료 뒤 fresh gesture recovery를 확인한다.
+- **Generation/revision:** surface destroy/recreate, resize/rotation, document/tree change, geometry-key 변경, owner reparent/delete, 외부 scroll update 중 오래된 gesture를 거부한다. policy/paint-only style change에서는 frozen `touch-action`과 current `overscroll-behavior` 적용 규칙을 확인한다. 최신 generation에서 fresh hit/input은 회복하고 paint/hit/scroll snapshot revision tuple은 일치한다. S04.10 presentation confirmation은 별도 미완료로 남긴다.
+- **Queue pressure:** Move coalescing mutation으로 총 per-axis delta가 보존되고 revision/style/policy/lifecycle barrier를 넘지 않는지, End/Cancel ordering과 terminal slot의 정확한 반환을 확인한다. gesture queue saturation은 부분 revision/event 없이 예약 Cancel로 끝나야 한다. wheel sample saturation은 sample 전체를 거부하고 진단해야 하며 다음 gesture와 wheel sample은 같은 host에서 작동해야 한다.
+- **Events:** leaf→ancestor consumed 기록과 같은 final scroll revision, no-op event suppression, cancel terminal order를 검사한다. app internal trace와 Chrome DOM events를 같은 public API로 보고하지 않는다.
+- **Simulator:** Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 같은 CSS viewport 시작점/동작 순서를 사용해 inner scroll, boundary auto chain, inner→outer→root chaining, axis-specific contain, diagonal remainder, active pan 중 두 번째 touch cancel, cancel 뒤 fresh input의 offset/revision/event를 비교한다. UIKit cumulative translation 반복에 대한 no-double-apply negative control을 포함한다. `touch-action:none`에서 native slop 전 tap은 기존 activation을 한 번 발생시키고 offset은 바꾸지 않으며, pan이 시작된 뒤에는 tap activation이 발생하지 않는지 확인한다. iOS recognizer가 이 tap을 선점하지 않는지도 확인한다. 앱 screenshot은 실제 scroll된 content를 보여야 한다. native slop, raw/cumulative/differential point, hit point, CSS px 변환, surface scale 차이는 입력 log에 남긴다. host가 magnify/zoom으로 분류한 입력은 scroll state를 바꾸지 않아야 한다. 모바일 Simulator에서 실제 mouse/trackpad 입력이 없으면 wheel fixture 주입을 native wheel 입력인 것처럼 보고하지 않는다.
+- **Native edge action:** 현재 runtime이 glow/bounce를 그리지 않으면 없는 것으로 기록한다. `auto`/`contain`/`none`을 전부 동일하게 눈에 보인다고 해석하지 않는다. 향후 native affordance를 추가할 때 `contain` 유지/`none` 차단을 별도 검증한다.
+- **Non-goals:** 키보드 focus/default scrolling, JS `scroll`/`wheel`/pointer event, CSSOM offset API, Spinon 생성 touch fling/inertia, host magnify/zoom input, pinch zoom, scrollbars/snap, RTL/logical axes, S04.10 displayed-frame targeting 및 WPT 적합성은 완료로 표시하지 않는다. host-provided trackpad momentum phase는 normalized delta input으로만 기록·처리한다.
+
+이 단계의 통과는 C13.3 내부 touch/wheel routing의 제한 profile만 가리킨다. C13.2의 ink-only `box-shadow` 미지원, C13.1 미완료, 공개 이벤트/API와 C13 전체 미완료 상태는 유지한다.
