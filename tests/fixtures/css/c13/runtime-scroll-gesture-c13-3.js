@@ -17,6 +17,11 @@
   const innerOverscroll = policyScenario === 2
     ? 'overscroll-behavior-x:contain;overscroll-behavior-y:auto;'
     : 'overscroll-behavior-x:auto;overscroll-behavior-y:auto;';
+  const innerTouchAction = policyScenario === 3 ? 'none'
+    : policyScenario === 4 ? 'pan-x'
+    : policyScenario === 5 || policyScenario === 7 ? 'pan-y' : 'auto';
+  const innerContentTouchAction = policyScenario === 6 || policyScenario === 7
+    ? 'pan-x' : 'auto';
   const body = document.body;
   const scene = make(body || document, 'c133-scene',
     'display:block;box-sizing:border-box;width:400px;height:240px;background-color:#101827');
@@ -30,9 +35,12 @@
     'position:relative;box-sizing:border-box;width:320px;height:320px;background-color:#1b3441');
   const inner = make(outerContent, 'c133-inner',
     'position:absolute;left:20px;top:20px;box-sizing:border-box;width:120px;height:80px;border:3px solid #63a9ed;overflow:auto;'
-      + innerOverscroll + 'touch-action:auto;background-color:#17253a');
+      + innerOverscroll + 'touch-action:' + innerTouchAction + ';background-color:#17253a');
   const innerContent = make(inner, 'c133-inner-content',
-    'position:relative;box-sizing:border-box;width:200px;height:180px;background-color:#17253a');
+    'position:relative;box-sizing:border-box;width:200px;height:180px;touch-action:'
+      + innerContentTouchAction + ';background-color:#17253a');
+  make(innerContent, 'c133-inner-horizontal-marker',
+    'position:absolute;left:140px;top:25px;box-sizing:border-box;width:24px;height:24px;background-color:#e3544e');
   make(innerContent, 'c133-inner-marker',
     'position:absolute;left:70px;top:105px;box-sizing:border-box;width:24px;height:24px;background-color:#e3544e');
   make(outerContent, 'c133-outer-marker',

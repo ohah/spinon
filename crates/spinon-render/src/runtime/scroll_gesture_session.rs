@@ -173,9 +173,10 @@ impl RuntimeScrollGestureSession {
         })
     }
 
-    /// Platform slop/recognizer 경계에 도달한 첫 cumulative translation을 적용합니다.
+    /// Platform recognizer가 보고한 첫 cumulative translation을 적용합니다.
     ///
-    /// Adapter는 native pan 시작이 확인된 뒤에만 이 method를 호출해야 합니다.
+    /// Native recognizer의 시작 sample이 0 translation이면 축을 잠그지 않고,
+    /// adapter가 전달하는 다음 nonzero `pan_began` sample에서 허용 축을 판정합니다.
     pub fn pan_began(
         &mut self,
         snapshot: &RuntimeRenderSnapshot,
@@ -193,6 +194,25 @@ impl RuntimeScrollGestureSession {
             return Err(RuntimeScrollGestureError::PanAlreadyStarted);
         }
         validate_pan_translation(sample.cumulative_x_css_px, sample.cumulative_y_css_px)?;
+        if is_zero_translation(sample.cumulative_x_css_px, sample.cumulative_y_css_px) {
+            self.last_input_sequence = Some(sample.sequence);
+            return Ok(RuntimeScrollGestureOutcome::Moved { delta: None });
+        }
+        self.start_pan(snapshot, sample)
+    }
+
+    fn start_pan(
+        &mut self,
+        snapshot: &RuntimeRenderSnapshot,
+        sample: RuntimeScrollGesturePanSample,
+    ) -> Result<RuntimeScrollGestureOutcome, RuntimeScrollGestureError> {
+        let active = self
+            .active
+            .as_ref()
+            .ok_or(RuntimeScrollGestureError::NoActiveGesture)?;
+        if !matches!(active.phase, ActivePhase::Tracking) {
+            return Err(RuntimeScrollGestureError::PanAlreadyStarted);
+        }
         let dominant_axes = dominant_axes(sample.cumulative_x_css_px, sample.cumulative_y_css_px);
         let axes = active.allowed_axes.intersection(dominant_axes);
         if axes.is_empty() {
@@ -472,6 +492,10 @@ fn dominant_axes(x: f32, y: f32) -> RuntimeGestureAxes {
     } else {
         RuntimeGestureAxes { x: true, y: true }
     }
+}
+
+fn is_zero_translation(x: f32, y: f32) -> bool {
+    x == 0.0 && y == 0.0
 }
 
 fn validate_pan_translation(x: f32, y: f32) -> Result<(), RuntimeScrollGestureError> {

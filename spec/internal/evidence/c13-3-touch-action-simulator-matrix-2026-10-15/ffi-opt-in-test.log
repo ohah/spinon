@@ -1,0 +1,9 @@
+   Compiling spinon-ffi v0.1.0 (/private/tmp/spinon-c13-3-touch-action-simulator-20261015/crates/spinon-ffi)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.41s
+     Running unittests src/lib.rs (target/debug/deps/spinon_ffi-1aba60af68061ea0)
+
+running 2 tests
+test runtime_gpu::ffi::fixtures::c13_3::tests::c13_3_ffi_rejects_invalid_handles_and_actions ... ok
+test runtime_gpu::fixtures::c13_3_scroll_gesture_host::state::tests::policy_scenario_ids_map_without_fallback ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 44 filtered out; finished in 0.00s

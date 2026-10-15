@@ -34,12 +34,15 @@ const canonicalFixtureSources = [
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_3_2.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c13_2_scroll.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c13_2_scroll_host.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c13_3_scroll_gesture.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c13_3_scroll_gesture_host.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c13_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11_3_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11_3_2.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c13_2.rs',
+  'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c13_3.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c13_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11.rs',
   'crates/spinon-ffi/src/runtime_ua_cascade/fixtures.rs',
@@ -140,6 +143,22 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
     resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/fixtures/c13_2_scroll.rs'),
     'utf8',
   );
+  const c13GestureRuntimeFixture = await readFile(
+    resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/fixtures/c13_3_scroll_gesture.rs'),
+    'utf8',
+  );
+  const c13GestureHostFixture = await readFile(
+    resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/fixtures/c13_3_scroll_gesture_host.rs'),
+    'utf8',
+  );
+  const c13GestureFfiFixture = await readFile(
+    resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c13_3.rs'),
+    'utf8',
+  );
+  const c13GestureRuntimeScript = await readFile(
+    resolve(repositoryRoot, 'tests/fixtures/css/c13/runtime-scroll-gesture-c13-3.js'),
+    'utf8',
+  );
   const cargoManifest = await readFile(
     resolve(repositoryRoot, 'crates/spinon-ffi/Cargo.toml'),
     'utf8',
@@ -154,6 +173,26 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
   );
   const androidGpuDemoSource = await readFile(
     resolve(repositoryRoot, 'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java'),
+    'utf8',
+  );
+  const androidBuildScript = await readFile(
+    resolve(repositoryRoot, 'tools/build-android.sh'),
+    'utf8',
+  );
+  const iosRunnerHeader = await readFile(
+    resolve(repositoryRoot, 'platforms/ios/Sources/SpinonRunner.h'),
+    'utf8',
+  );
+  const iosRunnerImplementation = await readFile(
+    resolve(repositoryRoot, 'platforms/ios/Sources/SpinonRunner.mm'),
+    'utf8',
+  );
+  const iosGpuDemoSource = await readFile(
+    resolve(repositoryRoot, 'platforms/ios/Sources/C0410RuntimeGpuDemo.swift'),
+    'utf8',
+  );
+  const iosProject = await readFile(
+    resolve(repositoryRoot, 'platforms/ios/SpinonBootstrap.xcodeproj/project.pbxproj'),
     'utf8',
   );
   assert.match(runtimeSource, /#\[cfg\(feature = "c04-runtime-gpu-fixture-test"\)\]\s*mod fixtures;/);
@@ -206,7 +245,51 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
   assert.match(androidGpuDemoSource,
     /c132ScrollFixtureRequested\s*\?\s*"C13\.2 scroll owner·offset·paint\/hit WGPU 장면"/);
   assert.match(androidGpuDemoSource,
-    /c132ScrollFixtureRequested\s*\?\s*400\s*:\s*fixedSizeCssFixtureRequested\s*\?\s*320/);
+    /c132ScrollFixtureRequested\s*\|\|\s*c133GestureFixtureRequested\s*\?\s*400/);
   assert.match(androidGpuDemoSource,
-    /if \(c132ScrollFixtureRequested\) return 400\.0f;/);
+    /if \(c132ScrollFixtureRequested \|\| c133GestureFixtureRequested\) return 400\.0f;/);
+  assert.match(runtimeFixtureSource,
+    /#\[cfg\(feature = "c13-3-gesture-fixture-test"\)\]\s*pub\(crate\) mod c13_3_scroll_gesture;/);
+  assert.match(runtimeFixtureSource,
+    /#\[cfg\(feature = "c13-3-gesture-fixture-test"\)\]\s*pub\(super\) mod c13_3_scroll_gesture_host;/);
+  assert.match(ffiFixtureSource,
+    /#\[cfg\(feature = "c13-3-gesture-fixture-test"\)\]\s*pub\(super\) mod c13_3;/);
+  assert.match(cargoManifest,
+    /c13-3-gesture-fixture-test\s*=\s*\[[\s\S]*?"c04-runtime-gpu-fixture-test"[\s\S]*?"dep:spinon-core"[\s\S]*?"spinon-render\/c13-3-gesture-fixture-test"[\s\S]*?"spinon-runtime\/c13-3-gesture-fixture-test"[\s\S]*?\]/);
+  assert.match(c13GestureRuntimeFixture,
+    /RUNTIME_CSS_C13_3_SCROLL_GESTURE_SOURCE[\s\S]*runtime-scroll-gesture-c13-3\.js/);
+  assert.match(c13GestureHostFixture,
+    /C13_3GestureFixtureScenario[\s\S]*RUNTIME_CSS_C13_3_SCROLL_GESTURE_SOURCE/);
+  assert.match(c13GestureFfiFixture,
+    /spinon_runtime_gpu_host_new_c13_3_gesture_fixture/);
+  assert.match(c13GestureFfiFixture,
+    /spinon_runtime_gpu_host_eval_c13_3_gesture_fixture/);
+  assert.match(c13GestureFfiFixture,
+    /spinon_runtime_gpu_host_enqueue_c13_3_gesture/);
+  assert.match(c13GestureFfiFixture,
+    /spinon_runtime_gpu_host_process_c13_3_gesture_queue/);
+  assert.match(c13GestureRuntimeScript,
+    /data-c133-gesture-node/);
+  assert.match(androidBuildScript,
+    /ffi_features\+=\(c13-3-gesture-fixture-test\)/);
+  assert.match(androidBuildScript,
+    /c133_gesture_fixture_cpp_flag=.*SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST=.*SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST/);
+  assert.match(androidJniSource,
+    /#if defined\(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST\)[\s\S]*?spinon_runtime_gpu_host_new_c13_3_gesture_fixture/);
+  assert.match(androidGpuDemoSource,
+    /nativeCreateC133GestureHost\(int scenarioId\)/);
+  assert.match(androidGpuDemoSource,
+    /nativeProcessC133GestureQueue\(long host\)/);
+  assert.match(androidActivitySource,
+    /spinon_c133_gesture_fixture/);
+  assert.match(iosProject,
+    /SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST=\$\(SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST\)/);
+  assert.match(iosProject,
+    /SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_\$\(SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST\)/);
+  assert.match(iosRunnerHeader,
+    /#if defined\(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST\)[\s\S]*?createRuntimeGpuHostWithC13_3GestureFixture/);
+  assert.match(iosRunnerImplementation,
+    /#if defined\(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST\)[\s\S]*?spinon_runtime_gpu_host_new_c13_3_gesture_fixture/);
+  assert.match(iosGpuDemoSource,
+    /#if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1[\s\S]*?withC13_3GestureFixture:/);
 });

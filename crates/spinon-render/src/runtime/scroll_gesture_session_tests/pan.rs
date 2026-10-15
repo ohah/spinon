@@ -158,6 +158,139 @@ fn disallowed_dominant_axis_rejects_pan_and_never_relocks_later() {
     assert!(axes.x());
     assert!(!axes.y());
 }
+
+#[test]
+fn zero_pan_began_defers_pan_y_axis_lock_until_first_nonzero_sample() {
+    let initial = scene(
+        key(),
+        120.0,
+        policy(
+            RuntimeOverscrollBehavior::Auto,
+            RuntimeOverscrollBehavior::Auto,
+        ),
+        None,
+    );
+    let mut session = RuntimeScrollGestureSession::default();
+    session
+        .begin(
+            &initial,
+            begin(&initial, 1, 1, 2, 1, RuntimeTouchAction::PanY),
+        )
+        .unwrap();
+
+    assert_eq!(
+        session
+            .pan_began(&initial, pan(&initial, 2, 1, 2, 1, 0.0, 0.0))
+            .unwrap(),
+        RuntimeScrollGestureOutcome::Moved { delta: None }
+    );
+    assert_eq!(session.state(), RuntimeScrollGestureState::Tracking);
+
+    assert_eq!(
+        session
+            .pan_began(&initial, pan(&initial, 3, 1, 2, 1, -12.0, 0.0))
+            .unwrap(),
+        RuntimeScrollGestureOutcome::PanRejected
+    );
+    assert_eq!(session.state(), RuntimeScrollGestureState::PanRejected);
+    assert_eq!(
+        initial.key().scroll_state_revision(),
+        ScrollStateRevision::INITIAL
+    );
+}
+
+#[test]
+fn zero_pan_began_defers_pan_x_axis_lock_until_first_nonzero_sample() {
+    let initial = scene(
+        key(),
+        120.0,
+        policy(
+            RuntimeOverscrollBehavior::Auto,
+            RuntimeOverscrollBehavior::Auto,
+        ),
+        None,
+    );
+    let mut session = RuntimeScrollGestureSession::default();
+    session
+        .begin(
+            &initial,
+            begin(&initial, 1, 1, 2, 1, RuntimeTouchAction::PanX),
+        )
+        .unwrap();
+
+    assert_eq!(
+        session
+            .pan_began(&initial, pan(&initial, 2, 1, 2, 1, 0.0, 0.0))
+            .unwrap(),
+        RuntimeScrollGestureOutcome::Moved { delta: None }
+    );
+    assert_eq!(
+        session
+            .pan_began(&initial, pan(&initial, 3, 1, 2, 1, 0.0, -12.0))
+            .unwrap(),
+        RuntimeScrollGestureOutcome::PanRejected
+    );
+    assert_eq!(session.state(), RuntimeScrollGestureState::PanRejected);
+    assert_eq!(
+        initial.key().scroll_state_revision(),
+        ScrollStateRevision::INITIAL
+    );
+}
+
+#[test]
+fn zero_pan_began_accepts_first_nonzero_sample_on_allowed_pan_y_axis() {
+    let initial = scene(
+        key(),
+        120.0,
+        policy(
+            RuntimeOverscrollBehavior::Auto,
+            RuntimeOverscrollBehavior::Auto,
+        ),
+        None,
+    );
+    let initial_x_offsets = initial
+        .scroll_containers()
+        .iter()
+        .map(|container| container.offset_x_css_px())
+        .collect::<Vec<_>>();
+    let mut session = RuntimeScrollGestureSession::default();
+    session
+        .begin(
+            &initial,
+            begin(&initial, 1, 1, 2, 1, RuntimeTouchAction::PanY),
+        )
+        .unwrap();
+    session
+        .pan_began(&initial, pan(&initial, 2, 1, 2, 1, 0.0, 0.0))
+        .unwrap();
+
+    let RuntimeScrollGestureOutcome::PanStarted { axes, delta } = session
+        .pan_began(&initial, pan(&initial, 3, 1, 2, 1, 0.0, -10.0))
+        .unwrap()
+    else {
+        panic!("첫 nonzero y translation에서 허용된 pan이 시작되어야 합니다");
+    };
+    assert!(!axes.x());
+    assert!(axes.y());
+    assert!(
+        delta
+            .snapshot()
+            .scroll_containers()
+            .iter()
+            .any(|container| container.offset_y_css_px() > 0.0)
+    );
+    assert_eq!(
+        delta
+            .snapshot()
+            .scroll_containers()
+            .iter()
+            .map(|container| container.offset_x_css_px())
+            .collect::<Vec<_>>(),
+        initial_x_offsets
+    );
+    assert!(delta.snapshot().key().scroll_state_revision().get() > 0);
+}
+
 #[test]
 fn style_only_revision_keeps_start_action_and_uses_next_sample_policy() {
     let initial_key = key();
