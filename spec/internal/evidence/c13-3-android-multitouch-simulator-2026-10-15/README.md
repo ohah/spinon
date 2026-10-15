@@ -63,4 +63,6 @@ opt-in APK build transcript, APK/native library SHA-256, AVD identity, display, 
 
 ## 실행 종료와 검토 자료
 
+이 evidence는 [PR #192](https://github.com/ohah/spinon/pull/192)에 포함했다.
+
 실행 후 `adb -s emulator-5554 unroot`로 이 AVD의 root를 해제했고, 에뮬레이터와 앱은 종료하지 않았다. 실기기 ADB serial은 사용하지 않았다. [구현/harness 실패 관점 20개](implementation-review-20.md) · [로드맵 문구 검토 20개](roadmap-review-20.md) · [PR 변경 적대 검토 30개](pr-delta-review-30.md).
