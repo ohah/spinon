@@ -1,0 +1,7 @@
+Android opt-in positive control:
+- Opt-in native library exports spinon_runtime_gpu_host_enqueue_c13_3_wheel.
+- Opt-in logs also contain C13.3 wheel fixture reports.
+
+Android feature-off negative control:
+- Default native library exports no spinon_runtime_gpu_host_enqueue_c13_3_wheel symbol.
+- Default native library contains neither the magnification rejection string nor the C13.3 wheel sequence payload.

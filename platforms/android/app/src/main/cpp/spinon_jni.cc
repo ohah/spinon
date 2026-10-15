@@ -1098,6 +1098,48 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEnqueueC133Gesture(
 }
 
 extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEnqueueC133Wheel(
+    JNIEnv *env, jclass, jlong host_handle, jint intent,
+    jlong surface_generation, jfloat point_x_css_px, jfloat point_y_css_px,
+    jfloat delta_x_css_px, jfloat delta_y_css_px, jfloat raw_delta_x,
+    jfloat raw_delta_y, jint source_unit, jfloat coordinate_scale,
+    jint source, jint momentum_phase, jint modifier_flags) {
+#if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && \
+    SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+  std::array<char, 2048> output{};
+  const int32_t status = spinon_runtime_gpu_host_enqueue_c13_3_wheel(
+      host, static_cast<int32_t>(intent),
+      static_cast<uint64_t>(surface_generation), point_x_css_px,
+      point_y_css_px, delta_x_css_px, delta_y_css_px, raw_delta_x,
+      raw_delta_y, static_cast<int32_t>(source_unit), coordinate_scale,
+      static_cast<int32_t>(source), static_cast<int32_t>(momentum_phase),
+      static_cast<uint32_t>(modifier_flags), output.data(), output.size());
+  const std::string report = "status=" + std::to_string(status) + " " + output.data();
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_WARN,
+                      kTag, "SPINON_C133_WHEEL_ENQUEUE %s", report.c_str());
+  return ToByteArray(env, report);
+#else
+  (void)host_handle;
+  (void)intent;
+  (void)surface_generation;
+  (void)point_x_css_px;
+  (void)point_y_css_px;
+  (void)delta_x_css_px;
+  (void)delta_y_css_px;
+  (void)raw_delta_x;
+  (void)raw_delta_y;
+  (void)source_unit;
+  (void)coordinate_scale;
+  (void)source;
+  (void)momentum_phase;
+  (void)modifier_flags;
+  return ToByteArray(env, "status=-1 C13.3 fixture-test feature is off");
+#endif
+}
+
+extern "C" JNIEXPORT jbyteArray JNICALL
 Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeProcessC133GestureQueue(
     JNIEnv *env, jclass, jlong host_handle) {
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(

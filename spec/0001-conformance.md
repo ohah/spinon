@@ -45,6 +45,8 @@ R06 우선순위 공정성 후보 비교의 동일 입력·정책 매개변수·
 
 R06 큐 포화·복구 검증의 구현 전 기준과 사전 판정값은 [큐 포화·복구 비교 모델](internal/evidence/r06-queue-saturation-precomparison-2026-10-08.md), 작업 분해와 미해결 경계는 [R06 큐 포화 계획](../plan/r06-queue-saturation.md)에 기록한다. 이는 현재 내부 queue admission의 관찰 기준이며 제품 역압력 계약이 아니다.
 
+C13.3 normalized wheel runtime의 고정 입력, Chrome 155 oracle, 축별 사전 판정값과 Simulator 검증 경계는 [wheel delta routing 계획](../plan/c13-3-wheel-delta-routing.md)에 기록한다. 입력은 opt-in fixture가 CSS px로 정규화한 sample이며 OS native wheel/trackpad adapter 또는 공개 `WheelEvent`를 검증하지 않는다.
+
 
 ## 적합성의 최소 단위
 

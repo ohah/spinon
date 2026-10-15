@@ -225,6 +225,17 @@ int32_t spinon_runtime_gpu_host_enqueue_c13_3_gesture(
     uint64_t gesture_id, uint64_t pointer_id, float x_or_cumulative_x_css_px,
     float y_or_cumulative_y_css_px, float coordinate_scale, int32_t reason,
     char *output, size_t output_capacity);
+/* Opt-in fixture 전용 normalized CSS px wheel/trackpad sample입니다.
+   intent 0은 scroll, 1은 host가 분류한 magnification/zoom 거부 입력입니다.
+   source_unit: 0 CSS px, 1 Android px, 2 UIKit point, 3 line, 4 page.
+   source: 0 mouse wheel, 1 trackpad scroll. phase: 0 none, 1 begin, 2 change, 3 end. */
+int32_t spinon_runtime_gpu_host_enqueue_c13_3_wheel(
+    SpinonRuntimeGpuHost *host, int32_t intent, uint64_t surface_generation,
+    float point_x_css_px, float point_y_css_px, float delta_x_css_px,
+    float delta_y_css_px, float raw_delta_x, float raw_delta_y,
+    int32_t source_unit, float coordinate_scale, int32_t source,
+    int32_t momentum_phase, uint32_t modifier_flags,
+    char *output, size_t output_capacity);
 /* 단일 background consumer가 ordered queue를 session에 적용하고 snapshot을 게시합니다. */
 int32_t spinon_runtime_gpu_host_process_c13_3_gesture_queue(
     SpinonRuntimeGpuHost *host, size_t max_events,

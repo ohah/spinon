@@ -579,6 +579,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c133-scroll-gesture")
     private let c133TapProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c133-tap-probe")
+    private let c133WheelProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c133-wheel-probe")
 #if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
     private let c133GesturePolicyScenarioArguments = ProcessInfo.processInfo.arguments.filter {
         $0.hasPrefix("--spinon-c133-policy-scenario-id=")
@@ -617,6 +619,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     private var c133DrainAgain = false
     private var c133GestureEvaluationReady = false
     private var c133GestureFixtureReady = false
+    private var c133WheelProbeStarted = false
+    private var c133WheelProbeEnqueued = false
+    private var c133WheelProbeProcessed = false
+    private var c133WheelProbeCompleted = false
+    private var c133WheelProbeFailed = false
     private var c133ConfiguredRuntimeEnvironment: C133RuntimeEnvironment?
     private var c133TouchActive = false
     private var c133TerminalQueued = false
@@ -709,6 +716,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? "SPINON · C13.1 overflow: clip"
             : c132ScrollFixtureRequested
             ? "SPINON · C13.2 scroll state"
+            : c133WheelProbeRequested
+            ? "SPINON · C13.3 wheel fixture"
             : c133GestureFixtureRequested
             ? "SPINON · C13.3 iOS touch adapter"
             : c1133GridTemplateAreasProbeRequested
@@ -797,6 +806,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? "V8 overflow: clip·clip margin·positioned escape → Stylo → Taffy → WGPU Metal · 320×240 CSS px"
             : c132ScrollFixtureRequested
             ? "V8 scroll owner·offset·paint/hit → Stylo → Taffy → WGPU Metal · 400×240 CSS px"
+            : c133WheelProbeRequested
+            ? "Synthetic CSS px delta → Rust queue → scroll router → WGPU Metal"
             : c133GestureFixtureRequested
             ? "UIPanGestureRecognizer · bounded Rust queue/session → WGPU Metal · 400×240 CSS px"
             : c1133GridTemplateAreasProbeRequested
@@ -1814,13 +1825,14 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
     private func initializeRuntime() {
         guard !isClosing else { return }
-        if c133TapProbeRequested && !c133GestureFixtureRequested {
-            log("SPINON_C133_ARGUMENT_ERROR rejected=true reason=tap-probe-requires-fixture-route")
-            postStatus("실패 · C13.3 tap probe에는 gesture fixture route가 필요합니다")
+        if (c133TapProbeRequested || c133WheelProbeRequested)
+            && !c133GestureFixtureRequested {
+            log("SPINON_C133_ARGUMENT_ERROR rejected=true reason=probe-requires-fixture-route")
+            postStatus("실패 · C13.3 probe에는 gesture fixture route가 필요합니다")
             return
         }
 #if !SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
-        if c133GestureFixtureRequested || c133TapProbeRequested {
+        if c133GestureFixtureRequested || c133TapProbeRequested || c133WheelProbeRequested {
             log("SPINON_C133_DISABLED rebuild with SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST=1")
             postStatus("C13.3 gesture fixture-test 옵션을 켜서 빌드해야 합니다.")
             return
@@ -1838,6 +1850,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 || ![3, 4].contains(c133GesturePolicyScenarioID)) {
             log("SPINON_C133_ARGUMENT_ERROR rejected=true reason=tap-probe-requires-scenario-3-or-4")
             postStatus("실패 · C13.3 tap probe는 policy scenario 3 또는 4가 필요합니다")
+            return
+        }
+        if c133WheelProbeRequested
+            && (c133GesturePolicyScenarioArguments.count != 1
+                || ![1, 2, 3].contains(c133GesturePolicyScenarioID)) {
+            log("SPINON_C133_ARGUMENT_ERROR rejected=true reason=wheel-probe-requires-scenario-1-2-or-3")
+            postStatus("실패 · C13.3 wheel probe는 policy scenario 1, 2 또는 3이 필요합니다")
             return
         }
         if (!c133GesturePolicyScenarioArguments.isEmpty && !c133GestureFixtureRequested)
@@ -1871,6 +1890,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                    && $0 != "--spinon-c132-scroll"
                    && $0 != "--spinon-c133-scroll-gesture"
                    && !(c133GestureFixtureRequested && $0 == "--spinon-c133-tap-probe")
+                   && !(c133GestureFixtureRequested && $0 == "--spinon-c133-wheel-probe")
                    && !(c133GestureFixtureRequested
                        && $0.hasPrefix("--spinon-c133-policy-scenario-id="))
                    && $0 != "--spinon-c0410-runtime-gpu"
@@ -3644,6 +3664,113 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         ) ?? "status=-1 empty enqueue report"
     }
 
+    private func runC133WheelProbe() {
+        stateLock.lock()
+        guard c133WheelProbeRequested, !c133WheelProbeStarted,
+              c133GestureFixtureReady, !closing, hostHandle != 0 else {
+            stateLock.unlock()
+            return
+        }
+        c133WheelProbeStarted = true
+        let handle = hostHandle
+        let generation = surfaceGeneration
+        let scenario = c133GesturePolicyScenarioID
+        stateLock.unlock()
+
+        let delta = scenario == 3 ? CGPoint(x: 0, y: 40) : CGPoint(x: 40, y: 40)
+        let report = SpinonRunner.enqueueRuntimeGpuC13_3Wheel(
+            handle,
+            intent: 0,
+            surfaceGeneration: generation,
+            pointXCssPx: 132,
+            pointYCssPx: 112,
+            deltaXCssPx: Float(delta.x),
+            deltaYCssPx: Float(delta.y),
+            rawDeltaX: Float(delta.x),
+            rawDeltaY: Float(delta.y),
+            sourceUnit: 0,
+            coordinateScale: 1,
+            source: 1,
+            momentumPhase: 2,
+            modifierFlags: 0
+        ) ?? "status=-1 empty wheel enqueue report"
+        guard report.hasPrefix("status=0 "), report.contains("admitted=true") else {
+            stateLock.lock()
+            c133WheelProbeFailed = true
+            stateLock.unlock()
+            log("SPINON_C133_WHEEL_PROBE failed=true stage=enqueue \(report)")
+            postStatus("실패 · C13.3 normalized wheel fixture enqueue · \(report)")
+            return
+        }
+        stateLock.lock()
+        c133WheelProbeEnqueued = true
+        stateLock.unlock()
+        log("SPINON_C133_WHEEL_PROBE_BEGIN synthetic_normalized_fixture_input=true scenario=\(scenario) point_css_px=132,112 delta_css_px=\(delta.x),\(delta.y) source=TrackpadScroll unit=CssPixels phase=Change scale=1 \(report)")
+        scheduleC133Drain()
+    }
+
+    private func c133WheelProbeExpectedRuntimeOffsets() -> String {
+        switch c133GesturePolicyScenarioID {
+        case 1: return "offsets=root:0,0;outer:40,40;inner:86,106"
+        case 2: return "offsets=root:0,0;outer:0,40;inner:86,106"
+        case 3: return "offsets=root:0,0;outer:0,0;inner:0,40"
+        default: return "offsets=invalid"
+        }
+    }
+
+    private func c133WheelProbeExpectedDrawOffsets() -> String {
+        switch c133GesturePolicyScenarioID {
+        case 1: return "scroll_offsets=[0,0;40,40;86,106]"
+        case 2: return "scroll_offsets=[0,0;0,40;86,106]"
+        case 3: return "scroll_offsets=[0,0;0,0;0,40]"
+        default: return "scroll_offsets=invalid"
+        }
+    }
+
+    private func verifyC133WheelProcessReport(_ report: String) {
+        guard report.contains("event=wheel") else { return }
+        stateLock.lock()
+        guard c133WheelProbeRequested, c133WheelProbeEnqueued,
+              !c133WheelProbeProcessed, !c133WheelProbeFailed else {
+            stateLock.unlock()
+            return
+        }
+        let expected = c133WheelProbeExpectedRuntimeOffsets()
+        if report.contains(expected) {
+            c133WheelProbeProcessed = true
+            stateLock.unlock()
+            log("SPINON_C133_WHEEL_PROBE_PROCESSED synthetic_normalized_fixture_input=true expected=\(expected) report=\(report)")
+        } else {
+            c133WheelProbeFailed = true
+            stateLock.unlock()
+            log("SPINON_C133_WHEEL_PROBE failed=true stage=queue expected=\(expected) report=\(report)")
+            postStatus("실패 · C13.3 wheel queue 결과가 oracle과 다릅니다")
+        }
+    }
+
+    private func verifyC133WheelDraw(_ report: String) {
+        stateLock.lock()
+        guard c133WheelProbeRequested, c133WheelProbeProcessed,
+              !c133WheelProbeCompleted, !c133WheelProbeFailed else {
+            stateLock.unlock()
+            return
+        }
+        let expectedOffsets = c133WheelProbeExpectedDrawOffsets()
+        let expectedRevision = c133GesturePolicyScenarioID == 3
+            ? "scroll_state_revision=1" : "scroll_state_revision=2"
+        guard report.contains(expectedOffsets), report.contains(expectedRevision) else {
+            c133WheelProbeFailed = true
+            stateLock.unlock()
+            log("SPINON_C133_WHEEL_PROBE failed=true stage=draw expected=\(expectedOffsets) \(expectedRevision) report=\(report)")
+            postStatus("실패 · C13.3 wheel 뒤 Metal draw가 기대 offset과 다릅니다")
+            return
+        }
+        c133WheelProbeCompleted = true
+        stateLock.unlock()
+        log("SPINON_C133_WHEEL_PROBE_COMPLETE synthetic_normalized_fixture_input=true expected=\(expectedOffsets) \(expectedRevision) report=\(report)")
+        postStatus("완료 · synthetic normalized wheel fixture 결과를 Metal draw에서 확인했습니다")
+    }
+
     private func scheduleC133Drain() {
         stateLock.lock()
         guard !closing, hostHandle != 0 else {
@@ -3675,6 +3802,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                     ?? "status=-1 empty queue report"
                 self.log("SPINON_C133_PROCESS \(report)")
                 if report.hasPrefix("status=0 ") {
+                    self.verifyC133WheelProcessReport(report)
                     if self.isC133StyleInvalidationScenario
                         && !self.c133StyleMutationApplied
                         && report.contains("result=pan_started") {
@@ -4010,7 +4138,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 : scenarioID == 10 ? "paint-invalidation"
                 : "touch-action-intersection-none"
             postStatus("준비 · \(scenario) 상태에서 실제 iOS swipe 입력을 확인하세요")
+            if c133WheelProbeRequested {
+                DispatchQueue.main.async { [weak self] in self?.runC133WheelProbe() }
+            }
         }
+        if c133WheelProbeRequested { verifyC133WheelDraw(result ?? "") }
 #endif
         if c131MetalPixelCapture != nil,
            !c131MetalCaptureBaselineDrawReady,

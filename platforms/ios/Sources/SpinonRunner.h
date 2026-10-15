@@ -91,6 +91,20 @@
                                   pointYCssPx:(float)pointYCssPx
                              coordinateScale:(float)coordinateScale
                                        reason:(int32_t)reason;
++ (NSString *)enqueueRuntimeGpuC13_3Wheel:(uint64_t)handle
+                                    intent:(int32_t)intent
+                         surfaceGeneration:(uint64_t)surfaceGeneration
+                              pointXCssPx:(float)pointXCssPx
+                              pointYCssPx:(float)pointYCssPx
+                              deltaXCssPx:(float)deltaXCssPx
+                              deltaYCssPx:(float)deltaYCssPx
+                                rawDeltaX:(float)rawDeltaX
+                                rawDeltaY:(float)rawDeltaY
+                               sourceUnit:(int32_t)sourceUnit
+                          coordinateScale:(float)coordinateScale
+                                   source:(int32_t)source
+                            momentumPhase:(int32_t)momentumPhase
+                            modifierFlags:(uint32_t)modifierFlags;
 + (NSString *)processRuntimeGpuC13_3GestureQueue:(uint64_t)handle;
 #endif
 + (NSString *)requestRuntimeGpuC13_2SurfacePixels:(uint64_t)handle

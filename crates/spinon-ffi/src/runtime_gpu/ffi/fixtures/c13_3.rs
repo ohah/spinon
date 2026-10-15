@@ -1,7 +1,10 @@
 use super::super::super::{RuntimeGpuHost, SpinonRuntimeGpuHost, raw_host};
 use super::super::{ERR_ARGUMENT, write_host_status};
-use crate::runtime_gpu::fixtures::c13_3_scroll_gesture_host::C13_3GestureState;
-use spinon_render::RuntimeScrollGestureCancelReason;
+use crate::runtime_gpu::fixtures::c13_3_scroll_gesture_host::{C13_3GestureState, C13_3WheelInput};
+use spinon_render::{
+    RuntimeScrollGestureCancelReason, RuntimeScrollMomentumPhase, RuntimeScrollWheelSource,
+    RuntimeScrollWheelUnit,
+};
 use std::collections::HashMap;
 use std::ffi::c_char;
 use std::ptr;
@@ -207,6 +210,114 @@ pub unsafe extern "C" fn spinon_runtime_gpu_host_enqueue_c13_3_gesture(
 }
 
 #[unsafe(no_mangle)]
+/// Fixture 전용 normalized CSS px wheel/trackpad sample을 bounded queue에 추가합니다.
+///
+/// `intent`: 0 scroll, 1 host가 분류한 magnification/zoom. 나머지 enum 값은 거부합니다.
+///
+/// # Safety
+/// `host`는 현재 live C13.3 fixture host여야 하고 host free와 경합하면 안 됩니다.
+/// `output`은 `output_capacity` 바이트를 쓸 수 있어야 합니다.
+pub unsafe extern "C" fn spinon_runtime_gpu_host_enqueue_c13_3_wheel(
+    host: *mut SpinonRuntimeGpuHost,
+    intent: i32,
+    surface_generation: u64,
+    point_x_css_px: f32,
+    point_y_css_px: f32,
+    delta_x_css_px: f32,
+    delta_y_css_px: f32,
+    raw_delta_x: f32,
+    raw_delta_y: f32,
+    source_unit: i32,
+    coordinate_scale: f32,
+    source: i32,
+    momentum_phase: i32,
+    modifier_flags: u32,
+    output: *mut c_char,
+    output_capacity: usize,
+) -> i32 {
+    if output.is_null() || output_capacity == 0 {
+        return ERR_ARGUMENT;
+    }
+    let Some(state) = state_for_handle(host) else {
+        return write_host_status(
+            ERR_ARGUMENT,
+            "C13.3 wheel fixture host handle이 유효하지 않습니다".to_owned(),
+            output,
+            output_capacity,
+        );
+    };
+    let source_unit = match source_unit {
+        0 => RuntimeScrollWheelUnit::CssPixels,
+        1 => RuntimeScrollWheelUnit::AndroidPhysicalPixels,
+        2 => RuntimeScrollWheelUnit::UIKitPoints,
+        3 => RuntimeScrollWheelUnit::WheelLines,
+        4 => RuntimeScrollWheelUnit::WheelPages,
+        _ => {
+            return write_host_status(
+                ERR_ARGUMENT,
+                format!("C13.3 wheel source unit이 올바르지 않습니다: {source_unit}"),
+                output,
+                output_capacity,
+            );
+        }
+    };
+    let source = match source {
+        0 => RuntimeScrollWheelSource::MouseWheel,
+        1 => RuntimeScrollWheelSource::TrackpadScroll,
+        _ => {
+            return write_host_status(
+                ERR_ARGUMENT,
+                format!("C13.3 wheel source가 올바르지 않습니다: {source}"),
+                output,
+                output_capacity,
+            );
+        }
+    };
+    let momentum_phase = match momentum_phase {
+        0 => RuntimeScrollMomentumPhase::None,
+        1 => RuntimeScrollMomentumPhase::Begin,
+        2 => RuntimeScrollMomentumPhase::Change,
+        3 => RuntimeScrollMomentumPhase::End,
+        _ => {
+            return write_host_status(
+                ERR_ARGUMENT,
+                format!("C13.3 wheel momentum phase가 올바르지 않습니다: {momentum_phase}"),
+                output,
+                output_capacity,
+            );
+        }
+    };
+    if !matches!(intent, 0 | 1) {
+        return write_host_status(
+            ERR_ARGUMENT,
+            format!("C13.3 wheel intent가 올바르지 않습니다: {intent}"),
+            output,
+            output_capacity,
+        );
+    }
+    match state.enqueue_wheel(C13_3WheelInput {
+        scroll_intent: intent == 0,
+        surface_generation,
+        point_x_css_px,
+        point_y_css_px,
+        delta_x_css_px,
+        delta_y_css_px,
+        raw_delta_x,
+        raw_delta_y,
+        source_unit,
+        coordinate_scale,
+        source,
+        momentum_phase,
+        modifier_flags,
+    }) {
+        Ok(report) => {
+            write_host_status(0, format!("C13.3 wheel {report}"), output, output_capacity)
+        }
+        Err(error) => write_host_status(ERR_ARGUMENT, error, output, output_capacity),
+    }
+}
+
+#[unsafe(no_mangle)]
 /// Background executor에서 ordered queue event를 session에 적용하고 snapshot을 게시합니다.
 ///
 /// # Safety
@@ -239,7 +350,7 @@ pub unsafe extern "C" fn spinon_runtime_gpu_host_process_c13_3_gesture_queue(
 mod tests {
     use super::{
         spinon_runtime_gpu_host_apply_c13_3_style_invalidation,
-        spinon_runtime_gpu_host_enqueue_c13_3_gesture,
+        spinon_runtime_gpu_host_enqueue_c13_3_gesture, spinon_runtime_gpu_host_enqueue_c13_3_wheel,
         spinon_runtime_gpu_host_eval_c13_3_gesture_fixture,
         spinon_runtime_gpu_host_new_c13_3_gesture_fixture,
         spinon_runtime_gpu_host_process_c13_3_gesture_queue,
@@ -285,6 +396,29 @@ mod tests {
                     0.0,
                     0.0,
                     1.0,
+                    0,
+                    output.as_mut_ptr(),
+                    output.len(),
+                )
+            },
+            -1
+        );
+        assert_eq!(
+            unsafe {
+                spinon_runtime_gpu_host_enqueue_c13_3_wheel(
+                    ptr::null_mut(),
+                    0,
+                    1,
+                    132.0,
+                    112.0,
+                    0.0,
+                    40.0,
+                    0.0,
+                    40.0,
+                    0,
+                    1.0,
+                    1,
+                    0,
                     0,
                     output.as_mut_ptr(),
                     output.len(),

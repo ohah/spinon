@@ -1,0 +1,9 @@
+{
+  "serial": "emulator-5554",
+  "model": "sdk_gphone16k_arm64",
+  "api": 37,
+  "abi": "arm64-v8a",
+  "physical_size": "1080x2400",
+  "physical_density": 420,
+  "input": "synthetic normalized CSS-pixel fixture; no physical device"
+}

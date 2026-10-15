@@ -1,0 +1,7 @@
+iOS opt-in positive control:
+- Opt-in app binary exports _spinon_runtime_gpu_host_enqueue_c13_3_wheel.
+- Opt-in Simulator logs contain C13.3 wheel fixture reports.
+
+iOS feature-off negative control:
+- Default app binary exports no _spinon_runtime_gpu_host_enqueue_c13_3_wheel symbol.
+- Default app binary contains neither the magnification rejection string nor the C13.3 wheel sequence payload.

@@ -1,0 +1,173 @@
+{
+  "method": "Exact RGBA comparison of pre-input and post-WheelDelta screenshots. Android crops use captured UiAutomator SurfaceView bounds; iOS crops use the 1200x720 app-surface region aligned within Simulator screenshots. The outside mask is defined by the color-detected relevant scrollport border bbox. This is screenshot analysis, not direct PixelCopy or Metal drawable readback.",
+  "results": [
+    {
+      "platform": "android",
+      "scenario": 1,
+      "crop_size": [
+        964,
+        630
+      ],
+      "scrollport_border_rgba": [
+        240,
+        198,
+        116,
+        255
+      ],
+      "scrollport_bbox_in_surface_crop": [
+        0,
+        42,
+        964,
+        588
+      ],
+      "changed_pixels_in_surface": 69520,
+      "changed_pixels_outside_scrollport_bbox": 0,
+      "changed_bbox_in_surface_crop": [
+        93,
+        136,
+        461,
+        399
+      ]
+    },
+    {
+      "platform": "android",
+      "scenario": 2,
+      "crop_size": [
+        964,
+        630
+      ],
+      "scrollport_border_rgba": [
+        240,
+        198,
+        116,
+        255
+      ],
+      "scrollport_bbox_in_surface_crop": [
+        0,
+        42,
+        964,
+        588
+      ],
+      "changed_pixels_in_surface": 55814,
+      "changed_pixels_outside_scrollport_bbox": 0,
+      "changed_bbox_in_surface_crop": [
+        146,
+        136,
+        461,
+        399
+      ]
+    },
+    {
+      "platform": "android",
+      "scenario": 3,
+      "crop_size": [
+        964,
+        630
+      ],
+      "scrollport_border_rgba": [
+        99,
+        169,
+        237,
+        255
+      ],
+      "scrollport_bbox_in_surface_crop": [
+        146,
+        189,
+        461,
+        399
+      ],
+      "changed_pixels_in_surface": 1512,
+      "changed_pixels_outside_scrollport_bbox": 0,
+      "changed_bbox_in_surface_crop": [
+        338,
+        367,
+        401,
+        391
+      ]
+    },
+    {
+      "platform": "ios",
+      "scenario": 1,
+      "crop_size": [
+        1200,
+        720
+      ],
+      "scrollport_border_rgba": [
+        240,
+        198,
+        116,
+        255
+      ],
+      "scrollport_bbox_in_surface_crop": [
+        48,
+        48,
+        1152,
+        672
+      ],
+      "changed_pixels_in_surface": 90450,
+      "changed_pixels_outside_scrollport_bbox": 0,
+      "changed_bbox_in_surface_crop": [
+        156,
+        156,
+        576,
+        456
+      ]
+    },
+    {
+      "platform": "ios",
+      "scenario": 2,
+      "crop_size": [
+        1200,
+        720
+      ],
+      "scrollport_border_rgba": [
+        240,
+        198,
+        116,
+        255
+      ],
+      "scrollport_bbox_in_surface_crop": [
+        48,
+        48,
+        1152,
+        672
+      ],
+      "changed_pixels_in_surface": 72612,
+      "changed_pixels_outside_scrollport_bbox": 0,
+      "changed_bbox_in_surface_crop": [
+        216,
+        156,
+        576,
+        456
+      ]
+    },
+    {
+      "platform": "ios",
+      "scenario": 3,
+      "crop_size": [
+        1200,
+        720
+      ],
+      "scrollport_border_rgba": [
+        99,
+        169,
+        237,
+        255
+      ],
+      "scrollport_bbox_in_surface_crop": [
+        216,
+        216,
+        576,
+        456
+      ],
+      "changed_pixels_in_surface": 1944,
+      "changed_pixels_outside_scrollport_bbox": 0,
+      "changed_bbox_in_surface_crop": [
+        435,
+        420,
+        507,
+        447
+      ]
+    }
+  ]
+}
