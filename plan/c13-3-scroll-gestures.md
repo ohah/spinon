@@ -6,6 +6,7 @@
 **교차 경계:** S04.10 displayed-frame 입력 연결은 미완료다. S05.2 React host adapter와 공개 DOM event도 미완료다. 이 계획의 앱 route는 opt-in fixture 검증으로만 다루며 제품 event/presentation 지원으로 표시하지 않는다.
 **계획 실패 검토:** [20개 관점 기록](../spec/internal/evidence/c13-3-scroll-gesture-plan-review-20-2026-10-15.md)
 **계획 PR 변경 검토:** [30개 관점 기록](../spec/internal/evidence/c13-3-scroll-gesture-plan-pr-review-30-2026-10-15.md)
+**native tap 후속 PR:** [#188](https://github.com/ohah/spinon/pull/188) · simulator fixture 범위만 다루며 C13.3은 미완료
 **slop 전 tap 후속 검토:** [계획 실패 관점 20개](../spec/internal/evidence/c13-3-touch-action-tap-arbitration-plan-review-20-2026-10-15.md) · [구현 실패 관점 20개](../spec/internal/evidence/c13-3-touch-action-tap-arbitration-2026-10-15/implementation-review-20.md) · [PR 변경 관점 30개](../spec/internal/evidence/c13-3-touch-action-tap-arbitration-2026-10-15/pr-delta-review-30.md)
 **구현 전 비교:** [고정 Chrome 155 관찰·fixture·화면](../spec/internal/evidence/c13-3-scroll-gesture-precomparison-2026-10-15/README.md) · [JSON](../tests/fixtures/css/references/c13-3-scroll-gesture-precomparison-v1.json)
 **computed policy 연결 후속:** [실행·simulator 캡처·artifact 경계](../spec/internal/evidence/c13-3-scroll-policy-runtime-2026-10-15/README.md) · [기본/opt-in artifact 검사](../spec/internal/evidence/c13-3-scroll-policy-runtime-2026-10-15/feature-boundary.md) · [구현 실패 관점 20개](../spec/internal/evidence/c13-3-scroll-policy-runtime-2026-10-15/implementation-review-20.md) · [PR 변경 관점 30개](../spec/internal/evidence/c13-3-scroll-policy-runtime-2026-10-15/pr-delta-review-30.md)

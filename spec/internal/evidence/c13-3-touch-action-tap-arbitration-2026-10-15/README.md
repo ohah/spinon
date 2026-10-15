@@ -22,6 +22,8 @@ Android log에서 pan 이후 `up_candidate=false activation_count=1`을 확인�
 
 아래 이미지는 full-screen 캡처에서 C13.3 scrollport 주변만 잘라 PR 본문에서 동작을 바로 볼 수 있게 한 preview다. 원본 전체 화면도 함께 보존했다.
 
+[PR #188](https://github.com/ohah/spinon/pull/188) 본문은 이 crop 파일의 commit 고정 raw URL을 사용한다. Agent Browser에서 두 이미지가 각각 `1080×720`, `1206×820`으로 로드되는 것을 확인했다.
+
 ![Android API 37 AVD · pan-x tap 1회 뒤 수평 swipe · inner X 59.47 CSS px](./android-pan-x-preview.png)
 
 ![iPhone 17 Pro Simulator · pan-x tap 1회 뒤 수평 swipe · inner X 49 CSS px](./ios-pan-x-preview.png)

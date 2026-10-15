@@ -33,8 +33,8 @@
 | 27 | status 문구가 실제 activation을 대신 | Android는 `View.OnClickListener`, iOS는 recognized `UITapGestureRecognizer` callback만 activation으로 센다. 두 simulator 모두 실제 callback count를 log로 확인했다. | 통과 |
 | 28 | iOS pan 내부 이동이 tap으로 오인 | tap callback은 `.recognized` 상태만 세며 swipe 종료 뒤 인식 count가 증가하지 않는다. pan `.began`과 revision/inner X 증가는 별도 조건이다. | 통과 |
 | 29 | fixture 결과가 public DOM/API 지원으로 게시 | 계획·상태·내부 계약·evidence에서 public `click`, Pointer Events, WPT, 일반 제품 route와 C13.3 전체 완료를 명시적으로 제외한다. 미완료 상태를 유지했다. | 통과 |
-| 30 | PR/roadmap 이미지와 정적 링크가 배포 후 깨짐 | Tailnet roadmap, status, evidence/PR review HTML과 두 hashed crop에 HTTP 200 및 source/served SHA-256 일치를 확인했다. Agent Browser에서 evidence page의 Android `1080×720`, iOS `1206×820` 이미지를 모두 로드했다. PR 본문 이미지 URL은 PR 생성 뒤 같은 브라우저에서 추가 확인한다. | Tailnet 통과 · PR 확인 대기 |
+| 30 | PR/roadmap 이미지와 정적 링크가 배포 후 깨짐 | Tailnet roadmap, status, evidence/PR review HTML과 두 hashed crop에 HTTP 200 및 source/served SHA-256 일치를 확인했다. [PR #188](https://github.com/ohah/spinon/pull/188) 본문의 commit 고정 raw URL도 Agent Browser에서 Android `1080×720`, iOS `1206×820`으로 모두 로드됐다. | 통과 |
 
 ## 검토 결론
 
-구현 범위의 실제 재현 결함 두 건(Android clipped accessibility bounds 좌표 오차, slop 이후 중복 click)은 수정했고 양 플랫폼 Simulator 결과에서 다시 확인했다. 남은 판정 경계는 실기기·hardware GPU·compositor 이후 scanout·iOS 실제 multi-touch·public event와 제품 전체 policy 행렬이다. Tailnet preview 동기화와 browser image load는 통과했다. PR 본문 이미지 URL은 생성 후 마지막으로 확인한다.
+구현 범위의 실제 재현 결함 두 건(Android clipped accessibility bounds 좌표 오차, slop 이후 중복 click)은 수정했고 양 플랫폼 Simulator 결과에서 다시 확인했다. PR #188 본문과 Tailnet preview 이미지·링크를 Agent Browser 및 HTTP/hash 대조로 확인했다. 남은 판정 경계는 실기기·hardware GPU·compositor 이후 scanout·iOS 실제 multi-touch·public event와 제품 전체 policy 행렬이다.
