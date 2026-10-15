@@ -1703,6 +1703,14 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             log("SPINON_C1133_GRID_NODE_FRAME_RUN run_id=\(c1133GridTemplateAreasRunID) scene_id=\(c1133GridTemplateAreasSceneID) frame=\(frame)")
         }
         log("SPINON_C1133_GRID_FRAME_SUMMARY run_id=\(c1133GridTemplateAreasRunID) scene_id=\(c1133GridTemplateAreasSceneID) count=\(frames.count) marker=present")
+        let paintMarker = "paint_node_order=["
+        guard let paintStart = report.range(of: paintMarker),
+              let paintEnd = report[paintStart.upperBound...].firstIndex(of: "]"),
+              report.distance(from: paintStart.lowerBound, to: paintEnd) <= 512 else {
+            log("SPINON_C1133_GRID_PAINT_ORDER_RUN run_id=\(c1133GridTemplateAreasRunID) scene_id=\(c1133GridTemplateAreasSceneID) marker=missing-or-too-large")
+            return
+        }
+        log("SPINON_C1133_GRID_PAINT_ORDER_RUN run_id=\(c1133GridTemplateAreasRunID) scene_id=\(c1133GridTemplateAreasSceneID) \(report[paintStart.lowerBound...paintEnd])")
     }
 
     private func logGridAutoPlacementReadySummaryIfNeeded(
@@ -2479,8 +2487,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                         ? "unsupported_named_grid_line" : "missing"
                 let property = result.contains("property=Some(\"grid-template-areas\")")
                     ? "grid-template-areas"
-                    : result.contains("property=Some(\"grid-column-start\")")
-                        ? "grid-column-start" : "missing"
+                    : result.contains("property=Some(\"grid-row-start\")")
+                        ? "grid-row-start" : "missing"
                 let nodeID = result.range(of: #"node=Some\(\d+\)"#, options: .regularExpression).map {
                     String(result[$0].dropFirst("node=Some(".count).dropLast())
                 } ?? "missing"
@@ -2493,7 +2501,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                         && code == "unsupported_computed_value" && property == "grid-template-areas"
                         && nodeID == expectedNodeID)
                     || (c1133GridTemplateAreasSceneID == "unknown-area-implicit-tracks"
-                        && code == "unsupported_named_grid_line" && property == "grid-column-start"
+                        && code == "unsupported_named_grid_line" && property == "grid-row-start"
                         && nodeID == expectedNodeID))
                 let frames = result.contains("node_frames_css_px=[") ? "present" : "absent"
                 log("SPINON_C1133_GRID_REJECTION_SUMMARY run_id=\(c1133GridTemplateAreasRunID) scene_id=\(c1133GridTemplateAreasSceneID) expected=\(expected) \(status) code=\(code) property=\(property) node_id=\(nodeID) frames=\(frames)")
