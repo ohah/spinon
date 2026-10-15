@@ -1,0 +1,14 @@
+{
+  "name": "spinon-r14-tailwind-generated-css",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:css": "tailwindcss -i ./input.css -o ./.output/generated.css",
+    "verify": "bun run build:css && node ./verify.mjs"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "4.3.3",
+    "postcss": "8.5.28",
+    "tailwindcss": "4.3.3"
+  }
+}

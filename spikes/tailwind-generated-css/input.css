@@ -1,0 +1,7 @@
+@import "tailwindcss" source(none);
+@source "./fixture.html";
+
+@theme {
+  --color-brand-600: oklch(0.55 0.20 250);
+  --color-brand-700: oklch(0.45 0.19 250);
+}

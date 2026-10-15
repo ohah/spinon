@@ -1,0 +1,391 @@
+{
+  "generator": {
+    "tailwindcss": "4.3.3",
+    "cli": "@tailwindcss/cli 4.3.3",
+    "lightningcss": "1.33.0"
+  },
+  "generatedCss": {
+    "bytes": 5830,
+    "lines": 216,
+    "sha256": "c11cf6cff5c8e4b3053da8d328cda229884a6b59f9b4f3910d5b1a1f2023740b",
+    "ruleCount": 48,
+    "layerOrder": [
+      "properties",
+      "theme,base,components,utilities"
+    ],
+    "layerBlocks": [
+      "theme",
+      "base",
+      "utilities",
+      "properties"
+    ],
+    "atRuleCounts": {
+      "layer": 6,
+      "media": 2,
+      "property": 1,
+      "supports": 3
+    },
+    "customProperties": [
+      {
+        "name": "--font-sans",
+        "value": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\",\n      \"Noto Sans\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\",\n      \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+        "selector": ":root, :host",
+        "ancestors": [
+          {
+            "name": "layer",
+            "params": "theme"
+          }
+        ]
+      },
+      {
+        "name": "--font-mono",
+        "value": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\",\n      \"Courier New\", monospace",
+        "selector": ":root, :host",
+        "ancestors": [
+          {
+            "name": "layer",
+            "params": "theme"
+          }
+        ]
+      },
+      {
+        "name": "--color-white",
+        "value": "#fff",
+        "selector": ":root, :host",
+        "ancestors": [
+          {
+            "name": "layer",
+            "params": "theme"
+          }
+        ]
+      },
+      {
+        "name": "--spacing",
+        "value": "0.25rem",
+        "selector": ":root, :host",
+        "ancestors": [
+          {
+            "name": "layer",
+            "params": "theme"
+          }
+        ]
+      },
+      {
+        "name": "--font-weight-semibold",
+        "value": "600",
+        "selector": ":root, :host",
+        "ancestors": [
+          {
+            "name": "layer",
+            "params": "theme"
+          }
+        ]
+      },
+      {
+        "name": "--radius-md",
+        "value": "0.375rem",
+        "selector": ":root, :host",
+        "ancestors": [
+          {
+            "name": "layer",
+            "params": "theme"
+          }
+        ]
+      },
+      {
+        "name": "--default-font-family",
+        "value": "var(--font-sans)",
+        "selector": ":root, :host",
+        "ancestors": [
+          {
+            "name": "layer",
+            "params": "theme"
+          }
+        ]
+      },
+      {
+        "name": "--default-mono-font-family",
+        "value": "var(--font-mono)",
+        "selector": ":root, :host",
+        "ancestors": [
+          {
+            "name": "layer",
+            "params": "theme"
+          }
+        ]
+      },
+      {
+        "name": "--color-brand-600",
+        "value": "oklch(0.55 0.20 250)",
+        "selector": ":root, :host",
+        "ancestors": [
+          {
+            "name": "layer",
+            "params": "theme"
+          }
+        ]
+      },
+      {
+        "name": "--color-brand-700",
+        "value": "oklch(0.45 0.19 250)",
+        "selector": ":root, :host",
+        "ancestors": [
+          {
+            "name": "layer",
+            "params": "theme"
+          }
+        ]
+      },
+      {
+        "name": "--tw-font-weight",
+        "value": "var(--font-weight-semibold)",
+        "selector": ".font-semibold",
+        "ancestors": [
+          {
+            "name": "layer",
+            "params": "utilities"
+          }
+        ]
+      },
+      {
+        "name": "--tw-font-weight",
+        "value": "initial",
+        "selector": "*, ::before, ::after, ::backdrop",
+        "ancestors": [
+          {
+            "name": "layer",
+            "params": "properties"
+          },
+          {
+            "name": "supports",
+            "params": "((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b))))"
+          }
+        ]
+      }
+    ],
+    "utilityRuleCount": 10,
+    "utilitySelectors": [
+      ".bg-brand-600",
+      ".flex",
+      ".font-semibold",
+      ".gap-2",
+      ".hover\\:bg-brand-700:hover",
+      ".items-center",
+      ".p-4",
+      ".rounded-md",
+      ".sm\\:p-6",
+      ".text-white"
+    ],
+    "selectorKinds": {
+      "global": [
+        "*, ::after, ::before, ::backdrop, ::file-selector-button",
+        "*, ::before, ::after, ::backdrop"
+      ],
+      "pseudo": [
+        ":root, :host",
+        "*, ::after, ::before, ::backdrop, ::file-selector-button",
+        "html, :host",
+        "abbr:where([title])",
+        ":-moz-focusring:where(:not(iframe))",
+        "button, input, select, optgroup, textarea, ::file-selector-button",
+        ":where(select:is([multiple], [size])) optgroup",
+        ":where(select:is([multiple], [size])) optgroup option",
+        "::file-selector-button",
+        "::placeholder",
+        "::placeholder",
+        "::-webkit-search-decoration",
+        "::-webkit-date-and-time-value",
+        "::-webkit-datetime-edit",
+        "::-webkit-datetime-edit-fields-wrapper",
+        "::-webkit-datetime-edit, ::-webkit-datetime-edit-year-field, ::-webkit-datetime-edit-month-field, ::-webkit-datetime-edit-day-field, ::-webkit-datetime-edit-hour-field, ::-webkit-datetime-edit-minute-field, ::-webkit-datetime-edit-second-field, ::-webkit-datetime-edit-millisecond-field, ::-webkit-datetime-edit-meridiem-field",
+        "::-webkit-calendar-picker-indicator",
+        "button, input:where([type=\"button\"], [type=\"reset\"], [type=\"submit\"]), ::file-selector-button",
+        "::-webkit-inner-spin-button, ::-webkit-outer-spin-button",
+        "[hidden]:where(:not([hidden=\"until-found\"]))",
+        ".hover\\:bg-brand-700:hover",
+        "*, ::before, ::after, ::backdrop"
+      ],
+      "attribute": [
+        "abbr:where([title])",
+        ":where(select:is([multiple], [size])) optgroup",
+        ":where(select:is([multiple], [size])) optgroup option",
+        "button, input:where([type=\"button\"], [type=\"reset\"], [type=\"submit\"]), ::file-selector-button",
+        "[hidden]:where(:not([hidden=\"until-found\"]))"
+      ],
+      "class": [
+        ".bg-brand-600",
+        ".flex",
+        ".font-semibold",
+        ".gap-2",
+        ".hover\\:bg-brand-700:hover",
+        ".items-center",
+        ".p-4",
+        ".rounded-md",
+        ".sm\\:p-6",
+        ".text-white"
+      ]
+    },
+    "preflight": {
+      "globalReset": {
+        "selector": "*, ::after, ::before, ::backdrop, ::file-selector-button",
+        "declarations": [
+          {
+            "property": "box-sizing",
+            "value": "border-box"
+          },
+          {
+            "property": "margin",
+            "value": "0"
+          },
+          {
+            "property": "padding",
+            "value": "0"
+          },
+          {
+            "property": "border",
+            "value": "0 solid"
+          }
+        ]
+      },
+      "headings": {
+        "selector": "h1, h2, h3, h4, h5, h6",
+        "declarations": [
+          {
+            "property": "font-size",
+            "value": "inherit"
+          },
+          {
+            "property": "font-weight",
+            "value": "inherit"
+          }
+        ]
+      },
+      "lists": {
+        "selector": "ol, ul, menu",
+        "declarations": [
+          {
+            "property": "list-style",
+            "value": "none"
+          }
+        ]
+      },
+      "imageDisplay": {
+        "selector": "img, svg, video, canvas, audio, iframe, embed, object",
+        "declarations": [
+          {
+            "property": "display",
+            "value": "block"
+          },
+          {
+            "property": "vertical-align",
+            "value": "middle"
+          }
+        ]
+      },
+      "imageSizing": {
+        "selector": "img, video",
+        "declarations": [
+          {
+            "property": "max-width",
+            "value": "100%"
+          },
+          {
+            "property": "height",
+            "value": "auto"
+          }
+        ]
+      },
+      "hidden": {
+        "selector": "[hidden]:where(:not([hidden=\"until-found\"]))",
+        "declarations": [
+          {
+            "property": "display",
+            "value": "none",
+            "important": true
+          }
+        ]
+      }
+    },
+    "variants": {
+      "hover": [
+        "(hover: hover)"
+      ],
+      "responsive": [
+        "(width >= 40rem)"
+      ]
+    }
+  },
+  "converter": [
+    {
+      "name": "whole-generated-css",
+      "expected": "reject",
+      "exitCode": 1,
+      "outputExists": false,
+      "diagnostic": "Error: layer-statement: 이 실험에서는 일반 스타일 규칙만 지원합니다",
+      "parsed": null
+    },
+    {
+      "name": "tailwind-flex-positive",
+      "expected": "accept",
+      "exitCode": 0,
+      "outputExists": true,
+      "diagnostic": "PASS: 1개 클래스 변환",
+      "parsed": {
+        "version": 1,
+        "styles": {
+          "flex": {
+            "display": "flex"
+          }
+        }
+      }
+    },
+    {
+      "name": "spacing-token-negative",
+      "expected": "reject",
+      "exitCode": 1,
+      "outputExists": false,
+      "diagnostic": "Error: unparsed: 이 실험에서는 지원하지 않습니다",
+      "parsed": null
+    },
+    {
+      "name": "color-token-negative",
+      "expected": "reject",
+      "exitCode": 1,
+      "outputExists": false,
+      "diagnostic": "Error: unparsed: 이 실험에서는 지원하지 않습니다",
+      "parsed": null
+    },
+    {
+      "name": "hover-selector-negative",
+      "expected": "reject",
+      "exitCode": 1,
+      "outputExists": false,
+      "diagnostic": "Error: 이 실험에서는 단일 클래스 선택자만 지원합니다",
+      "parsed": null
+    },
+    {
+      "name": "hover-media-negative",
+      "expected": "reject",
+      "exitCode": 1,
+      "outputExists": false,
+      "diagnostic": "Error: media: 이 실험에서는 일반 스타일 규칙만 지원합니다",
+      "parsed": null
+    },
+    {
+      "name": "responsive-media-negative",
+      "expected": "reject",
+      "exitCode": 1,
+      "outputExists": false,
+      "diagnostic": "Error: media: 이 실험에서는 일반 스타일 규칙만 지원합니다",
+      "parsed": null
+    },
+    {
+      "name": "preflight-global-selector-negative",
+      "expected": "reject",
+      "exitCode": 1,
+      "outputExists": false,
+      "diagnostic": "Error: 이 실험에서는 단일 클래스 선택자만 지원합니다",
+      "parsed": null
+    }
+  ]
+}
