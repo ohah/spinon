@@ -1,0 +1,5 @@
+$ bash tools/build-android-app.sh
+The operation couldn’t be completed. Unable to locate a Java Runtime.
+Please visit http://www.java.com for information on installing Java.
+
+error: script "build:android" exited with code 1

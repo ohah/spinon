@@ -1,0 +1,1 @@
+[37342.001251] type=1400 audit(1792067906.244:399): avc:  denied  { write } for  comm="sendevent" name="event11" dev="tmpfs" ino=1087 scontext=u:r:shell:s0 tcontext=u:object_r:input_device:s0 tclass=chr_file permissive=0

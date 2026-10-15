@@ -1,0 +1,9 @@
+bash_syntax=pass
+physical_serial_gate=pass exit=2
+실기기 serial은 허용하지 않습니다: physical-unauthorized
+disabled_event_gate=pass exit=2
+device=virtio_input_multi_touch_11 mode=DISABLED displayId=-1 activePointers=0
+입력 장치는 활성 내부 displayId=0의 직접 터치 장치여야 합니다: /dev/input/event11
+path_injection_gate=pass exit=2
+evdev input path 형식이 올바르지 않습니다: /dev/input/event1;touch /tmp/c133-harness-injection
+path_injection_side_effect=none

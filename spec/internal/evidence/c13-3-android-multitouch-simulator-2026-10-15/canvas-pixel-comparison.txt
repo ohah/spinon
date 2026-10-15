@@ -1,0 +1,6 @@
+crop=SurfaceView screen bounds x=15..1064 y=1026..1655 (1050x630 physical px)
+screenshot_size=1080x2400
+initial -> first_pan: changed_rgba_pixels=1134
+first_pan -> second_pointer_cancel: changed_rgba_pixels=0
+second_pointer_cancel -> all_touches_up: changed_rgba_pixels=0
+all_touches_up -> fresh_recovery: changed_rgba_pixels=5103
