@@ -6,10 +6,10 @@ stderr=node:internal/modules/run_main:107
       triggerUncaughtException(
       ^
 
-  AssertionError [ERR_ASSERTION]: evidence output path contains a non-directory or symlink: /private/tmp/spinon-c13-3-android-wheel-source-classification-20261016/spec/internal/evidence/path-escape-73072
-      at ensureEvidenceDirectory (file:///private/tmp/spinon-c13-3-android-wheel-source-classification-20261016/tools/css-reference/capture-c13-3-native-wheel-input-android.mjs:355:12)
-      at async main (file:///private/tmp/spinon-c13-3-android-wheel-source-classification-20261016/tools/css-reference/capture-c13-3-native-wheel-input-android.mjs:367:3)
-      at async file:///private/tmp/spinon-c13-3-android-wheel-source-classification-20261016/tools/css-reference/capture-c13-3-native-wheel-input-android.mjs:495:1 {
+  AssertionError [ERR_ASSERTION]: evidence output path contains a non-directory or symlink: /private/tmp/spinon-c13-3-android-wheel-source-classification-20261016/spec/internal/evidence/path-escape-81849
+      at ensureEvidenceDirectory (file:///private/tmp/spinon-c13-3-android-wheel-source-classification-20261016/tools/css-reference/capture-c13-3-native-wheel-input-android.mjs:358:12)
+      at async main (file:///private/tmp/spinon-c13-3-android-wheel-source-classification-20261016/tools/css-reference/capture-c13-3-native-wheel-input-android.mjs:370:3)
+      at async file:///private/tmp/spinon-c13-3-android-wheel-source-classification-20261016/tools/css-reference/capture-c13-3-native-wheel-input-android.mjs:500:1 {
     generatedMessage: false,
     code: 'ERR_ASSERTION',
     actual: false,
