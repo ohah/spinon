@@ -1,0 +1,220 @@
+{
+  "schema": "spinon-css-c13-3-style-invalidation-precomparison/v1",
+  "capturedAt": "2026-10-15T09:48:01.350Z",
+  "scope": "Chrome touch oracle only; not Spinon runtime or app verification.",
+  "oracle": {
+    "browser": "Chrome/155.0.8059.40",
+    "webkitVersion": "537.36 (@cfaadc5a132d78e1828635aa8405a499f3e14864)",
+    "agentBrowserVersion": "agent-browser 0.31.1",
+    "viewport": {
+      "width": 400,
+      "height": 240,
+      "deviceScaleFactor": 1
+    },
+    "touchEmulation": {
+      "enabled": true,
+      "maxTouchPoints": 2
+    }
+  },
+  "fixture": {
+    "path": "tests/fixtures/css/c13/c13-3-scroll-gesture.html",
+    "sha256": "a4eff62477a8a5d01f58f8033472fd3dcd6e8bc7638723d3386f7060d5787c09"
+  },
+  "screenshot": {
+    "path": "spec/internal/evidence/c13-3-style-invalidation-precomparison-2026-10-15/chrome155-style-invalidation-400x240.png",
+    "dimensions": [
+      400,
+      240
+    ],
+    "sha256": "5c7e7566d545ff96a649aec997e129d625534aa2d81527ed4b6c0c7fd26f971f"
+  },
+  "cases": {
+    "autoControl": {
+      "changeDuringGesture": false,
+      "start": {
+        "x": 132,
+        "y": 112
+      },
+      "initialOffsets": {
+        "inner": [
+          0,
+          106
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "afterFirstMove": {
+        "inner": [
+          0,
+          106
+        ],
+        "outer": [
+          0,
+          15
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "policyAfterMutation": null,
+      "finalPolicy": [
+        "auto",
+        "auto"
+      ],
+      "finalOffsets": {
+        "inner": [
+          0,
+          106
+        ],
+        "outer": [
+          0,
+          55
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [
+        {
+          "owner": "outer",
+          "offset": [
+            0,
+            15
+          ]
+        },
+        {
+          "owner": "outer",
+          "offset": [
+            0,
+            55
+          ]
+        }
+      ],
+      "pointerEvents": [
+        {
+          "type": "pointerdown",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content"
+        },
+        {
+          "type": "pointermove",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content"
+        },
+        {
+          "type": "pointercancel",
+          "id": 2,
+          "pointerType": "touch",
+          "target": "inner-content"
+        }
+      ]
+    },
+    "activeOverscrollMutation": {
+      "changeDuringGesture": true,
+      "start": {
+        "x": 132,
+        "y": 112
+      },
+      "initialOffsets": {
+        "inner": [
+          0,
+          106
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "afterFirstMove": {
+        "inner": [
+          0,
+          106
+        ],
+        "outer": [
+          0,
+          15
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "policyAfterMutation": [
+        "auto",
+        "contain"
+      ],
+      "finalPolicy": [
+        "auto",
+        "contain"
+      ],
+      "finalOffsets": {
+        "inner": [
+          0,
+          106
+        ],
+        "outer": [
+          0,
+          55
+        ],
+        "root": [
+          0,
+          0
+        ]
+      },
+      "scrollEvents": [
+        {
+          "owner": "outer",
+          "offset": [
+            0,
+            15
+          ]
+        },
+        {
+          "owner": "outer",
+          "offset": [
+            0,
+            55
+          ]
+        }
+      ],
+      "pointerEvents": [
+        {
+          "type": "pointerdown",
+          "id": 3,
+          "pointerType": "touch",
+          "target": "inner-content"
+        },
+        {
+          "type": "pointermove",
+          "id": 3,
+          "pointerType": "touch",
+          "target": "inner-content"
+        },
+        {
+          "type": "pointercancel",
+          "id": 3,
+          "pointerType": "touch",
+          "target": "inner-content"
+        }
+      ]
+    }
+  },
+  "interpretation": {
+    "autoControl": "Reference for chaining at the boundary across two ordered touchmove samples.",
+    "activeOverscrollMutation": "Observed browser behavior after changing overscroll-behavior-y while the same touch gesture is active; use as a comparator, not as the Spinon queue contract."
+  }
+}

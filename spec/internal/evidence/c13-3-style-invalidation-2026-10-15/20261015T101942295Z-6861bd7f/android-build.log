@@ -1,0 +1,77 @@
+WARNING: We recommend using a newer Android Gradle plugin to use compile SDK version 37.2
+
+This Android Gradle plugin (8.13.2) was tested up to compile SDK version 36.1.
+
+You are strongly encouraged to update your project to use a newer
+Android Gradle plugin that has been tested with compile SDK version 37.2.
+
+If you are already using the latest version of the Android Gradle plugin,
+you may need to wait until a newer version with support for compile SDK version 37.2 is available.
+
+For more information refer to the compatibility table:
+https://d.android.com/r/tools/api-level-support
+
+To suppress this warning, add/update
+    android.suppressUnsupportedCompileSdk=37.2
+to this project's gradle.properties.
+
+> Task :app:prepareSpinonBootstrap
+SPINON_ANDROID_BUILD_FLAGS c04_runtime_gpu=1 c13_1_overflow_clip_fixture_test=0 c13_2_scroll_fixture_test=0 c13_3_gesture_fixture_test=1 c14_1_app_fixture_test=0
+Bundled 1 module in 3ms
+
+  app.js  17.59 KB  (entry point)
+
+C12.4 Android runtime matrix: 26 cases, 77 nodes, 21 expected ready, 5 expected rejection
+Android ARM64 unwind runtime: /Users/yoonhb/Library/Android/sdk/ndk/27.1.12297006/toolchains/llvm/prebuilt/darwin-x86_64/lib/clang/18/lib/linux/aarch64/libunwind.a
+Android ARM64 V8 smoke 라이브러리 준비 완료: /private/tmp/spinon-c13-3-style-invalidation-20261015/build/spinon/android/jniLibs/arm64-v8a/libspinon_bootstrap.so
+
+> Task :app:preBuild
+> Task :app:preDebugBuild
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:generateDebugBuildConfig FROM-CACHE
+> Task :app:javaPreCompileDebug FROM-CACHE
+> Task :app:checkDebugAarMetadata
+> Task :app:processDebugNavigationResources FROM-CACHE
+> Task :app:compileDebugNavigationResources FROM-CACHE
+> Task :app:generateDebugResValues FROM-CACHE
+> Task :app:mapDebugSourceSetPaths
+> Task :app:generateDebugResources FROM-CACHE
+> Task :app:mergeDebugResources FROM-CACHE
+> Task :app:packageDebugResources FROM-CACHE
+> Task :app:parseDebugLocalResources FROM-CACHE
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:extractDeepLinksDebug FROM-CACHE
+> Task :app:processDebugMainManifest FROM-CACHE
+> Task :app:processDebugManifest FROM-CACHE
+> Task :app:processDebugManifestForPackage FROM-CACHE
+> Task :app:processDebugResources FROM-CACHE
+
+> Task :app:compileDebugJavaWithJavac
+
+> Task :app:mergeDebugShaders
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets
+> Task :app:compressDebugAssets FROM-CACHE
+> Task :app:processDebugJavaRes NO-SOURCE
+> Task :app:checkDebugDuplicateClasses
+> Task :app:desugarDebugFileDependencies FROM-CACHE
+> Task :app:mergeDebugJavaResource
+> Task :app:mergeExtDexDebug FROM-CACHE
+> Task :app:mergeLibDexDebug FROM-CACHE
+> Task :app:dexBuilderDebug
+> Task :app:mergeProjectDexDebug
+> Task :app:mergeDebugJniLibFolders
+> Task :app:validateSigningDebug
+> Task :app:writeDebugAppMetadata
+> Task :app:writeDebugSigningConfigVersions
+> Task :app:mergeDebugNativeLibs
+> Task :app:stripDebugDebugSymbols
+> Task :app:packageDebug
+> Task :app:createDebugApkListingFileRedirect
+> Task :app:assembleDebug
+
+[Incubating] Problems report is available at: file:///private/tmp/spinon-c13-3-style-invalidation-20261015/platforms/android/build/reports/problems/problems-report.html
+
+BUILD SUCCESSFUL in 51s
+37 actionable tasks: 19 executed, 18 from cache

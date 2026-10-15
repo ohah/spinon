@@ -91,7 +91,7 @@ fn cache_key_uses_exact_viewport_bits_and_all_media_inputs() {
     }
 
     changed_bits.viewport = base.viewport;
-    changed_bits.key.style_revision += 1;
+    changed_bits.key.style_revision = changed_bits.key.style_revision.checked_next().unwrap();
     assert_ne!(
         base_cache_key,
         RuntimeCalculationCacheKey::for_request(&changed_bits)

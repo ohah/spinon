@@ -205,11 +205,18 @@ int32_t spinon_runtime_gpu_host_request_c13_2_surface_pixels_for_test(
 enum {
     SPINON_C13_3_GESTURE_SCENARIO_AUTO_ZERO = 0,
     SPINON_C13_3_GESTURE_SCENARIO_AUTO_BOUNDARY = 1,
-    SPINON_C13_3_GESTURE_SCENARIO_CONTAIN_X_AUTO_Y_BOUNDARY = 2
+    SPINON_C13_3_GESTURE_SCENARIO_CONTAIN_X_AUTO_Y_BOUNDARY = 2,
+    SPINON_C13_3_GESTURE_SCENARIO_STYLE_POLICY_INVALIDATION = 8,
+    SPINON_C13_3_GESTURE_SCENARIO_GEOMETRY_INVALIDATION = 9,
+    SPINON_C13_3_GESTURE_SCENARIO_PAINT_INVALIDATION = 10
 };
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c13_3_gesture_fixture(
     int32_t scenario_id, char *output, size_t output_capacity);
 int32_t spinon_runtime_gpu_host_eval_c13_3_gesture_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
+/* Active pan 중 style revision·geometry invalidation을 검증하는 고정 fixture update입니다. */
+int32_t spinon_runtime_gpu_host_apply_c13_3_style_invalidation(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);
 /* UI callback에서 worker를 기다리지 않고 bounded gesture queue에 입력을 추가합니다. */

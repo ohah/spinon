@@ -461,9 +461,22 @@ fn block_profile_omits_zero_area_boxes_without_turning_layout_into_an_error() {
 }
 
 #[test]
-fn block_profile_rejects_a_stale_requested_style_revision() {
+fn block_profile_propagates_the_requested_style_revision() {
     let (mut request, _) = block_request("width:280px;height:16px", &[]);
-    request.key.style_revision = StyleRevision::INITIAL.get() + 1;
-    let error = compute_request_for_block_paint(&request).unwrap_err();
-    assert!(error.contains("revision"), "{error}");
+    request.key.style_revision = StyleRevision::INITIAL.checked_next().unwrap();
+    let calculation = compute_request_for_block_paint(&request).unwrap();
+    assert_eq!(
+        calculation.roots[0].styles.style_revision,
+        request.key.style_revision
+    );
+    assert_eq!(
+        calculation
+            .layout
+            .unwrap()
+            .render_snapshot
+            .unwrap()
+            .key()
+            .style_revision(),
+        request.key.style_revision
+    );
 }

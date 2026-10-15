@@ -20,7 +20,7 @@ impl RuntimeCalculationCacheKey {
         Self {
             generation: request.key.generation,
             render_tree_revision: request.key.render_tree_revision,
-            style_revision: request.key.style_revision,
+            style_revision: request.key.style_revision.get(),
             environment_revision: request.key.environment_revision,
             viewport_width_bits: request.viewport.width_css_px.to_bits(),
             viewport_height_bits: request.viewport.height_css_px.to_bits(),
@@ -75,14 +75,14 @@ impl RuntimeStyleCacheEntry {
         if calculation.roots.len() != 1
             || calculation.roots[0].styles.generation.get() != request.key.generation
             || calculation.roots[0].styles.document_revision.get() != request.key.document_revision
-            || calculation.roots[0].styles.style_revision.get() != request.key.style_revision
+            || calculation.roots[0].styles.style_revision != request.key.style_revision
         {
             return None;
         }
         Some(Self {
             generation: request.key.generation,
             document_revision: request.key.document_revision,
-            style_revision: request.key.style_revision,
+            style_revision: request.key.style_revision.get(),
             environment_revision: request.key.environment_revision,
             viewport: request.viewport,
             roots: Arc::clone(&calculation.roots),
@@ -93,12 +93,22 @@ impl RuntimeStyleCacheEntry {
         &self,
         request: &WorkRequest,
     ) -> Option<Arc<[RuntimeUaCascadeRoot]>> {
-        let (source_generation, source_revision) =
-            request.invalidation.as_ref()?.base_revision()?;
+        let invalidation = request.invalidation.as_ref()?;
+        let (source_generation, source_revision) = invalidation.base_revision()?;
+        let style_revision_matches = match invalidation {
+            RuntimeStyleInvalidation::Unchanged { .. } => {
+                request.key.style_revision.get() == self.style_revision
+            }
+            RuntimeStyleInvalidation::Subtrees { .. } => self
+                .style_revision
+                .checked_add(1)
+                .is_some_and(|next| request.key.style_revision.get() == next),
+            RuntimeStyleInvalidation::Full => false,
+        };
         if source_generation != self.generation
             || source_revision.get() != self.document_revision
             || request.key.generation != self.generation
-            || request.key.style_revision != self.style_revision
+            || !style_revision_matches
             || request.key.environment_revision != self.environment_revision
             || !same_viewport(self.viewport, request.viewport)
             || !matches!(

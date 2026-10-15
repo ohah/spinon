@@ -1,6 +1,6 @@
 # 0063 · C13.3 scroll gesture runtime 내부 계약
 
-- **계약:** 0.1.0-draft · **상태:** per-axis snapshot router, typed style projection, computed scroll policy의 immutable snapshot 연결, pure Rust session/queue와 opt-in Android/iOS fixed-fixture adapters 및 `none`/`pan-x` native tap arbitration 구현 · 전체 gesture runtime 미완료
+- **계약:** 0.1.0-draft · **상태:** per-axis snapshot router, typed style/computed policy, pure Rust session/queue, opt-in Android/iOS adapter, native tap arbitration 및 style invalidation scenario 8/9/10 구현·Simulator 검증 · 전체 gesture runtime 미완료
 - **제품 CSS 지원 선언:** 아님
 - **기준:** [C13.3 계획](../../plan/c13-3-scroll-gestures.md) · [Chrome 155 precomparison](evidence/c13-3-scroll-gesture-precomparison-2026-10-15/README.md)
 - **기존 기반:** [0062 C13.2 scroll state](0062-c13-2-scroll-state.md)의 immutable snapshot·owner chain·`ScrollStateRevision`
@@ -12,6 +12,14 @@
 이 계약은 C13.1/C13.2 제한 box profile에 직접 touch pan 및 platform adapter가 CSS px로 정규화한 wheel/trackpad delta를 연결한다. scroll target/range/offset/snapshot은 C13, raw input 수집과 surface lifecycle은 Android/iOS host, JavaScript callback queue는 S05, presentation 확인 입력은 S04.10, 공개 CSSOM은 C29가 소유한다.
 
 테스트용 native input route와 event log는 `c13-3-scroll-gesture-fixture-test`에서만 연결한다. 이 계약은 public `PointerEvent`, `WheelEvent`, `scroll` event, `Window`/`Element` scroll API, displayed-frame hit target, keyboard focus behavior 또는 OS native bounce/glow를 제공하지 않는다. S04.10 입력/displayed-frame 결합과 S05.2 adapter는 별도 미완료 경계다.
+
+### Inline style invalidation slice · 2026-10-15
+
+Runtime cascade request와 cache key는 호출자가 가진 `StyleRevision`을 끝까지 전달한다. `RuntimeStyleInvalidation::Subtrees`만 checked increment를 수행하며 environment-only update는 현재 값을 보존하고 document generation 교체는 초기 값으로 reset한다. inline style update가 만든 새 layout scene은 이전 scroll offset을 먼저 복원한 다음 geometry key를 비교한다. scroll-adjusted hit-test clip을 offset 0인 임시 scene과 비교해 geometry 변경으로 오인하지 않는다.
+
+geometry-neutral policy/paint update는 active gesture와 `ScrollStateRevision`을 유지한다. 현재 gesture의 `touch-action`은 Begin 때 동결하고, 후속 sample은 순서가 보장된 style snapshot의 `overscroll-behavior`를 읽는다. geometry/range 변경은 `GeometryChanged` 취소와 새 range에 맞춘 scroll state revision을 허용한다. 실제 inline style mutation 뒤 policy-only, geometry-changing, paint-only scenario 8/9/10을 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 검증했다. paint sample은 inner content의 변경 색과 inner scrollport border 밖 배경 pixel을 두 플랫폼에서 exact 비교했다. [시나리오·화면·pixel·build evidence](evidence/c13-3-style-invalidation-2026-10-15/README.md) · [계획과 결과](../../plan/c13-3-style-invalidation.md).
+
+이 slice는 fixed opt-in fixture의 style invalidation 검증이다. 기본 iOS Simulator `.app`와 Android debug APK에서 새 style invalidation ABI·payload·marker의 feature-off 제외와 opt-in positive control 포함을 확인했다([artifact 경계 근거](evidence/c13-3-style-invalidation-2026-10-15/artifact-boundary/README.md)). iOS background가 style barrier 중간에 들어오는 timing은 시뮬레이터에서 주입하지 않았다. 이는 Chrome parity, 제품 CSS 지원, public event/API, real device, hardware GPU 또는 compositor 이후 pixel 확인을 뜻하지 않는다. C13.3 전체는 미완료다.
 
 ### Fixture scenario selector
 

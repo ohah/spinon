@@ -1,6 +1,8 @@
 use std::collections::BTreeMap;
 
-use spinon_core::{NodeId, ScrollStateRevision};
+use spinon_core::{
+    DocumentRevision, NodeId, RenderTreeRevision, ScrollStateRevision, StyleRevision,
+};
 
 use super::RuntimeRenderSnapshot;
 
@@ -41,6 +43,9 @@ struct ActiveGesture {
     coordinate_scale: f32,
     target: NodeId,
     geometry: RuntimeScrollGestureGeometryKey,
+    expected_document_revision: DocumentRevision,
+    expected_render_tree_revision: RenderTreeRevision,
+    expected_style_revision: StyleRevision,
     allowed_axes: RuntimeGestureAxes,
     phase: ActivePhase,
     last_cumulative_x_css_px: f32,
@@ -158,6 +163,9 @@ impl RuntimeScrollGestureSession {
             coordinate_scale: input.coordinate_scale,
             target,
             geometry,
+            expected_document_revision: snapshot.key().document_revision(),
+            expected_render_tree_revision: snapshot.key().render_tree_revision(),
+            expected_style_revision: snapshot.key().style_revision(),
             allowed_axes,
             phase: ActivePhase::Tracking,
             last_cumulative_x_css_px: 0.0,
@@ -408,21 +416,17 @@ impl RuntimeScrollGestureSession {
         }
         let target = active.target;
         let expected_generation = active.geometry.generation;
-        let expected_document_revision = active.geometry.document_revision;
-        let expected_tree_revision = active.geometry.render_tree_revision;
         let expected_environment_revision = active.geometry.environment_revision;
+        let expected_document_revision = active.expected_document_revision;
+        let expected_tree_revision = active.expected_render_tree_revision;
+        let expected_style_revision = active.expected_style_revision;
         let expected_scroll_revision = active.expected_scroll_revision;
         let expected_geometry = active.geometry.clone();
-        let Some(current_geometry) =
-            snapshot.gesture_geometry_key(target, sample.surface_generation)
-        else {
-            self.cancel_active(sample.sequence);
-            return Ok(Some(RuntimeScrollGestureCancelReason::GeometryChanged));
-        };
         let key = snapshot.key();
         if key.generation() != expected_generation
-            || key.document_revision() != expected_document_revision
-            || key.render_tree_revision() != expected_tree_revision
+            || key.document_revision() < expected_document_revision
+            || key.render_tree_revision() < expected_tree_revision
+            || key.style_revision() < expected_style_revision
         {
             self.cancel_active(sample.sequence);
             return Ok(Some(
@@ -433,13 +437,32 @@ impl RuntimeScrollGestureSession {
             self.cancel_active(sample.sequence);
             return Ok(Some(RuntimeScrollGestureCancelReason::EnvironmentChanged));
         }
+        let Some(current_geometry) =
+            snapshot.gesture_geometry_key(target, sample.surface_generation)
+        else {
+            self.cancel_active(sample.sequence);
+            return Ok(Some(RuntimeScrollGestureCancelReason::GeometryChanged));
+        };
+        if current_geometry != expected_geometry {
+            self.cancel_active(sample.sequence);
+            return Ok(Some(RuntimeScrollGestureCancelReason::GeometryChanged));
+        }
+        let document_projection_changed = key.document_revision() != expected_document_revision
+            || key.render_tree_revision() != expected_tree_revision;
+        if document_projection_changed && key.style_revision() == expected_style_revision {
+            self.cancel_active(sample.sequence);
+            return Ok(Some(
+                RuntimeScrollGestureCancelReason::DocumentOrTreeChanged,
+            ));
+        }
         if key.scroll_state_revision() != expected_scroll_revision {
             self.cancel_active(sample.sequence);
             return Ok(Some(RuntimeScrollGestureCancelReason::ExternalScrollUpdate));
         }
-        if current_geometry != expected_geometry {
-            self.cancel_active(sample.sequence);
-            return Ok(Some(RuntimeScrollGestureCancelReason::GeometryChanged));
+        if let Some(active) = self.active.as_mut() {
+            active.expected_document_revision = key.document_revision();
+            active.expected_render_tree_revision = key.render_tree_revision();
+            active.expected_style_revision = key.style_revision();
         }
         Ok(None)
     }

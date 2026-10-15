@@ -86,6 +86,35 @@ pub unsafe extern "C" fn spinon_runtime_gpu_host_eval_c13_3_gesture_fixture(
 }
 
 #[unsafe(no_mangle)]
+/// Active pan 중 fixture 전용 inline style 변경을 평가하고 새 snapshot을 게시합니다.
+///
+/// # Safety
+/// `host`는 live C13.3 fixture host여야 하며 같은 host의 해제와 경합시키면 안 됩니다.
+/// `output`은 `output_capacity` 바이트를 쓸 수 있어야 합니다.
+pub unsafe extern "C" fn spinon_runtime_gpu_host_apply_c13_3_style_invalidation(
+    host: *mut SpinonRuntimeGpuHost,
+    layout_timeout_millis: u64,
+    output: *mut c_char,
+    output_capacity: usize,
+) -> i32 {
+    if output.is_null() || output_capacity == 0 || layout_timeout_millis == 0 {
+        return ERR_ARGUMENT;
+    }
+    let Some(host) = raw_host(host) else {
+        return write_host_status(
+            ERR_ARGUMENT,
+            "C13.3 style invalidation host가 null입니다".to_owned(),
+            output,
+            output_capacity,
+        );
+    };
+    match host.apply_c13_3_style_invalidation(layout_timeout_millis) {
+        Ok(report) => write_host_status(0, report, output, output_capacity),
+        Err((status, error)) => write_host_status(status, error, output, output_capacity),
+    }
+}
+
+#[unsafe(no_mangle)]
 /// Native callback에서 호출하는 bounded queue 삽입 함수입니다. Host를 역참조하지 않습니다.
 ///
 /// `action`: 0 Begin, 1 PanBegan, 2 Move, 3 End, 4 Cancel. `reason`은 Cancel일 때 0 host,
@@ -209,6 +238,7 @@ pub unsafe extern "C" fn spinon_runtime_gpu_host_process_c13_3_gesture_queue(
 #[cfg(test)]
 mod tests {
     use super::{
+        spinon_runtime_gpu_host_apply_c13_3_style_invalidation,
         spinon_runtime_gpu_host_enqueue_c13_3_gesture,
         spinon_runtime_gpu_host_eval_c13_3_gesture_fixture,
         spinon_runtime_gpu_host_new_c13_3_gesture_fixture,
@@ -225,6 +255,17 @@ mod tests {
         assert_eq!(
             unsafe {
                 spinon_runtime_gpu_host_eval_c13_3_gesture_fixture(
+                    ptr::null_mut(),
+                    1000,
+                    output.as_mut_ptr(),
+                    output.len(),
+                )
+            },
+            -1
+        );
+        assert_eq!(
+            unsafe {
+                spinon_runtime_gpu_host_apply_c13_3_style_invalidation(
                     ptr::null_mut(),
                     1000,
                     output.as_mut_ptr(),

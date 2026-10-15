@@ -81,6 +81,7 @@
 + (NSString *)evalRuntimeGpuC13_2ScrollFixture:(uint64_t)handle;
 #if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
 + (NSString *)evalRuntimeGpuC13_3GestureFixture:(uint64_t)handle;
++ (NSString *)applyRuntimeGpuC13_3StyleInvalidation:(uint64_t)handle;
 + (NSString *)enqueueRuntimeGpuC13_3Gesture:(uint64_t)handle
                                       action:(int32_t)action
                            surfaceGeneration:(uint64_t)surfaceGeneration

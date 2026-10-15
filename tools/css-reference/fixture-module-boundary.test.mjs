@@ -280,6 +280,10 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
     /nativeCreateC133GestureHost\(int scenarioId\)/);
   assert.match(androidGpuDemoSource,
     /nativeProcessC133GestureQueue\(long host\)/);
+  assert.doesNotMatch(androidGpuDemoSource, /SPINON_C133_STYLE_UPDATE /);
+  assert.doesNotMatch(androidGpuDemoSource, /c13_3_style_invalidation=applied/);
+  assert.match(androidGpuDemoSource,
+    /\.append\("SPINON_C133_"\)[\s\S]*?\.append\("STYLE_UPDATE "\)/);
   assert.match(androidActivitySource,
     /spinon_c133_gesture_fixture/);
   assert.match(iosProject,

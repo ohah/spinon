@@ -291,6 +291,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native byte[] nativeEvalC131OverflowClipBorderFixture(long host);
     private static native byte[] nativeEvalC132ScrollFixture(long host);
     private static native byte[] nativeEvalC133GestureFixture(long host);
+    private static native byte[] nativeApplyC133StyleInvalidation(long host);
     private static native byte[] nativeEnqueueC133Gesture(
             long host, int action, long surfaceGeneration, long gestureId, long pointerId,
             float xOrCumulativeXCssPx, float yOrCumulativeYCssPx,
@@ -502,6 +503,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private boolean c133PanStarted;
     private boolean c133TerminalQueued;
     private boolean c133SuppressUntilAllPointersUp;
+    private volatile boolean c133StyleMutationApplied;
+    private boolean c133StyleBarrierPending;
+    private boolean c133StyleDeferredMovePending;
+    private float c133StyleDeferredCumulativeX;
+    private float c133StyleDeferredCumulativeY;
+    private int c133StyleDeferredTerminalAction = -1;
+    private int c133StyleDeferredTerminalReason;
     private boolean c133TapDownAccepted;
     private boolean c133TapForwardingGesture;
     private boolean c133TapClickCandidate;
@@ -1265,9 +1273,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         if (BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST
                 && c133GestureFixtureRequested
-                && (c133GesturePolicyScenarioID < 0 || c133GesturePolicyScenarioID > 7)) {
+                && (c133GesturePolicyScenarioID < 0 || c133GesturePolicyScenarioID > 10)) {
             Log.e(TAG, "SPINON_C133_ARGUMENT_ERROR rejected=true reason=invalid-policy-scenario-id");
-            postStatus("실패 · C13.3 policy scenario ID는 0~7이어야 합니다");
+            postStatus("실패 · C13.3 policy scenario ID는 0~10이어야 합니다");
             return false;
         }
         Bundle extras = activity.getIntent().getExtras();
@@ -1690,7 +1698,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         if (BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST && c133GestureFixtureRequested) {
             boolean knownScenario = c133GesturePolicyScenarioID >= 0
-                    && c133GesturePolicyScenarioID <= 7;
+                    && c133GesturePolicyScenarioID <= 10;
             String scenario = c133GesturePolicyScenarioID == 0 ? "auto-zero"
                     : c133GesturePolicyScenarioID == 1 ? "auto-boundary"
                     : c133GesturePolicyScenarioID == 2 ? "contain-x-auto-y-boundary"
@@ -1699,11 +1707,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     : c133GesturePolicyScenarioID == 5 ? "touch-action-pan-y"
                     : c133GesturePolicyScenarioID == 6 ? "touch-action-target-pan-x"
                     : c133GesturePolicyScenarioID == 7
-                            ? "touch-action-intersection-none" : "invalid";
+                            ? "touch-action-intersection-none"
+                    : c133GesturePolicyScenarioID == 8 ? "style-policy-invalidation"
+                    : c133GesturePolicyScenarioID == 9 ? "geometry-invalidation"
+                    : c133GesturePolicyScenarioID == 10 ? "paint-invalidation" : "invalid";
             String expectedPolicy = c133GesturePolicyScenarioID == 2
                     ? "policy_inner=contain/auto" : "policy_inner=auto/auto";
             boolean boundarySeed = c133GesturePolicyScenarioID == 1
-                    || c133GesturePolicyScenarioID == 2;
+                    || c133GesturePolicyScenarioID == 2
+                    || c133GesturePolicyScenarioID == 8
+                    || c133GesturePolicyScenarioID == 9;
             String expectedSeed = boundarySeed ? "fixture_seed=inner-max" : "fixture_seed=none";
             String expectedOffsets = boundarySeed
                     ? "offsets=root:0,0;outer:0,0;inner:86,106"
@@ -1711,6 +1724,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String expectedTouchAction = c133GesturePolicyScenarioID == 3
                     || c133GesturePolicyScenarioID == 7 ? "touch_action_effective=none"
                     : c133GesturePolicyScenarioID == 4 || c133GesturePolicyScenarioID == 6
+                            || c133GesturePolicyScenarioID == 8
                             ? "touch_action_effective=pan-x"
                     : c133GesturePolicyScenarioID == 5 ? "touch_action_effective=pan-y"
                     : "touch_action_effective=auto";
@@ -3953,7 +3967,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 && c133GestureFixtureRequested
                 && c133GestureFixtureReady && !c133GestureInitialDrawReady) {
             boolean boundarySeed = c133GesturePolicyScenarioID == 1
-                    || c133GesturePolicyScenarioID == 2;
+                    || c133GesturePolicyScenarioID == 2
+                    || c133GesturePolicyScenarioID == 8
+                    || c133GesturePolicyScenarioID == 9;
             String expectedRevision = boundarySeed
                     ? "scroll_state_revision=1" : "scroll_state_revision=0";
             String expectedOffsets = boundarySeed
@@ -4248,7 +4264,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 c133TapDownAccepted = false;
                 c133TapClickCandidate = false;
                 if (!c133GestureFixtureReady || !c133GestureInitialDrawReady
-                        || c133SuppressUntilAllPointersUp) return true;
+                        || c133SuppressUntilAllPointersUp || c133StyleBarrierPending) return true;
                 synchronized (stateLock) {
                     if (closing || hostHandle == 0 || surfaceWidth <= 0 || surfaceHeight <= 0) {
                         return false;
@@ -4319,6 +4335,19 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     return true;
                 }
                 boolean began = !c133PanStarted;
+                if (c133StyleBarrierPending) {
+                    c133LastCumulativeXCssPx = cumulativeX;
+                    c133LastCumulativeYCssPx = cumulativeY;
+                    c133StyleDeferredMovePending = true;
+                    c133StyleDeferredCumulativeX = cumulativeX;
+                    c133StyleDeferredCumulativeY = cumulativeY;
+                    logC133Callback("style-barrier-deferred-move", event, cumulativeX,
+                            cumulativeY, deltaX, deltaY, "accepted=deferred", callbackStarted);
+                    return true;
+                }
+                if (began && c133StyleInvalidationScenario() && !c133StyleMutationApplied) {
+                    c133StyleBarrierPending = true;
+                }
                 String result = enqueueC133Gesture(began ? 1 : 2,
                         cumulativeX, cumulativeY, 0);
                 if (result.startsWith("status=0 ")) {
@@ -4331,6 +4360,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     }
                     scheduleC133Drain();
                 } else {
+                    if (began) c133StyleBarrierPending = false;
                     Log.e(TAG, "SPINON_C133_TOUCH_MOTION_REJECTED " + result);
                 }
                 logC133Callback(began ? "pan-began" : "move", event,
@@ -4341,6 +4371,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 if (c133SuppressUntilAllPointersUp) return true;
                 return c133TouchActive;
             case MotionEvent.ACTION_UP:
+                if (c133StyleBarrierPending) {
+                    if (c133StyleDeferredTerminalAction < 0) {
+                        c133StyleDeferredTerminalAction = 3;
+                    }
+                    c133TouchActive = false;
+                    c133TerminalQueued = true;
+                    Log.i(TAG, "SPINON_C133_STYLE_BARRIER terminal=deferred action="
+                            + c133StyleDeferredTerminalAction + " gesture_id=" + c133GestureId);
+                    return true;
+                }
                 boolean tapCandidate = c133TapProbeRequested && c133TapDownAccepted
                         && c133TouchActive && !c133PanStarted && !c133TerminalQueued
                         && !c133SuppressUntilAllPointersUp;
@@ -4363,7 +4403,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 return true;
             case MotionEvent.ACTION_CANCEL:
                 cancelC133Gesture(0, "motion-event-cancel");
-                resetC133TouchState(true);
+                if (!c133StyleBarrierPending) resetC133TouchState(true);
                 return true;
             default:
                 return c133TouchActive || c133SuppressUntilAllPointersUp;
@@ -4382,8 +4422,58 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 xOrCumulativeX, yOrCumulativeY, c133CoordinateScale, reason));
     }
 
+    private boolean c133StyleInvalidationScenario() {
+        return c133GesturePolicyScenarioID >= 8 && c133GesturePolicyScenarioID <= 10;
+    }
+
+    private static String c133StyleUpdateMarker() {
+        return new StringBuilder(30)
+                .append("SPINON_C133_")
+                .append("STYLE_UPDATE ")
+                .toString();
+    }
+
+    private void completeC133StyleBarrier(boolean updateApplied) {
+        if (!c133StyleBarrierPending) return;
+        int terminalAction = c133StyleDeferredTerminalAction;
+        int terminalReason = c133StyleDeferredTerminalReason;
+        boolean queued = false;
+        if (!updateApplied) {
+            String result = enqueueC133Gesture(4, 0.0f, 0.0f, 4);
+            queued = result.startsWith("status=0 ");
+            Log.e(TAG, "SPINON_C133_STYLE_BARRIER update_failed=true cancel=" + result);
+        } else {
+            if (c133StyleDeferredMovePending && terminalAction != 4) {
+                String result = enqueueC133Gesture(2,
+                        c133StyleDeferredCumulativeX, c133StyleDeferredCumulativeY, 0);
+                queued |= result.startsWith("status=0 ");
+                Log.i(TAG, "SPINON_C133_STYLE_BARRIER deferred_move=" + result);
+            }
+            if (terminalAction >= 0) {
+                String result = enqueueC133Gesture(terminalAction, 0.0f, 0.0f, terminalReason);
+                queued |= result.startsWith("status=0 ");
+                Log.i(TAG, "SPINON_C133_STYLE_BARRIER deferred_terminal=" + result);
+            }
+        }
+        c133StyleBarrierPending = false;
+        c133StyleDeferredMovePending = false;
+        c133StyleDeferredTerminalAction = -1;
+        c133StyleDeferredTerminalReason = 0;
+        if (queued) scheduleC133Drain();
+        if (terminalAction >= 0 || !updateApplied) resetC133TouchState(true);
+    }
+
     private void cancelC133Gesture(int reason, String source) {
         if (!c133TouchActive || c133TerminalQueued) return;
+        if (c133StyleBarrierPending) {
+            c133StyleDeferredTerminalAction = 4;
+            c133StyleDeferredTerminalReason = reason;
+            c133TerminalQueued = true;
+            c133TouchActive = false;
+            Log.i(TAG, "SPINON_C133_STYLE_BARRIER terminal=deferred action=4 reason="
+                    + reason + " source=" + source);
+            return;
+        }
         String result = enqueueC133Gesture(4, 0.0f, 0.0f, reason);
         c133TerminalQueued = result.startsWith("status=0 ");
         if (c133TerminalQueued) scheduleC133Drain();
@@ -4539,6 +4629,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         if (!report.startsWith("status=0 ")) {
                             Log.e(TAG, "SPINON_C133_INPUT_BATCH_ERROR " + report);
                             continue;
+                        }
+                        if (c133StyleInvalidationScenario() && !c133StyleMutationApplied
+                                && report.contains("result=pan_started")) {
+                            String styleReport = decode(nativeApplyC133StyleInvalidation(host));
+                            boolean updateApplied = styleReport.startsWith("status=0 ");
+                            Log.i(TAG, c133StyleUpdateMarker() + styleReport);
+                            if (updateApplied) c133StyleMutationApplied = true;
+                            surfaceView.post(() -> completeC133StyleBarrier(updateApplied));
+                            if (updateApplied) requestDraw();
                         }
                         requestDraw();
                     }

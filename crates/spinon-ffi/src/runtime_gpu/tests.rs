@@ -45,7 +45,7 @@ fn render_scene_must_match_the_complete_runtime_key() {
         generation: snapshot.generation().get(),
         document_revision: snapshot.document_revision().get(),
         render_tree_revision: snapshot.render_tree_revision().get(),
-        style_revision: StyleRevision::INITIAL.get(),
+        style_revision: StyleRevision::INITIAL,
         environment_revision: EnvironmentRevision::INITIAL.get(),
     };
     assert!(scene_matches_layout_key(&scene, key));

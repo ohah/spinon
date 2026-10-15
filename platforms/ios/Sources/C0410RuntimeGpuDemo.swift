@@ -589,7 +589,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let prefix = "--spinon-c133-policy-scenario-id="
         guard argument.hasPrefix(prefix),
               let scenarioID = Int32(argument.dropFirst(prefix.count)),
-              scenarioID >= 0, scenarioID <= 7 else { return -1 }
+              scenarioID >= 0, scenarioID <= 10 else { return -1 }
         return scenarioID
     }
 #endif
@@ -621,6 +621,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     private var c133TouchActive = false
     private var c133TerminalQueued = false
     private var c133SuppressUntilAllPointersUp = false
+    private var c133StyleMutationApplied = false
+    private var c133StyleBarrierPending = false
+    private var c133StyleDeferredMovePending = false
+    private var c133StyleDeferredCumulativeCss = CGPoint.zero
+    private var c133StyleDeferredTerminal: (action: Int, reason: Int)?
     private var c133NextGestureID: UInt64 = 0
     private var c133GestureID: UInt64 = 0
     private var c133PointerID: UInt64 = 0
@@ -1838,7 +1843,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         if (!c133GesturePolicyScenarioArguments.isEmpty && !c133GestureFixtureRequested)
             || (c133GestureFixtureRequested && c133GesturePolicyScenarioID < 0) {
             log("SPINON_C133_POLICY_SCENARIO_ARGUMENT_ERROR rejected=true")
-            postStatus("실패 · C13.3 policy scenario ID는 fixture route에서 0~7로 하나만 지정해야 합니다")
+            postStatus("실패 · C13.3 policy scenario ID는 fixture route에서 0~10으로 하나만 지정해야 합니다")
             return
         }
 #endif
@@ -2306,26 +2311,32 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 : scenarioID == 4 ? "touch-action-pan-x"
                 : scenarioID == 5 ? "touch-action-pan-y"
                 : scenarioID == 6 ? "touch-action-target-pan-x"
-                : scenarioID == 7 ? "touch-action-intersection-none" : "invalid"
+                : scenarioID == 7 ? "touch-action-intersection-none"
+                : scenarioID == 8 ? "style-policy-invalidation"
+                : scenarioID == 9 ? "geometry-invalidation"
+                : scenarioID == 10 ? "paint-invalidation" : "invalid"
             let expectedPolicy = scenarioID == 2
                 ? "policy_inner=contain/auto" : "policy_inner=auto/auto"
             let boundarySeed = scenarioID == 1 || scenarioID == 2
+                || scenarioID == 8 || scenarioID == 9
             let expectedSeed = boundarySeed ? "fixture_seed=inner-max" : "fixture_seed=none"
             let expectedOffsets = boundarySeed
                 ? "offsets=root:0,0;outer:0,0;inner:86,106"
                 : "offsets=root:0,0;outer:0,0;inner:0,0"
             let expectedTouchAction = scenarioID == 3 || scenarioID == 7
                 ? "touch_action_effective=none"
-                : scenarioID == 4 || scenarioID == 6 ? "touch_action_effective=pan-x"
+                : scenarioID == 4 || scenarioID == 6 || scenarioID == 8
+                    ? "touch_action_effective=pan-x"
                 : scenarioID == 5 ? "touch_action_effective=pan-y"
                 : "touch_action_effective=auto"
             let expectedInnerTouchAction = scenarioID == 3 ? "none"
                 : scenarioID == 4 ? "pan-x"
+                : scenarioID == 8 ? "pan-x"
                 : scenarioID == 5 || scenarioID == 7 ? "pan-y"
                 : "auto"
             let expectedInnerContentTouchAction = scenarioID == 6 || scenarioID == 7
                 ? "pan-x" : "auto"
-            guard scenarioID >= 0 && scenarioID <= 7
+            guard scenarioID >= 0 && scenarioID <= 10
                     && report.hasPrefix("status=0 ")
                     && report.contains("c13_3_gesture_fixture=ready")
                     && report.contains("scenario=\(scenario)")
@@ -3345,7 +3356,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             endC133Pan(recognizer, started: started)
         case .cancelled, .failed:
             cancelC133Gesture(reason: 4, source: "native-recognizer")
-            if c133ActiveTouchIDs.isEmpty {
+            if c133ActiveTouchIDs.isEmpty && !c133StyleBarrierPending {
                 resetC133GestureState(clearSuppression: true)
             }
         default:
@@ -3354,7 +3365,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     }
 
     private func beginC133Pan(_ recognizer: UIPanGestureRecognizer, started: UInt64) {
-        if c133SuppressUntilAllPointersUp { return }
+        if c133SuppressUntilAllPointersUp || c133StyleBarrierPending { return }
         stateLock.lock()
         let ready = c133GestureFixtureReady && !closing && hostHandle != 0
         let generation = surfaceGeneration
@@ -3412,6 +3423,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         if cumulativeCss.x == 0, cumulativeCss.y == 0 {
             panReport = "pending-first-nonzero-translation"
         } else {
+            if isC133StyleInvalidationScenario && !c133StyleMutationApplied {
+                c133StyleBarrierPending = true
+            }
             panReport = enqueueC133Gesture(
                 action: 1,
                 x: Float(cumulativeCss.x),
@@ -3419,6 +3433,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 reason: 0
             )
             if !panReport.hasPrefix("status=0 ") {
+                c133StyleBarrierPending = false
                 log("SPINON_C133_TOUCH_PAN_BEGIN_REJECTED \(panReport)")
                 cancelC133Gesture(reason: 2, source: "pan-begin-rejected")
                 return
@@ -3463,7 +3478,18 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                             cumulative: cumulative, report: "accepted=true", started: started)
             return
         }
+        if c133StyleBarrierPending {
+            c133LastCumulativeCss = cumulative
+            c133StyleDeferredMovePending = true
+            c133StyleDeferredCumulativeCss = cumulative
+            logC133Callback("style-barrier-deferred-move", recognizer: recognizer,
+                            cumulative: cumulative, report: "accepted=deferred", started: started)
+            return
+        }
         let startsPan = !c133PanBegan
+        if startsPan && isC133StyleInvalidationScenario && !c133StyleMutationApplied {
+            c133StyleBarrierPending = true
+        }
         let report = enqueueC133Gesture(
             action: startsPan ? 1 : 2,
             x: Float(cumulative.x),
@@ -3479,6 +3505,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             }
             scheduleC133Drain()
         } else {
+            if startsPan { c133StyleBarrierPending = false }
             cancelC133Gesture(reason: 2, source: "move-rejected")
         }
         logC133Callback(startsPan ? "pan-began" : "move", recognizer: recognizer,
@@ -3486,6 +3513,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     }
 
     private func endC133Pan(_ recognizer: UIPanGestureRecognizer, started: UInt64) {
+        if c133StyleBarrierPending {
+            if c133StyleDeferredTerminal == nil {
+                c133StyleDeferredTerminal = (action: 3, reason: 0)
+            }
+            c133TouchActive = false
+            c133TerminalQueued = true
+            log("SPINON_C133_STYLE_BARRIER terminal=deferred action=\(c133StyleDeferredTerminal?.action ?? -1) gesture_id=\(c133GestureID)")
+            return
+        }
         guard c133TouchActive, !c133TerminalQueued else {
             if c133ActiveTouchIDs.isEmpty {
                 resetC133GestureState(clearSuppression: true)
@@ -3509,7 +3545,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             c133SuppressUntilAllPointersUp = true
             cancelC133Gesture(reason: 1, source: "second-pointer")
             log("SPINON_C133_TOUCH second-pointer active_contacts=\(count) suppressed=true")
-        } else if count == 0, c133SuppressUntilAllPointersUp {
+        } else if count == 0, c133SuppressUntilAllPointersUp, !c133StyleBarrierPending {
             resetC133GestureState(clearSuppression: true)
         }
     }
@@ -3517,11 +3553,21 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     private func handleC133ApplicationDidEnterBackground() {
         cancelC133Gesture(reason: 3, source: "application-background")
         c133ActiveTouchIDs.removeAll()
-        resetC133GestureState(clearSuppression: true)
+        // Keep the gesture identity until the in-flight style barrier submits its deferred cancel.
+        if !c133StyleBarrierPending {
+            resetC133GestureState(clearSuppression: true)
+        }
     }
 
     private func cancelC133Gesture(reason: Int, source: String) {
         guard c133TouchActive, !c133TerminalQueued else { return }
+        if c133StyleBarrierPending {
+            c133StyleDeferredTerminal = (action: 4, reason: reason)
+            c133TerminalQueued = true
+            c133TouchActive = false
+            log("SPINON_C133_STYLE_BARRIER terminal=deferred action=4 reason=\(reason) source=\(source)")
+            return
+        }
         let report = enqueueC133Gesture(action: 4, x: 0, y: 0, reason: reason)
         c133TerminalQueued = report.hasPrefix("status=0 ")
         if c133TerminalQueued { scheduleC133Drain() }
@@ -3536,6 +3582,50 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         c133LastCumulativeCss = .zero
         c133PanBegan = false
         if clearSuppression { c133SuppressUntilAllPointersUp = false }
+    }
+
+    private var isC133StyleInvalidationScenario: Bool {
+        (8...10).contains(c133GesturePolicyScenarioID)
+    }
+
+    private func completeC133StyleBarrier(updateApplied: Bool) {
+        guard c133StyleBarrierPending else { return }
+        let terminal = c133StyleDeferredTerminal
+        var queued = false
+        if !updateApplied {
+            let report = enqueueC133Gesture(action: 4, x: 0, y: 0, reason: 4)
+            queued = report.hasPrefix("status=0 ")
+            log("SPINON_C133_STYLE_BARRIER update_failed=true cancel=\(report)")
+        } else {
+            if c133StyleDeferredMovePending && terminal?.action != 4 {
+                let report = enqueueC133Gesture(
+                    action: 2,
+                    x: Float(c133StyleDeferredCumulativeCss.x),
+                    y: Float(c133StyleDeferredCumulativeCss.y),
+                    reason: 0
+                )
+                queued = report.hasPrefix("status=0 ") || queued
+                log("SPINON_C133_STYLE_BARRIER deferred_move=\(report)")
+            }
+            if let terminal {
+                let report = enqueueC133Gesture(
+                    action: terminal.action,
+                    x: 0,
+                    y: 0,
+                    reason: terminal.reason
+                )
+                queued = report.hasPrefix("status=0 ") || queued
+                log("SPINON_C133_STYLE_BARRIER deferred_terminal=\(report)")
+            }
+        }
+        c133StyleBarrierPending = false
+        c133StyleDeferredMovePending = false
+        c133StyleDeferredCumulativeCss = .zero
+        c133StyleDeferredTerminal = nil
+        if queued { scheduleC133Drain() }
+        if terminal != nil || !updateApplied {
+            resetC133GestureState(clearSuppression: true)
+        }
     }
 
     private func enqueueC133Gesture(action: Int, x: Float, y: Float, reason: Int) -> String {
@@ -3585,6 +3675,19 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                     ?? "status=-1 empty queue report"
                 self.log("SPINON_C133_PROCESS \(report)")
                 if report.hasPrefix("status=0 ") {
+                    if self.isC133StyleInvalidationScenario
+                        && !self.c133StyleMutationApplied
+                        && report.contains("result=pan_started") {
+                        let styleReport = SpinonRunner.applyRuntimeGpuC13_3StyleInvalidation(handle)
+                            ?? "status=-1 empty style update report"
+                        let updateApplied = styleReport.hasPrefix("status=0 ")
+                            && styleReport.contains("c13_3_style_invalidation=applied")
+                        self.log("SPINON_C133_STYLE_UPDATE \(styleReport)")
+                        if updateApplied { self.c133StyleMutationApplied = true }
+                        DispatchQueue.main.async { [weak self] in
+                            self?.completeC133StyleBarrier(updateApplied: updateApplied)
+                        }
+                    }
                     self.requestDraw()
                 } else {
                     self.postStatus("실패 · C13.3 gesture queue · \(report)")
@@ -3873,6 +3976,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             }
             let scenarioID = c133GesturePolicyScenarioID
             let boundarySeed = scenarioID == 1 || scenarioID == 2
+                || scenarioID == 8 || scenarioID == 9
             let expectedRevision = boundarySeed
                 ? "scroll_state_revision=1" : "scroll_state_revision=0"
             let expectedOffsets = boundarySeed
@@ -3901,6 +4005,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 : scenarioID == 4 ? "touch-action-pan-x"
                 : scenarioID == 5 ? "touch-action-pan-y"
                 : scenarioID == 6 ? "touch-action-target-pan-x"
+                : scenarioID == 8 ? "style-policy-invalidation"
+                : scenarioID == 9 ? "geometry-invalidation"
+                : scenarioID == 10 ? "paint-invalidation"
                 : "touch-action-intersection-none"
             postStatus("준비 · \(scenario) 상태에서 실제 iOS swipe 입력을 확인하세요")
         }

@@ -277,7 +277,6 @@ fn empty_runtime_render_snapshot(
     if request.key.generation != request.snapshot.generation().get()
         || request.key.document_revision != request.snapshot.document_revision().get()
         || request.key.render_tree_revision != request.snapshot.render_tree_revision().get()
-        || request.key.style_revision != spinon_core::StyleRevision::INITIAL.get()
         || request.key.environment_revision != request.viewport.environment_revision.get()
     {
         return Err(layout_failure("invalid_revision", None, None));
@@ -286,7 +285,7 @@ fn empty_runtime_render_snapshot(
         request.snapshot.generation(),
         request.snapshot.document_revision(),
         request.snapshot.render_tree_revision(),
-        spinon_core::StyleRevision::INITIAL,
+        request.key.style_revision,
         request.viewport.environment_revision,
     );
     let viewport = CssSize::new(

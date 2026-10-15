@@ -1,0 +1,99 @@
+[ {
+  "command" : {
+    "swipeCommand" : {
+      "startRelative" : "25%, 48%",
+      "endRelative" : "13%, 48%",
+      "duration" : 500,
+      "optional" : false
+    }
+  },
+  "metadata" : {
+    "status" : "COMPLETED",
+    "timestamp" : 1792060768043,
+    "duration" : 1080,
+    "sequenceNumber" : 3,
+    "evaluatedCommand" : {
+      "swipeCommand" : {
+        "startRelative" : "25%, 48%",
+        "endRelative" : "13%, 48%",
+        "duration" : 500,
+        "optional" : false
+      }
+    }
+  }
+}, {
+  "command" : {
+    "defineVariablesCommand" : {
+      "env" : {
+        "MAESTRO_FILENAME" : "ios-style-policy-invalidation",
+        "MAESTRO_DEVICE_UDID" : "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+        "MAESTRO_SHARD_ID" : "1",
+        "MAESTRO_SHARD_INDEX" : "0"
+      },
+      "optional" : false
+    }
+  },
+  "metadata" : {
+    "status" : "COMPLETED",
+    "timestamp" : 1792060766846,
+    "duration" : 2,
+    "sequenceNumber" : 0,
+    "evaluatedCommand" : {
+      "defineVariablesCommand" : {
+        "env" : {
+          "MAESTRO_FILENAME" : "ios-style-policy-invalidation",
+          "MAESTRO_DEVICE_UDID" : "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+          "MAESTRO_SHARD_ID" : "1",
+          "MAESTRO_SHARD_INDEX" : "0"
+        },
+        "optional" : false
+      }
+    }
+  }
+}, {
+  "command" : {
+    "swipeCommand" : {
+      "startRelative" : "25%, 48%",
+      "endRelative" : "13%, 48%",
+      "duration" : 500,
+      "optional" : false
+    }
+  },
+  "metadata" : {
+    "status" : "COMPLETED",
+    "timestamp" : 1792060766850,
+    "duration" : 1192,
+    "sequenceNumber" : 2,
+    "evaluatedCommand" : {
+      "swipeCommand" : {
+        "startRelative" : "25%, 48%",
+        "endRelative" : "13%, 48%",
+        "duration" : 500,
+        "optional" : false
+      }
+    }
+  }
+}, {
+  "command" : {
+    "applyConfigurationCommand" : {
+      "config" : {
+        "appId" : "dev.spinon.bootstrap"
+      },
+      "optional" : false
+    }
+  },
+  "metadata" : {
+    "status" : "COMPLETED",
+    "timestamp" : 1792060766848,
+    "duration" : 2,
+    "sequenceNumber" : 1,
+    "evaluatedCommand" : {
+      "applyConfigurationCommand" : {
+        "config" : {
+          "appId" : "dev.spinon.bootstrap"
+        },
+        "optional" : false
+      }
+    }
+  }
+} ]

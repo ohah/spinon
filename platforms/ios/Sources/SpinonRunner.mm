@@ -1625,6 +1625,25 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 #endif
 }
 
++ (NSString *)applyRuntimeGpuC13_3StyleInvalidation:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && \
+    SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 32768> output{};
+  const int32_t status = spinon_runtime_gpu_host_apply_c13_3_style_invalidation(
+      host, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C133_STYLE_UPDATE", report);
+  return report;
+#else
+  (void)handle;
+  return @"status=-90 feature-disabled";
+#endif
+}
+
 + (NSString *)enqueueRuntimeGpuC13_3Gesture:(uint64_t)handle
                                       action:(int32_t)action
                            surfaceGeneration:(uint64_t)surfaceGeneration
