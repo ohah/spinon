@@ -30,11 +30,11 @@
 | 24 | AVD 결과가 physical device나 GPU 성능 결과로 확대되는가 | 문서와 본문은 Android API 37 ARM64 emulator, hardware GPU/physical device 미검증으로 제한한다. **통과** |
 | 25 | iOS Simulator 준비 상태를 UIKit callback 통과로 과장하는가 | preflight log는 ready만 기록하고 callback/sign 미관찰과 adapter 보류를 분명히 한다. **통과** |
 | 26 | PR 변경 자체에서 필요한 검증이 비어 있는가 | fixture boundary test 5/5, 기본/opt-in Android build, AVD 8/8 + 3/3 실행 기록을 연결했다. 전체 workspace test는 주장하지 않는다. **통과** |
-| 27 | Tailnet 미리보기에서 stale 문서나 화면이 계속 제공되는가 | 첫 sync 뒤 Java modifier 정규화와 최종 APK SHA가 바뀌었다. 최종 source로 재빌드·재동기화가 필요하다. **수정 대기** |
+| 27 | Tailnet 미리보기에서 stale 문서나 화면이 계속 제공되는가 | 최종 PR head로 제한 Rspress build와 Tailnet sync를 다시 수행했다. Agent Browser에서 로드맵 `61/197`, Android 실행 자료 `8/8` 및 거부 제어 `3/3`, 전후 화면 1080×2400, 변경분 manifest 82/82 HTTP 200 및 SHA-256 일치를 확인했다. [제공 검증 JSON](c13-3-native-wheel-input-2026-10-16/tailnet-served-verification.json)과 [Agent Browser 화면](c13-3-native-wheel-input-2026-10-16/tailnet-roadmap-agent-browser.png)에 남겼다. **통과** |
 | 28 | PR 본문 화면 링크가 branch 이동/삭제 뒤 깨지는가 | image URL은 branch 대신 commit `4480ec2c…`에 고정했다. Agent Browser에서 body image 1080×2400 로드를 확인했다. merge 후 안정 URL을 다시 확인한다. **현재 통과** |
 | 29 | PR 본문·문서 링크가 PR의 실제 head 파일을 가리키는가 | PR 페이지에서 plan, 계약, evidence와 review 링크가 head branch 파일을 연다. **통과** |
 | 30 | merge 가능/검증 gate가 미확인 상태인가 | PR은 open/non-draft, `MERGEABLE`/`CLEAN`; checks 보고가 없고 main required-status-check endpoint는 404다. Android build·AVD 및 focused test 근거는 확인했다. **통과** |
 
 ## 검토에서 찾은 후속 조치
 
-검토 27에서 Tailnet 미리보기와 동기화 manifest가 최종 Java source/APK fingerprint보다 앞선 상태임을 찾았다. 최종 증거·review 문서를 포함해 Rspress scoped build를 다시 만들고 Agent Browser에서 제공 해시와 화면을 재검증하기 전까지 merge하지 않는다. merge 뒤에는 PR 본문 링크를 `main` 경로로 바꾸고 이미지가 계속 로드되는지 Agent Browser로 다시 확인한다.
+검토 27은 최종 Tailnet 동기화 및 Agent Browser 제공 해시 확인으로 해결했다. merge 뒤에는 PR 본문 링크를 `main` 경로로 바꾸고 이미지가 계속 로드되는지 Agent Browser로 다시 확인한다.
