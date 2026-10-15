@@ -1,0 +1,52 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+warn    The dist path is not a subdir of root path, Rsbuild will not empty it.
+warn    Please set `output.cleanDistPath` config manually.
+warn    Current root path: /Users/yoonhb/Documents/workspace/spinon/packages/docs
+warn    Current dist path: /private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6
+info    Rendering pages...
+success Pages rendered in 76 ms.
+ready   built in 0.51s (web)
+ready   built in 0.51s (node)
+
+File (web)                                                                                                                              Size        Gzip
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/static/js/async/i.25208e7c92.js                      0.10 kB     0.09 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/static/js/styles.d2a6dfa6a0.js                       0.47 kB     0.23 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/icon.svg                                             0.64 kB     0.41 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/static/js/async/route-4b629bbd1d04.e78a95812e.js     5.9 kB      2.3 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/static/js/async/route-6647ceacf976.22cff18b4c.js     6.1 kB      2.5 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/static/js/async/route-72678fa77ece.8401d64e62.js     6.2 kB      2.5 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/static/js/async/route-974e4bfdaab8.c80bd32d80.js     9.4 kB      3.3 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/static/js/async/route-851efc7d5743.76c569b5f9.js     9.6 kB      3.1 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/static/js/async/route-70775d610fef.5098790fb7.js     11.0 kB     4.2 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/static/js/async/route-704c177b8822.47798bacd8.js     12.4 kB     4.1 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/static/js/async/route-1051aa86ca75.ec89937f31.js     12.8 kB     4.4 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/static/js/async/route-abeecded38c6.006e876f34.js     26.5 kB     8.1 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/static/js/index.492d359777.js                        28.6 kB     10.0 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/static/js/lib-router.1e14e568cb.js                   35.4 kB     12.7 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/static/image/touchpad-origin-target.5d4682c988.png   60.9 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/static/css/styles.8d918fd78e.css                     74.0 kB     14.2 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/static/js/async/route-a991d6de67ad.aac91bb68c.js     136.7 kB    29.5 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/static/js/a.877e354479.js                            217.1 kB    71.7 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/static/js/lib-react.9cdf8f49ce.js                    218.4 kB    68.9 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/static/search_index.ko.39fdd121.json                 315.0 kB    100.4 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/static/js/async/route-7ce2535ac56d.c37de74f61.js     329.5 kB    77.2 kB
+
+                                                                                                                               Total:   1516.6 kB   480.9 kB
+
+File (node)                                                                                                                                                                           Size       Gzip
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/404.html                                                                                           8.5 kB     2.5 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/spec/internal/evidence/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/README.html        24.5 kB    5.7 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/spec/internal/evidence/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16.html               24.5 kB    5.7 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/spec/internal/evidence/c13-3-android-avd-touchpad-point-plan-review-v2-20-2026-10-16.html          26.4 kB    6.2 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/spec/internal/evidence/c13-3-android-avd-touchpad-point-implementation-review-20-2026-10-16.html   26.7 kB    6.5 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/spec/internal/evidence/c13-3-android-avd-touchpad-point-pr-delta-review-30-2026-10-16.html         28.9 kB    7.2 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/spec/internal/evidence/c13-3-android-avd-touchpad-point-plan-review-20-2026-10-16.html             28.9 kB    5.8 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/plan/c13-3-android-avd-touchpad-point.html                                                         30.4 kB    7.5 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/README.html                     34.4 kB    7.9 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/plan/c13-3-native-wheel-input.html                                                                 44.8 kB    11.3 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/spec/internal/README.html                                                                          132.3 kB   32.1 kB
+../../../../../../../private/tmp/spinon-c13-3-tailnet-stage-20261016/output-final6/spec/STATUS.html                                                                                   314.6 kB   79.2 kB
+
+                                                                                                                                                                             Total:   725.0 kB   177.7 kB

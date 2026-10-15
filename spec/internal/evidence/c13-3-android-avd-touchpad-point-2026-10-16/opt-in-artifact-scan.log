@@ -1,0 +1,5 @@
+apk=platforms/android/app/build/outputs/apk/debug/app-debug.apk
+sha256=ade03d16bc8e5df272560b3016c790e3a467745b2d6a0cfbad846ee8fa62328c
+build_config_fixture_flag=true
+dex_files=classes.dex,classes2.dex
+marker_scan=present: spinon_c133_touchpad_origin_target, SPINON_C133_TOUCHPAD_ORIGIN_TARGET, C133TouchpadOriginTargetFixture, device_supported_source_bits=0x, event_source_bits=0x, pointer_count=, pointer_tool_type=

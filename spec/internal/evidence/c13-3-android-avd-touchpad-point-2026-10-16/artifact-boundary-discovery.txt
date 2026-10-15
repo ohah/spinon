@@ -1,0 +1,7 @@
+Artifact boundary discovery and correction
+
+The first feature-off DEX scan found that the helper diagnostic strings survived in C0410RuntimeGpuDemo even though BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST was false. The strings came from a layout-listener lambda that javac lowered into a synthetic method before the guarded call was removed.
+
+A second inline compile-time guard removed the intent key but still left three origin-target log strings. Its build output is default-build-inline-guard.log and the inspected APK SHA-256 was 2f0de596575b44b667bf6eea1c77313f6f7a77f11682496e528e3d5e358a4fae.
+
+The helper and listener were then moved into src/c13_3_gesture_fixture_test/java, which Gradle adds only for SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST=1. A later default scan found the new pointer diagnostic strings still present because they were unconditional in the main class. Those fields were placed behind the compile-time fixture flag. Final default DEX scan b872134d... and opt-in positive control ade03d16... show the intended boundary, including event source, pointer count/tool, and device-source diagnostics. Exact results are in artifact-boundary.txt and the two scan logs.

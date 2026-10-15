@@ -1,0 +1,668 @@
+{
+  "title": "Spinon Tailnet C13.3 Android AVD touchpad point sync",
+  "generated_at": "2026-10-16T08:47:52+09:00",
+  "source_branch": "feat/c13-3-avd-touchpad-point-20261016",
+  "source_commit": "1ffa45bc4e035c7e410e2a6d5fdb69649eca44c4",
+  "source_main_commit": "d8b85fc5a4f0e5ed7e12e7d3e704416e9c36a94e",
+  "pull_request": "https://github.com/ohah/spinon/pull/212",
+  "preview_root": "https://macstudio.tailed42f2.ts.net/spinon/",
+  "build": {
+    "generator": "Rspress 2.0.22",
+    "scope": "C13.3 follow-up plan, current native-wheel plan, STATUS, internal index, evidence README and four review pages plus Tailnet sync README; static roadmap copied from source",
+    "temporary_checks": "dead-link and dead-image checks disabled only in isolated staging config",
+    "full_site_build": "not run; no full-site build claim",
+    "repository_docs_config_modified": false,
+    "github_pages_workflow": false,
+    "preview_server_restarted": false
+  },
+  "sync_pass": 4,
+  "candidate_file_count": 64,
+  "counts": {
+    "created": 5,
+    "replaced": 12,
+    "unchanged": 47
+  },
+  "backup_root": "/Users/yoonhb/Library/Application Support/SpinonPreview/backup/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16",
+  "pass_backup_root": "/Users/yoonhb/Library/Application Support/SpinonPreview/backup/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/pass-4",
+  "backup_file_count_this_pass_including_prior_manifest": 13,
+  "files": [
+    {
+      "path": "icon.svg",
+      "source": "rspress:icon.svg",
+      "size_bytes": 638,
+      "previous_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "expected_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "logo.svg",
+      "source": "rspress:logo.svg",
+      "size_bytes": 568,
+      "previous_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "expected_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "plan/c13-3-android-avd-touchpad-point.html",
+      "source": "rspress:plan/c13-3-android-avd-touchpad-point.html",
+      "size_bytes": 30423,
+      "previous_sha256": "2666c49139400cb2dc6387b285907c608929cc51e9462d65efc244056ec7714f",
+      "expected_sha256": "83264d73ea5a59515ed609c3d72941a6b848309cdfbac084508121a2f83cd924",
+      "sync_status": "replaced",
+      "backup_path": "backup/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/pass-4/plan/c13-3-android-avd-touchpad-point.html"
+    },
+    {
+      "path": "plan/c13-3-android-avd-touchpad-point.md",
+      "source": "repo:plan/c13-3-android-avd-touchpad-point.md",
+      "size_bytes": 7700,
+      "previous_sha256": "bec922bbdb8f723e523bb03e43f1807df1d0152e80a9aec9ffa0b7c945a3f98f",
+      "expected_sha256": "bec922bbdb8f723e523bb03e43f1807df1d0152e80a9aec9ffa0b7c945a3f98f",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "plan/c13-3-native-wheel-input.html",
+      "source": "rspress:plan/c13-3-native-wheel-input.html",
+      "size_bytes": 44809,
+      "previous_sha256": "d24699d0ead41c9fbe741852fa2889133da3eef99c2840ca859eb1149c71ac96",
+      "expected_sha256": "e245e7f5ddd81cee2f076d0e7b17064f9a29d6c69f0059625334d367ca461f21",
+      "sync_status": "replaced",
+      "backup_path": "backup/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/pass-4/plan/c13-3-native-wheel-input.html"
+    },
+    {
+      "path": "plan/c13-3-native-wheel-input.md",
+      "source": "repo:plan/c13-3-native-wheel-input.md",
+      "size_bytes": 17916,
+      "previous_sha256": "343cf82c9e18ec6a984e93cd8a60abf3df7eba6a886cda35a3bd139aeef2db62",
+      "expected_sha256": "343cf82c9e18ec6a984e93cd8a60abf3df7eba6a886cda35a3bd139aeef2db62",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "public/roadmap.html",
+      "source": "repo:spec/public/roadmap.html",
+      "size_bytes": 112758,
+      "previous_sha256": "4b0bfb1594c34fc04ef988c52cfd95e52c3297d55a839cf6b14259ed36883425",
+      "expected_sha256": "4b0bfb1594c34fc04ef988c52cfd95e52c3297d55a839cf6b14259ed36883425",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "roadmap.html",
+      "source": "repo:spec/public/roadmap.html",
+      "size_bytes": 112758,
+      "previous_sha256": "4b0bfb1594c34fc04ef988c52cfd95e52c3297d55a839cf6b14259ed36883425",
+      "expected_sha256": "4b0bfb1594c34fc04ef988c52cfd95e52c3297d55a839cf6b14259ed36883425",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "roadmap.svg",
+      "source": "rspress:roadmap.svg",
+      "size_bytes": 4835,
+      "previous_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "expected_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/STATUS.html",
+      "source": "rspress:spec/STATUS.html",
+      "size_bytes": 314631,
+      "previous_sha256": "717d1ae9bd7f1b42e9840bfa57d32ec28cd5fd81fa7fcda15a19e713dce1d882",
+      "expected_sha256": "d2dfe3d3b5a5bdd9f85f33784e8c34918ade30cc7de0294950bddfd75a96d348",
+      "sync_status": "replaced",
+      "backup_path": "backup/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/pass-4/spec/STATUS.html"
+    },
+    {
+      "path": "spec/STATUS.md",
+      "source": "repo:spec/STATUS.md",
+      "size_bytes": 237352,
+      "previous_sha256": "06ee3ddb451fd858939964402e22260e39855cd9afdc444d50a55a87c136cb33",
+      "expected_sha256": "06ee3ddb451fd858939964402e22260e39855cd9afdc444d50a55a87c136cb33",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/README.html",
+      "source": "rspress:spec/internal/README.html",
+      "size_bytes": 132287,
+      "previous_sha256": "d900dfdd348c209b83e929bd38c9b7485eb2a2a9b543767373c1fab2b7731bb9",
+      "expected_sha256": "1de882992d5c602d5a5c7c6985baec90ab8145dbb67ac6e90d999676fa1798f2",
+      "sync_status": "replaced",
+      "backup_path": "backup/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/pass-4/spec/internal/README.html"
+    },
+    {
+      "path": "spec/internal/README.md",
+      "source": "repo:spec/internal/README.md",
+      "size_bytes": 92524,
+      "previous_sha256": "a9054b3da6f6b2635b79fcdb000c8ee2a06b1948dc41165bb3f1f9c850766183",
+      "expected_sha256": "a9054b3da6f6b2635b79fcdb000c8ee2a06b1948dc41165bb3f1f9c850766183",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/README.html",
+      "source": "rspress:spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/README.html",
+      "size_bytes": 34368,
+      "previous_sha256": "ecc3e553da78013873af911ff06925419c2394a05fdb0910c698d48aaa6e5018",
+      "expected_sha256": "be6a2551846d58b8668d2b9b54e870e2aa0dcb6f40ecb2d6925f9f714bcee8df",
+      "sync_status": "replaced",
+      "backup_path": "backup/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/pass-4/spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/README.html"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/README.md",
+      "source": "repo:spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/README.md",
+      "size_bytes": 6267,
+      "previous_sha256": "6b22582cb627ac8674893a1746dfc8e5149d9de73ef2a50209704c82ef64ef7e",
+      "expected_sha256": "6b22582cb627ac8674893a1746dfc8e5149d9de73ef2a50209704c82ef64ef7e",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/artifact-boundary-discovery.txt",
+      "source": "repo:spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/artifact-boundary-discovery.txt",
+      "size_bytes": 1189,
+      "previous_sha256": "79e10aad941471c93a58794d961dec2b6a63b870e6775be98aabf95ed9eacdc9",
+      "expected_sha256": "79e10aad941471c93a58794d961dec2b6a63b870e6775be98aabf95ed9eacdc9",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/artifact-boundary.txt",
+      "source": "repo:spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/artifact-boundary.txt",
+      "size_bytes": 1220,
+      "previous_sha256": "e376e70752b93285b4c27be828f1beb9cd819cd9735e6662113e0b9cc81623c8",
+      "expected_sha256": "e376e70752b93285b4c27be828f1beb9cd819cd9735e6662113e0b9cc81623c8",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/default-artifact-scan.log",
+      "source": "repo:spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/default-artifact-scan.log",
+      "size_bytes": 284,
+      "previous_sha256": "ed5e2cc4bc2fdd6beca680ddb973ff74c3b8b358a4b31af9a74b6630181771c4",
+      "expected_sha256": "ed5e2cc4bc2fdd6beca680ddb973ff74c3b8b358a4b31af9a74b6630181771c4",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/default-build-inline-guard.log",
+      "source": "repo:spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/default-build-inline-guard.log",
+      "size_bytes": 4458,
+      "previous_sha256": "7eda782a31b2666acc93fcf1a07336fcf1001ee8b601110309108f8c5d1f82ee",
+      "expected_sha256": "7eda782a31b2666acc93fcf1a07336fcf1001ee8b601110309108f8c5d1f82ee",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/default-build.log",
+      "source": "repo:spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/default-build.log",
+      "size_bytes": 4458,
+      "previous_sha256": "7eda782a31b2666acc93fcf1a07336fcf1001ee8b601110309108f8c5d1f82ee",
+      "expected_sha256": "7eda782a31b2666acc93fcf1a07336fcf1001ee8b601110309108f8c5d1f82ee",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/default-rejection-android-avd.log",
+      "source": "repo:spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/default-rejection-android-avd.log",
+      "size_bytes": 1363,
+      "previous_sha256": "d751e762d4fa3a3b9392caa50f6f3f7e1adc9e4405ff241df15594fc021a660c",
+      "expected_sha256": "d751e762d4fa3a3b9392caa50f6f3f7e1adc9e4405ff241df15594fc021a660c",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/default-surface-after.png",
+      "source": "repo:spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/default-surface-after.png",
+      "size_bytes": 75022,
+      "previous_sha256": "f186a078d3d15f908be491730286a46452468ae6eed3419d7647d5723bb77c91",
+      "expected_sha256": "f186a078d3d15f908be491730286a46452468ae6eed3419d7647d5723bb77c91",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/default-surface-before.png",
+      "source": "repo:spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/default-surface-before.png",
+      "size_bytes": 75022,
+      "previous_sha256": "f186a078d3d15f908be491730286a46452468ae6eed3419d7647d5723bb77c91",
+      "expected_sha256": "f186a078d3d15f908be491730286a46452468ae6eed3419d7647d5723bb77c91",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/opt-in-artifact-scan.log",
+      "source": "repo:spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/opt-in-artifact-scan.log",
+      "size_bytes": 418,
+      "previous_sha256": "2e383f4a9be300844fb42b151c40f53fc4936c6c72df77e9f8e4202389100dd6",
+      "expected_sha256": "2e383f4a9be300844fb42b151c40f53fc4936c6c72df77e9f8e4202389100dd6",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/opt-in-build.log",
+      "source": "repo:spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/opt-in-build.log",
+      "size_bytes": 4006,
+      "previous_sha256": "bc91dd495849c78bd8d2e48211c8bef3682eba6afa404970ca24ad74d09c2e2b",
+      "expected_sha256": "bc91dd495849c78bd8d2e48211c8bef3682eba6afa404970ca24ad74d09c2e2b",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/positive-android-avd.log",
+      "source": "repo:spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/positive-android-avd.log",
+      "size_bytes": 5027,
+      "previous_sha256": "73127b9e4c7b00a9df6ada4a1270b128d873b9c1467bbccb6cdac9b9d485ae40",
+      "expected_sha256": "73127b9e4c7b00a9df6ada4a1270b128d873b9c1467bbccb6cdac9b9d485ae40",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/touchpad-origin-target-before.png",
+      "source": "repo:spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/touchpad-origin-target-before.png",
+      "size_bytes": 64096,
+      "previous_sha256": "0dccbea63154007e9a617d4745be2e1d5ad44efa96ddb373812d2b938cd6b42f",
+      "expected_sha256": "0dccbea63154007e9a617d4745be2e1d5ad44efa96ddb373812d2b938cd6b42f",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/touchpad-origin-target.png",
+      "source": "repo:spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/touchpad-origin-target.png",
+      "size_bytes": 60900,
+      "previous_sha256": "57d6d3e5248c23d679c1a1f0021226850de8c66b2205e5a48897f4c16bdd769c",
+      "expected_sha256": "57d6d3e5248c23d679c1a1f0021226850de8c66b2205e5a48897f4c16bdd769c",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/uinput-two-finger-negative-control.log",
+      "source": "repo:spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/uinput-two-finger-negative-control.log",
+      "size_bytes": 5549,
+      "previous_sha256": "1c4beaf2541e4a78a14cebd20b3ddc41b57f7ff848c8d72ff68434dc611b2695",
+      "expected_sha256": "1c4beaf2541e4a78a14cebd20b3ddc41b57f7ff848c8d72ff68434dc611b2695",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-implementation-review-20-2026-10-16.html",
+      "source": "rspress:spec/internal/evidence/c13-3-android-avd-touchpad-point-implementation-review-20-2026-10-16.html",
+      "size_bytes": 26716,
+      "previous_sha256": "abac3c742c232d88e47ab83c1e21ba9ace7c6f46c025b57d7d933e0f9af59281",
+      "expected_sha256": "e8b92abe487df6e56be35ef41d3b408e45f23ba035acea73220f455950ea922e",
+      "sync_status": "replaced",
+      "backup_path": "backup/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/pass-4/spec/internal/evidence/c13-3-android-avd-touchpad-point-implementation-review-20-2026-10-16.html"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-implementation-review-20-2026-10-16.md",
+      "source": "repo:spec/internal/evidence/c13-3-android-avd-touchpad-point-implementation-review-20-2026-10-16.md",
+      "size_bytes": 5059,
+      "previous_sha256": "c18a915c9f659c4dfeaa7295b008098d7a0a28cfd0b4f7175face7ec1ced5d43",
+      "expected_sha256": "c18a915c9f659c4dfeaa7295b008098d7a0a28cfd0b4f7175face7ec1ced5d43",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-plan-review-20-2026-10-16.html",
+      "source": "rspress:spec/internal/evidence/c13-3-android-avd-touchpad-point-plan-review-20-2026-10-16.html",
+      "size_bytes": 28924,
+      "previous_sha256": "199c4ae643eaa393e81164014fc2d0debd74e4988f784ce6ba716fec9d4c6e15",
+      "expected_sha256": "da065645b886813358f407ce7aae8455b780fe742af9c7757066d8a98f654d0e",
+      "sync_status": "replaced",
+      "backup_path": "backup/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/pass-4/spec/internal/evidence/c13-3-android-avd-touchpad-point-plan-review-20-2026-10-16.html"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-plan-review-20-2026-10-16.md",
+      "source": "repo:spec/internal/evidence/c13-3-android-avd-touchpad-point-plan-review-20-2026-10-16.md",
+      "size_bytes": 3216,
+      "previous_sha256": "a1bd334ad28ce70cb7fc9d3284dadf6a5caca5a9f3ae158018970c5c1c083249",
+      "expected_sha256": "a1bd334ad28ce70cb7fc9d3284dadf6a5caca5a9f3ae158018970c5c1c083249",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-plan-review-v2-20-2026-10-16.html",
+      "source": "rspress:spec/internal/evidence/c13-3-android-avd-touchpad-point-plan-review-v2-20-2026-10-16.html",
+      "size_bytes": 26415,
+      "previous_sha256": "dd2f4fd2e228ff9c1081286a92bc6b3df4521a768a5b828983926e0947022e8b",
+      "expected_sha256": "50cb3a7e2fe79969c5154a85497f65f2c4328be01f99c753d6312343584773e1",
+      "sync_status": "replaced",
+      "backup_path": "backup/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/pass-4/spec/internal/evidence/c13-3-android-avd-touchpad-point-plan-review-v2-20-2026-10-16.html"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-plan-review-v2-20-2026-10-16.md",
+      "source": "repo:spec/internal/evidence/c13-3-android-avd-touchpad-point-plan-review-v2-20-2026-10-16.md",
+      "size_bytes": 4523,
+      "previous_sha256": "1d8aacd15b59888671e4d23cd53fa1df161674d559244e1f167eb42c5986ba3f",
+      "expected_sha256": "1d8aacd15b59888671e4d23cd53fa1df161674d559244e1f167eb42c5986ba3f",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-pr-delta-review-30-2026-10-16.html",
+      "source": "rspress:spec/internal/evidence/c13-3-android-avd-touchpad-point-pr-delta-review-30-2026-10-16.html",
+      "size_bytes": 28874,
+      "previous_sha256": "f35e9ee898a61d34d32a02153e3b797f8ba6f04b3c6c76236907e04a88cf449d",
+      "expected_sha256": "38d66a912a1555d02cee9ba39bee80e899d2f2f0550e5e824650ebab1618beda",
+      "sync_status": "replaced",
+      "backup_path": "backup/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/pass-4/spec/internal/evidence/c13-3-android-avd-touchpad-point-pr-delta-review-30-2026-10-16.html"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-pr-delta-review-30-2026-10-16.md",
+      "source": "repo:spec/internal/evidence/c13-3-android-avd-touchpad-point-pr-delta-review-30-2026-10-16.md",
+      "size_bytes": 6319,
+      "previous_sha256": "c80dc8c78b7d5a8ae706d16a801d101f24930fde0ab828a70724cc04f8654fd4",
+      "expected_sha256": "46535f844a12f8afe0038f862277f42a5a447d2c1ff90e005c0c179606dbbcc6",
+      "sync_status": "replaced",
+      "backup_path": "backup/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/pass-4/spec/internal/evidence/c13-3-android-avd-touchpad-point-pr-delta-review-30-2026-10-16.md"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/README.md",
+      "source": "repo:spec/internal/evidence/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/README.md",
+      "size_bytes": 3528,
+      "previous_sha256": "ffe8dda6447c2d5fff02c15b2a14782174588d0dfbbe0398f9774b5d00e9899f",
+      "expected_sha256": "c392c62ad0f3f3d477022d85e74949fa0bdb22ed82b35c8609589b609742a8e0",
+      "sync_status": "replaced",
+      "backup_path": "backup/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/pass-4/spec/internal/evidence/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/README.md"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/evidence-page-agent-browser.png",
+      "source": "repo:spec/internal/evidence/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/evidence-page-agent-browser.png",
+      "size_bytes": 80638,
+      "previous_sha256": "9e78267df1d39c1143b97430bf0583e4cdd745592dbce82f5e4f28a9ac193d9a",
+      "expected_sha256": "9e78267df1d39c1143b97430bf0583e4cdd745592dbce82f5e4f28a9ac193d9a",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/roadmap-agent-browser.png",
+      "source": "repo:spec/internal/evidence/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/roadmap-agent-browser.png",
+      "size_bytes": 187734,
+      "previous_sha256": "b6ca968d37a949ca105c3fa89dc88ef07e8be02de7b86b30ca058126f5bf465b",
+      "expected_sha256": "b6ca968d37a949ca105c3fa89dc88ef07e8be02de7b86b30ca058126f5bf465b",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/rspress-scoped-build-output.txt",
+      "source": "repo:spec/internal/evidence/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/rspress-scoped-build-output.txt",
+      "size_bytes": 6849,
+      "previous_sha256": "c720b99c4c0c7079ff38ce1fc7c59672b8efce92592d62d26cc8a51d9d301187",
+      "expected_sha256": "5d0856aaab3623622262c8b982288397d5485266181d9dd84d5e0af3eac6019e",
+      "sync_status": "replaced",
+      "backup_path": "backup/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/pass-4/spec/internal/evidence/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/rspress-scoped-build-output.txt"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "source": "rspress:static/css/styles.8d918fd78e.css",
+      "size_bytes": 73952,
+      "previous_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "expected_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/touchpad-origin-target.5d4682c988.png",
+      "source": "rspress:static/image/touchpad-origin-target.5d4682c988.png",
+      "size_bytes": 60900,
+      "previous_sha256": "57d6d3e5248c23d679c1a1f0021226850de8c66b2205e5a48897f4c16bdd769c",
+      "expected_sha256": "57d6d3e5248c23d679c1a1f0021226850de8c66b2205e5a48897f4c16bdd769c",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/a.877e354479.js",
+      "source": "rspress:static/js/a.877e354479.js",
+      "size_bytes": 217085,
+      "previous_sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "expected_sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/a.877e354479.js.LICENSE.txt",
+      "source": "rspress:static/js/a.877e354479.js.LICENSE.txt",
+      "size_bytes": 384,
+      "previous_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "expected_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "source": "rspress:static/js/async/i.25208e7c92.js",
+      "size_bytes": 100,
+      "previous_sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "expected_sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-1051aa86ca75.ec89937f31.js",
+      "source": "rspress:static/js/async/route-1051aa86ca75.ec89937f31.js",
+      "size_bytes": 12834,
+      "previous_sha256": "c78a978314fd6c93997a6fa74fe032654a03d6422d8eddd2fccb51599edf9d59",
+      "expected_sha256": "c78a978314fd6c93997a6fa74fe032654a03d6422d8eddd2fccb51599edf9d59",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-4b629bbd1d04.e78a95812e.js",
+      "source": "rspress:static/js/async/route-4b629bbd1d04.e78a95812e.js",
+      "size_bytes": 5876,
+      "previous_sha256": "9626d8e29f87d6811a8e7398e6065a5c397eabe9a28d174b831bc0dba4dbecd8",
+      "expected_sha256": "9626d8e29f87d6811a8e7398e6065a5c397eabe9a28d174b831bc0dba4dbecd8",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-70775d610fef.5098790fb7.js",
+      "source": "rspress:static/js/async/route-70775d610fef.5098790fb7.js",
+      "size_bytes": 11002,
+      "previous_sha256": "b1a07fff109c03aae0bdf5d4cf82ff0e5dc8af91ad778cb1b4756d1b51338aa8",
+      "expected_sha256": "b1a07fff109c03aae0bdf5d4cf82ff0e5dc8af91ad778cb1b4756d1b51338aa8",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.c37de74f61.js",
+      "source": "rspress:static/js/async/route-7ce2535ac56d.c37de74f61.js",
+      "size_bytes": 329489,
+      "previous_sha256": "dbd9d32c6218b2f39c2600a3dbd6c1dc9b664f3ef3a2381c66f4e78b6dde925d",
+      "expected_sha256": "dbd9d32c6218b2f39c2600a3dbd6c1dc9b664f3ef3a2381c66f4e78b6dde925d",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-851efc7d5743.76c569b5f9.js",
+      "source": "rspress:static/js/async/route-851efc7d5743.76c569b5f9.js",
+      "size_bytes": 9578,
+      "previous_sha256": "8a6c6467feadb1ae12ed6e4c6fb2824ddcaaa8673b5b816d259e3999f29f4306",
+      "expected_sha256": "8a6c6467feadb1ae12ed6e4c6fb2824ddcaaa8673b5b816d259e3999f29f4306",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-974e4bfdaab8.c80bd32d80.js",
+      "source": "rspress:static/js/async/route-974e4bfdaab8.c80bd32d80.js",
+      "size_bytes": 9430,
+      "previous_sha256": "b79779152ffe5061de7b6cf937fe4aad57b0e7428156d50cfeb170fd1577fa64",
+      "expected_sha256": "b79779152ffe5061de7b6cf937fe4aad57b0e7428156d50cfeb170fd1577fa64",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-a991d6de67ad.aac91bb68c.js",
+      "source": "rspress:static/js/async/route-a991d6de67ad.aac91bb68c.js",
+      "size_bytes": 136700,
+      "previous_sha256": "8ad716197bb62274a40406b49753ad2452bbb2f129a6b32a557bfc8bbe7858ee",
+      "expected_sha256": "8ad716197bb62274a40406b49753ad2452bbb2f129a6b32a557bfc8bbe7858ee",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-abeecded38c6.006e876f34.js",
+      "source": "rspress:static/js/async/route-abeecded38c6.006e876f34.js",
+      "size_bytes": 26507,
+      "previous_sha256": "c2347991f49b654613884cb5050b10a5d6aa64c4e1a07cec8c863302619337c8",
+      "expected_sha256": "c2347991f49b654613884cb5050b10a5d6aa64c4e1a07cec8c863302619337c8",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "source": "rspress:static/js/lib-react.9cdf8f49ce.js",
+      "size_bytes": 218364,
+      "previous_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "expected_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "source": "rspress:static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "size_bytes": 1209,
+      "previous_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "expected_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "source": "rspress:static/js/lib-router.1e14e568cb.js",
+      "size_bytes": 35370,
+      "previous_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "expected_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "source": "rspress:static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "size_bytes": 222,
+      "previous_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "expected_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/styles.d2a6dfa6a0.js",
+      "source": "rspress:static/js/styles.d2a6dfa6a0.js",
+      "size_bytes": 473,
+      "previous_sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "expected_sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-704c177b8822.47798bacd8.js",
+      "source": "rspress:static/js/async/route-704c177b8822.47798bacd8.js",
+      "size_bytes": 12439,
+      "previous_sha256": null,
+      "expected_sha256": "9c39e65b315bb032af5bebdd1517a737e05aa2432c3ea5cb3ddd6ac4ca443d43",
+      "sync_status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-72678fa77ece.8401d64e62.js",
+      "source": "rspress:static/js/async/route-72678fa77ece.8401d64e62.js",
+      "size_bytes": 6195,
+      "previous_sha256": null,
+      "expected_sha256": "2f4c536b037aa3951a6d74b423441f3e2da2c5165f574df433296bc5f04702ec",
+      "sync_status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/index.492d359777.js",
+      "source": "rspress:static/js/index.492d359777.js",
+      "size_bytes": 28582,
+      "previous_sha256": null,
+      "expected_sha256": "cacc815f2dc95dc646731d8df19f313f2d2feb7734c48945bda23a988ba5f465",
+      "sync_status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/search_index.ko.39fdd121.json",
+      "source": "rspress:static/search_index.ko.39fdd121.json",
+      "size_bytes": 314964,
+      "previous_sha256": null,
+      "expected_sha256": "39fdd12136f307331a447207fa7aba0e81799b79f928cb4655d7fa039c6ded21",
+      "sync_status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/README.html",
+      "source": "rspress:spec/internal/evidence/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/README.html",
+      "size_bytes": 24473,
+      "previous_sha256": null,
+      "expected_sha256": "7db0755b9d22ca97bdcae5a4a1c995dc69d4693b02d643a9e872cba76f70d84a",
+      "sync_status": "created",
+      "backup_path": null
+    }
+  ],
+  "manifest_self_hash_excluded": true,
+  "history": [
+    {
+      "pass": 1,
+      "candidate_file_count": 58,
+      "counts": {
+        "created": 38,
+        "replaced": 8,
+        "unchanged": 12
+      },
+      "backups": 8,
+      "manifest_sha256": "50950871d9daf56037de5b51b7d72c40e8a0bfb23129317f8f719647f946d25a"
+    },
+    {
+      "pass": 2,
+      "candidate_file_count": 58,
+      "counts": {
+        "created": 3,
+        "replaced": 10,
+        "unchanged": 45
+      },
+      "backups": 11,
+      "manifest_sha256": "117d02c18148e894ce1b6361730122a3e8c5c3cbd6a307e6aa79299ea477fc05"
+    },
+    {
+      "pass": 3,
+      "candidate_file_count": 62,
+      "counts": {
+        "created": 4,
+        "replaced": 0,
+        "unchanged": 58
+      },
+      "backups": 1,
+      "manifest_backup": "backup/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/pass-3/sync-manifest-c13-3-android-avd-touchpad-point-2026-10-16.json"
+    },
+    {
+      "pass": 4,
+      "candidate_file_count": 64,
+      "counts": {
+        "created": 5,
+        "replaced": 12,
+        "unchanged": 47
+      },
+      "backups": 13,
+      "manifest_sha256": "9abbfe884cc287f41e5be8ab6e97a29b4651e31bbab8575e0405e7fefebc659a"
+    }
+  ],
+  "total_preserved_backups": 33,
+  "tailnet_manifest": {
+    "path": "sync-manifest-c13-3-android-avd-touchpad-point-2026-10-16.json",
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/sync-manifest-c13-3-android-avd-touchpad-point-2026-10-16.json",
+    "sha256": "9abbfe884cc287f41e5be8ab6e97a29b4651e31bbab8575e0405e7fefebc659a",
+    "previous_sha256": "f03ed0c834296cb7f4cb0744216dc927d8b89546ad2506c4b04a060c3b2a4bfa",
+    "backup_path": "backup/c13-3-android-avd-touchpad-point-tailnet-sync-2026-10-16/pass-4/sync-manifest-c13-3-android-avd-touchpad-point-2026-10-16.json"
+  },
+  "agent_browser_verification": {
+    "checked_at_utc": "2026-10-15T23:48:15.728Z",
+    "manifest_sha256_matches": true,
+    "candidate_file_count": 64,
+    "http_200_and_sha256_match": 64,
+    "failed": 0
+  }
+}

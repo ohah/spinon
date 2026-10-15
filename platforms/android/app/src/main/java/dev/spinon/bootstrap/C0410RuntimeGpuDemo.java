@@ -18,6 +18,7 @@ import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewConfiguration;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -1134,7 +1135,24 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : c131BorderStripProbeRequested ? 160 : fixedSizeCssFixtureRequested ? 240 : 100;
         LayoutParams surfaceParams = new LayoutParams(
                 dp(initialSurfaceWidth, density), dp(initialSurfaceHeight, density));
-        stage.addView(surfaceView, surfaceParams);
+        if (BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST
+                && c133GestureFixtureRequested
+                && activity.getIntent().getBooleanExtra(
+                        "spinon_c133_touchpad_origin_target", false)) {
+            try {
+                Class<?> fixture = Class.forName(
+                        "dev.spinon.bootstrap.C133TouchpadOriginTargetFixture");
+                fixture.getDeclaredMethod(
+                        "install", ViewGroup.class, ViewGroup.class,
+                        SurfaceView.class, ViewGroup.LayoutParams.class)
+                        .invoke(null, this, stage, surfaceView, surfaceParams);
+            } catch (ReflectiveOperationException exception) {
+                throw new IllegalStateException(
+                        "C13.3 touchpad fixture helper is unavailable", exception);
+            }
+        } else {
+            stage.addView(surfaceView, surfaceParams);
+        }
 
         Button resizeButton = new Button(activity);
         resizeButton.setText("표면 크기 전환 · 301×100 CSS px");
@@ -1334,7 +1352,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                                     || key.equals("spinon_c133_synthetic_second_pointer")
                                     || key.equals("spinon_c133_policy_scenario_id")
                                     || key.equals("spinon_c133_tap_probe")
-                                    || key.equals("spinon_c133_wheel_probe")))) {
+                                    || key.equals("spinon_c133_wheel_probe")
+                                    || (BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST
+                                            && key.equals(
+                                                    "spinon_c133_touchpad_origin_target"))))) {
                 continue;
             }
             Object value = extras.get(key);
@@ -4846,8 +4867,22 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         long callbackMicros = (SystemClock.elapsedRealtimeNanos() - started) / 1000;
         int[] surfaceOriginOnScreen = new int[2];
         surfaceView.getLocationOnScreen(surfaceOriginOnScreen);
+        String eventDiagnostics = "";
+        if (BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST) {
+            InputDevice device = event.getDevice();
+            int pointerCount = event.getPointerCount();
+            int pointerToolType = pointerCount > 0
+                    ? event.getToolType(0) : MotionEvent.TOOL_TYPE_UNKNOWN;
+            eventDiagnostics = " event_source_bits=0x"
+                    + Integer.toHexString(event.getSource())
+                    + " pointer_count=" + pointerCount
+                    + " pointer_tool_type=" + pointerToolType
+                    + " device_supported_source_bits=0x"
+                    + Integer.toHexString(device == null ? 0 : device.getSources())
+                    + " device=" + event.getDeviceId();
+        }
         Log.i(TAG, "SPINON_C133_TOUCH source=MotionEvent action=" + action
-                + " event_action=" + event.getActionMasked()
+                + " event_action=" + event.getActionMasked() + eventDiagnostics
                 + " pointer_id=" + c133ActivePointerId
                 + " surface_local_physical_px=" + event.getX() + "," + event.getY()
                 + " screen_physical_px=" + event.getRawX() + "," + event.getRawY()
