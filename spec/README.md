@@ -22,6 +22,7 @@
 | 0006 | [라우팅과 화면 이동](0006-routing.md) | 웹 URL·모바일 화면 스택·딥링크·뒤로 가기 |
 | 0007 | [모바일 DOM 호환 계층](0007-dom-compatibility.md) | 모바일 DOM 호환 계층, Rust 문서 트리, 첫 API 후보와 미정 계약 |
 | 0008 | [CSS 호환](0008-css-compatibility.md) | Chromium 비교 기준, CSS 범위·우선순위와 플랫폼 판정 |
+| 0009 | [적합성 시나리오 카탈로그](0009-conformance-scenarios.md) | 제안 시나리오의 oracle, 입력, 플랫폼별 결과와 미정 계약 |
 
 ## 읽는 법
 
