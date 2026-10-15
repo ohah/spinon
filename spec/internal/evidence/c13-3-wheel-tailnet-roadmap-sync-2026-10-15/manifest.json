@@ -1,0 +1,1126 @@
+{
+  "generated_at": "2026-10-15T23:39:31+09:00",
+  "base_revision": "28b3ba214fc681b6327da607288a990e55e96f06",
+  "preview_root": "https://macstudio.tailed42f2.ts.net/spinon/",
+  "verified_files": 124,
+  "sha256_matches": 124,
+  "manifest_self_hash_excluded": true,
+  "files": [
+    {
+      "path": "icon.svg",
+      "sync_status": "unchanged",
+      "size_bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "previous_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "http_status": 200,
+      "served_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "logo.svg",
+      "sync_status": "unchanged",
+      "size_bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "previous_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "http_status": 200,
+      "served_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "plan/c13-3-scroll-gestures.html",
+      "sync_status": "replaced",
+      "size_bytes": 83315,
+      "sha256": "8992d004d395793eef5385edae582791d63909da99ad81c92ab719caf70c118b",
+      "previous_sha256": "22256043668d0263503626a715eaafdbf014809e01b08060ba19f1dd8ab32632",
+      "http_status": 200,
+      "served_sha256": "8992d004d395793eef5385edae582791d63909da99ad81c92ab719caf70c118b"
+    },
+    {
+      "path": "plan/c13-3-wheel-delta-routing.html",
+      "sync_status": "added",
+      "size_bytes": 32237,
+      "sha256": "b07daaa58fabef183a23a2b58a1df4543573883bb3f903f897245999dc970c23",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "b07daaa58fabef183a23a2b58a1df4543573883bb3f903f897245999dc970c23"
+    },
+    {
+      "path": "roadmap.html",
+      "sync_status": "replaced",
+      "size_bytes": 109093,
+      "sha256": "8649b13b9bd583ee26f995eed9dd181130b8bc4b9e769c1f11ea85b5930ef6f6",
+      "previous_sha256": "47dbc93d98764614b42a5ce116f23f526fe00ffea7330023c121e82f9ceaf331",
+      "http_status": 200,
+      "served_sha256": "8649b13b9bd583ee26f995eed9dd181130b8bc4b9e769c1f11ea85b5930ef6f6"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "sync_status": "replaced",
+      "size_bytes": 308732,
+      "sha256": "61535ec9e6b5dd7a43cd1f50b5b13aea75f9d6c9f91cd31bedc09f82a3357506",
+      "previous_sha256": "f3cbfed8a8fd4bbbe1139e316de9ecd3979ff1fafbbaff60c5d02cfe545196da",
+      "http_status": 200,
+      "served_sha256": "61535ec9e6b5dd7a43cd1f50b5b13aea75f9d6c9f91cd31bedc09f82a3357506"
+    },
+    {
+      "path": "spec/internal/0063-c13-3-scroll-gestures.html",
+      "sync_status": "replaced",
+      "size_bytes": 72858,
+      "sha256": "81bce12860e7cf9de640475f95cf6511a1d78b833e1dc90d4e5a1d206e4cc067",
+      "previous_sha256": "fc028a4a99bd47c9e0a8df4ff3b9586e1de89b98a19588ae9df5cfb1f68470d0",
+      "http_status": 200,
+      "served_sha256": "81bce12860e7cf9de640475f95cf6511a1d78b833e1dc90d4e5a1d206e4cc067"
+    },
+    {
+      "path": "spec/internal/README.html",
+      "sync_status": "replaced",
+      "size_bytes": 135493,
+      "sha256": "7b8a55b50f527c125a704a1c833b6bd263080a8dc5b1ba1ccf90d903947c2b5a",
+      "previous_sha256": "843891696f127f0fb43769ee62250396a895759d5a1a8210bccf34022b36866f",
+      "http_status": 200,
+      "served_sha256": "7b8a55b50f527c125a704a1c833b6bd263080a8dc5b1ba1ccf90d903947c2b5a"
+    },
+    {
+      "path": "spec/internal/README.md",
+      "sync_status": "replaced",
+      "size_bytes": 91750,
+      "sha256": "dbdf3d1e5d7aa31d185996088cb83f84cfed54f45236c74e13fead44d98d0793",
+      "previous_sha256": "8e607398c19e259c9c52fb831c229e42dcf003cd1dd5f65070af08eeb9582960",
+      "http_status": 200,
+      "served_sha256": "dbdf3d1e5d7aa31d185996088cb83f84cfed54f45236c74e13fead44d98d0793"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/README.html",
+      "sync_status": "added",
+      "size_bytes": 41808,
+      "sha256": "597da93abcd599acd19a5020396c153ebadbeb7c948a07f1a7c3286c06b1027a",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "597da93abcd599acd19a5020396c153ebadbeb7c948a07f1a7c3286c06b1027a"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/README.md",
+      "sync_status": "added",
+      "size_bytes": 10348,
+      "sha256": "3821e05eb3fee5979615a0d1b0bd95d7dc82ddeaa514b6f88149283fabc89f16",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "3821e05eb3fee5979615a0d1b0bd95d7dc82ddeaa514b6f88149283fabc89f16"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-avd.json",
+      "sync_status": "added",
+      "size_bytes": 233,
+      "sha256": "6c7770640be34fd322147c70b9a9c0de75b07cc4ef5e70015edbbdd8ab3f9ae4",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "6c7770640be34fd322147c70b9a9c0de75b07cc4ef5e70015edbbdd8ab3f9ae4"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-feature-boundary.txt",
+      "sync_status": "added",
+      "size_bytes": 408,
+      "sha256": "bc24d85108e5462debd03e5331652ed64d2ed649fbd6285a8c0a7ec5e3a1a7ce",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "bc24d85108e5462debd03e5331652ed64d2ed649fbd6285a8c0a7ec5e3a1a7ce"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-feature-off-artifacts.sha256",
+      "sync_status": "added",
+      "size_bytes": 254,
+      "sha256": "4f07235dde0c7eb3c8c0bf6f5e407f48b1633ecc2712e4eda3602e26687f608a",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "4f07235dde0c7eb3c8c0bf6f5e407f48b1633ecc2712e4eda3602e26687f608a"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-feature-off-build.log",
+      "sync_status": "added",
+      "size_bytes": 5446,
+      "sha256": "6af6e495963e8f282731cc795bb10ae24b21ae4b3145f41343ba64674a26e293",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "6af6e495963e8f282731cc795bb10ae24b21ae4b3145f41343ba64674a26e293"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-install.log",
+      "sync_status": "added",
+      "size_bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-opt-in-artifacts.sha256",
+      "sync_status": "added",
+      "size_bytes": 254,
+      "sha256": "2a2f6babf05d6d22adb9f330d9cae38d9f1eee8a0436541d6324256d37498689",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "2a2f6babf05d6d22adb9f330d9cae38d9f1eee8a0436541d6324256d37498689"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-opt-in-build-v8-mismatch.log",
+      "sync_status": "added",
+      "size_bytes": 1646,
+      "sha256": "f398978a04addebe6377fb47212b6918901949d91b0ed54238e95f87f6ccbc9b",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "f398978a04addebe6377fb47212b6918901949d91b0ed54238e95f87f6ccbc9b"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-opt-in-build.log",
+      "sync_status": "added",
+      "size_bytes": 3740,
+      "sha256": "fe60d9d1bea46bddab827b784c46a5f8b998dcdae245985833024b071a3c8341",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "fe60d9d1bea46bddab827b784c46a5f8b998dcdae245985833024b071a3c8341"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-opt-in-wheel-symbol.txt",
+      "sync_status": "added",
+      "size_bytes": 63,
+      "sha256": "f56316d4e36705376461d4f76a70496964e7480f0a13af2110ccefcd2613201b",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "f56316d4e36705376461d4f76a70496964e7480f0a13af2110ccefcd2613201b"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-scenario-1-before-launch.log",
+      "sync_status": "added",
+      "size_bytes": 185,
+      "sha256": "df386947d9fe76c24dbb280596f419aa04b592586bbaa3cc96a888f8d0675a52",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "df386947d9fe76c24dbb280596f419aa04b592586bbaa3cc96a888f8d0675a52"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-scenario-1-before-runtime.log",
+      "sync_status": "added",
+      "size_bytes": 4306,
+      "sha256": "41eaf842f79c0cd1423c767b3da694048df2753d857da1d57ebdf92ece864845",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "41eaf842f79c0cd1423c767b3da694048df2753d857da1d57ebdf92ece864845"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-scenario-1-before-screen.png",
+      "sync_status": "added",
+      "size_bytes": 83240,
+      "sha256": "e203953f635c4f14cd551e564104c920a4cf82dafef184d9ad2e388b12730dd4",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "e203953f635c4f14cd551e564104c920a4cf82dafef184d9ad2e388b12730dd4"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-scenario-1-before-view-bounds.xml",
+      "sync_status": "added",
+      "size_bytes": 3573,
+      "sha256": "b240fdd988d99dbd48cfd6f7cf19ac1ff6f53fe77ce16a3a18dd267bcba31243",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "b240fdd988d99dbd48cfd6f7cf19ac1ff6f53fe77ce16a3a18dd267bcba31243"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-scenario-1-final-view-bounds.xml",
+      "sync_status": "added",
+      "size_bytes": 3573,
+      "sha256": "ee930175f8929dbbb96e1126d74a7360c84dad2bce39d374ddcd57df2258d12c",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "ee930175f8929dbbb96e1126d74a7360c84dad2bce39d374ddcd57df2258d12c"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-scenario-1-launch.log",
+      "sync_status": "added",
+      "size_bytes": 185,
+      "sha256": "4bdf2d538ce7b590f916bf6a9a2df1f57fcfd9bd6b0909ec3d39e137a69953f9",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "4bdf2d538ce7b590f916bf6a9a2df1f57fcfd9bd6b0909ec3d39e137a69953f9"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-scenario-1-runtime.log",
+      "sync_status": "added",
+      "size_bytes": 8791,
+      "sha256": "14b9c9839cf0b1f9ad25bfb27c557d1ec1334cb5cc07f7b2bc997ab6f67fd434",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "14b9c9839cf0b1f9ad25bfb27c557d1ec1334cb5cc07f7b2bc997ab6f67fd434"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-scenario-1-screen.png",
+      "sync_status": "added",
+      "size_bytes": 79205,
+      "sha256": "b78e4ea0986f1eaa1f876afd7a19d43e4f37f6336b7a0176118678652e113040",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "b78e4ea0986f1eaa1f876afd7a19d43e4f37f6336b7a0176118678652e113040"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-scenario-2-before-launch.log",
+      "sync_status": "added",
+      "size_bytes": 185,
+      "sha256": "32858a07f70740f784b8c45c8dd89fc9dfc36603f14edda5b0781d3145d31d3c",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "32858a07f70740f784b8c45c8dd89fc9dfc36603f14edda5b0781d3145d31d3c"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-scenario-2-before-runtime.log",
+      "sync_status": "added",
+      "size_bytes": 4363,
+      "sha256": "4574516ecba616f46d1a9d99566ccb1324d7f7d7d2276d1a0fcc9c618976ebac",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "4574516ecba616f46d1a9d99566ccb1324d7f7d7d2276d1a0fcc9c618976ebac"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-scenario-2-before-screen.png",
+      "sync_status": "added",
+      "size_bytes": 83240,
+      "sha256": "e203953f635c4f14cd551e564104c920a4cf82dafef184d9ad2e388b12730dd4",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "e203953f635c4f14cd551e564104c920a4cf82dafef184d9ad2e388b12730dd4"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-scenario-2-launch.log",
+      "sync_status": "added",
+      "size_bytes": 185,
+      "sha256": "dd678d1c4646bab4c2d95bcd5088f51aa19fd080361fcfec9ad0f3212795ed38",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "dd678d1c4646bab4c2d95bcd5088f51aa19fd080361fcfec9ad0f3212795ed38"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-scenario-2-runtime.log",
+      "sync_status": "added",
+      "size_bytes": 8832,
+      "sha256": "7485a838187f8e345ba85a32e8cf7f4b3f4cd9f1480b900293d6609f13f464b2",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "7485a838187f8e345ba85a32e8cf7f4b3f4cd9f1480b900293d6609f13f464b2"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-scenario-2-screen.png",
+      "sync_status": "added",
+      "size_bytes": 81086,
+      "sha256": "26fa01a85ccf6d936561cec318c680662c9411be606cecf60b6794e4ade9ea89",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "26fa01a85ccf6d936561cec318c680662c9411be606cecf60b6794e4ade9ea89"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-scenario-3-before-launch.log",
+      "sync_status": "added",
+      "size_bytes": 185,
+      "sha256": "cb6ca2a355856c005674b77074faf834a34d9949542ef1a20add67c0357bc673",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "cb6ca2a355856c005674b77074faf834a34d9949542ef1a20add67c0357bc673"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-scenario-3-before-runtime.log",
+      "sync_status": "added",
+      "size_bytes": 4290,
+      "sha256": "53850b05071b9b9660953aa034cb29d03d0b68d3ea9d027d90eff13e2e662d03",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "53850b05071b9b9660953aa034cb29d03d0b68d3ea9d027d90eff13e2e662d03"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-scenario-3-before-screen.png",
+      "sync_status": "added",
+      "size_bytes": 83217,
+      "sha256": "36e1b577265d49d6d00a00b6a806fa688e41a77056d7c64a360a1b7e45d5202c",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "36e1b577265d49d6d00a00b6a806fa688e41a77056d7c64a360a1b7e45d5202c"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-scenario-3-launch.log",
+      "sync_status": "added",
+      "size_bytes": 185,
+      "sha256": "92ca26285ae8f0db4be1ec87e8f144346241e6e6dd931a665e0ee336795ce6ed",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "92ca26285ae8f0db4be1ec87e8f144346241e6e6dd931a665e0ee336795ce6ed"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-scenario-3-runtime.log",
+      "sync_status": "added",
+      "size_bytes": 8711,
+      "sha256": "937cc99548b8378a4eea9d94da9359c077c938fe74e0cdb8e8849c5eaed59536",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "937cc99548b8378a4eea9d94da9359c077c938fe74e0cdb8e8849c5eaed59536"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-scenario-3-screen.png",
+      "sync_status": "added",
+      "size_bytes": 81105,
+      "sha256": "0cacdd7c96181c136b6a8de8b8f0ff6a961bcf6920d9c225462f5fe75577c2e2",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "0cacdd7c96181c136b6a8de8b8f0ff6a961bcf6920d9c225462f5fe75577c2e2"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/implementation-review-20.html",
+      "sync_status": "added",
+      "size_bytes": 31708,
+      "sha256": "ab36916372a9e2fdc798ce5deb9acdf1dd16c658f9198aecfd4cf059bba7fc2f",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "ab36916372a9e2fdc798ce5deb9acdf1dd16c658f9198aecfd4cf059bba7fc2f"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/implementation-review-20.md",
+      "sync_status": "added",
+      "size_bytes": 5522,
+      "sha256": "28ada12ec41da4ecf0ddb76977d80a7da3a79ede5e38628b0283dd15be738100",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "28ada12ec41da4ecf0ddb76977d80a7da3a79ede5e38628b0283dd15be738100"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-feature-boundary.txt",
+      "sync_status": "added",
+      "size_bytes": 395,
+      "sha256": "8bdb9d68b7dc503a34b3cd4ba5c1f9e6539979c66ccaa7adc4fb9b90a87c13d4",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "8bdb9d68b7dc503a34b3cd4ba5c1f9e6539979c66ccaa7adc4fb9b90a87c13d4"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-feature-off-artifact.sha256",
+      "sync_status": "added",
+      "size_bytes": 164,
+      "sha256": "4092a95182495fd5ae0059c6ab9174a9cbcd442acc91059227572aaf5a97c2f4",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "4092a95182495fd5ae0059c6ab9174a9cbcd442acc91059227572aaf5a97c2f4"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-feature-off-build.log",
+      "sync_status": "added",
+      "size_bytes": 106873,
+      "sha256": "8899e5d86c4d816de3a7f7ed55b92ea5f24a58f1fc7c51f476348a34dfe87549",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "8899e5d86c4d816de3a7f7ed55b92ea5f24a58f1fc7c51f476348a34dfe87549"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-opt-in-artifacts.sha256",
+      "sync_status": "added",
+      "size_bytes": 164,
+      "sha256": "97515f90d59bd4eb0b1f692bf549509d9f4200298f072c8b449c92118cca4a53",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "97515f90d59bd4eb0b1f692bf549509d9f4200298f072c8b449c92118cca4a53"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-opt-in-build.log",
+      "sync_status": "added",
+      "size_bytes": 81406,
+      "sha256": "abad3d7580c97b86389209009bd721ca046e9492340374f48a2d87ce9d652b2c",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "abad3d7580c97b86389209009bd721ca046e9492340374f48a2d87ce9d652b2c"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-opt-in-wheel-symbol.txt",
+      "sync_status": "added",
+      "size_bytes": 64,
+      "sha256": "54d6eaa97a52ffc1fe6a03a54ac06b7b8f6db49b1b791610930bc421bbb85ce8",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "54d6eaa97a52ffc1fe6a03a54ac06b7b8f6db49b1b791610930bc421bbb85ce8"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-1-before-launch.log",
+      "sync_status": "added",
+      "size_bytes": 28,
+      "sha256": "89a5a23fce6bcdec7ca4c6df067e625a17219a7d170b79b582f2efaa9dbcc7e8",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "89a5a23fce6bcdec7ca4c6df067e625a17219a7d170b79b582f2efaa9dbcc7e8"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-1-before-log-read.stderr",
+      "sync_status": "added",
+      "size_bytes": 44,
+      "sha256": "8b9e4a529f3e367142876bd0ce03ed7c7f10a50657c9a73fda0d6e30867e7523",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "8b9e4a529f3e367142876bd0ce03ed7c7f10a50657c9a73fda0d6e30867e7523"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-1-before-runtime.log",
+      "sync_status": "added",
+      "size_bytes": 397,
+      "sha256": "c23ef69c37aefdaa650c2802b8aaa6a2822e195fc3c3c44cf1d56653c6d9b5e5",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "c23ef69c37aefdaa650c2802b8aaa6a2822e195fc3c3c44cf1d56653c6d9b5e5"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-1-before-screen.png",
+      "sync_status": "added",
+      "size_bytes": 144555,
+      "sha256": "ae4ec6352398370418de2e8891278689c558406657a1d6fd40e478cd8d7262c4",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "ae4ec6352398370418de2e8891278689c558406657a1d6fd40e478cd8d7262c4"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-1-before-screenshot.log",
+      "sync_status": "added",
+      "size_bytes": 154,
+      "sha256": "1773a596cad965adf74a0fdf12eb187abc7de9e77b21568e1402e28e3c05161f",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "1773a596cad965adf74a0fdf12eb187abc7de9e77b21568e1402e28e3c05161f"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-1-launch.log",
+      "sync_status": "added",
+      "size_bytes": 28,
+      "sha256": "9fef1e50b28986ea56b23e70771b7873ea42d32a1ced6d9091bae7ee282397d0",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "9fef1e50b28986ea56b23e70771b7873ea42d32a1ced6d9091bae7ee282397d0"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-1-log-read.stderr",
+      "sync_status": "added",
+      "size_bytes": 44,
+      "sha256": "8b9e4a529f3e367142876bd0ce03ed7c7f10a50657c9a73fda0d6e30867e7523",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "8b9e4a529f3e367142876bd0ce03ed7c7f10a50657c9a73fda0d6e30867e7523"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-1-runtime.log",
+      "sync_status": "added",
+      "size_bytes": 3923,
+      "sha256": "ef9344c646072d8a2e2fa1b6276ee125e6d684dc31effe4baadadd372d32421c",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "ef9344c646072d8a2e2fa1b6276ee125e6d684dc31effe4baadadd372d32421c"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-1-screen.png",
+      "sync_status": "added",
+      "size_bytes": 135846,
+      "sha256": "788abedea58d8d7104ffaf596395739f749db3a28cc53d66a88226347b8cfec5",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "788abedea58d8d7104ffaf596395739f749db3a28cc53d66a88226347b8cfec5"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-1-screenshot.log",
+      "sync_status": "added",
+      "size_bytes": 147,
+      "sha256": "6792918e58c9d242994d74177ebe248983b05b5e2372fbd3179a844fe4dd9c5e",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "6792918e58c9d242994d74177ebe248983b05b5e2372fbd3179a844fe4dd9c5e"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-2-before-launch.log",
+      "sync_status": "added",
+      "size_bytes": 28,
+      "sha256": "f34364db58673e2fa7feb672ce00e41c76e62a628c867c0465624ece7d36344e",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "f34364db58673e2fa7feb672ce00e41c76e62a628c867c0465624ece7d36344e"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-2-before-log-read.stderr",
+      "sync_status": "added",
+      "size_bytes": 44,
+      "sha256": "8b9e4a529f3e367142876bd0ce03ed7c7f10a50657c9a73fda0d6e30867e7523",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "8b9e4a529f3e367142876bd0ce03ed7c7f10a50657c9a73fda0d6e30867e7523"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-2-before-runtime.log",
+      "sync_status": "added",
+      "size_bytes": 397,
+      "sha256": "23b94e950e11d70a832645ce2363d2f92f1f17c0979666081a73f02dfae3670e",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "23b94e950e11d70a832645ce2363d2f92f1f17c0979666081a73f02dfae3670e"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-2-before-screen.png",
+      "sync_status": "added",
+      "size_bytes": 148382,
+      "sha256": "3b83f97484750142cb14b71b289cf6d42c73f0bd08fbe6b33c058896cce20c0f",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "3b83f97484750142cb14b71b289cf6d42c73f0bd08fbe6b33c058896cce20c0f"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-2-before-screenshot.log",
+      "sync_status": "added",
+      "size_bytes": 154,
+      "sha256": "acb442b09e0cf27f0be9134498e105c728a0570edc70391a82d71f0e21d1e874",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "acb442b09e0cf27f0be9134498e105c728a0570edc70391a82d71f0e21d1e874"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-2-launch.log",
+      "sync_status": "added",
+      "size_bytes": 28,
+      "sha256": "d4b62ac48d0240ff1f4500d40391b3244227b364a59f4416e000f36829d46767",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "d4b62ac48d0240ff1f4500d40391b3244227b364a59f4416e000f36829d46767"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-2-log-read.stderr",
+      "sync_status": "added",
+      "size_bytes": 44,
+      "sha256": "8b9e4a529f3e367142876bd0ce03ed7c7f10a50657c9a73fda0d6e30867e7523",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "8b9e4a529f3e367142876bd0ce03ed7c7f10a50657c9a73fda0d6e30867e7523"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-2-runtime.log",
+      "sync_status": "added",
+      "size_bytes": 3935,
+      "sha256": "785a8dc6e2b020c64a0a3b2ab3033ccf662fe809ed2de13029d65af21cec02a2",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "785a8dc6e2b020c64a0a3b2ab3033ccf662fe809ed2de13029d65af21cec02a2"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-2-screen.png",
+      "sync_status": "added",
+      "size_bytes": 135901,
+      "sha256": "4b57273f929783f314bfb59443de543fb0608785feb8bf182a6f30d59c39de0f",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "4b57273f929783f314bfb59443de543fb0608785feb8bf182a6f30d59c39de0f"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-2-screenshot.log",
+      "sync_status": "added",
+      "size_bytes": 147,
+      "sha256": "2ea4db9b0e721cbd78ba2d2747a1e32ca0b7fa1bfa5f78385629fff997f3d977",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "2ea4db9b0e721cbd78ba2d2747a1e32ca0b7fa1bfa5f78385629fff997f3d977"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-3-before-launch.log",
+      "sync_status": "added",
+      "size_bytes": 28,
+      "sha256": "443cb6e1f81cf0dd3ab742d811e84ecd25f72380794232a4ecb66fa2e835efaf",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "443cb6e1f81cf0dd3ab742d811e84ecd25f72380794232a4ecb66fa2e835efaf"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-3-before-log-read.stderr",
+      "sync_status": "added",
+      "size_bytes": 44,
+      "sha256": "8b9e4a529f3e367142876bd0ce03ed7c7f10a50657c9a73fda0d6e30867e7523",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "8b9e4a529f3e367142876bd0ce03ed7c7f10a50657c9a73fda0d6e30867e7523"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-3-before-runtime.log",
+      "sync_status": "added",
+      "size_bytes": 394,
+      "sha256": "7f89f8cd5c44b2b75f7a6b6cb32ea5c2424a962e13d33188ebe72f43d09551ca",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "7f89f8cd5c44b2b75f7a6b6cb32ea5c2424a962e13d33188ebe72f43d09551ca"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-3-before-screen.png",
+      "sync_status": "added",
+      "size_bytes": 145271,
+      "sha256": "2d1906e9619b16cf38381a160ed757862b6a23b7c27c85679d22fabc96ff1eac",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "2d1906e9619b16cf38381a160ed757862b6a23b7c27c85679d22fabc96ff1eac"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-3-before-screenshot.log",
+      "sync_status": "added",
+      "size_bytes": 154,
+      "sha256": "babaa8150901928d9219dd50bc3230ef8227125efa7a2fa81dc3bb1fdc3e94db",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "babaa8150901928d9219dd50bc3230ef8227125efa7a2fa81dc3bb1fdc3e94db"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-3-launch.log",
+      "sync_status": "added",
+      "size_bytes": 28,
+      "sha256": "a02de46baecf09d132e404524c0c10b0d73b923a4ec0932d91c91d03a771b3c1",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "a02de46baecf09d132e404524c0c10b0d73b923a4ec0932d91c91d03a771b3c1"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-3-log-read.stderr",
+      "sync_status": "added",
+      "size_bytes": 44,
+      "sha256": "8b9e4a529f3e367142876bd0ce03ed7c7f10a50657c9a73fda0d6e30867e7523",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "8b9e4a529f3e367142876bd0ce03ed7c7f10a50657c9a73fda0d6e30867e7523"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-3-runtime.log",
+      "sync_status": "added",
+      "size_bytes": 3886,
+      "sha256": "c512e1b4e1ebf97e36d77f6ca4aebbe5a42d7bef75135157b77b0c2445d960c4",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "c512e1b4e1ebf97e36d77f6ca4aebbe5a42d7bef75135157b77b0c2445d960c4"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-3-screen.png",
+      "sync_status": "added",
+      "size_bytes": 135892,
+      "sha256": "0299b584cafb78ed087e24743b43dd67570f03026e70013e2cebf7aa5f42e9ec",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "0299b584cafb78ed087e24743b43dd67570f03026e70013e2cebf7aa5f42e9ec"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-3-screenshot.log",
+      "sync_status": "added",
+      "size_bytes": 147,
+      "sha256": "5f17a64000089c2a40a39ef958aaa3b92aa0ac929a1676e8292d46e0937f38b9",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "5f17a64000089c2a40a39ef958aaa3b92aa0ac929a1676e8292d46e0937f38b9"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-simulator.json",
+      "sync_status": "added",
+      "size_bytes": 241,
+      "sha256": "f8c052add33304182b824e40684371c73a4fd2aca85c612f87d4d76ce98e8de4",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "f8c052add33304182b824e40684371c73a4fd2aca85c612f87d4d76ce98e8de4"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/pixel-boundary-analysis.json",
+      "sync_status": "added",
+      "size_bytes": 3429,
+      "sha256": "2e5d71596f5930eec03e3037f721030fd6752f7aa48355345e521f048c2c2563",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "2e5d71596f5930eec03e3037f721030fd6752f7aa48355345e521f048c2c2563"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/pr-delta-review-30.html",
+      "sync_status": "added",
+      "size_bytes": 33363,
+      "sha256": "eee15101860c6aa626df571729c61929fe208683c10ba32e434777c36390f427",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "eee15101860c6aa626df571729c61929fe208683c10ba32e434777c36390f427"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/pr-delta-review-30.md",
+      "sync_status": "added",
+      "size_bytes": 6762,
+      "sha256": "dcf43aeeca904aebcc675f4458e1785a8d4fd7270c478460fbb5e8ac70f016c7",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "dcf43aeeca904aebcc675f4458e1785a8d4fd7270c478460fbb5e8ac70f016c7"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-tailnet-roadmap-sync-2026-10-15/README.html",
+      "sync_status": "added",
+      "size_bytes": 28101,
+      "sha256": "8af6f8c62ed692dab8fc98dad5a22ce5946e5a0bbf7212cf4a4c1e6a7f41c5d2",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "8af6f8c62ed692dab8fc98dad5a22ce5946e5a0bbf7212cf4a4c1e6a7f41c5d2"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-tailnet-roadmap-sync-2026-10-15/README.md",
+      "sync_status": "added",
+      "size_bytes": 2884,
+      "sha256": "1bf2cbd8697750b7c4e7b073f07def1cec8ee30b3cd7a05e57ee45476c4052a4",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "1bf2cbd8697750b7c4e7b073f07def1cec8ee30b3cd7a05e57ee45476c4052a4"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-tailnet-roadmap-sync-2026-10-15/pr-delta-review-30.html",
+      "sync_status": "added",
+      "size_bytes": 30964,
+      "sha256": "8da4597c78e8c75cb474393735f91a879eeceae2409a5ae32640190ce50a0dae",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "8da4597c78e8c75cb474393735f91a879eeceae2409a5ae32640190ce50a0dae"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-tailnet-roadmap-sync-2026-10-15/pr-delta-review-30.md",
+      "sync_status": "added",
+      "size_bytes": 5064,
+      "sha256": "4ca5e3d290fd2889d2b10840f9488126ff753572a1c813d69f014539e6e06f4f",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "4ca5e3d290fd2889d2b10840f9488126ff753572a1c813d69f014539e6e06f4f"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-tailnet-roadmap-sync-2026-10-15/tailscale-roadmap-agent-browser.png",
+      "sync_status": "added",
+      "size_bytes": 204110,
+      "sha256": "ae86eeef3d2d118b7b8067b784b6d24a2fe0f56e35a48bc2833e7a8a3dd9e848",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "ae86eeef3d2d118b7b8067b784b6d24a2fe0f56e35a48bc2833e7a8a3dd9e848"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "sync_status": "unchanged",
+      "size_bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "previous_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "http_status": 200,
+      "served_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "path": "static/image/android-after-recovery.4c26b9d1bb.png",
+      "sync_status": "unchanged",
+      "size_bytes": 84445,
+      "sha256": "ffb4c6d59ebd2a02dbcd67181f8c873c45f96ec9113a4f8c08437da595102f23",
+      "previous_sha256": "ffb4c6d59ebd2a02dbcd67181f8c873c45f96ec9113a4f8c08437da595102f23",
+      "http_status": 200,
+      "served_sha256": "ffb4c6d59ebd2a02dbcd67181f8c873c45f96ec9113a4f8c08437da595102f23"
+    },
+    {
+      "path": "static/image/android-after-second-pointer-cancel.954296ae91.png",
+      "sync_status": "unchanged",
+      "size_bytes": 84448,
+      "sha256": "bf10668822352248eb654f4f738e491adbb59098d1095b0c0af2c5e948719d6c",
+      "previous_sha256": "bf10668822352248eb654f4f738e491adbb59098d1095b0c0af2c5e948719d6c",
+      "http_status": 200,
+      "served_sha256": "bf10668822352248eb654f4f738e491adbb59098d1095b0c0af2c5e948719d6c"
+    },
+    {
+      "path": "static/image/android-scenario-1-screen.d8493ead38.png",
+      "sync_status": "added",
+      "size_bytes": 79205,
+      "sha256": "b78e4ea0986f1eaa1f876afd7a19d43e4f37f6336b7a0176118678652e113040",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "b78e4ea0986f1eaa1f876afd7a19d43e4f37f6336b7a0176118678652e113040"
+    },
+    {
+      "path": "static/image/android-scenario-2-screen.2464545075.png",
+      "sync_status": "added",
+      "size_bytes": 81086,
+      "sha256": "26fa01a85ccf6d936561cec318c680662c9411be606cecf60b6794e4ade9ea89",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "26fa01a85ccf6d936561cec318c680662c9411be606cecf60b6794e4ade9ea89"
+    },
+    {
+      "path": "static/image/android-scenario-3-screen.076bac0ff5.png",
+      "sync_status": "added",
+      "size_bytes": 81105,
+      "sha256": "0cacdd7c96181c136b6a8de8b8f0ff6a961bcf6920d9c225462f5fe75577c2e2",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "0cacdd7c96181c136b6a8de8b8f0ff6a961bcf6920d9c225462f5fe75577c2e2"
+    },
+    {
+      "path": "static/image/ios-scenario-1-screen.e92d5927b6.png",
+      "sync_status": "added",
+      "size_bytes": 135846,
+      "sha256": "788abedea58d8d7104ffaf596395739f749db3a28cc53d66a88226347b8cfec5",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "788abedea58d8d7104ffaf596395739f749db3a28cc53d66a88226347b8cfec5"
+    },
+    {
+      "path": "static/image/ios-scenario-2-screen.b3c642a7b1.png",
+      "sync_status": "added",
+      "size_bytes": 135901,
+      "sha256": "4b57273f929783f314bfb59443de543fb0608785feb8bf182a6f30d59c39de0f",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "4b57273f929783f314bfb59443de543fb0608785feb8bf182a6f30d59c39de0f"
+    },
+    {
+      "path": "static/image/ios-scenario-3-screen.cbcc96d974.png",
+      "sync_status": "added",
+      "size_bytes": 135892,
+      "sha256": "0299b584cafb78ed087e24743b43dd67570f03026e70013e2cebf7aa5f42e9ec",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "0299b584cafb78ed087e24743b43dd67570f03026e70013e2cebf7aa5f42e9ec"
+    },
+    {
+      "path": "static/js/async/7.4a7c3e64b3.js",
+      "sync_status": "added",
+      "size_bytes": 96,
+      "sha256": "8dfddb57e897ea45daed86ddfa1cb05da89a605830f546a045b1c1ff7f1df39b",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "8dfddb57e897ea45daed86ddfa1cb05da89a605830f546a045b1c1ff7f1df39b"
+    },
+    {
+      "path": "static/js/async/route-3a019e8afbff.06ac9bfef6.js",
+      "sync_status": "added",
+      "size_bytes": 11574,
+      "sha256": "ae90b073774cea837a4545cf02ac11a7b4c23cba9b7a07960b4c6139cd1139d9",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "ae90b073774cea837a4545cf02ac11a7b4c23cba9b7a07960b4c6139cd1139d9"
+    },
+    {
+      "path": "static/js/async/route-5cee168c0948.e4b0919ee0.js",
+      "sync_status": "added",
+      "size_bytes": 51015,
+      "sha256": "445cc198ec77b318bc796ec61f4201dcca58c2acbc2249db994f4fde303cd5d1",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "445cc198ec77b318bc796ec61f4201dcca58c2acbc2249db994f4fde303cd5d1"
+    },
+    {
+      "path": "static/js/async/route-5ec6fb54e3d7.6444f0f664.js",
+      "sync_status": "added",
+      "size_bytes": 8052,
+      "sha256": "6d60b1ddf529a6f3546148e03614833432d1c2da1d1355d1dca7b83600ab468f",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "6d60b1ddf529a6f3546148e03614833432d1c2da1d1355d1dca7b83600ab468f"
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.180b2f1ab8.js",
+      "sync_status": "added",
+      "size_bytes": 318800,
+      "sha256": "d48f40137b272dd70705df1543bb7e959fb5410b4830344a5e0028028a9e6638",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "d48f40137b272dd70705df1543bb7e959fb5410b4830344a5e0028028a9e6638"
+    },
+    {
+      "path": "static/js/async/route-8b95f6699ca6.30efddd981.js",
+      "sync_status": "added",
+      "size_bytes": 22641,
+      "sha256": "e34447ea421cf80899399d1a165ee56e82ff44b3fbf20e19604cf8b349396dad",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "e34447ea421cf80899399d1a165ee56e82ff44b3fbf20e19604cf8b349396dad"
+    },
+    {
+      "path": "static/js/async/route-93f37c590f4e.1a53eb731e.js",
+      "sync_status": "added",
+      "size_bytes": 11325,
+      "sha256": "0ee300c817a8731d95d80ce66f80117f7d4e63e7f482921120976c95bef07bc7",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "0ee300c817a8731d95d80ce66f80117f7d4e63e7f482921120976c95bef07bc7"
+    },
+    {
+      "path": "static/js/async/route-995c2b010c45.7c69569a1d.js",
+      "sync_status": "added",
+      "size_bytes": 8520,
+      "sha256": "9e489f2223ccb665e8a191ac07676b80814027f63560f75cdd0617e31e297ec9",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "9e489f2223ccb665e8a191ac07676b80814027f63560f75cdd0617e31e297ec9"
+    },
+    {
+      "path": "static/js/async/route-9cb28c0eb9f3.69c16da7c5.js",
+      "sync_status": "added",
+      "size_bytes": 3645,
+      "sha256": "195b5196341cd2141f01c4169a0a2caa9a1510adad2ab5acfa20ca1407d9e479",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "195b5196341cd2141f01c4169a0a2caa9a1510adad2ab5acfa20ca1407d9e479"
+    },
+    {
+      "path": "static/js/async/route-a991d6de67ad.2d15597312.js",
+      "sync_status": "added",
+      "size_bytes": 135703,
+      "sha256": "d86bb02221cd4785049b84bdf2f6d2d03119a0340c0a9ea5a973c8325f59d26f",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "d86bb02221cd4785049b84bdf2f6d2d03119a0340c0a9ea5a973c8325f59d26f"
+    },
+    {
+      "path": "static/js/async/route-abb37df2ff87.1e8bc45ae7.js",
+      "sync_status": "added",
+      "size_bytes": 5791,
+      "sha256": "6632ac17db1a7ad17d6fd3580cfa4363a7c115fa2f59ca48a5059d672d73013d",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "6632ac17db1a7ad17d6fd3580cfa4363a7c115fa2f59ca48a5059d672d73013d"
+    },
+    {
+      "path": "static/js/async/route-b90ae416f933.293659f987.js",
+      "sync_status": "added",
+      "size_bytes": 20165,
+      "sha256": "71b23815c530f08bee886f62dfdb214e697ff73a56dbb7f09e229bb50430bbc2",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "71b23815c530f08bee886f62dfdb214e697ff73a56dbb7f09e229bb50430bbc2"
+    },
+    {
+      "path": "static/js/async/route-ceb4348590dc.c9dedb5490.js",
+      "sync_status": "added",
+      "size_bytes": 8340,
+      "sha256": "3d0da7d3aef6087793494449957c32b7347a5bd4006af98ed3eff69473410794",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "3d0da7d3aef6087793494449957c32b7347a5bd4006af98ed3eff69473410794"
+    },
+    {
+      "path": "static/js/async/route-d138c5df840a.9fdcef92f6.js",
+      "sync_status": "added",
+      "size_bytes": 59475,
+      "sha256": "0311d5a96752441f46a1493eba7a799748e72d8fcd326aba39b4b8d6517e6a1d",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "0311d5a96752441f46a1493eba7a799748e72d8fcd326aba39b4b8d6517e6a1d"
+    },
+    {
+      "path": "static/js/async/route-d5825d277d7c.7abe874112.js",
+      "sync_status": "added",
+      "size_bytes": 10850,
+      "sha256": "814df3faf57d9a77f02e25705e209af241d5f8374a5c2febca561f5e5fb97bb8",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "814df3faf57d9a77f02e25705e209af241d5f8374a5c2febca561f5e5fb97bb8"
+    },
+    {
+      "path": "static/js/async/route-e0aa76c11589.3887a8d343.js",
+      "sync_status": "added",
+      "size_bytes": 16292,
+      "sha256": "c92b9a0f6266c0967e0295444536d500f1a9c8cff30d5dbdd9dd7223d4c2c4d6",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "c92b9a0f6266c0967e0295444536d500f1a9c8cff30d5dbdd9dd7223d4c2c4d6"
+    },
+    {
+      "path": "static/js/async/route-ef2940073a71.a9aa09d5df.js",
+      "sync_status": "added",
+      "size_bytes": 10496,
+      "sha256": "fba95cace48a4942748e1037caeaea5dbfc32251464e41499d4f3f23eaf6cf82",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "fba95cace48a4942748e1037caeaea5dbfc32251464e41499d4f3f23eaf6cf82"
+    },
+    {
+      "path": "static/js/async/route-f3b6e704b389.033ea4dba9.js",
+      "sync_status": "added",
+      "size_bytes": 11504,
+      "sha256": "3e1029cc20aa5448d2a950137a4f6c3d48ad907623280eae271a2e7ac41ad15f",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "3e1029cc20aa5448d2a950137a4f6c3d48ad907623280eae271a2e7ac41ad15f"
+    },
+    {
+      "path": "static/js/async/route-fa12bd124e95.63649e7cbd.js",
+      "sync_status": "added",
+      "size_bytes": 13107,
+      "sha256": "0982a10de161db7f6afe81c3d53db6c86585d6ca80bb3b5addbc579eee5e2af0",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "0982a10de161db7f6afe81c3d53db6c86585d6ca80bb3b5addbc579eee5e2af0"
+    },
+    {
+      "path": "static/js/f.0d6c08e856.js",
+      "sync_status": "added",
+      "size_bytes": 217078,
+      "sha256": "8e03bc7162499277806545286399e9623126af15229995cea5797c06bccda401",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "8e03bc7162499277806545286399e9623126af15229995cea5797c06bccda401"
+    },
+    {
+      "path": "static/js/f.0d6c08e856.js.LICENSE.txt",
+      "sync_status": "added",
+      "size_bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "path": "static/js/index.c932542824.js",
+      "sync_status": "added",
+      "size_bytes": 42760,
+      "sha256": "99c6e9813d488e3d4272862e61e5cf53de57a7c9fbd849b8c676f42dafbc3521",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "99c6e9813d488e3d4272862e61e5cf53de57a7c9fbd849b8c676f42dafbc3521"
+    },
+    {
+      "path": "static/js/lib-react.1994b2c57d.js",
+      "sync_status": "added",
+      "size_bytes": 218360,
+      "sha256": "1eff35324e483e961ba7282e187bdedee108c7d01604bb437c8e18821847165d",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "1eff35324e483e961ba7282e187bdedee108c7d01604bb437c8e18821847165d"
+    },
+    {
+      "path": "static/js/lib-react.1994b2c57d.js.LICENSE.txt",
+      "sync_status": "added",
+      "size_bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "path": "static/js/lib-router.a84f33e398.js",
+      "sync_status": "added",
+      "size_bytes": 35367,
+      "sha256": "9bf8086eb557bd971f238500ae7caec3c40a4321ad8474afcdae6aacf7f4b403",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "9bf8086eb557bd971f238500ae7caec3c40a4321ad8474afcdae6aacf7f4b403"
+    },
+    {
+      "path": "static/js/lib-router.a84f33e398.js.LICENSE.txt",
+      "sync_status": "added",
+      "size_bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "path": "static/js/styles.fdf3fc53df.js",
+      "sync_status": "added",
+      "size_bytes": 474,
+      "sha256": "8962b30c8594d82315d33a17d1b7944c65f9d026212cb2d2e8ac33fb0342cf1a",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "8962b30c8594d82315d33a17d1b7944c65f9d026212cb2d2e8ac33fb0342cf1a"
+    },
+    {
+      "path": "static/search_index.ko.b38c975c.json",
+      "sync_status": "added",
+      "size_bytes": 402364,
+      "sha256": "b38c975c736a3747e42a422499a6b408741dc7a580102f67dd31e2156df809a1",
+      "previous_sha256": null,
+      "http_status": 200,
+      "served_sha256": "b38c975c736a3747e42a422499a6b408741dc7a580102f67dd31e2156df809a1"
+    }
+  ]
+}
