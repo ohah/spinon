@@ -1,14 +1,15 @@
 {
   "schema": "spinon-tailnet-roadmap-served-verification-v1",
-  "verifiedAt": "2026-10-15T16:20:34Z",
+  "verifiedAt": "2026-10-15T16:40:49Z",
   "previewUrl": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "sourceRevision": "4e90ab9eb31be4239fe8739c8af356426a934314",
   "manifest": {
-    "path": "sync-manifest-c13-3-native-wheel-avd-2026-10-16.json",
-    "sha256": "002660a01e9e867f05450f2349bb512244e043e5185d70ce9ae98cb51fe9c05c",
+    "path": "sync-manifest-c13-3-native-wheel-final-2026-10-16.json",
+    "sha256": "1fa0129d52c0c5ba9658828e97f9846788fd79a21ef85bbf0894e4a8760b4b98",
     "httpStatus": 200,
-    "filesDeclared": 72,
-    "filesChecked": 72,
-    "http200AndSha256Matches": 72,
+    "filesDeclared": 82,
+    "filesChecked": 82,
+    "http200AndSha256Matches": 82,
     "mismatches": []
   },
   "roadmap": {
@@ -21,10 +22,56 @@
   },
   "executionPage": {
     "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c13-3-native-wheel-input-2026-10-16/README.html",
+    "androidWheelDirectionsPassed": 8,
+    "negativeControlsPassed": 3,
     "androidImages": [
-      { "name": "android-diagonal-positive-positive-before.png", "loaded": true, "width": 1080, "height": 2400 },
-      { "name": "android-diagonal-positive-positive-after.png", "loaded": true, "width": 1080, "height": 2400 }
-    ]
+      {
+        "name": "android-diagonal-positive-positive-before.png",
+        "loaded": true,
+        "width": 1080,
+        "height": 2400
+      },
+      {
+        "name": "android-diagonal-positive-positive-after.png",
+        "loaded": true,
+        "width": 1080,
+        "height": 2400
+      }
+    ],
+    "tailnetSidecarLinksVisible": true
   },
-  "agentBrowserSession": "spinon-tailnet-roadmap"
+  "prDeltaReview": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c13-3-native-wheel-input-pr-delta-review-30-2026-10-16.html",
+    "reviewItems": 30,
+    "row27Pass": true,
+    "noPendingItems": true
+  },
+  "agentBrowser": {
+    "session": "spinon-tailnet-roadmap",
+    "roadmapScreenshot": "tailnet-roadmap-agent-browser.png",
+    "roadmapScreenshotSha256": "f51d2181754b25146c8b2b7e5c4a92b7155bf3f83c9cca4b64a4f960d0fc2de5",
+    "roadmapScreenshotWidth": 1440,
+    "roadmapScreenshotHeight": 993
+  },
+  "sidecarsExcludedFromManifest": true,
+  "sidecars": {
+    "tailnet-preview-sync.md": {
+      "httpStatus": 200,
+      "sha256": "64c3ad6d50d33eaf0c9540aa9dfcecbbc61b2d90b7b7b0c00592372b7bb7b4d8"
+    },
+    "tailnet-sync-manifest.json": {
+      "httpStatus": 200,
+      "sha256": "1fa0129d52c0c5ba9658828e97f9846788fd79a21ef85bbf0894e4a8760b4b98"
+    },
+    "tailnet-roadmap-agent-browser.png": {
+      "httpStatus": 200,
+      "sha256": "f51d2181754b25146c8b2b7e5c4a92b7155bf3f83c9cca4b64a4f960d0fc2de5",
+      "width": 1440,
+      "height": 993
+    },
+    "tailnet-served-verification.json": {
+      "httpStatus": 200,
+      "selfSha256Omitted": true
+    }
+  }
 }
