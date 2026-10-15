@@ -16,9 +16,9 @@
 
 세 번의 억제된 move 전부 `accepted=false`였고 root/outer offset은 0이었다. 화면 캡처는 1080×2400 PNG이며 crop `(15,1026)-(1065,1656)`에서 initial→첫 pan 1,134 pixel, 첫 pan→cancel 0, cancel→all-up 0, all-up→fresh recovery 5,103 pixel이 바뀌었다. cleanup 뒤 InputReader pointer count도 0이다. [비교값](canvas-pixel-comparison.txt) · [기계 판정 결과](scenario-results.txt) · [all-up InputReader 상태](android-input-all-up-state.txt).
 
-![두 번째 contact cancel 뒤 보존된 scroll 위치./android-after-second-pointer-cancel.png)
+![두 번째 contact cancel 뒤 보존된 scroll 위치](./android-after-second-pointer-cancel.png)
 
-![모든 contact 종료 후 새 pan으로 회복한 화면./android-after-recovery.png)
+![모든 contact 종료 후 새 pan으로 회복한 화면](./android-after-recovery.png)
 
 ## ADB 입력 실패 원인과 수정
 
@@ -63,6 +63,6 @@ opt-in APK build transcript, APK/native library SHA-256, AVD identity, display, 
 
 ## 실행 종료와 검토 자료
 
-이 evidence는 [PR #192](https://github.com/ohah/spinon/pull/192)에 포함했다.
+이 evidence는 [PR #192](https://github.com/ohah/spinon/pull/192)에 포함했다. scoped Rspress build에서 두 화면 링크가 이미지로 렌더되지 않는 결함을 발견해 Markdown image 문법을 바로잡았다.
 
-실행 후 `adb -s emulator-5554 unroot`로 이 AVD의 root를 해제했고, 에뮬레이터와 앱은 종료하지 않았다. 실기기 ADB serial은 사용하지 않았다. [구현/harness 실패 관점 20개](implementation-review-20.md) · [로드맵 문구 검토 20개](roadmap-review-20.md) · [PR 변경 적대 검토 30개](pr-delta-review-30.md).
+실행 후 `adb -s emulator-5554 unroot`로 이 AVD의 root를 해제했고, 에뮬레이터와 앱은 종료하지 않았다. 실기기 ADB serial은 사용하지 않았다. [구현/harness 실패 관점 20개](implementation-review-20.md) · [로드맵 문구 검토 20개](roadmap-review-20.md) · [PR 변경 적대 검토 30개](pr-delta-review-30.md) · [이미지 경로 수정 PR 검토](image-link-fix-pr-review-30.md).
