@@ -7,6 +7,7 @@
 **계획 실패 검토 20개:** [기록](../spec/internal/evidence/c13-3-native-wheel-input-plan-review-20-2026-10-16.md)
 **계획 PR 변경 검토 20개:** [기록](../spec/internal/evidence/c13-3-native-wheel-input-pr-review-20-2026-10-16.md)
 **구현 실패 관점 검토 20개:** [기록](../spec/internal/evidence/c13-3-native-wheel-input-implementation-review-20-2026-10-16.md)
+**PR #198 변경 관점 검토 30개:** [기록](../spec/internal/evidence/c13-3-native-wheel-input-pr-delta-review-30-2026-10-16.md)
 **구현 전 비교 기준:** [사전 비교와 정규화 oracle](../spec/internal/evidence/c13-3-native-wheel-input-precomparison-2026-10-16/README.md) · [기계 판독 기준](../spec/internal/evidence/c13-3-native-wheel-input-precomparison-2026-10-16/normalization-oracle.json)
 
 ## 목표와 범위

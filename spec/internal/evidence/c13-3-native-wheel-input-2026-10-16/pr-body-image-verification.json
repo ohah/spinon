@@ -1,0 +1,13 @@
+{
+  "schema": "spinon-c13-3-pr-body-image-browser-verification-v1",
+  "verifiedAt": "2026-10-15T16:30:06Z",
+  "pullRequest": "https://github.com/ohah/spinon/pull/198",
+  "agentBrowserSession": "spinon-tailnet-roadmap",
+  "imageUrl": "https://raw.githubusercontent.com/ohah/spinon/4480ec2c69b640d7db45890b7059eb5816bff52c/spec/internal/evidence/c13-3-native-wheel-input-2026-10-16/android-diagonal-positive-positive-after.png",
+  "imageLoaded": true,
+  "naturalSize": [1080, 2400],
+  "browserScreenshot": {
+    "path": "pr-198-agent-browser.png",
+    "sha256": "3547d08e87dbd2a38b2916e037cd6f2d3b0978db6c6c3a9a9c99e6b74b90e066"
+  }
+}

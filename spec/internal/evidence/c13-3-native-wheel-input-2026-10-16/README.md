@@ -12,7 +12,15 @@ ViewConfiguration factor 168 px, surface scale 2.625 px/CSS px에서 각 native 
 
 스크린샷 `android-diagonal-positive-positive-before.png`와 `android-diagonal-positive-positive-after.png`의 SurfaceView 안쪽 134,064개 픽셀 중 scrollport border 바깥은 변경 0개, 안쪽 변경은 50,684개였다. 비교 범위는 고정 fixture의 root scrollport `left=16, top=16, right=384, bottom=224 CSS px` 바깥 영역이다.
 
+![Android API 37 AVD wheel 입력 전 화면](./android-diagonal-positive-positive-before.png)
+
+![Android API 37 AVD 대각 wheel 입력 후 화면](./android-diagonal-positive-positive-after.png)
+
 원본 callback, queue, draw 로그는 각 `android-*.log`, 전체 입력·offset 표는 `android-avd-matrix.json`에 있다.
+
+기본/opt-in APK의 `BuildConfig` 값, DEX/native SHA-256, Rust FFI symbol 경계는 [Android artifact 기록](android-artifact-boundary.md)에 있다.
+
+PR [#198](https://github.com/ohah/spinon/pull/198) 본문의 after 화면은 Agent Browser에서 1080×2400으로 렌더링됐다. [브라우저 검증 요약](pr-body-image-verification.json)과 [PR 화면 캡처](pr-198-agent-browser.png)를 보존했다.
 
 이 근거는 Android API 37 AVD의 opt-in fixture 경로만 확인한다. 물리 장치, hardware GPU, targetable trackpad, Control-wheel runtime, iOS, public DOM events, compositor 이후 scanout 또는 C13.3 전체 완료를 증명하지 않는다.
 
