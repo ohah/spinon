@@ -1240,9 +1240,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         if (BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST
                 && c133GestureFixtureRequested
-                && (c133GesturePolicyScenarioID < 0 || c133GesturePolicyScenarioID > 2)) {
+                && (c133GesturePolicyScenarioID < 0 || c133GesturePolicyScenarioID > 7)) {
             Log.e(TAG, "SPINON_C133_ARGUMENT_ERROR rejected=true reason=invalid-policy-scenario-id");
-            postStatus("실패 · C13.3 policy scenario ID는 0~2여야 합니다");
+            postStatus("실패 · C13.3 policy scenario ID는 0~7이어야 합니다");
             return false;
         }
         Bundle extras = activity.getIntent().getExtras();
@@ -1664,17 +1664,30 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         if (BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST && c133GestureFixtureRequested) {
             boolean knownScenario = c133GesturePolicyScenarioID >= 0
-                    && c133GesturePolicyScenarioID <= 2;
+                    && c133GesturePolicyScenarioID <= 7;
             String scenario = c133GesturePolicyScenarioID == 0 ? "auto-zero"
                     : c133GesturePolicyScenarioID == 1 ? "auto-boundary"
-                    : c133GesturePolicyScenarioID == 2 ? "contain-x-auto-y-boundary" : "invalid";
+                    : c133GesturePolicyScenarioID == 2 ? "contain-x-auto-y-boundary"
+                    : c133GesturePolicyScenarioID == 3 ? "touch-action-none"
+                    : c133GesturePolicyScenarioID == 4 ? "touch-action-pan-x"
+                    : c133GesturePolicyScenarioID == 5 ? "touch-action-pan-y"
+                    : c133GesturePolicyScenarioID == 6 ? "touch-action-target-pan-x"
+                    : c133GesturePolicyScenarioID == 7
+                            ? "touch-action-intersection-none" : "invalid";
             String expectedPolicy = c133GesturePolicyScenarioID == 2
                     ? "policy_inner=contain/auto" : "policy_inner=auto/auto";
-            String expectedSeed = c133GesturePolicyScenarioID == 0
-                    ? "fixture_seed=none" : "fixture_seed=inner-max";
-            String expectedOffsets = c133GesturePolicyScenarioID == 0
-                    ? "offsets=root:0,0;outer:0,0;inner:0,0"
-                    : "offsets=root:0,0;outer:0,0;inner:86,106";
+            boolean boundarySeed = c133GesturePolicyScenarioID == 1
+                    || c133GesturePolicyScenarioID == 2;
+            String expectedSeed = boundarySeed ? "fixture_seed=inner-max" : "fixture_seed=none";
+            String expectedOffsets = boundarySeed
+                    ? "offsets=root:0,0;outer:0,0;inner:86,106"
+                    : "offsets=root:0,0;outer:0,0;inner:0,0";
+            String expectedTouchAction = c133GesturePolicyScenarioID == 3
+                    || c133GesturePolicyScenarioID == 7 ? "touch_action_effective=none"
+                    : c133GesturePolicyScenarioID == 4 || c133GesturePolicyScenarioID == 6
+                            ? "touch_action_effective=pan-x"
+                    : c133GesturePolicyScenarioID == 5 ? "touch_action_effective=pan-y"
+                    : "touch_action_effective=auto";
             c133GestureFixtureReady = result.contains("c13_3_gesture_fixture=ready")
                     && result.contains("viewport_css_px=400x240")
                     && result.contains("owners=root:")
@@ -1682,6 +1695,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     && knownScenario
                     && result.contains("scenario=" + scenario)
                     && result.contains(expectedPolicy)
+                    && result.contains(expectedTouchAction)
                     && result.contains(expectedSeed)
                     && result.contains(expectedOffsets);
             if (!c133GestureFixtureReady) {
@@ -3912,11 +3926,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST
                 && c133GestureFixtureRequested
                 && c133GestureFixtureReady && !c133GestureInitialDrawReady) {
-            String expectedRevision = c133GesturePolicyScenarioID == 0
-                    ? "scroll_state_revision=0" : "scroll_state_revision=1";
-            String expectedOffsets = c133GesturePolicyScenarioID == 0
-                    ? "scroll_offsets=[0,0;0,0;0,0]"
-                    : "scroll_offsets=[0,0;0,0;86,106]";
+            boolean boundarySeed = c133GesturePolicyScenarioID == 1
+                    || c133GesturePolicyScenarioID == 2;
+            String expectedRevision = boundarySeed
+                    ? "scroll_state_revision=1" : "scroll_state_revision=0";
+            String expectedOffsets = boundarySeed
+                    ? "scroll_offsets=[0,0;0,0;86,106]"
+                    : "scroll_offsets=[0,0;0,0;0,0]";
             if (!result.contains(expectedRevision) || !result.contains(expectedOffsets)) {
                 c133GestureFixtureReady = false;
                 Log.e(TAG, "SPINON_C133_DRAW_ASSERTIONS failed=true " + result);

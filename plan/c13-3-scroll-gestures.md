@@ -86,3 +86,9 @@ Chrome for Testing `155.0.8059.40`, revision `cfaadc5a132d78e1828635aa8405a499f3
 - **Non-goals:** 키보드 focus/default scrolling, JS `scroll`/`wheel`/pointer event, CSSOM offset API, Spinon 생성 touch fling/inertia, host magnify/zoom input, pinch zoom, scrollbars/snap, RTL/logical axes, S04.10 displayed-frame targeting 및 WPT 적합성은 완료로 표시하지 않는다. host-provided trackpad momentum phase는 normalized delta input으로만 기록·처리한다.
 
 이 단계의 통과는 C13.3 내부 touch/wheel routing의 제한 profile만 가리킨다. C13.2의 ink-only `box-shadow` 미지원, C13.1 미완료, 공개 이벤트/API와 C13 전체 미완료 상태는 유지한다.
+
+## 실행 후속 기록 · 2026-10-15 touch-action 방향 행렬
+
+Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 opt-in 400×240 CSS fixture에서 `none`, `pan-x`, `pan-y`, target descendant `pan-x`, inner `pan-y`와 child `pan-x` 교집합을 수평·수직 실제 swipe로 각각 실행했다. 20개 중 허용 6개는 inner만 움직였고 14개는 revision/offset을 바꾸지 않았다. 앱은 기본 API 37 AVD와 iOS 26.2 Simulator build를 사용했으며 실기기·hardware GPU는 포함하지 않는다. 화면 marker exact-color 분석은 각 moved marker가 inner blue border 안에 나타나고 ancestor marker는 보이지 않음을 확인했다. [실행·로그·화면·hash](../spec/internal/evidence/c13-3-touch-action-simulator-matrix-2026-10-15/README.md).
+
+이 행렬은 UIKit `.began`의 zero translation을 직접 드러냈다. iOS adapter는 첫 nonzero `.changed` sample을 `PanBegan`으로 queue에 전달하며 그전 sample은 축을 잠그지 않는다. Rust session 회귀 검증은 zero start 이후 허용 방향과 반대 방향을 모두 확인한다. tap/click arbitration, iOS multi-touch, wheel/trackpad, style/layout invalidation, public events, S04.10 displayed-frame targeting은 여전히 미완료다. 이 후속은 C13.3 전체 또는 공개 `touch-action` 지원 완료를 의미하지 않는다.

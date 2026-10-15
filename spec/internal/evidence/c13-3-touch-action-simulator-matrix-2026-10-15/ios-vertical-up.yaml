@@ -1,0 +1,6 @@
+appId: dev.spinon.bootstrap
+---
+- swipe:
+    start: 25%, 48%
+    end: 25%, 42%
+    duration: 500

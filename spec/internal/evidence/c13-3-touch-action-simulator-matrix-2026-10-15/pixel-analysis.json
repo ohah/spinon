@@ -1,0 +1,163 @@
+{
+  "schema": "spinon-c13-3-touch-action-simulator-pixels/v1",
+  "tool": "Pillow 11.3.0 exact RGB scan",
+  "coordinateConvention": "zero-based, half-open pixel bounds",
+  "results": [
+    {
+      "platform": "ios-simulator",
+      "axis": "horizontal",
+      "resolution": [
+        1206,
+        2622
+      ],
+      "innerBorderRgb": [
+        99,
+        169,
+        237
+      ],
+      "innerBorderBoundsPx": [
+        219,
+        1167,
+        579,
+        1407
+      ],
+      "innerBorderPixels": 10476,
+      "markerRgb": [
+        227,
+        84,
+        78
+      ],
+      "markerBeforePixels": 0,
+      "markerAfterBoundsPx": [
+        536,
+        1251,
+        570,
+        1323
+      ],
+      "markerAfterPixels": 2448,
+      "markerChangedPixels": 2448,
+      "markerWithinInnerBorder": true,
+      "outerMarkerPixelsAfter": 0,
+      "rootMarkerPixelsAfter": 0,
+      "beforeSha256": "15f4a3c78394cc5b3527870b0f8f6ed8580634b3ef2db1795a38b921cf3f65bf",
+      "afterSha256": "ec07145c1abe5c67691587bc02d641e7d9c67e989a0b40b6ecd8b0d1f3dee86c"
+    },
+    {
+      "platform": "ios-simulator",
+      "axis": "vertical",
+      "resolution": [
+        1206,
+        2622
+      ],
+      "innerBorderRgb": [
+        99,
+        169,
+        237
+      ],
+      "innerBorderBoundsPx": [
+        219,
+        1167,
+        579,
+        1407
+      ],
+      "innerBorderPixels": 10476,
+      "markerRgb": [
+        227,
+        84,
+        78
+      ],
+      "markerBeforePixels": 0,
+      "markerAfterBoundsPx": [
+        438,
+        1367,
+        510,
+        1398
+      ],
+      "markerAfterPixels": 2232,
+      "markerChangedPixels": 2232,
+      "markerWithinInnerBorder": true,
+      "outerMarkerPixelsAfter": 0,
+      "rootMarkerPixelsAfter": 0,
+      "beforeSha256": "3ad5c6da6dc2b8e2fb846ae406c4199c62703097854827ddc6316492ee962a87",
+      "afterSha256": "d188389af70a930f1e8f8285f686279c3b9e95f654266a17d426ad63338e086e"
+    },
+    {
+      "platform": "android-emulator",
+      "axis": "horizontal",
+      "resolution": [
+        1080,
+        2400
+      ],
+      "innerBorderRgb": [
+        99,
+        169,
+        237
+      ],
+      "innerBorderBoundsPx": [
+        204,
+        1215,
+        519,
+        1425
+      ],
+      "innerBorderPixels": 8144,
+      "markerRgb": [
+        227,
+        84,
+        78
+      ],
+      "markerBeforePixels": 0,
+      "markerAfterBoundsPx": [
+        448,
+        1288,
+        511,
+        1351
+      ],
+      "markerAfterPixels": 3969,
+      "markerChangedPixels": 3969,
+      "markerWithinInnerBorder": true,
+      "outerMarkerPixelsAfter": 0,
+      "rootMarkerPixelsAfter": 0,
+      "beforeSha256": "1c2ea6c312767e589d97c1a68b197d264560fc3d4f0cf268bff022d474ba790b",
+      "afterSha256": "c86bdac866bf77630c6aee279e1c00934d2f38e27b1e76910a8c417b4feb82af"
+    },
+    {
+      "platform": "android-emulator",
+      "axis": "vertical",
+      "resolution": [
+        1080,
+        2400
+      ],
+      "innerBorderRgb": [
+        99,
+        169,
+        237
+      ],
+      "innerBorderBoundsPx": [
+        204,
+        1215,
+        519,
+        1425
+      ],
+      "innerBorderPixels": 8144,
+      "markerRgb": [
+        227,
+        84,
+        78
+      ],
+      "markerBeforePixels": 0,
+      "markerAfterBoundsPx": [
+        396,
+        1370,
+        459,
+        1417
+      ],
+      "markerAfterPixels": 2961,
+      "markerChangedPixels": 2961,
+      "markerWithinInnerBorder": true,
+      "outerMarkerPixelsAfter": 0,
+      "rootMarkerPixelsAfter": 0,
+      "beforeSha256": "47c69d7808906aba3e5f92b16ad184dd66c98ba3c699eac8dac7a3541717dbc9",
+      "afterSha256": "7a501f38ca5010294c445b432ced1199eea2b544427bbaac670a8fbe545a28fb"
+    }
+  ]
+}

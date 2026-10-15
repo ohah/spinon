@@ -8,7 +8,7 @@ use spinon_core::NodeId;
 use spinon_render::{
     RuntimeOverscrollBehavior, RuntimeRenderSnapshot, RuntimeScrollGestureBeginDisposition,
     RuntimeScrollGestureOutcome, RuntimeScrollGesturePanSample, RuntimeScrollGestureTerminalKind,
-    RuntimeScrollInputQueueEvent, RuntimeTouchAction,
+    RuntimeScrollInputQueueEvent,
 };
 use spinon_runtime::RuntimeSession;
 pub(in crate::runtime_gpu) use state::C13_3GestureState;
@@ -83,7 +83,7 @@ impl RuntimeGpuHost {
             })
             .ok_or((ERR_STALE, "C13.3 layout과 render key가 다릅니다".to_owned()))?;
         let frames = &completed.frames;
-        if frames.len() != 10 || initial.scroll_containers().len() != 3 {
+        if frames.len() != 11 || initial.scroll_containers().len() != 3 {
             return Err((
                 ERR_LAYOUT,
                 format!(
@@ -176,10 +176,15 @@ impl RuntimeGpuHost {
                 ));
             }
         }
-        if interactive.touch_action_at_css_point(100.0, 100.0) != Some(RuntimeTouchAction::Auto) {
+        let expected_touch_action = state.scenario.expected_touch_action();
+        let actual_touch_action = interactive.touch_action_at_css_point(100.0, 100.0);
+        if actual_touch_action != Some(expected_touch_action) {
             return Err((
                 ERR_LAYOUT,
-                "C13.3 정책 행렬에서 touch-action 기본값이 auto가 아닙니다".to_owned(),
+                format!(
+                    "C13.3 computed touch-action 불일치 scenario={} expected={expected_touch_action:?} actual={actual_touch_action:?}",
+                    state.scenario.label()
+                ),
             ));
         }
         if state.scenario.seed_inner_boundary() {
@@ -254,7 +259,7 @@ impl RuntimeGpuHost {
         *lock(&state.owners) = Some(owners);
         state.publish_snapshot(interactive.clone());
         Ok(format!(
-            "c13_3_gesture_fixture=ready scenario={} policy_inner={} fixture_seed={} viewport_css_px=400x240 owners=root:{},outer:{},inner:{} ranges=root:158,238;outer:106,186;inner:86,106 touch_action=auto overscroll=style_projected presentation_sequence={} scroll_state_revision={} input_queue_capacity=64 terminal_capacity=8 {}",
+            "c13_3_gesture_fixture=ready scenario={} policy_inner={} fixture_seed={} viewport_css_px=400x240 owners=root:{},outer:{},inner:{} ranges=root:158,238;outer:106,186;inner:86,106 touch_action_effective={} touch_action_inner={} touch_action_inner_content={} overscroll=style_projected presentation_sequence={} scroll_state_revision={} input_queue_capacity=64 terminal_capacity=8 {}",
             state.scenario.label(),
             state.scenario.policy_label(),
             if state.scenario.seed_inner_boundary() {
@@ -265,6 +270,9 @@ impl RuntimeGpuHost {
             owners.root,
             owners.outer,
             owners.inner,
+            state.scenario.expected_touch_action_label(),
+            state.scenario.inner_touch_action(),
+            state.scenario.inner_content_touch_action(),
             published_sequence,
             interactive.key().scroll_state_revision().get(),
             c13_3_offsets(&interactive, owners)

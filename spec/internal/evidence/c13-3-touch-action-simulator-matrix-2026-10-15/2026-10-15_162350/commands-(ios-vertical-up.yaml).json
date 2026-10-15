@@ -1,0 +1,76 @@
+[ {
+  "command" : {
+    "swipeCommand" : {
+      "startRelative" : "25%, 48%",
+      "endRelative" : "25%, 42%",
+      "duration" : 500,
+      "optional" : false
+    }
+  },
+  "metadata" : {
+    "status" : "COMPLETED",
+    "timestamp" : 1792049034263,
+    "duration" : 1189,
+    "sequenceNumber" : 2,
+    "evaluatedCommand" : {
+      "swipeCommand" : {
+        "startRelative" : "25%, 48%",
+        "endRelative" : "25%, 42%",
+        "duration" : 500,
+        "optional" : false
+      }
+    }
+  }
+}, {
+  "command" : {
+    "applyConfigurationCommand" : {
+      "config" : {
+        "appId" : "dev.spinon.bootstrap"
+      },
+      "optional" : false
+    }
+  },
+  "metadata" : {
+    "status" : "COMPLETED",
+    "timestamp" : 1792049034261,
+    "duration" : 2,
+    "sequenceNumber" : 1,
+    "evaluatedCommand" : {
+      "applyConfigurationCommand" : {
+        "config" : {
+          "appId" : "dev.spinon.bootstrap"
+        },
+        "optional" : false
+      }
+    }
+  }
+}, {
+  "command" : {
+    "defineVariablesCommand" : {
+      "env" : {
+        "MAESTRO_FILENAME" : "ios-vertical-up",
+        "MAESTRO_DEVICE_UDID" : "5BCC297F-A234-4B9D-88D4-14485AD92D06",
+        "MAESTRO_SHARD_ID" : "1",
+        "MAESTRO_SHARD_INDEX" : "0"
+      },
+      "optional" : false
+    }
+  },
+  "metadata" : {
+    "status" : "COMPLETED",
+    "timestamp" : 1792049034257,
+    "duration" : 3,
+    "sequenceNumber" : 0,
+    "evaluatedCommand" : {
+      "defineVariablesCommand" : {
+        "env" : {
+          "MAESTRO_FILENAME" : "ios-vertical-up",
+          "MAESTRO_DEVICE_UDID" : "5BCC297F-A234-4B9D-88D4-14485AD92D06",
+          "MAESTRO_SHARD_ID" : "1",
+          "MAESTRO_SHARD_INDEX" : "0"
+        },
+        "optional" : false
+      }
+    }
+  }
+} ]

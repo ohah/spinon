@@ -1,0 +1,725 @@
+{
+  "schema": "spinon-c13-3-touch-action-simulator-matrix/v1",
+  "capturedAt": "2026-10-15T07:50:20.039Z",
+  "sourceCommit": "1d1e54144ba49ee3893447c6b0c61c9285b24ff6",
+  "worktreeDiffSha256": "e47cc31e63462d9e6cfd8083805df746d768f7d11640588b44553308d8558e78",
+  "nativeBuilds": {
+    "iosAppTreeSha256": "1a2d929fbe8a91516e8f187b2736ecc2ad065fcb918366dafef6758dc52edde1",
+    "androidApkSha256": "40ae77fe1ae370e1244b10a06ee8cbbf303a9b8bcdea6d1ada57103909e39990"
+  },
+  "results": [
+    {
+      "platform": "ios-simulator",
+      "scenarioID": 3,
+      "name": "touch-action-none",
+      "direction": "horizontal-left",
+      "readyLine": "2026-10-15 16:50:20.635 Df SpinonBootstrap[40551:34e22ab] (Foundation) SPINON_C133_READY input=UIPanGestureRecognizer native_slop=system status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=0 scroll_offsets=[0,0;0,0;0,0] generation=1 viewport_css_px=400x240 surface_texture=1200x720 root_css_px=400x240",
+      "maestroOutput": "Running on SpinonC133TouchAction20261015 - iOS 26.2 - 5BCC297F-A234-4B9D-88D4-14485AD92D06\n > Flow ios-horizontal-left\nSwipe from (25%, 48%) to (13%, 48%) in 500 ms... COMPLETED\n",
+      "allowed": false,
+      "rejected": true,
+      "movedTarget": false,
+      "finalLine": "2026-10-15 16:50:28.143 Df SpinonBootstrap[40551:34e32d6] (Foundation) SPINON_C133_PROCESS status=0 c13_3_input_batch=processed processed_count=1 pending_regular=0 scroll_state_revision=0 offsets=root:0,0;outer:0,0;inner:0,0 traces=[event=terminal sequence=29 gesture=1 pointer=1 kind=End result=ended]",
+      "offsets": {
+        "revision": 0,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          0,
+          0
+        ]
+      },
+      "log": "ios-touch-action-none-horizontal-left.log"
+    },
+    {
+      "platform": "ios-simulator",
+      "scenarioID": 3,
+      "name": "touch-action-none",
+      "direction": "vertical-up",
+      "readyLine": "2026-10-15 16:50:31.711 Df SpinonBootstrap[41880:34e3c99] (Foundation) SPINON_C133_READY input=UIPanGestureRecognizer native_slop=system status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=0 scroll_offsets=[0,0;0,0;0,0] generation=1 viewport_css_px=400x240 surface_texture=1200x720 root_css_px=400x240",
+      "maestroOutput": "Running on SpinonC133TouchAction20261015 - iOS 26.2 - 5BCC297F-A234-4B9D-88D4-14485AD92D06\n > Flow ios-vertical-up\nSwipe from (25%, 48%) to (25%, 42%) in 500 ms... COMPLETED\n",
+      "allowed": false,
+      "rejected": true,
+      "movedTarget": false,
+      "finalLine": "2026-10-15 16:50:37.804 Df SpinonBootstrap[41880:34e3c98] (Foundation) SPINON_C133_PROCESS status=0 c13_3_input_batch=processed processed_count=1 pending_regular=0 scroll_state_revision=0 offsets=root:0,0;outer:0,0;inner:0,0 traces=[event=terminal sequence=30 gesture=1 pointer=1 kind=End result=ended]",
+      "offsets": {
+        "revision": 0,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          0,
+          0
+        ]
+      },
+      "log": "ios-touch-action-none-vertical-up.log"
+    },
+    {
+      "platform": "ios-simulator",
+      "scenarioID": 4,
+      "name": "touch-action-pan-x",
+      "direction": "horizontal-left",
+      "readyLine": "2026-10-15 16:50:41.340 Df SpinonBootstrap[43546:34e4fa2] (Foundation) SPINON_C133_READY input=UIPanGestureRecognizer native_slop=system status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=0 scroll_offsets=[0,0;0,0;0,0] generation=1 viewport_css_px=400x240 surface_texture=1200x720 root_css_px=400x240",
+      "maestroOutput": "Running on SpinonC133TouchAction20261015 - iOS 26.2 - 5BCC297F-A234-4B9D-88D4-14485AD92D06\n > Flow ios-horizontal-left\nSwipe from (25%, 48%) to (13%, 48%) in 500 ms... COMPLETED\n",
+      "allowed": true,
+      "rejected": false,
+      "movedTarget": true,
+      "finalLine": "2026-10-15 16:50:47.487 Df SpinonBootstrap[43546:34e4fa7] (Foundation) SPINON_C133_PROCESS status=0 c13_3_input_batch=processed processed_count=1 pending_regular=0 scroll_state_revision=27 offsets=root:0,0;outer:0,0;inner:37.333332,0 traces=[event=terminal sequence=29 gesture=1 pointer=1 kind=End result=ended]",
+      "offsets": {
+        "revision": 27,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          37.333332,
+          0
+        ]
+      },
+      "log": "ios-touch-action-pan-x-horizontal-left.log"
+    },
+    {
+      "platform": "ios-simulator",
+      "scenarioID": 4,
+      "name": "touch-action-pan-x",
+      "direction": "vertical-up",
+      "readyLine": "2026-10-15 16:50:51.128 Df SpinonBootstrap[45580:34e5c06] (Foundation) SPINON_C133_READY input=UIPanGestureRecognizer native_slop=system status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=0 scroll_offsets=[0,0;0,0;0,0] generation=1 viewport_css_px=400x240 surface_texture=1200x720 root_css_px=400x240",
+      "maestroOutput": "Running on SpinonC133TouchAction20261015 - iOS 26.2 - 5BCC297F-A234-4B9D-88D4-14485AD92D06\n > Flow ios-vertical-up\nSwipe from (25%, 48%) to (25%, 42%) in 500 ms... COMPLETED\n",
+      "allowed": false,
+      "rejected": true,
+      "movedTarget": false,
+      "finalLine": "2026-10-15 16:50:57.187 Df SpinonBootstrap[45580:34e5c09] (Foundation) SPINON_C133_PROCESS status=0 c13_3_input_batch=processed processed_count=1 pending_regular=0 scroll_state_revision=0 offsets=root:0,0;outer:0,0;inner:0,0 traces=[event=terminal sequence=30 gesture=1 pointer=1 kind=End result=ended]",
+      "offsets": {
+        "revision": 0,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          0,
+          0
+        ]
+      },
+      "log": "ios-touch-action-pan-x-vertical-up.log"
+    },
+    {
+      "platform": "ios-simulator",
+      "scenarioID": 5,
+      "name": "touch-action-pan-y",
+      "direction": "horizontal-left",
+      "readyLine": "2026-10-15 16:51:00.640 Df SpinonBootstrap[47659:34e68d4] (Foundation) SPINON_C133_READY input=UIPanGestureRecognizer native_slop=system status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=0 scroll_offsets=[0,0;0,0;0,0] generation=1 viewport_css_px=400x240 surface_texture=1200x720 root_css_px=400x240",
+      "maestroOutput": "Running on SpinonC133TouchAction20261015 - iOS 26.2 - 5BCC297F-A234-4B9D-88D4-14485AD92D06\n > Flow ios-horizontal-left\nSwipe from (25%, 48%) to (13%, 48%) in 500 ms... COMPLETED\n",
+      "allowed": false,
+      "rejected": true,
+      "movedTarget": false,
+      "finalLine": "2026-10-15 16:51:06.704 Df SpinonBootstrap[47659:34e68d4] (Foundation) SPINON_C133_PROCESS status=0 c13_3_input_batch=processed processed_count=1 pending_regular=0 scroll_state_revision=0 offsets=root:0,0;outer:0,0;inner:0,0 traces=[event=terminal sequence=29 gesture=1 pointer=1 kind=End result=ended]",
+      "offsets": {
+        "revision": 0,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          0,
+          0
+        ]
+      },
+      "log": "ios-touch-action-pan-y-horizontal-left.log"
+    },
+    {
+      "platform": "ios-simulator",
+      "scenarioID": 5,
+      "name": "touch-action-pan-y",
+      "direction": "vertical-up",
+      "readyLine": "2026-10-15 16:51:10.289 Df SpinonBootstrap[49298:34e7695] (Foundation) SPINON_C133_READY input=UIPanGestureRecognizer native_slop=system status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=0 scroll_offsets=[0,0;0,0;0,0] generation=1 viewport_css_px=400x240 surface_texture=1200x720 root_css_px=400x240",
+      "maestroOutput": "Running on SpinonC133TouchAction20261015 - iOS 26.2 - 5BCC297F-A234-4B9D-88D4-14485AD92D06\n > Flow ios-vertical-up\nSwipe from (25%, 48%) to (25%, 42%) in 500 ms... COMPLETED\n",
+      "allowed": true,
+      "rejected": false,
+      "movedTarget": true,
+      "finalLine": "2026-10-15 16:51:16.471 Df SpinonBootstrap[49298:34e7695] (Foundation) SPINON_C133_PROCESS status=0 c13_3_input_batch=processed processed_count=1 pending_regular=0 scroll_state_revision=28 offsets=root:0,0;outer:0,0;inner:0,41.333332 traces=[event=terminal sequence=30 gesture=1 pointer=1 kind=End result=ended]",
+      "offsets": {
+        "revision": 28,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          0,
+          41.333332
+        ]
+      },
+      "log": "ios-touch-action-pan-y-vertical-up.log"
+    },
+    {
+      "platform": "ios-simulator",
+      "scenarioID": 6,
+      "name": "touch-action-target-pan-x",
+      "direction": "horizontal-left",
+      "readyLine": "2026-10-15 16:51:20.258 Df SpinonBootstrap[49871:34e8192] (Foundation) SPINON_C133_READY input=UIPanGestureRecognizer native_slop=system status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=0 scroll_offsets=[0,0;0,0;0,0] generation=1 viewport_css_px=400x240 surface_texture=1200x720 root_css_px=400x240",
+      "maestroOutput": "Running on SpinonC133TouchAction20261015 - iOS 26.2 - 5BCC297F-A234-4B9D-88D4-14485AD92D06\n > Flow ios-horizontal-left\nSwipe from (25%, 48%) to (13%, 48%) in 500 ms... COMPLETED\n",
+      "allowed": true,
+      "rejected": false,
+      "movedTarget": true,
+      "finalLine": "2026-10-15 16:51:26.372 Df SpinonBootstrap[49871:34e8192] (Foundation) SPINON_C133_PROCESS status=0 c13_3_input_batch=processed processed_count=1 pending_regular=0 scroll_state_revision=27 offsets=root:0,0;outer:0,0;inner:37.333332,0 traces=[event=terminal sequence=29 gesture=1 pointer=1 kind=End result=ended]",
+      "offsets": {
+        "revision": 27,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          37.333332,
+          0
+        ]
+      },
+      "log": "ios-touch-action-target-pan-x-horizontal-left.log"
+    },
+    {
+      "platform": "ios-simulator",
+      "scenarioID": 6,
+      "name": "touch-action-target-pan-x",
+      "direction": "vertical-up",
+      "readyLine": "2026-10-15 16:51:29.941 Df SpinonBootstrap[50371:34e8d85] (Foundation) SPINON_C133_READY input=UIPanGestureRecognizer native_slop=system status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=0 scroll_offsets=[0,0;0,0;0,0] generation=1 viewport_css_px=400x240 surface_texture=1200x720 root_css_px=400x240",
+      "maestroOutput": "Running on SpinonC133TouchAction20261015 - iOS 26.2 - 5BCC297F-A234-4B9D-88D4-14485AD92D06\n > Flow ios-vertical-up\nSwipe from (25%, 48%) to (25%, 42%) in 500 ms... COMPLETED\n",
+      "allowed": false,
+      "rejected": true,
+      "movedTarget": false,
+      "finalLine": "2026-10-15 16:51:36.454 Df SpinonBootstrap[50371:34e8d87] (Foundation) SPINON_C133_PROCESS status=0 c13_3_input_batch=processed processed_count=1 pending_regular=0 scroll_state_revision=0 offsets=root:0,0;outer:0,0;inner:0,0 traces=[event=terminal sequence=30 gesture=1 pointer=1 kind=End result=ended]",
+      "offsets": {
+        "revision": 0,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          0,
+          0
+        ]
+      },
+      "log": "ios-touch-action-target-pan-x-vertical-up.log"
+    },
+    {
+      "platform": "ios-simulator",
+      "scenarioID": 7,
+      "name": "touch-action-intersection-none",
+      "direction": "horizontal-left",
+      "readyLine": "2026-10-15 16:51:39.941 Df SpinonBootstrap[50989:34e9b94] (Foundation) SPINON_C133_READY input=UIPanGestureRecognizer native_slop=system status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=0 scroll_offsets=[0,0;0,0;0,0] generation=1 viewport_css_px=400x240 surface_texture=1200x720 root_css_px=400x240",
+      "maestroOutput": "Running on SpinonC133TouchAction20261015 - iOS 26.2 - 5BCC297F-A234-4B9D-88D4-14485AD92D06\n > Flow ios-horizontal-left\nSwipe from (25%, 48%) to (13%, 48%) in 500 ms... COMPLETED\n",
+      "allowed": false,
+      "rejected": true,
+      "movedTarget": false,
+      "finalLine": "2026-10-15 16:51:45.987 Df SpinonBootstrap[50989:34e9b8f] (Foundation) SPINON_C133_PROCESS status=0 c13_3_input_batch=processed processed_count=1 pending_regular=0 scroll_state_revision=0 offsets=root:0,0;outer:0,0;inner:0,0 traces=[event=terminal sequence=29 gesture=1 pointer=1 kind=End result=ended]",
+      "offsets": {
+        "revision": 0,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          0,
+          0
+        ]
+      },
+      "log": "ios-touch-action-intersection-none-horizontal-left.log"
+    },
+    {
+      "platform": "ios-simulator",
+      "scenarioID": 7,
+      "name": "touch-action-intersection-none",
+      "direction": "vertical-up",
+      "readyLine": "2026-10-15 16:51:49.876 Df SpinonBootstrap[51592:34ea95e] (Foundation) SPINON_C133_READY input=UIPanGestureRecognizer native_slop=system status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=0 scroll_offsets=[0,0;0,0;0,0] generation=1 viewport_css_px=400x240 surface_texture=1200x720 root_css_px=400x240",
+      "maestroOutput": "Running on SpinonC133TouchAction20261015 - iOS 26.2 - 5BCC297F-A234-4B9D-88D4-14485AD92D06\n > Flow ios-vertical-up\nSwipe from (25%, 48%) to (25%, 42%) in 500 ms... COMPLETED\n",
+      "allowed": false,
+      "rejected": true,
+      "movedTarget": false,
+      "finalLine": "2026-10-15 16:51:56.387 Df SpinonBootstrap[51592:34ea95d] (Foundation) SPINON_C133_PROCESS status=0 c13_3_input_batch=processed processed_count=1 pending_regular=0 scroll_state_revision=0 offsets=root:0,0;outer:0,0;inner:0,0 traces=[event=terminal sequence=30 gesture=1 pointer=1 kind=End result=ended]",
+      "offsets": {
+        "revision": 0,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          0,
+          0
+        ]
+      },
+      "log": "ios-touch-action-intersection-none-vertical-up.log"
+    },
+    {
+      "platform": "android-emulator",
+      "serial": "emulator-5554",
+      "scenarioID": 3,
+      "name": "touch-action-none",
+      "direction": "horizontal-left",
+      "coordinates": {
+        "bounds": {
+          "left": 58,
+          "top": 1026,
+          "right": 1022,
+          "bottom": 1656
+        },
+        "scale": 2.625,
+        "startX": 321,
+        "startY": 1289,
+        "endX": 189,
+        "endY": 1289
+      },
+      "readyLine": "I/SpinonBootstrap(13906): SPINON_C133_READY input=MotionEvent status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=0 scroll_offsets=[0,0;0,0;0,0] generation=1 viewport_css_px=400x240 surface_texture=1050x630 root_css_px=400x240",
+      "allowed": false,
+      "rejected": true,
+      "movedTarget": false,
+      "finalLine": "I/SpinonBootstrap(13906): SPINON_C133_INPUT_BATCH status=0 c13_3_input_batch=processed processed_count=1 pending_regular=0 scroll_state_revision=0 offsets=root:0,0;outer:0,0;inner:0,0 traces=[event=terminal sequence=20 gesture=1 pointer=0 kind=End result=ended]",
+      "offsets": {
+        "revision": 0,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          0,
+          0
+        ]
+      },
+      "log": "android-touch-action-none-horizontal-left.log"
+    },
+    {
+      "platform": "android-emulator",
+      "serial": "emulator-5554",
+      "scenarioID": 3,
+      "name": "touch-action-none",
+      "direction": "vertical-up",
+      "coordinates": {
+        "bounds": {
+          "left": 58,
+          "top": 1026,
+          "right": 1022,
+          "bottom": 1656
+        },
+        "scale": 2.625,
+        "startX": 321,
+        "startY": 1289,
+        "endX": 321,
+        "endY": 1157
+      },
+      "readyLine": "I/SpinonBootstrap(13992): SPINON_C133_READY input=MotionEvent status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=0 scroll_offsets=[0,0;0,0;0,0] generation=1 viewport_css_px=400x240 surface_texture=1050x630 root_css_px=400x240",
+      "allowed": false,
+      "rejected": true,
+      "movedTarget": false,
+      "finalLine": "I/SpinonBootstrap(13992): SPINON_C133_INPUT_BATCH status=0 c13_3_input_batch=processed processed_count=2 pending_regular=0 scroll_state_revision=0 offsets=root:0,0;outer:0,0;inner:0,0 traces=[event=move sequence=19 gesture=1 pointer=0 cumulative_css_px=0,-48.126118 policy_epoch=0 coalesced_samples=1 result=pan_rejected published=false;event=terminal sequence=20 gesture=1 pointer=0 kind=End result=ended]",
+      "offsets": {
+        "revision": 0,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          0,
+          0
+        ]
+      },
+      "log": "android-touch-action-none-vertical-up.log"
+    },
+    {
+      "platform": "android-emulator",
+      "serial": "emulator-5554",
+      "scenarioID": 4,
+      "name": "touch-action-pan-x",
+      "direction": "horizontal-left",
+      "coordinates": {
+        "bounds": {
+          "left": 58,
+          "top": 1026,
+          "right": 1022,
+          "bottom": 1656
+        },
+        "scale": 2.625,
+        "startX": 321,
+        "startY": 1289,
+        "endX": 189,
+        "endY": 1289
+      },
+      "readyLine": "I/SpinonBootstrap(14068): SPINON_C133_READY input=MotionEvent status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=0 scroll_offsets=[0,0;0,0;0,0] generation=1 viewport_css_px=400x240 surface_texture=1050x630 root_css_px=400x240",
+      "allowed": true,
+      "rejected": false,
+      "movedTarget": true,
+      "finalLine": "I/SpinonBootstrap(14068): SPINON_C133_INPUT_BATCH status=0 c13_3_input_batch=processed processed_count=2 pending_regular=0 scroll_state_revision=14 offsets=root:0,0;outer:0,0;inner:49.883556,0 traces=[event=move sequence=15 gesture=1 pointer=0 cumulative_css_px=-49.883556,0 policy_epoch=0 coalesced_samples=1 result=moved target=7 revision=14 changes=1 remainder_css_px=0.00,0.00 published=true;event=terminal sequence=16 gesture=1 pointer=0 kind=End result=ended]",
+      "offsets": {
+        "revision": 14,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          49.883556,
+          0
+        ]
+      },
+      "log": "android-touch-action-pan-x-horizontal-left.log"
+    },
+    {
+      "platform": "android-emulator",
+      "serial": "emulator-5554",
+      "scenarioID": 4,
+      "name": "touch-action-pan-x",
+      "direction": "vertical-up",
+      "coordinates": {
+        "bounds": {
+          "left": 58,
+          "top": 1026,
+          "right": 1022,
+          "bottom": 1656
+        },
+        "scale": 2.625,
+        "startX": 321,
+        "startY": 1289,
+        "endX": 321,
+        "endY": 1157
+      },
+      "readyLine": "I/SpinonBootstrap(14152): SPINON_C133_READY input=MotionEvent status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=0 scroll_offsets=[0,0;0,0;0,0] generation=1 viewport_css_px=400x240 surface_texture=1050x630 root_css_px=400x240",
+      "allowed": false,
+      "rejected": true,
+      "movedTarget": false,
+      "finalLine": "I/SpinonBootstrap(14152): SPINON_C133_INPUT_BATCH status=0 c13_3_input_batch=processed processed_count=1 pending_regular=0 scroll_state_revision=0 offsets=root:0,0;outer:0,0;inner:0,0 traces=[event=terminal sequence=20 gesture=1 pointer=0 kind=End result=ended]",
+      "offsets": {
+        "revision": 0,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          0,
+          0
+        ]
+      },
+      "log": "android-touch-action-pan-x-vertical-up.log"
+    },
+    {
+      "platform": "android-emulator",
+      "serial": "emulator-5554",
+      "scenarioID": 5,
+      "name": "touch-action-pan-y",
+      "direction": "horizontal-left",
+      "coordinates": {
+        "bounds": {
+          "left": 58,
+          "top": 1026,
+          "right": 1022,
+          "bottom": 1656
+        },
+        "scale": 2.625,
+        "startX": 321,
+        "startY": 1289,
+        "endX": 189,
+        "endY": 1289
+      },
+      "readyLine": "I/SpinonBootstrap(14227): SPINON_C133_READY input=MotionEvent status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=0 scroll_offsets=[0,0;0,0;0,0] generation=1 viewport_css_px=400x240 surface_texture=1050x630 root_css_px=400x240",
+      "allowed": false,
+      "rejected": true,
+      "movedTarget": false,
+      "finalLine": "I/SpinonBootstrap(14227): SPINON_C133_INPUT_BATCH status=0 c13_3_input_batch=processed processed_count=1 pending_regular=0 scroll_state_revision=0 offsets=root:0,0;outer:0,0;inner:0,0 traces=[event=terminal sequence=19 gesture=1 pointer=0 kind=End result=ended]",
+      "offsets": {
+        "revision": 0,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          0,
+          0
+        ]
+      },
+      "log": "android-touch-action-pan-y-horizontal-left.log"
+    },
+    {
+      "platform": "android-emulator",
+      "serial": "emulator-5554",
+      "scenarioID": 5,
+      "name": "touch-action-pan-y",
+      "direction": "vertical-up",
+      "coordinates": {
+        "bounds": {
+          "left": 58,
+          "top": 1026,
+          "right": 1022,
+          "bottom": 1656
+        },
+        "scale": 2.625,
+        "startX": 321,
+        "startY": 1289,
+        "endX": 321,
+        "endY": 1157
+      },
+      "readyLine": "I/SpinonBootstrap(14303): SPINON_C133_READY input=MotionEvent status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=0 scroll_offsets=[0,0;0,0;0,0] generation=1 viewport_css_px=400x240 surface_texture=1050x630 root_css_px=400x240",
+      "allowed": true,
+      "rejected": false,
+      "movedTarget": true,
+      "finalLine": "I/SpinonBootstrap(14303): SPINON_C133_INPUT_BATCH status=0 c13_3_input_batch=processed processed_count=2 pending_regular=0 scroll_state_revision=16 offsets=root:0,0;outer:0,0;inner:0,48.877975 traces=[event=move sequence=17 gesture=1 pointer=0 cumulative_css_px=0,-48.877975 policy_epoch=0 coalesced_samples=1 result=moved target=7 revision=16 changes=1 remainder_css_px=0.00,0.00 published=true;event=terminal sequence=18 gesture=1 pointer=0 kind=End result=ended]",
+      "offsets": {
+        "revision": 16,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          0,
+          48.877975
+        ]
+      },
+      "log": "android-touch-action-pan-y-vertical-up.log"
+    },
+    {
+      "platform": "android-emulator",
+      "serial": "emulator-5554",
+      "scenarioID": 6,
+      "name": "touch-action-target-pan-x",
+      "direction": "horizontal-left",
+      "coordinates": {
+        "bounds": {
+          "left": 58,
+          "top": 1026,
+          "right": 1022,
+          "bottom": 1656
+        },
+        "scale": 2.625,
+        "startX": 321,
+        "startY": 1289,
+        "endX": 189,
+        "endY": 1289
+      },
+      "readyLine": "I/SpinonBootstrap(14390): SPINON_C133_READY input=MotionEvent status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=0 scroll_offsets=[0,0;0,0;0,0] generation=1 viewport_css_px=400x240 surface_texture=1050x630 root_css_px=400x240",
+      "allowed": true,
+      "rejected": false,
+      "movedTarget": true,
+      "finalLine": "I/SpinonBootstrap(14390): SPINON_C133_INPUT_BATCH status=0 c13_3_input_batch=processed processed_count=1 pending_regular=0 scroll_state_revision=15 offsets=root:0,0;outer:0,0;inner:44.351936,0 traces=[event=terminal sequence=19 gesture=1 pointer=0 kind=End result=ended]",
+      "offsets": {
+        "revision": 15,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          44.351936,
+          0
+        ]
+      },
+      "log": "android-touch-action-target-pan-x-horizontal-left.log"
+    },
+    {
+      "platform": "android-emulator",
+      "serial": "emulator-5554",
+      "scenarioID": 6,
+      "name": "touch-action-target-pan-x",
+      "direction": "vertical-up",
+      "coordinates": {
+        "bounds": {
+          "left": 58,
+          "top": 1026,
+          "right": 1022,
+          "bottom": 1656
+        },
+        "scale": 2.625,
+        "startX": 321,
+        "startY": 1289,
+        "endX": 321,
+        "endY": 1157
+      },
+      "readyLine": "I/SpinonBootstrap(14466): SPINON_C133_READY input=MotionEvent status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=0 scroll_offsets=[0,0;0,0;0,0] generation=1 viewport_css_px=400x240 surface_texture=1050x630 root_css_px=400x240",
+      "allowed": false,
+      "rejected": true,
+      "movedTarget": false,
+      "finalLine": "I/SpinonBootstrap(14466): SPINON_C133_INPUT_BATCH status=0 c13_3_input_batch=processed processed_count=1 pending_regular=0 scroll_state_revision=0 offsets=root:0,0;outer:0,0;inner:0,0 traces=[event=terminal sequence=20 gesture=1 pointer=0 kind=End result=ended]",
+      "offsets": {
+        "revision": 0,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          0,
+          0
+        ]
+      },
+      "log": "android-touch-action-target-pan-x-vertical-up.log"
+    },
+    {
+      "platform": "android-emulator",
+      "serial": "emulator-5554",
+      "scenarioID": 7,
+      "name": "touch-action-intersection-none",
+      "direction": "horizontal-left",
+      "coordinates": {
+        "bounds": {
+          "left": 58,
+          "top": 1026,
+          "right": 1022,
+          "bottom": 1656
+        },
+        "scale": 2.625,
+        "startX": 321,
+        "startY": 1289,
+        "endX": 189,
+        "endY": 1289
+      },
+      "readyLine": "I/SpinonBootstrap(14546): SPINON_C133_READY input=MotionEvent status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=0 scroll_offsets=[0,0;0,0;0,0] generation=1 viewport_css_px=400x240 surface_texture=1050x630 root_css_px=400x240",
+      "allowed": false,
+      "rejected": true,
+      "movedTarget": false,
+      "finalLine": "I/SpinonBootstrap(14546): SPINON_C133_INPUT_BATCH status=0 c13_3_input_batch=processed processed_count=1 pending_regular=0 scroll_state_revision=0 offsets=root:0,0;outer:0,0;inner:0,0 traces=[event=terminal sequence=28 gesture=1 pointer=0 kind=End result=ended]",
+      "offsets": {
+        "revision": 0,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          0,
+          0
+        ]
+      },
+      "log": "android-touch-action-intersection-none-horizontal-left.log"
+    },
+    {
+      "platform": "android-emulator",
+      "serial": "emulator-5554",
+      "scenarioID": 7,
+      "name": "touch-action-intersection-none",
+      "direction": "vertical-up",
+      "coordinates": {
+        "bounds": {
+          "left": 58,
+          "top": 1026,
+          "right": 1022,
+          "bottom": 1656
+        },
+        "scale": 2.625,
+        "startX": 321,
+        "startY": 1289,
+        "endX": 321,
+        "endY": 1157
+      },
+      "readyLine": "I/SpinonBootstrap(14622): SPINON_C133_READY input=MotionEvent status=0 presented boxes=11 environment_revision=0 document_revision=55 render_tree_revision=11 style_revision=0 scroll_state_revision=0 scroll_offsets=[0,0;0,0;0,0] generation=1 viewport_css_px=400x240 surface_texture=1050x630 root_css_px=400x240",
+      "allowed": false,
+      "rejected": true,
+      "movedTarget": false,
+      "finalLine": "I/SpinonBootstrap(14622): SPINON_C133_INPUT_BATCH status=0 c13_3_input_batch=processed processed_count=1 pending_regular=0 scroll_state_revision=0 offsets=root:0,0;outer:0,0;inner:0,0 traces=[event=terminal sequence=28 gesture=1 pointer=0 kind=End result=ended]",
+      "offsets": {
+        "revision": 0,
+        "root": [
+          0,
+          0
+        ],
+        "outer": [
+          0,
+          0
+        ],
+        "inner": [
+          0,
+          0
+        ]
+      },
+      "log": "android-touch-action-intersection-none-vertical-up.log"
+    }
+  ],
+  "platforms": {
+    "iosSimulator": {
+      "lastBootedAt": "2026-10-15T07:05:28Z",
+      "dataPath": "/Users/yoonhb/Library/Developer/CoreSimulator/Devices/5BCC297F-A234-4B9D-88D4-14485AD92D06/data",
+      "dataPathSize": 1699540992,
+      "logPath": "/Users/yoonhb/Library/Logs/CoreSimulator/5BCC297F-A234-4B9D-88D4-14485AD92D06",
+      "udid": "5BCC297F-A234-4B9D-88D4-14485AD92D06",
+      "isAvailable": true,
+      "logPathSize": 585728,
+      "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+      "state": "Booted",
+      "name": "SpinonC133TouchAction20261015",
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2"
+    },
+    "androidEmulator": {
+      "model": "sdk_gphone16k_arm64",
+      "qemu": "1",
+      "api": "37",
+      "release": "17",
+      "size": "Physical size: 1080x2400",
+      "density": "Physical density: 420"
+    }
+  }
+}

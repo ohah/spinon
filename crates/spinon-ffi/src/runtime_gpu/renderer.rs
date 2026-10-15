@@ -121,17 +121,15 @@ impl RuntimeGpuHost {
                 (status, error.to_string())
             });
         #[cfg(feature = "c13-3-gesture-fixture-test")]
-        if result.is_ok() {
-            if let Some(state) = &self.c13_3_gesture_state {
-                if let Ok(snapshot) = state.current_snapshot() {
-                    if !self.presentation.publish(sequence, snapshot) {
-                        return Err((
-                            ERR_STALE,
-                            "C13.3 resize 뒤 최신 gesture snapshot 복구가 stale입니다".to_owned(),
-                        ));
-                    }
-                }
-            }
+        if result.is_ok()
+            && let Some(state) = &self.c13_3_gesture_state
+            && let Ok(snapshot) = state.current_snapshot()
+            && !self.presentation.publish(sequence, snapshot)
+        {
+            return Err((
+                ERR_STALE,
+                "C13.3 resize 뒤 최신 gesture snapshot 복구가 stale입니다".to_owned(),
+            ));
         }
         result
     }

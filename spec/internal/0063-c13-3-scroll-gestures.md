@@ -110,6 +110,10 @@ CSS Overscroll 초안은 `contain`과 `none`이 ancestor chaining을 막고, `no
 
 touch pan, host가 scroll 의도로 분류한 normalized wheel/trackpad delta와 기록된 momentum phase, cancel, multi-pointer cancellation만 범위다. Spinon이 touch release 뒤 inertia/fling을 생성하지 않는다. host magnify/zoom input, keyboard focus/default scroll, pinch zoom, scroll snap, scrollbar, RTL/logical axis, public Pointer/Wheel/scroll event는 별도 owner에 남긴다.
 
+## UIKit 첫 translation이 0인 경우
+
+`UIPanGestureRecognizer`의 `.began`은 OS pan recognition 경계지만, 그 callback의 누적 translation은 `(0,0)`일 수 있다. iOS adapter는 이 sample에서 `Begin`만 queue에 넣고 pan 축을 고정하지 않는다. translation이 계속 0인 `.changed` callback은 queue에 넣지 않으며, 첫 nonzero `.changed`는 `PanBegan`으로 enqueue한다. 그 이후 `.changed`만 `Move`가 된다. 첫 nonzero sample 전에 끝나거나 취소되면 Tracking 상태를 terminal 처리하고 offset/revision은 유지한다. Android는 native touch slop을 넘은 실제 누적 translation을 `PanBegan`으로 enqueue한다. 순수 Rust session에 zero `PanBegan`이 직접 전달돼도 no-op으로 받아들이고 다음 nonzero `PanBegan`에서 축을 고정한다. fixed CSS px slop/각도 기준은 두지 않는다. [Simulator matrix evidence](evidence/c13-3-touch-action-simulator-matrix-2026-10-15/README.md).
+
 ## Oracle·fixture·완료 관문
 
 [Chrome 155 사전 비교](evidence/c13-3-scroll-gesture-precomparison-2026-10-15/README.md)는 400×240 agent-browser fixture, source/screenshot hash, direct touch/wheel offset·event/pointer trace를 고정한다. inner `overflow:hidden`은 gesture offset을 소비하지 않고 `auto` remainder를 outer로 넘겼으며 `clip`/`visible`도 자체 offset 없이 outer로 연결됐다. 주요 oracle 차이는 diagonal `overscroll-x:contain; overscroll-y:auto`에서 세로 parent chaining이 막힌 것이다. 내부 contract 테스트는 x contain은 x만 차단하고 y auto는 y remainder를 전달하는지 명시적으로 검증한다. Chrome 결과를 제품 적합성 pass로 쓰지 않는다.

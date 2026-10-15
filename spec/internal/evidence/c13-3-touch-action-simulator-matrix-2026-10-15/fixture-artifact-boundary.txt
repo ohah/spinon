@@ -1,0 +1,23 @@
+# C13.3 fixture default/opt-in artifact boundary
+
+Commands:
+
+- Default: `cargo build --locked -p spinon-ffi --lib`
+- Opt-in: `cargo build --locked -p spinon-ffi --lib --features c13-3-gesture-fixture-test`
+
+Default static archive `target/debug/libspinon_ffi.a` SHA-256: `f8d4765667356353840ef2b5e577f4210155642d5511d0a68efe4869ec4d8c8c`.
+
+- `strings -a` contained none of the four C13.3 C ABI symbol names.
+- `strings -a` contained no `c133-inner-horizontal-marker` fixture JS marker.
+
+Opt-in static archive `target/debug/libspinon_ffi.a` SHA-256: `d0a62a8217b79af2bbc67054dba60df9c0d813e64050145455f079d325b375ea`.
+
+- `strings -a` contained `spinon_runtime_gpu_host_new_c13_3_gesture_fixture`.
+- `strings -a` contained `spinon_runtime_gpu_host_eval_c13_3_gesture_fixture`.
+- `strings -a` contained `spinon_runtime_gpu_host_enqueue_c13_3_gesture`.
+- `strings -a` contained `spinon_runtime_gpu_host_process_c13_3_gesture_queue`.
+- `strings -a` contained the unique fixture JS marker `c133-inner-horizontal-marker`.
+
+This is the default-build negative control and opt-in positive control. The Xcode `nm` binary on this host cannot read LLVM 22.1 Rust object debug attributes (`Unknown attribute kind`), so symbol presence/absence was checked against archive strings instead. The incomplete `nm` output was not used as evidence.
+
+Build logs: [default](ffi-default-build.log) · [opt-in](ffi-opt-in-build.log).

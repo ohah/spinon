@@ -587,7 +587,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let prefix = "--spinon-c133-policy-scenario-id="
         guard argument.hasPrefix(prefix),
               let scenarioID = Int32(argument.dropFirst(prefix.count)),
-              scenarioID >= 0, scenarioID <= 2 else { return -1 }
+              scenarioID >= 0, scenarioID <= 7 else { return -1 }
         return scenarioID
     }
 #endif
@@ -624,6 +624,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     private var c133GestureSurfaceGeneration: UInt64 = 0
     private var c133CoordinateScale: Float = 1
     private var c133LastCumulativeCss = CGPoint.zero
+    private var c133PanBegan = false
 #endif
     private let c122AbsoluteBlockProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c122-absolute-block")
@@ -1807,7 +1808,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         if (!c133GesturePolicyScenarioArguments.isEmpty && !c133GestureFixtureRequested)
             || (c133GestureFixtureRequested && c133GesturePolicyScenarioID < 0) {
             log("SPINON_C133_POLICY_SCENARIO_ARGUMENT_ERROR rejected=true")
-            postStatus("실패 · C13.3 policy scenario ID는 fixture route에서 0~2로 하나만 지정해야 합니다")
+            postStatus("실패 · C13.3 policy scenario ID는 fixture route에서 0~7로 하나만 지정해야 합니다")
             return
         }
 #endif
@@ -2269,19 +2270,38 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             let scenarioID = c133GesturePolicyScenarioID
             let scenario = scenarioID == 0 ? "auto-zero"
                 : scenarioID == 1 ? "auto-boundary"
-                : scenarioID == 2 ? "contain-x-auto-y-boundary" : "invalid"
+                : scenarioID == 2 ? "contain-x-auto-y-boundary"
+                : scenarioID == 3 ? "touch-action-none"
+                : scenarioID == 4 ? "touch-action-pan-x"
+                : scenarioID == 5 ? "touch-action-pan-y"
+                : scenarioID == 6 ? "touch-action-target-pan-x"
+                : scenarioID == 7 ? "touch-action-intersection-none" : "invalid"
             let expectedPolicy = scenarioID == 2
                 ? "policy_inner=contain/auto" : "policy_inner=auto/auto"
-            let expectedSeed = scenarioID == 0
-                ? "fixture_seed=none" : "fixture_seed=inner-max"
-            let expectedOffsets = scenarioID == 0
-                ? "offsets=root:0,0;outer:0,0;inner:0,0"
-                : "offsets=root:0,0;outer:0,0;inner:86,106"
-            guard scenarioID >= 0 && scenarioID <= 2
+            let boundarySeed = scenarioID == 1 || scenarioID == 2
+            let expectedSeed = boundarySeed ? "fixture_seed=inner-max" : "fixture_seed=none"
+            let expectedOffsets = boundarySeed
+                ? "offsets=root:0,0;outer:0,0;inner:86,106"
+                : "offsets=root:0,0;outer:0,0;inner:0,0"
+            let expectedTouchAction = scenarioID == 3 || scenarioID == 7
+                ? "touch_action_effective=none"
+                : scenarioID == 4 || scenarioID == 6 ? "touch_action_effective=pan-x"
+                : scenarioID == 5 ? "touch_action_effective=pan-y"
+                : "touch_action_effective=auto"
+            let expectedInnerTouchAction = scenarioID == 3 ? "none"
+                : scenarioID == 4 ? "pan-x"
+                : scenarioID == 5 || scenarioID == 7 ? "pan-y"
+                : "auto"
+            let expectedInnerContentTouchAction = scenarioID == 6 || scenarioID == 7
+                ? "pan-x" : "auto"
+            guard scenarioID >= 0 && scenarioID <= 7
                     && report.hasPrefix("status=0 ")
                     && report.contains("c13_3_gesture_fixture=ready")
                     && report.contains("scenario=\(scenario)")
                     && report.contains(expectedPolicy)
+                    && report.contains(expectedTouchAction)
+                    && report.contains("touch_action_inner=\(expectedInnerTouchAction)")
+                    && report.contains("touch_action_inner_content=\(expectedInnerContentTouchAction)")
                     && report.contains(expectedSeed)
                     && report.contains(expectedOffsets)
                     && report.contains("viewport_css_px=400x240")
@@ -2294,7 +2314,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             c133GestureEvaluationReady = true
             c133GestureFixtureReady = false
             stateLock.unlock()
-            log("SPINON_C133_EVAL_READY input=UIPanGestureRecognizer native_slop=system \(runtimeStatusSummary(report))")
+            let actualTouchAction = reportField(report, "touch_action_effective=")
+            let actualInnerTouchAction = reportField(report, "touch_action_inner=")
+            let actualInnerContentTouchAction = reportField(report, "touch_action_inner_content=")
+            let touchActionSummary = "touch_action_effective=\(actualTouchAction) touch_action_inner=\(actualInnerTouchAction) touch_action_inner_content=\(actualInnerContentTouchAction)"
+            log("SPINON_C133_EVAL_READY input=UIPanGestureRecognizer native_slop=system scenario=\(scenario) \(touchActionSummary) \(runtimeStatusSummary(report))")
             postStatus("준비 중 · C13.3 boundary snapshot의 첫 Metal draw를 확인합니다")
             requestDraw()
 #endif
@@ -3300,6 +3324,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         c133CoordinateScale = scaleX
         c133LastCumulativeCss = .zero
         c133TerminalQueued = false
+        c133PanBegan = false
 
         let beginReport = enqueueC133Gesture(
             action: 0,
@@ -3312,16 +3337,22 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             return
         }
         c133TouchActive = true
-        let panReport = enqueueC133Gesture(
-            action: 1,
-            x: Float(cumulativeCss.x),
-            y: Float(cumulativeCss.y),
-            reason: 0
-        )
-        if !panReport.hasPrefix("status=0 ") {
-            log("SPINON_C133_TOUCH_PAN_BEGIN_REJECTED \(panReport)")
-            cancelC133Gesture(reason: 2, source: "pan-begin-rejected")
-            return
+        let panReport: String
+        if cumulativeCss.x == 0, cumulativeCss.y == 0 {
+            panReport = "pending-first-nonzero-translation"
+        } else {
+            panReport = enqueueC133Gesture(
+                action: 1,
+                x: Float(cumulativeCss.x),
+                y: Float(cumulativeCss.y),
+                reason: 0
+            )
+            if !panReport.hasPrefix("status=0 ") {
+                log("SPINON_C133_TOUCH_PAN_BEGIN_REJECTED \(panReport)")
+                cancelC133Gesture(reason: 2, source: "pan-begin-rejected")
+                return
+            }
+            c133PanBegan = true
         }
         c133LastCumulativeCss = cumulativeCss
         if panReport.contains("GestureCancelledForCapacity") {
@@ -3330,7 +3361,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
         scheduleC133Drain()
         logC133Callback(
-            "pan-began",
+            c133PanBegan ? "pan-began" : "pan-awaiting-translation",
             recognizer: recognizer,
             cumulative: cumulativeCss,
             report: "begin={\(beginReport)} pan={\(panReport)}",
@@ -3356,14 +3387,21 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             x: translation.x * widthCss / canvasView.bounds.width,
             y: translation.y * heightCss / canvasView.bounds.height
         )
+        if !c133PanBegan, cumulative.x == 0, cumulative.y == 0 {
+            logC133Callback("pan-awaiting-translation", recognizer: recognizer,
+                            cumulative: cumulative, report: "accepted=true", started: started)
+            return
+        }
+        let startsPan = !c133PanBegan
         let report = enqueueC133Gesture(
-            action: 2,
+            action: startsPan ? 1 : 2,
             x: Float(cumulative.x),
             y: Float(cumulative.y),
             reason: 0
         )
         if report.hasPrefix("status=0 ") {
             c133LastCumulativeCss = cumulative
+            if startsPan { c133PanBegan = true }
             if report.contains("GestureCancelledForCapacity") {
                 c133TerminalQueued = true
                 c133SuppressUntilAllPointersUp = true
@@ -3372,7 +3410,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         } else {
             cancelC133Gesture(reason: 2, source: "move-rejected")
         }
-        logC133Callback("move", recognizer: recognizer,
+        logC133Callback(startsPan ? "pan-began" : "move", recognizer: recognizer,
                         cumulative: cumulative, report: report, started: started)
     }
 
@@ -3425,6 +3463,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         c133GestureID = 0
         c133PointerID = 0
         c133LastCumulativeCss = .zero
+        c133PanBegan = false
         if clearSuppression { c133SuppressUntilAllPointersUp = false }
     }
 
@@ -3759,11 +3798,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 return
             }
             let scenarioID = c133GesturePolicyScenarioID
-            let expectedRevision = scenarioID == 0
-                ? "scroll_state_revision=0" : "scroll_state_revision=1"
-            let expectedOffsets = scenarioID == 0
-                ? "scroll_offsets=[0,0;0,0;0,0]"
-                : "scroll_offsets=[0,0;0,0;86,106]"
+            let boundarySeed = scenarioID == 1 || scenarioID == 2
+            let expectedRevision = boundarySeed
+                ? "scroll_state_revision=1" : "scroll_state_revision=0"
+            let expectedOffsets = boundarySeed
+                ? "scroll_offsets=[0,0;0,0;86,106]"
+                : "scroll_offsets=[0,0;0,0;0,0]"
             guard result?.contains(expectedRevision) == true,
                   result?.contains(expectedOffsets) == true else {
                 log("SPINON_C133_DRAW_ASSERTIONS failed=true \(result ?? "missing-report")")
@@ -3776,7 +3816,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             c133GestureFixtureReady = true
             stateLock.unlock()
             log("SPINON_C133_READY input=UIPanGestureRecognizer native_slop=system \(result ?? "")")
-            postStatus("준비 · \(scenarioID == 0 ? "auto-zero" : scenarioID == 1 ? "auto-boundary" : "contain-x-auto-y-boundary") 경계 상태에서 실제 iOS swipe 입력을 확인하세요")
+            let scenario = scenarioID == 0 ? "auto-zero"
+                : scenarioID == 1 ? "auto-boundary"
+                : scenarioID == 2 ? "contain-x-auto-y-boundary"
+                : scenarioID == 3 ? "touch-action-none"
+                : scenarioID == 4 ? "touch-action-pan-x"
+                : scenarioID == 5 ? "touch-action-pan-y"
+                : scenarioID == 6 ? "touch-action-target-pan-x"
+                : "touch-action-intersection-none"
+            postStatus("준비 · \(scenario) 상태에서 실제 iOS swipe 입력을 확인하세요")
         }
 #endif
         if c131MetalPixelCapture != nil,
