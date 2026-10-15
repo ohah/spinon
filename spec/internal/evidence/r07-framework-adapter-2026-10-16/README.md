@@ -22,7 +22,7 @@ bun run test
 bun run capture > ../../spec/internal/evidence/r07-framework-adapter-2026-10-16/observation.json
 ```
 
-`bun run test` 결과는 2 passed, 0 failed다. 첫 검증에서 발견한 실행 하니스 오류는 다음과 같이 수정했다.
+`bun run test` 결과는 2 passed, 0 failed다. `bun run capture`를 연속 실행해 `observation.json`과 byte-for-byte 동일한 결과도 확인했다. 첫 검증에서 발견한 실행 하니스 오류는 다음과 같이 수정했다.
 
 - Node 기본 export가 Svelte server entry를 골라 `lifecycle_function_unavailable`로 끝나던 문제를 `--conditions=browser`로 고정했다.
 - 임시 compiler module을 OS 임시 폴더에 두자 spike 의존성을 찾지 못해 spike 디렉터리 안에서 생성 후 제거하도록 바꿨다.
