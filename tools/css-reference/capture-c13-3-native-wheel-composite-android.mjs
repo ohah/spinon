@@ -63,6 +63,10 @@ function sha256(bytes) {
   return createHash('sha256').update(bytes).digest('hex');
 }
 
+function trimLineEndWhitespace(text) {
+  return text.split('\n').map((line) => line.replace(/[\t ]+$/u, '')).join('\n');
+}
+
 function wait(milliseconds) {
   return new Promise((resolve) => setTimeout(resolve, milliseconds));
 }
@@ -170,8 +174,14 @@ async function compileHelper(toolchain, temporaryDirectory) {
   assert.ok(loadAlignments.length > 0, 'uinput helper ELF has no LOAD segments');
   assert.ok(loadAlignments.every((alignment) => alignment === 16_384),
     `uinput helper LOAD alignment is not 16 KB: ${loadAlignments.join(',')}`);
-  await writeFile(path.join(evidenceDirectory, 'helper-program-headers.txt'), headers);
-  return { binary, sha256: sha256(await readFile(binary)), loadAlignments };
+  await writeFile(path.join(evidenceDirectory, 'helper-program-headers.txt'), trimLineEndWhitespace(headers));
+  return {
+    binary,
+    sha256: sha256(await readFile(binary)),
+    loadAlignments,
+    programHeaders: headers,
+    programHeadersSha256: sha256(Buffer.from(headers)),
+  };
 }
 
 function screenBounds(lines, phase) {
@@ -291,8 +301,8 @@ async function runCompositeInput(serial, helperArgs, evidenceStem) {
     /^add device \d+:/,
     /^add device \d+:/,
   );
-  await writeFile(path.join(evidenceDirectory, `${evidenceStem}-input-device.log`), eventHubBlock);
-  await writeFile(path.join(evidenceDirectory, `${evidenceStem}-getevent-device.log`), geteventBlock);
+  await writeFile(path.join(evidenceDirectory, `${evidenceStem}-input-device.log`), trimLineEndWhitespace(eventHubBlock));
+  await writeFile(path.join(evidenceDirectory, `${evidenceStem}-getevent-device.log`), trimLineEndWhitespace(geteventBlock));
 
   const timeout = setTimeout(() => child.kill('SIGTERM'), 20_000);
   const result = await finished;
@@ -512,6 +522,8 @@ async function main() {
         helperSourceSha256: sha256(await readFile(helperSource)),
         helperSha256: helper.sha256,
         helperLoadAlignments: helper.loadAlignments,
+        helperProgramHeadersSha256: helper.programHeadersSha256,
+        helperProgramHeaders: helper.programHeaders,
         ndk: path.basename(toolchain.ndkRoot),
         ndkHost: toolchain.host,
         optInFlags: ['SPINON_ENABLE_C04_RUNTIME_GPU=1', 'SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST=1'],
@@ -556,6 +568,7 @@ async function main() {
       '![화면 밖 복합 wheel 입력 거부 후](./composite-outside-surface-after.png)',
       '',
       'InputReader/getevent 장치 진단, 원본 callback·draw log, pixel manifest와 모든 source hash는 이 디렉터리에 저장했다.',
+      '사람이 읽는 `.log`와 program-header text 파일은 줄 끝 공백만 정리한다. JSON에는 InputReader/getevent 원문 문자열과 compiler program-header 원문·SHA-256을 보존한다.',
       '',
       '재현:',
       '',
