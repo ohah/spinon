@@ -1,9 +1,11 @@
 # 0063 · C13.3 scroll gesture runtime 내부 계약
 
-- **계약:** `0.1.0-draft` · **상태:** 구현 전 계획·Chrome oracle 고정
+- **계약:** `0.1.0-draft` · **상태:** per-axis snapshot router 조각 구현 후보 · 전체 gesture runtime 미완료
 - **제품 CSS 지원 선언:** 아님
 - **기준:** [C13.3 계획](../../plan/c13-3-scroll-gestures.md) · [Chrome 155 precomparison](evidence/c13-3-scroll-gesture-precomparison-2026-10-15/README.md)
 - **기존 기반:** [0062 C13.2 scroll state](0062-c13-2-scroll-state.md)의 immutable snapshot·owner chain·`ScrollStateRevision`
+
+현재 후보는 policy 입력형 순수 Rust delta router다. 기본 C13.2 scroll container는 입력을 비활성화하며, 아직 CSS computed style·touch-action freeze·native gesture session/queue·Android/iOS callback·fixture FFI로 연결하지 않았다. 이 후보의 통과를 제품 제스처나 C13.3 완료로 해석하지 않는다. [실행·제한·검토 근거](evidence/c13-3-scroll-gesture-runtime-core-2026-10-15/README.md)
 
 ## 범위와 소유자
 

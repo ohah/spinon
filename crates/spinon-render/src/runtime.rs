@@ -9,9 +9,14 @@ use spinon_core::{
 use super::{CssRect, CssSize, OpaqueCssSrgb};
 
 mod scroll;
+mod scroll_gesture;
 mod snapshot;
 
-pub use scroll::{RuntimeScrollClipLayer, RuntimeScrollContainer, RuntimeScrollRenderMetadata};
+pub use scroll::{
+    RuntimeOverscrollBehavior, RuntimeScrollClipLayer, RuntimeScrollContainer,
+    RuntimeScrollInputPolicy, RuntimeScrollRenderMetadata,
+};
+pub use scroll_gesture::{RuntimeScrollDeltaChange, RuntimeScrollDeltaOutcome};
 
 /// 한 CSS 좌표축에서 허용되는 반열린 clipping interval입니다.
 #[derive(Clone, Copy, Debug, PartialEq)]
@@ -389,6 +394,9 @@ pub enum RuntimeRenderError {
     StaleScrollRevision,
     DuplicateScrollRequest(NodeId),
     InvalidScrollRequest(NodeId),
+    InvalidScrollTarget(NodeId),
+    InvalidScrollPoint,
+    InvalidScrollDelta,
     ScrollRevisionExhausted,
 }
 
@@ -429,6 +437,18 @@ impl fmt::Display for RuntimeRenderError {
                     "runtime scroll 요청의 owner {node} 또는 offset이 유효하지 않습니다"
                 )
             }
+            Self::InvalidScrollTarget(node) => {
+                write!(
+                    formatter,
+                    "runtime scroll 입력의 target {node}가 snapshot에 없습니다"
+                )
+            }
+            Self::InvalidScrollPoint => {
+                formatter.write_str("runtime scroll 입력 point는 유한한 CSS px여야 합니다")
+            }
+            Self::InvalidScrollDelta => {
+                formatter.write_str("runtime scroll 입력 delta는 유한한 CSS px여야 합니다")
+            }
             Self::ScrollRevisionExhausted => {
                 formatter.write_str("runtime scroll state revision 번호를 더 증가시킬 수 없습니다")
             }
@@ -438,6 +458,9 @@ impl fmt::Display for RuntimeRenderError {
 
 impl Error for RuntimeRenderError {}
 
+#[cfg(test)]
+#[path = "runtime/scroll_gesture_tests.rs"]
+mod scroll_gesture_tests;
 #[cfg(test)]
 #[path = "runtime_tests.rs"]
 mod tests;

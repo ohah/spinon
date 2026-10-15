@@ -9,9 +9,10 @@ use spinon_core::{
 
 mod runtime;
 pub use runtime::{
-    CssAxisClip, CssClip, RuntimeBorder, RuntimeBorderSide, RuntimePaint, RuntimeRenderBox,
-    RuntimeRenderError, RuntimeRenderKey, RuntimeRenderSnapshot, RuntimeScrollClipLayer,
-    RuntimeScrollContainer, RuntimeScrollRenderMetadata,
+    CssAxisClip, CssClip, RuntimeBorder, RuntimeBorderSide, RuntimeOverscrollBehavior,
+    RuntimePaint, RuntimeRenderBox, RuntimeRenderError, RuntimeRenderKey, RuntimeRenderSnapshot,
+    RuntimeScrollClipLayer, RuntimeScrollContainer, RuntimeScrollDeltaChange,
+    RuntimeScrollDeltaOutcome, RuntimeScrollInputPolicy, RuntimeScrollRenderMetadata,
 };
 
 /// CSS px 좌표계의 양수 viewport 크기입니다.
