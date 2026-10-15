@@ -1,0 +1,39 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+info    Rendering pages...
+success Pages rendered in 67 ms.
+ready   built in 0.52s (web)
+ready   built in 0.52s (node)
+
+File (web)                                                                                                              Size        Gzip
+packages/docs/build/site-preview-c13-3-native-wheel-tailnet-20261016/static/js/async/l.76b60f2b87.js                    0.10 kB     0.09 kB
+packages/docs/build/site-preview-c13-3-native-wheel-tailnet-20261016/static/js/styles.aba03c5c90.js                     0.47 kB     0.23 kB
+packages/docs/build/site-preview-c13-3-native-wheel-tailnet-20261016/icon.svg                                           0.64 kB     0.42 kB
+packages/docs/build/site-preview-c13-3-native-wheel-tailnet-20261016/static/js/async/route-cb2b871d39c1.eca05f90b0.js   5.7 kB      2.2 kB
+packages/docs/build/site-preview-c13-3-native-wheel-tailnet-20261016/static/js/async/route-3c7ae46a686f.10e2919947.js   5.8 kB      2.3 kB
+packages/docs/build/site-preview-c13-3-native-wheel-tailnet-20261016/static/js/async/route-abeecded38c6.ed1d171993.js   15.1 kB     5.4 kB
+packages/docs/build/site-preview-c13-3-native-wheel-tailnet-20261016/static/js/async/route-2b13b396562a.c86077438f.js   16.1 kB     7.0 kB
+packages/docs/build/site-preview-c13-3-native-wheel-tailnet-20261016/static/js/index.188e6af567.js                      28.2 kB     11.2 kB
+packages/docs/build/site-preview-c13-3-native-wheel-tailnet-20261016/static/js/lib-router.d3b08da66f.js                 35.4 kB     12.7 kB
+packages/docs/build/site-preview-c13-3-native-wheel-tailnet-20261016/static/js/async/route-d138c5df840a.3adf151fac.js   59.9 kB     16.5 kB
+packages/docs/build/site-preview-c13-3-native-wheel-tailnet-20261016/static/css/styles.8d918fd78e.css                   74.0 kB     14.2 kB
+packages/docs/build/site-preview-c13-3-native-wheel-tailnet-20261016/static/js/async/route-a991d6de67ad.116ab55f80.js   135.6 kB    29.6 kB
+packages/docs/build/site-preview-c13-3-native-wheel-tailnet-20261016/static/js/3.35d6e2b47a.js                          217.1 kB    72.0 kB
+packages/docs/build/site-preview-c13-3-native-wheel-tailnet-20261016/static/js/lib-react.801d719c4f.js                  218.4 kB    68.8 kB
+packages/docs/build/site-preview-c13-3-native-wheel-tailnet-20261016/static/search_index.ko.fbe2e166.json               315.9 kB    101.8 kB
+packages/docs/build/site-preview-c13-3-native-wheel-tailnet-20261016/static/js/async/route-7ce2535ac56d.91e6549273.js   319.0 kB    75.2 kB
+
+                                                                                                               Total:   1447.3 kB   419.5 kB
+
+File (node)                                                                                                                                                 Size       Gzip
+packages/docs/build/site-preview-c13-3-native-wheel-tailnet-20261016/404.html                                                                               8.5 kB     2.5 kB
+packages/docs/build/site-preview-c13-3-native-wheel-tailnet-20261016/spec/internal/evidence/c13-3-native-wheel-input-plan-review-20-2026-10-16.html         26.2 kB    5.7 kB
+packages/docs/build/site-preview-c13-3-native-wheel-tailnet-20261016/spec/internal/evidence/c13-3-native-wheel-input-pr-review-20-2026-10-16.html           26.5 kB    5.6 kB
+packages/docs/build/site-preview-c13-3-native-wheel-tailnet-20261016/plan/c13-3-native-wheel-input.html                                                     30.7 kB    8.5 kB
+packages/docs/build/site-preview-c13-3-native-wheel-tailnet-20261016/spec/internal/evidence/c13-3-native-wheel-input-precomparison-2026-10-16/README.html   31.1 kB    10.2 kB
+packages/docs/build/site-preview-c13-3-native-wheel-tailnet-20261016/plan/c13-3-scroll-gestures.html                                                        78.3 kB    19.9 kB
+packages/docs/build/site-preview-c13-3-native-wheel-tailnet-20261016/spec/internal/README.html                                                              129.2 kB   32.1 kB
+packages/docs/build/site-preview-c13-3-native-wheel-tailnet-20261016/spec/STATUS.html                                                                       302.6 kB   77.3 kB
+
+                                                                                                                                                   Total:   633.1 kB   161.7 kB
