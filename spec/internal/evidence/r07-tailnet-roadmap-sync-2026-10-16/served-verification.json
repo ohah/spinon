@@ -1,0 +1,129 @@
+{
+  "title": "R07 Tailnet roadmap Agent Browser verification",
+  "checked_at_kst": "2026-10-16 05:22:26",
+  "source_main_commit": "a328a69d8b5904f659b53666c944ae4e76cc8e53",
+  "preview_url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "browser": {
+    "roadmap": {
+      "title": "스피논 구현 로드맵",
+      "counter": "197개 표시 · 공식 완료 62/197",
+      "status_note": "공식 상태 동기화 완료 · 상위 78개 + 세부 ID 117개 + ID 없는 하위 체크 2개 · 완료 62/197개",
+      "r07_checked": true,
+      "r07_description": "Vue 3.5.44 custom renderer와 Svelte 5.57.2 client output을 같은 Element/Text host projection에 연결했고, mount·click 2회·unmount가 oracle과 일치했다. 가능성 조사만 완료; FFI·제품 adapter·CSS/GPU 화면은 미완료."
+    },
+    "status_page": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "r07_content_visible": true
+    },
+    "nested_status_route": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/STATUS.html",
+      "result": "HTTP fetch returns the synced file, but direct navigation hydrates to the app's 404 page. This route is not claimed as a working display route; the roadmap's official status link points to GitHub main."
+    },
+    "screenshot": {
+      "path": "spec/internal/evidence/r07-tailnet-roadmap-sync-2026-10-16/roadmap-agent-browser.png",
+      "size_bytes": 393976,
+      "width": 1680,
+      "height": 1200,
+      "sha256": "2a6e8365c2056b375bc02c602d7dc81f4d4e1f7a2d4333ded037212542327944"
+    }
+  },
+  "served_files": [
+    {
+      "path": "roadmap.html",
+      "status": 200,
+      "sha256": "64cea4633c620b718668f3690311c58c85474b49595e97910b76666157cdf977",
+      "sha256_match": true
+    },
+    {
+      "path": "public/roadmap.html",
+      "status": 200,
+      "sha256": "64cea4633c620b718668f3690311c58c85474b49595e97910b76666157cdf977",
+      "sha256_match": true
+    },
+    {
+      "path": "spec/STATUS.md",
+      "status": 200,
+      "sha256": "7045f3e28630cad78e7763f31efd3e59c8ff16c8f0c9b2d79c43b6ffb3bb4637",
+      "sha256_match": true
+    },
+    {
+      "path": "spec/STATUS.html",
+      "status": 200,
+      "sha256": "9a791bcbbef31e3c7b2937b6e12a7f0474bc346dc68eaefe14adab0cfeb3643c",
+      "sha256_match": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "status": 200,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "sha256_match": true
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.7e6d27b387.js",
+      "status": 200,
+      "sha256": "89d2706f68c71cd94cc12d8425bb82ce23a8fe7b32a4af8736e829287be75824",
+      "sha256_match": true
+    },
+    {
+      "path": "static/js/styles.b5d9a69293.js",
+      "status": 200,
+      "sha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6",
+      "sha256_match": true
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "status": 200,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "sha256_match": true
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "status": 200,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "sha256_match": true
+    },
+    {
+      "path": "static/js/3.84f2879c69.js",
+      "status": 200,
+      "sha256": "95a3e8ff387557dcfe16e61654138d2af8f9d957f0e632d10730f0a2a50e8ed9",
+      "sha256_match": true
+    },
+    {
+      "path": "static/js/index.bad3c1f61c.js",
+      "status": 200,
+      "sha256": "4f2d85a96ba5a87783a8e840c1afeaedcee654095965cc56fbeb47dc03609944",
+      "sha256_match": true
+    },
+    {
+      "path": "icon.svg",
+      "status": 200,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "sha256_match": true
+    },
+    {
+      "path": "logo.svg",
+      "status": 200,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "sha256_match": true
+    },
+    {
+      "path": "roadmap.svg",
+      "status": 200,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "sha256_match": true
+    },
+    {
+      "path": "STATUS.html",
+      "status": 200,
+      "sha256": "9a791bcbbef31e3c7b2937b6e12a7f0474bc346dc68eaefe14adab0cfeb3643c",
+      "sha256_match": true
+    }
+  ],
+  "build": {
+    "scoped_status_page": "Rspress 2.0.22 one-page staging build passed with dead-link and dead-image checks disabled only in the temporary config.",
+    "full_site": "Build attempted but failed on existing repository-wide dead links and missing image references; no full-site build success claimed.",
+    "server_restarted": false,
+    "github_pages_workflow_run": false
+  }
+}

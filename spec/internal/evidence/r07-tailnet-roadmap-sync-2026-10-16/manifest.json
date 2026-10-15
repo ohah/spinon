@@ -1,0 +1,154 @@
+{
+  "title": "Spinon Tailnet R07 roadmap sync",
+  "generated_at": "2026-10-15T20:22:18.679Z",
+  "source_branch": "docs/r07-tailnet-roadmap-sync-20261016",
+  "source_main_commit": "a328a69d8b5904f659b53666c944ae4e76cc8e53",
+  "preview_url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "build": {
+    "generator": "Rspress 2.0.22",
+    "scope": "R07 official status, generated status page, and static roadmap only",
+    "temporary_checks": "dead-link and dead-image checks disabled in an isolated one-page build only",
+    "full_site_build": "attempted and blocked by existing repository-wide dead links and missing image references; no whole-site build success claimed",
+    "repository_docs_config_modified": false,
+    "github_pages_workflow": false,
+    "preview_server_restarted": false
+  },
+  "manifest_self_hash_excluded": true,
+  "files": [
+    {
+      "path": "roadmap.html",
+      "source": "spec/public/roadmap.html",
+      "size_bytes": 111854,
+      "previous_sha256": "9612f115a6c1b4fa78c704d9f2d80b1a8c6c6f1f5daa95fae12750c3033791bd",
+      "expected_sha256": "64cea4633c620b718668f3690311c58c85474b49595e97910b76666157cdf977",
+      "sync_status": "replaced",
+      "backup_path": "backup/r07-tailnet-roadmap-sync-2026-10-16/roadmap.html"
+    },
+    {
+      "path": "public/roadmap.html",
+      "source": "spec/public/roadmap.html",
+      "size_bytes": 111854,
+      "previous_sha256": "9612f115a6c1b4fa78c704d9f2d80b1a8c6c6f1f5daa95fae12750c3033791bd",
+      "expected_sha256": "64cea4633c620b718668f3690311c58c85474b49595e97910b76666157cdf977",
+      "sync_status": "replaced",
+      "backup_path": "backup/r07-tailnet-roadmap-sync-2026-10-16/public/roadmap.html"
+    },
+    {
+      "path": "spec/STATUS.md",
+      "source": "spec/STATUS.md",
+      "size_bytes": 233957,
+      "previous_sha256": "1e88fbeba33012b3884ff16bd98fa27dee56d50299b0d6e2a0157e5b613b7bdf",
+      "expected_sha256": "7045f3e28630cad78e7763f31efd3e59c8ff16c8f0c9b2d79c43b6ffb3bb4637",
+      "sync_status": "replaced",
+      "backup_path": "backup/r07-tailnet-roadmap-sync-2026-10-16/spec/STATUS.md"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "source": "/private/tmp/spinon-r07-status-build-scoped/STATUS.html",
+      "size_bytes": 302343,
+      "previous_sha256": "c2577d614cac540a0a805a6ab536eadcf5033fc0362dc10f10269dc3650b8038",
+      "expected_sha256": "9a791bcbbef31e3c7b2937b6e12a7f0474bc346dc68eaefe14adab0cfeb3643c",
+      "sync_status": "replaced",
+      "backup_path": "backup/r07-tailnet-roadmap-sync-2026-10-16/spec/STATUS.html"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "source": "/private/tmp/spinon-r07-status-build-scoped/static/css/styles.8d918fd78e.css",
+      "size_bytes": 73952,
+      "previous_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "expected_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.7e6d27b387.js",
+      "source": "/private/tmp/spinon-r07-status-build-scoped/static/js/async/route-6c33a3943990.7e6d27b387.js",
+      "size_bytes": 325081,
+      "previous_sha256": null,
+      "expected_sha256": "89d2706f68c71cd94cc12d8425bb82ce23a8fe7b32a4af8736e829287be75824",
+      "sync_status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/styles.b5d9a69293.js",
+      "source": "/private/tmp/spinon-r07-status-build-scoped/static/js/styles.b5d9a69293.js",
+      "size_bytes": 471,
+      "previous_sha256": null,
+      "expected_sha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6",
+      "sync_status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "source": "/private/tmp/spinon-r07-status-build-scoped/static/js/lib-react.801d719c4f.js",
+      "size_bytes": 218366,
+      "previous_sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "expected_sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "source": "/private/tmp/spinon-r07-status-build-scoped/static/js/lib-router.d3b08da66f.js",
+      "size_bytes": 35366,
+      "previous_sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "expected_sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/3.84f2879c69.js",
+      "source": "/private/tmp/spinon-r07-status-build-scoped/static/js/3.84f2879c69.js",
+      "size_bytes": 217061,
+      "previous_sha256": null,
+      "expected_sha256": "95a3e8ff387557dcfe16e61654138d2af8f9d957f0e632d10730f0a2a50e8ed9",
+      "sync_status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/index.bad3c1f61c.js",
+      "source": "/private/tmp/spinon-r07-status-build-scoped/static/js/index.bad3c1f61c.js",
+      "size_bytes": 10368,
+      "previous_sha256": null,
+      "expected_sha256": "4f2d85a96ba5a87783a8e840c1afeaedcee654095965cc56fbeb47dc03609944",
+      "sync_status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "icon.svg",
+      "source": "/private/tmp/spinon-r07-status-build-scoped/icon.svg",
+      "size_bytes": 638,
+      "previous_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "expected_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "logo.svg",
+      "source": "/private/tmp/spinon-r07-status-build-scoped/logo.svg",
+      "size_bytes": 568,
+      "previous_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "expected_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "roadmap.svg",
+      "source": "/private/tmp/spinon-r07-status-build-scoped/roadmap.svg",
+      "size_bytes": 4835,
+      "previous_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "expected_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "sync_status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "STATUS.html",
+      "source": "/private/tmp/spinon-r07-status-build-scoped/STATUS.html",
+      "size_bytes": 302343,
+      "previous_sha256": "fc3dc1111444c07fe4da1abad0c17fab8ace02ce5c651113649324f41e7577ba",
+      "expected_sha256": "9a791bcbbef31e3c7b2937b6e12a7f0474bc346dc68eaefe14adab0cfeb3643c",
+      "sync_status": "replaced",
+      "backup_path": "backup/r07-tailnet-roadmap-sync-2026-10-16/STATUS.html"
+    }
+  ]
+}
