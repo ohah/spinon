@@ -1,6 +1,6 @@
 # C13.3 복합 wheel 근거 Tailnet 로드맵 반영 · 2026-10-16
 
-PR #202에서 병합된 Android API 37 AVD 복합 source 결과를 정적 Tailnet 로드맵과 연결했다. 로드맵 원문은 [spec/public/roadmap.html](https://github.com/ohah/spinon/blob/main/spec/public/roadmap.html)이다. C13.3은 iOS native callback, 물리 복합 입력장치, 제품 입력 경로 등의 조건이 남아 있어 미완료로 유지하며 완료 체크를 바꾸지 않았다.
+[PR #202](https://github.com/ohah/spinon/pull/202)에서 병합된 Android API 37 AVD 복합 source 결과를 정적 Tailnet 로드맵과 연결했다. 로드맵 원문은 [spec/public/roadmap.html](https://github.com/ohah/spinon/blob/main/spec/public/roadmap.html)이다. C13.3은 iOS native callback, 물리 복합 입력장치, 제품 입력 경로 등의 조건이 남아 있어 미완료로 유지하며 완료 체크를 바꾸지 않았다.
 
 - 로드맵: <https://macstudio.tailed42f2.ts.net/spinon/roadmap.html>
 - 새 근거 페이지: <https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c13-3-native-wheel-composite-avd-2026-10-16/README.html>
@@ -15,3 +15,6 @@ PR #202에서 병합된 Android API 37 AVD 복합 source 결과를 정적 Tailne
 - [로드맵 공식 완료 수](./roadmap-count-agent-browser.png)
 - [Agent Browser 결과](./tailnet-served-verification.json)
 - [복사 전후 SHA-256 manifest와 백업 경로](./tailnet-sync-manifest.json)
+- PR #203 본문 이미지도 Agent Browser에서 확인했다. 세 개의 `raw.githubusercontent.com` 이미지는 각각 1280×633으로 로드됐고 깨진 이미지가 없었다. [PR 이미지 렌더링 화면](./pr-203-images-agent-browser.png) · [검증 JSON](./pr-body-image-verification.json).
+
+- [PR 변경 적대 검토 20개](./pr-delta-review-20.md) · [PR 본문 이미지 배치 화면](./pr-203-images-agent-browser.png) · [PR 이미지 검증 JSON](./pr-body-image-verification.json).

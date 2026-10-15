@@ -1,0 +1,38 @@
+{
+  "captured_at": "2026-10-16 Asia/Seoul",
+  "browser": "agent-browser 0.31.1",
+  "pr_url": "https://github.com/ohah/spinon/pull/203",
+  "pr_title": "docs(roadmap): C13.3 복합 AVD 근거 Tailnet 반영",
+  "public_page_observed": true,
+  "body_includes_official_count": true,
+  "images": [
+    {
+      "alt": "복합 AVD 요약이 반영된 Tailnet 로드맵",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/feat/c13-3-roadmap-composite-progress-20261016/spec/internal/evidence/c13-3-roadmap-composite-tailnet-sync-2026-10-16/roadmap-agent-browser.png",
+      "natural_width": 1280,
+      "natural_height": 633,
+      "complete": true
+    },
+    {
+      "alt": "Tailnet에서 열린 복합 AVD 근거 페이지",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/feat/c13-3-roadmap-composite-progress-20261016/spec/internal/evidence/c13-3-roadmap-composite-tailnet-sync-2026-10-16/composite-evidence-agent-browser.png",
+      "natural_width": 1280,
+      "natural_height": 633,
+      "complete": true
+    },
+    {
+      "alt": "공식 완료 수 61/197",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/feat/c13-3-roadmap-composite-progress-20261016/spec/internal/evidence/c13-3-roadmap-composite-tailnet-sync-2026-10-16/roadmap-count-agent-browser.png",
+      "natural_width": 1280,
+      "natural_height": 633,
+      "complete": true
+    }
+  ],
+  "broken_images": [],
+  "pr_body_capture": {
+    "path": "pr-203-images-agent-browser.png",
+    "sha256": "633cb867fc86594f488667213029d47fa21d43b6d46919f284a4821eb04fe050",
+    "width": 1280,
+    "height": 633
+  }
+}
