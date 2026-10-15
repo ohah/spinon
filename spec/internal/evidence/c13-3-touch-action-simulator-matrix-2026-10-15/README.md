@@ -76,7 +76,7 @@ UIKit `UIPanGestureRecognizer.state == .began`에서 translation `(0,0)`을 전�
 - `mise exec -- bun run test:css-reference` — 447/447 통과 (<a href="./css-reference-test.log">log</a>).
 - `mise exec -- bun run test:js` — 2/2 통과 (<a href="./js-test.log">log</a>). `cargo fmt --all -- --check`, 새 capture/fixture JavaScript와 Python 문법 검사, pixel analyzer 실행(<a href="./pixel-analysis-check.log">log</a>)과 `git diff --check`도 통과했다(<a href="./final-source-checks.log">source checks</a>).
 
-구현 검토와 PR 변경 검토 기록은 최종 소스·PR SHA에 맞춰 별도로 연결한다. CI 결과와 merge 상태도 local verification과 분리해 기록한다.
+[구현 실패 관점 검토 20개](implementation-review-20.md) · [PR #187](https://github.com/ohah/spinon/pull/187) · [PR 변경 관점 검토 20개](pr-delta-review-20.md). `gh pr checks`는 현재 보고된 항목이 없으며, main은 선형 이력을 요구한다. GitHub 검사 결과와 merge 상태는 simulator/local 검증과 구분한다.
 
 ## 남은 범위
 
