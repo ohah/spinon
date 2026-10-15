@@ -13,10 +13,14 @@ pub use runtime::{
     RuntimeOverscrollBehavior, RuntimePaint, RuntimeRenderBox, RuntimeRenderError,
     RuntimeRenderKey, RuntimeRenderSnapshot, RuntimeScrollClipLayer, RuntimeScrollContainer,
     RuntimeScrollDeltaChange, RuntimeScrollDeltaOutcome, RuntimeScrollGestureBegin,
-    RuntimeScrollGestureCancelReason, RuntimeScrollGestureError, RuntimeScrollGestureOutcome,
-    RuntimeScrollGesturePanSample, RuntimeScrollGestureSession, RuntimeScrollGestureState,
-    RuntimeScrollGestureTerminal, RuntimeScrollInputPolicy, RuntimeScrollRenderMetadata,
-    RuntimeTouchAction,
+    RuntimeScrollGestureBeginDisposition, RuntimeScrollGestureCancelReason,
+    RuntimeScrollGestureError, RuntimeScrollGestureIdentity, RuntimeScrollGestureInputQueue,
+    RuntimeScrollGestureOutcome, RuntimeScrollGesturePanSample, RuntimeScrollGestureSession,
+    RuntimeScrollGestureState, RuntimeScrollGestureTerminal, RuntimeScrollGestureTerminalKind,
+    RuntimeScrollInputPolicy, RuntimeScrollInputQueueAdmission, RuntimeScrollInputQueueDiagnostics,
+    RuntimeScrollInputQueueError, RuntimeScrollInputQueueEvent, RuntimeScrollMomentumPhase,
+    RuntimeScrollRenderMetadata, RuntimeScrollWheelSample, RuntimeScrollWheelSource,
+    RuntimeScrollWheelUnit, RuntimeTouchAction,
 };
 
 /// CSS px 좌표계의 양수 viewport 크기입니다.

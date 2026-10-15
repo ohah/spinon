@@ -11,6 +11,7 @@ use super::{CssRect, CssSize, OpaqueCssSrgb};
 mod scroll;
 mod scroll_gesture;
 mod scroll_gesture_session;
+mod scroll_input_queue;
 mod snapshot;
 
 pub use scroll::{
@@ -24,10 +25,21 @@ pub use scroll_gesture_session::{
     RuntimeScrollGestureSession, RuntimeScrollGestureState, RuntimeScrollGestureTerminal,
     RuntimeTouchAction,
 };
+pub use scroll_input_queue::{
+    RuntimeScrollGestureBeginDisposition, RuntimeScrollGestureIdentity,
+    RuntimeScrollGestureInputQueue, RuntimeScrollGestureTerminalKind,
+    RuntimeScrollInputQueueAdmission, RuntimeScrollInputQueueDiagnostics,
+    RuntimeScrollInputQueueError, RuntimeScrollInputQueueEvent, RuntimeScrollMomentumPhase,
+    RuntimeScrollWheelSample, RuntimeScrollWheelSource, RuntimeScrollWheelUnit,
+};
 
 #[cfg(test)]
 #[path = "runtime/scroll_gesture_session_tests.rs"]
 mod scroll_gesture_session_tests;
+
+#[cfg(test)]
+#[path = "runtime/scroll_input_queue_tests.rs"]
+mod scroll_input_queue_tests;
 
 /// 한 CSS 좌표축에서 허용되는 반열린 clipping interval입니다.
 #[derive(Clone, Copy, Debug, PartialEq)]

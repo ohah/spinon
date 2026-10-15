@@ -87,6 +87,26 @@ impl RuntimeScrollGestureBegin {
             resolved_touch_action,
         }
     }
+
+    pub const fn expected_key(self) -> RuntimeRenderKey {
+        self.expected_key
+    }
+
+    pub const fn surface_generation(self) -> u64 {
+        self.surface_generation
+    }
+
+    pub const fn sequence(self) -> u64 {
+        self.sequence
+    }
+
+    pub const fn gesture_id(self) -> u64 {
+        self.gesture_id
+    }
+
+    pub const fn pointer_id(self) -> u64 {
+        self.pointer_id
+    }
 }
 
 /// native slop 경계 또는 다음 cumulative pan translation입니다.
@@ -126,6 +146,34 @@ impl RuntimeScrollGesturePanSample {
             cumulative_y_css_px,
         }
     }
+
+    pub const fn expected_key(self) -> RuntimeRenderKey {
+        self.expected_key
+    }
+
+    pub const fn surface_generation(self) -> u64 {
+        self.surface_generation
+    }
+
+    pub const fn sequence(self) -> u64 {
+        self.sequence
+    }
+
+    pub const fn gesture_id(self) -> u64 {
+        self.gesture_id
+    }
+
+    pub const fn pointer_id(self) -> u64 {
+        self.pointer_id
+    }
+
+    pub const fn cumulative_x_css_px(self) -> f32 {
+        self.cumulative_x_css_px
+    }
+
+    pub const fn cumulative_y_css_px(self) -> f32 {
+        self.cumulative_y_css_px
+    }
 }
 
 /// Gesture terminal event의 순서와 identity입니다.
@@ -151,6 +199,22 @@ impl RuntimeScrollGestureTerminal {
             pointer_id,
             surface_generation,
         }
+    }
+
+    pub const fn sequence(self) -> u64 {
+        self.sequence
+    }
+
+    pub const fn gesture_id(self) -> u64 {
+        self.gesture_id
+    }
+
+    pub const fn pointer_id(self) -> u64 {
+        self.pointer_id
+    }
+
+    pub const fn surface_generation(self) -> u64 {
+        self.surface_generation
     }
 }
 
@@ -218,4 +282,6 @@ pub enum RuntimeScrollGestureCancelReason {
     NativeRecognizerFailed,
     /// snapshot delta router가 오류를 반환했습니다.
     RenderFailure,
+    /// bounded native input queue가 gesture motion을 수용하지 못했습니다.
+    InputQueueSaturated,
 }
