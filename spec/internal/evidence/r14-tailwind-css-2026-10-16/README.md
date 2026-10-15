@@ -6,7 +6,7 @@
 
 - 2026-10-16, macOS 26.5.1 arm64 · Bun 1.4.2 · Node.js 24.20.0
 - Tailwind CSS / `@tailwindcss/cli` 4.3.3, PostCSS 8.5.28, mobile converter의 Lightning CSS 1.33.0
-- source detection은 `source(none)`과 `@source "./fixture.html"`로 단일 정적 fixture에 고정했다. output과 해시는 [생성 원본 CSS](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/r14-tailwind-css-2026-10-16/tailwind-v4.3.3-generated.css) 및 [검증 결과 JSON](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/r14-tailwind-css-2026-10-16/converter-results.json)에 있다.
+- source detection은 `source(none)`과 `@source "./fixture.html"`로 단일 정적 fixture에 고정했다. output과 해시는 [생성 원본 CSS](https://github.com/ohah/spinon/blob/d72606f7ee76b4ac122722d7d74af03335002f20/spec/internal/evidence/r14-tailwind-css-2026-10-16/tailwind-v4.3.3-generated.css) 및 [검증 결과 JSON](https://github.com/ohah/spinon/blob/d72606f7ee76b4ac122722d7d74af03335002f20/spec/internal/evidence/r14-tailwind-css-2026-10-16/converter-results.json)에 있다.
 - oracle: 이 저장소의 [R10 `compile-css.mjs`](https://github.com/ohah/spinon/blob/main/spikes/style-layout/compile-css.mjs)와 exact-version dependencies. 이는 기존 R10 개발용 변환기이지 제품 Stylo/runtime pipeline이 아니다.
 - 공식 출처: [Tailwind CLI 설치](https://tailwindcss.com/docs/installation/tailwind-cli), [Preflight](https://tailwindcss.com/docs/preflight), [theme variables](https://tailwindcss.com/docs/theme), [source 탐지](https://tailwindcss.com/docs/detecting-classes-in-source-files), [v4.3.3 release](https://github.com/tailwindlabs/tailwindcss/releases/tag/v4.3.3).
 
@@ -39,7 +39,7 @@ Bun은 `@parcel/watcher` install script를 차단했다고 알렸다. 이 one-sh
 | hover selector만 분리 | 거부, JSON 미생성 | 단일 class selector가 아님 |
 | hover/responsive media와 Preflight global selector | 거부, JSON 미생성 | media at-rule 또는 단일 class selector 경계를 벗어남 |
 
-거부된 전체 파일에 부분 변환 JSON은 없었다. 오류 결과와 positive control JSON을 [검증 JSON](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/r14-tailwind-css-2026-10-16/converter-results.json)에 보존했다. 따라서 현재 변환기는 Tailwind의 출력 전체를 보존하지 않으며, `flex` 하나의 결과로 Tailwind 지원을 주장할 수 없다.
+거부된 전체 파일에 부분 변환 JSON은 없었다. 오류 결과와 positive control JSON을 [검증 JSON](https://github.com/ohah/spinon/blob/d72606f7ee76b4ac122722d7d74af03335002f20/spec/internal/evidence/r14-tailwind-css-2026-10-16/converter-results.json)에 보존했다. 따라서 현재 변환기는 Tailwind의 출력 전체를 보존하지 않으며, `flex` 하나의 결과로 Tailwind 지원을 주장할 수 없다.
 
 ## Agent Browser · Chromium reference
 
