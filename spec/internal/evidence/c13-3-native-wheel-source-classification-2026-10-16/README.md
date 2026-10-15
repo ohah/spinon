@@ -1,6 +1,6 @@
-# C13.3 Android native wheel source 분류 수정·AVD 재실행 근거 · 2026-10-16
+# C13.3 Android native wheel AVD 실행 근거 · 2026-10-16
 
-캡처 시각: 2026-10-15T18:17:58.413Z · APK SHA-256: `3f3cca9c31dafd645bbbb5dbed5cd47f64a1034a5d5605f0003e10117219ebbf` · 기준 commit: `244e05388adfc1aaf4e4f6d4b5110d481aa3dae1` · 실행 소스 SHA는 [source-revision.json](./source-revision.json)에 기록했다.
+캡처 시각: 2026-10-15T18:34:08.279Z · APK SHA-256: `92428331b5d9b62f77b74a2ebb1fd4098f223925fc4cc63f451a21b356935306` · 소스 기준: `e50ab73604166059624068d5553f883c32b34890`.
 
 API 37 ARM64 AVD `emulator-5554`에서 mouse `ACTION_SCROLL`의 H/V 네 방향과 네 대각 조합을 실제 앱 callback → bounded queue → render draw까지 실행했다. 각 방향은 별도 앱 실행으로 fixture 시작 오프셋을 고정했다.
 
@@ -8,7 +8,9 @@ ViewConfiguration factor 168 px, surface scale 2.625 px/CSS px에서 각 native 
 
 거부 경로 3/3: SurfaceView 밖 좌표, 좌표가 없는 ADB touchpad sample, 영 축 입력은 각각 기대 reason으로 거부됐고 revision 1 / 시작 offsets `root:0,0;outer:0,0;inner:86,106`를 유지했다.
 
-[ADB 검증 실패 원인과 수정](./adb-failure-root-cause.md). Android 분류는 event source와 pointer tool type을 사용하며 `InputDevice.getSources()`는 진단용으로만 기록한다. [수정 계획의 별도 20개 관점 검토](../c13-3-native-wheel-source-classification-plan-review-20-2026-10-16.md)와 [구현·실행의 20개 관점 검토](../c13-3-native-wheel-source-classification-implementation-review-20-2026-10-16.md)를 보존했다. JVM classifier harness는 mouse+finger, mouse+mouse, unknown tool/source 및 복합 장치의 legacy source-union negative control을 검사한다. AVD 입력별 `event_source_bits`, `pointer_tool`, `device_supported_source_bits`는 각 로그에 보존한다.
+Android 분류는 event source와 pointer tool type을 사용하며 `InputDevice.getSources()`는 진단용으로만 기록한다. JVM classifier harness는 pointer 없는 touchpad source, mouse+finger, mouse+mouse, unknown tool/source 및 복합 장치의 legacy source-union negative control을 검사한다. 아홉 assertion의 개별 결과는 [JVM harness 출력](./classifier-jvm-output.log)에 있다. AVD 입력별 `event_source_bits`, `pointer_tool`, `device_supported_source_bits`는 각 로그에 보존한다.
+
+Evidence 출력 경로의 심볼릭 링크 탈출 검증은 [negative control 로그](./output-path-escape-negative-control.log)에 있다. 링크가 evidence root 밖을 가리키면 바깥 하위 디렉터리를 만들기 전에 거부한다.
 
 스크린샷 `android-diagonal-positive-positive-before.png`와 `android-diagonal-positive-positive-after.png`의 SurfaceView 안쪽 134,064개 픽셀 중 scrollport border 바깥은 변경 0개, 안쪽 변경은 50,684개였다. 비교 범위는 고정 fixture의 root scrollport `left=16, top=16, right=384, bottom=224 CSS px` 바깥 영역이다.
 

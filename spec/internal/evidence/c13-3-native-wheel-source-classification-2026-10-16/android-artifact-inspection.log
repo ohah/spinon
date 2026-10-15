@@ -1,21 +1,19 @@
 [off]
-apk_sha256=830dbf9fcb15f36df0bb0d30ae8fe1e82a0092fafc656ba7a8590aafef4a73ab
+apk_sha256=933b9208275ac5a2048c81e55e7113ff84478845755e85b32f490f4b605301b3
 jni_input_so_sha256=6ee4ae15acd395258a9430e0468a9b409827124a6e8bd21d3ff27689a8b884cd
 BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST=false
-WheelSourceClassifier in DEX=True
-event_source_bits in DEX=False
-pointer_tool= in DEX=False
-WheelSourceClassifierJvmTest in DEX=False
-spinon_runtime_gpu_host_enqueue_c13_3_wheel in unstripped JNI input=False
+WheelSourceClassifier in DEX=true
+event_source_bits/pointer_tool/device_supported_source_bits in DEX=false
+WheelSourceClassifierJvmTest in DEX=false
+spinon_runtime_gpu_host_enqueue_c13_3_wheel in unstripped JNI input=false
 
-[opt-in]
-apk_sha256=3f3cca9c31dafd645bbbb5dbed5cd47f64a1034a5d5605f0003e10117219ebbf
+[on]
+apk_sha256=92428331b5d9b62f77b74a2ebb1fd4098f223925fc4cc63f451a21b356935306
 jni_input_so_sha256=12d9585fc8ad32c7d50338795e0aec40aef464e13ce9551d6f1db8ab54e9204d
 BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST=true
-WheelSourceClassifier in DEX=True
-event_source_bits in DEX=True
-pointer_tool= in DEX=True
-WheelSourceClassifierJvmTest in DEX=False
-spinon_runtime_gpu_host_enqueue_c13_3_wheel in unstripped JNI input=True
+WheelSourceClassifier in DEX=true
+event_source_bits/pointer_tool/device_supported_source_bits in DEX=true
+WheelSourceClassifierJvmTest in DEX=false
+spinon_runtime_gpu_host_enqueue_c13_3_wheel in unstripped JNI input=true
 
 result=passed
