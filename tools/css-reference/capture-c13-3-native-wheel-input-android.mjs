@@ -335,7 +335,10 @@ function androidSimulator(serial) {
 }
 
 async function ensureEvidenceDirectory() {
+  const realRepositoryRoot = await realpath(root);
   const realEvidenceRoot = await realpath(evidenceRoot);
+  assert.ok(realEvidenceRoot.startsWith(`${realRepositoryRoot}${path.sep}`),
+    'spec/internal/evidence resolves outside the repository root');
   const relativeDirectory = path.relative(evidenceRoot, evidenceDirectory);
   assert.ok(relativeDirectory && relativeDirectory !== '..'
     && !relativeDirectory.startsWith(`..${path.sep}`),

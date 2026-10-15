@@ -20,7 +20,7 @@
 | 14 | 방향 회귀 | 기존 horizontal/vertical과 diagonal native wheel matrix는 queue→draw, target/offset/revision oracle을 만족했다. **통과 8/8** |
 | 15 | 표시 경계 | aligned SurfaceView crop에서 root scrollport 바깥 134,064 pixel은 changed 0, 안쪽은 50,684 pixel 변경이다. **통과** |
 | 16 | 순수 Java oracle와 실제 SDK compile | `javac`/`java` harness 8 assertions 및 Android Gradle Java compile이 통과했다. harness는 platform MotionEvent adapter 자체를 대체하지 않는다. **경계 명시** |
-| 17 | 출력 경로 탈출 | lexical 경로와 각 directory component의 symlink를 검사한다. negative control은 evidence root 밖에 하위 디렉터리를 만들지 않고 ADB 접촉 전 거부됨을 확인한다. **통과** |
+| 17 | 출력 경로 탈출 | evidence root 자체가 저장소 안인지 canonical path로 확인하고, 출력 경로의 각 component symlink를 검사한다. negative control은 root 밖에 디렉터리를 만들지 않고 ADB 접촉 전 거부된다. **통과** |
 | 18 | 소스 재현성 | capture JSON은 untracked helper/test/harness와 plan/status/contract/roadmap을 포함한 source file SHA-256을 기록한다. **통과** |
 | 19 | artifact 분리 | off APK BuildConfig false 및 native wheel symbol 부재, on APK BuildConfig true 및 symbol 존재를 확인했다. source diagnostics는 opt-in DEX에만 있고 helper는 양쪽 DEX에 있다. **통과** |
 | 20 | 증거 범위·미완료 경계 | 실행 serial은 `emulator-5554`, qemu=1/API 37; ADB에 연결된 실기기는 대상으로 사용하지 않았다. AVD composite device, 물리 trackpad, iOS callback, release/scanout 증거는 없고 C13.3은 미완료다. **한계 유지** |
