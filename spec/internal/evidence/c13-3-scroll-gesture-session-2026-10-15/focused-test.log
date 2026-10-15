@@ -1,0 +1,22 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.02s
+     Running unittests src/lib.rs (target/debug/deps/spinon_render-2ebea6caa01801d2)
+
+running 16 tests
+test runtime::scroll_gesture_session_tests::identity::duplicate_active_pointer_and_stale_pan_leave_the_original_session_usable ... ok
+test runtime::scroll_gesture_session_tests::barriers::external_scroll_revision_cancels_without_applying_the_late_pan ... ok
+test runtime::scroll_gesture_session_tests::identity::second_pointer_cancels_until_every_contact_ends ... ok
+test runtime::scroll_gesture_session_tests::identity::mismatched_terminal_is_rejected_and_host_cancel_ignores_late_move ... ok
+test runtime::scroll_gesture_session_tests::identity::invalid_begin_duplicate_terminal_and_non_monotonic_sequence_fail_closed ... ok
+test runtime::scroll_gesture_session_tests::barriers::environment_and_surface_barriers_cancel_active_gesture ... ok
+test runtime::scroll_gesture_session_tests::identity::stale_and_invalid_begin_inputs_leave_session_idle ... ok
+test runtime::scroll_gesture_session_tests::identity::clip_and_coordinate_scale_change_cancel_without_retargeting ... ok
+test runtime::scroll_gesture_session_tests::pan::non_finite_pan_does_not_advance_sequence_or_change_session_state ... ok
+test runtime::scroll_gesture_session_tests::pan::style_only_revision_keeps_start_action_and_uses_next_sample_policy ... ok
+test runtime::scroll_gesture_session_tests::identity::stale_surface_terminal_cannot_release_a_suppressed_contact ... ok
+test runtime::scroll_gesture_session_tests::barriers::geometry_change_cancels_and_blocks_pointer_until_its_terminal ... ok
+test runtime::scroll_gesture_session_tests::barriers::document_generation_change_cancels_active_gesture ... ok
+test runtime::scroll_gesture_session_tests::identity::suppressed_contact_id_does_not_consume_a_future_gesture_id ... ok
+test runtime::scroll_gesture_session_tests::pan::disallowed_dominant_axis_rejects_pan_and_never_relocks_later ... ok
+test runtime::scroll_gesture_session_tests::pan::begin_freezes_clip_aware_target_owner_chain_and_axis_through_cumulative_pan ... ok
+
+test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 32 filtered out; finished in 0.00s

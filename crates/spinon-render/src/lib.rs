@@ -9,10 +9,14 @@ use spinon_core::{
 
 mod runtime;
 pub use runtime::{
-    CssAxisClip, CssClip, RuntimeBorder, RuntimeBorderSide, RuntimeOverscrollBehavior,
-    RuntimePaint, RuntimeRenderBox, RuntimeRenderError, RuntimeRenderKey, RuntimeRenderSnapshot,
-    RuntimeScrollClipLayer, RuntimeScrollContainer, RuntimeScrollDeltaChange,
-    RuntimeScrollDeltaOutcome, RuntimeScrollInputPolicy, RuntimeScrollRenderMetadata,
+    CssAxisClip, CssClip, RuntimeBorder, RuntimeBorderSide, RuntimeGestureAxes,
+    RuntimeOverscrollBehavior, RuntimePaint, RuntimeRenderBox, RuntimeRenderError,
+    RuntimeRenderKey, RuntimeRenderSnapshot, RuntimeScrollClipLayer, RuntimeScrollContainer,
+    RuntimeScrollDeltaChange, RuntimeScrollDeltaOutcome, RuntimeScrollGestureBegin,
+    RuntimeScrollGestureCancelReason, RuntimeScrollGestureError, RuntimeScrollGestureOutcome,
+    RuntimeScrollGesturePanSample, RuntimeScrollGestureSession, RuntimeScrollGestureState,
+    RuntimeScrollGestureTerminal, RuntimeScrollInputPolicy, RuntimeScrollRenderMetadata,
+    RuntimeTouchAction,
 };
 
 /// CSS px 좌표계의 양수 viewport 크기입니다.
