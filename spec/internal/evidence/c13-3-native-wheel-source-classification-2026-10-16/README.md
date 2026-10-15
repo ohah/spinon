@@ -22,7 +22,7 @@ Evidence root가 저장소 안에 있는지 canonical path를 확인하고 출�
 
 기본/opt-in APK의 `BuildConfig` 값, DEX/native SHA-256, Rust FFI symbol 경계는 [Android artifact 기록](android-artifact-boundary.md)에 있다.
 
-PR 본문의 Android 화면 표시 확인은 [Agent Browser 검증 기록](pr-body-image-verification.json)에 있다.
+PR 본문의 Android 화면 표시 확인은 [Agent Browser 검증 기록](pr-body-image-verification.json)에 있다. PR 전체 변경의 [30개 독립 적대 검토](pr-delta-review-30.md)도 보존했다.
 
 이 근거는 Android API 37 AVD의 opt-in fixture 경로만 확인한다. AVD에 mouse와 touchpad를 함께 지원하는 복합 입력 장치는 없어 classifier negative control은 JVM에서 수행했다. 물리 장치, hardware GPU, targetable trackpad, Control-wheel runtime, iOS, public DOM events, compositor 이후 scanout 또는 C13.3 전체 완료를 증명하지 않는다.
 
