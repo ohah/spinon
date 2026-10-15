@@ -290,8 +290,15 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
     /nativeProcessC133GestureQueue\(long host\)/);
   assert.match(androidGpuDemoSource,
     /nativeEnqueueC133Wheel\([\s\S]*?sourceUnit, float coordinateScale, int source/);
+  assert.match(androidGpuDemoSource,
+    /KeyEvent\.normalizeMetaState\(metaState\)/);
+  assert.match(androidGpuDemoSource,
+    /normalizedMetaState & KeyEvent\.META_CTRL_ON/);
   assert.match(androidJniSource,
     /#if defined\(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST\)[\s\S]*?spinon_runtime_gpu_host_enqueue_c13_3_wheel/);
+  assert.doesNotMatch(androidGpuDemoSource, /SPINON_C133_SURFACE_BOUNDS/);
+  assert.match(androidGpuDemoSource,
+    /new StringBuilder\("SPINON_C133_SURFACE"\)[\s\S]*?append\("_BOUNDS"\)/);
   assert.doesNotMatch(androidGpuDemoSource, /SPINON_C133_STYLE_UPDATE /);
   assert.doesNotMatch(androidGpuDemoSource, /c13_3_style_invalidation=applied/);
   assert.match(androidGpuDemoSource,

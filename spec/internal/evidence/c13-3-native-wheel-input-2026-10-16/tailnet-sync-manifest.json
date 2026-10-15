@@ -1,0 +1,597 @@
+{
+  "title": "Spinon Tailnet preview sync · C13.3 Android native wheel AVD",
+  "generated_at": "2026-10-15T16:18:51.176Z",
+  "source_branch": "feat/c13-3-native-wheel-input-sim-20261016",
+  "source_revision": "120c933a08037e7b7ea11fc4e89ca9d9c97d6f89",
+  "source_main_commit": "120c933a08037e7b7ea11fc4e89ca9d9c97d6f89",
+  "preview_url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "preview_root": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "build": {
+    "generator": "Rspress 2.0.22",
+    "scope": "C13.3 native wheel input plan, related status/internal pages, and static roadmap only",
+    "temporary_checks": "dead-link and dead-image checks disabled in the isolated scoped build only",
+    "full_site_build": "not run in this sync; no whole-site build success claimed",
+    "repository_docs_config_modified": false,
+    "pages_deployment_or_server_restart": false
+  },
+  "backup_root": "/private/tmp/spinon-tailnet-c13-3-native-wheel-avd-sync-20261016/backup",
+  "manifest_self_hash_excluded": true,
+  "files": [
+    {
+      "path": "icon.svg",
+      "size_bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "previous_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "logo.svg",
+      "size_bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "previous_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "plan/c13-3-native-wheel-input.html",
+      "size_bytes": 33611,
+      "sha256": "5be9c02b8ebdb86a010eed4e09f6143828d8dc102645766ca168fd6c45ff0cc0",
+      "previous_sha256": "523cab29540c74b9102cf677bc79bc27b74deddbfa8af43ac08b094ceb1eeee7",
+      "status": "replaced",
+      "backup_path": "backup/plan/c13-3-native-wheel-input.html"
+    },
+    {
+      "path": "plan/c13-3-native-wheel-input.md",
+      "size_bytes": 10986,
+      "sha256": "8d9c1cfa588cced86d81852de2ec0ff5ea30718436bb4c095b47a57cebac6987",
+      "previous_sha256": "d9e740fbaff5891ce1d7649e1e648f931cc12977f0f22167b615123b7ffcb2da",
+      "status": "replaced",
+      "backup_path": "backup/plan/c13-3-native-wheel-input.md"
+    },
+    {
+      "path": "plan/c13-3-scroll-gestures.html",
+      "size_bytes": 78660,
+      "sha256": "d94dc014a3e0841e02166fe8d5c57f8b1859479d60e1d3b605e91a50dc696a4c",
+      "previous_sha256": "8fd35b13e2a922e451f29e99f3f092c9bac12df6033d585edb10b26ab7b4e195",
+      "status": "replaced",
+      "backup_path": "backup/plan/c13-3-scroll-gestures.html"
+    },
+    {
+      "path": "plan/c13-3-scroll-gestures.md",
+      "size_bytes": 41333,
+      "sha256": "683f93e9213f3f02faeb15c248056a6db229aee86cc8f68d467119b1c2171c43",
+      "previous_sha256": "683f93e9213f3f02faeb15c248056a6db229aee86cc8f68d467119b1c2171c43",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "public/icon.svg",
+      "size_bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "previous_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "public/logo.svg",
+      "size_bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "previous_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "public/roadmap.html",
+      "size_bytes": 109819,
+      "sha256": "433c58e60d0f78f26ee69f70167caef050f6a342dca63ec4e9e9d33b5f175904",
+      "previous_sha256": "b60b60447b28ba7eb18af8e35b086de9304ebd27ca8f28f8508b75e003906616",
+      "status": "replaced",
+      "backup_path": "backup/public/roadmap.html"
+    },
+    {
+      "path": "public/roadmap.svg",
+      "size_bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "previous_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "roadmap.html",
+      "size_bytes": 109819,
+      "sha256": "433c58e60d0f78f26ee69f70167caef050f6a342dca63ec4e9e9d33b5f175904",
+      "previous_sha256": "b60b60447b28ba7eb18af8e35b086de9304ebd27ca8f28f8508b75e003906616",
+      "status": "replaced",
+      "backup_path": "backup/roadmap.html"
+    },
+    {
+      "path": "roadmap.svg",
+      "size_bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "previous_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/0063-c13-3-scroll-gestures.html",
+      "size_bytes": 70772,
+      "sha256": "453bb39a0e8c3822b529f43de73750a46b74804b0f71cf7b19e55e83ba3651b6",
+      "previous_sha256": "81bce12860e7cf9de640475f95cf6511a1d78b833e1dc90d4e5a1d206e4cc067",
+      "status": "replaced",
+      "backup_path": "backup/spec/internal/0063-c13-3-scroll-gestures.html"
+    },
+    {
+      "path": "spec/internal/0063-c13-3-scroll-gestures.md",
+      "size_bytes": 36868,
+      "sha256": "70e958e8c822273b4ae30d053056dc6e3426cb3c27f0f7a4094c92c824e7afb8",
+      "previous_sha256": "6692b501a53c4c21ec5405cb0b9de42bc6cf415f2eb01d22959ae0e468d5a655",
+      "status": "replaced",
+      "backup_path": "backup/spec/internal/0063-c13-3-scroll-gestures.md"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-2026-10-16/android-artifact-boundary.html",
+      "size_bytes": 24722,
+      "sha256": "4b0ed5430e2c806ce9b5d49a1cc38cb248c6f259cbdee19ef716e05e06a968d0",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-2026-10-16/android-artifact-boundary.md",
+      "size_bytes": 2475,
+      "sha256": "4b44911b895184818cb7e3384cdf4138dd2001adc097b69744cbee15218589b4",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-2026-10-16/android-avd-matrix.json",
+      "size_bytes": 29128,
+      "sha256": "27a2068d7b54a77ab1f6cac3799bc58f4a389f071fa1f0f11be8f04012632736",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-2026-10-16/android-diagonal-negative-negative.log",
+      "size_bytes": 7884,
+      "sha256": "5f4a12c45455e995c2e121c0715fe6a8f052ceb7fd978e624c5a1942c48030a2",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-2026-10-16/android-diagonal-negative-positive.log",
+      "size_bytes": 7802,
+      "sha256": "fc116d3bd6a3cf6131ed8209d4182148559e39493a75090cdc25b242dac500c5",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-2026-10-16/android-diagonal-positive-negative.log",
+      "size_bytes": 7795,
+      "sha256": "9398e5984834789ee0927e8825a99b2b936a9d71d4b13bb0c19c49d3beb4323c",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-2026-10-16/android-diagonal-positive-positive-after.png",
+      "size_bytes": 69285,
+      "sha256": "f8b8b85105cc99a3d0d32d5461db93a97a3329de0caaa6b675c2b3f3110c7dbe",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-2026-10-16/android-diagonal-positive-positive-before.png",
+      "size_bytes": 73600,
+      "sha256": "04e13d643dbed21dc97200a6dd64cb6f40422054026c2c3312c9ede2feeb4e9e",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-2026-10-16/android-diagonal-positive-positive.log",
+      "size_bytes": 8132,
+      "sha256": "45edfd181e0d66df3e56859fe5d71b26d65d0add51097106624b82f1b72cfddc",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-2026-10-16/android-h-negative.log",
+      "size_bytes": 7790,
+      "sha256": "07ea56fca2f159cdfe7cbf683cf793c99f786ceb28afb6f6336ec4f1937c8668",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-2026-10-16/android-h-positive.log",
+      "size_bytes": 7779,
+      "sha256": "7df1040714701b5e89895db18bee2dd950becaabb62bfb34746ca0da9be7037c",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-2026-10-16/android-outside-surface.log",
+      "size_bytes": 4362,
+      "sha256": "39562aa974a7d69f97280e40abafacff73b715e0a98258e330acde40a5997bfc",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-2026-10-16/android-touchpad-missing-position.log",
+      "size_bytes": 4368,
+      "sha256": "03544aa441dca77d9914f2c41b3138bb8d83a19fb7281c5eb3ffad8f31992a32",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-2026-10-16/android-v-negative.log",
+      "size_bytes": 7768,
+      "sha256": "9be82feeac6c5dce2fd0f90f29a67b2d8db2cd0cb48a70bb32cba114cdf696d3",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-2026-10-16/android-v-positive.log",
+      "size_bytes": 7770,
+      "sha256": "e6c6c2b63cddc65aaa75d2855b731c1eb52ad33c9416627af71f1fcbddf4e4b3",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-2026-10-16/android-zero-axes.log",
+      "size_bytes": 4258,
+      "sha256": "bf14921728bc3a2a29f5ec8ae626e7e65550ad89f0d4fea9eac55481b85cd004",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-2026-10-16/README.html",
+      "size_bytes": 24356,
+      "sha256": "3e885792816f10e15d247198fdaee0aed01828473a92dfb34e6c3825951f847a",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-2026-10-16/README.md",
+      "size_bytes": 2226,
+      "sha256": "1e152fec249cd55eacb04feb3cdc950a4c044b0d26bc4447b18c52a1ef3632a7",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-precomparison-2026-10-16/normalization-oracle.json",
+      "size_bytes": 5124,
+      "sha256": "5a8457a8e1d1470afb6389c000dafac7df54117b8b13ffefd710c93d5a3518a6",
+      "previous_sha256": "9850b3f0c629d6bbbb92ed6d16125107cc8ad289a81cab507ccbb4269426301d",
+      "status": "replaced",
+      "backup_path": "backup/spec/internal/evidence/c13-3-native-wheel-input-precomparison-2026-10-16/normalization-oracle.json"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-precomparison-2026-10-16/README.html",
+      "size_bytes": 32199,
+      "sha256": "af9a0032608eeb31c20e1b784333b7685cdc9703418e72632363c5a3316ce55d",
+      "previous_sha256": "3a995be8ea2690432101ef59567a702d4fef4cb00995c08b8f425f9b5defee88",
+      "status": "replaced",
+      "backup_path": "backup/spec/internal/evidence/c13-3-native-wheel-input-precomparison-2026-10-16/README.html"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-precomparison-2026-10-16/README.md",
+      "size_bytes": 6586,
+      "sha256": "1f3226e651194a02a0ca69ea3de87883d0f3ec045a0d93126669dc1c25595e01",
+      "previous_sha256": "517873af5aa09adb26eed693dd6c218220c35c0f94cbd0bc90606d5441d048ec",
+      "status": "replaced",
+      "backup_path": "backup/spec/internal/evidence/c13-3-native-wheel-input-precomparison-2026-10-16/README.md"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-preflight-2026-10-16/android-avd-environment.txt",
+      "size_bytes": 220,
+      "sha256": "785e58687a2e4cc02d37cdf5178ce0967b4305a95b33b4bc3cb391182a0723ff",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-preflight-2026-10-16/android-avd-preflight.log",
+      "size_bytes": 2108,
+      "sha256": "e779e6153dd97e770c77ff0d88b9c47843b335d88f0a5468beea8b8f88375e81",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-preflight-2026-10-16/ios-simulator-preflight.log",
+      "size_bytes": 504,
+      "sha256": "2a7acda0046af81140474ab74b4cbc40c2cfc1f00a0c39cc08f0297acc8c55e1",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-preflight-2026-10-16/README.html",
+      "size_bytes": 22731,
+      "sha256": "ab27872564607f002cdca7f23e9b8b4026749605e982c22e8a370742afb2cbf5",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-native-wheel-input-preflight-2026-10-16/README.md",
+      "size_bytes": 3000,
+      "sha256": "314c26e8670fffa81b72b398f405092e30566f97e9535e674119908b1a244c4f",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/README.html",
+      "size_bytes": 129866,
+      "sha256": "01dd0fa6cd9fb4e2209780fcaa3ed2bd6551fbe7527ce20d8121176f5d6a4769",
+      "previous_sha256": "f1568d1c53beffed792e29216c2897f02841c75b8c215a18c48a89ddbf56df56",
+      "status": "replaced",
+      "backup_path": "backup/spec/internal/README.html"
+    },
+    {
+      "path": "spec/internal/README.md",
+      "size_bytes": 91855,
+      "sha256": "f91c26213fb69ca1f029b11fff15fc0dd1c6a89178d9e8940167eb696846db52",
+      "previous_sha256": "dbdf3d1e5d7aa31d185996088cb83f84cfed54f45236c74e13fead44d98d0793",
+      "status": "replaced",
+      "backup_path": "backup/spec/internal/README.md"
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "size_bytes": 109819,
+      "sha256": "433c58e60d0f78f26ee69f70167caef050f6a342dca63ec4e9e9d33b5f175904",
+      "previous_sha256": "53b8c596516a299f4b91e50f9b080d982c3db8c5211a737be1252ae46088735d",
+      "status": "replaced",
+      "backup_path": "backup/spec/public/roadmap.html"
+    },
+    {
+      "path": "spec/README.html",
+      "size_bytes": 25135,
+      "sha256": "41426a72855547888d19a6f8f9307e80083be399f4d1aad812472a24ef2ed099",
+      "previous_sha256": "c5518ec253111ab2196e43eb25c5688050460ce9a874762563d664dbc8605949",
+      "status": "replaced",
+      "backup_path": "backup/spec/README.html"
+    },
+    {
+      "path": "spec/README.md",
+      "size_bytes": 3563,
+      "sha256": "90cad85c1bd1c979522119b83fca946988a105dcaa99762f62950a0ea9873f0f",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/STATUS.html",
+      "size_bytes": 304651,
+      "sha256": "69f3b0e63d9e071e2ae57daf9d3dbce7d13934b0e15be765d39bc5e4584f17b7",
+      "previous_sha256": "349846cb5992da39a4e9c5699637ee07852729ebd7d0d8394bf5dd0192318576",
+      "status": "replaced",
+      "backup_path": "backup/spec/STATUS.html"
+    },
+    {
+      "path": "spec/STATUS.md",
+      "size_bytes": 230532,
+      "sha256": "26b55ff925a928929b997fa96f1a3819f1874b7580483f87e91ccfb4d4231cbe",
+      "previous_sha256": "dc25ca97bc2efd6e97758b67a134fd8930e74249ade645ac16a3e39f9492ddd4",
+      "status": "replaced",
+      "backup_path": "backup/spec/STATUS.md"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "size_bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "previous_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/android-diagonal-positive-positive-after.fad6ab7ee8.png",
+      "size_bytes": 69285,
+      "sha256": "f8b8b85105cc99a3d0d32d5461db93a97a3329de0caaa6b675c2b3f3110c7dbe",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/android-diagonal-positive-positive-before.c17a2f0873.png",
+      "size_bytes": 73600,
+      "sha256": "04e13d643dbed21dc97200a6dd64cb6f40422054026c2c3312c9ede2feeb4e9e",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/a.8eceb60bfa.js",
+      "size_bytes": 217098,
+      "sha256": "7427112ce87da45fa739723b363feee7d5f0d608e1db9ea53a72113b9d04d203",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/a.8eceb60bfa.js.LICENSE.txt",
+      "size_bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "size_bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "previous_sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-2b13b396562a.4d52f69b6f.js",
+      "size_bytes": 16634,
+      "sha256": "159b7c5fc54baa0312eae73b8b308bd82a856d57ba5f432c69671acddc4b0502",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-35ac96558387.123de2e0bf.js",
+      "size_bytes": 6259,
+      "sha256": "e1f8d6f579545cc081fd4cf2a9ffc7f7770dd74a105822f2e5d4baba0ad2e879",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-4a5c2f67987b.e5eb04ec5b.js",
+      "size_bytes": 7631,
+      "sha256": "39524ddeb55b9fc5910edc3883e6d395c697e8d5403f0cef574121dfbb2b2789",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-5cee168c0948.6fef2e87e7.js",
+      "size_bytes": 54097,
+      "sha256": "b7d2c37002bdd16c37d5a63a0dde5407099c557540b7bc42d49e5e0fdea53b56",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.a2645c8043.js",
+      "size_bytes": 320635,
+      "sha256": "59ebe9be19c0268ce58e7d4cfb812aa91e22ac5534457d661a63133ad230782b",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-8b9b0f346e6c.c19073e5fc.js",
+      "size_bytes": 4204,
+      "sha256": "4057f1555a67d4c5a3bad680a03ce60c7cba2c29916237abad17faab9f7098f6",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-a48746cae70c.d1137609e7.js",
+      "size_bytes": 902,
+      "sha256": "2aa77bc480b1adf73b18b1e2a0bee4d22a3845af24a4e2910f2d1c0f304acd4a",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-a991d6de67ad.ff4d4fff5e.js",
+      "size_bytes": 135814,
+      "sha256": "b2ec2d8bbe03e273b95faaeb2e16c1ca1ac7c4ca14cfb92bfb22dcd5397ac3b7",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-abeecded38c6.690eb19b89.js",
+      "size_bytes": 17242,
+      "sha256": "d9a77464114a93e1a648d587ef7f0d2f7c90ac3c75bb8095c98bc9d50b5f2b3d",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-b33563055168.e8cebeb3d4.js",
+      "size_bytes": 15619,
+      "sha256": "8302268140f025de09ef3780a0e63c399aab05481ee46a08fa6e93299b706b84",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-cbc74339f824.6e022933c4.js",
+      "size_bytes": 7927,
+      "sha256": "814a9d77db06e3d5a481fa68dc601f594b87e0c3e3b7bdd80f9d0a08d3ff2306",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-d138c5df840a.b537857f2d.js",
+      "size_bytes": 59873,
+      "sha256": "26980fe0dd192db699ae3f651b42d36be7adfc036a02231b9e126a35e1237fca",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/index.3b13a47049.js",
+      "size_bytes": 34725,
+      "sha256": "148b0391a3299b4ab78a6a9eb745ab4e1b226dc555474713017a5832dc779540",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "size_bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "previous_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "size_bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "previous_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "size_bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "previous_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "size_bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "previous_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/styles.d2a6dfa6a0.js",
+      "size_bytes": 473,
+      "sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "previous_sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/search_index.ko.77763750.json",
+      "size_bytes": 367928,
+      "sha256": "777637503db27de5cbfd9f9b86f32bac3afed6e254c9f4e64f9242116df185d7",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    }
+  ]
+}

@@ -15,6 +15,7 @@ import android.os.Trace;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -636,6 +637,12 @@ public final class MainActivity extends Activity {
         } catch (RuntimeException error) {
             Log.e(TAG, "SPINON_BOOTSTRAP_RUNTIME_ERROR", error);
         }
+    }
+
+    @Override
+    public boolean dispatchGenericMotionEvent(MotionEvent event) {
+        if (runtimeGpuDemo != null && runtimeGpuDemo.handleC133WheelMotionEvent(event)) return true;
+        return super.dispatchGenericMotionEvent(event);
     }
 
     private void showC141IntrinsicSizeFixture() {

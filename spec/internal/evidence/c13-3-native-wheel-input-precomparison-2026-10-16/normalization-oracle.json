@@ -1,6 +1,6 @@
 {
   "schema": "spinon-c13-3-native-wheel-normalization-precomparison-v1",
-  "status": "plan-only; native observations required before implementation",
+  "status": "Android native sign/unit and queue/draw matrix observed; iOS native callback not observed and iOS adapter remains gated",
   "reference": {
     "chrome": "155.0.8059.40",
     "fixture": "tests/fixtures/css/c13/c13-3-scroll-gesture.html",
@@ -23,6 +23,38 @@
     "native_units": "Android physical pixels after multiplying AXIS_HSCROLL/AXIS_VSCROLL by ViewConfiguration factor",
     "native_units_per_css_px": "surface physical pixels / fixture CSS pixels",
     "formula": {"delta_x_css_px":"axis_hscroll * horizontal_factor_px / surface_px_per_css_px","delta_y_css_px":"-axis_vscroll * vertical_factor_px / surface_px_per_css_px"},
+    "normalized_modifier_bits": {"SHIFT": 1, "CONTROL": 2, "ALT": 4, "META": 8},
+    "observed_preflight": {
+      "evidence": "../c13-3-native-wheel-input-preflight-2026-10-16/README.md",
+      "device": "Android API 37 ARM64 AVD emulator-5554",
+      "surface_css_px": [400, 240],
+      "surface_physical_px": [1050, 630],
+      "surface_px_per_css_px": 2.625,
+      "horizontal_factor_px": 168.0,
+      "vertical_factor_px": 168.0,
+      "adb_mouse_action": "ACTION_SCROLL",
+      "adb_mouse_source_bits": "0x2002",
+      "adb_touchpad_action": "ACTION_SCROLL",
+      "adb_touchpad_source_bits": "0x100008",
+      "adb_mouse_pointer_px": [360, 1300],
+      "adb_touchpad_pointer_px": [0, 0],
+      "axis_positive_expected_delta_css_px": {"hscroll": [64.0, 0.0], "vscroll": [0.0, -64.0]},
+      "axis_negative_expected_delta_css_px": {"hscroll": [-64.0, 0.0], "vscroll": [0.0, 64.0]},
+      "queue_or_screen_result_observed": false,
+      "touchpad_targetability": "ADB source/axis arrived but pointer position was absent; this sample must be rejected without reusing a prior location"
+    },
+    "observed_matrix": {
+      "evidence": "../c13-3-native-wheel-input-2026-10-16/README.md",
+      "matrix_cases_passed": 8,
+      "negative_controls_passed": 3,
+      "queue_and_draw_observed": true,
+      "expected_target_css_px": [132, 112],
+      "boundary_pixels_compared": 134064,
+      "boundary_pixels_changed": 0,
+      "inside_pixels_changed": 50684,
+      "touchpad_missing_position_result": "rejected without enqueue; no pointer location was available",
+      "control_wheel_runtime": "not verified; ADB virtual keyboard did not attach Control meta state to the mouse event"
+    },
     "not_supported_in_this_slice": ["API 34 CLASSIFICATION_TWO_FINGER_SWIPE dispatched as ACTION_MOVE with AXIS_GESTURE_SCROLL_*_DISTANCE","pinch classification or magnification","SOURCE_MOUSE_RELATIVE pointer-capture mode"]
   },
   "ios": {
@@ -33,8 +65,9 @@
     "cumulative_translation": true,
     "proposed_formula": {"delta_x_css_px":"-(translation_now_x - translation_previous_x) / points_per_css_px","delta_y_css_px":"-(translation_now_y - translation_previous_y) / points_per_css_px"},
     "formula_confirmation_required_before_implementation": true,
+    "preflight_state": "simulator app reached ready; no discrete/continuous callback observed because host loginwindow obscured Simulator and CGEvent was not delivered",
     "momentum_phase": "None unless an explicit native signal is provided"
   },
-  "negative_controls": ["zero delta does not publish a new scroll revision","unsupported source/action does not enqueue","Android Ctrl-wheel, iOS Control-wheel, pinch, and magnification do not enter the scroll queue","repeat iOS cumulative translation produces zero second delta","non-finite or non-positive scale/factor is rejected","surface generation change clears the iOS translation baseline"],
+  "negative_controls": ["zero delta does not publish a new scroll revision","unsupported source/action does not enqueue","Android Control-wheel guard is implemented but not runtime verified; iOS Control-wheel, pinch, and magnification remain unverified here","repeat iOS cumulative translation produces zero second delta","non-finite or non-positive scale/factor is rejected","surface generation change clears the iOS translation baseline"],
   "evidence_limit": "Android API 37 ARM64 AVD and iPadOS 26.2 Simulator only; no physical-device or public DOM event claim"
 }

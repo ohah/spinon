@@ -1,0 +1,30 @@
+{
+  "schema": "spinon-tailnet-roadmap-served-verification-v1",
+  "verifiedAt": "2026-10-15T16:20:34Z",
+  "previewUrl": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "manifest": {
+    "path": "sync-manifest-c13-3-native-wheel-avd-2026-10-16.json",
+    "sha256": "002660a01e9e867f05450f2349bb512244e043e5185d70ce9ae98cb51fe9c05c",
+    "httpStatus": 200,
+    "filesDeclared": 72,
+    "filesChecked": 72,
+    "http200AndSha256Matches": 72,
+    "mismatches": []
+  },
+  "roadmap": {
+    "completionCount": "61/197",
+    "topLevelItems": 78,
+    "numberedDetailIds": 117,
+    "unnumberedSubchecks": 2,
+    "androidWheelProgressVisible": true,
+    "nativeWheelEvidenceLinkVisible": true
+  },
+  "executionPage": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c13-3-native-wheel-input-2026-10-16/README.html",
+    "androidImages": [
+      { "name": "android-diagonal-positive-positive-before.png", "loaded": true, "width": 1080, "height": 2400 },
+      { "name": "android-diagonal-positive-positive-after.png", "loaded": true, "width": 1080, "height": 2400 }
+    ]
+  },
+  "agentBrowserSession": "spinon-tailnet-roadmap"
+}

@@ -12,6 +12,7 @@ import android.os.SystemClock;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.InputDevice;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.SurfaceHolder;
@@ -45,6 +46,15 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Callback {
     private static final String TAG = "SpinonBootstrap";
+    private static final int C133_WHEEL_INTENT_SCROLL = 0;
+    private static final int C133_WHEEL_UNIT_ANDROID_PHYSICAL_PIXELS = 1;
+    private static final int C133_WHEEL_SOURCE_MOUSE = 0;
+    private static final int C133_WHEEL_SOURCE_TRACKPAD = 1;
+    private static final int C133_WHEEL_MOMENTUM_NONE = 0;
+    private static final int C133_MODIFIER_SHIFT = 1;
+    private static final int C133_MODIFIER_CONTROL = 2;
+    private static final int C133_MODIFIER_ALT = 4;
+    private static final int C133_MODIFIER_META = 8;
     private static final String[] C11_GRID_SCENE_IDS = {
             "fixed-tracks-gap", "percentage-tracks", "fractional-tracks-gap",
             "mixed-fixed-percent-fr", "row-auto-placement", "empty-grid",
@@ -872,7 +882,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : c133WheelProbeRequested
                 ? "SPINON · C13.3 wheel fixture"
                 : c133GestureFixtureRequested
-                ? "SPINON · C13.3 Android touch adapter"
+                ? "SPINON · C13.3 Android native input"
                 : c131BorderStripProbeRequested
                 ? "SPINON · C13.1 paint/hit border"
                 : c131OverflowClipProbeRequested
@@ -949,7 +959,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : c133WheelProbeRequested
                 ? "Synthetic CSS px delta → Rust queue → scroll router → WGPU · 400×240 CSS px"
                 : c133GestureFixtureRequested
-                ? "MotionEvent · native touch slop · bounded Rust queue/session → WGPU · 400×240 CSS px"
+                ? "MotionEvent touch/wheel · bounded Rust queue/session → WGPU · 400×240 CSS px"
                 : c131BorderStripProbeRequested
                 ? "static/absolute clip border-strip oracle → WGPU · 400×160 CSS px"
                 : c131OverflowClipProbeRequested
@@ -1189,6 +1199,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         status.setTextColor(Color.rgb(97, 185, 255));
         status.setTextSize(13);
         status.setTypeface(Typeface.MONOSPACE);
+        status.setMinLines(c133GestureFixtureRequested ? 2 : 1);
         addView(status, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 
         runtimePresentationLane = new C0410LatestTaskLane(
@@ -4017,7 +4028,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             }
             c133GestureInitialDrawReady = true;
             Log.i(TAG, "SPINON_C133_READY input=MotionEvent " + result);
-            postStatus("준비 · 경계 상태에서 실제 Android swipe 입력을 확인하세요");
+            postStatus("준비 · Android swipe 또는 wheel/trackpad 입력을 기다립니다");
+            logC133SurfaceBoundsAfterLayout("ready");
             if (c133WheelProbeRequested) {
                 surfaceView.post(this::runC133WheelProbe);
             }
@@ -4126,6 +4138,19 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         mainHandler.post(() -> {
             if (!closing) status.setText(value);
         });
+    }
+
+    private void logC133SurfaceBoundsAfterLayout(String phase) {
+        if (!BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST || !c133GestureFixtureRequested) return;
+        surfaceView.postDelayed(() -> {
+            int[] screenOrigin = new int[2];
+            surfaceView.getLocationOnScreen(screenOrigin);
+            String marker = new StringBuilder("SPINON_C133_SURFACE")
+                    .append("_BOUNDS").toString();
+            Log.i(TAG, marker + " phase=" + phase
+                    + " screen_px=" + screenOrigin[0] + "," + screenOrigin[1]
+                    + " size_px=" + surfaceView.getWidth() + "x" + surfaceView.getHeight());
+        }, 100);
     }
 
     private static String decode(byte[] value) {
@@ -4458,6 +4483,162 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return decode(nativeEnqueueC133Gesture(host, action, c133GestureSurfaceGeneration,
                 c133GestureId, Integer.toUnsignedLong(c133ActivePointerId),
                 xOrCumulativeX, yOrCumulativeY, c133CoordinateScale, reason));
+    }
+
+    boolean handleC133WheelMotionEvent(MotionEvent event) {
+        if (!BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST || !c133GestureFixtureRequested
+                || event.getActionMasked() != MotionEvent.ACTION_SCROLL) return false;
+
+        long callbackStarted = SystemClock.elapsedRealtimeNanos();
+        InputDevice device = event.getDevice();
+        boolean touchpadSource = event.isFromSource(InputDevice.SOURCE_TOUCHPAD)
+                || (device != null
+                        && (device.getSources() & InputDevice.SOURCE_TOUCHPAD)
+                                == InputDevice.SOURCE_TOUCHPAD);
+        boolean mouseSource = event.isFromSource(InputDevice.SOURCE_MOUSE);
+        int source = touchpadSource ? C133_WHEEL_SOURCE_TRACKPAD
+                : mouseSource ? C133_WHEEL_SOURCE_MOUSE : -1;
+        String sourceName = source == C133_WHEEL_SOURCE_TRACKPAD ? "TrackpadScroll"
+                : source == C133_WHEEL_SOURCE_MOUSE ? "MouseWheel" : "Unknown";
+        int modifiers = normalizedC133Modifiers(event.getMetaState());
+        float hscroll = event.getAxisValue(MotionEvent.AXIS_HSCROLL);
+        float vscroll = event.getAxisValue(MotionEvent.AXIS_VSCROLL);
+        if (source < 0) {
+            Log.i(TAG, "SPINON_C133_NATIVE_WHEEL_REJECT reason=unknown-source action="
+                    + event.getActionMasked() + " source_bits=0x"
+                    + Integer.toHexString(event.getSource()) + " device=" + event.getDeviceId());
+            return true;
+        }
+        if ((modifiers & C133_MODIFIER_CONTROL) != 0) {
+            Log.i(TAG, "SPINON_C133_NATIVE_WHEEL_REJECT reason=control-wheel source="
+                    + sourceName + " hscroll=" + hscroll + " vscroll=" + vscroll
+                    + " meta=" + event.getMetaState() + " modifiers=" + modifiers);
+            return true;
+        }
+        if (!Float.isFinite(hscroll) || !Float.isFinite(vscroll)
+                || (hscroll == 0.0f && vscroll == 0.0f)) {
+            Log.i(TAG, "SPINON_C133_NATIVE_WHEEL_REJECT reason=zero-or-nonfinite-axis source="
+                    + sourceName + " hscroll=" + hscroll + " vscroll=" + vscroll);
+            return true;
+        }
+
+        final long host;
+        final long generation;
+        final int width;
+        final int height;
+        synchronized (stateLock) {
+            if (closing || hostHandle == 0 || !surfaceAvailable
+                    || !c133GestureFixtureReady || !c133GestureInitialDrawReady
+                    || surfaceWidth <= 0 || surfaceHeight <= 0) {
+                Log.i(TAG, "SPINON_C133_NATIVE_WHEEL_REJECT reason=surface-or-runtime-not-ready"
+                        + " source=" + sourceName + " closing=" + closing
+                        + " surface_available=" + surfaceAvailable
+                        + " generation=" + surfaceGeneration);
+                return true;
+            }
+            host = hostHandle;
+            generation = surfaceGeneration;
+            width = surfaceWidth;
+            height = surfaceHeight;
+        }
+
+        float scaleX = (float) width / 400.0f;
+        float scaleY = (float) height / 240.0f;
+        if (!Float.isFinite(scaleX) || !Float.isFinite(scaleY)
+                || scaleX <= 0.0f || scaleY <= 0.0f
+                || Math.abs(scaleX - scaleY) > 0.01f) {
+            Log.e(TAG, "SPINON_C133_NATIVE_WHEEL_REJECT reason=invalid-surface-scale"
+                    + " scale_x=" + scaleX + " scale_y=" + scaleY
+                    + " surface_px=" + width + "x" + height);
+            return true;
+        }
+
+        ViewConfiguration configuration = ViewConfiguration.get(activity);
+        float horizontalFactorPx = configuration.getScaledHorizontalScrollFactor();
+        float verticalFactorPx = configuration.getScaledVerticalScrollFactor();
+        if (!Float.isFinite(horizontalFactorPx) || !Float.isFinite(verticalFactorPx)
+                || horizontalFactorPx <= 0.0f || verticalFactorPx <= 0.0f) {
+            Log.e(TAG, "SPINON_C133_NATIVE_WHEEL_REJECT reason=invalid-scroll-factor"
+                    + " hfactor_px=" + horizontalFactorPx + " vfactor_px=" + verticalFactorPx);
+            return true;
+        }
+
+        float rawDeltaXPhysicalPx = hscroll * horizontalFactorPx;
+        float rawDeltaYPhysicalPx = -vscroll * verticalFactorPx;
+        float deltaXCssPx = rawDeltaXPhysicalPx / scaleX;
+        float deltaYCssPx = rawDeltaYPhysicalPx / scaleY;
+        if (!Float.isFinite(rawDeltaXPhysicalPx) || !Float.isFinite(rawDeltaYPhysicalPx)
+                || !Float.isFinite(deltaXCssPx) || !Float.isFinite(deltaYCssPx)) {
+            Log.i(TAG, "SPINON_C133_NATIVE_WHEEL_REJECT reason=nonfinite-normalized-delta"
+                    + " source=" + sourceName + " hscroll=" + hscroll + " vscroll=" + vscroll
+                    + " hfactor_px=" + horizontalFactorPx + " vfactor_px=" + verticalFactorPx
+                    + " scale_x=" + scaleX + " scale_y=" + scaleY);
+            return true;
+        }
+
+        int[] surfaceOriginOnScreen = new int[2];
+        surfaceView.getLocationOnScreen(surfaceOriginOnScreen);
+        float pointSurfaceX = event.getRawX() - surfaceOriginOnScreen[0];
+        float pointSurfaceY = event.getRawY() - surfaceOriginOnScreen[1];
+        int viewWidth = surfaceView.getWidth();
+        int viewHeight = surfaceView.getHeight();
+        if (!Float.isFinite(pointSurfaceX) || !Float.isFinite(pointSurfaceY)
+                || viewWidth <= 0 || viewHeight <= 0
+                || pointSurfaceX < 0.0f || pointSurfaceY < 0.0f
+                || pointSurfaceX >= viewWidth || pointSurfaceY >= viewHeight) {
+            Log.i(TAG, "SPINON_C133_NATIVE_WHEEL_REJECT reason=point-outside-surface"
+                    + " source=" + sourceName + " point_screen_px=" + event.getRawX() + ","
+                    + event.getRawY() + " surface_origin_screen_px=" + surfaceOriginOnScreen[0]
+                    + "," + surfaceOriginOnScreen[1] + " point_surface_px=" + pointSurfaceX
+                    + "," + pointSurfaceY + " surface_view_px=" + viewWidth + "x" + viewHeight
+                    + " device=" + event.getDeviceId());
+            return true;
+        }
+        float pointXCssPx = pointSurfaceX / scaleX;
+        float pointYCssPx = pointSurfaceY / scaleY;
+        if (!Float.isFinite(pointXCssPx) || !Float.isFinite(pointYCssPx)) {
+            Log.i(TAG, "SPINON_C133_NATIVE_WHEEL_REJECT reason=nonfinite-point source="
+                    + sourceName + " point_surface_px=" + pointSurfaceX + "," + pointSurfaceY);
+            return true;
+        }
+
+        String report = decode(nativeEnqueueC133Wheel(host, C133_WHEEL_INTENT_SCROLL,
+                generation, pointXCssPx, pointYCssPx, deltaXCssPx, deltaYCssPx,
+                rawDeltaXPhysicalPx, rawDeltaYPhysicalPx,
+                C133_WHEEL_UNIT_ANDROID_PHYSICAL_PIXELS, scaleX, source,
+                C133_WHEEL_MOMENTUM_NONE, modifiers));
+        long callbackMicros = (SystemClock.elapsedRealtimeNanos() - callbackStarted) / 1000;
+        Log.i(TAG, "SPINON_C133_NATIVE_WHEEL source=" + sourceName
+                + " action=" + event.getActionMasked() + " source_bits=0x"
+                + Integer.toHexString(event.getSource()) + " device=" + event.getDeviceId()
+                + " hscroll=" + hscroll + " vscroll=" + vscroll
+                + " hfactor_px=" + horizontalFactorPx + " vfactor_px=" + verticalFactorPx
+                + " raw_delta_physical_px=" + rawDeltaXPhysicalPx + ","
+                + rawDeltaYPhysicalPx + " scale_px_per_css_px=" + scaleX
+                + " point_screen_px=" + event.getRawX() + "," + event.getRawY()
+                + " surface_origin_screen_px=" + surfaceOriginOnScreen[0] + ","
+                + surfaceOriginOnScreen[1] + " point_css_px=" + pointXCssPx + "," + pointYCssPx
+                + " delta_css_px=" + deltaXCssPx + "," + deltaYCssPx
+                + " unit=AndroidPhysicalPixels phase=None modifiers=" + modifiers
+                + " generation=" + generation + " callback_us=" + callbackMicros
+                + " waits_for_worker=false " + report);
+        if (report.startsWith("status=0 ") && report.contains("admitted=true")) {
+            postStatus("Wheel · " + sourceName + " · Δ " + deltaXCssPx + ","
+                    + deltaYCssPx + " CSS px");
+            logC133SurfaceBoundsAfterLayout("wheel");
+            scheduleC133Drain();
+        }
+        return true;
+    }
+
+    private static int normalizedC133Modifiers(int metaState) {
+        int normalizedMetaState = KeyEvent.normalizeMetaState(metaState);
+        int modifiers = 0;
+        if ((normalizedMetaState & KeyEvent.META_SHIFT_ON) != 0) modifiers |= C133_MODIFIER_SHIFT;
+        if ((normalizedMetaState & KeyEvent.META_CTRL_ON) != 0) modifiers |= C133_MODIFIER_CONTROL;
+        if ((normalizedMetaState & KeyEvent.META_ALT_ON) != 0) modifiers |= C133_MODIFIER_ALT;
+        if ((normalizedMetaState & KeyEvent.META_META_ON) != 0) modifiers |= C133_MODIFIER_META;
+        return modifiers;
     }
 
     private void runC133WheelProbe() {
