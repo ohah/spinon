@@ -1,213 +1,30 @@
+mod state;
+
 use super::super::{
     ERR_ARGUMENT, ERR_LAYOUT, ERR_STALE, RuntimeGpuHost, lock, scene_matches_layout_key,
 };
 use super::c13_3_scroll_gesture::RUNTIME_CSS_C13_3_SCROLL_GESTURE_SOURCE;
 use spinon_core::NodeId;
 use spinon_render::{
-    RuntimeRenderSnapshot, RuntimeScrollGestureBegin, RuntimeScrollGestureBeginDisposition,
-    RuntimeScrollGestureCancelReason, RuntimeScrollGestureInputQueue, RuntimeScrollGestureOutcome,
-    RuntimeScrollGesturePanSample, RuntimeScrollGestureSession, RuntimeScrollGestureTerminal,
-    RuntimeScrollGestureTerminalKind, RuntimeScrollInputQueueEvent, RuntimeTouchAction,
+    RuntimeOverscrollBehavior, RuntimeRenderSnapshot, RuntimeScrollGestureBeginDisposition,
+    RuntimeScrollGestureOutcome, RuntimeScrollGesturePanSample, RuntimeScrollGestureTerminalKind,
+    RuntimeScrollInputQueueEvent, RuntimeTouchAction,
 };
 use spinon_runtime::RuntimeSession;
-use std::sync::atomic::{AtomicU64, Ordering};
-use std::sync::{Arc, Mutex};
-
-#[derive(Clone, Copy)]
-pub(in crate::runtime_gpu) struct C13_3GestureOwners {
-    pub(in crate::runtime_gpu) root: NodeId,
-    pub(in crate::runtime_gpu) outer: NodeId,
-    pub(in crate::runtime_gpu) inner: NodeId,
-}
-
-pub(in crate::runtime_gpu) struct C13_3GestureState {
-    queue: Mutex<RuntimeScrollGestureInputQueue>,
-    session: Mutex<RuntimeScrollGestureSession>,
-    snapshot: Mutex<Option<RuntimeRenderSnapshot>>,
-    owners: Mutex<Option<C13_3GestureOwners>>,
-    next_input_sequence: AtomicU64,
-}
-
-impl C13_3GestureState {
-    pub(in crate::runtime_gpu) fn new() -> Result<Self, String> {
-        let queue = RuntimeScrollGestureInputQueue::new(64, 8)
-            .map_err(|error| format!("C13.3 input queue 생성 실패: {error}"))?;
-        Ok(Self {
-            queue: Mutex::new(queue),
-            session: Mutex::new(RuntimeScrollGestureSession::default()),
-            snapshot: Mutex::new(None),
-            owners: Mutex::new(None),
-            next_input_sequence: AtomicU64::new(0),
-        })
-    }
-
-    fn next_sequence(&self) -> Result<u64, String> {
-        self.next_input_sequence
-            .fetch_update(Ordering::AcqRel, Ordering::Acquire, |value| {
-                value.checked_add(1)
-            })
-            .map(|previous| previous + 1)
-            .map_err(|_| "C13.3 input sequence가 소진됐습니다".to_owned())
-    }
-
-    fn current_snapshot(&self) -> Result<RuntimeRenderSnapshot, String> {
-        lock(&self.snapshot)
-            .as_ref()
-            .cloned()
-            .ok_or_else(|| "C13.3 fixture snapshot이 아직 준비되지 않았습니다".to_owned())
-    }
-
-    pub(in crate::runtime_gpu) fn enqueue_begin(
-        &self,
-        surface_generation: u64,
-        gesture_id: u64,
-        pointer_id: u64,
-        x_css_px: f32,
-        y_css_px: f32,
-        coordinate_scale: f32,
-    ) -> Result<String, String> {
-        let snapshot = self.current_snapshot()?;
-        let sequence = self.next_sequence()?;
-        let resolved_touch_action = snapshot
-            .touch_action_at_css_point(x_css_px, y_css_px)
-            .unwrap_or(RuntimeTouchAction::Unsupported);
-        let input = RuntimeScrollGestureBegin::new(
-            snapshot.key(),
-            surface_generation,
-            sequence,
-            gesture_id,
-            pointer_id,
-            x_css_px,
-            y_css_px,
-            coordinate_scale,
-            resolved_touch_action,
-        );
-        let admission = lock(&self.queue)
-            .enqueue_begin(input)
-            .map_err(|error| format!("C13.3 Begin 거부: {error}"))?;
-        Ok(format!(
-            "sequence={sequence} admission={admission:?} key={:?}",
-            snapshot.key()
-        ))
-    }
-
-    pub(in crate::runtime_gpu) fn enqueue_pan_began(
-        &self,
-        surface_generation: u64,
-        gesture_id: u64,
-        pointer_id: u64,
-        coordinate_scale: f32,
-        cumulative_x_css_px: f32,
-        cumulative_y_css_px: f32,
-    ) -> Result<String, String> {
-        self.enqueue_motion(
-            true,
-            surface_generation,
-            gesture_id,
-            pointer_id,
-            coordinate_scale,
-            cumulative_x_css_px,
-            cumulative_y_css_px,
-        )
-    }
-
-    pub(in crate::runtime_gpu) fn enqueue_move(
-        &self,
-        surface_generation: u64,
-        gesture_id: u64,
-        pointer_id: u64,
-        coordinate_scale: f32,
-        cumulative_x_css_px: f32,
-        cumulative_y_css_px: f32,
-    ) -> Result<String, String> {
-        self.enqueue_motion(
-            false,
-            surface_generation,
-            gesture_id,
-            pointer_id,
-            coordinate_scale,
-            cumulative_x_css_px,
-            cumulative_y_css_px,
-        )
-    }
-
-    fn enqueue_motion(
-        &self,
-        pan_began: bool,
-        surface_generation: u64,
-        gesture_id: u64,
-        pointer_id: u64,
-        coordinate_scale: f32,
-        cumulative_x_css_px: f32,
-        cumulative_y_css_px: f32,
-    ) -> Result<String, String> {
-        let snapshot = self.current_snapshot()?;
-        let sequence = self.next_sequence()?;
-        let sample = RuntimeScrollGesturePanSample::new(
-            snapshot.key(),
-            surface_generation,
-            sequence,
-            gesture_id,
-            pointer_id,
-            coordinate_scale,
-            cumulative_x_css_px,
-            cumulative_y_css_px,
-        );
-        let policy_epoch = snapshot.key().style_revision().get();
-        let admission = if pan_began {
-            lock(&self.queue).enqueue_pan_began(sample, policy_epoch)
-        } else {
-            lock(&self.queue).enqueue_move(sample, policy_epoch)
-        }
-        .map_err(|error| format!("C13.3 motion 거부: {error}"))?;
-        Ok(format!(
-            "sequence={sequence} admission={admission:?} policy_epoch={policy_epoch}"
-        ))
-    }
-
-    pub(in crate::runtime_gpu) fn enqueue_terminal(
-        &self,
-        end: bool,
-        surface_generation: u64,
-        gesture_id: u64,
-        pointer_id: u64,
-        reason: RuntimeScrollGestureCancelReason,
-    ) -> Result<String, String> {
-        let sequence = self.next_sequence()?;
-        let terminal =
-            RuntimeScrollGestureTerminal::new(sequence, gesture_id, pointer_id, surface_generation);
-        let admission = if end {
-            lock(&self.queue).enqueue_end(terminal)
-        } else {
-            lock(&self.queue).enqueue_cancel(terminal, reason)
-        }
-        .map_err(|error| format!("C13.3 terminal 거부: {error}"))?;
-        Ok(format!(
-            "sequence={sequence} kind={} admission={admission:?} reason={reason:?}",
-            if end { "end" } else { "cancel" }
-        ))
-    }
-
-    fn publish_snapshot(&self, snapshot: RuntimeRenderSnapshot) {
-        *lock(&self.snapshot) = Some(snapshot);
-    }
-
-    fn owners(&self) -> Result<C13_3GestureOwners, String> {
-        lock(&self.owners)
-            .as_ref()
-            .copied()
-            .ok_or_else(|| "C13.3 owner identity가 준비되지 않았습니다".to_owned())
-    }
-}
+pub(in crate::runtime_gpu) use state::C13_3GestureState;
+use state::{C13_3GestureFixtureScenario, C13_3GestureOwners};
+use std::sync::Arc;
 
 impl RuntimeGpuHost {
-    pub(in crate::runtime_gpu) fn new_c13_3_scroll_gesture_fixture()
-    -> Result<(Self, String), String> {
+    pub(in crate::runtime_gpu) fn new_c13_3_scroll_gesture_fixture(
+        scenario_id: i32,
+    ) -> Result<(Self, String), String> {
+        let scenario = C13_3GestureFixtureScenario::try_from(scenario_id)?;
         let (session, report) =
             RuntimeSession::new_runtime_gpu_block_flex_scroll_gesture_fixture()?;
         let mut host = Self::from_session_with_frame_report(session);
-        host.c13_3_gesture_state = Some(Arc::new(C13_3GestureState::new()?));
-        Ok((host, report))
+        host.c13_3_gesture_state = Some(Arc::new(C13_3GestureState::new(scenario)?));
+        Ok((host, format!("{report} scenario={}", scenario.label())))
     }
 
     pub(in crate::runtime_gpu) fn c13_3_gesture_state(&self) -> Option<Arc<C13_3GestureState>> {
@@ -218,20 +35,35 @@ impl RuntimeGpuHost {
         &self,
         layout_timeout_millis: u64,
     ) -> Result<String, (i32, String)> {
-        let report = self.eval(
-            RUNTIME_CSS_C13_3_SCROLL_GESTURE_SOURCE,
-            layout_timeout_millis,
-        )?;
+        let state = self.c13_3_gesture_state.as_ref().ok_or((
+            ERR_ARGUMENT,
+            "C13.3 gesture fixture host가 아닙니다".to_owned(),
+        ))?;
+        let source_length = state
+            .scenario
+            .script_prelude()
+            .len()
+            .checked_add(RUNTIME_CSS_C13_3_SCROLL_GESTURE_SOURCE.len())
+            .ok_or((
+                ERR_ARGUMENT,
+                "C13.3 fixture source 크기가 넘쳤습니다".to_owned(),
+            ))?;
+        let mut source = String::new();
+        source.try_reserve_exact(source_length).map_err(|_| {
+            (
+                ERR_ARGUMENT,
+                "C13.3 fixture source 메모리를 확보할 수 없습니다".to_owned(),
+            )
+        })?;
+        source.push_str(state.scenario.script_prelude());
+        source.push_str(RUNTIME_CSS_C13_3_SCROLL_GESTURE_SOURCE);
+        let report = self.eval(&source, layout_timeout_millis)?;
         if !report.contains("layout=ready") {
             return Err((
                 ERR_LAYOUT,
                 format!("C13.3 gesture fixture layout가 준비되지 않았습니다: {report}"),
             ));
         }
-        let state = self.c13_3_gesture_state.as_ref().ok_or((
-            ERR_ARGUMENT,
-            "C13.3 gesture fixture host가 아닙니다".to_owned(),
-        ))?;
         let _operation = lock(&self.operation);
         let (sequence, current) = self.presentation.lock_current();
         let initial = current
@@ -298,7 +130,8 @@ impl RuntimeGpuHost {
                 ));
             }
         }
-        let interactive = (*initial).clone();
+        let (expected_inner_x, expected_inner_y) = state.scenario.inner_overscroll();
+        let mut interactive = (*initial).clone();
         for (owner_id, _, _, _) in expected {
             let owner = interactive
                 .scroll_containers()
@@ -319,6 +152,92 @@ impl RuntimeGpuHost {
                     ),
                 ));
             }
+            let expected_overscroll = if owner_id == owners.inner {
+                (expected_inner_x, expected_inner_y)
+            } else {
+                (
+                    RuntimeOverscrollBehavior::Auto,
+                    RuntimeOverscrollBehavior::Auto,
+                )
+            };
+            if owner.input_policy().overscroll_x() != expected_overscroll.0
+                || owner.input_policy().overscroll_y() != expected_overscroll.1
+            {
+                return Err((
+                    ERR_LAYOUT,
+                    format!(
+                        "C13.3 computed overscroll 불일치 scenario={} owner={owner_id} expected={:?}/{:?} actual={:?}/{:?}",
+                        state.scenario.label(),
+                        expected_overscroll.0,
+                        expected_overscroll.1,
+                        owner.input_policy().overscroll_x(),
+                        owner.input_policy().overscroll_y()
+                    ),
+                ));
+            }
+        }
+        if interactive.touch_action_at_css_point(100.0, 100.0) != Some(RuntimeTouchAction::Auto) {
+            return Err((
+                ERR_LAYOUT,
+                "C13.3 정책 행렬에서 touch-action 기본값이 auto가 아닙니다".to_owned(),
+            ));
+        }
+        if state.scenario.seed_inner_boundary() {
+            let seed = interactive
+                .route_scroll_delta_at(
+                    interactive.key().scroll_state_revision(),
+                    100.0,
+                    100.0,
+                    86.0,
+                    106.0,
+                )
+                .map_err(|error| (ERR_LAYOUT, format!("C13.3 boundary seed 오류: {error}")))?
+                .ok_or((
+                    ERR_LAYOUT,
+                    "C13.3 boundary seed hit-test가 inner scene을 놓쳤습니다".to_owned(),
+                ))?;
+            if seed.remaining_x_css_px() != 0.0 || seed.remaining_y_css_px() != 0.0 {
+                return Err((
+                    ERR_LAYOUT,
+                    format!(
+                        "C13.3 boundary seed에 미소비 delta가 있습니다: {},{}",
+                        seed.remaining_x_css_px(),
+                        seed.remaining_y_css_px()
+                    ),
+                ));
+            }
+            interactive = seed.into_snapshot();
+        }
+
+        let expected_offsets = if state.scenario.seed_inner_boundary() {
+            [(0.0, 0.0), (0.0, 0.0), (86.0, 106.0)]
+        } else {
+            [(0.0, 0.0); 3]
+        };
+        for (owner_id, expected_offset) in [
+            (owners.root, expected_offsets[0]),
+            (owners.outer, expected_offsets[1]),
+            (owners.inner, expected_offsets[2]),
+        ] {
+            let owner = interactive
+                .scroll_containers()
+                .iter()
+                .find(|owner| owner.owner() == owner_id)
+                .ok_or((
+                    ERR_LAYOUT,
+                    format!("C13.3 seed owner {owner_id}가 없습니다"),
+                ))?;
+            if (owner.offset_x_css_px(), owner.offset_y_css_px()) != expected_offset {
+                return Err((
+                    ERR_LAYOUT,
+                    format!(
+                        "C13.3 fixture seed offset 불일치 scenario={} owner={owner_id} expected={expected_offset:?} actual=({}, {})",
+                        state.scenario.label(),
+                        owner.offset_x_css_px(),
+                        owner.offset_y_css_px()
+                    ),
+                ));
+            }
         }
         let published_sequence = self
             .invalidate_scene()
@@ -335,11 +254,20 @@ impl RuntimeGpuHost {
         *lock(&state.owners) = Some(owners);
         state.publish_snapshot(interactive.clone());
         Ok(format!(
-            "c13_3_gesture_fixture=ready viewport_css_px=400x240 owners=root:{},outer:{},inner:{} ranges=root:158,238;outer:106,186;inner:86,106 touch_action=style_projected overscroll=style_projected scroll_state_revision={} input_queue_capacity=64 terminal_capacity=8",
+            "c13_3_gesture_fixture=ready scenario={} policy_inner={} fixture_seed={} viewport_css_px=400x240 owners=root:{},outer:{},inner:{} ranges=root:158,238;outer:106,186;inner:86,106 touch_action=auto overscroll=style_projected presentation_sequence={} scroll_state_revision={} input_queue_capacity=64 terminal_capacity=8 {}",
+            state.scenario.label(),
+            state.scenario.policy_label(),
+            if state.scenario.seed_inner_boundary() {
+                "inner-max"
+            } else {
+                "none"
+            },
             owners.root,
             owners.outer,
             owners.inner,
-            interactive.key().scroll_state_revision().get()
+            published_sequence,
+            interactive.key().scroll_state_revision().get(),
+            c13_3_offsets(&interactive, owners)
         ))
     }
 

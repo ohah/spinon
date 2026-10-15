@@ -30,13 +30,14 @@ pub(in crate::runtime_gpu::ffi) fn unregister_host(host: usize) {
 /// # Safety
 /// `output`은 `output_capacity` 바이트를 쓸 수 있어야 합니다.
 pub unsafe extern "C" fn spinon_runtime_gpu_host_new_c13_3_gesture_fixture(
+    scenario_id: i32,
     output: *mut c_char,
     output_capacity: usize,
 ) -> *mut SpinonRuntimeGpuHost {
     if output.is_null() || output_capacity == 0 {
         return ptr::null_mut();
     }
-    let (host, report) = match RuntimeGpuHost::new_c13_3_scroll_gesture_fixture() {
+    let (host, report) = match RuntimeGpuHost::new_c13_3_scroll_gesture_fixture(scenario_id) {
         Ok(host) => host,
         Err(error) => {
             crate::write_report(output, output_capacity, &error);
@@ -213,7 +214,10 @@ mod tests {
         spinon_runtime_gpu_host_new_c13_3_gesture_fixture,
         spinon_runtime_gpu_host_process_c13_3_gesture_queue,
     };
-    use std::{ffi::c_char, ptr};
+    use std::{
+        ffi::{CStr, c_char},
+        ptr,
+    };
 
     #[test]
     fn c13_3_ffi_rejects_invalid_handles_and_actions() {
@@ -259,8 +263,17 @@ mod tests {
             -1
         );
         assert!(
-            unsafe { spinon_runtime_gpu_host_new_c13_3_gesture_fixture(ptr::null_mut(), 0) }
+            unsafe { spinon_runtime_gpu_host_new_c13_3_gesture_fixture(0, ptr::null_mut(), 0) }
                 .is_null()
+        );
+        let unknown_scenario = unsafe {
+            spinon_runtime_gpu_host_new_c13_3_gesture_fixture(99, output.as_mut_ptr(), output.len())
+        };
+        assert!(unknown_scenario.is_null());
+        assert!(
+            unsafe { CStr::from_ptr(output.as_ptr()) }
+                .to_string_lossy()
+                .contains("scenario id=99")
         );
     }
 }

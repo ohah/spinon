@@ -137,6 +137,21 @@ impl RuntimeGpuHost {
         self.presentation.invalidate()
     }
 
+    fn begin_presentation_update(&self) -> Result<u64, String> {
+        let sequence = self.invalidate_scene()?;
+        #[cfg(feature = "c13-3-gesture-fixture-test")]
+        if let Some(state) = &self.c13_3_gesture_state {
+            if let Ok(snapshot) = state.current_snapshot() {
+                if !self.presentation.publish(sequence, snapshot) {
+                    return Err(
+                        "C13.3 presentation 갱신 뒤 gesture snapshot 복구가 stale입니다".to_owned(),
+                    );
+                }
+            }
+        }
+        Ok(sequence)
+    }
+
     fn presentation_sequence(&self) -> u64 {
         self.presentation.sequence()
     }

@@ -41,7 +41,7 @@
 + (uint64_t)createRuntimeGpuHostWithC13_2ScrollFixture;
 + (uint64_t)createRuntimeGpuHostWithC13_2SurfacePixelReadbackFixture;
 #if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
-+ (uint64_t)createRuntimeGpuHostWithC13_3GestureFixture;
++ (uint64_t)createRuntimeGpuHostWithC13_3GestureFixture:(int32_t)scenarioID;
 #endif
 + (uint64_t)createRuntimeGpuHostWithC11_1GridFixture;
 + (uint64_t)createRuntimeGpuHostWithC11_1GridSurfacePixelReadbackFixture;
