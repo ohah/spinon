@@ -43,7 +43,7 @@ pub unsafe extern "C" fn spinon_runtime_gpu_host_begin_presentation_update(
     host: *mut SpinonRuntimeGpuHost,
 ) -> u64 {
     raw_host(host)
-        .and_then(|host| host.invalidate_scene().ok())
+        .and_then(|host| host.begin_presentation_update().ok())
         .unwrap_or(0)
 }
 

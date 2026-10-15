@@ -252,7 +252,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native long nativeCreateC131CompactSurfaceMatrixHost();
     private static native long nativeCreateC131OverflowClipBorderHost();
     private static native long nativeCreateC132ScrollHost();
-    private static native long nativeCreateC133GestureHost();
+    private static native long nativeCreateC133GestureHost(int scenarioId);
     private static native long nativeCreateC11GridHost();
     private static native long nativeCreateC1121GridPlacementHost();
     private static native long nativeCreateC1122GridAutoPlacementHost();
@@ -439,6 +439,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean c132ScrollFixtureRequested;
     private final String c132SurfacePixelRunId;
     private final boolean c133GestureFixtureRequested;
+    private final int c133GesturePolicyScenarioID;
     private final int c133WorkerDelayMillis;
     private final boolean c133SyntheticSecondPointerProbeRequested;
     private final boolean c124DepthSafetyProbeRequested;
@@ -483,6 +484,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private boolean c132SurfacePixelCaptureStarted;
     private volatile boolean c132ScrollAssertionsPassed;
     private volatile boolean c133GestureFixtureReady;
+    private volatile boolean c133GestureInitialDrawReady;
     private final AtomicBoolean c133DrainScheduled = new AtomicBoolean();
     private final AtomicBoolean c133DrainAgain = new AtomicBoolean();
     private final int c133TouchSlopPx;
@@ -589,6 +591,17 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : "";
         c133GestureFixtureRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c133_gesture_fixture", false);
+        int requestedC133PolicyScenarioID = 0;
+        if (BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST
+                && c133GestureFixtureRequested
+                && activity.getIntent().hasExtra("spinon_c133_policy_scenario_id")) {
+            Bundle extras = activity.getIntent().getExtras();
+            Object scenarioID = extras == null ? null
+                    : extras.get("spinon_c133_policy_scenario_id");
+            requestedC133PolicyScenarioID = scenarioID instanceof Integer
+                    ? (Integer) scenarioID : -1;
+        }
+        c133GesturePolicyScenarioID = requestedC133PolicyScenarioID;
         c133WorkerDelayMillis = activity.getIntent()
                 .getIntExtra("spinon_c133_worker_delay_ms", 0);
         c133SyntheticSecondPointerProbeRequested = activity.getIntent()
@@ -1187,6 +1200,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private boolean validateC131FixtureRoute() {
+        if (BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST
+                && !c133GestureFixtureRequested
+                && activity.getIntent().hasExtra("spinon_c133_policy_scenario_id")) {
+            Log.e(TAG, "SPINON_C133_ARGUMENT_ERROR rejected=true reason=scenario-requires-fixture-route");
+            postStatus("실패 · C13.3 policy scenario ID에는 gesture fixture route가 필요합니다");
+            return false;
+        }
         int selectedRoutes = (c131OverflowClipProbeRequested ? 1 : 0)
                 + (c131CompactSurfaceMatrixProbeRequested ? 1 : 0)
                 + (c131BorderStripProbeRequested ? 1 : 0)
@@ -1218,6 +1238,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             postStatus("실패 · C13.3 worker 지연 값은 0~3000ms여야 합니다");
             return false;
         }
+        if (BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST
+                && c133GestureFixtureRequested
+                && (c133GesturePolicyScenarioID < 0 || c133GesturePolicyScenarioID > 2)) {
+            Log.e(TAG, "SPINON_C133_ARGUMENT_ERROR rejected=true reason=invalid-policy-scenario-id");
+            postStatus("실패 · C13.3 policy scenario ID는 0~2여야 합니다");
+            return false;
+        }
         Bundle extras = activity.getIntent().getExtras();
         if (extras == null) return true;
         for (String key : extras.keySet()) {
@@ -1227,7 +1254,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                             && key.equals("spinon_c132_surface_pixel_run_id"))
                     || (c133GestureFixtureRequested
                             && (key.equals("spinon_c133_worker_delay_ms")
-                                    || key.equals("spinon_c133_synthetic_second_pointer")))) {
+                                    || key.equals("spinon_c133_synthetic_second_pointer")
+                                    || key.equals("spinon_c133_policy_scenario_id")))) {
                 continue;
             }
             Object value = extras.get(key);
@@ -1270,7 +1298,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : c11GridFixtureRequested
                 ? nativeCreateC11GridHost()
                 : c133GestureFixtureRequested
-                ? nativeCreateC133GestureHost()
+                ? nativeCreateC133GestureHost(c133GesturePolicyScenarioID)
                 : c132ScrollFixtureRequested
                 ? nativeCreateC132ScrollHost()
                 : c131CompactSurfaceMatrixProbeRequested
@@ -1635,19 +1663,38 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             c132ScrollAssertionsPassed = true;
         }
         if (BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST && c133GestureFixtureRequested) {
+            boolean knownScenario = c133GesturePolicyScenarioID >= 0
+                    && c133GesturePolicyScenarioID <= 2;
+            String scenario = c133GesturePolicyScenarioID == 0 ? "auto-zero"
+                    : c133GesturePolicyScenarioID == 1 ? "auto-boundary"
+                    : c133GesturePolicyScenarioID == 2 ? "contain-x-auto-y-boundary" : "invalid";
+            String expectedPolicy = c133GesturePolicyScenarioID == 2
+                    ? "policy_inner=contain/auto" : "policy_inner=auto/auto";
+            String expectedSeed = c133GesturePolicyScenarioID == 0
+                    ? "fixture_seed=none" : "fixture_seed=inner-max";
+            String expectedOffsets = c133GesturePolicyScenarioID == 0
+                    ? "offsets=root:0,0;outer:0,0;inner:0,0"
+                    : "offsets=root:0,0;outer:0,0;inner:86,106";
             c133GestureFixtureReady = result.contains("c13_3_gesture_fixture=ready")
                     && result.contains("viewport_css_px=400x240")
                     && result.contains("owners=root:")
-                    && result.contains("input_queue_capacity=64");
+                    && result.contains("input_queue_capacity=64")
+                    && knownScenario
+                    && result.contains("scenario=" + scenario)
+                    && result.contains(expectedPolicy)
+                    && result.contains(expectedSeed)
+                    && result.contains(expectedOffsets);
             if (!c133GestureFixtureReady) {
                 postStatus("실패 · C13.3 입력 장면·owner 초기화 결과가 불일치합니다");
                 Log.e(TAG, "SPINON_C133_READY_ASSERTIONS failed=true " + result);
                 return;
             }
-            postStatus("준비 · 화면을 위로 밀어 C13.3 실제 Android 입력을 확인하세요");
-            Log.i(TAG, "SPINON_C133_READY input=MotionEvent native_slop_px="
+            c133GestureInitialDrawReady = false;
+            postStatus("준비 중 · C13.3 boundary snapshot의 첫 draw를 확인합니다");
+            Log.i(TAG, "SPINON_C133_EVAL_READY input=MotionEvent native_slop_px="
                     + c133TouchSlopPx + " worker_delay_ms=" + c133WorkerDelayMillis
                     + " " + result);
+            requestDraw();
             if (c133SyntheticSecondPointerProbeRequested) {
                 surfaceView.post(this::runC133SyntheticSecondPointerProbe);
             }
@@ -3862,6 +3909,24 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             postStatus("실패 · " + result);
             return;
         }
+        if (BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST
+                && c133GestureFixtureRequested
+                && c133GestureFixtureReady && !c133GestureInitialDrawReady) {
+            String expectedRevision = c133GesturePolicyScenarioID == 0
+                    ? "scroll_state_revision=0" : "scroll_state_revision=1";
+            String expectedOffsets = c133GesturePolicyScenarioID == 0
+                    ? "scroll_offsets=[0,0;0,0;0,0]"
+                    : "scroll_offsets=[0,0;0,0;86,106]";
+            if (!result.contains(expectedRevision) || !result.contains(expectedOffsets)) {
+                c133GestureFixtureReady = false;
+                Log.e(TAG, "SPINON_C133_DRAW_ASSERTIONS failed=true " + result);
+                postStatus("실패 · C13.3 첫 draw snapshot이 boundary seed와 다릅니다");
+                return;
+            }
+            c133GestureInitialDrawReady = true;
+            Log.i(TAG, "SPINON_C133_READY input=MotionEvent " + result);
+            postStatus("준비 · 경계 상태에서 실제 Android swipe 입력을 확인하세요");
+        }
         if (c11GridFixtureRequested && !c11GridPixelMatrixRunId.isEmpty()) {
             requestC11GridPixelMatrixCapture(renderer, generation);
         } else if (c11GridFixtureRequested && !c1121GridPlacementRequested
@@ -4119,7 +4184,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         int action = event.getActionMasked();
         switch (action) {
             case MotionEvent.ACTION_DOWN: {
-                if (!c133GestureFixtureReady || c133SuppressUntilAllPointersUp) return true;
+                if (!c133GestureFixtureReady || !c133GestureInitialDrawReady
+                        || c133SuppressUntilAllPointersUp) return true;
                 synchronized (stateLock) {
                     if (closing || hostHandle == 0 || surfaceWidth <= 0 || surfaceHeight <= 0) {
                         return false;
@@ -4274,7 +4340,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private void runC133SyntheticSecondPointerProbe() {
-        if (!c133GestureFixtureReady || closing) return;
+        if (!c133GestureFixtureReady || !c133GestureInitialDrawReady || closing) return;
         final float scale;
         synchronized (stateLock) {
             if (surfaceWidth <= 0 || surfaceHeight <= 0) return;

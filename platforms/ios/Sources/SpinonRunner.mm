@@ -814,13 +814,14 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 #if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
-+ (uint64_t)createRuntimeGpuHostWithC13_3GestureFixture {
++ (uint64_t)createRuntimeGpuHostWithC13_3GestureFixture:(int32_t)scenarioID {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
     defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && \
     SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
   std::array<char, 1024> output{};
   SpinonRuntimeGpuHost *host =
-      spinon_runtime_gpu_host_new_c13_3_gesture_fixture(output.data(), output.size());
+      spinon_runtime_gpu_host_new_c13_3_gesture_fixture(
+          scenarioID, output.data(), output.size());
   if (host == nullptr) {
     os_log_error(OS_LOG_DEFAULT, "SPINON_C133_HOST_ERROR=%{public}s", output.data());
     return 0;

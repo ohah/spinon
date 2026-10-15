@@ -202,8 +202,13 @@ int32_t spinon_runtime_gpu_host_request_c13_2_surface_pixels_for_test(
 #if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && \
     SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
 /* C13.3 Android 입력 어댑터 전용 opt-in gesture fixture host입니다. */
+enum {
+    SPINON_C13_3_GESTURE_SCENARIO_AUTO_ZERO = 0,
+    SPINON_C13_3_GESTURE_SCENARIO_AUTO_BOUNDARY = 1,
+    SPINON_C13_3_GESTURE_SCENARIO_CONTAIN_X_AUTO_Y_BOUNDARY = 2
+};
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c13_3_gesture_fixture(
-    char *output, size_t output_capacity);
+    int32_t scenario_id, char *output, size_t output_capacity);
 int32_t spinon_runtime_gpu_host_eval_c13_3_gesture_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);

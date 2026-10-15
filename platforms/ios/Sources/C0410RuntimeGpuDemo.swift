@@ -321,6 +321,14 @@ private func c11GridMetalPixelSceneID(arguments: [String]) -> String? {
 }
 
 final class C0410RuntimeGpuDemoViewController: UIViewController {
+#if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
+    private struct C133RuntimeEnvironment: Equatable {
+        let width: Float
+        let height: Float
+        let scale: Float
+        let dark: Bool
+    }
+#endif
     private let runtimeQueue = DispatchQueue(label: "spinon.c0410.runtime")
     private let renderQueue = DispatchQueue(label: "spinon.c0410.render")
     private let stateLock = NSLock()
@@ -569,6 +577,20 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c132-scroll")
     private let c133GestureFixtureRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c133-scroll-gesture")
+#if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
+    private let c133GesturePolicyScenarioArguments = ProcessInfo.processInfo.arguments.filter {
+        $0.hasPrefix("--spinon-c133-policy-scenario-id=")
+    }
+    private var c133GesturePolicyScenarioID: Int32 {
+        guard c133GesturePolicyScenarioArguments.count <= 1 else { return -1 }
+        guard let argument = c133GesturePolicyScenarioArguments.first else { return 0 }
+        let prefix = "--spinon-c133-policy-scenario-id="
+        guard argument.hasPrefix(prefix),
+              let scenarioID = Int32(argument.dropFirst(prefix.count)),
+              scenarioID >= 0, scenarioID <= 2 else { return -1 }
+        return scenarioID
+    }
+#endif
     private let c132MetalPixelRun = C132MetalPixelRun.parse(
         arguments: ProcessInfo.processInfo.arguments
     )
@@ -590,7 +612,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     private var c133BackgroundObserver: NSObjectProtocol?
     private var c133DrainScheduled = false
     private var c133DrainAgain = false
+    private var c133GestureEvaluationReady = false
     private var c133GestureFixtureReady = false
+    private var c133ConfiguredRuntimeEnvironment: C133RuntimeEnvironment?
     private var c133TouchActive = false
     private var c133TerminalQueued = false
     private var c133SuppressUntilAllPointersUp = false
@@ -1779,6 +1803,14 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             postStatus("실패 · Metal pixel route에는 C13.1 compact hit identity route가 필요합니다")
             return
         }
+#if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
+        if (!c133GesturePolicyScenarioArguments.isEmpty && !c133GestureFixtureRequested)
+            || (c133GestureFixtureRequested && c133GesturePolicyScenarioID < 0) {
+            log("SPINON_C133_POLICY_SCENARIO_ARGUMENT_ERROR rejected=true")
+            postStatus("실패 · C13.3 policy scenario ID는 fixture route에서 0~2로 하나만 지정해야 합니다")
+            return
+        }
+#endif
         let selectedC131Routes = [
             c131OverflowClipProbeRequested,
             c131CompactSurfaceMatrixProbeRequested,
@@ -1802,6 +1834,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                    && $0 != "--spinon-c131-overflow-clip-border"
                    && $0 != "--spinon-c132-scroll"
                    && $0 != "--spinon-c133-scroll-gesture"
+                   && !(c133GestureFixtureRequested
+                       && $0.hasPrefix("--spinon-c133-policy-scenario-id="))
                    && $0 != "--spinon-c0410-runtime-gpu"
                    && !(c132ScrollFixtureRequested
                        && $0.hasPrefix("--spinon-c132-metal-surface-pixels="))
@@ -1905,7 +1939,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
 #if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
         let c133GestureHostHandle = c133GestureFixtureRequested
-            ? SpinonRunner.createRuntimeGpuHostWithC13_3GestureFixture() : 0
+            ? SpinonRunner.createRuntimeGpuHost(
+                withC13_3GestureFixture: c133GesturePolicyScenarioID
+            ) : 0
 #else
         let c133GestureHostHandle: UInt64 = 0
 #endif
@@ -2018,6 +2054,18 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
         log("SPINON_C0410_ENVIRONMENT \(environment ?? "")")
 
+#if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
+        if c133GestureFixtureRequested {
+            stateLock.lock()
+            c133ConfiguredRuntimeEnvironment = C133RuntimeEnvironment(
+                width: viewportWidth,
+                height: viewportHeight,
+                scale: 1,
+                dark: environmentInputs.dark
+            )
+            stateLock.unlock()
+        }
+#endif
         var result: String? = nil
         if c131CompactSurfaceMatrixRouteRequested {
             result = SpinonRunner.evalRuntimeGpuC13_1CompactSurfaceMatrixFixture(handle)
@@ -2218,16 +2266,37 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         } else if c133GestureFixtureRequested {
 #if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
             let report = result ?? "status=-1 missing-report"
-            guard report.hasPrefix("status=0 ")
-                    && report.contains("c13_3_gesture_fixture=ready") else {
-                postStatus("실패 · C13.3 gesture fixture 초기 상태가 준비되지 않았습니다")
+            let scenarioID = c133GesturePolicyScenarioID
+            let scenario = scenarioID == 0 ? "auto-zero"
+                : scenarioID == 1 ? "auto-boundary"
+                : scenarioID == 2 ? "contain-x-auto-y-boundary" : "invalid"
+            let expectedPolicy = scenarioID == 2
+                ? "policy_inner=contain/auto" : "policy_inner=auto/auto"
+            let expectedSeed = scenarioID == 0
+                ? "fixture_seed=none" : "fixture_seed=inner-max"
+            let expectedOffsets = scenarioID == 0
+                ? "offsets=root:0,0;outer:0,0;inner:0,0"
+                : "offsets=root:0,0;outer:0,0;inner:86,106"
+            guard scenarioID >= 0 && scenarioID <= 2
+                    && report.hasPrefix("status=0 ")
+                    && report.contains("c13_3_gesture_fixture=ready")
+                    && report.contains("scenario=\(scenario)")
+                    && report.contains(expectedPolicy)
+                    && report.contains(expectedSeed)
+                    && report.contains(expectedOffsets)
+                    && report.contains("viewport_css_px=400x240")
+                    && report.contains("input_queue_capacity=64") else {
+                postStatus("실패 · C13.3 policy scenario·boundary 상태가 불일치합니다")
+                log("SPINON_C133_READY_ASSERTIONS failed=true \(report)")
                 return
             }
             stateLock.lock()
-            c133GestureFixtureReady = true
+            c133GestureEvaluationReady = true
+            c133GestureFixtureReady = false
             stateLock.unlock()
-            log("SPINON_C133_READY input=UIPanGestureRecognizer native_slop=system \(runtimeStatusSummary(report))")
-            postStatus("준비 · 화면을 위로 밀어 iOS nested scroll gesture를 확인하세요")
+            log("SPINON_C133_EVAL_READY input=UIPanGestureRecognizer native_slop=system \(runtimeStatusSummary(report))")
+            postStatus("준비 중 · C13.3 boundary snapshot의 첫 Metal draw를 확인합니다")
+            requestDraw()
 #endif
         } else if c131CompactSurfaceMatrixRouteRequested {
             let report = result ?? "status=-1 missing-report"
@@ -3083,9 +3152,34 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         generation = surfaceGeneration
         sequence = presentationSequence
         handle = hostHandle
-        environmentInputs = (viewportWidthCssPx, viewportHeightCssPx, displayScale, darkMode)
+        let fixedCssScaleRoute = c123FixedPositionProbeRequested
+            || c1132GridNamedLinesProbeRequested || c1133GridTemplateAreasProbeRequested
+            || c132ScrollFixtureRequested || c133GestureFixtureRequested
+        environmentInputs = (
+            viewportWidthCssPx, viewportHeightCssPx,
+            fixedCssScaleRoute ? 1 : displayScale, darkMode
+        )
         stateLock.unlock()
         guard isCurrentPresentation(generation: generation, sequence: sequence) else { return }
+#if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
+        if c133GestureFixtureRequested {
+            let requestedEnvironment = C133RuntimeEnvironment(
+                width: environmentInputs.width,
+                height: environmentInputs.height,
+                scale: environmentInputs.scale,
+                dark: environmentInputs.dark
+            )
+            stateLock.lock()
+            let environmentAlreadyConfigured =
+                c133ConfiguredRuntimeEnvironment == requestedEnvironment
+            stateLock.unlock()
+            if environmentAlreadyConfigured {
+                log("SPINON_C0410_ENVIRONMENT skipped=unchanged viewport=\(environmentInputs.width)x\(environmentInputs.height) scale=\(environmentInputs.scale) dark=\(environmentInputs.dark) sequence=\(sequence)")
+                requestDraw()
+                return
+            }
+        }
+#endif
         let report = SpinonRunner.setRuntimeGpuEnvironment(
             handle, width: environmentInputs.width, height: environmentInputs.height,
             scale: environmentInputs.scale, dark: environmentInputs.dark
@@ -3112,6 +3206,18 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         guard report?.hasPrefix("status=0 ") == true else {
             throw C0410LatestTaskLaneError.operationFailed(report ?? "환경 갱신 보고 없음")
         }
+#if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
+        if c133GestureFixtureRequested {
+            stateLock.lock()
+            c133ConfiguredRuntimeEnvironment = C133RuntimeEnvironment(
+                width: environmentInputs.width,
+                height: environmentInputs.height,
+                scale: environmentInputs.scale,
+                dark: environmentInputs.dark
+            )
+            stateLock.unlock()
+        }
+#endif
         if report?.hasPrefix("status=0 ") == true
             && isCurrentPresentation(generation: generation, sequence: sequence) {
             requestDraw()
@@ -3642,6 +3748,37 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             }
             throw C0410LatestTaskLaneError.operationFailed(result ?? "WGPU draw 실패 보고 없음")
         }
+#if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
+        stateLock.lock()
+        let shouldVerifyC133InitialDraw = c133GestureFixtureRequested
+            && c133GestureEvaluationReady && !c133GestureFixtureReady
+        stateLock.unlock()
+        if shouldVerifyC133InitialDraw {
+            if result?.contains("presented empty scene while runtime calculation is pending") == true {
+                log("SPINON_C133_DRAW_PENDING reason=runtime-snapshot-not-published")
+                return
+            }
+            let scenarioID = c133GesturePolicyScenarioID
+            let expectedRevision = scenarioID == 0
+                ? "scroll_state_revision=0" : "scroll_state_revision=1"
+            let expectedOffsets = scenarioID == 0
+                ? "scroll_offsets=[0,0;0,0;0,0]"
+                : "scroll_offsets=[0,0;0,0;86,106]"
+            guard result?.contains(expectedRevision) == true,
+                  result?.contains(expectedOffsets) == true else {
+                log("SPINON_C133_DRAW_ASSERTIONS failed=true \(result ?? "missing-report")")
+                postStatus("실패 · C13.3 첫 Metal draw가 boundary seed와 다릅니다")
+                throw C0410LatestTaskLaneError.operationFailed(
+                    "C13.3 첫 draw snapshot이 gesture ready report와 일치하지 않습니다"
+                )
+            }
+            stateLock.lock()
+            c133GestureFixtureReady = true
+            stateLock.unlock()
+            log("SPINON_C133_READY input=UIPanGestureRecognizer native_slop=system \(result ?? "")")
+            postStatus("준비 · \(scenarioID == 0 ? "auto-zero" : scenarioID == 1 ? "auto-boundary" : "contain-x-auto-y-boundary") 경계 상태에서 실제 iOS swipe 입력을 확인하세요")
+        }
+#endif
         if c131MetalPixelCapture != nil,
            !c131MetalCaptureBaselineDrawReady,
            !c131MetalPixelCaptureComplete,

@@ -1,0 +1,9 @@
+C13.3 gesture fixture static archive boundary
+Targets: aarch64-linux-android and aarch64-apple-ios-sim
+Builds: cargo build --locked --release --target <target> -p spinon-ffi --no-default-features; positive control adds --features c13-3-gesture-fixture-test
+Android symbol tool: nm; iOS symbol tool: Rust toolchain llvm-nm (Xcode nm cannot read this Rust LLVM bitcode version)
+
+android-default: target=aarch64-linux-android; scenario_FFI_symbol=0; fixture_markers={'auto-zero': False, 'auto-boundary': False, 'contain-x-auto-y-boundary': False, 'C13.3 gesture scenario id=': False}; bytes=59914084; sha256=aee8b912d3ae03b72ad937b5859f765a107b171e4461c334d4c0d46b469bcfb3
+android-optin: target=aarch64-linux-android; scenario_FFI_symbol=1; fixture_markers={'auto-zero': True, 'auto-boundary': True, 'contain-x-auto-y-boundary': True, 'C13.3 gesture scenario id=': True}; bytes=82762316; sha256=c21f31d69f748ed200fe7c7d8041b12c53152358e621c67ea15e70b791624d16
+ios-default: target=aarch64-apple-ios-sim; scenario_FFI_symbol=0; fixture_markers={'auto-zero': False, 'auto-boundary': False, 'contain-x-auto-y-boundary': False, 'C13.3 gesture scenario id=': False}; bytes=43641368; sha256=328636cd1cec1db561c999c115f156a773eac9d4e703c334042dcc6ce69ab22e
+ios-optin: target=aarch64-apple-ios-sim; scenario_FFI_symbol=1; fixture_markers={'auto-zero': True, 'auto-boundary': True, 'contain-x-auto-y-boundary': True, 'C13.3 gesture scenario id=': True}; bytes=56796968; sha256=4e275cee03bc54fb2bffb164a24c1170ca29d48f6a2aa7f6a159efe219ce502b

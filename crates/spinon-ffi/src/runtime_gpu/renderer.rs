@@ -105,9 +105,10 @@ impl RuntimeGpuHost {
     }
 
     pub(super) fn resize(&self, width: u32, height: u32) -> Result<(), (i32, String)> {
-        self.invalidate_scene()
+        let sequence = self
+            .invalidate_scene()
             .map_err(|error| (ERR_STALE, error))?;
-        lock(&self.renderer)
+        let result = lock(&self.renderer)
             .as_mut()
             .ok_or_else(|| (ERR_LAYOUT, "runtime GPU renderer가 없습니다".to_owned()))?
             .resize(width, height)
@@ -118,7 +119,21 @@ impl RuntimeGpuHost {
                     ERR_LAYOUT
                 };
                 (status, error.to_string())
-            })
+            });
+        #[cfg(feature = "c13-3-gesture-fixture-test")]
+        if result.is_ok() {
+            if let Some(state) = &self.c13_3_gesture_state {
+                if let Ok(snapshot) = state.current_snapshot() {
+                    if !self.presentation.publish(sequence, snapshot) {
+                        return Err((
+                            ERR_STALE,
+                            "C13.3 resize 뒤 최신 gesture snapshot 복구가 stale입니다".to_owned(),
+                        ));
+                    }
+                }
+            }
+        }
+        result
     }
 
     pub(super) fn draw(&self) -> Result<String, (i32, String)> {
@@ -171,7 +186,9 @@ impl RuntimeGpuHost {
                     root.unwrap_or_default(),
                 )
             }
-            None => "presented empty scene while runtime calculation is pending".to_owned(),
+            None => format!(
+                "presented empty scene while runtime calculation is pending presentation_sequence={sequence}"
+            ),
         };
         if let Some(samples) = pixel_samples {
             for sample in &samples {

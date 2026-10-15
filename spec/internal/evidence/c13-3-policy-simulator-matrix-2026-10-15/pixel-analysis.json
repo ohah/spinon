@@ -1,0 +1,1536 @@
+{
+  "generated_from": "Android API 37 emulator-5554 and iPhone 17 Pro iOS 26.2 Simulator",
+  "threshold": "image diff: max RGB channel > 8; ignore top 180 screenshot px",
+  "runs": [
+    {
+      "platform": "android",
+      "case": "auto-zero",
+      "ready": true,
+      "computed_inner_policy": "auto/auto",
+      "initial_draw": {
+        "revision": 0,
+        "offsets": "[0,0;0,0;0,0]"
+      },
+      "final_offsets_css_px": {
+        "root": [
+          0.0,
+          0.0
+        ],
+        "outer": [
+          0.0,
+          0.0
+        ],
+        "inner": [
+          0.0,
+          0.0
+        ]
+      },
+      "before": {
+        "size_px": [
+          1080,
+          2400
+        ],
+        "colors": {
+          "root": {
+            "pixel_count": 22844,
+            "bbox_px": [
+              58,
+              1068,
+              1022,
+              1614
+            ]
+          },
+          "outer": {
+            "pixel_count": 13935,
+            "bbox_px": [
+              144,
+              1155,
+              721,
+              1522
+            ]
+          },
+          "inner": {
+            "pixel_count": 8144,
+            "bbox_px": [
+              204,
+              1215,
+              519,
+              1425
+            ]
+          },
+          "marker": {
+            "pixel_count": 0,
+            "bbox_px": null
+          }
+        }
+      }
+    },
+    {
+      "platform": "android",
+      "case": "auto-horizontal",
+      "ready": true,
+      "computed_inner_policy": "auto/auto",
+      "initial_draw": {
+        "revision": 1,
+        "offsets": "[0,0;0,0;86,106]"
+      },
+      "final_offsets_css_px": {
+        "root": [
+          0.0,
+          0.0
+        ],
+        "outer": [
+          60.375,
+          0.0
+        ],
+        "inner": [
+          86.0,
+          106.0
+        ]
+      },
+      "before": {
+        "size_px": [
+          1080,
+          2400
+        ],
+        "colors": {
+          "root": {
+            "pixel_count": 22844,
+            "bbox_px": [
+              58,
+              1068,
+              1022,
+              1614
+            ]
+          },
+          "outer": {
+            "pixel_count": 13935,
+            "bbox_px": [
+              144,
+              1155,
+              721,
+              1522
+            ]
+          },
+          "inner": {
+            "pixel_count": 8144,
+            "bbox_px": [
+              204,
+              1215,
+              519,
+              1425
+            ]
+          },
+          "marker": {
+            "pixel_count": 1260,
+            "bbox_px": [
+              212,
+              1223,
+              233,
+              1283
+            ]
+          }
+        }
+      },
+      "after": {
+        "size_px": [
+          1080,
+          2400
+        ],
+        "colors": {
+          "root": {
+            "pixel_count": 22844,
+            "bbox_px": [
+              58,
+              1068,
+              1022,
+              1614
+            ]
+          },
+          "outer": {
+            "pixel_count": 13935,
+            "bbox_px": [
+              144,
+              1155,
+              721,
+              1522
+            ]
+          },
+          "inner": {
+            "pixel_count": 4702,
+            "bbox_px": [
+              151,
+              1215,
+              360,
+              1425
+            ]
+          },
+          "marker": {
+            "pixel_count": 0,
+            "bbox_px": null
+          }
+        }
+      },
+      "screenshot_diff": {
+        "pixel_count_rgb_max_gt_8_after_top_180": 48690,
+        "bbox_px": [
+          151,
+          1215,
+          519,
+          1425
+        ],
+        "outside_root_pixel_count": 0
+      }
+    },
+    {
+      "platform": "android",
+      "case": "auto-vertical",
+      "ready": true,
+      "computed_inner_policy": "auto/auto",
+      "initial_draw": {
+        "revision": 1,
+        "offsets": "[0,0;0,0;86,106]"
+      },
+      "final_offsets_css_px": {
+        "root": [
+          0.0,
+          0.0
+        ],
+        "outer": [
+          0.0,
+          60.26525
+        ],
+        "inner": [
+          86.0,
+          106.0
+        ]
+      },
+      "before": {
+        "size_px": [
+          1080,
+          2400
+        ],
+        "colors": {
+          "root": {
+            "pixel_count": 22844,
+            "bbox_px": [
+              58,
+              1068,
+              1022,
+              1614
+            ]
+          },
+          "outer": {
+            "pixel_count": 13935,
+            "bbox_px": [
+              144,
+              1155,
+              721,
+              1522
+            ]
+          },
+          "inner": {
+            "pixel_count": 8144,
+            "bbox_px": [
+              204,
+              1215,
+              519,
+              1425
+            ]
+          },
+          "marker": {
+            "pixel_count": 1260,
+            "bbox_px": [
+              212,
+              1223,
+              233,
+              1283
+            ]
+          }
+        }
+      },
+      "after": {
+        "size_px": [
+          1080,
+          2400
+        ],
+        "colors": {
+          "root": {
+            "pixel_count": 22844,
+            "bbox_px": [
+              58,
+              1068,
+              1022,
+              1614
+            ]
+          },
+          "outer": {
+            "pixel_count": 13935,
+            "bbox_px": [
+              144,
+              1155,
+              721,
+              1522
+            ]
+          },
+          "inner": {
+            "pixel_count": 4072,
+            "bbox_px": [
+              204,
+              1162,
+              519,
+              1267
+            ]
+          },
+          "marker": {
+            "pixel_count": 0,
+            "bbox_px": null
+          }
+        }
+      },
+      "screenshot_diff": {
+        "pixel_count_rgb_max_gt_8_after_top_180": 72005,
+        "bbox_px": [
+          204,
+          1162,
+          519,
+          1425
+        ],
+        "outside_root_pixel_count": 0
+      }
+    },
+    {
+      "platform": "android",
+      "case": "auto-diagonal",
+      "ready": true,
+      "computed_inner_policy": "auto/auto",
+      "initial_draw": {
+        "revision": 1,
+        "offsets": "[0,0;0,0;86,106]"
+      },
+      "final_offsets_css_px": {
+        "root": [
+          0.0,
+          0.0
+        ],
+        "outer": [
+          58.68564,
+          58.68564
+        ],
+        "inner": [
+          86.0,
+          106.0
+        ]
+      },
+      "before": {
+        "size_px": [
+          1080,
+          2400
+        ],
+        "colors": {
+          "root": {
+            "pixel_count": 22844,
+            "bbox_px": [
+              58,
+              1068,
+              1022,
+              1614
+            ]
+          },
+          "outer": {
+            "pixel_count": 13935,
+            "bbox_px": [
+              144,
+              1155,
+              721,
+              1522
+            ]
+          },
+          "inner": {
+            "pixel_count": 8144,
+            "bbox_px": [
+              204,
+              1215,
+              519,
+              1425
+            ]
+          },
+          "marker": {
+            "pixel_count": 1260,
+            "bbox_px": [
+              212,
+              1223,
+              233,
+              1283
+            ]
+          }
+        }
+      },
+      "after": {
+        "size_px": [
+          1080,
+          2400
+        ],
+        "colors": {
+          "root": {
+            "pixel_count": 22844,
+            "bbox_px": [
+              58,
+              1068,
+              1022,
+              1614
+            ]
+          },
+          "outer": {
+            "pixel_count": 13935,
+            "bbox_px": [
+              144,
+              1155,
+              721,
+              1522
+            ]
+          },
+          "inner": {
+            "pixel_count": 2520,
+            "bbox_px": [
+              151,
+              1162,
+              365,
+              1271
+            ]
+          },
+          "marker": {
+            "pixel_count": 0,
+            "bbox_px": null
+          }
+        }
+      },
+      "screenshot_diff": {
+        "pixel_count_rgb_max_gt_8_after_top_180": 75372,
+        "bbox_px": [
+          151,
+          1162,
+          519,
+          1425
+        ],
+        "outside_root_pixel_count": 0
+      }
+    },
+    {
+      "platform": "android",
+      "case": "contain-horizontal",
+      "ready": true,
+      "computed_inner_policy": "contain/auto",
+      "initial_draw": {
+        "revision": 1,
+        "offsets": "[0,0;0,0;86,106]"
+      },
+      "final_offsets_css_px": {
+        "root": [
+          0.0,
+          0.0
+        ],
+        "outer": [
+          0.0,
+          0.0
+        ],
+        "inner": [
+          86.0,
+          106.0
+        ]
+      },
+      "before": {
+        "size_px": [
+          1080,
+          2400
+        ],
+        "colors": {
+          "root": {
+            "pixel_count": 22844,
+            "bbox_px": [
+              58,
+              1068,
+              1022,
+              1614
+            ]
+          },
+          "outer": {
+            "pixel_count": 13935,
+            "bbox_px": [
+              144,
+              1155,
+              721,
+              1522
+            ]
+          },
+          "inner": {
+            "pixel_count": 8144,
+            "bbox_px": [
+              204,
+              1215,
+              519,
+              1425
+            ]
+          },
+          "marker": {
+            "pixel_count": 1260,
+            "bbox_px": [
+              212,
+              1223,
+              233,
+              1283
+            ]
+          }
+        }
+      },
+      "after": {
+        "size_px": [
+          1080,
+          2400
+        ],
+        "colors": {
+          "root": {
+            "pixel_count": 22844,
+            "bbox_px": [
+              58,
+              1068,
+              1022,
+              1614
+            ]
+          },
+          "outer": {
+            "pixel_count": 13935,
+            "bbox_px": [
+              144,
+              1155,
+              721,
+              1522
+            ]
+          },
+          "inner": {
+            "pixel_count": 8144,
+            "bbox_px": [
+              204,
+              1215,
+              519,
+              1425
+            ]
+          },
+          "marker": {
+            "pixel_count": 1260,
+            "bbox_px": [
+              212,
+              1223,
+              233,
+              1283
+            ]
+          }
+        }
+      },
+      "screenshot_diff": {
+        "pixel_count_rgb_max_gt_8_after_top_180": 0,
+        "bbox_px": null,
+        "outside_root_pixel_count": 0
+      }
+    },
+    {
+      "platform": "android",
+      "case": "contain-vertical",
+      "ready": true,
+      "computed_inner_policy": "contain/auto",
+      "initial_draw": {
+        "revision": 1,
+        "offsets": "[0,0;0,0;86,106]"
+      },
+      "final_offsets_css_px": {
+        "root": [
+          0.0,
+          0.0
+        ],
+        "outer": [
+          0.0,
+          59.81436
+        ],
+        "inner": [
+          86.0,
+          106.0
+        ]
+      },
+      "before": {
+        "size_px": [
+          1080,
+          2400
+        ],
+        "colors": {
+          "root": {
+            "pixel_count": 22844,
+            "bbox_px": [
+              58,
+              1068,
+              1022,
+              1614
+            ]
+          },
+          "outer": {
+            "pixel_count": 13935,
+            "bbox_px": [
+              144,
+              1155,
+              721,
+              1522
+            ]
+          },
+          "inner": {
+            "pixel_count": 8144,
+            "bbox_px": [
+              204,
+              1215,
+              519,
+              1425
+            ]
+          },
+          "marker": {
+            "pixel_count": 1260,
+            "bbox_px": [
+              212,
+              1223,
+              233,
+              1283
+            ]
+          }
+        }
+      },
+      "after": {
+        "size_px": [
+          1080,
+          2400
+        ],
+        "colors": {
+          "root": {
+            "pixel_count": 22844,
+            "bbox_px": [
+              58,
+              1068,
+              1022,
+              1614
+            ]
+          },
+          "outer": {
+            "pixel_count": 13935,
+            "bbox_px": [
+              144,
+              1155,
+              721,
+              1522
+            ]
+          },
+          "inner": {
+            "pixel_count": 4088,
+            "bbox_px": [
+              204,
+              1162,
+              519,
+              1268
+            ]
+          },
+          "marker": {
+            "pixel_count": 0,
+            "bbox_px": null
+          }
+        }
+      },
+      "screenshot_diff": {
+        "pixel_count_rgb_max_gt_8_after_top_180": 71711,
+        "bbox_px": [
+          204,
+          1162,
+          519,
+          1425
+        ],
+        "outside_root_pixel_count": 0
+      }
+    },
+    {
+      "platform": "android",
+      "case": "contain-diagonal",
+      "ready": true,
+      "computed_inner_policy": "contain/auto",
+      "initial_draw": {
+        "revision": 1,
+        "offsets": "[0,0;0,0;86,106]"
+      },
+      "final_offsets_css_px": {
+        "root": [
+          0.0,
+          0.0
+        ],
+        "outer": [
+          0.0,
+          60.566593
+        ],
+        "inner": [
+          86.0,
+          106.0
+        ]
+      },
+      "before": {
+        "size_px": [
+          1080,
+          2400
+        ],
+        "colors": {
+          "root": {
+            "pixel_count": 22844,
+            "bbox_px": [
+              58,
+              1068,
+              1022,
+              1614
+            ]
+          },
+          "outer": {
+            "pixel_count": 13935,
+            "bbox_px": [
+              144,
+              1155,
+              721,
+              1522
+            ]
+          },
+          "inner": {
+            "pixel_count": 8144,
+            "bbox_px": [
+              204,
+              1215,
+              519,
+              1425
+            ]
+          },
+          "marker": {
+            "pixel_count": 1260,
+            "bbox_px": [
+              212,
+              1223,
+              233,
+              1283
+            ]
+          }
+        }
+      },
+      "after": {
+        "size_px": [
+          1080,
+          2400
+        ],
+        "colors": {
+          "root": {
+            "pixel_count": 22844,
+            "bbox_px": [
+              58,
+              1068,
+              1022,
+              1614
+            ]
+          },
+          "outer": {
+            "pixel_count": 13935,
+            "bbox_px": [
+              144,
+              1155,
+              721,
+              1522
+            ]
+          },
+          "inner": {
+            "pixel_count": 4056,
+            "bbox_px": [
+              204,
+              1162,
+              519,
+              1266
+            ]
+          },
+          "marker": {
+            "pixel_count": 0,
+            "bbox_px": null
+          }
+        }
+      },
+      "screenshot_diff": {
+        "pixel_count_rgb_max_gt_8_after_top_180": 72299,
+        "bbox_px": [
+          204,
+          1162,
+          519,
+          1425
+        ],
+        "outside_root_pixel_count": 0
+      }
+    },
+    {
+      "platform": "ios",
+      "case": "auto-zero",
+      "ready": true,
+      "computed_inner_policy": "auto/auto",
+      "initial_draw": {
+        "revision": 0,
+        "offsets": "[0,0;0,0;0,0]"
+      },
+      "final_offsets_css_px": {
+        "root": [
+          0.0,
+          0.0
+        ],
+        "outer": [
+          0.0,
+          0.0
+        ],
+        "inner": [
+          0.0,
+          0.0
+        ]
+      },
+      "before": {
+        "size_px": [
+          1206,
+          2622
+        ],
+        "colors": {
+          "root": {
+            "pixel_count": 30780,
+            "bbox_px": [
+              51,
+              999,
+              1155,
+              1623
+            ]
+          },
+          "outer": {
+            "pixel_count": 19116,
+            "bbox_px": [
+              150,
+              1098,
+              810,
+              1518
+            ]
+          },
+          "inner": {
+            "pixel_count": 10476,
+            "bbox_px": [
+              219,
+              1167,
+              579,
+              1407
+            ]
+          },
+          "marker": {
+            "pixel_count": 0,
+            "bbox_px": null
+          }
+        }
+      }
+    },
+    {
+      "platform": "ios",
+      "case": "auto-horizontal",
+      "ready": true,
+      "computed_inner_policy": "auto/auto",
+      "initial_draw": {
+        "revision": 1,
+        "offsets": "[0,0;0,0;86,106]"
+      },
+      "final_offsets_css_px": {
+        "root": [
+          0.0,
+          0.0
+        ],
+        "outer": [
+          50.0,
+          0.0
+        ],
+        "inner": [
+          86.0,
+          106.0
+        ]
+      },
+      "before": {
+        "size_px": [
+          1206,
+          2622
+        ],
+        "colors": {
+          "root": {
+            "pixel_count": 30780,
+            "bbox_px": [
+              51,
+              999,
+              1155,
+              1623
+            ]
+          },
+          "outer": {
+            "pixel_count": 19116,
+            "bbox_px": [
+              150,
+              1098,
+              810,
+              1518
+            ]
+          },
+          "inner": {
+            "pixel_count": 10476,
+            "bbox_px": [
+              219,
+              1167,
+              579,
+              1407
+            ]
+          },
+          "marker": {
+            "pixel_count": 1656,
+            "bbox_px": [
+              228,
+              1176,
+              252,
+              1245
+            ]
+          }
+        }
+      },
+      "after": {
+        "size_px": [
+          1206,
+          2622
+        ],
+        "colors": {
+          "root": {
+            "pixel_count": 30780,
+            "bbox_px": [
+              51,
+              999,
+              1155,
+              1623
+            ]
+          },
+          "outer": {
+            "pixel_count": 19116,
+            "bbox_px": [
+              150,
+              1098,
+              810,
+              1518
+            ]
+          },
+          "inner": {
+            "pixel_count": 6858,
+            "bbox_px": [
+              159,
+              1167,
+              429,
+              1407
+            ]
+          },
+          "marker": {
+            "pixel_count": 0,
+            "bbox_px": null
+          }
+        }
+      },
+      "screenshot_diff": {
+        "pixel_count_rgb_max_gt_8_after_top_180": 56052,
+        "bbox_px": [
+          159,
+          1167,
+          579,
+          1407
+        ],
+        "outside_root_pixel_count": 0
+      }
+    },
+    {
+      "platform": "ios",
+      "case": "auto-vertical",
+      "ready": true,
+      "computed_inner_policy": "auto/auto",
+      "initial_draw": {
+        "revision": 1,
+        "offsets": "[0,0;0,0;86,106]"
+      },
+      "final_offsets_css_px": {
+        "root": [
+          0.0,
+          0.0
+        ],
+        "outer": [
+          0.0,
+          50.0
+        ],
+        "inner": [
+          86.0,
+          106.0
+        ]
+      },
+      "before": {
+        "size_px": [
+          1206,
+          2622
+        ],
+        "colors": {
+          "root": {
+            "pixel_count": 30780,
+            "bbox_px": [
+              51,
+              999,
+              1155,
+              1623
+            ]
+          },
+          "outer": {
+            "pixel_count": 19116,
+            "bbox_px": [
+              150,
+              1098,
+              810,
+              1518
+            ]
+          },
+          "inner": {
+            "pixel_count": 10476,
+            "bbox_px": [
+              219,
+              1167,
+              579,
+              1407
+            ]
+          },
+          "marker": {
+            "pixel_count": 1656,
+            "bbox_px": [
+              228,
+              1176,
+              252,
+              1245
+            ]
+          }
+        }
+      },
+      "after": {
+        "size_px": [
+          1206,
+          2622
+        ],
+        "colors": {
+          "root": {
+            "pixel_count": 30780,
+            "bbox_px": [
+              51,
+              999,
+              1155,
+              1623
+            ]
+          },
+          "outer": {
+            "pixel_count": 19116,
+            "bbox_px": [
+              150,
+              1098,
+              810,
+              1518
+            ]
+          },
+          "inner": {
+            "pixel_count": 5778,
+            "bbox_px": [
+              219,
+              1107,
+              579,
+              1257
+            ]
+          },
+          "marker": {
+            "pixel_count": 0,
+            "bbox_px": null
+          }
+        }
+      },
+      "screenshot_diff": {
+        "pixel_count_rgb_max_gt_8_after_top_180": 83412,
+        "bbox_px": [
+          219,
+          1107,
+          579,
+          1407
+        ],
+        "outside_root_pixel_count": 0
+      }
+    },
+    {
+      "platform": "ios",
+      "case": "auto-diagonal",
+      "ready": true,
+      "computed_inner_policy": "auto/auto",
+      "initial_draw": {
+        "revision": 1,
+        "offsets": "[0,0;0,0;86,106]"
+      },
+      "final_offsets_css_px": {
+        "root": [
+          0.0,
+          0.0
+        ],
+        "outer": [
+          50.0,
+          50.0
+        ],
+        "inner": [
+          86.0,
+          106.0
+        ]
+      },
+      "before": {
+        "size_px": [
+          1206,
+          2622
+        ],
+        "colors": {
+          "root": {
+            "pixel_count": 30780,
+            "bbox_px": [
+              51,
+              999,
+              1155,
+              1623
+            ]
+          },
+          "outer": {
+            "pixel_count": 19116,
+            "bbox_px": [
+              150,
+              1098,
+              810,
+              1518
+            ]
+          },
+          "inner": {
+            "pixel_count": 10476,
+            "bbox_px": [
+              219,
+              1167,
+              579,
+              1407
+            ]
+          },
+          "marker": {
+            "pixel_count": 1656,
+            "bbox_px": [
+              228,
+              1176,
+              252,
+              1245
+            ]
+          }
+        }
+      },
+      "after": {
+        "size_px": [
+          1206,
+          2622
+        ],
+        "colors": {
+          "root": {
+            "pixel_count": 30780,
+            "bbox_px": [
+              51,
+              999,
+              1155,
+              1623
+            ]
+          },
+          "outer": {
+            "pixel_count": 19116,
+            "bbox_px": [
+              150,
+              1098,
+              810,
+              1518
+            ]
+          },
+          "inner": {
+            "pixel_count": 3699,
+            "bbox_px": [
+              159,
+              1107,
+              429,
+              1257
+            ]
+          },
+          "marker": {
+            "pixel_count": 0,
+            "bbox_px": null
+          }
+        }
+      },
+      "screenshot_diff": {
+        "pixel_count_rgb_max_gt_8_after_top_180": 95670,
+        "bbox_px": [
+          159,
+          1107,
+          579,
+          1407
+        ],
+        "outside_root_pixel_count": 0
+      }
+    },
+    {
+      "platform": "ios",
+      "case": "contain-horizontal",
+      "ready": true,
+      "computed_inner_policy": "contain/auto",
+      "initial_draw": {
+        "revision": 1,
+        "offsets": "[0,0;0,0;86,106]"
+      },
+      "final_offsets_css_px": {
+        "root": [
+          0.0,
+          0.0
+        ],
+        "outer": [
+          0.0,
+          0.0
+        ],
+        "inner": [
+          86.0,
+          106.0
+        ]
+      },
+      "before": {
+        "size_px": [
+          1206,
+          2622
+        ],
+        "colors": {
+          "root": {
+            "pixel_count": 30780,
+            "bbox_px": [
+              51,
+              999,
+              1155,
+              1623
+            ]
+          },
+          "outer": {
+            "pixel_count": 19116,
+            "bbox_px": [
+              150,
+              1098,
+              810,
+              1518
+            ]
+          },
+          "inner": {
+            "pixel_count": 10476,
+            "bbox_px": [
+              219,
+              1167,
+              579,
+              1407
+            ]
+          },
+          "marker": {
+            "pixel_count": 1656,
+            "bbox_px": [
+              228,
+              1176,
+              252,
+              1245
+            ]
+          }
+        }
+      },
+      "after": {
+        "size_px": [
+          1206,
+          2622
+        ],
+        "colors": {
+          "root": {
+            "pixel_count": 30780,
+            "bbox_px": [
+              51,
+              999,
+              1155,
+              1623
+            ]
+          },
+          "outer": {
+            "pixel_count": 19116,
+            "bbox_px": [
+              150,
+              1098,
+              810,
+              1518
+            ]
+          },
+          "inner": {
+            "pixel_count": 10476,
+            "bbox_px": [
+              219,
+              1167,
+              579,
+              1407
+            ]
+          },
+          "marker": {
+            "pixel_count": 1656,
+            "bbox_px": [
+              228,
+              1176,
+              252,
+              1245
+            ]
+          }
+        }
+      },
+      "screenshot_diff": {
+        "pixel_count_rgb_max_gt_8_after_top_180": 0,
+        "bbox_px": null,
+        "outside_root_pixel_count": 0
+      }
+    },
+    {
+      "platform": "ios",
+      "case": "contain-vertical",
+      "ready": true,
+      "computed_inner_policy": "contain/auto",
+      "initial_draw": {
+        "revision": 1,
+        "offsets": "[0,0;0,0;86,106]"
+      },
+      "final_offsets_css_px": {
+        "root": [
+          0.0,
+          0.0
+        ],
+        "outer": [
+          0.0,
+          50.0
+        ],
+        "inner": [
+          86.0,
+          106.0
+        ]
+      },
+      "before": {
+        "size_px": [
+          1206,
+          2622
+        ],
+        "colors": {
+          "root": {
+            "pixel_count": 30780,
+            "bbox_px": [
+              51,
+              999,
+              1155,
+              1623
+            ]
+          },
+          "outer": {
+            "pixel_count": 19116,
+            "bbox_px": [
+              150,
+              1098,
+              810,
+              1518
+            ]
+          },
+          "inner": {
+            "pixel_count": 10476,
+            "bbox_px": [
+              219,
+              1167,
+              579,
+              1407
+            ]
+          },
+          "marker": {
+            "pixel_count": 1656,
+            "bbox_px": [
+              228,
+              1176,
+              252,
+              1245
+            ]
+          }
+        }
+      },
+      "after": {
+        "size_px": [
+          1206,
+          2622
+        ],
+        "colors": {
+          "root": {
+            "pixel_count": 30780,
+            "bbox_px": [
+              51,
+              999,
+              1155,
+              1623
+            ]
+          },
+          "outer": {
+            "pixel_count": 19116,
+            "bbox_px": [
+              150,
+              1098,
+              810,
+              1518
+            ]
+          },
+          "inner": {
+            "pixel_count": 5778,
+            "bbox_px": [
+              219,
+              1107,
+              579,
+              1257
+            ]
+          },
+          "marker": {
+            "pixel_count": 0,
+            "bbox_px": null
+          }
+        }
+      },
+      "screenshot_diff": {
+        "pixel_count_rgb_max_gt_8_after_top_180": 83412,
+        "bbox_px": [
+          219,
+          1107,
+          579,
+          1407
+        ],
+        "outside_root_pixel_count": 0
+      }
+    },
+    {
+      "platform": "ios",
+      "case": "contain-diagonal",
+      "ready": true,
+      "computed_inner_policy": "contain/auto",
+      "initial_draw": {
+        "revision": 1,
+        "offsets": "[0,0;0,0;86,106]"
+      },
+      "final_offsets_css_px": {
+        "root": [
+          0.0,
+          0.0
+        ],
+        "outer": [
+          0.0,
+          50.0
+        ],
+        "inner": [
+          86.0,
+          106.0
+        ]
+      },
+      "before": {
+        "size_px": [
+          1206,
+          2622
+        ],
+        "colors": {
+          "root": {
+            "pixel_count": 30780,
+            "bbox_px": [
+              51,
+              999,
+              1155,
+              1623
+            ]
+          },
+          "outer": {
+            "pixel_count": 19116,
+            "bbox_px": [
+              150,
+              1098,
+              810,
+              1518
+            ]
+          },
+          "inner": {
+            "pixel_count": 10476,
+            "bbox_px": [
+              219,
+              1167,
+              579,
+              1407
+            ]
+          },
+          "marker": {
+            "pixel_count": 1656,
+            "bbox_px": [
+              228,
+              1176,
+              252,
+              1245
+            ]
+          }
+        }
+      },
+      "after": {
+        "size_px": [
+          1206,
+          2622
+        ],
+        "colors": {
+          "root": {
+            "pixel_count": 30780,
+            "bbox_px": [
+              51,
+              999,
+              1155,
+              1623
+            ]
+          },
+          "outer": {
+            "pixel_count": 19116,
+            "bbox_px": [
+              150,
+              1098,
+              810,
+              1518
+            ]
+          },
+          "inner": {
+            "pixel_count": 5778,
+            "bbox_px": [
+              219,
+              1107,
+              579,
+              1257
+            ]
+          },
+          "marker": {
+            "pixel_count": 0,
+            "bbox_px": null
+          }
+        }
+      },
+      "screenshot_diff": {
+        "pixel_count_rgb_max_gt_8_after_top_180": 83412,
+        "bbox_px": [
+          219,
+          1107,
+          579,
+          1407
+        ],
+        "outside_root_pixel_count": 0
+      }
+    }
+  ]
+}

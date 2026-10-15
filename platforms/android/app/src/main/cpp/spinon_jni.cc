@@ -400,12 +400,12 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC132ScrollHost(
 
 extern "C" JNIEXPORT jlong JNICALL
 Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC133GestureHost(
-    JNIEnv *, jclass) {
+    JNIEnv *, jclass, jint scenario_id) {
 #if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && \
     SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
   std::array<char, 1024> output{};
   SpinonRuntimeGpuHost *host = spinon_runtime_gpu_host_new_c13_3_gesture_fixture(
-      output.data(), output.size());
+      static_cast<int32_t>(scenario_id), output.data(), output.size());
   if (host == nullptr) {
     __android_log_print(ANDROID_LOG_ERROR, kTag,
                         "SPINON_C133_HOST_ERROR=%s", output.data());
