@@ -3,6 +3,7 @@
 ## 변경 후보
 
 - 기준 `main`: `705a5f5409628437b9f20b9ab47324a753c4f61c` (C13.3 계획 PR #177 병합 commit)
+- 구현 후보: `4c2c1829` (`feat: C13.3 축별 snapshot delta router 조각 추가`)
 - 구현 worktree: `/private/tmp/spinon-c13-3-scroll-gesture-impl-20261015`
 - 범위: `spinon-render`의 immutable snapshot 기반 per-axis scroll delta routing primitive와 14개 C13.3 추가 단위 검증
 - 계획: [C13.3 gesture plan](../../../../plan/c13-3-scroll-gestures.md) · [내부 계약 0063](../../0063-c13-3-scroll-gestures.md)
