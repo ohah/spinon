@@ -24,6 +24,6 @@ PR [#198](https://github.com/ohah/spinon/pull/198) 본문의 after 화면은 Age
 
 로드맵을 반영한 private Tailnet 제공 경로의 파일 해시·화면 검증은 [동기화 보고서](tailnet-preview-sync.md), [제공 검증 JSON](tailnet-served-verification.json), [로드맵 Agent Browser 화면](tailnet-roadmap-agent-browser.png)에 있다.
 
-이 근거는 Android API 37 AVD의 opt-in fixture 경로만 확인한다. 물리 장치, hardware GPU, targetable trackpad, Control-wheel runtime, iOS, public DOM events, compositor 이후 scanout 또는 C13.3 전체 완료를 증명하지 않는다.
+이 방향 행렬 실행 당시에는 ADB virtual keyboard가 mouse event에 Control meta를 전달하지 않아 Control-wheel runtime을 검사하지 못했다. 후속 [Control-wheel AVD 실행](../c13-3-android-control-wheel-runtime-2026-10-16/README.md)은 같은 API 37 ARM64 AVD에서 좌우 Ctrl × H/V 거부 경로를 별도로 확인했다. 이 근거들은 물리 장치, target 가능한 외장 trackpad, hardware GPU, iOS, public DOM events, compositor 이후 scanout 또는 C13.3 전체 완료를 증명하지 않는다.
 
 재현: `bun tools/css-reference/capture-c13-3-native-wheel-input-android.mjs --android-serial emulator-5554` (먼저 opt-in Android debug APK를 빌드한다).
