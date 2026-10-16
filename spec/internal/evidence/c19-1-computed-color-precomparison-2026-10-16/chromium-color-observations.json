@@ -1,0 +1,1048 @@
+{
+  "cases": [
+    {
+      "accepted": true,
+      "backgroundColor": "rgb(102, 51, 153)",
+      "canvasSrgbRgba8": [
+        102,
+        51,
+        153,
+        255
+      ],
+      "color": "rgb(102, 51, 153)",
+      "group": "named",
+      "id": "named-rebeccapurple",
+      "index": 0,
+      "input": "rebeccapurple",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        102,
+        51,
+        153,
+        255
+      ],
+      "typedColor": "rgb(102, 51, 153)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "rgb(100, 149, 237)",
+      "canvasSrgbRgba8": [
+        100,
+        149,
+        237,
+        255
+      ],
+      "color": "rgb(100, 149, 237)",
+      "group": "named",
+      "id": "named-cornflowerblue",
+      "index": 1,
+      "input": "cornflowerblue",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        100,
+        149,
+        237,
+        255
+      ],
+      "typedColor": "rgb(100, 149, 237)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "canvasSrgbRgba8": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "color": "rgba(0, 0, 0, 0)",
+      "group": "special",
+      "id": "transparent",
+      "index": 2,
+      "input": "transparent",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "typedColor": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "rgb(17, 34, 51)",
+      "canvasSrgbRgba8": [
+        17,
+        34,
+        51,
+        255
+      ],
+      "color": "rgb(17, 34, 51)",
+      "group": "hex",
+      "id": "hex-short",
+      "index": 3,
+      "input": "#123",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        17,
+        34,
+        51,
+        255
+      ],
+      "typedColor": "rgb(17, 34, 51)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "rgba(17, 34, 51, 0.533)",
+      "canvasSrgbRgba8": [
+        17,
+        34,
+        51,
+        136
+      ],
+      "color": "rgba(17, 34, 51, 0.533)",
+      "group": "hex",
+      "id": "hex-short-alpha",
+      "index": 4,
+      "input": "#1238",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        17,
+        34,
+        51,
+        255
+      ],
+      "typedColor": "rgba(17, 34, 51, 0.533)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "rgb(18, 52, 86)",
+      "canvasSrgbRgba8": [
+        18,
+        52,
+        86,
+        255
+      ],
+      "color": "rgb(18, 52, 86)",
+      "group": "hex",
+      "id": "hex-long",
+      "index": 5,
+      "input": "#123456",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        18,
+        52,
+        86,
+        255
+      ],
+      "typedColor": "rgb(18, 52, 86)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "rgba(18, 52, 86, 0.47)",
+      "canvasSrgbRgba8": [
+        17,
+        51,
+        85,
+        120
+      ],
+      "color": "rgba(18, 52, 86, 0.47)",
+      "group": "hex",
+      "id": "hex-long-alpha",
+      "index": 6,
+      "input": "#12345678",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        18,
+        52,
+        86,
+        255
+      ],
+      "typedColor": "rgba(18, 52, 86, 0.47)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "rgb(17, 40, 57)",
+      "canvasSrgbRgba8": [
+        17,
+        40,
+        57,
+        255
+      ],
+      "color": "rgb(17, 40, 57)",
+      "group": "rgb",
+      "id": "rgb-comma",
+      "index": 7,
+      "input": "rgb(17, 40, 57)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        17,
+        40,
+        57,
+        255
+      ],
+      "typedColor": "rgb(17, 40, 57)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "rgba(17, 41, 58, 0.376)",
+      "canvasSrgbRgba8": [
+        16,
+        40,
+        58,
+        96
+      ],
+      "color": "rgba(17, 41, 58, 0.376)",
+      "group": "rgb",
+      "id": "rgb-space-fraction-alpha",
+      "index": 8,
+      "input": "rgb(17.25 40.5 57.75 / 0.375)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        17,
+        41,
+        58,
+        255
+      ],
+      "typedColor": "rgba(17, 41, 58, 0.376)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "rgba(128, 51, 26, 0.7)",
+      "canvasSrgbRgba8": [
+        128,
+        51,
+        26,
+        179
+      ],
+      "color": "rgba(128, 51, 26, 0.7)",
+      "group": "rgb",
+      "id": "rgb-percentage-alpha",
+      "index": 9,
+      "input": "rgb(50% 20% 10% / 70%)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        128,
+        51,
+        26,
+        255
+      ],
+      "typedColor": "rgba(128, 51, 26, 0.7)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "rgb(255, 0, 40)",
+      "canvasSrgbRgba8": [
+        255,
+        0,
+        40,
+        255
+      ],
+      "color": "rgb(255, 0, 40)",
+      "group": "rgb",
+      "id": "rgb-clamp",
+      "index": 10,
+      "input": "rgb(300 -20 40 / 120%)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        255,
+        0,
+        40,
+        255
+      ],
+      "typedColor": "rgb(255, 0, 40)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "rgb(51, 102, 153)",
+      "canvasSrgbRgba8": [
+        51,
+        102,
+        153,
+        255
+      ],
+      "color": "rgb(51, 102, 153)",
+      "group": "hsl",
+      "id": "hsl-comma",
+      "index": 11,
+      "input": "hsl(210, 50%, 40%)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        51,
+        102,
+        153,
+        255
+      ],
+      "typedColor": "rgb(51, 102, 153)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "rgba(51, 102, 153, 0.25)",
+      "canvasSrgbRgba8": [
+        52,
+        104,
+        151,
+        64
+      ],
+      "color": "rgba(51, 102, 153, 0.25)",
+      "group": "hsl",
+      "id": "hsl-turn-alpha",
+      "index": 12,
+      "input": "hsl(0.583333turn 50% 40% / 0.25)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        51,
+        102,
+        153,
+        255
+      ],
+      "typedColor": "rgba(51, 102, 153, 0.25)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "rgb(128, 128, 128)",
+      "canvasSrgbRgba8": [
+        128,
+        128,
+        128,
+        255
+      ],
+      "color": "rgb(128, 128, 128)",
+      "group": "hsl",
+      "id": "hsl-powerless-hue",
+      "index": 13,
+      "input": "hsl(240deg 0% 50%)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        128,
+        128,
+        128,
+        255
+      ],
+      "typedColor": "rgb(128, 128, 128)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "rgba(51, 115, 179, 0.6)",
+      "canvasSrgbRgba8": [
+        52,
+        115,
+        178,
+        153
+      ],
+      "color": "rgba(51, 115, 179, 0.6)",
+      "group": "hwb",
+      "id": "hwb",
+      "index": 14,
+      "input": "hwb(210deg 20% 30% / 0.6)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        51,
+        115,
+        179,
+        255
+      ],
+      "typedColor": "rgba(51, 115, 179, 0.6)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "rgb(51, 115, 179)",
+      "canvasSrgbRgba8": [
+        51,
+        115,
+        179,
+        255
+      ],
+      "color": "rgb(51, 115, 179)",
+      "group": "hwb",
+      "id": "hwb-wrapped-hue",
+      "index": 15,
+      "input": "hwb(-150deg 20% 30%)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        51,
+        115,
+        179,
+        255
+      ],
+      "typedColor": "rgb(51, 115, 179)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "lab(60 20 30)",
+      "canvasSrgbRgba8": [
+        189,
+        131,
+        93,
+        255
+      ],
+      "color": "lab(60 20 30)",
+      "group": "lab",
+      "id": "lab",
+      "index": 16,
+      "input": "lab(60% 20 30)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        189,
+        131,
+        93,
+        255
+      ],
+      "typedColor": "lab(60 20 30)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "lab(60 20 30 / 0.4)",
+      "canvasSrgbRgba8": [
+        190,
+        130,
+        92,
+        102
+      ],
+      "color": "lab(60 20 30 / 0.4)",
+      "group": "lab",
+      "id": "lab-alpha",
+      "index": 17,
+      "input": "lab(60% 20 30 / 0.4)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        189,
+        131,
+        93,
+        255
+      ],
+      "typedColor": "lab(60 20 30 / 0.4)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "lab(60 none 30 / none)",
+      "canvasSrgbRgba8": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "color": "lab(60 none 30 / none)",
+      "group": "lab",
+      "id": "lab-none",
+      "index": 18,
+      "input": "lab(60% none 30 / none)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        158,
+        144,
+        91,
+        255
+      ],
+      "typedColor": "lab(60 none 30 / none)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "lch(60 40 120)",
+      "canvasSrgbRgba8": [
+        125,
+        154,
+        81,
+        255
+      ],
+      "color": "lch(60 40 120)",
+      "group": "lch",
+      "id": "lch",
+      "index": 19,
+      "input": "lch(60% 40 120deg)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        125,
+        154,
+        81,
+        255
+      ],
+      "typedColor": "lch(60 40 120)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "oklab(0.6 0.1 -0.1)",
+      "canvasSrgbRgba8": [
+        159,
+        99,
+        186,
+        255
+      ],
+      "color": "oklab(0.6 0.1 -0.1)",
+      "group": "oklab",
+      "id": "oklab",
+      "index": 20,
+      "input": "oklab(0.6 0.1 -0.1)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        159,
+        99,
+        186,
+        255
+      ],
+      "typedColor": "oklab(0.6 0.1 -0.1)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "oklch(0.6 0.15 230)",
+      "canvasSrgbRgba8": [
+        0,
+        142,
+        200,
+        255
+      ],
+      "color": "oklch(0.6 0.15 230)",
+      "group": "oklch",
+      "id": "oklch",
+      "index": 21,
+      "input": "oklch(60% 0.15 230deg)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        0,
+        142,
+        200,
+        255
+      ],
+      "typedColor": "oklch(0.6 0.15 230)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "oklch(0.6 none 230)",
+      "canvasSrgbRgba8": [
+        128,
+        128,
+        128,
+        255
+      ],
+      "color": "oklch(0.6 none 230)",
+      "group": "oklch",
+      "id": "oklch-none",
+      "index": 22,
+      "input": "oklch(60% none 230deg)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        128,
+        128,
+        128,
+        255
+      ],
+      "typedColor": "oklch(0.6 none 230)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "color(srgb 0.2 0.4 0.8)",
+      "canvasSrgbRgba8": [
+        51,
+        102,
+        204,
+        255
+      ],
+      "color": "color(srgb 0.2 0.4 0.8)",
+      "group": "color-function",
+      "id": "color-srgb",
+      "index": 23,
+      "input": "color(srgb 0.2 0.4 0.8)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        51,
+        102,
+        204,
+        255
+      ],
+      "typedColor": "color(srgb 0.2 0.4 0.8)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "color(srgb-linear 0.2 0.4 0.8)",
+      "canvasSrgbRgba8": [
+        124,
+        170,
+        231,
+        255
+      ],
+      "color": "color(srgb-linear 0.2 0.4 0.8)",
+      "group": "color-function",
+      "id": "color-srgb-linear",
+      "index": 24,
+      "input": "color(srgb-linear 0.2 0.4 0.8)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        124,
+        170,
+        231,
+        255
+      ],
+      "typedColor": "color(srgb-linear 0.2 0.4 0.8)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "color(display-p3 1 0 0)",
+      "canvasSrgbRgba8": [
+        255,
+        0,
+        0,
+        255
+      ],
+      "color": "color(display-p3 1 0 0)",
+      "group": "color-function",
+      "id": "color-display-p3",
+      "index": 25,
+      "input": "color(display-p3 1 0 0)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        255,
+        0,
+        0,
+        255
+      ],
+      "typedColor": "color(display-p3 1 0 0)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "color(display-p3 1 0.4 0)",
+      "canvasSrgbRgba8": [
+        255,
+        87,
+        0,
+        255
+      ],
+      "color": "color(display-p3 1 0.4 0)",
+      "group": "color-function",
+      "id": "color-display-p3-gamut-edge",
+      "index": 26,
+      "input": "color(display-p3 1 0.4 0)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        255,
+        87,
+        0,
+        255
+      ],
+      "typedColor": "color(display-p3 1 0.4 0)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "color(display-p3 0.9 0.6 0.1)",
+      "canvasSrgbRgba8": [
+        243,
+        149,
+        0,
+        255
+      ],
+      "color": "color(display-p3 0.9 0.6 0.1)",
+      "group": "color-function",
+      "id": "color-display-p3-mid-gamut",
+      "index": 27,
+      "input": "color(display-p3 0.9 0.6 0.1)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        243,
+        149,
+        0,
+        255
+      ],
+      "typedColor": "color(display-p3 0.9 0.6 0.1)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "color(display-p3 1 none 0 / 0.5)",
+      "canvasSrgbRgba8": [
+        255,
+        0,
+        0,
+        128
+      ],
+      "color": "color(display-p3 1 none 0 / 0.5)",
+      "group": "color-function",
+      "id": "color-display-p3-none",
+      "index": 28,
+      "input": "color(display-p3 1 none 0 / 0.5)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        255,
+        0,
+        0,
+        255
+      ],
+      "typedColor": "color(display-p3 1 none 0 / 0.5)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "color(display-p3-linear 0.2 0.4 0.8)",
+      "canvasSrgbRgba8": [
+        110,
+        171,
+        237,
+        255
+      ],
+      "color": "color(display-p3-linear 0.2 0.4 0.8)",
+      "group": "color-function",
+      "id": "color-display-p3-linear",
+      "index": 29,
+      "input": "color(display-p3-linear 0.2 0.4 0.8)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        110,
+        171,
+        237,
+        255
+      ],
+      "typedColor": "color(display-p3-linear 0.2 0.4 0.8)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "color(a98-rgb 0.2 0.4 0.8)",
+      "canvasSrgbRgba8": [
+        0,
+        102,
+        208,
+        255
+      ],
+      "color": "color(a98-rgb 0.2 0.4 0.8)",
+      "group": "color-function",
+      "id": "color-a98-rgb",
+      "index": 30,
+      "input": "color(a98-rgb 0.2 0.4 0.8)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        0,
+        102,
+        208,
+        255
+      ],
+      "typedColor": "color(a98-rgb 0.2 0.4 0.8)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "color(prophoto-rgb 0.2 0.4 0.8)",
+      "canvasSrgbRgba8": [
+        0,
+        130,
+        224,
+        255
+      ],
+      "color": "color(prophoto-rgb 0.2 0.4 0.8)",
+      "group": "color-function",
+      "id": "color-prophoto-rgb",
+      "index": 31,
+      "input": "color(prophoto-rgb 0.2 0.4 0.8)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        0,
+        130,
+        224,
+        255
+      ],
+      "typedColor": "color(prophoto-rgb 0.2 0.4 0.8)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "color(rec2020 0.2 0.4 0.8)",
+      "canvasSrgbRgba8": [
+        0,
+        119,
+        218,
+        255
+      ],
+      "color": "color(rec2020 0.2 0.4 0.8)",
+      "group": "color-function",
+      "id": "color-rec2020",
+      "index": 32,
+      "input": "color(rec2020 0.2 0.4 0.8)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        0,
+        119,
+        218,
+        255
+      ],
+      "typedColor": "color(rec2020 0.2 0.4 0.8)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "color(xyz-d50 0.2 0.4 0.8)",
+      "canvasSrgbRgba8": [
+        0,
+        203,
+        255,
+        255
+      ],
+      "color": "color(xyz-d50 0.2 0.4 0.8)",
+      "group": "color-function",
+      "id": "color-xyz-d50",
+      "index": 33,
+      "input": "color(xyz-d50 0.2 0.4 0.8)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        0,
+        203,
+        255,
+        255
+      ],
+      "typedColor": "color(xyz-d50 0.2 0.4 0.8)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "color(xyz-d65 0.2 0.4 0.8)",
+      "canvasSrgbRgba8": [
+        0,
+        202,
+        228,
+        255
+      ],
+      "color": "color(xyz-d65 0.2 0.4 0.8)",
+      "group": "color-function",
+      "id": "color-xyz-d65",
+      "index": 34,
+      "input": "color(xyz-d65 0.2 0.4 0.8)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        0,
+        202,
+        228,
+        255
+      ],
+      "typedColor": "color(xyz-d65 0.2 0.4 0.8)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "color(xyz-d65 0.2 0.4 0.8)",
+      "canvasSrgbRgba8": [
+        0,
+        202,
+        228,
+        255
+      ],
+      "color": "color(xyz-d65 0.2 0.4 0.8)",
+      "group": "color-function",
+      "id": "color-xyz-alias",
+      "index": 35,
+      "input": "color(xyz 0.2 0.4 0.8)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        0,
+        202,
+        228,
+        255
+      ],
+      "typedColor": "color(xyz-d65 0.2 0.4 0.8)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "rgb(255, 255, 255)",
+      "canvasSrgbRgba8": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "color": "rgb(255, 255, 255)",
+      "group": "system",
+      "id": "system-canvas",
+      "index": 36,
+      "input": "Canvas",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "typedColor": "rgb(255, 255, 255)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "rgb(0, 0, 0)",
+      "canvasSrgbRgba8": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "color": "rgb(0, 0, 0)",
+      "group": "system",
+      "id": "system-canvas-text",
+      "index": 37,
+      "input": "CanvasText",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "typedColor": "rgb(0, 0, 0)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "rgb(239, 239, 239)",
+      "canvasSrgbRgba8": [
+        239,
+        239,
+        239,
+        255
+      ],
+      "color": "rgb(239, 239, 239)",
+      "group": "system",
+      "id": "system-button-face",
+      "index": 38,
+      "input": "ButtonFace",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        239,
+        239,
+        239,
+        255
+      ],
+      "typedColor": "rgb(239, 239, 239)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "rgba(128, 188, 254, 0.6)",
+      "canvasSrgbRgba8": [
+        128,
+        188,
+        253,
+        153
+      ],
+      "color": "rgba(128, 188, 254, 0.6)",
+      "group": "system",
+      "id": "system-highlight",
+      "index": 39,
+      "input": "Highlight",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        128,
+        188,
+        254,
+        255
+      ],
+      "typedColor": "rgba(128, 188, 254, 0.6)"
+    },
+    {
+      "accepted": true,
+      "backgroundColor": "color(display-p3 0.9 0.1 0.4)",
+      "canvasSrgbRgba8": [
+        251,
+        0,
+        101,
+        255
+      ],
+      "color": "color(display-p3 0.9 0.1 0.4)",
+      "group": "currentColor",
+      "id": "current-color-inherited",
+      "index": 40,
+      "input": "color(display-p3 0.9 0.1 0.4)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        251,
+        0,
+        101,
+        255
+      ],
+      "typedColor": "color(display-p3 0.9 0.1 0.4)"
+    },
+    {
+      "accepted": false,
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "canvasSrgbRgba8": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "color": "rgb(1, 2, 3)",
+      "group": "invalid",
+      "id": "invalid-rgb-fallback",
+      "index": 41,
+      "input": "rgb(1, 2)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "typedColor": "rgb(1, 2, 3)"
+    },
+    {
+      "accepted": false,
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "canvasSrgbRgba8": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "color": "rgb(1, 2, 3)",
+      "group": "invalid",
+      "id": "invalid-color-space-fallback",
+      "index": 42,
+      "input": "color(no-such-space 0.1 0.2 0.3)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "typedColor": "rgb(1, 2, 3)"
+    },
+    {
+      "accepted": false,
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "canvasSrgbRgba8": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "color": "rgb(1, 2, 3)",
+      "group": "invalid",
+      "id": "invalid-lab-fallback",
+      "index": 43,
+      "input": "lab(30% 10)",
+      "opaqueColorExtractionAccepted": true,
+      "opaqueSrgbRgba8": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "typedColor": "rgb(1, 2, 3)"
+    }
+  ],
+  "environment": {
+    "canvasContextAttributes": {
+      "alpha": true,
+      "colorSpace": "srgb",
+      "colorType": "unorm8",
+      "desynchronized": false,
+      "toneMapping": {
+        "mode": "standard"
+      },
+      "willReadFrequently": false
+    },
+    "colorGamut": [
+      "srgb"
+    ],
+    "devicePixelRatio": 1,
+    "explicitColorScheme": "light",
+    "forcedColors": false,
+    "language": "ko-KR",
+    "locale": "ko",
+    "platform": "MacIntel",
+    "prefersColorSchemeDark": true,
+    "screen": {
+      "height": 600,
+      "width": 800
+    },
+    "timeZone": "Asia/Seoul",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "viewport": {
+      "height": 633,
+      "width": 1280
+    }
+  }
+}

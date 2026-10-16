@@ -136,6 +136,19 @@ fn runtime_scene_matches_chromium_dom_order_geometry_and_paint() {
 }
 
 #[test]
+fn c19_computed_color_profile_is_rejected_by_runtime_renderer() {
+    let (document, root, _) = fixture(&["width:51px;height:31px"], false);
+    let snapshot = document.snapshot();
+    let (mut output, current) = build_fixture(&document, root);
+    output.computed_styles.profile = spinon_style::ComputedStyleProfile::C19ComputedColorV1;
+
+    assert!(matches!(
+        build_runtime_render_snapshot(&snapshot, root, &output, current),
+        Err(StyleRenderError::UnsupportedRuntimeProfile)
+    ));
+}
+
+#[test]
 fn runtime_scene_rejects_stale_document_style_or_environment_revisions() {
     let (document, root, _) = fixture(&["width:51px;height:31px;background-color:#3366ff"], false);
     let snapshot = document.snapshot();

@@ -56,6 +56,7 @@ pub use runtime_overflow::{
     first_unsupported_runtime_block_flex_overflow_clip_inline_property,
 };
 pub use runtime_paint::{
+    compute_c19_computed_color_cascade_with_stylesheets,
     compute_runtime_block_formatting_cascade_with_stylesheets,
     compute_runtime_block_image_cascade_with_stylesheets, compute_runtime_block_paint_cascade,
     compute_runtime_block_paint_cascade_with_stylesheets,
@@ -264,6 +265,11 @@ pub enum CssCascadeError {
         node: NodeId,
         reason: String,
     },
+    UnsupportedComputedCssColor {
+        node: NodeId,
+        property: &'static str,
+        reason: String,
+    },
     UnsupportedComputedBorderColor {
         node: NodeId,
         property: &'static str,
@@ -382,6 +388,14 @@ impl fmt::Display for CssCascadeError {
             Self::UnsupportedComputedBackgroundColor { node, reason } => write!(
                 formatter,
                 "노드 {node}의 계산 background-color를 S04 불투명 sRGB로 변환할 수 없습니다: {reason}"
+            ),
+            Self::UnsupportedComputedCssColor {
+                node,
+                property,
+                reason,
+            } => write!(
+                formatter,
+                "노드 {node}의 계산 {property}를 C19.1 CSS Color carrier로 표현할 수 없습니다: {reason}"
             ),
             Self::UnsupportedComputedBorderColor {
                 node,

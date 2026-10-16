@@ -1,0 +1,137 @@
+    Checking smallvec v1.16.2
+    Checking bitflags v2.13.2
+    Checking foldhash v0.2.0
+    Checking num-traits v0.2.19
+    Checking spinon-core v0.1.0 (/private/tmp/spinon-c19-1-computed-color-20261016/crates/spinon-core)
+    Checking slotmap v1.1.1
+    Checking objc2-encode v4.1.0
+    Checking zmij v1.0.23
+    Checking memchr v2.8.3
+   Compiling thiserror-impl v2.0.21
+   Compiling zerocopy-derive v0.8.59
+    Checking rustc-hash v1.1.0
+   Compiling bytemuck_derive v1.12.1
+    Checking bit-vec v0.9.1
+    Checking unicode-width v0.2.2
+    Checking once_cell v1.21.4
+    Checking hashbrown v0.17.1
+    Checking unicode-ident v1.0.26
+    Checking parking_lot_core v0.9.12
+    Checking cssparser v0.38.0
+    Checking icu_normalizer v2.3.0
+    Checking icu_segmenter v2.3.0
+    Checking bit-set v0.10.0
+    Checking codespan-reporting v0.13.1
+    Checking objc2 v0.6.4
+    Checking parking_lot v0.12.5
+    Checking raw-window-handle v0.6.2
+    Checking serde_json v1.0.151
+    Checking simd-adler32 v0.3.10
+    Checking taffy v0.14.0
+    Checking app_units v0.7.8
+    Checking string_cache v0.11.0
+    Checking euclid v0.22.14
+    Checking num-integer v0.1.47
+    Checking idna_adapter v1.2.2
+    Checking typenum v1.20.1
+    Checking libloading v0.8.9
+    Checking stylo_atoms v0.22.0
+    Checking idna v1.1.0
+    Checking web_atoms v0.3.0
+    Checking indexmap v2.14.2
+    Checking profiling v1.0.18
+    Checking spinon-render v0.1.0 (/private/tmp/spinon-c19-1-computed-color-20261016/crates/spinon-render)
+    Checking adler2 v2.0.1
+    Checking crc32fast v1.5.2
+    Checking miniz_oxide v0.9.1
+    Checking to_shmem v0.6.0
+    Checking url v2.5.8
+    Checking const-oid v0.10.2
+    Checking miniz_oxide v0.8.9
+    Checking selectors v0.41.0
+    Checking fdeflate v0.3.7
+    Checking cpufeatures v0.3.1
+    Checking flate2 v1.1.10
+    Checking pollster v0.4.0
+    Checking bytemuck v1.25.2
+    Checking png v0.18.1
+    Checking hybrid-array v0.4.15
+    Checking thiserror v2.0.21
+    Checking objc2-core-foundation v0.3.2
+    Checking block2 v0.6.2
+    Checking zerocopy v0.8.59
+    Checking stylo_malloc_size_of v0.22.0
+    Checking spinon-layout v0.1.0 (/private/tmp/spinon-c19-1-computed-color-20261016/crates/spinon-layout)
+    Checking spinon-style-layout-spike v0.1.0 (/private/tmp/spinon-c19-1-computed-color-20261016/spikes/style-layout)
+    Checking stylo_traits v0.22.0
+    Checking stylo_dom v0.22.0
+    Checking block-buffer v0.12.1
+    Checking crypto-common v0.2.2
+    Checking stylo v0.22.0
+    Checking objc2-foundation v0.3.2
+    Checking objc2-core-graphics v0.3.2
+    Checking digest v0.11.3
+    Checking sha2 v0.11.1
+    Checking spinon-image v0.1.0 (/private/tmp/spinon-c19-1-computed-color-20261016/crates/spinon-image)
+    Checking naga-types v30.0.1
+    Checking wgpu-types v30.0.1
+    Checking objc2-metal v0.3.2
+    Checking objc2-quartz-core v0.3.2
+    Checking raw-window-metal v1.1.0
+    Checking half v2.7.1
+    Checking naga v30.0.1
+    Checking wgpu-naga-bridge v30.0.1
+    Checking wgpu-hal v30.0.1
+    Checking wgpu-core-deps-apple v30.0.1
+    Checking wgpu-core v30.0.1
+    Checking wgpu v30.0.1
+    Checking spinon-render-wgpu v0.1.0 (/private/tmp/spinon-c19-1-computed-color-20261016/crates/spinon-render-wgpu)
+    Checking spinon-style v0.1.0 (/private/tmp/spinon-c19-1-computed-color-20261016/crates/spinon-style)
+    Checking spinon-style-to-layout v0.1.0 (/private/tmp/spinon-c19-1-computed-color-20261016/crates/spinon-style-to-layout)
+    Checking spinon-style-to-render v0.1.0 (/private/tmp/spinon-c19-1-computed-color-20261016/crates/spinon-style-to-render)
+error: this `if` has identical blocks
+  --> crates/spinon-style/src/stylo_dom/cascade/runtime_layout_tests/c19_1_color.rs:51:45
+   |
+51 |   ...   } else if row["group"] == "invalid" {
+   |  ___________________________________________^
+52 | | ...       format!(
+53 | | ...           "display:block;width:1px;height:1px;color:rgb(1 2 3);background-color:transparent;color:{value};background-color:{va...
+54 | | ...       )
+55 | | ...   } else {
+   | |_______^
+   |
+note: same as this
+  --> crates/spinon-style/src/stylo_dom/cascade/runtime_layout_tests/c19_1_color.rs:55:16
+   |
+55 |   ...   } else {
+   |  ______________^
+56 | | ...       format!(
+57 | | ...           "display:block;width:1px;height:1px;color:rgb(1 2 3);background-color:transparent;color:{value};background-color:{va...
+58 | | ...       )
+59 | | ...   };
+   | |_______^
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#if_same_then_else
+   = note: `-D clippy::if-same-then-else` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::if_same_then_else)]`
+
+error: this `if` has identical blocks
+   --> crates/spinon-style/src/stylo_dom/cascade/runtime_layout_tests/c19_1_color.rs:123:48
+    |
+123 |       } else if input.starts_with("color(srgb ") {
+    |  ________________________________________________^
+124 | |         ComputedCssColorSpace::Srgb
+125 | |     } else {
+    | |_____^
+    |
+note: same as this
+   --> crates/spinon-style/src/stylo_dom/cascade/runtime_layout_tests/c19_1_color.rs:125:12
+    |
+125 |       } else {
+    |  ____________^
+126 | |         ComputedCssColorSpace::Srgb
+127 | |     }
+    | |_____^
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#if_same_then_else
+
+error: could not compile `spinon-style` (lib test) due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...

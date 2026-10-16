@@ -1,0 +1,43 @@
+{
+  "captured_at": "2026-10-16",
+  "capture_tool": "agent-browser 0.31.1",
+  "browser": {
+    "product": "Chrome/155.0.8059.85",
+    "distribution": "Google Chrome installed app; Chrome for Testing packaging was not independently confirmed",
+    "protocol_version": "1.3",
+    "cdp_browser_get_version_revision": "537.36 (@0e66b94549a8bd85f03fbdf189b752d6e7b63c32)",
+    "v8_version": "15.5.35.25",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "launcher_path": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "launcher_bytes": 367696,
+    "launcher_sha256": "6e156f2271cef44afce9db36a5b920e94518857b94a4160f082696f8c3bd1c9d",
+    "framework_path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/155.0.8059.85/Google Chrome Framework",
+    "framework_bytes": 519576720,
+    "framework_sha256": "b1d0216b347be90a898e9961302916aa1dbf4659f96597ea836dd3eb149574b7"
+  },
+  "host": {
+    "os": "macOS 26.5.1",
+    "architecture": "arm64",
+    "navigator_platform": "MacIntel"
+  },
+  "environment": {
+    "viewport_css_px": {"width": 1280, "height": 633},
+    "screen_css_px": {"width": 800, "height": 600},
+    "device_pixel_ratio": 1,
+    "navigator_language": "ko-KR",
+    "resolved_locale": "ko",
+    "time_zone": "Asia/Seoul",
+    "prefers_color_scheme_dark": true,
+    "explicit_color_scheme": "light",
+    "forced_colors": false,
+    "color_gamut_media": ["srgb"],
+    "canvas_2d": {
+      "color_space": "srgb",
+      "color_type": "unorm8",
+      "alpha": true,
+      "tone_mapping": "standard"
+    }
+  },
+  "source_main_commit": "236d58f970dae15c6f2bb42d613a2db163b5158c",
+  "source_main_tree": "24a4d9c7d18701c17f0cb0963b18ec3f89c90bec"
+}

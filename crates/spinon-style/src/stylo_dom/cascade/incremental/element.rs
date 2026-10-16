@@ -42,6 +42,8 @@ pub(super) fn computed_element_output(
 ) -> Result<ComputedElementStyle, CssCascadeError> {
     let (background_color, background_paint) =
         runtime_paint::computed_background_for_profile(profile, computed, node_id)?;
+    let (computed_color, computed_background_color) =
+        runtime_paint::computed_color_for_profile(profile, computed, node_id)?;
     let font_size_css_px = computed.get_font().clone_font_size().computed_size().px();
     let layout_border = computed_layout_border(computed, &source_border_widths);
     let has_overflow = matches!(
@@ -217,6 +219,8 @@ pub(super) fn computed_element_output(
         properties: computed_properties,
         background_color,
         background_paint,
+        computed_color,
+        computed_background_color,
     })
 }
 

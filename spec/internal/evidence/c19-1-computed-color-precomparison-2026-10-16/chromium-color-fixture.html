@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="color-scheme" content="light">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>C19.1 computed color oracle fixture</title>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; color-scheme: light; font: 16px sans-serif; background: white; color: black; }
+    #results { display: grid; grid-template-columns: repeat(5, 24px); gap: 2px; }
+    #results > div { width: 24px; height: 24px; }
+    #results > div > div { width: 24px; height: 24px; box-sizing: border-box; border: 1px solid #444; }
+  </style>
+</head>
+<body>
+  <main id="results" aria-label="CSS Color 4 oracle fixture"></main>
+  <script>
+    const cases = [
+      {id:'named-rebeccapurple', value:'rebeccapurple', group:'named'},
+      {id:'named-cornflowerblue', value:'cornflowerblue', group:'named'},
+      {id:'transparent', value:'transparent', group:'special'},
+      {id:'hex-short', value:'#123', group:'hex'},
+      {id:'hex-short-alpha', value:'#1238', group:'hex'},
+      {id:'hex-long', value:'#123456', group:'hex'},
+      {id:'hex-long-alpha', value:'#12345678', group:'hex'},
+      {id:'rgb-comma', value:'rgb(17, 40, 57)', group:'rgb'},
+      {id:'rgb-space-fraction-alpha', value:'rgb(17.25 40.5 57.75 / 0.375)', group:'rgb'},
+      {id:'rgb-percentage-alpha', value:'rgb(50% 20% 10% / 70%)', group:'rgb'},
+      {id:'rgb-clamp', value:'rgb(300 -20 40 / 120%)', group:'rgb'},
+      {id:'hsl-comma', value:'hsl(210, 50%, 40%)', group:'hsl'},
+      {id:'hsl-turn-alpha', value:'hsl(0.583333turn 50% 40% / 0.25)', group:'hsl'},
+      {id:'hsl-powerless-hue', value:'hsl(240deg 0% 50%)', group:'hsl'},
+      {id:'hwb', value:'hwb(210deg 20% 30% / 0.6)', group:'hwb'},
+      {id:'hwb-wrapped-hue', value:'hwb(-150deg 20% 30%)', group:'hwb'},
+      {id:'lab', value:'lab(60% 20 30)', group:'lab'},
+      {id:'lab-alpha', value:'lab(60% 20 30 / 0.4)', group:'lab'},
+      {id:'lab-none', value:'lab(60% none 30 / none)', group:'lab'},
+      {id:'lch', value:'lch(60% 40 120deg)', group:'lch'},
+      {id:'oklab', value:'oklab(0.6 0.1 -0.1)', group:'oklab'},
+      {id:'oklch', value:'oklch(60% 0.15 230deg)', group:'oklch'},
+      {id:'oklch-none', value:'oklch(60% none 230deg)', group:'oklch'},
+      {id:'color-srgb', value:'color(srgb 0.2 0.4 0.8)', group:'color-function'},
+      {id:'color-srgb-linear', value:'color(srgb-linear 0.2 0.4 0.8)', group:'color-function'},
+      {id:'color-display-p3', value:'color(display-p3 1 0 0)', group:'color-function'},
+      {id:'color-display-p3-gamut-edge', value:'color(display-p3 1 0.4 0)', group:'color-function'},
+      {id:'color-display-p3-mid-gamut', value:'color(display-p3 0.9 0.6 0.1)', group:'color-function'},
+      {id:'color-display-p3-none', value:'color(display-p3 1 none 0 / 0.5)', group:'color-function'},
+      {id:'color-display-p3-linear', value:'color(display-p3-linear 0.2 0.4 0.8)', group:'color-function'},
+      {id:'color-a98-rgb', value:'color(a98-rgb 0.2 0.4 0.8)', group:'color-function'},
+      {id:'color-prophoto-rgb', value:'color(prophoto-rgb 0.2 0.4 0.8)', group:'color-function'},
+      {id:'color-rec2020', value:'color(rec2020 0.2 0.4 0.8)', group:'color-function'},
+      {id:'color-xyz-d50', value:'color(xyz-d50 0.2 0.4 0.8)', group:'color-function'},
+      {id:'color-xyz-d65', value:'color(xyz-d65 0.2 0.4 0.8)', group:'color-function'},
+      {id:'color-xyz-alias', value:'color(xyz 0.2 0.4 0.8)', group:'color-function'},
+      {id:'system-canvas', value:'Canvas', group:'system'},
+      {id:'system-canvas-text', value:'CanvasText', group:'system'},
+      {id:'system-button-face', value:'ButtonFace', group:'system'},
+      {id:'system-highlight', value:'Highlight', group:'system'},
+      {id:'current-color-inherited', value:'color(display-p3 0.9 0.1 0.4)', group:'currentColor', mode:'background-current-color'},
+      {id:'invalid-rgb-fallback', value:'rgb(1, 2)', group:'invalid', invalid:true},
+      {id:'invalid-color-space-fallback', value:'color(no-such-space 0.1 0.2 0.3)', group:'invalid', invalid:true},
+      {id:'invalid-lab-fallback', value:'lab(30% 10)', group:'invalid', invalid:true}
+    ];
+    const canvas = document.createElement('canvas');
+    canvas.width = 1;
+    canvas.height = 1;
+    const context = canvas.getContext('2d', {colorSpace:'srgb', colorType:'unorm8'});
+    const contextAttributes = context?.getContextAttributes?.() ?? null;
+    const root = document.getElementById('results');
+    const observations = cases.map((item, index) => {
+      const parent = document.createElement('div');
+      const element = document.createElement('div');
+      parent.style.colorScheme = 'light';
+      element.style.colorScheme = 'light';
+      parent.style.color = 'rgb(1 2 3)';
+      if (item.mode !== 'background-current-color') {
+        element.style.color = 'rgb(1 2 3)';
+      }
+      element.style.backgroundColor = 'transparent';
+      if (item.mode === 'background-current-color') {
+        parent.style.color = item.value;
+        element.style.backgroundColor = 'currentColor';
+      } else if (item.invalid) {
+        element.style.color = item.value;
+        element.style.backgroundColor = item.value;
+      } else {
+        element.style.color = item.value;
+        element.style.backgroundColor = item.value;
+      }
+      parent.appendChild(element);
+      root.appendChild(parent);
+      const computed = getComputedStyle(element);
+      const color = computed.color;
+      const backgroundColor = computed.backgroundColor;
+      let pixel = null;
+      let opaqueSrgbPixel = null;
+      let opaqueColorExtractionAccepted = false;
+      if (context) {
+        context.clearRect(0, 0, 1, 1);
+        context.fillStyle = backgroundColor;
+        context.fillRect(0, 0, 1, 1);
+        pixel = Array.from(context.getImageData(0, 0, 1, 1).data);
+
+        const probe = document.createElement('div');
+        probe.style.display = 'none';
+        probe.style.colorScheme = 'light';
+        const opaqueSrgb = `color(from ${backgroundColor} srgb r g b / 1)`;
+        opaqueColorExtractionAccepted = CSS.supports('background-color', opaqueSrgb);
+        probe.style.backgroundColor = opaqueSrgb;
+        document.body.appendChild(probe);
+        const resolvedOpaqueSrgb = getComputedStyle(probe).backgroundColor;
+        context.clearRect(0, 0, 1, 1);
+        context.fillStyle = resolvedOpaqueSrgb;
+        context.fillRect(0, 0, 1, 1);
+        opaqueSrgbPixel = Array.from(context.getImageData(0, 0, 1, 1).data);
+        probe.remove();
+      }
+      let typedColor = null;
+      try { typedColor = element.computedStyleMap?.().get('color')?.toString() ?? null; } catch {}
+      return {
+        index,
+        id: item.id,
+        group: item.group,
+        input: item.value,
+        accepted: CSS.supports('color', item.value),
+        color,
+        backgroundColor,
+        typedColor,
+        canvasSrgbRgba8: pixel,
+        opaqueSrgbRgba8: opaqueSrgbPixel,
+        opaqueColorExtractionAccepted
+      };
+    });
+    globalThis.__c19Oracle = {
+      environment: {
+        userAgent: navigator.userAgent,
+        platform: navigator.platform,
+        language: navigator.language,
+        locale: Intl.DateTimeFormat().resolvedOptions().locale,
+        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        viewport: {width: innerWidth, height: innerHeight},
+        screen: {width: screen.width, height: screen.height},
+        devicePixelRatio,
+        prefersColorSchemeDark: matchMedia('(prefers-color-scheme: dark)').matches,
+        forcedColors: matchMedia('(forced-colors: active)').matches,
+        colorGamut: ['srgb','p3','rec2020'].filter(value => matchMedia(`(color-gamut: ${value})`).matches),
+        explicitColorScheme: getComputedStyle(document.documentElement).colorScheme,
+        canvasContextAttributes: contextAttributes
+      },
+      cases: observations
+    };
+    document.documentElement.dataset.capture = 'ready';
+  </script>
+</body>
+</html>

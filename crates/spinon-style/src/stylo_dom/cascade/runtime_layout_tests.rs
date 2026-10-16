@@ -214,3 +214,5 @@ fn runtime_paint_profile_rejects_partial_alpha_and_keeps_layout_profile_strict()
         Some((node, "background-color".to_owned()))
     );
 }
+#[path = "runtime_layout_tests/c19_1_color.rs"]
+mod c19_1_color;
