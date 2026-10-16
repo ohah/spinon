@@ -1,0 +1,59 @@
+{
+  "afterA": {
+    "complete": true,
+    "frame": [
+      0,
+      0,
+      2,
+      2
+    ],
+    "label": "A-decoded",
+    "naturalHeight": 2,
+    "naturalWidth": 2,
+    "src": "/a.png",
+    "time": 319.69999998807907
+  },
+  "afterC": {
+    "complete": true,
+    "frame": [
+      0,
+      0,
+      4,
+      2
+    ],
+    "label": "C-decoded",
+    "naturalHeight": 2,
+    "naturalWidth": 4,
+    "src": "/c.png",
+    "time": 631.0999999642372
+  },
+  "pendingA": {
+    "complete": false,
+    "frame": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "label": "A-pending",
+    "naturalHeight": 0,
+    "naturalWidth": 0,
+    "src": "/a.png",
+    "time": 57.59999996423721
+  },
+  "pendingC": {
+    "complete": false,
+    "frame": [
+      0,
+      0,
+      2,
+      2
+    ],
+    "label": "C-pending",
+    "naturalHeight": 0,
+    "naturalWidth": 0,
+    "src": "/c.png",
+    "time": 365.0999999642372
+  },
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36"
+}
