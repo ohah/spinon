@@ -10,6 +10,8 @@ C14.1의 revision-stamped image snapshot을 확장해, HTML `img`의 자연 크�
 
 2026-10-14 기준 구현 후보 [PR #156](https://github.com/ohah/spinon/pull/156)은 부모 [PR #155](https://github.com/ohah/spinon/pull/155)가 main에 병합된 뒤 최신 main 위로 재기반했다. 재기반 뒤 workspace 773 passed·4 ignored, Clippy, rustfmt, diff check를 확인하고 PR 본문에 agent-browser Chrome 155 비교 화면을 첨부했다. 별도 구현 실패 20개, PR 변경 20개, 재기반 20개 검토를 남겼다. PR #156은 2026-10-14 rebase 방식으로 main에 병합됐다(merge SHA `18d3ff13b15ce42a4824167b2febdb9727995091`). C14.2와 상위 C14는 계속 미완료다.
 
+2026-10-16 현재 남은 검증 공백은 기존 21개 Block PNG·8개 Flex oracle을 live V8 앱 fixture에서 실행한 Android/iOS Simulator 근거다. [C14.2 live V8 Simulator 검증 계획](c14-2-live-v8-simulator-verification.md)은 이 내부 검증 경계만 다루며 제품 image loader나 runtime admission을 추가하지 않는다.
+
 ## 기준 명세
 
 - [CSS 2.2 §10.3.2](https://www.w3.org/TR/CSS22/visudet.html#inline-replaced-width)와 [§10.4](https://www.w3.org/TR/CSS22/visudet.html#min-max-widths): replaced width와 min/max width 조합.

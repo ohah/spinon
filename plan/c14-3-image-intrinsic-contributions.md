@@ -55,4 +55,4 @@ HTML namespace `img` leaf의 decoded natural metadata를 사용해 CSS `min-cont
 
 - 제한된 `img` sizing, 14-case Chrome 155 oracle, AVD와 iOS Simulator live V8 route, 기본 artifact exclusion/opt-in positive control을 구현했다. border-box `min-content`의 `34×26 CSS px`, 작은 basis 밖 7px frame overrun, cyclic percentage의 `0×0`을 양쪽 report에서 확인했다.
 - workspace test는 `873 passed`, `4 ignored`, `0 failed`; Clippy·rustfmt·diff·native project/shell·fixture boundary 검사를 통과했다. 구현 실패 관점과 PR 변경을 각각 별도 20개로 검토했고 발견 사항은 수정했다. 상세 원본은 [실행 근거](../spec/internal/evidence/c14-3-image-intrinsic-contributions-runtime-2026-10-16/README.md)에 있다.
-- 구현 PR #216의 required checks와 merge가 남았다. 이 항목이 main에 반영되면 체크 상태는 65/198에서 66/198로 바뀐다. Android 실기기, iOS 실기기, image pixel paint/clip, 전체 WPT/C14 지원은 이 결과에 포함하지 않는다.
+- 구현 PR #216은 2026-10-16 rebase 방식으로 main에 병합됐다. Agent Browser의 Tailnet roadmap 새로고침은 66/198과 C14.3 checked를 확인했다. Android 실기기, iOS 실기기, image pixel paint/clip, 전체 WPT/C14 지원은 이 결과에 포함하지 않는다.

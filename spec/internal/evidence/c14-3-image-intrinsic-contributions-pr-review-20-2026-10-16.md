@@ -5,7 +5,7 @@
 | # | 실패 관점 | diff에서 확인한 방어와 결과 |
 |---:|---|---|
 | 1 | 구현 내용을 상위 C14 전체 완료로 과장함 | 상태 대장은 C14.3 하위 항목만 갱신하고 C14.1·C14.2·C14 상위 항목은 미완료로 남긴다. |
-| 2 | PR branch의 체크박스가 merge 전에 65개 기준을 임의 변경함 | C14.3 행을 실제 merge gate까지 미체크로 유지하고, main 반영 후 Agent Browser DOM으로 전체 수를 확인한다. |
+| 2 | PR branch의 체크박스가 merge 전에 65개 기준을 임의 변경함 | PR branch의 체크 변경은 merge 전 main에 반영되지 않는다. PR merge 전 main DOM은 65/198, merge 후 Agent Browser 새로고침은 66/198과 C14.3 checked를 보였다. |
 | 3 | 내부 인터페이스 버전 상승이나 공개 CSS 지원 선언이 섞임 | 내부 계약은 `0.1.0` 그대로 두고, 구현은 제한 profile candidate로 서술한다. |
 | 4 | 구현 전 oracle 입력·관찰·허용치가 사후에 바뀜 | Chrome 155 observation, reference JSON, 입력 PNG hash, viewport/DPR와 `0.05 CSS px` tolerance를 서로 연결했다. |
 | 5 | Chrome reference 화면에서 사용한 PNG 링크가 끊김 | precomparison README의 상대경로를 `./chrome155.png`로 고치고 Agent Browser에서 image completion/natural size를 확인했다. |
@@ -23,6 +23,6 @@
 | 17 | 앱 case 증가로 Java/Swift report buffer chunk나 display가 잘림 | 실제 2-chunk Android, 9-chunk iOS raw logs를 파싱해 14개 JSON case와 UI summary를 대조했다. |
 | 18 | C11.2.1 등 인접 profile 지원 범위가 바뀜 | `align-items:start`는 Template Grid profile에 한정한다. C11.2.1 regression test를 포함한 workspace suite를 다시 통과했다. |
 | 19 | 문서의 완료 판정과 실제 구현/API/error contract가 어긋남 | versioned internal layout engine contract와 spec index를 수정하고 status row에는 candidate·미지원 범위를 분리했다. |
-| 20 | PR 본문에 작업 ID·검증·남은 경계·동작 화면이 누락됨 | PR #216에 상태 ID·명세·증거·남은 범위와 두 Simulator 화면을 넣었다. Agent Browser에서 두 raw 이미지 URL이 각각 `complete=true`와 원본 크기 1080×2400, 1206×2622로 로드됨을 확인했다. Tailnet roadmap는 merge 후 hash-verified sync로 갱신한다. |
+| 20 | PR 본문에 작업 ID·검증·남은 경계·동작 화면이 누락됨 | PR #216에 상태 ID·명세·증거·남은 범위와 두 Simulator 화면을 넣었다. Agent Browser에서 두 raw 이미지 URL이 각각 `complete=true`와 원본 크기 1080×2400, 1206×2622로 로드됨을 확인했다. Tailnet roadmap는 GitHub main STATUS를 페이지 로드 때 읽는다. Agent Browser 새로고침에서 66/198과 C14.3 checked를 확인했다. |
 
 PR merge 직전에 `gh pr checks`, mergeability, base SHA와 Tailnet served hashes를 다시 확인한다. unresolved P1/P2는 없다.

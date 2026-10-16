@@ -2,7 +2,7 @@
 
 ## 판정
 
-구현 후보의 14-case CSS px oracle, Android AVD와 iOS Simulator 실행, fixture 격리의 positive/negative control을 확인했다. 전체 Rust 테스트·Clippy·포맷·플랫폼 빌드와 적대 검토 기록도 이 디렉터리에 보존한다. 상태 대장의 C14.3 완료 체크는 PR merge 뒤 갱신한다. 이 결과는 내부 제한 profile 후보이며 공개 CSS 지원이나 실기기 검증을 뜻하지 않는다.
+구현 후보의 14-case CSS px oracle, Android AVD와 iOS Simulator 실행, fixture 격리의 positive/negative control을 확인했다. 전체 Rust 테스트·Clippy·포맷·플랫폼 빌드와 적대 검토 기록도 이 디렉터리에 보존한다. PR #216 merge 뒤 main 상태 대장의 C14.3을 checked로 갱신했고, Agent Browser 새로고침에서 Tailnet roadmap 66/198을 확인했다. 이 결과는 내부 제한 profile 후보이며 공개 CSS 지원이나 실기기 검증을 뜻하지 않는다.
 
 ## 고정 조건
 
