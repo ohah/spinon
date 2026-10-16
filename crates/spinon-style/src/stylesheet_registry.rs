@@ -256,6 +256,10 @@ impl StylesheetRegistry {
         css_profile::first_unsupported_author_feature(self, allowed_properties)
     }
 
+    pub(crate) fn first_unsupported_runtime_block_image_value(&self) -> Option<(String, String)> {
+        css_profile::first_unsupported_runtime_block_image_value(self)
+    }
+
     pub(crate) fn first_unsupported_author_feature_with_layers(
         &self,
         allowed_properties: &[&str],

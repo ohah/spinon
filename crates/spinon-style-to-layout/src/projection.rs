@@ -385,6 +385,7 @@ fn compute_profile_layout(
         | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
         | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
         | ComputedStyleProfile::RuntimeBlockPaintV1
+        | ComputedStyleProfile::RuntimeBlockImageV1
         | ComputedStyleProfile::RuntimeBlockFormattingV1
         | ComputedStyleProfile::RuntimeBlockPositioningV1
         | ComputedStyleProfile::RuntimeBlockFlexStackingV1
@@ -420,6 +421,7 @@ fn compute_layout_from_styles(
     if matches!(
         computed_styles.profile,
         ComputedStyleProfile::RuntimeBlockPaintV1
+            | ComputedStyleProfile::RuntimeBlockImageV1
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1
@@ -511,6 +513,7 @@ fn compute_layout_from_styles(
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
             | ComputedStyleProfile::RuntimeBlockPaintV1
+            | ComputedStyleProfile::RuntimeBlockImageV1
     ) && styles
         .get(&root.id())
         .is_some_and(|style| style.margin != LayoutEdges::default())
@@ -543,6 +546,7 @@ fn compute_layout_from_styles(
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
             | ComputedStyleProfile::RuntimeBlockPaintV1
+            | ComputedStyleProfile::RuntimeBlockImageV1
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1
@@ -589,6 +593,7 @@ fn compute_layout_from_styles(
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
             | ComputedStyleProfile::RuntimeBlockPaintV1
+            | ComputedStyleProfile::RuntimeBlockImageV1
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1

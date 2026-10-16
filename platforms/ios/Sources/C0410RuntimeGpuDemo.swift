@@ -321,55 +321,101 @@ private func c11GridMetalPixelSceneID(arguments: [String]) -> String? {
 }
 
 final class C0410RuntimeGpuDemoViewController: UIViewController {
-#if SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1
-    private struct C181MetalPixelSample {
+#if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
+    private struct C18MetalPixelSample {
         let id: String
         let xCssPx: Float
         let yCssPx: Float
         let rgba: [UInt32]
     }
-
+#endif
+#if SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1
     private let c181MetalPixelSamples = [
-        C181MetalPixelSample(id: "visible-content-positive", xCssPx: 9, yCssPx: 9,
+        C18MetalPixelSample(id: "visible-content-positive", xCssPx: 9, yCssPx: 9,
                              rgba: [255, 255, 64, 255]),
-        C181MetalPixelSample(id: "visible-border-overpaint", xCssPx: 25, yCssPx: 10,
+        C18MetalPixelSample(id: "visible-border-overpaint", xCssPx: 25, yCssPx: 10,
                              rgba: [0, 255, 64, 255]),
-        C181MetalPixelSample(id: "visible-overflow-first", xCssPx: 26, yCssPx: 10,
+        C18MetalPixelSample(id: "visible-overflow-first", xCssPx: 26, yCssPx: 10,
                              rgba: [0, 255, 64, 255]),
-        C181MetalPixelSample(id: "visible-overflow-middle", xCssPx: 29, yCssPx: 10,
+        C18MetalPixelSample(id: "visible-overflow-middle", xCssPx: 29, yCssPx: 10,
                              rgba: [0, 255, 64, 255]),
-        C181MetalPixelSample(id: "visible-overflow-last", xCssPx: 32, yCssPx: 10,
+        C18MetalPixelSample(id: "visible-overflow-last", xCssPx: 32, yCssPx: 10,
                              rgba: [0, 255, 64, 255]),
-        C181MetalPixelSample(id: "visible-after-image", xCssPx: 33, yCssPx: 10,
+        C18MetalPixelSample(id: "visible-after-image", xCssPx: 33, yCssPx: 10,
                              rgba: [16, 24, 39, 255]),
-        C181MetalPixelSample(id: "hidden-padding-positive", xCssPx: 60, yCssPx: 10,
+        C18MetalPixelSample(id: "hidden-padding-positive", xCssPx: 60, yCssPx: 10,
                              rgba: [0, 255, 64, 255]),
-        C181MetalPixelSample(id: "hidden-border-positive", xCssPx: 61, yCssPx: 10,
+        C18MetalPixelSample(id: "hidden-border-positive", xCssPx: 61, yCssPx: 10,
                              rgba: [240, 198, 116, 255]),
-        C181MetalPixelSample(id: "hidden-outside", xCssPx: 62, yCssPx: 10,
+        C18MetalPixelSample(id: "hidden-outside", xCssPx: 62, yCssPx: 10,
                              rgba: [16, 24, 39, 255]),
     ]
+#endif
+#if SPINON_ENABLE_C18_2_ALPHA_IMAGE_FIXTURE_TEST_1
     private let c182MetalPixelSamples = [
-        C181MetalPixelSample(id: "background-anchor", xCssPx: 2, yCssPx: 2,
+        C18MetalPixelSample(id: "background-anchor", xCssPx: 2, yCssPx: 2,
                              rgba: [17, 34, 51, 255]),
-        C181MetalPixelSample(id: "transparent-interior", xCssPx: 12, yCssPx: 20,
+        C18MetalPixelSample(id: "transparent-interior", xCssPx: 12, yCssPx: 20,
                              rgba: [17, 34, 51, 255]),
-        C181MetalPixelSample(id: "transparent-right-edge", xCssPx: 15, yCssPx: 20,
+        C18MetalPixelSample(id: "transparent-right-edge", xCssPx: 15, yCssPx: 20,
                              rgba: [17, 34, 51, 255]),
-        C181MetalPixelSample(id: "partial-left-edge", xCssPx: 16, yCssPx: 20,
+        C18MetalPixelSample(id: "partial-left-edge", xCssPx: 16, yCssPx: 20,
                              rgba: [118, 37, 65, 255]),
-        C181MetalPixelSample(id: "partial-interior", xCssPx: 20, yCssPx: 20,
+        C18MetalPixelSample(id: "partial-interior", xCssPx: 20, yCssPx: 20,
                              rgba: [118, 37, 65, 255]),
-        C181MetalPixelSample(id: "partial-right-edge", xCssPx: 23, yCssPx: 20,
+        C18MetalPixelSample(id: "partial-right-edge", xCssPx: 23, yCssPx: 20,
                              rgba: [118, 37, 65, 255]),
-        C181MetalPixelSample(id: "opaque-left-edge", xCssPx: 24, yCssPx: 20,
+        C18MetalPixelSample(id: "opaque-left-edge", xCssPx: 24, yCssPx: 20,
                              rgba: [32, 200, 64, 255]),
-        C181MetalPixelSample(id: "opaque-interior", xCssPx: 28, yCssPx: 20,
+        C18MetalPixelSample(id: "opaque-interior", xCssPx: 28, yCssPx: 20,
                              rgba: [32, 200, 64, 255]),
-        C181MetalPixelSample(id: "opaque-right-edge", xCssPx: 31, yCssPx: 20,
+        C18MetalPixelSample(id: "opaque-right-edge", xCssPx: 31, yCssPx: 20,
                              rgba: [32, 200, 64, 255]),
-        C181MetalPixelSample(id: "after-image-anchor", xCssPx: 34, yCssPx: 20,
+        C18MetalPixelSample(id: "after-image-anchor", xCssPx: 34, yCssPx: 20,
                              rgba: [17, 34, 51, 255]),
+    ]
+#endif
+#if SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST_1
+    private let c183MetalPixelSamples = [
+        C18MetalPixelSample(id: "root-background-anchor", xCssPx: 2, yCssPx: 2,
+                             rgba: [17, 34, 51, 255]),
+        C18MetalPixelSample(id: "fill-top-left", xCssPx: 9, yCssPx: 9,
+                             rgba: [24, 32, 232, 255]),
+        C18MetalPixelSample(id: "fill-bottom-right", xCssPx: 30, yCssPx: 30,
+                             rgba: [209, 214, 51, 255]),
+        C18MetalPixelSample(id: "contain-background-top", xCssPx: 42, yCssPx: 9,
+                             rgba: [210, 10, 180, 255]),
+        C18MetalPixelSample(id: "contain-image-top", xCssPx: 42, yCssPx: 15,
+                             rgba: [24, 32, 232, 255]),
+        C18MetalPixelSample(id: "contain-image-bottom", xCssPx: 42, yCssPx: 25,
+                             rgba: [24, 214, 206, 255]),
+        C18MetalPixelSample(id: "contain-quarter-image", xCssPx: 75, yCssPx: 18,
+                             rgba: [24, 32, 232, 255]),
+        C18MetalPixelSample(id: "cover-center-left", xCssPx: 105, yCssPx: 12,
+                             rgba: [61, 32, 201, 255]),
+        C18MetalPixelSample(id: "cover-center-right", xCssPx: 126, yCssPx: 12,
+                             rgba: [172, 32, 108, 255]),
+        C18MetalPixelSample(id: "cover-start-left", xCssPx: 137, yCssPx: 12,
+                             rgba: [24, 32, 232, 255]),
+        C18MetalPixelSample(id: "cover-end-left", xCssPx: 169, yCssPx: 12,
+                             rgba: [135, 32, 139, 255]),
+        C18MetalPixelSample(id: "none-clipped-object", xCssPx: 10, yCssPx: 45,
+                             rgba: [98, 32, 170, 255]),
+        C18MetalPixelSample(id: "none-outside-content-box", xCssPx: 25, yCssPx: 45,
+                             rgba: [17, 34, 51, 255]),
+        C18MetalPixelSample(id: "scale-down-shrink-background", xCssPx: 42, yCssPx: 41,
+                             rgba: [210, 10, 180, 255]),
+        // Chrome 155 at the iPhone 17 Pro Simulator's drawable scale factor 3.
+        C18MetalPixelSample(id: "scale-down-shrink-image", xCssPx: 45, yCssPx: 46,
+                             rgba: [89, 55, 174, 255]),
+        C18MetalPixelSample(id: "scale-down-no-upscale-image", xCssPx: 82, yCssPx: 47,
+                             rgba: [61, 32, 201, 255]),
+        C18MetalPixelSample(id: "initial-values-natural", xCssPx: 113, yCssPx: 41,
+                             rgba: [24, 32, 232, 255]),
+        C18MetalPixelSample(id: "contain-extended-position-image", xCssPx: 145, yCssPx: 60,
+                             rgba: [24, 32, 232, 255]),
+        C18MetalPixelSample(id: "cover-extended-position-image", xCssPx: 177, yCssPx: 44,
+                             rgba: [172, 32, 108, 255]),
     ]
 #endif
 #if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
@@ -400,7 +446,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     private var rendererSurfaceFormat: String?
     private var lastDrawableSize = CGSize.zero
     private var c111MetalDrawableSize = CGSize.zero
-#if SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1
+#if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
     private var imagePaintScreenGeometryLogged = false
 #endif
     private var viewportWidthCssPx: Float = 301
@@ -629,18 +675,27 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c131-overflow-clip-border")
     private let c132ScrollFixtureRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c132-scroll")
+#if SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST_1
+    private let imageObjectFitPositionProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c183-object-fit-position")
+#else
+    private let imageObjectFitPositionProbeRequested = false
+#endif
 #if SPINON_ENABLE_C18_2_ALPHA_IMAGE_FIXTURE_TEST_1
     private let imageAlphaProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c182-alpha-image")
 #else
     private let imageAlphaProbeRequested = false
 #endif
-#if SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1
+#if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
     private let imagePaintProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c181-image-paint")
         || ProcessInfo.processInfo.arguments.contains("--spinon-c182-alpha-image")
+        || ProcessInfo.processInfo.arguments.contains("--spinon-c183-object-fit-position")
     private var imagePaintRouteArguments: [String] {
-        imageAlphaProbeRequested ? ["--spinon-c182-alpha-image"] : ["--spinon-c181-image-paint"]
+        imageObjectFitPositionProbeRequested ? ["--spinon-c183-object-fit-position"]
+            : imageAlphaProbeRequested ? ["--spinon-c182-alpha-image"]
+            : ["--spinon-c181-image-paint"]
     }
 #else
     private let imagePaintProbeRequested = false
@@ -683,7 +738,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     private var c132MetalPixelRequestPresentationSequence: UInt64?
     private var c132MetalPixelRequestDrawableSize = CGSize.zero
     private var c132MetalPixelRequestFormat = ""
-#if SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1
+#if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
     private var imagePaintMetalPixelRequestIssued = false
     private var imagePaintMetalPixelReadbackFinished = false
 #endif
@@ -761,7 +816,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             || c131BorderStripProbeRequested || c132ScrollFixtureRequested
             || c133GestureFixtureRequested || c11GridFixtureRequested
         var selectedWithImagePaint = selected
-#if SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1
+#if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
         selectedWithImagePaint = selectedWithImagePaint || imagePaintProbeRequested
 #endif
         return selectedWithImagePaint
@@ -874,9 +929,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 : "SPINON · C05.2 @property"
             : authorStylesheetsProbeRequested
                 ? "SPINON · C04.11 CSS → WGPU" : "SPINON · C04.10 CSS → WGPU"
-#if SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1
+#if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
         if imagePaintProbeRequested {
-            title.text = imageAlphaProbeRequested
+            title.text = imageObjectFitPositionProbeRequested
+                ? "SPINON · C18.3 object-fit/object-position"
+                : imageAlphaProbeRequested
                 ? "SPINON · C18.2 alpha image" : "SPINON · C18.1 image paint"
         }
 #endif
@@ -970,9 +1027,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             : authorStylesheetsProbeRequested
                 ? "실제 V8 DOM <style> → Stylo → Taffy → wgpu surface"
             : "실제 V8 DOM → Stylo → Taffy → Rust 장면 → wgpu surface"
-#if SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1
+#if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
         if imagePaintProbeRequested {
-            description.text = imageAlphaProbeRequested
+            description.text = imageObjectFitPositionProbeRequested
+                ? "PNG 24×12 · 12 object-fit/position scenes · 19 Metal 표본 · 224×72 CSS px"
+                : imageAlphaProbeRequested
                 ? "RGBA PNG source-over alpha · 10 Metal 표본 · 80×40 CSS px"
                 : "opaque PNG · visible/hidden 부모 경계 · 9 Metal 표본 · 80×40 CSS px"
         }
@@ -1061,10 +1120,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             : authorStylesheetsProbeRequested
                 ? "C04.11 Chromium stylesheet fixture의 WGPU 장면"
             : "C04.10 Chromium fixture의 WGPU 장면"
-#if SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1
+#if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
         if imagePaintProbeRequested {
             canvasView.accessibilityLabel =
-                imageAlphaProbeRequested
+                imageObjectFitPositionProbeRequested
+                ? "C18.3 PNG object-fit와 object-position WGPU Metal 장면"
+                : imageAlphaProbeRequested
                 ? "C18.2 PNG alpha source-over WGPU Metal 장면"
                 : "C18.1 image paint overflow와 부모 border 경계 WGPU Metal 장면"
         }
@@ -1205,7 +1266,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.addSubview(statusLabel)
 
         let canvasWidth = canvasView.widthAnchor.constraint(
-            equalToConstant: imagePaintProbeRequested ? 80
+            equalToConstant: imagePaintProbeRequested
+                ? imageObjectFitPositionProbeRequested ? 224 : 80
                 : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
                 ? 360 : c131CompactSurfaceMatrixRouteRequested ? 300
                 : c131BorderStripProbeRequested || c132ScrollFixtureRequested
@@ -1213,7 +1275,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 ? 400 : fixedSizeCssFixtureRequested ? 320 : 301
         )
         let canvasHeight = canvasView.heightAnchor.constraint(
-            equalToConstant: imagePaintProbeRequested ? 40
+            equalToConstant: imagePaintProbeRequested
+                ? imageObjectFitPositionProbeRequested ? 72 : 40
                 : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
                 ? 800 : c131CompactSurfaceMatrixRouteRequested ? 100
                 : c131BorderStripProbeRequested ? 160 : fixedSizeCssFixtureRequested ? 240 : 100
@@ -1309,7 +1372,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         )
         let sizeChanged = size != lastDrawableSize
         guard size.width > 0, size.height > 0 else { return }
-#if SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1
+#if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
         if imagePaintProbeRequested && !imagePaintScreenGeometryLogged,
            let window = canvasView.window,
            let screen = window.windowScene?.screen {
@@ -2043,7 +2106,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             c132ScrollFixtureRequested,
             c133GestureFixtureRequested,
         ]
-#if SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1
+#if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
         selectedC131RouteFlags.append(imagePaintProbeRequested)
 #endif
         let selectedC131Routes = selectedC131RouteFlags.filter { $0 }.count
@@ -2178,12 +2241,35 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 #else
         let c133GestureHostHandle: UInt64 = 0
 #endif
+#if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
+        let imagePaintHost: UInt64?
+        if !imagePaintProbeRequested {
+            imagePaintHost = nil
+        } else if imageObjectFitPositionProbeRequested {
+#if SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST_1
+            imagePaintHost = SpinonRunner.createRuntimeGpuHostWithC18_3ObjectFitPositionFixture()
+#else
+            imagePaintHost = nil
+#endif
+        } else {
+#if SPINON_ENABLE_C18_2_ALPHA_IMAGE_FIXTURE_TEST_1
+            if imageAlphaProbeRequested {
+                imagePaintHost = SpinonRunner.createRuntimeGpuHostWithC18_2AlphaImageFixture()
+            } else {
 #if SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1
-        let imagePaintHost = imagePaintProbeRequested
-            ? imageAlphaProbeRequested
-                ? SpinonRunner.createRuntimeGpuHostWithC18_2AlphaImageFixture()
-                : SpinonRunner.createRuntimeGpuHostWithC18_1ImagePaintFixture()
-            : nil
+                imagePaintHost = SpinonRunner.createRuntimeGpuHostWithC18_1ImagePaintFixture()
+#else
+                imagePaintHost = nil
+#endif
+            }
+#else
+#if SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1
+            imagePaintHost = SpinonRunner.createRuntimeGpuHostWithC18_1ImagePaintFixture()
+#else
+            imagePaintHost = nil
+#endif
+#endif
+        }
 #else
         let imagePaintHost: UInt64? = nil
 #endif
@@ -2269,7 +2355,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         let environmentInputs = currentEnvironment()
         let viewportWidth: Float = imagePaintProbeRequested
-            ? 80 : c131CompactSurfaceMatrixRouteRequested
+            ? imageObjectFitPositionProbeRequested ? 224 : 80
+            : c131CompactSurfaceMatrixRouteRequested
             ? 300 : c131BorderStripProbeRequested
             ? 400 : c132ScrollFixtureRequested || c133GestureFixtureRequested ? 400 : c131OverflowClipProbeRequested
             ? 320 : c122AbsoluteBlockProbeRequested
@@ -2278,7 +2365,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             || c1123GridAutoPlacementProbeRequested
             ? 360 : c1131GridRepeatProbeRequested || fixedSizeCssFixtureRequested ? 320 : environmentInputs.width
         let viewportHeight: Float = imagePaintProbeRequested
-            ? 40 : c131CompactSurfaceMatrixRouteRequested
+            ? imageObjectFitPositionProbeRequested ? 72 : 40
+            : c131CompactSurfaceMatrixRouteRequested
             ? 100 : c131BorderStripProbeRequested
             ? 160 : c132ScrollFixtureRequested || c133GestureFixtureRequested ? 240 : c131OverflowClipProbeRequested
             ? 240 : c122AbsoluteBlockProbeRequested
@@ -2316,11 +2404,33 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
 #endif
         var result: String? = nil
-#if SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1
+#if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
         if imagePaintProbeRequested {
-            result = imageAlphaProbeRequested
-                ? SpinonRunner.evalRuntimeGpuC18_2AlphaImageFixture(handle)
-                : SpinonRunner.evalRuntimeGpuC18_1ImagePaintFixture(handle)
+            if imageObjectFitPositionProbeRequested {
+#if SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST_1
+                result = SpinonRunner.evalRuntimeGpuC18_3ObjectFitPositionFixture(handle)
+#else
+                result = "status=-90 C18.3 feature-disabled"
+#endif
+            } else {
+#if SPINON_ENABLE_C18_2_ALPHA_IMAGE_FIXTURE_TEST_1
+                if imageAlphaProbeRequested {
+                    result = SpinonRunner.evalRuntimeGpuC18_2AlphaImageFixture(handle)
+                } else {
+#if SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1
+                    result = SpinonRunner.evalRuntimeGpuC18_1ImagePaintFixture(handle)
+#else
+                    result = "status=-90 C18.1 feature-disabled"
+#endif
+                }
+#else
+#if SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1
+                result = SpinonRunner.evalRuntimeGpuC18_1ImagePaintFixture(handle)
+#else
+                result = "status=-90 C18.1 feature-disabled"
+#endif
+#endif
+            }
         }
 #endif
         if result == nil {
@@ -4089,14 +4199,17 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         return .operationFailed("C13.2 Metal surface readback \(stage): \(detail)")
     }
 
-#if SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1
+#if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
     private func failC181MetalPixelReadback(
         stage: String,
         detail: String
     ) -> C0410LatestTaskLaneError {
         imagePaintMetalPixelReadbackFinished = true
-        let label = imageAlphaProbeRequested ? "C18.2" : "C18.1"
-        log("SPINON_\(imageAlphaProbeRequested ? "C182" : "C181")_METAL_PIXEL_ERROR stage=\(stage) detail=\(detail)")
+        let label = imageObjectFitPositionProbeRequested ? "C18.3"
+            : imageAlphaProbeRequested ? "C18.2" : "C18.1"
+        let prefix = imageObjectFitPositionProbeRequested ? "C183"
+            : imageAlphaProbeRequested ? "C182" : "C181"
+        log("SPINON_\(prefix)_METAL_PIXEL_ERROR stage=\(stage) detail=\(detail)")
         postStatus("실패 · \(label) Metal surface 표본 \(stage)")
         return .operationFailed("\(label) Metal surface readback \(stage): \(detail)")
     }
@@ -4111,13 +4224,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let viewportHeight = viewportHeightCssPx
         let format = rendererSurfaceFormat ?? ""
         stateLock.unlock()
-        guard viewportWidth == 80, viewportHeight == 40,
+        let expectedViewportWidth: Float = imageObjectFitPositionProbeRequested ? 224 : 80
+        let expectedViewportHeight: Float = imageObjectFitPositionProbeRequested ? 72 : 40
+        guard viewportWidth == expectedViewportWidth, viewportHeight == expectedViewportHeight,
               drawableSize.width > 0, drawableSize.height > 0,
               let width = Int(exactly: drawableSize.width),
               let height = Int(exactly: drawableSize.height) else {
             throw failC181MetalPixelReadback(
                 stage: "surface-size",
-                detail: "viewport 또는 Metal drawable 크기가 80×40 fixture에 맞지 않습니다"
+                detail: "viewport 또는 Metal drawable 크기가 고정 이미지 fixture에 맞지 않습니다"
             )
         }
         let scaleX = Float(width) / viewportWidth
@@ -4130,7 +4245,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             )
         }
         var coordinates: [UInt32] = []
-        let samples = imageAlphaProbeRequested ? c182MetalPixelSamples : c181MetalPixelSamples
+        guard let samples = imagePaintPixelSamples() else {
+            throw failC181MetalPixelReadback(
+                stage: "sample-config",
+                detail: "활성 C18 image fixture의 Metal 표본 설정이 없습니다"
+            )
+        }
         coordinates.reserveCapacity(samples.count * 2)
         for sample in samples {
             let x = floor((sample.xCssPx + 0.5) * scaleX)
@@ -4145,23 +4265,41 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             coordinates.append(sampleX)
             coordinates.append(sampleY)
         }
-        let request = coordinates.withUnsafeBufferPointer { buffer in
-            if imageAlphaProbeRequested {
-                SpinonRunner.requestRuntimeGpuC18_2SurfacePixels(
+        let request = coordinates.withUnsafeBufferPointer { buffer -> String? in
+            if imageObjectFitPositionProbeRequested {
+#if SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST_1
+                return SpinonRunner.requestRuntimeGpuC18_3SurfacePixels(
                     forTest: handle, sampleXY: buffer.baseAddress,
                     sampleCount: UInt(coordinates.count / 2))
-            } else {
-                SpinonRunner.requestRuntimeGpuC18_1SurfacePixels(
-                    forTest: handle,
-                    sampleXY: buffer.baseAddress,
-                    sampleCount: UInt(coordinates.count / 2))
+#else
+                return "status=-90 C18.3 feature-disabled"
+#endif
             }
+            if imageAlphaProbeRequested {
+#if SPINON_ENABLE_C18_2_ALPHA_IMAGE_FIXTURE_TEST_1
+                return SpinonRunner.requestRuntimeGpuC18_2SurfacePixels(
+                    forTest: handle, sampleXY: buffer.baseAddress,
+                    sampleCount: UInt(coordinates.count / 2))
+#else
+                return "status=-90 C18.2 feature-disabled"
+#endif
+            }
+#if SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1
+            return SpinonRunner.requestRuntimeGpuC18_1SurfacePixels(
+                forTest: handle,
+                sampleXY: buffer.baseAddress,
+                sampleCount: UInt(coordinates.count / 2))
+#else
+            return "status=-90 C18.1 feature-disabled"
+#endif
         } ?? "status=-1 missing-request-report"
         guard request.hasPrefix("status=0 ") else {
             throw failC181MetalPixelReadback(stage: "request", detail: request)
         }
         imagePaintMetalPixelRequestIssued = true
-        log("SPINON_\(imageAlphaProbeRequested ? "C182" : "C181")_METAL_PIXEL_REQUESTED generation=\(generation) viewport=80x40 drawable=\(width)x\(height) scale_x=\(scaleX) scale_y=\(scaleY) format=\(format) samples=\(samples.count)")
+        let prefix = imageObjectFitPositionProbeRequested ? "C183"
+            : imageAlphaProbeRequested ? "C182" : "C181"
+        log("SPINON_\(prefix)_METAL_PIXEL_REQUESTED generation=\(generation) viewport=\(Int(expectedViewportWidth))x\(Int(expectedViewportHeight)) drawable=\(width)x\(height) scale_x=\(scaleX) scale_y=\(scaleY) format=\(format) samples=\(samples.count)")
     }
 
     private func verifyC181MetalPixelReadback(
@@ -4211,7 +4349,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             throw failure("sample-json", "표본 JSON 닫는 괄호가 없습니다")
         }
         let json = nsTail.substring(with: NSRange(location: startOffset, length: endOffset - startOffset + 1))
-        let samples = imageAlphaProbeRequested ? c182MetalPixelSamples : c181MetalPixelSamples
+        guard let samples = imagePaintPixelSamples() else {
+            throw failure("sample-config", "활성 C18 image fixture의 Metal 표본 설정이 없습니다")
+        }
         guard let data = json.data(using: String.Encoding.utf8),
               let values = try? JSONSerialization.jsonObject(with: data) as? [[String: Any]],
               values.count == samples.count else {
@@ -4221,8 +4361,10 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let drawableSize = c111MetalDrawableSize
         let format = rendererSurfaceFormat ?? ""
         stateLock.unlock()
-        let scaleX = Float(drawableSize.width) / 80
-        let scaleY = Float(drawableSize.height) / 40
+        let expectedViewportWidth: Float = imageObjectFitPositionProbeRequested ? 224 : 80
+        let expectedViewportHeight: Float = imageObjectFitPositionProbeRequested ? 72 : 40
+        let scaleX = Float(drawableSize.width) / expectedViewportWidth
+        let scaleY = Float(drawableSize.height) / expectedViewportHeight
         guard drawableSize.width > 0, drawableSize.height > 0,
               abs(scaleX - scaleY) < 0.000001 else {
             throw failure("surface-size", "표본 검증 시 drawable scale이 균일하지 않습니다")
@@ -4241,17 +4383,45 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             let expectedY = UInt32(floor((sample.yCssPx + 0.5) * scaleY))
             let exact = x == expectedX && y == expectedY && rgba == sample.rgba
             if exact { matched += 1 }
-            log("SPINON_\(imageAlphaProbeRequested ? "C182" : "C181")_METAL_PIXEL_SAMPLE generation=\(generation) id=\(sample.id) xy=\(x),\(y) rgba=\(rgba.map(String.init).joined(separator: ",")) expected=\(sample.rgba.map(String.init).joined(separator: ",")) exact=\(exact)")
+            let prefix = imageObjectFitPositionProbeRequested ? "C183"
+                : imageAlphaProbeRequested ? "C182" : "C181"
+            log("SPINON_\(prefix)_METAL_PIXEL_SAMPLE generation=\(generation) id=\(sample.id) xy=\(x),\(y) rgba=\(rgba.map(String.init).joined(separator: ",")) expected=\(sample.rgba.map(String.init).joined(separator: ",")) exact=\(exact)")
         }
         imagePaintMetalPixelReadbackFinished = true
         let passed = matched == samples.count
-        log("SPINON_\(imageAlphaProbeRequested ? "C182" : "C181")_METAL_PIXEL_SUMMARY status=\(passed ? "matched" : "mismatch") generation=\(generation) viewport=80x40 drawable=\(Int(drawableSize.width))x\(Int(drawableSize.height)) format=\(format) expected=\(samples.count) observed=\(values.count) matched=\(matched) renderer=metal-drawable-before-compositor")
+        let prefix = imageObjectFitPositionProbeRequested ? "C183"
+            : imageAlphaProbeRequested ? "C182" : "C181"
+        log("SPINON_\(prefix)_METAL_PIXEL_SUMMARY status=\(passed ? "matched" : "mismatch") generation=\(generation) viewport=\(Int(expectedViewportWidth))x\(Int(expectedViewportHeight)) drawable=\(Int(drawableSize.width))x\(Int(drawableSize.height)) format=\(format) expected=\(samples.count) observed=\(values.count) matched=\(matched) renderer=metal-drawable-before-compositor")
         guard passed else {
             throw failure("pixel-mismatch", "Metal drawable RGBA가 Chrome 155 기준과 다릅니다")
         }
-        postStatus(imageAlphaProbeRequested
+        postStatus(imageObjectFitPositionProbeRequested
+            ? "완료 · C18.3 Metal drawable 표본 19/19"
+            : imageAlphaProbeRequested
             ? "완료 · C18.2 Metal drawable 표본 10/10"
             : "완료 · C18.1 Metal drawable 표본 9/9")
+    }
+
+    private func imagePaintPixelSamples() -> [C18MetalPixelSample]? {
+        if imageObjectFitPositionProbeRequested {
+#if SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST_1
+            return c183MetalPixelSamples
+#else
+            return nil
+#endif
+        }
+        if imageAlphaProbeRequested {
+#if SPINON_ENABLE_C18_2_ALPHA_IMAGE_FIXTURE_TEST_1
+            return c182MetalPixelSamples
+#else
+            return nil
+#endif
+        }
+#if SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1
+        return c181MetalPixelSamples
+#else
+        return nil
+#endif
     }
 #endif
 
@@ -4433,7 +4603,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 surfaceGeneration: generation
             )
         }
-#if SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1
+#if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
         if imagePaintProbeRequested && !imagePaintMetalPixelRequestIssued
             && !imagePaintMetalPixelReadbackFinished {
             try requestC181MetalPixelReadback(handle: handle, generation: generation)
@@ -4449,7 +4619,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             log("SPINON_C0410_DRAW generation=\(generation) \(result ?? "")")
         }
         if result?.hasPrefix("status=-12 ") == true {
-#if SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1
+#if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
             if imagePaintMetalPixelRequestIssued && !imagePaintMetalPixelReadbackFinished {
                 throw failC181MetalPixelReadback(
                     stage: "draw-superseded",
@@ -4478,7 +4648,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
         if result?.hasPrefix("status=0 ") != true {
             postStatus("실패 · \(result ?? "WGPU draw 보고 없음")")
-#if SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1
+#if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
             if imagePaintMetalPixelRequestIssued && !imagePaintMetalPixelReadbackFinished {
                 throw failC181MetalPixelReadback(
                     stage: "draw",
@@ -4502,7 +4672,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             }
             throw C0410LatestTaskLaneError.operationFailed(result ?? "WGPU draw 실패 보고 없음")
         }
-#if SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1
+#if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
         if imagePaintProbeRequested && imagePaintMetalPixelRequestIssued
             && !imagePaintMetalPixelReadbackFinished {
             try verifyC181MetalPixelReadback(result: result ?? "", generation: generation)

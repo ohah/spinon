@@ -37,6 +37,7 @@ pub(super) enum RuntimeCalculationProfile {
     FlexPaint,
     RegisteredPropertiesPaint,
     BlockPaint,
+    BlockImage,
     BlockFormatting,
     BlockPositioning,
     BlockFlexStacking,
@@ -172,6 +173,12 @@ pub(super) fn compute_request_for_block_paint(
     request: &WorkRequest,
 ) -> Result<RuntimeCalculation, String> {
     compute_request_with_profile(request, RuntimeCalculationProfile::BlockPaint)
+}
+
+pub(super) fn compute_request_for_block_image(
+    request: &WorkRequest,
+) -> Result<RuntimeCalculation, String> {
+    compute_request_with_profile(request, RuntimeCalculationProfile::BlockImage)
 }
 
 pub(super) fn compute_request_for_block_formatting(
@@ -426,6 +433,7 @@ fn compute_root(
             ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
         }
         RuntimeCalculationProfile::BlockPaint => ComputedStyleProfile::RuntimeBlockPaintV1,
+        RuntimeCalculationProfile::BlockImage => ComputedStyleProfile::RuntimeBlockImageV1,
         RuntimeCalculationProfile::BlockFormatting => {
             ComputedStyleProfile::RuntimeBlockFormattingV1
         }
@@ -521,6 +529,14 @@ fn compute_root(
             }
             RuntimeCalculationProfile::BlockPaint => {
                 compute_runtime_block_paint_cascade_with_stylesheets(
+                    &view,
+                    author_stylesheets,
+                    request.viewport,
+                    request.key.style_revision,
+                )
+            }
+            RuntimeCalculationProfile::BlockImage => {
+                spinon_style::compute_runtime_block_image_cascade_with_stylesheets(
                     &view,
                     author_stylesheets,
                     request.viewport,

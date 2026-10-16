@@ -168,6 +168,9 @@ fn runtime_properties_for_profile(
     if profile == ComputedStyleProfile::RuntimeBlockPaintV1 {
         return Some(runtime_paint::runtime_block_paint_properties());
     }
+    if profile == ComputedStyleProfile::RuntimeBlockImageV1 {
+        return Some(runtime_paint::runtime_block_image_properties());
+    }
     if profile == ComputedStyleProfile::RuntimeBlockFormattingV1 {
         return Some(runtime_paint::runtime_block_formatting_properties());
     }
@@ -234,6 +237,7 @@ fn is_runtime_layout_profile(profile: ComputedStyleProfile) -> bool {
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
             | ComputedStyleProfile::RuntimeBlockPaintV1
+            | ComputedStyleProfile::RuntimeBlockImageV1
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1

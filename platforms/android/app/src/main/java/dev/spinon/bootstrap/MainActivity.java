@@ -262,10 +262,13 @@ public final class MainActivity extends Activity {
                 .getBooleanExtra("spinon_c131_compact_surface_matrix", false);
         boolean c131OverflowClipBorderRequested = getIntent()
                 .getBooleanExtra("spinon_c131_overflow_clip_border", false);
+        boolean imageObjectFitPositionFixtureRequested =
+                BuildConfig.SPINON_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST
+                && getIntent().getBooleanExtra("spinon_c183_object_fit_position", false);
         boolean imageAlphaFixtureRequested = BuildConfig.SPINON_C18_2_ALPHA_IMAGE_FIXTURE_TEST
                 && getIntent().getBooleanExtra("spinon_c182_alpha_image", false);
         boolean imagePaintFixtureRequested = BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST
-                && (imageAlphaFixtureRequested
+                && (imageObjectFitPositionFixtureRequested || imageAlphaFixtureRequested
                         || getIntent().getBooleanExtra("spinon_c181_image_paint", false));
         if ((c131OverflowClipRequested ? 1 : 0)
                 + (c131CompactSurfaceMatrixRequested ? 1 : 0)

@@ -27,5 +27,7 @@ pub(super) mod c13_3;
 mod c18_1;
 #[cfg(feature = "c18-2-alpha-image-compositing-fixture-test")]
 mod c18_2;
+#[cfg(feature = "c18-3-object-fit-position-fixture-test")]
+mod c18_3;
 #[cfg(feature = "c04-runtime-gpu-test-hooks")]
 mod surface;

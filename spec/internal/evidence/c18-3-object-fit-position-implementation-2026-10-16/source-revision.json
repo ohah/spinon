@@ -1,0 +1,312 @@
+{
+  "schema": "spinon.c18-3-source-revision.v1",
+  "generatedAtUtc": "2026-10-16T11:32:51.929213+00:00",
+  "baseCommit": "9c4f9aa381df3280f121aa45e18916c696eeaddf",
+  "verificationDateLocal": "2026-10-16 Asia/Seoul",
+  "changedSourceFiles": [
+    {
+      "path": "crates/spinon-ffi/Cargo.toml",
+      "sha256": "ce47b460035a1c5f9bad3b3fe9fe57e0f769db51db7d8e2d53ce7857baac641e",
+      "bytes": 2983
+    },
+    {
+      "path": "crates/spinon-ffi/include/spinon_ffi.h",
+      "sha256": "5cd6589925814a2c3c3ecb500aba178cb6bfa19fd70b0db81d7dd9e6051a8452",
+      "bytes": 38000
+    },
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu.rs",
+      "sha256": "7952884e18794bcd5ba503b48312843ae3b61f3fa7aedd5c810b4a739e3b10c5",
+      "bytes": 33591
+    },
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/ffi/fixtures.rs",
+      "sha256": "4803fd637ce1d61dcd991cb8a5b5eef0649b46a0f67a49a33988ade064295c59",
+      "bytes": 746
+    },
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c18_3.rs",
+      "sha256": "1371ba548195ae661bf6143b0e62e741e68bb2cbea51ee5c2c2e4cbb5d96517d",
+      "bytes": 5573
+    },
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures.rs",
+      "sha256": "d6d7641791dcd1c17a3eb2435aff961822328139dfab1e133a2f5b0ec46b7bc1",
+      "bytes": 948
+    },
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c18_3.rs",
+      "sha256": "b1bd61cbcba717895db7c6d81bad7add565835df3609d3f7844b8578c8e01323",
+      "bytes": 16798
+    },
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/host.rs",
+      "sha256": "836688db352ba0a5b95519b77566dcd03c3d4e99dc4109219fbd73fdb47e2533",
+      "bytes": 10657
+    },
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/renderer.rs",
+      "sha256": "80562a1f59318cf2888074dcd65868790a47e3d73d79eece12c268ef4bddca61",
+      "bytes": 11844
+    },
+    {
+      "path": "crates/spinon-render-wgpu/src/geometry/image.rs",
+      "sha256": "598bd54c5f6f7be20b6ac5b87f67b6f715a47f23355261e4031a9a5ef745788e",
+      "bytes": 9515
+    },
+    {
+      "path": "crates/spinon-render-wgpu/src/readback.rs",
+      "sha256": "af007b0b3bc1741d71c51730c2366883dadb3506a2c78168de7f2dc51122ab23",
+      "bytes": 7943
+    },
+    {
+      "path": "crates/spinon-render-wgpu/src/renderer.rs",
+      "sha256": "6df58b4eb624f8d4aa728e12cae911d5be885a847c646ee7463960e5d3cff944",
+      "bytes": 25894
+    },
+    {
+      "path": "crates/spinon-render-wgpu/src/renderer/image.wgsl",
+      "sha256": "81391dc16fd4a5bd8fcc7f6d498bafd6aed331867b7e7e433e7d52d60f97b019",
+      "bytes": 3594
+    },
+    {
+      "path": "crates/spinon-render-wgpu/src/renderer/images.rs",
+      "sha256": "e54cfeb2ca7efd80fcae9547745cb8d355a5573f78d5ee05e32f820b00697305",
+      "bytes": 17477
+    },
+    {
+      "path": "crates/spinon-render-wgpu/src/renderer/images_tests.rs",
+      "sha256": "3e9e14ba326bf9252b8247a432dad2161df7c9f94027926b9ce29ccfca5776f1",
+      "bytes": 2752
+    },
+    {
+      "path": "crates/spinon-render/src/lib.rs",
+      "sha256": "08ca8faa0d2de261c0bdf1d70b76e80fb0f89b786aca534f1d3b1e10a9c67cfe",
+      "bytes": 8750
+    },
+    {
+      "path": "crates/spinon-render/src/runtime.rs",
+      "sha256": "d5153a1b3be8055de7da06385e8cfc3cd4c045fa42c8ab4250344c3c8d52a7f1",
+      "bytes": 16930
+    },
+    {
+      "path": "crates/spinon-render/src/runtime/image.rs",
+      "sha256": "4e15efbadb27f761133200d9a22782ef43e6b7644098823a4cef6ea303e49e02",
+      "bytes": 10278
+    },
+    {
+      "path": "crates/spinon-render/src/runtime/snapshot.rs",
+      "sha256": "cb6eb0b9cf3606fc747b95c5d935e0af38cb17712c8311958158c24321b7d39b",
+      "bytes": 12756
+    },
+    {
+      "path": "crates/spinon-render/src/runtime_tests.rs",
+      "sha256": "75415799c5391e71e67e13d12f04cacc234f90078e9442a4d034c49208054728",
+      "bytes": 24018
+    },
+    {
+      "path": "crates/spinon-render/src/runtime_tests/c18_3_object_fit.rs",
+      "sha256": "c93ad73d9f005f28d8e5ce16cdc6f5fbae749e7fe74ba13a189598893a61a929",
+      "bytes": 6109
+    },
+    {
+      "path": "crates/spinon-runtime/src/session.rs",
+      "sha256": "fd328109856deae34923184c732d90327a841e4b4fb16f379f8f4b99a81ad74c",
+      "bytes": 22885
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade.rs",
+      "sha256": "cf7a47994858426237284fd0852d403e03bf948dc219d08787929d76b69e1005",
+      "bytes": 24003
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/calculation.rs",
+      "sha256": "c77399c3c3a88f65b0f9009e7223659cd360ade3352ac6cba4a2361b2eecce7f",
+      "bytes": 25754
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs",
+      "sha256": "0dec63ddae949ea5b96ddf7200d1fe66fcb804c833ec963ea7fcfd5a9bc6b133",
+      "bytes": 22828
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/projection.rs",
+      "sha256": "2a3a5984956f280abd6b632ffff6b3d6f89d53edb6ee3e4a6b771219702f37d4",
+      "bytes": 35663
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/projection/style_values.rs",
+      "sha256": "87bab6e52522c2958d48e4b06d70fdbc0b9836945c363f9aa5d2bc16ae456e3b",
+      "bytes": 39534
+    },
+    {
+      "path": "crates/spinon-style-to-render/src/runtime.rs",
+      "sha256": "7a0094892bbb28df1dbf5023071cd66dc93fd0cca9e79104ac261f50c6977c68",
+      "bytes": 14518
+    },
+    {
+      "path": "crates/spinon-style/src/lib.rs",
+      "sha256": "6f25c804f5dda48f058b4b7a14405eacd83ee902c2000fab0c876d892b8ee595",
+      "bytes": 4710
+    },
+    {
+      "path": "crates/spinon-style/src/stylesheet_registry.rs",
+      "sha256": "6ed6ad296cb788333c495cb78b02c943050d25b3720485b726578f1e4683f2a2",
+      "bytes": 18805
+    },
+    {
+      "path": "crates/spinon-style/src/stylesheet_registry/css_profile.rs",
+      "sha256": "91128315a0b298f2a61b4f977db4784b8b8300005c789ab0c6acd242e8e17149",
+      "bytes": 12728
+    },
+    {
+      "path": "crates/spinon-style/src/stylo_dom.rs",
+      "sha256": "967b71f1b5712f00d5bc1fc8870b300090962f0b9c70efeb488d0c769356a793",
+      "bytes": 4126
+    },
+    {
+      "path": "crates/spinon-style/src/stylo_dom/cascade.rs",
+      "sha256": "690ca10be0eddf4a1ec469b9278b1f5f1175ff067aa12a94636672153a59c5e0",
+      "bytes": 19844
+    },
+    {
+      "path": "crates/spinon-style/src/stylo_dom/cascade/incremental.rs",
+      "sha256": "2f393ebbf865af3013b438e172bd22c27baad74ce5892a7431759f6aeea3f7f4",
+      "bytes": 10108
+    },
+    {
+      "path": "crates/spinon-style/src/stylo_dom/cascade/incremental/compute.rs",
+      "sha256": "0a0c48fdf46bf7b80c15b28a70cee26a10850f2fdfdc73c5533e44dd44a0863e",
+      "bytes": 22232
+    },
+    {
+      "path": "crates/spinon-style/src/stylo_dom/cascade/runtime_layout_tests.rs",
+      "sha256": "8dd742685bdde595eeee02306590aebfcf7464250f6fbaa5eda30224b8c2205f",
+      "bytes": 7072
+    },
+    {
+      "path": "crates/spinon-style/src/stylo_dom/cascade/runtime_layout_tests/c18_3_object_fit.rs",
+      "sha256": "d35b834528aada199c67211bc5979801415d19790a8a5119376f7d6165dc6415",
+      "bytes": 3326
+    },
+    {
+      "path": "crates/spinon-style/src/stylo_dom/cascade/runtime_paint.rs",
+      "sha256": "b5a4cce96bf179a782bc05d469433b33d53cb104bba6e568d2cfa14966f1c055",
+      "bytes": 18182
+    },
+    {
+      "path": "crates/spinon-style/src/stylo_dom/cascade/snapshot.rs",
+      "sha256": "565c97f6d825f2786cfd093b2686bc5d88e1819f6fa171afc6aa7d2c0a0459a1",
+      "bytes": 20892
+    },
+    {
+      "path": "platforms/android/app/build.gradle.kts",
+      "sha256": "f838ed167b900ca6181a7c813bb4e0767557528fe5e644fbb6ebf890acb89f7e",
+      "bytes": 13036
+    },
+    {
+      "path": "platforms/android/app/src/c18_3_object_fit_position_fixture_test/java/dev/spinon/bootstrap/ObjectFitPositionFixtureCaptureAdapter.java",
+      "sha256": "575bdeede8f7a1362a870521677cd807dd0bf48bb89434091eade5e94c8b189a",
+      "bytes": 5762
+    },
+    {
+      "path": "platforms/android/app/src/c18_3_object_fit_position_fixture_test/java/dev/spinon/bootstrap/ObjectFitPositionFixtureNativeAdapter.java",
+      "sha256": "7cde94ba0a69f0fe74a693154005a9b872290ec566f49c8e020ab337eef48758",
+      "bytes": 249
+    },
+    {
+      "path": "platforms/android/app/src/main/cpp/spinon_jni.cc",
+      "sha256": "93e6eaa6180dbc0aaf25f9dc48046561fd531caee6775a90f2c0c8bd729d8990",
+      "bytes": 102163
+    },
+    {
+      "path": "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "sha256": "54114ddc80e0415dd52aefa3a4ae7aa59475ba4bef14a84ec09015c3e7616bf0",
+      "bytes": 282292
+    },
+    {
+      "path": "platforms/android/app/src/main/java/dev/spinon/bootstrap/MainActivity.java",
+      "sha256": "2ff6324459739eb5ce9fa1bd368eb1dc568bb176686e8b02a3767ab3e6befc61",
+      "bytes": 121574
+    },
+    {
+      "path": "platforms/ios/Sources/AppDelegate.swift",
+      "sha256": "4ee4eb0f23e0022a643744ae755db2989d07e94bd877a6dbb7fa2561070695b8",
+      "bytes": 35994
+    },
+    {
+      "path": "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "sha256": "f84aa675e56dc50350d98ca76604735c2645ed48c4e63393ebe323a2bd8a1c28",
+      "bytes": 276992
+    },
+    {
+      "path": "platforms/ios/Sources/SpinonRunner.h",
+      "sha256": "1aac00a538a91125bff38cfee5a13ba046346d352ef8c5617433c74dfc946750",
+      "bytes": 14865
+    },
+    {
+      "path": "platforms/ios/Sources/SpinonRunner.mm",
+      "sha256": "74ddc6eb5754cb7387dccefdba2c6c3104a86e63f658f5cca4987664c3cd0197",
+      "bytes": 115904
+    },
+    {
+      "path": "platforms/ios/SpinonBootstrap.xcodeproj/project.pbxproj",
+      "sha256": "41a08caef557850d859aa5c7c5629324134acf4e78bc21ebaed641229aae0932",
+      "bytes": 21971
+    },
+    {
+      "path": "tests/fixtures/css/c18/runtime-image-object-fit-c18-3.js",
+      "sha256": "4595a7e2be6588ff1516fbc36a089f5d26d41254efa9aabcc258484abe2e14d3",
+      "bytes": 1943
+    },
+    {
+      "path": "tools/build-android.sh",
+      "sha256": "4654af1269af868630486cef898355d7191c37b64d655d69c73966638c15b9ab",
+      "bytes": 16552
+    },
+    {
+      "path": "tools/build-ios-native.sh",
+      "sha256": "f64511a20989065dad90c020093eda5fcf6a39b4d4952f7337004b8f0fe6ed75",
+      "bytes": 14375
+    },
+    {
+      "path": "tools/build-ios-sim.sh",
+      "sha256": "74455fdec7a468b88c3dcc856d840b0b5760c8b1f6a4f4a99893b0a1c5ac7c92",
+      "bytes": 11759
+    },
+    {
+      "path": "tools/css-reference/c11-ios-build-flags.test.mjs",
+      "sha256": "3cbdc40545a22d5d7b42b9605f68ff90ec74a57e3765dfbe814dfc259eb1d820",
+      "bytes": 17810
+    },
+    {
+      "path": "tools/css-reference/fixture-module-boundary.test.mjs",
+      "sha256": "4c7c030efdadd92ca7641718fa77778db512ace41b3bb8097f8a2ad54fcd7def",
+      "bytes": 24420
+    }
+  ],
+  "verificationInputs": [
+    {
+      "path": "tests/fixtures/css/c18/image-object-fit-position-c18-3.html",
+      "sha256": "f396590733a3c7ed2ff1c7fba6a47125eeeba68bee2a55689028e4510cf37157",
+      "bytes": 3596
+    },
+    {
+      "path": "tests/fixtures/resources/c18-3-object-fit-pattern.png",
+      "sha256": "cc621c7a4be9345a8124b91ebcd5a6ff9bc3a3206ec59fe1228b24ba09cae454",
+      "bytes": 168
+    },
+    {
+      "path": "tools/fixtures/generate-c18-3-object-fit-pattern.py",
+      "sha256": "17ed032dd9085b75ee4fc20345c8e27fecade0a4a8be6d4c5707150f30d209ac",
+      "bytes": 1043
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-precomparison/chrome155-observation.json",
+      "sha256": "6d405518a353badcb54a5c4839f469392b992be0c273706c23b29e04ce4939d9",
+      "bytes": 8533
+    }
+  ],
+  "canonicalFileManifestSha256": "c3de21961f92ecfb425efe72aa935a823a23ae2fdd08a3845b0e4ddcd38cb723",
+  "note": "Source files and fixed oracle inputs are bound by file hashes; simulator screenshots and logs are recorded separately."
+}

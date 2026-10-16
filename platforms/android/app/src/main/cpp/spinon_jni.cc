@@ -407,6 +407,23 @@ Java_dev_spinon_bootstrap_AlphaImageFixtureNativeAdapter_createHost(JNIEnv *, jc
 }
 #endif
 
+#if defined(SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST) && \
+    SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST
+extern "C" JNIEXPORT jlong JNICALL
+Java_dev_spinon_bootstrap_ObjectFitPositionFixtureNativeAdapter_createHost(JNIEnv *, jclass) {
+  std::array<char, 2048> output{};
+  SpinonRuntimeGpuHost *host =
+      spinon_runtime_gpu_host_new_c18_3_object_fit_position_fixture(
+          output.data(), output.size());
+  if (host == nullptr) {
+    __android_log_print(ANDROID_LOG_ERROR, kTag, "SPINON_C183_HOST_ERROR=%s", output.data());
+    return 0;
+  }
+  __android_log_print(ANDROID_LOG_INFO, kTag, "SPINON_C183_HOST=%s", output.data());
+  return static_cast<jlong>(reinterpret_cast<uintptr_t>(host));
+}
+#endif
+
 extern "C" JNIEXPORT jlong JNICALL
 Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC132ScrollHost(
     JNIEnv *, jclass) {
@@ -1020,6 +1037,24 @@ Java_dev_spinon_bootstrap_AlphaImageFixtureNativeAdapter_evalFixture(
   const std::string report = "status=" + std::to_string(status) + " " + output.data();
   __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
                       kTag, "SPINON_C182_EVAL %s", report.c_str());
+  return ToByteArray(env, report);
+}
+#endif
+
+#if defined(SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST) && \
+    SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_ObjectFitPositionFixtureNativeAdapter_evalFixture(
+    JNIEnv *env, jclass, jlong host_handle) {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+  std::array<char, 32768> output{};
+  const int32_t status =
+      spinon_runtime_gpu_host_eval_c18_3_object_fit_position_fixture(
+          host, 10000, output.data(), output.size());
+  const std::string report = "status=" + std::to_string(status) + " " + output.data();
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
+                      kTag, "SPINON_C183_EVAL %s", report.c_str());
   return ToByteArray(env, report);
 }
 #endif

@@ -19,6 +19,7 @@ use super::super::{
     },
     runtime_layout::RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES,
     runtime_overflow::runtime_block_flex_overflow_clip_author_properties,
+    runtime_paint::RUNTIME_BLOCK_IMAGE_AUTHOR_PROPERTIES,
     runtime_paint::RUNTIME_BLOCK_PAINT_AUTHOR_PROPERTIES,
     runtime_scroll_gesture::runtime_block_flex_scroll_gesture_author_properties,
     runtime_stacking::runtime_block_flex_stacking_author_properties,
@@ -188,6 +189,7 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
             Some(RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES)
         }
         ComputedStyleProfile::RuntimeBlockPaintV1 => Some(RUNTIME_BLOCK_PAINT_AUTHOR_PROPERTIES),
+        ComputedStyleProfile::RuntimeBlockImageV1 => Some(RUNTIME_BLOCK_IMAGE_AUTHOR_PROPERTIES),
         ComputedStyleProfile::RuntimeBlockFormattingV1 => {
             Some(super::runtime_paint::RUNTIME_BLOCK_FORMATTING_AUTHOR_PROPERTIES)
         }
@@ -262,6 +264,9 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
                     allowed, true,
                 )
             }),
+        ComputedStyleProfile::RuntimeBlockImageV1 => allowed_author_properties
+            .and_then(|allowed| registry.first_unsupported_author_feature(allowed))
+            .or_else(|| registry.first_unsupported_runtime_block_image_value()),
         _ => allowed_author_properties
             .and_then(|allowed| registry.first_unsupported_author_feature(allowed)),
     };

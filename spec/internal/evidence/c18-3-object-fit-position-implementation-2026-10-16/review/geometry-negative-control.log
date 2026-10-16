@@ -1,0 +1,24 @@
+   Compiling spinon-render v0.1.0 (/private/tmp/spinon-c18-3-object-fit-position-impl-20261016/crates/spinon-render)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.32s
+     Running unittests src/lib.rs (target/debug/deps/spinon_render-2ebea6caa01801d2)
+
+running 1 test
+test runtime::tests::c18_3_object_fit::image_object_fit_computes_concrete_sizes_and_positions ... FAILED
+
+failures:
+
+---- runtime::tests::c18_3_object_fit::image_object_fit_computes_concrete_sizes_and_positions stdout ----
+
+thread 'runtime::tests::c18_3_object_fit::image_object_fit_computes_concrete_sizes_and_positions' (66196909) panicked at crates/spinon-render/src/runtime_tests/c18_3_object_fit.rs:100:5:
+assertion `left == right` failed
+  left: CssRect { x: 104.0, y: 14.0, width: 24.0, height: 12.0 }
+ right: CssRect { x: 104.0, y: 15.0, width: 24.0, height: 12.0 }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    runtime::tests::c18_3_object_fit::image_object_fit_computes_concrete_sizes_and_positions
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 82 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p spinon-render --lib`

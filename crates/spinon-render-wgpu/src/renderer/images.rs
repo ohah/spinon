@@ -1,7 +1,9 @@
 use std::{collections::HashMap, num::NonZeroU64, ops::Range};
 
 use sha2::{Digest, Sha256};
-use spinon_render::{RuntimeImageResourceKey, RuntimeRenderImage, RuntimeRenderSnapshot};
+use spinon_render::{
+    RuntimeImageResourceKey, RuntimeImageSampling, RuntimeRenderImage, RuntimeRenderSnapshot,
+};
 
 use crate::geometry::{ImageGeometry, ImageVertex, build_image_geometry};
 
@@ -16,6 +18,7 @@ struct ImageCacheKey {
     width: u32,
     height: u32,
     rgba_sha256: [u8; 32],
+    sampling: RuntimeImageSampling,
 }
 
 impl ImageCacheKey {
@@ -26,6 +29,7 @@ impl ImageCacheKey {
             width: image.width(),
             height: image.height(),
             rgba_sha256: Sha256::digest(image.rgba8()).into(),
+            sampling: image.sampling(),
         }
     }
 }
@@ -33,6 +37,7 @@ impl ImageCacheKey {
 struct GpuImage {
     _texture: wgpu::Texture,
     _view: wgpu::TextureView,
+    _output_encoding: wgpu::Buffer,
     bind_group: wgpu::BindGroup,
 }
 
@@ -50,8 +55,9 @@ impl PreparedImages {
 pub(crate) struct RuntimeImageRenderer {
     pipeline: wgpu::RenderPipeline,
     bind_group_layout: wgpu::BindGroupLayout,
-    sampler: wgpu::Sampler,
-    output_encoding: wgpu::Buffer,
+    nearest_sampler: wgpu::Sampler,
+    linear_sampler: wgpu::Sampler,
+    encode_srgb_output: u32,
     vertex_buffer: wgpu::Buffer,
     vertex_capacity: u64,
     vertex_count: u32,
@@ -61,7 +67,6 @@ pub(crate) struct RuntimeImageRenderer {
 impl RuntimeImageRenderer {
     pub(crate) fn new(
         device: &wgpu::Device,
-        queue: &wgpu::Queue,
         surface_format: wgpu::TextureFormat,
     ) -> Result<Self, String> {
         let out_of_memory_scope = device.push_error_scope(wgpu::ErrorFilter::OutOfMemory);
@@ -137,7 +142,7 @@ impl RuntimeImageRenderer {
             multiview_mask: None,
             cache: None,
         });
-        let sampler = device.create_sampler(&wgpu::SamplerDescriptor {
+        let nearest_sampler = device.create_sampler(&wgpu::SamplerDescriptor {
             label: Some("spinon-runtime-image-nearest-clamp-sampler"),
             address_mode_u: wgpu::AddressMode::ClampToEdge,
             address_mode_v: wgpu::AddressMode::ClampToEdge,
@@ -151,19 +156,21 @@ impl RuntimeImageRenderer {
             anisotropy_clamp: 1,
             border_color: None,
         });
-        let output_encoding = device.create_buffer(&wgpu::BufferDescriptor {
-            label: Some("spinon-runtime-image-output-encoding"),
-            size: IMAGE_OUTPUT_ENCODING_BYTES,
-            usage: wgpu::BufferUsages::UNIFORM | wgpu::BufferUsages::COPY_DST,
-            mapped_at_creation: false,
+        let linear_sampler = device.create_sampler(&wgpu::SamplerDescriptor {
+            label: Some("spinon-runtime-image-linear-clamp-sampler"),
+            address_mode_u: wgpu::AddressMode::ClampToEdge,
+            address_mode_v: wgpu::AddressMode::ClampToEdge,
+            address_mode_w: wgpu::AddressMode::ClampToEdge,
+            mag_filter: wgpu::FilterMode::Linear,
+            min_filter: wgpu::FilterMode::Linear,
+            mipmap_filter: wgpu::MipmapFilterMode::Nearest,
+            lod_min_clamp: 0.0,
+            lod_max_clamp: 0.0,
+            compare: None,
+            anisotropy_clamp: 1,
+            border_color: None,
         });
-        let encode_for_unorm_target = u32::from(!surface_format.is_srgb());
-        let output_encoding_words = [encode_for_unorm_target, 0, 0, 0];
-        queue.write_buffer(
-            &output_encoding,
-            0,
-            bytemuck::bytes_of(&output_encoding_words),
-        );
+        let encode_srgb_output = u32::from(!surface_format.is_srgb());
         let vertex_capacity = std::mem::size_of::<ImageVertex>() as u64;
         let vertex_buffer = device.create_buffer(&wgpu::BufferDescriptor {
             label: Some("spinon-runtime-image-vertices"),
@@ -181,8 +188,9 @@ impl RuntimeImageRenderer {
         Ok(Self {
             pipeline,
             bind_group_layout,
-            sampler,
-            output_encoding,
+            nearest_sampler,
+            linear_sampler,
+            encode_srgb_output,
             vertex_buffer,
             vertex_capacity,
             vertex_count: 0,
@@ -299,11 +307,32 @@ impl RuntimeImageRenderer {
             mip_level_count: 1,
             sample_count: 1,
             dimension: wgpu::TextureDimension::D2,
-            format: wgpu::TextureFormat::Rgba8UnormSrgb,
+            format: if image.sampling() == RuntimeImageSampling::LinearEncoded {
+                wgpu::TextureFormat::Rgba8Unorm
+            } else {
+                wgpu::TextureFormat::Rgba8UnormSrgb
+            },
             usage: wgpu::TextureUsages::TEXTURE_BINDING | wgpu::TextureUsages::COPY_DST,
             view_formats: &[],
         });
         let view = texture.create_view(&wgpu::TextureViewDescriptor::default());
+        let output_encoding = device.create_buffer(&wgpu::BufferDescriptor {
+            label: Some("spinon-runtime-image-output-encoding"),
+            size: IMAGE_OUTPUT_ENCODING_BYTES,
+            usage: wgpu::BufferUsages::UNIFORM | wgpu::BufferUsages::COPY_DST,
+            mapped_at_creation: false,
+        });
+        let output_encoding_words = [
+            self.encode_srgb_output,
+            u32::from(image.sampling() == RuntimeImageSampling::LinearEncoded),
+            0,
+            0,
+        ];
+        queue.write_buffer(
+            &output_encoding,
+            0,
+            bytemuck::bytes_of(&output_encoding_words),
+        );
         let bind_group = device.create_bind_group(&wgpu::BindGroupDescriptor {
             label: Some("spinon-runtime-image-bind-group"),
             layout: &self.bind_group_layout,
@@ -314,11 +343,15 @@ impl RuntimeImageRenderer {
                 },
                 wgpu::BindGroupEntry {
                     binding: 1,
-                    resource: wgpu::BindingResource::Sampler(&self.sampler),
+                    resource: wgpu::BindingResource::Sampler(match image.sampling() {
+                        RuntimeImageSampling::Nearest => &self.nearest_sampler,
+                        RuntimeImageSampling::Linear => &self.linear_sampler,
+                        RuntimeImageSampling::LinearEncoded => &self.nearest_sampler,
+                    }),
                 },
                 wgpu::BindGroupEntry {
                     binding: 2,
-                    resource: self.output_encoding.as_entire_binding(),
+                    resource: output_encoding.as_entire_binding(),
                 },
             ],
         });
@@ -351,6 +384,7 @@ impl RuntimeImageRenderer {
         Ok(GpuImage {
             _texture: texture,
             _view: view,
+            _output_encoding: output_encoding,
             bind_group,
         })
     }
@@ -397,76 +431,5 @@ impl RuntimeImageRenderer {
 }
 
 #[cfg(test)]
-mod tests {
-    use super::ImageCacheKey;
-    use spinon_core::{HostDocument, IntrinsicSizeRevision, NodeId};
-    use spinon_render::{RuntimeImageResourceKey, RuntimeRenderImage};
-    use std::sync::Arc;
-
-    #[test]
-    fn texture_identity_includes_source_node_content_and_dimensions() {
-        let document = HostDocument::new().unwrap().snapshot();
-        let source = RuntimeImageResourceKey::new(
-            document.generation(),
-            document.document_revision(),
-            document.render_tree_revision(),
-            IntrinsicSizeRevision::INITIAL,
-        );
-        let image = RuntimeRenderImage::new(
-            NodeId::new(1).unwrap(),
-            source,
-            1,
-            1,
-            Arc::from([1_u8, 2, 3, 255]),
-        )
-        .unwrap();
-        let base = ImageCacheKey::new(&image);
-        let changed_pixels =
-            RuntimeRenderImage::new(image.node_id(), source, 1, 1, Arc::from([3_u8, 2, 1, 255]))
-                .unwrap();
-        assert_ne!(base, ImageCacheKey::new(&changed_pixels));
-        let changed_dimensions = RuntimeRenderImage::new(
-            image.node_id(),
-            source,
-            2,
-            1,
-            Arc::from([1_u8, 2, 3, 255, 4, 5, 6, 255]),
-        )
-        .unwrap();
-        assert_ne!(base, ImageCacheKey::new(&changed_dimensions));
-        let other_source = RuntimeImageResourceKey::new(
-            document.generation(),
-            document.document_revision(),
-            document.render_tree_revision(),
-            IntrinsicSizeRevision::INITIAL.checked_next().unwrap(),
-        );
-        let changed_source = RuntimeRenderImage::new(
-            image.node_id(),
-            other_source,
-            1,
-            1,
-            Arc::from([1_u8, 2, 3, 255]),
-        )
-        .unwrap();
-        assert_ne!(base, ImageCacheKey::new(&changed_source));
-        let other_generation = HostDocument::new().unwrap().snapshot().generation();
-        let changed_generation = RuntimeRenderImage::new(
-            image.node_id(),
-            RuntimeImageResourceKey::new(
-                other_generation,
-                document.document_revision(),
-                document.render_tree_revision(),
-                IntrinsicSizeRevision::INITIAL,
-            ),
-            1,
-            1,
-            Arc::from([1_u8, 2, 3, 255]),
-        )
-        .unwrap();
-        assert_ne!(base, ImageCacheKey::new(&changed_generation));
-        assert_eq!(
-            base.source.document_revision(),
-            document.document_revision()
-        );
-    }
-}
+#[path = "images_tests.rs"]
+mod tests;

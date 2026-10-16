@@ -84,6 +84,7 @@ enum RuntimeCssProfile {
     RuntimeGpu,
     RegisteredPropertiesFixture,
     BlockPaintFixture,
+    BlockImageFixture,
     BlockFormattingFixture,
     BlockPositioningFixture,
     BlockFlexStackingFixture,
@@ -273,6 +274,11 @@ impl RuntimeSession {
         Self::new_with_css_profile(RuntimeCssProfile::BlockPaintFixture)
     }
 
+    /// C18.3 object-fit fixture 전용 runtime을 만듭니다.
+    pub fn new_runtime_gpu_block_image_fixture() -> Result<(Self, String), String> {
+        Self::new_with_css_profile(RuntimeCssProfile::BlockImageFixture)
+    }
+
     /// C09.1 일반 Block 흐름 fixture 전용 runtime을 만듭니다.
     pub fn new_runtime_gpu_block_formatting_fixture() -> Result<(Self, String), String> {
         Self::new_with_css_profile(RuntimeCssProfile::BlockFormattingFixture)
@@ -336,6 +342,9 @@ impl RuntimeSession {
             }
             RuntimeCssProfile::BlockPaintFixture => {
                 RuntimeUaCascadeCoordinator::new_runtime_gpu_block_paint()?
+            }
+            RuntimeCssProfile::BlockImageFixture => {
+                RuntimeUaCascadeCoordinator::new_runtime_gpu_block_image()?
             }
             RuntimeCssProfile::BlockFormattingFixture => {
                 RuntimeUaCascadeCoordinator::new_runtime_gpu_block_formatting()?

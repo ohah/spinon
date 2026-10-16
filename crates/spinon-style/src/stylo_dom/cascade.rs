@@ -56,7 +56,8 @@ pub use runtime_overflow::{
     first_unsupported_runtime_block_flex_overflow_clip_inline_property,
 };
 pub use runtime_paint::{
-    compute_runtime_block_formatting_cascade_with_stylesheets, compute_runtime_block_paint_cascade,
+    compute_runtime_block_formatting_cascade_with_stylesheets,
+    compute_runtime_block_image_cascade_with_stylesheets, compute_runtime_block_paint_cascade,
     compute_runtime_block_paint_cascade_with_stylesheets,
     compute_runtime_block_positioning_cascade_with_stylesheets,
     compute_runtime_flex_custom_properties_paint_cascade,
@@ -64,6 +65,7 @@ pub use runtime_paint::{
     compute_runtime_flex_paint_cascade,
     compute_runtime_flex_registered_properties_paint_cascade_with_stylesheets,
     first_unsupported_runtime_block_formatting_inline_property,
+    first_unsupported_runtime_block_image_inline_property,
     first_unsupported_runtime_block_paint_inline_property,
     first_unsupported_runtime_block_positioning_inline_property,
     first_unsupported_runtime_flex_paint_inline_property,

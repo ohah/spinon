@@ -271,7 +271,7 @@ impl RuntimeRenderer {
             surface.configure(&device, &config);
         }
         let pipeline = create_pipeline(&device, config.format);
-        let image_renderer = RuntimeImageRenderer::new(&device, &queue, config.format)
+        let image_renderer = RuntimeImageRenderer::new(&device, config.format)
             .map_err(RuntimeRendererError::Initialization)?;
         let vertex_capacity = std::mem::size_of::<Vertex>() as u64;
         let vertex_buffer = device.create_buffer(&wgpu::BufferDescriptor {

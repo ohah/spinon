@@ -8,6 +8,8 @@ mod c10_flex_wrap;
 mod c12_absolute;
 #[path = "runtime_layout_tests/c12_fixed.rs"]
 mod c12_fixed;
+#[path = "runtime_layout_tests/c18_3_object_fit.rs"]
+mod c18_3_object_fit;
 
 use std::sync::Arc;
 

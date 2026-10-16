@@ -183,6 +183,9 @@ where
         super::calculation::RuntimeCalculationProfile::BlockPaint => {
             first_unsupported_runtime_block_paint_inline_property(&view)
         }
+        super::calculation::RuntimeCalculationProfile::BlockImage => {
+            spinon_style::first_unsupported_runtime_block_image_inline_property(&view)
+        }
         super::calculation::RuntimeCalculationProfile::BlockFormatting => {
             spinon_style::first_unsupported_runtime_block_formatting_inline_property(&view)
         }

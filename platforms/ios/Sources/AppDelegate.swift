@@ -92,10 +92,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             || arguments.contains("--spinon-c124-stacking-context")
             || arguments.contains("--spinon-c124-depth-safety")
             || arguments.contains(where: { $0.hasPrefix("--spinon-c124-metal-surface-readback=") })
-#if SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1
+#if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
         let runRuntimeGpu = runRuntimeGpuBase
             || arguments.contains("--spinon-c181-image-paint")
             || arguments.contains("--spinon-c182-alpha-image")
+            || arguments.contains("--spinon-c183-object-fit-position")
 #else
         let runRuntimeGpu = runRuntimeGpuBase
 #endif

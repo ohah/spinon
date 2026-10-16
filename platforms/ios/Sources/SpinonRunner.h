@@ -50,6 +50,10 @@
     SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST
 + (uint64_t)createRuntimeGpuHostWithC18_2AlphaImageFixture;
 #endif
+#if defined(SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST) && \
+    SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST
++ (uint64_t)createRuntimeGpuHostWithC18_3ObjectFitPositionFixture;
+#endif
 #if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
 + (uint64_t)createRuntimeGpuHostWithC13_3GestureFixture:(int32_t)scenarioID;
 #endif
@@ -96,6 +100,10 @@
     SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST
 + (NSString *)evalRuntimeGpuC18_2AlphaImageFixture:(uint64_t)handle;
 #endif
+#if defined(SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST) && \
+    SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST
++ (NSString *)evalRuntimeGpuC18_3ObjectFitPositionFixture:(uint64_t)handle;
+#endif
 + (NSString *)evalRuntimeGpuC13_2ScrollFixture:(uint64_t)handle;
 #if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
 + (NSString *)evalRuntimeGpuC13_3GestureFixture:(uint64_t)handle;
@@ -137,6 +145,12 @@
 #if defined(SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST) && \
     SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST
 + (NSString *)requestRuntimeGpuC18_2SurfacePixelsForTest:(uint64_t)handle
+                                                   sampleXY:(const uint32_t *)sampleXY
+                                                sampleCount:(NSUInteger)sampleCount;
+#endif
+#if defined(SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST) && \
+    SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST
++ (NSString *)requestRuntimeGpuC18_3SurfacePixelsForTest:(uint64_t)handle
                                                    sampleXY:(const uint32_t *)sampleXY
                                                 sampleCount:(NSUInteger)sampleCount;
 #endif

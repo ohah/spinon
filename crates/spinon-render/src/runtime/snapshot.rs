@@ -108,6 +108,13 @@ impl RuntimeRenderSnapshot {
             if !image.source().matches(self.key) {
                 return Err(RuntimeRenderError::InvalidImageSource(image.node_id()));
             }
+            if image.object_style().is_some()
+                && image.object_style_revision() != Some(self.key.style_revision())
+            {
+                return Err(RuntimeRenderError::InvalidImageStyleRevision(
+                    image.node_id(),
+                ));
+            }
             let Some(render_box) = self
                 .boxes
                 .iter()
@@ -125,9 +132,7 @@ impl RuntimeRenderSnapshot {
                 return Err(RuntimeRenderError::UnsupportedImageBorder(image.node_id()));
             }
             let frame = render_box.frame_css_px();
-            if frame.width() != image.width() as f32 || frame.height() != image.height() as f32 {
-                return Err(RuntimeRenderError::InvalidImageFrame(image.node_id()));
-            }
+            image.object_rect_css_px(frame)?;
         }
         let mut snapshot = self.clone();
         snapshot.images = images.into();

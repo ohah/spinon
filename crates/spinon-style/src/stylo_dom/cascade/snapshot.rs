@@ -542,6 +542,8 @@ pub enum ComputedStyleProfile {
     RuntimeFlexRegisteredPropertiesPaintV1,
     /// C08의 Block layout·배경 paint와 foreground/font computed 값을 위한 제한 runtime profile입니다.
     RuntimeBlockPaintV1,
+    /// C18.3의 image object sizing 입력을 C08 Block paint 입력과 분리해 계산합니다.
+    RuntimeBlockImageV1,
     /// C09.1 일반 Block 흐름·containing block과 단색 배경 paint를 계산하는 제한 runtime profile입니다.
     RuntimeBlockFormattingV1,
     /// C12.2 Block absolute positioning과 기존 Block formatting 입력을 계산하는 runtime profile입니다.

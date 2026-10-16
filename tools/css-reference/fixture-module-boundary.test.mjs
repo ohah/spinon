@@ -404,9 +404,9 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
   assert.doesNotMatch(androidGpuDemoSource,
     /private\s+static\s+native\s+[^;]*(?:C181|c18_1)/i);
   assert.match(androidGpuDemoSource,
-    /cssViewportWidthLocked\(\)\s*\{[\s\S]*?imagePaintProbeRequested\) return 80\.0f/);
+    /cssViewportWidthLocked\(\)\s*\{[\s\S]*?imagePaintProbeRequested\)\s*\{\s*return imageObjectFitPositionProbeRequested \? 224\.0f : 80\.0f/);
   assert.match(androidGpuDemoSource,
-    /cssViewportHeightLocked\(\)\s*\{[\s\S]*?imagePaintProbeRequested\) return 40\.0f/);
+    /cssViewportHeightLocked\(\)\s*\{[\s\S]*?imagePaintProbeRequested\)\s*\{\s*return imageObjectFitPositionProbeRequested \? 72\.0f : 40\.0f/);
   assert.match(androidActivitySource,
     /BuildConfig\.SPINON_IMAGE_PAINT_FIXTURE_TEST[\s\S]*spinon_c181_image_paint/);
   assert.match(androidGradleSource,
@@ -446,7 +446,7 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
   assert.match(androidJniSource,
     /#if defined\(SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST\)[\s\S]*?spinon_runtime_gpu_host_new_c18_2_alpha_image_fixture/);
   assert.match(iosBuildSimulatorScript,
-    /c181_image_paint_fixture=1[\s\S]*SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST/);
+    /c18_image_paint_shared=\$\{c18_image_paint_shared\} c18_1_image_paint_fixture=\$\{SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST:-0\} c18_2_alpha_image_fixture=\$\{SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST:-0\}/);
   assert.match(iosProject,
     /SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST=\$\(SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST\)/);
   assert.match(iosProject,
@@ -458,5 +458,5 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
   assert.match(androidActivitySource,
     /BuildConfig\.SPINON_C18_2_ALPHA_IMAGE_FIXTURE_TEST[\s\S]*spinon_c182_alpha_image[\s\S]*imageAlphaFixtureRequested/);
   assert.match(iosAppDelegateSource,
-    /runRuntimeGpuBase[\s\S]*SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1[\s\S]*--spinon-c182-alpha-image/);
+    /#if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1[\s\S]*runRuntimeGpu = runRuntimeGpuBase[\s\S]*--spinon-c181-image-paint[\s\S]*--spinon-c182-alpha-image[\s\S]*--spinon-c183-object-fit-position/);
 });

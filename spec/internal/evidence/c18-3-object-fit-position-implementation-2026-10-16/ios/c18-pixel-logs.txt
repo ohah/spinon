@@ -1,0 +1,46 @@
+2026-10-16 20:15:34.444 Df SpinonBootstrap[4069:3f1577e] (Foundation) SPINON_C181_METAL_PIXEL_REQUESTED generation=1 viewport=80x40 drawable=240x120 scale_x=3.0 scale_y=3.0 format=Bgra8Unorm samples=9
+2026-10-16 20:15:34.457 Df SpinonBootstrap[4069:3f1577e] (Foundation) SPINON_C181_METAL_PIXEL_SAMPLE generation=1 id=visible-content-positive xy=28,28 rgba=255,255,64,255 expected=255,255,64,255 exact=true
+2026-10-16 20:15:34.457 Df SpinonBootstrap[4069:3f1577e] (Foundation) SPINON_C181_METAL_PIXEL_SAMPLE generation=1 id=visible-border-overpaint xy=76,31 rgba=0,255,64,255 expected=0,255,64,255 exact=true
+2026-10-16 20:15:34.457 Df SpinonBootstrap[4069:3f1577e] (Foundation) SPINON_C181_METAL_PIXEL_SAMPLE generation=1 id=visible-overflow-first xy=79,31 rgba=0,255,64,255 expected=0,255,64,255 exact=true
+2026-10-16 20:15:34.457 Df SpinonBootstrap[4069:3f1577e] (Foundation) SPINON_C181_METAL_PIXEL_SAMPLE generation=1 id=visible-overflow-middle xy=88,31 rgba=0,255,64,255 expected=0,255,64,255 exact=true
+2026-10-16 20:15:34.457 Df SpinonBootstrap[4069:3f1577e] (Foundation) SPINON_C181_METAL_PIXEL_SAMPLE generation=1 id=visible-overflow-last xy=97,31 rgba=0,255,64,255 expected=0,255,64,255 exact=true
+2026-10-16 20:15:34.457 Df SpinonBootstrap[4069:3f1577e] (Foundation) SPINON_C181_METAL_PIXEL_SAMPLE generation=1 id=visible-after-image xy=100,31 rgba=16,24,39,255 expected=16,24,39,255 exact=true
+2026-10-16 20:15:34.457 Df SpinonBootstrap[4069:3f1577e] (Foundation) SPINON_C181_METAL_PIXEL_SAMPLE generation=1 id=hidden-padding-positive xy=181,31 rgba=0,255,64,255 expected=0,255,64,255 exact=true
+2026-10-16 20:15:34.457 Df SpinonBootstrap[4069:3f1577e] (Foundation) SPINON_C181_METAL_PIXEL_SAMPLE generation=1 id=hidden-border-positive xy=184,31 rgba=240,198,116,255 expected=240,198,116,255 exact=true
+2026-10-16 20:15:34.457 Df SpinonBootstrap[4069:3f1577e] (Foundation) SPINON_C181_METAL_PIXEL_SAMPLE generation=1 id=hidden-outside xy=187,31 rgba=16,24,39,255 expected=16,24,39,255 exact=true
+2026-10-16 20:15:34.457 Df SpinonBootstrap[4069:3f1577e] (Foundation) SPINON_C181_METAL_PIXEL_SUMMARY status=matched generation=1 viewport=80x40 drawable=240x120 format=Bgra8Unorm expected=9 observed=9 matched=9 renderer=metal-drawable-before-compositor
+2026-10-16 20:15:36.655 Df SpinonBootstrap[4200:3f15877] SPINON_C182_METAL_PIXEL_REQUEST status=0 Metal surface ÌëúÎ≥∏ÏùÑ ÏöîÏ≤≠ÌñàÏäµÎãàÎã§ count=10
+2026-10-16 20:15:36.655 Df SpinonBootstrap[4200:3f15877] (Foundation) SPINON_C182_METAL_PIXEL_REQUESTED generation=1 viewport=80x40 drawable=240x120 scale_x=3.0 scale_y=3.0 format=Bgra8Unorm samples=10
+2026-10-16 20:15:36.665 Df SpinonBootstrap[4200:3f15877] (Foundation) SPINON_C182_METAL_PIXEL_SAMPLE generation=1 id=background-anchor xy=7,7 rgba=17,34,51,255 expected=17,34,51,255 exact=true
+2026-10-16 20:15:36.665 Df SpinonBootstrap[4200:3f15877] (Foundation) SPINON_C182_METAL_PIXEL_SAMPLE generation=1 id=transparent-interior xy=37,61 rgba=17,34,51,255 expected=17,34,51,255 exact=true
+2026-10-16 20:15:36.665 Df SpinonBootstrap[4200:3f15877] (Foundation) SPINON_C182_METAL_PIXEL_SAMPLE generation=1 id=transparent-right-edge xy=46,61 rgba=17,34,51,255 expected=17,34,51,255 exact=true
+2026-10-16 20:15:36.666 Df SpinonBootstrap[4200:3f15877] (Foundation) SPINON_C182_METAL_PIXEL_SAMPLE generation=1 id=partial-left-edge xy=49,61 rgba=118,37,65,255 expected=118,37,65,255 exact=true
+2026-10-16 20:15:36.666 Df SpinonBootstrap[4200:3f15877] (Foundation) SPINON_C182_METAL_PIXEL_SAMPLE generation=1 id=partial-interior xy=61,61 rgba=118,37,65,255 expected=118,37,65,255 exact=true
+2026-10-16 20:15:36.666 Df SpinonBootstrap[4200:3f15877] (Foundation) SPINON_C182_METAL_PIXEL_SAMPLE generation=1 id=partial-right-edge xy=70,61 rgba=118,37,65,255 expected=118,37,65,255 exact=true
+2026-10-16 20:15:36.666 Df SpinonBootstrap[4200:3f15877] (Foundation) SPINON_C182_METAL_PIXEL_SAMPLE generation=1 id=opaque-left-edge xy=73,61 rgba=32,200,64,255 expected=32,200,64,255 exact=true
+2026-10-16 20:15:36.666 Df SpinonBootstrap[4200:3f15877] (Foundation) SPINON_C182_METAL_PIXEL_SAMPLE generation=1 id=opaque-interior xy=85,61 rgba=32,200,64,255 expected=32,200,64,255 exact=true
+2026-10-16 20:15:36.666 Df SpinonBootstrap[4200:3f15877] (Foundation) SPINON_C182_METAL_PIXEL_SAMPLE generation=1 id=opaque-right-edge xy=94,61 rgba=32,200,64,255 expected=32,200,64,255 exact=true
+2026-10-16 20:15:36.666 Df SpinonBootstrap[4200:3f15877] (Foundation) SPINON_C182_METAL_PIXEL_SAMPLE generation=1 id=after-image-anchor xy=103,61 rgba=17,34,51,255 expected=17,34,51,255 exact=true
+2026-10-16 20:15:36.666 Df SpinonBootstrap[4200:3f15877] (Foundation) SPINON_C182_METAL_PIXEL_SUMMARY status=matched generation=1 viewport=80x40 drawable=240x120 format=Bgra8Unorm expected=10 observed=10 matched=10 renderer=metal-drawable-before-compositor
+2026-10-16 20:15:38.658 Df SpinonBootstrap[4312:3f15950] SPINON_C183_METAL_PIXEL_REQUEST status=0 Metal surface ÌëúÎ≥∏ÏùÑ ÏöîÏ≤≠ÌñàÏäµÎãàÎã§ count=19
+2026-10-16 20:15:38.659 Df SpinonBootstrap[4312:3f15950] (Foundation) SPINON_C183_METAL_PIXEL_REQUESTED generation=1 viewport=224x72 drawable=672x216 scale_x=3.0 scale_y=3.0 format=Bgra8Unorm samples=19
+2026-10-16 20:15:38.670 Df SpinonBootstrap[4312:3f15950] (Foundation) SPINON_C183_METAL_PIXEL_SAMPLE generation=1 id=root-background-anchor xy=7,7 rgba=17,34,51,255 expected=17,34,51,255 exact=true
+2026-10-16 20:15:38.670 Df SpinonBootstrap[4312:3f15950] (Foundation) SPINON_C183_METAL_PIXEL_SAMPLE generation=1 id=fill-top-left xy=28,28 rgba=24,32,232,255 expected=24,32,232,255 exact=true
+2026-10-16 20:15:38.670 Df SpinonBootstrap[4312:3f15950] (Foundation) SPINON_C183_METAL_PIXEL_SAMPLE generation=1 id=fill-bottom-right xy=91,91 rgba=209,214,51,255 expected=209,214,51,255 exact=true
+2026-10-16 20:15:38.670 Df SpinonBootstrap[4312:3f15950] (Foundation) SPINON_C183_METAL_PIXEL_SAMPLE generation=1 id=contain-background-top xy=127,28 rgba=210,10,180,255 expected=210,10,180,255 exact=true
+2026-10-16 20:15:38.670 Df SpinonBootstrap[4312:3f15950] (Foundation) SPINON_C183_METAL_PIXEL_SAMPLE generation=1 id=contain-image-top xy=127,46 rgba=24,32,232,255 expected=24,32,232,255 exact=true
+2026-10-16 20:15:38.670 Df SpinonBootstrap[4312:3f15950] (Foundation) SPINON_C183_METAL_PIXEL_SAMPLE generation=1 id=contain-image-bottom xy=127,76 rgba=24,214,206,255 expected=24,214,206,255 exact=true
+2026-10-16 20:15:38.670 Df SpinonBootstrap[4312:3f15950] (Foundation) SPINON_C183_METAL_PIXEL_SAMPLE generation=1 id=contain-quarter-image xy=226,55 rgba=24,32,232,255 expected=24,32,232,255 exact=true
+2026-10-16 20:15:38.670 Df SpinonBootstrap[4312:3f15950] (Foundation) SPINON_C183_METAL_PIXEL_SAMPLE generation=1 id=cover-center-left xy=316,37 rgba=61,32,201,255 expected=61,32,201,255 exact=true
+2026-10-16 20:15:38.670 Df SpinonBootstrap[4312:3f15950] (Foundation) SPINON_C183_METAL_PIXEL_SAMPLE generation=1 id=cover-center-right xy=379,37 rgba=172,32,108,255 expected=172,32,108,255 exact=true
+2026-10-16 20:15:38.670 Df SpinonBootstrap[4312:3f15950] (Foundation) SPINON_C183_METAL_PIXEL_SAMPLE generation=1 id=cover-start-left xy=412,37 rgba=24,32,232,255 expected=24,32,232,255 exact=true
+2026-10-16 20:15:38.670 Df SpinonBootstrap[4312:3f15950] (Foundation) SPINON_C183_METAL_PIXEL_SAMPLE generation=1 id=cover-end-left xy=508,37 rgba=135,32,139,255 expected=135,32,139,255 exact=true
+2026-10-16 20:15:38.670 Df SpinonBootstrap[4312:3f15950] (Foundation) SPINON_C183_METAL_PIXEL_SAMPLE generation=1 id=none-clipped-object xy=31,136 rgba=98,32,170,255 expected=98,32,170,255 exact=true
+2026-10-16 20:15:38.670 Df SpinonBootstrap[4312:3f15950] (Foundation) SPINON_C183_METAL_PIXEL_SAMPLE generation=1 id=none-outside-content-box xy=76,136 rgba=17,34,51,255 expected=17,34,51,255 exact=true
+2026-10-16 20:15:38.670 Df SpinonBootstrap[4312:3f15950] (Foundation) SPINON_C183_METAL_PIXEL_SAMPLE generation=1 id=scale-down-shrink-background xy=127,124 rgba=210,10,180,255 expected=210,10,180,255 exact=true
+2026-10-16 20:15:38.670 Df SpinonBootstrap[4312:3f15950] (Foundation) SPINON_C183_METAL_PIXEL_SAMPLE generation=1 id=scale-down-shrink-image xy=136,139 rgba=89,55,174,255 expected=89,55,174,255 exact=true
+2026-10-16 20:15:38.670 Df SpinonBootstrap[4312:3f15950] (Foundation) SPINON_C183_METAL_PIXEL_SAMPLE generation=1 id=scale-down-no-upscale-image xy=247,142 rgba=61,32,201,255 expected=61,32,201,255 exact=true
+2026-10-16 20:15:38.670 Df SpinonBootstrap[4312:3f15950] (Foundation) SPINON_C183_METAL_PIXEL_SAMPLE generation=1 id=initial-values-natural xy=340,124 rgba=24,32,232,255 expected=24,32,232,255 exact=true
+2026-10-16 20:15:38.670 Df SpinonBootstrap[4312:3f15950] (Foundation) SPINON_C183_METAL_PIXEL_SAMPLE generation=1 id=contain-extended-position-image xy=436,181 rgba=24,32,232,255 expected=24,32,232,255 exact=true
+2026-10-16 20:15:38.670 Df SpinonBootstrap[4312:3f15950] (Foundation) SPINON_C183_METAL_PIXEL_SAMPLE generation=1 id=cover-extended-position-image xy=532,133 rgba=172,32,108,255 expected=172,32,108,255 exact=true
+2026-10-16 20:15:38.670 Df SpinonBootstrap[4312:3f15950] (Foundation) SPINON_C183_METAL_PIXEL_SUMMARY status=matched generation=1 viewport=224x72 drawable=672x216 format=Bgra8Unorm expected=19 observed=19 matched=19 renderer=metal-drawable-before-compositor
