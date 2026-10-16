@@ -1,0 +1,235 @@
+{
+  "generated_at": "2026-10-16T23:36:51.931Z",
+  "phase": "publish2",
+  "source_base_commit": "0c900ea8ba2f63ae95814b779fda4c9b595b0e12",
+  "backup_root_relative": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17",
+  "files_verified": 28,
+  "bytes_verified": 1704660,
+  "all_match": true,
+  "files": [
+    {
+      "path": "0001-conformance.html",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/0001-conformance.html",
+      "bytes": 36973,
+      "expected_sha256": "3421f1394ebb0afd69723e6a5b8a21b90dae5ddf4aa56d77c09639b863b48b86",
+      "sha256": "3421f1394ebb0afd69723e6a5b8a21b90dae5ddf4aa56d77c09639b863b48b86",
+      "matches": true
+    },
+    {
+      "path": "404.html",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/404.html",
+      "bytes": 8512,
+      "expected_sha256": "773e19131b3afd0d35193861993dd313720ae08b610e7945a5035f3dcd326525",
+      "sha256": "773e19131b3afd0d35193861993dd313720ae08b610e7945a5035f3dcd326525",
+      "matches": true
+    },
+    {
+      "path": "internal/0070-c15-1-inline-text-layout.html",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/internal/0070-c15-1-inline-text-layout.html",
+      "bytes": 38811,
+      "expected_sha256": "edc6b1034c748a7f97f34f8c8fc2872058b13235057c7bb574b8628a30c08f6d",
+      "sha256": "edc6b1034c748a7f97f34f8c8fc2872058b13235057c7bb574b8628a30c08f6d",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-roadmap-pr-delta-review-20-2026-10-17.html",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/internal/evidence/c15-3-roadmap-pr-delta-review-20-2026-10-17.html",
+      "bytes": 26426,
+      "expected_sha256": "d85aa544a5ce143b5a1daedf02be53d039184af91246383d8c4b72ae2f9d2fa5",
+      "sha256": "d85aa544a5ce143b5a1daedf02be53d039184af91246383d8c4b72ae2f9d2fa5",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-tailnet-preview-sync-2026-10-17/pr-delta-review-20.html",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/internal/evidence/c15-3-tailnet-preview-sync-2026-10-17/pr-delta-review-20.html",
+      "bytes": 28587,
+      "expected_sha256": "d83ae79848d5b7c118d9a536a79b1777daffcccfe6a070f9c4e0b3a780213234",
+      "sha256": "d83ae79848d5b7c118d9a536a79b1777daffcccfe6a070f9c4e0b3a780213234",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-tailnet-preview-sync-2026-10-17/pr-delta-review-20.md",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/internal/evidence/c15-3-tailnet-preview-sync-2026-10-17/pr-delta-review-20.md",
+      "bytes": 5416,
+      "expected_sha256": "30f6e0a923dafcaf5bc4eddb416bb8830879f373d07f47068f8058b6db4e7baa",
+      "sha256": "30f6e0a923dafcaf5bc4eddb416bb8830879f373d07f47068f8058b6db4e7baa",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-tailnet-preview-sync-2026-10-17/README.html",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/internal/evidence/c15-3-tailnet-preview-sync-2026-10-17/README.html",
+      "bytes": 26591,
+      "expected_sha256": "618c39a81308564940036c2900f92b56de691bac74f8a930fb2ad20cdcea7686",
+      "sha256": "618c39a81308564940036c2900f92b56de691bac74f8a930fb2ad20cdcea7686",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-tailnet-preview-sync-2026-10-17/README.md",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/internal/evidence/c15-3-tailnet-preview-sync-2026-10-17/README.md",
+      "bytes": 3582,
+      "expected_sha256": "000e70b6afc4a57461bcb1ba3970f788f85341ccf8a33bc59f5aa05116e684ac",
+      "sha256": "000e70b6afc4a57461bcb1ba3970f788f85341ccf8a33bc59f5aa05116e684ac",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-unicode-shaping-plan-review-20-2026-10-17.html",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/internal/evidence/c15-3-unicode-shaping-plan-review-20-2026-10-17.html",
+      "bytes": 28092,
+      "expected_sha256": "d25056b182171f48cfd6beda9e89d88da05c71b7444b2baf0545813278b609c0",
+      "sha256": "d25056b182171f48cfd6beda9e89d88da05c71b7444b2baf0545813278b609c0",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/README.html",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/README.html",
+      "bytes": 31865,
+      "expected_sha256": "ac48a7d0a6ef8236538ed4620f10e222dffce019401016f3c79d80745f0f2052",
+      "sha256": "ac48a7d0a6ef8236538ed4620f10e222dffce019401016f3c79d80745f0f2052",
+      "matches": true
+    },
+    {
+      "path": "internal/README.html",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/internal/README.html",
+      "bytes": 151097,
+      "expected_sha256": "36543afb2e7c5243dfe84098e7d28cd8dae7a04c3eda48e7dba23a6bf5c29e77",
+      "sha256": "36543afb2e7c5243dfe84098e7d28cd8dae7a04c3eda48e7dba23a6bf5c29e77",
+      "matches": true
+    },
+    {
+      "path": "internal/README.md",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/internal/README.md",
+      "bytes": 106470,
+      "expected_sha256": "05a606fcbf2f06eb437f1f5920cd66eca319088cd123c50199d1976bdbc4ef47",
+      "sha256": "05a606fcbf2f06eb437f1f5920cd66eca319088cd123c50199d1976bdbc4ef47",
+      "matches": true
+    },
+    {
+      "path": "spec/0001-conformance.html",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/spec/0001-conformance.html",
+      "bytes": 36973,
+      "expected_sha256": "3421f1394ebb0afd69723e6a5b8a21b90dae5ddf4aa56d77c09639b863b48b86",
+      "sha256": "3421f1394ebb0afd69723e6a5b8a21b90dae5ddf4aa56d77c09639b863b48b86",
+      "matches": true
+    },
+    {
+      "path": "spec/404.html",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/spec/404.html",
+      "bytes": 8512,
+      "expected_sha256": "773e19131b3afd0d35193861993dd313720ae08b610e7945a5035f3dcd326525",
+      "sha256": "773e19131b3afd0d35193861993dd313720ae08b610e7945a5035f3dcd326525",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/0070-c15-1-inline-text-layout.html",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/spec/internal/0070-c15-1-inline-text-layout.html",
+      "bytes": 38811,
+      "expected_sha256": "edc6b1034c748a7f97f34f8c8fc2872058b13235057c7bb574b8628a30c08f6d",
+      "sha256": "edc6b1034c748a7f97f34f8c8fc2872058b13235057c7bb574b8628a30c08f6d",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-roadmap-pr-delta-review-20-2026-10-17.html",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/spec/internal/evidence/c15-3-roadmap-pr-delta-review-20-2026-10-17.html",
+      "bytes": 26426,
+      "expected_sha256": "d85aa544a5ce143b5a1daedf02be53d039184af91246383d8c4b72ae2f9d2fa5",
+      "sha256": "d85aa544a5ce143b5a1daedf02be53d039184af91246383d8c4b72ae2f9d2fa5",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-tailnet-preview-sync-2026-10-17/pr-delta-review-20.html",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/spec/internal/evidence/c15-3-tailnet-preview-sync-2026-10-17/pr-delta-review-20.html",
+      "bytes": 28587,
+      "expected_sha256": "d83ae79848d5b7c118d9a536a79b1777daffcccfe6a070f9c4e0b3a780213234",
+      "sha256": "d83ae79848d5b7c118d9a536a79b1777daffcccfe6a070f9c4e0b3a780213234",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-tailnet-preview-sync-2026-10-17/pr-delta-review-20.md",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/spec/internal/evidence/c15-3-tailnet-preview-sync-2026-10-17/pr-delta-review-20.md",
+      "bytes": 5416,
+      "expected_sha256": "30f6e0a923dafcaf5bc4eddb416bb8830879f373d07f47068f8058b6db4e7baa",
+      "sha256": "30f6e0a923dafcaf5bc4eddb416bb8830879f373d07f47068f8058b6db4e7baa",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-tailnet-preview-sync-2026-10-17/README.html",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/spec/internal/evidence/c15-3-tailnet-preview-sync-2026-10-17/README.html",
+      "bytes": 26591,
+      "expected_sha256": "618c39a81308564940036c2900f92b56de691bac74f8a930fb2ad20cdcea7686",
+      "sha256": "618c39a81308564940036c2900f92b56de691bac74f8a930fb2ad20cdcea7686",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-tailnet-preview-sync-2026-10-17/README.md",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/spec/internal/evidence/c15-3-tailnet-preview-sync-2026-10-17/README.md",
+      "bytes": 3582,
+      "expected_sha256": "000e70b6afc4a57461bcb1ba3970f788f85341ccf8a33bc59f5aa05116e684ac",
+      "sha256": "000e70b6afc4a57461bcb1ba3970f788f85341ccf8a33bc59f5aa05116e684ac",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-unicode-shaping-plan-review-20-2026-10-17.html",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/spec/internal/evidence/c15-3-unicode-shaping-plan-review-20-2026-10-17.html",
+      "bytes": 28092,
+      "expected_sha256": "d25056b182171f48cfd6beda9e89d88da05c71b7444b2baf0545813278b609c0",
+      "sha256": "d25056b182171f48cfd6beda9e89d88da05c71b7444b2baf0545813278b609c0",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/README.html",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/spec/internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/README.html",
+      "bytes": 31865,
+      "expected_sha256": "ac48a7d0a6ef8236538ed4620f10e222dffce019401016f3c79d80745f0f2052",
+      "sha256": "ac48a7d0a6ef8236538ed4620f10e222dffce019401016f3c79d80745f0f2052",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/README.html",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/spec/internal/README.html",
+      "bytes": 151097,
+      "expected_sha256": "36543afb2e7c5243dfe84098e7d28cd8dae7a04c3eda48e7dba23a6bf5c29e77",
+      "sha256": "36543afb2e7c5243dfe84098e7d28cd8dae7a04c3eda48e7dba23a6bf5c29e77",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/README.md",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/spec/internal/README.md",
+      "bytes": 106470,
+      "expected_sha256": "05a606fcbf2f06eb437f1f5920cd66eca319088cd123c50199d1976bdbc4ef47",
+      "sha256": "05a606fcbf2f06eb437f1f5920cd66eca319088cd123c50199d1976bdbc4ef47",
+      "matches": true
+    },
+    {
+      "path": "spec/STATUS.html",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/spec/STATUS.html",
+      "bytes": 333797,
+      "expected_sha256": "10b4d18cccb12c49fb402d8fc8e3d8f468bca0925f31fc9a6310a115a4614f7f",
+      "sha256": "10b4d18cccb12c49fb402d8fc8e3d8f468bca0925f31fc9a6310a115a4614f7f",
+      "matches": true
+    },
+    {
+      "path": "spec/tests/fixtures/resources/c15/c15-3/README.html",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/spec/tests/fixtures/resources/c15/c15-3/README.html",
+      "bytes": 26111,
+      "expected_sha256": "144dc98be76270f600c525c164c57f3816149f7cdd39c78113eb241d4af6b312",
+      "sha256": "144dc98be76270f600c525c164c57f3816149f7cdd39c78113eb241d4af6b312",
+      "matches": true
+    },
+    {
+      "path": "STATUS.html",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/STATUS.html",
+      "bytes": 333797,
+      "expected_sha256": "10b4d18cccb12c49fb402d8fc8e3d8f468bca0925f31fc9a6310a115a4614f7f",
+      "sha256": "10b4d18cccb12c49fb402d8fc8e3d8f468bca0925f31fc9a6310a115a4614f7f",
+      "matches": true
+    },
+    {
+      "path": "tests/fixtures/resources/c15/c15-3/README.html",
+      "backup_path": "backup/c15-3-tailnet-preview-sync-publish2-2026-10-17/tests/fixtures/resources/c15/c15-3/README.html",
+      "bytes": 26111,
+      "expected_sha256": "144dc98be76270f600c525c164c57f3816149f7cdd39c78113eb241d4af6b312",
+      "sha256": "144dc98be76270f600c525c164c57f3816149f7cdd39c78113eb241d4af6b312",
+      "matches": true
+    }
+  ]
+}
