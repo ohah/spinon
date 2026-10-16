@@ -1,0 +1,11 @@
+   Compiling spinon-ffi v0.1.0 (/private/tmp/spinon-c14-2-image-ratio-live-v8-implementation-20261016/crates/spinon-ffi)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.65s
+     Running unittests src/lib.rs (target/debug/deps/spinon_ffi-a2c5e031e78397cf)
+
+running 4 tests
+test fixtures::c14_2_app::tests::live_case_mapping_matches_the_21_plus_8_oracle_order ... ok
+test fixtures::c14_2_app::tests::embedded_png_matches_both_inventory_hashes_and_dimensions ... ok
+test fixtures::c14_2_app::tests::live_case_styles_match_the_original_html_fixture ... ok
+test fixtures::c14_2_app::tests::chrome_oracles_parse_png_natural_size_and_all_case_geometry ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 18 filtered out; finished in 0.00s

@@ -44,7 +44,7 @@ assert_eq!(output.revision.intrinsic_size(), measurements.revision());
 
 `spinon-style-to-layout`의 snapshot overload는 선택 HostDocument 하위 트리에서 HTML namespace `img`만 허용하고 보이는 이미지의 auto 축에 metadata entry를 요구합니다. 부분 auto 축은 natural/preferred ratio와 min/max로 계산하고, 성공 metadata가 비어 있으면 `300×150` 기본 객체 크기를 사용합니다. natural ratio min/max는 CSS 2.2의 10개 constraint violation 조합으로 계산하며 numeric `aspect-ratio`는 `box-sizing` 기준 상자에 ratio를 적용합니다. Flex의 자식 측정 경계에도 지정 축, ratio transfer, min/max 결과를 전달해 natural auto-axis 크기가 최종 used size로 오인되지 않게 합니다. ratio만 있는 auto/auto intrinsic contribution, `aspect-ratio:auto <ratio>`, authored `aspect-ratio`와 min/max 조합, percentage/calc width·height·min/max·padding은 거부합니다. 고정 크기 이미지는 자연 metadata가 있어도 크기 결과에 사용하지 않습니다. `display:none` 또는 숨겨진 조상 아래에 있는 이미지는 측정을 요구하지 않습니다. layout leaf에는 Taffy `item_is_replaced`와 custom used-size 결과를 함께 전달해 Taffy의 상이한 ratio 보정이 계산 결과를 덮지 않게 합니다.
 
-현재 이 API에 값을 전달하는 decoder/resource owner는 없고 테스트가 측정 map을 직접 만듭니다. 이미지 decode, cache 교체, 재계산 scheduling, 앱 runtime integration은 완료되지 않았습니다.
+제품 runtime에서 이 API에 값을 전달하는 resource owner는 아직 없습니다. U05.1의 고정 PNG decoder는 제한된 fixture 입력이며, C14.1/C14.2 opt-in 앱 fixture는 고정 PNG를 snapshot 경로에 전달해 Chrome oracle과 비교합니다. 이 fixture route는 제품 network/decode/cache, 비동기 replacement, 재계산 scheduling 또는 제품 앱 runtime 연결을 구현하지 않습니다. [C14.2 양 플랫폼 실행·기본/opt-in 경계](evidence/c14-2-live-v8-runtime-2026-10-16/README.md)를 참고하세요.
 
 HostDocument 입력은 `HostDocumentSnapshot`, 해당 snapshot에 속한 HostRoot 직속 요소 handle, 같은 요소 하위 트리의 스타일 맵을 받습니다. HostDocument 원본의 generation·node ID·자식 순서·revision은 그대로 유지합니다. 이 변환은 CSS cascade 결과를 만들지 않으며 `LayoutStyle`은 여전히 호출자가 전달합니다.
 

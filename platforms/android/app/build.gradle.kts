@@ -82,6 +82,12 @@ val spinonC141AppFixtureTestValue = spinonC141AppFixtureTest.get()
 require(spinonC141AppFixtureTestValue == "0" || spinonC141AppFixtureTestValue == "1") {
     "SPINON_ENABLE_C14_1_APP_FIXTURE_TEST는 0 또는 1이어야 합니다."
 }
+val spinonC142AppFixtureTest =
+    providers.environmentVariable("SPINON_ENABLE_C14_2_APP_FIXTURE_TEST").orElse("0")
+val spinonC142AppFixtureTestValue = spinonC142AppFixtureTest.get()
+require(spinonC142AppFixtureTestValue == "0" || spinonC142AppFixtureTestValue == "1") {
+    "SPINON_ENABLE_C14_2_APP_FIXTURE_TEST는 0 또는 1이어야 합니다."
+}
 val spinonC143AppFixtureTest =
     providers.environmentVariable("SPINON_ENABLE_C14_3_APP_FIXTURE_TEST").orElse("0")
 val spinonC143AppFixtureTestValue = spinonC143AppFixtureTest.get()
@@ -111,6 +117,7 @@ val prepareSpinonBootstrap by tasks.registering(Exec::class) {
     environment("SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST", spinonC132ScrollFixtureTestValue)
     environment("SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST", spinonC133GestureFixtureTestValue)
     environment("SPINON_ENABLE_C14_1_APP_FIXTURE_TEST", spinonC141AppFixtureTestValue)
+    environment("SPINON_ENABLE_C14_2_APP_FIXTURE_TEST", spinonC142AppFixtureTestValue)
     environment("SPINON_ENABLE_C14_3_APP_FIXTURE_TEST", spinonC143AppFixtureTestValue)
     commandLine("bash", "tools/build-android.sh")
 }
@@ -182,6 +189,11 @@ android {
             "boolean",
             "SPINON_C141_APP_FIXTURE_TEST",
             (spinonC141AppFixtureTestValue == "1").toString(),
+        )
+        buildConfigField(
+            "boolean",
+            "SPINON_C142_APP_FIXTURE_TEST",
+            (spinonC142AppFixtureTestValue == "1").toString(),
         )
         buildConfigField(
             "boolean",

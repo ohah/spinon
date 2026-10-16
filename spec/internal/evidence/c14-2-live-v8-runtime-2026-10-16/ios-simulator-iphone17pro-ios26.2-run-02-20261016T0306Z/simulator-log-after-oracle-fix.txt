@@ -1,0 +1,4 @@
+getpwuid_r did not find a match for uid 501
+Timestamp               Ty Process[PID:TID]
+2026-10-16 12:08:04.075 E  SpinonBootstrap[56007:3b89074] SPINON_C142_APP_FIXTURE part=1/1 payload={"detail":"block CSS cascade: stylesheet c14-2-live-v8-block가 지원 CSS 입력 profile 밖 기능을 사용합니다: 지원하지 않는 CSS 선언 border-image-outset","status":"error"}
+2026-10-16 12:08:04.077 E  SpinonBootstrap[56007:3b89041] [dev.spinon.bootstrap:c14-2-fixture] SPINON_C142_SIMULATOR_REPORT status=error

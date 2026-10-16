@@ -43,6 +43,13 @@ case "${SPINON_ENABLE_C14_1_APP_FIXTURE_TEST:-0}" in
     exit 2
     ;;
 esac
+case "${SPINON_ENABLE_C14_2_APP_FIXTURE_TEST:-0}" in
+  0|1) ;;
+  *)
+    echo "SPINON_ENABLE_C14_2_APP_FIXTURE_TEST은 0 또는 1이어야 합니다." >&2
+    exit 2
+    ;;
+esac
 case "${SPINON_ENABLE_C14_3_APP_FIXTURE_TEST:-0}" in
   0|1) ;;
   *)
@@ -176,6 +183,9 @@ fi
 if [[ "${SPINON_ENABLE_C14_1_APP_FIXTURE_TEST:-0}" == "1" ]]; then
   append_ffi_feature c14-1-app-fixture-test
 fi
+if [[ "${SPINON_ENABLE_C14_2_APP_FIXTURE_TEST:-0}" == "1" ]]; then
+  append_ffi_feature c14-2-app-fixture-test
+fi
 if [[ "${SPINON_ENABLE_C14_3_APP_FIXTURE_TEST:-0}" == "1" ]]; then
   append_ffi_feature c14-3-app-fixture-test
 fi
@@ -194,7 +204,7 @@ fi
 if [[ "${SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST:-0}" == "1" ]]; then
   append_ffi_feature c12-4-worker-stack-residency-test
 fi
-echo "SPINON_IOS_NATIVE_FEATURES ffi=${ffi_features:-none} c11_grid_cpp=${c11_grid_surface_pixel_cpp_flag} c13_1_fixture=${SPINON_ENABLE_C13_1_OVERFLOW_CLIP_FIXTURE_TEST:-0} c13_2_fixture=${SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST:-0} c13_3_fixture=${SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST:-0} c14_1_app_fixture=${SPINON_ENABLE_C14_1_APP_FIXTURE_TEST:-0} c14_3_app_fixture=${SPINON_ENABLE_C14_3_APP_FIXTURE_TEST:-0}"
+echo "SPINON_IOS_NATIVE_FEATURES ffi=${ffi_features:-none} c11_grid_cpp=${c11_grid_surface_pixel_cpp_flag} c13_1_fixture=${SPINON_ENABLE_C13_1_OVERFLOW_CLIP_FIXTURE_TEST:-0} c13_2_fixture=${SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST:-0} c13_3_fixture=${SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST:-0} c14_1_app_fixture=${SPINON_ENABLE_C14_1_APP_FIXTURE_TEST:-0} c14_2_app_fixture=${SPINON_ENABLE_C14_2_APP_FIXTURE_TEST:-0} c14_3_app_fixture=${SPINON_ENABLE_C14_3_APP_FIXTURE_TEST:-0}"
 
 case "$platform_name" in
   iphonesimulator)

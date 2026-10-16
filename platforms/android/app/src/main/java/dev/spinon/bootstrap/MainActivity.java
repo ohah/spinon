@@ -104,6 +104,7 @@ public final class MainActivity extends Activity {
     private static native byte[] nativeSessionShutdownProbe();
     private static native byte[] nativeSessionUaCascadeProbe();
     private static native byte[] nativeC141IntrinsicSizeFixture();
+    private static native byte[] nativeC142ImageRatioFixture();
     private static native byte[] nativeC143IntrinsicContributionsFixture();
     private static native int nativeSessionCancel(long session);
     private static native int nativeSessionMemoryPressure(long session, int level);
@@ -200,6 +201,10 @@ public final class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getIntent().getBooleanExtra("spinon_c142_image_ratio", false)) {
+            showC142ImageRatioFixture();
+            return;
+        }
         if (getIntent().getBooleanExtra("spinon_c143_intrinsic_contributions", false)) {
             showC143IntrinsicContributionsFixture();
             return;
@@ -648,6 +653,192 @@ public final class MainActivity extends Activity {
     public boolean dispatchGenericMotionEvent(MotionEvent event) {
         if (runtimeGpuDemo != null && runtimeGpuDemo.handleC133WheelMotionEvent(event)) return true;
         return super.dispatchGenericMotionEvent(event);
+    }
+
+    private void showC142ImageRatioFixture() {
+        TextView reportView = new TextView(this);
+        reportView.setTextColor(Color.WHITE);
+        reportView.setTextSize(13);
+        reportView.setTypeface(Typeface.MONOSPACE);
+        reportView.setPadding(32, 72, 32, 48);
+        reportView.setBackgroundColor(Color.rgb(14, 19, 31));
+        ScrollView scroll = new ScrollView(this);
+        scroll.setFillViewport(true);
+        scroll.addView(reportView);
+        setContentView(scroll);
+
+        if (hasConflictingC142FixtureRoute()) {
+            reportView.setText("C14.2 · 잘못된 실행 인자\n\n다른 fixture route와 함께 실행할 수 없습니다.");
+            Log.e(TAG, "SPINON_C142_ARGUMENT_ERROR conflicting=fixture-route");
+            return;
+        }
+        if (!BuildConfig.SPINON_C142_APP_FIXTURE_TEST) {
+            reportView.setText("C14.2 · fixture-test 빌드가 꺼져 있습니다.");
+            Log.e(TAG, "SPINON_C142_DISABLED fixture-test feature is off");
+            return;
+        }
+
+        reportView.setText("C14.2 · live V8 이미지 비율 계산 중…");
+        try {
+            bootstrapExecutor.execute(() -> {
+                byte[] encoded = nativeC142ImageRatioFixture();
+                String report = encoded == null
+                        ? "{\"status\":\"error\",\"detail\":\"empty JNI report\"}"
+                        : new String(encoded, StandardCharsets.UTF_8);
+                boolean passed = c142ReportMatches(report);
+                logC142FixtureReport(report, passed);
+                runOnUiThread(() -> {
+                    if (!activityClosing) {
+                        reportView.setText(formatC142Report(report, passed));
+                    }
+                });
+            });
+        } catch (RejectedExecutionException rejected) {
+            reportView.setText("C14.2 · 계산 작업을 시작하지 못했습니다.");
+            Log.e(TAG, "SPINON_C142_EXECUTION_ERROR executor=rejected", rejected);
+        }
+    }
+
+    private boolean c142ReportMatches(String report) {
+        try {
+            JSONObject result = new JSONObject(report);
+            JSONArray documents = result.optJSONArray("documents");
+            JSONArray cases = result.optJSONArray("cases");
+            if (!"ok".equals(result.optString("status"))
+                    || !"live-v8".equals(result.optString("document_origin"))
+                    || result.optInt("case_count", -1) != 29
+                    || result.optInt("matched_count", -1) != 29
+                    || documents == null || documents.length() != 2
+                    || cases == null || cases.length() != 29) {
+                return false;
+            }
+            for (int index = 0; index < documents.length(); index++) {
+                JSONObject document = documents.optJSONObject(index);
+                int expectedCount = index == 0 ? 21 : 8;
+                String expectedKind = index == 0 ? "block" : "flex";
+                if (document == null
+                        || !expectedKind.equals(document.optString("kind"))
+                        || document.optInt("case_count", -1) != expectedCount
+                        || document.optInt("matched_count", -1) != expectedCount
+                        || !document.optBoolean("intrinsic_source_matches")
+                        || !document.optBoolean("intrinsic_revision_matches")
+                        || !document.optBoolean("style_stamp_matches")
+                        || !document.optBoolean("style_diagnostics_empty")) {
+                    return false;
+                }
+            }
+            java.util.HashSet<String> ids = new java.util.HashSet<>();
+            for (int index = 0; index < cases.length(); index++) {
+                JSONObject item = cases.optJSONObject(index);
+                if (item == null || !"ok".equals(item.optString("status"))
+                        || !item.optBoolean("natural_size_matches")
+                        || !item.optBoolean("frame_matches")
+                        || !item.optBoolean("source_stamp_matches")
+                        || !item.optBoolean("parent_size_matches")
+                        || !item.optBoolean("align_items_matches")
+                        || !ids.add(item.optString("id"))) {
+                    return false;
+                }
+                JSONArray frame = item.optJSONArray("frame_css_px");
+                if (frame == null || frame.length() != 4) return false;
+                for (int field = 0; field < frame.length(); field++) {
+                    if (!Double.isFinite(frame.optDouble(field, Double.NaN))) return false;
+                }
+                JSONArray natural = item.optJSONArray("natural_size_css_px");
+                if (natural == null || natural.length() != 2
+                        || natural.optDouble(0, Double.NaN) != 24.0
+                        || natural.optDouble(1, Double.NaN) != 16.0) return false;
+            }
+            return ids.size() == 29;
+        } catch (JSONException malformed) {
+            Log.e(TAG, "SPINON_C142_REPORT_PARSE_ERROR", malformed);
+            return false;
+        }
+    }
+
+    private String formatC142Report(String report, boolean passed) {
+        if (!passed) return "C14.2 · 앱 fixture 실패\n\n" + report;
+        try {
+            JSONObject result = new JSONObject(report);
+            JSONArray cases = result.getJSONArray("cases");
+            JSONArray documents = result.getJSONArray("documents");
+            StringBuilder summary = new StringBuilder(
+                    "C14.2 · live V8 / Chrome 155\n\nPASS · 29/29 CSS px cases\n"
+                    + "Block 21/21 · Flex 8/8 · PNG 24×16\n\n");
+            summary.append("선택 경계 case · image frame (CSS px)\n");
+            String[] selected = {
+                    "max-width-only", "content-box-edges", "aspect-ratio-border-box",
+                    "flex-auto-basis", "fixed-cross-stretch-max-height"
+            };
+            for (String id : selected) {
+                JSONObject item = findC142Case(cases, id);
+                if (item == null || !"ok".equals(item.optString("status"))) {
+                    return "C14.2 · 앱 fixture 결과가 일치하지 않습니다\n\n" + report;
+                }
+                summary.append(id).append(" · ").append(c142Frame(item.optJSONArray("frame_css_px")));
+                JSONArray parent = item.optJSONArray("parent_frame_css_px");
+                if (parent != null) summary.append(" · parent ").append(c142Frame(parent));
+                summary.append('\n');
+            }
+            for (int index = 0; index < documents.length(); index++) {
+                JSONObject document = documents.getJSONObject(index);
+                summary.append("\n").append(document.optString("kind"))
+                        .append(" revisions · doc ").append(document.optLong("document_revision", -1))
+                        .append(" / style ").append(document.optLong("style_revision", -1))
+                        .append(" / env ").append(document.optLong("environment_revision", -1))
+                        .append(" / intrinsic ").append(document.optLong("intrinsic_size_revision", -1));
+            }
+            return summary.toString();
+        } catch (JSONException malformed) {
+            return "C14.2 · 앱 fixture report 해석 실패\n\n" + report;
+        }
+    }
+
+    private JSONObject findC142Case(JSONArray cases, String id) throws JSONException {
+        for (int index = 0; index < cases.length(); index++) {
+            JSONObject item = cases.optJSONObject(index);
+            if (item != null && id.equals(item.optString("id"))) return item;
+        }
+        return null;
+    }
+
+    private String c142Frame(JSONArray frame) {
+        if (frame == null || frame.length() != 4) return "frame 없음";
+        return "x=" + c142Number(frame.optDouble(0)) + " y=" + c142Number(frame.optDouble(1))
+                + " · " + c142Number(frame.optDouble(2)) + "×" + c142Number(frame.optDouble(3));
+    }
+
+    private String c142Number(double value) {
+        if (!Double.isFinite(value)) return "invalid";
+        return value == Math.rint(value) ? Long.toString(Math.round(value)) : Double.toString(value);
+    }
+
+    private boolean hasConflictingC142FixtureRoute() {
+        Bundle extras = getIntent().getExtras();
+        if (extras == null) return false;
+        for (String key : extras.keySet()) {
+            if (!key.startsWith("spinon_") || "spinon_c142_image_ratio".equals(key)) continue;
+            Object value = extras.get(key);
+            if (value instanceof Boolean) {
+                if (Boolean.TRUE.equals(value)) return true;
+            } else if (value != null) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void logC142FixtureReport(String report, boolean passed) {
+        final int chunkSize = 2800;
+        int chunkCount = Math.max(1, (report.length() + chunkSize - 1) / chunkSize);
+        int priority = passed ? Log.INFO : Log.ERROR;
+        for (int chunk = 0; chunk < chunkCount; chunk++) {
+            int start = chunk * chunkSize;
+            int end = Math.min(report.length(), start + chunkSize);
+            Log.println(priority, TAG, "SPINON_C142_APP_FIXTURE part="
+                    + (chunk + 1) + "/" + chunkCount + " payload="
+                    + report.substring(start, end));
+        }
     }
 
     private void showC141IntrinsicSizeFixture() {

@@ -1,0 +1,75 @@
+    Checking smallvec v1.16.2
+    Checking bitflags v2.13.2
+    Checking foldhash v0.2.0
+    Checking num-traits v0.2.19
+    Checking spinon-core v0.1.0 (/private/tmp/spinon-c14-2-image-ratio-live-v8-implementation-20261016/crates/spinon-core)
+    Checking objc2-encode v4.1.0
+   Compiling thiserror-impl v2.0.21
+   Compiling zerocopy-derive v0.8.59
+    Checking rustc-hash v1.1.0
+   Compiling bytemuck_derive v1.12.1
+    Checking unicode-width v0.2.2
+    Checking bit-vec v0.9.1
+    Checking once_cell v1.21.4
+    Checking unicode-ident v1.0.26
+    Checking raw-window-handle v0.6.2
+    Checking libloading v0.8.9
+    Checking profiling v1.0.18
+    Checking hashbrown v0.17.1
+    Checking png v0.18.1
+    Checking parking_lot_core v0.9.12
+    Checking cssparser v0.38.0
+    Checking taffy v0.14.0
+    Checking icu_normalizer v2.3.0
+    Checking icu_segmenter v2.3.0
+    Checking bit-set v0.10.0
+    Checking pollster v0.4.0
+    Checking objc2 v0.6.4
+    Checking codespan-reporting v0.13.1
+    Checking parking_lot v0.12.5
+    Checking app_units v0.7.8
+    Checking euclid v0.22.14
+    Checking num-integer v0.1.47
+    Checking string_cache v0.11.0
+    Checking spinon-render v0.1.0 (/private/tmp/spinon-c14-2-image-ratio-live-v8-implementation-20261016/crates/spinon-render)
+    Checking idna_adapter v1.2.2
+    Checking indexmap v2.14.2
+    Checking stylo_atoms v0.22.0
+    Checking idna v1.1.0
+    Checking web_atoms v0.3.0
+    Checking to_shmem v0.6.0
+    Checking url v2.5.8
+    Checking selectors v0.41.0
+    Checking bytemuck v1.25.2
+    Checking thiserror v2.0.21
+    Checking objc2-core-foundation v0.3.2
+    Checking block2 v0.6.2
+    Checking zerocopy v0.8.59
+    Checking spinon-layout v0.1.0 (/private/tmp/spinon-c14-2-image-ratio-live-v8-implementation-20261016/crates/spinon-layout)
+    Checking spinon-style-layout-spike v0.1.0 (/private/tmp/spinon-c14-2-image-ratio-live-v8-implementation-20261016/spikes/style-layout)
+    Checking stylo_malloc_size_of v0.22.0
+    Checking stylo_traits v0.22.0
+    Checking stylo_dom v0.22.0
+    Checking stylo v0.22.0
+    Checking objc2-foundation v0.3.2
+    Checking objc2-core-graphics v0.3.2
+    Checking spinon-image v0.1.0 (/private/tmp/spinon-c14-2-image-ratio-live-v8-implementation-20261016/crates/spinon-image)
+    Checking naga-types v30.0.1
+    Checking wgpu-types v30.0.1
+    Checking objc2-metal v0.3.2
+    Checking objc2-quartz-core v0.3.2
+    Checking raw-window-metal v1.1.0
+    Checking half v2.7.1
+    Checking naga v30.0.1
+    Checking wgpu-naga-bridge v30.0.1
+    Checking wgpu-hal v30.0.1
+    Checking wgpu-core-deps-apple v30.0.1
+    Checking wgpu-core v30.0.1
+    Checking wgpu v30.0.1
+    Checking spinon-render-wgpu v0.1.0 (/private/tmp/spinon-c14-2-image-ratio-live-v8-implementation-20261016/crates/spinon-render-wgpu)
+    Checking spinon-style v0.1.0 (/private/tmp/spinon-c14-2-image-ratio-live-v8-implementation-20261016/crates/spinon-style)
+    Checking spinon-style-to-layout v0.1.0 (/private/tmp/spinon-c14-2-image-ratio-live-v8-implementation-20261016/crates/spinon-style-to-layout)
+    Checking spinon-style-to-render v0.1.0 (/private/tmp/spinon-c14-2-image-ratio-live-v8-implementation-20261016/crates/spinon-style-to-render)
+    Checking spinon-runtime v0.1.0 (/private/tmp/spinon-c14-2-image-ratio-live-v8-implementation-20261016/crates/spinon-runtime)
+    Checking spinon-ffi v0.1.0 (/private/tmp/spinon-c14-2-image-ratio-live-v8-implementation-20261016/crates/spinon-ffi)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 12.11s

@@ -1,0 +1,3 @@
+getpwuid_r did not find a match for uid 501
+Timestamp               Ty Process[PID:TID]
+2026-10-16 12:22:20.819 E  SpinonBootstrap[85729:3ba61a8] [dev.spinon.bootstrap:c14-2-fixture] SPINON_C142_DISABLED fixture-test feature is off

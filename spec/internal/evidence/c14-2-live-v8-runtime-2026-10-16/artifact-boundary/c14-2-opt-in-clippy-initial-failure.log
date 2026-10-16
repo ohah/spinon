@@ -1,0 +1,20 @@
+    Checking spinon-layout v0.1.0 (/private/tmp/spinon-c14-2-image-ratio-live-v8-implementation-20261016/crates/spinon-layout)
+    Checking spinon-style v0.1.0 (/private/tmp/spinon-c14-2-image-ratio-live-v8-implementation-20261016/crates/spinon-style)
+    Checking spinon-image v0.1.0 (/private/tmp/spinon-c14-2-image-ratio-live-v8-implementation-20261016/crates/spinon-image)
+    Checking spinon-style-to-layout v0.1.0 (/private/tmp/spinon-c14-2-image-ratio-live-v8-implementation-20261016/crates/spinon-style-to-layout)
+    Checking spinon-style-to-render v0.1.0 (/private/tmp/spinon-c14-2-image-ratio-live-v8-implementation-20261016/crates/spinon-style-to-render)
+    Checking spinon-runtime v0.1.0 (/private/tmp/spinon-c14-2-image-ratio-live-v8-implementation-20261016/crates/spinon-runtime)
+    Checking spinon-ffi v0.1.0 (/private/tmp/spinon-c14-2-image-ratio-live-v8-implementation-20261016/crates/spinon-ffi)
+error: casting to the same type is unnecessary (`f32` -> `f32`)
+  --> crates/spinon-ffi/src/fixtures/c14_2_app/oracle.rs:44:21
+   |
+44 |     let tolerance = json_number(&inventory["comparison"], "toleranceCssPx")? as f32;
+   |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: try: `json_number(&inventory["comparison"], "toleranceCssPx")?`
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#unnecessary_cast
+   = note: `-D clippy::unnecessary-cast` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::unnecessary_cast)]`
+
+error: could not compile `spinon-ffi` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `spinon-ffi` (lib test) due to 1 previous error

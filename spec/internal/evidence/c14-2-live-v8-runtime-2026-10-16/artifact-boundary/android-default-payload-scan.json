@@ -1,0 +1,45 @@
+{
+  "mode": "default",
+  "scanner": "binary byte-presence; symbol string plus C14.2 payload and exact source PNG bytes",
+  "needles": {
+    "ffi_symbol": "spinon_c14_2_app_image_ratio_fixture",
+    "ffi_payload_label": "c14-2-live-v8-image-ratio-sizing",
+    "case_id": "aspect-ratio-override",
+    "png_sha256": "5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2"
+  },
+  "artifacts": {
+    "android_static_library": {
+      "path": "target/aarch64-linux-android/release/libspinon_ffi.a",
+      "size": 59932342,
+      "sha256": "48b05a479935ae5c8679586df2d06f8fdd6f6edaf7dedcc34632eb141db9b2b7",
+      "matches": {
+        "ffi_symbol": false,
+        "ffi_payload_label": false,
+        "case_id": false,
+        "png_bytes": false
+      }
+    },
+    "android_native_library": {
+      "path": "build/spinon/android/jniLibs/arm64-v8a/libspinon_bootstrap.so",
+      "size": 142674232,
+      "sha256": "2c6860fb53321eb8e1b9978866de69347996b3cffb6a439364d8aef55a76e0f2",
+      "matches": {
+        "ffi_symbol": false,
+        "ffi_payload_label": false,
+        "case_id": false,
+        "png_bytes": false
+      }
+    },
+    "android_apk": {
+      "path": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+      "size": 59039050,
+      "sha256": "d83a381518601998923c85af31d42d0e34cbf5b3941cc3f0f00353dae065c171",
+      "matches": {
+        "ffi_symbol": false,
+        "ffi_payload_label": false,
+        "case_id": false,
+        "png_bytes": false
+      }
+    }
+  }
+}

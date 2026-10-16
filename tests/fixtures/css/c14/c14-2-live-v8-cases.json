@@ -1,0 +1,36 @@
+{
+  "schema": "spinon-css-c14-2-live-v8-app-cases/v1",
+  "blockCases": [
+    { "id": "natural-auto-auto", "style": "" },
+    { "id": "width-definite-height-auto", "style": "width:48px;height:auto" },
+    { "id": "width-auto-height-definite", "style": "width:auto;height:24px" },
+    { "id": "min-width-only", "style": "min-width:48px" },
+    { "id": "min-height-only", "style": "min-height:32px" },
+    { "id": "max-width-only", "style": "max-width:20px" },
+    { "id": "max-height-only", "style": "max-height:10px" },
+    { "id": "both-max-contain", "style": "max-width:18px;max-height:10px" },
+    { "id": "both-max-width-limiting", "style": "max-width:20px;max-height:14px" },
+    { "id": "both-max-height-limiting", "style": "max-width:22px;max-height:12px" },
+    { "id": "both-min-height-limiting", "style": "min-width:30px;min-height:22px" },
+    { "id": "both-min-width-limiting", "style": "min-width:36px;min-height:20px" },
+    { "id": "cross-min-width-max-height", "style": "min-width:30px;max-height:10px" },
+    { "id": "cross-max-width-min-height", "style": "max-width:20px;min-height:20px" },
+    { "id": "min-max-conflict", "style": "min-width:48px;max-height:24px" },
+    { "id": "min-over-max", "style": "min-width:48px;max-width:30px" },
+    { "id": "partial-auto-max-opposite", "style": "width:48px;height:auto;max-height:20px" },
+    { "id": "partial-auto-max-auto-axis", "style": "width:auto;height:24px;max-width:30px" },
+    { "id": "content-box-edges", "style": "box-sizing:border-box;width:48px;height:auto;padding:2px;border:1px solid black" },
+    { "id": "aspect-ratio-override", "style": "width:48px;height:auto;aspect-ratio:1/1" },
+    { "id": "aspect-ratio-border-box", "style": "box-sizing:border-box;width:48px;height:auto;padding:2px;border:1px solid black;aspect-ratio:3/2" }
+  ],
+  "flexCases": [
+    { "id": "flex-width-max-auto-cross", "parentClass": "case", "parentStyle": "", "style": "width:48px;height:auto;max-height:20px" },
+    { "id": "flex-height-max-auto-main", "parentClass": "case", "parentStyle": "", "style": "width:auto;height:24px;max-width:30px" },
+    { "id": "flex-min-cross", "parentClass": "case", "parentStyle": "", "style": "width:48px;height:auto;min-height:20px" },
+    { "id": "flex-auto-basis", "parentClass": "case", "parentStyle": "", "style": "width:auto;height:auto" },
+    { "id": "fixed-cross-stretch-auto-auto", "parentClass": "case fixed-cross", "parentStyle": "", "style": "width:auto;height:auto" },
+    { "id": "fixed-cross-stretch-max-height", "parentClass": "case fixed-cross", "parentStyle": "", "style": "width:auto;height:auto;max-height:20px" },
+    { "id": "fixed-cross-start-auto-auto", "parentClass": "case", "parentStyle": "height:40px", "style": "width:auto;height:auto" },
+    { "id": "fixed-cross-stretch-specified-height", "parentClass": "case fixed-cross", "parentStyle": "", "style": "width:auto;height:24px" }
+  ]
+}

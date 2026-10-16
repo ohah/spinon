@@ -1,0 +1,67 @@
+{
+  "mode": "opt-in",
+  "scanner": "binary byte-presence; symbol string plus C14.2 payload and exact source PNG bytes",
+  "needles": {
+    "ffi_symbol": "spinon_c14_2_app_image_ratio_fixture",
+    "ffi_payload_label": "c14-2-live-v8-image-ratio-sizing",
+    "case_id": "aspect-ratio-override",
+    "png_sha256": "5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2"
+  },
+  "artifacts": {
+    "android_static_library": {
+      "path": "target/aarch64-linux-android/release/libspinon_ffi.a",
+      "size": 61326608,
+      "sha256": "9bf0af7df0f87d92a40fb684e6295f5fd48cad59c49bfe866750deab0319c2b5",
+      "matches": {
+        "ffi_symbol": true,
+        "ffi_payload_label": true,
+        "case_id": true,
+        "png_bytes": true
+      }
+    },
+    "android_native_library": {
+      "path": "build/spinon/android/jniLibs/arm64-v8a/libspinon_bootstrap.so",
+      "size": 143190576,
+      "sha256": "2baf801a99a000cc17635ed7b1aea69389b9252356e5573347c8f1849a0a9517",
+      "matches": {
+        "ffi_symbol": true,
+        "ffi_payload_label": true,
+        "case_id": true,
+        "png_bytes": true
+      }
+    },
+    "android_apk": {
+      "path": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+      "size": 117622482,
+      "sha256": "6e16e6da7abfd691335c17f381d38dc211ae32bb470284bb607add5c839a9662",
+      "matches": {
+        "ffi_symbol": true,
+        "ffi_payload_label": true,
+        "case_id": true,
+        "png_bytes": true
+      }
+    },
+    "ios_static_library": {
+      "path": "build/spinon/iphonesimulator/libspinon_ffi.a",
+      "size": 44591456,
+      "sha256": "d892a3b89052ec6a913c357df79e0a4a1da69e9af11bd1b724a89063ab3688d4",
+      "matches": {
+        "ffi_symbol": true,
+        "ffi_payload_label": true,
+        "case_id": true,
+        "png_bytes": true
+      }
+    },
+    "ios_simulator_executable": {
+      "path": "build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap",
+      "size": 28943024,
+      "sha256": "cb8edc16b7a293196f632efc5b4ca51fbb1a7bfd3694e8881e1a1ab46976beff",
+      "matches": {
+        "ffi_symbol": true,
+        "ffi_payload_label": true,
+        "case_id": true,
+        "png_bytes": true
+      }
+    }
+  }
+}

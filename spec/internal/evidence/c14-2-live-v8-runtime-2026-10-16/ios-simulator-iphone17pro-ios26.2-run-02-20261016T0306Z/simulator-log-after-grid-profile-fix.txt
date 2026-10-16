@@ -1,0 +1,4 @@
+getpwuid_r did not find a match for uid 501
+Timestamp               Ty Process[PID:TID]
+2026-10-16 12:11:50.853 E  SpinonBootstrap[62809:3b9230b] SPINON_C142_APP_FIXTURE part=1/1 payload={"detail":"block CSS layout: 노드 1의 display 값 \134"inline\134"를 layout profile이 지원하지 않습니다","status":"error"}
+2026-10-16 12:11:50.854 E  SpinonBootstrap[62809:3b922e8] [dev.spinon.bootstrap:c14-2-fixture] SPINON_C142_SIMULATOR_REPORT status=error

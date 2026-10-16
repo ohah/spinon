@@ -489,6 +489,37 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 #endif
 }
 
++ (NSString *)runC142ImageRatioFixture {
+#if defined(SPINON_ENABLE_C14_2_APP_FIXTURE_TEST) && \
+    SPINON_ENABLE_C14_2_APP_FIXTURE_TEST
+  std::array<char, 65536> output{};
+  const int32_t status =
+      spinon_c14_2_app_image_ratio_fixture(output.data(), output.size());
+  NSString *message = [NSString stringWithUTF8String:output.data()];
+  if (message == nil) message = @"empty report";
+  const NSUInteger chunkSize = 600;
+  const NSUInteger chunkCount =
+      MAX(1, (message.length + chunkSize - 1) / chunkSize);
+  for (NSUInteger chunk = 0; chunk < chunkCount; chunk++) {
+    const NSUInteger offset = chunk * chunkSize;
+    const NSUInteger length = MIN(chunkSize, message.length - offset);
+    NSString *entry = [NSString
+        stringWithFormat:@"SPINON_C142_APP_FIXTURE part=%lu/%lu payload=%@",
+                         (unsigned long)(chunk + 1),
+                         (unsigned long)chunkCount,
+                         [message substringWithRange:NSMakeRange(offset, length)]];
+    if (status == 0) {
+      os_log(OS_LOG_DEFAULT, "%{public}s", entry.UTF8String ?: "empty report");
+    } else {
+      os_log_error(OS_LOG_DEFAULT, "%{public}s", entry.UTF8String ?: "empty report");
+    }
+  }
+  return [NSString stringWithFormat:@"status=%d report=%@", status, message];
+#else
+  return @"status=-8 report={\"status\":\"disabled\",\"detail\":\"fixture feature is off\"}";
+#endif
+}
+
 + (NSString *)runC143IntrinsicContributionsFixture {
 #if defined(SPINON_ENABLE_C14_3_APP_FIXTURE_TEST) && \
     SPINON_ENABLE_C14_3_APP_FIXTURE_TEST
