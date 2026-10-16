@@ -1,0 +1,76 @@
+{
+  "captured_at": "2026-10-16T18:54:31+09:00",
+  "browser": "agent-browser 0.31.1",
+  "source_main_commit": "06f181b064f7d23644231133dae4253d145d4bf7",
+  "roadmap_url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "roadmap_title": "스피논 구현 로드맵",
+  "official_counter": "200개 표시 · 공식 완료 69/200",
+  "counter_components": {
+    "parent_tasks": 78,
+    "detail_ids": 120,
+    "unnumbered_child_checks": 2,
+    "completed": 69,
+    "total": 200
+  },
+  "c182_status_visible": true,
+  "c182_status_id": "C18.2",
+  "manifest_url": "https://macstudio.tailed42f2.ts.net/spinon/sync-manifest-c18-2-alpha-image-tailnet-2026-10-16.json",
+  "manifest_status": 200,
+  "manifest_sha256": "d8ffd426727aec34b07023ef7286c0134ce2b457c8d62e7dd8449cff23fcee2b",
+  "manifest_files_checked": 165,
+  "manifest_files_failed": 0,
+  "file_verification_method": "Agent Browser fetch + Web Crypto SHA-256",
+  "sync_counts": {
+    "created": 141,
+    "replaced": 12,
+    "unchanged": 12,
+    "deleted": 0,
+    "backups_preserved": 12
+  },
+  "routes": [
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c18-2-static-alpha-image-compositing.html",
+      "title": "C18.2 · 정적 PNG alpha source-over 합성",
+      "checked": true
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/0065-c18-2-alpha-image-compositing.html",
+      "title": "0065 · C18.2 static RGBA8 PNG alpha source-over",
+      "checked": true
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/STATUS.html",
+      "title": "스피논 구현 상태와 API 명세 대장",
+      "c182_visible": true
+    }
+  ],
+  "rendered_images": [
+    {
+      "path": "spec/internal/evidence/c18-2-alpha-image-android-api37-2026-10-16/full-screen.png",
+      "complete": true,
+      "natural_width": 1080,
+      "natural_height": 2400
+    },
+    {
+      "path": "spec/internal/evidence/c18-2-alpha-image-ios-simulator-2026-10-16/full-screen.png",
+      "complete": true,
+      "natural_width": 1206,
+      "natural_height": 2622
+    }
+  ],
+  "broken_images": [],
+  "screenshots": [
+    {
+      "path": "roadmap-count-agent-browser.png"
+    },
+    {
+      "path": "roadmap-c182-agent-browser.png"
+    },
+    {
+      "path": "android-screenshot-agent-browser.png"
+    },
+    {
+      "path": "ios-screenshot-agent-browser.png"
+    }
+  ]
+}
