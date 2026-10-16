@@ -28,6 +28,26 @@ pub(super) const RUNTIME_BLOCK_PAINT_AUTHOR_PROPERTIES: &[&str] = &[
     "font-family",
 ];
 
+pub(super) const RUNTIME_BLOCK_IMAGE_AUTHOR_PROPERTIES: &[&str] = &[
+    "display",
+    "position",
+    "inset",
+    "top",
+    "right",
+    "bottom",
+    "left",
+    "box-sizing",
+    "width",
+    "height",
+    "background-color",
+    "color",
+    "font-size",
+    "font-family",
+    "object-fit",
+    "object-position",
+    "image-rendering",
+];
+
 pub(super) const RUNTIME_BLOCK_FORMATTING_AUTHOR_PROPERTIES: &[&str] = &[
     "display",
     "position",
@@ -134,6 +154,16 @@ pub(super) fn runtime_block_paint_properties() -> Vec<(&'static str, LonghandId)
     properties
 }
 
+pub(super) fn runtime_block_image_properties() -> Vec<(&'static str, LonghandId)> {
+    let mut properties = runtime_block_paint_properties();
+    properties.extend([
+        ("object-fit", LonghandId::ObjectFit),
+        ("object-position", LonghandId::ObjectPosition),
+        ("image-rendering", LonghandId::ImageRendering),
+    ]);
+    properties
+}
+
 pub(super) fn runtime_block_formatting_properties() -> Vec<(&'static str, LonghandId)> {
     let mut properties = runtime_block_layout_properties();
     properties.extend([
@@ -170,6 +200,7 @@ pub(super) fn computed_background_for_profile(
         | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
         | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
         | ComputedStyleProfile::RuntimeBlockPaintV1
+        | ComputedStyleProfile::RuntimeBlockImageV1
         | ComputedStyleProfile::RuntimeBlockFormattingV1
         | ComputedStyleProfile::RuntimeBlockPositioningV1
         | ComputedStyleProfile::RuntimeBlockFlexStackingV1
@@ -215,6 +246,24 @@ pub fn compute_runtime_block_paint_cascade_with_stylesheets(
         style_revision,
         &properties,
         ComputedStyleProfile::RuntimeBlockPaintV1,
+    )
+}
+
+/// C18.3의 image object properties와 Block paint를 같은 cascade에서 계산합니다.
+pub fn compute_runtime_block_image_cascade_with_stylesheets(
+    view: &StyloDocumentView,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+) -> Result<super::ComputedStyleSnapshot, CssCascadeError> {
+    let properties = runtime_block_image_properties();
+    compute_cascade(
+        view,
+        author_stylesheets,
+        viewport,
+        style_revision,
+        &properties,
+        ComputedStyleProfile::RuntimeBlockImageV1,
     )
 }
 
@@ -435,6 +484,66 @@ pub fn first_unsupported_runtime_block_paint_inline_property(
 ) -> Option<(NodeId, String)> {
     super::runtime_layout::first_unsupported_inline_property(view, |property| {
         RUNTIME_BLOCK_PAINT_AUTHOR_PROPERTIES.contains(&property)
+    })
+}
+
+pub fn first_unsupported_runtime_block_image_inline_property(
+    view: &StyloDocumentView,
+) -> Option<(NodeId, String)> {
+    super::runtime_layout::first_unsupported_inline_property(view, |property| {
+        RUNTIME_BLOCK_IMAGE_AUTHOR_PROPERTIES.contains(&property)
+    })
+    .or_else(|| first_unsupported_runtime_block_image_object_position_inline_value(view))
+}
+
+fn first_unsupported_runtime_block_image_object_position_inline_value(
+    view: &StyloDocumentView,
+) -> Option<(NodeId, String)> {
+    let guard = view.shared_lock().read();
+    let mut pending = vec![view.root_handle()];
+    while let Some(handle) = pending.pop() {
+        if let Some(element) = view.element(handle)
+            && let Some(inline_style) = element.data().inline_style.as_ref()
+        {
+            let block = inline_style.read_with(&guard);
+            for declaration in block.declarations() {
+                if declaration.id().name().as_ref() != "object-position" {
+                    continue;
+                }
+                let mut value = String::new();
+                if declaration.to_css(&mut value).is_err()
+                    || !supports_runtime_image_object_position(&value)
+                {
+                    return Some((handle.id(), "object-position".to_owned()));
+                }
+            }
+        }
+        if let Some(children) = view.snapshot().children(handle) {
+            let children = children
+                .filter(|child| view.is_member(*child))
+                .collect::<Vec<_>>();
+            pending.extend(children.into_iter().rev());
+        }
+    }
+    None
+}
+
+pub(crate) fn supports_runtime_image_object_position(value: &str) -> bool {
+    let mut components = value.split_whitespace();
+    let Some(x) = components.next() else {
+        return false;
+    };
+    let Some(y) = components.next() else {
+        return false;
+    };
+    if components.next().is_some() {
+        return false;
+    }
+    [x, y].into_iter().all(|component| {
+        component
+            .strip_suffix('%')
+            .and_then(|number| number.parse::<f32>().ok())
+            .is_some_and(f32::is_finite)
     })
 }
 

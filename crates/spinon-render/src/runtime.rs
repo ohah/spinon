@@ -15,7 +15,11 @@ mod scroll_gesture_session;
 mod scroll_input_queue;
 mod snapshot;
 
-pub use image::{RuntimeImageResourceKey, RuntimeRenderImage};
+pub use image::RuntimeImageResourceKey;
+pub use image::{
+    RuntimeImageObjectFit, RuntimeImageObjectPosition, RuntimeImageObjectStyle,
+    RuntimeImageSampling, RuntimeRenderImage,
+};
 
 pub use scroll::{
     RuntimeOverscrollBehavior, RuntimeScrollClipLayer, RuntimeScrollContainer,
@@ -430,6 +434,8 @@ pub enum RuntimeRenderError {
     InvalidImageSource(NodeId),
     InvalidImageBytes(NodeId),
     InvalidImageFrame(NodeId),
+    InvalidImageGeometry(NodeId),
+    InvalidImageStyleRevision(NodeId),
     UnsupportedImageBorder(NodeId),
 }
 
@@ -510,6 +516,18 @@ impl fmt::Display for RuntimeRenderError {
                 write!(
                     formatter,
                     "runtime image node {node} frame이 자연 크기와 다릅니다"
+                )
+            }
+            Self::InvalidImageGeometry(node) => {
+                write!(
+                    formatter,
+                    "runtime image node {node}의 object geometry가 유효하지 않습니다"
+                )
+            }
+            Self::InvalidImageStyleRevision(node) => {
+                write!(
+                    formatter,
+                    "runtime image node {node}의 object style revision이 장면과 다릅니다"
                 )
             }
             Self::UnsupportedImageBorder(node) => {

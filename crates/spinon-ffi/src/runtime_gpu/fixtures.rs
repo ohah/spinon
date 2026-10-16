@@ -5,6 +5,8 @@ mod host;
 pub(super) mod c18_1;
 #[cfg(feature = "c18-2-alpha-image-compositing-fixture-test")]
 pub(super) mod c18_2;
+#[cfg(feature = "c18-3-object-fit-position-fixture-test")]
+pub(super) mod c18_3;
 
 pub(crate) mod c11;
 pub(crate) mod c11_2_2;

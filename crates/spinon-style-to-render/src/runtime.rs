@@ -31,6 +31,7 @@ pub fn build_runtime_render_snapshot(
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
             | ComputedStyleProfile::RuntimeBlockPaintV1
+            | ComputedStyleProfile::RuntimeBlockImageV1
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1
             | ComputedStyleProfile::RuntimeBlockFlexGridV1

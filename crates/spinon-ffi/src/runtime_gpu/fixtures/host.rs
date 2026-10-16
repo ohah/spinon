@@ -24,6 +24,17 @@ impl RuntimeGpuHost {
         Ok((host, report))
     }
 
+    #[cfg(feature = "c18-3-object-fit-position-fixture-test")]
+    pub(in crate::runtime_gpu) fn new_c18_3_object_fit_position_fixture()
+    -> Result<(Self, String), String> {
+        let (session, report) = RuntimeSession::new_runtime_gpu_block_image_fixture()?;
+        let mut host = Self::from_session_with_frame_report(session);
+        host.include_paint_order_report = true;
+        host.c18_3_object_fit_position_fixture = true;
+        host.surface_pixel_readback_test = true;
+        Ok((host, report))
+    }
+
     pub(in crate::runtime_gpu) fn new_registered_properties_fixture()
     -> Result<(Self, String), String> {
         let (session, report) = RuntimeSession::new_runtime_gpu_registered_properties_fixture()?;

@@ -77,7 +77,8 @@ impl RuntimeGpuHost {
             feature = "c13-1-overflow-clip-fixture-test",
             feature = "c13-2-scroll-fixture-test",
             feature = "c18-1-image-paint-fixture-test",
-            feature = "c18-2-alpha-image-compositing-fixture-test"
+            feature = "c18-2-alpha-image-compositing-fixture-test",
+            feature = "c18-3-object-fit-position-fixture-test"
         ))]
         let (renderer, report) = if self.surface_pixel_readback_test {
             RuntimeRenderer::initialize_uikit_surface_with_copy_src(pending, width, height)?
@@ -90,7 +91,8 @@ impl RuntimeGpuHost {
             feature = "c13-1-overflow-clip-fixture-test",
             feature = "c13-2-scroll-fixture-test",
             feature = "c18-1-image-paint-fixture-test",
-            feature = "c18-2-alpha-image-compositing-fixture-test"
+            feature = "c18-2-alpha-image-compositing-fixture-test",
+            feature = "c18-3-object-fit-position-fixture-test"
         )))]
         let (renderer, report) = RuntimeRenderer::initialize_uikit_surface(pending, width, height)?;
         *renderer_slot = Some(renderer);
@@ -232,7 +234,8 @@ impl RuntimeGpuHost {
         feature = "c13-1-overflow-clip-fixture-test",
         feature = "c13-2-scroll-fixture-test",
         feature = "c18-1-image-paint-fixture-test",
-        feature = "c18-2-alpha-image-compositing-fixture-test"
+        feature = "c18-2-alpha-image-compositing-fixture-test",
+        feature = "c18-3-object-fit-position-fixture-test"
     ))]
     pub(super) fn request_surface_pixel_readback_for_test(
         &self,

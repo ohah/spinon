@@ -145,6 +145,10 @@ fn runtime_image_attachment_validates_source_node_bytes_and_natural_frame() {
     ));
 }
 
+#[cfg(test)]
+#[path = "runtime_tests/c18_3_object_fit.rs"]
+mod c18_3_object_fit;
+
 #[test]
 fn image_scene_rejects_document_revision_rebinding_after_resource_request() {
     let mut document = HostDocument::new().unwrap();

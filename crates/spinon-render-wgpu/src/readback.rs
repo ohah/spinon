@@ -60,7 +60,7 @@ pub fn readback_runtime_scene_samples(
     });
     let view = texture.create_view(&wgpu::TextureViewDescriptor::default());
     let pipeline = create_pipeline(&device, format);
-    let mut image_renderer = RuntimeImageRenderer::new(&device, &queue, format)?;
+    let mut image_renderer = RuntimeImageRenderer::new(&device, format)?;
     let prepared_images = image_renderer.prepare(&device, &queue, Some(scene), width, height)?;
     let geometry = build_colored_geometry(scene, width, height, ColorEncoding::Linear)?;
     let bytes = bytemuck::cast_slice(&geometry.vertices);

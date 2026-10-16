@@ -1,0 +1,75 @@
+{
+  "schema": "spinon.c18-3-dpr-observation.v1",
+  "observedAt": "2026-10-16",
+  "oracle": {
+    "browser": "Google Chrome 155.0.8059.85",
+    "controller": "Agent Browser 0.31.1",
+    "viewportCssPx": [224, 72],
+    "fixtureImageCount": 12,
+    "sampleCount": 19,
+    "source": {
+      "dimensions": [24, 12],
+      "format": "RGBA8 opaque PNG",
+      "sha256": "cc621c7a4be9345a8124b91ebcd5a6ff9bc3a3206ec59fe1228b24ba09cae454"
+    }
+  },
+  "captures": [
+    {
+      "dpr": 2.625,
+      "surfacePixels": [588, 189],
+      "screenshot": "chrome155-dpr2.625.png",
+      "screenshotSha256": "2829b5dedf60019265abf2e5c95be45a3d114fe60cc6c808c66ea9c7eb937e1b",
+      "samples": {
+        "contain-quarter-image": [28, 32, 228, 255],
+        "scale-down-shrink-image": [90, 78, 170, 255]
+      }
+    },
+    {
+      "dpr": 3,
+      "surfacePixels": [672, 216],
+      "screenshot": "chrome155-dpr3.png",
+      "screenshotSha256": "a4a5ee07bf86941b5fb503488ffad78b9993a2cdcb55b308deb8772ed2e2cb3f",
+      "samples": {
+        "scale-down-shrink-image": [89, 55, 174, 255]
+      }
+    }
+  ],
+  "simulators": [
+    {
+      "platform": "Android API 37 ARM64 AVD",
+      "device": "emulator-5554",
+      "dpr": 2.625,
+      "surfacePixels": [588, 189],
+      "method": "PixelCopy",
+      "matched": 19,
+      "total": 19,
+      "sourceScreenshot": "../android/c183-android-pixelcopy.png",
+      "sourceScreenshotSha256": "5c2ebfa9501ef392d20f2f8ac410cf2320c82d2d603e0a23f5220f0b2c1ea2eb",
+      "log": "../android/c183-pixelcopy-log.txt",
+      "notableSamples": {
+        "contain-quarter-image": [28, 32, 228, 255],
+        "scale-down-shrink-image": [90, 78, 170, 255]
+      }
+    },
+    {
+      "platform": "iPhone 17 Pro / iOS 26.2 Simulator",
+      "dpr": 3,
+      "surfacePixels": [672, 216],
+      "format": "Bgra8Unorm",
+      "method": "Metal drawable before compositor",
+      "matched": 19,
+      "total": 19,
+      "sourceScreenshot": "../ios/c183-ios-screen.png",
+      "sourceScreenshotSha256": "275d5e8ddad89b50ba6a610cb6f7a84696812361e74b50de215d79dc97c61ad6",
+      "log": "../ios/c18-pixel-logs.txt",
+      "notableSamples": {
+        "scale-down-shrink-image": [89, 55, 174, 255]
+      }
+    }
+  ],
+  "limits": [
+    "DPR 2.625 and DPR 3 are compared at corresponding surface coordinates; a pixel coordinate is not shared across DPRs.",
+    "Simulator evidence does not cover a physical Android device, hardware GPU, or iOS compositor output.",
+    "The exact filter profile is limited to Chrome 155 image-rendering:auto and the recorded RGBA8/Bgra8 surfaces."
+  ]
+}

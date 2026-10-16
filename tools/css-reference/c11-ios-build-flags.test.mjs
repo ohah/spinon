@@ -101,11 +101,11 @@ test('C18.2 iOS fixture는 C04 GPU와 공유 C18.1 readback 기반을 함께 켠
     });
     assert.equal(result.status, 0, result.stderr);
     assert.match(result.args,
-      /SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST=1/);
+      /SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST=1/);
     assert.match(result.args,
       /SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST=1/);
     assert.match(result.stdout,
-      /c18_1_image_paint_fixture=1 c18_2_alpha_image_fixture=1/);
+      /c18_image_paint_shared=1 c18_1_image_paint_fixture=0 c18_2_alpha_image_fixture=1/);
   }
 });
 

@@ -115,6 +115,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeBlockPaintV1
+                | ComputedStyleProfile::RuntimeBlockImageV1
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
                 | ComputedStyleProfile::RuntimeBlockPositioningV1
                 | ComputedStyleProfile::RuntimeBlockFlexStackingV1
@@ -135,6 +136,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeBlockPaintV1
+                | ComputedStyleProfile::RuntimeBlockImageV1
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
                 | ComputedStyleProfile::RuntimeBlockPositioningV1
                 | ComputedStyleProfile::RuntimeBlockFlexStackingV1
@@ -332,6 +334,7 @@ pub(super) fn project_styles(
                 ComputedStyleProfile::FlexAlignmentV1
                 | ComputedStyleProfile::FlexAlignmentCascadeLayersV1
                 | ComputedStyleProfile::RuntimeBlockPaintV1
+                | ComputedStyleProfile::RuntimeBlockImageV1
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
                 | ComputedStyleProfile::RuntimeBlockPositioningV1 => {
                     parse_align_items(node, required(element, "align-items")?)?
@@ -355,6 +358,7 @@ pub(super) fn project_styles(
                 ComputedStyleProfile::FlexAlignmentV1
                 | ComputedStyleProfile::FlexAlignmentCascadeLayersV1
                 | ComputedStyleProfile::RuntimeBlockPaintV1
+                | ComputedStyleProfile::RuntimeBlockImageV1
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
                 | ComputedStyleProfile::RuntimeBlockPositioningV1 => {
                     parse_justify_content(node, required(element, "justify-content")?)?
@@ -406,6 +410,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeBlockPaintV1
+                | ComputedStyleProfile::RuntimeBlockImageV1
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
                 | ComputedStyleProfile::RuntimeBlockPositioningV1
                 | ComputedStyleProfile::RuntimeBlockFlexStackingV1
@@ -463,6 +468,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeBlockPaintV1
+                | ComputedStyleProfile::RuntimeBlockImageV1
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
                 | ComputedStyleProfile::RuntimeBlockPositioningV1
                 | ComputedStyleProfile::RuntimeBlockFlexStackingV1
@@ -554,7 +560,8 @@ pub(super) fn project_styles(
                 parse_positioning(
                     element,
                     &mut math,
-                    snapshot.profile == ComputedStyleProfile::RuntimeBlockPositioningV1
+                    snapshot.profile == ComputedStyleProfile::RuntimeBlockImageV1
+                        || snapshot.profile == ComputedStyleProfile::RuntimeBlockPositioningV1
                         || snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexStackingV1
                         || supports_overflow_clip(snapshot.profile)
                         || snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexGridV1
@@ -743,6 +750,7 @@ fn supports_positioning(profile: ComputedStyleProfile) -> bool {
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
             | ComputedStyleProfile::RuntimeBlockPaintV1
+            | ComputedStyleProfile::RuntimeBlockImageV1
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1

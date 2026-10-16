@@ -1,0 +1,159 @@
+{
+  "schema": "spinon.c18-3-raw-log-hashes.v1",
+  "normalization": "Readable log copies remove trailing spaces and trailing blank lines; each raw byte stream is preserved losslessly in the paired gzip file.",
+  "logs": [
+    {
+      "normalizedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/android/c181-pixelcopy-log.txt",
+      "normalizedSha256": "4d763d13fa6321e2cd4c4e7a4f755f9e6d0c005158826ba4cf854e87a02980b7",
+      "rawCompressedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/android/c181-pixelcopy-log.txt.raw.gz",
+      "rawSha256": "d47b811256657ac06e0cd41ff1d7de09d2e5412f114b2159424cef286cac3f91",
+      "rawBytes": 178474,
+      "rawCompressedSha256": "67a1069c6f12b65588ae4e468a7759e1d994f6af4888d7f8afd14046b216afb3",
+      "rawCompressedBytes": 17566
+    },
+    {
+      "normalizedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/android/c182-pixelcopy-log.txt",
+      "normalizedSha256": "1d3e7f20ed2b6909b96231a79f3aa5bcc6a79d2046367cfcad0f8eed04d6a39e",
+      "rawCompressedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/android/c182-pixelcopy-log.txt.raw.gz",
+      "rawSha256": "355ec21e1d0a13ef01df085c421937f87f0e46a6cda7dc005892bd3e63363f2b",
+      "rawBytes": 136812,
+      "rawCompressedSha256": "839a1818d39cb781198da367d3d3a5ba0fcd7c8a18f625ce293a11dd8a6f313c",
+      "rawCompressedBytes": 14463
+    },
+    {
+      "normalizedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/android/c183-pixelcopy-log.txt",
+      "normalizedSha256": "a0b0fab22c1912125d288b50d54f63e452dec9220fa067d7207906708befcbe3",
+      "rawCompressedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/android/c183-pixelcopy-log.txt.raw.gz",
+      "rawSha256": "ea178f4957bb4ae1ec38433dd6e3475ad506125032f9cc092b13800555f3a460",
+      "rawBytes": 327769,
+      "rawCompressedSha256": "99dd8f2eb50121673489a319de5a79072574d0ba13fa0bf07d30f8ffd887ece6",
+      "rawCompressedBytes": 27046
+    },
+    {
+      "normalizedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/artifacts/android-default-build.log",
+      "normalizedSha256": "19f6ced8a05dd3b28be77a854585b27c624a8ab4fd9d0ff886fd5a59c09312fb",
+      "rawCompressedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/artifacts/android-default-build.log.raw.gz",
+      "rawSha256": "19f6ced8a05dd3b28be77a854585b27c624a8ab4fd9d0ff886fd5a59c09312fb",
+      "rawBytes": 5584,
+      "rawCompressedSha256": "644e068bf62f77ad2253d3eafbcff6c7f81e40803618483a329ef45df59b6399",
+      "rawCompressedBytes": 2014
+    },
+    {
+      "normalizedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/artifacts/android-optin-cargo-build.log",
+      "normalizedSha256": "f7b0e1cb1b1e77f992866efbb6116d37598460ed4d809ab68256727edc4d5c2a",
+      "rawCompressedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/artifacts/android-optin-cargo-build.log.raw.gz",
+      "rawSha256": "f7b0e1cb1b1e77f992866efbb6116d37598460ed4d809ab68256727edc4d5c2a",
+      "rawBytes": 1409,
+      "rawCompressedSha256": "653900860d3151c65c65d26e7bd3b7d3f28629f03fee99a7421f3c065a7f2421",
+      "rawCompressedBytes": 763
+    },
+    {
+      "normalizedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/artifacts/ios-default-build.log",
+      "normalizedSha256": "fadaa59bdf9f461de29789709e5005a0900e20cf1a0558d2e660219f139c1484",
+      "rawCompressedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/artifacts/ios-default-build.log.raw.gz",
+      "rawSha256": "10dfc6b4630767282c020d1baf6785eaefa658014ce99fad7e6b52bed7065624",
+      "rawBytes": 115085,
+      "rawCompressedSha256": "c0033d9244d9dfbebb8ad9933c8abbfe865e38fe961795c736a428ee2c0e2899",
+      "rawCompressedBytes": 16309
+    },
+    {
+      "normalizedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/ios/c18-pixel-logs.txt",
+      "normalizedSha256": "bc0070823fb7558ddfe800080db521d9eceb2e2987afe942c609e3b994f606f5",
+      "rawCompressedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/ios/c18-pixel-logs.txt.raw.gz",
+      "rawSha256": "bc0070823fb7558ddfe800080db521d9eceb2e2987afe942c609e3b994f606f5",
+      "rawBytes": 9362,
+      "rawCompressedSha256": "5a3412c3f9e8bb2367faba2b38f52245b90dd1fbd67274ef0f6ee872afa5a3d0",
+      "rawCompressedBytes": 1230
+    },
+    {
+      "normalizedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/ios/opt-in-build.log",
+      "normalizedSha256": "f7afcbe1bafdb314145bf60bfb010869df21f0bbc38c00625b0b2dca3cbf8dac",
+      "rawCompressedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/ios/opt-in-build.log.raw.gz",
+      "rawSha256": "635534968abc1d9bc8e7f3553aecdc358a089575845e42d1fa2fa74850b6fd9b",
+      "rawBytes": 64143,
+      "rawCompressedSha256": "aba548b610c0aba6fa4510772072b48c8a251188b82deea5acb5e8ac74b4141c",
+      "rawCompressedBytes": 11131
+    },
+    {
+      "normalizedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/c18-ios-build-flags-tests.log",
+      "normalizedSha256": "46d716a048c63204f082da56f3cd0fbc48ea4cd13b682df133e6e2adf317d207",
+      "rawCompressedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/c18-ios-build-flags-tests.log.raw.gz",
+      "rawSha256": "46d716a048c63204f082da56f3cd0fbc48ea4cd13b682df133e6e2adf317d207",
+      "rawBytes": 1436,
+      "rawCompressedSha256": "0d32cabe59515648294979df2f8cabc8ef7c9ce2dac6326d5743e5e5f1a77169",
+      "rawCompressedBytes": 773
+    },
+    {
+      "normalizedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/clippy.log",
+      "normalizedSha256": "465ae686940771103c38ada7a3daa2048eacdbccfced3fd8a9d17908d8018d77",
+      "rawCompressedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/clippy.log.raw.gz",
+      "rawSha256": "465ae686940771103c38ada7a3daa2048eacdbccfced3fd8a9d17908d8018d77",
+      "rawBytes": 816,
+      "rawCompressedSha256": "f2b7eaf5c6ee4a5bac5a9acbf69dd38187892741607a422c6692f50cff78c549",
+      "rawCompressedBytes": 231
+    },
+    {
+      "normalizedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/css-reference-suite-before-c18-guard-fix.log",
+      "normalizedSha256": "a76e5d37352cf34ec0015aef8a807296885d2a52bb5e265db4584a5b3b1cebda",
+      "rawCompressedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/css-reference-suite-before-c18-guard-fix.log.raw.gz",
+      "rawSha256": "5fe3f5dbe6b39dd01cfc1c3aca72d4abdac65dcf040fa8fc6846971f950af5ff",
+      "rawBytes": 107290,
+      "rawCompressedSha256": "f0b40f1f4a3ceb56fb40d887c7301d85709eda77b08bf270a265829d18004092",
+      "rawCompressedBytes": 19485
+    },
+    {
+      "normalizedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/css-reference-suite.log",
+      "normalizedSha256": "3f164ed0129935632178c2c56abfe3624d3d81c0ea39b24cf192dd76e50bd17f",
+      "rawCompressedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/css-reference-suite.log.raw.gz",
+      "rawSha256": "fbc2fa4e48371db34ddadf4d455dc3deebf01784708315a58466ac0f1401e85c",
+      "rawBytes": 103306,
+      "rawCompressedSha256": "7435b0d3d7e7d5c58f1b34cdf1e6a37765daa02f2887a57c3a73f6db853dada7",
+      "rawCompressedBytes": 18827
+    },
+    {
+      "normalizedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/fixture-module-boundary-tests.log",
+      "normalizedSha256": "c9969e4b86164e3084c4a1ee007b0d663ca0efbc0d4333b042ebb2133fa55838",
+      "rawCompressedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/fixture-module-boundary-tests.log.raw.gz",
+      "rawSha256": "c9969e4b86164e3084c4a1ee007b0d663ca0efbc0d4333b042ebb2133fa55838",
+      "rawBytes": 569,
+      "rawCompressedSha256": "406e54a81cb78ac303207ad0eea86e390a7d29aacc3f0fa9382e57ccb9861254",
+      "rawCompressedBytes": 401
+    },
+    {
+      "normalizedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/focused-rust-tests.log",
+      "normalizedSha256": "33f7b9f5c4db003205bf2b99d50e43db2b914127a29e2cbb68bb0bcfefc3077d",
+      "rawCompressedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/focused-rust-tests.log.raw.gz",
+      "rawSha256": "e5618cd6cbdab26d936f172a6a2f2d20e9e3d080f662b6c80e6fd41b5a3241ae",
+      "rawBytes": 17836,
+      "rawCompressedSha256": "2339955e3528e402ca50f5ac9e08ed8cc3d93b291ac944a99f84d38385f5fd44",
+      "rawCompressedBytes": 4552
+    },
+    {
+      "normalizedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/geometry-negative-control.log",
+      "normalizedSha256": "1bc6215e77ac1b0d1a5cb01ad016eccd2bc765865dc2bfb6fe845ee73d4092c6",
+      "rawCompressedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/geometry-negative-control.log.raw.gz",
+      "rawSha256": "1bc6215e77ac1b0d1a5cb01ad016eccd2bc765865dc2bfb6fe845ee73d4092c6",
+      "rawBytes": 1208,
+      "rawCompressedSha256": "39112da8a79547b44cf51abdf906fe0d0e5b88fdf7b4bc3e49c9bbd8fb4041ce",
+      "rawCompressedBytes": 577
+    },
+    {
+      "normalizedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/rustfmt.log",
+      "normalizedSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "rawCompressedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/rustfmt.log.raw.gz",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rawBytes": 0,
+      "rawCompressedSha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "rawCompressedBytes": 20
+    },
+    {
+      "normalizedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/workspace-tests.log",
+      "normalizedSha256": "511a557be5209781fbf7e360008f2445437ddf168e4a84a63a852aa0afa01ec0",
+      "rawCompressedPath": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/workspace-tests.log.raw.gz",
+      "rawSha256": "aeddcae66d68de9848345284c6c52bb107ad770696ef1f748497e401217642c1",
+      "rawBytes": 100424,
+      "rawCompressedSha256": "d57418bb0da3ce7b215460ddc9da76192ef208001e2a7d9e9b0c2e57ed60f04e",
+      "rawCompressedBytes": 21493
+    }
+  ]
+}

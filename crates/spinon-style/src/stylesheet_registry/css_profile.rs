@@ -24,6 +24,61 @@ pub(super) fn first_unsupported_author_feature(
     first_unsupported_author_feature_with_layer_rules(registry, allowed_properties, false)
 }
 
+pub(super) fn first_unsupported_runtime_block_image_value(
+    registry: &StylesheetRegistry,
+) -> Option<(String, String)> {
+    let guard = registry.shared_lock.read();
+    for stylesheet in registry
+        .stylesheets
+        .iter()
+        .filter(|stylesheet| stylesheet.origin == CssOrigin::Author)
+    {
+        let contents = stylesheet.sheet.0.contents.read_with(&guard);
+        let rules = contents.rules.read_with(&guard);
+        for rule in &rules.0 {
+            let CssRule::Style(rule) = rule else {
+                continue;
+            };
+            let rule = rule.read_with(&guard);
+            let block = rule.block.read_with(&guard);
+            for declaration in block.declarations() {
+                if declaration.id().name().as_ref() != "object-position" {
+                    continue;
+                }
+                let mut value = String::new();
+                if declaration.to_css(&mut value).is_err()
+                    || !supports_runtime_image_object_position(&value)
+                {
+                    return Some((
+                        stylesheet.id.clone(),
+                        format!("지원하지 않는 object-position value {value}"),
+                    ));
+                }
+            }
+        }
+    }
+    None
+}
+
+fn supports_runtime_image_object_position(value: &str) -> bool {
+    let mut components = value.split_whitespace();
+    let Some(x) = components.next() else {
+        return false;
+    };
+    let Some(y) = components.next() else {
+        return false;
+    };
+    if components.next().is_some() {
+        return false;
+    }
+    [x, y].into_iter().all(|component| {
+        component
+            .strip_suffix('%')
+            .and_then(|number| number.parse::<f32>().ok())
+            .is_some_and(f32::is_finite)
+    })
+}
+
 pub(super) fn first_unsupported_author_feature_with_layers(
     registry: &StylesheetRegistry,
     allowed_properties: &[&str],

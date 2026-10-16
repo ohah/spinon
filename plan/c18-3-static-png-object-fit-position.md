@@ -1,6 +1,6 @@
 # C18.3 · 정적 PNG `object-fit` / `object-position`
 
-**상태:** 계획 및 사전 비교 완료 · 구현 미착수
+**상태:** 구현·지정 검증 완료 · 구현 PR 검토 중
 **상위:** [C18 이미지·replaced paint 규칙](../spec/STATUS.md) · [내부 계약 0065](../spec/internal/0065-c18-2-alpha-image-compositing.md)
 **선행 범위:** C14.1–C14.3 intrinsic frame · C18.1 opaque PNG paint · C18.2 PNG source-over
 **규범 기준:** [CSS Images Module Level 3](https://www.w3.org/TR/css-images-3/) §4.5–4.6 · [CSS Values and Units Module Level 3](https://www.w3.org/TR/css-values-3/) `<position>` value
@@ -34,13 +34,13 @@
 
 ## 구현 및 완료 관문
 
-1. 계획 구현 전에 20개 계획 실패 관점 검토를 마쳤다. 구현 PR에서는 새로 20개 코드·cascade·runtime 실패 관점 검토를 하고, 각 발견을 수정한 뒤 영향을 받은 관점을 다시 확인한다. PR 변경분은 별도의 20개 적대 관점으로 검토한다.
-2. `spec/internal/0066-c18-3-object-fit-position.md`에 이 profile의 typed value, 계산식, ownership, unsupported value 및 error 경계를 `0.1.0`으로 기록한다. 구현 PR에서만 `spec/STATUS.md` C18.3 하위 항목과 `spec/internal/README.md`를 갱신하고 C18 상위 및 공개 지원은 미완료로 유지한다.
+1. 구현 전 계획 실패 관점 검토 20개와 계획 PR 변경 검토를 마쳤다([계획 검토](../spec/internal/evidence/c18-3-object-fit-position-plan-review-20-2026-10-16.md), [계획 PR 검토](../spec/internal/evidence/c18-3-object-fit-position-plan-pr-review-20-2026-10-16.md)). 구현 후 코드·cascade·runtime 관점 20개를 새로 검토하고 발견을 수정했다([구현 검토](../spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/implementation-review-20.md)). 구현 PR 변경분은 별도의 서로 다른 실패 관점 30개로 검토한다.
+2. `spec/internal/0066-c18-3-object-fit-position.md`에 이 profile의 typed value, 계산식, ownership, unsupported value 및 error 경계를 `0.1.0`으로 기록했다. 상태 대장에는 C18.3 slice만 연결하며 C18 상위 및 공개 지원은 미완료로 둔다.
 3. Rust 단위 검증은 다섯 fit keyword, free space가 양수/0/음수인 축, negative/>100% position, fractional geometry, `scale-down` 양 분기, zero/non-finite/overflow dimensions, invalid style, UV/clip 교차와 기존 image key identity를 포함한다. test oracle을 제거하거나 바꾸는 negative control은 독립적으로 실패해야 한다.
-4. Chrome 155 비교는 이 계획의 12 scene·19 표본을 모두 유지하고 computed value, element frame, concrete object rect, crop UV, filter result를 분리 비교한다. opaque PNG 기준과 C18.1/2 기존 fixture도 회귀한다.
-5. Android API 37 ARM64 AVD PixelCopy 및 iPhone 17 Pro / iOS 26.2 Simulator Metal drawable에서 같은 source/revision/12 scene을 확인한다. 전체 화면 screenshot은 별도로 기록한다. 실기기와 iOS compositor 이후 pixel로 확대 해석하지 않는다.
+4. Chrome 155 비교는 이 계획의 12 scene·19 표본을 유지했다. computed value, element frame, concrete object rect, crop UV, filter result를 분리했고, opaque PNG 기준과 C18.1/2 기존 fixture도 회귀했다.
+5. Android API 37 ARM64 AVD PixelCopy와 iPhone 17 Pro / iOS 26.2 Simulator Metal drawable에서 같은 source/revision의 12 scene을 확인했다. Android PixelCopy 및 iOS drawable 표본은 각각 19/19 exact다. full-screen screenshot은 별도 기록했으며 실기기나 iOS compositor 이후 픽셀로 확대 해석하지 않는다.
 6. 기본/opt-in Cargo 및 실제 Android/iOS 앱 산출물의 fixture ABI·JS·PNG payload 경계를 대조한다. fixture는 전용 C18.3 opt-in 경로에서만 들어간다.
-7. `cargo fmt`, 관련 Rust/CSS reference 검사, Clippy, artifact boundary, 기본·opt-in build 및 simulator capture 근거를 저장한다. 미실행 gate는 통과로 표시하지 않는다.
+7. `cargo fmt`, workspace/focused Rust 검사, Clippy, C18 fixture module-boundary, artifact boundary, 기본·opt-in build 및 simulator capture 근거를 저장했다. C18.2 iOS build-flag assertion을 공용 C18 route guard에 맞춰 수정했다. 전체 `test:css-reference`의 남은 실패는 기존 C11/C13 source-boundary assertion이며 [실행 근거](../spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/README.md)에 원본 로그와 함께 남긴다.
 8. Tailnet preview에 계획과 근거를 반영하고 URL/HTTP/hash를 확인한다. GitHub Pages를 배포하지 않는다. plan PR과 implementation PR은 각각 별도로 rebase merge한다.
 
 ## 미포함 범위
