@@ -368,6 +368,25 @@ fn adjacent_text_nodes_keep_source_order_and_inline_fragments() {
     }
 }
 
+#[test]
+fn supplementary_scalar_preserves_utf16_and_utf8_source_ranges() {
+    let input = paragraph(
+        "😀",
+        "Ahem",
+        10.0,
+        10.0,
+        WhiteSpaceMode::Normal,
+        WordBreakMode::Normal,
+    );
+    let normalized = crate::normalize::normalize(&input);
+
+    assert_eq!(normalized.text, "😀");
+    assert_eq!(normalized.sources.len(), 1);
+    assert_eq!(normalized.sources[0].node, node(2));
+    assert_eq!(normalized.sources[0].source_utf16, 0..2);
+    assert_eq!(normalized.sources[0].paragraph_utf8, 0..4);
+}
+
 #[path = "tests/engine_boundaries.rs"]
 mod engine_boundaries;
 
