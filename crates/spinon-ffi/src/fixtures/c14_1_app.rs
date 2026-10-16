@@ -67,7 +67,8 @@ fn run_fixture() -> Result<(String, bool), String> {
         .to_layout_intrinsic_size_snapshot()
         .map_err(|error| format!("intrinsic layout snapshot: {error}"))?;
     let request_source_matches = request_source == resources.source();
-    let source_matches = request_source_matches && intrinsic.source() == resources.source();
+    let intrinsic_source_matches = intrinsic.source() == resources.source();
+    let source_matches = request_source_matches && intrinsic_source_matches;
     let revision_matches = intrinsic.revision() == resources.revision();
 
     let view =
@@ -148,7 +149,7 @@ fn run_fixture() -> Result<(String, bool), String> {
         "node_id": format!("{:?}", image.id()),
         "source_revision": format!("{:?}", resources.source()),
         "intrinsic_revision": format!("{:?}", resources.revision()),
-        "intrinsic_source_matches": source_matches,
+        "intrinsic_source_matches": intrinsic_source_matches,
         "intrinsic_revision_matches": revision_matches,
         "natural_size_css_px": [natural_width, natural_height],
         "expected_natural_size_css_px": [expected_width, expected_height],

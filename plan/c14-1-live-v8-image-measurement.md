@@ -52,4 +52,4 @@
 - live V8 document → actor snapshot → fixed PNG decode → intrinsic snapshot → Stylo/Taffy 측정을 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 성공시켰다. src mutation stale negative control도 양쪽에서 `SourceChanged`로 거부됐다.
 - 기본 Android/iOS 앱 artifact의 C14.1 native symbol과 고유 JS/PNG payload 부재, opt-in positive control 및 기본 route disabled를 확인했다.
 - workspace tests, focused feature tests, workspace/feature Clippy, rustfmt와 diff check를 통과시켰다. 원본 로그·화면·hash는 [실행 근거](../spec/internal/evidence/c14-1-live-v8-image-measurement-2026-10-16/README.md), 별도 20개 구현 검토는 [구현 실패 관점 검토](../spec/internal/evidence/c14-1-live-v8-implementation-review-20-2026-10-16.md)에 있다.
-- PR 전용 적대 검토, PR CI·merge 및 Tailnet preview hash 확인은 아직 남아 있다. 이 실행 결과로 C14.1 또는 C14를 완료 표시하지 않는다.
+- 별도 PR 변경 검토 30개를 마쳤고, `intrinsic_source_matches` 보고 필드 불일치를 분리해 수정한 뒤 feature test·Clippy를 다시 통과시켰다([PR 변경 실패 관점 검토](../spec/internal/evidence/c14-1-live-v8-pr-delta-review-30-2026-10-16.md)). PR checks는 보고되지 않았고 기본 branch protection의 필수 status check와 승인 수는 0이다. Rebase and merge 및 병합 뒤 Tailnet preview hash 확인은 남아 있다. 이 실행 결과로 C14.1 또는 C14를 완료 표시하지 않는다.
