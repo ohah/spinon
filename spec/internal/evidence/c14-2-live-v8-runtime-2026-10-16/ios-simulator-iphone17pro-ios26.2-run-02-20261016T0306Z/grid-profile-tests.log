@@ -1,0 +1,9 @@
+   Compiling spinon-style v0.1.0 (/private/tmp/spinon-c14-2-image-ratio-live-v8-implementation-20261016/crates/spinon-style)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.76s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style-bbe83c0d80453aa3)
+
+running 2 tests
+test stylo_dom::cascade::runtime_grid_tests::author_profile::runtime_grid_profile_rejects_noninitial_border_image_values ... ok
+test stylo_dom::cascade::runtime_grid_tests::author_profile::runtime_grid_profile_accepts_initial_border_image_resets_from_shorthands ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 146 filtered out; finished in 0.01s

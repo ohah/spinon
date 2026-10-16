@@ -1,0 +1,34 @@
+{
+  "mode": "default",
+  "scanner": "binary byte-presence; symbol string plus C14.2 payload and exact source PNG bytes",
+  "needles": {
+    "ffi_symbol": "spinon_c14_2_app_image_ratio_fixture",
+    "ffi_payload_label": "c14-2-live-v8-image-ratio-sizing",
+    "case_id": "aspect-ratio-override",
+    "png_sha256": "5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2"
+  },
+  "artifacts": {
+    "ios_static_library": {
+      "path": "build/spinon/iphonesimulator/libspinon_ffi.a",
+      "size": 43660008,
+      "sha256": "f6143ba5c9c1363b9bfc132e30adafa2ffe4be9f7609cf85d2a316ce65619bf2",
+      "matches": {
+        "ffi_symbol": false,
+        "ffi_payload_label": false,
+        "case_id": false,
+        "png_bytes": false
+      }
+    },
+    "ios_simulator_executable": {
+      "path": "build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap",
+      "size": 28611216,
+      "sha256": "54d37f393c433159c2e623dd2fae126550f8fe141f1abf97d186fef6ae102c6e",
+      "matches": {
+        "ffi_symbol": false,
+        "ffi_payload_label": false,
+        "case_id": false,
+        "png_bytes": false
+      }
+    }
+  }
+}

@@ -62,6 +62,20 @@ xcrun simctl launch --terminate-running-process booted dev.spinon.bootstrap --sp
 
 화면과 unified log는 Chrome 155 oracle의 `(0,0) 24×16 CSS px` frame, source identity와 revision 비교 결과를 표시합니다. 앱 화면은 report text이며 PNG를 그리지 않으므로 Metal image paint·pixel parity나 border 바깥 overflow clipping을 증명하지 않습니다. C13.1의 border/overflow 결과는 위의 별도 근거를 참고하세요. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 live V8 로그·화면·feature 경계는 [C14.1 live V8 evidence](../../spec/internal/evidence/c14-1-live-v8-image-measurement-2026-10-16/README.md)에 기록합니다.
 
+## C14.2 이미지 비율 앱 fixture
+
+C14.2는 opt-in live V8 문서 두 개에서 PNG natural ratio, 지정 축·min/max, `box-sizing` 및 Flex sizing을 고정 Chrome 155 oracle과 비교합니다. 기본 iOS Simulator build flag는 0이며 다음처럼 선택적으로 켭니다.
+
+```sh
+SPINON_ENABLE_C14_2_APP_FIXTURE_TEST=1 mise exec -- bun run build:ios-sim
+xcrun simctl install ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app
+xcrun simctl launch --terminate-running-process ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D dev.spinon.bootstrap --spinon-c142-image-ratio
+xcrun simctl spawn ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D log show --last 2m --style compact --info \
+  --predicate 'process == "SpinonBootstrap" AND eventMessage CONTAINS "SPINON_C142"'
+```
+
+화면의 `PASS · 29/29`는 Block 21개와 Flex 8개가 모두 CSS px oracle과 일치했음을 뜻합니다. `aspect-ratio:auto <ratio>`는 명시된 미지원 입력이라 제외합니다. report 화면은 image paint·Metal pixel·border 바깥 overflow/clip이나 제품 resource loader를 검증하지 않습니다. 양 플랫폼 report·로그·screenshot 및 기본/opt-in artifact 비교는 [C14.2 실행 근거](../../spec/internal/evidence/c14-2-live-v8-runtime-2026-10-16/README.md)에 기록합니다.
+
 ## C14.3 intrinsic contribution 앱 fixture
 
 C14.3은 opt-in fixture에서 live V8이 만든 14개 HTML image를 HostDocument snapshot과 PNG natural-size snapshot에 연결해 Chrome 155 CSS px 기대값과 비교합니다. 기본 빌드에는 route ABI와 고정 payload가 없습니다.

@@ -1,0 +1,6 @@
+getpwuid_r did not find a match for uid 501
+Timestamp               Ty Process[PID:TID]
+2026-10-16 12:03:25.446 E  SpinonBootstrap[47129:3b81d84] SPINON_C142_APP_FIXTURE part=1/1 payload={"detail":"C14.2 expected PNG natural size pair missing","status":"error"}
+2026-10-16 12:03:25.468 E  SpinonBootstrap[47129:3b81d6a] [dev.spinon.bootstrap:c14-2-fixture] SPINON_C142_SIMULATOR_REPORT status=error
+2026-10-16 12:05:59.255 E  SpinonBootstrap[52448:3b8596d] SPINON_C142_APP_FIXTURE part=1/1 payload={"detail":"C14.2 expected PNG natural size pair missing","status":"error"}
+2026-10-16 12:05:59.276 E  SpinonBootstrap[52448:3b85951] [dev.spinon.bootstrap:c14-2-fixture] SPINON_C142_SIMULATOR_REPORT status=error

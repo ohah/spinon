@@ -13,6 +13,12 @@ let spinonC141AppFixtureTestEnabled = true
 let spinonC141AppFixtureTestEnabled = false
 #endif
 
+#if SPINON_ENABLE_C14_2_APP_FIXTURE_TEST_1
+let spinonC142AppFixtureTestEnabled = true
+#else
+let spinonC142AppFixtureTestEnabled = false
+#endif
+
 #if SPINON_ENABLE_C14_3_APP_FIXTURE_TEST_1
 let spinonC143AppFixtureTestEnabled = true
 #else
@@ -88,6 +94,20 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             || arguments.contains(where: { $0.hasPrefix("--spinon-c124-metal-surface-readback=") })
         let runR05AttributionProbe = arguments.contains("--spinon-r05-attribution")
         let runLifecycleProbe = arguments.contains("--spinon-dom-gc-auto")
+        let runC142ImageRatioFixture = arguments.contains("--spinon-c142-image-ratio")
+        if runC142ImageRatioFixture {
+            let conflictingFixtureArguments = arguments.filter {
+                $0.hasPrefix("--spinon-") && $0 != "--spinon-c142-image-ratio"
+            }
+            let window = UIWindow(frame: UIScreen.main.bounds)
+            let controller = C142ImageRatioFixtureViewController()
+            controller.fixtureEnabled = spinonC142AppFixtureTestEnabled
+            controller.conflictingArguments = conflictingFixtureArguments
+            window.rootViewController = controller
+            window.makeKeyAndVisible()
+            self.window = window
+            return true
+        }
         let runC143IntrinsicContributionsFixture = arguments.contains("--spinon-c143-intrinsic-contributions")
         if runC143IntrinsicContributionsFixture {
             let conflictingFixtureArguments = arguments.filter {
@@ -321,6 +341,171 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             .replacingOccurrences(of: " rebuild-us-p50=", with: "\nrebuild-us: p50=")
             .replacingOccurrences(of: " rebuild-us-p95=", with: " p95=")
             .replacingOccurrences(of: " iterations=", with: "\niterations=")
+    }
+}
+
+private final class C142ImageRatioFixtureViewController: UIViewController {
+    var fixtureEnabled = false
+    var conflictingArguments: [String] = []
+    private let logger = Logger(subsystem: "dev.spinon.bootstrap", category: "c14-2-fixture")
+    private let reportView = UITextView()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
+        reportView.translatesAutoresizingMaskIntoConstraints = false
+        reportView.backgroundColor = .clear
+        reportView.textColor = UIColor(red: 0.90, green: 0.93, blue: 0.98, alpha: 1)
+        reportView.font = .monospacedSystemFont(ofSize: 11, weight: .regular)
+        reportView.textContainerInset = UIEdgeInsets(top: 28, left: 18, bottom: 24, right: 18)
+        reportView.isEditable = false
+        view.addSubview(reportView)
+        NSLayoutConstraint.activate([
+            reportView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            reportView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            reportView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            reportView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
+
+        guard conflictingArguments.isEmpty else {
+            reportView.text = "C14.2 · 잘못된 실행 인자\n\n다른 fixture route와 함께 실행할 수 없습니다.\n"
+                + conflictingArguments.joined(separator: "\n")
+            logger.error("SPINON_C142_ARGUMENT_ERROR conflicting=fixture-route")
+            return
+        }
+        guard fixtureEnabled else {
+            reportView.text = "C14.2 · fixture-test 빌드가 꺼져 있습니다."
+            logger.error("SPINON_C142_DISABLED fixture-test feature is off")
+            return
+        }
+
+        reportView.text = "C14.2 · live V8 이미지 비율 계산 중…"
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            let report = SpinonRunner.runC142ImageRatioFixture()
+                ?? "status=-1 report=empty native report"
+            let passed = self?.reportMatches(report) ?? false
+            DispatchQueue.main.async {
+                guard let self else { return }
+                self.reportView.text = self.formatReport(report, passed: passed)
+                if passed {
+                    self.logger.notice("SPINON_C142_SIMULATOR_REPORT status=ok")
+                } else {
+                    self.logger.error("SPINON_C142_SIMULATOR_REPORT status=error")
+                }
+            }
+        }
+    }
+
+    private func reportMatches(_ report: String) -> Bool {
+        guard report.hasPrefix("status=0 "),
+              let result = decodedReport(report),
+              result["status"] as? String == "ok",
+              result["document_origin"] as? String == "live-v8",
+              let cases = result["cases"] as? [[String: Any]], cases.count == 29,
+              let documents = result["documents"] as? [[String: Any]], documents.count == 2,
+              result["case_count"] as? Int == 29,
+              result["matched_count"] as? Int == 29
+        else { return false }
+
+        for (index, document) in documents.enumerated() {
+            let expectedKind = index == 0 ? "block" : "flex"
+            let expectedCount = index == 0 ? 21 : 8
+            guard document["kind"] as? String == expectedKind,
+                  document["case_count"] as? Int == expectedCount,
+                  document["matched_count"] as? Int == expectedCount,
+                  document["intrinsic_source_matches"] as? Bool == true,
+                  document["intrinsic_revision_matches"] as? Bool == true,
+                  document["style_stamp_matches"] as? Bool == true,
+                  document["style_diagnostics_empty"] as? Bool == true
+            else { return false }
+        }
+
+        var identifiers = Set<String>()
+        var blockCount = 0
+        var flexCount = 0
+        for item in cases {
+            guard let id = item["id"] as? String,
+                  identifiers.insert(id).inserted,
+                  item["status"] as? String == "ok",
+                  item["natural_size_matches"] as? Bool == true,
+                  item["frame_matches"] as? Bool == true,
+                  item["source_stamp_matches"] as? Bool == true,
+                  item["parent_size_matches"] as? Bool == true,
+                  item["align_items_matches"] as? Bool == true,
+                  let frame = item["frame_css_px"] as? [NSNumber], frame.count == 4,
+                  frame.allSatisfy({ $0.doubleValue.isFinite }),
+                  let natural = item["natural_size_css_px"] as? [NSNumber],
+                  natural.count == 2, natural[0].doubleValue == 24, natural[1].doubleValue == 16
+            else { return false }
+            if item["document_kind"] as? String == "block" {
+                blockCount += 1
+            } else if item["document_kind"] as? String == "flex" {
+                flexCount += 1
+            } else {
+                return false
+            }
+        }
+        return identifiers.count == 29 && blockCount == 21 && flexCount == 8
+    }
+
+    private func formatReport(_ report: String, passed: Bool) -> String {
+        guard passed, let result = decodedReport(report),
+              let cases = result["cases"] as? [[String: Any]],
+              let documents = result["documents"] as? [[String: Any]]
+        else { return "C14.2 · 앱 fixture 실패\n\n\(report)" }
+
+        var lines = [
+            "C14.2 · live V8 / Chrome 155",
+            "",
+            "PASS · 29/29 CSS px cases",
+            "Block 21/21 · Flex 8/8 · PNG 24×16",
+            "",
+            "선택 경계 case · image frame (CSS px)",
+        ]
+        let selected = [
+            "max-width-only", "content-box-edges", "aspect-ratio-border-box",
+            "flex-auto-basis", "fixed-cross-stretch-max-height",
+        ]
+        for id in selected {
+            guard let item = cases.first(where: { $0["id"] as? String == id }),
+                  item["status"] as? String == "ok"
+            else { return "C14.2 · 앱 fixture 결과가 일치하지 않습니다\n\n\(report)" }
+            var line = "\(id) · \(frame(item["frame_css_px"] as? [NSNumber]))"
+            if let parent = item["parent_frame_css_px"] as? [NSNumber] {
+                line += " · parent \(frame(parent))"
+            }
+            lines.append(line)
+        }
+        for document in documents {
+            lines.append("")
+            lines.append("\(document["kind"] as? String ?? "unknown") revisions · doc "
+                + "\(document["document_revision"] as? Int ?? -1) / "
+                + "style \(document["style_revision"] as? Int ?? -1) / "
+                + "env \(document["environment_revision"] as? Int ?? -1) / "
+                + "intrinsic \(document["intrinsic_size_revision"] as? Int ?? -1)")
+        }
+        return lines.joined(separator: "\n")
+    }
+
+    private func decodedReport(_ report: String) -> [String: Any]? {
+        let jsonReport = report.hasPrefix("status=0 report=")
+            ? String(report.dropFirst("status=0 report=".count))
+            : report
+        guard let data = jsonReport.data(using: .utf8),
+              let value = try? JSONSerialization.jsonObject(with: data)
+        else { return nil }
+        return value as? [String: Any]
+    }
+
+    private func frame(_ values: [NSNumber]?) -> String {
+        guard let values, values.count == 4 else { return "frame 없음" }
+        return "x=\(number(values[0])) y=\(number(values[1])) · "
+            + "\(number(values[2]))×\(number(values[3]))"
+    }
+
+    private func number(_ value: NSNumber) -> String {
+        let number = value.doubleValue
+        return number.rounded() == number ? String(Int64(number)) : String(number)
     }
 }
 

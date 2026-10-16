@@ -31,6 +31,19 @@ adb -s emulator-5554 logcat -d -s SpinonBootstrap | rg SPINON_C141_APP_FIXTURE
 
 이 report는 고정 Chrome 155 oracle과 `(0,0) 24×16 CSS px` frame, source/intrinsic revision을 비교합니다. 앱 화면은 report text만 보여 줍니다. PNG image paint, GPU 출력, border 바깥 overflow, 제품 resource loader·비동기 교체는 검증하지 않습니다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 live V8 로그·화면·feature 경계는 [C14.1 live V8 evidence](../../spec/internal/evidence/c14-1-live-v8-image-measurement-2026-10-16/README.md)에 기록합니다.
 
+## C14.2 이미지 비율 앱 fixture
+
+C14.2는 opt-in live V8 문서 두 개에서 PNG 이미지의 natural ratio, 지정 축·min/max, `box-sizing`과 Flex sizing을 Chrome 155의 전체 frame과 비교합니다. 기본 빌드는 fixture FFI symbol 및 고정 case/PNG payload를 포함하지 않습니다. Android API 37 ARM64 AVD에서만 실행하려면 다음 명령을 사용합니다.
+
+```sh
+SPINON_ENABLE_C14_2_APP_FIXTURE_TEST=1 mise exec -- bun run build:android
+adb -s emulator-5554 install -r platforms/android/app/build/outputs/apk/debug/app-debug.apk
+adb -s emulator-5554 shell am start -n dev.spinon.bootstrap/.MainActivity --ez spinon_c142_image_ratio true
+adb -s emulator-5554 logcat -d -s SpinonBootstrap | rg SPINON_C142
+```
+
+화면의 `PASS · 29/29`는 Block 21개와 Flex 8개가 모두 고정 Chrome 155 oracle과 일치했음을 뜻합니다. `aspect-ratio:auto <ratio>` case는 미지원 범위로 제외합니다. 이 앱 화면은 report text이며 image paint, GPU pixel, border 바깥 overflow/clip, 제품 resource loader를 검증하지 않습니다. Android/iOS simulator 로그·report·화면과 기본/opt-in artifact 비교는 [C14.2 실행 근거](../../spec/internal/evidence/c14-2-live-v8-runtime-2026-10-16/README.md)에 있습니다.
+
 ## C14.3 intrinsic contribution 앱 fixture
 
 C14.3은 opt-in fixture 경계에서 live V8이 만든 14개 HTML image를 HostDocument snapshot과 PNG natural-size snapshot에 연결해 Chrome 155 CSS px 기대값과 비교합니다. 기본 빌드에는 route ABI와 고정 payload가 없으며, 화면은 layout report text입니다.

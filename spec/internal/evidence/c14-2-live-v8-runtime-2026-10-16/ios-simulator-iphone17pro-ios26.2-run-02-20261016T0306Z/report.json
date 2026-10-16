@@ -1,0 +1,1359 @@
+{
+  "case_count": 29,
+  "cases": [
+    {
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(1)",
+      "document_kind": "block",
+      "document_revision": 128,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        0.0,
+        24.0,
+        16.0
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "frame_css_px": [
+        0.0,
+        0.0,
+        24.0,
+        16.0
+      ],
+      "frame_matches": true,
+      "id": "natural-auto-auto",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(1)",
+      "document_kind": "block",
+      "document_revision": 128,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        48.0,
+        32.0
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        16.0,
+        48.0,
+        32.0
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "frame_css_px": [
+        0.0,
+        16.0,
+        48.0,
+        32.0
+      ],
+      "frame_matches": true,
+      "id": "width-definite-height-auto",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(1)",
+      "document_kind": "block",
+      "document_revision": 128,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        36.0,
+        24.0
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        48.0,
+        36.0,
+        24.0
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "frame_css_px": [
+        0.0,
+        48.0,
+        36.0,
+        24.0
+      ],
+      "frame_matches": true,
+      "id": "width-auto-height-definite",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(1)",
+      "document_kind": "block",
+      "document_revision": 128,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        48.0,
+        32.0
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        72.0,
+        48.0,
+        32.0
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "frame_css_px": [
+        0.0,
+        72.0,
+        48.0,
+        32.0
+      ],
+      "frame_matches": true,
+      "id": "min-width-only",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(1)",
+      "document_kind": "block",
+      "document_revision": 128,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        48.0,
+        32.0
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        104.0,
+        48.0,
+        32.0
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "frame_css_px": [
+        0.0,
+        104.0,
+        48.0,
+        32.0
+      ],
+      "frame_matches": true,
+      "id": "min-height-only",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(1)",
+      "document_kind": "block",
+      "document_revision": 128,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        19.984375,
+        13.328125
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        136.0,
+        19.984375,
+        13.328125
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "frame_css_px": [
+        0.0,
+        136.0,
+        20.0,
+        13.333333015441895
+      ],
+      "frame_matches": true,
+      "id": "max-width-only",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(1)",
+      "document_kind": "block",
+      "document_revision": 128,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        15.0,
+        10.0
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        149.328125,
+        15.0,
+        10.0
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "frame_css_px": [
+        0.0,
+        149.3333282470703,
+        15.0,
+        10.0
+      ],
+      "frame_matches": true,
+      "id": "max-height-only",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(1)",
+      "document_kind": "block",
+      "document_revision": 128,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        15.0,
+        10.0
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        159.328125,
+        15.0,
+        10.0
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "frame_css_px": [
+        0.0,
+        159.3333282470703,
+        15.0,
+        10.0
+      ],
+      "frame_matches": true,
+      "id": "both-max-contain",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(1)",
+      "document_kind": "block",
+      "document_revision": 128,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        19.984375,
+        13.328125
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        169.328125,
+        19.984375,
+        13.328125
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "frame_css_px": [
+        0.0,
+        169.3333282470703,
+        20.0,
+        13.333333015441895
+      ],
+      "frame_matches": true,
+      "id": "both-max-width-limiting",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(1)",
+      "document_kind": "block",
+      "document_revision": 128,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        18.0,
+        12.0
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        182.65625,
+        18.0,
+        12.0
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "frame_css_px": [
+        0.0,
+        182.66665649414062,
+        18.0,
+        12.0
+      ],
+      "frame_matches": true,
+      "id": "both-max-height-limiting",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(1)",
+      "document_kind": "block",
+      "document_revision": 128,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        33.0,
+        22.0
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        194.65625,
+        33.0,
+        22.0
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "frame_css_px": [
+        0.0,
+        194.66665649414062,
+        33.0,
+        22.0
+      ],
+      "frame_matches": true,
+      "id": "both-min-height-limiting",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(1)",
+      "document_kind": "block",
+      "document_revision": 128,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        36.0,
+        24.0
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        216.65625,
+        36.0,
+        24.0
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "frame_css_px": [
+        0.0,
+        216.66665649414062,
+        36.0,
+        24.0
+      ],
+      "frame_matches": true,
+      "id": "both-min-width-limiting",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(1)",
+      "document_kind": "block",
+      "document_revision": 128,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        30.0,
+        10.0
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        240.65625,
+        30.0,
+        10.0
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "frame_css_px": [
+        0.0,
+        240.66665649414062,
+        30.0,
+        10.0
+      ],
+      "frame_matches": true,
+      "id": "cross-min-width-max-height",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(1)",
+      "document_kind": "block",
+      "document_revision": 128,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        20.0,
+        20.0
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        250.65625,
+        20.0,
+        20.0
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "frame_css_px": [
+        0.0,
+        250.66665649414062,
+        20.0,
+        20.0
+      ],
+      "frame_matches": true,
+      "id": "cross-max-width-min-height",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(1)",
+      "document_kind": "block",
+      "document_revision": 128,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        48.0,
+        24.0
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        270.65625,
+        48.0,
+        24.0
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "frame_css_px": [
+        0.0,
+        270.6666564941406,
+        48.0,
+        24.0
+      ],
+      "frame_matches": true,
+      "id": "min-max-conflict",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(1)",
+      "document_kind": "block",
+      "document_revision": 128,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        48.0,
+        32.0
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        294.65625,
+        48.0,
+        32.0
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "frame_css_px": [
+        0.0,
+        294.6666564941406,
+        48.0,
+        32.0
+      ],
+      "frame_matches": true,
+      "id": "min-over-max",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(1)",
+      "document_kind": "block",
+      "document_revision": 128,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        48.0,
+        20.0
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        326.65625,
+        48.0,
+        20.0
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "frame_css_px": [
+        0.0,
+        326.6666564941406,
+        48.0,
+        20.0
+      ],
+      "frame_matches": true,
+      "id": "partial-auto-max-opposite",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(1)",
+      "document_kind": "block",
+      "document_revision": 128,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        30.0,
+        24.0
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        346.65625,
+        30.0,
+        24.0
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "frame_css_px": [
+        0.0,
+        346.6666564941406,
+        30.0,
+        24.0
+      ],
+      "frame_matches": true,
+      "id": "partial-auto-max-auto-axis",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(1)",
+      "document_kind": "block",
+      "document_revision": 128,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        48.0,
+        34.0
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        370.65625,
+        48.0,
+        34.0
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "frame_css_px": [
+        0.0,
+        370.6666564941406,
+        48.0,
+        34.0
+      ],
+      "frame_matches": true,
+      "id": "content-box-edges",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(1)",
+      "document_kind": "block",
+      "document_revision": 128,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        48.0,
+        48.0
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        404.65625,
+        48.0,
+        48.0
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "frame_css_px": [
+        0.0,
+        404.6666564941406,
+        48.0,
+        48.0
+      ],
+      "frame_matches": true,
+      "id": "aspect-ratio-override",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(1)",
+      "document_kind": "block",
+      "document_revision": 128,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        48.0,
+        32.0
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        452.65625,
+        48.0,
+        32.0
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "frame_css_px": [
+        0.0,
+        452.6666564941406,
+        48.0,
+        32.0
+      ],
+      "frame_matches": true,
+      "id": "aspect-ratio-border-box",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "actual_parent_align_items": "flex-start",
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(2)",
+      "document_kind": "flex",
+      "document_revision": 84,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        48.0,
+        20.0
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        0.0,
+        48.0,
+        20.0
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "expected_parent_align_items": "flex-start",
+      "expected_parent_size_css_px": [
+        120.0,
+        20.0
+      ],
+      "frame_css_px": [
+        0.0,
+        0.0,
+        48.0,
+        20.0
+      ],
+      "frame_matches": true,
+      "id": "flex-width-max-auto-cross",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_frame_css_px": [
+        0.0,
+        0.0,
+        120.0,
+        20.0
+      ],
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "actual_parent_align_items": "flex-start",
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(2)",
+      "document_kind": "flex",
+      "document_revision": 84,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        30.0,
+        24.0
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        20.0,
+        30.0,
+        24.0
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "expected_parent_align_items": "flex-start",
+      "expected_parent_size_css_px": [
+        120.0,
+        24.0
+      ],
+      "frame_css_px": [
+        0.0,
+        20.0,
+        30.0,
+        24.0
+      ],
+      "frame_matches": true,
+      "id": "flex-height-max-auto-main",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_frame_css_px": [
+        0.0,
+        20.0,
+        120.0,
+        24.0
+      ],
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "actual_parent_align_items": "flex-start",
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(2)",
+      "document_kind": "flex",
+      "document_revision": 84,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        48.0,
+        32.0
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        44.0,
+        48.0,
+        32.0
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "expected_parent_align_items": "flex-start",
+      "expected_parent_size_css_px": [
+        120.0,
+        32.0
+      ],
+      "frame_css_px": [
+        0.0,
+        44.0,
+        48.0,
+        32.0
+      ],
+      "frame_matches": true,
+      "id": "flex-min-cross",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_frame_css_px": [
+        0.0,
+        44.0,
+        120.0,
+        32.0
+      ],
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "actual_parent_align_items": "flex-start",
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(2)",
+      "document_kind": "flex",
+      "document_revision": 84,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        76.0,
+        24.0,
+        16.0
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "expected_parent_align_items": "flex-start",
+      "expected_parent_size_css_px": [
+        120.0,
+        16.0
+      ],
+      "frame_css_px": [
+        0.0,
+        76.0,
+        24.0,
+        16.0
+      ],
+      "frame_matches": true,
+      "id": "flex-auto-basis",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_frame_css_px": [
+        0.0,
+        76.0,
+        120.0,
+        16.0
+      ],
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "actual_parent_align_items": "stretch",
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(2)",
+      "document_kind": "flex",
+      "document_revision": 84,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        60.0,
+        40.0
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        92.0,
+        60.0,
+        40.0
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "expected_parent_align_items": "stretch",
+      "expected_parent_size_css_px": [
+        120.0,
+        40.0
+      ],
+      "frame_css_px": [
+        0.0,
+        92.0,
+        60.0,
+        40.0
+      ],
+      "frame_matches": true,
+      "id": "fixed-cross-stretch-auto-auto",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_frame_css_px": [
+        0.0,
+        92.0,
+        120.0,
+        40.0
+      ],
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "actual_parent_align_items": "stretch",
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(2)",
+      "document_kind": "flex",
+      "document_revision": 84,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        30.0,
+        20.0
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        132.0,
+        30.0,
+        20.0
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "expected_parent_align_items": "stretch",
+      "expected_parent_size_css_px": [
+        120.0,
+        40.0
+      ],
+      "frame_css_px": [
+        0.0,
+        132.0,
+        30.0,
+        20.0
+      ],
+      "frame_matches": true,
+      "id": "fixed-cross-stretch-max-height",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_frame_css_px": [
+        0.0,
+        132.0,
+        120.0,
+        40.0
+      ],
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "actual_parent_align_items": "flex-start",
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(2)",
+      "document_kind": "flex",
+      "document_revision": 84,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        172.0,
+        24.0,
+        16.0
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "expected_parent_align_items": "flex-start",
+      "expected_parent_size_css_px": [
+        120.0,
+        40.0
+      ],
+      "frame_css_px": [
+        0.0,
+        172.0,
+        24.0,
+        16.0
+      ],
+      "frame_matches": true,
+      "id": "fixed-cross-start-auto-auto",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_frame_css_px": [
+        0.0,
+        172.0,
+        120.0,
+        40.0
+      ],
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    },
+    {
+      "actual_parent_align_items": "stretch",
+      "align_items_matches": true,
+      "document_generation": "DocumentGeneration(2)",
+      "document_kind": "flex",
+      "document_revision": 84,
+      "environment_revision": 0,
+      "expected_case_size_css_px": [
+        36.0,
+        24.0
+      ],
+      "expected_frame_css_px": [
+        0.0,
+        212.0,
+        36.0,
+        24.0
+      ],
+      "expected_natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "expected_parent_align_items": "stretch",
+      "expected_parent_size_css_px": [
+        120.0,
+        40.0
+      ],
+      "frame_css_px": [
+        0.0,
+        212.0,
+        36.0,
+        24.0
+      ],
+      "frame_matches": true,
+      "id": "fixed-cross-stretch-specified-height",
+      "intrinsic_size_revision": 1,
+      "natural_size_css_px": [
+        24.0,
+        16.0
+      ],
+      "natural_size_matches": true,
+      "parent_frame_css_px": [
+        0.0,
+        212.0,
+        120.0,
+        40.0
+      ],
+      "parent_size_matches": true,
+      "render_tree_revision": 1,
+      "source_stamp_matches": true,
+      "status": "ok",
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "tolerance_css_px": 0.05000000074505806
+    }
+  ],
+  "document_origin": "live-v8",
+  "documents": [
+    {
+      "case_count": 21,
+      "document_generation": "DocumentGeneration(1)",
+      "document_revision": 128,
+      "document_source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(128), render_tree: RenderTreeRevision(1) }",
+      "environment_revision": 0,
+      "intrinsic_revision_matches": true,
+      "intrinsic_size_revision": 1,
+      "intrinsic_source_matches": true,
+      "kind": "block",
+      "matched_count": 21,
+      "render_tree_revision": 1,
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "style_stamp_matches": true
+    },
+    {
+      "case_count": 8,
+      "document_generation": "DocumentGeneration(2)",
+      "document_revision": 84,
+      "document_source": "HostDocument { generation: DocumentGeneration(2), document: DocumentRevision(84), render_tree: RenderTreeRevision(1) }",
+      "environment_revision": 0,
+      "intrinsic_revision_matches": true,
+      "intrinsic_size_revision": 1,
+      "intrinsic_source_matches": true,
+      "kind": "flex",
+      "matched_count": 8,
+      "render_tree_revision": 1,
+      "style_diagnostics_empty": true,
+      "style_revision": 0,
+      "style_stamp_matches": true
+    }
+  ],
+  "fixture": "c14-2-live-v8-image-ratio-sizing",
+  "matched_count": 29,
+  "oracle": "Chrome Headless 155.0.8059.40",
+  "png_sha256": "5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2",
+  "status": "ok"
+}
