@@ -2,7 +2,7 @@
 
 ## 대상과 입력
 
-C18.3 구현 PR [#224](https://github.com/ohah/spinon/pull/224)은 `ad243765aad2b2dc45bb461d23f2c0061672037a`로 2026-10-16 11:36 UTC에 rebase merge됐다. 이번 동기화는 그 구현 계획·상태·0066 계약·실행 근거와 관련 fixture 자료를 Tailnet 문서 미리보기에 반영했다. 동기화 소스 tree는 `d4348c61a0ab748450b8373b2619a16af3a75512`이며 PR 병합 뒤에도 같은 tree다. 동기화된 근거 README의 Android/iOS 이미지 경로 두 곳은 Rspress가 상대 이미지로 해석하도록 `./`를 명시했다.
+C18.3 구현 PR [#224](https://github.com/ohah/spinon/pull/224)은 `ad243765aad2b2dc45bb461d23f2c0061672037a`로 2026-10-16 11:36 UTC에 rebase merge됐다. 이번 동기화는 그 구현 계획·상태·0066 계약·실행 근거와 관련 fixture 자료를 Tailnet 문서 미리보기에 반영했다. 빌드 소스 tree는 이미지 경로 수정 커밋 `1acfc692184e05371a05a097b5b605327be6c97c`의 `d4348c61a0ab748450b8373b2619a16af3a75512`다. 이 tree는 PR에 추가된 동기화 근거 파일을 포함하지 않는다. 해당 파일은 Tailnet 소스 페이지를 바꾸지 않는다. 동기화된 근거 README의 Android/iOS 이미지 경로 두 곳은 Rspress가 상대 이미지로 해석하도록 `./`를 명시했다.
 
 미리보기는 `https://macstudio.tailed42f2.ts.net/spinon/`이다. 상태 대장에 수동으로 완료 수를 입력하지 않았다. [로드맵 HTML](https://github.com/ohah/spinon/blob/main/spec/public/roadmap.html)은 GitHub `main`의 `spec/STATUS.md`를 가져와 표시한다.
 
