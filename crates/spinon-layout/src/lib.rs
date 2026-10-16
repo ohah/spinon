@@ -19,6 +19,10 @@ mod taffy_style;
 mod test_allocator;
 mod tree_input;
 
+#[cfg(test)]
+#[path = "c15_text_layout_tests.rs"]
+mod c15_text_layout_tests;
+
 use std::collections::{BTreeMap, BTreeSet};
 
 use percentage_basis::validate_spacing_percentage_bases;
@@ -37,6 +41,11 @@ pub use grid::{
 pub use grid_placement::{GridItemInput, GridPlacementInput};
 pub use intrinsic_size::{LayoutIntrinsicSize, LayoutIntrinsicSizeSnapshot};
 pub use revision::{LayoutInputRevision, LayoutSourceRevision};
+pub use spinon_text_layout::{
+    FontRegistryRevision, InlineFragment, ParagraphInput, ParagraphStyle, TextGlyph,
+    TextLayoutEngine, TextLayoutSnapshot, TextLine, TextRect, TextRun, TextSource, TextSourceRange,
+    WhiteSpaceMode, WordBreakMode,
+};
 pub use style::{
     AlignmentSafety, ContentAlignmentPosition, FlexDirection, FlexWrap, ItemAlignmentPosition,
     JustifyContentPosition, LayoutAlignContent, LayoutAlignItems, LayoutAlignSelf, LayoutBorder,
@@ -65,6 +74,7 @@ pub struct LayoutInput {
     positioning: BTreeMap<NodeId, LayoutPositioning>,
     grid_containers: BTreeMap<NodeId, GridContainerInput>,
     grid_items: BTreeMap<NodeId, GridItemInput>,
+    text_paragraphs: BTreeMap<NodeId, ParagraphInput>,
 }
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -117,6 +127,22 @@ impl LayoutInput {
         self.grid_items = items;
         self
     }
+
+    /// Definite Block content width에서 shaping할 paragraph snapshot을 입력합니다.
+    pub fn with_text_paragraphs(
+        mut self,
+        paragraphs: impl IntoIterator<Item = ParagraphInput>,
+    ) -> Result<Self, LayoutError> {
+        let mut values = BTreeMap::new();
+        for paragraph in paragraphs {
+            let node = paragraph.node;
+            if values.insert(node, paragraph).is_some() {
+                return Err(LayoutError::DuplicateTextParagraph(node));
+            }
+        }
+        self.text_paragraphs = values;
+        Ok(self)
+    }
 }
 
 /// 화면 루트 왼쪽 위 기준의 절대 프레임입니다.
@@ -142,6 +168,16 @@ pub struct LayoutOutput {
     pub positioned_owners: BTreeMap<NodeId, PositionedContainingBlockOwner>,
     /// CSS fixed box의 viewport owner를 absolute owner와 별도로 보존합니다.
     pub fixed_owners: BTreeMap<NodeId, FixedContainingBlockOwner>,
+    /// Taffy measure가 최종 content width에서 만든 revision-stamped text snapshot입니다.
+    pub text_layouts: BTreeMap<NodeId, LayoutTextSnapshot>,
+}
+
+/// 하나의 layout 계산 입력 revision에 결속한 shaping 결과입니다.
+#[derive(Clone, Debug, PartialEq)]
+pub struct LayoutTextSnapshot {
+    pub revision: LayoutInputRevision,
+    pub input: ParagraphInput,
+    pub layout: TextLayoutSnapshot,
 }
 
 /// Taffy가 계산한 사용값 padding과 border 두께입니다.
@@ -281,6 +317,12 @@ fn validate(
 }
 
 fn validate_style(node: &LayoutNode) -> Result<(), LayoutError> {
+    if node.style.display == LayoutDisplay::Inline {
+        return Err(LayoutError::InvalidStyle {
+            node: node.id,
+            field: "display:inline",
+        });
+    }
     let valid_dimension = |dimension| match dimension {
         LayoutDimension::Auto
         | LayoutDimension::Calc(_)

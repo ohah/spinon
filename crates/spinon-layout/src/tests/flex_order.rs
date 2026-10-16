@@ -239,6 +239,7 @@ fn layout_input(case: &CapturedCase) -> LayoutInput {
         positioning: Default::default(),
         grid_containers: Default::default(),
         grid_items: Default::default(),
+        text_paragraphs: Default::default(),
     }
 }
 

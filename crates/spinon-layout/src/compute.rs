@@ -1,6 +1,7 @@
 use std::collections::{BTreeMap, BTreeSet};
 
 use spinon_core::NodeId;
+use spinon_text_layout::TextLayoutEngine;
 use taffy::prelude::{AvailableSpace, Size};
 
 use super::{
@@ -21,28 +22,53 @@ impl TaffyLayoutEngine {
         input: &LayoutInput,
         snapshot: &LayoutIntrinsicSizeSnapshot,
     ) -> Result<LayoutOutput, LayoutError> {
-        self.compute_with_measurements(input, Some(snapshot))
+        self.compute_with_measurements(input, Some(snapshot), None)
+    }
+
+    /// Shaped paragraph 입력을 Taffy measure와 final layout에 연결합니다.
+    pub fn compute_with_text_layout_engine(
+        &self,
+        input: &LayoutInput,
+        text_layout_engine: &TextLayoutEngine,
+    ) -> Result<LayoutOutput, LayoutError> {
+        self.compute_with_measurements(input, None, Some(text_layout_engine))
     }
 
     fn compute_with_measurements(
         &self,
         input: &LayoutInput,
         snapshot: Option<&LayoutIntrinsicSizeSnapshot>,
+        text_layout_engine: Option<&TextLayoutEngine>,
     ) -> Result<LayoutOutput, LayoutError> {
         let intrinsic_size_nodes = snapshot
             .map(|snapshot| snapshot.sizes().keys().copied().collect::<BTreeSet<_>>())
             .unwrap_or_default();
         let index = super::validate(input, &intrinsic_size_nodes)?;
         validate_intrinsic_sizes(input, &index, snapshot)?;
+        validate_text_paragraphs(input, &index, text_layout_engine.is_some())?;
         let postorder = postorder(input, &index)?;
         let intrinsic_sizes = snapshot.map(LayoutIntrinsicSizeSnapshot::sizes);
         let flow_frames = if needs_flow_pass(input) {
-            let flow_tree = compute_tree(input, &index, &postorder, intrinsic_sizes, true)?;
+            let flow_tree = compute_tree(
+                input,
+                &index,
+                &postorder,
+                intrinsic_sizes,
+                true,
+                text_layout_engine,
+            )?;
             Some(collect_frames(input, &index, &flow_tree, &BTreeMap::new())?.frames)
         } else {
             None
         };
-        let visual_tree = compute_tree(input, &index, &postorder, intrinsic_sizes, false)?;
+        let visual_tree = compute_tree(
+            input,
+            &index,
+            &postorder,
+            intrinsic_sizes,
+            false,
+            text_layout_engine,
+        )?;
         let raw_output = collect_frames(input, &index, &visual_tree, &BTreeMap::new())?;
         let adjustments = flow_frames
             .as_ref()
@@ -61,6 +87,7 @@ impl TaffyLayoutEngine {
         } else {
             collect_frames(input, &index, &visual_tree, &adjustments)?
         };
+        output.text_layouts = visual_tree.final_text_layouts(input)?;
         output.positioned_owners = collect_positioned_owners(input, &index);
         output.fixed_owners = collect_fixed_owners(input, &index);
         if let Some(flow_frames) = flow_frames {
@@ -79,8 +106,56 @@ impl TaffyLayoutEngine {
 
 impl LayoutEngine for TaffyLayoutEngine {
     fn compute(&self, input: &LayoutInput) -> Result<LayoutOutput, LayoutError> {
-        self.compute_with_measurements(input, None)
+        self.compute_with_measurements(input, None, None)
     }
+}
+
+fn validate_text_paragraphs(
+    input: &LayoutInput,
+    index: &BTreeMap<NodeId, usize>,
+    has_text_engine: bool,
+) -> Result<(), LayoutError> {
+    if let Some((&node, _)) = input.text_paragraphs.iter().next()
+        && !has_text_engine
+    {
+        return Err(LayoutError::MissingTextLayoutEngine(node));
+    }
+    let mut hidden = BTreeSet::new();
+    let mut pending = vec![(input.root(), false)];
+    while let Some((id, ancestor_hidden)) = pending.pop() {
+        let node = &input.nodes()[index[&id]];
+        let is_hidden = ancestor_hidden || node.style.display == crate::LayoutDisplay::None;
+        if is_hidden {
+            hidden.insert(id);
+        }
+        pending.extend(node.children.iter().map(|&child| (child, is_hidden)));
+    }
+    for (&id, paragraph) in &input.text_paragraphs {
+        let Some(&position) = index.get(&id) else {
+            return Err(LayoutError::UnknownTextParagraph(id));
+        };
+        if paragraph.node != id {
+            return Err(LayoutError::UnsupportedTextParagraph {
+                node: id,
+                reason: "paragraph owner ID와 layout node ID가 다릅니다",
+            });
+        }
+        let node = &input.nodes()[position];
+        if node.style.display == crate::LayoutDisplay::None || hidden.contains(&id) {
+            return Err(LayoutError::UnsupportedTextParagraph {
+                node: id,
+                reason: "숨겨진 subtree에는 paragraph snapshot을 입력할 수 없습니다",
+            });
+        }
+        let has_visible_box_child = node.children.iter().any(|child| !hidden.contains(child));
+        if node.style.display != crate::LayoutDisplay::Block || has_visible_box_child {
+            return Err(LayoutError::UnsupportedTextParagraph {
+                node: id,
+                reason: "visible 자식 box가 없는 Block paragraph만 허용됩니다",
+            });
+        }
+    }
+    Ok(())
 }
 
 fn validate_intrinsic_sizes(
@@ -199,11 +274,12 @@ fn compute_tree(
     postorder: &[NodeId],
     intrinsic_sizes: Option<&BTreeMap<NodeId, LayoutIntrinsicSize>>,
     flow_only: bool,
+    text_layout_engine: Option<&TextLayoutEngine>,
 ) -> Result<CalcLayoutTree, LayoutError> {
     let mut tree = if flow_only {
-        CalcLayoutTree::new_flow_only(input, index, postorder, intrinsic_sizes)?
+        CalcLayoutTree::new_flow_only(input, index, postorder, intrinsic_sizes, text_layout_engine)?
     } else {
-        CalcLayoutTree::new(input, index, postorder, intrinsic_sizes)?
+        CalcLayoutTree::new(input, index, postorder, intrinsic_sizes, text_layout_engine)?
     };
     let compute_result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         tree.compute_layout(
@@ -330,6 +406,7 @@ fn collect_frames(
         used_box_edges,
         positioned_owners: BTreeMap::new(),
         fixed_owners: BTreeMap::new(),
+        text_layouts: BTreeMap::new(),
         frames,
     })
 }

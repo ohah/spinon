@@ -69,7 +69,8 @@ fn sparse_grid(columns: usize, rows: usize, item_count: usize) -> LayoutInput {
                 placement_mode: GridPlacementMode::SparseRow,
             },
         )]),
-        grid_items: BTreeMap::new(),
+        grid_items: Default::default(),
+        text_paragraphs: Default::default(),
     }
 }
 

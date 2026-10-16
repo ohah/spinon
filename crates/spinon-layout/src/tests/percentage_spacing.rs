@@ -78,6 +78,7 @@ fn root_gap_percentage_is_rejected_before_taffy_resolution() {
         }],
         grid_containers: Default::default(),
         grid_items: Default::default(),
+        text_paragraphs: Default::default(),
     };
 
     assert_eq!(
@@ -146,6 +147,7 @@ fn percentage_edges_with_unprovable_containing_width_fail_closed() {
         ],
         grid_containers: Default::default(),
         grid_items: Default::default(),
+        text_paragraphs: Default::default(),
     };
 
     assert_eq!(
@@ -223,6 +225,7 @@ fn flow_root_containing_block_keeps_nested_auto_block_width_definite() {
         ],
         grid_containers: Default::default(),
         grid_items: Default::default(),
+        text_paragraphs: Default::default(),
     };
 
     let output = TaffyLayoutEngine.compute(&input).unwrap();
@@ -284,6 +287,7 @@ fn block_formatting_root_flow_root_uses_viewport_width_as_definite_basis() {
         ],
         grid_containers: Default::default(),
         grid_items: Default::default(),
+        text_paragraphs: Default::default(),
     };
 
     let output = TaffyLayoutEngine.compute(&input).unwrap();
@@ -334,6 +338,7 @@ fn childless_flow_root_uses_the_leaf_layout_path() {
         ],
         grid_containers: Default::default(),
         grid_items: Default::default(),
+        text_paragraphs: Default::default(),
     };
 
     let output = TaffyLayoutEngine.compute(&input).unwrap();
@@ -396,5 +401,6 @@ fn spacing_input(child_style: LayoutStyle) -> LayoutInput {
         ],
         grid_containers: Default::default(),
         grid_items: Default::default(),
+        text_paragraphs: Default::default(),
     }
 }

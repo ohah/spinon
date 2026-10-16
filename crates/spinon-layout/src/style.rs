@@ -75,6 +75,9 @@ pub enum FlexWrap {
 /// Taffy가 계산하는 제한 CSS display 값입니다.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum LayoutDisplay {
+    /// C15.1 HostDocument 어댑터에서만 허용하는 text-only inline source입니다.
+    /// 독립 Taffy 상자가 아니므로 `LayoutInput.nodes`에서는 거부합니다.
+    Inline,
     Flex,
     Block,
     /// Block-level CSS Grid container입니다.

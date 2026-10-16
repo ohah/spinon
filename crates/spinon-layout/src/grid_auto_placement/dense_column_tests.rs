@@ -95,7 +95,8 @@ fn grid(
                 placement_mode: GridPlacementMode::DenseAutoPlacement,
             },
         )]),
-        grid_items: BTreeMap::new(),
+        grid_items: Default::default(),
+        text_paragraphs: Default::default(),
     }
 }
 
