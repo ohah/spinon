@@ -1,0 +1,54 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+warn    The dist path is not a subdir of root path, Rsbuild will not empty it.
+warn    Please set `output.cleanDistPath` config manually.
+warn    Current root path: /Users/yoonhb/Documents/workspace/spinon/packages/docs
+warn    Current dist path: /private/tmp/spinon-c18-2-tailnet-sync-20261016/build
+info    Rendering pages...
+success Pages rendered in 82 ms.
+ready   built in 0.18s (web)
+ready   built in 0.19s (node)
+
+File (web)                                                                                                                   Size        Gzip   
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/static/js/async/i.25208e7c92.js                    0.10 kB     0.09 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/static/js/styles.845ae92ef3.js                     0.47 kB     0.23 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/icon.svg                                           0.64 kB     0.41 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/static/js/async/route-f074c005ca53.64ac00d5b0.js   4.8 kB      1.9 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/static/js/async/route-77ac9be21115.1bc75f1e80.js   8.5 kB      2.8 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/static/js/async/route-a702c7115aa8.0a5770d668.js   8.5 kB      2.8 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/static/js/async/route-89fb80f3139a.5a3bea4f30.js   9.0 kB      2.7 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/static/js/async/route-bb5c902ce6da.8cf8b3a543.js   10.0 kB     4.0 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/static/js/async/route-339d8a69d936.533c0d89f1.js   11.3 kB     4.5 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/static/js/async/route-f61cac1650a7.6b3fa619cc.js   13.8 kB     4.6 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/static/js/async/route-35304fed3a8e.324aec676f.js   15.2 kB     5.0 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/static/js/async/route-f567ae70342c.39e6cc052f.js   15.6 kB     5.3 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/static/js/async/route-77e3a213dba4.564cb6ad8d.js   21.0 kB     5.7 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/static/js/index.abb0f1df04.js                      24.4 kB     8.3 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/static/js/lib-router.1e14e568cb.js                 35.4 kB     12.7 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/static/css/styles.8d918fd78e.css                   74.0 kB     14.2 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/static/js/async/route-a991d6de67ad.01a75b93bf.js   142.2 kB    30.6 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/static/js/a.065f4fe60a.js                          217.1 kB    71.7 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/static/js/lib-react.ba0dfa3c6c.js                  218.4 kB    68.9 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/static/search_index.ko.9e20da9e.json               319.5 kB    104.7 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/static/js/async/route-7ce2535ac56d.dde3516b2d.js   336.8 kB    78.6 kB
+
+                                                                                                                    Total:   1486.6 kB   429.8 kB
+
+File (node)                                                                                                                                                                 Size       Gzip   
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/404.html                                                                                          8.5 kB     2.5 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/spec/internal/evidence/c18-2-alpha-image-android-api37-2026-10-16/artifact-boundary/README.html   25.0 kB    5.2 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/spec/internal/evidence/c18-2-alpha-precomparison-2026-10-16/README.html                           27.3 kB    6.0 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/spec/internal/evidence/c18-2-alpha-image-android-api37-2026-10-16/README.html                     28.8 kB    6.5 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/spec/internal/evidence/c18-2-alpha-image-ios-simulator-2026-10-16/README.html                     28.8 kB    6.5 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/spec/internal/evidence/c18-2-alpha-plan-review-20-2026-10-16.html                                 29.5 kB    7.2 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/plan/c18-2-static-alpha-image-compositing.html                                                    29.9 kB    7.7 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/spec/internal/evidence/c18-2-alpha-image-implementation-review-20-2026-10-16.html                 31.1 kB    7.7 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/spec/internal/evidence/c18-2-alpha-image-pr-delta-review-30-2026-10-16.html                       32.5 kB    8.1 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/spec/0001-conformance.html                                                                        34.1 kB    8.5 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/spec/internal/0065-c18-2-alpha-image-compositing.html                                             41.0 kB    9.2 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/spec/internal/README.html                                                                         138.9 kB   33.2 kB
+../../../../../../../private/tmp/spinon-c18-2-tailnet-sync-20261016/build/spec/STATUS.html                                                                                  322.9 kB   80.5 kB
+
+                                                                                                                                                                   Total:   778.5 kB   188.9 kB
+
