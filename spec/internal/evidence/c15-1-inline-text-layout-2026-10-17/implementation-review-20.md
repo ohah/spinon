@@ -16,7 +16,7 @@
 | 8 | 음수, NaN 또는 무한 width가 Parley/Taffy에 도달 | finite/nonnegative preflight가 `InvalidWidth`를 돌려준다. negative, NaN, positive infinity controls 통과; 음의 무한대는 동일한 `is_finite` guard에서 거부된다. |
 | 9 | Taffy의 첫 measure 결과를 다른 최종 content width에 재사용 | measure 결과를 width bit key별로 보관하고 최종 width가 일치하지 않으면 실패한다. 30px wrap, 15px long word, 30px nowrap에서 width·auto-height·revision 일치. 통과. |
 | 10 | text engine 부재 또는 paragraph key와 실제 Block owner가 달라도 빈 크기로 성공 | `MissingTextLayoutEngine` 및 owner 불일치 오류를 먼저 반환한다. 부분 frame map을 반환하지 않는다. 통과. |
-| 11 | Normal/NoWrap 공백 collapse가 여러 DOM text node 경계를 넘으며 UTF-16 owner를 잃음 | 세 source 공백이 같은 paragraph UTF-8 range에 매핑되고 각 원본 UTF-16 range 및 inline ancestor가 보존된다. 통과. |
+| 11 | Normal/NoWrap 공백 collapse나 supplementary scalar가 UTF-16 owner를 잃는다 | 여러 source 공백의 원본 UTF-16 range와 inline ancestor를 유지하며, 별도 `😀` normalizer test가 UTF-16 `0..2`와 UTF-8 `0..4`를 확인한다. 통과. |
 | 12 | `pre-line`의 CRLF를 공백으로 합치거나 CR/LF 중 한 code unit의 source를 버림 | 정규화된 단일 newline이 두 원본 UTF-16 range를 모두 가리키며 2 line을 만든다. 통과. |
 | 13 | 좁은 parent 폭에 맞춰 unbreakable word를 자르거나 advance를 box width로 clamp | 15px 폭에서도 Ahem `XX`가 한 line·20px advance를 유지하고 0px 경계도 보존한다. geometry는 ink/clip 증거로 확대하지 않는다. 통과. |
 | 14 | `break-all`, `nowrap`, `pre-line`이 기본 line-break 동작으로 뭉개짐 | Ahem `XXXXX`의 20/20/10 sequence, nowrap 한 줄 overflow, pre-line 줄 수를 고정 사례와 대조한다. 통과. |
@@ -32,4 +32,4 @@
 - 등록 함수의 live collection 선변경과 기존 family에 대한 false-positive를 transactional candidate 등록으로 수정했다.
 - span 수집기가 일반 `LayoutStyle::default()`의 Flex display를 plain inline으로 오인할 수 있어 source-only `LayoutDisplay::Inline`을 도입했다. 독립 layout box의 Inline 값은 입력 검증에서 거부한다.
 - 0px definite width를 허용하고 signed zero key를 정규화했다. Chrome DOM 관찰과 geometry test는 overflow advance를 확인하며 실제 glyph ink나 부모 clip은 확인하지 않는다.
-- 전체 workspace tests는 937 passed / 4 ignored, workspace Clippy와 Android/iOS Simulator target compile은 통과했다. 앱 text painter가 아직 이 API를 호출하지 않으므로 두 simulator의 앱 화면, border 바깥 pixel, clip 결과는 이 PR에서 검증하지 않았다.
+- 전체 workspace tests는 938 passed / 4 ignored, workspace Clippy와 Android/iOS Simulator target compile은 통과했다. 앱 text painter가 아직 이 API를 호출하지 않으므로 두 simulator의 앱 화면, border 바깥 pixel, clip 결과는 이 PR에서 검증하지 않았다.

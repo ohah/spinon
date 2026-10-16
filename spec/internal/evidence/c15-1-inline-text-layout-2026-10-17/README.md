@@ -11,10 +11,11 @@
 
 ## 검증
 
-- `cargo test --locked -p spinon-text-layout`: 10 passed (`text-layout-tests.log`).
+- `cargo test --locked -p spinon-text-layout`: 11 passed (`text-layout-tests.log`).
 - `cargo test --locked -p spinon-layout`: 144 passed, 0 failed (`spinon-layout-tests.log`).
-- `cargo test --locked --workspace`: 937 passed, 4 ignored, 0 failed (`workspace-tests.log`).
+- `cargo test --locked --workspace`: 938 passed, 4 ignored, 0 failed (`workspace-tests.log`).
 - `cargo clippy --locked --workspace --all-targets -- -D warnings`, `cargo fmt --all -- --check`, `cargo build --locked -p spinon-layout --lib`: 모두 통과 (`clippy.log`, `rustfmt.log`, `cargo-build.log`).
+- Rspress 2.0.22 전체 docs build는 저장소 471개 문서의 dead link 오류로 실패했다. C15 전용 source/href 오류는 없으며 전체 결과와 원본 로그 hash는 [문서 빌드 결과](./docs-build-result.md)에 남겼다.
 - 기본 library artifact와 test positive control (`artifact-boundary.log`): default `spinon-layout` rlib에는 Ahem/Roboto 전체 payload가 없고, `spinon-text-layout` test binary에는 둘 다 들어 있다.
 - `aarch64-linux-android` target compile (`android-target-check.log`)과 `aarch64-apple-ios-sim` target compile (`ios-simulator-target-check.log`)은 통과했다. 이는 target compile 확인이며 simulator 앱 실행이나 화면 검증은 아니다.
 - Ahem, Roboto variable, OFL fixture SHA는 [C15 사전 비교 자료](../c15-inline-text-precomparison-2026-10-17/README.md)에 고정했다. 새 fixture copy를 만들지 않고 저장소의 기존 `tests/fixtures/resources/c15`를 사용한다.
@@ -25,7 +26,7 @@
 - 일반 `LayoutStyle::default()`는 `display:flex`이므로 이를 plain inline span으로 간주하면 flex span을 paragraph text로 평탄화할 수 있었다. HostDocument용 `LayoutDisplay::Inline`을 명시해야만 plain span으로 받고, 기본 Flex 및 기타 visible display를 거부한다. 독립 `LayoutInput` box의 Inline도 거부한다.
 - `0px` definite width가 유효한 Taffy measure임을 Chrome DOM 기준과 대조하고 unbreakable glyph advance를 parent box 바깥까지 보존했다. 음수·비유한 폭은 거부하고 `-0.0`은 `+0.0`으로 정규화한다.
 
-[구현 실패 관점 20개 검토](./implementation-review-20.md)는 계획 검토와 다른 코드 경계·실패 입력을 다룬다. PR 전체 변경 검토 30개는 PR 생성 뒤 별도 파일로 기록한다.
+[구현 실패 관점 20개 검토](./implementation-review-20.md)는 계획 검토와 다른 코드 경계·실패 입력을 다룬다. PR diff 적대 검토는 PR 생성 뒤 별도 기록한다.
 
 ## 브라우저 관찰과 남은 경계
 
@@ -33,4 +34,4 @@
 
 `spinon-style-to-layout`는 여전히 text node를 거부하고 `spinon-style-to-render` runtime/adapter/stacking도 text node를 거부한다. 따라서 이 Rust slice는 앱 runtime에 연결되지 않았다. Android API 37 AVD/iOS Simulator 앱, glyph painting, border 바깥 pixel/clip, 실기기는 실행하지 않았다. 다음 단계는 style cascade→paragraph profile 연결과 renderer 경계를 별도 slice로 정리하는 것이며, 이 결과로 C15.1/C15 전체를 완료 처리하지 않는다.
 
-구현 변경에서 발견한 family 등록 오판, 기본 Flex span의 inline 평탄화, 0px 폭 경계와 수정 내용은 [구현 실패 관점 20개 검토](./implementation-review-20.md)에 기록했다. PR 생성 뒤 diff 전용 검토 30개를 별도 추가한다.
+구현 변경에서 발견한 family 등록 오판, 기본 Flex span의 inline 평탄화, 0px 폭 경계와 수정 내용은 [구현 실패 관점 20개 검토](./implementation-review-20.md)에 기록했다. PR diff 적대 검토는 별도 30개 관점으로 추가한다.
