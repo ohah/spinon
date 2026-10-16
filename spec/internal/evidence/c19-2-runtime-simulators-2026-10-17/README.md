@@ -55,16 +55,16 @@ Android GL adapter의 반투명 source-over 차이를 분리하기 위해 고정
 - Android API 37 AVD `spinon_api37_0_applied_txn` (`emulator-5562`)에서 `spinon_c0410_runtime_gpu`와 `spinon_c192_box_paint_opacity`를 함께 켰다. offscreen WGPU와 화면 PixelCopy 모두 제품 기대값 `16/16`, Chrome 관찰값 `15/16`; 남은 한 점은 `wideGamutSrgb`의 `blue=196` 대 `blue=200`이다. run ID `f8ba88f77`, surface `945×630`.
 - iPhone 17 Pro / iOS 26.2 Simulator (`1080×720`, `3×`)도 분리한 profile과 두 launch 인수로 다시 실행했다. Metal drawable 제출 전 readback은 제품 `16/16`, Chrome 관찰값 `15/16`; run ID `79952a15cdc140c786ec388e2c98739f`. 표본 JSONL SHA-256은 `45eb84049153c6e4afb5eb4f22f0f8a8ab09e4c9cb69668718c316fdb92c4afd`, 화면 SHA-256은 `1e41ab3a672df629971d96d49bd4f7cbd8b3318fab336784eda711e533d10e7a`다.
 - iPad Pro 13-inch M5 / iOS 26.2 Simulator에서 `--spinon-c0410-runtime-gpu`와 `--spinon-c192-box-paint-opacity`를 함께 켰다. Metal drawable 제출 전 readback은 제품 `16/16`, Chrome 관찰값 `15/16`; 같은 `wideGamutSrgb-blue:-4` 차이다. run ID `71e518ba38bd4ca2b26ae60054e16827`, drawable `720×480` / `Bgra8Unorm`.
-- 원본 실행 로그와 캡처는 [`c19-profile-rerun-20261017/`](c19-profile-rerun-20261017/)에 있다. Android PixelCopy PNG SHA-256은 `0e43c59c89dd2bcbe223fa231e572093d94af46b9f489dc89f590a49d95ecb8d`, Metal 표본 JSONL은 `caeaadd28c562c4d7c107ebf427482e4dd7ed0e93b279452347412ff729ed530`이다.
+- 원본 실행 로그와 캡처는 [`c19-profile-rerun-20261017/`](./c19-profile-rerun-20261017/)에 있다. Android PixelCopy PNG SHA-256은 `0e43c59c89dd2bcbe223fa231e572093d94af46b9f489dc89f590a49d95ecb8d`, Metal 표본 JSONL은 `caeaadd28c562c4d7c107ebf427482e4dd7ed0e93b279452347412ff729ed530`이다.
 - 화면 PNG는 Android `android-screen.png` (SHA-256 `bcdb870cdc3a55ea3598970f5db89eac54639f57ebc3ff1668d00c2e672c2179`)와 iPad `ipad-pro-screen.png` (SHA-256 `7d9bda227ad0159c8bca49033b7ef66a62bf15dcc539fc13aafaa61373f678fa`)다.
 - 빌드 로그는 `android-build.log`와 `ios-build.log`에 보존했다. iPhone 화면은 `iphone17pro-screen.png`, 표본/manifest/log는 같은 이름 stem의 파일에 있다.
 - Android AVD는 캡처 뒤 종료했다. 이미 부팅되어 있던 iPad와 iPhone Simulator는 실행 전 부팅 상태로 유지했다. 물리 Android 기기는 연결하지 않았다.
 
-![Android API 37 AVD C19.2 opt-in profile PixelCopy result](c19-profile-rerun-20261017/android-screen.png)
+![Android API 37 AVD C19.2 opt-in profile PixelCopy result](./c19-profile-rerun-20261017/android-screen.png)
 
-![iPhone 17 Pro iOS 26.2 Simulator C19.2 opt-in profile Metal result](c19-profile-rerun-20261017/iphone17pro-screen.png)
+![iPhone 17 Pro iOS 26.2 Simulator C19.2 opt-in profile Metal result](./c19-profile-rerun-20261017/iphone17pro-screen.png)
 
-![iPad Pro 13-inch iOS 26.2 Simulator C19.2 opt-in profile Metal result](c19-profile-rerun-20261017/ipad-pro-screen.png)
+![iPad Pro 13-inch iOS 26.2 Simulator C19.2 opt-in profile Metal result](./c19-profile-rerun-20261017/ipad-pro-screen.png)
 
 ## 기본/opt-in artifact 경계
 
