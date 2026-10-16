@@ -33,6 +33,6 @@
 | 27 | 누락·중복·잘린 report가 플랫폼에서 green 처리 | Rust는 case status/count로 summary를 만들고 Android/Swift가 29개 unique ID, 21/8 분포, finite frame, natural size, source flags를 다시 검증한다. log chunk를 재조립한 최종 report가 29행이다. |
 | 28 | fixture symbol·payload가 기본 artifact에 들어감 | 기본 Android archive/native library/APK와 iOS static/app executable에서 symbol·label·ID·PNG byte가 모두 없고 opt-in 산출물에서 모두 있음을 raw-byte scanner로 대조했다. |
 | 29 | 한 플랫폼 실행이나 실기기 상태를 양 플랫폼 증거로 확대 | Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator를 각각 실행하고 독립 report·log·screenshot·hash를 보존했다. 물리 기기는 연결·조회하지 않았다. |
-| 30 | sizing report 화면을 실제 image paint·overflow clip 증거라고 설명 | 화면은 29/29 report text다. border/padding 포함 CSS geometry는 oracle과 비교했지만 native image paint, border 바깥 pixel overflow/clip, GPU scanout은 검사하지 않았다고 STATUS·계획·README에 기록했다. |
+| 30 | sizing report 화면을 실제 image paint·overflow clip 증거라고 설명하거나 PR screenshot 링크가 깨짐 | 화면은 29/29 report text다. border/padding 포함 CSS geometry는 oracle과 비교했지만 native image paint, border 바깥 pixel overflow/clip, GPU scanout은 검사하지 않았다고 STATUS·계획·README·PR #219 본문에 기록했다. Agent Browser에서 PR을 열어 두 `raw.githubusercontent.com` 이미지가 complete=true로 로드되고 Android 1080×2400, iOS 1206×2622임을 확인했다. |
 
 최종 판단: 해결되지 않은 P1/P2 없음. 29/29는 opt-in live V8 → HostDocument snapshot → pinned CSS cascade → Taffy sizing geometry 비교를 뜻하며 제품 image loader, native image paint/clip, 실기기 또는 전체 CSS 적합성 완료를 뜻하지 않는다.
