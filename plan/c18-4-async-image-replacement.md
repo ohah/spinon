@@ -1,6 +1,6 @@
 # C18.4 · 비동기 PNG 교체와 decode 실패 제한 profile
 
-**상태:** 제한 profile 구현·시뮬레이터 검증 완료 · PR 검토 대기
+**상태:** 제한 profile 구현·시뮬레이터 검증 완료 · PR [#227](https://github.com/ohah/spinon/pull/227)
 **상위:** [C18 이미지·replaced paint 규칙](../spec/STATUS.md) · [내부 계약 0066](../spec/internal/0066-c18-3-object-fit-position.md) · [C18.4 내부 계약 0067](../spec/internal/0067-c18-4-async-image-replacement.md)
 **선행 범위:** C14.1–C14.3 intrinsic sizing · C18.1 opaque PNG paint · C18.2 alpha composite · C18.3 `object-fit`
 **기반 코드:** [U05.1 PNG decoder](../spec/internal/0061-u05-png-image-decode.md), `ImageRequest`, `ImageResourceSnapshot`, `RuntimeRenderSnapshot`
@@ -50,7 +50,7 @@
 4. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 같은 source sequence를 최신 소스로 재빌드해 실행한다. 단계별 pixel/screenshot 및 event/report를 저장한다. AVD software renderer와 iOS compositor 전 Metal drawable을 실기기·hardware GPU·compositor-after 결과로 확대 해석하지 않는다.
 5. C18.1 opaque, C18.2 alpha와 C18.3 fit/position 픽셀을 두 플랫폼에서 재실행한다. 기본·opt-in Cargo/static library와 실제 APK/iOS app executable을 비교해 새 fixture symbol·JS·PNG bytes의 기본 artifact 부재 및 opt-in 양성 대조를 확인한다.
 6. `cargo fmt --all -- --check`, workspace tests, Clippy, 변경된 JS/CSS reference 및 fixture module-boundary 검사를 실행하고 원본 로그를 보존한다. 기존 C11/C13 source-boundary assertion 실패가 재발하면 별도 귀속하고 C18.4 통과로 숨기지 않는다.
-7. 구현 전 계획 자체를 서로 다른 실패 관점 20개로 검토했다([계획 검토 20개](../spec/internal/evidence/c18-4-async-image-replacement-plan-review-20-2026-10-16.md)). 구현 뒤 새 20개 구현 검토와 PR diff의 독립 20개 관점을 기록하고 발견된 결함을 재실행으로 닫는다.
+7. 구현 전 계획 자체를 서로 다른 실패 관점 20개로 검토했다([계획 검토 20개](../spec/internal/evidence/c18-4-async-image-replacement-plan-review-20-2026-10-16.md)). 구현 뒤 새 20개 구현 검토와 [PR diff 독립 검토 30개](../spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/pr-delta-review-30.md)를 기록하고 발견된 결함을 재실행으로 닫았다.
 8. 내부 `spec/STATUS.md`에는 C18.4 제한 profile만 연결한다. URL/network loader, HTML events, broken-image icon, 실패 시 auto-size UA fallback, public API와 C18 전체 완료를 주장하지 않는다. Tailnet preview에 계획·구현 근거를 동기화하고 URL, HTTP status와 served hash를 확인한다. GitHub Pages는 배포하지 않는다.
 
 ## 구현 결과 · 2026-10-16

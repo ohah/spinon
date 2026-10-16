@@ -64,6 +64,10 @@ iOS full-screen title은 narrow header에서 ellipsis로 줄어든다. paint sam
 
 [구현 실패 관점 20개](implementation-review-20.md)는 source-stamp stale guard, duplicate·failure outcome, pending zero-size 처리 등 네 guard의 negative control과 복구된 test 결과를 함께 기록한다. PR 전체 diff의 독립 검토 30개는 별도 `pr-delta-review-30.md`에 기록한다.
 
+## PR 화면 이미지 확인
+
+PR [#227](https://github.com/ohah/spinon/pull/227)의 본문에는 C18.4 Android/iOS runtime 화면과 C18.1 visible overflow/hidden clip 회귀 화면을 넣었다. 2026-10-16 13:13 UTC Agent Browser 0.31.1에서 4개 image 모두 `complete=true`, `naturalWidth>0`을 확인했다. 원본 크기는 Android C18.4 588×231, iOS C18.4 1206×2622, Android overflow 회귀 1080×2400, iOS overflow 회귀 1206×2622다. [DOM 검사 결과](pr-227-browser-image-verification.json)와 [PR 화면 캡처](pr-227-agent-browser.png)를 보존했다.
+
 ## 남은 경계
 
 이 근거는 C18.4 고정 fixture profile의 동작과 두 Simulator 표면만 확인한다. 공개 CSS/API 지원, 실제 네트워크·cache, HTML events, broken-image icon, 실패 auto-size UA fallback, C14/C18/U05 상위 완료, 실기기/hardware GPU 및 iOS compositor 이후 결과를 뜻하지 않는다.
