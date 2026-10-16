@@ -11,7 +11,7 @@
 | 5 | 디코드 PNG의 natural size 또는 hash가 바뀌어도 24×16 기대값만 강제한다 | PNG bytes SHA-256, natural 24×16, request/resource/layout source를 함께 확인한다. |
 | 6 | CSS px 결과에 Android density나 iOS scale을 곱해 비교값이 왜곡된다 | DPR 1 Chrome oracle의 CSS px를 비교 단위로 고정하고 simulator scale을 적용하지 않는다. |
 | 7 | case 결과 크기만 비교해 부모 containing block의 잘못된 basis를 감춘다 | Block image full frame을 비교하고 Flex parent와 image frame을 모두 비교한다. |
-| 8 | max-width 20px의 subpixel Chrome 결과를 정수 반올림해 회귀를 통과시킨다 | 0.05 CSS px 기본 tolerance와 inventory의 case별 tolerance를 적용한다. |
+| 8 | max-width 20px의 subpixel Chrome 결과를 정수 반올림해 회귀를 통과시킨다 | 원시 oracle `19.984375×13.328125`를 report에 보존하고 반올림 전 값을 비교한다. 0.05 CSS px tolerance 안의 차이는 의도적으로 허용하며 20px 결과도 통과할 수 있다고 계획에 명시했다. |
 | 9 | CSS 2.2 min/max 10개 조합이 하나 이상의 분기를 누락한다 | 21개 원본 PNG oracle 전체를 분모로 삼고 각 행 ID를 report에 보존한다. |
 | 10 | authored numeric aspect-ratio와 natural ratio를 혼동한다 | authored ratio, border-box ratio, aspect-ratio:auto를 별도 oracle case로 유지한다. |
 | 11 | border-box padding/border가 자연 content ratio에 두 번 반영된다 | box-sizing edge case의 full frame을 Chrome oracle과 대조한다. |
