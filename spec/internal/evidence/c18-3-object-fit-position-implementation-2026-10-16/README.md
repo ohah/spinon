@@ -17,11 +17,11 @@ Android PixelCopy capture SHA-256은 `5c2ebfa9501ef392d20f2f8ac410cf2320c82d2d60
 
 ### Android 화면
 
-![Android API 37 AVD C18.3 실행 화면](android/c183-android-screen.png)
+![Android API 37 AVD C18.3 실행 화면](./android/c183-android-screen.png)
 
 ### iOS 화면
 
-![iPhone 17 Pro iOS 26.2 Simulator C18.3 실행 화면](ios/c183-ios-screen.png)
+![iPhone 17 Pro iOS 26.2 Simulator C18.3 실행 화면](./ios/c183-ios-screen.png)
 
 ## 구현 및 회귀 검증
 
