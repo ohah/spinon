@@ -1,0 +1,43 @@
+{
+  "schema": "spinon-c18-4-pr-browser-image-verification/v1",
+  "checked_at_utc": "2026-10-16T13:13:28Z",
+  "browser": "Agent Browser 0.31.1 (Chrome)",
+  "page": "https://github.com/ohah/spinon/pull/227",
+  "result": "4/4 complete with naturalWidth greater than zero",
+  "images": [
+    {
+      "alt": "C18.4 Android API 37 AVD PixelCopy 화면",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/e4b9f8c5/spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/api37-avd-capture.png",
+      "width": 588,
+      "height": 231,
+      "complete": true
+    },
+    {
+      "alt": "C18.4 iOS Simulator 화면",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/e4b9f8c5/spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/iphone-17-pro-capture.png",
+      "width": 1206,
+      "height": 2622,
+      "complete": true
+    },
+    {
+      "alt": "Android C18.1 visible overflow와 hidden clip",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/e4b9f8c5/spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/c18-1-screen.png",
+      "width": 1080,
+      "height": 2400,
+      "complete": true
+    },
+    {
+      "alt": "iOS C18.1 visible overflow와 hidden clip",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/e4b9f8c5/spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/c18-1-screen.png",
+      "width": 1206,
+      "height": 2622,
+      "complete": true
+    }
+  ],
+  "page_screenshot": {
+    "path": "pr-227-agent-browser.png",
+    "width": 1280,
+    "height": 7309,
+    "sha256": "641fdc6820ac1b71d604b077b8cca97282851cfabd98ef3357183515e38bbe77"
+  }
+}
