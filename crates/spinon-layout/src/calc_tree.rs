@@ -309,6 +309,7 @@ impl CalcLayoutTree {
                     let mut style = tree.node(node_id).style.clone();
                     let replaced_sizing = tree.node(node_id).replaced_sizing;
                     let inherent_size = inputs.sizing_mode == SizingMode::InherentSize;
+                    let parent_size = inputs.parent_size;
                     let used_replaced_size = if inherent_size {
                         replaced_sizing.map(|input| {
                             match resolve_used_size(
@@ -316,6 +317,8 @@ impl CalcLayoutTree {
                                 input,
                                 inputs.known_dimensions,
                                 true,
+                                parent_size,
+                                inputs.available_space,
                             ) {
                                 Ok(size) => size,
                                 Err(error) => {
@@ -355,13 +358,15 @@ impl CalcLayoutTree {
                         inputs,
                         &style,
                         |value, basis| tree.resolve_calc_value(value, basis),
-                        |known_dimensions, _| {
+                        |known_dimensions, available_space| {
                             replaced_sizing.map_or(Size::ZERO, |input| {
                                 match resolve_used_size(
                                     input.node,
                                     input,
                                     known_dimensions,
                                     inherent_size,
+                                    parent_size,
+                                    available_space,
                                 ) {
                                     Ok(size) => Size {
                                         width: size.content_width,

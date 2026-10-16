@@ -1,9 +1,29 @@
 {
   "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+  "browserDetails": {
+    "brands": [
+      {
+        "brand": "Google Chrome",
+        "version": "155"
+      },
+      {
+        "brand": "Chromium",
+        "version": "155"
+      },
+      {
+        "brand": "Not(A:Brand",
+        "version": "24"
+      }
+    ],
+    "mobile": false,
+    "platform": "macOS",
+    "platformVersion": "26.5.1",
+    "uaFullVersion": "155.0.8059.85"
+  },
   "cases": [
     {
       "basis": {
-        "height": 160,
+        "height": 169,
         "width": 220,
         "x": 0,
         "y": 0
@@ -13,7 +33,7 @@
         "width": "24px"
       },
       "container": {
-        "height": 160,
+        "height": 169,
         "width": 220,
         "x": 0,
         "y": 0
@@ -33,9 +53,39 @@
     },
     {
       "basis": {
-        "height": 160,
+        "height": 120,
+        "width": 200,
+        "x": 237,
+        "y": 44
+      },
+      "computed": {
+        "height": "26px",
+        "width": "34px"
+      },
+      "container": {
+        "height": 169,
         "width": 220,
         "x": 232,
+        "y": 0
+      },
+      "id": "border-box-min-content",
+      "image": {
+        "height": 26,
+        "width": 34,
+        "x": 237,
+        "y": 44
+      },
+      "loaded": true,
+      "natural": {
+        "height": 16,
+        "width": 24
+      }
+    },
+    {
+      "basis": {
+        "height": 169,
+        "width": 220,
+        "x": 464,
         "y": 0
       },
       "computed": {
@@ -43,16 +93,16 @@
         "width": "24px"
       },
       "container": {
-        "height": 160,
+        "height": 169,
         "width": 220,
-        "x": 232,
+        "x": 464,
         "y": 0
       },
       "id": "max-content",
       "image": {
         "height": 16,
         "width": 24,
-        "x": 237,
+        "x": 469,
         "y": 26.5
       },
       "loaded": true,
@@ -65,8 +115,8 @@
       "basis": {
         "height": 160,
         "width": 22,
-        "x": 464,
-        "y": 0
+        "x": 0,
+        "y": 181
       },
       "computed": {
         "height": "16px",
@@ -75,15 +125,15 @@
       "container": {
         "height": 160,
         "width": 22,
-        "x": 464,
-        "y": 0
+        "x": 0,
+        "y": 181
       },
       "id": "fit-content-small-basis",
       "image": {
         "height": 16,
         "width": 24,
-        "x": 469,
-        "y": 96.5
+        "x": 5,
+        "y": 277.5
       },
       "loaded": true,
       "natural": {
@@ -95,8 +145,8 @@
       "basis": {
         "height": 130,
         "width": 210,
-        "x": 0,
-        "y": 172
+        "x": 232,
+        "y": 181
       },
       "computed": {
         "height": "66.6562px",
@@ -105,45 +155,15 @@
       "container": {
         "height": 130,
         "width": 210,
-        "x": 0,
-        "y": 172
+        "x": 232,
+        "y": 181
       },
       "id": "percent-width",
       "image": {
         "height": 66.65625,
         "width": 100,
-        "x": 5,
-        "y": 198.5
-      },
-      "loaded": true,
-      "natural": {
-        "height": 16,
-        "width": 24
-      }
-    },
-    {
-      "basis": {
-        "height": 130,
-        "width": 210,
-        "x": 232,
-        "y": 172
-      },
-      "computed": {
-        "height": "60px",
-        "width": "90px"
-      },
-      "container": {
-        "height": 130,
-        "width": 210,
-        "x": 232,
-        "y": 172
-      },
-      "id": "percent-height",
-      "image": {
-        "height": 60,
-        "width": 90,
         "x": 237,
-        "y": 198.5
+        "y": 207.5
       },
       "loaded": true,
       "natural": {
@@ -156,7 +176,37 @@
         "height": 130,
         "width": 210,
         "x": 464,
-        "y": 172
+        "y": 181
+      },
+      "computed": {
+        "height": "60px",
+        "width": "90px"
+      },
+      "container": {
+        "height": 130,
+        "width": 210,
+        "x": 464,
+        "y": 181
+      },
+      "id": "percent-height",
+      "image": {
+        "height": 60,
+        "width": 90,
+        "x": 469,
+        "y": 207.5
+      },
+      "loaded": true,
+      "natural": {
+        "height": 16,
+        "width": 24
+      }
+    },
+    {
+      "basis": {
+        "height": 130,
+        "width": 210,
+        "x": 0,
+        "y": 353
       },
       "computed": {
         "height": "8px",
@@ -165,15 +215,15 @@
       "container": {
         "height": 130,
         "width": 210,
-        "x": 464,
-        "y": 172
+        "x": 0,
+        "y": 353
       },
       "id": "fit-content-max-clamped",
       "image": {
         "height": 8,
         "width": 12,
-        "x": 469,
-        "y": 198.5
+        "x": 5,
+        "y": 379.5
       },
       "loaded": true,
       "natural": {
@@ -185,8 +235,8 @@
       "basis": {
         "height": 0,
         "width": 0,
-        "x": 5,
-        "y": 340.5
+        "x": 237,
+        "y": 379.5
       },
       "computed": {
         "height": "0px",
@@ -195,15 +245,15 @@
       "container": {
         "height": 161.5,
         "width": 220,
-        "x": 0,
-        "y": 314
+        "x": 232,
+        "y": 353
       },
       "id": "percent-cyclic-width",
       "image": {
         "height": 0,
         "width": 0,
-        "x": 5,
-        "y": 340.5
+        "x": 237,
+        "y": 379.5
       },
       "loaded": true,
       "natural": {
@@ -215,8 +265,8 @@
       "basis": {
         "height": 130,
         "width": 210,
-        "x": 237,
-        "y": 340.5
+        "x": 469,
+        "y": 379.5
       },
       "computed": {
         "height": "16px",
@@ -225,45 +275,15 @@
       "container": {
         "height": 161.5,
         "width": 220,
-        "x": 232,
-        "y": 314
+        "x": 464,
+        "y": 353
       },
       "id": "flex-min-content",
       "image": {
         "height": 16,
         "width": 24,
-        "x": 242,
-        "y": 345.5
-      },
-      "loaded": true,
-      "natural": {
-        "height": 16,
-        "width": 24
-      }
-    },
-    {
-      "basis": {
-        "height": 130,
-        "width": 210,
-        "x": 469,
-        "y": 340.5
-      },
-      "computed": {
-        "height": "66.6562px",
-        "width": "100px"
-      },
-      "container": {
-        "height": 161.5,
-        "width": 220,
-        "x": 464,
-        "y": 314
-      },
-      "id": "flex-percent-width",
-      "image": {
-        "height": 66.65625,
-        "width": 100,
         "x": 474,
-        "y": 345.5
+        "y": 384.5
       },
       "loaded": true,
       "natural": {
@@ -276,24 +296,24 @@
         "height": 130,
         "width": 210,
         "x": 5,
-        "y": 514
+        "y": 553
       },
       "computed": {
-        "height": "60px",
-        "width": "90px"
+        "height": "66.6562px",
+        "width": "100px"
       },
       "container": {
         "height": 161.5,
         "width": 220,
         "x": 0,
-        "y": 487.5
+        "y": 526.5
       },
-      "id": "flex-percent-height",
+      "id": "flex-percent-width",
       "image": {
-        "height": 60,
-        "width": 90,
+        "height": 66.65625,
+        "width": 100,
         "x": 10,
-        "y": 519
+        "y": 558
       },
       "loaded": true,
       "natural": {
@@ -306,24 +326,24 @@
         "height": 130,
         "width": 210,
         "x": 237,
-        "y": 514
+        "y": 553
       },
       "computed": {
-        "height": "16px",
-        "width": "24px"
+        "height": "60px",
+        "width": "90px"
       },
       "container": {
         "height": 161.5,
         "width": 220,
         "x": 232,
-        "y": 487.5
+        "y": 526.5
       },
-      "id": "grid-min-content",
+      "id": "flex-percent-height",
       "image": {
-        "height": 16,
-        "width": 24,
+        "height": 60,
+        "width": 90,
         "x": 242,
-        "y": 519
+        "y": 558
       },
       "loaded": true,
       "natural": {
@@ -336,24 +356,24 @@
         "height": 130,
         "width": 210,
         "x": 469,
-        "y": 514
+        "y": 553
       },
       "computed": {
-        "height": "66.6562px",
-        "width": "100px"
+        "height": "16px",
+        "width": "24px"
       },
       "container": {
         "height": 161.5,
         "width": 220,
         "x": 464,
-        "y": 487.5
+        "y": 526.5
       },
-      "id": "grid-percent-width",
+      "id": "grid-min-content",
       "image": {
-        "height": 66.65625,
-        "width": 100,
+        "height": 16,
+        "width": 24,
         "x": 474,
-        "y": 519
+        "y": 558
       },
       "loaded": true,
       "natural": {
@@ -366,7 +386,37 @@
         "height": 130,
         "width": 210,
         "x": 5,
-        "y": 687.5
+        "y": 726.5
+      },
+      "computed": {
+        "height": "66.6562px",
+        "width": "100px"
+      },
+      "container": {
+        "height": 161.5,
+        "width": 220,
+        "x": 0,
+        "y": 700
+      },
+      "id": "grid-percent-width",
+      "image": {
+        "height": 66.65625,
+        "width": 100,
+        "x": 10,
+        "y": 731.5
+      },
+      "loaded": true,
+      "natural": {
+        "height": 16,
+        "width": 24
+      }
+    },
+    {
+      "basis": {
+        "height": 130,
+        "width": 210,
+        "x": 237,
+        "y": 726.5
       },
       "computed": {
         "height": "60px",
@@ -375,15 +425,15 @@
       "container": {
         "height": 161.5,
         "width": 220,
-        "x": 0,
-        "y": 661
+        "x": 232,
+        "y": 700
       },
       "id": "grid-percent-height",
       "image": {
         "height": 60,
         "width": 90,
-        "x": 10,
-        "y": 692.5
+        "x": 242,
+        "y": 731.5
       },
       "loaded": true,
       "natural": {
@@ -397,39 +447,5 @@
     "dpr": 1,
     "height": 633,
     "width": 1280
-  },
-  "browserDetails": {
-    "brands": [
-      {
-        "brand": "Google Chrome",
-        "version": "155"
-      },
-      {
-        "brand": "Chromium",
-        "version": "155"
-      },
-      {
-        "brand": "Not(A:Brand",
-        "version": "24"
-      }
-    ],
-    "fullVersionList": [
-      {
-        "brand": "Google Chrome",
-        "version": "155.0.8059.85"
-      },
-      {
-        "brand": "Chromium",
-        "version": "155.0.8059.85"
-      },
-      {
-        "brand": "Not(A:Brand",
-        "version": "24.0.0.0"
-      }
-    ],
-    "mobile": false,
-    "platform": "macOS",
-    "platformVersion": "26.5.1",
-    "uaFullVersion": "155.0.8059.85"
   }
 }

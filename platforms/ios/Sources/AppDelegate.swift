@@ -13,6 +13,12 @@ let spinonC141AppFixtureTestEnabled = true
 let spinonC141AppFixtureTestEnabled = false
 #endif
 
+#if SPINON_ENABLE_C14_3_APP_FIXTURE_TEST_1
+let spinonC143AppFixtureTestEnabled = true
+#else
+let spinonC143AppFixtureTestEnabled = false
+#endif
+
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
@@ -82,6 +88,20 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             || arguments.contains(where: { $0.hasPrefix("--spinon-c124-metal-surface-readback=") })
         let runR05AttributionProbe = arguments.contains("--spinon-r05-attribution")
         let runLifecycleProbe = arguments.contains("--spinon-dom-gc-auto")
+        let runC143IntrinsicContributionsFixture = arguments.contains("--spinon-c143-intrinsic-contributions")
+        if runC143IntrinsicContributionsFixture {
+            let conflictingFixtureArguments = arguments.filter {
+                $0.hasPrefix("--spinon-") && $0 != "--spinon-c143-intrinsic-contributions"
+            }
+            let window = UIWindow(frame: UIScreen.main.bounds)
+            let controller = C143IntrinsicContributionsFixtureViewController()
+            controller.fixtureEnabled = spinonC143AppFixtureTestEnabled
+            controller.conflictingArguments = conflictingFixtureArguments
+            window.rootViewController = controller
+            window.makeKeyAndVisible()
+            self.window = window
+            return true
+        }
         let runC141IntrinsicSizeFixture = arguments.contains("--spinon-c141-intrinsic-size")
         if runC141IntrinsicSizeFixture {
             // This route returns before all other experiments; reject their launch flags here.
@@ -301,6 +321,102 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             .replacingOccurrences(of: " rebuild-us-p50=", with: "\nrebuild-us: p50=")
             .replacingOccurrences(of: " rebuild-us-p95=", with: " p95=")
             .replacingOccurrences(of: " iterations=", with: "\niterations=")
+    }
+}
+
+private final class C143IntrinsicContributionsFixtureViewController: UIViewController {
+    var fixtureEnabled = false
+    var conflictingArguments: [String] = []
+    private let logger = Logger(subsystem: "dev.spinon.bootstrap", category: "c14-3-fixture")
+    private let reportView = UITextView()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
+        reportView.translatesAutoresizingMaskIntoConstraints = false
+        reportView.backgroundColor = .clear
+        reportView.textColor = UIColor(red: 0.90, green: 0.93, blue: 0.98, alpha: 1)
+        reportView.font = .monospacedSystemFont(ofSize: 11, weight: .regular)
+        reportView.textContainerInset = UIEdgeInsets(top: 28, left: 18, bottom: 24, right: 18)
+        reportView.isEditable = false
+        view.addSubview(reportView)
+        NSLayoutConstraint.activate([
+            reportView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            reportView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            reportView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            reportView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
+
+        guard conflictingArguments.isEmpty else {
+            reportView.text = "C14.3 · 잘못된 실행 인자\n\n다른 fixture route와 함께 실행할 수 없습니다.\n"
+                + conflictingArguments.joined(separator: "\n")
+            logger.error("SPINON_C143_ARGUMENT_ERROR conflicting=fixture-route")
+            return
+        }
+        guard fixtureEnabled else {
+            reportView.text = "C14.3 · fixture-test 빌드가 꺼져 있습니다."
+            logger.error("SPINON_C143_DISABLED fixture-test feature is off")
+            return
+        }
+
+        reportView.text = "C14.3 · 14개 intrinsic contribution 계산 중…"
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            let report = SpinonRunner.runC143IntrinsicContributionsFixture()
+                ?? "status=-1 report=empty native report"
+            let passed = report.hasPrefix("status=0 ")
+                && report.contains("\"status\":\"ok\"")
+                && report.contains("\"matched_count\":14")
+            DispatchQueue.main.async {
+                guard let self else { return }
+                self.reportView.text = self.formatReport(report, passed: passed)
+                if passed {
+                    self.logger.notice("SPINON_C143_SIMULATOR_REPORT status=ok")
+                } else {
+                    self.logger.error("SPINON_C143_SIMULATOR_REPORT status=error")
+                }
+            }
+        }
+    }
+
+    private func formatReport(_ report: String, passed: Bool) -> String {
+        let jsonReport = report.hasPrefix("status=0 report=")
+            ? String(report.dropFirst("status=0 report=".count))
+            : report
+        guard passed,
+              let data = jsonReport.data(using: .utf8),
+              let value = try? JSONSerialization.jsonObject(with: data),
+              let result = value as? [String: Any],
+              let cases = result["cases"] as? [[String: Any]], cases.count == 14
+        else {
+            return "C14.3 · 앱 fixture 실패\n\n\(report)"
+        }
+        var lines = ["C14.3 · Chrome 155 oracle", "", "PASS · 14/14 CSS px cases", ""]
+        for item in cases {
+            let basis = pair(item["containing_block_content_size_css_px"] as? [NSNumber])
+            let frame = item["image_frame_css_px"] as? [NSNumber]
+            let frameText: String
+            if let frame, frame.count >= 4 {
+                frameText = "x=\(number(frame[0])) y=\(number(frame[1])) · "
+                    + "\(number(frame[2]))×\(number(frame[3]))"
+            } else {
+                frameText = "확인할 수 없음"
+            }
+            lines.append("\(item["id"] as? String ?? "unknown") · \(basis) · \(frameText)")
+        }
+        lines.append("")
+        lines.append("fit-content right overflow · 7 CSS px")
+        return lines.joined(separator: "\n")
+    }
+
+    private func pair(_ values: [NSNumber]?) -> String {
+        guard let values, values.count >= 2 else { return "확인할 수 없음" }
+        return "\(number(values[0]))×\(number(values[1]))"
+    }
+
+    private func number(_ value: NSNumber) -> String {
+        let number = value.doubleValue
+        let rounded = (number * 1000).rounded() / 1000
+        return rounded.rounded() == rounded ? String(Int64(rounded)) : String(rounded)
     }
 }
 

@@ -76,8 +76,26 @@ pub(super) fn parse_dimension(
         ComputedCssDimension::Percentage(value) if value.is_finite() && value >= 0.0 => {
             Ok(LayoutDimension::Percent(value))
         }
+        ComputedCssDimension::MinContent if matches!(property, "width" | "height") => {
+            Ok(LayoutDimension::MinContent)
+        }
+        ComputedCssDimension::MaxContent if matches!(property, "width" | "height") => {
+            Ok(LayoutDimension::MaxContent)
+        }
+        ComputedCssDimension::FitContent if matches!(property, "width" | "height") => {
+            Ok(LayoutDimension::FitContent)
+        }
+        ComputedCssDimension::FitContentFunction => Err(StyleLayoutError::Layout(
+            spinon_layout::LayoutError::UnsupportedIntrinsicSizing {
+                node,
+                reason: "fit-content() 함수는 C14.3 profile에서 지원하지 않습니다",
+            },
+        )),
         ComputedCssDimension::LengthPx(_)
         | ComputedCssDimension::Percentage(_)
+        | ComputedCssDimension::MinContent
+        | ComputedCssDimension::MaxContent
+        | ComputedCssDimension::FitContent
         | ComputedCssDimension::Unsupported => unsupported(node, property, serialized_value),
     }
 }

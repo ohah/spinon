@@ -12,7 +12,7 @@ CSS intrinsic sizing과 replaced element sizing을 작은 비교 가능한 단�
 | --- | --- | --- | --- |
 | C14.1 | HTML `img`의 유한한 자연 너비·높이를 layout leaf의 콘텐츠 측정값으로 전달하고 입력 revision에 묶는다. 두 CSS 축이 모두 `auto`인 경우만 성공시킨다. | S02 revision stamp 확장, C07 box sizing·min/max 기반 | 기초 입력 경로만 완료 |
 | C14.2 | [전용 계획](c14-2-image-ratio-sizing.md)에 따라 intrinsic ratio, 한 축 지정, CSS 2.2 min/max 조합, replaced default object size를 처리한다. | C14.1, U05 decode metadata | 구현·검증 후보 완료, stacked PR 검토 전 |
-| C14.3 | [`img` intrinsic contribution과 percentage resolution](c14-3-image-intrinsic-contributions.md)에 따라 definite Block/Flex/Grid item context에서 `min-content`, `max-content`, `fit-content`와 cyclic percentage 경계를 구현한다. | C14.1, C14.2, C09/C10/C11 사용 문맥 inventory | 계획 검토 후 구현 · 미완료 |
+| C14.3 | [`img` intrinsic contribution과 percentage resolution](c14-3-image-intrinsic-contributions.md)에 따라 definite Block/Flex/fixed-track Grid item context에서 `min-content`, `max-content`, `fit-content`와 제한 cyclic percentage 경계를 구현한다. | C14.1, C14.2, C09/C10/C11 사용 문맥 inventory | Chrome 155 14-case oracle, Android API 37 AVD·iOS 26.2 Simulator 14/14, workspace 873 passed·4 ignored, Clippy와 artifact 경계 검증 완료 · 구현 PR #216 merge 반영 중 |
 | C14.4 | 텍스트·버튼의 intrinsic contribution을 shaping/inline 결과와 결합한다. 합성 폭 근사값은 사용하지 않는다. | C15, U04, S07 | 미완료 |
 | C14.5 | 오류·네트워크·캐시·자원 교체·재계산과 X16 적합성 subset을 닫는다. | U05, S02 runtime owner, X16 | 미완료 |
 

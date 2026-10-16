@@ -23,6 +23,7 @@
       #fit-content-max-clamped { width: fit-content; height: auto; max-width: 12px; }
       #percent-cyclic-width { width: 50%; height: auto; }
       #percent-cyclic-basis { width: min-content; }
+      #border-box-min-content { box-sizing: border-box; width: min-content; height: auto; padding: 4px; border-width: 1px; border-style: solid; }
       #flex-min-content { flex: 0 0 auto; width: min-content; height: auto; }
       #flex-percent-width { flex: 0 0 auto; width: 50%; height: auto; }
       #flex-percent-height { flex: 0 0 auto; width: auto; height: 50%; }
@@ -35,6 +36,7 @@
   <body>
     <main id="cases">
       <section class="case" data-case="min-content"><div class="case-label">min-content</div><img id="min-content" src="../../resources/c14-1-png-basic.png"></section>
+      <section class="case" data-case="border-box-min-content"><div class="case-label">border-box min-content / own edges</div><div class="basis-200x120" data-basis><img id="border-box-min-content" src="../../resources/c14-1-png-basic.png"></div></section>
       <section class="case" data-case="max-content"><div class="case-label">max-content</div><img id="max-content" src="../../resources/c14-1-png-basic.png"></section>
       <section class="case basis-12x120" data-case="fit-content-small-basis"><div class="case-label">fit-content / 12px basis</div><img id="fit-content-small-basis" src="../../resources/c14-1-png-basic.png"></section>
       <section class="case basis-200x120" data-case="percent-width"><div class="case-label">50% width / definite 200px</div><img id="percent-width" src="../../resources/c14-1-png-basic.png"></section>

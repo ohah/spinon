@@ -31,6 +31,13 @@ int32_t spinon_c14_1_app_intrinsic_size_fixture(char *output,
                                                size_t output_capacity);
 #endif
 
+#if defined(SPINON_ENABLE_C14_3_APP_FIXTURE_TEST) && \
+    SPINON_ENABLE_C14_3_APP_FIXTURE_TEST
+/* C14.3 live V8 image intrinsic contribution 13-case fixture. */
+int32_t spinon_c14_3_app_intrinsic_contributions_fixture(
+    char *output, size_t output_capacity);
+#endif
+
 /* 개발용 시뮬레이터 진단: 실제 V8 우선순위 선택과 FIFO 순서를 검증합니다. */
 int32_t spinon_runtime_priority_probe(char *output, size_t output_capacity);
 

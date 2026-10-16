@@ -32,7 +32,7 @@ pub(crate) mod runtime_layout;
 mod runtime_session;
 mod runtime_ua_cascade;
 
-#[cfg(feature = "c14-1-app-fixture-test")]
+#[cfg(any(feature = "c14-1-app-fixture-test", feature = "c14-3-app-fixture-test"))]
 mod fixtures;
 
 fn copy_report(report: &str, output: &mut [u8]) -> bool {

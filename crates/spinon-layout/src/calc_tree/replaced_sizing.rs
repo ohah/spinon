@@ -1,10 +1,18 @@
 use spinon_core::NodeId;
-use taffy::geometry::Size;
+use taffy::{AvailableSpace, geometry::Size};
 
 use crate::{
     LayoutBoxSizing, LayoutDimension, LayoutError, LayoutIntrinsicSize, LayoutLengthPercentage,
     LayoutStyle,
 };
+
+use self::intrinsic_contribution::{PreferredDimensionInput, preferred_dimension_to_content};
+
+#[path = "replaced_sizing/intrinsic_contribution.rs"]
+mod intrinsic_contribution;
+#[cfg(test)]
+#[path = "replaced_sizing/tests.rs"]
+mod tests;
 
 const DEFAULT_OBJECT_WIDTH: f32 = 300.0;
 const DEFAULT_OBJECT_HEIGHT: f32 = 150.0;
@@ -42,6 +50,8 @@ pub(super) fn resolve_used_size(
     input: ReplacedSizingInput,
     known_dimensions: Size<Option<f32>>,
     inherent_size: bool,
+    parent_size: Size<Option<f32>>,
+    available_space: Size<AvailableSpace>,
 ) -> Result<UsedReplacedSize, LayoutError> {
     let style = input.style;
     let edges = edge_sums(node, style)?;
@@ -86,12 +96,32 @@ pub(super) fn resolve_used_size(
         0.0
     };
     let css_width = if inherent_size {
-        dimension_to_content(node, "width", style.width, width_edge)?
+        preferred_dimension_to_content(PreferredDimensionInput {
+            node,
+            property: "width",
+            dimension: style.width,
+            edge: width_edge,
+            containing_basis: parent_size.width,
+            available_space: available_space.width,
+            natural: input.natural,
+            ratio,
+            edges,
+        })?
     } else {
         None
     };
     let css_height = if inherent_size {
-        dimension_to_content(node, "height", style.height, height_edge)?
+        preferred_dimension_to_content(PreferredDimensionInput {
+            node,
+            property: "height",
+            dimension: style.height,
+            edge: height_edge,
+            containing_basis: parent_size.height,
+            available_space: available_space.height,
+            natural: input.natural,
+            ratio,
+            edges,
+        })?
     } else {
         None
     };
@@ -264,7 +294,12 @@ fn dimension_to_content(
             node,
             field: dimension_field(property),
         }),
-        LayoutDimension::Percent(_) | LayoutDimension::Calc(_) => Err(unsupported(
+        LayoutDimension::Percent(_)
+        | LayoutDimension::CyclicMinContentPercent(_)
+        | LayoutDimension::MinContent
+        | LayoutDimension::MaxContent
+        | LayoutDimension::FitContent
+        | LayoutDimension::Calc(_) => Err(unsupported(
             node,
             "width/height/min/max는 절대 CSS px만 지원합니다",
         )),
@@ -430,121 +465,4 @@ fn validate_used_size(node: NodeId, width: f32, height: f32) -> Result<(), Layou
 
 fn unsupported(node: NodeId, reason: &'static str) -> LayoutError {
     LayoutError::UnsupportedIntrinsicSizing { node, reason }
-}
-
-#[cfg(test)]
-mod tests {
-    use super::{Constraints, UsedReplacedSize, clamp_replaced_ratio_size, normalize_max};
-
-    #[test]
-    fn css_22_replaced_ratio_min_max_table_covers_all_ten_violations() {
-        let natural = UsedReplacedSize {
-            content_width: 24.0,
-            content_height: 16.0,
-            width: 24.0,
-            height: 16.0,
-        };
-        let cases = [
-            (
-                "width exceeds max",
-                Constraints {
-                    max_width: Some(20.0),
-                    ..Constraints::default()
-                },
-                (20.0, 13.333333),
-            ),
-            (
-                "width below min",
-                Constraints {
-                    min_width: Some(30.0),
-                    ..Constraints::default()
-                },
-                (30.0, 20.0),
-            ),
-            (
-                "height exceeds max",
-                Constraints {
-                    max_height: Some(10.0),
-                    ..Constraints::default()
-                },
-                (15.0, 10.0),
-            ),
-            (
-                "height below min",
-                Constraints {
-                    min_height: Some(24.0),
-                    ..Constraints::default()
-                },
-                (36.0, 24.0),
-            ),
-            (
-                "both above max, width ratio wins",
-                Constraints {
-                    max_width: Some(20.0),
-                    max_height: Some(14.0),
-                    ..Constraints::default()
-                },
-                (20.0, 13.333333),
-            ),
-            (
-                "both above max, height ratio wins",
-                Constraints {
-                    max_width: Some(22.0),
-                    max_height: Some(12.0),
-                    ..Constraints::default()
-                },
-                (18.0, 12.0),
-            ),
-            (
-                "both below min, height ratio wins",
-                Constraints {
-                    min_width: Some(30.0),
-                    min_height: Some(22.0),
-                    ..Constraints::default()
-                },
-                (33.0, 22.0),
-            ),
-            (
-                "both below min, width ratio wins",
-                Constraints {
-                    min_width: Some(36.0),
-                    min_height: Some(20.0),
-                    ..Constraints::default()
-                },
-                (36.0, 24.0),
-            ),
-            (
-                "width below min and height above max",
-                Constraints {
-                    min_width: Some(30.0),
-                    max_height: Some(10.0),
-                    ..Constraints::default()
-                },
-                (30.0, 10.0),
-            ),
-            (
-                "width above max and height below min",
-                Constraints {
-                    max_width: Some(20.0),
-                    min_height: Some(20.0),
-                    ..Constraints::default()
-                },
-                (20.0, 20.0),
-            ),
-        ];
-
-        for (name, constraints, expected) in cases {
-            let actual = clamp_replaced_ratio_size(natural, 1.5, constraints);
-            assert!(
-                (actual.0 - expected.0).abs() < 0.0001 && (actual.1 - expected.1).abs() < 0.0001,
-                "{name}: {actual:?} != {expected:?}"
-            );
-        }
-    }
-
-    #[test]
-    fn minimum_wins_when_maximum_is_smaller() {
-        assert_eq!(normalize_max(Some(48.0), Some(30.0)), Some(48.0));
-        assert_eq!(normalize_max(None, Some(30.0)), Some(30.0));
-    }
 }

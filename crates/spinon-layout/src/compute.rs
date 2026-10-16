@@ -29,7 +29,10 @@ impl TaffyLayoutEngine {
         input: &LayoutInput,
         snapshot: Option<&LayoutIntrinsicSizeSnapshot>,
     ) -> Result<LayoutOutput, LayoutError> {
-        let index = super::validate(input)?;
+        let intrinsic_size_nodes = snapshot
+            .map(|snapshot| snapshot.sizes().keys().copied().collect::<BTreeSet<_>>())
+            .unwrap_or_default();
+        let index = super::validate(input, &intrinsic_size_nodes)?;
         validate_intrinsic_sizes(input, &index, snapshot)?;
         let postorder = postorder(input, &index)?;
         let intrinsic_sizes = snapshot.map(LayoutIntrinsicSizeSnapshot::sizes);

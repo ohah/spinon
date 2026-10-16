@@ -4,7 +4,9 @@ mod style_values;
 mod typed_math;
 use style_values::project_styles;
 
-use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, NodeId, StyleRevision};
+use spinon_core::{
+    HostDocumentSnapshot, HostNodeHandle, HostNodeKind, HostParent, NodeId, StyleRevision,
+};
 use spinon_layout::{
     LayoutDisplay, LayoutEdges, LayoutEngine, LayoutError, LayoutFrame, LayoutInput,
     LayoutIntrinsicSizeSnapshot, LayoutOutput, LayoutSourceRevision, LayoutStyle,
@@ -488,8 +490,13 @@ fn compute_layout_from_styles(
             }
         }
     }
-    let projected = project_styles(snapshot, root, &computed_styles)?;
-    validate_intrinsic_image_inputs(snapshot, root, &projected.styles, intrinsic_sizes.as_ref())?;
+    let mut projected = project_styles(snapshot, root, &computed_styles)?;
+    validate_intrinsic_image_inputs(
+        snapshot,
+        root,
+        &mut projected.styles,
+        intrinsic_sizes.as_ref(),
+    )?;
     let styles = projected.styles;
     let positioning = projected.positioning;
     let grid_containers = projected.grid_containers;
@@ -604,7 +611,7 @@ fn compute_layout_from_styles(
 fn validate_intrinsic_image_inputs(
     snapshot: &HostDocumentSnapshot,
     root: HostNodeHandle,
-    styles: &BTreeMap<NodeId, LayoutStyle>,
+    styles: &mut BTreeMap<NodeId, LayoutStyle>,
     intrinsic_sizes: Option<&LayoutIntrinsicSizeSnapshot>,
 ) -> Result<(), StyleLayoutError> {
     let expected_source = LayoutSourceRevision::HostDocument {
@@ -633,24 +640,60 @@ fn validate_intrinsic_image_inputs(
             continue;
         }
         layout_nodes.insert(node.id());
-        let Some(style) = styles.get(&node.id()) else {
+        let Some(style) = styles.get(&node.id()).copied() else {
             return Err(LayoutError::MissingStyle(node.id()).into());
         };
         let hidden = ancestor_hidden || style.display == LayoutDisplay::None;
-        if matches!(node.kind(), HostNodeKind::Element(element)
-            if element.namespace() == HTML_NAMESPACE && element.local_name() == "img")
-        {
-            images.insert(node.id());
-            if !hidden {
-                match (
-                    style.width == spinon_layout::LayoutDimension::Auto,
-                    style.height == spinon_layout::LayoutDimension::Auto,
-                ) {
-                    (true, true) | (true, false) | (false, true) => {
-                        required_images.insert(node.id());
-                    }
-                    (false, false) => {}
+        let is_html_image = matches!(node.kind(), HostNodeKind::Element(element)
+            if element.namespace() == HTML_NAMESPACE && element.local_name() == "img");
+        let has_intrinsic_keyword = matches!(
+            style.width,
+            spinon_layout::LayoutDimension::MinContent
+                | spinon_layout::LayoutDimension::MaxContent
+                | spinon_layout::LayoutDimension::FitContent
+        ) || matches!(
+            style.height,
+            spinon_layout::LayoutDimension::MinContent
+                | spinon_layout::LayoutDimension::MaxContent
+                | spinon_layout::LayoutDimension::FitContent
+        );
+        if has_intrinsic_keyword && !is_html_image {
+            let supported_image = if style.width == spinon_layout::LayoutDimension::MinContent {
+                is_supported_cyclic_min_content_container(snapshot, handle, style, styles)
+            } else {
+                None
+            };
+            let Some((image, fraction)) = supported_image else {
+                return Err(LayoutError::UnsupportedIntrinsicSizing {
+                    node: node.id(),
+                    reason: "C14.3 intrinsic sizing keyword는 HTML img와 제한된 cyclic parent만 지원합니다",
                 }
+                .into());
+            };
+            let image_style = styles
+                .get_mut(&image)
+                .ok_or(LayoutError::MissingStyle(image))?;
+            image_style.width = spinon_layout::LayoutDimension::CyclicMinContentPercent(fraction);
+        }
+        if is_html_image {
+            images.insert(node.id());
+            let requires_intrinsic_size = has_intrinsic_keyword
+                || style.width == spinon_layout::LayoutDimension::Auto
+                || style.height == spinon_layout::LayoutDimension::Auto;
+            if !hidden
+                && requires_intrinsic_size
+                && snapshot
+                    .children(handle)
+                    .is_some_and(|mut children| children.next().is_some())
+            {
+                return Err(LayoutError::UnsupportedIntrinsicSizing {
+                    node: node.id(),
+                    reason: "C14.3 HTML img intrinsic sizing은 자식 없는 leaf만 지원합니다",
+                }
+                .into());
+            }
+            if !hidden && requires_intrinsic_size {
+                required_images.insert(node.id());
             }
         }
         if let Some(children) = snapshot.children(handle) {
@@ -679,6 +722,74 @@ fn validate_intrinsic_image_inputs(
         }
     }
     Ok(())
+}
+
+fn is_supported_cyclic_min_content_container(
+    snapshot: &HostDocumentSnapshot,
+    handle: HostNodeHandle,
+    style: LayoutStyle,
+    styles: &BTreeMap<NodeId, LayoutStyle>,
+) -> Option<(NodeId, f32)> {
+    if style.display != LayoutDisplay::Block
+        || style.width != spinon_layout::LayoutDimension::MinContent
+        || style.height != spinon_layout::LayoutDimension::Auto
+        || style.min_width != spinon_layout::LayoutDimension::Auto
+        || style.max_width != spinon_layout::LayoutDimension::Auto
+        || style.min_height != spinon_layout::LayoutDimension::Auto
+        || style.max_height != spinon_layout::LayoutDimension::Auto
+        || style.aspect_ratio.is_some()
+        || style.padding.top != spinon_layout::LayoutLengthPercentage::ZERO
+        || style.padding.right != spinon_layout::LayoutLengthPercentage::ZERO
+        || style.padding.bottom != spinon_layout::LayoutLengthPercentage::ZERO
+        || style.padding.left != spinon_layout::LayoutLengthPercentage::ZERO
+        || style.border.top != 0.0
+        || style.border.right != 0.0
+        || style.border.bottom != 0.0
+        || style.border.left != 0.0
+    {
+        return None;
+    }
+    if !has_only_block_ancestors(snapshot, handle, styles) {
+        return None;
+    }
+    let children = snapshot.children(handle)?;
+    let mut children = children.collect::<Vec<_>>().into_iter();
+    let child = children.next()?;
+    if children.next().is_some() {
+        return None;
+    }
+    let node = snapshot.node(child)?;
+    let is_html_image = matches!(node.kind(), HostNodeKind::Element(element)
+        if element.namespace() == HTML_NAMESPACE && element.local_name() == "img");
+    if !is_html_image {
+        return None;
+    }
+    let image = styles.get(&node.id())?;
+    let spinon_layout::LayoutDimension::Percent(fraction) = image.width else {
+        return None;
+    };
+    (fraction.is_finite()
+        && fraction >= 0.0
+        && image.height == spinon_layout::LayoutDimension::Auto)
+        .then_some((node.id(), fraction))
+}
+
+fn has_only_block_ancestors(
+    snapshot: &HostDocumentSnapshot,
+    handle: HostNodeHandle,
+    styles: &BTreeMap<NodeId, LayoutStyle>,
+) -> bool {
+    let mut parent = snapshot.parent(handle);
+    while let Some(HostParent::Node(ancestor)) = parent {
+        let Some(style) = styles.get(&ancestor.id()) else {
+            return false;
+        };
+        if style.display != LayoutDisplay::Block {
+            return false;
+        }
+        parent = snapshot.parent(ancestor);
+    }
+    matches!(parent, Some(HostParent::Root))
 }
 
 fn zero_display_none_frames(

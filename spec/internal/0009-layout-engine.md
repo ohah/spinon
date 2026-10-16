@@ -68,13 +68,13 @@ assert_eq!(output.revision, input.revision());
 
 한 계산 입력은 루트 ID, 양수·유한 viewport, `LayoutInputRevision`, 모든 요소 노드의 스타일을 포함합니다. revision은 source·style·environment와 measurement revision을 보존하며, measurement revision의 기본값은 초기값입니다. intrinsic snapshot overload는 별도 snapshot revision으로 output stamp를 갱신합니다. 루트의 고정 너비·높이는 viewport와 정확히 같아야 합니다. viewport와 스타일 값은 같은 좌표 단위를 사용합니다. 이 계약은 CSS px을 Android dp나 iOS point로 변환하지 않습니다.
 
-현재 표현 가능한 스타일은 다음과 같습니다.
+현재 `LayoutStyle`은 다음 typed value를 표현합니다. 허용되는 CSS 조합은 `spinon-style-to-layout` preflight가 별도로 제한합니다.
 
 | 필드 | 현재 동작 |
 | --- | --- |
-| `display` | `flex`, `block`, `none`. `block`은 기본 block formatting 동등성을 뜻하지 않음 |
+| `display` | `flex`, `block`, `flow-root`, 제한 `grid`, `none`. `block`은 기본 block formatting 동등성을 뜻하지 않음 |
 | `box_sizing` | `border-box`, `content-box` |
-| `width`, `height`, `flex_basis` | `Auto` 또는 음수가 아닌 유한 고정 길이. 백분율은 없음 |
+| `width`, `height`, `flex_basis` | `Auto`, 음수가 아닌 유한 고정 길이, percentage, calc handle. `min-content`, `max-content`, `fit-content`는 HTML `img`의 C14.3 제한 profile에서만 허용 |
 | `flex_direction` | `row`, `column` |
 | `direction` | `ltr`, `rtl` |
 | `margin` | 네 방향의 유한한 길이. 음수 허용 |
@@ -82,6 +82,8 @@ assert_eq!(output.revision, input.revision());
 | `gap` | `row`, `column` gap. 음수가 아닌 유한 길이 |
 | `flex_grow`, `flex_shrink` | 0 이상 유한 값 |
 | 기본값 | `display:flex`, `align-items:stretch`, `flex-wrap:nowrap`, `flex-shrink:0`, `box-sizing:border-box` |
+
+C14.3 내부 candidate는 보이는 연결 HTML namespace `img` leaf의 intrinsic snapshot에서 자연 content size·ratio를 읽는다. `min-content`/`max-content`는 자연 content contribution을 사용하며 `fit-content` keyword는 intrinsic contribution과 available space 및 min/max constraint를 결합한다. image 자신의 border-box sizing에서는 자연 content size에 padding/border를 더하고, explicit border-box length/percentage에는 edge를 한 번 뺀다. 이 구별은 Chrome 155 `border-box-min-content` 대조에 고정되어 있다. 일반 Block, definite 단일 줄 Flex item, definite fixed-track Grid item에서 percentage width/height만 허용한다. cyclic percentage는 `min-content` Block parent 하나와 직접 자식 `img { width: <percentage>; height:auto }` 형태로 한정한다. `fit-content(<length-percentage>)`와 다른 intrinsic keyword 배치는 `UnsupportedIntrinsicSizing`으로 실패하며 `auto`/0으로 대체하지 않는다. 상세 14-case oracle, simulator runtime과 기본/opt-in artifact 경계는 [C14.3 실행 근거](evidence/c14-3-image-intrinsic-contributions-runtime-2026-10-16/README.md)에 둔다.
 
 입력에는 중복 ID, 없는 자식, 중복 자식, 복수 부모, 루트의 부모, 고립 노드와 순환을 허용하지 않습니다. `LayoutInput` 필드는 외부에서 바꿀 수 없고 `from_tree` 또는 `from_host_document`가 코어 snapshot을 투영합니다. 엔진은 Taffy에 전달하기 전에 연결 그래프와 계산 스타일을 검증합니다.
 
@@ -104,6 +106,7 @@ assert_eq!(output.revision, input.revision());
 | measurement snapshot source가 현재 layout source와 다름 | `IntrinsicSizeSourceMismatch` |
 | 측정 map 안에 중복·unknown·non-leaf node가 있거나 제공된 자연 치수·ratio가 0·음수·NaN·무한대 또는 서로 불일치 | `DuplicateIntrinsicSizeNode`, `UnknownIntrinsicSizeNode`, `UnsupportedIntrinsicSizing`, `InvalidIntrinsicSize` |
 | 보이는 auto 축 HTML image에 metadata entry가 없거나 현재 미지원 sizing 조합을 사용 | `MissingIntrinsicSize`, `UnsupportedIntrinsicSizing` |
+| C14.3 intrinsic keyword가 HTML image 또는 단일 cyclic parent profile 밖에서 사용되거나 `fit-content()` 함수가 전달됨 | `UnsupportedIntrinsicSizing` |
 | 입력 ID·연결 그래프가 잘못됨 | 해당 `MissingRoot`, `DuplicateNode`, `MissingChild`, `DuplicateChild`, `RootHasParent`, `MultipleParents`, `DetachedNode`, `Cycle`, `UnreachableNode` |
 | 루트 크기가 viewport와 다름 | `RootSizeMismatch` |
 | 유한하지 않은 길이·간격·grow 또는 음수 padding·gap·grow·shrink | `InvalidStyle` |
@@ -122,7 +125,7 @@ assert_eq!(output.revision, input.revision());
 
 ## 현재 미지원
 
-이 인터페이스는 CSS parser/cascade 결과를 직접 받거나 변환하지 않습니다. CSS parser/cascade, selector, 상속, CSS 변수·단위 변환, percentage margin, flex wrapping, 일반 정렬, position, overflow·scroll, Grid, 완전한 Block formatting, 글꼴 shaping 및 텍스트 intrinsic measurement를 제공하지 않습니다. image measurement는 별도 snapshot을 받은 내부 overload에 한하며 HTML image의 auto/auto 자연 크기만 포함합니다. intrinsic ratio, partial-auto, sizing keyword, 버튼·폼·video·SVG image, decode와 앱 연결은 미지원입니다. HostDocument의 텍스트 노드를 레이아웃 입력으로 받지 않습니다. 그러므로 일반 웹/CSS 동등성이나 사용자 UI 지원으로 해석하면 안 됩니다. 제한 CSS px margin 투영은 [C04.6 내부 계약](0027-c04-flex-margin-layout.md)에 둡니다.
+이 인터페이스는 CSS parser/cascade 결과를 직접 받거나 변환하지 않습니다. CSS 변수·일반 cascade, percentage margin, flex wrapping, 일반 정렬·position·overflow·scroll, intrinsic Grid track sizing, 완전한 Block formatting, 글꼴 shaping 및 텍스트 intrinsic measurement를 제공하지 않습니다. image measurement는 별도 snapshot을 받은 내부 overload에 한하며 HTML image와 C14.1/C14.2/C14.3의 검증된 제한 sizing 조합만 포함합니다. 버튼·폼·video·SVG image, decoder/resource owner, 네트워크 decode/cache/replacement scheduling, 앱 제품 연결, native image paint/clip은 미지원입니다. HostDocument의 텍스트 노드를 레이아웃 입력으로 받지 않습니다. 그러므로 일반 웹/CSS 동등성이나 사용자 UI 지원으로 해석하면 안 됩니다. 제한 CSS px margin 투영은 [C04.6 내부 계약](0027-c04-flex-margin-layout.md)에 둡니다.
 
 ## 의존성과 비교 기준
 

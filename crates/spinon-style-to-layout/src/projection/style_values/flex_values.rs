@@ -42,6 +42,7 @@ pub(super) fn parse_justify_content(
 pub(super) fn parse_runtime_align_items(
     node: NodeId,
     value: &str,
+    allow_start: bool,
 ) -> Result<LayoutAlignItems, StyleLayoutError> {
     let parsed = match value {
         "normal" => Some(LayoutAlignItems::Normal),
@@ -49,6 +50,11 @@ pub(super) fn parse_runtime_align_items(
         "flex-start" => Some(LayoutAlignItems::FlexStart),
         "flex-end" => Some(LayoutAlignItems::FlexEnd),
         "center" => Some(LayoutAlignItems::Center),
+        "start" if allow_start => Some(LayoutAlignItems::Position {
+            position: ItemAlignmentPosition::Start,
+            safety: None,
+        }),
+        "start" => None,
         "baseline" | "first baseline" => Some(LayoutAlignItems::FirstBaseline),
         "last baseline" => Some(LayoutAlignItems::LastBaseline),
         _ => parse_item_position(value)

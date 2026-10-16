@@ -62,6 +62,19 @@ xcrun simctl launch --terminate-running-process booted dev.spinon.bootstrap --sp
 
 화면과 unified log는 Chrome 155 oracle의 `(0,0) 24×16 CSS px` frame, source identity와 revision 비교 결과를 표시합니다. 앱 화면은 report text이며 PNG를 그리지 않으므로 Metal image paint·pixel parity나 border 바깥 overflow clipping을 증명하지 않습니다. C13.1의 border/overflow 결과는 위의 별도 근거를 참고하세요. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 live V8 로그·화면·feature 경계는 [C14.1 live V8 evidence](../../spec/internal/evidence/c14-1-live-v8-image-measurement-2026-10-16/README.md)에 기록합니다.
 
+## C14.3 intrinsic contribution 앱 fixture
+
+C14.3은 opt-in fixture에서 live V8이 만든 14개 HTML image를 HostDocument snapshot과 PNG natural-size snapshot에 연결해 Chrome 155 CSS px 기대값과 비교합니다. 기본 빌드에는 route ABI와 고정 payload가 없습니다.
+
+```sh
+SPINON_ENABLE_C14_3_APP_FIXTURE_TEST=1 mise exec -- bun run build:ios-sim
+xcrun simctl install ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app
+xcrun simctl launch --terminate-running-process ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D dev.spinon.bootstrap --spinon-c143-intrinsic-contributions
+xcrun simctl spawn ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D log show --last 2m --predicate 'process == "SpinonBootstrap"' --style compact | rg SPINON_C143_APP_FIXTURE
+```
+
+iPhone 17 Pro / iOS 26.2 Simulator에서 14/14 frame case를 비교합니다. Oracle에는 image 자체의 border-box `min-content` `34×26 CSS px`와 작은 containing block 밖으로 7px 나가는 `fit-content` frame이 들어 있습니다. 이 report는 Metal image paint나 border 바깥 pixel clipping을 검증하지 않습니다. 양 플랫폼 로그·화면·artifact 경계는 [C14.3 실행 근거](../../spec/internal/evidence/c14-3-image-intrinsic-contributions-runtime-2026-10-16/README.md)에 기록합니다.
+
 R06 개발 화면은 아래 실행 인자를 받습니다.
 
 ```sh

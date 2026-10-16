@@ -80,6 +80,7 @@ pub(super) fn validate_grid_layout(
     input: &LayoutInput,
     index: &BTreeMap<NodeId, usize>,
     definite_axes: &BTreeMap<NodeId, DefiniteAxes>,
+    intrinsic_size_nodes: &std::collections::BTreeSet<NodeId>,
 ) -> Result<(), LayoutError> {
     for &id in input.grid_containers.keys() {
         if !index.contains_key(&id) {
@@ -225,6 +226,19 @@ pub(super) fn validate_grid_layout(
             .len()
             .checked_mul(container.rows.len())
             .ok_or(LayoutError::GridTrackExpansionOverflow(node.id))?;
+        let c14_3_fixed_track_context = matches!(
+            container.placement_mode,
+            GridPlacementMode::DenseAutoPlacement | GridPlacementMode::TemplateGrid
+        ) && !container.columns.is_empty()
+            && !container.rows.is_empty()
+            && container
+                .columns
+                .iter()
+                .all(|track| matches!(track, GridTrackSize::LengthPx(_)))
+            && container
+                .rows
+                .iter()
+                .all(|track| matches!(track, GridTrackSize::LengthPx(_)));
         let has_explicit_placement = node
             .children
             .iter()
@@ -245,6 +259,32 @@ pub(super) fn validate_grid_layout(
             {
                 return Err(LayoutError::UnsupportedGridPositionedItem(child_id));
             }
+            let c14_3_replaced_item = c14_3_fixed_track_context
+                && intrinsic_size_nodes.contains(&child_id)
+                && [child.style.width, child.style.height]
+                    .into_iter()
+                    .any(|size| {
+                        matches!(
+                            size,
+                            crate::LayoutDimension::Percent(_)
+                                | crate::LayoutDimension::CyclicMinContentPercent(_)
+                                | crate::LayoutDimension::MinContent
+                                | crate::LayoutDimension::MaxContent
+                                | crate::LayoutDimension::FitContent
+                        )
+                    });
+            let valid_c14_3_dimension = |size| {
+                matches!(
+                    size,
+                    crate::LayoutDimension::Auto
+                        | crate::LayoutDimension::Fixed(_)
+                        | crate::LayoutDimension::Percent(_)
+                        | crate::LayoutDimension::CyclicMinContentPercent(_)
+                        | crate::LayoutDimension::MinContent
+                        | crate::LayoutDimension::MaxContent
+                        | crate::LayoutDimension::FitContent
+                )
+            };
             let valid_item_size = |size| match container.placement_mode {
                 GridPlacementMode::SparseRow
                 | GridPlacementMode::DenseAutoPlacement
@@ -252,6 +292,7 @@ pub(super) fn validate_grid_layout(
                     if normalized_grid.auto_placed_items.contains(&child_id) =>
                 {
                     matches!(size, crate::LayoutDimension::Fixed(_))
+                        || (c14_3_replaced_item && valid_c14_3_dimension(size))
                 }
                 GridPlacementMode::Existing | GridPlacementMode::ExplicitOnly
                     if has_explicit_placement =>
@@ -267,7 +308,7 @@ pub(super) fn validate_grid_layout(
                     matches!(
                         size,
                         crate::LayoutDimension::Auto | crate::LayoutDimension::Fixed(_)
-                    )
+                    ) || (c14_3_replaced_item && valid_c14_3_dimension(size))
                 }
                 _ => matches!(size, crate::LayoutDimension::Fixed(_)),
             };

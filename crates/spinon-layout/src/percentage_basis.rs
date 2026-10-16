@@ -181,8 +181,13 @@ fn absolute_axes(
     calc_percentages: &BTreeMap<LayoutCalcId, bool>,
 ) -> DefiniteAxes {
     let axis_is_definite = |axis: LayoutAxis| match axis.dimension(node.style) {
-        LayoutDimension::Fixed(_) => true,
-        LayoutDimension::Percent(_) => axis.parent_definite(owner_axes),
+        LayoutDimension::Fixed(_)
+        | LayoutDimension::MinContent
+        | LayoutDimension::MaxContent
+        | LayoutDimension::FitContent => true,
+        LayoutDimension::Percent(_) | LayoutDimension::CyclicMinContentPercent(_) => {
+            axis.parent_definite(owner_axes)
+        }
         LayoutDimension::Calc(id) => {
             !calc_percentages.get(&id).copied().unwrap_or(true) || axis.parent_definite(owner_axes)
         }
@@ -300,6 +305,10 @@ fn root_axes(
             width: match node.style.width {
                 LayoutDimension::Fixed(_)
                 | LayoutDimension::Percent(_)
+                | LayoutDimension::CyclicMinContentPercent(_)
+                | LayoutDimension::MinContent
+                | LayoutDimension::MaxContent
+                | LayoutDimension::FitContent
                 | LayoutDimension::Calc(_) => true,
                 LayoutDimension::Auto => {
                     matches!(
@@ -324,8 +333,13 @@ fn is_axis_definite(
     calc_percentages: &BTreeMap<LayoutCalcId, bool>,
 ) -> bool {
     match axis.dimension(node.style) {
-        LayoutDimension::Fixed(_) => true,
-        LayoutDimension::Percent(_) => axis.parent_definite(parent_axes),
+        LayoutDimension::Fixed(_)
+        | LayoutDimension::MinContent
+        | LayoutDimension::MaxContent
+        | LayoutDimension::FitContent => true,
+        LayoutDimension::Percent(_) | LayoutDimension::CyclicMinContentPercent(_) => {
+            axis.parent_definite(parent_axes)
+        }
         LayoutDimension::Calc(id) => {
             !calc_percentages.get(&id).copied().unwrap_or(true) || axis.parent_definite(parent_axes)
         }
@@ -393,8 +407,12 @@ fn validate_absolute_dimension_percentage_bases(
         ),
     ] {
         let contains_percentage = match value {
-            LayoutDimension::Auto | LayoutDimension::Fixed(_) => false,
-            LayoutDimension::Percent(_) => true,
+            LayoutDimension::Auto
+            | LayoutDimension::Fixed(_)
+            | LayoutDimension::MinContent
+            | LayoutDimension::MaxContent
+            | LayoutDimension::FitContent => false,
+            LayoutDimension::Percent(_) | LayoutDimension::CyclicMinContentPercent(_) => true,
             LayoutDimension::Calc(id) => calc_percentages.get(&id).copied().unwrap_or(true),
         };
         if contains_percentage && !is_definite {
