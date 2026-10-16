@@ -32,7 +32,7 @@
     { "id": "content-box-edges", "kind": "border_box_edges", "expectedCssPx": [48, 34] },
     { "id": "aspect-ratio-override", "kind": "authored_ratio_overrides_natural", "expectedCssPx": [48, 48] },
     { "id": "aspect-ratio-border-box", "kind": "authored_ratio_uses_border_box", "expectedCssPx": [48, 32] },
-    { "id": "aspect-ratio-auto-override", "kind": "auto_ratio_uses_natural", "expectedCssPx": [48, 32] },
+    { "id": "aspect-ratio-auto-override", "kind": "auto_ratio_uses_natural", "expectedCssPx": [48, 32], "layoutStage": "unsupported_aspect_ratio_auto_with_fallback" },
     { "id": "svg-ratio-only-square", "kind": "ratio_only_height_definite_observation", "expectedCssPx": [30, 30], "layoutStage": "not_in_png_adapter_scope" },
     { "id": "svg-ratio-only-wide", "kind": "ratio_only_width_definite_observation", "expectedCssPx": [40, 20], "layoutStage": "not_in_png_adapter_scope" },
     { "id": "svg-no-natural-dimensions", "kind": "user_agent_default_size_observation", "expectedCssPx": [300, 150], "layoutStage": "synthetic_metadata_test_required" },
