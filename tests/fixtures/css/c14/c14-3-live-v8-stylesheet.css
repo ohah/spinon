@@ -1,0 +1,31 @@
+* { box-sizing: content-box; margin: 0; padding: 0; }
+#root { display: block; width: 1280px; height: 633px; }
+#basis-min-content { display: block; width: 210px; height: 150px; }
+#basis-border-box-min-content { display: block; width: 200px; height: 120px; }
+#basis-max-content { display: block; width: 210px; height: 150px; }
+#basis-fit-content-small-basis { display: block; width: 12px; height: 150px; padding: 4px; border-width: 1px; border-style: solid; }
+#basis-percent-width { display: block; width: 200px; height: 120px; }
+#basis-percent-height { display: block; width: 200px; height: 120px; }
+#basis-fit-content-max-clamped { display: block; width: 200px; height: 120px; }
+#basis-percent-cyclic-width { display: block; width: min-content; height: auto; }
+#basis-flex-min-content { display: flex; flex-flow: row nowrap; align-items: flex-start; width: 200px; height: 120px; }
+#basis-flex-percent-width { display: flex; flex-flow: row nowrap; align-items: flex-start; width: 200px; height: 120px; }
+#basis-flex-percent-height { display: flex; flex-flow: row nowrap; align-items: flex-start; width: 200px; height: 120px; }
+#basis-grid-min-content { display: grid; grid-template-columns: 200px; grid-template-rows: 120px; align-items: start; width: 200px; height: 120px; }
+#basis-grid-percent-width { display: grid; grid-template-columns: 200px; grid-template-rows: 120px; align-items: start; width: 200px; height: 120px; }
+#basis-grid-percent-height { display: grid; grid-template-columns: 200px; grid-template-rows: 120px; align-items: start; width: 200px; height: 120px; }
+img { display: block; }
+#min-content { width: min-content; height: auto; }
+#border-box-min-content { box-sizing: border-box; width: min-content; height: auto; padding: 4px; border-width: 1px; border-style: solid; }
+#max-content { width: max-content; height: auto; }
+#fit-content-small-basis { width: fit-content; height: auto; }
+#percent-width { width: 50%; height: auto; }
+#percent-height { width: auto; height: 50%; }
+#fit-content-max-clamped { width: fit-content; height: auto; max-width: 12px; }
+#percent-cyclic-width { width: 50%; height: auto; }
+#flex-min-content { flex: 0 0 auto; width: min-content; height: auto; }
+#flex-percent-width { flex: 0 0 auto; width: 50%; height: auto; }
+#flex-percent-height { flex: 0 0 auto; width: auto; height: 50%; }
+#grid-min-content { width: min-content; height: auto; }
+#grid-percent-width { width: 50%; height: auto; }
+#grid-percent-height { width: auto; height: 50%; }

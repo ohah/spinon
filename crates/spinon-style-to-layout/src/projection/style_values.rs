@@ -323,9 +323,11 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockFlexGridV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
-                | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
-                | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1 => {
-                    parse_runtime_align_items(node, required(element, "align-items")?)?
+                | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1 => {
+                    parse_runtime_align_items(node, required(element, "align-items")?, false)?
+                }
+                ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1 => {
+                    parse_runtime_align_items(node, required(element, "align-items")?, true)?
                 }
                 ComputedStyleProfile::FlexAlignmentV1
                 | ComputedStyleProfile::FlexAlignmentCascadeLayersV1
@@ -719,6 +721,7 @@ fn reject_grid_alignment(
     for (property, initial) in unsupported {
         if let Some(value) = element.properties.get(property)
             && value != initial
+            && !(is_grid_container && property == "align-items" && value == "start")
         {
             return Err(StyleLayoutError::UnsupportedComputedValue {
                 node: element.node_id,

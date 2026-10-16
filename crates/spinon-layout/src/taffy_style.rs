@@ -210,6 +210,7 @@ pub(super) fn to_taffy_style(
         align_items: Some(to_taffy_align_items(style.align_items)),
         align_self: to_taffy_align_self(style.align_self),
         align_content: style.align_content.map(to_taffy_align_content),
+        justify_self: item_is_replaced.then_some(AlignSelf::START),
         justify_content: Some(to_taffy_justify_content(
             style.justify_content,
             style.flex_direction,
@@ -497,6 +498,10 @@ fn to_taffy_dimension(
         LayoutDimension::Auto => Ok(Dimension::auto()),
         LayoutDimension::Fixed(value) => Ok(Dimension::length(value)),
         LayoutDimension::Percent(value) => Ok(Dimension::percent(value)),
+        LayoutDimension::CyclicMinContentPercent(value) => Ok(Dimension::percent(value)),
+        LayoutDimension::MinContent => Ok(Dimension::min_content()),
+        LayoutDimension::MaxContent => Ok(Dimension::max_content()),
+        LayoutDimension::FitContent => Ok(Dimension::fit_content()),
         LayoutDimension::Calc(id) => Ok(Dimension::calc(calc_handle(node, property, id, handles)?)),
     }
 }
@@ -511,6 +516,18 @@ fn to_taffy_size_constraint(
         LayoutDimension::Auto => Ok(LengthPercentageAuto::auto()),
         LayoutDimension::Fixed(value) => Ok(LengthPercentageAuto::length(value)),
         LayoutDimension::Percent(value) => Ok(LengthPercentageAuto::percent(value)),
+        LayoutDimension::CyclicMinContentPercent(_) => {
+            Err(LayoutError::UnsupportedIntrinsicSizing {
+                node,
+                reason: "cyclic min-content percentage는 size constraint에서 지원하지 않습니다",
+            })
+        }
+        LayoutDimension::MinContent | LayoutDimension::MaxContent | LayoutDimension::FitContent => {
+            Err(LayoutError::UnsupportedIntrinsicSizing {
+                node,
+                reason: "min/max-content와 fit-content는 size constraint에서 지원하지 않습니다",
+            })
+        }
         LayoutDimension::Calc(id) => Ok(LengthPercentageAuto::calc(calc_handle(
             node, property, id, handles,
         )?)),

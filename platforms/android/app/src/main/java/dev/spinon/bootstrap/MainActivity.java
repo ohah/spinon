@@ -104,6 +104,7 @@ public final class MainActivity extends Activity {
     private static native byte[] nativeSessionShutdownProbe();
     private static native byte[] nativeSessionUaCascadeProbe();
     private static native byte[] nativeC141IntrinsicSizeFixture();
+    private static native byte[] nativeC143IntrinsicContributionsFixture();
     private static native int nativeSessionCancel(long session);
     private static native int nativeSessionMemoryPressure(long session, int level);
     private static native void nativeSessionFree(long session);
@@ -199,6 +200,10 @@ public final class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getIntent().getBooleanExtra("spinon_c143_intrinsic_contributions", false)) {
+            showC143IntrinsicContributionsFixture();
+            return;
+        }
         if (getIntent().getBooleanExtra("spinon_c141_intrinsic_size", false)) {
             showC141IntrinsicSizeFixture();
             return;
@@ -686,6 +691,134 @@ public final class MainActivity extends Activity {
         } catch (RejectedExecutionException rejected) {
             reportView.setText("C14.1 · 계산 작업을 시작하지 못했습니다.");
             Log.e(TAG, "SPINON_C141_EXECUTION_ERROR executor=rejected", rejected);
+        }
+    }
+
+    private void showC143IntrinsicContributionsFixture() {
+        TextView reportView = new TextView(this);
+        reportView.setTextColor(Color.WHITE);
+        reportView.setTextSize(12);
+        reportView.setTypeface(Typeface.MONOSPACE);
+        reportView.setPadding(32, 112, 32, 48);
+        reportView.setBackgroundColor(Color.rgb(14, 19, 31));
+        ScrollView scroll = new ScrollView(this);
+        scroll.setFillViewport(true);
+        scroll.addView(reportView);
+        setContentView(scroll);
+
+        if (hasConflictingC143FixtureRoute()) {
+            reportView.setText("C14.3 · 잘못된 실행 인자\n\n다른 fixture route와 함께 실행할 수 없습니다.");
+            Log.e(TAG, "SPINON_C143_ARGUMENT_ERROR conflicting=fixture-route");
+            return;
+        }
+        if (!BuildConfig.SPINON_C143_APP_FIXTURE_TEST) {
+            reportView.setText("C14.3 · fixture-test 빌드가 꺼져 있습니다.");
+            Log.e(TAG, "SPINON_C143_DISABLED fixture-test feature is off");
+            return;
+        }
+
+        reportView.setText("C14.3 · 14개 intrinsic contribution 계산 중…");
+        try {
+            bootstrapExecutor.execute(() -> {
+                byte[] encoded = nativeC143IntrinsicContributionsFixture();
+                String report = encoded == null
+                        ? "{\"status\":\"error\",\"detail\":\"empty JNI report\"}"
+                        : new String(encoded, StandardCharsets.UTF_8);
+                boolean passed = false;
+                try {
+                    JSONObject result = new JSONObject(report);
+                    passed = "ok".equals(result.optString("status"))
+                            && result.optInt("matched_count", -1) == 14
+                            && result.optInt("image_count", -1) == 14;
+                } catch (JSONException malformed) {
+                    Log.e(TAG, "SPINON_C143_REPORT_PARSE_ERROR", malformed);
+                }
+                logC143FixtureReport(report, passed);
+                boolean finalPassed = passed;
+                runOnUiThread(() -> {
+                    if (!activityClosing) {
+                        reportView.setText(formatC143Report(report, finalPassed));
+                    }
+                });
+            });
+        } catch (RejectedExecutionException rejected) {
+            reportView.setText("C14.3 · 계산 작업을 시작하지 못했습니다.");
+            Log.e(TAG, "SPINON_C143_EXECUTION_ERROR executor=rejected", rejected);
+        }
+    }
+
+    private String formatC143Report(String report, boolean passed) {
+        if (!passed) return "C14.3 · 앱 fixture 실패\n\n" + report;
+        try {
+            JSONObject result = new JSONObject(report);
+            JSONArray cases = result.optJSONArray("cases");
+            if (cases == null || cases.length() != 14) {
+                return "C14.3 · 앱 fixture 결과 수가 다릅니다\n\n" + report;
+            }
+            StringBuilder summary = new StringBuilder(
+                    "C14.3 · Chrome 155 oracle\n\nPASS · 14/14 CSS px cases\n\n");
+            summary.append("case · containing block · image frame\n");
+            for (int index = 0; index < cases.length(); index++) {
+                JSONObject item = cases.optJSONObject(index);
+                if (item == null || !"ok".equals(item.optString("status"))) {
+                    return "C14.3 · 앱 fixture 결과가 일치하지 않습니다\n\n" + report;
+                }
+                JSONArray basis = item.optJSONArray("containing_block_content_size_css_px");
+                JSONArray frame = item.optJSONArray("image_frame_css_px");
+                String framePosition = frame == null || frame.length() < 4
+                        ? "확인할 수 없음"
+                        : "x=" + c143Number(frame.optDouble(0))
+                                + " y=" + c143Number(frame.optDouble(1))
+                                + " · " + c143Number(frame.optDouble(2))
+                                + "×" + c143Number(frame.optDouble(3));
+                summary.append(item.optString("id"))
+                        .append(" · ").append(c143Pair(basis))
+                        .append(" · ").append(framePosition).append('\n');
+            }
+            summary.append("\nfit-content right overflow · 7 CSS px");
+            return summary.toString();
+        } catch (JSONException malformed) {
+            return "C14.3 · 앱 fixture report 해석 실패\n\n" + report;
+        }
+    }
+
+    private boolean hasConflictingC143FixtureRoute() {
+        Bundle extras = getIntent().getExtras();
+        if (extras == null) return false;
+        for (String key : extras.keySet()) {
+            if (!key.startsWith("spinon_")
+                    || "spinon_c143_intrinsic_contributions".equals(key)) continue;
+            Object value = extras.get(key);
+            if (value instanceof Boolean) {
+                if (Boolean.TRUE.equals(value)) return true;
+            } else if (value != null) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private String c143Pair(JSONArray values) {
+        if (values == null || values.length() < 2) return "확인할 수 없음";
+        return c143Number(values.optDouble(0)) + "×" + c143Number(values.optDouble(1));
+    }
+
+    private String c143Number(double value) {
+        double rounded = Math.round(value * 1000.0) / 1000.0;
+        return rounded == Math.rint(rounded)
+                ? Long.toString(Math.round(rounded)) : Double.toString(rounded);
+    }
+
+    private void logC143FixtureReport(String report, boolean passed) {
+        final int chunkSize = 2800;
+        int chunkCount = Math.max(1, (report.length() + chunkSize - 1) / chunkSize);
+        int priority = passed ? Log.INFO : Log.ERROR;
+        for (int chunk = 0; chunk < chunkCount; chunk++) {
+            int start = chunk * chunkSize;
+            int end = Math.min(report.length(), start + chunkSize);
+            Log.println(priority, TAG, "SPINON_C143_APP_FIXTURE part="
+                    + (chunk + 1) + "/" + chunkCount + " payload="
+                    + report.substring(start, end));
         }
     }
 

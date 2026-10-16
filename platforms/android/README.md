@@ -31,6 +31,19 @@ adb -s emulator-5554 logcat -d -s SpinonBootstrap | rg SPINON_C141_APP_FIXTURE
 
 이 report는 고정 Chrome 155 oracle과 `(0,0) 24×16 CSS px` frame, source/intrinsic revision을 비교합니다. 앱 화면은 report text만 보여 줍니다. PNG image paint, GPU 출력, border 바깥 overflow, 제품 resource loader·비동기 교체는 검증하지 않습니다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 live V8 로그·화면·feature 경계는 [C14.1 live V8 evidence](../../spec/internal/evidence/c14-1-live-v8-image-measurement-2026-10-16/README.md)에 기록합니다.
 
+## C14.3 intrinsic contribution 앱 fixture
+
+C14.3은 opt-in fixture 경계에서 live V8이 만든 14개 HTML image를 HostDocument snapshot과 PNG natural-size snapshot에 연결해 Chrome 155 CSS px 기대값과 비교합니다. 기본 빌드에는 route ABI와 고정 payload가 없으며, 화면은 layout report text입니다.
+
+```sh
+mise exec -- env SPINON_ENABLE_C14_3_APP_FIXTURE_TEST=1 bun run build:android
+adb -s emulator-5554 install -r platforms/android/app/build/outputs/apk/debug/app-debug.apk
+adb -s emulator-5554 shell am start -n dev.spinon.bootstrap/.MainActivity --ez spinon_c143_intrinsic_contributions true
+adb -s emulator-5554 logcat -d -s SpinonBootstrap | rg SPINON_C143_APP_FIXTURE
+```
+
+API 37 ARM64 AVD에서 14/14 frame case를 비교합니다. Oracle에는 image 자체의 border-box `min-content` `34×26 CSS px`와 작은 containing block 밖으로 7px 나가는 `fit-content` frame이 들어 있습니다. 이 report는 image paint나 border 바깥 pixel clipping을 검증하지 않습니다. 양 플랫폼 로그·화면·artifact 경계는 [C14.3 실행 근거](../../spec/internal/evidence/c14-3-image-intrinsic-contributions-runtime-2026-10-16/README.md)에 기록합니다.
+
 기본 시작 smoke 로그는 `adb logcat -s SpinonBootstrap`에서 `SPINON_BOOTSTRAP_RESULT=nodes=2 last_node=8 tag=text text=이벤트:7`을 확인합니다. 기본 smoke 범위는 ARM64 단일 ABI이며 GPU·제품 입력·UI 트리·접근성·JIT 없는 기기 빌드는 포함하지 않습니다. 별도 R06 화면에서만 개발용 터치 버튼을 실행합니다. 구현 완료 표시는 [공식 상태 대장](../../spec/STATUS.md)과 [내부 V8 실행 인터페이스](../../spec/internal/0001-v8-bootstrap.md) 기준을 따릅니다.
 
 ## V8 실행 스레드 실험

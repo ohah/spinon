@@ -37,6 +37,25 @@
       }
     },
     {
+      "id": "border-box-min-content",
+      "context": "block",
+      "css": {
+        "box-sizing": "border-box",
+        "width": "min-content",
+        "height": "auto",
+        "padding": "4px",
+        "border-width": "1px"
+      },
+      "containingBlockContentSize": {
+        "width": 200,
+        "height": 120
+      },
+      "imageUsedSize": {
+        "width": 34,
+        "height": 26
+      }
+    },
+    {
       "id": "max-content",
       "context": "block",
       "css": {

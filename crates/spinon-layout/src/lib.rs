@@ -175,7 +175,10 @@ pub trait LayoutEngine {
 #[derive(Clone, Copy, Debug, Default)]
 pub struct TaffyLayoutEngine;
 
-fn validate(input: &LayoutInput) -> Result<BTreeMap<NodeId, usize>, LayoutError> {
+fn validate(
+    input: &LayoutInput,
+    intrinsic_size_nodes: &BTreeSet<NodeId>,
+) -> Result<BTreeMap<NodeId, usize>, LayoutError> {
     if !input.viewport.width.is_finite()
         || !input.viewport.height.is_finite()
         || input.viewport.width <= 0.0
@@ -272,16 +275,21 @@ fn validate(input: &LayoutInput) -> Result<BTreeMap<NodeId, usize>, LayoutError>
     validate_positioning(input, &index)?;
     validate_css_math_bindings(input)?;
     let definite_axes = validate_spacing_percentage_bases(input, &index)?;
-    grid::validate_grid_layout(input, &index, &definite_axes)?;
+    grid::validate_grid_layout(input, &index, &definite_axes, intrinsic_size_nodes)?;
 
     Ok(index)
 }
 
 fn validate_style(node: &LayoutNode) -> Result<(), LayoutError> {
     let valid_dimension = |dimension| match dimension {
-        LayoutDimension::Auto | LayoutDimension::Calc(_) => true,
+        LayoutDimension::Auto
+        | LayoutDimension::Calc(_)
+        | LayoutDimension::MinContent
+        | LayoutDimension::MaxContent
+        | LayoutDimension::FitContent => true,
         LayoutDimension::Fixed(value) => value.is_finite() && value >= 0.0,
         LayoutDimension::Percent(value) => value.is_finite() && value >= 0.0,
+        LayoutDimension::CyclicMinContentPercent(value) => value.is_finite() && value >= 0.0,
     };
     if !valid_dimension(node.style.width) {
         return Err(LayoutError::InvalidStyle {

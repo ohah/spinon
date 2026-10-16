@@ -1752,6 +1752,33 @@ Java_dev_spinon_bootstrap_MainActivity_nativeC141IntrinsicSizeFixture(
   return encoded;
 }
 
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_MainActivity_nativeC143IntrinsicContributionsFixture(
+    JNIEnv *env, jclass) {
+  std::array<char, 8192> output{};
+  std::string report;
+#if defined(SPINON_ENABLE_C14_3_APP_FIXTURE_TEST) && \
+    SPINON_ENABLE_C14_3_APP_FIXTURE_TEST
+  const int32_t status = spinon_c14_3_app_intrinsic_contributions_fixture(
+      output.data(), output.size());
+  report = output.data();
+  if (status != 0) {
+    __android_log_print(ANDROID_LOG_ERROR, kTag,
+                        "SPINON_C143_NATIVE_ERROR code=%d report=%s", status,
+                        report.c_str());
+  }
+#else
+  report = "{\"status\":\"disabled\",\"detail\":\"fixture feature is off\"}";
+#endif
+  const auto report_length = static_cast<jsize>(report.size());
+  jbyteArray encoded = env->NewByteArray(report_length);
+  if (encoded == nullptr) return nullptr;
+  env->SetByteArrayRegion(encoded, 0, report_length,
+                          reinterpret_cast<const jbyte *>(report.data()));
+  if (env->ExceptionCheck()) return nullptr;
+  return encoded;
+}
+
 extern "C" JNIEXPORT jlong JNICALL
 Java_dev_spinon_bootstrap_R08WgpuSurface_nativeCreate(JNIEnv *env, jclass,
                                                        jobject surface,

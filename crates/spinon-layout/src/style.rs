@@ -13,6 +13,11 @@ pub enum LayoutDimension {
     Auto,
     Fixed(f32),
     Percent(f32),
+    /// C14.3의 제한된 min-content parent에서만 쓰는 cyclic image percentage입니다.
+    CyclicMinContentPercent(f32),
+    MinContent,
+    MaxContent,
+    FitContent,
     Calc(LayoutCalcId),
 }
 
@@ -436,7 +441,13 @@ impl LayoutStyle {
 fn calc_dimension(value: LayoutDimension) -> Option<LayoutCalcId> {
     match value {
         LayoutDimension::Calc(id) => Some(id),
-        LayoutDimension::Auto | LayoutDimension::Fixed(_) | LayoutDimension::Percent(_) => None,
+        LayoutDimension::Auto
+        | LayoutDimension::Fixed(_)
+        | LayoutDimension::Percent(_)
+        | LayoutDimension::CyclicMinContentPercent(_)
+        | LayoutDimension::MinContent
+        | LayoutDimension::MaxContent
+        | LayoutDimension::FitContent => None,
     }
 }
 

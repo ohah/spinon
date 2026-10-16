@@ -177,12 +177,12 @@ fn computed_size(value: Size) -> ComputedCssDimension {
     match value {
         Size::Auto => ComputedCssDimension::Auto,
         Size::LengthPercentage(value) => computed_length_percentage(value),
-        Size::MaxContent
-        | Size::MinContent
-        | Size::FitContent
-        | Size::WebkitFillAvailable
+        Size::MaxContent => ComputedCssDimension::MaxContent,
+        Size::MinContent => ComputedCssDimension::MinContent,
+        Size::FitContent => ComputedCssDimension::FitContent,
+        Size::FitContentFunction(_) => ComputedCssDimension::FitContentFunction,
+        Size::WebkitFillAvailable
         | Size::Stretch
-        | Size::FitContentFunction(_)
         | Size::AnchorSizeFunction(_)
         | Size::AnchorContainingCalcFunction(_) => ComputedCssDimension::Unsupported,
     }
@@ -194,9 +194,12 @@ fn computed_max_size(value: MaxSize) -> ComputedCssMaxSize {
         MaxSize::LengthPercentage(value) => match computed_length_percentage(value) {
             ComputedCssDimension::LengthPx(value) => ComputedCssMaxSize::LengthPx(value),
             ComputedCssDimension::Percentage(value) => ComputedCssMaxSize::Percentage(value),
-            ComputedCssDimension::Auto | ComputedCssDimension::Unsupported => {
-                ComputedCssMaxSize::Unsupported
-            }
+            ComputedCssDimension::Auto
+            | ComputedCssDimension::MinContent
+            | ComputedCssDimension::MaxContent
+            | ComputedCssDimension::FitContent
+            | ComputedCssDimension::FitContentFunction
+            | ComputedCssDimension::Unsupported => ComputedCssMaxSize::Unsupported,
         },
         MaxSize::MaxContent
         | MaxSize::MinContent

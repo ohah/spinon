@@ -1,0 +1,6 @@
+Android default artifact inspection:
+f0865c5da8ba9493af5bcbf58f26bb18b7b5c3dc4ba9508f8ce9729dc530935a  platforms/android/app/build/outputs/apk/debug/app-debug.apk
+276666c54dadcafb0a64b33ae3f23816723f57f6506811f9a8b5bd0013f41a39  build/spinon/android/jniLibs/arm64-v8a/libspinon_bootstrap.so
+f42f82702a9525d59cef89f118cb9f18a7bb89db88af9efdc0db52dfaca71e10  /tmp/spinon-c14-3-android-default-latest.so
+C14.3 fixture symbol: absent
+C14.3 fixture payload: absent

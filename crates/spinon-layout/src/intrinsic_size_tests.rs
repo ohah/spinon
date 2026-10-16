@@ -325,14 +325,31 @@ fn explicit_natural_ratio_must_match_both_natural_dimensions() {
 }
 
 #[test]
-fn percentages_ratio_overflow_and_authored_ratio_constraints_fail_closed() {
+fn definite_image_percentage_uses_the_parent_content_basis() {
     let (document, root, image) = document();
-    let snapshot = image_snapshot(&document, image, LayoutIntrinsicSize::new(24.0, 16.0));
-    for style in [
+    let input = layout_input(
+        &document,
+        root,
+        image,
+        root_style(),
         LayoutStyle {
             width: LayoutDimension::Percent(0.5),
             ..image_style()
         },
+    );
+    let snapshot = image_snapshot(&document, image, LayoutIntrinsicSize::new(24.0, 16.0));
+    let output = TaffyLayoutEngine
+        .compute_with_intrinsic_size_snapshot(&input, &snapshot)
+        .unwrap();
+    let frame = output.frames[&image.id()];
+    assert_eq!((frame.width, frame.height), (60.0, 40.0));
+}
+
+#[test]
+fn percentage_edges_and_authored_ratio_constraints_fail_closed() {
+    let (document, root, image) = document();
+    let snapshot = image_snapshot(&document, image, LayoutIntrinsicSize::new(24.0, 16.0));
+    for style in [
         LayoutStyle {
             padding: LayoutEdges {
                 top: LayoutLengthPercentage::percent(0.1),

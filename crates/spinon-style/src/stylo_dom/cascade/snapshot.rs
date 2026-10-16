@@ -131,6 +131,10 @@ pub enum ComputedCssDimension {
     Auto,
     LengthPx(f32),
     Percentage(f32),
+    MinContent,
+    MaxContent,
+    FitContent,
+    FitContentFunction,
     Unsupported,
 }
 
