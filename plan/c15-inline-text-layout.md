@@ -1,0 +1,131 @@
+# C15 · 인라인 텍스트 shaping과 줄 상자
+
+**상태:** 구현 전 계획 · C15와 C16 상태는 미완료 유지<br>
+**상위:** [상태 대장 C15/C16](../spec/STATUS.md) · [범위와 적합성](../spec/0001-conformance.md) · [UI 트리와 이벤트](../spec/0002-ui-tree-events.md)<br>
+**연결:** C19.3 text painter는 C15/C16 결과를 소비하기 전 완료할 수 없다.<br>
+**사전 관찰:** [Chrome 155 비교 입력·값·화면](../spec/internal/evidence/c15-inline-text-precomparison-2026-10-17/README.md)
+
+## 목표
+
+HostDocument의 실제 text node와 inline element를 CSS inline formatting context로 정규화하고, 선택한 font로 Unicode text를 shaping한 결과를 줄 상자·baseline·inline fragment·glyph position으로 연결한다. 이를 Block layout의 실제 available inline-size에 연결하고 렌더 snapshot으로 전달한다. 글자 수에 고정 폭을 곱하는 measure, 공백을 ASCII 문자로 대체하는 measure, line count를 추정하는 measure는 허용하지 않는다.
+
+이 계획은 C15 전체의 목표다. 첫 구현은 작은 수직 slice로 나누며, 각 slice를 통과해도 전체 C15·C16·CSS text 지원을 완료 처리하지 않는다. 내부 시험 profile의 font 등록은 public `@font-face`나 일반 font fallback 지원을 뜻하지 않는다.
+
+## 현재 코드 경계
+
+- `HostDocumentSnapshot`은 `HostNodeKind::Text(DomString)`과 자식 순서를 보존하지만, `crates/spinon-layout/src/host_document.rs`는 보이는 Text node를 `UnsupportedTextNode`로 반환한다.
+- `crates/spinon-style-to-layout/src/projection.rs`도 Text node layout projection을 차단한다. `spinon-style-to-render`의 runtime/adapter/stacking 단계도 text를 거부한다.
+- `crates/spinon-render`의 runtime paint command와 `spinon-render-wgpu`에는 glyph run·glyph atlas·text draw command가 없다.
+- `spinon-layout`은 crates.io `taffy 0.14.0` 알고리즘을 `CalcLayoutTree`에서 직접 호출한다. 공개 `TaffyTree` 예제의 `compute_layout_with_measure`를 바로 붙일 수 있는 구조가 아니며, Taffy upstream도 inline formatting을 downstream text layout과 연동하는 영역으로 두고 있다. Flex-wrap으로 inline flow를 흉내 내지 않는다.
+- `spinon-style`에는 Stylo 0.22 computed font style가 있지만, style snapshot→text run→layout→render의 버전된 연결은 없다.
+
+## 기준 명세와 엔진 조사
+
+- [CSS 2.2 §9.4.2](https://www.w3.org/TR/CSS22/visuren.html#inline-formatting)는 inline formatting context 안의 inline-level box와 line box 구성을 정의한다. [CSS 2.2 §10.8](https://www.w3.org/TR/CSS22/visudet.html#line-height)는 line-height와 baseline 정렬을 정의한다.
+- [CSS Text Level 3 §4](https://www.w3.org/TR/css-text-3/#white-space-property)는 newline·space 처리와 white-space 값에 따른 collapse/preservation을 정의한다. [CSS Inline Layout Level 3](https://drafts.csswg.org/css-inline/)는 세부 line box 논의를 위한 Editor's Draft이며, 최종 규범으로 표시하지 않는다.
+- [Parley 0.12.0 release](https://github.com/linebender/parley/releases/tag/v0.12.0)는 2026-10-09 공개됐다. 현재 공개 API에는 shaping·line layout, `white-space-collapse`, CJK `line-break`, inline vertical alignment와 line metrics가 있다. 최소 Rust 버전 1.88은 현재 checkout의 `rustc 1.96.1`보다 낮다. 최근 major API 변경과 text stack 크기를 감안해 `=0.12.0`에 고정하고, wrapper API 하나로 캡슐화한다.
+- `parley_engine`은 custom line-break 정책이 필요한 하위 수준 API다. 0.12.0 release notes에 줄 경계에서 ligature/cursive run을 다시 shaping하는 작업이 진행 중이라고 적혀 있으므로 첫 slice는 high-level `parley` API를 사용한다. 재-shaping이 필요한 입력은 구현 전 Chrome/WPT 비교에서 따로 통과해야 한다.
+- [Taffy inline issue #627](https://github.com/DioxusLabs/taffy/issues/627)은 inline formatting이 Taffy 안에 완성되어 있지 않고 별도 text engine과 연동될 수 있음을 설명한다. Spinon의 현재 custom tree callback과 Block/Flex/Grid pass에서 available-size와 최종 line layout을 일치시키는 adapter를 구현한다. 이 issue는 Taffy의 영구 API 약속으로 간주하지 않는다.
+
+## 단계와 범위
+
+### C15.1 · block 안의 inline paragraph와 실제 glyph run
+
+- definite content inline-size를 가진 기존 Block context 안에서 direct text와 같은 style을 상속하는 `span`을 source order로 inline sequence로 수집한다. 모든 `display:none` subtree와 빈 text node를 정확히 제외한다.
+- `white-space: normal | nowrap | pre-line`, `word-break: normal | break-all`을 지원 범위로 고정한다. line box 계산에는 oracle fixture가 지정한 내부 line-height scalar를 쓴다. CSS `line-height` 값의 parsing·cascade는 C16 범위다. 그 밖의 white-space/word-break 값은 fallback하지 않고 해당 node/property를 식별하는 오류로 닫는다.
+- Ahem 10px와 Roboto variable 20px를 opt-in fixture에서 직접 등록한다. text node 문자열을 실제 shaping API에 전달하고 glyph ID·advance·font metrics를 결과에 보존한다.
+- 출력은 immutable `TextLayoutSnapshot`으로 line box, baseline, text run, glyph origin/advance, node별 inline fragment rect를 포함한다. Taffy가 해당 Block의 content width를 결정하는 동안 사용한 measure와 최종 renderer 입력은 같은 font/style/document/environment revision과 같은 available width에 묶는다.
+- 한 Block context가 paragraph text만 가진 첫 fixture를 먼저 연결한다. text/inline run 사이에 block-level child가 섞인 anonymous block splitting, flex/grid item 내부 line breaking, inline replaced object, `float`, ruby, vertical writing mode는 후속 slice다. 불완전 profile은 layout 전체를 조용히 성공시키지 않는다.
+
+### C15.2 · nested inline formatting과 fragmentation
+
+- 같은 paragraph 안의 nested inline element, 줄에 걸친 inline fragment, 각 fragment의 border/padding contribution, baseline과 line box height를 붙인다.
+- line box 계산은 ascent/descent, explicit `line-height`, inline box baseline을 실제 font metrics에서 가져온다. Ahem baseline fixture와 서로 다른 ascent/descent의 font fixture를 모두 사용한다.
+- mixed block/inline children은 CSS anonymous block box 생성 순서를 별도 고정 fixture로 추가한 뒤 연결한다. 구현하지 않은 요소는 식별 가능한 diagnostic을 남긴다.
+
+### C15.3 · Unicode shaping·glyph paint·layout 소비처
+
+- Hangul, CJK line-break, combining sequence, ligature, Arabic/Bidi 및 emoji sequence를 실제 glyph/run 결과로 확인한다. 이 단계에는 font fallback 전 범위를 포함하지 않으며, 각 script를 제공하는 고정 fixture font를 지정한다. 지정 폰트가 없는 환경에서는 system fallback에 의존하지 않는다.
+- shaped glyph를 실제 WGPU frame에 그리는 raster/pipeline과 runtime paint command를 연결한다. invisible text를 layout 성공으로 간주하지 않는다. C15 완료 전에는 Android AVD PixelCopy와 iOS Metal drawable에서 text ink와 overflow/clip을 캡처한다.
+- text geometry가 Block·Flex·Grid sizing, overflow/scroll, paint order, clip, hit-test, text ink bounds에서 소비되는 경계를 추가한다. 이미지·text의 inline baseline과 replaced inline object는 이 단계가 별도 fixture를 소유할 때만 추가한다.
+- C16에서 `font-family/size/weight/style`, CSS `line-height` 값의 parsing·cascade, `@font-face`, asynchronous font load/fallback, letter/word spacing, text-align/decoration/transform/overflow와 전체 cascade 연결을 별도 구현한다. C15 fixture의 fixed-font/internal line-height scalar는 이 계약을 대신하지 않는다.
+
+## 고정 사전 비교 모델
+
+입력·실행 화면·원본 DOM 측정값·font SHA-256은 [사전 비교 자료](../spec/internal/evidence/c15-inline-text-precomparison-2026-10-17/README.md)에 기록했다. Chrome은 Agent Browser의 `155.0.8059.85`, macOS 26.5.1 ARM, locale `ko-KR`, viewport `320×480 CSS px`, DPR 1이며 Ahem/Roboto font download가 완료된 뒤 관찰했다. High-entropy browser version은 저장했지만 실행 파일 SHA와 CDP protocol revision은 없다. 첫 구현 전에 수집을 시도하고, 수집할 수 없으면 그 제한을 fixture manifest와 PR에 명시한다.
+
+첫 C15.1 pass 집합은 다음 10개 fixture ID다.
+
+| ID | 입력 | 사전 기대 관찰 |
+| --- | --- | --- |
+| `collapsed-spaces` | Ahem 10px, `X   X`, `white-space:normal` | content advance `30×10`; 공백 세 개 중 하나만 10px advance |
+| `wrap-at-word` | Ahem 10px, width 30px, `XX XX` | 두 line, 각 text width 20px, block height 20px |
+| `long-word` | Ahem 10px, width 15px, `XX` | unbreakable word width 20px가 한 line에 남고 parent width 밖으로 overflow |
+| `break-all` | Ahem 10px, width 20px, `XXXXX` | line advance 20/20/10px, block height 30px |
+| `preserved-newline` | Ahem 10px, width 30px, `X\nX`, `pre-line` | 두 line, block height 20px |
+| `nowrap` | Ahem 10px, width 30px, `XX XX` | 한 line width 50px, block height 10px |
+| `inline-fragment` | width 30px, border 1px inline span `XX XX` | span fragment 2개, 각각 `21×12px` |
+| `baseline` | Ahem 10px, line-height 10px, baseline marker | baseline은 line top에서 `8px` 아래 |
+| `proportional-i`, `proportional-W` | Roboto 20px, 각각 `iiii`, `WWWW` | advance `19.4531px` 대 `70.9844px`; 동일 code-unit 수라도 폭은 달라야 함 |
+| `ligature-text` | Roboto 20px `office` | 전체 shaped run advance `49.5625px`; 특정 ligature 여부를 이 값만으로 유추하지 않음 |
+
+Geometry 판정은 CSS px에서 line count, parent/frame size, fragment rect, glyph origin/advance별 허용 오차 `0.05 CSS px`로 정한다. Ahem은 fixed font·integer position의 glyph coverage sample을 exact 비교한다. Roboto는 같은 고정 font file로 glyph advance·ink bounds를 비교하며, 다른 rasterizer의 per-channel antialias 차이를 layout pass/fail에 섞지 않는다. OS/browser/surface color difference는 별도 분류한다.
+
+첫 구현 전에 fixture HTML와 font SHA를 변경 없이 유지하거나, 변경 사유·새 Chrome 관찰값을 plan review 20회부터 다시 검토한다. WPT는 실행할 파일 path와 WPT commit SHA를 구현 전에 고정하고, Chrome oracle pass를 Spinon WPT pass로 부르지 않는다.
+
+## 내부 자료 모델과 revision 경계
+
+- shaping/layout crate는 DOM이나 renderer에 종속되지 않는 text content/run style/available-size를 입력받고 line/glyph output을 반환한다. 우선 [Parley](https://github.com/linebender/parley) wrapper를 내부 crate로 두어 UI/layout/render 계층에서 upstream API를 직접 사용하지 않게 한다.
+- text fragment의 owner `NodeId`, source UTF-16 range, shaped glyph cluster range, baseline, line index와 clip-independent rect를 보존한다. surrogate pair, combining mark, ligature boundary를 UTF-8 byte index나 glyph index와 혼동하지 않는다.
+- 각 snapshot은 HostDocument generation/document/render-tree revision, StyleRevision, EnvironmentRevision, font registry revision, paragraph content identity, available inline-size, writing direction/profile을 포함한다. Taffy가 measure를 여러 번 호출해도 width-key가 다른 layout을 재사용하지 않는다.
+- font load/fallback 결과와 shaped run은 같은 immutable snapshot에 귀속한다. 문자열·style·font asset·font revision·available-size 중 하나라도 달라지면 cache hit로 승인하지 않는다. layout/render admission에서 revision mismatch는 명시 오류다.
+- 이 인터페이스는 앱 작성자 공개 API가 아니다. 구현 PR에서 내부 계약 문서 ID와 `0.1.0` 버전으로 입력·오류·ownership·thread/lifecycle·cache·platform difference를 명세한다. 공개 HTML/CSS 지원을 추가하지 않는다.
+
+## 실패 주입과 적대 확인
+
+`implementation-review-20`은 계획 검토 20개 및 PR diff 검토 20개와 다른 입력/불변 조건을 쓴다. 최소 negative control은 아래와 같다.
+
+1. `font_size × code_unit_count` width 추정으로 바꾸면 Roboto `iiii`/`WWWW` test가 실패해야 한다.
+2. whitespace collapse를 끄면 `X   X` 30px advance가 달라져야 한다.
+3. default line breaking이 `XX`를 두 line으로 쪼개면 `long-word`가 실패해야 한다.
+4. `break-all`을 무시하면 `XXXXX`의 20/20/10 line sequence가 달라져야 한다.
+5. newline을 일반 space로 collapse하면 `pre-line` line count가 2에서 바뀌어야 한다.
+6. baseline을 ascent, descent, font size 또는 line top과 혼동하면 Ahem baseline marker가 8px에서 벗어나야 한다.
+7. inline fragment를 하나의 element union rect로 축약하면 fragment 수/두 border rect가 실패해야 한다.
+8. 한 measure pass의 width와 다른 width의 final layout을 조합하면 width 15/20/30 fixture 중 적어도 하나가 실패해야 한다.
+9. content/style/font revision만 변경하고 text-layout revision을 유지하면 stale snapshot admission이 실패해야 한다.
+10. 숨긴 subtree text, 빈 Text node, split adjacent text node, source order를 각각 변형해도 visible geometry가 CSS 관찰값과 일치해야 한다.
+11. 미지원 mixed block child, unsupported white-space 값, corrupt glyph/font result를 `auto`/0/default font으로 강등하지 않고 node·stage가 붙은 오류로 반환해야 한다.
+12. overflow line을 parent content width로 clip하지 않고 실제 scroll/hit/paint layer에 전달한다. `overflow:hidden`은 후속 slice 전까지 지원했다고 표시하지 않는다.
+
+각 항목은 별도의 fixture/property/style mutation과 독립 expected condition을 가진다. 하나의 pass 수를 여러 관점으로 재계산하지 않는다.
+
+## 플랫폼과 실행 게이트
+
+- Pure Rust shaping/layout oracle 및 focused fixture matrix를 먼저 통과시킨다. `cargo fmt --all -- --check`, 관련 crate tests, workspace Clippy와 lockfile 검증을 실행한다.
+- Android API 37 ARM64 AVD와 iPhone 17 Pro / iOS 26.2 Simulator의 실제 앱 runtime fixture에서 동일한 V8 DOM input, document/style/font revisions, viewport, DPR를 사용한다. 실기기는 사용하지 않는다.
+- 양 simulator에서 frame/line/glyph geometry가 Chrome CSS px oracle과 행별 `0.05px` 이내여야 한다. Ahem glyph sample은 Android PixelCopy/iOS Metal drawable의 capture phase를 기록하고 exact coverage 표본을 비교한다. Roboto rasterization의 단순 screenshot similarity로 필수 layout 실패를 가리지 않는다.
+- text outside parent border가 생기는 폭 15px long word와 `nowrap` overflow를 screenshot/clip boundary에서 확인한다. 이 시험은 text line ink의 paint와 부모 clip을 각각 기록하고, frame geometry만으로 바깥 픽셀을 입증했다고 하지 않는다.
+- 두 platform에서 성공/예상 오류 report, 원본 log, screenshot, capture phase, binary/app SHA와 source revision을 보존한다. simulator 증거를 실기기·hardware GPU·모든 OS font equivalence로 확장하지 않는다.
+- fixture·font·C15-only ABI는 목적을 드러내는 opt-in fixture-test feature로 격리한다. 기본 build에서 fixture font payload와 fixture FFI symbol이 없고 positive-control fixture build에는 있어야 한다.
+
+## 완료 판정과 명시적 제외
+
+C15 완료는 C15.1–C15.3 입력 class의 text shaping, inline fragment/line box geometry, painter visibility, revision safety가 함께 확인되고 관련 internal spec와 실행 자료가 등록된 뒤에만 검토한다. 각 implementation PR은 독립 실패 관점 20개, 별도 PR diff 관점 20개를 기록하고, C15 완료 체크는 마지막 C15 통합 PR에서만 갱신한다. C16 속성 전체 또는 C19.3 text painter가 빠져 있으면 C19 전체도 완료할 수 없다.
+
+이 계획과 C15.1은 아래 범위 완료를 뜻하지 않는다.
+
+- CSS `line-height` property parsing/cascade, `@font-face` parsing/loading, arbitrary system fallback, asynchronous font swap, full font matching, letter/word spacing, `text-align`, text decoration/transform/overflow는 C16이다. C15의 line box oracle 값은 내부 fixture scalar에 한정한다.
+- block children과 text의 전체 anonymous block splitting, inline replaced element, float, table, ruby, vertical writing, page fragmentation은 별도 CSS stages다.
+- full CSS Text/Inline conformance, full Unicode/font fallback matrix, DOM selection/caret/hit text API, text accessibility API와 전체 WPT suite는 포함하지 않는다.
+- fixture 결과로 공개 CSS 지원률을 올리지 않는다.
+
+## 작업 순서
+
+1. 이 계획과 Chrome observation/artifact hash를 검토하고, 계획 실패 관점 20개를 해결한다. `spec/STATUS.md` C15 row는 미완료 상태로 계획/근거 링크만 추가한다.
+2. 계획 PR 병합 후 구현 직전에 Parley `=0.12.0` API·font ownership·line-break reshaping gate와 Taffy `CalcLayoutTree` adapter를 잠금된 dependency source에서 확인한다. public default profile과 fixture-only font registry 경계를 확정한다.
+3. internal C15.1 contract와 style/document/font revision preconditions를 정의한다. 고정 Chrome precomparison, C15 fixture, WPT paths/revision, expected geometry를 구현 전 comparator에 연결한다.
+4. actual shaping result로 `TextLayoutSnapshot`을 생성하고 Taffy Block available-size와 연동한다. measure callback 두 번째 호출과 changed width, negative/error/stale snapshot, anonymous inline fragments를 focused Rust tests로 검증한다.
+5. Renderer glyph command/raster path와 text hit/clip integration을 별도 slice로 연결하고 Android/iOS simulator runtime fixture를 보존한다. fixture routes와 fonts는 opt-in에만 둔다.
+6. 계획 검토와 겹치지 않는 구현 실패 관점 20개를 완료하고 발견한 결함을 수정한다. 그 뒤 별도 PR diff 실패 관점 20개를 실행하고 required checks/mergeability를 확인해 `Rebase and merge`로 진행한다.
+7. 각 통과한 부분 작업은 evidence index와 roadmap description에 연결하되 C15/C16/C19의 상위 완료 상태는 그대로 둔다. 전체 C15가 끝날 때만 internal interface spec, STATUS, supported scope를 최종 일치시킨다.

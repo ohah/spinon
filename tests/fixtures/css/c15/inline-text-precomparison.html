@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C15 inline text layout precomparison</title>
+  <style>
+    @font-face {
+      font-family: Ahem;
+      src: url("../../resources/c15/Ahem.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: RobotoFixture;
+      src: url("../../resources/c15/Roboto-Variable.ttf") format("truetype");
+      font-weight: 100 900;
+      font-stretch: 75% 100%;
+      font-style: normal;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      color: #000;
+      background: #fff;
+      font: 12px/16px sans-serif;
+    }
+    #cases { display: block; padding: 8px; }
+    .case { position: relative; margin: 12px 0; outline: 1px solid #c00; white-space: normal; font: 10px/10px Ahem, sans-serif; }
+    .label { position: absolute; z-index: 1; left: 0; top: -11px; padding-right: 2px; background: rgba(255,255,255,.92); font: 8px/8px sans-serif; color: #444; white-space: nowrap; }
+    #legend { margin: 0 8px 12px; color: #444; }
+    #observations { display: none; }
+    #collapsed-spaces { width: 50px; }
+    #wrap-at-word { width: 30px; }
+    #long-word { width: 15px; }
+    #break-all { width: 20px; word-break: break-all; }
+    #preserved-newline { width: 30px; white-space: pre-line; }
+    #nowrap { width: 30px; white-space: nowrap; }
+    #inline-fragment { width: 30px; }
+    #baseline { width: 30px; }
+    #inline-fragment span { border: 1px solid #00f; }
+    #baseline .marker {
+      display: inline-block;
+      width: 1px;
+      height: 0;
+      vertical-align: baseline;
+    }
+    .variable { width: max-content; font: 20px/24px RobotoFixture, sans-serif; }
+  </style>
+</head>
+<body>
+  <h1 style="margin:8px;font:16px/20px sans-serif">C15 inline layout oracle</h1>
+  <p id="legend">10px Ahem: line rules · 20px Roboto: shaped advances · red: container · blue: inline fragment</p>
+  <main id="cases">
+    <div class="case" id="collapsed-spaces">X   X<span class="label">collapsed-spaces</span></div>
+    <div class="case" id="wrap-at-word">XX XX<span class="label">wrap-at-word</span></div>
+    <div class="case" id="long-word">XX<span class="label">long-word</span></div>
+    <div class="case" id="break-all">XXXXX<span class="label">break-all</span></div>
+    <div class="case" id="preserved-newline">X
+X<span class="label">preserved-newline</span></div>
+    <div class="case" id="nowrap">XX XX<span class="label">nowrap</span></div>
+    <div class="case" id="inline-fragment"><span id="fragment">XX XX</span><span class="label">inline-fragment</span></div>
+    <div class="case" id="baseline">X<span id="baseline-marker" class="marker"></span>X<span class="label">baseline</span></div>
+    <div class="case variable" id="proportional-i">iiii<span class="label">proportional-i</span></div>
+    <div class="case variable" id="proportional-W">WWWW<span class="label">proportional-W</span></div>
+    <div class="case variable" id="ligature-text">office<span class="label">ligature-text</span></div>
+  </main>
+  <pre id="observations" aria-live="polite">Waiting for Ahem font…</pre>
+  <script>
+    function rect(rect) {
+      return [rect.x, rect.y, rect.width, rect.height].map(value => Number(value.toFixed(4)));
+    }
+
+    function rangeRects(node) {
+      const range = document.createRange();
+      range.selectNodeContents(node);
+      return [...range.getClientRects()].map(rect);
+    }
+
+    function characterRects(node) {
+      const text = node.nodeType === Node.TEXT_NODE ? node : node.firstChild;
+      if (!text || text.nodeType !== Node.TEXT_NODE) return [];
+      const result = [];
+      for (let offset = 0; offset < text.length; offset++) {
+        const range = document.createRange();
+        range.setStart(text, offset);
+        range.setEnd(text, offset + 1);
+        result.push({
+          codeUnit: text.data.charCodeAt(offset),
+          rects: [...range.getClientRects()].map(rect),
+        });
+      }
+      return result;
+    }
+
+    function observe() {
+      const ids = [
+        "collapsed-spaces", "wrap-at-word", "long-word", "break-all",
+        "preserved-newline", "nowrap", "inline-fragment", "baseline",
+        "proportional-i", "proportional-W", "ligature-text",
+      ];
+      const result = {
+        fontLoaded: document.fonts.check("10px Ahem"),
+        proportionalFontLoaded: document.fonts.check("20px RobotoFixture"),
+        viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio },
+        cases: ids.map(id => {
+          const element = document.getElementById(id);
+          const text = [...element.childNodes].find(node => node.nodeType === Node.TEXT_NODE);
+          return {
+            id,
+            box: rect(element.getBoundingClientRect()),
+            rangeRects: text ? rangeRects(text) : [],
+            characterRects: text ? characterRects(text) : [],
+            inlineFragments: id === "inline-fragment"
+              ? [...document.getElementById("fragment").getClientRects()].map(rect)
+              : [],
+            baselineMarker: id === "baseline"
+              ? rect(document.getElementById("baseline-marker").getBoundingClientRect())
+              : null,
+          };
+        }),
+      };
+      document.getElementById("observations").textContent = JSON.stringify(result, null, 2);
+      return result;
+    }
+
+    document.fonts.ready.then(observe);
+  </script>
+</body>
+</html>
