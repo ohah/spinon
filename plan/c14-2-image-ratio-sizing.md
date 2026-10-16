@@ -10,7 +10,7 @@ C14.1의 revision-stamped image snapshot을 확장해, HTML `img`의 자연 크�
 
 2026-10-14 기준 구현 후보 [PR #156](https://github.com/ohah/spinon/pull/156)은 부모 [PR #155](https://github.com/ohah/spinon/pull/155)가 main에 병합된 뒤 최신 main 위로 재기반했다. 재기반 뒤 workspace 773 passed·4 ignored, Clippy, rustfmt, diff check를 확인하고 PR 본문에 agent-browser Chrome 155 비교 화면을 첨부했다. 별도 구현 실패 20개, PR 변경 20개, 재기반 20개 검토를 남겼다. PR #156은 2026-10-14 rebase 방식으로 main에 병합됐다(merge SHA `18d3ff13b15ce42a4824167b2febdb9727995091`). C14.2와 상위 C14는 계속 미완료다.
 
-2026-10-16 현재 남은 검증 공백은 기존 21개 Block PNG·8개 Flex oracle을 live V8 앱 fixture에서 실행한 Android/iOS Simulator 근거다. [C14.2 live V8 Simulator 검증 계획](c14-2-live-v8-simulator-verification.md)은 이 내부 검증 경계만 다루며 제품 image loader나 runtime admission을 추가하지 않는다.
+2026-10-16 현재 남은 검증 공백은 C14.2 구현·Rust oracle 행렬의 21개 Block PNG case와 8개 Flex case를 live V8 앱 fixture에서 실행한 Android/iOS Simulator 근거다. Block inventory에는 PNG row가 22개지만, `aspect-ratio-auto-override`는 이 계획에서 명시적으로 지원하지 않는 `aspect-ratio:auto <ratio>`이므로 C14.2 행렬에서 제외한다. inventory에도 이 경계를 표시했다. [C14.2 live V8 Simulator 검증 계획](c14-2-live-v8-simulator-verification.md)은 이 내부 검증 경계만 다루며 제품 image loader나 runtime admission을 추가하지 않는다.
 
 ## 기준 명세
 
