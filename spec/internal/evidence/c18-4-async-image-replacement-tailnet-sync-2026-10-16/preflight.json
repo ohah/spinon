@@ -1,0 +1,2052 @@
+{
+  "title": "Spinon C18.4 Tailnet preview sync preflight",
+  "generated_at": "2026-10-16T13:26:46.767Z",
+  "source_main_commit": "6c2c0bb5ad17c0659792ae48bfff18144711f103",
+  "source_tree": "6cd5c80def8073b32f9566b449aaec38ac47146e",
+  "preview_url": "https://macstudio.tailed42f2.ts.net/spinon/",
+  "backup_root": "backup/c18-4-async-image-replacement-tailnet-sync-2026-10-16",
+  "total_paths": 226,
+  "total_bytes": 8532397,
+  "counts": {
+    "created": 211,
+    "replaced": 10,
+    "unchanged": 5
+  },
+  "deletions": [],
+  "files": [
+    {
+      "path": "icon.svg",
+      "source": "rspress:icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "previous_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/0061-u05-png-image-decode.html",
+      "source": "rspress:spec/internal/0061-u05-png-image-decode.html (flattened mirror)",
+      "bytes": 38899,
+      "sha256": "e12e33e1b5a5eb1a012b3b1481d86a585b5455e99e17f90284acf9a1c4a877a7",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/0061-u05-png-image-decode.md",
+      "source": "main:spec/internal/0061-u05-png-image-decode.md (flattened mirror)",
+      "bytes": 8505,
+      "sha256": "bb2319e814b7ff634b92353cc0ed6a8fabb9c9873cf1c2b60d271e49c7994fd2",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/0066-c18-3-object-fit-position.html",
+      "source": "rspress:spec/internal/0066-c18-3-object-fit-position.html (flattened mirror)",
+      "bytes": 37741,
+      "sha256": "ca8128f7bb792c8a04e46cae9eb07c0f58935251f9e7b1d62aeeb4f8912d7755",
+      "previous_sha256": "d233fcd6c87af4863d2eb32a82501d4c0330ae8ef43ab9f8289bd1fc766b3d1a",
+      "status": "replaced",
+      "backup_path": "backup/c18-4-async-image-replacement-tailnet-sync-2026-10-16/internal/0066-c18-3-object-fit-position.html"
+    },
+    {
+      "path": "internal/0066-c18-3-object-fit-position.md",
+      "source": "main:spec/internal/0066-c18-3-object-fit-position.md (flattened mirror)",
+      "bytes": 8284,
+      "sha256": "c52aa4d0687b8b41ae5f53b558c241b12741404c8878cd163c1b1c6f72973741",
+      "previous_sha256": "c52aa4d0687b8b41ae5f53b558c241b12741404c8878cd163c1b1c6f72973741",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/0067-c18-4-async-image-replacement.html",
+      "source": "rspress:spec/internal/0067-c18-4-async-image-replacement.html (flattened mirror)",
+      "bytes": 31174,
+      "sha256": "a6165fc86d1d9a07a46604b67bcc2a24e8fbc79ae6204b7e2be97ceee2bfabf9",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/0067-c18-4-async-image-replacement.md",
+      "source": "main:spec/internal/0067-c18-4-async-image-replacement.md (flattened mirror)",
+      "bytes": 6825,
+      "sha256": "9b2cdf7795f4619f8e0aacc6e2f5a10d17524c75e6c20bdca2640cb42b62ca1c",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-oracle-2026-10-16/c18-4-async-image-oracle-scoped-build-agent-browser.png",
+      "source": "main:spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/c18-4-async-image-oracle-scoped-build-agent-browser.png (flattened mirror)",
+      "bytes": 122552,
+      "sha256": "9faa7765d62a539caed1c2e2e06fe8e827e08f8e9047645a3ec53ac10bed6af4",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/auto_server.py",
+      "source": "main:spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/auto_server.py (flattened mirror)",
+      "bytes": 2193,
+      "sha256": "102396832352fe42003fe6dd340ce88c4730d66f565eb59eda234418d151ce42",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-auto-broken-state.json",
+      "source": "main:spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-auto-broken-state.json (flattened mirror)",
+      "bytes": 279,
+      "sha256": "b36be7f80fc7eea6f411d48235de8e923eb46d23d1311fdc8138e8013c4820ff",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-auto-observation.json",
+      "source": "main:spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-auto-observation.json (flattened mirror)",
+      "bytes": 1042,
+      "sha256": "9d296385a369a442d1440ad54cb28924ed564defd9458bd8dc9f0416201059b7",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-auto-pending-visible-state.json",
+      "source": "main:spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-auto-pending-visible-state.json (flattened mirror)",
+      "bytes": 131,
+      "sha256": "f8fabc4f16515d2b5acb58c55a5bc5aff976f4dc484acf1f64ca66f55e9283ca",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-auto-pending-visible.png",
+      "source": "main:spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-auto-pending-visible.png (flattened mirror)",
+      "bytes": 174,
+      "sha256": "379a4143141e630c97a8faeec10fd4299a883b80b8f2a56e7b0c9c8712bc3aa9",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-broken-state.json",
+      "source": "main:spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-broken-state.json (flattened mirror)",
+      "bytes": 103,
+      "sha256": "5f9ba59d5644b96fcd43ce76b0e89d5339979bce7bd9ab911645c9b985fb3060",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-broken.png",
+      "source": "main:spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-broken.png (flattened mirror)",
+      "bytes": 4553,
+      "sha256": "e7a8247eaca2fc5a9293a80c3ab52e3f046829e9912356115cbf4bffa6eaa188",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-observation.json",
+      "source": "main:spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-observation.json (flattened mirror)",
+      "bytes": 3412,
+      "sha256": "abd0177209e2f30a572f6530a58419adbc614bd3c680fca51ac710d02d667d81",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-server.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-server.log (flattened mirror)",
+      "bytes": 283,
+      "sha256": "9d878a15f1f11743f46ce593fbc06c2d73534d42f337e577962fc622b02b0b83",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/server.py",
+      "source": "main:spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/server.py (flattened mirror)",
+      "bytes": 4339,
+      "sha256": "2ea0dfb0f0d20d8e48e12e833815b59e56d7f0eb1299ace204b5049055b15acd",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-oracle-2026-10-16/README.html",
+      "source": "rspress:spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/README.html (flattened mirror)",
+      "bytes": 26590,
+      "sha256": "fca8dbcd0ea56cbc161e22b3e3ef5851cfddba4e511ff347c8f3cfb9e9c0770b",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-oracle-2026-10-16/README.md",
+      "source": "main:spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/README.md (flattened mirror)",
+      "bytes": 3396,
+      "sha256": "ed1b3489b567363751611e32067ce12004c0ebf5f9609e22f7906dfbf64b22cf",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-oracle-image-path-review-30-2026-10-16.html",
+      "source": "rspress:spec/internal/evidence/c18-4-async-image-oracle-image-path-review-30-2026-10-16.html (flattened mirror)",
+      "bytes": 27745,
+      "sha256": "94a1b566be4cc4775131e4d480edff3eba9dca9d719ba62f85db08a927558417",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-oracle-image-path-review-30-2026-10-16.md",
+      "source": "main:spec/internal/evidence/c18-4-async-image-oracle-image-path-review-30-2026-10-16.md (flattened mirror)",
+      "bytes": 4302,
+      "sha256": "2fc9c829b63038cb933025719b371d618e99c22f538da3a3d66ffc9edaa04f54",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/android-c184-only-build.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android-c184-only-build.log (flattened mirror)",
+      "bytes": 3907,
+      "sha256": "6f8b3bbaf85cc527ce362e1794a299850b5d827630687d6e03cd2994152f3878",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/android-default-build.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android-default-build.log (flattened mirror)",
+      "bytes": 5575,
+      "sha256": "651be0979926e044fa19b57a4b4e050f192861c99318384216b13cf9b8d86a7d",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/android/api37-avd-capture.png",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/api37-avd-capture.png (flattened mirror)",
+      "bytes": 1201,
+      "sha256": "cdbea6abb5055ea777686043ae28e68118c5a5dc2e7b8242f108a3f74ff392fe",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/android/avd-rerun-logcat.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/avd-rerun-logcat.log (flattened mirror)",
+      "bytes": 36119,
+      "sha256": "523d40e48fa7fe52ac96c9bcd48587d8c5ee4b6f7a65e032b7d882916b120de5",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/android/c18-1-runtime.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/c18-1-runtime.log (flattened mirror)",
+      "bytes": 4791,
+      "sha256": "b31424ca42f8d4c523ecf7a42c22af9c5fb423e8051a6b88cc343a19478524a2",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/android/c18-1-screen.png",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/c18-1-screen.png (flattened mirror)",
+      "bytes": 74992,
+      "sha256": "cafcfee5ffde75382a1b508b5bf2538d6f06c5dbb4b96b158251c1d166707389",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/android/c18-2-runtime.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/c18-2-runtime.log (flattened mirror)",
+      "bytes": 5674,
+      "sha256": "436db7a673036f5f2528b0ebf17d607024619f167dd6450dfa479cc6efb07be9",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/android/c18-2-screen.png",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/c18-2-screen.png (flattened mirror)",
+      "bytes": 73676,
+      "sha256": "b1288970c3fe4eef8b2365ccf5e94ffc719c106d6e4f4803896218d43a4123bc",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/android/c18-3-runtime.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/c18-3-runtime.log (flattened mirror)",
+      "bytes": 8449,
+      "sha256": "424994093ed927c4f75d47a2e9d69056fd7c513191e80b1f05833d036090b4a1",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/android/c18-3-screen.png",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/c18-3-screen.png (flattened mirror)",
+      "bytes": 81404,
+      "sha256": "8afa9a6312cc263c5a3c792066583d95124d648205e536fea2d9546ea6050094",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/android/runtime.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/runtime.log (flattened mirror)",
+      "bytes": 6116,
+      "sha256": "9436ea238d791b9be95a5b564375d35b2c4d3d4dc4673a99083b1f77b85ad138",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/android-default.sha256",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/android-default.sha256 (flattened mirror)",
+      "bytes": 228,
+      "sha256": "bfb4f639f734cd95bbca962e2e0e97cb549836583d278ef76864bc126dbd4f89",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/android-opt-in.sha256",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/android-opt-in.sha256 (flattened mirror)",
+      "bytes": 226,
+      "sha256": "ae858f8f8b42fd8701180f01217e39baefda64f87958faf40f3ec4a24b780ce3",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/android-optin-c18-4-strings.txt",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/android-optin-c18-4-strings.txt (flattened mirror)",
+      "bytes": 630,
+      "sha256": "4f750af6555b5721de8ad9ab840fc6fe2dd3fe9e1337eb283277dc66d0cbb8cb",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/android-optin-c18-4-symbols.txt",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/android-optin-c18-4-symbols.txt (flattened mirror)",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/android-png-payload-check.txt",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/android-png-payload-check.txt (flattened mirror)",
+      "bytes": 200,
+      "sha256": "bc7f27bdce10c0f4f85e7c8a51631053b19a2d75573d42603b94855be2324dec",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-default-c18-4-strings.txt",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-default-c18-4-strings.txt (flattened mirror)",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-default-c18-4-symbols.txt",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-default-c18-4-symbols.txt (flattened mirror)",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-default.sha256",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-default.sha256 (flattened mirror)",
+      "bytes": 95,
+      "sha256": "25a65b81f2e2e8be25b6f858942e3c71ef061c6ba19a729526d8e23393285359",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-opt-in-c18-4-strings.txt",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-opt-in-c18-4-strings.txt (flattened mirror)",
+      "bytes": 810,
+      "sha256": "6fdf81ef142384707bc4411b78a9cc75c123e9d861f6d2824dee410ba3d87a26",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-opt-in-c18-4-strings.txt.raw.gz",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-opt-in-c18-4-strings.txt.raw.gz (flattened mirror)",
+      "bytes": 227,
+      "sha256": "9fb37c54801fff052f312bc789d69e9ba764efb319c9aade5ecd93d9d3c9ec0e",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-opt-in-c18-4-symbols.txt",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-opt-in-c18-4-symbols.txt (flattened mirror)",
+      "bytes": 593,
+      "sha256": "9f283d72b7fdd66e4ba8107640186c78a71d7c661631fd051b00eda3c775ac1f",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-opt-in.sha256",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-opt-in.sha256 (flattened mirror)",
+      "bytes": 95,
+      "sha256": "5f4a9164f0bda52fd3360afc5818c1f2161d93c51db9df9abd74dcf7882431e4",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-default-c18-4-strings.txt",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-default-c18-4-strings.txt (flattened mirror)",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-default-c18-4-symbols.txt",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-default-c18-4-symbols.txt (flattened mirror)",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-default-png-payload-check.txt",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-default-png-payload-check.txt (flattened mirror)",
+      "bytes": 152,
+      "sha256": "b5a6374f67afacd257a7a29fea83e84305dafe0c77ad121075c736e3d10fee1b",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-default.sha256",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-default.sha256 (flattened mirror)",
+      "bytes": 164,
+      "sha256": "37beb232fecb18792730fceba269d22c9a27014348a843876d2bbec3be4ed319",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-opt-in-c18-4-strings.txt",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-opt-in-c18-4-strings.txt (flattened mirror)",
+      "bytes": 630,
+      "sha256": "6d156954a5e3646700a6d9dc6c2b36dfceec359924c9437f7784b2a74f98aa55",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-opt-in-c18-4-symbols.txt",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-opt-in-c18-4-symbols.txt (flattened mirror)",
+      "bytes": 231,
+      "sha256": "62ab87f86249701a8bee543e499dc577088488f8161ad92202847844c0e12c75",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-opt-in.sha256",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-opt-in.sha256 (flattened mirror)",
+      "bytes": 164,
+      "sha256": "5f16dc9be855b8e3651c5124a915a80c65bfcdfcd63e1db1c0821cb20afbc268",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-png-payload-check.txt",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-png-payload-check.txt (flattened mirror)",
+      "bytes": 148,
+      "sha256": "485eae5539989c5cad7c862f8a601e3f44834a274dcf6f041ce96f1f4d77ae46",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/README.html",
+      "source": "rspress:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/README.html (flattened mirror)",
+      "bytes": 27796,
+      "sha256": "18c4943bc95509c1081156eb43b0f52c4b1446625947dae55466a318e41a3246",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/README.md",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/README.md (flattened mirror)",
+      "bytes": 3926,
+      "sha256": "73bb590ac9448875e6e317f3a5010375de6c77630bd718a9a6b8a9a837ca8952",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/c18-4-feature-tests.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/c18-4-feature-tests.log (flattened mirror)",
+      "bytes": 727,
+      "sha256": "d017b2b5c314d2059f103695706ca66f75e8095c96a6b60c4bbd511c683c7e2f",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/c18-4-feature-tests.log.raw.gz",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/c18-4-feature-tests.log.raw.gz (flattened mirror)",
+      "bytes": 434,
+      "sha256": "7a7ebb5a9c5a19da56d7d599f554853e0dca3fd6992c0e5bb861ad06c12f032c",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/clippy.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/clippy.log (flattened mirror)",
+      "bytes": 924,
+      "sha256": "a016c5d406580f2bdfd40a5303ec123be83a2bc1d789e9cbf4d6d619fbd94deb",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/css-reference-origin-main-baseline.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/css-reference-origin-main-baseline.log (flattened mirror)",
+      "bytes": 94620,
+      "sha256": "1d8bbc124a1beddbbcd0ee826371c5e1dd31609ca24cb37616079ca9e326a988",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/css-reference-origin-main-baseline.log.raw.gz",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/css-reference-origin-main-baseline.log.raw.gz (flattened mirror)",
+      "bytes": 20047,
+      "sha256": "7b63afee128378c77c644fa78ef879bf0b4ac6c3993db7e36cd622374576df08",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/css-reference.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/css-reference.log (flattened mirror)",
+      "bytes": 94860,
+      "sha256": "5c63ba1db69d4110639352d04fa185f950dee5a6e357544ec8ac828f768e44e0",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/css-reference.log.raw.gz",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/css-reference.log.raw.gz (flattened mirror)",
+      "bytes": 20128,
+      "sha256": "610dc4ea07fc8609a890aa6854715d20d792e62d9802e45c21f2968b4379cd67",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/feature-clippy.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/feature-clippy.log (flattened mirror)",
+      "bytes": 300,
+      "sha256": "5e4b010e46e74dffcaf60683868f0b394f6b1b01e7fe4b837034d7dfc65dac11",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/fixture-build-boundary-tests.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/fixture-build-boundary-tests.log (flattened mirror)",
+      "bytes": 25149,
+      "sha256": "941c41677a42f576a265cc127989a0f4cf38a2a21cf1f7a2c6488f044cd8e9c7",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/fixture-build-boundary-tests.log.raw.gz",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/fixture-build-boundary-tests.log.raw.gz (flattened mirror)",
+      "bytes": 4557,
+      "sha256": "beda2b7d733fa435328f17c502d11ebf37e40689f91482e1d101780d86f8eb19",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/fixture-module-boundary.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/fixture-module-boundary.log (flattened mirror)",
+      "bytes": 571,
+      "sha256": "a483368d42794fa163fd635529de345f07da4bf3bd8c9b0c67042e9f332eb628",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/implementation-review-20.html",
+      "source": "rspress:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/implementation-review-20.html (flattened mirror)",
+      "bytes": 29756,
+      "sha256": "c199001090cbf10922b09d6b26a6362e2617d3440eaddd922b39a9f092949438",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/implementation-review-20.md",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/implementation-review-20.md (flattened mirror)",
+      "bytes": 6134,
+      "sha256": "8812b637d662cca10a7a687be760636edf37b95b342541b8ee746911549e5cb0",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/ios-build-flag-tests.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios-build-flag-tests.log (flattened mirror)",
+      "bytes": 1429,
+      "sha256": "8af6e3ebe0f06c6ff52263353b8ef13c829e67c6d7d730073c6711624e3cd9c7",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/ios-c184-only-build.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios-c184-only-build.log (flattened mirror)",
+      "bytes": 105666,
+      "sha256": "20019495d36fc84be0261cf72468a1b34853adf6ad965c8ba00ceb012598d795",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/ios-c184-only-build.log.raw.gz",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios-c184-only-build.log.raw.gz (flattened mirror)",
+      "bytes": 14516,
+      "sha256": "62302b2f8c4191f4baf205776f430d2ff1b0fe1420099ba77ca1985dd07b26e0",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/ios-default-build.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios-default-build.log (flattened mirror)",
+      "bytes": 115363,
+      "sha256": "8d709399a228bbcaa6e965edab8cec7fe495d97093f5aa4ea2185f59c24b8715",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/ios-default-build.log.raw.gz",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios-default-build.log.raw.gz (flattened mirror)",
+      "bytes": 16390,
+      "sha256": "ed80a24aa6b0b3b0f633925f24999f5dcf5954e221f42cb0aa79900f93acf00d",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/c18-1-runtime.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/c18-1-runtime.log (flattened mirror)",
+      "bytes": 6294,
+      "sha256": "d619b34a16b3dcb7e295c3f582dc57583b9076a041048a399cb322faea0d3e0b",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/c18-1-screen.png",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/c18-1-screen.png (flattened mirror)",
+      "bytes": 127637,
+      "sha256": "3b1601a0266fe44b91c67e995c86f4a337e14fc154bf454ef3d2e086025e7b8a",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/c18-2-runtime.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/c18-2-runtime.log (flattened mirror)",
+      "bytes": 6466,
+      "sha256": "bcd9ff2ec5b2801e12ff802184448b908252d3da81c4b31d3551a6e01df52269",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/c18-2-screen.png",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/c18-2-screen.png (flattened mirror)",
+      "bytes": 126039,
+      "sha256": "94b52735c9ff2bd6ddb10c789a3dfe101985a7634e020d1a74806692adee37fd",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/c18-3-runtime.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/c18-3-runtime.log (flattened mirror)",
+      "bytes": 8006,
+      "sha256": "e993bcec7fb95c87b37be27374b7ad92d28471c76c175f51bfd78f574903e5c1",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/c18-3-screen.png",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/c18-3-screen.png (flattened mirror)",
+      "bytes": 132253,
+      "sha256": "d78ea7a5a36cbaabeed5e78647f081b72869b9900e5ad8e8c4aa5bdcce4816a3",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/iphone-17-pro-capture.png",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/iphone-17-pro-capture.png (flattened mirror)",
+      "bytes": 137964,
+      "sha256": "f10ace59b5efb63c7180630bc87f055a6e38984aa1bd1f2006851543bab95fd6",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/runtime.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/runtime.log (flattened mirror)",
+      "bytes": 5260,
+      "sha256": "ff4d08fcbdbe8d60c1d5833cb6fd3836facbcb71e58263d367dd000b56cd9f5f",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/negative-duplicate-outcome.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/negative-duplicate-outcome.log (flattened mirror)",
+      "bytes": 1312,
+      "sha256": "b0e04f76565bc3383a83c6247e81a5ae9711017fc531eb90f883ff91ae37870d",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/negative-failure-record.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/negative-failure-record.log (flattened mirror)",
+      "bytes": 1603,
+      "sha256": "63b45a5da909913cd3fd1f39a0b2bbd13c42ccdecf24ad2a03c94a7db3d02944",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/negative-stale-document.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/negative-stale-document.log (flattened mirror)",
+      "bytes": 1083,
+      "sha256": "2a5c7c56c18f24f324e6c0a3d43abe12029eb48705465677d97e134a454230af",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/negative-zero-ratio.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/negative-zero-ratio.log (flattened mirror)",
+      "bytes": 1214,
+      "sha256": "c2b6308df33c8acc6582eb0d796b32ee0558235685eec9f17f629e49c9cd8743",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/pr-227-agent-browser.png",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/pr-227-agent-browser.png (flattened mirror)",
+      "bytes": 555907,
+      "sha256": "0628642c7b2b6791c9d4250970627d6555ff1d01c69727cbaf4610dc510351df",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/pr-227-browser-image-verification.json",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/pr-227-browser-image-verification.json (flattened mirror)",
+      "bytes": 1658,
+      "sha256": "a56c8ccc94fe5bf21f5e86bcf8a349b894fbeaf4eca0af160540bdf32dee2b04",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/pr-delta-review-30.html",
+      "source": "rspress:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/pr-delta-review-30.html (flattened mirror)",
+      "bytes": 33482,
+      "sha256": "16304f606e3d2b6da9d013dda930262388eb24bfd2c16de04be0e0fc337b7b59",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/pr-delta-review-30.md",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/pr-delta-review-30.md (flattened mirror)",
+      "bytes": 8269,
+      "sha256": "1b455a4ee83583256d4814b03a83f0f7aebb853ec88704f26cd7b2825503a0fd",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/README.html",
+      "source": "rspress:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/README.html (flattened mirror)",
+      "bytes": 35555,
+      "sha256": "8ea7d5cbb53f4797b5fd1240d02414294ae8c3defd1062255124fa163e5e7849",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/README.md",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/README.md (flattened mirror)",
+      "bytes": 6948,
+      "sha256": "0455fc82374b7cdcf7e9affda91a8a23c1225325f5b5eb2f1a8c9dcd5ae222fb",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/workspace-test.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/workspace-test.log (flattened mirror)",
+      "bytes": 100886,
+      "sha256": "7b482bb0113ae1d897a7a213faca58efc5fa11ae3ff7432190a2e0e19db54d25",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-2026-10-16/workspace-test.log.raw.gz",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/workspace-test.log.raw.gz (flattened mirror)",
+      "bytes": 21741,
+      "sha256": "e5c60350840570098f6f1399be3922bd8a89af648f1a5009183d4946c513f755",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-plan-review-20-2026-10-16.html",
+      "source": "rspress:spec/internal/evidence/c18-4-async-image-replacement-plan-review-20-2026-10-16.html (flattened mirror)",
+      "bytes": 29027,
+      "sha256": "bbfebfc92f2bee927843bf99cd7b074ec790559d863f723585ea803899a8c2d9",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c18-4-async-image-replacement-plan-review-20-2026-10-16.md",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-plan-review-20-2026-10-16.md (flattened mirror)",
+      "bytes": 6120,
+      "sha256": "95a9f700eede04b7d0056eacb5d96668c89fbc6aa0cbf20f5b29512d55a55110",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/README.html",
+      "source": "rspress:spec/internal/README.html (flattened mirror)",
+      "bytes": 142243,
+      "sha256": "a254b806ba388b400e6d13856fff18b57c537113da859614ae6198fef6d541dc",
+      "previous_sha256": "74cb2ddf0ad15810ca630256de473c99bbce376d52528b24cb8d144152272dec",
+      "status": "replaced",
+      "backup_path": "backup/c18-4-async-image-replacement-tailnet-sync-2026-10-16/internal/README.html"
+    },
+    {
+      "path": "internal/README.md",
+      "source": "main:spec/internal/README.md (flattened mirror)",
+      "bytes": 99268,
+      "sha256": "276a1b4c5dffa95fae6419acb370ee77cb9ca21c99d9da9d0d8f21ea6eb36b57",
+      "previous_sha256": "76c1d0917c6774b10634d48472bbb8ef4a82a2cfafafe202ba5ad69c5848bd19",
+      "status": "replaced",
+      "backup_path": "backup/c18-4-async-image-replacement-tailnet-sync-2026-10-16/internal/README.md"
+    },
+    {
+      "path": "logo.svg",
+      "source": "rspress:logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "previous_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "plan/c18-4-async-image-replacement.html",
+      "source": "rspress:plan/c18-4-async-image-replacement.html",
+      "bytes": 37605,
+      "sha256": "7c697531d6141864252147523d49f253f2a3e3f79f8762759476fd450f3e813c",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "plan/c18-4-async-image-replacement.md",
+      "source": "main:plan/c18-4-async-image-replacement.md",
+      "bytes": 12960,
+      "sha256": "633d1f954b14f3ad8dd58875f326b0635721b03b2963ff7528087c9f682b2647",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/0061-u05-png-image-decode.html",
+      "source": "rspress:spec/internal/0061-u05-png-image-decode.html",
+      "bytes": 38899,
+      "sha256": "e12e33e1b5a5eb1a012b3b1481d86a585b5455e99e17f90284acf9a1c4a877a7",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/0061-u05-png-image-decode.md",
+      "source": "main:spec/internal/0061-u05-png-image-decode.md",
+      "bytes": 8505,
+      "sha256": "bb2319e814b7ff634b92353cc0ed6a8fabb9c9873cf1c2b60d271e49c7994fd2",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/0066-c18-3-object-fit-position.html",
+      "source": "rspress:spec/internal/0066-c18-3-object-fit-position.html",
+      "bytes": 37741,
+      "sha256": "ca8128f7bb792c8a04e46cae9eb07c0f58935251f9e7b1d62aeeb4f8912d7755",
+      "previous_sha256": "d233fcd6c87af4863d2eb32a82501d4c0330ae8ef43ab9f8289bd1fc766b3d1a",
+      "status": "replaced",
+      "backup_path": "backup/c18-4-async-image-replacement-tailnet-sync-2026-10-16/spec/internal/0066-c18-3-object-fit-position.html"
+    },
+    {
+      "path": "spec/internal/0066-c18-3-object-fit-position.md",
+      "source": "main:spec/internal/0066-c18-3-object-fit-position.md",
+      "bytes": 8284,
+      "sha256": "c52aa4d0687b8b41ae5f53b558c241b12741404c8878cd163c1b1c6f72973741",
+      "previous_sha256": "c52aa4d0687b8b41ae5f53b558c241b12741404c8878cd163c1b1c6f72973741",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/0067-c18-4-async-image-replacement.html",
+      "source": "rspress:spec/internal/0067-c18-4-async-image-replacement.html",
+      "bytes": 31174,
+      "sha256": "a6165fc86d1d9a07a46604b67bcc2a24e8fbc79ae6204b7e2be97ceee2bfabf9",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/0067-c18-4-async-image-replacement.md",
+      "source": "main:spec/internal/0067-c18-4-async-image-replacement.md",
+      "bytes": 6825,
+      "sha256": "9b2cdf7795f4619f8e0aacc6e2f5a10d17524c75e6c20bdca2640cb42b62ca1c",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/c18-4-async-image-oracle-scoped-build-agent-browser.png",
+      "source": "main:spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/c18-4-async-image-oracle-scoped-build-agent-browser.png",
+      "bytes": 122552,
+      "sha256": "9faa7765d62a539caed1c2e2e06fe8e827e08f8e9047645a3ec53ac10bed6af4",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/auto_server.py",
+      "source": "main:spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/auto_server.py",
+      "bytes": 2193,
+      "sha256": "102396832352fe42003fe6dd340ce88c4730d66f565eb59eda234418d151ce42",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-auto-broken-state.json",
+      "source": "main:spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-auto-broken-state.json",
+      "bytes": 279,
+      "sha256": "b36be7f80fc7eea6f411d48235de8e923eb46d23d1311fdc8138e8013c4820ff",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-auto-observation.json",
+      "source": "main:spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-auto-observation.json",
+      "bytes": 1042,
+      "sha256": "9d296385a369a442d1440ad54cb28924ed564defd9458bd8dc9f0416201059b7",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-auto-pending-visible-state.json",
+      "source": "main:spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-auto-pending-visible-state.json",
+      "bytes": 131,
+      "sha256": "f8fabc4f16515d2b5acb58c55a5bc5aff976f4dc484acf1f64ca66f55e9283ca",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-auto-pending-visible.png",
+      "source": "main:spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-auto-pending-visible.png",
+      "bytes": 174,
+      "sha256": "379a4143141e630c97a8faeec10fd4299a883b80b8f2a56e7b0c9c8712bc3aa9",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-broken-state.json",
+      "source": "main:spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-broken-state.json",
+      "bytes": 103,
+      "sha256": "5f9ba59d5644b96fcd43ce76b0e89d5339979bce7bd9ab911645c9b985fb3060",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-broken.png",
+      "source": "main:spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-broken.png",
+      "bytes": 4553,
+      "sha256": "e7a8247eaca2fc5a9293a80c3ab52e3f046829e9912356115cbf4bffa6eaa188",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-observation.json",
+      "source": "main:spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-observation.json",
+      "bytes": 3412,
+      "sha256": "abd0177209e2f30a572f6530a58419adbc614bd3c680fca51ac710d02d667d81",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-server.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/chrome155-server.log",
+      "bytes": 283,
+      "sha256": "9d878a15f1f11743f46ce593fbc06c2d73534d42f337e577962fc622b02b0b83",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/server.py",
+      "source": "main:spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/oracle/server.py",
+      "bytes": 4339,
+      "sha256": "2ea0dfb0f0d20d8e48e12e833815b59e56d7f0eb1299ace204b5049055b15acd",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/README.html",
+      "source": "rspress:spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/README.html",
+      "bytes": 26590,
+      "sha256": "fca8dbcd0ea56cbc161e22b3e3ef5851cfddba4e511ff347c8f3cfb9e9c0770b",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/README.md",
+      "source": "main:spec/internal/evidence/c18-4-async-image-oracle-2026-10-16/README.md",
+      "bytes": 3396,
+      "sha256": "ed1b3489b567363751611e32067ce12004c0ebf5f9609e22f7906dfbf64b22cf",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-oracle-image-path-review-30-2026-10-16.html",
+      "source": "rspress:spec/internal/evidence/c18-4-async-image-oracle-image-path-review-30-2026-10-16.html",
+      "bytes": 27745,
+      "sha256": "94a1b566be4cc4775131e4d480edff3eba9dca9d719ba62f85db08a927558417",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-oracle-image-path-review-30-2026-10-16.md",
+      "source": "main:spec/internal/evidence/c18-4-async-image-oracle-image-path-review-30-2026-10-16.md",
+      "bytes": 4302,
+      "sha256": "2fc9c829b63038cb933025719b371d618e99c22f538da3a3d66ffc9edaa04f54",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android-c184-only-build.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android-c184-only-build.log",
+      "bytes": 3907,
+      "sha256": "6f8b3bbaf85cc527ce362e1794a299850b5d827630687d6e03cd2994152f3878",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android-default-build.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android-default-build.log",
+      "bytes": 5575,
+      "sha256": "651be0979926e044fa19b57a4b4e050f192861c99318384216b13cf9b8d86a7d",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/api37-avd-capture.png",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/api37-avd-capture.png",
+      "bytes": 1201,
+      "sha256": "cdbea6abb5055ea777686043ae28e68118c5a5dc2e7b8242f108a3f74ff392fe",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/avd-rerun-logcat.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/avd-rerun-logcat.log",
+      "bytes": 36119,
+      "sha256": "523d40e48fa7fe52ac96c9bcd48587d8c5ee4b6f7a65e032b7d882916b120de5",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/c18-1-runtime.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/c18-1-runtime.log",
+      "bytes": 4791,
+      "sha256": "b31424ca42f8d4c523ecf7a42c22af9c5fb423e8051a6b88cc343a19478524a2",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/c18-1-screen.png",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/c18-1-screen.png",
+      "bytes": 74992,
+      "sha256": "cafcfee5ffde75382a1b508b5bf2538d6f06c5dbb4b96b158251c1d166707389",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/c18-2-runtime.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/c18-2-runtime.log",
+      "bytes": 5674,
+      "sha256": "436db7a673036f5f2528b0ebf17d607024619f167dd6450dfa479cc6efb07be9",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/c18-2-screen.png",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/c18-2-screen.png",
+      "bytes": 73676,
+      "sha256": "b1288970c3fe4eef8b2365ccf5e94ffc719c106d6e4f4803896218d43a4123bc",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/c18-3-runtime.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/c18-3-runtime.log",
+      "bytes": 8449,
+      "sha256": "424994093ed927c4f75d47a2e9d69056fd7c513191e80b1f05833d036090b4a1",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/c18-3-screen.png",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/c18-3-screen.png",
+      "bytes": 81404,
+      "sha256": "8afa9a6312cc263c5a3c792066583d95124d648205e536fea2d9546ea6050094",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/runtime.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/android/runtime.log",
+      "bytes": 6116,
+      "sha256": "9436ea238d791b9be95a5b564375d35b2c4d3d4dc4673a99083b1f77b85ad138",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/android-default.sha256",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/android-default.sha256",
+      "bytes": 228,
+      "sha256": "bfb4f639f734cd95bbca962e2e0e97cb549836583d278ef76864bc126dbd4f89",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/android-opt-in.sha256",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/android-opt-in.sha256",
+      "bytes": 226,
+      "sha256": "ae858f8f8b42fd8701180f01217e39baefda64f87958faf40f3ec4a24b780ce3",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/android-optin-c18-4-strings.txt",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/android-optin-c18-4-strings.txt",
+      "bytes": 630,
+      "sha256": "4f750af6555b5721de8ad9ab840fc6fe2dd3fe9e1337eb283277dc66d0cbb8cb",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/android-optin-c18-4-symbols.txt",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/android-optin-c18-4-symbols.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/android-png-payload-check.txt",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/android-png-payload-check.txt",
+      "bytes": 200,
+      "sha256": "bc7f27bdce10c0f4f85e7c8a51631053b19a2d75573d42603b94855be2324dec",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-default-c18-4-strings.txt",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-default-c18-4-strings.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-default-c18-4-symbols.txt",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-default-c18-4-symbols.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-default.sha256",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-default.sha256",
+      "bytes": 95,
+      "sha256": "25a65b81f2e2e8be25b6f858942e3c71ef061c6ba19a729526d8e23393285359",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-opt-in-c18-4-strings.txt",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-opt-in-c18-4-strings.txt",
+      "bytes": 810,
+      "sha256": "6fdf81ef142384707bc4411b78a9cc75c123e9d861f6d2824dee410ba3d87a26",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-opt-in-c18-4-strings.txt.raw.gz",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-opt-in-c18-4-strings.txt.raw.gz",
+      "bytes": 227,
+      "sha256": "9fb37c54801fff052f312bc789d69e9ba764efb319c9aade5ecd93d9d3c9ec0e",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-opt-in-c18-4-symbols.txt",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-opt-in-c18-4-symbols.txt",
+      "bytes": 593,
+      "sha256": "9f283d72b7fdd66e4ba8107640186c78a71d7c661631fd051b00eda3c775ac1f",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-opt-in.sha256",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/cargo-opt-in.sha256",
+      "bytes": 95,
+      "sha256": "5f4a9164f0bda52fd3360afc5818c1f2161d93c51db9df9abd74dcf7882431e4",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-default-c18-4-strings.txt",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-default-c18-4-strings.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-default-c18-4-symbols.txt",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-default-c18-4-symbols.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-default-png-payload-check.txt",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-default-png-payload-check.txt",
+      "bytes": 152,
+      "sha256": "b5a6374f67afacd257a7a29fea83e84305dafe0c77ad121075c736e3d10fee1b",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-default.sha256",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-default.sha256",
+      "bytes": 164,
+      "sha256": "37beb232fecb18792730fceba269d22c9a27014348a843876d2bbec3be4ed319",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-opt-in-c18-4-strings.txt",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-opt-in-c18-4-strings.txt",
+      "bytes": 630,
+      "sha256": "6d156954a5e3646700a6d9dc6c2b36dfceec359924c9437f7784b2a74f98aa55",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-opt-in-c18-4-symbols.txt",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-opt-in-c18-4-symbols.txt",
+      "bytes": 231,
+      "sha256": "62ab87f86249701a8bee543e499dc577088488f8161ad92202847844c0e12c75",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-opt-in.sha256",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-opt-in.sha256",
+      "bytes": 164,
+      "sha256": "5f16dc9be855b8e3651c5124a915a80c65bfcdfcd63e1db1c0821cb20afbc268",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-png-payload-check.txt",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/ios-png-payload-check.txt",
+      "bytes": 148,
+      "sha256": "485eae5539989c5cad7c862f8a601e3f44834a274dcf6f041ce96f1f4d77ae46",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/README.html",
+      "source": "rspress:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/README.html",
+      "bytes": 27796,
+      "sha256": "18c4943bc95509c1081156eb43b0f52c4b1446625947dae55466a318e41a3246",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/README.md",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/README.md",
+      "bytes": 3926,
+      "sha256": "73bb590ac9448875e6e317f3a5010375de6c77630bd718a9a6b8a9a837ca8952",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/c18-4-feature-tests.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/c18-4-feature-tests.log",
+      "bytes": 727,
+      "sha256": "d017b2b5c314d2059f103695706ca66f75e8095c96a6b60c4bbd511c683c7e2f",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/c18-4-feature-tests.log.raw.gz",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/c18-4-feature-tests.log.raw.gz",
+      "bytes": 434,
+      "sha256": "7a7ebb5a9c5a19da56d7d599f554853e0dca3fd6992c0e5bb861ad06c12f032c",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/clippy.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/clippy.log",
+      "bytes": 924,
+      "sha256": "a016c5d406580f2bdfd40a5303ec123be83a2bc1d789e9cbf4d6d619fbd94deb",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/css-reference-origin-main-baseline.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/css-reference-origin-main-baseline.log",
+      "bytes": 94620,
+      "sha256": "1d8bbc124a1beddbbcd0ee826371c5e1dd31609ca24cb37616079ca9e326a988",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/css-reference-origin-main-baseline.log.raw.gz",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/css-reference-origin-main-baseline.log.raw.gz",
+      "bytes": 20047,
+      "sha256": "7b63afee128378c77c644fa78ef879bf0b4ac6c3993db7e36cd622374576df08",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/css-reference.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/css-reference.log",
+      "bytes": 94860,
+      "sha256": "5c63ba1db69d4110639352d04fa185f950dee5a6e357544ec8ac828f768e44e0",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/css-reference.log.raw.gz",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/css-reference.log.raw.gz",
+      "bytes": 20128,
+      "sha256": "610dc4ea07fc8609a890aa6854715d20d792e62d9802e45c21f2968b4379cd67",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/feature-clippy.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/feature-clippy.log",
+      "bytes": 300,
+      "sha256": "5e4b010e46e74dffcaf60683868f0b394f6b1b01e7fe4b837034d7dfc65dac11",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/fixture-build-boundary-tests.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/fixture-build-boundary-tests.log",
+      "bytes": 25149,
+      "sha256": "941c41677a42f576a265cc127989a0f4cf38a2a21cf1f7a2c6488f044cd8e9c7",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/fixture-build-boundary-tests.log.raw.gz",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/fixture-build-boundary-tests.log.raw.gz",
+      "bytes": 4557,
+      "sha256": "beda2b7d733fa435328f17c502d11ebf37e40689f91482e1d101780d86f8eb19",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/fixture-module-boundary.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/fixture-module-boundary.log",
+      "bytes": 571,
+      "sha256": "a483368d42794fa163fd635529de345f07da4bf3bd8c9b0c67042e9f332eb628",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/implementation-review-20.html",
+      "source": "rspress:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/implementation-review-20.html",
+      "bytes": 29756,
+      "sha256": "c199001090cbf10922b09d6b26a6362e2617d3440eaddd922b39a9f092949438",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/implementation-review-20.md",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/implementation-review-20.md",
+      "bytes": 6134,
+      "sha256": "8812b637d662cca10a7a687be760636edf37b95b342541b8ee746911549e5cb0",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios-build-flag-tests.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios-build-flag-tests.log",
+      "bytes": 1429,
+      "sha256": "8af6e3ebe0f06c6ff52263353b8ef13c829e67c6d7d730073c6711624e3cd9c7",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios-c184-only-build.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios-c184-only-build.log",
+      "bytes": 105666,
+      "sha256": "20019495d36fc84be0261cf72468a1b34853adf6ad965c8ba00ceb012598d795",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios-c184-only-build.log.raw.gz",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios-c184-only-build.log.raw.gz",
+      "bytes": 14516,
+      "sha256": "62302b2f8c4191f4baf205776f430d2ff1b0fe1420099ba77ca1985dd07b26e0",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios-default-build.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios-default-build.log",
+      "bytes": 115363,
+      "sha256": "8d709399a228bbcaa6e965edab8cec7fe495d97093f5aa4ea2185f59c24b8715",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios-default-build.log.raw.gz",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios-default-build.log.raw.gz",
+      "bytes": 16390,
+      "sha256": "ed80a24aa6b0b3b0f633925f24999f5dcf5954e221f42cb0aa79900f93acf00d",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/c18-1-runtime.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/c18-1-runtime.log",
+      "bytes": 6294,
+      "sha256": "d619b34a16b3dcb7e295c3f582dc57583b9076a041048a399cb322faea0d3e0b",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/c18-1-screen.png",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/c18-1-screen.png",
+      "bytes": 127637,
+      "sha256": "3b1601a0266fe44b91c67e995c86f4a337e14fc154bf454ef3d2e086025e7b8a",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/c18-2-runtime.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/c18-2-runtime.log",
+      "bytes": 6466,
+      "sha256": "bcd9ff2ec5b2801e12ff802184448b908252d3da81c4b31d3551a6e01df52269",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/c18-2-screen.png",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/c18-2-screen.png",
+      "bytes": 126039,
+      "sha256": "94b52735c9ff2bd6ddb10c789a3dfe101985a7634e020d1a74806692adee37fd",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/c18-3-runtime.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/c18-3-runtime.log",
+      "bytes": 8006,
+      "sha256": "e993bcec7fb95c87b37be27374b7ad92d28471c76c175f51bfd78f574903e5c1",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/c18-3-screen.png",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/c18-3-screen.png",
+      "bytes": 132253,
+      "sha256": "d78ea7a5a36cbaabeed5e78647f081b72869b9900e5ad8e8c4aa5bdcce4816a3",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/iphone-17-pro-capture.png",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/iphone-17-pro-capture.png",
+      "bytes": 137964,
+      "sha256": "f10ace59b5efb63c7180630bc87f055a6e38984aa1bd1f2006851543bab95fd6",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/runtime.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/ios/runtime.log",
+      "bytes": 5260,
+      "sha256": "ff4d08fcbdbe8d60c1d5833cb6fd3836facbcb71e58263d367dd000b56cd9f5f",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/negative-duplicate-outcome.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/negative-duplicate-outcome.log",
+      "bytes": 1312,
+      "sha256": "b0e04f76565bc3383a83c6247e81a5ae9711017fc531eb90f883ff91ae37870d",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/negative-failure-record.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/negative-failure-record.log",
+      "bytes": 1603,
+      "sha256": "63b45a5da909913cd3fd1f39a0b2bbd13c42ccdecf24ad2a03c94a7db3d02944",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/negative-stale-document.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/negative-stale-document.log",
+      "bytes": 1083,
+      "sha256": "2a5c7c56c18f24f324e6c0a3d43abe12029eb48705465677d97e134a454230af",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/negative-zero-ratio.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/negative-zero-ratio.log",
+      "bytes": 1214,
+      "sha256": "c2b6308df33c8acc6582eb0d796b32ee0558235685eec9f17f629e49c9cd8743",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/pr-227-agent-browser.png",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/pr-227-agent-browser.png",
+      "bytes": 555907,
+      "sha256": "0628642c7b2b6791c9d4250970627d6555ff1d01c69727cbaf4610dc510351df",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/pr-227-browser-image-verification.json",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/pr-227-browser-image-verification.json",
+      "bytes": 1658,
+      "sha256": "a56c8ccc94fe5bf21f5e86bcf8a349b894fbeaf4eca0af160540bdf32dee2b04",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/pr-delta-review-30.html",
+      "source": "rspress:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/pr-delta-review-30.html",
+      "bytes": 33482,
+      "sha256": "16304f606e3d2b6da9d013dda930262388eb24bfd2c16de04be0e0fc337b7b59",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/pr-delta-review-30.md",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/pr-delta-review-30.md",
+      "bytes": 8269,
+      "sha256": "1b455a4ee83583256d4814b03a83f0f7aebb853ec88704f26cd7b2825503a0fd",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/README.html",
+      "source": "rspress:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/README.html",
+      "bytes": 35555,
+      "sha256": "8ea7d5cbb53f4797b5fd1240d02414294ae8c3defd1062255124fa163e5e7849",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/README.md",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/README.md",
+      "bytes": 6948,
+      "sha256": "0455fc82374b7cdcf7e9affda91a8a23c1225325f5b5eb2f1a8c9dcd5ae222fb",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/workspace-test.log",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/workspace-test.log",
+      "bytes": 100886,
+      "sha256": "7b482bb0113ae1d897a7a213faca58efc5fa11ae3ff7432190a2e0e19db54d25",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/workspace-test.log.raw.gz",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/workspace-test.log.raw.gz",
+      "bytes": 21741,
+      "sha256": "e5c60350840570098f6f1399be3922bd8a89af648f1a5009183d4946c513f755",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-plan-review-20-2026-10-16.html",
+      "source": "rspress:spec/internal/evidence/c18-4-async-image-replacement-plan-review-20-2026-10-16.html",
+      "bytes": 29027,
+      "sha256": "bbfebfc92f2bee927843bf99cd7b074ec790559d863f723585ea803899a8c2d9",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c18-4-async-image-replacement-plan-review-20-2026-10-16.md",
+      "source": "main:spec/internal/evidence/c18-4-async-image-replacement-plan-review-20-2026-10-16.md",
+      "bytes": 6120,
+      "sha256": "95a9f700eede04b7d0056eacb5d96668c89fbc6aa0cbf20f5b29512d55a55110",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/README.html",
+      "source": "rspress:spec/internal/README.html",
+      "bytes": 142243,
+      "sha256": "a254b806ba388b400e6d13856fff18b57c537113da859614ae6198fef6d541dc",
+      "previous_sha256": "74cb2ddf0ad15810ca630256de473c99bbce376d52528b24cb8d144152272dec",
+      "status": "replaced",
+      "backup_path": "backup/c18-4-async-image-replacement-tailnet-sync-2026-10-16/spec/internal/README.html"
+    },
+    {
+      "path": "spec/internal/README.md",
+      "source": "main:spec/internal/README.md",
+      "bytes": 99268,
+      "sha256": "276a1b4c5dffa95fae6419acb370ee77cb9ca21c99d9da9d0d8f21ea6eb36b57",
+      "previous_sha256": "76c1d0917c6774b10634d48472bbb8ef4a82a2cfafafe202ba5ad69c5848bd19",
+      "status": "replaced",
+      "backup_path": "backup/c18-4-async-image-replacement-tailnet-sync-2026-10-16/spec/internal/README.md"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "source": "rspress:spec/STATUS.html",
+      "bytes": 326189,
+      "sha256": "b7b14419a3ddf76ccdc871776dc0893dbd961afd84d4c81a18dc605adeeecb7d",
+      "previous_sha256": "4b40c5d397c4618a53a18223059ab1d4c744667f945c5d2d6516f4a4a0cf86b9",
+      "status": "replaced",
+      "backup_path": "backup/c18-4-async-image-replacement-tailnet-sync-2026-10-16/spec/STATUS.html"
+    },
+    {
+      "path": "spec/STATUS.md",
+      "source": "main:spec/STATUS.md",
+      "bytes": 245553,
+      "sha256": "7f1f1561e905fe2f44a7977383e4593bd04a718f097b8164a9eb32f3b2749465",
+      "previous_sha256": "a72916bb6436a26952b8ab3dd4c5e3fd1acaf0f0a71b980b9bc9fa80b9e5f147",
+      "status": "replaced",
+      "backup_path": "backup/c18-4-async-image-replacement-tailnet-sync-2026-10-16/spec/STATUS.md"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "source": "rspress:static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "previous_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/chrome155-broken.1a00ea850b.png",
+      "source": "rspress:static/image/chrome155-broken.1a00ea850b.png",
+      "bytes": 4553,
+      "sha256": "e7a8247eaca2fc5a9293a80c3ab52e3f046829e9912356115cbf4bffa6eaa188",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/iphone-17-pro-capture.5f64630654.png",
+      "source": "rspress:static/image/iphone-17-pro-capture.5f64630654.png",
+      "bytes": 137964,
+      "sha256": "f10ace59b5efb63c7180630bc87f055a6e38984aa1bd1f2006851543bab95fd6",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/a.d83cd9ffba.js",
+      "source": "rspress:static/js/a.d83cd9ffba.js",
+      "bytes": 217093,
+      "sha256": "55c4d8ea0fbf732d26348d5f5c6c9b993dc5692059ff1d03ecd2112344043654",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/a.d83cd9ffba.js.LICENSE.txt",
+      "source": "rspress:static/js/a.d83cd9ffba.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/b.96538d43dc.js",
+      "source": "rspress:static/js/async/b.96538d43dc.js",
+      "bytes": 98,
+      "sha256": "1eefb5fb9de52170002940b9ae94bc0f3edeb4a7ac72a4da3d6ead233b82f230",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-0ba32996007e.f83f3ce7be.js",
+      "source": "rspress:static/js/async/route-0ba32996007e.f83f3ce7be.js",
+      "bytes": 11942,
+      "sha256": "ee37fa203f9359ad8b6310405185507a44298fa143393ce3118f3b8ed0af2962",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-1920f0c54d15.3df9bf8747.js",
+      "source": "rspress:static/js/async/route-1920f0c54d15.3df9bf8747.js",
+      "bytes": 12879,
+      "sha256": "816d12dc1639f6215390ec4f2d1509a1e58e3b4d5cd3ca5008d8358b6bbe9dc0",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-1b213d01aa37.63ea072ef1.js",
+      "source": "rspress:static/js/async/route-1b213d01aa37.63ea072ef1.js",
+      "bytes": 8942,
+      "sha256": "b54377e4109b784d2dbb9ef73d0e7bc7bbe90c63670f298074bd0acfa7d1203c",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-4071e1f5c423.e043320217.js",
+      "source": "rspress:static/js/async/route-4071e1f5c423.e043320217.js",
+      "bytes": 19506,
+      "sha256": "d0b792f883ce0a18bad413f642a0d747d4466661963fc5ea9d155092f0ed48d9",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-4ecc8a64cdaa.1b66997656.js",
+      "source": "rspress:static/js/async/route-4ecc8a64cdaa.1b66997656.js",
+      "bytes": 7705,
+      "sha256": "41f29aa1e7f07e6f930d05ae69c4840990d6d1e4a9e4faa795049bf64f4daa80",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-54c000b7d39b.2a7cbc24c5.js",
+      "source": "rspress:static/js/async/route-54c000b7d39b.2a7cbc24c5.js",
+      "bytes": 10565,
+      "sha256": "d7c6ab130b30df19fc2f0a8eaed94708a4f53e7d12fbf4e84af9da5ff074b400",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-574e531e89aa.dab732506c.js",
+      "source": "rspress:static/js/async/route-574e531e89aa.dab732506c.js",
+      "bytes": 11653,
+      "sha256": "fae50a3122ce63414dd2cb26cf8f2dd8005871b18787411f4615a2f02eb9aadc",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.8ec0ef5e13.js",
+      "source": "rspress:static/js/async/route-7ce2535ac56d.8ec0ef5e13.js",
+      "bytes": 340657,
+      "sha256": "b0f0f12b8e7054e31dd19c713244f29e324fe0891ae597890bfc99bbd8eb88e1",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-a991d6de67ad.e8aec75458.js",
+      "source": "rspress:static/js/async/route-a991d6de67ad.e8aec75458.js",
+      "bytes": 146139,
+      "sha256": "cfd4abcd513f9850c56e8432a9789c2036056bdd5ba5456c87ccdff38408f94a",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-ae270dd2dede.98b2e14025.js",
+      "source": "rspress:static/js/async/route-ae270dd2dede.98b2e14025.js",
+      "bytes": 16430,
+      "sha256": "e1ae64af45c143f23f98e2cd73398a1c1dbf0ac9923edd2d1054f2d79825866c",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-bde083081a64.57fad1c477.js",
+      "source": "rspress:static/js/async/route-bde083081a64.57fad1c477.js",
+      "bytes": 18826,
+      "sha256": "61d4cab2402bede5d4c0a12051a1fafc731e016b045361669ebe56bf220cc72f",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-ee90c2e12eaf.105efadcdb.js",
+      "source": "rspress:static/js/async/route-ee90c2e12eaf.105efadcdb.js",
+      "bytes": 19384,
+      "sha256": "305eab16de00c282820efa819769dd9c50e65c46d24bdf6f63b4ac4a64751268",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-f68ccb5470fc.51f7018a12.js",
+      "source": "rspress:static/js/async/route-f68ccb5470fc.51f7018a12.js",
+      "bytes": 16267,
+      "sha256": "21e6c251716fac801f7946301f4eb3dc32f512e610450b49cc642f53c42074ce",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/index.c2d4675e0a.js",
+      "source": "rspress:static/js/index.c2d4675e0a.js",
+      "bytes": 28194,
+      "sha256": "36e06fb47107584f7a13cfcdad274408240aa73f78499b7831f897b147ed34e9",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.7ef1b71e36.js",
+      "source": "rspress:static/js/lib-react.7ef1b71e36.js",
+      "bytes": 218360,
+      "sha256": "f2f2b0ad090dc6dc76aa25990bcaca7014d725a00c8493c84d60ead4ceb50cae",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.7ef1b71e36.js.LICENSE.txt",
+      "source": "rspress:static/js/lib-react.7ef1b71e36.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.f5f6958cf5.js",
+      "source": "rspress:static/js/lib-router.f5f6958cf5.js",
+      "bytes": 35366,
+      "sha256": "033c0373d8fbfe83d814d998687cc1e4bfe4591750040e9548dc4dd782ad33fc",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.f5f6958cf5.js.LICENSE.txt",
+      "source": "rspress:static/js/lib-router.f5f6958cf5.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/styles.0e4009c1b0.js",
+      "source": "rspress:static/js/styles.0e4009c1b0.js",
+      "bytes": 472,
+      "sha256": "d62e6d4cd8a431223c3be29250a9233b74c116ad0c48ea7b102dbd7dcc252fa6",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/search_index.ko.8cef1bee.json",
+      "source": "rspress:static/search_index.ko.8cef1bee.json",
+      "bytes": 341286,
+      "sha256": "8cef1bee3558ba40fcccc02d1ff2340a94dc95f10d449506b0f73cafbc69d070",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "STATUS.html",
+      "source": "rspress:spec/STATUS.html (flattened mirror)",
+      "bytes": 326189,
+      "sha256": "b7b14419a3ddf76ccdc871776dc0893dbd961afd84d4c81a18dc605adeeecb7d",
+      "previous_sha256": "4b40c5d397c4618a53a18223059ab1d4c744667f945c5d2d6516f4a4a0cf86b9",
+      "status": "replaced",
+      "backup_path": "backup/c18-4-async-image-replacement-tailnet-sync-2026-10-16/STATUS.html"
+    },
+    {
+      "path": "STATUS.md",
+      "source": "main:spec/STATUS.md (flattened mirror)",
+      "bytes": 245553,
+      "sha256": "7f1f1561e905fe2f44a7977383e4593bd04a718f097b8164a9eb32f3b2749465",
+      "previous_sha256": "a72916bb6436a26952b8ab3dd4c5e3fd1acaf0f0a71b980b9bc9fa80b9e5f147",
+      "status": "replaced",
+      "backup_path": "backup/c18-4-async-image-replacement-tailnet-sync-2026-10-16/STATUS.md"
+    }
+  ]
+}
