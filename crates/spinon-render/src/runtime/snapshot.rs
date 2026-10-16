@@ -8,8 +8,8 @@ use super::scroll::{
     RuntimeScrollClipLayer, RuntimeScrollContainer, RuntimeScrollRenderMetadata, apply_scroll_state,
 };
 use super::{
-    CssSize, RuntimePaint, RuntimeRenderBox, RuntimeRenderError, RuntimeRenderImage,
-    RuntimeRenderKey, RuntimeRenderSnapshot,
+    CssSize, RuntimePaint, RuntimePaintCommand, RuntimeRenderBox, RuntimeRenderError,
+    RuntimeRenderImage, RuntimeRenderKey, RuntimeRenderSnapshot,
 };
 impl RuntimeRenderSnapshot {
     pub fn new(
@@ -50,6 +50,28 @@ impl RuntimeRenderSnapshot {
         scroll_containers: Vec<RuntimeScrollContainer>,
         scroll_metadata: Vec<RuntimeScrollRenderMetadata>,
     ) -> Result<Self, RuntimeRenderError> {
+        let paint_commands = (0..base_boxes.len())
+            .map(|index| RuntimePaintCommand::DrawBox { index })
+            .collect();
+        Self::new_with_scroll_metadata_and_paint_commands(
+            key,
+            viewport_css_px,
+            base_boxes,
+            scroll_containers,
+            scroll_metadata,
+            paint_commands,
+        )
+    }
+
+    pub fn new_with_scroll_metadata_and_paint_commands(
+        key: RuntimeRenderKey,
+        viewport_css_px: CssSize,
+        base_boxes: Vec<RuntimeRenderBox>,
+        scroll_containers: Vec<RuntimeScrollContainer>,
+        scroll_metadata: Vec<RuntimeScrollRenderMetadata>,
+        paint_commands: Vec<RuntimePaintCommand>,
+    ) -> Result<Self, RuntimeRenderError> {
+        validate_paint_commands(&paint_commands, base_boxes.len())?;
         let mut node_ids = BTreeSet::new();
         let mut hit_test_orders = BTreeSet::new();
         for (index, render_box) in base_boxes.iter().enumerate() {
@@ -95,6 +117,7 @@ impl RuntimeRenderSnapshot {
             scroll_containers,
             scroll_metadata,
             images: Arc::from([]),
+            paint_commands: paint_commands.into(),
         })
     }
 
@@ -165,6 +188,7 @@ impl RuntimeRenderSnapshot {
             scroll_containers: Arc::clone(&self.scroll_containers),
             scroll_metadata: Arc::clone(&self.scroll_metadata),
             images: Arc::clone(&self.images),
+            paint_commands: Arc::clone(&self.paint_commands),
         })
     }
 
@@ -178,6 +202,7 @@ impl RuntimeRenderSnapshot {
             scroll_containers: Arc::clone(&self.scroll_containers),
             scroll_metadata: Arc::clone(&self.scroll_metadata),
             images: Arc::clone(&self.images),
+            paint_commands: Arc::clone(&self.paint_commands),
         }
     }
 
@@ -195,6 +220,10 @@ impl RuntimeRenderSnapshot {
 
     pub fn images(&self) -> &[RuntimeRenderImage] {
         &self.images
+    }
+
+    pub fn paint_commands(&self) -> &[RuntimePaintCommand] {
+        &self.paint_commands
     }
 
     pub fn scroll_containers(&self) -> &[RuntimeScrollContainer] {
@@ -221,12 +250,13 @@ impl RuntimeRenderSnapshot {
             };
             *container = container.with_input_policy(policy);
         }
-        Self::new_with_scroll_metadata(
+        Self::new_with_scroll_metadata_and_paint_commands(
             self.key,
             self.viewport_css_px,
             self.base_boxes.to_vec(),
             containers,
             self.scroll_metadata.to_vec(),
+            self.paint_commands.to_vec(),
         )?
         .with_images(self.images.to_vec())
     }
@@ -282,12 +312,13 @@ impl RuntimeRenderSnapshot {
             self.key.scroll_state_revision
         };
         let key = self.key.with_scroll_state_revision(scroll_revision);
-        Self::new_with_scroll_metadata(
+        Self::new_with_scroll_metadata_and_paint_commands(
             key,
             self.viewport_css_px,
             self.base_boxes.to_vec(),
             containers,
             self.scroll_metadata.to_vec(),
+            self.paint_commands.to_vec(),
         )?
         .with_images(self.images.to_vec())
     }
@@ -315,4 +346,42 @@ impl RuntimeRenderSnapshot {
             })
             .max_by_key(|render_box| render_box.hit_test_order())
     }
+}
+
+fn validate_paint_commands(
+    commands: &[RuntimePaintCommand],
+    box_count: usize,
+) -> Result<(), RuntimeRenderError> {
+    let mut next_box = 0_usize;
+    let mut group_depth = 0_usize;
+    for command in commands {
+        match *command {
+            RuntimePaintCommand::BeginGroup { opacity } => {
+                if !opacity.is_finite() || !(0.0..=1.0).contains(&opacity) {
+                    return Err(RuntimeRenderError::InvalidPaintCommands);
+                }
+                group_depth = group_depth
+                    .checked_add(1)
+                    .ok_or(RuntimeRenderError::InvalidPaintCommands)?;
+            }
+            RuntimePaintCommand::DrawBox { index } => {
+                if index != next_box || index >= box_count {
+                    return Err(RuntimeRenderError::InvalidPaintCommands);
+                }
+                next_box = next_box
+                    .checked_add(1)
+                    .ok_or(RuntimeRenderError::InvalidPaintCommands)?;
+            }
+            RuntimePaintCommand::EndGroup => {
+                if group_depth == 0 {
+                    return Err(RuntimeRenderError::InvalidPaintCommands);
+                }
+                group_depth -= 1;
+            }
+        }
+    }
+    if next_box != box_count || group_depth != 0 {
+        return Err(RuntimeRenderError::InvalidPaintCommands);
+    }
+    Ok(())
 }

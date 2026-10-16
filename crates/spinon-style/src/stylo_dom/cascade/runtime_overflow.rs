@@ -21,6 +21,7 @@ pub(super) fn runtime_block_flex_overflow_clip_properties() -> Vec<(&'static str
     for property in [
         ("z-index", LonghandId::ZIndex),
         ("visibility", LonghandId::Visibility),
+        ("opacity", LonghandId::Opacity),
         ("overflow-x", LonghandId::OverflowX),
         ("overflow-y", LonghandId::OverflowY),
         ("overflow-clip-margin", LonghandId::OverflowClipMargin),
@@ -63,6 +64,24 @@ pub fn compute_runtime_block_flex_overflow_clip_cascade_with_stylesheets(
         style_revision,
         &properties,
         ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1,
+    )
+}
+
+/// C19.2의 alpha paint와 C13.1 입력을 같은 Stylo cascade에서 계산합니다.
+pub fn compute_c19_box_paint_opacity_cascade_with_stylesheets(
+    view: &StyloDocumentView,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: spinon_core::StyleRevision,
+) -> Result<super::ComputedStyleSnapshot, CssCascadeError> {
+    let properties = runtime_block_flex_overflow_clip_properties();
+    compute_cascade(
+        view,
+        author_stylesheets,
+        viewport,
+        style_revision,
+        &properties,
+        ComputedStyleProfile::C19BoxPaintOpacityV1,
     )
 }
 

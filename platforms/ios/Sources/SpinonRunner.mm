@@ -941,6 +941,23 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 #endif
 
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST) && \
+    SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST
++ (uint64_t)createRuntimeGpuHostWithC19_2BoxPaintOpacityFixture {
+  std::array<char, 2048> output{};
+  SpinonRuntimeGpuHost *host =
+      spinon_runtime_gpu_host_new_c19_2_box_paint_opacity_fixture(
+          output.data(), output.size());
+  if (host == nullptr) {
+    NSLog(@"SPINON_C192_HOST_ERROR=%s", output.data());
+    return 0;
+  }
+  NSLog(@"SPINON_C192_HOST=%s", output.data());
+  return reinterpret_cast<uint64_t>(host);
+}
+#endif
+
 #if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
 + (uint64_t)createRuntimeGpuHostWithC13_3GestureFixture:(int32_t)scenarioID {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
@@ -1690,6 +1707,22 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 #endif
 
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST) && \
+    SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST
++ (NSString *)evalRuntimeGpuC19_2BoxPaintOpacityFixture:(uint64_t)handle {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 32768> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_c19_2_box_paint_opacity_fixture(
+      host, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C192_EVAL", report);
+  return report;
+}
+#endif
+
 + (NSString *)evalRuntimeGpuC13_1CompactSurfaceMatrixFixture:(uint64_t)handle {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
     defined(SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST) && \
@@ -2029,6 +2062,23 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
       host, sampleXY, sampleCount, output.data(), output.size());
   NSString *report = [NSString stringWithFormat:@"status=%d %s", status, output.data()];
   NSLog(@"SPINON_C184_METAL_PIXEL_REQUEST %@", report);
+  return report;
+}
+#endif
+
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST) && \
+    SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST
++ (NSString *)requestRuntimeGpuC19_2SurfacePixelsForTest:(uint64_t)handle
+                                                   sampleXY:(const uint32_t *)sampleXY
+                                                sampleCount:(NSUInteger)sampleCount {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 2048> output{};
+  const int32_t status = spinon_runtime_gpu_host_request_c19_2_surface_pixels_for_test(
+      host, sampleXY, sampleCount, output.data(), output.size());
+  NSString *report = [NSString stringWithFormat:@"status=%d %s", status, output.data()];
+  NSLog(@"SPINON_C192_METAL_PIXEL_REQUEST %@", report);
   return report;
 }
 #endif

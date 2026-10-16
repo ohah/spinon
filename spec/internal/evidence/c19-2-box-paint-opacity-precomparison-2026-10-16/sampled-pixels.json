@@ -1,0 +1,170 @@
+{
+  "source": "chromium-box-paint-oracle-agent-browser.png",
+  "source_sha256": "61d352cd2b5671973637a875003d25a9b9e789fd7237ba874c0297ea3f29692d",
+  "dimensions": [
+    1280,
+    633
+  ],
+  "samples": {
+    "rootBackdrop": {
+      "x": 800,
+      "y": 400,
+      "rgba": [
+        32,
+        49,
+        75,
+        255
+      ]
+    },
+    "sourceAlpha": {
+      "x": 64,
+      "y": 80,
+      "rgba": [
+        143,
+        25,
+        38,
+        255
+      ]
+    },
+    "groupSingle": {
+      "x": 170,
+      "y": 80,
+      "rgba": [
+        16,
+        89,
+        165,
+        255
+      ]
+    },
+    "groupOverlap": {
+      "x": 205,
+      "y": 80,
+      "rgba": [
+        143,
+        121,
+        38,
+        255
+      ]
+    },
+    "nestedOpacity": {
+      "x": 332,
+      "y": 80,
+      "rgba": [
+        24,
+        101,
+        56,
+        255
+      ]
+    },
+    "alphaTimesGroupOpacity": {
+      "x": 432,
+      "y": 80,
+      "rgba": [
+        88,
+        37,
+        56,
+        255
+      ]
+    },
+    "wideGamutSrgb": {
+      "x": 712,
+      "y": 80,
+      "rgba": [
+        0,
+        142,
+        200,
+        255
+      ]
+    },
+    "opacityZero": {
+      "x": 48,
+      "y": 248,
+      "rgba": [
+        32,
+        49,
+        75,
+        255
+      ]
+    },
+    "opacityHalfSingle": {
+      "x": 212,
+      "y": 260,
+      "rgba": [
+        143,
+        25,
+        38,
+        255
+      ]
+    },
+    "opacityHalfOverlap": {
+      "x": 168,
+      "y": 224,
+      "rgba": [
+        16,
+        25,
+        165,
+        255
+      ]
+    },
+    "opacityOneOverlap": {
+      "x": 288,
+      "y": 224,
+      "rgba": [
+        0,
+        0,
+        255,
+        255
+      ]
+    },
+    "clippedZOverlap": {
+      "x": 430,
+      "y": 240,
+      "rgba": [
+        16,
+        25,
+        165,
+        255
+      ]
+    },
+    "clippedRed": {
+      "x": 455,
+      "y": 240,
+      "rgba": [
+        143,
+        25,
+        38,
+        255
+      ]
+    },
+    "clippedAway": {
+      "x": 470,
+      "y": 240,
+      "rgba": [
+        32,
+        49,
+        75,
+        255
+      ]
+    },
+    "currentColorBorder": {
+      "x": 600,
+      "y": 212,
+      "rgba": [
+        28,
+        121,
+        102,
+        255
+      ]
+    },
+    "borderInterior": {
+      "x": 600,
+      "y": 248,
+      "rgba": [
+        32,
+        49,
+        75,
+        255
+      ]
+    }
+  }
+}

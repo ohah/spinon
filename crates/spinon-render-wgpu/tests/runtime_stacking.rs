@@ -126,6 +126,75 @@ mod macos {
     }
 
     #[test]
+    fn opacity_group_composites_children_as_one_srgb_layer() {
+        let styles = [
+            "display:block;position:relative;width:120px;height:80px;background-color:rgb(32 49 75)",
+            "position:absolute;left:0;top:0;width:90px;height:60px;opacity:0.5",
+            "position:absolute;left:0;top:0;width:60px;height:60px;background-color:rgb(0 128 255)",
+            "position:absolute;left:30px;top:0;width:60px;height:60px;background-color:rgb(255 192 0)",
+        ];
+        let parents = [None, Some(0), Some(1), Some(1)];
+        let mut document = HostDocument::new().expect("HostDocument");
+        let nodes = styles
+            .iter()
+            .map(|_| document.reserve_node_handle().expect("node handle"))
+            .collect::<Vec<_>>();
+        let mut batch = DocumentChangeBatch::new(
+            OwnerId::new(192).expect("owner id"),
+            document.document_revision(),
+        );
+        for (index, (node, style)) in nodes.iter().zip(styles).enumerate() {
+            batch.push(DocumentOperation::CreateElement {
+                node: *node,
+                namespace: HTML.to_owned(),
+                local_name: "div".to_owned(),
+            });
+            batch.push(DocumentOperation::SetAttribute {
+                node: *node,
+                name: AttributeName::new(None, "style").expect("style attribute"),
+                value: style.to_owned().into(),
+            });
+            batch.push(DocumentOperation::InsertBefore {
+                parent: match parents[index] {
+                    None => HostParent::Root,
+                    Some(parent) => HostParent::Node(nodes[parent]),
+                },
+                node: *node,
+                before: None,
+            });
+        }
+        document.commit(batch).expect("document fixture commit");
+        let snapshot = document.snapshot();
+        let viewport = CssViewport {
+            width_css_px: 120.0,
+            height_css_px: 80.0,
+            device_scale_factor: 1.0,
+            environment_revision: Default::default(),
+            media_environment: CssMediaEnvironment::MOBILE,
+        };
+        let view =
+            StyloDocumentView::new_html_fragment_child_shared(Arc::new(snapshot.clone()), nodes[0])
+                .expect("Stylo view");
+        let styles = compute_runtime_block_flex_stacking_cascade_with_stylesheets(
+            &view,
+            &[],
+            viewport,
+            Default::default(),
+        )
+        .expect("C19.2 cascade");
+        let layout = compute_runtime_style_layout(&snapshot, nodes[0], styles, viewport)
+            .expect("C19.2 layout");
+        let current =
+            CurrentLayoutInputs::for_host_document(&snapshot, Default::default(), viewport);
+        let scene = build_runtime_render_snapshot(&snapshot, nodes[0], &layout, current)
+            .expect("C19.2 render snapshot");
+        let samples = readback_runtime_scene_samples(&scene, 120, 80, &[(10, 10), (45, 10)])
+            .expect("C19.2 WGPU readback");
+
+        assert_eq!(samples, [[16, 89, 165, 255], [143, 121, 38, 255]]);
+    }
+
+    #[test]
     fn wpt_derived_stacking_cases_match_offscreen_pixels() {
         let styles = [
             "display:block;position:relative;width:120px;height:60px;background-color:#101827",

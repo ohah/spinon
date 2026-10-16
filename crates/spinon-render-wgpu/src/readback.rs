@@ -6,6 +6,7 @@ use spinon_render::RuntimeRenderSnapshot;
 use crate::geometry::{ColorEncoding, build_colored_geometry};
 use crate::renderer::create_pipeline;
 use crate::renderer::images::RuntimeImageRenderer;
+use crate::renderer::paint_commands::OpacityGroupRenderer;
 
 /// 같은 runtime scene·shader·geometry 경로를 headless texture에 그려 표본을 읽습니다.
 /// 앱 공개 API가 아니라 고정 Chromium fixture 검증용입니다.
@@ -43,7 +44,9 @@ pub fn readback_runtime_scene_samples(
     }))
     .map_err(|error| format!("headless WGPU device를 만들지 못했습니다: {error}"))?;
 
-    let format = wgpu::TextureFormat::Rgba8UnormSrgb;
+    let format = wgpu::TextureFormat::Rgba8Unorm;
+    // Match the runtime surface path: an 8-bit UNORM attachment advertised as sRGB.
+    // This keeps source-over composition in encoded sRGB values, as on the captured browser path.
     let texture = device.create_texture(&wgpu::TextureDescriptor {
         label: Some("spinon-runtime-scene-readback-target"),
         size: wgpu::Extent3d {
@@ -60,9 +63,10 @@ pub fn readback_runtime_scene_samples(
     });
     let view = texture.create_view(&wgpu::TextureViewDescriptor::default());
     let pipeline = create_pipeline(&device, format);
+    let mut opacity_group_renderer = OpacityGroupRenderer::new(&device, format);
     let mut image_renderer = RuntimeImageRenderer::new(&device, format)?;
     let prepared_images = image_renderer.prepare(&device, &queue, Some(scene), width, height)?;
-    let geometry = build_colored_geometry(scene, width, height, ColorEncoding::Linear)?;
+    let geometry = build_colored_geometry(scene, width, height, ColorEncoding::Srgb)?;
     let bytes = bytemuck::cast_slice(&geometry.vertices);
     let vertex_buffer_size = u64::try_from(
         bytes
@@ -80,8 +84,9 @@ pub fn readback_runtime_scene_samples(
         queue.write_buffer(&vertex_buffer, 0, bytes);
     }
 
+    let bytes_per_pixel = 4;
     let unpadded_bytes_per_row = width
-        .checked_mul(4)
+        .checked_mul(bytes_per_pixel)
         .ok_or_else(|| "WGPU readback 행 크기가 범위를 넘었습니다".to_owned())?;
     let alignment = wgpu::COPY_BYTES_PER_ROW_ALIGNMENT;
     let bytes_per_row = unpadded_bytes_per_row
@@ -101,40 +106,19 @@ pub fn readback_runtime_scene_samples(
     let mut encoder = device.create_command_encoder(&wgpu::CommandEncoderDescriptor {
         label: Some("spinon-runtime-scene-readback-encoder"),
     });
-    {
-        let mut pass = encoder.begin_render_pass(&wgpu::RenderPassDescriptor {
-            label: Some("spinon-runtime-scene-readback-pass"),
-            color_attachments: &[Some(wgpu::RenderPassColorAttachment {
-                view: &view,
-                depth_slice: None,
-                resolve_target: None,
-                ops: wgpu::Operations {
-                    load: wgpu::LoadOp::Clear(wgpu::Color::BLACK),
-                    store: wgpu::StoreOp::Store,
-                },
-            })],
-            depth_stencil_attachment: None,
-            timestamp_writes: None,
-            occlusion_query_set: None,
-            multiview_mask: None,
-        });
-        for (box_index, render_box) in scene.boxes().iter().enumerate() {
-            if let Some(range) = geometry.range_for_box(box_index)
-                && !range.is_empty()
-            {
-                pass.set_pipeline(&pipeline);
-                pass.set_vertex_buffer(0, vertex_buffer.slice(..));
-                pass.draw(range, 0..1);
-            }
-            if let Some(image_index) = scene
-                .images()
-                .iter()
-                .position(|image| image.node_id() == render_box.node_id())
-            {
-                image_renderer.draw_image(&mut pass, &prepared_images, image_index);
-            }
-        }
-    }
+    opacity_group_renderer.draw_scene(
+        &device,
+        &mut encoder,
+        scene,
+        &view,
+        width,
+        height,
+        &pipeline,
+        &vertex_buffer,
+        &geometry,
+        &image_renderer,
+        &prepared_images,
+    )?;
     encoder.copy_texture_to_buffer(
         wgpu::TexelCopyTextureInfo {
             texture: &texture,
@@ -182,10 +166,12 @@ pub fn readback_runtime_scene_samples(
         .try_reserve(sample_points.len())
         .map_err(|_| "WGPU readback 표본 목록을 할당하지 못했습니다".to_owned())?;
     for (x, y) in sample_points {
-        let offset = usize::try_from(u64::from(*y) * u64::from(bytes_per_row) + u64::from(*x) * 4)
-            .map_err(|_| "WGPU readback 표본 offset이 범위를 넘었습니다".to_owned())?;
+        let offset = usize::try_from(
+            u64::from(*y) * u64::from(bytes_per_row) + u64::from(*x) * u64::from(bytes_per_pixel),
+        )
+        .map_err(|_| "WGPU readback 표본 offset이 범위를 넘었습니다".to_owned())?;
         let rgba = mapped
-            .get(offset..offset + 4)
+            .get(offset..offset + bytes_per_pixel as usize)
             .ok_or_else(|| "WGPU readback 표본이 mapped 범위를 벗어났습니다".to_owned())?;
         samples.push([rgba[0], rgba[1], rgba[2], rgba[3]]);
     }

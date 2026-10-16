@@ -255,8 +255,11 @@ pub(super) fn paint_auto_positioned_subtrees(
             }
             if descendant_style.layout_position != ComputedCssPosition::Static
                 || descendant_style.stacking_z_index != Some(ComputedCssZIndex::Auto)
+                || descendant_style
+                    .stacking_opacity
+                    .is_some_and(|opacity| opacity.value() < 1.0)
             {
-                // Positioned descendants and their subtrees remain in their own paint phase.
+                // Positioned descendants and stacking contexts keep their own paint phase.
                 continue;
             }
             reserve.reserve(&mut descendants, 1, "positioned subtree descendants")?;

@@ -47,6 +47,8 @@ use cache::RuntimeCalculationCacheKey;
 use cache::RuntimeStyleCacheEntry;
 #[cfg(feature = "c13-3-gesture-fixture-test")]
 use calculation::compute_request_for_block_flex_scroll_gesture;
+#[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
+use calculation::compute_request_for_c19_box_paint_opacity;
 use calculation::{
     RuntimeCalculation, compute_request, compute_request_for_block_flex_grid,
     compute_request_for_block_flex_grid_auto_placement,
@@ -249,6 +251,11 @@ impl RuntimeUaCascadeCoordinator {
 
     pub(super) fn new_runtime_gpu_block_flex_overflow_clip() -> Result<Self, String> {
         Self::new_with_computer(Arc::new(compute_request_for_block_flex_overflow_clip))
+    }
+
+    #[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
+    pub(super) fn new_runtime_gpu_c19_2_box_paint_opacity() -> Result<Self, String> {
+        Self::new_with_computer(Arc::new(compute_request_for_c19_box_paint_opacity))
     }
 
     #[cfg(feature = "c13-3-gesture-fixture-test")]

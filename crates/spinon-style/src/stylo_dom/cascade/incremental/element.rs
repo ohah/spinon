@@ -17,7 +17,7 @@ use style::{
 };
 
 use super::super::{
-    ComputedCssMath, ComputedCssOverflow, ComputedCssOverflowClipMargin,
+    ComputedCssMath, ComputedCssOpacity, ComputedCssOverflow, ComputedCssOverflowClipMargin,
     ComputedCssOverflowVisualBox, ComputedCssOverscrollBehavior, ComputedCssPosition,
     ComputedCssTouchAction, ComputedCssVisibility, ComputedCssZIndex, ComputedElementStyle,
     ComputedStyleProfile, CssCascadeError, CssViewport, FixedContainingBlockEffect, runtime_paint,
@@ -49,10 +49,17 @@ pub(super) fn computed_element_output(
     let has_overflow = matches!(
         profile,
         ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+            | ComputedStyleProfile::C19BoxPaintOpacityV1
             | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
     );
     let layout_border_paint = has_overflow
-        .then(|| runtime_paint::computed_runtime_border_paint(computed, node_id, layout_border))
+        .then(|| {
+            if profile == ComputedStyleProfile::C19BoxPaintOpacityV1 {
+                runtime_paint::computed_c19_runtime_border_paint(computed, node_id, layout_border)
+            } else {
+                runtime_paint::computed_runtime_border_paint(computed, node_id, layout_border)
+            }
+        })
         .transpose()?;
     let layout_position = match computed.clone_position() {
         style::values::computed::PositionProperty::Static => ComputedCssPosition::Static,
@@ -66,16 +73,33 @@ pub(super) fn computed_element_output(
         profile,
         ComputedStyleProfile::RuntimeBlockFlexStackingV1
             | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+            | ComputedStyleProfile::C19BoxPaintOpacityV1
             | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
     )
     .then(|| match computed.clone_z_index() {
         style::values::computed::ZIndex::Auto => ComputedCssZIndex::Auto,
         style::values::computed::ZIndex::Integer(value) => ComputedCssZIndex::Integer(value),
     });
+    let stacking_opacity = matches!(
+        profile,
+        ComputedStyleProfile::RuntimeBlockFlexStackingV1
+            | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+            | ComputedStyleProfile::C19BoxPaintOpacityV1
+            | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
+    )
+    .then(|| {
+        let opacity = computed.clone_opacity();
+        ComputedCssOpacity::new(opacity).ok_or(CssCascadeError::UnsupportedComputedOpacity {
+            node: node_id,
+            value: opacity,
+        })
+    })
+    .transpose()?;
     let stacking_visibility = matches!(
         profile,
         ComputedStyleProfile::RuntimeBlockFlexStackingV1
             | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+            | ComputedStyleProfile::C19BoxPaintOpacityV1
             | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
     )
     .then(|| match computed.clone_visibility() {
@@ -126,6 +150,7 @@ pub(super) fn computed_element_output(
             | ComputedStyleProfile::RuntimeBlockPositioningV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1
             | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+            | ComputedStyleProfile::C19BoxPaintOpacityV1
             | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
     ) {
         computed_layout_aspect_ratio(computed, node_id)?
@@ -198,6 +223,7 @@ pub(super) fn computed_element_output(
         node_id,
         layout_position,
         stacking_z_index,
+        stacking_opacity,
         stacking_visibility,
         layout_overflow_x,
         layout_overflow_y,

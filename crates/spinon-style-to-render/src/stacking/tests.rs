@@ -354,6 +354,9 @@ fn each_fallible_reservation_failure_returns_its_exact_stage() {
             "paint nodes",
             "render boxes",
             "scroll render metadata",
+            "opacity group stack",
+            "opacity context path",
+            "opacity paint commands",
         ]),
         "각 Vec 예약 오류 경로가 fixture에 포함되어야 합니다: {stages:?}"
     );

@@ -12,8 +12,8 @@ pub use runtime::{
     CssAxisClip, CssClip, RuntimeBorder, RuntimeBorderSide, RuntimeGestureAxes,
     RuntimeImageObjectFit, RuntimeImageObjectPosition, RuntimeImageObjectStyle,
     RuntimeImageResourceKey, RuntimeImageSampling, RuntimeOverscrollBehavior, RuntimePaint,
-    RuntimeRenderBox, RuntimeRenderError, RuntimeRenderImage, RuntimeRenderKey,
-    RuntimeRenderSnapshot, RuntimeScrollClipLayer, RuntimeScrollContainer,
+    RuntimePaintCommand, RuntimeRenderBox, RuntimeRenderError, RuntimeRenderImage,
+    RuntimeRenderKey, RuntimeRenderSnapshot, RuntimeScrollClipLayer, RuntimeScrollContainer,
     RuntimeScrollDeltaChange, RuntimeScrollDeltaOutcome, RuntimeScrollGestureBegin,
     RuntimeScrollGestureBeginDisposition, RuntimeScrollGestureCancelReason,
     RuntimeScrollGestureError, RuntimeScrollGestureIdentity, RuntimeScrollGestureInputQueue,
@@ -22,7 +22,7 @@ pub use runtime::{
     RuntimeScrollInputPolicy, RuntimeScrollInputQueueAdmission, RuntimeScrollInputQueueDiagnostics,
     RuntimeScrollInputQueueError, RuntimeScrollInputQueueEvent, RuntimeScrollMomentumPhase,
     RuntimeScrollRenderMetadata, RuntimeScrollWheelSample, RuntimeScrollWheelSource,
-    RuntimeScrollWheelUnit, RuntimeTouchAction,
+    RuntimeScrollWheelUnit, RuntimeSrgbColor, RuntimeTouchAction,
 };
 
 /// CSS px 좌표계의 양수 viewport 크기입니다.

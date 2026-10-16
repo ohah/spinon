@@ -1,0 +1,69 @@
+{
+  "capture": {
+    "fixture": "chromium-box-paint-fixture.html",
+    "fixture_sha256": "111c2a6fa1797ab7046bd2850cc27115e76bb72ae907d515283493d2022ad922",
+    "browser_metadata": "browser-metadata.json",
+    "screenshot": "chromium-box-paint-oracle-agent-browser.png",
+    "screenshot_sha256": "61d352cd2b5671973637a875003d25a9b9e789fd7237ba874c0297ea3f29692d",
+    "screenshot_dimensions": [1280, 633],
+    "pixel_sampler": "Python Pillow Image.getpixel on the saved Agent Browser screenshot; no browser canvas prediction used"
+  },
+  "viewport": {"width": 1280, "height": 633, "dpr": 1},
+  "computed": {
+    "alpha": {"color": "rgb(255, 255, 255)", "backgroundColor": "rgba(255, 0, 0, 0.5)", "opacity": "1", "rect": [32, 48, 64, 64]},
+    "group": {"backgroundColor": "rgba(0, 0, 0, 0)", "opacity": "0.5", "rect": [160, 48, 90, 80]},
+    "nested-outer": {"backgroundColor": "rgba(0, 0, 0, 0)", "opacity": "0.5", "rect": [300, 48, 64, 64]},
+    "nested-inner": {"backgroundColor": "rgb(0, 255, 0)", "opacity": "0.5", "rect": [0, 0, 64, 64]},
+    "alpha-opacity": {"backgroundColor": "rgba(255, 0, 0, 0.5)", "opacity": "0.5", "rect": [400, 48, 64, 64]},
+    "wide-gamut": {"backgroundColor": "oklch(0.6 0.15 230)", "opacity": "1", "rect": [680, 48, 64, 64]},
+    "opacity-zero": {"backgroundColor": "rgb(255, 0, 0)", "opacity": "0", "rect": [32, 208, 80, 80]},
+    "opacity-half": {"backgroundColor": "rgb(255, 0, 0)", "opacity": "0.5", "rect": [152, 208, 80, 80]},
+    "opacity-one": {"backgroundColor": "rgb(255, 0, 0)", "opacity": "1", "rect": [272, 208, 80, 80]},
+    "clip-context": {"backgroundColor": "rgba(0, 0, 0, 0)", "opacity": "0.5", "overflow": "hidden", "rect": [400, 208, 64, 64]},
+    "current-color-border": {"color": "rgba(24, 192, 128, 0.5)", "borderTopColor": "rgba(24, 192, 128, 0.5)", "opacity": "1", "rect": [560, 208, 80, 80]}
+  },
+  "hit_tests": {
+    "alpha": {"point": [64, 80], "node": "alpha"},
+    "group_blue": {"point": [170, 80], "node": "group-blue"},
+    "group_overlap": {"point": [205, 80], "node": "group-yellow"},
+    "nested_inner": {"point": [332, 80], "node": "nested-inner"},
+    "alpha_opacity": {"point": [432, 80], "node": "alpha-opacity"},
+    "wide_gamut": {"point": [712, 80], "node": "wide-gamut"},
+    "opacity_zero": {"point": [48, 248], "node": "opacity-zero"},
+    "opacity_half_child": {"point": [168, 224], "node": "opacity-half"},
+    "opacity_one": {"point": [312, 248], "node": "opacity-one"},
+    "clip_z_overlap": {"point": [430, 240], "node": "clip-blue"},
+    "clip_z_red": {"point": [455, 240], "node": "clip-red"},
+    "clip_outside": {"point": [470, 240], "node": "stage"},
+    "border": {"point": [600, 212], "node": "current-color-border"},
+    "border_interior": {"point": [600, 248], "node": "current-color-border"},
+    "root_hit": {"point": [740, 248], "node": "root-hit"}
+  },
+  "samples": {
+    "rootBackdrop": {"point": [800, 400], "rgba": [32, 49, 75, 255]},
+    "sourceAlpha": {"point": [64, 80], "rgba": [143, 25, 38, 255]},
+    "groupSingle": {"point": [170, 80], "rgba": [16, 89, 165, 255]},
+    "groupOverlap": {"point": [205, 80], "rgba": [143, 121, 38, 255]},
+    "nestedOpacity": {"point": [332, 80], "rgba": [24, 101, 56, 255]},
+    "alphaTimesGroupOpacity": {"point": [432, 80], "rgba": [88, 37, 56, 255]},
+    "wideGamutSrgb": {"point": [712, 80], "rgba": [0, 142, 200, 255]},
+    "opacityZero": {"point": [48, 248], "rgba": [32, 49, 75, 255]},
+    "opacityHalfSingle": {"point": [212, 260], "rgba": [143, 25, 38, 255]},
+    "opacityHalfOverlap": {"point": [168, 224], "rgba": [16, 25, 165, 255]},
+    "opacityOneOverlap": {"point": [288, 224], "rgba": [0, 0, 255, 255]},
+    "clippedZOverlap": {"point": [430, 240], "rgba": [16, 25, 165, 255]},
+    "clippedRed": {"point": [455, 240], "rgba": [143, 25, 38, 255]},
+    "clippedAway": {"point": [470, 240], "rgba": [32, 49, 75, 255]},
+    "currentColorBorder": {"point": [600, 212], "rgba": [28, 121, 102, 255]},
+    "borderInterior": {"point": [600, 248], "rgba": [32, 49, 75, 255]}
+  },
+  "fixture_contract": {
+    "group_overlap_children_source": {"blue": [0, 128, 255, 255], "yellow": [255, 192, 0, 255], "group_opacity": 0.5},
+    "nested_group_opacities": [0.5, 0.5],
+    "alpha_times_group_opacity": {"source_alpha": 0.5, "group_opacity": 0.5},
+    "opacity_levels": [0, 0.5, 1],
+    "border_current_color": {"source_rgba": [24, 192, 128, 128], "width_css_px": 8},
+    "wide_gamut_color": "oklch(60% 0.15 230deg)",
+    "root_backdrop_srgb": [32, 49, 75, 255]
+  }
+}

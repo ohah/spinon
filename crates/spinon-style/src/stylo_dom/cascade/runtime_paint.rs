@@ -207,16 +207,22 @@ pub(super) fn computed_background_for_profile(
         | ComputedStyleProfile::RuntimeBlockPositioningV1
         | ComputedStyleProfile::RuntimeBlockFlexStackingV1
         | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+        | ComputedStyleProfile::C19BoxPaintOpacityV1
         | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
         | ComputedStyleProfile::RuntimeBlockFlexGridV1
         | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
         | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
         | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
         | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1 => {
-            let paint = computed_runtime_background_paint(computed, node)?;
+            let paint = if profile == ComputedStyleProfile::C19BoxPaintOpacityV1 {
+                computed_c19_runtime_background_paint(computed, node)?
+            } else {
+                computed_runtime_background_paint(computed, node)?
+            };
             let color = match paint {
                 ComputedBackgroundPaint::Transparent => None,
                 ComputedBackgroundPaint::Opaque(color) => Some(color),
+                ComputedBackgroundPaint::Translucent(_) => None,
             };
             Ok((color, Some(paint)))
         }
@@ -453,10 +459,57 @@ pub(super) fn computed_runtime_background_paint(
     }
 }
 
+pub(super) fn computed_c19_runtime_background_paint(
+    computed: &ComputedValues,
+    node: NodeId,
+) -> Result<ComputedBackgroundPaint, CssCascadeError> {
+    match computed.clone_background_color() {
+        style::values::computed::Color::Absolute(color) => {
+            OpaqueCssSrgb::c19_runtime_paint_from_absolute_color(color).map_err(|reason| {
+                CssCascadeError::UnsupportedComputedBackgroundColor {
+                    node,
+                    reason: reason.to_owned(),
+                }
+            })
+        }
+        _ => Err(CssCascadeError::UnsupportedComputedBackgroundColor {
+            node,
+            reason: "Stylo 계산값이 절대 색상이 아닙니다".to_owned(),
+        }),
+    }
+}
+
 pub(super) fn computed_runtime_border_paint(
     computed: &ComputedValues,
     node: NodeId,
     border: super::ComputedLayoutBorder,
+) -> Result<ComputedBorderPaint, CssCascadeError> {
+    computed_border_paint(
+        computed,
+        node,
+        border,
+        OpaqueCssSrgb::runtime_paint_from_absolute_color,
+    )
+}
+
+pub(super) fn computed_c19_runtime_border_paint(
+    computed: &ComputedValues,
+    node: NodeId,
+    border: super::ComputedLayoutBorder,
+) -> Result<ComputedBorderPaint, CssCascadeError> {
+    computed_border_paint(
+        computed,
+        node,
+        border,
+        OpaqueCssSrgb::c19_runtime_paint_from_absolute_color,
+    )
+}
+
+fn computed_border_paint(
+    computed: &ComputedValues,
+    node: NodeId,
+    border: super::ComputedLayoutBorder,
+    convert_color: fn(style::color::AbsoluteColor) -> Result<ComputedBackgroundPaint, &'static str>,
 ) -> Result<ComputedBorderPaint, CssCascadeError> {
     let side = |width: f32,
                 style_property: LonghandId,
@@ -487,12 +540,10 @@ pub(super) fn computed_runtime_border_paint(
                 });
             }
         };
-        OpaqueCssSrgb::runtime_paint_from_absolute_color(color).map_err(|reason| {
-            CssCascadeError::UnsupportedComputedBorderColor {
-                node,
-                property: color_property,
-                reason: reason.to_owned(),
-            }
+        convert_color(color).map_err(|reason| CssCascadeError::UnsupportedComputedBorderColor {
+            node,
+            property: color_property,
+            reason: reason.to_owned(),
         })
     };
 

@@ -3,7 +3,7 @@
 ## 기준과 고정 환경
 
 - 작업 전 main 기준은 `236d58f970dae15c6f2bb42d613a2db163b5158c` (`24a4d9c7d18701c17f0cb0963b18ec3f89c90bec` tree)다. 제품 코드 변경 전 Agent Browser로 Chromium 결과를 고정했다.
-- Agent Browser 0.31.1이 Google Chrome 155.0.8059.85를 실행했다. Chrome for Testing 패키징 여부는 확인되지 않아 설치된 Google Chrome으로 기록한다. CDP `Browser.getVersion`은 protocol `1.3`, V8 `15.5.35.25`, WebKit revision `537.36 (@0e66b94549a8bd85f03fbdf189b752d6e7b63c32)`을 반환했다. 실행 파일과 엔진 framework SHA-256은 [browser-metadata.json](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/browser-metadata.json)에 있다.
+- Agent Browser 0.31.1이 Google Chrome 155.0.8059.85를 실행했다. Chrome for Testing 패키징 여부는 확인되지 않아 설치된 Google Chrome으로 기록한다. CDP `Browser.getVersion`은 protocol `1.3`, V8 `15.5.35.25`, `webKitVersion=537.36 (@0e66b94549a8bd85f03fbdf189b752d6e7b63c32)`을 반환했다. 2026-10-17 Agent Browser의 `chrome://version`에서 같은 hash가 Chromium revision `refs/branch-heads/8059@{#1304}`임을 확인했다. 실행 파일과 engine framework SHA-256은 [browser-metadata.json](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/browser-metadata.json)에 있다. 색 변환 소스 분석은 [고정 Chromium revision 근거](./chromium-source-analysis-2026-10-17.md)를 참고한다.
 - macOS 26.5.1 arm64, Chromium navigator platform `MacIntel`, viewport `1280×633` CSS px, screen `800×600`, DPR 1, `ko-KR`/`ko`, `Asia/Seoul`로 실행했다. OS 선호 색상은 dark지만 fixture와 모든 element에 `color-scheme: light`를 명시했다. `forced-colors`는 꺼져 있고 `color-gamut`은 `srgb`다.
 - 색 출력 oracle은 Canvas 2D `srgb` / `unorm8` context의 `getImageData()` RGBA8이다. context는 alpha를 사용하고 tone mapping은 `standard`다. 결과는 GPU surface, wide-gamut display 또는 platform compositor 측정이 아니다.
 

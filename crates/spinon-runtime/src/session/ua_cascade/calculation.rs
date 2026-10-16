@@ -8,6 +8,8 @@ use super::{
 };
 use spinon_core::{HostNodeHandle, HostNodeKind, HostParent, NodeId};
 use spinon_layout::MAX_LAYOUT_TREE_DEPTH;
+#[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
+use spinon_style::compute_c19_box_paint_opacity_cascade_with_stylesheets;
 #[cfg(feature = "c13-3-gesture-fixture-test")]
 use spinon_style::compute_runtime_block_flex_scroll_gesture_cascade_with_stylesheets;
 use spinon_style::{
@@ -42,6 +44,8 @@ pub(super) enum RuntimeCalculationProfile {
     BlockPositioning,
     BlockFlexStacking,
     BlockFlexOverflowClip,
+    #[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
+    C19BoxPaintOpacity,
     #[cfg(feature = "c13-3-gesture-fixture-test")]
     BlockFlexScrollGesture,
     BlockFlexGrid,
@@ -203,6 +207,13 @@ pub(super) fn compute_request_for_block_flex_overflow_clip(
     request: &WorkRequest,
 ) -> Result<RuntimeCalculation, String> {
     compute_request_with_profile(request, RuntimeCalculationProfile::BlockFlexOverflowClip)
+}
+
+#[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
+pub(super) fn compute_request_for_c19_box_paint_opacity(
+    request: &WorkRequest,
+) -> Result<RuntimeCalculation, String> {
+    compute_request_with_profile(request, RuntimeCalculationProfile::C19BoxPaintOpacity)
 }
 
 #[cfg(feature = "c13-3-gesture-fixture-test")]
@@ -446,6 +457,8 @@ fn compute_root(
         RuntimeCalculationProfile::BlockFlexOverflowClip => {
             ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
         }
+        #[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
+        RuntimeCalculationProfile::C19BoxPaintOpacity => ComputedStyleProfile::C19BoxPaintOpacityV1,
         #[cfg(feature = "c13-3-gesture-fixture-test")]
         RuntimeCalculationProfile::BlockFlexScrollGesture => {
             ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
@@ -569,6 +582,15 @@ fn compute_root(
             }
             RuntimeCalculationProfile::BlockFlexOverflowClip => {
                 compute_runtime_block_flex_overflow_clip_cascade_with_stylesheets(
+                    &view,
+                    author_stylesheets,
+                    request.viewport,
+                    request.key.style_revision,
+                )
+            }
+            #[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
+            RuntimeCalculationProfile::C19BoxPaintOpacity => {
+                compute_c19_box_paint_opacity_cascade_with_stylesheets(
                     &view,
                     author_stylesheets,
                     request.viewport,

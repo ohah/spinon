@@ -5,12 +5,11 @@ use spinon_layout::LayoutSourceRevision;
 #[cfg(feature = "c13-3-gesture-fixture-test")]
 use spinon_render::RuntimeTouchAction;
 use spinon_render::{
-    CssClip, CssRect, CssSize, OpaqueCssSrgb, RuntimeBorder, RuntimeBorderSide, RuntimePaint,
-    RuntimeRenderBox, RuntimeRenderKey, RuntimeRenderSnapshot, RuntimeScrollRenderMetadata,
+    CssClip, CssRect, CssSize, RuntimeBorder, RuntimeBorderSide, RuntimeRenderBox,
+    RuntimeRenderKey, RuntimeRenderSnapshot, RuntimeScrollRenderMetadata,
 };
 use spinon_style::{
-    ComputedBackgroundPaint, ComputedCssPosition, ComputedCssVisibility, ComputedCssZIndex,
-    ComputedStyleProfile,
+    ComputedCssPosition, ComputedCssVisibility, ComputedCssZIndex, ComputedStyleProfile,
 };
 use spinon_style_to_layout::StyleLayoutOutput;
 
@@ -28,10 +27,12 @@ pub(crate) mod scroll;
 #[cfg(test)]
 mod tests;
 
+mod opacity;
 mod ordering;
 mod tree;
 mod types;
 
+use opacity::{paint_commands_for_boxes, runtime_paint};
 use ordering::{
     add_context, add_node, flatten_contexts, flatten_hit_test_order, paint_auto_positioned_subtrees,
 };
@@ -140,9 +141,11 @@ fn build_runtime_render_snapshot_with_scroll_state_and_reserve<R: FallibleReserv
     let mut contexts = Vec::new();
     reserve.reserve(&mut contexts, 1, "root context")?;
     contexts.push(StackingContext {
+        parent: None,
         root: Some(root.id()),
         ..StackingContext::default()
     });
+    let mut paint_context_by_node = BTreeMap::new();
     let mut visited = BTreeSet::new();
     let mut next_tree_order = 0_u64;
     let mut visible_node_count = 0_usize;
@@ -222,13 +225,23 @@ fn build_runtime_render_snapshot_with_scroll_state_and_reserve<R: FallibleReserv
                     ComputedCssPosition::Absolute | ComputedCssPosition::Fixed
                 );
             if node.id() != root.id() {
-                if let Some(stack_level) =
+                let opacity = style
+                    .stacking_opacity
+                    .ok_or(StyleRenderError::MissingComputedProperty {
+                        node: node.id(),
+                        property: "opacity",
+                    })?
+                    .value();
+                let stack_level =
                     stacking_context_level(position, style.stacking_z_index, is_flex_item)?
-                {
+                        .or_else(|| (opacity < 1.0).then_some(0));
+                if let Some(stack_level) = stack_level {
                     reserve.reserve(&mut contexts, 1, "stacking contexts")?;
                     let context_id = contexts.len();
                     contexts.push(StackingContext {
+                        parent: Some(work.parent_context),
                         root: Some(node.id()),
+                        opacity: (opacity < 1.0).then_some(opacity),
                         ..StackingContext::default()
                     });
                     add_context(
@@ -239,6 +252,7 @@ fn build_runtime_render_snapshot_with_scroll_state_and_reserve<R: FallibleReserv
                         reserve,
                     )?;
                     child_context = context_id;
+                    paint_context_by_node.insert(node.id(), context_id);
                 } else {
                     add_node(
                         &mut contexts[work.parent_context],
@@ -248,9 +262,19 @@ fn build_runtime_render_snapshot_with_scroll_state_and_reserve<R: FallibleReserv
                         is_flex_item,
                         reserve,
                     )?;
+                    paint_context_by_node.insert(node.id(), work.parent_context);
                 }
             } else {
                 contexts[0].root = Some(node.id());
+                let opacity = style
+                    .stacking_opacity
+                    .ok_or(StyleRenderError::MissingComputedProperty {
+                        node: node.id(),
+                        property: "opacity",
+                    })?
+                    .value();
+                contexts[0].opacity = (opacity < 1.0).then_some(opacity);
+                paint_context_by_node.insert(node.id(), 0);
             }
         }
 
@@ -388,29 +412,23 @@ fn build_runtime_render_snapshot_with_scroll_state_and_reserve<R: FallibleReserv
         let frame_css_px = CssRect::new(frame.x, frame.y, frame.width, frame.height)
             .map_err(|_| StyleRenderError::InvalidFrame(node_id))?;
         let paint = match style.background_paint {
-            Some(ComputedBackgroundPaint::Transparent) => RuntimePaint::None,
-            Some(ComputedBackgroundPaint::Opaque(color)) => {
-                RuntimePaint::Opaque(OpaqueCssSrgb::new(color.red, color.green, color.blue))
-            }
+            Some(paint) => runtime_paint(paint)?,
             None => return Err(StyleRenderError::MissingBackgroundColor(node_id)),
         };
         let border = match style.layout_border_paint {
             Some(border_paint) => RuntimeBorder::new(
-                RuntimeBorderSide::new(
-                    style.layout_border.top,
-                    runtime_border_paint(border_paint.top),
-                )?,
+                RuntimeBorderSide::new(style.layout_border.top, runtime_paint(border_paint.top)?)?,
                 RuntimeBorderSide::new(
                     style.layout_border.right,
-                    runtime_border_paint(border_paint.right),
+                    runtime_paint(border_paint.right)?,
                 )?,
                 RuntimeBorderSide::new(
                     style.layout_border.bottom,
-                    runtime_border_paint(border_paint.bottom),
+                    runtime_paint(border_paint.bottom)?,
                 )?,
                 RuntimeBorderSide::new(
                     style.layout_border.left,
-                    runtime_border_paint(border_paint.left),
+                    runtime_paint(border_paint.left)?,
                 )?,
             ),
             None => RuntimeBorder::none(),
@@ -467,19 +485,23 @@ fn build_runtime_render_snapshot_with_scroll_state_and_reserve<R: FallibleReserv
         scroll_metadata.push(metadata);
     }
 
-    RuntimeRenderSnapshot::new_with_scroll_metadata(
+    let paint_commands =
+        paint_commands_for_boxes(&boxes, &paint_context_by_node, &contexts, reserve)?;
+    RuntimeRenderSnapshot::new_with_scroll_metadata_and_paint_commands(
         key,
         viewport_css_px,
         boxes,
         scroll_containers,
         scroll_metadata,
+        paint_commands,
     )
     .map_err(Into::into)
 }
 
 fn uses_overflow_clip_profile(profile: ComputedStyleProfile) -> bool {
     match profile {
-        ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1 => true,
+        ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+        | ComputedStyleProfile::C19BoxPaintOpacityV1 => true,
         #[cfg(feature = "c13-3-gesture-fixture-test")]
         ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1 => true,
         _ => false,
@@ -533,19 +555,11 @@ fn touch_action_chain_for_node<R: FallibleReserve>(
 fn is_runtime_stacking_profile(profile: ComputedStyleProfile) -> bool {
     match profile {
         ComputedStyleProfile::RuntimeBlockFlexStackingV1
-        | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1 => true,
+        | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+        | ComputedStyleProfile::C19BoxPaintOpacityV1 => true,
         #[cfg(feature = "c13-3-gesture-fixture-test")]
         ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1 => true,
         _ => false,
-    }
-}
-
-fn runtime_border_paint(paint: ComputedBackgroundPaint) -> RuntimePaint {
-    match paint {
-        ComputedBackgroundPaint::Transparent => RuntimePaint::None,
-        ComputedBackgroundPaint::Opaque(color) => {
-            RuntimePaint::Opaque(OpaqueCssSrgb::new(color.red, color.green, color.blue))
-        }
     }
 }
 
@@ -584,6 +598,12 @@ fn validate_computed_stacking_values(
                     property: "visibility",
                 });
             }
+        }
+        if style.stacking_opacity.is_none() {
+            return Err(StyleRenderError::MissingComputedProperty {
+                node: *node,
+                property: "opacity",
+            });
         }
     }
     Ok(())

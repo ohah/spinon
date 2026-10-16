@@ -291,6 +291,7 @@ pub fn compute_runtime_style_layout(
         ComputedStyleProfile::RuntimeBlockPositioningV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1
             | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+            | ComputedStyleProfile::C19BoxPaintOpacityV1
             | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
             | ComputedStyleProfile::RuntimeBlockFlexGridV1
             | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
@@ -321,6 +322,7 @@ pub fn compute_runtime_style_layout_with_intrinsic_size_snapshot(
         ComputedStyleProfile::RuntimeBlockPositioningV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1
             | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+            | ComputedStyleProfile::C19BoxPaintOpacityV1
             | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
             | ComputedStyleProfile::RuntimeBlockFlexGridV1
             | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
@@ -391,6 +393,7 @@ fn compute_profile_layout(
         | ComputedStyleProfile::RuntimeBlockPositioningV1
         | ComputedStyleProfile::RuntimeBlockFlexStackingV1
         | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+        | ComputedStyleProfile::C19BoxPaintOpacityV1
         | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
         | ComputedStyleProfile::RuntimeBlockFlexGridV1
         | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
@@ -427,6 +430,7 @@ fn compute_layout_from_styles(
             | ComputedStyleProfile::RuntimeBlockPositioningV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1
             | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+            | ComputedStyleProfile::C19BoxPaintOpacityV1
             | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
             | ComputedStyleProfile::RuntimeBlockFlexGridV1
             | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
@@ -450,6 +454,7 @@ fn compute_layout_from_styles(
                     matches!(display.as_str(), "block" | "flow-root" | "flex" | "none")
                 }
                 ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+                | ComputedStyleProfile::C19BoxPaintOpacityV1
                 | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1 => {
                     matches!(display.as_str(), "block" | "flow-root" | "flex" | "none")
                 }
@@ -471,6 +476,7 @@ fn compute_layout_from_styles(
                         computed_styles.profile,
                         ComputedStyleProfile::RuntimeBlockFlexStackingV1
                             | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+                            | ComputedStyleProfile::C19BoxPaintOpacityV1
                             | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
                             | ComputedStyleProfile::RuntimeBlockFlexGridV1
                             | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
@@ -552,6 +558,7 @@ fn compute_layout_from_styles(
             | ComputedStyleProfile::RuntimeBlockPositioningV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1
             | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+            | ComputedStyleProfile::C19BoxPaintOpacityV1
             | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
             | ComputedStyleProfile::RuntimeBlockFlexGridV1
             | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
@@ -599,6 +606,7 @@ fn compute_layout_from_styles(
             | ComputedStyleProfile::RuntimeBlockPositioningV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1
             | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+            | ComputedStyleProfile::C19BoxPaintOpacityV1
             | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
             | ComputedStyleProfile::RuntimeBlockFlexGridV1
             | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1

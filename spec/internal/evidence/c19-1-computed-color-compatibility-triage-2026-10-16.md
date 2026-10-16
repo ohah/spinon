@@ -36,8 +36,8 @@ runtime mount의 `body { color: color(display-p3 0.9 0.1 0.4) }`와 root `color:
 ## 해석 경계
 
 - CSS Color 4는 sRGB/unorm8 등 출력 gamut 밖 색에 대해 gamut mapping을 요구하고, 세 알고리즘 중 하나를 구현하도록 설명한다. 값은 script에 직접 노출되지 않아 자동 테스트가 어렵다고도 명시한다. [CSS Color 4 §14.2](https://drafts.csswg.org/css-color-4/#css-gamut-mapping)
-- 현재 Chromium source의 `Color::toSkColor4f()`는 `ToSRGB(IsBakedGamutMappingEnabled())`를 호출한다. `kBakedGamutMapping`은 feature source에서 기본 비활성으로 선언되어 있다. [Chromium color.cc](https://chromium.googlesource.com/chromium/src/+/HEAD/third_party/blink/renderer/platform/graphics/color.cc) · [Chromium features.cc](https://chromium.googlesource.com/chromium/src/+/HEAD/third_party/blink/common/features.cc). 두 링크는 HEAD source이며, 캡처된 설치 바이너리의 exact source revision이나 실행 feature list를 증명하지 않는다.
-- 따라서 Chrome RGBA8과 Stylo Local MINDE는 같은 기대값으로 취급할 수 없다. 제품 출력 정책을 고르기 전에는 C19.1의 exact Chrome pixel check를 통과로 기록하지 않는다. system-color 차이도 변환 알고리즘 차이와 합치지 않는다.
+- 정확한 Chrome `155.0.8059.85` Chromium revision `0e66b94549a8bd85f03fbdf189b752d6e7b63c32`의 공개 소스에서 paint 단계의 경로를 확인했다. 기본 비활성인 `kBakedGamutMapping`이 켜지지 않은 경로는 Local MINDE sRGB gamut mapping을 호출하지 않는다. [`Color::toSkColor4f`와 `ToSRGB`](./c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.md)의 상세 분석과 blob hash를 참고한다. Capture runtime의 Finch feature assignment는 소급 확인하지 못했으므로, source default와 command line evidence를 runtime `FeatureList`의 완전한 증명으로 확대하지 않는다.
+- 따라서 Chrome RGBA8과 Stylo Local MINDE는 같은 기대값으로 취급할 수 없다. C19.1은 Chrome macOS/sRGB/unorm8 exact oracle와 Stylo Local MINDE 결과를 별도 보존한다. system-color 차이도 변환 알고리즘 차이와 합치지 않는다.
 
 ## 상태
 

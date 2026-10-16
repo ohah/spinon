@@ -20,7 +20,7 @@ pub(super) fn runtime_block_flex_stacking_author_properties() -> Vec<&'static st
         .iter()
         .chain(RUNTIME_BLOCK_POSITIONING_AUTHOR_PROPERTIES)
         .copied()
-        .chain(["z-index", "visibility"])
+        .chain(["z-index", "visibility", "opacity"])
     {
         if !properties.contains(&property) {
             properties.push(property);
@@ -45,6 +45,7 @@ pub fn compute_runtime_block_flex_stacking_cascade_with_stylesheets(
     properties.extend([
         ("z-index", LonghandId::ZIndex),
         ("visibility", LonghandId::Visibility),
+        ("opacity", LonghandId::Opacity),
     ]);
     compute_cascade(
         view,
