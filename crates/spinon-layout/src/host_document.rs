@@ -4,7 +4,7 @@ use spinon_core::{
     EnvironmentRevision, HostDocumentSnapshot, HostNodeHandle, HostNodeKind, HostParent, NodeId,
     StyleRevision,
 };
-use spinon_text_layout::ParagraphStyle;
+use spinon_text_layout::{InlineRunStyle, ParagraphStyle};
 
 use crate::{
     LayoutError, LayoutInput, LayoutInputRevision, LayoutNode, LayoutSourceRevision, LayoutStyle,
@@ -17,6 +17,13 @@ mod text_paragraphs;
 struct HostDocumentLayoutProfile<'a> {
     root_sizing: RootSizingPolicy,
     paragraph_styles: Option<&'a BTreeMap<NodeId, ParagraphStyle>>,
+    inline_run_styles: Option<&'a BTreeMap<NodeId, InlineRunStyle>>,
+}
+
+/// 고정 inline paragraph와 run별 글꼴 metric map을 묶은 내부 입력입니다.
+pub(crate) struct HostTextStyleProfile<'a> {
+    pub(crate) paragraphs: &'a BTreeMap<NodeId, ParagraphStyle>,
+    pub(crate) inline_runs: &'a BTreeMap<NodeId, InlineRunStyle>,
 }
 
 impl LayoutInput {
@@ -86,14 +93,38 @@ impl LayoutInput {
 
     /// 고정 text profile이 제공한 Block paragraph를 source order와 제한 inline span에 연결합니다.
     ///
-    /// paragraph 안에는 direct text와 최대 두 단계의 HTML span만 허용합니다. span의 고정 px
-    /// border/padding은 지원하고, visible non-span element와 unpaired surrogate는 거부합니다.
+    /// paragraph 안에는 direct text, 두 단계 HTML span, 직접 Block child를 허용합니다.
     pub fn from_host_document_with_text_paragraphs(
         snapshot: &HostDocumentSnapshot,
         root: HostNodeHandle,
         viewport: Viewport,
         styles: &BTreeMap<NodeId, LayoutStyle>,
         paragraph_styles: &BTreeMap<NodeId, ParagraphStyle>,
+        style_revision: StyleRevision,
+        environment_revision: EnvironmentRevision,
+    ) -> Result<Self, LayoutError> {
+        let inline_run_styles = BTreeMap::new();
+        Self::from_host_document_with_text_paragraphs_and_run_styles(
+            snapshot,
+            root,
+            viewport,
+            styles,
+            HostTextStyleProfile {
+                paragraphs: paragraph_styles,
+                inline_runs: &inline_run_styles,
+            },
+            style_revision,
+            environment_revision,
+        )
+    }
+
+    /// 제한된 C15 text profile에서 inline 글꼴·크기·line-height를 명시합니다.
+    pub(crate) fn from_host_document_with_text_paragraphs_and_run_styles(
+        snapshot: &HostDocumentSnapshot,
+        root: HostNodeHandle,
+        viewport: Viewport,
+        styles: &BTreeMap<NodeId, LayoutStyle>,
+        text_styles: HostTextStyleProfile<'_>,
         style_revision: StyleRevision,
         environment_revision: EnvironmentRevision,
     ) -> Result<Self, LayoutError> {
@@ -106,7 +137,8 @@ impl LayoutInput {
             environment_revision,
             HostDocumentLayoutProfile {
                 root_sizing: RootSizingPolicy::Match,
-                paragraph_styles: Some(paragraph_styles),
+                paragraph_styles: Some(text_styles.paragraphs),
+                inline_run_styles: Some(text_styles.inline_runs),
             },
         )
     }
@@ -130,6 +162,7 @@ impl LayoutInput {
             HostDocumentLayoutProfile {
                 root_sizing,
                 paragraph_styles: None,
+                inline_run_styles: None,
             },
         )
     }
@@ -146,6 +179,7 @@ impl LayoutInput {
         let HostDocumentLayoutProfile {
             root_sizing,
             paragraph_styles,
+            inline_run_styles,
         } = profile;
         let root_node = snapshot
             .node(root)
@@ -156,16 +190,36 @@ impl LayoutInput {
             return Err(LayoutError::InvalidHostDocumentRoot(root.id()));
         }
 
+        let empty_inline_run_styles = BTreeMap::new();
+        let inline_run_styles = inline_run_styles.unwrap_or(&empty_inline_run_styles);
         let collected_text = paragraph_styles
             .map(|paragraph_styles| {
-                text_paragraphs::collect(snapshot, root, styles, paragraph_styles)
+                text_paragraphs::collect(
+                    snapshot,
+                    root,
+                    styles,
+                    paragraph_styles,
+                    inline_run_styles,
+                )
             })
             .transpose()?
             .unwrap_or_default();
         let inline_nodes = collected_text.inline_nodes;
         let text_source_nodes = collected_text.text_source_nodes;
         let excluded_layout_nodes = collected_text.excluded_layout_nodes;
-        let text_paragraphs = collected_text.paragraphs;
+        let mut text_paragraphs = collected_text
+            .paragraphs
+            .into_iter()
+            .map(|(node, paragraph)| (node, crate::TextParagraphInput::Paragraph(paragraph)))
+            .collect::<BTreeMap<_, _>>();
+        for (node, flow) in collected_text.flows {
+            if text_paragraphs
+                .insert(node, crate::TextParagraphInput::Flow(flow))
+                .is_some()
+            {
+                return Err(LayoutError::DuplicateTextParagraph(node));
+            }
+        }
 
         let mut nodes = Vec::new();
         let mut included = excluded_layout_nodes.clone();

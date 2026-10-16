@@ -1,9 +1,14 @@
 use std::collections::{BTreeMap, BTreeSet};
 
 use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, HostParent, NodeId};
-use spinon_text_layout::{InlineBoxStyle, InlineEdges, ParagraphInput, ParagraphStyle, TextSource};
+use spinon_text_layout::{
+    InlineBoxStyle, InlineEdges, InlineRunStyle, ParagraphInput, ParagraphStyle, TextSource,
+};
 
-use crate::{LayoutDisplay, LayoutError, LayoutLengthPercentage, LayoutStyle};
+use crate::{
+    LayoutDisplay, LayoutError, LayoutLengthPercentage, LayoutStyle, TextFlowInput, TextFlowItem,
+    TextParagraphInput,
+};
 
 #[derive(Default)]
 pub(super) struct HostTextLayouts {
@@ -11,6 +16,7 @@ pub(super) struct HostTextLayouts {
     pub text_source_nodes: BTreeSet<NodeId>,
     pub excluded_layout_nodes: BTreeSet<NodeId>,
     pub paragraphs: BTreeMap<NodeId, ParagraphInput>,
+    pub flows: BTreeMap<NodeId, TextFlowInput>,
 }
 
 pub(super) fn collect(
@@ -18,6 +24,7 @@ pub(super) fn collect(
     root: HostNodeHandle,
     styles: &BTreeMap<NodeId, LayoutStyle>,
     paragraph_styles: &BTreeMap<NodeId, ParagraphStyle>,
+    inline_run_styles: &BTreeMap<NodeId, InlineRunStyle>,
 ) -> Result<HostTextLayouts, LayoutError> {
     let handles = collect_host_handles(snapshot, root)?;
     let mut result = HostTextLayouts {
@@ -25,6 +32,7 @@ pub(super) fn collect(
         text_source_nodes: BTreeSet::new(),
         excluded_layout_nodes: BTreeSet::new(),
         paragraphs: BTreeMap::new(),
+        flows: BTreeMap::new(),
     };
 
     for (&paragraph_id, paragraph_style) in paragraph_styles {
@@ -57,26 +65,29 @@ pub(super) fn collect(
             continue;
         }
 
-        let mut sources = Vec::new();
         let mut inline_styles = BTreeMap::new();
-        ParagraphSourceCollector {
+        let mut collector = ParagraphSourceCollector {
             snapshot,
             styles,
             inline_nodes: &mut result.inline_nodes,
             text_source_nodes: &mut result.text_source_nodes,
             excluded_layout_nodes: &mut result.excluded_layout_nodes,
             inline_styles: &mut inline_styles,
-        }
-        .collect(paragraph_handle, paragraph_id, &mut sources)?;
-        result.paragraphs.insert(
+        };
+        let collected = collector.collect(
+            paragraph_handle,
             paragraph_id,
-            ParagraphInput {
-                node: paragraph_id,
-                sources,
-                style: paragraph_style.clone(),
-                inline_styles,
-            },
-        );
+            paragraph_style,
+            inline_run_styles,
+        )?;
+        match collected {
+            TextParagraphInput::Paragraph(paragraph) => {
+                result.paragraphs.insert(paragraph_id, paragraph);
+            }
+            TextParagraphInput::Flow(flow) => {
+                result.flows.insert(paragraph_id, flow);
+            }
+        }
     }
 
     Ok(result)
@@ -118,39 +129,112 @@ impl ParagraphSourceCollector<'_> {
         &mut self,
         paragraph: HostNodeHandle,
         paragraph_id: NodeId,
-        sources: &mut Vec<TextSource>,
-    ) -> Result<(), LayoutError> {
-        let mut pending = self
+        paragraph_style: &ParagraphStyle,
+        inline_run_styles: &BTreeMap<NodeId, InlineRunStyle>,
+    ) -> Result<TextParagraphInput, LayoutError> {
+        let children = self
             .snapshot
             .children(paragraph)
             .ok_or(LayoutError::InvalidHostDocumentRoot(paragraph_id))?
-            .collect::<Vec<_>>()
-            .into_iter()
-            .rev()
-            .map(|handle| (handle, Vec::<NodeId>::new()))
             .collect::<Vec<_>>();
+        let mut items = Vec::new();
+        let mut sources = Vec::new();
+        let mut has_block_child = false;
 
+        for handle in children {
+            let node = self
+                .snapshot
+                .node(handle)
+                .ok_or(LayoutError::InvalidHostDocumentRoot(handle.id()))?;
+            match node.kind() {
+                HostNodeKind::Text(_) => self.push_text(handle, Vec::new(), &mut sources)?,
+                HostNodeKind::Element(element) => {
+                    let style = self
+                        .styles
+                        .get(&handle.id())
+                        .copied()
+                        .ok_or(LayoutError::MissingStyle(handle.id()))?;
+                    if style.display == LayoutDisplay::None {
+                        collect_hidden_layout_nodes(
+                            self.snapshot,
+                            handle,
+                            self.styles,
+                            self.excluded_layout_nodes,
+                        )?;
+                    } else if style.display == LayoutDisplay::Block {
+                        push_anonymous_paragraph(
+                            &mut items,
+                            paragraph_id,
+                            paragraph_style,
+                            &mut sources,
+                            self.inline_styles,
+                            inline_run_styles,
+                        );
+                        items.push(TextFlowItem::Block(handle.id()));
+                        has_block_child = true;
+                    } else if element.namespace() == "http://www.w3.org/1999/xhtml"
+                        && element.local_name() == "span"
+                        && style.display == LayoutDisplay::Inline
+                    {
+                        self.collect_inline_span(handle, paragraph_id, Vec::new(), &mut sources)?;
+                    } else {
+                        return Err(LayoutError::UnsupportedTextParagraph {
+                            node: paragraph_id,
+                            reason: "visible direct child는 HTML span 또는 Block이어야 합니다",
+                        });
+                    }
+                }
+            }
+        }
+
+        push_anonymous_paragraph(
+            &mut items,
+            paragraph_id,
+            paragraph_style,
+            &mut sources,
+            self.inline_styles,
+            inline_run_styles,
+        );
+        if has_block_child {
+            Ok(TextParagraphInput::Flow(TextFlowInput {
+                owner: paragraph_id,
+                items,
+            }))
+        } else {
+            match items.pop() {
+                Some(TextFlowItem::Paragraph(paragraph)) if items.is_empty() => {
+                    Ok(TextParagraphInput::Paragraph(paragraph))
+                }
+                None => Ok(TextParagraphInput::Paragraph(ParagraphInput {
+                    node: paragraph_id,
+                    sources: Vec::new(),
+                    style: paragraph_style.clone(),
+                    inline_styles: BTreeMap::new(),
+                    inline_run_styles: BTreeMap::new(),
+                })),
+                _ => Err(LayoutError::UnsupportedTextParagraph {
+                    node: paragraph_id,
+                    reason: "inline paragraph sequence가 비어 있거나 잘못되었습니다",
+                }),
+            }
+        }
+    }
+
+    fn collect_inline_span(
+        &mut self,
+        span: HostNodeHandle,
+        paragraph_id: NodeId,
+        ancestors: Vec<NodeId>,
+        sources: &mut Vec<TextSource>,
+    ) -> Result<(), LayoutError> {
+        let mut pending = vec![(span, ancestors)];
         while let Some((handle, ancestors)) = pending.pop() {
             let node = self
                 .snapshot
                 .node(handle)
                 .ok_or(LayoutError::InvalidHostDocumentRoot(handle.id()))?;
             match node.kind() {
-                HostNodeKind::Text(data) => {
-                    if !self.text_source_nodes.insert(handle.id()) {
-                        return Err(LayoutError::DuplicateTextParagraph(handle.id()));
-                    }
-                    let text = String::from_utf16(data.code_units())
-                        .map_err(|_| LayoutError::InvalidTextEncoding(handle.id()))?;
-                    if text.is_empty() {
-                        continue;
-                    }
-                    sources.push(TextSource {
-                        node: handle.id(),
-                        inline_ancestors: ancestors,
-                        text,
-                    });
-                }
+                HostNodeKind::Text(_) => self.push_text(handle, ancestors, sources)?,
                 HostNodeKind::Element(element) => {
                     let style = self
                         .styles
@@ -171,7 +255,7 @@ impl ParagraphSourceCollector<'_> {
                     {
                         return Err(LayoutError::UnsupportedTextParagraph {
                             node: paragraph_id,
-                            reason: "visible child element은 상속형 HTML span이어야 합니다",
+                            reason: "inline subtree는 HTML span과 text만 포함할 수 있습니다",
                         });
                     }
                     if ancestors.len() >= 2 {
@@ -204,6 +288,67 @@ impl ParagraphSourceCollector<'_> {
         }
         Ok(())
     }
+
+    fn push_text(
+        &mut self,
+        handle: HostNodeHandle,
+        ancestors: Vec<NodeId>,
+        sources: &mut Vec<TextSource>,
+    ) -> Result<(), LayoutError> {
+        let node = self
+            .snapshot
+            .node(handle)
+            .ok_or(LayoutError::InvalidHostDocumentRoot(handle.id()))?;
+        let HostNodeKind::Text(data) = node.kind() else {
+            return Err(LayoutError::UnsupportedTextNode(handle.id()));
+        };
+        if !self.text_source_nodes.insert(handle.id()) {
+            return Err(LayoutError::DuplicateTextParagraph(handle.id()));
+        }
+        let text = String::from_utf16(data.code_units())
+            .map_err(|_| LayoutError::InvalidTextEncoding(handle.id()))?;
+        if !text.is_empty() {
+            sources.push(TextSource {
+                node: handle.id(),
+                inline_ancestors: ancestors,
+                text,
+            });
+        }
+        Ok(())
+    }
+}
+
+fn push_anonymous_paragraph(
+    items: &mut Vec<TextFlowItem>,
+    owner: NodeId,
+    style: &ParagraphStyle,
+    sources: &mut Vec<TextSource>,
+    inline_styles: &BTreeMap<NodeId, InlineBoxStyle>,
+    inline_run_styles: &BTreeMap<NodeId, InlineRunStyle>,
+) {
+    if sources.is_empty() {
+        return;
+    }
+    let sources = std::mem::take(sources);
+    let owners = sources
+        .iter()
+        .flat_map(|source| source.inline_ancestors.iter().copied())
+        .collect::<BTreeSet<_>>();
+    items.push(TextFlowItem::Paragraph(ParagraphInput {
+        node: owner,
+        sources,
+        style: style.clone(),
+        inline_styles: inline_styles
+            .iter()
+            .filter(|(node, _)| owners.contains(node))
+            .map(|(&node, &style)| (node, style))
+            .collect(),
+        inline_run_styles: inline_run_styles
+            .iter()
+            .filter(|(node, _)| owners.contains(node))
+            .map(|(&node, style)| (node, style.clone()))
+            .collect(),
+    }));
 }
 
 fn fixed_inline_box_style(style: LayoutStyle) -> Option<InlineBoxStyle> {

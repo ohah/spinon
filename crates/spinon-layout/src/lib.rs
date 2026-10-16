@@ -17,6 +17,7 @@ mod style;
 mod taffy_style;
 #[cfg(test)]
 mod test_allocator;
+mod text_flow;
 mod tree_input;
 
 #[cfg(test)]
@@ -42,9 +43,9 @@ pub use grid_placement::{GridItemInput, GridPlacementInput};
 pub use intrinsic_size::{LayoutIntrinsicSize, LayoutIntrinsicSizeSnapshot};
 pub use revision::{LayoutInputRevision, LayoutSourceRevision};
 pub use spinon_text_layout::{
-    FontRegistryRevision, InlineFragment, ParagraphInput, ParagraphStyle, TextGlyph,
-    TextLayoutEngine, TextLayoutSnapshot, TextLine, TextRect, TextRun, TextSource, TextSourceRange,
-    WhiteSpaceMode, WordBreakMode,
+    FontRegistryRevision, InlineFragment, InlineRunStyle, ParagraphInput, ParagraphStyle,
+    TextGlyph, TextLayoutEngine, TextLayoutSnapshot, TextLine, TextRect, TextRun, TextSource,
+    TextSourceRange, WhiteSpaceMode, WordBreakMode,
 };
 pub use style::{
     AlignmentSafety, ContentAlignmentPosition, FlexDirection, FlexWrap, ItemAlignmentPosition,
@@ -53,6 +54,7 @@ pub use style::{
     LayoutLengthPercentage, LayoutOverflow, LayoutPosition, LayoutPositioning, LayoutStyle,
     TextDirection, Viewport,
 };
+pub(crate) use text_flow::{TextFlowInput, TextFlowItem, TextParagraphInput};
 
 /// 부모와 자식 ID 순서 및 레이아웃 스타일을 묶은 입력 노드입니다.
 #[derive(Clone, Debug, PartialEq)]
@@ -74,7 +76,7 @@ pub struct LayoutInput {
     positioning: BTreeMap<NodeId, LayoutPositioning>,
     grid_containers: BTreeMap<NodeId, GridContainerInput>,
     grid_items: BTreeMap<NodeId, GridItemInput>,
-    text_paragraphs: BTreeMap<NodeId, ParagraphInput>,
+    text_paragraphs: BTreeMap<NodeId, TextParagraphInput>,
 }
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -136,7 +138,10 @@ impl LayoutInput {
         let mut values = BTreeMap::new();
         for paragraph in paragraphs {
             let node = paragraph.node;
-            if values.insert(node, paragraph).is_some() {
+            if values
+                .insert(node, TextParagraphInput::Paragraph(paragraph))
+                .is_some()
+            {
                 return Err(LayoutError::DuplicateTextParagraph(node));
             }
         }
@@ -170,6 +175,8 @@ pub struct LayoutOutput {
     pub fixed_owners: BTreeMap<NodeId, FixedContainingBlockOwner>,
     /// Taffy measure가 최종 content width에서 만든 revision-stamped text snapshot입니다.
     pub text_layouts: BTreeMap<NodeId, LayoutTextSnapshot>,
+    /// 직접 Block 자식 앞뒤의 anonymous inline paragraph 결과를 원본 순서로 보존합니다.
+    pub text_flow_layouts: BTreeMap<NodeId, Vec<LayoutTextFlowSegment>>,
 }
 
 /// 하나의 layout 계산 입력 revision에 결속한 shaping 결과입니다.
@@ -178,6 +185,14 @@ pub struct LayoutTextSnapshot {
     pub revision: LayoutInputRevision,
     pub input: ParagraphInput,
     pub layout: TextLayoutSnapshot,
+}
+
+/// Block owner 기준 합성 paragraph의 geometry와 shaping 결과입니다.
+#[derive(Clone, Debug, PartialEq)]
+pub struct LayoutTextFlowSegment {
+    pub item_index: usize,
+    pub frame: LayoutFrame,
+    pub snapshot: LayoutTextSnapshot,
 }
 
 /// Taffy가 계산한 사용값 padding과 border 두께입니다.

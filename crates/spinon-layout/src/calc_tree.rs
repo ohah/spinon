@@ -17,7 +17,8 @@ use taffy::{
 use self::replaced_sizing::{ReplacedSizingInput, resolve_used_size};
 use crate::{
     LayoutCalcId, LayoutCssMathValue, LayoutError, LayoutInput, LayoutIntrinsicSize,
-    LayoutPosition, LayoutTextSnapshot, PositionedContainingBlockOwner, RootSizingPolicy,
+    LayoutPosition, LayoutStyle, PositionedContainingBlockOwner, RootSizingPolicy, TextFlowItem,
+    TextParagraphInput,
     compact_taffy_style::CompactTaffyStyle,
     grid_placement::normalize_grid_layout,
     positioning::collect_positioned_owners,
@@ -28,6 +29,8 @@ use crate::{
 mod grid;
 #[path = "calc_tree/replaced_sizing.rs"]
 mod replaced_sizing;
+#[path = "calc_tree/text.rs"]
+mod text;
 
 /// Taffy stores calc handles in the low three tag bits, so every owner is eight-byte aligned.
 #[repr(align(8))]
@@ -70,6 +73,7 @@ pub(super) struct CalcLayoutTree {
     calc_error: RefCell<Option<LayoutError>>,
     text_layout_engine: Option<RefCell<TextLayoutEngine>>,
     text_paragraphs: HashMap<TaffyNodeId, ParagraphInput>,
+    text_flow_nodes: BTreeMap<SpinonNodeId, Vec<(usize, TaffyNodeId)>>,
     text_layouts: RefCell<HashMap<TaffyNodeId, BTreeMap<u32, TextLayoutSnapshot>>>,
 }
 
@@ -138,11 +142,34 @@ impl CalcLayoutTree {
             }
             engine_ids.insert(external_id, engine_id);
         }
-        let text_paragraphs = input
-            .text_paragraphs
-            .iter()
-            .map(|(node, paragraph)| (engine_ids[node], paragraph.clone()))
-            .collect();
+        let mut next_synthetic_position = postorder.len();
+        let mut text_paragraphs = HashMap::new();
+        let mut text_flow_nodes = BTreeMap::new();
+        let mut synthetic_paragraph_styles = Vec::new();
+        for (&owner, text_input) in &input.text_paragraphs {
+            match text_input {
+                TextParagraphInput::Paragraph(paragraph) => {
+                    text_paragraphs.insert(engine_ids[&owner], paragraph.clone());
+                }
+                TextParagraphInput::Flow(flow) => {
+                    let mut flow_nodes = Vec::new();
+                    for (item_index, item) in flow.items.iter().enumerate() {
+                        if let TextFlowItem::Paragraph(paragraph) = item {
+                            let engine_id = checked_taffy_id(next_synthetic_position)?;
+                            let order = u32::try_from(next_synthetic_position)
+                                .map_err(|_| LayoutError::TooManyNodes)?;
+                            next_synthetic_position = next_synthetic_position
+                                .checked_add(1)
+                                .ok_or(LayoutError::TooManyNodes)?;
+                            text_paragraphs.insert(engine_id, paragraph.clone());
+                            synthetic_paragraph_styles.push((engine_id, owner, order));
+                            flow_nodes.push((item_index, engine_id));
+                        }
+                    }
+                    text_flow_nodes.insert(owner, flow_nodes);
+                }
+            }
+        }
 
         let mut layout_children = input
             .nodes
@@ -161,14 +188,41 @@ impl CalcLayoutTree {
             )?;
         }
 
-        let mut nodes = Vec::with_capacity(postorder.len() + 1);
+        let mut nodes = Vec::with_capacity(next_synthetic_position + 1);
         for (position, external_id) in postorder.iter().copied().enumerate() {
             let source = &input.nodes[index[&external_id]];
-            let mut children = layout_children[&external_id]
-                .iter()
-                .map(|child| engine_ids[child])
-                .collect::<Vec<_>>();
-            if source.style.display == crate::LayoutDisplay::Flex {
+            let mut children = Vec::new();
+            if let Some(TextParagraphInput::Flow(flow)) = input.text_paragraphs.get(&external_id) {
+                for (item_index, item) in flow.items.iter().enumerate() {
+                    match item {
+                        TextFlowItem::Paragraph(_) => {
+                            let Some((_, engine_id)) = text_flow_nodes[&external_id]
+                                .iter()
+                                .find(|(flow_item_index, _)| *flow_item_index == item_index)
+                            else {
+                                return Err(LayoutError::UnsupportedTextParagraph {
+                                    node: external_id,
+                                    reason: "anonymous paragraph의 합성 Taffy node가 없습니다",
+                                });
+                            };
+                            children.push(*engine_id);
+                        }
+                        TextFlowItem::Block(child) => children.push(engine_ids[child]),
+                    }
+                }
+            } else {
+                children.extend(
+                    layout_children[&external_id]
+                        .iter()
+                        .map(|child| engine_ids[child]),
+                );
+            }
+            if source.style.display == crate::LayoutDisplay::Flex
+                && !matches!(
+                    input.text_paragraphs.get(&external_id),
+                    Some(TextParagraphInput::Flow(_))
+                )
+            {
                 // CSS order 값이 같으면 원본 순서를 유지하도록 안정 정렬합니다.
                 children.sort_by_key(|child| {
                     let child_id = postorder[usize::from(*child)];
@@ -211,6 +265,30 @@ impl CalcLayoutTree {
             nodes.push(Node::new(children, style, replaced_sizing, order));
         }
 
+        for (engine_id, owner, order) in synthetic_paragraph_styles {
+            let style = to_taffy_style(
+                owner,
+                LayoutStyle {
+                    display: crate::LayoutDisplay::Block,
+                    ..LayoutStyle::default()
+                },
+                false,
+                crate::LayoutPositioning::default(),
+                flow_only,
+                &calc_handles,
+                crate::taffy_style::GridTaffyStyleInput {
+                    container: None,
+                    expanded_rows: None,
+                    expanded_columns: None,
+                    item: None,
+                },
+            )?;
+            if usize::from(engine_id) != nodes.len() {
+                return Err(LayoutError::TooManyNodes);
+            }
+            nodes.push(Node::new(Vec::new(), style, None, order));
+        }
+
         let needs_viewport_containing_block = input.root_sizing
             == RootSizingPolicy::BlockFormatting
             || input
@@ -219,12 +297,8 @@ impl CalcLayoutTree {
                 .is_some_and(|positioning| positioning.position == LayoutPosition::Relative)
             || !viewport_children.is_empty();
         let viewport_root = if needs_viewport_containing_block {
-            let position = postorder.len();
-            u32::try_from(position).map_err(|_| LayoutError::TooManyNodes)?;
-            let engine_id = TaffyNodeId::from(position);
-            if usize::from(engine_id) != position {
-                return Err(LayoutError::TooManyNodes);
-            }
+            let position = nodes.len();
+            let engine_id = checked_taffy_id(position)?;
             let order = u32::try_from(position).map_err(|_| LayoutError::TooManyNodes)?;
             let mut root_children = Vec::with_capacity(viewport_children.len() + 1);
             root_children.push(engine_ids[&input.root]);
@@ -250,6 +324,7 @@ impl CalcLayoutTree {
             calc_error: RefCell::new(None),
             text_layout_engine: text_layout_engine.cloned().map(RefCell::new),
             text_paragraphs,
+            text_flow_nodes,
             text_layouts: RefCell::new(HashMap::new()),
         })
     }
@@ -283,57 +358,6 @@ impl CalcLayoutTree {
 
     pub(super) fn take_calc_error(&mut self) -> Option<LayoutError> {
         self.calc_error.get_mut().take()
-    }
-
-    pub(super) fn final_text_layouts(
-        &self,
-        input: &LayoutInput,
-    ) -> Result<BTreeMap<SpinonNodeId, LayoutTextSnapshot>, LayoutError> {
-        let mut result = BTreeMap::new();
-        let text_layouts = self.text_layouts.borrow();
-        for (&engine_id, paragraph) in &self.text_paragraphs {
-            let layout = self
-                .layout(engine_id)
-                .ok_or(LayoutError::MissingComputedLayout(paragraph.node))?;
-            let content_width = layout.size.width
-                - layout.border.left
-                - layout.border.right
-                - layout.padding.left
-                - layout.padding.right;
-            let normalized_content_width = if content_width == 0.0 {
-                0.0
-            } else {
-                content_width
-            };
-            let width_key = normalized_content_width.to_bits();
-            let snapshot = text_layouts
-                .get(&engine_id)
-                .and_then(|by_width| by_width.get(&width_key))
-                .ok_or(LayoutError::TextLayoutWidthMismatch(paragraph.node))?;
-            if snapshot.available_width.to_bits() != width_key {
-                return Err(LayoutError::TextLayoutWidthMismatch(paragraph.node));
-            }
-            let node_style = input.nodes().iter().find(|node| node.id == paragraph.node);
-            let content_height = layout.size.height
-                - layout.border.top
-                - layout.border.bottom
-                - layout.padding.top
-                - layout.padding.bottom;
-            if node_style.is_some_and(|node| node.style.height == crate::LayoutDimension::Auto)
-                && (content_height - snapshot.height).abs() > 0.05
-            {
-                return Err(LayoutError::TextLayoutHeightMismatch(paragraph.node));
-            }
-            result.insert(
-                paragraph.node,
-                LayoutTextSnapshot {
-                    revision: input.revision(),
-                    input: paragraph.clone(),
-                    layout: snapshot.clone(),
-                },
-            );
-        }
-        Ok(result)
     }
 
     pub(super) fn layout(&self, id: TaffyNodeId) -> Option<Layout> {
@@ -479,37 +503,15 @@ impl CalcLayoutTree {
             *slot = Some(error);
         }
     }
+}
 
-    fn measure_text(
-        &self,
-        node_id: TaffyNodeId,
-        available_width: AvailableSpace,
-    ) -> Result<Size<f32>, LayoutError> {
-        let Some(paragraph) = self.text_paragraphs.get(&node_id).cloned() else {
-            return Ok(Size::ZERO);
-        };
-        let AvailableSpace::Definite(width) = available_width else {
-            return Err(LayoutError::IndefiniteTextAvailableWidth(paragraph.node));
-        };
-        let width = if width == 0.0 { 0.0 } else { width };
-        let engine = self
-            .text_layout_engine
-            .as_ref()
-            .ok_or(LayoutError::MissingTextLayoutEngine(paragraph.node))?;
-        let snapshot = engine
-            .borrow_mut()
-            .layout_paragraph(&paragraph, width)
-            .map_err(LayoutError::TextLayout)?;
-        self.text_layouts
-            .borrow_mut()
-            .entry(node_id)
-            .or_default()
-            .insert(width.to_bits(), snapshot.clone());
-        Ok(Size {
-            width: snapshot.width,
-            height: snapshot.height,
-        })
+fn checked_taffy_id(position: usize) -> Result<TaffyNodeId, LayoutError> {
+    u32::try_from(position).map_err(|_| LayoutError::TooManyNodes)?;
+    let engine_id = TaffyNodeId::from(position);
+    if usize::from(engine_id) != position {
+        return Err(LayoutError::TooManyNodes);
     }
+    Ok(engine_id)
 }
 
 fn reparent_out_of_flow_children(

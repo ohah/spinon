@@ -1,0 +1,8 @@
+명령: mise exec -- bun run docs:build
+Rspress 의존성: `mise exec -- bun install --frozen-lockfile`로 설치, lockfile 변경 없음
+종료 코드: 1
+Rspress가 저장소 문서에서 보고한 dead-link 진단 문서 수: 472
+C15.2b README와 새 review 문서는 dead-link 진단에 포함되지 않음
+변경된 STATUS.md / 0001-conformance.md의 진단은 기존 C15 외부 계획 링크 등 변경하지 않은 경로를 가리킴
+대표 진단: STATUS.md의 `../plan/r01-web-compatibility-inventory.md`, 0001-conformance.md의 `../plan/r06-queue-saturation.md`
+전체 stdout/stderr는 실행 중 `/tmp/spinon-c15-2b-docs-build.log`에 보관했으며, 이 요약은 변경 diff에 포함된 로그다.

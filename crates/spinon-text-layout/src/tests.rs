@@ -41,6 +41,7 @@ fn paragraph(
             word_break,
         },
         inline_styles: Default::default(),
+        inline_run_styles: Default::default(),
     }
 }
 

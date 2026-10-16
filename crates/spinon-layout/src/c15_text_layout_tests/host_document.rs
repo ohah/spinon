@@ -184,7 +184,7 @@ fn host_document_collects_direct_text_and_inherited_spans_in_source_order() {
         EnvironmentRevision::INITIAL,
     )
     .unwrap();
-    let paragraph_input = &input.text_paragraphs[&paragraph.id()];
+    let paragraph_input = input.text_paragraphs[&paragraph.id()].paragraph().unwrap();
 
     assert_eq!(
         paragraph_input
@@ -284,7 +284,6 @@ fn host_document_collects_direct_text_and_inherited_spans_in_source_order() {
 
     for display in [
         LayoutDisplay::Flex,
-        LayoutDisplay::Block,
         LayoutDisplay::Grid,
         LayoutDisplay::FlowRoot,
     ] {

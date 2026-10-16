@@ -73,6 +73,7 @@ fn paragraph_style_rejects_invalid_family_and_non_positive_or_non_finite_metrics
             }],
             style,
             inline_styles: Default::default(),
+            inline_run_styles: Default::default(),
         };
         assert!(matches!(
             engine.layout_paragraph(&input, 10.0),
