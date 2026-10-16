@@ -31,3 +31,5 @@
 - 이 evidence는 pure Rust geometry/shaping만 확인한다. runtime style projection, WGPU glyph paint, simulator 앱 실행, overflow ink와 parent clip은 포함하지 않는다.
 
 구현 전 기준 입력·fixture와 수치 판정은 위 Chrome oracle section에 고정했다. 별도 [구현 실패 관점 검토 20개](./implementation-review-20.md)와 [PR 변경 검토 30개](./pr-delta-review-30.md)는 각기 다른 입력·경계 조건을 다룬다. C15 parent와 C15.2 전체는 미완료로 유지한다.
+
+정적 공개 로드맵 `spec/public/roadmap.html`의 C15.2b 요약 문구에 대한 별도 [PR 변경 검토 30개](./roadmap-pr-delta-review-30.md)도 기록한다. 구현 근거의 범위는 달라지지 않는다.
