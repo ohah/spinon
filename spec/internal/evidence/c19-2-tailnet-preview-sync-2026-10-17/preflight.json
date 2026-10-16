@@ -1,0 +1,992 @@
+{
+  "generated_at": "2026-10-16T18:05:54.264962+00:00",
+  "source_candidate_commit": "bcee830d412268ac99b25e64d8eda6210ea6c626",
+  "source_candidate_tree": "21915e498add5f2a569832fa7033ea711864689d",
+  "implementation_merge_commit": "9b8d74f210f9419820cff25fbce2a1c5db300622",
+  "origin_main_commit": "9b8d74f210f9419820cff25fbce2a1c5db300622",
+  "origin_main_tree": "21915e498add5f2a569832fa7033ea711864689d",
+  "preview_url": "https://macstudio.tailed42f2.ts.net/spinon/",
+  "backup_root_relative": "backup/c19-2-tailnet-roadmap-sync-2026-10-17",
+  "total_paths": 108,
+  "total_bytes": 5615740,
+  "counts": {
+    "created": 81,
+    "replaced": 14,
+    "unchanged": 13
+  },
+  "deletions": [],
+  "files": [
+    {
+      "path": "0002-ui-tree-events.html",
+      "source": "rspress:spec/0002-ui-tree-events.html (flattened mirror)",
+      "bytes": 38320,
+      "sha256": "e1d5af10e2e4b6ba46cb07ff7c1cafb1eece7ec97e9ddc510e5d1d4ea29c7d88",
+      "previous_sha256": "c47889a8cf14b03dff6d873f21da53cde97cb2668ec8394dc2b965a7d8e13057",
+      "status": "replaced",
+      "backup_path": "backup/c19-2-tailnet-roadmap-sync-2026-10-17/0002-ui-tree-events.html"
+    },
+    {
+      "path": "0002-ui-tree-events.md",
+      "source": "source:spec/0002-ui-tree-events.md (flattened mirror)",
+      "bytes": 12429,
+      "sha256": "fd47b76508c3dcac4ec19f33c0ae1bb2a5b8d8916da42ff60775799da54c98d1",
+      "previous_sha256": "fd47b76508c3dcac4ec19f33c0ae1bb2a5b8d8916da42ff60775799da54c98d1",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "0008-css-compatibility.html",
+      "source": "rspress:spec/0008-css-compatibility.html (flattened mirror)",
+      "bytes": 49968,
+      "sha256": "c3aea001a1a2ec354531e7b618459b29cc2723439bcc0206872815752f82ec3b",
+      "previous_sha256": "d5ddbc0564a2dc3e857211e5716bead3656c5e9fc80fc30201c718be5986d33e",
+      "status": "replaced",
+      "backup_path": "backup/c19-2-tailnet-roadmap-sync-2026-10-17/0008-css-compatibility.html"
+    },
+    {
+      "path": "0008-css-compatibility.md",
+      "source": "source:spec/0008-css-compatibility.md (flattened mirror)",
+      "bytes": 20520,
+      "sha256": "021191729504179b63faa36e32cff80274003ff08b3909aeebac7544e7e8d7f3",
+      "previous_sha256": "021191729504179b63faa36e32cff80274003ff08b3909aeebac7544e7e8d7f3",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "STATUS.html",
+      "source": "rspress:spec/STATUS.html (flattened mirror)",
+      "bytes": 332627,
+      "sha256": "2105667c3e2904bccd62a80658298615d3a49753ac5c9987568149278f2051b2",
+      "previous_sha256": "ce28429db0baaff549b43d6023b9a2aeb76ee3b0fb8686c015db92f4109e3761",
+      "status": "replaced",
+      "backup_path": "backup/c19-2-tailnet-roadmap-sync-2026-10-17/STATUS.html"
+    },
+    {
+      "path": "STATUS.md",
+      "source": "source:spec/STATUS.md (flattened mirror)",
+      "bytes": 249271,
+      "sha256": "288dcfd49230a26c6a7f3f2d4820dd4eb92048a079aec4311060a70f65171a1e",
+      "previous_sha256": "b87f3d10a191446cdbfd2f81b9618ba62588efd86007edae86178a32d5f928cb",
+      "status": "replaced",
+      "backup_path": "backup/c19-2-tailnet-roadmap-sync-2026-10-17/STATUS.md"
+    },
+    {
+      "path": "icon.svg",
+      "source": "rspress:icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "previous_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/0069-c19-2-box-paint-opacity.html",
+      "source": "rspress:spec/internal/0069-c19-2-box-paint-opacity.html (flattened mirror)",
+      "bytes": 30317,
+      "sha256": "839707772120f292af0461d77058d4938e3aa829865e01f21b0819f109992dc4",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/0069-c19-2-box-paint-opacity.md",
+      "source": "source:spec/internal/0069-c19-2-box-paint-opacity.md (flattened mirror)",
+      "bytes": 4994,
+      "sha256": "1942569984ab0894b97f70bd999a2a293d8ecf2068d2532a7502b93d27f9d149",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/README.html",
+      "source": "rspress:spec/internal/README.html (flattened mirror)",
+      "bytes": 148876,
+      "sha256": "cf598507dfad90fad4300727ca034e5b972ff4a6654641f8fb4a290ef9592ed1",
+      "previous_sha256": "3690edcdc4a4e84fa09fe535c720ccb90eeb1645681816695e62020a8483ad26",
+      "status": "replaced",
+      "backup_path": "backup/c19-2-tailnet-roadmap-sync-2026-10-17/internal/README.html"
+    },
+    {
+      "path": "internal/README.md",
+      "source": "source:spec/internal/README.md (flattened mirror)",
+      "bytes": 102933,
+      "sha256": "a1bede0f66d6a5e22790fd0f34bd2ee20cfa4acf33a37223324a5116fb373dd6",
+      "previous_sha256": "759cab428e3f08fe726ec040e0cec39077d621b6461f136a1194de4efd8c05bb",
+      "status": "replaced",
+      "backup_path": "backup/c19-2-tailnet-roadmap-sync-2026-10-17/internal/README.md"
+    },
+    {
+      "path": "internal/evidence/c19-1-computed-color-compatibility-triage-2026-10-16.html",
+      "source": "rspress:spec/internal/evidence/c19-1-computed-color-compatibility-triage-2026-10-16.html (flattened mirror)",
+      "bytes": 31814,
+      "sha256": "2dd9b29975960cac869e15fb207bb1e998a149408dd913173a4e0640dd1110aa",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c19-1-computed-color-compatibility-triage-2026-10-16.md",
+      "source": "source:spec/internal/evidence/c19-1-computed-color-compatibility-triage-2026-10-16.md (flattened mirror)",
+      "bytes": 5769,
+      "sha256": "d4b0f2b0d8703d4ad793b112dd3b5c5723888f735dd21ad26016e2e0df26b4e7",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c19-1-computed-color-precomparison-2026-10-16/README.html",
+      "source": "rspress:spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/README.html (flattened mirror)",
+      "bytes": 33295,
+      "sha256": "994676903055ff634ca0290dc71628083cbd4611420bdab45b11067a3ee9c49f",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c19-1-computed-color-precomparison-2026-10-16/README.md",
+      "source": "source:spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/README.md (flattened mirror)",
+      "bytes": 6922,
+      "sha256": "b2a3d6d682607a31c90965ccf605c702ffe9e9a27d2349c4c4bddd1e7d06127d",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.html",
+      "source": "rspress:spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.html (flattened mirror)",
+      "bytes": 31245,
+      "sha256": "14ef50c87e1c27d92653bd4890a2b40f3daad8f042a85afcd9435c7f56c47824",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.md",
+      "source": "source:spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.md (flattened mirror)",
+      "bytes": 5495,
+      "sha256": "39fa3b2614687367822876ea77a297298aff56024a8bcb80708ad079368f8df0",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c19-1-computed-color-precomparison-2026-10-16/docs-build-result.html",
+      "source": "rspress:spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/docs-build-result.html (flattened mirror)",
+      "bytes": 26236,
+      "sha256": "49bbc4edaf8cfc3cdc1f6024f212866a0dbe1b644903f3610b4dc2ea1515e1f5",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c19-1-computed-color-precomparison-2026-10-16/docs-build-result.md",
+      "source": "source:spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/docs-build-result.md (flattened mirror)",
+      "bytes": 1281,
+      "sha256": "a9351cbcc4475fd363711de4f15a0be02da5c0c691fe5f770f9a216f6c721139",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c19-1-computed-color-precomparison-2026-10-16/implementation-review-20.html",
+      "source": "rspress:spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/implementation-review-20.html (flattened mirror)",
+      "bytes": 35598,
+      "sha256": "1f4781857bdfc7081feaca3014b0f7c09062e497232402b386a448302cfe4fb2",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c19-1-computed-color-precomparison-2026-10-16/implementation-review-20.md",
+      "source": "source:spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/implementation-review-20.md (flattened mirror)",
+      "bytes": 4462,
+      "sha256": "b43e794c83f3d27762f47afd2d402d6e96c8f2af3d6c27c82784ca00936b06f6",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c19-1-computed-color-precomparison-2026-10-16/pr-delta-review-30.html",
+      "source": "rspress:spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/pr-delta-review-30.html (flattened mirror)",
+      "bytes": 39617,
+      "sha256": "b3e9be7604950e121a75f4351684fe515c5a2ab7df632246dfa3958e5855f9c8",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c19-1-computed-color-precomparison-2026-10-16/pr-delta-review-30.md",
+      "source": "source:spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/pr-delta-review-30.md (flattened mirror)",
+      "bytes": 5823,
+      "sha256": "84bfaa3f8b3a8ec046616220155cf36b5eaf4a4db6d0afe4361ac4c405ef201c",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c19-2-box-paint-opacity-precomparison-2026-10-16/README.html",
+      "source": "rspress:spec/internal/evidence/c19-2-box-paint-opacity-precomparison-2026-10-16/README.html (flattened mirror)",
+      "bytes": 35093,
+      "sha256": "8212e939b9ee79b0b30c6cff1ebe189bdc90a38be633ce14d9a4c29c29c7ce45",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c19-2-box-paint-opacity-precomparison-2026-10-16/README.md",
+      "source": "source:spec/internal/evidence/c19-2-box-paint-opacity-precomparison-2026-10-16/README.md (flattened mirror)",
+      "bytes": 7607,
+      "sha256": "4d4958439567cb9bedb2e6dc4d86f3e718c1ded955364f69392cdc3d81bec831",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c19-2-pr-diff-review-30-2026-10-17.html",
+      "source": "rspress:spec/internal/evidence/c19-2-pr-diff-review-30-2026-10-17.html (flattened mirror)",
+      "bytes": 35420,
+      "sha256": "5e27ae62dbe7bbb28430a3095af95b3d787eb771d695c99a7329906f13d5a3c3",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c19-2-pr-diff-review-30-2026-10-17.md",
+      "source": "source:spec/internal/evidence/c19-2-pr-diff-review-30-2026-10-17.md (flattened mirror)",
+      "bytes": 9374,
+      "sha256": "c6c1f7ab6d23a0398815a92528e59838e69bfc0b64ea5e07f253744eff5d0dae",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c19-2-roadmap-pr-delta-review-30-2026-10-17.html",
+      "source": "rspress:spec/internal/evidence/c19-2-roadmap-pr-delta-review-30-2026-10-17.html (flattened mirror)",
+      "bytes": 30281,
+      "sha256": "26c385927c1d295f1b21b0a015257a5e8bb5d8713e96b115baca4972d632d9ae",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c19-2-roadmap-pr-delta-review-30-2026-10-17.md",
+      "source": "source:spec/internal/evidence/c19-2-roadmap-pr-delta-review-30-2026-10-17.md (flattened mirror)",
+      "bytes": 4982,
+      "sha256": "811e718cb4fa92468c03f573a66a3738409599a1d34dbb4030068545a7bc4436",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c19-2-runtime-image-links-pr-review-30-2026-10-17.html",
+      "source": "rspress:spec/internal/evidence/c19-2-runtime-image-links-pr-review-30-2026-10-17.html (flattened mirror)",
+      "bytes": 30525,
+      "sha256": "d21bc2ee4160f535195039338b4c4a8cef1963866e06a0df0602985e629b6438",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c19-2-runtime-image-links-pr-review-30-2026-10-17.md",
+      "source": "source:spec/internal/evidence/c19-2-runtime-image-links-pr-review-30-2026-10-17.md (flattened mirror)",
+      "bytes": 5041,
+      "sha256": "09673ab4b65ccc3059862d8585289094278e1115b39f6e2a2ddeb3fa7d634456",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c19-2-runtime-implementation-review-2026-10-17.html",
+      "source": "rspress:spec/internal/evidence/c19-2-runtime-implementation-review-2026-10-17.html (flattened mirror)",
+      "bytes": 35810,
+      "sha256": "8e5f1a8c6d4b41dc659203484a445ff88e7a5a5534607cfc74f4e8a84c093271",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c19-2-runtime-implementation-review-2026-10-17.md",
+      "source": "source:spec/internal/evidence/c19-2-runtime-implementation-review-2026-10-17.md (flattened mirror)",
+      "bytes": 9493,
+      "sha256": "ed736961840fbb53b0acc3ee8434f971ea29e5853ffef1bfdbe6e18a8223ebba",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c19-2-runtime-simulators-2026-10-17/README.html",
+      "source": "rspress:spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/README.html (flattened mirror)",
+      "bytes": 42510,
+      "sha256": "6b7e417b28dd7109cd0faf31702693b44a102c6dd1768f5f47475f8672c24187",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c19-2-runtime-simulators-2026-10-17/README.md",
+      "source": "source:spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/README.md (flattened mirror)",
+      "bytes": 12492,
+      "sha256": "c11f051077a061533757aaebb944e5914b8a055364087202296705771c8c4443",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "logo.svg",
+      "source": "rspress:logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "previous_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "plan/c19-basic-paint-attributes.html",
+      "source": "rspress:plan/c19-basic-paint-attributes.html",
+      "bytes": 35255,
+      "sha256": "f9b5e049a670e2d778d0e4e5bbe4197ce4279eb2bae4ddf688ee131103d36623",
+      "previous_sha256": "c1e203181e3857df7a24c8bad8a7e047390a4a57d4cead4fc701e28d9eb9adee",
+      "status": "replaced",
+      "backup_path": "backup/c19-2-tailnet-roadmap-sync-2026-10-17/plan/c19-basic-paint-attributes.html"
+    },
+    {
+      "path": "plan/c19-basic-paint-attributes.md",
+      "source": "source:plan/c19-basic-paint-attributes.md",
+      "bytes": 9468,
+      "sha256": "713c7886ae6742a0b2766e45ebda932e86f447ba8046fdf744fb30715cd79b44",
+      "previous_sha256": "713c7886ae6742a0b2766e45ebda932e86f447ba8046fdf744fb30715cd79b44",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "roadmap.html",
+      "source": "rspress:roadmap.html",
+      "bytes": 101674,
+      "sha256": "57026f69c5d860bd995c86adefca01958d94be6c1f1fdfdfbfc680e79311730a",
+      "previous_sha256": "78b6ffb98b728480b607f60557a126673a472022da170283408304a0ee7335a8",
+      "status": "replaced",
+      "backup_path": "backup/c19-2-tailnet-roadmap-sync-2026-10-17/roadmap.html"
+    },
+    {
+      "path": "spec/0002-ui-tree-events.html",
+      "source": "rspress:spec/0002-ui-tree-events.html",
+      "bytes": 38320,
+      "sha256": "e1d5af10e2e4b6ba46cb07ff7c1cafb1eece7ec97e9ddc510e5d1d4ea29c7d88",
+      "previous_sha256": "c47889a8cf14b03dff6d873f21da53cde97cb2668ec8394dc2b965a7d8e13057",
+      "status": "replaced",
+      "backup_path": "backup/c19-2-tailnet-roadmap-sync-2026-10-17/spec/0002-ui-tree-events.html"
+    },
+    {
+      "path": "spec/0002-ui-tree-events.md",
+      "source": "source:spec/0002-ui-tree-events.md",
+      "bytes": 12429,
+      "sha256": "fd47b76508c3dcac4ec19f33c0ae1bb2a5b8d8916da42ff60775799da54c98d1",
+      "previous_sha256": "fd47b76508c3dcac4ec19f33c0ae1bb2a5b8d8916da42ff60775799da54c98d1",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/0008-css-compatibility.html",
+      "source": "rspress:spec/0008-css-compatibility.html",
+      "bytes": 49968,
+      "sha256": "c3aea001a1a2ec354531e7b618459b29cc2723439bcc0206872815752f82ec3b",
+      "previous_sha256": "d5ddbc0564a2dc3e857211e5716bead3656c5e9fc80fc30201c718be5986d33e",
+      "status": "replaced",
+      "backup_path": "backup/c19-2-tailnet-roadmap-sync-2026-10-17/spec/0008-css-compatibility.html"
+    },
+    {
+      "path": "spec/0008-css-compatibility.md",
+      "source": "source:spec/0008-css-compatibility.md",
+      "bytes": 20520,
+      "sha256": "021191729504179b63faa36e32cff80274003ff08b3909aeebac7544e7e8d7f3",
+      "previous_sha256": "021191729504179b63faa36e32cff80274003ff08b3909aeebac7544e7e8d7f3",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/STATUS.html",
+      "source": "rspress:spec/STATUS.html",
+      "bytes": 332627,
+      "sha256": "2105667c3e2904bccd62a80658298615d3a49753ac5c9987568149278f2051b2",
+      "previous_sha256": "ce28429db0baaff549b43d6023b9a2aeb76ee3b0fb8686c015db92f4109e3761",
+      "status": "replaced",
+      "backup_path": "backup/c19-2-tailnet-roadmap-sync-2026-10-17/spec/STATUS.html"
+    },
+    {
+      "path": "spec/STATUS.md",
+      "source": "source:spec/STATUS.md",
+      "bytes": 249271,
+      "sha256": "288dcfd49230a26c6a7f3f2d4820dd4eb92048a079aec4311060a70f65171a1e",
+      "previous_sha256": "b87f3d10a191446cdbfd2f81b9618ba62588efd86007edae86178a32d5f928cb",
+      "status": "replaced",
+      "backup_path": "backup/c19-2-tailnet-roadmap-sync-2026-10-17/spec/STATUS.md"
+    },
+    {
+      "path": "spec/internal/0069-c19-2-box-paint-opacity.html",
+      "source": "rspress:spec/internal/0069-c19-2-box-paint-opacity.html",
+      "bytes": 30317,
+      "sha256": "839707772120f292af0461d77058d4938e3aa829865e01f21b0819f109992dc4",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/0069-c19-2-box-paint-opacity.md",
+      "source": "source:spec/internal/0069-c19-2-box-paint-opacity.md",
+      "bytes": 4994,
+      "sha256": "1942569984ab0894b97f70bd999a2a293d8ecf2068d2532a7502b93d27f9d149",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/README.html",
+      "source": "rspress:spec/internal/README.html",
+      "bytes": 148876,
+      "sha256": "cf598507dfad90fad4300727ca034e5b972ff4a6654641f8fb4a290ef9592ed1",
+      "previous_sha256": "3690edcdc4a4e84fa09fe535c720ccb90eeb1645681816695e62020a8483ad26",
+      "status": "replaced",
+      "backup_path": "backup/c19-2-tailnet-roadmap-sync-2026-10-17/spec/internal/README.html"
+    },
+    {
+      "path": "spec/internal/README.md",
+      "source": "source:spec/internal/README.md",
+      "bytes": 102933,
+      "sha256": "a1bede0f66d6a5e22790fd0f34bd2ee20cfa4acf33a37223324a5116fb373dd6",
+      "previous_sha256": "759cab428e3f08fe726ec040e0cec39077d621b6461f136a1194de4efd8c05bb",
+      "status": "replaced",
+      "backup_path": "backup/c19-2-tailnet-roadmap-sync-2026-10-17/spec/internal/README.md"
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-compatibility-triage-2026-10-16.html",
+      "source": "rspress:spec/internal/evidence/c19-1-computed-color-compatibility-triage-2026-10-16.html",
+      "bytes": 31814,
+      "sha256": "2dd9b29975960cac869e15fb207bb1e998a149408dd913173a4e0640dd1110aa",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-compatibility-triage-2026-10-16.md",
+      "source": "source:spec/internal/evidence/c19-1-computed-color-compatibility-triage-2026-10-16.md",
+      "bytes": 5769,
+      "sha256": "d4b0f2b0d8703d4ad793b112dd3b5c5723888f735dd21ad26016e2e0df26b4e7",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/README.html",
+      "source": "rspress:spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/README.html",
+      "bytes": 33295,
+      "sha256": "994676903055ff634ca0290dc71628083cbd4611420bdab45b11067a3ee9c49f",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/README.md",
+      "source": "source:spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/README.md",
+      "bytes": 6922,
+      "sha256": "b2a3d6d682607a31c90965ccf605c702ffe9e9a27d2349c4c4bddd1e7d06127d",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.html",
+      "source": "rspress:spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.html",
+      "bytes": 31245,
+      "sha256": "14ef50c87e1c27d92653bd4890a2b40f3daad8f042a85afcd9435c7f56c47824",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.md",
+      "source": "source:spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.md",
+      "bytes": 5495,
+      "sha256": "39fa3b2614687367822876ea77a297298aff56024a8bcb80708ad079368f8df0",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/docs-build-result.html",
+      "source": "rspress:spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/docs-build-result.html",
+      "bytes": 26236,
+      "sha256": "49bbc4edaf8cfc3cdc1f6024f212866a0dbe1b644903f3610b4dc2ea1515e1f5",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/docs-build-result.md",
+      "source": "source:spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/docs-build-result.md",
+      "bytes": 1281,
+      "sha256": "a9351cbcc4475fd363711de4f15a0be02da5c0c691fe5f770f9a216f6c721139",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/implementation-review-20.html",
+      "source": "rspress:spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/implementation-review-20.html",
+      "bytes": 35598,
+      "sha256": "1f4781857bdfc7081feaca3014b0f7c09062e497232402b386a448302cfe4fb2",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/implementation-review-20.md",
+      "source": "source:spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/implementation-review-20.md",
+      "bytes": 4462,
+      "sha256": "b43e794c83f3d27762f47afd2d402d6e96c8f2af3d6c27c82784ca00936b06f6",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/pr-delta-review-30.html",
+      "source": "rspress:spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/pr-delta-review-30.html",
+      "bytes": 39617,
+      "sha256": "b3e9be7604950e121a75f4351684fe515c5a2ab7df632246dfa3958e5855f9c8",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/pr-delta-review-30.md",
+      "source": "source:spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/pr-delta-review-30.md",
+      "bytes": 5823,
+      "sha256": "84bfaa3f8b3a8ec046616220155cf36b5eaf4a4db6d0afe4361ac4c405ef201c",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-box-paint-opacity-precomparison-2026-10-16/README.html",
+      "source": "rspress:spec/internal/evidence/c19-2-box-paint-opacity-precomparison-2026-10-16/README.html",
+      "bytes": 35093,
+      "sha256": "8212e939b9ee79b0b30c6cff1ebe189bdc90a38be633ce14d9a4c29c29c7ce45",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-box-paint-opacity-precomparison-2026-10-16/README.md",
+      "source": "source:spec/internal/evidence/c19-2-box-paint-opacity-precomparison-2026-10-16/README.md",
+      "bytes": 7607,
+      "sha256": "4d4958439567cb9bedb2e6dc4d86f3e718c1ded955364f69392cdc3d81bec831",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-pr-diff-review-30-2026-10-17.html",
+      "source": "rspress:spec/internal/evidence/c19-2-pr-diff-review-30-2026-10-17.html",
+      "bytes": 35420,
+      "sha256": "5e27ae62dbe7bbb28430a3095af95b3d787eb771d695c99a7329906f13d5a3c3",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-pr-diff-review-30-2026-10-17.md",
+      "source": "source:spec/internal/evidence/c19-2-pr-diff-review-30-2026-10-17.md",
+      "bytes": 9374,
+      "sha256": "c6c1f7ab6d23a0398815a92528e59838e69bfc0b64ea5e07f253744eff5d0dae",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-roadmap-pr-delta-review-30-2026-10-17.html",
+      "source": "rspress:spec/internal/evidence/c19-2-roadmap-pr-delta-review-30-2026-10-17.html",
+      "bytes": 30281,
+      "sha256": "26c385927c1d295f1b21b0a015257a5e8bb5d8713e96b115baca4972d632d9ae",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-roadmap-pr-delta-review-30-2026-10-17.md",
+      "source": "source:spec/internal/evidence/c19-2-roadmap-pr-delta-review-30-2026-10-17.md",
+      "bytes": 4982,
+      "sha256": "811e718cb4fa92468c03f573a66a3738409599a1d34dbb4030068545a7bc4436",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-image-links-pr-review-30-2026-10-17.html",
+      "source": "rspress:spec/internal/evidence/c19-2-runtime-image-links-pr-review-30-2026-10-17.html",
+      "bytes": 30525,
+      "sha256": "d21bc2ee4160f535195039338b4c4a8cef1963866e06a0df0602985e629b6438",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-image-links-pr-review-30-2026-10-17.md",
+      "source": "source:spec/internal/evidence/c19-2-runtime-image-links-pr-review-30-2026-10-17.md",
+      "bytes": 5041,
+      "sha256": "09673ab4b65ccc3059862d8585289094278e1115b39f6e2a2ddeb3fa7d634456",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-implementation-review-2026-10-17.html",
+      "source": "rspress:spec/internal/evidence/c19-2-runtime-implementation-review-2026-10-17.html",
+      "bytes": 35810,
+      "sha256": "8e5f1a8c6d4b41dc659203484a445ff88e7a5a5534607cfc74f4e8a84c093271",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-implementation-review-2026-10-17.md",
+      "source": "source:spec/internal/evidence/c19-2-runtime-implementation-review-2026-10-17.md",
+      "bytes": 9493,
+      "sha256": "ed736961840fbb53b0acc3ee8434f971ea29e5853ffef1bfdbe6e18a8223ebba",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/README.html",
+      "source": "rspress:spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/README.html",
+      "bytes": 42510,
+      "sha256": "6b7e417b28dd7109cd0faf31702693b44a102c6dd1768f5f47475f8672c24187",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/README.md",
+      "source": "source:spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/README.md",
+      "bytes": 12492,
+      "sha256": "c11f051077a061533757aaebb944e5914b8a055364087202296705771c8c4443",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "source": "rspress:static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "previous_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/android-api37-screen.5c6b0a7beb.png",
+      "source": "rspress:static/image/android-api37-screen.5c6b0a7beb.png",
+      "bytes": 82529,
+      "sha256": "fb51796ea24492d291f1d48d22ac0da16c48722b373c455957e386fafb86bdde",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/android-screen.3cee29c23f.png",
+      "source": "rspress:static/image/android-screen.3cee29c23f.png",
+      "bytes": 83673,
+      "sha256": "bcdb870cdc3a55ea3598970f5db89eac54639f57ebc3ff1668d00c2e672c2179",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/ipad-pro-13-candidate-screen.6d9d1ee9b6.png",
+      "source": "rspress:static/image/ipad-pro-13-candidate-screen.6d9d1ee9b6.png",
+      "bytes": 168285,
+      "sha256": "94e71e7b199106751696763b92e7eb5809186ccffedd4e56fd6aad58a6b473df",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/ipad-pro-screen.f468e2132c.png",
+      "source": "rspress:static/image/ipad-pro-screen.f468e2132c.png",
+      "bytes": 168113,
+      "sha256": "7d9bda227ad0159c8bca49033b7ef66a62bf15dcc539fc13aafaa61373f678fa",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/iphone17pro-candidate-screen.65d3d97faf.png",
+      "source": "rspress:static/image/iphone17pro-candidate-screen.65d3d97faf.png",
+      "bytes": 146150,
+      "sha256": "14b7f3db9b95f4d51b47f0e6689285d760329ed8ade79ae9f3293104d765a498",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/iphone17pro-screen.acedf4880e.png",
+      "source": "rspress:static/image/iphone17pro-screen.acedf4880e.png",
+      "bytes": 147421,
+      "sha256": "1e41ab3a672df629971d96d49bd4f7cbd8b3318fab336784eda711e533d10e7a",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/a.0c65e61aff.js",
+      "source": "rspress:static/js/a.0c65e61aff.js",
+      "bytes": 217098,
+      "sha256": "13247cff972c68308e91bdbd800cf915c3d92a38a674b39a0432a4ee93418ed2",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/a.0c65e61aff.js.LICENSE.txt",
+      "source": "rspress:static/js/a.0c65e61aff.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "source": "rspress:static/js/async/i.25208e7c92.js",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "previous_sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-04b208524b01.fb6e8d9764.js",
+      "source": "rspress:static/js/async/route-04b208524b01.fb6e8d9764.js",
+      "bytes": 16475,
+      "sha256": "6a9a5f07e136e4a081087d562aa4a9315df7014e7fc5343f049d380064ecc5e2",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-18a7c89f33e7.da7a12127f.js",
+      "source": "rspress:static/js/async/route-18a7c89f33e7.da7a12127f.js",
+      "bytes": 14410,
+      "sha256": "c1c7fd1772c34161505652819fc945dd57c8fd32ab74c98ca3d2f62fbf2bd5db",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-1c2ceb9b122e.26d2d4e607.js",
+      "source": "rspress:static/js/async/route-1c2ceb9b122e.26d2d4e607.js",
+      "bytes": 2552,
+      "sha256": "6b58fad84d5776a4f73f5132dd2e9df2c044954078f7484dc1c65b755f7e9bb5",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-3254f72c520b.9443ff00c9.js",
+      "source": "rspress:static/js/async/route-3254f72c520b.9443ff00c9.js",
+      "bytes": 17082,
+      "sha256": "b430c483a0ec736dd7d069ccf5d02a80b17520ebacc4148d0aca29c569048d50",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-5163aba252b1.c862ce2127.js",
+      "source": "rspress:static/js/async/route-5163aba252b1.c862ce2127.js",
+      "bytes": 18345,
+      "sha256": "82249b03d253a4f642635edc4f97b1ce6698d477417685641d02eafefde7861f",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-54ae0623f0a4.bd3dce47a4.js",
+      "source": "rspress:static/js/async/route-54ae0623f0a4.bd3dce47a4.js",
+      "bytes": 26066,
+      "sha256": "179576dd9ea16e873361b9811ad47aac3adc0c405c2406307a2fc6556991e450",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-5bfb86197c5e.ddbceb27ee.js",
+      "source": "rspress:static/js/async/route-5bfb86197c5e.ddbceb27ee.js",
+      "bytes": 10807,
+      "sha256": "8f7b53a753edb6cd695b6f2b85f3618d366b01916b0e966545ee0af017abcfd8",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-64404dead04a.33e6eaf501.js",
+      "source": "rspress:static/js/async/route-64404dead04a.33e6eaf501.js",
+      "bytes": 12641,
+      "sha256": "8e1069fc722779f17f7b827bf279a40a16cc853abfa530f782a2da513d3b566e",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-768eadf8f25d.cc48d70446.js",
+      "source": "rspress:static/js/async/route-768eadf8f25d.cc48d70446.js",
+      "bytes": 12972,
+      "sha256": "9924364ba22728b7ad65753230a155b6ca2b96753b9d1b547fb29d8c9d7a3e85",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-7bc6601e0843.a2a11ca6f5.js",
+      "source": "rspress:static/js/async/route-7bc6601e0843.a2a11ca6f5.js",
+      "bytes": 11384,
+      "sha256": "3710a87dd5cc2cbd2cb409befec0b5e9e19c9838d3dbf98bbfd295994321db80",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.9fcc8d89c4.js",
+      "source": "rspress:static/js/async/route-7ce2535ac56d.9fcc8d89c4.js",
+      "bytes": 345627,
+      "sha256": "00ab1760760f9dfebff3090c6cb710c1d7de5f41423a5a745730285e5a2b813b",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-8537b200b937.266abecbe0.js",
+      "source": "rspress:static/js/async/route-8537b200b937.266abecbe0.js",
+      "bytes": 8414,
+      "sha256": "6f350557cc91e3c7e4e787ae330f0f6ad16012efb65ac9d17251f71f04d099d2",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-9de34ee7e86c.60ce808953.js",
+      "source": "rspress:static/js/async/route-9de34ee7e86c.60ce808953.js",
+      "bytes": 11109,
+      "sha256": "ab7d71706a2e199671f853d2e24313bfe986b39c7a2f4549286159313df7d70a",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-a991d6de67ad.443530e949.js",
+      "source": "rspress:static/js/async/route-a991d6de67ad.443530e949.js",
+      "bytes": 151531,
+      "sha256": "81f2ba727178a4bdbdc25d6c6543925f8ba1c1a79e3dac63b7c1384d59545986",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-b43b9044403c.74d471a799.js",
+      "source": "rspress:static/js/async/route-b43b9044403c.74d471a799.js",
+      "bytes": 17004,
+      "sha256": "7e872842e3cda8d3a4db71e2952b210b2718251faadfb620e8ccf8abea271fc6",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-b48f4b338a48.fa69b8a8dc.js",
+      "source": "rspress:static/js/async/route-b48f4b338a48.fa69b8a8dc.js",
+      "bytes": 30869,
+      "sha256": "ad71cea9119c2d1763d5ea8447162f21ff91e6395358aa913d7d34ce441f5a8d",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-cc4ad3cadedf.fd0c777b8a.js",
+      "source": "rspress:static/js/async/route-cc4ad3cadedf.fd0c777b8a.js",
+      "bytes": 9999,
+      "sha256": "86398f756fe9f479f89b702d6e3936d418b19e65e3de8942ba1d19bd205b1749",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-f8d6b997068a.dcdba39b42.js",
+      "source": "rspress:static/js/async/route-f8d6b997068a.dcdba39b42.js",
+      "bytes": 8130,
+      "sha256": "73374a23b1e548340af4a55ca3e01a79e6449bb1dbd6d3339bf8b9e653dca54d",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/index.728cd66e19.js",
+      "source": "rspress:static/js/index.728cd66e19.js",
+      "bytes": 42870,
+      "sha256": "24e7823fd2af66215133684f47041f2a55b61f3ca270b9c2e4bc74a20087a2ce",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "source": "rspress:static/js/lib-react.9cdf8f49ce.js",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "previous_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "source": "rspress:static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "previous_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "source": "rspress:static/js/lib-router.1e14e568cb.js",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "previous_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "source": "rspress:static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "previous_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/styles.1e736820d4.js",
+      "source": "rspress:static/js/styles.1e736820d4.js",
+      "bytes": 472,
+      "sha256": "66be62b2890f47d0d4852a945304c3c571d4079ce9a8991d45599e08debf347e",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/search_index.ko.06595339.json",
+      "source": "rspress:static/search_index.ko.06595339.json",
+      "bytes": 403628,
+      "sha256": "065953393ddbaee01067ea264d4e548da3d6d859642b37b74f90c87e79041cc7",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    }
+  ]
+}
