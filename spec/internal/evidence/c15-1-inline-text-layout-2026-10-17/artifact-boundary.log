@@ -1,0 +1,28 @@
+{
+  "defaultArtifacts": [
+    {
+      "path": "target/debug/deps/libspinon_layout-77640e4f32753ae7.rlib",
+      "ahem": false,
+      "roboto": false
+    },
+    {
+      "path": "target/debug/deps/libspinon_layout-cdeb7c589b1bbe30.rlib",
+      "ahem": false,
+      "roboto": false
+    }
+  ],
+  "fixtureTestPositiveControls": [
+    {
+      "path": "target/debug/deps/spinon_text_layout-ab0b252a4ac163ed",
+      "ahem": true,
+      "roboto": true
+    },
+    {
+      "path": "target/debug/deps/spinon_text_layout-d641342cc20e42f0",
+      "ahem": true,
+      "roboto": true
+    }
+  ],
+  "method": "Node Buffer.includes for Ahem and Roboto byte strings",
+  "result": "default layout artifacts omit both font payloads; test binaries contain both"
+}

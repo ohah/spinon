@@ -31,7 +31,7 @@ HostDocument의 실제 text node와 inline element를 CSS inline formatting cont
 
 ### C15.1 · block 안의 inline paragraph와 실제 glyph run
 
-- definite content inline-size를 가진 기존 Block context 안에서 direct text와 같은 style을 상속하는 `span`을 source order로 inline sequence로 수집한다. 모든 `display:none` subtree와 빈 text node를 정확히 제외한다.
+- definite content inline-size를 가진 기존 Block context 안에서 direct text와 같은 style을 상속하는 한 단계 `span`을 source order로 inline sequence로 수집한다. C15.1의 span은 별도 border·padding·margin·size·방향 변경이 없어야 한다. 중첩 span과 box decoration은 식별 가능한 오류로 닫고 C15.2에서 다룬다. 모든 `display:none` subtree와 빈 text node를 정확히 제외한다.
 - `white-space: normal | nowrap | pre-line`, `word-break: normal | break-all`을 지원 범위로 고정한다. line box 계산에는 oracle fixture가 지정한 내부 line-height scalar를 쓴다. CSS `line-height` 값의 parsing·cascade는 C16 범위다. 그 밖의 white-space/word-break 값은 fallback하지 않고 해당 node/property를 식별하는 오류로 닫는다.
 - Ahem 10px와 Roboto variable 20px를 opt-in fixture에서 직접 등록한다. text node 문자열을 실제 shaping API에 전달하고 glyph ID·advance·font metrics를 결과에 보존한다.
 - 출력은 immutable `TextLayoutSnapshot`으로 line box, baseline, text run, glyph origin/advance, node별 inline fragment rect를 포함한다. Taffy가 해당 Block의 content width를 결정하는 동안 사용한 measure와 최종 renderer 입력은 같은 font/style/document/environment revision과 같은 available width에 묶는다.
@@ -60,16 +60,18 @@ HostDocument의 실제 text node와 inline element를 CSS inline formatting cont
 | --- | --- | --- |
 | `collapsed-spaces` | Ahem 10px, `X   X`, `white-space:normal` | content advance `30×10`; 공백 세 개 중 하나만 10px advance |
 | `wrap-at-word` | Ahem 10px, width 30px, `XX XX` | 두 line, 각 text width 20px, block height 20px |
-| `long-word` | Ahem 10px, width 15px, `XX` | unbreakable word width 20px가 한 line에 남고 parent width 밖으로 overflow |
+| `long-word` | Ahem 10px, width 15px 및 0px, `XX`/`X` | 두 폭 모두 unbreakable word가 한 line에 남아 text advance가 parent width를 넘는다. 15px 폭의 `XX`는 20px, 0px 폭의 `X`는 10px다. |
 | `break-all` | Ahem 10px, width 20px, `XXXXX` | line advance 20/20/10px, block height 30px |
 | `preserved-newline` | Ahem 10px, width 30px, `X\nX`, `pre-line` | 두 line, block height 20px |
 | `nowrap` | Ahem 10px, width 30px, `XX XX` | 한 line width 50px, block height 10px |
-| `inline-fragment` | width 30px, border 1px inline span `XX XX` | span fragment 2개, 각각 `21×12px` |
+| `plain-inline-fragment` | width 30px, Ahem 10px, border/padding 없는 span `XX XX` | span fragment 2개, 각각 `20×10px`; 줄 끝에서 접힌 공백은 fragment 폭에 포함하지 않음 |
 | `baseline` | Ahem 10px, line-height 10px, baseline marker | baseline은 line top에서 `8px` 아래 |
 | `proportional-i`, `proportional-W` | Roboto 20px, 각각 `iiii`, `WWWW` | advance `19.4531px` 대 `70.9844px`; 동일 code-unit 수라도 폭은 달라야 함 |
 | `ligature-text` | Roboto 20px `office` | 전체 shaped run advance `49.5625px`; 특정 ligature 여부를 이 값만으로 유추하지 않음 |
 
 Geometry 판정은 CSS px에서 line count, parent/frame size, fragment rect, glyph origin/advance별 허용 오차 `0.05 CSS px`로 정한다. Ahem은 fixed font·integer position의 glyph coverage sample을 exact 비교한다. Roboto는 같은 고정 font file로 glyph advance·ink bounds를 비교하며, 다른 rasterizer의 per-channel antialias 차이를 layout pass/fail에 섞지 않는다. OS/browser/surface color difference는 별도 분류한다.
+
+사전 비교 fixture의 `inline-fragment` case는 border 1px를 포함한 C15.2 기준이다. C15.1의 `plain-inline-fragment` 관찰은 동일한 Agent Browser page에서 span border를 끈 변형으로 측정했고, 원본 precomparison fixture와 screenshot은 변경하지 않는다. `long-word`의 0px 폭은 별도 DOM mutation observation으로 기록하고 원본 fixture는 그대로 둔다. 두 slice의 rect를 서로의 acceptance oracle로 섞지 않는다.
 
 첫 구현 전에 fixture HTML와 font SHA를 변경 없이 유지하거나, 변경 사유·새 Chrome 관찰값을 plan review 20회부터 다시 검토한다. WPT는 실행할 파일 path와 WPT commit SHA를 구현 전에 고정하고, Chrome oracle pass를 Spinon WPT pass로 부르지 않는다.
 
@@ -83,7 +85,7 @@ Geometry 판정은 CSS px에서 line count, parent/frame size, fragment rect, gl
 
 ## 실패 주입과 적대 확인
 
-`implementation-review-20`은 계획 검토 20개 및 PR diff 검토 20개와 다른 입력/불변 조건을 쓴다. 최소 negative control은 아래와 같다.
+`implementation-review-20`은 계획 검토 20개 및 PR diff 검토 30개와 다른 입력/불변 조건을 쓴다. 최소 negative control은 아래와 같다.
 
 1. `font_size × code_unit_count` width 추정으로 바꾸면 Roboto `iiii`/`WWWW` test가 실패해야 한다.
 2. whitespace collapse를 끄면 `X   X` 30px advance가 달라져야 한다.
@@ -111,7 +113,7 @@ Geometry 판정은 CSS px에서 line count, parent/frame size, fragment rect, gl
 
 ## 완료 판정과 명시적 제외
 
-C15 완료는 C15.1–C15.3 입력 class의 text shaping, inline fragment/line box geometry, painter visibility, revision safety가 함께 확인되고 관련 internal spec와 실행 자료가 등록된 뒤에만 검토한다. 각 implementation PR은 독립 실패 관점 20개, 별도 PR diff 관점 20개를 기록하고, C15 완료 체크는 마지막 C15 통합 PR에서만 갱신한다. C16 속성 전체 또는 C19.3 text painter가 빠져 있으면 C19 전체도 완료할 수 없다.
+C15 완료는 C15.1–C15.3 입력 class의 text shaping, inline fragment/line box geometry, painter visibility, revision safety가 함께 확인되고 관련 internal spec와 실행 자료가 등록된 뒤에만 검토한다. 각 implementation PR은 독립 실패 관점 20개, 별도 PR diff 관점 30개를 기록하고, C15 완료 체크는 마지막 C15 통합 PR에서만 갱신한다. C16 속성 전체 또는 C19.3 text painter가 빠져 있으면 C19 전체도 완료할 수 없다.
 
 이 계획과 C15.1은 아래 범위 완료를 뜻하지 않는다.
 
@@ -127,5 +129,5 @@ C15 완료는 C15.1–C15.3 입력 class의 text shaping, inline fragment/line b
 3. internal C15.1 contract와 style/document/font revision preconditions를 정의한다. 고정 Chrome precomparison, C15 fixture, WPT paths/revision, expected geometry를 구현 전 comparator에 연결한다.
 4. actual shaping result로 `TextLayoutSnapshot`을 생성하고 Taffy Block available-size와 연동한다. measure callback 두 번째 호출과 changed width, negative/error/stale snapshot, anonymous inline fragments를 focused Rust tests로 검증한다.
 5. Renderer glyph command/raster path와 text hit/clip integration을 별도 slice로 연결하고 Android/iOS simulator runtime fixture를 보존한다. fixture routes와 fonts는 opt-in에만 둔다.
-6. 계획 검토와 겹치지 않는 구현 실패 관점 20개를 완료하고 발견한 결함을 수정한다. 그 뒤 별도 PR diff 실패 관점 20개를 실행하고 required checks/mergeability를 확인해 `Rebase and merge`로 진행한다.
+6. 계획 검토와 겹치지 않는 구현 실패 관점 20개를 완료하고 발견한 결함을 수정한다. 그 뒤 별도 PR diff 실패 관점 30개를 실행하고 required checks/mergeability를 확인해 `Rebase and merge`로 진행한다.
 7. 각 통과한 부분 작업은 evidence index와 roadmap description에 연결하되 C15/C16/C19의 상위 완료 상태는 그대로 둔다. 전체 C15가 끝날 때만 internal interface spec, STATUS, supported scope를 최종 일치시킨다.

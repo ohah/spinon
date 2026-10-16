@@ -443,7 +443,10 @@ fn validate_main_axis_gap(
             FlexDirection::Column | FlexDirection::ColumnReverse => flex_column.as_slice(),
         },
         LayoutDisplay::Grid => grid_gaps.as_slice(),
-        LayoutDisplay::Block | LayoutDisplay::FlowRoot | LayoutDisplay::None => return Ok(()),
+        LayoutDisplay::Inline
+        | LayoutDisplay::Block
+        | LayoutDisplay::FlowRoot
+        | LayoutDisplay::None => return Ok(()),
     };
     for &(property, value, axis, is_definite) in gaps {
         if has_percentage(value, calc_percentages) && !is_definite {

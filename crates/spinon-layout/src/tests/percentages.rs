@@ -56,6 +56,7 @@ fn percentage_dimensions_resolve_against_parent_content_box_without_clamping() {
         ],
         grid_containers: Default::default(),
         grid_items: Default::default(),
+        text_paragraphs: Default::default(),
     };
 
     let output = TaffyLayoutEngine.compute(&input).unwrap();
@@ -124,6 +125,7 @@ fn percentage_flex_basis_uses_the_container_main_axis() {
         ],
         grid_containers: Default::default(),
         grid_items: Default::default(),
+        text_paragraphs: Default::default(),
     };
 
     let output = TaffyLayoutEngine.compute(&input).unwrap();
@@ -167,6 +169,7 @@ fn viewport_resolving_root_accepts_full_and_partial_percentage_dimensions() {
         }],
         grid_containers: Default::default(),
         grid_items: Default::default(),
+        text_paragraphs: Default::default(),
     };
     let output = TaffyLayoutEngine.compute(&input).unwrap();
     assert_eq!(output.frames[&root].width, 320.0);
@@ -239,6 +242,7 @@ fn percentage_margin_and_padding_keep_the_containing_block_width_basis() {
         ],
         grid_containers: Default::default(),
         grid_items: Default::default(),
+        text_paragraphs: Default::default(),
     };
 
     let output = TaffyLayoutEngine.compute(&input).unwrap();
@@ -321,6 +325,7 @@ fn percentage_gap_uses_the_definite_main_axis_content_size() {
         ],
         grid_containers: Default::default(),
         grid_items: Default::default(),
+        text_paragraphs: Default::default(),
     };
 
     let output = TaffyLayoutEngine.compute(&input).unwrap();
@@ -373,6 +378,7 @@ fn cyclic_column_gap_fails_with_node_property_and_axis() {
         ],
         grid_containers: Default::default(),
         grid_items: Default::default(),
+        text_paragraphs: Default::default(),
     };
     assert_eq!(
         TaffyLayoutEngine.compute(&input),
@@ -484,5 +490,6 @@ fn simple_percent_input(value: f32) -> LayoutInput {
         ],
         grid_containers: Default::default(),
         grid_items: Default::default(),
+        text_paragraphs: Default::default(),
     }
 }

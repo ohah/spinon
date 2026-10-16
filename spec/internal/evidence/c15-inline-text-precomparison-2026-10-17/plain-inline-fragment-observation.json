@@ -1,0 +1,96 @@
+{
+  "browser": "Google Chrome 155.0.8059.85 (official build, arm64)",
+  "chromium_revision": "0e66b94549a8bd85f03fbdf189b752d6e7b63c32-refs/branch-heads/8059@{#1304}",
+  "agent_browser": "0.31.1",
+  "os": "macOS 26.5.1 (25F80), arm64",
+  "viewport_css_px": [
+    320,
+    480
+  ],
+  "device_scale_factor": 1,
+  "source_fixture": "tests/fixtures/css/c15/inline-text-precomparison.html",
+  "source_fixture_sha256": "efba6981d73c2e8d2aa21e38b92f2936ce2a6ecb56bc758ce420a785b5cdaf64",
+  "mutation": "#fragment border set to none in the live page; repository fixture was not edited",
+  "font_faces": [
+    {
+      "family": "Ahem",
+      "status": "loaded"
+    },
+    {
+      "family": "RobotoFixture",
+      "status": "loaded"
+    }
+  ],
+  "font_check": true,
+  "span_box_css_px": [
+    8,
+    272,
+    20,
+    20
+  ],
+  "span_line_fragments_css_px": [
+    [
+      8,
+      272,
+      20,
+      10
+    ],
+    [
+      8,
+      282,
+      20,
+      10
+    ]
+  ],
+  "source_character_rects_css_px": [
+    [
+      [
+        8,
+        272,
+        10,
+        10
+      ]
+    ],
+    [
+      [
+        18,
+        272,
+        10,
+        10
+      ]
+    ],
+    [
+      [
+        28,
+        272,
+        0,
+        10
+      ],
+      [
+        8,
+        282,
+        0,
+        10
+      ]
+    ],
+    [
+      [
+        8,
+        282,
+        10,
+        10
+      ]
+    ],
+    [
+      [
+        18,
+        282,
+        10,
+        10
+      ]
+    ]
+  ],
+  "screenshot": "plain-inline-fragment-agent-browser.png",
+  "screenshot_sha256": "f92942d686df92935dc4b66588e3d3607f92a24f893171581fd16eaa6ab22ded",
+  "scope": "Chrome DOM geometry oracle only; no Spinon runtime or simulator was run"
+}

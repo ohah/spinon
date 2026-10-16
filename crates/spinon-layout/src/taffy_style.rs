@@ -68,6 +68,12 @@ pub(super) fn to_taffy_style(
     };
     let style = Style {
         display: match style.display {
+            LayoutDisplay::Inline => {
+                return Err(LayoutError::InvalidStyle {
+                    node,
+                    field: "display:inline",
+                });
+            }
             LayoutDisplay::Flex => Display::Flex,
             LayoutDisplay::Block => Display::Block,
             LayoutDisplay::Grid => Display::Grid,

@@ -171,9 +171,10 @@ fn unknown_taffy_handle_is_recorded_instead_of_dereferenced() {
         positioning: Default::default(),
         grid_containers: Default::default(),
         grid_items: Default::default(),
+        text_paragraphs: Default::default(),
     };
     let index = BTreeMap::from([(root, 0)]);
-    let mut tree = CalcLayoutTree::new(&input, &index, &[root], None).unwrap();
+    let mut tree = CalcLayoutTree::new(&input, &index, &[root], None, None).unwrap();
 
     assert_eq!(
         <CalcLayoutTree as taffy::LayoutPartialTree>::resolve_calc_value(
@@ -258,5 +259,6 @@ fn input_with_child(
         css_math,
         grid_containers: Default::default(),
         grid_items: Default::default(),
+        text_paragraphs: Default::default(),
     }
 }

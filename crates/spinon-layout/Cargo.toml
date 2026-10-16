@@ -6,6 +6,7 @@ publish = false
 
 [dependencies]
 spinon-core = { path = "../spinon-core" }
+spinon-text-layout = { path = "../spinon-text-layout" }
 taffy = { version = "=0.14.0", default-features = false, features = ["std", "flexbox", "block_layout", "grid", "taffy_tree", "calc"] }
 
 [dev-dependencies]

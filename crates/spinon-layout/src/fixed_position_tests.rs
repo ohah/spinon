@@ -44,6 +44,7 @@ fn input(nodes: Vec<LayoutNode>, positioning: BTreeMap<NodeId, LayoutPositioning
         positioning,
         grid_containers: Default::default(),
         grid_items: Default::default(),
+        text_paragraphs: Default::default(),
     }
 }
 

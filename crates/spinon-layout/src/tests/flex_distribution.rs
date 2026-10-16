@@ -291,6 +291,7 @@ fn layout_input_for_root(
             positioning: Default::default(),
             grid_containers: Default::default(),
             grid_items: Default::default(),
+            text_paragraphs: Default::default(),
         },
         ids,
     )

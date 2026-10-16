@@ -5,6 +5,7 @@ use std::{
 };
 
 use spinon_core::NodeId as SpinonNodeId;
+use spinon_text_layout::{ParagraphInput, TextLayoutEngine, TextLayoutSnapshot};
 use taffy::{
     AvailableSpace, BlockContext, Cache, CacheTree, Display, Layout, LayoutBlockContainer,
     LayoutFlexboxContainer, LayoutInput as TaffyLayoutInput, LayoutOutput as TaffyLayoutOutput,
@@ -16,7 +17,7 @@ use taffy::{
 use self::replaced_sizing::{ReplacedSizingInput, resolve_used_size};
 use crate::{
     LayoutCalcId, LayoutCssMathValue, LayoutError, LayoutInput, LayoutIntrinsicSize,
-    LayoutPosition, PositionedContainingBlockOwner, RootSizingPolicy,
+    LayoutPosition, LayoutTextSnapshot, PositionedContainingBlockOwner, RootSizingPolicy,
     compact_taffy_style::CompactTaffyStyle,
     grid_placement::normalize_grid_layout,
     positioning::collect_positioned_owners,
@@ -67,6 +68,9 @@ pub(super) struct CalcLayoutTree {
     viewport_root: Option<TaffyNodeId>,
     calc_values: HashMap<*const (), Arc<CalcOwner>>,
     calc_error: RefCell<Option<LayoutError>>,
+    text_layout_engine: Option<RefCell<TextLayoutEngine>>,
+    text_paragraphs: HashMap<TaffyNodeId, ParagraphInput>,
+    text_layouts: RefCell<HashMap<TaffyNodeId, BTreeMap<u32, TextLayoutSnapshot>>>,
 }
 
 impl CalcLayoutTree {
@@ -75,8 +79,16 @@ impl CalcLayoutTree {
         index: &BTreeMap<SpinonNodeId, usize>,
         postorder: &[SpinonNodeId],
         intrinsic_sizes: Option<&BTreeMap<SpinonNodeId, LayoutIntrinsicSize>>,
+        text_layout_engine: Option<&TextLayoutEngine>,
     ) -> Result<Self, LayoutError> {
-        Self::new_with_inset_mode(input, index, postorder, intrinsic_sizes, false)
+        Self::new_with_inset_mode(
+            input,
+            index,
+            postorder,
+            intrinsic_sizes,
+            false,
+            text_layout_engine,
+        )
     }
 
     pub(super) fn new_flow_only(
@@ -84,8 +96,16 @@ impl CalcLayoutTree {
         index: &BTreeMap<SpinonNodeId, usize>,
         postorder: &[SpinonNodeId],
         intrinsic_sizes: Option<&BTreeMap<SpinonNodeId, LayoutIntrinsicSize>>,
+        text_layout_engine: Option<&TextLayoutEngine>,
     ) -> Result<Self, LayoutError> {
-        Self::new_with_inset_mode(input, index, postorder, intrinsic_sizes, true)
+        Self::new_with_inset_mode(
+            input,
+            index,
+            postorder,
+            intrinsic_sizes,
+            true,
+            text_layout_engine,
+        )
     }
 
     fn new_with_inset_mode(
@@ -94,6 +114,7 @@ impl CalcLayoutTree {
         postorder: &[SpinonNodeId],
         intrinsic_sizes: Option<&BTreeMap<SpinonNodeId, LayoutIntrinsicSize>>,
         flow_only: bool,
+        text_layout_engine: Option<&TextLayoutEngine>,
     ) -> Result<Self, LayoutError> {
         let mut calc_owners = BTreeMap::<LayoutCalcId, Arc<CalcOwner>>::new();
         for value in &input.css_math {
@@ -117,6 +138,11 @@ impl CalcLayoutTree {
             }
             engine_ids.insert(external_id, engine_id);
         }
+        let text_paragraphs = input
+            .text_paragraphs
+            .iter()
+            .map(|(node, paragraph)| (engine_ids[node], paragraph.clone()))
+            .collect();
 
         let mut layout_children = input
             .nodes
@@ -222,6 +248,9 @@ impl CalcLayoutTree {
             viewport_root,
             calc_values,
             calc_error: RefCell::new(None),
+            text_layout_engine: text_layout_engine.cloned().map(RefCell::new),
+            text_paragraphs,
+            text_layouts: RefCell::new(HashMap::new()),
         })
     }
 
@@ -254,6 +283,57 @@ impl CalcLayoutTree {
 
     pub(super) fn take_calc_error(&mut self) -> Option<LayoutError> {
         self.calc_error.get_mut().take()
+    }
+
+    pub(super) fn final_text_layouts(
+        &self,
+        input: &LayoutInput,
+    ) -> Result<BTreeMap<SpinonNodeId, LayoutTextSnapshot>, LayoutError> {
+        let mut result = BTreeMap::new();
+        let text_layouts = self.text_layouts.borrow();
+        for (&engine_id, paragraph) in &self.text_paragraphs {
+            let layout = self
+                .layout(engine_id)
+                .ok_or(LayoutError::MissingComputedLayout(paragraph.node))?;
+            let content_width = layout.size.width
+                - layout.border.left
+                - layout.border.right
+                - layout.padding.left
+                - layout.padding.right;
+            let normalized_content_width = if content_width == 0.0 {
+                0.0
+            } else {
+                content_width
+            };
+            let width_key = normalized_content_width.to_bits();
+            let snapshot = text_layouts
+                .get(&engine_id)
+                .and_then(|by_width| by_width.get(&width_key))
+                .ok_or(LayoutError::TextLayoutWidthMismatch(paragraph.node))?;
+            if snapshot.available_width.to_bits() != width_key {
+                return Err(LayoutError::TextLayoutWidthMismatch(paragraph.node));
+            }
+            let node_style = input.nodes().iter().find(|node| node.id == paragraph.node);
+            let content_height = layout.size.height
+                - layout.border.top
+                - layout.border.bottom
+                - layout.padding.top
+                - layout.padding.bottom;
+            if node_style.is_some_and(|node| node.style.height == crate::LayoutDimension::Auto)
+                && (content_height - snapshot.height).abs() > 0.05
+            {
+                return Err(LayoutError::TextLayoutHeightMismatch(paragraph.node));
+            }
+            result.insert(
+                paragraph.node,
+                LayoutTextSnapshot {
+                    revision: input.revision(),
+                    input: paragraph.clone(),
+                    layout: snapshot.clone(),
+                },
+            );
+        }
+        Ok(result)
     }
 
     pub(super) fn layout(&self, id: TaffyNodeId) -> Option<Layout> {
@@ -359,8 +439,16 @@ impl CalcLayoutTree {
                         &style,
                         |value, basis| tree.resolve_calc_value(value, basis),
                         |known_dimensions, available_space| {
-                            replaced_sizing.map_or(Size::ZERO, |input| {
-                                match resolve_used_size(
+                            if tree.text_paragraphs.contains_key(&node_id) {
+                                match tree.measure_text(node_id, available_space.width) {
+                                    Ok(size) => size,
+                                    Err(error) => {
+                                        tree.record_error(error);
+                                        Size::ZERO
+                                    }
+                                }
+                            } else {
+                                replaced_sizing.map_or(Size::ZERO, |input| match resolve_used_size(
                                     input.node,
                                     input,
                                     known_dimensions,
@@ -376,8 +464,8 @@ impl CalcLayoutTree {
                                         tree.record_error(error);
                                         Size::ZERO
                                     }
-                                }
-                            })
+                                })
+                            }
                         },
                     )
                 }
@@ -390,6 +478,37 @@ impl CalcLayoutTree {
         if slot.is_none() {
             *slot = Some(error);
         }
+    }
+
+    fn measure_text(
+        &self,
+        node_id: TaffyNodeId,
+        available_width: AvailableSpace,
+    ) -> Result<Size<f32>, LayoutError> {
+        let Some(paragraph) = self.text_paragraphs.get(&node_id).cloned() else {
+            return Ok(Size::ZERO);
+        };
+        let AvailableSpace::Definite(width) = available_width else {
+            return Err(LayoutError::IndefiniteTextAvailableWidth(paragraph.node));
+        };
+        let width = if width == 0.0 { 0.0 } else { width };
+        let engine = self
+            .text_layout_engine
+            .as_ref()
+            .ok_or(LayoutError::MissingTextLayoutEngine(paragraph.node))?;
+        let snapshot = engine
+            .borrow_mut()
+            .layout_paragraph(&paragraph, width)
+            .map_err(LayoutError::TextLayout)?;
+        self.text_layouts
+            .borrow_mut()
+            .entry(node_id)
+            .or_default()
+            .insert(width.to_bits(), snapshot.clone());
+        Ok(Size {
+            width: snapshot.width,
+            height: snapshot.height,
+        })
     }
 }
 

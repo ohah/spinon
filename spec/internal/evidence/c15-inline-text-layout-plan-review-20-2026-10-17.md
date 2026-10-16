@@ -1,6 +1,6 @@
 # C15 계획 적대 검토 20개
 
-**검토 대상:** [`plan/c15-inline-text-layout.md`](../../../plan/c15-inline-text-layout.md), C15 Chrome precomparison fixture/evidence<br>
+**검토 대상:** [C15 계획](https://github.com/ohah/spinon/blob/main/plan/c15-inline-text-layout.md), C15 Chrome precomparison fixture/evidence<br>
 **검토 시점:** 구현 전 · 2026-10-17<br>
 **판정:** P1/P2 미해결 없음. Chrome executable SHA/CDP protocol revision 부재는 구현 시작 전 gate로 명시했다. C15/C16/C19 status는 미완료로 유지한다.
 

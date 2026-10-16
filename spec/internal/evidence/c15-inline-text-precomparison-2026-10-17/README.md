@@ -5,11 +5,13 @@
 ## 브라우저와 입력
 
 - Agent Browser가 실행한 Chrome: `155.0.8059.85` (high-entropy client hints), `HeadlessChrome/155.0.0.0` user agent, macOS `26.5.1`, ARM, locale `ko-KR`, viewport `320×480 CSS px`, DPR `1`.
-- 전체 user agent, high-entropy version, viewport와 DOM observation은 [`chrome155-observation.json`](chrome155-observation.json)에 저장했다. JSON SHA-256 `8c4673dfb271923cf332845d14faa9bf6fd1101cb72d2f73ec277bc8ec226e86`. 시험 종료 뒤 Agent Browser 세션을 닫았으며 브라우저 프로세스가 남지 않은 것을 확인했다.
-- HTML fixture: [`inline-text-precomparison.html`](../../../../tests/fixtures/css/c15/inline-text-precomparison.html), SHA-256 `efba6981d73c2e8d2aa21e38b92f2936ce2a6ecb56bc758ce420a785b5cdaf64`.
+- 전체 user agent, high-entropy version, viewport와 DOM observation은 `chrome155-observation.json`에 저장했다. JSON SHA-256 `8c4673dfb271923cf332845d14faa9bf6fd1101cb72d2f73ec277bc8ec226e86`. 시험 종료 뒤 Agent Browser 세션을 닫았으며 브라우저 프로세스가 남지 않은 것을 확인했다.
+- HTML fixture: [inline-text-precomparison.html](https://github.com/ohah/spinon/blob/main/tests/fixtures/css/c15/inline-text-precomparison.html), SHA-256 `efba6981d73c2e8d2aa21e38b92f2936ce2a6ecb56bc758ce420a785b5cdaf64`.
 - `Ahem.ttf`는 [WPT commit `de86b2b3`](https://github.com/web-platform-tests/wpt/blob/de86b2b3c3e5a18f441a3b9bd3697f922bb1216c/fonts/Ahem.ttf)의 `fonts/Ahem.ttf`와 byte-identical이며, [Ahem project](https://github.com/Kozea/Ahem)는 public-domain font라고 명시한다. SHA-256 `b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448`.
 - `Roboto-Variable.ttf`는 [Google Fonts commit `47d54ca1`](https://github.com/google/fonts/tree/47d54ca1ebb14fd864695f1d39dc734f39017c33/ofl/roboto)에서 받았다. upstream metadata는 OFL과 원본 Roboto revision `91d5d3e5b81efa04a77925cc609fdcdd7ee663d1`을 기록한다. 번들 파일 SHA-256 `d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134`; 함께 보존한 라이선스 파일 SHA-256 `ee94f8704aa81e9a3bf4271e8320e99d975a3ee08ea45a088b494b918476ec12`.
-- 화면 capture: [`chrome155.png`](chrome155.png), SHA-256 `28c747d294d0a28f5270adc01549489f6c9f3385b8ab3267e5cd98cbfe6d5a9a`.
+- 화면 capture SHA-256: `28c747d294d0a28f5270adc01549489f6c9f3385b8ab3267e5cd98cbfe6d5a9a`.
+
+![Chrome 155 C15 사전 비교 화면](./chrome155.png)
 
 ## CSS px 관찰값
 
@@ -29,6 +31,10 @@
 | `ligature-text` | Roboto 20px `office` advance `49.5625px` | 실제 font-run 결과를 기록한다. 이 값만으로 특정 ligature 선택을 단정하지 않는다. |
 
 CSS 2.2의 [inline formatting context](https://www.w3.org/TR/CSS22/visuren.html#inline-formatting), [line-height와 baseline](https://www.w3.org/TR/CSS22/visudet.html#line-height), CSS Text의 [white-space](https://www.w3.org/TR/css-text-3/#white-space-property)를 비교 기준으로 사용한다. CSS Inline Layout Level 3은 line box 관련 세부 동작을 조사할 때만 현재 Editor's Draft로 참고하고, 최종 규범으로 표시하지 않는다.
+
+## 추가 0px 폭 경계 관찰
+
+기존 `long-word` fixture의 `width:15px`는 그대로 두고 Agent Browser에서 live DOM의 폭만 `0px`로 바꿨다. Ahem이 로드된 Chrome `155.0.8059.85`에서 parent rect는 `0×10px`, unbreakable `X`의 Range rect는 `10×10px`였다. 즉 definite width 0은 유효한 레이아웃 입력이고 text advance가 parent 폭을 넘는다. [관찰 조건과 수치](./zero-width-long-word-observation.md) · JSON `zero-width-long-word-observation.json`. 이 DOM geometry는 Chrome 기준이며 Spinon runtime 또는 pixel paint 검증이 아니다.
 
 ## 판정 한계
 

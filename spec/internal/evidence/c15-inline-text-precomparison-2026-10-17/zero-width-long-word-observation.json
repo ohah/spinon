@@ -1,0 +1,37 @@
+{
+  "browser": {
+    "name": "Google Chrome",
+    "version": "155.0.8059.85",
+    "chromiumRevision": "0e66b94549a8bd85f03fbdf189b752d6e7b63c32-refs/branch-heads/8059@{#1304}",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "os": "macOS 26.5.1 arm64"
+  },
+  "capture": {
+    "tool": "Agent Browser",
+    "kind": "live DOM geometry mutation",
+    "fixture": "tests/fixtures/css/c15/inline-text-precomparison.html",
+    "fixtureSha256": "efba6981d73c2e8d2aa21e38b92f2936ce2a6ecb56bc758ce420a785b5cdaf64",
+    "viewportCssPx": {
+      "width": 1280,
+      "height": 633,
+      "devicePixelRatio": 1
+    },
+    "fontLoaded": {
+      "family": "Ahem",
+      "loaded": true
+    },
+    "runtimeMutation": "document.getElementById('long-word').style.width = '0px'"
+  },
+  "observation": {
+    "text": "XX",
+    "parentRectCssPx": [8, 138, 0, 10],
+    "textRangeRectCssPx": [8, 138, 20, 10],
+    "interpretation": "The unbreakable Ahem word remains one 20x10 CSS px line inside a 0x10 CSS px parent box."
+  },
+  "limitations": [
+    "The source fixture was not changed.",
+    "The width change was applied only to the live DOM.",
+    "This is Chrome DOM geometry, not a Spinon runtime measurement or pixel paint result.",
+    "No screenshot was captured for this follow-up observation."
+  ]
+}

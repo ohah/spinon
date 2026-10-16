@@ -73,7 +73,8 @@ fn grid_input(
                 placement_mode: GridPlacementMode::Existing,
             },
         )]),
-        grid_items: BTreeMap::new(),
+        grid_items: Default::default(),
+        text_paragraphs: Default::default(),
     }
 }
 

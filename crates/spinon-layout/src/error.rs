@@ -2,6 +2,7 @@ use std::{error::Error, fmt};
 
 use crate::LayoutCalcId;
 use spinon_core::NodeId;
+use spinon_text_layout::TextLayoutError;
 
 /// 입력 검증, Taffy 계산 또는 결과 변환 실패입니다.
 #[derive(Clone, Debug, PartialEq)]
@@ -10,6 +11,18 @@ pub enum LayoutError {
     EmptyTree,
     InvalidHostDocumentRoot(NodeId),
     UnsupportedTextNode(NodeId),
+    InvalidTextEncoding(NodeId),
+    DuplicateTextParagraph(NodeId),
+    UnknownTextParagraph(NodeId),
+    UnsupportedTextParagraph {
+        node: NodeId,
+        reason: &'static str,
+    },
+    MissingTextLayoutEngine(NodeId),
+    IndefiniteTextAvailableWidth(NodeId),
+    TextLayoutWidthMismatch(NodeId),
+    TextLayoutHeightMismatch(NodeId),
+    TextLayout(TextLayoutError),
     IntrinsicSizeSourceMismatch {
         expected: crate::LayoutSourceRevision,
         actual: crate::LayoutSourceRevision,
@@ -167,6 +180,42 @@ impl fmt::Display for LayoutError {
                 formatter,
                 "텍스트 노드 {id}는 intrinsic measurement를 지원하지 않습니다"
             ),
+            Self::InvalidTextEncoding(id) => write!(
+                formatter,
+                "텍스트 노드 {id}에 정상적인 UTF-16 surrogate pair가 없습니다"
+            ),
+            Self::DuplicateTextParagraph(id) => {
+                write!(formatter, "paragraph 입력의 노드 {id}가 중복되었습니다")
+            }
+            Self::UnknownTextParagraph(id) => {
+                write!(
+                    formatter,
+                    "paragraph 입력의 노드 {id}가 Block 트리에 없습니다"
+                )
+            }
+            Self::UnsupportedTextParagraph { node, reason } => write!(
+                formatter,
+                "노드 {node}의 paragraph 입력을 현재 C15.1 profile에서 지원하지 않습니다: {reason}"
+            ),
+            Self::MissingTextLayoutEngine(id) => {
+                write!(
+                    formatter,
+                    "노드 {id}의 paragraph를 shaping할 TextLayoutEngine이 없습니다"
+                )
+            }
+            Self::IndefiniteTextAvailableWidth(id) => write!(
+                formatter,
+                "노드 {id}의 paragraph에는 definite content width가 필요합니다"
+            ),
+            Self::TextLayoutWidthMismatch(id) => write!(
+                formatter,
+                "노드 {id}의 최종 content width와 text measure width가 다릅니다"
+            ),
+            Self::TextLayoutHeightMismatch(id) => write!(
+                formatter,
+                "노드 {id}의 최종 content height와 text measure height가 다릅니다"
+            ),
+            Self::TextLayout(error) => error.fmt(formatter),
             Self::IntrinsicSizeSourceMismatch { expected, actual } => write!(
                 formatter,
                 "intrinsic size source가 현재 layout source와 다릅니다: 기대 {expected:?}, 입력 {actual:?}"
