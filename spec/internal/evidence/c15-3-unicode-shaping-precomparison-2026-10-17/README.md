@@ -6,18 +6,18 @@
 
 ## 실행 환경과 산출물
 
-Agent Browser `0.31.1`이 띄운 Chromium `155.0.8059.85`에서 `tests/fixtures/css/c15/c15-3-unicode-shaping-oracle.html`을 열었다. 플랫폼은 macOS `26.5.1` ARM64, viewport는 `640×760` CSS px, DPR은 `1`이다. 모든 명시적 `@font-face` 검사가 통과했고 `document.fonts.status`는 `loaded`였다. 지정 문자열은 각 고정 font asset에서 코드포인트가 확인됐다.
+Agent Browser `0.31.1`이 띄운 Chromium `155.0.8059.85`에서 [고정 fixture 원본](https://github.com/ohah/spinon/blob/main/tests/fixtures/css/c15/c15-3-unicode-shaping-oracle.html)과 [Tailnet에서 제공하는 fixture](https://macstudio.tailed42f2.ts.net/spinon/tests/fixtures/css/c15/c15-3-unicode-shaping-oracle.html)를 열었다. 플랫폼은 macOS `26.5.1` ARM64, viewport는 `640×760` CSS px, DPR은 `1`이다. 모든 명시적 `@font-face` 검사가 통과했고 `document.fonts.status`는 `loaded`였다. 지정 문자열은 각 고정 font asset에서 코드포인트가 확인됐다.
 
 | 파일 | 용도 | SHA-256 |
 | --- | --- | --- |
-| [`c15-3-unicode-shaping-oracle.html`](../../../../tests/fixtures/css/c15/c15-3-unicode-shaping-oracle.html) | 입력, 스타일, Range/Canvas/intrinsic/overflow/paint geometry 수집기 | `afa39ab1cf879a2bfe1bcebd96c88600e8d720cb97cc4ef0eeedd0b5e56fa82a` |
+| [fixture 원본](https://github.com/ohah/spinon/blob/main/tests/fixtures/css/c15/c15-3-unicode-shaping-oracle.html) | 입력, 스타일, Range/Canvas/intrinsic/overflow/paint geometry 수집기 | `afa39ab1cf879a2bfe1bcebd96c88600e8d720cb97cc4ef0eeedd0b5e56fa82a` |
 | `chrome155-observation.json` | 브라우저 metadata와 case별 DOM geometry/metrics | `41dbe579530fb9fef963ab8915f4523c6d31534815469cf88c28d751701e4832` |
 | `chrome155.png` | 같은 fixture의 화면 기록 (640×760) | `ba827180aac697b472b771b801102744c90b13f570816986c2d99c8d51810417` |
-| [`font README`](../../../../tests/fixtures/resources/c15/c15-3/README.md) | pinned source, version, license, fixture font SHA-256 | 별도 표 참조 |
+| [font README 원본](https://github.com/ohah/spinon/blob/main/tests/fixtures/resources/c15/c15-3/README.md) · [Tailnet 제공 페이지](https://macstudio.tailed42f2.ts.net/spinon/tests/fixtures/resources/c15/c15-3/README.html) | pinned source, version, license, fixture font SHA-256 | 별도 표 참조 |
 
-![C15.3 Unicode shaping Chrome 155 oracle](chrome155.png)
+![C15.3 Unicode shaping Chrome 155 oracle](./chrome155.png)
 
-C15.1의 Ahem과 Roboto는 [`tests/fixtures/resources/c15/`](../../../../tests/fixtures/resources/c15/)의 기존 고정 입력을 사용한다. C15.3 전용 Noto Sans KR, Noto Sans Arabic, Noto Emoji는 별도 디렉터리에 고정했다. 시스템 font fallback이나 네트워크 font를 기준으로 삼지 않는다.
+C15.1의 Ahem과 Roboto는 [저장소의 기존 고정 입력](https://github.com/ohah/spinon/tree/main/tests/fixtures/resources/c15/)을 사용한다. C15.3 전용 Noto Sans KR, Noto Sans Arabic, Noto Emoji는 별도 디렉터리에 고정했다. 시스템 font fallback이나 네트워크 font를 기준으로 삼지 않는다.
 
 ## 고정 관찰
 
