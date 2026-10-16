@@ -2,6 +2,8 @@
 
 ## 판정 범위
 
+구현 PR은 [#224](https://github.com/ohah/spinon/pull/224)이며, [PR diff 적대 검토](review/pr-diff-review-30.md)에 발견과 수정 내용을 기록했다.
+
 기준 oracle은 Agent Browser 0.31.1이 제어한 Chrome 155.0.8059.85다. 고정 입력은 24×12 RGBA8 opaque PNG(SHA-256 `cc621c7a4be9345a8124b91ebcd5a6ff9bc3a3206ec59fe1228b24ba09cae454`), viewport 224×72 CSS px, 12개 `<img>` scene과 19개 RGBA 표본이다. DPR별 Chrome 표면 크기와 표본은 [관찰 JSON](oracle/dpr-observation.json)에 적었다.
 
 | 실행 환경 | 표면/표본 | 결과 | 원본 근거 |
