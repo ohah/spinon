@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>C18.3 object-fit/object-position 픽셀 기준</title>
+    <style>
+      html, body { width: 224px; height: 72px; margin: 0; padding: 0; background: #112233; }
+      #root { position: relative; width: 224px; height: 72px; background: #112233; }
+      img {
+        position: absolute;
+        display: block;
+        box-sizing: border-box;
+        padding: 0;
+        border: 0;
+        background: #d20ab4;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <img id="fill-center" src="../../resources/c18-3-object-fit-pattern.png" style="left:8px;top:8px;width:24px;height:24px;object-fit:fill;object-position:50% 50%">
+      <img id="contain-center" src="../../resources/c18-3-object-fit-pattern.png" style="left:40px;top:8px;width:24px;height:24px;object-fit:contain;object-position:50% 50%">
+      <img id="contain-quarter" src="../../resources/c18-3-object-fit-pattern.png" style="left:72px;top:8px;width:24px;height:24px;object-fit:contain;object-position:25% 75%">
+      <img id="cover-center" src="../../resources/c18-3-object-fit-pattern.png" style="left:104px;top:8px;width:24px;height:24px;object-fit:cover;object-position:50% 50%">
+      <img id="cover-start" src="../../resources/c18-3-object-fit-pattern.png" style="left:136px;top:8px;width:24px;height:24px;object-fit:cover;object-position:0% 0%">
+      <img id="cover-end" src="../../resources/c18-3-object-fit-pattern.png" style="left:168px;top:8px;width:24px;height:24px;object-fit:cover;object-position:100% 100%">
+      <img id="none-clip" src="../../resources/c18-3-object-fit-pattern.png" style="left:8px;top:40px;width:16px;height:16px;object-fit:none;object-position:100% 100%">
+      <img id="scale-down-shrink" src="../../resources/c18-3-object-fit-pattern.png" style="left:40px;top:40px;width:16px;height:16px;object-fit:scale-down;object-position:50% 50%">
+      <img id="scale-down-no-upscale" src="../../resources/c18-3-object-fit-pattern.png" style="left:72px;top:40px;width:32px;height:20px;object-fit:scale-down;object-position:50% 50%">
+      <img id="initial-values" src="../../resources/c18-3-object-fit-pattern.png" style="left:112px;top:40px;width:24px;height:12px">
+      <img id="contain-extended-position" src="../../resources/c18-3-object-fit-pattern.png" style="left:144px;top:40px;width:24px;height:24px;object-fit:contain;object-position:-25% 150%">
+      <img id="cover-extended-position" src="../../resources/c18-3-object-fit-pattern.png" style="left:176px;top:40px;width:24px;height:24px;object-fit:cover;object-position:150% -25%">
+    </div>
+    <script>
+      window.read_c18_3_oracle = () => ({
+        browser: navigator.userAgent,
+        viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio },
+        images: [...document.querySelectorAll('#root img')].map((image) => {
+          const rect = image.getBoundingClientRect();
+          const style = getComputedStyle(image);
+          return {
+            id: image.id,
+            loaded: image.complete && image.naturalWidth > 0,
+            natural: { width: image.naturalWidth, height: image.naturalHeight },
+            frame: { x: rect.x, y: rect.y, width: rect.width, height: rect.height },
+            objectFit: style.objectFit,
+            objectPosition: style.objectPosition,
+            imageRendering: style.imageRendering,
+            background: style.backgroundColor,
+          };
+        }),
+      });
+    </script>
+  </body>
+</html>
