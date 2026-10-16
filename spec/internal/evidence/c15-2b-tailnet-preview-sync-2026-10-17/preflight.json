@@ -1,0 +1,681 @@
+{
+  "title": "C15.2b Tailnet roadmap preview preflight",
+  "generated_at": "2026-10-16T22:16:32.404Z",
+  "source_candidate_commit": "17825ee576593c66c94307e4db4965c3f8e90f01",
+  "source_candidate_tree": "48397c305b5411eb104b056d0498bbc2c367424c",
+  "implementation_merge_commit": "6a4d512224c1fe596bbbdefd3e9f31f3e093ccb5",
+  "roadmap_merge_commit": "17825ee576593c66c94307e4db4965c3f8e90f01",
+  "preview_url": "https://macstudio.tailed42f2.ts.net/spinon/",
+  "copy_only": true,
+  "deletions": [],
+  "manifest_path": "sync-manifest-c15-2b-tailnet-sync-2026-10-17.json",
+  "manifest_self_hash_excluded": true,
+  "backup_root_relative": "backup/c15-2b-tailnet-preview-sync-2026-10-17",
+  "total_paths": 73,
+  "total_bytes": 4276838,
+  "counts": {
+    "created": 45,
+    "replaced": 17,
+    "unchanged": 11
+  },
+  "listener_before": "COMMAND  PID   USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME\nnode    1191 yoonhb   12u  IPv4 0xfe1fd4984bc78c8b      0t0  TCP 127.0.0.1:8768 (LISTEN)",
+  "files": [
+    {
+      "path": "0001-conformance.html",
+      "source": "source:../spinon-c15-2b-tailnet-sync-20261017/site-scoped/0001-conformance.html",
+      "bytes": 32062,
+      "sha256": "a163dd81c01d54d419caf76f9b79fc24ab758af2f8e894916f84d98eedb76d38",
+      "previous_sha256": "eb4a6de996f478499fb082bddbc98255a1348f6b05e085b135fc10bb581629ed",
+      "status": "replaced",
+      "backup_path": "backup/c15-2b-tailnet-preview-sync-2026-10-17/0001-conformance.html"
+    },
+    {
+      "path": "0001-conformance.md",
+      "source": "source:spec/0001-conformance.md",
+      "bytes": 12517,
+      "sha256": "57d8054c3171b106cfe8dd3073ad62266c305953a7cb8c3725165cf266004fa5",
+      "previous_sha256": "e6df29846f9b949b28685235182fbd4451d2305757fc51645c944d79e5db6ba9",
+      "status": "replaced",
+      "backup_path": "backup/c15-2b-tailnet-preview-sync-2026-10-17/0001-conformance.md"
+    },
+    {
+      "path": "icon.svg",
+      "source": "rspress:icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "previous_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/0070-c15-1-inline-text-layout.html",
+      "source": "source:../spinon-c15-2b-tailnet-sync-20261017/site-scoped/internal/0070-c15-1-inline-text-layout.html",
+      "bytes": 34491,
+      "sha256": "6bb64c3067308212f31e570cf3dea51a126962f74341d921d3b7b448ff4053d0",
+      "previous_sha256": "f8c2bb07249ac4308f46bd536681f84a4ee8e4feeee974dad9337bdc7f9f52fe",
+      "status": "replaced",
+      "backup_path": "backup/c15-2b-tailnet-preview-sync-2026-10-17/internal/0070-c15-1-inline-text-layout.html"
+    },
+    {
+      "path": "internal/0070-c15-1-inline-text-layout.md",
+      "source": "source:spec/internal/0070-c15-1-inline-text-layout.md",
+      "bytes": 12599,
+      "sha256": "8fb677b90ace8b3c106ea819b56fad1d99a9e9fb01d03b6c803340057491d2e7",
+      "previous_sha256": "271df2101fe1232fa54d5149e0aa8b4c0b24f6cfba2a08517fe30c39ccd21d80",
+      "status": "replaced",
+      "backup_path": "backup/c15-2b-tailnet-preview-sync-2026-10-17/internal/0070-c15-1-inline-text-layout.md"
+    },
+    {
+      "path": "internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/android-target-check.log",
+      "source": "source:spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/android-target-check.log",
+      "bytes": 2111,
+      "sha256": "b550242c0ceb1070e2ae9baa1d4b59039ac1d2f2f534304f7c2ec9a247d6c295",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/chrome155-c15-2b-oracle.png",
+      "source": "source:spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/chrome155-c15-2b-oracle.png",
+      "bytes": 56458,
+      "sha256": "172ad2820ec2f477efc7b603a42f6d8bcefa7bb306d126eba7f2c9165b74d9fd",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/clippy.log",
+      "source": "source:spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/clippy.log",
+      "bytes": 976,
+      "sha256": "d1a677f9cac7b829447b21740e5d10cdfbdb4f226116ec3c678e0c00c3d6337a",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/docs-build.log",
+      "source": "source:spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/docs-build.log",
+      "bytes": 713,
+      "sha256": "72f9c14fe47ef771cba1596159de1037c0c01a016d7e8582bb90212b77107841",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/focused-layout-tests.log",
+      "source": "source:spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/focused-layout-tests.log",
+      "bytes": 1910,
+      "sha256": "76487df149c042c717e64f68fb75ceb511e3c417743ccecbf0ab5469a54b3f74",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/implementation-review-20.html",
+      "source": "source:../spinon-c15-2b-tailnet-sync-20261017/site-scoped/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/implementation-review-20.html",
+      "bytes": 23517,
+      "sha256": "6a3a23ef7813f39eb39125b10d16d2dba449a3f0cecb49c84ff4ed2bb3f03ac5",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/implementation-review-20.md",
+      "source": "source:spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/implementation-review-20.md",
+      "bytes": 5609,
+      "sha256": "e05e0551766b20e2547ca05b4a653bd3b6c457ffc6c38c20b1254be9b7c653d5",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/ios-simulator-target-check.log",
+      "source": "source:spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/ios-simulator-target-check.log",
+      "bytes": 1786,
+      "sha256": "d0b973035f69397b78c2bbe9263a262e487e5c736c53adac8c28430432bb3ae7",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/pr-delta-review-30.html",
+      "source": "source:../spinon-c15-2b-tailnet-sync-20261017/site-scoped/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/pr-delta-review-30.html",
+      "bytes": 25527,
+      "sha256": "6d45bbf0450f7aa724b8df4be48f2e56477f852ae1b8740ee4c5eeb102a799c8",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/pr-delta-review-30.md",
+      "source": "source:spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/pr-delta-review-30.md",
+      "bytes": 7141,
+      "sha256": "22b1af5c84a9162656d253e4209ce53b523d5c24f1c5f92609e238e4e533936c",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/README.html",
+      "source": "source:../spinon-c15-2b-tailnet-sync-20261017/site-scoped/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/README.html",
+      "bytes": 23968,
+      "sha256": "a5cce3cec0759200f61d024b50ee9009facf813cfca49644d7abddfa5a9fc24e",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/README.md",
+      "source": "source:spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/README.md",
+      "bytes": 4452,
+      "sha256": "20c679fa9089d08efeed214e2d00fbb5aa57bfa376c0cf9ffc194cc0837b3fac",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/roadmap-pr-delta-review-30.html",
+      "source": "source:../spinon-c15-2b-tailnet-sync-20261017/site-scoped/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/roadmap-pr-delta-review-30.html",
+      "bytes": 23300,
+      "sha256": "b1ea79245463131504f4faa57f9ba7bb914e9f3af55d70199390257aa8911d0e",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/roadmap-pr-delta-review-30.md",
+      "source": "source:spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/roadmap-pr-delta-review-30.md",
+      "bytes": 5149,
+      "sha256": "6e586c9f070160efc7a16eacde4d914f96d49ae6745f3fa012331c1c9a574fa3",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/text-layout-tests.log",
+      "source": "source:spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/text-layout-tests.log",
+      "bytes": 2027,
+      "sha256": "32657c35139b3e60d78c4304ec4bb3a5da576f861c0709d1e980eeba14b78cf2",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/workspace-tests.log",
+      "source": "source:spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/workspace-tests.log",
+      "bytes": 107355,
+      "sha256": "2f1f20e1b45952b53c4dc12d9c249a8471a171db723ffd5fba2b061838f4ccd9",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "internal/README.html",
+      "source": "source:../spinon-c15-2b-tailnet-sync-20261017/site-scoped/internal/README.html",
+      "bytes": 145732,
+      "sha256": "fdd5a866d2230ecc2875c58d5b166be3618e9ebe8f289eae45e4ffa2030a6072",
+      "previous_sha256": "b7d4ec369c571cc81eded2684e46a50e66d83053b18e49d00fcea22bbd52415a",
+      "status": "replaced",
+      "backup_path": "backup/c15-2b-tailnet-preview-sync-2026-10-17/internal/README.html"
+    },
+    {
+      "path": "internal/README.md",
+      "source": "source:spec/internal/README.md",
+      "bytes": 105705,
+      "sha256": "8f18d7890538e54267751c18cfd446e3440c2d2709576c88e66b59421f2a185d",
+      "previous_sha256": "8f18d7890538e54267751c18cfd446e3440c2d2709576c88e66b59421f2a185d",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "logo.svg",
+      "source": "rspress:logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "previous_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "public/roadmap.html",
+      "source": "source:spec/public/roadmap.html (public mirror)",
+      "bytes": 106076,
+      "sha256": "7e58e0e62cfca5b6547b1d5cd614d2f8023f54acd0e892191081fd276be3e3ed",
+      "previous_sha256": "4e46a4d4fa36d493b576637b3178840228448236a2e2a38dafa1613960de70f7",
+      "status": "replaced",
+      "backup_path": "backup/c15-2b-tailnet-preview-sync-2026-10-17/public/roadmap.html"
+    },
+    {
+      "path": "roadmap.html",
+      "source": "source:spec/public/roadmap.html (Tailnet entry route)",
+      "bytes": 106076,
+      "sha256": "7e58e0e62cfca5b6547b1d5cd614d2f8023f54acd0e892191081fd276be3e3ed",
+      "previous_sha256": "4e46a4d4fa36d493b576637b3178840228448236a2e2a38dafa1613960de70f7",
+      "status": "replaced",
+      "backup_path": "backup/c15-2b-tailnet-preview-sync-2026-10-17/roadmap.html"
+    },
+    {
+      "path": "spec/0001-conformance.html",
+      "source": "source:../spinon-c15-2b-tailnet-sync-20261017/site-scoped/0001-conformance.html (spec mirror)",
+      "bytes": 32062,
+      "sha256": "a163dd81c01d54d419caf76f9b79fc24ab758af2f8e894916f84d98eedb76d38",
+      "previous_sha256": "eb4a6de996f478499fb082bddbc98255a1348f6b05e085b135fc10bb581629ed",
+      "status": "replaced",
+      "backup_path": "backup/c15-2b-tailnet-preview-sync-2026-10-17/spec/0001-conformance.html"
+    },
+    {
+      "path": "spec/0001-conformance.md",
+      "source": "source:spec/0001-conformance.md (spec mirror)",
+      "bytes": 12517,
+      "sha256": "57d8054c3171b106cfe8dd3073ad62266c305953a7cb8c3725165cf266004fa5",
+      "previous_sha256": "e6df29846f9b949b28685235182fbd4451d2305757fc51645c944d79e5db6ba9",
+      "status": "replaced",
+      "backup_path": "backup/c15-2b-tailnet-preview-sync-2026-10-17/spec/0001-conformance.md"
+    },
+    {
+      "path": "spec/internal/0070-c15-1-inline-text-layout.html",
+      "source": "source:../spinon-c15-2b-tailnet-sync-20261017/site-scoped/internal/0070-c15-1-inline-text-layout.html (spec mirror)",
+      "bytes": 34491,
+      "sha256": "6bb64c3067308212f31e570cf3dea51a126962f74341d921d3b7b448ff4053d0",
+      "previous_sha256": "f8c2bb07249ac4308f46bd536681f84a4ee8e4feeee974dad9337bdc7f9f52fe",
+      "status": "replaced",
+      "backup_path": "backup/c15-2b-tailnet-preview-sync-2026-10-17/spec/internal/0070-c15-1-inline-text-layout.html"
+    },
+    {
+      "path": "spec/internal/0070-c15-1-inline-text-layout.md",
+      "source": "source:spec/internal/0070-c15-1-inline-text-layout.md (spec mirror)",
+      "bytes": 12599,
+      "sha256": "8fb677b90ace8b3c106ea819b56fad1d99a9e9fb01d03b6c803340057491d2e7",
+      "previous_sha256": "271df2101fe1232fa54d5149e0aa8b4c0b24f6cfba2a08517fe30c39ccd21d80",
+      "status": "replaced",
+      "backup_path": "backup/c15-2b-tailnet-preview-sync-2026-10-17/spec/internal/0070-c15-1-inline-text-layout.md"
+    },
+    {
+      "path": "spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/android-target-check.log",
+      "source": "source:spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/android-target-check.log (spec mirror)",
+      "bytes": 2111,
+      "sha256": "b550242c0ceb1070e2ae9baa1d4b59039ac1d2f2f534304f7c2ec9a247d6c295",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/chrome155-c15-2b-oracle.png",
+      "source": "source:spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/chrome155-c15-2b-oracle.png (spec mirror)",
+      "bytes": 56458,
+      "sha256": "172ad2820ec2f477efc7b603a42f6d8bcefa7bb306d126eba7f2c9165b74d9fd",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/clippy.log",
+      "source": "source:spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/clippy.log (spec mirror)",
+      "bytes": 976,
+      "sha256": "d1a677f9cac7b829447b21740e5d10cdfbdb4f226116ec3c678e0c00c3d6337a",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/docs-build.log",
+      "source": "source:spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/docs-build.log (spec mirror)",
+      "bytes": 713,
+      "sha256": "72f9c14fe47ef771cba1596159de1037c0c01a016d7e8582bb90212b77107841",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/focused-layout-tests.log",
+      "source": "source:spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/focused-layout-tests.log (spec mirror)",
+      "bytes": 1910,
+      "sha256": "76487df149c042c717e64f68fb75ceb511e3c417743ccecbf0ab5469a54b3f74",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/implementation-review-20.html",
+      "source": "source:../spinon-c15-2b-tailnet-sync-20261017/site-scoped/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/implementation-review-20.html (spec mirror)",
+      "bytes": 23517,
+      "sha256": "6a3a23ef7813f39eb39125b10d16d2dba449a3f0cecb49c84ff4ed2bb3f03ac5",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/implementation-review-20.md",
+      "source": "source:spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/implementation-review-20.md (spec mirror)",
+      "bytes": 5609,
+      "sha256": "e05e0551766b20e2547ca05b4a653bd3b6c457ffc6c38c20b1254be9b7c653d5",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/ios-simulator-target-check.log",
+      "source": "source:spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/ios-simulator-target-check.log (spec mirror)",
+      "bytes": 1786,
+      "sha256": "d0b973035f69397b78c2bbe9263a262e487e5c736c53adac8c28430432bb3ae7",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/pr-delta-review-30.html",
+      "source": "source:../spinon-c15-2b-tailnet-sync-20261017/site-scoped/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/pr-delta-review-30.html (spec mirror)",
+      "bytes": 25527,
+      "sha256": "6d45bbf0450f7aa724b8df4be48f2e56477f852ae1b8740ee4c5eeb102a799c8",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/pr-delta-review-30.md",
+      "source": "source:spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/pr-delta-review-30.md (spec mirror)",
+      "bytes": 7141,
+      "sha256": "22b1af5c84a9162656d253e4209ce53b523d5c24f1c5f92609e238e4e533936c",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/README.html",
+      "source": "source:../spinon-c15-2b-tailnet-sync-20261017/site-scoped/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/README.html (spec mirror)",
+      "bytes": 23968,
+      "sha256": "a5cce3cec0759200f61d024b50ee9009facf813cfca49644d7abddfa5a9fc24e",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/README.md",
+      "source": "source:spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/README.md (spec mirror)",
+      "bytes": 4452,
+      "sha256": "20c679fa9089d08efeed214e2d00fbb5aa57bfa376c0cf9ffc194cc0837b3fac",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/roadmap-pr-delta-review-30.html",
+      "source": "source:../spinon-c15-2b-tailnet-sync-20261017/site-scoped/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/roadmap-pr-delta-review-30.html (spec mirror)",
+      "bytes": 23300,
+      "sha256": "b1ea79245463131504f4faa57f9ba7bb914e9f3af55d70199390257aa8911d0e",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/roadmap-pr-delta-review-30.md",
+      "source": "source:spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/roadmap-pr-delta-review-30.md (spec mirror)",
+      "bytes": 5149,
+      "sha256": "6e586c9f070160efc7a16eacde4d914f96d49ae6745f3fa012331c1c9a574fa3",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/text-layout-tests.log",
+      "source": "source:spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/text-layout-tests.log (spec mirror)",
+      "bytes": 2027,
+      "sha256": "32657c35139b3e60d78c4304ec4bb3a5da576f861c0709d1e980eeba14b78cf2",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/workspace-tests.log",
+      "source": "source:spec/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/workspace-tests.log (spec mirror)",
+      "bytes": 107355,
+      "sha256": "2f1f20e1b45952b53c4dc12d9c249a8471a171db723ffd5fba2b061838f4ccd9",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/README.html",
+      "source": "source:../spinon-c15-2b-tailnet-sync-20261017/site-scoped/internal/README.html (spec mirror)",
+      "bytes": 145732,
+      "sha256": "fdd5a866d2230ecc2875c58d5b166be3618e9ebe8f289eae45e4ffa2030a6072",
+      "previous_sha256": "b7d4ec369c571cc81eded2684e46a50e66d83053b18e49d00fcea22bbd52415a",
+      "status": "replaced",
+      "backup_path": "backup/c15-2b-tailnet-preview-sync-2026-10-17/spec/internal/README.html"
+    },
+    {
+      "path": "spec/internal/README.md",
+      "source": "source:spec/internal/README.md (spec mirror)",
+      "bytes": 105705,
+      "sha256": "8f18d7890538e54267751c18cfd446e3440c2d2709576c88e66b59421f2a185d",
+      "previous_sha256": "8f18d7890538e54267751c18cfd446e3440c2d2709576c88e66b59421f2a185d",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "source": "source:spec/public/roadmap.html",
+      "bytes": 106076,
+      "sha256": "7e58e0e62cfca5b6547b1d5cd614d2f8023f54acd0e892191081fd276be3e3ed",
+      "previous_sha256": "4e46a4d4fa36d493b576637b3178840228448236a2e2a38dafa1613960de70f7",
+      "status": "replaced",
+      "backup_path": "backup/c15-2b-tailnet-preview-sync-2026-10-17/spec/public/roadmap.html"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "source": "source:../spinon-c15-2b-tailnet-sync-20261017/site-scoped/STATUS.html (spec mirror)",
+      "bytes": 328575,
+      "sha256": "6dd18a2aa0e582ea1eff52af7bc27050d23fce2c63cc37af56ea96f01fe70e27",
+      "previous_sha256": "e7d6a92c56a1357f3db2e1147ea4652b2c9324d0d2d7612c1ffd3d790fda6018",
+      "status": "replaced",
+      "backup_path": "backup/c15-2b-tailnet-preview-sync-2026-10-17/spec/STATUS.html"
+    },
+    {
+      "path": "spec/STATUS.md",
+      "source": "source:spec/STATUS.md (spec mirror)",
+      "bytes": 251386,
+      "sha256": "8d2cfc98fa4e8df7a3cbd7a57ec6a3bb9f57f8e5810b17c4ab09f43cec7ab760",
+      "previous_sha256": "94171784f872569223f4ed4dcf920d9fe3e3ebf3a57beac21c45e25b58188f3a",
+      "status": "replaced",
+      "backup_path": "backup/c15-2b-tailnet-preview-sync-2026-10-17/spec/STATUS.md"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "source": "rspress:static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "previous_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/chrome155-c15-2b-oracle.4eae18ddd5.png",
+      "source": "rspress:static/image/chrome155-c15-2b-oracle.4eae18ddd5.png",
+      "bytes": 56458,
+      "sha256": "172ad2820ec2f477efc7b603a42f6d8bcefa7bb306d126eba7f2c9165b74d9fd",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/3.c78f5ae85c.js",
+      "source": "rspress:static/js/3.c78f5ae85c.js",
+      "bytes": 217068,
+      "sha256": "f7cf4965799eb3ed212604b689c32dfc8e574495021e078ca01063cb840fd045",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/3.c78f5ae85c.js.LICENSE.txt",
+      "source": "rspress:static/js/3.c78f5ae85c.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/l.76b60f2b87.js",
+      "source": "rspress:static/js/async/l.76b60f2b87.js",
+      "bytes": 98,
+      "sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "previous_sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-062ab476fa24.3104641197.js",
+      "source": "rspress:static/js/async/route-062ab476fa24.3104641197.js",
+      "bytes": 12974,
+      "sha256": "03f12e143fa85dabe6cf47932f0d87c9282530dad5ddd5ad96f4af1ce4f04bf6",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-35b76e40a4a8.b73e0e24c6.js",
+      "source": "rspress:static/js/async/route-35b76e40a4a8.b73e0e24c6.js",
+      "bytes": 9932,
+      "sha256": "ebfca3e214d710fa07fd4598f6b06d78d357ae0039ca3ac18c28367be69119be",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-3eb69bd7afbb.328604b4a6.js",
+      "source": "rspress:static/js/async/route-3eb69bd7afbb.328604b4a6.js",
+      "bytes": 10558,
+      "sha256": "ca6c30cf2f811300928d9a2e03b34b0030d169612dc3e5733bd84b88649b5655",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.06ef6673ae.js",
+      "source": "rspress:static/js/async/route-6c33a3943990.06ef6673ae.js",
+      "bytes": 348152,
+      "sha256": "e81af5283950896c1cb7b1007dba63e54c3208483b5c977e8ae5b6c57314b4ec",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-a1017bdf23ca.2a1911450a.js",
+      "source": "rspress:static/js/async/route-a1017bdf23ca.2a1911450a.js",
+      "bytes": 155063,
+      "sha256": "1e22290206ab0af135aae765eec3305bd58b889bf8911babdcaa7bf7c2130d4d",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-acf9bf8a5ef1.f356c58eb4.js",
+      "source": "rspress:static/js/async/route-acf9bf8a5ef1.f356c58eb4.js",
+      "bytes": 22026,
+      "sha256": "82e63a1f95cad377fead193bb61063ba939c69a31dea1851f7ff3a18204c0e17",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-cf24e65b55e7.28d67dcd77.js",
+      "source": "rspress:static/js/async/route-cf24e65b55e7.28d67dcd77.js",
+      "bytes": 9551,
+      "sha256": "93f9bb2511c66c350621f33743b07dc2f120a6d32ae530bf5e1b691bc5cf4d15",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-ecf129b09e78.849bb27f9d.js",
+      "source": "rspress:static/js/async/route-ecf129b09e78.849bb27f9d.js",
+      "bytes": 18916,
+      "sha256": "1466b43493d6a6b84335eb38b2ec57c66f1a71b0ae66f7d25f655b7fda29986d",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/index.1c1fc9e86e.js",
+      "source": "rspress:static/js/index.1c1fc9e86e.js",
+      "bytes": 19634,
+      "sha256": "e2e673231776173d6392491e1ac19e035b85c69155267056ff455e598ba55299",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "source": "rspress:static/js/lib-react.801d719c4f.js",
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "previous_sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "source": "rspress:static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "previous_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "source": "rspress:static/js/lib-router.d3b08da66f.js",
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "previous_sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "source": "rspress:static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "previous_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/styles.b5d9a69293.js",
+      "source": "rspress:static/js/styles.b5d9a69293.js",
+      "bytes": 471,
+      "sha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6",
+      "previous_sha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/search_index.ko.db179373.json",
+      "source": "rspress:static/search_index.ko.db179373.json",
+      "bytes": 316872,
+      "sha256": "db17937331d75d0c792dbdb582a7318cbefbcfc625b29709feff89ba490116a5",
+      "previous_sha256": null,
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "STATUS.html",
+      "source": "source:../spinon-c15-2b-tailnet-sync-20261017/site-scoped/STATUS.html",
+      "bytes": 328575,
+      "sha256": "6dd18a2aa0e582ea1eff52af7bc27050d23fce2c63cc37af56ea96f01fe70e27",
+      "previous_sha256": "e7d6a92c56a1357f3db2e1147ea4652b2c9324d0d2d7612c1ffd3d790fda6018",
+      "status": "replaced",
+      "backup_path": "backup/c15-2b-tailnet-preview-sync-2026-10-17/STATUS.html"
+    },
+    {
+      "path": "STATUS.md",
+      "source": "source:spec/STATUS.md",
+      "bytes": 251386,
+      "sha256": "8d2cfc98fa4e8df7a3cbd7a57ec6a3bb9f57f8e5810b17c4ab09f43cec7ab760",
+      "previous_sha256": "94171784f872569223f4ed4dcf920d9fe3e3ebf3a57beac21c45e25b58188f3a",
+      "status": "replaced",
+      "backup_path": "backup/c15-2b-tailnet-preview-sync-2026-10-17/STATUS.md"
+    }
+  ]
+}
