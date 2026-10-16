@@ -1,0 +1,803 @@
+{
+  "arabic": {
+    "graphemes": [
+      {
+        "rects": [
+          {
+            "height": 42,
+            "width": 4.78125,
+            "x": 151.21875,
+            "y": 311
+          }
+        ],
+        "text": "ا",
+        "utf16": [
+          0,
+          1
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 42,
+            "width": 5.203125,
+            "x": 146.03125,
+            "y": 311
+          }
+        ],
+        "text": "ل",
+        "utf16": [
+          1,
+          2
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 42,
+            "width": 17.015625,
+            "x": 129.03125,
+            "y": 311
+          }
+        ],
+        "text": "سَّ",
+        "utf16": [
+          2,
+          5
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 42,
+            "width": 4.421875,
+            "x": 124.625,
+            "y": 311
+          }
+        ],
+        "text": "لَ",
+        "utf16": [
+          5,
+          7
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 42,
+            "width": 7.59375,
+            "x": 117.046875,
+            "y": 311
+          }
+        ],
+        "text": "ا",
+        "utf16": [
+          7,
+          8
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 42,
+            "width": 9.703125,
+            "x": 107.359375,
+            "y": 311
+          }
+        ],
+        "text": "مُ",
+        "utf16": [
+          8,
+          10
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 42,
+            "width": 5.203125,
+            "x": 102.171875,
+            "y": 311
+          }
+        ],
+        "text": " ",
+        "utf16": [
+          10,
+          11
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 42,
+            "width": 11.453125,
+            "x": 67.84375,
+            "y": 311
+          }
+        ],
+        "text": "1",
+        "utf16": [
+          11,
+          12
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 42,
+            "width": 11.453125,
+            "x": 79.28125,
+            "y": 311
+          }
+        ],
+        "text": "2",
+        "utf16": [
+          12,
+          13
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 42,
+            "width": 11.453125,
+            "x": 90.71875,
+            "y": 311
+          }
+        ],
+        "text": "3",
+        "utf16": [
+          13,
+          14
+        ]
+      }
+    ],
+    "metrics": {
+      "actualBoundingBoxAscent": 19.599994659423828,
+      "actualBoundingBoxDescent": 7.860000610351563,
+      "actualBoundingBoxLeft": -1.7799999713897705,
+      "actualBoundingBoxRight": 86.83992767333984,
+      "fontBoundingBoxAscent": 27,
+      "fontBoundingBoxDescent": 15,
+      "width": 88.13992309570312
+    },
+    "rect": {
+      "height": 28,
+      "width": 140,
+      "x": 16,
+      "y": 318
+    }
+  },
+  "cjkBreak": {
+    "graphemes": [
+      {
+        "rects": [
+          {
+            "height": 24,
+            "width": 20,
+            "x": 16,
+            "y": 142
+          }
+        ],
+        "text": "甲",
+        "utf16": [
+          0,
+          1
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 24,
+            "width": 20,
+            "x": 16,
+            "y": 166
+          }
+        ],
+        "text": "乙",
+        "utf16": [
+          1,
+          2
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 24,
+            "width": 20,
+            "x": 36,
+            "y": 166
+          }
+        ],
+        "text": "、",
+        "utf16": [
+          2,
+          3
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 24,
+            "width": 20,
+            "x": 16,
+            "y": 190
+          }
+        ],
+        "text": "丙",
+        "utf16": [
+          3,
+          4
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 24,
+            "width": 20,
+            "x": 36,
+            "y": 190
+          }
+        ],
+        "text": "丁",
+        "utf16": [
+          4,
+          5
+        ]
+      }
+    ],
+    "metrics": {
+      "actualBoundingBoxAscent": 15.544062614440918,
+      "actualBoundingBoxDescent": 1.5993776321411133,
+      "actualBoundingBoxLeft": -2.525937557220459,
+      "actualBoundingBoxRight": 98.78812408447266,
+      "fontBoundingBoxAscent": 20,
+      "fontBoundingBoxDescent": 4,
+      "width": 100
+    },
+    "rect": {
+      "height": 72,
+      "width": 40,
+      "x": 16,
+      "y": 142
+    }
+  },
+  "combining": {
+    "graphemes": [
+      {
+        "rects": [
+          {
+            "height": 24,
+            "width": 9.921875,
+            "x": 16,
+            "y": 254
+          }
+        ],
+        "text": "x̣",
+        "utf16": [
+          0,
+          2
+        ]
+      }
+    ],
+    "metrics": {
+      "actualBoundingBoxAscent": 10.56640625,
+      "actualBoundingBoxDescent": 3.3203125,
+      "actualBoundingBoxLeft": -0.41015625,
+      "actualBoundingBoxRight": 9.482421875,
+      "fontBoundingBoxAscent": 19,
+      "fontBoundingBoxDescent": 5,
+      "width": 9.921875
+    },
+    "rect": {
+      "height": 24,
+      "width": 9.921875,
+      "x": 16,
+      "y": 254
+    }
+  },
+  "devicePixelRatio": 1,
+  "emoji": {
+    "graphemes": [
+      {
+        "rects": [
+          {
+            "height": 33,
+            "width": 35.546875,
+            "x": 16,
+            "y": 387
+          }
+        ],
+        "text": "👩‍💻",
+        "utf16": [
+          0,
+          5
+        ]
+      }
+    ],
+    "metrics": {
+      "actualBoundingBoxAscent": 23.7890625,
+      "actualBoundingBoxDescent": 4.6484375,
+      "actualBoundingBoxLeft": -1.640625,
+      "actualBoundingBoxRight": 33.90625,
+      "fontBoundingBoxAscent": 26,
+      "fontBoundingBoxDescent": 7,
+      "width": 35.546875
+    },
+    "rect": {
+      "height": 36,
+      "width": 35.546875,
+      "x": 16,
+      "y": 386
+    }
+  },
+  "fontChecks": {
+    "ahem": true,
+    "arabic": true,
+    "emoji": true,
+    "notoKr": true,
+    "roboto": true
+  },
+  "fontsStatus": "loaded",
+  "hangul": {
+    "graphemes": [
+      {
+        "rects": [
+          {
+            "height": 24,
+            "width": 18.40625,
+            "x": 16,
+            "y": 78
+          }
+        ],
+        "text": "한",
+        "utf16": [
+          0,
+          1
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 24,
+            "width": 18.421875,
+            "x": 34.390625,
+            "y": 78
+          }
+        ],
+        "text": "글",
+        "utf16": [
+          1,
+          2
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 24,
+            "width": 5.609375,
+            "x": 52.796875,
+            "y": 78
+          }
+        ],
+        "text": " ",
+        "utf16": [
+          2,
+          3
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 24,
+            "width": 18.421875,
+            "x": 58.390625,
+            "y": 78
+          }
+        ],
+        "text": "테",
+        "utf16": [
+          3,
+          4
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 24,
+            "width": 18.40625,
+            "x": 76.796875,
+            "y": 78
+          }
+        ],
+        "text": "스",
+        "utf16": [
+          4,
+          5
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 24,
+            "width": 18.421875,
+            "x": 95.1875,
+            "y": 78
+          }
+        ],
+        "text": "트",
+        "utf16": [
+          5,
+          6
+        ]
+      }
+    ],
+    "metrics": {
+      "actualBoundingBoxAscent": 16.538436889648438,
+      "actualBoundingBoxDescent": 1.5506267547607422,
+      "actualBoundingBoxLeft": -1.045937418937683,
+      "actualBoundingBoxRight": 95.46517944335938,
+      "fontBoundingBoxAscent": 20,
+      "fontBoundingBoxDescent": 4,
+      "width": 96.4701690673828
+    },
+    "rect": {
+      "height": 24,
+      "width": 97.609375,
+      "x": 16,
+      "y": 78
+    }
+  },
+  "intrinsicSizing": {
+    "block": {
+      "height": 24,
+      "width": 56.8125,
+      "x": 16,
+      "y": 462
+    },
+    "flex": {
+      "height": 24,
+      "width": 56.8125,
+      "x": 76.5,
+      "y": 462
+    },
+    "grid": {
+      "height": 24,
+      "width": 56.8125,
+      "x": 137,
+      "y": 462
+    }
+  },
+  "ligature": {
+    "graphemes": [
+      {
+        "rects": [
+          {
+            "height": 24,
+            "width": 11.40625,
+            "x": 29.609375,
+            "y": 254
+          }
+        ],
+        "text": "o",
+        "utf16": [
+          0,
+          1
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 24,
+            "width": 5.703125,
+            "x": 41.015625,
+            "y": 254
+          }
+        ],
+        "text": "f",
+        "utf16": [
+          1,
+          2
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 24,
+            "width": 5.703125,
+            "x": 46.703125,
+            "y": 254
+          }
+        ],
+        "text": "f",
+        "utf16": [
+          2,
+          3
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 24,
+            "width": 5.703125,
+            "x": 52.390625,
+            "y": 254
+          }
+        ],
+        "text": "i",
+        "utf16": [
+          3,
+          4
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 24,
+            "width": 10.484375,
+            "x": 58.078125,
+            "y": 254
+          }
+        ],
+        "text": "c",
+        "utf16": [
+          4,
+          5
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 24,
+            "width": 10.625,
+            "x": 68.546875,
+            "y": 254
+          }
+        ],
+        "text": "e",
+        "utf16": [
+          5,
+          6
+        ]
+      }
+    ],
+    "metrics": {
+      "actualBoundingBoxAscent": 15.205078125,
+      "actualBoundingBoxDescent": 0.1953125,
+      "actualBoundingBoxLeft": -0.8984375,
+      "actualBoundingBoxRight": 48.818359375,
+      "fontBoundingBoxAscent": 19,
+      "fontBoundingBoxDescent": 5,
+      "width": 49.55078125
+    },
+    "rect": {
+      "height": 24,
+      "width": 49.5625,
+      "x": 29.609375,
+      "y": 254
+    }
+  },
+  "noLigature": {
+    "graphemes": [
+      {
+        "rects": [
+          {
+            "height": 24,
+            "width": 11.40625,
+            "x": 82.859375,
+            "y": 254
+          }
+        ],
+        "text": "o",
+        "utf16": [
+          0,
+          1
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 24,
+            "width": 6.953125,
+            "x": 94.265625,
+            "y": 254
+          }
+        ],
+        "text": "f",
+        "utf16": [
+          1,
+          2
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 24,
+            "width": 6.953125,
+            "x": 101.21875,
+            "y": 254
+          }
+        ],
+        "text": "f",
+        "utf16": [
+          2,
+          3
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 24,
+            "width": 4.875,
+            "x": 108.171875,
+            "y": 254
+          }
+        ],
+        "text": "i",
+        "utf16": [
+          3,
+          4
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 24,
+            "width": 10.484375,
+            "x": 113.03125,
+            "y": 254
+          }
+        ],
+        "text": "c",
+        "utf16": [
+          4,
+          5
+        ]
+      },
+      {
+        "rects": [
+          {
+            "height": 24,
+            "width": 10.609375,
+            "x": 123.5,
+            "y": 254
+          }
+        ],
+        "text": "e",
+        "utf16": [
+          5,
+          6
+        ]
+      }
+    ],
+    "metrics": {
+      "actualBoundingBoxAscent": 15.205078125,
+      "actualBoundingBoxDescent": 0.1953125,
+      "actualBoundingBoxLeft": -0.8984375,
+      "actualBoundingBoxRight": 48.818359375,
+      "fontBoundingBoxAscent": 19,
+      "fontBoundingBoxDescent": 5,
+      "width": 49.55078125
+    },
+    "rect": {
+      "height": 24,
+      "width": 51.25,
+      "x": 82.859375,
+      "y": 254
+    }
+  },
+  "overflow": {
+    "clientWidth": 13,
+    "hiddenHit": {
+      "id": null,
+      "point": {
+        "x": 61,
+        "y": 534
+      }
+    },
+    "hiddenParent": {
+      "height": 22,
+      "width": 15,
+      "x": 43,
+      "y": 526
+    },
+    "hiddenText": {
+      "height": 10,
+      "width": 20,
+      "x": 45,
+      "y": 527
+    },
+    "scrollParent": {
+      "height": 22,
+      "width": 15,
+      "x": 70,
+      "y": 526
+    },
+    "scrollText": {
+      "height": 10,
+      "width": 20,
+      "x": 72,
+      "y": 527
+    },
+    "scrollWidth": 21,
+    "visibleHit": {
+      "id": "visible-text",
+      "point": {
+        "x": 34,
+        "y": 534
+      }
+    },
+    "visibleParent": {
+      "height": 22,
+      "width": 15,
+      "x": 16,
+      "y": 526
+    },
+    "visibleText": {
+      "height": 10,
+      "width": 20,
+      "x": 18,
+      "y": 527
+    }
+  },
+  "paintOrder": {
+    "container": {
+      "height": 30,
+      "width": 64,
+      "x": 16,
+      "y": 584
+    },
+    "overlay": {
+      "height": 20,
+      "width": 12,
+      "x": 30,
+      "y": 585
+    },
+    "text": {
+      "height": 24,
+      "width": 49.5625,
+      "x": 16,
+      "y": 584
+    }
+  },
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+  "userAgentData": {
+    "architecture": "arm",
+    "bitness": "64",
+    "brands": [
+      {
+        "brand": "Google Chrome",
+        "version": "155"
+      },
+      {
+        "brand": "Chromium",
+        "version": "155"
+      },
+      {
+        "brand": "Not(A:Brand",
+        "version": "24"
+      }
+    ],
+    "fullVersionList": [
+      {
+        "brand": "Google Chrome",
+        "version": "155.0.8059.85"
+      },
+      {
+        "brand": "Chromium",
+        "version": "155.0.8059.85"
+      },
+      {
+        "brand": "Not(A:Brand",
+        "version": "24.0.0.0"
+      }
+    ],
+    "mobile": false,
+    "platform": "macOS",
+    "platformVersion": "26.5.1"
+  },
+  "viewport": {
+    "height": 760,
+    "width": 640
+  }
+}

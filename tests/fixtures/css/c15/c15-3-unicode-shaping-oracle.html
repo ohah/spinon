@@ -1,0 +1,206 @@
+<!doctype html>
+<meta charset="utf-8">
+<link rel="icon" href="data:,">
+<title>C15.3 fixed-font Unicode shaping and paint oracle</title>
+<style>
+  @font-face {
+    font-family: "C15 Noto KR";
+    src: url("../../resources/c15/c15-3/NotoSansKR-VF.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 100 900;
+  }
+  @font-face {
+    font-family: "C15 Noto Arabic";
+    src: url("../../resources/c15/c15-3/NotoSansArabic-VF.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 100 900;
+    font-stretch: 62.5% 100%;
+  }
+  @font-face {
+    font-family: "C15 Noto Emoji";
+    src: url("../../resources/c15/c15-3/NotoEmoji-VF.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 300 700;
+  }
+  @font-face {
+    font-family: "C15 Roboto";
+    src: url("../../resources/c15/Roboto-Variable.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 100 900;
+  }
+  @font-face {
+    font-family: "C15 Ahem";
+    src: url("../../resources/c15/Ahem.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 16px;
+    color: #111;
+    background: #fff;
+    font: 14px/20px sans-serif;
+  }
+  h1 { margin: 0 0 10px; font: 600 20px/26px sans-serif; }
+  h2 { margin: 12px 0 4px; font: 600 14px/20px sans-serif; }
+  .sample { display: inline-block; margin: 0 0 4px; }
+  #hangul, #cjk-break { font: 400 20px/24px "C15 Noto KR"; }
+  #cjk-break { width: 40px; line-break: strict; word-break: normal; }
+  #combining, #ligature, #no-ligature { font: 400 20px/24px "C15 Roboto"; }
+  #ligature { font-variant-ligatures: common-ligatures; }
+  #no-ligature { font-variant-ligatures: none; }
+  #arabic {
+    width: 140px;
+    font: 400 20px/28px "C15 Noto Arabic";
+    direction: rtl;
+    text-align: start;
+    white-space: normal;
+  }
+  #emoji { font: 400 28px/36px "C15 Noto Emoji"; }
+  #block-sizing { width: max-content; font: 400 20px/24px "C15 Noto KR"; }
+  #flex-sizing { display: inline-flex; width: max-content; font: 400 20px/24px "C15 Noto KR"; }
+  #grid-sizing { display: inline-grid; grid-template-columns: max-content; font: 400 20px/24px "C15 Noto KR"; }
+  .sizing-text { white-space: nowrap; }
+  .overflow-row { display: flex; gap: 12px; align-items: start; }
+  .overflow-box {
+    width: 15px;
+    height: 22px;
+    border: 1px solid #888;
+    font: 10px/10px "C15 Ahem";
+    white-space: nowrap;
+  }
+  #overflow-visible { overflow: visible; }
+  #overflow-hidden { overflow: hidden; }
+  #overflow-scroll { overflow: auto; }
+  .overflow-text { display: inline-block; margin-left: 1px; }
+  #paint-order {
+    position: relative;
+    width: 64px;
+    height: 30px;
+    font: 400 20px/24px "C15 Roboto";
+  }
+  #paint-overlay {
+    position: absolute;
+    z-index: 1;
+    top: 1px;
+    left: 14px;
+    width: 12px;
+    height: 20px;
+    background: #e33;
+  }
+  #capture { display: none; }
+</style>
+<main>
+  <h1>C15.3 Unicode shaping and paint inputs</h1>
+  <h2>Hangul</h2>
+  <div id="hangul" class="sample" lang="ko">한글 테스트</div>
+  <h2>CJK line break with strict punctuation</h2>
+  <div id="cjk-break" class="sample" lang="ja">甲乙、丙丁</div>
+  <h2>Combining mark and common ligature</h2>
+  <div id="combining" class="sample">x&#x0323;</div>
+  <div id="ligature" class="sample">office</div>
+  <div id="no-ligature" class="sample">office</div>
+  <h2>Arabic shaping, marks, and bidi digits</h2>
+  <div id="arabic" class="sample" lang="ar">السَّلَامُ 123</div>
+  <h2>Emoji ZWJ sequences</h2>
+  <div id="emoji" class="sample">👩‍💻</div>
+  <h2>Text intrinsic sizing</h2>
+  <div id="block-sizing" class="sample"><span class="sizing-text">한글字</span></div>
+  <div id="flex-sizing" class="sample"><span class="sizing-text">한글字</span></div>
+  <div id="grid-sizing" class="sample"><span class="sizing-text">한글字</span></div>
+  <h2>Visible ink, clip, and scroll overflow</h2>
+  <div class="overflow-row">
+    <div id="overflow-visible" class="overflow-box"><span class="overflow-text" id="visible-text">XX</span></div>
+    <div id="overflow-hidden" class="overflow-box"><span class="overflow-text" id="hidden-text">XX</span></div>
+    <div id="overflow-scroll" class="overflow-box"><span class="overflow-text" id="scroll-text">XX</span></div>
+  </div>
+  <h2>Paint order</h2>
+  <div id="paint-order"><span id="paint-text">office</span><span id="paint-overlay"></span></div>
+</main>
+<pre id="capture"></pre>
+<script>
+  window.c15Ready = document.fonts.ready.then(async () => {
+    const rect = (element) => {
+      const value = element.getBoundingClientRect();
+      return { x: value.x, y: value.y, width: value.width, height: value.height };
+    };
+    const graphemeRects = (element, locale) => {
+      const node = element.firstChild;
+      const text = node.textContent;
+      const segmenter = new Intl.Segmenter(locale, { granularity: "grapheme" });
+      return Array.from(segmenter.segment(text), (part) => {
+        const range = document.createRange();
+        range.setStart(node, part.index);
+        range.setEnd(node, part.index + part.segment.length);
+        return {
+          text: part.segment,
+          utf16: [part.index, part.index + part.segment.length],
+          rects: Array.from(range.getClientRects(), (value) => ({
+            x: value.x, y: value.y, width: value.width, height: value.height,
+          })),
+        };
+      });
+    };
+    const metrics = (element, font) => {
+      const context = document.createElement("canvas").getContext("2d");
+      context.font = font;
+      const value = context.measureText(element.textContent);
+      return {
+        width: value.width,
+        actualBoundingBoxLeft: value.actualBoundingBoxLeft,
+        actualBoundingBoxRight: value.actualBoundingBoxRight,
+        actualBoundingBoxAscent: value.actualBoundingBoxAscent,
+        actualBoundingBoxDescent: value.actualBoundingBoxDescent,
+        fontBoundingBoxAscent: value.fontBoundingBoxAscent,
+        fontBoundingBoxDescent: value.fontBoundingBoxDescent,
+      };
+    };
+    const byId = (id) => document.getElementById(id);
+    const overflowPoint = (element) => {
+      const box = rect(element);
+      return { x: box.x + box.width + 3, y: box.y + 8 };
+    };
+    const visiblePoint = overflowPoint(byId("overflow-visible"));
+    const hiddenPoint = overflowPoint(byId("overflow-hidden"));
+    const data = {
+      fontsStatus: document.fonts.status,
+      fontChecks: {
+        notoKr: document.fonts.check('400 20px "C15 Noto KR"', "한글 테스트甲乙、丙丁漢字日本語。"),
+        arabic: document.fonts.check('400 20px "C15 Noto Arabic"', "السَّلَامُ 123"),
+        emoji: document.fonts.check('400 28px "C15 Noto Emoji"', "👩‍💻"),
+        roboto: document.fonts.check('400 20px "C15 Roboto"', "x̣ office"),
+        ahem: document.fonts.check('10px "C15 Ahem"', "XX"),
+      },
+      viewport: { width: innerWidth, height: innerHeight },
+      devicePixelRatio,
+      userAgent: navigator.userAgent,
+      userAgentData: navigator.userAgentData ? await navigator.userAgentData.getHighEntropyValues([
+        "architecture", "bitness", "fullVersionList", "mobile", "platform", "platformVersion",
+      ]) : null,
+      hangul: { rect: rect(byId("hangul")), graphemes: graphemeRects(byId("hangul"), "ko"), metrics: metrics(byId("hangul"), '400 20px "C15 Noto KR"') },
+      cjkBreak: { rect: rect(byId("cjk-break")), graphemes: graphemeRects(byId("cjk-break"), "ja"), metrics: metrics(byId("cjk-break"), '400 20px "C15 Noto KR"') },
+      combining: { rect: rect(byId("combining")), graphemes: graphemeRects(byId("combining"), "en"), metrics: metrics(byId("combining"), '400 20px "C15 Roboto"') },
+      ligature: { rect: rect(byId("ligature")), graphemes: graphemeRects(byId("ligature"), "en"), metrics: metrics(byId("ligature"), '400 20px "C15 Roboto"') },
+      noLigature: { rect: rect(byId("no-ligature")), graphemes: graphemeRects(byId("no-ligature"), "en"), metrics: metrics(byId("no-ligature"), '400 20px "C15 Roboto"') },
+      arabic: { rect: rect(byId("arabic")), graphemes: graphemeRects(byId("arabic"), "ar"), metrics: metrics(byId("arabic"), '400 20px "C15 Noto Arabic"') },
+      emoji: { rect: rect(byId("emoji")), graphemes: graphemeRects(byId("emoji"), "en"), metrics: metrics(byId("emoji"), '400 28px "C15 Noto Emoji"') },
+      intrinsicSizing: {
+        block: rect(byId("block-sizing")),
+        flex: rect(byId("flex-sizing")),
+        grid: rect(byId("grid-sizing")),
+      },
+      overflow: {
+        visibleParent: rect(byId("overflow-visible")), visibleText: rect(byId("visible-text")),
+        hiddenParent: rect(byId("overflow-hidden")), hiddenText: rect(byId("hidden-text")),
+        scrollParent: rect(byId("overflow-scroll")), scrollText: rect(byId("scroll-text")),
+        scrollWidth: byId("overflow-scroll").scrollWidth, clientWidth: byId("overflow-scroll").clientWidth,
+        visibleHit: { point: visiblePoint, id: document.elementFromPoint(visiblePoint.x, visiblePoint.y)?.id || null },
+        hiddenHit: { point: hiddenPoint, id: document.elementFromPoint(hiddenPoint.x, hiddenPoint.y)?.id || null },
+      },
+      paintOrder: { container: rect(byId("paint-order")), text: rect(byId("paint-text")), overlay: rect(byId("paint-overlay")) },
+    };
+    byId("capture").textContent = JSON.stringify(data, null, 2);
+    return data;
+  });
+</script>

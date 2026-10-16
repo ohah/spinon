@@ -70,6 +70,28 @@ HostDocument의 실제 text node와 inline element를 CSS inline formatting cont
 - text geometry가 Block·Flex·Grid sizing, overflow/scroll, paint order, clip, hit-test, text ink bounds에서 소비되는 경계를 추가한다. 이미지·text의 inline baseline과 replaced inline object는 이 단계가 별도 fixture를 소유할 때만 추가한다.
 - C16에서 `font-family/size/weight/style`, CSS `line-height` 값의 parsing·cascade, `@font-face`, asynchronous font load/fallback, letter/word spacing, text-align/decoration/transform/overflow와 전체 cascade 연결을 별도 구현한다. C15 fixture의 fixed-font/internal line-height scalar는 이 계약을 대신하지 않는다.
 
+#### C15.3 고정 acceptance oracle
+
+[Chrome 155 Unicode shaping 사전 비교](../spec/internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/README.md)는 고정 글꼴·DOM 관찰·상세 JSON·screenshot을 분리해 보존한다. 이 oracle의 CSS px geometry 오차는 각 run/fragment/line별 0.05px 이내로 비교한다. paint는 text antialias 전체 screenshot similarity로 판정하지 않고 고정 font와 flat-color overlay/clip 경계의 명확한 표본을 비교한다.
+
+| ID | 입력 | Chrome DOM 사전 기대 관찰 |
+| --- | --- | --- |
+| `hangul-korean` | Noto Sans KR 20px, 한글 테스트 | inline-block rect 97.609375×24px; Canvas advance 96.470169px는 별도 metric으로 기록하고 DOM rect와 혼용하지 않는다. |
+| `cjk-strict-break` | Noto Sans KR 20px, line-break:strict, 폭 40px, 甲乙、丙丁 | rect 40×72px; line grouping 甲 / 乙、 / 丙丁; U+3001가 다음 줄 첫 위치에 오지 않는다. |
+| `combining-cluster` | Roboto 20px, x + U+0323 | UTF-16 source range [0,2]를 하나의 grapheme cluster로 보존하고 DOM advance 9.921875px를 기록한다. |
+| `common-ligature` | Roboto 20px office, ligature enabled / font-variant-ligatures:none | DOM width 49.5625px / 51.25px; Canvas TextMetrics는 두 CSS variant를 구별하지 않으므로 pass oracle로 쓰지 않는다. |
+| `arabic-bidi-marks` | Noto Sans Arabic 20px/28px, direction:rtl, 폭 140px, السَّلَامُ 123 | container 140×28px; Arabic joining/marks와 Bidi run을 보존하고 ASCII digits가 LTR 순서로 배치된다. |
+| `emoji-zwj` | Noto Emoji 28px/36px, 👩‍💻 | UTF-16 [0,5] 단일 grapheme range, DOM advance 35.546875px; 실제 shaped cluster·glyph identity와 보이는 ink는 runtime evidence로 별도 확인한다. |
+| `intrinsic-text` | 한글字, Noto Sans KR 20px | Block/Flex/Grid 각각 56.8125×24px; sizing consumers는 같은 font/style/width revision의 shaping 결과를 사용한다. |
+| `visible-overflow-hit` | Ahem 10px XX, parent width 15px, overflow:visible | text advance 20px가 parent 밖으로 이어지고 parent 경계 밖의 ink/hit-test를 paint/clip/hit 소비처에서 검사한다. |
+| `hidden-overflow-clip` | 같은 입력, overflow:hidden | 경계 밖 ink가 clip되고 외부 hit point가 text를 반환하지 않는다. DOM oracle에서 외부 point hit 결과는 null이다. |
+| `auto-scroll-overflow` | 같은 입력, overflow:auto | parent border-box 폭 15px, clientWidth=13, scrollWidth=21; content overflow를 clip 결과와 혼동하지 않는다. |
+| `paint-order-overlap` | text office 뒤에 red overlay 배치 | parent-relative overlay rect [14,1,12,20]가 text ink 영역과 겹치고 paint order상 text 위에 그려진다. pixel oracle는 antialiased glyph 대신 overlay 내부의 불변 색 표본도 확인한다. |
+
+상세 parent/text 좌표, per-grapheme Range, Canvas metric, font loading 상태는 evidence JSON에 고정했다. viewport 배치에 따른 절대 y 좌표는 정답으로 재사용하지 않고 parent-relative geometry와 run/line ordering을 비교한다. Noto Emoji의 pinned font GSUB가 ZWJ sequence를 한 glyph로 매핑한다는 사실은 fixture font의 입력 조건일 뿐, Chrome DOM 관찰만으로 browser glyph ID가 확인됐다고 주장하지 않는다.
+
+연결할 upstream WPT revision은 df642c4142354ffb5a0af6fa41610677f6321092다: css/css-text/line-break/line-break-strict-015a.xht, css/css-text/line-break/line-break-shaping-001.html, css/css-fonts/font-variant-ligatures-01.html, css/css-text/bidi/bidi-lines-001.html. 이 경로들은 구현 시 실행할 후보일 뿐 이 계획 amendment에서는 실행하지 않았고, Chrome oracle도 WPT/Spinon pass가 아니다. [C15.3 계획 검토 20개](../spec/internal/evidence/c15-3-unicode-shaping-plan-review-20-2026-10-17.md)
+
 ## 고정 사전 비교 모델
 
 입력·실행 화면·원본 DOM 측정값·font SHA-256은 [사전 비교 자료](../spec/internal/evidence/c15-inline-text-precomparison-2026-10-17/README.md)에 기록했다. Chrome은 Agent Browser의 `155.0.8059.85`, macOS 26.5.1 ARM, locale `ko-KR`, viewport `320×480 CSS px`, DPR 1이며 Ahem/Roboto font download가 완료된 뒤 관찰했다. High-entropy browser version은 저장했지만 실행 파일 SHA와 CDP protocol revision은 없다. 첫 구현 전에 수집을 시도하고, 수집할 수 없으면 그 제한을 fixture manifest와 PR에 명시한다.
