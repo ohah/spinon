@@ -4,10 +4,10 @@
 
 ## 브라우저와 입력
 
-- Agent Browser `0.31.1`이 Chrome `155.0.8059.85`를 열었다. CDP `Browser.getVersion`의 protocol은 `1.3`, V8은 `15.5.35.25`, Chromium revision은 `0e66b94549a8bd85f03fbdf189b752d6e7b63c32`다. 실행 파일·framework SHA-256과 host 환경은 [browser-metadata.json](./browser-metadata.json)에 보존했다.
-- macOS `26.5.1` arm64, viewport `1280×633` CSS px, DPR 1, locale `ko-KR`이다. [fixture](../../../../tests/fixtures/css/c15/inline-text-c15-2-precomparison.html)는 `Ahem.ttf`와 `Roboto-Variable.ttf`가 모두 로드된 뒤 `Range.getClientRects()`, `Element.getClientRects()`, `getBoundingClientRect()`, Canvas `TextMetrics`를 수집한다.
+- Agent Browser `0.31.1`이 Chrome `155.0.8059.85`를 열었다. CDP `Browser.getVersion`의 protocol은 `1.3`, V8은 `15.5.35.25`, Chromium revision은 `0e66b94549a8bd85f03fbdf189b752d6e7b63c32`다. 실행 파일·framework SHA-256과 host 환경은 [browser-metadata.json](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c15-2-inline-text-precomparison-2026-10-17/browser-metadata.json)에 보존했다.
+- macOS `26.5.1` arm64, viewport `1280×633` CSS px, DPR 1, locale `ko-KR`이다. [fixture](https://github.com/ohah/spinon/blob/main/tests/fixtures/css/c15/inline-text-c15-2-precomparison.html)는 `Ahem.ttf`와 `Roboto-Variable.ttf`가 모두 로드된 뒤 `Range.getClientRects()`, `Element.getClientRects()`, `getBoundingClientRect()`, Canvas `TextMetrics`를 수집한다.
 - 입력 fixture SHA-256은 `52e7cfcda307678f7d69fde285a8e5673ed5d56eba20d16b872a8e4b49307785`다. Ahem과 Roboto font file SHA-256은 각각 `b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448`, `d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134`다.
-- DOM 좌표 observation은 `body` 기본 CSS zoom 1.0에서 저장했다. 작은 글자를 보기 쉽게 캡처 직전에만 `body { zoom: 1.75 }`를 적용했다. 따라서 [JSON](./chrome155-observation.json)이 수치 oracle이고 screenshot은 설명 자료다.
+- DOM 좌표 observation은 `body` 기본 CSS zoom 1.0에서 저장했다. 작은 글자를 보기 쉽게 캡처 직전에만 `body { zoom: 1.75 }`를 적용했다. 따라서 [chrome155-observation.json](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c15-2-inline-text-precomparison-2026-10-17/chrome155-observation.json)이 수치 oracle이고 screenshot은 설명 자료다.
 
 ![Chrome 155 C15.2 인라인 서식 사전 비교](./chrome155.png)
 

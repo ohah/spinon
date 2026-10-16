@@ -72,6 +72,7 @@ fn paragraph_style_rejects_invalid_family_and_non_positive_or_non_finite_metrics
                 text: "X".to_owned(),
             }],
             style,
+            inline_styles: Default::default(),
         };
         assert!(matches!(
             engine.layout_paragraph(&input, 10.0),

@@ -8,7 +8,10 @@ mod snapshot;
 
 pub use engine::TextLayoutEngine;
 pub use error::TextLayoutError;
-pub use model::{ParagraphInput, ParagraphStyle, TextSource, WhiteSpaceMode, WordBreakMode};
+pub use model::{
+    InlineBoxStyle, InlineEdges, ParagraphInput, ParagraphStyle, TextSource, WhiteSpaceMode,
+    WordBreakMode,
+};
 pub use snapshot::{
     FontMetricsSnapshot, FontRegistryRevision, InlineFragment, TextGlyph, TextLayoutSnapshot,
     TextLine, TextRect, TextRun, TextSourceRange,

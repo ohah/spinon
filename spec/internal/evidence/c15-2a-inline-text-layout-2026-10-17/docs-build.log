@@ -1,0 +1,5 @@
+command: bun run docs:build
+exit: 1
+result: Rspress reported dead links in 472 existing Markdown source files, primarily legacy evidence references whose targets are outside the rendered docs tree or are non-Markdown artifacts.
+C15 check: a search of this build output for c15-2a-inline-text-layout-2026-10-17, c15-2-inline-text-precomparison-2026-10-17, and c15-inline-text-precomparison-2026-10-17 returned no matches; all C15 links in the changed pages resolve.
+full unfiltered console output: docs-build.full.log.gz (gzip -t passed)

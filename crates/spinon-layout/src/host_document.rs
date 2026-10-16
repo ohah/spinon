@@ -1,15 +1,18 @@
-use std::collections::{BTreeMap, BTreeSet};
+use std::collections::BTreeMap;
 
 use spinon_core::{
     EnvironmentRevision, HostDocumentSnapshot, HostNodeHandle, HostNodeKind, HostParent, NodeId,
     StyleRevision,
 };
-use spinon_text_layout::{ParagraphInput, ParagraphStyle, TextSource};
+use spinon_text_layout::ParagraphStyle;
 
 use crate::{
     LayoutError, LayoutInput, LayoutInputRevision, LayoutNode, LayoutSourceRevision, LayoutStyle,
     RootSizingPolicy, Viewport,
 };
+
+#[path = "host_document/text_paragraphs.rs"]
+mod text_paragraphs;
 
 struct HostDocumentLayoutProfile<'a> {
     root_sizing: RootSizingPolicy,
@@ -81,10 +84,10 @@ impl LayoutInput {
         )
     }
 
-    /// 고정 text profile이 제공한 Block paragraph를 HostDocument의 text/span 순서와 연결합니다.
+    /// 고정 text profile이 제공한 Block paragraph를 source order와 제한 inline span에 연결합니다.
     ///
-    /// paragraph 안에는 direct text와 상속형 HTML span만 허용합니다. visible non-span
-    /// element child와 unpaired UTF-16 surrogate는 node가 식별되는 오류로 거부합니다.
+    /// paragraph 안에는 direct text와 최대 두 단계의 HTML span만 허용합니다. span의 고정 px
+    /// border/padding은 지원하고, visible non-span element와 unpaired surrogate는 거부합니다.
     pub fn from_host_document_with_text_paragraphs(
         snapshot: &HostDocumentSnapshot,
         root: HostNodeHandle,
@@ -153,61 +156,16 @@ impl LayoutInput {
             return Err(LayoutError::InvalidHostDocumentRoot(root.id()));
         }
 
-        let mut inline_nodes = BTreeSet::new();
-        let mut text_source_nodes = BTreeSet::new();
-        let mut excluded_layout_nodes = BTreeSet::new();
-        let mut text_paragraphs = BTreeMap::new();
-        if let Some(paragraph_styles) = paragraph_styles {
-            let handles = collect_host_handles(snapshot, root)?;
-            for (&paragraph_id, paragraph_style) in paragraph_styles {
-                let Some(&paragraph_handle) = handles.get(&paragraph_id) else {
-                    return Err(LayoutError::UnknownTextParagraph(paragraph_id));
-                };
-                let paragraph_node = snapshot
-                    .node(paragraph_handle)
-                    .ok_or(LayoutError::InvalidHostDocumentRoot(paragraph_id))?;
-                if !matches!(paragraph_node.kind(), HostNodeKind::Element(_)) {
-                    return Err(LayoutError::UnsupportedTextParagraph {
-                        node: paragraph_id,
-                        reason: "paragraph owner가 element가 아닙니다",
-                    });
-                }
-                let layout_style = styles
-                    .get(&paragraph_id)
-                    .copied()
-                    .ok_or(LayoutError::MissingStyle(paragraph_id))?;
-                if layout_style.display == crate::LayoutDisplay::None {
-                    continue;
-                }
-                if layout_style.display != crate::LayoutDisplay::Block {
-                    return Err(LayoutError::UnsupportedTextParagraph {
-                        node: paragraph_id,
-                        reason: "paragraph owner는 display:block이어야 합니다",
-                    });
-                }
-                if is_hidden_by_ancestor(snapshot, paragraph_handle, root, styles)? {
-                    continue;
-                }
-
-                let mut sources = Vec::new();
-                ParagraphSourceCollector {
-                    snapshot,
-                    styles,
-                    inline_nodes: &mut inline_nodes,
-                    text_source_nodes: &mut text_source_nodes,
-                    excluded_layout_nodes: &mut excluded_layout_nodes,
-                }
-                .collect(paragraph_handle, paragraph_id, &mut sources)?;
-                text_paragraphs.insert(
-                    paragraph_id,
-                    ParagraphInput {
-                        node: paragraph_id,
-                        sources,
-                        style: paragraph_style.clone(),
-                    },
-                );
-            }
-        }
+        let collected_text = paragraph_styles
+            .map(|paragraph_styles| {
+                text_paragraphs::collect(snapshot, root, styles, paragraph_styles)
+            })
+            .transpose()?
+            .unwrap_or_default();
+        let inline_nodes = collected_text.inline_nodes;
+        let text_source_nodes = collected_text.text_source_nodes;
+        let excluded_layout_nodes = collected_text.excluded_layout_nodes;
+        let text_paragraphs = collected_text.paragraphs;
 
         let mut nodes = Vec::new();
         let mut included = excluded_layout_nodes.clone();
@@ -320,193 +278,6 @@ impl LayoutInput {
             grid_items: Default::default(),
             text_paragraphs,
         })
-    }
-}
-
-fn collect_host_handles(
-    snapshot: &HostDocumentSnapshot,
-    root: HostNodeHandle,
-) -> Result<BTreeMap<NodeId, HostNodeHandle>, LayoutError> {
-    let mut handles = BTreeMap::new();
-    let mut pending = vec![root];
-    while let Some(handle) = pending.pop() {
-        if handles.insert(handle.id(), handle).is_some() {
-            return Err(LayoutError::DuplicateNode(handle.id()));
-        }
-        let node = snapshot
-            .node(handle)
-            .ok_or(LayoutError::InvalidHostDocumentRoot(handle.id()))?;
-        if let Some(children) = snapshot.children(handle) {
-            pending.extend(children);
-        } else if !matches!(node.kind(), HostNodeKind::Text(_)) {
-            return Err(LayoutError::InvalidHostDocumentRoot(handle.id()));
-        }
-    }
-    Ok(handles)
-}
-
-struct ParagraphSourceCollector<'a> {
-    snapshot: &'a HostDocumentSnapshot,
-    styles: &'a BTreeMap<NodeId, LayoutStyle>,
-    inline_nodes: &'a mut BTreeSet<NodeId>,
-    text_source_nodes: &'a mut BTreeSet<NodeId>,
-    excluded_layout_nodes: &'a mut BTreeSet<NodeId>,
-}
-
-impl ParagraphSourceCollector<'_> {
-    fn collect(
-        &mut self,
-        paragraph: HostNodeHandle,
-        paragraph_id: NodeId,
-        sources: &mut Vec<TextSource>,
-    ) -> Result<(), LayoutError> {
-        let mut pending = self
-            .snapshot
-            .children(paragraph)
-            .ok_or(LayoutError::InvalidHostDocumentRoot(paragraph_id))?
-            .collect::<Vec<_>>()
-            .into_iter()
-            .rev()
-            .map(|handle| (handle, Vec::<NodeId>::new()))
-            .collect::<Vec<_>>();
-
-        while let Some((handle, ancestors)) = pending.pop() {
-            let node = self
-                .snapshot
-                .node(handle)
-                .ok_or(LayoutError::InvalidHostDocumentRoot(handle.id()))?;
-            match node.kind() {
-                HostNodeKind::Text(data) => {
-                    if !self.text_source_nodes.insert(handle.id()) {
-                        return Err(LayoutError::DuplicateTextParagraph(handle.id()));
-                    }
-                    let text = String::from_utf16(data.code_units())
-                        .map_err(|_| LayoutError::InvalidTextEncoding(handle.id()))?;
-                    if text.is_empty() {
-                        continue;
-                    }
-                    sources.push(TextSource {
-                        node: handle.id(),
-                        inline_ancestors: ancestors,
-                        text,
-                    });
-                }
-                HostNodeKind::Element(element) => {
-                    let style = self
-                        .styles
-                        .get(&handle.id())
-                        .copied()
-                        .ok_or(LayoutError::MissingStyle(handle.id()))?;
-                    if style.display == crate::LayoutDisplay::None {
-                        collect_hidden_layout_nodes(
-                            self.snapshot,
-                            handle,
-                            self.styles,
-                            self.excluded_layout_nodes,
-                        )?;
-                        continue;
-                    }
-                    if element.namespace() != "http://www.w3.org/1999/xhtml"
-                        || element.local_name() != "span"
-                    {
-                        return Err(LayoutError::UnsupportedTextParagraph {
-                            node: paragraph_id,
-                            reason: "visible child element은 상속형 HTML span이어야 합니다",
-                        });
-                    }
-                    if !ancestors.is_empty() {
-                        return Err(LayoutError::UnsupportedTextParagraph {
-                            node: paragraph_id,
-                            reason: "C15.1에서는 중첩 inline span을 지원하지 않습니다",
-                        });
-                    }
-                    if !is_plain_inline_layout_style(style) {
-                        return Err(LayoutError::UnsupportedTextParagraph {
-                            node: paragraph_id,
-                            reason: "C15.1 span은 border·padding·margin 등 box style을 가질 수 없습니다",
-                        });
-                    }
-                    self.inline_nodes.insert(handle.id());
-                    let mut next_ancestors = ancestors;
-                    next_ancestors.push(handle.id());
-                    let children = self
-                        .snapshot
-                        .children(handle)
-                        .ok_or(LayoutError::InvalidHostDocumentRoot(handle.id()))?;
-                    for child in children.collect::<Vec<_>>().into_iter().rev() {
-                        pending.push((child, next_ancestors.clone()));
-                    }
-                }
-            }
-        }
-        Ok(())
-    }
-}
-
-fn is_plain_inline_layout_style(style: LayoutStyle) -> bool {
-    style.display == crate::LayoutDisplay::Inline
-        && style
-            == LayoutStyle {
-                display: crate::LayoutDisplay::Inline,
-                ..LayoutStyle::default()
-            }
-}
-
-fn collect_hidden_layout_nodes(
-    snapshot: &HostDocumentSnapshot,
-    root: HostNodeHandle,
-    styles: &BTreeMap<NodeId, LayoutStyle>,
-    excluded: &mut BTreeSet<NodeId>,
-) -> Result<(), LayoutError> {
-    let mut pending = vec![root];
-    while let Some(handle) = pending.pop() {
-        let node = snapshot
-            .node(handle)
-            .ok_or(LayoutError::InvalidHostDocumentRoot(handle.id()))?;
-        if matches!(node.kind(), HostNodeKind::Element(_)) {
-            if !styles.contains_key(&handle.id()) {
-                return Err(LayoutError::MissingStyle(handle.id()));
-            }
-            excluded.insert(handle.id());
-            pending.extend(
-                snapshot
-                    .children(handle)
-                    .ok_or(LayoutError::InvalidHostDocumentRoot(handle.id()))?
-                    .filter(|child| {
-                        snapshot
-                            .node(*child)
-                            .is_some_and(|node| matches!(node.kind(), HostNodeKind::Element(_)))
-                    }),
-            );
-        }
-    }
-    Ok(())
-}
-
-fn is_hidden_by_ancestor(
-    snapshot: &HostDocumentSnapshot,
-    handle: HostNodeHandle,
-    root: HostNodeHandle,
-    styles: &BTreeMap<NodeId, LayoutStyle>,
-) -> Result<bool, LayoutError> {
-    let mut current = handle;
-    loop {
-        let style = styles
-            .get(&current.id())
-            .copied()
-            .ok_or(LayoutError::MissingStyle(current.id()))?;
-        if style.display == crate::LayoutDisplay::None {
-            return Ok(true);
-        }
-        if current == root {
-            return Ok(false);
-        }
-        match snapshot.parent(current) {
-            Some(HostParent::Node(parent)) => current = parent,
-            Some(HostParent::Root) | None => {
-                return Ok(false);
-            }
-        }
     }
 }
 

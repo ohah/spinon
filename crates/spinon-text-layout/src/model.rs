@@ -1,5 +1,68 @@
 use spinon_core::NodeId;
 
+/// 제한된 inline span의 CSS px 면별 크기입니다.
+#[derive(Clone, Copy, Debug, Default, PartialEq)]
+pub struct InlineEdges {
+    pub top: f32,
+    pub right: f32,
+    pub bottom: f32,
+    pub left: f32,
+}
+
+/// C15.2a에서만 쓰는 고정 px inline border와 padding입니다.
+#[derive(Clone, Copy, Debug, Default, PartialEq)]
+pub struct InlineBoxStyle {
+    pub border: InlineEdges,
+    pub padding: InlineEdges,
+}
+
+impl InlineBoxStyle {
+    pub(crate) fn is_empty(self) -> bool {
+        self.border.is_zero() && self.padding.is_zero()
+    }
+
+    pub(crate) fn is_valid(self) -> bool {
+        [
+            self.border.top,
+            self.border.right,
+            self.border.bottom,
+            self.border.left,
+            self.padding.top,
+            self.padding.right,
+            self.padding.bottom,
+            self.padding.left,
+        ]
+        .into_iter()
+        .all(|edge| edge.is_finite() && edge >= 0.0)
+            && self.inline_start().is_finite()
+            && self.inline_end().is_finite()
+            && self.block_start().is_finite()
+            && self.block_end().is_finite()
+    }
+
+    pub(crate) fn inline_start(self) -> f32 {
+        self.border.left + self.padding.left
+    }
+
+    pub(crate) fn inline_end(self) -> f32 {
+        self.border.right + self.padding.right
+    }
+
+    pub(crate) fn block_start(self) -> f32 {
+        self.border.top + self.padding.top
+    }
+
+    pub(crate) fn block_end(self) -> f32 {
+        self.border.bottom + self.padding.bottom
+    }
+}
+
+impl InlineEdges {
+    fn is_zero(self) -> bool {
+        self.top == 0.0 && self.right == 0.0 && self.bottom == 0.0 && self.left == 0.0
+    }
+}
+
 /// C15.1에서 고정하는 공백 처리 profile입니다.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum WhiteSpaceMode {
@@ -54,4 +117,6 @@ pub struct ParagraphInput {
     pub node: NodeId,
     pub sources: Vec<TextSource>,
     pub style: ParagraphStyle,
+    /// 장식된 inline owner의 고정 px border/padding만 저장합니다.
+    pub inline_styles: std::collections::BTreeMap<NodeId, InlineBoxStyle>,
 }
