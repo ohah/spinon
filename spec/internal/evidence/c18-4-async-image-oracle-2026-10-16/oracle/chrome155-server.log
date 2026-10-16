@@ -1,0 +1,9 @@
+"GET / HTTP/1.1" 200 -
+"GET /b-fast.png HTTP/1.1" 200 -
+code 404, message Not Found
+"GET /favicon.ico HTTP/1.1" 404 -
+"GET /a-slow.png HTTP/1.1" 200 -
+"GET /c-slow.png HTTP/1.1" 200 -
+"GET /broken.png HTTP/1.1" 200 -
+"GET /d-fast.png HTTP/1.1" 200 -
+"GET /broken.png HTTP/1.1" 200 -

@@ -1,0 +1,207 @@
+{
+  "afterBroken": {
+    "complete": true,
+    "label": "broken-404",
+    "naturalHeight": 0,
+    "naturalWidth": 0,
+    "pixel": null,
+    "rect": [
+      0,
+      0,
+      48,
+      32
+    ],
+    "src": "/broken.png"
+  },
+  "afterC": {
+    "complete": true,
+    "label": "slow-C-decoded",
+    "naturalHeight": 2,
+    "naturalWidth": 4,
+    "pixel": [
+      32,
+      220,
+      80,
+      255
+    ],
+    "rect": [
+      0,
+      0,
+      48,
+      32
+    ],
+    "src": "/c-slow.png"
+  },
+  "afterFast": {
+    "complete": true,
+    "label": "fast-B-decoded",
+    "naturalHeight": 4,
+    "naturalWidth": 1,
+    "pixel": [
+      24,
+      64,
+      240,
+      255
+    ],
+    "rect": [
+      0,
+      0,
+      48,
+      32
+    ],
+    "src": "/b-fast.png"
+  },
+  "afterRecovery": {
+    "complete": true,
+    "label": "recovery-D-decoded",
+    "naturalHeight": 1,
+    "naturalWidth": 2,
+    "pixel": [
+      200,
+      40,
+      220,
+      255
+    ],
+    "rect": [
+      0,
+      0,
+      48,
+      32
+    ],
+    "src": "/d-fast.png"
+  },
+  "afterSlowResponse": {
+    "complete": true,
+    "label": "after-slow-A-response",
+    "naturalHeight": 4,
+    "naturalWidth": 1,
+    "pixel": [
+      24,
+      64,
+      240,
+      255
+    ],
+    "rect": [
+      0,
+      0,
+      48,
+      32
+    ],
+    "src": "/b-fast.png"
+  },
+  "bDecode": "resolved",
+  "brokenDecode": "rejected:EncodingError",
+  "cDecode": "resolved",
+  "dDecode": "resolved",
+  "duringReplacement": {
+    "complete": false,
+    "label": "slow-C-pending",
+    "naturalHeight": 0,
+    "naturalWidth": 0,
+    "pixel": null,
+    "rect": [
+      0,
+      0,
+      48,
+      32
+    ],
+    "src": "/c-slow.png"
+  },
+  "events": [
+    {
+      "complete": true,
+      "event": "load",
+      "label": "event",
+      "naturalHeight": 4,
+      "naturalWidth": 1,
+      "pixel": [
+        24,
+        64,
+        240,
+        255
+      ],
+      "rect": [
+        0,
+        0,
+        48,
+        32
+      ],
+      "src": "/b-fast.png",
+      "time": 93.69999998807909
+    },
+    {
+      "complete": true,
+      "event": "load",
+      "label": "event",
+      "naturalHeight": 2,
+      "naturalWidth": 4,
+      "pixel": [
+        32,
+        220,
+        80,
+        255
+      ],
+      "rect": [
+        0,
+        0,
+        48,
+        32
+      ],
+      "src": "/c-slow.png",
+      "time": 1158.4000000357628
+    },
+    {
+      "complete": true,
+      "event": "error",
+      "label": "event",
+      "naturalHeight": 0,
+      "naturalWidth": 0,
+      "pixel": null,
+      "rect": [
+        0,
+        0,
+        48,
+        32
+      ],
+      "src": "/broken.png",
+      "time": 1159.9000000357628
+    },
+    {
+      "complete": true,
+      "event": "load",
+      "label": "event",
+      "naturalHeight": 1,
+      "naturalWidth": 2,
+      "pixel": [
+        200,
+        40,
+        220,
+        255
+      ],
+      "rect": [
+        0,
+        0,
+        48,
+        32
+      ],
+      "src": "/d-fast.png",
+      "time": 1222.4000000357628
+    }
+  ],
+  "raceBeforeFast": {
+    "complete": false,
+    "label": "slow-A-pending",
+    "naturalHeight": 0,
+    "naturalWidth": 0,
+    "pixel": null,
+    "rect": [
+      0,
+      0,
+      48,
+      32
+    ],
+    "src": "/a-slow.png"
+  },
+  "raceDurationMs": 647.8000000119209,
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36"
+}
