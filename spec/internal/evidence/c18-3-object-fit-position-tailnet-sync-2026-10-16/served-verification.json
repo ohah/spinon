@@ -1,0 +1,1438 @@
+{
+  "captured_at": "2026-10-16T11:44:02.511Z",
+  "browser": "agent-browser 0.31.1 Web Crypto",
+  "base": "https://macstudio.tailed42f2.ts.net/spinon/",
+  "checked": 166,
+  "passed": 166,
+  "failed": [],
+  "results": [
+    {
+      "path": "STATUS.html",
+      "http": 200,
+      "bytes": 324590,
+      "expected_sha256": "4b40c5d397c4618a53a18223059ab1d4c744667f945c5d2d6516f4a4a0cf86b9",
+      "served_sha256": "4b40c5d397c4618a53a18223059ab1d4c744667f945c5d2d6516f4a4a0cf86b9",
+      "match": true
+    },
+    {
+      "path": "STATUS.md",
+      "http": 200,
+      "bytes": 244283,
+      "expected_sha256": "a72916bb6436a26952b8ab3dd4c5e3fd1acaf0f0a71b980b9bc9fa80b9e5f147",
+      "served_sha256": "a72916bb6436a26952b8ab3dd4c5e3fd1acaf0f0a71b980b9bc9fa80b9e5f147",
+      "match": true
+    },
+    {
+      "path": "icon.svg",
+      "http": 200,
+      "bytes": 638,
+      "expected_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "served_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "match": true
+    },
+    {
+      "path": "internal/0066-c18-3-object-fit-position.html",
+      "http": 200,
+      "bytes": 37847,
+      "expected_sha256": "d233fcd6c87af4863d2eb32a82501d4c0330ae8ef43ab9f8289bd1fc766b3d1a",
+      "served_sha256": "d233fcd6c87af4863d2eb32a82501d4c0330ae8ef43ab9f8289bd1fc766b3d1a",
+      "match": true
+    },
+    {
+      "path": "internal/0066-c18-3-object-fit-position.md",
+      "http": 200,
+      "bytes": 8284,
+      "expected_sha256": "c52aa4d0687b8b41ae5f53b558c241b12741404c8878cd163c1b1c6f72973741",
+      "served_sha256": "c52aa4d0687b8b41ae5f53b558c241b12741404c8878cd163c1b1c6f72973741",
+      "match": true
+    },
+    {
+      "path": "internal/README.html",
+      "http": 200,
+      "bytes": 140388,
+      "expected_sha256": "74cb2ddf0ad15810ca630256de473c99bbce376d52528b24cb8d144152272dec",
+      "served_sha256": "74cb2ddf0ad15810ca630256de473c99bbce376d52528b24cb8d144152272dec",
+      "match": true
+    },
+    {
+      "path": "internal/README.md",
+      "http": 200,
+      "bytes": 97833,
+      "expected_sha256": "76c1d0917c6774b10634d48472bbb8ef4a82a2cfafafe202ba5ad69c5848bd19",
+      "served_sha256": "76c1d0917c6774b10634d48472bbb8ef4a82a2cfafafe202ba5ad69c5848bd19",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/README.html",
+      "http": 200,
+      "bytes": 29666,
+      "expected_sha256": "5a4f2690701c3d4e67b201dea91c1f97b8c2b740471daa01ae0409b3b65cc066",
+      "served_sha256": "5a4f2690701c3d4e67b201dea91c1f97b8c2b740471daa01ae0409b3b65cc066",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/README.md",
+      "http": 200,
+      "bytes": 5181,
+      "expected_sha256": "6e6c2eeba74e455c2beff67ff1787999da0484716533260e8fe27f9f4a27c2d2",
+      "served_sha256": "6e6c2eeba74e455c2beff67ff1787999da0484716533260e8fe27f9f4a27c2d2",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/android/c181-pixelcopy-log.txt",
+      "http": 200,
+      "bytes": 178472,
+      "expected_sha256": "4d763d13fa6321e2cd4c4e7a4f755f9e6d0c005158826ba4cf854e87a02980b7",
+      "served_sha256": "4d763d13fa6321e2cd4c4e7a4f755f9e6d0c005158826ba4cf854e87a02980b7",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/android/c181-pixelcopy-log.txt.raw.gz",
+      "http": 200,
+      "bytes": 17566,
+      "expected_sha256": "67a1069c6f12b65588ae4e468a7759e1d994f6af4888d7f8afd14046b216afb3",
+      "served_sha256": "67a1069c6f12b65588ae4e468a7759e1d994f6af4888d7f8afd14046b216afb3",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/android/c182-pixelcopy-log.txt",
+      "http": 200,
+      "bytes": 136808,
+      "expected_sha256": "1d3e7f20ed2b6909b96231a79f3aa5bcc6a79d2046367cfcad0f8eed04d6a39e",
+      "served_sha256": "1d3e7f20ed2b6909b96231a79f3aa5bcc6a79d2046367cfcad0f8eed04d6a39e",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/android/c182-pixelcopy-log.txt.raw.gz",
+      "http": 200,
+      "bytes": 14463,
+      "expected_sha256": "839a1818d39cb781198da367d3d3a5ba0fcd7c8a18f625ce293a11dd8a6f313c",
+      "served_sha256": "839a1818d39cb781198da367d3d3a5ba0fcd7c8a18f625ce293a11dd8a6f313c",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/android/c183-android-pixelcopy.png",
+      "http": 200,
+      "bytes": 2821,
+      "expected_sha256": "5c2ebfa9501ef392d20f2f8ac410cf2320c82d2d603e0a23f5220f0b2c1ea2eb",
+      "served_sha256": "5c2ebfa9501ef392d20f2f8ac410cf2320c82d2d603e0a23f5220f0b2c1ea2eb",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/android/c183-android-screen.png",
+      "http": 200,
+      "bytes": 81636,
+      "expected_sha256": "95cf34e330e5e37d9e62fa101bd87017e55c9894346de1ef90c06a019d692a0c",
+      "served_sha256": "95cf34e330e5e37d9e62fa101bd87017e55c9894346de1ef90c06a019d692a0c",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/android/c183-pixelcopy-log.txt",
+      "http": 200,
+      "bytes": 327764,
+      "expected_sha256": "a0b0fab22c1912125d288b50d54f63e452dec9220fa067d7207906708befcbe3",
+      "served_sha256": "a0b0fab22c1912125d288b50d54f63e452dec9220fa067d7207906708befcbe3",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/android/c183-pixelcopy-log.txt.raw.gz",
+      "http": 200,
+      "bytes": 27046,
+      "expected_sha256": "99dd8f2eb50121673489a319de5a79072574d0ba13fa0bf07d30f8ffd887ece6",
+      "served_sha256": "99dd8f2eb50121673489a319de5a79072574d0ba13fa0bf07d30f8ffd887ece6",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/artifacts/README.html",
+      "http": 200,
+      "bytes": 25570,
+      "expected_sha256": "7dbb6ae4a3c021da7e360e0364d2b451a6525112243b24070cfe34d045fd84e6",
+      "served_sha256": "7dbb6ae4a3c021da7e360e0364d2b451a6525112243b24070cfe34d045fd84e6",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/artifacts/README.md",
+      "http": 200,
+      "bytes": 2576,
+      "expected_sha256": "ae218dce4f8ee55e2649096293c33003a34d297241f78bc9667948249cad1f7f",
+      "served_sha256": "ae218dce4f8ee55e2649096293c33003a34d297241f78bc9667948249cad1f7f",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/artifacts/android-default-build.log",
+      "http": 200,
+      "bytes": 5584,
+      "expected_sha256": "19f6ced8a05dd3b28be77a854585b27c624a8ab4fd9d0ff886fd5a59c09312fb",
+      "served_sha256": "19f6ced8a05dd3b28be77a854585b27c624a8ab4fd9d0ff886fd5a59c09312fb",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/artifacts/android-default-build.log.raw.gz",
+      "http": 200,
+      "bytes": 2014,
+      "expected_sha256": "644e068bf62f77ad2253d3eafbcff6c7f81e40803618483a329ef45df59b6399",
+      "served_sha256": "644e068bf62f77ad2253d3eafbcff6c7f81e40803618483a329ef45df59b6399",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/artifacts/android-optin-cargo-build.log",
+      "http": 200,
+      "bytes": 1409,
+      "expected_sha256": "f7b0e1cb1b1e77f992866efbb6116d37598460ed4d809ab68256727edc4d5c2a",
+      "served_sha256": "f7b0e1cb1b1e77f992866efbb6116d37598460ed4d809ab68256727edc4d5c2a",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/artifacts/android-optin-cargo-build.log.raw.gz",
+      "http": 200,
+      "bytes": 763,
+      "expected_sha256": "653900860d3151c65c65d26e7bd3b7d3f28629f03fee99a7421f3c065a7f2421",
+      "served_sha256": "653900860d3151c65c65d26e7bd3b7d3f28629f03fee99a7421f3c065a7f2421",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/artifacts/ios-default-build.log",
+      "http": 200,
+      "bytes": 115028,
+      "expected_sha256": "fadaa59bdf9f461de29789709e5005a0900e20cf1a0558d2e660219f139c1484",
+      "served_sha256": "fadaa59bdf9f461de29789709e5005a0900e20cf1a0558d2e660219f139c1484",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/artifacts/ios-default-build.log.raw.gz",
+      "http": 200,
+      "bytes": 16309,
+      "expected_sha256": "c0033d9244d9dfbebb8ad9933c8abbfe865e38fe961795c736a428ee2c0e2899",
+      "served_sha256": "c0033d9244d9dfbebb8ad9933c8abbfe865e38fe961795c736a428ee2c0e2899",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/ios/c18-pixel-logs.txt",
+      "http": 200,
+      "bytes": 9362,
+      "expected_sha256": "bc0070823fb7558ddfe800080db521d9eceb2e2987afe942c609e3b994f606f5",
+      "served_sha256": "bc0070823fb7558ddfe800080db521d9eceb2e2987afe942c609e3b994f606f5",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/ios/c18-pixel-logs.txt.raw.gz",
+      "http": 200,
+      "bytes": 1230,
+      "expected_sha256": "5a3412c3f9e8bb2367faba2b38f52245b90dd1fbd67274ef0f6ee872afa5a3d0",
+      "served_sha256": "5a3412c3f9e8bb2367faba2b38f52245b90dd1fbd67274ef0f6ee872afa5a3d0",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/ios/c183-ios-screen.png",
+      "http": 200,
+      "bytes": 131937,
+      "expected_sha256": "275d5e8ddad89b50ba6a610cb6f7a84696812361e74b50de215d79dc97c61ad6",
+      "served_sha256": "275d5e8ddad89b50ba6a610cb6f7a84696812361e74b50de215d79dc97c61ad6",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/ios/opt-in-build.log",
+      "http": 200,
+      "bytes": 64139,
+      "expected_sha256": "f7afcbe1bafdb314145bf60bfb010869df21f0bbc38c00625b0b2dca3cbf8dac",
+      "served_sha256": "f7afcbe1bafdb314145bf60bfb010869df21f0bbc38c00625b0b2dca3cbf8dac",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/ios/opt-in-build.log.raw.gz",
+      "http": 200,
+      "bytes": 11131,
+      "expected_sha256": "aba548b610c0aba6fa4510772072b48c8a251188b82deea5acb5e8ac74b4141c",
+      "served_sha256": "aba548b610c0aba6fa4510772072b48c8a251188b82deea5acb5e8ac74b4141c",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/oracle/chrome155-dpr2.625.png",
+      "http": 200,
+      "bytes": 3035,
+      "expected_sha256": "2829b5dedf60019265abf2e5c95be45a3d114fe60cc6c808c66ea9c7eb937e1b",
+      "served_sha256": "2829b5dedf60019265abf2e5c95be45a3d114fe60cc6c808c66ea9c7eb937e1b",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/oracle/chrome155-dpr3.png",
+      "http": 200,
+      "bytes": 2416,
+      "expected_sha256": "a4a5ee07bf86941b5fb503488ffad78b9993a2cdcb55b308deb8772ed2e2cb3f",
+      "served_sha256": "a4a5ee07bf86941b5fb503488ffad78b9993a2cdcb55b308deb8772ed2e2cb3f",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/oracle/dpr-observation.json",
+      "http": 200,
+      "bytes": 2576,
+      "expected_sha256": "4d4d21c97265b167b7e3d6a4bfcba33f6fa998b22235fc4c59ced5fd64662dee",
+      "served_sha256": "4d4d21c97265b167b7e3d6a4bfcba33f6fa998b22235fc4c59ced5fd64662dee",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/c18-ios-build-flags-tests.log",
+      "http": 200,
+      "bytes": 1436,
+      "expected_sha256": "46d716a048c63204f082da56f3cd0fbc48ea4cd13b682df133e6e2adf317d207",
+      "served_sha256": "46d716a048c63204f082da56f3cd0fbc48ea4cd13b682df133e6e2adf317d207",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/c18-ios-build-flags-tests.log.raw.gz",
+      "http": 200,
+      "bytes": 773,
+      "expected_sha256": "0d32cabe59515648294979df2f8cabc8ef7c9ce2dac6326d5743e5e5f1a77169",
+      "served_sha256": "0d32cabe59515648294979df2f8cabc8ef7c9ce2dac6326d5743e5e5f1a77169",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/clippy.log",
+      "http": 200,
+      "bytes": 816,
+      "expected_sha256": "465ae686940771103c38ada7a3daa2048eacdbccfced3fd8a9d17908d8018d77",
+      "served_sha256": "465ae686940771103c38ada7a3daa2048eacdbccfced3fd8a9d17908d8018d77",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/clippy.log.raw.gz",
+      "http": 200,
+      "bytes": 231,
+      "expected_sha256": "f2b7eaf5c6ee4a5bac5a9acbf69dd38187892741607a422c6692f50cff78c549",
+      "served_sha256": "f2b7eaf5c6ee4a5bac5a9acbf69dd38187892741607a422c6692f50cff78c549",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/css-reference-suite-before-c18-guard-fix.log",
+      "http": 200,
+      "bytes": 107274,
+      "expected_sha256": "a76e5d37352cf34ec0015aef8a807296885d2a52bb5e265db4584a5b3b1cebda",
+      "served_sha256": "a76e5d37352cf34ec0015aef8a807296885d2a52bb5e265db4584a5b3b1cebda",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/css-reference-suite-before-c18-guard-fix.log.raw.gz",
+      "http": 200,
+      "bytes": 19485,
+      "expected_sha256": "f0b40f1f4a3ceb56fb40d887c7301d85709eda77b08bf270a265829d18004092",
+      "served_sha256": "f0b40f1f4a3ceb56fb40d887c7301d85709eda77b08bf270a265829d18004092",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/css-reference-suite.log",
+      "http": 200,
+      "bytes": 103294,
+      "expected_sha256": "3f164ed0129935632178c2c56abfe3624d3d81c0ea39b24cf192dd76e50bd17f",
+      "served_sha256": "3f164ed0129935632178c2c56abfe3624d3d81c0ea39b24cf192dd76e50bd17f",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/css-reference-suite.log.raw.gz",
+      "http": 200,
+      "bytes": 18827,
+      "expected_sha256": "7435b0d3d7e7d5c58f1b34cdf1e6a37765daa02f2887a57c3a73f6db853dada7",
+      "served_sha256": "7435b0d3d7e7d5c58f1b34cdf1e6a37765daa02f2887a57c3a73f6db853dada7",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/fixture-module-boundary-tests.log",
+      "http": 200,
+      "bytes": 569,
+      "expected_sha256": "c9969e4b86164e3084c4a1ee007b0d663ca0efbc0d4333b042ebb2133fa55838",
+      "served_sha256": "c9969e4b86164e3084c4a1ee007b0d663ca0efbc0d4333b042ebb2133fa55838",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/fixture-module-boundary-tests.log.raw.gz",
+      "http": 200,
+      "bytes": 401,
+      "expected_sha256": "406e54a81cb78ac303207ad0eea86e390a7d29aacc3f0fa9382e57ccb9861254",
+      "served_sha256": "406e54a81cb78ac303207ad0eea86e390a7d29aacc3f0fa9382e57ccb9861254",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/focused-rust-tests.log",
+      "http": 200,
+      "bytes": 17835,
+      "expected_sha256": "33f7b9f5c4db003205bf2b99d50e43db2b914127a29e2cbb68bb0bcfefc3077d",
+      "served_sha256": "33f7b9f5c4db003205bf2b99d50e43db2b914127a29e2cbb68bb0bcfefc3077d",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/focused-rust-tests.log.raw.gz",
+      "http": 200,
+      "bytes": 4552,
+      "expected_sha256": "2339955e3528e402ca50f5ac9e08ed8cc3d93b291ac944a99f84d38385f5fd44",
+      "served_sha256": "2339955e3528e402ca50f5ac9e08ed8cc3d93b291ac944a99f84d38385f5fd44",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/geometry-negative-control.log",
+      "http": 200,
+      "bytes": 1208,
+      "expected_sha256": "1bc6215e77ac1b0d1a5cb01ad016eccd2bc765865dc2bfb6fe845ee73d4092c6",
+      "served_sha256": "1bc6215e77ac1b0d1a5cb01ad016eccd2bc765865dc2bfb6fe845ee73d4092c6",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/geometry-negative-control.log.raw.gz",
+      "http": 200,
+      "bytes": 577,
+      "expected_sha256": "39112da8a79547b44cf51abdf906fe0d0e5b88fdf7b4bc3e49c9bbd8fb4041ce",
+      "served_sha256": "39112da8a79547b44cf51abdf906fe0d0e5b88fdf7b4bc3e49c9bbd8fb4041ce",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/implementation-review-20.html",
+      "http": 200,
+      "bytes": 29300,
+      "expected_sha256": "ed89f91113469dcb233c54b1b0c48e120459ac26a56d0ce50b215ff5d01afb24",
+      "served_sha256": "ed89f91113469dcb233c54b1b0c48e120459ac26a56d0ce50b215ff5d01afb24",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/implementation-review-20.md",
+      "http": 200,
+      "bytes": 4986,
+      "expected_sha256": "d5cd48b05fe2b50213f249157391de7f077ca57a4e4e79a296c0de1cb7a26f57",
+      "served_sha256": "d5cd48b05fe2b50213f249157391de7f077ca57a4e4e79a296c0de1cb7a26f57",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/pr-diff-review-30.html",
+      "http": 200,
+      "bytes": 31103,
+      "expected_sha256": "4e83657dc3466f38e95a95135c11caf2d6d4319ba4a8cce11d491d9967b68c85",
+      "served_sha256": "4e83657dc3466f38e95a95135c11caf2d6d4319ba4a8cce11d491d9967b68c85",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/pr-diff-review-30.md",
+      "http": 200,
+      "bytes": 6518,
+      "expected_sha256": "8161aca1848072c1abf4dd98c251cdc2d3e76d1fcf19525f7450b4b3dd6eb252",
+      "served_sha256": "8161aca1848072c1abf4dd98c251cdc2d3e76d1fcf19525f7450b4b3dd6eb252",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/raw-log-hashes.json",
+      "http": 200,
+      "bytes": 10866,
+      "expected_sha256": "db7e1ad6d8a4dabfa137d35977509fcd2d3ad01c6263f205784ba741bb58d9c5",
+      "served_sha256": "db7e1ad6d8a4dabfa137d35977509fcd2d3ad01c6263f205784ba741bb58d9c5",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/rustfmt.log",
+      "http": 200,
+      "bytes": 1,
+      "expected_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "served_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/rustfmt.log.raw.gz",
+      "http": 200,
+      "bytes": 20,
+      "expected_sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "served_sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/workspace-tests.log",
+      "http": 200,
+      "bytes": 100423,
+      "expected_sha256": "511a557be5209781fbf7e360008f2445437ddf168e4a84a63a852aa0afa01ec0",
+      "served_sha256": "511a557be5209781fbf7e360008f2445437ddf168e4a84a63a852aa0afa01ec0",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/workspace-tests.log.raw.gz",
+      "http": 200,
+      "bytes": 21493,
+      "expected_sha256": "d57418bb0da3ce7b215460ddc9da76192ef208001e2a7d9e9b0c2e57ed60f04e",
+      "served_sha256": "d57418bb0da3ce7b215460ddc9da76192ef208001e2a7d9e9b0c2e57ed60f04e",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/source-revision.json",
+      "http": 200,
+      "bytes": 11715,
+      "expected_sha256": "23b4281150740a54d74f8f0e22cfaf73f517749c59ae9153933f2a05bbd3c524",
+      "served_sha256": "23b4281150740a54d74f8f0e22cfaf73f517749c59ae9153933f2a05bbd3c524",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-plan-pr-review-20-2026-10-16.html",
+      "http": 200,
+      "bytes": 25327,
+      "expected_sha256": "6807fd5a5e6bbae74b1d806d086c1234e6fcb47388e35042824d2048ff618956",
+      "served_sha256": "6807fd5a5e6bbae74b1d806d086c1234e6fcb47388e35042824d2048ff618956",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-plan-pr-review-20-2026-10-16.md",
+      "http": 200,
+      "bytes": 3057,
+      "expected_sha256": "c3346fc6870ca0e9ddc7022259c438eee71b0283162a64164a712fec12a87db4",
+      "served_sha256": "c3346fc6870ca0e9ddc7022259c438eee71b0283162a64164a712fec12a87db4",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-plan-review-20-2026-10-16.html",
+      "http": 200,
+      "bytes": 25775,
+      "expected_sha256": "ea70b2d62f2715a501d7aedb7949266fd84f3ecc8de0acfdd2c058195e919e55",
+      "served_sha256": "ea70b2d62f2715a501d7aedb7949266fd84f3ecc8de0acfdd2c058195e919e55",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-position-plan-review-20-2026-10-16.md",
+      "http": 200,
+      "bytes": 3367,
+      "expected_sha256": "4715c4a84143db74255d8bc86a0ce227396a9e533197d63cddfd4b33f803e3fd",
+      "served_sha256": "4715c4a84143db74255d8bc86a0ce227396a9e533197d63cddfd4b33f803e3fd",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-precomparison/README.html",
+      "http": 200,
+      "bytes": 30787,
+      "expected_sha256": "57ba0edc8704dea0e402005fb8b5f7df47aaa8ef30e61b9ca7c5db97eaeb41a6",
+      "served_sha256": "57ba0edc8704dea0e402005fb8b5f7df47aaa8ef30e61b9ca7c5db97eaeb41a6",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-precomparison/README.md",
+      "http": 200,
+      "bytes": 4471,
+      "expected_sha256": "1e5df0fa4710414da1ff901e087040c4e0b32e5ef032d17d165cf25cbf2173aa",
+      "served_sha256": "1e5df0fa4710414da1ff901e087040c4e0b32e5ef032d17d165cf25cbf2173aa",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-precomparison/chrome155-observation.json",
+      "http": 200,
+      "bytes": 8533,
+      "expected_sha256": "6d405518a353badcb54a5c4839f469392b992be0c273706c23b29e04ce4939d9",
+      "served_sha256": "6d405518a353badcb54a5c4839f469392b992be0c273706c23b29e04ce4939d9",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c18-3-object-fit-precomparison/chrome155.png",
+      "http": 200,
+      "bytes": 899,
+      "expected_sha256": "a7eb0ad22f995a3e44ec29ba644ce408c06346c2da1c95230c718f306baba5d4",
+      "served_sha256": "a7eb0ad22f995a3e44ec29ba644ce408c06346c2da1c95230c718f306baba5d4",
+      "match": true
+    },
+    {
+      "path": "logo.svg",
+      "http": 200,
+      "bytes": 568,
+      "expected_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "served_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "match": true
+    },
+    {
+      "path": "plan/c18-3-static-png-object-fit-position.html",
+      "http": 200,
+      "bytes": 32424,
+      "expected_sha256": "6e5cee3f887ab58a32b950a8096bf7f465c526333ffe8146e2a660bf94f65f1f",
+      "served_sha256": "6e5cee3f887ab58a32b950a8096bf7f465c526333ffe8146e2a660bf94f65f1f",
+      "match": true
+    },
+    {
+      "path": "plan/c18-3-static-png-object-fit-position.md",
+      "http": 200,
+      "bytes": 8363,
+      "expected_sha256": "18a6273e46e4a6c35df3504005f94cd82ed773c2f7c5159bf574b7fa5c58e269",
+      "served_sha256": "18a6273e46e4a6c35df3504005f94cd82ed773c2f7c5159bf574b7fa5c58e269",
+      "match": true
+    },
+    {
+      "path": "public/roadmap.html",
+      "http": 200,
+      "bytes": 113550,
+      "expected_sha256": "78b6ffb98b728480b607f60557a126673a472022da170283408304a0ee7335a8",
+      "served_sha256": "78b6ffb98b728480b607f60557a126673a472022da170283408304a0ee7335a8",
+      "match": true
+    },
+    {
+      "path": "public/roadmap.svg",
+      "http": 200,
+      "bytes": 4835,
+      "expected_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "served_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "match": true
+    },
+    {
+      "path": "roadmap.html",
+      "http": 200,
+      "bytes": 113550,
+      "expected_sha256": "78b6ffb98b728480b607f60557a126673a472022da170283408304a0ee7335a8",
+      "served_sha256": "78b6ffb98b728480b607f60557a126673a472022da170283408304a0ee7335a8",
+      "match": true
+    },
+    {
+      "path": "roadmap.svg",
+      "http": 200,
+      "bytes": 4835,
+      "expected_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "served_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "match": true
+    },
+    {
+      "path": "spec/STATUS.html",
+      "http": 200,
+      "bytes": 324590,
+      "expected_sha256": "4b40c5d397c4618a53a18223059ab1d4c744667f945c5d2d6516f4a4a0cf86b9",
+      "served_sha256": "4b40c5d397c4618a53a18223059ab1d4c744667f945c5d2d6516f4a4a0cf86b9",
+      "match": true
+    },
+    {
+      "path": "spec/STATUS.md",
+      "http": 200,
+      "bytes": 244283,
+      "expected_sha256": "a72916bb6436a26952b8ab3dd4c5e3fd1acaf0f0a71b980b9bc9fa80b9e5f147",
+      "served_sha256": "a72916bb6436a26952b8ab3dd4c5e3fd1acaf0f0a71b980b9bc9fa80b9e5f147",
+      "match": true
+    },
+    {
+      "path": "spec/internal/0066-c18-3-object-fit-position.html",
+      "http": 200,
+      "bytes": 37847,
+      "expected_sha256": "d233fcd6c87af4863d2eb32a82501d4c0330ae8ef43ab9f8289bd1fc766b3d1a",
+      "served_sha256": "d233fcd6c87af4863d2eb32a82501d4c0330ae8ef43ab9f8289bd1fc766b3d1a",
+      "match": true
+    },
+    {
+      "path": "spec/internal/0066-c18-3-object-fit-position.md",
+      "http": 200,
+      "bytes": 8284,
+      "expected_sha256": "c52aa4d0687b8b41ae5f53b558c241b12741404c8878cd163c1b1c6f72973741",
+      "served_sha256": "c52aa4d0687b8b41ae5f53b558c241b12741404c8878cd163c1b1c6f72973741",
+      "match": true
+    },
+    {
+      "path": "spec/internal/README.html",
+      "http": 200,
+      "bytes": 140388,
+      "expected_sha256": "74cb2ddf0ad15810ca630256de473c99bbce376d52528b24cb8d144152272dec",
+      "served_sha256": "74cb2ddf0ad15810ca630256de473c99bbce376d52528b24cb8d144152272dec",
+      "match": true
+    },
+    {
+      "path": "spec/internal/README.md",
+      "http": 200,
+      "bytes": 97833,
+      "expected_sha256": "76c1d0917c6774b10634d48472bbb8ef4a82a2cfafafe202ba5ad69c5848bd19",
+      "served_sha256": "76c1d0917c6774b10634d48472bbb8ef4a82a2cfafafe202ba5ad69c5848bd19",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/README.html",
+      "http": 200,
+      "bytes": 29666,
+      "expected_sha256": "5a4f2690701c3d4e67b201dea91c1f97b8c2b740471daa01ae0409b3b65cc066",
+      "served_sha256": "5a4f2690701c3d4e67b201dea91c1f97b8c2b740471daa01ae0409b3b65cc066",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/README.md",
+      "http": 200,
+      "bytes": 5181,
+      "expected_sha256": "6e6c2eeba74e455c2beff67ff1787999da0484716533260e8fe27f9f4a27c2d2",
+      "served_sha256": "6e6c2eeba74e455c2beff67ff1787999da0484716533260e8fe27f9f4a27c2d2",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/android/c181-pixelcopy-log.txt",
+      "http": 200,
+      "bytes": 178472,
+      "expected_sha256": "4d763d13fa6321e2cd4c4e7a4f755f9e6d0c005158826ba4cf854e87a02980b7",
+      "served_sha256": "4d763d13fa6321e2cd4c4e7a4f755f9e6d0c005158826ba4cf854e87a02980b7",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/android/c181-pixelcopy-log.txt.raw.gz",
+      "http": 200,
+      "bytes": 17566,
+      "expected_sha256": "67a1069c6f12b65588ae4e468a7759e1d994f6af4888d7f8afd14046b216afb3",
+      "served_sha256": "67a1069c6f12b65588ae4e468a7759e1d994f6af4888d7f8afd14046b216afb3",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/android/c182-pixelcopy-log.txt",
+      "http": 200,
+      "bytes": 136808,
+      "expected_sha256": "1d3e7f20ed2b6909b96231a79f3aa5bcc6a79d2046367cfcad0f8eed04d6a39e",
+      "served_sha256": "1d3e7f20ed2b6909b96231a79f3aa5bcc6a79d2046367cfcad0f8eed04d6a39e",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/android/c182-pixelcopy-log.txt.raw.gz",
+      "http": 200,
+      "bytes": 14463,
+      "expected_sha256": "839a1818d39cb781198da367d3d3a5ba0fcd7c8a18f625ce293a11dd8a6f313c",
+      "served_sha256": "839a1818d39cb781198da367d3d3a5ba0fcd7c8a18f625ce293a11dd8a6f313c",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/android/c183-android-pixelcopy.png",
+      "http": 200,
+      "bytes": 2821,
+      "expected_sha256": "5c2ebfa9501ef392d20f2f8ac410cf2320c82d2d603e0a23f5220f0b2c1ea2eb",
+      "served_sha256": "5c2ebfa9501ef392d20f2f8ac410cf2320c82d2d603e0a23f5220f0b2c1ea2eb",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/android/c183-android-screen.png",
+      "http": 200,
+      "bytes": 81636,
+      "expected_sha256": "95cf34e330e5e37d9e62fa101bd87017e55c9894346de1ef90c06a019d692a0c",
+      "served_sha256": "95cf34e330e5e37d9e62fa101bd87017e55c9894346de1ef90c06a019d692a0c",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/android/c183-pixelcopy-log.txt",
+      "http": 200,
+      "bytes": 327764,
+      "expected_sha256": "a0b0fab22c1912125d288b50d54f63e452dec9220fa067d7207906708befcbe3",
+      "served_sha256": "a0b0fab22c1912125d288b50d54f63e452dec9220fa067d7207906708befcbe3",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/android/c183-pixelcopy-log.txt.raw.gz",
+      "http": 200,
+      "bytes": 27046,
+      "expected_sha256": "99dd8f2eb50121673489a319de5a79072574d0ba13fa0bf07d30f8ffd887ece6",
+      "served_sha256": "99dd8f2eb50121673489a319de5a79072574d0ba13fa0bf07d30f8ffd887ece6",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/artifacts/README.html",
+      "http": 200,
+      "bytes": 25570,
+      "expected_sha256": "7dbb6ae4a3c021da7e360e0364d2b451a6525112243b24070cfe34d045fd84e6",
+      "served_sha256": "7dbb6ae4a3c021da7e360e0364d2b451a6525112243b24070cfe34d045fd84e6",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/artifacts/README.md",
+      "http": 200,
+      "bytes": 2576,
+      "expected_sha256": "ae218dce4f8ee55e2649096293c33003a34d297241f78bc9667948249cad1f7f",
+      "served_sha256": "ae218dce4f8ee55e2649096293c33003a34d297241f78bc9667948249cad1f7f",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/artifacts/android-default-build.log",
+      "http": 200,
+      "bytes": 5584,
+      "expected_sha256": "19f6ced8a05dd3b28be77a854585b27c624a8ab4fd9d0ff886fd5a59c09312fb",
+      "served_sha256": "19f6ced8a05dd3b28be77a854585b27c624a8ab4fd9d0ff886fd5a59c09312fb",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/artifacts/android-default-build.log.raw.gz",
+      "http": 200,
+      "bytes": 2014,
+      "expected_sha256": "644e068bf62f77ad2253d3eafbcff6c7f81e40803618483a329ef45df59b6399",
+      "served_sha256": "644e068bf62f77ad2253d3eafbcff6c7f81e40803618483a329ef45df59b6399",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/artifacts/android-optin-cargo-build.log",
+      "http": 200,
+      "bytes": 1409,
+      "expected_sha256": "f7b0e1cb1b1e77f992866efbb6116d37598460ed4d809ab68256727edc4d5c2a",
+      "served_sha256": "f7b0e1cb1b1e77f992866efbb6116d37598460ed4d809ab68256727edc4d5c2a",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/artifacts/android-optin-cargo-build.log.raw.gz",
+      "http": 200,
+      "bytes": 763,
+      "expected_sha256": "653900860d3151c65c65d26e7bd3b7d3f28629f03fee99a7421f3c065a7f2421",
+      "served_sha256": "653900860d3151c65c65d26e7bd3b7d3f28629f03fee99a7421f3c065a7f2421",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/artifacts/ios-default-build.log",
+      "http": 200,
+      "bytes": 115028,
+      "expected_sha256": "fadaa59bdf9f461de29789709e5005a0900e20cf1a0558d2e660219f139c1484",
+      "served_sha256": "fadaa59bdf9f461de29789709e5005a0900e20cf1a0558d2e660219f139c1484",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/artifacts/ios-default-build.log.raw.gz",
+      "http": 200,
+      "bytes": 16309,
+      "expected_sha256": "c0033d9244d9dfbebb8ad9933c8abbfe865e38fe961795c736a428ee2c0e2899",
+      "served_sha256": "c0033d9244d9dfbebb8ad9933c8abbfe865e38fe961795c736a428ee2c0e2899",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/ios/c18-pixel-logs.txt",
+      "http": 200,
+      "bytes": 9362,
+      "expected_sha256": "bc0070823fb7558ddfe800080db521d9eceb2e2987afe942c609e3b994f606f5",
+      "served_sha256": "bc0070823fb7558ddfe800080db521d9eceb2e2987afe942c609e3b994f606f5",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/ios/c18-pixel-logs.txt.raw.gz",
+      "http": 200,
+      "bytes": 1230,
+      "expected_sha256": "5a3412c3f9e8bb2367faba2b38f52245b90dd1fbd67274ef0f6ee872afa5a3d0",
+      "served_sha256": "5a3412c3f9e8bb2367faba2b38f52245b90dd1fbd67274ef0f6ee872afa5a3d0",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/ios/c183-ios-screen.png",
+      "http": 200,
+      "bytes": 131937,
+      "expected_sha256": "275d5e8ddad89b50ba6a610cb6f7a84696812361e74b50de215d79dc97c61ad6",
+      "served_sha256": "275d5e8ddad89b50ba6a610cb6f7a84696812361e74b50de215d79dc97c61ad6",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/ios/opt-in-build.log",
+      "http": 200,
+      "bytes": 64139,
+      "expected_sha256": "f7afcbe1bafdb314145bf60bfb010869df21f0bbc38c00625b0b2dca3cbf8dac",
+      "served_sha256": "f7afcbe1bafdb314145bf60bfb010869df21f0bbc38c00625b0b2dca3cbf8dac",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/ios/opt-in-build.log.raw.gz",
+      "http": 200,
+      "bytes": 11131,
+      "expected_sha256": "aba548b610c0aba6fa4510772072b48c8a251188b82deea5acb5e8ac74b4141c",
+      "served_sha256": "aba548b610c0aba6fa4510772072b48c8a251188b82deea5acb5e8ac74b4141c",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/oracle/chrome155-dpr2.625.png",
+      "http": 200,
+      "bytes": 3035,
+      "expected_sha256": "2829b5dedf60019265abf2e5c95be45a3d114fe60cc6c808c66ea9c7eb937e1b",
+      "served_sha256": "2829b5dedf60019265abf2e5c95be45a3d114fe60cc6c808c66ea9c7eb937e1b",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/oracle/chrome155-dpr3.png",
+      "http": 200,
+      "bytes": 2416,
+      "expected_sha256": "a4a5ee07bf86941b5fb503488ffad78b9993a2cdcb55b308deb8772ed2e2cb3f",
+      "served_sha256": "a4a5ee07bf86941b5fb503488ffad78b9993a2cdcb55b308deb8772ed2e2cb3f",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/oracle/dpr-observation.json",
+      "http": 200,
+      "bytes": 2576,
+      "expected_sha256": "4d4d21c97265b167b7e3d6a4bfcba33f6fa998b22235fc4c59ced5fd64662dee",
+      "served_sha256": "4d4d21c97265b167b7e3d6a4bfcba33f6fa998b22235fc4c59ced5fd64662dee",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/c18-ios-build-flags-tests.log",
+      "http": 200,
+      "bytes": 1436,
+      "expected_sha256": "46d716a048c63204f082da56f3cd0fbc48ea4cd13b682df133e6e2adf317d207",
+      "served_sha256": "46d716a048c63204f082da56f3cd0fbc48ea4cd13b682df133e6e2adf317d207",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/c18-ios-build-flags-tests.log.raw.gz",
+      "http": 200,
+      "bytes": 773,
+      "expected_sha256": "0d32cabe59515648294979df2f8cabc8ef7c9ce2dac6326d5743e5e5f1a77169",
+      "served_sha256": "0d32cabe59515648294979df2f8cabc8ef7c9ce2dac6326d5743e5e5f1a77169",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/clippy.log",
+      "http": 200,
+      "bytes": 816,
+      "expected_sha256": "465ae686940771103c38ada7a3daa2048eacdbccfced3fd8a9d17908d8018d77",
+      "served_sha256": "465ae686940771103c38ada7a3daa2048eacdbccfced3fd8a9d17908d8018d77",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/clippy.log.raw.gz",
+      "http": 200,
+      "bytes": 231,
+      "expected_sha256": "f2b7eaf5c6ee4a5bac5a9acbf69dd38187892741607a422c6692f50cff78c549",
+      "served_sha256": "f2b7eaf5c6ee4a5bac5a9acbf69dd38187892741607a422c6692f50cff78c549",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/css-reference-suite-before-c18-guard-fix.log",
+      "http": 200,
+      "bytes": 107274,
+      "expected_sha256": "a76e5d37352cf34ec0015aef8a807296885d2a52bb5e265db4584a5b3b1cebda",
+      "served_sha256": "a76e5d37352cf34ec0015aef8a807296885d2a52bb5e265db4584a5b3b1cebda",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/css-reference-suite-before-c18-guard-fix.log.raw.gz",
+      "http": 200,
+      "bytes": 19485,
+      "expected_sha256": "f0b40f1f4a3ceb56fb40d887c7301d85709eda77b08bf270a265829d18004092",
+      "served_sha256": "f0b40f1f4a3ceb56fb40d887c7301d85709eda77b08bf270a265829d18004092",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/css-reference-suite.log",
+      "http": 200,
+      "bytes": 103294,
+      "expected_sha256": "3f164ed0129935632178c2c56abfe3624d3d81c0ea39b24cf192dd76e50bd17f",
+      "served_sha256": "3f164ed0129935632178c2c56abfe3624d3d81c0ea39b24cf192dd76e50bd17f",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/css-reference-suite.log.raw.gz",
+      "http": 200,
+      "bytes": 18827,
+      "expected_sha256": "7435b0d3d7e7d5c58f1b34cdf1e6a37765daa02f2887a57c3a73f6db853dada7",
+      "served_sha256": "7435b0d3d7e7d5c58f1b34cdf1e6a37765daa02f2887a57c3a73f6db853dada7",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/fixture-module-boundary-tests.log",
+      "http": 200,
+      "bytes": 569,
+      "expected_sha256": "c9969e4b86164e3084c4a1ee007b0d663ca0efbc0d4333b042ebb2133fa55838",
+      "served_sha256": "c9969e4b86164e3084c4a1ee007b0d663ca0efbc0d4333b042ebb2133fa55838",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/fixture-module-boundary-tests.log.raw.gz",
+      "http": 200,
+      "bytes": 401,
+      "expected_sha256": "406e54a81cb78ac303207ad0eea86e390a7d29aacc3f0fa9382e57ccb9861254",
+      "served_sha256": "406e54a81cb78ac303207ad0eea86e390a7d29aacc3f0fa9382e57ccb9861254",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/focused-rust-tests.log",
+      "http": 200,
+      "bytes": 17835,
+      "expected_sha256": "33f7b9f5c4db003205bf2b99d50e43db2b914127a29e2cbb68bb0bcfefc3077d",
+      "served_sha256": "33f7b9f5c4db003205bf2b99d50e43db2b914127a29e2cbb68bb0bcfefc3077d",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/focused-rust-tests.log.raw.gz",
+      "http": 200,
+      "bytes": 4552,
+      "expected_sha256": "2339955e3528e402ca50f5ac9e08ed8cc3d93b291ac944a99f84d38385f5fd44",
+      "served_sha256": "2339955e3528e402ca50f5ac9e08ed8cc3d93b291ac944a99f84d38385f5fd44",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/geometry-negative-control.log",
+      "http": 200,
+      "bytes": 1208,
+      "expected_sha256": "1bc6215e77ac1b0d1a5cb01ad016eccd2bc765865dc2bfb6fe845ee73d4092c6",
+      "served_sha256": "1bc6215e77ac1b0d1a5cb01ad016eccd2bc765865dc2bfb6fe845ee73d4092c6",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/geometry-negative-control.log.raw.gz",
+      "http": 200,
+      "bytes": 577,
+      "expected_sha256": "39112da8a79547b44cf51abdf906fe0d0e5b88fdf7b4bc3e49c9bbd8fb4041ce",
+      "served_sha256": "39112da8a79547b44cf51abdf906fe0d0e5b88fdf7b4bc3e49c9bbd8fb4041ce",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/implementation-review-20.html",
+      "http": 200,
+      "bytes": 29300,
+      "expected_sha256": "ed89f91113469dcb233c54b1b0c48e120459ac26a56d0ce50b215ff5d01afb24",
+      "served_sha256": "ed89f91113469dcb233c54b1b0c48e120459ac26a56d0ce50b215ff5d01afb24",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/implementation-review-20.md",
+      "http": 200,
+      "bytes": 4986,
+      "expected_sha256": "d5cd48b05fe2b50213f249157391de7f077ca57a4e4e79a296c0de1cb7a26f57",
+      "served_sha256": "d5cd48b05fe2b50213f249157391de7f077ca57a4e4e79a296c0de1cb7a26f57",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/pr-diff-review-30.html",
+      "http": 200,
+      "bytes": 31103,
+      "expected_sha256": "4e83657dc3466f38e95a95135c11caf2d6d4319ba4a8cce11d491d9967b68c85",
+      "served_sha256": "4e83657dc3466f38e95a95135c11caf2d6d4319ba4a8cce11d491d9967b68c85",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/pr-diff-review-30.md",
+      "http": 200,
+      "bytes": 6518,
+      "expected_sha256": "8161aca1848072c1abf4dd98c251cdc2d3e76d1fcf19525f7450b4b3dd6eb252",
+      "served_sha256": "8161aca1848072c1abf4dd98c251cdc2d3e76d1fcf19525f7450b4b3dd6eb252",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/raw-log-hashes.json",
+      "http": 200,
+      "bytes": 10866,
+      "expected_sha256": "db7e1ad6d8a4dabfa137d35977509fcd2d3ad01c6263f205784ba741bb58d9c5",
+      "served_sha256": "db7e1ad6d8a4dabfa137d35977509fcd2d3ad01c6263f205784ba741bb58d9c5",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/rustfmt.log",
+      "http": 200,
+      "bytes": 1,
+      "expected_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "served_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/rustfmt.log.raw.gz",
+      "http": 200,
+      "bytes": 20,
+      "expected_sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "served_sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/workspace-tests.log",
+      "http": 200,
+      "bytes": 100423,
+      "expected_sha256": "511a557be5209781fbf7e360008f2445437ddf168e4a84a63a852aa0afa01ec0",
+      "served_sha256": "511a557be5209781fbf7e360008f2445437ddf168e4a84a63a852aa0afa01ec0",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/workspace-tests.log.raw.gz",
+      "http": 200,
+      "bytes": 21493,
+      "expected_sha256": "d57418bb0da3ce7b215460ddc9da76192ef208001e2a7d9e9b0c2e57ed60f04e",
+      "served_sha256": "d57418bb0da3ce7b215460ddc9da76192ef208001e2a7d9e9b0c2e57ed60f04e",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/source-revision.json",
+      "http": 200,
+      "bytes": 11715,
+      "expected_sha256": "23b4281150740a54d74f8f0e22cfaf73f517749c59ae9153933f2a05bbd3c524",
+      "served_sha256": "23b4281150740a54d74f8f0e22cfaf73f517749c59ae9153933f2a05bbd3c524",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-plan-pr-review-20-2026-10-16.html",
+      "http": 200,
+      "bytes": 25327,
+      "expected_sha256": "6807fd5a5e6bbae74b1d806d086c1234e6fcb47388e35042824d2048ff618956",
+      "served_sha256": "6807fd5a5e6bbae74b1d806d086c1234e6fcb47388e35042824d2048ff618956",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-plan-pr-review-20-2026-10-16.md",
+      "http": 200,
+      "bytes": 3057,
+      "expected_sha256": "c3346fc6870ca0e9ddc7022259c438eee71b0283162a64164a712fec12a87db4",
+      "served_sha256": "c3346fc6870ca0e9ddc7022259c438eee71b0283162a64164a712fec12a87db4",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-plan-review-20-2026-10-16.html",
+      "http": 200,
+      "bytes": 25775,
+      "expected_sha256": "ea70b2d62f2715a501d7aedb7949266fd84f3ecc8de0acfdd2c058195e919e55",
+      "served_sha256": "ea70b2d62f2715a501d7aedb7949266fd84f3ecc8de0acfdd2c058195e919e55",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-position-plan-review-20-2026-10-16.md",
+      "http": 200,
+      "bytes": 3367,
+      "expected_sha256": "4715c4a84143db74255d8bc86a0ce227396a9e533197d63cddfd4b33f803e3fd",
+      "served_sha256": "4715c4a84143db74255d8bc86a0ce227396a9e533197d63cddfd4b33f803e3fd",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-precomparison/README.html",
+      "http": 200,
+      "bytes": 30787,
+      "expected_sha256": "57ba0edc8704dea0e402005fb8b5f7df47aaa8ef30e61b9ca7c5db97eaeb41a6",
+      "served_sha256": "57ba0edc8704dea0e402005fb8b5f7df47aaa8ef30e61b9ca7c5db97eaeb41a6",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-precomparison/README.md",
+      "http": 200,
+      "bytes": 4471,
+      "expected_sha256": "1e5df0fa4710414da1ff901e087040c4e0b32e5ef032d17d165cf25cbf2173aa",
+      "served_sha256": "1e5df0fa4710414da1ff901e087040c4e0b32e5ef032d17d165cf25cbf2173aa",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-precomparison/chrome155-observation.json",
+      "http": 200,
+      "bytes": 8533,
+      "expected_sha256": "6d405518a353badcb54a5c4839f469392b992be0c273706c23b29e04ce4939d9",
+      "served_sha256": "6d405518a353badcb54a5c4839f469392b992be0c273706c23b29e04ce4939d9",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c18-3-object-fit-precomparison/chrome155.png",
+      "http": 200,
+      "bytes": 899,
+      "expected_sha256": "a7eb0ad22f995a3e44ec29ba644ce408c06346c2da1c95230c718f306baba5d4",
+      "served_sha256": "a7eb0ad22f995a3e44ec29ba644ce408c06346c2da1c95230c718f306baba5d4",
+      "match": true
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "http": 200,
+      "bytes": 113550,
+      "expected_sha256": "78b6ffb98b728480b607f60557a126673a472022da170283408304a0ee7335a8",
+      "served_sha256": "78b6ffb98b728480b607f60557a126673a472022da170283408304a0ee7335a8",
+      "match": true
+    },
+    {
+      "path": "spec/public/roadmap.svg",
+      "http": 200,
+      "bytes": 4835,
+      "expected_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "served_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "match": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "http": 200,
+      "bytes": 73952,
+      "expected_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "served_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "match": true
+    },
+    {
+      "path": "static/image/c183-android-screen.ca2de5afa6.png",
+      "http": 200,
+      "bytes": 81636,
+      "expected_sha256": "95cf34e330e5e37d9e62fa101bd87017e55c9894346de1ef90c06a019d692a0c",
+      "served_sha256": "95cf34e330e5e37d9e62fa101bd87017e55c9894346de1ef90c06a019d692a0c",
+      "match": true
+    },
+    {
+      "path": "static/image/c183-ios-screen.72003ee20b.png",
+      "http": 200,
+      "bytes": 131937,
+      "expected_sha256": "275d5e8ddad89b50ba6a610cb6f7a84696812361e74b50de215d79dc97c61ad6",
+      "served_sha256": "275d5e8ddad89b50ba6a610cb6f7a84696812361e74b50de215d79dc97c61ad6",
+      "match": true
+    },
+    {
+      "path": "static/js/6.cb8b86b995.js",
+      "http": 200,
+      "bytes": 217066,
+      "expected_sha256": "04ff176de0ff37821fb18c8f9dbabb13c380c882d6f6b76145ae1cdd5f72c131",
+      "served_sha256": "04ff176de0ff37821fb18c8f9dbabb13c380c882d6f6b76145ae1cdd5f72c131",
+      "match": true
+    },
+    {
+      "path": "static/js/6.cb8b86b995.js.LICENSE.txt",
+      "http": 200,
+      "bytes": 384,
+      "expected_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "served_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-5115c2921a0b.735aef7284.js",
+      "http": 200,
+      "bytes": 7434,
+      "expected_sha256": "76f453a9b96ef548596a14c92aaebc6b4786f7465420e32710d0e9c8a084a329",
+      "served_sha256": "76f453a9b96ef548596a14c92aaebc6b4786f7465420e32710d0e9c8a084a329",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-6565edae30b5.e0ce9c54bf.js",
+      "http": 200,
+      "bytes": 10605,
+      "expected_sha256": "cd9989928db2f0f4712a81bf1182a8422d61c276a3222251de897e7d71209e3d",
+      "served_sha256": "cd9989928db2f0f4712a81bf1182a8422d61c276a3222251de897e7d71209e3d",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-6849791de1c1.13bb5ffa46.js",
+      "http": 200,
+      "bytes": 8001,
+      "expected_sha256": "7756a56c5399250fc4ea149039b40ca44a0281d1a57334ae32326f8219705035",
+      "served_sha256": "7756a56c5399250fc4ea149039b40ca44a0281d1a57334ae32326f8219705035",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.3673d11422.js",
+      "http": 200,
+      "bytes": 338920,
+      "expected_sha256": "f4cad4b3b21996b2687d85fbec9918fd81036f648a122dd5aa5c604da2b45509",
+      "served_sha256": "f4cad4b3b21996b2687d85fbec9918fd81036f648a122dd5aa5c604da2b45509",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-9b75938cc071.10329aa7df.js",
+      "http": 200,
+      "bytes": 15151,
+      "expected_sha256": "c27272bc3c26b6fe7abde92770958a9930fdc73a8c2a3abab5728b0a064c6406",
+      "served_sha256": "c27272bc3c26b6fe7abde92770958a9930fdc73a8c2a3abab5728b0a064c6406",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-a991d6de67ad.e7e360f734.js",
+      "http": 200,
+      "bytes": 144046,
+      "expected_sha256": "9b54445fa498b1f2592fc8898ca78e3f149cfff180cff66648e621180abe482a",
+      "served_sha256": "9b54445fa498b1f2592fc8898ca78e3f149cfff180cff66648e621180abe482a",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-af41d1e54628.84824c7280.js",
+      "http": 200,
+      "bytes": 14336,
+      "expected_sha256": "32e716395559d6c6d25f69090956cdbda8513ea8ed090a952df7e98f13090543",
+      "served_sha256": "32e716395559d6c6d25f69090956cdbda8513ea8ed090a952df7e98f13090543",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-d4543882eb20.cef7bfd15d.js",
+      "http": 200,
+      "bytes": 11084,
+      "expected_sha256": "c170e9d917cb36b48f3ee2bfd385f20525368e1f8d04a57c36cdaa47ab7aef14",
+      "served_sha256": "c170e9d917cb36b48f3ee2bfd385f20525368e1f8d04a57c36cdaa47ab7aef14",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-e5e3a892607d.0d2784c8b5.js",
+      "http": 200,
+      "bytes": 13576,
+      "expected_sha256": "bede50a4cf522b9f59993cb5e6c495bf039b400ef880f3707a48f3e29ad4bc43",
+      "served_sha256": "bede50a4cf522b9f59993cb5e6c495bf039b400ef880f3707a48f3e29ad4bc43",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-ee90c2e12eaf.a9868814eb.js",
+      "http": 200,
+      "bytes": 19416,
+      "expected_sha256": "5b61579942b6f4f7eee045df08dbd7fbf94b0522604ba2dd1e8f6e2de6948ec7",
+      "served_sha256": "5b61579942b6f4f7eee045df08dbd7fbf94b0522604ba2dd1e8f6e2de6948ec7",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-f21cb5379ee4.bb556b4d36.js",
+      "http": 200,
+      "bytes": 6331,
+      "expected_sha256": "e8130889113ee39d21a425cbe664905444a4c152a16edd255f91486552a9f842",
+      "served_sha256": "e8130889113ee39d21a425cbe664905444a4c152a16edd255f91486552a9f842",
+      "match": true
+    },
+    {
+      "path": "static/js/async/z.359c0d78fa.js",
+      "http": 200,
+      "bytes": 98,
+      "expected_sha256": "90a9f89d8008264f27cfec9e490deace22fb55bea7d05b6b9ce69f7bc00f0ad8",
+      "served_sha256": "90a9f89d8008264f27cfec9e490deace22fb55bea7d05b6b9ce69f7bc00f0ad8",
+      "match": true
+    },
+    {
+      "path": "static/js/index.b25d71e6ef.js",
+      "http": 200,
+      "bytes": 24720,
+      "expected_sha256": "2c215a776f4378de4d87c155a9da970e8edada496ce844739cad92da0bf826a8",
+      "served_sha256": "2c215a776f4378de4d87c155a9da970e8edada496ce844739cad92da0bf826a8",
+      "match": true
+    },
+    {
+      "path": "static/js/lib-react.382571d6aa.js",
+      "http": 200,
+      "bytes": 218368,
+      "expected_sha256": "5fe15e21cdbe74f3bc28adc7de37ee0c3a94d960dae748da5584f73ea000d8af",
+      "served_sha256": "5fe15e21cdbe74f3bc28adc7de37ee0c3a94d960dae748da5584f73ea000d8af",
+      "match": true
+    },
+    {
+      "path": "static/js/lib-react.382571d6aa.js.LICENSE.txt",
+      "http": 200,
+      "bytes": 1209,
+      "expected_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "served_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "match": true
+    },
+    {
+      "path": "static/js/lib-router.f115cf67cf.js",
+      "http": 200,
+      "bytes": 35367,
+      "expected_sha256": "c04d61b751534bfb3112504d05783d2e56edd1ddd52fd0b9a126d8216855007d",
+      "served_sha256": "c04d61b751534bfb3112504d05783d2e56edd1ddd52fd0b9a126d8216855007d",
+      "match": true
+    },
+    {
+      "path": "static/js/lib-router.f115cf67cf.js.LICENSE.txt",
+      "http": 200,
+      "bytes": 222,
+      "expected_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "served_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "match": true
+    },
+    {
+      "path": "static/js/styles.7ba84b30fd.js",
+      "http": 200,
+      "bytes": 475,
+      "expected_sha256": "27f8fd03b43856a5f0ec4476ddeea4bce25cdf64e1db8e28fa6ea7c337afc375",
+      "served_sha256": "27f8fd03b43856a5f0ec4476ddeea4bce25cdf64e1db8e28fa6ea7c337afc375",
+      "match": true
+    },
+    {
+      "path": "static/search_index.ko.a862e2a8.json",
+      "http": 200,
+      "bytes": 308157,
+      "expected_sha256": "a862e2a87f23e626e676ba2c7ec067b74f5d4e57ebf298cc74757169ef58f6ee",
+      "served_sha256": "a862e2a87f23e626e676ba2c7ec067b74f5d4e57ebf298cc74757169ef58f6ee",
+      "match": true
+    },
+    {
+      "path": "tests/fixtures/css/c18/image-object-fit-position-c18-3.html",
+      "http": 200,
+      "bytes": 3596,
+      "expected_sha256": "f396590733a3c7ed2ff1c7fba6a47125eeeba68bee2a55689028e4510cf37157",
+      "served_sha256": "f396590733a3c7ed2ff1c7fba6a47125eeeba68bee2a55689028e4510cf37157",
+      "match": true
+    },
+    {
+      "path": "tests/fixtures/resources/c18-3-object-fit-pattern.png",
+      "http": 200,
+      "bytes": 168,
+      "expected_sha256": "cc621c7a4be9345a8124b91ebcd5a6ff9bc3a3206ec59fe1228b24ba09cae454",
+      "served_sha256": "cc621c7a4be9345a8124b91ebcd5a6ff9bc3a3206ec59fe1228b24ba09cae454",
+      "match": true
+    },
+    {
+      "path": "tools/css-reference/capture-c18-3-object-fit-precomparison.mjs",
+      "http": 200,
+      "bytes": 5685,
+      "expected_sha256": "d4e7c1b4cb0b55bd947bcee49196ffc4db395be4202307bb1aef3c0dfa7e696e",
+      "served_sha256": "d4e7c1b4cb0b55bd947bcee49196ffc4db395be4202307bb1aef3c0dfa7e696e",
+      "match": true
+    },
+    {
+      "path": "tools/fixtures/generate-c18-3-object-fit-pattern.py",
+      "http": 200,
+      "bytes": 1043,
+      "expected_sha256": "17ed032dd9085b75ee4fc20345c8e27fecade0a4a8be6d4c5707150f30d209ac",
+      "served_sha256": "17ed032dd9085b75ee4fc20345c8e27fecade0a4a8be6d4c5707150f30d209ac",
+      "match": true
+    }
+  ],
+  "implementation_merge_commit": "ad243765aad2b2dc45bb461d23f2c0061672037a",
+  "source_commit": "1acfc692184e05371a05a097b5b605327be6c97c",
+  "roadmap": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "title": "스피논 구현 로드맵",
+    "official_counter": "공식 완료 70/201",
+    "checkboxes": 201,
+    "checked": 70,
+    "c18_3_visible": true,
+    "c18_3_checked": true
+  },
+  "routes": [
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "http": 200,
+      "title": "스피논 구현 로드맵",
+      "verified": true
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c18-3-static-png-object-fit-position.html",
+      "http": 200,
+      "title": "C18.3 · 정적 PNG object-fit / object-position - 스피논 문서",
+      "c18_3": true,
+      "implementation_pr_224": true
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/0066-c18-3-object-fit-position.html",
+      "http": 200,
+      "title": "0066 · C18.3 정적 PNG object-fit / object-position - 스피논 문서",
+      "c18_3": true
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/STATUS.html",
+      "http": 200,
+      "title": "스피논 구현 상태와 API 명세 대장",
+      "c18_3": true,
+      "implementation_pr_224": true
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/README.html",
+      "http": 200,
+      "title": "C18.3 정적 PNG object-fit / object-position 실행 근거 - 스피논 문서",
+      "c18_3": true
+    }
+  ],
+  "rendered_images": [
+    {
+      "alt": "Android API 37 AVD C18.3 실행 화면",
+      "complete": true,
+      "natural_width": 1080,
+      "natural_height": 2400,
+      "src": "https://macstudio.tailed42f2.ts.net/spinon/static/image/c183-android-screen.ca2de5afa6.png"
+    },
+    {
+      "alt": "iPhone 17 Pro iOS 26.2 Simulator C18.3 실행 화면",
+      "complete": true,
+      "natural_width": 1206,
+      "natural_height": 2622,
+      "src": "https://macstudio.tailed42f2.ts.net/spinon/static/image/c183-ios-screen.72003ee20b.png"
+    }
+  ],
+  "broken_images": [],
+  "sync_counts": {
+    "created": 119,
+    "replaced": 16,
+    "unchanged": 31,
+    "deleted": 0,
+    "backups_preserved": 16
+  },
+  "screenshots": [
+    "roadmap-summary-agent-browser.png",
+    "roadmap-c183-agent-browser.png",
+    "implementation-readme-agent-browser.png"
+  ],
+  "manifest_served": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/sync-manifest-c18-3-object-fit-position-implementation-tailnet-2026-10-16.json",
+    "http": 200,
+    "bytes": 75449,
+    "sha256": "b3b0c292e121e0ab00dcb30b6346ee58ca6e16195b831c7f99703bb89456a51d",
+    "excluded_from_self_file_list": true,
+    "previous_copy_backup": "backup/c18-3-object-fit-position-implementation-tailnet-core-2026-10-16/sync-manifest-c18-3-object-fit-position-implementation-tailnet-2026-10-16.json",
+    "previous_copy_sha256": "900aa8f82709011160f7c2ded1f28ed1f4769eaa312068b9bfef445f230f328d",
+    "previous_copy_http": 200,
+    "previous_copy_bytes": 75139,
+    "previous_copy_served_sha256": "900aa8f82709011160f7c2ded1f28ed1f4769eaa312068b9bfef445f230f328d"
+  },
+  "screenshot_dimensions": {
+    "roadmap-summary-agent-browser.png": {
+      "width": 1440,
+      "height": 1000
+    },
+    "roadmap-c183-agent-browser.png": {
+      "width": 1440,
+      "height": 1000
+    },
+    "implementation-readme-agent-browser.png": {
+      "width": 1280,
+      "height": 5512
+    }
+  }
+}

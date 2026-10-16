@@ -1,0 +1,53 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+warn    The dist path is not a subdir of root path, Rsbuild will not empty it.
+warn    Please set `output.cleanDistPath` config manually.
+warn    Current root path: /private/tmp/spinon-c18-3-implementation-tailnet-sync-20261016
+warn    Current dist path: /private/tmp/spinon-c18-3-implementation-tailnet-stage-20261016/build
+info    Rendering pages...
+success Pages rendered in 76 ms.
+ready   built in 0.60s (web)
+ready   built in 0.60s (node)
+
+File (web)                                                                                                     Size        Gzip
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/static/js/async/z.359c0d78fa.js                    0.10 kB     0.09 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/static/js/styles.7ba84b30fd.js                     0.47 kB     0.24 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/icon.svg                                           0.64 kB     0.42 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/static/js/async/route-f21cb5379ee4.bb556b4d36.js   6.3 kB      2.2 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/static/js/async/route-5115c2921a0b.735aef7284.js   7.4 kB      2.5 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/static/js/async/route-6849791de1c1.13bb5ffa46.js   8.0 kB      2.6 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/static/js/async/route-6565edae30b5.e0ce9c54bf.js   10.6 kB     3.7 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/static/js/async/route-d4543882eb20.cef7bfd15d.js   11.1 kB     3.5 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/static/js/async/route-e5e3a892607d.0d2784c8b5.js   13.6 kB     5.0 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/static/js/async/route-af41d1e54628.84824c7280.js   14.3 kB     4.3 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/static/js/async/route-9b75938cc071.10329aa7df.js   15.2 kB     4.2 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/static/js/async/route-ee90c2e12eaf.a9868814eb.js   19.4 kB     5.4 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/static/js/index.b25d71e6ef.js                      24.7 kB     8.8 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/static/js/lib-router.f115cf67cf.js                 35.4 kB     12.7 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/static/css/styles.8d918fd78e.css                   74.0 kB     14.2 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/static/image/c183-android-screen.ca2de5afa6.png    81.6 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/static/image/c183-ios-screen.72003ee20b.png        131.9 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/static/js/async/route-a991d6de67ad.e7e360f734.js   144.0 kB    31.2 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/static/js/6.cb8b86b995.js                          217.1 kB    72.0 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/static/js/lib-react.382571d6aa.js                  218.4 kB    68.8 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/static/search_index.ko.a862e2a8.json               308.2 kB    101.6 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/static/js/async/route-7ce2535ac56d.3673d11422.js   338.9 kB    79.6 kB
+
+                                                                                                      Total:   1681.3 kB   636.6 kB
+
+File (node)                                                                                                                                                                   Size       Gzip
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/404.html                                                                                                          8.5 kB     2.6 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/spec/internal/evidence/c18-3-object-fit-position-plan-pr-review-20-2026-10-16.html                                25.3 kB    5.7 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/artifacts/README.html                  25.6 kB    5.5 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/spec/internal/evidence/c18-3-object-fit-position-plan-review-20-2026-10-16.html                                   25.8 kB    5.8 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/implementation-review-20.html   29.3 kB    6.7 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/README.html                            29.7 kB    6.9 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/spec/internal/evidence/c18-3-object-fit-precomparison/README.html                                                 30.8 kB    7.4 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/spec/internal/evidence/c18-3-object-fit-position-implementation-2026-10-16/review/pr-diff-review-30.html          31.1 kB    7.4 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/plan/c18-3-static-png-object-fit-position.html                                                                    32.4 kB    8.1 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/spec/internal/0066-c18-3-object-fit-position.html                                                                 37.8 kB    9.1 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/spec/internal/README.html                                                                                         140.4 kB   33.9 kB
+../spinon-c18-3-implementation-tailnet-stage-20261016/build/spec/STATUS.html                                                                                                  324.6 kB   81.6 kB
+
+                                                                                                                                                                     Total:   741.3 kB   180.6 kB
