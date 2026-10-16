@@ -42,6 +42,10 @@
 + (uint64_t)createRuntimeGpuHostWithC13_1OverflowClipBorderFixture;
 + (uint64_t)createRuntimeGpuHostWithC13_2ScrollFixture;
 + (uint64_t)createRuntimeGpuHostWithC13_2SurfacePixelReadbackFixture;
+#if defined(SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST) && \
+    SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST
++ (uint64_t)createRuntimeGpuHostWithC18_1ImagePaintFixture;
+#endif
 #if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
 + (uint64_t)createRuntimeGpuHostWithC13_3GestureFixture:(int32_t)scenarioID;
 #endif
@@ -80,6 +84,10 @@
                                                    sampleXY:(const uint32_t *)sampleXY
                                                 sampleCount:(NSUInteger)sampleCount;
 + (NSString *)evalRuntimeGpuC13_1OverflowClipBorderFixture:(uint64_t)handle;
+#if defined(SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST) && \
+    SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST
++ (NSString *)evalRuntimeGpuC18_1ImagePaintFixture:(uint64_t)handle;
+#endif
 + (NSString *)evalRuntimeGpuC13_2ScrollFixture:(uint64_t)handle;
 #if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
 + (NSString *)evalRuntimeGpuC13_3GestureFixture:(uint64_t)handle;
@@ -112,6 +120,12 @@
 + (NSString *)requestRuntimeGpuC13_2SurfacePixels:(uint64_t)handle
                                              sampleXY:(const uint32_t *)sampleXY
                                           sampleCount:(NSUInteger)sampleCount;
+#if defined(SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST) && \
+    SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST
++ (NSString *)requestRuntimeGpuC18_1SurfacePixelsForTest:(uint64_t)handle
+                                                   sampleXY:(const uint32_t *)sampleXY
+                                                sampleCount:(NSUInteger)sampleCount;
+#endif
 + (NSString *)evalRuntimeGpuC11_1GridFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuC11_1GridSceneFixture:(uint64_t)handle
                                        sceneIndex:(uint32_t)sceneIndex;

@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "browser": {
+    "product": "Google Chrome",
+    "version": "155.0.8059.40",
+    "platform": "macOS",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36"
+  },
+  "fixture": {
+    "path": "tests/fixtures/css/c18/image-overflow-pixels.html",
+    "sha256": "6c7da8c182db01492c42c5bcf9ef0b4613e19934ceb0c74ea9c57ad9447a6054",
+    "imagePath": "tests/fixtures/resources/c14-1-png-basic.png",
+    "imageSha256": "5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2"
+  },
+  "viewport": { "width": 80, "height": 40, "devicePixelRatio": 1 },
+  "cases": [
+    {
+      "id": "visible",
+      "overflow": "visible",
+      "parentBorderBox": { "x": 4, "y": 4, "width": 22, "height": 26 },
+      "image": { "x": 9, "y": 9, "width": 24, "height": 16 },
+      "rightBorderPaint": "image paints over the 1px parent border",
+      "paintBeyondParentBorderCssPx": 7
+    },
+    {
+      "id": "hidden",
+      "overflow": "hidden",
+      "parentBorderBox": { "x": 40, "y": 4, "width": 22, "height": 26 },
+      "image": { "x": 45, "y": 9, "width": 24, "height": 16 },
+      "clipEdge": "padding-box"
+    }
+  ],
+  "samples": [
+    { "id": "visible-content-positive", "screenCssPixel": [9, 9], "sourcePixel": [0, 0], "rgba": [255, 255, 64, 255] },
+    { "id": "visible-border-overpaint", "screenCssPixel": [25, 10], "sourcePixel": [16, 1], "rgba": [0, 255, 64, 255] },
+    { "id": "visible-overflow-first", "screenCssPixel": [26, 10], "sourcePixel": [17, 1], "rgba": [0, 255, 64, 255] },
+    { "id": "visible-overflow-middle", "screenCssPixel": [29, 10], "sourcePixel": [20, 1], "rgba": [0, 255, 64, 255] },
+    { "id": "visible-overflow-last", "screenCssPixel": [32, 10], "sourcePixel": [23, 1], "rgba": [0, 255, 64, 255] },
+    { "id": "visible-after-image", "screenCssPixel": [33, 10], "rgba": [16, 24, 39, 255] },
+    { "id": "hidden-padding-positive", "screenCssPixel": [60, 10], "sourcePixel": [15, 1], "rgba": [0, 255, 64, 255] },
+    { "id": "hidden-border-positive", "screenCssPixel": [61, 10], "rgba": [240, 198, 116, 255] },
+    { "id": "hidden-outside", "screenCssPixel": [62, 10], "rgba": [16, 24, 39, 255] }
+  ],
+  "screenshot": {
+    "path": "chrome155.png",
+    "sha256": "ec64bce98be647fb8707d072d1147bd8209d001ea7e054f5ec85670a04f866ee"
+  }
+}

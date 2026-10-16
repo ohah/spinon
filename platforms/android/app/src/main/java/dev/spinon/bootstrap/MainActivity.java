@@ -262,6 +262,8 @@ public final class MainActivity extends Activity {
                 .getBooleanExtra("spinon_c131_compact_surface_matrix", false);
         boolean c131OverflowClipBorderRequested = getIntent()
                 .getBooleanExtra("spinon_c131_overflow_clip_border", false);
+        boolean imagePaintFixtureRequested = BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST
+                && getIntent().getBooleanExtra("spinon_c181_image_paint", false);
         if ((c131OverflowClipRequested ? 1 : 0)
                 + (c131CompactSurfaceMatrixRequested ? 1 : 0)
                 + (c131OverflowClipBorderRequested ? 1 : 0) > 1) {
@@ -433,6 +435,7 @@ public final class MainActivity extends Activity {
                 || getIntent().getBooleanExtra("spinon_c124_stacking_context", false)
                 || c131OverflowClipRequested || c131CompactSurfaceMatrixRequested
                 || c131OverflowClipBorderRequested
+                || imagePaintFixtureRequested
                 || getIntent().getBooleanExtra("spinon_c132_scroll_fixture", false)
                 || getIntent().getBooleanExtra("spinon_c133_gesture_fixture", false)
                 || getIntent().getBooleanExtra("spinon_c133_tap_probe", false)

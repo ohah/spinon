@@ -8,7 +8,8 @@ use super::scroll::{
     RuntimeScrollClipLayer, RuntimeScrollContainer, RuntimeScrollRenderMetadata, apply_scroll_state,
 };
 use super::{
-    CssSize, RuntimeRenderBox, RuntimeRenderError, RuntimeRenderKey, RuntimeRenderSnapshot,
+    CssSize, RuntimePaint, RuntimeRenderBox, RuntimeRenderError, RuntimeRenderImage,
+    RuntimeRenderKey, RuntimeRenderSnapshot,
 };
 impl RuntimeRenderSnapshot {
     pub fn new(
@@ -93,13 +94,52 @@ impl RuntimeRenderSnapshot {
             base_boxes,
             scroll_containers,
             scroll_metadata,
+            images: Arc::from([]),
         })
+    }
+
+    /// Natural-size image resource를 revision과 frame 검사를 거쳐 장면에 결합합니다.
+    pub fn with_images(&self, images: Vec<RuntimeRenderImage>) -> Result<Self, RuntimeRenderError> {
+        let mut seen = BTreeSet::new();
+        for image in &images {
+            if !seen.insert(image.node_id()) {
+                return Err(RuntimeRenderError::DuplicateImage(image.node_id()));
+            }
+            if !image.source().matches(self.key) {
+                return Err(RuntimeRenderError::InvalidImageSource(image.node_id()));
+            }
+            let Some(render_box) = self
+                .boxes
+                .iter()
+                .find(|render_box| render_box.node_id() == image.node_id())
+            else {
+                return Err(RuntimeRenderError::ImageNodeMissing(image.node_id()));
+            };
+            let border = render_box.border();
+            if [border.top(), border.right(), border.bottom(), border.left()]
+                .into_iter()
+                .any(|side| {
+                    side.width_css_px() > 0.0 && !matches!(side.paint(), RuntimePaint::None)
+                })
+            {
+                return Err(RuntimeRenderError::UnsupportedImageBorder(image.node_id()));
+            }
+            let frame = render_box.frame_css_px();
+            if frame.width() != image.width() as f32 || frame.height() != image.height() as f32 {
+                return Err(RuntimeRenderError::InvalidImageFrame(image.node_id()));
+            }
+        }
+        let mut snapshot = self.clone();
+        snapshot.images = images.into();
+        Ok(snapshot)
     }
 
     /// 같은 문서 세대와 연결 트리 revision의 snapshot에서 document revision을 다시 발행합니다.
     pub fn with_document_snapshot_revision(&self, snapshot: &HostDocumentSnapshot) -> Option<Self> {
         if self.key.generation != snapshot.generation()
             || self.key.render_tree_revision != snapshot.render_tree_revision()
+            || (!self.images.is_empty()
+                && self.key.document_revision != snapshot.document_revision())
         {
             return None;
         }
@@ -119,6 +159,7 @@ impl RuntimeRenderSnapshot {
             base_boxes: Arc::clone(&self.base_boxes),
             scroll_containers: Arc::clone(&self.scroll_containers),
             scroll_metadata: Arc::clone(&self.scroll_metadata),
+            images: Arc::clone(&self.images),
         })
     }
 
@@ -131,6 +172,7 @@ impl RuntimeRenderSnapshot {
             base_boxes: Arc::clone(&self.base_boxes),
             scroll_containers: Arc::clone(&self.scroll_containers),
             scroll_metadata: Arc::clone(&self.scroll_metadata),
+            images: Arc::clone(&self.images),
         }
     }
 
@@ -144,6 +186,10 @@ impl RuntimeRenderSnapshot {
 
     pub fn boxes(&self) -> &[RuntimeRenderBox] {
         &self.boxes
+    }
+
+    pub fn images(&self) -> &[RuntimeRenderImage] {
+        &self.images
     }
 
     pub fn scroll_containers(&self) -> &[RuntimeScrollContainer] {
@@ -176,7 +222,8 @@ impl RuntimeRenderSnapshot {
             self.base_boxes.to_vec(),
             containers,
             self.scroll_metadata.to_vec(),
-        )
+        )?
+        .with_images(self.images.to_vec())
     }
 
     /// 한 hit target의 scroll owner ancestor 목록을 nearest-to-outer 순서로 반환합니다.
@@ -236,7 +283,8 @@ impl RuntimeRenderSnapshot {
             self.base_boxes.to_vec(),
             containers,
             self.scroll_metadata.to_vec(),
-        )
+        )?
+        .with_images(self.images.to_vec())
     }
 
     /// hit-test 순서, clip, viewport를 통과한 가장 앞의 CSS event target을 반환합니다.

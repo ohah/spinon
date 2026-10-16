@@ -1,0 +1,37 @@
+libspinon-ffi-android-default.a: files=1, bytes=68612738
+  libspinon-ffi-android-default.a: sha256=3b8f35c632c84b5fce8d9135d629fda2b74f7f4d465efd0be400122ab41bd63b bytes=68612738
+  C18.1 markers=[]; PNG97=false
+libspinon-ffi-android-default.rlib: files=1, bytes=294320
+  libspinon-ffi-android-default.rlib: sha256=c13fec50a64c7eee928298ffd52bb33d4ffa27b37b60637256c6263464d86d09 bytes=294320
+  C18.1 markers=[]; PNG97=false
+libspinon-ffi-android-c18-1-opt-in.a: files=1, bytes=96536650
+  libspinon-ffi-android-c18-1-opt-in.a: sha256=e557922a0bf548872086b9d6bdab0ca446124bc31d2e5a2a8788072206d64e5e bytes=96536650
+  C18.1 markers=["spinon_runtime_gpu_host_new_c18_1_image_paint_fixture","spinon_runtime_gpu_host_eval_c18_1_image_paint_fixture","spinon-fixture:c18-1/static-png-visible","c18_1_image_report_json","c18-visible-image","c18-hidden-image"]; PNG97=true
+libspinon-ffi-android-c18-1-opt-in.rlib: files=1, bytes=2277820
+  libspinon-ffi-android-c18-1-opt-in.rlib: sha256=15e908806fa5d3c34cc83e677382265fd6518aed2b6ca87411741b21d3f2b762 bytes=2277820
+  C18.1 markers=["spinon_runtime_gpu_host_new_c18_1_image_paint_fixture","spinon_runtime_gpu_host_eval_c18_1_image_paint_fixture","spinon-fixture:c18-1/static-png-visible","c18_1_image_report_json","c18-visible-image","c18-hidden-image"]; PNG97=true
+android-default.apk: files=1, bytes=69418538
+  android-default.apk: sha256=ead7d94c3cabb1582cd8391f150233229876644a9363693008f6755e002304bd bytes=69418538
+  C18.1 markers=[]; PNG97=false
+android-opt-in.apk: files=1, bytes=138364704
+  android-opt-in.apk: sha256=5ccbbf60c918a33c985b4a6ca7f68682c453d60bf5bdf590e72ec6f3d112e3cf bytes=138364704
+  C18.1 markers=["spinon_runtime_gpu_host_new_c18_1_image_paint_fixture","spinon_runtime_gpu_host_eval_c18_1_image_paint_fixture","spinon-fixture:c18-1/static-png-visible","c18_1_image_report_json","SPINON_C181","spinon_c181_image_paint","ImagePaintFixtureCaptureAdapter","C18.1 image overflow paint","c18-visible-image","c18-hidden-image"]; PNG97=true
+Android embedded default .so: files=1, bytes=58193112
+  android-default.apk!lib/arm64-v8a/libspinon_bootstrap.so: sha256=a3d536da057fc9c6021d645d0a154688b0ad9bb395600e4294a9c949a7bf3d33 bytes=58193112
+  C18.1 markers=[]; PNG97=false
+Android embedded opt-in .so: files=1, bytes=68941016
+  android-opt-in.apk!lib/arm64-v8a/libspinon_bootstrap.so: sha256=a99e17063d472ca1b423719e71f9f99809a3be32b6995a65f78434e7d3b11e7f bytes=68941016
+  C18.1 markers=["spinon_runtime_gpu_host_new_c18_1_image_paint_fixture","spinon_runtime_gpu_host_eval_c18_1_image_paint_fixture","spinon-fixture:c18-1/static-png-visible","c18_1_image_report_json","c18-visible-image","c18-hidden-image"]; PNG97=true
+ios-default.app recursive scan: files=4, bytes=28629765
+  ios-default.app/Info.plist: sha256=2be4d8938e5a56cee1be4b6bff24fb5a51c9e9054b14c6bcf4f011ea89c639bb bytes=790
+  ios-default.app/PkgInfo: sha256=82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0 bytes=8
+  ios-default.app/SpinonBootstrap: sha256=da32ced85eb80b3186cfa301b32a01caee2abc81e78a2935268a27908ce232c6 bytes=28611376
+  ios-default.app/app.js: sha256=a0254f51eebd28df0c25c77ab5bd3e53e0a91ec55de0df05e85a01164d643f4c bytes=17591
+  C18.1 markers=[]; PNG97=false
+ios-opt-in.app recursive scan: files=4, bytes=33102421
+  ios-opt-in.app/Info.plist: sha256=2be4d8938e5a56cee1be4b6bff24fb5a51c9e9054b14c6bcf4f011ea89c639bb bytes=790
+  ios-opt-in.app/PkgInfo: sha256=82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0 bytes=8
+  ios-opt-in.app/SpinonBootstrap: sha256=a40b9d549fd9ec31c388311dc69e39b6e3b8fba5b22856c0092731b778377479 bytes=33084032
+  ios-opt-in.app/app.js: sha256=a0254f51eebd28df0c25c77ab5bd3e53e0a91ec55de0df05e85a01164d643f4c bytes=17591
+  C18.1 markers=["spinon_runtime_gpu_host_new_c18_1_image_paint_fixture","spinon_runtime_gpu_host_eval_c18_1_image_paint_fixture","spinon-fixture:c18-1/static-png-visible","c18_1_image_report_json","SPINON_C181","--spinon-c181-image-paint","C18.1 image paint","c18-visible-image","c18-hidden-image","opaque PNG"]; PNG97=true
+payload: tests/fixtures/resources/c14-1-png-basic.png bytes=97 sha256=5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2

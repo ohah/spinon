@@ -94,6 +94,15 @@ val spinonC143AppFixtureTestValue = spinonC143AppFixtureTest.get()
 require(spinonC143AppFixtureTestValue == "0" || spinonC143AppFixtureTestValue == "1") {
     "SPINON_ENABLE_C14_3_APP_FIXTURE_TEST는 0 또는 1이어야 합니다."
 }
+val spinonC181ImagePaintFixtureTest =
+    providers.environmentVariable("SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST").orElse("0")
+val spinonC181ImagePaintFixtureTestValue = spinonC181ImagePaintFixtureTest.get()
+require(spinonC181ImagePaintFixtureTestValue == "0" || spinonC181ImagePaintFixtureTestValue == "1") {
+    "SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST는 0 또는 1이어야 합니다."
+}
+require(spinonC181ImagePaintFixtureTestValue != "1" || spinonC04RuntimeGpuValue == "1") {
+    "C18.1 image paint fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다."
+}
 val prepareSpinonBootstrap by tasks.registering(Exec::class) {
     workingDir = repoRoot
     environment("SPINON_ENABLE_S03_DOM_GC_FIXTURE", spinonS03DomGcFixture.get())
@@ -119,6 +128,7 @@ val prepareSpinonBootstrap by tasks.registering(Exec::class) {
     environment("SPINON_ENABLE_C14_1_APP_FIXTURE_TEST", spinonC141AppFixtureTestValue)
     environment("SPINON_ENABLE_C14_2_APP_FIXTURE_TEST", spinonC142AppFixtureTestValue)
     environment("SPINON_ENABLE_C14_3_APP_FIXTURE_TEST", spinonC143AppFixtureTestValue)
+    environment("SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST", spinonC181ImagePaintFixtureTestValue)
     commandLine("bash", "tools/build-android.sh")
 }
 
@@ -200,6 +210,11 @@ android {
             "SPINON_C143_APP_FIXTURE_TEST",
             (spinonC143AppFixtureTestValue == "1").toString(),
         )
+        buildConfigField(
+            "boolean",
+            "SPINON_IMAGE_PAINT_FIXTURE_TEST",
+            (spinonC181ImagePaintFixtureTestValue == "1").toString(),
+        )
     }
 
     buildFeatures {
@@ -211,6 +226,9 @@ android {
         jniLibs.srcDir(repoRoot.resolve("build/spinon/android/jniLibs"))
         if (spinonC133GestureFixtureTestValue == "1") {
             java.srcDir("src/c13_3_gesture_fixture_test/java")
+        }
+        if (spinonC181ImagePaintFixtureTestValue == "1") {
+            java.srcDir("src/c18_1_image_paint_fixture_test/java")
         }
     }
 }

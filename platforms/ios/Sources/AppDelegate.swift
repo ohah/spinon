@@ -43,7 +43,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         let c124RuntimeMatrixRunID = arguments.first {
             $0.hasPrefix("--spinon-c124-run-id=")
         }?.components(separatedBy: "=").last
-        let runRuntimeGpu = arguments.contains("--spinon-c0410-runtime-gpu")
+        let runRuntimeGpuBase = arguments.contains("--spinon-c0410-runtime-gpu")
             || arguments.contains("--spinon-c131-compact-surface-matrix")
             || arguments.contains("--spinon-c131-compact-hit-identity-grid")
             || arguments.contains("--spinon-c131-compact-metal-pixel-centers")
@@ -92,6 +92,12 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             || arguments.contains("--spinon-c124-stacking-context")
             || arguments.contains("--spinon-c124-depth-safety")
             || arguments.contains(where: { $0.hasPrefix("--spinon-c124-metal-surface-readback=") })
+#if SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1
+        let runRuntimeGpu = runRuntimeGpuBase
+            || arguments.contains("--spinon-c181-image-paint")
+#else
+        let runRuntimeGpu = runRuntimeGpuBase
+#endif
         let runR05AttributionProbe = arguments.contains("--spinon-r05-attribution")
         let runLifecycleProbe = arguments.contains("--spinon-dom-gc-auto")
         let runC142ImageRatioFixture = arguments.contains("--spinon-c142-image-ratio")

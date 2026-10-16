@@ -49,6 +49,14 @@ c14-3-app-fixture-test = [
     "dep:spinon-style-to-layout",
     "spinon-runtime/c14-1-live-v8-fixture-test",
 ]
+c18-1-image-paint-fixture-test = [
+    "c04-runtime-gpu-fixture-test",
+    "dep:spinon-core",
+    "dep:spinon-image",
+    "dep:spinon-layout",
+    "dep:sha2",
+    "spinon-runtime/c14-1-live-v8-fixture-test",
+]
 
 [dependencies]
 spinon-style = { path = "../spinon-style" }

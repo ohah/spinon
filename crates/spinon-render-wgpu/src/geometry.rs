@@ -1,5 +1,9 @@
 use bytemuck::{Pod, Zeroable};
 use spinon_render::{CssClip, RuntimePaint, RuntimeRenderSnapshot};
+use std::ops::Range;
+
+mod image;
+pub(crate) use image::{ImageGeometry, ImageVertex, build_image_geometry};
 
 #[repr(C)]
 #[derive(Clone, Copy, Debug, Pod, Zeroable)]
@@ -8,18 +12,46 @@ pub(crate) struct Vertex {
     color: [f32; 4],
 }
 
+pub(crate) struct ColoredGeometry {
+    pub(crate) vertices: Vec<Vertex>,
+    ranges: Vec<Range<u32>>,
+}
+
+impl ColoredGeometry {
+    pub(crate) fn empty() -> Self {
+        Self {
+            vertices: Vec::new(),
+            ranges: Vec::new(),
+        }
+    }
+
+    pub(crate) fn range_for_box(&self, index: usize) -> Option<Range<u32>> {
+        self.ranges.get(index).cloned()
+    }
+}
+
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub(crate) enum ColorEncoding {
     Linear,
     Srgb,
 }
 
+#[cfg(test)]
 pub(crate) fn build_vertices(
     scene: &RuntimeRenderSnapshot,
     width: u32,
     height: u32,
     color_encoding: ColorEncoding,
 ) -> Result<Vec<Vertex>, String> {
+    Ok(build_colored_geometry(scene, width, height, color_encoding)?.vertices)
+}
+
+pub(crate) fn build_colored_geometry(
+    scene: &RuntimeRenderSnapshot,
+    width: u32,
+    height: u32,
+    color_encoding: ColorEncoding,
+) -> Result<ColoredGeometry, String> {
     if width == 0 || height == 0 {
         return Err("WGPU 표면 크기는 0보다 커야 합니다".to_owned());
     }
@@ -41,12 +73,22 @@ pub(crate) fn build_vertices(
                     .count(),
             )
     });
-    let mut vertices = Vec::new();
-    vertices
+    let mut geometry = ColoredGeometry {
+        vertices: Vec::new(),
+        ranges: Vec::new(),
+    };
+    geometry
+        .vertices
         .try_reserve(quad_capacity.saturating_mul(6))
         .map_err(|_| "WGPU geometry 버퍼를 할당하지 못했습니다".to_owned())?;
+    geometry
+        .ranges
+        .try_reserve(scene.boxes().len())
+        .map_err(|_| "WGPU geometry draw 범위를 할당하지 못했습니다".to_owned())?;
 
     for render_box in scene.boxes() {
+        let first = u32::try_from(geometry.vertices.len())
+            .map_err(|_| "WGPU 정점 index가 범위를 넘었습니다".to_owned())?;
         let rect = render_box.frame_css_px();
         let clip = render_box.clip_css_px();
         let x = rect.x();
@@ -54,7 +96,7 @@ pub(crate) fn build_vertices(
         let right = x + rect.width();
         let bottom = y + rect.height();
         append_colored_rect(
-            &mut vertices,
+            &mut geometry.vertices,
             [x, y, right, bottom],
             render_box.paint(),
             clip,
@@ -72,7 +114,7 @@ pub(crate) fn build_vertices(
         let left_width = border.left().width_css_px().min(rect.width());
         let right_width = border.right().width_css_px().min(rect.width() - left_width);
         append_colored_rect(
-            &mut vertices,
+            &mut geometry.vertices,
             [x, y, right, y + top_width],
             border.top().paint(),
             clip,
@@ -81,7 +123,7 @@ pub(crate) fn build_vertices(
             color_encoding,
         );
         append_colored_rect(
-            &mut vertices,
+            &mut geometry.vertices,
             [
                 right - right_width,
                 y + top_width,
@@ -95,7 +137,7 @@ pub(crate) fn build_vertices(
             color_encoding,
         );
         append_colored_rect(
-            &mut vertices,
+            &mut geometry.vertices,
             [x, bottom - bottom_width, right, bottom],
             border.bottom().paint(),
             clip,
@@ -104,7 +146,7 @@ pub(crate) fn build_vertices(
             color_encoding,
         );
         append_colored_rect(
-            &mut vertices,
+            &mut geometry.vertices,
             [x, y + top_width, x + left_width, bottom - bottom_width],
             border.left().paint(),
             clip,
@@ -112,8 +154,11 @@ pub(crate) fn build_vertices(
             viewport.height(),
             color_encoding,
         );
+        let last = u32::try_from(geometry.vertices.len())
+            .map_err(|_| "WGPU 정점 index가 범위를 넘었습니다".to_owned())?;
+        geometry.ranges.push(first..last);
     }
-    Ok(vertices)
+    Ok(geometry)
 }
 
 fn append_colored_rect(
@@ -191,13 +236,17 @@ fn srgb_encoded(channel: u8) -> f32 {
 
 #[cfg(test)]
 mod tests {
-    use spinon_core::{EnvironmentRevision, HostDocument, NodeId, StyleRevision};
+    use spinon_core::{
+        EnvironmentRevision, HostDocument, IntrinsicSizeRevision, NodeId, StyleRevision,
+    };
     use spinon_render::{
-        CssAxisClip, CssClip, CssRect, CssSize, RuntimeBorder, RuntimeBorderSide, RuntimePaint,
-        RuntimeRenderBox, RuntimeRenderKey,
+        CssAxisClip, CssClip, CssRect, CssSize, RuntimeBorder, RuntimeBorderSide,
+        RuntimeImageResourceKey, RuntimePaint, RuntimeRenderBox, RuntimeRenderImage,
+        RuntimeRenderKey,
     };
 
-    use super::{ColorEncoding, build_vertices};
+    use super::{ColorEncoding, build_image_geometry, build_vertices};
+    use std::sync::Arc;
 
     fn scene() -> spinon_render::RuntimeRenderSnapshot {
         let document = HostDocument::new().unwrap();
@@ -226,6 +275,58 @@ mod tests {
                 ),
             ],
         )
+        .unwrap()
+    }
+
+    fn clipped_image_scene(clip: CssClip) -> spinon_render::RuntimeRenderSnapshot {
+        let document = HostDocument::new().unwrap();
+        let source_snapshot = document.snapshot();
+        let intrinsic_revision = IntrinsicSizeRevision::INITIAL.checked_next().unwrap();
+        let key = RuntimeRenderKey::new(
+            source_snapshot.generation(),
+            source_snapshot.document_revision(),
+            source_snapshot.render_tree_revision(),
+            StyleRevision::INITIAL,
+            EnvironmentRevision::INITIAL,
+        )
+        .with_intrinsic_size_revision(intrinsic_revision);
+        let image_node = NodeId::new(2).unwrap();
+        let image_source = RuntimeImageResourceKey::new(
+            source_snapshot.generation(),
+            source_snapshot.document_revision(),
+            source_snapshot.render_tree_revision(),
+            intrinsic_revision,
+        );
+        spinon_render::RuntimeRenderSnapshot::new(
+            key,
+            CssSize::new(80.0, 40.0).unwrap(),
+            vec![
+                RuntimeRenderBox::new(
+                    NodeId::new(1).unwrap(),
+                    CssRect::new(0.0, 0.0, 80.0, 40.0).unwrap(),
+                    RuntimePaint::None,
+                    0,
+                ),
+                RuntimeRenderBox::new(
+                    image_node,
+                    CssRect::new(45.0, 9.0, 24.0, 16.0).unwrap(),
+                    RuntimePaint::None,
+                    1,
+                )
+                .with_clip(clip),
+            ],
+        )
+        .unwrap()
+        .with_images(vec![
+            RuntimeRenderImage::new(
+                image_node,
+                image_source,
+                24,
+                16,
+                Arc::from(vec![255_u8; 24 * 16 * 4]),
+            )
+            .unwrap(),
+        ])
         .unwrap()
     }
 
@@ -344,5 +445,31 @@ mod tests {
         assert!(RuntimeBorderSide::new(f32::NAN, paint).is_err());
         assert!(RuntimeBorderSide::new(f32::INFINITY, paint).is_err());
         assert!(RuntimeBorderSide::new(-1.0, paint).is_err());
+    }
+
+    #[test]
+    fn image_clip_adjusts_uv_with_destination_and_preserves_top_row() {
+        let scene = clipped_image_scene(
+            CssClip::unconstrained().with_x(CssAxisClip::new(45.0, 61.0).unwrap()),
+        );
+        let geometry = build_image_geometry(&scene, 80, 40).unwrap();
+        assert_eq!(geometry.vertices.len(), 6);
+        assert_eq!(geometry.range_for_image(0), Some(0..6));
+        assert_eq!(geometry.vertices[0].uv, [0.0, 0.0]);
+        assert!((geometry.vertices[2].uv[0] - (16.0 / 24.0)).abs() < 1.0e-6);
+        assert_eq!(geometry.vertices[2].uv[1], 0.0);
+        assert!((geometry.vertices[5].uv[0] - (16.0 / 24.0)).abs() < 1.0e-6);
+        assert_eq!(geometry.vertices[5].uv[1], 1.0);
+        assert_eq!(geometry.vertices[0].position[1], 1.0 - 2.0 * 9.0 / 40.0);
+    }
+
+    #[test]
+    fn fully_clipped_image_has_an_empty_draw_range() {
+        let scene = clipped_image_scene(
+            CssClip::unconstrained().with_x(CssAxisClip::new(80.0, 90.0).unwrap()),
+        );
+        let geometry = build_image_geometry(&scene, 80, 40).unwrap();
+        assert!(geometry.vertices.is_empty());
+        assert_eq!(geometry.range_for_image(0), Some(0..0));
     }
 }

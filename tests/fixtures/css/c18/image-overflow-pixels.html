@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>C18.1 decoded image paint and overflow pixel oracle</title>
+    <style>
+      html, body { width: 80px; height: 40px; margin: 0; padding: 0; background: #101827; }
+      .parent {
+        position: absolute;
+        top: 4px;
+        width: 12px;
+        height: 16px;
+        padding: 4px;
+        border: 1px solid #f0c674;
+      }
+      #visible { left: 4px; overflow: visible; }
+      #hidden { left: 40px; overflow: hidden; }
+      img { display: block; }
+    </style>
+  </head>
+  <body>
+    <div class="parent" id="visible"><img id="visible-image" src="../../resources/c14-1-png-basic.png"></div>
+    <div class="parent" id="hidden"><img id="hidden-image" src="../../resources/c14-1-png-basic.png"></div>
+    <script>
+      window.read_c18_1_oracle = () => {
+        const box = (element) => {
+          const rect = element.getBoundingClientRect();
+          return { x: rect.x, y: rect.y, width: rect.width, height: rect.height };
+        };
+        return {
+          browser: navigator.userAgent,
+          viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio },
+          cases: ["visible", "hidden"].map((name) => {
+            const parent = document.getElementById(name);
+            const image = document.getElementById(`${name}-image`);
+            return {
+              id: name,
+              loaded: image.complete && image.naturalWidth > 0,
+              natural: { width: image.naturalWidth, height: image.naturalHeight },
+              parent: box(parent),
+              image: box(image),
+              overflow: getComputedStyle(parent).overflow,
+              borderRightColor: getComputedStyle(parent).borderRightColor,
+            };
+          }),
+        };
+      };
+    </script>
+  </body>
+</html>

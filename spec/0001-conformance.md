@@ -49,6 +49,8 @@ C13.3 normalized wheel runtime의 고정 입력, Chrome 155 oracle, 축별 사�
 
 C14.1 live V8 image measurement의 고정 Chrome 155 PNG oracle, V8 JS 생성 입력, actor-owned HostDocument snapshot, source/revision identity와 CSS px frame 판정은 `plan/c14-1-live-v8-image-measurement.md`에 기록한다. Android/iOS Simulator opt-in report는 실제 V8 변경 문서 snapshot을 기존 decoder/layout adapter에 연결하는 내부 evidence이며, product resource loader·async replacement·image paint 또는 공개 CSS 지원을 판정하지 않는다.
 
+C18.1은 같은 제한 PNG fixture를 live V8→WGPU 실제 image paint로 연결해 Android API 37 AVD PixelCopy와 iPhone 17 Pro/iOS 26.2 Simulator Metal drawable에서 visible border-overpaint/overflow 및 hidden padding-edge clip 표본을 검사한다. 이는 고정 opaque natural-size PNG 하나의 opt-in 내부 profile이며, 제품 image loader·공개 HTML/CSS 지원·C14/C18/U05 전체를 완료로 표시하지 않는다. 계약은 [0064](internal/0064-c18-1-image-paint.md), 실행·artifact 근거는 [C18.1 evidence](internal/evidence/c18-1-image-paint-artifact-boundary-2026-10-16/README.md)에 둔다.
+
 ## 시나리오 카탈로그
 
 첫 적합성 시나리오의 필드와 제안 목록은 [0009 적합성 시나리오 카탈로그](0009-conformance-scenarios.md)에 둔다. 이 버전의 일곱 시나리오는 모두 제안·미실행이며 공개 API의 지원 상태를 바꾸지 않는다. 플랫폼별 실행 근거가 갖춰지면 결과를 분리해 기록하고, `지원` 표기는 이 문서의 조건과 구현 상태 대장에 따라 별도로 판정한다.
