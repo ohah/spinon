@@ -107,6 +107,8 @@ Android negative control은 default Rust FFI archive와 최종 `.so`에서, iOS�
 
 초기 host FFI end-to-end 시험은 test harness에 Android/iOS V8 provider가 없어 isolate 초기화에서 실패했다. 이를 제품 실패나 통과로 숨기지 않았다. V8 문서 생성·layout·stale control은 실제 Android/iOS opt-in app route에서 확인하고, host actor와 PNG reference 경계는 각 focused unit test에서 확인했다.
 
+PR diff 별도 적대 검토 30개와 수정 후 focused 검증은 [C14.1 PR 변경 검토](../c14-1-live-v8-pr-delta-review-30-2026-10-16.md)에 기록했다.
+
 ## 남은 경계
 
 이 adapter는 고정 bytes를 직접 디코드하고 report를 반환한다. 제품 네트워크 loader·캐시·재시도·async replacement admission·실제 `img` paint·Metal/GPU surface pixel·border 밖 overflow·실기기는 검증하지 않는다. 두 screenshot은 image pixel이나 overflow clip의 증거가 아니다. C14.1과 상위 C14는 체크하지 않는다.
