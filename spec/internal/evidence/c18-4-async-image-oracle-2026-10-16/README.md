@@ -8,12 +8,12 @@
 - B에서 500 ms 지연 C(4×2 green)로 바꾼 40 ms 뒤에는 `complete=false`, natural size `0×0`이었다. C decode 완료 뒤 natural size는 4×2이고 표본은 `[32,220,80,255]`였다.
 - 손상 PNG는 `decode()`가 `EncodingError`로 reject됐고 `error` event를 발생시켰다. `load`는 없었고 완료 상태에서 natural size는 0×0이었다. Chrome UA broken-image icon을 보존한 실패 화면이다.
 
-![Chrome 155 broken-image 화면](oracle/chrome155-broken.png)
+![Chrome 155 broken-image 화면](./oracle/chrome155-broken.png)
 - 손상 응답 뒤 D(2×1 purple)는 다시 `load`되어 표본 `[200,40,220,255]`를 만들었다.
 - 별도 auto-size 이미지에서 첫 A pending은 frame 0×0, A decode 뒤는 2×2였다. A에서 C source로 교체한 pending state는 natural size 0×0과 이전 2×2 frame을 기록했고, C decode 뒤 frame은 4×2로 바뀌었다. 아래 pending 화면은 C decode 뒤 A source로 교체한 상태에서 이전 C 픽셀이 사라지고 frame 4×2가 유지됨을 보인다. 이 결과는 성공한 source의 intrinsic size가 교체 decode 완료 때 재레이아웃되는 경로만 고정한다.
 - auto-size 이미지에서 실패 후 UA가 선택한 frame은 0×0이 아니며 viewport 사용 가능 너비를 반영했다. 그 auto-size failure fallback은 renderer profile 범위에 넣지 않고 fixed-frame 실패 경계와 분리한다.
 
-![기존 decoded source를 교체한 Chrome 155 pending 화면](oracle/chrome155-auto-pending-visible.png)
+![기존 decoded source를 교체한 Chrome 155 pending 화면](./oracle/chrome155-auto-pending-visible.png)
 
 ## 파일과 SHA-256
 
