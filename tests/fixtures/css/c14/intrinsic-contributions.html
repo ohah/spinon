@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>C14.3 replaced intrinsic contribution and percentage oracle</title>
+    <style>
+      * { box-sizing: content-box; }
+      html, body { margin: 0; padding: 0; }
+      body { font: 14px/1.25 sans-serif; color: #18212b; }
+      #cases { display: grid; grid-template-columns: repeat(3, 220px); gap: 12px; }
+      .case { border: 1px solid #5d7185; padding: 4px; min-height: 150px; }
+      .basis-200x120 { width: 200px; height: 120px; min-height: 0; }
+      .basis-12x120 { width: 12px; height: 120px; }
+      .basis-flex { display: flex; flex-flow: row nowrap; align-items: flex-start; width: 200px; height: 120px; border: 1px solid #5d7185; padding: 4px; }
+      .basis-grid { display: grid; grid-template-columns: 200px; grid-template-rows: 120px; align-items: start; width: 200px; height: 120px; border: 1px solid #5d7185; padding: 4px; }
+      img { display: block; }
+      #min-content { width: min-content; height: auto; }
+      #max-content { width: max-content; height: auto; }
+      #fit-content-small-basis { width: fit-content; height: auto; }
+      #percent-width { width: 50%; height: auto; }
+      #percent-height { width: auto; height: 50%; }
+      #fit-content-max-clamped { width: fit-content; height: auto; max-width: 12px; }
+      #percent-cyclic-width { width: 50%; height: auto; }
+      #percent-cyclic-basis { width: min-content; }
+      #flex-min-content { flex: 0 0 auto; width: min-content; height: auto; }
+      #flex-percent-width { flex: 0 0 auto; width: 50%; height: auto; }
+      #flex-percent-height { flex: 0 0 auto; width: auto; height: 50%; }
+      #grid-min-content { width: min-content; height: auto; }
+      #grid-percent-width { width: 50%; height: auto; }
+      #grid-percent-height { width: auto; height: 50%; }
+      .case-label { margin-bottom: 4px; }
+    </style>
+  </head>
+  <body>
+    <main id="cases">
+      <section class="case" data-case="min-content"><div class="case-label">min-content</div><img id="min-content" src="../../resources/c14-1-png-basic.png"></section>
+      <section class="case" data-case="max-content"><div class="case-label">max-content</div><img id="max-content" src="../../resources/c14-1-png-basic.png"></section>
+      <section class="case basis-12x120" data-case="fit-content-small-basis"><div class="case-label">fit-content / 12px basis</div><img id="fit-content-small-basis" src="../../resources/c14-1-png-basic.png"></section>
+      <section class="case basis-200x120" data-case="percent-width"><div class="case-label">50% width / definite 200px</div><img id="percent-width" src="../../resources/c14-1-png-basic.png"></section>
+      <section class="case basis-200x120" data-case="percent-height"><div class="case-label">50% height / definite 120px</div><img id="percent-height" src="../../resources/c14-1-png-basic.png"></section>
+      <section class="case basis-200x120" data-case="fit-content-max-clamped"><div class="case-label">fit-content / max-width 12px</div><img id="fit-content-max-clamped" src="../../resources/c14-1-png-basic.png"></section>
+      <section class="case" data-case="percent-cyclic-width"><div class="case-label">50% width / min-content parent</div><div id="percent-cyclic-basis" data-basis><img id="percent-cyclic-width" src="../../resources/c14-1-png-basic.png"></div></section>
+      <section class="case" data-case="flex-min-content"><div class="case-label">Flex min-content</div><div class="basis-flex" data-basis><img id="flex-min-content" src="../../resources/c14-1-png-basic.png"></div></section>
+      <section class="case" data-case="flex-percent-width"><div class="case-label">Flex 50% width / definite 200px</div><div class="basis-flex" data-basis><img id="flex-percent-width" src="../../resources/c14-1-png-basic.png"></div></section>
+      <section class="case" data-case="flex-percent-height"><div class="case-label">Flex 50% height / definite 120px</div><div class="basis-flex" data-basis><img id="flex-percent-height" src="../../resources/c14-1-png-basic.png"></div></section>
+      <section class="case" data-case="grid-min-content"><div class="case-label">Grid min-content</div><div class="basis-grid" data-basis><img id="grid-min-content" src="../../resources/c14-1-png-basic.png"></div></section>
+      <section class="case" data-case="grid-percent-width"><div class="case-label">Grid 50% width / definite 200px</div><div class="basis-grid" data-basis><img id="grid-percent-width" src="../../resources/c14-1-png-basic.png"></div></section>
+      <section class="case" data-case="grid-percent-height"><div class="case-label">Grid 50% height / definite 120px</div><div class="basis-grid" data-basis><img id="grid-percent-height" src="../../resources/c14-1-png-basic.png"></div></section>
+    </main>
+    <script>
+      window.read_c14_3_oracle = () => {
+      const cases = Array.from(document.querySelectorAll('[data-case]'), section => {
+        const image = section.querySelector('img');
+        const basis = section.querySelector('[data-basis]') || section;
+        const sectionBox = section.getBoundingClientRect();
+        const basisBox = basis.getBoundingClientRect();
+        const imageBox = image.getBoundingClientRect();
+        return {
+          id: section.dataset.case,
+          loaded: image.complete && image.naturalWidth > 0,
+          natural: { width: image.naturalWidth, height: image.naturalHeight },
+          container: { x: sectionBox.x, y: sectionBox.y, width: sectionBox.width, height: sectionBox.height },
+          basis: { x: basisBox.x, y: basisBox.y, width: basisBox.width, height: basisBox.height },
+          image: { x: imageBox.x, y: imageBox.y, width: imageBox.width, height: imageBox.height },
+          computed: { width: getComputedStyle(image).width, height: getComputedStyle(image).height }
+        };
+      });
+      return {
+        browser: navigator.userAgent,
+        viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio },
+        imageSource: new URL(document.querySelector('img').src).pathname,
+        cases
+      };
+      };
+    </script>
+  </body>
+</html>
