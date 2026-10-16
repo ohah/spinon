@@ -1,0 +1,660 @@
+{
+  "browser": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "platform": "MacIntel",
+    "language": "ko-KR",
+    "viewport": {
+      "width": 1280,
+      "height": 633,
+      "dpr": 1
+    },
+    "fonts": {
+      "ahem": true,
+      "roboto": true
+    }
+  },
+  "cases": {
+    "nested-short": {
+      "rect": [
+        0,
+        0,
+        50,
+        10
+      ],
+      "fragments": [
+        [
+          0,
+          0,
+          50,
+          10
+        ]
+      ],
+      "textNodes": [
+        {
+          "text": "XX",
+          "owner": "inner-short",
+          "rects": [
+            [
+              8,
+              0,
+              20,
+              10
+            ]
+          ]
+        }
+      ],
+      "style": {
+        "font": "10px / 10px Ahem, sans-serif",
+        "lineHeight": "10px",
+        "verticalAlign": "baseline",
+        "borderLeft": "0px",
+        "paddingLeft": "0px"
+      }
+    },
+    "outer-short": {
+      "rect": [
+        0,
+        -3,
+        36,
+        16
+      ],
+      "fragments": [
+        [
+          0,
+          -3,
+          36,
+          16
+        ]
+      ],
+      "style": {
+        "font": "10px / 10px Ahem, sans-serif",
+        "lineHeight": "10px",
+        "verticalAlign": "baseline",
+        "borderLeft": "1px",
+        "paddingLeft": "2px"
+      }
+    },
+    "inner-short": {
+      "rect": [
+        3,
+        -5,
+        30,
+        20
+      ],
+      "fragments": [
+        [
+          3,
+          -5,
+          30,
+          20
+        ]
+      ],
+      "style": {
+        "font": "10px / 10px Ahem, sans-serif",
+        "lineHeight": "10px",
+        "verticalAlign": "baseline",
+        "borderLeft": "2px",
+        "paddingLeft": "3px"
+      }
+    },
+    "nested-wrap": {
+      "rect": [
+        0,
+        0,
+        30,
+        20
+      ],
+      "fragments": [
+        [
+          0,
+          0,
+          30,
+          20
+        ]
+      ],
+      "textNodes": [
+        {
+          "text": "XX XX",
+          "owner": "inner-wrap",
+          "rects": [
+            [
+              4,
+              0,
+              20,
+              10
+            ],
+            [
+              0,
+              10,
+              20,
+              10
+            ]
+          ]
+        }
+      ],
+      "style": {
+        "font": "10px / 10px Ahem, sans-serif",
+        "lineHeight": "10px",
+        "verticalAlign": "baseline",
+        "borderLeft": "0px",
+        "paddingLeft": "0px"
+      }
+    },
+    "outer-wrap": {
+      "rect": [
+        0,
+        -2,
+        24,
+        24
+      ],
+      "fragments": [
+        [
+          0,
+          -2,
+          24,
+          14
+        ],
+        [
+          0,
+          8,
+          24,
+          14
+        ]
+      ],
+      "style": {
+        "font": "10px / 10px Ahem, sans-serif",
+        "lineHeight": "10px",
+        "verticalAlign": "baseline",
+        "borderLeft": "1px",
+        "paddingLeft": "1px"
+      }
+    },
+    "inner-wrap": {
+      "rect": [
+        0,
+        -2,
+        24,
+        24
+      ],
+      "fragments": [
+        [
+          2,
+          -2,
+          22,
+          14
+        ],
+        [
+          0,
+          8,
+          22,
+          14
+        ]
+      ],
+      "style": {
+        "font": "10px / 10px Ahem, sans-serif",
+        "lineHeight": "10px",
+        "verticalAlign": "baseline",
+        "borderLeft": "1px",
+        "paddingLeft": "1px"
+      }
+    },
+    "anonymous-flow": {
+      "rect": [
+        0,
+        0,
+        30,
+        40
+      ],
+      "fragments": [
+        [
+          0,
+          0,
+          30,
+          40
+        ]
+      ],
+      "textNodes": [
+        {
+          "text": "X",
+          "owner": "anonymous-flow",
+          "rects": [
+            [
+              0,
+              0,
+              10,
+              10
+            ]
+          ]
+        },
+        {
+          "text": "XX",
+          "owner": "flow-before",
+          "rects": [
+            [
+              10,
+              0,
+              20,
+              10
+            ]
+          ]
+        },
+        {
+          "text": "XX",
+          "owner": "flow-block",
+          "rects": [
+            [
+              0,
+              10,
+              20,
+              10
+            ]
+          ]
+        },
+        {
+          "text": "X XX",
+          "owner": "flow-after",
+          "rects": [
+            [
+              0,
+              20,
+              10,
+              10
+            ],
+            [
+              0,
+              30,
+              20,
+              10
+            ]
+          ]
+        }
+      ],
+      "style": {
+        "font": "10px / 10px Ahem, sans-serif",
+        "lineHeight": "10px",
+        "verticalAlign": "baseline",
+        "borderLeft": "0px",
+        "paddingLeft": "0px"
+      }
+    },
+    "flow-before": {
+      "rect": [
+        10,
+        0,
+        20,
+        10
+      ],
+      "fragments": [
+        [
+          10,
+          0,
+          20,
+          10
+        ]
+      ],
+      "style": {
+        "font": "10px / 10px Ahem, sans-serif",
+        "lineHeight": "10px",
+        "verticalAlign": "baseline",
+        "borderLeft": "0px",
+        "paddingLeft": "0px"
+      }
+    },
+    "flow-block": {
+      "rect": [
+        0,
+        10,
+        30,
+        10
+      ],
+      "fragments": [
+        [
+          0,
+          10,
+          30,
+          10
+        ]
+      ],
+      "style": {
+        "font": "10px / 10px Ahem, sans-serif",
+        "lineHeight": "10px",
+        "verticalAlign": "baseline",
+        "borderLeft": "0px",
+        "paddingLeft": "0px"
+      }
+    },
+    "flow-after": {
+      "rect": [
+        0,
+        20,
+        20,
+        20
+      ],
+      "fragments": [
+        [
+          0,
+          20,
+          10,
+          10
+        ],
+        [
+          0,
+          30,
+          20,
+          10
+        ]
+      ],
+      "style": {
+        "font": "10px / 10px Ahem, sans-serif",
+        "lineHeight": "10px",
+        "verticalAlign": "baseline",
+        "borderLeft": "0px",
+        "paddingLeft": "0px"
+      }
+    },
+    "ahem-baseline": {
+      "rect": [
+        0,
+        0,
+        30,
+        10
+      ],
+      "fragments": [
+        [
+          0,
+          0,
+          30,
+          10
+        ]
+      ],
+      "textNodes": [
+        {
+          "text": "X",
+          "owner": "ahem-baseline",
+          "rects": [
+            [
+              0,
+              0,
+              10,
+              10
+            ]
+          ]
+        },
+        {
+          "text": "X",
+          "owner": "ahem-baseline",
+          "rects": [
+            [
+              11,
+              0,
+              10,
+              10
+            ]
+          ]
+        }
+      ],
+      "style": {
+        "font": "10px / 10px Ahem, sans-serif",
+        "lineHeight": "10px",
+        "verticalAlign": "baseline",
+        "borderLeft": "0px",
+        "paddingLeft": "0px"
+      }
+    },
+    "ahem-marker": {
+      "rect": [
+        10,
+        8,
+        1,
+        0
+      ],
+      "fragments": [
+        [
+          10,
+          8,
+          1,
+          0
+        ]
+      ],
+      "style": {
+        "font": "10px / 10px Ahem, sans-serif",
+        "lineHeight": "10px",
+        "verticalAlign": "baseline",
+        "borderLeft": "0px",
+        "paddingLeft": "0px"
+      }
+    },
+    "roboto-metrics": {
+      "rect": [
+        0,
+        0,
+        93.4063,
+        24
+      ],
+      "fragments": [
+        [
+          0,
+          0,
+          93.4063,
+          24
+        ]
+      ],
+      "textNodes": [
+        {
+          "text": "Hgyp",
+          "owner": "roboto-metrics",
+          "rects": [
+            [
+              0,
+              0,
+              46.2031,
+              24
+            ]
+          ]
+        },
+        {
+          "text": "Hgyp",
+          "owner": "roboto-metrics",
+          "rects": [
+            [
+              47.2031,
+              0,
+              46.2031,
+              24
+            ]
+          ]
+        }
+      ],
+      "style": {
+        "font": "20px / 24px RobotoFixture, sans-serif",
+        "lineHeight": "24px",
+        "verticalAlign": "baseline",
+        "borderLeft": "0px",
+        "paddingLeft": "0px"
+      }
+    },
+    "roboto-marker": {
+      "rect": [
+        46.2031,
+        19,
+        1,
+        0
+      ],
+      "fragments": [
+        [
+          46.2031,
+          19,
+          1,
+          0
+        ]
+      ],
+      "style": {
+        "font": "20px / 24px RobotoFixture, sans-serif",
+        "lineHeight": "24px",
+        "verticalAlign": "baseline",
+        "borderLeft": "0px",
+        "paddingLeft": "0px"
+      }
+    },
+    "mixed-baseline": {
+      "rect": [
+        0,
+        0,
+        160,
+        24
+      ],
+      "fragments": [
+        [
+          0,
+          0,
+          160,
+          24
+        ]
+      ],
+      "textNodes": [
+        {
+          "text": "X",
+          "owner": "mixed-baseline",
+          "rects": [
+            [
+              0,
+              11,
+              10,
+              10
+            ]
+          ]
+        },
+        {
+          "text": "Hgyp",
+          "owner": "mixed-roboto",
+          "rects": [
+            [
+              11,
+              0,
+              46.2031,
+              24
+            ]
+          ]
+        },
+        {
+          "text": "Hgyp",
+          "owner": "mixed-roboto",
+          "rects": [
+            [
+              58.2031,
+              0,
+              46.2031,
+              24
+            ]
+          ]
+        },
+        {
+          "text": "X",
+          "owner": "mixed-baseline",
+          "rects": [
+            [
+              104.4063,
+              11,
+              10,
+              10
+            ]
+          ]
+        }
+      ],
+      "style": {
+        "font": "10px / 10px Ahem, sans-serif",
+        "lineHeight": "10px",
+        "verticalAlign": "baseline",
+        "borderLeft": "0px",
+        "paddingLeft": "0px"
+      }
+    },
+    "mixed-ahem-marker": {
+      "rect": [
+        10,
+        19,
+        1,
+        0
+      ],
+      "fragments": [
+        [
+          10,
+          19,
+          1,
+          0
+        ]
+      ],
+      "style": {
+        "font": "10px / 10px Ahem, sans-serif",
+        "lineHeight": "10px",
+        "verticalAlign": "baseline",
+        "borderLeft": "0px",
+        "paddingLeft": "0px"
+      }
+    },
+    "mixed-roboto": {
+      "rect": [
+        11,
+        0,
+        93.4063,
+        24
+      ],
+      "fragments": [
+        [
+          11,
+          0,
+          93.4063,
+          24
+        ]
+      ],
+      "style": {
+        "font": "20px / 24px RobotoFixture, sans-serif",
+        "lineHeight": "24px",
+        "verticalAlign": "baseline",
+        "borderLeft": "0px",
+        "paddingLeft": "0px"
+      }
+    },
+    "mixed-roboto-marker": {
+      "rect": [
+        57.2031,
+        19,
+        1,
+        0
+      ],
+      "fragments": [
+        [
+          57.2031,
+          19,
+          1,
+          0
+        ]
+      ],
+      "style": {
+        "font": "20px / 24px RobotoFixture, sans-serif",
+        "lineHeight": "24px",
+        "verticalAlign": "baseline",
+        "borderLeft": "0px",
+        "paddingLeft": "0px"
+      }
+    }
+  },
+  "canvasMetrics": [
+    {
+      "font": "10px Ahem",
+      "advance": 40,
+      "fontBoundingBoxAscent": 8,
+      "fontBoundingBoxDescent": 2,
+      "actualBoundingBoxAscent": 8,
+      "actualBoundingBoxDescent": 2
+    },
+    {
+      "font": "20px RobotoFixture",
+      "advance": 46.1914,
+      "fontBoundingBoxAscent": 19,
+      "fontBoundingBoxDescent": 5,
+      "actualBoundingBoxAscent": 14.2188,
+      "actualBoundingBoxDescent": 4.2676
+    }
+  ]
+}

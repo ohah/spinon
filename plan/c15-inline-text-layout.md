@@ -3,7 +3,7 @@
 **상태:** 구현 전 계획 · C15와 C16 상태는 미완료 유지<br>
 **상위:** [상태 대장 C15/C16](../spec/STATUS.md) · [범위와 적합성](../spec/0001-conformance.md) · [UI 트리와 이벤트](../spec/0002-ui-tree-events.md)<br>
 **연결:** C19.3 text painter는 C15/C16 결과를 소비하기 전 완료할 수 없다.<br>
-**사전 관찰:** [Chrome 155 비교 입력·값·화면](../spec/internal/evidence/c15-inline-text-precomparison-2026-10-17/README.md)
+**사전 관찰:** [C15.1 Chrome 155 비교 입력·값·화면](../spec/internal/evidence/c15-inline-text-precomparison-2026-10-17/README.md) · [C15.2 중첩 inline·line box·anonymous block 기준](../spec/internal/evidence/c15-2-inline-text-precomparison-2026-10-17/README.md)
 
 ## 목표
 
@@ -43,6 +43,26 @@ HostDocument의 실제 text node와 inline element를 CSS inline formatting cont
 - line box 계산은 ascent/descent, explicit `line-height`, inline box baseline을 실제 font metrics에서 가져온다. Ahem baseline fixture와 서로 다른 ascent/descent의 font fixture를 모두 사용한다.
 - mixed block/inline children은 CSS anonymous block box 생성 순서를 별도 고정 fixture로 추가한 뒤 연결한다. 구현하지 않은 요소는 식별 가능한 diagnostic을 남긴다.
 
+#### C15.2 고정 acceptance oracle
+
+[Chrome 155 수치와 fixture](../spec/internal/evidence/c15-2-inline-text-precomparison-2026-10-17/README.md)는 C15.1 plain span과 다른 decorated/nested 입력이다. fixture의 DOM geometry는 CSS px에서 `0.05px` 이내로 비교하고, 별도 line fragment를 합친 union rectangle로 대체하지 않는다.
+
+| ID | 입력 | 사전 기대 관찰 |
+| --- | --- | --- |
+| `nested-short` | Ahem `10px/10px`, paragraph width `50px`; outer span border `1px`/padding `2px`, inner span border `2px`/padding `3px`, text `XX` | paragraph `50×10px`; outer rect `[0,-3,36,16]`, inner rect `[3,-5,30,20]`, text range `[8,0,20,10]`. inline box의 vertical border/padding은 fragment rect를 확장하지만 line box 높이를 키우지 않는다. |
+| `nested-wrap` | Ahem `10px/10px`, width `30px`; 두 단계 span에 border/padding `1px`, text `XX XX` | line box `30×20px`; text rect는 `[4,0,20,10]`, `[0,10,20,10]`; outer fragments는 `[0,-2,24,14]`, `[0,8,24,14]`; inner fragments는 `[2,-2,22,14]`, `[0,8,22,14]`. inline-start edge는 첫 fragment, inline-end edge는 마지막 fragment 폭에 반영한다. |
+| `ahem-baseline` | Ahem `10px/10px`, baseline marker | line box `30×10px`; baseline은 top에서 `8px` 아래다. |
+| `roboto-metrics` | Roboto `20px/24px`, `Hgyp` 두 run과 baseline marker | paragraph `93.4063×24px`; 각 DOM text range advance `46.2031px`; baseline은 top에서 `19px` 아래다. Canvas font ascent/descent `19px/5px`, actual glyph bounds `14.2188px/4.2676px`를 보존한다. Canvas advance `46.1914px`와 DOM geometry advance를 서로 바꾸어 쓰지 않는다. |
+| `mixed-baseline` | Ahem `10px/10px` parent 안에 Roboto `20px/24px` baseline-aligned span | 한 줄 높이 `24px`; Roboto run top `0px`; Ahem text top `11px`; 두 font baseline marker는 top에서 `19px` 아래다. 단일 paragraph font scalar만 쓰는 C15.2a 구현 gate가 아니라 per-run font metric consumer의 후속 fixture다. |
+| `anonymous-flow` | Ahem `10px/10px`, width `30px`; inline `X<span>XX</span>`, direct block `XX`, trailing inline `X XX` | parent `30×40px`; 선행 inline line y=`0`, block rect `[0,10,30,10]`, 후행 inline line y=`20`,`30`이며 source order를 유지한다. 이 topology를 연결하기 전까지 mixed block/inline은 명시 diagnostic을 반환한다. |
+
+#### 구현 순서와 경계
+
+- C15.2a는 최대 두 단계 HTML inline span, 고정 font/line-height, run font metrics로 계산한 line baseline과 px border/padding fixture를 연결한다. 각 inline owner는 덮은 line마다 별도 fragment를 가지며 text source order와 UTF-16 range를 보존한다. `nested-short`, `nested-wrap`, `ahem-baseline`, `roboto-metrics`를 이 slice의 required cases로 둔다.
+- C15.2b는 `mixed-baseline`처럼 서로 다른 inline run font metric을 같은 line box에서 조합하고, `anonymous-flow`의 직접 block child 앞뒤 inline sequence를 anonymous block flow로 정규화한다. 해당 입력이 연결되기 전에는 이 항목을 지원하거나 C15.2 완료로 표시하지 않는다.
+- C15.2a는 inline margin, non-baseline `vertical-align`, replaced inline object, 세 단계 이상 nesting, mixed block child, bidi/vertical writing을 지원 범위로 넓히지 않는다. 각 지원 밖 topology/property는 `auto`/0/default style로 강등하지 않고 node와 stage가 드러나는 diagnostic을 반환한다.
+- 모든 nested/decorated span geometry는 같은 paragraph snapshot, font/style/document/environment revision과 available width에 묶인다. measure와 final layout의 width가 다르면 해당 snapshot을 재사용하지 않는다.
+
 ### C15.3 · Unicode shaping·glyph paint·layout 소비처
 
 - Hangul, CJK line-break, combining sequence, ligature, Arabic/Bidi 및 emoji sequence를 실제 glyph/run 결과로 확인한다. 이 단계에는 font fallback 전 범위를 포함하지 않으며, 각 script를 제공하는 고정 fixture font를 지정한다. 지정 폰트가 없는 환경에서는 system fallback에 의존하지 않는다.
@@ -73,7 +93,7 @@ Geometry 판정은 CSS px에서 line count, parent/frame size, fragment rect, gl
 
 사전 비교 fixture의 `inline-fragment` case는 border 1px를 포함한 C15.2 기준이다. C15.1의 `plain-inline-fragment` 관찰은 동일한 Agent Browser page에서 span border를 끈 변형으로 측정했고, 원본 precomparison fixture와 screenshot은 변경하지 않는다. `long-word`의 0px 폭은 별도 DOM mutation observation으로 기록하고 원본 fixture는 그대로 둔다. 두 slice의 rect를 서로의 acceptance oracle로 섞지 않는다.
 
-첫 구현 전에 fixture HTML와 font SHA를 변경 없이 유지하거나, 변경 사유·새 Chrome 관찰값을 plan review 20회부터 다시 검토한다. WPT는 실행할 파일 path와 WPT commit SHA를 구현 전에 고정하고, Chrome oracle pass를 Spinon WPT pass로 부르지 않는다.
+C15.1 fixture/font와 observation은 수정하지 않는다. C15.2 전용 fixture와 Chrome observation을 추가할 때는 기존 범위와 섞지 않고 새 artifact hash를 고정한다. C15.2 oracle/범위 amendment는 새 실패 관점 20개로 계획을 검토하고 별도 계획 PR의 diff도 30개 관점으로 검토한 뒤 병합한다. 계획 PR 병합 전에 C15.2 제품 코드를 바꾸지 않는다. WPT는 실행할 파일 path와 WPT commit SHA를 구현 전에 고정하고, Chrome oracle pass를 Spinon WPT pass로 부르지 않는다.
 
 ## 내부 자료 모델과 revision 경계
 
@@ -124,7 +144,7 @@ C15 완료는 C15.1–C15.3 입력 class의 text shaping, inline fragment/line b
 
 ## 작업 순서
 
-1. 이 계획과 Chrome observation/artifact hash를 검토하고, 계획 실패 관점 20개를 해결한다. `spec/STATUS.md` C15 row는 미완료 상태로 계획/근거 링크만 추가한다.
+1. 기본 계획의 20개 검토와 C15.1/C15.2 Chrome observation/artifact hash를 각각 확인한다. 새 C15.2 범위·oracle amendment는 기존 계획 검토를 재사용하지 않고 별도 실패 관점 20개와 PR diff 30개를 통과한 뒤 병합한다. `spec/STATUS.md` C15 row는 미완료 상태로 계획/근거 링크만 추가한다.
 2. 계획 PR 병합 후 구현 직전에 Parley `=0.12.0` API·font ownership·line-break reshaping gate와 Taffy `CalcLayoutTree` adapter를 잠금된 dependency source에서 확인한다. public default profile과 fixture-only font registry 경계를 확정한다.
 3. internal C15.1 contract와 style/document/font revision preconditions를 정의한다. 고정 Chrome precomparison, C15 fixture, WPT paths/revision, expected geometry를 구현 전 comparator에 연결한다.
 4. actual shaping result로 `TextLayoutSnapshot`을 생성하고 Taffy Block available-size와 연동한다. measure callback 두 번째 호출과 changed width, negative/error/stale snapshot, anonymous inline fragments를 focused Rust tests로 검증한다.
