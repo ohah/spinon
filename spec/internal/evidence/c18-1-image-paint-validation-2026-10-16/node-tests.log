@@ -1,0 +1,24 @@
+✔ 9개 표면 표본·screenshot pixel과 네 anchor를 exact 비교한다 (4.519958ms)
+✔ manifest hash가 맞아도 screenshot pixel 불일치를 거부한다 (1.893792ms)
+✔ screenshot hash 불일치를 거부한다 (0.599833ms)
+✔ surface PixelCopy/Metal PNG의 pixel 불일치를 거부한다 (1.08425ms)
+✔ surface log에서 잘못된 좌표와 exact=false를 거부한다 (0.668875ms)
+✔ geometry log와 canvas origin이 다른 manifest를 거부한다 (1.103416ms)
+✔ fixture 안에 놓인 screenshot anchor를 거부한다 (0.891167ms)
+✔ 같은 색상으로 중복된 anchor를 거부한다 (1.206208ms)
+✔ 중복 screenshot 표본 좌표를 거부한다 (0.830125ms)
+✔ 불완전한 surface summary를 거부한다 (0.642292ms)
+✔ 표본이 아닌 surface PNG capture를 거부한다 (0.67ms)
+✔ fixture 이동 뒤 이전 경로에 Rust 사본이 남지 않는다 (0.735291ms)
+✔ CSS reference 도구가 삭제된 Rust fixture 경로를 참조하지 않는다 (19.070542ms)
+✔ 이동한 fixture 구현은 정해진 fixtures 모듈 경로에 있다 (0.1755ms)
+✔ 작업별 FFI fixture 모듈은 runtime 소스 루트에 남지 않는다 (1.112667ms)
+✔ 앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리된다 (6.548459ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 68.370833

@@ -8,7 +8,10 @@ use spinon_runtime::{RuntimeLayoutState, RuntimeSession, TaskPriority};
 use spinon_style::{CssColorScheme, CssMediaEnvironment};
 #[cfg(feature = "c13-3-gesture-fixture-test")]
 use std::sync::Arc;
-#[cfg(feature = "c13-2-scroll-fixture-test")]
+#[cfg(any(
+    feature = "c13-2-scroll-fixture-test",
+    feature = "c18-1-image-paint-fixture-test"
+))]
 use std::sync::atomic::AtomicBool;
 use std::sync::{Mutex, MutexGuard, PoisonError};
 use std::time::Duration;
@@ -65,9 +68,14 @@ struct RuntimeGpuHost {
         feature = "c12-4-metal-surface-readback-test",
         feature = "c11-grid-metal-surface-pixels-test",
         feature = "c13-1-overflow-clip-fixture-test",
-        feature = "c13-2-scroll-fixture-test"
+        feature = "c13-2-scroll-fixture-test",
+        feature = "c18-1-image-paint-fixture-test"
     ))]
     surface_pixel_readback_test: bool,
+    #[cfg(feature = "c18-1-image-paint-fixture-test")]
+    c18_1_image_paint_fixture: bool,
+    #[cfg(feature = "c18-1-image-paint-fixture-test")]
+    c18_1_image_document_ready: AtomicBool,
     #[cfg(feature = "c13-2-scroll-fixture-test")]
     c13_2_scroll_state: Mutex<Option<RuntimeRenderSnapshot>>,
     #[cfg(feature = "c13-2-scroll-fixture-test")]
@@ -80,6 +88,18 @@ struct RuntimeGpuHost {
     presentation: PresentationScenes,
     renderer: Mutex<Option<RuntimeRenderer>>,
     pending_uikit_surface: Mutex<Option<PendingRuntimeSurface>>,
+}
+
+struct WaitAndPublishOptions {
+    include_node_frame_report: bool,
+    #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
+    include_c13_1_hit_test_report: bool,
+    #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
+    include_c13_1_border_hit_test_report: bool,
+    #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
+    include_c13_1_compact_surface_matrix_hit_test_report: bool,
+    #[cfg(feature = "c18-1-image-paint-fixture-test")]
+    attach_c18_1_images: bool,
 }
 
 impl RuntimeGpuHost {
@@ -115,9 +135,14 @@ impl RuntimeGpuHost {
                 feature = "c12-4-metal-surface-readback-test",
                 feature = "c11-grid-metal-surface-pixels-test",
                 feature = "c13-1-overflow-clip-fixture-test",
-                feature = "c13-2-scroll-fixture-test"
+                feature = "c13-2-scroll-fixture-test",
+                feature = "c18-1-image-paint-fixture-test"
             ))]
             surface_pixel_readback_test: false,
+            #[cfg(feature = "c18-1-image-paint-fixture-test")]
+            c18_1_image_paint_fixture: false,
+            #[cfg(feature = "c18-1-image-paint-fixture-test")]
+            c18_1_image_document_ready: AtomicBool::new(false),
             #[cfg(feature = "c13-2-scroll-fixture-test")]
             c13_2_scroll_state: Mutex::new(None),
             #[cfg(feature = "c13-2-scroll-fixture-test")]
@@ -160,10 +185,7 @@ impl RuntimeGpuHost {
         &self,
         sequence: u64,
         layout_timeout_millis: u64,
-        include_node_frame_report: bool,
-        _include_c13_1_hit_test_report: bool,
-        _include_c13_1_border_hit_test_report: bool,
-        _include_c13_1_compact_surface_matrix_hit_test_report: bool,
+        options: WaitAndPublishOptions,
     ) -> Result<String, (i32, String)> {
         let snapshot = self
             .session
@@ -226,6 +248,23 @@ impl RuntimeGpuHost {
                 "runtime GPU profile의 장면이 없습니다".to_owned(),
             ));
         };
+        #[cfg(feature = "c18-1-image-paint-fixture-test")]
+        let (scene, c18_1_image_report) = if options.attach_c18_1_images {
+            let document = self
+                .session
+                .snapshot_document_for_c14_1_fixture()
+                .map_err(|error| {
+                    (
+                        ERR_LAYOUT,
+                        format!("C18.1 V8 document snapshot 실패: {error}"),
+                    )
+                })?;
+            fixtures::c18_1::attach_images(&document, scene).map_err(|error| (ERR_LAYOUT, error))?
+        } else {
+            (scene, String::new())
+        };
+        #[cfg(not(feature = "c18-1-image-paint-fixture-test"))]
+        let (scene, c18_1_image_report) = (scene, String::new());
         #[cfg(feature = "c13-2-scroll-fixture-test")]
         let scene = self.reapply_c13_2_scroll_state(scene)?;
         #[cfg(feature = "c13-3-gesture-fixture-test")]
@@ -264,7 +303,7 @@ impl RuntimeGpuHost {
             String::new()
         };
         #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
-        let hit_test_report = if _include_c13_1_compact_surface_matrix_hit_test_report {
+        let hit_test_report = if options.include_c13_1_compact_surface_matrix_hit_test_report {
             let samples = fixtures::c13_1_compact_surface_matrix::hit_test_samples_json(
                 &scene,
                 &completed.frames,
@@ -279,11 +318,11 @@ impl RuntimeGpuHost {
             format!(
                 " hit_test_samples_json={samples} hit_identity_grid_summary_json={hit_identity_grid}"
             )
-        } else if _include_c13_1_hit_test_report {
+        } else if options.include_c13_1_hit_test_report {
             let samples = c13_1_hit_test_samples_json(&scene, &completed.frames)
                 .map_err(|error| (ERR_LAYOUT, error))?;
             format!(" hit_test_samples_json={samples}")
-        } else if _include_c13_1_border_hit_test_report {
+        } else if options.include_c13_1_border_hit_test_report {
             let samples = c13_1_border_hit_test_samples_json(&scene, &completed.frames)
                 .map_err(|error| (ERR_LAYOUT, error))?;
             format!(" hit_test_samples_json={samples}")
@@ -297,6 +336,11 @@ impl RuntimeGpuHost {
                 ERR_STALE,
                 "새로운 화면 요청이 도착해 오래된 장면을 거부했습니다".to_owned(),
             ));
+        }
+        #[cfg(feature = "c18-1-image-paint-fixture-test")]
+        if options.attach_c18_1_images {
+            self.c18_1_image_document_ready
+                .store(true, std::sync::atomic::Ordering::Release);
         }
         #[cfg(feature = "c13-3-gesture-fixture-test")]
         if let Some(state) = &self.c13_3_gesture_state
@@ -316,7 +360,7 @@ impl RuntimeGpuHost {
             .first()
             .map(|frame| format!(" root_frame_css_px={}x{}", frame.width, frame.height))
             .unwrap_or_default();
-        let node_frame_report = if include_node_frame_report {
+        let node_frame_report = if options.include_node_frame_report {
             let frames = completed
                 .frames
                 .iter()
@@ -334,7 +378,7 @@ impl RuntimeGpuHost {
             String::new()
         };
         Ok(format!(
-            "layout={} boxes={} generation={} document_revision={} render_tree_revision={} style_revision={} environment_revision={} cacheHit={} cascadeRecomputedStyleElements={} cascadeReusedStyleElements={} cascadeContextStyleElements={}{}{}{}{}{}",
+            "layout={} boxes={} generation={} document_revision={} render_tree_revision={} style_revision={} environment_revision={} cacheHit={} cascadeRecomputedStyleElements={} cascadeReusedStyleElements={} cascadeContextStyleElements={}{}{}{}{}{}{}",
             snapshot.state.as_str(),
             box_count,
             completed.key.generation,
@@ -351,6 +395,7 @@ impl RuntimeGpuHost {
             node_frame_report,
             paint_order_report,
             hit_test_report,
+            c18_1_image_report,
         ))
     }
 
@@ -394,13 +439,25 @@ impl RuntimeGpuHost {
                 environment,
             )
             .map_err(|error| (ERR_LAYOUT, format!("CSS runtime 환경 갱신 실패: {error:?}")))?;
+        #[cfg(feature = "c18-1-image-paint-fixture-test")]
+        let attach_c18_1_images = self.c18_1_image_paint_fixture
+            && self
+                .c18_1_image_document_ready
+                .load(std::sync::atomic::Ordering::Acquire);
         let ready = self.wait_and_publish(
             sequence,
             layout_timeout_millis,
-            self.include_node_frame_report,
-            false,
-            false,
-            false,
+            WaitAndPublishOptions {
+                include_node_frame_report: self.include_node_frame_report,
+                #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
+                include_c13_1_hit_test_report: false,
+                #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
+                include_c13_1_border_hit_test_report: false,
+                #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
+                include_c13_1_compact_surface_matrix_hit_test_report: false,
+                #[cfg(feature = "c18-1-image-paint-fixture-test")]
+                attach_c18_1_images,
+            },
         )?;
         Ok(format!("environment_revision={} {ready}", revision.get()))
     }
@@ -430,26 +487,21 @@ impl RuntimeGpuHost {
             .invalidate_scene()
             .map_err(|error| (ERR_STALE, error))?;
         let response = self.session.eval(source, TaskPriority::UserVisible);
-        #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
-        let include_c13_1_hit_test_report = self.include_c13_1_hit_test_report;
-        #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
-        let include_c13_1_border_hit_test_report = self.include_c13_1_border_hit_test_report;
-        #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
-        let include_c13_1_compact_surface_matrix_hit_test_report =
-            self.include_c13_1_compact_surface_matrix_hit_test_report;
-        #[cfg(not(feature = "c13-1-overflow-clip-fixture-test"))]
-        let include_c13_1_hit_test_report = false;
-        #[cfg(not(feature = "c13-1-overflow-clip-fixture-test"))]
-        let include_c13_1_border_hit_test_report = false;
-        #[cfg(not(feature = "c13-1-overflow-clip-fixture-test"))]
-        let include_c13_1_compact_surface_matrix_hit_test_report = false;
         let ready = self.wait_and_publish(
             sequence,
             layout_timeout_millis,
-            include_node_frame_report,
-            include_c13_1_hit_test_report,
-            include_c13_1_border_hit_test_report,
-            include_c13_1_compact_surface_matrix_hit_test_report,
+            WaitAndPublishOptions {
+                include_node_frame_report,
+                #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
+                include_c13_1_hit_test_report: self.include_c13_1_hit_test_report,
+                #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
+                include_c13_1_border_hit_test_report: self.include_c13_1_border_hit_test_report,
+                #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
+                include_c13_1_compact_surface_matrix_hit_test_report: self
+                    .include_c13_1_compact_surface_matrix_hit_test_report,
+                #[cfg(feature = "c18-1-image-paint-fixture-test")]
+                attach_c18_1_images: self.c18_1_image_paint_fixture,
+            },
         );
         match (response.status, ready) {
             (0, Ok(ready)) => Ok(format!("{} {ready}", response.report)),

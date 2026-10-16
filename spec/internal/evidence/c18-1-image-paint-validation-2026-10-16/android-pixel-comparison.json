@@ -1,0 +1,21 @@
+{
+  "status": "matched",
+  "platform": "android-avd",
+  "screenshotSizePx": [
+    1080,
+    2400
+  ],
+  "surfaceSizePx": [
+    210,
+    105
+  ],
+  "cssViewportPx": [
+    80,
+    40
+  ],
+  "surfaceGeneration": 2,
+  "readbackSamples": 9,
+  "surfacePngSamples": 9,
+  "screenshotSamples": 9,
+  "screenshotAnchors": 4
+}

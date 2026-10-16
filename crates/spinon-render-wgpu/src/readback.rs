@@ -3,8 +3,9 @@ use std::time::Duration;
 
 use spinon_render::RuntimeRenderSnapshot;
 
-use crate::geometry::{ColorEncoding, build_vertices};
+use crate::geometry::{ColorEncoding, build_colored_geometry};
 use crate::renderer::create_pipeline;
+use crate::renderer::images::RuntimeImageRenderer;
 
 /// 같은 runtime scene·shader·geometry 경로를 headless texture에 그려 표본을 읽습니다.
 /// 앱 공개 API가 아니라 고정 Chromium fixture 검증용입니다.
@@ -59,10 +60,10 @@ pub fn readback_runtime_scene_samples(
     });
     let view = texture.create_view(&wgpu::TextureViewDescriptor::default());
     let pipeline = create_pipeline(&device, format);
-    let vertices = build_vertices(scene, width, height, ColorEncoding::Linear)?;
-    let vertex_count = u32::try_from(vertices.len())
-        .map_err(|_| "WGPU readback 정점 수가 범위를 넘었습니다".to_owned())?;
-    let bytes = bytemuck::cast_slice(&vertices);
+    let mut image_renderer = RuntimeImageRenderer::new(&device, &queue, format)?;
+    let prepared_images = image_renderer.prepare(&device, &queue, Some(scene), width, height)?;
+    let geometry = build_colored_geometry(scene, width, height, ColorEncoding::Linear)?;
+    let bytes = bytemuck::cast_slice(&geometry.vertices);
     let vertex_buffer_size = u64::try_from(
         bytes
             .len()
@@ -117,10 +118,21 @@ pub fn readback_runtime_scene_samples(
             occlusion_query_set: None,
             multiview_mask: None,
         });
-        if vertex_count != 0 {
-            pass.set_pipeline(&pipeline);
-            pass.set_vertex_buffer(0, vertex_buffer.slice(..));
-            pass.draw(0..vertex_count, 0..1);
+        for (box_index, render_box) in scene.boxes().iter().enumerate() {
+            if let Some(range) = geometry.range_for_box(box_index)
+                && !range.is_empty()
+            {
+                pass.set_pipeline(&pipeline);
+                pass.set_vertex_buffer(0, vertex_buffer.slice(..));
+                pass.draw(range, 0..1);
+            }
+            if let Some(image_index) = scene
+                .images()
+                .iter()
+                .position(|image| image.node_id() == render_box.node_id())
+            {
+                image_renderer.draw_image(&mut pass, &prepared_images, image_index);
+            }
         }
     }
     encoder.copy_texture_to_buffer(

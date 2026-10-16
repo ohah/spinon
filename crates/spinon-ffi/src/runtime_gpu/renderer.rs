@@ -75,7 +75,8 @@ impl RuntimeGpuHost {
             feature = "c12-4-metal-surface-readback-test",
             feature = "c11-grid-metal-surface-pixels-test",
             feature = "c13-1-overflow-clip-fixture-test",
-            feature = "c13-2-scroll-fixture-test"
+            feature = "c13-2-scroll-fixture-test",
+            feature = "c18-1-image-paint-fixture-test"
         ))]
         let (renderer, report) = if self.surface_pixel_readback_test {
             RuntimeRenderer::initialize_uikit_surface_with_copy_src(pending, width, height)?
@@ -86,7 +87,8 @@ impl RuntimeGpuHost {
             feature = "c12-4-metal-surface-readback-test",
             feature = "c11-grid-metal-surface-pixels-test",
             feature = "c13-1-overflow-clip-fixture-test",
-            feature = "c13-2-scroll-fixture-test"
+            feature = "c13-2-scroll-fixture-test",
+            feature = "c18-1-image-paint-fixture-test"
         )))]
         let (renderer, report) = RuntimeRenderer::initialize_uikit_surface(pending, width, height)?;
         *renderer_slot = Some(renderer);
@@ -105,7 +107,7 @@ impl RuntimeGpuHost {
     }
 
     pub(super) fn resize(&self, width: u32, height: u32) -> Result<(), (i32, String)> {
-        let sequence = self
+        let _sequence = self
             .invalidate_scene()
             .map_err(|error| (ERR_STALE, error))?;
         let result = lock(&self.renderer)
@@ -124,7 +126,7 @@ impl RuntimeGpuHost {
         if result.is_ok()
             && let Some(state) = &self.c13_3_gesture_state
             && let Ok(snapshot) = state.current_snapshot()
-            && !self.presentation.publish(sequence, snapshot)
+            && !self.presentation.publish(_sequence, snapshot)
         {
             return Err((
                 ERR_STALE,
@@ -145,6 +147,7 @@ impl RuntimeGpuHost {
             .draw_if(snapshot, || self.presentation_sequence() == sequence)
             .map_err(|error| (ERR_LAYOUT, error.to_string()))?;
         let surface_texture_size = renderer.last_surface_texture_size();
+        let image_draw_count = renderer.last_image_draw_count();
         let pixel_samples = renderer.take_surface_pixel_samples_for_test();
         drop(renderer_slot);
         if !presented {
@@ -188,6 +191,10 @@ impl RuntimeGpuHost {
                 "presented empty scene while runtime calculation is pending presentation_sequence={sequence}"
             ),
         };
+        let runtime_image_count = snapshot.map_or(0, |scene| scene.images().len());
+        report.push_str(&format!(
+            " runtime_image_count={runtime_image_count} image_draw_count={image_draw_count}"
+        ));
         if let Some(samples) = pixel_samples {
             for sample in &samples {
                 report.push_str(&format!(
@@ -221,14 +228,15 @@ impl RuntimeGpuHost {
         feature = "c12-4-metal-surface-readback-test",
         feature = "c11-grid-metal-surface-pixels-test",
         feature = "c13-1-overflow-clip-fixture-test",
-        feature = "c13-2-scroll-fixture-test"
+        feature = "c13-2-scroll-fixture-test",
+        feature = "c18-1-image-paint-fixture-test"
     ))]
     pub(super) fn request_surface_pixel_readback_for_test(
         &self,
         points: &[(u32, u32)],
     ) -> Result<String, String> {
         if !self.surface_pixel_readback_test {
-            return Err("Metal surface pixel readback 전용 host가 아닙니다".to_owned());
+            return Err("surface pixel readback 전용 host가 아닙니다".to_owned());
         }
         let mut renderer_slot = lock(&self.renderer);
         let renderer = renderer_slot

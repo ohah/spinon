@@ -23,6 +23,7 @@
     "css:capture:c13-3-style-invalidation-simulators": "node tools/css-reference/capture-c13-3-style-invalidation-simulators.mjs",
     "test:css-c13-3-style-invalidation-simulators": "node --test tools/css-reference/capture-c13-3-style-invalidation-simulators.test.mjs",
     "test:css-c13-2-visible-overflow-surface-pixels": "node --test tools/css-reference/compare-c13-2-visible-overflow-surface-pixels.test.mjs",
+    "test:css-c18-1-compositor-pixels": "node --test tools/css-reference/compare-c181-compositor-pixels.test.mjs",
     "css:compare:c13-2-visible-overflow-surface-pixels": "node tools/css-reference/compare-c13-2-visible-overflow-surface-pixels.mjs",
     "css:compare:c13-1-surface-pixel-centers": "node tools/css-reference/compare-c13-1-surface-pixel-centers.mjs",
     "css:verify:c13-1-android-avd-full-surface": "node tools/css-reference/capture-c13-1-android-avd-full-surface.mjs",

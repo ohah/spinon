@@ -1,6 +1,9 @@
 pub(crate) mod data;
 mod host;
 
+#[cfg(feature = "c18-1-image-paint-fixture-test")]
+pub(super) mod c18_1;
+
 pub(crate) mod c11;
 pub(crate) mod c11_2_2;
 #[cfg(feature = "c11-2-3-grid-fixture-test")]

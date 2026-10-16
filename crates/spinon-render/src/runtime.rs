@@ -8,11 +8,14 @@ use spinon_core::{
 
 use super::{CssRect, CssSize, OpaqueCssSrgb};
 
+mod image;
 mod scroll;
 mod scroll_gesture;
 mod scroll_gesture_session;
 mod scroll_input_queue;
 mod snapshot;
+
+pub use image::{RuntimeImageResourceKey, RuntimeRenderImage};
 
 pub use scroll::{
     RuntimeOverscrollBehavior, RuntimeScrollClipLayer, RuntimeScrollContainer,
@@ -403,6 +406,7 @@ pub struct RuntimeRenderSnapshot {
     base_boxes: Arc<[RuntimeRenderBox]>,
     scroll_containers: Arc<[RuntimeScrollContainer]>,
     scroll_metadata: Arc<[RuntimeScrollRenderMetadata]>,
+    images: Arc<[RuntimeRenderImage]>,
 }
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -421,6 +425,12 @@ pub enum RuntimeRenderError {
     InvalidScrollPoint,
     InvalidScrollDelta,
     ScrollRevisionExhausted,
+    DuplicateImage(NodeId),
+    ImageNodeMissing(NodeId),
+    InvalidImageSource(NodeId),
+    InvalidImageBytes(NodeId),
+    InvalidImageFrame(NodeId),
+    UnsupportedImageBorder(NodeId),
 }
 
 impl fmt::Display for RuntimeRenderError {
@@ -474,6 +484,39 @@ impl fmt::Display for RuntimeRenderError {
             }
             Self::ScrollRevisionExhausted => {
                 formatter.write_str("runtime scroll state revision 번호를 더 증가시킬 수 없습니다")
+            }
+            Self::DuplicateImage(node) => {
+                write!(formatter, "runtime image node {node}가 중복됩니다")
+            }
+            Self::ImageNodeMissing(node) => {
+                write!(
+                    formatter,
+                    "runtime image node {node}가 render snapshot에 없습니다"
+                )
+            }
+            Self::InvalidImageSource(node) => {
+                write!(
+                    formatter,
+                    "runtime image node {node}의 source revision이 다릅니다"
+                )
+            }
+            Self::InvalidImageBytes(node) => {
+                write!(
+                    formatter,
+                    "runtime image node {node}의 RGBA8 크기가 유효하지 않습니다"
+                )
+            }
+            Self::InvalidImageFrame(node) => {
+                write!(
+                    formatter,
+                    "runtime image node {node} frame이 자연 크기와 다릅니다"
+                )
+            }
+            Self::UnsupportedImageBorder(node) => {
+                write!(
+                    formatter,
+                    "runtime image node {node}의 border는 지원하지 않습니다"
+                )
             }
         }
     }

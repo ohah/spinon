@@ -8,7 +8,10 @@ use raw_window_handle::{
 };
 use spinon_render::RuntimeRenderSnapshot;
 
-use crate::geometry::{Vertex, build_vertices};
+use crate::geometry::{ColoredGeometry, Vertex, build_colored_geometry};
+
+pub(crate) mod images;
+use images::RuntimeImageRenderer;
 
 mod backend;
 use backend::{android_auto_backend_order, backend_from_abi, choose_sdr_format, color_encoding};
@@ -61,6 +64,8 @@ pub struct RuntimeRenderer {
     queue: wgpu::Queue,
     config: wgpu::SurfaceConfiguration,
     pipeline: wgpu::RenderPipeline,
+    image_renderer: RuntimeImageRenderer,
+    last_image_draw_count: usize,
     vertex_buffer: wgpu::Buffer,
     vertex_capacity: u64,
     vertex_count: u32,
@@ -247,8 +252,7 @@ impl RuntimeRenderer {
         let capabilities = surface.get_capabilities(&adapter);
         if copy_surface_to_buffer && !capabilities.usages.contains(wgpu::TextureUsages::COPY_SRC) {
             return Err(RuntimeRendererError::Initialization(
-                "iOS Metal surface가 직접 texture readback용 COPY_SRC를 지원하지 않습니다"
-                    .to_owned(),
+                "WGPU surface가 직접 texture readback용 COPY_SRC를 지원하지 않습니다".to_owned(),
             ));
         }
         if copy_surface_to_buffer {
@@ -267,6 +271,8 @@ impl RuntimeRenderer {
             surface.configure(&device, &config);
         }
         let pipeline = create_pipeline(&device, config.format);
+        let image_renderer = RuntimeImageRenderer::new(&device, &queue, config.format)
+            .map_err(RuntimeRendererError::Initialization)?;
         let vertex_capacity = std::mem::size_of::<Vertex>() as u64;
         let vertex_buffer = device.create_buffer(&wgpu::BufferDescriptor {
             label: Some("spinon-runtime-gpu-vertices"),
@@ -282,6 +288,8 @@ impl RuntimeRenderer {
                 queue,
                 config,
                 pipeline,
+                image_renderer,
+                last_image_draw_count: 0,
                 vertex_buffer,
                 vertex_capacity,
                 vertex_count: 0,
@@ -324,6 +332,10 @@ impl RuntimeRenderer {
 
     pub fn last_surface_texture_size(&self) -> (u32, u32) {
         self.last_surface_texture_size
+    }
+
+    pub fn last_image_draw_count(&self) -> usize {
+        self.last_image_draw_count
     }
 
     #[doc(hidden)]
@@ -382,17 +394,63 @@ impl RuntimeRenderer {
                 "C04.10 시험용으로 다음 draw를 실패시켰습니다".to_owned(),
             ));
         }
-        let vertices = match scene {
-            Some(scene) => build_vertices(
+        let geometry = match scene {
+            Some(scene) => build_colored_geometry(
                 scene,
                 self.config.width,
                 self.config.height,
                 color_encoding(self.config.format),
             )
-            .map_err(RuntimeRendererError::Geometry)?,
-            None => Vec::new(),
+            .map_err(RuntimeRendererError::Geometry),
+            None => Ok(ColoredGeometry::empty()),
         };
-        self.upload_vertices(&vertices)?;
+        let geometry = match geometry {
+            Ok(geometry) => geometry,
+            Err(error) => {
+                discard_surface_pixel_samples(
+                    &mut self.pending_surface_pixel_samples,
+                    &mut self.last_surface_pixel_samples,
+                );
+                return Err(error);
+            }
+        };
+        if !is_current() {
+            discard_surface_pixel_samples(
+                &mut self.pending_surface_pixel_samples,
+                &mut self.last_surface_pixel_samples,
+            );
+            return Ok(false);
+        }
+        let prepared_images = match self.image_renderer.prepare(
+            &self.device,
+            &self.queue,
+            scene,
+            self.config.width,
+            self.config.height,
+        ) {
+            Ok(images) => images,
+            Err(error) => {
+                discard_surface_pixel_samples(
+                    &mut self.pending_surface_pixel_samples,
+                    &mut self.last_surface_pixel_samples,
+                );
+                return Err(RuntimeRendererError::Geometry(error));
+            }
+        };
+        if let Err(error) = self.upload_vertices(&geometry.vertices) {
+            discard_surface_pixel_samples(
+                &mut self.pending_surface_pixel_samples,
+                &mut self.last_surface_pixel_samples,
+            );
+            return Err(error);
+        }
+        if !is_current() {
+            discard_surface_pixel_samples(
+                &mut self.pending_surface_pixel_samples,
+                &mut self.last_surface_pixel_samples,
+            );
+            return Ok(false);
+        }
         let frame = match self.surface.get_current_texture() {
             wgpu::CurrentSurfaceTexture::Success(frame) => frame,
             wgpu::CurrentSurfaceTexture::Suboptimal(frame) => {
@@ -436,6 +494,7 @@ impl RuntimeRenderer {
             .create_command_encoder(&wgpu::CommandEncoderDescriptor {
                 label: Some("spinon-runtime-gpu-command-encoder"),
             });
+        let mut image_draw_count = 0;
         {
             let mut pass = encoder.begin_render_pass(&wgpu::RenderPassDescriptor {
                 label: Some("spinon-runtime-gpu-pass"),
@@ -453,12 +512,29 @@ impl RuntimeRenderer {
                 occlusion_query_set: None,
                 multiview_mask: None,
             });
-            if self.vertex_count != 0 {
-                pass.set_pipeline(&self.pipeline);
-                pass.set_vertex_buffer(0, self.vertex_buffer.slice(..));
-                pass.draw(0..self.vertex_count, 0..1);
+            if let Some(scene) = scene {
+                for (box_index, render_box) in scene.boxes().iter().enumerate() {
+                    if let Some(range) = geometry.range_for_box(box_index)
+                        && !range.is_empty()
+                    {
+                        pass.set_pipeline(&self.pipeline);
+                        pass.set_vertex_buffer(0, self.vertex_buffer.slice(..));
+                        pass.draw(range, 0..1);
+                    }
+                    if let Some(image_index) = scene
+                        .images()
+                        .iter()
+                        .position(|image| image.node_id() == render_box.node_id())
+                        && self
+                            .image_renderer
+                            .draw_image(&mut pass, &prepared_images, image_index)
+                    {
+                        image_draw_count += 1;
+                    }
+                }
             }
         }
+        self.last_image_draw_count = image_draw_count;
         if !is_current() {
             discard_surface_pixel_samples(
                 &mut self.pending_surface_pixel_samples,

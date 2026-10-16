@@ -876,6 +876,22 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 #endif
 }
 
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST) && \
+    SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST
++ (uint64_t)createRuntimeGpuHostWithC18_1ImagePaintFixture {
+  std::array<char, 2048> output{};
+  SpinonRuntimeGpuHost *host = spinon_runtime_gpu_host_new_c18_1_image_paint_fixture(
+      output.data(), output.size());
+  if (host == nullptr) {
+    os_log_error(OS_LOG_DEFAULT, "SPINON_C181_HOST_ERROR=%{public}s", output.data());
+    return 0;
+  }
+  os_log(OS_LOG_DEFAULT, "SPINON_C181_HOST=%{public}s", output.data());
+  return static_cast<uint64_t>(reinterpret_cast<uintptr_t>(host));
+}
+#endif
+
 #if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
 + (uint64_t)createRuntimeGpuHostWithC13_3GestureFixture:(int32_t)scenarioID {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
@@ -1561,6 +1577,22 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 #endif
 }
 
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST) && \
+    SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST
++ (NSString *)evalRuntimeGpuC18_1ImagePaintFixture:(uint64_t)handle {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 32768> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_c18_1_image_paint_fixture(
+      host, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C181_EVAL", report);
+  return report;
+}
+#endif
+
 + (NSString *)evalRuntimeGpuC13_1CompactSurfaceMatrixFixture:(uint64_t)handle {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
     defined(SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST) && \
@@ -1834,6 +1866,24 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
   return @"status=-90 feature-disabled";
 #endif
 }
+
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST) && \
+    SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST
++ (NSString *)requestRuntimeGpuC18_1SurfacePixelsForTest:(uint64_t)handle
+                                                   sampleXY:(const uint32_t *)sampleXY
+                                                sampleCount:(NSUInteger)sampleCount {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 1024> output{};
+  const int32_t status = spinon_runtime_gpu_host_request_c18_1_surface_pixels_for_test(
+      host, sampleXY, sampleCount, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C181_METAL_PIXEL_REQUEST", report);
+  return report;
+}
+#endif
 
 + (NSString *)evalRuntimeGpuC11_1GridFixture:(uint64_t)handle {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU

@@ -2,6 +2,17 @@ use super::super::RuntimeGpuHost;
 use spinon_runtime::RuntimeSession;
 
 impl RuntimeGpuHost {
+    #[cfg(feature = "c18-1-image-paint-fixture-test")]
+    pub(in crate::runtime_gpu) fn new_c18_1_image_paint_fixture() -> Result<(Self, String), String>
+    {
+        let (session, report) = RuntimeSession::new_runtime_gpu_block_flex_overflow_clip_fixture()?;
+        let mut host = Self::from_session_with_frame_report(session);
+        host.include_paint_order_report = true;
+        host.c18_1_image_paint_fixture = true;
+        host.surface_pixel_readback_test = true;
+        Ok((host, report))
+    }
+
     pub(in crate::runtime_gpu) fn new_registered_properties_fixture()
     -> Result<(Self, String), String> {
         let (session, report) = RuntimeSession::new_runtime_gpu_registered_properties_fixture()?;

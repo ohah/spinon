@@ -38,6 +38,7 @@ const canonicalFixtureSources = [
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c13_3_scroll_gesture_host.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c13_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c18_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11_3_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11_3_2.rs',
@@ -45,6 +46,7 @@ const canonicalFixtureSources = [
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c13_3.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c13_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11.rs',
+  'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c18_1.rs',
   'crates/spinon-ffi/src/runtime_ua_cascade/fixtures.rs',
   'crates/spinon-ffi/src/runtime_ua_cascade/fixtures/probe.rs',
   'crates/spinon-ffi/src/runtime_ua_cascade/fixtures/layout_probe.rs',
@@ -163,6 +165,18 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
     resolve(repositoryRoot, 'tests/fixtures/css/c13/runtime-scroll-gesture-c13-3.js'),
     'utf8',
   );
+  const c18RuntimeFixture = await readFile(
+    resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/fixtures/c18_1.rs'),
+    'utf8',
+  );
+  const c18FfiFixture = await readFile(
+    resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c18_1.rs'),
+    'utf8',
+  );
+  const c18RuntimeScript = await readFile(
+    resolve(repositoryRoot, 'tests/fixtures/css/c18/runtime-image-overflow-c18-1.js'),
+    'utf8',
+  );
   const cargoManifest = await readFile(
     resolve(repositoryRoot, 'crates/spinon-ffi/Cargo.toml'),
     'utf8',
@@ -171,12 +185,24 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
     resolve(repositoryRoot, 'platforms/android/app/src/main/cpp/spinon_jni.cc'),
     'utf8',
   );
+  const androidGradleSource = await readFile(
+    resolve(repositoryRoot, 'platforms/android/app/build.gradle.kts'),
+    'utf8',
+  );
   const androidActivitySource = await readFile(
     resolve(repositoryRoot, 'platforms/android/app/src/main/java/dev/spinon/bootstrap/MainActivity.java'),
     'utf8',
   );
   const androidGpuDemoSource = await readFile(
     resolve(repositoryRoot, 'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java'),
+    'utf8',
+  );
+  const androidImagePaintCaptureAdapter = await readFile(
+    resolve(repositoryRoot, 'platforms/android/app/src/c18_1_image_paint_fixture_test/java/dev/spinon/bootstrap/ImagePaintFixtureCaptureAdapter.java'),
+    'utf8',
+  );
+  const androidImagePaintNativeAdapter = await readFile(
+    resolve(repositoryRoot, 'platforms/android/app/src/c18_1_image_paint_fixture_test/java/dev/spinon/bootstrap/ImagePaintFixtureNativeAdapter.java'),
     'utf8',
   );
   const androidBuildScript = await readFile(
@@ -319,4 +345,56 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
     /enqueueRuntimeGpuC13_3Wheel:[\s\S]*?spinon_runtime_gpu_host_enqueue_c13_3_wheel/);
   assert.match(iosGpuDemoSource,
     /#if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1[\s\S]*?withC13_3GestureFixture:/);
+  assert.match(runtimeFixtureSource,
+    /#\[cfg\(feature = "c18-1-image-paint-fixture-test"\)\]\s*pub\(super\) mod c18_1;/);
+  assert.match(ffiFixtureSource,
+    /#\[cfg\(feature = "c18-1-image-paint-fixture-test"\)\]\s*mod c18_1;/);
+  assert.match(cargoManifest,
+    /c18-1-image-paint-fixture-test\s*=\s*\[[\s\S]*?"c04-runtime-gpu-fixture-test"[\s\S]*?"dep:spinon-image"[\s\S]*?"spinon-runtime\/c14-1-live-v8-fixture-test"[\s\S]*?\]/);
+  assert.match(c18RuntimeFixture,
+    /RUNTIME_CSS_C18_1_IMAGE_PAINT_FIXTURE_SOURCE[\s\S]*runtime-image-overflow-c18-1\.js/);
+  assert.match(c18RuntimeFixture,
+    /include_bytes![\s\S]*c14-1-png-basic\.png/);
+  assert.match(runtimeSource,
+    /fn set_environment\([\s\S]*?#\[cfg\(feature = "c18-1-image-paint-fixture-test"\)\][\s\S]*?let attach_c18_1_images = self\.c18_1_image_paint_fixture[\s\S]*?c18_1_image_document_ready[\s\S]*?Ordering::Acquire[\s\S]*?self\.wait_and_publish\([\s\S]*?WaitAndPublishOptions\s*\{[\s\S]*?attach_c18_1_images,/);
+  assert.match(c18FfiFixture,
+    /spinon_runtime_gpu_host_new_c18_1_image_paint_fixture[\s\S]*spinon_runtime_gpu_host_request_c18_1_surface_pixels_for_test/);
+  assert.match(c18RuntimeScript,
+    /spinon-fixture:c18-1\/static-png-visible[\s\S]*spinon-fixture:c18-1\/static-png-hidden/);
+  assert.match(runtimeFfiHeader,
+    /#if defined\(SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST\)[\s\S]*?spinon_runtime_gpu_host_request_c18_1_surface_pixels_for_test/);
+  assert.match(androidBuildScript,
+    /ffi_features\+=\(c18-1-image-paint-fixture-test\)/);
+  assert.match(androidBuildScript,
+    /c181_image_paint_cpp_flag=.*SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST/);
+  assert.match(androidJniSource,
+    /#if defined\(SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST\)[\s\S]*?spinon_runtime_gpu_host_new_c18_1_image_paint_fixture/);
+  assert.match(androidImagePaintCaptureAdapter,
+    /SurfaceViewPixelCapture\.requestForCssViewport\(surfaceView,[\s\S]*?"c181-image-overflow"/);
+  assert.match(androidImagePaintCaptureAdapter,
+    /getLocationOnScreen\(contentOrigin\)[\s\S]*?surfaceView\.getLocationOnScreen\(surfaceOrigin\)[\s\S]*?SPINON_C181_SCREEN_GEOMETRY[\s\S]*?surface_view_size_px=/);
+  assert.doesNotMatch(androidGpuDemoSource,
+    /nativeRequestC181SurfacePixelsForTest/);
+  assert.doesNotMatch(androidGpuDemoSource,
+    /private\s+static\s+native\s+[^;]*(?:C181|c18_1)/i);
+  assert.match(androidGpuDemoSource,
+    /cssViewportWidthLocked\(\)\s*\{[\s\S]*?imagePaintProbeRequested\) return 80\.0f/);
+  assert.match(androidGpuDemoSource,
+    /cssViewportHeightLocked\(\)\s*\{[\s\S]*?imagePaintProbeRequested\) return 40\.0f/);
+  assert.match(androidActivitySource,
+    /BuildConfig\.SPINON_IMAGE_PAINT_FIXTURE_TEST[\s\S]*spinon_c181_image_paint/);
+  assert.match(androidGradleSource,
+    /buildConfigField\([\s\S]*?"SPINON_IMAGE_PAINT_FIXTURE_TEST"[\s\S]*?spinonC181ImagePaintFixtureTestValue/);
+  assert.match(androidGradleSource,
+    /if \(spinonC181ImagePaintFixtureTestValue == "1"\)\s*\{\s*java\.srcDir\("src\/c18_1_image_paint_fixture_test\/java"\)/);
+  assert.match(androidImagePaintCaptureAdapter,
+    /SPINON_C181_PIXELCOPY_BEGIN[\s\S]*SPINON_C181_PIXELCOPY_SUMMARY/);
+  assert.match(androidImagePaintNativeAdapter,
+    /native long createHost\(\);[\s\S]*native byte\[\] evalFixture\(long host\);/);
+  assert.match(iosProject,
+    /SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST=\$\(SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST\)/);
+  assert.match(iosRunnerImplementation,
+    /#if defined\(SPINON_ENABLE_C04_RUNTIME_GPU\)[\s\S]*?SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST[\s\S]*?spinon_runtime_gpu_host_new_c18_1_image_paint_fixture/);
+  assert.match(iosGpuDemoSource,
+    /imagePaintProbeRequested[\s\S]*?requestC181MetalPixelReadback/);
 });

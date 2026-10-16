@@ -5,8 +5,8 @@ use spinon_core::{
 use std::sync::Arc;
 
 use super::{
-    CssAxisClip, CssClip, CssRect, CssSize, OpaqueCssSrgb, RuntimePaint, RuntimeRenderBox,
-    RuntimeRenderKey,
+    CssAxisClip, CssClip, CssRect, CssSize, OpaqueCssSrgb, RuntimeBorder, RuntimeBorderSide,
+    RuntimeImageResourceKey, RuntimePaint, RuntimeRenderBox, RuntimeRenderImage, RuntimeRenderKey,
 };
 
 fn key() -> RuntimeRenderKey {
@@ -29,6 +29,196 @@ fn runtime_render_key_distinguishes_intrinsic_size_revisions() {
     let next = initial.with_intrinsic_size_revision(next_revision);
     assert_ne!(initial, next);
     assert_eq!(next.intrinsic_size_revision(), next_revision);
+}
+
+#[test]
+fn runtime_image_attachment_validates_source_node_bytes_and_natural_frame() {
+    let document = HostDocument::new().unwrap();
+    let source_snapshot = document.snapshot();
+    let intrinsic_revision = spinon_core::IntrinsicSizeRevision::INITIAL
+        .checked_next()
+        .unwrap();
+    let key = RuntimeRenderKey::new(
+        source_snapshot.generation(),
+        source_snapshot.document_revision(),
+        source_snapshot.render_tree_revision(),
+        StyleRevision::INITIAL,
+        EnvironmentRevision::INITIAL,
+    )
+    .with_intrinsic_size_revision(intrinsic_revision);
+    let node = NodeId::new(7).unwrap();
+    let scene = super::RuntimeRenderSnapshot::new(
+        key,
+        CssSize::new(80.0, 40.0).unwrap(),
+        vec![RuntimeRenderBox::new(
+            node,
+            CssRect::new(5.0, 5.0, 2.0, 2.0).unwrap(),
+            RuntimePaint::None,
+            0,
+        )],
+    )
+    .unwrap();
+    let source = RuntimeImageResourceKey::new(
+        source_snapshot.generation(),
+        source_snapshot.document_revision(),
+        source_snapshot.render_tree_revision(),
+        intrinsic_revision,
+    );
+    let pixels: Arc<[u8]> = [255, 0, 0, 255].repeat(4).into();
+    let image = RuntimeRenderImage::new(node, source, 2, 2, Arc::clone(&pixels)).unwrap();
+    let with_image = scene.with_images(vec![image.clone()]).unwrap();
+    assert_eq!(with_image.images(), std::slice::from_ref(&image));
+    assert!(matches!(
+        scene.with_images(vec![image.clone(), image.clone()]),
+        Err(super::RuntimeRenderError::DuplicateImage(id)) if id == node
+    ));
+    assert!(matches!(
+        scene.with_images(vec![RuntimeRenderImage::new(
+            NodeId::new(8).unwrap(),
+            source,
+            2,
+            2,
+            Arc::clone(&pixels),
+        )
+        .unwrap()]),
+        Err(super::RuntimeRenderError::ImageNodeMissing(id)) if id == NodeId::new(8).unwrap()
+    ));
+    assert!(matches!(
+        scene.with_images(vec![RuntimeRenderImage::new(
+            node,
+            {
+                let other_document = HostDocument::new().unwrap().snapshot();
+                RuntimeImageResourceKey::new(
+                    other_document.generation(),
+                    source.document_revision(),
+                    source.render_tree_revision(),
+                    source.intrinsic_size_revision(),
+                )
+            },
+            2,
+            2,
+            Arc::clone(&pixels),
+        )
+        .unwrap()]),
+        Err(super::RuntimeRenderError::InvalidImageSource(id)) if id == node
+    ));
+    assert!(matches!(
+        scene.with_images(vec![RuntimeRenderImage::new(
+            node,
+            source,
+            1,
+            2,
+            [255, 0, 0, 255].repeat(2).into(),
+        )
+        .unwrap()]),
+        Err(super::RuntimeRenderError::InvalidImageFrame(id)) if id == node
+    ));
+    assert!(matches!(
+        RuntimeRenderImage::new(node, source, u32::MAX, 2, Arc::clone(&pixels)),
+        Err(super::RuntimeRenderError::InvalidImageBytes(id)) if id == node
+    ));
+
+    let border_side =
+        RuntimeBorderSide::new(1.0, RuntimePaint::Opaque(OpaqueCssSrgb::new(255, 0, 0))).unwrap();
+    let bordered_scene = super::RuntimeRenderSnapshot::new(
+        key,
+        CssSize::new(80.0, 40.0).unwrap(),
+        vec![
+            RuntimeRenderBox::new(
+                node,
+                CssRect::new(5.0, 5.0, 2.0, 2.0).unwrap(),
+                RuntimePaint::None,
+                0,
+            )
+            .with_border(RuntimeBorder::new(
+                border_side,
+                RuntimeBorderSide::none(),
+                RuntimeBorderSide::none(),
+                RuntimeBorderSide::none(),
+            )),
+        ],
+    )
+    .unwrap();
+    assert!(matches!(
+        bordered_scene.with_images(vec![image]),
+        Err(super::RuntimeRenderError::UnsupportedImageBorder(id)) if id == node
+    ));
+}
+
+#[test]
+fn image_scene_rejects_document_revision_rebinding_after_resource_request() {
+    let mut document = HostDocument::new().unwrap();
+    let owner = OwnerId::new(1).unwrap();
+    let root = document.reserve_node_handle().unwrap();
+    let mut batch = DocumentChangeBatch::new(owner, document.document_revision());
+    batch.push(DocumentOperation::CreateElement {
+        node: root,
+        namespace: "http://www.w3.org/1999/xhtml".to_owned(),
+        local_name: "img".to_owned(),
+    });
+    batch.push(DocumentOperation::InsertBefore {
+        parent: HostParent::Root,
+        node: root,
+        before: None,
+    });
+    document.commit(batch).unwrap();
+    let source_snapshot = document.snapshot();
+    let intrinsic_revision = spinon_core::IntrinsicSizeRevision::INITIAL
+        .checked_next()
+        .unwrap();
+    let key = RuntimeRenderKey::new(
+        source_snapshot.generation(),
+        source_snapshot.document_revision(),
+        source_snapshot.render_tree_revision(),
+        StyleRevision::INITIAL,
+        EnvironmentRevision::INITIAL,
+    )
+    .with_intrinsic_size_revision(intrinsic_revision);
+    let source = RuntimeImageResourceKey::new(
+        source_snapshot.generation(),
+        source_snapshot.document_revision(),
+        source_snapshot.render_tree_revision(),
+        intrinsic_revision,
+    );
+    let scene = super::RuntimeRenderSnapshot::new(
+        key,
+        CssSize::new(30.0, 20.0).unwrap(),
+        vec![RuntimeRenderBox::new(
+            root.id(),
+            CssRect::new(0.0, 0.0, 2.0, 2.0).unwrap(),
+            RuntimePaint::None,
+            0,
+        )],
+    )
+    .unwrap()
+    .with_images(vec![
+        RuntimeRenderImage::new(root.id(), source, 2, 2, Arc::from(vec![0; 16])).unwrap(),
+    ])
+    .unwrap();
+
+    let detached = document.reserve_node_handle().unwrap();
+    let mut batch = DocumentChangeBatch::new(owner, document.document_revision());
+    batch.push(DocumentOperation::CreateElement {
+        node: detached,
+        namespace: "http://www.w3.org/1999/xhtml".to_owned(),
+        local_name: "button".to_owned(),
+    });
+    batch.push(DocumentOperation::SetAttribute {
+        node: detached,
+        name: AttributeName::new(None, "id").unwrap(),
+        value: "detached".into(),
+    });
+    document.commit(batch).unwrap();
+    let newer = document.snapshot();
+    assert_eq!(
+        source_snapshot.render_tree_revision(),
+        newer.render_tree_revision()
+    );
+    assert_ne!(
+        source_snapshot.document_revision(),
+        newer.document_revision()
+    );
+    assert!(scene.with_document_snapshot_revision(&newer).is_none());
 }
 
 #[test]

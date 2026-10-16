@@ -18,6 +18,7 @@ React / Vue / Svelte 어댑터 · DOM façade · Fetch API
 Android / iOS 호스트 → spinon-ffi (플랫폼 C ABI) → spinon-runtime
 Fetch 요청 → NetworkHost → 네트워크 전송 계층 → Android / iOS 호스트
 이미지 resource host → spinon-image (bounded PNG decode) → image-resource snapshot → C14.1 layout input
+C18.1 opt-in fixture PNG → RuntimeRenderImage → WGPU image pipeline → Android/iOS surface readback
 ```
 
 ## 소유권과 책임
@@ -35,12 +36,12 @@ Fetch 요청 → NetworkHost → 네트워크 전송 계층 → Android / iOS �
 | Rust 코어 (`crates/spinon-core`) | 안정적인 노드 ID, 문서·UI 트리, 자식 순서, 구조 revision, 원자 변경 묶음, 공통 우선순위 선택기 | 계산 스타일·CSS cascade, 레이아웃 프레임, JS 객체와 플랫폼 객체, V8 세션 수명 |
 | `spinon-style` | 내장 UA CSS 자원, C03 Stylo DOM adapter, C04 fixture cascade·computed-style snapshot | 레이아웃 계산과 GPU 표시 |
 | CSS·레이아웃 연결 (`crates/spinon-style-to-layout`) | C04.2 제한 computed-style profile 검증, CSS 값에서 `LayoutStyle` 변환, HostDocument revision 일치 확인 | CSS cascade 소유권, 공개 CSS API, 일반 Flexbox 적합성, 텍스트·GPU |
-| 이미지 디코더 (`crates/spinon-image`) | 정적 PNG의 제한 RGBA8 디코드, HostDocument `img src` 요청 identity와 decoded size를 C14.1 layout snapshot으로 변환 | URI 해석·파일/네트워크 I/O, 비동기 일정·취소, 캐시, GPU texture 수명, 공개 image API |
+| 이미지 처리 (`crates/spinon-image`, `spinon-render`, `spinon-render-wgpu`) | 정적 PNG의 제한 RGBA8 decode, HostDocument `img src` request identity와 decoded size의 C14.1 입력 변환, revision-bound natural-size `RuntimeRenderImage`의 C18.1 opt-in WGPU paint | 제품 URI 해석·파일/네트워크 I/O, 비동기 일정·취소·replacement, 일반 resource cache, 공개 image API, 전체 C18 profile |
 | 레이아웃 (`crates/spinon-layout`) | S01 `Tree` 또는 `HostDocumentSnapshot` 요소 하위 트리의 입력 projection, `LayoutStyle`, `LayoutEngine` 경계, Taffy 계산·프레임 결과 | CSS 파싱·cascade·computed-style 변환, 텍스트 측정, 장면·GPU 자원 |
 | GPU 렌더러 | 그리기 명령, 텍스트·이미지·클리핑·합성, 프레임 제출 | 컴포넌트 상태와 JS 객체 |
 | 플랫폼 호스트 | GPU 표면·입력·IME·접근성 연결, 폰트/이미지 자원과 표시 완료 신호 | 프레임워크의 컴포넌트 상태 |
 
-`spinon-image`는 포맷 decoder와 revision-bound metadata adapter이며 resource loader가 아니다. 플랫폼 host가 만든 요청에 decoded bytes를 연결하는 caller 역할은 아직 runtime에 구현되지 않았다. 현재 Android/iOS 앱이 이 crate를 불러 이미지를 그리거나 표시하지 않는다. 이 계약과 한계는 [내부 인터페이스 0061](../spec/internal/0061-u05-png-image-decode.md)을 따른다.
+`spinon-image`는 포맷 decoder와 revision-bound metadata adapter이며 제품 resource loader가 아니다. C18.1 opt-in fixture route에서는 live V8 document의 고정 `img[src]` 두 개를 caller-owned PNG bytes로 decode해 revision-bound render snapshot과 WGPU image pipeline에 연결한다. Android/iOS 기본 app에는 그 route와 PNG fixture가 없으며 앱 작성자용 image API, URI loader, asynchronous replacement/re-layout은 아직 없다. PNG decode와 layout input은 [내부 인터페이스 0061](../spec/internal/0061-u05-png-image-decode.md), 제한 paint profile은 [내부 인터페이스 0064](../spec/internal/0064-c18-1-image-paint.md)를 따른다.
 
 이벤트는 플랫폼 입력 → GPU 장면의 노드 히트 테스트 → 노드 ID·이벤트 유형 → V8 호스트 바인딩 → 프레임워크 또는 DOM 이벤트 리스너 순서로 전달한다. 화면 변경은 어댑터나 DOM façade가 공통 트리에 작업을 제출하고 Rust가 논리 변경을 확정한 뒤 GPU 렌더러가 프레임으로 표시한다. DOM 호환 API를 지원할 때 논리 트리 조회는 성공한 변경을 같은 JS 실행 흐름에서 관찰해야 한다. 화면 표시와 레이아웃 측정은 별도 시점·계약으로 둔다. 플랫폼 호스트는 화면 표면과 IME·접근성 연결을 맡는다. 앱 JS와 일반 이벤트는 UI·GPU 프레임 처리와 분리된 백그라운드 경로가 기본이며, UI 실행 스크립트는 명시적이고 제한된 후속 기능으로만 검토한다. 세부 동작은 [UI 트리·이벤트 명세](../spec/0002-ui-tree-events.md)를 따른다.
 
