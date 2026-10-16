@@ -1,10 +1,12 @@
 use std::sync::Arc;
 
+use sha2::{Digest, Sha256};
 use spinon_core::{
-    AttributeName, DocumentChangeBatch, DocumentOperation, EnvironmentRevision, HostDocument,
-    HostNodeHandle, HostParent, IntrinsicSizeRevision, OwnerId, StyleRevision,
+    AttributeName, EnvironmentRevision, HostDocumentSnapshot, HostElement, HostNodeHandle,
+    HostNodeKind, IntrinsicSizeRevision, StyleRevision,
 };
 use spinon_image::{ImageRequest, ImageResourceSnapshot};
+use spinon_runtime::{RuntimeSession, TaskPriority};
 use spinon_style::{
     CssMediaEnvironment, CssOrigin, CssViewport, StylesheetSource, StyloDocumentView,
     compute_runtime_flex_custom_properties_cascade_with_stylesheets,
@@ -12,6 +14,7 @@ use spinon_style::{
 use spinon_style_to_layout::compute_runtime_style_layout_with_intrinsic_size_snapshot;
 
 const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
+const IMAGE_URL: &str = "https://spinon.invalid/c14-1-png-basic.png";
 const PNG: &[u8] = include_bytes!(concat!(
     env!("CARGO_MANIFEST_DIR"),
     "/../../tests/fixtures/resources/c14-1-png-basic.png"
@@ -19,6 +22,10 @@ const PNG: &[u8] = include_bytes!(concat!(
 const HTML: &str = include_str!(concat!(
     env!("CARGO_MANIFEST_DIR"),
     "/../../tests/fixtures/css/c14/replaced-auto-size.html"
+));
+const V8_DOCUMENT: &str = include_str!(concat!(
+    env!("CARGO_MANIFEST_DIR"),
+    "/../../tests/fixtures/css/c14/c14-1-live-v8-document.js"
 ));
 const REFERENCE: &str = include_str!(concat!(
     env!("CARGO_MANIFEST_DIR"),
@@ -28,10 +35,18 @@ const REFERENCE: &str = include_str!(concat!(
 fn run_fixture() -> Result<(String, bool), String> {
     let reference: serde_json::Value =
         serde_json::from_str(REFERENCE).map_err(|error| format!("reference JSON: {error}"))?;
-    let (document, root, image) = create_document()?;
-    let document_snapshot = document.snapshot();
+    let png_sha256 = verify_png_reference(&reference)?;
+    let (runtime, document_snapshot, root, image) = create_live_document()?;
     let image_request = ImageRequest::from_document(&document_snapshot, image)
         .map_err(|error| format!("image request: {error}"))?;
+    if image_request.src().to_string_lossy() != IMAGE_URL {
+        return Err("V8 문서 img src가 고정 C14.1 fixture URL과 다릅니다".to_owned());
+    }
+    let request_source = image_request.source();
+    let stale_completion = image_request
+        .clone()
+        .decode(PNG)
+        .map_err(|error| format!("stale-control PNG decode: {error}"))?;
     let completion = image_request
         .decode(PNG)
         .map_err(|error| format!("PNG decode: {error}"))?;
@@ -51,7 +66,8 @@ fn run_fixture() -> Result<(String, bool), String> {
     let intrinsic = resources
         .to_layout_intrinsic_size_snapshot()
         .map_err(|error| format!("intrinsic layout snapshot: {error}"))?;
-    let source_matches = intrinsic.source() == resources.source();
+    let request_source_matches = request_source == resources.source();
+    let source_matches = request_source_matches && intrinsic.source() == resources.source();
     let revision_matches = intrinsic.revision() == resources.revision();
 
     let view =
@@ -99,10 +115,34 @@ fn run_fixture() -> Result<(String, bool), String> {
         .zip(expected_frame)
         .all(|(actual, expected)| actual.is_finite() && (*actual - expected).abs() <= 0.5);
     let natural_size_matches = natural_width == expected_width && natural_height == expected_height;
-    let matches = source_matches && revision_matches && frame_matches && natural_size_matches;
+    let (stale_source_rejected, stale_source_document_revision) = reject_live_v8_stale_source(
+        &runtime,
+        image,
+        stale_completion,
+        document_snapshot.document_revision().get(),
+        resources
+            .revision()
+            .checked_next()
+            .ok_or_else(|| "intrinsic revision exhausted during stale control".to_owned())?,
+    )?;
+    let matches = source_matches
+        && revision_matches
+        && frame_matches
+        && natural_size_matches
+        && stale_source_rejected;
     let report = serde_json::json!({
         "status": if matches { "ok" } else { "mismatch" },
-        "fixture": "c14-1-png-basic",
+        "fixture": "c14-1-live-v8-png-basic",
+        "png_sha256": png_sha256,
+        "document_origin": "live-v8",
+        "document_generation": format!("{:?}", document_snapshot.generation()),
+        "document_revision": document_snapshot.document_revision().get(),
+        "render_tree_revision": document_snapshot.render_tree_revision().get(),
+        "root_node_id": format!("{:?}", root.id()),
+        "document_revision_after_stale_control": stale_source_document_revision,
+        "request_source_matches": request_source_matches,
+        "stale_source_rejected": stale_source_rejected,
+        "stale_source_rejection": "SourceChanged",
         "oracle": "HeadlessChrome/155",
         "viewport_css_px": [120, 80],
         "node_id": format!("{:?}", image.id()),
@@ -121,63 +161,159 @@ fn run_fixture() -> Result<(String, bool), String> {
     Ok((serialized, matches))
 }
 
-fn create_document() -> Result<(HostDocument, HostNodeHandle, HostNodeHandle), String> {
-    let mut document = HostDocument::new().map_err(|error| format!("HostDocument: {error}"))?;
-    let root = document
-        .reserve_node_handle()
-        .map_err(|error| format!("root handle: {error}"))?;
-    let image = document
-        .reserve_node_handle()
-        .map_err(|error| format!("image handle: {error}"))?;
-    let mut batch = DocumentChangeBatch::new(
-        OwnerId::new(1415).ok_or_else(|| "invalid owner id".to_owned())?,
-        document.document_revision(),
+fn verify_png_reference(reference: &serde_json::Value) -> Result<String, String> {
+    let fixture = reference
+        .get("fixture")
+        .ok_or_else(|| "reference fixture metadata missing".to_owned())?;
+    if fixture.get("id").and_then(serde_json::Value::as_str) != Some("U05.1-png-natural-size-v1")
+        || fixture.get("png").and_then(serde_json::Value::as_str) != Some("c14-1-png-basic.png")
+    {
+        return Err("C14.1 reference가 고정 PNG fixture를 가리키지 않습니다".to_owned());
+    }
+    let expected_bytes = fixture
+        .get("png_bytes")
+        .and_then(serde_json::Value::as_u64)
+        .ok_or_else(|| "reference PNG byte length missing".to_owned())?;
+    if expected_bytes != PNG.len() as u64 {
+        return Err(format!(
+            "C14.1 PNG byte length mismatch: expected={expected_bytes} actual={}",
+            PNG.len()
+        ));
+    }
+    let expected_sha256 = fixture
+        .get("png_sha256")
+        .and_then(serde_json::Value::as_str)
+        .ok_or_else(|| "reference PNG SHA-256 missing".to_owned())?;
+    let actual_sha256 = Sha256::digest(PNG)
+        .iter()
+        .map(|byte| format!("{byte:02x}"))
+        .collect::<String>();
+    if actual_sha256 != expected_sha256 {
+        return Err(format!(
+            "C14.1 PNG SHA-256 mismatch: expected={expected_sha256} actual={actual_sha256}"
+        ));
+    }
+    Ok(actual_sha256)
+}
+
+fn reject_live_v8_stale_source(
+    runtime: &RuntimeSession,
+    image: HostNodeHandle,
+    completion: spinon_image::ImageResourceCompletion,
+    previous_document_revision: u64,
+    revision: IntrinsicSizeRevision,
+) -> Result<(bool, u64), String> {
+    let mutation = runtime.eval(
+        "globalThis.__spinonC141Image.setAttribute('src', 'https://spinon.invalid/replaced.png');",
+        TaskPriority::UserVisible,
     );
-    batch
-        .push(DocumentOperation::CreateElement {
-            node: root,
-            namespace: HTML_NAMESPACE.to_owned(),
-            local_name: "div".to_owned(),
-        })
-        .push(DocumentOperation::SetAttribute {
-            node: root,
-            name: AttributeName::new(None, "id")
-                .ok_or_else(|| "invalid id attribute".to_owned())?,
-            value: "root".to_owned().into(),
-        })
-        .push(DocumentOperation::CreateElement {
-            node: image,
-            namespace: HTML_NAMESPACE.to_owned(),
-            local_name: "img".to_owned(),
-        })
-        .push(DocumentOperation::SetAttribute {
-            node: image,
-            name: AttributeName::new(None, "id")
-                .ok_or_else(|| "invalid id attribute".to_owned())?,
-            value: "image".to_owned().into(),
-        })
-        .push(DocumentOperation::SetAttribute {
-            node: image,
-            name: AttributeName::new(None, "src")
-                .ok_or_else(|| "invalid src attribute".to_owned())?,
-            value: "https://spinon.invalid/c14-1-png-basic.png"
-                .to_owned()
-                .into(),
-        })
-        .push(DocumentOperation::InsertBefore {
-            parent: HostParent::Root,
-            node: root,
-            before: None,
-        })
-        .push(DocumentOperation::InsertBefore {
-            parent: HostParent::Node(root),
-            node: image,
-            before: None,
-        });
-    document
-        .commit(batch)
-        .map_err(|error| format!("document commit: {error}"))?;
-    Ok((document, root, image))
+    if mutation.status != 0 {
+        return Err(format!(
+            "live V8 stale-source mutation failed status={} report={}",
+            mutation.status, mutation.report
+        ));
+    }
+    let current = runtime
+        .snapshot_document_for_c14_1_fixture()
+        .map_err(|error| format!("stale-source HostDocument snapshot 실패: {error}"))?;
+    if current.document_revision().get() <= previous_document_revision {
+        return Err(format!(
+            "src 변경 뒤 document revision이 증가하지 않았습니다: before={previous_document_revision} after={}",
+            current.document_revision().get()
+        ));
+    }
+    match ImageResourceSnapshot::new(&current, revision, [completion]) {
+        Err(spinon_image::ImageSnapshotError::SourceChanged(node)) if node == image.id() => {
+            Ok((true, current.document_revision().get()))
+        }
+        Err(error) => Err(format!(
+            "stale-src completion이 다른 이유로 거부됐습니다: {error}"
+        )),
+        Ok(_) => {
+            Err("stale-src completion이 현재 문서 snapshot에 잘못 admission됐습니다".to_owned())
+        }
+    }
+}
+
+fn create_live_document() -> Result<
+    (
+        RuntimeSession,
+        HostDocumentSnapshot,
+        HostNodeHandle,
+        HostNodeHandle,
+    ),
+    String,
+> {
+    let (runtime, _ready_report) =
+        RuntimeSession::new().map_err(|error| format!("live V8 runtime 생성 실패: {error}"))?;
+    let eval = runtime.eval(V8_DOCUMENT, TaskPriority::UserVisible);
+    if eval.status != 0 {
+        return Err(format!(
+            "live V8 C14.1 document script 실패 status={} report={}",
+            eval.status, eval.report
+        ));
+    }
+    let document = runtime
+        .snapshot_document_for_c14_1_fixture()
+        .map_err(|error| format!("live V8 HostDocument snapshot 실패: {error}"))?;
+    let roots = document.root_children().collect::<Vec<_>>();
+    let [root] = roots.as_slice() else {
+        return Err(format!(
+            "live V8 문서 root 개수가 1이 아닙니다: {}",
+            roots.len()
+        ));
+    };
+    let root = *root;
+    let root_node = document
+        .node(root)
+        .ok_or_else(|| "live V8 root snapshot node가 없습니다".to_owned())?;
+    let root_element = match root_node.kind() {
+        HostNodeKind::Element(element)
+            if element.namespace() == HTML_NAMESPACE && element.local_name() == "div" =>
+        {
+            element
+        }
+        _ => return Err("live V8 root는 HTML div가 아닙니다".to_owned()),
+    };
+    if element_attribute(root_element, "id").as_deref() != Some("root") {
+        return Err("live V8 root id가 root가 아닙니다".to_owned());
+    }
+    let children = document
+        .children(root)
+        .ok_or_else(|| "live V8 root child 목록이 없습니다".to_owned())?
+        .collect::<Vec<_>>();
+    let [image] = children.as_slice() else {
+        return Err(format!(
+            "live V8 root의 child 개수가 1이 아닙니다: {}",
+            children.len()
+        ));
+    };
+    let image = *image;
+    let image_node = document
+        .node(image)
+        .ok_or_else(|| "live V8 image snapshot node가 없습니다".to_owned())?;
+    let image_element = match image_node.kind() {
+        HostNodeKind::Element(element)
+            if element.namespace() == HTML_NAMESPACE && element.local_name() == "img" =>
+        {
+            element
+        }
+        _ => return Err("live V8 child는 HTML img가 아닙니다".to_owned()),
+    };
+    if element_attribute(image_element, "id").as_deref() != Some("image") {
+        return Err("live V8 image id가 image가 아닙니다".to_owned());
+    }
+    if !document.is_connected(image) {
+        return Err("live V8 HTML img가 document에 연결되지 않았습니다".to_owned());
+    }
+    Ok((runtime, document, root, image))
+}
+
+fn element_attribute(element: &HostElement, name: &str) -> Option<String> {
+    let name = AttributeName::new(None, name.to_owned())?;
+    element
+        .attribute(&name)
+        .map(|value| value.to_string_lossy())
 }
 
 fn stylesheet() -> Result<StylesheetSource, String> {
@@ -245,32 +381,27 @@ pub unsafe extern "C" fn spinon_c14_1_app_intrinsic_size_fixture(
 
 #[cfg(test)]
 mod tests {
+    use super::{REFERENCE, verify_png_reference};
+
     #[test]
-    fn app_fixture_report_matches_the_chrome_reference() {
-        let (report, matches) = super::run_fixture().expect("C14.1 fixture should run");
-        assert!(matches, "unexpected C14.1 report: {report}");
-        let report: serde_json::Value =
-            serde_json::from_str(&report).expect("fixture report should be JSON");
-        assert_eq!(report["status"], "ok");
+    fn png_reference_binds_the_embedded_fixture_bytes() {
+        let reference: serde_json::Value =
+            serde_json::from_str(REFERENCE).expect("C14.1 reference JSON should parse");
         assert_eq!(
-            report["natural_size_css_px"],
-            serde_json::json!([24.0, 16.0])
+            verify_png_reference(&reference).expect("fixture PNG should match its reference"),
+            "5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2"
         );
-        assert_eq!(
-            report["frame_css_px"],
-            serde_json::json!([0.0, 0.0, 24.0, 16.0])
-        );
-        assert_eq!(report["intrinsic_revision_matches"], true);
-        assert_eq!(report["intrinsic_source_matches"], true);
     }
 
     #[test]
-    fn app_fixture_c_abi_rejects_a_short_output_buffer() {
-        let mut output = [b'x' as std::ffi::c_char; 8];
-        let status = unsafe {
-            super::spinon_c14_1_app_intrinsic_size_fixture(output.as_mut_ptr(), output.len())
-        };
-        assert_eq!(status, -3);
-        assert_eq!(output[0], 0);
+    fn png_reference_rejects_substituted_same_size_payload_metadata() {
+        let mut reference: serde_json::Value =
+            serde_json::from_str(REFERENCE).expect("C14.1 reference JSON should parse");
+        reference["fixture"]["png_sha256"] = serde_json::json!("00".repeat(32));
+        assert!(
+            verify_png_reference(&reference)
+                .expect_err("a different PNG digest must fail closed")
+                .contains("SHA-256 mismatch")
+        );
     }
 }
