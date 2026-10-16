@@ -1,6 +1,6 @@
 # C18.3 · 정적 PNG `object-fit` / `object-position`
 
-**상태:** 구현·지정 검증 완료 · [구현 PR #224](https://github.com/ohah/spinon/pull/224) 검토 중
+**상태:** 구현·지정 검증 완료 · [구현 PR #224](https://github.com/ohah/spinon/pull/224)
 **상위:** [C18 이미지·replaced paint 규칙](../spec/STATUS.md) · [내부 계약 0065](../spec/internal/0065-c18-2-alpha-image-compositing.md)
 **선행 범위:** C14.1–C14.3 intrinsic frame · C18.1 opaque PNG paint · C18.2 PNG source-over
 **규범 기준:** [CSS Images Module Level 3](https://www.w3.org/TR/css-images-3/) §4.5–4.6 · [CSS Values and Units Module Level 3](https://www.w3.org/TR/css-values-3/) `<position>` value
