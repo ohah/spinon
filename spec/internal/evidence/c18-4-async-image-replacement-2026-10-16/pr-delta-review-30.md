@@ -4,6 +4,8 @@
 **검토 시점:** 2026-10-16 · 계획 검토 20개와 구현 검토 20개는 재사용하지 않음
 **판정:** 아래 30개 변경 경계 확인. Agent Browser에서 PR 본문의 Android/iOS 이미지가 실제 원본 크기로 모두 로드됨을 확인했다. GitHub는 check run 0개를 보고했으며 현재 branch protection에는 required status checks/approval 개수가 설정되어 있지 않다. 로컬 gate 결과는 실행 근거에 별도 기록했다.
 
+후속 commit `0dc2c6ab`는 이 검토 문서, PR 화면 확인 자료와 문서 링크를 추가했으며 Rust·native·platform 실행 코드는 바꾸지 않았다. follow-up 문서 diff에도 `git diff --check`를 통과시켰다.
+
 | # | PR diff에서 확인한 독립 실패 조건 | 확인한 변경·근거 | 판정 |
 | ---: | --- | --- | --- |
 | 1 | 세부 C18.4를 체크하며 C18/C14/U05 상위를 완료로 오인하는가 | `spec/STATUS.md`에서 C18.4만 체크했고 parent C18과 C14/U05는 unchecked다. | 통과 |
