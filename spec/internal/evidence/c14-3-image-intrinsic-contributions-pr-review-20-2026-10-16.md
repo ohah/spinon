@@ -23,6 +23,6 @@
 | 17 | 앱 case 증가로 Java/Swift report buffer chunk나 display가 잘림 | 실제 2-chunk Android, 9-chunk iOS raw logs를 파싱해 14개 JSON case와 UI summary를 대조했다. |
 | 18 | C11.2.1 등 인접 profile 지원 범위가 바뀜 | `align-items:start`는 Template Grid profile에 한정한다. C11.2.1 regression test를 포함한 workspace suite를 다시 통과했다. |
 | 19 | 문서의 완료 판정과 실제 구현/API/error contract가 어긋남 | versioned internal layout engine contract와 spec index를 수정하고 status row에는 candidate·미지원 범위를 분리했다. |
-| 20 | PR 본문에 작업 ID·검증·남은 경계·동작 화면이 누락됨 | PR body template를 채우고 두 Simulator screenshot을 직접 표시하는지 Agent Browser에서 확인할 예정이다. Tailnet roadmap는 merge 후 hash-verified sync로 갱신한다. |
+| 20 | PR 본문에 작업 ID·검증·남은 경계·동작 화면이 누락됨 | PR #216에 상태 ID·명세·증거·남은 범위와 두 Simulator 화면을 넣었다. Agent Browser에서 두 raw 이미지 URL이 각각 `complete=true`와 원본 크기 1080×2400, 1206×2622로 로드됨을 확인했다. Tailnet roadmap는 merge 후 hash-verified sync로 갱신한다. |
 
 PR merge 직전에 `gh pr checks`, mergeability, base SHA와 Tailnet served hashes를 다시 확인한다. unresolved P1/P2는 없다.
