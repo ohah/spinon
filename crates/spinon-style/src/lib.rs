@@ -12,7 +12,7 @@ mod stylesheet_registry;
 mod stylo_dom;
 
 pub use computed_css_color::{ComputedCssColor, ComputedCssColorSpace};
-pub use opaque_css_srgb::{ComputedBackgroundPaint, OpaqueCssSrgb};
+pub use opaque_css_srgb::{ComputedBackgroundPaint, ComputedSrgbColor, OpaqueCssSrgb};
 pub use stylesheet_registry::{
     CssOrigin, CssParseDiagnostic, RegisteredStylesheet, StylesheetRegistry,
     StylesheetRegistryError, StylesheetSource,
@@ -22,17 +22,18 @@ pub use stylo_dom::{
     ComputedCssGridArea, ComputedCssGridAutoColumns, ComputedCssGridAutoFlow,
     ComputedCssGridAutoRows, ComputedCssGridItemPlacement, ComputedCssGridLayout,
     ComputedCssGridPlacement, ComputedCssGridTemplateAreas, ComputedCssGridTrackSize,
-    ComputedCssMath, ComputedCssMaxSize, ComputedCssOverflow, ComputedCssOverflowClipMargin,
-    ComputedCssOverflowVisualBox, ComputedCssOverscrollBehavior, ComputedCssPosition,
-    ComputedCssSpacingValue, ComputedCssTouchAction, ComputedCssVisibility, ComputedCssZIndex,
-    ComputedElementStyle, ComputedLayoutBorder, ComputedLayoutDimensions, ComputedLayoutInsets,
-    ComputedLayoutSpacing, ComputedStyleProfile, ComputedStyleSnapshot, CssCascadeError,
-    CssColorScheme, CssMediaEnvironment, CssPointerCapabilities, CssPrimaryPointer, CssViewport,
-    FixedContainingBlockEffect, RuntimeCascadeReuseStats, StyloDocument, StyloDocumentView,
-    StyloDomError, StyloElement, StyloNode, compute_c19_computed_color_cascade_with_stylesheets,
-    compute_flex_alignment_cascade, compute_flex_alignment_layers_cascade,
-    compute_flex_layout_cascade, compute_flex_margin_cascade,
-    compute_flex_media_environment_cascade,
+    ComputedCssMath, ComputedCssMaxSize, ComputedCssOpacity, ComputedCssOverflow,
+    ComputedCssOverflowClipMargin, ComputedCssOverflowVisualBox, ComputedCssOverscrollBehavior,
+    ComputedCssPosition, ComputedCssSpacingValue, ComputedCssTouchAction, ComputedCssVisibility,
+    ComputedCssZIndex, ComputedElementStyle, ComputedLayoutBorder, ComputedLayoutDimensions,
+    ComputedLayoutInsets, ComputedLayoutSpacing, ComputedStyleProfile, ComputedStyleSnapshot,
+    CssCascadeError, CssColorScheme, CssMediaEnvironment, CssPointerCapabilities,
+    CssPrimaryPointer, CssViewport, FixedContainingBlockEffect, RuntimeCascadeReuseStats,
+    StyloDocument, StyloDocumentView, StyloDomError, StyloElement, StyloNode,
+    compute_c19_box_paint_opacity_cascade_with_stylesheets,
+    compute_c19_computed_color_cascade_with_stylesheets, compute_flex_alignment_cascade,
+    compute_flex_alignment_layers_cascade, compute_flex_layout_cascade,
+    compute_flex_margin_cascade, compute_flex_media_environment_cascade,
     compute_runtime_block_flex_grid_auto_placement_cascade_with_stylesheets,
     compute_runtime_block_flex_grid_cascade_with_stylesheets,
     compute_runtime_block_flex_grid_dense_auto_placement_cascade_with_stylesheets,

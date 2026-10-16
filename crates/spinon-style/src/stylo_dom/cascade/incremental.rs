@@ -177,7 +177,11 @@ fn runtime_properties_for_profile(
     if profile == ComputedStyleProfile::RuntimeBlockPositioningV1 {
         return Some(runtime_paint::runtime_block_positioning_properties());
     }
-    if profile == ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1 {
+    if matches!(
+        profile,
+        ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+            | ComputedStyleProfile::C19BoxPaintOpacityV1
+    ) {
         return Some(runtime_overflow::runtime_block_flex_overflow_clip_properties());
     }
     if profile == ComputedStyleProfile::RuntimeBlockFlexGridV1 {
@@ -242,6 +246,7 @@ fn is_runtime_layout_profile(profile: ComputedStyleProfile) -> bool {
             | ComputedStyleProfile::RuntimeBlockPositioningV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1
             | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+            | ComputedStyleProfile::C19BoxPaintOpacityV1
             | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
             | ComputedStyleProfile::RuntimeBlockFlexGridV1
             | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1

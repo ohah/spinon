@@ -413,7 +413,7 @@ pub struct ComputedLayoutBorder {
 }
 
 /// C13.1 overflow-clip profile의 면별 단색 solid border paint입니다.
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub struct ComputedBorderPaint {
     pub top: ComputedBackgroundPaint,
     pub right: ComputedBackgroundPaint,
@@ -448,6 +448,8 @@ pub struct ComputedElementStyle {
     pub layout_position: ComputedCssPosition,
     /// C12.4 profile에서만 설정하는 typed `z-index` 값입니다.
     pub stacking_z_index: Option<ComputedCssZIndex>,
+    /// C19.2 runtime stacking profile에서 가져온 computed `opacity`입니다.
+    pub stacking_opacity: Option<ComputedCssOpacity>,
     /// C12.4 profile에서만 설정하는 typed `visibility` 값입니다.
     pub stacking_visibility: Option<ComputedCssVisibility>,
     /// C13.1 profile에서만 설정하는 typed overflow 축 값입니다.
@@ -490,6 +492,20 @@ pub struct ComputedElementStyle {
     pub computed_color: Option<ComputedCssColor>,
     /// C19.1 computed-color profile에서만 설정하는 Stylo `background-color` 값입니다.
     pub computed_background_color: Option<ComputedCssColor>,
+}
+
+/// 유한한 범위 `[0, 1]`에 있는 CSS computed opacity입니다.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct ComputedCssOpacity(f32);
+
+impl ComputedCssOpacity {
+    pub(crate) fn new(value: f32) -> Option<Self> {
+        (value.is_finite() && (0.0..=1.0).contains(&value)).then_some(Self(value))
+    }
+
+    pub const fn value(self) -> f32 {
+        self.0
+    }
 }
 
 #[derive(Clone, Debug, Eq, PartialEq)]
@@ -558,6 +574,8 @@ pub enum ComputedStyleProfile {
     RuntimeBlockFlexStackingV1,
     /// C13.1의 overflow 축과 clip margin을 포함하는 혼합 Block/Flex runtime profile입니다.
     RuntimeBlockFlexOverflowClipV1,
+    /// C19.2의 부분 alpha와 그룹 투명도를 포함하는 C13.1 기반 runtime profile입니다.
+    C19BoxPaintOpacityV1,
     /// C13.3의 overflow·overscroll·touch-action 입력을 포함하는 혼합 Block/Flex profile입니다.
     RuntimeBlockFlexScrollGestureV1,
     /// C11.1의 혼합 Block/Flex/Grid explicit-track runtime profile입니다.

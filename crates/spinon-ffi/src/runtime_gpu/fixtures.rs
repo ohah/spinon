@@ -9,6 +9,8 @@ pub(super) mod c18_2;
 pub(super) mod c18_3;
 #[cfg(feature = "c18-4-image-fixture-test")]
 pub(super) mod c18_4;
+#[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
+pub(super) mod c19_2;
 
 pub(crate) mod c11;
 pub(crate) mod c11_2_2;

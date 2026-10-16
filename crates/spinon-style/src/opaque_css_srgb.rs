@@ -1,5 +1,7 @@
 use style::color::AbsoluteColor;
 
+use crate::ComputedCssColor;
+
 /// 불투명한 encoded sRGB 색입니다. CSS `#RRGGBB` paint 경계에서 사용합니다.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub struct OpaqueCssSrgb {
@@ -9,10 +11,20 @@ pub struct OpaqueCssSrgb {
 }
 
 /// 런타임 단색 배경 페인트입니다. 완전 투명은 draw 생략으로 표현합니다.
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ComputedBackgroundPaint {
     Transparent,
     Opaque(OpaqueCssSrgb),
+    Translucent(ComputedSrgbColor),
+}
+
+/// CSS Color 4에서 sRGB로 매핑한 색과 부분 alpha입니다.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct ComputedSrgbColor {
+    pub red: f32,
+    pub green: f32,
+    pub blue: f32,
+    pub alpha: f32,
 }
 
 impl OpaqueCssSrgb {
@@ -47,6 +59,32 @@ impl OpaqueCssSrgb {
             blue: to_srgb_byte(blue)?,
         }))
     }
+
+    pub(crate) fn c19_runtime_paint_from_absolute_color(
+        color: AbsoluteColor,
+    ) -> Result<ComputedBackgroundPaint, &'static str> {
+        let color = ComputedCssColor::from_absolute_color(color)?;
+        let [red, green, blue, alpha] = color.gamut_mapped_srgb;
+        if alpha == 0.0 {
+            return Ok(ComputedBackgroundPaint::Transparent);
+        }
+        if alpha == 1.0 {
+            return Ok(ComputedBackgroundPaint::Opaque(Self {
+                red: to_srgb_byte(red)?,
+                green: to_srgb_byte(green)?,
+                blue: to_srgb_byte(blue)?,
+            }));
+        }
+        if !alpha.is_finite() || !(0.0..=1.0).contains(&alpha) {
+            return Err("computed background-color alpha가 유한한 0..1 값이 아닙니다");
+        }
+        Ok(ComputedBackgroundPaint::Translucent(ComputedSrgbColor {
+            red,
+            green,
+            blue,
+            alpha,
+        }))
+    }
 }
 
 fn to_srgb_byte(component: f32) -> Result<u8, &'static str> {
@@ -60,7 +98,7 @@ fn to_srgb_byte(component: f32) -> Result<u8, &'static str> {
 mod tests {
     use style::color::AbsoluteColor;
 
-    use super::OpaqueCssSrgb;
+    use super::{ComputedBackgroundPaint, OpaqueCssSrgb};
 
     #[test]
     fn encoded_srgb_bytes_are_preserved() {
@@ -82,5 +120,27 @@ mod tests {
             OpaqueCssSrgb::from_absolute_color(color),
             Err("computed background-color alpha가 1이 아닙니다")
         );
+    }
+
+    #[test]
+    fn legacy_runtime_paint_rejects_partial_alpha() {
+        let color = AbsoluteColor::srgb_legacy(1, 2, 3, 0.5);
+        assert_eq!(
+            OpaqueCssSrgb::runtime_paint_from_absolute_color(color),
+            Err("computed background-color alpha가 0 또는 1이 아닙니다")
+        );
+    }
+
+    #[test]
+    fn c19_runtime_paint_preserves_partial_alpha_and_mapped_srgb() {
+        let color = AbsoluteColor::srgb_legacy(1, 2, 3, 0.5);
+        let paint = OpaqueCssSrgb::c19_runtime_paint_from_absolute_color(color).unwrap();
+        let ComputedBackgroundPaint::Translucent(color) = paint else {
+            panic!("partial alpha must be preserved")
+        };
+        assert!((color.red - 1.0 / 255.0).abs() < 0.00001);
+        assert!((color.green - 2.0 / 255.0).abs() < 0.00001);
+        assert!((color.blue - 3.0 / 255.0).abs() < 0.00001);
+        assert_eq!(color.alpha, 0.5);
     }
 }

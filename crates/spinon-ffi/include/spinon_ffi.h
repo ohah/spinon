@@ -268,6 +268,23 @@ int32_t spinon_runtime_gpu_host_request_c18_4_surface_pixels_for_test(
     char *output, size_t output_capacity);
 #endif
 
+#if defined(SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST) && \
+    SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST
+/* C19.2 box paint·opacity 통합 fixture 전용 opt-in host입니다. */
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c19_2_box_paint_opacity_fixture(
+    char *output, size_t output_capacity);
+int32_t spinon_runtime_gpu_host_eval_c19_2_box_paint_opacity_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
+/* 다음 C19.2 draw report에 CSS 고정 16점을 균일한 1~8 surface scale로 변환해 예약합니다. */
+int32_t spinon_runtime_gpu_host_request_c19_2_surface_pixels_for_test(
+    SpinonRuntimeGpuHost *host, const uint32_t *sample_xy, size_t sample_count,
+    char *output, size_t output_capacity);
+/* Re-renders the published C19.2 scene into an offscreen WGPU texture and returns CSS pixel samples. */
+int32_t spinon_runtime_gpu_host_readback_c19_2_offscreen_for_test(
+    SpinonRuntimeGpuHost *host, char *output, size_t output_capacity);
+#endif
+
 #if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && \
     SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
 /* C13.3 Android 입력 어댑터 전용 opt-in gesture fixture host입니다. */

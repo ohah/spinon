@@ -62,13 +62,17 @@ pub(crate) fn build_colored_geometry(
         count
             .saturating_add(usize::from(matches!(
                 render_box.paint(),
-                RuntimePaint::Opaque(_)
+                RuntimePaint::Opaque(_) | RuntimePaint::Color(_)
             )))
             .saturating_add(
                 sides
                     .iter()
                     .filter(|side| {
-                        side.width_css_px() > 0.0 && matches!(side.paint(), RuntimePaint::Opaque(_))
+                        side.width_css_px() > 0.0
+                            && matches!(
+                                side.paint(),
+                                RuntimePaint::Opaque(_) | RuntimePaint::Color(_)
+                            )
                     })
                     .count(),
             )
@@ -170,8 +174,15 @@ fn append_colored_rect(
     viewport_height: f32,
     color_encoding: ColorEncoding,
 ) {
-    let RuntimePaint::Opaque(color) = paint else {
-        return;
+    let (red, green, blue, alpha) = match paint {
+        RuntimePaint::None => return,
+        RuntimePaint::Opaque(color) => (
+            f32::from(color.red()) / 255.0,
+            f32::from(color.green()) / 255.0,
+            f32::from(color.blue()) / 255.0,
+            1.0,
+        ),
+        RuntimePaint::Color(color) => (color.red(), color.green(), color.blue(), color.alpha()),
     };
     let [x, y, right, bottom] = rect;
     let x0_css = clip.x().map_or(x, |axis| x.max(axis.min()));
@@ -185,16 +196,11 @@ fn append_colored_rect(
     let x1 = -1.0 + 2.0 * x1_css / viewport_width;
     let y0 = 1.0 - 2.0 * y0_css / viewport_height;
     let y1 = 1.0 - 2.0 * y1_css / viewport_height;
-    let encode = match color_encoding {
+    let encode: fn(f32) -> f32 = match color_encoding {
         ColorEncoding::Linear => srgb_to_linear,
-        ColorEncoding::Srgb => srgb_encoded,
+        ColorEncoding::Srgb => |channel| channel,
     };
-    let color = [
-        encode(color.red()),
-        encode(color.green()),
-        encode(color.blue()),
-        1.0,
-    ];
+    let color = [encode(red), encode(green), encode(blue), alpha];
     let top_left = Vertex {
         position: [x0, y0],
         color,
@@ -221,17 +227,12 @@ fn append_colored_rect(
     ]);
 }
 
-fn srgb_to_linear(channel: u8) -> f32 {
-    let encoded = f32::from(channel) / 255.0;
+fn srgb_to_linear(encoded: f32) -> f32 {
     if encoded <= 0.04045 {
         encoded / 12.92
     } else {
         ((encoded + 0.055) / 1.055).powf(2.4)
     }
-}
-
-fn srgb_encoded(channel: u8) -> f32 {
-    f32::from(channel) / 255.0
 }
 
 #[cfg(test)]
@@ -242,7 +243,7 @@ mod tests {
     use spinon_render::{
         CssAxisClip, CssClip, CssRect, CssSize, RuntimeBorder, RuntimeBorderSide,
         RuntimeImageResourceKey, RuntimePaint, RuntimeRenderBox, RuntimeRenderImage,
-        RuntimeRenderKey,
+        RuntimeRenderKey, RuntimeSrgbColor,
     };
 
     use super::{ColorEncoding, build_image_geometry, build_vertices};
@@ -393,6 +394,38 @@ mod tests {
         assert!((vertices[0].color[0] - 51.0 / 255.0).abs() < f32::EPSILON);
         assert!((vertices[0].color[1] - 102.0 / 255.0).abs() < f32::EPSILON);
         assert_eq!(vertices[0].color[2], 1.0);
+    }
+
+    #[test]
+    fn geometry_preserves_css_paint_alpha_and_rejects_invalid_channels() {
+        let document = HostDocument::new().unwrap();
+        let source = document.snapshot();
+        let color = RuntimeSrgbColor::new(128.0 / 255.0, 64.0 / 255.0, 32.0 / 255.0, 0.5).unwrap();
+        let scene = spinon_render::RuntimeRenderSnapshot::new(
+            RuntimeRenderKey::new(
+                source.generation(),
+                source.document_revision(),
+                source.render_tree_revision(),
+                StyleRevision::INITIAL,
+                EnvironmentRevision::INITIAL,
+            ),
+            CssSize::new(20.0, 10.0).unwrap(),
+            vec![RuntimeRenderBox::new(
+                NodeId::new(3).unwrap(),
+                CssRect::new(0.0, 0.0, 10.0, 10.0).unwrap(),
+                RuntimePaint::Color(color),
+                0,
+            )],
+        )
+        .unwrap();
+        let vertices = build_vertices(&scene, 20, 10, ColorEncoding::Srgb).unwrap();
+        assert_eq!(
+            vertices[0].color,
+            [128.0 / 255.0, 64.0 / 255.0, 32.0 / 255.0, 0.5]
+        );
+        assert!(RuntimeSrgbColor::new(f32::NAN, 0.0, 0.0, 1.0).is_err());
+        assert!(RuntimeSrgbColor::new(0.0, 0.0, 1.01, 1.0).is_err());
+        assert!(RuntimeSrgbColor::new(0.0, 0.0, 0.0, -0.01).is_err());
     }
 
     #[test]

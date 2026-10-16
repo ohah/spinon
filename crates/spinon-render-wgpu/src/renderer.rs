@@ -15,6 +15,9 @@ use images::RuntimeImageRenderer;
 
 mod backend;
 use backend::{android_auto_backend_order, backend_from_abi, choose_sdr_format, color_encoding};
+pub(crate) mod paint_commands;
+mod precise_compositor;
+use paint_commands::OpacityGroupRenderer;
 mod surface_readback;
 
 /// 내부 WGPU surface 진단에서 읽은 단일 색상 표본입니다.
@@ -64,6 +67,7 @@ pub struct RuntimeRenderer {
     queue: wgpu::Queue,
     config: wgpu::SurfaceConfiguration,
     pipeline: wgpu::RenderPipeline,
+    opacity_group_renderer: OpacityGroupRenderer,
     image_renderer: RuntimeImageRenderer,
     last_image_draw_count: usize,
     vertex_buffer: wgpu::Buffer,
@@ -111,6 +115,21 @@ impl RuntimeRenderer {
         height: u32,
         backend: u32,
     ) -> Result<(Self, String), RuntimeRendererError> {
+        unsafe { Self::new_android_with_copy_src(native_window, width, height, backend, false) }
+    }
+
+    /// Android surface의 C19.2 fixture 표면을 직접 읽도록 `COPY_SRC`를 요청합니다.
+    ///
+    /// # Safety
+    /// 포인터는 유효한 `ANativeWindow`여야 하며 renderer가 파괴될 때까지 수명이 유지되어야 합니다.
+    #[doc(hidden)]
+    pub unsafe fn new_android_with_copy_src(
+        native_window: *mut c_void,
+        width: u32,
+        height: u32,
+        backend: u32,
+        copy_surface_to_buffer: bool,
+    ) -> Result<(Self, String), RuntimeRendererError> {
         if width == 0 || height == 0 {
             return Err(RuntimeRendererError::InvalidArgument(
                 "WGPU 표면 크기는 0보다 커야 합니다",
@@ -128,13 +147,27 @@ impl RuntimeRenderer {
         let window = RawWindowHandle::AndroidNdk(AndroidNdkWindowHandle::new(native_window));
         if backend != 0 {
             let pending = unsafe { Self::prepare_surface(display, window, backend) }?;
-            return Self::initialize_surface(pending, width, height);
+            return Self::initialize_surface_with_configuration(
+                pending,
+                width,
+                height,
+                true,
+                copy_surface_to_buffer,
+            );
         }
 
         let mut failures = Vec::new();
         for candidate in android_auto_backend_order() {
-            let result = unsafe { Self::prepare_surface(display, window, candidate) }
-                .and_then(|pending| Self::initialize_surface(pending, width, height));
+            let result =
+                unsafe { Self::prepare_surface(display, window, candidate) }.and_then(|pending| {
+                    Self::initialize_surface_with_configuration(
+                        pending,
+                        width,
+                        height,
+                        true,
+                        copy_surface_to_buffer,
+                    )
+                });
             match result {
                 Ok((renderer, report)) => {
                     return Ok((renderer, format!("{report} selection=auto")));
@@ -271,6 +304,7 @@ impl RuntimeRenderer {
             surface.configure(&device, &config);
         }
         let pipeline = create_pipeline(&device, config.format);
+        let opacity_group_renderer = OpacityGroupRenderer::new(&device, config.format);
         let image_renderer = RuntimeImageRenderer::new(&device, config.format)
             .map_err(RuntimeRendererError::Initialization)?;
         let vertex_capacity = std::mem::size_of::<Vertex>() as u64;
@@ -288,6 +322,7 @@ impl RuntimeRenderer {
                 queue,
                 config,
                 pipeline,
+                opacity_group_renderer,
                 image_renderer,
                 last_image_draw_count: 0,
                 vertex_buffer,
@@ -494,9 +529,24 @@ impl RuntimeRenderer {
             .create_command_encoder(&wgpu::CommandEncoderDescriptor {
                 label: Some("spinon-runtime-gpu-command-encoder"),
             });
-        let mut image_draw_count = 0;
-        {
-            let mut pass = encoder.begin_render_pass(&wgpu::RenderPassDescriptor {
+        let image_draw_count = if let Some(scene) = scene {
+            self.opacity_group_renderer
+                .draw_scene(
+                    &self.device,
+                    &mut encoder,
+                    scene,
+                    &view,
+                    self.config.width,
+                    self.config.height,
+                    &self.pipeline,
+                    &self.vertex_buffer,
+                    &geometry,
+                    &self.image_renderer,
+                    &prepared_images,
+                )
+                .map_err(RuntimeRendererError::Geometry)?
+        } else {
+            let _pass = encoder.begin_render_pass(&wgpu::RenderPassDescriptor {
                 label: Some("spinon-runtime-gpu-pass"),
                 color_attachments: &[Some(wgpu::RenderPassColorAttachment {
                     view: &view,
@@ -512,28 +562,8 @@ impl RuntimeRenderer {
                 occlusion_query_set: None,
                 multiview_mask: None,
             });
-            if let Some(scene) = scene {
-                for (box_index, render_box) in scene.boxes().iter().enumerate() {
-                    if let Some(range) = geometry.range_for_box(box_index)
-                        && !range.is_empty()
-                    {
-                        pass.set_pipeline(&self.pipeline);
-                        pass.set_vertex_buffer(0, self.vertex_buffer.slice(..));
-                        pass.draw(range, 0..1);
-                    }
-                    if let Some(image_index) = scene
-                        .images()
-                        .iter()
-                        .position(|image| image.node_id() == render_box.node_id())
-                        && self
-                            .image_renderer
-                            .draw_image(&mut pass, &prepared_images, image_index)
-                    {
-                        image_draw_count += 1;
-                    }
-                }
-            }
-        }
+            0
+        };
         self.last_image_draw_count = image_draw_count;
         if !is_current() {
             discard_surface_pixel_samples(
@@ -652,7 +682,7 @@ pub(crate) fn create_pipeline(
             compilation_options: Default::default(),
             targets: &[Some(wgpu::ColorTargetState {
                 format,
-                blend: None,
+                blend: Some(wgpu::BlendState::ALPHA_BLENDING),
                 write_mask: wgpu::ColorWrites::ALL,
             })],
         }),

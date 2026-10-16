@@ -407,6 +407,23 @@ Java_dev_spinon_bootstrap_AlphaImageFixtureNativeAdapter_createHost(JNIEnv *, jc
 }
 #endif
 
+#if defined(SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST) && \
+    SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST
+extern "C" JNIEXPORT jlong JNICALL
+Java_dev_spinon_bootstrap_BoxPaintOpacityFixtureNativeAdapter_createHost(JNIEnv *, jclass) {
+  std::array<char, 2048> output{};
+  SpinonRuntimeGpuHost *host =
+      spinon_runtime_gpu_host_new_c19_2_box_paint_opacity_fixture(
+          output.data(), output.size());
+  if (host == nullptr) {
+    __android_log_print(ANDROID_LOG_ERROR, kTag, "SPINON_C192_HOST_ERROR=%s", output.data());
+    return 0;
+  }
+  __android_log_print(ANDROID_LOG_INFO, kTag, "SPINON_C192_HOST=%s", output.data());
+  return static_cast<jlong>(reinterpret_cast<uintptr_t>(host));
+}
+#endif
+
 #if defined(SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST) && \
     SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST
 extern "C" JNIEXPORT jlong JNICALL
@@ -1053,6 +1070,23 @@ Java_dev_spinon_bootstrap_AlphaImageFixtureNativeAdapter_evalFixture(
   const std::string report = "status=" + std::to_string(status) + " " + output.data();
   __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
                       kTag, "SPINON_C182_EVAL %s", report.c_str());
+  return ToByteArray(env, report);
+}
+#endif
+
+#if defined(SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST) && \
+    SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_BoxPaintOpacityFixtureNativeAdapter_evalFixture(
+    JNIEnv *env, jclass, jlong host_handle) {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+  std::array<char, 32768> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_c19_2_box_paint_opacity_fixture(
+      host, 10000, output.data(), output.size());
+  const std::string report = "status=" + std::to_string(status) + " " + output.data();
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
+                      kTag, "SPINON_C192_EVAL %s", report.c_str());
   return ToByteArray(env, report);
 }
 #endif
@@ -1764,6 +1798,54 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeDrawSurface(
                       kTag, "SPINON_C0410_DRAW %s", report.c_str());
   return ToByteArray(env, report);
 }
+
+#if defined(SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST) && \
+    SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeRequestC192SurfacePixels(
+    JNIEnv *env, jclass, jlong context_handle, jintArray sample_xy) {
+  auto *context = reinterpret_cast<C0410RuntimeGpuContext *>(
+      static_cast<uintptr_t>(context_handle));
+  if (context == nullptr || sample_xy == nullptr || env->GetArrayLength(sample_xy) != 32) {
+    return ToByteArray(env, "status=-1 invalid C19.2 direct pixel request");
+  }
+  std::array<jint, 32> java_coordinates{};
+  env->GetIntArrayRegion(sample_xy, 0,
+                         static_cast<jsize>(java_coordinates.size()),
+                         java_coordinates.data());
+  if (env->ExceptionCheck()) return nullptr;
+  std::array<uint32_t, 32> sample_coordinates{};
+  for (size_t index = 0; index < java_coordinates.size(); ++index) {
+    if (java_coordinates[index] < 0) {
+      return ToByteArray(env, "status=-1 negative C19.2 direct pixel coordinate");
+    }
+    sample_coordinates[index] = static_cast<uint32_t>(java_coordinates[index]);
+  }
+  std::array<char, 2048> output{};
+  const int32_t status = spinon_runtime_gpu_host_request_c19_2_surface_pixels_for_test(
+      context->host, sample_coordinates.data(), sample_coordinates.size() / 2,
+      output.data(), output.size());
+  const std::string report = "status=" + std::to_string(status) + " " + output.data();
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
+                      kTag, "SPINON_C192_ANDROID_DIRECT_REQUEST %s", report.c_str());
+  return ToByteArray(env, report);
+}
+
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeReadbackC192Offscreen(
+    JNIEnv *env, jclass, jlong context_handle) {
+  auto *context = reinterpret_cast<C0410RuntimeGpuContext *>(
+      static_cast<uintptr_t>(context_handle));
+  if (context == nullptr) return ToByteArray(env, "status=-1 null C19.2 renderer");
+  std::array<char, 8192> output{};
+  const int32_t status = spinon_runtime_gpu_host_readback_c19_2_offscreen_for_test(
+      context->host, output.data(), output.size());
+  const std::string report = "status=" + std::to_string(status) + " " + output.data();
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
+                      kTag, "SPINON_C192_OFFSCREEN_REQUEST %s", report.c_str());
+  return ToByteArray(env, report);
+}
+#endif
 
 extern "C" JNIEXPORT jbyteArray JNICALL
 Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeInjectNextDrawFailure(

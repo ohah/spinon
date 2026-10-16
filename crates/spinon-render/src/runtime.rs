@@ -217,11 +217,54 @@ impl RuntimeRenderKey {
     }
 }
 
-/// 그리지 않거나 완전 불투명한 sRGB 단색으로 채우는 배경 paint입니다.
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+/// encoded sRGB 색과 CSS alpha를 보존하는 내부 paint 색입니다.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct RuntimeSrgbColor {
+    red: f32,
+    green: f32,
+    blue: f32,
+    alpha: f32,
+}
+
+impl RuntimeSrgbColor {
+    pub fn new(red: f32, green: f32, blue: f32, alpha: f32) -> Result<Self, RuntimeRenderError> {
+        if [red, green, blue, alpha]
+            .iter()
+            .any(|component| !component.is_finite() || !(0.0..=1.0).contains(component))
+        {
+            return Err(RuntimeRenderError::InvalidPaintColor);
+        }
+        Ok(Self {
+            red,
+            green,
+            blue,
+            alpha,
+        })
+    }
+
+    pub const fn red(self) -> f32 {
+        self.red
+    }
+
+    pub const fn green(self) -> f32 {
+        self.green
+    }
+
+    pub const fn blue(self) -> f32 {
+        self.blue
+    }
+
+    pub const fn alpha(self) -> f32 {
+        self.alpha
+    }
+}
+
+/// 투명, 불투명 sRGB 또는 alpha가 있는 sRGB 단색 배경 paint입니다.
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RuntimePaint {
     None,
     Opaque(OpaqueCssSrgb),
+    Color(RuntimeSrgbColor),
 }
 
 /// 단색으로 그릴 한 물리 방향 border 변입니다.
@@ -411,15 +454,26 @@ pub struct RuntimeRenderSnapshot {
     scroll_containers: Arc<[RuntimeScrollContainer]>,
     scroll_metadata: Arc<[RuntimeScrollRenderMetadata]>,
     images: Arc<[RuntimeRenderImage]>,
+    paint_commands: Arc<[RuntimePaintCommand]>,
+}
+
+/// Runtime box paint 순서에서 opacity group 경계를 보존하는 명령입니다.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum RuntimePaintCommand {
+    BeginGroup { opacity: f32 },
+    DrawBox { index: usize },
+    EndGroup,
 }
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum RuntimeRenderError {
     DuplicateNode(NodeId),
     InvalidPaintOrder,
+    InvalidPaintCommands,
     InvalidHitTestOrder,
     InvalidClip,
     InvalidBorderWidth,
+    InvalidPaintColor,
     InvalidScrollState,
     DuplicateScrollOwner(NodeId),
     StaleScrollRevision,
@@ -446,6 +500,8 @@ impl fmt::Display for RuntimeRenderError {
             Self::InvalidPaintOrder => {
                 formatter.write_str("runtime paint_order가 장면 순서의 0부터 연속값이 아닙니다")
             }
+            Self::InvalidPaintCommands => formatter
+                .write_str("runtime paint command가 box 순서 또는 group 경계와 맞지 않습니다"),
             Self::InvalidHitTestOrder => {
                 formatter.write_str("runtime hit_test_order가 중복되거나 장면 범위를 벗어났습니다")
             }
@@ -454,6 +510,9 @@ impl fmt::Display for RuntimeRenderError {
             }
             Self::InvalidBorderWidth => {
                 formatter.write_str("runtime border 폭은 유한한 0 이상의 CSS px여야 합니다")
+            }
+            Self::InvalidPaintColor => {
+                formatter.write_str("runtime sRGB paint 채널과 alpha는 유한한 0..1 값이어야 합니다")
             }
             Self::InvalidScrollState => {
                 formatter.write_str("runtime scroll range 또는 offset이 유효하지 않습니다")

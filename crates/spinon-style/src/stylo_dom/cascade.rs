@@ -52,6 +52,7 @@ pub use runtime_layout::{
     first_unsupported_runtime_layout_inline_property,
 };
 pub use runtime_overflow::{
+    compute_c19_box_paint_opacity_cascade_with_stylesheets,
     compute_runtime_block_flex_overflow_clip_cascade_with_stylesheets,
     first_unsupported_runtime_block_flex_overflow_clip_inline_property,
 };
@@ -123,12 +124,12 @@ pub use snapshot::{
     ComputedCssGridArea, ComputedCssGridAutoColumns, ComputedCssGridAutoFlow,
     ComputedCssGridAutoRows, ComputedCssGridItemPlacement, ComputedCssGridLayout,
     ComputedCssGridPlacement, ComputedCssGridTemplateAreas, ComputedCssGridTrackSize,
-    ComputedCssMath, ComputedCssMaxSize, ComputedCssOverflow, ComputedCssOverflowClipMargin,
-    ComputedCssOverflowVisualBox, ComputedCssOverscrollBehavior, ComputedCssPosition,
-    ComputedCssSpacingValue, ComputedCssTouchAction, ComputedCssVisibility, ComputedCssZIndex,
-    ComputedElementStyle, ComputedLayoutBorder, ComputedLayoutDimensions, ComputedLayoutInsets,
-    ComputedLayoutSpacing, ComputedStyleProfile, ComputedStyleSnapshot, CssColorScheme,
-    CssMediaEnvironment, CssPointerCapabilities, CssPrimaryPointer, CssViewport,
+    ComputedCssMath, ComputedCssMaxSize, ComputedCssOpacity, ComputedCssOverflow,
+    ComputedCssOverflowClipMargin, ComputedCssOverflowVisualBox, ComputedCssOverscrollBehavior,
+    ComputedCssPosition, ComputedCssSpacingValue, ComputedCssTouchAction, ComputedCssVisibility,
+    ComputedCssZIndex, ComputedElementStyle, ComputedLayoutBorder, ComputedLayoutDimensions,
+    ComputedLayoutInsets, ComputedLayoutSpacing, ComputedStyleProfile, ComputedStyleSnapshot,
+    CssColorScheme, CssMediaEnvironment, CssPointerCapabilities, CssPrimaryPointer, CssViewport,
     FixedContainingBlockEffect,
 };
 pub use ua_baseline::compute_supported_elements_ua_cascade;
@@ -280,6 +281,10 @@ pub enum CssCascadeError {
         property: &'static str,
         value: String,
     },
+    UnsupportedComputedOpacity {
+        node: NodeId,
+        value: f32,
+    },
     /// 현재 layout bridge가 의미를 보존할 수 없는 computed `aspect-ratio`입니다.
     UnsupportedComputedAspectRatio {
         node: NodeId,
@@ -412,6 +417,10 @@ impl fmt::Display for CssCascadeError {
             } => write!(
                 formatter,
                 "노드 {node}의 border 속성 {property} 값 {value:?}는 현재 solid runtime paint에서 지원하지 않습니다"
+            ),
+            Self::UnsupportedComputedOpacity { node, value } => write!(
+                formatter,
+                "노드 {node}의 computed opacity가 유효한 0..1 값이 아닙니다: {value}"
             ),
             Self::UnsupportedComputedAspectRatio { node, reason } => write!(
                 formatter,

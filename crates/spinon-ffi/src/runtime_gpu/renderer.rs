@@ -5,6 +5,24 @@ use spinon_render_wgpu::{RuntimeRenderer, RuntimeRendererError};
 use super::{ERR_ARGUMENT, ERR_LAYOUT, ERR_STALE, RuntimeGpuHost, lock};
 
 impl RuntimeGpuHost {
+    #[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
+    pub(super) fn readback_c19_2_offscreen_samples(
+        &self,
+        width: u32,
+        height: u32,
+        points: &[(u32, u32)],
+    ) -> Result<Vec<[u8; 4]>, String> {
+        let (_, published) = self.presentation.lock_current();
+        let snapshot = published
+            .as_ref()
+            .map(|scene| std::sync::Arc::clone(&scene.snapshot))
+            .ok_or_else(|| {
+                "C19.2 offscreen readback 전에 render scene이 publish되지 않았습니다".to_owned()
+            })?;
+        drop(published);
+        spinon_render_wgpu::readback_runtime_scene_samples(&snapshot, width, height, points)
+    }
+
     pub(super) unsafe fn create_android(
         &self,
         native_window: *mut c_void,
@@ -18,6 +36,32 @@ impl RuntimeGpuHost {
                 "runtime GPU renderer가 이미 생성되었습니다",
             ));
         }
+        #[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
+        let (renderer, report) = if self.c19_2_android_surface_readback_test {
+            match unsafe {
+                RuntimeRenderer::new_android_with_copy_src(
+                    native_window,
+                    width,
+                    height,
+                    backend,
+                    true,
+                )
+            } {
+                Ok((renderer, report)) => (renderer, format!("{report} surface_copy_src=enabled")),
+                Err(readback_error) => {
+                    let (renderer, report) = unsafe {
+                        RuntimeRenderer::new_android(native_window, width, height, backend)
+                    }?;
+                    (
+                        renderer,
+                        format!("{report} surface_copy_src=unavailable reason={readback_error}"),
+                    )
+                }
+            }
+        } else {
+            unsafe { RuntimeRenderer::new_android(native_window, width, height, backend) }?
+        };
+        #[cfg(not(feature = "c19-2-box-paint-opacity-fixture-test"))]
         let (renderer, report) =
             unsafe { RuntimeRenderer::new_android(native_window, width, height, backend) }?;
         *renderer_slot = Some(renderer);
@@ -79,7 +123,8 @@ impl RuntimeGpuHost {
             feature = "c18-1-image-paint-fixture-test",
             feature = "c18-2-alpha-image-compositing-fixture-test",
             feature = "c18-3-object-fit-position-fixture-test",
-            feature = "c18-4-image-fixture-test"
+            feature = "c18-4-image-fixture-test",
+            feature = "c19-2-box-paint-opacity-fixture-test"
         ))]
         let (renderer, report) = if self.surface_pixel_readback_test {
             RuntimeRenderer::initialize_uikit_surface_with_copy_src(pending, width, height)?
@@ -94,7 +139,8 @@ impl RuntimeGpuHost {
             feature = "c18-1-image-paint-fixture-test",
             feature = "c18-2-alpha-image-compositing-fixture-test",
             feature = "c18-3-object-fit-position-fixture-test",
-            feature = "c18-4-image-fixture-test"
+            feature = "c18-4-image-fixture-test",
+            feature = "c19-2-box-paint-opacity-fixture-test"
         )))]
         let (renderer, report) = RuntimeRenderer::initialize_uikit_surface(pending, width, height)?;
         *renderer_slot = Some(renderer);
@@ -238,7 +284,8 @@ impl RuntimeGpuHost {
         feature = "c18-1-image-paint-fixture-test",
         feature = "c18-2-alpha-image-compositing-fixture-test",
         feature = "c18-3-object-fit-position-fixture-test",
-        feature = "c18-4-image-fixture-test"
+        feature = "c18-4-image-fixture-test",
+        feature = "c19-2-box-paint-opacity-fixture-test"
     ))]
     pub(super) fn request_surface_pixel_readback_for_test(
         &self,

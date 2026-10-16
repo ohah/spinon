@@ -2,7 +2,7 @@ use spinon_core::{HostDocumentSnapshot, HostNodeHandle, NodeId};
 use spinon_layout::{LayoutFrame, LayoutSourceRevision};
 use spinon_render::{
     CssRect, CssSize, OpaqueCssSrgb, RuntimePaint, RuntimeRenderBox, RuntimeRenderKey,
-    RuntimeRenderSnapshot,
+    RuntimeRenderSnapshot, RuntimeSrgbColor,
 };
 use spinon_style::{ComputedBackgroundPaint, ComputedStyleProfile};
 
@@ -81,6 +81,9 @@ pub fn build_runtime_render_snapshot(
             Some(ComputedBackgroundPaint::Opaque(color)) => {
                 RuntimePaint::Opaque(OpaqueCssSrgb::new(color.red, color.green, color.blue))
             }
+            Some(ComputedBackgroundPaint::Translucent(color)) => RuntimePaint::Color(
+                RuntimeSrgbColor::new(color.red, color.green, color.blue, color.alpha)?,
+            ),
             None => return Err(StyleRenderError::MissingBackgroundColor(node_id)),
         };
         let paint_order =
@@ -120,7 +123,8 @@ pub fn build_runtime_render_snapshot(
 fn is_runtime_stacking_profile(profile: ComputedStyleProfile) -> bool {
     match profile {
         ComputedStyleProfile::RuntimeBlockFlexStackingV1
-        | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1 => true,
+        | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+        | ComputedStyleProfile::C19BoxPaintOpacityV1 => true,
         #[cfg(feature = "c13-3-gesture-fixture-test")]
         ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1 => true,
         _ => false,
@@ -136,7 +140,11 @@ pub fn build_runtime_render_snapshot_with_scroll_requests(
     previous: Option<&RuntimeRenderSnapshot>,
     requests: &[RuntimeScrollOffsetRequest],
 ) -> Result<RuntimeRenderSnapshot, StyleRenderError> {
-    if output.computed_styles.profile != ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1 {
+    if !matches!(
+        output.computed_styles.profile,
+        ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+            | ComputedStyleProfile::C19BoxPaintOpacityV1
+    ) {
         return Err(StyleRenderError::UnsupportedRuntimeProfile);
     }
     super::stacking::build_runtime_render_snapshot_with_scroll_state(

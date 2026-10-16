@@ -1,0 +1,36 @@
+--------- beginning of main
+10-17 02:05:04.718  3505  3531 I SpinonC0410: SPINON_C192_OFFSCREEN_PIXEL sample=rootBackdrop xy=340,232 rgba=32,49,75,255 product_exact=true chrome_exact=true
+10-17 02:05:04.718  3505  3531 I SpinonC0410: SPINON_C192_OFFSCREEN_PIXEL sample=sourceAlpha xy=26,26 rgba=143,25,38,255 product_exact=true chrome_exact=true
+10-17 02:05:04.718  3505  3531 I SpinonC0410: SPINON_C192_OFFSCREEN_PIXEL sample=groupSingle xy=64,26 rgba=16,89,165,255 product_exact=true chrome_exact=true
+10-17 02:05:04.718  3505  3531 I SpinonC0410: SPINON_C192_OFFSCREEN_PIXEL sample=groupOverlap xy=80,26 rgba=143,121,38,255 product_exact=true chrome_exact=true
+10-17 02:05:04.718  3505  3531 I SpinonC0410: SPINON_C192_OFFSCREEN_PIXEL sample=nestedOpacity xy=128,24 rgba=24,101,56,255 product_exact=true chrome_exact=true
+10-17 02:05:04.718  3505  3531 I SpinonC0410: SPINON_C192_OFFSCREEN_PIXEL sample=alphaTimesGroupOpacity xy=168,24 rgba=88,37,56,255 product_exact=true chrome_exact=true
+10-17 02:05:04.718  3505  3531 I SpinonC0410: SPINON_C192_OFFSCREEN_PIXEL sample=wideGamutSrgb xy=208,24 rgba=0,142,196,255 product_exact=true chrome_exact=false
+10-17 02:05:04.718  3505  3531 I SpinonC0410: SPINON_C192_OFFSCREEN_PIXEL sample=opacityZero xy=16,72 rgba=32,49,75,255 product_exact=true chrome_exact=true
+10-17 02:05:04.718  3505  3531 I SpinonC0410: SPINON_C192_OFFSCREEN_PIXEL sample=opacityHalfSingle xy=84,90 rgba=143,25,38,255 product_exact=true chrome_exact=true
+10-17 02:05:04.718  3505  3531 I SpinonC0410: SPINON_C192_OFFSCREEN_PIXEL sample=opacityHalfOverlap xy=68,68 rgba=16,25,165,255 product_exact=true chrome_exact=true
+10-17 02:05:04.718  3505  3531 I SpinonC0410: SPINON_C192_OFFSCREEN_PIXEL sample=opacityOneOverlap xy=124,68 rgba=0,0,255,255 product_exact=true chrome_exact=true
+10-17 02:05:04.718  3505  3531 I SpinonC0410: SPINON_C192_OFFSCREEN_PIXEL sample=clippedZOverlap xy=202,76 rgba=16,25,165,255 product_exact=true chrome_exact=true
+10-17 02:05:04.718  3505  3531 I SpinonC0410: SPINON_C192_OFFSCREEN_PIXEL sample=clippedRed xy=212,76 rgba=143,25,38,255 product_exact=true chrome_exact=true
+10-17 02:05:04.718  3505  3531 I SpinonC0410: SPINON_C192_OFFSCREEN_PIXEL sample=clippedAway xy=220,76 rgba=32,49,75,255 product_exact=true chrome_exact=true
+10-17 02:05:04.718  3505  3531 I SpinonC0410: SPINON_C192_OFFSCREEN_PIXEL sample=currentColorBorder xy=234,58 rgba=28,121,102,255 product_exact=true chrome_exact=true
+10-17 02:05:04.718  3505  3531 I SpinonC0410: SPINON_C192_OFFSCREEN_PIXEL sample=borderInterior xy=256,80 rgba=32,49,75,255 product_exact=true chrome_exact=true
+10-17 02:05:04.718  3505  3531 I SpinonC0410: SPINON_C192_OFFSCREEN_SUMMARY status=product-matched samples=16 product_matched=16 chrome_exact=15 readback_path=offscreen
+10-17 02:05:04.718  3505  3531 I SpinonC0410: SPINON_C192_PIXELCOPY_BEGIN run_id=4ce666439d pid=3505 generation=2 surface=945x630 viewport=360x240 samples=16
+10-17 02:05:04.813  3505  3522 I SpinonC0410: SPINON_C192_PIXEL run_id=4ce666439d sample=rootBackdrop xy=893,610 rgba=32,49,75,255 product_exact=true chrome_exact=true
+10-17 02:05:04.826  3505  3522 I SpinonC0410: SPINON_C192_PIXEL run_id=4ce666439d sample=sourceAlpha xy=69,69 rgba=143,25,38,255 product_exact=true chrome_exact=true
+10-17 02:05:04.826  3505  3522 I SpinonC0410: SPINON_C192_PIXEL run_id=4ce666439d sample=groupSingle xy=169,69 rgba=16,89,165,255 product_exact=true chrome_exact=true
+10-17 02:05:04.826  3505  3522 I SpinonC0410: SPINON_C192_PIXEL run_id=4ce666439d sample=groupOverlap xy=211,69 rgba=143,121,38,255 product_exact=true chrome_exact=true
+10-17 02:05:04.826  3505  3522 I SpinonC0410: SPINON_C192_PIXEL run_id=4ce666439d sample=nestedOpacity xy=337,64 rgba=24,101,56,255 product_exact=true chrome_exact=true
+10-17 02:05:04.826  3505  3522 I SpinonC0410: SPINON_C192_PIXEL run_id=4ce666439d sample=alphaTimesGroupOpacity xy=442,64 rgba=88,37,56,255 product_exact=true chrome_exact=true
+10-17 02:05:04.826  3505  3522 I SpinonC0410: SPINON_C192_PIXEL run_id=4ce666439d sample=wideGamutSrgb xy=547,64 rgba=0,142,196,255 product_exact=true chrome_exact=false
+10-17 02:05:04.826  3505  3522 I SpinonC0410: SPINON_C192_PIXEL run_id=4ce666439d sample=opacityZero xy=43,190 rgba=32,49,75,255 product_exact=true chrome_exact=true
+10-17 02:05:04.826  3505  3522 I SpinonC0410: SPINON_C192_PIXEL run_id=4ce666439d sample=opacityHalfSingle xy=221,237 rgba=143,25,38,255 product_exact=true chrome_exact=true
+10-17 02:05:04.826  3505  3522 I SpinonC0410: SPINON_C192_PIXEL run_id=4ce666439d sample=opacityHalfOverlap xy=179,179 rgba=16,25,165,255 product_exact=true chrome_exact=true
+10-17 02:05:04.826  3505  3522 I SpinonC0410: SPINON_C192_PIXEL run_id=4ce666439d sample=opacityOneOverlap xy=326,179 rgba=0,0,255,255 product_exact=true chrome_exact=true
+10-17 02:05:04.826  3505  3522 I SpinonC0410: SPINON_C192_PIXEL run_id=4ce666439d sample=clippedZOverlap xy=531,200 rgba=16,25,165,255 product_exact=true chrome_exact=true
+10-17 02:05:04.826  3505  3522 I SpinonC0410: SPINON_C192_PIXEL run_id=4ce666439d sample=clippedRed xy=557,200 rgba=143,25,38,255 product_exact=true chrome_exact=true
+10-17 02:05:04.826  3505  3522 I SpinonC0410: SPINON_C192_PIXEL run_id=4ce666439d sample=clippedAway xy=578,200 rgba=32,49,75,255 product_exact=true chrome_exact=true
+10-17 02:05:04.826  3505  3522 I SpinonC0410: SPINON_C192_PIXEL run_id=4ce666439d sample=currentColorBorder xy=615,153 rgba=28,121,102,255 product_exact=true chrome_exact=true
+10-17 02:05:04.826  3505  3522 I SpinonC0410: SPINON_C192_PIXEL run_id=4ce666439d sample=borderInterior xy=673,211 rgba=32,49,75,255 product_exact=true chrome_exact=true
+10-17 02:05:04.826  3505  3522 I SpinonC0410: SPINON_C192_PIXELCOPY_SUMMARY status=ok run_id=4ce666439d viewport=360x240 surface=945x630 samples=16 product_matched=16 chrome_exact=15 known_gamut_delta=wideGamutSrgb:-4-blue sha256=0e43c59c89dd2bcbe223fa231e572093d94af46b9f489dc89f590a49d95ecb8d png=/data/user/0/dev.spinon.bootstrap/cache/c192-box-paint-opacity-captures/box-paint-opacity-4ce666439d.png

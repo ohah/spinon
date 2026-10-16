@@ -132,6 +132,44 @@ fn stacking_profile_cascades_layer_registered_z_index_and_visibility_as_typed_va
         style_for(&snapshot, fixture.child).stacking_visibility,
         Some(ComputedCssVisibility::Visible)
     );
+    assert_eq!(
+        style_for(&snapshot, fixture.child)
+            .stacking_opacity
+            .map(|opacity| opacity.value()),
+        Some(1.0)
+    );
+}
+
+#[test]
+fn stacking_profile_preserves_computed_opacity_as_typed_values() {
+    let fixture = fixture(
+        "display:block;box-sizing:border-box;width:240px;height:120px;opacity:0.5",
+        "display:block;box-sizing:border-box;width:40px;height:30px;opacity:0.25",
+    );
+    let snapshot = compute_runtime_block_flex_stacking_cascade_with_stylesheets(
+        &fixture.view,
+        &[],
+        viewport(),
+        Default::default(),
+    )
+    .unwrap();
+
+    assert_eq!(
+        style_for(&snapshot, fixture.root)
+            .stacking_opacity
+            .map(|opacity| opacity.value()),
+        Some(0.5)
+    );
+    assert_eq!(
+        style_for(&snapshot, fixture.child)
+            .stacking_opacity
+            .map(|opacity| opacity.value()),
+        Some(0.25)
+    );
+    assert_eq!(
+        first_unsupported_runtime_block_flex_stacking_inline_property(&fixture.view),
+        None
+    );
 }
 
 #[test]
@@ -185,7 +223,6 @@ fn stacking_profile_accepts_only_declared_inline_values_and_rejects_other_at_rul
         "@supports (display: grid) { #root { display: block; } }",
         "#root { & .child { z-index: 1; } }",
         "@unknown-rule { #root { z-index: 1; } }",
-        "#root { opacity: 0.5; }",
     ] {
         assert!(
             compute_runtime_block_flex_stacking_cascade_with_stylesheets(

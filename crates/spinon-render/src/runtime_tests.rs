@@ -6,7 +6,8 @@ use std::sync::Arc;
 
 use super::{
     CssAxisClip, CssClip, CssRect, CssSize, OpaqueCssSrgb, RuntimeBorder, RuntimeBorderSide,
-    RuntimeImageResourceKey, RuntimePaint, RuntimeRenderBox, RuntimeRenderImage, RuntimeRenderKey,
+    RuntimeImageResourceKey, RuntimePaint, RuntimePaintCommand, RuntimeRenderBox,
+    RuntimeRenderImage, RuntimeRenderKey, RuntimeScrollRenderMetadata,
 };
 
 fn key() -> RuntimeRenderKey {
@@ -29,6 +30,56 @@ fn runtime_render_key_distinguishes_intrinsic_size_revisions() {
     let next = initial.with_intrinsic_size_revision(next_revision);
     assert_ne!(initial, next);
     assert_eq!(next.intrinsic_size_revision(), next_revision);
+}
+
+#[test]
+fn runtime_paint_commands_validate_group_balance_and_box_order() {
+    let node = NodeId::new(75).unwrap();
+    let frame = CssRect::new(0.0, 0.0, 20.0, 10.0).unwrap();
+    let render_box = RuntimeRenderBox::new(node, frame, RuntimePaint::None, 0);
+    let metadata = RuntimeScrollRenderMetadata::new(frame, Vec::new(), Vec::new());
+    let valid_commands = [
+        RuntimePaintCommand::BeginGroup { opacity: 0.5 },
+        RuntimePaintCommand::DrawBox { index: 0 },
+        RuntimePaintCommand::EndGroup,
+    ];
+    let snapshot = super::RuntimeRenderSnapshot::new_with_scroll_metadata_and_paint_commands(
+        key(),
+        CssSize::new(20.0, 10.0).unwrap(),
+        vec![render_box],
+        Vec::new(),
+        vec![metadata.clone()],
+        valid_commands.to_vec(),
+    )
+    .unwrap();
+    assert_eq!(snapshot.paint_commands(), valid_commands);
+
+    for commands in [
+        vec![RuntimePaintCommand::BeginGroup { opacity: 0.5 }],
+        vec![RuntimePaintCommand::EndGroup],
+        vec![RuntimePaintCommand::BeginGroup { opacity: f32::NAN }],
+        vec![
+            RuntimePaintCommand::BeginGroup { opacity: 0.5 },
+            RuntimePaintCommand::DrawBox { index: 1 },
+            RuntimePaintCommand::EndGroup,
+        ],
+        vec![
+            RuntimePaintCommand::DrawBox { index: 0 },
+            RuntimePaintCommand::DrawBox { index: 0 },
+        ],
+    ] {
+        assert!(matches!(
+            super::RuntimeRenderSnapshot::new_with_scroll_metadata_and_paint_commands(
+                key(),
+                CssSize::new(20.0, 10.0).unwrap(),
+                vec![render_box],
+                Vec::new(),
+                vec![metadata.clone()],
+                commands,
+            ),
+            Err(super::RuntimeRenderError::InvalidPaintCommands)
+        ));
+    }
 }
 
 #[test]

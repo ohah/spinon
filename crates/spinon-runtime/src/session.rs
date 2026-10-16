@@ -89,6 +89,8 @@ enum RuntimeCssProfile {
     BlockPositioningFixture,
     BlockFlexStackingFixture,
     BlockFlexOverflowClipFixture,
+    #[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
+    C19BoxPaintOpacityFixture,
     #[cfg(feature = "c13-3-gesture-fixture-test")]
     BlockFlexScrollGestureFixture,
     BlockFlexGridFixture,
@@ -299,6 +301,12 @@ impl RuntimeSession {
         Self::new_with_css_profile(RuntimeCssProfile::BlockFlexOverflowClipFixture)
     }
 
+    /// C19.2 부분 alpha·그룹 투명도 fixture 전용 runtime을 만듭니다.
+    #[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
+    pub fn new_runtime_gpu_c19_2_box_paint_opacity_fixture() -> Result<(Self, String), String> {
+        Self::new_with_css_profile(RuntimeCssProfile::C19BoxPaintOpacityFixture)
+    }
+
     /// C13.3 style와 scroll input policy를 연결하는 내부 fixture runtime을 만듭니다.
     #[cfg(feature = "c13-3-gesture-fixture-test")]
     pub fn new_runtime_gpu_block_flex_scroll_gesture_fixture() -> Result<(Self, String), String> {
@@ -357,6 +365,10 @@ impl RuntimeSession {
             }
             RuntimeCssProfile::BlockFlexOverflowClipFixture => {
                 RuntimeUaCascadeCoordinator::new_runtime_gpu_block_flex_overflow_clip()?
+            }
+            #[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
+            RuntimeCssProfile::C19BoxPaintOpacityFixture => {
+                RuntimeUaCascadeCoordinator::new_runtime_gpu_c19_2_box_paint_opacity()?
             }
             #[cfg(feature = "c13-3-gesture-fixture-test")]
             RuntimeCssProfile::BlockFlexScrollGestureFixture => {

@@ -58,6 +58,14 @@
     SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST
 + (uint64_t)createRuntimeGpuHostWithC18_4AsyncImageFixture;
 #endif
+#if defined(SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST) && \
+    SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST
++ (uint64_t)createRuntimeGpuHostWithC19_2BoxPaintOpacityFixture;
++ (NSString *)evalRuntimeGpuC19_2BoxPaintOpacityFixture:(uint64_t)handle;
++ (NSString *)requestRuntimeGpuC19_2SurfacePixelsForTest:(uint64_t)handle
+                                                   sampleXY:(const uint32_t *)sampleXY
+                                                sampleCount:(NSUInteger)sampleCount;
+#endif
 #if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
 + (uint64_t)createRuntimeGpuHostWithC13_3GestureFixture:(int32_t)scenarioID;
 #endif

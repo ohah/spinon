@@ -230,7 +230,11 @@ fn runtime_scene_uses_typed_stylo_paint_not_css_string_reparsing() {
     let styles = compute_runtime_flex_paint_cascade(&view, viewport(), Default::default()).unwrap();
     assert!(styles.elements.iter().all(|style| matches!(
         style.background_paint,
-        Some(ComputedBackgroundPaint::Transparent | ComputedBackgroundPaint::Opaque(_))
+        Some(
+            ComputedBackgroundPaint::Transparent
+                | ComputedBackgroundPaint::Opaque(_)
+                | ComputedBackgroundPaint::Translucent(_)
+        )
     )));
 }
 

@@ -21,7 +21,9 @@ pub(super) enum OrderedPaintItem {
 
 #[derive(Default)]
 pub(super) struct StackingContext {
+    pub(super) parent: Option<usize>,
     pub(super) root: Option<NodeId>,
+    pub(super) opacity: Option<f32>,
     pub(super) negative: Vec<OrderedContext>,
     pub(super) blocks: Vec<OrderedNode>,
     pub(super) flex_items: Vec<OrderedNode>,

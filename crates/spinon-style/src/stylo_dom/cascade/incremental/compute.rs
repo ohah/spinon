@@ -201,7 +201,8 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         ComputedStyleProfile::RuntimeBlockFlexStackingV1 => {
             Some(runtime_stacking_author_properties.as_slice())
         }
-        ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1 => {
+        ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+        | ComputedStyleProfile::C19BoxPaintOpacityV1 => {
             Some(runtime_overflow_clip_author_properties.as_slice())
         }
         ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1 => {
@@ -260,6 +261,7 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
             })
         }
         ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+        | ComputedStyleProfile::C19BoxPaintOpacityV1
         | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1 => allowed_author_properties
             .and_then(|allowed| {
                 registry.first_unsupported_runtime_layered_registered_properties_author_feature(
@@ -297,6 +299,7 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
             | ComputedStyleProfile::RuntimeBlockFlexStackingV1
             | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+            | ComputedStyleProfile::C19BoxPaintOpacityV1
             | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
     ) && let Some((stylesheet_id, diagnostic)) =
         registry.first_runtime_registered_property_author_diagnostic()

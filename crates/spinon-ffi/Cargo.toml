@@ -76,6 +76,14 @@ c18-4-image-fixture-test = [
     "dep:sha2",
     "spinon-runtime/c14-1-live-v8-fixture-test",
 ]
+c19-2-box-paint-opacity-fixture-test = [
+    "c04-runtime-gpu-fixture-test",
+    "dep:spinon-core",
+    "dep:spinon-layout",
+    "dep:spinon-style-to-layout",
+    "spinon-runtime/c14-1-live-v8-fixture-test",
+    "spinon-runtime/c19-2-box-paint-opacity-fixture-test",
+]
 
 [dependencies]
 spinon-style = { path = "../spinon-style" }

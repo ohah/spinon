@@ -2,10 +2,21 @@ use super::super::RuntimeGpuHost;
 use spinon_runtime::RuntimeSession;
 
 impl RuntimeGpuHost {
+    #[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
+    pub(in crate::runtime_gpu) fn new_c19_2_box_paint_opacity_fixture()
+    -> Result<(Self, String), String> {
+        let (session, report) = RuntimeSession::new_runtime_gpu_c19_2_box_paint_opacity_fixture()?;
+        let mut host = Self::from_session_with_frame_report(session);
+        host.include_paint_order_report = true;
+        host.surface_pixel_readback_test = true;
+        host.c19_2_android_surface_readback_test = true;
+        Ok((host, report))
+    }
+
     #[cfg(feature = "c18-1-image-paint-fixture-test")]
     pub(in crate::runtime_gpu) fn new_c18_1_image_paint_fixture() -> Result<(Self, String), String>
     {
-        let (session, report) = RuntimeSession::new_runtime_gpu_block_flex_overflow_clip_fixture()?;
+        let (session, report) = RuntimeSession::new_runtime_gpu_c19_2_box_paint_opacity_fixture()?;
         let mut host = Self::from_session_with_frame_report(session);
         host.include_paint_order_report = true;
         host.c18_1_image_paint_fixture = true;
@@ -16,7 +27,7 @@ impl RuntimeGpuHost {
     #[cfg(feature = "c18-2-alpha-image-compositing-fixture-test")]
     pub(in crate::runtime_gpu) fn new_c18_2_alpha_image_fixture() -> Result<(Self, String), String>
     {
-        let (session, report) = RuntimeSession::new_runtime_gpu_block_flex_overflow_clip_fixture()?;
+        let (session, report) = RuntimeSession::new_runtime_gpu_c19_2_box_paint_opacity_fixture()?;
         let mut host = Self::from_session_with_frame_report(session);
         host.include_paint_order_report = true;
         host.c18_2_alpha_image_fixture = true;
@@ -88,7 +99,7 @@ impl RuntimeGpuHost {
     #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
     pub(in crate::runtime_gpu) fn new_c13_1_overflow_clip_fixture() -> Result<(Self, String), String>
     {
-        let (session, report) = RuntimeSession::new_runtime_gpu_block_flex_overflow_clip_fixture()?;
+        let (session, report) = RuntimeSession::new_runtime_gpu_c19_2_box_paint_opacity_fixture()?;
         let mut host = Self::from_session_with_frame_report(session);
         host.include_paint_order_report = true;
         host.include_c13_1_hit_test_report = true;
@@ -98,7 +109,7 @@ impl RuntimeGpuHost {
     #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
     pub(in crate::runtime_gpu) fn new_c13_1_overflow_clip_border_fixture()
     -> Result<(Self, String), String> {
-        let (session, report) = RuntimeSession::new_runtime_gpu_block_flex_overflow_clip_fixture()?;
+        let (session, report) = RuntimeSession::new_runtime_gpu_c19_2_box_paint_opacity_fixture()?;
         let mut host = Self::from_session_with_frame_report(session);
         host.include_paint_order_report = true;
         host.include_c13_1_border_hit_test_report = true;
@@ -108,7 +119,7 @@ impl RuntimeGpuHost {
     #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
     pub(in crate::runtime_gpu) fn new_c13_1_compact_surface_matrix_fixture()
     -> Result<(Self, String), String> {
-        let (session, report) = RuntimeSession::new_runtime_gpu_block_flex_overflow_clip_fixture()?;
+        let (session, report) = RuntimeSession::new_runtime_gpu_c19_2_box_paint_opacity_fixture()?;
         let mut host = Self::from_session_with_frame_report(session);
         host.include_paint_order_report = true;
         host.include_c13_1_compact_surface_matrix_hit_test_report = true;
@@ -125,7 +136,7 @@ impl RuntimeGpuHost {
 
     #[cfg(feature = "c13-2-scroll-fixture-test")]
     pub(in crate::runtime_gpu) fn new_c13_2_scroll_fixture() -> Result<(Self, String), String> {
-        let (session, report) = RuntimeSession::new_runtime_gpu_block_flex_overflow_clip_fixture()?;
+        let (session, report) = RuntimeSession::new_runtime_gpu_c19_2_box_paint_opacity_fixture()?;
         let mut host = Self::from_session_with_frame_report(session);
         host.include_paint_order_report = true;
         Ok((host, report))

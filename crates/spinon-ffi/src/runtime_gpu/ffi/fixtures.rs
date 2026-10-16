@@ -31,5 +31,7 @@ mod c18_2;
 mod c18_3;
 #[cfg(feature = "c18-4-image-fixture-test")]
 mod c18_4;
+#[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
+mod c19_2;
 #[cfg(feature = "c04-runtime-gpu-test-hooks")]
 mod surface;

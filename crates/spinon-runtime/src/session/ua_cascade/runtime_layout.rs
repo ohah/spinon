@@ -198,6 +198,10 @@ where
         super::calculation::RuntimeCalculationProfile::BlockFlexOverflowClip => {
             first_unsupported_runtime_block_flex_overflow_clip_inline_property(&view)
         }
+        #[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
+        super::calculation::RuntimeCalculationProfile::C19BoxPaintOpacity => {
+            first_unsupported_runtime_block_flex_overflow_clip_inline_property(&view)
+        }
         #[cfg(feature = "c13-3-gesture-fixture-test")]
         super::calculation::RuntimeCalculationProfile::BlockFlexScrollGesture => {
             first_unsupported_runtime_block_flex_scroll_gesture_inline_property(&view)

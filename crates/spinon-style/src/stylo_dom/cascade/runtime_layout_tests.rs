@@ -16,7 +16,7 @@ use std::sync::Arc;
 use spinon_core::{AttributeName, DocumentChangeBatch, DocumentOperation, HostDocument, OwnerId};
 
 use super::{
-    CssCascadeError, CssViewport, StyloDocumentView, compute_runtime_flex_paint_cascade,
+    CssViewport, StyloDocumentView, compute_runtime_flex_paint_cascade,
     first_unsupported_runtime_flex_paint_inline_property,
     first_unsupported_runtime_layout_inline_property,
 };
@@ -204,11 +204,10 @@ fn runtime_paint_profile_rejects_partial_alpha_and_keeps_layout_profile_strict()
     let (view, node) = view_for_inline_style(
         "display:block;width:51px;height:31px;background-color:rgba(1, 2, 3, 0.5)",
     );
-    assert!(matches!(
-        compute_runtime_flex_paint_cascade(&view, CssViewport::C04_FIXTURE, Default::default()),
-        Err(CssCascadeError::UnsupportedComputedBackgroundColor { node: actual, .. })
-            if actual == node
-    ));
+    let error =
+        compute_runtime_flex_paint_cascade(&view, CssViewport::C04_FIXTURE, Default::default())
+            .unwrap_err();
+    assert!(error.to_string().contains("alpha가 0 또는 1이 아닙니다"));
     assert_eq!(
         first_unsupported_runtime_layout_inline_property(&view),
         Some((node, "background-color".to_owned()))

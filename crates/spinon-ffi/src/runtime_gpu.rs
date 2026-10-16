@@ -75,9 +75,12 @@ struct RuntimeGpuHost {
         feature = "c18-1-image-paint-fixture-test",
         feature = "c18-2-alpha-image-compositing-fixture-test",
         feature = "c18-3-object-fit-position-fixture-test",
-        feature = "c18-4-image-fixture-test"
+        feature = "c18-4-image-fixture-test",
+        feature = "c19-2-box-paint-opacity-fixture-test"
     ))]
     surface_pixel_readback_test: bool,
+    #[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
+    c19_2_android_surface_readback_test: bool,
     #[cfg(feature = "c18-1-image-paint-fixture-test")]
     c18_1_image_paint_fixture: bool,
     #[cfg(feature = "c18-1-image-paint-fixture-test")]
@@ -163,9 +166,12 @@ impl RuntimeGpuHost {
                 feature = "c18-1-image-paint-fixture-test",
                 feature = "c18-2-alpha-image-compositing-fixture-test",
                 feature = "c18-3-object-fit-position-fixture-test",
-                feature = "c18-4-image-fixture-test"
+                feature = "c18-4-image-fixture-test",
+                feature = "c19-2-box-paint-opacity-fixture-test"
             ))]
             surface_pixel_readback_test: false,
+            #[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
+            c19_2_android_surface_readback_test: false,
             #[cfg(feature = "c18-1-image-paint-fixture-test")]
             c18_1_image_paint_fixture: false,
             #[cfg(feature = "c18-1-image-paint-fixture-test")]

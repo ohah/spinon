@@ -211,10 +211,12 @@ fn runtime_gpu_profile_keeps_background_paint_out_of_the_legacy_layout_contract(
 }
 
 #[test]
-fn c124_profile_rejects_opacity_context_before_publishing_a_render_snapshot() {
+fn opacity_groups_are_preserved_without_changing_alpha_zero_hit_testing() {
     let (snapshot, _, _) = make_layout_snapshot(
-        "display:block;position:relative;width:120px;height:100px",
-        &["position:static;width:0;height:0;margin:20px;opacity:0.5"],
+        "display:block;position:relative;width:120px;height:100px;opacity:0.5;background-color:#123456",
+        &[
+            "position:static;width:30px;height:20px;opacity:0;background-color:rgba(51, 102, 255, 0)",
+        ],
         false,
         None,
     );
@@ -229,13 +231,25 @@ fn c124_profile_rejects_opacity_context_before_publishing_a_render_snapshot() {
     };
 
     let calculation = compute_request_for_block_flex_stacking(&request).unwrap();
+    let layout = calculation.layout.unwrap();
+    let scene = layout.render_snapshot.unwrap();
+    assert_eq!(scene.boxes().len(), 2);
     assert_eq!(
-        calculation.layout.unwrap_err(),
-        layout_failure(
-            "unsupported_inline_property",
-            Some(2),
-            Some("opacity".to_owned())
-        )
+        scene.paint_commands(),
+        [
+            spinon_render::RuntimePaintCommand::BeginGroup { opacity: 0.5 },
+            spinon_render::RuntimePaintCommand::DrawBox { index: 0 },
+            spinon_render::RuntimePaintCommand::BeginGroup { opacity: 0.0 },
+            spinon_render::RuntimePaintCommand::DrawBox { index: 1 },
+            spinon_render::RuntimePaintCommand::EndGroup,
+            spinon_render::RuntimePaintCommand::EndGroup,
+        ]
+    );
+    assert_eq!(
+        scene
+            .hit_test_css_point(10.0, 10.0)
+            .map(|render_box| render_box.node_id()),
+        Some(scene.boxes()[1].node_id())
     );
 }
 
