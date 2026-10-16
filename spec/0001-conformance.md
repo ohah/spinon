@@ -51,6 +51,8 @@ C14.1 live V8 image measurement의 고정 Chrome 155 PNG oracle, V8 JS 생성 �
 
 C18.1은 같은 제한 PNG fixture를 live V8→WGPU 실제 image paint로 연결해 Android API 37 AVD PixelCopy와 iPhone 17 Pro/iOS 26.2 Simulator Metal drawable에서 visible border-overpaint/overflow 및 hidden padding-edge clip 표본을 검사한다. 이는 고정 opaque natural-size PNG 하나의 opt-in 내부 profile이며, 제품 image loader·공개 HTML/CSS 지원·C14/C18/U05 전체를 완료로 표시하지 않는다. 계약은 [0064](internal/0064-c18-1-image-paint.md), 실행·artifact 근거는 [C18.1 evidence](internal/evidence/c18-1-image-paint-artifact-boundary-2026-10-16/README.md)에 둔다.
 
+C18.2는 고정 RGBA8 PNG의 alpha 0/128/255 수직 띠를 불투명 `#112233` 위에 natural size로 그리는 내부 fixture profile이다. Agent Browser Chrome `155.0.8059.85`의 80×40 DPR 1 oracle를 Android API 37 ARM64 AVD PixelCopy와 iPhone 17 Pro/iOS 26.2 Simulator Metal drawable에서 10/10 exact로 비교했고, 두 Simulator 전체 화면 대응 sample 10/10과 fixture 밖 anchor 4/4도 확인했다. 구현과 fixture-only interface는 [계획](../plan/c18-2-static-alpha-image-compositing.md)·[내부 계약 0065](internal/0065-c18-2-alpha-image-compositing.md), 원본과 제한은 [사전 비교](internal/evidence/c18-2-alpha-precomparison-2026-10-16/README.md)·[Android 근거](internal/evidence/c18-2-alpha-image-android-api37-2026-10-16/README.md)·[iOS 근거](internal/evidence/c18-2-alpha-image-ios-simulator-2026-10-16/README.md)에 둔다. 이는 제품 image loader, 일반 surface format 전체, C18/U05/C14 또는 공개 HTML/CSS 지원을 완료 처리하지 않는다.
+
 ## 시나리오 카탈로그
 
 첫 적합성 시나리오의 필드와 제안 목록은 [0009 적합성 시나리오 카탈로그](0009-conformance-scenarios.md)에 둔다. 이 버전의 일곱 시나리오는 모두 제안·미실행이며 공개 API의 지원 상태를 바꾸지 않는다. 플랫폼별 실행 근거가 갖춰지면 결과를 분리해 기록하고, `지원` 표기는 이 문서의 조건과 구현 상태 대장에 따라 별도로 판정한다.

@@ -1,0 +1,44 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.21s
+     Running unittests src/lib.rs (target/debug/deps/spinon_render_wgpu-5597c87c2c041fc2)
+
+running 22 tests
+test renderer::tests::android_auto_backend_tries_vulkan_then_gles_sequentially ... ok
+test renderer::surface_readback::tests::validates_sample_batch_boundaries_and_drawable_coordinates ... ok
+test renderer::surface_readback::tests::decodes_rgba_and_bgra_without_changing_alpha ... ok
+test renderer::surface_readback::tests::accepts_only_eight_bit_rgba_and_bgra_formats ... ok
+test renderer::tests::backend_override_rejects_unknown_values ... ok
+test renderer::tests::color_transfer_matches_surface_texture_format ... ok
+test renderer::tests::stale_draw_discards_pending_and_completed_pixel_samples ... ok
+test geometry::tests::clip_intersects_the_quad_before_gpu_vertex_generation ... ok
+test geometry::tests::geometry_keeps_srgb_encoded_values_for_unorm_surface_formats ... ok
+test geometry::tests::geometry_preserves_css_edges_and_skips_transparent_paint ... ok
+test geometry::tests::fully_clipped_image_has_an_empty_draw_range ... ok
+test geometry::tests::image_clip_adjusts_uv_with_destination_and_preserves_top_row ... ok
+test geometry::tests::border_paint_uses_css_side_widths_and_the_ancestor_clip ... ok
+test geometry::tests::geometry_rejects_zero_sized_surface ... ok
+test geometry::tests::runtime_border_side_rejects_non_finite_or_negative_widths ... ok
+test renderer::tests::surface_falls_back_to_unorm_when_it_supports_srgb_color_space ... ok
+test renderer::images::tests::texture_identity_includes_source_node_content_and_dimensions ... ok
+test renderer::tests::surface_prefers_rgba_srgb_when_both_supported ... ok
+test renderer::tests::surface_prefers_unorm_before_srgb_texture_format_for_encoded_compositing ... ok
+test renderer::tests::surface_rejects_unorm_format_without_srgb_color_space ... ok
+test renderer::tests::surface_uses_bgra_srgb_as_fallback ... ok
+test renderer::tests::surface_uses_rgba_unorm_as_android_style_fallback ... ok
+
+test result: ok. 22 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/runtime_stacking.rs (target/debug/deps/runtime_stacking-2070df9f04f0211b)
+
+running 3 tests
+test macos::stacking_context_order_matches_gpu_overlap_pixels ... ok
+test macos::wpt_derived_stacking_cases_match_offscreen_pixels ... ok
+test macos::reverse_flex_paint_matches_all_pinned_chrome_overlap_pixels ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.26s
+
+   Doc-tests spinon_render_wgpu
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

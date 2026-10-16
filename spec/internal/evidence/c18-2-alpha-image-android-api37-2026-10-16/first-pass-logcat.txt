@@ -1,0 +1,14 @@
+--------- beginning of main
+10-16 18:26:18.680 29180 29229 I SpinonC0410: SPINON_C182_PIXELCOPY_BEGIN run_id=660ef2f895f2 generation=2 surface=210x105 viewport=80x40 samples=10
+10-16 18:26:18.680 29180 29180 I SpinonC0410: SPINON_C182_SCREEN_GEOMETRY run_id=660ef2f895f2 phase=before_pixelcopy screenshot_px=1080x2400 screenshot_scale=1.0 content_view_origin_screen_px=0,0 content_view_size_px=1080x2400 surface_view_origin_screen_px=435,1272 surface_view_size_px=210x105 surface_texture_px=210x105 viewport_css_px=80x40 surface_scale=2.625,2.625
+10-16 18:26:18.941 29180 29217 I SpinonC0410: SPINON_C182_PIXELCOPY_SAMPLE id=background-anchor xy=6,6 rgba=17,34,51,255 exact=true
+10-16 18:26:18.941 29180 29217 I SpinonC0410: SPINON_C182_PIXELCOPY_SAMPLE id=transparent-interior xy=32,53 rgba=17,34,51,255 exact=true
+10-16 18:26:18.941 29180 29217 I SpinonC0410: SPINON_C182_PIXELCOPY_SAMPLE id=transparent-right-edge xy=40,53 rgba=17,34,51,255 exact=true
+10-16 18:26:18.941 29180 29217 I SpinonC0410: SPINON_C182_PIXELCOPY_SAMPLE id=partial-left-edge xy=43,53 rgba=119,37,66,255 exact=false
+10-16 18:26:18.941 29180 29217 I SpinonC0410: SPINON_C182_PIXELCOPY_SAMPLE id=partial-interior xy=53,53 rgba=119,37,66,255 exact=false
+10-16 18:26:18.941 29180 29217 I SpinonC0410: SPINON_C182_PIXELCOPY_SAMPLE id=partial-right-edge xy=61,53 rgba=119,37,66,255 exact=false
+10-16 18:26:18.941 29180 29217 I SpinonC0410: SPINON_C182_PIXELCOPY_SAMPLE id=opaque-left-edge xy=64,53 rgba=32,200,64,255 exact=true
+10-16 18:26:18.941 29180 29217 I SpinonC0410: SPINON_C182_PIXELCOPY_SAMPLE id=opaque-interior xy=74,53 rgba=32,200,64,255 exact=true
+10-16 18:26:18.941 29180 29217 I SpinonC0410: SPINON_C182_PIXELCOPY_SAMPLE id=opaque-right-edge xy=82,53 rgba=32,200,64,255 exact=true
+10-16 18:26:18.941 29180 29217 I SpinonC0410: SPINON_C182_PIXELCOPY_SAMPLE id=after-image-anchor xy=90,53 rgba=17,34,51,255 exact=true
+10-16 18:26:18.941 29180 29217 I SpinonC0410: SPINON_C182_PIXELCOPY_SUMMARY status=error matched=7 total=10 path=/data/user/0/dev.spinon.bootstrap/cache/c182-alpha-image-captures/alpha-source-over-660ef2f895f2.png sha256=e0296e6330e964ad1c513244c5bda54f4afd014823d2ec17af9e918e4aa0930f

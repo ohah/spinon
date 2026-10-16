@@ -3,6 +3,8 @@ mod host;
 
 #[cfg(feature = "c18-1-image-paint-fixture-test")]
 pub(super) mod c18_1;
+#[cfg(feature = "c18-2-alpha-image-compositing-fixture-test")]
+pub(super) mod c18_2;
 
 pub(crate) mod c11;
 pub(crate) mod c11_2_2;

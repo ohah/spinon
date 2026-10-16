@@ -1,0 +1,15 @@
+Compiler artifact boundary scan: cargo staticlib archive, Rust 1.96.1 stable; Apple nm cannot read LLVM 22 object attributes, so scan uses archive byte strings and exact source payload bytes.
+default_archive_sha256=e5772d0ac9166f19f1fc8f26d5d484428c531d93360c12b51feabcca91425254 size=393688560
+PASS default ABI spinon_runtime_gpu_host_new_c18_2_alpha_image_fixture present=false
+PASS default ABI spinon_runtime_gpu_host_eval_c18_2_alpha_image_fixture present=false
+PASS default ABI spinon_runtime_gpu_host_request_c18_2_surface_pixels_for_test present=false
+PASS default JS source bytes present=false bytes=1020
+PASS default PNG source bytes present=false bytes=99
+PASS default fixture source marker present=false bytes=38
+opt-in_archive_sha256=052f7eb7b6c711398d2c521da6d62cafa7ee87584086facd06a2a2e612e481c3 size=553262336
+PASS opt-in ABI spinon_runtime_gpu_host_new_c18_2_alpha_image_fixture present=true
+PASS opt-in ABI spinon_runtime_gpu_host_eval_c18_2_alpha_image_fixture present=true
+PASS opt-in ABI spinon_runtime_gpu_host_request_c18_2_surface_pixels_for_test present=true
+PASS opt-in JS source bytes present=true bytes=1020
+PASS opt-in PNG source bytes present=true bytes=99
+PASS opt-in fixture source marker present=true bytes=38

@@ -227,6 +227,20 @@ int32_t spinon_runtime_gpu_host_request_c18_1_surface_pixels_for_test(
     char *output, size_t output_capacity);
 #endif
 
+#if defined(SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST) && \
+    SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST
+/* C18.2 고정 RGBA8 PNG source-over 합성 검증용 fixture host입니다. */
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c18_2_alpha_image_fixture(
+    char *output, size_t output_capacity);
+int32_t spinon_runtime_gpu_host_eval_c18_2_alpha_image_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
+/* 다음 C18.2 draw report에 포함할 정확히 10개 drawable sample을 예약합니다. */
+int32_t spinon_runtime_gpu_host_request_c18_2_surface_pixels_for_test(
+    SpinonRuntimeGpuHost *host, const uint32_t *sample_xy, size_t sample_count,
+    char *output, size_t output_capacity);
+#endif
+
 #if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && \
     SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
 /* C13.3 Android 입력 어댑터 전용 opt-in gesture fixture host입니다. */

@@ -1,0 +1,15 @@
+iOS Simulator executable boundary; both builds use C04 runtime GPU, opt-in enables C18.1+C18.2, default disables both.
+opt-in_sha256=f117783216247c8d73d8906ade6e35279fa859e1952c9bd012432f3405c1d5e4 size=33106320
+PASS opt-in new ABI present=true
+PASS opt-in eval ABI present=true
+PASS opt-in readback ABI present=true
+PASS opt-in JS payload present=true
+PASS opt-in PNG payload present=true
+PASS opt-in fixture source marker present=true
+default_sha256=c21569cc7effccbec206d21207f19b15c520e778cbfb0e23dc013661ac746f06 size=32881520
+PASS default new ABI present=false
+PASS default eval ABI present=false
+PASS default readback ABI present=false
+PASS default JS payload present=false
+PASS default PNG payload present=false
+PASS default fixture source marker present=false

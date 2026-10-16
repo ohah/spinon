@@ -1,0 +1,15 @@
+Android APK native library boundary; opt-in = C18.1 + C18.2 debug APK, default = C04 runtime GPU on / C18.1 and C18.2 off.
+opt-in_apk_sha256=90dec4de82788547fa9e8750d0448239aca9261755349352fba8ff691f9c175a
+opt-in_native_sha256=b16dd0269976c2582f48e9a8bc0e0c2af4ab39e43dd86de137ab23c3f0484b52 size=68973784
+PASS opt-in new ABI present=true
+PASS opt-in eval ABI present=true
+PASS opt-in readback ABI present=true
+PASS opt-in JS payload present=true
+PASS opt-in PNG payload present=true
+default_apk_sha256=9f2dea4a0686acf8b5d6d65d4abf04bb505fa6b75e27a4f2c2086e9281e80601
+default_native_sha256=3c1b5feeda74b0b88f7a72f93d91d6cc31767d07d782ae4f87f3ab4161e6ed7a size=68662488
+PASS default new ABI present=false
+PASS default eval ABI present=false
+PASS default readback ABI present=false
+PASS default JS payload present=false
+PASS default PNG payload present=false

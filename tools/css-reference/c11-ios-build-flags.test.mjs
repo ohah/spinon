@@ -90,6 +90,38 @@ test('mise 유무와 관계없이 iOS simulator 빌드 인자로 Grid pixel 기�
   }
 });
 
+test('C18.2 iOS fixture는 C04 GPU와 공유 C18.1 readback 기반을 함께 켠다', async () => {
+  for (const includeMise of [false, true]) {
+    const result = await runSimulatorBuild({
+      includeMise,
+      variables: {
+        SPINON_ENABLE_C04_RUNTIME_GPU: '1',
+        SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST: '1',
+      },
+    });
+    assert.equal(result.status, 0, result.stderr);
+    assert.match(result.args,
+      /SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST=1/);
+    assert.match(result.args,
+      /SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST=1/);
+    assert.match(result.stdout,
+      /c18_1_image_paint_fixture=1 c18_2_alpha_image_fixture=1/);
+  }
+});
+
+test('C18.2 iOS fixture는 C04 GPU fixture 없이 빌드를 시작하지 않는다', async () => {
+  const result = await runSimulatorBuild({
+    includeMise: false,
+    variables: {
+      SPINON_ENABLE_C04_RUNTIME_GPU: '0',
+      SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST: '1',
+    },
+  });
+  assert.equal(result.status, 2);
+  assert.match(result.stderr, /C04\.10 runtime GPU fixture와 함께 켜야 합니다/);
+  assert.equal(result.args, '');
+});
+
 test('Grid pixel 검증은 C04 GPU fixture 없이 빌드를 시작하지 않는다', async () => {
   const result = await runSimulatorBuild({
     includeMise: false,

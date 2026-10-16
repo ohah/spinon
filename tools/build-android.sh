@@ -67,6 +67,13 @@ case "${SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST:-0}" in
     exit 2
     ;;
 esac
+case "${SPINON_ENABLE_C18_2_ALPHA_IMAGE_FIXTURE_TEST:-0}" in
+  0|1) ;;
+  *)
+    echo "SPINON_ENABLE_C18_2_ALPHA_IMAGE_FIXTURE_TEST는 0 또는 1이어야 합니다." >&2
+    exit 2
+    ;;
+esac
 case "${SPINON_ENABLE_C04_UA_CASCADE_FIXTURE_PROBE:-0}" in
   0|1) ;;
   *)
@@ -147,6 +154,11 @@ if [[ "${SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST:-0}" == "1" \
   echo "C18.1 image paint fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다." >&2
   exit 2
 fi
+if [[ "${SPINON_ENABLE_C18_2_ALPHA_IMAGE_FIXTURE_TEST:-0}" == "1" \
+      && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
+  echo "C18.2 alpha image fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다." >&2
+  exit 2
+fi
 s03_dom_gc_cpp_flag="-DSPINON_ENABLE_S03_DOM_GC_FIXTURE=${SPINON_ENABLE_S03_DOM_GC_FIXTURE:-0}"
 s04_runtime_gpu_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU=${SPINON_ENABLE_C04_RUNTIME_GPU:-0}"
 s04_runtime_gpu_fixture_test_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=${SPINON_ENABLE_C04_RUNTIME_GPU:-0}"
@@ -161,6 +173,7 @@ c141_app_fixture_cpp_flag="-DSPINON_ENABLE_C14_1_APP_FIXTURE_TEST=${SPINON_ENABL
 c142_app_fixture_cpp_flag="-DSPINON_ENABLE_C14_2_APP_FIXTURE_TEST=${SPINON_ENABLE_C14_2_APP_FIXTURE_TEST:-0}"
 c143_app_fixture_cpp_flag="-DSPINON_ENABLE_C14_3_APP_FIXTURE_TEST=${SPINON_ENABLE_C14_3_APP_FIXTURE_TEST:-0}"
 c181_image_paint_cpp_flag="-DSPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST=${SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST:-0}"
+c182_alpha_image_cpp_flag="-DSPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST=${SPINON_ENABLE_C18_2_ALPHA_IMAGE_FIXTURE_TEST:-0}"
 s04_android_cpp_flags=()
 if [[ "${SPINON_ENABLE_S04_ANDROID_FIXTURE:-0}" == "1" ]]; then
   s04_android_cpp_flags=(-DSPINON_ENABLE_S04_ANDROID_FIXTURE=1)
@@ -202,11 +215,14 @@ fi
 if [[ "${SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST:-0}" == "1" ]]; then
   ffi_features+=(c18-1-image-paint-fixture-test)
 fi
+if [[ "${SPINON_ENABLE_C18_2_ALPHA_IMAGE_FIXTURE_TEST:-0}" == "1" ]]; then
+  ffi_features+=(c18-2-alpha-image-compositing-fixture-test)
+fi
 ffi_feature_csv=""
 if ((${#ffi_features[@]} > 0)); then
   ffi_feature_csv="$(IFS=,; printf '%s' "${ffi_features[*]}")"
 fi
-echo "SPINON_ANDROID_BUILD_FLAGS c04_runtime_gpu=${SPINON_ENABLE_C04_RUNTIME_GPU:-0} c13_1_overflow_clip_fixture_test=$c131_fixture_flag c13_2_scroll_fixture_test=${SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST:-0} c13_3_gesture_fixture_test=${SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST:-0} c14_1_app_fixture_test=${SPINON_ENABLE_C14_1_APP_FIXTURE_TEST:-0} c14_2_app_fixture_test=${SPINON_ENABLE_C14_2_APP_FIXTURE_TEST:-0} c14_3_app_fixture_test=${SPINON_ENABLE_C14_3_APP_FIXTURE_TEST:-0} c18_1_image_paint_fixture_test=${SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST:-0}"
+echo "SPINON_ANDROID_BUILD_FLAGS c04_runtime_gpu=${SPINON_ENABLE_C04_RUNTIME_GPU:-0} c13_1_overflow_clip_fixture_test=$c131_fixture_flag c13_2_scroll_fixture_test=${SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST:-0} c13_3_gesture_fixture_test=${SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST:-0} c14_1_app_fixture_test=${SPINON_ENABLE_C14_1_APP_FIXTURE_TEST:-0} c14_2_app_fixture_test=${SPINON_ENABLE_C14_2_APP_FIXTURE_TEST:-0} c14_3_app_fixture_test=${SPINON_ENABLE_C14_3_APP_FIXTURE_TEST:-0} c18_1_image_paint_fixture_test=${SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST:-0} c18_2_alpha_image_fixture_test=${SPINON_ENABLE_C18_2_ALPHA_IMAGE_FIXTURE_TEST:-0}"
 
 build_spinon_ffi() {
   if [[ -n "$ffi_feature_csv" ]]; then
@@ -301,6 +317,7 @@ common=("$target" "$sysroot" -std=c++20 -O2 -fPIC
   "$c142_app_fixture_cpp_flag"
   "$c143_app_fixture_cpp_flag"
   "$c181_image_paint_cpp_flag"
+  "$c182_alpha_image_cpp_flag"
   -D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_EXTENSIVE
   -I"$v8_dir/buildtools/third_party/libc++"
   -isystem "$v8_dir/third_party/libc++/src/include"
