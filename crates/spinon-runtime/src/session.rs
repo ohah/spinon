@@ -4,6 +4,8 @@ use crate::v8::{
     SpinonDocumentCollectionStats, SpinonV8Runtime, spinon_v8_current_thread_id,
     spinon_v8_runtime_notify_memory_pressure, spinon_v8_runtime_terminate,
 };
+#[cfg(feature = "c14-1-live-v8-fixture-test")]
+use spinon_core::HostDocumentSnapshot;
 pub use spinon_core::TaskPriority;
 use std::ffi::CString;
 use std::sync::atomic::{AtomicU32, AtomicU64, Ordering};
@@ -109,6 +111,10 @@ enum Command {
         node_id: i32,
         caller_thread_id: u64,
         reply: SyncSender<OperationResponse>,
+    },
+    #[cfg(feature = "c14-1-live-v8-fixture-test")]
+    SnapshotDocumentForC14Fixture {
+        reply: SyncSender<Result<HostDocumentSnapshot, String>>,
     },
 }
 
@@ -448,6 +454,46 @@ impl RuntimeSession {
                 reply,
             },
         )
+    }
+
+    /// C14.1 opt-in fixture에서 owner actor가 보유한 최신 문서 snapshot을 복사합니다.
+    ///
+    /// 이 진단 경로는 공개 제품 API가 아닙니다. V8 actor가 처리한 시점의 snapshot을
+    /// 반환하며, actor가 5초 안에 응답하지 않으면 오류를 반환합니다.
+    #[cfg(feature = "c14-1-live-v8-fixture-test")]
+    pub fn snapshot_document_for_c14_1_fixture(&self) -> Result<HostDocumentSnapshot, String> {
+        let receiver = {
+            let _submission = lock(&self.submission);
+            if lock(&self.control).closing {
+                return Err("V8 문서 snapshot 요청 중 세션이 종료되었습니다".to_owned());
+            }
+            let (reply, receiver) = mpsc::sync_channel(1);
+            match self.scheduler.try_enqueue(
+                TaskPriority::UserVisible,
+                Command::SnapshotDocumentForC14Fixture { reply },
+                0,
+                0,
+            ) {
+                Ok(()) => receiver,
+                Err(EnqueueError::Full) => {
+                    return Err(format!(
+                        "V8 문서 snapshot actor queue가 가득 찼습니다 capacity={QUEUE_CAPACITY}"
+                    ));
+                }
+                Err(EnqueueError::Stopped) => {
+                    return Err("V8 문서 snapshot actor queue가 종료되었습니다".to_owned());
+                }
+            }
+        };
+        match receiver.recv_timeout(Duration::from_secs(5)) {
+            Ok(result) => result,
+            Err(mpsc::RecvTimeoutError::Timeout) => {
+                Err("V8 문서 snapshot actor 응답이 5초를 넘었습니다".to_owned())
+            }
+            Err(mpsc::RecvTimeoutError::Disconnected) => {
+                Err("V8 문서 snapshot actor 응답 채널이 닫혔습니다".to_owned())
+            }
+        }
     }
 
     /// 호스트가 정한 압박 단계를 V8에 전달합니다. OS 신호나 판단 시점은 정하지 않습니다.

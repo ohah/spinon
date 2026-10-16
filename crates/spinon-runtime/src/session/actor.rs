@@ -298,6 +298,10 @@ pub(super) fn actor_loop(
                 ));
                 send_reply(reply, OperationResponse { status, report }, trace_cookie);
             }
+            #[cfg(feature = "c14-1-live-v8-fixture-test")]
+            Command::SnapshotDocumentForC14Fixture { reply } => {
+                let _ = reply.send(Ok(callbacks.document.snapshot()));
+            }
         }
     }
 

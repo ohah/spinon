@@ -160,6 +160,27 @@ fn eval(session: &RuntimeSession, source: &str) -> super::OperationResponse {
     session.eval(source, TaskPriority::UserVisible)
 }
 
+#[cfg(feature = "c14-1-live-v8-fixture-test")]
+#[test]
+fn c14_fixture_snapshot_is_actor_owned_and_closed_sessions_fail() {
+    let session = new_session();
+    let snapshot = session
+        .snapshot_document_for_c14_1_fixture()
+        .expect("actor should return the initial HostDocument snapshot");
+    assert_eq!(snapshot.document_revision().get(), 0);
+    assert_eq!(snapshot.root_children().count(), 0);
+
+    session
+        .shutdown()
+        .expect("test session should close cleanly");
+    assert!(
+        session
+            .snapshot_document_for_c14_1_fixture()
+            .expect_err("closed session must reject fixture snapshots")
+            .contains("종료")
+    );
+}
+
 #[test]
 fn report_exposes_caller_owner_callback_threads_and_timings() {
     let callbacks = CallbackState {

@@ -47,6 +47,8 @@ R06 큐 포화·복구 검증의 구현 전 기준과 사전 판정값은 [큐 �
 
 C13.3 normalized wheel runtime의 고정 입력, Chrome 155 oracle, 축별 사전 판정값과 Simulator 검증 경계는 [wheel delta routing 계획](../plan/c13-3-wheel-delta-routing.md)에 기록한다. 입력은 opt-in fixture가 CSS px로 정규화한 sample이며 OS native wheel/trackpad adapter 또는 공개 `WheelEvent`를 검증하지 않는다.
 
+C14.1 live V8 image measurement의 고정 Chrome 155 PNG oracle, V8 JS 생성 입력, actor-owned HostDocument snapshot, source/revision identity와 CSS px frame 판정은 `plan/c14-1-live-v8-image-measurement.md`에 기록한다. Android/iOS Simulator opt-in report는 실제 V8 변경 문서 snapshot을 기존 decoder/layout adapter에 연결하는 내부 evidence이며, product resource loader·async replacement·image paint 또는 공개 CSS 지원을 판정하지 않는다.
+
 ## 시나리오 카탈로그
 
 첫 적합성 시나리오의 필드와 제안 목록은 [0009 적합성 시나리오 카탈로그](0009-conformance-scenarios.md)에 둔다. 이 버전의 일곱 시나리오는 모두 제안·미실행이며 공개 API의 지원 상태를 바꾸지 않는다. 플랫폼별 실행 근거가 갖춰지면 결과를 분리해 기록하고, `지원` 표기는 이 문서의 조건과 구현 상태 대장에 따라 별도로 판정한다.
