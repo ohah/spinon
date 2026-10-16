@@ -1,0 +1,552 @@
+{
+  "source_main_commit": "9b8d74f210f9419820cff25fbce2a1c5db300622",
+  "source_tree": "21915e498add5f2a569832fa7033ea711864689d",
+  "generator": "Rspress 2.0.22",
+  "scope": "C19.2 status, internal contract, implementation evidence, C19.1 color-source comparison, C19.2 roadmap and internal review routes",
+  "scoped_build_dir": "build-final2",
+  "source_inputs_count": 104,
+  "source_inputs": [
+    {
+      "path": "plan/c19-basic-paint-attributes.md",
+      "source_copy": "plan/c19-basic-paint-attributes.md",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/public/icon.svg",
+      "source_copy": "public/icon.svg",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/public/logo.svg",
+      "source_copy": "public/logo.svg",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "source_copy": "public/roadmap.html",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/0002-ui-tree-events.md",
+      "source_copy": "spec/0002-ui-tree-events.md",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/0008-css-compatibility.md",
+      "source_copy": "spec/0008-css-compatibility.md",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/STATUS.md",
+      "source_copy": "spec/STATUS.md",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/0069-c19-2-box-paint-opacity.md",
+      "source_copy": "spec/internal/0069-c19-2-box-paint-opacity.md",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/README.md",
+      "source_copy": "spec/internal/README.md",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-compatibility-triage-2026-10-16.md",
+      "source_copy": "spec/internal/evidence/c19-1-computed-color-compatibility-triage-2026-10-16.md",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/README.md",
+      "source_copy": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/README.md",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/browser-metadata.json",
+      "source_copy": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/browser-metadata.json",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/c19-runtime-body-inheritance-before-fix.log",
+      "source_copy": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/c19-runtime-body-inheritance-before-fix.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-color-fixture.html",
+      "source_copy": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-color-fixture.html",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-color-observations.json",
+      "source_copy": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-color-observations.json",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-color-oracle-agent-browser.png",
+      "source_copy": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-color-oracle-agent-browser.png",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.md",
+      "source_copy": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.md",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-srgb-compatibility-test.log",
+      "source_copy": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-srgb-compatibility-test.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/docs-build-result.md",
+      "source_copy": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/docs-build-result.md",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/implementation-review-20.md",
+      "source_copy": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/implementation-review-20.md",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/pr-delta-review-30.md",
+      "source_copy": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/pr-delta-review-30.md",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/spinon-style-test.log",
+      "source_copy": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/spinon-style-test.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/stylo-chromium-comparison.log",
+      "source_copy": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/stylo-chromium-comparison.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/workspace-clippy-final.log",
+      "source_copy": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/workspace-clippy-final.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/workspace-clippy-initial-failure.log",
+      "source_copy": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/workspace-clippy-initial-failure.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/workspace-test-final.log",
+      "source_copy": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/workspace-test-final.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/workspace-test.log",
+      "source_copy": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/workspace-test.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/wpt-source-manifest.json",
+      "source_copy": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/wpt-source-manifest.json",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-box-paint-opacity-mobile-precomparison-2026-10-17/chrome155-agent-browser.png",
+      "source_copy": "spec/internal/evidence/c19-2-box-paint-opacity-mobile-precomparison-2026-10-17/chrome155-agent-browser.png",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-box-paint-opacity-mobile-precomparison-2026-10-17/mobile-fixture.html",
+      "source_copy": "spec/internal/evidence/c19-2-box-paint-opacity-mobile-precomparison-2026-10-17/mobile-fixture.html",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-box-paint-opacity-mobile-precomparison-2026-10-17/observations.json",
+      "source_copy": "spec/internal/evidence/c19-2-box-paint-opacity-mobile-precomparison-2026-10-17/observations.json",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-box-paint-opacity-precomparison-2026-10-16/README.md",
+      "source_copy": "spec/internal/evidence/c19-2-box-paint-opacity-precomparison-2026-10-16/README.md",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-box-paint-opacity-precomparison-2026-10-16/browser-metadata.json",
+      "source_copy": "spec/internal/evidence/c19-2-box-paint-opacity-precomparison-2026-10-16/browser-metadata.json",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-box-paint-opacity-precomparison-2026-10-16/chromium-box-paint-fixture.html",
+      "source_copy": "spec/internal/evidence/c19-2-box-paint-opacity-precomparison-2026-10-16/chromium-box-paint-fixture.html",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-box-paint-opacity-precomparison-2026-10-16/chromium-box-paint-observations.json",
+      "source_copy": "spec/internal/evidence/c19-2-box-paint-opacity-precomparison-2026-10-16/chromium-box-paint-observations.json",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-box-paint-opacity-precomparison-2026-10-16/chromium-box-paint-oracle-agent-browser.png",
+      "source_copy": "spec/internal/evidence/c19-2-box-paint-opacity-precomparison-2026-10-16/chromium-box-paint-oracle-agent-browser.png",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-box-paint-opacity-precomparison-2026-10-16/sampled-pixels.json",
+      "source_copy": "spec/internal/evidence/c19-2-box-paint-opacity-precomparison-2026-10-16/sampled-pixels.json",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-box-paint-opacity-precomparison-2026-10-16/wpt-source-manifest.json",
+      "source_copy": "spec/internal/evidence/c19-2-box-paint-opacity-precomparison-2026-10-16/wpt-source-manifest.json",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-pr-diff-review-30-2026-10-17.md",
+      "source_copy": "spec/internal/evidence/c19-2-pr-diff-review-30-2026-10-17.md",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-roadmap-pr-2026-10-17/roadmap-agent-browser.png",
+      "source_copy": "spec/internal/evidence/c19-2-roadmap-pr-2026-10-17/roadmap-agent-browser.png",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-roadmap-pr-delta-review-30-2026-10-17.md",
+      "source_copy": "spec/internal/evidence/c19-2-roadmap-pr-delta-review-30-2026-10-17.md",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-image-links-pr-review-30-2026-10-17.md",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-image-links-pr-review-30-2026-10-17.md",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-implementation-review-2026-10-17.md",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-implementation-review-2026-10-17.md",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/README.md",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/README.md",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-api37-offscreen-diagnostic.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-api37-offscreen-diagnostic.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-api37-pixelcopy.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-api37-pixelcopy.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-api37-pixelcopy.png",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-api37-pixelcopy.png",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-api37-precise-compositor-candidate-pixelcopy.png",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-api37-precise-compositor-candidate-pixelcopy.png",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-api37-precise-compositor-candidate-run.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-api37-precise-compositor-candidate-run.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-api37-precise-compositor-candidate-screen.png",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-api37-precise-compositor-candidate-screen.png",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-api37-screen.png",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-api37-screen.png",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-float16-diagnostic-build.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-float16-diagnostic-build.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-float16-diagnostic-run.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-float16-diagnostic-run.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-float32-diagnostic-build.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-float32-diagnostic-build.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-float32-diagnostic-run.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-float32-diagnostic-run.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-float32-output-probe-build.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-float32-output-probe-build.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-float32-output-probe-run.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-float32-output-probe-run.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-manual-blend-diagnostic-build.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-manual-blend-diagnostic-build.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-manual-blend-diagnostic-run.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-manual-blend-diagnostic-run.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-unorm-integer-quantization-build.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-unorm-integer-quantization-build.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-unorm-integer-quantization-run.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-unorm-integer-quantization-run.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-unorm-quantization-probe-build.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-unorm-quantization-probe-build.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-unorm-quantization-probe-run.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/android-unorm-quantization-probe-run.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/android-build.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/android-build.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/android-install.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/android-install.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/android-launch.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/android-launch.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/android-pixelcopy.png",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/android-pixelcopy.png",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/android-run.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/android-run.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/android-screen.png",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/android-screen.png",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/ios-build.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/ios-build.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/ios-iphone17pro-launch.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/ios-iphone17pro-launch.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/ios-iphone17pro-run.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/ios-iphone17pro-run.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/ios-launch.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/ios-launch.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/ios-run.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/ios-run.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/ipad-pro-manifest.json",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/ipad-pro-manifest.json",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/ipad-pro-pixels.jsonl",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/ipad-pro-pixels.jsonl",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/ipad-pro-screen.png",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/ipad-pro-screen.png",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/iphone17pro-manifest.json",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/iphone17pro-manifest.json",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/iphone17pro-pixels.jsonl",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/iphone17pro-pixels.jsonl",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/iphone17pro-screen.png",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/c19-profile-rerun-20261017/iphone17pro-screen.png",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/final-rerun/android-api37-pixelcopy.png",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/final-rerun/android-api37-pixelcopy.png",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/final-rerun/android-api37-run.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/final-rerun/android-api37-run.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/final-rerun/android-api37-screen.png",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/final-rerun/android-api37-screen.png",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/final-rerun/ipad-pro-13-candidate-screen.png",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/final-rerun/ipad-pro-13-candidate-screen.png",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/final-rerun/ipad-pro-13-manifest.json",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/final-rerun/ipad-pro-13-manifest.json",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/final-rerun/ipad-pro-13-pixels.jsonl",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/final-rerun/ipad-pro-13-pixels.jsonl",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/final-rerun/ipad-pro-13-run.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/final-rerun/ipad-pro-13-run.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/final-rerun/iphone17pro-candidate-screen.png",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/final-rerun/iphone17pro-candidate-screen.png",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/final-rerun/iphone17pro-manifest.json",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/final-rerun/iphone17pro-manifest.json",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/final-rerun/iphone17pro-pixels.jsonl",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/final-rerun/iphone17pro-pixels.jsonl",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/final-rerun/iphone17pro-run.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/final-rerun/iphone17pro-run.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/ios-iphone17pro-metal-manifest.json",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/ios-iphone17pro-metal-manifest.json",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/ios-iphone17pro-metal-pixels.jsonl",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/ios-iphone17pro-metal-pixels.jsonl",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/ios-iphone17pro-precise-compositor-candidate-manifest.json",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/ios-iphone17pro-precise-compositor-candidate-manifest.json",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/ios-iphone17pro-precise-compositor-candidate-pixels.jsonl",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/ios-iphone17pro-precise-compositor-candidate-pixels.jsonl",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/ios-iphone17pro-precise-compositor-candidate-run.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/ios-iphone17pro-precise-compositor-candidate-run.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/ios-iphone17pro-precise-compositor-candidate-screen.png",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/ios-iphone17pro-precise-compositor-candidate-screen.png",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/ios-iphone17pro-run.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/ios-iphone17pro-run.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/ios-iphone17pro-screen.png",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/ios-iphone17pro-screen.png",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/ipados-ipad-pro-13-metal-candidate-manifest.json",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/ipados-ipad-pro-13-metal-candidate-manifest.json",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/ipados-ipad-pro-13-metal-candidate-pixels.jsonl",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/ipados-ipad-pro-13-metal-candidate-pixels.jsonl",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/ipados-ipad-pro-13-metal-candidate-run.log",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/ipados-ipad-pro-13-metal-candidate-run.log",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/ipados-ipad-pro-13-metal-candidate-screen.png",
+      "source_copy": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/ipados-ipad-pro-13-metal-candidate-screen.png",
+      "matches_merged_tree": true
+    },
+    {
+      "path": "spec/styles.css",
+      "source_copy": "spec/styles.css",
+      "matches_merged_tree": true
+    }
+  ],
+  "source_input_bytes_match_count": 104,
+  "build_log_result": {
+    "pages_rendered": "success",
+    "web_build_seconds": 0.61,
+    "node_build_seconds": 0.61
+  },
+  "image_imports": [
+    "android-screen.3cee29c23f.png",
+    "android-api37-screen.5c6b0a7beb.png",
+    "iphone17pro-screen.acedf4880e.png",
+    "iphone17pro-candidate-screen.65d3d97faf.png",
+    "ipad-pro-screen.f468e2132c.png",
+    "ipad-pro-13-candidate-screen.6d9d1ee9b6.png"
+  ],
+  "scope_boundaries": {
+    "full_docs_build_attempted": false,
+    "dead_link_check": "disabled only in temporary scoped config due unrelated existing broken links; image assets were imported and emitted",
+    "repository_rspress_config_modified": false,
+    "repository_lockfile_modified": false,
+    "github_pages_deployment": false,
+    "tailnet_server_restarted": false
+  }
+}

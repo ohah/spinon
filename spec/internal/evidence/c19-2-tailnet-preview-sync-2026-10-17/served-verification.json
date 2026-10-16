@@ -1,0 +1,63 @@
+{
+  "verified_at_utc": "2026-10-16T18:12:11Z",
+  "preview_origin": "https://macstudio.tailed42f2.ts.net",
+  "source_main_commit": "9b8d74f210f9419820cff25fbce2a1c5db300622",
+  "source_tree": "21915e498add5f2a569832fa7033ea711864689d",
+  "manifest": {
+    "url": "/spinon/sync-manifest-c19-2-tailnet-roadmap-2026-10-17.json",
+    "http_status": 200,
+    "bytes": 43613,
+    "sha256": "e940d9062d556d273983d976e81bcf877a739dc1170b6d789be7aea076075dc0"
+  },
+  "served_paths": {
+    "count": 108,
+    "exact_body_sha256_matches": 108,
+    "http_status_counts": {
+      "200": 108
+    },
+    "bytes": 5615740,
+    "failures": []
+  },
+  "roadmap": {
+    "url": "/spinon/roadmap.html",
+    "title": "스피논 구현 로드맵",
+    "counter": "203개 표시 · 공식 완료 71/203",
+    "c19_checked": false,
+    "c19_disabled": true,
+    "c19_2_checked": false,
+    "c19_2_disabled": true,
+    "counter_is_dynamic_from_status_source": true
+  },
+  "status_page": {
+    "url": "/spinon/spec/STATUS.html",
+    "verified": true,
+    "c19_and_c19_2_incomplete": true
+  },
+  "runtime_evidence_page": {
+    "url": "/spinon/spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/README.html",
+    "images_loaded": 6,
+    "image_failures": [],
+    "screenshot_dimensions_px": {
+      "android": [
+        1080,
+        2400
+      ],
+      "iphone17pro": [
+        1206,
+        2622
+      ],
+      "ipad_pro_13": [
+        2064,
+        2752
+      ]
+    }
+  },
+  "tailnet_serve": {
+    "origin_route": "https://macstudio.tailed42f2.ts.net -> http://127.0.0.1:8768",
+    "node_pid": 1191,
+    "server_restarted": false,
+    "files_deleted": 0,
+    "replaced_files_backed_up": 14
+  },
+  "agent_browser_session": "spinon-c19-roadmap-pr-20261017"
+}
