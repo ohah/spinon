@@ -33,6 +33,6 @@
 | 27 | PR 화면 증거가 실제 Tailnet이 아닌 로컬 후보 화면인가 | 캡처를 실제 `macstudio.tailed42f2.ts.net`에서 Agent Browser로 저장했다. 통과. |
 | 28 | screenshot이 있는데 페이지 내부 이미지가 깨졌는가 | runtime evidence 페이지의 여섯 screenshot이 모두 `complete`이고 natural size가 양수다. 통과. |
 | 29 | 복사 검증 과정에서 공용 preview를 재시작하거나 Serve 설정을 바꾸는가 | 기존 Node PID 1191 및 Serve route를 확인했고 재시작·설정 변경은 없었다. 통과. |
-| 30 | 작업 후 Agent Browser 프로세스가 남아 사용자 요구를 어기는가 | PR 화면 확인을 끝낸 뒤 이 세션만 닫고 browser process 종료를 확인한다. 완료 여부는 merge 뒤 README에 기록한다. |
+| 30 | PR 본문 캡처가 로드되지 않거나 Agent Browser 프로세스가 남는가 | PR #235 화면의 캡처 3개가 모두 1680×1200으로 로드됐다. 확인 뒤 세션을 닫았고 PID 15294는 사라졌으며 Tailnet 서버 PID 1191은 유지됐다. 통과. |
 
 복사 후 검증 summary는 108개 hash 일치, 14개 backup hash 일치, mismatch 0, deletion 0이다. 전체 문서 build·Pages 배포·기기 검증은 이번 PR 판정 범위에 넣지 않는다.

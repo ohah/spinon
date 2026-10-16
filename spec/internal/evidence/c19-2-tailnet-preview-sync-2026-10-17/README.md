@@ -31,6 +31,7 @@ Agent Browser에서 다음 Tailnet URL을 열었다. 스크린샷도 이 브라�
 - [로드맵](https://macstudio.tailed42f2.ts.net/spinon/roadmap.html): `203개 표시 · 공식 완료 71/203`. C19와 C19.2 체크박스는 모두 비활성·미체크 상태다.
 - [공식 상태 대장](https://macstudio.tailed42f2.ts.net/spinon/spec/STATUS.html): C19 및 C19.2가 아직 미완료임을 확인했다.
 - [C19.2 Simulator 근거](https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/README.html): Android 1080×2400, iPhone 1206×2622, iPad 2064×2752 캡처 여섯 장이 모두 로드됐다.
+- PR #235 본문에 넣은 세 화면 캡처도 Agent Browser로 열어 모두 로드됐음을 확인했다. 화면은 각각 1680×1200이다. 확인 후 `spinon-c19-roadmap-pr-20261017` 브라우저 세션을 닫았고 session PID 15294가 사라졌다. 기존 Tailnet 서버 PID 1191은 그대로 실행 중이며 8768 포트에 LISTEN만 남았다.
 
 이 화면의 count는 `spec/STATUS.md`에서 동적으로 만든다. 이전 61/197 또는 62/197 수치는 이전 상태의 snapshot이며 현재 값은 71/203이다. 이 PR은 count를 HTML에 고정하지 않으며 `spec/STATUS.md`를 변경하지 않는다.
 

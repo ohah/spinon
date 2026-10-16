@@ -1,9 +1,9 @@
 {
   "generator": "Rspress 2.0.22",
-  "scope": "the PR evidence README, its linked screenshots, PR delta review, and internal index route",
+  "scope": "the PR evidence README, linked screenshots, PR delta review, and internal index route",
   "result": "success",
-  "pages_rendered_ms": 80,
-  "web_and_node_build_seconds": 0.17,
+  "pages_rendered_ms": 101,
+  "web_and_node_build_seconds": 0.66,
   "source_revision": "PR working tree based on 9b8d74f210f9419820cff25fbce2a1c5db300622",
   "new_routes": [
     "spec/internal/evidence/c19-2-tailnet-preview-sync-2026-10-17/README.html",

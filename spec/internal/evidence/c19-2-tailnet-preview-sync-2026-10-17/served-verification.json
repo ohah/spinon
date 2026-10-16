@@ -57,7 +57,34 @@
     "node_pid": 1191,
     "server_restarted": false,
     "files_deleted": 0,
-    "replaced_files_backed_up": 14
+    "replaced_files_backed_up": 14,
+    "listener_after_browser_close": "127.0.0.1:8768 LISTEN only; no established browser clients observed"
   },
-  "agent_browser_session": "spinon-c19-roadmap-pr-20261017"
+  "agent_browser_session": "spinon-c19-roadmap-pr-20261017",
+  "pr_235_images": {
+    "page": "https://github.com/ohah/spinon/pull/235",
+    "loaded": 3,
+    "failures": [],
+    "dimensions_px": [
+      [
+        1680,
+        1200
+      ],
+      [
+        1680,
+        1200
+      ],
+      [
+        1680,
+        1200
+      ]
+    ]
+  },
+  "agent_browser_cleanup": {
+    "session": "spinon-c19-roadmap-pr-20261017",
+    "browser_pid": 15294,
+    "closed": true,
+    "pid_absent_after_close": true,
+    "verified_at_utc": "2026-10-16T18:15:26Z"
+  }
 }
