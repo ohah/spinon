@@ -95,6 +95,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 #if SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1
         let runRuntimeGpu = runRuntimeGpuBase
             || arguments.contains("--spinon-c181-image-paint")
+            || arguments.contains("--spinon-c182-alpha-image")
 #else
         let runRuntimeGpu = runRuntimeGpuBase
 #endif

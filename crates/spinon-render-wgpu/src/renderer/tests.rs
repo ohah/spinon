@@ -133,7 +133,7 @@ fn surface_rejects_unorm_format_without_srgb_color_space() {
 }
 
 #[test]
-fn surface_prefers_srgb_texture_format_before_unorm_fallback() {
+fn surface_prefers_unorm_before_srgb_texture_format_for_encoded_compositing() {
     let capabilities = capabilities(&[
         (
             wgpu::TextureFormat::Rgba8Unorm,
@@ -146,7 +146,7 @@ fn surface_prefers_srgb_texture_format_before_unorm_fallback() {
     ]);
     assert_eq!(
         choose_sdr_format(&capabilities).unwrap(),
-        wgpu::TextureFormat::Bgra8UnormSrgb
+        wgpu::TextureFormat::Rgba8Unorm
     );
 }
 

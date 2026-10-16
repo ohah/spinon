@@ -36,12 +36,16 @@ fn linear_to_srgb(channel: f32) -> f32 {
 fn fs_image(input: ImageVertexOutput) -> @location(0) vec4<f32> {
     let sampled = textureSample(image_texture, image_sampler, input.uv);
     if image_output_encoding.encode_srgb != 0u {
-        return vec4<f32>(
+        var encoded = vec3<f32>(
             linear_to_srgb(sampled.r),
             linear_to_srgb(sampled.g),
             linear_to_srgb(sampled.b),
-            1.0,
         );
+        if sampled.a > 0.0 && sampled.a < 1.0 {
+            let quantized_premultiplied = round(encoded * sampled.a * 255.0) / 255.0;
+            encoded = quantized_premultiplied / sampled.a;
+        }
+        return vec4<f32>(encoded, sampled.a);
     }
-    return vec4<f32>(sampled.rgb, 1.0);
+    return sampled;
 }

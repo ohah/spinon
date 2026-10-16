@@ -103,6 +103,17 @@ require(spinonC181ImagePaintFixtureTestValue == "0" || spinonC181ImagePaintFixtu
 require(spinonC181ImagePaintFixtureTestValue != "1" || spinonC04RuntimeGpuValue == "1") {
     "C18.1 image paint fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다."
 }
+val spinonC182AlphaImageFixtureTest =
+    providers.environmentVariable("SPINON_ENABLE_C18_2_ALPHA_IMAGE_FIXTURE_TEST").orElse("0")
+val spinonC182AlphaImageFixtureTestValue = spinonC182AlphaImageFixtureTest.get()
+require(spinonC182AlphaImageFixtureTestValue == "0" || spinonC182AlphaImageFixtureTestValue == "1") {
+    "SPINON_ENABLE_C18_2_ALPHA_IMAGE_FIXTURE_TEST는 0 또는 1이어야 합니다."
+}
+require(spinonC182AlphaImageFixtureTestValue != "1" || spinonC04RuntimeGpuValue == "1") {
+    "C18.2 alpha image fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다."
+}
+val spinonImagePaintFixtureTestValue =
+    spinonC181ImagePaintFixtureTestValue == "1" || spinonC182AlphaImageFixtureTestValue == "1"
 val prepareSpinonBootstrap by tasks.registering(Exec::class) {
     workingDir = repoRoot
     environment("SPINON_ENABLE_S03_DOM_GC_FIXTURE", spinonS03DomGcFixture.get())
@@ -129,6 +140,7 @@ val prepareSpinonBootstrap by tasks.registering(Exec::class) {
     environment("SPINON_ENABLE_C14_2_APP_FIXTURE_TEST", spinonC142AppFixtureTestValue)
     environment("SPINON_ENABLE_C14_3_APP_FIXTURE_TEST", spinonC143AppFixtureTestValue)
     environment("SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST", spinonC181ImagePaintFixtureTestValue)
+    environment("SPINON_ENABLE_C18_2_ALPHA_IMAGE_FIXTURE_TEST", spinonC182AlphaImageFixtureTestValue)
     commandLine("bash", "tools/build-android.sh")
 }
 
@@ -213,7 +225,17 @@ android {
         buildConfigField(
             "boolean",
             "SPINON_IMAGE_PAINT_FIXTURE_TEST",
+            spinonImagePaintFixtureTestValue.toString(),
+        )
+        buildConfigField(
+            "boolean",
+            "SPINON_C18_1_IMAGE_PAINT_FIXTURE_TEST",
             (spinonC181ImagePaintFixtureTestValue == "1").toString(),
+        )
+        buildConfigField(
+            "boolean",
+            "SPINON_C18_2_ALPHA_IMAGE_FIXTURE_TEST",
+            (spinonC182AlphaImageFixtureTestValue == "1").toString(),
         )
     }
 
@@ -227,8 +249,11 @@ android {
         if (spinonC133GestureFixtureTestValue == "1") {
             java.srcDir("src/c13_3_gesture_fixture_test/java")
         }
-        if (spinonC181ImagePaintFixtureTestValue == "1") {
+        if (spinonImagePaintFixtureTestValue) {
             java.srcDir("src/c18_1_image_paint_fixture_test/java")
+        }
+        if (spinonC182AlphaImageFixtureTestValue == "1") {
+            java.srcDir("src/c18_2_alpha_image_fixture_test/java")
         }
     }
 }

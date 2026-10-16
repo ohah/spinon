@@ -39,6 +39,7 @@ const canonicalFixtureSources = [
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c13_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c18_1.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c18_2.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11_3_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11_3_2.rs',
@@ -47,6 +48,7 @@ const canonicalFixtureSources = [
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c13_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c18_1.rs',
+  'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c18_2.rs',
   'crates/spinon-ffi/src/runtime_ua_cascade/fixtures.rs',
   'crates/spinon-ffi/src/runtime_ua_cascade/fixtures/probe.rs',
   'crates/spinon-ffi/src/runtime_ua_cascade/fixtures/layout_probe.rs',
@@ -169,12 +171,24 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
     resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/fixtures/c18_1.rs'),
     'utf8',
   );
+  const c182RuntimeFixture = await readFile(
+    resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/fixtures/c18_2.rs'),
+    'utf8',
+  );
+  const c182FfiFixture = await readFile(
+    resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c18_2.rs'),
+    'utf8',
+  );
   const c18FfiFixture = await readFile(
     resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c18_1.rs'),
     'utf8',
   );
   const c18RuntimeScript = await readFile(
     resolve(repositoryRoot, 'tests/fixtures/css/c18/runtime-image-overflow-c18-1.js'),
+    'utf8',
+  );
+  const c182RuntimeScript = await readFile(
+    resolve(repositoryRoot, 'tests/fixtures/css/c18/runtime-image-alpha-c18-2.js'),
     'utf8',
   );
   const cargoManifest = await readFile(
@@ -205,6 +219,10 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
     resolve(repositoryRoot, 'platforms/android/app/src/c18_1_image_paint_fixture_test/java/dev/spinon/bootstrap/ImagePaintFixtureNativeAdapter.java'),
     'utf8',
   );
+  const androidAlphaImageCaptureAdapter = await readFile(
+    resolve(repositoryRoot, 'platforms/android/app/src/c18_2_alpha_image_fixture_test/java/dev/spinon/bootstrap/AlphaImageFixtureCaptureAdapter.java'),
+    'utf8',
+  );
   const androidBuildScript = await readFile(
     resolve(repositoryRoot, 'tools/build-android.sh'),
     'utf8',
@@ -219,6 +237,14 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
   );
   const iosGpuDemoSource = await readFile(
     resolve(repositoryRoot, 'platforms/ios/Sources/C0410RuntimeGpuDemo.swift'),
+    'utf8',
+  );
+  const iosAppDelegateSource = await readFile(
+    resolve(repositoryRoot, 'platforms/ios/Sources/AppDelegate.swift'),
+    'utf8',
+  );
+  const iosBuildSimulatorScript = await readFile(
+    resolve(repositoryRoot, 'tools/build-ios-sim.sh'),
     'utf8',
   );
   const iosProject = await readFile(
@@ -386,7 +412,7 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
   assert.match(androidGradleSource,
     /buildConfigField\([\s\S]*?"SPINON_IMAGE_PAINT_FIXTURE_TEST"[\s\S]*?spinonC181ImagePaintFixtureTestValue/);
   assert.match(androidGradleSource,
-    /if \(spinonC181ImagePaintFixtureTestValue == "1"\)\s*\{\s*java\.srcDir\("src\/c18_1_image_paint_fixture_test\/java"\)/);
+    /if \(spinonImagePaintFixtureTestValue\)\s*\{\s*java\.srcDir\("src\/c18_1_image_paint_fixture_test\/java"\)/);
   assert.match(androidImagePaintCaptureAdapter,
     /SPINON_C181_PIXELCOPY_BEGIN[\s\S]*SPINON_C181_PIXELCOPY_SUMMARY/);
   assert.match(androidImagePaintNativeAdapter,
@@ -397,4 +423,40 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
     /#if defined\(SPINON_ENABLE_C04_RUNTIME_GPU\)[\s\S]*?SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST[\s\S]*?spinon_runtime_gpu_host_new_c18_1_image_paint_fixture/);
   assert.match(iosGpuDemoSource,
     /imagePaintProbeRequested[\s\S]*?requestC181MetalPixelReadback/);
+  assert.match(runtimeFixtureSource,
+    /#\[cfg\(feature = "c18-2-alpha-image-compositing-fixture-test"\)\]\s*pub\(super\) mod c18_2;/);
+  assert.match(ffiFixtureSource,
+    /#\[cfg\(feature = "c18-2-alpha-image-compositing-fixture-test"\)\]\s*mod c18_2;/);
+  assert.match(cargoManifest,
+    /c18-2-alpha-image-compositing-fixture-test\s*=\s*\["c18-1-image-paint-fixture-test"\]/);
+  assert.match(c182RuntimeFixture,
+    /include_str![\s\S]*runtime-image-alpha-c18-2\.js[\s\S]*include_bytes![\s\S]*c18-2-alpha-source-over\.png/);
+  assert.match(c182RuntimeFixture,
+    /C18\.2 img src가 고정 입력과 다릅니다[\s\S]*C18\.2 img 수가 다릅니다/);
+  assert.match(c182FfiFixture,
+    /spinon_runtime_gpu_host_new_c18_2_alpha_image_fixture[\s\S]*spinon_runtime_gpu_host_request_c18_2_surface_pixels_for_test/);
+  assert.match(c182RuntimeScript,
+    /spinon-fixture:c18-2\/alpha-source-over/);
+  assert.match(runtimeFfiHeader,
+    /#if defined\(SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST\)[\s\S]*?spinon_runtime_gpu_host_request_c18_2_surface_pixels_for_test/);
+  assert.match(androidBuildScript,
+    /ffi_features\+=\(c18-2-alpha-image-compositing-fixture-test\)/);
+  assert.match(androidBuildScript,
+    /c182_alpha_image_cpp_flag=.*SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST/);
+  assert.match(androidJniSource,
+    /#if defined\(SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST\)[\s\S]*?spinon_runtime_gpu_host_new_c18_2_alpha_image_fixture/);
+  assert.match(iosBuildSimulatorScript,
+    /c181_image_paint_fixture=1[\s\S]*SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST/);
+  assert.match(iosProject,
+    /SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST=\$\(SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST\)/);
+  assert.match(iosProject,
+    /SPINON_ENABLE_C18_2_ALPHA_IMAGE_FIXTURE_TEST_\$\(SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST\)/);
+  assert.match(iosRunnerImplementation,
+    /#if defined\(SPINON_ENABLE_C04_RUNTIME_GPU\)[\s\S]*?SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST[\s\S]*?spinon_runtime_gpu_host_new_c18_2_alpha_image_fixture/);
+  assert.match(androidAlphaImageCaptureAdapter,
+    /SPINON_C182_PIXELCOPY_SAMPLE[\s\S]*SPINON_C182_PIXELCOPY_SUMMARY[\s\S]*SPINON_C182_SCREEN_GEOMETRY/);
+  assert.match(androidActivitySource,
+    /BuildConfig\.SPINON_C18_2_ALPHA_IMAGE_FIXTURE_TEST[\s\S]*spinon_c182_alpha_image[\s\S]*imageAlphaFixtureRequested/);
+  assert.match(iosAppDelegateSource,
+    /runRuntimeGpuBase[\s\S]*SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST_1[\s\S]*--spinon-c182-alpha-image/);
 });

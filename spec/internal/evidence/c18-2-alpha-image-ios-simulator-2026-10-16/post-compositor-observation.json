@@ -1,0 +1,373 @@
+{
+  "schema": "spinon-c18-2-alpha-image-compositing-observation/v1",
+  "status": "complete",
+  "platform": "ios-simulator",
+  "device": "iPhone 17 Pro iOS 26.2 Simulator ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D; Metal drawable before compositor",
+  "baseCommit": "348a804e",
+  "branch": "feat/c18-2-alpha-image-compositing",
+  "runId": "simulator-process-13092",
+  "appBinarySha256": "f117783216247c8d73d8906ade6e35279fa859e1952c9bd012432f3405c1d5e4",
+  "source": {
+    "encodedPngSha256": "89852885917d6f22c6be237035a10447bfb85caa8c58d4ec29205ee6f652624e",
+    "decodedRgbaSha256": "782a6e59a5a87aa2faa90a6e04039ae5d3e23e7d46c29f525115e428f59a25c9"
+  },
+  "run": {
+    "processId": 13092,
+    "surfaceGeneration": 1,
+    "documentRevision": 11,
+    "renderTreeRevision": 2,
+    "runtimeImageCount": 1,
+    "imageDrawCount": 1
+  },
+  "cssViewportPx": [
+    80,
+    40
+  ],
+  "screenshot": {
+    "file": "full-screen.png",
+    "sha256": "4c2f9219e40567b52154a8193dc164e9175ade165a198ff4ae81ee14b7117ad0",
+    "sizePx": [
+      1206,
+      2622
+    ]
+  },
+  "contentView": {
+    "originUiPoints": [
+      0,
+      0
+    ],
+    "sizeUiPoints": [
+      402,
+      874
+    ],
+    "originScreenPx": [
+      0,
+      0
+    ],
+    "sizeScreenPx": [
+      1206,
+      2622
+    ]
+  },
+  "surface": {
+    "originUiPoints": [
+      161,
+      417
+    ],
+    "originScreenPx": [
+      483,
+      1251
+    ],
+    "sizePx": [
+      240,
+      120
+    ],
+    "cssViewportPx": [
+      80,
+      40
+    ],
+    "cssToSurfaceScale": [
+      3,
+      3
+    ],
+    "screenScale": 3,
+    "generation": 1,
+    "format": "Bgra8Unorm",
+    "file": null,
+    "sha256": null
+  },
+  "sourceLogFile": "simulator-log.txt",
+  "sourceLogSha256": "fe4a6b564824f2a43767b76f67950c048f91d49a1471f5b9539147ed6a714f6e",
+  "processLogNeedle": "SpinonBootstrap[13092:",
+  "geometryLogContains": [
+    "canvas_origin_ui_points=161.0,417.0",
+    "canvas_bounds=80.0x40.0",
+    "content_origin_ui_points=0.0,0.0",
+    "content_bounds=402.0x874.0",
+    "screen_native_bounds_pixels=1206.0x2622.0",
+    "screen_scale=3.0",
+    "drawable=240x120"
+  ],
+  "drawLogContains": [
+    "generation=1 status=0 presented",
+    "document_revision=11",
+    "render_tree_revision=2",
+    "runtime_image_count=1",
+    "image_draw_count=1"
+  ],
+  "readbackLogMarker": "SPINON_C182_METAL_PIXEL_SAMPLE",
+  "summaryLogMarker": "SPINON_C182_METAL_PIXEL_SUMMARY",
+  "summaryLogContains": [
+    "status=matched",
+    "expected=10",
+    "observed=10",
+    "matched=10",
+    "format=Bgra8Unorm"
+  ],
+  "samples": [
+    {
+      "id": "background-anchor",
+      "cssPixel": [
+        2,
+        2
+      ],
+      "rgba": [
+        17,
+        34,
+        51,
+        255
+      ],
+      "surfacePixel": [
+        7,
+        7
+      ],
+      "screenPixel": [
+        490,
+        1258
+      ]
+    },
+    {
+      "id": "transparent-interior",
+      "cssPixel": [
+        12,
+        20
+      ],
+      "rgba": [
+        17,
+        34,
+        51,
+        255
+      ],
+      "surfacePixel": [
+        37,
+        61
+      ],
+      "screenPixel": [
+        520,
+        1312
+      ]
+    },
+    {
+      "id": "transparent-right-edge",
+      "cssPixel": [
+        15,
+        20
+      ],
+      "rgba": [
+        17,
+        34,
+        51,
+        255
+      ],
+      "surfacePixel": [
+        46,
+        61
+      ],
+      "screenPixel": [
+        529,
+        1312
+      ]
+    },
+    {
+      "id": "partial-left-edge",
+      "cssPixel": [
+        16,
+        20
+      ],
+      "rgba": [
+        118,
+        37,
+        65,
+        255
+      ],
+      "surfacePixel": [
+        49,
+        61
+      ],
+      "screenPixel": [
+        532,
+        1312
+      ]
+    },
+    {
+      "id": "partial-interior",
+      "cssPixel": [
+        20,
+        20
+      ],
+      "rgba": [
+        118,
+        37,
+        65,
+        255
+      ],
+      "surfacePixel": [
+        61,
+        61
+      ],
+      "screenPixel": [
+        544,
+        1312
+      ]
+    },
+    {
+      "id": "partial-right-edge",
+      "cssPixel": [
+        23,
+        20
+      ],
+      "rgba": [
+        118,
+        37,
+        65,
+        255
+      ],
+      "surfacePixel": [
+        70,
+        61
+      ],
+      "screenPixel": [
+        553,
+        1312
+      ]
+    },
+    {
+      "id": "opaque-left-edge",
+      "cssPixel": [
+        24,
+        20
+      ],
+      "rgba": [
+        32,
+        200,
+        64,
+        255
+      ],
+      "surfacePixel": [
+        73,
+        61
+      ],
+      "screenPixel": [
+        556,
+        1312
+      ]
+    },
+    {
+      "id": "opaque-interior",
+      "cssPixel": [
+        28,
+        20
+      ],
+      "rgba": [
+        32,
+        200,
+        64,
+        255
+      ],
+      "surfacePixel": [
+        85,
+        61
+      ],
+      "screenPixel": [
+        568,
+        1312
+      ]
+    },
+    {
+      "id": "opaque-right-edge",
+      "cssPixel": [
+        31,
+        20
+      ],
+      "rgba": [
+        32,
+        200,
+        64,
+        255
+      ],
+      "surfacePixel": [
+        94,
+        61
+      ],
+      "screenPixel": [
+        577,
+        1312
+      ]
+    },
+    {
+      "id": "after-image-anchor",
+      "cssPixel": [
+        34,
+        20
+      ],
+      "rgba": [
+        17,
+        34,
+        51,
+        255
+      ],
+      "surfacePixel": [
+        103,
+        61
+      ],
+      "screenPixel": [
+        586,
+        1312
+      ]
+    }
+  ],
+  "anchors": [
+    {
+      "id": "title",
+      "screenPixel": [
+        744,
+        272
+      ],
+      "rgba": [
+        235,
+        242,
+        253,
+        255
+      ]
+    },
+    {
+      "id": "subtitle",
+      "screenPixel": [
+        893,
+        369
+      ],
+      "rgba": [
+        199,
+        212,
+        229,
+        255
+      ]
+    },
+    {
+      "id": "status",
+      "screenPixel": [
+        87,
+        2431
+      ],
+      "rgba": [
+        97,
+        186,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "background",
+      "screenPixel": [
+        60,
+        1000
+      ],
+      "rgba": [
+        14,
+        19,
+        31,
+        255
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+    Checking simd-adler32 v0.3.10
+    Checking adler2 v2.0.1
+    Checking memchr v2.8.3
+    Checking crc32fast v1.5.2
+    Checking zmij v1.0.23
+    Checking spinon-runtime v0.1.0 (/private/tmp/spinon-c18-2-alpha-image-compositing/crates/spinon-runtime)
+    Checking fdeflate v0.3.7
+    Checking miniz_oxide v0.9.1
+    Checking miniz_oxide v0.8.9
+    Checking serde_json v1.0.151
+    Checking flate2 v1.1.10
+    Checking png v0.18.1
+    Checking spinon-image v0.1.0 (/private/tmp/spinon-c18-2-alpha-image-compositing/crates/spinon-image)
+    Checking spinon-ffi v0.1.0 (/private/tmp/spinon-c18-2-alpha-image-compositing/crates/spinon-ffi)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.24s

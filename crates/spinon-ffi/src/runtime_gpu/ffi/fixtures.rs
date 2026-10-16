@@ -25,5 +25,7 @@ mod c13_2_surface_pixels;
 pub(super) mod c13_3;
 #[cfg(feature = "c18-1-image-paint-fixture-test")]
 mod c18_1;
+#[cfg(feature = "c18-2-alpha-image-compositing-fixture-test")]
+mod c18_2;
 #[cfg(feature = "c04-runtime-gpu-test-hooks")]
 mod surface;

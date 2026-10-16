@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "browser": {
+    "product": "Chrome/155.0.8059.85",
+    "revision": "537.36 (@0e66b94549a8bd85f03fbdf189b752d6e7b63c32)",
+    "platform": "darwin",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "captureTool": {
+      "name": "agent-browser",
+      "version": "agent-browser 0.31.1"
+    }
+  },
+  "fixture": {
+    "path": "tests/fixtures/css/c18/image-alpha-source-over-c18-2.html",
+    "sha256": "0c0734f00e2e68116789cd259a0783e09aa0e4e37776f91af8d64d3386597c21",
+    "imagePath": "tests/fixtures/resources/c18-2-alpha-source-over.png",
+    "imageSha256": "89852885917d6f22c6be237035a10447bfb85caa8c58d4ec29205ee6f652624e"
+  },
+  "viewport": {
+    "width": 80,
+    "height": 40,
+    "deviceScaleFactor": 1
+  },
+  "image": {
+    "loaded": true,
+    "natural": {
+      "width": 24,
+      "height": 16
+    },
+    "frame": {
+      "x": 8,
+      "y": 12,
+      "width": 24,
+      "height": 16
+    },
+    "background": "rgb(17, 34, 51)"
+  },
+  "samples": [
+    {
+      "id": "background-anchor",
+      "x": 2,
+      "y": 2,
+      "rgba": [
+        17,
+        34,
+        51,
+        255
+      ]
+    },
+    {
+      "id": "transparent-interior",
+      "x": 12,
+      "y": 20,
+      "rgba": [
+        17,
+        34,
+        51,
+        255
+      ]
+    },
+    {
+      "id": "transparent-right-edge",
+      "x": 15,
+      "y": 20,
+      "rgba": [
+        17,
+        34,
+        51,
+        255
+      ]
+    },
+    {
+      "id": "partial-left-edge",
+      "x": 16,
+      "y": 20,
+      "rgba": [
+        118,
+        37,
+        65,
+        255
+      ]
+    },
+    {
+      "id": "partial-interior",
+      "x": 20,
+      "y": 20,
+      "rgba": [
+        118,
+        37,
+        65,
+        255
+      ]
+    },
+    {
+      "id": "partial-right-edge",
+      "x": 23,
+      "y": 20,
+      "rgba": [
+        118,
+        37,
+        65,
+        255
+      ]
+    },
+    {
+      "id": "opaque-left-edge",
+      "x": 24,
+      "y": 20,
+      "rgba": [
+        32,
+        200,
+        64,
+        255
+      ]
+    },
+    {
+      "id": "opaque-interior",
+      "x": 28,
+      "y": 20,
+      "rgba": [
+        32,
+        200,
+        64,
+        255
+      ]
+    },
+    {
+      "id": "opaque-right-edge",
+      "x": 31,
+      "y": 20,
+      "rgba": [
+        32,
+        200,
+        64,
+        255
+      ]
+    },
+    {
+      "id": "after-image-anchor",
+      "x": 34,
+      "y": 20,
+      "rgba": [
+        17,
+        34,
+        51,
+        255
+      ]
+    }
+  ],
+  "screenshot": {
+    "path": "chrome155.png",
+    "dimensions": [
+      80,
+      40
+    ],
+    "sha256": "6abe9315e180a2a5ade1d2cf7e5171f237dba24cfc589d7974d500f072f6a943"
+  }
+}

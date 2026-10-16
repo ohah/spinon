@@ -7,7 +7,6 @@ use crate::geometry::{ImageGeometry, ImageVertex, build_image_geometry};
 
 const IMAGE_SHADER: &str = include_str!("image.wgsl");
 const RGBA8_BYTES_PER_PIXEL: u32 = 4;
-const ALPHA_OFFSET: usize = 3;
 const IMAGE_OUTPUT_ENCODING_BYTES: u64 = 16;
 
 #[derive(Clone, Debug, Eq, Hash, PartialEq)]
@@ -131,7 +130,7 @@ impl RuntimeImageRenderer {
                 compilation_options: Default::default(),
                 targets: &[Some(wgpu::ColorTargetState {
                     format: surface_format,
-                    blend: None,
+                    blend: Some(wgpu::BlendState::ALPHA_BLENDING),
                     write_mask: wgpu::ColorWrites::ALL,
                 })],
             }),
@@ -227,16 +226,6 @@ impl RuntimeImageRenderer {
             if image.width() > max_dimension || image.height() > max_dimension {
                 return Err(format!(
                     "runtime image node {}가 device texture dimension 제한을 넘었습니다",
-                    image.node_id()
-                ));
-            }
-            if image
-                .rgba8()
-                .chunks_exact(4)
-                .any(|pixel| pixel[ALPHA_OFFSET] != u8::MAX)
-            {
-                return Err(format!(
-                    "runtime image node {}의 alpha는 이 paint profile에서 지원하지 않습니다",
                     image.node_id()
                 ));
             }

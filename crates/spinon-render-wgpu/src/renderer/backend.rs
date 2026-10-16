@@ -20,14 +20,12 @@ pub(super) fn choose_sdr_format(
     capabilities: &wgpu::SurfaceCapabilities,
 ) -> Result<wgpu::TextureFormat, RuntimeRendererError> {
     [
+        wgpu::TextureFormat::Rgba8Unorm,
+        wgpu::TextureFormat::Bgra8Unorm,
         wgpu::TextureFormat::Rgba8UnormSrgb,
         wgpu::TextureFormat::Bgra8UnormSrgb,
     ]
     .into_iter()
-    .chain([
-        wgpu::TextureFormat::Rgba8Unorm,
-        wgpu::TextureFormat::Bgra8Unorm,
-    ])
     .find(|candidate| {
         capabilities.format_capabilities.iter().any(|item| {
             item.format == *candidate && item.color_spaces.contains(wgpu::SurfaceColorSpaces::SRGB)

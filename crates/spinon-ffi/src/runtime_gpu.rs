@@ -10,7 +10,8 @@ use spinon_style::{CssColorScheme, CssMediaEnvironment};
 use std::sync::Arc;
 #[cfg(any(
     feature = "c13-2-scroll-fixture-test",
-    feature = "c18-1-image-paint-fixture-test"
+    feature = "c18-1-image-paint-fixture-test",
+    feature = "c18-2-alpha-image-compositing-fixture-test"
 ))]
 use std::sync::atomic::AtomicBool;
 use std::sync::{Mutex, MutexGuard, PoisonError};
@@ -69,13 +70,18 @@ struct RuntimeGpuHost {
         feature = "c11-grid-metal-surface-pixels-test",
         feature = "c13-1-overflow-clip-fixture-test",
         feature = "c13-2-scroll-fixture-test",
-        feature = "c18-1-image-paint-fixture-test"
+        feature = "c18-1-image-paint-fixture-test",
+        feature = "c18-2-alpha-image-compositing-fixture-test"
     ))]
     surface_pixel_readback_test: bool,
     #[cfg(feature = "c18-1-image-paint-fixture-test")]
     c18_1_image_paint_fixture: bool,
     #[cfg(feature = "c18-1-image-paint-fixture-test")]
     c18_1_image_document_ready: AtomicBool,
+    #[cfg(feature = "c18-2-alpha-image-compositing-fixture-test")]
+    c18_2_alpha_image_fixture: bool,
+    #[cfg(feature = "c18-2-alpha-image-compositing-fixture-test")]
+    c18_2_image_document_ready: AtomicBool,
     #[cfg(feature = "c13-2-scroll-fixture-test")]
     c13_2_scroll_state: Mutex<Option<RuntimeRenderSnapshot>>,
     #[cfg(feature = "c13-2-scroll-fixture-test")]
@@ -100,6 +106,8 @@ struct WaitAndPublishOptions {
     include_c13_1_compact_surface_matrix_hit_test_report: bool,
     #[cfg(feature = "c18-1-image-paint-fixture-test")]
     attach_c18_1_images: bool,
+    #[cfg(feature = "c18-2-alpha-image-compositing-fixture-test")]
+    attach_c18_2_image: bool,
 }
 
 impl RuntimeGpuHost {
@@ -136,13 +144,18 @@ impl RuntimeGpuHost {
                 feature = "c11-grid-metal-surface-pixels-test",
                 feature = "c13-1-overflow-clip-fixture-test",
                 feature = "c13-2-scroll-fixture-test",
-                feature = "c18-1-image-paint-fixture-test"
+                feature = "c18-1-image-paint-fixture-test",
+                feature = "c18-2-alpha-image-compositing-fixture-test"
             ))]
             surface_pixel_readback_test: false,
             #[cfg(feature = "c18-1-image-paint-fixture-test")]
             c18_1_image_paint_fixture: false,
             #[cfg(feature = "c18-1-image-paint-fixture-test")]
             c18_1_image_document_ready: AtomicBool::new(false),
+            #[cfg(feature = "c18-2-alpha-image-compositing-fixture-test")]
+            c18_2_alpha_image_fixture: false,
+            #[cfg(feature = "c18-2-alpha-image-compositing-fixture-test")]
+            c18_2_image_document_ready: AtomicBool::new(false),
             #[cfg(feature = "c13-2-scroll-fixture-test")]
             c13_2_scroll_state: Mutex::new(None),
             #[cfg(feature = "c13-2-scroll-fixture-test")]
@@ -265,6 +278,23 @@ impl RuntimeGpuHost {
         };
         #[cfg(not(feature = "c18-1-image-paint-fixture-test"))]
         let (scene, c18_1_image_report) = (scene, String::new());
+        #[cfg(feature = "c18-2-alpha-image-compositing-fixture-test")]
+        let (scene, c18_2_image_report) = if options.attach_c18_2_image {
+            let document = self
+                .session
+                .snapshot_document_for_c14_1_fixture()
+                .map_err(|error| {
+                    (
+                        ERR_LAYOUT,
+                        format!("C18.2 V8 document snapshot 실패: {error}"),
+                    )
+                })?;
+            fixtures::c18_2::attach_image(&document, scene).map_err(|error| (ERR_LAYOUT, error))?
+        } else {
+            (scene, String::new())
+        };
+        #[cfg(not(feature = "c18-2-alpha-image-compositing-fixture-test"))]
+        let (scene, c18_2_image_report) = (scene, String::new());
         #[cfg(feature = "c13-2-scroll-fixture-test")]
         let scene = self.reapply_c13_2_scroll_state(scene)?;
         #[cfg(feature = "c13-3-gesture-fixture-test")]
@@ -342,6 +372,11 @@ impl RuntimeGpuHost {
             self.c18_1_image_document_ready
                 .store(true, std::sync::atomic::Ordering::Release);
         }
+        #[cfg(feature = "c18-2-alpha-image-compositing-fixture-test")]
+        if options.attach_c18_2_image {
+            self.c18_2_image_document_ready
+                .store(true, std::sync::atomic::Ordering::Release);
+        }
         #[cfg(feature = "c13-3-gesture-fixture-test")]
         if let Some(state) = &self.c13_3_gesture_state
             && state.ready_snapshot().is_some()
@@ -378,7 +413,7 @@ impl RuntimeGpuHost {
             String::new()
         };
         Ok(format!(
-            "layout={} boxes={} generation={} document_revision={} render_tree_revision={} style_revision={} environment_revision={} cacheHit={} cascadeRecomputedStyleElements={} cascadeReusedStyleElements={} cascadeContextStyleElements={}{}{}{}{}{}{}",
+            "layout={} boxes={} generation={} document_revision={} render_tree_revision={} style_revision={} environment_revision={} cacheHit={} cascadeRecomputedStyleElements={} cascadeReusedStyleElements={} cascadeContextStyleElements={}{}{}{}{}{}{}{}",
             snapshot.state.as_str(),
             box_count,
             completed.key.generation,
@@ -396,6 +431,7 @@ impl RuntimeGpuHost {
             paint_order_report,
             hit_test_report,
             c18_1_image_report,
+            c18_2_image_report,
         ))
     }
 
@@ -444,6 +480,11 @@ impl RuntimeGpuHost {
             && self
                 .c18_1_image_document_ready
                 .load(std::sync::atomic::Ordering::Acquire);
+        #[cfg(feature = "c18-2-alpha-image-compositing-fixture-test")]
+        let attach_c18_2_image = self.c18_2_alpha_image_fixture
+            && self
+                .c18_2_image_document_ready
+                .load(std::sync::atomic::Ordering::Acquire);
         let ready = self.wait_and_publish(
             sequence,
             layout_timeout_millis,
@@ -457,6 +498,8 @@ impl RuntimeGpuHost {
                 include_c13_1_compact_surface_matrix_hit_test_report: false,
                 #[cfg(feature = "c18-1-image-paint-fixture-test")]
                 attach_c18_1_images,
+                #[cfg(feature = "c18-2-alpha-image-compositing-fixture-test")]
+                attach_c18_2_image,
             },
         )?;
         Ok(format!("environment_revision={} {ready}", revision.get()))
@@ -501,6 +544,8 @@ impl RuntimeGpuHost {
                     .include_c13_1_compact_surface_matrix_hit_test_report,
                 #[cfg(feature = "c18-1-image-paint-fixture-test")]
                 attach_c18_1_images: self.c18_1_image_paint_fixture,
+                #[cfg(feature = "c18-2-alpha-image-compositing-fixture-test")]
+                attach_c18_2_image: self.c18_2_alpha_image_fixture,
             },
         );
         match (response.status, ready) {
