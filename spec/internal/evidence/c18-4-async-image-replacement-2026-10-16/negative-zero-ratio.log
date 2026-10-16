@@ -1,0 +1,22 @@
+   Compiling spinon-layout v0.1.0 (/private/tmp/spinon-c18-4-async-image-replacement-20261016/crates/spinon-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.69s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-6767c122241c7b83)
+
+running 1 test
+test intrinsic_size_tests::measurement_on_non_leaf_and_invalid_dimensions_are_rejected_but_zero_pending_is_valid ... FAILED
+
+failures:
+
+---- intrinsic_size_tests::measurement_on_non_leaf_and_invalid_dimensions_are_rejected_but_zero_pending_is_valid stdout ----
+
+thread 'intrinsic_size_tests::measurement_on_non_leaf_and_invalid_dimensions_are_rejected_but_zero_pending_is_valid' (66762108) panicked at crates/spinon-layout/src/intrinsic_size_tests.rs:595:10:
+called `Result::unwrap()` on an `Err` value: InvalidIntrinsicSize { node: NodeId(2), axis: "height" }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    intrinsic_size_tests::measurement_on_non_leaf_and_invalid_dimensions_are_rejected_but_zero_pending_is_valid
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 137 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p spinon-layout --lib`

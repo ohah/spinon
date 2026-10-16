@@ -265,11 +265,26 @@ public final class MainActivity extends Activity {
         boolean imageObjectFitPositionFixtureRequested =
                 BuildConfig.SPINON_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST
                 && getIntent().getBooleanExtra("spinon_c183_object_fit_position", false);
+        boolean asyncImageFixtureRequested =
+                BuildConfig.SPINON_C18_4_ASYNC_IMAGE_FIXTURE_TEST
+                && getIntent().getBooleanExtra("spinon_c184_async_image", false);
         boolean imageAlphaFixtureRequested = BuildConfig.SPINON_C18_2_ALPHA_IMAGE_FIXTURE_TEST
                 && getIntent().getBooleanExtra("spinon_c182_alpha_image", false);
         boolean imagePaintFixtureRequested = BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST
-                && (imageObjectFitPositionFixtureRequested || imageAlphaFixtureRequested
+                && (asyncImageFixtureRequested || imageObjectFitPositionFixtureRequested || imageAlphaFixtureRequested
                         || getIntent().getBooleanExtra("spinon_c181_image_paint", false));
+        if ((asyncImageFixtureRequested ? 1 : 0)
+                + (imageObjectFitPositionFixtureRequested ? 1 : 0)
+                + (imageAlphaFixtureRequested ? 1 : 0)
+                + (getIntent().getBooleanExtra("spinon_c181_image_paint", false) ? 1 : 0) > 1) {
+            TextView unavailable = new TextView(this);
+            unavailable.setText("C18 image fixture route는 한 번에 하나만 선택해야 합니다.");
+            unavailable.setTextColor(Color.WHITE);
+            unavailable.setGravity(Gravity.CENTER);
+            setContentView(unavailable);
+            Log.e(TAG, "SPINON_C18_ARGUMENT_ERROR conflicting=multiple-fixture-routes");
+            return;
+        }
         if ((c131OverflowClipRequested ? 1 : 0)
                 + (c131CompactSurfaceMatrixRequested ? 1 : 0)
                 + (c131OverflowClipBorderRequested ? 1 : 0) > 1) {

@@ -1,0 +1,21 @@
+✔ mise 유무와 관계없이 iOS simulator 빌드 인자로 Grid pixel 기능을 전달한다 (514.6065ms)
+✔ C18.2 iOS fixture는 C04 GPU와 공유 C18.1 readback 기반을 함께 켠다 (289.048667ms)
+✔ C18.2 iOS fixture는 C04 GPU fixture 없이 빌드를 시작하지 않는다 (6.051833ms)
+✔ Grid pixel 검증은 C04 GPU fixture 없이 빌드를 시작하지 않는다 (5.27425ms)
+✔ iOS simulator 스크립트는 누락된 Grid pixel flag를 기본 비활성화로 전달한다 (159.924167ms)
+✔ 두 iOS 빌드 스크립트는 잘못된 Grid pixel flag를 거부한다 (11.541542ms)
+✔ iOS native build도 C04 GPU fixture 없이 Grid pixel feature를 거부한다 (6.290083ms)
+✔ Grid pixel 빌드 설정을 iOS native Rust feature와 C++ define으로 연결한다 (0.947042ms)
+✔ C04 GPU 핵심과 fixture 검증 feature를 분리하고 앱 검증 빌드에서만 둘 다 켠다 (1.276125ms)
+✔ UA cascade fixture probe는 기본 off이고 명시한 경우에만 Rust와 네이티브 경계를 켠다 (138.111208ms)
+✔ C11 iOS pixel 캡처는 출력 플래그 순서와 무관하게 기능 값을 확인한다 (0.3735ms)
+✔ Android와 iOS UA probe 호출은 opt-in feature gate 안에만 둔다 (0.718ms)
+✔ C04 runtime core만으로는 fixture ABI를 노출하지 않는다 (77.3705ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1247.886042

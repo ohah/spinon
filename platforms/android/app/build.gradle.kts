@@ -122,9 +122,18 @@ require(spinonC183ObjectFitPositionFixtureTestValue == "0" ||
 require(spinonC183ObjectFitPositionFixtureTestValue != "1" || spinonC04RuntimeGpuValue == "1") {
     "C18.3 object-fit/object-position fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다."
 }
+val spinonC184AsyncImageFixtureTest =
+    providers.environmentVariable("SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST").orElse("0")
+val spinonC184AsyncImageFixtureTestValue = spinonC184AsyncImageFixtureTest.get()
+require(spinonC184AsyncImageFixtureTestValue == "0" || spinonC184AsyncImageFixtureTestValue == "1") {
+    "SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST는 0 또는 1이어야 합니다."
+}
+require(spinonC184AsyncImageFixtureTestValue != "1" || spinonC04RuntimeGpuValue == "1") {
+    "C18.4 async image fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다."
+}
 val spinonImagePaintFixtureTestValue =
     spinonC181ImagePaintFixtureTestValue == "1" || spinonC182AlphaImageFixtureTestValue == "1" ||
-        spinonC183ObjectFitPositionFixtureTestValue == "1"
+        spinonC183ObjectFitPositionFixtureTestValue == "1" || spinonC184AsyncImageFixtureTestValue == "1"
 val prepareSpinonBootstrap by tasks.registering(Exec::class) {
     workingDir = repoRoot
     environment("SPINON_ENABLE_S03_DOM_GC_FIXTURE", spinonS03DomGcFixture.get())
@@ -156,6 +165,7 @@ val prepareSpinonBootstrap by tasks.registering(Exec::class) {
         "SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST",
         spinonC183ObjectFitPositionFixtureTestValue,
     )
+    environment("SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST", spinonC184AsyncImageFixtureTestValue)
     commandLine("bash", "tools/build-android.sh")
 }
 
@@ -257,6 +267,11 @@ android {
             "SPINON_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST",
             (spinonC183ObjectFitPositionFixtureTestValue == "1").toString(),
         )
+        buildConfigField(
+            "boolean",
+            "SPINON_C18_4_ASYNC_IMAGE_FIXTURE_TEST",
+            (spinonC184AsyncImageFixtureTestValue == "1").toString(),
+        )
     }
 
     buildFeatures {
@@ -277,6 +292,9 @@ android {
         }
         if (spinonC183ObjectFitPositionFixtureTestValue == "1") {
             java.srcDir("src/c18_3_object_fit_position_fixture_test/java")
+        }
+        if (spinonC184AsyncImageFixtureTestValue == "1") {
+            java.srcDir("src/c18_4_async_image_fixture_test/java")
         }
     }
 }

@@ -1,7 +1,7 @@
 # C18.4 · 비동기 PNG 교체와 decode 실패 제한 profile
 
-**상태:** 계획 검토 완료 · 구현 전
-**상위:** [C18 이미지·replaced paint 규칙](../spec/STATUS.md) · [내부 계약 0066](../spec/internal/0066-c18-3-object-fit-position.md)
+**상태:** 제한 profile 구현·시뮬레이터 검증 완료 · PR 검토 대기
+**상위:** [C18 이미지·replaced paint 규칙](../spec/STATUS.md) · [내부 계약 0066](../spec/internal/0066-c18-3-object-fit-position.md) · [C18.4 내부 계약 0067](../spec/internal/0067-c18-4-async-image-replacement.md)
 **선행 범위:** C14.1–C14.3 intrinsic sizing · C18.1 opaque PNG paint · C18.2 alpha composite · C18.3 `object-fit`
 **기반 코드:** [U05.1 PNG decoder](../spec/internal/0061-u05-png-image-decode.md), `ImageRequest`, `ImageResourceSnapshot`, `RuntimeRenderSnapshot`
 **규범·oracle:** HTML image request behavior를 관찰한 Agent Browser Chrome 155.0.8059.85 · 고정 PNG 입력
@@ -52,3 +52,11 @@
 6. `cargo fmt --all -- --check`, workspace tests, Clippy, 변경된 JS/CSS reference 및 fixture module-boundary 검사를 실행하고 원본 로그를 보존한다. 기존 C11/C13 source-boundary assertion 실패가 재발하면 별도 귀속하고 C18.4 통과로 숨기지 않는다.
 7. 구현 전 계획 자체를 서로 다른 실패 관점 20개로 검토했다([계획 검토 20개](../spec/internal/evidence/c18-4-async-image-replacement-plan-review-20-2026-10-16.md)). 구현 뒤 새 20개 구현 검토와 PR diff의 독립 20개 관점을 기록하고 발견된 결함을 재실행으로 닫는다.
 8. 내부 `spec/STATUS.md`에는 C18.4 제한 profile만 연결한다. URL/network loader, HTML events, broken-image icon, 실패 시 auto-size UA fallback, public API와 C18 전체 완료를 주장하지 않는다. Tailnet preview에 계획·구현 근거를 동기화하고 URL, HTTP status와 served hash를 확인한다. GitHub Pages는 배포하지 않는다.
+
+## 구현 결과 · 2026-10-16
+
+- `spinon-image`에서 decode 성공·실패를 원 요청 identity와 함께 보존하고, 현재 HostDocument/source와 맞지 않는 completion을 따로 거부한다. 새 immutable image snapshot은 decode 실패 node의 paint image를 비운다. pending auto-size 입력은 이전 natural dimensions만 현재 source stamp에 전달하며 RGBA·request/cache key를 복사하지 않는다.
+- 앱 실행 fixture는 `c18-4-image-fixture-test` opt-in 아래에서 gated worker와 실제 PNG decoder를 사용한다. Android C18.4-only APK와 iOS Simulator C18.4-only executable에서 V8 route, 네 PNG payload와 adapter를 확인했고, default artifact에서 전용 symbol·adapter·JS/PNG payload가 빠지는 양성·음성 대조를 남겼다.
+- Android API 37 ARM64 AVD의 PixelCopy 6/6, iPhone 17 Pro/iOS 26.2 Simulator의 compositor 제출 전 Metal drawable 6/6이 exact다. C18.1/2/3 runtime 회귀도 두 플랫폼에서 각 9/9, 10/10, 19/19다. [실행 근거·화면·로그](../spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/README.md)와 [artifact 근거](../spec/internal/evidence/c18-4-async-image-replacement-2026-10-16/artifact-boundary/README.md)를 참조한다.
+- 전체 CSS reference suite는 498개 중 494개 통과했고 네 C11/C13 source-boundary assertion이 실패했다. 같은 네 실패가 구현 전 `origin/main` snapshot에서 재현됐다. C18.4 module-boundary와 iOS build-flag 집중 검사는 각각 통과했다. 이 baseline 실패는 C18.4 회귀로 보고하지 않는다.
+- 계획 검토 20개는 구현 전에 별도로 완료했다. 구현 검토 20개와 PR diff 검토 30개는 각자 다른 실패 관점으로 기록한다. 제한 profile 외의 URL/network loader, HTML events, browser broken-image icon, 실패 auto-size fallback, 공개 image API와 C14/C18/U05 전체는 구현하지 않았다.

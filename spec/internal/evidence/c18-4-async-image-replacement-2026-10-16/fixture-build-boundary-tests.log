@@ -1,0 +1,245 @@
+✔ mise 유무와 관계없이 iOS simulator 빌드 인자로 Grid pixel 기능을 전달한다 (603.9105ms)
+✔ C18.2 iOS fixture는 C04 GPU와 공유 C18.1 readback 기반을 함께 켠다 (516.359125ms)
+✔ C18.2 iOS fixture는 C04 GPU fixture 없이 빌드를 시작하지 않는다 (5.658125ms)
+✔ Grid pixel 검증은 C04 GPU fixture 없이 빌드를 시작하지 않는다 (5.326ms)
+✔ iOS simulator 스크립트는 누락된 Grid pixel flag를 기본 비활성화로 전달한다 (554.347291ms)
+✔ 두 iOS 빌드 스크립트는 잘못된 Grid pixel flag를 거부한다 (12.122125ms)
+✔ iOS native build도 C04 GPU fixture 없이 Grid pixel feature를 거부한다 (6.040833ms)
+✔ Grid pixel 빌드 설정을 iOS native Rust feature와 C++ define으로 연결한다 (1.023417ms)
+✔ C04 GPU 핵심과 fixture 검증 feature를 분리하고 앱 검증 빌드에서만 둘 다 켠다 (1.37625ms)
+✔ UA cascade fixture probe는 기본 off이고 명시한 경우에만 Rust와 네이티브 경계를 켠다 (238.340584ms)
+✔ C11 iOS pixel 캡처는 출력 플래그 순서와 무관하게 기능 값을 확인한다 (0.310459ms)
+✔ Android와 iOS UA probe 호출은 opt-in feature gate 안에만 둔다 (0.630959ms)
+✔ C04 runtime core만으로는 fixture ABI를 노출하지 않는다 (72.028417ms)
+✔ fixture 이동 뒤 이전 경로에 Rust 사본이 남지 않는다 (1.037125ms)
+✔ CSS reference 도구가 삭제된 Rust fixture 경로를 참조하지 않는다 (21.136083ms)
+✔ 이동한 fixture 구현은 정해진 fixtures 모듈 경로에 있다 (0.17475ms)
+✔ 작업별 FFI fixture 모듈은 runtime 소스 루트에 남지 않는다 (27.23375ms)
+✖ 앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리된다 (106.679417ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 17
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2058.124583
+
+✖ failing tests:
+
+test at tools/css-reference/fixture-module-boundary.test.mjs:109:1
+✖ 앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리된다 (106.679417ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /cssViewportWidthLocked\(\)\s*\{[\s\S]*?imagePaintProbeRequested\)\s*\{\s*return imageObjectFitPositionProbeRequested \? 224\.0f : 80\.0f/. Input:
+
+  'package dev.spinon.bootstrap;\n' +
+    '\n' +
+    'import android.app.Activity;\n' +
+    'import android.graphics.Color;\n' +
+    'import android.graphics.Point;\n' +
+    'import android.graphics.Typeface;\n' +
+    'import android.os.Build;\n' +
+    'import android.os.Bundle;\n' +
+    'import android.os.Debug;\n' +
+    'import android.os.Handler;\n' +
+    'import android.os.Looper;\n' +
+    'import android.os.SystemClock;\n' +
+    'import android.util.Log;\n' +
+    'import android.view.Gravity;\n' +
+    'import android.view.InputDevice;\n' +
+    'import android.view.KeyEvent;\n' +
+    'import android.view.MotionEvent;\n' +
+    'import android.view.Surface;\n' +
+    'import android.view.SurfaceHolder;\n' +
+    'import android.view.SurfaceView;\n' +
+    'import android.view.View;\n' +
+    'import android.view.ViewGroup;\n' +
+    'import android.view.ViewConfiguration;\n' +
+    'import android.widget.Button;\n' +
+    'import android.widget.LinearLayout;\n' +
+    'import android.widget.TextView;\n' +
+    '\n' +
+    'import org.json.JSONArray;\n' +
+    'import org.json.JSONObject;\n' +
+    '\n' +
+    'import java.io.ByteArrayOutputStream;\n' +
+    'import java.io.File;\n' +
+    'import java.io.IOException;\n' +
+    'import java.io.InputStream;\n' +
+    'import java.nio.charset.StandardCharsets;\n' +
+    'import java.util.ArrayList;\n' +
+    'import java.util.Collections;\n' +
+    'import java.util.HashMap;\n' +
+    'import java.util.HashSet;\n' +
+    'import java.util.List;\n' +
+    'import java.util.Map;\n' +
+    'import java.util.Set;\n' +
+    'import java.util.concurrent.CountDownLatch;\n' +
+    'import java.util.concurrent.ExecutorService;\n' +
+    'import java.util.concurrent.Executors;\n' +
+    'import java.util.concurrent.TimeUnit;\n' +
+    'import java.util.concurrent.atomic.AtomicBoolean;\n' +
+    '\n' +
+    'final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Callback {\n' +
+    '    private static final String TAG = "SpinonBootstrap";\n' +
+    '    private static final int C133_WHEEL_INTENT_SCROLL = 0;\n' +
+    '    private static final int C133_WHEEL_UNIT_ANDROID_PHYSICAL_PIXELS = 1;\n' +
+    '    private static final int C133_WHEEL_SOURCE_MOUSE = 0;\n' +
+    '    private static final int C133_WHEEL_SOURCE_TRACKPAD = 1;\n' +
+    '    private static final int C133_WHEEL_MOMENTUM_NONE = 0;\n' +
+    '    private static final int C133_MODIFIER_SHIFT = 1;\n' +
+    '    private static final int C133_MODIFIER_CONTROL = 2;\n' +
+    '    private static final int C133_MODIFIER_ALT = 4;\n' +
+    '    private static final int C133_MODIFIER_META = 8;\n' +
+    '    private static final String[] C11_GRID_SCENE_IDS = {\n' +
+    '            "fixed-tracks-gap", "percentage-tracks", "fractional-tracks-gap",\n' +
+    '            "mixed-fixed-percent-fr", "row-auto-placement", "empty-grid",\n' +
+    '            "single-item-grid", "grid-under-block", "grid-under-flex", "flex-under-grid",\n' +
+    '    };\n' +
+    '    private static final String[] C1121_GRID_PIXEL_SCENE_IDS = {\n' +
+    '            "numeric-lines", "positive-spans", "reversed-lines",\n' +
+    '            "shorthand-cascade", "overlap-source-order", "nested-placement-modes",\n' +
+    '    };\n' +
+    '    private static final String[] C1122_GRID_AUTO_PLACEMENT_SCENE_IDS = {\n' +
+    '            "definite-first-mixed", "auto-only-fill", "positive-implicit-row",\n' +
+    '            "row-locked-auto-column", "column-locked-auto-row", "auto-column-span",\n' +
+    '            "sparse-hole-not-backfilled", "implicit-track-size-and-gap",\n' +
+    '            "hidden-child-excluded", "nested-independent-placement", "reject-implicit-column",\n' +
+    '            "reject-auto-sized-implicit-row", "reject-repeated-auto-row-pattern",\n' +
+    '            "reject-dense-flow", "reject-column-flow", "column-cursor-wrap",\n' +
+    '    };\n' +
+    '    private static final String[] C1123_GRID_AUTO_PLACEMENT_SCENE_IDS = {\n' +
+    '            "row-sparse-baseline", "row-dense-hole-fill", "row-dense-span-collision",\n' +
+    '            "row-sparse-hole-control", "row-dense-fixed-row", "row-dense-fixed-column",\n' +
+    '            "row-dense-positive-implicit-row", "column-sparse-explicit-fill",\n' +
+    '            "column-sparse-positive-implicit-column", "column-sparse-fixed-row",\n' +
+    '            "column-sparse-fixed-column", "column-dense-hole-fill", "column-sparse-hole-control",\n' +
+    '            "column-dense-span-collision", "column-dense-positive-implicit-column",\n' +
+    '            "definite-first-dense", "hidden-item-excluded", "nested-mixed-flow",\n' +
+    '            "auto-track-no-implicit", "reject-repeated-auto-track", "reject-negative-implicit-line",\n' +
+    '            "reject-nonzero-order", "reject-indefinite-axis", "auto-span-at-track-limit",\n' +
+    '            "auto-span-over-track-limit",\n' +
+    '    };\n' +
+    '    private static final String[] C1122_GRID_PIXEL_SCENE_IDS = {\n' +
+    '            "definite-first-mixed", "auto-only-fill", "positive-implicit-row",\n' +
+    '            "row-locked-auto-column", "column-locked-auto-row", "auto-column-span",\n' +
+    '            "sparse-hole-not-backfilled", "implicit-track-size-and-gap",\n' +
+    '            "hidden-child-excluded", "nested-independent-placement", "column-cursor-wrap",\n' +
+    '    };\n' +
+    '    private static final String[] C1123_GRID_PIXEL_SCENE_IDS = {\n' +
+    '            "row-sparse-baseline", "row-dense-hole-fill", "row-dense-span-collision",\n' +
+    '            "row-sparse-hole-control", "row-dense-fixed-column",\n' +
+    '            "row-dense-positive-implicit-row", "column-sparse-explicit-fill",\n' +
+    '            "column-sparse-positive-implicit-column", "column-sparse-fixed-row",\n' +
+    '            "column-sparse-fixed-column", "column-dense-hole-fill",\n' +
+    '            "column-sparse-hole-control", "column-dense-span-collision",\n' +
+    '            "column-dense-positive-implicit-column", "definite-first-dense",\n' +
+    '            "hidden-item-excluded", "nested-mixed-flow", "auto-track-no-implicit",\n' +
+    '            "auto-span-at-track-limit",\n' +
+    '    };\n' +
+    '    private static final String C1131_GRID_REPEAT_SCENE_ID = "multi-track-repeat";\n' +
+    '    private static final String C1132_GRID_NAMED_LINE_SCENE_ID = "positive-occurrence";\n' +
+    '    private static final String C1132_GRID_NAMED_LINE_REJECT_SCENE_ID =\n' +
+    '            "missing-name-implicit-line";\n' +
+    '    private static final String C1133_GRID_TEMPLATE_AREAS_DEFAULT_SCENE_ID = "basic-rectangles";\n' +
+    '    private static final String[] C1133_GRID_TEMPLATE_AREAS_SCENE_IDS = {\n' +
+    '            "basic-rectangles", "null-cell-dot-runs", "all-null-cells", "single-cell-area",\n' +
+    '            "bare-area-edge-aliases", "grid-area-one-value", "grid-area-two-values",\n' +
+    '            "grid-area-three-values", "grid-area-four-values", "row-column-longhands-area",\n' +
+    '            "grid-template-shorthand", "grid-shorthand", "bare-area-vs-explicit-one-name",\n' +
+    '            "explicit-line-before-area", "explicit-line-after-area", "area-names-ending-start-or-end",\n' +
+    '            "implicit-area-from-explicit-lines", "escaped-and-unicode-identifiers",\n' +
+    '            "invalid-l-shape-fallback", "invalid-disconnected-area-fallback",\n' +
+    '            "invalid-row-width-fallback", "invalid-trash-token-fallback", "empty-string-fallback",\n' +
+    '            "area-track-count-mismatch", "unknown-area-implicit-tracks", "nested-hidden-source-order",\n' +
+    '    };\n' +
+    '    private static final String C1133_GRID_TEMPLATE_AREAS_REJECT_SCENE_ID =\n' +
+    '            "area-track-count-mismatch";\n' +
+    '    private static final String[] C131_COMPACT_SURFACE_CASE_IDS = {\n' +
+    '            "visible", "clip-x", "clip-y", "clip-both", "clip-margin-padding",\n' +
+    '            "clip-margin-content", "clip-margin-border", "clip-margin-hidden",\n' +
+    '            "mixed-visible-hidden", "mixed-clip-auto", "positioned-contained",\n' +
+    '            "positioned-escape", "nested-clip",\n' +
+    '    };\n' +
+    '    private static final String[] C131_COMPACT_SURFACE_SAMPLE_ROLES = {\n' +
+    '            "paint", "target-beyond-frame", "x-overflow", "y-overflow",\n' +
+    '    };\n' +
+    '    private static final String C131_COMPACT_HIT_IDENTITY_SHA256 =\n' +
+    '            "93cccd042e82d8cd30cb7a8ab34a5154073d4a9eccbc4038294d3ca5b9dfce87";\n' +
+    '    private static final String C131_COMPACT_GRID_ORACLE_SHA256 =\n' +
+    '            "35e88e57edc16e526e389317b0d18ef227e35d1356a2353b92476c75ef6414f6";\n' +
+    '    private static final String C131_COMPACT_CHROME_OBSERVATION_SHA256 =\n' +
+    '            "515fc95f811399fda9e336a13e7583f2d22555fce4727f1fe7f734981abd0299";\n' +
+    '    private static boolean isC1132GridNamedLinePixelSamples(\n' +
+    '            List<SurfaceViewPixelCapture.Sample> samples\n' +
+    '    ) {\n' +
+    '        if (samples.size() != 2) return false;\n' +
+    '        boolean background = false;\n' +
+    '        boolean blue = false;\n' +
+    '        for (SurfaceViewPixelCapture.Sample sample : samples) {\n' +
+    '            switch (sample.id) {\n' +
+    '                case "grid-background":\n' +
+    '                    background = sample.xCssPx == 20 && sample.yCssPx == 80;\n' +
+    '                    if (!background) return false;\n' +
+    '                    break;\n' +
+    '                case "item-blue":\n' +
+    '                    blue = sample.xCssPx == 100 && sample.yCssPx == 10;\n' +
+    '                    if (!blue) return false;\n' +
+    '                    break;\n' +
+    '                default:\n' +
+    '                    return false;\n' +
+    '            }\n' +
+    '        }\n' +
+    '        return background && blue;\n' +
+    '    }\n' +
+    '    private static boolean isC1133GridTemplateAreasScene(String sceneId) {\n' +
+    '        for (String candidate : C1133_GRID_TEMPLATE_AREAS_SCENE_IDS) {\n' +
+    '            if (candidate.equals(sceneId)) return true;\n' +
+    '        }\n' +
+    '        return "revision-reuse".equals(sceneId);\n' +
+    '    }\n' +
+    '    private static boolean isC1133GridTemplateAreasPixelSamples(\n' +
+    '            List<SurfaceViewPixelCapture.Sample> samples\n' +
+    '    ) {\n' +
+    '        if (samples.size() != 2) return false;\n' +
+    '        boolean background = false;\n' +
+    '        boolean blue = false;\n' +
+    '        for (SurfaceViewPixelCapture.Sample sample : samples) {\n' +
+    '            switch (sample.id) {\n' +
+    '                case "grid-background":\n' +
+    '                    background = sample.xCssPx == 150 && sample.yCssPx == 10;\n' +
+    '                    if (!background) return false;\n' +
+    '                    break;\n' +
+    '                case "item-blue":\n' +
+    '                    blue = sample.xCssPx == 100 && sample.yCssPx == 50;\n' +
+    '                    if (!blue) return false;\n' +
+    '                    break;\n' +
+    '                default:\n' +
+    '                    return false;\n' +
+    '            }\n' +
+    '        }\n' +
+    '        return background && blue;\n' +
+    '    }\n' +
+    '    private static boolean isC1121PixelScene(String sceneId) {\n' +
+    '        for (String candidate : C1121_GRID_PIXEL_SCENE_IDS) {\n' +
+    '            if (candidate.equals(sceneId)) return true;\n' +
+    '        }\n' +
+    '        return false;\n' +
+    '    }\n' +
+    '    private static boolean isC1122GridAutoPlacementScene(String sceneId) {\n' +
+    '        for (String candidate : C1122_GRID_AUTO_PLACEMENT_SCENE_IDS) {\n' +
+    '            if (candidate.equals(sceneId)) return true;\n' +
+    '        }\n' +
+    '        return false;\n' +
+    '    }\n' +
+    '    private static boolean isC1123GridAutoPlacementScene(String sceneId) '... 271312 more characters
+
+      at TestContext.<anonymous> (file:///private/tmp/spinon-c18-4-async-image-replacement-20261016/tools/css-reference/fixture-module-boundary.test.mjs:406:10)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'package dev.spinon.bootstrap;\n\nimport android.app.Activity;\nimport android.graphics.Color;\nimport android.graphics.Point;\nimport android.graphics.Typeface;\nimport android.os.Build;\nimport android.os.Bundle;\nimport android.os.Debug;\nimport android.os.Handler;\nimport android.os.Looper;\nimport android.os.SystemClock;\nimport android.util.Log;\nimport android.view.Gravity;\nimport android.view.InputDevice;\nimport android.view.KeyEvent;\nimport android.view.MotionEvent;\nimport android.view.Surface;\nimport android.view.SurfaceHolder;\nimport android.view.SurfaceView;\nimport android.view.View;\nimport android.view.ViewGroup;\nimport android.view.ViewConfiguration;\nimport android.widget.Button;\nimport android.widget.LinearLayout;\nimport android.widget.TextView;\n\nimport org.json.JSONArray;\nimport org.json.JSONObject;\n\nimport java.io.ByteArrayOutputStream;\nimport java.io.File;\nimport java.io.IOException;\nimport java.io.InputStream;\nimport java.nio.charset.StandardCharsets;\nimport java.util.ArrayList;\nimport java.util.Collections;\nimport java.util.HashMap;\nimport java.util.HashSet;\nimport java.util.List;\nimport java.util.Map;\nimport java.util.Set;\nimport java.util.concurrent.CountDownLatch;\nimport java.util.concurrent.ExecutorService;\nimport java.util.concurrent.Executors;\nimport java.util.concurrent.TimeUnit;\nimport java.util.concurrent.atomic.AtomicBoolean;\n\nfinal class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Callback {\n    private static final String TAG = "SpinonBootstrap";\n    private static final int C133_WHEEL_INTENT_SCROLL = 0;\n    private static final int C133_WHEEL_UNIT_ANDROID_PHYSICAL_PIXELS = 1;\n    private static final int C133_WHEEL_SOURCE_MOUSE = 0;\n    private static final int C133_WHEEL_SOURCE_TRACKPAD = 1;\n    private static final int C133_WHEEL_MOMENTUM_NONE = 0;\n    private static final int C133_MODIFIER_SHIFT = 1;\n    private static final int C133_MODIFIER_CONTROL = 2;\n    private static final int C133_MODIFIER_ALT = 4;\n    private static final int C133_MODIFIER_META = 8;\n    private static final String[] C11_GRID_SCENE_IDS = {\n            "fixed-tracks-gap", "percentage-tracks", "fractional-tracks-gap",\n            "mixed-fixed-percent-fr", "row-auto-placement", "empty-grid",\n            "single-item-grid", "grid-under-block", "grid-under-flex", "flex-under-grid",\n    };\n    private static final String[] C1121_GRID_PIXEL_SCENE_IDS = {\n            "numeric-lines", "positive-spans", "reversed-lines",\n            "shorthand-cascade", "overlap-source-order", "nested-placement-modes",\n    };\n    private static final String[] C1122_GRID_AUTO_PLACEMENT_SCENE_IDS = {\n            "definite-first-mixed", "auto-only-fill", "positive-implicit-row",\n            "row-locked-auto-column", "column-locked-auto-row", "auto-column-span",\n            "sparse-hole-not-backfilled", "implicit-track-size-and-gap",\n            "hidden-child-excluded", "nested-independent-placement", "reject-implicit-column",\n            "reject-auto-sized-implicit-row", "reject-repeated-auto-row-pattern",\n            "reject-dense-flow", "reject-column-flow", "column-cursor-wrap",\n    };\n    private static final String[] C1123_GRID_AUTO_PLACEMENT_SCENE_IDS = {\n            "row-sparse-baseline", "row-dense-hole-fill", "row-dense-span-collision",\n            "row-sparse-hole-control", "row-dense-fixed-row", "row-dense-fixed-column",\n            "row-dense-positive-implicit-row", "column-sparse-explicit-fill",\n            "column-sparse-positive-implicit-column", "column-sparse-fixed-row",\n            "column-sparse-fixed-column", "column-dense-hole-fill", "column-sparse-hole-control",\n            "column-dense-span-collision", "column-dense-positive-implicit-column",\n            "definite-first-dense", "hidden-item-excluded", "nested-mixed-flow",\n            "auto-track-no-implicit", "reject-repeated-auto-track", "reject-negative-implicit-line",\n            "reject-nonzero-order", "reject-indefinite-axis", "auto-span-at-track-limit",\n            "auto-span-over-track-limit",\n    };\n    private static final String[] C1122_GRID_PIXEL_SCENE_IDS = {\n            "definite-first-mixed", "auto-only-fill", "positive-implicit-row",\n            "row-locked-auto-column", "column-locked-auto-row", "auto-column-span",\n            "sparse-hole-not-backfilled", "implicit-track-size-and-gap",\n            "hidden-child-excluded", "nested-independent-placement", "column-cursor-wrap",\n    };\n    private static final String[] C1123_GRID_PIXEL_SCENE_IDS = {\n            "row-sparse-baseline", "row-dense-hole-fill", "row-dense-span-collision",\n            "row-sparse-hole-control", "row-dense-fixed-column",\n            "row-dense-positive-implicit-row", "column-sparse-explicit-fill",\n            "column-sparse-positive-implicit-column", "column-sparse-fixed-row",\n            "column-sparse-fixed-column", "column-dense-hole-fill",\n            "column-sparse-hole-control", "column-dense-span-collision",\n            "column-dense-positive-implicit-column", "definite-first-dense",\n            "hidden-item-excluded", "nested-mixed-flow", "auto-track-no-implicit",\n            "auto-span-at-track-limit",\n    };\n    private static final String C1131_GRID_REPEAT_SCENE_ID = "multi-track-repeat";\n    private static final String C1132_GRID_NAMED_LINE_SCENE_ID = "positive-occurrence";\n    private static final String C1132_GRID_NAMED_LINE_REJECT_SCENE_ID =\n            "missing-name-implicit-line";\n    private static final String C1133_GRID_TEMPLATE_AREAS_DEFAULT_SCENE_ID = "basic-rectangles";\n    private static final String[] C1133_GRID_TEMPLATE_AREAS_SCENE_IDS = {\n            "basic-rectangles", "null-cell-dot-runs", "all-null-cells", "single-cell-area",\n            "bare-area-edge-aliases", "grid-area-one-value", "grid-area-two-values",\n            "grid-area-three-values", "grid-area-four-values", "row-column-longhands-area",\n            "grid-template-shorthand", "grid-shorthand", "bare-area-vs-explicit-one-name",\n            "explicit-line-before-area", "explicit-line-after-area", "area-names-ending-start-or-end",\n            "implicit-area-from-explicit-lines", "escaped-and-unicode-identifiers",\n            "invalid-l-shape-fallback", "invalid-disconnected-area-fallback",\n            "invalid-row-width-fallback", "invalid-trash-token-fallback", "empty-string-fallback",\n            "area-track-count-mismatch", "unknown-area-implicit-tracks", "nested-hidden-source-order",\n    };\n    private static final String C1133_GRID_TEMPLATE_AREAS_REJECT_SCENE_ID =\n            "area-track-count-mismatch";\n    private static final String[] C131_COMPACT_SURFACE_CASE_IDS = {\n            "visible", "clip-x", "clip-y", "clip-both", "clip-margin-padding",\n            "clip-margin-content", "clip-margin-border", "clip-margin-hidden",\n            "mixed-visible-hidden", "mixed-clip-auto", "positioned-contained",\n            "positioned-escape", "nested-clip",\n    };\n    private static final String[] C131_COMPACT_SURFACE_SAMPLE_ROLES = {\n            "paint", "target-beyond-frame", "x-overflow", "y-overflow",\n    };\n    private static final String C131_COMPACT_HIT_IDENTITY_SHA256 =\n            "93cccd042e82d8cd30cb7a8ab34a5154073d4a9eccbc4038294d3ca5b9dfce87";\n    private static final String C131_COMPACT_GRID_ORACLE_SHA256 =\n            "35e88e57edc16e526e389317b0d18ef227e35d1356a2353b92476c75ef6414f6";\n    private static final String C131_COMPACT_CHROME_OBSERVATION_SHA256 =\n            "515fc95f811399fda9e336a13e7583f2d22555fce4727f1fe7f734981abd0299";\n    private static boolean isC1132GridNamedLinePixelSamples(\n            List<SurfaceViewPixelCapture.Sample> samples\n    ) {\n        if (samples.size() != 2) return false;\n        boolean background = false;\n        boolean blue = false;\n        for (SurfaceViewPixelCapture.Sample sample : samples) {\n            switch (sample.id) {\n                case "grid-background":\n                    background = sample.xCssPx == 20 && sample.yCssPx == 80;\n                    if (!background) return false;\n                    break;\n                case "item-blue":\n                    blue = sample.xCssPx == 100 && sample.yCssPx == 10;\n                    if (!blue) return false;\n                    break;\n                default:\n                    return false;\n            }\n        }\n        return background && blue;\n    }\n    private static boolean isC1133GridTemplateAreasScene(String sceneId) {\n        for (String candidate : C1133_GRID_TEMPLATE_AREAS_SCENE_IDS) {\n            if (candidate.equals(sceneId)) return true;\n        }\n        return "revision-reuse".equals(sceneId);\n    }\n    private static boolean isC1133GridTemplateAreasPixelSamples(\n            List<SurfaceViewPixelCapture.Sample> samples\n    ) {\n        if (samples.size() != 2) return false;\n        boolean background = false;\n        boolean blue = false;\n        for (SurfaceViewPixelCapture.Sample sample : samples) {\n            switch (sample.id) {\n                case "grid-background":\n                    background = sample.xCssPx == 150 && sample.yCssPx == 10;\n                    if (!background) return false;\n                    break;\n                case "item-blue":\n                    blue = sample.xCssPx == 100 && sample.yCssPx == 50;\n                    if (!blue) return false;\n                    break;\n                default:\n                    return false;\n            }\n        }\n        return background && blue;\n    }\n    private static boolean isC1121PixelScene(String sceneId) {\n        for (String candidate : C1121_GRID_PIXEL_SCENE_IDS) {\n            if (candidate.equals(sceneId)) return true;\n        }\n        return false;\n    }\n    private static boolean isC1122GridAutoPlacementScene(String sceneId) {\n        for (String candidate : C1122_GRID_AUTO_PLACEMENT_SCENE_IDS) {\n            if (candidate.equals(sceneId)) return true;\n        }\n        return false;\n    }\n    private static boolean isC1123GridAutoPlacementScene(String sceneId) '... 271312 more characters,
+    expected: /cssViewportWidthLocked\(\)\s*\{[\s\S]*?imagePaintProbeRequested\)\s*\{\s*return imageObjectFitPositionProbeRequested \? 224\.0f : 80\.0f/,
+    operator: 'match',
+    diff: 'simple'
+  }

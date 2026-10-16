@@ -1,0 +1,1006 @@
+$ node --test tools/css-reference/*.test.mjs
+✔ C04 Cascade Layers reference matches its immutable input and capture sources (11.027375ms)
+✔ C04 Flex alignment Chromium reference matches its immutable input and capture sources (7.99625ms)
+✔ C04 margin Chromium reference matches its immutable input and capture sources (9.991625ms)
+✔ C04 logical margin shorthand Chromium reference matches its immutable input and capture sources (7.121708ms)
+✔ C04 media environment Chromium reference is tied to immutable fixture and capture sources (7.092667ms)
+✔ C04.11 Chromium reference is bound to the fixed author stylesheet fixture (7.981833ms)
+✔ 두 viewport Chromium reference가 고정 입력과 oracle에 묶여 있다 (5.334834ms)
+✔ Android와 iOS runtime viewport가 고정 fixture 크기 대신 surface bounds를 사용한다 (10.122208ms)
+✔ C04 runtime CSS to GPU reference is bound to the fixed Chromium inputs (7.899458ms)
+✔ Android and iOS run the same checked-in JavaScript fixture through V8 (3.479459ms)
+✔ C05 custom-property Chromium oracle is tied to immutable fixture and capture inputs (6.920917ms)
+✔ C05 Android와 iOS fixture가 Chromium HTML과 같은 style·WGPU runtime 경로를 쓴다 (2.822375ms)
+✔ C05.4 Chromium fixture pins input bytes and inherited restyle boundary (5.174458ms)
+✔ C05.2 Chromium reference is tied to immutable HTML and V8 runtime fixtures (5.347084ms)
+✔ C06.3 Chromium oracle는 고정 실행 파일·fixture·capture 입력에 묶여 있다 (5.633167ms)
+✔ 7개 절대 길이는 모든 runtime layout 경계에서 같은 CSS px로 계산된다 (0.397459ms)
+✔ negative absolute margin와 custom-property unit substitution은 px 의미를 보존한다 (0.17925ms)
+✔ reference의 모든 node는 유한하고 마지막 row까지 viewport 안에 있다 (0.241542ms)
+✔ C06.4 Chromium 기준은 고정 실행 파일·DPR 쌍·fixture 입력에 묶여 있다 (9.787542ms)
+✔ em, rem, 상속, font-size percentage 및 root rem 특례가 Chromium 계산값과 일치한다 (0.197667ms)
+✔ em과 rem이 flex basis와 spacing에 CSS px로 반영되고 DPR과 독립적이다 (0.168125ms)
+✔ V8 runtime fixture는 Chromium HTML fixture와 동일한 author CSS와 노드 트리를 사용한다 (1.447416ms)
+✔ C06.1 Chromium oracle is bound to immutable inputs and partial support scope (8.274041ms)
+✔ C06.2 Chromium reference는 고정 버전·입력 hash·inventory를 보존한다 (5.663167ms)
+✔ margin·padding 백분율은 containing block content width를 사용한다 (0.200541ms)
+✔ Flex gap은 대응 content-box 차원·cascade·invalid value를 보존한다 (0.085375ms)
+✔ computed-value invalidation과 cyclic·inline-flex oracle 경계가 서로 구분된다 (0.0675ms)
+✔ C06.5 Chromium oracle is pinned to exact executable, source files and DPR pair (9.164417ms)
+✔ Chromium resolves calc, min, max, clamp and var values against the correct width basis (0.136042ms)
+✔ Typed OM preserves mixed math nodes, while used CSS values preserve layout geometry (0.058333ms)
+✔ CSS bounds, margin sign and non-finite calculations match pinned Chromium observations (0.075042ms)
+✔ invalid dimensions use the prior valid declaration and Chromium round() is outside this slice (0.049625ms)
+✔ CSS computed values and geometry are invariant across the captured device scale factors (0.120708ms)
+✔ C06.5 runtime fixture reaches both native simulator hosts (4.225208ms)
+✔ pinned Chromium viewport-unit fixture covers every viewport and DPR (0.636917ms)
+✔ default, small, large, and dynamic units resolve to the single native content viewport (0.267666ms)
+✔ viewport-unit CSS values and CSS geometry do not change when only DPR changes (0.206875ms)
+✔ runtime viewport-unit fixture is connected through the Android and iOS host boundaries (5.627334ms)
+✔ 고정 Chrome 기준의 원본 입력과 도구 digest가 일치한다 (10.244583ms)
+✔ 고 DPR 정수 경계와 원문 viewport 단위의 CSS px 결과를 고정한다 (2.159292ms)
+✔ 두 DPR 관찰은 고정 viewport·환경·50개 고유 node를 가진다 (0.832917ms)
+✔ shorthand side mapping과 longhand cascade 승자를 보존한다 (0.135917ms)
+✔ none·hidden과 모든 비-none 선 스타일의 geometry 기여를 구분한다 (0.092917ms)
+✔ content-box·border-box에서 padding·border·min/max가 서로 다르게 포함된다 (0.054334ms)
+✔ fractional 폭의 pinned Chrome snapping, zero 및 invalid 선언 fallback을 고정한다 (0.070458ms)
+✔ 현재 C06 length math, flex shrink 외곽 크기, outline 제외를 고정한다 (0.086334ms)
+✔ 캡처 도구는 고정 reference를 자동으로 덮어쓰지 않는다 (2.038125ms)
+✔ C07.2 V8 fixture가 실제 Android·iOS WGPU 런타임 경로에 연결되어 있다 (5.194417ms)
+✔ 고정 Chrome reference와 원본 입력 digest가 일치한다 (8.648375ms)
+✔ 두 DPR 관찰이 viewport·환경·35개 고유 node에서 일치한다 (0.797041ms)
+✔ computed ratio의 width/height 방향과 CSS number 계산을 고정한다 (0.110083ms)
+✔ box-sizing·padding·border·min/max 조합의 실제 outer rect를 고정한다 (0.067625ms)
+✔ degenerate ratio, variable substitution, invalid fallback, inheritance와 auto 기본값을 고정한다 (0.08125ms)
+✔ Flex stretch와 start 정렬에서 ratio 적용 차이를 보존한다 (0.070375ms)
+✔ capture 도구의 node count와 고정 reference 덮어쓰기 방지를 유지한다 (2.677084ms)
+✔ C07.3 fixture가 Android·iOS의 실제 V8·WGPU runtime 경로에 연결되어 있다 (4.335959ms)
+✔ 고정 Chromium 기준은 fixture 입력·실행 파일·35개 노드를 고정한다 (0.402291ms)
+✔ 고정 기준은 최소·최대값과 box-sizing 경계를 관찰한다 (0.130875ms)
+✔ 고정 기준은 flex shrink·grow에서 각 최소·최대 제약을 적용한다 (0.346917ms)
+✔ 최소·최대 크기 computed 값과 CSS px geometry는 DPR에 따라 변하지 않는다 (0.251292ms)
+✔ C07.1 실제 runtime fixture가 V8 문서와 author stylesheet를 사용한다 (2.602625ms)
+✔ C07.1 runtime 연결이 Rust FFI부터 Android·iOS launch route까지 이어진다 (4.959875ms)
+✔ C08 고정 기준과 런타임 fixture의 해시·입력 계약을 검증한다 (4.199541ms)
+✔ C09 reference는 Chrome 154와 fixture·inventory·capture 입력 digest를 고정한다 (1.044958ms)
+✔ C09 inventory와 Chromium DOM preorder·부모 관계가 모두 일치한다 (0.947125ms)
+✔ fixture harness가 화면 원점에 있어 숨김 node의 영점 사각형도 안정적이다 (0.08575ms)
+✔ Block auto width·horizontal auto margin·overconstraint·negative margin geometry를 고정한다 (0.115208ms)
+✔ 양수·음수 margin strut과 parent·child·padding·used border 경계를 고정한다 (0.125083ms)
+✔ C09.2 부호 있는 margin fixture가 Android·iOS 실제 V8·WGPU 실행기에 연결되어 있다 (3.810667ms)
+✔ flow-root 내부 margin 차단과 외부 parent·sibling margin을 구분한다 (0.102916ms)
+✔ C09.3 flow-root fixture가 Android·iOS 실제 V8·WGPU 실행기에 연결되어 있다 (0.884167ms)
+✔ CSS px computed values와 used geometry는 DPR 1·2에서 변하지 않는다 (0.980375ms)
+✔ 고정 Chrome reference가 fixture와 실행 도구 digest를 보존한다 (2.887417ms)
+✔ 모든 Chromium 노드에서 computed CSS와 DPR별 CSS px 결과가 고정돼 있다 (0.60425ms)
+✔ 역방향 주축, 역방향 줄 쌓기, shorthand와 줄 경계의 기준 좌표를 고정한다 (0.152583ms)
+✔ 실제 runtime JS fixture가 Android·iOS의 C10.3.1 WGPU 경로에 연결된다 (4.519458ms)
+✔ Android·iOS Simulator의 실제 V8 frame과 WGPU 제출이 Chromium runtime 기준에 맞는다 (3.451583ms)
+✔ 고정 Chrome reference가 C10.3.3 입력과 capture digest를 보존한다 (1.514709ms)
+✔ 두 DPR에서 모든 computed longhand, 원본 자식 순서와 CSS px frame이 같다 (1.006042ms)
+✔ normal, self positions, overflow safety와 cross-axis auto margin을 구분한다 (0.166708ms)
+✔ stretch eligibility, clamp, nowrap, wrap 단일 줄과 line distribution을 고정한다 (0.0905ms)
+✔ wrap-reverse, safe fallback, place shorthand와 justify-content 축 fallback을 고정한다 (0.152ms)
+✔ 잘못된 선언은 앞선 유효 값을 유지하고 custom property와 Block 경계를 지킨다 (0.0515ms)
+✔ 고정 Chrome reference가 C10.3.4 입력·capture digest와 WPT 경계를 보존한다 (1.063459ms)
+✔ 두 DPR에서 DOM 순서, computed value와 CSS px geometry가 동일하다 (0.540583ms)
+✔ first·last sharing group은 각각 독립되고 단일 참여자는 반대쪽 fallback을 쓴다 (0.140417ms)
+✔ last baseline은 cross margin을 보존하고 합성 기준은 border edge다 (0.186709ms)
+✔ column·content alignment과 nested Flex baseline set은 서로 다른 경계다 (0.114667ms)
+✔ C10.3.5 inventory owns unique nodes and pinned, unexecuted WPT inputs (6.339916ms)
+✔ pinned Chrome observations match inputs, preserve flow geometry, and separate paint phases (5.412792ms)
+✔ mobile runtime subset reuses pinned case styles and preserves their source tree (5.033542ms)
+✔ 고정 Chrome 기준은 fixture와 capture 도구 digest를 보존한다 (1.435ms)
+✔ 두 DPR에서 computed integer, 원본 자식 순서와 CSS px frame이 같다 (0.542083ms)
+✔ 기본 순서, tie, 줄 수집, grow와 중첩 컨테이너 경계를 고정한다 (0.146333ms)
+✔ invalid fractional declaration, calc rounding, custom properties와 int32 clamp를 고정한다 (0.078ms)
+✔ 비-Flex 자식은 source order를 유지하고 overlap case의 order 그룹은 서로 덮친다 (0.084ms)
+✔ 실제 V8 fixture가 Android·iOS의 C10.3.2 WGPU 실행 경로에 연결된다 (4.897666ms)
+✔ Android·iOS Simulator의 실제 9개 frame과 WGPU 제출 결과가 서로 일치한다 (1.847875ms)
+✔ 고정 Chrome reference가 fixture·capture 도구·실행 파일 digest를 보존한다 (1.009416ms)
+✔ 모든 관찰 node의 computed CSS와 geometry가 고정돼 있고 DPR 1·2 결과가 같다 (1.003875ms)
+✔ grow와 scaled shrink가 CSS factor와 basis를 함께 반영한다 (0.510334ms)
+✔ flex-basis 우선순위와 definite row·column의 auto·percentage 계산을 고정한다 (0.063958ms)
+✔ shorthand·author stylesheet·invalid 선언의 computed style과 cascade 결과를 고정한다 (0.105709ms)
+✔ min·max freeze 반복과 hypothetical main size 분기 결과를 고정한다 (0.08625ms)
+✔ gap·margin·wrap line·box sizing·소수 좌표·큰 factor frame을 고정한다 (0.082834ms)
+✔ 실제 V8 runtime fixture의 mixed min·max freeze와 custom paint frame을 고정한다 (0.076459ms)
+✔ 실제 runtime fixture가 Android·iOS에서 C10.2 V8→Stylo→Taffy→WGPU 경로로 연결된다 (8.240833ms)
+✔ Android·iOS Simulator의 실제 V8 frame과 WGPU box 제출이 Chromium과 일치한다 (7.756458ms)
+✔ capture는 고정 Chromium만 허용하고 reference 자동 덮어쓰기를 막는다 (0.122333ms)
+✔ 고정 Chrome reference가 fixture·capture 도구·실행 파일의 digest를 보존한다 (1.397666ms)
+✔ 각 case의 Chromium node 순서와 DPR 1·2 결과가 동일하다 (0.358917ms)
+✔ row wrap의 default·exact fit·1px 초과·여러 줄 gap 경계를 고정한다 (0.103958ms)
+✔ column wrap에서 row-gap은 주축, column-gap은 교차축 간격으로 동작한다 (0.052875ms)
+✔ 실제 Android·iOS 앱 fixture의 일곱 DOM frame을 고정한다 (0.073292ms)
+✔ Android API 37·iOS 26.2 simulator의 실제 runtime frame이 Chromium과 일치한다 (0.512ms)
+✔ empty·single·display:none·shorthand·Block·비상속 경계를 고정한다 (0.089875ms)
+✔ capture는 reference를 자동 갱신하지 않고 실행 시 고정된 Chrome만 받는다 (0.062333ms)
+✔ 실제 runtime fixture가 Android·iOS에서 같은 V8→Stylo→Taffy→WGPU 경로를 쓴다 (5.251292ms)
+✔ C11.2.1 pixel matrix generator reproduces the fixed fixture byte-for-byte (534.002375ms)
+✔ all ten fixed cases separate six pixel scenes from four intentional rejections (0.167417ms)
+✔ every expected RGBA sample is in the mobile viewport and on a 3x3 uniform Chrome region (23.074333ms)
+✔ 겹침 scene은 실제 위쪽 paint만 표본화하고 완전히 가려진 item을 기록한다 (0.161084ms)
+✔ fixture records immutable Chrome and runtime input hashes (1.334ms)
+✔ inventory hash mismatch stops sample generation (0.676083ms)
+✔ changed Chrome PNG fails before a pixel fixture can be generated (3.332167ms)
+✔ unexpected runtime outcome cannot enter the mobile pixel matrix (6.212125ms)
+✔ HTML paint palette drift is rejected instead of silently changing expected RGBA (2.364333ms)
+✔ 6개 success scene은 전체 frame, WGPU 제출 및 겹침 paint 순서를 확인한다 (1.9495ms)
+✔ 4개 profile 밖 scene은 정확한 code·NodeId·property와 미제출을 요구한다 (0.166584ms)
+✔ 초기 장면이 환경 갱신에 밀리면 최종 ready summary가 있어야 통과한다 (0.76625ms)
+✔ runner 오염·오류 진단 변경·frame 누락·geometry 변이·미제출·겹침 순서 오류는 실패한다 (0.451667ms)
+✔ 중복 frame은 내용이 같아야 하며 다른 중복 report는 실패한다 (0.3165ms)
+✔ runtime matrix preserves fixed scene classes, preorder, source hashes, and failure owners (40.919041ms)
+✔ HTML edits that are not represented by the pinned reference fail closed (3.056625ms)
+✔ generated source escapes literals and contains no caller-provided JavaScript (3.109291ms)
+✔ pinned Chrome 154 screenshot에서 11개 성공 장면의 item/gap 표본을 만든다 (242.411292ms)
+✔ 실행 입력의 고정 hash와 11개 성공·5개 거부 장면이 표면 행렬에서 일치한다 (289.525167ms)
+✔ hidden item은 표면 표본으로 취급하지 않는다 (101.1875ms)
+✔ source inventory hash가 어긋나면 Pixel matrix 생성이 실패한다 (1.624584ms)
+✔ 고정 HTML hash가 어긋나면 Pixel matrix 생성이 실패한다 (3.759292ms)
+✔ Chrome oracle hash가 어긋나면 Pixel matrix 생성이 실패한다 (6.295166ms)
+✔ Chrome DPR 1 screenshot이 변경되면 source oracle 판정에서 거부한다 (2.312458ms)
+✔ reference에서 scene 순서가 빠지면 fixture 전체를 생성하지 않는다 (2.649125ms)
+✔ 생성된 sample RGBA는 고정 screenshot 실제 pixel과 일치한다 (137.827292ms)
+✔ 성공 scene은 모든 노드 geometry와 WGPU draw를 Chrome 기준에 비교한다 (1.40675ms)
+✔ 고정 거부 scene은 정확한 오류와 부분 출력 부재를 요구한다 (0.13725ms)
+✔ 이유 문자열이 없는 안정 오류에도 property 이름을 정확히 비교한다 (0.095709ms)
+✔ display:none DOM 노드는 0×0 frame으로 보존하되 paint와 draw에서 제외한다 (0.178916ms)
+✔ 적대 경로: 최종 summary 누락 (0.487375ms)
+✔ 적대 경로: 동일 run의 summary 중복 (0.083875ms)
+✔ 적대 경로: 최초 eval 누락 (0.071417ms)
+✔ 적대 경로: 성공인데 eval 실패 (0.78725ms)
+✔ 적대 경로: 성공 node frame 누락 (0.101333ms)
+✔ 적대 경로: 중복 node frame (0.10375ms)
+✔ 적대 경로: frame NodeId 변경 (0.094792ms)
+✔ 적대 경로: geometry 허용 오차 초과 (0.091792ms)
+✔ 적대 경로: frame summary 누락 (0.071708ms)
+✔ 적대 경로: paint order 누락 (0.086417ms)
+✔ 적대 경로: source order 손실 (0.242916ms)
+✔ 적대 경로: 양수 draw 누락 (0.074334ms)
+✔ 적대 경로: 기대 거부 scene 성공 처리 (0.060375ms)
+✔ 적대 경로: eval과 최종 거부 코드 불일치 (0.053709ms)
+✔ 적대 경로: 거부 code 변조 (0.060625ms)
+✔ 적대 경로: 거부 NodeId 변조 (0.046083ms)
+✔ 적대 경로: 거부 CSS property 변조 (0.111583ms)
+✔ 적대 경로: 거부 진단 누락 (0.049375ms)
+✔ 적대 경로: 거부 뒤 부분 frame 출력 (0.055083ms)
+✔ 적대 경로: 거부 뒤 양수 draw (0.059917ms)
+✔ 기본 허용 오차와 다른 run의 무관한 기록은 구분한다 (0.064666ms)
+✔ 다른 fixture source order를 Chrome oracle과 합치지 않는다 (0.100041ms)
+✔ 잘못된 frame 로그 형식을 정상 geometry로 해석하지 않는다 (0.052708ms)
+✔ C11.2.2 runtime matrix pins all candidate and expected-rejection scenes (11.571ms)
+✔ Chrome 154 고정 screenshot에서 C11.2.3 성공 19 scene의 표본 행렬을 결정적으로 만든다 (427.661875ms)
+✔ 거부 6 scene은 pixel sample을 만들지 않고 hidden child도 제외한다 (179.872459ms)
+✔ track limit 장면의 1px 높이 item은 명시된 단일 pixel 예외로 기록한다 (171.232875ms)
+✔ 표본 RGBA가 모든 고정 Chrome PNG 픽셀과 일치한다 (211.762792ms)
+✔ inventory, HTML, Chrome reference, screenshot hash가 바뀌면 matrix 생성이 실패한다 (11.035666ms)
+✔ Chrome oracle에서 scene이 빠지거나 순서가 바뀌면 전체 matrix를 거부한다 (4.358792ms)
+✔ C11.2.3 fixture 생성 명령은 HTML과 inventory를 같은 입력으로 재현한다 (42.464125ms)
+✔ 25개 장면의 preorder·NodeId·부모가 inventory와 HTML에서 일치한다 (0.981292ms)
+✔ 고정 WPT revision과 Chrome runner 로그·세부 결과가 연결된다 (0.1265ms)
+✔ Chrome reference가 정확한 입력 hash·캡처 도구·DPR 관측과 25개 screenshot을 담는다 (22.069792ms)
+✔ Chrome가 row·column dense의 hole backfill과 양의 implicit track을 분리해 관찰한다 (0.315417ms)
+✔ runtime matrix 재생성이 고정 v6 inventory와 Chrome 154 v7 근거에 일치한다 (22.024125ms)
+✔ capture 입력은 runtime matrix, HTML, inventory, Chromium reference hash를 모두 묶는다 (73.367042ms)
+✔ 고정 행렬은 25개 scene의 19 성공과 6 기대 거부 계약을 보존한다 (10.093916ms)
+✔ runtime JavaScript는 고정된 scene node와 parent graph만 구성한다 (17.111917ms)
+✔ runtime paint 색상은 Chrome reference fixture HTML의 node별 palette를 그대로 따른다 (20.509792ms)
+✔ pins C11.3.1 sample colors to the Chrome 154 DPR 1 screenshot (8.706209ms)
+✔ compares Android PixelCopy samples against the fixed Chrome pixels (2.439083ms)
+✔ rejects Android pixel mismatch even when the capture is complete (2.21725ms)
+✔ compares iOS Metal drawable pixels with the same Chrome oracle (0.556ms)
+✔ rejects a C11.3.1 Metal log with one changed sample (0.249666ms)
+✔ 기준은 고정한 fixture·도구·Chrome 실행 파일·WPT revision에 연결된다 (2.744709ms)
+✔ 12개 독립 장면의 tree·DPR·CSS px geometry·track 수가 보존된다 (3.549417ms)
+✔ repeat seam과 중복 line name의 Chrome resolved CSSOM 값이 명시된 순서를 유지한다 (0.076625ms)
+✔ Chrome의 10,000 경계·거부 후보·CSSOM fallback을 Spinon 결과와 혼동하지 않는다 (0.098416ms)
+✔ DPR 1 화면 캡처 경로와 해시가 실제 파일과 일치한다 (12.878458ms)
+✔ 고정 Chrome 표면·reference 해시와 두 색상 표본을 확인한다 (6.756125ms)
+✔ Android PixelCopy 표본 두 개를 Chrome 표면과 정확히 비교한다 (7.1765ms)
+✔ Android PixelCopy의 한 채널 오차를 통과시키지 않는다 (1.800625ms)
+✔ iOS Metal drawable 표본을 Chrome 표면과 정확히 비교한다 (0.562292ms)
+✔ iOS Metal 표본의 색상 오차를 통과시키지 않는다 (9.576958ms)
+✔ 기준 자료가 고정 fixture·도구·Chrome 실행 파일·WPT revision에 연결된다 (2.438583ms)
+✔ 15개 장면의 DOM 순서, 양쪽 DPR의 CSSOM·track 수·geometry가 보존된다 (0.572208ms)
+✔ named line occurrence, span 방향, repeat seam, row 축, conflict 처리가 Chrome 기준과 맞는다 (0.202833ms)
+✔ explicit grid 밖 named line 요청은 Chrome 결과와 지원 범위를 분리해 둔다 (0.156417ms)
+✔ DPR 1의 scene screenshot 경로와 hash가 실제 PNG 파일과 일치한다 (134.771083ms)
+✖ Android·iOS C11.3.2 진입과 거부 경로가 고정 scene 및 run ID를 검사한다 (2.599375ms)
+✔ Android API 37 AVD 캡처 모드를 실기기와 구분해 검증한다 (1.124417ms)
+✔ iOS Simulator matrix 입력은 Chrome 고정 기준과 26개 장면·65개 노드를 일대일로 묶는다 (0.417959ms)
+✔ 성공 scene의 node frame, paint order와 WGPU 제출을 Chrome DPR 1 기준에 대조한다 (0.673458ms)
+✔ paint node 순서·ordinal 변조를 통과시키지 않는다 (0.957292ms)
+✔ node frame에서 0.5 CSS px를 넘는 오차를 감지한다 (0.110666ms)
+✔ 누락 frame, 중복 node frame, draw count 불일치를 통과시키지 않는다 (0.293666ms)
+✔ 기대 rejection은 정확한 error·property·node와 frame/draw/readback 부재를 요구한다 (0.201958ms)
+✔ 두 번째 기대 rejection은 grid-row-start와 item node 2를 정확히 기록한다 (0.084166ms)
+✔ 한 번의 -12 superseded 응답만 같은 iOS scene 재실행 조건으로 잡는다 (0.086542ms)
+✔ 가장 긴 scene 이름도 iOS의 80자 run ID 제한 안에 유지한다 (0.139417ms)
+✔ 알 수 없는 iOS scene은 runtime 평가·draw·Metal readback 전에 거부되어야 한다 (0.14525ms)
+✔ 기준 산출물이 고정 fixture, capture 도구, Chrome 실행 파일에 연결된다 (4.213916ms)
+✔ 26 scene의 CSSOM area matrix, track metadata와 DPR별 geometry가 보존된다 (1.576791ms)
+✔ area 직사각형, null cell과 shorthand 배치가 Chrome geometry 기준을 따른다 (0.155625ms)
+✔ bare area custom ident와 숫자+ident, 충돌 이름, implicit named area를 구분한다 (0.0845ms)
+✔ invalid area declaration은 cascade fallback을 남기고 dimensions·implicit track은 별도 거부 경계다 (0.136709ms)
+✔ nested container, hidden child와 DOM source order가 유지된다 (0.079459ms)
+✔ 고정 WPT 4개와 73개 하위 검사가 각각 분류되고 Chrome oracle 경계가 보존된다 (0.15ms)
+✔ scene screenshot의 PNG hash가 기준 JSON과 실제 파일에 연결된다 (28.76625ms)
+✔ C11.3.3 앱 runtime matrix와 표면 pixel fixture가 Chrome 기준에 고정된다 (9.01925ms)
+✔ Android capture는 고정 실기기를 자동 선택하고 명시 대상·중복·AVD를 분리한다 (0.523042ms)
+✔ Android AVD capture는 emulator serial만 허용하고 실기기와 다중 대상을 거부한다 (0.185958ms)
+✔ area가 없는 bare ident 기준은 pinned Chrome 154 첫 named line에 고정된다 (2.3185ms)
+✔ C11.2.2 기준 fixture가 16개 장면과 pinned WPT 후보를 분리한다 (0.955458ms)
+✔ Chrome 기준은 fixture·도구 hash와 각 DPR 관측을 완전하게 연결한다 (10.197583ms)
+✔ 기준 scene이 definite-first, sparse cursor, gap, hidden, nested 동작을 명시한다 (0.60125ms)
+✔ 출력 경로와 screenshot 파일은 모두 고정되고 기존 기준 파일은 보호된다 (2.636625ms)
+✔ C11.2.2 기준 fixture가 15개 장면과 pinned WPT 후보를 분리한다 (0.373958ms)
+✔ Chrome 기준은 fixture·도구 hash와 각 DPR 관측을 완전하게 연결한다 (8.423083ms)
+✔ 기준 scene이 definite-first, sparse cursor, gap, hidden, nested 동작을 명시한다 (0.261542ms)
+✔ 출력 경로와 screenshot 파일은 모두 고정되고 기존 기준 파일은 보호된다 (0.735042ms)
+✔ iOS frame parser preserves preorder IDs and fractional CSS coordinates (0.801792ms)
+✔ draw detector accepts generation metadata before the success status (0.127ms)
+✔ draw detector rejects failed, missing, and stale-sized presentations (0.0495ms)
+✔ C11.2.1 표본은 고정 Chrome reference와 screenshot에서 추출된다 (11.133542ms)
+✔ 표본 좌표는 파랑·빨강 item과 gap/background를 구별한다 (0.170208ms)
+✔ Android PixelCopy 완료 marker는 필드 순서가 달라도 같은 run만 인정한다 (0.130959ms)
+✔ iOS Metal pixel summary는 matched 상태가 run id 앞에 있어도 인식한다 (2.256375ms)
+✔ 기준 입력·Chrome 실행 파일·캡처 도구와 WPT 원문 후보가 hash로 고정된다 (4.184708ms)
+✔ 10개 scene·30개 node의 분류, DOM preorder, parent identity와 DPR이 고정된다 (0.611417ms)
+✔ 양·음수 line, span, 역순 및 shorthand cascade의 Chrome computed 값과 rect가 보존된다 (0.125959ms)
+✔ 겹침·중첩별 배치 모드와 profile 밖의 Chrome 관찰값을 분리한다 (0.140042ms)
+✔ Chrome 캡처 PNG는 scene·SHA-256·화면 크기와 연결된다 (7.646083ms)
+✔ oracle 검증은 누락·중복 node, 비유한 frame 및 profile 오분류를 거부한다 (3.967458ms)
+✔ 고정 Chrome 기준은 입력·도구·실행 파일 hash와 WPT 원문 hash에 묶여 있다 (3.089959ms)
+✔ 10개 scene·40개 node의 tree, CSS px geometry와 DPR 고정값이 보존된다 (1.044583ms)
+✔ 10개 Chrome 화면 캡처는 고유 scene·SHA-256·PNG 크기와 연결된다 (3.996125ms)
+✔ reference 검증은 빠진·중복 node와 DPR 불일치를 거부한다 (5.610958ms)
+✔ 정적 runtime matrix는 기준 입력 hash와 10 scene·40 node source를 고정한다 (150.123542ms)
+✔ 원본 hash가 어긋난 HTML은 matrix source 생성 전에 거부한다 (1.288458ms)
+✔ parse5 복구가 필요한 malformed HTML은 거부한다 (3.320958ms)
+▶ fixture subset 밖 tag·attribute·CSS·style·class 변경은 거부한다
+  ✔ unknown tag (1.769833ms)
+  ✔ unknown attribute (3.949667ms)
+  ✔ unknown reset rule (1.795458ms)
+  ✔ unknown inline property (1.34175ms)
+  ✔ unknown palette class (1.085541ms)
+✔ fixture subset 밖 tag·attribute·CSS·style·class 변경은 거부한다 (10.477708ms)
+▶ 중복 NodeId와 Chromium reference tree drift를 거부한다
+  ✔ duplicate id (1.462875ms)
+  ✔ reference node drift (1.382334ms)
+✔ 중복 NodeId와 Chromium reference tree drift를 거부한다 (3.059875ms)
+✔ mise 유무와 관계없이 iOS simulator 빌드 인자로 Grid pixel 기능을 전달한다 (416.017041ms)
+✔ C18.2 iOS fixture는 C04 GPU와 공유 C18.1 readback 기반을 함께 켠다 (291.881833ms)
+✔ C18.2 iOS fixture는 C04 GPU fixture 없이 빌드를 시작하지 않는다 (6.220292ms)
+✔ Grid pixel 검증은 C04 GPU fixture 없이 빌드를 시작하지 않는다 (5.469541ms)
+✔ iOS simulator 스크립트는 누락된 Grid pixel flag를 기본 비활성화로 전달한다 (249.507209ms)
+✔ 두 iOS 빌드 스크립트는 잘못된 Grid pixel flag를 거부한다 (11.382125ms)
+✔ iOS native build도 C04 GPU fixture 없이 Grid pixel feature를 거부한다 (6.564583ms)
+✔ Grid pixel 빌드 설정을 iOS native Rust feature와 C++ define으로 연결한다 (1.073458ms)
+✔ C04 GPU 핵심과 fixture 검증 feature를 분리하고 앱 검증 빌드에서만 둘 다 켠다 (1.583667ms)
+✔ UA cascade fixture probe는 기본 off이고 명시한 경우에만 Rust와 네이티브 경계를 켠다 (153.056125ms)
+✔ C11 iOS pixel 캡처는 출력 플래그 순서와 무관하게 기능 값을 확인한다 (0.298875ms)
+✔ Android와 iOS UA probe 호출은 opt-in feature gate 안에만 둔다 (0.602791ms)
+✔ C04 runtime core만으로는 fixture ABI를 노출하지 않는다 (71.667541ms)
+✔ pinned Chromium samples cover 10 C11 scenes and 36 visible pixels (263.822292ms)
+✔ generator rejects screenshot hash drift and node inventory drift (141.33925ms)
+✔ C12.1 기준은 fixture·캡처 도구·Chromium·WPT revision에 고정된다 (4.732ms)
+✔ 각 관찰 상태에 inventory의 node와 source-order 관계가 정확히 보존된다 (3.274709ms)
+✔ static은 inset을 무시하고 relative는 흐름 frame과 뒤 형제를 유지한다 (0.282708ms)
+✔ 반대 방향·음수·auto·초과 제약 inset이 LTR 물리 축 규칙과 일치한다 (0.071084ms)
+✔ percentage와 calc inset이 containing block 축 및 custom property fallback을 따른다 (0.066834ms)
+✔ inset shorthand·longhand·cascade layer·important의 계산값이 보존된다 (0.087709ms)
+✔ 중첩 relative box가 가장 가까운 positioned owner를 보고하고 흐름 형제를 유지한다 (0.064416ms)
+✔ display:none은 positioned subtree 상자를 제거하고 뒤 형제는 흐름에 남긴다 (0.054958ms)
+✔ runtime position 변경은 흐름을 보존하고 visual offset과 descendant owner를 갱신한다 (0.083916ms)
+✔ DPR만 바뀔 때 computed CSSOM 값과 geometry는 달라지지 않는다 (0.361917ms)
+✔ Android 실기기와 iOS Simulator의 V8 runtime frame이 고정 Chromium geometry와 일치한다 (4.04825ms)
+✔ 기준 재수집은 명시적 교체 없이는 기존 파일을 보존한다 (45.689458ms)
+✔ C12.2 Chromium 기준은 고정 버전·fixture·표준·WPT revision에 묶인다 (5.031958ms)
+✔ 23개 case와 82개 노드의 DOM 부모·case·position·containing-block owner가 보존된다 (0.437958ms)
+✔ DPR 변경은 CSS px 좌표와 computed inset 값을 바꾸지 않는다 (0.30625ms)
+✔ padding edge, static ancestor skip, nested positioned owner, viewport fallback이 분리된다 (0.166959ms)
+✔ out-of-flow 자식은 auto 부모 크기와 normal-flow 형제 좌표에 참여하지 않는다 (0.302417ms)
+✔ 축별 percentage·calc·right/bottom·auto size와 over-constrained LTR 기준을 고정한다 (0.190459ms)
+✔ 자동 margin, min/max, box-sizing, ratio와 negative inset을 별도 결과로 고정한다 (0.161292ms)
+✔ auto inset static position, inline blockification, BFC, 숨김 subtree와 nested absolute를 구분한다 (0.29225ms)
+✔ shorthand cascade와 한쪽 auto inset의 used geometry가 computed style과 함께 유지된다 (0.272916ms)
+✔ Android physical device의 최종 표시 장면과 82개 runtime node가 Chrome 기하와 일치한다 (43.321792ms)
+✔ iOS Simulator의 최종 표시 장면과 82개 runtime node가 Chrome 기하와 일치한다 (37.57925ms)
+✔ C12.3 기준은 고정 Chrome, fixture 해시, viewport/DPR 행렬과 WPT subset에 묶인다 (5.650542ms)
+✔ 지원·거부 owner, source parent, 표시 여부와 유한 frame이 모든 관찰에서 보존된다 (2.707125ms)
+✔ DPR만 바꾸면 CSS geometry와 computed style이 그대로이고 resize 왕복/no-op도 결정적이다 (2.872833ms)
+✔ viewport inset·percentage·calc·stretch와 box-owner 경계를 대표값으로 고정한다 (0.1815ms)
+✔ fixed containing block 효과는 거부 경계로 분리되고 will-change opacity는 viewport 대조군이다 (0.147125ms)
+✔ C12.3 Android 실기기 V8 runtime의 전체 viewport/DPR/resize frame이 Chrome 기준과 일치한다 (2.985375ms)
+✔ C12.3 iOS Simulator V8 runtime의 전체 viewport/DPR/resize frame이 Chrome 기준과 일치한다 (1.484042ms)
+✔ C12.3 comparator는 frame 누락·잘못된 revision·이전 실패 로그를 통과시키지 않는다 (3.285416ms)
+✔ Android pixel reader decodes fixed Chrome PNG RGBA samples (26.455583ms)
+✔ Android surface comparator accepts the exact scene and all fixed samples (6.220125ms)
+✔ Android surface comparator rejects stale, incomplete, incorrect, and mismatched PNG evidence (110.992666ms)
+✔ 고정된 iOS Metal surface 8개 표본을 비교한다 (2.050167ms)
+✔ 누락 case를 거부한다 (0.66675ms)
+✔ 중복 case를 거부한다 (0.166458ms)
+✔ 잘못된 run ID를 거부한다 (0.957ms)
+✔ pixel color mutation을 거부한다 (0.308375ms)
+✔ 좌표 뒤바꿈을 거부한다 (0.162ms)
+✔ offscreen texture 결과를 거부한다 (0.138584ms)
+✔ 실패 상태 marker가 섞인 실행을 거부한다 (0.11325ms)
+✔ 공통 비교기는 정상 iOS matrix에서 모든 Chromium frame을 확인한다 (56.784209ms)
+✔ 공통 비교기는 잘못된 inventory hash를 거부한다 (49.011542ms)
+✔ 공통 비교기는 중복 case와 허용치를 넘는 개별 frame 오차를 거부한다 (101.435084ms)
+✔ 공통 비교기는 기대 속성과 다른 거부 진단을 통과시키지 않는다 (49.18825ms)
+✔ C12.4 Android matrix derives all pinned cases and nodes from the inventory (6.790292ms)
+✔ C12.4 Android matrix keeps unsupported boundaries explicit and emits per-scene V8 sources (3.790417ms)
+✔ C12.4 fixture은 고정된 범위와 실행하지 않은 WPT source를 구분한다 (5.193792ms)
+✔ C12.4 runtime 진입점이 iOS·Android에서 같은 Rust fixture를 호출한다 (2.848666ms)
+✔ 실기기 Android와 iOS Simulator가 같은 10개 frame·paint rank를 제출한다 (0.740667ms)
+✔ Chrome 154 reference와 PNG는 fixture·도구·환경 해시 및 픽셀을 고정한다 (6.930291ms)
+✔ Chrome screenshot은 row-reverse의 관측 pixel과 top-layer 표본을 분리해 고정한다 (2.681917ms)
+✔ 유효한 0개 및 다중 worker 단계를 받아들인다 (1.592833ms)
+✔ 누락·중복 표본과 session 간 TID 재사용을 거부한다 (0.838583ms)
+✔ pthread guard, reported length, OS range, page span 불일치를 거부한다 (0.223625ms)
+✔ 세 표본 사이 bounds 변경과 resident page 초과를 거부한다 (2.302292ms)
+✔ Android accepts the shared C13.1 opt-in name and preserves the legacy alias (3.157208ms)
+✔ Chrome 155 C13.1 compact surface oracle pins 13 frames and 52 pixels (7.943709ms)
+✔ the oracle rejects changed hit identity, sample color, duplicate points, and geometry (5.872417ms)
+✔ C13.1 iOS app summary parser rejects malformed and mutated hit-grid reports (687.792292ms)
+✔ C13.1 WPT source, labels, digests, and unrun status are pinned (1.059791ms)
+✔ inventory 검증은 중복, 누락, 미등록 경로와 개수 보존 재분류를 거부한다 (2.002ms)
+✔ inventory 검증은 WPT 실행 허위 표기를 거부한다 (0.123875ms)
+✔ pins the C13.2 Chrome 155 agent-browser oracle and its fixture images (1.043792ms)
+✔ separates visible paint, out-of-flow scrollable overflow, and ink-only overflow (0.11ms)
+✔ checks axis ranges, hidden programmatic scrolling, and clip no-offset behavior (0.101875ms)
+✔ keeps nested offsets independent and preserves or clamps them after layout changes (0.063833ms)
+✔ distinguishes viewport, propagated body overflow, and an independent body scroller (0.102792ms)
+✖ Android wheel source classification rejects device-union misclassification (16.10025ms)
+✔ pins the C13.3 Chrome 155 agent-browser oracle, fixture, and screenshot (0.988625ms)
+✔ separates direct pan, nested boundary start, and mid-gesture boundary behavior (0.15075ms)
+✔ pins touch-action start-time behavior and restricted pan axes (0.098417ms)
+✔ cancel preserves offset, records CDP late-move rejection, and recovers for a new pointer (0.093709ms)
+✔ records the per-axis overscroll oracle discrepancy without treating it as the contract (0.064375ms)
+✔ active overscroll mutation Chrome comparison remains distinct from Spinon contract (0.685334ms)
+✖ C13.3 tap probe stays on the explicit opt-in fixture route (8.974542ms)
+✔ Android counts only guarded View.OnClickListener activations and forwards accepted touch streams (3.255209ms)
+✔ Android absolute input maps from the full SurfaceView origin, not its clipped accessibility bounds (2.571083ms)
+✖ iOS tap waits for pan failure and configures pan from computed touch-action before readiness (1.553583ms)
+✔ tap plan has twenty distinct pre-implementation failure perspectives (2.693458ms)
+✔ C14.1 Chrome reference는 HTML, inventory, screenshot 원본에 고정돼 있다 (4.144834ms)
+✔ C14.1 관찰값은 inventory의 세 replaced-image 경계를 보존한다 (0.398041ms)
+✔ style policy 갱신은 기존 축을 유지하고 새 gesture에 touch-action:none을 적용한다 (0.662875ms)
+✔ Android INPUT_BATCH 로그도 같은 입력 검증에 사용한다 (0.161625ms)
+✔ Android의 동일한 STYLE_UPDATE 보고를 한 update로 센다 (0.069916ms)
+✔ Android의 PROCESS와 INPUT_BATCH 중복 보고를 한 batch로 센다 (0.078667ms)
+✔ geometry 갱신은 활성 gesture를 취소한 뒤 새 geometry에서 pan을 허용한다 (0.083833ms)
+✔ paint 갱신은 geometry와 scroll revision을 유지하고 active pan을 계속한다 (0.074833ms)
+✔ stale policy epoch, geometry regression, and paint cancellation are rejected (0.470917ms)
+✔ screenshot의 paint 변경과 inner border 바깥 clip pixel을 검증한다 (103.834167ms)
+✔ DevTools WebSocket 열림·오류·조기 종료·시간 초과를 구분한다 (2.681209ms)
+✔ Chromium 종료 전에 group 멤버 모두가 이 캡처의 임시 profile을 가리켜야 한다 (0.336166ms)
+✔ accepts one PixelCopy PNG and all exact pinned Chrome scene pixels (14.667667ms)
+✔ maps CSS centers by actual PixelCopy dimensions even when density is deliberately wrong (10.809542ms)
+✔ rejects coordinates produced from density instead of actual surface scale (8.588042ms)
+✔ supports the separately namespaced C11.2.2 PixelCopy marker and cache path (13.77025ms)
+✔ supports the separately namespaced C11.2.3 PixelCopy marker and cache path (7.572708ms)
+✔ C11.3.1 고정 repeat 표본을 전용 marker와 cache 경로로 검증한다 (7.616084ms)
+✔ C11.3.1 runtime이 다섯 표본 exact를 보고하지 않으면 거부한다 (16.31875ms)
+✔ isolates the requested run from unrelated app processes (7.65825ms)
+✔ rejects stale run ID (0.140041ms)
+✔ rejects missing begin marker (0.178875ms)
+✔ rejects duplicate begin marker (0.113333ms)
+✔ rejects missing successful capture marker (0.112416ms)
+✔ rejects capture error status (0.090583ms)
+✔ rejects missing summary marker (0.10625ms)
+✔ rejects incomplete expected sample count (0.101292ms)
+✔ rejects duplicate sample ID (0.098209ms)
+✔ rejects missing sample (0.107958ms)
+✔ rejects unknown sample ID (12.923167ms)
+✔ rejects mismatched scene (0.165458ms)
+✔ rejects process ID changes between begin and sample (8.507708ms)
+✔ rejects surface generation changes between begin and sample (7.690041ms)
+✔ rejects begin/capture dimensions mismatch (0.127833ms)
+✔ rejects invalid density (0.0905ms)
+✔ rejects viewport metadata inconsistent with the fixed C11 runtime (0.107959ms)
+✔ rejects scales that are not derived from the captured bitmap dimensions (0.079958ms)
+✔ rejects off-by-one CSS coordinate (7.489542ms)
+✔ rejects off-by-one device pixel coordinate (7.507916ms)
+✔ rejects PixelCopy RGBA mismatch (7.548ms)
+✔ rejects PNG hash mismatch (7.532042ms)
+✔ rejects altered PixelCopy PNG bytes (0.331959ms)
+✔ fixture pins the exact Chrome 154 DPR 1 reference screenshot and seven extracted pixels (12.043958ms)
+✔ accepts one current-process drawable run with all exact sample colors (0.822875ms)
+✔ C11.2.1 runtime scene alias is distinct from its inventory fixture id (0.231083ms)
+✔ accepts the separately namespaced C11.2.2 Metal surface pixel markers (0.180542ms)
+✔ accepts the separately namespaced C11.2.3 Metal surface pixel markers (0.170166ms)
+✔ accepts the separately namespaced C11.3.1 Metal surface pixel markers (0.222583ms)
+✔ accepts the valid initial environment revision zero (4.914667ms)
+✔ isolates one run when the unified log contains other process runs (0.23725ms)
+✔ rejects wrong run id (0.608417ms)
+✔ rejects missing begin marker (0.225083ms)
+✔ rejects duplicate begin marker (0.122709ms)
+✔ rejects missing summary marker (0.121333ms)
+✔ rejects duplicate summary marker (0.130125ms)
+✔ rejects missing sample (0.117584ms)
+✔ rejects duplicate sample ID (0.097833ms)
+✔ rejects unknown sample ID (0.350375ms)
+✔ rejects a different application process (0.131333ms)
+✔ rejects sample from another surface generation (0.12225ms)
+✔ rejects mismatched begin and summary revisions (0.099125ms)
+✔ rejects nonpositive revision (0.097708ms)
+✔ rejects fractional or unsafe process and revision counters (1.222ms)
+✔ rejects unexpected scene (0.13725ms)
+✔ rejects Chrome-sized runtime viewport in place of the app draw viewport (0.093708ms)
+✔ rejects drawable aspect ratio mismatch (0.081125ms)
+✔ rejects wrong horizontal pixel scale (0.082541ms)
+✔ rejects wrong vertical pixel scale (0.088417ms)
+✔ rejects off-by-one pixel coordinate (0.103875ms)
+✔ rejects changed Metal surface color (0.138208ms)
+✔ rejects changed expected color in runtime log (0.132958ms)
+✔ rejects non-exact sample marker (0.097167ms)
+✔ rejects mismatch summary status (0.08075ms)
+✔ rejects inconsistent summary sample counts (0.085791ms)
+✔ rejects malformed RGBA channels (0.091084ms)
+✔ rejects altered Chrome reference bytes (0.0855ms)
+✔ rejects altered Chrome screenshot bytes (0.092084ms)
+✔ matches all 30,000 iOS drawable sample centers and the overflow outside its container border (99.333292ms)
+✔ rejects one-byte changes to every RGBA channel outside the container border (282.82425ms)
+✔ rejects missing, duplicated, and reordered rows before color comparison (37.937583ms)
+✔ rejects stale run IDs, mixed generations, physical coordinate drift, bad formats, and altered hashes (52.187666ms)
+✔ compares every CSS pixel center using independent physical x and y scales (0.803958ms)
+✔ detects one changed RGBA channel at its CSS and PixelCopy coordinates (0.175ms)
+✔ treats one-byte red, green, blue, and alpha changes as mismatches (0.111041ms)
+✔ rejects a PixelCopy image too small for unique logical pixel centers (0.417042ms)
+✔ rejects undersized physical dimensions before attempting duplicate pixel mappings (0.084625ms)
+✔ 고정 Chrome oracle PNG·fixture hash와 Android/iOS 5개 표본이 일치한다 (2.785541ms)
+✔ escaped sample 색상 변조와 parent 안 좌표 이동을 거부한다 (2.045583ms)
+✔ 표본 누락과 중복을 거부한다 (0.549666ms)
+✔ stale run ID와 surface generation을 거부한다 (0.287958ms)
+✔ 잘못된 PixelCopy PNG 크기와 hash를 거부한다 (0.302917ms)
+✔ Chrome 기준 관찰값·fixture·PNG 변경을 거부한다 (0.339ms)
+✔ 9개 표면 표본·screenshot pixel과 네 anchor를 exact 비교한다 (4.837917ms)
+✔ manifest hash가 맞아도 screenshot pixel 불일치를 거부한다 (2.479583ms)
+✔ screenshot hash 불일치를 거부한다 (0.652583ms)
+✔ surface PixelCopy/Metal PNG의 pixel 불일치를 거부한다 (1.130625ms)
+✔ surface log에서 잘못된 좌표와 exact=false를 거부한다 (0.695334ms)
+✔ geometry log와 canvas origin이 다른 manifest를 거부한다 (1.050042ms)
+✔ fixture 안에 놓인 screenshot anchor를 거부한다 (1.038ms)
+✔ 같은 색상으로 중복된 anchor를 거부한다 (2.755875ms)
+✔ 중복 screenshot 표본 좌표를 거부한다 (0.994ms)
+✔ 불완전한 surface summary를 거부한다 (0.739709ms)
+✔ 표본이 아닌 surface PNG capture를 거부한다 (0.658542ms)
+✔ 10개 표면 표본·screenshot pixel과 네 anchor를 exact 비교한다 (5.219333ms)
+✔ manifest hash가 맞아도 screenshot pixel 불일치를 거부한다 (2.525958ms)
+✔ screenshot hash 불일치를 거부한다 (0.642333ms)
+✔ surface PixelCopy/Metal PNG의 pixel 불일치를 거부한다 (1.116625ms)
+✔ surface log에서 잘못된 좌표와 exact=false를 거부한다 (0.690125ms)
+✔ alpha 0 source RGB 누출 control을 거부한다 (0.869333ms)
+✔ alpha 128을 불투명 RGB로 출력한 control을 거부한다 (0.810125ms)
+✔ geometry log와 canvas origin이 다른 manifest를 거부한다 (0.99975ms)
+✔ fixture 안에 놓인 screenshot anchor를 거부한다 (0.852916ms)
+✔ 같은 색상으로 중복된 anchor를 거부한다 (0.893209ms)
+✔ 중복 screenshot 표본 좌표를 거부한다 (0.779334ms)
+✔ 불완전한 surface summary를 거부한다 (0.642ms)
+✔ 표본이 아닌 surface PNG capture를 거부한다 (0.680792ms)
+✔ fixture 이동 뒤 이전 경로에 Rust 사본이 남지 않는다 (1.421042ms)
+✔ CSS reference 도구가 삭제된 Rust fixture 경로를 참조하지 않는다 (22.58825ms)
+✔ 이동한 fixture 구현은 정해진 fixtures 모듈 경로에 있다 (0.223792ms)
+✔ 작업별 FFI fixture 모듈은 runtime 소스 루트에 남지 않는다 (3.037292ms)
+✔ 앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리된다 (16.476625ms)
+✔ C01 inventory v1의 입력 hash·정체성·부분 범위를 고정한다 (4.405417ms)
+✔ 안정 selector, node ID, feature ID를 검증한다 (0.451042ms)
+✔ 부분 인벤토리를 전체 지원 목록으로 오인할 수 없게 거부한다 (0.118083ms)
+✔ CSSOM 속성 이름을 원문·종류별로 보존하고 결정적으로 정렬한다 (0.901625ms)
+✔ CSSOM 속성 목록이 비었거나 중복·잘못된 이름이면 거부한다 (0.2545ms)
+✔ 고정 환경·부분 범위·정렬된 이름 digest가 있는 snapshot을 받는다 (3.19925ms)
+✔ ID·분류·정렬·목록 수·digest가 달라진 snapshot을 거부한다 (0.768041ms)
+✔ 외부 환경 문자열이 reference 디렉터리 경로 구분자나 상위 경로가 되지 않는다 (0.140541ms)
+✔ 부분 inventory를 전체 CSS 지원으로 승격하거나 비교 경계를 흐리면 거부한다 (0.175667ms)
+✔ 외부 resource나 author stylesheet가 기준 fixture에 들어오면 거부한다 (0.123125ms)
+✔ Chromium·환경·fixture provenance가 빠지거나 달라지면 거부한다 (0.36375ms)
+✔ 고정 Chromium reference가 현재 fixture·캡처 코드와 일치하고 부분 property surface로 남는다 (7.966791ms)
+ℹ tests 498
+ℹ suites 0
+ℹ pass 494
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1501.160166
+
+✖ failing tests:
+
+test at tools/css-reference/c11-3-2-grid-named-lines.test.mjs:162:1
+✖ Android·iOS C11.3.2 진입과 거부 경로가 고정 scene 및 run ID를 검사한다 (2.599375ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /arguments\.contains\("--spinon-c1132-grid-named-lines"\)/. Input:
+
+  ' runRuntimeGpuBase\n' +
+    '            || arguments.contains("--spinon-c181-image-paint")\n' +
+    '            || arguments.contains("--spinon-c182-alpha-image")\n' +
+    '            || arguments.contains("--spinon-c183-object-fit-position")\n' +
+    '            || runC184ImageRoute\n' +
+    '#else\n' +
+    '        let runRuntimeGpu = runRuntimeGpuBase\n' +
+    '#endif'
+
+      at TestContext.<anonymous> (file:///private/tmp/spinon-c18-4-async-image-replacement-20261016/tools/css-reference/c11-3-2-grid-named-lines.test.mjs:175:10)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: ' runRuntimeGpuBase\n            || arguments.contains("--spinon-c181-image-paint")\n            || arguments.contains("--spinon-c182-alpha-image")\n            || arguments.contains("--spinon-c183-object-fit-position")\n            || runC184ImageRoute\n#else\n        let runRuntimeGpu = runRuntimeGpuBase\n#endif',
+    expected: /arguments\.contains\("--spinon-c1132-grid-named-lines"\)/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tools/css-reference/c13-3-native-wheel-source-classifier.test.mjs:19:1
+✖ Android wheel source classification rejects device-union misclassification (16.10025ms)
+  Error: Command failed: javac -d /var/folders/51/mr5cjhg13v324f1vgg9m237c0000gn/T/spinon-c133-wheel-classifier-9nkGbv /private/tmp/spinon-c18-4-async-image-replacement-20261016/platforms/android/app/src/main/java/dev/spinon/bootstrap/WheelSourceClassifier.java /private/tmp/spinon-c18-4-async-image-replacement-20261016/tools/css-reference/fixtures/WheelSourceClassifierJvmTest.java
+  The operation couldn’t be completed. Unable to locate a Java Runtime.
+  Please visit http://www.java.com for information on installing Java.
+
+
+      at genericNodeError (node:internal/errors:999:15)
+      at wrappedFn (node:internal/errors:544:14)
+      at checkExecSyncError (node:child_process:942:11)
+      at execFileSync (node:child_process:978:15)
+      at TestContext.<anonymous> (file:///private/tmp/spinon-c18-4-async-image-replacement-20261016/tools/css-reference/c13-3-native-wheel-source-classifier.test.mjs:22:5)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.start (node:internal/test_runner/test:1257:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    status: 1,
+    signal: null,
+    output: [ null, <Buffer >, <Buffer 54 68 65 20 6f 70 65 72 61 74 69 6f 6e 20 63 6f 75 6c 64 6e e2 80 99 74 20 62 65 20 63 6f 6d 70 6c 65 74 65 64 2e 20 55 6e 61 62 6c 65 20 74 6f 20 6c ... 92 more bytes> ],
+    pid: 17099,
+    stdout: <Buffer >,
+    stderr: <Buffer 54 68 65 20 6f 70 65 72 61 74 69 6f 6e 20 63 6f 75 6c 64 6e e2 80 99 74 20 62 65 20 63 6f 6d 70 6c 65 74 65 64 2e 20 55 6e 61 62 6c 65 20 74 6f 20 6c ... 92 more bytes>
+  }
+
+test at tools/css-reference/c13-3-touch-action-tap-arbitration.test.mjs:10:1
+✖ C13.3 tap probe stays on the explicit opt-in fixture route (8.974542ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /c133TapProbeRequested && !c133GestureFixtureRequested/. Input:
+
+  'import MetalKit\n' +
+    'import UIKit\n' +
+    '\n' +
+    'private let c1133GridTemplateAreasSceneIDs: Set<String> = [\n' +
+    '    "basic-rectangles", "null-cell-dot-runs", "all-null-cells", "single-cell-area",\n' +
+    '    "bare-area-edge-aliases", "grid-area-one-value", "grid-area-two-values",\n' +
+    '    "grid-area-three-values", "grid-area-four-values", "row-column-longhands-area",\n' +
+    '    "grid-template-shorthand", "grid-shorthand", "bare-area-vs-explicit-one-name",\n' +
+    '    "explicit-line-before-area", "explicit-line-after-area", "area-names-ending-start-or-end",\n' +
+    '    "implicit-area-from-explicit-lines", "escaped-and-unicode-identifiers",\n' +
+    '    "invalid-l-shape-fallback", "invalid-disconnected-area-fallback",\n' +
+    '    "invalid-row-width-fallback", "invalid-trash-token-fallback", "empty-string-fallback",\n' +
+    '    "area-track-count-mismatch", "unknown-area-implicit-tracks", "nested-hidden-source-order",\n' +
+    ']\n' +
+    '\n' +
+    'private struct C124MetalPixelCase {\n' +
+    '    let direction: String\n' +
+    '    let blueOrder: Int\n' +
+    '    let redOrder: Int\n' +
+    '    let runID: String\n' +
+    '\n' +
+    '    var caseID: String {\n' +
+    '        "flex-\\(direction)-paint-order-\\(blueOrder)-\\(redOrder)"\n' +
+    '    }\n' +
+    '\n' +
+    '    var cssSample: (x: Int, y: Int) {\n' +
+    '        (70, direction.hasPrefix("column") && direction == "column-reverse" ? 175 : 155)\n' +
+    '    }\n' +
+    '\n' +
+    '    var expectedRGBA: String {\n' +
+    '        let blueOnTop = (direction == "row-reverse" || direction == "column-reverse")\n' +
+    '            ? blueOrder == 0 : blueOrder == 1\n' +
+    '        return blueOnTop ? "#2866f6ff" : "#e5484dff"\n' +
+    '    }\n' +
+    '\n' +
+    '    static func parse(arguments: [String]) -> C124MetalPixelCase? {\n' +
+    '        guard let raw = arguments.first(where: {\n' +
+    '            $0.hasPrefix("--spinon-c124-metal-surface-readback=")\n' +
+    '        }) else { return nil }\n' +
+    '        let fields = String(raw.dropFirst("--spinon-c124-metal-surface-readback=".count))\n' +
+    '            .split(separator: ",", omittingEmptySubsequences: false)\n' +
+    '        guard fields.count == 3,\n' +
+    '              let blueOrder = Int(fields[1]), let redOrder = Int(fields[2]),\n' +
+    '              ["row", "row-reverse", "column", "column-reverse"].contains(String(fields[0])),\n' +
+    '              (blueOrder == 0 || blueOrder == 1), redOrder == 0,\n' +
+    '              let runArgument = arguments.first(where: {\n' +
+    '                  $0.hasPrefix("--spinon-c124-metal-surface-run=")\n' +
+    '              }) else { return nil }\n' +
+    '        let runID = String(runArgument.dropFirst("--spinon-c124-metal-surface-run=".count))\n' +
+    '        guard !runID.isEmpty,\n' +
+    '              runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") })\n' +
+    '        else { return nil }\n' +
+    '        return C124MetalPixelCase(\n' +
+    '            direction: String(fields[0]), blueOrder: blueOrder,\n' +
+    '            redOrder: redOrder, runID: runID\n' +
+    '        )\n' +
+    '    }\n' +
+    '}\n' +
+    '\n' +
+    '\n' +
+    '\n' +
+    '\n' +
+    'private struct C111MetalPixelSample: Decodable {\n' +
+    '    let id: String\n' +
+    '    let nodeId: String\n' +
+    '    let xCssPx: UInt32\n' +
+    '    let yCssPx: UInt32\n' +
+    '    let rgba: [UInt32]\n' +
+    '}\n' +
+    '\n' +
+    'private struct C132MetalPixelSample {\n' +
+    '    let id: String\n' +
+    '    let xCssPx: UInt32\n' +
+    '    let yCssPx: UInt32\n' +
+    '    let rgba: [UInt32]\n' +
+    '}\n' +
+    '\n' +
+    'private struct C132MetalPixelRun {\n' +
+    '    let runID: String\n' +
+    '    let samples: [C132MetalPixelSample]\n' +
+    '\n' +
+    '    static let fixedSamples = [\n' +
+    '        C132MetalPixelSample(id: "visible-escape", xCssPx: 150, yCssPx: 30,\n' +
+    '                             rgba: [227, 84, 78, 255]),\n' +
+    '        C132MetalPixelSample(id: "parent-gap", xCssPx: 136, yCssPx: 30,\n' +
+    '                             rgba: [16, 24, 39, 255]),\n' +
+    '        C132MetalPixelSample(id: "parent-interior", xCssPx: 20, yCssPx: 20,\n' +
+    '                             rgba: [52, 66, 86, 255]),\n' +
+    '        C132MetalPixelSample(id: "parent-border", xCssPx: 11, yCssPx: 11,\n' +
+    '                             rgba: [240, 198, 116, 255]),\n' +
+    '        C132MetalPixelSample(id: "root-background", xCssPx: 50, yCssPx: 110,\n' +
+    '                             rgba: [16, 24, 39, 255]),\n' +
+    '    ]\n' +
+    '\n' +
+    '    static func parse(arguments: [String]) -> C132MetalPixelRun? {\n' +
+    '        let prefix = "--spinon-c132-metal-surface-pixels="\n' +
+    '        let values = arguments.filter { $0.hasPrefix(prefix) }\n' +
+    '        guard values.count == 1 else { return nil }\n' +
+    '        let runID = String(values[0].dropFirst(prefix.count))\n' +
+    '        guard (8...80).contains(runID.count),\n' +
+    '              runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") })\n' +
+    '        else { return nil }\n' +
+    '        return C132MetalPixelRun(runID: runID, samples: fixedSamples)\n' +
+    '    }\n' +
+    '}\n' +
+    '\n' +
+    'private struct C111MetalPixelRun {\n' +
+    '    let runID: String\n' +
+    '    let sceneID: String\n' +
+    '    let markerPrefix: String\n' +
+    '    let samples: [C111MetalPixelSample]\n' +
+    '    private static let c1121PixelSceneIDs: Set<String> = [\n' +
+    '        "numeric-lines", "positive-spans", "reversed-lines",\n' +
+    '        "shorthand-cascade", "overlap-source-order", "nested-placement-modes",\n' +
+    '    ]\n' +
+    '    private static let c1122PixelSceneIDs: Set<String> = [\n' +
+    '        "definite-first-mixed", "auto-only-fill", "positive-implicit-row",\n' +
+    '        "row-locked-auto-column", "column-locked-auto-row", "auto-column-span",\n' +
+    '        "sparse-hole-not-backfilled", "implicit-track-size-and-gap",\n' +
+    '        "hidden-child-excluded", "nested-independent-placement", "column-cursor-wrap",\n' +
+    '    ]\n' +
+    '    private static let c1123PixelSceneIDs: Set<String> = [\n' +
+    '        "row-sparse-baseline", "row-dense-hole-fill", "row-dense-span-collision",\n' +
+    '        "row-sparse-hole-control", "row-dense-fixed-column",\n' +
+    '        "row-dense-positive-implicit-row", "column-sparse-explicit-fill",\n' +
+    '        "column-sparse-positive-implicit-column", "column-sparse-fixed-row",\n' +
+    '        "column-sparse-fixed-column", "column-dense-hole-fill",\n' +
+    '        "column-sparse-hole-control", "column-dense-span-collision",\n' +
+    '        "column-dense-positive-implicit-column", "definite-first-dense",\n' +
+    '        "hidden-item-excluded", "nested-mixed-flow", "auto-track-no-implicit",\n' +
+    '        "auto-span-at-track-limit",\n' +
+    '    ]\n' +
+    '\n' +
+    '    private static let c1131RepeatPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n' +
+    '        ("grid-background", "c1131-multi-track-repeat-grid", 300, 120, [237, 241, 247, 255]),\n' +
+    '        ("item-blue", "c1131-multi-track-repeat-a", 10, 10, [40, 102, 246, 255]),\n' +
+    '        ("item-red", "c1131-multi-track-repeat-b", 40, 10, [229, 72, 77, 255]),\n' +
+    '        ("column-gap", "c1131-multi-track-repeat-grid", 112, 10, [237, 241, 247, 255]),\n' +
+    '        ("row-gap", "c1131-multi-track-repeat-grid", 10, 53, [237, 241, 247, 255]),\n' +
+    '    ]\n' +
+    '\n' +
+    '    private static let c1132NamedLinePixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n' +
+    '        ("grid-background", "c1132-positive-grid", 20, 80, [237, 241, 247, 255]),\n' +
+    '        ("item-blue", "c1132-positive-item", 100, 10, [40, 102, 246, 255]),\n' +
+    '    ]\n' +
+    '    private static let c1133TemplateAreaPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n' +
+    '        ("grid-background", "c1133-main-grid", 150, 10, [16, 24, 32, 255]),\n' +
+    '        ("item-blue", "c1133-main-item", 100, 50, [62, 99, 221, 255]),\n' +
+    '    ]\n' +
+    '\n' +
+    '    private static func hasFixedC1131RepeatSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n' +
+    '        guard samples.count == c1131RepeatPixelSamples.count else { return false }\n' +
+    '        return c1131RepeatPixelSamples.allSatisfy { expected in\n' +
+    '            samples.contains { sample in\n' +
+    '                sample.id == expected.0 && sample.nodeId == expected.1\n' +
+    '                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n' +
+    '                    && sample.rgba == expected.4\n' +
+    '            }\n' +
+    '        }\n' +
+    '    }\n' +
+    '\n' +
+    '    private static func hasFixedC1132NamedLineSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n' +
+    '        guard samples.count == c1132NamedLinePixelSamples.count else { return false }\n' +
+    '        return c1132NamedLinePixelSamples.allSatisfy { expected in\n' +
+    '            samples.contains { sample in\n' +
+    '                sample.id == expected.0 && sample.nodeId == expected.1\n' +
+    '                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n' +
+    '                    && sample.rgba == expected.4\n' +
+    '            }\n' +
+    '        }\n' +
+    '    }\n' +
+    '\n' +
+    '    private static func hasFixedC1133TemplateAreaSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n' +
+    '        guard samples.count == c1133TemplateAreaPixelSamples.count else { return false }\n' +
+    '        return c1133TemplateAreaPixelSamples.allSatisfy { expected in\n' +
+    '            samples.contains { sample in\n' +
+    '                sample.id == expected.0 && sample.nodeId == expected.1\n' +
+    '                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n' +
+    '                    && sample.rgba == expected.4\n' +
+    '            }\n' +
+    '        }\n' +
+    '    }\n' +
+    '\n' +
+    '    static func parse(arguments: [String], sceneID: String?) -> C111MetalPixelRun? {\n' +
+    '        guard let rawRun = arguments.first(where: {\n' +
+    '            $0.hasPrefix("--spinon-c11-grid-metal-surface-pixels=")\n' +
+    '        }), let rawSamples = arguments.first(where: {\n' +
+    '            $0.hasPrefix("--spinon-c11-grid-metal-surface-samples=")\n' +
+    '        }), let sceneID else { return nil }\n' +
+    '        let runID = String(rawRun.dropFirst("--spinon-c11-grid-metal-surface-pixels=".count))\n' +
+    '        let encoded = String(rawSamples.dropFirst("--spinon-c11-grid-metal-surface-samples=".count))\n' +
+    '        let c1131Scene = arguments.first(where: {\n' +
+    '            $0.hasPrefix("--spinon-c1131-grid-repeat-scene=")\n' +
+    '        }).map { String($0.dropFirst("--spinon-c1131-grid-repeat-scene=".count)) }\n' +
+    '        let isC1131Repeat = arguments.contains("--spinon-c1131-grid-repeat") || c1131Scene != nil\n' +
+    '        if isC1131Repeat {\n' +
+    '            let c1131RunID = arguments.first(where: {\n' +
+    '                $0.hasPrefix("--spinon-c1131-grid-repeat-run-id=")\n' +
+    '            }).map { String($0.dropFirst("--spinon-c1131-grid-repeat-run-id=".count)) }\n' +
+    '            guard c1131Scene == "multi-track-repeat", c1131Scene == sceneID,\n' +
+    '                  c1131RunID == runID,\n' +
+    '                  !arguments.contains("--spinon-c1123-grid-auto-placement"),\n' +
+    '                  !arguments.contains("--spinon-c1122-grid-auto-placement"),\n' +
+    '                  !arguments.contains("--spinon-c1121-grid-placement"),\n' +
+    '                  !arguments.contains(where: { $0.hasPrefix("--spinon-c1123-grid-scene=") }),\n' +
+    '                  !arguments.contains(where: { $0.hasPrefix("--spinon-c1122-grid-scene=") }),\n' +
+    '                  !arguments.co'... 266501 more characters
+
+      at TestContext.<anonymous> (file:///private/tmp/spinon-c18-4-async-image-replacement-20261016/tools/css-reference/c13-3-touch-action-tap-arbitration.test.mjs:24:10)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'import MetalKit\nimport UIKit\n\nprivate let c1133GridTemplateAreasSceneIDs: Set<String> = [\n    "basic-rectangles", "null-cell-dot-runs", "all-null-cells", "single-cell-area",\n    "bare-area-edge-aliases", "grid-area-one-value", "grid-area-two-values",\n    "grid-area-three-values", "grid-area-four-values", "row-column-longhands-area",\n    "grid-template-shorthand", "grid-shorthand", "bare-area-vs-explicit-one-name",\n    "explicit-line-before-area", "explicit-line-after-area", "area-names-ending-start-or-end",\n    "implicit-area-from-explicit-lines", "escaped-and-unicode-identifiers",\n    "invalid-l-shape-fallback", "invalid-disconnected-area-fallback",\n    "invalid-row-width-fallback", "invalid-trash-token-fallback", "empty-string-fallback",\n    "area-track-count-mismatch", "unknown-area-implicit-tracks", "nested-hidden-source-order",\n]\n\nprivate struct C124MetalPixelCase {\n    let direction: String\n    let blueOrder: Int\n    let redOrder: Int\n    let runID: String\n\n    var caseID: String {\n        "flex-\\(direction)-paint-order-\\(blueOrder)-\\(redOrder)"\n    }\n\n    var cssSample: (x: Int, y: Int) {\n        (70, direction.hasPrefix("column") && direction == "column-reverse" ? 175 : 155)\n    }\n\n    var expectedRGBA: String {\n        let blueOnTop = (direction == "row-reverse" || direction == "column-reverse")\n            ? blueOrder == 0 : blueOrder == 1\n        return blueOnTop ? "#2866f6ff" : "#e5484dff"\n    }\n\n    static func parse(arguments: [String]) -> C124MetalPixelCase? {\n        guard let raw = arguments.first(where: {\n            $0.hasPrefix("--spinon-c124-metal-surface-readback=")\n        }) else { return nil }\n        let fields = String(raw.dropFirst("--spinon-c124-metal-surface-readback=".count))\n            .split(separator: ",", omittingEmptySubsequences: false)\n        guard fields.count == 3,\n              let blueOrder = Int(fields[1]), let redOrder = Int(fields[2]),\n              ["row", "row-reverse", "column", "column-reverse"].contains(String(fields[0])),\n              (blueOrder == 0 || blueOrder == 1), redOrder == 0,\n              let runArgument = arguments.first(where: {\n                  $0.hasPrefix("--spinon-c124-metal-surface-run=")\n              }) else { return nil }\n        let runID = String(runArgument.dropFirst("--spinon-c124-metal-surface-run=".count))\n        guard !runID.isEmpty,\n              runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") })\n        else { return nil }\n        return C124MetalPixelCase(\n            direction: String(fields[0]), blueOrder: blueOrder,\n            redOrder: redOrder, runID: runID\n        )\n    }\n}\n\n\n\n\nprivate struct C111MetalPixelSample: Decodable {\n    let id: String\n    let nodeId: String\n    let xCssPx: UInt32\n    let yCssPx: UInt32\n    let rgba: [UInt32]\n}\n\nprivate struct C132MetalPixelSample {\n    let id: String\n    let xCssPx: UInt32\n    let yCssPx: UInt32\n    let rgba: [UInt32]\n}\n\nprivate struct C132MetalPixelRun {\n    let runID: String\n    let samples: [C132MetalPixelSample]\n\n    static let fixedSamples = [\n        C132MetalPixelSample(id: "visible-escape", xCssPx: 150, yCssPx: 30,\n                             rgba: [227, 84, 78, 255]),\n        C132MetalPixelSample(id: "parent-gap", xCssPx: 136, yCssPx: 30,\n                             rgba: [16, 24, 39, 255]),\n        C132MetalPixelSample(id: "parent-interior", xCssPx: 20, yCssPx: 20,\n                             rgba: [52, 66, 86, 255]),\n        C132MetalPixelSample(id: "parent-border", xCssPx: 11, yCssPx: 11,\n                             rgba: [240, 198, 116, 255]),\n        C132MetalPixelSample(id: "root-background", xCssPx: 50, yCssPx: 110,\n                             rgba: [16, 24, 39, 255]),\n    ]\n\n    static func parse(arguments: [String]) -> C132MetalPixelRun? {\n        let prefix = "--spinon-c132-metal-surface-pixels="\n        let values = arguments.filter { $0.hasPrefix(prefix) }\n        guard values.count == 1 else { return nil }\n        let runID = String(values[0].dropFirst(prefix.count))\n        guard (8...80).contains(runID.count),\n              runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") })\n        else { return nil }\n        return C132MetalPixelRun(runID: runID, samples: fixedSamples)\n    }\n}\n\nprivate struct C111MetalPixelRun {\n    let runID: String\n    let sceneID: String\n    let markerPrefix: String\n    let samples: [C111MetalPixelSample]\n    private static let c1121PixelSceneIDs: Set<String> = [\n        "numeric-lines", "positive-spans", "reversed-lines",\n        "shorthand-cascade", "overlap-source-order", "nested-placement-modes",\n    ]\n    private static let c1122PixelSceneIDs: Set<String> = [\n        "definite-first-mixed", "auto-only-fill", "positive-implicit-row",\n        "row-locked-auto-column", "column-locked-auto-row", "auto-column-span",\n        "sparse-hole-not-backfilled", "implicit-track-size-and-gap",\n        "hidden-child-excluded", "nested-independent-placement", "column-cursor-wrap",\n    ]\n    private static let c1123PixelSceneIDs: Set<String> = [\n        "row-sparse-baseline", "row-dense-hole-fill", "row-dense-span-collision",\n        "row-sparse-hole-control", "row-dense-fixed-column",\n        "row-dense-positive-implicit-row", "column-sparse-explicit-fill",\n        "column-sparse-positive-implicit-column", "column-sparse-fixed-row",\n        "column-sparse-fixed-column", "column-dense-hole-fill",\n        "column-sparse-hole-control", "column-dense-span-collision",\n        "column-dense-positive-implicit-column", "definite-first-dense",\n        "hidden-item-excluded", "nested-mixed-flow", "auto-track-no-implicit",\n        "auto-span-at-track-limit",\n    ]\n\n    private static let c1131RepeatPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n        ("grid-background", "c1131-multi-track-repeat-grid", 300, 120, [237, 241, 247, 255]),\n        ("item-blue", "c1131-multi-track-repeat-a", 10, 10, [40, 102, 246, 255]),\n        ("item-red", "c1131-multi-track-repeat-b", 40, 10, [229, 72, 77, 255]),\n        ("column-gap", "c1131-multi-track-repeat-grid", 112, 10, [237, 241, 247, 255]),\n        ("row-gap", "c1131-multi-track-repeat-grid", 10, 53, [237, 241, 247, 255]),\n    ]\n\n    private static let c1132NamedLinePixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n        ("grid-background", "c1132-positive-grid", 20, 80, [237, 241, 247, 255]),\n        ("item-blue", "c1132-positive-item", 100, 10, [40, 102, 246, 255]),\n    ]\n    private static let c1133TemplateAreaPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n        ("grid-background", "c1133-main-grid", 150, 10, [16, 24, 32, 255]),\n        ("item-blue", "c1133-main-item", 100, 50, [62, 99, 221, 255]),\n    ]\n\n    private static func hasFixedC1131RepeatSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n        guard samples.count == c1131RepeatPixelSamples.count else { return false }\n        return c1131RepeatPixelSamples.allSatisfy { expected in\n            samples.contains { sample in\n                sample.id == expected.0 && sample.nodeId == expected.1\n                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n                    && sample.rgba == expected.4\n            }\n        }\n    }\n\n    private static func hasFixedC1132NamedLineSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n        guard samples.count == c1132NamedLinePixelSamples.count else { return false }\n        return c1132NamedLinePixelSamples.allSatisfy { expected in\n            samples.contains { sample in\n                sample.id == expected.0 && sample.nodeId == expected.1\n                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n                    && sample.rgba == expected.4\n            }\n        }\n    }\n\n    private static func hasFixedC1133TemplateAreaSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n        guard samples.count == c1133TemplateAreaPixelSamples.count else { return false }\n        return c1133TemplateAreaPixelSamples.allSatisfy { expected in\n            samples.contains { sample in\n                sample.id == expected.0 && sample.nodeId == expected.1\n                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n                    && sample.rgba == expected.4\n            }\n        }\n    }\n\n    static func parse(arguments: [String], sceneID: String?) -> C111MetalPixelRun? {\n        guard let rawRun = arguments.first(where: {\n            $0.hasPrefix("--spinon-c11-grid-metal-surface-pixels=")\n        }), let rawSamples = arguments.first(where: {\n            $0.hasPrefix("--spinon-c11-grid-metal-surface-samples=")\n        }), let sceneID else { return nil }\n        let runID = String(rawRun.dropFirst("--spinon-c11-grid-metal-surface-pixels=".count))\n        let encoded = String(rawSamples.dropFirst("--spinon-c11-grid-metal-surface-samples=".count))\n        let c1131Scene = arguments.first(where: {\n            $0.hasPrefix("--spinon-c1131-grid-repeat-scene=")\n        }).map { String($0.dropFirst("--spinon-c1131-grid-repeat-scene=".count)) }\n        let isC1131Repeat = arguments.contains("--spinon-c1131-grid-repeat") || c1131Scene != nil\n        if isC1131Repeat {\n            let c1131RunID = arguments.first(where: {\n                $0.hasPrefix("--spinon-c1131-grid-repeat-run-id=")\n            }).map { String($0.dropFirst("--spinon-c1131-grid-repeat-run-id=".count)) }\n            guard c1131Scene == "multi-track-repeat", c1131Scene == sceneID,\n                  c1131RunID == runID,\n                  !arguments.contains("--spinon-c1123-grid-auto-placement"),\n                  !arguments.contains("--spinon-c1122-grid-auto-placement"),\n                  !arguments.contains("--spinon-c1121-grid-placement"),\n                  !arguments.contains(where: { $0.hasPrefix("--spinon-c1123-grid-scene=") }),\n                  !arguments.contains(where: { $0.hasPrefix("--spinon-c1122-grid-scene=") }),\n                  !arguments.co'... 266501 more characters,
+    expected: /c133TapProbeRequested && !c133GestureFixtureRequested/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tools/css-reference/c13-3-touch-action-tap-arbitration.test.mjs:61:1
+✖ iOS tap waits for pan failure and configures pan from computed touch-action before readiness (1.553583ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /tap-probe-requires-fixture-route/. Input:
+
+  'import MetalKit\n' +
+    'import UIKit\n' +
+    '\n' +
+    'private let c1133GridTemplateAreasSceneIDs: Set<String> = [\n' +
+    '    "basic-rectangles", "null-cell-dot-runs", "all-null-cells", "single-cell-area",\n' +
+    '    "bare-area-edge-aliases", "grid-area-one-value", "grid-area-two-values",\n' +
+    '    "grid-area-three-values", "grid-area-four-values", "row-column-longhands-area",\n' +
+    '    "grid-template-shorthand", "grid-shorthand", "bare-area-vs-explicit-one-name",\n' +
+    '    "explicit-line-before-area", "explicit-line-after-area", "area-names-ending-start-or-end",\n' +
+    '    "implicit-area-from-explicit-lines", "escaped-and-unicode-identifiers",\n' +
+    '    "invalid-l-shape-fallback", "invalid-disconnected-area-fallback",\n' +
+    '    "invalid-row-width-fallback", "invalid-trash-token-fallback", "empty-string-fallback",\n' +
+    '    "area-track-count-mismatch", "unknown-area-implicit-tracks", "nested-hidden-source-order",\n' +
+    ']\n' +
+    '\n' +
+    'private struct C124MetalPixelCase {\n' +
+    '    let direction: String\n' +
+    '    let blueOrder: Int\n' +
+    '    let redOrder: Int\n' +
+    '    let runID: String\n' +
+    '\n' +
+    '    var caseID: String {\n' +
+    '        "flex-\\(direction)-paint-order-\\(blueOrder)-\\(redOrder)"\n' +
+    '    }\n' +
+    '\n' +
+    '    var cssSample: (x: Int, y: Int) {\n' +
+    '        (70, direction.hasPrefix("column") && direction == "column-reverse" ? 175 : 155)\n' +
+    '    }\n' +
+    '\n' +
+    '    var expectedRGBA: String {\n' +
+    '        let blueOnTop = (direction == "row-reverse" || direction == "column-reverse")\n' +
+    '            ? blueOrder == 0 : blueOrder == 1\n' +
+    '        return blueOnTop ? "#2866f6ff" : "#e5484dff"\n' +
+    '    }\n' +
+    '\n' +
+    '    static func parse(arguments: [String]) -> C124MetalPixelCase? {\n' +
+    '        guard let raw = arguments.first(where: {\n' +
+    '            $0.hasPrefix("--spinon-c124-metal-surface-readback=")\n' +
+    '        }) else { return nil }\n' +
+    '        let fields = String(raw.dropFirst("--spinon-c124-metal-surface-readback=".count))\n' +
+    '            .split(separator: ",", omittingEmptySubsequences: false)\n' +
+    '        guard fields.count == 3,\n' +
+    '              let blueOrder = Int(fields[1]), let redOrder = Int(fields[2]),\n' +
+    '              ["row", "row-reverse", "column", "column-reverse"].contains(String(fields[0])),\n' +
+    '              (blueOrder == 0 || blueOrder == 1), redOrder == 0,\n' +
+    '              let runArgument = arguments.first(where: {\n' +
+    '                  $0.hasPrefix("--spinon-c124-metal-surface-run=")\n' +
+    '              }) else { return nil }\n' +
+    '        let runID = String(runArgument.dropFirst("--spinon-c124-metal-surface-run=".count))\n' +
+    '        guard !runID.isEmpty,\n' +
+    '              runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") })\n' +
+    '        else { return nil }\n' +
+    '        return C124MetalPixelCase(\n' +
+    '            direction: String(fields[0]), blueOrder: blueOrder,\n' +
+    '            redOrder: redOrder, runID: runID\n' +
+    '        )\n' +
+    '    }\n' +
+    '}\n' +
+    '\n' +
+    '\n' +
+    '\n' +
+    '\n' +
+    'private struct C111MetalPixelSample: Decodable {\n' +
+    '    let id: String\n' +
+    '    let nodeId: String\n' +
+    '    let xCssPx: UInt32\n' +
+    '    let yCssPx: UInt32\n' +
+    '    let rgba: [UInt32]\n' +
+    '}\n' +
+    '\n' +
+    'private struct C132MetalPixelSample {\n' +
+    '    let id: String\n' +
+    '    let xCssPx: UInt32\n' +
+    '    let yCssPx: UInt32\n' +
+    '    let rgba: [UInt32]\n' +
+    '}\n' +
+    '\n' +
+    'private struct C132MetalPixelRun {\n' +
+    '    let runID: String\n' +
+    '    let samples: [C132MetalPixelSample]\n' +
+    '\n' +
+    '    static let fixedSamples = [\n' +
+    '        C132MetalPixelSample(id: "visible-escape", xCssPx: 150, yCssPx: 30,\n' +
+    '                             rgba: [227, 84, 78, 255]),\n' +
+    '        C132MetalPixelSample(id: "parent-gap", xCssPx: 136, yCssPx: 30,\n' +
+    '                             rgba: [16, 24, 39, 255]),\n' +
+    '        C132MetalPixelSample(id: "parent-interior", xCssPx: 20, yCssPx: 20,\n' +
+    '                             rgba: [52, 66, 86, 255]),\n' +
+    '        C132MetalPixelSample(id: "parent-border", xCssPx: 11, yCssPx: 11,\n' +
+    '                             rgba: [240, 198, 116, 255]),\n' +
+    '        C132MetalPixelSample(id: "root-background", xCssPx: 50, yCssPx: 110,\n' +
+    '                             rgba: [16, 24, 39, 255]),\n' +
+    '    ]\n' +
+    '\n' +
+    '    static func parse(arguments: [String]) -> C132MetalPixelRun? {\n' +
+    '        let prefix = "--spinon-c132-metal-surface-pixels="\n' +
+    '        let values = arguments.filter { $0.hasPrefix(prefix) }\n' +
+    '        guard values.count == 1 else { return nil }\n' +
+    '        let runID = String(values[0].dropFirst(prefix.count))\n' +
+    '        guard (8...80).contains(runID.count),\n' +
+    '              runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") })\n' +
+    '        else { return nil }\n' +
+    '        return C132MetalPixelRun(runID: runID, samples: fixedSamples)\n' +
+    '    }\n' +
+    '}\n' +
+    '\n' +
+    'private struct C111MetalPixelRun {\n' +
+    '    let runID: String\n' +
+    '    let sceneID: String\n' +
+    '    let markerPrefix: String\n' +
+    '    let samples: [C111MetalPixelSample]\n' +
+    '    private static let c1121PixelSceneIDs: Set<String> = [\n' +
+    '        "numeric-lines", "positive-spans", "reversed-lines",\n' +
+    '        "shorthand-cascade", "overlap-source-order", "nested-placement-modes",\n' +
+    '    ]\n' +
+    '    private static let c1122PixelSceneIDs: Set<String> = [\n' +
+    '        "definite-first-mixed", "auto-only-fill", "positive-implicit-row",\n' +
+    '        "row-locked-auto-column", "column-locked-auto-row", "auto-column-span",\n' +
+    '        "sparse-hole-not-backfilled", "implicit-track-size-and-gap",\n' +
+    '        "hidden-child-excluded", "nested-independent-placement", "column-cursor-wrap",\n' +
+    '    ]\n' +
+    '    private static let c1123PixelSceneIDs: Set<String> = [\n' +
+    '        "row-sparse-baseline", "row-dense-hole-fill", "row-dense-span-collision",\n' +
+    '        "row-sparse-hole-control", "row-dense-fixed-column",\n' +
+    '        "row-dense-positive-implicit-row", "column-sparse-explicit-fill",\n' +
+    '        "column-sparse-positive-implicit-column", "column-sparse-fixed-row",\n' +
+    '        "column-sparse-fixed-column", "column-dense-hole-fill",\n' +
+    '        "column-sparse-hole-control", "column-dense-span-collision",\n' +
+    '        "column-dense-positive-implicit-column", "definite-first-dense",\n' +
+    '        "hidden-item-excluded", "nested-mixed-flow", "auto-track-no-implicit",\n' +
+    '        "auto-span-at-track-limit",\n' +
+    '    ]\n' +
+    '\n' +
+    '    private static let c1131RepeatPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n' +
+    '        ("grid-background", "c1131-multi-track-repeat-grid", 300, 120, [237, 241, 247, 255]),\n' +
+    '        ("item-blue", "c1131-multi-track-repeat-a", 10, 10, [40, 102, 246, 255]),\n' +
+    '        ("item-red", "c1131-multi-track-repeat-b", 40, 10, [229, 72, 77, 255]),\n' +
+    '        ("column-gap", "c1131-multi-track-repeat-grid", 112, 10, [237, 241, 247, 255]),\n' +
+    '        ("row-gap", "c1131-multi-track-repeat-grid", 10, 53, [237, 241, 247, 255]),\n' +
+    '    ]\n' +
+    '\n' +
+    '    private static let c1132NamedLinePixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n' +
+    '        ("grid-background", "c1132-positive-grid", 20, 80, [237, 241, 247, 255]),\n' +
+    '        ("item-blue", "c1132-positive-item", 100, 10, [40, 102, 246, 255]),\n' +
+    '    ]\n' +
+    '    private static let c1133TemplateAreaPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n' +
+    '        ("grid-background", "c1133-main-grid", 150, 10, [16, 24, 32, 255]),\n' +
+    '        ("item-blue", "c1133-main-item", 100, 50, [62, 99, 221, 255]),\n' +
+    '    ]\n' +
+    '\n' +
+    '    private static func hasFixedC1131RepeatSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n' +
+    '        guard samples.count == c1131RepeatPixelSamples.count else { return false }\n' +
+    '        return c1131RepeatPixelSamples.allSatisfy { expected in\n' +
+    '            samples.contains { sample in\n' +
+    '                sample.id == expected.0 && sample.nodeId == expected.1\n' +
+    '                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n' +
+    '                    && sample.rgba == expected.4\n' +
+    '            }\n' +
+    '        }\n' +
+    '    }\n' +
+    '\n' +
+    '    private static func hasFixedC1132NamedLineSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n' +
+    '        guard samples.count == c1132NamedLinePixelSamples.count else { return false }\n' +
+    '        return c1132NamedLinePixelSamples.allSatisfy { expected in\n' +
+    '            samples.contains { sample in\n' +
+    '                sample.id == expected.0 && sample.nodeId == expected.1\n' +
+    '                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n' +
+    '                    && sample.rgba == expected.4\n' +
+    '            }\n' +
+    '        }\n' +
+    '    }\n' +
+    '\n' +
+    '    private static func hasFixedC1133TemplateAreaSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n' +
+    '        guard samples.count == c1133TemplateAreaPixelSamples.count else { return false }\n' +
+    '        return c1133TemplateAreaPixelSamples.allSatisfy { expected in\n' +
+    '            samples.contains { sample in\n' +
+    '                sample.id == expected.0 && sample.nodeId == expected.1\n' +
+    '                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n' +
+    '                    && sample.rgba == expected.4\n' +
+    '            }\n' +
+    '        }\n' +
+    '    }\n' +
+    '\n' +
+    '    static func parse(arguments: [String], sceneID: String?) -> C111MetalPixelRun? {\n' +
+    '        guard let rawRun = arguments.first(where: {\n' +
+    '            $0.hasPrefix("--spinon-c11-grid-metal-surface-pixels=")\n' +
+    '        }), let rawSamples = arguments.first(where: {\n' +
+    '            $0.hasPrefix("--spinon-c11-grid-metal-surface-samples=")\n' +
+    '        }), let sceneID else { return nil }\n' +
+    '        let runID = String(rawRun.dropFirst("--spinon-c11-grid-metal-surface-pixels=".count))\n' +
+    '        let encoded = String(rawSamples.dropFirst("--spinon-c11-grid-metal-surface-samples=".count))\n' +
+    '        let c1131Scene = arguments.first(where: {\n' +
+    '            $0.hasPrefix("--spinon-c1131-grid-repeat-scene=")\n' +
+    '        }).map { String($0.dropFirst("--spinon-c1131-grid-repeat-scene=".count)) }\n' +
+    '        let isC1131Repeat = arguments.contains("--spinon-c1131-grid-repeat") || c1131Scene != nil\n' +
+    '        if isC1131Repeat {\n' +
+    '            let c1131RunID = arguments.first(where: {\n' +
+    '                $0.hasPrefix("--spinon-c1131-grid-repeat-run-id=")\n' +
+    '            }).map { String($0.dropFirst("--spinon-c1131-grid-repeat-run-id=".count)) }\n' +
+    '            guard c1131Scene == "multi-track-repeat", c1131Scene == sceneID,\n' +
+    '                  c1131RunID == runID,\n' +
+    '                  !arguments.contains("--spinon-c1123-grid-auto-placement"),\n' +
+    '                  !arguments.contains("--spinon-c1122-grid-auto-placement"),\n' +
+    '                  !arguments.contains("--spinon-c1121-grid-placement"),\n' +
+    '                  !arguments.contains(where: { $0.hasPrefix("--spinon-c1123-grid-scene=") }),\n' +
+    '                  !arguments.contains(where: { $0.hasPrefix("--spinon-c1122-grid-scene=") }),\n' +
+    '                  !arguments.co'... 266501 more characters
+
+      at TestContext.<anonymous> (file:///private/tmp/spinon-c18-4-async-image-replacement-20261016/tools/css-reference/c13-3-touch-action-tap-arbitration.test.mjs:69:10)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'import MetalKit\nimport UIKit\n\nprivate let c1133GridTemplateAreasSceneIDs: Set<String> = [\n    "basic-rectangles", "null-cell-dot-runs", "all-null-cells", "single-cell-area",\n    "bare-area-edge-aliases", "grid-area-one-value", "grid-area-two-values",\n    "grid-area-three-values", "grid-area-four-values", "row-column-longhands-area",\n    "grid-template-shorthand", "grid-shorthand", "bare-area-vs-explicit-one-name",\n    "explicit-line-before-area", "explicit-line-after-area", "area-names-ending-start-or-end",\n    "implicit-area-from-explicit-lines", "escaped-and-unicode-identifiers",\n    "invalid-l-shape-fallback", "invalid-disconnected-area-fallback",\n    "invalid-row-width-fallback", "invalid-trash-token-fallback", "empty-string-fallback",\n    "area-track-count-mismatch", "unknown-area-implicit-tracks", "nested-hidden-source-order",\n]\n\nprivate struct C124MetalPixelCase {\n    let direction: String\n    let blueOrder: Int\n    let redOrder: Int\n    let runID: String\n\n    var caseID: String {\n        "flex-\\(direction)-paint-order-\\(blueOrder)-\\(redOrder)"\n    }\n\n    var cssSample: (x: Int, y: Int) {\n        (70, direction.hasPrefix("column") && direction == "column-reverse" ? 175 : 155)\n    }\n\n    var expectedRGBA: String {\n        let blueOnTop = (direction == "row-reverse" || direction == "column-reverse")\n            ? blueOrder == 0 : blueOrder == 1\n        return blueOnTop ? "#2866f6ff" : "#e5484dff"\n    }\n\n    static func parse(arguments: [String]) -> C124MetalPixelCase? {\n        guard let raw = arguments.first(where: {\n            $0.hasPrefix("--spinon-c124-metal-surface-readback=")\n        }) else { return nil }\n        let fields = String(raw.dropFirst("--spinon-c124-metal-surface-readback=".count))\n            .split(separator: ",", omittingEmptySubsequences: false)\n        guard fields.count == 3,\n              let blueOrder = Int(fields[1]), let redOrder = Int(fields[2]),\n              ["row", "row-reverse", "column", "column-reverse"].contains(String(fields[0])),\n              (blueOrder == 0 || blueOrder == 1), redOrder == 0,\n              let runArgument = arguments.first(where: {\n                  $0.hasPrefix("--spinon-c124-metal-surface-run=")\n              }) else { return nil }\n        let runID = String(runArgument.dropFirst("--spinon-c124-metal-surface-run=".count))\n        guard !runID.isEmpty,\n              runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") })\n        else { return nil }\n        return C124MetalPixelCase(\n            direction: String(fields[0]), blueOrder: blueOrder,\n            redOrder: redOrder, runID: runID\n        )\n    }\n}\n\n\n\n\nprivate struct C111MetalPixelSample: Decodable {\n    let id: String\n    let nodeId: String\n    let xCssPx: UInt32\n    let yCssPx: UInt32\n    let rgba: [UInt32]\n}\n\nprivate struct C132MetalPixelSample {\n    let id: String\n    let xCssPx: UInt32\n    let yCssPx: UInt32\n    let rgba: [UInt32]\n}\n\nprivate struct C132MetalPixelRun {\n    let runID: String\n    let samples: [C132MetalPixelSample]\n\n    static let fixedSamples = [\n        C132MetalPixelSample(id: "visible-escape", xCssPx: 150, yCssPx: 30,\n                             rgba: [227, 84, 78, 255]),\n        C132MetalPixelSample(id: "parent-gap", xCssPx: 136, yCssPx: 30,\n                             rgba: [16, 24, 39, 255]),\n        C132MetalPixelSample(id: "parent-interior", xCssPx: 20, yCssPx: 20,\n                             rgba: [52, 66, 86, 255]),\n        C132MetalPixelSample(id: "parent-border", xCssPx: 11, yCssPx: 11,\n                             rgba: [240, 198, 116, 255]),\n        C132MetalPixelSample(id: "root-background", xCssPx: 50, yCssPx: 110,\n                             rgba: [16, 24, 39, 255]),\n    ]\n\n    static func parse(arguments: [String]) -> C132MetalPixelRun? {\n        let prefix = "--spinon-c132-metal-surface-pixels="\n        let values = arguments.filter { $0.hasPrefix(prefix) }\n        guard values.count == 1 else { return nil }\n        let runID = String(values[0].dropFirst(prefix.count))\n        guard (8...80).contains(runID.count),\n              runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") })\n        else { return nil }\n        return C132MetalPixelRun(runID: runID, samples: fixedSamples)\n    }\n}\n\nprivate struct C111MetalPixelRun {\n    let runID: String\n    let sceneID: String\n    let markerPrefix: String\n    let samples: [C111MetalPixelSample]\n    private static let c1121PixelSceneIDs: Set<String> = [\n        "numeric-lines", "positive-spans", "reversed-lines",\n        "shorthand-cascade", "overlap-source-order", "nested-placement-modes",\n    ]\n    private static let c1122PixelSceneIDs: Set<String> = [\n        "definite-first-mixed", "auto-only-fill", "positive-implicit-row",\n        "row-locked-auto-column", "column-locked-auto-row", "auto-column-span",\n        "sparse-hole-not-backfilled", "implicit-track-size-and-gap",\n        "hidden-child-excluded", "nested-independent-placement", "column-cursor-wrap",\n    ]\n    private static let c1123PixelSceneIDs: Set<String> = [\n        "row-sparse-baseline", "row-dense-hole-fill", "row-dense-span-collision",\n        "row-sparse-hole-control", "row-dense-fixed-column",\n        "row-dense-positive-implicit-row", "column-sparse-explicit-fill",\n        "column-sparse-positive-implicit-column", "column-sparse-fixed-row",\n        "column-sparse-fixed-column", "column-dense-hole-fill",\n        "column-sparse-hole-control", "column-dense-span-collision",\n        "column-dense-positive-implicit-column", "definite-first-dense",\n        "hidden-item-excluded", "nested-mixed-flow", "auto-track-no-implicit",\n        "auto-span-at-track-limit",\n    ]\n\n    private static let c1131RepeatPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n        ("grid-background", "c1131-multi-track-repeat-grid", 300, 120, [237, 241, 247, 255]),\n        ("item-blue", "c1131-multi-track-repeat-a", 10, 10, [40, 102, 246, 255]),\n        ("item-red", "c1131-multi-track-repeat-b", 40, 10, [229, 72, 77, 255]),\n        ("column-gap", "c1131-multi-track-repeat-grid", 112, 10, [237, 241, 247, 255]),\n        ("row-gap", "c1131-multi-track-repeat-grid", 10, 53, [237, 241, 247, 255]),\n    ]\n\n    private static let c1132NamedLinePixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n        ("grid-background", "c1132-positive-grid", 20, 80, [237, 241, 247, 255]),\n        ("item-blue", "c1132-positive-item", 100, 10, [40, 102, 246, 255]),\n    ]\n    private static let c1133TemplateAreaPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n        ("grid-background", "c1133-main-grid", 150, 10, [16, 24, 32, 255]),\n        ("item-blue", "c1133-main-item", 100, 50, [62, 99, 221, 255]),\n    ]\n\n    private static func hasFixedC1131RepeatSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n        guard samples.count == c1131RepeatPixelSamples.count else { return false }\n        return c1131RepeatPixelSamples.allSatisfy { expected in\n            samples.contains { sample in\n                sample.id == expected.0 && sample.nodeId == expected.1\n                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n                    && sample.rgba == expected.4\n            }\n        }\n    }\n\n    private static func hasFixedC1132NamedLineSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n        guard samples.count == c1132NamedLinePixelSamples.count else { return false }\n        return c1132NamedLinePixelSamples.allSatisfy { expected in\n            samples.contains { sample in\n                sample.id == expected.0 && sample.nodeId == expected.1\n                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n                    && sample.rgba == expected.4\n            }\n        }\n    }\n\n    private static func hasFixedC1133TemplateAreaSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n        guard samples.count == c1133TemplateAreaPixelSamples.count else { return false }\n        return c1133TemplateAreaPixelSamples.allSatisfy { expected in\n            samples.contains { sample in\n                sample.id == expected.0 && sample.nodeId == expected.1\n                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n                    && sample.rgba == expected.4\n            }\n        }\n    }\n\n    static func parse(arguments: [String], sceneID: String?) -> C111MetalPixelRun? {\n        guard let rawRun = arguments.first(where: {\n            $0.hasPrefix("--spinon-c11-grid-metal-surface-pixels=")\n        }), let rawSamples = arguments.first(where: {\n            $0.hasPrefix("--spinon-c11-grid-metal-surface-samples=")\n        }), let sceneID else { return nil }\n        let runID = String(rawRun.dropFirst("--spinon-c11-grid-metal-surface-pixels=".count))\n        let encoded = String(rawSamples.dropFirst("--spinon-c11-grid-metal-surface-samples=".count))\n        let c1131Scene = arguments.first(where: {\n            $0.hasPrefix("--spinon-c1131-grid-repeat-scene=")\n        }).map { String($0.dropFirst("--spinon-c1131-grid-repeat-scene=".count)) }\n        let isC1131Repeat = arguments.contains("--spinon-c1131-grid-repeat") || c1131Scene != nil\n        if isC1131Repeat {\n            let c1131RunID = arguments.first(where: {\n                $0.hasPrefix("--spinon-c1131-grid-repeat-run-id=")\n            }).map { String($0.dropFirst("--spinon-c1131-grid-repeat-run-id=".count)) }\n            guard c1131Scene == "multi-track-repeat", c1131Scene == sceneID,\n                  c1131RunID == runID,\n                  !arguments.contains("--spinon-c1123-grid-auto-placement"),\n                  !arguments.contains("--spinon-c1122-grid-auto-placement"),\n                  !arguments.contains("--spinon-c1121-grid-placement"),\n                  !arguments.contains(where: { $0.hasPrefix("--spinon-c1123-grid-scene=") }),\n                  !arguments.contains(where: { $0.hasPrefix("--spinon-c1122-grid-scene=") }),\n                  !arguments.co'... 266501 more characters,
+    expected: /tap-probe-requires-fixture-route/,
+    operator: 'match',
+    diff: 'simple'
+  }
+error: script "test:css-reference" exited with code 1

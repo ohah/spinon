@@ -92,11 +92,17 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             || arguments.contains("--spinon-c124-stacking-context")
             || arguments.contains("--spinon-c124-depth-safety")
             || arguments.contains(where: { $0.hasPrefix("--spinon-c124-metal-surface-readback=") })
+#if SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST_1
+        let runC184ImageRoute = arguments.contains("--spinon-c184-async-image")
+#else
+        let runC184ImageRoute = false
+#endif
 #if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
         let runRuntimeGpu = runRuntimeGpuBase
             || arguments.contains("--spinon-c181-image-paint")
             || arguments.contains("--spinon-c182-alpha-image")
             || arguments.contains("--spinon-c183-object-fit-position")
+            || runC184ImageRoute
 #else
         let runRuntimeGpu = runRuntimeGpuBase
 #endif

@@ -1,0 +1,10 @@
+   Compiling spinon-ffi v0.1.0 (/private/tmp/spinon-c18-4-async-image-replacement-20261016/crates/spinon-ffi)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.75s
+     Running unittests src/lib.rs (target/debug/deps/spinon_ffi-35b4695c98882f63)
+
+running 3 tests
+test runtime_gpu::fixtures::c18_4::tests::opt_in_source_and_pixel_contract_are_complete_and_stable ... ok
+test runtime_gpu::fixtures::c18_4::tests::canceled_or_panicking_decode_worker_does_not_publish_into_pending_snapshot ... ok
+test runtime_gpu::fixtures::c18_4::tests::transition_sequence_rejects_stale_results_clears_failure_and_recovers ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 45 filtered out; finished in 0.01s

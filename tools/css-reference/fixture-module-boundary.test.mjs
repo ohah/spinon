@@ -40,6 +40,10 @@ const canonicalFixtureSources = [
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c18_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c18_2.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c18_4.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c18_4/fixture.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c18_4/scene.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c18_4/tests.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11_3_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11_3_2.rs',
@@ -49,6 +53,7 @@ const canonicalFixtureSources = [
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c18_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c18_2.rs',
+  'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c18_4.rs',
   'crates/spinon-ffi/src/runtime_ua_cascade/fixtures.rs',
   'crates/spinon-ffi/src/runtime_ua_cascade/fixtures/probe.rs',
   'crates/spinon-ffi/src/runtime_ua_cascade/fixtures/layout_probe.rs',
@@ -179,6 +184,18 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
     resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c18_2.rs'),
     'utf8',
   );
+  const c184RuntimeFixture = await readFile(
+    resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/fixtures/c18_4.rs'),
+    'utf8',
+  );
+  const c184FixtureImplementation = await readFile(
+    resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/fixtures/c18_4/fixture.rs'),
+    'utf8',
+  );
+  const c184FfiFixture = await readFile(
+    resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c18_4.rs'),
+    'utf8',
+  );
   const c18FfiFixture = await readFile(
     resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c18_1.rs'),
     'utf8',
@@ -189,6 +206,10 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
   );
   const c182RuntimeScript = await readFile(
     resolve(repositoryRoot, 'tests/fixtures/css/c18/runtime-image-alpha-c18-2.js'),
+    'utf8',
+  );
+  const c184RuntimeScript = await readFile(
+    resolve(repositoryRoot, 'tests/fixtures/css/c18/runtime-image-async-replacement-c18-4.js'),
     'utf8',
   );
   const cargoManifest = await readFile(
@@ -221,6 +242,14 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
   );
   const androidAlphaImageCaptureAdapter = await readFile(
     resolve(repositoryRoot, 'platforms/android/app/src/c18_2_alpha_image_fixture_test/java/dev/spinon/bootstrap/AlphaImageFixtureCaptureAdapter.java'),
+    'utf8',
+  );
+  const androidAsyncImageCaptureAdapter = await readFile(
+    resolve(repositoryRoot, 'platforms/android/app/src/c18_4_async_image_fixture_test/java/dev/spinon/bootstrap/AsyncImageFixtureCaptureAdapter.java'),
+    'utf8',
+  );
+  const androidAsyncImageNativeAdapter = await readFile(
+    resolve(repositoryRoot, 'platforms/android/app/src/c18_4_async_image_fixture_test/java/dev/spinon/bootstrap/AsyncImageFixtureNativeAdapter.java'),
     'utf8',
   );
   const androidBuildScript = await readFile(
@@ -404,9 +433,9 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
   assert.doesNotMatch(androidGpuDemoSource,
     /private\s+static\s+native\s+[^;]*(?:C181|c18_1)/i);
   assert.match(androidGpuDemoSource,
-    /cssViewportWidthLocked\(\)\s*\{[\s\S]*?imagePaintProbeRequested\)\s*\{\s*return imageObjectFitPositionProbeRequested \? 224\.0f : 80\.0f/);
+    /cssViewportWidthLocked\(\)\s*\{[\s\S]*?imagePaintProbeRequested\)\s*\{\s*return imageAsyncReplacementProbeRequested \|\| imageObjectFitPositionProbeRequested\s*\? 224\.0f : 80\.0f/);
   assert.match(androidGpuDemoSource,
-    /cssViewportHeightLocked\(\)\s*\{[\s\S]*?imagePaintProbeRequested\)\s*\{\s*return imageObjectFitPositionProbeRequested \? 72\.0f : 40\.0f/);
+    /cssViewportHeightLocked\(\)\s*\{[\s\S]*?imagePaintProbeRequested\)\s*\{\s*return imageAsyncReplacementProbeRequested \? 88\.0f\s*:\s*imageObjectFitPositionProbeRequested \? 72\.0f : 40\.0f/);
   assert.match(androidActivitySource,
     /BuildConfig\.SPINON_IMAGE_PAINT_FIXTURE_TEST[\s\S]*spinon_c181_image_paint/);
   assert.match(androidGradleSource,
@@ -459,4 +488,42 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
     /BuildConfig\.SPINON_C18_2_ALPHA_IMAGE_FIXTURE_TEST[\s\S]*spinon_c182_alpha_image[\s\S]*imageAlphaFixtureRequested/);
   assert.match(iosAppDelegateSource,
     /#if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1[\s\S]*runRuntimeGpu = runRuntimeGpuBase[\s\S]*--spinon-c181-image-paint[\s\S]*--spinon-c182-alpha-image[\s\S]*--spinon-c183-object-fit-position/);
+  assert.match(runtimeFixtureSource,
+    /#\[cfg\(feature = "c18-4-image-fixture-test"\)\]\s*pub\(super\) mod c18_4;/);
+  assert.match(ffiFixtureSource,
+    /#\[cfg\(feature = "c18-4-image-fixture-test"\)\]\s*mod c18_4;/);
+  assert.match(cargoManifest,
+    /c18-4-image-fixture-test\s*=\s*\[[\s\S]*?"c04-runtime-gpu-fixture-test"[\s\S]*?"dep:spinon-image"[\s\S]*?"dep:spinon-layout"[\s\S]*?\]/);
+  assert.match(c184RuntimeFixture,
+    /RUNTIME_CSS_C18_4_ASYNC_IMAGE_FIXTURE_SOURCE[\s\S]*runtime-image-async-replacement-c18-4\.js/);
+  assert.match(c184FixtureImplementation,
+    /include_bytes![\s\S]*c18-4-async-[abcd]-(?:slow|fast)\.png/);
+  assert.match(c184FfiFixture,
+    /spinon_runtime_gpu_host_new_c18_4_async_image_fixture[\s\S]*spinon_runtime_gpu_host_request_c18_4_surface_pixels_for_test/);
+  assert.match(c184RuntimeScript,
+    /spinon-fixture:c18-4\/b-fast[\s\S]*spinon-fixture:c18-4\/c-slow[\s\S]*spinon-fixture:c18-4\/broken[\s\S]*spinon-fixture:c18-4\/d-fast/);
+  assert.match(runtimeFfiHeader,
+    /#if defined\(SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST\)[\s\S]*?spinon_runtime_gpu_host_new_c18_4_async_image_fixture/);
+  assert.match(androidBuildScript,
+    /ffi_features\+=\(c18-4-image-fixture-test\)/);
+  assert.match(androidBuildScript,
+    /c184_async_image_cpp_flag=.*SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST/);
+  assert.match(androidJniSource,
+    /#if defined\(SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST\)[\s\S]*?spinon_runtime_gpu_host_new_c18_4_async_image_fixture/);
+  assert.match(androidGradleSource,
+    /if \(spinonC184AsyncImageFixtureTestValue == "1"\)\s*\{\s*java\.srcDir\("src\/c18_4_async_image_fixture_test\/java"\)/);
+  assert.match(androidActivitySource,
+    /BuildConfig\.SPINON_C18_4_ASYNC_IMAGE_FIXTURE_TEST[\s\S]*spinon_c184_async_image/);
+  assert.match(androidAsyncImageNativeAdapter,
+    /native long createHost\(\);[\s\S]*native byte\[\] evalFixture\(long host\);/);
+  assert.match(androidAsyncImageCaptureAdapter,
+    /SPINON_C184_PIXELCOPY_SAMPLE[\s\S]*SPINON_C184_PIXELCOPY_SUMMARY/);
+  assert.match(iosBuildSimulatorScript,
+    /c18_4_async_image_fixture=\$\{SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST:-0\}/);
+  assert.match(iosProject,
+    /SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST=\$\(SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST\)/);
+  assert.match(iosRunnerImplementation,
+    /#if defined\(SPINON_ENABLE_C04_RUNTIME_GPU\)[\s\S]*?SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST[\s\S]*?spinon_runtime_gpu_host_new_c18_4_async_image_fixture/);
+  assert.match(iosAppDelegateSource,
+    /runC184ImageRoute = arguments\.contains\("--spinon-c184-async-image"\)[\s\S]*runC184ImageRoute/);
 });

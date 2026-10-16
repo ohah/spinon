@@ -49,6 +49,15 @@ impl ImageRequest {
         Ok(ImageResourceCompletion::from_parts(self, Arc::new(image)))
     }
 
+    /// 이 요청의 PNG decode 성공 또는 실패를 요청 identity와 함께 보존합니다.
+    pub fn decode_outcome(self, encoded: &[u8]) -> ImageResourceOutcome {
+        let result = PngDecoder.decode(encoded).map(Arc::new).map_err(Arc::new);
+        ImageResourceOutcome {
+            request: self,
+            result,
+        }
+    }
+
     pub const fn element(&self) -> HostNodeHandle {
         self.element
     }
@@ -130,6 +139,40 @@ pub struct ImageResourceCompletion {
     pub(crate) image: Arc<DecodedImage>,
 }
 
+/// 한 요청에 귀속된 PNG decode 성공 또는 실패입니다.
+#[derive(Debug)]
+pub struct ImageResourceOutcome {
+    request: ImageRequest,
+    result: Result<Arc<DecodedImage>, Arc<ImageDecodeError>>,
+}
+
+impl ImageResourceOutcome {
+    pub fn request(&self) -> &ImageRequest {
+        &self.request
+    }
+
+    pub fn image(&self) -> Option<&DecodedImage> {
+        self.result.as_ref().ok().map(Arc::as_ref)
+    }
+
+    pub fn error(&self) -> Option<&ImageDecodeError> {
+        self.result.as_ref().err().map(Arc::as_ref)
+    }
+
+    pub fn is_success(&self) -> bool {
+        self.result.is_ok()
+    }
+
+    pub(crate) fn into_parts(
+        self,
+    ) -> (
+        ImageRequest,
+        Result<Arc<DecodedImage>, Arc<ImageDecodeError>>,
+    ) {
+        (self.request, self.result)
+    }
+}
+
 impl ImageResourceCompletion {
     pub(crate) fn from_parts(request: ImageRequest, image: Arc<DecodedImage>) -> Self {
         Self { request, image }
@@ -141,5 +184,12 @@ impl ImageResourceCompletion {
 
     pub fn image(&self) -> &DecodedImage {
         &self.image
+    }
+
+    pub(crate) fn into_outcome(self) -> ImageResourceOutcome {
+        ImageResourceOutcome {
+            request: self.request,
+            result: Ok(self.image),
+        }
     }
 }

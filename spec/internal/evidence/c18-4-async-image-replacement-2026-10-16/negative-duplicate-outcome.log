@@ -1,0 +1,26 @@
+   Compiling spinon-image v0.1.0 (/private/tmp/spinon-c18-4-async-image-replacement-20261016/crates/spinon-image)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.24s
+     Running unittests src/lib.rs (target/debug/deps/spinon_image-b59096fb26a89b89)
+
+running 1 test
+test snapshot::snapshot_tests::duplicate_current_success_and_failure_for_one_node_are_rejected ... FAILED
+
+failures:
+
+---- snapshot::snapshot_tests::duplicate_current_success_and_failure_for_one_node_are_rejected stdout ----
+
+thread 'snapshot::snapshot_tests::duplicate_current_success_and_failure_for_one_node_are_rejected' (66758393) panicked at crates/spinon-image/src/snapshot/snapshot_tests.rs:359:5:
+assertion failed: matches!(ImageResourceSnapshot::new_with_outcomes(&snapshot,
+    IntrinsicSizeRevision::INITIAL,
+    [request.clone().decode_outcome(PNG),
+    request.decode_outcome(b"broken"),],),
+    Err(ImageSnapshotError::DuplicateNode(node)) if node == images[0].id())
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    snapshot::snapshot_tests::duplicate_current_success_and_failure_for_one_node_are_rejected
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 20 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p spinon-image --lib`

@@ -467,6 +467,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final String c131CompactSurfaceMatrixRunId;
     private final boolean c131BorderStripProbeRequested;
     private final boolean imageObjectFitPositionProbeRequested;
+    private final boolean imageAsyncReplacementProbeRequested;
     private final boolean imageAlphaProbeRequested;
     private final boolean imagePaintProbeRequested;
     private boolean imagePaintSurfaceCaptureStarted;
@@ -635,9 +636,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         imageObjectFitPositionProbeRequested =
                 BuildConfig.SPINON_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST
                 && activity.getIntent().getBooleanExtra("spinon_c183_object_fit_position", false);
+        imageAsyncReplacementProbeRequested =
+                BuildConfig.SPINON_C18_4_ASYNC_IMAGE_FIXTURE_TEST
+                && activity.getIntent().getBooleanExtra("spinon_c184_async_image", false);
         imageAlphaProbeRequested = BuildConfig.SPINON_C18_2_ALPHA_IMAGE_FIXTURE_TEST
                 && activity.getIntent().getBooleanExtra("spinon_c182_alpha_image", false);
-        imagePaintProbeRequested = imageObjectFitPositionProbeRequested || imageAlphaProbeRequested
+        imagePaintProbeRequested = imageAsyncReplacementProbeRequested
+                || imageObjectFitPositionProbeRequested || imageAlphaProbeRequested
                 || BuildConfig.SPINON_C18_1_IMAGE_PAINT_FIXTURE_TEST
                 && activity.getIntent().getBooleanExtra("spinon_c181_image_paint", false);
         c132ScrollFixtureRequested = activity.getIntent()
@@ -905,7 +910,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : c132ScrollFixtureRequested
                 ? "SPINON · C13.2 scroll state"
                 : BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST && imagePaintProbeRequested
-                ? imageObjectFitPositionProbeRequested
+                ? imageAsyncReplacementProbeRequested
+                        ? "SPINON · C18.4 async PNG 교체·실패 복구"
+                        : imageObjectFitPositionProbeRequested
                         ? "SPINON · C18.3 object-fit/object-position"
                         : imageAlphaProbeRequested
                         ? "SPINON · C18.2 alpha image composite"
@@ -988,7 +995,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : c132ScrollFixtureRequested
                 ? "V8 scroll owner·offset·paint/hit → WGPU · 5 PixelCopy 표본 · 400×240 CSS px"
                 : BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST && imagePaintProbeRequested
-                ? imageObjectFitPositionProbeRequested
+                ? imageAsyncReplacementProbeRequested
+                        ? "비동기 PNG 요청 정체성 · pending/failure resource 제거 · D source 복구 · 6 PixelCopy 표본 · 224×88 CSS px"
+                        : imageObjectFitPositionProbeRequested
                         ? "PNG 24×12 · 12 object-fit/position 장면 · 19 PixelCopy 표본 · 224×72 CSS px"
                         : imageAlphaProbeRequested
                         ? "RGBA PNG · source-over alpha 표본 10개 · 80×40 CSS px"
@@ -1100,7 +1109,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : c132ScrollFixtureRequested
                 ? "C13.2 scroll owner·offset·paint/hit WGPU 장면"
                 : BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST && imagePaintProbeRequested
-                ? imageAlphaProbeRequested
+                ? imageAsyncReplacementProbeRequested
+                        ? "C18.4 비동기 PNG 교체·decode 실패·복구 WGPU 장면"
+                        : imageAlphaProbeRequested
                         ? "C18.2 PNG alpha source-over WGPU 장면"
                         : "C18.1 이미지와 overflow 부모 경계 WGPU 장면"
                 : c133GestureFixtureRequested
@@ -1167,14 +1178,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         ? "C04.11 Chromium stylesheet fixture의 WGPU 장면"
                 : "C04.10 Chromium fixture의 WGPU 장면");
         int initialSurfaceWidth = BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST
-                && imagePaintProbeRequested ? imageObjectFitPositionProbeRequested ? 224 : 80
+                && imagePaintProbeRequested ? imageAsyncReplacementProbeRequested
+                        || imageObjectFitPositionProbeRequested ? 224 : 80
                 : c131CompactSurfaceMatrixProbeRequested ? 300
                 : c131BorderStripProbeRequested ? 400
                 : c132ScrollFixtureRequested ? 400
                 : c133GestureFixtureRequested ? 400
                 : fixedSizeCssFixtureRequested ? 320 : 301;
         int initialSurfaceHeight = BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST
-                && imagePaintProbeRequested ? imageObjectFitPositionProbeRequested ? 72 : 40
+                && imagePaintProbeRequested ? imageAsyncReplacementProbeRequested ? 88
+                        : imageObjectFitPositionProbeRequested ? 72 : 40
                 : c131CompactSurfaceMatrixProbeRequested ? 100
                 : c131BorderStripProbeRequested ? 160 : fixedSizeCssFixtureRequested ? 240 : 100;
         LayoutParams surfaceParams = new LayoutParams(
@@ -1362,7 +1375,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         String selectedExtra = c133GestureFixtureRequested
                 ? "spinon_c133_gesture_fixture"
                 : BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST && imagePaintProbeRequested
-                ? imageObjectFitPositionProbeRequested ? "spinon_c183_object_fit_position"
+                ? imageAsyncReplacementProbeRequested ? "spinon_c184_async_image"
+                        : imageObjectFitPositionProbeRequested ? "spinon_c183_object_fit_position"
                         : imageAlphaProbeRequested ? "spinon_c182_alpha_image" : "spinon_c181_image_paint"
                 : c132ScrollFixtureRequested
                 ? "spinon_c132_scroll_fixture"
@@ -1449,7 +1463,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? nativeCreateC133GestureHost(c133GesturePolicyScenarioID)
                 : BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST && imagePaintProbeRequested
                 ? (Long) invokeFixtureNative(
-                        imageObjectFitPositionProbeRequested
+                        imageAsyncReplacementProbeRequested
+                                ? "dev.spinon.bootstrap.AsyncImageFixtureNativeAdapter"
+                                : imageObjectFitPositionProbeRequested
                                 ? "dev.spinon.bootstrap.ObjectFitPositionFixtureNativeAdapter"
                                 : imageAlphaProbeRequested
                                 ? "dev.spinon.bootstrap.AlphaImageFixtureNativeAdapter"
@@ -1490,7 +1506,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         final boolean dark;
         synchronized (stateLock) {
             widthCssPx = BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST
-                    && imagePaintProbeRequested ? imageObjectFitPositionProbeRequested ? 224 : 80
+                    && imagePaintProbeRequested ? imageAsyncReplacementProbeRequested
+                            || imageObjectFitPositionProbeRequested ? 224 : 80
                     : c131CompactSurfaceMatrixProbeRequested ? 300
                     : c131BorderStripProbeRequested ? 400
                     : c132ScrollFixtureRequested || c133GestureFixtureRequested ? 400
@@ -1500,7 +1517,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     || c1122GridAutoPlacementRequested || c1123GridAutoPlacementRequested
                     ? 360 : fixedSizeCssFixtureRequested ? 320 : cssViewportWidthLocked();
             heightCssPx = BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST
-                    && imagePaintProbeRequested ? imageObjectFitPositionProbeRequested ? 72 : 40
+                    && imagePaintProbeRequested ? imageAsyncReplacementProbeRequested ? 88
+                            : imageObjectFitPositionProbeRequested ? 72 : 40
                     : c131CompactSurfaceMatrixProbeRequested ? 100
                     : c131BorderStripProbeRequested ? 160
                     : c132ScrollFixtureRequested || c133GestureFixtureRequested ? 240
@@ -1561,7 +1579,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? decode(nativeEvalC133GestureFixture(host))
                 : BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST && imagePaintProbeRequested
                 ? decode((byte[]) invokeFixtureNative(
-                        imageObjectFitPositionProbeRequested
+                        imageAsyncReplacementProbeRequested
+                                ? "dev.spinon.bootstrap.AsyncImageFixtureNativeAdapter"
+                                : imageObjectFitPositionProbeRequested
                                 ? "dev.spinon.bootstrap.ObjectFitPositionFixtureNativeAdapter"
                                 : imageAlphaProbeRequested
                                 ? "dev.spinon.bootstrap.AlphaImageFixtureNativeAdapter"
@@ -1907,7 +1927,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             }
         }
         Log.i(TAG, (BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST && imagePaintProbeRequested
-                ? imageObjectFitPositionProbeRequested ? "SPINON_C183_OBJECT_FIT_POSITION_EVAL "
+                ? imageAsyncReplacementProbeRequested ? "SPINON_C184_ASYNC_IMAGE_EVAL "
+                        : imageObjectFitPositionProbeRequested ? "SPINON_C183_OBJECT_FIT_POSITION_EVAL "
                         : imageAlphaProbeRequested ? "SPINON_C182_ALPHA_IMAGE_EVAL "
                         : "SPINON_C181_IMAGE_PAINT_EVAL " : c133GestureFixtureRequested
                 ? "SPINON_C133_EVAL " : c132ScrollFixtureRequested
@@ -3931,7 +3952,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private float cssViewportWidthLocked() {
         if (BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST && imagePaintProbeRequested) {
-            return imageObjectFitPositionProbeRequested ? 224.0f : 80.0f;
+            return imageAsyncReplacementProbeRequested || imageObjectFitPositionProbeRequested
+                    ? 224.0f : 80.0f;
         }
         if (c131CompactSurfaceMatrixProbeRequested) return 300.0f;
         if (c131BorderStripProbeRequested) return 400.0f;
@@ -3942,7 +3964,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private float cssViewportHeightLocked() {
         if (BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST && imagePaintProbeRequested) {
-            return imageObjectFitPositionProbeRequested ? 72.0f : 40.0f;
+            return imageAsyncReplacementProbeRequested ? 88.0f
+                    : imageObjectFitPositionProbeRequested ? 72.0f : 40.0f;
         }
         if (c131CompactSurfaceMatrixProbeRequested) return 100.0f;
         if (c131BorderStripProbeRequested) return 160.0f;
@@ -4187,7 +4210,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             };
             java.util.function.Consumer<String> status = this::postStatus;
             invokeFixtureNative(
-                    imageObjectFitPositionProbeRequested
+                    imageAsyncReplacementProbeRequested
+                            ? "dev.spinon.bootstrap.AsyncImageFixtureCaptureAdapter"
+                            : imageObjectFitPositionProbeRequested
                             ? "dev.spinon.bootstrap.ObjectFitPositionFixtureCaptureAdapter"
                             : imageAlphaProbeRequested
                             ? "dev.spinon.bootstrap.AlphaImageFixtureCaptureAdapter"
