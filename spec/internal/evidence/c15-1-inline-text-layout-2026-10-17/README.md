@@ -26,7 +26,7 @@
 - 일반 `LayoutStyle::default()`는 `display:flex`이므로 이를 plain inline span으로 간주하면 flex span을 paragraph text로 평탄화할 수 있었다. HostDocument용 `LayoutDisplay::Inline`을 명시해야만 plain span으로 받고, 기본 Flex 및 기타 visible display를 거부한다. 독립 `LayoutInput` box의 Inline도 거부한다.
 - `0px` definite width가 유효한 Taffy measure임을 Chrome DOM 기준과 대조하고 unbreakable glyph advance를 parent box 바깥까지 보존했다. 음수·비유한 폭은 거부하고 `-0.0`은 `+0.0`으로 정규화한다.
 
-[구현 실패 관점 20개 검토](./implementation-review-20.md)는 계획 검토와 다른 코드 경계·실패 입력을 다룬다. PR diff 적대 검토는 PR 생성 뒤 별도 기록한다.
+[구현 실패 관점 20개 검토](./implementation-review-20.md)는 계획 검토와 다른 코드 경계·실패 입력을 다룬다. PR 전체 변경은 [별도 30개 관점 검토](./pr-delta-review-30.md)에 기록했다.
 
 ## 브라우저 관찰과 남은 경계
 
@@ -34,4 +34,4 @@
 
 `spinon-style-to-layout`는 여전히 text node를 거부하고 `spinon-style-to-render` runtime/adapter/stacking도 text node를 거부한다. 따라서 이 Rust slice는 앱 runtime에 연결되지 않았다. Android API 37 AVD/iOS Simulator 앱, glyph painting, border 바깥 pixel/clip, 실기기는 실행하지 않았다. 다음 단계는 style cascade→paragraph profile 연결과 renderer 경계를 별도 slice로 정리하는 것이며, 이 결과로 C15.1/C15 전체를 완료 처리하지 않는다.
 
-구현 변경에서 발견한 family 등록 오판, 기본 Flex span의 inline 평탄화, 0px 폭 경계와 수정 내용은 [구현 실패 관점 20개 검토](./implementation-review-20.md)에 기록했다. PR diff 적대 검토는 별도 30개 관점으로 추가한다.
+구현 변경에서 발견한 family 등록 오판, 기본 Flex span의 inline 평탄화, 0px 폭 경계와 수정 내용은 [구현 실패 관점 20개 검토](./implementation-review-20.md)에 기록했다. PR diff 전용 검토는 [별도 30개 관점 파일](./pr-delta-review-30.md)에 기록했다.
