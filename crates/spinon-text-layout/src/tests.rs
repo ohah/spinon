@@ -40,6 +40,7 @@ fn paragraph(
             white_space,
             word_break,
         },
+        inline_styles: Default::default(),
     }
 }
 
@@ -389,6 +390,9 @@ fn supplementary_scalar_preserves_utf16_and_utf8_source_ranges() {
 
 #[path = "tests/engine_boundaries.rs"]
 mod engine_boundaries;
+
+#[path = "tests/c15_2.rs"]
+mod c15_2;
 
 #[path = "tests/paragraph_style.rs"]
 mod paragraph_style;

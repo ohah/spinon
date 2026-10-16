@@ -87,6 +87,7 @@ fn input(width: f32, text: &str, white_space: WhiteSpaceMode) -> LayoutInput {
             white_space,
             word_break: WordBreakMode::Normal,
         },
+        inline_styles: BTreeMap::new(),
     }])
     .unwrap()
 }
@@ -185,3 +186,6 @@ fn taffy_requires_a_shaper_and_rejects_mismatched_paragraph_owner() {
 
 #[path = "c15_text_layout_tests/host_document.rs"]
 mod host_document;
+
+#[path = "c15_text_layout_tests/c15_2.rs"]
+mod c15_2;

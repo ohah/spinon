@@ -10,6 +10,11 @@ pub enum TextLayoutError {
     InvalidFontData(String),
     FontRevisionOverflow,
     InvalidGlyphLayout(NodeId),
+    InvalidInlineBoxStyle(NodeId),
+    InlineBoxWithoutText(NodeId),
+    InvalidInlineHierarchy(NodeId),
+    UnsupportedInlineDepth(NodeId),
+    InlineBoxIdOverflow,
     UnexpectedInlineBox(NodeId),
 }
 
@@ -42,10 +47,29 @@ impl fmt::Display for TextLayoutError {
                     "paragraph {node}의 shaping glyph, font metrics 또는 line geometry가 유효하지 않습니다"
                 )
             }
+            Self::InvalidInlineBoxStyle(node) => write!(
+                formatter,
+                "paragraph {node}의 inline border/padding 값이나 owner가 유효하지 않습니다"
+            ),
+            Self::InlineBoxWithoutText(node) => write!(
+                formatter,
+                "inline node {node}의 border/padding을 연결할 visible text 범위가 없습니다"
+            ),
+            Self::InvalidInlineHierarchy(node) => write!(
+                formatter,
+                "inline node {node}가 일관되지 않은 ancestor 경로에 나타납니다"
+            ),
+            Self::UnsupportedInlineDepth(node) => write!(
+                formatter,
+                "inline node {node}가 C15.2a의 두 단계 nesting 한도를 넘었습니다"
+            ),
+            Self::InlineBoxIdOverflow => {
+                write!(formatter, "inline box ID 범위가 넘쳤습니다")
+            }
             Self::UnexpectedInlineBox(node) => {
                 write!(
                     formatter,
-                    "paragraph {node}에 C15.1에서 지원하지 않는 inline box가 있습니다"
+                    "paragraph {node}에 입력으로 등록되지 않은 inline box가 있습니다"
                 )
             }
         }

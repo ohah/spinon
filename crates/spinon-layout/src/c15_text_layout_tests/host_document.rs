@@ -6,8 +6,8 @@ use spinon_core::{
 };
 
 use crate::{
-    LayoutBorder, LayoutDimension, LayoutDisplay, LayoutInput, LayoutStyle, ParagraphStyle,
-    TaffyLayoutEngine, Viewport, WhiteSpaceMode, WordBreakMode,
+    LayoutBorder, LayoutDimension, LayoutDisplay, LayoutEdges, LayoutInput, LayoutLengthPercentage,
+    LayoutStyle, ParagraphStyle, TaffyLayoutEngine, Viewport, WhiteSpaceMode, WordBreakMode,
 };
 
 use super::text_engine;
@@ -223,34 +223,64 @@ fn host_document_collects_direct_text_and_inherited_spans_in_source_order() {
         Err(crate::LayoutError::MissingStyle(id)) if id == hidden_span.id()
     ));
 
-    let mut decorated_span_styles = styles.clone();
-    decorated_span_styles.insert(
-        span.id(),
+    let unsupported_span_styles = [
+        LayoutStyle {
+            display: LayoutDisplay::Inline,
+            margin: LayoutEdges {
+                left: LayoutLengthPercentage::length(1.0),
+                ..LayoutEdges::default()
+            },
+            ..LayoutStyle::default()
+        },
+        LayoutStyle {
+            display: LayoutDisplay::Inline,
+            padding: LayoutEdges {
+                left: LayoutLengthPercentage::percent(0.5),
+                ..LayoutEdges::default()
+            },
+            ..LayoutStyle::default()
+        },
         LayoutStyle {
             display: LayoutDisplay::Inline,
             border: LayoutBorder {
-                left: 1.0,
+                bottom: -1.0,
                 ..LayoutBorder::default()
             },
             ..LayoutStyle::default()
         },
-    );
-    assert!(matches!(
-        LayoutInput::from_host_document_with_text_paragraphs(
-            &snapshot,
-            root,
-            Viewport {
-                width: 100.0,
-                height: 80.0,
+        LayoutStyle {
+            display: LayoutDisplay::Inline,
+            border: LayoutBorder {
+                right: f32::MAX,
+                ..LayoutBorder::default()
             },
-            &decorated_span_styles,
-            &paragraph_styles,
-            StyleRevision::INITIAL,
-            EnvironmentRevision::INITIAL,
-        ),
-        Err(crate::LayoutError::UnsupportedTextParagraph { node, .. })
-            if node == paragraph.id()
-    ));
+            padding: LayoutEdges {
+                right: LayoutLengthPercentage::length(f32::MAX),
+                ..LayoutEdges::default()
+            },
+            ..LayoutStyle::default()
+        },
+    ];
+    for inline_style in unsupported_span_styles {
+        let mut rejected_styles = styles.clone();
+        rejected_styles.insert(span.id(), inline_style);
+        assert!(matches!(
+            LayoutInput::from_host_document_with_text_paragraphs(
+                &snapshot,
+                root,
+                Viewport {
+                    width: 100.0,
+                    height: 80.0,
+                },
+                &rejected_styles,
+                &paragraph_styles,
+                StyleRevision::INITIAL,
+                EnvironmentRevision::INITIAL,
+            ),
+            Err(crate::LayoutError::UnsupportedTextParagraph { node, .. })
+                if node == paragraph.id()
+        ));
+    }
 
     for display in [
         LayoutDisplay::Flex,

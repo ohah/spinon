@@ -195,7 +195,7 @@ impl fmt::Display for LayoutError {
             }
             Self::UnsupportedTextParagraph { node, reason } => write!(
                 formatter,
-                "노드 {node}의 paragraph 입력을 현재 C15.1 profile에서 지원하지 않습니다: {reason}"
+                "노드 {node}의 paragraph 입력을 현재 C15 text profile에서 지원하지 않습니다: {reason}"
             ),
             Self::MissingTextLayoutEngine(id) => {
                 write!(

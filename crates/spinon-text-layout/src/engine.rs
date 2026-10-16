@@ -1,13 +1,16 @@
+use std::ops::Range;
 use std::{collections::BTreeMap, sync::Arc};
 
 use linebender_resource_handle::Blob;
 use parley::{
-    FontContext, LayoutContext,
+    FontContext, InlineBoxKind, LayoutContext,
     fontique::{Collection, CollectionOptions, SourceCache},
     layout::{Alignment, AlignmentOptions, PositionedLayoutItem},
     style::{LineHeight, OverflowWrap, StyleProperty, TextWrapMode, WhiteSpaceCollapse, WordBreak},
 };
 use spinon_core::NodeId;
+
+mod inline_boxes;
 
 use crate::{
     FontMetricsSnapshot, FontRegistryRevision, InlineFragment, ParagraphInput, TextGlyph,
@@ -87,6 +90,39 @@ impl TextLayoutEngine {
         input: &ParagraphInput,
         available_width: f32,
     ) -> Result<TextLayoutSnapshot, TextLayoutError> {
+        self.layout_paragraph_with_inline_items(input, available_width, Vec::new())
+    }
+
+    #[cfg(test)]
+    fn layout_paragraph_with_test_baseline_marker(
+        &mut self,
+        input: &ParagraphInput,
+        available_width: f32,
+        index: usize,
+        marker_node: NodeId,
+    ) -> Result<TextLayoutSnapshot, TextLayoutError> {
+        let marker = parley::InlineBox {
+            id: u64::MAX,
+            kind: InlineBoxKind::InFlow,
+            index,
+            width: 1.0,
+            height: 0.0,
+            baseline: Some(0.0),
+            vertical_align: parley::VerticalAlign::BASELINE,
+        };
+        let boundary = inline_boxes::InlineBoundary {
+            owners: vec![marker_node],
+            width: marker.width,
+        };
+        self.layout_paragraph_with_inline_items(input, available_width, vec![(marker, boundary)])
+    }
+
+    fn layout_paragraph_with_inline_items(
+        &mut self,
+        input: &ParagraphInput,
+        available_width: f32,
+        additional_inline_items: Vec<(parley::InlineBox, inline_boxes::InlineBoundary)>,
+    ) -> Result<TextLayoutSnapshot, TextLayoutError> {
         if !available_width.is_finite() || available_width < 0.0 {
             return Err(TextLayoutError::InvalidWidth);
         }
@@ -111,6 +147,21 @@ impl TextLayoutEngine {
         }
 
         let normalized = normalize(input);
+        let (mut inline_boxes, mut inline_boundaries) =
+            inline_boxes::prepare_inline_boxes(input, &normalized)?;
+        for (inline_box, boundary) in additional_inline_items {
+            if inline_box.index > normalized.text.len()
+                || !normalized.text.is_char_boundary(inline_box.index)
+                || !inline_box.width.is_finite()
+                || inline_box.width < 0.0
+                || inline_boundaries.contains_key(&inline_box.id)
+                || boundary.width.to_bits() != inline_box.width.to_bits()
+            {
+                return Err(TextLayoutError::InvalidGlyphLayout(input.node));
+            }
+            inline_boundaries.insert(inline_box.id, boundary);
+            inline_boxes.push(inline_box);
+        }
         if normalized.text.is_empty() {
             return Ok(TextLayoutSnapshot {
                 paragraph: input.node,
@@ -126,12 +177,11 @@ impl TextLayoutEngine {
             });
         }
 
-        let mut builder = self.layout_context.ranged_builder(
-            &mut self.font_context,
-            &normalized.text,
-            1.0,
-            false,
-        );
+        // Parley의 정수 metric quantization이 Blink의 정수 ascent/descent와 CSS line
+        // baseline 배치에 맞습니다. Shaped glyph advance는 계속 분수 CSS px로 보존됩니다.
+        let mut builder =
+            self.layout_context
+                .ranged_builder(&mut self.font_context, &normalized.text, 1.0, true);
         builder.push_default(StyleProperty::FontFamily(
             input.style.font_family.as_str().into(),
         ));
@@ -154,6 +204,9 @@ impl TextLayoutEngine {
                 WhiteSpaceMode::Normal | WhiteSpaceMode::NoWrap => WhiteSpaceCollapse::Collapse,
             },
         ));
+        for inline_box in inline_boxes {
+            builder.push_inline_box(inline_box);
+        }
         let mut layout = builder.build(&normalized.text);
         layout.break_all_lines(Some(available_width));
         layout.align(Alignment::Start, AlignmentOptions::default());
@@ -167,24 +220,26 @@ impl TextLayoutEngine {
         let mut fragments = BTreeMap::<(NodeId, usize), TextRect>::new();
         for (line_index, line) in layout.lines().enumerate() {
             let metrics = line.metrics();
+            let text_range = line.text_range();
             let visible_line_advance = metrics.advance - metrics.hanging_advance;
-            if ![
-                metrics.advance,
-                metrics.hanging_advance,
-                metrics.block_min_coord,
-                metrics.line_height,
-                metrics.baseline,
-                visible_line_advance,
-            ]
-            .iter()
-            .all(|value| value.is_finite())
+            if !valid_text_range(&text_range, &normalized.text)
+                || ![
+                    metrics.advance,
+                    metrics.hanging_advance,
+                    metrics.block_min_coord,
+                    metrics.line_height,
+                    metrics.baseline,
+                    visible_line_advance,
+                ]
+                .iter()
+                .all(|value| value.is_finite())
                 || visible_line_advance < 0.0
                 || metrics.line_height < 0.0
             {
                 return Err(TextLayoutError::InvalidGlyphLayout(input.node));
             }
             lines.push(TextLine {
-                text_range: line.text_range(),
+                text_range,
                 advance: visible_line_advance,
                 hanging_advance: metrics.hanging_advance,
                 line_top: metrics.block_min_coord,
@@ -197,6 +252,9 @@ impl TextLayoutEngine {
                     PositionedLayoutItem::GlyphRun(glyph_run) => {
                         let run = glyph_run.run();
                         let text_range = run.text_range();
+                        if !valid_text_range(&text_range, &normalized.text) {
+                            return Err(TextLayoutError::InvalidGlyphLayout(input.node));
+                        }
                         let run_sources = overlapping_sources(&normalized.sources, &text_range);
                         let font_metrics = run.font_metrics();
                         if ![
@@ -242,8 +300,12 @@ impl TextLayoutEngine {
                         });
 
                         for cluster in run.clusters() {
+                            let cluster_range = cluster.text_range();
+                            if !valid_text_range(&cluster_range, &normalized.text) {
+                                return Err(TextLayoutError::InvalidGlyphLayout(input.node));
+                            }
                             let cluster_sources =
-                                positioned_sources(&normalized.sources, &cluster.text_range());
+                                positioned_sources(&normalized.sources, &cluster_range);
                             let Some(x) = cluster.visual_offset() else {
                                 return Err(TextLayoutError::InvalidGlyphLayout(input.node));
                             };
@@ -283,8 +345,35 @@ impl TextLayoutEngine {
                             }
                         }
                     }
-                    PositionedLayoutItem::InlineBox(_) => {
-                        return Err(TextLayoutError::UnexpectedInlineBox(input.node));
+                    PositionedLayoutItem::InlineBox(positioned) => {
+                        if positioned.kind != InlineBoxKind::InFlow
+                            || ![
+                                positioned.x,
+                                positioned.y,
+                                positioned.width,
+                                positioned.height,
+                            ]
+                            .iter()
+                            .all(|value| value.is_finite())
+                            || positioned.width < 0.0
+                        {
+                            return Err(TextLayoutError::InvalidGlyphLayout(input.node));
+                        }
+                        let boundary = inline_boundaries
+                            .get(&positioned.id)
+                            .ok_or(TextLayoutError::UnexpectedInlineBox(input.node))?;
+                        if positioned.width.to_bits() != boundary.width.to_bits() {
+                            return Err(TextLayoutError::InvalidGlyphLayout(input.node));
+                        }
+                        let rect = TextRect {
+                            x: positioned.x,
+                            y: positioned.y,
+                            width: positioned.width,
+                            height: positioned.height,
+                        };
+                        for &owner in &boundary.owners {
+                            add_fragment(&mut fragments, input.node, owner, line_index, rect)?;
+                        }
                     }
                 }
             }
@@ -296,12 +385,25 @@ impl TextLayoutEngine {
             .fold(0.0_f32, f32::max);
         let inline_fragments = fragments
             .into_iter()
-            .map(|((node, line_index), rect)| InlineFragment {
-                node,
-                line_index,
-                rect,
+            .map(|((node, line_index), mut rect)| {
+                let style = input.inline_styles.get(&node).copied().unwrap_or_default();
+                let block_start = style.block_start();
+                let block_end = style.block_end();
+                rect.y -= block_start;
+                rect.height += block_start + block_end;
+                InlineFragment {
+                    node,
+                    line_index,
+                    rect,
+                }
             })
-            .collect();
+            .collect::<Vec<_>>();
+        if inline_fragments
+            .iter()
+            .any(|fragment| !rect_is_finite(fragment.rect))
+        {
+            return Err(TextLayoutError::InvalidGlyphLayout(input.node));
+        }
         Ok(TextLayoutSnapshot {
             paragraph: input.node,
             font_registry_revision: self.font_registry_revision,
@@ -364,6 +466,13 @@ fn rect_is_finite(rect: TextRect) -> bool {
     .all(|value| value.is_finite())
         && rect.width >= 0.0
         && rect.height >= 0.0
+}
+
+fn valid_text_range(range: &Range<usize>, text: &str) -> bool {
+    range.start <= range.end
+        && range.end <= text.len()
+        && text.is_char_boundary(range.start)
+        && text.is_char_boundary(range.end)
 }
 
 #[cfg(test)]
