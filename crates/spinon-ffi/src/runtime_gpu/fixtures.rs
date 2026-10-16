@@ -7,6 +7,8 @@ pub(super) mod c18_1;
 pub(super) mod c18_2;
 #[cfg(feature = "c18-3-object-fit-position-fixture-test")]
 pub(super) mod c18_3;
+#[cfg(feature = "c18-4-image-fixture-test")]
+pub(super) mod c18_4;
 
 pub(crate) mod c11;
 pub(crate) mod c11_2_2;

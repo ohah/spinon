@@ -1,0 +1,22 @@
+   Compiling spinon-image v0.1.0 (/private/tmp/spinon-c18-4-async-image-replacement-20261016/crates/spinon-image)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.25s
+     Running unittests src/lib.rs (target/debug/deps/spinon_image-b59096fb26a89b89)
+
+running 1 test
+test snapshot::snapshot_tests::same_src_completion_from_an_older_document_revision_is_rejected ... FAILED
+
+failures:
+
+---- snapshot::snapshot_tests::same_src_completion_from_an_older_document_revision_is_rejected stdout ----
+
+thread 'snapshot::snapshot_tests::same_src_completion_from_an_older_document_revision_is_rejected' (66757492) panicked at crates/spinon-image/src/snapshot/snapshot_tests.rs:181:5:
+assertion failed: snapshot.images().is_empty()
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    snapshot::snapshot_tests::same_src_completion_from_an_older_document_revision_is_rejected
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 20 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p spinon-image --lib`

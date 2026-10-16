@@ -29,5 +29,7 @@ mod c18_1;
 mod c18_2;
 #[cfg(feature = "c18-3-object-fit-position-fixture-test")]
 mod c18_3;
+#[cfg(feature = "c18-4-image-fixture-test")]
+mod c18_4;
 #[cfg(feature = "c04-runtime-gpu-test-hooks")]
 mod surface;

@@ -6,8 +6,8 @@ use crate::{LayoutError, LayoutSourceRevision};
 
 /// HTML replaced leaf에 완료된 리소스가 제공한 자연 크기 metadata입니다.
 /// 자연 너비·높이·비율은 각각 없을 수 있습니다. 세 값이 모두 `None`인 entry는
-/// 성공적으로 조사했지만 자연 sizing 정보가 없는 리소스이며, snapshot entry 자체가
-/// 없다는 상태(아직 로드되지 않았거나 실패한 리소스)와 다릅니다.
+/// 성공적으로 조사했지만 자연 sizing 정보가 없는 리소스입니다. `Some(0), Some(0)`은
+/// 요청 완료 전의 크기 없는 pending image를 나타내며, snapshot entry 자체가 없는 상태와 다릅니다.
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct LayoutIntrinsicSize {
     pub width: Option<f32>,
@@ -42,7 +42,7 @@ impl LayoutIntrinsicSize {
 
     pub fn natural_aspect_ratio(self) -> Option<f32> {
         match (self.width, self.height) {
-            (Some(width), Some(height)) => Some(width / height),
+            (Some(width), Some(height)) if width > 0.0 && height > 0.0 => Some(width / height),
             _ => self.aspect_ratio,
         }
     }

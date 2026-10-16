@@ -575,7 +575,7 @@ fn measurement_snapshot_must_match_source_and_reference_known_nodes() {
 }
 
 #[test]
-fn measurement_on_non_leaf_and_invalid_dimensions_are_rejected() {
+fn measurement_on_non_leaf_and_invalid_dimensions_are_rejected_but_zero_pending_is_valid() {
     let (document, root, image) = document();
     let input = layout_input(&document, root, image, root_style(), image_style());
     let non_leaf = LayoutIntrinsicSizeSnapshot::new(
@@ -588,6 +588,18 @@ fn measurement_on_non_leaf_and_invalid_dimensions_are_rejected() {
         TaffyLayoutEngine.compute_with_intrinsic_size_snapshot(&input, &non_leaf),
         Err(LayoutError::UnsupportedIntrinsicSizing { node, .. }) if node == root.id()
     ));
+
+    let pending = image_snapshot(&document, image, LayoutIntrinsicSize::new(0.0, 0.0));
+    let output = TaffyLayoutEngine
+        .compute_with_intrinsic_size_snapshot(&input, &pending)
+        .unwrap();
+    assert_eq!(
+        (
+            output.frames[&image.id()].width,
+            output.frames[&image.id()].height
+        ),
+        (0.0, 0.0)
+    );
 
     for invalid in [
         LayoutIntrinsicSize::new(0.0, 16.0),

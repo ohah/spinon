@@ -118,8 +118,11 @@ fn validate_intrinsic_sizes(
                 reason: "측정 leaf에 layout 자식이 있습니다",
             });
         }
+        let zero_size_pending =
+            size.width == Some(0.0) && size.height == Some(0.0) && size.aspect_ratio.is_none();
         for (axis, value) in [("width", size.width), ("height", size.height)] {
-            if value.is_some_and(|value| !value.is_finite() || value <= 0.0) {
+            if value.is_some_and(|value| !value.is_finite() || (value <= 0.0 && !zero_size_pending))
+            {
                 return Err(LayoutError::InvalidIntrinsicSize { node: id, axis });
             }
         }
@@ -147,7 +150,7 @@ fn validate_intrinsic_sizes(
                 });
             }
         }
-        if let (Some(width), Some(height)) = (size.width, size.height) {
+        if !zero_size_pending && let (Some(width), Some(height)) = (size.width, size.height) {
             let ratio = width / height;
             if !ratio.is_finite() || ratio <= 0.0 {
                 return Err(LayoutError::InvalidIntrinsicSize {

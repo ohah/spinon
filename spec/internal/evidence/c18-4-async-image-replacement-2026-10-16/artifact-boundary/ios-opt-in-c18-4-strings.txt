@@ -1,0 +1,11 @@
+spinon-fixture:c18-4/a-slow
+C18.4 auto-size Aspinon-fixture:c18-4/c-slow
+spinon-fixture:c18-4/b-fastC18.4 Cspinon-fixture:c18-4/brokennot an imagespinon-fixture:c18-4/d-fast
+current-bspinon-fixture:c18-4/b-fast
+pending-cspinon-fixture:c18-4/c-slowc-success
+decode-failurespinon-fixture:c18-4/brokennot an imagerecovery-dspinon-fixture:c18-4/d-fast
+  ['current-b', 8, 8, 'spinon-fixture:c18-4/b-fast'],
+  ['pending-c', 64, 8, 'spinon-fixture:c18-4/c-slow'],
+  ['c-success', 120, 8, 'spinon-fixture:c18-4/c-slow'],
+  ['decode-failure', 176, 8, 'spinon-fixture:c18-4/broken'],
+  ['recovery-d', 8, 48, 'spinon-fixture:c18-4/d-fast'],

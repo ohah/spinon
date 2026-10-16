@@ -78,6 +78,13 @@ case "${SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST:-0}" in
     exit 2
     ;;
 esac
+case "${SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST:-0}" in
+  0|1) ;;
+  *)
+    echo "SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST는 0 또는 1이어야 합니다." >&2
+    exit 2
+    ;;
+esac
 case "${SPINON_ENABLE_C13_1_OVERFLOW_CLIP_FIXTURE_TEST:-0}" in
   0|1) ;;
   *)
@@ -169,6 +176,11 @@ if [[ "${SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST:-0}" == "1" \
   echo "C18.3 object-fit/object-position fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다." >&2
   exit 2
 fi
+if [[ "${SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST:-0}" == "1" \
+      && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
+  echo "C18.4 async image fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다." >&2
+  exit 2
+fi
 if [[ "${SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST:-0}" == "1" \
       && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
   echo "C12.4 worker stack 검증은 C04.10 runtime GPU fixture와 함께 켜야 합니다." >&2
@@ -196,6 +208,7 @@ c133_gesture_fixture_cpp_flag="-DSPINON_ENABLE_C133_GESTURE_FIXTURE_TEST=${SPINO
 c181_image_paint_cpp_flag="-DSPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST=${SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST:-0}"
 c182_alpha_image_cpp_flag="-DSPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST=${SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST:-0}"
 c183_object_fit_position_cpp_flag="-DSPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST=${SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST:-0}"
+c184_async_image_cpp_flag="-DSPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST=${SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST:-0}"
 ffi_features=""
 append_ffi_feature() {
   if [[ -n "$ffi_features" ]]; then
@@ -237,6 +250,9 @@ fi
 if [[ "${SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST:-0}" == "1" ]]; then
   append_ffi_feature c18-3-object-fit-position-fixture-test
 fi
+if [[ "${SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST:-0}" == "1" ]]; then
+  append_ffi_feature c18-4-image-fixture-test
+fi
 if [[ "${SPINON_ENABLE_C04_UA_CASCADE_FIXTURE_PROBE:-0}" == "1" ]]; then
   append_ffi_feature c04-runtime-ua-cascade-fixture-test
 fi
@@ -252,7 +268,7 @@ fi
 if [[ "${SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST:-0}" == "1" ]]; then
   append_ffi_feature c12-4-worker-stack-residency-test
 fi
-echo "SPINON_IOS_NATIVE_FEATURES ffi=${ffi_features:-none} c11_grid_cpp=${c11_grid_surface_pixel_cpp_flag} c13_1_fixture=${SPINON_ENABLE_C13_1_OVERFLOW_CLIP_FIXTURE_TEST:-0} c13_2_fixture=${SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST:-0} c13_3_fixture=${SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST:-0} c14_1_app_fixture=${SPINON_ENABLE_C14_1_APP_FIXTURE_TEST:-0} c14_2_app_fixture=${SPINON_ENABLE_C14_2_APP_FIXTURE_TEST:-0} c14_3_app_fixture=${SPINON_ENABLE_C14_3_APP_FIXTURE_TEST:-0} c18_1_image_paint_fixture=${SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST:-0} c18_2_alpha_image_fixture=${SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST:-0} c18_3_object_fit_position_fixture=${SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST:-0}"
+echo "SPINON_IOS_NATIVE_FEATURES ffi=${ffi_features:-none} c11_grid_cpp=${c11_grid_surface_pixel_cpp_flag} c13_1_fixture=${SPINON_ENABLE_C13_1_OVERFLOW_CLIP_FIXTURE_TEST:-0} c13_2_fixture=${SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST:-0} c13_3_fixture=${SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST:-0} c14_1_app_fixture=${SPINON_ENABLE_C14_1_APP_FIXTURE_TEST:-0} c14_2_app_fixture=${SPINON_ENABLE_C14_2_APP_FIXTURE_TEST:-0} c14_3_app_fixture=${SPINON_ENABLE_C14_3_APP_FIXTURE_TEST:-0} c18_1_image_paint_fixture=${SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST:-0} c18_2_alpha_image_fixture=${SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST:-0} c18_3_object_fit_position_fixture=${SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST:-0} c18_4_async_image_fixture=${SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST:-0}"
 
 case "$platform_name" in
   iphonesimulator)
@@ -334,7 +350,7 @@ xcrun --sdk "$sdk" clang++ -std=c++20 -O2 -fPIC -target "$target" \
   "$runtime_gpu_failure_cpp_flag" "$c124_surface_readback_cpp_flag" \
   "$c11_grid_surface_pixel_cpp_flag" "$c133_gesture_fixture_cpp_flag" \
   "$c181_image_paint_cpp_flag" "$c182_alpha_image_cpp_flag" \
-  "$c183_object_fit_position_cpp_flag" \
+  "$c183_object_fit_position_cpp_flag" "$c184_async_image_cpp_flag" \
   -I"$repo_root/native/v8/include" \
   -c "$repo_root/native/v8/src/spinon_v8.cc" \
   -o "$output_dir/spinon_v8.o"

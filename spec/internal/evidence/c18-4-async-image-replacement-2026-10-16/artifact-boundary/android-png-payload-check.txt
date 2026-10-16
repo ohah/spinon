@@ -1,0 +1,4 @@
+c18-4-async-a-slow.png: default=False opt-in=True
+c18-4-async-b-fast.png: default=False opt-in=True
+c18-4-async-c-slow.png: default=False opt-in=True
+c18-4-async-d-fast.png: default=False opt-in=True

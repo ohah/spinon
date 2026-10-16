@@ -418,6 +418,22 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                              rgba: [172, 32, 108, 255]),
     ]
 #endif
+#if SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST_1
+    private let c184MetalPixelSamples = [
+        C18MetalPixelSample(id: "root-background", xCssPx: 2, yCssPx: 2,
+                             rgba: [17, 34, 51, 255]),
+        C18MetalPixelSample(id: "current-b", xCssPx: 9, yCssPx: 9,
+                             rgba: [24, 64, 240, 255]),
+        C18MetalPixelSample(id: "pending-c-background", xCssPx: 65, yCssPx: 9,
+                             rgba: [210, 10, 180, 255]),
+        C18MetalPixelSample(id: "c-success", xCssPx: 121, yCssPx: 9,
+                             rgba: [32, 220, 80, 255]),
+        C18MetalPixelSample(id: "decode-failure-background", xCssPx: 177, yCssPx: 9,
+                             rgba: [210, 10, 180, 255]),
+        C18MetalPixelSample(id: "recovery-d", xCssPx: 9, yCssPx: 49,
+                             rgba: [200, 40, 220, 255]),
+    ]
+#endif
 #if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
     private struct C133RuntimeEnvironment: Equatable {
         let width: Float
@@ -681,6 +697,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 #else
     private let imageObjectFitPositionProbeRequested = false
 #endif
+#if SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST_1
+    private let imageAsyncReplacementProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c184-async-image")
+#else
+    private let imageAsyncReplacementProbeRequested = false
+#endif
 #if SPINON_ENABLE_C18_2_ALPHA_IMAGE_FIXTURE_TEST_1
     private let imageAlphaProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c182-alpha-image")
@@ -692,8 +714,10 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c181-image-paint")
         || ProcessInfo.processInfo.arguments.contains("--spinon-c182-alpha-image")
         || ProcessInfo.processInfo.arguments.contains("--spinon-c183-object-fit-position")
+        || ProcessInfo.processInfo.arguments.contains("--spinon-c184-async-image")
     private var imagePaintRouteArguments: [String] {
-        imageObjectFitPositionProbeRequested ? ["--spinon-c183-object-fit-position"]
+        imageAsyncReplacementProbeRequested ? ["--spinon-c184-async-image"]
+            : imageObjectFitPositionProbeRequested ? ["--spinon-c183-object-fit-position"]
             : imageAlphaProbeRequested ? ["--spinon-c182-alpha-image"]
             : ["--spinon-c181-image-paint"]
     }
@@ -931,7 +955,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 ? "SPINON · C04.11 CSS → WGPU" : "SPINON · C04.10 CSS → WGPU"
 #if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
         if imagePaintProbeRequested {
-            title.text = imageObjectFitPositionProbeRequested
+            title.text = imageAsyncReplacementProbeRequested
+                ? "SPINON · C18.4 async PNG replacement and recovery"
+                : imageObjectFitPositionProbeRequested
                 ? "SPINON · C18.3 object-fit/object-position"
                 : imageAlphaProbeRequested
                 ? "SPINON · C18.2 alpha image" : "SPINON · C18.1 image paint"
@@ -1029,7 +1055,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             : "실제 V8 DOM → Stylo → Taffy → Rust 장면 → wgpu surface"
 #if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
         if imagePaintProbeRequested {
-            description.text = imageObjectFitPositionProbeRequested
+            description.text = imageAsyncReplacementProbeRequested
+                ? "Out-of-order PNG decode · pending/failure resource clear · recovery · 6 Metal samples · 224×88 CSS px"
+                : imageObjectFitPositionProbeRequested
                 ? "PNG 24×12 · 12 object-fit/position scenes · 19 Metal 표본 · 224×72 CSS px"
                 : imageAlphaProbeRequested
                 ? "RGBA PNG source-over alpha · 10 Metal 표본 · 80×40 CSS px"
@@ -1123,7 +1151,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 #if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
         if imagePaintProbeRequested {
             canvasView.accessibilityLabel =
-                imageObjectFitPositionProbeRequested
+                imageAsyncReplacementProbeRequested
+                ? "C18.4 비동기 PNG 교체·실패·복구 WGPU Metal 장면"
+                : imageObjectFitPositionProbeRequested
                 ? "C18.3 PNG object-fit와 object-position WGPU Metal 장면"
                 : imageAlphaProbeRequested
                 ? "C18.2 PNG alpha source-over WGPU Metal 장면"
@@ -1267,7 +1297,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         let canvasWidth = canvasView.widthAnchor.constraint(
             equalToConstant: imagePaintProbeRequested
-                ? imageObjectFitPositionProbeRequested ? 224 : 80
+                ? imageAsyncReplacementProbeRequested || imageObjectFitPositionProbeRequested ? 224 : 80
                 : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
                 ? 360 : c131CompactSurfaceMatrixRouteRequested ? 300
                 : c131BorderStripProbeRequested || c132ScrollFixtureRequested
@@ -1276,7 +1306,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         )
         let canvasHeight = canvasView.heightAnchor.constraint(
             equalToConstant: imagePaintProbeRequested
-                ? imageObjectFitPositionProbeRequested ? 72 : 40
+                ? imageAsyncReplacementProbeRequested ? 88
+                : imageObjectFitPositionProbeRequested ? 72 : 40
                 : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
                 ? 800 : c131CompactSurfaceMatrixRouteRequested ? 100
                 : c131BorderStripProbeRequested ? 160 : fixedSizeCssFixtureRequested ? 240 : 100
@@ -2245,6 +2276,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let imagePaintHost: UInt64?
         if !imagePaintProbeRequested {
             imagePaintHost = nil
+        } else if imageAsyncReplacementProbeRequested {
+#if SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST_1
+            imagePaintHost = SpinonRunner.createRuntimeGpuHostWithC18_4AsyncImageFixture()
+#else
+            imagePaintHost = nil
+#endif
         } else if imageObjectFitPositionProbeRequested {
 #if SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST_1
             imagePaintHost = SpinonRunner.createRuntimeGpuHostWithC18_3ObjectFitPositionFixture()
@@ -2355,7 +2392,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         let environmentInputs = currentEnvironment()
         let viewportWidth: Float = imagePaintProbeRequested
-            ? imageObjectFitPositionProbeRequested ? 224 : 80
+            ? imageAsyncReplacementProbeRequested || imageObjectFitPositionProbeRequested ? 224 : 80
             : c131CompactSurfaceMatrixRouteRequested
             ? 300 : c131BorderStripProbeRequested
             ? 400 : c132ScrollFixtureRequested || c133GestureFixtureRequested ? 400 : c131OverflowClipProbeRequested
@@ -2365,7 +2402,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             || c1123GridAutoPlacementProbeRequested
             ? 360 : c1131GridRepeatProbeRequested || fixedSizeCssFixtureRequested ? 320 : environmentInputs.width
         let viewportHeight: Float = imagePaintProbeRequested
-            ? imageObjectFitPositionProbeRequested ? 72 : 40
+            ? imageAsyncReplacementProbeRequested ? 88
+            : imageObjectFitPositionProbeRequested ? 72 : 40
             : c131CompactSurfaceMatrixRouteRequested
             ? 100 : c131BorderStripProbeRequested
             ? 160 : c132ScrollFixtureRequested || c133GestureFixtureRequested ? 240 : c131OverflowClipProbeRequested
@@ -2406,7 +2444,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         var result: String? = nil
 #if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
         if imagePaintProbeRequested {
-            if imageObjectFitPositionProbeRequested {
+            if imageAsyncReplacementProbeRequested {
+#if SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST_1
+                result = SpinonRunner.evalRuntimeGpuC18_4AsyncImageFixture(handle)
+#else
+                result = "status=-90 C18.4 feature-disabled"
+#endif
+            } else if imageObjectFitPositionProbeRequested {
 #if SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST_1
                 result = SpinonRunner.evalRuntimeGpuC18_3ObjectFitPositionFixture(handle)
 #else
@@ -4205,9 +4249,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         detail: String
     ) -> C0410LatestTaskLaneError {
         imagePaintMetalPixelReadbackFinished = true
-        let label = imageObjectFitPositionProbeRequested ? "C18.3"
+        let label = imageAsyncReplacementProbeRequested ? "C18.4"
+            : imageObjectFitPositionProbeRequested ? "C18.3"
             : imageAlphaProbeRequested ? "C18.2" : "C18.1"
-        let prefix = imageObjectFitPositionProbeRequested ? "C183"
+        let prefix = imageAsyncReplacementProbeRequested ? "C184"
+            : imageObjectFitPositionProbeRequested ? "C183"
             : imageAlphaProbeRequested ? "C182" : "C181"
         log("SPINON_\(prefix)_METAL_PIXEL_ERROR stage=\(stage) detail=\(detail)")
         postStatus("실패 · \(label) Metal surface 표본 \(stage)")
@@ -4224,8 +4270,10 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let viewportHeight = viewportHeightCssPx
         let format = rendererSurfaceFormat ?? ""
         stateLock.unlock()
-        let expectedViewportWidth: Float = imageObjectFitPositionProbeRequested ? 224 : 80
-        let expectedViewportHeight: Float = imageObjectFitPositionProbeRequested ? 72 : 40
+        let expectedViewportWidth: Float = imageAsyncReplacementProbeRequested
+            || imageObjectFitPositionProbeRequested ? 224 : 80
+        let expectedViewportHeight: Float = imageAsyncReplacementProbeRequested ? 88
+            : imageObjectFitPositionProbeRequested ? 72 : 40
         guard viewportWidth == expectedViewportWidth, viewportHeight == expectedViewportHeight,
               drawableSize.width > 0, drawableSize.height > 0,
               let width = Int(exactly: drawableSize.width),
@@ -4266,6 +4314,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             coordinates.append(sampleY)
         }
         let request = coordinates.withUnsafeBufferPointer { buffer -> String? in
+            if imageAsyncReplacementProbeRequested {
+#if SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST_1
+                return SpinonRunner.requestRuntimeGpuC18_4SurfacePixels(
+                    forTest: handle, sampleXY: buffer.baseAddress,
+                    sampleCount: UInt(coordinates.count / 2))
+#else
+                return "status=-90 C18.4 feature-disabled"
+#endif
+            }
             if imageObjectFitPositionProbeRequested {
 #if SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST_1
                 return SpinonRunner.requestRuntimeGpuC18_3SurfacePixels(
@@ -4297,7 +4354,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             throw failC181MetalPixelReadback(stage: "request", detail: request)
         }
         imagePaintMetalPixelRequestIssued = true
-        let prefix = imageObjectFitPositionProbeRequested ? "C183"
+        let prefix = imageAsyncReplacementProbeRequested ? "C184"
+            : imageObjectFitPositionProbeRequested ? "C183"
             : imageAlphaProbeRequested ? "C182" : "C181"
         log("SPINON_\(prefix)_METAL_PIXEL_REQUESTED generation=\(generation) viewport=\(Int(expectedViewportWidth))x\(Int(expectedViewportHeight)) drawable=\(width)x\(height) scale_x=\(scaleX) scale_y=\(scaleY) format=\(format) samples=\(samples.count)")
     }
@@ -4361,8 +4419,10 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let drawableSize = c111MetalDrawableSize
         let format = rendererSurfaceFormat ?? ""
         stateLock.unlock()
-        let expectedViewportWidth: Float = imageObjectFitPositionProbeRequested ? 224 : 80
-        let expectedViewportHeight: Float = imageObjectFitPositionProbeRequested ? 72 : 40
+        let expectedViewportWidth: Float = imageAsyncReplacementProbeRequested
+            || imageObjectFitPositionProbeRequested ? 224 : 80
+        let expectedViewportHeight: Float = imageAsyncReplacementProbeRequested ? 88
+            : imageObjectFitPositionProbeRequested ? 72 : 40
         let scaleX = Float(drawableSize.width) / expectedViewportWidth
         let scaleY = Float(drawableSize.height) / expectedViewportHeight
         guard drawableSize.width > 0, drawableSize.height > 0,
@@ -4383,19 +4443,23 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             let expectedY = UInt32(floor((sample.yCssPx + 0.5) * scaleY))
             let exact = x == expectedX && y == expectedY && rgba == sample.rgba
             if exact { matched += 1 }
-            let prefix = imageObjectFitPositionProbeRequested ? "C183"
+            let prefix = imageAsyncReplacementProbeRequested ? "C184"
+                : imageObjectFitPositionProbeRequested ? "C183"
                 : imageAlphaProbeRequested ? "C182" : "C181"
             log("SPINON_\(prefix)_METAL_PIXEL_SAMPLE generation=\(generation) id=\(sample.id) xy=\(x),\(y) rgba=\(rgba.map(String.init).joined(separator: ",")) expected=\(sample.rgba.map(String.init).joined(separator: ",")) exact=\(exact)")
         }
         imagePaintMetalPixelReadbackFinished = true
         let passed = matched == samples.count
-        let prefix = imageObjectFitPositionProbeRequested ? "C183"
+        let prefix = imageAsyncReplacementProbeRequested ? "C184"
+            : imageObjectFitPositionProbeRequested ? "C183"
             : imageAlphaProbeRequested ? "C182" : "C181"
         log("SPINON_\(prefix)_METAL_PIXEL_SUMMARY status=\(passed ? "matched" : "mismatch") generation=\(generation) viewport=\(Int(expectedViewportWidth))x\(Int(expectedViewportHeight)) drawable=\(Int(drawableSize.width))x\(Int(drawableSize.height)) format=\(format) expected=\(samples.count) observed=\(values.count) matched=\(matched) renderer=metal-drawable-before-compositor")
         guard passed else {
             throw failure("pixel-mismatch", "Metal drawable RGBA가 Chrome 155 기준과 다릅니다")
         }
-        postStatus(imageObjectFitPositionProbeRequested
+        postStatus(imageAsyncReplacementProbeRequested
+            ? "완료 · C18.4 Metal drawable 표본 6/6"
+            : imageObjectFitPositionProbeRequested
             ? "완료 · C18.3 Metal drawable 표본 19/19"
             : imageAlphaProbeRequested
             ? "완료 · C18.2 Metal drawable 표본 10/10"
@@ -4403,6 +4467,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     }
 
     private func imagePaintPixelSamples() -> [C18MetalPixelSample]? {
+        if imageAsyncReplacementProbeRequested {
+#if SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST_1
+            return c184MetalPixelSamples
+#else
+            return nil
+#endif
+        }
         if imageObjectFitPositionProbeRequested {
 #if SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST_1
             return c183MetalPixelSamples
