@@ -32,7 +32,7 @@
 | 26 | Roboto 사전 fixture의 1px baseline marker가 빠져 폭을 1px 작게 보는가 | test-only anchor를 통해 `93.4063px` parent, `46.2031px` 두 text ranges, `[46.2031,19,1,0]` marker를 확인한다. 실제 `inline-block` 제품 지원은 주장하지 않는다. |
 | 27 | Taffy measure snapshot이 final width/revision과 불일치해 재사용되는가 | 기존 exact width·revision gate를 변경하지 않았고 integration suite가 통과한다. |
 | 28 | evidence 수치가 현재 로그와 다르거나 platform 실행을 과장하는가 | text `17`, C15 layout `9`, workspace `947/0/4`를 재실행 로그와 대조한다. Android/iOS는 compile-only로 쓴다. |
-| 29 | Rspress dead-link 실패가 C15 링크 결함을 숨기는가 | 최종 build log에서 C15.2a README/review 링크의 dead-link 결과를 별도로 검색하고 legacy 실패와 분리 기록한다. |
-| 30 | Tailnet이나 PR screenshot이 Spinon 화면처럼 오해되거나 배포 경로를 넓히는가 | screenshot은 Chrome oracle로 표시한다. Tailnet sync는 지정된 private preview root만 대상으로 하며 Pages/`gh-pages` 배포는 하지 않는다. |
+| 29 | Rspress dead-link 실패와 Tailnet 경로 실패가 C15 링크 결함을 숨기는가 | 전체 docs build의 기존 dead-link 472개와 9-route isolated build 결과를 분리했다. Agent Browser에서 roadmap의 기존 `/spec/` C15 경로가 404임을 재현하고 제공되는 `/internal/` 미러로 고친 뒤 README, implementation review, PR review route가 열리는 것을 확인했다. |
+| 30 | Tailnet이나 PR screenshot이 Spinon 화면처럼 오해되거나 배포 경로를 넓히는가 | Chrome 이미지는 oracle 전용, Agent Browser 캡처는 로드맵 문서 미리보기로 구분한다. 최종 SHA manifest가 동기화한 page/evidence/asset을 열거하고 모든 교체본은 Tailnet root 밖에 백업했다. 경로 삭제와 Pages/`gh-pages` 배포는 없다. |
 
 남은 검증 경계는 runtime text projection/painter, Android/iOS Simulator 앱 화면, actual glyph/overflow pixels다. C15는 미완료다.
