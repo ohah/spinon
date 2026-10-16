@@ -6,7 +6,7 @@ use spinon_core::{
     StyleRevision,
 };
 
-use crate::{ComputedBackgroundPaint, CssParseDiagnostic, OpaqueCssSrgb};
+use crate::{ComputedBackgroundPaint, ComputedCssColor, CssParseDiagnostic, OpaqueCssSrgb};
 
 /// CSS 계산에 적용할 viewport와 플랫폼 환경 snapshot 출처입니다.
 #[derive(Clone, Copy, Debug, PartialEq)]
@@ -486,6 +486,10 @@ pub struct ComputedElementStyle {
     pub background_color: Option<OpaqueCssSrgb>,
     /// S04 또는 런타임 paint profile에서만 설정하는 투명/불투명 paint입니다.
     pub background_paint: Option<ComputedBackgroundPaint>,
+    /// C19.1 computed-color profile에서만 설정하는 Stylo `color` 값입니다.
+    pub computed_color: Option<ComputedCssColor>,
+    /// C19.1 computed-color profile에서만 설정하는 Stylo `background-color` 값입니다.
+    pub computed_background_color: Option<ComputedCssColor>,
 }
 
 #[derive(Clone, Debug, Eq, PartialEq)]
@@ -542,6 +546,8 @@ pub enum ComputedStyleProfile {
     RuntimeFlexRegisteredPropertiesPaintV1,
     /// C08의 Block layout·배경 paint와 foreground/font computed 값을 위한 제한 runtime profile입니다.
     RuntimeBlockPaintV1,
+    /// C19.1의 `<color>` computed values를 CSS Color 4 typed carrier로 보존하는 profile입니다.
+    C19ComputedColorV1,
     /// C18.3의 image object sizing 입력을 C08 Block paint 입력과 분리해 계산합니다.
     RuntimeBlockImageV1,
     /// C09.1 일반 Block 흐름·containing block과 단색 배경 paint를 계산하는 제한 runtime profile입니다.

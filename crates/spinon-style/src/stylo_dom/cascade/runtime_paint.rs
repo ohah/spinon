@@ -1,7 +1,9 @@
 use spinon_core::{NodeId, StyleRevision};
 use style::properties::{ComputedValues, LonghandId, PropertyDeclarationId};
 
-use crate::{ComputedBackgroundPaint, ComputedBorderPaint, OpaqueCssSrgb, StylesheetSource};
+use crate::{
+    ComputedBackgroundPaint, ComputedBorderPaint, ComputedCssColor, OpaqueCssSrgb, StylesheetSource,
+};
 
 use super::{
     ComputedStyleProfile, CssCascadeError, CssViewport, StyloDocumentView, compute_cascade,
@@ -218,8 +220,48 @@ pub(super) fn computed_background_for_profile(
             };
             Ok((color, Some(paint)))
         }
+        ComputedStyleProfile::C19ComputedColorV1 => Ok((None, None)),
         _ => Ok((None, None)),
     }
+}
+
+pub(super) fn computed_color_for_profile(
+    profile: ComputedStyleProfile,
+    computed: &ComputedValues,
+    node: NodeId,
+) -> Result<(Option<ComputedCssColor>, Option<ComputedCssColor>), CssCascadeError> {
+    if profile != ComputedStyleProfile::C19ComputedColorV1 {
+        return Ok((None, None));
+    }
+
+    let computed_color =
+        ComputedCssColor::from_absolute_color(computed.clone_color()).map_err(|reason| {
+            CssCascadeError::UnsupportedComputedCssColor {
+                node,
+                property: "color",
+                reason: reason.to_owned(),
+            }
+        })?;
+    let background = match computed.clone_background_color() {
+        style::values::computed::Color::Absolute(color) => color,
+        style::values::computed::Color::CurrentColor => computed.clone_color(),
+        _ => {
+            return Err(CssCascadeError::UnsupportedComputedCssColor {
+                node,
+                property: "background-color",
+                reason: "Stylo computed color가 절대 색상 또는 currentColor가 아닙니다".to_owned(),
+            });
+        }
+    };
+    let computed_background_color =
+        ComputedCssColor::from_absolute_color(background).map_err(|reason| {
+            CssCascadeError::UnsupportedComputedCssColor {
+                node,
+                property: "background-color",
+                reason: reason.to_owned(),
+            }
+        })?;
+    Ok((Some(computed_color), Some(computed_background_color)))
 }
 
 /// C08의 제한 Block 입력과 background paint를 같은 Stylo cascade에서 계산합니다.
@@ -246,6 +288,24 @@ pub fn compute_runtime_block_paint_cascade_with_stylesheets(
         style_revision,
         &properties,
         ComputedStyleProfile::RuntimeBlockPaintV1,
+    )
+}
+
+/// C19.1의 `color`와 `background-color`를 Stylo typed carrier로 계산합니다.
+pub fn compute_c19_computed_color_cascade_with_stylesheets(
+    view: &StyloDocumentView,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+) -> Result<super::ComputedStyleSnapshot, CssCascadeError> {
+    let properties = runtime_block_paint_properties();
+    compute_cascade(
+        view,
+        author_stylesheets,
+        viewport,
+        style_revision,
+        &properties,
+        ComputedStyleProfile::C19ComputedColorV1,
     )
 }
 

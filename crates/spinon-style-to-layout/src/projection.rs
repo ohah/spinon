@@ -385,6 +385,7 @@ fn compute_profile_layout(
         | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
         | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
         | ComputedStyleProfile::RuntimeBlockPaintV1
+        | ComputedStyleProfile::C19ComputedColorV1
         | ComputedStyleProfile::RuntimeBlockImageV1
         | ComputedStyleProfile::RuntimeBlockFormattingV1
         | ComputedStyleProfile::RuntimeBlockPositioningV1
@@ -843,7 +844,7 @@ mod ua_profile_boundary_tests {
     use crate::StyleLayoutError;
 
     #[test]
-    fn ua_snapshot_profile_is_rejected_by_the_flex_layout_adapter() {
+    fn non_layout_snapshot_profiles_are_rejected_by_the_flex_layout_adapter() {
         let mut document = HostDocument::new().unwrap();
         let root = document.reserve_node_handle().unwrap();
         let mut batch =
@@ -863,21 +864,26 @@ mod ua_profile_boundary_tests {
         let snapshot = document.snapshot();
         let view =
             StyloDocumentView::new(snapshot.clone(), root, true, QuirksMode::NoQuirks).unwrap();
-        let error = compute_profile_layout(
-            &snapshot,
-            &view,
-            root,
-            &[],
-            CssViewport::C04_FIXTURE,
-            StyleRevision::default(),
+        for profile in [
             ComputedStyleProfile::SupportedElementsUaV1,
-        )
-        .unwrap_err();
+            ComputedStyleProfile::C19ComputedColorV1,
+        ] {
+            let error = compute_profile_layout(
+                &snapshot,
+                &view,
+                root,
+                &[],
+                CssViewport::C04_FIXTURE,
+                StyleRevision::default(),
+                profile,
+            )
+            .unwrap_err();
 
-        assert!(matches!(
-            error,
-            StyleLayoutError::UnsupportedProfile { profile }
-                if profile == "SupportedElementsUaV1"
-        ));
+            assert!(matches!(
+                error,
+                StyleLayoutError::UnsupportedProfile { profile: error_profile }
+                    if error_profile == format!("{profile:?}")
+            ));
+        }
     }
 }

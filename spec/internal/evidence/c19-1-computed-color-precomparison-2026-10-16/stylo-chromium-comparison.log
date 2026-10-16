@@ -1,0 +1,30 @@
+   Compiling spinon-style v0.1.0 (/private/tmp/spinon-c19-1-computed-color-20261016/crates/spinon-style)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.87s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style-bbe83c0d80453aa3)
+
+running 1 test
+
+thread 'stylo_dom::cascade::runtime_layout_tests::c19_1_color::c19_computed_color_matches_pinned_chromium_color_4_oracle' (67129580) panicked at crates/spinon-style/src/stylo_dom/cascade/runtime_layout_tests/c19_1_color.rs:191:5:
+oklch: [0, 142, 196, 255] != [0, 142, 200, 255]; ComputedCssColor { color_space: Oklch, components: [0.6, 0.15, 230.0], alpha: 1.0, missing_components: [false, false, false], missing_alpha: false, legacy_syntax: false, gamut_mapped_srgb: [0.0, 0.55502164, 0.7692101, 1.0] }
+color-display-p3: [255, 11, 12, 255] != [255, 0, 0, 255]; ComputedCssColor { color_space: DisplayP3, components: [1.0, 0.0, 0.0], alpha: 1.0, missing_components: [false, false, false], missing_alpha: false, legacy_syntax: false, gamut_mapped_srgb: [1.0, 0.044568755, 0.04593134, 1.0] }
+color-display-p3-gamut-edge: [255, 100, 0, 255] != [255, 87, 0, 255]; ComputedCssColor { color_space: DisplayP3, components: [1.0, 0.4, 0.0], alpha: 1.0, missing_components: [false, false, false], missing_alpha: false, legacy_syntax: false, gamut_mapped_srgb: [1.0, 0.39312857, 0.0, 1.0] }
+color-display-p3-none: [255, 11, 12, 128] != [255, 0, 0, 128]; ComputedCssColor { color_space: DisplayP3, components: [1.0, 0.0, 0.0], alpha: 0.5, missing_components: [false, true, false], missing_alpha: false, legacy_syntax: false, gamut_mapped_srgb: [1.0, 0.044568755, 0.04593134, 0.5] }
+color-prophoto-rgb: [0, 122, 154, 255] != [0, 130, 224, 255]; ComputedCssColor { color_space: ProphotoRgb, components: [0.2, 0.4, 0.8], alpha: 1.0, missing_components: [false, false, false], missing_alpha: false, legacy_syntax: false, gamut_mapped_srgb: [0.0, 0.47860426, 0.6021235, 1.0] }
+color-rec2020: [0, 120, 203, 255] != [0, 119, 218, 255]; ComputedCssColor { color_space: Rec2020, components: [0.2, 0.4, 0.8], alpha: 1.0, missing_components: [false, false, false], missing_alpha: false, legacy_syntax: false, gamut_mapped_srgb: [0.0, 0.4703244, 0.7945114, 1.0] }
+color-xyz-d50: [0, 188, 213, 255] != [0, 203, 255, 255]; ComputedCssColor { color_space: XyzD50, components: [0.2, 0.4, 0.8], alpha: 1.0, missing_components: [false, false, false], missing_alpha: false, legacy_syntax: false, gamut_mapped_srgb: [0.0, 0.73657364, 0.83385515, 1.0] }
+color-xyz-d65: [0, 186, 197, 255] != [0, 202, 228, 255]; ComputedCssColor { color_space: XyzD65, components: [0.2, 0.4, 0.8], alpha: 1.0, missing_components: [false, false, false], missing_alpha: false, legacy_syntax: false, gamut_mapped_srgb: [0.0, 0.72906685, 0.77112883, 1.0] }
+color-xyz-alias: [0, 186, 197, 255] != [0, 202, 228, 255]; ComputedCssColor { color_space: XyzD65, components: [0.2, 0.4, 0.8], alpha: 1.0, missing_components: [false, false, false], missing_alpha: false, legacy_syntax: false, gamut_mapped_srgb: [0.0, 0.72906685, 0.77112883, 1.0] }
+system-button-face: [220, 220, 220, 255] != [239, 239, 239, 255]; ComputedCssColor { color_space: Srgb, components: [0.8627451, 0.8627451, 0.8627451], alpha: 1.0, missing_components: [false, false, false], missing_alpha: false, legacy_syntax: true, gamut_mapped_srgb: [0.8627451, 0.8627451, 0.8627451, 1.0] }
+system-highlight: [0, 65, 198, 255] != [128, 188, 254, 153]; ComputedCssColor { color_space: Srgb, components: [0.0, 0.25490198, 0.7764706], alpha: 1.0, missing_components: [false, false, false], missing_alpha: false, legacy_syntax: true, gamut_mapped_srgb: [0.0, 0.25490198, 0.7764706, 1.0] }
+current-color-inherited: [250, 0, 101, 255] != [251, 0, 101, 255]; ComputedCssColor { color_space: DisplayP3, components: [0.9, 0.1, 0.4], alpha: 1.0, missing_components: [false, false, false], missing_alpha: false, legacy_syntax: false, gamut_mapped_srgb: [0.9799375, 0.0, 0.39656937, 1.0] }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test stylo_dom::cascade::runtime_layout_tests::c19_1_color::c19_computed_color_matches_pinned_chromium_color_4_oracle ... FAILED
+
+failures:
+
+failures:
+    stylo_dom::cascade::runtime_layout_tests::c19_1_color::c19_computed_color_matches_pinned_chromium_color_4_oracle
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 153 filtered out; finished in 0.01s
+
+error: test failed, to rerun pass `-p spinon-style --lib`

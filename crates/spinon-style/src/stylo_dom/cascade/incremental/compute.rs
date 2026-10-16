@@ -188,7 +188,9 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1 => {
             Some(RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES)
         }
-        ComputedStyleProfile::RuntimeBlockPaintV1 => Some(RUNTIME_BLOCK_PAINT_AUTHOR_PROPERTIES),
+        ComputedStyleProfile::RuntimeBlockPaintV1 | ComputedStyleProfile::C19ComputedColorV1 => {
+            Some(RUNTIME_BLOCK_PAINT_AUTHOR_PROPERTIES)
+        }
         ComputedStyleProfile::RuntimeBlockImageV1 => Some(RUNTIME_BLOCK_IMAGE_AUTHOR_PROPERTIES),
         ComputedStyleProfile::RuntimeBlockFormattingV1 => {
             Some(super::runtime_paint::RUNTIME_BLOCK_FORMATTING_AUTHOR_PROPERTIES)
@@ -355,7 +357,9 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
     let mut reuse_stats = RuntimeCascadeReuseStats::default();
     let mut document_root_font_size_css_px = stylist.device().root_font_size().px();
     let mut mount_parent_style = None;
-    if is_runtime_layout_profile(profile) && view.has_synthetic_html_document() {
+    let needs_synthetic_document_cascade =
+        is_runtime_layout_profile(profile) || profile == ComputedStyleProfile::C19ComputedColorV1;
+    if needs_synthetic_document_cascade && view.has_synthetic_html_document() {
         let html = view.root_element();
         let html_style = compute_element_style(
             &stylist,
@@ -365,7 +369,9 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
             viewport,
             &stylesheet_border_sources,
         );
-        validate_synthetic_document_box(&html_style, "html")?;
+        if is_runtime_layout_profile(profile) {
+            validate_synthetic_document_box(&html_style, "html")?;
+        }
         document_root_font_size_css_px = computed_font_size_css_px(&html_style);
         if !document_root_font_size_css_px.is_finite() || document_root_font_size_css_px < 0.0 {
             return Err(CssCascadeError::InvalidComputedFontSize { node: None });
@@ -385,7 +391,9 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
             viewport,
             &stylesheet_border_sources,
         );
-        validate_synthetic_document_box(&body_style, "body")?;
+        if is_runtime_layout_profile(profile) {
+            validate_synthetic_document_box(&body_style, "body")?;
+        }
         mount_parent_style = Some(body_style);
     }
     let mut pending = vec![(view.root_handle(), mount_parent_style, false)];

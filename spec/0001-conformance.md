@@ -53,6 +53,8 @@ C18.1은 같은 제한 PNG fixture를 live V8→WGPU 실제 image paint로 연�
 
 C18.2는 고정 RGBA8 PNG의 alpha 0/128/255 수직 띠를 불투명 `#112233` 위에 natural size로 그리는 내부 fixture profile이다. Agent Browser Chrome `155.0.8059.85`의 80×40 DPR 1 oracle를 Android API 37 ARM64 AVD PixelCopy와 iPhone 17 Pro/iOS 26.2 Simulator Metal drawable에서 10/10 exact로 비교했고, 두 Simulator 전체 화면 대응 sample 10/10과 fixture 밖 anchor 4/4도 확인했다. 구현과 fixture-only interface는 [계획](../plan/c18-2-static-alpha-image-compositing.md)·[내부 계약 0065](internal/0065-c18-2-alpha-image-compositing.md), 원본과 제한은 [사전 비교](internal/evidence/c18-2-alpha-precomparison-2026-10-16/README.md)·[Android 근거](internal/evidence/c18-2-alpha-image-android-api37-2026-10-16/README.md)·[iOS 근거](internal/evidence/c18-2-alpha-image-ios-simulator-2026-10-16/README.md)에 둔다. 이는 제품 image loader, 일반 surface format 전체, C18/U05/C14 또는 공개 HTML/CSS 지원을 완료 처리하지 않는다.
 
+C19.1은 Stylo computed color의 원본 색 공간·missing bit, 매핑 전 sRGB 변환, CSS Color 4 Local MINDE 결과와 Chrome 155 sRGB/unorm8 compatibility 출력을 구분한다. 비-system fixture 37개는 Agent Browser 기준과 exact 일치하지만, 네 system-color 값은 Stylo Servo palette로만 검증하며 macOS system palette 동등성을 주장하지 않는다. runtime mount의 합성 body 상속을 별도로 검사했지만, 이 내부 carrier는 실제 GPU surface, opacity/group compositing, text glyph, hit-test 또는 contrast를 검증하지 않는다. [계약 0068](internal/0068-c19-1-computed-color.md) · [Chrome 사전 비교](internal/evidence/c19-1-computed-color-precomparison-2026-10-16/README.md) · [호환성 차이 분류](internal/evidence/c19-1-computed-color-compatibility-triage-2026-10-16.md)
+
 ## 시나리오 카탈로그
 
 첫 적합성 시나리오의 필드와 제안 목록은 [0009 적합성 시나리오 카탈로그](0009-conformance-scenarios.md)에 둔다. 이 버전의 일곱 시나리오는 모두 제안·미실행이며 공개 API의 지원 상태를 바꾸지 않는다. 플랫폼별 실행 근거가 갖춰지면 결과를 분리해 기록하고, `지원` 표기는 이 문서의 조건과 구현 상태 대장에 따라 별도로 판정한다.
