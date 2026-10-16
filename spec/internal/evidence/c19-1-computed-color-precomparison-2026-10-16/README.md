@@ -36,9 +36,9 @@
 
 ## 입력 hash
 
-- fixture HTML SHA-256: `553bcda3a9551421f8ebccb42db7f9ff72aaaa7da861fa177d4f224adff9a8da`
+- fixture HTML SHA-256: `ab210d543f58e71dd4fdccce4b16f3b213f5302502fa85588cafe59321c41cc5`
 - Chromium observations SHA-256: `aa31312ddb901a65d7db17cae625620e67b9d873f029731dd882de7d827933ee`
-- Agent Browser screenshot SHA-256: `d7c080da6410f162efc7ae95e13bbb79dcecc434a67a6ae3ea513b1e09944e7c`
+- Agent Browser screenshot SHA-256: `4e7b961d5acf6255e9fc2162522c1f008f9903562fb4c49a4606dee4aa7be91d`
 - WPT manifest SHA-256: `4a737c140d2157c3d2d1a454aa04d2db7f657f6573914a0cd6dd22f9232b0d08`
 
 opaque probe는 8-bit 양자화 전 Chrome computed color의 sRGB 변환값을 기록한다. premultiplication 손실을 피하려고 RGB 채널은 별도 probe에서, alpha는 원본 Canvas readback에서 가져왔다. 이 값은 캡처한 Chrome 출력이며 Chrome과 Stylo가 같은 CSS Color 4 gamut-mapping 알고리즘을 사용한다는 독립 증거는 아니다. 구현 중 차이 목록은 [C19.1 호환성 분류](../c19-1-computed-color-compatibility-triage-2026-10-16.md)에 있다.
