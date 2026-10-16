@@ -66,7 +66,7 @@ iOS full-screen title은 narrow header에서 ellipsis로 줄어든다. paint sam
 
 ## PR 화면 이미지 확인
 
-PR [#227](https://github.com/ohah/spinon/pull/227)의 본문에는 C18.4 Android/iOS runtime 화면과 C18.1 visible overflow/hidden clip 회귀 화면을 넣었다. 2026-10-16 13:13 UTC Agent Browser 0.31.1에서 4개 image 모두 `complete=true`, `naturalWidth>0`을 확인했다. 원본 크기는 Android C18.4 588×231, iOS C18.4 1206×2622, Android overflow 회귀 1080×2400, iOS overflow 회귀 1206×2622다. [DOM 검사 결과](pr-227-browser-image-verification.json)와 [PR 화면 캡처](pr-227-agent-browser.png)를 보존했다.
+PR [#227](https://github.com/ohah/spinon/pull/227)의 본문에는 C18.4 Android/iOS runtime 화면과 C18.1 visible overflow/hidden clip 회귀 화면을 넣었다. 2026-10-16 13:14 UTC Agent Browser 0.31.1에서 4개 image 모두 `complete=true`, `naturalWidth>0`을 확인했다. 원본 크기는 Android C18.4 588×231, iOS C18.4 1206×2622, Android overflow 회귀 1080×2400, iOS overflow 회귀 1206×2622다. [DOM 검사 결과](pr-227-browser-image-verification.json)와 [PR 화면 캡처](pr-227-agent-browser.png)를 보존했다.
 
 ## 남은 경계
 

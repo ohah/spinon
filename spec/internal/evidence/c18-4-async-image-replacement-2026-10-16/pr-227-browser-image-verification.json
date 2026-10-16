@@ -1,6 +1,6 @@
 {
   "schema": "spinon-c18-4-pr-browser-image-verification/v1",
-  "checked_at_utc": "2026-10-16T13:13:28Z",
+  "checked_at_utc": "2026-10-16T13:14:46Z",
   "browser": "Agent Browser 0.31.1 (Chrome)",
   "page": "https://github.com/ohah/spinon/pull/227",
   "result": "4/4 complete with naturalWidth greater than zero",
@@ -37,7 +37,7 @@
   "page_screenshot": {
     "path": "pr-227-agent-browser.png",
     "width": 1280,
-    "height": 7309,
-    "sha256": "641fdc6820ac1b71d604b077b8cca97282851cfabd98ef3357183515e38bbe77"
+    "height": 7446,
+    "sha256": "0628642c7b2b6791c9d4250970627d6555ff1d01c69727cbaf4610dc510351df"
   }
 }
