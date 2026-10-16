@@ -6,41 +6,42 @@ warn    Please set `output.cleanDistPath` config manually.
 warn    Current root path: /private/tmp/spinon-c15-tailnet-preview-sync-20261017/packages/docs
 warn    Current dist path: /private/tmp/spinon-c15-docs-rendered-20261017
 info    Rendering pages...
-success Pages rendered in 74 ms.
-ready   built in 0.54s (node)
-ready   built in 0.54s (web)
+success Pages rendered in 75 ms.
+ready   built in 1.51s (node)
+ready   built in 1.51s (web)
 
 File (web)                                                                                    Size        Gzip
 ../../../spinon-c15-docs-rendered-20261017/static/js/async/i.25208e7c92.js                    0.10 kB     0.09 kB
 ../../../spinon-c15-docs-rendered-20261017/static/js/styles.2da0941fcb.js                     0.47 kB     0.23 kB
 ../../../spinon-c15-docs-rendered-20261017/icon.svg                                           0.64 kB     0.41 kB
-../../../spinon-c15-docs-rendered-20261017/static/js/async/route-0689be69e7a0.4fb95487bf.js   10.4 kB     3.4 kB
-../../../spinon-c15-docs-rendered-20261017/static/js/async/route-3bb3f34d59f7.d877285ff1.js   10.8 kB     3.5 kB
-../../../spinon-c15-docs-rendered-20261017/static/js/async/route-39221a89e96b.34d4bec498.js   11.0 kB     3.7 kB
-../../../spinon-c15-docs-rendered-20261017/static/js/async/route-1299d684be3c.1fa5b4de44.js   11.6 kB     3.9 kB
-../../../spinon-c15-docs-rendered-20261017/static/js/async/route-acf9bf8a5ef1.b0a19dad73.js   17.4 kB     5.3 kB
-../../../spinon-c15-docs-rendered-20261017/static/js/async/route-ecf129b09e78.6f2431aae6.js   18.7 kB     6.4 kB
-../../../spinon-c15-docs-rendered-20261017/static/js/index.7d9eae45e1.js                      19.7 kB     7.8 kB
+../../../spinon-c15-docs-rendered-20261017/static/js/async/route-0689be69e7a0.ea6a08c575.js   10.4 kB     3.4 kB
+../../../spinon-c15-docs-rendered-20261017/static/js/async/route-39221a89e96b.a02c09eb9e.js   11.0 kB     3.7 kB
+../../../spinon-c15-docs-rendered-20261017/static/js/async/route-1299d684be3c.542fbf2646.js   12.0 kB     4.1 kB
+../../../spinon-c15-docs-rendered-20261017/static/js/async/route-3bb3f34d59f7.8e4605a7a3.js   12.5 kB     4.0 kB
+../../../spinon-c15-docs-rendered-20261017/static/js/async/route-acf9bf8a5ef1.3c3784bff5.js   17.4 kB     5.3 kB
+../../../spinon-c15-docs-rendered-20261017/static/js/async/route-ecf129b09e78.01b1c0cc73.js   18.7 kB     6.4 kB
+../../../spinon-c15-docs-rendered-20261017/static/js/index.57c5e361c5.js                      19.8 kB     7.8 kB
 ../../../spinon-c15-docs-rendered-20261017/static/js/lib-router.1e14e568cb.js                 35.4 kB     12.7 kB
 ../../../spinon-c15-docs-rendered-20261017/static/image/chrome155.8da64b0f42.png              36.5 kB
 ../../../spinon-c15-docs-rendered-20261017/static/css/styles.8d918fd78e.css                   74.0 kB     14.2 kB
-../../../spinon-c15-docs-rendered-20261017/static/js/async/route-a1017bdf23ca.ea3e9e7728.js   155.1 kB    33.0 kB
+../../../spinon-c15-docs-rendered-20261017/static/js/async/route-a1017bdf23ca.fc515c220f.js   155.1 kB    33.0 kB
 ../../../spinon-c15-docs-rendered-20261017/static/js/a.666ea08214.js                          217.1 kB    71.7 kB
 ../../../spinon-c15-docs-rendered-20261017/static/js/lib-react.9cdf8f49ce.js                  218.4 kB    68.9 kB
-../../../spinon-c15-docs-rendered-20261017/static/search_index.ko.d13b2849.json               312.6 kB    102.1 kB
-../../../spinon-c15-docs-rendered-20261017/static/js/async/route-6c33a3943990.78d8544d7c.js   348.5 kB    81.1 kB
+../../../spinon-c15-docs-rendered-20261017/static/image/tailnet-roadmap.fe03c26f5d.png        230.1 kB
+../../../spinon-c15-docs-rendered-20261017/static/search_index.ko.c23f8589.json               313.9 kB    102.6 kB
+../../../spinon-c15-docs-rendered-20261017/static/js/async/route-6c33a3943990.3708f13919.js   348.5 kB    81.1 kB
 
-                                                                                     Total:   1498.4 kB   454.8 kB
+                                                                                     Total:   1731.9 kB   686.0 kB
 
 File (node)                                                                                                                       Size       Gzip
 ../../../spinon-c15-docs-rendered-20261017/404.html                                                                               8.5 kB     2.5 kB
 ../../../spinon-c15-docs-rendered-20261017/internal/evidence/c15-2-inline-text-precomparison-2026-10-17/README.html               24.4 kB    6.3 kB
-../../../spinon-c15-docs-rendered-20261017/internal/evidence/c15-2a-inline-text-layout-2026-10-17/pr-delta-review-30.html         24.7 kB    6.8 kB
+../../../spinon-c15-docs-rendered-20261017/internal/evidence/c15-2a-inline-text-layout-2026-10-17/pr-delta-review-30.html         25.1 kB    7.0 kB
 ../../../spinon-c15-docs-rendered-20261017/internal/evidence/c15-2a-inline-text-layout-2026-10-17/implementation-review-20.html   25.1 kB    6.7 kB
-../../../spinon-c15-docs-rendered-20261017/internal/evidence/c15-2a-inline-text-layout-2026-10-17/README.html                     25.2 kB    6.4 kB
+../../../spinon-c15-docs-rendered-20261017/internal/evidence/c15-2a-inline-text-layout-2026-10-17/README.html                     26.8 kB    6.9 kB
 ../../../spinon-c15-docs-rendered-20261017/internal/0070-c15-1-inline-text-layout.html                                            31.1 kB    8.3 kB
 ../../../spinon-c15-docs-rendered-20261017/0001-conformance.html                                                                  32.4 kB    9.3 kB
 ../../../spinon-c15-docs-rendered-20261017/internal/README.html                                                                   146.4 kB   35.4 kB
 ../../../spinon-c15-docs-rendered-20261017/STATUS.html                                                                            329.5 kB   82.9 kB
 
-                                                                                                                         Total:   647.4 kB   164.8 kB
+                                                                                                                         Total:   649.3 kB   165.4 kB

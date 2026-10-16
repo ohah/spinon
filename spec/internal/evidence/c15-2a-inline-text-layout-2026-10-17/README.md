@@ -45,3 +45,12 @@
 - 전체 CSS text 적합성 또는 C15/C16 완료.
 
 공식 상태는 [C15 미완료 기록](../../../STATUS.md#css-구현-체크리스트), 내부 호출 계약은 [0070](../../0070-c15-1-inline-text-layout.md)에서 관리한다.
+
+## Tailnet 미리보기 확인
+
+- 로드맵 경로: `/spinon/roadmap.html`
+- 실행 근거 경로: `/spinon/internal/evidence/c15-2a-inline-text-layout-2026-10-17/README.html`
+- 2026-10-17 Agent Browser에서 두 경로를 열어 C15.2a 수치, Chrome oracle 그림, 구현 리뷰·PR 변경 리뷰 링크가 제공되는 것을 확인했다. Rspress 미리보기에서는 `spec/` 접두 경로가 404였고, 로드맵 링크를 제공되는 `internal/` 미러 경로로 고쳤다.
+![Agent Browser 로드맵 문서 미리보기 화면](./tailnet-roadmap.png)
+
+이미지는 문서 미리보기 캡처이며 Spinon 앱의 동작 화면이 아니다.
