@@ -1,0 +1,39 @@
+{
+  "captured_at": "2026-10-17",
+  "capture_tool": "agent-browser 0.31.1",
+  "browser": {
+    "product": "Chrome/155.0.8059.85",
+    "distribution": "Google Chrome installed app; Chrome for Testing packaging was not independently confirmed",
+    "protocol_version": "1.3",
+    "cdp_browser_get_version_revision": "537.36 (@0e66b94549a8bd85f03fbdf189b752d6e7b63c32)",
+    "v8_version": "15.5.35.25",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "launcher_path": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "launcher_bytes": 367696,
+    "launcher_sha256": "6e156f2271cef44afce9db36a5b920e94518857b94a4160f082696f8c3bd1c9d",
+    "framework_path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/155.0.8059.85/Google Chrome Framework",
+    "framework_bytes": 519576720,
+    "framework_sha256": "b1d0216b347be90a898e9961302916aa1dbf4659f96597ea836dd3eb149574b7"
+  },
+  "host": {
+    "os": "macOS 26.5.1",
+    "architecture": "arm64",
+    "navigator_platform": "MacIntel"
+  },
+  "environment": {
+    "viewport_css_px": { "width": 1280, "height": 633 },
+    "device_pixel_ratio": 1,
+    "navigator_language": "ko-KR"
+  },
+  "fonts": {
+    "ahem_sha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448",
+    "roboto_variable_sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+    "both_loaded": true
+  },
+  "fixture_sha256": "52e7cfcda307678f7d69fde285a8e5673ed5d56eba20d16b872a8e4b49307785",
+  "screenshot": {
+    "sha256": "f5444c29f6a9fd439df47196f0cdda46ca0ef486356ebf56a6a5498aa1ddfeb0",
+    "body_css_zoom": 1.75,
+    "geometry_observation_captured_before_screenshot_zoom": true
+  }
+}

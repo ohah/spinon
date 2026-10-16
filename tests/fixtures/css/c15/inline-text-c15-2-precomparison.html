@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C15.2 inline text layout precomparison</title>
+  <style>
+    @font-face {
+      font-family: Ahem;
+      src: url("../../resources/c15/Ahem.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: RobotoFixture;
+      src: url("../../resources/c15/Roboto-Variable.ttf") format("truetype");
+      font-weight: 100 900;
+      font-stretch: 75% 100%;
+      font-style: normal;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      color: #000;
+      background: #fff;
+      font: 12px/16px sans-serif;
+    }
+    h1 { margin: 8px; font: 16px/20px sans-serif; }
+    #legend { margin: 0 8px 12px; color: #444; }
+    #cases { display: block; padding: 8px; }
+    .case {
+      position: relative;
+      margin: 12px 0;
+      outline: 1px solid #c00;
+      white-space: normal;
+      font: 10px/10px Ahem, sans-serif;
+    }
+    .label {
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      top: -11px;
+      padding-right: 2px;
+      background: rgba(255,255,255,.92);
+      font: 8px/8px sans-serif;
+      color: #444;
+      white-space: nowrap;
+    }
+    #nested-short { width: 50px; }
+    #outer-short { border: 1px solid #06c; padding: 2px; }
+    #inner-short { border: 2px solid #c30; padding: 3px; }
+    #nested-wrap { width: 30px; }
+    #outer-wrap, #inner-wrap { border: 1px solid #06c; padding: 1px; }
+    #anonymous-flow { width: 30px; }
+    #flow-block { display: block; margin: 0; }
+    #ahem-baseline { width: 30px; }
+    #roboto-metrics { width: max-content; font: 20px/24px RobotoFixture, sans-serif; }
+    #mixed-baseline { width: 160px; }
+    #mixed-roboto { font: 20px/24px RobotoFixture, sans-serif; vertical-align: baseline; }
+    .marker {
+      display: inline-block;
+      width: 1px;
+      height: 0;
+      vertical-align: baseline;
+      outline: 1px solid #0a0;
+    }
+    #observations { margin: 8px; white-space: pre-wrap; font: 10px/12px monospace; }
+  </style>
+</head>
+<body>
+  <h1>C15.2 inline formatting oracle</h1>
+  <p id="legend">Ahem 10px: nested fragments and anonymous blocks · Roboto 20px: ascent/descent and shared baseline</p>
+  <main id="cases">
+    <div class="case" id="nested-short"><span id="outer-short"><span id="inner-short">XX</span></span><span class="label">nested-short</span></div>
+    <div class="case" id="nested-wrap"><span id="outer-wrap"><span id="inner-wrap">XX XX</span></span><span class="label">nested-wrap</span></div>
+    <div class="case" id="anonymous-flow">X<span id="flow-before">XX</span><div id="flow-block">XX</div><span id="flow-after">X XX</span><span class="label">anonymous-flow</span></div>
+    <div class="case" id="ahem-baseline">X<span id="ahem-marker" class="marker"></span>X<span class="label">ahem-baseline</span></div>
+    <div class="case" id="roboto-metrics">Hgyp<span id="roboto-marker" class="marker"></span>Hgyp<span class="label">roboto-metrics</span></div>
+    <div class="case" id="mixed-baseline">X<span id="mixed-ahem-marker" class="marker"></span><span id="mixed-roboto">Hgyp<span id="mixed-roboto-marker" class="marker"></span>Hgyp</span>X<span class="label">mixed-baseline</span></div>
+  </main>
+  <pre id="observations" aria-live="polite">Waiting for Ahem and Roboto fonts…</pre>
+  <script>
+    function rect(value, origin) {
+      const x = value.getBoundingClientRect();
+      const ox = origin ? origin.getBoundingClientRect().x : 0;
+      const oy = origin ? origin.getBoundingClientRect().y : 0;
+      return [x.x - ox, x.y - oy, x.width, x.height].map(n => Number(n.toFixed(4)));
+    }
+
+    function fragmentRects(value, origin) {
+      const box = origin ? origin.getBoundingClientRect() : { x: 0, y: 0 };
+      return [...value.getClientRects()].map(x =>
+        [x.x - box.x, x.y - box.y, x.width, x.height].map(n => Number(n.toFixed(4)))
+      );
+    }
+
+    function textNodeRects(root) {
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+      const result = [];
+      while (walker.nextNode()) {
+        const node = walker.currentNode;
+        if (node.parentElement.closest(".label")) continue;
+        const range = document.createRange();
+        range.selectNodeContents(node);
+        result.push({
+          text: node.data.replaceAll("\n", "\\n"),
+          owner: node.parentElement.id || node.parentElement.tagName.toLowerCase(),
+          rects: [...range.getClientRects()].map(x =>
+            [x.x - root.getBoundingClientRect().x, x.y - root.getBoundingClientRect().y, x.width, x.height].map(n => Number(n.toFixed(4)))
+          ),
+        });
+      }
+      return result;
+    }
+
+    function fontMetrics(font) {
+      const context = document.createElement("canvas").getContext("2d");
+      context.font = font;
+      const metrics = context.measureText("Hgyp");
+      return {
+        font,
+        advance: Number(metrics.width.toFixed(4)),
+        fontBoundingBoxAscent: Number(metrics.fontBoundingBoxAscent.toFixed(4)),
+        fontBoundingBoxDescent: Number(metrics.fontBoundingBoxDescent.toFixed(4)),
+        actualBoundingBoxAscent: Number(metrics.actualBoundingBoxAscent.toFixed(4)),
+        actualBoundingBoxDescent: Number(metrics.actualBoundingBoxDescent.toFixed(4)),
+      };
+    }
+
+    function observe() {
+      const ids = [
+        "nested-short", "outer-short", "inner-short", "nested-wrap", "outer-wrap", "inner-wrap",
+        "anonymous-flow", "flow-before", "flow-block", "flow-after", "ahem-baseline", "ahem-marker",
+        "roboto-metrics", "roboto-marker", "mixed-baseline", "mixed-ahem-marker", "mixed-roboto",
+        "mixed-roboto-marker",
+      ];
+      const cases = {};
+      for (const id of ids) {
+        const element = document.getElementById(id);
+        const root = element.closest(".case");
+        cases[id] = {
+          rect: rect(element, root),
+          fragments: fragmentRects(element, root),
+          textNodes: element.classList.contains("case") ? textNodeRects(element) : undefined,
+          style: {
+            font: getComputedStyle(element).font,
+            lineHeight: getComputedStyle(element).lineHeight,
+            verticalAlign: getComputedStyle(element).verticalAlign,
+            borderLeft: getComputedStyle(element).borderLeftWidth,
+            paddingLeft: getComputedStyle(element).paddingLeft,
+          },
+        };
+      }
+      const result = {
+        browser: {
+          userAgent: navigator.userAgent,
+          platform: navigator.platform,
+          language: navigator.language,
+          viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio },
+          fonts: {
+            ahem: document.fonts.check("10px Ahem"),
+            roboto: document.fonts.check("20px RobotoFixture"),
+          },
+        },
+        cases,
+        canvasMetrics: [fontMetrics("10px Ahem"), fontMetrics("20px RobotoFixture")],
+      };
+      document.getElementById("observations").textContent = JSON.stringify(result, null, 2);
+      return result;
+    }
+
+    document.fonts.ready.then(observe);
+  </script>
+</body>
+</html>
