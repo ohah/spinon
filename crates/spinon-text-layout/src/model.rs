@@ -103,6 +103,29 @@ impl ParagraphStyle {
     }
 }
 
+/// C15.2b fixture에서 하나의 inline owner가 상속할 글꼴 속성입니다.
+#[derive(Clone, Debug, PartialEq)]
+pub struct InlineRunStyle {
+    pub font_family: String,
+    pub font_size: f32,
+    pub line_height: f32,
+}
+
+impl InlineRunStyle {
+    pub fn validate(&self) -> Result<(), &'static str> {
+        if self.font_family.trim().is_empty() {
+            return Err("font-family");
+        }
+        if !self.font_size.is_finite() || self.font_size <= 0.0 {
+            return Err("font-size");
+        }
+        if !self.line_height.is_finite() || self.line_height <= 0.0 {
+            return Err("line-height");
+        }
+        Ok(())
+    }
+}
+
 /// 텍스트 노드와 그 텍스트를 감싸는 상속형 inline span 경로입니다.
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub struct TextSource {
@@ -119,4 +142,6 @@ pub struct ParagraphInput {
     pub style: ParagraphStyle,
     /// 장식된 inline owner의 고정 px border/padding만 저장합니다.
     pub inline_styles: std::collections::BTreeMap<NodeId, InlineBoxStyle>,
+    /// C15.2b에서 명시한 inline owner의 family/size/line-height override입니다.
+    pub inline_run_styles: std::collections::BTreeMap<NodeId, InlineRunStyle>,
 }

@@ -1,16 +1,16 @@
+use std::collections::BTreeMap;
 use std::ops::Range;
-use std::{collections::BTreeMap, sync::Arc};
 
-use linebender_resource_handle::Blob;
 use parley::{
     FontContext, InlineBoxKind, LayoutContext,
-    fontique::{Collection, CollectionOptions, SourceCache},
     layout::{Alignment, AlignmentOptions, PositionedLayoutItem},
     style::{LineHeight, OverflowWrap, StyleProperty, TextWrapMode, WhiteSpaceCollapse, WordBreak},
 };
 use spinon_core::NodeId;
 
+mod fonts;
 mod inline_boxes;
+mod run_styles;
 
 use crate::{
     FontMetricsSnapshot, FontRegistryRevision, InlineFragment, ParagraphInput, TextGlyph,
@@ -36,54 +36,6 @@ impl Clone for TextLayoutEngine {
 }
 
 impl TextLayoutEngine {
-    /// 시스템 폰트 검색을 끈 font registry로 시작합니다.
-    pub fn new_without_system_fonts() -> Self {
-        let collection = Collection::new(CollectionOptions {
-            shared: false,
-            system_fonts: false,
-        });
-        Self {
-            font_context: FontContext {
-                collection,
-                source_cache: SourceCache::default(),
-            },
-            layout_context: LayoutContext::new(),
-            font_registry_revision: FontRegistryRevision::default(),
-        }
-    }
-
-    /// 명시적으로 제공한 글꼴 데이터만 registry에 등록합니다.
-    pub fn register_font(
-        &mut self,
-        expected_family: &str,
-        bytes: impl AsRef<[u8]>,
-    ) -> Result<FontRegistryRevision, TextLayoutError> {
-        let bytes = bytes.as_ref();
-        let next_revision = FontRegistryRevision(
-            self.font_registry_revision
-                .0
-                .checked_add(1)
-                .ok_or(TextLayoutError::FontRevisionOverflow)?,
-        );
-        // 공유하지 않는 font collection을 복제해 실패 등록이 live registry에 남지 않게 합니다.
-        let mut candidate = self.font_context.collection.clone();
-        let registered = candidate.register_fonts(Blob::new(Arc::new(bytes.to_vec())), None);
-        let expected_family_id = candidate.family_id(expected_family);
-        if !registered
-            .iter()
-            .any(|(family_id, _)| Some(*family_id) == expected_family_id)
-        {
-            return Err(TextLayoutError::InvalidFontData(expected_family.to_owned()));
-        }
-        self.font_context.collection = candidate;
-        self.font_registry_revision = next_revision;
-        Ok(next_revision)
-    }
-
-    pub const fn font_registry_revision(&self) -> FontRegistryRevision {
-        self.font_registry_revision
-    }
-
     /// 실제 Parley shaping과 line breaking을 거쳐 불변 paragraph snapshot을 만듭니다.
     pub fn layout_paragraph(
         &mut self,
@@ -145,6 +97,19 @@ impl TextLayoutEngine {
                 input.style.font_family.clone(),
             ));
         }
+        for style in input.inline_run_styles.values() {
+            style.validate().map_err(TextLayoutError::InvalidStyle)?;
+            if self
+                .font_context
+                .collection
+                .family_id(&style.font_family)
+                .is_none()
+            {
+                return Err(TextLayoutError::MissingFontFamily(
+                    style.font_family.clone(),
+                ));
+            }
+        }
 
         let normalized = normalize(input);
         let (mut inline_boxes, mut inline_boundaries) =
@@ -204,6 +169,17 @@ impl TextLayoutEngine {
                 WhiteSpaceMode::Normal | WhiteSpaceMode::NoWrap => WhiteSpaceCollapse::Collapse,
             },
         ));
+        for (range, style) in run_styles::inline_run_style_ranges(input, &normalized) {
+            builder.push(
+                StyleProperty::FontFamily(style.font_family.as_str().into()),
+                range.clone(),
+            );
+            builder.push(StyleProperty::FontSize(style.font_size), range.clone());
+            builder.push(
+                StyleProperty::LineHeight(LineHeight::Absolute(style.line_height)),
+                range,
+            );
+        }
         for inline_box in inline_boxes {
             builder.push_inline_box(inline_box);
         }
@@ -267,6 +243,20 @@ impl TextLayoutEngine {
                         {
                             return Err(TextLayoutError::InvalidGlyphLayout(input.node));
                         }
+                        let run_style =
+                            run_styles::effective_run_style(input, &normalized, &text_range);
+                        let run_baseline = glyph_run.baseline();
+                        let run_box_ascent = run_styles::run_box_ascent(
+                            &run_style,
+                            font_metrics.ascent,
+                            font_metrics.descent,
+                        );
+                        if ![run_baseline, run_box_ascent]
+                            .iter()
+                            .all(|value| value.is_finite())
+                        {
+                            return Err(TextLayoutError::InvalidGlyphLayout(input.node));
+                        }
                         let glyphs = glyph_run
                             .positioned_glyphs()
                             .map(|glyph| {
@@ -286,10 +276,12 @@ impl TextLayoutEngine {
                             .collect::<Result<Vec<_>, _>>()?;
                         runs.push(TextRun {
                             line_index,
-                            text_range,
+                            text_range: text_range.clone(),
                             cluster_range: run.cluster_range(),
-                            font_family: input.style.font_family.clone(),
+                            font_family: run_style.font_family.clone(),
                             font_size: run.font_size(),
+                            baseline: run_baseline,
+                            line_height: run_style.line_height,
                             font_metrics: FontMetricsSnapshot {
                                 ascent: font_metrics.ascent,
                                 descent: font_metrics.descent,
@@ -321,9 +313,9 @@ impl TextLayoutEngine {
                             }
                             let rect = TextRect {
                                 x,
-                                y: metrics.block_min_coord,
+                                y: run_baseline - run_box_ascent,
                                 width,
-                                height: metrics.line_height,
+                                height: run_style.line_height,
                             };
                             for source in cluster_sources {
                                 add_fragment(

@@ -58,9 +58,12 @@ pub struct TextRun {
     pub line_index: usize,
     pub text_range: Range<usize>,
     pub cluster_range: Range<usize>,
-    /// ParagraphStyle가 요청한 family이며 실제 fallback 식별은 C15.1 범위가 아닙니다.
+    /// ParagraphStyle 또는 가장 안쪽 inline owner가 요청한 family입니다.
     pub font_family: String,
     pub font_size: f32,
+    /// Paragraph top 기준 run baseline과 inline text box line-height입니다.
+    pub baseline: f32,
+    pub line_height: f32,
     pub font_metrics: FontMetricsSnapshot,
     pub sources: Vec<TextSourceRange>,
     pub glyphs: Vec<TextGlyph>,

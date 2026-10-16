@@ -88,6 +88,7 @@ fn input(width: f32, text: &str, white_space: WhiteSpaceMode) -> LayoutInput {
             word_break: WordBreakMode::Normal,
         },
         inline_styles: BTreeMap::new(),
+        inline_run_styles: BTreeMap::new(),
     }])
     .unwrap()
 }
@@ -110,8 +111,9 @@ fn taffy_measure_and_final_layout_use_the_same_definite_content_width() {
 
         assert_eq!(text.revision, output.revision);
         assert_eq!(text.input.node, node(2));
-        assert_eq!(text.input.sources, input.text_paragraphs[&node(2)].sources);
-        assert_eq!(text.input.style, input.text_paragraphs[&node(2)].style);
+        let paragraph_input = input.text_paragraphs[&node(2)].paragraph().unwrap();
+        assert_eq!(text.input.sources, paragraph_input.sources);
+        assert_eq!(text.input.style, paragraph_input.style);
         assert_eq!(frame.width, text.layout.available_width);
         assert_eq!(text.layout.available_width.to_bits(), frame.width.to_bits());
         assert_eq!(text.layout.lines.len(), line_count);
@@ -175,9 +177,15 @@ fn taffy_requires_a_shaper_and_rejects_mismatched_paragraph_owner() {
     ));
 
     let mut mismatched = input(30.0, "X", WhiteSpaceMode::Normal);
-    let mut paragraph = mismatched.text_paragraphs.remove(&node(2)).unwrap();
+    let crate::TextParagraphInput::Paragraph(mut paragraph) =
+        mismatched.text_paragraphs.remove(&node(2)).unwrap()
+    else {
+        panic!("plain fixture should contain a paragraph input");
+    };
     paragraph.node = node(999);
-    mismatched.text_paragraphs.insert(node(2), paragraph);
+    mismatched
+        .text_paragraphs
+        .insert(node(2), crate::TextParagraphInput::Paragraph(paragraph));
     assert!(matches!(
         TaffyLayoutEngine.compute_with_text_layout_engine(&mismatched, &text_engine()),
         Err(crate::LayoutError::UnsupportedTextParagraph { node: actual, .. }) if actual == node(2)
@@ -189,3 +197,6 @@ mod host_document;
 
 #[path = "c15_text_layout_tests/c15_2.rs"]
 mod c15_2;
+
+#[path = "c15_text_layout_tests/c15_2b.rs"]
+mod c15_2b;

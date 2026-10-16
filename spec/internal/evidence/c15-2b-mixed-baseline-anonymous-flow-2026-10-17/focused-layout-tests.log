@@ -1,0 +1,22 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.04s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-ca2eb5565ecd7f8c)
+
+running 16 tests
+test c15_text_layout_tests::c15_2b::inline_span_rejects_nested_block_topology ... ok
+test c15_text_layout_tests::host_document::host_document_rejects_visible_non_span_element_inside_paragraph ... ok
+test c15_text_layout_tests::taffy_requires_a_shaper_and_rejects_mismatched_paragraph_owner ... ok
+test c15_text_layout_tests::c15_2b::flow_rejects_block_reference_outside_the_layout_graph ... ok
+test c15_text_layout_tests::c15_2b::flow_rejects_duplicated_block_item_before_taffy_layout ... ok
+test c15_text_layout_tests::c15_2::inline_depth_above_two_levels_remains_an_explicit_diagnostic ... ok
+test c15_text_layout_tests::inline_source_display_is_rejected_as_a_standalone_layout_box ... ok
+test c15_text_layout_tests::c15_2b::flow_rejects_out_of_flow_block_child_before_reparenting ... ok
+test c15_text_layout_tests::c15_2b::run_styles_fail_closed_for_missing_fonts_and_invalid_metrics ... ok
+test c15_text_layout_tests::c15_2::nested_short_fragments_include_decorations_without_changing_line_height ... ok
+test c15_text_layout_tests::c15_2::nested_wrap_keeps_start_and_end_edges_on_their_respective_fragments ... ok
+test c15_text_layout_tests::host_document::host_document_collects_direct_text_and_inherited_spans_in_source_order ... ok
+test c15_text_layout_tests::zero_width_block_keeps_text_advance_outside_its_box ... ok
+test c15_text_layout_tests::taffy_measure_and_final_layout_use_the_same_definite_content_width ... ok
+test c15_text_layout_tests::c15_2b::mixed_font_run_metrics_share_the_chrome_baseline_and_line_box ... ok
+test c15_text_layout_tests::c15_2b::anonymous_inline_blocks_keep_source_order_and_flow_geometry ... ok
+
+test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 138 filtered out; finished in 0.00s

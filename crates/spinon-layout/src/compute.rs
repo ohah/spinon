@@ -6,7 +6,8 @@ use taffy::prelude::{AvailableSpace, Size};
 
 use super::{
     LayoutEngine, LayoutError, LayoutFrame, LayoutInput, LayoutIntrinsicSize,
-    LayoutIntrinsicSizeSnapshot, LayoutOutput, LayoutUsedBoxEdges, TaffyLayoutEngine,
+    LayoutIntrinsicSizeSnapshot, LayoutOutput, LayoutUsedBoxEdges, TaffyLayoutEngine, TextFlowItem,
+    TextParagraphInput,
     calc_tree::CalcLayoutTree,
     flex_auto_margin::negative_cross_axis_auto_margin_offset_correction,
     flex_baseline,
@@ -87,7 +88,9 @@ impl TaffyLayoutEngine {
         } else {
             collect_frames(input, &index, &visual_tree, &adjustments)?
         };
-        output.text_layouts = visual_tree.final_text_layouts(input)?;
+        let (text_layouts, text_flow_layouts) = visual_tree.final_text_layouts(input)?;
+        output.text_layouts = text_layouts;
+        output.text_flow_layouts = text_flow_layouts;
         output.positioned_owners = collect_positioned_owners(input, &index);
         output.fixed_owners = collect_fixed_owners(input, &index);
         if let Some(flow_frames) = flow_frames {
@@ -130,16 +133,10 @@ fn validate_text_paragraphs(
         }
         pending.extend(node.children.iter().map(|&child| (child, is_hidden)));
     }
-    for (&id, paragraph) in &input.text_paragraphs {
+    for (&id, paragraph_input) in &input.text_paragraphs {
         let Some(&position) = index.get(&id) else {
             return Err(LayoutError::UnknownTextParagraph(id));
         };
-        if paragraph.node != id {
-            return Err(LayoutError::UnsupportedTextParagraph {
-                node: id,
-                reason: "paragraph owner ID와 layout node ID가 다릅니다",
-            });
-        }
         let node = &input.nodes()[position];
         if node.style.display == crate::LayoutDisplay::None || hidden.contains(&id) {
             return Err(LayoutError::UnsupportedTextParagraph {
@@ -147,12 +144,94 @@ fn validate_text_paragraphs(
                 reason: "숨겨진 subtree에는 paragraph snapshot을 입력할 수 없습니다",
             });
         }
-        let has_visible_box_child = node.children.iter().any(|child| !hidden.contains(child));
-        if node.style.display != crate::LayoutDisplay::Block || has_visible_box_child {
+        if node.style.display != crate::LayoutDisplay::Block {
             return Err(LayoutError::UnsupportedTextParagraph {
                 node: id,
-                reason: "visible 자식 box가 없는 Block paragraph만 허용됩니다",
+                reason: "paragraph 또는 flow owner는 display:block이어야 합니다",
             });
+        }
+        match paragraph_input {
+            TextParagraphInput::Paragraph(paragraph) => {
+                if paragraph.node != id {
+                    return Err(LayoutError::UnsupportedTextParagraph {
+                        node: id,
+                        reason: "paragraph owner ID와 layout node ID가 다릅니다",
+                    });
+                }
+                if node.children.iter().any(|child| !hidden.contains(child)) {
+                    return Err(LayoutError::UnsupportedTextParagraph {
+                        node: id,
+                        reason: "visible 자식 box가 없는 Block paragraph만 허용됩니다",
+                    });
+                }
+            }
+            TextParagraphInput::Flow(flow) => {
+                if flow.owner != id || flow.items.is_empty() {
+                    return Err(LayoutError::UnsupportedTextParagraph {
+                        node: id,
+                        reason: "anonymous flow owner 또는 item 목록이 잘못되었습니다",
+                    });
+                }
+                let mut flow_blocks = Vec::new();
+                for item in &flow.items {
+                    match item {
+                        TextFlowItem::Paragraph(paragraph)
+                            if paragraph.node == id && !paragraph.sources.is_empty() => {}
+                        TextFlowItem::Block(block) => {
+                            if flow_blocks.contains(block) {
+                                return Err(LayoutError::UnsupportedTextParagraph {
+                                    node: id,
+                                    reason: "anonymous flow에 같은 block child가 반복됩니다",
+                                });
+                            }
+                            let Some(&child_position) = index.get(block) else {
+                                return Err(LayoutError::UnsupportedTextParagraph {
+                                    node: id,
+                                    reason: "anonymous flow block child가 layout graph에 없습니다",
+                                });
+                            };
+                            if input.nodes()[child_position].style.display
+                                != crate::LayoutDisplay::Block
+                            {
+                                return Err(LayoutError::UnsupportedTextParagraph {
+                                    node: id,
+                                    reason: "anonymous flow child는 display:block이어야 합니다",
+                                });
+                            }
+                            if input.positioning.get(block).is_some_and(|positioning| {
+                                matches!(
+                                    positioning.position,
+                                    crate::LayoutPosition::Absolute | crate::LayoutPosition::Fixed
+                                )
+                            }) {
+                                return Err(LayoutError::UnsupportedTextParagraph {
+                                    node: id,
+                                    reason: "anonymous flow에 out-of-flow block child를 넣을 수 없습니다",
+                                });
+                            }
+                            flow_blocks.push(*block);
+                        }
+                        TextFlowItem::Paragraph(_) => {
+                            return Err(LayoutError::UnsupportedTextParagraph {
+                                node: id,
+                                reason: "anonymous paragraph owner 또는 source가 잘못되었습니다",
+                            });
+                        }
+                    }
+                }
+                let visible_children = node
+                    .children
+                    .iter()
+                    .copied()
+                    .filter(|child| !hidden.contains(child))
+                    .collect::<Vec<_>>();
+                if flow_blocks.is_empty() || flow_blocks != visible_children {
+                    return Err(LayoutError::UnsupportedTextParagraph {
+                        node: id,
+                        reason: "anonymous flow block children must match visible layout children in source order",
+                    });
+                }
+            }
         }
     }
     Ok(())
@@ -407,6 +486,7 @@ fn collect_frames(
         positioned_owners: BTreeMap::new(),
         fixed_owners: BTreeMap::new(),
         text_layouts: BTreeMap::new(),
+        text_flow_layouts: BTreeMap::new(),
         frames,
     })
 }

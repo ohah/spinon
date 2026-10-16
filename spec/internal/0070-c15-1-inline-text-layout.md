@@ -3,13 +3,13 @@
 **상태:** 초안 · **내부 인터페이스 숫자 버전:** `0.1.0` 고정<br>
 **작업 계획:** [C15 인라인 텍스트 shaping과 줄 상자](https://github.com/ohah/spinon/blob/main/plan/c15-inline-text-layout.md)<br>
 **기준 관찰:** [Chrome precomparison](./evidence/c15-inline-text-precomparison-2026-10-17/README.md) · [plain inline fragment](./evidence/c15-inline-text-precomparison-2026-10-17/plain-inline-fragment-observation.md)<br>
-**구현 근거:** [C15.1 Rust shaping/layout](./evidence/c15-1-inline-text-layout-2026-10-17/README.md) · [C15.2a 중첩·장식 inline geometry](./evidence/c15-2a-inline-text-layout-2026-10-17/README.md)
+**구현 근거:** [C15.1 Rust shaping/layout](./evidence/c15-1-inline-text-layout-2026-10-17/README.md) · [C15.2a 중첩·장식 inline geometry](./evidence/c15-2a-inline-text-layout-2026-10-17/README.md) · [C15.2b mixed baseline·anonymous flow](./evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/README.md)
 
 이 문서는 앱 작성자용 HTML/CSS 지원 API가 아니라 `spinon-text-layout`과 `spinon-layout` 사이의 내부 호출 계약을 기록한다. 이 구현은 text geometry snapshot만 제공한다. `spinon-style-to-layout`의 runtime projection과 renderer는 text node를 계속 거부하므로 현재 앱에서 글자를 그리거나 CSS text 지원을 주장하지 않는다.
 
 ## 호출 흐름과 소유권
 
-1. 호출자는 완전한 `LayoutStyle` map, 내부 `ParagraphStyle` map, 그리고 `HostDocumentSnapshot`을 `LayoutInput::from_host_document_with_text_paragraphs(...)`에 전달한다. paragraph key는 visible HTML element여야 하며, C15.1/C15.2a profile에서 `display:block`이어야 한다.
+1. 호출자는 완전한 `LayoutStyle` map, 내부 `ParagraphStyle` map, 그리고 `HostDocumentSnapshot`을 `LayoutInput::from_host_document_with_text_paragraphs(...)`에 전달한다. 서로 다른 inline font metric이 필요하면 `InlineRunStyle` map을 받는 `..._and_run_styles(...)` profile을 쓴다. paragraph key는 visible HTML element이며 `display:block`이어야 한다.
 2. HostDocument adapter는 paragraph의 text node와 inline HTML `span`을 DOM source order대로 수집한다. C15.1은 한 단계 plain span을, C15.2a는 최대 두 단계 span과 고정 px border/padding을 받는다. `display:none` element subtree와 빈 text node는 line geometry에 넣지 않는다. 숨긴 element에는 style이 필요하며 unpaired UTF-16 surrogate는 `InvalidTextEncoding(node)`로 닫는다.
 3. 호출자는 명시적으로 등록한 폰트와 `TextLayoutEngine`을 `TaffyLayoutEngine::compute_with_text_layout_engine(...)`에 전달한다. Taffy measure callback은 definite content width에서 실제 shaping을 수행한다.
 4. 최종 Block content width가 measure width와 bit-exact하게 같을 때만 같은 계산의 snapshot을 `LayoutOutput.text_layouts`에 넣는다. width가 다르거나, auto-height가 snapshot 높이와 `0.05 CSS px` 이상 다르면 layout 계산은 실패한다.
@@ -30,6 +30,15 @@
 - source map의 `source_utf16`은 원본 DOM text node 안의 UTF-16 범위, `paragraph_utf8`은 normalized paragraph string 안의 UTF-8 byte 범위다. 한 glyph/cluster의 source는 node와 inline ancestor owner를 잃지 않는다.
 - line box와 glyph output은 CSS px로 기록한다. `TextLine`은 advance/hanging advance, top, height, baseline을 보존하고 `TextRun`은 font metrics, source ranges, glyph ID와 origin/advance를 보존한다. C15.2a는 1 CSS px scale의 Parley `quantize=true`를 써 Blink의 정수 ascent/descent에 맞춘 line/glyph baseline을 기록하되 shaped advance와 `TextRun.font_metrics`의 원본 분수값은 보존한다. `TextRun.font_family`는 profile의 요청 family이며 실제 fallback face 식별은 이 slice가 보장하지 않는다. 현재 oracle은 Ahem/Roboto가 제공하는 고정 ASCII 문자만 사용한다. C15.1 `InlineFragment`는 content rectangle이며 C15.2a decorated owner는 border/padding을 더한 rect를 line index별로 보존한다. 줄마다 별도 fragment를 유지하며 union rectangle로 합치지 않는다.
 
+## C15.2b mixed font와 anonymous block flow
+
+- `InlineRunStyle`은 inline owner별 고정 `font_family`, 양수 `font_size`, 양수 `line_height`다. owner ancestry의 가장 안쪽에 지정된 값을 해당 text source에 적용한다. 요청 family는 `TextLayoutEngine`의 명시적 font registry에 있어야 하며 missing family나 유효하지 않은 metric은 오류로 닫는다. CSS cascade, font fallback 선택·식별과 비동기 loading을 제공하지 않는다.
+- `TextRun`은 적용된 요청 family·size·line-height 및 paragraph 좌표계의 run baseline을 보존한다. line box baseline을 공유하더라도 glyph run별 font metrics와 line-height를 잃지 않는다. inline fragment의 vertical rect는 run baseline과 해당 font의 quantized ascent/descent로 계산한다.
+- Paragraph의 direct children에서 HTML inline `span`과 `display:block` child가 섞이면 HostDocument adapter는 inline source를 `TextFlowItem::Paragraph`로 나눠 direct Block node와 함께 source order로 만든다. text를 가진 direct Block child마다 별도 `ParagraphStyle` entry가 있어야 한다. Block child는 중복될 수 없고, `LayoutInput` visible direct child 순서와 완전히 같아야 한다. out-of-flow child, graph 밖 child와 inline span 내부의 Block은 거부한다.
+- `CalcLayoutTree`는 inline paragraph마다 내부 synthetic Block leaf를 만든다. 이 node는 external DOM node로 노출하지 않는다. Taffy가 결정한 owner content width에서 shaping/measuring하고, 출력 `LayoutOutput.text_flow_layouts[owner]`는 item index, paragraph border-box frame, 동일 revision의 input/snapshot을 포함한다. frame 위치는 owner border-box 기준이며 Taffy가 이미 반영한 owner border/padding offset을 다시 더하지 않는다.
+- C15.2b oracle은 Ahem `10px/10px`과 Roboto `20px/24px`의 한 줄 baseline `19px`/line height `24px`, 그리고 width `30px` anonymous flow의 parent `30×40px`, block y `10px`, trailing segment y `20px`/height `20px`다. renderer가 snapshot을 그리거나 부모 경계 밖 ink를 clip한다고 의미하지 않는다.
+- `display:none` subtree와 빈 text node 제외, source UTF-16/UTF-8 mapping, per-width measure snapshot 규칙, C15.2a의 최대 두 단계 nesting·decorated fragment 범위는 계속 적용한다.
+
 ## 실패 계약
 
 | 실패 | 결과 |
@@ -48,6 +57,8 @@
 | width/style/font data/glyph mapping이 유효하지 않음 | `TextLayout(TextLayoutError)`의 구체 variant |
 | inline style owner가 없거나 border/padding 값·합계가 유효하지 않음 | `TextLayout(InvalidInlineBoxStyle(node))` |
 | decorated inline owner에 visible text range가 없음 | `TextLayout(InlineBoxWithoutText(node))` |
+| inline owner의 run style family가 registry에 없거나 metric이 유효하지 않음 | `TextLayout(MissingFontFamily)` 또는 `TextLayout(InvalidStyle)` |
+| anonymous flow block item이 중복·누락·순서 불일치·out-of-flow이거나 span 내부에 나타남 | `UnsupportedTextParagraph(owner)` |
 | 직접 `ParagraphInput`에 세 단계 이상 ancestry 또는 경로가 충돌함 | `TextLayout(UnsupportedInlineDepth(node))` 또는 `TextLayout(InvalidInlineHierarchy(node))` |
 | Parley가 역전·범위 밖·UTF-8 경계가 아닌 line/run/cluster byte range를 반환함 | `TextLayout(InvalidGlyphLayout(node))` |
 
@@ -55,6 +66,6 @@
 
 ## 제외 범위와 소비자 경계
 
-- 이 계약은 style-to-layout cascade 연결이나 `spinon-style-to-render` runtime text node admission을 추가하지 않는다. 앱 runtime, Android/iOS Simulator, 실제 glyph ink, overflow pixel, clip, hit-test, selection/caret, accessibility는 확인되지 않았다.
-- C15.2a 밖의 mixed-font baseline, mixed block/inline anonymous box, inline replaced object, float, ruby, vertical writing, bidi/script shaping은 제외한다. border/padding ink rasterization과 painter는 C15.3, CSS font properties/cascade와 `@font-face`는 C16이다.
+- 이 계약은 style-to-layout cascade 연결이나 `spinon-style-to-render` runtime text node admission을 추가하지 않는다. C15.2b는 pure Rust geometry/shaping만 검증하며 앱 runtime, Android/iOS Simulator 앱 화면, 실제 glyph ink, overflow pixel, clip, hit-test, selection/caret, accessibility는 확인하지 않았다.
+- C15.2b는 고정된 mixed-font baseline과 anonymous block flow fixture만 포함한다. 임의 font cascade, inline replaced object, float, ruby, vertical writing, bidi/script shaping은 제외한다. border/padding ink rasterization과 painter는 C15.3, CSS font properties/cascade와 `@font-face`는 C16이다.
 - C15 parent/C16/C19 완료를 이 계약만으로 표시할 수 없다. 실행 근거와 상위 상태는 [공식 상태 대장](../STATUS.md)을 따른다.
