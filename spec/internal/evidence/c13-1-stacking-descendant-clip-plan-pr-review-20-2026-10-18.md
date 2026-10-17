@@ -4,7 +4,7 @@
 
 | # | PR diff 실패 관점 | 확인 결과 |
 | ---: | --- | --- |
-| 1 | 오래된 C13.1 사실이나 완료 상태를 새 문서가 덮는가 | `spec/STATUS.md`는 계획·oracle만 추가하고 C13.1/C13 미완료와 `61/197`을 유지한다. |
+| 1 | 오래된 C13.1 사실이나 완료 상태를 새 문서가 덮는가 | `spec/STATUS.md`는 계획·oracle만 추가하고 C13.1/C13 미완료를 유지한다. 로드맵 합계는 상태 대장에서 동적으로 읽는다. |
 | 2 | 이 계획이 현재 C13.1 계약의 실제 남은 항목과 연결되는가 | 내부 계약 0060에 기존 복합 stacking descendant 미검증 문구가 있어 해당 경계를 직접 연결했다. |
 | 3 | 계획 변경에 implementation code가 섞였는가 | runtime, renderer, FFI, Android/iOS 앱 코드는 건드리지 않았고 fixture와 Chrome 관찰 자료만 추가했다. |
 | 4 | Chrome fixture가 target/ancestor/sibling 구조를 모호하게 만드는가 | parent, nested layer, target, root sibling overlay 각각 stable `data-id`를 두었다. |

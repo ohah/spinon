@@ -1,6 +1,6 @@
 # C13.1 복합 stacking descendant clip runtime 근거
 
-**날짜:** 2026-10-18 · **범위:** 고정 fixture runtime 전용 · **공식 C13.1/C13 상태:** 미완료 · **완료 수:** `61/197`
+**날짜:** 2026-10-18 · **범위:** 고정 fixture runtime 전용 · **공식 C13.1/C13 상태:** 미완료 · **Tailnet 읽기 전용 집계:** `74/207` (Agent Browser 확인, 상위 78 + 세부 ID 127 + 무ID 하위 2)
 
 ## 검증 대상
 
@@ -51,4 +51,4 @@ run 03의 [Metal sample JSONL](ios-guard-run-03-metal-samples.jsonl) SHA-256은 
 
 ## 완료 범위와 제한
 
-이 근거는 지정 fixture와 고정 Chrome 155 oracle의 hit identity·18개 표면 색 표본만 다룬다. Android는 API 37 ARM64 AVD software renderer이고 iOS는 iOS 26.2 Simulator drawable이다. 실기기·hardware GPU·OS compositor/scanout, WPT, DOM event dispatch, CSSOM, 일반 CSS stacking·overflow 조합, C13.1/C13 제품 지원 완료는 검증하지 않았다. C13.1과 C13 상위 체크는 미완료이고 공식 완료 수 `61/197`은 변하지 않는다.
+이 근거는 지정 fixture와 고정 Chrome 155 oracle의 hit identity·18개 표면 색 표본만 다룬다. Android는 API 37 ARM64 AVD software renderer이고 iOS는 iOS 26.2 Simulator drawable이다. 실기기·hardware GPU·OS compositor/scanout, WPT, DOM event dispatch, CSSOM, 일반 CSS stacking·overflow 조합, C13.1/C13 제품 지원 완료는 검증하지 않았다. C13.1과 C13 상위 체크는 미완료다. Agent Browser에서 확인한 `74/207`은 상태 대장 항목의 읽기 전용 합계이며 제품 지원 API 완료 수가 아니다. 이 근거는 공식 상태 체크를 변경하지 않는다.
