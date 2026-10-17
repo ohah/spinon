@@ -1,0 +1,315 @@
+{
+  "status": "matched",
+  "dimensions": [
+    900,
+    300
+  ],
+  "comparedPixels": 270000,
+  "comparedChannels": 1080000,
+  "mismatchedPixels": 0,
+  "maximumChannelError": 0,
+  "mismatchBounds": null,
+  "mismatches": [],
+  "runId": "2ffa33312ffe4ccc9ddd9db174ad1f0a",
+  "generation": 1,
+  "processID": 37425,
+  "surfaceFormat": "Bgra8Unorm",
+  "rgbaByteLength": 1080000,
+  "sampleSha256": "204eafbd24c4cc5ba1a297cdde120dfc713233e603e94320d7b7ca46952f1337",
+  "outsideBorderSamples": [
+    {
+      "caseId": "visible",
+      "css": [
+        70,
+        6
+      ],
+      "frame": {
+        "x": 0,
+        "y": 1,
+        "width": 64,
+        "height": 14
+      },
+      "physicalPixelCenter": [
+        211,
+        19
+      ],
+      "chromeRgba": [
+        87,
+        166,
+        217,
+        255
+      ]
+    },
+    {
+      "caseId": "clip-x",
+      "css": [
+        170,
+        6
+      ],
+      "frame": {
+        "x": 100,
+        "y": 1,
+        "width": 64,
+        "height": 14
+      },
+      "physicalPixelCenter": [
+        511,
+        19
+      ],
+      "chromeRgba": [
+        16,
+        24,
+        39,
+        255
+      ]
+    },
+    {
+      "caseId": "clip-y",
+      "css": [
+        270,
+        6
+      ],
+      "frame": {
+        "x": 200,
+        "y": 1,
+        "width": 64,
+        "height": 14
+      },
+      "physicalPixelCenter": [
+        811,
+        19
+      ],
+      "chromeRgba": [
+        87,
+        166,
+        217,
+        255
+      ]
+    },
+    {
+      "caseId": "clip-both",
+      "css": [
+        70,
+        26
+      ],
+      "frame": {
+        "x": 0,
+        "y": 21,
+        "width": 64,
+        "height": 14
+      },
+      "physicalPixelCenter": [
+        211,
+        79
+      ],
+      "chromeRgba": [
+        16,
+        24,
+        39,
+        255
+      ]
+    },
+    {
+      "caseId": "clip-margin-padding",
+      "css": [
+        170,
+        26
+      ],
+      "frame": {
+        "x": 100,
+        "y": 21,
+        "width": 64,
+        "height": 14
+      },
+      "physicalPixelCenter": [
+        511,
+        79
+      ],
+      "chromeRgba": [
+        16,
+        24,
+        39,
+        255
+      ]
+    },
+    {
+      "caseId": "clip-margin-content",
+      "css": [
+        270,
+        26
+      ],
+      "frame": {
+        "x": 200,
+        "y": 21,
+        "width": 64,
+        "height": 14
+      },
+      "physicalPixelCenter": [
+        811,
+        79
+      ],
+      "chromeRgba": [
+        16,
+        24,
+        39,
+        255
+      ]
+    },
+    {
+      "caseId": "clip-margin-border",
+      "css": [
+        70,
+        46
+      ],
+      "frame": {
+        "x": 0,
+        "y": 41,
+        "width": 64,
+        "height": 14
+      },
+      "physicalPixelCenter": [
+        211,
+        139
+      ],
+      "chromeRgba": [
+        16,
+        24,
+        39,
+        255
+      ]
+    },
+    {
+      "caseId": "clip-margin-hidden",
+      "css": [
+        170,
+        46
+      ],
+      "frame": {
+        "x": 100,
+        "y": 41,
+        "width": 64,
+        "height": 14
+      },
+      "physicalPixelCenter": [
+        511,
+        139
+      ],
+      "chromeRgba": [
+        16,
+        24,
+        39,
+        255
+      ]
+    },
+    {
+      "caseId": "mixed-visible-hidden",
+      "css": [
+        270,
+        46
+      ],
+      "frame": {
+        "x": 200,
+        "y": 41,
+        "width": 64,
+        "height": 14
+      },
+      "physicalPixelCenter": [
+        811,
+        139
+      ],
+      "chromeRgba": [
+        16,
+        24,
+        39,
+        255
+      ]
+    },
+    {
+      "caseId": "mixed-clip-auto",
+      "css": [
+        70,
+        66
+      ],
+      "frame": {
+        "x": 0,
+        "y": 61,
+        "width": 64,
+        "height": 14
+      },
+      "physicalPixelCenter": [
+        211,
+        199
+      ],
+      "chromeRgba": [
+        16,
+        24,
+        39,
+        255
+      ]
+    },
+    {
+      "caseId": "positioned-contained",
+      "css": [
+        170,
+        72
+      ],
+      "frame": {
+        "x": 100,
+        "y": 61,
+        "width": 64,
+        "height": 14
+      },
+      "physicalPixelCenter": [
+        511,
+        217
+      ],
+      "chromeRgba": [
+        16,
+        24,
+        39,
+        255
+      ]
+    },
+    {
+      "caseId": "positioned-escape",
+      "css": [
+        270,
+        72
+      ],
+      "frame": {
+        "x": 200,
+        "y": 60,
+        "width": 64,
+        "height": 14
+      },
+      "physicalPixelCenter": [
+        811,
+        217
+      ],
+      "chromeRgba": [
+        227,
+        84,
+        78,
+        255
+      ]
+    }
+  ],
+  "oracle": {
+    "browser": "Google Chrome 155.0.8059.85",
+    "revision": "0e66b94549a8bd85f03fbdf189b752d6e7b63c32",
+    "screenshotSha256": "bc66cd2bf37a19eb1b98c92867186213ffdb25f0660ac2f4e1e7b10799f84425",
+    "observationSha256": "64319a76c86672a0d8f4e9a8918f610c5d96f2e3d0a9e555a5ab8048765d1d0b",
+    "geometryObservationSha256": "515fc95f811399fda9e336a13e7583f2d22555fce4727f1fe7f734981abd0299",
+    "fixtureSourceHashes": {
+      "wrapper": "431f4b4452969adcae80c4e5f89e5e45b1e8756fc3c4d8995b7a5eccfbc6f355",
+      "domCss": "d36bc1f7d3c791cdc91f6d878c3961e067efc2f88ca1486db8a065c5fd69c760",
+      "agentEval": "5622623ce7d0f7c29452382b873ed1e12cc5ee2dc159e07c7ff61f48ee42b45b"
+    }
+  },
+  "artifact": {
+    "manifestFile": "spec/internal/evidence/c13-1-ios-full-physical-pixels-2026-10-18/c13-1-ios-full-physical-20261017T161458085Z-7443dc46/c131-metal-full-surface-2ffa33312ffe4ccc9ddd9db174ad1f0a.manifest.json",
+    "manifestSha256": "9e29b4958ffb3ebb139bf69d0c8337308244fa2d1347d0b663d6aa07d750a337",
+    "rgbaFile": "spec/internal/evidence/c13-1-ios-full-physical-pixels-2026-10-18/c13-1-ios-full-physical-20261017T161458085Z-7443dc46/c131-metal-full-surface-2ffa33312ffe4ccc9ddd9db174ad1f0a.rgba",
+    "rgbaSha256": "204eafbd24c4cc5ba1a297cdde120dfc713233e603e94320d7b7ca46952f1337"
+  }
+}

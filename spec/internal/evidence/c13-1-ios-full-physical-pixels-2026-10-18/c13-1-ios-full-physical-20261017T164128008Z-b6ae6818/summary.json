@@ -1,0 +1,1006 @@
+{
+  "schema": "spinon-c13-1-ios-metal-full-physical-pixels/v1",
+  "status": "matched",
+  "captureMode": "full-physical-surface",
+  "captureRunID": "c13-1-ios-full-physical-20261017T164128008Z-b6ae6818",
+  "source": {
+    "revision": "85f289938b5445ff2187e8b93644d9fa9e3ab5af",
+    "status": "?? spec/internal/evidence/c13-1-android-avd-full-surface-2026-10-18/\n?? spec/internal/evidence/c13-1-ios-full-physical-pixels-2026-10-18/"
+  },
+  "simulator": {
+    "name": "iPhone 17 Pro",
+    "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2"
+  },
+  "v8": {
+    "revision": "7b50b62cb18f28617959e8452e2cd18195b38bcf",
+    "archiveSha256": "7a3e24607ea7b419d3fd858c35c094a566660f9d3112015487fa010d99e99815"
+  },
+  "appExecutableSha256": "4976dcd544200c636b370779f3cfffb4271b22a9f4fbc8c69f2441c04eab0469",
+  "chromeOracle": {
+    "product": "Google Chrome 155.0.8059.85",
+    "observationSha256": "515fc95f811399fda9e336a13e7583f2d22555fce4727f1fe7f734981abd0299",
+    "screenshotSha256": "bc66cd2bf37a19eb1b98c92867186213ffdb25f0660ac2f4e1e7b10799f84425"
+  },
+  "expected": {
+    "viewportCssPx": [
+      300,
+      100
+    ],
+    "drawablePixelSize": [
+      900,
+      300
+    ],
+    "samples": 270000,
+    "channels": 1080000,
+    "batchSize": 64,
+    "batches": 4219
+  },
+  "runs": [
+    {
+      "name": "run-1",
+      "pid": 41611,
+      "appRunID": "00597ccf66824c7da82a6a4c891361b6",
+      "layoutGeneration": 1,
+      "surfaceGeneration": 1,
+      "metal": {
+        "samples": 270000,
+        "channels": 1080000,
+        "mismatches": 0,
+        "maximumChannelError": 0,
+        "drawablePixelSize": [
+          900,
+          300
+        ],
+        "surfaceFormat": "Bgra8Unorm",
+        "sampleSha256": "204eafbd24c4cc5ba1a297cdde120dfc713233e603e94320d7b7ca46952f1337",
+        "batches": {
+          "requests": 4219,
+          "acceptedNonFinal": 4218
+        },
+        "outsideBorderSamples": [
+          {
+            "caseId": "visible",
+            "css": [
+              70,
+              6
+            ],
+            "frame": {
+              "x": 0,
+              "y": 1,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              211,
+              19
+            ],
+            "chromeRgba": [
+              87,
+              166,
+              217,
+              255
+            ]
+          },
+          {
+            "caseId": "clip-x",
+            "css": [
+              170,
+              6
+            ],
+            "frame": {
+              "x": 100,
+              "y": 1,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              511,
+              19
+            ],
+            "chromeRgba": [
+              16,
+              24,
+              39,
+              255
+            ]
+          },
+          {
+            "caseId": "clip-y",
+            "css": [
+              270,
+              6
+            ],
+            "frame": {
+              "x": 200,
+              "y": 1,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              811,
+              19
+            ],
+            "chromeRgba": [
+              87,
+              166,
+              217,
+              255
+            ]
+          },
+          {
+            "caseId": "clip-both",
+            "css": [
+              70,
+              26
+            ],
+            "frame": {
+              "x": 0,
+              "y": 21,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              211,
+              79
+            ],
+            "chromeRgba": [
+              16,
+              24,
+              39,
+              255
+            ]
+          },
+          {
+            "caseId": "clip-margin-padding",
+            "css": [
+              170,
+              26
+            ],
+            "frame": {
+              "x": 100,
+              "y": 21,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              511,
+              79
+            ],
+            "chromeRgba": [
+              16,
+              24,
+              39,
+              255
+            ]
+          },
+          {
+            "caseId": "clip-margin-content",
+            "css": [
+              270,
+              26
+            ],
+            "frame": {
+              "x": 200,
+              "y": 21,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              811,
+              79
+            ],
+            "chromeRgba": [
+              16,
+              24,
+              39,
+              255
+            ]
+          },
+          {
+            "caseId": "clip-margin-border",
+            "css": [
+              70,
+              46
+            ],
+            "frame": {
+              "x": 0,
+              "y": 41,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              211,
+              139
+            ],
+            "chromeRgba": [
+              16,
+              24,
+              39,
+              255
+            ]
+          },
+          {
+            "caseId": "clip-margin-hidden",
+            "css": [
+              170,
+              46
+            ],
+            "frame": {
+              "x": 100,
+              "y": 41,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              511,
+              139
+            ],
+            "chromeRgba": [
+              16,
+              24,
+              39,
+              255
+            ]
+          },
+          {
+            "caseId": "mixed-visible-hidden",
+            "css": [
+              270,
+              46
+            ],
+            "frame": {
+              "x": 200,
+              "y": 41,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              811,
+              139
+            ],
+            "chromeRgba": [
+              16,
+              24,
+              39,
+              255
+            ]
+          },
+          {
+            "caseId": "mixed-clip-auto",
+            "css": [
+              70,
+              66
+            ],
+            "frame": {
+              "x": 0,
+              "y": 61,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              211,
+              199
+            ],
+            "chromeRgba": [
+              16,
+              24,
+              39,
+              255
+            ]
+          },
+          {
+            "caseId": "positioned-contained",
+            "css": [
+              170,
+              72
+            ],
+            "frame": {
+              "x": 100,
+              "y": 61,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              511,
+              217
+            ],
+            "chromeRgba": [
+              16,
+              24,
+              39,
+              255
+            ]
+          },
+          {
+            "caseId": "positioned-escape",
+            "css": [
+              270,
+              72
+            ],
+            "frame": {
+              "x": 200,
+              "y": 60,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              811,
+              217
+            ],
+            "chromeRgba": [
+              227,
+              84,
+              78,
+              255
+            ]
+          }
+        ]
+      },
+      "hitIdentity": {
+        "points": 30000,
+        "matched": 30000,
+        "mismatches": 0,
+        "fixedSamples": 52,
+        "nodeFrames": 41
+      },
+      "comparison": "run-1-comparison.json",
+      "captureMode": "full-physical-surface",
+      "manifest": "c131-metal-full-surface-00597ccf66824c7da82a6a4c891361b6.manifest.json",
+      "samples": "c131-metal-full-surface-00597ccf66824c7da82a6a4c891361b6.rgba",
+      "screenshot": "run-1-ios-simulator.png",
+      "screenshotSha256": "b7a703c500569403c44f22eb69b00d3fbeee0dfec5b9c027db18e2ed6e3b543c",
+      "runtimeLog": "run-1-runtime.log",
+      "maxDrawLineLength": 152
+    },
+    {
+      "name": "run-2",
+      "pid": 43627,
+      "appRunID": "b7e2cf73bc6d4f629c673e2cdf15a74d",
+      "layoutGeneration": 1,
+      "surfaceGeneration": 1,
+      "metal": {
+        "samples": 270000,
+        "channels": 1080000,
+        "mismatches": 0,
+        "maximumChannelError": 0,
+        "drawablePixelSize": [
+          900,
+          300
+        ],
+        "surfaceFormat": "Bgra8Unorm",
+        "sampleSha256": "204eafbd24c4cc5ba1a297cdde120dfc713233e603e94320d7b7ca46952f1337",
+        "batches": {
+          "requests": 4219,
+          "acceptedNonFinal": 4218
+        },
+        "outsideBorderSamples": [
+          {
+            "caseId": "visible",
+            "css": [
+              70,
+              6
+            ],
+            "frame": {
+              "x": 0,
+              "y": 1,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              211,
+              19
+            ],
+            "chromeRgba": [
+              87,
+              166,
+              217,
+              255
+            ]
+          },
+          {
+            "caseId": "clip-x",
+            "css": [
+              170,
+              6
+            ],
+            "frame": {
+              "x": 100,
+              "y": 1,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              511,
+              19
+            ],
+            "chromeRgba": [
+              16,
+              24,
+              39,
+              255
+            ]
+          },
+          {
+            "caseId": "clip-y",
+            "css": [
+              270,
+              6
+            ],
+            "frame": {
+              "x": 200,
+              "y": 1,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              811,
+              19
+            ],
+            "chromeRgba": [
+              87,
+              166,
+              217,
+              255
+            ]
+          },
+          {
+            "caseId": "clip-both",
+            "css": [
+              70,
+              26
+            ],
+            "frame": {
+              "x": 0,
+              "y": 21,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              211,
+              79
+            ],
+            "chromeRgba": [
+              16,
+              24,
+              39,
+              255
+            ]
+          },
+          {
+            "caseId": "clip-margin-padding",
+            "css": [
+              170,
+              26
+            ],
+            "frame": {
+              "x": 100,
+              "y": 21,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              511,
+              79
+            ],
+            "chromeRgba": [
+              16,
+              24,
+              39,
+              255
+            ]
+          },
+          {
+            "caseId": "clip-margin-content",
+            "css": [
+              270,
+              26
+            ],
+            "frame": {
+              "x": 200,
+              "y": 21,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              811,
+              79
+            ],
+            "chromeRgba": [
+              16,
+              24,
+              39,
+              255
+            ]
+          },
+          {
+            "caseId": "clip-margin-border",
+            "css": [
+              70,
+              46
+            ],
+            "frame": {
+              "x": 0,
+              "y": 41,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              211,
+              139
+            ],
+            "chromeRgba": [
+              16,
+              24,
+              39,
+              255
+            ]
+          },
+          {
+            "caseId": "clip-margin-hidden",
+            "css": [
+              170,
+              46
+            ],
+            "frame": {
+              "x": 100,
+              "y": 41,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              511,
+              139
+            ],
+            "chromeRgba": [
+              16,
+              24,
+              39,
+              255
+            ]
+          },
+          {
+            "caseId": "mixed-visible-hidden",
+            "css": [
+              270,
+              46
+            ],
+            "frame": {
+              "x": 200,
+              "y": 41,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              811,
+              139
+            ],
+            "chromeRgba": [
+              16,
+              24,
+              39,
+              255
+            ]
+          },
+          {
+            "caseId": "mixed-clip-auto",
+            "css": [
+              70,
+              66
+            ],
+            "frame": {
+              "x": 0,
+              "y": 61,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              211,
+              199
+            ],
+            "chromeRgba": [
+              16,
+              24,
+              39,
+              255
+            ]
+          },
+          {
+            "caseId": "positioned-contained",
+            "css": [
+              170,
+              72
+            ],
+            "frame": {
+              "x": 100,
+              "y": 61,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              511,
+              217
+            ],
+            "chromeRgba": [
+              16,
+              24,
+              39,
+              255
+            ]
+          },
+          {
+            "caseId": "positioned-escape",
+            "css": [
+              270,
+              72
+            ],
+            "frame": {
+              "x": 200,
+              "y": 60,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              811,
+              217
+            ],
+            "chromeRgba": [
+              227,
+              84,
+              78,
+              255
+            ]
+          }
+        ]
+      },
+      "hitIdentity": {
+        "points": 30000,
+        "matched": 30000,
+        "mismatches": 0,
+        "fixedSamples": 52,
+        "nodeFrames": 41
+      },
+      "comparison": "run-2-comparison.json",
+      "captureMode": "full-physical-surface",
+      "manifest": "c131-metal-full-surface-b7e2cf73bc6d4f629c673e2cdf15a74d.manifest.json",
+      "samples": "c131-metal-full-surface-b7e2cf73bc6d4f629c673e2cdf15a74d.rgba",
+      "screenshot": "run-2-ios-simulator.png",
+      "screenshotSha256": "5580cffe303cb331ec712c59395a4924f23ae27925a1164274868fd3a6423936",
+      "runtimeLog": "run-2-runtime.log",
+      "maxDrawLineLength": 152
+    },
+    {
+      "name": "run-3",
+      "pid": 44818,
+      "appRunID": "8832516488244cd2a6517c834f6e5889",
+      "layoutGeneration": 1,
+      "surfaceGeneration": 1,
+      "metal": {
+        "samples": 270000,
+        "channels": 1080000,
+        "mismatches": 0,
+        "maximumChannelError": 0,
+        "drawablePixelSize": [
+          900,
+          300
+        ],
+        "surfaceFormat": "Bgra8Unorm",
+        "sampleSha256": "204eafbd24c4cc5ba1a297cdde120dfc713233e603e94320d7b7ca46952f1337",
+        "batches": {
+          "requests": 4219,
+          "acceptedNonFinal": 4218
+        },
+        "outsideBorderSamples": [
+          {
+            "caseId": "visible",
+            "css": [
+              70,
+              6
+            ],
+            "frame": {
+              "x": 0,
+              "y": 1,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              211,
+              19
+            ],
+            "chromeRgba": [
+              87,
+              166,
+              217,
+              255
+            ]
+          },
+          {
+            "caseId": "clip-x",
+            "css": [
+              170,
+              6
+            ],
+            "frame": {
+              "x": 100,
+              "y": 1,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              511,
+              19
+            ],
+            "chromeRgba": [
+              16,
+              24,
+              39,
+              255
+            ]
+          },
+          {
+            "caseId": "clip-y",
+            "css": [
+              270,
+              6
+            ],
+            "frame": {
+              "x": 200,
+              "y": 1,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              811,
+              19
+            ],
+            "chromeRgba": [
+              87,
+              166,
+              217,
+              255
+            ]
+          },
+          {
+            "caseId": "clip-both",
+            "css": [
+              70,
+              26
+            ],
+            "frame": {
+              "x": 0,
+              "y": 21,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              211,
+              79
+            ],
+            "chromeRgba": [
+              16,
+              24,
+              39,
+              255
+            ]
+          },
+          {
+            "caseId": "clip-margin-padding",
+            "css": [
+              170,
+              26
+            ],
+            "frame": {
+              "x": 100,
+              "y": 21,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              511,
+              79
+            ],
+            "chromeRgba": [
+              16,
+              24,
+              39,
+              255
+            ]
+          },
+          {
+            "caseId": "clip-margin-content",
+            "css": [
+              270,
+              26
+            ],
+            "frame": {
+              "x": 200,
+              "y": 21,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              811,
+              79
+            ],
+            "chromeRgba": [
+              16,
+              24,
+              39,
+              255
+            ]
+          },
+          {
+            "caseId": "clip-margin-border",
+            "css": [
+              70,
+              46
+            ],
+            "frame": {
+              "x": 0,
+              "y": 41,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              211,
+              139
+            ],
+            "chromeRgba": [
+              16,
+              24,
+              39,
+              255
+            ]
+          },
+          {
+            "caseId": "clip-margin-hidden",
+            "css": [
+              170,
+              46
+            ],
+            "frame": {
+              "x": 100,
+              "y": 41,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              511,
+              139
+            ],
+            "chromeRgba": [
+              16,
+              24,
+              39,
+              255
+            ]
+          },
+          {
+            "caseId": "mixed-visible-hidden",
+            "css": [
+              270,
+              46
+            ],
+            "frame": {
+              "x": 200,
+              "y": 41,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              811,
+              139
+            ],
+            "chromeRgba": [
+              16,
+              24,
+              39,
+              255
+            ]
+          },
+          {
+            "caseId": "mixed-clip-auto",
+            "css": [
+              70,
+              66
+            ],
+            "frame": {
+              "x": 0,
+              "y": 61,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              211,
+              199
+            ],
+            "chromeRgba": [
+              16,
+              24,
+              39,
+              255
+            ]
+          },
+          {
+            "caseId": "positioned-contained",
+            "css": [
+              170,
+              72
+            ],
+            "frame": {
+              "x": 100,
+              "y": 61,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              511,
+              217
+            ],
+            "chromeRgba": [
+              16,
+              24,
+              39,
+              255
+            ]
+          },
+          {
+            "caseId": "positioned-escape",
+            "css": [
+              270,
+              72
+            ],
+            "frame": {
+              "x": 200,
+              "y": 60,
+              "width": 64,
+              "height": 14
+            },
+            "physicalPixelCenter": [
+              811,
+              217
+            ],
+            "chromeRgba": [
+              227,
+              84,
+              78,
+              255
+            ]
+          }
+        ]
+      },
+      "hitIdentity": {
+        "points": 30000,
+        "matched": 30000,
+        "mismatches": 0,
+        "fixedSamples": 52,
+        "nodeFrames": 41
+      },
+      "comparison": "run-3-comparison.json",
+      "captureMode": "full-physical-surface",
+      "manifest": "c131-metal-full-surface-8832516488244cd2a6517c834f6e5889.manifest.json",
+      "samples": "c131-metal-full-surface-8832516488244cd2a6517c834f6e5889.rgba",
+      "screenshot": "run-3-ios-simulator.png",
+      "screenshotSha256": "30b9844da47ba8df6155af167a8f5698ae1253514c35602a3f1873c8e26606d8",
+      "runtimeLog": "run-3-runtime.log",
+      "maxDrawLineLength": 152
+    }
+  ],
+  "negativeControls": {
+    "argument": {
+      "status": "rejected-before-host-init",
+      "pid": 49884,
+      "hostCreated": false,
+      "captureCompleted": false
+    },
+    "routeConflict": {
+      "status": "rejected-before-host-init",
+      "pid": 49953,
+      "routes": 2,
+      "hostCreated": false,
+      "captureCompleted": false
+    }
+  },
+  "xcodeVersion": "Xcode 26.2\nBuild version 17C52",
+  "scope": "iOS 26.2 iPhone 17 Pro Simulator Metal drawable all-texel readback before compositor submission; no physical device, display scanout, hardware GPU, DOM event dispatch, WPT, or full C13.1 support."
+}

@@ -1,0 +1,357 @@
+{
+  "schema": "spinon-c13-1-android-avd-full-surface/v1",
+  "status": "matched",
+  "runID": "1b511357b3fa",
+  "sourceRevision": "85f289938b5445ff2187e8b93644d9fa9e3ab5af",
+  "device": {
+    "serial": "emulator-5554",
+    "model": "sdk_gphone16k_arm64",
+    "release": "17",
+    "sdk": 37,
+    "abi": "arm64-v8a",
+    "qemu": true,
+    "fingerprint": "google/sdk_gphone16k_arm64/emu64a16k:17/CP31.260623.012/16064790:userdebug/dev-keys",
+    "renderer": "GLES: Google (Google Inc. (Google)), Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)), OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))",
+    "displayDensityBefore": "Physical density: 420",
+    "displayDensityDuring": "Physical density: 420; Override density: 480",
+    "displaySizeBefore": "Physical size: 1080x2400",
+    "displaySizeDuring": "Physical size: 1080x2400"
+  },
+  "apkSha256": "0ba68ad718f798a2bdc36a9438a4f07c0de3c7021471524e6586c41174836395",
+  "appPid": 9646,
+  "pixelCopy": {
+    "width": 900,
+    "height": 300,
+    "scaleX": 3,
+    "scaleY": 3,
+    "samples": 30000,
+    "channels": 120000,
+    "mismatches": 0,
+    "maximumChannelError": 0,
+    "imageSha256": "d4bcf0de2c4ae74a43e08d57e017bc653a86afcafb2c7ef8e670cbfa77f7c541",
+    "outsideBorderCss": [
+      270,
+      72
+    ]
+  },
+  "fullPhysicalSurface": {
+    "pixels": 270000,
+    "channels": 1080000,
+    "mismatches": 0,
+    "maximumChannelError": 0,
+    "mismatchBounds": null,
+    "outsideBorderSamples": [
+      {
+        "caseId": "visible",
+        "css": [
+          70,
+          6
+        ],
+        "frame": {
+          "x": 0,
+          "y": 1,
+          "width": 64,
+          "height": 14
+        },
+        "physicalPixelCenter": [
+          211,
+          19
+        ],
+        "chromeRgba": [
+          87,
+          166,
+          217,
+          255
+        ]
+      },
+      {
+        "caseId": "clip-x",
+        "css": [
+          170,
+          6
+        ],
+        "frame": {
+          "x": 100,
+          "y": 1,
+          "width": 64,
+          "height": 14
+        },
+        "physicalPixelCenter": [
+          511,
+          19
+        ],
+        "chromeRgba": [
+          16,
+          24,
+          39,
+          255
+        ]
+      },
+      {
+        "caseId": "clip-y",
+        "css": [
+          270,
+          6
+        ],
+        "frame": {
+          "x": 200,
+          "y": 1,
+          "width": 64,
+          "height": 14
+        },
+        "physicalPixelCenter": [
+          811,
+          19
+        ],
+        "chromeRgba": [
+          87,
+          166,
+          217,
+          255
+        ]
+      },
+      {
+        "caseId": "clip-both",
+        "css": [
+          70,
+          26
+        ],
+        "frame": {
+          "x": 0,
+          "y": 21,
+          "width": 64,
+          "height": 14
+        },
+        "physicalPixelCenter": [
+          211,
+          79
+        ],
+        "chromeRgba": [
+          16,
+          24,
+          39,
+          255
+        ]
+      },
+      {
+        "caseId": "clip-margin-padding",
+        "css": [
+          170,
+          26
+        ],
+        "frame": {
+          "x": 100,
+          "y": 21,
+          "width": 64,
+          "height": 14
+        },
+        "physicalPixelCenter": [
+          511,
+          79
+        ],
+        "chromeRgba": [
+          16,
+          24,
+          39,
+          255
+        ]
+      },
+      {
+        "caseId": "clip-margin-content",
+        "css": [
+          270,
+          26
+        ],
+        "frame": {
+          "x": 200,
+          "y": 21,
+          "width": 64,
+          "height": 14
+        },
+        "physicalPixelCenter": [
+          811,
+          79
+        ],
+        "chromeRgba": [
+          16,
+          24,
+          39,
+          255
+        ]
+      },
+      {
+        "caseId": "clip-margin-border",
+        "css": [
+          70,
+          46
+        ],
+        "frame": {
+          "x": 0,
+          "y": 41,
+          "width": 64,
+          "height": 14
+        },
+        "physicalPixelCenter": [
+          211,
+          139
+        ],
+        "chromeRgba": [
+          16,
+          24,
+          39,
+          255
+        ]
+      },
+      {
+        "caseId": "clip-margin-hidden",
+        "css": [
+          170,
+          46
+        ],
+        "frame": {
+          "x": 100,
+          "y": 41,
+          "width": 64,
+          "height": 14
+        },
+        "physicalPixelCenter": [
+          511,
+          139
+        ],
+        "chromeRgba": [
+          16,
+          24,
+          39,
+          255
+        ]
+      },
+      {
+        "caseId": "mixed-visible-hidden",
+        "css": [
+          270,
+          46
+        ],
+        "frame": {
+          "x": 200,
+          "y": 41,
+          "width": 64,
+          "height": 14
+        },
+        "physicalPixelCenter": [
+          811,
+          139
+        ],
+        "chromeRgba": [
+          16,
+          24,
+          39,
+          255
+        ]
+      },
+      {
+        "caseId": "mixed-clip-auto",
+        "css": [
+          70,
+          66
+        ],
+        "frame": {
+          "x": 0,
+          "y": 61,
+          "width": 64,
+          "height": 14
+        },
+        "physicalPixelCenter": [
+          211,
+          199
+        ],
+        "chromeRgba": [
+          16,
+          24,
+          39,
+          255
+        ]
+      },
+      {
+        "caseId": "positioned-contained",
+        "css": [
+          170,
+          72
+        ],
+        "frame": {
+          "x": 100,
+          "y": 61,
+          "width": 64,
+          "height": 14
+        },
+        "physicalPixelCenter": [
+          511,
+          217
+        ],
+        "chromeRgba": [
+          16,
+          24,
+          39,
+          255
+        ]
+      },
+      {
+        "caseId": "positioned-escape",
+        "css": [
+          270,
+          72
+        ],
+        "frame": {
+          "x": 200,
+          "y": 60,
+          "width": 64,
+          "height": 14
+        },
+        "physicalPixelCenter": [
+          811,
+          217
+        ],
+        "chromeRgba": [
+          227,
+          84,
+          78,
+          255
+        ]
+      }
+    ],
+    "comparison": "full-physical-comparison.json"
+  },
+  "hitIdentity": {
+    "points": 30000,
+    "matched": 30000,
+    "fixedSamples": 52,
+    "nodeFrames": 41
+  },
+  "oracle": {
+    "pixelCenterRegression": {
+      "browser": "Google Chrome 155.0.8059.40",
+      "revision": "cfaadc5a132d78e1828635aa8405a499f3e14864-refs/branch-heads/8059@{#936}",
+      "viewportCssPx": [
+        300,
+        100
+      ],
+      "screenshotSha256": "b682308e3604ad599becff2c8d8c801c80a2a5b8547f3ac3316f133d47232601",
+      "observationPath": "spec/internal/evidence/c13-1-compact-surface-matrix-2026-10-14/chrome155-observation.json"
+    },
+    "fullPhysicalSurface": {
+      "browser": "Google Chrome 155.0.8059.85",
+      "revision": "0e66b94549a8bd85f03fbdf189b752d6e7b63c32",
+      "screenshotSha256": "bc66cd2bf37a19eb1b98c92867186213ffdb25f0660ac2f4e1e7b10799f84425",
+      "observationSha256": "64319a76c86672a0d8f4e9a8918f610c5d96f2e3d0a9e555a5ab8048765d1d0b",
+      "geometryObservationSha256": "515fc95f811399fda9e336a13e7583f2d22555fce4727f1fe7f734981abd0299",
+      "fixtureSourceHashes": {
+        "wrapper": "431f4b4452969adcae80c4e5f89e5e45b1e8756fc3c4d8995b7a5eccfbc6f355",
+        "domCss": "d36bc1f7d3c791cdc91f6d878c3961e067efc2f88ca1486db8a065c5fd69c760",
+        "agentEval": "5622623ce7d0f7c29452382b873ed1e12cc5ee2dc159e07c7ff61f48ee42b45b"
+      },
+      "observationPath": "spec/internal/evidence/c13-1-full-physical-pixel-parity-2026-10-18/chrome155-dpr-3-observation.json"
+    }
+  },
+  "comparison": "comparison.json",
+  "pixelCopyImage": "android-api37-avd-pixelcopy.png",
+  "screenImage": "android-api37-avd-screen.png"
+}

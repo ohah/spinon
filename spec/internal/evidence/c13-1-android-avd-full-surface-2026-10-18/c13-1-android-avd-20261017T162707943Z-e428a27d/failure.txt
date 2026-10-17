@@ -1,0 +1,7 @@
+AssertionError [ERR_ASSERTION]: Chrome 155 full physical surface parity
++ actual - expected
+
++ 'mismatch'
+- 'matched'
+
+    at main (file:///private/tmp/spinon-c13-1-full-physical-pixels-20261018/tools/css-reference/capture-c13-1-android-avd-full-surface.mjs:217:10)

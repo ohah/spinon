@@ -1,0 +1,5 @@
+AssertionError [ERR_ASSERTION]: iOS Simulator build 실패; 자세한 내용은 /private/tmp/spinon-c13-1-full-physical-pixels-20261018/spec/internal/evidence/c13-1-ios-full-physical-pixels-2026-10-18/c13-1-ios-full-physical-20261017T160218556Z-091a38b3/build.log
+
+65 !== 0
+
+    at main (file:///private/tmp/spinon-c13-1-full-physical-pixels-20261018/tools/css-reference/capture-c13-1-ios-metal-pixel-centers.mjs:364:10)

@@ -1,0 +1,256 @@
+AssertionError [ERR_ASSERTION]: The input did not match the regular expression /SPINON_ANDROID_BUILD_FLAGS c04_runtime_gpu=1 c13_1_overflow_clip_fixture_test=1/. Input:
+
+'WARNING: We recommend using a newer Android Gradle plugin to use compile SDK version 37.2\n' +
+  '\n' +
+  'This Android Gradle plugin (8.13.2) was tested up to compile SDK version 36.1.\n' +
+  '\n' +
+  'You are strongly encouraged to update your project to use a newer\n' +
+  'Android Gradle plugin that has been tested with compile SDK version 37.2.\n' +
+  '\n' +
+  'If you are already using the latest version of the Android Gradle plugin,\n' +
+  'you may need to wait until a newer version with support for compile SDK version 37.2 is available.\n' +
+  '\n' +
+  'For more information refer to the compatibility table:\n' +
+  'https://d.android.com/r/tools/api-level-support\n' +
+  '\n' +
+  'To suppress this warning, add/update\n' +
+  '    android.suppressUnsupportedCompileSdk=37.2\n' +
+  "to this project's gradle.properties.\n" +
+  '\n' +
+  '> Task :app:prepareSpinonBootstrap\n' +
+  'SPINON_ANDROID_BUILD_FLAGS c04_runtime_gpu=1 c04_12_root_html_fixture_test=0 c13_1_overflow_clip_fixture_test=1 c13_2_scroll_fixture_test=0 c13_3_gesture_fixture_test=0 c14_1_app_fixture_test=0 c14_2_app_fixture_test=0 c14_3_app_fixture_test=0 c18_1_image_paint_fixture_test=0 c18_2_alpha_image_fixture_test=0 c18_3_object_fit_position_fixture_test=0 c18_4_async_image_fixture_test=0 c19_2_box_paint_opacity_fixture_test=0 c15_3_wgpu_glyph_paint_fixture_test=0\n' +
+  'Bundled 1 module in 4ms\n' +
+  '\n' +
+  '  app.js  17.59 KB  (entry point)\n' +
+  '\n' +
+  'Bundled 1 module in 4ms\n' +
+  '\n' +
+  '  root-app.js  1.65 KB  (entry point)\n' +
+  '\n' +
+  'C12.4 Android runtime matrix: 26 cases, 77 nodes, 21 expected ready, 5 expected rejection\n' +
+  'Android ARM64 unwind runtime: /Users/yoonhb/Library/Android/sdk/ndk/27.1.12297006/toolchains/llvm/prebuilt/darwin-x86_64/lib/clang/18/lib/linux/aarch64/libunwind.a\n' +
+  'Android ARM64 V8 smoke 라이브러리 준비 완료: /private/tmp/spinon-c13-1-full-physical-pixels-20261018/build/spinon/android/jniLibs/arm64-v8a/libspinon_bootstrap.so\n' +
+  '\n' +
+  '> Task :app:preBuild\n' +
+  '> Task :app:preDebugBuild\n' +
+  '> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE\n' +
+  '> Task :app:generateDebugBuildConfig\n' +
+  '> Task :app:javaPreCompileDebug FROM-CACHE\n' +
+  '> Task :app:checkDebugAarMetadata\n' +
+  '> Task :app:processDebugNavigationResources FROM-CACHE\n' +
+  '> Task :app:compileDebugNavigationResources FROM-CACHE\n' +
+  '> Task :app:generateDebugResValues FROM-CACHE\n' +
+  '> Task :app:mapDebugSourceSetPaths\n' +
+  '> Task :app:generateDebugResources FROM-CACHE\n' +
+  '> Task :app:mergeDebugResources FROM-CACHE\n' +
+  '> Task :app:packageDebugResources FROM-CACHE\n' +
+  '> Task :app:parseDebugLocalResources FROM-CACHE\n' +
+  '> Task :app:createDebugCompatibleScreenManifests\n' +
+  '> Task :app:extractDeepLinksDebug FROM-CACHE\n' +
+  '> Task :app:processDebugMainManifest FROM-CACHE\n' +
+  '> Task :app:processDebugManifest FROM-CACHE\n' +
+  '> Task :app:processDebugManifestForPackage FROM-CACHE\n' +
+  '> Task :app:processDebugResources FROM-CACHE\n' +
+  '\n' +
+  '> Task :app:compileDebugJavaWithJavac\n' +
+  '\n' +
+  '> Task :app:mergeDebugShaders\n' +
+  '> Task :app:compileDebugShaders NO-SOURCE\n' +
+  '> Task :app:generateDebugAssets UP-TO-DATE\n' +
+  '> Task :app:mergeDebugAssets\n' +
+  '> Task :app:processDebugJavaRes NO-SOURCE\n' +
+  '> Task :app:compressDebugAssets\n' +
+  '> Task :app:checkDebugDuplicateClasses\n' +
+  '> Task :app:desugarDebugFileDependencies FROM-CACHE\n' +
+  '> Task :app:mergeDebugJavaResource\n' +
+  '> Task :app:mergeExtDexDebug FROM-CACHE\n' +
+  '> Task :app:mergeLibDexDebug FROM-CACHE\n' +
+  '> Task :app:dexBuilderDebug\n' +
+  '> Task :app:mergeProjectDexDebug\n' +
+  '> Task :app:mergeDebugJniLibFolders\n' +
+  '> Task :app:validateSigningDebug\n' +
+  '> Task :app:writeDebugAppMetadata\n' +
+  '> Task :app:writeDebugSigningConfigVersions\n' +
+  '> Task :app:mergeDebugNativeLibs\n' +
+  '> Task :app:stripDebugDebugSymbols\n' +
+  '> Task :app:packageDebug\n' +
+  '> Task :app:createDebugApkListingFileRedirect\n' +
+  '> Task :app:assembleDebug\n' +
+  '\n' +
+  '[Incubating] Problems report is available at: file:///private/tmp/spinon-c13-1-full-physical-pixels-20261018/platforms/android/build/reports/problems/problems-report.html\n' +
+  '\n' +
+  'BUILD SUCCESSFUL in 53s\n' +
+  '37 actionable tasks: 21 executed, 16 from cache\n' +
+  '$ bash tools/build-android-app.sh\n' +
+  'ANDROID_NDK_HOME/ROOT가 고정 버전과 달라 무시하고 SDK의 NDK 27.1.12297006 을 사용합니다.\n' +
+  '$ mkdir -p build/spinon/bootstrap && bun build examples/bootstrap/app.js --target=browser --outfile build/spinon/bootstrap/app.js && bun build examples/bootstrap/root-app.js --target=browser --outfile build/spinon/bootstrap/root-app.js && cp examples/bootstrap/index.html build/spinon/bootstrap/index.html\n' +
+  '   Compiling smallvec v1.16.2\n' +
+  '   Compiling cfg-if v1.0.5\n' +
+  '   Compiling stable_deref_trait v1.2.1\n' +
+  '   Compiling scopeguard v1.2.0\n' +
+  '   Compiling foldhash v0.2.0\n' +
+  '   Compiling bitflags v2.13.2\n' +
+  '   Compiling libc v0.2.189\n' +
+  '   Compiling libm v0.2.16\n' +
+  '   Compiling serde_core v1.0.229\n' +
+  '   Compiling parking_lot_core v0.9.12\n' +
+  '   Compiling writeable v0.6.4\n' +
+  '   Compiling num-traits v0.2.19\n' +
+  '   Compiling serde v1.0.229\n' +
+  '   Compiling log v0.4.34\n' +
+  '   Compiling zerofrom v0.1.8\n' +
+  '   Compiling bytemuck v1.25.2\n' +
+  '   Compiling litemap v0.8.3\n' +
+  '   Compiling once_cell v1.21.4\n' +
+  '   Compiling yoke v0.8.3\n' +
+  '   Compiling lock_api v0.4.14\n' +
+  '   Compiling hashbrown v0.17.1\n' +
+  '   Compiling siphasher v1.0.4\n' +
+  '   Compiling utf8_iter v1.0.4\n' +
+  '   Compiling equivalent v1.0.2\n' +
+  '   Compiling icu_properties_data v2.3.0\n' +
+  '   Compiling zerovec v0.11.8\n' +
+  '   Compiling zerotrie v0.2.5\n' +
+  '   Compiling new_debug_unreachable v1.0.6\n' +
+  '   Compiling icu_normalizer_data v2.3.0\n' +
+  '   Compiling precomputed-hash v0.1.1\n' +
+  '   Compiling arrayvec v0.7.8\n' +
+  '   Compiling phf_shared v0.14.0\n' +
+  '   Compiling icu_locale_fallback_data v2.3.0\n' +
+  '   Compiling font-types v0.12.7\n' +
+  '   Compiling dtoa v1.0.11\n' +
+  '   Compiling static_assertions v1.1.0\n' +
+  '   Compiling phf v0.14.0\n' +
+  '   Compiling itoa v1.0.18\n' +
+  '   Compiling read-fonts v0.41.0\n' +
+  '   Compiling dtoa-short v0.3.5\n' +
+  '   Compiling indexmap v2.14.2\n' +
+  '   Compiling icu_segmenter_data v2.3.0\n' +
+  '   Compiling thiserror v2.0.21\n' +
+  '   Compiling crossbeam-utils v0.8.23\n' +
+  '   Compiling tinystr v0.8.4\n' +
+  '   Compiling potential_utf v0.1.6\n' +
+  '   Compiling icu_locale_core v2.3.0\n' +
+  '   Compiling icu_collections v2.3.0\n' +
+  '   Compiling libloading v0.8.9\n' +
+  '   Compiling smallbitvec v2.6.1\n' +
+  '   Compiling thin-vec v0.2.20\n' +
+  '   Compiling core_maths v0.1.1\n' +
+  '   Compiling crossbeam-epoch v0.9.21\n' +
+  '   Compiling zerocopy v0.8.59\n' +
+  '   Compiling derive_more v2.1.1\n' +
+  '   Compiling icu_provider v2.3.1\n' +
+  '   Compiling parking_lot v0.12.5\n' +
+  '   Compiling rustc-hash v2.1.3\n' +
+  '   Compiling rustc-hash v1.1.0\n' +
+  '   Compiling rayon-core v1.13.0\n' +
+  '   Compiling crossbeam-deque v0.8.8\n' +
+  '   Compiling web_atoms v0.3.0\n' +
+  '   Compiling memmap2 v0.9.11\n' +
+  '   Compiling naga v30.0.1\n' +
+  '   Compiling string_cache v0.11.0\n' +
+  '   Compiling servo_arc v0.5.0\n' +
+  '   Compiling cssparser v0.38.0\n' +
+  '   Compiling jni-sys-macros v0.4.1\n' +
+  '   Compiling app_units v0.7.8\n' +
+  '   Compiling icu_properties v2.3.0\n' +
+  '   Compiling euclid v0.22.14\n' +
+  '   Compiling unicode-width v0.2.2\n' +
+  '   Compiling to_shmem v0.6.0\n' +
+  '   Compiling icu_normalizer v2.3.0\n' +
+  '   Compiling selectors v0.41.0\n' +
+  '   Compiling parlance v0.1.1\n' +
+  '   Compiling idna_adapter v1.2.2\n' +
+  '   Compiling jni-sys v0.3.1\n' +
+  '   Compiling spinon-core v0.1.0 (/private/tmp/spinon-c13-1-full-physical-pixels-20261018/crates/spinon-core)\n' +
+  '   Compiling icu_locale_fallback v2.3.0\n' +
+  '   Compiling skrifa v0.44.0\n' +
+  '   Compiling linebender_resource_handle v0.1.1\n' +
+  '   Compiling pkg-config v0.3.34\n' +
+  '   Compiling bit-vec v0.9.1\n' +
+  '   Compiling ash v0.38.0+1.3.281\n' +
+  '   Compiling void v1.0.2\n' +
+  '   Compiling percent-encoding v2.3.2\n' +
+  '   Compiling wayland-sys v0.31.11\n' +
+  '   Compiling form_urlencoded v1.2.2\n' +
+  '   Compiling stylo_malloc_size_of v0.22.0\n' +
+  '   Compiling icu_segmenter v2.3.0\n' +
+  '   Compiling bit-set v0.10.0\n' +
+  '   Compiling fontique v0.12.0\n' +
+  '   Compiling harfrust v0.12.0\n' +
+  '   Compiling idna v1.1.0\n' +
+  '   Compiling naga-types v30.0.1\n' +
+  '   Compiling parley_data v0.12.0\n' +
+  '   Compiling codespan-reporting v0.13.1\n' +
+  '   Compiling jni-sys v0.4.1\n' +
+  '   Compiling stylo_atoms v0.22.0\n' +
+  '   Compiling spirv v0.4.0+sdk-1.4.341.0\n' +
+  '   Compiling parley_emoji v0.12.0\n' +
+  '   Compiling allocator-api2 v0.2.21\n' +
+  '   Compiling raw-window-handle v0.6.2\n' +
+  '   Compiling unicode-ident v1.0.26\n' +
+  '   Compiling khronos-egl v6.0.0\n' +
+  '   Compiling either v1.18.0\n' +
+  '   Compiling hashbrown v0.16.1\n' +
+  '   Compiling wgpu-types v30.0.1\n' +
+  '   Compiling parley_engine v0.12.0\n' +
+  '   Compiling stylo_static_prefs v0.22.0\n' +
+  '   Compiling encoding_rs v0.8.42\n' +
+  '   Compiling url v2.5.8\n' +
+  '   Compiling slotmap v1.1.1\n' +
+  '   Compiling dlib v0.5.3\n' +
+  '   Compiling wgpu-hal v30.0.1\n' +
+  '   Compiling zeno v0.3.3\n' +
+  '   Compiling simdutf8 v0.1.5\n' +
+  '   Compiling half v2.7.1\n' +
+  '   Compiling typenum v1.20.1\n' +
+  '   Compiling presser v0.3.1\n' +
+  '   Compiling yazi v0.2.1\n' +
+  '   Compiling ndk-sys v0.6.0+11769913\n' +
+  '   Compiling swash v0.2.10\n' +
+  '   Compiling stylo_traits v0.22.0\n' +
+  '   Compiling rayon v1.12.0\n' +
+  '   Compiling hybrid-array v0.4.15\n' +
+  '   Compiling stylo v0.22.0\n' +
+  '   Compiling parley v0.12.0\n' +
+  '   Compiling itertools v0.14.0\n' +
+  '   Compiling stylo_dom v0.22.0\n' +
+  '   Compiling ordered-float v5.5.0\n' +
+  '   Compiling num-integer v0.1.47\n' +
+  '   Compiling num_cpus v1.17.0\n' +
+  '   Compiling android_system_properties v0.1.6\n' +
+  '   Compiling uluru v3.1.0\n' +
+  '   Compiling renderdoc-sys v1.1.0\n' +
+  '   Compiling glow v0.17.0\n' +
+  '   Compiling atomic_refcell v0.1.14\n' +
+  '   Compiling mime v0.3.17\n' +
+  '   Compiling profiling v1.0.18\n' +
+  '   Compiling byteorder v1.5.0\n' +
+  '   Compiling strum v0.28.0\n' +
+  '   Compiling taffy v0.14.0\n' +
+  '   Compiling wgpu-core v30.0.1\n' +
+  '   Compiling block-buffer v0.12.1\n' +
+  '   Compiling crypto-common v0.2.2\n' +
+  '   Compiling spinon-render v0.1.0 (/private/tmp/spinon-c13-1-full-physical-pixels-20261018/crates/spinon-render)\n' +
+  '   Compiling tendril v0.5.1\n' +
+  '   Compiling const-oid v0.10.2\n' +
+  '   Compiling memchr v2.8.3\n' +
+  '   Compiling markup5ever v0.40.0\n' +
+  '   Compiling zmij v1.0.23\n' +
+  '   Compiling digest v0.11.3\n' +
+  '   Compiling wgpu v30.0.1\n' +
+  '   Compiling cpufeatures v0.3.1\n' +
+  '   Compiling serde_json v1.0.151\n' +
+  '   Compiling sha2 v0.11.1\n' +
+  '   Compiling html5ever v0.40.1\n' +
+  '   Compiling pollster v0.4.0\n' +
+  '   Compiling spinon-text-layout v0.1.0 (/private/tmp/spinon-c13-1-full-physical-pixels-20261018/crates/spinon-text-layout)\n' +
+  '   Compiling spinon-layout v0.1.0 (/private/tmp/spinon-c13-1-full-physical-pixels-20261018/crates/spinon-layout)\n' +
+  '   Compiling gpu-allocator v0.28.0\n' +
+  '   Compiling wgpu-naga-bridge v30.0.1\n' +
+  '   Compiling wgpu-core-deps-windows-linux-android v30.0.1\n' +
+  '   Compiling spinon-render-wgpu v0.1.0 (/private/tmp/spinon-c13-1-full-physical-pixels-20261018/crates/spinon-render-wgpu)\n' +
+  '   Compiling spinon-style v0.1.0 (/private/tmp/spinon-c13-1-full-physical-pixels-20261018/crates/spinon-style)\n' +
+  '   Compiling spinon-style-to-layout v0.1.0 (/private/tmp/spinon-c13-1-full-physical-pixels-20'... 2604 more characters
+
+    at main (file:///private/tmp/spinon-c13-1-full-physical-pixels-20261018/tools/css-reference/capture-c13-1-android-avd-full-surface.mjs:99:10)
