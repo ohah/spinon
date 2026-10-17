@@ -63,6 +63,7 @@ Stale document revision control은 표면 readback 전에 거부되어야 한다
 ## 현재 실행 근거
 
 - 구현 source: `1375b7978e6d10d200b8d7b1cc0471dda35e5b73`.
+- 구현 PR [#287](https://github.com/ohah/spinon/pull/287)은 2026-10-18 KST에 Rebase and merge됐다. main의 재작성 구현 commit 45c93688은 실행 원본 commit과 동일한 tree a63633ca94f0c191a0f135343c1a86a7748bfc3b를 가진다. merge SHA는 392bfb19c958b80e16a615286896c09498e200d3다.
 - [Chrome oracle·사전 검증·앱 evidence index](./evidence/c13-1-stacking-app-full-viewport-hit-2026-10-18/README.md).
 - [Android API 37 AVD runs](./evidence/c13-1-stacking-app-full-viewport-hit-2026-10-18/android-avd/c13-1-stacking-android-20261017T195210986Z-cb1a2410/README.md).
 - [iOS Simulator runs](./evidence/c13-1-stacking-app-full-viewport-hit-2026-10-18/ios-simulator/c13-1-stacking-ios-20261017T195135274Z-ad00912d/README.md).

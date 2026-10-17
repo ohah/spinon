@@ -1,6 +1,6 @@
 # C13.1 · 중첩 stacking descendant 앱 전체 viewport hit identity
 
-**상태:** Chrome 155 integer-grid 사전 oracle 고정 · Android/iOS fixture runtime 구현·Simulator 실행 완료 · PR review/merge 대기
+**상태:** Chrome 155 integer-grid 사전 oracle 고정 · Android/iOS fixture runtime 구현·Simulator 실행 완료 · [구현 PR #287](https://github.com/ohah/spinon/pull/287) Rebase and merge 완료 · C13.1/C13 미완료
 **선행 결과:** [중첩 stacking descendant fixture](./c13-1-stacking-descendant-clip-controls.md) · [전체 viewport host hit 결과 PR #160](https://github.com/ohah/spinon/pull/160)
 **내부 계약:** [0078 · C13.1 전체 viewport hit identity](../spec/internal/0078-c13-1-stacking-full-viewport-hit-identity.md)
 **Chrome 사전 근거:** [캡처·RLE grid·경계 관찰](../spec/internal/evidence/c13-1-stacking-app-full-viewport-hit-2026-10-18/README.md)
@@ -48,6 +48,7 @@
 - Stale document revision은 Metal/PixelCopy readback 전에 거부되고, 중복 fixture route는 host 초기화 전에 거부됐다. default `spinon-ffi` static archive에서 full-grid marker/oracle 문자열이 빠지고 C13.1 opt-in feature archive에는 들어감을 확인했다.
 - `cargo fmt --all -- --check`, `cargo clippy --locked --workspace --all-targets -- -D warnings`, focused FFI 6/6·renderer 1/1 tests, fixture module boundary 6/6, Android build/AVD capture, iOS Simulator build/capture가 통과했다. 전체 workspace test와 WPT는 실행하지 않았다.
 - [구현 실패 관점 20개](../spec/internal/evidence/c13-1-stacking-app-full-viewport-hit-2026-10-18/implementation-review-20.md)와 별도의 [PR 변경 관점 30개](../spec/internal/evidence/c13-1-stacking-app-full-viewport-hit-2026-10-18/pr-delta-review-30.md)를 기록한다. 이 구현 slice는 fixture 전용이며 C13.1/C13 완료로 승격하지 않는다.
+- [PR #287 병합 상태 점검 30개](../spec/internal/evidence/c13-1-stacking-app-full-viewport-hit-2026-10-18/merge-status-review-30.md)에서 rebase된 source tree와 merge SHA, 상위 미완료 판정을 별도로 대조했다. PR은 2026-10-18 KST에 Rebase and merge됐고 main의 최신 merge SHA는 392bfb19c958b80e16a615286896c09498e200d3이다.
 
 ## 제외 범위
 
@@ -64,4 +65,4 @@
 3. opt-in Android/iOS FFI route, bounded report, stale/collision/overflow controls와 artifact boundary를 구현한다.
 4. Android API 37 AVD와 iOS Simulator에서 각각 새 process 3개로 검증하고 화면·로그·hash·revision tuple을 보존한다.
 5. 계획 검토와 별개인 새 implementation failure review 20개와 독립 PR delta review 30개를 기록한다. 결함을 수정하면 해당 관점을 다시 실행한다.
-6. 최신 `main`, CI/review/mergeability를 다시 확인해 PR을 Rebase and merge한다. STATUS에는 통과한 fixture 범위만 더하고 C13.1/C13 상위 체크를 유지한다.
+6. 완료: main의 mergeability와 branch protection을 확인하고 PR #287을 Rebase and merge했다. status check는 보고되지 않았고 branch protection의 필수 승인과 필수 check는 각각 0건이었다. merge SHA는 392bfb19c958b80e16a615286896c09498e200d3다. STATUS에는 통과한 fixture 범위만 두고 C13.1/C13 상위 체크를 유지한다.

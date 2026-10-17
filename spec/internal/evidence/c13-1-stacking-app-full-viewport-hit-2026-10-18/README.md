@@ -50,4 +50,4 @@ Chrome screenshot은 브라우저 oracle 화면만 보여준다. 앱 runtime 결
 - 각 플랫폼의 stale document revision control은 표면 readback 전에 거부했고, route 충돌 control은 host 초기화 전에 거부했다. opt-in fixture artifact 경계는 [feature-boundary 기록](./feature-boundary/README.md)에 둔다.
 - Android PixelCopy와 iOS Metal은 각 18개 고정 표본만 확인한다. 전체 WGPU physical pixel parity, OS compositor/scanout, 실기기/hardware GPU, DOM event dispatch, CSSOM, WPT와 일반 CSS 지원은 미검증이다. C13.1과 C13 상위 상태는 미완료다.
 
-[구현 계획](../../../../plan/c13-1-stacking-app-full-viewport-hit-identity.md) · [내부 계약 0078](../../0078-c13-1-stacking-full-viewport-hit-identity.md) · [구현 실패 관점 20개](./implementation-review-20.md) · [PR 변경 관점 30개](./pr-delta-review-30.md).
+[구현 계획](../../../../plan/c13-1-stacking-app-full-viewport-hit-identity.md) · [내부 계약 0078](../../0078-c13-1-stacking-full-viewport-hit-identity.md) · [구현 실패 관점 20개](./implementation-review-20.md) · [PR 변경 관점 30개](./pr-delta-review-30.md) · [PR #287 병합 상태 점검 30개](./merge-status-review-30.md).
