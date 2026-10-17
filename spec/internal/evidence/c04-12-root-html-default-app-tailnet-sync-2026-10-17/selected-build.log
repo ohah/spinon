@@ -1,0 +1,70 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+warn    The dist path is not a subdir of root path, Rsbuild will not empty it.
+warn    Please set `output.cleanDistPath` config manually.
+warn    Current root path: /private/tmp/spinon-c04-12-root-document-runtime-20261017
+warn    Current dist path: /private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7
+info    Rendering pages...
+success Pages rendered in 92 ms.
+ready   built in 0.73s (node)
+ready   built in 0.73s (web)
+
+File (web)                                                                                            Size        Gzip   
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/l.76b60f2b87.js                    0.10 kB     0.09 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/styles.aba03c5c90.js                     0.47 kB     0.23 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/icon.svg                                           0.64 kB     0.41 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-c7b1c23e00a1.6f05a34433.js   3.1 kB      1.6 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-6fe650616266.fe727e192e.js   5.1 kB      2.0 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-2308615ee227.9aabc919fb.js   5.5 kB      1.8 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-66d8ed6c8215.78d928ab08.js   5.7 kB      2.3 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-eeac1d534988.6c0ba96cc3.js   5.8 kB      2.4 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-b33563055168.1acfc09d5b.js   8.0 kB      2.7 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-42452122cfa4.d884108fc9.js   8.1 kB      2.4 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-0c2620f3bf61.0bbddc8285.js   9.5 kB      3.3 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-b77589699581.b959ddc4f2.js   10.9 kB     3.5 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-7ff1bc4fef68.68067110da.js   11.4 kB     3.8 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-04ba7e07c84a.4879810e3e.js   12.2 kB     3.8 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-d189cf42fdb6.bcdf01ec12.js   13.6 kB     4.2 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-009725493014.547778d67f.js   16.1 kB     6.2 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-60cbaa231bd4.e47d80e994.js   18.4 kB     6.4 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-ecf129b09e78.c83fbcc331.js   20.0 kB     6.8 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-ea34262d0652.83e242ae3b.js   20.8 kB     6.7 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-367f2927ddca.a9c5495877.js   25.7 kB     7.4 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/index.7978f6d50f.js                      29.9 kB     10.2 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-e3e67500d82d.b4f1dcfb8a.js   32.3 kB     8.9 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/lib-router.d3b08da66f.js                 35.4 kB     12.7 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/css/styles.8d918fd78e.css                   74.0 kB     14.2 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-a1017bdf23ca.92908f985b.js   169.5 kB    35.5 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/3.c8e5e2f265.js                          217.1 kB    71.7 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/lib-react.801d719c4f.js                  218.4 kB    68.9 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-6c33a3943990.96a462abd4.js   365.9 kB    85.1 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/static/search_index.ko.5dd19dd4.json               416.7 kB    135.3 kB
+
+                                                                                             Total:   1760.3 kB   510.4 kB
+
+File (node)                                                                                                                               Size       Gzip   
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/404.html                                                                               6.2 kB     2.0 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/api/README.html                                                                        15.0 kB    4.1 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/index.html                                                                             15.7 kB    4.2 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/api/index.html                                                                         15.8 kB    4.4 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/README.html     16.4 kB    4.7 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/0005-developer-tools.html                                                              16.8 kB    4.9 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/internal/evidence/c04-root-document-environment-precomparison-review-2026-10-17.html   17.8 kB    4.9 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/internal/evidence/c04-12-root-html-default-app-2026-10-17/README.html                  18.9 kB    5.7 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/README.html                                                                            19.8 kB    5.2 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/internal/evidence/c04-12-root-html-asset-implementation-review-20-2026-10-17.html      20.1 kB    5.9 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/internal/0077-c04-12-root-html-document.html                                           21.0 kB    6.2 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/0006-routing.html                                                                      21.4 kB    6.2 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/internal/evidence/c04-12-root-html-asset-pr-diff-review-30-2026-10-17.html             21.8 kB    6.6 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/0004-runtime-build.html                                                                26.5 kB    8.6 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/0002-ui-tree-events.html                                                               27.3 kB    8.8 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/0001-conformance.html                                                                  28.8 kB    9.1 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/plan/c04-root-html-document-environment.html                                           29.6 kB    9.0 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/0007-dom-compatibility.html                                                            32.7 kB    10.0 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/0003-web-surface.html                                                                  36.0 kB    11.0 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/internal/README.html                                                                   153.6 kB   37.1 kB
+../spinon-c04-12-root-html-roadmap-20261017/out-v7/STATUS.html                                                                            338.1 kB   85.7 kB
+
+                                                                                                                                 Total:   899.4 kB   244.2 kB
+

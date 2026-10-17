@@ -1,0 +1,735 @@
+{
+  "generated_at": "2026-10-17T11:47:44.759211+00:00",
+  "backup_root": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17",
+  "replaced_file_count": 52,
+  "files": [
+    {
+      "phase": 1,
+      "path": "0001-conformance.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/0001-conformance.html",
+      "expected": {
+        "bytes": 37358,
+        "sha256": "eeb8c6bf5f21fecb8bb3aadf8ed3228e237b842a902939a313b4394afb4a8c2d"
+      },
+      "actual": {
+        "bytes": 37358,
+        "sha256": "eeb8c6bf5f21fecb8bb3aadf8ed3228e237b842a902939a313b4394afb4a8c2d"
+      },
+      "match": true
+    },
+    {
+      "phase": 1,
+      "path": "0001-conformance.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/0001-conformance.md",
+      "expected": {
+        "bytes": 13021,
+        "sha256": "aa7bccb15698f2ed446e6ab46f6917a14a72144bebbf82803b379ed99d169e8d"
+      },
+      "actual": {
+        "bytes": 13021,
+        "sha256": "aa7bccb15698f2ed446e6ab46f6917a14a72144bebbf82803b379ed99d169e8d"
+      },
+      "match": true
+    },
+    {
+      "phase": 1,
+      "path": "0002-ui-tree-events.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/0002-ui-tree-events.html",
+      "expected": {
+        "bytes": 40443,
+        "sha256": "6e1e37b6516cd7630e3d05ef8a75535906fc51807085bba5bcb521065627224b"
+      },
+      "actual": {
+        "bytes": 40443,
+        "sha256": "6e1e37b6516cd7630e3d05ef8a75535906fc51807085bba5bcb521065627224b"
+      },
+      "match": true
+    },
+    {
+      "phase": 1,
+      "path": "0003-web-surface.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/0003-web-surface.html",
+      "expected": {
+        "bytes": 38889,
+        "sha256": "a14d36240200b90e7bc520c536271c9422723b11433a7db062438656feaa541b"
+      },
+      "actual": {
+        "bytes": 38889,
+        "sha256": "a14d36240200b90e7bc520c536271c9422723b11433a7db062438656feaa541b"
+      },
+      "match": true
+    },
+    {
+      "phase": 1,
+      "path": "0004-runtime-build.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/0004-runtime-build.html",
+      "expected": {
+        "bytes": 25709,
+        "sha256": "e7a309fc7f468485aa25cb730d8fb4b4b39e81e7eada480352c3a0fff0837fd9"
+      },
+      "actual": {
+        "bytes": 25709,
+        "sha256": "e7a309fc7f468485aa25cb730d8fb4b4b39e81e7eada480352c3a0fff0837fd9"
+      },
+      "match": true
+    },
+    {
+      "phase": 1,
+      "path": "0005-developer-tools.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/0005-developer-tools.html",
+      "expected": {
+        "bytes": 19712,
+        "sha256": "d15f8f21b37956ecb63ab5509e7c704aaadc111cd6acb532f91c3766a2aef4d4"
+      },
+      "actual": {
+        "bytes": 19712,
+        "sha256": "d15f8f21b37956ecb63ab5509e7c704aaadc111cd6acb532f91c3766a2aef4d4"
+      },
+      "match": true
+    },
+    {
+      "phase": 1,
+      "path": "0006-routing.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/0006-routing.html",
+      "expected": {
+        "bytes": 24326,
+        "sha256": "18a9a9301eb08648ab2bc1a2c68cd99616f7695839e829455dbf507684d090d2"
+      },
+      "actual": {
+        "bytes": 24326,
+        "sha256": "18a9a9301eb08648ab2bc1a2c68cd99616f7695839e829455dbf507684d090d2"
+      },
+      "match": true
+    },
+    {
+      "phase": 1,
+      "path": "0007-dom-compatibility.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/0007-dom-compatibility.html",
+      "expected": {
+        "bytes": 35691,
+        "sha256": "96003d7d633096c264a237431d78b94f288a3d9a52f4549c6262ed37541640f7"
+      },
+      "actual": {
+        "bytes": 35691,
+        "sha256": "96003d7d633096c264a237431d78b94f288a3d9a52f4549c6262ed37541640f7"
+      },
+      "match": true
+    },
+    {
+      "phase": 1,
+      "path": "404.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/404.html",
+      "expected": {
+        "bytes": 8512,
+        "sha256": "d5716707c0176a5ab78af0f0e561a19abc87471d1fe036605e65d26fd1d4912c"
+      },
+      "actual": {
+        "bytes": 8512,
+        "sha256": "d5716707c0176a5ab78af0f0e561a19abc87471d1fe036605e65d26fd1d4912c"
+      },
+      "match": true
+    },
+    {
+      "phase": 1,
+      "path": "README.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/README.html",
+      "expected": {
+        "bytes": 9131,
+        "sha256": "6a639ba48ed0491a8d3fc3cbbc19b3fbcd296e63eadfb6bd3909198fca464371"
+      },
+      "actual": {
+        "bytes": 9131,
+        "sha256": "6a639ba48ed0491a8d3fc3cbbc19b3fbcd296e63eadfb6bd3909198fca464371"
+      },
+      "match": true
+    },
+    {
+      "phase": 1,
+      "path": "STATUS.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/STATUS.html",
+      "expected": {
+        "bytes": 345254,
+        "sha256": "b80b04d04839e20afe04785ce3c31f55eaf76511f6f572947a8dda3c2b116b90"
+      },
+      "actual": {
+        "bytes": 345254,
+        "sha256": "b80b04d04839e20afe04785ce3c31f55eaf76511f6f572947a8dda3c2b116b90"
+      },
+      "match": true
+    },
+    {
+      "phase": 1,
+      "path": "STATUS.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/STATUS.md",
+      "expected": {
+        "bytes": 265147,
+        "sha256": "47032cbb711d14cd8fddda1f21031c3bc47e3ec9d0c069794160a5aa61b0c99b"
+      },
+      "actual": {
+        "bytes": 265147,
+        "sha256": "47032cbb711d14cd8fddda1f21031c3bc47e3ec9d0c069794160a5aa61b0c99b"
+      },
+      "match": true
+    },
+    {
+      "phase": 1,
+      "path": "api/README.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/api/README.html",
+      "expected": {
+        "bytes": 17948,
+        "sha256": "0a78b688559a5e34ccf0ae645dbe80f28b212395fae4fe7a68da88dc1efcc9d4"
+      },
+      "actual": {
+        "bytes": 17948,
+        "sha256": "0a78b688559a5e34ccf0ae645dbe80f28b212395fae4fe7a68da88dc1efcc9d4"
+      },
+      "match": true
+    },
+    {
+      "phase": 1,
+      "path": "api/index.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/api/index.html",
+      "expected": {
+        "bytes": 18753,
+        "sha256": "7184fecb327960f643036e5da6b5e52be433a86fe114d253cd36195e9b39df2e"
+      },
+      "actual": {
+        "bytes": 18753,
+        "sha256": "7184fecb327960f643036e5da6b5e52be433a86fe114d253cd36195e9b39df2e"
+      },
+      "match": true
+    },
+    {
+      "phase": 1,
+      "path": "index.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/index.html",
+      "expected": {
+        "bytes": 18641,
+        "sha256": "3bcbc52e110c433e705b52e621bb640ee3432a992a3996ee26f7ca6e019618fa"
+      },
+      "actual": {
+        "bytes": 18641,
+        "sha256": "3bcbc52e110c433e705b52e621bb640ee3432a992a3996ee26f7ca6e019618fa"
+      },
+      "match": true
+    },
+    {
+      "phase": 1,
+      "path": "internal/0077-c04-12-root-html-document.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/internal/0077-c04-12-root-html-document.html",
+      "expected": {
+        "bytes": 25729,
+        "sha256": "d1af9c1e1ebe020dbe042a90ba799e1f2bef13c0849be27ca23a974f846917ad"
+      },
+      "actual": {
+        "bytes": 25729,
+        "sha256": "d1af9c1e1ebe020dbe042a90ba799e1f2bef13c0849be27ca23a974f846917ad"
+      },
+      "match": true
+    },
+    {
+      "phase": 1,
+      "path": "internal/0077-c04-12-root-html-document.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/internal/0077-c04-12-root-html-document.md",
+      "expected": {
+        "bytes": 5368,
+        "sha256": "d973db7ff3b328d2e7f62999a7045eff998d2b86ef138bb69ee7ee57cba30cda"
+      },
+      "actual": {
+        "bytes": 5368,
+        "sha256": "d973db7ff3b328d2e7f62999a7045eff998d2b86ef138bb69ee7ee57cba30cda"
+      },
+      "match": true
+    },
+    {
+      "phase": 1,
+      "path": "internal/README.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/internal/README.html",
+      "expected": {
+        "bytes": 161204,
+        "sha256": "e330b3e4003d03e1ffd2c0beae58b9d87adeda90ca39eefcdaaa114fdff51db0"
+      },
+      "actual": {
+        "bytes": 161204,
+        "sha256": "e330b3e4003d03e1ffd2c0beae58b9d87adeda90ca39eefcdaaa114fdff51db0"
+      },
+      "match": true
+    },
+    {
+      "phase": 1,
+      "path": "internal/README.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/internal/README.md",
+      "expected": {
+        "bytes": 114289,
+        "sha256": "2faa246c918d03541cbcd5767b7ad05a31c9b299a3a3d5e42269b02799bd960e"
+      },
+      "actual": {
+        "bytes": 114289,
+        "sha256": "2faa246c918d03541cbcd5767b7ad05a31c9b299a3a3d5e42269b02799bd960e"
+      },
+      "match": true
+    },
+    {
+      "phase": 1,
+      "path": "internal/evidence/c04-12-root-html-asset-implementation-review-20-2026-10-17.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/internal/evidence/c04-12-root-html-asset-implementation-review-20-2026-10-17.html",
+      "expected": {
+        "bytes": 25743,
+        "sha256": "3b2515c6a968cc4f4602c3ed1b3e4f3887ca1584e142c126c12b8808db34952c"
+      },
+      "actual": {
+        "bytes": 25743,
+        "sha256": "3b2515c6a968cc4f4602c3ed1b3e4f3887ca1584e142c126c12b8808db34952c"
+      },
+      "match": true
+    },
+    {
+      "phase": 1,
+      "path": "internal/evidence/c04-12-root-html-asset-pr-diff-review-30-2026-10-17.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/internal/evidence/c04-12-root-html-asset-pr-diff-review-30-2026-10-17.html",
+      "expected": {
+        "bytes": 27464,
+        "sha256": "29ba27fb19e93b17c82702b9568d111da6ffdb2c16620f3cb350c9eee9644eb9"
+      },
+      "actual": {
+        "bytes": 27464,
+        "sha256": "29ba27fb19e93b17c82702b9568d111da6ffdb2c16620f3cb350c9eee9644eb9"
+      },
+      "match": true
+    },
+    {
+      "phase": 1,
+      "path": "internal/evidence/c04-root-document-environment-precomparison-review-2026-10-17.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/internal/evidence/c04-root-document-environment-precomparison-review-2026-10-17.html",
+      "expected": {
+        "bytes": 23083,
+        "sha256": "4af03e06bb935c43f1dc6ddcd432c0e720f27c22c92315a4b02490346ae960f8"
+      },
+      "actual": {
+        "bytes": 23083,
+        "sha256": "4af03e06bb935c43f1dc6ddcd432c0e720f27c22c92315a4b02490346ae960f8"
+      },
+      "match": true
+    },
+    {
+      "phase": 1,
+      "path": "plan/c04-root-html-document-environment.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/plan/c04-root-html-document-environment.html",
+      "expected": {
+        "bytes": 36117,
+        "sha256": "371827f242d96ee02697facc0e63a995c2604e7e15c89c8dca10239cff4d043f"
+      },
+      "actual": {
+        "bytes": 36117,
+        "sha256": "371827f242d96ee02697facc0e63a995c2604e7e15c89c8dca10239cff4d043f"
+      },
+      "match": true
+    },
+    {
+      "phase": 1,
+      "path": "plan/c04-root-html-document-environment.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/plan/c04-root-html-document-environment.md",
+      "expected": {
+        "bytes": 13014,
+        "sha256": "f7b722693c299eb838484cef35b21412e6308b798c67cbe71f3b97b9b6ba68a4"
+      },
+      "actual": {
+        "bytes": 13014,
+        "sha256": "f7b722693c299eb838484cef35b21412e6308b798c67cbe71f3b97b9b6ba68a4"
+      },
+      "match": true
+    },
+    {
+      "phase": 1,
+      "path": "roadmap.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/roadmap.html",
+      "expected": {
+        "bytes": 118776,
+        "sha256": "a76a7ea32f52e5ace3204294d02cc6e18ab34938c9066135392d7048669fe12f"
+      },
+      "actual": {
+        "bytes": 118776,
+        "sha256": "a76a7ea32f52e5ace3204294d02cc6e18ab34938c9066135392d7048669fe12f"
+      },
+      "match": true
+    },
+    {
+      "phase": 1,
+      "path": "spec/public/roadmap.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/spec/public/roadmap.html",
+      "expected": {
+        "bytes": 118776,
+        "sha256": "a76a7ea32f52e5ace3204294d02cc6e18ab34938c9066135392d7048669fe12f"
+      },
+      "actual": {
+        "bytes": 118776,
+        "sha256": "a76a7ea32f52e5ace3204294d02cc6e18ab34938c9066135392d7048669fe12f"
+      },
+      "match": true
+    },
+    {
+      "phase": 2,
+      "path": "0001-conformance.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/0001-conformance.html",
+      "expected": {
+        "bytes": 28790,
+        "sha256": "ae6e7df8582d12863af4d78abc2b4e8474e094e518038e02738dade6098b0eea"
+      },
+      "actual": {
+        "bytes": 28790,
+        "sha256": "ae6e7df8582d12863af4d78abc2b4e8474e094e518038e02738dade6098b0eea"
+      },
+      "match": true
+    },
+    {
+      "phase": 2,
+      "path": "0002-ui-tree-events.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/0002-ui-tree-events.html",
+      "expected": {
+        "bytes": 27335,
+        "sha256": "7d79c75b487b9bc07db7b0b590c8d9b9833c089dff3c7547a89b0c97eb1862a6"
+      },
+      "actual": {
+        "bytes": 27335,
+        "sha256": "7d79c75b487b9bc07db7b0b590c8d9b9833c089dff3c7547a89b0c97eb1862a6"
+      },
+      "match": true
+    },
+    {
+      "phase": 2,
+      "path": "0003-web-surface.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/0003-web-surface.html",
+      "expected": {
+        "bytes": 35963,
+        "sha256": "facc910b10ec1ed197760568559665c3c240cafb1966b6bbb9d46ad158b4ba38"
+      },
+      "actual": {
+        "bytes": 35963,
+        "sha256": "facc910b10ec1ed197760568559665c3c240cafb1966b6bbb9d46ad158b4ba38"
+      },
+      "match": true
+    },
+    {
+      "phase": 2,
+      "path": "0004-runtime-build.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/0004-runtime-build.html",
+      "expected": {
+        "bytes": 26504,
+        "sha256": "31b25f4626ad21fc157305b3865ca69ce677f94b0b8a8ff29f31e4800a58e35c"
+      },
+      "actual": {
+        "bytes": 26504,
+        "sha256": "31b25f4626ad21fc157305b3865ca69ce677f94b0b8a8ff29f31e4800a58e35c"
+      },
+      "match": true
+    },
+    {
+      "phase": 2,
+      "path": "0005-developer-tools.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/0005-developer-tools.html",
+      "expected": {
+        "bytes": 16806,
+        "sha256": "b2afc8228e36581b8215364dc6195ce2adb73e2e76247f7dd4a5e86699d7d5c9"
+      },
+      "actual": {
+        "bytes": 16806,
+        "sha256": "b2afc8228e36581b8215364dc6195ce2adb73e2e76247f7dd4a5e86699d7d5c9"
+      },
+      "match": true
+    },
+    {
+      "phase": 2,
+      "path": "0006-routing.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/0006-routing.html",
+      "expected": {
+        "bytes": 21420,
+        "sha256": "72ea9da3765537f12182efd423ad9398c6b001e316531a3b240e98605bb64869"
+      },
+      "actual": {
+        "bytes": 21420,
+        "sha256": "72ea9da3765537f12182efd423ad9398c6b001e316531a3b240e98605bb64869"
+      },
+      "match": true
+    },
+    {
+      "phase": 2,
+      "path": "0007-dom-compatibility.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/0007-dom-compatibility.html",
+      "expected": {
+        "bytes": 32735,
+        "sha256": "959b3e7f6792113ab152df777f16df16cf368d1910089db96bf49a0ae6e0e7b8"
+      },
+      "actual": {
+        "bytes": 32735,
+        "sha256": "959b3e7f6792113ab152df777f16df16cf368d1910089db96bf49a0ae6e0e7b8"
+      },
+      "match": true
+    },
+    {
+      "phase": 2,
+      "path": "404.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/404.html",
+      "expected": {
+        "bytes": 6204,
+        "sha256": "8b1d2f5b973abc909d474b821add57b0830e2e9a107b800bfbc117ff1c040a18"
+      },
+      "actual": {
+        "bytes": 6204,
+        "sha256": "8b1d2f5b973abc909d474b821add57b0830e2e9a107b800bfbc117ff1c040a18"
+      },
+      "match": true
+    },
+    {
+      "phase": 2,
+      "path": "README.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/README.html",
+      "expected": {
+        "bytes": 19821,
+        "sha256": "d9a2f8ed26efa549df143cab8efe92a2f8df9b2a6bfa3ada62189cffae2a8c0f"
+      },
+      "actual": {
+        "bytes": 19821,
+        "sha256": "d9a2f8ed26efa549df143cab8efe92a2f8df9b2a6bfa3ada62189cffae2a8c0f"
+      },
+      "match": true
+    },
+    {
+      "phase": 2,
+      "path": "STATUS.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/STATUS.html",
+      "expected": {
+        "bytes": 338120,
+        "sha256": "41058b0be005dfcce6698693a8b8defd65f5b227f48f6655ac8d7aa8c975a943"
+      },
+      "actual": {
+        "bytes": 338120,
+        "sha256": "41058b0be005dfcce6698693a8b8defd65f5b227f48f6655ac8d7aa8c975a943"
+      },
+      "match": true
+    },
+    {
+      "phase": 2,
+      "path": "api/README.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/api/README.html",
+      "expected": {
+        "bytes": 15012,
+        "sha256": "1e427f49d4da7d020a05490ef86aeb21c287858a047012110c6bde331f9bf00c"
+      },
+      "actual": {
+        "bytes": 15012,
+        "sha256": "1e427f49d4da7d020a05490ef86aeb21c287858a047012110c6bde331f9bf00c"
+      },
+      "match": true
+    },
+    {
+      "phase": 2,
+      "path": "api/index.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/api/index.html",
+      "expected": {
+        "bytes": 15809,
+        "sha256": "59e111bb069d762995357aeb2a2e8c1943551dbcafc3a7b8932f375d38c6bfd2"
+      },
+      "actual": {
+        "bytes": 15809,
+        "sha256": "59e111bb069d762995357aeb2a2e8c1943551dbcafc3a7b8932f375d38c6bfd2"
+      },
+      "match": true
+    },
+    {
+      "phase": 2,
+      "path": "index.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/index.html",
+      "expected": {
+        "bytes": 15735,
+        "sha256": "d2e06fcdf99b28ab37c62dda444ba6106ff3c4ff7cc5605e7c5976f656d06f49"
+      },
+      "actual": {
+        "bytes": 15735,
+        "sha256": "d2e06fcdf99b28ab37c62dda444ba6106ff3c4ff7cc5605e7c5976f656d06f49"
+      },
+      "match": true
+    },
+    {
+      "phase": 2,
+      "path": "internal/0077-c04-12-root-html-document.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/internal/0077-c04-12-root-html-document.html",
+      "expected": {
+        "bytes": 21020,
+        "sha256": "1c277e80f325ac223494a20ba9448e781ae4200f6ed48cb5e4e2974784978ad9"
+      },
+      "actual": {
+        "bytes": 21020,
+        "sha256": "1c277e80f325ac223494a20ba9448e781ae4200f6ed48cb5e4e2974784978ad9"
+      },
+      "match": true
+    },
+    {
+      "phase": 2,
+      "path": "internal/README.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/internal/README.html",
+      "expected": {
+        "bytes": 153635,
+        "sha256": "1c57117601b53a806d8adbc166e055cffa2e0f1ab7360adee7cf1b5e8e4b4254"
+      },
+      "actual": {
+        "bytes": 153635,
+        "sha256": "1c57117601b53a806d8adbc166e055cffa2e0f1ab7360adee7cf1b5e8e4b4254"
+      },
+      "match": true
+    },
+    {
+      "phase": 2,
+      "path": "internal/evidence/c04-12-root-html-asset-implementation-review-20-2026-10-17.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/internal/evidence/c04-12-root-html-asset-implementation-review-20-2026-10-17.html",
+      "expected": {
+        "bytes": 20067,
+        "sha256": "c6fc39d8f7b998d765e28992487a6a41d429d47266c248e0d92d5baaa414908d"
+      },
+      "actual": {
+        "bytes": 20067,
+        "sha256": "c6fc39d8f7b998d765e28992487a6a41d429d47266c248e0d92d5baaa414908d"
+      },
+      "match": true
+    },
+    {
+      "phase": 2,
+      "path": "internal/evidence/c04-12-root-html-asset-pr-diff-review-30-2026-10-17.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/internal/evidence/c04-12-root-html-asset-pr-diff-review-30-2026-10-17.html",
+      "expected": {
+        "bytes": 21796,
+        "sha256": "c7eabffabad1fe62bf6fabd84d96c7b9b17f64299ac7bf19c7ba8e98e5273ea5"
+      },
+      "actual": {
+        "bytes": 21796,
+        "sha256": "c7eabffabad1fe62bf6fabd84d96c7b9b17f64299ac7bf19c7ba8e98e5273ea5"
+      },
+      "match": true
+    },
+    {
+      "phase": 2,
+      "path": "internal/evidence/c04-12-root-html-default-app-2026-10-17/README.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/internal/evidence/c04-12-root-html-default-app-2026-10-17/README.html",
+      "expected": {
+        "bytes": 18892,
+        "sha256": "c77454d7f449cf507749a71d993994f9ff618d4104c1e862d568320b1e97fcbf"
+      },
+      "actual": {
+        "bytes": 18892,
+        "sha256": "c77454d7f449cf507749a71d993994f9ff618d4104c1e862d568320b1e97fcbf"
+      },
+      "match": true
+    },
+    {
+      "phase": 2,
+      "path": "internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/README.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/README.html",
+      "expected": {
+        "bytes": 16270,
+        "sha256": "0abe73936625b3625fb264d5baeff713b70e103ba674219a48f9b171e0530911"
+      },
+      "actual": {
+        "bytes": 16270,
+        "sha256": "0abe73936625b3625fb264d5baeff713b70e103ba674219a48f9b171e0530911"
+      },
+      "match": true
+    },
+    {
+      "phase": 2,
+      "path": "internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/README.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/README.md",
+      "expected": {
+        "bytes": 2605,
+        "sha256": "ce75c187211fb2fdf2b8c2d7237285a8007cae4866f9df5ee35e0dcea72f766f"
+      },
+      "actual": {
+        "bytes": 2605,
+        "sha256": "ce75c187211fb2fdf2b8c2d7237285a8007cae4866f9df5ee35e0dcea72f766f"
+      },
+      "match": true
+    },
+    {
+      "phase": 2,
+      "path": "internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/render-build-result.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/render-build-result.md",
+      "expected": {
+        "bytes": 1860,
+        "sha256": "fa222a5934717fa362bed8d07c54f375da1e63e9e48e8582c9c12bfd78fd3f19"
+      },
+      "actual": {
+        "bytes": 1860,
+        "sha256": "fa222a5934717fa362bed8d07c54f375da1e63e9e48e8582c9c12bfd78fd3f19"
+      },
+      "match": true
+    },
+    {
+      "phase": 2,
+      "path": "internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/selected-build.log",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/selected-build.log",
+      "expected": {
+        "bytes": 7843,
+        "sha256": "f8e5cca205c985024e0c9faaa637eec1318161c81335e0b42cdc1a2c5997306a"
+      },
+      "actual": {
+        "bytes": 7843,
+        "sha256": "f8e5cca205c985024e0c9faaa637eec1318161c81335e0b42cdc1a2c5997306a"
+      },
+      "match": true
+    },
+    {
+      "phase": 2,
+      "path": "internal/evidence/c04-root-document-environment-precomparison-review-2026-10-17.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/internal/evidence/c04-root-document-environment-precomparison-review-2026-10-17.html",
+      "expected": {
+        "bytes": 17823,
+        "sha256": "da8cae627794960e3287a9c899e7e7be2a17f343afdeedbf6151d11e69032c01"
+      },
+      "actual": {
+        "bytes": 17823,
+        "sha256": "da8cae627794960e3287a9c899e7e7be2a17f343afdeedbf6151d11e69032c01"
+      },
+      "match": true
+    },
+    {
+      "phase": 2,
+      "path": "plan/c04-root-html-document-environment.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/plan/c04-root-html-document-environment.html",
+      "expected": {
+        "bytes": 29552,
+        "sha256": "2364d5f23f530f8c4e4c1ecb647fa9a86da2b42f5ed2a9e3f4610740dcba0c36"
+      },
+      "actual": {
+        "bytes": 29552,
+        "sha256": "2364d5f23f530f8c4e4c1ecb647fa9a86da2b42f5ed2a9e3f4610740dcba0c36"
+      },
+      "match": true
+    },
+    {
+      "phase": 3,
+      "path": "internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase3/internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "expected": {
+        "bytes": 4677,
+        "sha256": "25fa2a63166bf2f53bd82a0362586de83aa1988995edfc7e8aab2f277f404a90"
+      },
+      "actual": {
+        "bytes": 4677,
+        "sha256": "25fa2a63166bf2f53bd82a0362586de83aa1988995edfc7e8aab2f277f404a90"
+      },
+      "match": true
+    },
+    {
+      "phase": 4,
+      "path": "internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/render-build-result.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase4/internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/render-build-result.md",
+      "expected": {
+        "bytes": 1860,
+        "sha256": "5bb55c3e6fb1e3bc56e9e7b75319d624186b462f942727c47a93b937a32a74db"
+      },
+      "actual": {
+        "bytes": 1860,
+        "sha256": "5bb55c3e6fb1e3bc56e9e7b75319d624186b462f942727c47a93b937a32a74db"
+      },
+      "match": true
+    }
+  ]
+}
