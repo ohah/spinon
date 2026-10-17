@@ -661,6 +661,34 @@ fn runtime_hit_test_applies_axis_clips_and_uses_half_open_edges() {
 }
 
 #[test]
+fn runtime_hit_test_rounds_only_the_viewport_visibility_boundary() {
+    let root = NodeId::new(43).unwrap();
+    let snapshot = super::RuntimeRenderSnapshot::new(
+        key(),
+        CssSize::new(540.0, 128.0).unwrap(),
+        vec![RuntimeRenderBox::new(
+            root,
+            CssRect::new(0.0, 0.0, 540.0, 128.0).unwrap(),
+            RuntimePaint::None,
+            0,
+        )],
+    )
+    .unwrap();
+
+    assert_eq!(
+        snapshot.hit_test_css_point(539.49, 0.5).unwrap().node_id(),
+        root
+    );
+    assert_eq!(
+        snapshot.hit_test_css_point(0.5, 127.49).unwrap().node_id(),
+        root
+    );
+    assert!(snapshot.hit_test_css_point(539.5, 0.5).is_none());
+    assert!(snapshot.hit_test_css_point(0.5, 127.5).is_none());
+    assert!(snapshot.hit_test_css_point(539.5, 127.5).is_none());
+}
+
+#[test]
 fn runtime_hit_test_can_order_targets_independently_from_paint() {
     let target = NodeId::new(41).unwrap();
     let painted_parent = NodeId::new(42).unwrap();

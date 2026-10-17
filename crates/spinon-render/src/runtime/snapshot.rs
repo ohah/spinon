@@ -420,12 +420,17 @@ impl RuntimeRenderSnapshot {
 
     /// hit-test 순서, clip, viewport를 통과한 가장 앞의 CSS event target을 반환합니다.
     pub fn hit_test_css_point(&self, x: f32, y: f32) -> Option<&RuntimeRenderBox> {
+        // Blink는 둥근 정수 좌표로 viewport 포함 여부를 확인한 뒤 원래 소수 좌표로 hit-test합니다.
+        let viewport_x = x.round();
+        let viewport_y = y.round();
+        let viewport_width = self.viewport_css_px.width().round();
+        let viewport_height = self.viewport_css_px.height().round();
         if !x.is_finite()
             || !y.is_finite()
-            || x < 0.0
-            || x >= self.viewport_css_px.width()
-            || y < 0.0
-            || y >= self.viewport_css_px.height()
+            || viewport_x < 0.0
+            || viewport_x >= viewport_width
+            || viewport_y < 0.0
+            || viewport_y >= viewport_height
         {
             return None;
         }
