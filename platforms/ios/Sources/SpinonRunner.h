@@ -17,6 +17,10 @@
 + (int32_t)injectR13Failure:(void *)renderer kind:(uint32_t)failureKind;
 + (void)destroyR08Wgpu:(void *)renderer;
 + (uint64_t)createRuntimeSession;
+#if defined(SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST
++ (NSString *)runC0412RootHtmlAccessorsFixture;
+#endif
 + (NSString *)runRuntimePriorityProbe;
 + (NSString *)runRuntimePriorityFairnessProbe;
 + (NSString *)runRuntimeShutdownProbe;

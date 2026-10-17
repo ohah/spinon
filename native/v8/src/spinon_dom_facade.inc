@@ -391,6 +391,31 @@ R"SPINONJS(
       super(key, 0);
     }
 
+    get documentElement() {
+      const candidate = this.firstChild;
+      return candidate !== null && candidate.nodeType === 1
+        ? candidate
+        : null;
+    }
+
+    get head() {
+      const root = this.documentElement;
+      if (root === null || root.localName !== "html") return null;
+      for (let child = root.firstChild; child !== null; child = child.nextSibling) {
+        if (child.nodeType === 1 && child.localName === "head") return child;
+      }
+      return null;
+    }
+
+    get body() {
+      const root = this.documentElement;
+      if (root === null || root.localName !== "html") return null;
+      for (let child = root.firstChild; child !== null; child = child.nextSibling) {
+        if (child.nodeType === 1 && child.localName === "body") return child;
+      }
+      return null;
+    }
+
     createElement(name) {
       if (this !== document) throw new TypeError("document 객체가 필요합니다");
       requireArguments(arguments.length, 1, "createElement");

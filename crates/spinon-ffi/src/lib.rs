@@ -33,6 +33,7 @@ mod runtime_session;
 mod runtime_ua_cascade;
 
 #[cfg(any(
+    feature = "c04-12-root-html-fixture-test",
     feature = "c14-1-app-fixture-test",
     feature = "c14-2-app-fixture-test",
     feature = "c14-3-app-fixture-test"

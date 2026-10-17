@@ -12,6 +12,7 @@ c14-1-live-v8-fixture-test = []
 c19-2-box-paint-opacity-fixture-test = []
 
 [dependencies]
+html5ever = "=0.40.1"
 spinon-core = { path = "../spinon-core" }
 spinon-layout = { path = "../spinon-layout" }
 spinon-style = { path = "../spinon-style" }

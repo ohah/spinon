@@ -15,6 +15,7 @@ mod callback;
 mod collection;
 mod ids;
 mod query;
+mod root_html;
 pub(crate) use callback::{DocumentCommitCallback, SpinonDocumentReceipt, commit_callback};
 #[cfg(test)]
 pub(crate) use callback::{

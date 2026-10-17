@@ -201,6 +201,14 @@ public final class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getIntent().getBooleanExtra("spinon_c0412_root_html", false)) {
+            if (!BuildConfig.SPINON_C04_12_ROOT_HTML_FIXTURE_TEST) {
+                showC0412RootHtmlFixtureUnavailable();
+            } else {
+                showC0412RootHtmlFixtureProbe();
+            }
+            return;
+        }
         if (getIntent().getBooleanExtra("spinon_c142_image_ratio", false)) {
             showC142ImageRatioFixture();
             return;
@@ -688,6 +696,52 @@ public final class MainActivity extends Activity {
         } catch (RuntimeException error) {
             Log.e(TAG, "SPINON_BOOTSTRAP_RUNTIME_ERROR", error);
         }
+    }
+
+    private void showC0412RootHtmlFixtureUnavailable() {
+        TextView status = new TextView(this);
+        status.setText("C04.12 root HTML fixture-test 옵션을 켜서 빌드해야 합니다.");
+        status.setTextColor(Color.WHITE);
+        status.setGravity(Gravity.CENTER);
+        status.setBackgroundColor(Color.rgb(14, 24, 40));
+        setContentView(status);
+        Log.e(TAG, "SPINON_C0412_DISABLED fixture-test feature is off");
+    }
+
+    private void showC0412RootHtmlFixtureProbe() {
+        TextView status = new TextView(this);
+        status.setText("C04.12 실제 V8 root HTML document 확인 중…");
+        status.setTextColor(Color.WHITE);
+        status.setGravity(Gravity.CENTER);
+        status.setBackgroundColor(Color.rgb(14, 24, 40));
+        status.setTextSize(18);
+        setContentView(status);
+        bootstrapExecutor.execute(() -> {
+            String report;
+            try {
+                Class<?> adapter = Class.forName(
+                        "dev.spinon.bootstrap.C0412RootHtmlFixtureNativeAdapter");
+                byte[] bytes = (byte[]) adapter.getMethod("run").invoke(null);
+                report = bytes == null ? "native fixture 응답이 비었습니다"
+                        : new String(bytes, StandardCharsets.UTF_8);
+            } catch (ReflectiveOperationException error) {
+                report = "native fixture 실행 실패: " + error.getClass().getSimpleName()
+                        + ": " + error.getMessage();
+            }
+            String completedReport = report;
+            runOnUiThread(() -> {
+                boolean passed = completedReport.contains("status=0")
+                        && completedReport.contains("c04_12_root_html_accessors=PASS");
+                status.setText(passed
+                        ? "C04.12 · 실제 V8 DOM\n\nPASS\n\n"
+                                + "documentElement · head · body\n"
+                                + "meta viewport · meta color-scheme · style tree\n"
+                                + "script inertness · HostDocument text/attribute"
+                        : "C04.12 · 실제 V8 DOM 실패\n\n" + completedReport);
+                Log.println(passed ? Log.INFO : Log.ERROR, TAG,
+                        "SPINON_C0412_ROOT_HTML " + completedReport);
+            });
+        });
     }
 
     @Override
