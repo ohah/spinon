@@ -1,0 +1,96 @@
+$ RSPRESS_PERSISTENT_CACHE=false rspress build --config rspress.tailnet-sync.config.ts
+🔥 Rspress v2.0.22
+
+info    build started...
+warn    The dist path is not a subdir of root path, Rsbuild will not empty it.
+warn    Please set `output.cleanDistPath` config manually.
+warn    Current root path: <isolated-worktree>/packages/docs
+warn    Current dist path: <selected-build-root>/selected-out-final5
+info    Rendering pages...
+success Pages rendered in 106 ms.
+ready   built in 0.68s (node)
+ready   built in 0.68s (web)
+
+File (web)                                                                                                                                                              Size        Gzip   
+../../../../..<selected-build-root>/selected-out-final5/static/js/async/i.25208e7c92.js                                                 0.10 kB     0.09 kB
+../../../../..<selected-build-root>/selected-out-final5/static/js/styles.d2a6dfa6a0.js                                                  0.47 kB     0.23 kB
+../../../../..<selected-build-root>/selected-out-final5/icon.svg                                                                        0.64 kB     0.41 kB
+../../../../..<selected-build-root>/selected-out-final5/static/js/async/route-bf1bdca76546.87870ad46b.js                                2.2 kB      1.2 kB
+../../../../..<selected-build-root>/selected-out-final5/static/js/async/route-6dd6fea916db.75b6154f74.js                                3.5 kB      1.6 kB
+../../../../..<selected-build-root>/selected-out-final5/static/js/async/route-1f47bc9ee4e3.b236fc3580.js                                6.7 kB      2.6 kB
+../../../../..<selected-build-root>/selected-out-final5/static/js/async/route-6d36d09bb7b0.7b41252997.js                                6.9 kB      2.7 kB
+../../../../..<selected-build-root>/selected-out-final5/static/js/async/route-4ad8775d68c3.ce764b4638.js                                7.1 kB      2.5 kB
+../../../../..<selected-build-root>/selected-out-final5/static/js/async/route-87492bc0a054.3dc9d42333.js                                8.6 kB      3.1 kB
+../../../../..<selected-build-root>/selected-out-final5/static/js/async/route-fd781c6569db.067ac0d9dd.js                                9.1 kB      3.4 kB
+../../../../..<selected-build-root>/selected-out-final5/static/js/async/route-dfe593960693.2792291bfc.js                                9.2 kB      3.1 kB
+../../../../..<selected-build-root>/selected-out-final5/static/js/async/route-f7ef4ddf795f.2d0c72cc3e.js                                9.2 kB      3.3 kB
+../../../../..<selected-build-root>/selected-out-final5/static/js/async/route-059bac22a6b5.7211c20560.js                                9.3 kB      3.2 kB
+../../../../..<selected-build-root>/selected-out-final5/static/js/async/route-8a23293a317b.f9ac7e7faa.js                                9.4 kB      3.1 kB
+../../../../..<selected-build-root>/selected-out-final5/static/js/async/route-faffa23ad0bd.7e5b7b6266.js                                10.3 kB     3.5 kB
+../../../../..<selected-build-root>/selected-out-final5/static/js/async/route-ef2940073a71.f13358e24f.js                                10.6 kB     4.0 kB
+../../../../..<selected-build-root>/selected-out-final5/static/js/async/route-a07f3c9d45d8.1a3577c712.js                                10.6 kB     3.7 kB
+../../../../..<selected-build-root>/selected-out-final5/static/js/async/route-10c6e6a69971.c32b6ef5bc.js                                12.0 kB     3.7 kB
+../../../../..<selected-build-root>/selected-out-final5/static/js/async/route-f008be36a2c6.33fff6573e.js                                12.2 kB     3.9 kB
+../../../../..<selected-build-root>/selected-out-final5/static/js/async/route-1051aa86ca75.c4968cb106.js                                12.9 kB     4.4 kB
+../../../../..<selected-build-root>/selected-out-final5/static/js/async/route-efbe6e268fd4.98db1eab22.js                                16.6 kB     5.5 kB
+../../../../..<selected-build-root>/selected-out-final5/static/js/async/route-bb07f493e183.f3dab97437.js                                18.6 kB     5.5 kB
+../../../../..<selected-build-root>/selected-out-final5/static/image/chrome-agent-browser-iphone12-scale-half.43db41fdbd.png            25.0 kB  
+../../../../..<selected-build-root>/selected-out-final5/static/js/async/route-ea34262d0652.cb661b5314.js                                25.7 kB     7.8 kB
+../../../../..<selected-build-root>/selected-out-final5/static/image/chrome-agent-browser-iphone12-width-500-scale-one.4109664d55.png   26.5 kB  
+../../../../..<selected-build-root>/selected-out-final5/static/image/chrome-agent-browser-iphone12-scale-two.6c05045e76.png             29.0 kB  
+../../../../..<selected-build-root>/selected-out-final5/static/js/async/route-7ff1bc4fef68.e6652bfa12.js                                30.2 kB     8.6 kB
+../../../../..<selected-build-root>/selected-out-final5/static/js/async/route-abeecded38c6.888b9b3710.js                                31.2 kB     9.2 kB
+../../../../..<selected-build-root>/selected-out-final5/static/js/lib-router.1e14e568cb.js                                              35.4 kB     12.7 kB
+../../../../..<selected-build-root>/selected-out-final5/static/js/async/route-f5e1f6055c05.1fe6348e96.js                                55.4 kB     15.4 kB
+../../../../..<selected-build-root>/selected-out-final5/static/js/async/route-d138c5df840a.48f6413f6f.js                                60.0 kB     16.4 kB
+../../../../..<selected-build-root>/selected-out-final5/static/js/index.75d1383c44.js                                                   66.6 kB     20.8 kB
+../../../../..<selected-build-root>/selected-out-final5/static/css/styles.8d918fd78e.css                                                74.0 kB     14.2 kB
+../../../../..<selected-build-root>/selected-out-final5/static/image/android-api37.f4e4045570.png                                       87.7 kB  
+../../../../..<selected-build-root>/selected-out-final5/static/image/tailnet-counter-agent-browser.82c1d88bfa.png                       114.8 kB 
+../../../../..<selected-build-root>/selected-out-final5/static/image/ios-26.2-iphone17pro.a73b7bf27b.png                                127.5 kB 
+../../../../..<selected-build-root>/selected-out-final5/static/js/async/route-a1017bdf23ca.24f08c1265.js                                173.0 kB    36.2 kB
+../../../../..<selected-build-root>/selected-out-final5/static/image/tailnet-search-agent-browser.e594141a4d.png                        190.1 kB 
+../../../../..<selected-build-root>/selected-out-final5/static/image/tailnet-status-page-scale-agent-browser.e57e07e0de.png             208.0 kB 
+../../../../..<selected-build-root>/selected-out-final5/static/image/tailnet-plan-agent-browser.db4e196fca.png                          208.3 kB 
+../../../../..<selected-build-root>/selected-out-final5/static/image/tailnet-status-c04-12-agent-browser.f8a374e4bf.png                 213.4 kB 
+../../../../..<selected-build-root>/selected-out-final5/static/js/a.c9bdd1fb3a.js                                                       217.1 kB    71.7 kB
+../../../../..<selected-build-root>/selected-out-final5/static/js/lib-react.9cdf8f49ce.js                                               218.4 kB    68.9 kB
+../../../../..<selected-build-root>/selected-out-final5/static/image/tailnet-roadmap-agent-browser.46c8d92008.png                       258.6 kB 
+../../../../..<selected-build-root>/selected-out-final5/static/js/async/route-6c33a3943990.b98e9f3489.js                                367.9 kB    85.5 kB
+../../../../..<selected-build-root>/selected-out-final5/static/image/tailnet-preflight-agent-browser.96d4a82657.png                     386.0 kB 
+../../../../..<selected-build-root>/selected-out-final5/static/search_index.ko.1f3cf248.json                                            541.2 kB    168.9 kB
+../../../../..<selected-build-root>/selected-out-final5/static/image/tailnet-page-scale-evidence-agent-browser.23a6fbeeda.png           723.8 kB 
+
+                                                                                                                                                               Total:   4680.7 kB   3199.6 kB
+
+File (node)                                                                                                                                                                           Size        Gzip   
+../../../../..<selected-build-root>/selected-out-final5/404.html                                                                                      8.5 kB      2.5 kB
+../../../../..<selected-build-root>/selected-out-final5/internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/render-build-result.html     27.2 kB     5.3 kB
+../../../../..<selected-build-root>/selected-out-final5/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/render-build-result.html          27.6 kB     5.0 kB
+../../../../..<selected-build-root>/selected-out-final5/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/README.html                     29.6 kB     6.2 kB
+../../../../..<selected-build-root>/selected-out-final5/internal/evidence/c04-12-page-scale-rendering-2026-10-17/implementation-plan-review-20.html   31.4 kB     6.7 kB
+../../../../..<selected-build-root>/selected-out-final5/plan/c04-12-visual-viewport.html                                                              31.4 kB     6.8 kB
+../../../../..<selected-build-root>/selected-out-final5/internal/evidence/c04-12-page-scale-rendering-2026-10-17/implementation-review-20.html        31.5 kB     6.6 kB
+../../../../..<selected-build-root>/selected-out-final5/internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/README.html                  31.9 kB     6.7 kB
+../../../../..<selected-build-root>/selected-out-final5/plan/c04-12-page-scale-rendering.html                                                         32.1 kB     7.1 kB
+../../../../..<selected-build-root>/selected-out-final5/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/README.html                       32.5 kB     6.7 kB
+../../../../..<selected-build-root>/selected-out-final5/plan/c13-3-wheel-delta-routing.html                                                           32.8 kB     7.5 kB
+../../../../..<selected-build-root>/selected-out-final5/plan/c04-12-root-canvas-color-scheme.html                                                     33.2 kB     7.2 kB
+../../../../..<selected-build-root>/selected-out-final5/internal/evidence/c04-12-page-scale-rendering-2026-10-17/pr-delta-review-30.html              33.2 kB     7.3 kB
+../../../../..<selected-build-root>/selected-out-final5/internal/evidence/c04-12-page-scale-rendering-2026-10-17/README.html                          34.1 kB     7.4 kB
+../../../../..<selected-build-root>/selected-out-final5/plan/c13-3-android-avd-touchpad-point.html                                                    35.7 kB     8.1 kB
+../../../../..<selected-build-root>/selected-out-final5/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/pr-delta-review-20.html         35.9 kB     6.7 kB
+../../../../..<selected-build-root>/selected-out-final5/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/pr-delta-review-30.html           37.0 kB     6.6 kB
+../../../../..<selected-build-root>/selected-out-final5/plan/c13-3-policy-simulator-matrix.html                                                       38.5 kB     8.9 kB
+../../../../..<selected-build-root>/selected-out-final5/plan/c13-3-style-invalidation.html                                                            38.8 kB     9.1 kB
+../../../../..<selected-build-root>/selected-out-final5/internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/pr-delta-review-30.html      41.5 kB     7.4 kB
+../../../../..<selected-build-root>/selected-out-final5/plan/c04-root-html-document-environment.html                                                  47.7 kB     11.4 kB
+../../../../..<selected-build-root>/selected-out-final5/internal/0077-c04-12-root-html-document.html                                                  49.1 kB     12.1 kB
+../../../../..<selected-build-root>/selected-out-final5/plan/c13-3-native-wheel-input.html                                                            53.5 kB     12.9 kB
+../../../../..<selected-build-root>/selected-out-final5/internal/0063-c13-3-scroll-gestures.html                                                      75.2 kB     18.9 kB
+../../../../..<selected-build-root>/selected-out-final5/plan/c13-3-scroll-gestures.html                                                               83.0 kB     19.9 kB
+../../../../..<selected-build-root>/selected-out-final5/internal/README.html                                                                          169.5 kB    39.0 kB
+../../../../..<selected-build-root>/selected-out-final5/STATUS.html                                                                                   351.8 kB    87.3 kB
+
+                                                                                                                                                                             Total:   1474.2 kB   337.2 kB
+

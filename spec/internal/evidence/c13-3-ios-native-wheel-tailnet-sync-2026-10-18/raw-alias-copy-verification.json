@@ -1,0 +1,50 @@
+{
+  "createdAt": "2026-10-17T20:38:40.256Z",
+  "source": "spec/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18",
+  "target": "/Users/<redacted-user>/Library/Application Support/SpinonPreview/spec/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18",
+  "count": 8,
+  "allHashesMatch": true,
+  "deletions": 0,
+  "files": [
+    {
+      "path": "spec/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/README.md",
+      "bytes": 2986,
+      "sha256": "71e201deb52780de453443ab7834369b25a6b2e82499e1ce8ba0c4ce6f64b064"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/build.log",
+      "bytes": 65538,
+      "sha256": "2c5328fec636686c06e2485f26094cb9de23c4d36cd72c036f70eb0af8a281c4"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/host-frontmost-app.txt",
+      "bytes": 16,
+      "sha256": "7d5aaf655430435ad6a3d0e4e691574bba5315b32f3925de15e282de387aa26e"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/host-window-state.txt",
+      "bytes": 654,
+      "sha256": "552c5098e6271553e602486bccadf0cddfc0d8bf31267454598af92d026d6464"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/initial-launch.log",
+      "bytes": 1870,
+      "sha256": "8640e4f99be7c0dd5817c75b91d63234c1c3a30343250a18e8ca55271d2209f9"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/initial-launch.png",
+      "bytes": 166537,
+      "sha256": "0e55056f9b1b406e51e81f679063afdd4b34ecb199c2c0195d322c0e2f518a66"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/pr-delta-review-20.md",
+      "bytes": 3650,
+      "sha256": "dfb72b0be295019e2ade75881aa92448c6afcc9546ea126f8656a734b0196194"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/source-revision.json",
+      "bytes": 1146,
+      "sha256": "14b2b715a3b21e1ac152b3bf59c510073c2fd3d35f82ec9cb338c56c386b513e"
+    }
+  ]
+}

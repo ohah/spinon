@@ -1,0 +1,437 @@
+{
+  "createdAt": "2026-10-17T20:37:52.742Z",
+  "preflight": "preflight-first.json",
+  "backupVerification": "backup-verification-first.json",
+  "checked": 74,
+  "allHashesMatch": true,
+  "deletions": 0,
+  "files": [
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/build.log",
+      "action": "add",
+      "bytes": 65538,
+      "sha256": "2c5328fec636686c06e2485f26094cb9de23c4d36cd72c036f70eb0af8a281c4"
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/host-frontmost-app.txt",
+      "action": "add",
+      "bytes": 16,
+      "sha256": "7d5aaf655430435ad6a3d0e4e691574bba5315b32f3925de15e282de387aa26e"
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/host-window-state.txt",
+      "action": "add",
+      "bytes": 654,
+      "sha256": "552c5098e6271553e602486bccadf0cddfc0d8bf31267454598af92d026d6464"
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/initial-launch.log",
+      "action": "add",
+      "bytes": 1870,
+      "sha256": "8640e4f99be7c0dd5817c75b91d63234c1c3a30343250a18e8ca55271d2209f9"
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/initial-launch.png",
+      "action": "add",
+      "bytes": 166537,
+      "sha256": "0e55056f9b1b406e51e81f679063afdd4b34ecb199c2c0195d322c0e2f518a66"
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/pr-delta-review-20.html",
+      "action": "add",
+      "bytes": 35924,
+      "sha256": "d07f7770a38761b11d4a7f522e1af9a253b3063017fba527ff57fd215e9cc0a1"
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/pr-delta-review-20.md",
+      "action": "add",
+      "bytes": 3650,
+      "sha256": "dfb72b0be295019e2ade75881aa92448c6afcc9546ea126f8656a734b0196194"
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/README.html",
+      "action": "add",
+      "bytes": 29570,
+      "sha256": "e96cf2f3705efdddcbac9b4e886620bcd2a670347f6bcfe056d4707ac86f2af1"
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/README.md",
+      "action": "add",
+      "bytes": 2986,
+      "sha256": "71e201deb52780de453443ab7834369b25a6b2e82499e1ce8ba0c4ce6f64b064"
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/source-revision.json",
+      "action": "add",
+      "bytes": 1146,
+      "sha256": "14b2b715a3b21e1ac152b3bf59c510073c2fd3d35f82ec9cb338c56c386b513e"
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/dependencies-install.log",
+      "action": "add",
+      "bytes": 82,
+      "sha256": "9abfc5868ec62c065cb9a9f464e60048d8d14a99d9e83fac052dd5ece5a98aad"
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/docs-build.log",
+      "action": "add",
+      "bytes": 2210875,
+      "sha256": "863663b42dbf6f56ae99adfe7503875e3480f72b1b022f54de56306ee179b111"
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/pr-delta-review-20.html",
+      "action": "add",
+      "bytes": 35444,
+      "sha256": "4182d8b31161b71e5e4fc85d90215dc20d1da132ed888b366fef5adb3318459a"
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/pr-delta-review-20.md",
+      "action": "add",
+      "bytes": 3437,
+      "sha256": "cbda05c25231e5effbfefaf5c31d29271483eeee77dec52372f61ccdf688b9f7"
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/README.html",
+      "action": "add",
+      "bytes": 28596,
+      "sha256": "3a186da126e3ca3480bb505702c62158a200f4557a8c2b1bc3b2ed71df73a0bf"
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/README.md",
+      "action": "add",
+      "bytes": 2326,
+      "sha256": "d6d59b3bf9cd4f00ea649a05e1db46db8182363634859901bba0cb1956369324"
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/render-build-result.html",
+      "action": "add",
+      "bytes": 27061,
+      "sha256": "2f67d106ba24954cd17902deac5c5f2c23a0cb1696ee7cbc955c78c8cba1ef6f"
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/render-build-result.md",
+      "action": "add",
+      "bytes": 1393,
+      "sha256": "ba3b7f896a8cf107d7ee1e81dfba19f367ccd73f9605958f6cfcb29abf79c7f4"
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/selected-build-broad-c13-failed.log",
+      "action": "add",
+      "bytes": 37397,
+      "sha256": "673003f8678e676d46fefa2b5f2272a26d2b639c333ee074dbf732035e166aba"
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/selected-build.log",
+      "action": "add",
+      "bytes": 14528,
+      "sha256": "063019aa46656d809a8da7e8926a74a2f0574523fdbb57a4f872b02aca8e833d"
+    },
+    {
+      "path": "internal/README.html",
+      "action": "backup-and-replace",
+      "bytes": 169506,
+      "sha256": "db6045da73a8bf405da389c7bef8bc7bccc1a8d868430a9d993cdc31bf36eb8c"
+    },
+    {
+      "path": "internal/README.md",
+      "action": "backup-and-replace",
+      "bytes": 118393,
+      "sha256": "3dab150500b07465ffc6cf72305f568ca33c5f56bdb71f56f4d8e8757afc7127"
+    },
+    {
+      "path": "plan/c13-3-native-wheel-input.html",
+      "action": "backup-and-replace",
+      "bytes": 53503,
+      "sha256": "a26ae4395b4e9bd6e79536ca5b149188be6cb914dd5c13fc728a65e47066c87b"
+    },
+    {
+      "path": "plan/c13-3-native-wheel-input.md",
+      "action": "backup-and-replace",
+      "bytes": 20930,
+      "sha256": "d22f5b61e4f2c6ff8d7c49016e452c60aaa099acfee191d5c8c43f3361c219ee"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "action": "skip-identical",
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "path": "static/image/android-api37.f4e4045570.png",
+      "action": "skip-identical",
+      "sha256": "4ac824a3729425bb34f3dc4c1fbecd1eae0e1e55ef2a4b5ed2e29132c7fd7a50"
+    },
+    {
+      "path": "static/image/chrome-agent-browser-iphone12-scale-half.43db41fdbd.png",
+      "action": "skip-identical",
+      "sha256": "43b3ff2baf260e9b76467a0970f57e17a362de4b29e07fef6cb2c569ede15d7a"
+    },
+    {
+      "path": "static/image/chrome-agent-browser-iphone12-scale-two.6c05045e76.png",
+      "action": "skip-identical",
+      "sha256": "c2973c24ba6a47c68400497086707efa60a819d2e9e81775b03e5a9b0296428b"
+    },
+    {
+      "path": "static/image/chrome-agent-browser-iphone12-width-500-scale-one.4109664d55.png",
+      "action": "skip-identical",
+      "sha256": "851635058cf167320f35ebc83d9673d5aaf7eb2497cc429a7a4a2a09673701c1"
+    },
+    {
+      "path": "static/image/ios-26.2-iphone17pro.a73b7bf27b.png",
+      "action": "skip-identical",
+      "sha256": "d02e2d04d7034b4d8ee1cd02e120a3d1335d9e299c24fc7838cce33cd5bb252e"
+    },
+    {
+      "path": "static/image/tailnet-counter-agent-browser.82c1d88bfa.png",
+      "action": "skip-identical",
+      "sha256": "1be2471df1cdb41c685c9cb9fce0c3a30d65c57b399701763d3fe408c6b25c96"
+    },
+    {
+      "path": "static/image/tailnet-page-scale-evidence-agent-browser.23a6fbeeda.png",
+      "action": "skip-identical",
+      "sha256": "86ae503212fb268c58d65d69c2802824cc544d8cb616e57cfc629fe2b215d3ff"
+    },
+    {
+      "path": "static/image/tailnet-roadmap-agent-browser.46c8d92008.png",
+      "action": "skip-identical",
+      "sha256": "1ba883f83b04979e9cc4194a8f3ef4138bb05083af90f127d48b1f6b078e1f26"
+    },
+    {
+      "path": "static/image/tailnet-status-c04-12-agent-browser.f8a374e4bf.png",
+      "action": "skip-identical",
+      "sha256": "e9538aed0a92761b28ae46b0f0913988df4eaa38bcdea52894caa67bc7b4126e"
+    },
+    {
+      "path": "static/image/tailnet-status-page-scale-agent-browser.e57e07e0de.png",
+      "action": "skip-identical",
+      "sha256": "4e6f0c6e763dcf37818d14c1a9fcb59075c43149e6b1041f5b78b5127ee9bc0b"
+    },
+    {
+      "path": "static/js/a.c9bdd1fb3a.js",
+      "action": "add",
+      "bytes": 217104,
+      "sha256": "1d548da1cf1e915eecdc15623dabb15946451f56782f1f269c931127484542ac"
+    },
+    {
+      "path": "static/js/a.c9bdd1fb3a.js.LICENSE.txt",
+      "action": "add",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "action": "skip-identical",
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe"
+    },
+    {
+      "path": "static/js/async/route-059bac22a6b5.7211c20560.js",
+      "action": "add",
+      "bytes": 9274,
+      "sha256": "fe3fe9f73be4f3a2b630169474caee08071b3816735501d11f6756af32a7edae"
+    },
+    {
+      "path": "static/js/async/route-1051aa86ca75.c4968cb106.js",
+      "action": "add",
+      "bytes": 12914,
+      "sha256": "86337ae0d3c9784ac2c28a03a2b0af1c539c3b9af99e8e736cc05a7bdc2ba78d"
+    },
+    {
+      "path": "static/js/async/route-10c6e6a69971.c32b6ef5bc.js",
+      "action": "add",
+      "bytes": 12022,
+      "sha256": "b5bfc60aa7879f7ba55b159d5c93c156ca13ca33a61520bd525ff1320a7d17ec"
+    },
+    {
+      "path": "static/js/async/route-1f47bc9ee4e3.b236fc3580.js",
+      "action": "add",
+      "bytes": 6731,
+      "sha256": "2e233cfce11e0127987133131ebb48f3692fcb581583ad9e9a5a18a5b98e9c92"
+    },
+    {
+      "path": "static/js/async/route-4ad8775d68c3.ce764b4638.js",
+      "action": "add",
+      "bytes": 7136,
+      "sha256": "2966abcbdfc9a90a12723b3f3b7578fc85c3e73de34db73c3dd50ffa2ffb2e18"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.b98e9f3489.js",
+      "action": "add",
+      "bytes": 367852,
+      "sha256": "376bec639ddc991b8d35d9d880ac7934b13676d5583302e769cc7884ddba8359"
+    },
+    {
+      "path": "static/js/async/route-6d36d09bb7b0.7b41252997.js",
+      "action": "add",
+      "bytes": 6853,
+      "sha256": "f7434aa78d9656e53591dcecc4627060971b9e0557a9b094d46b63a66ae68932"
+    },
+    {
+      "path": "static/js/async/route-6dd6fea916db.e84e2a923e.js",
+      "action": "add",
+      "bytes": 3365,
+      "sha256": "12f0b01965d9e2074cdfa51a3de5838daf1f054c9d7296b646e37164e7640c8d"
+    },
+    {
+      "path": "static/js/async/route-7ff1bc4fef68.e6652bfa12.js",
+      "action": "add",
+      "bytes": 30214,
+      "sha256": "3c31c28b5e2d44d7b26e666ed6c47486fae74994d089f22f54b6f74d030494df"
+    },
+    {
+      "path": "static/js/async/route-8211467515e7.db5e79d45b.js",
+      "action": "add",
+      "bytes": 5993,
+      "sha256": "e28f900d1125b0fddd9f37ecb1b56e99a3c14ceee2b8ef9bdc36f2792ac10cdb"
+    },
+    {
+      "path": "static/js/async/route-87492bc0a054.533fd864ce.js",
+      "action": "add",
+      "bytes": 5153,
+      "sha256": "e898fecf68161f577452ab3d844426a273c2b88cad3472a1b3cc501b6e7c1a20"
+    },
+    {
+      "path": "static/js/async/route-8a23293a317b.f9ac7e7faa.js",
+      "action": "add",
+      "bytes": 9366,
+      "sha256": "5d7a44bb84159240b4107b72085f5d2aed299e77bd7573a03c8ed2dbc40b53f5"
+    },
+    {
+      "path": "static/js/async/route-a07f3c9d45d8.1a3577c712.js",
+      "action": "add",
+      "bytes": 10639,
+      "sha256": "3407ae89238d27ed2fbfe4efb6d2d71b8ed176bbdbc798960588c311c336cce9"
+    },
+    {
+      "path": "static/js/async/route-a1017bdf23ca.71fd2005e6.js",
+      "action": "add",
+      "bytes": 172828,
+      "sha256": "291900efd006fc1c878b8116c7a9c6405ace855df59c6c5b5f2d1beebe345fe6"
+    },
+    {
+      "path": "static/js/async/route-a1017bdf23ca.f1a85db03f.js",
+      "action": "add",
+      "bytes": 172970,
+      "sha256": "9ec80ce9a300a6fc32a058adef74d2d680576ef6ddbcef95c0ab9f4b8fd3803d"
+    },
+    {
+      "path": "static/js/async/route-abeecded38c6.888b9b3710.js",
+      "action": "add",
+      "bytes": 31187,
+      "sha256": "5887eb9c35a312f6a79a762dcafae6b4b2e70521903686cddea5e98ea16238ee"
+    },
+    {
+      "path": "static/js/async/route-bb07f493e183.f3dab97437.js",
+      "action": "add",
+      "bytes": 18571,
+      "sha256": "7dccddcd4b7157b6957f9ffef5488ef1d8874c363d57cdc0f041c915a042257b"
+    },
+    {
+      "path": "static/js/async/route-bf1bdca76546.87870ad46b.js",
+      "action": "add",
+      "bytes": 2216,
+      "sha256": "36f5fb81d4f0248b3c5ab97dbe99018ad10ed768156ef35c5a55919b3efdaeda"
+    },
+    {
+      "path": "static/js/async/route-d138c5df840a.48f6413f6f.js",
+      "action": "add",
+      "bytes": 59956,
+      "sha256": "50627c68b63420fa391a4a1f338d13d19f9c41d38e1057acab20ed80cd844d8d"
+    },
+    {
+      "path": "static/js/async/route-dfe593960693.2792291bfc.js",
+      "action": "add",
+      "bytes": 9214,
+      "sha256": "7a2b4ea6a1ddd659819f0c3d68b3ef679265707949f0d57eb39189996aeccf71"
+    },
+    {
+      "path": "static/js/async/route-ea34262d0652.cb661b5314.js",
+      "action": "add",
+      "bytes": 25696,
+      "sha256": "c39403706ed053d9df1f0c5d868e7e5dbd52250681483e8bf8e184a845baa08b"
+    },
+    {
+      "path": "static/js/async/route-ef2940073a71.f13358e24f.js",
+      "action": "add",
+      "bytes": 10587,
+      "sha256": "b524e578751de3b24c803b00aedd52b072ac691720a11ea1395d4d1e4459a667"
+    },
+    {
+      "path": "static/js/async/route-efbe6e268fd4.f8d9fa5ff0.js",
+      "action": "add",
+      "bytes": 16553,
+      "sha256": "6c1832be9e42f57655195593a1a89d436bcce0ca7ebf96076e50e472552c6009"
+    },
+    {
+      "path": "static/js/async/route-f008be36a2c6.33fff6573e.js",
+      "action": "add",
+      "bytes": 12175,
+      "sha256": "fabaa17fde6f3182837a3414fe99b6539560f899313028944992b7f9d4f2727d"
+    },
+    {
+      "path": "static/js/async/route-f5e1f6055c05.1fe6348e96.js",
+      "action": "add",
+      "bytes": 55408,
+      "sha256": "b59a912883b3a9197c392c06cdeefc6df259f6c5bfb1ec4793d5c9aed116ddb0"
+    },
+    {
+      "path": "static/js/async/route-f7ef4ddf795f.2d0c72cc3e.js",
+      "action": "add",
+      "bytes": 9229,
+      "sha256": "33ae767c98f8bc995158bb4740b019e8a7320d9239f3dd3fe689be4f91715270"
+    },
+    {
+      "path": "static/js/async/route-faffa23ad0bd.7e5b7b6266.js",
+      "action": "add",
+      "bytes": 10252,
+      "sha256": "21c4f786fe7d24346536926cf9fa9f05bf985d5fc2ba1b7a4a2d6abca7a19f2c"
+    },
+    {
+      "path": "static/js/index.6e81ac763e.js",
+      "action": "add",
+      "bytes": 58049,
+      "sha256": "6a50afdb7a1ca4b2d7d5cf214913729c0bcd5116a26ee4e2cbc2a58ad3b9189a"
+    },
+    {
+      "path": "static/js/index.b9db049f29.js",
+      "action": "add",
+      "bytes": 64636,
+      "sha256": "8a6536bb3e61ade086ddfb30b4a2e00a34800e91941957436fd16c918c305529"
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "action": "skip-identical",
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef"
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "action": "skip-identical",
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "action": "skip-identical",
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13"
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "action": "skip-identical",
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "path": "static/js/styles.2da0941fcb.js",
+      "action": "skip-identical",
+      "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b"
+    },
+    {
+      "path": "static/search_index.ko.3e975505.json",
+      "action": "add",
+      "bytes": 524400,
+      "sha256": "3e975505c659ec804a6870911175b01a98f1abfb2d9d4bc33204b0e0064223b2"
+    },
+    {
+      "path": "static/search_index.ko.461a6d9c.json",
+      "action": "add",
+      "bytes": 535215,
+      "sha256": "461a6d9ced31e57ab16bf3eef0f4a678114ea3ae79a572c4aaa85b14b064bba2"
+    }
+  ]
+}

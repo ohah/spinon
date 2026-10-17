@@ -1,0 +1,37 @@
+{
+  "createdAt": "2026-10-17T20:37:46.391Z",
+  "backupRoot": "/Users/<redacted-user>/Library/Application Support/SpinonPreviewBackups/c13-3-ios-native-wheel-tailnet-sync-20261018/pass-1",
+  "checked": 4,
+  "allHashesMatch": true,
+  "deletions": 0,
+  "files": [
+    {
+      "target": "/Users/<redacted-user>/Library/Application Support/SpinonPreview/internal/README.html",
+      "backup": "/Users/<redacted-user>/Library/Application Support/SpinonPreviewBackups/c13-3-ios-native-wheel-tailnet-sync-20261018/pass-1/internal/README.html",
+      "targetSha256": "23c7202ce7b42ad79999d3d7184c0f229ac7351462c60c13f6c255d6664933d0",
+      "backupSha256": "23c7202ce7b42ad79999d3d7184c0f229ac7351462c60c13f6c255d6664933d0",
+      "bytes": 167538
+    },
+    {
+      "target": "/Users/<redacted-user>/Library/Application Support/SpinonPreview/internal/README.md",
+      "backup": "/Users/<redacted-user>/Library/Application Support/SpinonPreviewBackups/c13-3-ios-native-wheel-tailnet-sync-20261018/pass-1/internal/README.md",
+      "targetSha256": "4354fa9aeaf0579b2d8fe8ced30bce7962fc970572a531a5e914ed1c76a844d7",
+      "backupSha256": "4354fa9aeaf0579b2d8fe8ced30bce7962fc970572a531a5e914ed1c76a844d7",
+      "bytes": 118187
+    },
+    {
+      "target": "/Users/<redacted-user>/Library/Application Support/SpinonPreview/plan/c13-3-native-wheel-input.html",
+      "backup": "/Users/<redacted-user>/Library/Application Support/SpinonPreviewBackups/c13-3-ios-native-wheel-tailnet-sync-20261018/pass-1/plan/c13-3-native-wheel-input.html",
+      "targetSha256": "cc29f898efa550612ef21867eb56ad60402e43cec2b095f535546a82eae2e2ca",
+      "backupSha256": "cc29f898efa550612ef21867eb56ad60402e43cec2b095f535546a82eae2e2ca",
+      "bytes": 63289
+    },
+    {
+      "target": "/Users/<redacted-user>/Library/Application Support/SpinonPreview/plan/c13-3-native-wheel-input.md",
+      "backup": "/Users/<redacted-user>/Library/Application Support/SpinonPreviewBackups/c13-3-ios-native-wheel-tailnet-sync-20261018/pass-1/plan/c13-3-native-wheel-input.md",
+      "targetSha256": "457974b694f1d289bb5b1aaf36dc7b34de3d2b0838165bc896edb06c7a1f61d8",
+      "backupSha256": "457974b694f1d289bb5b1aaf36dc7b34de3d2b0838165bc896edb06c7a1f61d8",
+      "bytes": 19821
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "createdAt": "2026-10-17T21:01:46Z",
+  "closedSessions": [
+    { "session": "spinon-c133-tailnet-sync-20261018", "closeResult": "Browser closed" },
+    { "session": "spinon-c133-tailnet-sync-final30-20261018", "closeResult": "Browser closed" },
+    { "session": "spinon-c133-tailnet-redacted-final-20261018", "closeResult": "Browser closed" }
+  ],
+  "postCloseProcessCheck": {
+    "matchingAgentBrowserProcesses": 0,
+    "matchingSessionChromeProcesses": 0,
+    "preExistingTerminalBrowser": "left untouched",
+    "redactions": ["Tailnet DNS name", "user account and checkout paths", "process IDs", "Chrome profile suffixes"]
+  }
+}

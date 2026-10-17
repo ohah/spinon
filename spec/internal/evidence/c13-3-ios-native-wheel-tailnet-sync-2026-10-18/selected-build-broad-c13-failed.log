@@ -1,0 +1,466 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+warn    The dist path is not a subdir of root path, Rsbuild will not empty it.
+warn    Please set `output.cleanDistPath` config manually.
+warn    Current root path: <isolated-worktree>/packages/docs
+warn    Current dist path: <selected-build-root>/selected-out
+error   build failed in 0.86s (node)
+error   build failed in 0.97s (web)
+error   Build errors: 
+File: ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-policy-simulator-matrix-2026-10-15/README.md:3:1-57
+  × Module not found: Can't resolve 'android-contain-diagonal-after.png' in '/private<selected-build-root>/spec/internal/evidence/c13-3-policy-simulator-matrix-2026-10-15'
+   ╭─[3:0]
+ 1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "android-contain-diagonal-after.png";
+   · ────────────────────────────────────────────────────────
+ 4 │ import image1 from "ios-contain-diagonal-after.png";
+ 5 │ function _createMdxContent(props) {
+   ╰────
+  help: Did you mean './android-contain-diagonal-after.png'?
+        
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+        
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-policy-simulator-matrix-2026-10-15/README.md ×
+
+File: ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-policy-simulator-matrix-2026-10-15/README.md:4:1-53
+  × Module not found: Can't resolve 'ios-contain-diagonal-after.png' in '/private<selected-build-root>/spec/internal/evidence/c13-3-policy-simulator-matrix-2026-10-15'
+   ╭─[4:0]
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "android-contain-diagonal-after.png";
+ 4 │ import image1 from "ios-contain-diagonal-after.png";
+   · ────────────────────────────────────────────────────
+ 5 │ function _createMdxContent(props) {
+ 6 │     const _components = {
+   ╰────
+  help: Did you mean './ios-contain-diagonal-after.png'?
+        
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+        
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-policy-simulator-matrix-2026-10-15/README.md ×
+
+File: ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T105916471Z-bd58581f/README.md:3:1-55
+  × Module not found: Can't resolve 'ios-paint-invalidation-after.png' in '/private<selected-build-root>/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T105916471Z-bd58581f'
+   ╭─[3:0]
+ 1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "ios-paint-invalidation-after.png";
+   · ──────────────────────────────────────────────────────
+ 4 │ import image1 from "android-paint-invalidation-after.png";
+ 5 │ function _createMdxContent(props) {
+   ╰────
+  help: Did you mean './ios-paint-invalidation-after.png'?
+        
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+        
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T105916471Z-bd58581f/README.md ×
+
+File: ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T105916471Z-bd58581f/README.md:4:1-59
+  × Module not found: Can't resolve 'android-paint-invalidation-after.png' in '/private<selected-build-root>/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T105916471Z-bd58581f'
+   ╭─[4:0]
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "ios-paint-invalidation-after.png";
+ 4 │ import image1 from "android-paint-invalidation-after.png";
+   · ──────────────────────────────────────────────────────────
+ 5 │ function _createMdxContent(props) {
+ 6 │     const _components = {
+   ╰────
+  help: Did you mean './android-paint-invalidation-after.png'?
+        
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+        
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T105916471Z-bd58581f/README.md ×
+
+File: ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T110614287Z-2f1c9e8e/README.md:3:1-55
+  × Module not found: Can't resolve 'ios-paint-invalidation-after.png' in '/private<selected-build-root>/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T110614287Z-2f1c9e8e'
+   ╭─[3:0]
+ 1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "ios-paint-invalidation-after.png";
+   · ──────────────────────────────────────────────────────
+ 4 │ import image1 from "android-paint-invalidation-after.png";
+ 5 │ function _createMdxContent(props) {
+   ╰────
+  help: Did you mean './ios-paint-invalidation-after.png'?
+        
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+        
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T110614287Z-2f1c9e8e/README.md ×
+
+File: ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T110614287Z-2f1c9e8e/README.md:4:1-59
+  × Module not found: Can't resolve 'android-paint-invalidation-after.png' in '/private<selected-build-root>/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T110614287Z-2f1c9e8e'
+   ╭─[4:0]
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "ios-paint-invalidation-after.png";
+ 4 │ import image1 from "android-paint-invalidation-after.png";
+   · ──────────────────────────────────────────────────────────
+ 5 │ function _createMdxContent(props) {
+ 6 │     const _components = {
+   ╰────
+  help: Did you mean './android-paint-invalidation-after.png'?
+        
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+        
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T110614287Z-2f1c9e8e/README.md ×
+
+File: ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T111411692Z-d846f2a9/README.md:3:1-55
+  × Module not found: Can't resolve 'ios-paint-invalidation-after.png' in '/private<selected-build-root>/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T111411692Z-d846f2a9'
+   ╭─[3:0]
+ 1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "ios-paint-invalidation-after.png";
+   · ──────────────────────────────────────────────────────
+ 4 │ import image1 from "android-paint-invalidation-after.png";
+ 5 │ function _createMdxContent(props) {
+   ╰────
+  help: Did you mean './ios-paint-invalidation-after.png'?
+        
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+        
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T111411692Z-d846f2a9/README.md ×
+
+File: ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T111411692Z-d846f2a9/README.md:4:1-59
+  × Module not found: Can't resolve 'android-paint-invalidation-after.png' in '/private<selected-build-root>/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T111411692Z-d846f2a9'
+   ╭─[4:0]
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "ios-paint-invalidation-after.png";
+ 4 │ import image1 from "android-paint-invalidation-after.png";
+   · ──────────────────────────────────────────────────────────
+ 5 │ function _createMdxContent(props) {
+ 6 │     const _components = {
+   ╰────
+  help: Did you mean './android-paint-invalidation-after.png'?
+        
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+        
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T111411692Z-d846f2a9/README.md ×
+
+File: ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T112615633Z-3abc0b5e/README.md:3:1-55
+  × Module not found: Can't resolve 'ios-paint-invalidation-after.png' in '/private<selected-build-root>/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T112615633Z-3abc0b5e'
+   ╭─[3:0]
+ 1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "ios-paint-invalidation-after.png";
+   · ──────────────────────────────────────────────────────
+ 4 │ import image1 from "android-paint-invalidation-after.png";
+ 5 │ function _createMdxContent(props) {
+   ╰────
+  help: Did you mean './ios-paint-invalidation-after.png'?
+        
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+        
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T112615633Z-3abc0b5e/README.md ×
+
+File: ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T112615633Z-3abc0b5e/README.md:4:1-59
+  × Module not found: Can't resolve 'android-paint-invalidation-after.png' in '/private<selected-build-root>/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T112615633Z-3abc0b5e'
+   ╭─[4:0]
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "ios-paint-invalidation-after.png";
+ 4 │ import image1 from "android-paint-invalidation-after.png";
+   · ──────────────────────────────────────────────────────────
+ 5 │ function _createMdxContent(props) {
+ 6 │     const _components = {
+   ╰────
+  help: Did you mean './android-paint-invalidation-after.png'?
+        
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+        
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T112615633Z-3abc0b5e/README.md ×
+
+File: ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-policy-simulator-matrix-2026-10-15/README.md:3:1-57
+  × Module not found: Can't resolve 'android-contain-diagonal-after.png' in '/private<selected-build-root>/spec/internal/evidence/c13-3-policy-simulator-matrix-2026-10-15'
+   ╭─[3:0]
+ 1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "android-contain-diagonal-after.png";
+   · ────────────────────────────────────────────────────────
+ 4 │ import image1 from "ios-contain-diagonal-after.png";
+ 5 │ function _createMdxContent(props) {
+   ╰────
+  help: Did you mean './android-contain-diagonal-after.png'?
+        
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+        
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-policy-simulator-matrix-2026-10-15/README.md ×
+
+File: ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-policy-simulator-matrix-2026-10-15/README.md:4:1-53
+  × Module not found: Can't resolve 'ios-contain-diagonal-after.png' in '/private<selected-build-root>/spec/internal/evidence/c13-3-policy-simulator-matrix-2026-10-15'
+   ╭─[4:0]
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "android-contain-diagonal-after.png";
+ 4 │ import image1 from "ios-contain-diagonal-after.png";
+   · ────────────────────────────────────────────────────
+ 5 │ function _createMdxContent(props) {
+ 6 │     const _components = {
+   ╰────
+  help: Did you mean './ios-contain-diagonal-after.png'?
+        
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+        
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-policy-simulator-matrix-2026-10-15/README.md ×
+
+File: ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T105916471Z-bd58581f/README.md:3:1-55
+  × Module not found: Can't resolve 'ios-paint-invalidation-after.png' in '/private<selected-build-root>/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T105916471Z-bd58581f'
+   ╭─[3:0]
+ 1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "ios-paint-invalidation-after.png";
+   · ──────────────────────────────────────────────────────
+ 4 │ import image1 from "android-paint-invalidation-after.png";
+ 5 │ function _createMdxContent(props) {
+   ╰────
+  help: Did you mean './ios-paint-invalidation-after.png'?
+        
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+        
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T105916471Z-bd58581f/README.md ×
+
+File: ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T105916471Z-bd58581f/README.md:4:1-59
+  × Module not found: Can't resolve 'android-paint-invalidation-after.png' in '/private<selected-build-root>/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T105916471Z-bd58581f'
+   ╭─[4:0]
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "ios-paint-invalidation-after.png";
+ 4 │ import image1 from "android-paint-invalidation-after.png";
+   · ──────────────────────────────────────────────────────────
+ 5 │ function _createMdxContent(props) {
+ 6 │     const _components = {
+   ╰────
+  help: Did you mean './android-paint-invalidation-after.png'?
+        
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+        
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T105916471Z-bd58581f/README.md ×
+
+File: ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T110614287Z-2f1c9e8e/README.md:3:1-55
+  × Module not found: Can't resolve 'ios-paint-invalidation-after.png' in '/private<selected-build-root>/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T110614287Z-2f1c9e8e'
+   ╭─[3:0]
+ 1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "ios-paint-invalidation-after.png";
+   · ──────────────────────────────────────────────────────
+ 4 │ import image1 from "android-paint-invalidation-after.png";
+ 5 │ function _createMdxContent(props) {
+   ╰────
+  help: Did you mean './ios-paint-invalidation-after.png'?
+        
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+        
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T110614287Z-2f1c9e8e/README.md ×
+
+File: ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T110614287Z-2f1c9e8e/README.md:4:1-59
+  × Module not found: Can't resolve 'android-paint-invalidation-after.png' in '/private<selected-build-root>/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T110614287Z-2f1c9e8e'
+   ╭─[4:0]
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "ios-paint-invalidation-after.png";
+ 4 │ import image1 from "android-paint-invalidation-after.png";
+   · ──────────────────────────────────────────────────────────
+ 5 │ function _createMdxContent(props) {
+ 6 │     const _components = {
+   ╰────
+  help: Did you mean './android-paint-invalidation-after.png'?
+        
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+        
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T110614287Z-2f1c9e8e/README.md ×
+
+File: ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T111411692Z-d846f2a9/README.md:3:1-55
+  × Module not found: Can't resolve 'ios-paint-invalidation-after.png' in '/private<selected-build-root>/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T111411692Z-d846f2a9'
+   ╭─[3:0]
+ 1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "ios-paint-invalidation-after.png";
+   · ──────────────────────────────────────────────────────
+ 4 │ import image1 from "android-paint-invalidation-after.png";
+ 5 │ function _createMdxContent(props) {
+   ╰────
+  help: Did you mean './ios-paint-invalidation-after.png'?
+        
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+        
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T111411692Z-d846f2a9/README.md ×
+
+File: ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T111411692Z-d846f2a9/README.md:4:1-59
+  × Module not found: Can't resolve 'android-paint-invalidation-after.png' in '/private<selected-build-root>/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T111411692Z-d846f2a9'
+   ╭─[4:0]
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "ios-paint-invalidation-after.png";
+ 4 │ import image1 from "android-paint-invalidation-after.png";
+   · ──────────────────────────────────────────────────────────
+ 5 │ function _createMdxContent(props) {
+ 6 │     const _components = {
+   ╰────
+  help: Did you mean './android-paint-invalidation-after.png'?
+        
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+        
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T111411692Z-d846f2a9/README.md ×
+
+File: ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T112615633Z-3abc0b5e/README.md:3:1-55
+  × Module not found: Can't resolve 'ios-paint-invalidation-after.png' in '/private<selected-build-root>/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T112615633Z-3abc0b5e'
+   ╭─[3:0]
+ 1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "ios-paint-invalidation-after.png";
+   · ──────────────────────────────────────────────────────
+ 4 │ import image1 from "android-paint-invalidation-after.png";
+ 5 │ function _createMdxContent(props) {
+   ╰────
+  help: Did you mean './ios-paint-invalidation-after.png'?
+        
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+        
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T112615633Z-3abc0b5e/README.md ×
+
+File: ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T112615633Z-3abc0b5e/README.md:4:1-59
+  × Module not found: Can't resolve 'android-paint-invalidation-after.png' in '/private<selected-build-root>/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T112615633Z-3abc0b5e'
+   ╭─[4:0]
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "ios-paint-invalidation-after.png";
+ 4 │ import image1 from "android-paint-invalidation-after.png";
+   · ──────────────────────────────────────────────────────────
+ 5 │ function _createMdxContent(props) {
+ 6 │     const _components = {
+   ╰────
+  help: Did you mean './android-paint-invalidation-after.png'?
+        
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+        
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../../spinon-c13-3-ios-wheel-tailnet-selected-20261018/spec/internal/evidence/c13-3-style-invalidation-2026-10-15/20261015T112615633Z-3abc0b5e/README.md ×
+
+error   Rspack build failed.
+    at file://<isolated-worktree>/node_modules/.bun/@rsbuild+core@2.2.10/node_modules/@rsbuild/core/dist/m.js:4309:141
+    at file://<isolated-worktree>/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:9074:31
+    at callback1 (file://<isolated-worktree>/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:9082:78)
+    at file://<isolated-worktree>/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:9088:36
+    at file://<isolated-worktree>/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:12604:36

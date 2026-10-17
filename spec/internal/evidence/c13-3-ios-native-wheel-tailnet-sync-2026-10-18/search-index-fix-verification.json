@@ -1,0 +1,48 @@
+{
+  "createdAt": "2026-10-17T20:46:26.297Z",
+  "reason": "Agent Browser network log showed the selected page bundle requested this dynamically named search index and received 404.",
+  "source": "<selected-build-root>/selected-out/static/search_index.ko.7ebea52c.json",
+  "target": "/Users/<redacted-user>/Library/Application Support/SpinonPreview/static/search_index.ko.7ebea52c.json",
+  "targetRelative": "static/search_index.ko.7ebea52c.json",
+  "bytes": 536258,
+  "sourceSha256": "7ebea52cc27da2ad04965fd95e3611a6b7bbdbb79b5afad84d291576be33dd21",
+  "copySha256": "7ebea52cc27da2ad04965fd95e3611a6b7bbdbb79b5afad84d291576be33dd21",
+  "localAndTailnetChecks": [
+    {
+      "url": "http://127.0.0.1:8768/spinon/static/search_index.ko.7ebea52c.json",
+      "status": 200,
+      "bytes": 536258,
+      "sha256": "7ebea52cc27da2ad04965fd95e3611a6b7bbdbb79b5afad84d291576be33dd21",
+      "hashMatches": true
+    },
+    {
+      "url": "https://tailnet-host-redacted.invalid/spinon/static/search_index.ko.7ebea52c.json",
+      "status": 200,
+      "bytes": 536258,
+      "sha256": "7ebea52cc27da2ad04965fd95e3611a6b7bbdbb79b5afad84d291576be33dd21",
+      "hashMatches": true
+    }
+  ],
+  "allStatus200AndHashesMatch": true,
+  "deletions": 0,
+  "agentBrowser": {
+    "version": "0.31.1",
+    "query": "C13.3",
+    "firstObservedStatuses": [
+      404,
+      404,
+      404,
+      404
+    ],
+    "afterCopyStatuses": [
+      200,
+      200
+    ],
+    "resultsObserved": [
+      "C13.3 · 네이티브 wheel·trackpad 입력 수집과 정규화",
+      "C13.3 iPadOS native wheel 입력 사전 점검 · 2026-10-18"
+    ],
+    "screenshot": "tailnet-search-agent-browser.png",
+    "networkLog": "agent-browser-network-final.log"
+  }
+}

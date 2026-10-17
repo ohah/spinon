@@ -1,0 +1,552 @@
+{
+  "createdAt": "2026-10-17T21:00:57.437Z",
+  "preflight": "preflight-final.json",
+  "backupVerification": "backup-verification-final.json",
+  "checked": 68,
+  "allHashesMatch": true,
+  "deletions": 0,
+  "files": [
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/build.log",
+      "action": "skip-identical",
+      "bytes": 65538,
+      "sha256": "2c5328fec636686c06e2485f26094cb9de23c4d36cd72c036f70eb0af8a281c4",
+      "targetSha256": "2c5328fec636686c06e2485f26094cb9de23c4d36cd72c036f70eb0af8a281c4",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/host-frontmost-app.txt",
+      "action": "skip-identical",
+      "bytes": 16,
+      "sha256": "7d5aaf655430435ad6a3d0e4e691574bba5315b32f3925de15e282de387aa26e",
+      "targetSha256": "7d5aaf655430435ad6a3d0e4e691574bba5315b32f3925de15e282de387aa26e",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/host-window-state.txt",
+      "action": "skip-identical",
+      "bytes": 654,
+      "sha256": "552c5098e6271553e602486bccadf0cddfc0d8bf31267454598af92d026d6464",
+      "targetSha256": "552c5098e6271553e602486bccadf0cddfc0d8bf31267454598af92d026d6464",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/initial-launch.log",
+      "action": "skip-identical",
+      "bytes": 1870,
+      "sha256": "8640e4f99be7c0dd5817c75b91d63234c1c3a30343250a18e8ca55271d2209f9",
+      "targetSha256": "8640e4f99be7c0dd5817c75b91d63234c1c3a30343250a18e8ca55271d2209f9",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/initial-launch.png",
+      "action": "skip-identical",
+      "bytes": 166537,
+      "sha256": "0e55056f9b1b406e51e81f679063afdd4b34ecb199c2c0195d322c0e2f518a66",
+      "targetSha256": "0e55056f9b1b406e51e81f679063afdd4b34ecb199c2c0195d322c0e2f518a66",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/pr-delta-review-20.html",
+      "action": "backup-and-replace",
+      "bytes": 35924,
+      "sha256": "7f73e658f6f18787dfcdc4b68737f5a654cb179bafec6c49473913e81528ded0",
+      "targetSha256": "7f73e658f6f18787dfcdc4b68737f5a654cb179bafec6c49473913e81528ded0",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/pr-delta-review-20.md",
+      "action": "skip-identical",
+      "bytes": 3650,
+      "sha256": "dfb72b0be295019e2ade75881aa92448c6afcc9546ea126f8656a734b0196194",
+      "targetSha256": "dfb72b0be295019e2ade75881aa92448c6afcc9546ea126f8656a734b0196194",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/README.html",
+      "action": "backup-and-replace",
+      "bytes": 29570,
+      "sha256": "e56473b5b8240215f5577e7db822ca099f01f8b6de9cbc1c1b44ffa1fe602aa4",
+      "targetSha256": "e56473b5b8240215f5577e7db822ca099f01f8b6de9cbc1c1b44ffa1fe602aa4",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/README.md",
+      "action": "skip-identical",
+      "bytes": 2986,
+      "sha256": "71e201deb52780de453443ab7834369b25a6b2e82499e1ce8ba0c4ce6f64b064",
+      "targetSha256": "71e201deb52780de453443ab7834369b25a6b2e82499e1ce8ba0c4ce6f64b064",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/source-revision.json",
+      "action": "skip-identical",
+      "bytes": 1146,
+      "sha256": "14b2b715a3b21e1ac152b3bf59c510073c2fd3d35f82ec9cb338c56c386b513e",
+      "targetSha256": "14b2b715a3b21e1ac152b3bf59c510073c2fd3d35f82ec9cb338c56c386b513e",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/agent-browser-network-before-search-index-fix.log",
+      "action": "backup-and-replace",
+      "bytes": 8461,
+      "sha256": "1be0a9a83b28af9fe647d0db5ac40b71ed509a9a0527d05b145eb93e1dcc6668",
+      "targetSha256": "1be0a9a83b28af9fe647d0db5ac40b71ed509a9a0527d05b145eb93e1dcc6668",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/agent-browser-network-final.log",
+      "action": "backup-and-replace",
+      "bytes": 9657,
+      "sha256": "6579b125f6332463bdcb65cc88ed756e67b09c5c4f37a1c60e0cd0c60a0c499e",
+      "targetSha256": "6579b125f6332463bdcb65cc88ed756e67b09c5c4f37a1c60e0cd0c60a0c499e",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/backup-verification-first.json",
+      "action": "backup-and-replace",
+      "bytes": 2248,
+      "sha256": "f9b662ca696b314d2929813afa2223b5e11d2311daec7af86da3137d30232a11",
+      "targetSha256": "f9b662ca696b314d2929813afa2223b5e11d2311daec7af86da3137d30232a11",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/backup-verification-pass2.json",
+      "action": "backup-and-replace",
+      "bytes": 6151,
+      "sha256": "660f4a3409421f565a966734bbb67131a8b2350e4bf42460ccfc1e48c8bf2b9c",
+      "targetSha256": "660f4a3409421f565a966734bbb67131a8b2350e4bf42460ccfc1e48c8bf2b9c",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/copy-verification-first.json",
+      "action": "skip-identical",
+      "bytes": 15943,
+      "sha256": "65e446c81a47813a644ff7547b187dfc45fe70dbc19c6f4f71f1cfa072f0f69c",
+      "targetSha256": "65e446c81a47813a644ff7547b187dfc45fe70dbc19c6f4f71f1cfa072f0f69c",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/copy-verification-pass2.json",
+      "action": "skip-identical",
+      "bytes": 20651,
+      "sha256": "1d7bfa32f42628fb1afd5a8ac373da843ff075f04b74759d97c51b1e0fc026b3",
+      "targetSha256": "1d7bfa32f42628fb1afd5a8ac373da843ff075f04b74759d97c51b1e0fc026b3",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/dependencies-install.log",
+      "action": "skip-identical",
+      "bytes": 82,
+      "sha256": "9abfc5868ec62c065cb9a9f464e60048d8d14a99d9e83fac052dd5ece5a98aad",
+      "targetSha256": "9abfc5868ec62c065cb9a9f464e60048d8d14a99d9e83fac052dd5ece5a98aad",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/docs-build.log",
+      "action": "backup-and-replace",
+      "bytes": 2025839,
+      "sha256": "2dbc7e96bbb3dced8c824b42adc749ce09c032a69efb3b580187b5aa4446f2ff",
+      "targetSha256": "2dbc7e96bbb3dced8c824b42adc749ce09c032a69efb3b580187b5aa4446f2ff",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "action": "backup-and-replace",
+      "bytes": 41476,
+      "sha256": "ae940760f4c70f2610a93d92fb5a5f3daa9f6d364a527dd55dabc4ad4bb08246",
+      "targetSha256": "ae940760f4c70f2610a93d92fb5a5f3daa9f6d364a527dd55dabc4ad4bb08246",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/pr-delta-review-30.md",
+      "action": "backup-and-replace",
+      "bytes": 5559,
+      "sha256": "d6e8cc5e33840a7016ae7abd135b87bac0773b019ff9d60c1e637a325419a2ae",
+      "targetSha256": "d6e8cc5e33840a7016ae7abd135b87bac0773b019ff9d60c1e637a325419a2ae",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/preflight-first.json",
+      "action": "backup-and-replace",
+      "bytes": 43025,
+      "sha256": "578bf77e18253008321ae58e81733eeefb905af34919522be8cc278d6ac44210",
+      "targetSha256": "578bf77e18253008321ae58e81733eeefb905af34919522be8cc278d6ac44210",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/raw-alias-copy-verification.json",
+      "action": "backup-and-replace",
+      "bytes": 2104,
+      "sha256": "86c0cda0c0b8a10a68c5ac20b7f6a8f2716beddced1fe39586a40d6110c019cc",
+      "targetSha256": "86c0cda0c0b8a10a68c5ac20b7f6a8f2716beddced1fe39586a40d6110c019cc",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/README.html",
+      "action": "backup-and-replace",
+      "bytes": 31852,
+      "sha256": "65335580064cd2609d23c4ce56905a91cb3fa4265d406750c118e9debd377aee",
+      "targetSha256": "65335580064cd2609d23c4ce56905a91cb3fa4265d406750c118e9debd377aee",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/README.md",
+      "action": "backup-and-replace",
+      "bytes": 4665,
+      "sha256": "b85f6a28c36cdb01d854771305bfd9f860c1e2f14f73e237f6b7b833539817d6",
+      "targetSha256": "b85f6a28c36cdb01d854771305bfd9f860c1e2f14f73e237f6b7b833539817d6",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/render-build-result.html",
+      "action": "backup-and-replace",
+      "bytes": 27206,
+      "sha256": "13676f4e771e27548c964d37fe2181c5ae5561549705642901b177c45f92b2d5",
+      "targetSha256": "13676f4e771e27548c964d37fe2181c5ae5561549705642901b177c45f92b2d5",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/render-build-result.md",
+      "action": "backup-and-replace",
+      "bytes": 1538,
+      "sha256": "80fb36386aee4b8d0e751846db12b3b15d22463780dea688163181964348e509",
+      "targetSha256": "80fb36386aee4b8d0e751846db12b3b15d22463780dea688163181964348e509",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/search-index-fix-verification.json",
+      "action": "backup-and-replace",
+      "bytes": 1728,
+      "sha256": "f2b339785e0d82ba14135ed82ce979f97b91eeb152854e99097a379ec8b3ca7f",
+      "targetSha256": "f2b339785e0d82ba14135ed82ce979f97b91eeb152854e99097a379ec8b3ca7f",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/selected-build-broad-c13-failed.log",
+      "action": "backup-and-replace",
+      "bytes": 36485,
+      "sha256": "ab20c065ed51a7fa3d17781e974a34aa353d27132ff3017612c2b3fb71160c20",
+      "targetSha256": "ab20c065ed51a7fa3d17781e974a34aa353d27132ff3017612c2b3fb71160c20",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/selected-build-final.log",
+      "action": "backup-and-replace",
+      "bytes": 13217,
+      "sha256": "a777cd8cb5e5ec7cea7c376c03c534dfeccb2b2ed485dc0e4ac57c72b3d7db16",
+      "targetSha256": "a777cd8cb5e5ec7cea7c376c03c534dfeccb2b2ed485dc0e4ac57c72b3d7db16",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/selected-build.log",
+      "action": "backup-and-replace",
+      "bytes": 12569,
+      "sha256": "aff34667f09484001f6808e647f5efdf1313d4e04bc130d23c10b45dbabcb6c6",
+      "targetSha256": "aff34667f09484001f6808e647f5efdf1313d4e04bc130d23c10b45dbabcb6c6",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/served-verification-first.json",
+      "action": "backup-and-replace",
+      "bytes": 290,
+      "sha256": "1a5ad18f1b8c45458839d6c196dfa9d1c1115227ff7ab0ae3c154ba9e537fc34",
+      "targetSha256": "1a5ad18f1b8c45458839d6c196dfa9d1c1115227ff7ab0ae3c154ba9e537fc34",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/tailnet-plan-agent-browser.png",
+      "action": "skip-identical",
+      "bytes": 208313,
+      "sha256": "948f69c23757987d33775ecf9fb2af2666d53250e18248a0b3205e3b58b0aba4",
+      "targetSha256": "948f69c23757987d33775ecf9fb2af2666d53250e18248a0b3205e3b58b0aba4",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/tailnet-plan-final-agent-browser.png",
+      "action": "skip-identical",
+      "bytes": 208313,
+      "sha256": "948f69c23757987d33775ecf9fb2af2666d53250e18248a0b3205e3b58b0aba4",
+      "targetSha256": "948f69c23757987d33775ecf9fb2af2666d53250e18248a0b3205e3b58b0aba4",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/tailnet-plan-full-agent-browser.png",
+      "action": "skip-identical",
+      "bytes": 1949734,
+      "sha256": "66a2a29ebbf68fae47a1d48e40c52d2452cfda36788ee9b669d646fe614fa098",
+      "targetSha256": "66a2a29ebbf68fae47a1d48e40c52d2452cfda36788ee9b669d646fe614fa098",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/tailnet-preflight-agent-browser.png",
+      "action": "skip-identical",
+      "bytes": 385998,
+      "sha256": "94be6e40203376c649d6b6dfa71e4a92d6666aff532be6266017896f5ea46552",
+      "targetSha256": "94be6e40203376c649d6b6dfa71e4a92d6666aff532be6266017896f5ea46552",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/tailnet-report-final-agent-browser.png",
+      "action": "skip-identical",
+      "bytes": 131273,
+      "sha256": "f91cb901e110a25437f437c7922b37fbf9cff4bb6fe490e625d48502a847decf",
+      "targetSha256": "f91cb901e110a25437f437c7922b37fbf9cff4bb6fe490e625d48502a847decf",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/tailnet-search-agent-browser.png",
+      "action": "skip-identical",
+      "bytes": 190112,
+      "sha256": "8dd9bb004a40840e836e848e789237d6e08bc0369adfca5296777973cb064e94",
+      "targetSha256": "8dd9bb004a40840e836e848e789237d6e08bc0369adfca5296777973cb064e94",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/README.html",
+      "action": "backup-and-replace",
+      "bytes": 169506,
+      "sha256": "3cea1c1052ff84a4b19843b03cc2d55445308b936e56004be45aa0be1bf5bd37",
+      "targetSha256": "3cea1c1052ff84a4b19843b03cc2d55445308b936e56004be45aa0be1bf5bd37",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/README.md",
+      "action": "skip-identical",
+      "bytes": 118393,
+      "sha256": "3dab150500b07465ffc6cf72305f568ca33c5f56bdb71f56f4d8e8757afc7127",
+      "targetSha256": "3dab150500b07465ffc6cf72305f568ca33c5f56bdb71f56f4d8e8757afc7127",
+      "hashMatches": true
+    },
+    {
+      "path": "plan/c13-3-native-wheel-input.html",
+      "action": "backup-and-replace",
+      "bytes": 53503,
+      "sha256": "5b178353ff2e3f1f74e5364e1596593552a0f46c280094f3da90bb41ad4b9310",
+      "targetSha256": "5b178353ff2e3f1f74e5364e1596593552a0f46c280094f3da90bb41ad4b9310",
+      "hashMatches": true
+    },
+    {
+      "path": "plan/c13-3-native-wheel-input.md",
+      "action": "skip-identical",
+      "bytes": 20930,
+      "sha256": "d22f5b61e4f2c6ff8d7c49016e452c60aaa099acfee191d5c8c43f3361c219ee",
+      "targetSha256": "d22f5b61e4f2c6ff8d7c49016e452c60aaa099acfee191d5c8c43f3361c219ee",
+      "hashMatches": true
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/build.log",
+      "action": "skip-identical",
+      "bytes": 65538,
+      "sha256": "2c5328fec636686c06e2485f26094cb9de23c4d36cd72c036f70eb0af8a281c4",
+      "targetSha256": "2c5328fec636686c06e2485f26094cb9de23c4d36cd72c036f70eb0af8a281c4",
+      "hashMatches": true
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/host-frontmost-app.txt",
+      "action": "skip-identical",
+      "bytes": 16,
+      "sha256": "7d5aaf655430435ad6a3d0e4e691574bba5315b32f3925de15e282de387aa26e",
+      "targetSha256": "7d5aaf655430435ad6a3d0e4e691574bba5315b32f3925de15e282de387aa26e",
+      "hashMatches": true
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/host-window-state.txt",
+      "action": "skip-identical",
+      "bytes": 654,
+      "sha256": "552c5098e6271553e602486bccadf0cddfc0d8bf31267454598af92d026d6464",
+      "targetSha256": "552c5098e6271553e602486bccadf0cddfc0d8bf31267454598af92d026d6464",
+      "hashMatches": true
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/initial-launch.log",
+      "action": "skip-identical",
+      "bytes": 1870,
+      "sha256": "8640e4f99be7c0dd5817c75b91d63234c1c3a30343250a18e8ca55271d2209f9",
+      "targetSha256": "8640e4f99be7c0dd5817c75b91d63234c1c3a30343250a18e8ca55271d2209f9",
+      "hashMatches": true
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/initial-launch.png",
+      "action": "skip-identical",
+      "bytes": 166537,
+      "sha256": "0e55056f9b1b406e51e81f679063afdd4b34ecb199c2c0195d322c0e2f518a66",
+      "targetSha256": "0e55056f9b1b406e51e81f679063afdd4b34ecb199c2c0195d322c0e2f518a66",
+      "hashMatches": true
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/pr-delta-review-20.md",
+      "action": "skip-identical",
+      "bytes": 3650,
+      "sha256": "dfb72b0be295019e2ade75881aa92448c6afcc9546ea126f8656a734b0196194",
+      "targetSha256": "dfb72b0be295019e2ade75881aa92448c6afcc9546ea126f8656a734b0196194",
+      "hashMatches": true
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/README.md",
+      "action": "skip-identical",
+      "bytes": 2986,
+      "sha256": "71e201deb52780de453443ab7834369b25a6b2e82499e1ce8ba0c4ce6f64b064",
+      "targetSha256": "71e201deb52780de453443ab7834369b25a6b2e82499e1ce8ba0c4ce6f64b064",
+      "hashMatches": true
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/source-revision.json",
+      "action": "skip-identical",
+      "bytes": 1146,
+      "sha256": "14b2b715a3b21e1ac152b3bf59c510073c2fd3d35f82ec9cb338c56c386b513e",
+      "targetSha256": "14b2b715a3b21e1ac152b3bf59c510073c2fd3d35f82ec9cb338c56c386b513e",
+      "hashMatches": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "action": "skip-identical",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "targetSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "hashMatches": true
+    },
+    {
+      "path": "static/image/tailnet-plan-agent-browser.db4e196fca.png",
+      "action": "skip-identical",
+      "bytes": 208313,
+      "sha256": "948f69c23757987d33775ecf9fb2af2666d53250e18248a0b3205e3b58b0aba4",
+      "targetSha256": "948f69c23757987d33775ecf9fb2af2666d53250e18248a0b3205e3b58b0aba4",
+      "hashMatches": true
+    },
+    {
+      "path": "static/image/tailnet-preflight-agent-browser.96d4a82657.png",
+      "action": "skip-identical",
+      "bytes": 385998,
+      "sha256": "94be6e40203376c649d6b6dfa71e4a92d6666aff532be6266017896f5ea46552",
+      "targetSha256": "94be6e40203376c649d6b6dfa71e4a92d6666aff532be6266017896f5ea46552",
+      "hashMatches": true
+    },
+    {
+      "path": "static/image/tailnet-search-agent-browser.e594141a4d.png",
+      "action": "skip-identical",
+      "bytes": 190112,
+      "sha256": "8dd9bb004a40840e836e848e789237d6e08bc0369adfca5296777973cb064e94",
+      "targetSha256": "8dd9bb004a40840e836e848e789237d6e08bc0369adfca5296777973cb064e94",
+      "hashMatches": true
+    },
+    {
+      "path": "static/js/a.c9bdd1fb3a.js",
+      "action": "skip-identical",
+      "bytes": 217104,
+      "sha256": "1d548da1cf1e915eecdc15623dabb15946451f56782f1f269c931127484542ac",
+      "targetSha256": "1d548da1cf1e915eecdc15623dabb15946451f56782f1f269c931127484542ac",
+      "hashMatches": true
+    },
+    {
+      "path": "static/js/async/route-1f47bc9ee4e3.b236fc3580.js",
+      "action": "skip-identical",
+      "bytes": 6731,
+      "sha256": "2e233cfce11e0127987133131ebb48f3692fcb581583ad9e9a5a18a5b98e9c92",
+      "targetSha256": "2e233cfce11e0127987133131ebb48f3692fcb581583ad9e9a5a18a5b98e9c92",
+      "hashMatches": true
+    },
+    {
+      "path": "static/js/async/route-6d36d09bb7b0.7b41252997.js",
+      "action": "skip-identical",
+      "bytes": 6853,
+      "sha256": "f7434aa78d9656e53591dcecc4627060971b9e0557a9b094d46b63a66ae68932",
+      "targetSha256": "f7434aa78d9656e53591dcecc4627060971b9e0557a9b094d46b63a66ae68932",
+      "hashMatches": true
+    },
+    {
+      "path": "static/js/async/route-6dd6fea916db.75b6154f74.js",
+      "action": "add",
+      "bytes": 3510,
+      "sha256": "54ff152e32b1493833d71ebf3292cca185bcf3e55250eec7a0b1703625f1cd36",
+      "targetSha256": "54ff152e32b1493833d71ebf3292cca185bcf3e55250eec7a0b1703625f1cd36",
+      "hashMatches": true
+    },
+    {
+      "path": "static/js/async/route-87492bc0a054.3dc9d42333.js",
+      "action": "add",
+      "bytes": 8620,
+      "sha256": "7fb591d1a074396bb8bbfc7543202081615962218bf64c8995ee02e3f0331b01",
+      "targetSha256": "7fb591d1a074396bb8bbfc7543202081615962218bf64c8995ee02e3f0331b01",
+      "hashMatches": true
+    },
+    {
+      "path": "static/js/async/route-a1017bdf23ca.24f08c1265.js",
+      "action": "skip-identical",
+      "bytes": 172969,
+      "sha256": "b91c6126d6758867c08f29b13d89efc44f4fc195950f6e50a003c1c3d5c9c7c8",
+      "targetSha256": "b91c6126d6758867c08f29b13d89efc44f4fc195950f6e50a003c1c3d5c9c7c8",
+      "hashMatches": true
+    },
+    {
+      "path": "static/js/async/route-abeecded38c6.888b9b3710.js",
+      "action": "skip-identical",
+      "bytes": 31187,
+      "sha256": "5887eb9c35a312f6a79a762dcafae6b4b2e70521903686cddea5e98ea16238ee",
+      "targetSha256": "5887eb9c35a312f6a79a762dcafae6b4b2e70521903686cddea5e98ea16238ee",
+      "hashMatches": true
+    },
+    {
+      "path": "static/js/async/route-fd781c6569db.067ac0d9dd.js",
+      "action": "add",
+      "bytes": 9137,
+      "sha256": "fcf935866a70bdb06db366b5ab2c2efb552700704aa2493cabd6a7e1284f0cb9",
+      "targetSha256": "fcf935866a70bdb06db366b5ab2c2efb552700704aa2493cabd6a7e1284f0cb9",
+      "hashMatches": true
+    },
+    {
+      "path": "static/js/index.75d1383c44.js",
+      "action": "add",
+      "bytes": 66587,
+      "sha256": "dd56bddb44cb835406fd0d6a01cbe6f09569848990ea427f5cfc16a5a9fc918f",
+      "targetSha256": "dd56bddb44cb835406fd0d6a01cbe6f09569848990ea427f5cfc16a5a9fc918f",
+      "hashMatches": true
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "action": "skip-identical",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "targetSha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "hashMatches": true
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "action": "skip-identical",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "targetSha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "hashMatches": true
+    },
+    {
+      "path": "static/js/styles.d2a6dfa6a0.js",
+      "action": "skip-identical",
+      "bytes": 473,
+      "sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "targetSha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "hashMatches": true
+    },
+    {
+      "path": "static/search_index.ko.1f3cf248.json",
+      "action": "add",
+      "bytes": 541198,
+      "sha256": "1f3cf2482b09dadbdbed1e759b78a5d020aef067f64b19f9c22ba6c603a63b92",
+      "targetSha256": "1f3cf2482b09dadbdbed1e759b78a5d020aef067f64b19f9c22ba6c603a63b92",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/preflight-final.json",
+      "bytes": 41503,
+      "sha256": "ddc00a7e5abe383db5f4937460802d5b4ae011c737a48dde8337b2f1a39312e9",
+      "targetSha256": "ddc00a7e5abe383db5f4937460802d5b4ae011c737a48dde8337b2f1a39312e9",
+      "hashMatches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/backup-verification-final.json",
+      "bytes": 12013,
+      "sha256": "fb972a3171288550da74e08ca445be8812cc85b21ceefdf8ad02a258f9758369",
+      "targetSha256": "fb972a3171288550da74e08ca445be8812cc85b21ceefdf8ad02a258f9758369",
+      "hashMatches": true
+    }
+  ]
+}
