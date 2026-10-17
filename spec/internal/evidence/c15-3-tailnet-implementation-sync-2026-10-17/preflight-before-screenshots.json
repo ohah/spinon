@@ -1,0 +1,1012 @@
+{
+  "title": "C15.3 implementation Tailnet sync preflight",
+  "generated_at": "2026-10-17T00:22:09.330Z",
+  "source_head": "bbbe0d47e23c0c8214e38d48ed36ad8b2e8779e2",
+  "worktree_has_reviewed_changes": true,
+  "preview_url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "local_listener": "127.0.0.1:8768 PID 1191; existing process retained",
+  "source_root": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017",
+  "target_root": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "copy_only": true,
+  "deletions": [],
+  "backup_root_relative": "backup/c15-3-tailnet-implementation-sync-2026-10-17",
+  "total_paths": 99,
+  "total_bytes": 24006638,
+  "counts": {
+    "create": 56,
+    "replace": 15,
+    "unchanged": 28
+  },
+  "files": [
+    {
+      "path": "c10-3-3-android-physical-2026-10-11.png",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/c10-3-3-android-physical-2026-10-11.png",
+      "reason": "linked roadmap/oracle image",
+      "bytes": 194109,
+      "sha256": "b80c842c193a99dd9e295e9f3a5ab82e8c684e5b0da9405d923aec8183957775",
+      "previous_sha256": "b80c842c193a99dd9e295e9f3a5ab82e8c684e5b0da9405d923aec8183957775",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "icon.svg",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/icon.svg",
+      "reason": "site chrome dependency",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "previous_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "index.html",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/index.html",
+      "reason": "current Rspress route",
+      "bytes": 18641,
+      "sha256": "a407776db75915fd2a8818fba9214506d8fb1d5942243d0a731da9d3deca5197",
+      "previous_sha256": "aa3eefe77ed40faa7bac32085926316491a7963bf99fe3e0fde67579192bef44",
+      "action": "replace",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/index.html"
+    },
+    {
+      "path": "internal/0070-c15-1-inline-text-layout.html",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/internal/0070-c15-1-inline-text-layout.html",
+      "reason": "current Rspress route",
+      "bytes": 35517,
+      "sha256": "adaf00f1f7535c5d690e41a4f369763792cfc96a80f68fd1b57236cdba5f8863",
+      "previous_sha256": "94a1fbb6c646ae834bf01c85552c96291a5c9c370c7120d96656dc052260363f",
+      "action": "replace",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/internal/0070-c15-1-inline-text-layout.html"
+    },
+    {
+      "path": "internal/0070-c15-1-inline-text-layout.md",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/0070-c15-1-inline-text-layout.md",
+      "reason": "C15 contract source",
+      "bytes": 15240,
+      "sha256": "e26b0116d7317dad03ac712000d31b427499aa96e40d453c7af7bdb1c7ec901a",
+      "previous_sha256": "8fb677b90ace8b3c106ea819b56fad1d99a9e9fb01d03b6c803340057491d2e7",
+      "action": "replace",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/internal/0070-c15-1-inline-text-layout.md"
+    },
+    {
+      "path": "internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/implementation-review-20.html",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/implementation-review-20.html",
+      "reason": "Rspress rendered evidence page",
+      "bytes": 20552,
+      "sha256": "6ac9c27c8aa56d00a25d86d816179a1e7ec8dc9f9894324d65db3292e3e38aeb",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/implementation-review-20.md",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/implementation-review-20.md",
+      "reason": "Markdown source evidence",
+      "bytes": 3330,
+      "sha256": "07018ba00d74681663e2c15ecae4c23b7e9359562135161c7f82fce714b4bae2",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/pr-delta-review-30.html",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/pr-delta-review-30.html",
+      "reason": "Rspress rendered evidence page",
+      "bytes": 19810,
+      "sha256": "0a4016aac3461797991e548880dadaa0677d864d8fd942589410a12e311985f9",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/pr-delta-review-30.md",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/pr-delta-review-30.md",
+      "reason": "Markdown source evidence",
+      "bytes": 2453,
+      "sha256": "5a9ba830f35be67ca73e7f7b34d8df243515e0b35db4a5d953ebfecc95128f25",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/README.html",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/README.html",
+      "reason": "Rspress rendered evidence page",
+      "bytes": 21495,
+      "sha256": "60756a465a7014cf2cc692bdef5f01e188d33f6879c62230661f1202738a11fe",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/README.md",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/README.md",
+      "reason": "Markdown source evidence",
+      "bytes": 4435,
+      "sha256": "337bcee35d6aee0526f8f34aec99154120b699358d1eef00cbaa4ae07be5bbcd",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/cargo-test.log",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/cargo-test.log",
+      "reason": "Linked evidence artifact",
+      "bytes": 17973,
+      "sha256": "8691da728f0073000081df3326c05ecbf30d42ccca6a88c0294239f4cf24d69f",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/clippy-final.log",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/clippy-final.log",
+      "reason": "Linked evidence artifact",
+      "bytes": 195,
+      "sha256": "a68493e813949df4ae6e777374e42c75b6cd1c6c34a56a5a726105f394ebbcb6",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/clippy-initial-failure.log",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/clippy-initial-failure.log",
+      "reason": "Linked evidence artifact",
+      "bytes": 8139,
+      "sha256": "0c4ae48f4e394f6312d07118c4d8571c43eaf8e66a50b2a81ff3218109d67c2c",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/docs-build-result.html",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/docs-build-result.html",
+      "reason": "Rspress rendered evidence page",
+      "bytes": 18116,
+      "sha256": "01e31eeba8ae23a96fe3bc16226577b2f6a0b0156caa4864f814d5cc078a5e52",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/docs-build-result.md",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/docs-build-result.md",
+      "reason": "Markdown source evidence",
+      "bytes": 998,
+      "sha256": "1114208757c447a14a6ecb0fcddab84e557ee4429b3d6359974415acf4e8753d",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/fixture-asset-boundary.log",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/fixture-asset-boundary.log",
+      "reason": "Linked evidence artifact",
+      "bytes": 996,
+      "sha256": "314d912518372c7a5c8e5096ec8dea2e2ae533d8c96806316686cd910a475997",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/implementation-review-20.html",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/implementation-review-20.html",
+      "reason": "Rspress rendered evidence page",
+      "bytes": 21742,
+      "sha256": "10ce0120912103d840cacf890c33fbcdafd870c34a2db85d0630247b07198f41",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/implementation-review-20.md",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/implementation-review-20.md",
+      "reason": "Markdown source evidence",
+      "bytes": 5076,
+      "sha256": "c6bf5c1bc9171579f73037a77b3a7be3ec0082166ceab06a9caef9d6fb12b4ec",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/pr-delta-review-30.html",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/pr-delta-review-30.html",
+      "reason": "Rspress rendered evidence page",
+      "bytes": 23590,
+      "sha256": "2cf2ab602408047a5c847652a43cabda9e7f54ce3930ed86f40a2ec75389a454",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/pr-delta-review-30.md",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/pr-delta-review-30.md",
+      "reason": "Markdown source evidence",
+      "bytes": 6318,
+      "sha256": "8b208a214f1c85d25924094c94f2a4357dccc8ca1727f8801164cc03b8ac96bb",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/product-build.log",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/product-build.log",
+      "reason": "Linked evidence artifact",
+      "bytes": 72,
+      "sha256": "99f71393b9903dca098310bb446022a4bdee195ea9996f351a787195555210a6",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/README.html",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/README.html",
+      "reason": "Rspress rendered evidence page",
+      "bytes": 22149,
+      "sha256": "2e51a425e1b6048a4b0d8fbc87a65600c00684380cba8e8bc9eb9eaa1a92471c",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/README.md",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/README.md",
+      "reason": "Markdown source evidence",
+      "bytes": 5110,
+      "sha256": "47be7c5073aafc6096a1031e3306e33ef5f6279498c1d0ded9e7fd615c55e4a0",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/rustfmt.log",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/rustfmt.log",
+      "reason": "Linked evidence artifact",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/chrome155-observation.json",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/chrome155-observation.json",
+      "reason": "Linked evidence artifact",
+      "bytes": 14486,
+      "sha256": "41dbe579530fb9fef963ab8915f4523c6d31534815469cf88c28d751701e4832",
+      "previous_sha256": "41dbe579530fb9fef963ab8915f4523c6d31534815469cf88c28d751701e4832",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/chrome155.png",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/chrome155.png",
+      "reason": "Linked evidence artifact",
+      "bytes": 35969,
+      "sha256": "ba827180aac697b472b771b801102744c90b13f570816986c2d99c8d51810417",
+      "previous_sha256": "ba827180aac697b472b771b801102744c90b13f570816986c2d99c8d51810417",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/README.html",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/README.html",
+      "reason": "Rspress rendered evidence page",
+      "bytes": 25609,
+      "sha256": "f57f35e36166ef6e0407d0d832a56b826a4c330d8a5cb709e965a3e996be42f9",
+      "previous_sha256": "0dcacd13ed6213c90b91d551e02e42b4bbc72bb1de89400811b5271c3eb88a30",
+      "action": "replace",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/README.html"
+    },
+    {
+      "path": "internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/README.md",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/README.md",
+      "reason": "Markdown source evidence",
+      "bytes": 7212,
+      "sha256": "0f534a3f51e629970d6563399833a8f41c2468649b3b8bcbcde817a393f72e4c",
+      "previous_sha256": "0f534a3f51e629970d6563399833a8f41c2468649b3b8bcbcde817a393f72e4c",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.html",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.html",
+      "reason": "Rspress rendered evidence page",
+      "bytes": 22736,
+      "sha256": "32b609674962acbab81e4443c2356693f797650f43a3fae433f478352778a216",
+      "previous_sha256": "7ac88b844a20c78cfa04dc1bb2af6d18582bd0607d5f0486605fb277cf542b78",
+      "action": "replace",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.html"
+    },
+    {
+      "path": "internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.md",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.md",
+      "reason": "Markdown source evidence",
+      "bytes": 5495,
+      "sha256": "39fa3b2614687367822876ea77a297298aff56024a8bcb80708ad079368f8df0",
+      "previous_sha256": "39fa3b2614687367822876ea77a297298aff56024a8bcb80708ad079368f8df0",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/README.html",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/internal/README.html",
+      "reason": "current Rspress route",
+      "bytes": 145853,
+      "sha256": "fc2c6ff06ff9627c2ec60994847ddf1e73a26447450ca45d721cf13c5f31a94e",
+      "previous_sha256": "7c4619f8d25976a66c690e57569f7960cfedfa5da354e09011c20422263950f3",
+      "action": "replace",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/internal/README.html"
+    },
+    {
+      "path": "internal/README.md",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/README.md",
+      "reason": "internal index source",
+      "bytes": 107230,
+      "sha256": "03a3d7f0939fa7659f68cb615ce1798eaa609d3ac2d8fe56eda8a5f65c77fc7c",
+      "previous_sha256": "9ccd54c5b354259bb26f79ebc151fcde0c1cf4cd3b49889f23ed0589d0bab281",
+      "action": "replace",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/internal/README.md"
+    },
+    {
+      "path": "logo.svg",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/logo.svg",
+      "reason": "site chrome dependency",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "previous_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "public/roadmap.html",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/public/roadmap.html",
+      "reason": "roadmap source route",
+      "bytes": 107113,
+      "sha256": "62fd75efbfb80acff10ce0c5c92ca8cde73b2cfd44ed6649da4f1eb9da71324c",
+      "previous_sha256": "3421822a0c7e9d1c9c7d6cc9e897ff30a066f117dec2ef463b2477cadcc0b33d",
+      "action": "replace",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/public/roadmap.html"
+    },
+    {
+      "path": "public/roadmap.svg",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/public/roadmap.svg",
+      "reason": "roadmap artwork mirror",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "previous_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "roadmap.html",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/roadmap.html",
+      "reason": "current Rspress route",
+      "bytes": 107113,
+      "sha256": "62fd75efbfb80acff10ce0c5c92ca8cde73b2cfd44ed6649da4f1eb9da71324c",
+      "previous_sha256": "3421822a0c7e9d1c9c7d6cc9e897ff30a066f117dec2ef463b2477cadcc0b33d",
+      "action": "replace",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/roadmap.html"
+    },
+    {
+      "path": "roadmap.svg",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/public/roadmap.svg",
+      "reason": "roadmap artwork",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "previous_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/0070-c15-1-inline-text-layout.md",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/0070-c15-1-inline-text-layout.md",
+      "reason": "C15 contract source (spec mirror)",
+      "bytes": 15240,
+      "sha256": "e26b0116d7317dad03ac712000d31b427499aa96e40d453c7af7bdb1c7ec901a",
+      "previous_sha256": "8fb677b90ace8b3c106ea819b56fad1d99a9e9fb01d03b6c803340057491d2e7",
+      "action": "replace",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/spec/internal/0070-c15-1-inline-text-layout.md"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-scenario-2-screen.png",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/android-scenario-2-screen.png",
+      "reason": "linked roadmap/oracle image",
+      "bytes": 81086,
+      "sha256": "26fa01a85ccf6d936561cec318c680662c9411be606cecf60b6794e4ade9ea89",
+      "previous_sha256": "26fa01a85ccf6d936561cec318c680662c9411be606cecf60b6794e4ade9ea89",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-2-screen.png",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/ios-scenario-2-screen.png",
+      "reason": "linked roadmap/oracle image",
+      "bytes": 135901,
+      "sha256": "4b57273f929783f314bfb59443de543fb0608785feb8bf182a6f30d59c39de0f",
+      "previous_sha256": "4b57273f929783f314bfb59443de543fb0608785feb8bf182a6f30d59c39de0f",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/implementation-review-20.html",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/implementation-review-20.html",
+      "reason": "Rspress rendered evidence page (spec mirror)",
+      "bytes": 20552,
+      "sha256": "6ac9c27c8aa56d00a25d86d816179a1e7ec8dc9f9894324d65db3292e3e38aeb",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/implementation-review-20.md",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/implementation-review-20.md",
+      "reason": "Markdown source evidence (spec mirror)",
+      "bytes": 3330,
+      "sha256": "07018ba00d74681663e2c15ecae4c23b7e9359562135161c7f82fce714b4bae2",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/pr-delta-review-30.html",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/pr-delta-review-30.html",
+      "reason": "Rspress rendered evidence page (spec mirror)",
+      "bytes": 19810,
+      "sha256": "0a4016aac3461797991e548880dadaa0677d864d8fd942589410a12e311985f9",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/pr-delta-review-30.md",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/pr-delta-review-30.md",
+      "reason": "Markdown source evidence (spec mirror)",
+      "bytes": 2453,
+      "sha256": "5a9ba830f35be67ca73e7f7b34d8df243515e0b35db4a5d953ebfecc95128f25",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/README.html",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/README.html",
+      "reason": "Rspress rendered evidence page (spec mirror)",
+      "bytes": 21495,
+      "sha256": "60756a465a7014cf2cc692bdef5f01e188d33f6879c62230661f1202738a11fe",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/README.md",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/README.md",
+      "reason": "Markdown source evidence (spec mirror)",
+      "bytes": 4435,
+      "sha256": "337bcee35d6aee0526f8f34aec99154120b699358d1eef00cbaa4ae07be5bbcd",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/cargo-test.log",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/cargo-test.log",
+      "reason": "Linked evidence artifact (spec mirror)",
+      "bytes": 17973,
+      "sha256": "8691da728f0073000081df3326c05ecbf30d42ccca6a88c0294239f4cf24d69f",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/clippy-final.log",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/clippy-final.log",
+      "reason": "Linked evidence artifact (spec mirror)",
+      "bytes": 195,
+      "sha256": "a68493e813949df4ae6e777374e42c75b6cd1c6c34a56a5a726105f394ebbcb6",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/clippy-initial-failure.log",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/clippy-initial-failure.log",
+      "reason": "Linked evidence artifact (spec mirror)",
+      "bytes": 8139,
+      "sha256": "0c4ae48f4e394f6312d07118c4d8571c43eaf8e66a50b2a81ff3218109d67c2c",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/docs-build-result.html",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/docs-build-result.html",
+      "reason": "Rspress rendered evidence page (spec mirror)",
+      "bytes": 18116,
+      "sha256": "01e31eeba8ae23a96fe3bc16226577b2f6a0b0156caa4864f814d5cc078a5e52",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/docs-build-result.md",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/docs-build-result.md",
+      "reason": "Markdown source evidence (spec mirror)",
+      "bytes": 998,
+      "sha256": "1114208757c447a14a6ecb0fcddab84e557ee4429b3d6359974415acf4e8753d",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/fixture-asset-boundary.log",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/fixture-asset-boundary.log",
+      "reason": "Linked evidence artifact (spec mirror)",
+      "bytes": 996,
+      "sha256": "314d912518372c7a5c8e5096ec8dea2e2ae533d8c96806316686cd910a475997",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/implementation-review-20.html",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/implementation-review-20.html",
+      "reason": "Rspress rendered evidence page (spec mirror)",
+      "bytes": 21742,
+      "sha256": "10ce0120912103d840cacf890c33fbcdafd870c34a2db85d0630247b07198f41",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/implementation-review-20.md",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/implementation-review-20.md",
+      "reason": "Markdown source evidence (spec mirror)",
+      "bytes": 5076,
+      "sha256": "c6bf5c1bc9171579f73037a77b3a7be3ec0082166ceab06a9caef9d6fb12b4ec",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/pr-delta-review-30.html",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/pr-delta-review-30.html",
+      "reason": "Rspress rendered evidence page (spec mirror)",
+      "bytes": 23590,
+      "sha256": "2cf2ab602408047a5c847652a43cabda9e7f54ce3930ed86f40a2ec75389a454",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/pr-delta-review-30.md",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/pr-delta-review-30.md",
+      "reason": "Markdown source evidence (spec mirror)",
+      "bytes": 6318,
+      "sha256": "8b208a214f1c85d25924094c94f2a4357dccc8ca1727f8801164cc03b8ac96bb",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/product-build.log",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/product-build.log",
+      "reason": "Linked evidence artifact (spec mirror)",
+      "bytes": 72,
+      "sha256": "99f71393b9903dca098310bb446022a4bdee195ea9996f351a787195555210a6",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/README.html",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/README.html",
+      "reason": "Rspress rendered evidence page (spec mirror)",
+      "bytes": 22149,
+      "sha256": "2e51a425e1b6048a4b0d8fbc87a65600c00684380cba8e8bc9eb9eaa1a92471c",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/README.md",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/README.md",
+      "reason": "Markdown source evidence (spec mirror)",
+      "bytes": 5110,
+      "sha256": "47be7c5073aafc6096a1031e3306e33ef5f6279498c1d0ded9e7fd615c55e4a0",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/rustfmt.log",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/rustfmt.log",
+      "reason": "Linked evidence artifact (spec mirror)",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/chrome155-observation.json",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/chrome155-observation.json",
+      "reason": "Linked evidence artifact (spec mirror)",
+      "bytes": 14486,
+      "sha256": "41dbe579530fb9fef963ab8915f4523c6d31534815469cf88c28d751701e4832",
+      "previous_sha256": "41dbe579530fb9fef963ab8915f4523c6d31534815469cf88c28d751701e4832",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/chrome155.png",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/chrome155.png",
+      "reason": "Linked evidence artifact (spec mirror)",
+      "bytes": 35969,
+      "sha256": "ba827180aac697b472b771b801102744c90b13f570816986c2d99c8d51810417",
+      "previous_sha256": "ba827180aac697b472b771b801102744c90b13f570816986c2d99c8d51810417",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/README.html",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/README.html",
+      "reason": "Rspress rendered evidence page (spec mirror)",
+      "bytes": 25609,
+      "sha256": "f57f35e36166ef6e0407d0d832a56b826a4c330d8a5cb709e965a3e996be42f9",
+      "previous_sha256": "0dcacd13ed6213c90b91d551e02e42b4bbc72bb1de89400811b5271c3eb88a30",
+      "action": "replace",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/spec/internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/README.html"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/README.md",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/README.md",
+      "reason": "Markdown source evidence (spec mirror)",
+      "bytes": 7212,
+      "sha256": "0f534a3f51e629970d6563399833a8f41c2468649b3b8bcbcde817a393f72e4c",
+      "previous_sha256": "0f534a3f51e629970d6563399833a8f41c2468649b3b8bcbcde817a393f72e4c",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.html",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.html",
+      "reason": "Rspress rendered evidence page (spec mirror)",
+      "bytes": 22736,
+      "sha256": "32b609674962acbab81e4443c2356693f797650f43a3fae433f478352778a216",
+      "previous_sha256": "7ac88b844a20c78cfa04dc1bb2af6d18582bd0607d5f0486605fb277cf542b78",
+      "action": "replace",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.html"
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.md",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.md",
+      "reason": "Markdown source evidence (spec mirror)",
+      "bytes": 5495,
+      "sha256": "39fa3b2614687367822876ea77a297298aff56024a8bcb80708ad079368f8df0",
+      "previous_sha256": "39fa3b2614687367822876ea77a297298aff56024a8bcb80708ad079368f8df0",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/README.md",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/internal/README.md",
+      "reason": "internal index source (spec mirror)",
+      "bytes": 107230,
+      "sha256": "03a3d7f0939fa7659f68cb615ce1798eaa609d3ac2d8fe56eda8a5f65c77fc7c",
+      "previous_sha256": "9ccd54c5b354259bb26f79ebc151fcde0c1cf4cd3b49889f23ed0589d0bab281",
+      "action": "replace",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/spec/internal/README.md"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/static/css/styles.8d918fd78e.css",
+      "reason": "direct Rspress page dependency",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "previous_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/chrome155.bb1ba0e6c6.png",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/static/image/chrome155.bb1ba0e6c6.png",
+      "reason": "direct Rspress page dependency",
+      "bytes": 35969,
+      "sha256": "ba827180aac697b472b771b801102744c90b13f570816986c2d99c8d51810417",
+      "previous_sha256": "ba827180aac697b472b771b801102744c90b13f570816986c2d99c8d51810417",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/a.94c7f3bcb3.js",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/static/js/a.94c7f3bcb3.js",
+      "reason": "direct Rspress page dependency",
+      "bytes": 217101,
+      "sha256": "a6b106a93fdbf5132bc95da8efa696afd9612caeff580c7e795e0eb07173bcf1",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-017bed2a42da.b354b8719c.js",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/static/js/async/route-017bed2a42da.b354b8719c.js",
+      "reason": "direct Rspress page dependency",
+      "bytes": 10877,
+      "sha256": "62042292a26bb5f860f3c05b686d442f335e4ebf1fae62a9678c987d50d7e3a3",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-19fc51e2a977.b57ac05c0c.js",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/static/js/async/route-19fc51e2a977.b57ac05c0c.js",
+      "reason": "direct Rspress page dependency",
+      "bytes": 10697,
+      "sha256": "3f0bbf04aa00a4eb22331fde53fb76cb8888f29375fb6f7faed83faa8439e872",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-1c72cd2a710b.02a31f1540.js",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/static/js/async/route-1c72cd2a710b.02a31f1540.js",
+      "reason": "direct Rspress page dependency",
+      "bytes": 9755,
+      "sha256": "6ca7620748437aae7042c25bf64665d4fee589397276a94367c879fe5539b62b",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-1ce3786bc418.8a80b174d4.js",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/static/js/async/route-1ce3786bc418.8a80b174d4.js",
+      "reason": "direct Rspress page dependency",
+      "bytes": 8273,
+      "sha256": "0230bbaf8d8e5110f612973235fb6ce7f763c578b57fd985883ac22972fe88b1",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-2308615ee227.bf789a3210.js",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/static/js/async/route-2308615ee227.bf789a3210.js",
+      "reason": "direct Rspress page dependency",
+      "bytes": 5476,
+      "sha256": "12b6c33f5fb6b510d9c9ccfdffadd71b94db2dc64050aa192be8a3811e2b8200",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-375605b14080.5079f67328.js",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/static/js/async/route-375605b14080.5079f67328.js",
+      "reason": "direct Rspress page dependency",
+      "bytes": 8250,
+      "sha256": "467eba6bec96cddce153c4bf6d4fac651539a7ae89d660fa63a8e951e18232ed",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.50359b1360.js",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/static/js/async/route-6c33a3943990.50359b1360.js",
+      "reason": "direct Rspress page dependency",
+      "bytes": 349321,
+      "sha256": "18f1a284a9362a63a634513d01922e0f91c32c28b842adf3de77d2a3e25b503f",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-a1017bdf23ca.01142ba565.js",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/static/js/async/route-a1017bdf23ca.01142ba565.js",
+      "reason": "direct Rspress page dependency",
+      "bytes": 157157,
+      "sha256": "c00293cbdd78c8bcd909b5ee48f83ea88fc3f386879d96a009cdbbe40f78e3f4",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-ac6b12373366.48aac7588c.js",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/static/js/async/route-ac6b12373366.48aac7588c.js",
+      "reason": "direct Rspress page dependency",
+      "bytes": 11966,
+      "sha256": "05f2aa12fd29fa5549c4baa1ef144f92bcf4ddafa4d293c40d4e87e42329a411",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-acf9bf8a5ef1.baa3a84af1.js",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/static/js/async/route-acf9bf8a5ef1.baa3a84af1.js",
+      "reason": "direct Rspress page dependency",
+      "bytes": 26240,
+      "sha256": "0b042522341457cd0510b183531d7670d218dd84bbe09dfe843fad1e1d540786",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-b34189bdf2d9.1f5ed23170.js",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/static/js/async/route-b34189bdf2d9.1f5ed23170.js",
+      "reason": "direct Rspress page dependency",
+      "bytes": 8381,
+      "sha256": "ef69548f2dd51b1586d1f6ccb4ac2bdcdd51b48c0fee88f2b8b7c56a7a80a93c",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-c0e5f44be862.34e472f1d8.js",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/static/js/async/route-c0e5f44be862.34e472f1d8.js",
+      "reason": "direct Rspress page dependency",
+      "bytes": 2367,
+      "sha256": "b9c6f460670cbf07d64d5cd9bc5d715dce26db638b1fdc01b3d07c723e9e3ac4",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-fcde359171e9.a35c7dc904.js",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/static/js/async/route-fcde359171e9.a35c7dc904.js",
+      "reason": "direct Rspress page dependency",
+      "bytes": 14686,
+      "sha256": "5bf5b1152eb8efb02f2e5863e8249cce70d4cdafaf04e8e02748e6ff3620aeaa",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/index.c8eea18b9c.js",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/static/js/index.c8eea18b9c.js",
+      "reason": "direct Rspress page dependency",
+      "bytes": 1283209,
+      "sha256": "3a074a02755b687d2ae4d914eff991452a87384e7d50fc1dede07e63a225ab80",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/static/js/lib-react.9cdf8f49ce.js",
+      "reason": "direct Rspress page dependency",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "previous_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/static/js/lib-router.1e14e568cb.js",
+      "reason": "direct Rspress page dependency",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "previous_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/styles.d2a6dfa6a0.js",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/static/js/styles.d2a6dfa6a0.js",
+      "reason": "direct Rspress page dependency",
+      "bytes": 473,
+      "sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "previous_sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/search_index.ko.7973097c.json",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/static/search_index.ko.7973097c.json",
+      "reason": "Rspress search index",
+      "bytes": 5963311,
+      "sha256": "7973097c84cf0936a09e8a5843ee8694215b1af36255e31ca8bb7aabe74dd4b6",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "STATUS.html",
+      "source": "/tmp/spinon-c15-3-tailnet-implementation-out-final-20261017/STATUS.html",
+      "reason": "current Rspress route",
+      "bytes": 325950,
+      "sha256": "2685629c781eb577470c68ab01b9f2731fea815c2d09e7c74f2781c4f0d5306b",
+      "previous_sha256": "00055a9e184f5c62a66b8235cc31941660e6349647e5cbc50166df55984c2764",
+      "action": "replace",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/STATUS.html"
+    },
+    {
+      "path": "STATUS.md",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/spec/STATUS.md",
+      "reason": "status source",
+      "bytes": 252238,
+      "sha256": "5c59f3fe5a0c1cd8ccefd0144fe02259cae3b0f923c73f1a46f97359fcb90b6d",
+      "previous_sha256": "3f6904a132f0148fb9a2bd7a4feeaa7626f6345036e22038a79fcbfc499f07fa",
+      "action": "replace",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/STATUS.md"
+    },
+    {
+      "path": "tests/fixtures/css/c15/c15-3-unicode-shaping-oracle.html",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/tests/fixtures/css/c15/c15-3-unicode-shaping-oracle.html",
+      "reason": "C15.3 fixed input and font fixture",
+      "bytes": 9412,
+      "sha256": "afa39ab1cf879a2bfe1bcebd96c88600e8d720cb97cc4ef0eeedd0b5e56fa82a",
+      "previous_sha256": "afa39ab1cf879a2bfe1bcebd96c88600e8d720cb97cc4ef0eeedd0b5e56fa82a",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "tests/fixtures/resources/c15/c15-3/NotoEmoji-OFL.txt",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/tests/fixtures/resources/c15/c15-3/NotoEmoji-OFL.txt",
+      "reason": "C15.3 fixed input and font fixture",
+      "bytes": 4329,
+      "sha256": "79d348cb5161481f603dcda564fb129a9b2c11d7012dcad820af045fed75c020",
+      "previous_sha256": "79d348cb5161481f603dcda564fb129a9b2c11d7012dcad820af045fed75c020",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "tests/fixtures/resources/c15/c15-3/NotoEmoji-VF.ttf",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/tests/fixtures/resources/c15/c15-3/NotoEmoji-VF.ttf",
+      "reason": "C15.3 fixed input and font fixture",
+      "bytes": 1982596,
+      "sha256": "de6c18832938afc99caf132b39d6a30a19bac7f2e812e28db2535b4608d27551",
+      "previous_sha256": "de6c18832938afc99caf132b39d6a30a19bac7f2e812e28db2535b4608d27551",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "tests/fixtures/resources/c15/c15-3/NotoSansArabic-OFL.txt",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/tests/fixtures/resources/c15/c15-3/NotoSansArabic-OFL.txt",
+      "reason": "C15.3 fixed input and font fixture",
+      "bytes": 4381,
+      "sha256": "df5143cdf3380169f2d03bf6d2cd243e85621fd097e608c3607cf7f9c9884ae6",
+      "previous_sha256": "df5143cdf3380169f2d03bf6d2cd243e85621fd097e608c3607cf7f9c9884ae6",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "tests/fixtures/resources/c15/c15-3/NotoSansArabic-VF.ttf",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/tests/fixtures/resources/c15/c15-3/NotoSansArabic-VF.ttf",
+      "reason": "C15.3 fixed input and font fixture",
+      "bytes": 844676,
+      "sha256": "63111b5b2e074dd48cc67692e0a2726d86ee94c1c37fe8598257b7b4e87e869e",
+      "previous_sha256": "63111b5b2e074dd48cc67692e0a2726d86ee94c1c37fe8598257b7b4e87e869e",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "tests/fixtures/resources/c15/c15-3/NotoSansCJK-OFL.txt",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/tests/fixtures/resources/c15/c15-3/NotoSansCJK-OFL.txt",
+      "reason": "C15.3 fixed input and font fixture",
+      "bytes": 4301,
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+      "previous_sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "tests/fixtures/resources/c15/c15-3/NotoSansKR-VF.ttf",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/tests/fixtures/resources/c15/c15-3/NotoSansKR-VF.ttf",
+      "reason": "C15.3 fixed input and font fixture",
+      "bytes": 10415420,
+      "sha256": "9e1d729e7e2b36f9ef439da102f8c134c10aabe46f1c843bf0aca5c043b86f76",
+      "previous_sha256": "9e1d729e7e2b36f9ef439da102f8c134c10aabe46f1c843bf0aca5c043b86f76",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "tests/fixtures/resources/c15/c15-3/README.md",
+      "source": "/private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/tests/fixtures/resources/c15/c15-3/README.md",
+      "reason": "C15.3 fixed input and font fixture",
+      "bytes": 2879,
+      "sha256": "6c2ec41aedc085ab132b7d9ac77e587533ad94c18ba5e7494580c5371d6e71fa",
+      "previous_sha256": "6c2ec41aedc085ab132b7d9ac77e587533ad94c18ba5e7494580c5371d6e71fa",
+      "action": "unchanged",
+      "backup_path": null
+    }
+  ]
+}

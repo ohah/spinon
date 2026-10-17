@@ -1,0 +1,99 @@
+{
+  "title": "C15.3 implementation Tailnet Agent Browser verification",
+  "generated_at": "2026-10-17T00:27:34.975Z",
+  "browser": {
+    "tool": "agent-browser",
+    "engine": "HeadlessChrome",
+    "version": "155.0.8059.85",
+    "platform": "macOS 26.5.1",
+    "viewport": {
+      "width": 1280,
+      "height": 633
+    },
+    "device_pixel_ratio": 1,
+    "terminal_browser_used": false
+  },
+  "pages": [
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "opened": true,
+      "assertions": {
+        "c15_3_implementation_entry_visible": true,
+        "c19_chromium_source_analysis_link_visible": true,
+        "css_color_diagnosis_scope_limited": true
+      },
+      "screenshot": "tailnet-roadmap-agent-browser.png"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+      "opened": true,
+      "assertions": {
+        "c15_entry_visible": true,
+        "c15_3_specific_tests": "9/9",
+        "spinon_text_layout_tests": "26/26",
+        "spinon_layout_tests": "154/154",
+        "c15_marked_incomplete": true
+      },
+      "screenshot": "tailnet-status-agent-browser.png"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/README.html",
+      "opened": true,
+      "assertions": {
+        "pure_rust_slice_scope_visible": true,
+        "runtime_paint_not_claimed": true,
+        "simulator_not_claimed": true
+      },
+      "screenshot": "tailnet-implementation-agent-browser.png"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/tests/fixtures/css/c15/c15-3-unicode-shaping-oracle.html",
+      "opened": true,
+      "assertions": {
+        "document_title": "C15.3 fixed-font Unicode shaping and paint oracle",
+        "fonts_status": "loaded",
+        "font_checks": {
+          "noto_kr": true,
+          "noto_arabic": true,
+          "noto_emoji": true,
+          "roboto": true,
+          "ahem": true
+        },
+        "viewport": {
+          "width": 1280,
+          "height": 633
+        },
+        "device_pixel_ratio": 1
+      },
+      "screenshot": "tailnet-fixture-agent-browser.png"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/README.html",
+      "opened": true,
+      "assertions": {
+        "all_four_embedded_screenshots_loaded": true,
+        "all_four_natural_width": 1280,
+        "completion_boundary_visible": true
+      },
+      "screenshot": null
+    }
+  ],
+  "cleanup": {
+    "agent_browser_close_command_succeeded": true,
+    "matching_browser_processes_after_close": 0,
+    "preview_listener_pid": 1191,
+    "preview_listener_restarted": false
+  },
+  "final_recheck": {
+    "generated_at": "2026-10-17T00:28:47.970Z",
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/README.html",
+    "agent_browser_opened": true,
+    "embedded_screenshot_count": 4,
+    "loaded_screenshot_count": 4,
+    "each_natural_width": 1280,
+    "completion_boundary_visible": true,
+    "agent_browser_close_succeeded": true,
+    "matching_browser_processes_after_close": 0,
+    "preview_listener_pid": 1191
+  }
+}

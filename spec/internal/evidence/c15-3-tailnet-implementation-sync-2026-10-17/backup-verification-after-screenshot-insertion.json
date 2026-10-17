@@ -1,0 +1,224 @@
+{
+  "generated_at": "2026-10-17T00:25:42.144Z",
+  "stage": "final rendered screenshot overlay",
+  "expected_backup_count": 24,
+  "verified_backup_count": 24,
+  "backups": [
+    {
+      "path": "index.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/publish2/index.html",
+      "bytes": 18641,
+      "expected_sha256": "a407776db75915fd2a8818fba9214506d8fb1d5942243d0a731da9d3deca5197",
+      "actual_sha256": "a407776db75915fd2a8818fba9214506d8fb1d5942243d0a731da9d3deca5197",
+      "matches_previous_target": true,
+      "stage": "final rendered screenshot overlay"
+    },
+    {
+      "path": "internal/0070-c15-1-inline-text-layout.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/publish2/internal/0070-c15-1-inline-text-layout.html",
+      "bytes": 35517,
+      "expected_sha256": "adaf00f1f7535c5d690e41a4f369763792cfc96a80f68fd1b57236cdba5f8863",
+      "actual_sha256": "adaf00f1f7535c5d690e41a4f369763792cfc96a80f68fd1b57236cdba5f8863",
+      "matches_previous_target": true,
+      "stage": "final rendered screenshot overlay"
+    },
+    {
+      "path": "internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/implementation-review-20.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/publish2/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/implementation-review-20.html",
+      "bytes": 20552,
+      "expected_sha256": "6ac9c27c8aa56d00a25d86d816179a1e7ec8dc9f9894324d65db3292e3e38aeb",
+      "actual_sha256": "6ac9c27c8aa56d00a25d86d816179a1e7ec8dc9f9894324d65db3292e3e38aeb",
+      "matches_previous_target": true,
+      "stage": "final rendered screenshot overlay"
+    },
+    {
+      "path": "internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/pr-delta-review-30.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/publish2/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/pr-delta-review-30.html",
+      "bytes": 19810,
+      "expected_sha256": "0a4016aac3461797991e548880dadaa0677d864d8fd942589410a12e311985f9",
+      "actual_sha256": "0a4016aac3461797991e548880dadaa0677d864d8fd942589410a12e311985f9",
+      "matches_previous_target": true,
+      "stage": "final rendered screenshot overlay"
+    },
+    {
+      "path": "internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/README.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/publish2/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/README.html",
+      "bytes": 21495,
+      "expected_sha256": "60756a465a7014cf2cc692bdef5f01e188d33f6879c62230661f1202738a11fe",
+      "actual_sha256": "60756a465a7014cf2cc692bdef5f01e188d33f6879c62230661f1202738a11fe",
+      "matches_previous_target": true,
+      "stage": "final rendered screenshot overlay"
+    },
+    {
+      "path": "internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/README.md",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/publish2/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/README.md",
+      "bytes": 4435,
+      "expected_sha256": "337bcee35d6aee0526f8f34aec99154120b699358d1eef00cbaa4ae07be5bbcd",
+      "actual_sha256": "337bcee35d6aee0526f8f34aec99154120b699358d1eef00cbaa4ae07be5bbcd",
+      "matches_previous_target": true,
+      "stage": "final rendered screenshot overlay"
+    },
+    {
+      "path": "internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/docs-build-result.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/publish2/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/docs-build-result.html",
+      "bytes": 18116,
+      "expected_sha256": "01e31eeba8ae23a96fe3bc16226577b2f6a0b0156caa4864f814d5cc078a5e52",
+      "actual_sha256": "01e31eeba8ae23a96fe3bc16226577b2f6a0b0156caa4864f814d5cc078a5e52",
+      "matches_previous_target": true,
+      "stage": "final rendered screenshot overlay"
+    },
+    {
+      "path": "internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/implementation-review-20.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/publish2/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/implementation-review-20.html",
+      "bytes": 21742,
+      "expected_sha256": "10ce0120912103d840cacf890c33fbcdafd870c34a2db85d0630247b07198f41",
+      "actual_sha256": "10ce0120912103d840cacf890c33fbcdafd870c34a2db85d0630247b07198f41",
+      "matches_previous_target": true,
+      "stage": "final rendered screenshot overlay"
+    },
+    {
+      "path": "internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/pr-delta-review-30.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/publish2/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/pr-delta-review-30.html",
+      "bytes": 23590,
+      "expected_sha256": "2cf2ab602408047a5c847652a43cabda9e7f54ce3930ed86f40a2ec75389a454",
+      "actual_sha256": "2cf2ab602408047a5c847652a43cabda9e7f54ce3930ed86f40a2ec75389a454",
+      "matches_previous_target": true,
+      "stage": "final rendered screenshot overlay"
+    },
+    {
+      "path": "internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/README.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/publish2/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/README.html",
+      "bytes": 22149,
+      "expected_sha256": "2e51a425e1b6048a4b0d8fbc87a65600c00684380cba8e8bc9eb9eaa1a92471c",
+      "actual_sha256": "2e51a425e1b6048a4b0d8fbc87a65600c00684380cba8e8bc9eb9eaa1a92471c",
+      "matches_previous_target": true,
+      "stage": "final rendered screenshot overlay"
+    },
+    {
+      "path": "internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/README.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/publish2/internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/README.html",
+      "bytes": 25609,
+      "expected_sha256": "f57f35e36166ef6e0407d0d832a56b826a4c330d8a5cb709e965a3e996be42f9",
+      "actual_sha256": "f57f35e36166ef6e0407d0d832a56b826a4c330d8a5cb709e965a3e996be42f9",
+      "matches_previous_target": true,
+      "stage": "final rendered screenshot overlay"
+    },
+    {
+      "path": "internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/publish2/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.html",
+      "bytes": 22736,
+      "expected_sha256": "32b609674962acbab81e4443c2356693f797650f43a3fae433f478352778a216",
+      "actual_sha256": "32b609674962acbab81e4443c2356693f797650f43a3fae433f478352778a216",
+      "matches_previous_target": true,
+      "stage": "final rendered screenshot overlay"
+    },
+    {
+      "path": "internal/README.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/publish2/internal/README.html",
+      "bytes": 145853,
+      "expected_sha256": "fc2c6ff06ff9627c2ec60994847ddf1e73a26447450ca45d721cf13c5f31a94e",
+      "actual_sha256": "fc2c6ff06ff9627c2ec60994847ddf1e73a26447450ca45d721cf13c5f31a94e",
+      "matches_previous_target": true,
+      "stage": "final rendered screenshot overlay"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/implementation-review-20.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/publish2/spec/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/implementation-review-20.html",
+      "bytes": 20552,
+      "expected_sha256": "6ac9c27c8aa56d00a25d86d816179a1e7ec8dc9f9894324d65db3292e3e38aeb",
+      "actual_sha256": "6ac9c27c8aa56d00a25d86d816179a1e7ec8dc9f9894324d65db3292e3e38aeb",
+      "matches_previous_target": true,
+      "stage": "final rendered screenshot overlay"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/pr-delta-review-30.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/publish2/spec/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/pr-delta-review-30.html",
+      "bytes": 19810,
+      "expected_sha256": "0a4016aac3461797991e548880dadaa0677d864d8fd942589410a12e311985f9",
+      "actual_sha256": "0a4016aac3461797991e548880dadaa0677d864d8fd942589410a12e311985f9",
+      "matches_previous_target": true,
+      "stage": "final rendered screenshot overlay"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/README.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/publish2/spec/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/README.html",
+      "bytes": 21495,
+      "expected_sha256": "60756a465a7014cf2cc692bdef5f01e188d33f6879c62230661f1202738a11fe",
+      "actual_sha256": "60756a465a7014cf2cc692bdef5f01e188d33f6879c62230661f1202738a11fe",
+      "matches_previous_target": true,
+      "stage": "final rendered screenshot overlay"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/README.md",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/publish2/spec/internal/evidence/c15-3-tailnet-implementation-sync-2026-10-17/README.md",
+      "bytes": 4435,
+      "expected_sha256": "337bcee35d6aee0526f8f34aec99154120b699358d1eef00cbaa4ae07be5bbcd",
+      "actual_sha256": "337bcee35d6aee0526f8f34aec99154120b699358d1eef00cbaa4ae07be5bbcd",
+      "matches_previous_target": true,
+      "stage": "final rendered screenshot overlay"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/docs-build-result.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/publish2/spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/docs-build-result.html",
+      "bytes": 18116,
+      "expected_sha256": "01e31eeba8ae23a96fe3bc16226577b2f6a0b0156caa4864f814d5cc078a5e52",
+      "actual_sha256": "01e31eeba8ae23a96fe3bc16226577b2f6a0b0156caa4864f814d5cc078a5e52",
+      "matches_previous_target": true,
+      "stage": "final rendered screenshot overlay"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/implementation-review-20.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/publish2/spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/implementation-review-20.html",
+      "bytes": 21742,
+      "expected_sha256": "10ce0120912103d840cacf890c33fbcdafd870c34a2db85d0630247b07198f41",
+      "actual_sha256": "10ce0120912103d840cacf890c33fbcdafd870c34a2db85d0630247b07198f41",
+      "matches_previous_target": true,
+      "stage": "final rendered screenshot overlay"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/pr-delta-review-30.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/publish2/spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/pr-delta-review-30.html",
+      "bytes": 23590,
+      "expected_sha256": "2cf2ab602408047a5c847652a43cabda9e7f54ce3930ed86f40a2ec75389a454",
+      "actual_sha256": "2cf2ab602408047a5c847652a43cabda9e7f54ce3930ed86f40a2ec75389a454",
+      "matches_previous_target": true,
+      "stage": "final rendered screenshot overlay"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/README.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/publish2/spec/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/README.html",
+      "bytes": 22149,
+      "expected_sha256": "2e51a425e1b6048a4b0d8fbc87a65600c00684380cba8e8bc9eb9eaa1a92471c",
+      "actual_sha256": "2e51a425e1b6048a4b0d8fbc87a65600c00684380cba8e8bc9eb9eaa1a92471c",
+      "matches_previous_target": true,
+      "stage": "final rendered screenshot overlay"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/README.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/publish2/spec/internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/README.html",
+      "bytes": 25609,
+      "expected_sha256": "f57f35e36166ef6e0407d0d832a56b826a4c330d8a5cb709e965a3e996be42f9",
+      "actual_sha256": "f57f35e36166ef6e0407d0d832a56b826a4c330d8a5cb709e965a3e996be42f9",
+      "matches_previous_target": true,
+      "stage": "final rendered screenshot overlay"
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/publish2/spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.html",
+      "bytes": 22736,
+      "expected_sha256": "32b609674962acbab81e4443c2356693f797650f43a3fae433f478352778a216",
+      "actual_sha256": "32b609674962acbab81e4443c2356693f797650f43a3fae433f478352778a216",
+      "matches_previous_target": true,
+      "stage": "final rendered screenshot overlay"
+    },
+    {
+      "path": "STATUS.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/publish2/STATUS.html",
+      "bytes": 325950,
+      "expected_sha256": "2685629c781eb577470c68ab01b9f2731fea815c2d09e7c74f2781c4f0d5306b",
+      "actual_sha256": "2685629c781eb577470c68ab01b9f2731fea815c2d09e7c74f2781c4f0d5306b",
+      "matches_previous_target": true,
+      "stage": "final rendered screenshot overlay"
+    }
+  ]
+}
