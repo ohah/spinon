@@ -1,6 +1,6 @@
-# C13.1 전체 물리 표면 RGBA 비교 계획 · 실패 관점 검토 20개 · 2026-10-18
+# C13.1 전체 물리 표면 RGBA 비교 계획 · 실패 관점 검토 21개 · 2026-10-18
 
-코드 변경 전에 고정할 비교 계획을 독립적인 실패 경로 20개로 검토했다. 구현 검토와 PR 검토에서 이 관점을 재사용하지 않는다.
+코드 변경 전에 고정할 비교 계획을 서로 다른 실패 경로 21개로 검토했다. 구현 검토와 PR 검토에서 이 관점을 재사용하지 않는다. 21번은 캡처를 시작하기 전 wrapper·fixture 연결을 실제로 열어 기존 observation source와 대조한 보완 관점이다.
 
 | # | 실패 관점 | 계획 판정 |
 |---:|---|---|
@@ -24,5 +24,6 @@
 | 18 | PixelCopy/Metal readback 완료 전 성공 로그가 먼저 생성 | capture completion과 manifest 검증 후에만 성공 summary를 기록한다. 통과. |
 | 19 | 새 FFI/JS/payload가 기본 앱 artifact에 섞임 | default negative와 opt-in positive artifact 검사를 별도로 둔다. 통과. |
 | 20 | Simulator/AVD exact 결과를 제품, 물리 GPU 또는 WPT 완성으로 확대 | 명시적 제외와 STATUS 미완료 표기를 유지한다. 통과. |
+| 21 | 이름이 비슷한 일반 overflow reference page를 compact matrix oracle로 잘못 사용 | 실제 geometry observation의 `sources.html`·`sources.fixture`를 고정하고 Agent Browser에서 13 case·41 node를 확인한 compact wrapper만 연다. 일반 page에서 만든 이전 임시 DPR image는 비교 근거로 폐기한다. 수정 후 통과. |
 
 계획 범위는 C13.1 고정 13-case fixture의 두 simulator surface다. 이 검토는 구현·실행 결과를 증명하지 않는다.
