@@ -142,6 +142,7 @@ public final class MainActivity extends Activity {
     private volatile long runtimeSession;
     private final Object rootDocumentSessionLock = new Object();
     private long rootDocumentSession;
+    private long rootDocumentEnvironmentRequestGeneration;
     private volatile boolean activityClosing;
     private TextView runtimeLog;
     private ScrollView runtimeScroll;
@@ -2421,23 +2422,64 @@ public final class MainActivity extends Activity {
 
     private void updateRootDocumentEnvironment(Configuration configuration) {
         long session;
+        long requestGeneration;
         synchronized (rootDocumentSessionLock) {
             session = rootDocumentSession;
+            if (session == 0 || activityClosing) return;
+            requestGeneration = ++rootDocumentEnvironmentRequestGeneration;
         }
-        if (session == 0 || activityClosing) return;
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         boolean prefersDark = (configuration.uiMode & Configuration.UI_MODE_NIGHT_MASK)
                 == Configuration.UI_MODE_NIGHT_YES;
-        byte[] output = nativeSessionSetRootHtmlEnvironment(
-                session, metrics.widthPixels, metrics.heightPixels,
-                metrics.density, prefersDark);
-        String report = output == null ? "native runtime returned no environment report"
-                : new String(output, StandardCharsets.UTF_8);
-        if (report.startsWith("status=0")) {
-            Log.i(TAG, "SPINON_ROOT_HTML_ENVIRONMENT source=configuration-change " + report);
-        } else {
-            Log.e(TAG, "SPINON_ROOT_HTML_ENVIRONMENT_ERROR source=configuration-change " + report);
+        float surfaceWidthPx = metrics.widthPixels;
+        float surfaceHeightPx = metrics.heightPixels;
+        float deviceScaleFactor = metrics.density;
+        try {
+            bootstrapExecutor.execute(() -> {
+                byte[] output = nativeSessionSetRootHtmlEnvironment(
+                        session, surfaceWidthPx, surfaceHeightPx,
+                        deviceScaleFactor, prefersDark);
+                String report = output == null ? "native runtime returned no environment report"
+                        : new String(output, StandardCharsets.UTF_8);
+                if (!report.startsWith("status=0")) {
+                    Log.e(TAG, "SPINON_ROOT_HTML_ENVIRONMENT_ERROR source=configuration-change "
+                            + report);
+                    return;
+                }
+                Log.i(TAG, "SPINON_ROOT_HTML_ENVIRONMENT source=configuration-change " + report);
+                Integer canvasColor = rootCanvasColor(report);
+                if (canvasColor == null) {
+                    Log.e(TAG, "SPINON_ROOT_HTML_CANVAS_ERROR reason=missing-canvas-color");
+                    return;
+                }
+                runOnUiThread(() -> {
+                    synchronized (rootDocumentSessionLock) {
+                        if (activityClosing || rootDocumentSession != session
+                                || rootDocumentEnvironmentRequestGeneration != requestGeneration) {
+                            return;
+                        }
+                    }
+                    getWindow().getDecorView().setBackgroundColor(canvasColor);
+                });
+            });
+        } catch (RejectedExecutionException rejected) {
+            if (!activityClosing) {
+                Log.e(TAG, "SPINON_ROOT_HTML_ENVIRONMENT_ERROR source=configuration-change "
+                        + "reason=executor-rejected");
+            }
         }
+    }
+
+    private static Integer rootCanvasColor(String report) {
+        for (String field : report.split(" ")) {
+            if (!field.startsWith("canvas_color=")) continue;
+            try {
+                return Color.parseColor(field.substring("canvas_color=".length()));
+            } catch (IllegalArgumentException ignored) {
+                return null;
+            }
+        }
+        return null;
     }
 
     @Override
@@ -2457,10 +2499,17 @@ public final class MainActivity extends Activity {
         }
         try {
             runtimeControl.execute(() -> {
+                boolean interrupted = false;
+                while (!bootstrapExecutor.isTerminated()) {
+                    try {
+                        bootstrapExecutor.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+                    } catch (InterruptedException error) {
+                        interrupted = true;
+                    }
+                }
                 if (rootHandle != 0) nativeSessionFree(rootHandle);
                 long handle = runtimeSession;
                 if (handle != 0) nativeSessionCancel(handle);
-                boolean interrupted = false;
                 while (!runtimeCalls.isTerminated()) {
                     try {
                         runtimeCalls.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);

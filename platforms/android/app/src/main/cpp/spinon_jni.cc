@@ -14,6 +14,7 @@
 
 #include <array>
 #include <cstdint>
+#include <cstdio>
 #include <cstring>
 #include <memory>
 #include <new>
@@ -2330,13 +2331,19 @@ extern "C" JNIEXPORT jbyteArray JNICALL
 Java_dev_spinon_bootstrap_MainActivity_nativeSessionSetRootHtmlEnvironment(
     JNIEnv *env, jclass, jlong session, jfloat surface_width_px,
     jfloat surface_height_px, jfloat device_scale_factor, jboolean prefers_dark) {
-  SpinonRuntimeRootHtmlEnvironment environment{};
-  const int32_t status = spinon_runtime_session_set_root_html_environment(
+  SpinonRuntimeRootHtmlCanvas canvas{};
+  const int32_t status = spinon_runtime_session_resolve_root_html_canvas(
       reinterpret_cast<SpinonRuntimeSession *>(static_cast<uintptr_t>(session)),
       surface_width_px, surface_height_px, device_scale_factor,
-      prefers_dark == JNI_TRUE ? 1 : 0, &environment);
+      prefers_dark == JNI_TRUE ? 1 : 0, 5000, &canvas);
   std::string report = "status=" + std::to_string(status);
   if (status == 0) {
+    const SpinonRuntimeRootHtmlEnvironment &environment = canvas.environment;
+    char canvas_color[8]{};
+    std::snprintf(canvas_color, sizeof(canvas_color), "#%02x%02x%02x",
+                  static_cast<unsigned int>(canvas.canvas_rgba[0]),
+                  static_cast<unsigned int>(canvas.canvas_rgba[1]),
+                  static_cast<unsigned int>(canvas.canvas_rgba[2]));
     report += " viewport_css_px=" +
               std::to_string(environment.viewport_width_css_px) + "x" +
               std::to_string(environment.viewport_height_css_px) +
@@ -2348,7 +2355,18 @@ Java_dev_spinon_bootstrap_MainActivity_nativeSessionSetRootHtmlEnvironment(
               " document_color_scheme=" +
               std::to_string(environment.document_color_scheme) +
               " environment_revision=" +
-              std::to_string(environment.environment_revision);
+              std::to_string(environment.environment_revision) +
+              " canvas_color=" + canvas_color +
+              " used_color_scheme=" + std::to_string(canvas.used_color_scheme) +
+              " cascade_generation=" + std::to_string(canvas.cascade_generation) +
+              " cascade_document_revision=" +
+              std::to_string(canvas.cascade_document_revision) +
+              " cascade_render_tree_revision=" +
+              std::to_string(canvas.cascade_render_tree_revision) +
+              " cascade_style_revision=" +
+              std::to_string(canvas.cascade_style_revision) +
+              " cascade_environment_revision=" +
+              std::to_string(canvas.cascade_environment_revision);
   }
   jbyteArray output = env->NewByteArray(static_cast<jsize>(report.size()));
   if (output == nullptr) return nullptr;

@@ -441,6 +441,37 @@ impl RuntimeUaCascadeHandle {
             error: state.error.clone(),
         }
     }
+
+    pub(super) fn wait_for_snapshot(&self, timeout: Duration) -> RuntimeUaCascadeSnapshot {
+        const MAX_CONDITION_WAIT: Duration = Duration::from_secs(60);
+        let deadline = Instant::now().checked_add(timeout);
+        let mut state = lock(&self.shared.state);
+        while state.status == RuntimeUaCascadeState::Pending && !state.closing {
+            let remaining = deadline
+                .map(|deadline| deadline.saturating_duration_since(Instant::now()))
+                .unwrap_or(MAX_CONDITION_WAIT)
+                .min(MAX_CONDITION_WAIT);
+            if remaining.is_zero() {
+                break;
+            }
+            let (next, timed_out) = self
+                .shared
+                .wake
+                .wait_timeout(state, remaining)
+                .unwrap_or_else(PoisonError::into_inner);
+            state = next;
+            if timed_out.timed_out() && deadline.is_some_and(|deadline| Instant::now() >= deadline)
+            {
+                break;
+            }
+        }
+        RuntimeUaCascadeSnapshot {
+            state: state.status,
+            requested: state.requested,
+            completed: state.completed.clone(),
+            error: state.error.clone(),
+        }
+    }
 }
 
 fn request_latest(

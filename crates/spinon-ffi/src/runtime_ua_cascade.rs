@@ -1,6 +1,7 @@
 use serde_json::{Value, json};
 use spinon_runtime::{
-    RuntimeSession, RuntimeUaCascadeCompleted, RuntimeUaCascadeKey, RuntimeUaCascadeSnapshot,
+    RootHtmlCanvasError, RuntimeSession, RuntimeUaCascadeCompleted, RuntimeUaCascadeKey,
+    RuntimeUaCascadeSnapshot,
 };
 use spinon_style::{
     CssColorScheme, CssMediaEnvironment, CssPointerCapabilities, CssPrimaryPointer, CssViewport,
@@ -31,6 +32,19 @@ pub struct SpinonRuntimeRootHtmlEnvironment {
     prefers_color_scheme: i32,
     document_color_scheme: i32,
     environment_revision: u64,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Default)]
+pub struct SpinonRuntimeRootHtmlCanvas {
+    environment: SpinonRuntimeRootHtmlEnvironment,
+    canvas_rgba: [u8; 4],
+    used_color_scheme: i32,
+    cascade_generation: u64,
+    cascade_document_revision: u64,
+    cascade_render_tree_revision: u64,
+    cascade_style_revision: u64,
+    cascade_environment_revision: u64,
 }
 
 fn color_scheme_from_abi(value: i32) -> Option<CssColorScheme> {
@@ -183,6 +197,73 @@ pub unsafe extern "C" fn spinon_runtime_session_set_root_html_environment(
     }
 }
 
+/// Root HTML 환경을 적용하고 해당 environment revision의 root Canvas 색을 기다립니다.
+///
+/// # Safety
+/// `session`은 아직 해제되지 않은 root HTML 세션이어야 하고, `canvas`는 쓰기 가능한
+/// `SpinonRuntimeRootHtmlCanvas`를 가리켜야 합니다. 호출 중 session free와 병행하면 안 됩니다.
+#[unsafe(no_mangle)]
+pub unsafe extern "C" fn spinon_runtime_session_resolve_root_html_canvas(
+    session: *mut crate::runtime_session::SpinonRuntimeSession,
+    surface_width_px: f32,
+    surface_height_px: f32,
+    device_scale_factor: f32,
+    prefers_color_scheme: i32,
+    timeout_millis: u64,
+    canvas: *mut SpinonRuntimeRootHtmlCanvas,
+) -> i32 {
+    if session.is_null() || canvas.is_null() || timeout_millis > 60_000 {
+        return ERR_ARGUMENT;
+    }
+    let Some(color_scheme) = color_scheme_from_abi(prefers_color_scheme) else {
+        return ERR_ARGUMENT;
+    };
+    let mut media_environment = CssMediaEnvironment::MOBILE;
+    media_environment.color_scheme = color_scheme;
+    let result = unsafe { &*session.cast::<RuntimeSession>() }.resolve_root_html_canvas(
+        surface_width_px,
+        surface_height_px,
+        device_scale_factor,
+        media_environment,
+        std::time::Duration::from_millis(timeout_millis),
+    );
+    let Ok(result) = result else {
+        return result.err().map_or(-14, RootHtmlCanvasError::status_code);
+    };
+    let environment = result.environment;
+    let used_color_scheme = match result.used_color_scheme {
+        CssColorScheme::Light => 0,
+        CssColorScheme::Dark => 1,
+    };
+    unsafe {
+        canvas.write(SpinonRuntimeRootHtmlCanvas {
+            environment: SpinonRuntimeRootHtmlEnvironment {
+                viewport_width_css_px: environment.viewport_width_css_px,
+                viewport_height_css_px: environment.viewport_height_css_px,
+                device_scale_factor: environment.device_scale_factor,
+                page_scale: environment.page_scale,
+                prefers_color_scheme: match environment.prefers_color_scheme {
+                    CssColorScheme::Light => 0,
+                    CssColorScheme::Dark => 1,
+                },
+                document_color_scheme: match environment.document_color_scheme {
+                    CssColorScheme::Light => 0,
+                    CssColorScheme::Dark => 1,
+                },
+                environment_revision: environment.environment_revision.get(),
+            },
+            canvas_rgba: result.color_rgba,
+            used_color_scheme,
+            cascade_generation: result.cascade_key.generation,
+            cascade_document_revision: result.cascade_key.document_revision,
+            cascade_render_tree_revision: result.cascade_key.render_tree_revision,
+            cascade_style_revision: result.cascade_key.style_revision.get(),
+            cascade_environment_revision: result.cascade_key.environment_revision,
+        });
+    }
+    0
+}
+
 /// 현재 UA cascade 상태를 한 snapshot으로 JSON 직렬화해 복사합니다.
 ///
 /// # Safety
@@ -317,6 +398,7 @@ mod tests {
     use super::{
         ERR_ARGUMENT, ERR_OUTPUT_TOO_SMALL, completed_json, copy_json, legacy_ua_properties,
         media_environment_from_abi, snapshot_json, spinon_runtime_session_copy_ua_cascade_json,
+        spinon_runtime_session_resolve_root_html_canvas,
         spinon_runtime_session_set_root_html_environment,
         spinon_runtime_session_set_ua_cascade_environment,
     };
@@ -491,6 +573,20 @@ mod tests {
                     844.0,
                     3.0,
                     0,
+                    std::ptr::null_mut(),
+                )
+            },
+            ERR_ARGUMENT
+        );
+        assert_eq!(
+            unsafe {
+                spinon_runtime_session_resolve_root_html_canvas(
+                    std::ptr::null_mut(),
+                    390.0,
+                    844.0,
+                    3.0,
+                    0,
+                    3_000,
                     std::ptr::null_mut(),
                 )
             },
