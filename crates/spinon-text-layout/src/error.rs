@@ -1,4 +1,4 @@
-use std::{error::Error, fmt};
+use std::{error::Error, fmt, ops::Range};
 
 use spinon_core::NodeId;
 
@@ -10,6 +10,10 @@ pub enum TextLayoutError {
     InvalidFontData(String),
     FontRevisionOverflow,
     InvalidGlyphLayout(NodeId),
+    MissingGlyphCoverage {
+        paragraph: NodeId,
+        text_range: Range<usize>,
+    },
     InvalidInlineBoxStyle(NodeId),
     InlineBoxWithoutText(NodeId),
     InvalidInlineHierarchy(NodeId),
@@ -47,6 +51,13 @@ impl fmt::Display for TextLayoutError {
                     "paragraph {node}의 shaping glyph, font metrics 또는 line geometry가 유효하지 않습니다"
                 )
             }
+            Self::MissingGlyphCoverage {
+                paragraph,
+                text_range,
+            } => write!(
+                formatter,
+                "paragraph {paragraph}의 UTF-8 범위 {text_range:?}에 고정 글꼴 glyph가 없습니다"
+            ),
             Self::InvalidInlineBoxStyle(node) => write!(
                 formatter,
                 "paragraph {node}의 inline border/padding 값이나 owner가 유효하지 않습니다"

@@ -1,0 +1,13 @@
+NotoSansKR-VF.ttf: product_absent=True test_positive_control_present=True bytes=10415420
+  products=[('libspinon_text_layout-985362a3bb867ede.rlib', False)]
+  test_binaries=[('spinon_text_layout-d641342cc20e42f0', True)]
+NotoSansArabic-VF.ttf: product_absent=True test_positive_control_present=True bytes=844676
+  products=[('libspinon_text_layout-985362a3bb867ede.rlib', False)]
+  test_binaries=[('spinon_text_layout-d641342cc20e42f0', True)]
+NotoEmoji-VF.ttf: product_absent=True test_positive_control_present=True bytes=1982596
+  products=[('libspinon_text_layout-985362a3bb867ede.rlib', False)]
+  test_binaries=[('spinon_text_layout-d641342cc20e42f0', True)]
+Ahem.ttf: product_absent=True test_positive_control_present=True bytes=21768
+  products=[('libspinon_text_layout-985362a3bb867ede.rlib', False)]
+  test_binaries=[('spinon_text_layout-d641342cc20e42f0', True)]
+PASS: fixture font bytes are absent from every default spinon-text-layout rlib and present in a unit-test positive control.

@@ -213,6 +213,9 @@ pub(super) fn paragraph_style(
         line_height,
         white_space: WhiteSpaceMode::Normal,
         word_break: WordBreakMode::Normal,
+        direction: spinon_text_layout::TextDirection::Auto,
+        line_break: spinon_text_layout::LineBreakMode::Strict,
+        ligatures: spinon_text_layout::LigatureMode::Normal,
     }
 }
 

@@ -39,6 +39,9 @@ fn paragraph(
             line_height,
             white_space,
             word_break,
+            direction: crate::TextDirection::Auto,
+            line_break: crate::LineBreakMode::Strict,
+            ligatures: crate::LigatureMode::Normal,
         },
         inline_styles: Default::default(),
         inline_run_styles: Default::default(),
@@ -394,6 +397,9 @@ mod engine_boundaries;
 
 #[path = "tests/c15_2.rs"]
 mod c15_2;
+
+#[path = "tests/c15_3.rs"]
+mod c15_3;
 
 #[path = "tests/paragraph_style.rs"]
 mod paragraph_style;

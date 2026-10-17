@@ -1,10 +1,13 @@
 use super::{AHEM, ROBOTO, close_to, engine, node, paragraph};
-use crate::{TextLayoutEngine, TextLayoutError, WhiteSpaceMode, WordBreakMode};
+use crate::{
+    LigatureMode, LineBreakMode, TextDirection, TextLayoutEngine, TextLayoutError, WhiteSpaceMode,
+    WordBreakMode,
+};
 
 #[test]
 fn empty_text_does_not_create_a_line_and_missing_fonts_fail_closed() {
     let mut engine = engine();
-    let empty = paragraph(
+    let mut empty = paragraph(
         "   ",
         "Ahem",
         10.0,
@@ -12,9 +15,15 @@ fn empty_text_does_not_create_a_line_and_missing_fonts_fail_closed() {
         WhiteSpaceMode::Normal,
         WordBreakMode::Normal,
     );
+    empty.style.direction = TextDirection::Rtl;
+    empty.style.line_break = LineBreakMode::Normal;
+    empty.style.ligatures = LigatureMode::None;
     let empty_layout = engine.layout_paragraph(&empty, 30.0).unwrap();
     assert!(empty_layout.lines.is_empty());
     assert_eq!(empty_layout.height, 0.0);
+    assert_eq!(empty_layout.direction, TextDirection::Rtl);
+    assert_eq!(empty_layout.line_break, LineBreakMode::Normal);
+    assert_eq!(empty_layout.ligatures, LigatureMode::None);
     assert_eq!(empty_layout.sources.len(), 3);
     assert!(
         empty_layout
