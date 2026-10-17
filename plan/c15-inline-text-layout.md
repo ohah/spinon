@@ -92,6 +92,17 @@ HostDocument의 실제 text node와 inline element를 CSS inline formatting cont
 
 상세 parent/text 좌표, per-grapheme Range, Canvas metric, font loading 상태는 evidence JSON에 고정했다. viewport 배치에 따른 절대 y 좌표는 정답으로 재사용하지 않고 parent-relative geometry와 run/line ordering을 비교한다. Noto Emoji의 pinned font GSUB가 ZWJ sequence를 한 glyph로 매핑한다는 사실은 fixture font의 입력 조건일 뿐, Chrome DOM 관찰만으로 browser glyph ID가 확인됐다고 주장하지 않는다.
 
+#### C15.3 다음 slice · non-zero scroll 조상 아래 runtime glyph transform
+
+[고정 scroll transform 사전 비교](../spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/README.md)는 Ahem 10px `XX`의 horizontal, vertical, nested scroll ancestor를 Chrome 155에서 관찰한다. 이는 기존 `auto-scroll-overflow` oracle의 scroll 전 `clientWidth=13`, `scrollWidth=21` 관찰을 실제 non-zero offset으로 확장한 내부 fixture이며, Spinon pass 기준은 아니다.
+
+- 이 slice에서는 text가 아닌 ancestor scroll container만 지원한다. `scrollLeft=3`에서 text range x가 `3px` 움직이고 `scrollTop=18`에서 y가 `18px` 움직인다. nested offset `outer=4`, `inner=5`는 x를 `9px` 이동시킨다. 값은 CSS px이며 각 결과는 Chrome parent-relative rect에 `0.05px` 이내로 맞아야 한다.
+- Offset을 `3→6→0`, `18→7→0`, nested `4+5→2+3→0+0`으로 바꿔, 매 snapshot이 누적 delta가 아니라 base text geometry와 현재 offset 합에서 계산되는지 검증한다. scrollport 및 각 CSS clip은 해당 scroll owner 좌표에 고정한다. paint·owner hit-test는 이동된 text와 같은 active clip을 사용하고, scrollport 밖 hit은 text를 반환하지 않는다.
+- 지원 사례는 Android API 37 ARM64 AVD PixelCopy 및 iPhone 17 Pro/iOS 26.2 Simulator Metal drawable에서 고정 Ahem ink sample과 clip 바깥 stage color를 읽어 확인한다. 이 화면 결과는 해당 fixture와 시뮬레이터 surface에만 적용한다.
+- self-owned text scroll container, DOM text admission, CSS style-to-glyph projection, glyph별 text hit target/DOM event, scrollbar paint, 일반 font fallback은 계속 명시적으로 제외한다. invalid/missing scroll metadata와 stale revision은 실패로 닫고, 기존 zero-offset text paint/clip/hit-test fixture를 회귀 게이트로 유지한다.
+
+이 slice의 계획은 구현 전 독립 실패 관점 20개로 검토한다. [이 slice 계획 검토 20개](../spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/plan-review-20.md). 구현 뒤에는 계획 표를 재사용하지 않고 실제 코드·스크롤 snapshot·GPU 표면을 대상으로 새로운 구현 실패 관점 20개를 검토한다. C15.3의 다른 단계 및 상위 C15/C16 상태는 그대로 미완료다.
+
 연결할 upstream WPT revision은 df642c4142354ffb5a0af6fa41610677f6321092다: css/css-text/line-break/line-break-strict-015a.xht, css/css-text/line-break/line-break-shaping-001.html, css/css-fonts/font-variant-ligatures-01.html, css/css-text/bidi/bidi-lines-001.html. 이 경로들은 구현 시 실행할 후보일 뿐 이 계획 amendment에서는 실행하지 않았고, Chrome oracle도 WPT/Spinon pass가 아니다. [C15.3 계획 검토 20개](../spec/internal/evidence/c15-3-unicode-shaping-plan-review-20-2026-10-17.md)
 
 ## 고정 사전 비교 모델
