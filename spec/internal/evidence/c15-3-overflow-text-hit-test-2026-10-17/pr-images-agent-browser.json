@@ -1,0 +1,28 @@
+{
+  "pr": "https://github.com/ohah/spinon/pull/258",
+  "checked_with": "Agent Browser 0.31.1 / Chrome 155.0.8059.85",
+  "images": [
+    {
+      "label": "Android API 37 ARM64 AVD",
+      "url": "https://raw.githubusercontent.com/ohah/spinon/feat/c15-3-text-hit-test-20261017/spec/internal/evidence/c15-3-overflow-text-hit-test-2026-10-17/android-screen.png",
+      "loaded": true,
+      "natural_width": 1080,
+      "natural_height": 2400
+    },
+    {
+      "label": "Android PixelCopy surface",
+      "url": "https://raw.githubusercontent.com/ohah/spinon/feat/c15-3-text-hit-test-20261017/spec/internal/evidence/c15-3-overflow-text-hit-test-2026-10-17/android-pixelcopy.png",
+      "loaded": true,
+      "natural_width": 945,
+      "natural_height": 630
+    },
+    {
+      "label": "iPhone 17 Pro iOS 26.2 Simulator",
+      "url": "https://raw.githubusercontent.com/ohah/spinon/feat/c15-3-text-hit-test-20261017/spec/internal/evidence/c15-3-overflow-text-hit-test-2026-10-17/ios-screen.png",
+      "loaded": true,
+      "natural_width": 1206,
+      "natural_height": 2622
+    }
+  ],
+  "note": "The initial PR body used an incorrect branch path for the iOS image. The link was corrected to the direct raw URL, then all three image natural sizes were rechecked in Agent Browser."
+}

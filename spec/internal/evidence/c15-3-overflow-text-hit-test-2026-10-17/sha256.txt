@@ -1,4 +1,4 @@
-fa83e9d0736fe5e557e75c9aa0f14758c85c82f07e714997367dbce452cc74f1  spec/internal/evidence/c15-3-overflow-text-hit-test-2026-10-17/README.md
+480c08b5b0ff833d6f0173c79b8ea9c6002bfa633124bfb85c81308e6baa4373  spec/internal/evidence/c15-3-overflow-text-hit-test-2026-10-17/README.md
 493bdd14a0dbab8fb155d3d23375fc33aebd8874cfb1fbd9e9b6b2c280ccbe92  spec/internal/evidence/c15-3-overflow-text-hit-test-2026-10-17/android-build.txt
 765a9050f7da836ade03a9c9af065512206b9d978e722f3f74ebfbfeab2fc0ca  spec/internal/evidence/c15-3-overflow-text-hit-test-2026-10-17/android-pixelcopy.png
 7ca94b436717d9a1a8338e66e3e2aa516ac44fdcef6b1b5ffa9b69b56a22131c  spec/internal/evidence/c15-3-overflow-text-hit-test-2026-10-17/android-run.txt
@@ -12,5 +12,6 @@ c319da72f8b4f6e18e84133bbb07a27f24132cd330d0cd63c02912fe8591ac8e  spec/internal/
 8cfb0c5071a0ccfefefa87e9bf52a647448347a2b3c302d4c1c6b3bc2e3010ec  spec/internal/evidence/c15-3-overflow-text-hit-test-2026-10-17/ios-build.txt
 cc4795aae0fee3e1f47a6d85a669df9525417c0f3ee2c3b40d86ae6d24e6ff4e  spec/internal/evidence/c15-3-overflow-text-hit-test-2026-10-17/ios-run.txt
 5e0962e8655e2b0fd1f60deba071e443a5729d9c8777267900952b42a7a54659  spec/internal/evidence/c15-3-overflow-text-hit-test-2026-10-17/ios-screen.png
-51ab1953d4457930e3debc3b52723c00b8eebd7095011eba0fd1156810a2de73  spec/internal/evidence/c15-3-overflow-text-hit-test-2026-10-17/pr-delta-review-30.md
+be7eec47b49b1d29b6cbae421bdec49c5c60ce0ae43bf6b717d89f656fe1634a  spec/internal/evidence/c15-3-overflow-text-hit-test-2026-10-17/pr-delta-review-30.md
+06bde0d4dc0b2fd340db31fb65151ecbad7f1e8576c6b4eabb0169d70af2932c  spec/internal/evidence/c15-3-overflow-text-hit-test-2026-10-17/pr-images-agent-browser.json
 11e8220977f70a216434aaf8d1527a6a726fff890f3ea018e4828a015bcd30ba  spec/internal/evidence/c15-3-overflow-text-hit-test-2026-10-17/rust-tests.txt
