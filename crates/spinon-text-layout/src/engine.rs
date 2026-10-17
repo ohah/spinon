@@ -2,20 +2,26 @@ use std::collections::BTreeMap;
 use std::ops::Range;
 
 use parley::{
-    FontContext, InlineBoxKind, LayoutContext,
+    BaseDirection, FontContext, InlineBoxKind, LayoutContext,
     layout::{Alignment, AlignmentOptions, PositionedLayoutItem},
-    style::{LineHeight, OverflowWrap, StyleProperty, TextWrapMode, WhiteSpaceCollapse, WordBreak},
+    style::{
+        FontFeatures, LineBreak, LineHeight, OverflowWrap, StyleProperty, TextWrapMode,
+        WhiteSpaceCollapse, WordBreak,
+    },
 };
 use spinon_core::NodeId;
 
 mod fonts;
+mod glyphs;
 mod inline_boxes;
 mod run_styles;
 
+use glyphs::positioned_glyphs_with_sources;
+
 use crate::{
-    FontMetricsSnapshot, FontRegistryRevision, InlineFragment, ParagraphInput, TextGlyph,
-    TextLayoutError, TextLayoutSnapshot, TextLine, TextRect, TextRun, WhiteSpaceMode,
-    WordBreakMode,
+    FontMetricsSnapshot, FontRegistryRevision, InlineFragment, LigatureMode, LineBreakMode,
+    ParagraphInput, TextDirection, TextLayoutError, TextLayoutSnapshot, TextLine, TextRect,
+    TextRun, WhiteSpaceMode, WordBreakMode,
     normalize::{normalize, overlapping_sources, positioned_sources},
 };
 
@@ -132,6 +138,9 @@ impl TextLayoutEngine {
                 paragraph: input.node,
                 font_registry_revision: self.font_registry_revision,
                 available_width,
+                direction: input.style.direction,
+                line_break: input.style.line_break,
+                ligatures: input.style.ligatures,
                 width: 0.0,
                 height: 0.0,
                 text: normalized.text,
@@ -158,6 +167,15 @@ impl TextLayoutEngine {
             WordBreakMode::Normal => WordBreak::Normal,
             WordBreakMode::BreakAll => WordBreak::BreakAll,
         }));
+        builder.push_default(StyleProperty::LineBreak(match input.style.line_break {
+            LineBreakMode::Normal => LineBreak::Normal,
+            LineBreakMode::Strict => LineBreak::Strict,
+        }));
+        if input.style.ligatures == LigatureMode::None {
+            builder.push_default(StyleProperty::FontFeatures(FontFeatures::from(
+                "\"liga\" off, \"clig\" off, \"dlig\" off, \"hlig\" off, \"calt\" off",
+            )));
+        }
         builder.push_default(StyleProperty::OverflowWrap(OverflowWrap::Normal));
         builder.push_default(StyleProperty::TextWrapMode(match input.style.white_space {
             WhiteSpaceMode::NoWrap => TextWrapMode::NoWrap,
@@ -180,6 +198,11 @@ impl TextLayoutEngine {
                 range,
             );
         }
+        builder.set_base_direction(match input.style.direction {
+            TextDirection::Auto => BaseDirection::Auto,
+            TextDirection::Ltr => BaseDirection::Ltr,
+            TextDirection::Rtl => BaseDirection::Rtl,
+        });
         for inline_box in inline_boxes {
             builder.push_inline_box(inline_box);
         }
@@ -257,27 +280,13 @@ impl TextLayoutEngine {
                         {
                             return Err(TextLayoutError::InvalidGlyphLayout(input.node));
                         }
-                        let glyphs = glyph_run
-                            .positioned_glyphs()
-                            .map(|glyph| {
-                                if ![glyph.x, glyph.y, glyph.advance]
-                                    .iter()
-                                    .all(|value| value.is_finite())
-                                {
-                                    return Err(TextLayoutError::InvalidGlyphLayout(input.node));
-                                }
-                                Ok(TextGlyph {
-                                    id: glyph.id,
-                                    x: glyph.x,
-                                    y: glyph.y,
-                                    advance: glyph.advance,
-                                })
-                            })
-                            .collect::<Result<Vec<_>, _>>()?;
+                        let glyphs =
+                            positioned_glyphs_with_sources(&glyph_run, &normalized, input.node)?;
                         runs.push(TextRun {
                             line_index,
                             text_range: text_range.clone(),
                             cluster_range: run.cluster_range(),
+                            is_rtl: run.is_rtl(),
                             font_family: run_style.font_family.clone(),
                             font_size: run.font_size(),
                             baseline: run_baseline,
@@ -400,6 +409,9 @@ impl TextLayoutEngine {
             paragraph: input.node,
             font_registry_revision: self.font_registry_revision,
             available_width,
+            direction: input.style.direction,
+            line_break: input.style.line_break,
+            ligatures: input.style.ligatures,
             width: max_line_advance,
             height: layout_height,
             text: normalized.text,
@@ -460,7 +472,7 @@ fn rect_is_finite(rect: TextRect) -> bool {
         && rect.height >= 0.0
 }
 
-fn valid_text_range(range: &Range<usize>, text: &str) -> bool {
+pub(super) fn valid_text_range(range: &Range<usize>, text: &str) -> bool {
     range.start <= range.end
         && range.end <= text.len()
         && text.is_char_boundary(range.start)

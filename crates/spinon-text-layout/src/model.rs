@@ -78,6 +78,31 @@ pub enum WordBreakMode {
     BreakAll,
 }
 
+/// C15.3의 고정 paragraph base direction입니다.
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+pub enum TextDirection {
+    #[default]
+    Auto,
+    Ltr,
+    Rtl,
+}
+
+/// C15.3의 고정 Unicode line-break strictness입니다.
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+pub enum LineBreakMode {
+    Normal,
+    #[default]
+    Strict,
+}
+
+/// C15.3의 고정 OpenType ligature 선택입니다.
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+pub enum LigatureMode {
+    #[default]
+    Normal,
+    None,
+}
+
 /// 계산된 cascade를 대신하지 않는 내부 fixture 글꼴 입력입니다.
 #[derive(Clone, Debug, PartialEq)]
 pub struct ParagraphStyle {
@@ -86,6 +111,9 @@ pub struct ParagraphStyle {
     pub line_height: f32,
     pub white_space: WhiteSpaceMode,
     pub word_break: WordBreakMode,
+    pub direction: TextDirection,
+    pub line_break: LineBreakMode,
+    pub ligatures: LigatureMode,
 }
 
 impl ParagraphStyle {

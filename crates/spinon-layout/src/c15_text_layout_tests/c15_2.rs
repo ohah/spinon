@@ -143,6 +143,9 @@ fn paragraph_input(
             line_height: 10.0,
             white_space: WhiteSpaceMode::Normal,
             word_break: WordBreakMode::Normal,
+            direction: spinon_text_layout::TextDirection::Auto,
+            line_break: spinon_text_layout::LineBreakMode::Strict,
+            ligatures: spinon_text_layout::LigatureMode::Normal,
         },
     )]);
     let snapshot = fixture.document.snapshot();
@@ -308,6 +311,9 @@ fn inline_depth_above_two_levels_remains_an_explicit_diagnostic() {
             line_height: 10.0,
             white_space: WhiteSpaceMode::Normal,
             word_break: WordBreakMode::Normal,
+            direction: spinon_text_layout::TextDirection::Auto,
+            line_break: spinon_text_layout::LineBreakMode::Strict,
+            ligatures: spinon_text_layout::LigatureMode::Normal,
         },
     )]);
     let snapshot = fixture.document.snapshot();

@@ -1,6 +1,6 @@
 # C15 · 인라인 텍스트 shaping과 줄 상자
 
-**상태:** 구현 전 계획 · C15와 C16 상태는 미완료 유지<br>
+**상태:** 구현 진행 중 · C15와 C16 상태는 미완료 유지<br>
 **상위:** [상태 대장 C15/C16](../spec/STATUS.md) · [범위와 적합성](../spec/0001-conformance.md) · [UI 트리와 이벤트](../spec/0002-ui-tree-events.md)<br>
 **연결:** C19.3 text painter는 C15/C16 결과를 소비하기 전 완료할 수 없다.<br>
 **사전 관찰:** [C15.1 Chrome 155 비교 입력·값·화면](../spec/internal/evidence/c15-inline-text-precomparison-2026-10-17/README.md) · [C15.2 중첩 inline·line box·anonymous block 기준](../spec/internal/evidence/c15-2-inline-text-precomparison-2026-10-17/README.md)
@@ -69,6 +69,8 @@ HostDocument의 실제 text node와 inline element를 CSS inline formatting cont
 - shaped glyph를 실제 WGPU frame에 그리는 raster/pipeline과 runtime paint command를 연결한다. invisible text를 layout 성공으로 간주하지 않는다. C15 완료 전에는 Android AVD PixelCopy와 iOS Metal drawable에서 text ink와 overflow/clip을 캡처한다.
 - text geometry가 Block·Flex·Grid sizing, overflow/scroll, paint order, clip, hit-test, text ink bounds에서 소비되는 경계를 추가한다. 이미지·text의 inline baseline과 replaced inline object는 이 단계가 별도 fixture를 소유할 때만 추가한다.
 - C16에서 `font-family/size/weight/style`, CSS `line-height` 값의 parsing·cascade, `@font-face`, asynchronous font load/fallback, letter/word spacing, text-align/decoration/transform/overflow와 전체 cascade 연결을 별도 구현한다. C15 fixture의 fixed-font/internal line-height scalar는 이 계약을 대신하지 않는다.
+
+현재 C15.3 구현 slice는 `spinon-text-layout` 안의 고정 font Unicode shaping, glyph identity, bidi/line-break/ligature mode와 source mapping까지다. 이 결과는 immutable Rust snapshot만 만들며, 위 acceptance 목록 중 실제 Block/Flex/Grid 소비, WGPU glyph ink, overflow/clip/hit, Android/iOS Simulator 확인은 남아 있다. 이 slice와 후속 renderer를 함께 C15.3 완료로 표시하지 않는다.
 
 #### C15.3 고정 acceptance oracle
 

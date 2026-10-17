@@ -2,6 +2,8 @@ use std::ops::Range;
 
 use spinon_core::NodeId;
 
+use crate::{LigatureMode, LineBreakMode, TextDirection};
+
 /// 같은 font registry 입력에서 생성한 revision입니다.
 #[derive(Clone, Copy, Debug, Default, Eq, Hash, PartialEq)]
 pub struct FontRegistryRevision(pub u64);
@@ -50,6 +52,10 @@ pub struct TextGlyph {
     pub x: f32,
     pub y: f32,
     pub advance: f32,
+    /// 이 glyph를 소유하는 grapheme 또는 ligature의 paragraph UTF-8 범위입니다.
+    pub cluster_text_range: Range<usize>,
+    /// 이 shaped cluster에 기여한 원본 DOM UTF-16 범위입니다.
+    pub sources: Vec<TextSourceRange>,
 }
 
 /// 한 줄 안의 shaped font run입니다.
@@ -58,6 +64,8 @@ pub struct TextRun {
     pub line_index: usize,
     pub text_range: Range<usize>,
     pub cluster_range: Range<usize>,
+    /// shaper가 이 run에 선택한 Bidi 방향입니다.
+    pub is_rtl: bool,
     /// ParagraphStyle 또는 가장 안쪽 inline owner가 요청한 family입니다.
     pub font_family: String,
     pub font_size: f32,
@@ -83,6 +91,9 @@ pub struct TextLayoutSnapshot {
     pub paragraph: NodeId,
     pub font_registry_revision: FontRegistryRevision,
     pub available_width: f32,
+    pub direction: TextDirection,
+    pub line_break: LineBreakMode,
+    pub ligatures: LigatureMode,
     pub width: f32,
     pub height: f32,
     pub text: String,

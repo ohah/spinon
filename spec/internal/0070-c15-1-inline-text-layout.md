@@ -3,7 +3,7 @@
 **상태:** 초안 · **내부 인터페이스 숫자 버전:** `0.1.0` 고정<br>
 **작업 계획:** [C15 인라인 텍스트 shaping과 줄 상자](https://github.com/ohah/spinon/blob/main/plan/c15-inline-text-layout.md)<br>
 **기준 관찰:** [Chrome precomparison](./evidence/c15-inline-text-precomparison-2026-10-17/README.md) · [plain inline fragment](./evidence/c15-inline-text-precomparison-2026-10-17/plain-inline-fragment-observation.md)<br>
-**구현 근거:** [C15.1 Rust shaping/layout](./evidence/c15-1-inline-text-layout-2026-10-17/README.md) · [C15.2a 중첩·장식 inline geometry](./evidence/c15-2a-inline-text-layout-2026-10-17/README.md) · [C15.2b mixed baseline·anonymous flow](./evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/README.md)
+**구현 근거:** [C15.1 Rust shaping/layout](./evidence/c15-1-inline-text-layout-2026-10-17/README.md) · [C15.2a 중첩·장식 inline geometry](./evidence/c15-2a-inline-text-layout-2026-10-17/README.md) · [C15.2b mixed baseline·anonymous flow](./evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/README.md) · [C15.3 Unicode shaping slice](./evidence/c15-3-unicode-shaping-impl-2026-10-17/README.md)
 
 이 문서는 앱 작성자용 HTML/CSS 지원 API가 아니라 `spinon-text-layout`과 `spinon-layout` 사이의 내부 호출 계약을 기록한다. 이 구현은 text geometry snapshot만 제공한다. `spinon-style-to-layout`의 runtime projection과 renderer는 text node를 계속 거부하므로 현재 앱에서 글자를 그리거나 CSS text 지원을 주장하지 않는다.
 
@@ -39,6 +39,17 @@
 - C15.2b oracle은 Ahem `10px/10px`과 Roboto `20px/24px`의 한 줄 baseline `19px`/line height `24px`, 그리고 width `30px` anonymous flow의 parent `30×40px`, block y `10px`, trailing segment y `20px`/height `20px`다. renderer가 snapshot을 그리거나 부모 경계 밖 ink를 clip한다고 의미하지 않는다.
 - `display:none` subtree와 빈 text node 제외, source UTF-16/UTF-8 mapping, per-width measure snapshot 규칙, C15.2a의 최대 두 단계 nesting·decorated fragment 범위는 계속 적용한다.
 
+## C15.3 고정 Unicode shaping profile
+
+- `ParagraphStyle`은 내부 fixture 값 `TextDirection::{Auto, Ltr, Rtl}`, `LineBreakMode::{Normal, Strict}`, `LigatureMode::{Normal, None}`을 추가로 받는다. `LineBreakMode`의 기본값은 Parley 0.12.0의 기존 strict 기본 동작을 유지한다. 이 profile은 CSS cascade/API 연결을 제공하지 않는다.
+- `TextLayoutSnapshot`은 요청한 세 shaping mode를 보존한다. `TextRun.is_rtl`은 각 Bidi run의 실제 방향이다.
+- `TextGlyph.cluster_text_range`는 normalized paragraph UTF-8의 grapheme 범위이며 ligature glyph에는 이어진 ligature atom 전체 범위를 기록한다. `TextGlyph.sources`는 그 범위에 기여한 모든 DOM text node의 UTF-16 범위와 inline ancestor를 보존한다. 한 grapheme가 adjacent text node를 가로질러도 source 소유자를 합치지 않는다.
+- `LigatureMode::None`은 Parley `FontFeatures`의 CSS 설정 문법을 사용해 `liga`, `clig`, `dlig`, `hlig`, `calt`를 끈다. 각 `GlyphRun`의 positioned glyph ID 순서가 시각 순서 `Cluster::glyphs()`와 일치하는지 확인하며, source 범위가 없는 glyph는 `InvalidGlyphLayout`로 닫는다.
+- glyph ID `0`은 `.notdef`로 취급해 `MissingGlyphCoverage { paragraph, text_range }`를 반환한다. fixture는 `new_without_system_fonts()` registry에 해당 테스트 글꼴 하나만 등록하며, 시스템 폰트나 다른 fixture family fallback을 허용하지 않는다.
+- 구현 근거는 고정 글꼴 Hangul, strict CJK punctuation wrapping, combining mark, common ligature on/off, Arabic RTL와 European digits, Noto Emoji ZWJ sequence를 검사한다. UTF-8 cluster 범위와 DOM UTF-16 source range를 함께 assertion한다.
+- locked ICU4X data에는 Chinese/Japanese word segmentation model이 없어 CJK fixture 실행에서 경고가 출력된다. strict line-break punctuation fixture는 통과하지만 한자 어휘 분절·일반 CJK wrapping은 확인하지 않았다.
+- 이 slice는 pure Rust shaping snapshot만 만든다. WGPU glyph raster/pipeline, runtime text-node admission, Block/Flex/Grid intrinsic sizing, overflow/scroll, paint order, clip, hit-test, Android/iOS Simulator text ink는 아직 제공하거나 확인하지 않는다.
+
 ## 실패 계약
 
 | 실패 | 결과 |
@@ -61,11 +72,12 @@
 | anonymous flow block item이 중복·누락·순서 불일치·out-of-flow이거나 span 내부에 나타남 | `UnsupportedTextParagraph(owner)` |
 | 직접 `ParagraphInput`에 세 단계 이상 ancestry 또는 경로가 충돌함 | `TextLayout(UnsupportedInlineDepth(node))` 또는 `TextLayout(InvalidInlineHierarchy(node))` |
 | Parley가 역전·범위 밖·UTF-8 경계가 아닌 line/run/cluster byte range를 반환함 | `TextLayout(InvalidGlyphLayout(node))` |
+| 고정 글꼴이 입력 Unicode 범위에 glyph를 제공하지 않음 | `TextLayout(MissingGlyphCoverage { paragraph, text_range })` |
 
 부분 frame map이나 fallback font으로 성공 처리하지 않는다. `white-space` 및 `word-break` 미지원 CSS 값을 Rust enum으로 만들 수 없으며, 상위 projection이 허용하지 않는 값은 해당 단계에서 node/property 오류로 닫아야 한다.
 
 ## 제외 범위와 소비자 경계
 
 - 이 계약은 style-to-layout cascade 연결이나 `spinon-style-to-render` runtime text node admission을 추가하지 않는다. C15.2b는 pure Rust geometry/shaping만 검증하며 앱 runtime, Android/iOS Simulator 앱 화면, 실제 glyph ink, overflow pixel, clip, hit-test, selection/caret, accessibility는 확인하지 않았다.
-- C15.2b는 고정된 mixed-font baseline과 anonymous block flow fixture만 포함한다. 임의 font cascade, inline replaced object, float, ruby, vertical writing, bidi/script shaping은 제외한다. border/padding ink rasterization과 painter는 C15.3, CSS font properties/cascade와 `@font-face`는 C16이다.
+- C15.2b는 고정된 mixed-font baseline과 anonymous block flow fixture만 포함한다. 임의 font cascade, inline replaced object, float, ruby, vertical writing은 제외한다. C15.3 pure Rust shaping fixture는 제한된 bidi/script 입력을 추가하지만 runtime painter, overflow/clip/hit-test 통합은 포함하지 않는다. border/padding ink rasterization과 painter는 C15.3 후속 slice, CSS font properties/cascade와 `@font-face`는 C16이다.
 - C15 parent/C16/C19 완료를 이 계약만으로 표시할 수 없다. 실행 근거와 상위 상태는 [공식 상태 대장](../STATUS.md)을 따른다.

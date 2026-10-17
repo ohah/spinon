@@ -9,8 +9,8 @@ mod snapshot;
 pub use engine::TextLayoutEngine;
 pub use error::TextLayoutError;
 pub use model::{
-    InlineBoxStyle, InlineEdges, InlineRunStyle, ParagraphInput, ParagraphStyle, TextSource,
-    WhiteSpaceMode, WordBreakMode,
+    InlineBoxStyle, InlineEdges, InlineRunStyle, LigatureMode, LineBreakMode, ParagraphInput,
+    ParagraphStyle, TextDirection, TextSource, WhiteSpaceMode, WordBreakMode,
 };
 pub use snapshot::{
     FontMetricsSnapshot, FontRegistryRevision, InlineFragment, TextGlyph, TextLayoutSnapshot,

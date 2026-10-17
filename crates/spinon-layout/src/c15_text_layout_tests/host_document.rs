@@ -168,6 +168,9 @@ fn host_document_collects_direct_text_and_inherited_spans_in_source_order() {
             line_height: 10.0,
             white_space: WhiteSpaceMode::Normal,
             word_break: WordBreakMode::Normal,
+            direction: spinon_text_layout::TextDirection::Auto,
+            line_break: spinon_text_layout::LineBreakMode::Strict,
+            ligatures: spinon_text_layout::LigatureMode::Normal,
         },
     )]);
     let snapshot = document.snapshot();
@@ -463,6 +466,9 @@ fn host_document_rejects_visible_non_span_element_inside_paragraph() {
             line_height: 10.0,
             white_space: WhiteSpaceMode::Normal,
             word_break: WordBreakMode::Normal,
+            direction: spinon_text_layout::TextDirection::Auto,
+            line_break: spinon_text_layout::LineBreakMode::Strict,
+            ligatures: spinon_text_layout::LigatureMode::Normal,
         },
     )]);
 
