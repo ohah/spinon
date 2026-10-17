@@ -1,0 +1,80 @@
+{
+  "createdAt": "2026-10-17T21:38:32.179Z",
+  "backupRoot": "SpinonPreviewBackups/s04-10-tailnet-sync-20261018",
+  "summary": {
+    "total": 10,
+    "verified": 10
+  },
+  "files": [
+    {
+      "targetRelative": "internal/README.html",
+      "bytes": 169506,
+      "originalSha256": "3cea1c1052ff84a4b19843b03cc2d55445308b936e56004be45aa0be1bf5bd37",
+      "backupSha256": "3cea1c1052ff84a4b19843b03cc2d55445308b936e56004be45aa0be1bf5bd37",
+      "matches": true
+    },
+    {
+      "targetRelative": "internal/README.md",
+      "bytes": 118393,
+      "originalSha256": "3dab150500b07465ffc6cf72305f568ca33c5f56bdb71f56f4d8e8757afc7127",
+      "backupSha256": "3dab150500b07465ffc6cf72305f568ca33c5f56bdb71f56f4d8e8757afc7127",
+      "matches": true
+    },
+    {
+      "targetRelative": "roadmap.html",
+      "bytes": 126112,
+      "originalSha256": "f3e885cb148cc9e51e85b37565c0f4e70f18c694a3c15f5b5ed94b3b0dca86f8",
+      "backupSha256": "f3e885cb148cc9e51e85b37565c0f4e70f18c694a3c15f5b5ed94b3b0dca86f8",
+      "matches": true
+    },
+    {
+      "targetRelative": "spec/internal/0019-s04-css-layout-gpu-slice.html",
+      "bytes": 87290,
+      "originalSha256": "9023500bbf3138a2e2ece9b909482ab9ea3d3f2fff05a1fae4de0dfcce591790",
+      "backupSha256": "9023500bbf3138a2e2ece9b909482ab9ea3d3f2fff05a1fae4de0dfcce591790",
+      "matches": true
+    },
+    {
+      "targetRelative": "spec/internal/README.html",
+      "bytes": 167538,
+      "originalSha256": "23c7202ce7b42ad79999d3d7184c0f229ac7351462c60c13f6c255d6664933d0",
+      "backupSha256": "23c7202ce7b42ad79999d3d7184c0f229ac7351462c60c13f6c255d6664933d0",
+      "matches": true
+    },
+    {
+      "targetRelative": "spec/internal/README.md",
+      "bytes": 118187,
+      "originalSha256": "4354fa9aeaf0579b2d8fe8ced30bce7962fc970572a531a5e914ed1c76a844d7",
+      "backupSha256": "4354fa9aeaf0579b2d8fe8ced30bce7962fc970572a531a5e914ed1c76a844d7",
+      "matches": true
+    },
+    {
+      "targetRelative": "spec/STATUS.html",
+      "bytes": 358350,
+      "originalSha256": "64460db9ac09b2c29ecd9e388f2712a9ea676931ab4a40bdd1b0f87916198f00",
+      "backupSha256": "64460db9ac09b2c29ecd9e388f2712a9ea676931ab4a40bdd1b0f87916198f00",
+      "matches": true
+    },
+    {
+      "targetRelative": "spec/STATUS.md",
+      "bytes": 272107,
+      "originalSha256": "073a4f46fb943587e0b370da34c4519616093521d3dc6e19af22e1b3d78e49b6",
+      "backupSha256": "073a4f46fb943587e0b370da34c4519616093521d3dc6e19af22e1b3d78e49b6",
+      "matches": true
+    },
+    {
+      "targetRelative": "STATUS.html",
+      "bytes": 358350,
+      "originalSha256": "64460db9ac09b2c29ecd9e388f2712a9ea676931ab4a40bdd1b0f87916198f00",
+      "backupSha256": "64460db9ac09b2c29ecd9e388f2712a9ea676931ab4a40bdd1b0f87916198f00",
+      "matches": true
+    },
+    {
+      "targetRelative": "STATUS.md",
+      "bytes": 272107,
+      "originalSha256": "073a4f46fb943587e0b370da34c4519616093521d3dc6e19af22e1b3d78e49b6",
+      "backupSha256": "073a4f46fb943587e0b370da34c4519616093521d3dc6e19af22e1b3d78e49b6",
+      "matches": true
+    }
+  ]
+}

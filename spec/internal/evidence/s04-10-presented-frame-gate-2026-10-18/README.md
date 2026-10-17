@@ -2,7 +2,7 @@
 
 ## 판정 범위
 
-최신 `origin/main` 기반 별도 worktree에서 `spinon-render`에 순수 Rust `RuntimeConfirmedFrameRegistry` 후보를 추가했다. 확인 전 submit과 확인된 snapshot을 분리하고, registry identity, FrameId, surface generation, pending 상한과 오류 전이를 단위 테스트로 고정했다. 실제 native presentation callback은 연결하지 않았다.
+PR [#291](https://github.com/ohah/spinon/pull/291)은 2026-10-18 KST Rebase and merge 방식으로 main에 병합됐다(merge SHA `e906aed109a7af2b9f7ccfd0cd64ba4b806f5869`). 최신 `origin/main` 기반 별도 worktree에서 `spinon-render`에 순수 Rust `RuntimeConfirmedFrameRegistry` 후보를 추가했다. 확인 전 submit과 확인된 snapshot을 분리하고, registry identity, FrameId, surface generation, pending 상한과 오류 전이를 단위 테스트로 고정했다. 실제 native presentation callback은 연결하지 않았다.
 
 ## 검증
 

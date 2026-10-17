@@ -1,0 +1,51 @@
+{
+  "checkedAt": "2026-10-17T21:42:35Z",
+  "browser": {
+    "tool": "Agent Browser",
+    "version": "0.31.1",
+    "engine": "Chrome"
+  },
+  "previewHost": "Tailnet host redacted",
+  "routes": [
+    {
+      "path": "/spinon/roadmap.html",
+      "status": 200,
+      "title": "스피논 구현 로드맵",
+      "observed": "207개 미완료 표시와 공식 완료 74/207, S04.10 candidate 설명이 보임"
+    },
+    {
+      "path": "/spinon/STATUS.html",
+      "status": 200,
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "S04.10": { "checked": false, "disabled": true },
+      "S05.2": { "checked": false, "disabled": true }
+    },
+    {
+      "path": "/spinon/icon.svg",
+      "status": 200,
+      "declaredBy": "roadmap page link[rel=icon]"
+    }
+  ],
+  "network": {
+    "capturedRequests": 95,
+    "status200": 94,
+    "status404": 1,
+    "non200": [
+      {
+        "path": "/favicon.ico",
+        "status": 404,
+        "resourceType": "Other",
+        "assessment": "페이지 head가 선언한 /spinon/icon.svg 응답과 별도로 발생한 root favicon probe. 요청은 기록하고 오류를 숨기지 않음."
+      }
+    ]
+  },
+  "screenshots": [
+    "tailnet-roadmap-agent-browser.png",
+    "tailnet-status-agent-browser.png",
+    "tailnet-evidence-agent-browser.png"
+  ],
+  "limits": [
+    "문서 미리보기만 확인했으며 제품 앱 화면이나 플랫폼 presentation callback 검증이 아님",
+    "Tailnet HTTPS host는 기록에서 가림"
+  ]
+}

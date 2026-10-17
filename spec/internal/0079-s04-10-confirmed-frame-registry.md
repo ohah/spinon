@@ -34,4 +34,4 @@
 
 ## 구현 및 검증 범위
 
-[구현 근거와 한계](./evidence/s04-10-presented-frame-gate-2026-10-18/README.md) 및 [구현 실패 관점 20개](./evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.md)를 참조한다. 이 계약에 연결된 pure Rust tests는 상태 불변식만 확인한다. Android/iOS frame callback, input callback 순서, 앱 route, simulator UI, real device, hardware GPU, compositor 이후 표시, optical scanout은 검증하지 않았다. S04.10과 S05.2는 미완료다.
+[구현 PR #291](https://github.com/ohah/spinon/pull/291)은 Rebase and merge로 병합됐다(merge SHA `e906aed109a7af2b9f7ccfd0cd64ba4b806f5869`). [구현 근거와 한계](./evidence/s04-10-presented-frame-gate-2026-10-18/README.md) 및 [구현 실패 관점 20개](./evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.md)를 참조한다. 이 계약에 연결된 pure Rust tests는 상태 불변식만 확인한다. Android/iOS frame callback, input callback 순서, 앱 route, simulator UI, real device, hardware GPU, compositor 이후 표시, optical scanout은 검증하지 않았다. S04.10과 S05.2는 미완료다.

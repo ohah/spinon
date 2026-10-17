@@ -1,0 +1,72 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+warn    The dist path is not a subdir of root path, Rsbuild will not empty it.
+warn    Please set `output.cleanDistPath` config manually.
+warn    Current root path: /private/tmp/spinon-s04-10-presented-frame-gate-20261018
+warn    Current dist path: /private/tmp/spinon-s04-10-selected-out-final-20261018
+info    Rendering pages...
+success Pages rendered in 104 ms.
+ready   built in 0.22s (web)
+ready   built in 0.22s (node)
+
+File (web)                                                                                      Size        Gzip
+../spinon-s04-10-selected-out-final-20261018/static/js/async/l.76b60f2b87.js                    0.10 kB     0.09 kB
+../spinon-s04-10-selected-out-final-20261018/static/js/styles.aba03c5c90.js                     0.47 kB     0.23 kB
+../spinon-s04-10-selected-out-final-20261018/static/js/async/route-c7b1c23e00a1.99b7981dd4.js   3.1 kB      1.5 kB
+../spinon-s04-10-selected-out-final-20261018/static/js/async/route-6fe650616266.c1f2c69904.js   5.0 kB      1.9 kB
+../spinon-s04-10-selected-out-final-20261018/static/js/async/route-2308615ee227.6ce5d22125.js   5.4 kB      1.7 kB
+../spinon-s04-10-selected-out-final-20261018/static/js/async/route-73701410f94e.e51cf0ae32.js   6.2 kB      2.2 kB
+../spinon-s04-10-selected-out-final-20261018/static/js/async/route-d0f54d53ad2b.72fbe195f7.js   6.2 kB      2.2 kB
+../spinon-s04-10-selected-out-final-20261018/static/js/async/route-b33563055168.3ea9c13662.js   7.9 kB      2.7 kB
+../spinon-s04-10-selected-out-final-20261018/static/js/async/route-04bc2c24c122.f63a727938.js   9.7 kB      3.4 kB
+../spinon-s04-10-selected-out-final-20261018/static/js/async/route-1c606a9bcf5f.a4aa12c88f.js   9.7 kB      3.4 kB
+../spinon-s04-10-selected-out-final-20261018/static/js/async/route-aea8aafbbb87.0539173068.js   11.0 kB     3.5 kB
+../spinon-s04-10-selected-out-final-20261018/static/js/async/route-e0472d60744a.f05e638bce.js   11.0 kB     3.5 kB
+../spinon-s04-10-selected-out-final-20261018/static/js/async/route-107ea9bc59bb.0c5a98f666.js   12.3 kB     3.8 kB
+../spinon-s04-10-selected-out-final-20261018/static/js/async/route-7b63acbe348a.876aa00666.js   12.3 kB     3.8 kB
+../spinon-s04-10-selected-out-final-20261018/static/js/async/route-311b470225ee.553faa2faf.js   12.5 kB     4.4 kB
+../spinon-s04-10-selected-out-final-20261018/static/js/async/route-afc04a26c114.0621590058.js   13.1 kB     4.0 kB
+../spinon-s04-10-selected-out-final-20261018/static/js/async/route-ef6f0445d65c.bbbd238adf.js   13.1 kB     4.0 kB
+../spinon-s04-10-selected-out-final-20261018/static/js/async/route-c6d90fac6bcd.9cb003e466.js   29.8 kB     7.8 kB
+../spinon-s04-10-selected-out-final-20261018/static/js/lib-router.d3b08da66f.js                 35.4 kB     12.7 kB
+../spinon-s04-10-selected-out-final-20261018/static/js/index.0c32043ae9.js                      35.4 kB     9.2 kB
+../spinon-s04-10-selected-out-final-20261018/static/css/styles.8d918fd78e.css                   74.0 kB     14.2 kB
+../spinon-s04-10-selected-out-final-20261018/static/js/async/route-0f4abc145d07.3deb9161b8.js   92.6 kB     20.1 kB
+../spinon-s04-10-selected-out-final-20261018/static/js/async/route-5eb92dc32e34.e938a50a36.js   92.6 kB     20.1 kB
+../spinon-s04-10-selected-out-final-20261018/static/js/async/route-a1017bdf23ca.43625bd706.js   175.2 kB    36.6 kB
+../spinon-s04-10-selected-out-final-20261018/static/js/async/route-a991d6de67ad.df77ec4b93.js   175.2 kB    36.7 kB
+../spinon-s04-10-selected-out-final-20261018/static/js/3.ae702e3e80.js                          217.1 kB    71.7 kB
+../spinon-s04-10-selected-out-final-20261018/static/js/lib-react.801d719c4f.js                  218.4 kB    68.9 kB
+../spinon-s04-10-selected-out-final-20261018/static/js/async/route-6c33a3943990.04e1df3fde.js   374.8 kB    87.0 kB
+../spinon-s04-10-selected-out-final-20261018/static/js/async/route-7ce2535ac56d.f8d3c7fa37.js   374.8 kB    87.0 kB
+../spinon-s04-10-selected-out-final-20261018/static/search_index.ko.ee6e57c0.json               762.1 kB    245.1 kB
+
+                                                                                       Total:   2796.7 kB   763.8 kB
+
+File (node)                                                                                                                                Size        Gzip
+../spinon-s04-10-selected-out-final-20261018/404.html                                                                                      6.6 kB      2.1 kB
+../spinon-s04-10-selected-out-final-20261018/index.html                                                                                    9.9 kB      3.2 kB
+../spinon-s04-10-selected-out-final-20261018/api/README.html                                                                               14.1 kB     4.0 kB
+../spinon-s04-10-selected-out-final-20261018/api/index.html                                                                                15.0 kB     4.3 kB
+../spinon-s04-10-selected-out-final-20261018/internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html                          15.6 kB     4.6 kB
+../spinon-s04-10-selected-out-final-20261018/spec/internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html                     15.6 kB     4.6 kB
+../spinon-s04-10-selected-out-final-20261018/README.html                                                                                   18.8 kB     5.1 kB
+../spinon-s04-10-selected-out-final-20261018/internal/0079-s04-10-confirmed-frame-registry.html                                            19.1 kB     5.8 kB
+../spinon-s04-10-selected-out-final-20261018/spec/internal/0079-s04-10-confirmed-frame-registry.html                                       19.1 kB     5.8 kB
+../spinon-s04-10-selected-out-final-20261018/internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html                  19.4 kB     5.9 kB
+../spinon-s04-10-selected-out-final-20261018/spec/internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html             19.4 kB     5.9 kB
+../spinon-s04-10-selected-out-final-20261018/spec/internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html   20.4 kB     6.2 kB
+../spinon-s04-10-selected-out-final-20261018/internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html        20.4 kB     6.2 kB
+../spinon-s04-10-selected-out-final-20261018/spec/internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html         20.6 kB     6.3 kB
+../spinon-s04-10-selected-out-final-20261018/internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html              20.6 kB     6.3 kB
+../spinon-s04-10-selected-out-final-20261018/plan/s04-10-presented-frame-gate.html                                                         21.8 kB     6.8 kB
+../spinon-s04-10-selected-out-final-20261018/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html                            41.7 kB     10.6 kB
+../spinon-s04-10-selected-out-final-20261018/internal/0019-s04-css-layout-gpu-slice.html                                                   88.6 kB     22.3 kB
+../spinon-s04-10-selected-out-final-20261018/spec/internal/0019-s04-css-layout-gpu-slice.html                                              88.7 kB     22.3 kB
+../spinon-s04-10-selected-out-final-20261018/internal/README.html                                                                          158.6 kB    38.3 kB
+../spinon-s04-10-selected-out-final-20261018/spec/internal/README.html                                                                     158.7 kB    38.3 kB
+../spinon-s04-10-selected-out-final-20261018/spec/STATUS.html                                                                              348.1 kB    87.9 kB
+../spinon-s04-10-selected-out-final-20261018/STATUS.html                                                                                   348.6 kB    88.0 kB
+
+                                                                                                                                  Total:   1509.4 kB   390.6 kB

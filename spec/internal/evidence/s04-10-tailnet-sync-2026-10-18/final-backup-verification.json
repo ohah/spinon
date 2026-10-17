@@ -1,0 +1,67 @@
+{
+  "createdAt": "2026-10-17T21:57:52.620Z",
+  "backupRoot": "SpinonPreviewBackups/s04-10-tailnet-log-normalization-20261018",
+  "purpose": "보정 대상 build log 2개와 갱신하는 이전 verification record 5개의 교체 전 보존",
+  "summary": {
+    "total": 7,
+    "verified": 7
+  },
+  "files": [
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/final-selected-build.log",
+      "backupRelative": "selected-build/internal/evidence/s04-10-tailnet-sync-2026-10-18/final-selected-build.log",
+      "bytes": 9409,
+      "originalSha256": "4dc3a9d74dbdf536494c6991b64200ce8f0746d5e5488e6393e8548aa77ee972",
+      "backupSha256": "4dc3a9d74dbdf536494c6991b64200ce8f0746d5e5488e6393e8548aa77ee972",
+      "matches": true
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/selected-build.log",
+      "backupRelative": "selected-build/internal/evidence/s04-10-tailnet-sync-2026-10-18/selected-build.log",
+      "bytes": 8133,
+      "originalSha256": "31c0f5e612f93a1765b938a7658540fe723cd1443521c3831bb2ce55df287335",
+      "backupSha256": "31c0f5e612f93a1765b938a7658540fe723cd1443521c3831bb2ce55df287335",
+      "matches": true
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/final-preflight.json",
+      "backupRelative": "verification-records/final-preflight.json",
+      "bytes": 37195,
+      "originalSha256": "7c500441403ca8d4c92dc72ada37e196e9768ac096c4c17c3b070e270ef207aa",
+      "backupSha256": "7c500441403ca8d4c92dc72ada37e196e9768ac096c4c17c3b070e270ef207aa",
+      "matches": true
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/final-manifest.json",
+      "backupRelative": "verification-records/final-manifest.json",
+      "bytes": 15451,
+      "originalSha256": "f6f1f3d8762ad3aa2e70f70b93cab3dbc9b335d0d3013403091f3918d45c5e0d",
+      "backupSha256": "f6f1f3d8762ad3aa2e70f70b93cab3dbc9b335d0d3013403091f3918d45c5e0d",
+      "matches": true
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/final-backup-verification.json",
+      "backupRelative": "verification-records/final-backup-verification.json",
+      "bytes": 7407,
+      "originalSha256": "a63cb4895e3974a0eb34a79e81069a0adebe61804ab607b9c0ad0cd2101d2832",
+      "backupSha256": "a63cb4895e3974a0eb34a79e81069a0adebe61804ab607b9c0ad0cd2101d2832",
+      "matches": true
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/final-copy-verification.json",
+      "backupRelative": "verification-records/final-copy-verification.json",
+      "bytes": 20341,
+      "originalSha256": "c11a2e49f6c69823e5f229e4709c7b7d73e31388f01644507f3d9c74da5fe845",
+      "backupSha256": "c11a2e49f6c69823e5f229e4709c7b7d73e31388f01644507f3d9c74da5fe845",
+      "matches": true
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/final-served-verification.json",
+      "backupRelative": "verification-records/final-served-verification.json",
+      "bytes": 52073,
+      "originalSha256": "31d713f1d994729b2adda4cb0a2bc13e910882df5951d0d29211f09873866d38",
+      "backupSha256": "31d713f1d994729b2adda4cb0a2bc13e910882df5951d0d29211f09873866d38",
+      "matches": true
+    }
+  ]
+}
