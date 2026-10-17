@@ -1,0 +1,18 @@
+{
+  "backup_root": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-tailnet-counter-correction-2026-10-17",
+  "replaced_file_count": 2,
+  "files": [
+    {
+      "path": "roadmap.html",
+      "backup_path": "roadmap.html",
+      "bytes": 118726,
+      "sha256": "feeaec0aaee7f641310f4a05ac6d7a0cff9e828c0fc31a58db3fcfc8036551ed"
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "backup_path": "spec/public/roadmap.html",
+      "bytes": 118726,
+      "sha256": "feeaec0aaee7f641310f4a05ac6d7a0cff9e828c0fc31a58db3fcfc8036551ed"
+    }
+  ]
+}

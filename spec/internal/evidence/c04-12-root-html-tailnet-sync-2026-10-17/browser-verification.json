@@ -1,0 +1,83 @@
+{
+  "checked_at": "2026-10-17T11:07:12.721Z",
+  "browser": "Agent Browser 0.31.1",
+  "session": "spinon-c0412-pr-review-20261017",
+  "source_base_commit": "f43a04ff61f9148ebf16047f069dd8280353feda",
+  "roadmap": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "title": "스피논 구현 로드맵",
+    "counter": "205개 표시 · 공식 완료 71/205",
+    "status_note": "공식 상태 동기화 완료 · 상위 78개 + 세부 ID 125개 + ID 없는 하위 체크 2개 · 완료 71/205개",
+    "c04_12_note_has_no_stale_61_197": true,
+    "c04_12_status": "미완료",
+    "links": [
+      {
+        "label": "계획",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c04-root-html-document-environment.html",
+        "loaded": true
+      },
+      {
+        "label": "내부 계약",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/0077-c04-12-root-html-document.html",
+        "loaded": true
+      },
+      {
+        "label": "비교·실행 근거",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-root-html-document-environment-2026-10-17/README.html",
+        "loaded": true
+      }
+    ]
+  },
+  "routes": [
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c04-root-html-document-environment.html",
+      "title": "C04.12 · 앱 루트 HTML과 문서 환경 metadata - 스피논 문서",
+      "contains_c04_12": true,
+      "contains_html5ever": true,
+      "body_characters": 8594
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/0077-c04-12-root-html-document.html",
+      "title": "0077 · C04.12 루트 HTML document 진입점 - 스피논 문서",
+      "contains_c04_12": true,
+      "body_characters": 3713
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-root-html-document-environment-2026-10-17/README.html",
+      "title": "C04.12 루트 HTML 문서 환경 사전 비교 - 스피논 문서",
+      "contains_c04_12": true,
+      "loaded_images": [
+        {
+          "alt": "OS light, metadata 없음의 Chrome oracle",
+          "width": 1170,
+          "height": 2532
+        },
+        {
+          "alt": "OS light, meta dark의 Chrome oracle",
+          "width": 1170,
+          "height": 2532
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "tailnet-roadmap-agent-browser.png",
+      "width": 1280,
+      "height": 633,
+      "subject": "C04.12 roadmap scope and links"
+    },
+    {
+      "path": "tailnet-counter-agent-browser.png",
+      "width": 1280,
+      "height": 633,
+      "subject": "dynamic official 71/205 counter"
+    }
+  ],
+  "tailnet_listener": {
+    "address": "127.0.0.1:8768",
+    "pid": 1191,
+    "restarted": false
+  },
+  "tmux_modified": false
+}

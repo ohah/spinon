@@ -1,0 +1,30 @@
+{
+  "backup_root": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-tailnet-sync-2026-10-17",
+  "replaced_file_count": 4,
+  "files": [
+    {
+      "path": "STATUS.html",
+      "backup_path": "STATUS.html",
+      "bytes": 344604,
+      "sha256": "86e3bc385db4111c128bbbca71b370374f24904afc8bf2e4ebc7a60f7100484a"
+    },
+    {
+      "path": "STATUS.md",
+      "backup_path": "STATUS.md",
+      "bytes": 261512,
+      "sha256": "2c3eedfefa807f9c8005888ce73c4f83c689147264354e6701127b7ceacb7b7c"
+    },
+    {
+      "path": "roadmap.html",
+      "backup_path": "roadmap.html",
+      "bytes": 117503,
+      "sha256": "edc78d20b8d8cd9a067ee501ad24f100cb94306382228828a0eceea983d270fe"
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "backup_path": "spec/public/roadmap.html",
+      "bytes": 115998,
+      "sha256": "fa59fd5c3c21708346767e221e4c00a9d66b0779b7940d5ceb6e9c216113d979"
+    }
+  ]
+}
