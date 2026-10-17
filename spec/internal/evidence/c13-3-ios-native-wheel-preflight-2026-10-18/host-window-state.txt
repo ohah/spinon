@@ -1,0 +1,36 @@
+owner=loginwindow pid=658 layer=2004 bounds={
+    Height = 1080;
+    Width = 1920;
+    X = 0;
+    Y = 0;
+}
+owner=loginwindow pid=658 layer=2001 bounds={
+    Height = 30000;
+    Width = 30000;
+    X = "-15000";
+    Y = "-15000";
+}
+owner=시스템 설정 pid=55712 layer=0 bounds={
+    Height = 625;
+    Width = 723;
+    X = 1097;
+    Y = 313;
+}
+owner=Simulator pid=879 layer=0 bounds={
+    Height = 940;
+    Width = 683;
+    X = 358;
+    Y = 49;
+}
+owner=Simulator pid=879 layer=0 bounds={
+    Height = 940;
+    Width = 636;
+    X = 1017;
+    Y = 49;
+}
+owner=Simulator pid=879 layer=0 bounds={
+    Height = 940;
+    Width = 440;
+    X = 740;
+    Y = 35;
+}
