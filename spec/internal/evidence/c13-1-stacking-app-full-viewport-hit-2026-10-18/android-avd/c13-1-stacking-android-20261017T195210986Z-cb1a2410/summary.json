@@ -1,0 +1,151 @@
+{
+  "schema": "spinon-c13-1-stacking-full-viewport-android-avd/v1",
+  "status": "matched",
+  "runID": "c13-1-stacking-android-20261017T195210986Z-cb1a2410",
+  "sourceRevision": "1375b7978e6d10d200b8d7b1cc0471dda35e5b73",
+  "device": {
+    "serial": "emulator-5554",
+    "model": "sdk_gphone16k_arm64",
+    "release": "17",
+    "sdk": 37,
+    "abi": "arm64-v8a",
+    "qemu": true,
+    "fingerprint": "google/sdk_gphone16k_arm64/emu64a16k:17/CP31.260623.012/16064790:userdebug/dev-keys",
+    "displaySize": "Physical size: 1080x2400",
+    "displayDensity": "Physical density: 420"
+  },
+  "v8": {
+    "revision": "7b50b62cb18f28617959e8452e2cd18195b38bcf",
+    "archive": "/Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8/out/boson-android-mac/obj/libv8_monolith.a"
+  },
+  "apkSha256": "b6125fcf13365921164dd605f95ec24547d4c0d31bafc0c5a76c1f544d118d37",
+  "oracle": {
+    "identitySha256": "866073e0c6f092d4b2459fa3b5cfd2ca38dfb8935f582ee3c9614dba3bfc7483",
+    "oracleSha256": "279364905336ef53d225c781bae68ec26d3fe4d50cfc7d0cfce689ab5354eee2"
+  },
+  "expected": {
+    "nodeFrames": 13,
+    "fixedHitSamples": 18,
+    "edgeControls": 11,
+    "gridPoints": 69120
+  },
+  "runs": [
+    {
+      "name": "run-1",
+      "pid": 14601,
+      "runID": "257702e9bd55",
+      "surfaceGeneration": 2,
+      "revisions": [
+        1,
+        65,
+        13,
+        0
+      ],
+      "points": 69120,
+      "matched": 69120,
+      "edgeControls": 11,
+      "fixedHitSamples": 18,
+      "nodeFrames": 13,
+      "identitySha256": "866073e0c6f092d4b2459fa3b5cfd2ca38dfb8935f582ee3c9614dba3bfc7483",
+      "oracleSha256": "279364905336ef53d225c781bae68ec26d3fe4d50cfc7d0cfce689ab5354eee2",
+      "pixelCopy": {
+        "file": "run-1-pixelcopy.png",
+        "sha256": "ab406960a56890e9bf0cc71ff2dfdd84d77323bce218fc52ab7c163234c44566",
+        "dimensions": {
+          "width": 1418,
+          "height": 336
+        },
+        "samples": 18
+      },
+      "screenshot": "run-1-android-avd-screen.png",
+      "screenshotDimensions": {
+        "width": 1080,
+        "height": 2400
+      },
+      "screenshotSha256": "6394f37c37cad8528da484aa1fa753c18df7457b2be78aba597995da5f8d0a6f",
+      "runtimeLog": "run-1-runtime.log"
+    },
+    {
+      "name": "run-2",
+      "pid": 14693,
+      "runID": "2577568552e1",
+      "surfaceGeneration": 2,
+      "revisions": [
+        1,
+        65,
+        13,
+        0
+      ],
+      "points": 69120,
+      "matched": 69120,
+      "edgeControls": 11,
+      "fixedHitSamples": 18,
+      "nodeFrames": 13,
+      "identitySha256": "866073e0c6f092d4b2459fa3b5cfd2ca38dfb8935f582ee3c9614dba3bfc7483",
+      "oracleSha256": "279364905336ef53d225c781bae68ec26d3fe4d50cfc7d0cfce689ab5354eee2",
+      "pixelCopy": {
+        "file": "run-2-pixelcopy.png",
+        "sha256": "ab406960a56890e9bf0cc71ff2dfdd84d77323bce218fc52ab7c163234c44566",
+        "dimensions": {
+          "width": 1418,
+          "height": 336
+        },
+        "samples": 18
+      },
+      "screenshot": "run-2-android-avd-screen.png",
+      "screenshotDimensions": {
+        "width": 1080,
+        "height": 2400
+      },
+      "screenshotSha256": "0b6ecd15fe4736c07c19fe37c7d457bfc78c765566efb827b533f476a24663c3",
+      "runtimeLog": "run-2-runtime.log"
+    },
+    {
+      "name": "run-3",
+      "pid": 14757,
+      "runID": "2577acb0ce96",
+      "surfaceGeneration": 2,
+      "revisions": [
+        1,
+        65,
+        13,
+        0
+      ],
+      "points": 69120,
+      "matched": 69120,
+      "edgeControls": 11,
+      "fixedHitSamples": 18,
+      "nodeFrames": 13,
+      "identitySha256": "866073e0c6f092d4b2459fa3b5cfd2ca38dfb8935f582ee3c9614dba3bfc7483",
+      "oracleSha256": "279364905336ef53d225c781bae68ec26d3fe4d50cfc7d0cfce689ab5354eee2",
+      "pixelCopy": {
+        "file": "run-3-pixelcopy.png",
+        "sha256": "ab406960a56890e9bf0cc71ff2dfdd84d77323bce218fc52ab7c163234c44566",
+        "dimensions": {
+          "width": 1418,
+          "height": 336
+        },
+        "samples": 18
+      },
+      "screenshot": "run-3-android-avd-screen.png",
+      "screenshotDimensions": {
+        "width": 1080,
+        "height": 2400
+      },
+      "screenshotSha256": "0b6ecd15fe4736c07c19fe37c7d457bfc78c765566efb827b533f476a24663c3",
+      "runtimeLog": "run-3-runtime.log"
+    }
+  ],
+  "staleRevisionControl": {
+    "status": "rejected-before-pixelcopy",
+    "pid": 14823,
+    "field": "document_revision"
+  },
+  "routeConflictControl": {
+    "status": "rejected-before-host-init",
+    "pid": 14881,
+    "hostCreated": false,
+    "evalStarted": false
+  },
+  "scope": "Android API 37 ARM64 AVD app route and SurfaceView PixelCopy 18-point readback; no physical device, DOM event dispatch, WPT, or full C13.1 claim."
+}

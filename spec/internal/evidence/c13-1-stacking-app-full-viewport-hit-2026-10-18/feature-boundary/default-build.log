@@ -1,0 +1,3 @@
+cargo build --locked -p spinon-ffi --lib
+exit=0
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.07s

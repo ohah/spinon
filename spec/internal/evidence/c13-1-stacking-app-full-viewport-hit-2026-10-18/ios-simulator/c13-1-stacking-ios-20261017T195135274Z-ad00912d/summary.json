@@ -1,0 +1,125 @@
+{
+  "schema": "spinon-c13-1-stacking-full-viewport-ios-simulator/v1",
+  "status": "matched",
+  "runID": "c13-1-stacking-ios-20261017T195135274Z-ad00912d",
+  "sourceRevision": "1375b7978e6d10d200b8d7b1cc0471dda35e5b73",
+  "simulator": {
+    "name": "iPhone 17 Pro",
+    "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2"
+  },
+  "v8": {
+    "revision": "7b50b62cb18f28617959e8452e2cd18195b38bcf",
+    "archive": "/Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8/out/boson-ios-sim/obj/libv8_monolith.a"
+  },
+  "appExecutableSha256": "47d8105ebaa7f58825993fcb2ababdf92a97374b2431f5b257608eef47c3183e",
+  "oracle": {
+    "identitySha256": "866073e0c6f092d4b2459fa3b5cfd2ca38dfb8935f582ee3c9614dba3bfc7483",
+    "oracleSha256": "279364905336ef53d225c781bae68ec26d3fe4d50cfc7d0cfce689ab5354eee2"
+  },
+  "expected": {
+    "nodeFrames": 13,
+    "fixedHitSamples": 18,
+    "edgeControls": 11,
+    "gridPoints": 69120
+  },
+  "runs": [
+    {
+      "name": "run-1",
+      "pid": 5396,
+      "runID": "7638c3e9b5d64ff5bd0bc29e16193bee",
+      "surfaceGeneration": 1,
+      "revisions": [
+        1,
+        65,
+        13,
+        0
+      ],
+      "points": 69120,
+      "matched": 69120,
+      "edgeControls": 11,
+      "fixedHitSamples": 18,
+      "nodeFrames": 13,
+      "identitySha256": "866073e0c6f092d4b2459fa3b5cfd2ca38dfb8935f582ee3c9614dba3bfc7483",
+      "oracleSha256": "279364905336ef53d225c781bae68ec26d3fe4d50cfc7d0cfce689ab5354eee2",
+      "metalSamples": {
+        "file": "run-1-metal-samples.jsonl",
+        "sha256": "14310f54ae1c5541b71ae5f8a1f31d108074fe1f68a15b7323dc9944e97e7b3e",
+        "count": 18
+      },
+      "metalManifest": "run-1-metal-manifest.json",
+      "screenshot": "run-1-ios-simulator.png",
+      "screenshotSha256": "19c804b7bf925a43f833d6c9a8ea2b509631fc21a185bdd96b9add197184318e",
+      "runtimeLog": "run-1-runtime.log"
+    },
+    {
+      "name": "run-2",
+      "pid": 5472,
+      "runID": "7f298e8c392242d594a5550b893d40a5",
+      "surfaceGeneration": 1,
+      "revisions": [
+        1,
+        65,
+        13,
+        0
+      ],
+      "points": 69120,
+      "matched": 69120,
+      "edgeControls": 11,
+      "fixedHitSamples": 18,
+      "nodeFrames": 13,
+      "identitySha256": "866073e0c6f092d4b2459fa3b5cfd2ca38dfb8935f582ee3c9614dba3bfc7483",
+      "oracleSha256": "279364905336ef53d225c781bae68ec26d3fe4d50cfc7d0cfce689ab5354eee2",
+      "metalSamples": {
+        "file": "run-2-metal-samples.jsonl",
+        "sha256": "641f0b7061347bfc31a0ed4c45fcdeb7a9e225f957328c511b5adb6ab0fda631",
+        "count": 18
+      },
+      "metalManifest": "run-2-metal-manifest.json",
+      "screenshot": "run-2-ios-simulator.png",
+      "screenshotSha256": "c977ba8b9433b019788daadb778ad6db437d8fce5bbfd852973926dcd62e8756",
+      "runtimeLog": "run-2-runtime.log"
+    },
+    {
+      "name": "run-3",
+      "pid": 5530,
+      "runID": "0349d6689ff344dd9ab7a28b3a523498",
+      "surfaceGeneration": 1,
+      "revisions": [
+        1,
+        65,
+        13,
+        0
+      ],
+      "points": 69120,
+      "matched": 69120,
+      "edgeControls": 11,
+      "fixedHitSamples": 18,
+      "nodeFrames": 13,
+      "identitySha256": "866073e0c6f092d4b2459fa3b5cfd2ca38dfb8935f582ee3c9614dba3bfc7483",
+      "oracleSha256": "279364905336ef53d225c781bae68ec26d3fe4d50cfc7d0cfce689ab5354eee2",
+      "metalSamples": {
+        "file": "run-3-metal-samples.jsonl",
+        "sha256": "007f4a493b3c6df6ebbcf86f7e5b1a061a5e62023bf1e385d081f9c52e66b7e9",
+        "count": 18
+      },
+      "metalManifest": "run-3-metal-manifest.json",
+      "screenshot": "run-3-ios-simulator.png",
+      "screenshotSha256": "19c804b7bf925a43f833d6c9a8ea2b509631fc21a185bdd96b9add197184318e",
+      "runtimeLog": "run-3-runtime.log"
+    }
+  ],
+  "staleRevisionControl": {
+    "status": "rejected-before-metal-readback",
+    "pid": 5586,
+    "field": "document_revision"
+  },
+  "routeConflictControl": {
+    "status": "rejected-before-host-init",
+    "pid": 5616,
+    "hostCreated": false,
+    "evalStarted": false
+  },
+  "xcodeVersion": "Xcode 26.2\nBuild version 17C52",
+  "scope": "iPhone 17 Pro iOS 26.2 Simulator app route and Metal 18-point readback; no physical device, DOM event dispatch, WPT, or full C13.1 claim."
+}
