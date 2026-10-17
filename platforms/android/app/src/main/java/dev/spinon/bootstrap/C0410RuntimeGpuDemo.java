@@ -37,6 +37,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -155,6 +156,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "35e88e57edc16e526e389317b0d18ef227e35d1356a2353b92476c75ef6414f6";
     private static final String C131_COMPACT_CHROME_OBSERVATION_SHA256 =
             "515fc95f811399fda9e336a13e7583f2d22555fce4727f1fe7f734981abd0299";
+    private static final String C131_STACKING_FULL_VIEWPORT_IDENTITY_SHA256 =
+            "866073e0c6f092d4b2459fa3b5cfd2ca38dfb8935f582ee3c9614dba3bfc7483";
+    private static final String C131_STACKING_FULL_VIEWPORT_ORACLE_SHA256 =
+            "279364905336ef53d225c781bae68ec26d3fe4d50cfc7d0cfce689ab5354eee2";
+    private static final String[] C131_STACKING_FULL_VIEWPORT_NODE_IDS = {
+            "root", "visible-parent", "visible-layer", "visible-target", "visible-overlay",
+            "clip-parent", "clip-layer", "clip-target", "clip-overlay", "hidden-parent",
+            "hidden-layer", "hidden-target", "hidden-overlay",
+    };
     private static boolean isC1132GridNamedLinePixelSamples(
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
@@ -2690,6 +2700,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     + frames.length + " hit_samples=" + observations.length());
             return false;
         }
+        if (!logC131StackingFullViewportHitIdentityGridReport(report)) {
+            Log.e(TAG, "SPINON_C131_STACKING_CLIP_SUMMARY status=error stage=full-viewport-grid");
+            return false;
+        }
         Map<String, String> runtimeRevisions = new HashMap<>(4);
         for (String field : List.of("generation", "document_revision",
                 "render_tree_revision", "style_revision")) {
@@ -2705,8 +2719,132 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         c131StackingDescendantClipExpectedRgba = Collections.unmodifiableMap(expectedRgba);
         c131StackingDescendantClipExpectedRevisions = Collections.unmodifiableMap(runtimeRevisions);
         Log.i(TAG, "SPINON_C131_STACKING_CLIP_SUMMARY status=ok boxes=13 frames=13 "
-                + "hit_samples=18 hit_matches=18 viewport=540x128");
+                + "hit_samples=18 hit_matches=18 hit_grid_points=69120 hit_grid_matches=69120 "
+                + "edge_controls=11/11 viewport=540x128");
         return true;
+    }
+
+    private boolean logC131StackingFullViewportHitIdentityGridReport(String report) {
+        String marker = "hit_identity_grid_summary_json=";
+        int markerIndex = report.indexOf(marker);
+        int objectStart = markerIndex < 0 ? -1 : report.indexOf('{', markerIndex + marker.length());
+        int objectEnd = objectStart < 0 ? -1 : findJsonObjectEnd(report, objectStart);
+        if (markerIndex < 0 || report.indexOf(marker, markerIndex + marker.length()) >= 0
+                || objectStart < 0 || objectEnd < 0) {
+            Log.e(TAG, "SPINON_C131_STACKING_FULL_VIEWPORT_HIT_IDENTITY_GRID_SUMMARY "
+                    + "status=error stage=missing-or-duplicate-json");
+            return false;
+        }
+        final JSONObject summary;
+        try {
+            summary = new JSONObject(report.substring(objectStart, objectEnd));
+        } catch (Exception error) {
+            Log.e(TAG, "SPINON_C131_STACKING_FULL_VIEWPORT_HIT_IDENTITY_GRID_SUMMARY "
+                    + "status=error stage=json");
+            return false;
+        }
+        Set<String> expectedKeys = Set.of(
+                "status", "point_count", "matched_count", "mismatch_count",
+                "mismatch_preview_limit", "mismatch_preview", "edge_control_count",
+                "edge_controls_matched", "expected_identity_sha256", "actual_identity_sha256",
+                "oracle_sha256");
+        Set<String> actualKeys = new HashSet<>();
+        Iterator<String> keyIterator = summary.keys();
+        while (keyIterator.hasNext()) actualKeys.add(keyIterator.next());
+        String status = summary.optString("status", "missing");
+        long pointCount = jsonInteger(summary, "point_count", -1);
+        long matchedCount = jsonInteger(summary, "matched_count", -1);
+        long mismatchCount = jsonInteger(summary, "mismatch_count", -1);
+        long previewLimit = jsonInteger(summary, "mismatch_preview_limit", -1);
+        long edgeControlCount = jsonInteger(summary, "edge_control_count", -1);
+        long edgeControlsMatched = jsonInteger(summary, "edge_controls_matched", -1);
+        String expectedSha = summary.optString("expected_identity_sha256", "");
+        String actualSha = summary.optString("actual_identity_sha256", "");
+        String oracleSha = summary.optString("oracle_sha256", "");
+        JSONArray previews = summary.optJSONArray("mismatch_preview");
+        int previewCount = previews == null ? -1 : previews.length();
+        boolean countsValid = pointCount == 69120 && matchedCount >= 0
+                && matchedCount <= pointCount && mismatchCount >= 0
+                && mismatchCount <= pointCount && matchedCount + mismatchCount == pointCount
+                && edgeControlCount == 11 && edgeControlsMatched == 11;
+        boolean previewValid = previewLimit == 16 && previews != null
+                && previewCount == Math.min(mismatchCount, previewLimit);
+        boolean previewsValid = previewValid;
+        Set<String> previewCoordinates = new HashSet<>();
+        if (previews != null) {
+            for (int index = 0; index < previews.length(); index++) {
+                JSONObject mismatch = previews.optJSONObject(index);
+                long x = mismatch == null ? -1 : jsonInteger(mismatch, "xCssPx", -1);
+                long y = mismatch == null ? -1 : jsonInteger(mismatch, "yCssPx", -1);
+                Object expectedNodeId = mismatch == null ? null : mismatch.opt("expectedNodeId");
+                Object actualNodeId = mismatch == null ? null : mismatch.opt("actualNodeId");
+                Set<String> previewKeys = new HashSet<>();
+                if (mismatch != null) {
+                    Iterator<String> previewKeyIterator = mismatch.keys();
+                    while (previewKeyIterator.hasNext()) previewKeys.add(previewKeyIterator.next());
+                }
+                String coordinate = x + "," + y;
+                boolean previewEntryValid = mismatch != null
+                        && previewKeys.equals(Set.of("xCssPx", "yCssPx", "expectedNodeId", "actualNodeId"))
+                        && x >= 0 && x < 540 && y >= 0 && y < 128
+                        && expectedNodeId instanceof String
+                        && List.of(C131_STACKING_FULL_VIEWPORT_NODE_IDS).contains(expectedNodeId)
+                        && (actualNodeId == JSONObject.NULL
+                                || (actualNodeId instanceof String && !((String) actualNodeId).isEmpty()))
+                        && previewCoordinates.add(coordinate);
+                if (!previewEntryValid) {
+                    previewsValid = false;
+                    break;
+                }
+            }
+        }
+        boolean statusValid = (mismatchCount == 0 && "matched".equals(status))
+                || (mismatchCount > 0 && "mismatch".equals(status));
+        boolean digestValid = C131_STACKING_FULL_VIEWPORT_IDENTITY_SHA256.equals(expectedSha)
+                && isSha256Hex(actualSha)
+                && (mismatchCount == 0
+                        ? C131_STACKING_FULL_VIEWPORT_IDENTITY_SHA256.equals(actualSha)
+                        : !C131_STACKING_FULL_VIEWPORT_IDENTITY_SHA256.equals(actualSha))
+                && C131_STACKING_FULL_VIEWPORT_ORACLE_SHA256.equals(oracleSha);
+        boolean valid = actualKeys.equals(expectedKeys) && countsValid && previewValid
+                && previewsValid && statusValid && digestValid;
+        String generation = reportField(report, "generation=");
+        String markerLine = "SPINON_C131_STACKING_FULL_VIEWPORT_HIT_IDENTITY_GRID_SUMMARY status="
+                + (valid && mismatchCount == 0 ? "matched" : "mismatch")
+                + " run_id=" + c131StackingDescendantClipRunId
+                + " runtime_generation=" + generation + " points=" + pointCount
+                + " matched=" + matchedCount + " mismatches=" + mismatchCount
+                + " edge_controls=" + edgeControlsMatched + "/" + edgeControlCount
+                + " preview=" + Math.max(0, previewCount)
+                + " identity_sha256=" + actualSha + " oracle_sha256=" + oracleSha;
+        if (valid && mismatchCount == 0) Log.i(TAG, markerLine);
+        else Log.e(TAG, markerLine + " schema_valid=" + actualKeys.equals(expectedKeys)
+                + " counts_valid=" + countsValid + " preview_valid=" + previewsValid
+                + " digest_valid=" + digestValid);
+        if (previews != null) {
+            for (int index = 0; index < Math.min(previews.length(), 16); index++) {
+                JSONObject mismatch = previews.optJSONObject(index);
+                if (mismatch == null) continue;
+                Object actualNodeId = mismatch.opt("actualNodeId");
+                Log.e(TAG, "SPINON_C131_STACKING_FULL_VIEWPORT_HIT_IDENTITY_GRID_MISMATCH index="
+                        + index + " x=" + mismatch.opt("xCssPx") + " y=" + mismatch.opt("yCssPx")
+                        + " expected=" + mismatch.optString("expectedNodeId", "missing")
+                        + " actual=" + (actualNodeId == JSONObject.NULL ? "null" : actualNodeId));
+            }
+        }
+        return valid && mismatchCount == 0;
+    }
+
+    private static long jsonInteger(JSONObject object, String key, long fallback) {
+        Object value = object.opt(key);
+        if (!(value instanceof Integer || value instanceof Long || value instanceof Short)) return fallback;
+        double asDouble = ((Number) value).doubleValue();
+        long asLong = ((Number) value).longValue();
+        return Double.isFinite(asDouble) && asDouble == (double) asLong ? asLong : fallback;
+    }
+
+    private static boolean isSha256Hex(String value) {
+        return value != null && value.matches("[0-9a-f]{64}");
     }
 
     private static String c131StackingDescendantClipExpectedRgba(String elementId) {

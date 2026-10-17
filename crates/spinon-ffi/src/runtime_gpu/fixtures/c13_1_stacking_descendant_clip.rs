@@ -4,6 +4,8 @@ use spinon_render::RuntimeRenderSnapshot;
 use spinon_runtime::RuntimeLayoutFrame;
 use std::collections::HashSet;
 
+pub(in crate::runtime_gpu) mod full_viewport_hit_grid;
+
 const HTML_FIXTURE: &str = include_str!(
     "../../../../../tests/fixtures/css/c13/overflow-clip-stacking-descendants-c13-1.html"
 );

@@ -1758,27 +1758,27 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             log("SPINON_C131_STACKING_CLIP_HIT_TEST id=\(id) x=\(x) y=\(y) element=\(sample["elementId"] ?? "missing") node_index=\(sample["nodeIndex"] ?? "missing") rgba=\(rgba) status=\(sampleMatches ? "matched" : "error")")
         }
         valid = valid && matched == 18 && seenIDs.count == 18 && seenPixels.count == 18
+        guard valid, logC131StackingFullViewportHitIdentityGridSummary(report) else {
+            log("SPINON_C131_STACKING_CLIP_SUMMARY status=error stage=full-viewport-grid frames=\(frames.count)")
+            return false
+        }
         var runtimeRevisionFields: [String: String] = [:]
-        if valid {
-            for field in ["generation", "document_revision", "render_tree_revision", "style_revision"] {
-                let value = reportField(report, "\(field)=")
-                guard UInt64(value) != nil else {
-                    log("SPINON_C131_STACKING_CLIP_FIXTURE_SUMMARY status=error stage=revision-identity field=\(field)")
-                    return false
-                }
-                runtimeRevisionFields[field] = value
+        for field in ["generation", "document_revision", "render_tree_revision", "style_revision"] {
+            let value = reportField(report, "\(field)=")
+            guard UInt64(value) != nil else {
+                log("SPINON_C131_STACKING_CLIP_FIXTURE_SUMMARY status=error stage=revision-identity field=\(field)")
+                return false
             }
-            c131StackingClipExpectedRevisionFields = runtimeRevisionFields
-            log("SPINON_C131_STACKING_CLIP_RUNTIME_IDENTITY run_id=\(c131StackingDescendantClipRunID) source=evaluation \(c131StackingClipRuntimeRevisionSummary())")
+            runtimeRevisionFields[field] = value
         }
+        c131StackingClipExpectedRevisionFields = runtimeRevisionFields
+        log("SPINON_C131_STACKING_CLIP_RUNTIME_IDENTITY run_id=\(c131StackingDescendantClipRunID) source=evaluation \(c131StackingClipRuntimeRevisionSummary())")
         let generation = reportField(report, "generation=")
-        log("SPINON_C131_STACKING_CLIP_HIT_TEST_SUMMARY status=\(valid ? "ok" : "error") run_id=\(c131StackingDescendantClipRunID) generation=\(generation) matched=\(matched)/18 unique_ids=\(seenIDs.count) unique_pixels=\(seenPixels.count)")
-        log("SPINON_C131_STACKING_CLIP_FIXTURE_SUMMARY status=\(valid ? "ok" : "error") boxes=13 frames=\(frames.count) hit_samples=18 hit_matches=\(matched) viewport=540x128")
-        if valid {
-            c131CompactHitIdentityGridStatusMessage = "완료 · C13.1 stacking clip Chrome hit identity 18/18"
-            postStatus(c131CompactHitIdentityGridStatusMessage ?? "C13.1 stacking clip hit identity 검증 완료")
-        }
-        return valid
+        log("SPINON_C131_STACKING_CLIP_HIT_TEST_SUMMARY status=ok run_id=\(c131StackingDescendantClipRunID) generation=\(generation) matched=\(matched)/18 unique_ids=\(seenIDs.count) unique_pixels=\(seenPixels.count)")
+        log("SPINON_C131_STACKING_CLIP_FIXTURE_SUMMARY status=ok boxes=13 frames=\(frames.count) hit_samples=18 hit_matches=\(matched) hit_grid_points=69120 hit_grid_matches=69120 edge_controls=11/11 viewport=540x128")
+        c131CompactHitIdentityGridStatusMessage = "완료 · C13.1 stacking clip Chrome hit identity 69,120/69,120 · 18/18"
+        postStatus(c131CompactHitIdentityGridStatusMessage ?? "C13.1 stacking clip hit identity 검증 완료")
+        return true
     }
 
     private func c131StackingClipRevisionMismatch(in report: String) -> String? {
@@ -1941,6 +1941,34 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         } catch {
             c131CompactHitIdentityGridStatusMessage = "실패 · C13.1 Chrome hit identity 30,000점 검증 불일치"
             log("SPINON_C131_COMPACT_HIT_IDENTITY_GRID_SUMMARY status=error run_id=\(c131CompactSurfaceMatrixRunID) stage=parser code=unknown")
+            return false
+        }
+    }
+
+    private func logC131StackingFullViewportHitIdentityGridSummary(_ report: String) -> Bool {
+        do {
+            let summary = try C131StackingFullViewportHitGridSummaryValidator.parse(report)
+            let generation = reportField(report, "generation=")
+            guard UInt64(generation) != nil else {
+                log("SPINON_C131_STACKING_FULL_VIEWPORT_HIT_IDENTITY_GRID_SUMMARY status=error stage=missing-generation run_id=\(c131StackingDescendantClipRunID)")
+                return false
+            }
+            log("SPINON_C131_STACKING_FULL_VIEWPORT_HIT_IDENTITY_GRID_SUMMARY status=\(summary.isMatched ? "matched" : "mismatch") run_id=\(c131StackingDescendantClipRunID) runtime_generation=\(generation) points=\(summary.pointCount) matched=\(summary.matchedCount) mismatches=\(summary.mismatchCount) edge_controls=\(summary.edgeControlsMatched)/\(summary.edgeControlCount) preview=\(summary.mismatchPreview.count) expected_identity_sha256=\(summary.expectedIdentitySha256) identity_sha256=\(summary.actualIdentitySha256) oracle_sha256=\(summary.oracleSha256)")
+            for (index, mismatch) in summary.mismatchPreview.enumerated() {
+                log("SPINON_C131_STACKING_FULL_VIEWPORT_HIT_IDENTITY_GRID_MISMATCH index=\(index) x=\(mismatch.xCssPx) y=\(mismatch.yCssPx) expected=\(mismatch.expectedNodeId) actual=\(mismatch.actualNodeId ?? "null")")
+            }
+            if summary.isMatched {
+                return true
+            }
+            c131CompactHitIdentityGridStatusMessage = "실패 · C13.1 stacking Chrome hit identity 69,120점 불일치"
+            return false
+        } catch let error as C131StackingFullViewportHitGridSummaryValidator.ValidationError {
+            c131CompactHitIdentityGridStatusMessage = "실패 · C13.1 stacking Chrome hit identity 69,120점 검증 불일치"
+            log("SPINON_C131_STACKING_FULL_VIEWPORT_HIT_IDENTITY_GRID_SUMMARY status=error run_id=\(c131StackingDescendantClipRunID) stage=parser code=\(error)")
+            return false
+        } catch {
+            c131CompactHitIdentityGridStatusMessage = "실패 · C13.1 stacking Chrome hit identity 69,120점 검증 불일치"
+            log("SPINON_C131_STACKING_FULL_VIEWPORT_HIT_IDENTITY_GRID_SUMMARY status=error run_id=\(c131StackingDescendantClipRunID) stage=parser code=unknown")
             return false
         }
     }
