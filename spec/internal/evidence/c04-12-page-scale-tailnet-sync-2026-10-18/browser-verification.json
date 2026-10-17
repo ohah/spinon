@@ -1,0 +1,119 @@
+{
+  "captured_utc": "2026-10-17T15:25:21.712859+00:00",
+  "browser": {
+    "agent_browser_cli": "0.31.1",
+    "engine": "Chrome 155"
+  },
+  "roadmap": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "h1": "스피논을 만드는 순서",
+    "counter": "207개 표시 · 공식 완료 74/207",
+    "page_scale_note_present": true,
+    "note_scope_says_c04_12_incomplete": true,
+    "links_opened": [
+      "https://macstudio.tailed42f2.ts.net/spinon/plan/c04-12-page-scale-rendering.html",
+      "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-page-scale-rendering-2026-10-17/README.html"
+    ]
+  },
+  "status": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+    "h1": "스피논 구현 상태와 API 명세 대장",
+    "c04_12_parent_checked": false,
+    "visual_viewport_substep_checked": true,
+    "page_scale_wgpu_substep_checked": true
+  },
+  "page_scale_plan": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c04-12-page-scale-rendering.html",
+    "h1": "C04.12 후속 · 초기 page scale 렌더 변환",
+    "opened": true,
+    "scope_limit_present": true
+  },
+  "page_scale_evidence": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-page-scale-rendering-2026-10-17/README.html",
+    "h1": "C04.12 초기 page-scale WGPU scene mapping",
+    "opened": true,
+    "images": [
+      {
+        "alt": "Chrome iPhone 12 emulation, initial scale 0.5",
+        "width": 1170,
+        "height": 2532,
+        "loaded": true
+      },
+      {
+        "alt": "Chrome iPhone 12 emulation, initial scale 2",
+        "width": 1170,
+        "height": 2532,
+        "loaded": true
+      },
+      {
+        "alt": "Chrome iPhone 12 emulation, width 500",
+        "width": 1170,
+        "height": 2532,
+        "loaded": true
+      },
+      {
+        "alt": "Android API 37 AVD의 C04.12 page-scale scene fixture PASS 보고",
+        "width": 1080,
+        "height": 2400,
+        "loaded": true
+      },
+      {
+        "alt": "iPhone 17 Pro iOS 26.2 Simulator의 C04.12 page-scale scene fixture PASS 보고",
+        "width": 1206,
+        "height": 2622,
+        "loaded": true
+      }
+    ]
+  },
+  "first_copy": {
+    "files": 62,
+    "existing_targets_backed_up": 15,
+    "deletions": 0,
+    "served_requests": 124,
+    "http_200": 124,
+    "sha256_matches": 124
+  },
+  "screenshots": [
+    {
+      "file": "tailnet-roadmap-agent-browser.png",
+      "width": 1280,
+      "height": 633,
+      "bytes": 258586,
+      "sha256": "1ba883f83b04979e9cc4194a8f3ef4138bb05083af90f127d48b1f6b078e1f26",
+      "captured_by": "Agent Browser 0.31.1 screenshot"
+    },
+    {
+      "file": "tailnet-counter-agent-browser.png",
+      "width": 1280,
+      "height": 633,
+      "bytes": 114827,
+      "sha256": "1be2471df1cdb41c685c9cb9fce0c3a30d65c57b399701763d3fe408c6b25c96",
+      "captured_by": "Agent Browser 0.31.1 screenshot"
+    },
+    {
+      "file": "tailnet-status-c04-12-agent-browser.png",
+      "width": 1280,
+      "height": 633,
+      "bytes": 213378,
+      "sha256": "e9538aed0a92761b28ae46b0f0913988df4eaa38bcdea52894caa67bc7b4126e",
+      "captured_by": "Agent Browser 0.31.1 screenshot"
+    },
+    {
+      "file": "tailnet-status-page-scale-agent-browser.png",
+      "width": 1280,
+      "height": 633,
+      "bytes": 208026,
+      "sha256": "4e6f0c6e763dcf37818d14c1a9fcb59075c43149e6b1041f5b78b5127ee9bc0b",
+      "captured_by": "Agent Browser 0.31.1 screenshot"
+    },
+    {
+      "file": "tailnet-page-scale-evidence-agent-browser.png",
+      "width": 1280,
+      "height": 9337,
+      "bytes": 723767,
+      "sha256": "86ae503212fb268c58d65d69c2802824cc544d8cb616e57cfc629fe2b215d3ff",
+      "captured_by": "Agent Browser 0.31.1 screenshot"
+    }
+  ],
+  "browser_session_close": "pending"
+}
