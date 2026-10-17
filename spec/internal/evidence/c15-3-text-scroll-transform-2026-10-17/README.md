@@ -20,6 +20,7 @@
 - 빌드 환경과 실행 조건은 [environment.txt](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/environment.txt)에 고정했다. 파일 SHA-256은 [sha256.txt](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/sha256.txt)에 기록한다.
 - 새 계약·근거·계획·색인의 local link target은 [targeted-links.log](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/targeted-links.log)에서 확인했다.
 - 저장소 전체 Rspress `docs:build`는 다른 문서의 dead link 진단 490건과 과거 C13.1/S03-R06 문서의 누락 이미지 참조 6건으로 실패했다. 이번 계약 0074와 이 근거 README는 오류 목록에 없다. 전체 결과는 [docs-build.log](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/docs-build.log)에 보존했다.
+- [PR #261](https://github.com/ohah/spinon/pull/261) 본문은 Agent Browser에서 확인했다. Android와 iOS raw screenshot이 모두 로드되어 각각 1080×2400, 1206×2622로 표시됐다.
 - 구현 실패 경로 20개와 변경 diff 실패 경로 20개는 [구현 검토](implementation-review-20.md), [PR diff 검토](pr-delta-review-20.md)에 있다.
 
 텍스트 로그의 줄 끝 공백은 저장소 diff 검사를 위해 제거했다. 실행·빌드 결과 표식과 실질 출력은 유지한다. `sha256.txt`는 정규화된 최종 로그를 가리킨다.
