@@ -1,0 +1,125 @@
+{
+  "title": "Tailnet verification metadata copy and served check",
+  "generated_at": "2026-10-17T03:08:45.468Z",
+  "preview_root": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "backup_root_relative": "backup/c15-3-wgpu-glyph-paint-tailnet-sync-metadata-2026-10-17",
+  "copy_only": true,
+  "deletions": [],
+  "metadata_self_reference_excluded": [
+    "metadata-copy-verification.json"
+  ],
+  "checked_files": 5,
+  "failures": 0,
+  "files": [
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/preflight.json",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/preflight.json",
+      "status": 200,
+      "source_bytes": 179129,
+      "source_sha256": "287b9796868f5a8db4d3f9fb511c9f0fd66d52871af452293d8654e99be9189d",
+      "target_bytes": 179129,
+      "target_sha256": "287b9796868f5a8db4d3f9fb511c9f0fd66d52871af452293d8654e99be9189d",
+      "served_bytes": 179129,
+      "served_sha256": "287b9796868f5a8db4d3f9fb511c9f0fd66d52871af452293d8654e99be9189d",
+      "previous": {
+        "bytes": 183895,
+        "sha256": "e913eb3d425d363371e84ad01c1fdf7bbd013275e3707a53ba39cd87812b5eeb"
+      },
+      "backup": {
+        "path": "backup/c15-3-wgpu-glyph-paint-tailnet-sync-metadata-2026-10-17/spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/preflight.json",
+        "bytes": 183895,
+        "sha256": "e913eb3d425d363371e84ad01c1fdf7bbd013275e3707a53ba39cd87812b5eeb",
+        "reused": false
+      },
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/copy-verification.json",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/copy-verification.json",
+      "status": 200,
+      "source_bytes": 180054,
+      "source_sha256": "65ed5dc58d240b7b5deb18e32826cb3356f82b0acbdb318507b5cc928d45cb85",
+      "target_bytes": 180054,
+      "target_sha256": "65ed5dc58d240b7b5deb18e32826cb3356f82b0acbdb318507b5cc928d45cb85",
+      "served_bytes": 180054,
+      "served_sha256": "65ed5dc58d240b7b5deb18e32826cb3356f82b0acbdb318507b5cc928d45cb85",
+      "previous": {
+        "bytes": 179823,
+        "sha256": "3fa81b5cb50f1c6c557b266845a255ba50083f2f2bd7c6f7d7e9e6d6d031ae63"
+      },
+      "backup": {
+        "path": "backup/c15-3-wgpu-glyph-paint-tailnet-sync-metadata-2026-10-17/spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/copy-verification.json",
+        "bytes": 179823,
+        "sha256": "3fa81b5cb50f1c6c557b266845a255ba50083f2f2bd7c6f7d7e9e6d6d031ae63",
+        "reused": false
+      },
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/backup-verification.json",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/backup-verification.json",
+      "status": 200,
+      "source_bytes": 767,
+      "source_sha256": "2e6f639aebbf408a5500cb8134e7db27a458405aad2cc6c29240be7f5c4e1b42",
+      "target_bytes": 767,
+      "target_sha256": "2e6f639aebbf408a5500cb8134e7db27a458405aad2cc6c29240be7f5c4e1b42",
+      "served_bytes": 767,
+      "served_sha256": "2e6f639aebbf408a5500cb8134e7db27a458405aad2cc6c29240be7f5c4e1b42",
+      "previous": {
+        "bytes": 15002,
+        "sha256": "36bee1f77136c17c6c03cb681f32de8cc50c76d02a1cb3b98a6c3ca92f1dae18"
+      },
+      "backup": {
+        "path": "backup/c15-3-wgpu-glyph-paint-tailnet-sync-metadata-2026-10-17/spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/backup-verification.json",
+        "bytes": 15002,
+        "sha256": "36bee1f77136c17c6c03cb681f32de8cc50c76d02a1cb3b98a6c3ca92f1dae18",
+        "reused": false
+      },
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/manifest.json",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/manifest.json",
+      "status": 200,
+      "source_bytes": 115853,
+      "source_sha256": "fee8459c321f39f785eeaab0a9b98a05b7ce884ebf60539952276dc16dd7ec89",
+      "target_bytes": 115853,
+      "target_sha256": "fee8459c321f39f785eeaab0a9b98a05b7ce884ebf60539952276dc16dd7ec89",
+      "served_bytes": 115853,
+      "served_sha256": "fee8459c321f39f785eeaab0a9b98a05b7ce884ebf60539952276dc16dd7ec89",
+      "previous": {
+        "bytes": 120804,
+        "sha256": "aaba23e4ea38c066b791669382b03c9fb433af4d60d8d439c06e971847f29f1e"
+      },
+      "backup": {
+        "path": "backup/c15-3-wgpu-glyph-paint-tailnet-sync-metadata-2026-10-17/spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/manifest.json",
+        "bytes": 120804,
+        "sha256": "aaba23e4ea38c066b791669382b03c9fb433af4d60d8d439c06e971847f29f1e",
+        "reused": false
+      },
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/served-verification.json",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/served-verification.json",
+      "status": 200,
+      "source_bytes": 154638,
+      "source_sha256": "9fbc9130e281b0c3bdf4702ded5c955f8b09476b0e829e0c4f8694a09ae46246",
+      "target_bytes": 154638,
+      "target_sha256": "9fbc9130e281b0c3bdf4702ded5c955f8b09476b0e829e0c4f8694a09ae46246",
+      "served_bytes": 154638,
+      "served_sha256": "9fbc9130e281b0c3bdf4702ded5c955f8b09476b0e829e0c4f8694a09ae46246",
+      "previous": {
+        "bytes": 154638,
+        "sha256": "99c2f49093d4cc033f490d6c9dccee22da1ab08e3033ff9e6e18997fd50c58fd"
+      },
+      "backup": {
+        "path": "backup/c15-3-wgpu-glyph-paint-tailnet-sync-metadata-2026-10-17/spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/served-verification.json",
+        "bytes": 154638,
+        "sha256": "99c2f49093d4cc033f490d6c9dccee22da1ab08e3033ff9e6e18997fd50c58fd",
+        "reused": false
+      },
+      "match": true
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "title": "C15.3 WGPU glyph paint backup verification",
+  "generated_at": "2026-10-17T03:08:31.910Z",
+  "backup_root_relative": "backup/c15-3-wgpu-glyph-paint-tailnet-sync-final3-2026-10-17",
+  "total_backups": 2,
+  "files": [
+    {
+      "path": "backup/c15-3-wgpu-glyph-paint-tailnet-sync-final3-2026-10-17/internal/README.md",
+      "original_path": "internal/README.md",
+      "bytes": 110355,
+      "sha256": "8b979832f30acadc689e6e659429e36a0dca4a777e5845c045ee522293a3cbcd"
+    },
+    {
+      "path": "backup/c15-3-wgpu-glyph-paint-tailnet-sync-final3-2026-10-17/spec/internal/README.md",
+      "original_path": "spec/internal/README.md",
+      "bytes": 110355,
+      "sha256": "8b979832f30acadc689e6e659429e36a0dca4a777e5845c045ee522293a3cbcd"
+    }
+  ]
+}

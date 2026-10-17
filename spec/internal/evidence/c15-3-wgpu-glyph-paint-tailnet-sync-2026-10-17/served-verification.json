@@ -1,0 +1,3028 @@
+{
+  "title": "C15.3 WGPU glyph paint Tailnet HTTP served-byte verification",
+  "generated_at": "2026-10-17T03:08:37.956Z",
+  "listener": "127.0.0.1:8768",
+  "route_prefix": "/spinon/",
+  "checked_paths": 301,
+  "failures": 0,
+  "all_http_200_and_sha256_match": true,
+  "metadata_self_reference_excluded": [
+    "preflight.json",
+    "copy-verification.json",
+    "backup-verification.json",
+    "manifest.json",
+    "served-verification.json"
+  ],
+  "results": [
+    {
+      "path": "404.html",
+      "url": "http://127.0.0.1:8768/spinon/404.html",
+      "status": 200,
+      "bytes": 8512,
+      "expected_bytes": 8512,
+      "sha256": "f7910cde1999b9f194e89b08479a218cb2c372f83124c73ab7c01390a803c8fa",
+      "expected_sha256": "f7910cde1999b9f194e89b08479a218cb2c372f83124c73ab7c01390a803c8fa",
+      "match": true
+    },
+    {
+      "path": "spec/404.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/404.html",
+      "status": 200,
+      "bytes": 8512,
+      "expected_bytes": 8512,
+      "sha256": "f7910cde1999b9f194e89b08479a218cb2c372f83124c73ab7c01390a803c8fa",
+      "expected_sha256": "f7910cde1999b9f194e89b08479a218cb2c372f83124c73ab7c01390a803c8fa",
+      "match": true
+    },
+    {
+      "path": "STATUS.html",
+      "url": "http://127.0.0.1:8768/spinon/STATUS.html",
+      "status": 200,
+      "bytes": 339219,
+      "expected_bytes": 339219,
+      "sha256": "6568fa2f3a46511ec33792723e9a69699a0d665bc3c2b30f2a4cdbc6c9ddedf1",
+      "expected_sha256": "6568fa2f3a46511ec33792723e9a69699a0d665bc3c2b30f2a4cdbc6c9ddedf1",
+      "match": true
+    },
+    {
+      "path": "spec/STATUS.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/STATUS.html",
+      "status": 200,
+      "bytes": 339219,
+      "expected_bytes": 339219,
+      "sha256": "6568fa2f3a46511ec33792723e9a69699a0d665bc3c2b30f2a4cdbc6c9ddedf1",
+      "expected_sha256": "6568fa2f3a46511ec33792723e9a69699a0d665bc3c2b30f2a4cdbc6c9ddedf1",
+      "match": true
+    },
+    {
+      "path": "icon.svg",
+      "url": "http://127.0.0.1:8768/spinon/icon.svg",
+      "status": 200,
+      "bytes": 638,
+      "expected_bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "expected_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "match": true
+    },
+    {
+      "path": "internal/0071-c15-3-glyph-raster-snapshot.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/0071-c15-3-glyph-raster-snapshot.html",
+      "status": 200,
+      "bytes": 30359,
+      "expected_bytes": 30359,
+      "sha256": "d0ba54cdc555e864d2aac88a4d01cd62c24705fdef8c70df89b92cc969f67e26",
+      "expected_sha256": "d0ba54cdc555e864d2aac88a4d01cd62c24705fdef8c70df89b92cc969f67e26",
+      "match": true
+    },
+    {
+      "path": "spec/internal/0071-c15-3-glyph-raster-snapshot.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/0071-c15-3-glyph-raster-snapshot.html",
+      "status": 200,
+      "bytes": 30359,
+      "expected_bytes": 30359,
+      "sha256": "d0ba54cdc555e864d2aac88a4d01cd62c24705fdef8c70df89b92cc969f67e26",
+      "expected_sha256": "d0ba54cdc555e864d2aac88a4d01cd62c24705fdef8c70df89b92cc969f67e26",
+      "match": true
+    },
+    {
+      "path": "internal/0072-c15-3-wgpu-glyph-paint.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/0072-c15-3-wgpu-glyph-paint.html",
+      "status": 200,
+      "bytes": 28898,
+      "expected_bytes": 28898,
+      "sha256": "13ca5ac22671567aea79182eb946b67128a5270e4a89674e0fddc1d36f72ba74",
+      "expected_sha256": "13ca5ac22671567aea79182eb946b67128a5270e4a89674e0fddc1d36f72ba74",
+      "match": true
+    },
+    {
+      "path": "spec/internal/0072-c15-3-wgpu-glyph-paint.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/0072-c15-3-wgpu-glyph-paint.html",
+      "status": 200,
+      "bytes": 28898,
+      "expected_bytes": 28898,
+      "sha256": "13ca5ac22671567aea79182eb946b67128a5270e4a89674e0fddc1d36f72ba74",
+      "expected_sha256": "13ca5ac22671567aea79182eb946b67128a5270e4a89674e0fddc1d36f72ba74",
+      "match": true
+    },
+    {
+      "path": "internal/README.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/README.html",
+      "status": 200,
+      "bytes": 159134,
+      "expected_bytes": 159134,
+      "sha256": "53e8d734cf7c1339df76576f2b6b5bddc379718742dfeaac8d3addfe68782489",
+      "expected_sha256": "53e8d734cf7c1339df76576f2b6b5bddc379718742dfeaac8d3addfe68782489",
+      "match": true
+    },
+    {
+      "path": "spec/internal/README.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/README.html",
+      "status": 200,
+      "bytes": 159134,
+      "expected_bytes": 159134,
+      "sha256": "53e8d734cf7c1339df76576f2b6b5bddc379718742dfeaac8d3addfe68782489",
+      "expected_sha256": "53e8d734cf7c1339df76576f2b6b5bddc379718742dfeaac8d3addfe68782489",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-2026-10-17/README.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-2026-10-17/README.html",
+      "status": 200,
+      "bytes": 31976,
+      "expected_bytes": 31976,
+      "sha256": "f1682b46c80ce03a2f1624b216b22d5bc9530e15a7f8fb6bc1ff77270888bdd0",
+      "expected_sha256": "f1682b46c80ce03a2f1624b216b22d5bc9530e15a7f8fb6bc1ff77270888bdd0",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-2026-10-17/README.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-2026-10-17/README.html",
+      "status": 200,
+      "bytes": 31976,
+      "expected_bytes": 31976,
+      "sha256": "f1682b46c80ce03a2f1624b216b22d5bc9530e15a7f8fb6bc1ff77270888bdd0",
+      "expected_sha256": "f1682b46c80ce03a2f1624b216b22d5bc9530e15a7f8fb6bc1ff77270888bdd0",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-2026-10-17/implementation-review-20.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-2026-10-17/implementation-review-20.html",
+      "status": 200,
+      "bytes": 30366,
+      "expected_bytes": 30366,
+      "sha256": "adfc74b15a59a4dd1127dce716098f09f79c90bcb70b7e60758ca62708242c5c",
+      "expected_sha256": "adfc74b15a59a4dd1127dce716098f09f79c90bcb70b7e60758ca62708242c5c",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-2026-10-17/implementation-review-20.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-2026-10-17/implementation-review-20.html",
+      "status": 200,
+      "bytes": 30366,
+      "expected_bytes": 30366,
+      "sha256": "adfc74b15a59a4dd1127dce716098f09f79c90bcb70b7e60758ca62708242c5c",
+      "expected_sha256": "adfc74b15a59a4dd1127dce716098f09f79c90bcb70b7e60758ca62708242c5c",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-2026-10-17/pr-delta-review-20.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-2026-10-17/pr-delta-review-20.html",
+      "status": 200,
+      "bytes": 31821,
+      "expected_bytes": 31821,
+      "sha256": "c40304f1f57b4827d61c1c6387a46f658e5c4a8b1e2440cf2e9b3000270b4b66",
+      "expected_sha256": "c40304f1f57b4827d61c1c6387a46f658e5c4a8b1e2440cf2e9b3000270b4b66",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-2026-10-17/pr-delta-review-20.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-2026-10-17/pr-delta-review-20.html",
+      "status": 200,
+      "bytes": 31821,
+      "expected_bytes": 31821,
+      "sha256": "c40304f1f57b4827d61c1c6387a46f658e5c4a8b1e2440cf2e9b3000270b4b66",
+      "expected_sha256": "c40304f1f57b4827d61c1c6387a46f658e5c4a8b1e2440cf2e9b3000270b4b66",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/README.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/README.html",
+      "status": 200,
+      "bytes": 30567,
+      "expected_bytes": 30567,
+      "sha256": "95f4405d1816e16218d26248d66a4d54cb4b531a364a0f33b2400dbcecc2ed91",
+      "expected_sha256": "95f4405d1816e16218d26248d66a4d54cb4b531a364a0f33b2400dbcecc2ed91",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/README.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/README.html",
+      "status": 200,
+      "bytes": 30567,
+      "expected_bytes": 30567,
+      "sha256": "95f4405d1816e16218d26248d66a4d54cb4b531a364a0f33b2400dbcecc2ed91",
+      "expected_sha256": "95f4405d1816e16218d26248d66a4d54cb4b531a364a0f33b2400dbcecc2ed91",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "status": 200,
+      "bytes": 39011,
+      "expected_bytes": 39011,
+      "sha256": "3fdadd050307766361c5727b6f223bc381a2579be257e98af592f7c9334dcfe1",
+      "expected_sha256": "3fdadd050307766361c5727b6f223bc381a2579be257e98af592f7c9334dcfe1",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "status": 200,
+      "bytes": 39011,
+      "expected_bytes": 39011,
+      "sha256": "3fdadd050307766361c5727b6f223bc381a2579be257e98af592f7c9334dcfe1",
+      "expected_sha256": "3fdadd050307766361c5727b6f223bc381a2579be257e98af592f7c9334dcfe1",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/render-build-result.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/render-build-result.html",
+      "status": 200,
+      "bytes": 30836,
+      "expected_bytes": 30836,
+      "sha256": "e11d29b876b630b94b16752e1ccabd14c1c6cc444e2959afb9ab8d3067361c2d",
+      "expected_sha256": "e11d29b876b630b94b16752e1ccabd14c1c6cc444e2959afb9ab8d3067361c2d",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/render-build-result.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/render-build-result.html",
+      "status": 200,
+      "bytes": 30836,
+      "expected_bytes": 30836,
+      "sha256": "e11d29b876b630b94b16752e1ccabd14c1c6cc444e2959afb9ab8d3067361c2d",
+      "expected_sha256": "e11d29b876b630b94b16752e1ccabd14c1c6cc444e2959afb9ab8d3067361c2d",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/README.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/README.html",
+      "status": 200,
+      "bytes": 35967,
+      "expected_bytes": 35967,
+      "sha256": "80fdca8b9b4dcd85a5e64a881fdabd7754f7bfdc9e337afb942ecdd553da8a2e",
+      "expected_sha256": "80fdca8b9b4dcd85a5e64a881fdabd7754f7bfdc9e337afb942ecdd553da8a2e",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/README.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/README.html",
+      "status": 200,
+      "bytes": 35967,
+      "expected_bytes": 35967,
+      "sha256": "80fdca8b9b4dcd85a5e64a881fdabd7754f7bfdc9e337afb942ecdd553da8a2e",
+      "expected_sha256": "80fdca8b9b4dcd85a5e64a881fdabd7754f7bfdc9e337afb942ecdd553da8a2e",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/implementation-review-20.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/implementation-review-20.html",
+      "status": 200,
+      "bytes": 35069,
+      "expected_bytes": 35069,
+      "sha256": "4606ed96a1c9d167e457305df0d8bad77bff3baea7f4afa21db65159f3b60ba6",
+      "expected_sha256": "4606ed96a1c9d167e457305df0d8bad77bff3baea7f4afa21db65159f3b60ba6",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/implementation-review-20.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/implementation-review-20.html",
+      "status": 200,
+      "bytes": 35069,
+      "expected_bytes": 35069,
+      "sha256": "4606ed96a1c9d167e457305df0d8bad77bff3baea7f4afa21db65159f3b60ba6",
+      "expected_sha256": "4606ed96a1c9d167e457305df0d8bad77bff3baea7f4afa21db65159f3b60ba6",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/platform-route-plan-review-20.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/platform-route-plan-review-20.html",
+      "status": 200,
+      "bytes": 29597,
+      "expected_bytes": 29597,
+      "sha256": "4edb57b21dd3fb86f5b6702e7dbdb76d9d747540f6e9a86e8c0ed92b64c5e99b",
+      "expected_sha256": "4edb57b21dd3fb86f5b6702e7dbdb76d9d747540f6e9a86e8c0ed92b64c5e99b",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/platform-route-plan-review-20.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/platform-route-plan-review-20.html",
+      "status": 200,
+      "bytes": 29597,
+      "expected_bytes": 29597,
+      "sha256": "4edb57b21dd3fb86f5b6702e7dbdb76d9d747540f6e9a86e8c0ed92b64c5e99b",
+      "expected_sha256": "4edb57b21dd3fb86f5b6702e7dbdb76d9d747540f6e9a86e8c0ed92b64c5e99b",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/pr-delta-review-30.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/pr-delta-review-30.html",
+      "status": 200,
+      "bytes": 35879,
+      "expected_bytes": 35879,
+      "sha256": "0d2361c4e2259e70d75dfaf1583c10eb6dc8e2ba55979f361757a2e1ea11e5a0",
+      "expected_sha256": "0d2361c4e2259e70d75dfaf1583c10eb6dc8e2ba55979f361757a2e1ea11e5a0",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/pr-delta-review-30.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/pr-delta-review-30.html",
+      "status": 200,
+      "bytes": 35879,
+      "expected_bytes": 35879,
+      "sha256": "0d2361c4e2259e70d75dfaf1583c10eb6dc8e2ba55979f361757a2e1ea11e5a0",
+      "expected_sha256": "0d2361c4e2259e70d75dfaf1583c10eb6dc8e2ba55979f361757a2e1ea11e5a0",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/README.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/README.html",
+      "status": 200,
+      "bytes": 35395,
+      "expected_bytes": 35395,
+      "sha256": "7d3bb4dd784b00c520dc3a0e72cb8de9c1396c0bccc8cb5632af46b9ed1159ce",
+      "expected_sha256": "7d3bb4dd784b00c520dc3a0e72cb8de9c1396c0bccc8cb5632af46b9ed1159ce",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/README.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/README.html",
+      "status": 200,
+      "bytes": 35395,
+      "expected_bytes": 35395,
+      "sha256": "7d3bb4dd784b00c520dc3a0e72cb8de9c1396c0bccc8cb5632af46b9ed1159ce",
+      "expected_sha256": "7d3bb4dd784b00c520dc3a0e72cb8de9c1396c0bccc8cb5632af46b9ed1159ce",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "status": 200,
+      "bytes": 43189,
+      "expected_bytes": 43189,
+      "sha256": "9fa23590af92b29c932bb9de87ce629fe2f77040ed45fab749768f97fcb4b32a",
+      "expected_sha256": "9fa23590af92b29c932bb9de87ce629fe2f77040ed45fab749768f97fcb4b32a",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "status": 200,
+      "bytes": 43189,
+      "expected_bytes": 43189,
+      "sha256": "9fa23590af92b29c932bb9de87ce629fe2f77040ed45fab749768f97fcb4b32a",
+      "expected_sha256": "9fa23590af92b29c932bb9de87ce629fe2f77040ed45fab749768f97fcb4b32a",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/render-build-result.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/render-build-result.html",
+      "status": 200,
+      "bytes": 27722,
+      "expected_bytes": 27722,
+      "sha256": "638d281af6df986674b48f795dcccf950c0d5fbae19aac39ef4a352c9c9fb3f3",
+      "expected_sha256": "638d281af6df986674b48f795dcccf950c0d5fbae19aac39ef4a352c9c9fb3f3",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/render-build-result.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/render-build-result.html",
+      "status": 200,
+      "bytes": 27722,
+      "expected_bytes": 27722,
+      "sha256": "638d281af6df986674b48f795dcccf950c0d5fbae19aac39ef4a352c9c9fb3f3",
+      "expected_sha256": "638d281af6df986674b48f795dcccf950c0d5fbae19aac39ef4a352c9c9fb3f3",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.html",
+      "status": 200,
+      "bytes": 33179,
+      "expected_bytes": 33179,
+      "sha256": "ce2f5506d51ca2cb421278f2fe77ae2a03699a162c0d15fe73b53cb1b0ed8204",
+      "expected_sha256": "ce2f5506d51ca2cb421278f2fe77ae2a03699a162c0d15fe73b53cb1b0ed8204",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.html",
+      "status": 200,
+      "bytes": 33179,
+      "expected_bytes": 33179,
+      "sha256": "ce2f5506d51ca2cb421278f2fe77ae2a03699a162c0d15fe73b53cb1b0ed8204",
+      "expected_sha256": "ce2f5506d51ca2cb421278f2fe77ae2a03699a162c0d15fe73b53cb1b0ed8204",
+      "match": true
+    },
+    {
+      "path": "logo.svg",
+      "url": "http://127.0.0.1:8768/spinon/logo.svg",
+      "status": 200,
+      "bytes": 568,
+      "expected_bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "expected_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "match": true
+    },
+    {
+      "path": "plan/c15-inline-text-layout.html",
+      "url": "http://127.0.0.1:8768/spinon/plan/c15-inline-text-layout.html",
+      "status": 200,
+      "bytes": 63538,
+      "expected_bytes": 63538,
+      "sha256": "c6f6b26eb0198c28b72dce9d3d43b5857e07d80480e2d6c3dbc3472101fe79fa",
+      "expected_sha256": "c6f6b26eb0198c28b72dce9d3d43b5857e07d80480e2d6c3dbc3472101fe79fa",
+      "match": true
+    },
+    {
+      "path": "spec/plan/c15-inline-text-layout.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/plan/c15-inline-text-layout.html",
+      "status": 200,
+      "bytes": 63538,
+      "expected_bytes": 63538,
+      "sha256": "c6f6b26eb0198c28b72dce9d3d43b5857e07d80480e2d6c3dbc3472101fe79fa",
+      "expected_sha256": "c6f6b26eb0198c28b72dce9d3d43b5857e07d80480e2d6c3dbc3472101fe79fa",
+      "match": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "url": "http://127.0.0.1:8768/spinon/static/css/styles.8d918fd78e.css",
+      "status": 200,
+      "bytes": 73952,
+      "expected_bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "expected_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "match": true
+    },
+    {
+      "path": "static/image/tailnet-color-source-verdict-agent-browser.70673c6e8a.png",
+      "url": "http://127.0.0.1:8768/spinon/static/image/tailnet-color-source-verdict-agent-browser.70673c6e8a.png",
+      "status": 200,
+      "bytes": 192388,
+      "expected_bytes": 192388,
+      "sha256": "079a492fa2c2cbfe0121e6d78675b2dee88a4301a9de35281e8274dc7657d7c1",
+      "expected_sha256": "079a492fa2c2cbfe0121e6d78675b2dee88a4301a9de35281e8274dc7657d7c1",
+      "match": true
+    },
+    {
+      "path": "static/image/tailnet-contract-0072-agent-browser.d114e3e06f.png",
+      "url": "http://127.0.0.1:8768/spinon/static/image/tailnet-contract-0072-agent-browser.d114e3e06f.png",
+      "status": 200,
+      "bytes": 125523,
+      "expected_bytes": 125523,
+      "sha256": "16129eb89d619b9968eb06b8a0cace3eb890558bf0905f242b5708bfb1ebdf7f",
+      "expected_sha256": "16129eb89d619b9968eb06b8a0cace3eb890558bf0905f242b5708bfb1ebdf7f",
+      "match": true
+    },
+    {
+      "path": "static/image/tailnet-contract-agent-browser.b7c62ebe9d.png",
+      "url": "http://127.0.0.1:8768/spinon/static/image/tailnet-contract-agent-browser.b7c62ebe9d.png",
+      "status": 200,
+      "bytes": 117851,
+      "expected_bytes": 117851,
+      "sha256": "0e2fcf4cb76151e77878e30f91ded405e0c5b385ff729a5fc857fbd23d05b5da",
+      "expected_sha256": "0e2fcf4cb76151e77878e30f91ded405e0c5b385ff729a5fc857fbd23d05b5da",
+      "match": true
+    },
+    {
+      "path": "static/image/tailnet-roadmap-agent-browser.76ed7206a9.png",
+      "url": "http://127.0.0.1:8768/spinon/static/image/tailnet-roadmap-agent-browser.76ed7206a9.png",
+      "status": 200,
+      "bytes": 271970,
+      "expected_bytes": 271970,
+      "sha256": "d3b468a563a58c47ae10eca12fa9fc37e5682cc8f136c10910c2152de290a653",
+      "expected_sha256": "d3b468a563a58c47ae10eca12fa9fc37e5682cc8f136c10910c2152de290a653",
+      "match": true
+    },
+    {
+      "path": "static/image/tailnet-roadmap-c15-3-agent-browser.2c4ca9b5fd.png",
+      "url": "http://127.0.0.1:8768/spinon/static/image/tailnet-roadmap-c15-3-agent-browser.2c4ca9b5fd.png",
+      "status": 200,
+      "bytes": 261061,
+      "expected_bytes": 261061,
+      "sha256": "381afd3671b8c65e10da0dd826398cf11208031a51520a7d48cee862efd276c8",
+      "expected_sha256": "381afd3671b8c65e10da0dd826398cf11208031a51520a7d48cee862efd276c8",
+      "match": true
+    },
+    {
+      "path": "static/image/tailnet-roadmap-c19-color-agent-browser.2604e0d367.png",
+      "url": "http://127.0.0.1:8768/spinon/static/image/tailnet-roadmap-c19-color-agent-browser.2604e0d367.png",
+      "status": 200,
+      "bytes": 237560,
+      "expected_bytes": 237560,
+      "sha256": "f9927f60d3098a4018ac0abc4008ad1063debf972da23f0ad19e206fb79c9fb7",
+      "expected_sha256": "f9927f60d3098a4018ac0abc4008ad1063debf972da23f0ad19e206fb79c9fb7",
+      "match": true
+    },
+    {
+      "path": "static/image/tailnet-runtime-evidence-agent-browser.c20b9e074c.png",
+      "url": "http://127.0.0.1:8768/spinon/static/image/tailnet-runtime-evidence-agent-browser.c20b9e074c.png",
+      "status": 200,
+      "bytes": 135049,
+      "expected_bytes": 135049,
+      "sha256": "91f8d7d8b26519ee68abe766fd09e162b9a98d9f325bd93dd0a39822dee1d257",
+      "expected_sha256": "91f8d7d8b26519ee68abe766fd09e162b9a98d9f325bd93dd0a39822dee1d257",
+      "match": true
+    },
+    {
+      "path": "static/image/tailnet-status-agent-browser.e21a5fc481.png",
+      "url": "http://127.0.0.1:8768/spinon/static/image/tailnet-status-agent-browser.e21a5fc481.png",
+      "status": 200,
+      "bytes": 227042,
+      "expected_bytes": 227042,
+      "sha256": "0029ed2524a9eaee7c0cb43eb2de43f8526eb17aa94ceab4dcb2824da3d7d1a7",
+      "expected_sha256": "0029ed2524a9eaee7c0cb43eb2de43f8526eb17aa94ceab4dcb2824da3d7d1a7",
+      "match": true
+    },
+    {
+      "path": "static/image/tailnet-status-c15-agent-browser.0408c0ab07.png",
+      "url": "http://127.0.0.1:8768/spinon/static/image/tailnet-status-c15-agent-browser.0408c0ab07.png",
+      "status": 200,
+      "bytes": 215208,
+      "expected_bytes": 215208,
+      "sha256": "c909e61fc2b66d49e2214d8db525797e0805c3f97765fc9bae689442ef739c41",
+      "expected_sha256": "c909e61fc2b66d49e2214d8db525797e0805c3f97765fc9bae689442ef739c41",
+      "match": true
+    },
+    {
+      "path": "static/js/a.8137248d79.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/a.8137248d79.js",
+      "status": 200,
+      "bytes": 217109,
+      "expected_bytes": 217109,
+      "sha256": "b097f4c0e1c551c011c7fdfe1de9284ee791a616f64a7cf46d4f4cba59364898",
+      "expected_sha256": "b097f4c0e1c551c011c7fdfe1de9284ee791a616f64a7cf46d4f4cba59364898",
+      "match": true
+    },
+    {
+      "path": "static/js/a.8137248d79.js.LICENSE.txt",
+      "url": "http://127.0.0.1:8768/spinon/static/js/a.8137248d79.js.LICENSE.txt",
+      "status": 200,
+      "bytes": 384,
+      "expected_bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "expected_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "match": true
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/i.25208e7c92.js",
+      "status": 200,
+      "bytes": 100,
+      "expected_bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "expected_sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-017bed2a42da.3f4d3d6ae6.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-017bed2a42da.3f4d3d6ae6.js",
+      "status": 200,
+      "bytes": 11918,
+      "expected_bytes": 11918,
+      "sha256": "da7e9d16b485ad794916dc036640daff57ea98b602c7894de096af5c9346599b",
+      "expected_sha256": "da7e9d16b485ad794916dc036640daff57ea98b602c7894de096af5c9346599b",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-0ea6f3745400.18e7f2483d.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-0ea6f3745400.18e7f2483d.js",
+      "status": 200,
+      "bytes": 10847,
+      "expected_bytes": 10847,
+      "sha256": "f6df493c2de42ae1ed4da567215de534d2d348a06faa5a4086f1bc5c0c79f7a8",
+      "expected_sha256": "f6df493c2de42ae1ed4da567215de534d2d348a06faa5a4086f1bc5c0c79f7a8",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-0ea6f3745400.217bb71eea.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-0ea6f3745400.217bb71eea.js",
+      "status": 200,
+      "bytes": 6603,
+      "expected_bytes": 6603,
+      "sha256": "aa6cfbfc484e31aa72e8879cbdb54e6438a935735e67949e6c163c99ed799968",
+      "expected_sha256": "aa6cfbfc484e31aa72e8879cbdb54e6438a935735e67949e6c163c99ed799968",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-117783875241.97f2433f4b.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-117783875241.97f2433f4b.js",
+      "status": 200,
+      "bytes": 47298,
+      "expected_bytes": 47298,
+      "sha256": "7da859f99f01e370471f9c22bce1c74b14cd1abf80fe1299c38deb2e9f1f5c26",
+      "expected_sha256": "7da859f99f01e370471f9c22bce1c74b14cd1abf80fe1299c38deb2e9f1f5c26",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-2a8fb458a6a4.9cfeb4e57c.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-2a8fb458a6a4.9cfeb4e57c.js",
+      "status": 200,
+      "bytes": 10116,
+      "expected_bytes": 10116,
+      "sha256": "7c13f78e010c97618af3b353c6ab395dc6c02939efab2ca8d038655d17c2bd00",
+      "expected_sha256": "7c13f78e010c97618af3b353c6ab395dc6c02939efab2ca8d038655d17c2bd00",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-3e2d0954f57f.a0fd297596.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-3e2d0954f57f.a0fd297596.js",
+      "status": 200,
+      "bytes": 12963,
+      "expected_bytes": 12963,
+      "sha256": "e6fb3c011229fcd69299c05ae3d8a16a7ef0e162f888b5490789753eb935a1b6",
+      "expected_sha256": "e6fb3c011229fcd69299c05ae3d8a16a7ef0e162f888b5490789753eb935a1b6",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-410b8fac7053.0dac4f3bbd.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-410b8fac7053.0dac4f3bbd.js",
+      "status": 200,
+      "bytes": 6917,
+      "expected_bytes": 6917,
+      "sha256": "865b67f5aa6c5654e8953dfdb09ae672e8b43f92d706373de9f32b7d9921259c",
+      "expected_sha256": "865b67f5aa6c5654e8953dfdb09ae672e8b43f92d706373de9f32b7d9921259c",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-4fc60b47d996.82788d1888.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-4fc60b47d996.82788d1888.js",
+      "status": 200,
+      "bytes": 6867,
+      "expected_bytes": 6867,
+      "sha256": "3d10ef1c5aaf19bf3c2a88bf22b9e5e022d04c866244b1db708ffe26fd8e9ccd",
+      "expected_sha256": "3d10ef1c5aaf19bf3c2a88bf22b9e5e022d04c866244b1db708ffe26fd8e9ccd",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.c993c68f7b.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-6c33a3943990.c993c68f7b.js",
+      "status": 200,
+      "bytes": 351626,
+      "expected_bytes": 351626,
+      "sha256": "f4c29d83e7b9f410e84c932be39bed22293b1fe0aa22e8d4ed62647e133c4ba9",
+      "expected_sha256": "f4c29d83e7b9f410e84c932be39bed22293b1fe0aa22e8d4ed62647e133c4ba9",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.f247e15a35.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-6c33a3943990.f247e15a35.js",
+      "status": 200,
+      "bytes": 351622,
+      "expected_bytes": 351622,
+      "sha256": "877b8dabdb3f972a477b4c5fcba0d6d46a0ce2247b4689ebdc3aa940393a3333",
+      "expected_sha256": "877b8dabdb3f972a477b4c5fcba0d6d46a0ce2247b4689ebdc3aa940393a3333",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-7f1586660381.ae96b77f3e.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-7f1586660381.ae96b77f3e.js",
+      "status": 200,
+      "bytes": 8181,
+      "expected_bytes": 8181,
+      "sha256": "48c346103d585074f4203796546fed51d8e5f4d284972b6460b26b3a10c64e22",
+      "expected_sha256": "48c346103d585074f4203796546fed51d8e5f4d284972b6460b26b3a10c64e22",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-815a6cb5ee57.4696b9d071.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-815a6cb5ee57.4696b9d071.js",
+      "status": 200,
+      "bytes": 10882,
+      "expected_bytes": 10882,
+      "sha256": "35096c72434ebbbed531264fb6aad7503b766f633a7185a283b6c3a822808cd6",
+      "expected_sha256": "35096c72434ebbbed531264fb6aad7503b766f633a7185a283b6c3a822808cd6",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-896411e7ef19.158ab35915.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-896411e7ef19.158ab35915.js",
+      "status": 200,
+      "bytes": 15007,
+      "expected_bytes": 15007,
+      "sha256": "dada703a2503094c14ede31d87a9b297d6593a49fcfa6b0fbefb80dd71c87e03",
+      "expected_sha256": "dada703a2503094c14ede31d87a9b297d6593a49fcfa6b0fbefb80dd71c87e03",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-99ce983111cf.4ec3882288.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-99ce983111cf.4ec3882288.js",
+      "status": 200,
+      "bytes": 5994,
+      "expected_bytes": 5994,
+      "sha256": "e4217ad42cdfcaa4218e4de6c90899b1c8b1e2006f2070dd0c8c68201f2e211d",
+      "expected_sha256": "e4217ad42cdfcaa4218e4de6c90899b1c8b1e2006f2070dd0c8c68201f2e211d",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-a1017bdf23ca.77a85fe80c.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-a1017bdf23ca.77a85fe80c.js",
+      "status": 200,
+      "bytes": 161381,
+      "expected_bytes": 161381,
+      "sha256": "c9fa05481c7b2e466f95b9c336ada36a7b7cc84b8ee699193d20a621905181de",
+      "expected_sha256": "c9fa05481c7b2e466f95b9c336ada36a7b7cc84b8ee699193d20a621905181de",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-a1017bdf23ca.b4cce800e5.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-a1017bdf23ca.b4cce800e5.js",
+      "status": 200,
+      "bytes": 161391,
+      "expected_bytes": 161391,
+      "sha256": "fab842a8b61c949a5fcca57e21ce8900f931e7e6b634a76797ae6efe84619082",
+      "expected_sha256": "fab842a8b61c949a5fcca57e21ce8900f931e7e6b634a76797ae6efe84619082",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-a1017bdf23ca.e659632386.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-a1017bdf23ca.e659632386.js",
+      "status": 200,
+      "bytes": 161580,
+      "expected_bytes": 161580,
+      "sha256": "8b6013cc7130e9f062c215e26df12661019acc7f8e963e0677ab780a31425275",
+      "expected_sha256": "8b6013cc7130e9f062c215e26df12661019acc7f8e963e0677ab780a31425275",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-b2108e9f6e7b.b6fe005f58.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-b2108e9f6e7b.b6fe005f58.js",
+      "status": 200,
+      "bytes": 14066,
+      "expected_bytes": 14066,
+      "sha256": "14b11074e38fa27dc22a9de265ac67b690401e18ce3e2b785e685e4de52fd507",
+      "expected_sha256": "14b11074e38fa27dc22a9de265ac67b690401e18ce3e2b785e685e4de52fd507",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-d2ded2f59991.7dd80ce0f2.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-d2ded2f59991.7dd80ce0f2.js",
+      "status": 200,
+      "bytes": 7344,
+      "expected_bytes": 7344,
+      "sha256": "e9f800bac37d6c57a43a6c14b27d9ef4fa5c6fa27a5688800b5e961dfdb1f144",
+      "expected_sha256": "e9f800bac37d6c57a43a6c14b27d9ef4fa5c6fa27a5688800b5e961dfdb1f144",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-d91703daf823.8601704c08.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-d91703daf823.8601704c08.js",
+      "status": 200,
+      "bytes": 10673,
+      "expected_bytes": 10673,
+      "sha256": "f3a9de270e85500463dad3fcd0e54c0d4a415c381424be1227271ee84f740c2a",
+      "expected_sha256": "f3a9de270e85500463dad3fcd0e54c0d4a415c381424be1227271ee84f740c2a",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-de3bb2a34479.40382c7d4c.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-de3bb2a34479.40382c7d4c.js",
+      "status": 200,
+      "bytes": 8639,
+      "expected_bytes": 8639,
+      "sha256": "fdb9aa1d28942d1aed2b7f3c98d5632e03614d560fa445db960548d30b9f8cbc",
+      "expected_sha256": "fdb9aa1d28942d1aed2b7f3c98d5632e03614d560fa445db960548d30b9f8cbc",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-e4492196d4bd.1e92fd4604.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-e4492196d4bd.1e92fd4604.js",
+      "status": 200,
+      "bytes": 9671,
+      "expected_bytes": 9671,
+      "sha256": "3c2cdbdb6c112fcb745d0a98ffcf48b905c8a28f91f196c6f015185c0bead0ab",
+      "expected_sha256": "3c2cdbdb6c112fcb745d0a98ffcf48b905c8a28f91f196c6f015185c0bead0ab",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-fe58d88acce0.2ca91d10cb.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-fe58d88acce0.2ca91d10cb.js",
+      "status": 200,
+      "bytes": 5168,
+      "expected_bytes": 5168,
+      "sha256": "10797f9e8b5d9a4fd5cf00d22fae96ce5aa6266316d59d9bce632b15e5561707",
+      "expected_sha256": "10797f9e8b5d9a4fd5cf00d22fae96ce5aa6266316d59d9bce632b15e5561707",
+      "match": true
+    },
+    {
+      "path": "static/js/async/route-fe58d88acce0.4d0d4c1ce0.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-fe58d88acce0.4d0d4c1ce0.js",
+      "status": 200,
+      "bytes": 2935,
+      "expected_bytes": 2935,
+      "sha256": "b6e20e09a52d6cc9f6db0ce996a00526f1259650e416d039b4ed01ca8d114326",
+      "expected_sha256": "b6e20e09a52d6cc9f6db0ce996a00526f1259650e416d039b4ed01ca8d114326",
+      "match": true
+    },
+    {
+      "path": "static/js/index.4226e3c7aa.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/index.4226e3c7aa.js",
+      "status": 200,
+      "bytes": 38948,
+      "expected_bytes": 38948,
+      "sha256": "9ade0c3314731afc159feb83ef311d49c3fc837eb3051abba42f23217df72bd5",
+      "expected_sha256": "9ade0c3314731afc159feb83ef311d49c3fc837eb3051abba42f23217df72bd5",
+      "match": true
+    },
+    {
+      "path": "static/js/index.5ed7af6352.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/index.5ed7af6352.js",
+      "status": 200,
+      "bytes": 46718,
+      "expected_bytes": 46718,
+      "sha256": "4ca687982c25457b0cdbf849259e5f36a780332aaa9c0f077effa4406dfaa56b",
+      "expected_sha256": "4ca687982c25457b0cdbf849259e5f36a780332aaa9c0f077effa4406dfaa56b",
+      "match": true
+    },
+    {
+      "path": "static/js/index.98414cb48a.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/index.98414cb48a.js",
+      "status": 200,
+      "bytes": 37347,
+      "expected_bytes": 37347,
+      "sha256": "0b38e81d2ead1419395d29abd17d53d26239d6c7883b79ce3b6cbaea6e2c4bd2",
+      "expected_sha256": "0b38e81d2ead1419395d29abd17d53d26239d6c7883b79ce3b6cbaea6e2c4bd2",
+      "match": true
+    },
+    {
+      "path": "static/js/index.bc84d7a6f2.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/index.bc84d7a6f2.js",
+      "status": 200,
+      "bytes": 46718,
+      "expected_bytes": 46718,
+      "sha256": "3619a4f0572e0f96748bac8409e5dd79c7f6b7bcde4b49e6d53f40ef2d445e20",
+      "expected_sha256": "3619a4f0572e0f96748bac8409e5dd79c7f6b7bcde4b49e6d53f40ef2d445e20",
+      "match": true
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/lib-react.9cdf8f49ce.js",
+      "status": 200,
+      "bytes": 218364,
+      "expected_bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "expected_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "match": true
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "url": "http://127.0.0.1:8768/spinon/static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "status": 200,
+      "bytes": 1209,
+      "expected_bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "expected_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "match": true
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/lib-router.1e14e568cb.js",
+      "status": 200,
+      "bytes": 35370,
+      "expected_bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "expected_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "match": true
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "url": "http://127.0.0.1:8768/spinon/static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "status": 200,
+      "bytes": 222,
+      "expected_bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "expected_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "match": true
+    },
+    {
+      "path": "static/js/styles.2da0941fcb.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/styles.2da0941fcb.js",
+      "status": 200,
+      "bytes": 472,
+      "expected_bytes": 472,
+      "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "expected_sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "match": true
+    },
+    {
+      "path": "static/search_index.ko.486659a2.json",
+      "url": "http://127.0.0.1:8768/spinon/static/search_index.ko.486659a2.json",
+      "status": 200,
+      "bytes": 402911,
+      "expected_bytes": 402911,
+      "sha256": "486659a2b97ee8d0eff88d006bf54417b13140dc2ec562c23e1904649d69f003",
+      "expected_sha256": "486659a2b97ee8d0eff88d006bf54417b13140dc2ec562c23e1904649d69f003",
+      "match": true
+    },
+    {
+      "path": "static/search_index.ko.7f1ca8f1.json",
+      "url": "http://127.0.0.1:8768/spinon/static/search_index.ko.7f1ca8f1.json",
+      "status": 200,
+      "bytes": 381045,
+      "expected_bytes": 381045,
+      "sha256": "7f1ca8f1e941708e07175f762d6d1f0c8642645853afe5d55c28ce2992c4a32d",
+      "expected_sha256": "7f1ca8f1e941708e07175f762d6d1f0c8642645853afe5d55c28ce2992c4a32d",
+      "match": true
+    },
+    {
+      "path": "static/search_index.ko.911ffd68.json",
+      "url": "http://127.0.0.1:8768/spinon/static/search_index.ko.911ffd68.json",
+      "status": 200,
+      "bytes": 402867,
+      "expected_bytes": 402867,
+      "sha256": "911ffd68715ae0097e0492a012a7fd20205a173926ba4cc3678dfd21cc84d1c7",
+      "expected_sha256": "911ffd68715ae0097e0492a012a7fd20205a173926ba4cc3678dfd21cc84d1c7",
+      "match": true
+    },
+    {
+      "path": "static/search_index.ko.f47e4b25.json",
+      "url": "http://127.0.0.1:8768/spinon/static/search_index.ko.f47e4b25.json",
+      "status": 200,
+      "bytes": 387057,
+      "expected_bytes": 387057,
+      "sha256": "f47e4b25bf97d602dbb377d286a98b6eeb07fbcf3b2833f4613b3a3e19ef020f",
+      "expected_sha256": "f47e4b25bf97d602dbb377d286a98b6eeb07fbcf3b2833f4613b3a3e19ef020f",
+      "match": true
+    },
+    {
+      "path": "STATUS.md",
+      "url": "http://127.0.0.1:8768/spinon/STATUS.md",
+      "status": 200,
+      "bytes": 254232,
+      "expected_bytes": 254232,
+      "sha256": "12f65c5ee6837b3f8c3021d10c2b80eef383bde9a87a042a5736fc4107474168",
+      "expected_sha256": "12f65c5ee6837b3f8c3021d10c2b80eef383bde9a87a042a5736fc4107474168",
+      "match": true
+    },
+    {
+      "path": "spec/STATUS.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/STATUS.md",
+      "status": 200,
+      "bytes": 254232,
+      "expected_bytes": 254232,
+      "sha256": "12f65c5ee6837b3f8c3021d10c2b80eef383bde9a87a042a5736fc4107474168",
+      "expected_sha256": "12f65c5ee6837b3f8c3021d10c2b80eef383bde9a87a042a5736fc4107474168",
+      "match": true
+    },
+    {
+      "path": "internal/0071-c15-3-glyph-raster-snapshot.md",
+      "url": "http://127.0.0.1:8768/spinon/internal/0071-c15-3-glyph-raster-snapshot.md",
+      "status": 200,
+      "bytes": 4596,
+      "expected_bytes": 4596,
+      "sha256": "978ff0c93e28fb0c18417008778ec3a6fd44946fa4beed2210c40c8478f34e6b",
+      "expected_sha256": "978ff0c93e28fb0c18417008778ec3a6fd44946fa4beed2210c40c8478f34e6b",
+      "match": true
+    },
+    {
+      "path": "spec/internal/0071-c15-3-glyph-raster-snapshot.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/0071-c15-3-glyph-raster-snapshot.md",
+      "status": 200,
+      "bytes": 4596,
+      "expected_bytes": 4596,
+      "sha256": "978ff0c93e28fb0c18417008778ec3a6fd44946fa4beed2210c40c8478f34e6b",
+      "expected_sha256": "978ff0c93e28fb0c18417008778ec3a6fd44946fa4beed2210c40c8478f34e6b",
+      "match": true
+    },
+    {
+      "path": "internal/0072-c15-3-wgpu-glyph-paint.md",
+      "url": "http://127.0.0.1:8768/spinon/internal/0072-c15-3-wgpu-glyph-paint.md",
+      "status": 200,
+      "bytes": 3369,
+      "expected_bytes": 3369,
+      "sha256": "c32ef5157e0084eb341731635e0c3df6f869d0dca58f336cc4b45299a39aff82",
+      "expected_sha256": "c32ef5157e0084eb341731635e0c3df6f869d0dca58f336cc4b45299a39aff82",
+      "match": true
+    },
+    {
+      "path": "spec/internal/0072-c15-3-wgpu-glyph-paint.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/0072-c15-3-wgpu-glyph-paint.md",
+      "status": 200,
+      "bytes": 3369,
+      "expected_bytes": 3369,
+      "sha256": "c32ef5157e0084eb341731635e0c3df6f869d0dca58f336cc4b45299a39aff82",
+      "expected_sha256": "c32ef5157e0084eb341731635e0c3df6f869d0dca58f336cc4b45299a39aff82",
+      "match": true
+    },
+    {
+      "path": "internal/README.md",
+      "url": "http://127.0.0.1:8768/spinon/internal/README.md",
+      "status": 200,
+      "bytes": 110354,
+      "expected_bytes": 110354,
+      "sha256": "4cb6d929caf370a22fabd3ce9e5eae4bd2abee4474fb266e2a4df2664860b99a",
+      "expected_sha256": "4cb6d929caf370a22fabd3ce9e5eae4bd2abee4474fb266e2a4df2664860b99a",
+      "match": true
+    },
+    {
+      "path": "spec/internal/README.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/README.md",
+      "status": 200,
+      "bytes": 110354,
+      "expected_bytes": 110354,
+      "sha256": "4cb6d929caf370a22fabd3ce9e5eae4bd2abee4474fb266e2a4df2664860b99a",
+      "expected_sha256": "4cb6d929caf370a22fabd3ce9e5eae4bd2abee4474fb266e2a4df2664860b99a",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-2026-10-17/README.md",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-2026-10-17/README.md",
+      "status": 200,
+      "bytes": 4945,
+      "expected_bytes": 4945,
+      "sha256": "89ff9b4b1ef62c759d1e747baaf9b202e6ef05c9bdb47069e16417d03f1b8d35",
+      "expected_sha256": "89ff9b4b1ef62c759d1e747baaf9b202e6ef05c9bdb47069e16417d03f1b8d35",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-2026-10-17/README.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-2026-10-17/README.md",
+      "status": 200,
+      "bytes": 4945,
+      "expected_bytes": 4945,
+      "sha256": "89ff9b4b1ef62c759d1e747baaf9b202e6ef05c9bdb47069e16417d03f1b8d35",
+      "expected_sha256": "89ff9b4b1ef62c759d1e747baaf9b202e6ef05c9bdb47069e16417d03f1b8d35",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-2026-10-17/implementation-review-20.md",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-2026-10-17/implementation-review-20.md",
+      "status": 200,
+      "bytes": 4822,
+      "expected_bytes": 4822,
+      "sha256": "9d539833b657e471db7e7a398e9aeda7812061b60da3efb6db9cc2265277ad2b",
+      "expected_sha256": "9d539833b657e471db7e7a398e9aeda7812061b60da3efb6db9cc2265277ad2b",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-2026-10-17/implementation-review-20.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-2026-10-17/implementation-review-20.md",
+      "status": 200,
+      "bytes": 4822,
+      "expected_bytes": 4822,
+      "sha256": "9d539833b657e471db7e7a398e9aeda7812061b60da3efb6db9cc2265277ad2b",
+      "expected_sha256": "9d539833b657e471db7e7a398e9aeda7812061b60da3efb6db9cc2265277ad2b",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-2026-10-17/pr-delta-review-20.md",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-2026-10-17/pr-delta-review-20.md",
+      "status": 200,
+      "bytes": 6312,
+      "expected_bytes": 6312,
+      "sha256": "aa0f79fdeffa1a33c5aac7bf06697457870d51c823b3f53c0a1a99e4d0fa7abb",
+      "expected_sha256": "aa0f79fdeffa1a33c5aac7bf06697457870d51c823b3f53c0a1a99e4d0fa7abb",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-2026-10-17/pr-delta-review-20.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-2026-10-17/pr-delta-review-20.md",
+      "status": 200,
+      "bytes": 6312,
+      "expected_bytes": 6312,
+      "sha256": "aa0f79fdeffa1a33c5aac7bf06697457870d51c823b3f53c0a1a99e4d0fa7abb",
+      "expected_sha256": "aa0f79fdeffa1a33c5aac7bf06697457870d51c823b3f53c0a1a99e4d0fa7abb",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/README.md",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/README.md",
+      "status": 200,
+      "bytes": 3205,
+      "expected_bytes": 3205,
+      "sha256": "4b28766e176f8ddcf8f92691ebb235def773ed906ca877832df304cf7b97b4f3",
+      "expected_sha256": "4b28766e176f8ddcf8f92691ebb235def773ed906ca877832df304cf7b97b4f3",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/README.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/README.md",
+      "status": 200,
+      "bytes": 3205,
+      "expected_bytes": 3205,
+      "sha256": "4b28766e176f8ddcf8f92691ebb235def773ed906ca877832df304cf7b97b4f3",
+      "expected_sha256": "4b28766e176f8ddcf8f92691ebb235def773ed906ca877832df304cf7b97b4f3",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/backup-verification.json",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/backup-verification.json",
+      "status": 200,
+      "bytes": 6406,
+      "expected_bytes": 6406,
+      "sha256": "e68926275a0dbe6a6992e7fec46ef7b0f5cf3299b7f83e1dc6ac580963f512bb",
+      "expected_sha256": "e68926275a0dbe6a6992e7fec46ef7b0f5cf3299b7f83e1dc6ac580963f512bb",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/backup-verification.json",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/backup-verification.json",
+      "status": 200,
+      "bytes": 6406,
+      "expected_bytes": 6406,
+      "sha256": "e68926275a0dbe6a6992e7fec46ef7b0f5cf3299b7f83e1dc6ac580963f512bb",
+      "expected_sha256": "e68926275a0dbe6a6992e7fec46ef7b0f5cf3299b7f83e1dc6ac580963f512bb",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/copy-verification.json",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/copy-verification.json",
+      "status": 200,
+      "bytes": 46064,
+      "expected_bytes": 46064,
+      "sha256": "98078e7cf81a9dccaac50c88b0cf6dbef112d63b30c960111fd6311860e45472",
+      "expected_sha256": "98078e7cf81a9dccaac50c88b0cf6dbef112d63b30c960111fd6311860e45472",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/copy-verification.json",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/copy-verification.json",
+      "status": 200,
+      "bytes": 46064,
+      "expected_bytes": 46064,
+      "sha256": "98078e7cf81a9dccaac50c88b0cf6dbef112d63b30c960111fd6311860e45472",
+      "expected_sha256": "98078e7cf81a9dccaac50c88b0cf6dbef112d63b30c960111fd6311860e45472",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/manifest.json",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/manifest.json",
+      "status": 200,
+      "bytes": 51023,
+      "expected_bytes": 51023,
+      "sha256": "c6ed2d1e4d452576e2958e41040d94f0d4eb750389ec30cf62ab91c779c1b623",
+      "expected_sha256": "c6ed2d1e4d452576e2958e41040d94f0d4eb750389ec30cf62ab91c779c1b623",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/manifest.json",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/manifest.json",
+      "status": 200,
+      "bytes": 51023,
+      "expected_bytes": 51023,
+      "sha256": "c6ed2d1e4d452576e2958e41040d94f0d4eb750389ec30cf62ab91c779c1b623",
+      "expected_sha256": "c6ed2d1e4d452576e2958e41040d94f0d4eb750389ec30cf62ab91c779c1b623",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "status": 200,
+      "bytes": 5134,
+      "expected_bytes": 5134,
+      "sha256": "c6d5c6a1720de658da6e2842a06028458c1b56316269ce47442241e37aed9024",
+      "expected_sha256": "c6d5c6a1720de658da6e2842a06028458c1b56316269ce47442241e37aed9024",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "status": 200,
+      "bytes": 5134,
+      "expected_bytes": 5134,
+      "sha256": "c6d5c6a1720de658da6e2842a06028458c1b56316269ce47442241e37aed9024",
+      "expected_sha256": "c6d5c6a1720de658da6e2842a06028458c1b56316269ce47442241e37aed9024",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/preflight.json",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/preflight.json",
+      "status": 200,
+      "bytes": 42866,
+      "expected_bytes": 42866,
+      "sha256": "317905ea798e08f3ae39503d11f4133a5655291f492e9aad72c50b56003896ac",
+      "expected_sha256": "317905ea798e08f3ae39503d11f4133a5655291f492e9aad72c50b56003896ac",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/preflight.json",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/preflight.json",
+      "status": 200,
+      "bytes": 42866,
+      "expected_bytes": 42866,
+      "sha256": "317905ea798e08f3ae39503d11f4133a5655291f492e9aad72c50b56003896ac",
+      "expected_sha256": "317905ea798e08f3ae39503d11f4133a5655291f492e9aad72c50b56003896ac",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/render-build-result.md",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/render-build-result.md",
+      "status": 200,
+      "bytes": 2762,
+      "expected_bytes": 2762,
+      "sha256": "a53e76de9ddc01efd623e3633570477d4d01d6c1fe08b856002e58db52026202",
+      "expected_sha256": "a53e76de9ddc01efd623e3633570477d4d01d6c1fe08b856002e58db52026202",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/render-build-result.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/render-build-result.md",
+      "status": 200,
+      "bytes": 2762,
+      "expected_bytes": 2762,
+      "sha256": "a53e76de9ddc01efd623e3633570477d4d01d6c1fe08b856002e58db52026202",
+      "expected_sha256": "a53e76de9ddc01efd623e3633570477d4d01d6c1fe08b856002e58db52026202",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/selected-build.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/selected-build.log",
+      "status": 200,
+      "bytes": 6315,
+      "expected_bytes": 6315,
+      "sha256": "bc82aa8cbd0fdc72f1e380bde3b8318149f2f5a23baadd59e757e357ecba1211",
+      "expected_sha256": "bc82aa8cbd0fdc72f1e380bde3b8318149f2f5a23baadd59e757e357ecba1211",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/selected-build.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/selected-build.log",
+      "status": 200,
+      "bytes": 6315,
+      "expected_bytes": 6315,
+      "sha256": "bc82aa8cbd0fdc72f1e380bde3b8318149f2f5a23baadd59e757e357ecba1211",
+      "expected_sha256": "bc82aa8cbd0fdc72f1e380bde3b8318149f2f5a23baadd59e757e357ecba1211",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/served-verification.json",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/served-verification.json",
+      "status": 200,
+      "bytes": 37624,
+      "expected_bytes": 37624,
+      "sha256": "60bacf3eca03de14581d39bb341372496d45a758fb7e52e3a7779cede2887a12",
+      "expected_sha256": "60bacf3eca03de14581d39bb341372496d45a758fb7e52e3a7779cede2887a12",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/served-verification.json",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/served-verification.json",
+      "status": 200,
+      "bytes": 37624,
+      "expected_bytes": 37624,
+      "sha256": "60bacf3eca03de14581d39bb341372496d45a758fb7e52e3a7779cede2887a12",
+      "expected_sha256": "60bacf3eca03de14581d39bb341372496d45a758fb7e52e3a7779cede2887a12",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-contract-agent-browser.png",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-contract-agent-browser.png",
+      "status": 200,
+      "bytes": 117851,
+      "expected_bytes": 117851,
+      "sha256": "0e2fcf4cb76151e77878e30f91ded405e0c5b385ff729a5fc857fbd23d05b5da",
+      "expected_sha256": "0e2fcf4cb76151e77878e30f91ded405e0c5b385ff729a5fc857fbd23d05b5da",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-contract-agent-browser.png",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-contract-agent-browser.png",
+      "status": 200,
+      "bytes": 117851,
+      "expected_bytes": 117851,
+      "sha256": "0e2fcf4cb76151e77878e30f91ded405e0c5b385ff729a5fc857fbd23d05b5da",
+      "expected_sha256": "0e2fcf4cb76151e77878e30f91ded405e0c5b385ff729a5fc857fbd23d05b5da",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-roadmap-agent-browser.png",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-roadmap-agent-browser.png",
+      "status": 200,
+      "bytes": 271970,
+      "expected_bytes": 271970,
+      "sha256": "d3b468a563a58c47ae10eca12fa9fc37e5682cc8f136c10910c2152de290a653",
+      "expected_sha256": "d3b468a563a58c47ae10eca12fa9fc37e5682cc8f136c10910c2152de290a653",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-roadmap-agent-browser.png",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-roadmap-agent-browser.png",
+      "status": 200,
+      "bytes": 271970,
+      "expected_bytes": 271970,
+      "sha256": "d3b468a563a58c47ae10eca12fa9fc37e5682cc8f136c10910c2152de290a653",
+      "expected_sha256": "d3b468a563a58c47ae10eca12fa9fc37e5682cc8f136c10910c2152de290a653",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-status-agent-browser.png",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-status-agent-browser.png",
+      "status": 200,
+      "bytes": 227042,
+      "expected_bytes": 227042,
+      "sha256": "0029ed2524a9eaee7c0cb43eb2de43f8526eb17aa94ceab4dcb2824da3d7d1a7",
+      "expected_sha256": "0029ed2524a9eaee7c0cb43eb2de43f8526eb17aa94ceab4dcb2824da3d7d1a7",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-status-agent-browser.png",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-status-agent-browser.png",
+      "status": 200,
+      "bytes": 227042,
+      "expected_bytes": 227042,
+      "sha256": "0029ed2524a9eaee7c0cb43eb2de43f8526eb17aa94ceab4dcb2824da3d7d1a7",
+      "expected_sha256": "0029ed2524a9eaee7c0cb43eb2de43f8526eb17aa94ceab4dcb2824da3d7d1a7",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/README.md",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/README.md",
+      "status": 200,
+      "bytes": 7931,
+      "expected_bytes": 7931,
+      "sha256": "624ec28b2cb7ecd9725b4f14acb6da421c6f24bf2495952037b0732aa650584b",
+      "expected_sha256": "624ec28b2cb7ecd9725b4f14acb6da421c6f24bf2495952037b0732aa650584b",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/README.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/README.md",
+      "status": 200,
+      "bytes": 7931,
+      "expected_bytes": 7931,
+      "sha256": "624ec28b2cb7ecd9725b4f14acb6da421c6f24bf2495952037b0732aa650584b",
+      "expected_sha256": "624ec28b2cb7ecd9725b4f14acb6da421c6f24bf2495952037b0732aa650584b",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-feature-off-negative-20261017/android-logcat.txt",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-feature-off-negative-20261017/android-logcat.txt",
+      "status": 200,
+      "bytes": 99,
+      "expected_bytes": 99,
+      "sha256": "77a79c705ffc5a6197edf86f943b9355d62f0eb6152c9e36b576ea7ac87a67cb",
+      "expected_sha256": "77a79c705ffc5a6197edf86f943b9355d62f0eb6152c9e36b576ea7ac87a67cb",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-feature-off-negative-20261017/android-logcat.txt",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-feature-off-negative-20261017/android-logcat.txt",
+      "status": 200,
+      "bytes": 99,
+      "expected_bytes": 99,
+      "sha256": "77a79c705ffc5a6197edf86f943b9355d62f0eb6152c9e36b576ea7ac87a67cb",
+      "expected_sha256": "77a79c705ffc5a6197edf86f943b9355d62f0eb6152c9e36b576ea7ac87a67cb",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-feature-off-negative-20261017/android-screen.png",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-feature-off-negative-20261017/android-screen.png",
+      "status": 200,
+      "bytes": 23885,
+      "expected_bytes": 23885,
+      "sha256": "5ea3ab05ea4132c1dc721e802643ff5155469e44b790af7d849c62132af951c6",
+      "expected_sha256": "5ea3ab05ea4132c1dc721e802643ff5155469e44b790af7d849c62132af951c6",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-feature-off-negative-20261017/android-screen.png",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-feature-off-negative-20261017/android-screen.png",
+      "status": 200,
+      "bytes": 23885,
+      "expected_bytes": 23885,
+      "sha256": "5ea3ab05ea4132c1dc721e802643ff5155469e44b790af7d849c62132af951c6",
+      "expected_sha256": "5ea3ab05ea4132c1dc721e802643ff5155469e44b790af7d849c62132af951c6",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-feature-off-negative-20261017/build.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-feature-off-negative-20261017/build.log",
+      "status": 200,
+      "bytes": 4424,
+      "expected_bytes": 4424,
+      "sha256": "f262c69c918f71e8ec92af603db1727f7922a666a023e3da4e5946fbb3d7dbbc",
+      "expected_sha256": "f262c69c918f71e8ec92af603db1727f7922a666a023e3da4e5946fbb3d7dbbc",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-feature-off-negative-20261017/build.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-feature-off-negative-20261017/build.log",
+      "status": 200,
+      "bytes": 4424,
+      "expected_bytes": 4424,
+      "sha256": "f262c69c918f71e8ec92af603db1727f7922a666a023e3da4e5946fbb3d7dbbc",
+      "expected_sha256": "f262c69c918f71e8ec92af603db1727f7922a666a023e3da4e5946fbb3d7dbbc",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-feature-off-negative-20261017/force-stop.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-feature-off-negative-20261017/force-stop.log",
+      "status": 200,
+      "bytes": 0,
+      "expected_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-feature-off-negative-20261017/force-stop.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-feature-off-negative-20261017/force-stop.log",
+      "status": 200,
+      "bytes": 0,
+      "expected_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-feature-off-negative-20261017/install.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-feature-off-negative-20261017/install.log",
+      "status": 200,
+      "bytes": 36,
+      "expected_bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "expected_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-feature-off-negative-20261017/install.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-feature-off-negative-20261017/install.log",
+      "status": 200,
+      "bytes": 36,
+      "expected_bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "expected_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-feature-off-negative-20261017/launch.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-feature-off-negative-20261017/launch.log",
+      "status": 200,
+      "bytes": 104,
+      "expected_bytes": 104,
+      "sha256": "db7e5ce05acf1641bae61b446d3e0581ed22db6570e575c86060ed1a8ea251f7",
+      "expected_sha256": "db7e5ce05acf1641bae61b446d3e0581ed22db6570e575c86060ed1a8ea251f7",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-feature-off-negative-20261017/launch.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-feature-off-negative-20261017/launch.log",
+      "status": 200,
+      "bytes": 104,
+      "expected_bytes": 104,
+      "sha256": "db7e5ce05acf1641bae61b446d3e0581ed22db6570e575c86060ed1a8ea251f7",
+      "expected_sha256": "db7e5ce05acf1641bae61b446d3e0581ed22db6570e575c86060ed1a8ea251f7",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-final-reviewed-20261017/android-device.txt",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-final-reviewed-20261017/android-device.txt",
+      "status": 200,
+      "bytes": 112,
+      "expected_bytes": 112,
+      "sha256": "0e91288d26912287d7ed5a2366ca0122eba3870302820d8425d058acc21ffb6c",
+      "expected_sha256": "0e91288d26912287d7ed5a2366ca0122eba3870302820d8425d058acc21ffb6c",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-final-reviewed-20261017/android-device.txt",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-final-reviewed-20261017/android-device.txt",
+      "status": 200,
+      "bytes": 112,
+      "expected_bytes": 112,
+      "sha256": "0e91288d26912287d7ed5a2366ca0122eba3870302820d8425d058acc21ffb6c",
+      "expected_sha256": "0e91288d26912287d7ed5a2366ca0122eba3870302820d8425d058acc21ffb6c",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-final-reviewed-20261017/android-logcat.txt",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-final-reviewed-20261017/android-logcat.txt",
+      "status": 200,
+      "bytes": 16745,
+      "expected_bytes": 16745,
+      "sha256": "51fd9ce6fc1850bdd89bdbc0e10e60a4303d859d6e5c6f7958b07cf225ff8f2e",
+      "expected_sha256": "51fd9ce6fc1850bdd89bdbc0e10e60a4303d859d6e5c6f7958b07cf225ff8f2e",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-final-reviewed-20261017/android-logcat.txt",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-final-reviewed-20261017/android-logcat.txt",
+      "status": 200,
+      "bytes": 16745,
+      "expected_bytes": 16745,
+      "sha256": "51fd9ce6fc1850bdd89bdbc0e10e60a4303d859d6e5c6f7958b07cf225ff8f2e",
+      "expected_sha256": "51fd9ce6fc1850bdd89bdbc0e10e60a4303d859d6e5c6f7958b07cf225ff8f2e",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-final-reviewed-20261017/android-screen.png",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-final-reviewed-20261017/android-screen.png",
+      "status": 200,
+      "bytes": 87064,
+      "expected_bytes": 87064,
+      "sha256": "7676acbf100d5cba00a1cbc773ec0a528786e061d5eaf86f7b851da30192d833",
+      "expected_sha256": "7676acbf100d5cba00a1cbc773ec0a528786e061d5eaf86f7b851da30192d833",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-final-reviewed-20261017/android-screen.png",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-final-reviewed-20261017/android-screen.png",
+      "status": 200,
+      "bytes": 87064,
+      "expected_bytes": 87064,
+      "sha256": "7676acbf100d5cba00a1cbc773ec0a528786e061d5eaf86f7b851da30192d833",
+      "expected_sha256": "7676acbf100d5cba00a1cbc773ec0a528786e061d5eaf86f7b851da30192d833",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-final-reviewed-20261017/build.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-final-reviewed-20261017/build.log",
+      "status": 200,
+      "bytes": 4543,
+      "expected_bytes": 4543,
+      "sha256": "0f4ef96f236265c453666cd40be574f28e8f6b90570b3ceedb980cfa5022d5f9",
+      "expected_sha256": "0f4ef96f236265c453666cd40be574f28e8f6b90570b3ceedb980cfa5022d5f9",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-final-reviewed-20261017/build.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-final-reviewed-20261017/build.log",
+      "status": 200,
+      "bytes": 4543,
+      "expected_bytes": 4543,
+      "sha256": "0f4ef96f236265c453666cd40be574f28e8f6b90570b3ceedb980cfa5022d5f9",
+      "expected_sha256": "0f4ef96f236265c453666cd40be574f28e8f6b90570b3ceedb980cfa5022d5f9",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-final-reviewed-20261017/install.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-final-reviewed-20261017/install.log",
+      "status": 200,
+      "bytes": 36,
+      "expected_bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "expected_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-final-reviewed-20261017/install.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-final-reviewed-20261017/install.log",
+      "status": 200,
+      "bytes": 36,
+      "expected_bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "expected_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-final-reviewed-20261017/launch.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-final-reviewed-20261017/launch.log",
+      "status": 200,
+      "bytes": 73,
+      "expected_bytes": 73,
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "expected_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-final-reviewed-20261017/launch.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-api37-android17-final-reviewed-20261017/launch.log",
+      "status": 200,
+      "bytes": 73,
+      "expected_bytes": 73,
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "expected_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-20261017T105536/android-logcat.txt",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-20261017T105536/android-logcat.txt",
+      "status": 200,
+      "bytes": 8738,
+      "expected_bytes": 8738,
+      "sha256": "60e178471741c281f717b25f22660e0c3b3dc4376c497dd47c4cdefccf7c61ef",
+      "expected_sha256": "60e178471741c281f717b25f22660e0c3b3dc4376c497dd47c4cdefccf7c61ef",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-20261017T105536/android-logcat.txt",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-20261017T105536/android-logcat.txt",
+      "status": 200,
+      "bytes": 8738,
+      "expected_bytes": 8738,
+      "sha256": "60e178471741c281f717b25f22660e0c3b3dc4376c497dd47c4cdefccf7c61ef",
+      "expected_sha256": "60e178471741c281f717b25f22660e0c3b3dc4376c497dd47c4cdefccf7c61ef",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-20261017T105536/android-screen.png",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-20261017T105536/android-screen.png",
+      "status": 200,
+      "bytes": 89873,
+      "expected_bytes": 89873,
+      "sha256": "f2fd612c328e8e994ed32690994a7f2bd01b24696466386757ed108b4c65917f",
+      "expected_sha256": "f2fd612c328e8e994ed32690994a7f2bd01b24696466386757ed108b4c65917f",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-20261017T105536/android-screen.png",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-20261017T105536/android-screen.png",
+      "status": 200,
+      "bytes": 89873,
+      "expected_bytes": 89873,
+      "sha256": "f2fd612c328e8e994ed32690994a7f2bd01b24696466386757ed108b4c65917f",
+      "expected_sha256": "f2fd612c328e8e994ed32690994a7f2bd01b24696466386757ed108b4c65917f",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-20261017T105732/android-logcat.txt",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-20261017T105732/android-logcat.txt",
+      "status": 200,
+      "bytes": 6375,
+      "expected_bytes": 6375,
+      "sha256": "1eff19f52b7ccd7399e5daa1a4bf85a37ec34f2eda5676e933775e55e4f7cd3d",
+      "expected_sha256": "1eff19f52b7ccd7399e5daa1a4bf85a37ec34f2eda5676e933775e55e4f7cd3d",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-20261017T105732/android-logcat.txt",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-20261017T105732/android-logcat.txt",
+      "status": 200,
+      "bytes": 6375,
+      "expected_bytes": 6375,
+      "sha256": "1eff19f52b7ccd7399e5daa1a4bf85a37ec34f2eda5676e933775e55e4f7cd3d",
+      "expected_sha256": "1eff19f52b7ccd7399e5daa1a4bf85a37ec34f2eda5676e933775e55e4f7cd3d",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-20261017T105732/android-screen.png",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-20261017T105732/android-screen.png",
+      "status": 200,
+      "bytes": 89594,
+      "expected_bytes": 89594,
+      "sha256": "0781c12cb2d7e3f42e878bd2e8d9076ecb371e6fa8e4f664761e6c8ade8bd7a1",
+      "expected_sha256": "0781c12cb2d7e3f42e878bd2e8d9076ecb371e6fa8e4f664761e6c8ade8bd7a1",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-20261017T105732/android-screen.png",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-20261017T105732/android-screen.png",
+      "status": 200,
+      "bytes": 89594,
+      "expected_bytes": 89594,
+      "sha256": "0781c12cb2d7e3f42e878bd2e8d9076ecb371e6fa8e4f664761e6c8ade8bd7a1",
+      "expected_sha256": "0781c12cb2d7e3f42e878bd2e8d9076ecb371e6fa8e4f664761e6c8ade8bd7a1",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/android-api-level.txt",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/android-api-level.txt",
+      "status": 200,
+      "bytes": 3,
+      "expected_bytes": 3,
+      "sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "expected_sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/android-api-level.txt",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/android-api-level.txt",
+      "status": 200,
+      "bytes": 3,
+      "expected_bytes": 3,
+      "sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "expected_sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/android-logcat.txt",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/android-logcat.txt",
+      "status": 200,
+      "bytes": 6440,
+      "expected_bytes": 6440,
+      "sha256": "87739b114c3ab628551e9bf6949d261f8b798558f2a7d46d509d5df88ce01b2d",
+      "expected_sha256": "87739b114c3ab628551e9bf6949d261f8b798558f2a7d46d509d5df88ce01b2d",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/android-logcat.txt",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/android-logcat.txt",
+      "status": 200,
+      "bytes": 6440,
+      "expected_bytes": 6440,
+      "sha256": "87739b114c3ab628551e9bf6949d261f8b798558f2a7d46d509d5df88ce01b2d",
+      "expected_sha256": "87739b114c3ab628551e9bf6949d261f8b798558f2a7d46d509d5df88ce01b2d",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/android-model.txt",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/android-model.txt",
+      "status": 200,
+      "bytes": 20,
+      "expected_bytes": 20,
+      "sha256": "e0f9bb61ec4aad8a6f443ffdb60d60934f2243bdd5339399be29c61955ef9090",
+      "expected_sha256": "e0f9bb61ec4aad8a6f443ffdb60d60934f2243bdd5339399be29c61955ef9090",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/android-model.txt",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/android-model.txt",
+      "status": 200,
+      "bytes": 20,
+      "expected_bytes": 20,
+      "sha256": "e0f9bb61ec4aad8a6f443ffdb60d60934f2243bdd5339399be29c61955ef9090",
+      "expected_sha256": "e0f9bb61ec4aad8a6f443ffdb60d60934f2243bdd5339399be29c61955ef9090",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/android-release.txt",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/android-release.txt",
+      "status": 200,
+      "bytes": 3,
+      "expected_bytes": 3,
+      "sha256": "54183f4323f377b737433a1e98229ead0fdc686f93bab057ecb612daa94002b5",
+      "expected_sha256": "54183f4323f377b737433a1e98229ead0fdc686f93bab057ecb612daa94002b5",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/android-release.txt",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/android-release.txt",
+      "status": 200,
+      "bytes": 3,
+      "expected_bytes": 3,
+      "sha256": "54183f4323f377b737433a1e98229ead0fdc686f93bab057ecb612daa94002b5",
+      "expected_sha256": "54183f4323f377b737433a1e98229ead0fdc686f93bab057ecb612daa94002b5",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/android-screen.png",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/android-screen.png",
+      "status": 200,
+      "bytes": 87534,
+      "expected_bytes": 87534,
+      "sha256": "ceffaabdc6c2a50642c5e605873e03b0a363fe0f0ad6c3c2b09b3abc4194c043",
+      "expected_sha256": "ceffaabdc6c2a50642c5e605873e03b0a363fe0f0ad6c3c2b09b3abc4194c043",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/android-screen.png",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/android-screen.png",
+      "status": 200,
+      "bytes": 87534,
+      "expected_bytes": 87534,
+      "sha256": "ceffaabdc6c2a50642c5e605873e03b0a363fe0f0ad6c3c2b09b3abc4194c043",
+      "expected_sha256": "ceffaabdc6c2a50642c5e605873e03b0a363fe0f0ad6c3c2b09b3abc4194c043",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/build.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/build.log",
+      "status": 200,
+      "bytes": 3988,
+      "expected_bytes": 3988,
+      "sha256": "968a8899522385c93cb2ad57d6ce4c1c540fbf65db000d02f3cdabc737b7a783",
+      "expected_sha256": "968a8899522385c93cb2ad57d6ce4c1c540fbf65db000d02f3cdabc737b7a783",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/build.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/build.log",
+      "status": 200,
+      "bytes": 3988,
+      "expected_bytes": 3988,
+      "sha256": "968a8899522385c93cb2ad57d6ce4c1c540fbf65db000d02f3cdabc737b7a783",
+      "expected_sha256": "968a8899522385c93cb2ad57d6ce4c1c540fbf65db000d02f3cdabc737b7a783",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/force-stop.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/force-stop.log",
+      "status": 200,
+      "bytes": 0,
+      "expected_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/force-stop.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/force-stop.log",
+      "status": 200,
+      "bytes": 0,
+      "expected_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/install.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/install.log",
+      "status": 200,
+      "bytes": 36,
+      "expected_bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "expected_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/install.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/install.log",
+      "status": 200,
+      "bytes": 36,
+      "expected_bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "expected_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/launch.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/launch.log",
+      "status": 200,
+      "bytes": 104,
+      "expected_bytes": 104,
+      "sha256": "db7e5ce05acf1641bae61b446d3e0581ed22db6570e575c86060ed1a8ea251f7",
+      "expected_sha256": "db7e5ce05acf1641bae61b446d3e0581ed22db6570e575c86060ed1a8ea251f7",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/launch.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final-rerun-20261017/launch.log",
+      "status": 200,
+      "bytes": 104,
+      "expected_bytes": 104,
+      "sha256": "db7e5ce05acf1641bae61b446d3e0581ed22db6570e575c86060ed1a8ea251f7",
+      "expected_sha256": "db7e5ce05acf1641bae61b446d3e0581ed22db6570e575c86060ed1a8ea251f7",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final/android-api-level.txt",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final/android-api-level.txt",
+      "status": 200,
+      "bytes": 3,
+      "expected_bytes": 3,
+      "sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "expected_sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final/android-api-level.txt",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final/android-api-level.txt",
+      "status": 200,
+      "bytes": 3,
+      "expected_bytes": 3,
+      "sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "expected_sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final/android-logcat.txt",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final/android-logcat.txt",
+      "status": 200,
+      "bytes": 7670,
+      "expected_bytes": 7670,
+      "sha256": "f020ff439376b1ab9551a93705cc1cee2e76489c1604b669d2ade62ed2397161",
+      "expected_sha256": "f020ff439376b1ab9551a93705cc1cee2e76489c1604b669d2ade62ed2397161",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final/android-logcat.txt",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final/android-logcat.txt",
+      "status": 200,
+      "bytes": 7670,
+      "expected_bytes": 7670,
+      "sha256": "f020ff439376b1ab9551a93705cc1cee2e76489c1604b669d2ade62ed2397161",
+      "expected_sha256": "f020ff439376b1ab9551a93705cc1cee2e76489c1604b669d2ade62ed2397161",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final/android-model.txt",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final/android-model.txt",
+      "status": 200,
+      "bytes": 20,
+      "expected_bytes": 20,
+      "sha256": "e0f9bb61ec4aad8a6f443ffdb60d60934f2243bdd5339399be29c61955ef9090",
+      "expected_sha256": "e0f9bb61ec4aad8a6f443ffdb60d60934f2243bdd5339399be29c61955ef9090",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final/android-model.txt",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final/android-model.txt",
+      "status": 200,
+      "bytes": 20,
+      "expected_bytes": 20,
+      "sha256": "e0f9bb61ec4aad8a6f443ffdb60d60934f2243bdd5339399be29c61955ef9090",
+      "expected_sha256": "e0f9bb61ec4aad8a6f443ffdb60d60934f2243bdd5339399be29c61955ef9090",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final/android-release.txt",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final/android-release.txt",
+      "status": 200,
+      "bytes": 3,
+      "expected_bytes": 3,
+      "sha256": "54183f4323f377b737433a1e98229ead0fdc686f93bab057ecb612daa94002b5",
+      "expected_sha256": "54183f4323f377b737433a1e98229ead0fdc686f93bab057ecb612daa94002b5",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final/android-release.txt",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final/android-release.txt",
+      "status": 200,
+      "bytes": 3,
+      "expected_bytes": 3,
+      "sha256": "54183f4323f377b737433a1e98229ead0fdc686f93bab057ecb612daa94002b5",
+      "expected_sha256": "54183f4323f377b737433a1e98229ead0fdc686f93bab057ecb612daa94002b5",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final/android-screen.png",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final/android-screen.png",
+      "status": 200,
+      "bytes": 88197,
+      "expected_bytes": 88197,
+      "sha256": "f00a5b4d11d7a4a66e029b43944af302f01bc1f471836da12f31ee7365384498",
+      "expected_sha256": "f00a5b4d11d7a4a66e029b43944af302f01bc1f471836da12f31ee7365384498",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final/android-screen.png",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/android-avd-api37-android17-final/android-screen.png",
+      "status": 200,
+      "bytes": 88197,
+      "expected_bytes": 88197,
+      "sha256": "f00a5b4d11d7a4a66e029b43944af302f01bc1f471836da12f31ee7365384498",
+      "expected_sha256": "f00a5b4d11d7a4a66e029b43944af302f01bc1f471836da12f31ee7365384498",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/atlas-limit-tests.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/atlas-limit-tests.log",
+      "status": 200,
+      "bytes": 879,
+      "expected_bytes": 879,
+      "sha256": "a29fc4fcd77e2de0bb5056aabdf4656f5c4724ee15d4a2380e2cf2a63c114e14",
+      "expected_sha256": "a29fc4fcd77e2de0bb5056aabdf4656f5c4724ee15d4a2380e2cf2a63c114e14",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/atlas-limit-tests.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/atlas-limit-tests.log",
+      "status": 200,
+      "bytes": 879,
+      "expected_bytes": 879,
+      "sha256": "a29fc4fcd77e2de0bb5056aabdf4656f5c4724ee15d4a2380e2cf2a63c114e14",
+      "expected_sha256": "a29fc4fcd77e2de0bb5056aabdf4656f5c4724ee15d4a2380e2cf2a63c114e14",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/clippy.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/clippy.log",
+      "status": 200,
+      "bytes": 427,
+      "expected_bytes": 427,
+      "sha256": "104343019b7dee2cde202dc396f747f66ac664dd4389d2eab7b19d7962d827e5",
+      "expected_sha256": "104343019b7dee2cde202dc396f747f66ac664dd4389d2eab7b19d7962d827e5",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/clippy.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/clippy.log",
+      "status": 200,
+      "bytes": 427,
+      "expected_bytes": 427,
+      "sha256": "104343019b7dee2cde202dc396f747f66ac664dd4389d2eab7b19d7962d827e5",
+      "expected_sha256": "104343019b7dee2cde202dc396f747f66ac664dd4389d2eab7b19d7962d827e5",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/crate-tests.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/crate-tests.log",
+      "status": 200,
+      "bytes": 14709,
+      "expected_bytes": 14709,
+      "sha256": "e03f521c32a7a3a2cc8c1af75226832a4f6392ccdd26a1e0fd12f36953915066",
+      "expected_sha256": "e03f521c32a7a3a2cc8c1af75226832a4f6392ccdd26a1e0fd12f36953915066",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/crate-tests.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/crate-tests.log",
+      "status": 200,
+      "bytes": 14709,
+      "expected_bytes": 14709,
+      "sha256": "e03f521c32a7a3a2cc8c1af75226832a4f6392ccdd26a1e0fd12f36953915066",
+      "expected_sha256": "e03f521c32a7a3a2cc8c1af75226832a4f6392ccdd26a1e0fd12f36953915066",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ffi-fixture-tests.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ffi-fixture-tests.log",
+      "status": 200,
+      "bytes": 5459,
+      "expected_bytes": 5459,
+      "sha256": "e4a5e6db796ad9373d1d730d08ebb66bcbf8c5266bd81b3bf15b7114c534b88b",
+      "expected_sha256": "e4a5e6db796ad9373d1d730d08ebb66bcbf8c5266bd81b3bf15b7114c534b88b",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ffi-fixture-tests.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ffi-fixture-tests.log",
+      "status": 200,
+      "bytes": 5459,
+      "expected_bytes": 5459,
+      "sha256": "e4a5e6db796ad9373d1d730d08ebb66bcbf8c5266bd81b3bf15b7114c534b88b",
+      "expected_sha256": "e4a5e6db796ad9373d1d730d08ebb66bcbf8c5266bd81b3bf15b7114c534b88b",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/fixture-artifact-boundary.txt",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/fixture-artifact-boundary.txt",
+      "status": 200,
+      "bytes": 689,
+      "expected_bytes": 689,
+      "sha256": "c2cda8b079739d464927aa411a2cc6fc95d1110e37583c22df668dc03250cd33",
+      "expected_sha256": "c2cda8b079739d464927aa411a2cc6fc95d1110e37583c22df668dc03250cd33",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/fixture-artifact-boundary.txt",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/fixture-artifact-boundary.txt",
+      "status": 200,
+      "bytes": 689,
+      "expected_bytes": 689,
+      "sha256": "c2cda8b079739d464927aa411a2cc6fc95d1110e37583c22df668dc03250cd33",
+      "expected_sha256": "c2cda8b079739d464927aa411a2cc6fc95d1110e37583c22df668dc03250cd33",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/implementation-review-20.md",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/implementation-review-20.md",
+      "status": 200,
+      "bytes": 8544,
+      "expected_bytes": 8544,
+      "sha256": "825e168eaa77eccfa2556c4aee6d80bbcd2a45282d97649141454028c365de68",
+      "expected_sha256": "825e168eaa77eccfa2556c4aee6d80bbcd2a45282d97649141454028c365de68",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/implementation-review-20.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/implementation-review-20.md",
+      "status": 200,
+      "bytes": 8544,
+      "expected_bytes": 8544,
+      "sha256": "825e168eaa77eccfa2556c4aee6d80bbcd2a45282d97649141454028c365de68",
+      "expected_sha256": "825e168eaa77eccfa2556c4aee6d80bbcd2a45282d97649141454028c365de68",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/install.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/install.log",
+      "status": 200,
+      "bytes": 0,
+      "expected_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/install.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/install.log",
+      "status": 200,
+      "bytes": 0,
+      "expected_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/ios-log.txt",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/ios-log.txt",
+      "status": 200,
+      "bytes": 66031,
+      "expected_bytes": 66031,
+      "sha256": "4668d813711fc34cc7f54c756e03347542db4388c82756f5639842bb4fd9aa8f",
+      "expected_sha256": "4668d813711fc34cc7f54c756e03347542db4388c82756f5639842bb4fd9aa8f",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/ios-log.txt",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/ios-log.txt",
+      "status": 200,
+      "bytes": 66031,
+      "expected_bytes": 66031,
+      "sha256": "4668d813711fc34cc7f54c756e03347542db4388c82756f5639842bb4fd9aa8f",
+      "expected_sha256": "4668d813711fc34cc7f54c756e03347542db4388c82756f5639842bb4fd9aa8f",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/ios-negative-route.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/ios-negative-route.log",
+      "status": 200,
+      "bytes": 144,
+      "expected_bytes": 144,
+      "sha256": "72e381cf90681bb6bd30b7b20875668cdefa9a6cae1ffa32bc3c237b2e6fef69",
+      "expected_sha256": "72e381cf90681bb6bd30b7b20875668cdefa9a6cae1ffa32bc3c237b2e6fef69",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/ios-negative-route.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/ios-negative-route.log",
+      "status": 200,
+      "bytes": 144,
+      "expected_bytes": 144,
+      "sha256": "72e381cf90681bb6bd30b7b20875668cdefa9a6cae1ffa32bc3c237b2e6fef69",
+      "expected_sha256": "72e381cf90681bb6bd30b7b20875668cdefa9a6cae1ffa32bc3c237b2e6fef69",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/ios-screen.png",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/ios-screen.png",
+      "status": 200,
+      "bytes": 157854,
+      "expected_bytes": 157854,
+      "sha256": "1b4b56d17c5b1a0d03715b4de909c7cac0c541f81d894553a70fe47f669317f8",
+      "expected_sha256": "1b4b56d17c5b1a0d03715b4de909c7cac0c541f81d894553a70fe47f669317f8",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/ios-screen.png",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/ios-screen.png",
+      "status": 200,
+      "bytes": 157854,
+      "expected_bytes": 157854,
+      "sha256": "1b4b56d17c5b1a0d03715b4de909c7cac0c541f81d894553a70fe47f669317f8",
+      "expected_sha256": "1b4b56d17c5b1a0d03715b4de909c7cac0c541f81d894553a70fe47f669317f8",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/ios-xcodebuild.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/ios-xcodebuild.log",
+      "status": 200,
+      "bytes": 115559,
+      "expected_bytes": 115559,
+      "sha256": "c616e57160a89affb79a4efc591e7d21db912cfeb45e4205f780df0bd4d58341",
+      "expected_sha256": "c616e57160a89affb79a4efc591e7d21db912cfeb45e4205f780df0bd4d58341",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/ios-xcodebuild.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/ios-xcodebuild.log",
+      "status": 200,
+      "bytes": 115559,
+      "expected_bytes": 115559,
+      "sha256": "c616e57160a89affb79a4efc591e7d21db912cfeb45e4205f780df0bd4d58341",
+      "expected_sha256": "c616e57160a89affb79a4efc591e7d21db912cfeb45e4205f780df0bd4d58341",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/launch.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/launch.log",
+      "status": 200,
+      "bytes": 28,
+      "expected_bytes": 28,
+      "sha256": "3e9e0d3fa59fe4b656c3a7adcafd60fc94bf5922f632b21d6c0660a752d5782d",
+      "expected_sha256": "3e9e0d3fa59fe4b656c3a7adcafd60fc94bf5922f632b21d6c0660a752d5782d",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/launch.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/launch.log",
+      "status": 200,
+      "bytes": 28,
+      "expected_bytes": 28,
+      "sha256": "3e9e0d3fa59fe4b656c3a7adcafd60fc94bf5922f632b21d6c0660a752d5782d",
+      "expected_sha256": "3e9e0d3fa59fe4b656c3a7adcafd60fc94bf5922f632b21d6c0660a752d5782d",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/screenshot.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/screenshot.log",
+      "status": 200,
+      "bytes": 0,
+      "expected_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/screenshot.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-feature-off-negative-20261017/screenshot.log",
+      "status": 200,
+      "bytes": 0,
+      "expected_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/install.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/install.log",
+      "status": 200,
+      "bytes": 0,
+      "expected_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/install.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/install.log",
+      "status": 200,
+      "bytes": 0,
+      "expected_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/ios-device.txt",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/ios-device.txt",
+      "status": 200,
+      "bytes": 91,
+      "expected_bytes": 91,
+      "sha256": "8df2c8a15235da5ed1a7a3853b0b0a610d3a7acfba7fe286a1349749205cd094",
+      "expected_sha256": "8df2c8a15235da5ed1a7a3853b0b0a610d3a7acfba7fe286a1349749205cd094",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/ios-device.txt",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/ios-device.txt",
+      "status": 200,
+      "bytes": 91,
+      "expected_bytes": 91,
+      "sha256": "8df2c8a15235da5ed1a7a3853b0b0a610d3a7acfba7fe286a1349749205cd094",
+      "expected_sha256": "8df2c8a15235da5ed1a7a3853b0b0a610d3a7acfba7fe286a1349749205cd094",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/ios-log.txt",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/ios-log.txt",
+      "status": 200,
+      "bytes": 66031,
+      "expected_bytes": 66031,
+      "sha256": "0c0fd8228c4e9ec5a63183ed1e7eee2ba51c74407507e01c98961a301b76a150",
+      "expected_sha256": "0c0fd8228c4e9ec5a63183ed1e7eee2ba51c74407507e01c98961a301b76a150",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/ios-log.txt",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/ios-log.txt",
+      "status": 200,
+      "bytes": 66031,
+      "expected_bytes": 66031,
+      "sha256": "0c0fd8228c4e9ec5a63183ed1e7eee2ba51c74407507e01c98961a301b76a150",
+      "expected_sha256": "0c0fd8228c4e9ec5a63183ed1e7eee2ba51c74407507e01c98961a301b76a150",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/ios-positive-route.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/ios-positive-route.log",
+      "status": 200,
+      "bytes": 2172,
+      "expected_bytes": 2172,
+      "sha256": "8f647e828a16e028dd0d72765b14d8518aa9a175562a54ca0d1497367695ef27",
+      "expected_sha256": "8f647e828a16e028dd0d72765b14d8518aa9a175562a54ca0d1497367695ef27",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/ios-positive-route.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/ios-positive-route.log",
+      "status": 200,
+      "bytes": 2172,
+      "expected_bytes": 2172,
+      "sha256": "8f647e828a16e028dd0d72765b14d8518aa9a175562a54ca0d1497367695ef27",
+      "expected_sha256": "8f647e828a16e028dd0d72765b14d8518aa9a175562a54ca0d1497367695ef27",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/ios-screen.png",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/ios-screen.png",
+      "status": 200,
+      "bytes": 153146,
+      "expected_bytes": 153146,
+      "sha256": "7449c891388c0b7557a3c3da8ddf99630919976cad040896c5d86363af511696",
+      "expected_sha256": "7449c891388c0b7557a3c3da8ddf99630919976cad040896c5d86363af511696",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/ios-screen.png",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/ios-screen.png",
+      "status": 200,
+      "bytes": 153146,
+      "expected_bytes": 153146,
+      "sha256": "7449c891388c0b7557a3c3da8ddf99630919976cad040896c5d86363af511696",
+      "expected_sha256": "7449c891388c0b7557a3c3da8ddf99630919976cad040896c5d86363af511696",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/ios-xcodebuild.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/ios-xcodebuild.log",
+      "status": 200,
+      "bytes": 105661,
+      "expected_bytes": 105661,
+      "sha256": "aa49410c9b38148d1f6c8b19ebc73686d4642d9507085e66415ae211b5265518",
+      "expected_sha256": "aa49410c9b38148d1f6c8b19ebc73686d4642d9507085e66415ae211b5265518",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/ios-xcodebuild.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/ios-xcodebuild.log",
+      "status": 200,
+      "bytes": 105661,
+      "expected_bytes": 105661,
+      "sha256": "aa49410c9b38148d1f6c8b19ebc73686d4642d9507085e66415ae211b5265518",
+      "expected_sha256": "aa49410c9b38148d1f6c8b19ebc73686d4642d9507085e66415ae211b5265518",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/launch.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/launch.log",
+      "status": 200,
+      "bytes": 28,
+      "expected_bytes": 28,
+      "sha256": "abdb234254364ef54c18dcd208b28c03bc080ead49a82b71475f1e2e4516f275",
+      "expected_sha256": "abdb234254364ef54c18dcd208b28c03bc080ead49a82b71475f1e2e4516f275",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/launch.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/launch.log",
+      "status": 200,
+      "bytes": 28,
+      "expected_bytes": 28,
+      "sha256": "abdb234254364ef54c18dcd208b28c03bc080ead49a82b71475f1e2e4516f275",
+      "expected_sha256": "abdb234254364ef54c18dcd208b28c03bc080ead49a82b71475f1e2e4516f275",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/screenshot.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/screenshot.log",
+      "status": 200,
+      "bytes": 0,
+      "expected_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/screenshot.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-rerun-20261017/screenshot.log",
+      "status": 200,
+      "bytes": 0,
+      "expected_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/install.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/install.log",
+      "status": 200,
+      "bytes": 0,
+      "expected_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/install.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/install.log",
+      "status": 200,
+      "bytes": 0,
+      "expected_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/ios-device.txt",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/ios-device.txt",
+      "status": 200,
+      "bytes": 112,
+      "expected_bytes": 112,
+      "sha256": "1d47b78a75256234ba2e7ab91fd18c1d4620b89c0dd9f1064837d67d8957bda4",
+      "expected_sha256": "1d47b78a75256234ba2e7ab91fd18c1d4620b89c0dd9f1064837d67d8957bda4",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/ios-device.txt",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/ios-device.txt",
+      "status": 200,
+      "bytes": 112,
+      "expected_bytes": 112,
+      "sha256": "1d47b78a75256234ba2e7ab91fd18c1d4620b89c0dd9f1064837d67d8957bda4",
+      "expected_sha256": "1d47b78a75256234ba2e7ab91fd18c1d4620b89c0dd9f1064837d67d8957bda4",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/ios-log.txt",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/ios-log.txt",
+      "status": 200,
+      "bytes": 35483,
+      "expected_bytes": 35483,
+      "sha256": "ea8051894932497e23c3523ebb46ae1ac9b54b5fd68730040aef487638e7ff68",
+      "expected_sha256": "ea8051894932497e23c3523ebb46ae1ac9b54b5fd68730040aef487638e7ff68",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/ios-log.txt",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/ios-log.txt",
+      "status": 200,
+      "bytes": 35483,
+      "expected_bytes": 35483,
+      "sha256": "ea8051894932497e23c3523ebb46ae1ac9b54b5fd68730040aef487638e7ff68",
+      "expected_sha256": "ea8051894932497e23c3523ebb46ae1ac9b54b5fd68730040aef487638e7ff68",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/ios-positive-route.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/ios-positive-route.log",
+      "status": 200,
+      "bytes": 2172,
+      "expected_bytes": 2172,
+      "sha256": "61fe837be562ff8f380fcdef02f9ee3bdffa0073c2a569b352b7094d93398b73",
+      "expected_sha256": "61fe837be562ff8f380fcdef02f9ee3bdffa0073c2a569b352b7094d93398b73",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/ios-positive-route.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/ios-positive-route.log",
+      "status": 200,
+      "bytes": 2172,
+      "expected_bytes": 2172,
+      "sha256": "61fe837be562ff8f380fcdef02f9ee3bdffa0073c2a569b352b7094d93398b73",
+      "expected_sha256": "61fe837be562ff8f380fcdef02f9ee3bdffa0073c2a569b352b7094d93398b73",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/ios-screen.png",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/ios-screen.png",
+      "status": 200,
+      "bytes": 154144,
+      "expected_bytes": 154144,
+      "sha256": "e2463899ec13c76984cb9cc1510a02f2d1fac6501ec49aa8cb33f87a48082754",
+      "expected_sha256": "e2463899ec13c76984cb9cc1510a02f2d1fac6501ec49aa8cb33f87a48082754",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/ios-screen.png",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/ios-screen.png",
+      "status": 200,
+      "bytes": 154144,
+      "expected_bytes": 154144,
+      "sha256": "e2463899ec13c76984cb9cc1510a02f2d1fac6501ec49aa8cb33f87a48082754",
+      "expected_sha256": "e2463899ec13c76984cb9cc1510a02f2d1fac6501ec49aa8cb33f87a48082754",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/ios-xcodebuild.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/ios-xcodebuild.log",
+      "status": 200,
+      "bytes": 64356,
+      "expected_bytes": 64356,
+      "sha256": "f00f93177ba603f1ffdb62a3bb7b4a642b99246fa2b15aa6c5b7c2654046e0a4",
+      "expected_sha256": "f00f93177ba603f1ffdb62a3bb7b4a642b99246fa2b15aa6c5b7c2654046e0a4",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/ios-xcodebuild.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/ios-xcodebuild.log",
+      "status": 200,
+      "bytes": 64356,
+      "expected_bytes": 64356,
+      "sha256": "f00f93177ba603f1ffdb62a3bb7b4a642b99246fa2b15aa6c5b7c2654046e0a4",
+      "expected_sha256": "f00f93177ba603f1ffdb62a3bb7b4a642b99246fa2b15aa6c5b7c2654046e0a4",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/launch.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/launch.log",
+      "status": 200,
+      "bytes": 28,
+      "expected_bytes": 28,
+      "sha256": "798531557447bb46e951a0caa478a8ac7556dde50da9f47564d67178131f9152",
+      "expected_sha256": "798531557447bb46e951a0caa478a8ac7556dde50da9f47564d67178131f9152",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/launch.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/launch.log",
+      "status": 200,
+      "bytes": 28,
+      "expected_bytes": 28,
+      "sha256": "798531557447bb46e951a0caa478a8ac7556dde50da9f47564d67178131f9152",
+      "expected_sha256": "798531557447bb46e951a0caa478a8ac7556dde50da9f47564d67178131f9152",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/screenshot.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/screenshot.log",
+      "status": 200,
+      "bytes": 183,
+      "expected_bytes": 183,
+      "sha256": "2aebe7865434210757776f702630eff2ba447dabbcbe23aca31abb3c17aa973b",
+      "expected_sha256": "2aebe7865434210757776f702630eff2ba447dabbcbe23aca31abb3c17aa973b",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/screenshot.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final-reviewed-20261017/screenshot.log",
+      "status": 200,
+      "bytes": 183,
+      "expected_bytes": 183,
+      "sha256": "2aebe7865434210757776f702630eff2ba447dabbcbe23aca31abb3c17aa973b",
+      "expected_sha256": "2aebe7865434210757776f702630eff2ba447dabbcbe23aca31abb3c17aa973b",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final/ios-device.txt",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final/ios-device.txt",
+      "status": 200,
+      "bytes": 82,
+      "expected_bytes": 82,
+      "sha256": "d3876d320d082c0d56df082d2260544f34d2ec1c0bf3b9dbbbbd30535cd85cf9",
+      "expected_sha256": "d3876d320d082c0d56df082d2260544f34d2ec1c0bf3b9dbbbbd30535cd85cf9",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final/ios-device.txt",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final/ios-device.txt",
+      "status": 200,
+      "bytes": 82,
+      "expected_bytes": 82,
+      "sha256": "d3876d320d082c0d56df082d2260544f34d2ec1c0bf3b9dbbbbd30535cd85cf9",
+      "expected_sha256": "d3876d320d082c0d56df082d2260544f34d2ec1c0bf3b9dbbbbd30535cd85cf9",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final/ios-log.txt",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final/ios-log.txt",
+      "status": 200,
+      "bytes": 5226,
+      "expected_bytes": 5226,
+      "sha256": "76f88b6143aad45d9c6c94a07efc22f28406fb16ae7c08bc532d56aac91bf5b1",
+      "expected_sha256": "76f88b6143aad45d9c6c94a07efc22f28406fb16ae7c08bc532d56aac91bf5b1",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final/ios-log.txt",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final/ios-log.txt",
+      "status": 200,
+      "bytes": 5226,
+      "expected_bytes": 5226,
+      "sha256": "76f88b6143aad45d9c6c94a07efc22f28406fb16ae7c08bc532d56aac91bf5b1",
+      "expected_sha256": "76f88b6143aad45d9c6c94a07efc22f28406fb16ae7c08bc532d56aac91bf5b1",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final/ios-screen.png",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final/ios-screen.png",
+      "status": 200,
+      "bytes": 153705,
+      "expected_bytes": 153705,
+      "sha256": "2f0c7201e0cfe4c82929ff19862c6bd10a99b4f28ca6cff0300379a6e2aed5de",
+      "expected_sha256": "2f0c7201e0cfe4c82929ff19862c6bd10a99b4f28ca6cff0300379a6e2aed5de",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final/ios-screen.png",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-simulator-iphone17pro-final/ios-screen.png",
+      "status": 200,
+      "bytes": 153705,
+      "expected_bytes": 153705,
+      "sha256": "2f0c7201e0cfe4c82929ff19862c6bd10a99b4f28ca6cff0300379a6e2aed5de",
+      "expected_sha256": "2f0c7201e0cfe4c82929ff19862c6bd10a99b4f28ca6cff0300379a6e2aed5de",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-xcodebuild-first.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-xcodebuild-first.log",
+      "status": 200,
+      "bytes": 80220,
+      "expected_bytes": 80220,
+      "sha256": "a6a7083c7558a9826284f7732267cbf7429c6cdb83485965ee85d919bc861f11",
+      "expected_sha256": "a6a7083c7558a9826284f7732267cbf7429c6cdb83485965ee85d919bc861f11",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-xcodebuild-first.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-xcodebuild-first.log",
+      "status": 200,
+      "bytes": 80220,
+      "expected_bytes": 80220,
+      "sha256": "a6a7083c7558a9826284f7732267cbf7429c6cdb83485965ee85d919bc861f11",
+      "expected_sha256": "a6a7083c7558a9826284f7732267cbf7429c6cdb83485965ee85d919bc861f11",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-xcodebuild-second.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-xcodebuild-second.log",
+      "status": 200,
+      "bytes": 59431,
+      "expected_bytes": 59431,
+      "sha256": "ccc7e6d1da488096276de2bd36254ffd671d327f4aae096daef8dac2bfaf36a6",
+      "expected_sha256": "ccc7e6d1da488096276de2bd36254ffd671d327f4aae096daef8dac2bfaf36a6",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-xcodebuild-second.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-xcodebuild-second.log",
+      "status": 200,
+      "bytes": 59431,
+      "expected_bytes": 59431,
+      "sha256": "ccc7e6d1da488096276de2bd36254ffd671d327f4aae096daef8dac2bfaf36a6",
+      "expected_sha256": "ccc7e6d1da488096276de2bd36254ffd671d327f4aae096daef8dac2bfaf36a6",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-xcodebuild-third.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-xcodebuild-third.log",
+      "status": 200,
+      "bytes": 96608,
+      "expected_bytes": 96608,
+      "sha256": "55ca23530a2789660d375ce903b35c67baaa3a514cb8f8e45d1c127485c4481d",
+      "expected_sha256": "55ca23530a2789660d375ce903b35c67baaa3a514cb8f8e45d1c127485c4481d",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-xcodebuild-third.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/ios-xcodebuild-third.log",
+      "status": 200,
+      "bytes": 96608,
+      "expected_bytes": 96608,
+      "sha256": "55ca23530a2789660d375ce903b35c67baaa3a514cb8f8e45d1c127485c4481d",
+      "expected_sha256": "55ca23530a2789660d375ce903b35c67baaa3a514cb8f8e45d1c127485c4481d",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/module-boundary-tests.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/module-boundary-tests.log",
+      "status": 200,
+      "bytes": 672,
+      "expected_bytes": 672,
+      "sha256": "0882bb6c3461d3c36c90b05b74211f26b18e8082be6cc7904b49255a3ac2b6f7",
+      "expected_sha256": "0882bb6c3461d3c36c90b05b74211f26b18e8082be6cc7904b49255a3ac2b6f7",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/module-boundary-tests.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/module-boundary-tests.log",
+      "status": 200,
+      "bytes": 672,
+      "expected_bytes": 672,
+      "sha256": "0882bb6c3461d3c36c90b05b74211f26b18e8082be6cc7904b49255a3ac2b6f7",
+      "expected_sha256": "0882bb6c3461d3c36c90b05b74211f26b18e8082be6cc7904b49255a3ac2b6f7",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/platform-route-plan-review-20.md",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/platform-route-plan-review-20.md",
+      "status": 200,
+      "bytes": 4362,
+      "expected_bytes": 4362,
+      "sha256": "ea5be3edb61e8eca17130c1c250dd4147d94caf5901c951546119e5b08424b8c",
+      "expected_sha256": "ea5be3edb61e8eca17130c1c250dd4147d94caf5901c951546119e5b08424b8c",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/platform-route-plan-review-20.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/platform-route-plan-review-20.md",
+      "status": 200,
+      "bytes": 4362,
+      "expected_bytes": 4362,
+      "sha256": "ea5be3edb61e8eca17130c1c250dd4147d94caf5901c951546119e5b08424b8c",
+      "expected_sha256": "ea5be3edb61e8eca17130c1c250dd4147d94caf5901c951546119e5b08424b8c",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/pr-delta-review-30.md",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/pr-delta-review-30.md",
+      "status": 200,
+      "bytes": 9566,
+      "expected_bytes": 9566,
+      "sha256": "af0039b8b8f8f35fea8591a4cc1c414a102fdcd6f5f050d1607dc8bba29535db",
+      "expected_sha256": "af0039b8b8f8f35fea8591a4cc1c414a102fdcd6f5f050d1607dc8bba29535db",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/pr-delta-review-30.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/pr-delta-review-30.md",
+      "status": 200,
+      "bytes": 9566,
+      "expected_bytes": 9566,
+      "sha256": "af0039b8b8f8f35fea8591a4cc1c414a102fdcd6f5f050d1607dc8bba29535db",
+      "expected_sha256": "af0039b8b8f8f35fea8591a4cc1c414a102fdcd6f5f050d1607dc8bba29535db",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/runtime-text-scroll-test.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/runtime-text-scroll-test.log",
+      "status": 200,
+      "bytes": 387,
+      "expected_bytes": 387,
+      "sha256": "57cae17f0a1440b95a921118751fcbe1f1cb2453bc68b227c975b43e78e0b2ab",
+      "expected_sha256": "57cae17f0a1440b95a921118751fcbe1f1cb2453bc68b227c975b43e78e0b2ab",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/runtime-text-scroll-test.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/runtime-text-scroll-test.log",
+      "status": 200,
+      "bytes": 387,
+      "expected_bytes": 387,
+      "sha256": "57cae17f0a1440b95a921118751fcbe1f1cb2453bc68b227c975b43e78e0b2ab",
+      "expected_sha256": "57cae17f0a1440b95a921118751fcbe1f1cb2453bc68b227c975b43e78e0b2ab",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/wgpu-readback-test.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/wgpu-readback-test.log",
+      "status": 200,
+      "bytes": 1277,
+      "expected_bytes": 1277,
+      "sha256": "8a07a39841972f2575d56825e214d42687cab8a40c6610834744158f20b9b70c",
+      "expected_sha256": "8a07a39841972f2575d56825e214d42687cab8a40c6610834744158f20b9b70c",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/wgpu-readback-test.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/wgpu-readback-test.log",
+      "status": 200,
+      "bytes": 1277,
+      "expected_bytes": 1277,
+      "sha256": "8a07a39841972f2575d56825e214d42687cab8a40c6610834744158f20b9b70c",
+      "expected_sha256": "8a07a39841972f2575d56825e214d42687cab8a40c6610834744158f20b9b70c",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/README.md",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/README.md",
+      "status": 200,
+      "bytes": 4935,
+      "expected_bytes": 4935,
+      "sha256": "f00b5f26b36bcd359477ab1200dc3eb95d13aaa719127a0a44f5c41e3cb85d67",
+      "expected_sha256": "f00b5f26b36bcd359477ab1200dc3eb95d13aaa719127a0a44f5c41e3cb85d67",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/README.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/README.md",
+      "status": 200,
+      "bytes": 4935,
+      "expected_bytes": 4935,
+      "sha256": "f00b5f26b36bcd359477ab1200dc3eb95d13aaa719127a0a44f5c41e3cb85d67",
+      "expected_sha256": "f00b5f26b36bcd359477ab1200dc3eb95d13aaa719127a0a44f5c41e3cb85d67",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "status": 200,
+      "bytes": 6505,
+      "expected_bytes": 6505,
+      "sha256": "dca070dd7567e56dbede1237d0885c9a7e51c831a5a9c18e3cb12ffc5fedad9f",
+      "expected_sha256": "dca070dd7567e56dbede1237d0885c9a7e51c831a5a9c18e3cb12ffc5fedad9f",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "status": 200,
+      "bytes": 6505,
+      "expected_bytes": 6505,
+      "sha256": "dca070dd7567e56dbede1237d0885c9a7e51c831a5a9c18e3cb12ffc5fedad9f",
+      "expected_sha256": "dca070dd7567e56dbede1237d0885c9a7e51c831a5a9c18e3cb12ffc5fedad9f",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/render-build-result.md",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/render-build-result.md",
+      "status": 200,
+      "bytes": 2590,
+      "expected_bytes": 2590,
+      "sha256": "846453f848ccd5afa7f6c7f1d5e9a3e1ca608e92b0fdc31370066a4af687e43a",
+      "expected_sha256": "846453f848ccd5afa7f6c7f1d5e9a3e1ca608e92b0fdc31370066a4af687e43a",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/render-build-result.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/render-build-result.md",
+      "status": 200,
+      "bytes": 2590,
+      "expected_bytes": 2590,
+      "sha256": "846453f848ccd5afa7f6c7f1d5e9a3e1ca608e92b0fdc31370066a4af687e43a",
+      "expected_sha256": "846453f848ccd5afa7f6c7f1d5e9a3e1ca608e92b0fdc31370066a4af687e43a",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/tailnet-color-source-verdict-agent-browser.png",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/tailnet-color-source-verdict-agent-browser.png",
+      "status": 200,
+      "bytes": 192388,
+      "expected_bytes": 192388,
+      "sha256": "079a492fa2c2cbfe0121e6d78675b2dee88a4301a9de35281e8274dc7657d7c1",
+      "expected_sha256": "079a492fa2c2cbfe0121e6d78675b2dee88a4301a9de35281e8274dc7657d7c1",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/tailnet-color-source-verdict-agent-browser.png",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/tailnet-color-source-verdict-agent-browser.png",
+      "status": 200,
+      "bytes": 192388,
+      "expected_bytes": 192388,
+      "sha256": "079a492fa2c2cbfe0121e6d78675b2dee88a4301a9de35281e8274dc7657d7c1",
+      "expected_sha256": "079a492fa2c2cbfe0121e6d78675b2dee88a4301a9de35281e8274dc7657d7c1",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/tailnet-contract-0072-agent-browser.png",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/tailnet-contract-0072-agent-browser.png",
+      "status": 200,
+      "bytes": 125523,
+      "expected_bytes": 125523,
+      "sha256": "16129eb89d619b9968eb06b8a0cace3eb890558bf0905f242b5708bfb1ebdf7f",
+      "expected_sha256": "16129eb89d619b9968eb06b8a0cace3eb890558bf0905f242b5708bfb1ebdf7f",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/tailnet-contract-0072-agent-browser.png",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/tailnet-contract-0072-agent-browser.png",
+      "status": 200,
+      "bytes": 125523,
+      "expected_bytes": 125523,
+      "sha256": "16129eb89d619b9968eb06b8a0cace3eb890558bf0905f242b5708bfb1ebdf7f",
+      "expected_sha256": "16129eb89d619b9968eb06b8a0cace3eb890558bf0905f242b5708bfb1ebdf7f",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/tailnet-roadmap-c15-3-agent-browser.png",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/tailnet-roadmap-c15-3-agent-browser.png",
+      "status": 200,
+      "bytes": 261061,
+      "expected_bytes": 261061,
+      "sha256": "381afd3671b8c65e10da0dd826398cf11208031a51520a7d48cee862efd276c8",
+      "expected_sha256": "381afd3671b8c65e10da0dd826398cf11208031a51520a7d48cee862efd276c8",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/tailnet-roadmap-c15-3-agent-browser.png",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/tailnet-roadmap-c15-3-agent-browser.png",
+      "status": 200,
+      "bytes": 261061,
+      "expected_bytes": 261061,
+      "sha256": "381afd3671b8c65e10da0dd826398cf11208031a51520a7d48cee862efd276c8",
+      "expected_sha256": "381afd3671b8c65e10da0dd826398cf11208031a51520a7d48cee862efd276c8",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/tailnet-roadmap-c19-color-agent-browser.png",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/tailnet-roadmap-c19-color-agent-browser.png",
+      "status": 200,
+      "bytes": 237560,
+      "expected_bytes": 237560,
+      "sha256": "f9927f60d3098a4018ac0abc4008ad1063debf972da23f0ad19e206fb79c9fb7",
+      "expected_sha256": "f9927f60d3098a4018ac0abc4008ad1063debf972da23f0ad19e206fb79c9fb7",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/tailnet-roadmap-c19-color-agent-browser.png",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/tailnet-roadmap-c19-color-agent-browser.png",
+      "status": 200,
+      "bytes": 237560,
+      "expected_bytes": 237560,
+      "sha256": "f9927f60d3098a4018ac0abc4008ad1063debf972da23f0ad19e206fb79c9fb7",
+      "expected_sha256": "f9927f60d3098a4018ac0abc4008ad1063debf972da23f0ad19e206fb79c9fb7",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/tailnet-runtime-evidence-agent-browser.png",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/tailnet-runtime-evidence-agent-browser.png",
+      "status": 200,
+      "bytes": 135049,
+      "expected_bytes": 135049,
+      "sha256": "91f8d7d8b26519ee68abe766fd09e162b9a98d9f325bd93dd0a39822dee1d257",
+      "expected_sha256": "91f8d7d8b26519ee68abe766fd09e162b9a98d9f325bd93dd0a39822dee1d257",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/tailnet-runtime-evidence-agent-browser.png",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/tailnet-runtime-evidence-agent-browser.png",
+      "status": 200,
+      "bytes": 135049,
+      "expected_bytes": 135049,
+      "sha256": "91f8d7d8b26519ee68abe766fd09e162b9a98d9f325bd93dd0a39822dee1d257",
+      "expected_sha256": "91f8d7d8b26519ee68abe766fd09e162b9a98d9f325bd93dd0a39822dee1d257",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/tailnet-status-c15-agent-browser.png",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/tailnet-status-c15-agent-browser.png",
+      "status": 200,
+      "bytes": 215208,
+      "expected_bytes": 215208,
+      "sha256": "c909e61fc2b66d49e2214d8db525797e0805c3f97765fc9bae689442ef739c41",
+      "expected_sha256": "c909e61fc2b66d49e2214d8db525797e0805c3f97765fc9bae689442ef739c41",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/tailnet-status-c15-agent-browser.png",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/tailnet-status-c15-agent-browser.png",
+      "status": 200,
+      "bytes": 215208,
+      "expected_bytes": 215208,
+      "sha256": "c909e61fc2b66d49e2214d8db525797e0805c3f97765fc9bae689442ef739c41",
+      "expected_sha256": "c909e61fc2b66d49e2214d8db525797e0805c3f97765fc9bae689442ef739c41",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.md",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.md",
+      "status": 200,
+      "bytes": 6278,
+      "expected_bytes": 6278,
+      "sha256": "d3d17516938e04eea492f15f668e645de3a694aa04eaf4b38d1b07f33bc4fe7b",
+      "expected_sha256": "d3d17516938e04eea492f15f668e645de3a694aa04eaf4b38d1b07f33bc4fe7b",
+      "match": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.md",
+      "status": 200,
+      "bytes": 6278,
+      "expected_bytes": 6278,
+      "sha256": "d3d17516938e04eea492f15f668e645de3a694aa04eaf4b38d1b07f33bc4fe7b",
+      "expected_sha256": "d3d17516938e04eea492f15f668e645de3a694aa04eaf4b38d1b07f33bc4fe7b",
+      "match": true
+    },
+    {
+      "path": "plan/c15-inline-text-layout.md",
+      "url": "http://127.0.0.1:8768/spinon/plan/c15-inline-text-layout.md",
+      "status": 200,
+      "bytes": 28395,
+      "expected_bytes": 28395,
+      "sha256": "2b4afb319b2a5eab62f59640128d05f3164c445e37d5307bef1960004bd23f01",
+      "expected_sha256": "2b4afb319b2a5eab62f59640128d05f3164c445e37d5307bef1960004bd23f01",
+      "match": true
+    },
+    {
+      "path": "spec/plan/c15-inline-text-layout.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/plan/c15-inline-text-layout.md",
+      "status": 200,
+      "bytes": 28395,
+      "expected_bytes": 28395,
+      "sha256": "2b4afb319b2a5eab62f59640128d05f3164c445e37d5307bef1960004bd23f01",
+      "expected_sha256": "2b4afb319b2a5eab62f59640128d05f3164c445e37d5307bef1960004bd23f01",
+      "match": true
+    },
+    {
+      "path": "public/icon.svg",
+      "url": "http://127.0.0.1:8768/spinon/public/icon.svg",
+      "status": 200,
+      "bytes": 638,
+      "expected_bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "expected_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "match": true
+    },
+    {
+      "path": "spec/public/icon.svg",
+      "url": "http://127.0.0.1:8768/spinon/spec/public/icon.svg",
+      "status": 200,
+      "bytes": 638,
+      "expected_bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "expected_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "match": true
+    },
+    {
+      "path": "public/logo.svg",
+      "url": "http://127.0.0.1:8768/spinon/public/logo.svg",
+      "status": 200,
+      "bytes": 568,
+      "expected_bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "expected_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "match": true
+    },
+    {
+      "path": "spec/public/logo.svg",
+      "url": "http://127.0.0.1:8768/spinon/spec/public/logo.svg",
+      "status": 200,
+      "bytes": 568,
+      "expected_bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "expected_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "match": true
+    },
+    {
+      "path": "public/roadmap.html",
+      "url": "http://127.0.0.1:8768/spinon/public/roadmap.html",
+      "status": 200,
+      "bytes": 109989,
+      "expected_bytes": 109989,
+      "sha256": "c5a930c7c9752d334d78a7fa2ac1754fb88486ffb40d4da0460def4265649608",
+      "expected_sha256": "c5a930c7c9752d334d78a7fa2ac1754fb88486ffb40d4da0460def4265649608",
+      "match": true
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/public/roadmap.html",
+      "status": 200,
+      "bytes": 109989,
+      "expected_bytes": 109989,
+      "sha256": "c5a930c7c9752d334d78a7fa2ac1754fb88486ffb40d4da0460def4265649608",
+      "expected_sha256": "c5a930c7c9752d334d78a7fa2ac1754fb88486ffb40d4da0460def4265649608",
+      "match": true
+    },
+    {
+      "path": "roadmap.html",
+      "url": "http://127.0.0.1:8768/spinon/roadmap.html",
+      "status": 200,
+      "bytes": 109989,
+      "expected_bytes": 109989,
+      "sha256": "c5a930c7c9752d334d78a7fa2ac1754fb88486ffb40d4da0460def4265649608",
+      "expected_sha256": "c5a930c7c9752d334d78a7fa2ac1754fb88486ffb40d4da0460def4265649608",
+      "match": true
+    }
+  ]
+}
