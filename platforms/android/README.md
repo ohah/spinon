@@ -21,7 +21,7 @@ S04 화면의 하단 상태 문구는 비동기 RGBA readback을 시작하면 �
 
 ## C14.1 intrinsic size 앱 fixture
 
-C14.1은 opt-in `RuntimeSession::eval`이 만든 live V8 문서를 actor-owned `HostDocumentSnapshot`으로 복사하고, snapshot의 HTML `img[src]` 요청 identity를 고정 PNG decoder·`ImageResourceSnapshot`·CSS px intrinsic layout adapter에 전달하는 텍스트 report 전용 앱 fixture입니다. stale `src` 변경 negative control은 증가한 문서 revision에서 이전 completion이 `SourceChanged`로 거부되는지 확인합니다. `SPINON_ENABLE_C14_1_APP_FIXTURE_TEST=1`로 opt-in 빌드한 다음 Android AVD에서 실행합니다.
+C14.1 opt-in 앱 route는 두 입력 경로를 함께 실행하는 텍스트 report 전용 fixture입니다. 기존 JavaScript eval으로 만든 live V8 문서 경로는 actor-owned `HostDocumentSnapshot`에서 stale `src` completion이 증가한 revision에서 `SourceChanged`로 거부되는지 확인합니다. 추가된 parsed-root 경로는 `RuntimeSession::new_with_root_html()`로 HTML parser가 만든 초기 문서를 V8에 import하고 같은 actor-owned snapshot에서 `img[src]`와 `<style>` text를 읽어 고정 PNG decoder·`ImageResourceSnapshot`·CSS px intrinsic layout adapter에 전달합니다. 고정 source에서 두 경로 모두 Chrome 155 기준 `24×16 CSS px` frame을 비교합니다. 현재 bounded layout profile에 맞게 fixture가 `html/body/main/img` display를 명시하고 `head`를 숨기며, head 바깥 text node/markup 공백을 두지 않습니다. 일반 HTML UA default, text layout, resource loader/fetch, image paint는 범위에 없습니다. `SPINON_ENABLE_C14_1_APP_FIXTURE_TEST=1`로 opt-in 빌드한 다음 Android AVD에서 실행합니다.
 
 ```sh
 mise exec -- env SPINON_ENABLE_C14_1_APP_FIXTURE_TEST=1 bun run build:android
@@ -29,7 +29,7 @@ adb -s emulator-5554 shell am start -n dev.spinon.bootstrap/.MainActivity --ez s
 adb -s emulator-5554 logcat -d -s SpinonBootstrap | rg SPINON_C141_APP_FIXTURE
 ```
 
-이 report는 고정 Chrome 155 oracle과 `(0,0) 24×16 CSS px` frame, source/intrinsic revision을 비교합니다. 앱 화면은 report text만 보여 줍니다. PNG image paint, GPU 출력, border 바깥 overflow, 제품 resource loader·비동기 교체는 검증하지 않습니다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 live V8 로그·화면·feature 경계는 [C14.1 live V8 evidence](../../spec/internal/evidence/c14-1-live-v8-image-measurement-2026-10-16/README.md)에 기록합니다.
+report는 두 입력 경로의 `(0,0) 24×16 CSS px` frame, source/intrinsic revision, aggregate status를 표시합니다. 앱 화면은 report text만 보여 줍니다. PNG image paint, GPU 출력, border 바깥 overflow, 제품 resource loader·비동기 교체는 검증하지 않습니다. 이전 live V8 evidence는 [C14.1 live V8 evidence](../../spec/internal/evidence/c14-1-live-v8-image-measurement-2026-10-16/README.md)에, parsed-root 실행 로그·화면과 적용 범위는 [C14.1 parsed root HTML evidence](../../spec/internal/evidence/c14-1-root-html-image-source-2026-10-18/README.md)에 기록합니다.
 
 ## C14.2 이미지 비율 앱 fixture
 

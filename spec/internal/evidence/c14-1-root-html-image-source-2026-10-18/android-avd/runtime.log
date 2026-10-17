@@ -1,0 +1,3 @@
+--------- beginning of main
+10-18 08:38:56.634 16489 16509 E SpinonBootstrap: SPINON_C141_NATIVE_ERROR code=-2 report={"detail":"parsed root HTML CSS layout: Taffy 입력 또는 계산에 실패했습니다: HostDocument 레이아웃 루트 15는 HostRoot 직속 요소가 아닙니다; main.display=Some(\"block\"); img.display=Some(\"block\")","status":"error"}
+10-18 08:38:56.634 16489 16509 E SpinonBootstrap: SPINON_C141_APP_FIXTURE {"detail":"parsed root HTML CSS layout: Taffy 입력 또는 계산에 실패했습니다: HostDocument 레이아웃 루트 15는 HostRoot 직속 요소가 아닙니다; main.display=Some(\"block\"); img.display=Some(\"block\")","status":"error"}

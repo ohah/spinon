@@ -13,6 +13,8 @@ use spinon_style::{
 };
 use spinon_style_to_layout::compute_runtime_style_layout_with_intrinsic_size_snapshot;
 
+mod root_html;
+
 const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
 const IMAGE_URL: &str = "https://spinon.invalid/c14-1-png-basic.png";
 const PNG: &[u8] = include_bytes!(concat!(
@@ -36,6 +38,28 @@ fn run_fixture() -> Result<(String, bool), String> {
     let reference: serde_json::Value =
         serde_json::from_str(REFERENCE).map_err(|error| format!("reference JSON: {error}"))?;
     let png_sha256 = verify_png_reference(&reference)?;
+    let (live_v8_report, live_v8_matches) = run_live_v8_fixture(&reference, &png_sha256)?;
+    let (root_html_report, root_html_matches) = root_html::run_fixture(&reference, &png_sha256)?;
+    let status_matches = live_v8_matches && root_html_matches;
+    let report = serde_json::json!({
+        "status": if status_matches { "ok" } else { "mismatch" },
+        "fixture": "c14-1-live-v8-and-parsed-root-html-png-basic",
+        "oracle": "HeadlessChrome/155",
+        "viewport_css_px": [120, 80],
+        "live_v8_eval": serde_json::from_str::<serde_json::Value>(&live_v8_report)
+            .map_err(|error| format!("live V8 report JSON: {error}"))?,
+        "parsed_root_html_v8": serde_json::from_str::<serde_json::Value>(&root_html_report)
+            .map_err(|error| format!("parsed root HTML report JSON: {error}"))?,
+    });
+    let serialized =
+        serde_json::to_string(&report).map_err(|error| format!("report serialization: {error}"))?;
+    Ok((serialized, status_matches))
+}
+
+fn run_live_v8_fixture(
+    reference: &serde_json::Value,
+    png_sha256: &str,
+) -> Result<(String, bool), String> {
     let (runtime, document_snapshot, root, image) = create_live_document()?;
     let image_request = ImageRequest::from_document(&document_snapshot, image)
         .map_err(|error| format!("image request: {error}"))?;

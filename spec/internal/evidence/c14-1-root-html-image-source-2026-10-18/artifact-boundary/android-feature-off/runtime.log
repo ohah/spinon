@@ -1,0 +1,35 @@
+--------- beginning of main
+10-18 08:48:18.428 16922 16922 I libprocessgroup: Created cgroup /sys/fs/cgroup/apps/uid_10229/pid_16922
+10-18 08:48:18.429 16922 16922 I Zygote  : Process 16922 created for dev.spinon.bootstrap
+10-18 08:48:18.429 16922 16922 I pinon.bootstrap: Late-enabling -Xcheck:jni
+10-18 08:48:18.438 16922 16922 I pinon.bootstrap: Using generational CollectorTypeCMC GC.
+10-18 08:48:18.446 16922 16922 D nativeloader: Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+10-18 08:48:18.480 16922 16922 D nativeloader: Configuring clns-9 for other apk /data/app/~~Q_nP9zAUoeZZgLQ7f6zE0w==/dev.spinon.bootstrap-hJFYd2vCItcB8Bg9P7pSiw==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~Q_nP9zAUoeZZgLQ7f6zE0w==/dev.spinon.bootstrap-hJFYd2vCItcB8Bg9P7pSiw==/lib/arm64:/data/app/~~Q_nP9zAUoeZZgLQ7f6zE0w==/dev.spinon.bootstrap-hJFYd2vCItcB8Bg9P7pSiw==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/dev.spinon.bootstrap
+--------- beginning of system
+10-18 08:48:18.485 16922 16922 D ActivityThread: Set OS env TMPDIR to /data/user/0/dev.spinon.bootstrap/cache
+10-18 08:48:18.500 16922 16922 V GraphicsEnvironment: Currently set values for:
+10-18 08:48:18.500 16922 16922 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+10-18 08:48:18.500 16922 16922 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+10-18 08:48:18.500 16922 16922 V GraphicsEnvironment: dev.spinon.bootstrap is not listed in per-application setting
+10-18 08:48:18.500 16922 16922 V GraphicsEnvironment: No special selections for ANGLE, returning default driver choice
+10-18 08:48:18.500 16922 16922 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+10-18 08:48:18.518 16922 16937 I DisplayManager: Choreographer implicitly registered for the refresh rate.
+10-18 08:48:18.553 16922 16922 D nativeloader: Load /data/app/~~Q_nP9zAUoeZZgLQ7f6zE0w==/dev.spinon.bootstrap-hJFYd2vCItcB8Bg9P7pSiw==/base.apk!/lib/arm64-v8a/libspinon_bootstrap.so using class loader ns clns-9 (caller=/data/app/~~Q_nP9zAUoeZZgLQ7f6zE0w==/dev.spinon.bootstrap-hJFYd2vCItcB8Bg9P7pSiw==/base.apk!classes2.dex): ok
+10-18 08:48:18.567 16922 16922 D CompatChangeReporter: Compat change id reported: 377864165; UID 10229; state: ENABLED
+10-18 08:48:18.581 16922 16922 E SpinonBootstrap: SPINON_C141_DISABLED fixture-test feature is off
+10-18 08:48:18.583 16922 16937 I GFXSTREAM: [eglDisplay.cpp(297)] Opening libGLESv1_CM_emulation.so
+10-18 08:48:18.583 16922 16937 I GFXSTREAM: [eglDisplay.cpp(297)] Opening libGLESv2_emulation.so
+10-18 08:48:18.583 16922 16937 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-18 08:48:18.585 16922 16937 W HWUI    : Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+10-18 08:48:18.586 16922 16937 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+10-18 08:48:18.597 16922 16922 W HWUI    : Unknown dataspace 0
+10-18 08:48:18.602 16922 16941 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-18 08:48:18.654 16922 16922 D WindowOnBackDispatcher: setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@d0e6661
+10-18 08:48:18.656 16922 16922 D VRI[MainActivity]: WindowInsets changed: 1080x2400 statusBars:[0,128,0,0] navigationBars:[0,0,0,63] mandatorySystemGestures:[0,160,0,84]
+10-18 08:48:18.656 16922 16922 I HWUI    : Using FreeType backend (prop=Auto)
+10-18 08:48:18.656 16922 16943 D WindowOnBackDispatcher: setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@d0e6661
+10-18 08:48:18.661 16922 16922 I Surface : Creating surface for consumer unnamed-16922-0 with slotExpansion=1 for 64 slots
+10-18 08:48:18.661 16922 16922 I Surface : Creating surface for consumer VRI[MainActivity]#0(BLAST Consumer)0 with slotExpansion=1 for 64 slots
+10-18 08:48:18.771 16922 16922 D InsetsController: hide(ime())
+10-18 08:48:18.772 16922 16922 I ImeTracker: dev.spinon.bootstrap:c9407726: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+10-18 08:48:18.976 16922 16927 I pinon.bootstrap: Compiler allocated 5599KB to compile void android.view.ViewRootImpl.performTraversals(long)

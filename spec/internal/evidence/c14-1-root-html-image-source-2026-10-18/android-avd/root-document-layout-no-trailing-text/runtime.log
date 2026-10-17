@@ -1,0 +1,35 @@
+--------- beginning of main
+10-18 08:42:23.873 16794 16794 I libprocessgroup: Created cgroup /sys/fs/cgroup/apps/uid_10229/pid_16794
+10-18 08:42:23.875 16794 16794 I Zygote  : Process 16794 created for dev.spinon.bootstrap
+10-18 08:42:23.876 16794 16794 I pinon.bootstrap: Late-enabling -Xcheck:jni
+10-18 08:42:23.885 16794 16794 I pinon.bootstrap: Using generational CollectorTypeCMC GC.
+10-18 08:42:23.894 16794 16794 D nativeloader: Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+10-18 08:42:23.943 16794 16794 D nativeloader: Configuring clns-9 for other apk /data/app/~~FI6S_Ik74_1ORTwlaKIw4w==/dev.spinon.bootstrap-tnkP5ej1QQ9nKXJGK8DbrA==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~FI6S_Ik74_1ORTwlaKIw4w==/dev.spinon.bootstrap-tnkP5ej1QQ9nKXJGK8DbrA==/lib/arm64:/data/app/~~FI6S_Ik74_1ORTwlaKIw4w==/dev.spinon.bootstrap-tnkP5ej1QQ9nKXJGK8DbrA==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/dev.spinon.bootstrap
+--------- beginning of system
+10-18 08:42:23.956 16794 16794 D ActivityThread: Set OS env TMPDIR to /data/user/0/dev.spinon.bootstrap/cache
+10-18 08:42:23.963 16794 16794 V GraphicsEnvironment: Currently set values for:
+10-18 08:42:23.963 16794 16794 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+10-18 08:42:23.963 16794 16794 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+10-18 08:42:23.963 16794 16794 V GraphicsEnvironment: dev.spinon.bootstrap is not listed in per-application setting
+10-18 08:42:23.963 16794 16794 V GraphicsEnvironment: No special selections for ANGLE, returning default driver choice
+10-18 08:42:23.965 16794 16794 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+10-18 08:42:23.992 16794 16794 D nativeloader: Load /data/app/~~FI6S_Ik74_1ORTwlaKIw4w==/dev.spinon.bootstrap-tnkP5ej1QQ9nKXJGK8DbrA==/base.apk!/lib/arm64-v8a/libspinon_bootstrap.so using class loader ns clns-9 (caller=/data/app/~~FI6S_Ik74_1ORTwlaKIw4w==/dev.spinon.bootstrap-tnkP5ej1QQ9nKXJGK8DbrA==/base.apk!classes2.dex): ok
+10-18 08:42:23.994 16794 16809 I DisplayManager: Choreographer implicitly registered for the refresh rate.
+10-18 08:42:24.022 16794 16794 D CompatChangeReporter: Compat change id reported: 377864165; UID 10229; state: ENABLED
+10-18 08:42:24.033 16794 16809 I GFXSTREAM: [eglDisplay.cpp(297)] Opening libGLESv1_CM_emulation.so
+10-18 08:42:24.033 16794 16809 I GFXSTREAM: [eglDisplay.cpp(297)] Opening libGLESv2_emulation.so
+10-18 08:42:24.035 16794 16809 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-18 08:42:24.058 16794 16809 W HWUI    : Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+10-18 08:42:24.058 16794 16809 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+10-18 08:42:24.073 16794 16812 I SpinonBootstrap: SPINON_C141_APP_FIXTURE {"fixture":"c14-1-live-v8-and-parsed-root-html-png-basic","live_v8_eval":{"document_generation":"DocumentGeneration(1)","document_origin":"live-v8","document_revision":8,"document_revision_after_stale_control":9,"expected_frame_css_px":[0.0,0.0,24.0,16.0],"expected_natural_size_css_px":[24.0,16.0],"fixture":"c14-1-live-v8-png-basic","frame_css_px":[0.0,0.0,24.0,16.0],"intrinsic_revision":"IntrinsicSizeRevision(1)","intrinsic_revision_matches":true,"intrinsic_source_matches":true,"natural_size_css_px":[24.0,16.0],"node_id":"NodeId(2)","oracle":"HeadlessChrome/155","png_sha256":"5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2","render_tree_revision":2,"request_source_matches":true,"root_node_id":"NodeId(1)","source_revision":"HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(8), render_tree: RenderTreeRevision(2) }","stale_source_rejected":true,"stale_source_rejection":"SourceChanged","status":"ok","tolerance_css_px":0.5,"viewport_css_px":[120,80]},"oracle":"HeadlessChrome/155","parsed_root_html_v8":{"document_element_node_id":"NodeId(1)","document_generation":"DocumentGeneration(2)","document_origin":"parsed-root-html-v8","document_revision":1,"expected_frame_css_px":[0.0,0.0,24.0,16.0],"expected_natural_size_css_px":[24.0,16.0],"frame_css_px":[0.0,0.0,24.0,16.0],"head_computed_display":"none","html_body_count":1,"html_computed_display":"block","html_document_element_count":1,"html_head_count":1,"html_image_count":1,"image_computed_display":"block","intrinsic_revision":"IntrinsicSizeRevision(1)","intrinsic_revision_matches":true,"intrinsic_source_matches":true,"main_computed_display":"block","natural_size_css_px":[24.0,16.0],"node_id":"NodeId(10)","png_sha256":"5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2","render_tree_revision":1,"request_source_matches":true,"root_html_sha256":"56fc0d9c5a444550866eba7ee65fbe3960b27631830294093107c8c20d77b386","root_html_style_count":1,"root_node_id":"NodeId(9)","script_execution":"not-run","source_revision":"HostDocument { generation: DocumentGeneration(2), document: DocumentRevision(1), render_tree: RenderTreeRevision(1) }","status":"ok","tolerance_css_px":0.5},"status":"ok","viewport_css_px":[120,80]}
+10-18 08:42:24.079 16794 16794 W HWUI    : Unknown dataspace 0
+10-18 08:42:24.088 16794 16821 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-18 08:42:24.161 16794 16794 D WindowOnBackDispatcher: setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@2595586
+10-18 08:42:24.167 16794 16823 D WindowOnBackDispatcher: setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@2595586
+10-18 08:42:24.168 16794 16794 D VRI[MainActivity]: WindowInsets changed: 1080x2400 statusBars:[0,128,0,0] navigationBars:[0,0,0,63] mandatorySystemGestures:[0,160,0,84]
+10-18 08:42:24.169 16794 16794 I HWUI    : Using FreeType backend (prop=Auto)
+10-18 08:42:24.194 16794 16794 I Surface : Creating surface for consumer unnamed-16794-0 with slotExpansion=1 for 64 slots
+10-18 08:42:24.195 16794 16794 I Surface : Creating surface for consumer VRI[MainActivity]#0(BLAST Consumer)0 with slotExpansion=1 for 64 slots
+10-18 08:42:24.300 16794 16794 D InsetsController: hide(ime())
+10-18 08:42:24.300 16794 16794 I ImeTracker: dev.spinon.bootstrap:d1629b9a: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+10-18 08:42:24.532 16794 16799 I pinon.bootstrap: Compiler allocated 5599KB to compile void android.view.ViewRootImpl.performTraversals(long)
