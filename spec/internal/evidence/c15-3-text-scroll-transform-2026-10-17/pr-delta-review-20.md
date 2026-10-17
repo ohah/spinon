@@ -23,6 +23,6 @@
 | 17 | C15.3 부모 상태가 완성으로 체크되거나 total completion이 증가 | `STATUS.md` C15 체크를 유지하고 이번 제한 slice를 별도 하위 evidence로 기록한다. roadmap 전체 완료 count는 `61/197` 그대로다. |
 | 18 | 새 계약이 upstream 공개 API 또는 잘못된 숫자 버전을 주장 | 내부 계약 `0074`, `0.1.0` 고정으로 등록하고 공개 API 아님을 명시했다. |
 | 19 | plan/status/internal index의 상대 링크나 범위가 서로 어긋남 | 계약·근거·계획·색인 링크 대상은 `targeted-links.log`에서 모두 확인했다. 전체 Rspress 빌드는 다른 문서의 dead link 490건과 C13.1 누락 이미지 1건으로 실패했으며, 새 0074 계약과 이 근거 README는 오류 목록에 없다. |
-| 20 | simulator screenshot이 log/sample과 다른 binary에서 왔거나 한쪽 플랫폼만 누락 | 최신 소스 빌드 뒤 Android AVD 15:58 PixelCopy와 iPhone Simulator 15:59 Metal drawable이 각 6/6 exact였다. 양쪽 캡처·실행 로그·환경·APK/executable/hash manifest가 이 evidence 폴더에 고정되어 있다. PR 본문 이미지 렌더 확인은 PR 생성 직후 Agent Browser에서 마친다. |
+| 20 | simulator screenshot이 log/sample과 다른 binary에서 왔거나 한쪽 플랫폼만 누락 | 최신 소스 빌드 뒤 Android AVD 15:58 PixelCopy와 iPhone Simulator 15:59 Metal drawable이 각 6/6 exact였다. 양쪽 캡처·실행 로그·환경·APK/executable/hash manifest가 이 evidence 폴더에 고정되어 있다. PR #261 head `56e26d184f726aa96e08b83b887b5ff3f468b377`를 Agent Browser로 열어 본문 raw 이미지 두 장이 `complete=true`와 자연 해상도 Android 1080×2400, iOS 1206×2622로 렌더되는 것을 확인했다. |
 
 실기기·iOS compositor 이후 scanout·전체 C15 적합성은 이 PR diff의 주장 범위가 아니다.
