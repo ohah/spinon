@@ -1,0 +1,113 @@
+{
+  "created_utc": "2026-10-17T15:22:23.101543+00:00",
+  "backup_root": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-page-scale-tailnet-sync-20261018/first-copy",
+  "count": 15,
+  "all_match": true,
+  "files": [
+    {
+      "path": "STATUS.html",
+      "backup": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-page-scale-tailnet-sync-20261018/first-copy/STATUS.html",
+      "bytes": 344853,
+      "sha256": "d130b8fb8dbf576a04e319b7dfbaf66e01890da9902b5e3276098a92a7feff4a",
+      "matches_preflight": true
+    },
+    {
+      "path": "STATUS.md",
+      "backup": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-page-scale-tailnet-sync-20261018/first-copy/STATUS.md",
+      "bytes": 265518,
+      "sha256": "a5e7b59ed6bacd29376d87659363333aa99d7068d251056194192f57f1e7f655",
+      "matches_preflight": true
+    },
+    {
+      "path": "icon.svg",
+      "backup": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-page-scale-tailnet-sync-20261018/first-copy/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "matches_preflight": true
+    },
+    {
+      "path": "internal/0077-c04-12-root-html-document.html",
+      "backup": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-page-scale-tailnet-sync-20261018/first-copy/internal/0077-c04-12-root-html-document.html",
+      "bytes": 38598,
+      "sha256": "c18195954ee541c2084d4876ba3be3d28ef79e2ddc4b21cc6e98208d5074fb1b",
+      "matches_preflight": true
+    },
+    {
+      "path": "internal/0077-c04-12-root-html-document.md",
+      "backup": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-page-scale-tailnet-sync-20261018/first-copy/internal/0077-c04-12-root-html-document.md",
+      "bytes": 16814,
+      "sha256": "4dd6233d0e60364f18875feedf092671cb5a77d55b06cd6086c2d2a2f10c2614",
+      "matches_preflight": true
+    },
+    {
+      "path": "logo.svg",
+      "backup": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-page-scale-tailnet-sync-20261018/first-copy/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "matches_preflight": true
+    },
+    {
+      "path": "roadmap.html",
+      "backup": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-page-scale-tailnet-sync-20261018/first-copy/roadmap.html",
+      "bytes": 120941,
+      "sha256": "a057b63cc843de181a4bda6c32af52f066525160a3ba2c4a2ee2996e28de4e7d",
+      "matches_preflight": true
+    },
+    {
+      "path": "roadmap.svg",
+      "backup": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-page-scale-tailnet-sync-20261018/first-copy/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "matches_preflight": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "backup": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-page-scale-tailnet-sync-20261018/first-copy/static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "matches_preflight": true
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "backup": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-page-scale-tailnet-sync-20261018/first-copy/static/js/async/i.25208e7c92.js",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "matches_preflight": true
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "backup": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-page-scale-tailnet-sync-20261018/first-copy/static/js/lib-react.9cdf8f49ce.js",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "matches_preflight": true
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "backup": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-page-scale-tailnet-sync-20261018/first-copy/static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "matches_preflight": true
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "backup": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-page-scale-tailnet-sync-20261018/first-copy/static/js/lib-router.1e14e568cb.js",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "matches_preflight": true
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "backup": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-page-scale-tailnet-sync-20261018/first-copy/static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "matches_preflight": true
+    },
+    {
+      "path": "static/js/styles.2da0941fcb.js",
+      "backup": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-page-scale-tailnet-sync-20261018/first-copy/static/js/styles.2da0941fcb.js",
+      "bytes": 472,
+      "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "matches_preflight": true
+    }
+  ]
+}
