@@ -2294,6 +2294,38 @@ Java_dev_spinon_bootstrap_MainActivity_nativeSessionCreate(JNIEnv *, jclass) {
   return static_cast<jlong>(reinterpret_cast<uintptr_t>(session));
 }
 
+extern "C" JNIEXPORT jlong JNICALL
+Java_dev_spinon_bootstrap_MainActivity_nativeSessionCreateWithRootHtml(
+    JNIEnv *env, jclass, jbyteArray source_utf8) {
+  if (source_utf8 == nullptr) return 0;
+  const jsize source_length = env->GetArrayLength(source_utf8);
+  constexpr size_t kMaxRootHtmlSourceBytes = 1'048'576;
+  if (source_length < 0 ||
+      static_cast<size_t>(source_length) > kMaxRootHtmlSourceBytes) {
+    __android_log_print(ANDROID_LOG_ERROR, kTag,
+                        "SPINON_ROOT_HTML_SESSION_ERROR reason=source-too-large");
+    return 0;
+  }
+  std::vector<char> source(static_cast<size_t>(source_length));
+  if (source_length > 0) {
+    env->GetByteArrayRegion(source_utf8, 0, source_length,
+                            reinterpret_cast<jbyte *>(source.data()));
+    if (env->ExceptionCheck()) return 0;
+  }
+
+  std::array<char, 512> output{};
+  SpinonRuntimeSession *session = spinon_runtime_session_new_with_root_html(
+      source.data(), source.size(), output.data(), output.size());
+  if (session == nullptr) {
+    __android_log_print(ANDROID_LOG_ERROR, kTag,
+                        "SPINON_ROOT_HTML_SESSION_ERROR=%s", output.data());
+    return 0;
+  }
+  __android_log_print(ANDROID_LOG_INFO, kTag,
+                      "SPINON_ROOT_HTML_SESSION=%s", output.data());
+  return static_cast<jlong>(reinterpret_cast<uintptr_t>(session));
+}
+
 #if defined(SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST) && \
     SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST
 extern "C" JNIEXPORT jbyteArray JNICALL
