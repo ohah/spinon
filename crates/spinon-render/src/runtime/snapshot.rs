@@ -9,7 +9,7 @@ use super::scroll::{
 };
 use super::{
     CssSize, RuntimePaint, RuntimePaintCommand, RuntimeRenderBox, RuntimeRenderError,
-    RuntimeRenderImage, RuntimeRenderKey, RuntimeRenderSnapshot,
+    RuntimeRenderImage, RuntimeRenderKey, RuntimeRenderSnapshot, RuntimeRenderText,
 };
 impl RuntimeRenderSnapshot {
     pub fn new(
@@ -71,7 +71,27 @@ impl RuntimeRenderSnapshot {
         scroll_metadata: Vec<RuntimeScrollRenderMetadata>,
         paint_commands: Vec<RuntimePaintCommand>,
     ) -> Result<Self, RuntimeRenderError> {
-        validate_paint_commands(&paint_commands, base_boxes.len())?;
+        Self::new_with_scroll_metadata_texts_and_paint_commands(
+            key,
+            viewport_css_px,
+            base_boxes,
+            scroll_containers,
+            scroll_metadata,
+            Vec::new(),
+            paint_commands,
+        )
+    }
+
+    pub fn new_with_scroll_metadata_texts_and_paint_commands(
+        key: RuntimeRenderKey,
+        viewport_css_px: CssSize,
+        base_boxes: Vec<RuntimeRenderBox>,
+        scroll_containers: Vec<RuntimeScrollContainer>,
+        scroll_metadata: Vec<RuntimeScrollRenderMetadata>,
+        texts: Vec<RuntimeRenderText>,
+        paint_commands: Vec<RuntimePaintCommand>,
+    ) -> Result<Self, RuntimeRenderError> {
+        validate_paint_commands(&paint_commands, base_boxes.len(), texts.len())?;
         let mut node_ids = BTreeSet::new();
         let mut hit_test_orders = BTreeSet::new();
         for (index, render_box) in base_boxes.iter().enumerate() {
@@ -105,6 +125,13 @@ impl RuntimeRenderSnapshot {
                 return Err(RuntimeRenderError::DuplicateScrollOwner(container.owner()));
             }
         }
+        validate_texts(
+            &texts,
+            key,
+            &base_boxes,
+            &scroll_containers,
+            &scroll_metadata,
+        )?;
         let base_boxes: Arc<[RuntimeRenderBox]> = base_boxes.into();
         let scroll_containers: Arc<[RuntimeScrollContainer]> = scroll_containers.into();
         let scroll_metadata: Arc<[RuntimeScrollRenderMetadata]> = scroll_metadata.into();
@@ -117,6 +144,7 @@ impl RuntimeRenderSnapshot {
             scroll_containers,
             scroll_metadata,
             images: Arc::from([]),
+            texts: texts.into(),
             paint_commands: paint_commands.into(),
         })
     }
@@ -162,12 +190,30 @@ impl RuntimeRenderSnapshot {
         Ok(snapshot)
     }
 
+    /// Layout과 raster가 끝난 text bitmap을 revision 검사 후 paint 순서에 연결합니다.
+    pub fn with_texts_and_paint_commands(
+        &self,
+        texts: Vec<RuntimeRenderText>,
+        paint_commands: Vec<RuntimePaintCommand>,
+    ) -> Result<Self, RuntimeRenderError> {
+        Self::new_with_scroll_metadata_texts_and_paint_commands(
+            self.key,
+            self.viewport_css_px,
+            self.base_boxes.to_vec(),
+            self.scroll_containers.to_vec(),
+            self.scroll_metadata.to_vec(),
+            texts,
+            paint_commands,
+        )?
+        .with_images(self.images.to_vec())
+    }
+
     /// 같은 문서 세대와 연결 트리 revision의 snapshot에서 document revision을 다시 발행합니다.
     pub fn with_document_snapshot_revision(&self, snapshot: &HostDocumentSnapshot) -> Option<Self> {
         if self.key.generation != snapshot.generation()
             || self.key.render_tree_revision != snapshot.render_tree_revision()
-            || (!self.images.is_empty()
-                && self.key.document_revision != snapshot.document_revision())
+            || (!self.images.is_empty() || !self.texts.is_empty())
+                && self.key.document_revision != snapshot.document_revision()
         {
             return None;
         }
@@ -188,6 +234,7 @@ impl RuntimeRenderSnapshot {
             scroll_containers: Arc::clone(&self.scroll_containers),
             scroll_metadata: Arc::clone(&self.scroll_metadata),
             images: Arc::clone(&self.images),
+            texts: Arc::clone(&self.texts),
             paint_commands: Arc::clone(&self.paint_commands),
         })
     }
@@ -202,6 +249,7 @@ impl RuntimeRenderSnapshot {
             scroll_containers: Arc::clone(&self.scroll_containers),
             scroll_metadata: Arc::clone(&self.scroll_metadata),
             images: Arc::clone(&self.images),
+            texts: Arc::clone(&self.texts),
             paint_commands: Arc::clone(&self.paint_commands),
         }
     }
@@ -220,6 +268,10 @@ impl RuntimeRenderSnapshot {
 
     pub fn images(&self) -> &[RuntimeRenderImage] {
         &self.images
+    }
+
+    pub fn texts(&self) -> &[RuntimeRenderText] {
+        &self.texts
     }
 
     pub fn paint_commands(&self) -> &[RuntimePaintCommand] {
@@ -250,12 +302,13 @@ impl RuntimeRenderSnapshot {
             };
             *container = container.with_input_policy(policy);
         }
-        Self::new_with_scroll_metadata_and_paint_commands(
+        Self::new_with_scroll_metadata_texts_and_paint_commands(
             self.key,
             self.viewport_css_px,
             self.base_boxes.to_vec(),
             containers,
             self.scroll_metadata.to_vec(),
+            self.texts.to_vec(),
             self.paint_commands.to_vec(),
         )?
         .with_images(self.images.to_vec())
@@ -312,12 +365,13 @@ impl RuntimeRenderSnapshot {
             self.key.scroll_state_revision
         };
         let key = self.key.with_scroll_state_revision(scroll_revision);
-        Self::new_with_scroll_metadata_and_paint_commands(
+        Self::new_with_scroll_metadata_texts_and_paint_commands(
             key,
             self.viewport_css_px,
             self.base_boxes.to_vec(),
             containers,
             self.scroll_metadata.to_vec(),
+            self.texts.to_vec(),
             self.paint_commands.to_vec(),
         )?
         .with_images(self.images.to_vec())
@@ -351,8 +405,10 @@ impl RuntimeRenderSnapshot {
 fn validate_paint_commands(
     commands: &[RuntimePaintCommand],
     box_count: usize,
+    text_count: usize,
 ) -> Result<(), RuntimeRenderError> {
     let mut next_box = 0_usize;
+    let mut next_text = 0_usize;
     let mut group_depth = 0_usize;
     for command in commands {
         match *command {
@@ -372,6 +428,14 @@ fn validate_paint_commands(
                     .checked_add(1)
                     .ok_or(RuntimeRenderError::InvalidPaintCommands)?;
             }
+            RuntimePaintCommand::DrawText { index } => {
+                if index != next_text || index >= text_count {
+                    return Err(RuntimeRenderError::InvalidPaintCommands);
+                }
+                next_text = next_text
+                    .checked_add(1)
+                    .ok_or(RuntimeRenderError::InvalidPaintCommands)?;
+            }
             RuntimePaintCommand::EndGroup => {
                 if group_depth == 0 {
                     return Err(RuntimeRenderError::InvalidPaintCommands);
@@ -380,8 +444,40 @@ fn validate_paint_commands(
             }
         }
     }
-    if next_box != box_count || group_depth != 0 {
+    if next_box != box_count || next_text != text_count || group_depth != 0 {
         return Err(RuntimeRenderError::InvalidPaintCommands);
+    }
+    Ok(())
+}
+
+fn validate_texts(
+    texts: &[RuntimeRenderText],
+    key: RuntimeRenderKey,
+    boxes: &[RuntimeRenderBox],
+    scroll_containers: &[RuntimeScrollContainer],
+    scroll_metadata: &[RuntimeScrollRenderMetadata],
+) -> Result<(), RuntimeRenderError> {
+    let mut seen = BTreeSet::new();
+    for text in texts {
+        if !text.source().matches_text_source(key) {
+            return Err(RuntimeRenderError::InvalidTextSource(text.node_id()));
+        }
+        if !seen.insert(text.node_id()) {
+            return Err(RuntimeRenderError::DuplicateText(text.node_id()));
+        }
+        let Some(index) = boxes
+            .iter()
+            .position(|render_box| render_box.node_id() == text.node_id())
+        else {
+            return Err(RuntimeRenderError::TextOwnerMissing(text.node_id()));
+        };
+        if scroll_containers
+            .iter()
+            .any(|container| container.owner() == text.node_id())
+            || !scroll_metadata[index].scroll_ancestors().is_empty()
+        {
+            return Err(RuntimeRenderError::UnsupportedTextScroll(text.node_id()));
+        }
     }
     Ok(())
 }

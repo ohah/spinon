@@ -185,6 +185,9 @@ impl PreciseCompositor {
                         active_groups.len(),
                     );
                 }
+                RuntimePaintCommand::DrawText { .. } => {
+                    unreachable!("text scenes are excluded from the precise compositor fast path")
+                }
                 RuntimePaintCommand::EndGroup => {
                     let Some(opacity) = active_groups.pop() else {
                         unreachable!("validated opacity-group commands must balance")
@@ -441,6 +444,7 @@ impl PreciseCompositor {
     pub(crate) fn handles(&self, draw: &PreciseSceneDraw<'_>) -> bool {
         if !supports_surface_format(self.surface_format)
             || !draw.scene.images().is_empty()
+            || !draw.scene.texts().is_empty()
             || !needs_precise_composition(draw.scene)
         {
             return false;

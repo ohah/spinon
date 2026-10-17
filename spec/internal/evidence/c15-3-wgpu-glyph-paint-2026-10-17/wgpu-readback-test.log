@@ -1,0 +1,25 @@
+   Compiling spinon-render-wgpu v0.1.0 (/private/tmp/spinon-c15-3-wgpu-glyph-paint-20261017/crates/spinon-render-wgpu)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.43s
+     Running unittests src/lib.rs (target/debug/deps/spinon_render_wgpu-b709d2649f3d6d5f)
+
+running 5 tests
+test renderer::surface_readback::tests::accepts_only_eight_bit_rgba_and_bgra_formats ... ok
+test renderer::surface_readback::tests::decodes_rgba_and_bgra_without_changing_alpha ... ok
+test renderer::surface_readback::tests::validates_sample_batch_boundaries_and_drawable_coordinates ... ok
+test readback::tests::wgpu_readback_draws_coverage_masks_and_respects_css_clip_edge ... ok
+test readback::tests::wgpu_readback_composites_glyph_masks_inside_an_opacity_group ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 33 filtered out; finished in 0.11s
+
+     Running tests/runtime_opacity.rs (target/debug/deps/runtime_opacity-7d529f0acdb6bb2b)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/runtime_stacking.rs (target/debug/deps/runtime_stacking-568110c429b15c94)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 4 filtered out; finished in 0.00s
+

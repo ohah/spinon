@@ -262,6 +262,19 @@ public final class MainActivity extends Activity {
                 .getBooleanExtra("spinon_c131_compact_surface_matrix", false);
         boolean c131OverflowClipBorderRequested = getIntent()
                 .getBooleanExtra("spinon_c131_overflow_clip_border", false);
+        boolean c153GlyphPaintArgument = getIntent()
+                .getBooleanExtra("spinon_c153_glyph_paint", false);
+        boolean c153GlyphPaintRequested = BuildConfig.SPINON_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST
+                && c153GlyphPaintArgument;
+        if (c153GlyphPaintArgument && !BuildConfig.SPINON_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST) {
+            TextView unavailable = new TextView(this);
+            unavailable.setText("C15.3 glyph paint fixture-test 옵션을 켜서 빌드해야 합니다.");
+            unavailable.setTextColor(Color.WHITE);
+            unavailable.setGravity(Gravity.CENTER);
+            setContentView(unavailable);
+            Log.e(TAG, "SPINON_C153_DISABLED fixture-test feature is off");
+            return;
+        }
         boolean imageObjectFitPositionFixtureRequested =
                 BuildConfig.SPINON_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST
                 && getIntent().getBooleanExtra("spinon_c183_object_fit_position", false);
@@ -457,6 +470,7 @@ public final class MainActivity extends Activity {
                 || c131OverflowClipRequested || c131CompactSurfaceMatrixRequested
                 || c131OverflowClipBorderRequested
                 || imagePaintFixtureRequested
+                || c153GlyphPaintRequested
                 || getIntent().getBooleanExtra("spinon_c132_scroll_fixture", false)
                 || getIntent().getBooleanExtra("spinon_c133_gesture_fixture", false)
                 || getIntent().getBooleanExtra("spinon_c133_tap_probe", false)

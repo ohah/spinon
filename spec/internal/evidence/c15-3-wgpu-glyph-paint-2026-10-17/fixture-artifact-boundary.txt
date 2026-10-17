@@ -1,0 +1,11 @@
+Default: cargo build --locked -p spinon-ffi --lib
+Opt-in: cargo build --locked -p spinon-ffi --lib --features c15-3-wgpu-glyph-paint-fixture-test
+Verification: exact byte scans of the built static archives (not nm; the archive contains LLVM bitcode).
+default absent C15.3 FFI symbol: PASS
+default absent C15 fixture payload: PASS
+default absent exact NotoSansKR font bytes: PASS
+opt-in contains C15.3 FFI symbol: PASS
+opt-in contains C15 fixture payload: PASS
+opt-in contains exact NotoSansKR font bytes: PASS
+default archive SHA-256: fb6191e879d25b6fc8a5bd81f249c29e1bcb14e58b74328b2e5f335ce34f4271
+opt-in archive SHA-256: f0d7963fcd6f2da2b65e5ae1b95a3b30f99a2c4e4b8273402c747e5af7f6c844

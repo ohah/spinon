@@ -13,7 +13,7 @@ pub(super) fn maximum_group_depth(commands: &[RuntimePaintCommand]) -> usize {
                 maximum = maximum.max(depth);
             }
             RuntimePaintCommand::EndGroup => depth -= 1,
-            RuntimePaintCommand::DrawBox { .. } => {}
+            RuntimePaintCommand::DrawBox { .. } | RuntimePaintCommand::DrawText { .. } => {}
         }
     }
     maximum

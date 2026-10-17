@@ -84,6 +84,12 @@ c19-2-box-paint-opacity-fixture-test = [
     "spinon-runtime/c14-1-live-v8-fixture-test",
     "spinon-runtime/c19-2-box-paint-opacity-fixture-test",
 ]
+c15-3-wgpu-glyph-paint-fixture-test = [
+    "c04-runtime-gpu-fixture-test",
+    "dep:spinon-core",
+    "dep:spinon-text-layout",
+    "spinon-runtime/c19-2-box-paint-opacity-fixture-test",
+]
 
 [dependencies]
 spinon-style = { path = "../spinon-style" }
@@ -97,6 +103,7 @@ spinon-core = { path = "../spinon-core", optional = true }
 spinon-image = { path = "../spinon-image", optional = true }
 spinon-layout = { path = "../spinon-layout", optional = true }
 spinon-style-to-layout = { path = "../spinon-style-to-layout", optional = true }
+spinon-text-layout = { path = "../spinon-text-layout", optional = true }
 
 [dev-dependencies]
 spinon-core = { path = "../spinon-core" }

@@ -1,0 +1,169 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (target/debug/deps/spinon_render-2ebea6caa01801d2)
+
+running 87 tests
+test runtime::scroll_gesture_session_tests::identity::stale_and_invalid_begin_inputs_leave_session_idle ... ok
+test runtime::scroll_gesture_session_tests::identity::stale_surface_terminal_cannot_release_a_suppressed_contact ... ok
+test runtime::scroll_gesture_session_tests::identity::suppressed_contact_id_does_not_consume_a_future_gesture_id ... ok
+test runtime::scroll_gesture_session_tests::identity::mismatched_terminal_is_rejected_and_host_cancel_ignores_late_move ... ok
+test runtime::scroll_gesture_session_tests::identity::duplicate_active_pointer_and_stale_pan_leave_the_original_session_usable ... ok
+test runtime::scroll_gesture_session_tests::barriers::geometry_change_precedes_scroll_revision_change_after_style_update ... ok
+test runtime::scroll_gesture_session_tests::identity::invalid_begin_duplicate_terminal_and_non_monotonic_sequence_fail_closed ... ok
+test runtime::scroll_gesture_session_tests::barriers::external_scroll_revision_cancels_without_applying_the_late_pan ... ok
+test runtime::scroll_gesture_session_tests::barriers::geometry_change_cancels_and_blocks_pointer_until_its_terminal ... ok
+test runtime::scroll_gesture_session_tests::barriers::environment_and_surface_barriers_cancel_active_gesture ... ok
+test runtime::scroll_gesture_session_tests::identity::clip_and_coordinate_scale_change_cancel_without_retargeting ... ok
+test runtime::scroll_gesture_session_tests::barriers::document_revision_without_style_revision_cancels_active_gesture ... ok
+test runtime::scroll_gesture_session_tests::identity::second_pointer_cancels_until_every_contact_ends ... ok
+test runtime::scroll_gesture_session_tests::barriers::document_generation_change_cancels_active_gesture ... ok
+test runtime::scroll_gesture_session_tests::pan::disallowed_dominant_axis_rejects_pan_and_never_relocks_later ... ok
+test runtime::scroll_gesture_session_tests::pan::begin_freezes_clip_aware_target_owner_chain_and_axis_through_cumulative_pan ... ok
+test runtime::scroll_gesture_session_tests::pan::non_finite_pan_does_not_advance_sequence_or_change_session_state ... ok
+test runtime::scroll_gesture_session_tests::pan::zero_pan_began_accepts_first_nonzero_sample_on_allowed_pan_y_axis ... ok
+test runtime::scroll_gesture_session_tests::pan::zero_pan_began_defers_pan_x_axis_lock_until_first_nonzero_sample ... ok
+test runtime::scroll_gesture_session_tests::pan::style_only_revision_keeps_start_action_and_uses_next_sample_policy ... ok
+test runtime::scroll_gesture_session_tests::pan::zero_pan_began_defers_pan_y_axis_lock_until_first_nonzero_sample ... ok
+test runtime::scroll_gesture_tests::hit_test_clip_miss_does_not_select_a_scroll_target ... ok
+test runtime::scroll_gesture_tests::fractional_and_reverse_deltas_keep_css_px_precision_and_clamp_at_zero ... ok
+test runtime::scroll_gesture_tests::policy::axis_without_user_scroll_range_forwards_delta_to_parent ... ok
+test runtime::scroll_gesture_tests::policy::hidden_boundary_can_stop_chaining_without_consuming ... ok
+test runtime::scroll_gesture_tests::policy::hidden_boundary_does_not_consume_but_auto_forwards_remainder ... ok
+test runtime::scroll_gesture_tests::policy::overscroll_contain_stops_only_its_axis ... ok
+test runtime::scroll_gesture_tests::policy::user_scrollability_is_independent_per_axis ... ok
+test runtime::scroll_gesture_tests::policy::overscroll_none_and_contain_both_stop_only_the_configured_axis ... ok
+test runtime::scroll_gesture_tests::routes_inner_remainder_to_outer_and_publishes_one_revision ... ok
+test runtime::scroll_gesture_tests::scroll_container_construction_disables_user_input_by_default ... ok
+test runtime::scroll_gesture_tests::saturated_inner_and_outer_boundaries_keep_revision_and_report_remainder ... ok
+test runtime::scroll_gesture_tests::stale_or_non_finite_samples_fail_without_changing_the_source_snapshot ... ok
+test runtime::scroll_gesture_tests::target_scroll_owner_is_inclusive_and_its_policy_is_preserved_by_offsets ... ok
+test runtime::scroll_gesture_tests::viewport_hit_miss_and_noop_do_not_advance_scroll_revision ... ok
+test runtime::scroll_input_queue_tests::gesture::adjacent_moves_coalesce_only_with_matching_identity_and_epoch ... ok
+test runtime::scroll_input_queue_tests::gesture::begin_reserves_terminal_capacity_before_queueing_and_returns_it_after_terminal ... ok
+test runtime::scroll_input_queue_tests::gesture::duplicate_or_zero_gesture_identity_does_not_create_an_extra_reservation ... ok
+test runtime::scroll_input_queue_tests::gesture::move_after_terminal_and_terminal_for_another_identity_are_rejected ... ok
+test runtime::scroll_input_queue_tests::gesture::move_epoch_and_intervening_event_are_hard_coalescing_barriers ... ok
+test runtime::scroll_input_queue_tests::gesture::move_requires_one_pan_begin_for_its_gesture ... ok
+test runtime::scroll_input_queue_tests::gesture::pending_events_wait_for_begin_acceptance_and_failed_begin_discards_them ... ok
+test runtime::scroll_input_queue_tests::gesture::suppressed_begin_keeps_its_terminal_reservation_until_contact_end ... ok
+test runtime::scroll_input_queue_tests::pressure::move_saturation_uses_reserved_cancel_and_preserves_earlier_sequence_order ... ok
+test runtime::scroll_input_queue_tests::pressure::rejected_wheel_sample_does_not_split_adjacent_accepted_moves ... ok
+test runtime::scroll_input_queue_tests::pressure::terminal_slot_exhaustion_and_invalid_capacity_leave_no_partial_begin ... ok
+test runtime::scroll_input_queue_tests::pressure::wheel_capacity_rejects_whole_sample_and_counts_it_without_cancelling_gesture ... ok
+test runtime::scroll_input_queue_tests::terminal::end_waits_behind_a_queued_move_when_regular_capacity_is_full ... ok
+test runtime::scroll_input_queue_tests::terminal::terminal_cannot_be_queued_twice_and_sequence_must_increase ... ok
+test runtime::scroll_input_queue_tests::terminal::terminal_is_delivered_in_sequence_order_even_when_regular_queue_is_full ... ok
+test runtime::scroll_input_queue_tests::terminal::terminal_sequence_between_moves_prevents_reordering_through_coalescing ... ok
+test runtime::scroll_input_queue_tests::terminal::terminal_slots_are_coalescing_barriers_for_other_gesture_and_wheel_streams ... ok
+test runtime::scroll_input_queue_tests::terminal::terminal_slots_from_distinct_gestures_are_consumed_by_sequence ... ok
+test runtime::scroll_input_queue_tests::wheel::invalid_or_overflowing_wheel_deltas_do_not_mutate_a_queued_sample ... ok
+test runtime::scroll_input_queue_tests::wheel::invalid_wheel_scale_raw_delta_and_basis_are_rejected_before_queue_mutation ... ok
+test runtime::scroll_input_queue_tests::wheel::overflowing_wheel_coalesce_falls_back_to_two_ordered_samples_when_space_remains ... ok
+test runtime::scroll_input_queue_tests::wheel::wheel_coalescing_keeps_raw_units_and_rejects_metadata_barriers ... ok
+test runtime::scroll_input_queue_tests::wheel::wheel_samples_coalesce_only_at_the_same_point_target_revision_and_policy ... ok
+test runtime::scroll_input_queue_tests::wheel::wheel_target_and_scroll_revision_are_coalescing_barriers ... ok
+test runtime::tests::c18_3_object_fit::image_object_fit_computes_concrete_sizes_and_positions ... ok
+test runtime::tests::c18_3_object_fit::image_object_geometry_rejects_zero_and_unrepresentable_results ... ok
+test runtime::tests::c18_3_object_fit::image_object_style_is_revision_bound_and_can_use_a_different_frame_size ... ok
+test runtime::tests::c18_3_object_fit::image_object_style_parser_fails_closed_for_unhandled_computed_values ... ok
+test runtime::tests::document_revision_rebinding_rejects_other_generations_and_connected_trees ... ok
+test runtime::tests::document_revision_rebinding_preserves_shared_box_storage ... ok
+test runtime::tests::runtime_hit_test_applies_axis_clips_and_uses_half_open_edges ... ok
+test runtime::tests::image_scene_rejects_document_revision_rebinding_after_resource_request ... ok
+test runtime::tests::runtime_hit_test_can_order_targets_independently_from_paint ... ok
+test runtime::tests::runtime_hit_test_uses_its_clip_independently_from_the_paint_clip ... ok
+test runtime::tests::runtime_image_attachment_validates_source_node_bytes_and_natural_frame ... ok
+test runtime::tests::runtime_nested_scroll_offsets_move_inner_clip_with_outer_scroll_only ... ok
+test runtime::tests::runtime_paint_commands_validate_group_balance_and_box_order ... ok
+test runtime::tests::runtime_render_key_distinguishes_intrinsic_size_revisions ... ok
+test runtime::tests::runtime_render_key_distinguishes_scroll_state_revision_independently ... ok
+test runtime::tests::runtime_scene_accepts_empty_and_rejects_duplicate_or_reordered_nodes ... ok
+test runtime::tests::runtime_scene_keeps_complete_key_dom_order_and_transparent_nodes ... ok
+test runtime::tests::runtime_scroll_container_validates_positive_range_and_keeps_offsets_in_range ... ok
+test runtime::tests::runtime_scroll_offset_rebuilds_frames_and_keeps_the_owner_clip_stationary ... ok
+test runtime::tests::runtime_snapshot_rejects_duplicate_scroll_owners ... ok
+test runtime::text_tests::text_owner_inside_scroll_container_is_rejected_until_scroll_transform_is_supported ... ok
+test runtime::text_tests::text_paint_command_indices_must_be_complete_and_in_order ... ok
+test tests::css_sizes_and_frames_reject_non_finite_or_negative_dimensions ... ok
+test runtime::text_tests::text_snapshot_checks_bitmap_geometry_source_owner_and_unique_node ... ok
+test tests::hit_test_rejects_non_finite_points ... ok
+test tests::hit_test_uses_last_painted_box_and_half_open_edges ... ok
+test tests::static_snapshot_rejects_an_empty_scene ... ok
+test tests::static_snapshot_requires_unique_nodes_and_contiguous_paint_order ... ok
+
+test result: ok. 87 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (target/debug/deps/spinon_render_wgpu-b709d2649f3d6d5f)
+
+running 38 tests
+test geometry::image::tests::accumulated_clip_intersects_frame_and_cropped_object ... ok
+test geometry::image::tests::content_clip_can_remove_an_object_outside_its_frame ... ok
+test geometry::tests::clip_intersects_the_quad_before_gpu_vertex_generation ... ok
+test geometry::image::tests::cover_geometry_clips_the_content_box_and_maps_cropped_uvs ... ok
+test geometry::tests::geometry_keeps_srgb_encoded_values_for_unorm_surface_formats ... ok
+test geometry::tests::border_paint_uses_css_side_widths_and_the_ancestor_clip ... ok
+test geometry::tests::runtime_border_side_rejects_non_finite_or_negative_widths ... ok
+test geometry::tests::geometry_preserves_css_paint_alpha_and_rejects_invalid_channels ... ok
+test geometry::tests::geometry_preserves_css_edges_and_skips_transparent_paint ... ok
+test geometry::tests::fully_clipped_image_has_an_empty_draw_range ... ok
+test geometry::tests::image_clip_adjusts_uv_with_destination_and_preserves_top_row ... ok
+test geometry::tests::geometry_rejects_zero_sized_surface ... ok
+test renderer::glyphs::tests::atlas_rejects_a_glyph_wider_than_the_device_texture_limit ... ok
+test renderer::glyphs::tests::atlas_rejects_packed_rows_that_exceed_device_texture_height ... ok
+test renderer::glyphs::tests::empty_mask_list_does_not_create_an_atlas ... ok
+test renderer::glyphs::tests::atlas_rows_keep_each_glyph_coverage_and_cache_dimensions_are_part_of_key ... ok
+test renderer::glyphs::tests::glyph_vertices_clip_both_geometry_and_mask_coordinates_at_half_open_edge ... ok
+test renderer::glyphs::tests::scene_paint_order_can_interleave_box_and_glyph_commands ... ok
+test renderer::images::tests::texture_identity_includes_source_node_content_and_dimensions ... ok
+test renderer::precise_compositor::tests::precise_group_depth_respects_layer_limit ... ok
+test renderer::precise_compositor::tests::precise_layer_extent_rejects_zero_and_oversize_dimensions ... ok
+test renderer::precise_compositor::tests::precise_layer_memory_budget_counts_ping_pong_root_and_group_layers ... ok
+test renderer::precise_compositor::tests::precise_path_only_handles_unorm_srgb_compatible_surface_formats ... ok
+test renderer::surface_readback::tests::accepts_only_eight_bit_rgba_and_bgra_formats ... ok
+test renderer::surface_readback::tests::decodes_rgba_and_bgra_without_changing_alpha ... ok
+test renderer::surface_readback::tests::validates_sample_batch_boundaries_and_drawable_coordinates ... ok
+test renderer::tests::android_auto_backend_tries_vulkan_then_gles_sequentially ... ok
+test renderer::tests::backend_override_rejects_unknown_values ... ok
+test renderer::tests::color_transfer_matches_surface_texture_format ... ok
+test renderer::tests::stale_draw_discards_pending_and_completed_pixel_samples ... ok
+test renderer::tests::surface_falls_back_to_unorm_when_it_supports_srgb_color_space ... ok
+test renderer::tests::surface_prefers_rgba_srgb_when_both_supported ... ok
+test renderer::tests::surface_prefers_unorm_before_srgb_texture_format_for_encoded_compositing ... ok
+test renderer::tests::surface_rejects_unorm_format_without_srgb_color_space ... ok
+test renderer::tests::surface_uses_bgra_srgb_as_fallback ... ok
+test renderer::tests::surface_uses_rgba_unorm_as_android_style_fallback ... ok
+test readback::tests::wgpu_readback_draws_coverage_masks_and_respects_css_clip_edge ... ok
+test readback::tests::wgpu_readback_composites_glyph_masks_inside_an_opacity_group ... ok
+
+test result: ok. 38 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+
+     Running tests/runtime_opacity.rs (target/debug/deps/runtime_opacity-7d529f0acdb6bb2b)
+
+running 3 tests
+test macos::current_color_border_alpha_source_over_matches_chromium_sample ... ok
+test macos::opacity_group_preserves_clip_z_order_and_hit_testing ... ok
+test macos::nested_opacity_source_alpha_and_zero_opacity_keep_expected_pixels_and_hits ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
+
+     Running tests/runtime_stacking.rs (target/debug/deps/runtime_stacking-568110c429b15c94)
+
+running 4 tests
+test macos::wpt_derived_stacking_cases_match_offscreen_pixels ... ok
+test macos::stacking_context_order_matches_gpu_overlap_pixels ... ok
+test macos::opacity_group_composites_children_as_one_srgb_layer ... ok
+test macos::reverse_flex_paint_matches_all_pinned_chrome_overlap_pixels ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.26s
+
+   Doc-tests spinon_render
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests spinon_render_wgpu
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

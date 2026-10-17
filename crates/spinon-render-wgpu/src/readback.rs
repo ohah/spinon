@@ -4,6 +4,7 @@ use std::time::Duration;
 use spinon_render::RuntimeRenderSnapshot;
 
 use crate::geometry::{ColorEncoding, build_colored_geometry};
+use crate::renderer::RuntimeGlyphRenderer;
 use crate::renderer::create_pipeline;
 use crate::renderer::images::RuntimeImageRenderer;
 use crate::renderer::paint_commands::OpacityGroupRenderer;
@@ -66,6 +67,8 @@ pub fn readback_runtime_scene_samples(
     let mut opacity_group_renderer = OpacityGroupRenderer::new(&device, format);
     let mut image_renderer = RuntimeImageRenderer::new(&device, format)?;
     let prepared_images = image_renderer.prepare(&device, &queue, Some(scene), width, height)?;
+    let mut glyph_renderer = RuntimeGlyphRenderer::new(&device, format)?;
+    let prepared_glyphs = glyph_renderer.prepare(&device, &queue, Some(scene), width, height)?;
     let geometry = build_colored_geometry(scene, width, height, ColorEncoding::Srgb)?;
     let bytes = bytemuck::cast_slice(&geometry.vertices);
     let vertex_buffer_size = u64::try_from(
@@ -118,6 +121,8 @@ pub fn readback_runtime_scene_samples(
         &geometry,
         &image_renderer,
         &prepared_images,
+        &glyph_renderer,
+        &prepared_glyphs,
     )?;
     encoder.copy_texture_to_buffer(
         wgpu::TexelCopyTextureInfo {
@@ -179,3 +184,7 @@ pub fn readback_runtime_scene_samples(
     readback.unmap();
     Ok(samples)
 }
+
+#[cfg(all(test, target_os = "macos"))]
+#[path = "readback_tests.rs"]
+mod tests;

@@ -92,6 +92,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             || arguments.contains("--spinon-c124-stacking-context")
             || arguments.contains("--spinon-c124-depth-safety")
             || arguments.contains(where: { $0.hasPrefix("--spinon-c124-metal-surface-readback=") })
+            || arguments.contains("--spinon-c153-glyph-paint")
 #if SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST_1
         let runC184ImageRoute = arguments.contains("--spinon-c184-async-image")
 #else

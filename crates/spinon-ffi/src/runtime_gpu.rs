@@ -105,6 +105,8 @@ struct RuntimeGpuHost {
     c13_2_reserve_failure_observed: AtomicBool,
     #[cfg(feature = "c13-3-gesture-fixture-test")]
     c13_3_gesture_state: Option<Arc<C13_3GestureState>>,
+    #[cfg(feature = "c15-3-wgpu-glyph-paint-fixture-test")]
+    c15_3_glyph_paint_fixture: bool,
     operation: Mutex<()>,
     presentation: PresentationScenes,
     renderer: Mutex<Option<RuntimeRenderer>>,
@@ -196,6 +198,8 @@ impl RuntimeGpuHost {
             c13_2_reserve_failure_observed: AtomicBool::new(false),
             #[cfg(feature = "c13-3-gesture-fixture-test")]
             c13_3_gesture_state: None,
+            #[cfg(feature = "c15-3-wgpu-glyph-paint-fixture-test")]
+            c15_3_glyph_paint_fixture: false,
             operation: Mutex::new(()),
             presentation: PresentationScenes::new(),
             renderer: Mutex::new(None),
@@ -367,6 +371,15 @@ impl RuntimeGpuHost {
         let scene = self.reapply_c13_2_scroll_state(scene)?;
         #[cfg(feature = "c13-3-gesture-fixture-test")]
         let scene = self.reapply_c13_3_scroll_state(scene)?;
+        #[cfg(feature = "c15-3-wgpu-glyph-paint-fixture-test")]
+        let (scene, c15_3_glyph_paint_report) =
+            if self.c15_3_glyph_paint_fixture && !scene.boxes().is_empty() {
+                fixtures::c15_3::attach_glyph_paint(scene).map_err(|error| (ERR_LAYOUT, error))?
+            } else {
+                (scene, String::new())
+            };
+        #[cfg(not(feature = "c15-3-wgpu-glyph-paint-fixture-test"))]
+        let (scene, c15_3_glyph_paint_report) = (scene, String::new());
         if !scene_matches_layout_key(&scene, completed.key) {
             return Err((
                 ERR_STALE,
@@ -491,7 +504,7 @@ impl RuntimeGpuHost {
             String::new()
         };
         Ok(format!(
-            "layout={} boxes={} generation={} document_revision={} render_tree_revision={} style_revision={} environment_revision={} cacheHit={} cascadeRecomputedStyleElements={} cascadeReusedStyleElements={} cascadeContextStyleElements={}{}{}{}{}{}{}{}{}{}",
+            "layout={} boxes={} generation={} document_revision={} render_tree_revision={} style_revision={} environment_revision={} cacheHit={} cascadeRecomputedStyleElements={} cascadeReusedStyleElements={} cascadeContextStyleElements={}{}{}{}{}{}{}{}{}{}{}",
             snapshot.state.as_str(),
             box_count,
             completed.key.generation,
@@ -512,6 +525,7 @@ impl RuntimeGpuHost {
             c18_2_image_report,
             c18_3_image_report,
             c18_4_image_report,
+            c15_3_glyph_paint_report,
         ))
     }
 

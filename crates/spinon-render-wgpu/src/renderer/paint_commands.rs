@@ -3,6 +3,7 @@ use spinon_render::{RuntimePaintCommand, RuntimeRenderSnapshot};
 use wgpu::util::DeviceExt;
 
 use crate::geometry::ColoredGeometry;
+use crate::renderer::glyphs::{PreparedGlyphs, RuntimeGlyphRenderer};
 
 use super::images::{PreparedImages, RuntimeImageRenderer};
 use super::precise_compositor::{PreciseCompositor, PreciseSceneDraw};
@@ -27,6 +28,8 @@ struct BoxDrawResources<'a> {
     geometry: &'a ColoredGeometry,
     image_renderer: &'a RuntimeImageRenderer,
     prepared_images: &'a PreparedImages,
+    glyph_renderer: &'a RuntimeGlyphRenderer,
+    prepared_glyphs: &'a PreparedGlyphs,
 }
 
 pub(crate) struct OpacityGroupRenderer {
@@ -64,6 +67,8 @@ impl OpacityGroupRenderer {
         geometry: &ColoredGeometry,
         image_renderer: &RuntimeImageRenderer,
         prepared_images: &PreparedImages,
+        glyph_renderer: &RuntimeGlyphRenderer,
+        prepared_glyphs: &PreparedGlyphs,
     ) -> Result<usize, String> {
         let precise_draw = PreciseSceneDraw {
             scene,
@@ -88,6 +93,8 @@ impl OpacityGroupRenderer {
             geometry,
             image_renderer,
             prepared_images,
+            glyph_renderer,
+            prepared_glyphs,
         };
         let max_group_depth = maximum_group_depth(scene.paint_commands());
         if max_group_depth > MAX_OPACITY_GROUP_DEPTH {
@@ -160,6 +167,13 @@ impl OpacityGroupRenderer {
                         .checked_sub(1)
                         .map_or(target, |depth| &self.layers[depth].view);
                     image_draw_count += draw_box(encoder, destination, index, &draw_resources);
+                }
+                RuntimePaintCommand::DrawText { index } => {
+                    let destination = active_groups
+                        .len()
+                        .checked_sub(1)
+                        .map_or(target, |depth| &self.layers[depth].view);
+                    draw_text(encoder, destination, index, &draw_resources);
                 }
                 RuntimePaintCommand::EndGroup => {
                     let Some(opacity) = active_groups.pop() else {
@@ -268,7 +282,7 @@ fn maximum_group_depth(commands: &[RuntimePaintCommand]) -> usize {
                 maximum = maximum.max(depth);
             }
             RuntimePaintCommand::EndGroup => depth -= 1,
-            RuntimePaintCommand::DrawBox { .. } => {}
+            RuntimePaintCommand::DrawBox { .. } | RuntimePaintCommand::DrawText { .. } => {}
         }
     }
     maximum
@@ -280,8 +294,16 @@ fn draw_commands_in_pass<'pass>(
 ) -> usize {
     let mut image_draw_count = 0;
     for command in resources.scene.paint_commands() {
-        if let RuntimePaintCommand::DrawBox { index } = *command {
-            image_draw_count += draw_box_in_pass(pass, resources, index);
+        match *command {
+            RuntimePaintCommand::DrawBox { index } => {
+                image_draw_count += draw_box_in_pass(pass, resources, index);
+            }
+            RuntimePaintCommand::DrawText { index } => {
+                resources
+                    .glyph_renderer
+                    .draw_text(pass, resources.prepared_glyphs, index);
+            }
+            RuntimePaintCommand::BeginGroup { .. } | RuntimePaintCommand::EndGroup => {}
         }
     }
     image_draw_count
@@ -310,6 +332,33 @@ fn draw_box(
         multiview_mask: None,
     });
     draw_box_in_pass(&mut pass, resources, index)
+}
+
+fn draw_text(
+    encoder: &mut wgpu::CommandEncoder,
+    target: &wgpu::TextureView,
+    index: usize,
+    resources: &BoxDrawResources<'_>,
+) {
+    let mut pass = encoder.begin_render_pass(&wgpu::RenderPassDescriptor {
+        label: Some("spinon-runtime-opacity-group-text-pass"),
+        color_attachments: &[Some(wgpu::RenderPassColorAttachment {
+            view: target,
+            depth_slice: None,
+            resolve_target: None,
+            ops: wgpu::Operations {
+                load: wgpu::LoadOp::Load,
+                store: wgpu::StoreOp::Store,
+            },
+        })],
+        depth_stencil_attachment: None,
+        timestamp_writes: None,
+        occlusion_query_set: None,
+        multiview_mask: None,
+    });
+    resources
+        .glyph_renderer
+        .draw_text(&mut pass, resources.prepared_glyphs, index);
 }
 
 fn draw_box_in_pass<'pass>(

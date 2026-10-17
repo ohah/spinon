@@ -1,25 +1,29 @@
 use std::sync::Arc;
-use std::{error::Error, fmt};
 
 use spinon_core::{
     DocumentGeneration, DocumentRevision, EnvironmentRevision, IntrinsicSizeRevision, NodeId,
     RenderTreeRevision, ScrollStateRevision, StyleRevision,
 };
 
-use super::{CssRect, CssSize, OpaqueCssSrgb};
+use super::{CssRect, CssSize};
 
+mod error;
 mod image;
+mod paint;
 mod scroll;
 mod scroll_gesture;
 mod scroll_gesture_session;
 mod scroll_input_queue;
 mod snapshot;
+mod text;
 
+pub use error::RuntimeRenderError;
 pub use image::RuntimeImageResourceKey;
 pub use image::{
     RuntimeImageObjectFit, RuntimeImageObjectPosition, RuntimeImageObjectStyle,
     RuntimeImageSampling, RuntimeRenderImage,
 };
+pub use paint::{RuntimeBorder, RuntimeBorderSide, RuntimePaint, RuntimeSrgbColor};
 
 pub use scroll::{
     RuntimeOverscrollBehavior, RuntimeScrollClipLayer, RuntimeScrollContainer,
@@ -39,6 +43,7 @@ pub use scroll_input_queue::{
     RuntimeScrollInputQueueError, RuntimeScrollInputQueueEvent, RuntimeScrollMomentumPhase,
     RuntimeScrollWheelSample, RuntimeScrollWheelSource, RuntimeScrollWheelUnit,
 };
+pub use text::{RuntimeGlyphBitmap, RuntimeRenderText};
 
 #[cfg(test)]
 #[path = "runtime/scroll_gesture_session_tests.rs"]
@@ -47,6 +52,10 @@ mod scroll_gesture_session_tests;
 #[cfg(test)]
 #[path = "runtime/scroll_input_queue_tests.rs"]
 mod scroll_input_queue_tests;
+
+#[cfg(test)]
+#[path = "runtime/text_tests.rs"]
+mod text_tests;
 
 /// 한 CSS 좌표축에서 허용되는 반열린 clipping interval입니다.
 #[derive(Clone, Copy, Debug, PartialEq)]
@@ -215,139 +224,14 @@ impl RuntimeRenderKey {
     pub const fn scroll_state_revision(self) -> ScrollStateRevision {
         self.scroll_state_revision
     }
-}
 
-/// encoded sRGB 색과 CSS alpha를 보존하는 내부 paint 색입니다.
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub struct RuntimeSrgbColor {
-    red: f32,
-    green: f32,
-    blue: f32,
-    alpha: f32,
-}
-
-impl RuntimeSrgbColor {
-    pub fn new(red: f32, green: f32, blue: f32, alpha: f32) -> Result<Self, RuntimeRenderError> {
-        if [red, green, blue, alpha]
-            .iter()
-            .any(|component| !component.is_finite() || !(0.0..=1.0).contains(component))
-        {
-            return Err(RuntimeRenderError::InvalidPaintColor);
-        }
-        Ok(Self {
-            red,
-            green,
-            blue,
-            alpha,
-        })
-    }
-
-    pub const fn red(self) -> f32 {
-        self.red
-    }
-
-    pub const fn green(self) -> f32 {
-        self.green
-    }
-
-    pub const fn blue(self) -> f32 {
-        self.blue
-    }
-
-    pub const fn alpha(self) -> f32 {
-        self.alpha
-    }
-}
-
-/// 투명, 불투명 sRGB 또는 alpha가 있는 sRGB 단색 배경 paint입니다.
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum RuntimePaint {
-    None,
-    Opaque(OpaqueCssSrgb),
-    Color(RuntimeSrgbColor),
-}
-
-/// 단색으로 그릴 한 물리 방향 border 변입니다.
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub struct RuntimeBorderSide {
-    width_css_px: f32,
-    paint: RuntimePaint,
-}
-
-impl RuntimeBorderSide {
-    pub fn new(width_css_px: f32, paint: RuntimePaint) -> Result<Self, RuntimeRenderError> {
-        if !width_css_px.is_finite() || width_css_px < 0.0 {
-            return Err(RuntimeRenderError::InvalidBorderWidth);
-        }
-        Ok(Self {
-            width_css_px,
-            paint,
-        })
-    }
-
-    pub const fn none() -> Self {
-        Self {
-            width_css_px: 0.0,
-            paint: RuntimePaint::None,
-        }
-    }
-
-    pub const fn width_css_px(self) -> f32 {
-        self.width_css_px
-    }
-
-    pub const fn paint(self) -> RuntimePaint {
-        self.paint
-    }
-}
-
-/// 네 면의 단색 CSS border geometry와 paint입니다.
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub struct RuntimeBorder {
-    top: RuntimeBorderSide,
-    right: RuntimeBorderSide,
-    bottom: RuntimeBorderSide,
-    left: RuntimeBorderSide,
-}
-
-impl RuntimeBorder {
-    pub const fn none() -> Self {
-        Self {
-            top: RuntimeBorderSide::none(),
-            right: RuntimeBorderSide::none(),
-            bottom: RuntimeBorderSide::none(),
-            left: RuntimeBorderSide::none(),
-        }
-    }
-
-    pub const fn new(
-        top: RuntimeBorderSide,
-        right: RuntimeBorderSide,
-        bottom: RuntimeBorderSide,
-        left: RuntimeBorderSide,
-    ) -> Self {
-        Self {
-            top,
-            right,
-            bottom,
-            left,
-        }
-    }
-
-    pub const fn top(self) -> RuntimeBorderSide {
-        self.top
-    }
-
-    pub const fn right(self) -> RuntimeBorderSide {
-        self.right
-    }
-
-    pub const fn bottom(self) -> RuntimeBorderSide {
-        self.bottom
-    }
-
-    pub const fn left(self) -> RuntimeBorderSide {
-        self.left
+    pub(crate) fn matches_text_source(self, other: Self) -> bool {
+        self.generation == other.generation
+            && self.document_revision == other.document_revision
+            && self.render_tree_revision == other.render_tree_revision
+            && self.style_revision == other.style_revision
+            && self.environment_revision == other.environment_revision
+            && self.intrinsic_size_revision == other.intrinsic_size_revision
     }
 }
 
@@ -454,6 +338,7 @@ pub struct RuntimeRenderSnapshot {
     scroll_containers: Arc<[RuntimeScrollContainer]>,
     scroll_metadata: Arc<[RuntimeScrollRenderMetadata]>,
     images: Arc<[RuntimeRenderImage]>,
+    texts: Arc<[RuntimeRenderText]>,
     paint_commands: Arc<[RuntimePaintCommand]>,
 }
 
@@ -462,144 +347,9 @@ pub struct RuntimeRenderSnapshot {
 pub enum RuntimePaintCommand {
     BeginGroup { opacity: f32 },
     DrawBox { index: usize },
+    DrawText { index: usize },
     EndGroup,
 }
-
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
-pub enum RuntimeRenderError {
-    DuplicateNode(NodeId),
-    InvalidPaintOrder,
-    InvalidPaintCommands,
-    InvalidHitTestOrder,
-    InvalidClip,
-    InvalidBorderWidth,
-    InvalidPaintColor,
-    InvalidScrollState,
-    DuplicateScrollOwner(NodeId),
-    StaleScrollRevision,
-    DuplicateScrollRequest(NodeId),
-    InvalidScrollRequest(NodeId),
-    InvalidScrollTarget(NodeId),
-    InvalidScrollPoint,
-    InvalidScrollDelta,
-    ScrollRevisionExhausted,
-    DuplicateImage(NodeId),
-    ImageNodeMissing(NodeId),
-    InvalidImageSource(NodeId),
-    InvalidImageBytes(NodeId),
-    InvalidImageFrame(NodeId),
-    InvalidImageGeometry(NodeId),
-    InvalidImageStyleRevision(NodeId),
-    UnsupportedImageBorder(NodeId),
-}
-
-impl fmt::Display for RuntimeRenderError {
-    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
-        match self {
-            Self::DuplicateNode(node) => write!(formatter, "runtime 렌더 노드 {node}가 중복됩니다"),
-            Self::InvalidPaintOrder => {
-                formatter.write_str("runtime paint_order가 장면 순서의 0부터 연속값이 아닙니다")
-            }
-            Self::InvalidPaintCommands => formatter
-                .write_str("runtime paint command가 box 순서 또는 group 경계와 맞지 않습니다"),
-            Self::InvalidHitTestOrder => {
-                formatter.write_str("runtime hit_test_order가 중복되거나 장면 범위를 벗어났습니다")
-            }
-            Self::InvalidClip => {
-                formatter.write_str("runtime clip은 유한하고 순서가 맞는 경계여야 합니다")
-            }
-            Self::InvalidBorderWidth => {
-                formatter.write_str("runtime border 폭은 유한한 0 이상의 CSS px여야 합니다")
-            }
-            Self::InvalidPaintColor => {
-                formatter.write_str("runtime sRGB paint 채널과 alpha는 유한한 0..1 값이어야 합니다")
-            }
-            Self::InvalidScrollState => {
-                formatter.write_str("runtime scroll range 또는 offset이 유효하지 않습니다")
-            }
-            Self::DuplicateScrollOwner(node) => {
-                write!(formatter, "runtime scroll owner {node}가 중복되었습니다")
-            }
-            Self::StaleScrollRevision => {
-                formatter.write_str("runtime scroll 요청의 state revision이 오래되었습니다")
-            }
-            Self::DuplicateScrollRequest(node) => {
-                write!(
-                    formatter,
-                    "runtime scroll 요청에서 owner {node}가 중복되었습니다"
-                )
-            }
-            Self::InvalidScrollRequest(node) => {
-                write!(
-                    formatter,
-                    "runtime scroll 요청의 owner {node} 또는 offset이 유효하지 않습니다"
-                )
-            }
-            Self::InvalidScrollTarget(node) => {
-                write!(
-                    formatter,
-                    "runtime scroll 입력의 target {node}가 snapshot에 없습니다"
-                )
-            }
-            Self::InvalidScrollPoint => {
-                formatter.write_str("runtime scroll 입력 point는 유한한 CSS px여야 합니다")
-            }
-            Self::InvalidScrollDelta => {
-                formatter.write_str("runtime scroll 입력 delta는 유한한 CSS px여야 합니다")
-            }
-            Self::ScrollRevisionExhausted => {
-                formatter.write_str("runtime scroll state revision 번호를 더 증가시킬 수 없습니다")
-            }
-            Self::DuplicateImage(node) => {
-                write!(formatter, "runtime image node {node}가 중복됩니다")
-            }
-            Self::ImageNodeMissing(node) => {
-                write!(
-                    formatter,
-                    "runtime image node {node}가 render snapshot에 없습니다"
-                )
-            }
-            Self::InvalidImageSource(node) => {
-                write!(
-                    formatter,
-                    "runtime image node {node}의 source revision이 다릅니다"
-                )
-            }
-            Self::InvalidImageBytes(node) => {
-                write!(
-                    formatter,
-                    "runtime image node {node}의 RGBA8 크기가 유효하지 않습니다"
-                )
-            }
-            Self::InvalidImageFrame(node) => {
-                write!(
-                    formatter,
-                    "runtime image node {node} frame이 자연 크기와 다릅니다"
-                )
-            }
-            Self::InvalidImageGeometry(node) => {
-                write!(
-                    formatter,
-                    "runtime image node {node}의 object geometry가 유효하지 않습니다"
-                )
-            }
-            Self::InvalidImageStyleRevision(node) => {
-                write!(
-                    formatter,
-                    "runtime image node {node}의 object style revision이 장면과 다릅니다"
-                )
-            }
-            Self::UnsupportedImageBorder(node) => {
-                write!(
-                    formatter,
-                    "runtime image node {node}의 border는 지원하지 않습니다"
-                )
-            }
-        }
-    }
-}
-
-impl Error for RuntimeRenderError {}
 
 #[cfg(test)]
 #[path = "runtime/scroll_gesture_tests.rs"]

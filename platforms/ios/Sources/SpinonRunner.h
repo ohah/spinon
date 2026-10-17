@@ -66,6 +66,11 @@
                                                    sampleXY:(const uint32_t *)sampleXY
                                                 sampleCount:(NSUInteger)sampleCount;
 #endif
+#if defined(SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST) && \
+    SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST
++ (uint64_t)createRuntimeGpuHostWithC15_3GlyphPaintFixture;
++ (NSString *)evalRuntimeGpuC15_3GlyphPaintFixture:(uint64_t)handle;
+#endif
 #if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
 + (uint64_t)createRuntimeGpuHostWithC13_3GestureFixture:(int32_t)scenarioID;
 #endif

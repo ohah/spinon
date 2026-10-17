@@ -689,6 +689,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c131-overflow-clip")
     private let c131BorderStripProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c131-overflow-clip-border")
+    private let c153GlyphPaintArgumentRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c153-glyph-paint")
+#if SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST_1
+    private var c153GlyphPaintProbeRequested: Bool {
+        c153GlyphPaintArgumentRequested
+    }
+#else
+    private let c153GlyphPaintProbeRequested = false
+#endif
     private let c132ScrollFixtureRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c132-scroll")
     private let c192BoxPaintOpacityArgumentRequested = ProcessInfo.processInfo.arguments
@@ -853,7 +862,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             && ProcessInfo.processInfo.arguments.contains("--spinon-c051-custom-properties")
     }
     private var fixedSizeCssFixtureRequested: Bool {
-        let selected = c192BoxPaintOpacityProbeRequested
+        let selected = c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested
             || c131CompactSurfaceMatrixRouteRequested || c131OverflowClipProbeRequested
             || c131BorderStripProbeRequested || c132ScrollFixtureRequested
             || c133GestureFixtureRequested || c11GridFixtureRequested
@@ -888,7 +897,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
 
         let title = UILabel()
-        title.text = c192BoxPaintOpacityProbeRequested
+        title.text = c153GlyphPaintProbeRequested
+            ? "SPINON · C15.3 WGPU glyph paint"
+            : c192BoxPaintOpacityProbeRequested
             ? "SPINON · C19.2 box paint·opacity"
             : c131CompactHitIdentityGridProbeRequested
             ? "SPINON · C13.1 iOS hit identity grid"
@@ -990,7 +1001,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.addSubview(title)
 
         let description = UILabel()
-        description.text = c192BoxPaintOpacityProbeRequested
+        description.text = c153GlyphPaintProbeRequested
+            ? "고정 Noto Sans KR glyph coverage mask → WGPU Metal · 360×240 CSS px · DPR 1"
+            : c192BoxPaintOpacityProbeRequested
             ? "alpha·중첩 opacity·clip·z-order·currentColor·OKLCH → WGPU Metal · 16표본 · 360×240 CSS px"
             : c131CompactHitIdentityGridProbeRequested
             ? "Chrome 155 integer hit identity 30,000점 · 52 sample · 300×100 CSS px"
@@ -1095,7 +1108,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         canvasView.translatesAutoresizingMaskIntoConstraints = false
         canvasView.isAccessibilityElement = true
-        canvasView.accessibilityLabel = c192BoxPaintOpacityProbeRequested
+        canvasView.accessibilityLabel = c153GlyphPaintProbeRequested
+            ? "C15.3 고정 Noto Sans KR glyph alpha mask WGPU Metal fixture"
+            : c192BoxPaintOpacityProbeRequested
             ? "C19.2 box paint, opacity, clipping, z-order, currentColor, and wide-gamut WGPU Metal surface"
             : c131CompactHitIdentityGridProbeRequested
             ? "C13.1 iOS Simulator full 30,000-point hit identity grid WGPU Metal surface"
@@ -1322,7 +1337,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let canvasWidth = canvasView.widthAnchor.constraint(
             equalToConstant: imagePaintProbeRequested
                 ? imageAsyncReplacementProbeRequested || imageObjectFitPositionProbeRequested ? 224 : 80
-                : c192BoxPaintOpacityProbeRequested ? 360
+                : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 360
                 : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
                 ? 360 : c131CompactSurfaceMatrixRouteRequested ? 300
                 : c131BorderStripProbeRequested || c132ScrollFixtureRequested
@@ -1336,7 +1351,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
                 ? 800 : c131CompactSurfaceMatrixRouteRequested ? 100
                 : c131BorderStripProbeRequested ? 160
-                : c192BoxPaintOpacityProbeRequested ? 240
+                : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 240
                 : fixedSizeCssFixtureRequested ? 240 : 100
         )
         canvasWidthConstraint = canvasWidth
@@ -1512,7 +1527,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     private func currentEnvironment() -> (width: Float, height: Float, scale: Float, dark: Bool) {
         stateLock.lock()
         defer { stateLock.unlock() }
-        return (viewportWidthCssPx, viewportHeightCssPx, displayScale, darkMode)
+        return (
+            c153GlyphPaintProbeRequested ? 360 : viewportWidthCssPx,
+            c153GlyphPaintProbeRequested ? 240 : viewportHeightCssPx,
+            c153GlyphPaintProbeRequested ? 1 : displayScale,
+            darkMode
+        )
     }
 
     private func runtimeStatusSummary(_ report: String) -> String {
@@ -2163,7 +2183,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             return
         }
 #endif
+        if c153GlyphPaintArgumentRequested && !c153GlyphPaintProbeRequested {
+            log("SPINON_C153_ARGUMENT_ERROR rejected=true reason=fixture-feature-disabled")
+            postStatus("실패 · C15.3 glyph paint fixture-test 옵션을 켜서 빌드해야 합니다")
+            return
+        }
         var selectedC131RouteFlags = [
+            c153GlyphPaintProbeRequested,
             c192BoxPaintOpacityProbeRequested,
             c131OverflowClipProbeRequested,
             c131CompactSurfaceMatrixProbeRequested,
@@ -2191,6 +2217,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                    && $0 != "--spinon-c131-overflow-clip-border"
                    && $0 != "--spinon-c132-scroll"
                    && $0 != "--spinon-c192-box-paint-opacity"
+                   && $0 != "--spinon-c153-glyph-paint"
                    && !imagePaintRouteArguments.contains($0)
                    && $0 != "--spinon-c133-scroll-gesture"
                    && !(c133GestureFixtureRequested && $0 == "--spinon-c133-tap-probe")
@@ -2353,7 +2380,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 #else
         let c192Host: UInt64? = nil
 #endif
-        if let imagePaintHost {
+#if SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST_1
+        let c153Host: UInt64? = c153GlyphPaintProbeRequested
+            ? SpinonRunner.createRuntimeGpuHostWithC15_3GlyphPaintFixture() : nil
+#else
+        let c153Host: UInt64? = nil
+#endif
+        if let c153Host {
+            handle = c153Host
+        } else if let imagePaintHost {
             handle = imagePaintHost
         } else if let c192Host {
             handle = c192Host
@@ -2452,7 +2487,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let environmentInputs = currentEnvironment()
         let viewportWidth: Float = imagePaintProbeRequested
             ? imageAsyncReplacementProbeRequested || imageObjectFitPositionProbeRequested ? 224 : 80
-            : c192BoxPaintOpacityProbeRequested ? 360 : c131CompactSurfaceMatrixRouteRequested
+            : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested
+                ? 360 : c131CompactSurfaceMatrixRouteRequested
             ? 300 : c131BorderStripProbeRequested
             ? 400 : c132ScrollFixtureRequested || c133GestureFixtureRequested ? 400 : c131OverflowClipProbeRequested
             ? 320 : c122AbsoluteBlockProbeRequested
@@ -2463,7 +2499,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let viewportHeight: Float = imagePaintProbeRequested
             ? imageAsyncReplacementProbeRequested ? 88
             : imageObjectFitPositionProbeRequested ? 72 : 40
-            : c192BoxPaintOpacityProbeRequested ? 240 : c131CompactSurfaceMatrixRouteRequested
+            : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 240 : c131CompactSurfaceMatrixRouteRequested
             ? 100 : c131BorderStripProbeRequested
             ? 160 : c132ScrollFixtureRequested || c133GestureFixtureRequested ? 240 : c131OverflowClipProbeRequested
             ? 240 : c122AbsoluteBlockProbeRequested
@@ -2476,7 +2512,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         log("SPINON_C0410_ENVIRONMENT_REQUEST width=\(viewportWidth) height=\(viewportHeight)")
         let environment = SpinonRunner.setRuntimeGpuEnvironment(
             handle, width: viewportWidth, height: viewportHeight,
-            scale: c192BoxPaintOpacityProbeRequested || c123FixedPositionProbeRequested || c1132GridNamedLinesProbeRequested
+            scale: c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested
+                || c123FixedPositionProbeRequested || c1132GridNamedLinesProbeRequested
                 || c1133GridTemplateAreasProbeRequested || c132ScrollFixtureRequested
                 || c133GestureFixtureRequested || imagePaintProbeRequested
                 ? 1 : environmentInputs.scale,
@@ -2501,6 +2538,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
 #endif
         var result: String? = nil
+#if SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST_1
+        if c153GlyphPaintProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuC15_3GlyphPaintFixture(handle)
+        }
+#endif
 #if SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST_1
         if c192BoxPaintOpacityProbeRequested {
             result = SpinonRunner.evalRuntimeGpuC19_2BoxPaintOpacityFixture(handle)
@@ -2541,7 +2583,17 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             }
         }
 #endif
-        if result == nil {
+        if c153GlyphPaintProbeRequested {
+            let report = result ?? "status=-1 missing-report"
+            log("SPINON_C153_EVAL_RUN \(runtimeStatusSummary(report))")
+            guard report.hasPrefix("status=0 "),
+                  report.contains("c15_3_text=attached"),
+                  report.contains("glyphs=") else {
+                postStatus("실패 · C15.3 glyph paint command가 runtime snapshot에 제출되지 않았습니다")
+                return
+            }
+        }
+#if SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST_1
         if c192BoxPaintOpacityProbeRequested {
             let report = result ?? "status=-1 missing-report"
             log("SPINON_C192_EVAL_RUN run_id=\(c192BoxPaintOpacityRunID) \(runtimeStatusSummary(report))")
@@ -2552,7 +2604,10 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 postStatus("실패 · C19.2 runtime fixture·geometry 검증 결과 불일치")
                 return
             }
-        } else if c131CompactSurfaceMatrixRouteRequested {
+        }
+#endif
+        if result == nil {
+        if c131CompactSurfaceMatrixRouteRequested {
             result = SpinonRunner.evalRuntimeGpuC13_1CompactSurfaceMatrixFixture(handle)
         } else if c131BorderStripProbeRequested {
             result = SpinonRunner.evalRuntimeGpuC13_1OverflowClipBorderFixture(handle)
@@ -3678,11 +3733,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         generation = surfaceGeneration
         sequence = presentationSequence
         handle = hostHandle
-        let fixedCssScaleRoute = c123FixedPositionProbeRequested
+        let fixedCssScaleRoute = c153GlyphPaintProbeRequested
+            || c123FixedPositionProbeRequested
             || c1132GridNamedLinesProbeRequested || c1133GridTemplateAreasProbeRequested
             || c132ScrollFixtureRequested || c133GestureFixtureRequested
         environmentInputs = (
-            viewportWidthCssPx, viewportHeightCssPx,
+            c153GlyphPaintProbeRequested ? 360 : viewportWidthCssPx,
+            c153GlyphPaintProbeRequested ? 240 : viewportHeightCssPx,
             fixedCssScaleRoute ? 1 : displayScale, darkMode
         )
         stateLock.unlock()
@@ -4841,6 +4898,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             }
             throw C0410LatestTaskLaneError.operationFailed(result ?? "WGPU draw 실패 보고 없음")
         }
+        if c153GlyphPaintProbeRequested
+            && (result?.contains("runtime_text_count=1") != true
+                || result?.contains("glyph_batch_draw_count=1") != true) {
+            log("SPINON_C153_DRAW_ASSERTIONS failed=true \(result ?? "missing-report")")
+            postStatus("실패 · C15.3 WGPU glyph batch draw가 제출되지 않았습니다")
+            throw C0410LatestTaskLaneError.operationFailed(
+                "C15.3 WGPU draw report에 text batch가 없습니다"
+            )
+        }
 #if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
         if imagePaintProbeRequested && imagePaintMetalPixelRequestIssued
             && !imagePaintMetalPixelReadbackFinished {
@@ -5005,6 +5071,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
     }
 
+#if SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST_1
     private func requestC192MetalPixelReadback(
         handle: UInt64,
         generation: UInt64
@@ -5116,6 +5183,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             )
         }
     }
+#endif
 
     private func requestC132MetalPixelReadback(
         run: C132MetalPixelRun,

@@ -95,6 +95,13 @@ case "${SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST:-0}" in
     exit 2
     ;;
 esac
+case "${SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST:-0}" in
+  0|1) ;;
+  *)
+    echo "SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST는 0 또는 1이어야 합니다." >&2
+    exit 2
+    ;;
+esac
 case "${SPINON_ENABLE_C04_UA_CASCADE_FIXTURE_PROBE:-0}" in
   0|1) ;;
   *)
@@ -195,6 +202,11 @@ if [[ "${SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST:-0}" == "1" \
   echo "C19.2 box paint·opacity fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다." >&2
   exit 2
 fi
+if [[ "${SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST:-0}" == "1" \
+      && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
+  echo "C15.3 glyph paint fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다." >&2
+  exit 2
+fi
 s03_dom_gc_cpp_flag="-DSPINON_ENABLE_S03_DOM_GC_FIXTURE=${SPINON_ENABLE_S03_DOM_GC_FIXTURE:-0}"
 s04_runtime_gpu_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU=${SPINON_ENABLE_C04_RUNTIME_GPU:-0}"
 s04_runtime_gpu_fixture_test_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=${SPINON_ENABLE_C04_RUNTIME_GPU:-0}"
@@ -213,6 +225,7 @@ c182_alpha_image_cpp_flag="-DSPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE
 c183_object_fit_position_cpp_flag="-DSPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST=${SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST:-0}"
 c184_async_image_cpp_flag="-DSPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST=${SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST:-0}"
 c192_box_paint_opacity_cpp_flag="-DSPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST=${SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST:-0}"
+c153_wgpu_glyph_paint_cpp_flag="-DSPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST=${SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST:-0}"
 s04_android_cpp_flags=()
 if [[ "${SPINON_ENABLE_S04_ANDROID_FIXTURE:-0}" == "1" ]]; then
   s04_android_cpp_flags=(-DSPINON_ENABLE_S04_ANDROID_FIXTURE=1)
@@ -266,11 +279,14 @@ fi
 if [[ "${SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST:-0}" == "1" ]]; then
   ffi_features+=(c19-2-box-paint-opacity-fixture-test)
 fi
+if [[ "${SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST:-0}" == "1" ]]; then
+  ffi_features+=(c15-3-wgpu-glyph-paint-fixture-test)
+fi
 ffi_feature_csv=""
 if ((${#ffi_features[@]} > 0)); then
   ffi_feature_csv="$(IFS=,; printf '%s' "${ffi_features[*]}")"
 fi
-echo "SPINON_ANDROID_BUILD_FLAGS c04_runtime_gpu=${SPINON_ENABLE_C04_RUNTIME_GPU:-0} c13_1_overflow_clip_fixture_test=$c131_fixture_flag c13_2_scroll_fixture_test=${SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST:-0} c13_3_gesture_fixture_test=${SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST:-0} c14_1_app_fixture_test=${SPINON_ENABLE_C14_1_APP_FIXTURE_TEST:-0} c14_2_app_fixture_test=${SPINON_ENABLE_C14_2_APP_FIXTURE_TEST:-0} c14_3_app_fixture_test=${SPINON_ENABLE_C14_3_APP_FIXTURE_TEST:-0} c18_1_image_paint_fixture_test=${SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST:-0} c18_2_alpha_image_fixture_test=${SPINON_ENABLE_C18_2_ALPHA_IMAGE_FIXTURE_TEST:-0} c18_3_object_fit_position_fixture_test=${SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST:-0} c18_4_async_image_fixture_test=${SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST:-0} c19_2_box_paint_opacity_fixture_test=${SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST:-0}"
+echo "SPINON_ANDROID_BUILD_FLAGS c04_runtime_gpu=${SPINON_ENABLE_C04_RUNTIME_GPU:-0} c13_1_overflow_clip_fixture_test=$c131_fixture_flag c13_2_scroll_fixture_test=${SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST:-0} c13_3_gesture_fixture_test=${SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST:-0} c14_1_app_fixture_test=${SPINON_ENABLE_C14_1_APP_FIXTURE_TEST:-0} c14_2_app_fixture_test=${SPINON_ENABLE_C14_2_APP_FIXTURE_TEST:-0} c14_3_app_fixture_test=${SPINON_ENABLE_C14_3_APP_FIXTURE_TEST:-0} c18_1_image_paint_fixture_test=${SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST:-0} c18_2_alpha_image_fixture_test=${SPINON_ENABLE_C18_2_ALPHA_IMAGE_FIXTURE_TEST:-0} c18_3_object_fit_position_fixture_test=${SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST:-0} c18_4_async_image_fixture_test=${SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST:-0} c19_2_box_paint_opacity_fixture_test=${SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST:-0} c15_3_wgpu_glyph_paint_fixture_test=${SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST:-0}"
 
 build_spinon_ffi() {
   if [[ -n "$ffi_feature_csv" ]]; then
@@ -369,6 +385,7 @@ common=("$target" "$sysroot" -std=c++20 -O2 -fPIC
   "$c183_object_fit_position_cpp_flag"
   "$c184_async_image_cpp_flag"
   "$c192_box_paint_opacity_cpp_flag"
+  "$c153_wgpu_glyph_paint_cpp_flag"
   -D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_EXTENSIVE
   -I"$v8_dir/buildtools/third_party/libc++"
   -isystem "$v8_dir/third_party/libc++/src/include"

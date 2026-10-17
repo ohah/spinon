@@ -1,0 +1,21 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s
+     Running unittests src/lib.rs (target/debug/deps/spinon_render_wgpu-b709d2649f3d6d5f)
+
+running 2 tests
+test renderer::glyphs::tests::atlas_rejects_a_glyph_wider_than_the_device_texture_limit ... ok
+test renderer::glyphs::tests::atlas_rejects_packed_rows_that_exceed_device_texture_height ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 36 filtered out; finished in 0.00s
+
+     Running tests/runtime_opacity.rs (target/debug/deps/runtime_opacity-7d529f0acdb6bb2b)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/runtime_stacking.rs (target/debug/deps/runtime_stacking-568110c429b15c94)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 4 filtered out; finished in 0.00s
+

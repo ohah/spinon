@@ -2,6 +2,16 @@ use super::super::RuntimeGpuHost;
 use spinon_runtime::RuntimeSession;
 
 impl RuntimeGpuHost {
+    #[cfg(feature = "c15-3-wgpu-glyph-paint-fixture-test")]
+    pub(in crate::runtime_gpu) fn new_c15_3_glyph_paint_fixture() -> Result<(Self, String), String>
+    {
+        let (session, report) = RuntimeSession::new_runtime_gpu_c19_2_box_paint_opacity_fixture()?;
+        let mut host = Self::from_session_with_frame_report(session);
+        host.include_paint_order_report = true;
+        host.c15_3_glyph_paint_fixture = true;
+        Ok((host, report))
+    }
+
     #[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
     pub(in crate::runtime_gpu) fn new_c19_2_box_paint_opacity_fixture()
     -> Result<(Self, String), String> {
