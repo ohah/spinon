@@ -79,5 +79,38 @@
     "pid": 1191,
     "restarted": false
   },
-  "tmux_modified": false
+  "tmux_modified": false,
+  "pr": {
+    "number": 271,
+    "url": "https://github.com/ohah/spinon/pull/271",
+    "title": "docs(evidence): C04.12 Tailnet 동기화 근거 기록",
+    "body_has_official_71_of_205": true,
+    "body_states_c04_12_incomplete": true,
+    "images": [
+      {
+        "alt": "Tailnet C04.12 roadmap",
+        "url": "https://raw.githubusercontent.com/ohah/spinon/docs/c04-12-tailnet-roadmap-sync-20261017/spec/internal/evidence/c04-12-root-html-tailnet-sync-2026-10-17/tailnet-roadmap-agent-browser.png",
+        "loaded": true,
+        "width": 1280,
+        "height": 633
+      },
+      {
+        "alt": "Tailnet official 71 of 205 counter",
+        "url": "https://raw.githubusercontent.com/ohah/spinon/docs/c04-12-tailnet-roadmap-sync-20261017/spec/internal/evidence/c04-12-root-html-tailnet-sync-2026-10-17/tailnet-counter-agent-browser.png",
+        "loaded": true,
+        "width": 1280,
+        "height": 633
+      }
+    ]
+  },
+  "browser_shutdown": {
+    "session": "spinon-c0412-pr-review-20261017",
+    "session_pid_before_close": 72211,
+    "session_info_after_close": {
+      "active": false,
+      "pid": null,
+      "runtime": null
+    },
+    "session_process_remains": false
+  }
 }
