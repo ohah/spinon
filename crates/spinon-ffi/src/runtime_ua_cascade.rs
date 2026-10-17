@@ -25,26 +25,28 @@ const LEGACY_UA_PROPERTIES: &[&str] = &[
 #[repr(C)]
 #[derive(Clone, Copy, Debug, Default)]
 pub struct SpinonRuntimeRootHtmlEnvironment {
-    viewport_width_css_px: f32,
-    viewport_height_css_px: f32,
-    device_scale_factor: f32,
-    page_scale: f32,
-    prefers_color_scheme: i32,
-    document_color_scheme: i32,
-    environment_revision: u64,
+    pub(crate) viewport_width_css_px: f32,
+    pub(crate) viewport_height_css_px: f32,
+    pub(crate) visual_viewport_width_css_px: f32,
+    pub(crate) visual_viewport_height_css_px: f32,
+    pub(crate) device_scale_factor: f32,
+    pub(crate) page_scale: f32,
+    pub(crate) prefers_color_scheme: i32,
+    pub(crate) document_color_scheme: i32,
+    pub(crate) environment_revision: u64,
 }
 
 #[repr(C)]
 #[derive(Clone, Copy, Debug, Default)]
 pub struct SpinonRuntimeRootHtmlCanvas {
-    environment: SpinonRuntimeRootHtmlEnvironment,
-    canvas_rgba: [u8; 4],
-    used_color_scheme: i32,
-    cascade_generation: u64,
-    cascade_document_revision: u64,
-    cascade_render_tree_revision: u64,
-    cascade_style_revision: u64,
-    cascade_environment_revision: u64,
+    pub(crate) environment: SpinonRuntimeRootHtmlEnvironment,
+    pub(crate) canvas_rgba: [u8; 4],
+    pub(crate) used_color_scheme: i32,
+    pub(crate) cascade_generation: u64,
+    pub(crate) cascade_document_revision: u64,
+    pub(crate) cascade_render_tree_revision: u64,
+    pub(crate) cascade_style_revision: u64,
+    pub(crate) cascade_environment_revision: u64,
 }
 
 fn color_scheme_from_abi(value: i32) -> Option<CssColorScheme> {
@@ -178,6 +180,8 @@ pub unsafe extern "C" fn spinon_runtime_session_set_root_html_environment(
                 environment.write(SpinonRuntimeRootHtmlEnvironment {
                     viewport_width_css_px: snapshot.viewport_width_css_px,
                     viewport_height_css_px: snapshot.viewport_height_css_px,
+                    visual_viewport_width_css_px: snapshot.visual_viewport_width_css_px,
+                    visual_viewport_height_css_px: snapshot.visual_viewport_height_css_px,
                     device_scale_factor: snapshot.device_scale_factor,
                     page_scale: snapshot.page_scale,
                     prefers_color_scheme: match snapshot.prefers_color_scheme {
@@ -240,6 +244,8 @@ pub unsafe extern "C" fn spinon_runtime_session_resolve_root_html_canvas(
             environment: SpinonRuntimeRootHtmlEnvironment {
                 viewport_width_css_px: environment.viewport_width_css_px,
                 viewport_height_css_px: environment.viewport_height_css_px,
+                visual_viewport_width_css_px: environment.visual_viewport_width_css_px,
+                visual_viewport_height_css_px: environment.visual_viewport_height_css_px,
                 device_scale_factor: environment.device_scale_factor,
                 page_scale: environment.page_scale,
                 prefers_color_scheme: match environment.prefers_color_scheme {

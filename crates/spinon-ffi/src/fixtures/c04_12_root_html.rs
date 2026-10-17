@@ -1,5 +1,13 @@
+use crate::runtime_session::{SpinonRuntimeSession, spinon_runtime_session_free};
+use crate::runtime_ua_cascade::{
+    SpinonRuntimeRootHtmlCanvas, SpinonRuntimeRootHtmlEnvironment,
+    spinon_runtime_session_resolve_root_html_canvas,
+    spinon_runtime_session_set_root_html_environment,
+};
+use spinon_runtime::RuntimeUaCascadeState;
 use spinon_runtime::{ROOT_HTML_SOURCE_MAX_BYTES, RuntimeSession, TaskPriority};
 use std::ffi::c_char;
+use std::time::Duration;
 
 const ROOT_HTML_ASSET_ASSERTION: &str = r#"(() => {
   const elementChildren = parent => {
@@ -32,6 +40,175 @@ const ROOT_HTML_ASSET_ASSERTION: &str = r#"(() => {
     throw new Error("C04.12 platform root HTML asset assertion failed");
   }
 })()"#;
+
+struct ViewportExpectation {
+    name: &'static str,
+    content: &'static str,
+    layout_width: f32,
+    layout_height: f32,
+    visual_width: f32,
+    visual_height: f32,
+    page_scale: f32,
+    media_height: &'static str,
+}
+
+const ROOT_HTML_VIEWPORT_EXPECTATIONS: [ViewportExpectation; 3] = [
+    ViewportExpectation {
+        name: "scale-half",
+        content: "width=device-width, initial-scale=0.5",
+        layout_width: 780.0,
+        layout_height: 1688.0,
+        visual_width: 780.0,
+        visual_height: 1688.0,
+        page_scale: 0.5,
+        media_height: "123px",
+    },
+    ViewportExpectation {
+        name: "scale-two",
+        content: "width=device-width, initial-scale=2",
+        layout_width: 390.0,
+        layout_height: 844.0,
+        visual_width: 195.0,
+        visual_height: 422.0,
+        page_scale: 2.0,
+        media_height: "456px",
+    },
+    ViewportExpectation {
+        name: "fixed-width-500",
+        content: "width=500, initial-scale=1",
+        layout_width: 500.0,
+        layout_height: 1082.0513,
+        visual_width: 390.0,
+        visual_height: 844.0,
+        page_scale: 1.0,
+        media_height: "123px",
+    },
+];
+
+fn validate_root_html_viewport_matrix() -> Result<(), String> {
+    for expected in ROOT_HTML_VIEWPORT_EXPECTATIONS {
+        let source = format!(
+            "<!doctype html><html><head><meta name='viewport' content='{}'><style>@media (min-height: 1000px) {{ main {{ height: 123px; }} }} @media (max-height: 900px) {{ main {{ height: 456px; }} }}</style></head><body><main>viewport</main></body></html>",
+            expected.content
+        );
+        let (session, _) = RuntimeSession::new_with_root_html(&source)
+            .map_err(|error| format!("{} session: {error}", expected.name))?;
+        let c_session = Box::into_raw(Box::new(session)).cast::<SpinonRuntimeSession>();
+        let ffi_values = (|| {
+            let mut environment = SpinonRuntimeRootHtmlEnvironment::default();
+            let status = unsafe {
+                spinon_runtime_session_set_root_html_environment(
+                    c_session,
+                    1170.0,
+                    2532.0,
+                    3.0,
+                    0,
+                    &mut environment,
+                )
+            };
+            if status != 0 {
+                return Err(format!(
+                    "{} environment ABI returned {status}",
+                    expected.name
+                ));
+            }
+
+            let mut canvas = SpinonRuntimeRootHtmlCanvas::default();
+            let status = unsafe {
+                spinon_runtime_session_resolve_root_html_canvas(
+                    c_session,
+                    1170.0,
+                    2532.0,
+                    3.0,
+                    0,
+                    3_000,
+                    &mut canvas,
+                )
+            };
+            if status != 0 {
+                return Err(format!(
+                    "{} Canvas environment ABI returned {status}",
+                    expected.name
+                ));
+            }
+
+            let values = |environment: SpinonRuntimeRootHtmlEnvironment| {
+                [
+                    environment.viewport_width_css_px,
+                    environment.viewport_height_css_px,
+                    environment.visual_viewport_width_css_px,
+                    environment.visual_viewport_height_css_px,
+                    environment.page_scale,
+                ]
+            };
+            let session = unsafe { &*c_session.cast::<RuntimeSession>() };
+            let _layout_terminal = session.wait_for_layout_snapshot(Duration::from_secs(3));
+            let cascade = session.ua_cascade_snapshot();
+            if cascade.state != RuntimeUaCascadeState::Ready
+                || !cascade.completed.as_ref().is_some_and(|completed| {
+                    completed.roots.iter().any(|root| {
+                        root.styles.elements.iter().any(|element| {
+                            element
+                                .properties
+                                .get("height")
+                                .is_some_and(|height| height == expected.media_height)
+                        })
+                    })
+                })
+            {
+                return Err(format!(
+                    "{} layout-height media query mismatch: expected {}",
+                    expected.name, expected.media_height
+                ));
+            }
+            if canvas.cascade_environment_revision != environment.environment_revision {
+                return Err(format!(
+                    "{} Canvas environment revision mismatch: set={} canvas={}",
+                    expected.name,
+                    environment.environment_revision,
+                    canvas.cascade_environment_revision
+                ));
+            }
+            Ok((values(environment), values(canvas.environment)))
+        })();
+        unsafe { spinon_runtime_session_free(c_session) };
+        let (environment_values, canvas_values) = ffi_values?;
+        let actual = [
+            environment_values[0],
+            environment_values[1],
+            environment_values[2],
+            environment_values[3],
+            environment_values[4],
+        ];
+        let required = [
+            expected.layout_width,
+            expected.layout_height,
+            expected.visual_width,
+            expected.visual_height,
+            expected.page_scale,
+        ];
+        if actual
+            .into_iter()
+            .zip(required)
+            .any(|(actual, required)| (actual - required).abs() > 0.001)
+            || canvas_values
+                .into_iter()
+                .zip(required)
+                .any(|(actual, required)| (actual - required).abs() > 0.001)
+        {
+            return Err(format!(
+                "{} viewport mismatch: layout={}x{} visual={}x{} scale={}",
+                expected.name,
+                environment_values[0],
+                environment_values[1],
+                environment_values[2],
+                environment_values[3],
+                environment_values[4]
+            ));
+        }
+    }
+    Ok(())
+}
 
 /// 실제 V8 DOM facade에서 root HTML의 document accessor를 확인하는 opt-in fixture입니다.
 ///
@@ -130,8 +307,13 @@ pub unsafe extern "C" fn spinon_c04_12_root_html_asset_fixture(
         let _ = crate::write_report(output, output_capacity, &response.report);
         return response.status;
     }
+    drop(session);
+    if let Err(error) = validate_root_html_viewport_matrix() {
+        let _ = crate::write_report(output, output_capacity, &error);
+        return -1;
+    }
     let report = format!(
-        "status=0 c04_12_root_html_asset=PASS startup={}",
+        "status=0 c04_12_root_html_asset=PASS c04_12_viewport=PASS c04_12_environment_abi=PASS cases=3 fixed_width=500x1082 visual=390x844 startup={}",
         startup_report.replace(' ', "_")
     );
     if crate::write_report(output, output_capacity, &report) {

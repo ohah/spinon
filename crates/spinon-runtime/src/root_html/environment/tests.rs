@@ -17,6 +17,12 @@ const MOBILE_FIXED_WIDTH: &str = include_str!(
 const MOBILE_HALF_SCALE: &str = include_str!(
     "../../../../../spec/internal/evidence/c04-root-html-document-environment-2026-10-17/mobile-scale-half.html"
 );
+const MOBILE_SCALE_TWO: &str = include_str!(
+    "../../../../../spec/internal/evidence/c04-12-visual-viewport-2026-10-17/mobile-device-scale-two.html"
+);
+const MOBILE_WIDTH_500_SCALE_ONE: &str = include_str!(
+    "../../../../../spec/internal/evidence/c04-12-visual-viewport-2026-10-17/mobile-width-500-scale-one.html"
+);
 const MOBILE_DUPLICATE_WIDTH: &str = include_str!(
     "../../../../../spec/internal/evidence/c04-root-html-document-environment-2026-10-17/mobile-duplicate-width.html"
 );
@@ -62,6 +68,8 @@ fn mobile_default_matches_chrome_overview_viewport_and_keeps_page_scale_separate
 
     assert_eq!(resolved.viewport_width_css_px, 980.0);
     close_to(resolved.viewport_height_css_px, 2120.8206);
+    close_to(resolved.visual_viewport_width_css_px, 980.0);
+    close_to(resolved.visual_viewport_height_css_px, 2120.8206);
     close_to(resolved.page_scale, 0.39795917);
     assert_eq!(resolved.device_scale_factor, 3.0);
 }
@@ -72,6 +80,8 @@ fn device_width_metadata_matches_chrome_css_viewport() {
 
     assert_eq!(resolved.viewport_width_css_px, 390.0);
     assert_eq!(resolved.viewport_height_css_px, 844.0);
+    assert_eq!(resolved.visual_viewport_width_css_px, 390.0);
+    assert_eq!(resolved.visual_viewport_height_css_px, 844.0);
     assert_eq!(resolved.page_scale, 1.0);
 }
 
@@ -81,6 +91,8 @@ fn narrow_fixed_width_expands_to_the_mobile_screen_width() {
 
     assert_eq!(resolved.viewport_width_css_px, 390.0);
     assert_eq!(resolved.viewport_height_css_px, 844.0);
+    assert_eq!(resolved.visual_viewport_width_css_px, 390.0);
+    assert_eq!(resolved.visual_viewport_height_css_px, 844.0);
     assert_eq!(resolved.page_scale, 1.0);
 }
 
@@ -90,8 +102,32 @@ fn initial_scale_changes_layout_viewport_but_not_device_scale() {
 
     assert_eq!(resolved.viewport_width_css_px, 780.0);
     assert_eq!(resolved.viewport_height_css_px, 1688.0);
+    assert_eq!(resolved.visual_viewport_width_css_px, 780.0);
+    assert_eq!(resolved.visual_viewport_height_css_px, 1688.0);
     assert_eq!(resolved.page_scale, 0.5);
     assert_eq!(resolved.device_scale_factor, 3.0);
+}
+
+#[test]
+fn scale_two_keeps_layout_viewport_and_reports_smaller_visual_viewport() {
+    let resolved = resolve(MOBILE_SCALE_TWO, CssColorScheme::Light);
+
+    assert_eq!(resolved.viewport_width_css_px, 390.0);
+    assert_eq!(resolved.viewport_height_css_px, 844.0);
+    assert_eq!(resolved.visual_viewport_width_css_px, 195.0);
+    assert_eq!(resolved.visual_viewport_height_css_px, 422.0);
+    assert_eq!(resolved.page_scale, 2.0);
+}
+
+#[test]
+fn wide_fixed_width_uses_layout_aspect_ratio_and_keeps_visual_viewport_smaller() {
+    let resolved = resolve(MOBILE_WIDTH_500_SCALE_ONE, CssColorScheme::Light);
+
+    assert_eq!(resolved.viewport_width_css_px, 500.0);
+    close_to(resolved.viewport_height_css_px, 1082.0513);
+    assert_eq!(resolved.visual_viewport_width_css_px, 390.0);
+    assert_eq!(resolved.visual_viewport_height_css_px, 844.0);
+    assert_eq!(resolved.page_scale, 1.0);
 }
 
 #[test]
@@ -99,7 +135,9 @@ fn last_viewport_element_matches_pinned_chrome_duplicate_fixture() {
     let resolved = resolve(MOBILE_DUPLICATE_WIDTH, CssColorScheme::Light);
 
     assert_eq!(resolved.viewport_width_css_px, 500.0);
-    assert_eq!(resolved.viewport_height_css_px, 844.0);
+    close_to(resolved.viewport_height_css_px, 1082.0513);
+    assert_eq!(resolved.visual_viewport_width_css_px, 390.0);
+    assert_eq!(resolved.visual_viewport_height_css_px, 844.0);
     assert_eq!(resolved.page_scale, 1.0);
 }
 
