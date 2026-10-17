@@ -10,6 +10,7 @@ mod opaque_css_srgb;
 mod s04_color_syntax;
 mod stylesheet_registry;
 mod stylo_dom;
+mod wcag_contrast;
 
 pub use computed_css_color::{ComputedCssColor, ComputedCssColorSpace};
 pub use opaque_css_srgb::{ComputedBackgroundPaint, ComputedSrgbColor, OpaqueCssSrgb};
@@ -73,6 +74,7 @@ pub use stylo_dom::{
     first_unsupported_runtime_flex_paint_inline_property,
     first_unsupported_runtime_layout_inline_property,
 };
+pub use wcag_contrast::{FinalOpaqueSrgb, FinalOpaqueSrgbError, wcag_22_contrast_ratio};
 
 /// 지원 HTML 요소 기본 스타일 프로필의 초안 식별자입니다.
 pub const UA_STYLESHEET_PROFILE_ID: &CStr = c"spinon-html-ua/0.1.0-draft";

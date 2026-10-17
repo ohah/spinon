@@ -8,7 +8,7 @@ use std::sync::Arc;
 use super::{
     CssAxisClip, CssClip, CssRect, CssSize, RuntimeBorder, RuntimeBorderSide,
     RuntimeImageResourceKey, RuntimePaint, RuntimePaintCommand, RuntimeRenderBox,
-    RuntimeRenderImage, RuntimeRenderKey, RuntimeScrollRenderMetadata,
+    RuntimeRenderImage, RuntimeRenderKey, RuntimeScrollRenderMetadata, RuntimeSrgbColor,
 };
 
 fn key() -> RuntimeRenderKey {
@@ -617,6 +617,97 @@ fn runtime_hit_test_can_order_targets_independently_from_paint() {
         snapshot.hit_test_css_point(20.0, 20.0).unwrap().node_id(),
         target
     );
+}
+
+#[test]
+fn opacity_and_source_alpha_do_not_change_geometry_hit_targets() {
+    let under_node = NodeId::new(80).unwrap();
+    let top_node = NodeId::new(81).unwrap();
+    let under_frame = CssRect::new(0.0, 0.0, 80.0, 60.0).unwrap();
+    let top_frame = CssRect::new(20.0, 20.0, 40.0, 30.0).unwrap();
+    let viewport = CssSize::new(80.0, 60.0).unwrap();
+    let render_key = key();
+
+    for outer_opacity in [0.0, 0.5, 1.0] {
+        for inner_opacity in [0.0, 0.5, 1.0] {
+            for alpha in [0.0, 0.4, 1.0] {
+                let top_color =
+                    RuntimeSrgbColor::new(20.0 / 255.0, 40.0 / 255.0, 60.0 / 255.0, alpha).unwrap();
+                let snapshot =
+                    super::RuntimeRenderSnapshot::new_with_scroll_metadata_and_paint_commands(
+                        render_key,
+                        viewport,
+                        vec![
+                            RuntimeRenderBox::new(
+                                under_node,
+                                under_frame,
+                                RuntimePaint::Opaque(OpaqueCssSrgb::new(18, 52, 86)),
+                                0,
+                            ),
+                            RuntimeRenderBox::new(
+                                top_node,
+                                top_frame,
+                                RuntimePaint::Color(top_color),
+                                1,
+                            ),
+                        ],
+                        Vec::new(),
+                        vec![
+                            RuntimeScrollRenderMetadata::new(under_frame, Vec::new(), Vec::new()),
+                            RuntimeScrollRenderMetadata::new(top_frame, Vec::new(), Vec::new()),
+                        ],
+                        vec![
+                            RuntimePaintCommand::DrawBox { index: 0 },
+                            RuntimePaintCommand::BeginGroup {
+                                opacity: outer_opacity,
+                            },
+                            RuntimePaintCommand::BeginGroup {
+                                opacity: inner_opacity,
+                            },
+                            RuntimePaintCommand::DrawBox { index: 1 },
+                            RuntimePaintCommand::EndGroup,
+                            RuntimePaintCommand::EndGroup,
+                        ],
+                    )
+                    .unwrap();
+
+                assert_eq!(
+                    snapshot
+                        .hit_test_css_point(30.0, 30.0)
+                        .map(|render_box| render_box.node_id()),
+                    Some(top_node),
+                    "overlap target changed at outer_opacity={outer_opacity}, inner_opacity={inner_opacity}, alpha={alpha}"
+                );
+                assert_eq!(
+                    snapshot
+                        .hit_test_css_point(10.0, 10.0)
+                        .map(|render_box| render_box.node_id()),
+                    Some(under_node)
+                );
+                assert_eq!(
+                    snapshot
+                        .hit_test_css_point(20.0, 20.0)
+                        .map(|render_box| render_box.node_id()),
+                    Some(top_node),
+                    "inclusive top-left edge changed at outer_opacity={outer_opacity}, inner_opacity={inner_opacity}, alpha={alpha}"
+                );
+                assert_eq!(
+                    snapshot
+                        .hit_test_css_point(60.0, 35.0)
+                        .map(|render_box| render_box.node_id()),
+                    Some(under_node),
+                    "half-open right edge changed at outer_opacity={outer_opacity}, inner_opacity={inner_opacity}, alpha={alpha}"
+                );
+                assert_eq!(
+                    snapshot
+                        .hit_test_css_point(30.0, 50.0)
+                        .map(|render_box| render_box.node_id()),
+                    Some(under_node),
+                    "half-open bottom edge changed at outer_opacity={outer_opacity}, inner_opacity={inner_opacity}, alpha={alpha}"
+                );
+            }
+        }
+    }
 }
 
 #[test]

@@ -2,7 +2,7 @@
 
 **계약 버전:** `0.1.0` 고정
 
-**상태:** 내부 runtime paint 제한 구현. C19 전용 opt-in profile의 Android API 37 AVD와 iOS 26.2 Simulator 표본은 제품 기대값 16/16으로 통과했다. C08 partial-alpha 회귀를 발견해 기존 profile과 C19.2 profile을 분리하고 영향 경계를 재검토했다. PR 적대 검토와 필수 CI가 남아 병합·완료 판정은 보류한다.
+**상태:** 내부 runtime paint 제한 구현. C19 전용 opt-in profile의 Android API 37 AVD와 iOS 26.2 Simulator 표본은 제품 기대값 16/16으로 통과했다. C08 partial-alpha 회귀를 발견해 기존 profile과 C19.2 profile을 분리하고 영향 경계를 재검토했다. PR #232는 2026-10-16에 병합됐고 [PR diff 적대 검토 30개](./evidence/c19-2-pr-diff-review-30-2026-10-17.md)를 기록했다. 2026-10-17 GitHub 재조회에서 PR status check rollup은 비어 있었으므로 full CI 통과로 간주하지 않는다. C19.2의 제한과 parent C19 미완료 상태는 유지한다.
 
 **상위 계획:** [C19 기본 페인트 속성](https://github.com/ohah/spinon/blob/main/plan/c19-basic-paint-attributes.md)
 
