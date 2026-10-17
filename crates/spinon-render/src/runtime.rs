@@ -10,6 +10,7 @@ use super::{CssRect, CssSize};
 mod error;
 mod image;
 mod paint;
+mod presented_frame_registry;
 mod scroll;
 mod scroll_gesture;
 mod scroll_gesture_session;
@@ -25,6 +26,10 @@ pub use image::{
     RuntimeImageSampling, RuntimeRenderImage,
 };
 pub use paint::{RuntimeBorder, RuntimeBorderSide, RuntimePaint, RuntimeSrgbColor};
+pub use presented_frame_registry::{
+    RuntimeConfirmedFrame, RuntimeConfirmedFrameError, RuntimeConfirmedFrameRegistry,
+    RuntimeFrameId, RuntimePresentationToken, RuntimeSurfaceGeneration,
+};
 
 pub use scroll::{
     RuntimeOverscrollBehavior, RuntimeScrollClipLayer, RuntimeScrollContainer,
@@ -54,6 +59,10 @@ mod scroll_gesture_session_tests;
 #[cfg(test)]
 #[path = "runtime/scroll_input_queue_tests.rs"]
 mod scroll_input_queue_tests;
+
+#[cfg(test)]
+#[path = "runtime/presented_frame_registry_tests.rs"]
+mod presented_frame_registry_tests;
 
 #[cfg(test)]
 #[path = "runtime/text_tests.rs"]

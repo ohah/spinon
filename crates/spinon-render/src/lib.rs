@@ -9,20 +9,22 @@ use spinon_core::{
 
 mod runtime;
 pub use runtime::{
-    CssAxisClip, CssClip, RuntimeBorder, RuntimeBorderSide, RuntimeGestureAxes, RuntimeGlyphBitmap,
-    RuntimeImageObjectFit, RuntimeImageObjectPosition, RuntimeImageObjectStyle,
+    CssAxisClip, CssClip, RuntimeBorder, RuntimeBorderSide, RuntimeConfirmedFrame,
+    RuntimeConfirmedFrameError, RuntimeConfirmedFrameRegistry, RuntimeFrameId, RuntimeGestureAxes,
+    RuntimeGlyphBitmap, RuntimeImageObjectFit, RuntimeImageObjectPosition, RuntimeImageObjectStyle,
     RuntimeImageResourceKey, RuntimeImageSampling, RuntimeOverscrollBehavior,
-    RuntimePageScaleTransform, RuntimePaint, RuntimePaintCommand, RuntimeRenderBox,
-    RuntimeRenderError, RuntimeRenderImage, RuntimeRenderKey, RuntimeRenderSnapshot,
-    RuntimeRenderText, RuntimeScrollClipLayer, RuntimeScrollContainer, RuntimeScrollDeltaChange,
-    RuntimeScrollDeltaOutcome, RuntimeScrollGestureBegin, RuntimeScrollGestureBeginDisposition,
-    RuntimeScrollGestureCancelReason, RuntimeScrollGestureError, RuntimeScrollGestureIdentity,
-    RuntimeScrollGestureInputQueue, RuntimeScrollGestureOutcome, RuntimeScrollGesturePanSample,
-    RuntimeScrollGestureSession, RuntimeScrollGestureState, RuntimeScrollGestureTerminal,
-    RuntimeScrollGestureTerminalKind, RuntimeScrollInputPolicy, RuntimeScrollInputQueueAdmission,
-    RuntimeScrollInputQueueDiagnostics, RuntimeScrollInputQueueError, RuntimeScrollInputQueueEvent,
-    RuntimeScrollMomentumPhase, RuntimeScrollRenderMetadata, RuntimeScrollWheelSample,
-    RuntimeScrollWheelSource, RuntimeScrollWheelUnit, RuntimeSrgbColor, RuntimeTouchAction,
+    RuntimePageScaleTransform, RuntimePaint, RuntimePaintCommand, RuntimePresentationToken,
+    RuntimeRenderBox, RuntimeRenderError, RuntimeRenderImage, RuntimeRenderKey,
+    RuntimeRenderSnapshot, RuntimeRenderText, RuntimeScrollClipLayer, RuntimeScrollContainer,
+    RuntimeScrollDeltaChange, RuntimeScrollDeltaOutcome, RuntimeScrollGestureBegin,
+    RuntimeScrollGestureBeginDisposition, RuntimeScrollGestureCancelReason,
+    RuntimeScrollGestureError, RuntimeScrollGestureIdentity, RuntimeScrollGestureInputQueue,
+    RuntimeScrollGestureOutcome, RuntimeScrollGesturePanSample, RuntimeScrollGestureSession,
+    RuntimeScrollGestureState, RuntimeScrollGestureTerminal, RuntimeScrollGestureTerminalKind,
+    RuntimeScrollInputPolicy, RuntimeScrollInputQueueAdmission, RuntimeScrollInputQueueDiagnostics,
+    RuntimeScrollInputQueueError, RuntimeScrollInputQueueEvent, RuntimeScrollMomentumPhase,
+    RuntimeScrollRenderMetadata, RuntimeScrollWheelSample, RuntimeScrollWheelSource,
+    RuntimeScrollWheelUnit, RuntimeSrgbColor, RuntimeSurfaceGeneration, RuntimeTouchAction,
 };
 
 /// CSS px 좌표계의 양수 viewport 크기입니다.
