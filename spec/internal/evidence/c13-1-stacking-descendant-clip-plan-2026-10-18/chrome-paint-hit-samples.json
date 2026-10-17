@@ -1,0 +1,255 @@
+{
+  "status": "captured",
+  "browserVersion": "155.0.8059.85",
+  "viewport": {
+    "devicePixelRatio": 1,
+    "height": 128,
+    "scrollX": 0,
+    "scrollY": 0,
+    "width": 540
+  },
+  "fixtureSha256": "6b691ddf5afd44543b438b47200f9a6f85981fa3d3c30e1619185a65d320791e",
+  "screenshot": {
+    "file": "chrome155-nested-stacking-descendants.png",
+    "width": 540,
+    "height": 128,
+    "sha256": "a9727d516837df6c8a5d77e624aee3463b08ebfb991d8eb622d52d026c64585c"
+  },
+  "sampleCount": 18,
+  "samples": [
+    {
+      "case": "visible",
+      "name": "parent-only",
+      "xCssPx": 44.5,
+      "yCssPx": 52.5,
+      "hitId": "visible-parent",
+      "rgba": [
+        240,
+        198,
+        116,
+        255
+      ]
+    },
+    {
+      "case": "visible",
+      "name": "target-inside",
+      "xCssPx": 122.5,
+      "yCssPx": 52.5,
+      "hitId": "visible-target",
+      "rgba": [
+        87,
+        166,
+        217,
+        255
+      ]
+    },
+    {
+      "case": "visible",
+      "name": "clip-edge-inside",
+      "xCssPx": 139.5,
+      "yCssPx": 52.5,
+      "hitId": "visible-target",
+      "rgba": [
+        87,
+        166,
+        217,
+        255
+      ]
+    },
+    {
+      "case": "visible",
+      "name": "clip-edge-outside",
+      "xCssPx": 140.5,
+      "yCssPx": 52.5,
+      "hitId": "visible-target",
+      "rgba": [
+        87,
+        166,
+        217,
+        255
+      ]
+    },
+    {
+      "case": "visible",
+      "name": "escape-before-overlay",
+      "xCssPx": 144.5,
+      "yCssPx": 52.5,
+      "hitId": "visible-target",
+      "rgba": [
+        87,
+        166,
+        217,
+        255
+      ]
+    },
+    {
+      "case": "visible",
+      "name": "stacking-overlay",
+      "xCssPx": 156.5,
+      "yCssPx": 52.5,
+      "hitId": "visible-overlay",
+      "rgba": [
+        228,
+        81,
+        79,
+        255
+      ]
+    },
+    {
+      "case": "clip",
+      "name": "parent-only",
+      "xCssPx": 214.5,
+      "yCssPx": 52.5,
+      "hitId": "clip-parent",
+      "rgba": [
+        240,
+        198,
+        116,
+        255
+      ]
+    },
+    {
+      "case": "clip",
+      "name": "target-inside",
+      "xCssPx": 292.5,
+      "yCssPx": 52.5,
+      "hitId": "clip-target",
+      "rgba": [
+        87,
+        166,
+        217,
+        255
+      ]
+    },
+    {
+      "case": "clip",
+      "name": "clip-edge-inside",
+      "xCssPx": 309.5,
+      "yCssPx": 52.5,
+      "hitId": "clip-target",
+      "rgba": [
+        87,
+        166,
+        217,
+        255
+      ]
+    },
+    {
+      "case": "clip",
+      "name": "clip-edge-outside",
+      "xCssPx": 310.5,
+      "yCssPx": 52.5,
+      "hitId": "root",
+      "rgba": [
+        240,
+        244,
+        247,
+        255
+      ]
+    },
+    {
+      "case": "clip",
+      "name": "escape-before-overlay",
+      "xCssPx": 314.5,
+      "yCssPx": 52.5,
+      "hitId": "root",
+      "rgba": [
+        240,
+        244,
+        247,
+        255
+      ]
+    },
+    {
+      "case": "clip",
+      "name": "stacking-overlay",
+      "xCssPx": 326.5,
+      "yCssPx": 52.5,
+      "hitId": "clip-overlay",
+      "rgba": [
+        228,
+        81,
+        79,
+        255
+      ]
+    },
+    {
+      "case": "hidden",
+      "name": "parent-only",
+      "xCssPx": 384.5,
+      "yCssPx": 52.5,
+      "hitId": "hidden-parent",
+      "rgba": [
+        240,
+        198,
+        116,
+        255
+      ]
+    },
+    {
+      "case": "hidden",
+      "name": "target-inside",
+      "xCssPx": 462.5,
+      "yCssPx": 52.5,
+      "hitId": "hidden-target",
+      "rgba": [
+        87,
+        166,
+        217,
+        255
+      ]
+    },
+    {
+      "case": "hidden",
+      "name": "clip-edge-inside",
+      "xCssPx": 479.5,
+      "yCssPx": 52.5,
+      "hitId": "hidden-target",
+      "rgba": [
+        87,
+        166,
+        217,
+        255
+      ]
+    },
+    {
+      "case": "hidden",
+      "name": "clip-edge-outside",
+      "xCssPx": 480.5,
+      "yCssPx": 52.5,
+      "hitId": "root",
+      "rgba": [
+        240,
+        244,
+        247,
+        255
+      ]
+    },
+    {
+      "case": "hidden",
+      "name": "escape-before-overlay",
+      "xCssPx": 484.5,
+      "yCssPx": 52.5,
+      "hitId": "root",
+      "rgba": [
+        240,
+        244,
+        247,
+        255
+      ]
+    },
+    {
+      "case": "hidden",
+      "name": "stacking-overlay",
+      "xCssPx": 496.5,
+      "yCssPx": 52.5,
+      "hitId": "hidden-overlay",
+      "rgba": [
+        228,
+        81,
+        79,
+        255
+      ]
+    }
+  ]
+}

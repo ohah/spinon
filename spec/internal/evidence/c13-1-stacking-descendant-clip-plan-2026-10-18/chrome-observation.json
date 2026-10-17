@@ -1,0 +1,248 @@
+{
+  "cases": [
+    {
+      "id": "visible",
+      "overflowX": "visible",
+      "overflowY": "visible",
+      "overlay": {
+        "bottom": 88,
+        "height": 48,
+        "left": 148,
+        "right": 164,
+        "top": 40,
+        "width": 16,
+        "x": 148,
+        "y": 40
+      },
+      "parent": {
+        "bottom": 100,
+        "height": 72,
+        "left": 20,
+        "right": 140,
+        "top": 28,
+        "width": 120,
+        "x": 20,
+        "y": 28
+      },
+      "points": [
+        {
+          "hit": "visible-parent",
+          "name": "parent-only",
+          "x": 44.5,
+          "y": 52.5
+        },
+        {
+          "hit": "visible-target",
+          "name": "target-inside",
+          "x": 122.5,
+          "y": 52.5
+        },
+        {
+          "hit": "visible-target",
+          "name": "clip-edge-inside",
+          "x": 139.5,
+          "y": 52.5
+        },
+        {
+          "hit": "visible-target",
+          "name": "clip-edge-outside",
+          "x": 140.5,
+          "y": 52.5
+        },
+        {
+          "hit": "visible-target",
+          "name": "escape-before-overlay",
+          "x": 144.5,
+          "y": 52.5
+        },
+        {
+          "hit": "visible-overlay",
+          "name": "stacking-overlay",
+          "x": 156.5,
+          "y": 52.5
+        }
+      ],
+      "target": {
+        "bottom": 88,
+        "height": 48,
+        "left": 108,
+        "right": 180,
+        "top": 40,
+        "width": 72,
+        "x": 108,
+        "y": 40
+      },
+      "zIndex": {
+        "layer": "900",
+        "overlay": "1",
+        "parent": "0",
+        "target": "10"
+      }
+    },
+    {
+      "id": "clip",
+      "overflowX": "clip",
+      "overflowY": "clip",
+      "overlay": {
+        "bottom": 88,
+        "height": 48,
+        "left": 318,
+        "right": 334,
+        "top": 40,
+        "width": 16,
+        "x": 318,
+        "y": 40
+      },
+      "parent": {
+        "bottom": 100,
+        "height": 72,
+        "left": 190,
+        "right": 310,
+        "top": 28,
+        "width": 120,
+        "x": 190,
+        "y": 28
+      },
+      "points": [
+        {
+          "hit": "clip-parent",
+          "name": "parent-only",
+          "x": 214.5,
+          "y": 52.5
+        },
+        {
+          "hit": "clip-target",
+          "name": "target-inside",
+          "x": 292.5,
+          "y": 52.5
+        },
+        {
+          "hit": "clip-target",
+          "name": "clip-edge-inside",
+          "x": 309.5,
+          "y": 52.5
+        },
+        {
+          "hit": "root",
+          "name": "clip-edge-outside",
+          "x": 310.5,
+          "y": 52.5
+        },
+        {
+          "hit": "root",
+          "name": "escape-before-overlay",
+          "x": 314.5,
+          "y": 52.5
+        },
+        {
+          "hit": "clip-overlay",
+          "name": "stacking-overlay",
+          "x": 326.5,
+          "y": 52.5
+        }
+      ],
+      "target": {
+        "bottom": 88,
+        "height": 48,
+        "left": 278,
+        "right": 350,
+        "top": 40,
+        "width": 72,
+        "x": 278,
+        "y": 40
+      },
+      "zIndex": {
+        "layer": "900",
+        "overlay": "1",
+        "parent": "0",
+        "target": "10"
+      }
+    },
+    {
+      "id": "hidden",
+      "overflowX": "hidden",
+      "overflowY": "hidden",
+      "overlay": {
+        "bottom": 88,
+        "height": 48,
+        "left": 488,
+        "right": 504,
+        "top": 40,
+        "width": 16,
+        "x": 488,
+        "y": 40
+      },
+      "parent": {
+        "bottom": 100,
+        "height": 72,
+        "left": 360,
+        "right": 480,
+        "top": 28,
+        "width": 120,
+        "x": 360,
+        "y": 28
+      },
+      "points": [
+        {
+          "hit": "hidden-parent",
+          "name": "parent-only",
+          "x": 384.5,
+          "y": 52.5
+        },
+        {
+          "hit": "hidden-target",
+          "name": "target-inside",
+          "x": 462.5,
+          "y": 52.5
+        },
+        {
+          "hit": "hidden-target",
+          "name": "clip-edge-inside",
+          "x": 479.5,
+          "y": 52.5
+        },
+        {
+          "hit": "root",
+          "name": "clip-edge-outside",
+          "x": 480.5,
+          "y": 52.5
+        },
+        {
+          "hit": "root",
+          "name": "escape-before-overlay",
+          "x": 484.5,
+          "y": 52.5
+        },
+        {
+          "hit": "hidden-overlay",
+          "name": "stacking-overlay",
+          "x": 496.5,
+          "y": 52.5
+        }
+      ],
+      "target": {
+        "bottom": 88,
+        "height": 48,
+        "left": 448,
+        "right": 520,
+        "top": 40,
+        "width": 72,
+        "x": 448,
+        "y": 40
+      },
+      "zIndex": {
+        "layer": "900",
+        "overlay": "1",
+        "parent": "0",
+        "target": "10"
+      }
+    }
+  ],
+  "viewport": {
+    "devicePixelRatio": 1,
+    "height": 128,
+    "scrollX": 0,
+    "scrollY": 0,
+    "width": 540
+  }
+}
