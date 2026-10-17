@@ -49,6 +49,7 @@ pub use stylo_dom::{
     compute_runtime_block_positioning_cascade_with_stylesheets,
     compute_runtime_flex_custom_properties_cascade,
     compute_runtime_flex_custom_properties_cascade_with_stylesheets,
+    compute_runtime_flex_custom_properties_media_environment_cascade_with_stylesheets,
     compute_runtime_flex_custom_properties_paint_cascade,
     compute_runtime_flex_custom_properties_paint_cascade_with_stylesheets,
     compute_runtime_flex_layout_cascade, compute_runtime_flex_paint_cascade,

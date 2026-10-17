@@ -1,3 +1,7 @@
+use crate::root_html::{
+    ParsedRootHtml, RootHtmlEnvironmentMetadata, RootHtmlEnvironmentSnapshot,
+    resolve_root_html_environment,
+};
 #[cfg(test)]
 use crate::v8::{NodeCallback, TextCallback};
 use crate::v8::{
@@ -76,11 +80,13 @@ pub struct RuntimeSession {
     shutdown_gate: Mutex<()>,
     next_sequence: AtomicU64,
     ua_cascade: RuntimeUaCascadeCoordinator,
+    root_html_environment: Option<RootHtmlEnvironmentMetadata>,
 }
 
 #[derive(Clone, Copy)]
 enum RuntimeCssProfile {
     Default,
+    RootHtmlDocument,
     RuntimeGpu,
     RegisteredPropertiesFixture,
     BlockPaintFixture,
@@ -265,9 +271,12 @@ impl RuntimeSession {
     ///
     /// HTML 안의 script는 실행하지 않습니다. 기존 [`Self::new`]는 빈 HostDocument를 유지합니다.
     pub fn new_with_root_html(source: &str) -> Result<(Self, String), String> {
+        let parsed = ParsedRootHtml::parse(source)?;
+        let environment = RootHtmlEnvironmentMetadata::from_document(&parsed);
         Self::new_with_css_profile_and_root_html(
-            RuntimeCssProfile::Default,
-            Some(source.to_owned()),
+            RuntimeCssProfile::RootHtmlDocument,
+            Some(parsed),
+            Some(environment),
         )
     }
 
@@ -351,16 +360,20 @@ impl RuntimeSession {
     }
 
     fn new_with_css_profile(profile: RuntimeCssProfile) -> Result<(Self, String), String> {
-        Self::new_with_css_profile_and_root_html(profile, None)
+        Self::new_with_css_profile_and_root_html(profile, None, None)
     }
 
     fn new_with_css_profile_and_root_html(
         profile: RuntimeCssProfile,
-        root_html: Option<String>,
+        root_html: Option<ParsedRootHtml>,
+        root_html_environment: Option<RootHtmlEnvironmentMetadata>,
     ) -> Result<(Self, String), String> {
         let startup_started = Instant::now();
         let ua_cascade = match profile {
             RuntimeCssProfile::Default => RuntimeUaCascadeCoordinator::new()?,
+            RuntimeCssProfile::RootHtmlDocument => {
+                RuntimeUaCascadeCoordinator::new_root_html_document()?
+            }
             RuntimeCssProfile::RuntimeGpu => RuntimeUaCascadeCoordinator::new_runtime_gpu()?,
             RuntimeCssProfile::RegisteredPropertiesFixture => {
                 RuntimeUaCascadeCoordinator::new_runtime_gpu_registered_properties()?
@@ -451,6 +464,7 @@ impl RuntimeSession {
                 shutdown_gate: Mutex::new(()),
                 next_sequence: AtomicU64::new(0),
                 ua_cascade,
+                root_html_environment,
             },
             report,
         ))
@@ -577,6 +591,39 @@ impl RuntimeSession {
             device_scale_factor,
             media_environment,
         )
+    }
+
+    /// Root HTML metadata를 surface 입력에 적용하고 CSS cascade 환경을 갱신합니다.
+    ///
+    /// Surface 크기는 physical pixel, `device_scale_factor`는 physical pixel per CSS px입니다.
+    /// 반환된 `page_scale`은 layout viewport와 분리되어 있으며 현재 renderer transform에 적용되지 않습니다.
+    pub fn set_root_html_environment(
+        &self,
+        surface_width_px: f32,
+        surface_height_px: f32,
+        device_scale_factor: f32,
+        media_environment: spinon_style::CssMediaEnvironment,
+    ) -> Result<RootHtmlEnvironmentSnapshot, RuntimeUaCascadeError> {
+        let metadata = self
+            .root_html_environment
+            .ok_or(RuntimeUaCascadeError::InvalidEnvironment)?;
+        let mut resolved = resolve_root_html_environment(
+            metadata,
+            surface_width_px,
+            surface_height_px,
+            device_scale_factor,
+            media_environment,
+            spinon_core::EnvironmentRevision::INITIAL,
+        )
+        .map_err(|_| RuntimeUaCascadeError::InvalidEnvironment)?;
+        let revision = self.set_ua_cascade_environment(
+            resolved.viewport_width_css_px,
+            resolved.viewport_height_css_px,
+            resolved.device_scale_factor,
+            resolved.media_environment,
+        )?;
+        resolved.environment_revision = revision;
+        Ok(resolved)
     }
 
     /// 최신 UA cascade 상태를 한 번에 복사합니다. Stylo 계산 완료는 기다리지 않습니다.

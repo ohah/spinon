@@ -554,6 +554,8 @@ pub enum ComputedStyleProfile {
     RuntimeFlexPaintV1,
     /// C05.1 사용자 지정 속성을 계산한 제한 runtime layout profile입니다.
     RuntimeFlexCustomPropertiesV1,
+    /// 루트 HTML 세션에서 제한된 사용자 지정 속성과 viewport·OS scheme media를 계산합니다.
+    RuntimeFlexCustomPropertiesMediaEnvironmentV1,
     /// C05.1 사용자 지정 속성과 단색 배경 paint를 계산한 제한 runtime profile입니다.
     RuntimeFlexCustomPropertiesPaintV1,
     /// C05.2 등록 사용자 지정 속성을 계산한 제한 runtime layout profile입니다.

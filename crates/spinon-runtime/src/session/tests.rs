@@ -1,7 +1,8 @@
 use super::{
     CallbackState, Command, ERR_CANCELLED, ERR_CLOSED, ERR_QUEUE_FULL, EnqueueError,
     MemoryPressureLevel, OK, OperationReport, QUEUE_CAPACITY, RuntimeSession,
-    SpinonDocumentCollectionStats, TaskPriority, TaskScheduler, operation_report,
+    RuntimeUaCascadeState, SpinonDocumentCollectionStats, TaskPriority, TaskScheduler,
+    operation_report,
 };
 use crate::host::{DocumentCommitCallback, HostDocumentBridge};
 use std::ffi::{CStr, c_char, c_void};
@@ -169,6 +170,92 @@ fn root_html_session_imports_document_before_v8_worker_is_ready() {
         .expect("quirks mode must fail before exposing a session");
     assert!(error.contains("quirks mode"));
     drop(session);
+}
+
+#[test]
+fn root_html_environment_projects_viewport_and_os_scheme_into_css_cascade() {
+    let (session, _) = RuntimeSession::new_with_root_html(
+        "<!doctype html><html><head><meta name='viewport' content='width=device-width, initial-scale=1'><meta name='color-scheme' content='dark'><style>:root { color-scheme: light dark; } main { aspect-ratio: 2; } @media (max-width: 390px) { main { width: 123px; } } @media (prefers-color-scheme: dark) { main { height: 456px; } }</style></head><body><main>초기 화면</main></body></html>",
+    )
+    .expect("root HTML session should import the initial document");
+    let mut media_environment = spinon_style::CssMediaEnvironment::MOBILE;
+    media_environment.color_scheme = spinon_style::CssColorScheme::Light;
+
+    let initial = session
+        .set_root_html_environment(1170.0, 2532.0, 3.0, media_environment)
+        .expect("root metadata should configure the CSS environment");
+    assert_eq!(initial.viewport_width_css_px, 390.0);
+    assert_eq!(initial.viewport_height_css_px, 844.0);
+    assert_eq!(initial.device_scale_factor, 3.0);
+    assert_eq!(initial.page_scale, 1.0);
+    assert_eq!(
+        initial.prefers_color_scheme,
+        spinon_style::CssColorScheme::Light
+    );
+    assert_eq!(
+        initial.document_color_scheme,
+        spinon_style::CssColorScheme::Dark
+    );
+    assert_eq!(initial.environment_revision.get(), 0);
+
+    let _initial_layout = session.wait_for_layout_snapshot(Duration::from_secs(3));
+    let initial_cascade = session.ua_cascade_snapshot();
+    assert_eq!(initial_cascade.state, RuntimeUaCascadeState::Ready);
+    let initial_styles = &initial_cascade.completed.unwrap().roots[0].styles;
+    assert!(initial_styles.elements.iter().any(|element| {
+        element
+            .properties
+            .get("color-scheme")
+            .is_some_and(|value| value == "light dark")
+    }));
+    assert!(initial_styles.elements.iter().any(|element| {
+        element
+            .properties
+            .get("width")
+            .is_some_and(|value| value == "123px")
+    }));
+    assert!(initial_styles.elements.iter().any(|element| {
+        element
+            .properties
+            .get("aspect-ratio")
+            .is_some_and(|value| value == "2 / 1" && element.layout_aspect_ratio == Some(2.0))
+    }));
+    assert!(!initial_styles.elements.iter().any(|element| {
+        element
+            .properties
+            .get("height")
+            .is_some_and(|value| value == "456px")
+    }));
+    assert_eq!(initial_cascade.requested.unwrap().environment_revision, 0);
+
+    let unchanged = session
+        .set_root_html_environment(1170.0, 2532.0, 3.0, media_environment)
+        .expect("identical host inputs should keep the environment");
+    assert_eq!(unchanged.environment_revision.get(), 0);
+
+    media_environment.color_scheme = spinon_style::CssColorScheme::Dark;
+    let dark = session
+        .set_root_html_environment(1170.0, 2532.0, 3.0, media_environment)
+        .expect("OS preference changes should create a new environment");
+    assert_eq!(
+        dark.prefers_color_scheme,
+        spinon_style::CssColorScheme::Dark
+    );
+    assert_eq!(
+        dark.document_color_scheme,
+        spinon_style::CssColorScheme::Dark
+    );
+    assert_eq!(dark.environment_revision.get(), 1);
+    let _dark_layout = session.wait_for_layout_snapshot(Duration::from_secs(3));
+    let dark_cascade = session.ua_cascade_snapshot();
+    assert_eq!(dark_cascade.state, RuntimeUaCascadeState::Ready);
+    let dark_styles = &dark_cascade.completed.unwrap().roots[0].styles;
+    assert!(dark_styles.elements.iter().any(|element| {
+        element
+            .properties
+            .get("height")
+            .is_some_and(|value| value == "456px")
+    }));
 }
 
 fn eval(session: &RuntimeSession, source: &str) -> super::OperationResponse {

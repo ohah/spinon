@@ -57,7 +57,8 @@ use calculation::{
     compute_request_for_block_flex_overflow_clip, compute_request_for_block_flex_stacking,
     compute_request_for_block_formatting, compute_request_for_block_image,
     compute_request_for_block_paint, compute_request_for_block_positioning,
-    compute_request_for_registered_properties_gpu, compute_request_for_runtime_gpu,
+    compute_request_for_registered_properties_gpu, compute_request_for_root_html,
+    compute_request_for_runtime_gpu,
 };
 use environment::RuntimeCssEnvironment;
 use runtime_layout::layout_failure;
@@ -223,6 +224,10 @@ impl RuntimeUaCascadeCoordinator {
 
     pub(super) fn new_runtime_gpu() -> Result<Self, String> {
         Self::new_with_computer(Arc::new(compute_request_for_runtime_gpu))
+    }
+
+    pub(super) fn new_root_html_document() -> Result<Self, String> {
+        Self::new_with_computer(Arc::new(compute_request_for_root_html))
     }
 
     pub(super) fn new_runtime_gpu_registered_properties() -> Result<Self, String> {

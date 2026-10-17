@@ -225,7 +225,8 @@ where
         | super::calculation::RuntimeCalculationProfile::RegisteredPropertiesPaint => {
             first_unsupported_runtime_custom_properties_paint_inline_property(&view)
         }
-        super::calculation::RuntimeCalculationProfile::FlexLayout => {
+        super::calculation::RuntimeCalculationProfile::FlexLayout
+        | super::calculation::RuntimeCalculationProfile::RootHtmlDocument => {
             first_unsupported_runtime_custom_properties_inline_property(&view)
         }
     };

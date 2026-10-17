@@ -1,0 +1,33 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (target/debug/deps/spinon_ffi-c6870e3c6977f6ed)
+
+running 20 tests
+test runtime_ua_cascade::tests::null_abi_inputs_have_documented_argument_status ... ok
+test runtime_session::tests::c_abi_priority_values_match_the_runtime_priorities ... ok
+test runtime_session::tests::c_abi_memory_pressure_values_match_the_runtime_levels ... ok
+test runtime_ua_cascade::tests::output_short_buffer_contract_uses_nul_guard_and_capacity_status ... ok
+test runtime_layout::tests::layout_json_abi_rejects_invalid_pointers_and_capacity ... ok
+test runtime_session::tests::report_copy_is_nul_terminated_and_rejects_short_buffers ... ok
+test tests::shutdown_probe_rejects_each_invalid_output_shape_before_starting_a_runtime ... ok
+test runtime_session::root_html_tests::c_abi_rejects_non_utf8_source_before_creating_a_session ... ok
+test runtime_session::root_html_tests::c_abi_rejects_oversized_source_before_reading_it ... ok
+test runtime_ua_cascade::tests::state_json_always_has_stable_schema_and_no_implicit_request ... ok
+test runtime_ua_cascade::tests::abi_environment_preserves_valid_media_capabilities ... ok
+test tests::embedded_ua_stylesheet_ffi_returns_stable_read_only_bytes ... ok
+test runtime_ua_cascade::tests::exact_capacity_copies_complete_json_and_terminator ... ok
+test runtime_ua_cascade::tests::abi_environment_rejects_unknown_flags_and_non_boolean_values ... ok
+test runtime_ua_cascade::tests::failed_state_json_has_an_error_and_never_exposes_partial_roots ... ok
+test tests::taffy_experiment_is_excluded_from_default_builds ... ok
+test runtime_layout::tests::layout_json_uses_separate_schema_and_stable_failure_fields ... ok
+test runtime_ua_cascade::tests::completed_json_reports_cache_hit_without_changing_the_schema_version ... ok
+test runtime_layout::tests::layout_json_reports_css_pixels_and_ordered_frames ... ok
+test runtime_ua_cascade::tests::extended_runtime_profile_keeps_legacy_ua_property_shape ... ok
+
+test result: ok. 20 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests spinon_ffi
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

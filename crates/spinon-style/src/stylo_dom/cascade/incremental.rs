@@ -210,11 +210,17 @@ fn runtime_properties_for_profile(
         ComputedStyleProfile::RuntimeFlexLayoutV1
             | ComputedStyleProfile::RuntimeFlexPaintV1
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+            | ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
     ) {
-        let mut properties = runtime_layout::runtime_flex_wrap_properties();
+        let mut properties =
+            if profile == ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1 {
+                runtime_layout::runtime_root_html_properties()
+            } else {
+                runtime_layout::runtime_flex_wrap_properties()
+            };
         if has_paint {
             properties.push(("background-color", LonghandId::BackgroundColor));
         }
@@ -237,6 +243,7 @@ fn is_runtime_layout_profile(profile: ComputedStyleProfile) -> bool {
         ComputedStyleProfile::RuntimeFlexLayoutV1
             | ComputedStyleProfile::RuntimeFlexPaintV1
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+            | ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1

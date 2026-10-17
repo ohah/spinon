@@ -2326,6 +2326,37 @@ Java_dev_spinon_bootstrap_MainActivity_nativeSessionCreateWithRootHtml(
   return static_cast<jlong>(reinterpret_cast<uintptr_t>(session));
 }
 
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_MainActivity_nativeSessionSetRootHtmlEnvironment(
+    JNIEnv *env, jclass, jlong session, jfloat surface_width_px,
+    jfloat surface_height_px, jfloat device_scale_factor, jboolean prefers_dark) {
+  SpinonRuntimeRootHtmlEnvironment environment{};
+  const int32_t status = spinon_runtime_session_set_root_html_environment(
+      reinterpret_cast<SpinonRuntimeSession *>(static_cast<uintptr_t>(session)),
+      surface_width_px, surface_height_px, device_scale_factor,
+      prefers_dark == JNI_TRUE ? 1 : 0, &environment);
+  std::string report = "status=" + std::to_string(status);
+  if (status == 0) {
+    report += " viewport_css_px=" +
+              std::to_string(environment.viewport_width_css_px) + "x" +
+              std::to_string(environment.viewport_height_css_px) +
+              " device_scale_factor=" +
+              std::to_string(environment.device_scale_factor) +
+              " page_scale=" + std::to_string(environment.page_scale) +
+              " prefers_color_scheme=" +
+              std::to_string(environment.prefers_color_scheme) +
+              " document_color_scheme=" +
+              std::to_string(environment.document_color_scheme) +
+              " environment_revision=" +
+              std::to_string(environment.environment_revision);
+  }
+  jbyteArray output = env->NewByteArray(static_cast<jsize>(report.size()));
+  if (output == nullptr) return nullptr;
+  env->SetByteArrayRegion(output, 0, static_cast<jsize>(report.size()),
+                          reinterpret_cast<const jbyte *>(report.data()));
+  return env->ExceptionCheck() ? nullptr : output;
+}
+
 #if defined(SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST) && \
     SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST
 extern "C" JNIEXPORT jbyteArray JNICALL

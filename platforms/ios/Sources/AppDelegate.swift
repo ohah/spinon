@@ -31,6 +31,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     private let logger = Logger(subsystem: "dev.spinon.bootstrap", category: "runtime")
     private let rootDocumentSessionLock = NSLock()
     private var rootDocumentSession: UInt64 = 0
+    private weak var rootDocumentHostViewController: RootDocumentHostViewController?
     private var applicationIsTerminating = false
 
     func application(
@@ -319,10 +320,15 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = UIViewController()
+        let rootHost = RootDocumentHostViewController()
+        rootHost.onEnvironmentChange = { [weak self] environment in
+            self?.updateRootDocumentEnvironment(environment, source: "surface-change")
+        }
+        window.rootViewController = rootHost
         window.backgroundColor = .white
         window.makeKeyAndVisible()
         self.window = window
+        self.rootDocumentHostViewController = rootHost
         runBootstrapInBackground()
 
         if ProcessInfo.processInfo.arguments.contains("--spinon-r10") {
@@ -397,6 +403,24 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
                 logger.error("SPINON_ROOT_HTML_BOOT_ERROR reason=session-create-failed")
                 return
             }
+            guard let environment = currentRootDocumentEnvironmentSnapshot() else {
+                SpinonRunner.freeRuntimeSession(handle)
+                logger.error("SPINON_ROOT_HTML_ENVIRONMENT_ERROR reason=surface-unavailable")
+                return
+            }
+            let environmentReport = SpinonRunner.setRuntimeSessionRootHtmlEnvironment(
+                handle,
+                surfaceWidthPx: environment.surfaceWidthPx,
+                surfaceHeightPx: environment.surfaceHeightPx,
+                deviceScaleFactor: environment.deviceScaleFactor,
+                prefersDark: environment.prefersDark
+            ) ?? "native runtime returned no environment report"
+            guard environmentReport.hasPrefix("status=0") else {
+                SpinonRunner.freeRuntimeSession(handle)
+                logger.error("SPINON_ROOT_HTML_ENVIRONMENT_ERROR report=\(environmentReport, privacy: .public)")
+                return
+            }
+            logger.notice("SPINON_ROOT_HTML_ENVIRONMENT source=activity-start \(environmentReport, privacy: .public)")
             let report = SpinonRunner.evalRuntimeSession(handle, source: appSource)
                 ?? "native runtime returned no report"
             guard report.hasPrefix("status=0") else {
@@ -412,11 +436,45 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             rootDocumentSessionLock.unlock()
             if shouldKeepSession {
                 logger.notice("SPINON_ROOT_HTML_BOOT status=pass source=index.html report=\(report, privacy: .public)")
+                DispatchQueue.main.async { [weak self] in
+                    self?.rootDocumentHostViewController?.publishCurrentEnvironment(force: true)
+                }
             } else {
                 SpinonRunner.freeRuntimeSession(handle)
             }
         } catch {
             logger.error("SPINON_ROOT_HTML_ASSET_ERROR=\(String(describing: error), privacy: .public)")
+        }
+    }
+
+    private func currentRootDocumentEnvironmentSnapshot() -> RootDocumentSurfaceEnvironment? {
+        if Thread.isMainThread {
+            return rootDocumentHostViewController?.currentEnvironmentSnapshot()
+        }
+        return DispatchQueue.main.sync {
+            rootDocumentHostViewController?.currentEnvironmentSnapshot()
+        }
+    }
+
+    private func updateRootDocumentEnvironment(
+        _ environment: RootDocumentSurfaceEnvironment,
+        source: String
+    ) {
+        rootDocumentSessionLock.lock()
+        let handle = applicationIsTerminating ? 0 : rootDocumentSession
+        rootDocumentSessionLock.unlock()
+        guard handle != 0 else { return }
+        let report = SpinonRunner.setRuntimeSessionRootHtmlEnvironment(
+            handle,
+            surfaceWidthPx: environment.surfaceWidthPx,
+            surfaceHeightPx: environment.surfaceHeightPx,
+            deviceScaleFactor: environment.deviceScaleFactor,
+            prefersDark: environment.prefersDark
+        ) ?? "native runtime returned no environment report"
+        if report.hasPrefix("status=0") {
+            logger.notice("SPINON_ROOT_HTML_ENVIRONMENT source=\(source, privacy: .public) \(report, privacy: .public)")
+        } else {
+            logger.error("SPINON_ROOT_HTML_ENVIRONMENT_ERROR source=\(source, privacy: .public) report=\(report, privacy: .public)")
         }
     }
 
@@ -437,6 +495,61 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             .replacingOccurrences(of: " rebuild-us-p50=", with: "\nrebuild-us: p50=")
             .replacingOccurrences(of: " rebuild-us-p95=", with: " p95=")
             .replacingOccurrences(of: " iterations=", with: "\niterations=")
+    }
+}
+
+private struct RootDocumentSurfaceEnvironment: Equatable {
+    let surfaceWidthPx: Float
+    let surfaceHeightPx: Float
+    let deviceScaleFactor: Float
+    let prefersDark: Bool
+}
+
+private final class RootDocumentHostViewController: UIViewController {
+    var onEnvironmentChange: ((RootDocumentSurfaceEnvironment) -> Void)?
+    private var lastPublishedEnvironment: RootDocumentSurfaceEnvironment?
+
+    override func loadView() {
+        let hostView = UIView()
+        hostView.backgroundColor = .white
+        view = hostView
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        registerForTraitChanges([UITraitUserInterfaceStyle.self]) {
+            (self: RootDocumentHostViewController, _: UITraitCollection) in
+            self.publishCurrentEnvironment()
+        }
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        publishCurrentEnvironment()
+    }
+
+    func currentEnvironmentSnapshot() -> RootDocumentSurfaceEnvironment? {
+        guard isViewLoaded else { return nil }
+        view.layoutIfNeeded()
+        let scale = view.window?.screen.scale ?? view.contentScaleFactor
+        let size = view.bounds.size
+        guard size.width.isFinite, size.height.isFinite,
+              scale.isFinite, size.width > 0, size.height > 0, scale > 0 else {
+            return nil
+        }
+        return RootDocumentSurfaceEnvironment(
+            surfaceWidthPx: Float(size.width * scale),
+            surfaceHeightPx: Float(size.height * scale),
+            deviceScaleFactor: Float(scale),
+            prefersDark: traitCollection.userInterfaceStyle == .dark
+        )
+    }
+
+    func publishCurrentEnvironment(force: Bool = false) {
+        guard let environment = currentEnvironmentSnapshot() else { return }
+        guard force || environment != lastPublishedEnvironment else { return }
+        lastPublishedEnvironment = environment
+        onEnvironmentChange?(environment)
     }
 }
 

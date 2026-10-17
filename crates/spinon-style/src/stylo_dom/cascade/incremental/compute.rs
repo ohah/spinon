@@ -169,6 +169,8 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         runtime_block_flex_grid_dense_auto_placement_author_properties();
     let runtime_grid_template_author_properties =
         runtime_block_flex_grid_template_author_properties();
+    let mut runtime_root_html_author_properties = RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES.to_vec();
+    runtime_root_html_author_properties.push("color-scheme");
     let allowed_author_properties: Option<&[&str]> = match profile {
         ComputedStyleProfile::BasicCascadeV1 => None,
         ComputedStyleProfile::SupportedElementsUaV1 => None,
@@ -181,6 +183,9 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
             Some(FLEX_ALIGNMENT_AUTHOR_PROPERTIES)
         }
         ComputedStyleProfile::S04FlexPaintV1 => Some(s04::S04_FLEX_PAINT_AUTHOR_PROPERTIES),
+        ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1 => {
+            Some(runtime_root_html_author_properties.as_slice())
+        }
         ComputedStyleProfile::RuntimeFlexLayoutV1
         | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
         | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
@@ -231,14 +236,19 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         ComputedStyleProfile::FlexMediaEnvironmentV1 => allowed_author_properties
             .and_then(|allowed| registry.first_unsupported_author_feature_with_media(allowed)),
         ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+        | ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1
         | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1 => allowed_author_properties
             .and_then(|allowed| {
-                registry.first_unsupported_runtime_author_feature(
-                    allowed,
-                    profile == ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1,
-                    true,
-                    profile == ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1,
-                )
+                if profile == ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1 {
+                    registry.first_unsupported_runtime_author_feature_with_media(allowed)
+                } else {
+                    registry.first_unsupported_runtime_author_feature(
+                        allowed,
+                        profile == ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1,
+                        true,
+                        profile == ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1,
+                    )
+                }
             }),
         ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
         | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1 => allowed_author_properties
@@ -283,6 +293,7 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
     if matches!(
         profile,
         ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+            | ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
     ) && let Some((stylesheet_id, diagnostic)) = registry.first_runtime_author_diagnostic()
     {

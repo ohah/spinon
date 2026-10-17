@@ -73,6 +73,13 @@ pub(super) fn runtime_flex_wrap_properties() -> Vec<(&'static str, LonghandId)> 
         .collect()
 }
 
+/// 루트 HTML profile에서 computed snapshot에 보존할 제한 CSS 속성 목록입니다.
+pub(super) fn runtime_root_html_properties() -> Vec<(&'static str, LonghandId)> {
+    let mut properties = runtime_flex_wrap_properties();
+    properties.push(("color-scheme", LonghandId::ColorScheme));
+    properties
+}
+
 pub(super) const RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES: &[&str] = &[
     "display",
     "position",
@@ -200,6 +207,24 @@ pub fn compute_runtime_flex_custom_properties_cascade_with_stylesheets(
         style_revision,
         &runtime_flex_wrap_properties(),
         ComputedStyleProfile::RuntimeFlexCustomPropertiesV1,
+    )
+}
+
+/// 루트 HTML 문서에서 viewport·OS scheme media query와 사용자 지정 속성을 계산합니다.
+pub fn compute_runtime_flex_custom_properties_media_environment_cascade_with_stylesheets(
+    view: &StyloDocumentView,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+) -> Result<ComputedStyleSnapshot, CssCascadeError> {
+    let properties = runtime_root_html_properties();
+    compute_cascade(
+        view,
+        author_stylesheets,
+        viewport,
+        style_revision,
+        &properties,
+        ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1,
     )
 }
 

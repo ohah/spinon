@@ -453,6 +453,7 @@ mod tests {
             next_sequence: std::sync::atomic::AtomicU64::new(0),
             ua_cascade: super::super::RuntimeUaCascadeCoordinator::new()
                 .expect("테스트 CSS worker를 만들어야 합니다"),
+            root_html_environment: None,
         };
 
         assert!(session.shutdown().is_err());

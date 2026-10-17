@@ -111,6 +111,7 @@ pub(super) fn project_styles(
             ComputedStyleProfile::RuntimeFlexLayoutV1
                 | ComputedStyleProfile::RuntimeFlexPaintV1
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+                | ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
@@ -133,6 +134,7 @@ pub(super) fn project_styles(
             ComputedStyleProfile::RuntimeFlexLayoutV1
                 | ComputedStyleProfile::RuntimeFlexPaintV1
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+                | ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
@@ -320,6 +322,7 @@ pub(super) fn project_styles(
                 ComputedStyleProfile::RuntimeFlexLayoutV1
                 | ComputedStyleProfile::RuntimeFlexPaintV1
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+                | ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
@@ -371,6 +374,7 @@ pub(super) fn project_styles(
                 ComputedStyleProfile::RuntimeFlexLayoutV1
                 | ComputedStyleProfile::RuntimeFlexPaintV1
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+                | ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
@@ -412,6 +416,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexLayoutV1
                 | ComputedStyleProfile::RuntimeFlexPaintV1
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+                | ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
@@ -471,6 +476,7 @@ pub(super) fn project_styles(
                 ComputedStyleProfile::RuntimeFlexLayoutV1
                 | ComputedStyleProfile::RuntimeFlexPaintV1
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+                | ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1
                 | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
@@ -754,6 +760,7 @@ fn supports_positioning(profile: ComputedStyleProfile) -> bool {
         ComputedStyleProfile::RuntimeFlexLayoutV1
             | ComputedStyleProfile::RuntimeFlexPaintV1
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+            | ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
@@ -803,6 +810,7 @@ fn supports_runtime_flex(profile: ComputedStyleProfile) -> bool {
         ComputedStyleProfile::RuntimeFlexLayoutV1
             | ComputedStyleProfile::RuntimeFlexPaintV1
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+            | ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1

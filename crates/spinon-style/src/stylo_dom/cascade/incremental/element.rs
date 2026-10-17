@@ -144,6 +144,7 @@ pub(super) fn computed_element_output(
         ComputedStyleProfile::RuntimeFlexLayoutV1
             | ComputedStyleProfile::RuntimeFlexPaintV1
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+            | ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
