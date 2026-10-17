@@ -1,0 +1,141 @@
+<!doctype html>
+<meta charset="utf-8">
+<link rel="icon" href="data:,">
+<title>C15.3 text scroll transform oracle</title>
+<style>
+  @font-face {
+    font-family: "C15 Ahem";
+    src: url("../../resources/c15/Ahem.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 16px; color: #111; background: #fff; font: 14px/20px sans-serif; }
+  h1 { margin: 0 0 8px; font: 600 18px/24px sans-serif; }
+  h2 { margin: 8px 0 4px; font: 600 13px/18px sans-serif; }
+  .row { display: flex; align-items: start; gap: 16px; }
+  .scrollbox { position: relative; border: 1px solid #888; overflow: auto; font: 10px/10px "C15 Ahem"; }
+  #scroll-x { width: 15px; height: 22px; }
+  #scroll-x-text { display: inline-block; margin-left: 1px; white-space: nowrap; }
+  #scroll-y { width: 30px; height: 15px; }
+  #scroll-y-content { position: relative; width: 28px; height: 40px; }
+  #scroll-y-text { position: absolute; left: 1px; top: 22px; white-space: nowrap; }
+  #nested-outer { width: 34px; height: 24px; }
+  #nested-track { position: relative; width: 60px; height: 60px; }
+  #nested-inner { position: absolute; left: 16px; top: 2px; width: 26px; height: 18px; border: 1px solid #568; }
+  #nested-content { position: relative; width: 40px; height: 30px; }
+  #nested-text { position: absolute; left: 15px; top: 8px; white-space: nowrap; }
+  .label { margin-top: 4px; font: 11px/14px sans-serif; }
+</style>
+<h1>C15.3 text scroll transform</h1>
+<div class="row">
+  <section>
+    <h2>Horizontal ancestor</h2>
+    <div id="scroll-x" class="scrollbox"><span id="scroll-x-text">XX</span></div>
+    <div class="label">scrollLeft 3 CSS px</div>
+  </section>
+  <section>
+    <h2>Vertical ancestor</h2>
+    <div id="scroll-y" class="scrollbox"><div id="scroll-y-content"><span id="scroll-y-text">XX</span></div></div>
+    <div class="label">scrollTop 18 CSS px</div>
+  </section>
+  <section>
+    <h2>Nested ancestors</h2>
+    <div id="nested-outer" class="scrollbox"><div id="nested-track"><div id="nested-inner" class="scrollbox"><div id="nested-content"><span id="nested-text">XX</span></div></div></div></div>
+    <div class="label">outer 4 + inner 5 CSS px</div>
+  </section>
+</div>
+<pre id="capture" hidden></pre>
+<script>
+  window.c15ScrollOracleReady = document.fonts.ready.then(() => {
+    const rect = (element) => {
+      const value = element.getBoundingClientRect();
+      return { x: value.x, y: value.y, width: value.width, height: value.height };
+    };
+    const rangeRects = (element) => {
+      const range = document.createRange();
+      range.selectNodeContents(element);
+      return Array.from(range.getClientRects(), (value) => ({
+        x: value.x, y: value.y, width: value.width, height: value.height,
+      }));
+    };
+    const hit = (x, y) => {
+      const element = document.elementFromPoint(x, y);
+      return element ? element.id || element.tagName.toLowerCase() : null;
+    };
+    const geometry = (parentId, textId) => {
+      const parent = document.getElementById(parentId);
+      const text = document.getElementById(textId);
+      const parentRect = rect(parent);
+      const textRect = rect(text);
+      const range = rangeRects(text);
+      return {
+        parent: parentRect,
+        scrollport: {
+          x: parentRect.x + parent.clientLeft,
+          y: parentRect.y + parent.clientTop,
+          width: parent.clientWidth,
+          height: parent.clientHeight,
+        },
+        clientWidth: parent.clientWidth,
+        scrollWidth: parent.scrollWidth,
+        clientHeight: parent.clientHeight,
+        scrollHeight: parent.scrollHeight,
+        scrollLeft: parent.scrollLeft,
+        scrollTop: parent.scrollTop,
+        text: textRect,
+        range,
+        insideHit: hit(textRect.x + Math.min(5, textRect.width / 2), textRect.y + Math.min(5, textRect.height / 2)),
+      };
+    };
+    const capture = {
+      browser: navigator.userAgent,
+      platform: navigator.platform,
+      viewport: { width: innerWidth, height: innerHeight },
+      devicePixelRatio,
+      fontsStatus: document.fonts.status,
+      ahem: document.fonts.check('10px "C15 Ahem"', "XX"),
+    };
+    capture.horizontal = { before: geometry("scroll-x", "scroll-x-text") };
+    document.getElementById("scroll-x").scrollLeft = 3;
+    capture.horizontal.after = geometry("scroll-x", "scroll-x-text");
+    document.getElementById("scroll-x").scrollLeft = 6;
+    capture.horizontal.changed = geometry("scroll-x", "scroll-x-text");
+    document.getElementById("scroll-x").scrollLeft = 0;
+    capture.horizontal.reset = geometry("scroll-x", "scroll-x-text");
+    const horizontal = document.getElementById("scroll-x").getBoundingClientRect();
+    capture.horizontal.outsideHit = hit(horizontal.right + 3, horizontal.top + 8);
+    capture.vertical = { before: geometry("scroll-y", "scroll-y-text") };
+    document.getElementById("scroll-y").scrollTop = 18;
+    capture.vertical.after = geometry("scroll-y", "scroll-y-text");
+    document.getElementById("scroll-y").scrollTop = 7;
+    capture.vertical.changed = geometry("scroll-y", "scroll-y-text");
+    document.getElementById("scroll-y").scrollTop = 0;
+    capture.vertical.reset = geometry("scroll-y", "scroll-y-text");
+    const vertical = document.getElementById("scroll-y").getBoundingClientRect();
+    capture.vertical.outsideHit = hit(vertical.left + 5, vertical.bottom + 3);
+    capture.nested = { before: geometry("nested-outer", "nested-text") };
+    document.getElementById("nested-outer").scrollLeft = 4;
+    document.getElementById("nested-inner").scrollLeft = 5;
+    capture.nested.after = geometry("nested-outer", "nested-text");
+    document.getElementById("nested-outer").scrollLeft = 2;
+    document.getElementById("nested-inner").scrollLeft = 3;
+    capture.nested.changed = geometry("nested-outer", "nested-text");
+    document.getElementById("nested-outer").scrollLeft = 0;
+    document.getElementById("nested-inner").scrollLeft = 0;
+    capture.nested.reset = geometry("nested-outer", "nested-text");
+    capture.nested.inner = {
+      parent: rect(document.getElementById("nested-inner")),
+      clientWidth: document.getElementById("nested-inner").clientWidth,
+      scrollWidth: document.getElementById("nested-inner").scrollWidth,
+      scrollLeft: document.getElementById("nested-inner").scrollLeft,
+    };
+    capture.nested.outer = {
+      clientWidth: document.getElementById("nested-outer").clientWidth,
+      scrollWidth: document.getElementById("nested-outer").scrollWidth,
+      scrollLeft: document.getElementById("nested-outer").scrollLeft,
+    };
+    document.getElementById("capture").textContent = JSON.stringify(capture, null, 2);
+    return capture;
+  });
+</script>
