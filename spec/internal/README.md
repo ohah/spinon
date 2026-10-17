@@ -4,7 +4,7 @@
 
 [계획과 고정 Chrome oracle](../../plan/c13-1-stacking-descendant-clip-controls.md) · [Android API 37 AVD/iOS Simulator 실행·표면 표본·revision negative control](./evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/README.md) · [default/opt-in archive 경계](./evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/feature-boundary/README.md) · [구현 실패 관점 20개](./evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/implementation-review-20.md) · [PR 변경 관점 30개](./evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/pr-diff-review-30.md) · [Tailnet 로드맵 PR 변경 검토 30개](./evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/roadmap-pr-delta-review-30.md) · [실시간 완료 집계 정정 PR 검토 30개](./evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/roadmap-live-counter-correction-review-30.md). 고정 fixture 검증이며 C13.1/C13 전체 완료, WPT, DOM event 또는 일반 CSS 지원 선언은 아니다.
 
-[전체 viewport hit identity 계약 0078](./0078-c13-1-stacking-full-viewport-hit-identity.md) · [Chrome oracle·Android API 37 AVD·iOS Simulator 실행 근거](./evidence/c13-1-stacking-app-full-viewport-hit-2026-10-18/README.md). 540×128 integer grid 69,120점을 두 app route에서 확인했다. fixture 전용 internal report이며 C13.1/C13 또는 공개 CSS 지원 완료가 아니다.
+[전체 viewport hit identity 계약 0078](./0078-c13-1-stacking-full-viewport-hit-identity.md) · [Chrome oracle·Android API 37 AVD·iOS Simulator 실행 근거](./evidence/c13-1-stacking-app-full-viewport-hit-2026-10-18/README.md) · [구현 PR #287 Rebase and merge](https://github.com/ohah/spinon/pull/287) (merge SHA 392bfb19c958b80e16a615286896c09498e200d3) · [병합 상태 점검 30개](./evidence/c13-1-stacking-app-full-viewport-hit-2026-10-18/merge-status-review-30.md). 540×128 integer grid 69,120점을 두 app route에서 확인했다. fixture 전용 internal report이며 C13.1/C13 또는 공개 CSS 지원 완료가 아니다.
 
 ## R06 큐 포화·복구
 
