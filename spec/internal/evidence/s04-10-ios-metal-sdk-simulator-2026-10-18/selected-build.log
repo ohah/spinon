@@ -1,0 +1,91 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+warn    The dist path is not a subdir of root path, Rsbuild will not empty it.
+warn    Please set `output.cleanDistPath` config manually.
+warn    Current root path: /private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/packages/docs
+warn    Current dist path: /private/tmp/spinon-s04-10-ios-selected-out-20261018
+info    Rendering pages...
+success Pages rendered in 124 ms.
+ready   built in 0.99s (web)
+ready   built in 0.99s (node)
+
+File (web)                                                                                          Size        Gzip
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/i.25208e7c92.js                    0.10 kB     0.09 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/styles.d2a6dfa6a0.js                     0.47 kB     0.23 kB
+../../../spinon-s04-10-ios-selected-out-20261018/icon.svg                                           0.64 kB     0.41 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-c7b1c23e00a1.bbf60226b0.js   3.1 kB      1.5 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-6fe650616266.7d5de634f9.js   5.0 kB      1.9 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-2308615ee227.e66129240c.js   5.4 kB      1.7 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-73701410f94e.a56965ef82.js   6.2 kB      2.2 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-d0f54d53ad2b.5a28ec6886.js   6.2 kB      2.2 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-de98351b28cb.9e98b91563.js   7.2 kB      2.5 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-343e2be2a1e8.3237faab92.js   7.2 kB      2.6 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-b33563055168.d8e9ba1251.js   7.9 kB      2.7 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-04bc2c24c122.65d6b84517.js   9.7 kB      3.4 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-1c606a9bcf5f.6d2e3dcd94.js   9.7 kB      3.4 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-4665cde077d0.85267e8e26.js   10.3 kB     3.3 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-9e27f397e76b.8959aaad41.js   10.3 kB     3.3 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-aea8aafbbb87.00ee2fa160.js   11.0 kB     3.5 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-e0472d60744a.96e01bc0ae.js   11.0 kB     3.5 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-107ea9bc59bb.defba3fa86.js   12.3 kB     3.8 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-7b63acbe348a.5ff2b918f5.js   12.3 kB     3.8 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-afc04a26c114.8f2775be0d.js   13.1 kB     4.0 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-ef6f0445d65c.3fb8f247a5.js   13.1 kB     4.0 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-311b470225ee.ecf06d1ba7.js   13.5 kB     4.7 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-6e8db818f69d.45d17b2c35.js   13.6 kB     3.8 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-7f43a109d20e.08b203f823.js   13.6 kB     3.8 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-7ae5198feb44.c994a43feb.js   14.3 kB     3.8 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-d044253b30b9.be852d7f03.js   14.3 kB     3.8 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-c6d90fac6bcd.c4da362cb8.js   30.6 kB     8.1 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-e2d1348b3fb4.e6e2209d73.js   30.6 kB     8.1 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/lib-router.1e14e568cb.js                 35.4 kB     12.7 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/index.d5b523edfa.js                      47.3 kB     11.3 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/css/styles.8d918fd78e.css                   74.0 kB     14.2 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-0f4abc145d07.f9f878300a.js   92.6 kB     20.1 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-5eb92dc32e34.207f8ae4bf.js   92.7 kB     20.1 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-a1017bdf23ca.bb21698657.js   175.6 kB    36.7 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-a991d6de67ad.7c314569ba.js   175.7 kB    36.7 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/a.46d7f082bb.js                          217.1 kB    71.7 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/lib-react.9cdf8f49ce.js                  218.4 kB    68.9 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-6c33a3943990.6f8216abd6.js   375.1 kB    87.1 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/js/async/route-7ce2535ac56d.878fae7ffe.js   375.1 kB    87.1 kB
+../../../spinon-s04-10-ios-selected-out-20261018/static/search_index.ko.d405cc1a.json               825.4 kB    264.4 kB
+
+                                                                                           Total:   2997.1 kB   821.5 kB
+
+File (node)                                                                                                                                    Size        Gzip
+../../../spinon-s04-10-ios-selected-out-20261018/404.html                                                                                      9.1 kB      2.6 kB
+../../../spinon-s04-10-ios-selected-out-20261018/index.html                                                                                    12.4 kB     3.7 kB
+../../../spinon-s04-10-ios-selected-out-20261018/api/README.html                                                                               16.6 kB     4.5 kB
+../../../spinon-s04-10-ios-selected-out-20261018/api/index.html                                                                                17.6 kB     4.9 kB
+../../../spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html                          18.2 kB     5.1 kB
+../../../spinon-s04-10-ios-selected-out-20261018/spec/internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html                     18.2 kB     5.1 kB
+../../../spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html                                  19.7 kB     5.5 kB
+../../../spinon-s04-10-ios-selected-out-20261018/spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html                             19.7 kB     5.5 kB
+../../../spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html                      20.6 kB     6.1 kB
+../../../spinon-s04-10-ios-selected-out-20261018/spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html                 20.6 kB     6.1 kB
+../../../spinon-s04-10-ios-selected-out-20261018/README.html                                                                                   21.4 kB     5.7 kB
+../../../spinon-s04-10-ios-selected-out-20261018/internal/0079-s04-10-confirmed-frame-registry.html                                            21.7 kB     6.4 kB
+../../../spinon-s04-10-ios-selected-out-20261018/spec/internal/0079-s04-10-confirmed-frame-registry.html                                       21.7 kB     6.4 kB
+../../../spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html                  22.0 kB     6.5 kB
+../../../spinon-s04-10-ios-selected-out-20261018/spec/internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html             22.0 kB     6.4 kB
+../../../spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.html           22.9 kB     6.6 kB
+../../../spinon-s04-10-ios-selected-out-20261018/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.html      22.9 kB     6.6 kB
+../../../spinon-s04-10-ios-selected-out-20261018/spec/internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html   22.9 kB     6.7 kB
+../../../spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html        22.9 kB     6.7 kB
+../../../spinon-s04-10-ios-selected-out-20261018/spec/internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html         23.1 kB     6.9 kB
+../../../spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html              23.1 kB     6.9 kB
+../../../spinon-s04-10-ios-selected-out-20261018/plan/s04-10-presented-frame-gate.html                                                         25.3 kB     7.6 kB
+../../../spinon-s04-10-ios-selected-out-20261018/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html                  28.8 kB     7.1 kB
+../../../spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html                       28.8 kB     7.1 kB
+../../../spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html                            44.9 kB     11.4 kB
+../../../spinon-s04-10-ios-selected-out-20261018/spec/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html                       44.9 kB     11.4 kB
+../../../spinon-s04-10-ios-selected-out-20261018/internal/0019-s04-css-layout-gpu-slice.html                                                   91.2 kB     22.9 kB
+../../../spinon-s04-10-ios-selected-out-20261018/spec/internal/0019-s04-css-layout-gpu-slice.html                                              91.2 kB     22.9 kB
+../../../spinon-s04-10-ios-selected-out-20261018/internal/README.html                                                                          161.6 kB    38.9 kB
+../../../spinon-s04-10-ios-selected-out-20261018/spec/internal/README.html                                                                     161.7 kB    38.9 kB
+../../../spinon-s04-10-ios-selected-out-20261018/spec/STATUS.html                                                                              351.0 kB    88.6 kB
+../../../spinon-s04-10-ios-selected-out-20261018/STATUS.html                                                                                   351.4 kB    88.6 kB
+
+                                                                                                                                      Total:   1799.9 kB   466.3 kB

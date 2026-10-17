@@ -1,0 +1,1840 @@
+{
+  "createdAt": "2026-10-17T22:19:44.088756+00:00",
+  "scope": "Tailnet review pass 4 selected build and source files",
+  "endpoints": {
+    "local": "http://127.0.0.1:8768/spinon/",
+    "tailnet": "https://macstudio.tailed42f2.ts.net/spinon/"
+  },
+  "summary": {
+    "local": {
+      "total": 101,
+      "http200AndHashMatch": 101
+    },
+    "tailnet": {
+      "total": 101,
+      "http200AndHashMatch": 101
+    }
+  },
+  "failed": 0,
+  "failures": [],
+  "files": [
+    {
+      "endpoint": "local",
+      "targetRelative": "404.html",
+      "url": "http://127.0.0.1:8768/spinon/404.html",
+      "httpStatus": 200,
+      "expectedSha256": "5b8b77e5f59b75ca51b3cff0fc4ef901c13c1e6978ea98b6efae08dc27e84359",
+      "servedSha256": "5b8b77e5f59b75ca51b3cff0fc4ef901c13c1e6978ea98b6efae08dc27e84359",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "README.html",
+      "url": "http://127.0.0.1:8768/spinon/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "fcedcdd9a5d11c9b67e8ecd591846f8f9b698a15c824459f6878d4cbfad6814c",
+      "servedSha256": "fcedcdd9a5d11c9b67e8ecd591846f8f9b698a15c824459f6878d4cbfad6814c",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "STATUS.html",
+      "url": "http://127.0.0.1:8768/spinon/STATUS.html",
+      "httpStatus": 200,
+      "expectedSha256": "c30f160da23f30be1c9e5681e3fd0e4abab4b710a906ecc3b22cbea02397fc15",
+      "servedSha256": "c30f160da23f30be1c9e5681e3fd0e4abab4b710a906ecc3b22cbea02397fc15",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "api/README.html",
+      "url": "http://127.0.0.1:8768/spinon/api/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "7e2b11e5186cacfb78c950163076c79c5e57c12169e8aff6b390eaad6d8010fe",
+      "servedSha256": "7e2b11e5186cacfb78c950163076c79c5e57c12169e8aff6b390eaad6d8010fe",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "api/index.html",
+      "url": "http://127.0.0.1:8768/spinon/api/index.html",
+      "httpStatus": 200,
+      "expectedSha256": "ba3e44c66118bfa9be7279b352fdb1dc3e52492a1c51a73d65dcba3862bb0f37",
+      "servedSha256": "ba3e44c66118bfa9be7279b352fdb1dc3e52492a1c51a73d65dcba3862bb0f37",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "icon.svg",
+      "url": "http://127.0.0.1:8768/spinon/icon.svg",
+      "httpStatus": 200,
+      "expectedSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "servedSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "index.html",
+      "url": "http://127.0.0.1:8768/spinon/index.html",
+      "httpStatus": 200,
+      "expectedSha256": "4c9fde53ea11a642d285f899169f5bb7bd2bc6ede8798f5602a93e5219cca963",
+      "servedSha256": "4c9fde53ea11a642d285f899169f5bb7bd2bc6ede8798f5602a93e5219cca963",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/0019-s04-css-layout-gpu-slice.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/0019-s04-css-layout-gpu-slice.html",
+      "httpStatus": 200,
+      "expectedSha256": "759c556578a9a7c6e9f9629c42c00c7aa002ed16f125fc52f36ba24490526187",
+      "servedSha256": "759c556578a9a7c6e9f9629c42c00c7aa002ed16f125fc52f36ba24490526187",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/0079-s04-10-confirmed-frame-registry.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/0079-s04-10-confirmed-frame-registry.html",
+      "httpStatus": 200,
+      "expectedSha256": "db5ea848264972a997b0d937a3a91f5369cfe15580aeb7bbf9948670b8656446",
+      "servedSha256": "db5ea848264972a997b0d937a3a91f5369cfe15580aeb7bbf9948670b8656446",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/README.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "49ebd096ef60ecd9abf4da930b19c2c4c4a572959b3a7fc9fe167139c96a6f6c",
+      "servedSha256": "49ebd096ef60ecd9abf4da930b19c2c4c4a572959b3a7fc9fe167139c96a6f6c",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "bc96d5bf22c19af47585c92ad83040efd5a474e07bc7203f6315bf192170fa0b",
+      "servedSha256": "bc96d5bf22c19af47585c92ad83040efd5a474e07bc7203f6315bf192170fa0b",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.html",
+      "httpStatus": 200,
+      "expectedSha256": "7e2b522edb2eb8e65733329a5b6e17600c6dca049e95cf61f12ee8ff7c3b51c9",
+      "servedSha256": "7e2b522edb2eb8e65733329a5b6e17600c6dca049e95cf61f12ee8ff7c3b51c9",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html",
+      "httpStatus": 200,
+      "expectedSha256": "f95c683209dcba2f487740bd3af301106f424853f32dd4a1c2e79713b5fd85f0",
+      "servedSha256": "f95c683209dcba2f487740bd3af301106f424853f32dd4a1c2e79713b5fd85f0",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "74b14adb2a0d0a281cc4e23885b65cb31c05bbf7d48138885d8b4a59e24a5ad1",
+      "servedSha256": "74b14adb2a0d0a281cc4e23885b65cb31c05bbf7d48138885d8b4a59e24a5ad1",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "httpStatus": 200,
+      "expectedSha256": "2292dd2cc237b745e0fb659c1b26d7918eaef3ce6dce4c17f0cd5d03f6b9967c",
+      "servedSha256": "2292dd2cc237b745e0fb659c1b26d7918eaef3ce6dce4c17f0cd5d03f6b9967c",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "httpStatus": 200,
+      "expectedSha256": "3122dc284fe9189bcfae35e9ddfd8105a8d57f9a715642ff70524f6e2d5da9e6",
+      "servedSha256": "3122dc284fe9189bcfae35e9ddfd8105a8d57f9a715642ff70524f6e2d5da9e6",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "httpStatus": 200,
+      "expectedSha256": "990c8c5997505e9694e75cad3f58827e347ba91fbd14bd3e64f0c5707bfcaad0",
+      "servedSha256": "990c8c5997505e9694e75cad3f58827e347ba91fbd14bd3e64f0c5707bfcaad0",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "677e9dc047578acb1b6e1f64e4082f1fb9f04c52da3c65a2835e378cea1b1450",
+      "servedSha256": "677e9dc047578acb1b6e1f64e4082f1fb9f04c52da3c65a2835e378cea1b1450",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/README.md",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/README.md",
+      "httpStatus": 200,
+      "expectedSha256": "de77ddb0f126a4d55a7a614d9e3deaafca5520c64bb41611fbad870dea96cf85",
+      "servedSha256": "de77ddb0f126a4d55a7a614d9e3deaafca5520c64bb41611fbad870dea96cf85",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/agent-browser-network.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/agent-browser-network.log",
+      "httpStatus": 200,
+      "expectedSha256": "0135859ef58e4a5885cd306540d49d1c0738f97f3a79bddaa79b490b84fe6fb7",
+      "servedSha256": "0135859ef58e4a5885cd306540d49d1c0738f97f3a79bddaa79b490b84fe6fb7",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/backup-verification.json",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/backup-verification.json",
+      "httpStatus": 200,
+      "expectedSha256": "6c3aab31660d8bb0495456a58e46527871143250500a4573ddccdde52edf22bb",
+      "servedSha256": "6c3aab31660d8bb0495456a58e46527871143250500a4573ddccdde52edf22bb",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/browser-verification.json",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/browser-verification.json",
+      "httpStatus": 200,
+      "expectedSha256": "6fd695ffd6233c7b95f6514ac2da508ca2f07fb41cc1ce091ced9f343bd614e6",
+      "servedSha256": "6fd695ffd6233c7b95f6514ac2da508ca2f07fb41cc1ce091ced9f343bd614e6",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/copy-verification.json",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/copy-verification.json",
+      "httpStatus": 200,
+      "expectedSha256": "de9abd5c08d3e873e47e591e2d3022fa016756b6676badaa5ce9d82ee5ffc087",
+      "servedSha256": "de9abd5c08d3e873e47e591e2d3022fa016756b6676badaa5ce9d82ee5ffc087",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/manifest.json",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/manifest.json",
+      "httpStatus": 200,
+      "expectedSha256": "7aa9ea5e1e2eb56c72555b744bd1da53492d5be6e1e5007c54b326f6e65f34dd",
+      "servedSha256": "7aa9ea5e1e2eb56c72555b744bd1da53492d5be6e1e5007c54b326f6e65f34dd",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "httpStatus": 200,
+      "expectedSha256": "4a5dd8a9cd33f2ed7822f36825c5a28f567e31553b3faa1abe07cfa15a30ae8b",
+      "servedSha256": "4a5dd8a9cd33f2ed7822f36825c5a28f567e31553b3faa1abe07cfa15a30ae8b",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.md",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.md",
+      "httpStatus": 200,
+      "expectedSha256": "2c0aa72655cf2f0c7d1e3c5112ba204dc6d85578437b3e732c916a58691acdc7",
+      "servedSha256": "2c0aa72655cf2f0c7d1e3c5112ba204dc6d85578437b3e732c916a58691acdc7",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/preflight.json",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/preflight.json",
+      "httpStatus": 200,
+      "expectedSha256": "81ba5f6944dd573b824cc6d0cc0692e649c08f801438e106dec9a65bd2f6ccf3",
+      "servedSha256": "81ba5f6944dd573b824cc6d0cc0692e649c08f801438e106dec9a65bd2f6ccf3",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/selected-build.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/selected-build.log",
+      "httpStatus": 200,
+      "expectedSha256": "31c0f5e612f93a1765b938a7658540fe723cd1443521c3831bb2ce55df287335",
+      "servedSha256": "31c0f5e612f93a1765b938a7658540fe723cd1443521c3831bb2ce55df287335",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/served-verification.json",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/served-verification.json",
+      "httpStatus": 200,
+      "expectedSha256": "8855da9a2a79af535675d47e395eb7a21a145115aa18eaa5571e6ed3d00baf23",
+      "servedSha256": "8855da9a2a79af535675d47e395eb7a21a145115aa18eaa5571e6ed3d00baf23",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-evidence-agent-browser.png",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-evidence-agent-browser.png",
+      "httpStatus": 200,
+      "expectedSha256": "5b0bfc4b60e15ed83579d16c6267cb7ba0a55dff99eac4d56dc2d2bb40a67eaf",
+      "servedSha256": "5b0bfc4b60e15ed83579d16c6267cb7ba0a55dff99eac4d56dc2d2bb40a67eaf",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-roadmap-agent-browser.png",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-roadmap-agent-browser.png",
+      "httpStatus": 200,
+      "expectedSha256": "e9c223e4d240793620d52df790df45adace0f0029dfcb669fb0e5ca30721ebcc",
+      "servedSha256": "e9c223e4d240793620d52df790df45adace0f0029dfcb669fb0e5ca30721ebcc",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-status-agent-browser.png",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-status-agent-browser.png",
+      "httpStatus": 200,
+      "expectedSha256": "845ceab93a62a65f71c5a1f087c1647066e58165a6e3e64a453b88613f1881b7",
+      "servedSha256": "845ceab93a62a65f71c5a1f087c1647066e58165a6e3e64a453b88613f1881b7",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "logo.svg",
+      "url": "http://127.0.0.1:8768/spinon/logo.svg",
+      "httpStatus": 200,
+      "expectedSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "servedSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "plan/s04-10-presented-frame-gate.html",
+      "url": "http://127.0.0.1:8768/spinon/plan/s04-10-presented-frame-gate.html",
+      "httpStatus": 200,
+      "expectedSha256": "3aede976ec507e73f23c561c0fd503615588757795b156e4300f757fbba3ae56",
+      "servedSha256": "3aede976ec507e73f23c561c0fd503615588757795b156e4300f757fbba3ae56",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "plan/s04-10-presented-frame-gate.md",
+      "url": "http://127.0.0.1:8768/spinon/plan/s04-10-presented-frame-gate.md",
+      "httpStatus": 200,
+      "expectedSha256": "e89960d31a3993320829926321ab98928599ca49f92102e88ab34fefa441b994",
+      "servedSha256": "e89960d31a3993320829926321ab98928599ca49f92102e88ab34fefa441b994",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "roadmap.html",
+      "url": "http://127.0.0.1:8768/spinon/roadmap.html",
+      "httpStatus": 200,
+      "expectedSha256": "24b25b60917c256e39ae08e8554420afa2498e28a1e4d2a26283bbab3d5cfb97",
+      "servedSha256": "24b25b60917c256e39ae08e8554420afa2498e28a1e4d2a26283bbab3d5cfb97",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/STATUS.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/STATUS.html",
+      "httpStatus": 200,
+      "expectedSha256": "b07b9b2925f9a6f83cac71da3688de935c326bf39e51c7a56f5a64ba39e8d09a",
+      "servedSha256": "b07b9b2925f9a6f83cac71da3688de935c326bf39e51c7a56f5a64ba39e8d09a",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/STATUS.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/STATUS.md",
+      "httpStatus": 200,
+      "expectedSha256": "00274a22e7178e5a193fa7e6fa77f8447e90d7da3623742129abcd9d00e061f4",
+      "servedSha256": "00274a22e7178e5a193fa7e6fa77f8447e90d7da3623742129abcd9d00e061f4",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/0019-s04-css-layout-gpu-slice.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/0019-s04-css-layout-gpu-slice.html",
+      "httpStatus": 200,
+      "expectedSha256": "cff2ea996cb2bd00d36d32a8c52c411dc9a98960b51079468f29166a1d43b8cd",
+      "servedSha256": "cff2ea996cb2bd00d36d32a8c52c411dc9a98960b51079468f29166a1d43b8cd",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/0079-s04-10-confirmed-frame-registry.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/0079-s04-10-confirmed-frame-registry.html",
+      "httpStatus": 200,
+      "expectedSha256": "92d386a6785668d10eddcc0d3d34f3ebf2973bc9a93195d6895f46dd3f2470b1",
+      "servedSha256": "92d386a6785668d10eddcc0d3d34f3ebf2973bc9a93195d6895f46dd3f2470b1",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/README.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "1a8ec4b1da6304e0580fb66afd172efb6651ab173803c681341e5c6f628ca1cb",
+      "servedSha256": "1a8ec4b1da6304e0580fb66afd172efb6651ab173803c681341e5c6f628ca1cb",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/README.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/README.md",
+      "httpStatus": 200,
+      "expectedSha256": "2e1739504a75b66d6159ee4da02daff5f2fefa38a792694a40815478202304d0",
+      "servedSha256": "2e1739504a75b66d6159ee4da02daff5f2fefa38a792694a40815478202304d0",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/Info.plist",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/Info.plist",
+      "httpStatus": 200,
+      "expectedSha256": "18d6fa164951c16b8f238a4083d5f68b394890273762c99b2ff1ebe2fc2ec838",
+      "servedSha256": "18d6fa164951c16b8f238a4083d5f68b394890273762c99b2ff1ebe2fc2ec838",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "28869057d3d09fe94b6bfc92f571ff399da41d70380b1124e7030b0f87e1648f",
+      "servedSha256": "28869057d3d09fe94b6bfc92f571ff399da41d70380b1124e7030b0f87e1648f",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.md",
+      "httpStatus": 200,
+      "expectedSha256": "4946174e7846f48d28a355ff1280f2fa95bd11da30478cea2e4635e14f107eff",
+      "servedSha256": "4946174e7846f48d28a355ff1280f2fa95bd11da30478cea2e4635e14f107eff",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/metal-api-probe.swift",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/metal-api-probe.swift",
+      "httpStatus": 200,
+      "expectedSha256": "ec22901e6ebf4f73356271a1d9879a63f3b499f6389dabdd1960b8cd5ac552a0",
+      "servedSha256": "ec22901e6ebf4f73356271a1d9879a63f3b499f6389dabdd1960b8cd5ac552a0",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.html",
+      "httpStatus": 200,
+      "expectedSha256": "e9349282c48dbb0946a39c4374da8ef193b48a8ac6736f4f7f54b5753c7cf31e",
+      "servedSha256": "e9349282c48dbb0946a39c4374da8ef193b48a8ac6736f4f7f54b5753c7cf31e",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.md",
+      "httpStatus": 200,
+      "expectedSha256": "6522a07ac3bdd83b8f3ad6a84fdad38479017f149640b5c8ae3c3d52c5c34019",
+      "servedSha256": "6522a07ac3bdd83b8f3ad6a84fdad38479017f149640b5c8ae3c3d52c5c34019",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/selected-build.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/selected-build.log",
+      "httpStatus": 200,
+      "expectedSha256": "2b5c5f1b3b2ab257f62a7c0f78a42204b7bc1f5cfbe058cb660119eb3fd93f3c",
+      "servedSha256": "2b5c5f1b3b2ab257f62a7c0f78a42204b7bc1f5cfbe058cb660119eb3fd93f3c",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/simulator-runtime.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/simulator-runtime.log",
+      "httpStatus": 200,
+      "expectedSha256": "b912d0ae4d63d929e07ab1d9a11c4044e2cf9df75843f326988cbd7ebdf65ae9",
+      "servedSha256": "b912d0ae4d63d929e07ab1d9a11c4044e2cf9df75843f326988cbd7ebdf65ae9",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/simulator-selector-probe.m",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/simulator-selector-probe.m",
+      "httpStatus": 200,
+      "expectedSha256": "6a932cfbb8fbd2c59f7369456d65bb52fdf1bcdf333816015bf788bf70983da7",
+      "servedSha256": "6a932cfbb8fbd2c59f7369456d65bb52fdf1bcdf333816015bf788bf70983da7",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html",
+      "httpStatus": 200,
+      "expectedSha256": "6d9bd6b6245f06da290c9af70dc079bb9e880de6047f167753635d1b0a61f464",
+      "servedSha256": "6d9bd6b6245f06da290c9af70dc079bb9e880de6047f167753635d1b0a61f464",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.md",
+      "httpStatus": 200,
+      "expectedSha256": "c741a3774d1e13d68cbf682e4a71334e9f5605249fdda5cefa263467b6e86e68",
+      "servedSha256": "c741a3774d1e13d68cbf682e4a71334e9f5605249fdda5cefa263467b6e86e68",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "09929268be5ee4831a2665aeae225d79ee4b8ee38efbcb99925ecad06b38bd85",
+      "servedSha256": "09929268be5ee4831a2665aeae225d79ee4b8ee38efbcb99925ecad06b38bd85",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "httpStatus": 200,
+      "expectedSha256": "092915e428484e22ade5640ba37ad8052c40c4f0847f798c3aa4bc0dc4e238d2",
+      "servedSha256": "092915e428484e22ade5640ba37ad8052c40c4f0847f798c3aa4bc0dc4e238d2",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "httpStatus": 200,
+      "expectedSha256": "0158b178072d0e53c1d26383e9dc8694d328a11f0cbf96fcd82ec17b60906506",
+      "servedSha256": "0158b178072d0e53c1d26383e9dc8694d328a11f0cbf96fcd82ec17b60906506",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "httpStatus": 200,
+      "expectedSha256": "82af2ba2731bc395b55fd7942a4766ca24dd951080008661529ce8a40653e539",
+      "servedSha256": "82af2ba2731bc395b55fd7942a4766ca24dd951080008661529ce8a40653e539",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "800e882eb4c15a8a4976ff5eb4a0b78ea6fcc0a34829c15847da640be22edd9b",
+      "servedSha256": "800e882eb4c15a8a4976ff5eb4a0b78ea6fcc0a34829c15847da640be22edd9b",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "httpStatus": 200,
+      "expectedSha256": "88a03413b1c56d2b66de5c3039a248be06889e4b414f29f7d71c9400c1df029f",
+      "servedSha256": "88a03413b1c56d2b66de5c3039a248be06889e4b414f29f7d71c9400c1df029f",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/css/styles.8d918fd78e.css",
+      "url": "http://127.0.0.1:8768/spinon/static/css/styles.8d918fd78e.css",
+      "httpStatus": 200,
+      "expectedSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "servedSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/2.1aa8a93d31.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/2.1aa8a93d31.js",
+      "httpStatus": 200,
+      "expectedSha256": "b21acdce969ebad569ff75b046d68b6edf0130a56631a440fb2d22a9258a65fb",
+      "servedSha256": "b21acdce969ebad569ff75b046d68b6edf0130a56631a440fb2d22a9258a65fb",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/2.1aa8a93d31.js.LICENSE.txt",
+      "url": "http://127.0.0.1:8768/spinon/static/js/2.1aa8a93d31.js.LICENSE.txt",
+      "httpStatus": 200,
+      "expectedSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "servedSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/1.9d6d094526.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/1.9d6d094526.js",
+      "httpStatus": 200,
+      "expectedSha256": "d6f6b4dbea1173cbf7c99162893e587afc13cda01fd4e1405d5b780a918b5a72",
+      "servedSha256": "d6f6b4dbea1173cbf7c99162893e587afc13cda01fd4e1405d5b780a918b5a72",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-04bc2c24c122.86aec007f6.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-04bc2c24c122.86aec007f6.js",
+      "httpStatus": 200,
+      "expectedSha256": "757b0389f90ecf891f77222214c3d4d603b8f190c74a68841c1f74965989781a",
+      "servedSha256": "757b0389f90ecf891f77222214c3d4d603b8f190c74a68841c1f74965989781a",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-0f4abc145d07.96e377b35d.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-0f4abc145d07.96e377b35d.js",
+      "httpStatus": 200,
+      "expectedSha256": "d2d3c1492f8efb35b17cfc09a0de2513cd05b0a9c5bf0699efe5d67f0fc9a874",
+      "servedSha256": "d2d3c1492f8efb35b17cfc09a0de2513cd05b0a9c5bf0699efe5d67f0fc9a874",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-107ea9bc59bb.d698652131.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-107ea9bc59bb.d698652131.js",
+      "httpStatus": 200,
+      "expectedSha256": "6eabf5248ad661e986d6db7fa2a8571ee91c08fa383437c5cd7f5a1308af2985",
+      "servedSha256": "6eabf5248ad661e986d6db7fa2a8571ee91c08fa383437c5cd7f5a1308af2985",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-1c606a9bcf5f.5004d069f3.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-1c606a9bcf5f.5004d069f3.js",
+      "httpStatus": 200,
+      "expectedSha256": "1c42471c235fff6d073495a2c2324f14faf52035c4552172dbd3a86add44a7b8",
+      "servedSha256": "1c42471c235fff6d073495a2c2324f14faf52035c4552172dbd3a86add44a7b8",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-2308615ee227.bb3042fc6e.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-2308615ee227.bb3042fc6e.js",
+      "httpStatus": 200,
+      "expectedSha256": "c3d1509815a01a5597c72269f989eabd635e6767b9cf70dc0f6bbfd104885212",
+      "servedSha256": "c3d1509815a01a5597c72269f989eabd635e6767b9cf70dc0f6bbfd104885212",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-311b470225ee.1fdddbead8.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-311b470225ee.1fdddbead8.js",
+      "httpStatus": 200,
+      "expectedSha256": "02fc15dc80a3d178554e042bcbdd85578bd0918ec116097c2ccbe6668c23bd96",
+      "servedSha256": "02fc15dc80a3d178554e042bcbdd85578bd0918ec116097c2ccbe6668c23bd96",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-343e2be2a1e8.4ea8591518.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-343e2be2a1e8.4ea8591518.js",
+      "httpStatus": 200,
+      "expectedSha256": "507bd621f2c71751b4a0e8e331ae0b7d56c3ed84ffd5d7e065678d6e222537fd",
+      "servedSha256": "507bd621f2c71751b4a0e8e331ae0b7d56c3ed84ffd5d7e065678d6e222537fd",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-4665cde077d0.5c95071ff1.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-4665cde077d0.5c95071ff1.js",
+      "httpStatus": 200,
+      "expectedSha256": "70b39cd08f0befc2ae8961ed360e5773f8493faf3a53504974ea50ac62677127",
+      "servedSha256": "70b39cd08f0befc2ae8961ed360e5773f8493faf3a53504974ea50ac62677127",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-5eb92dc32e34.ef091f118c.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-5eb92dc32e34.ef091f118c.js",
+      "httpStatus": 200,
+      "expectedSha256": "cf15976ae3761544570e1c1c38e1da355014b1ee5b74ef900fab591cef9a2bf3",
+      "servedSha256": "cf15976ae3761544570e1c1c38e1da355014b1ee5b74ef900fab591cef9a2bf3",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-6c33a3943990.b1fc24aa5c.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-6c33a3943990.b1fc24aa5c.js",
+      "httpStatus": 200,
+      "expectedSha256": "49c5e03b9f884d566e2d15dbe6be7729f636f818176828a478891ad4079d4d73",
+      "servedSha256": "49c5e03b9f884d566e2d15dbe6be7729f636f818176828a478891ad4079d4d73",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-6e8db818f69d.1b938b7a42.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-6e8db818f69d.1b938b7a42.js",
+      "httpStatus": 200,
+      "expectedSha256": "b6589dd2e24499b3047d96a9c10a200dec689d8f8e72249b3857c144cc5a1be1",
+      "servedSha256": "b6589dd2e24499b3047d96a9c10a200dec689d8f8e72249b3857c144cc5a1be1",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-6fe650616266.86352fd971.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-6fe650616266.86352fd971.js",
+      "httpStatus": 200,
+      "expectedSha256": "0a00b91d8adb4b9aa2d52bbbc6781a52b1ca2950067bbd63e8a9fbb40e413375",
+      "servedSha256": "0a00b91d8adb4b9aa2d52bbbc6781a52b1ca2950067bbd63e8a9fbb40e413375",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-73701410f94e.d153747404.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-73701410f94e.d153747404.js",
+      "httpStatus": 200,
+      "expectedSha256": "031291a4931e4a7bbb24ad1a29425e88beeaf2df1d79c173103705cb50ff4da7",
+      "servedSha256": "031291a4931e4a7bbb24ad1a29425e88beeaf2df1d79c173103705cb50ff4da7",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-7ae5198feb44.b281404c8c.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-7ae5198feb44.b281404c8c.js",
+      "httpStatus": 200,
+      "expectedSha256": "43eb6c3aa49626c5280bf83cbef1d511fa565998ea4f4127141801e54719ee4e",
+      "servedSha256": "43eb6c3aa49626c5280bf83cbef1d511fa565998ea4f4127141801e54719ee4e",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-7b63acbe348a.7e7a4b1a42.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-7b63acbe348a.7e7a4b1a42.js",
+      "httpStatus": 200,
+      "expectedSha256": "3d62aaec4fde5c74a68eacbca5e3c231a05fa4a537787397bdf44161bd145ac3",
+      "servedSha256": "3d62aaec4fde5c74a68eacbca5e3c231a05fa4a537787397bdf44161bd145ac3",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-7ce2535ac56d.85232c1bf7.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-7ce2535ac56d.85232c1bf7.js",
+      "httpStatus": 200,
+      "expectedSha256": "846b0e9657165f30b0b93b5087fc0bf6d3ecd92b0617ed017a60c442e6669dd3",
+      "servedSha256": "846b0e9657165f30b0b93b5087fc0bf6d3ecd92b0617ed017a60c442e6669dd3",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-7f43a109d20e.506ac17d97.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-7f43a109d20e.506ac17d97.js",
+      "httpStatus": 200,
+      "expectedSha256": "55e0e8a1633c2ec325aa091f597c5cb665c12354b72a06ad5977cdf0225d14e3",
+      "servedSha256": "55e0e8a1633c2ec325aa091f597c5cb665c12354b72a06ad5977cdf0225d14e3",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-9e27f397e76b.12ca9be988.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-9e27f397e76b.12ca9be988.js",
+      "httpStatus": 200,
+      "expectedSha256": "9e034fb8c572beeb07f35d95655073ee10a342d74168d242368c03a68b0a0aa6",
+      "servedSha256": "9e034fb8c572beeb07f35d95655073ee10a342d74168d242368c03a68b0a0aa6",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-a1017bdf23ca.9f7ac0e838.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-a1017bdf23ca.9f7ac0e838.js",
+      "httpStatus": 200,
+      "expectedSha256": "6b028ea866e4295da4b07616af6ee01d1fd435f691dd19e29a4a4d4dc24a555f",
+      "servedSha256": "6b028ea866e4295da4b07616af6ee01d1fd435f691dd19e29a4a4d4dc24a555f",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-a991d6de67ad.efc0581923.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-a991d6de67ad.efc0581923.js",
+      "httpStatus": 200,
+      "expectedSha256": "0a0a4c8c8c002c59813edfcf2d8d4c57a665d8983533a35cdb977a702bfe8319",
+      "servedSha256": "0a0a4c8c8c002c59813edfcf2d8d4c57a665d8983533a35cdb977a702bfe8319",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-aea8aafbbb87.8402df5c3f.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-aea8aafbbb87.8402df5c3f.js",
+      "httpStatus": 200,
+      "expectedSha256": "bf2e88c1d8d12987d556696ecd3f96f22d48c00325e3527e7c770e2fe234d1fc",
+      "servedSha256": "bf2e88c1d8d12987d556696ecd3f96f22d48c00325e3527e7c770e2fe234d1fc",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-afc04a26c114.28aed42506.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-afc04a26c114.28aed42506.js",
+      "httpStatus": 200,
+      "expectedSha256": "10c184eef830c5fe1c7140ffcc1775c041ec0e7d903bf03f772628629e0ddc08",
+      "servedSha256": "10c184eef830c5fe1c7140ffcc1775c041ec0e7d903bf03f772628629e0ddc08",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-b33563055168.081cf13555.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-b33563055168.081cf13555.js",
+      "httpStatus": 200,
+      "expectedSha256": "029b47c881d5d7310960a60c1b908f787b3c3862e7058cda5650cda40b073867",
+      "servedSha256": "029b47c881d5d7310960a60c1b908f787b3c3862e7058cda5650cda40b073867",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-c6d90fac6bcd.252e7d59d9.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-c6d90fac6bcd.252e7d59d9.js",
+      "httpStatus": 200,
+      "expectedSha256": "db4c03ab7b8a816fe058a4b6e7840ca27447d539b3dbbb02149b51414fd70d82",
+      "servedSha256": "db4c03ab7b8a816fe058a4b6e7840ca27447d539b3dbbb02149b51414fd70d82",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-c7b1c23e00a1.028cd521df.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-c7b1c23e00a1.028cd521df.js",
+      "httpStatus": 200,
+      "expectedSha256": "5586e8b084be7d713adcf63459457dd49d47757671a89e4fa3eb798abd088f72",
+      "servedSha256": "5586e8b084be7d713adcf63459457dd49d47757671a89e4fa3eb798abd088f72",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-d044253b30b9.b453b24024.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-d044253b30b9.b453b24024.js",
+      "httpStatus": 200,
+      "expectedSha256": "53adb5e9702adb267ac477d7556b19ef05a9579d5e485fe68b961e4b584d3bd8",
+      "servedSha256": "53adb5e9702adb267ac477d7556b19ef05a9579d5e485fe68b961e4b584d3bd8",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-d0f54d53ad2b.9c0481ae8f.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-d0f54d53ad2b.9c0481ae8f.js",
+      "httpStatus": 200,
+      "expectedSha256": "64b1258f80a29e87913455efab85f0eb052ef3eafc87912bcfc22c8442512f3e",
+      "servedSha256": "64b1258f80a29e87913455efab85f0eb052ef3eafc87912bcfc22c8442512f3e",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-de98351b28cb.e94b00e4de.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-de98351b28cb.e94b00e4de.js",
+      "httpStatus": 200,
+      "expectedSha256": "fa8fa1205d13124512db40aaeda92a0719648c47bb52c77ba0d0733b6800df56",
+      "servedSha256": "fa8fa1205d13124512db40aaeda92a0719648c47bb52c77ba0d0733b6800df56",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-e0472d60744a.279ba2d9b7.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-e0472d60744a.279ba2d9b7.js",
+      "httpStatus": 200,
+      "expectedSha256": "023092e4454d5313549a72c326f682f516dac2b36b4dc2b3a9e386b1af6dbea8",
+      "servedSha256": "023092e4454d5313549a72c326f682f516dac2b36b4dc2b3a9e386b1af6dbea8",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-e2d1348b3fb4.212bf22be4.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-e2d1348b3fb4.212bf22be4.js",
+      "httpStatus": 200,
+      "expectedSha256": "1bb43822aa795d99f62d5647430fdfbc127da800fba2e145cdb69b624a6b1b52",
+      "servedSha256": "1bb43822aa795d99f62d5647430fdfbc127da800fba2e145cdb69b624a6b1b52",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-ef6f0445d65c.0efb9d3794.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-ef6f0445d65c.0efb9d3794.js",
+      "httpStatus": 200,
+      "expectedSha256": "087655fcba03486f745a61e859245da1ea1df9ac39650850d40fb891e400c5a4",
+      "servedSha256": "087655fcba03486f745a61e859245da1ea1df9ac39650850d40fb891e400c5a4",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/index.7cff7819a9.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/index.7cff7819a9.js",
+      "httpStatus": 200,
+      "expectedSha256": "4dbc29b893134604f8dbad556f152b242b649f075431dd8e36b2d5b7049b74b4",
+      "servedSha256": "4dbc29b893134604f8dbad556f152b242b649f075431dd8e36b2d5b7049b74b4",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/lib-react.d9aa10f4b0.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/lib-react.d9aa10f4b0.js",
+      "httpStatus": 200,
+      "expectedSha256": "ad3b1fffada69190b9d14bfd2e16a62d31865b2d3de8a5044cb200fa67961cc8",
+      "servedSha256": "ad3b1fffada69190b9d14bfd2e16a62d31865b2d3de8a5044cb200fa67961cc8",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/lib-react.d9aa10f4b0.js.LICENSE.txt",
+      "url": "http://127.0.0.1:8768/spinon/static/js/lib-react.d9aa10f4b0.js.LICENSE.txt",
+      "httpStatus": 200,
+      "expectedSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "servedSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/lib-router.95ea184a3c.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/lib-router.95ea184a3c.js",
+      "httpStatus": 200,
+      "expectedSha256": "71a8993452741417ebd7ac492fa9420ba9172794d33d650e50b8ab5fa71c327e",
+      "servedSha256": "71a8993452741417ebd7ac492fa9420ba9172794d33d650e50b8ab5fa71c327e",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/lib-router.95ea184a3c.js.LICENSE.txt",
+      "url": "http://127.0.0.1:8768/spinon/static/js/lib-router.95ea184a3c.js.LICENSE.txt",
+      "httpStatus": 200,
+      "expectedSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "servedSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/styles.7b0c5651b6.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/styles.7b0c5651b6.js",
+      "httpStatus": 200,
+      "expectedSha256": "4a90f3ba024b9eb4ad9a48173029ba9ca3eae3c00a7741aa19aaad0d828f6749",
+      "servedSha256": "4a90f3ba024b9eb4ad9a48173029ba9ca3eae3c00a7741aa19aaad0d828f6749",
+      "match": true
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/search_index.ko.08955f70.json",
+      "url": "http://127.0.0.1:8768/spinon/static/search_index.ko.08955f70.json",
+      "httpStatus": 200,
+      "expectedSha256": "08955f70875d539a561f1658918aaa6f52fbd78258af8e88eda85f937f266c00",
+      "servedSha256": "08955f70875d539a561f1658918aaa6f52fbd78258af8e88eda85f937f266c00",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "404.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/404.html",
+      "httpStatus": 200,
+      "expectedSha256": "5b8b77e5f59b75ca51b3cff0fc4ef901c13c1e6978ea98b6efae08dc27e84359",
+      "servedSha256": "5b8b77e5f59b75ca51b3cff0fc4ef901c13c1e6978ea98b6efae08dc27e84359",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "README.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "fcedcdd9a5d11c9b67e8ecd591846f8f9b698a15c824459f6878d4cbfad6814c",
+      "servedSha256": "fcedcdd9a5d11c9b67e8ecd591846f8f9b698a15c824459f6878d4cbfad6814c",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "STATUS.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+      "httpStatus": 200,
+      "expectedSha256": "c30f160da23f30be1c9e5681e3fd0e4abab4b710a906ecc3b22cbea02397fc15",
+      "servedSha256": "c30f160da23f30be1c9e5681e3fd0e4abab4b710a906ecc3b22cbea02397fc15",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "api/README.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/api/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "7e2b11e5186cacfb78c950163076c79c5e57c12169e8aff6b390eaad6d8010fe",
+      "servedSha256": "7e2b11e5186cacfb78c950163076c79c5e57c12169e8aff6b390eaad6d8010fe",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "api/index.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/api/index.html",
+      "httpStatus": 200,
+      "expectedSha256": "ba3e44c66118bfa9be7279b352fdb1dc3e52492a1c51a73d65dcba3862bb0f37",
+      "servedSha256": "ba3e44c66118bfa9be7279b352fdb1dc3e52492a1c51a73d65dcba3862bb0f37",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "icon.svg",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/icon.svg",
+      "httpStatus": 200,
+      "expectedSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "servedSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "index.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/index.html",
+      "httpStatus": 200,
+      "expectedSha256": "4c9fde53ea11a642d285f899169f5bb7bd2bc6ede8798f5602a93e5219cca963",
+      "servedSha256": "4c9fde53ea11a642d285f899169f5bb7bd2bc6ede8798f5602a93e5219cca963",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/0019-s04-css-layout-gpu-slice.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/0019-s04-css-layout-gpu-slice.html",
+      "httpStatus": 200,
+      "expectedSha256": "759c556578a9a7c6e9f9629c42c00c7aa002ed16f125fc52f36ba24490526187",
+      "servedSha256": "759c556578a9a7c6e9f9629c42c00c7aa002ed16f125fc52f36ba24490526187",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/0079-s04-10-confirmed-frame-registry.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/0079-s04-10-confirmed-frame-registry.html",
+      "httpStatus": 200,
+      "expectedSha256": "db5ea848264972a997b0d937a3a91f5369cfe15580aeb7bbf9948670b8656446",
+      "servedSha256": "db5ea848264972a997b0d937a3a91f5369cfe15580aeb7bbf9948670b8656446",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/README.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "49ebd096ef60ecd9abf4da930b19c2c4c4a572959b3a7fc9fe167139c96a6f6c",
+      "servedSha256": "49ebd096ef60ecd9abf4da930b19c2c4c4a572959b3a7fc9fe167139c96a6f6c",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "bc96d5bf22c19af47585c92ad83040efd5a474e07bc7203f6315bf192170fa0b",
+      "servedSha256": "bc96d5bf22c19af47585c92ad83040efd5a474e07bc7203f6315bf192170fa0b",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.html",
+      "httpStatus": 200,
+      "expectedSha256": "7e2b522edb2eb8e65733329a5b6e17600c6dca049e95cf61f12ee8ff7c3b51c9",
+      "servedSha256": "7e2b522edb2eb8e65733329a5b6e17600c6dca049e95cf61f12ee8ff7c3b51c9",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html",
+      "httpStatus": 200,
+      "expectedSha256": "f95c683209dcba2f487740bd3af301106f424853f32dd4a1c2e79713b5fd85f0",
+      "servedSha256": "f95c683209dcba2f487740bd3af301106f424853f32dd4a1c2e79713b5fd85f0",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "74b14adb2a0d0a281cc4e23885b65cb31c05bbf7d48138885d8b4a59e24a5ad1",
+      "servedSha256": "74b14adb2a0d0a281cc4e23885b65cb31c05bbf7d48138885d8b4a59e24a5ad1",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "httpStatus": 200,
+      "expectedSha256": "2292dd2cc237b745e0fb659c1b26d7918eaef3ce6dce4c17f0cd5d03f6b9967c",
+      "servedSha256": "2292dd2cc237b745e0fb659c1b26d7918eaef3ce6dce4c17f0cd5d03f6b9967c",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "httpStatus": 200,
+      "expectedSha256": "3122dc284fe9189bcfae35e9ddfd8105a8d57f9a715642ff70524f6e2d5da9e6",
+      "servedSha256": "3122dc284fe9189bcfae35e9ddfd8105a8d57f9a715642ff70524f6e2d5da9e6",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "httpStatus": 200,
+      "expectedSha256": "990c8c5997505e9694e75cad3f58827e347ba91fbd14bd3e64f0c5707bfcaad0",
+      "servedSha256": "990c8c5997505e9694e75cad3f58827e347ba91fbd14bd3e64f0c5707bfcaad0",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "677e9dc047578acb1b6e1f64e4082f1fb9f04c52da3c65a2835e378cea1b1450",
+      "servedSha256": "677e9dc047578acb1b6e1f64e4082f1fb9f04c52da3c65a2835e378cea1b1450",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/README.md",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/README.md",
+      "httpStatus": 200,
+      "expectedSha256": "de77ddb0f126a4d55a7a614d9e3deaafca5520c64bb41611fbad870dea96cf85",
+      "servedSha256": "de77ddb0f126a4d55a7a614d9e3deaafca5520c64bb41611fbad870dea96cf85",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/agent-browser-network.log",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/agent-browser-network.log",
+      "httpStatus": 200,
+      "expectedSha256": "0135859ef58e4a5885cd306540d49d1c0738f97f3a79bddaa79b490b84fe6fb7",
+      "servedSha256": "0135859ef58e4a5885cd306540d49d1c0738f97f3a79bddaa79b490b84fe6fb7",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/backup-verification.json",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/backup-verification.json",
+      "httpStatus": 200,
+      "expectedSha256": "6c3aab31660d8bb0495456a58e46527871143250500a4573ddccdde52edf22bb",
+      "servedSha256": "6c3aab31660d8bb0495456a58e46527871143250500a4573ddccdde52edf22bb",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/browser-verification.json",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/browser-verification.json",
+      "httpStatus": 200,
+      "expectedSha256": "6fd695ffd6233c7b95f6514ac2da508ca2f07fb41cc1ce091ced9f343bd614e6",
+      "servedSha256": "6fd695ffd6233c7b95f6514ac2da508ca2f07fb41cc1ce091ced9f343bd614e6",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/copy-verification.json",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/copy-verification.json",
+      "httpStatus": 200,
+      "expectedSha256": "de9abd5c08d3e873e47e591e2d3022fa016756b6676badaa5ce9d82ee5ffc087",
+      "servedSha256": "de9abd5c08d3e873e47e591e2d3022fa016756b6676badaa5ce9d82ee5ffc087",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/manifest.json",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/manifest.json",
+      "httpStatus": 200,
+      "expectedSha256": "7aa9ea5e1e2eb56c72555b744bd1da53492d5be6e1e5007c54b326f6e65f34dd",
+      "servedSha256": "7aa9ea5e1e2eb56c72555b744bd1da53492d5be6e1e5007c54b326f6e65f34dd",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "httpStatus": 200,
+      "expectedSha256": "4a5dd8a9cd33f2ed7822f36825c5a28f567e31553b3faa1abe07cfa15a30ae8b",
+      "servedSha256": "4a5dd8a9cd33f2ed7822f36825c5a28f567e31553b3faa1abe07cfa15a30ae8b",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.md",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.md",
+      "httpStatus": 200,
+      "expectedSha256": "2c0aa72655cf2f0c7d1e3c5112ba204dc6d85578437b3e732c916a58691acdc7",
+      "servedSha256": "2c0aa72655cf2f0c7d1e3c5112ba204dc6d85578437b3e732c916a58691acdc7",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/preflight.json",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/preflight.json",
+      "httpStatus": 200,
+      "expectedSha256": "81ba5f6944dd573b824cc6d0cc0692e649c08f801438e106dec9a65bd2f6ccf3",
+      "servedSha256": "81ba5f6944dd573b824cc6d0cc0692e649c08f801438e106dec9a65bd2f6ccf3",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/selected-build.log",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/selected-build.log",
+      "httpStatus": 200,
+      "expectedSha256": "31c0f5e612f93a1765b938a7658540fe723cd1443521c3831bb2ce55df287335",
+      "servedSha256": "31c0f5e612f93a1765b938a7658540fe723cd1443521c3831bb2ce55df287335",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/served-verification.json",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/served-verification.json",
+      "httpStatus": 200,
+      "expectedSha256": "8855da9a2a79af535675d47e395eb7a21a145115aa18eaa5571e6ed3d00baf23",
+      "servedSha256": "8855da9a2a79af535675d47e395eb7a21a145115aa18eaa5571e6ed3d00baf23",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-evidence-agent-browser.png",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-evidence-agent-browser.png",
+      "httpStatus": 200,
+      "expectedSha256": "5b0bfc4b60e15ed83579d16c6267cb7ba0a55dff99eac4d56dc2d2bb40a67eaf",
+      "servedSha256": "5b0bfc4b60e15ed83579d16c6267cb7ba0a55dff99eac4d56dc2d2bb40a67eaf",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-roadmap-agent-browser.png",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-roadmap-agent-browser.png",
+      "httpStatus": 200,
+      "expectedSha256": "e9c223e4d240793620d52df790df45adace0f0029dfcb669fb0e5ca30721ebcc",
+      "servedSha256": "e9c223e4d240793620d52df790df45adace0f0029dfcb669fb0e5ca30721ebcc",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-status-agent-browser.png",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-status-agent-browser.png",
+      "httpStatus": 200,
+      "expectedSha256": "845ceab93a62a65f71c5a1f087c1647066e58165a6e3e64a453b88613f1881b7",
+      "servedSha256": "845ceab93a62a65f71c5a1f087c1647066e58165a6e3e64a453b88613f1881b7",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "logo.svg",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/logo.svg",
+      "httpStatus": 200,
+      "expectedSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "servedSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "plan/s04-10-presented-frame-gate.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/s04-10-presented-frame-gate.html",
+      "httpStatus": 200,
+      "expectedSha256": "3aede976ec507e73f23c561c0fd503615588757795b156e4300f757fbba3ae56",
+      "servedSha256": "3aede976ec507e73f23c561c0fd503615588757795b156e4300f757fbba3ae56",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "plan/s04-10-presented-frame-gate.md",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/s04-10-presented-frame-gate.md",
+      "httpStatus": 200,
+      "expectedSha256": "e89960d31a3993320829926321ab98928599ca49f92102e88ab34fefa441b994",
+      "servedSha256": "e89960d31a3993320829926321ab98928599ca49f92102e88ab34fefa441b994",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "roadmap.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "httpStatus": 200,
+      "expectedSha256": "24b25b60917c256e39ae08e8554420afa2498e28a1e4d2a26283bbab3d5cfb97",
+      "servedSha256": "24b25b60917c256e39ae08e8554420afa2498e28a1e4d2a26283bbab3d5cfb97",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/STATUS.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/STATUS.html",
+      "httpStatus": 200,
+      "expectedSha256": "b07b9b2925f9a6f83cac71da3688de935c326bf39e51c7a56f5a64ba39e8d09a",
+      "servedSha256": "b07b9b2925f9a6f83cac71da3688de935c326bf39e51c7a56f5a64ba39e8d09a",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/STATUS.md",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/STATUS.md",
+      "httpStatus": 200,
+      "expectedSha256": "00274a22e7178e5a193fa7e6fa77f8447e90d7da3623742129abcd9d00e061f4",
+      "servedSha256": "00274a22e7178e5a193fa7e6fa77f8447e90d7da3623742129abcd9d00e061f4",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/0019-s04-css-layout-gpu-slice.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/0019-s04-css-layout-gpu-slice.html",
+      "httpStatus": 200,
+      "expectedSha256": "cff2ea996cb2bd00d36d32a8c52c411dc9a98960b51079468f29166a1d43b8cd",
+      "servedSha256": "cff2ea996cb2bd00d36d32a8c52c411dc9a98960b51079468f29166a1d43b8cd",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/0079-s04-10-confirmed-frame-registry.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/0079-s04-10-confirmed-frame-registry.html",
+      "httpStatus": 200,
+      "expectedSha256": "92d386a6785668d10eddcc0d3d34f3ebf2973bc9a93195d6895f46dd3f2470b1",
+      "servedSha256": "92d386a6785668d10eddcc0d3d34f3ebf2973bc9a93195d6895f46dd3f2470b1",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/README.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "1a8ec4b1da6304e0580fb66afd172efb6651ab173803c681341e5c6f628ca1cb",
+      "servedSha256": "1a8ec4b1da6304e0580fb66afd172efb6651ab173803c681341e5c6f628ca1cb",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/README.md",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/README.md",
+      "httpStatus": 200,
+      "expectedSha256": "2e1739504a75b66d6159ee4da02daff5f2fefa38a792694a40815478202304d0",
+      "servedSha256": "2e1739504a75b66d6159ee4da02daff5f2fefa38a792694a40815478202304d0",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/Info.plist",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/Info.plist",
+      "httpStatus": 200,
+      "expectedSha256": "18d6fa164951c16b8f238a4083d5f68b394890273762c99b2ff1ebe2fc2ec838",
+      "servedSha256": "18d6fa164951c16b8f238a4083d5f68b394890273762c99b2ff1ebe2fc2ec838",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "28869057d3d09fe94b6bfc92f571ff399da41d70380b1124e7030b0f87e1648f",
+      "servedSha256": "28869057d3d09fe94b6bfc92f571ff399da41d70380b1124e7030b0f87e1648f",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.md",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.md",
+      "httpStatus": 200,
+      "expectedSha256": "4946174e7846f48d28a355ff1280f2fa95bd11da30478cea2e4635e14f107eff",
+      "servedSha256": "4946174e7846f48d28a355ff1280f2fa95bd11da30478cea2e4635e14f107eff",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/metal-api-probe.swift",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/metal-api-probe.swift",
+      "httpStatus": 200,
+      "expectedSha256": "ec22901e6ebf4f73356271a1d9879a63f3b499f6389dabdd1960b8cd5ac552a0",
+      "servedSha256": "ec22901e6ebf4f73356271a1d9879a63f3b499f6389dabdd1960b8cd5ac552a0",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.html",
+      "httpStatus": 200,
+      "expectedSha256": "e9349282c48dbb0946a39c4374da8ef193b48a8ac6736f4f7f54b5753c7cf31e",
+      "servedSha256": "e9349282c48dbb0946a39c4374da8ef193b48a8ac6736f4f7f54b5753c7cf31e",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.md",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.md",
+      "httpStatus": 200,
+      "expectedSha256": "6522a07ac3bdd83b8f3ad6a84fdad38479017f149640b5c8ae3c3d52c5c34019",
+      "servedSha256": "6522a07ac3bdd83b8f3ad6a84fdad38479017f149640b5c8ae3c3d52c5c34019",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/selected-build.log",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/selected-build.log",
+      "httpStatus": 200,
+      "expectedSha256": "2b5c5f1b3b2ab257f62a7c0f78a42204b7bc1f5cfbe058cb660119eb3fd93f3c",
+      "servedSha256": "2b5c5f1b3b2ab257f62a7c0f78a42204b7bc1f5cfbe058cb660119eb3fd93f3c",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/simulator-runtime.log",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/simulator-runtime.log",
+      "httpStatus": 200,
+      "expectedSha256": "b912d0ae4d63d929e07ab1d9a11c4044e2cf9df75843f326988cbd7ebdf65ae9",
+      "servedSha256": "b912d0ae4d63d929e07ab1d9a11c4044e2cf9df75843f326988cbd7ebdf65ae9",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/simulator-selector-probe.m",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/simulator-selector-probe.m",
+      "httpStatus": 200,
+      "expectedSha256": "6a932cfbb8fbd2c59f7369456d65bb52fdf1bcdf333816015bf788bf70983da7",
+      "servedSha256": "6a932cfbb8fbd2c59f7369456d65bb52fdf1bcdf333816015bf788bf70983da7",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html",
+      "httpStatus": 200,
+      "expectedSha256": "6d9bd6b6245f06da290c9af70dc079bb9e880de6047f167753635d1b0a61f464",
+      "servedSha256": "6d9bd6b6245f06da290c9af70dc079bb9e880de6047f167753635d1b0a61f464",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.md",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.md",
+      "httpStatus": 200,
+      "expectedSha256": "c741a3774d1e13d68cbf682e4a71334e9f5605249fdda5cefa263467b6e86e68",
+      "servedSha256": "c741a3774d1e13d68cbf682e4a71334e9f5605249fdda5cefa263467b6e86e68",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "09929268be5ee4831a2665aeae225d79ee4b8ee38efbcb99925ecad06b38bd85",
+      "servedSha256": "09929268be5ee4831a2665aeae225d79ee4b8ee38efbcb99925ecad06b38bd85",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "httpStatus": 200,
+      "expectedSha256": "092915e428484e22ade5640ba37ad8052c40c4f0847f798c3aa4bc0dc4e238d2",
+      "servedSha256": "092915e428484e22ade5640ba37ad8052c40c4f0847f798c3aa4bc0dc4e238d2",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "httpStatus": 200,
+      "expectedSha256": "0158b178072d0e53c1d26383e9dc8694d328a11f0cbf96fcd82ec17b60906506",
+      "servedSha256": "0158b178072d0e53c1d26383e9dc8694d328a11f0cbf96fcd82ec17b60906506",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "httpStatus": 200,
+      "expectedSha256": "82af2ba2731bc395b55fd7942a4766ca24dd951080008661529ce8a40653e539",
+      "servedSha256": "82af2ba2731bc395b55fd7942a4766ca24dd951080008661529ce8a40653e539",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "800e882eb4c15a8a4976ff5eb4a0b78ea6fcc0a34829c15847da640be22edd9b",
+      "servedSha256": "800e882eb4c15a8a4976ff5eb4a0b78ea6fcc0a34829c15847da640be22edd9b",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "httpStatus": 200,
+      "expectedSha256": "88a03413b1c56d2b66de5c3039a248be06889e4b414f29f7d71c9400c1df029f",
+      "servedSha256": "88a03413b1c56d2b66de5c3039a248be06889e4b414f29f7d71c9400c1df029f",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/css/styles.8d918fd78e.css",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/css/styles.8d918fd78e.css",
+      "httpStatus": 200,
+      "expectedSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "servedSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/2.1aa8a93d31.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/2.1aa8a93d31.js",
+      "httpStatus": 200,
+      "expectedSha256": "b21acdce969ebad569ff75b046d68b6edf0130a56631a440fb2d22a9258a65fb",
+      "servedSha256": "b21acdce969ebad569ff75b046d68b6edf0130a56631a440fb2d22a9258a65fb",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/2.1aa8a93d31.js.LICENSE.txt",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/2.1aa8a93d31.js.LICENSE.txt",
+      "httpStatus": 200,
+      "expectedSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "servedSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/1.9d6d094526.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/1.9d6d094526.js",
+      "httpStatus": 200,
+      "expectedSha256": "d6f6b4dbea1173cbf7c99162893e587afc13cda01fd4e1405d5b780a918b5a72",
+      "servedSha256": "d6f6b4dbea1173cbf7c99162893e587afc13cda01fd4e1405d5b780a918b5a72",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-04bc2c24c122.86aec007f6.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-04bc2c24c122.86aec007f6.js",
+      "httpStatus": 200,
+      "expectedSha256": "757b0389f90ecf891f77222214c3d4d603b8f190c74a68841c1f74965989781a",
+      "servedSha256": "757b0389f90ecf891f77222214c3d4d603b8f190c74a68841c1f74965989781a",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-0f4abc145d07.96e377b35d.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-0f4abc145d07.96e377b35d.js",
+      "httpStatus": 200,
+      "expectedSha256": "d2d3c1492f8efb35b17cfc09a0de2513cd05b0a9c5bf0699efe5d67f0fc9a874",
+      "servedSha256": "d2d3c1492f8efb35b17cfc09a0de2513cd05b0a9c5bf0699efe5d67f0fc9a874",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-107ea9bc59bb.d698652131.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-107ea9bc59bb.d698652131.js",
+      "httpStatus": 200,
+      "expectedSha256": "6eabf5248ad661e986d6db7fa2a8571ee91c08fa383437c5cd7f5a1308af2985",
+      "servedSha256": "6eabf5248ad661e986d6db7fa2a8571ee91c08fa383437c5cd7f5a1308af2985",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-1c606a9bcf5f.5004d069f3.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-1c606a9bcf5f.5004d069f3.js",
+      "httpStatus": 200,
+      "expectedSha256": "1c42471c235fff6d073495a2c2324f14faf52035c4552172dbd3a86add44a7b8",
+      "servedSha256": "1c42471c235fff6d073495a2c2324f14faf52035c4552172dbd3a86add44a7b8",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-2308615ee227.bb3042fc6e.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-2308615ee227.bb3042fc6e.js",
+      "httpStatus": 200,
+      "expectedSha256": "c3d1509815a01a5597c72269f989eabd635e6767b9cf70dc0f6bbfd104885212",
+      "servedSha256": "c3d1509815a01a5597c72269f989eabd635e6767b9cf70dc0f6bbfd104885212",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-311b470225ee.1fdddbead8.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-311b470225ee.1fdddbead8.js",
+      "httpStatus": 200,
+      "expectedSha256": "02fc15dc80a3d178554e042bcbdd85578bd0918ec116097c2ccbe6668c23bd96",
+      "servedSha256": "02fc15dc80a3d178554e042bcbdd85578bd0918ec116097c2ccbe6668c23bd96",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-343e2be2a1e8.4ea8591518.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-343e2be2a1e8.4ea8591518.js",
+      "httpStatus": 200,
+      "expectedSha256": "507bd621f2c71751b4a0e8e331ae0b7d56c3ed84ffd5d7e065678d6e222537fd",
+      "servedSha256": "507bd621f2c71751b4a0e8e331ae0b7d56c3ed84ffd5d7e065678d6e222537fd",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-4665cde077d0.5c95071ff1.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-4665cde077d0.5c95071ff1.js",
+      "httpStatus": 200,
+      "expectedSha256": "70b39cd08f0befc2ae8961ed360e5773f8493faf3a53504974ea50ac62677127",
+      "servedSha256": "70b39cd08f0befc2ae8961ed360e5773f8493faf3a53504974ea50ac62677127",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-5eb92dc32e34.ef091f118c.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-5eb92dc32e34.ef091f118c.js",
+      "httpStatus": 200,
+      "expectedSha256": "cf15976ae3761544570e1c1c38e1da355014b1ee5b74ef900fab591cef9a2bf3",
+      "servedSha256": "cf15976ae3761544570e1c1c38e1da355014b1ee5b74ef900fab591cef9a2bf3",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-6c33a3943990.b1fc24aa5c.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-6c33a3943990.b1fc24aa5c.js",
+      "httpStatus": 200,
+      "expectedSha256": "49c5e03b9f884d566e2d15dbe6be7729f636f818176828a478891ad4079d4d73",
+      "servedSha256": "49c5e03b9f884d566e2d15dbe6be7729f636f818176828a478891ad4079d4d73",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-6e8db818f69d.1b938b7a42.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-6e8db818f69d.1b938b7a42.js",
+      "httpStatus": 200,
+      "expectedSha256": "b6589dd2e24499b3047d96a9c10a200dec689d8f8e72249b3857c144cc5a1be1",
+      "servedSha256": "b6589dd2e24499b3047d96a9c10a200dec689d8f8e72249b3857c144cc5a1be1",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-6fe650616266.86352fd971.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-6fe650616266.86352fd971.js",
+      "httpStatus": 200,
+      "expectedSha256": "0a00b91d8adb4b9aa2d52bbbc6781a52b1ca2950067bbd63e8a9fbb40e413375",
+      "servedSha256": "0a00b91d8adb4b9aa2d52bbbc6781a52b1ca2950067bbd63e8a9fbb40e413375",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-73701410f94e.d153747404.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-73701410f94e.d153747404.js",
+      "httpStatus": 200,
+      "expectedSha256": "031291a4931e4a7bbb24ad1a29425e88beeaf2df1d79c173103705cb50ff4da7",
+      "servedSha256": "031291a4931e4a7bbb24ad1a29425e88beeaf2df1d79c173103705cb50ff4da7",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-7ae5198feb44.b281404c8c.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-7ae5198feb44.b281404c8c.js",
+      "httpStatus": 200,
+      "expectedSha256": "43eb6c3aa49626c5280bf83cbef1d511fa565998ea4f4127141801e54719ee4e",
+      "servedSha256": "43eb6c3aa49626c5280bf83cbef1d511fa565998ea4f4127141801e54719ee4e",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-7b63acbe348a.7e7a4b1a42.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-7b63acbe348a.7e7a4b1a42.js",
+      "httpStatus": 200,
+      "expectedSha256": "3d62aaec4fde5c74a68eacbca5e3c231a05fa4a537787397bdf44161bd145ac3",
+      "servedSha256": "3d62aaec4fde5c74a68eacbca5e3c231a05fa4a537787397bdf44161bd145ac3",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-7ce2535ac56d.85232c1bf7.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-7ce2535ac56d.85232c1bf7.js",
+      "httpStatus": 200,
+      "expectedSha256": "846b0e9657165f30b0b93b5087fc0bf6d3ecd92b0617ed017a60c442e6669dd3",
+      "servedSha256": "846b0e9657165f30b0b93b5087fc0bf6d3ecd92b0617ed017a60c442e6669dd3",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-7f43a109d20e.506ac17d97.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-7f43a109d20e.506ac17d97.js",
+      "httpStatus": 200,
+      "expectedSha256": "55e0e8a1633c2ec325aa091f597c5cb665c12354b72a06ad5977cdf0225d14e3",
+      "servedSha256": "55e0e8a1633c2ec325aa091f597c5cb665c12354b72a06ad5977cdf0225d14e3",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-9e27f397e76b.12ca9be988.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-9e27f397e76b.12ca9be988.js",
+      "httpStatus": 200,
+      "expectedSha256": "9e034fb8c572beeb07f35d95655073ee10a342d74168d242368c03a68b0a0aa6",
+      "servedSha256": "9e034fb8c572beeb07f35d95655073ee10a342d74168d242368c03a68b0a0aa6",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-a1017bdf23ca.9f7ac0e838.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-a1017bdf23ca.9f7ac0e838.js",
+      "httpStatus": 200,
+      "expectedSha256": "6b028ea866e4295da4b07616af6ee01d1fd435f691dd19e29a4a4d4dc24a555f",
+      "servedSha256": "6b028ea866e4295da4b07616af6ee01d1fd435f691dd19e29a4a4d4dc24a555f",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-a991d6de67ad.efc0581923.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-a991d6de67ad.efc0581923.js",
+      "httpStatus": 200,
+      "expectedSha256": "0a0a4c8c8c002c59813edfcf2d8d4c57a665d8983533a35cdb977a702bfe8319",
+      "servedSha256": "0a0a4c8c8c002c59813edfcf2d8d4c57a665d8983533a35cdb977a702bfe8319",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-aea8aafbbb87.8402df5c3f.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-aea8aafbbb87.8402df5c3f.js",
+      "httpStatus": 200,
+      "expectedSha256": "bf2e88c1d8d12987d556696ecd3f96f22d48c00325e3527e7c770e2fe234d1fc",
+      "servedSha256": "bf2e88c1d8d12987d556696ecd3f96f22d48c00325e3527e7c770e2fe234d1fc",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-afc04a26c114.28aed42506.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-afc04a26c114.28aed42506.js",
+      "httpStatus": 200,
+      "expectedSha256": "10c184eef830c5fe1c7140ffcc1775c041ec0e7d903bf03f772628629e0ddc08",
+      "servedSha256": "10c184eef830c5fe1c7140ffcc1775c041ec0e7d903bf03f772628629e0ddc08",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-b33563055168.081cf13555.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-b33563055168.081cf13555.js",
+      "httpStatus": 200,
+      "expectedSha256": "029b47c881d5d7310960a60c1b908f787b3c3862e7058cda5650cda40b073867",
+      "servedSha256": "029b47c881d5d7310960a60c1b908f787b3c3862e7058cda5650cda40b073867",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-c6d90fac6bcd.252e7d59d9.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-c6d90fac6bcd.252e7d59d9.js",
+      "httpStatus": 200,
+      "expectedSha256": "db4c03ab7b8a816fe058a4b6e7840ca27447d539b3dbbb02149b51414fd70d82",
+      "servedSha256": "db4c03ab7b8a816fe058a4b6e7840ca27447d539b3dbbb02149b51414fd70d82",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-c7b1c23e00a1.028cd521df.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-c7b1c23e00a1.028cd521df.js",
+      "httpStatus": 200,
+      "expectedSha256": "5586e8b084be7d713adcf63459457dd49d47757671a89e4fa3eb798abd088f72",
+      "servedSha256": "5586e8b084be7d713adcf63459457dd49d47757671a89e4fa3eb798abd088f72",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-d044253b30b9.b453b24024.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-d044253b30b9.b453b24024.js",
+      "httpStatus": 200,
+      "expectedSha256": "53adb5e9702adb267ac477d7556b19ef05a9579d5e485fe68b961e4b584d3bd8",
+      "servedSha256": "53adb5e9702adb267ac477d7556b19ef05a9579d5e485fe68b961e4b584d3bd8",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-d0f54d53ad2b.9c0481ae8f.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-d0f54d53ad2b.9c0481ae8f.js",
+      "httpStatus": 200,
+      "expectedSha256": "64b1258f80a29e87913455efab85f0eb052ef3eafc87912bcfc22c8442512f3e",
+      "servedSha256": "64b1258f80a29e87913455efab85f0eb052ef3eafc87912bcfc22c8442512f3e",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-de98351b28cb.e94b00e4de.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-de98351b28cb.e94b00e4de.js",
+      "httpStatus": 200,
+      "expectedSha256": "fa8fa1205d13124512db40aaeda92a0719648c47bb52c77ba0d0733b6800df56",
+      "servedSha256": "fa8fa1205d13124512db40aaeda92a0719648c47bb52c77ba0d0733b6800df56",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-e0472d60744a.279ba2d9b7.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-e0472d60744a.279ba2d9b7.js",
+      "httpStatus": 200,
+      "expectedSha256": "023092e4454d5313549a72c326f682f516dac2b36b4dc2b3a9e386b1af6dbea8",
+      "servedSha256": "023092e4454d5313549a72c326f682f516dac2b36b4dc2b3a9e386b1af6dbea8",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-e2d1348b3fb4.212bf22be4.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-e2d1348b3fb4.212bf22be4.js",
+      "httpStatus": 200,
+      "expectedSha256": "1bb43822aa795d99f62d5647430fdfbc127da800fba2e145cdb69b624a6b1b52",
+      "servedSha256": "1bb43822aa795d99f62d5647430fdfbc127da800fba2e145cdb69b624a6b1b52",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-ef6f0445d65c.0efb9d3794.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-ef6f0445d65c.0efb9d3794.js",
+      "httpStatus": 200,
+      "expectedSha256": "087655fcba03486f745a61e859245da1ea1df9ac39650850d40fb891e400c5a4",
+      "servedSha256": "087655fcba03486f745a61e859245da1ea1df9ac39650850d40fb891e400c5a4",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/index.7cff7819a9.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/index.7cff7819a9.js",
+      "httpStatus": 200,
+      "expectedSha256": "4dbc29b893134604f8dbad556f152b242b649f075431dd8e36b2d5b7049b74b4",
+      "servedSha256": "4dbc29b893134604f8dbad556f152b242b649f075431dd8e36b2d5b7049b74b4",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/lib-react.d9aa10f4b0.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/lib-react.d9aa10f4b0.js",
+      "httpStatus": 200,
+      "expectedSha256": "ad3b1fffada69190b9d14bfd2e16a62d31865b2d3de8a5044cb200fa67961cc8",
+      "servedSha256": "ad3b1fffada69190b9d14bfd2e16a62d31865b2d3de8a5044cb200fa67961cc8",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/lib-react.d9aa10f4b0.js.LICENSE.txt",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/lib-react.d9aa10f4b0.js.LICENSE.txt",
+      "httpStatus": 200,
+      "expectedSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "servedSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/lib-router.95ea184a3c.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/lib-router.95ea184a3c.js",
+      "httpStatus": 200,
+      "expectedSha256": "71a8993452741417ebd7ac492fa9420ba9172794d33d650e50b8ab5fa71c327e",
+      "servedSha256": "71a8993452741417ebd7ac492fa9420ba9172794d33d650e50b8ab5fa71c327e",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/lib-router.95ea184a3c.js.LICENSE.txt",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/lib-router.95ea184a3c.js.LICENSE.txt",
+      "httpStatus": 200,
+      "expectedSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "servedSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/styles.7b0c5651b6.js",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/styles.7b0c5651b6.js",
+      "httpStatus": 200,
+      "expectedSha256": "4a90f3ba024b9eb4ad9a48173029ba9ca3eae3c00a7741aa19aaad0d828f6749",
+      "servedSha256": "4a90f3ba024b9eb4ad9a48173029ba9ca3eae3c00a7741aa19aaad0d828f6749",
+      "match": true
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/search_index.ko.08955f70.json",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/search_index.ko.08955f70.json",
+      "httpStatus": 200,
+      "expectedSha256": "08955f70875d539a561f1658918aaa6f52fbd78258af8e88eda85f937f266c00",
+      "servedSha256": "08955f70875d539a561f1658918aaa6f52fbd78258af8e88eda85f937f266c00",
+      "match": true
+    }
+  ]
+}

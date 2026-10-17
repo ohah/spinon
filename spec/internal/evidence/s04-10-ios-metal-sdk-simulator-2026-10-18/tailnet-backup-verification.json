@@ -1,0 +1,206 @@
+{
+  "createdAt": "2026-10-17T22:12:18.217451+00:00",
+  "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+  "backupCount": 33,
+  "verification": "all backups match pre-write target SHA-256 hashes",
+  "files": [
+    {
+      "targetRelative": "404.html",
+      "backupRelative": "404.html",
+      "sha256": "c184130fdb79ee35d261819721f5d72b7ee9169f8f2ea376165d5f9c24f963ff",
+      "bytes": 9110
+    },
+    {
+      "targetRelative": "README.html",
+      "backupRelative": "README.html",
+      "sha256": "3958110fb32e9a5e09cc87c23aebeefcf4c6298ca9037dda9191406b6a9a64b8",
+      "bytes": 21371
+    },
+    {
+      "targetRelative": "STATUS.html",
+      "backupRelative": "STATUS.html",
+      "sha256": "234dbf7a304d9a4e68d53953a17283a8fa424ce12aa54669c94090ac98038a88",
+      "bytes": 351105
+    },
+    {
+      "targetRelative": "api/README.html",
+      "backupRelative": "api/README.html",
+      "sha256": "b58afa91fe70d1264e5aa66f994d1f38f5d821684bdcd6c0894f70e358295749",
+      "bytes": 16631
+    },
+    {
+      "targetRelative": "api/index.html",
+      "backupRelative": "api/index.html",
+      "sha256": "1ce75412f42b1978699915e55faee275fd020ca4e44df6eba41963c10816ea6d",
+      "bytes": 17554
+    },
+    {
+      "targetRelative": "index.html",
+      "backupRelative": "index.html",
+      "sha256": "90956945743c618ea8bae7c0ff009008faef52817d99049d9720f32e5c364d49",
+      "bytes": 12425
+    },
+    {
+      "targetRelative": "internal/0019-s04-css-layout-gpu-slice.html",
+      "backupRelative": "internal/0019-s04-css-layout-gpu-slice.html",
+      "sha256": "bea692b9035b800c9408c75610210a12ce4d75ab45b4dffe5fe282ea213d037d",
+      "bytes": 91180
+    },
+    {
+      "targetRelative": "internal/0079-s04-10-confirmed-frame-registry.html",
+      "backupRelative": "internal/0079-s04-10-confirmed-frame-registry.html",
+      "sha256": "0e7f4ae58d0fcf104364df2b69c83bfeeb30948c1be5d43d4a88def58682bab8",
+      "bytes": 21661
+    },
+    {
+      "targetRelative": "internal/README.html",
+      "backupRelative": "internal/README.html",
+      "sha256": "2b159a479caceb6ad35770b56c9fb92932aaaad056c0f5f65c6f2706ec14dd28",
+      "bytes": 161499
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html",
+      "backupRelative": "internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html",
+      "sha256": "02109223a8560a6054e99993c1c60ac8d9fb2ff1575103a11bce407212f45fc1",
+      "bytes": 44196
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "backupRelative": "internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "sha256": "6606ada0e2e514692537ce1474b87e4ed4d7384da73ef87299a3694b8dafc2e5",
+      "bytes": 18186
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "backupRelative": "internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "sha256": "2cd28a29494b1d71198db293a2530dfd239bfc48f3bacd953a7b9c5d8deb85da",
+      "bytes": 22924
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "backupRelative": "internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "sha256": "02f0d33809bc62ce077d2600685e2870702c64377a3c7da70c16e3ca789cea74",
+      "bytes": 21956
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "backupRelative": "internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "sha256": "a426dbcb725f8316eb26629f4ced392c33d22ebc381748beba52b8039642e72d",
+      "bytes": 23117
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "backupRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "sha256": "86f838a055274502768bb6ff03ae015634a2c41a37181edb9a37528ddabc3d7e",
+      "bytes": 19665
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "backupRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "sha256": "8361a3a5599acb22c0b13eec6dc06c2b351ffa43a989719acfb57dc04cef5c11",
+      "bytes": 20566
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/selected-build.log",
+      "backupRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/selected-build.log",
+      "sha256": "63abcf6aaa03fe4ddb409723474090b0b1a421affb04f3edf8f5317bf1cb7275",
+      "bytes": 8126
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-evidence-agent-browser.png",
+      "backupRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-evidence-agent-browser.png",
+      "sha256": "f088b0ae0e705a0ebe84d9995e9a0dab29d8cb80f348d5ff84a27b5e811fd110",
+      "bytes": 96269
+    },
+    {
+      "targetRelative": "plan/s04-10-presented-frame-gate.html",
+      "backupRelative": "plan/s04-10-presented-frame-gate.html",
+      "sha256": "18820cdc86147165fd3f411b3699a47607c7034b17498c95a2a1a7f5fd9fc042",
+      "bytes": 24317
+    },
+    {
+      "targetRelative": "spec/STATUS.html",
+      "backupRelative": "spec/STATUS.html",
+      "sha256": "ce4a87db089afd5a443ae420749c8223a4718189ae0bf883fccc3128d4059d29",
+      "bytes": 350657
+    },
+    {
+      "targetRelative": "spec/internal/0019-s04-css-layout-gpu-slice.html",
+      "backupRelative": "spec/internal/0019-s04-css-layout-gpu-slice.html",
+      "sha256": "310d095e9558904a92962aef391874fb819e0a165329115a28a092afa52c621f",
+      "bytes": 91186
+    },
+    {
+      "targetRelative": "spec/internal/0079-s04-10-confirmed-frame-registry.html",
+      "backupRelative": "spec/internal/0079-s04-10-confirmed-frame-registry.html",
+      "sha256": "4ac0e7ec518bd62cb28c44e6b283c44517eef968408df1070ab46069ee9e2ad8",
+      "bytes": 21671
+    },
+    {
+      "targetRelative": "spec/internal/README.html",
+      "backupRelative": "spec/internal/README.html",
+      "sha256": "122f4c37c79d4c0303183f0de84848f7a51ca15db74fe2f2cc33ab2ffbf456d2",
+      "bytes": 161546
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "backupRelative": "spec/internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "sha256": "0a02583b2accbe73b3f784da330987e236f27e1242f602004790426eac47fe36",
+      "bytes": 18194
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "backupRelative": "spec/internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "sha256": "0982c7c9b5c5103ae8ffa7c1203657b7db64237e239527e37e4fc25b8e9ad084",
+      "bytes": 22924
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "backupRelative": "spec/internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "sha256": "29aa22e25b9a53b338fdb0d87f5cce730f025fa82ec00a15386a4701d942d0b1",
+      "bytes": 21957
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "backupRelative": "spec/internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "sha256": "37970ed24e3d3ec95d75f9cbde046b2ab77b84ffeae8187f2e3f23bdd3ba7525",
+      "bytes": 23117
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "backupRelative": "spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "sha256": "1034aa0a3db94c79216a0d191c3e9b1905cc0284a57bd60ac1bc0e3fd209040e",
+      "bytes": 19670
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "backupRelative": "spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "sha256": "ffd5b6d26e7a1acd9b869138b251a184fd28381d9c1cfc9dda095dff6ddc3851",
+      "bytes": 20566
+    },
+    {
+      "targetRelative": "plan/s04-10-presented-frame-gate.md",
+      "backupRelative": "plan/s04-10-presented-frame-gate.md",
+      "sha256": "9c688d9c28e36118553487b1b73a49dae457f86fd41bbb3e3ed6a945a1500a75",
+      "bytes": 7742
+    },
+    {
+      "targetRelative": "spec/STATUS.md",
+      "backupRelative": "spec/STATUS.md",
+      "sha256": "4f619eedc657360a80984d08e0e00e0e927a5706d2dd888bd10bcd66c95e48da",
+      "bytes": 272604
+    },
+    {
+      "targetRelative": "spec/internal/README.md",
+      "backupRelative": "spec/internal/README.md",
+      "sha256": "96318e88e90b374087459db15c33592321c91ffc684c33884ae9a27929fcc43a",
+      "bytes": 119716
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.md",
+      "backupRelative": "spec/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.md",
+      "sha256": "54eb9b3b3a2b27960eba00896b6fc52cbfeff967dfc0574c9d4b8e16a355e12a",
+      "bytes": 17408
+    }
+  ]
+}

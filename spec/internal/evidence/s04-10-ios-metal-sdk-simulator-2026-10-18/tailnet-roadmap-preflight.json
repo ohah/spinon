@@ -1,0 +1,32 @@
+{
+  "createdAt": "2026-10-17T22:13:25.909163+00:00",
+  "phase": "roadmap page follow-up preflight",
+  "previewRoot": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-roadmap-pass2",
+  "deletions": 0,
+  "summary": {
+    "add": 0,
+    "backup-and-replace": 2,
+    "skip-identical": 0
+  },
+  "files": [
+    {
+      "source": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/roadmap.html",
+      "targetRelative": "roadmap.html",
+      "bytes": 127392,
+      "sha256": "24b25b60917c256e39ae08e8554420afa2498e28a1e4d2a26283bbab3d5cfb97",
+      "targetExists": true,
+      "targetSha256": "282d54a80e2ac036a105e006bacde63f20e6776fb2a56bc83717235c1fb6a577",
+      "action": "backup-and-replace"
+    },
+    {
+      "source": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/spec/public/roadmap.html",
+      "targetRelative": "spec/public/roadmap.html",
+      "bytes": 127392,
+      "sha256": "24b25b60917c256e39ae08e8554420afa2498e28a1e4d2a26283bbab3d5cfb97",
+      "targetExists": true,
+      "targetSha256": "743394efeed4de81831ac3124da535fb2caddbec5a818e65c4afa898fc523e0c",
+      "action": "backup-and-replace"
+    }
+  ]
+}

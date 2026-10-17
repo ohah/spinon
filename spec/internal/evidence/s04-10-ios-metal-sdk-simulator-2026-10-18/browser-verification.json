@@ -1,0 +1,76 @@
+{
+  "createdAt": "2026-10-17T22:22:18.957699+00:00",
+  "tool": {
+    "name": "agent-browser",
+    "version": "0.31.1",
+    "engine": "Google Chrome 155.0.8059.85"
+  },
+  "preview": "https://macstudio.tailed42f2.ts.net/spinon/",
+  "pages": [
+    {
+      "path": "roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "documentRequestHttpStatus": 200,
+      "officialProgress": "74/207",
+      "checkboxCount": 207,
+      "assertions": {
+        "s04_10_checked": false,
+        "s04_10_disabled": true,
+        "s05_2_checked": false,
+        "s05_2_disabled": true
+      }
+    },
+    {
+      "path": "STATUS.html",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "documentRequestHttpStatus": 200,
+      "checkboxCount": 220,
+      "assertions": {
+        "s04_10_checked": false,
+        "s04_10_disabled": true,
+        "s05_2_checked": false,
+        "s05_2_disabled": true
+      }
+    },
+    {
+      "path": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html",
+      "title": "S04.10 iOS Metal drawable API SDK·Simulator 확인 - 스피논 문서",
+      "documentRequestHttpStatus": 200,
+      "assertions": {
+        "device_and_simulator_sdk_comparison_visible": true,
+        "same_swift_probe_claim_visible": true,
+        "no_presented_frame_claim_visible": true
+      }
+    },
+    {
+      "path": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.html",
+      "title": "S04.10 iOS SDK·Simulator 근거 PR 변경 검토 30개 - 스피논 문서",
+      "documentRequestHttpStatus": 200,
+      "reviewRows": 30
+    }
+  ],
+  "browserDocumentRequestsAllHttp200": true,
+  "screenshots": [
+    {
+      "path": "tailnet-roadmap-agent-browser.png",
+      "bytes": 114663,
+      "sha256": "4a0aef2ccad9c69c4d125b28e630b50c303807f5baddf855ae79859fbff54993"
+    },
+    {
+      "path": "tailnet-status-agent-browser.png",
+      "bytes": 186901,
+      "sha256": "77b8a29e91e15641af8540c88d7ccae5c87843e8048ad4b66f7ec7d654f47059"
+    },
+    {
+      "path": "tailnet-evidence-agent-browser.png",
+      "bytes": 135641,
+      "sha256": "9348d8f42949ce65c9e6ccd37bd902b56d42b50a0a41e94ce98afb1d1a91d511"
+    }
+  ],
+  "networkLog": {
+    "path": "agent-browser-network.log",
+    "bytes": 8856,
+    "sha256": "5233d3e29ef07653eea968cb1c0374c53576a6c77f50f151e2a6049625647050"
+  },
+  "scope": "Agent Browser screenshots show the Tailnet documentation preview, not a Spinon app behavior screen."
+}

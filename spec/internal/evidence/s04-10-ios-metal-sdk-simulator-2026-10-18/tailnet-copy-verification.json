@@ -1,0 +1,505 @@
+{
+  "createdAt": "2026-10-17T22:12:18.217335+00:00",
+  "preflight": "tailnet-preflight.json",
+  "plannedFileCount": 99,
+  "copiedOrSkipped": 99,
+  "verification": "all target SHA-256 hashes match preflight sources",
+  "deletions": 0,
+  "files": [
+    {
+      "targetRelative": "404.html",
+      "action": "backup-and-replace",
+      "sha256": "6c2709910061688ca9147e63a9d470baa352159800edd4830a760770af302ec5"
+    },
+    {
+      "targetRelative": "README.html",
+      "action": "backup-and-replace",
+      "sha256": "f0309df2f8dbd741c0acf5ac4c1d0cc261a2d608c9bc2b82319076e752e5a3d4"
+    },
+    {
+      "targetRelative": "STATUS.html",
+      "action": "backup-and-replace",
+      "sha256": "75aaa28dcb45dd29726f795cba8f727e17ac7fdd96535bb4b396a3926c149a60"
+    },
+    {
+      "targetRelative": "api/README.html",
+      "action": "backup-and-replace",
+      "sha256": "49ff908dd248ac8f0144a12d2c477fbadd204266a0124e6cc2237cd1a4174c4e"
+    },
+    {
+      "targetRelative": "api/index.html",
+      "action": "backup-and-replace",
+      "sha256": "b60391560a4d5269e845ba4ea99a19d0271061838fd0f436816ccc9ba98c9598"
+    },
+    {
+      "targetRelative": "icon.svg",
+      "action": "skip-identical",
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "targetRelative": "index.html",
+      "action": "backup-and-replace",
+      "sha256": "db56aec52f9910fca94cdb5a4fcbce365160399b55e22bb5e0a96a6bb2245c63"
+    },
+    {
+      "targetRelative": "internal/0019-s04-css-layout-gpu-slice.html",
+      "action": "backup-and-replace",
+      "sha256": "0c40c99004100b2799256aeeebb22e61c0c1e2b307a79ac45f18bbea94ef1439"
+    },
+    {
+      "targetRelative": "internal/0079-s04-10-confirmed-frame-registry.html",
+      "action": "backup-and-replace",
+      "sha256": "f7a9af4cf901c88f45d01b8d20e088df18992c5ae1c4118d74dcfc2eaf5fc7a6"
+    },
+    {
+      "targetRelative": "internal/README.html",
+      "action": "backup-and-replace",
+      "sha256": "0437b761f88927ffe5bb23ae62dada74bb2c7b02fdb62be448bc6de0ee31feae"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html",
+      "action": "add",
+      "sha256": "51cf271dd267d75821b1277804abab9490aadb41daa7f3bd99c566d89ae07b66"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-20.html",
+      "action": "add",
+      "sha256": "fe2350f9384701c5cc9202e2d1bba9fed2c5378934fa6658c264b5e32296831c"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html",
+      "action": "backup-and-replace",
+      "sha256": "c752ac1f6421f30d0e3511299c74d435bad7489c162d6fa2a134c3d5f423b41c"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "action": "backup-and-replace",
+      "sha256": "1a47d084258853d02ea2a59fbacebee745279964b1f1b305a1d811add1e596c7"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "action": "backup-and-replace",
+      "sha256": "33cf1803593adba4bb9caf964d3b7c1e9cbd4ae08b54db970e789df3115b4940"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "action": "backup-and-replace",
+      "sha256": "934b4eca0e57f52928ade8a2e112340eb0a556cc41126443e5d35caa725d5029"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "action": "backup-and-replace",
+      "sha256": "38152fa5b42271c062fd4c79526728420fb7281e4f3ea9dfeed51f8e05093932"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "action": "backup-and-replace",
+      "sha256": "06cadeb05873ab6bb655510839f97154a391b2097bfe9e216a5fffaa5a3b454d"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/README.md",
+      "action": "skip-identical",
+      "sha256": "de77ddb0f126a4d55a7a614d9e3deaafca5520c64bb41611fbad870dea96cf85"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/agent-browser-network.log",
+      "action": "skip-identical",
+      "sha256": "0135859ef58e4a5885cd306540d49d1c0738f97f3a79bddaa79b490b84fe6fb7"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/backup-verification.json",
+      "action": "skip-identical",
+      "sha256": "6c3aab31660d8bb0495456a58e46527871143250500a4573ddccdde52edf22bb"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/browser-verification.json",
+      "action": "skip-identical",
+      "sha256": "6fd695ffd6233c7b95f6514ac2da508ca2f07fb41cc1ce091ced9f343bd614e6"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/copy-verification.json",
+      "action": "skip-identical",
+      "sha256": "de9abd5c08d3e873e47e591e2d3022fa016756b6676badaa5ce9d82ee5ffc087"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/manifest.json",
+      "action": "skip-identical",
+      "sha256": "7aa9ea5e1e2eb56c72555b744bd1da53492d5be6e1e5007c54b326f6e65f34dd"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "action": "backup-and-replace",
+      "sha256": "d4fcce10cd468d495c3da2f0b84b51ee51e6b157da44f15a4987c1001e74aa40"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.md",
+      "action": "skip-identical",
+      "sha256": "2c0aa72655cf2f0c7d1e3c5112ba204dc6d85578437b3e732c916a58691acdc7"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/preflight.json",
+      "action": "skip-identical",
+      "sha256": "81ba5f6944dd573b824cc6d0cc0692e649c08f801438e106dec9a65bd2f6ccf3"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/selected-build.log",
+      "action": "backup-and-replace",
+      "sha256": "31c0f5e612f93a1765b938a7658540fe723cd1443521c3831bb2ce55df287335"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/served-verification.json",
+      "action": "skip-identical",
+      "sha256": "8855da9a2a79af535675d47e395eb7a21a145115aa18eaa5571e6ed3d00baf23"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-evidence-agent-browser.png",
+      "action": "backup-and-replace",
+      "sha256": "5b0bfc4b60e15ed83579d16c6267cb7ba0a55dff99eac4d56dc2d2bb40a67eaf"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-roadmap-agent-browser.png",
+      "action": "skip-identical",
+      "sha256": "e9c223e4d240793620d52df790df45adace0f0029dfcb669fb0e5ca30721ebcc"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-status-agent-browser.png",
+      "action": "skip-identical",
+      "sha256": "845ceab93a62a65f71c5a1f087c1647066e58165a6e3e64a453b88613f1881b7"
+    },
+    {
+      "targetRelative": "logo.svg",
+      "action": "skip-identical",
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "targetRelative": "plan/s04-10-presented-frame-gate.html",
+      "action": "backup-and-replace",
+      "sha256": "6d6476cdc33d9a3cf4ce304effbaa2c4f462c16155f889adf642d81831c00820"
+    },
+    {
+      "targetRelative": "roadmap.html",
+      "action": "skip-identical",
+      "sha256": "282d54a80e2ac036a105e006bacde63f20e6776fb2a56bc83717235c1fb6a577"
+    },
+    {
+      "targetRelative": "spec/STATUS.html",
+      "action": "backup-and-replace",
+      "sha256": "c1809ad63470ae18841e2140f630b2046044010e6d868bdf1a7c0f04dd14acbf"
+    },
+    {
+      "targetRelative": "spec/internal/0019-s04-css-layout-gpu-slice.html",
+      "action": "backup-and-replace",
+      "sha256": "a1c7eaaa1be0789130ba86c9d473ecf47613b25fa6c5eff1f05d0e2a47d8a0aa"
+    },
+    {
+      "targetRelative": "spec/internal/0079-s04-10-confirmed-frame-registry.html",
+      "action": "backup-and-replace",
+      "sha256": "c8174d5805c612108d976685ff8525235282d5e7d701feb101721966d80f8621"
+    },
+    {
+      "targetRelative": "spec/internal/README.html",
+      "action": "backup-and-replace",
+      "sha256": "3c8f6dc07add6595865a797f81b7a51bd56e1f7ed43086eb0978489198b2f61e"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html",
+      "action": "add",
+      "sha256": "efdbd1e476bd6dde4726d350c00231ba69dab66ebfd159dbbd51aa409317e738"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-20.html",
+      "action": "add",
+      "sha256": "f627e8ba4add35fcec3b07ab24b19e24d8bfa92304bd933cec0307634595de4c"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "action": "backup-and-replace",
+      "sha256": "b1688ab18f8e42dda4f826c2d182a219e1ec5782e97b3a4a0cde28ac24da9303"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "action": "backup-and-replace",
+      "sha256": "fc716b1e40f2b75a059fdb8a7f36f041c7aee781de73b51c02ad4a2c4a1bda54"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "action": "backup-and-replace",
+      "sha256": "9656631b231ffd312dad1af304a863bd1e21501ff722e284f46e157ec3c81c14"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "action": "backup-and-replace",
+      "sha256": "54d68c0601c10c08b13188ef6b0130808ad478437d85fec45aae4d75b8db6923"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "action": "backup-and-replace",
+      "sha256": "6d50ab87ba0d9f8af900de666f2e9d14bca5a7adb373583f38cc94e761618fc0"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "action": "backup-and-replace",
+      "sha256": "cf440f4a980411329ff0c81e37f935510c660fc5f37be0505c488049988574f8"
+    },
+    {
+      "targetRelative": "static/css/styles.8d918fd78e.css",
+      "action": "skip-identical",
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "targetRelative": "static/js/2.1aa8a93d31.js",
+      "action": "skip-identical",
+      "sha256": "b21acdce969ebad569ff75b046d68b6edf0130a56631a440fb2d22a9258a65fb"
+    },
+    {
+      "targetRelative": "static/js/2.1aa8a93d31.js.LICENSE.txt",
+      "action": "skip-identical",
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "targetRelative": "static/js/async/1.9d6d094526.js",
+      "action": "skip-identical",
+      "sha256": "d6f6b4dbea1173cbf7c99162893e587afc13cda01fd4e1405d5b780a918b5a72"
+    },
+    {
+      "targetRelative": "static/js/async/route-04bc2c24c122.86aec007f6.js",
+      "action": "add",
+      "sha256": "757b0389f90ecf891f77222214c3d4d603b8f190c74a68841c1f74965989781a"
+    },
+    {
+      "targetRelative": "static/js/async/route-0f4abc145d07.96e377b35d.js",
+      "action": "add",
+      "sha256": "d2d3c1492f8efb35b17cfc09a0de2513cd05b0a9c5bf0699efe5d67f0fc9a874"
+    },
+    {
+      "targetRelative": "static/js/async/route-107ea9bc59bb.d698652131.js",
+      "action": "add",
+      "sha256": "6eabf5248ad661e986d6db7fa2a8571ee91c08fa383437c5cd7f5a1308af2985"
+    },
+    {
+      "targetRelative": "static/js/async/route-1c606a9bcf5f.5004d069f3.js",
+      "action": "add",
+      "sha256": "1c42471c235fff6d073495a2c2324f14faf52035c4552172dbd3a86add44a7b8"
+    },
+    {
+      "targetRelative": "static/js/async/route-2308615ee227.bb3042fc6e.js",
+      "action": "add",
+      "sha256": "c3d1509815a01a5597c72269f989eabd635e6767b9cf70dc0f6bbfd104885212"
+    },
+    {
+      "targetRelative": "static/js/async/route-311b470225ee.1fdddbead8.js",
+      "action": "add",
+      "sha256": "02fc15dc80a3d178554e042bcbdd85578bd0918ec116097c2ccbe6668c23bd96"
+    },
+    {
+      "targetRelative": "static/js/async/route-343e2be2a1e8.4ea8591518.js",
+      "action": "add",
+      "sha256": "507bd621f2c71751b4a0e8e331ae0b7d56c3ed84ffd5d7e065678d6e222537fd"
+    },
+    {
+      "targetRelative": "static/js/async/route-4665cde077d0.5c95071ff1.js",
+      "action": "add",
+      "sha256": "70b39cd08f0befc2ae8961ed360e5773f8493faf3a53504974ea50ac62677127"
+    },
+    {
+      "targetRelative": "static/js/async/route-5eb92dc32e34.63710764cd.js",
+      "action": "add",
+      "sha256": "4067934a1b5125997376b1c76a21ad3146a22480f137c4d7a66b3a0273212d81"
+    },
+    {
+      "targetRelative": "static/js/async/route-6c33a3943990.b1fc24aa5c.js",
+      "action": "add",
+      "sha256": "49c5e03b9f884d566e2d15dbe6be7729f636f818176828a478891ad4079d4d73"
+    },
+    {
+      "targetRelative": "static/js/async/route-6fe650616266.86352fd971.js",
+      "action": "add",
+      "sha256": "0a00b91d8adb4b9aa2d52bbbc6781a52b1ca2950067bbd63e8a9fbb40e413375"
+    },
+    {
+      "targetRelative": "static/js/async/route-73701410f94e.7c8d13a41d.js",
+      "action": "add",
+      "sha256": "08217970b595ff2898da73dceff374ad0703b2eb702c9122efc1e41f5f5cde99"
+    },
+    {
+      "targetRelative": "static/js/async/route-7ae5198feb44.2cc5ca2bb1.js",
+      "action": "add",
+      "sha256": "d7b805fb11e171e358e96368d1738470c738bca7bd64671a7f7f6d030ee9b141"
+    },
+    {
+      "targetRelative": "static/js/async/route-7b63acbe348a.7e7a4b1a42.js",
+      "action": "add",
+      "sha256": "3d62aaec4fde5c74a68eacbca5e3c231a05fa4a537787397bdf44161bd145ac3"
+    },
+    {
+      "targetRelative": "static/js/async/route-7ce2535ac56d.ec6304c59b.js",
+      "action": "add",
+      "sha256": "4bcfee02288b5297e004ef3b7dfb7deee34a8c53e6848a8fd53555765d7e757e"
+    },
+    {
+      "targetRelative": "static/js/async/route-8d05ab371986.916bcd764f.js",
+      "action": "add",
+      "sha256": "784a6daeaaa93d75473b3e0174ba0514cfc7a168c319dbe293de134fb5c8ee5b"
+    },
+    {
+      "targetRelative": "static/js/async/route-9e27f397e76b.12ca9be988.js",
+      "action": "add",
+      "sha256": "9e034fb8c572beeb07f35d95655073ee10a342d74168d242368c03a68b0a0aa6"
+    },
+    {
+      "targetRelative": "static/js/async/route-a1017bdf23ca.20e0dbd262.js",
+      "action": "add",
+      "sha256": "7723b133546d80c43d320b3800c079a71eeea3f3abf82576a7fd792d372edc33"
+    },
+    {
+      "targetRelative": "static/js/async/route-a991d6de67ad.be42a4eca8.js",
+      "action": "add",
+      "sha256": "d8fa3c0f9e59070d1ae63a76a775b02376095f478878cb35a54f5ac2906a01c1"
+    },
+    {
+      "targetRelative": "static/js/async/route-aea8aafbbb87.8402df5c3f.js",
+      "action": "add",
+      "sha256": "bf2e88c1d8d12987d556696ecd3f96f22d48c00325e3527e7c770e2fe234d1fc"
+    },
+    {
+      "targetRelative": "static/js/async/route-afc04a26c114.28aed42506.js",
+      "action": "add",
+      "sha256": "10c184eef830c5fe1c7140ffcc1775c041ec0e7d903bf03f772628629e0ddc08"
+    },
+    {
+      "targetRelative": "static/js/async/route-b33563055168.081cf13555.js",
+      "action": "add",
+      "sha256": "029b47c881d5d7310960a60c1b908f787b3c3862e7058cda5650cda40b073867"
+    },
+    {
+      "targetRelative": "static/js/async/route-c6d90fac6bcd.252e7d59d9.js",
+      "action": "add",
+      "sha256": "db4c03ab7b8a816fe058a4b6e7840ca27447d539b3dbbb02149b51414fd70d82"
+    },
+    {
+      "targetRelative": "static/js/async/route-c7b1c23e00a1.028cd521df.js",
+      "action": "add",
+      "sha256": "5586e8b084be7d713adcf63459457dd49d47757671a89e4fa3eb798abd088f72"
+    },
+    {
+      "targetRelative": "static/js/async/route-d044253b30b9.a5f8eec04d.js",
+      "action": "add",
+      "sha256": "01c0ba2fcb3dcfb2b3d0052a31ccfbebdb8f0d612ebb0e38738db223884af1ae"
+    },
+    {
+      "targetRelative": "static/js/async/route-d0f54d53ad2b.430e2ea528.js",
+      "action": "add",
+      "sha256": "0a2eb3bcbf88e4b03c7f303b46c76bb8d4aeef4706885ddd15e6b6451c17350e"
+    },
+    {
+      "targetRelative": "static/js/async/route-de98351b28cb.e94b00e4de.js",
+      "action": "add",
+      "sha256": "fa8fa1205d13124512db40aaeda92a0719648c47bb52c77ba0d0733b6800df56"
+    },
+    {
+      "targetRelative": "static/js/async/route-e0472d60744a.322b7dfa4a.js",
+      "action": "add",
+      "sha256": "043db37435b6887bc030881ceb01e6ae1e28722e181a0aa9d5c11b4572ca207d"
+    },
+    {
+      "targetRelative": "static/js/async/route-ea579a5a6eae.78ad55650f.js",
+      "action": "add",
+      "sha256": "971bc40df1215a0af4544a6d1041770ebfa821d06114dbf7cfc97266bf2be070"
+    },
+    {
+      "targetRelative": "static/js/async/route-ef6f0445d65c.0efb9d3794.js",
+      "action": "add",
+      "sha256": "087655fcba03486f745a61e859245da1ea1df9ac39650850d40fb891e400c5a4"
+    },
+    {
+      "targetRelative": "static/js/index.bea39886de.js",
+      "action": "add",
+      "sha256": "a3f94244b2f17d728ee8078097be4657fe9ada9d89dd77dca4abe7f10ec7160b"
+    },
+    {
+      "targetRelative": "static/js/lib-react.d9aa10f4b0.js",
+      "action": "skip-identical",
+      "sha256": "ad3b1fffada69190b9d14bfd2e16a62d31865b2d3de8a5044cb200fa67961cc8"
+    },
+    {
+      "targetRelative": "static/js/lib-react.d9aa10f4b0.js.LICENSE.txt",
+      "action": "skip-identical",
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "targetRelative": "static/js/lib-router.95ea184a3c.js",
+      "action": "skip-identical",
+      "sha256": "71a8993452741417ebd7ac492fa9420ba9172794d33d650e50b8ab5fa71c327e"
+    },
+    {
+      "targetRelative": "static/js/lib-router.95ea184a3c.js.LICENSE.txt",
+      "action": "skip-identical",
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "targetRelative": "static/js/styles.7b0c5651b6.js",
+      "action": "skip-identical",
+      "sha256": "4a90f3ba024b9eb4ad9a48173029ba9ca3eae3c00a7741aa19aaad0d828f6749"
+    },
+    {
+      "targetRelative": "static/search_index.ko.b23c30f6.json",
+      "action": "add",
+      "sha256": "b23c30f60570a98c5fd425afe030efac38aac16cc78a66fe689cc97913b0130c"
+    },
+    {
+      "targetRelative": "plan/s04-10-presented-frame-gate.md",
+      "action": "backup-and-replace",
+      "sha256": "e89960d31a3993320829926321ab98928599ca49f92102e88ab34fefa441b994"
+    },
+    {
+      "targetRelative": "spec/STATUS.md",
+      "action": "backup-and-replace",
+      "sha256": "00274a22e7178e5a193fa7e6fa77f8447e90d7da3623742129abcd9d00e061f4"
+    },
+    {
+      "targetRelative": "spec/internal/README.md",
+      "action": "backup-and-replace",
+      "sha256": "dc1cda7931bd0d219dfa44077b4abc4e2f54efbacb299c45c1c4d5688d74d5d6"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.md",
+      "action": "backup-and-replace",
+      "sha256": "c741a3774d1e13d68cbf682e4a71334e9f5605249fdda5cefa263467b6e86e68"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/Info.plist",
+      "action": "add",
+      "sha256": "18d6fa164951c16b8f238a4083d5f68b394890273762c99b2ff1ebe2fc2ec838"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.md",
+      "action": "add",
+      "sha256": "5b933bbc23ddd0c1ba5bb5f6255c5a4fddce21065fbad0657ec8e3551f7d18d7"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/metal-api-probe.swift",
+      "action": "add",
+      "sha256": "ec22901e6ebf4f73356271a1d9879a63f3b499f6389dabdd1960b8cd5ac552a0"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-20.md",
+      "action": "add",
+      "sha256": "4f7b86e0086e9fe3f9b78eddd41f9d6b13ba0352aa4638419d9c70c7e33e898f"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/selected-build.log",
+      "action": "add",
+      "sha256": "150007c890957947646e0364a7c125850a25dc855a0c267e02251bb12d28d6e5"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/simulator-runtime.log",
+      "action": "add",
+      "sha256": "b912d0ae4d63d929e07ab1d9a11c4044e2cf9df75843f326988cbd7ebdf65ae9"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/simulator-selector-probe.m",
+      "action": "add",
+      "sha256": "6a932cfbb8fbd2c59f7369456d65bb52fdf1bcdf333816015bf788bf70983da7"
+    }
+  ]
+}

@@ -81,6 +81,8 @@ Apple의 `MTLDrawable.addPresentedHandler(_:)`는 drawable 단위 callback을 �
 
 현재 `wgpu-hal 30.0.1` Metal `SurfaceTexture`는 drawable을 private field로 보관하고, HAL Queue가 내부 command buffer에서 그 drawable을 present합니다. 공개 `wgpu::SurfaceTexture`는 drawable이나 `MTLDrawable` callback을 노출하지 않습니다. `Surface::as_hal()`은 `CAMetalLayer`를 볼 수 있게 하지만 이미 획득한 특정 drawable을 돌려주지 않습니다. 정확한 연결에는 wgpu API/HAL callback 추가(upstream 협의 또는 좁은 pinned patch)나 wgpu presentation을 우회하는 별도 Metal 경로가 필요합니다. `CADisplayLink`, command buffer 완료, `Queue::on_submitted_work_done`만으로 특정 drawable의 표시 완료를 대체하지 않습니다.
 
+2026-10-18 SDK 재확인에서 iPhoneOS 26.2 SDK는 `addPresentedHandler`, `presentedTime`, `drawableID`를 선언하고 기기 target Swift type-check가 통과했다. iPhoneSimulator 26.2 SDK는 같은 프로토콜 멤버를 노출하지 않고, iPhone 17 Pro / iOS 26.2 Simulator runtime의 `CAMetalDrawable`도 세 selector에 응답하지 않았다. 이전 실패는 Simulator SDK 범위에 한정된다. 제품 callback의 iOS 기기 runtime은 아직 확인하지 않았다. [SDK·Simulator 실행 근거](s04-10-ios-metal-sdk-simulator-2026-10-18/README.md).
+
 ## 다음 실행 단계와 통과 판정
 
 1. 실기기에서 확인된 Xclipse 940 adapter에 opt-in으로 `VULKAN_GOOGLE_DISPLAY_TIMING`을 요청하고, HAL `set_next_present_time()`과 ash timing 조회를 실제 surface에 연결합니다. 현재 확인한 physical draw/readback과 emulator의 extension 미지원 경로를 각각 회귀 기준으로 유지합니다.

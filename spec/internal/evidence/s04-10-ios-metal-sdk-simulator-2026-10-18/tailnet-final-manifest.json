@@ -1,0 +1,94 @@
+{
+  "createdAt": "2026-10-17T22:35:45.253037+00:00",
+  "finalUniqueFileCount": 115,
+  "selectedBuildHtmlRouteCount": 33,
+  "selectedBuildOutputFileCount": 90,
+  "previewFileCountAfter": 18427,
+  "passes": [
+    {
+      "name": "initial selected docs and source sync",
+      "planned": 99,
+      "add": 43,
+      "backupAndReplace": 33,
+      "skipIdentical": 23,
+      "deletions": 0
+    },
+    {
+      "name": "roadmap source update",
+      "planned": 2,
+      "backupAndReplace": 2,
+      "deletions": 0
+    },
+    {
+      "name": "selected build log update",
+      "planned": 1,
+      "backupAndReplace": 1,
+      "deletions": 0
+    },
+    {
+      "name": "review page and final evidence refresh pass 4",
+      "planned": 101,
+      "backedUp": 36,
+      "deletedAfterBackup": 3
+    },
+    {
+      "name": "browser capture and verification evidence pass 5",
+      "planned": 107,
+      "backedUp": 34,
+      "deletions": 0
+    },
+    {
+      "name": "relative evidence link correction pass 6",
+      "planned": 7,
+      "add": 7,
+      "deletions": 0
+    },
+    {
+      "name": "final build, evidence and backup report pass 7",
+      "planned": 115,
+      "backedUp": 35,
+      "deletions": 0
+    },
+    {
+      "name": "publish complete backup verification report pass 8",
+      "planned": 1,
+      "backupAndReplace": 1,
+      "deletions": 0
+    },
+    {
+      "name": "normalized docs and final selected build sync pass 9",
+      "planned": 115,
+      "backupAndReplace": 36,
+      "add": 35,
+      "skipIdentical": 44,
+      "deletions": 0
+    }
+  ],
+  "backupRoots": [
+    "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+    "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-roadmap-pass2",
+    "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-buildlog-pass3",
+    "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+    "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+    "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-evidence-links-pass6",
+    "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+    "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass8",
+    "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass9"
+  ],
+  "backupFileCount": 178,
+  "verification": {
+    "localHttp200AndHashMatch": 115,
+    "tailnetHttp200AndHashMatch": 115,
+    "relativeEvidenceLinks": 8,
+    "brokenRelativeEvidenceLinks": 0,
+    "supersededReview20RouteHttpStatus": {
+      "local": 404,
+      "tailnet": 404
+    },
+    "agentBrowserSessionProcesses": 0,
+    "sessionChromeProcesses": 0,
+    "verifiedBackupFiles": 177,
+    "additionalPass8EvidenceBackupVerified": 1,
+    "pass9BackupsVerified": 36
+  }
+}

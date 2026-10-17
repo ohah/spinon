@@ -1,0 +1,20 @@
+{
+  "createdAt": "2026-10-17T22:28:06.282960+00:00",
+  "phase": "publish complete backup verification after pass 7",
+  "previewRoot": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass8",
+  "plannedFileCount": 1,
+  "deletions": 0,
+  "summary": {
+    "backup-and-replace": 1
+  },
+  "files": [
+    {
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-final-backup-verification.json",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-final-backup-verification.json",
+      "sourceSha256": "8cb329f5e96b68461f6005461662eecdf82ebdac1a5b00175a9547727c312413",
+      "targetSha256Before": "018bb3953864d2f5f8912eed4a174eaa0acc64d19784fe8cf266746b0c128c14",
+      "action": "backup-and-replace"
+    }
+  ]
+}

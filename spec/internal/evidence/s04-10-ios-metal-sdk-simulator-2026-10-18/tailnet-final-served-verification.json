@@ -1,0 +1,2287 @@
+{
+  "createdAt": "2026-10-17T22:35:45.253037+00:00",
+  "scope": "Final 115 Tailnet build/source targets for selected docs pass 9; this report remains local to avoid self-reference.",
+  "endpoints": {
+    "local": "http://127.0.0.1:8768/spinon/",
+    "tailnet": "https://macstudio.tailed42f2.ts.net/spinon/"
+  },
+  "summary": {
+    "local": {
+      "total": 115,
+      "http200AndHashMatch": 115
+    },
+    "tailnet": {
+      "total": 115,
+      "http200AndHashMatch": 115
+    }
+  },
+  "failed": 0,
+  "failures": [],
+  "relativeAssetLinks": [
+    {
+      "href": "selected-build.log",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/selected-build.log",
+      "checks": [
+        {
+          "endpoint": "local",
+          "httpStatus": 200,
+          "sha256": "08659a16cc69765077ad23c6e5b0c9c6735fd9824cf3c7fb94bc6386f5b1f75d",
+          "expectedSha256": "08659a16cc69765077ad23c6e5b0c9c6735fd9824cf3c7fb94bc6386f5b1f75d",
+          "match": true,
+          "error": null
+        },
+        {
+          "endpoint": "tailnet",
+          "httpStatus": 200,
+          "sha256": "08659a16cc69765077ad23c6e5b0c9c6735fd9824cf3c7fb94bc6386f5b1f75d",
+          "expectedSha256": "08659a16cc69765077ad23c6e5b0c9c6735fd9824cf3c7fb94bc6386f5b1f75d",
+          "match": true,
+          "error": null
+        }
+      ],
+      "match": true
+    },
+    {
+      "href": "browser-verification.json",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/browser-verification.json",
+      "checks": [
+        {
+          "endpoint": "local",
+          "httpStatus": 200,
+          "sha256": "44e57779af931f961c755f843ef2c876a8e75f87dd211aea4826fc306992d656",
+          "expectedSha256": "44e57779af931f961c755f843ef2c876a8e75f87dd211aea4826fc306992d656",
+          "match": true,
+          "error": null
+        },
+        {
+          "endpoint": "tailnet",
+          "httpStatus": 200,
+          "sha256": "44e57779af931f961c755f843ef2c876a8e75f87dd211aea4826fc306992d656",
+          "expectedSha256": "44e57779af931f961c755f843ef2c876a8e75f87dd211aea4826fc306992d656",
+          "match": true,
+          "error": null
+        }
+      ],
+      "match": true
+    },
+    {
+      "href": "browser-session-shutdown.json",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/browser-session-shutdown.json",
+      "checks": [
+        {
+          "endpoint": "local",
+          "httpStatus": 200,
+          "sha256": "6c8c8d7eeb64ba5537ccbf7a7bb85f31438357b7e06318338399784b44bc7b8b",
+          "expectedSha256": "6c8c8d7eeb64ba5537ccbf7a7bb85f31438357b7e06318338399784b44bc7b8b",
+          "match": true,
+          "error": null
+        },
+        {
+          "endpoint": "tailnet",
+          "httpStatus": 200,
+          "sha256": "6c8c8d7eeb64ba5537ccbf7a7bb85f31438357b7e06318338399784b44bc7b8b",
+          "expectedSha256": "6c8c8d7eeb64ba5537ccbf7a7bb85f31438357b7e06318338399784b44bc7b8b",
+          "match": true,
+          "error": null
+        }
+      ],
+      "match": true
+    },
+    {
+      "href": "agent-browser-network.log",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/agent-browser-network.log",
+      "checks": [
+        {
+          "endpoint": "local",
+          "httpStatus": 200,
+          "sha256": "5233d3e29ef07653eea968cb1c0374c53576a6c77f50f151e2a6049625647050",
+          "expectedSha256": "5233d3e29ef07653eea968cb1c0374c53576a6c77f50f151e2a6049625647050",
+          "match": true,
+          "error": null
+        },
+        {
+          "endpoint": "tailnet",
+          "httpStatus": 200,
+          "sha256": "5233d3e29ef07653eea968cb1c0374c53576a6c77f50f151e2a6049625647050",
+          "expectedSha256": "5233d3e29ef07653eea968cb1c0374c53576a6c77f50f151e2a6049625647050",
+          "match": true,
+          "error": null
+        }
+      ],
+      "match": true
+    },
+    {
+      "href": "tailnet-roadmap-agent-browser.png",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-roadmap-agent-browser.png",
+      "checks": [
+        {
+          "endpoint": "local",
+          "httpStatus": 200,
+          "sha256": "4a0aef2ccad9c69c4d125b28e630b50c303807f5baddf855ae79859fbff54993",
+          "expectedSha256": "4a0aef2ccad9c69c4d125b28e630b50c303807f5baddf855ae79859fbff54993",
+          "match": true,
+          "error": null
+        },
+        {
+          "endpoint": "tailnet",
+          "httpStatus": 200,
+          "sha256": "4a0aef2ccad9c69c4d125b28e630b50c303807f5baddf855ae79859fbff54993",
+          "expectedSha256": "4a0aef2ccad9c69c4d125b28e630b50c303807f5baddf855ae79859fbff54993",
+          "match": true,
+          "error": null
+        }
+      ],
+      "match": true
+    },
+    {
+      "href": "tailnet-status-agent-browser.png",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-status-agent-browser.png",
+      "checks": [
+        {
+          "endpoint": "local",
+          "httpStatus": 200,
+          "sha256": "77b8a29e91e15641af8540c88d7ccae5c87843e8048ad4b66f7ec7d654f47059",
+          "expectedSha256": "77b8a29e91e15641af8540c88d7ccae5c87843e8048ad4b66f7ec7d654f47059",
+          "match": true,
+          "error": null
+        },
+        {
+          "endpoint": "tailnet",
+          "httpStatus": 200,
+          "sha256": "77b8a29e91e15641af8540c88d7ccae5c87843e8048ad4b66f7ec7d654f47059",
+          "expectedSha256": "77b8a29e91e15641af8540c88d7ccae5c87843e8048ad4b66f7ec7d654f47059",
+          "match": true,
+          "error": null
+        }
+      ],
+      "match": true
+    },
+    {
+      "href": "tailnet-evidence-agent-browser.png",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-evidence-agent-browser.png",
+      "checks": [
+        {
+          "endpoint": "local",
+          "httpStatus": 200,
+          "sha256": "9348d8f42949ce65c9e6ccd37bd902b56d42b50a0a41e94ce98afb1d1a91d511",
+          "expectedSha256": "9348d8f42949ce65c9e6ccd37bd902b56d42b50a0a41e94ce98afb1d1a91d511",
+          "match": true,
+          "error": null
+        },
+        {
+          "endpoint": "tailnet",
+          "httpStatus": 200,
+          "sha256": "9348d8f42949ce65c9e6ccd37bd902b56d42b50a0a41e94ce98afb1d1a91d511",
+          "expectedSha256": "9348d8f42949ce65c9e6ccd37bd902b56d42b50a0a41e94ce98afb1d1a91d511",
+          "match": true,
+          "error": null
+        }
+      ],
+      "match": true
+    },
+    {
+      "href": "tailnet-final-backup-verification.json",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-final-backup-verification.json",
+      "checks": [
+        {
+          "endpoint": "local",
+          "httpStatus": 200,
+          "sha256": "8cb329f5e96b68461f6005461662eecdf82ebdac1a5b00175a9547727c312413",
+          "expectedSha256": "8cb329f5e96b68461f6005461662eecdf82ebdac1a5b00175a9547727c312413",
+          "match": true,
+          "error": null
+        },
+        {
+          "endpoint": "tailnet",
+          "httpStatus": 200,
+          "sha256": "8cb329f5e96b68461f6005461662eecdf82ebdac1a5b00175a9547727c312413",
+          "expectedSha256": "8cb329f5e96b68461f6005461662eecdf82ebdac1a5b00175a9547727c312413",
+          "match": true,
+          "error": null
+        }
+      ],
+      "match": true
+    }
+  ],
+  "supersededReview20RouteHttpStatus": {
+    "local": 404,
+    "tailnet": 404
+  },
+  "agentBrowserSessionProcessesAfterShutdown": {
+    "agentBrowser": 0,
+    "chrome": 0
+  },
+  "verificationNote": "Pass 9 used HTTP and SHA-256 verification only; no browser was launched. Existing Agent Browser screenshots and shutdown evidence remain from the earlier capture.",
+  "files": [
+    {
+      "endpoint": "local",
+      "targetRelative": "404.html",
+      "httpStatus": 200,
+      "expectedSha256": "1b66845f48000301c8040cb39a50d97bf80a05408058702e1401047b7af26283",
+      "servedSha256": "1b66845f48000301c8040cb39a50d97bf80a05408058702e1401047b7af26283",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "README.html",
+      "httpStatus": 200,
+      "expectedSha256": "07a5dcdca1f3c720697f78640686bfe9b5cd3e617591ea09c024884e67c2d17f",
+      "servedSha256": "07a5dcdca1f3c720697f78640686bfe9b5cd3e617591ea09c024884e67c2d17f",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "STATUS.html",
+      "httpStatus": 200,
+      "expectedSha256": "dcf2ecaa259703b2d189253fa773bd83ed592488e182fa083f747169c41bb76c",
+      "servedSha256": "dcf2ecaa259703b2d189253fa773bd83ed592488e182fa083f747169c41bb76c",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "api/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "59a8cb5a86fce63f0eb49c01314ffacaf7836303958410fc2c0293b80306983f",
+      "servedSha256": "59a8cb5a86fce63f0eb49c01314ffacaf7836303958410fc2c0293b80306983f",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "api/index.html",
+      "httpStatus": 200,
+      "expectedSha256": "c0a0c362f4db763829bca6029da06fd3bec81b575f7979eb1ecce85e20ca0ece",
+      "servedSha256": "c0a0c362f4db763829bca6029da06fd3bec81b575f7979eb1ecce85e20ca0ece",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "icon.svg",
+      "httpStatus": 200,
+      "expectedSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "servedSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "index.html",
+      "httpStatus": 200,
+      "expectedSha256": "1568e028fac97104a669674da834eea44007567c832a62384d261febf417a952",
+      "servedSha256": "1568e028fac97104a669674da834eea44007567c832a62384d261febf417a952",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/0019-s04-css-layout-gpu-slice.html",
+      "httpStatus": 200,
+      "expectedSha256": "1098bc3cecb48eaf71b698777dbf90fe6eac730a78d025547565bdccfa832a7a",
+      "servedSha256": "1098bc3cecb48eaf71b698777dbf90fe6eac730a78d025547565bdccfa832a7a",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/0079-s04-10-confirmed-frame-registry.html",
+      "httpStatus": 200,
+      "expectedSha256": "05c1b4f9b150b29ca7d552a85289fa249bbcd83dd2575e96e17f1c1d8acd5926",
+      "servedSha256": "05c1b4f9b150b29ca7d552a85289fa249bbcd83dd2575e96e17f1c1d8acd5926",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "309f670d8e31ff9efafe020554f115d26cbabb8a907afe82a78d8b88936a52a4",
+      "servedSha256": "309f670d8e31ff9efafe020554f115d26cbabb8a907afe82a78d8b88936a52a4",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "8739a0670b9b302ffd3dcf94aae55c841793225ab336016c32e45fa5b26c13ba",
+      "servedSha256": "8739a0670b9b302ffd3dcf94aae55c841793225ab336016c32e45fa5b26c13ba",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.html",
+      "httpStatus": 200,
+      "expectedSha256": "2cbfbb17d4f65f474c3a267d612400b50fd8fc57abf08049c9f347eedf63e40e",
+      "servedSha256": "2cbfbb17d4f65f474c3a267d612400b50fd8fc57abf08049c9f347eedf63e40e",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html",
+      "httpStatus": 200,
+      "expectedSha256": "5b9380be6f55032dac89b798577931a18f9a69416ea705ce7706a4513b83ae7e",
+      "servedSha256": "5b9380be6f55032dac89b798577931a18f9a69416ea705ce7706a4513b83ae7e",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "250603661eda286ac988ac28728e4ac1466cafb8425d92c96fc62560f246b9f8",
+      "servedSha256": "250603661eda286ac988ac28728e4ac1466cafb8425d92c96fc62560f246b9f8",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "httpStatus": 200,
+      "expectedSha256": "361bb8706f4a4ccd90d6ef2675d5f24de9f80ea9c38516658f21f91666f4f52c",
+      "servedSha256": "361bb8706f4a4ccd90d6ef2675d5f24de9f80ea9c38516658f21f91666f4f52c",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "httpStatus": 200,
+      "expectedSha256": "b8b5e6da8f969e4326fda8e5b7a260883de2648ff5ce265a000470a963fa2a8a",
+      "servedSha256": "b8b5e6da8f969e4326fda8e5b7a260883de2648ff5ce265a000470a963fa2a8a",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "httpStatus": 200,
+      "expectedSha256": "457fe6b6ffb49dd024c7b50ca2781a4ae594c114e73b61adcdc39b5d2c419d0d",
+      "servedSha256": "457fe6b6ffb49dd024c7b50ca2781a4ae594c114e73b61adcdc39b5d2c419d0d",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "8af688316969329a79f7c86136b1e6a4fb21a1ac1a25b6ba0b8abfbd989b9bb4",
+      "servedSha256": "8af688316969329a79f7c86136b1e6a4fb21a1ac1a25b6ba0b8abfbd989b9bb4",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/README.md",
+      "httpStatus": 200,
+      "expectedSha256": "de77ddb0f126a4d55a7a614d9e3deaafca5520c64bb41611fbad870dea96cf85",
+      "servedSha256": "de77ddb0f126a4d55a7a614d9e3deaafca5520c64bb41611fbad870dea96cf85",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/agent-browser-network.log",
+      "httpStatus": 200,
+      "expectedSha256": "0135859ef58e4a5885cd306540d49d1c0738f97f3a79bddaa79b490b84fe6fb7",
+      "servedSha256": "0135859ef58e4a5885cd306540d49d1c0738f97f3a79bddaa79b490b84fe6fb7",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/backup-verification.json",
+      "httpStatus": 200,
+      "expectedSha256": "6c3aab31660d8bb0495456a58e46527871143250500a4573ddccdde52edf22bb",
+      "servedSha256": "6c3aab31660d8bb0495456a58e46527871143250500a4573ddccdde52edf22bb",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/browser-verification.json",
+      "httpStatus": 200,
+      "expectedSha256": "6fd695ffd6233c7b95f6514ac2da508ca2f07fb41cc1ce091ced9f343bd614e6",
+      "servedSha256": "6fd695ffd6233c7b95f6514ac2da508ca2f07fb41cc1ce091ced9f343bd614e6",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/copy-verification.json",
+      "httpStatus": 200,
+      "expectedSha256": "de9abd5c08d3e873e47e591e2d3022fa016756b6676badaa5ce9d82ee5ffc087",
+      "servedSha256": "de9abd5c08d3e873e47e591e2d3022fa016756b6676badaa5ce9d82ee5ffc087",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/manifest.json",
+      "httpStatus": 200,
+      "expectedSha256": "7aa9ea5e1e2eb56c72555b744bd1da53492d5be6e1e5007c54b326f6e65f34dd",
+      "servedSha256": "7aa9ea5e1e2eb56c72555b744bd1da53492d5be6e1e5007c54b326f6e65f34dd",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "httpStatus": 200,
+      "expectedSha256": "71f4eb36c75b524b2dcf9b94e48d7ef1a011e1c2723b328dcd475774824be911",
+      "servedSha256": "71f4eb36c75b524b2dcf9b94e48d7ef1a011e1c2723b328dcd475774824be911",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.md",
+      "httpStatus": 200,
+      "expectedSha256": "2c0aa72655cf2f0c7d1e3c5112ba204dc6d85578437b3e732c916a58691acdc7",
+      "servedSha256": "2c0aa72655cf2f0c7d1e3c5112ba204dc6d85578437b3e732c916a58691acdc7",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/preflight.json",
+      "httpStatus": 200,
+      "expectedSha256": "81ba5f6944dd573b824cc6d0cc0692e649c08f801438e106dec9a65bd2f6ccf3",
+      "servedSha256": "81ba5f6944dd573b824cc6d0cc0692e649c08f801438e106dec9a65bd2f6ccf3",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/selected-build.log",
+      "httpStatus": 200,
+      "expectedSha256": "31c0f5e612f93a1765b938a7658540fe723cd1443521c3831bb2ce55df287335",
+      "servedSha256": "31c0f5e612f93a1765b938a7658540fe723cd1443521c3831bb2ce55df287335",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/served-verification.json",
+      "httpStatus": 200,
+      "expectedSha256": "8855da9a2a79af535675d47e395eb7a21a145115aa18eaa5571e6ed3d00baf23",
+      "servedSha256": "8855da9a2a79af535675d47e395eb7a21a145115aa18eaa5571e6ed3d00baf23",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-evidence-agent-browser.png",
+      "httpStatus": 200,
+      "expectedSha256": "5b0bfc4b60e15ed83579d16c6267cb7ba0a55dff99eac4d56dc2d2bb40a67eaf",
+      "servedSha256": "5b0bfc4b60e15ed83579d16c6267cb7ba0a55dff99eac4d56dc2d2bb40a67eaf",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-roadmap-agent-browser.png",
+      "httpStatus": 200,
+      "expectedSha256": "e9c223e4d240793620d52df790df45adace0f0029dfcb669fb0e5ca30721ebcc",
+      "servedSha256": "e9c223e4d240793620d52df790df45adace0f0029dfcb669fb0e5ca30721ebcc",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-status-agent-browser.png",
+      "httpStatus": 200,
+      "expectedSha256": "845ceab93a62a65f71c5a1f087c1647066e58165a6e3e64a453b88613f1881b7",
+      "servedSha256": "845ceab93a62a65f71c5a1f087c1647066e58165a6e3e64a453b88613f1881b7",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "logo.svg",
+      "httpStatus": 200,
+      "expectedSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "servedSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "plan/s04-10-presented-frame-gate.html",
+      "httpStatus": 200,
+      "expectedSha256": "cf9162a7c4ff07c6fb8e63f5afcf0f9c6d8ef8a203c28101a9ecb50d3e7080f4",
+      "servedSha256": "cf9162a7c4ff07c6fb8e63f5afcf0f9c6d8ef8a203c28101a9ecb50d3e7080f4",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "roadmap.html",
+      "httpStatus": 200,
+      "expectedSha256": "24b25b60917c256e39ae08e8554420afa2498e28a1e4d2a26283bbab3d5cfb97",
+      "servedSha256": "24b25b60917c256e39ae08e8554420afa2498e28a1e4d2a26283bbab3d5cfb97",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/STATUS.html",
+      "httpStatus": 200,
+      "expectedSha256": "33e344b2a963666f573a766603b09c23a7f7beea59cb3e14cc9d52b5c04161ac",
+      "servedSha256": "33e344b2a963666f573a766603b09c23a7f7beea59cb3e14cc9d52b5c04161ac",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/0019-s04-css-layout-gpu-slice.html",
+      "httpStatus": 200,
+      "expectedSha256": "6b96876ba4006fc9226dcaa70e5ca429dfa43570beb6403039954e112bfc7582",
+      "servedSha256": "6b96876ba4006fc9226dcaa70e5ca429dfa43570beb6403039954e112bfc7582",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/0079-s04-10-confirmed-frame-registry.html",
+      "httpStatus": 200,
+      "expectedSha256": "aab3656569c41a3dcc5467bae0c87eb8391e78376d2ae89fdcd26fa9d6d2b9d0",
+      "servedSha256": "aab3656569c41a3dcc5467bae0c87eb8391e78376d2ae89fdcd26fa9d6d2b9d0",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "e839049a6e91298a7010dff94352bd8d8f3717246f73ec5b01fc07715089dd0c",
+      "servedSha256": "e839049a6e91298a7010dff94352bd8d8f3717246f73ec5b01fc07715089dd0c",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "e1652bb050a836f5613952cf898b65644711b46a1a7323a38a188bc647b85ac1",
+      "servedSha256": "e1652bb050a836f5613952cf898b65644711b46a1a7323a38a188bc647b85ac1",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.html",
+      "httpStatus": 200,
+      "expectedSha256": "fee46030fe18a668cbe0994d4a1c73b60f783449d65b50ec9ade96c025d13bbc",
+      "servedSha256": "fee46030fe18a668cbe0994d4a1c73b60f783449d65b50ec9ade96c025d13bbc",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html",
+      "httpStatus": 200,
+      "expectedSha256": "37b8db3aa0ede823b9864b35c806f9d9e809d1b3afcbf630f00df9911b4c1a81",
+      "servedSha256": "37b8db3aa0ede823b9864b35c806f9d9e809d1b3afcbf630f00df9911b4c1a81",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "47a9f3127777f6fd9485dde10b54790fa17e2ba4ba397070e57d60c24aed73ba",
+      "servedSha256": "47a9f3127777f6fd9485dde10b54790fa17e2ba4ba397070e57d60c24aed73ba",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "httpStatus": 200,
+      "expectedSha256": "4473c5231f79d69dbf6ddad1736ad4d6be11e82886c98df8c979606330678b6a",
+      "servedSha256": "4473c5231f79d69dbf6ddad1736ad4d6be11e82886c98df8c979606330678b6a",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "httpStatus": 200,
+      "expectedSha256": "7af7f3c5c256f2eb862515fd5d1ad512f89797c3c30e94357e6fb35f79c8ceed",
+      "servedSha256": "7af7f3c5c256f2eb862515fd5d1ad512f89797c3c30e94357e6fb35f79c8ceed",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "httpStatus": 200,
+      "expectedSha256": "bfca0eae0f47ca112c80ff5a40b679fb1a1d3a183653a392fdb4ed4f706d4e87",
+      "servedSha256": "bfca0eae0f47ca112c80ff5a40b679fb1a1d3a183653a392fdb4ed4f706d4e87",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "dbce55e5db1fae466907f83cd3731e0066ac15b21941036ee640c2fe5d9bbfff",
+      "servedSha256": "dbce55e5db1fae466907f83cd3731e0066ac15b21941036ee640c2fe5d9bbfff",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "httpStatus": 200,
+      "expectedSha256": "7595b6102426169209234a5cbc8dd680ef5e3ef7e021a36bfc3a42eb8d668016",
+      "servedSha256": "7595b6102426169209234a5cbc8dd680ef5e3ef7e021a36bfc3a42eb8d668016",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/css/styles.8d918fd78e.css",
+      "httpStatus": 200,
+      "expectedSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "servedSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/a.46d7f082bb.js",
+      "httpStatus": 200,
+      "expectedSha256": "1e383c39a396e97c921be3c3e892de661dc40746c4ada21987ae5d5616d3bdfa",
+      "servedSha256": "1e383c39a396e97c921be3c3e892de661dc40746c4ada21987ae5d5616d3bdfa",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/a.46d7f082bb.js.LICENSE.txt",
+      "httpStatus": 200,
+      "expectedSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "servedSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/i.25208e7c92.js",
+      "httpStatus": 200,
+      "expectedSha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "servedSha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-04bc2c24c122.65d6b84517.js",
+      "httpStatus": 200,
+      "expectedSha256": "3b62513bdbd5dd8cb45c3efce99783aa80bae6e9d339b4a8034d92d5e469164c",
+      "servedSha256": "3b62513bdbd5dd8cb45c3efce99783aa80bae6e9d339b4a8034d92d5e469164c",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-0f4abc145d07.f9f878300a.js",
+      "httpStatus": 200,
+      "expectedSha256": "59571c29a2d8debce3eb93d422337bc5c6d8f240b990762a8fcb7cacb6a7b4a6",
+      "servedSha256": "59571c29a2d8debce3eb93d422337bc5c6d8f240b990762a8fcb7cacb6a7b4a6",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-107ea9bc59bb.defba3fa86.js",
+      "httpStatus": 200,
+      "expectedSha256": "712f5fa5d604964694b348d97ad81fafd06e7c0be5651b68ff84f250f00b8eb4",
+      "servedSha256": "712f5fa5d604964694b348d97ad81fafd06e7c0be5651b68ff84f250f00b8eb4",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-1c606a9bcf5f.6d2e3dcd94.js",
+      "httpStatus": 200,
+      "expectedSha256": "f303261cd91dd059355d0261e8e710207c280ea2ddf77d2264fde29e7b6ac5f8",
+      "servedSha256": "f303261cd91dd059355d0261e8e710207c280ea2ddf77d2264fde29e7b6ac5f8",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-2308615ee227.e66129240c.js",
+      "httpStatus": 200,
+      "expectedSha256": "15828eb5d3e671a4ae6167402c7c99ed18d0601820d3af0ba0d6b684633394e4",
+      "servedSha256": "15828eb5d3e671a4ae6167402c7c99ed18d0601820d3af0ba0d6b684633394e4",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-311b470225ee.ecf06d1ba7.js",
+      "httpStatus": 200,
+      "expectedSha256": "dd7f7691c88520634ed4cb5576063e124793017d04371d38a5a0200e9092a7ca",
+      "servedSha256": "dd7f7691c88520634ed4cb5576063e124793017d04371d38a5a0200e9092a7ca",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-343e2be2a1e8.3237faab92.js",
+      "httpStatus": 200,
+      "expectedSha256": "a8f09418c325fa507f6d8edfab376ea90392586783837ffcdecade4236158fa1",
+      "servedSha256": "a8f09418c325fa507f6d8edfab376ea90392586783837ffcdecade4236158fa1",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-4665cde077d0.85267e8e26.js",
+      "httpStatus": 200,
+      "expectedSha256": "a2cc2d05097ea1a99c6a6e7fbaec2ce6b785f13e56c56465610dd0791a97b291",
+      "servedSha256": "a2cc2d05097ea1a99c6a6e7fbaec2ce6b785f13e56c56465610dd0791a97b291",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-5eb92dc32e34.207f8ae4bf.js",
+      "httpStatus": 200,
+      "expectedSha256": "0abf703e82ab5fc92746448f0ef8d6e706b17f06d887141ed14d1ff57e65ccf3",
+      "servedSha256": "0abf703e82ab5fc92746448f0ef8d6e706b17f06d887141ed14d1ff57e65ccf3",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-6c33a3943990.6f8216abd6.js",
+      "httpStatus": 200,
+      "expectedSha256": "5431320a21029a8b5ab95256380711ceeea75778e390b5ef78c2c3530bbf7413",
+      "servedSha256": "5431320a21029a8b5ab95256380711ceeea75778e390b5ef78c2c3530bbf7413",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-6e8db818f69d.45d17b2c35.js",
+      "httpStatus": 200,
+      "expectedSha256": "8e01b7e03ce39d4269c5e84c24ed3d505e2f61cc4a1bb70cf8dd5df5b58a843c",
+      "servedSha256": "8e01b7e03ce39d4269c5e84c24ed3d505e2f61cc4a1bb70cf8dd5df5b58a843c",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-6fe650616266.7d5de634f9.js",
+      "httpStatus": 200,
+      "expectedSha256": "1bcd227d0e8ef47f7be81a823902aba2cf113dfe311e837b13e5cb5635754943",
+      "servedSha256": "1bcd227d0e8ef47f7be81a823902aba2cf113dfe311e837b13e5cb5635754943",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-73701410f94e.a56965ef82.js",
+      "httpStatus": 200,
+      "expectedSha256": "e2d72ff3284f7f4e44b23eff6296f771d4596a37e23505a96c77bb923ca8c5c0",
+      "servedSha256": "e2d72ff3284f7f4e44b23eff6296f771d4596a37e23505a96c77bb923ca8c5c0",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-7ae5198feb44.c994a43feb.js",
+      "httpStatus": 200,
+      "expectedSha256": "876161bb9811185771883a38e6c4a2c7ad18be96765c1f7a37e795b13ec5d027",
+      "servedSha256": "876161bb9811185771883a38e6c4a2c7ad18be96765c1f7a37e795b13ec5d027",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-7b63acbe348a.5ff2b918f5.js",
+      "httpStatus": 200,
+      "expectedSha256": "0b709b88bb74173829a6933828882466e9f4432078276927bb151ef8ec8f03cf",
+      "servedSha256": "0b709b88bb74173829a6933828882466e9f4432078276927bb151ef8ec8f03cf",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-7ce2535ac56d.878fae7ffe.js",
+      "httpStatus": 200,
+      "expectedSha256": "200f9690f86ee364e75afc37b84404b89e6eb268fcfbc6c890fbc323e0255906",
+      "servedSha256": "200f9690f86ee364e75afc37b84404b89e6eb268fcfbc6c890fbc323e0255906",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-7f43a109d20e.08b203f823.js",
+      "httpStatus": 200,
+      "expectedSha256": "68a799529595d483daace0bd2994d9ac3a40cd4b27550d81b8ed6b4ed6626bbe",
+      "servedSha256": "68a799529595d483daace0bd2994d9ac3a40cd4b27550d81b8ed6b4ed6626bbe",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-9e27f397e76b.8959aaad41.js",
+      "httpStatus": 200,
+      "expectedSha256": "a3293e80ce3afa0883046b2c248937b3fe4a405acbae28e75a2676d52c48a59a",
+      "servedSha256": "a3293e80ce3afa0883046b2c248937b3fe4a405acbae28e75a2676d52c48a59a",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-a1017bdf23ca.bb21698657.js",
+      "httpStatus": 200,
+      "expectedSha256": "7490b9fc461c453aa936014fbda758006acdb91adc95ed4a166a12b06ca5af32",
+      "servedSha256": "7490b9fc461c453aa936014fbda758006acdb91adc95ed4a166a12b06ca5af32",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-a991d6de67ad.7c314569ba.js",
+      "httpStatus": 200,
+      "expectedSha256": "697b9b999bffb7d9ce1379015d8a526a07bb9019601164edd865ea0f934eb541",
+      "servedSha256": "697b9b999bffb7d9ce1379015d8a526a07bb9019601164edd865ea0f934eb541",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-aea8aafbbb87.00ee2fa160.js",
+      "httpStatus": 200,
+      "expectedSha256": "e0c540ed2ea1db7c2fbd9896bd5813927f22b9b9d1f16973137485759eaa6f14",
+      "servedSha256": "e0c540ed2ea1db7c2fbd9896bd5813927f22b9b9d1f16973137485759eaa6f14",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-afc04a26c114.8f2775be0d.js",
+      "httpStatus": 200,
+      "expectedSha256": "53c7e209a8bf826490930cd4ffc3c643e88cbd35e46d538a6e1eeaa9af62d66e",
+      "servedSha256": "53c7e209a8bf826490930cd4ffc3c643e88cbd35e46d538a6e1eeaa9af62d66e",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-b33563055168.d8e9ba1251.js",
+      "httpStatus": 200,
+      "expectedSha256": "ac8efccb8c1bcb83d6e154b967df9fd8f86a648a61177baf8bd54e6f557cff92",
+      "servedSha256": "ac8efccb8c1bcb83d6e154b967df9fd8f86a648a61177baf8bd54e6f557cff92",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-c6d90fac6bcd.c4da362cb8.js",
+      "httpStatus": 200,
+      "expectedSha256": "e8e9029b1d3cf079dd3ab1caea1c07cc275e83d71f1e535b5e6b09d249db4e97",
+      "servedSha256": "e8e9029b1d3cf079dd3ab1caea1c07cc275e83d71f1e535b5e6b09d249db4e97",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-c7b1c23e00a1.bbf60226b0.js",
+      "httpStatus": 200,
+      "expectedSha256": "aaac433b928f0f432121a65f84cea857cb881ba2f7173eb496d1a9d8b172c2fc",
+      "servedSha256": "aaac433b928f0f432121a65f84cea857cb881ba2f7173eb496d1a9d8b172c2fc",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-d044253b30b9.be852d7f03.js",
+      "httpStatus": 200,
+      "expectedSha256": "f3ab26a92290bee79a21d6d5e91a05ab37942d10d3b9f62c08a2156828c6ab94",
+      "servedSha256": "f3ab26a92290bee79a21d6d5e91a05ab37942d10d3b9f62c08a2156828c6ab94",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-d0f54d53ad2b.5a28ec6886.js",
+      "httpStatus": 200,
+      "expectedSha256": "012bef5c3e9e584321d795315537f80471d9d5cde12437044a960075fdd029ed",
+      "servedSha256": "012bef5c3e9e584321d795315537f80471d9d5cde12437044a960075fdd029ed",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-de98351b28cb.9e98b91563.js",
+      "httpStatus": 200,
+      "expectedSha256": "08d2cb06c68ca4b1a588f9c1db66d9f5adee47c2a5daf08a40a8827c9375f0e5",
+      "servedSha256": "08d2cb06c68ca4b1a588f9c1db66d9f5adee47c2a5daf08a40a8827c9375f0e5",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-e0472d60744a.96e01bc0ae.js",
+      "httpStatus": 200,
+      "expectedSha256": "4a5ba09a5f1dca1b642a41a602ce5758b3c16b86f309c946c595b5be6dbf1ae0",
+      "servedSha256": "4a5ba09a5f1dca1b642a41a602ce5758b3c16b86f309c946c595b5be6dbf1ae0",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-e2d1348b3fb4.e6e2209d73.js",
+      "httpStatus": 200,
+      "expectedSha256": "392519d0e0c3cf1323c4f50f8139384be22ff1ceee22cafe69bc0f9fa3542f1a",
+      "servedSha256": "392519d0e0c3cf1323c4f50f8139384be22ff1ceee22cafe69bc0f9fa3542f1a",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/async/route-ef6f0445d65c.3fb8f247a5.js",
+      "httpStatus": 200,
+      "expectedSha256": "6219e54707fbb23fa341d53be5836423314c18bdbd71649ddc0bf5cdb20eb175",
+      "servedSha256": "6219e54707fbb23fa341d53be5836423314c18bdbd71649ddc0bf5cdb20eb175",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/index.d5b523edfa.js",
+      "httpStatus": 200,
+      "expectedSha256": "47e3af175f3b27992647582ed1ccec2404dcd9d4a5c3712d7117fe165a4bd3d1",
+      "servedSha256": "47e3af175f3b27992647582ed1ccec2404dcd9d4a5c3712d7117fe165a4bd3d1",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/lib-react.9cdf8f49ce.js",
+      "httpStatus": 200,
+      "expectedSha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "servedSha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "httpStatus": 200,
+      "expectedSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "servedSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/lib-router.1e14e568cb.js",
+      "httpStatus": 200,
+      "expectedSha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "servedSha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "httpStatus": 200,
+      "expectedSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "servedSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/js/styles.d2a6dfa6a0.js",
+      "httpStatus": 200,
+      "expectedSha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "servedSha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "static/search_index.ko.d405cc1a.json",
+      "httpStatus": 200,
+      "expectedSha256": "d405cc1ac90e0e5188ea0a7c37ea1acd8a4341c5acab5b3036c763739d869570",
+      "servedSha256": "d405cc1ac90e0e5188ea0a7c37ea1acd8a4341c5acab5b3036c763739d869570",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "plan/s04-10-presented-frame-gate.md",
+      "httpStatus": 200,
+      "expectedSha256": "e89960d31a3993320829926321ab98928599ca49f92102e88ab34fefa441b994",
+      "servedSha256": "e89960d31a3993320829926321ab98928599ca49f92102e88ab34fefa441b994",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/STATUS.md",
+      "httpStatus": 200,
+      "expectedSha256": "00274a22e7178e5a193fa7e6fa77f8447e90d7da3623742129abcd9d00e061f4",
+      "servedSha256": "00274a22e7178e5a193fa7e6fa77f8447e90d7da3623742129abcd9d00e061f4",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/README.md",
+      "httpStatus": 200,
+      "expectedSha256": "2e1739504a75b66d6159ee4da02daff5f2fefa38a792694a40815478202304d0",
+      "servedSha256": "2e1739504a75b66d6159ee4da02daff5f2fefa38a792694a40815478202304d0",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.md",
+      "httpStatus": 200,
+      "expectedSha256": "c741a3774d1e13d68cbf682e4a71334e9f5605249fdda5cefa263467b6e86e68",
+      "servedSha256": "c741a3774d1e13d68cbf682e4a71334e9f5605249fdda5cefa263467b6e86e68",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/Info.plist",
+      "httpStatus": 200,
+      "expectedSha256": "18d6fa164951c16b8f238a4083d5f68b394890273762c99b2ff1ebe2fc2ec838",
+      "servedSha256": "18d6fa164951c16b8f238a4083d5f68b394890273762c99b2ff1ebe2fc2ec838",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.md",
+      "httpStatus": 200,
+      "expectedSha256": "838f078a1269130692055835ef38e06ded75a811c04495d016dafb54140b163a",
+      "servedSha256": "838f078a1269130692055835ef38e06ded75a811c04495d016dafb54140b163a",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/metal-api-probe.swift",
+      "httpStatus": 200,
+      "expectedSha256": "ec22901e6ebf4f73356271a1d9879a63f3b499f6389dabdd1960b8cd5ac552a0",
+      "servedSha256": "ec22901e6ebf4f73356271a1d9879a63f3b499f6389dabdd1960b8cd5ac552a0",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.md",
+      "httpStatus": 200,
+      "expectedSha256": "c18713e7da3e9cc6db02c4188d89bd0db80c37405d2e0cb3c0ffee82047bc72f",
+      "servedSha256": "c18713e7da3e9cc6db02c4188d89bd0db80c37405d2e0cb3c0ffee82047bc72f",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/selected-build.log",
+      "httpStatus": 200,
+      "expectedSha256": "08659a16cc69765077ad23c6e5b0c9c6735fd9824cf3c7fb94bc6386f5b1f75d",
+      "servedSha256": "08659a16cc69765077ad23c6e5b0c9c6735fd9824cf3c7fb94bc6386f5b1f75d",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/simulator-runtime.log",
+      "httpStatus": 200,
+      "expectedSha256": "b912d0ae4d63d929e07ab1d9a11c4044e2cf9df75843f326988cbd7ebdf65ae9",
+      "servedSha256": "b912d0ae4d63d929e07ab1d9a11c4044e2cf9df75843f326988cbd7ebdf65ae9",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/simulator-selector-probe.m",
+      "httpStatus": 200,
+      "expectedSha256": "6a932cfbb8fbd2c59f7369456d65bb52fdf1bcdf333816015bf788bf70983da7",
+      "servedSha256": "6a932cfbb8fbd2c59f7369456d65bb52fdf1bcdf333816015bf788bf70983da7",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-roadmap-agent-browser.png",
+      "httpStatus": 200,
+      "expectedSha256": "4a0aef2ccad9c69c4d125b28e630b50c303807f5baddf855ae79859fbff54993",
+      "servedSha256": "4a0aef2ccad9c69c4d125b28e630b50c303807f5baddf855ae79859fbff54993",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-status-agent-browser.png",
+      "httpStatus": 200,
+      "expectedSha256": "77b8a29e91e15641af8540c88d7ccae5c87843e8048ad4b66f7ec7d654f47059",
+      "servedSha256": "77b8a29e91e15641af8540c88d7ccae5c87843e8048ad4b66f7ec7d654f47059",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-evidence-agent-browser.png",
+      "httpStatus": 200,
+      "expectedSha256": "9348d8f42949ce65c9e6ccd37bd902b56d42b50a0a41e94ce98afb1d1a91d511",
+      "servedSha256": "9348d8f42949ce65c9e6ccd37bd902b56d42b50a0a41e94ce98afb1d1a91d511",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/browser-verification.json",
+      "httpStatus": 200,
+      "expectedSha256": "44e57779af931f961c755f843ef2c876a8e75f87dd211aea4826fc306992d656",
+      "servedSha256": "44e57779af931f961c755f843ef2c876a8e75f87dd211aea4826fc306992d656",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/browser-session-shutdown.json",
+      "httpStatus": 200,
+      "expectedSha256": "6c8c8d7eeb64ba5537ccbf7a7bb85f31438357b7e06318338399784b44bc7b8b",
+      "servedSha256": "6c8c8d7eeb64ba5537ccbf7a7bb85f31438357b7e06318338399784b44bc7b8b",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/agent-browser-network.log",
+      "httpStatus": 200,
+      "expectedSha256": "5233d3e29ef07653eea968cb1c0374c53576a6c77f50f151e2a6049625647050",
+      "servedSha256": "5233d3e29ef07653eea968cb1c0374c53576a6c77f50f151e2a6049625647050",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/selected-build.log",
+      "httpStatus": 200,
+      "expectedSha256": "08659a16cc69765077ad23c6e5b0c9c6735fd9824cf3c7fb94bc6386f5b1f75d",
+      "servedSha256": "08659a16cc69765077ad23c6e5b0c9c6735fd9824cf3c7fb94bc6386f5b1f75d",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/browser-verification.json",
+      "httpStatus": 200,
+      "expectedSha256": "44e57779af931f961c755f843ef2c876a8e75f87dd211aea4826fc306992d656",
+      "servedSha256": "44e57779af931f961c755f843ef2c876a8e75f87dd211aea4826fc306992d656",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/browser-session-shutdown.json",
+      "httpStatus": 200,
+      "expectedSha256": "6c8c8d7eeb64ba5537ccbf7a7bb85f31438357b7e06318338399784b44bc7b8b",
+      "servedSha256": "6c8c8d7eeb64ba5537ccbf7a7bb85f31438357b7e06318338399784b44bc7b8b",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/agent-browser-network.log",
+      "httpStatus": 200,
+      "expectedSha256": "5233d3e29ef07653eea968cb1c0374c53576a6c77f50f151e2a6049625647050",
+      "servedSha256": "5233d3e29ef07653eea968cb1c0374c53576a6c77f50f151e2a6049625647050",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-roadmap-agent-browser.png",
+      "httpStatus": 200,
+      "expectedSha256": "4a0aef2ccad9c69c4d125b28e630b50c303807f5baddf855ae79859fbff54993",
+      "servedSha256": "4a0aef2ccad9c69c4d125b28e630b50c303807f5baddf855ae79859fbff54993",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-status-agent-browser.png",
+      "httpStatus": 200,
+      "expectedSha256": "77b8a29e91e15641af8540c88d7ccae5c87843e8048ad4b66f7ec7d654f47059",
+      "servedSha256": "77b8a29e91e15641af8540c88d7ccae5c87843e8048ad4b66f7ec7d654f47059",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-evidence-agent-browser.png",
+      "httpStatus": 200,
+      "expectedSha256": "9348d8f42949ce65c9e6ccd37bd902b56d42b50a0a41e94ce98afb1d1a91d511",
+      "servedSha256": "9348d8f42949ce65c9e6ccd37bd902b56d42b50a0a41e94ce98afb1d1a91d511",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "local",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-final-backup-verification.json",
+      "httpStatus": 200,
+      "expectedSha256": "8cb329f5e96b68461f6005461662eecdf82ebdac1a5b00175a9547727c312413",
+      "servedSha256": "8cb329f5e96b68461f6005461662eecdf82ebdac1a5b00175a9547727c312413",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "404.html",
+      "httpStatus": 200,
+      "expectedSha256": "1b66845f48000301c8040cb39a50d97bf80a05408058702e1401047b7af26283",
+      "servedSha256": "1b66845f48000301c8040cb39a50d97bf80a05408058702e1401047b7af26283",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "README.html",
+      "httpStatus": 200,
+      "expectedSha256": "07a5dcdca1f3c720697f78640686bfe9b5cd3e617591ea09c024884e67c2d17f",
+      "servedSha256": "07a5dcdca1f3c720697f78640686bfe9b5cd3e617591ea09c024884e67c2d17f",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "STATUS.html",
+      "httpStatus": 200,
+      "expectedSha256": "dcf2ecaa259703b2d189253fa773bd83ed592488e182fa083f747169c41bb76c",
+      "servedSha256": "dcf2ecaa259703b2d189253fa773bd83ed592488e182fa083f747169c41bb76c",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "api/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "59a8cb5a86fce63f0eb49c01314ffacaf7836303958410fc2c0293b80306983f",
+      "servedSha256": "59a8cb5a86fce63f0eb49c01314ffacaf7836303958410fc2c0293b80306983f",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "api/index.html",
+      "httpStatus": 200,
+      "expectedSha256": "c0a0c362f4db763829bca6029da06fd3bec81b575f7979eb1ecce85e20ca0ece",
+      "servedSha256": "c0a0c362f4db763829bca6029da06fd3bec81b575f7979eb1ecce85e20ca0ece",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "icon.svg",
+      "httpStatus": 200,
+      "expectedSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "servedSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "index.html",
+      "httpStatus": 200,
+      "expectedSha256": "1568e028fac97104a669674da834eea44007567c832a62384d261febf417a952",
+      "servedSha256": "1568e028fac97104a669674da834eea44007567c832a62384d261febf417a952",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/0019-s04-css-layout-gpu-slice.html",
+      "httpStatus": 200,
+      "expectedSha256": "1098bc3cecb48eaf71b698777dbf90fe6eac730a78d025547565bdccfa832a7a",
+      "servedSha256": "1098bc3cecb48eaf71b698777dbf90fe6eac730a78d025547565bdccfa832a7a",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/0079-s04-10-confirmed-frame-registry.html",
+      "httpStatus": 200,
+      "expectedSha256": "05c1b4f9b150b29ca7d552a85289fa249bbcd83dd2575e96e17f1c1d8acd5926",
+      "servedSha256": "05c1b4f9b150b29ca7d552a85289fa249bbcd83dd2575e96e17f1c1d8acd5926",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "309f670d8e31ff9efafe020554f115d26cbabb8a907afe82a78d8b88936a52a4",
+      "servedSha256": "309f670d8e31ff9efafe020554f115d26cbabb8a907afe82a78d8b88936a52a4",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "8739a0670b9b302ffd3dcf94aae55c841793225ab336016c32e45fa5b26c13ba",
+      "servedSha256": "8739a0670b9b302ffd3dcf94aae55c841793225ab336016c32e45fa5b26c13ba",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.html",
+      "httpStatus": 200,
+      "expectedSha256": "2cbfbb17d4f65f474c3a267d612400b50fd8fc57abf08049c9f347eedf63e40e",
+      "servedSha256": "2cbfbb17d4f65f474c3a267d612400b50fd8fc57abf08049c9f347eedf63e40e",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html",
+      "httpStatus": 200,
+      "expectedSha256": "5b9380be6f55032dac89b798577931a18f9a69416ea705ce7706a4513b83ae7e",
+      "servedSha256": "5b9380be6f55032dac89b798577931a18f9a69416ea705ce7706a4513b83ae7e",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "250603661eda286ac988ac28728e4ac1466cafb8425d92c96fc62560f246b9f8",
+      "servedSha256": "250603661eda286ac988ac28728e4ac1466cafb8425d92c96fc62560f246b9f8",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "httpStatus": 200,
+      "expectedSha256": "361bb8706f4a4ccd90d6ef2675d5f24de9f80ea9c38516658f21f91666f4f52c",
+      "servedSha256": "361bb8706f4a4ccd90d6ef2675d5f24de9f80ea9c38516658f21f91666f4f52c",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "httpStatus": 200,
+      "expectedSha256": "b8b5e6da8f969e4326fda8e5b7a260883de2648ff5ce265a000470a963fa2a8a",
+      "servedSha256": "b8b5e6da8f969e4326fda8e5b7a260883de2648ff5ce265a000470a963fa2a8a",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "httpStatus": 200,
+      "expectedSha256": "457fe6b6ffb49dd024c7b50ca2781a4ae594c114e73b61adcdc39b5d2c419d0d",
+      "servedSha256": "457fe6b6ffb49dd024c7b50ca2781a4ae594c114e73b61adcdc39b5d2c419d0d",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "8af688316969329a79f7c86136b1e6a4fb21a1ac1a25b6ba0b8abfbd989b9bb4",
+      "servedSha256": "8af688316969329a79f7c86136b1e6a4fb21a1ac1a25b6ba0b8abfbd989b9bb4",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/README.md",
+      "httpStatus": 200,
+      "expectedSha256": "de77ddb0f126a4d55a7a614d9e3deaafca5520c64bb41611fbad870dea96cf85",
+      "servedSha256": "de77ddb0f126a4d55a7a614d9e3deaafca5520c64bb41611fbad870dea96cf85",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/agent-browser-network.log",
+      "httpStatus": 200,
+      "expectedSha256": "0135859ef58e4a5885cd306540d49d1c0738f97f3a79bddaa79b490b84fe6fb7",
+      "servedSha256": "0135859ef58e4a5885cd306540d49d1c0738f97f3a79bddaa79b490b84fe6fb7",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/backup-verification.json",
+      "httpStatus": 200,
+      "expectedSha256": "6c3aab31660d8bb0495456a58e46527871143250500a4573ddccdde52edf22bb",
+      "servedSha256": "6c3aab31660d8bb0495456a58e46527871143250500a4573ddccdde52edf22bb",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/browser-verification.json",
+      "httpStatus": 200,
+      "expectedSha256": "6fd695ffd6233c7b95f6514ac2da508ca2f07fb41cc1ce091ced9f343bd614e6",
+      "servedSha256": "6fd695ffd6233c7b95f6514ac2da508ca2f07fb41cc1ce091ced9f343bd614e6",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/copy-verification.json",
+      "httpStatus": 200,
+      "expectedSha256": "de9abd5c08d3e873e47e591e2d3022fa016756b6676badaa5ce9d82ee5ffc087",
+      "servedSha256": "de9abd5c08d3e873e47e591e2d3022fa016756b6676badaa5ce9d82ee5ffc087",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/manifest.json",
+      "httpStatus": 200,
+      "expectedSha256": "7aa9ea5e1e2eb56c72555b744bd1da53492d5be6e1e5007c54b326f6e65f34dd",
+      "servedSha256": "7aa9ea5e1e2eb56c72555b744bd1da53492d5be6e1e5007c54b326f6e65f34dd",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "httpStatus": 200,
+      "expectedSha256": "71f4eb36c75b524b2dcf9b94e48d7ef1a011e1c2723b328dcd475774824be911",
+      "servedSha256": "71f4eb36c75b524b2dcf9b94e48d7ef1a011e1c2723b328dcd475774824be911",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.md",
+      "httpStatus": 200,
+      "expectedSha256": "2c0aa72655cf2f0c7d1e3c5112ba204dc6d85578437b3e732c916a58691acdc7",
+      "servedSha256": "2c0aa72655cf2f0c7d1e3c5112ba204dc6d85578437b3e732c916a58691acdc7",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/preflight.json",
+      "httpStatus": 200,
+      "expectedSha256": "81ba5f6944dd573b824cc6d0cc0692e649c08f801438e106dec9a65bd2f6ccf3",
+      "servedSha256": "81ba5f6944dd573b824cc6d0cc0692e649c08f801438e106dec9a65bd2f6ccf3",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/selected-build.log",
+      "httpStatus": 200,
+      "expectedSha256": "31c0f5e612f93a1765b938a7658540fe723cd1443521c3831bb2ce55df287335",
+      "servedSha256": "31c0f5e612f93a1765b938a7658540fe723cd1443521c3831bb2ce55df287335",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/served-verification.json",
+      "httpStatus": 200,
+      "expectedSha256": "8855da9a2a79af535675d47e395eb7a21a145115aa18eaa5571e6ed3d00baf23",
+      "servedSha256": "8855da9a2a79af535675d47e395eb7a21a145115aa18eaa5571e6ed3d00baf23",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-evidence-agent-browser.png",
+      "httpStatus": 200,
+      "expectedSha256": "5b0bfc4b60e15ed83579d16c6267cb7ba0a55dff99eac4d56dc2d2bb40a67eaf",
+      "servedSha256": "5b0bfc4b60e15ed83579d16c6267cb7ba0a55dff99eac4d56dc2d2bb40a67eaf",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-roadmap-agent-browser.png",
+      "httpStatus": 200,
+      "expectedSha256": "e9c223e4d240793620d52df790df45adace0f0029dfcb669fb0e5ca30721ebcc",
+      "servedSha256": "e9c223e4d240793620d52df790df45adace0f0029dfcb669fb0e5ca30721ebcc",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-status-agent-browser.png",
+      "httpStatus": 200,
+      "expectedSha256": "845ceab93a62a65f71c5a1f087c1647066e58165a6e3e64a453b88613f1881b7",
+      "servedSha256": "845ceab93a62a65f71c5a1f087c1647066e58165a6e3e64a453b88613f1881b7",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "logo.svg",
+      "httpStatus": 200,
+      "expectedSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "servedSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "plan/s04-10-presented-frame-gate.html",
+      "httpStatus": 200,
+      "expectedSha256": "cf9162a7c4ff07c6fb8e63f5afcf0f9c6d8ef8a203c28101a9ecb50d3e7080f4",
+      "servedSha256": "cf9162a7c4ff07c6fb8e63f5afcf0f9c6d8ef8a203c28101a9ecb50d3e7080f4",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "roadmap.html",
+      "httpStatus": 200,
+      "expectedSha256": "24b25b60917c256e39ae08e8554420afa2498e28a1e4d2a26283bbab3d5cfb97",
+      "servedSha256": "24b25b60917c256e39ae08e8554420afa2498e28a1e4d2a26283bbab3d5cfb97",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/STATUS.html",
+      "httpStatus": 200,
+      "expectedSha256": "33e344b2a963666f573a766603b09c23a7f7beea59cb3e14cc9d52b5c04161ac",
+      "servedSha256": "33e344b2a963666f573a766603b09c23a7f7beea59cb3e14cc9d52b5c04161ac",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/0019-s04-css-layout-gpu-slice.html",
+      "httpStatus": 200,
+      "expectedSha256": "6b96876ba4006fc9226dcaa70e5ca429dfa43570beb6403039954e112bfc7582",
+      "servedSha256": "6b96876ba4006fc9226dcaa70e5ca429dfa43570beb6403039954e112bfc7582",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/0079-s04-10-confirmed-frame-registry.html",
+      "httpStatus": 200,
+      "expectedSha256": "aab3656569c41a3dcc5467bae0c87eb8391e78376d2ae89fdcd26fa9d6d2b9d0",
+      "servedSha256": "aab3656569c41a3dcc5467bae0c87eb8391e78376d2ae89fdcd26fa9d6d2b9d0",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "e839049a6e91298a7010dff94352bd8d8f3717246f73ec5b01fc07715089dd0c",
+      "servedSha256": "e839049a6e91298a7010dff94352bd8d8f3717246f73ec5b01fc07715089dd0c",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "e1652bb050a836f5613952cf898b65644711b46a1a7323a38a188bc647b85ac1",
+      "servedSha256": "e1652bb050a836f5613952cf898b65644711b46a1a7323a38a188bc647b85ac1",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.html",
+      "httpStatus": 200,
+      "expectedSha256": "fee46030fe18a668cbe0994d4a1c73b60f783449d65b50ec9ade96c025d13bbc",
+      "servedSha256": "fee46030fe18a668cbe0994d4a1c73b60f783449d65b50ec9ade96c025d13bbc",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html",
+      "httpStatus": 200,
+      "expectedSha256": "37b8db3aa0ede823b9864b35c806f9d9e809d1b3afcbf630f00df9911b4c1a81",
+      "servedSha256": "37b8db3aa0ede823b9864b35c806f9d9e809d1b3afcbf630f00df9911b4c1a81",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "47a9f3127777f6fd9485dde10b54790fa17e2ba4ba397070e57d60c24aed73ba",
+      "servedSha256": "47a9f3127777f6fd9485dde10b54790fa17e2ba4ba397070e57d60c24aed73ba",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "httpStatus": 200,
+      "expectedSha256": "4473c5231f79d69dbf6ddad1736ad4d6be11e82886c98df8c979606330678b6a",
+      "servedSha256": "4473c5231f79d69dbf6ddad1736ad4d6be11e82886c98df8c979606330678b6a",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "httpStatus": 200,
+      "expectedSha256": "7af7f3c5c256f2eb862515fd5d1ad512f89797c3c30e94357e6fb35f79c8ceed",
+      "servedSha256": "7af7f3c5c256f2eb862515fd5d1ad512f89797c3c30e94357e6fb35f79c8ceed",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "httpStatus": 200,
+      "expectedSha256": "bfca0eae0f47ca112c80ff5a40b679fb1a1d3a183653a392fdb4ed4f706d4e87",
+      "servedSha256": "bfca0eae0f47ca112c80ff5a40b679fb1a1d3a183653a392fdb4ed4f706d4e87",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "httpStatus": 200,
+      "expectedSha256": "dbce55e5db1fae466907f83cd3731e0066ac15b21941036ee640c2fe5d9bbfff",
+      "servedSha256": "dbce55e5db1fae466907f83cd3731e0066ac15b21941036ee640c2fe5d9bbfff",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "httpStatus": 200,
+      "expectedSha256": "7595b6102426169209234a5cbc8dd680ef5e3ef7e021a36bfc3a42eb8d668016",
+      "servedSha256": "7595b6102426169209234a5cbc8dd680ef5e3ef7e021a36bfc3a42eb8d668016",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/css/styles.8d918fd78e.css",
+      "httpStatus": 200,
+      "expectedSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "servedSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/a.46d7f082bb.js",
+      "httpStatus": 200,
+      "expectedSha256": "1e383c39a396e97c921be3c3e892de661dc40746c4ada21987ae5d5616d3bdfa",
+      "servedSha256": "1e383c39a396e97c921be3c3e892de661dc40746c4ada21987ae5d5616d3bdfa",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/a.46d7f082bb.js.LICENSE.txt",
+      "httpStatus": 200,
+      "expectedSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "servedSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/i.25208e7c92.js",
+      "httpStatus": 200,
+      "expectedSha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "servedSha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-04bc2c24c122.65d6b84517.js",
+      "httpStatus": 200,
+      "expectedSha256": "3b62513bdbd5dd8cb45c3efce99783aa80bae6e9d339b4a8034d92d5e469164c",
+      "servedSha256": "3b62513bdbd5dd8cb45c3efce99783aa80bae6e9d339b4a8034d92d5e469164c",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-0f4abc145d07.f9f878300a.js",
+      "httpStatus": 200,
+      "expectedSha256": "59571c29a2d8debce3eb93d422337bc5c6d8f240b990762a8fcb7cacb6a7b4a6",
+      "servedSha256": "59571c29a2d8debce3eb93d422337bc5c6d8f240b990762a8fcb7cacb6a7b4a6",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-107ea9bc59bb.defba3fa86.js",
+      "httpStatus": 200,
+      "expectedSha256": "712f5fa5d604964694b348d97ad81fafd06e7c0be5651b68ff84f250f00b8eb4",
+      "servedSha256": "712f5fa5d604964694b348d97ad81fafd06e7c0be5651b68ff84f250f00b8eb4",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-1c606a9bcf5f.6d2e3dcd94.js",
+      "httpStatus": 200,
+      "expectedSha256": "f303261cd91dd059355d0261e8e710207c280ea2ddf77d2264fde29e7b6ac5f8",
+      "servedSha256": "f303261cd91dd059355d0261e8e710207c280ea2ddf77d2264fde29e7b6ac5f8",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-2308615ee227.e66129240c.js",
+      "httpStatus": 200,
+      "expectedSha256": "15828eb5d3e671a4ae6167402c7c99ed18d0601820d3af0ba0d6b684633394e4",
+      "servedSha256": "15828eb5d3e671a4ae6167402c7c99ed18d0601820d3af0ba0d6b684633394e4",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-311b470225ee.ecf06d1ba7.js",
+      "httpStatus": 200,
+      "expectedSha256": "dd7f7691c88520634ed4cb5576063e124793017d04371d38a5a0200e9092a7ca",
+      "servedSha256": "dd7f7691c88520634ed4cb5576063e124793017d04371d38a5a0200e9092a7ca",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-343e2be2a1e8.3237faab92.js",
+      "httpStatus": 200,
+      "expectedSha256": "a8f09418c325fa507f6d8edfab376ea90392586783837ffcdecade4236158fa1",
+      "servedSha256": "a8f09418c325fa507f6d8edfab376ea90392586783837ffcdecade4236158fa1",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-4665cde077d0.85267e8e26.js",
+      "httpStatus": 200,
+      "expectedSha256": "a2cc2d05097ea1a99c6a6e7fbaec2ce6b785f13e56c56465610dd0791a97b291",
+      "servedSha256": "a2cc2d05097ea1a99c6a6e7fbaec2ce6b785f13e56c56465610dd0791a97b291",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-5eb92dc32e34.207f8ae4bf.js",
+      "httpStatus": 200,
+      "expectedSha256": "0abf703e82ab5fc92746448f0ef8d6e706b17f06d887141ed14d1ff57e65ccf3",
+      "servedSha256": "0abf703e82ab5fc92746448f0ef8d6e706b17f06d887141ed14d1ff57e65ccf3",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-6c33a3943990.6f8216abd6.js",
+      "httpStatus": 200,
+      "expectedSha256": "5431320a21029a8b5ab95256380711ceeea75778e390b5ef78c2c3530bbf7413",
+      "servedSha256": "5431320a21029a8b5ab95256380711ceeea75778e390b5ef78c2c3530bbf7413",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-6e8db818f69d.45d17b2c35.js",
+      "httpStatus": 200,
+      "expectedSha256": "8e01b7e03ce39d4269c5e84c24ed3d505e2f61cc4a1bb70cf8dd5df5b58a843c",
+      "servedSha256": "8e01b7e03ce39d4269c5e84c24ed3d505e2f61cc4a1bb70cf8dd5df5b58a843c",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-6fe650616266.7d5de634f9.js",
+      "httpStatus": 200,
+      "expectedSha256": "1bcd227d0e8ef47f7be81a823902aba2cf113dfe311e837b13e5cb5635754943",
+      "servedSha256": "1bcd227d0e8ef47f7be81a823902aba2cf113dfe311e837b13e5cb5635754943",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-73701410f94e.a56965ef82.js",
+      "httpStatus": 200,
+      "expectedSha256": "e2d72ff3284f7f4e44b23eff6296f771d4596a37e23505a96c77bb923ca8c5c0",
+      "servedSha256": "e2d72ff3284f7f4e44b23eff6296f771d4596a37e23505a96c77bb923ca8c5c0",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-7ae5198feb44.c994a43feb.js",
+      "httpStatus": 200,
+      "expectedSha256": "876161bb9811185771883a38e6c4a2c7ad18be96765c1f7a37e795b13ec5d027",
+      "servedSha256": "876161bb9811185771883a38e6c4a2c7ad18be96765c1f7a37e795b13ec5d027",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-7b63acbe348a.5ff2b918f5.js",
+      "httpStatus": 200,
+      "expectedSha256": "0b709b88bb74173829a6933828882466e9f4432078276927bb151ef8ec8f03cf",
+      "servedSha256": "0b709b88bb74173829a6933828882466e9f4432078276927bb151ef8ec8f03cf",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-7ce2535ac56d.878fae7ffe.js",
+      "httpStatus": 200,
+      "expectedSha256": "200f9690f86ee364e75afc37b84404b89e6eb268fcfbc6c890fbc323e0255906",
+      "servedSha256": "200f9690f86ee364e75afc37b84404b89e6eb268fcfbc6c890fbc323e0255906",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-7f43a109d20e.08b203f823.js",
+      "httpStatus": 200,
+      "expectedSha256": "68a799529595d483daace0bd2994d9ac3a40cd4b27550d81b8ed6b4ed6626bbe",
+      "servedSha256": "68a799529595d483daace0bd2994d9ac3a40cd4b27550d81b8ed6b4ed6626bbe",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-9e27f397e76b.8959aaad41.js",
+      "httpStatus": 200,
+      "expectedSha256": "a3293e80ce3afa0883046b2c248937b3fe4a405acbae28e75a2676d52c48a59a",
+      "servedSha256": "a3293e80ce3afa0883046b2c248937b3fe4a405acbae28e75a2676d52c48a59a",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-a1017bdf23ca.bb21698657.js",
+      "httpStatus": 200,
+      "expectedSha256": "7490b9fc461c453aa936014fbda758006acdb91adc95ed4a166a12b06ca5af32",
+      "servedSha256": "7490b9fc461c453aa936014fbda758006acdb91adc95ed4a166a12b06ca5af32",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-a991d6de67ad.7c314569ba.js",
+      "httpStatus": 200,
+      "expectedSha256": "697b9b999bffb7d9ce1379015d8a526a07bb9019601164edd865ea0f934eb541",
+      "servedSha256": "697b9b999bffb7d9ce1379015d8a526a07bb9019601164edd865ea0f934eb541",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-aea8aafbbb87.00ee2fa160.js",
+      "httpStatus": 200,
+      "expectedSha256": "e0c540ed2ea1db7c2fbd9896bd5813927f22b9b9d1f16973137485759eaa6f14",
+      "servedSha256": "e0c540ed2ea1db7c2fbd9896bd5813927f22b9b9d1f16973137485759eaa6f14",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-afc04a26c114.8f2775be0d.js",
+      "httpStatus": 200,
+      "expectedSha256": "53c7e209a8bf826490930cd4ffc3c643e88cbd35e46d538a6e1eeaa9af62d66e",
+      "servedSha256": "53c7e209a8bf826490930cd4ffc3c643e88cbd35e46d538a6e1eeaa9af62d66e",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-b33563055168.d8e9ba1251.js",
+      "httpStatus": 200,
+      "expectedSha256": "ac8efccb8c1bcb83d6e154b967df9fd8f86a648a61177baf8bd54e6f557cff92",
+      "servedSha256": "ac8efccb8c1bcb83d6e154b967df9fd8f86a648a61177baf8bd54e6f557cff92",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-c6d90fac6bcd.c4da362cb8.js",
+      "httpStatus": 200,
+      "expectedSha256": "e8e9029b1d3cf079dd3ab1caea1c07cc275e83d71f1e535b5e6b09d249db4e97",
+      "servedSha256": "e8e9029b1d3cf079dd3ab1caea1c07cc275e83d71f1e535b5e6b09d249db4e97",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-c7b1c23e00a1.bbf60226b0.js",
+      "httpStatus": 200,
+      "expectedSha256": "aaac433b928f0f432121a65f84cea857cb881ba2f7173eb496d1a9d8b172c2fc",
+      "servedSha256": "aaac433b928f0f432121a65f84cea857cb881ba2f7173eb496d1a9d8b172c2fc",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-d044253b30b9.be852d7f03.js",
+      "httpStatus": 200,
+      "expectedSha256": "f3ab26a92290bee79a21d6d5e91a05ab37942d10d3b9f62c08a2156828c6ab94",
+      "servedSha256": "f3ab26a92290bee79a21d6d5e91a05ab37942d10d3b9f62c08a2156828c6ab94",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-d0f54d53ad2b.5a28ec6886.js",
+      "httpStatus": 200,
+      "expectedSha256": "012bef5c3e9e584321d795315537f80471d9d5cde12437044a960075fdd029ed",
+      "servedSha256": "012bef5c3e9e584321d795315537f80471d9d5cde12437044a960075fdd029ed",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-de98351b28cb.9e98b91563.js",
+      "httpStatus": 200,
+      "expectedSha256": "08d2cb06c68ca4b1a588f9c1db66d9f5adee47c2a5daf08a40a8827c9375f0e5",
+      "servedSha256": "08d2cb06c68ca4b1a588f9c1db66d9f5adee47c2a5daf08a40a8827c9375f0e5",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-e0472d60744a.96e01bc0ae.js",
+      "httpStatus": 200,
+      "expectedSha256": "4a5ba09a5f1dca1b642a41a602ce5758b3c16b86f309c946c595b5be6dbf1ae0",
+      "servedSha256": "4a5ba09a5f1dca1b642a41a602ce5758b3c16b86f309c946c595b5be6dbf1ae0",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-e2d1348b3fb4.e6e2209d73.js",
+      "httpStatus": 200,
+      "expectedSha256": "392519d0e0c3cf1323c4f50f8139384be22ff1ceee22cafe69bc0f9fa3542f1a",
+      "servedSha256": "392519d0e0c3cf1323c4f50f8139384be22ff1ceee22cafe69bc0f9fa3542f1a",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/async/route-ef6f0445d65c.3fb8f247a5.js",
+      "httpStatus": 200,
+      "expectedSha256": "6219e54707fbb23fa341d53be5836423314c18bdbd71649ddc0bf5cdb20eb175",
+      "servedSha256": "6219e54707fbb23fa341d53be5836423314c18bdbd71649ddc0bf5cdb20eb175",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/index.d5b523edfa.js",
+      "httpStatus": 200,
+      "expectedSha256": "47e3af175f3b27992647582ed1ccec2404dcd9d4a5c3712d7117fe165a4bd3d1",
+      "servedSha256": "47e3af175f3b27992647582ed1ccec2404dcd9d4a5c3712d7117fe165a4bd3d1",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/lib-react.9cdf8f49ce.js",
+      "httpStatus": 200,
+      "expectedSha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "servedSha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "httpStatus": 200,
+      "expectedSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "servedSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/lib-router.1e14e568cb.js",
+      "httpStatus": 200,
+      "expectedSha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "servedSha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "httpStatus": 200,
+      "expectedSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "servedSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/js/styles.d2a6dfa6a0.js",
+      "httpStatus": 200,
+      "expectedSha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "servedSha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "static/search_index.ko.d405cc1a.json",
+      "httpStatus": 200,
+      "expectedSha256": "d405cc1ac90e0e5188ea0a7c37ea1acd8a4341c5acab5b3036c763739d869570",
+      "servedSha256": "d405cc1ac90e0e5188ea0a7c37ea1acd8a4341c5acab5b3036c763739d869570",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "plan/s04-10-presented-frame-gate.md",
+      "httpStatus": 200,
+      "expectedSha256": "e89960d31a3993320829926321ab98928599ca49f92102e88ab34fefa441b994",
+      "servedSha256": "e89960d31a3993320829926321ab98928599ca49f92102e88ab34fefa441b994",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/STATUS.md",
+      "httpStatus": 200,
+      "expectedSha256": "00274a22e7178e5a193fa7e6fa77f8447e90d7da3623742129abcd9d00e061f4",
+      "servedSha256": "00274a22e7178e5a193fa7e6fa77f8447e90d7da3623742129abcd9d00e061f4",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/README.md",
+      "httpStatus": 200,
+      "expectedSha256": "2e1739504a75b66d6159ee4da02daff5f2fefa38a792694a40815478202304d0",
+      "servedSha256": "2e1739504a75b66d6159ee4da02daff5f2fefa38a792694a40815478202304d0",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.md",
+      "httpStatus": 200,
+      "expectedSha256": "c741a3774d1e13d68cbf682e4a71334e9f5605249fdda5cefa263467b6e86e68",
+      "servedSha256": "c741a3774d1e13d68cbf682e4a71334e9f5605249fdda5cefa263467b6e86e68",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/Info.plist",
+      "httpStatus": 200,
+      "expectedSha256": "18d6fa164951c16b8f238a4083d5f68b394890273762c99b2ff1ebe2fc2ec838",
+      "servedSha256": "18d6fa164951c16b8f238a4083d5f68b394890273762c99b2ff1ebe2fc2ec838",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.md",
+      "httpStatus": 200,
+      "expectedSha256": "838f078a1269130692055835ef38e06ded75a811c04495d016dafb54140b163a",
+      "servedSha256": "838f078a1269130692055835ef38e06ded75a811c04495d016dafb54140b163a",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/metal-api-probe.swift",
+      "httpStatus": 200,
+      "expectedSha256": "ec22901e6ebf4f73356271a1d9879a63f3b499f6389dabdd1960b8cd5ac552a0",
+      "servedSha256": "ec22901e6ebf4f73356271a1d9879a63f3b499f6389dabdd1960b8cd5ac552a0",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.md",
+      "httpStatus": 200,
+      "expectedSha256": "c18713e7da3e9cc6db02c4188d89bd0db80c37405d2e0cb3c0ffee82047bc72f",
+      "servedSha256": "c18713e7da3e9cc6db02c4188d89bd0db80c37405d2e0cb3c0ffee82047bc72f",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/selected-build.log",
+      "httpStatus": 200,
+      "expectedSha256": "08659a16cc69765077ad23c6e5b0c9c6735fd9824cf3c7fb94bc6386f5b1f75d",
+      "servedSha256": "08659a16cc69765077ad23c6e5b0c9c6735fd9824cf3c7fb94bc6386f5b1f75d",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/simulator-runtime.log",
+      "httpStatus": 200,
+      "expectedSha256": "b912d0ae4d63d929e07ab1d9a11c4044e2cf9df75843f326988cbd7ebdf65ae9",
+      "servedSha256": "b912d0ae4d63d929e07ab1d9a11c4044e2cf9df75843f326988cbd7ebdf65ae9",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/simulator-selector-probe.m",
+      "httpStatus": 200,
+      "expectedSha256": "6a932cfbb8fbd2c59f7369456d65bb52fdf1bcdf333816015bf788bf70983da7",
+      "servedSha256": "6a932cfbb8fbd2c59f7369456d65bb52fdf1bcdf333816015bf788bf70983da7",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-roadmap-agent-browser.png",
+      "httpStatus": 200,
+      "expectedSha256": "4a0aef2ccad9c69c4d125b28e630b50c303807f5baddf855ae79859fbff54993",
+      "servedSha256": "4a0aef2ccad9c69c4d125b28e630b50c303807f5baddf855ae79859fbff54993",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-status-agent-browser.png",
+      "httpStatus": 200,
+      "expectedSha256": "77b8a29e91e15641af8540c88d7ccae5c87843e8048ad4b66f7ec7d654f47059",
+      "servedSha256": "77b8a29e91e15641af8540c88d7ccae5c87843e8048ad4b66f7ec7d654f47059",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-evidence-agent-browser.png",
+      "httpStatus": 200,
+      "expectedSha256": "9348d8f42949ce65c9e6ccd37bd902b56d42b50a0a41e94ce98afb1d1a91d511",
+      "servedSha256": "9348d8f42949ce65c9e6ccd37bd902b56d42b50a0a41e94ce98afb1d1a91d511",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/browser-verification.json",
+      "httpStatus": 200,
+      "expectedSha256": "44e57779af931f961c755f843ef2c876a8e75f87dd211aea4826fc306992d656",
+      "servedSha256": "44e57779af931f961c755f843ef2c876a8e75f87dd211aea4826fc306992d656",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/browser-session-shutdown.json",
+      "httpStatus": 200,
+      "expectedSha256": "6c8c8d7eeb64ba5537ccbf7a7bb85f31438357b7e06318338399784b44bc7b8b",
+      "servedSha256": "6c8c8d7eeb64ba5537ccbf7a7bb85f31438357b7e06318338399784b44bc7b8b",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/agent-browser-network.log",
+      "httpStatus": 200,
+      "expectedSha256": "5233d3e29ef07653eea968cb1c0374c53576a6c77f50f151e2a6049625647050",
+      "servedSha256": "5233d3e29ef07653eea968cb1c0374c53576a6c77f50f151e2a6049625647050",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/selected-build.log",
+      "httpStatus": 200,
+      "expectedSha256": "08659a16cc69765077ad23c6e5b0c9c6735fd9824cf3c7fb94bc6386f5b1f75d",
+      "servedSha256": "08659a16cc69765077ad23c6e5b0c9c6735fd9824cf3c7fb94bc6386f5b1f75d",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/browser-verification.json",
+      "httpStatus": 200,
+      "expectedSha256": "44e57779af931f961c755f843ef2c876a8e75f87dd211aea4826fc306992d656",
+      "servedSha256": "44e57779af931f961c755f843ef2c876a8e75f87dd211aea4826fc306992d656",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/browser-session-shutdown.json",
+      "httpStatus": 200,
+      "expectedSha256": "6c8c8d7eeb64ba5537ccbf7a7bb85f31438357b7e06318338399784b44bc7b8b",
+      "servedSha256": "6c8c8d7eeb64ba5537ccbf7a7bb85f31438357b7e06318338399784b44bc7b8b",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/agent-browser-network.log",
+      "httpStatus": 200,
+      "expectedSha256": "5233d3e29ef07653eea968cb1c0374c53576a6c77f50f151e2a6049625647050",
+      "servedSha256": "5233d3e29ef07653eea968cb1c0374c53576a6c77f50f151e2a6049625647050",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-roadmap-agent-browser.png",
+      "httpStatus": 200,
+      "expectedSha256": "4a0aef2ccad9c69c4d125b28e630b50c303807f5baddf855ae79859fbff54993",
+      "servedSha256": "4a0aef2ccad9c69c4d125b28e630b50c303807f5baddf855ae79859fbff54993",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-status-agent-browser.png",
+      "httpStatus": 200,
+      "expectedSha256": "77b8a29e91e15641af8540c88d7ccae5c87843e8048ad4b66f7ec7d654f47059",
+      "servedSha256": "77b8a29e91e15641af8540c88d7ccae5c87843e8048ad4b66f7ec7d654f47059",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-evidence-agent-browser.png",
+      "httpStatus": 200,
+      "expectedSha256": "9348d8f42949ce65c9e6ccd37bd902b56d42b50a0a41e94ce98afb1d1a91d511",
+      "servedSha256": "9348d8f42949ce65c9e6ccd37bd902b56d42b50a0a41e94ce98afb1d1a91d511",
+      "match": true,
+      "error": null
+    },
+    {
+      "endpoint": "tailnet",
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-final-backup-verification.json",
+      "httpStatus": 200,
+      "expectedSha256": "8cb329f5e96b68461f6005461662eecdf82ebdac1a5b00175a9547727c312413",
+      "servedSha256": "8cb329f5e96b68461f6005461662eecdf82ebdac1a5b00175a9547727c312413",
+      "match": true,
+      "error": null
+    }
+  ]
+}
