@@ -1,0 +1,24 @@
+{
+  "created_utc": "2026-10-17T14:19:43Z",
+  "path": "internal/evidence/c04-12-visual-viewport-2026-10-17/README.html",
+  "source_bytes": 24456,
+  "source_sha256": "5d15adc847c0e1d9b02e7b14cd71b9e0c5140428569f7105edf225e93321a692",
+  "local_and_tailnet": [
+    {
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c04-12-visual-viewport-2026-10-17/README.html",
+      "status": 200,
+      "bytes": 24456,
+      "sha256": "5d15adc847c0e1d9b02e7b14cd71b9e0c5140428569f7105edf225e93321a692",
+      "expected_sha256": "5d15adc847c0e1d9b02e7b14cd71b9e0c5140428569f7105edf225e93321a692",
+      "match": true
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-visual-viewport-2026-10-17/README.html",
+      "status": 200,
+      "bytes": 24456,
+      "sha256": "5d15adc847c0e1d9b02e7b14cd71b9e0c5140428569f7105edf225e93321a692",
+      "expected_sha256": "5d15adc847c0e1d9b02e7b14cd71b9e0c5140428569f7105edf225e93321a692",
+      "match": true
+    }
+  ]
+}

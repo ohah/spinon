@@ -1,0 +1,324 @@
+{
+  "created_utc": "2026-10-17T14:26:41Z",
+  "preview_root": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "listener": "127.0.0.1:8768",
+  "listener_pid": 1191,
+  "file_count": 61,
+  "deletions": 0,
+  "files": [
+    {
+      "path": "roadmap.html",
+      "bytes": 120941,
+      "sha256": "a057b63cc843de181a4bda6c32af52f066525160a3ba2c4a2ee2996e28de4e7d"
+    },
+    {
+      "path": "STATUS.md",
+      "bytes": 265518,
+      "sha256": "a5e7b59ed6bacd29376d87659363333aa99d7068d251056194192f57f1e7f655"
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 344853,
+      "sha256": "d130b8fb8dbf576a04e319b7dfbaf66e01890da9902b5e3276098a92a7feff4a"
+    },
+    {
+      "path": "plan/c04-12-visual-viewport.md",
+      "bytes": 4928,
+      "sha256": "f3479dd2c62731b753acf907e00e0ee247fd0c58a3d3c89d2d0e0e75d6972831"
+    },
+    {
+      "path": "plan/c04-12-visual-viewport.html",
+      "bytes": 23756,
+      "sha256": "34271eb66ac15d03e65f7866867ea5d505d086219239eebffe0b32bd26ee6e19"
+    },
+    {
+      "path": "internal/0077-c04-12-root-html-document.md",
+      "bytes": 16814,
+      "sha256": "4dd6233d0e60364f18875feedf092671cb5a77d55b06cd6086c2d2a2f10c2614"
+    },
+    {
+      "path": "internal/0077-c04-12-root-html-document.html",
+      "bytes": 38598,
+      "sha256": "c18195954ee541c2084d4876ba3be3d28ef79e2ddc4b21cc6e98208d5074fb1b"
+    },
+    {
+      "path": "internal/evidence/c04-12-visual-viewport-2026-10-17/README.md",
+      "bytes": 5245,
+      "sha256": "56773a8ae4ba76a3cc8216da3d47178d145328901cf4cef2551e8f39a8cd4b77"
+    },
+    {
+      "path": "internal/evidence/c04-12-visual-viewport-2026-10-17/SHA256SUMS",
+      "bytes": 971,
+      "sha256": "5f7039780e70ea90ee4f5d927118fabef87a00fba77ec1eac6c08103b7353f28"
+    },
+    {
+      "path": "internal/evidence/c04-12-visual-viewport-2026-10-17/android-api37-logcat.txt",
+      "bytes": 404,
+      "sha256": "90d952c1d68db9bfc7e7a08e425f2b04f53478280f3f2a1f8c4d0a609104b54b"
+    },
+    {
+      "path": "internal/evidence/c04-12-visual-viewport-2026-10-17/android-api37-viewport-matrix.png",
+      "bytes": 72327,
+      "sha256": "9bc4d44194caa5c868ed73438e753e3b90fc1adffabfb79e5c960b8a24868551"
+    },
+    {
+      "path": "internal/evidence/c04-12-visual-viewport-2026-10-17/chrome-iphone12-scale-half.png",
+      "bytes": 25048,
+      "sha256": "43b3ff2baf260e9b76467a0970f57e17a362de4b29e07fef6cb2c569ede15d7a"
+    },
+    {
+      "path": "internal/evidence/c04-12-visual-viewport-2026-10-17/chrome-iphone12-scale-two.png",
+      "bytes": 28975,
+      "sha256": "c2973c24ba6a47c68400497086707efa60a819d2e9e81775b03e5a9b0296428b"
+    },
+    {
+      "path": "internal/evidence/c04-12-visual-viewport-2026-10-17/chrome-iphone12-width-500-scale-one.png",
+      "bytes": 26478,
+      "sha256": "851635058cf167320f35ebc83d9673d5aaf7eb2497cc429a7a4a2a09673701c1"
+    },
+    {
+      "path": "internal/evidence/c04-12-visual-viewport-2026-10-17/implementation-plan-review-20.md",
+      "bytes": 5682,
+      "sha256": "054a97647859fd051ff3f659e9178bec591419e80ca2285514e5e2fa1899725e"
+    },
+    {
+      "path": "internal/evidence/c04-12-visual-viewport-2026-10-17/implementation-review-20.md",
+      "bytes": 5999,
+      "sha256": "3af158f264ac91c149513ea2fd2c82fb8b134cadb23d9553838b0890728f88d6"
+    },
+    {
+      "path": "internal/evidence/c04-12-visual-viewport-2026-10-17/ios-iphone17pro-log.txt",
+      "bytes": 137,
+      "sha256": "641dbaf1f2c9e4250e41ccb2fce908014d1b262e4f69accf0c1d137693abdb3a"
+    },
+    {
+      "path": "internal/evidence/c04-12-visual-viewport-2026-10-17/ios-iphone17pro-viewport-matrix.png",
+      "bytes": 118438,
+      "sha256": "451c304b4e0a56d385400b3df3bd3d56ccf12edf33848fa030982707ceed27d6"
+    },
+    {
+      "path": "internal/evidence/c04-12-visual-viewport-2026-10-17/mobile-device-scale-half.html",
+      "bytes": 893,
+      "sha256": "5627d632d72b15e8a511a451c97a4d4a6404f0b4e2524bddc0c4dcd16862182a"
+    },
+    {
+      "path": "internal/evidence/c04-12-visual-viewport-2026-10-17/mobile-device-scale-two.html",
+      "bytes": 891,
+      "sha256": "c7de1e299a94fbd715f03a274c06ab035b19a5fe2884c8704ebb7e5493031984"
+    },
+    {
+      "path": "internal/evidence/c04-12-visual-viewport-2026-10-17/mobile-width-500-scale-one.html",
+      "bytes": 882,
+      "sha256": "dec5c78e077a0c400573569e40708256f113267b6c2efc45ae32e8f7013cc1e1"
+    },
+    {
+      "path": "internal/evidence/c04-12-visual-viewport-2026-10-17/pr-delta-review-30.md",
+      "bytes": 6027,
+      "sha256": "6dd1b56c4e35b08e1e63740c2198a1014547da63b3fda8c1175f36efcd08dedf"
+    },
+    {
+      "path": "internal/evidence/c04-12-visual-viewport-2026-10-17/README.html",
+      "bytes": 25508,
+      "sha256": "e07a5f4f597215d94e6638bbba26991cd58c8a2c2b5e76ae5fb5cea8744445a4"
+    },
+    {
+      "path": "internal/evidence/c04-12-tailnet-roadmap-sync-2026-10-17/README.md",
+      "bytes": 4614,
+      "sha256": "f1182c9e6d406645f583f1b6e060d627036a361fdfbf36fdf3e0f7cbbf87718d"
+    },
+    {
+      "path": "internal/evidence/c04-12-tailnet-roadmap-sync-2026-10-17/first-copy-verification.json",
+      "bytes": 13985,
+      "sha256": "82d02d978db062137407aedcd0ed25ea743bfb258185cda86437393ecca72b18"
+    },
+    {
+      "path": "internal/evidence/c04-12-tailnet-roadmap-sync-2026-10-17/first-preflight.json",
+      "bytes": 12271,
+      "sha256": "d3f254e053d35f57951d323bcb986782ce7e5f757ad27a198d25fce84ada6b3e"
+    },
+    {
+      "path": "internal/evidence/c04-12-tailnet-roadmap-sync-2026-10-17/first-served-verification.json",
+      "bytes": 35714,
+      "sha256": "facd34e023d9d93cd489bc5cef95e83914d8a69ba9c8727cdb03efe89d64dfbe"
+    },
+    {
+      "path": "internal/evidence/c04-12-tailnet-roadmap-sync-2026-10-17/full-docs-build-failure.log",
+      "bytes": 329033,
+      "sha256": "afd85450c14661d9e92684a72f2201a770d976ad17d6824fd5320fbfe6885481"
+    },
+    {
+      "path": "internal/evidence/c04-12-tailnet-roadmap-sync-2026-10-17/pr-delta-review-30.md",
+      "bytes": 4873,
+      "sha256": "f6e56866136b7192d4744f4e17d29cc3a4cb1819bcfed5e299f91aec361ed72a"
+    },
+    {
+      "path": "internal/evidence/c04-12-tailnet-roadmap-sync-2026-10-17/render-build-result.md",
+      "bytes": 971,
+      "sha256": "16b2dbca0cacb8d80d848f339cdd01427bc648dd75d7f65eef2c2694ac1c59fa"
+    },
+    {
+      "path": "internal/evidence/c04-12-tailnet-roadmap-sync-2026-10-17/roadmap-correction.json",
+      "bytes": 654,
+      "sha256": "43a44aa171df6f220a997d0453ac484243121a27112c5b71c4d7eda5d771da70"
+    },
+    {
+      "path": "internal/evidence/c04-12-tailnet-roadmap-sync-2026-10-17/route-fix-verification.json",
+      "bytes": 1000,
+      "sha256": "5c3a461bf4847dc6b0cb5d67c28b820d2931ec33442302c7cd823cc64e381b5a"
+    },
+    {
+      "path": "internal/evidence/c04-12-tailnet-roadmap-sync-2026-10-17/selected-build.log",
+      "bytes": 4396,
+      "sha256": "ff29264ec91c8983d99e66d4b3a2ffa9fc8736d3ff938f33b44251d91bf2db23"
+    },
+    {
+      "path": "internal/evidence/c04-12-tailnet-roadmap-sync-2026-10-17/tailnet-counter-agent-browser.png",
+      "bytes": 330777,
+      "sha256": "ad0e98445075dfb188ee28ad1a3ba52e1363eca861f72cf10cbba96d5094ef8c"
+    },
+    {
+      "path": "internal/evidence/c04-12-tailnet-roadmap-sync-2026-10-17/tailnet-plan-agent-browser.png",
+      "bytes": 191807,
+      "sha256": "b25604947d6eaa0daffc1484058016fb26eb1667e1d1aef22b5b61937741f317"
+    },
+    {
+      "path": "internal/evidence/c04-12-tailnet-roadmap-sync-2026-10-17/tailnet-roadmap-agent-browser.png",
+      "bytes": 421732,
+      "sha256": "d51d736e6bd0e4832f7dd2c2c583a80669574500817cb3eb20d173aa2e615979"
+    },
+    {
+      "path": "internal/evidence/c04-12-tailnet-roadmap-sync-2026-10-17/README.html",
+      "bytes": 24044,
+      "sha256": "35d862f10a49ab47795fdf690c55b626d5a5912108e5e78137ab17b3a20f7599"
+    },
+    {
+      "path": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "path": "static/image/android-api37-viewport-matrix.ff3e32cdcb.png",
+      "bytes": 72327,
+      "sha256": "9bc4d44194caa5c868ed73438e753e3b90fc1adffabfb79e5c960b8a24868551"
+    },
+    {
+      "path": "static/image/ios-iphone17pro-viewport-matrix.0975a8eb56.png",
+      "bytes": 118438,
+      "sha256": "451c304b4e0a56d385400b3df3bd3d56ccf12edf33848fa030982707ceed27d6"
+    },
+    {
+      "path": "static/image/tailnet-counter-agent-browser.ad6a480e94.png",
+      "bytes": 330777,
+      "sha256": "ad0e98445075dfb188ee28ad1a3ba52e1363eca861f72cf10cbba96d5094ef8c"
+    },
+    {
+      "path": "static/image/tailnet-plan-agent-browser.a546bb9898.png",
+      "bytes": 191807,
+      "sha256": "b25604947d6eaa0daffc1484058016fb26eb1667e1d1aef22b5b61937741f317"
+    },
+    {
+      "path": "static/image/tailnet-roadmap-agent-browser.0f4e73a41c.png",
+      "bytes": 421732,
+      "sha256": "d51d736e6bd0e4832f7dd2c2c583a80669574500817cb3eb20d173aa2e615979"
+    },
+    {
+      "path": "static/js/3.7e8db14a76.js",
+      "bytes": 217067,
+      "sha256": "1e4fb809b9de7fe81ef56a8144c41695f910c52c35c36196a3c79f87568b0539"
+    },
+    {
+      "path": "static/js/3.7e8db14a76.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "path": "static/js/async/l.76b60f2b87.js",
+      "bytes": 98,
+      "sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.cf371d2f2a.js",
+      "bytes": 365994,
+      "sha256": "51b5af88a88553305736601925821504f4d9e1e8a4d55485c011acdb874858c5"
+    },
+    {
+      "path": "static/js/async/route-7ff1bc4fef68.7b2caa6a84.js",
+      "bytes": 26606,
+      "sha256": "3b7b035d161da54438b76f76781d45a8e29830a8503d274c7451a96cec574b4e"
+    },
+    {
+      "path": "static/js/async/route-88803213741a.08fe20902c.js",
+      "bytes": 11814,
+      "sha256": "96e592a4e6cc420dff5fff7fd6f690c1bb42df20e4e83f0e90fb5f414c76c328"
+    },
+    {
+      "path": "static/js/async/route-c58db35cda4b.e4a65b3a3a.js",
+      "bytes": 8653,
+      "sha256": "ee740092d3c1d52c06f958c27bdc09ee43b41e4f3f679743d54f4defbd8b71ec"
+    },
+    {
+      "path": "static/js/async/route-f7ef4ddf795f.719d922e78.js",
+      "bytes": 9130,
+      "sha256": "20bd71bfddf08099ae5b0c85612965cef1b77e2825b5ee79c585ac27e3cdf3f2"
+    },
+    {
+      "path": "static/js/index.80441781bc.js",
+      "bytes": 15915,
+      "sha256": "b2ce411f41b0620af8b3f2029ef46f9c9c3c957191c08911f624f89f430d51ce"
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb"
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255"
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "path": "static/js/styles.b5d9a69293.js",
+      "bytes": 471,
+      "sha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6"
+    },
+    {
+      "path": "static/search_index.ko.557d6bb9.json",
+      "bytes": 237802,
+      "sha256": "557d6bb9ba363fbeac28ef7191900e7e3c1501edac50a83ee4519ab55e593858"
+    }
+  ],
+  "source_snapshot": {
+    "branch": "docs/c04-12-tailnet-roadmap-20261017",
+    "base_commit": "99a46c8970fb64a54f8c1389fe9cfaecaf7033c0",
+    "includes_worktree_changes": true,
+    "tracked_changes": [
+      "spec/public/roadmap.html"
+    ],
+    "new_evidence_directory": "spec/internal/evidence/c04-12-tailnet-roadmap-sync-2026-10-17"
+  }
+}

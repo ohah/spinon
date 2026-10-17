@@ -1,0 +1,20 @@
+{
+  "created_utc": "2026-10-17T14:18:44Z",
+  "path": "roadmap.html",
+  "reason": "replace stale 61/197 snapshot sentence with explicit historical label",
+  "backup_path": "/private/tmp/spinon-c04-12-tailnet-backup-20261017/followup/roadmap.html",
+  "before": {
+    "bytes": 120867,
+    "sha256": "1cf7d4353b67b96061d583965719babe3c7fc218d9b149d0dd3d7891e16b4a30"
+  },
+  "source": {
+    "bytes": 120941,
+    "sha256": "a057b63cc843de181a4bda6c32af52f066525160a3ba2c4a2ee2996e28de4e7d"
+  },
+  "after": {
+    "bytes": 120941,
+    "sha256": "a057b63cc843de181a4bda6c32af52f066525160a3ba2c4a2ee2996e28de4e7d"
+  },
+  "matches_source": true,
+  "deletions": 0
+}
