@@ -2,11 +2,12 @@
 
 - **문서 유형:** 구현 계획 · 공식 구현 상태는 [`spec/STATUS.md`](../spec/STATUS.md)에서 관리
 - **상위 항목:** [CSS 호환성](../spec/0008-css-compatibility.md), C01 HTML/CSS 기준 inventory, C04 런타임 스타일·환경
-- **현재 상태:** 기존 계획에 없던 신규 작업이다. HTML5 문서 트리 parser·HostDocument import·V8 DOM getter와 기본 앱의 `index.html`→V8 document session 경로를 양쪽 Simulator에서 확인했다. 후보 구현은 metadata viewport를 CSS cascade에 연결하고 viewport/scheme media query 및 환경 revision을 계산한다. root CSS `color-scheme`은 computed snapshot에만 보존한다. `page_scale` surface transform, Canvas/native theme, root HTML layout·paint는 미지원이며 C04.12는 미완료
+- **현재 상태:** 기존 계획에 없던 신규 작업이다. HTML5 문서 트리 parser·HostDocument import·V8 DOM getter와 기본 앱의 `index.html`→V8 document session 경로, metadata viewport/media cascade, root CSS/metadata color-scheme을 결합한 native root Canvas fill을 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 확인했다. light→dark→light 전환의 exact Canvas byte와 revision key를 보존했다. `page_scale` surface transform, 일반 HTML layout·text·paint와 문서 호환성은 미지원이며 C04.12는 미완료
 - **계획 적대 검토:** [20개 실패 관점 검토](../spec/internal/evidence/c04-root-html-document-environment-plan-review-2026-10-17.md)
 - **현재 asset fixture 검토:** [구현 실패 관점 20개](../spec/internal/evidence/c04-12-root-html-asset-implementation-review-20-2026-10-17.md) · [PR diff 적대 검토 30개](../spec/internal/evidence/c04-12-root-html-asset-pr-diff-review-30-2026-10-17.md)
 - **기본 앱 HTML 검토:** [구현 실패 관점 20개](../spec/internal/evidence/c04-12-root-html-default-app-2026-10-17/implementation-review-20.md) · [PR diff 적대 검토 30개](../spec/internal/evidence/c04-12-root-html-default-app-2026-10-17/pr-delta-review-30.md)
-- **환경 cascade 검토:** 이 후속 구현 slice는 기존 parser·기본 앱 검토를 재사용하지 않고 새 구현 실패 관점 20개와 최종 PR diff 30개를 별도 근거로 남긴다. [실행·빌드·테스트 로그](../spec/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/README.md).
+- **환경 cascade 검토:** [이전 cascade 구현 실패 관점 20개와 PR diff 30개](../spec/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/README.md).
+- **Canvas 구현 검토:** 이번 slice는 기존 parser·기본 앱·environment cascade 표를 재사용하지 않고 새 [Canvas 구현 실패 관점 20개](../spec/internal/evidence/c04-12-root-canvas-color-scheme-2026-10-17/implementation-review-20.md)와 [최종 PR diff 검토 30개](../spec/internal/evidence/c04-12-root-canvas-color-scheme-2026-10-17/pr-delta-review-30.md)를 남긴다. [Chrome·Simulator 캡처와 실행 로그](../spec/internal/evidence/c04-12-root-canvas-color-scheme-2026-10-17/README.md).
 
 ## 배경과 목표
 
@@ -55,17 +56,18 @@
 
 `RuntimeSession::new_with_root_html`은 host surface physical pixel, DPR과 OS light/dark preference를 받는 `set_root_html_environment` 경로를 제공한다. `meta viewport`의 제한 allowlist를 CSS layout viewport에 반영하고 DPR·OS preference와 함께 root-only Stylo profile로 전달한다. 이 profile의 `@media` allowlist는 `width`·`height`와 `min/max-width`·`min/max-height`의 px/0 query 및 기존 scheme/pointer/hover feature로 제한한다. JavaScript-only/default profile은 바뀌지 않는다. 동일 입력은 environment revision을 유지하고 viewport·DPR·media input 변경은 새 revision으로 재계산한다.
 
-`:root { color-scheme: light dark; }`는 기본 앱 stylesheet를 cascade에서 거부하지 않도록 root-only profile에서 computed property로 기록한다. 이 값은 meta `color-scheme`와 우선순위 결정을 하지 않으며 UA Canvas, native surface, form controls, renderer palette에도 적용하지 않는다. `page_scale`도 snapshot에만 남는다. HTML UA blockification 문제를 해결한 것은 아니므로 root HTML layout은 Ready로 주장하지 않는다.
+`:root { color-scheme: light dark; }`는 root-only profile computed property로 보존하며, 후속 Canvas slice에서 실제 HTML root의 computed value가 meta supported scheme보다 우선해 native content root background를 결정한다. Canvas palette는 pinned Chromium 155 sRGB light `#ffffff` / dark `#121212` 두 값이다. duplicate color-scheme metadata는 fail-closed한다. 이 background 적용은 form controls나 전체 system-color palette, renderer scene이 아니며 `page_scale`도 snapshot에만 남는다. HTML UA blockification 문제를 해결한 것은 아니므로 root HTML layout은 Ready로 주장하지 않는다.
 
-Android API 37 AVD와 iPhone 17 Pro / iOS 26.2 Simulator의 앱 기본 경로에서 surface/DPR/OS scheme 초기값과 dark/light preference 변경에 따른 environment revision 및 cascade profile을 기록한다. 이 검증은 실제 V8 root document의 environment input을 확인하지만 HTML frame, text, GPU, compositor surface를 캡처하지 않는다. 최신 실행 명령·로그 해시와 20개 구현/30개 PR diff 실패 검토는 [후속 환경 runtime evidence](../spec/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/README.md)에 연결한다. C04.12는 viewport sizing/scale 완전 동작, CSS color-scheme/UA Canvas, HTML layout·paint, malformed/duplicate 전체 Chrome parity가 남아 있어 unchecked 상태다.
+Android API 37 AVD와 iPhone 17 Pro / iOS 26.2 Simulator의 앱 기본 경로에서 surface/DPR/OS scheme 초기값, environment revision 및 cascade profile을 기록한다. 기존 [환경 cascade 실행](../spec/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/README.md)은 media/style 계산까지만 검증한다. 후속 [Canvas 실행](../spec/internal/evidence/c04-12-root-canvas-color-scheme-2026-10-17/README.md)은 기본 `index.html`에서 light→dark→light와 정확한 content pixel을 확인한다. 두 기록 모두 HTML frame/text, GPU scene 또는 compositor 동등성을 주장하지 않는다. C04.12는 viewport sizing/scale 완전 동작, HTML layout·paint 및 일반 문서 호환성 범위가 남아 있어 unchecked 상태다.
 
-목표 profile은 `meta viewport`의 width/device-width/initial-scale, `meta color-scheme`, root CSS `color-scheme`, `prefers-color-scheme`, 제한된 Canvas default color, 기존 C04.11 `<style>` 연결을 다룬다. 현재 후보 구현은 viewport/media cascade 입력과 root CSS `color-scheme` computed snapshot까지만 연결하고 Canvas default color는 다루지 않는다. `initial-scale`을 native DPR에 합쳐 기록하지 않으며, page scale 적용 위치는 별도 내부 계약에서 정한다. 현재 tree foundation은 UTF-8 source 1 MiB, 65,536 imported node, depth 256, `NoQuirks` document, namespace 없는 attribute profile과 HTML5 recovery를 사용한다. 이 선택은 전체 metadata profile 지원을 뜻하지 않는다.
+목표 profile은 `meta viewport`의 width/device-width/initial-scale, `meta color-scheme`, root CSS `color-scheme`, `prefers-color-scheme`, 제한된 Canvas default color, 기존 C04.11 `<style>` 연결을 다룬다. 현재 구현은 viewport/media cascade와 root computed `color-scheme`을 제한 native Canvas fill에 연결한다. `initial-scale`을 native DPR에 합쳐 기록하지 않으며, page scale 적용 위치는 별도 내부 계약에서 정한다. 현재 tree foundation은 UTF-8 source 1 MiB, 65,536 imported node, depth 256, `NoQuirks` document, namespace 없는 attribute profile과 HTML5 recovery를 사용한다. 이 선택은 전체 metadata profile 지원을 뜻하지 않는다.
 
 ## 완료 기준
 
 - 고정 Chromium reference와 metadata parsing·CSS viewport·scheme/media 결과가 명시한 기준에 맞는다.
 - Android AVD와 iOS Simulator 양쪽에서 같은 root HTML source가 동일한 HostDocument metadata, CSS viewport와 지원된 media 결과를 만든다. platform surface size와 device scale은 별도 값으로 유지된다.
 - resize와 OS light/dark 변경 때 대응 revision이 바뀌고 오래된 cascade/layout/paint 결과가 게시되지 않는다. source HTML 교체는 새 document revision으로 반영한다.
+- root CSS `color-scheme`과 metadata precedence가 pinned Chrome Canvas와 일치하고, Android/iOS app content root가 exact sRGB `#ffffff`/`#121212`를 그리며 revision key가 맞는다.
 - malformed markup의 recovery, malformed/중복 metadata, unsupported media 입력이 계획된 Chrome 관찰 또는 명시된 fail-closed 규칙에 따라 처리된다.
 - head metadata가 visible node/hit target이 되지 않으며 기존 C04.11 `<style>` cascade와 C04.10 runtime path가 회귀하지 않는다.
 - 공개/내부 지원 범위, parser 및 metadata contract, precomparison, Android/iOS Simulator 실행 근거와 별도 20개 구현 실패 관점 검토를 남긴다. 이 item의 완료 표시는 이 근거가 모두 있을 때만 한다.

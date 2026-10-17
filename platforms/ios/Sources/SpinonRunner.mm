@@ -413,28 +413,42 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
   return static_cast<uint64_t>(reinterpret_cast<uintptr_t>(session));
 }
 
-+ (NSString *)setRuntimeSessionRootHtmlEnvironment:(uint64_t)handle
-                                    surfaceWidthPx:(float)surfaceWidthPx
-                                   surfaceHeightPx:(float)surfaceHeightPx
-                                deviceScaleFactor:(float)deviceScaleFactor
-                                     prefersDark:(BOOL)prefersDark {
++ (NSString *)resolveRuntimeSessionRootHtmlCanvas:(uint64_t)handle
+                                     surfaceWidthPx:(float)surfaceWidthPx
+                                    surfaceHeightPx:(float)surfaceHeightPx
+                                 deviceScaleFactor:(float)deviceScaleFactor
+                                      prefersDark:(BOOL)prefersDark {
   if (handle == 0) return @"status=-1 session=missing";
-  SpinonRuntimeRootHtmlEnvironment environment{};
-  const int32_t status = spinon_runtime_session_set_root_html_environment(
+  SpinonRuntimeRootHtmlCanvas canvas{};
+  const int32_t status = spinon_runtime_session_resolve_root_html_canvas(
       reinterpret_cast<SpinonRuntimeSession *>(static_cast<uintptr_t>(handle)),
       surfaceWidthPx, surfaceHeightPx, deviceScaleFactor,
-      prefersDark == YES ? 1 : 0, &environment);
+      prefersDark == YES ? 1 : 0, 5000, &canvas);
   if (status != 0) {
     return [NSString stringWithFormat:@"status=%d", status];
   }
+  const SpinonRuntimeRootHtmlEnvironment &environment = canvas.environment;
+  NSString *canvasColor = [NSString stringWithFormat:@"#%02x%02x%02x",
+      static_cast<unsigned int>(canvas.canvas_rgba[0]),
+      static_cast<unsigned int>(canvas.canvas_rgba[1]),
+      static_cast<unsigned int>(canvas.canvas_rgba[2])];
   NSString *report = [NSString stringWithFormat:
       @"status=0 viewport_css_px=%.3fx%.3f device_scale_factor=%.3f "
        "page_scale=%.6f prefers_color_scheme=%d document_color_scheme=%d "
-       "environment_revision=%llu",
+       "environment_revision=%llu canvas_color=%@ used_color_scheme=%d "
+       "cascade_generation=%llu cascade_document_revision=%llu "
+       "cascade_render_tree_revision=%llu cascade_style_revision=%llu "
+       "cascade_environment_revision=%llu",
       environment.viewport_width_css_px, environment.viewport_height_css_px,
       environment.device_scale_factor, environment.page_scale,
       environment.prefers_color_scheme, environment.document_color_scheme,
-      static_cast<unsigned long long>(environment.environment_revision)];
+      static_cast<unsigned long long>(environment.environment_revision), canvasColor,
+      canvas.used_color_scheme,
+      static_cast<unsigned long long>(canvas.cascade_generation),
+      static_cast<unsigned long long>(canvas.cascade_document_revision),
+      static_cast<unsigned long long>(canvas.cascade_render_tree_revision),
+      static_cast<unsigned long long>(canvas.cascade_style_revision),
+      static_cast<unsigned long long>(canvas.cascade_environment_revision)];
   os_log(OS_LOG_DEFAULT, "SPINON_ROOT_HTML_ENVIRONMENT %{public}@", report);
   return report;
 }

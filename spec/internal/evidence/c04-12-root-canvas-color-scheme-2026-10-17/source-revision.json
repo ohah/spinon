@@ -1,0 +1,63 @@
+{
+  "schema": "spinon.c04-12-root-canvas-source-revision/v1",
+  "generatedAtUtc": "2026-10-17T13:26:03Z",
+  "verificationDateLocal": "2026-10-17 Asia/Seoul",
+  "branch": "feat/c04-12-root-color-scheme-canvas-20261017",
+  "checkoutHeadBeforeCommit": "03c981726923f8638160f9918046d8316647848a",
+  "workingTreeDirtyAtBuild": true,
+  "changedSourceFiles": [
+    {"path": "crates/spinon-ffi/include/spinon_ffi.h", "sha256": "331fa7e194cbc41ad1d8a83d0ffd7bf443ece61e70b240923a388398e5b3f5fa"},
+    {"path": "crates/spinon-ffi/src/runtime_ua_cascade.rs", "sha256": "fe2b455f3f4b1a26bef51de31f11d5f8e486621ff373d7f2a68bd76050112033"},
+    {"path": "crates/spinon-runtime/src/lib.rs", "sha256": "3f90099a2fca16983b761ce50b8db22d88abea0e34e62fe663b80fcaf67a4454"},
+    {"path": "crates/spinon-runtime/src/root_html/environment.rs", "sha256": "55870489981ecb52c239efca7355c3bf1a2bcba3f231190ebd53ddbbd6289030"},
+    {"path": "crates/spinon-runtime/src/root_html/environment/tests.rs", "sha256": "7485cd930b5d38eae0ff38fb1ed57b1b63d6c3375c019e60811dded23946ba68"},
+    {"path": "crates/spinon-runtime/src/session.rs", "sha256": "7ca08eb649c0ab9c85220471953843899cc59033bd45a09c0c60f596e642130d"},
+    {"path": "crates/spinon-runtime/src/session/tests.rs", "sha256": "304037e3a892551f95a8be4358adb7f8be771fc99c18c70407476be0ad268e99"},
+    {"path": "crates/spinon-runtime/src/session/ua_cascade.rs", "sha256": "d62dbb2d0d6a33b446d053301721ece7220fbe0f05cb01bce56c3453fd34be75"},
+    {"path": "crates/spinon-runtime/src/session/ua_cascade/tests.rs", "sha256": "153c8cb5539cc0ad19d842dda6ec387b7296aa170e14f84174d84714361dd5b4"},
+    {"path": "platforms/android/app/src/main/cpp/spinon_jni.cc", "sha256": "0e1dd6fcc28690e5c2e33122afbe1c30c7dcc46859842cd82f4b44fd1be25e27"},
+    {"path": "platforms/android/app/src/main/java/dev/spinon/bootstrap/MainActivity.java", "sha256": "6f23793de44fb00ef48ed2466d17a5f4bfdf61e7bb18b3a9eff39a53ad5b2eff"},
+    {"path": "platforms/ios/Sources/AppDelegate.swift", "sha256": "6b87959ff881161e8e104b9b63171c58bd9693e1eeae6f623214f99d8443ddc6"},
+    {"path": "platforms/ios/Sources/SpinonRunner.h", "sha256": "b6722c84396980b8a758423e74a955541034bc5f85f467c7baf6bc0606abb7d1"},
+    {"path": "platforms/ios/Sources/SpinonRunner.mm", "sha256": "c2ebeda1cb3c7976ac6b047153f3f3314317bb73abdafb1747d1fd16e993ab56"},
+    {"path": "examples/bootstrap/index.html", "sha256": "73c7d9a557a7f2c15f8caac332a258e288d97f522e980b6aebe0d77ddfde9586"}
+  ],
+  "buildInputs": {
+    "v8Checkout": "/Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8",
+    "v8CheckoutHead": "7b50b62cb18f28617959e8452e2cd18195b38bcf",
+    "v8PinnedRevision": "7b50b62cb18f28617959e8452e2cd18195b38bcf",
+    "androidCommand": "SPINON_V8_DIR=/Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8 mise exec -- bun run build:android",
+    "iosCommand": "SPINON_V8_DIR=/Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8 mise exec -- bun run build:ios-sim",
+    "xcodeVersion": "Xcode 26.2 (17C52)",
+    "androidApk": {
+      "path": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+      "sha256": "69ffba34937ff75a04d125a3a02baf9513dd362599d4041cfd515850c950d5db"
+    },
+    "iosSimulatorExecutable": {
+      "path": "build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap",
+      "sha256": "94b3b629925f64471c1e20ab39b406081bad9cd57ad8d3ce338b591ac5f72f72"
+    }
+  },
+  "simulatorRuns": [
+    {
+      "platform": "Android",
+      "avd": "spinon_api37_1_compat16k",
+      "device": "emulator-5554",
+      "apiLevel": 37,
+      "model": "sdk_gphone16k_arm64",
+      "density": 2.625,
+      "transitions": ["light:0:#ffffff", "dark:1:#121212", "light:2:#ffffff"],
+      "log": "android-api37-environment.log"
+    },
+    {
+      "platform": "iOS",
+      "device": "iPhone 17 Pro Simulator",
+      "os": "iOS 26.2",
+      "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+      "scale": 3,
+      "transitions": ["light:0:#ffffff", "dark:1:#121212", "light:2:#ffffff"],
+      "log": "ios-iphone17pro-environment.log"
+    }
+  ],
+  "note": "Builds and screenshots were produced from this dirty working tree before its first commit. Source file hashes and app artifact hashes bind the run to the implementation; simulator evidence is not physical-device or compositor-after-presentation proof."
+}

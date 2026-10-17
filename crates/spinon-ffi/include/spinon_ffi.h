@@ -86,6 +86,16 @@ typedef struct SpinonRuntimeRootHtmlEnvironment {
   int32_t document_color_scheme; /* 0=light, 1=dark */
   uint64_t environment_revision;
 } SpinonRuntimeRootHtmlEnvironment;
+typedef struct SpinonRuntimeRootHtmlCanvas {
+  SpinonRuntimeRootHtmlEnvironment environment;
+  uint8_t canvas_rgba[4];
+  int32_t used_color_scheme; /* 0=light, 1=dark */
+  uint64_t cascade_generation;
+  uint64_t cascade_document_revision;
+  uint64_t cascade_render_tree_revision;
+  uint64_t cascade_style_revision;
+  uint64_t cascade_environment_revision;
+} SpinonRuntimeRootHtmlCanvas;
 typedef enum SpinonTaskPriority {
   SPINON_TASK_PRIORITY_USER_BLOCKING = 0,
   SPINON_TASK_PRIORITY_USER_VISIBLE = 1,
@@ -159,6 +169,17 @@ int32_t spinon_runtime_session_set_root_html_environment(
     float surface_height_px, float device_scale_factor,
     int32_t prefers_color_scheme,
     SpinonRuntimeRootHtmlEnvironment *environment);
+/* 내부 C04.12 플랫폼 bridge입니다. 환경을 적용하고 CSS cascade 완료를 지정 시간까지 기다린 뒤
+   실제 HTML root의 computed color-scheme으로 Chromium 155 Canvas sRGB 색과 revision key를
+   반환합니다. 호출은 UI thread에서 하지 마세요. timeout은 0~60,000ms이며 root meta 중복
+   -13, cascade timeout -10, stale snapshot -12, root/style 누락 -11,
+   미지원 computed scheme -14를 반환합니다. 그 밖의 입력·환경 오류 -1, worker 오류 -7,
+   종료 중 -6입니다. 출력·세션 해제와 병행 호출하지 마세요. */
+int32_t spinon_runtime_session_resolve_root_html_canvas(
+    SpinonRuntimeSession *session, float surface_width_px,
+    float surface_height_px, float device_scale_factor,
+    int32_t prefers_color_scheme, uint64_t timeout_millis,
+    SpinonRuntimeRootHtmlCanvas *canvas);
 int32_t spinon_runtime_session_copy_ua_cascade_json(
     SpinonRuntimeSession *session, char *output, size_t output_capacity,
     size_t *required_capacity);

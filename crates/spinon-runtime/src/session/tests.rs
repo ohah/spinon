@@ -258,6 +258,88 @@ fn root_html_environment_projects_viewport_and_os_scheme_into_css_cascade() {
     }));
 }
 
+#[test]
+fn root_html_canvas_uses_computed_root_scheme_and_exact_chrome_srgb_bytes() {
+    let (session, _) = RuntimeSession::new_with_root_html(
+        "<!doctype html><html><head><meta name='viewport' content='width=device-width'><meta name='color-scheme' content='light'><style>:root { color-scheme: dark; }</style></head><body><main>canvas</main></body></html>",
+    )
+    .expect("root HTML session should initialize");
+    let mut media_environment = spinon_style::CssMediaEnvironment::MOBILE;
+    media_environment.color_scheme = spinon_style::CssColorScheme::Light;
+
+    let canvas = session
+        .resolve_root_html_canvas(
+            1170.0,
+            2532.0,
+            3.0,
+            media_environment,
+            Duration::from_secs(3),
+        )
+        .expect("completed root style should select the Canvas color");
+    assert_eq!(canvas.used_color_scheme, spinon_style::CssColorScheme::Dark);
+    assert_eq!(canvas.color_rgba, [18, 18, 18, 255]);
+    assert_eq!(
+        canvas.environment.prefers_color_scheme,
+        spinon_style::CssColorScheme::Light
+    );
+    assert_eq!(
+        canvas.cascade_key.environment_revision,
+        canvas.environment.environment_revision.get()
+    );
+    assert_eq!(
+        canvas.cascade_key,
+        session.ua_cascade_snapshot().completed.unwrap().key
+    );
+}
+
+#[test]
+fn root_html_canvas_follows_os_only_when_root_css_and_single_meta_allow_it() {
+    let (session, _) = RuntimeSession::new_with_root_html(
+        "<!doctype html><html><head><meta name='viewport' content='width=device-width'><meta name='color-scheme' content='light dark'><style>:root { color-scheme: normal; }</style></head><body><main>canvas</main></body></html>",
+    )
+    .expect("root HTML session should initialize");
+    let mut media_environment = spinon_style::CssMediaEnvironment::MOBILE;
+    media_environment.color_scheme = spinon_style::CssColorScheme::Dark;
+
+    let canvas = session
+        .resolve_root_html_canvas(
+            1170.0,
+            2532.0,
+            3.0,
+            media_environment,
+            Duration::from_secs(3),
+        )
+        .expect("supported metadata scheme should use the OS preference");
+    assert_eq!(canvas.used_color_scheme, spinon_style::CssColorScheme::Dark);
+    assert_eq!(canvas.color_rgba, [18, 18, 18, 255]);
+    assert_eq!(
+        canvas.environment.prefers_color_scheme,
+        spinon_style::CssColorScheme::Dark
+    );
+}
+
+#[test]
+fn root_html_canvas_rejects_duplicate_scheme_metadata_before_publishing_a_color() {
+    let (session, _) = RuntimeSession::new_with_root_html(
+        "<!doctype html><html><head><meta name='color-scheme' content='unknown'><meta name='color-scheme' content='dark'><style>:root { color-scheme: dark; }</style></head><body>canvas</body></html>",
+    )
+    .expect("duplicate metadata is parsed as HTML but rejected by the Canvas profile");
+
+    let error = session
+        .resolve_root_html_canvas(
+            1170.0,
+            2532.0,
+            3.0,
+            spinon_style::CssMediaEnvironment::MOBILE,
+            Duration::from_secs(3),
+        )
+        .expect_err("duplicate metadata must not publish a Canvas color");
+    assert_eq!(
+        error,
+        super::RootHtmlCanvasError::DuplicateColorSchemeMetadata
+    );
+}
+
 fn eval(session: &RuntimeSession, source: &str) -> super::OperationResponse {
     session.eval(source, TaskPriority::UserVisible)
 }

@@ -13,9 +13,9 @@ pub use bootstrap::{BootstrapSmokeError, run_bootstrap_smoke};
 #[cfg(any(target_os = "android", target_os = "ios", test))]
 pub use session::run_priority_fairness_probe;
 pub use session::{
-    MemoryPressureLevel, OperationResponse, RuntimeLayoutCompleted, RuntimeLayoutFailure,
-    RuntimeLayoutFrame, RuntimeLayoutSnapshot, RuntimeLayoutState, RuntimeSession,
-    RuntimeUaCascadeCompleted, RuntimeUaCascadeError, RuntimeUaCascadeKey, RuntimeUaCascadeRoot,
-    RuntimeUaCascadeSnapshot, RuntimeUaCascadeState, TaskPriority, run_priority_probe,
-    run_shutdown_probe,
+    MemoryPressureLevel, OperationResponse, RootHtmlCanvasError, RootHtmlCanvasSnapshot,
+    RuntimeLayoutCompleted, RuntimeLayoutFailure, RuntimeLayoutFrame, RuntimeLayoutSnapshot,
+    RuntimeLayoutState, RuntimeSession, RuntimeUaCascadeCompleted, RuntimeUaCascadeError,
+    RuntimeUaCascadeKey, RuntimeUaCascadeRoot, RuntimeUaCascadeSnapshot, RuntimeUaCascadeState,
+    TaskPriority, run_priority_probe, run_shutdown_probe,
 };

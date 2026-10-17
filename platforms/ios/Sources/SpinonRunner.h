@@ -18,11 +18,11 @@
 + (void)destroyR08Wgpu:(void *)renderer;
 + (uint64_t)createRuntimeSession;
 + (uint64_t)createRuntimeSessionWithRootHTML:(NSString *)source;
-+ (NSString *)setRuntimeSessionRootHtmlEnvironment:(uint64_t)handle
-                                    surfaceWidthPx:(float)surfaceWidthPx
-                                   surfaceHeightPx:(float)surfaceHeightPx
-                                deviceScaleFactor:(float)deviceScaleFactor
-                                   prefersDark:(BOOL)prefersDark;
++ (NSString *)resolveRuntimeSessionRootHtmlCanvas:(uint64_t)handle
+                                     surfaceWidthPx:(float)surfaceWidthPx
+                                    surfaceHeightPx:(float)surfaceHeightPx
+                                 deviceScaleFactor:(float)deviceScaleFactor
+                                      prefersDark:(BOOL)prefersDark;
 #if defined(SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST) && \
     SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST
 + (NSString *)runC0412RootHtmlAccessorsFixture;

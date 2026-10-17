@@ -1,4 +1,7 @@
-use super::{RootHtmlEnvironmentMetadata, parse_color_scheme_metadata};
+use super::{
+    ColorSchemeMetadata, RootHtmlEnvironmentMetadata, parse_color_scheme_metadata,
+    resolve_root_html_canvas_color_scheme,
+};
 use crate::root_html::ParsedRootHtml;
 use spinon_style::{CssColorScheme, CssMediaEnvironment};
 
@@ -31,6 +34,9 @@ const SCHEME_ONLY_DARK: &str = include_str!(
 );
 const SCHEME_DUPLICATE: &str = include_str!(
     "../../../../../spec/internal/evidence/c04-root-html-document-environment-2026-10-17/scheme-duplicate.html"
+);
+const CANVAS_INVALID_THEN_VALID: &str = include_str!(
+    "../../../../../spec/internal/evidence/c04-12-root-canvas-color-scheme-2026-10-17/meta-invalid-then-valid.html"
 );
 
 fn resolve(source: &str, color_scheme: CssColorScheme) -> super::ResolvedRootHtmlEnvironment {
@@ -143,6 +149,62 @@ fn first_color_scheme_element_wins_for_the_duplicate_fixture() {
 
     assert_eq!(resolved.document_color_scheme, CssColorScheme::Light);
     assert_eq!(resolved.prefers_color_scheme, CssColorScheme::Light);
+}
+
+#[test]
+fn duplicate_color_scheme_metadata_is_detected_even_when_the_first_value_is_invalid() {
+    let parsed = ParsedRootHtml::parse(CANVAS_INVALID_THEN_VALID).unwrap();
+    let metadata = RootHtmlEnvironmentMetadata::from_document(&parsed);
+
+    assert!(metadata.has_duplicate_color_scheme_metadata());
+    assert_eq!(metadata.color_scheme, None);
+}
+
+#[test]
+fn root_canvas_scheme_uses_css_precedence_metadata_fallback_and_light_default() {
+    let dark = ColorSchemeMetadata {
+        light: false,
+        dark: true,
+        only: false,
+    };
+    let both = ColorSchemeMetadata {
+        light: true,
+        dark: true,
+        only: false,
+    };
+
+    assert_eq!(
+        resolve_root_html_canvas_color_scheme(Some(dark), "normal", CssColorScheme::Light),
+        Some(CssColorScheme::Dark)
+    );
+    assert_eq!(
+        resolve_root_html_canvas_color_scheme(Some(both), "normal", CssColorScheme::Dark),
+        Some(CssColorScheme::Dark)
+    );
+    assert_eq!(
+        resolve_root_html_canvas_color_scheme(None, "normal", CssColorScheme::Dark),
+        Some(CssColorScheme::Light)
+    );
+    assert_eq!(
+        resolve_root_html_canvas_color_scheme(
+            Some(ColorSchemeMetadata {
+                light: true,
+                dark: false,
+                only: false,
+            }),
+            "dark",
+            CssColorScheme::Light
+        ),
+        Some(CssColorScheme::Dark)
+    );
+}
+
+#[test]
+fn root_canvas_scheme_rejects_unknown_computed_values() {
+    assert_eq!(
+        resolve_root_html_canvas_color_scheme(None, "sepia", CssColorScheme::Light),
+        None
+    );
 }
 
 #[test]

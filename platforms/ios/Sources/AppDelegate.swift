@@ -30,7 +30,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     private let logger = Logger(subsystem: "dev.spinon.bootstrap", category: "runtime")
     private let rootDocumentSessionLock = NSLock()
+    private let rootDocumentEnvironmentQueue = DispatchQueue(
+        label: "dev.spinon.root-html-environment", qos: .userInitiated)
     private var rootDocumentSession: UInt64 = 0
+    private var rootDocumentEnvironmentRequestGeneration: UInt64 = 0
     private weak var rootDocumentHostViewController: RootDocumentHostViewController?
     private var applicationIsTerminating = false
 
@@ -367,7 +370,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         let handle = rootDocumentSession
         rootDocumentSession = 0
         rootDocumentSessionLock.unlock()
-        SpinonRunner.freeRuntimeSession(handle)
+        rootDocumentEnvironmentQueue.sync {
+            SpinonRunner.freeRuntimeSession(handle)
+        }
     }
 
     private func runBootstrapInBackground() {
@@ -408,7 +413,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
                 logger.error("SPINON_ROOT_HTML_ENVIRONMENT_ERROR reason=surface-unavailable")
                 return
             }
-            let environmentReport = SpinonRunner.setRuntimeSessionRootHtmlEnvironment(
+            let environmentReport = SpinonRunner.resolveRuntimeSessionRootHtmlCanvas(
                 handle,
                 surfaceWidthPx: environment.surfaceWidthPx,
                 surfaceHeightPx: environment.surfaceHeightPx,
@@ -462,20 +467,56 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     ) {
         rootDocumentSessionLock.lock()
         let handle = applicationIsTerminating ? 0 : rootDocumentSession
+        rootDocumentEnvironmentRequestGeneration &+= 1
+        let requestGeneration = rootDocumentEnvironmentRequestGeneration
         rootDocumentSessionLock.unlock()
         guard handle != 0 else { return }
-        let report = SpinonRunner.setRuntimeSessionRootHtmlEnvironment(
-            handle,
-            surfaceWidthPx: environment.surfaceWidthPx,
-            surfaceHeightPx: environment.surfaceHeightPx,
-            deviceScaleFactor: environment.deviceScaleFactor,
-            prefersDark: environment.prefersDark
-        ) ?? "native runtime returned no environment report"
-        if report.hasPrefix("status=0") {
-            logger.notice("SPINON_ROOT_HTML_ENVIRONMENT source=\(source, privacy: .public) \(report, privacy: .public)")
-        } else {
-            logger.error("SPINON_ROOT_HTML_ENVIRONMENT_ERROR source=\(source, privacy: .public) report=\(report, privacy: .public)")
+        rootDocumentEnvironmentQueue.async { [weak self] in
+            guard let self else { return }
+            let report = SpinonRunner.resolveRuntimeSessionRootHtmlCanvas(
+                handle,
+                surfaceWidthPx: environment.surfaceWidthPx,
+                surfaceHeightPx: environment.surfaceHeightPx,
+                deviceScaleFactor: environment.deviceScaleFactor,
+                prefersDark: environment.prefersDark
+            ) ?? "native runtime returned no Canvas report"
+            guard report.hasPrefix("status=0") else {
+                self.logger.error("SPINON_ROOT_HTML_ENVIRONMENT_ERROR source=\(source, privacy: .public) report=\(report, privacy: .public)")
+                return
+            }
+            guard let canvasColor = self.rootCanvasColor(from: report) else {
+                self.logger.error("SPINON_ROOT_HTML_CANVAS_ERROR reason=missing-canvas-color report=\(report, privacy: .public)")
+                return
+            }
+            self.logger.notice("SPINON_ROOT_HTML_ENVIRONMENT source=\(source, privacy: .public) \(report, privacy: .public)")
+            DispatchQueue.main.async {
+                self.rootDocumentSessionLock.lock()
+                let isCurrent = !self.applicationIsTerminating
+                    && self.rootDocumentSession == handle
+                    && self.rootDocumentEnvironmentRequestGeneration == requestGeneration
+                self.rootDocumentSessionLock.unlock()
+                guard isCurrent else { return }
+                self.rootDocumentHostViewController?.applyCanvasColor(canvasColor)
+                self.window?.backgroundColor = canvasColor
+            }
         }
+    }
+
+    private func rootCanvasColor(from report: String) -> UIColor? {
+        guard let marker = report.range(of: "canvas_color=") else { return nil }
+        let value = report[marker.upperBound...].prefix(7)
+        guard value.count == 7, value.first == "#",
+              let red = UInt8(value.dropFirst().prefix(2), radix: 16),
+              let green = UInt8(value.dropFirst(3).prefix(2), radix: 16),
+              let blue = UInt8(value.dropFirst(5).prefix(2), radix: 16) else {
+            return nil
+        }
+        return UIColor(
+            red: CGFloat(red) / 255,
+            green: CGFloat(green) / 255,
+            blue: CGFloat(blue) / 255,
+            alpha: 1
+        )
     }
 
     private func formatR10Report(_ report: String) -> String {
@@ -513,6 +554,10 @@ private final class RootDocumentHostViewController: UIViewController {
         let hostView = UIView()
         hostView.backgroundColor = .white
         view = hostView
+    }
+
+    func applyCanvasColor(_ color: UIColor) {
+        view.backgroundColor = color
     }
 
     override func viewDidLoad() {

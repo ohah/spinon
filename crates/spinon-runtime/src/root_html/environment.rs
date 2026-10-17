@@ -33,6 +33,7 @@ struct ColorSchemeMetadata {
 pub(crate) struct RootHtmlEnvironmentMetadata {
     viewport: Option<ViewportMetadata>,
     color_scheme: Option<ColorSchemeMetadata>,
+    duplicate_color_scheme_metadata: bool,
 }
 
 #[derive(Clone, Copy, Debug, PartialEq)]
@@ -78,12 +79,13 @@ impl RootHtmlEnvironmentMetadata {
             return Self {
                 viewport: None,
                 color_scheme: None,
+                duplicate_color_scheme_metadata: false,
             };
         };
 
         let mut viewport = None;
         let mut color_scheme = None;
-        let mut saw_color_scheme = false;
+        let mut color_scheme_metadata_count = 0_u8;
         for child in &document.nodes[head].children {
             if !is_html_element(document, *child, "meta") {
                 continue;
@@ -98,10 +100,12 @@ impl RootHtmlEnvironmentMetadata {
                 "viewport" => {
                     viewport = Some(parse_viewport_metadata(attribute(attributes, "content")));
                 }
-                "color-scheme" if !saw_color_scheme => {
-                    saw_color_scheme = true;
-                    color_scheme =
-                        attribute(attributes, "content").and_then(parse_color_scheme_metadata);
+                "color-scheme" => {
+                    color_scheme_metadata_count = color_scheme_metadata_count.saturating_add(1);
+                    if color_scheme_metadata_count == 1 {
+                        color_scheme =
+                            attribute(attributes, "content").and_then(parse_color_scheme_metadata);
+                    }
                 }
                 _ => {}
             }
@@ -110,7 +114,20 @@ impl RootHtmlEnvironmentMetadata {
         Self {
             viewport,
             color_scheme,
+            duplicate_color_scheme_metadata: color_scheme_metadata_count > 1,
         }
+    }
+
+    pub(crate) fn has_duplicate_color_scheme_metadata(self) -> bool {
+        self.duplicate_color_scheme_metadata
+    }
+
+    pub(crate) fn resolve_canvas_color_scheme(
+        self,
+        computed_root_value: &str,
+        preference: CssColorScheme,
+    ) -> Option<CssColorScheme> {
+        resolve_root_html_canvas_color_scheme(self.color_scheme, computed_root_value, preference)
     }
 
     fn resolve(
@@ -301,4 +318,19 @@ fn parse_color_scheme_metadata(content: &str) -> Option<ColorSchemeMetadata> {
         }
     }
     (metadata.light || metadata.dark).then_some(metadata)
+}
+
+fn resolve_root_html_canvas_color_scheme(
+    metadata: Option<ColorSchemeMetadata>,
+    computed_root_value: &str,
+    preference: CssColorScheme,
+) -> Option<CssColorScheme> {
+    if computed_root_value.trim().eq_ignore_ascii_case("normal") {
+        return Some(
+            metadata
+                .map(|schemes| schemes.resolve(preference))
+                .unwrap_or(CssColorScheme::Light),
+        );
+    }
+    parse_color_scheme_metadata(computed_root_value).map(|schemes| schemes.resolve(preference))
 }

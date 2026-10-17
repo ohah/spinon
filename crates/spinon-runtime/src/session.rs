@@ -11,6 +11,7 @@ use crate::v8::{
 #[cfg(feature = "c14-1-live-v8-fixture-test")]
 use spinon_core::HostDocumentSnapshot;
 pub use spinon_core::TaskPriority;
+use spinon_style::CssColorScheme;
 use std::ffi::CString;
 use std::sync::atomic::{AtomicU32, AtomicU64, Ordering};
 use std::sync::mpsc::{self, Receiver, SyncSender};
@@ -81,6 +82,53 @@ pub struct RuntimeSession {
     next_sequence: AtomicU64,
     ua_cascade: RuntimeUaCascadeCoordinator,
     root_html_environment: Option<RootHtmlEnvironmentMetadata>,
+}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum RootHtmlCanvasError {
+    Environment(RuntimeUaCascadeError),
+    DuplicateColorSchemeMetadata,
+    CascadeTimeout,
+    CascadeFailed,
+    StaleSnapshot,
+    MissingRoot,
+    MissingRootStyle,
+    UnsupportedComputedColorScheme,
+}
+
+impl RootHtmlCanvasError {
+    pub const fn status_code(self) -> i32 {
+        match self {
+            Self::Environment(error) => error.status_code(),
+            Self::DuplicateColorSchemeMetadata => -13,
+            Self::CascadeTimeout => -10,
+            Self::CascadeFailed => -7,
+            Self::StaleSnapshot => -12,
+            Self::MissingRoot | Self::MissingRootStyle => -11,
+            Self::UnsupportedComputedColorScheme => -14,
+        }
+    }
+
+    pub const fn reason_code(self) -> &'static str {
+        match self {
+            Self::Environment(_) => "environment_error",
+            Self::DuplicateColorSchemeMetadata => "duplicate_color_scheme_metadata",
+            Self::CascadeTimeout => "cascade_timeout",
+            Self::CascadeFailed => "cascade_failed",
+            Self::StaleSnapshot => "stale_snapshot",
+            Self::MissingRoot => "missing_root",
+            Self::MissingRootStyle => "missing_root_style",
+            Self::UnsupportedComputedColorScheme => "unsupported_computed_color_scheme",
+        }
+    }
+}
+
+#[derive(Clone, Debug, PartialEq)]
+pub struct RootHtmlCanvasSnapshot {
+    pub environment: RootHtmlEnvironmentSnapshot,
+    pub used_color_scheme: CssColorScheme,
+    pub color_rgba: [u8; 4],
+    pub cascade_key: RuntimeUaCascadeKey,
 }
 
 #[derive(Clone, Copy)]
@@ -624,6 +672,83 @@ impl RuntimeSession {
         )?;
         resolved.environment_revision = revision;
         Ok(resolved)
+    }
+
+    /// 지정한 루트 HTML 환경의 최신 root computed style을 기다려 Canvas 색을 선택합니다.
+    pub fn resolve_root_html_canvas(
+        &self,
+        surface_width_px: f32,
+        surface_height_px: f32,
+        device_scale_factor: f32,
+        media_environment: spinon_style::CssMediaEnvironment,
+        timeout: Duration,
+    ) -> Result<RootHtmlCanvasSnapshot, RootHtmlCanvasError> {
+        let metadata = self
+            .root_html_environment
+            .ok_or(RootHtmlCanvasError::Environment(
+                RuntimeUaCascadeError::InvalidEnvironment,
+            ))?;
+        let environment = self
+            .set_root_html_environment(
+                surface_width_px,
+                surface_height_px,
+                device_scale_factor,
+                media_environment,
+            )
+            .map_err(RootHtmlCanvasError::Environment)?;
+        if metadata.has_duplicate_color_scheme_metadata() {
+            return Err(RootHtmlCanvasError::DuplicateColorSchemeMetadata);
+        }
+
+        let snapshot = self.ua_cascade.handle().wait_for_snapshot(timeout);
+        if snapshot.state == RuntimeUaCascadeState::Pending {
+            return Err(RootHtmlCanvasError::CascadeTimeout);
+        }
+        if snapshot.state == RuntimeUaCascadeState::Failed {
+            return Err(RootHtmlCanvasError::CascadeFailed);
+        }
+        let completed = snapshot.completed.ok_or(RootHtmlCanvasError::MissingRoot)?;
+        if snapshot.requested != Some(completed.key)
+            || completed.key.environment_revision != environment.environment_revision.get()
+        {
+            return Err(RootHtmlCanvasError::StaleSnapshot);
+        }
+        if completed.roots.len() != 1 {
+            return Err(RootHtmlCanvasError::MissingRoot);
+        }
+        let root = &completed.roots[0];
+        if root.styles.generation.get() != completed.key.generation
+            || root.styles.document_revision.get() != completed.key.document_revision
+            || root.styles.render_tree_revision.get() != completed.key.render_tree_revision
+            || root.styles.style_revision != completed.key.style_revision
+            || root.styles.viewport.environment_revision.get() != completed.key.environment_revision
+        {
+            return Err(RootHtmlCanvasError::StaleSnapshot);
+        }
+        let root_style = root
+            .styles
+            .elements
+            .iter()
+            .find(|element| element.node_id.get() == root.root_node_id)
+            .ok_or(RootHtmlCanvasError::MissingRootStyle)?;
+        let computed_root_value = root_style
+            .properties
+            .get("color-scheme")
+            .ok_or(RootHtmlCanvasError::MissingRootStyle)?;
+        let used_color_scheme = metadata
+            .resolve_canvas_color_scheme(computed_root_value, environment.prefers_color_scheme)
+            .ok_or(RootHtmlCanvasError::UnsupportedComputedColorScheme)?;
+        let color_rgba = match used_color_scheme {
+            CssColorScheme::Light => [255, 255, 255, 255],
+            CssColorScheme::Dark => [18, 18, 18, 255],
+        };
+
+        Ok(RootHtmlCanvasSnapshot {
+            environment,
+            used_color_scheme,
+            color_rgba,
+            cascade_key: completed.key,
+        })
     }
 
     /// 최신 UA cascade 상태를 한 번에 복사합니다. Stylo 계산 완료는 기다리지 않습니다.

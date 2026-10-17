@@ -254,6 +254,38 @@ fn worker_panic_is_caught_and_transitions_the_latest_request_to_failed() {
     coordinator.shutdown().unwrap();
 }
 
+#[test]
+fn cascade_snapshot_wait_times_out_without_reusing_an_older_completion() {
+    let coordinator = RuntimeUaCascadeCoordinator::new_with_computer(Arc::new(|_| {
+        thread::sleep(Duration::from_millis(20));
+        Err("fixture timeout completion".to_owned())
+    }))
+    .unwrap();
+    let handle = coordinator.handle();
+    handle
+        .register_document_snapshot(make_snapshot(&["div"], None, None))
+        .unwrap();
+    let requested_revision = environment(&handle, CssMediaEnvironment::MOBILE);
+
+    let timed_out = handle.wait_for_snapshot(Duration::ZERO);
+    assert_eq!(timed_out.state, RuntimeUaCascadeState::Pending);
+    assert!(timed_out.completed.is_none());
+    assert_eq!(
+        timed_out.requested.unwrap().environment_revision,
+        requested_revision.get()
+    );
+
+    let failed = handle.wait_for_snapshot(Duration::from_secs(1));
+    assert_eq!(failed.state, RuntimeUaCascadeState::Failed);
+    assert!(failed.completed.is_none());
+
+    let effectively_unbounded = handle.wait_for_snapshot(Duration::MAX);
+    assert_eq!(effectively_unbounded.state, RuntimeUaCascadeState::Failed);
+    assert!(effectively_unbounded.completed.is_none());
+
+    coordinator.shutdown().unwrap();
+}
+
 fn environment_result(
     handle: &RuntimeUaCascadeHandle,
 ) -> Result<EnvironmentRevision, RuntimeUaCascadeError> {
