@@ -1,0 +1,101 @@
+{
+  "title": "C15.3 HostDocument Tailnet Agent Browser verification",
+  "generated_at": "2026-10-17T09:14:13.654Z",
+  "source_head": "6c5edcdadfcf55ec01e381964acc02a66b880c89",
+  "browser_version": "0.31.1",
+  "session": "spinon-c15-3-tailnet-final",
+  "pages": [
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "markers": [
+        "PR #264 병합",
+        "61/197",
+        "C15.3/C15 미완료"
+      ],
+      "screenshot": "tailnet-roadmap-agent-browser.png",
+      "note": "viewport screenshot at the new C15.3 HostDocument note"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "markers": [
+        "C15.3 HostDocument text layout→runtime glyph paint 제한 slice 구현·Simulator 검증 완료",
+        "61/197"
+      ],
+      "screenshot": "tailnet-status-agent-browser.png",
+      "note": "viewport screenshot at the HostDocument status row"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/README.html",
+      "title": "C15.3 HostDocument text paint 구현 근거 - 스피논 문서",
+      "markers": [
+        "49 passed",
+        "6/6"
+      ],
+      "screenshot": "tailnet-implementation-agent-browser.png",
+      "loaded_images": [
+        {
+          "src": "https://macstudio.tailed42f2.ts.net/spinon/logo.svg",
+          "loaded": true,
+          "width": 150,
+          "height": 150
+        }
+      ]
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/tests/fixtures/css/c15/inline-text-precomparison.html",
+      "title": "C15 inline text layout precomparison",
+      "markers": [
+        "XX",
+        "Ahem"
+      ],
+      "ahem_font_loaded": true,
+      "screenshot": "tailnet-fixture-agent-browser.png"
+    }
+  ],
+  "screenshots": [
+    {
+      "name": "tailnet-roadmap-agent-browser.png",
+      "path": "tailnet-roadmap-agent-browser.png",
+      "bytes": 257246,
+      "sha256": "f0270d9f83116b0a527c56419e3228325a101436565c8f29b73b149e74031817",
+      "width": 1280,
+      "height": 633
+    },
+    {
+      "name": "tailnet-status-agent-browser.png",
+      "path": "tailnet-status-agent-browser.png",
+      "bytes": 219257,
+      "sha256": "a7e55ef1b1c48dc4f0bf3df1fc2efd828d27331ffc17a16082303df097e18fda",
+      "width": 1280,
+      "height": 633
+    },
+    {
+      "name": "tailnet-implementation-agent-browser.png",
+      "path": "tailnet-implementation-agent-browser.png",
+      "bytes": 112920,
+      "sha256": "e7e7ec40717510507ebf19b6f2a729b9dac397f77f8e824d538d161f19883885",
+      "width": 1280,
+      "height": 633
+    },
+    {
+      "name": "tailnet-fixture-agent-browser.png",
+      "path": "tailnet-fixture-agent-browser.png",
+      "bytes": 22384,
+      "sha256": "ac03c35a3a7b415b11b93de4a2f0581df9bbd4976312ded1a904effeeae1dadf",
+      "width": 1280,
+      "height": 633
+    }
+  ],
+  "cleanup": {
+    "browser_session_closed": true,
+    "agent_browser_processes_remaining": 0,
+    "tmux_modified": false
+  },
+  "listener": {
+    "pid": 1191,
+    "port": 8768,
+    "restarted": false
+  }
+}

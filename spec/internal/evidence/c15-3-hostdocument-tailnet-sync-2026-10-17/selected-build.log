@@ -1,0 +1,67 @@
+@spinon/docs docs:build: 🔥 Rspress v2.0.22
+@spinon/docs docs:build:
+@spinon/docs docs:build: info    build started...
+@spinon/docs docs:build: warn    The dist path is not a subdir of root path, Rsbuild will not empty it.
+@spinon/docs docs:build: warn    Please set `output.cleanDistPath` config manually.
+@spinon/docs docs:build: warn    Current root path: /private/tmp/spinon-c15-3-unicode-shaping-impl-20261017/packages/docs
+@spinon/docs docs:build: warn    Current dist path: /private/tmp/spinon-c15-3-hostdocument-docs-out-20261017
+@spinon/docs docs:build: info    Rendering pages...
+@spinon/docs docs:build: success Pages rendered in 89 ms.
+@spinon/docs docs:build: ready   built in 0.73s (web)
+@spinon/docs docs:build: ready   built in 0.73s (node)
+@spinon/docs docs:build:
+@spinon/docs docs:build: File (web)                                                                                              Size        Gzip
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/i.25208e7c92.js                    0.10 kB     0.09 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/static/js/styles.1a3bc822db.js                     0.47 kB     0.23 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/icon.svg                                           0.64 kB     0.41 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-baf428b57bf0.b67560ecfc.js   2.1 kB      0.99 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-d31b5645247a.524dffbd4e.js   5.3 kB      2.2 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-99ce983111cf.3352cc5f72.js   6.0 kB      2.6 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-96fe16660847.656f272b79.js   7.3 kB      2.9 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-7a57417efac1.fe7a7a5e92.js   7.6 kB      3.0 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-b33563055168.a9c0db3f3e.js   7.9 kB      2.7 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-4d17e1463417.fade3c5f30.js   8.1 kB      3.1 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-7f1586660381.b852d65680.js   8.2 kB      3.3 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-56103828be18.a4cdaf2096.js   8.6 kB      3.1 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-7ffe75ba0a2f.df092ce75e.js   10.4 kB     3.8 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-08dd089e447f.202a3a7c0d.js   10.6 kB     3.2 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-17675d96f29f.8cba81b2e2.js   11.4 kB     3.3 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-5f8576cb54d3.8db9ea75da.js   15.8 kB     5.2 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-5c3b005e2ac4.1fc8ec9bb7.js   16.9 kB     5.3 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-acf9bf8a5ef1.d24a86cca5.js   26.2 kB     7.5 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/static/js/lib-router.1e14e568cb.js                 35.4 kB     12.7 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/static/js/index.cc60bdc0b8.js                      44.7 kB     14.5 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-117783875241.36ed733376.js   62.4 kB     17.2 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/static/css/styles.8d918fd78e.css                   74.0 kB     14.2 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-a1017bdf23ca.d269f61ea3.js   166.9 kB    35.0 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/static/js/a.bd3f2ea084.js                          217.1 kB    71.7 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/static/js/lib-react.9cdf8f49ce.js                  218.4 kB    68.9 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-6c33a3943990.ef586b096f.js   360.3 kB    83.9 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/static/search_index.ko.10c4c57f.json               415.8 kB    131.2 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build:                                                                                                Total:   1748.4 kB   502.1 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build: File (node)                                                                                                                                                    Size        Gzip
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/404.html                                                                                                  8.5 kB      2.5 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/rust-lint-final.html            23.5 kB     4.5 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/internal/0073-c15-3-overflow-text-owner-hit-test.html                                                     25.8 kB     5.6 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/internal/0072-c15-3-wgpu-glyph-paint.html                                                                 26.4 kB     6.1 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/internal/evidence/c15-3-hostdocument-text-paint-precomparison-2026-10-17/README.html                      27.0 kB     6.3 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/internal/0071-c15-3-glyph-raster-snapshot.html                                                            28.4 kB     6.7 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/README.html                                                                                               28.9 kB     6.3 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/internal/0074-c15-3-runtime-glyph-scroll-transform.html                                                   28.9 kB     6.5 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/internal/evidence/c15-3-hostdocument-roadmap-pr-delta-review-30-2026-10-17.html                           29.3 kB     6.6 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/README.html                     30.1 kB     6.6 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/internal/0075-c15-3-hostdocument-text-paint-bridge.html                                                   30.4 kB     7.2 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/pr-delta-review-30.html         34.2 kB     8.5 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/internal/evidence/c15-3-hostdocument-text-paint-precomparison-2026-10-17/pr-delta-review-20.html          34.2 kB     6.6 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/internal/evidence/c15-3-hostdocument-text-paint-precomparison-2026-10-17/plan-review-20.html              36.0 kB     6.9 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/implementation-review-20.html   36.3 kB     9.0 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/internal/0070-c15-1-inline-text-layout.html                                                               42.5 kB     10.8 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/plan/c15-inline-text-layout.html                                                                          74.9 kB     20.2 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/internal/README.html                                                                                      161.2 kB    37.8 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-hostdocument-docs-out-20261017/STATUS.html                                                                                               344.6 kB    85.9 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build:                                                                                                                                                       Total:   1051.0 kB   250.6 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build: Exited with code 0
