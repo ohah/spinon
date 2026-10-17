@@ -393,6 +393,18 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
   return static_cast<uint64_t>(reinterpret_cast<uintptr_t>(session));
 }
 
+#if defined(SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST
++ (NSString *)runC0412RootHtmlAccessorsFixture {
+  std::array<char, 2048> output{};
+  const int32_t status = spinon_c04_12_root_html_accessors_fixture(
+      output.data(), output.size());
+  NSString *detail = [NSString stringWithUTF8String:output.data()];
+  if (detail == nil) detail = @"C ABI 보고를 UTF-8로 변환하지 못했습니다";
+  return [NSString stringWithFormat:@"status=%d %@", status, detail];
+}
+#endif
+
 + (NSString *)runRuntimePriorityProbe {
   std::array<char, 4096> output{};
   const int32_t status =

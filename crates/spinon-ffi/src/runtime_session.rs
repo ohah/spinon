@@ -1,4 +1,6 @@
-use spinon_runtime::{MemoryPressureLevel, RuntimeSession, TaskPriority};
+use spinon_runtime::{
+    MemoryPressureLevel, ROOT_HTML_SOURCE_MAX_BYTES, RuntimeSession, TaskPriority,
+};
 use std::ffi::{CStr, c_char};
 use std::ptr;
 
@@ -83,6 +85,72 @@ pub unsafe extern "C" fn spinon_runtime_session_new(
     Box::into_raw(Box::new(session)).cast::<SpinonRuntimeSession>()
 }
 
+/// HTML document를 초기 HostDocument로 가져온 V8 세션을 만듭니다.
+///
+/// # Safety
+/// `source`는 `source_length` bytes를 읽을 수 있어야 하며 `output`은
+/// `output_capacity` bytes를 쓸 수 있어야 합니다. 두 범위는 서로 겹치지 않아야 합니다.
+#[unsafe(no_mangle)]
+pub unsafe extern "C" fn spinon_runtime_session_new_with_root_html(
+    source: *const c_char,
+    source_length: usize,
+    output: *mut c_char,
+    output_capacity: usize,
+) -> *mut SpinonRuntimeSession {
+    if output.is_null() || output_capacity == 0 {
+        return ptr::null_mut();
+    }
+    if source_length > ROOT_HTML_SOURCE_MAX_BYTES {
+        let _ = unsafe {
+            write_report(
+                output,
+                output_capacity,
+                "루트 HTML이 허용 크기를 초과했습니다",
+            )
+        };
+        return ptr::null_mut();
+    }
+    let source_bytes = if source_length == 0 {
+        &[][..]
+    } else if source.is_null() {
+        let _ = unsafe {
+            write_report(
+                output,
+                output_capacity,
+                "루트 HTML source 포인터가 비었습니다",
+            )
+        };
+        return ptr::null_mut();
+    } else {
+        unsafe { std::slice::from_raw_parts(source.cast::<u8>(), source_length) }
+    };
+    let source = match std::str::from_utf8(source_bytes) {
+        Ok(source) => source,
+        Err(_) => {
+            let _ = unsafe {
+                write_report(
+                    output,
+                    output_capacity,
+                    "루트 HTML source는 UTF-8이어야 합니다",
+                )
+            };
+            return ptr::null_mut();
+        }
+    };
+    let (session, report) = match RuntimeSession::new_with_root_html(source) {
+        Ok(session) => session,
+        Err(error) => {
+            let _ = unsafe { write_report(output, output_capacity, &error) };
+            return ptr::null_mut();
+        }
+    };
+    if !unsafe { write_report(output, output_capacity, &report) } {
+        drop(session);
+        return ptr::null_mut();
+    }
+    Box::into_raw(Box::new(session)).cast::<SpinonRuntimeSession>()
+}
+
 /// 기본 우선순위로 JavaScript를 실행합니다.
 #[unsafe(no_mangle)]
 pub unsafe extern "C" fn spinon_runtime_session_eval(
@@ -133,6 +201,51 @@ unsafe fn session_eval_with_priority(
     };
     let response = unsafe { &*session.cast::<RuntimeSession>() }.eval(source, priority);
     write_response(response, output, output_capacity)
+}
+
+#[cfg(test)]
+mod root_html_tests {
+    use super::spinon_runtime_session_new_with_root_html;
+    use std::ffi::CStr;
+
+    #[test]
+    fn c_abi_rejects_non_utf8_source_before_creating_a_session() {
+        let source = [0xff_u8];
+        let mut output = [0_u8; 128];
+        let session = unsafe {
+            spinon_runtime_session_new_with_root_html(
+                source.as_ptr().cast(),
+                source.len(),
+                output.as_mut_ptr().cast(),
+                output.len(),
+            )
+        };
+
+        assert!(session.is_null());
+        let report = unsafe { CStr::from_ptr(output.as_ptr().cast()) }
+            .to_str()
+            .unwrap();
+        assert_eq!(report, "루트 HTML source는 UTF-8이어야 합니다");
+    }
+
+    #[test]
+    fn c_abi_rejects_oversized_source_before_reading_it() {
+        let mut output = [0_u8; 128];
+        let session = unsafe {
+            spinon_runtime_session_new_with_root_html(
+                std::ptr::null(),
+                super::ROOT_HTML_SOURCE_MAX_BYTES + 1,
+                output.as_mut_ptr().cast(),
+                output.len(),
+            )
+        };
+
+        assert!(session.is_null());
+        let report = unsafe { CStr::from_ptr(output.as_ptr().cast()) }
+            .to_str()
+            .unwrap();
+        assert_eq!(report, "루트 HTML이 허용 크기를 초과했습니다");
+    }
 }
 
 /// 이벤트 작업을 user-blocking 우선순위로 실행합니다.

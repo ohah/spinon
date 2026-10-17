@@ -2607,6 +2607,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             }
         }
 #endif
+#if SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST_1
         if c153GlyphPaintProbeRequested {
             let report = result ?? "status=-1 missing-report"
             let hitTest = reportField(report, "hit_test=")
@@ -2631,6 +2632,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             }
             c153GlyphPaintEvaluationReport = report
         }
+#endif
 #if SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST_1
         if c192BoxPaintOpacityProbeRequested {
             let report = result ?? "status=-1 missing-report"

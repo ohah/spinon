@@ -156,6 +156,21 @@ fn new_session() -> RuntimeSession {
         .0
 }
 
+#[test]
+fn root_html_session_imports_document_before_v8_worker_is_ready() {
+    let (session, report) = RuntimeSession::new_with_root_html(
+        "<!doctype html><html><head><meta name='viewport' content='width=device-width'></head><body><main>초기 화면</main></body></html>",
+    )
+    .expect("no-quirks HTML document should initialize the runtime");
+    assert!(report.contains("session=ready"));
+
+    let error = RuntimeSession::new_with_root_html("<html><body>quirks</body></html>")
+        .err()
+        .expect("quirks mode must fail before exposing a session");
+    assert!(error.contains("quirks mode"));
+    drop(session);
+}
+
 fn eval(session: &RuntimeSession, source: &str) -> super::OperationResponse {
     session.eval(source, TaskPriority::UserVisible)
 }

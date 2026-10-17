@@ -38,6 +38,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         let runPriorityProbe = arguments.contains("--spinon-priority-probe")
         let runShutdownProbe = arguments.contains("--spinon-shutdown-probe")
         let runUaCascadeProbe = arguments.contains("--spinon-c048-ua-cascade")
+        let runC0412RootHtmlFixture = arguments.contains("--spinon-c0412-root-html")
         let runC124SessionStackCostProbe = arguments.contains("--spinon-c124-session-stack-cost")
         let runC124RuntimeMatrixProbe = arguments.contains("--spinon-c124-runtime-matrix")
         let c124RuntimeMatrixRunID = arguments.first {
@@ -111,6 +112,31 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         let runR05AttributionProbe = arguments.contains("--spinon-r05-attribution")
         let runLifecycleProbe = arguments.contains("--spinon-dom-gc-auto")
         let runC142ImageRatioFixture = arguments.contains("--spinon-c142-image-ratio")
+        if runC0412RootHtmlFixture {
+            let window = UIWindow(frame: UIScreen.main.bounds)
+#if SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST_1
+            window.rootViewController = C0412RootHtmlFixtureViewController()
+#else
+            let controller = UIViewController()
+            controller.view.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
+            let label = UILabel()
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.text = "C04.12 root HTML fixture-test 옵션을 켜서 빌드해야 합니다."
+            label.textColor = .white
+            label.textAlignment = .center
+            label.numberOfLines = 0
+            controller.view.addSubview(label)
+            NSLayoutConstraint.activate([
+                label.leadingAnchor.constraint(equalTo: controller.view.leadingAnchor, constant: 24),
+                label.trailingAnchor.constraint(equalTo: controller.view.trailingAnchor, constant: -24),
+                label.centerYAnchor.constraint(equalTo: controller.view.centerYAnchor),
+            ])
+            window.rootViewController = controller
+#endif
+            window.makeKeyAndVisible()
+            self.window = window
+            return true
+        }
         if runC142ImageRatioFixture {
             let conflictingFixtureArguments = arguments.filter {
                 $0.hasPrefix("--spinon-") && $0 != "--spinon-c142-image-ratio"
@@ -359,6 +385,53 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             .replacingOccurrences(of: " iterations=", with: "\niterations=")
     }
 }
+
+#if SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST_1
+private final class C0412RootHtmlFixtureViewController: UIViewController {
+    private let reportView = UITextView()
+    private let logger = Logger(subsystem: "dev.spinon.bootstrap", category: "c04-12-fixture")
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
+        reportView.translatesAutoresizingMaskIntoConstraints = false
+        reportView.backgroundColor = .clear
+        reportView.textColor = UIColor(red: 0.90, green: 0.93, blue: 0.98, alpha: 1)
+        reportView.font = .monospacedSystemFont(ofSize: 13, weight: .regular)
+        reportView.textContainerInset = UIEdgeInsets(top: 32, left: 20, bottom: 24, right: 20)
+        reportView.isEditable = false
+        view.addSubview(reportView)
+        NSLayoutConstraint.activate([
+            reportView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            reportView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            reportView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            reportView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
+        reportView.text = "C04.12 · 실제 V8 root HTML document 확인 중…"
+
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            let report = SpinonRunner.runC0412RootHtmlAccessorsFixture()
+                ?? "status=-1 C ABI 응답이 비었습니다"
+            DispatchQueue.main.async {
+                guard let self else { return }
+                let passed = report.contains("status=0")
+                    && report.contains("c04_12_root_html_accessors=PASS")
+                self.reportView.text = passed
+                    ? "C04.12 · 실제 V8 DOM\n\nPASS\n\n"
+                        + "documentElement · head · body\n"
+                        + "meta viewport · meta color-scheme · style tree\n"
+                        + "script inertness · HostDocument text/attribute"
+                    : "C04.12 · 실제 V8 DOM 실패\n\n\(report)"
+                if passed {
+                    self.logger.notice("SPINON_C0412_ROOT_HTML status=pass")
+                } else {
+                    self.logger.error("SPINON_C0412_ROOT_HTML status=fail report=\(report, privacy: .public)")
+                }
+            }
+        }
+    }
+}
+#endif
 
 private final class C142ImageRatioFixtureViewController: UIViewController {
     var fixtureEnabled = false

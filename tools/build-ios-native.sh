@@ -36,6 +36,13 @@ case "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" in
     exit 2
     ;;
 esac
+case "${SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST:-0}" in
+  0|1) ;;
+  *)
+    echo "SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST는 0 또는 1이어야 합니다." >&2
+    exit 2
+    ;;
+esac
 case "${SPINON_ENABLE_C14_1_APP_FIXTURE_TEST:-0}" in
   0|1) ;;
   *)
@@ -235,6 +242,7 @@ c183_object_fit_position_cpp_flag="-DSPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIX
 c184_async_image_cpp_flag="-DSPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST=${SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST:-0}"
 c192_box_paint_opacity_cpp_flag="-DSPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST=${SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST:-0}"
 c153_wgpu_glyph_paint_cpp_flag="-DSPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST=${SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST:-0}"
+c0412_root_html_fixture_cpp_flag="-DSPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST=${SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST:-0}"
 ffi_features=""
 append_ffi_feature() {
   if [[ -n "$ffi_features" ]]; then
@@ -248,6 +256,9 @@ fi
 if [[ "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" == "1" ]]; then
   append_ffi_feature c04-runtime-gpu-fixture-test
   append_ffi_feature c11-2-3-grid-fixture-test
+fi
+if [[ "${SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST:-0}" == "1" ]]; then
+  append_ffi_feature c04-12-root-html-fixture-test
 fi
 if [[ "${SPINON_ENABLE_C13_1_OVERFLOW_CLIP_FIXTURE_TEST:-0}" == "1" ]]; then
   append_ffi_feature c13-1-overflow-clip-fixture-test
@@ -384,6 +395,7 @@ xcrun --sdk "$sdk" clang++ -std=c++20 -O2 -fPIC -target "$target" \
   "$c181_image_paint_cpp_flag" "$c182_alpha_image_cpp_flag" \
   "$c183_object_fit_position_cpp_flag" "$c184_async_image_cpp_flag" \
   "$c192_box_paint_opacity_cpp_flag" "$c153_wgpu_glyph_paint_cpp_flag" \
+  "$c0412_root_html_fixture_cpp_flag" \
   -I"$repo_root/native/v8/include" \
   -c "$repo_root/native/v8/src/spinon_v8.cc" \
   -o "$output_dir/spinon_v8.o"

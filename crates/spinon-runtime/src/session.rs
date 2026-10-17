@@ -261,6 +261,16 @@ impl RuntimeSession {
         Self::new_with_css_profile(RuntimeCssProfile::Default)
     }
 
+    /// UTF-8 루트 HTML을 document mode로 파싱한 뒤 V8 세션을 만듭니다.
+    ///
+    /// HTML 안의 script는 실행하지 않습니다. 기존 [`Self::new`]는 빈 HostDocument를 유지합니다.
+    pub fn new_with_root_html(source: &str) -> Result<(Self, String), String> {
+        Self::new_with_css_profile_and_root_html(
+            RuntimeCssProfile::Default,
+            Some(source.to_owned()),
+        )
+    }
+
     /// C04.10 내부 GPU renderer 전용 Flex paint profile로 런타임을 만듭니다.
     pub fn new_runtime_gpu() -> Result<(Self, String), String> {
         Self::new_with_css_profile(RuntimeCssProfile::RuntimeGpu)
@@ -341,6 +351,13 @@ impl RuntimeSession {
     }
 
     fn new_with_css_profile(profile: RuntimeCssProfile) -> Result<(Self, String), String> {
+        Self::new_with_css_profile_and_root_html(profile, None)
+    }
+
+    fn new_with_css_profile_and_root_html(
+        profile: RuntimeCssProfile,
+        root_html: Option<String>,
+    ) -> Result<(Self, String), String> {
         let startup_started = Instant::now();
         let ua_cascade = match profile {
             RuntimeCssProfile::Default => RuntimeUaCascadeCoordinator::new()?,
@@ -404,6 +421,7 @@ impl RuntimeSession {
                     worker_scheduler,
                     worker_control,
                     actor_ua_cascade,
+                    root_html,
                     ready_sender,
                 )
             })

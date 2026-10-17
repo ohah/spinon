@@ -2294,6 +2294,23 @@ Java_dev_spinon_bootstrap_MainActivity_nativeSessionCreate(JNIEnv *, jclass) {
   return static_cast<jlong>(reinterpret_cast<uintptr_t>(session));
 }
 
+#if defined(SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0412RootHtmlFixtureNativeAdapter_run(JNIEnv *env,
+                                                                jclass) {
+  std::array<char, 2048> output{};
+  const int32_t status = spinon_c04_12_root_html_accessors_fixture(
+      output.data(), output.size());
+  const std::string report = "status=" + std::to_string(status) + " " + output.data();
+  jbyteArray result = env->NewByteArray(static_cast<jsize>(report.size()));
+  if (result == nullptr) return nullptr;
+  env->SetByteArrayRegion(result, 0, static_cast<jsize>(report.size()),
+                          reinterpret_cast<const jbyte *>(report.data()));
+  return result;
+}
+#endif
+
 extern "C" JNIEXPORT jbyteArray JNICALL
 Java_dev_spinon_bootstrap_MainActivity_nativeSessionEval(JNIEnv *env, jclass,
                                                           jlong handle,

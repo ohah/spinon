@@ -89,6 +89,19 @@ typedef enum SpinonMemoryPressureLevel {
 } SpinonMemoryPressureLevel;
 SpinonRuntimeSession *spinon_runtime_session_new(char *output,
                                                  size_t output_capacity);
+/* UTF-8 HTML document를 초기 HostDocument로 가져옵니다. source_length는 NUL을 제외하며
+   최대 1,048,576 bytes입니다. script 실행·viewport/color-scheme 적용은 하지 않습니다.
+   source는 source_length bytes를 읽을 수 있어야 하고 output은 output_capacity bytes를
+   쓸 수 있어야 합니다. 두 범위는 겹치지 않아야 합니다. 실패하면 NULL입니다. */
+SpinonRuntimeSession *spinon_runtime_session_new_with_root_html(
+    const char *source, size_t source_length, char *output,
+    size_t output_capacity);
+#if defined(SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST
+/* 실제 V8 documentElement/head/body 및 초기 HTML DOM을 검사합니다. */
+int32_t spinon_c04_12_root_html_accessors_fixture(char *output,
+                                                  size_t output_capacity);
+#endif
 int32_t spinon_runtime_session_eval(SpinonRuntimeSession *session,
                                    const char *source, char *output,
                                    size_t output_capacity);

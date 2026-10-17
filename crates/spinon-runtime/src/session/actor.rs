@@ -27,13 +27,16 @@ pub(super) struct CallbackState {
 }
 
 impl CallbackState {
-    fn new() -> Result<Self, String> {
+    fn new(root_html: Option<&str>) -> Result<Self, String> {
         Ok(Self {
             callback_count: 0,
             created_nodes: 0,
             last_node_id: 0,
             callback_thread_id: 0,
-            document: HostDocumentBridge::new()?,
+            document: match root_html {
+                Some(source) => HostDocumentBridge::new_with_root_html(source)?,
+                None => HostDocumentBridge::new()?,
+            },
         })
     }
 
@@ -97,12 +100,15 @@ pub(super) fn actor_loop(
     scheduler: Arc<TaskScheduler>,
     control: Arc<Mutex<RuntimeControl>>,
     ua_cascade: RuntimeUaCascadeHandle,
+    root_html: Option<String>,
     ready: mpsc::Sender<Result<u64, String>>,
 ) {
-    let mut callbacks = match CallbackState::new() {
+    let mut callbacks = match CallbackState::new(root_html.as_deref()) {
         Ok(callbacks) => callbacks,
         Err(error) => {
-            let _ = ready.send(Err(format!("HostDocument를 만들지 못했습니다: {error}")));
+            let _ = ready.send(Err(format!(
+                "초기 HostDocument를 준비하지 못했습니다: {error}"
+            )));
             return;
         }
     };
