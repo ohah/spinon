@@ -124,7 +124,7 @@ HostDocument의 실제 text node와 inline element를 CSS inline formatting cont
 
 고정 fixture에서 HostDocument text source revision, Taffy text layout snapshot, 같은 snapshot의 Ahem glyph raster와 runtime paint를 연결했다. opt-in FFI 전체 suite는 49 passed/0 failed/2 ignored였고, default/opt-in archive scan은 fixture FFI symbol 및 Ahem/Noto Sans KR payload가 opt-in 경계 안에 있음을 확인했다. Android 17/API 37 ARM64 AVD PixelCopy와 iPhone 17 Pro/iOS 26.2 Simulator Metal drawable은 paragraph 안쪽 첫 글자 2개 및 폭 15px owner를 넘어간 둘째 글자 4개를 각각 6/6 exact로 읽었다. iOS 첫 실행에서 새 launch argument를 거부하는 C13 validator 결함을 수정하고 simulator 재실행으로 확인했다. [전체 실행·화면·hash·artifact 근거](../spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/README.md) · [구현 실패 관점 20개](../spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/implementation-review-20.md) · [내부 계약 0075](../spec/internal/0075-c15-3-hostdocument-text-paint-bridge.md).
 
-이 제한 fixture 결과는 live V8 DOM text admission, computed CSS font projection, 일반 wrapping/fallback, 실기기, hardware GPU, iOS compositor 이후 표면 또는 상위 C15.3/C15 완료를 의미하지 않는다. 공식 완료 수는 `61/197`로 유지한다.
+이 제한 fixture 결과는 live V8 DOM text admission, computed CSS font projection, 일반 wrapping/fallback, 실기기, hardware GPU, iOS compositor 이후 표면 또는 상위 C15.3/C15 완료를 의미하지 않는다. 상위 C15.3/C15는 미완료로 유지한다. 전체 로드맵 집계는 상태 대장에서 동적으로 읽는다.
 
 내부 계약 [0075 · HostDocument text layout→runtime glyph paint](../spec/internal/0075-c15-3-hostdocument-text-paint-bridge.md)은 입력·출력·오류·fixture feature 경계를 `0.1.0`으로 고정한다. fixture-only FFI/font symbol과 font payload가 기본 artifact에 들어가지 않는지 default/positive-control artifact 비교를 통과해야 한다.
 

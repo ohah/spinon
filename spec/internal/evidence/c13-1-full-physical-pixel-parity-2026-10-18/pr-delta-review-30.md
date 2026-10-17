@@ -31,7 +31,7 @@
 | 25 | PixelCopy 전후 frame/surface 신원이 불일치 | surface generation, PID, scale, width·height, frame/query/hit logs를 상호 대조한다. 통과. |
 | 26 | 전체 surface 추가가 기존 center/sample/hit 회귀를 가림 | Android와 iOS 최종 run에서 30,000 center/hit identities, 52 fixed samples, 41 frames도 별도로 통과했다. 통과. |
 | 27 | 기본 빌드에 테스트 fixture FFI가 새어 들어감 | host debug archive default/opt-in 비교와 symbol/string positive control을 근거 파일에 남겼다. 이는 host debug archive에 한정함을 명시했다. 통과. |
-| 28 | 문서가 제한 fixture를 제품 전체 완료로 과장 | STATUS의 C13/C13.1은 미완료이고 공식 완료 수는 61/197로 유지한다. roadmap과 내부 계약도 실기기·WPT·일반 CSS 한계를 밝힌다. 통과. |
+| 28 | 문서가 제한 fixture를 제품 전체 완료로 과장 | STATUS의 C13/C13.1은 미완료이고 이 PR은 체크 항목을 바꾸지 않는다. 전체 집계는 roadmap이 상태 대장에서 동적으로 읽는다. 실기기·WPT·일반 CSS 한계도 표시한다. 통과. |
 | 29 | PR screenshots가 잘못된 raw URL·깨진 링크로 표시 | Agent Browser에서 PR 페이지의 Android/iOS `<img>`가 `complete=true`, natural size 1080×2400/1206×2622임을 확인했다. 통과. |
 | 30 | 요약·증거·PR 커밋이 다른 source revision을 가리킴 | 최종 실행은 구현 revision `85f2899…`에 연결되고 PR head에는 그 구현 및 근거 문서 두 commit이 이어진다. 1,047 workspace tests, clippy, fmt와 7 comparator tests의 기록이 연결됐다. 통과. |
 
