@@ -674,13 +674,18 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c131-compact-hit-identity-grid")
     private let c131CompactMetalPixelCentersRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c131-compact-metal-pixel-centers")
+    private let c131FullPhysicalMetalPixelsRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c131-full-physical-metal-pixels")
+    private var c131MetalPixelCaptureRequested: Bool {
+        c131CompactMetalPixelCentersRequested || c131FullPhysicalMetalPixelsRequested
+    }
     private var c131CompactSurfaceMatrixRouteRequested: Bool {
         c131CompactSurfaceMatrixProbeRequested || c131CompactHitIdentityGridProbeRequested
     }
     private let c131CompactSurfaceMatrixRunID = UUID().uuidString
         .replacingOccurrences(of: "-", with: "").lowercased()
     private var c131CompactHitIdentityGridStatusMessage: String?
-    private var c131MetalPixelCapture: C131MetalSurfacePixelCapture?
+    private var c131MetalPixelCapture: (any C131MetalSurfacePixelCaptureProtocol)?
     private var c131MetalCaptureBaselineDrawReady = false
     private var c131MetalPixelBatchRequested = false
     private var c131MetalPixelCaptureComplete = false
@@ -2174,7 +2179,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             return
         }
 #endif
-        if c131CompactMetalPixelCentersRequested
+        if c131CompactMetalPixelCentersRequested && c131FullPhysicalMetalPixelsRequested {
+            log("SPINON_C131_METAL_PIXEL_ARGUMENT_ERROR reason=multiple-capture-modes")
+            postStatus("실패 · C13.1 Metal pixel capture mode는 하나만 선택해야 합니다")
+            return
+        }
+        if c131MetalPixelCaptureRequested
             && !c131CompactHitIdentityGridProbeRequested {
             log("SPINON_C131_METAL_PIXEL_ARGUMENT_ERROR reason=requires-compact-hit-identity-grid")
             postStatus("실패 · Metal pixel route에는 C13.1 compact hit identity route가 필요합니다")
@@ -2234,6 +2244,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                    && $0 != "--spinon-c131-compact-surface-matrix"
                    && $0 != "--spinon-c131-compact-hit-identity-grid"
                    && $0 != "--spinon-c131-compact-metal-pixel-centers"
+                   && $0 != "--spinon-c131-full-physical-metal-pixels"
                    && $0 != "--spinon-c131-overflow-clip-border"
                    && $0 != "--spinon-c132-scroll"
                    && $0 != "--spinon-c192-box-paint-opacity"
@@ -2416,7 +2427,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         } else if let c192Host {
             handle = c192Host
         } else {
-            handle = c131CompactMetalPixelCentersRequested
+            handle = c131MetalPixelCaptureRequested
             ? SpinonRunner.createRuntimeGpuHostWithC13_1CompactSurfacePixelReadbackFixture()
             : c131CompactSurfaceMatrixRouteRequested
             ? SpinonRunner.createRuntimeGpuHostWithC13_1CompactSurfaceMatrixFixture()
@@ -2485,12 +2496,22 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             }
         }
 #endif
-        if c131CompactMetalPixelCentersRequested {
+        if c131MetalPixelCaptureRequested {
             do {
-                c131MetalPixelCapture = try C131MetalSurfacePixelCapture(
-                    runID: c131CompactSurfaceMatrixRunID
-                )
-                log("SPINON_C131_METAL_PIXEL_CAPTURE_BEGIN run_id=\(c131CompactSurfaceMatrixRunID) viewport=300x100 samples=30000 batch_size=64 batch_count=\(C131MetalSurfacePixelCapture.totalBatchCount)")
+                if c131FullPhysicalMetalPixelsRequested {
+                    c131MetalPixelCapture = try C131MetalFullSurfacePixelCapture(
+                        runID: c131CompactSurfaceMatrixRunID
+                    )
+                } else {
+                    c131MetalPixelCapture = try C131MetalSurfacePixelCapture(
+                        runID: c131CompactSurfaceMatrixRunID
+                    )
+                }
+                if let capture = c131MetalPixelCapture {
+                    let mode = c131FullPhysicalMetalPixelsRequested
+                        ? "full-physical-surface" : "css-pixel-centers"
+                    log("SPINON_C131_METAL_PIXEL_CAPTURE_BEGIN run_id=\(c131CompactSurfaceMatrixRunID) mode=\(mode) viewport=300x100 samples=\(capture.expectedSampleCount) batch_size=64 batch_count=\(capture.expectedBatchCount)")
+                }
             } catch {
                 SpinonRunner.freeRuntimeGpuHost(handle)
                 log("SPINON_C131_METAL_PIXEL_CAPTURE_ERROR run_id=\(c131CompactSurfaceMatrixRunID) stage=artifact-init reason=\(error)")
@@ -4730,7 +4751,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                     throw C0410LatestTaskLaneError.operationFailed(request)
                 }
                 c131MetalPixelBatchRequested = true
-                log("SPINON_C131_METAL_PIXEL_BATCH_REQUESTED run_id=\(c131CompactSurfaceMatrixRunID) batch=\(batch[0].index / C131MetalSurfacePixelCapture.batchSize) count=\(batch.count) generation=\(generation) drawable=\(width)x\(height)")
+                log("SPINON_C131_METAL_PIXEL_BATCH_REQUESTED run_id=\(c131CompactSurfaceMatrixRunID) batch=\(batch[0].index / 64) count=\(batch.count) generation=\(generation) drawable=\(width)x\(height)")
             } catch {
                 throw failC131MetalPixelCapture(stage: "request", error: error)
             }
@@ -5092,7 +5113,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 if progress.complete {
                     c131MetalPixelCaptureComplete = true
                     log("SPINON_C131_METAL_PIXEL_CAPTURE_COMPLETE run_id=\(c131CompactSurfaceMatrixRunID) generation=\(generation) samples=\(progress.capturedSamples) batches=\(progress.capturedBatches) sample_file=\(progress.sampleFileName ?? "missing") manifest_file=\(progress.manifestFileName ?? "missing")")
-                    postStatus("완료 · C13.1 iOS Metal pixel 30,000/30,000")
+                    let mode = c131FullPhysicalMetalPixelsRequested
+                        ? "전체 물리 pixel" : "CSS pixel center"
+                    postStatus("완료 · C13.1 iOS Metal \(mode) \(progress.capturedSamples)/\(progress.totalSamples)")
                 } else {
                     log("SPINON_C131_METAL_PIXEL_BATCH_COMPLETE run_id=\(c131CompactSurfaceMatrixRunID) generation=\(generation) samples=\(progress.capturedSamples)/\(progress.totalSamples) batches=\(progress.capturedBatches)/\(progress.totalBatches)")
                     requestDraw()

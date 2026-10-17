@@ -7,10 +7,20 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 import { compareMetalArtifactFiles } from './compare-c13-1-ios-metal-pixel-centers.mjs';
+import { compareMetalFullSurfaceFiles } from './compare-c13-1-full-physical-pixels.mjs';
 
 const repositoryRoot = resolve(fileURLToPath(new URL('../..', import.meta.url)));
 const expectedSimulatorUDID = 'ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D';
 const bundleID = 'dev.spinon.bootstrap';
+const fullSurfaceCapture = process.argv.includes('--full-physical-surface');
+const captureArgument = fullSurfaceCapture
+  ? '--spinon-c131-full-physical-metal-pixels'
+  : '--spinon-c131-compact-metal-pixel-centers';
+const expectedSampleCount = fullSurfaceCapture ? 270_000 : 30_000;
+const expectedChannelCount = expectedSampleCount * 4;
+const expectedBatchCount = Math.ceil(expectedSampleCount / 64);
+const chromeFullObservationPath = resolve(repositoryRoot,
+  'spec/internal/evidence/c13-1-full-physical-pixel-parity-2026-10-18/chrome155-dpr-3-observation.json');
 const gitCommonDirectory = command('git', [
   'rev-parse', '--path-format=absolute', '--git-common-dir',
 ]).stdout.trim();
@@ -20,14 +30,15 @@ const v8Directory = process.env.SPINON_V8_DIR
   ?? (existsSync(localV8Directory) ? localV8Directory : sharedV8Directory);
 const appPath = resolve(repositoryRoot,
   'build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app');
-const requestedUDID = process.argv[2] ?? expectedSimulatorUDID;
+const requestedUDID = process.argv.slice(2).find((argument) => /^[0-9A-Fa-f-]{36}$/.test(argument))
+  ?? expectedSimulatorUDID;
 assert.match(requestedUDID, /^[0-9A-Fa-f-]{36}$/,
   '사용법: node capture-c13-1-ios-metal-pixel-centers.mjs [Simulator UDID]');
 const timestamp = new Date().toISOString().replaceAll(/[^0-9TZ]/g, '');
-const runID = `c13-1-ios-metal-${timestamp}-${randomUUID().slice(0, 8)}`;
+const runID = `${fullSurfaceCapture ? 'c13-1-ios-full-physical' : 'c13-1-ios-metal'}-${timestamp}-${randomUUID().slice(0, 8)}`;
 const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date());
 const evidenceDirectory = resolve(repositoryRoot,
-  `spec/internal/evidence/c13-1-ios-metal-pixel-centers-${date}/${runID}`);
+  `spec/internal/evidence/${fullSurfaceCapture ? 'c13-1-ios-full-physical-pixels' : 'c13-1-ios-metal-pixel-centers'}-${date}/${runID}`);
 const identitySha256 = '93cccd042e82d8cd30cb7a8ab34a5154073d4a9eccbc4038294d3ca5b9dfce87';
 const gridOracleSha256 = '35e88e57edc16e526e389317b0d18ef227e35d1356a2353b92476c75ef6414f6';
 const chromeObservationSha256 = '515fc95f811399fda9e336a13e7583f2d22555fce4727f1fe7f734981abd0299';
@@ -126,19 +137,22 @@ function assertPixelBatchSequence(lines, appRunID) {
     assert.ok(match, `batch request format: ${line}`);
     return match.slice(1).map(Number);
   });
-  assert.equal(batches.length, 469, 'Metal pixel batch request count');
+  assert.equal(batches.length, expectedBatchCount, 'Metal pixel batch request count');
+  const finalBatchSize = expectedSampleCount - (expectedBatchCount - 1) * 64;
   for (let index = 0; index < batches.length; index += 1) {
-    assert.deepEqual(batches[index].slice(0, 2), [index, index === 468 ? 48 : 64],
+    assert.deepEqual(batches[index].slice(0, 2),
+      [index, index === expectedBatchCount - 1 ? finalBatchSize : 64],
       `Metal batch ${index} 순서와 크기`);
     assert.equal(batches[index][2], batches[0][2], 'batch surface generation consistency');
     assert.deepEqual(batches[index].slice(3), batches[0].slice(3), 'batch drawable size consistency');
   }
   const completedBatches = lines.filter((line) =>
     line.includes('SPINON_C131_METAL_PIXEL_BATCH_COMPLETE '));
-  assert.equal(completedBatches.length, 468, 'accepted non-final batch count');
+  assert.equal(completedBatches.length, expectedBatchCount - 1, 'accepted non-final batch count');
   for (const [index, line] of completedBatches.entries()) {
     assert.ok(line.includes(`run_id=${appRunID} `), `batch completion ${index} run ID`);
-    assert.ok(line.includes(`samples=${(index + 1) * 64}/30000`), `batch completion ${index} count`);
+    assert.ok(line.includes(`samples=${(index + 1) * 64}/${expectedSampleCount}`),
+      `batch completion ${index} count`);
   }
   return { requests: requests.length, acceptedNonFinal: completedBatches.length };
 }
@@ -149,7 +163,7 @@ async function captureSuccessfulRun(udid, index, priorPIDs) {
   const launch = simctl([
     'launch', udid, bundleID,
     '--spinon-c131-compact-hit-identity-grid',
-    '--spinon-c131-compact-metal-pixel-centers',
+    captureArgument,
   ], { timeout: 90_000 });
   await writeFile(resolve(evidenceDirectory, `${name}-launch.log`), launch.stdout + launch.stderr);
   const pid = launchPID(launch.stdout);
@@ -164,7 +178,9 @@ async function captureSuccessfulRun(udid, index, priorPIDs) {
     const layoutGeneration = gridLine?.match(/runtime_generation=(\d+)/)?.[1];
     const captureLine = lines.find((line) => line.includes(
       'SPINON_C131_METAL_PIXEL_CAPTURE_COMPLETE '));
-    const capture = captureLine?.match(/run_id=([0-9a-f]{32}) generation=(\d+) samples=30000 batches=469 sample_file=([^ ]+) manifest_file=([^ ]+)/);
+    const capture = captureLine?.match(new RegExp(
+      `run_id=([0-9a-f]{32}) generation=(\\d+) samples=${expectedSampleCount} batches=${expectedBatchCount} sample_file=([^ ]+) manifest_file=([^ ]+)`,
+    ));
     const sameRun = appRunID && capture && capture[1] === appRunID;
     const evalReady = appRunID && hasLine(lines,
       `SPINON_C131_COMPACT_EVAL_RUN run_id=${appRunID} status=0 layout=ready boxes=41`);
@@ -195,12 +211,14 @@ async function captureSuccessfulRun(udid, index, priorPIDs) {
       ? { appRunID, layoutGeneration: Number(layoutGeneration), surfaceGeneration: Number(capture[2]),
         sampleFile: capture[3], manifestFile: capture[4], captureLine }
       : null;
-  }, `${name}: iOS Simulator 30,000 Metal pixel·hit identity capture`);
+  }, `${name}: iOS Simulator ${expectedSampleCount} Metal pixel·hit identity capture`);
 
   const batchCounts = assertPixelBatchSequence(lines, ready.appRunID);
   await writeFile(resolve(evidenceDirectory, `${name}-runtime.log`), `${lines.join('\n')}\n`);
   const container = simctl(['get_app_container', udid, bundleID, 'data'], { timeout: 30_000 }).stdout.trim();
-  const appArtifactDirectory = resolve(container, 'Library/Caches/c13-1-metal-surface-pixel-centers');
+  const appArtifactDirectory = resolve(container, fullSurfaceCapture
+    ? 'Library/Caches/c13-1-metal-surface-pixels'
+    : 'Library/Caches/c13-1-metal-surface-pixel-centers');
   const samplePath = resolve(evidenceDirectory, ready.sampleFile);
   const manifestPath = resolve(evidenceDirectory, ready.manifestFile);
   await access(resolve(appArtifactDirectory, ready.sampleFile));
@@ -214,14 +232,26 @@ async function captureSuccessfulRun(udid, index, priorPIDs) {
   assert.equal(manifest.sampleFile, ready.sampleFile);
 
   const comparisonPath = resolve(evidenceDirectory, `${name}-comparison.json`);
-  const comparison = compareMetalArtifactFiles({
-    manifestPath,
-    samplePath,
-  });
+  const comparison = fullSurfaceCapture
+    ? compareMetalFullSurfaceFiles({
+      manifestPath,
+      rgbaPath: samplePath,
+      observationPath: chromeFullObservationPath,
+      expectedIdentity: {
+        runId: ready.appRunID,
+        generation: ready.surfaceGeneration,
+        processID: pid,
+      },
+    })
+    : compareMetalArtifactFiles({ manifestPath, samplePath });
   await writeFile(comparisonPath, `${JSON.stringify(comparison, null, 2)}\n`);
   assert.equal(comparison.status, 'matched', `${name}: Chrome 155 exact RGBA comparison`);
-  assert.equal(comparison.sampleCount, 30_000);
-  assert.equal(comparison.comparedChannels, 120_000);
+  const comparedPixels = fullSurfaceCapture ? comparison.comparedPixels : comparison.sampleCount;
+  const comparedChannels = comparison.comparedChannels;
+  const drawablePixelSize = fullSurfaceCapture
+    ? comparison.dimensions : comparison.drawablePixelSize;
+  assert.equal(comparedPixels, expectedSampleCount);
+  assert.equal(comparedChannels, expectedChannelCount);
   assert.equal(comparison.mismatchedPixels, 0);
 
   sleep(1_200);
@@ -245,11 +275,11 @@ async function captureSuccessfulRun(udid, index, priorPIDs) {
     layoutGeneration: ready.layoutGeneration,
     surfaceGeneration: ready.surfaceGeneration,
     metal: {
-      samples: comparison.sampleCount,
-      channels: comparison.comparedChannels,
+      samples: comparedPixels,
+      channels: comparedChannels,
       mismatches: comparison.mismatchedPixels,
       maximumChannelError: comparison.maximumChannelError,
-      drawablePixelSize: comparison.drawablePixelSize,
+      drawablePixelSize,
       surfaceFormat: comparison.surfaceFormat,
       sampleSha256: comparison.sampleSha256,
       batches: batchCounts,
@@ -257,6 +287,7 @@ async function captureSuccessfulRun(udid, index, priorPIDs) {
     },
     hitIdentity: { points: 30_000, matched: 30_000, mismatches: 0, fixedSamples: 52, nodeFrames: 41 },
     comparison: `${name}-comparison.json`,
+    captureMode: fullSurfaceCapture ? 'full-physical-surface' : 'css-pixel-centers',
     manifest: ready.manifestFile,
     samples: ready.sampleFile,
     screenshot: `${name}-ios-simulator.png`,
@@ -268,7 +299,7 @@ async function captureSuccessfulRun(udid, index, priorPIDs) {
 
 async function captureArgumentNegativeControl(udid) {
   await stopPreviousProcess(udid, 'metal-route-argument-negative-control');
-  const launch = simctl(['launch', udid, bundleID, '--spinon-c131-compact-metal-pixel-centers'], {
+  const launch = simctl(['launch', udid, bundleID, captureArgument], {
     timeout: 90_000,
   });
   await writeFile(resolve(evidenceDirectory, 'metal-route-argument-negative-control-launch.log'),
@@ -293,8 +324,8 @@ async function captureRouteConflictControl(udid) {
   const launch = simctl([
     'launch', udid, bundleID,
     '--spinon-c131-compact-hit-identity-grid',
-    '--spinon-c131-compact-surface-matrix',
-    '--spinon-c131-compact-metal-pixel-centers',
+    '--spinon-c131-overflow-clip',
+    captureArgument,
   ], { timeout: 90_000 });
   await writeFile(resolve(evidenceDirectory, 'route-conflict-negative-control-launch.log'),
     launch.stdout + launch.stderr);
@@ -302,7 +333,7 @@ async function captureRouteConflictControl(udid) {
   const lines = waitFor(() => {
     const filtered = processLog(udid, pid);
     return hasLine(filtered,
-      'SPINON_C131_ARGUMENT_ERROR conflicting=multiple-fixture-routes') ? filtered : null;
+      'SPINON_C0410_ARGUMENT_ERROR conflicting=multiple-fixture-routes') ? filtered : null;
   }, '중복 C13.1 route 거부 negative control', 30_000);
   assert.equal(lines.some((line) => line.includes('SPINON_C0410_HOST_RETURNED')), false,
     '중복 route는 runtime host 생성 전에 거부되어야 합니다.');
@@ -345,43 +376,67 @@ async function main() {
     const result = await captureSuccessfulRun(device.udid, index, priorPIDs);
     priorPIDs.add(result.pid);
     runs.push(result);
-    process.stdout.write(`${result.name}: ${result.metal.samples}/30000 exact · ${result.metal.batches.requests} batches · pid=${result.pid}\n`);
+    process.stdout.write(`${result.name}: ${result.metal.samples}/${expectedSampleCount} exact · ${result.metal.batches.requests} batches · pid=${result.pid}\n`);
   }
   const argumentNegativeControl = await captureArgumentNegativeControl(device.udid);
   const routeNegativeControl = await captureRouteConflictControl(device.udid);
+  await stopPreviousProcess(device.udid, 'final-app-process-cleanup');
   const sourceRevision = command('git', ['rev-parse', 'HEAD']).stdout.trim();
   const sourceStatus = command('git', ['status', '--short']).stdout.trim();
   const xcodeVersion = command('xcodebuild', ['-version']).stdout.trim();
+  const latestComparison = JSON.parse(await readFile(
+    resolve(evidenceDirectory, 'run-3-comparison.json'), 'utf8',
+  ));
   const summary = {
-    schema: 'spinon-c13-1-ios-metal-pixel-centers/v1',
+    schema: fullSurfaceCapture
+      ? 'spinon-c13-1-ios-metal-full-physical-pixels/v1'
+      : 'spinon-c13-1-ios-metal-pixel-centers/v1',
     status: 'matched',
+    captureMode: fullSurfaceCapture ? 'full-physical-surface' : 'css-pixel-centers',
     captureRunID: runID,
     source: { revision: sourceRevision, status: sourceStatus || 'clean' },
     simulator: { name: device.name, udid: device.udid, runtime: device.runtime },
     v8: { revision: actualV8Revision, archiveSha256: await sha256File(v8Archive) },
     appExecutableSha256: sha256(appExecutable),
     chromeOracle: {
-      product: 'Chrome for Testing 155.0.8059.40',
+      product: 'Google Chrome 155.0.8059.85',
       observationSha256: chromeObservationSha256,
-      screenshotSha256: 'b682308e3604ad599becff2c8d8c801c80a2a5b8547f3ac3316f133d47232601',
+      screenshotSha256: fullSurfaceCapture
+        ? latestComparison.oracle.screenshotSha256
+        : 'b682308e3604ad599becff2c8d8c801c80a2a5b8547f3ac3316f133d47232601',
     },
-    expected: { viewportCssPx: [300, 100], samples: 30_000, channels: 120_000, batchSize: 64, batches: 469 },
+    expected: {
+      viewportCssPx: [300, 100],
+      drawablePixelSize: fullSurfaceCapture ? [900, 300] : [900, 300],
+      samples: expectedSampleCount,
+      channels: expectedChannelCount,
+      batchSize: 64,
+      batches: expectedBatchCount,
+    },
     runs,
     negativeControls: { argument: argumentNegativeControl, routeConflict: routeNegativeControl },
     xcodeVersion,
-    scope: 'iOS 26.2 iPhone 17 Pro Simulator Metal drawable pixel centers before compositor submission; no physical device, display scanout, hardware GPU, DOM event dispatch, WPT, or full C13.1 support.',
+    scope: fullSurfaceCapture
+      ? 'iOS 26.2 iPhone 17 Pro Simulator Metal drawable all-texel readback before compositor submission; no physical device, display scanout, hardware GPU, DOM event dispatch, WPT, or full C13.1 support.'
+      : 'iOS 26.2 iPhone 17 Pro Simulator Metal drawable pixel centers before compositor submission; no physical device, display scanout, hardware GPU, DOM event dispatch, WPT, or full C13.1 support.',
   };
   await writeFile(resolve(evidenceDirectory, 'summary.json'), `${JSON.stringify(summary, null, 2)}\n`);
   await writeFile(resolve(evidenceDirectory, 'README.md'), [
-    '# C13.1 iOS Simulator Metal surface pixel centers', '',
+    fullSurfaceCapture
+      ? '# C13.1 iOS Simulator Metal full physical surface'
+      : '# C13.1 iOS Simulator Metal surface pixel centers', '',
     `- Capture 묶음: \`${runID}\``,
     `- 대상: ${device.name} · ${device.runtime} · ${device.udid}`,
-    '- 새 앱 process 3개에서 각각 469 batch로 30,000 CSS pixel center / 120,000 RGBA channel을 Chrome 155와 exact 비교했다.',
+    `- 새 앱 process 3개에서 각각 ${expectedBatchCount.toLocaleString()} batch로 ${expectedSampleCount.toLocaleString()} ${fullSurfaceCapture ? 'physical texel' : 'CSS pixel center'} / ${expectedChannelCount.toLocaleString()} RGBA channel을 Chrome 155와 exact 비교했다.`,
     '- 각 실행에서 41/41 node frame, 52/52 고정 hit query와 30,000/30,000 hit identity가 같은 app run ID에 연결됐다.',
-    '- 각 JSONL은 surface generation, drawable 좌표·크기, RGBA, run ID를 기록하고 SHA-256을 manifest에 고정한다.',
-    '- `positioned-escape`의 `(270,72)` 표본은 overflow container의 오른쪽 border 밖에서 target paint가 유지되는 좌표다. 전체 표면 대조와 각 RGBA byte mutation control을 함께 검사했다.',
+    fullSurfaceCapture
+      ? '- row-major `.rgba` artifact는 각 Metal readback의 256-byte padded row에서 RGBA 네 byte만 packed 저장하고 surface generation·format·byte length·SHA-256을 manifest에 고정한다.'
+      : '- 각 JSONL은 surface generation, drawable 좌표·크기, RGBA, run ID를 기록하고 SHA-256을 manifest에 고정한다.',
+    fullSurfaceCapture
+      ? '- `positioned-escape`의 border 밖 texel을 포함해 전체 drawable을 비교하고 네 channel 1-byte mutation, 누락·추가·순서·padding·identity 변조를 거부했다.'
+      : '- `positioned-escape`의 `(270,72)` 표본은 overflow container의 오른쪽 border 밖에서 target paint가 유지되는 좌표다. 전체 표면 대조와 각 RGBA byte mutation control을 함께 검사했다.',
     '- 잘못된 Metal route 단독 실행과 중복 C13.1 route가 host 생성 전에 거부됐다.',
-    '- [실행 요약](./summary.json) · build/install, 세 process log, screenshots, 직접 readback JSONL/manifest와 Chrome 비교 결과를 보존했다.',
+    '- [실행 요약](./summary.json) · build/install, 세 process log, screenshots, 직접 readback artifact/manifest와 Chrome 비교 결과를 보존했다.',
     '- 이 결과는 iOS Simulator의 Metal drawable 표본만 검증한다. compositor scanout, 실기기·hardware GPU, DOM events, WPT 및 C13.1 전체 완료를 뜻하지 않는다.', '',
   ].join('\n'));
   process.stdout.write(`${JSON.stringify({

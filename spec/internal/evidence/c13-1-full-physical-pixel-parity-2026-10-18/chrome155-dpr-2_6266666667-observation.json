@@ -2,12 +2,12 @@
   "schema": "spinon-c13-1-full-physical-pixel-observation/v1",
   "status": "captured",
   "browser": {
-    "product": "Chrome for Testing",
-    "version": "155.0.8059.40",
+    "product": "Google Chrome",
+    "version": "155.0.8059.85",
     "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
-    "v8Version": "15.5.35.20",
-    "revision": "cfaadc5a132d78e1828635aa8405a499f3e14864",
-    "binarySha256": "ec365e6f71279593f8de4de81ec84f8a5be20129a35ee1d611ee6423bcaca38f"
+    "v8Version": "15.5.35.25",
+    "revision": "0e66b94549a8bd85f03fbdf189b752d6e7b63c32",
+    "binarySha256": "6e156f2271cef44afce9db36a5b920e94518857b94a4160f082696f8c3bd1c9d"
   },
   "fixture": {
     "wrapper": {
@@ -34,7 +34,11 @@
     "deviceScaleFactor": 2.6266666666666665,
     "reportedDeviceScaleFactor": 2.626666784286499,
     "deviceScaleFactorMatched": true,
-    "visualViewport": [300, 100, 1],
+    "visualViewport": [
+      300,
+      100,
+      1
+    ],
     "scrollX": 0,
     "scrollY": 0,
     "visualScale": 1,
@@ -45,7 +49,11 @@
     "file": "spec/internal/evidence/c13-1-full-physical-pixel-parity-2026-10-18/chrome155-dpr-2_6266666667.png",
     "width": 788,
     "height": 263,
-    "sha256": "d6375de2893cede8335d403104d048c310348fe8438aefe3e4cd33a4f3f84f64"
+    "sha256": "28e34790324342ae0311aeec8dffbc2404265ac7c789c7345d185bdb93408540"
   },
-  "captureTool": "agent-browser 0.31.1 connected to Chrome DevTools Protocol port 63502"
+  "captureTool": "agent-browser 0.31.1 connected to Chrome DevTools Protocol port 50800",
+  "screenshotSettings": {
+    "headless": true,
+    "hideScrollbars": true
+  }
 }

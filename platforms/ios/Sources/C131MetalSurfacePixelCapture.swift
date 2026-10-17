@@ -4,10 +4,32 @@ import Foundation
 
 struct C131MetalPixelCoordinate {
     let index: Int
-    let cssX: Int
-    let cssY: Int
+    let cssX: Int?
+    let cssY: Int?
     let drawableX: Int
     let drawableY: Int
+}
+
+protocol C131MetalSurfacePixelCaptureProtocol {
+    var expectedSampleCount: Int { get }
+    var expectedBatchCount: Int { get }
+
+    func nextBatch(
+        drawableWidth: Int,
+        drawableHeight: Int,
+        generation: UInt64,
+        format: String
+    ) throws -> [C131MetalPixelCoordinate]?
+
+    func acceptDrawReport(
+        _ report: String,
+        generation: UInt64,
+        drawableWidth: Int,
+        drawableHeight: Int,
+        format: String
+    ) throws -> C131MetalPixelCaptureProgress
+
+    func abort()
 }
 
 private struct C131MetalPixelArtifactSample: Encodable {
@@ -51,7 +73,7 @@ struct C131MetalPixelCaptureProgress {
     let manifestFileName: String?
 }
 
-final class C131MetalSurfacePixelCapture {
+final class C131MetalSurfacePixelCapture: C131MetalSurfacePixelCaptureProtocol {
     static let viewportWidth = 300
     static let viewportHeight = 100
     static let sampleCount = viewportWidth * viewportHeight
@@ -59,6 +81,8 @@ final class C131MetalSurfacePixelCapture {
     static let totalBatchCount = (sampleCount + batchSize - 1) / batchSize
     static let totalDeadlineSeconds: TimeInterval = 300
     static let batchDeadlineSeconds: TimeInterval = 15
+    var expectedSampleCount: Int { Self.sampleCount }
+    var expectedBatchCount: Int { Self.totalBatchCount }
 
     enum CaptureError: Error, CustomStringConvertible {
         case invalidRunID
@@ -263,14 +287,17 @@ final class C131MetalSurfacePixelCapture {
                 guard x == coordinate.drawableX, y == coordinate.drawableY else {
                     throw CaptureError.sampleCoordinateMismatch(coordinate.index)
                 }
+                guard let cssX = coordinate.cssX, let cssY = coordinate.cssY else {
+                    throw CaptureError.invalidSampleShape(coordinate.index)
+                }
                 let rgba = channels.compactMap(integer)
                 guard rgba.count == 4, rgba.allSatisfy({ (0...255).contains($0) }) else {
                     throw CaptureError.sampleColorInvalid(coordinate.index)
                 }
                 let artifactSample = C131MetalPixelArtifactSample(
                     index: coordinate.index,
-                    cssX: coordinate.cssX,
-                    cssY: coordinate.cssY,
+                    cssX: cssX,
+                    cssY: cssY,
                     drawableX: coordinate.drawableX,
                     drawableY: coordinate.drawableY,
                     rgba: rgba,
